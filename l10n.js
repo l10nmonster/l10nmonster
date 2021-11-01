@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import * as path from 'path';
 import {
   existsSync,
@@ -22,7 +24,8 @@ async function initMonster() {
         baseDir,
         env: process.env,
       };
-      const monsterConfig = new (await import(configPath)).default(ctx);
+      const configModule = await import(configPath);
+      const monsterConfig = new configModule.default(ctx);
       const ops = new JsonLangPersistence({ monsterDir, monsterConfig });
       return new MonsterManager({ monsterDir, monsterConfig, ops });
     }

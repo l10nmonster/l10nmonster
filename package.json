@@ -2,10 +2,12 @@
   "name": "l10nmonster",
   "version": "1.0.0",
   "description": "Continuous localization for the rest of us",
-  "main": "index.js",
+  "main": "l10n.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "./node_modules/.bin/esbuild l10n.js --bundle --outfile=bin/l10n.cjs --platform=node --target=node10.4 --minify",
+    "build": "pkg -t node16-macos-x64 --out-path bin bin/l10n.cjs"
   },
   "repository": {
     "type": "git",
@@ -28,5 +30,9 @@
     "pig-latinizer": "^1.0.6",
     "words-count": "^2.0.2",
     "xliff": "^5.7.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.13.12",
+    "pkg": "^5.4.1"
   }
 }
