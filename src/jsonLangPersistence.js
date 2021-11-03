@@ -6,15 +6,12 @@ import {
 } from 'fs';
 import * as fs from 'fs/promises';
 
-import {
-    generateGuid,
-} from './utils.js';  
-
 export default class JsonLangPersistence {
     constructor({ monsterDir, monsterConfig }) {
         this.debug = monsterConfig.debug;
         this.targetLangs = monsterConfig.targetLangs;
         this.pipelines = monsterConfig.pipelines;
+        this.generateGuid = monsterConfig.generateGuid;
         this.langPaths = {};
         for (const lang of monsterConfig.targetLangs) {
             const baseDir = path.join(monsterDir, lang);
@@ -37,7 +34,7 @@ export default class JsonLangPersistence {
         ;
     }
 
-    getJobStatus(lang) {
+    #getJobManifests(lang) {
         const jobsPath = this.langPaths[lang].jobs;
         return existsSync(jobsPath) ?
             JSON.parse(readFileSync(jobsPath, 'utf8')) :
@@ -45,18 +42,27 @@ export default class JsonLangPersistence {
         ;
     }
 
+    async getPendingJobs(lang) {
+        return this.#getJobManifests(lang).filter(j => j.status === 'pending');
+    }
+
     createTranslator(lang) {
         const tm = this.getTM(lang);
-        return function translate(rid, sid, str) {
-            const guid = generateGuid(rid, sid, str);
+        return async function translate(rid, sid, str) {
+            const guid = this.generateGuid(rid, sid, str);
             if (!tm.tus[guid]) {
-                console.log(`Couldn't find ${lang} entry for ${rid}+${sid}+${str}`);
+                console.error(`Couldn't find ${lang} entry for ${rid}+${sid}+${str}`);
             }
             return tm.tus[guid]?.str || str; // falls back to source string
         }
     }
 
     async updateTM(jobResponse) {
+        // TODO: maybe response logging should be done here so that we also log pulls
+        if (this.debug.logResponses) {
+            jobResponsePath = path.join(this.langPaths[jobResponse.targetLang].baseDir, `res-${new Date().toISOString()}.json`);
+            fs.writeFileSync(jobResponsePath, JSON.stringify(jobResponse, null, '\t'), 'utf8');
+        }
         const tm = this.getTM(jobResponse.targetLang);
         let dirty = false;
         if (jobResponse.inflight) {
@@ -91,17 +97,18 @@ export default class JsonLangPersistence {
     }
 
     async createJobManifest(targetLang) {
-        const jobs = this.getJobStatus(targetLang);
+        const jobs = this.#getJobManifests(targetLang);
         const jobId = jobs.length;
         jobs.push({
             jobId,
+            status: 'created',
         });
         await fs.writeFile(this.langPaths[targetLang].jobs, JSON.stringify(jobs, null, '\t'), 'utf8');
         return jobId;
     }
 
     async updateJobManifest(jobManifest) {
-        const jobs = this.getJobStatus(jobManifest.targetLang);
+        const jobs = this.#getJobManifests(jobManifest.targetLang);
         jobManifest = {
             ...jobs[jobManifest.jobId],
             ...jobManifest,
@@ -124,20 +131,13 @@ export default class JsonLangPersistence {
             jobRequestPath = path.join(langDir, `req-${new Date().toISOString()}.json`);
             fs.writeFileSync(jobRequestPath, JSON.stringify(job, null, '\t'), 'utf8');
         }
-        let jobResponsePath;
-
         const jobResponse = await pipeline.translationProvider.requestTranslations(job);
-        if (this.debug.logResponses) {
-            jobResponsePath = path.join(langDir, `res-${new Date().toISOString()}.json`);
-            fs.writeFileSync(jobResponsePath, JSON.stringify(jobResponse, null, '\t'), 'utf8');
-        }
         await this.updateJobManifest({
             jobId,
             targetLang,
             translationProvider: job.translationProvider,
             requestedAt: new Date().toISOString(),
             requestPayload: jobRequestPath,
-            responsePayload: jobResponsePath,
             status: jobResponse.status,
             inflightNum: jobResponse.inflight?.length || 0,
         });

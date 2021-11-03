@@ -3,8 +3,8 @@ import * as fs from 'fs/promises';
 import { globbySync } from 'globby';
 
 export class FsSource {
-    constructor({ baseDir, globs }) {
-        this.baseDir = baseDir;
+    constructor({ ctx, globs }) {
+        this.baseDir = ctx.baseDir;
         this.globs = globs;
     }
 
@@ -27,8 +27,8 @@ export class FsSource {
 }
 
 export class FsTarget {
-    constructor({ baseDir, targetPath }) {
-        this.baseDir = baseDir;
+    constructor({ ctx, targetPath }) {
+        this.baseDir = ctx.baseDir;
         this.targetPath = targetPath;
     }
 

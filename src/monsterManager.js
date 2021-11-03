@@ -6,10 +6,6 @@ import {
 import * as fs from 'fs/promises';
 import wordsCountModule from 'words-count';
 
-import {
-    generateGuid,
-} from './utils.js';  
-
 export default class MonsterManager {
     constructor({ monsterDir, monsterConfig, ops }) {
         this.monsterDir = monsterDir;
@@ -36,7 +32,7 @@ export default class MonsterManager {
                 const parsedRes = await pipeline.resourceFilter.parseResource({resource: payload, isSource: true});
                 res.translationUnits = parsedRes.translationUnits;
                 for (const tu of res.translationUnits) {
-                    tu.guid = generateGuid(res.id, tu.sid, tu.str);
+                    tu.guid = this.monsterConfig.generateGuid(res.id, tu.sid, tu.str);
                 }
                 newCache[res.id] = res;
             }
@@ -98,11 +94,8 @@ export default class MonsterManager {
                     }
                 }
             }
-            const jobsSummary = {};
-            for (const j of this.ops.getJobStatus(targetLang)) {
-                jobsSummary[j.status] = (jobsSummary[j.status] || 0) + 1;
-            }
-            status.lang[targetLang] = { translated, inflight, unstranslated, unstranslatedChars, unstranslatedWords, jobsSummary, tusNum, tmChars };
+            const pendingJobsNum = (await this.ops.getPendingJobs(targetLang)).length;
+            status.lang[targetLang] = { translated, inflight, unstranslated, unstranslatedChars, unstranslatedWords, pendingJobsNum, tusNum, tmChars };
         }
         return status;
     }
@@ -170,9 +163,9 @@ export default class MonsterManager {
         const pipeline = this.monsterConfig.pipelines[pipelineName];
         const stats = { numPendingJobs: 0, translatedStrings: 0 };
         for (const lang of this.monsterConfig.targetLangs) {
-            const jobs = this.ops.getJobStatus(lang).filter(j => j.status === 'pending');
-            stats.numPendingJobs = jobs.length;
-            for (const jobManifest of jobs) {
+            const pendingJobs = await this.ops.getPendingJobs(lang);
+            stats.numPendingJobs = pendingJobs.length;
+            for (const jobManifest of pendingJobs) {
                 // console.log(`Pulling job ${jobManifest.jobId}...`);
                 const newTranslations = await pipeline.translationProvider.fetchTranslations(jobManifest);
                 if (newTranslations) {

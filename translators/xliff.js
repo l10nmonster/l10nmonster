@@ -7,8 +7,8 @@ import createxliff12 from 'xliff/createxliff12';
 import xliff12ToJs from 'xliff/xliff12ToJs';
 
 export class XliffBridge {
-    constructor({ baseDir, requestPath, completePath, quality }) {
-        this.baseDir = baseDir;
+    constructor({ ctx, requestPath, completePath, quality }) {
+        this.baseDir = ctx.baseDir;
         this.requestPath = requestPath;
         this.completePath = completePath;
         this.quality = quality;

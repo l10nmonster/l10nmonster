@@ -56,7 +56,7 @@ export class PoFilter {
                     if (s.msgid_plural) {
                         // TODO
                     } else {
-                        s.msgstr = [ translator(resourceId, sid, s.msgid) ];
+                        s.msgstr = [ await translator(resourceId, sid, s.msgid) ];
                     }
                 } else {
                     // TODO: do we need to generate correct meta for empty msgid?

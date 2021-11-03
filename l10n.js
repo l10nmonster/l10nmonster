@@ -61,9 +61,7 @@ monsterCLI
         }
         console.log(`  - strings pending translation: ${stats.inflight}`);
         console.log(`  - untranslated strings: ${stats.unstranslated.toLocaleString()} (${stats.unstranslatedChars.toLocaleString()} chars - ${stats.unstranslatedWords.toLocaleString()} words - $${(stats.unstranslatedWords * .2).toFixed(2)})`);
-        for (const [s, num] of Object.entries(stats.jobsSummary).sort((a,b) => b[1] - a[1])) {
-          console.log(`  - ${s} jobs: ${num}`);
-        }
+        console.log(`  - pending jobs: ${stats.pendingJobsNum}`);
       }
     } else {
       console.error('Unable to initialize. Do you have an l10nmonster.js file in your base directory?');

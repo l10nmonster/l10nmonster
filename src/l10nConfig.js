@@ -1,5 +1,6 @@
-// this is not yet useful but it lays the foundation to be able to add more
-// base functionality later on without adding too much complexity and verbosity
+import {
+    createHash,
+} from 'crypto';  
 
 export class L10nConfig {
     debug = {};
@@ -10,4 +11,13 @@ export class L10nConfig {
     constructor(ctx) {
         this.ctx = ctx;
     }
+
+    generateGuid(rid, sid, str) {
+        // console.log(`generating guid from ${rid} + ${sid} + ${str}`);
+        const sidContentHash = createHash('sha256');
+        sidContentHash.update(rid, 'utf8');
+        sidContentHash.update(sid, 'utf8');
+        sidContentHash.update(str, 'utf8');
+        return sidContentHash.digest().toString('base64');
+    }    
 }
