@@ -60,8 +60,8 @@ export default class JsonLangPersistence {
     async updateTM(jobResponse) {
         // TODO: maybe response logging should be done here so that we also log pulls
         if (this.debug.logResponses) {
-            jobResponsePath = path.join(this.langPaths[jobResponse.targetLang].baseDir, `res-${new Date().toISOString()}.json`);
-            fs.writeFileSync(jobResponsePath, JSON.stringify(jobResponse, null, '\t'), 'utf8');
+            const jobResponsePath = path.join(this.langPaths[jobResponse.targetLang].baseDir, `res-${new Date().toISOString()}.json`);
+            await fs.writeFile(jobResponsePath, JSON.stringify(jobResponse, null, '\t'), 'utf8');
         }
         const tm = this.getTM(jobResponse.targetLang);
         let dirty = false;
@@ -129,7 +129,7 @@ export default class JsonLangPersistence {
         let jobRequestPath;
         if (this.debug.logRequests) {
             jobRequestPath = path.join(langDir, `req-${new Date().toISOString()}.json`);
-            fs.writeFileSync(jobRequestPath, JSON.stringify(job, null, '\t'), 'utf8');
+            await fs.writeFile(jobRequestPath, JSON.stringify(job, null, '\t'), 'utf8');
         }
         const jobResponse = await pipeline.translationProvider.requestTranslations(job);
         await this.updateJobManifest({
