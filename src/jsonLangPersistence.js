@@ -30,7 +30,7 @@ export default class JsonLangPersistence {
         const tmPath = this.langPaths[lang].tm;
         return existsSync(tmPath) ? 
             JSON.parse(readFileSync(tmPath, 'utf8')) :
-            { inflight: {}, tus: {} }
+            { tus: {} }
         ;
     }
 
@@ -67,18 +67,14 @@ export default class JsonLangPersistence {
         let dirty = false;
         if (jobResponse.inflight) {
             for (const guid of jobResponse.inflight) {
-                if (tm.inflight[guid] !== jobResponse.jobId) {
-                    tm.inflight[guid] = jobResponse.jobId;
+                if (!(guid in tm.tus)) {
+                    tm.tus[guid] = { q: '000-pending' };
                     dirty = true;
                 }
             }
         }
         if (jobResponse.tus) {
-            for (const tu of jobResponse.tus) {
-                if (tm.inflight[tu.guid] === jobResponse.jobId) {
-                    delete tm.inflight[tu.guid];
-                    dirty = true;
-                }                
+            for (const tu of jobResponse.tus) {         
                 if (!tm.tus[tu.guid] || tm.tus[tu.guid].q < tu.q) {
                     tm.tus[tu.guid] = {
                         str: tu.str,

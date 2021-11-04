@@ -55,11 +55,10 @@ monsterCLI
       console.log(`${status.numSources} translatable resource`);
       for (const [lang, stats] of Object.entries(status.lang)) {
         console.log(`Language ${lang}:`);
-        console.log(`  - strings in translation memory: ${stats.tusNum} (${stats.tmChars} chars)`);
+        console.log(`  - strings in translation memory: ${stats.tusNum}`);
         for (const [q, num] of Object.entries(stats.translated).sort((a,b) => b[1] - a[1])) {
           console.log(`  - translated strings @ quality ${q}: ${num}`);
         }
-        console.log(`  - strings pending translation: ${stats.inflight}`);
         console.log(`  - untranslated strings: ${stats.unstranslated.toLocaleString()} (${stats.unstranslatedChars.toLocaleString()} chars - ${stats.unstranslatedWords.toLocaleString()} words - $${(stats.unstranslatedWords * .2).toFixed(2)})`);
         console.log(`  - pending jobs: ${stats.pendingJobsNum}`);
       }

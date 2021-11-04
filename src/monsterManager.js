@@ -54,7 +54,7 @@ export default class MonsterManager {
         for (const [rid, res] of Object.entries(this.sourceCache)) {
             for (const tu of res.translationUnits) {
                 // TODO: if tu is pluralized we need to generate/suppress the relevant number of variants for the targetLang
-                if (!(tu.guid in tm.tus || tu.guid in tm.inflight)) {
+                if (!(tu.guid in tm.tus)) {
                     job.tus.push({
                         ...tu,
                         rid,
@@ -75,9 +75,7 @@ export default class MonsterManager {
         for (const targetLang of this.monsterConfig.targetLangs) {
             const tm = this.ops.getTM(targetLang);
             const tusNum = Object.keys(tm.tus).length;
-            const tmChars = Object.values(tm.tus).reduce((p, c) => p + c.str.length, 0);
             let translated = {},
-                inflight = 0,
                 unstranslated = 0,
                 unstranslatedChars = 0,
                 unstranslatedWords = 0;
@@ -85,8 +83,6 @@ export default class MonsterManager {
                 for (const tu of source.translationUnits) {
                     if (tu.guid in tm.tus) {
                         translated[tm.tus[tu.guid].q] = (translated[tm.tus[tu.guid].q] || 0) + 1;
-                    } else if (tu.guid in tm.inflight) {
-                        inflight++;
                     } else {
                         unstranslated++;
                         unstranslatedChars += tu.str.length;
@@ -95,7 +91,7 @@ export default class MonsterManager {
                 }
             }
             const pendingJobsNum = (await this.ops.getPendingJobs(targetLang)).length;
-            status.lang[targetLang] = { translated, inflight, unstranslated, unstranslatedChars, unstranslatedWords, pendingJobsNum, tusNum, tmChars };
+            status.lang[targetLang] = { translated, unstranslated, unstranslatedChars, unstranslatedWords, pendingJobsNum, tusNum };
         }
         return status;
     }
@@ -148,6 +144,7 @@ export default class MonsterManager {
                 }
                 job.tus = translations;
                 job.status = 'done';
+                job.translationProvider = 'Grandfather';
                 job.jobId = -1; // TODO: create an official job and log it so TM can be reconstructed with all jobs if wanted
                 await this.ops.updateTM(job);
                 status.push({
