@@ -8,7 +8,6 @@ import {
 import { Command } from 'commander';
 
 import MonsterManager from './src/monsterManager.js';
-import JsonLangPersistence from './src/jsonLangPersistence.js';
 
 async function initMonster() {
   let baseDir = path.resolve('.'),
@@ -26,8 +25,7 @@ async function initMonster() {
       };
       const configModule = await import(configPath);
       const monsterConfig = new configModule.default(ctx);
-      const ops = new JsonLangPersistence({ monsterDir, monsterConfig });
-      return new MonsterManager({ monsterDir, monsterConfig, ops });
+      return new MonsterManager({ monsterDir, monsterConfig });
     }
     previousDir = baseDir;
     baseDir = path.resolve(baseDir, '..');
@@ -53,6 +51,7 @@ monsterCLI
       console.log(`Status of pipeline ${pipeline}`);
       const status = await monsterManager.status(pipeline);
       console.log(`${status.numSources} translatable resource`);
+      console.log(`${status.pendingJobsNum} pending jobs`);
       for (const [lang, stats] of Object.entries(status.lang)) {
         console.log(`Language ${lang}:`);
         console.log(`  - strings in translation memory: ${stats.tusNum}`);
@@ -60,7 +59,6 @@ monsterCLI
           console.log(`  - translated strings @ quality ${q}: ${num}`);
         }
         console.log(`  - untranslated strings: ${stats.unstranslated.toLocaleString()} (${stats.unstranslatedChars.toLocaleString()} chars - ${stats.unstranslatedWords.toLocaleString()} words - $${(stats.unstranslatedWords * .2).toFixed(2)})`);
-        console.log(`  - pending jobs: ${stats.pendingJobsNum}`);
       }
     } else {
       console.error('Unable to initialize. Do you have an l10nmonster.js file in your base directory?');

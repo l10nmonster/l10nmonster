@@ -1,12 +1,11 @@
-import { L10nConfig } from '../../src/l10nConfig.js';
 import { FsSource, FsTarget } from '../../adapters/fs.js';
 import { PoFilter } from '../../filters/po.js';
 import { PigLatinizer } from '../../translators/piglatinizer.js';
 
-export default class GrampsConfig extends L10nConfig {
+export default class GrampsConfig {
+    sourceLang = 'en';
+    targetLangs = [ 'ja', 'it' ];
     constructor(ctx) {
-        super(ctx);
-        this.targetLangs = [ 'ja', 'it' ];
         this.pipelines = {
             default: {
                 source: new FsSource({

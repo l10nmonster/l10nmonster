@@ -1,4 +1,4 @@
-import { L10nConfig } from '../../src/l10nConfig.js';
+import { JsonJobStore } from '../../src/jsonJobStore.js';
 import { FsSource, FsTarget } from '../../adapters/fs.js';
 import { AndroidFilter } from '../../filters/android.js';
 import { XliffBridge } from '../../translators/xliff.js';
@@ -10,9 +10,14 @@ const androidLangMapping = {
     'zh-Hant': 'zh-rTW',
 };
 
-export default class TachiyomiConfig extends L10nConfig {
+export default class TachiyomiConfig {
+    sourceLang = 'en';
+    targetLangs = [ 'ja', 'it' ];
+    // debug = {
+    //     logRequests: true,
+    // };
+
     constructor(ctx) {
-        super(ctx);
         const source = new FsSource({
             ctx,
             globs: [ '**/values/strings.xml' ],
@@ -25,9 +30,10 @@ export default class TachiyomiConfig extends L10nConfig {
             targetPath: (lang, resourceId) => resourceId.replace('values', `values-${androidLangMapping[lang] || lang}`),
         });
         
-        this.debug.logRequests = true;
-        this.debug.logResponses = true;
-        this.targetLangs = [ 'ja', 'it' ];
+        this.jobStore = new JsonJobStore({
+            ctx,
+            jobsDir: 'translationJobs',
+        });
         this.pipelines = {
             default: {
                 source,
