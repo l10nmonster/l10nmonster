@@ -3,6 +3,10 @@ export class DummyJobStore {
         return [];
     }
 
+    async getJobStatus() {
+        return [];
+    }
+
     async createJobManifest() {
         return 0;
     }
@@ -11,5 +15,9 @@ export class DummyJobStore {
     }
 
     async updateJob() {
+    }
+
+    async getJob() {
+        return {};
     }
 }

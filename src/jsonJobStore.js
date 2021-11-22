@@ -31,6 +31,12 @@ export class JsonJobStore {
         return this.#getJobManifests().filter(j => j.status === 'pending');
     }
 
+    async getJobStatus(sourceLang, targetLang) {
+        return this.#getJobManifests()
+            .filter(j => j.sourceLang === sourceLang && j.targetLang === targetLang)
+            .map(j => [ j.jobId, j.status ]);
+    }
+
     async createJobManifest() {
         const jobs = this.#getJobManifests();
         const jobId = jobs.length;
@@ -43,7 +49,7 @@ export class JsonJobStore {
     }
 
     async updateJobManifest(jobManifest) {
-        const jobs = this.#getJobManifests(jobManifest.sourceLang, jobManifest.targetLang);
+        const jobs = this.#getJobManifests();
         jobManifest = {
             ...jobs[jobManifest.jobId],
             ...jobManifest,
@@ -56,5 +62,10 @@ export class JsonJobStore {
     async updateJob(jobResponse) {
         const jobPath = path.join(this.jobsDir, `job_${jobResponse.jobId}.json`);
         await fs.writeFile(jobPath, JSON.stringify(jobResponse, null, '\t'), 'utf8');
+    }
+
+    async getJob(jobId) {
+        const jobPath = path.join(this.jobsDir, `job_${jobId}.json`);
+        return JSON.parse(await fs.readFile(jobPath, 'utf8'));
     }
 }

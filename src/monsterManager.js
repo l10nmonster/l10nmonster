@@ -64,27 +64,45 @@ export default class MonsterManager {
         return path.join(this.monsterDir, `tmCache_${sourceLang}_${targetLang}.json`);
     }
 
+    async #writeTM(sourceLang, targetLang) {
+        const tmPath = this.#tmPathName(sourceLang, targetLang);
+        console.log(`Updating ${tmPath}...`);
+        await fs.writeFile(tmPath, JSON.stringify(this.tmCache[`${sourceLang}_${targetLang}`], null, '\t'), 'utf8');
+    }
+
     #getTM(sourceLang, targetLang) {
         const langPair = `${sourceLang}_${targetLang}`;
-        if (this.tmCache[langPair]) {
-            return this.tmCache[langPair];
-        } else {
+        if (!this.tmCache[langPair]) {
             const tmPath = this.#tmPathName(sourceLang, targetLang);
             const tm = existsSync(tmPath) ? 
                 JSON.parse(readFileSync(tmPath, 'utf8')) :
-                { tus: {} }
+                {
+                    jobStatus: {},
+                    tus: {},
+                }
             ;
             this.tmCache[langPair] = tm;
-            return tm;
+        }
+        return this.tmCache[langPair];
+    }
+
+    async #updateTM(sourceLang, targetLang) {
+        const tm = this.#getTM(sourceLang, targetLang);
+        const jobs = await this.jobStore.getJobStatus(sourceLang, targetLang);
+        for (const [jobId, status] of jobs) {
+            if (tm.jobStatus[jobId] !== status) {
+                const job = await this.jobStore.getJob(jobId);
+                await this.#processJob(job);
+            }
         }
     }
     
-    async #updateTM(jobResponse) {
+    async #processJob(jobResponse) {
         await this.jobStore.updateJob(jobResponse);
         const { inflight, tus, ...jobManifest } = jobResponse;
         await this.jobStore.updateJobManifest(jobManifest);
         const tm = this.#getTM(jobResponse.sourceLang, jobResponse.targetLang);
-        let dirty = false;
+        let dirty = tm.jobStatus[jobResponse.jobId] !== jobResponse.status;;
         if (inflight) {
             for (const guid of inflight) {
                 if (!(guid in tm.tus)) {
@@ -105,9 +123,8 @@ export default class MonsterManager {
             }
         }
         if (dirty) {
-            const tmPath = this.#tmPathName(jobResponse.sourceLang, jobResponse.targetLang);
-            console.log(`Updating ${tmPath}...`);
-            await fs.writeFile(tmPath, JSON.stringify(tm, null, '\t'), 'utf8');
+            tm.jobStatus[jobResponse.jobId] = jobResponse.status;
+            await this.#writeTM(jobResponse.sourceLang, jobResponse.targetLang);
         }
         return tm;
     }
@@ -153,6 +170,7 @@ export default class MonsterManager {
             lang: {},
         };
         for (const targetLang of this.monsterConfig.targetLangs) {
+            await this.#updateTM(this.sourceLang, targetLang);
             const tm = this.#getTM(this.sourceLang, targetLang); // TODO: how do we get other non-default languages?
             const tusNum = Object.keys(tm.tus).length;
             let translated = {},
@@ -180,6 +198,7 @@ export default class MonsterManager {
         const status = [];
         await this.#updateSourceCache(pipelineName);
         for (const targetLang of this.monsterConfig.targetLangs) {
+            await this.#updateTM(this.sourceLang, targetLang);
             const job = this.#prepareTranslationJob(targetLang);
             if (Object.keys(job.tus).length > 0) {
                 const pipeline = this.monsterConfig.pipelines[pipelineName];
@@ -201,7 +220,7 @@ export default class MonsterManager {
                     status: jobResponse.status,
                     inflightNum: jobResponse.inflight?.length || 0,
                 });
-                await this.#updateTM(jobResponse);
+                await this.#processJob(jobResponse);
                 status.push({
                     num: jobResponse.tus?.length || jobResponse.inflight?.length || 0,
                     lang: jobResponse.targetLang,
@@ -219,6 +238,7 @@ export default class MonsterManager {
         const status = [];
         await this.#updateSourceCache(pipelineName);
         for (const lang of this.monsterConfig.targetLangs) {
+            await this.#updateTM(this.sourceLang, lang);
             const job = this.#prepareTranslationJob(lang);
             if (Object.keys(job.tus).length > 0) {
                 const translations = [];
@@ -244,7 +264,7 @@ export default class MonsterManager {
                 job.status = 'done';
                 job.translationProvider = 'Grandfather';
                 job.jobId = await this.jobStore.createJobManifest();
-                await this.#updateTM(job);
+                await this.#processJob(job);
                 status.push({
                     num: translations.length,
                     lang,
@@ -263,7 +283,7 @@ export default class MonsterManager {
             // console.log(`Pulling job ${jobManifest.jobId}...`);
             const newTranslations = await pipeline.translationProvider.fetchTranslations(jobManifest);
             if (newTranslations) {
-                await this.#updateTM(newTranslations);
+                await this.#processJob(newTranslations);
                 await this.jobStore.updateJobManifest({
                     jobId: newTranslations.jobId,
                     targetLang: newTranslations.targetLang,
@@ -280,6 +300,7 @@ export default class MonsterManager {
         const status = [];
         const stats = await pipeline.source.fetchResourceStats();
         for (const lang of this.monsterConfig.targetLangs) {
+            await this.#updateTM(this.sourceLang, lang);
             const translator = this.#createTranslator(lang);
             for (const resHandle of stats) {
                 const resource = await pipeline.source.fetchResource(resHandle.id);
