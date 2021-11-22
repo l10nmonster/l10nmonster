@@ -1,4 +1,5 @@
-import { JsonJobStore } from '../../src/jsonJobStore.js';
+// import { JsonJobStore } from '../../src/jsonJobStore.js';
+import { SqlJobStore } from '../../src/sqlJobStore.js';
 import { FsSource, FsTarget } from '../../adapters/fs.js';
 import { AndroidFilter } from '../../filters/android.js';
 import { XliffBridge } from '../../translators/xliff.js';
@@ -30,9 +31,20 @@ export default class TachiyomiConfig {
             targetPath: (lang, resourceId) => resourceId.replace('values', `values-${androidLangMapping[lang] || lang}`),
         });
         
-        this.jobStore = new JsonJobStore({
-            ctx,
-            jobsDir: 'translationJobs',
+        // this.jobStore = new JsonJobStore({
+        //     ctx,
+        //     jobsDir: 'translationJobs',
+        // });
+        this.jobStore = new SqlJobStore({
+            org: 'test1',
+            prj: 'tachiyomi',
+            client: 'mysql2',
+            host: ctx.env.l10nmonster_host,
+            port: ctx.env.l10nmonster_port,
+            user: ctx.env.l10nmonster_user,
+            password: ctx.env.l10nmonster_password,
+            database: ctx.env.l10nmonster_database,
+            cert: '/etc/ssl/cert.pem',
         });
         this.pipelines = {
             default: {

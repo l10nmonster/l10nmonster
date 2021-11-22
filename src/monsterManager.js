@@ -10,6 +10,10 @@ import {
 import wordsCountModule from 'words-count';
 import { DummyJobStore } from './dummyJobStore.js';
 
+function currentISODate() {
+    return new Date().toISOString().slice(0, 19).replace('T', ' ');
+}
+
 function defaultGuidGenerator(rid, sid, str) {
     // console.log(`generating guid from ${rid} + ${sid} + ${str}`);
     const sidContentHash = createHash('sha256');
@@ -205,9 +209,8 @@ export default class MonsterManager {
                 const jobId = await this.jobStore.createJobManifest();
                 job.translationProvider = pipeline.translationProvider.constructor.name;
                 job.jobId = jobId;
-                let jobRequestPath;
                 if (this.debug.logRequests) {
-                    jobRequestPath = path.join(this.monsterDir, `req-${this.sourceLang}-${targetLang}-${new Date().toISOString()}.json`);
+                    const jobRequestPath = path.join(this.monsterDir, `req-${this.sourceLang}-${targetLang}-${new Date().toISOString()}.json`);
                     await fs.writeFile(jobRequestPath, JSON.stringify(job, null, '\t'), 'utf8');
                 }
                 const jobResponse = await pipeline.translationProvider.requestTranslations(job);
@@ -215,8 +218,7 @@ export default class MonsterManager {
                     jobId,
                     targetLang,
                     translationProvider: job.translationProvider,
-                    requestedAt: new Date().toISOString(),
-                    requestPayload: jobRequestPath,
+                    requestedAt: currentISODate(),
                     status: jobResponse.status,
                     inflightNum: jobResponse.inflight?.length || 0,
                 });
@@ -311,4 +313,11 @@ export default class MonsterManager {
         }
         return status;
     }
+
+    async shutdown() {
+        if (this.monsterConfig.jobStore.shutdown) {
+            await this.monsterConfig.jobStore.shutdown();
+        }
+    }
+
 }

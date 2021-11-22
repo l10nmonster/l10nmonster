@@ -1,3 +1,4 @@
+import { SqlJobStore } from '../../src/sqlJobStore.js';
 import { FsSource, FsTarget } from '../../adapters/fs.js';
 import { PoFilter } from '../../filters/po.js';
 import { PigLatinizer } from '../../translators/piglatinizer.js';
@@ -6,6 +7,17 @@ export default class GrampsConfig {
     sourceLang = 'en';
     targetLangs = [ 'ja', 'it' ];
     constructor(ctx) {
+        this.jobStore = new SqlJobStore({
+            org: 'test1',
+            prj: 'gramps',
+            client: 'mysql2',
+            host: ctx.env.l10nmonster_host,
+            port: ctx.env.l10nmonster_port,
+            user: ctx.env.l10nmonster_user,
+            password: ctx.env.l10nmonster_password,
+            database: ctx.env.l10nmonster_database,
+            cert: '/etc/ssl/cert.pem',
+        });
         this.pipelines = {
             default: {
                 source: new FsSource({

@@ -60,6 +60,7 @@ monsterCLI
         }
         console.log(`  - untranslated strings: ${stats.unstranslated.toLocaleString()} (${stats.unstranslatedChars.toLocaleString()} chars - ${stats.unstranslatedWords.toLocaleString()} words - $${(stats.unstranslatedWords * .2).toFixed(2)})`);
       }
+      await monsterManager.shutdown();
     } else {
       console.error('Unable to initialize. Do you have an l10nmonster.js file in your base directory?');
     }
@@ -82,6 +83,7 @@ monsterCLI
       } else {
         console.log('Nothing to push!');
       }
+      await monsterManager.shutdown();
     } else {
       console.error('Unable to initialize. Do you have an l10nmonster.js file in your base directory?');
     }
@@ -104,6 +106,7 @@ monsterCLI
       } else {
         console.log('Nothing to grandfather!');
       }
+      await monsterManager.shutdown();
     } else {
       console.error('Unable to initialize. Do you have an l10nmonster.js file in your base directory?');
     }
@@ -120,8 +123,8 @@ monsterCLI
       const pipeline = pipelineArg || 'default';
       console.log(`Pulling pending translations...`);
       const stats = await monsterManager.pull(pipeline);
-      console.log(`${stats.numPendingJobs} pending jobs`);
-      console.log(`${stats.translatedStrings} translated strings pulled`);
+      console.log(`Checked ${stats.numPendingJobs} pending jobs, ${stats.translatedStrings} translated strings pulled`);
+      await monsterManager.shutdown();
     } else {
       console.error('Unable to initialize. Do you have an l10nmonster.js file in your base directory?');
     }
