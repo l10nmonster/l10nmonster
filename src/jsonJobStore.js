@@ -19,26 +19,26 @@ export class JsonJobStore {
         return path.join(this.jobsDir, 'jobs.json');
     }
 
-    #getJobManifests() {
+    async getJobManifests(status) {
         const jobsPath = this.#jobsPathName();
-        return existsSync(jobsPath) ?
+        const manifests = existsSync(jobsPath) ?
             JSON.parse(readFileSync(jobsPath, 'utf8')) :
             []
         ;
+        return status ?
+            manifests.filter(j => j.status === status) :
+            manifests
+        ;
     }
 
-    async getPendingJobs() {
-        return this.#getJobManifests().filter(j => j.status === 'pending');
-    }
-
-    async getJobStatus(sourceLang, targetLang) {
-        return this.#getJobManifests()
+    async getJobStatusByLangPair(sourceLang, targetLang) {
+        return (await this.getJobManifests())
             .filter(j => j.sourceLang === sourceLang && j.targetLang === targetLang)
             .map(j => [ j.jobId, j.status ]);
     }
 
     async createJobManifest() {
-        const jobs = this.#getJobManifests();
+        const jobs = await this.getJobManifests();
         const jobId = jobs.length;
         jobs.push({
             jobId,
@@ -49,7 +49,7 @@ export class JsonJobStore {
     }
 
     async updateJobManifest(jobManifest) {
-        const jobs = this.#getJobManifests();
+        const jobs = await this.getJobManifests();
         jobManifest = {
             ...jobs[jobManifest.jobId],
             ...jobManifest,

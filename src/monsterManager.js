@@ -88,7 +88,7 @@ export default class MonsterManager {
 
     async #updateTM(sourceLang, targetLang) {
         const tm = this.#getTM(sourceLang, targetLang);
-        const jobs = await this.jobStore.getJobStatus(sourceLang, targetLang);
+        const jobs = await this.jobStore.getJobStatusByLangPair(sourceLang, targetLang);
         for (const [jobId, status] of jobs) {
             if (tm.jobStatus[jobId] !== status) {
                 const job = await this.jobStore.getJob(jobId);
@@ -190,7 +190,7 @@ export default class MonsterManager {
             }
             status.lang[targetLang] = { translated, unstranslated, unstranslatedChars, unstranslatedWords, tusNum };
         }
-        status.pendingJobsNum = (await this.jobStore.getPendingJobs()).length;
+        status.pendingJobsNum = (await this.jobStore.getJobManifests('pending')).length;
         return status;
     }
 
@@ -277,7 +277,7 @@ export default class MonsterManager {
     async pull(pipelineName) {
         const pipeline = this.monsterConfig.pipelines[pipelineName];
         const stats = { numPendingJobs: 0, translatedStrings: 0 };
-        const pendingJobs = await this.jobStore.getPendingJobs();
+        const pendingJobs = await this.jobStore.getJobManifests('pending');
         stats.numPendingJobs = pendingJobs.length;
         for (const jobManifest of pendingJobs) {
             // console.log(`Pulling job ${jobManifest.jobId}...`);

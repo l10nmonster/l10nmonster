@@ -1,9 +1,9 @@
 export class DummyJobStore {
-    async getPendingJobs() {
+    async getJobManifests() {
         return [];
     }
 
-    async getJobStatus() {
+    async getJobStatusByLangPair() {
         return [];
     }
 
