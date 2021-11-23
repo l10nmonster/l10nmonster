@@ -11,40 +11,36 @@ export default class TachiyomiConfig {
     //     logRequests: true,
     // };
 
-    constructor(ctx) {
-        const source = new ctx.adapters.FsSource({
-            ctx,
+    constructor({ ctx, jobStores, adapters, filters, translators }) {
+        const source = new adapters.FsSource({
             globs: [ '**/values/strings.xml' ],
         });
-        const resourceFilter = new ctx.filters.AndroidFilter({
+        const resourceFilter = new filters.AndroidFilter({
             comment: 'pre',
         });
-        const target = new ctx.adapters.FsTarget({
-            ctx,
+        const target = new adapters.FsTarget({
             targetPath: (lang, resourceId) => resourceId.replace('values', `values-${androidLangMapping[lang] || lang}`),
         });
         
-        // this.jobStore = new ctx.JsonJobStore({
-        //     ctx,
-        //     jobsDir: 'translationJobs',
-        // });
-        this.jobStore = new ctx.SqlJobStore({
-            org: 'test1',
-            prj: 'tachiyomi',
-            client: 'mysql2',
-            host: ctx.env.l10nmonster_host,
-            port: ctx.env.l10nmonster_port,
-            user: ctx.env.l10nmonster_user,
-            password: ctx.env.l10nmonster_password,
-            database: ctx.env.l10nmonster_database,
-            cert: '/etc/ssl/cert.pem',
+        this.jobStore = new jobStores.JsonJobStore({
+            jobsDir: 'translationJobs',
         });
+        // this.jobStore = new jobStores.SqlJobStore({
+        //     org: 'test1',
+        //     prj: 'tachiyomi',
+        //     client: 'mysql2',
+        //     host: ctx.env.l10nmonster_host,
+        //     port: ctx.env.l10nmonster_port,
+        //     user: ctx.env.l10nmonster_user,
+        //     password: ctx.env.l10nmonster_password,
+        //     database: ctx.env.l10nmonster_database,
+        //     cert: '/etc/ssl/cert.pem',
+        // });
         this.pipelines = {
             default: {
                 source,
                 resourceFilter,
-                translationProvider: new ctx.translators.XliffBridge({
-                    ctx,
+                translationProvider: new translators.XliffBridge({
                     requestPath: (lang, prjId) => `xliff/outbox/prj${('0000' + prjId).substr(-4)}-${lang}.xml`,
                     completePath: (lang, prjId) => `xliff/inbox/prj${('0000' + prjId).substr(-4)}-${lang}.xml`,
                     quality: '080-human-single-pass',
@@ -54,7 +50,7 @@ export default class TachiyomiConfig {
             piggy: {
                 source,
                 resourceFilter,
-                translationProvider: new ctx.translators.PigLatinizer(),
+                translationProvider: new translators.PigLatinizer(),
                 target,
             },
         };

@@ -30,19 +30,29 @@ async function initMonster() {
       const ctx = {
         baseDir,
         env: process.env,
-        JsonJobStore, SqlJobStore, 
-        adapters: {
+      };
+      JsonJobStore.prototype.ctx = ctx;
+      SqlJobStore.prototype.ctx = ctx;
+      const jobStores = {
+        JsonJobStore, SqlJobStore,
+      };
+      FsSource.prototype.ctx = ctx;
+      FsTarget.prototype.ctx = ctx;
+      const adapters = {
           FsSource, FsTarget,
-        },
-        filters: {
+      };
+      PoFilter.prototype.ctx = ctx;
+      AndroidFilter.prototype.ctx = ctx;
+      const filters = {
           PoFilter, AndroidFilter,
-        },
-        translators: {
+      };
+      XliffBridge.prototype.ctx = ctx;
+      PigLatinizer.prototype.ctx = ctx;
+      const translators = {
           XliffBridge, PigLatinizer,
-        },
       };
       const configModule = await import(configPath);
-      const monsterConfig = new configModule.default(ctx);
+      const monsterConfig = new configModule.default({ ctx, jobStores, adapters, filters, translators });
       return new MonsterManager({ monsterDir, monsterConfig });
     }
     previousDir = baseDir;

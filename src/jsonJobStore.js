@@ -7,16 +7,16 @@ import {
 import * as fs from 'fs/promises';
 
 export class JsonJobStore {
-    constructor({ ctx, jobsDir }) {
-        this.baseDir = ctx.baseDir;
-        this.jobsDir = path.join(ctx.baseDir, jobsDir);
+    constructor({ jobsDir }) {
+        this.jobsDir = jobsDir;
         if (!existsSync(this.jobsDir)) {
             mkdirSync(this.jobsDir);
         }
     }
 
     #jobsPathName() {
-        return path.join(this.jobsDir, 'jobs.json');
+        const jobsDir = path.join(this.ctx.baseDir, this.jobsDir);
+        return path.join(jobsDir, 'jobs.json');
     }
 
     async getJobManifests(status) {

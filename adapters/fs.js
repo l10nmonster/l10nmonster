@@ -3,18 +3,17 @@ import * as fs from 'fs/promises';
 import { globbySync } from 'globby';
 
 export class FsSource {
-    constructor({ ctx, globs }) {
-        this.baseDir = ctx.baseDir;
+    constructor({ globs }) {
         this.globs = globs;
     }
 
     async fetchResourceStats() {
         const resources = [];
-        const expandedFileNames = globbySync(this.globs.map(g => path.join(this.baseDir, g)));
+        const expandedFileNames = globbySync(this.globs.map(g => path.join(this.ctx.baseDir, g)));
         for (const fileName of expandedFileNames) {
             const stats = await fs.stat(fileName);
             resources.push({
-                id: path.relative(this.baseDir, fileName),
+                id: path.relative(this.ctx.baseDir, fileName),
                 modified: stats.mtime.toISOString(),
             });
         }
@@ -22,23 +21,22 @@ export class FsSource {
     }
 
     async fetchResource(resourceId) {
-        return fs.readFile(path.resolve(this.baseDir, resourceId), 'utf8'); // TODO: do we need a flag to use `readFile` for binary resources?
+        return fs.readFile(path.resolve(this.ctx.baseDir, resourceId), 'utf8'); // TODO: do we need a flag to use `readFile` for binary resources?
     }
 }
 
 export class FsTarget {
-    constructor({ ctx, targetPath }) {
-        this.baseDir = ctx.baseDir;
+    constructor({ targetPath }) {
         this.targetPath = targetPath;
     }
 
     async fetchTranslatedResource(lang, resourceId) {
-        const translatedPath = path.resolve(this.baseDir, this.targetPath(lang, resourceId));
+        const translatedPath = path.resolve(this.ctx.baseDir, this.targetPath(lang, resourceId));
         return fs.readFile(translatedPath, 'utf8'); // TODO: do we need a flag to use `readFile` for binary resources?
     }
 
     async commitTranslatedResource(lang, resourceId, translatedRes) {
-        const translatedPath = path.resolve(this.baseDir, this.targetPath(lang, resourceId));
+        const translatedPath = path.resolve(this.ctx.baseDir, this.targetPath(lang, resourceId));
         fs.writeFile(translatedPath, translatedRes, 'utf8');  // TODO: do we need a flag to write binary resources?
     }
 }

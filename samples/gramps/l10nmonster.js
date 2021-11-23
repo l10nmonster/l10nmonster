@@ -1,8 +1,8 @@
 export default class GrampsConfig {
     sourceLang = 'en';
     targetLangs = [ 'ja', 'it' ];
-    constructor(ctx) {
-        this.jobStore = new ctx.SqlJobStore({
+    constructor({ ctx, jobStores, adapters, filters, translators }) {
+        this.jobStore = new jobStores.SqlJobStore({
             org: 'test1',
             prj: 'gramps',
             client: 'mysql2',
@@ -15,20 +15,18 @@ export default class GrampsConfig {
         });
         this.pipelines = {
             default: {
-                source: new ctx.adapters.FsSource({
+                source: new adapters.FsSource({
                     // TODO: we could have a decorating function that given the resource id provides the custom target lang (e.g. based on a naming convention). Potentially even at the TU level
-                    ctx,
                     globs: [
                         'artifacts/*.pot',
                     ]
                 }),
                 // TODO: add hooks to allow to manipulate content before/after processing (see https://serge.io/docs/modular-architecture/)
-                resourceFilter: new ctx.filters.PoFilter(
+                resourceFilter: new filters.PoFilter(
                     // TODO: add configuration for baseline message format (e.g. HTML on top of the "flag" format)
                 ),
-                translationProvider: new ctx.translators.PigLatinizer(),
-                target: new ctx.adapters.FsTarget({
-                    ctx,
+                translationProvider: new translators.PigLatinizer(),
+                target: new adapters.FsTarget({
                     targetPath: (lang, resourceId) => `artifacts/${lang}.po`,
                 }),
             }
