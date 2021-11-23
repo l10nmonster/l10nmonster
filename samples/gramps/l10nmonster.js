@@ -1,13 +1,8 @@
-import { SqlJobStore } from '../../src/sqlJobStore.js';
-import { FsSource, FsTarget } from '../../adapters/fs.js';
-import { PoFilter } from '../../filters/po.js';
-import { PigLatinizer } from '../../translators/piglatinizer.js';
-
 export default class GrampsConfig {
     sourceLang = 'en';
     targetLangs = [ 'ja', 'it' ];
     constructor(ctx) {
-        this.jobStore = new SqlJobStore({
+        this.jobStore = new ctx.SqlJobStore({
             org: 'test1',
             prj: 'gramps',
             client: 'mysql2',
@@ -20,7 +15,7 @@ export default class GrampsConfig {
         });
         this.pipelines = {
             default: {
-                source: new FsSource({
+                source: new ctx.adapters.FsSource({
                     // TODO: we could have a decorating function that given the resource id provides the custom target lang (e.g. based on a naming convention). Potentially even at the TU level
                     ctx,
                     globs: [
@@ -28,11 +23,11 @@ export default class GrampsConfig {
                     ]
                 }),
                 // TODO: add hooks to allow to manipulate content before/after processing (see https://serge.io/docs/modular-architecture/)
-                resourceFilter: new PoFilter(
+                resourceFilter: new ctx.filters.PoFilter(
                     // TODO: add configuration for baseline message format (e.g. HTML on top of the "flag" format)
                 ),
-                translationProvider: new PigLatinizer(),
-                target: new FsTarget({
+                translationProvider: new ctx.translators.PigLatinizer(),
+                target: new ctx.adapters.FsTarget({
                     ctx,
                     targetPath: (lang, resourceId) => `artifacts/${lang}.po`,
                 }),

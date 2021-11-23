@@ -1,10 +1,3 @@
-// import { JsonJobStore } from '../../src/jsonJobStore.js';
-import { SqlJobStore } from '../../src/sqlJobStore.js';
-import { FsSource, FsTarget } from '../../adapters/fs.js';
-import { AndroidFilter } from '../../filters/android.js';
-import { XliffBridge } from '../../translators/xliff.js';
-import { PigLatinizer } from '../../translators/piglatinizer.js';
-
 const androidLangMapping = {
     'pt-BR': 'pr-rBR',
     'zh-Hans': 'zh-rCN',
@@ -19,23 +12,23 @@ export default class TachiyomiConfig {
     // };
 
     constructor(ctx) {
-        const source = new FsSource({
+        const source = new ctx.adapters.FsSource({
             ctx,
             globs: [ '**/values/strings.xml' ],
         });
-        const resourceFilter = new AndroidFilter({
+        const resourceFilter = new ctx.filters.AndroidFilter({
             comment: 'pre',
         });
-        const target = new FsTarget({
+        const target = new ctx.adapters.FsTarget({
             ctx,
             targetPath: (lang, resourceId) => resourceId.replace('values', `values-${androidLangMapping[lang] || lang}`),
         });
         
-        // this.jobStore = new JsonJobStore({
+        // this.jobStore = new ctx.JsonJobStore({
         //     ctx,
         //     jobsDir: 'translationJobs',
         // });
-        this.jobStore = new SqlJobStore({
+        this.jobStore = new ctx.SqlJobStore({
             org: 'test1',
             prj: 'tachiyomi',
             client: 'mysql2',
@@ -50,7 +43,7 @@ export default class TachiyomiConfig {
             default: {
                 source,
                 resourceFilter,
-                translationProvider: new XliffBridge({
+                translationProvider: new ctx.translators.XliffBridge({
                     ctx,
                     requestPath: (lang, prjId) => `xliff/outbox/prj${('0000' + prjId).substr(-4)}-${lang}.xml`,
                     completePath: (lang, prjId) => `xliff/inbox/prj${('0000' + prjId).substr(-4)}-${lang}.xml`,
@@ -61,7 +54,7 @@ export default class TachiyomiConfig {
             piggy: {
                 source,
                 resourceFilter,
-                translationProvider: new PigLatinizer(),
+                translationProvider: new ctx.translators.PigLatinizer(),
                 target,
             },
         };

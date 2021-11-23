@@ -8,6 +8,14 @@ import {
 import { Command } from 'commander';
 
 import MonsterManager from './src/monsterManager.js';
+import { JsonJobStore } from './src/jsonJobStore.js';
+import { SqlJobStore } from './src/sqlJobStore.js';
+
+import { FsSource, FsTarget } from './adapters/fs.js';
+import { PoFilter } from './filters/po.js';
+import { AndroidFilter } from './filters/android.js';
+import { XliffBridge } from './translators/xliff.js';
+import { PigLatinizer } from './translators/piglatinizer.js';
 
 async function initMonster() {
   let baseDir = path.resolve('.'),
@@ -22,6 +30,16 @@ async function initMonster() {
       const ctx = {
         baseDir,
         env: process.env,
+        JsonJobStore, SqlJobStore, 
+        adapters: {
+          FsSource, FsTarget,
+        },
+        filters: {
+          PoFilter, AndroidFilter,
+        },
+        translators: {
+          XliffBridge, PigLatinizer,
+        },
       };
       const configModule = await import(configPath);
       const monsterConfig = new configModule.default(ctx);
