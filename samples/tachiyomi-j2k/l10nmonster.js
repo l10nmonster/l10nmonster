@@ -7,9 +7,6 @@ const androidLangMapping = {
 export default class TachiyomiConfig {
     sourceLang = 'en';
     targetLangs = [ 'ja', 'it' ];
-    // debug = {
-    //     logRequests: true,
-    // };
 
     constructor({ ctx, jobStores, adapters, filters, translators }) {
         this.source = new adapters.FsSource({
@@ -24,6 +21,7 @@ export default class TachiyomiConfig {
         
         this.jobStore = new jobStores.JsonJobStore({
             jobsDir: 'translationJobs',
+            logRequests: true,
         });
         // this.jobStore = new jobStores.SqlJobStore({
         //     org: 'test1',

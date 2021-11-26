@@ -44,7 +44,8 @@ export class SqlJobStore {
                         table.integer('inflightNum');
                         table.timestamp('requestedAt');
                         table.timestamp('updatedAt');
-                        table.json('job');
+                        table.json('req');
+                        table.json('res');
                         table.index(['org', 'prj', 'sourceLang', 'targetLang']);
                     });
                 }
@@ -84,41 +85,31 @@ export class SqlJobStore {
     async createJobManifest() {
         this.db || await this.init();
         const status = 'created';
-        const job = JSON.stringify({ status });
+        const req = JSON.stringify({ status });
         const [ jobId ] = await this.db('jobstore').insert({
             org: this.org,
             prj: this.prj,
             status,
-            job,
+            req,
         });
         return jobId;
     }
 
-    async updateJobManifest(jobManifest) {
+    async updateJob(jobResponse, jobRequest) {
         this.db || await this.init();
-        jobManifest.updatedAt = currentISODate();
+        const { inflight, tus, ...row } = jobResponse;
+        if (jobRequest) {
+            row.req = JSON.stringify(jobRequest);
+        }
+        row.res = JSON.stringify(jobResponse);
+        row.updatedAt = currentISODate();
         await this.db('jobstore')
             .where({
                 org: this.org,
                 prj: this.prj,
-                jobId: jobManifest.jobId,
+                jobId: jobResponse.jobId,
             })
-            .update(jobManifest);
-    }
-
-    async updateJob(job) {
-        this.db || await this.init();
-        const updatedAt = currentISODate();
-        await this.db('jobstore')
-            .where({
-                org: this.org,
-                prj: this.prj,
-                jobId: job.jobId,
-            })
-            .update({
-                updatedAt,
-                job: JSON.stringify(job),
-            });
+            .update(row);
     }
 
     async getJob(jobId) {

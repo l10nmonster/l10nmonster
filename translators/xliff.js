@@ -13,33 +13,33 @@ export class XliffBridge {
         this.quality = quality;
     }
 
-    async requestTranslations(job) {
+    async requestTranslations(jobRequest) {
+        const { tus, ...jobResponse } = jobRequest;
         const notes = {};
-        job.tus.forEach(tu => {
+        jobRequest.tus.forEach(tu => {
             if (tu.notes) {
                 notes[tu.guid] = tu.notes;
             }
         });
         // console.dir(notes);
         const xliff = await createxliff12(
-            job.sourceLang,
-            job.targetLang,
-            Object.fromEntries(job.tus.map(tu => [ tu.guid, tu.str ])),
+            jobRequest.sourceLang,
+            jobRequest.targetLang,
+            Object.fromEntries(jobRequest.tus.map(tu => [ tu.guid, tu.str ])),
             null,
             'XliffBridge',
             null,
             notes,
         );
         if (xliff) {
-            const prjPath = path.join(this.ctx.baseDir, this.requestPath(job.targetLang, job.jobId));
+            const prjPath = path.join(this.ctx.baseDir, this.requestPath(jobRequest.targetLang, jobRequest.jobId));
             await fs.writeFile(prjPath, xliff, 'utf8');
-            job.inflight = Object.values(job.tus).map(tu => tu.guid);
-            job.status = 'pending';
+            jobResponse.inflight = Object.values(jobRequest.tus).map(tu => tu.guid);
+            jobResponse.status = 'pending';
         } else {
-            job.status = 'error';
+            jobResponse.status = 'error';
         }
-        delete job.tus;
-        return job;
+        return jobResponse;
     }
 
     async fetchTranslations(jobManifest) {

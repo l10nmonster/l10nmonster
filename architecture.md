@@ -21,3 +21,5 @@ The translation pipeline is composed of 4 successive modules:
 2. Format Filter: converts resources of a specific format into a series of translation units in a normalized format.
 3. Translator: submits source content for translation and retrieves translated content when complete.
 4. Target Adapter: takes translated resources and commits them in their storage medium (which may or may not be the same as the source).
+
+In addition to configurable modular pipelines, the system also supports pluggable job stores to capture translations.

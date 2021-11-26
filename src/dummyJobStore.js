@@ -11,9 +11,6 @@ export class DummyJobStore {
         return 0;
     }
 
-    async updateJobManifest() {
-    }
-
     async updateJob() {
     }
 

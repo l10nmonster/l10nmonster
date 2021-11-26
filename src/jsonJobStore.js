@@ -7,11 +7,12 @@ import {
 import * as fs from 'fs/promises';
 
 export class JsonJobStore {
-    constructor({ jobsDir }) {
+    constructor({ jobsDir, logRequests }) {
         this.jobsDir = jobsDir;
         if (!existsSync(this.jobsDir)) {
             mkdirSync(this.jobsDir);
         }
+        this.logRequests = logRequests;
     }
 
     #jobsPathName() {
@@ -48,7 +49,7 @@ export class JsonJobStore {
         return jobId;
     }
 
-    async updateJobManifest(jobManifest) {
+    async #updateJobManifest(jobManifest) {
         const jobs = await this.getJobManifests();
         jobManifest = {
             ...jobs[jobManifest.jobId],
@@ -59,10 +60,16 @@ export class JsonJobStore {
         await fs.writeFile(this.#jobsPathName(), JSON.stringify(jobs, null, '\t'), 'utf8');
     }
 
-    async updateJob(jobResponse) {
+    async updateJob(jobResponse, jobRequest) {
         const jobPath = path.join(this.jobsDir, `job_${jobResponse.jobId}.json`);
         await fs.writeFile(jobPath, JSON.stringify(jobResponse, null, '\t'), 'utf8');
-    }
+        if (jobRequest && this.logRequests) {
+            const jobPath = path.join(this.jobsDir, `job_${jobResponse.jobId}-req.json`);
+            await fs.writeFile(jobPath, JSON.stringify(jobRequest, null, '\t'), 'utf8');
+        }
+        const { inflight, tus, ...jobManifest } = jobResponse;
+        await this.#updateJobManifest(jobManifest);
+}
 
     async getJob(jobId) {
         const jobPath = path.join(this.jobsDir, `job_${jobId}.json`);

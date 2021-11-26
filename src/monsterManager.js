@@ -101,10 +101,10 @@ export default class MonsterManager {
         }
     }
     
-    async #processJob(jobResponse) {
-        await this.jobStore.updateJob(jobResponse);
+    async #processJob(jobResponse, jobRequest) {
         const { inflight, tus, ...jobManifest } = jobResponse;
-        await this.jobStore.updateJobManifest(jobManifest);
+        jobManifest.inflightNum = inflight?.length || 0;
+        await this.jobStore.updateJob(jobResponse, jobRequest);
         const tm = this.#getTM(jobResponse.sourceLang, jobResponse.targetLang);
         let dirty = tm.jobStatus[jobResponse.jobId] !== jobResponse.status;;
         if (inflight) {
@@ -209,20 +209,8 @@ export default class MonsterManager {
                 const jobId = await this.jobStore.createJobManifest();
                 job.translationProvider = pipeline.translationProvider.constructor.name;
                 job.jobId = jobId;
-                if (this.debug.logRequests) {
-                    const jobRequestPath = path.join(this.monsterDir, `req-${this.sourceLang}-${targetLang}-${new Date().toISOString()}.json`);
-                    await fs.writeFile(jobRequestPath, JSON.stringify(job, null, '\t'), 'utf8');
-                }
                 const jobResponse = await pipeline.translationProvider.requestTranslations(job);
-                await this.jobStore.updateJobManifest({
-                    jobId,
-                    targetLang,
-                    translationProvider: job.translationProvider,
-                    requestedAt: currentISODate(),
-                    status: jobResponse.status,
-                    inflightNum: jobResponse.inflight?.length || 0,
-                });
-                await this.#processJob(jobResponse);
+                await this.#processJob(jobResponse, job);
                 status.push({
                     num: jobResponse.tus?.length || jobResponse.inflight?.length || 0,
                     lang: jobResponse.targetLang,
@@ -286,11 +274,6 @@ export default class MonsterManager {
             const newTranslations = await pipeline.translationProvider.fetchTranslations(jobManifest);
             if (newTranslations) {
                 await this.#processJob(newTranslations);
-                await this.jobStore.updateJobManifest({
-                    jobId: newTranslations.jobId,
-                    targetLang: newTranslations.targetLang,
-                    status: newTranslations.status,
-                });
                 stats.translatedStrings += newTranslations.tus.length;
             }
         }
