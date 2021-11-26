@@ -13,23 +13,19 @@ export default class GrampsConfig {
             database: ctx.env.l10nmonster_database,
             cert: '/etc/ssl/cert.pem',
         });
-        this.pipelines = {
-            default: {
-                source: new adapters.FsSource({
-                    // TODO: we could have a decorating function that given the resource id provides the custom target lang (e.g. based on a naming convention). Potentially even at the TU level
-                    globs: [
-                        'artifacts/*.pot',
-                    ]
-                }),
-                // TODO: add hooks to allow to manipulate content before/after processing (see https://serge.io/docs/modular-architecture/)
-                resourceFilter: new filters.PoFilter(
-                    // TODO: add configuration for baseline message format (e.g. HTML on top of the "flag" format)
-                ),
-                translationProvider: new translators.PigLatinizer(),
-                target: new adapters.FsTarget({
-                    targetPath: (lang, resourceId) => `artifacts/${lang}.po`,
-                }),
-            }
-        }
+        this.source = new adapters.FsSource({
+            // TODO: we could have a decorating function that given the resource id provides the custom target lang (e.g. based on a naming convention). Potentially even at the TU level
+            globs: [
+                'artifacts/*.pot',
+            ]
+        });
+        // TODO: add hooks to allow to manipulate content before/after processing (see https://serge.io/docs/modular-architecture/)
+        this.resourceFilter = new filters.PoFilter(
+            // TODO: add configuration for baseline message format (e.g. HTML on top of the "flag" format)
+        );
+        this.translationProvider = new translators.PigLatinizer();
+        this.target = new adapters.FsTarget({
+            targetPath: (lang, resourceId) => `artifacts/${lang}.po`,
+        });
     }
 };

@@ -70,14 +70,12 @@ monsterCLI
 ;
 
 monsterCLI
-    .command('status [pipeline]')
-    .description('translation status of content in a pipeline.')
-    .action(async (pipelineArg) => {
+    .command('status')
+    .description('translation status of content.')
+    .action(async () => {
     const monsterManager = await initMonster();
     if (monsterManager) {
-      const pipeline = pipelineArg || 'default';
-      console.log(`Status of pipeline ${pipeline}`);
-      const status = await monsterManager.status(pipeline);
+      const status = await monsterManager.status();
       console.log(`${status.numSources} translatable resource`);
       console.log(`${status.pendingJobsNum} pending jobs`);
       for (const [lang, stats] of Object.entries(status.lang)) {
@@ -96,14 +94,13 @@ monsterCLI
 ;
 
 monsterCLI
-    .command('push [pipeline]')
-    .description('push source content through a pipeline (send to translation).')
-    .action(async (pipelineArg) => {
+    .command('push')
+    .description('push source content upstream (send to translation).')
+    .action(async () => {
     const monsterManager = await initMonster();
     if (monsterManager) {
-      const pipeline = pipelineArg || 'default';
-      console.log(`Pushing content to pipeline ${pipeline}...`);
-      const status = await monsterManager.push(pipeline);
+      console.log(`Pushing content upstream...`);
+      const status = await monsterManager.push();
       if (status.length > 0) {
         for (const ls of status) {
           console.log(`${ls.num} translations units requested for language ${ls.lang} -> status: ${ls.status}`);
@@ -119,14 +116,13 @@ monsterCLI
 ;
 
 monsterCLI
-    .command('grandfather [pipeline]')
-    .description('grandfather existing translations in a pipeline.')
-    .action(async (pipelineArg) => {
+    .command('grandfather')
+    .description('grandfather existing translations as a translation job.')
+    .action(async () => {
     const monsterManager = await initMonster();
     if (monsterManager) {
-      const pipeline = pipelineArg || 'default';
-      console.log(`Grandfathering content in pipeline ${pipeline}...`);
-      const status = await monsterManager.grandfather(pipeline);
+      console.log(`Grandfathering existing translations...`);
+      const status = await monsterManager.grandfather();
       if (status.length > 0) {
         for (const ls of status) {
           console.log(`${ls.num} translations units grandfathered for language ${ls.lang}`);
@@ -141,16 +137,14 @@ monsterCLI
   })
 ;
 
-// TODO: it shouldn't have to be pipeline-specific
 monsterCLI
-    .command('pull [pipeline]')
+    .command('pull')
     .description('receive outstanding translation jobs.')
-    .action(async (pipelineArg) => {
+    .action(async () => {
     const monsterManager = await initMonster();
     if (monsterManager) {
-      const pipeline = pipelineArg || 'default';
       console.log(`Pulling pending translations...`);
-      const stats = await monsterManager.pull(pipeline);
+      const stats = await monsterManager.pull();
       console.log(`Checked ${stats.numPendingJobs} pending jobs, ${stats.translatedStrings} translated strings pulled`);
       await monsterManager.shutdown();
     } else {
@@ -160,14 +154,13 @@ monsterCLI
 ;
 
 monsterCLI
-    .command('translate [pipeline]')
+    .command('translate')
     .description('generate translated resources based on latest source and translations.')
-    .action(async (pipelineArg) => {
+    .action(async () => {
     const monsterManager = await initMonster();
     if (monsterManager) {
-      const pipeline = pipelineArg || 'default';
-      console.log(`Generating translated resources from pipeline ${pipeline}...`);
-      await monsterManager.translate(pipeline);
+      console.log(`Generating translated resources...`);
+      await monsterManager.translate();
     } else {
       console.error('Unable to initialize. Do you have an l10nmonster.js file in your base directory?');
     }

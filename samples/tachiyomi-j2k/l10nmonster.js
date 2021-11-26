@@ -12,13 +12,13 @@ export default class TachiyomiConfig {
     // };
 
     constructor({ ctx, jobStores, adapters, filters, translators }) {
-        const source = new adapters.FsSource({
+        this.source = new adapters.FsSource({
             globs: [ '**/values/strings.xml' ],
         });
-        const resourceFilter = new filters.AndroidFilter({
+        this.resourceFilter = new filters.AndroidFilter({
             comment: 'pre',
         });
-        const target = new adapters.FsTarget({
+        this.target = new adapters.FsTarget({
             targetPath: (lang, resourceId) => resourceId.replace('values', `values-${androidLangMapping[lang] || lang}`),
         });
         
@@ -36,23 +36,11 @@ export default class TachiyomiConfig {
         //     database: ctx.env.l10nmonster_database,
         //     cert: '/etc/ssl/cert.pem',
         // });
-        this.pipelines = {
-            default: {
-                source,
-                resourceFilter,
-                translationProvider: new translators.XliffBridge({
-                    requestPath: (lang, prjId) => `xliff/outbox/prj${('0000' + prjId).substr(-4)}-${lang}.xml`,
-                    completePath: (lang, prjId) => `xliff/inbox/prj${('0000' + prjId).substr(-4)}-${lang}.xml`,
-                    quality: '080-human-single-pass',
-                }),
-                target,
-            },
-            piggy: {
-                source,
-                resourceFilter,
-                translationProvider: new translators.PigLatinizer(),
-                target,
-            },
-        };
+        this.translationProvider = new translators.XliffBridge({
+            requestPath: (lang, prjId) => `xliff/outbox/prj${('0000' + prjId).substr(-4)}-${lang}.xml`,
+            completePath: (lang, prjId) => `xliff/inbox/prj${('0000' + prjId).substr(-4)}-${lang}.xml`,
+            quality: '080-human-single-pass',
+        });
+        this.translationProvider_piggy = new translators.PigLatinizer();
     }
 }

@@ -38,8 +38,8 @@ export default class MonsterManager {
         this.tmCache = {};
     }
 
-    async #updateSourceCache(pipelineName) {
-        const pipeline = this.monsterConfig.pipelines[pipelineName];
+    async #updateSourceCache() {
+        const pipeline = this.monsterConfig;
         const newCache = { };
         const stats = await pipeline.source.fetchResourceStats();
         let dirty = stats.length !== Object.keys(this.sourceCache).length;
@@ -166,8 +166,8 @@ export default class MonsterManager {
         return job; // TODO: this should return a list of jobs to be able to handle multiple source languages
     }
 
-    async status(pipelineName) {
-        await this.#updateSourceCache(pipelineName);
+    async status() {
+        await this.#updateSourceCache();
         const sources = Object.values(this.sourceCache);
         const status = { 
             numSources: sources.length,
@@ -198,14 +198,14 @@ export default class MonsterManager {
         return status;
     }
 
-    async push(pipelineName) {
+    async push() {
         const status = [];
-        await this.#updateSourceCache(pipelineName);
+        await this.#updateSourceCache();
         for (const targetLang of this.monsterConfig.targetLangs) {
             await this.#updateTM(this.sourceLang, targetLang);
             const job = this.#prepareTranslationJob(targetLang);
             if (Object.keys(job.tus).length > 0) {
-                const pipeline = this.monsterConfig.pipelines[pipelineName];
+                const pipeline = this.monsterConfig;
                 const jobId = await this.jobStore.createJobManifest();
                 job.translationProvider = pipeline.translationProvider.constructor.name;
                 job.jobId = jobId;
@@ -235,10 +235,10 @@ export default class MonsterManager {
 
     // this is similar to push, except that existing translations in resources but not in TM
     // are assumed to be in sync with source and imported into TM at the 050 quality level
-    async grandfather(pipelineName) {
-        const pipeline = this.monsterConfig.pipelines[pipelineName];
+    async grandfather() {
+        const pipeline = this.monsterConfig;
         const status = [];
-        await this.#updateSourceCache(pipelineName);
+        await this.#updateSourceCache();
         for (const lang of this.monsterConfig.targetLangs) {
             await this.#updateTM(this.sourceLang, lang);
             const job = this.#prepareTranslationJob(lang);
@@ -276,8 +276,8 @@ export default class MonsterManager {
         return status;
     }
 
-    async pull(pipelineName) {
-        const pipeline = this.monsterConfig.pipelines[pipelineName];
+    async pull() {
+        const pipeline = this.monsterConfig;
         const stats = { numPendingJobs: 0, translatedStrings: 0 };
         const pendingJobs = await this.jobStore.getJobManifests('pending');
         stats.numPendingJobs = pendingJobs.length;
@@ -297,8 +297,8 @@ export default class MonsterManager {
         return stats;
     }
 
-    async translate(pipelineName) {
-        const pipeline = this.monsterConfig.pipelines[pipelineName];
+    async translate() {
+        const pipeline = this.monsterConfig;
         const status = [];
         const stats = await pipeline.source.fetchResourceStats();
         for (const lang of this.monsterConfig.targetLangs) {
