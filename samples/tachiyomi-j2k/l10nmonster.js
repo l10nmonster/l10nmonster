@@ -6,7 +6,7 @@ const androidLangMapping = {
 
 export default class TachiyomiConfig {
     sourceLang = 'en';
-    targetLangs = [ 'ja', 'it' ];
+    targetLangs = [ 'ja', 'it', 'piggy' ];
 
     constructor({ ctx, jobStores, adapters, filters, translators }) {
         this.source = new adapters.FsSource({
@@ -34,11 +34,12 @@ export default class TachiyomiConfig {
         //     database: ctx.env.l10nmonster_database,
         //     cert: '/etc/ssl/cert.pem',
         // });
-        this.translationProvider = new translators.XliffBridge({
+        const xliffTranslator = new translators.XliffBridge({
             requestPath: (lang, prjId) => `xliff/outbox/prj${('0000' + prjId).substr(-4)}-${lang}.xml`,
             completePath: (lang, prjId) => `xliff/inbox/prj${('0000' + prjId).substr(-4)}-${lang}.xml`,
             quality: '080-human-single-pass',
         });
-        this.translationProvider_piggy = new translators.PigLatinizer();
+        const piggyTranslator = new translators.PigLatinizer();
+        this.translationProvider = (job) => job.targetLang === 'piggy' ? piggyTranslator : xliffTranslator;
     }
 }

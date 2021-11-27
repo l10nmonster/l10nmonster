@@ -166,6 +166,14 @@ export default class MonsterManager {
         return job; // TODO: this should return a list of jobs to be able to handle multiple source languages
     }
 
+    #getTranslationProvider(jobManifest) {
+        let translationProvider = this.monsterConfig.translationProvider;
+        if (typeof translationProvider === 'function') {
+            translationProvider = translationProvider(jobManifest);
+        }
+        return translationProvider;
+    }
+
     async status() {
         await this.#updateSourceCache();
         const sources = Object.values(this.sourceCache);
@@ -205,11 +213,11 @@ export default class MonsterManager {
             await this.#updateTM(this.sourceLang, targetLang);
             const job = this.#prepareTranslationJob(targetLang);
             if (Object.keys(job.tus).length > 0) {
-                const pipeline = this.monsterConfig;
                 const jobId = await this.jobStore.createJobManifest();
-                job.translationProvider = pipeline.translationProvider.constructor.name;
                 job.jobId = jobId;
-                const jobResponse = await pipeline.translationProvider.requestTranslations(job);
+                const translationProvider = this.#getTranslationProvider(job);
+                job.translationProvider = translationProvider.constructor.name;
+                const jobResponse = await translationProvider.requestTranslations(job);
                 await this.#processJob(jobResponse, job);
                 status.push({
                     num: jobResponse.tus?.length || jobResponse.inflight?.length || 0,
@@ -265,13 +273,13 @@ export default class MonsterManager {
     }
 
     async pull() {
-        const pipeline = this.monsterConfig;
         const stats = { numPendingJobs: 0, translatedStrings: 0 };
         const pendingJobs = await this.jobStore.getJobManifests('pending');
         stats.numPendingJobs = pendingJobs.length;
         for (const jobManifest of pendingJobs) {
             // console.log(`Pulling job ${jobManifest.jobId}...`);
-            const newTranslations = await pipeline.translationProvider.fetchTranslations(jobManifest);
+            const translationProvider = this.#getTranslationProvider(jobManifest);
+            const newTranslations = await translationProvider.fetchTranslations(jobManifest);
             if (newTranslations) {
                 await this.#processJob(newTranslations);
                 stats.translatedStrings += newTranslations.tus.length;
