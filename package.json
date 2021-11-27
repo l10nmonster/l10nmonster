@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Continuous localization for the rest of us",
   "main": "l10n.js",
+  "bin": {
+    "l10n": "l10n.js"
+  },
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
