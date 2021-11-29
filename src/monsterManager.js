@@ -10,24 +10,16 @@ import {
 import wordsCountModule from 'words-count';
 import { DummyJobStore } from './dummyJobStore.js';
 
-function currentISODate() {
-    return new Date().toISOString().slice(0, 19).replace('T', ' ');
-}
-
-function defaultGuidGenerator(rid, sid, str) {
-    // console.log(`generating guid from ${rid} + ${sid} + ${str}`);
-    const sidContentHash = createHash('sha256');
-    sidContentHash.update(rid, 'utf8');
-    sidContentHash.update(sid, 'utf8');
-    sidContentHash.update(str, 'utf8');
-    return sidContentHash.digest().toString('base64');
-}    
-
 export default class MonsterManager {
     constructor({ monsterDir, monsterConfig }) {
         this.monsterDir = monsterDir;
         this.monsterConfig = monsterConfig;
-        this.generateGuid = this.monsterConfig.generateGuid || defaultGuidGenerator;
+        const guidGenerator = this.monsterConfig.guidGenerator || ((rid, sid, str) => `${rid}|${sid}|${str}`);
+        this.generateGuid = function generateGuid(rid, sid, str) {
+            const sidContentHash = createHash('sha256');
+            sidContentHash.update(guidGenerator(rid, sid, str), 'utf8');
+            return sidContentHash.digest().toString('base64');
+        };
         this.jobStore = monsterConfig.jobStore || new DummyJobStore();
         this.debug = monsterConfig.debug || {};
         this.sourceLang = monsterConfig.sourceLang;
@@ -291,13 +283,12 @@ export default class MonsterManager {
     async translate() {
         const pipeline = this.monsterConfig;
         const status = [];
-        const stats = await pipeline.source.fetchResourceStats();
+        const resourceIds = (await pipeline.source.fetchResourceStats()).map(rh => rh.id);
         for (const lang of this.monsterConfig.targetLangs) {
             await this.#updateTM(this.sourceLang, lang);
-            const translator = this.#createTranslator(lang);
-            for (const resHandle of stats) {
-                const resource = await pipeline.source.fetchResource(resHandle.id);
-                const resourceId = resHandle.id;
+            const translator = this.#createTranslator(this.sourceLang, lang);
+            for (const resourceId of resourceIds) {
+                const resource = await pipeline.source.fetchResource(resourceId);
                 const translatedRes = await pipeline.resourceFilter.generateTranslatedResource({ resourceId, resource, lang, translator });
                 await pipeline.target.commitTranslatedResource(lang, resourceId, translatedRes);
             }

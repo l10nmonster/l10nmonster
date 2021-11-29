@@ -7,6 +7,7 @@ const androidLangMapping = {
 export default class TachiyomiConfig {
     sourceLang = 'en';
     targetLangs = [ 'ja', 'it', 'piggy' ];
+    guidGenerator = (rid, sid, str) => str; // ignore filename and string id
 
     constructor({ ctx, jobStores, adapters, filters, translators }) {
         this.source = new adapters.FsSource({
