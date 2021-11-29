@@ -37,6 +37,7 @@ export class FsTarget {
 
     async commitTranslatedResource(lang, resourceId, translatedRes) {
         const translatedPath = path.resolve(this.ctx.baseDir, this.targetPath(lang, resourceId));
+        await fs.mkdir(path.dirname(translatedPath), {recursive: true});
         fs.writeFile(translatedPath, translatedRes, 'utf8');  // TODO: do we need a flag to write binary resources?
     }
 }
