@@ -180,7 +180,7 @@ export default class MonsterManager {
         return translationProvider;
     }
 
-    async status() {
+    async status(build, version) {
         await this.#updateSourceCache();
         const status = { 
             numSources: Object.keys(this.sourceCache).length,
@@ -189,6 +189,10 @@ export default class MonsterManager {
         for (const targetLang of this.monsterConfig.targetLangs) {
             const job = await this.#prepareTranslationJob(targetLang);
             status.lang[targetLang] = job.leverage;
+            if (build && version) {
+                // TODO: calculate passing grade based on config and add it to status
+                await this.jobStore.updateBuildState(build, version, targetLang, job);
+            }
         }
         status.pendingJobsNum = (await this.jobStore.getJobManifests('pending')).length;
         return status;

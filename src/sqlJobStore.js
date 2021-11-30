@@ -31,9 +31,9 @@ export class SqlJobStore {
     async init() {
         const remoteDB = knex(this.dbConfig);
         try {
-            await remoteDB.schema.hasTable('jobstore').then(exists => {
+            await remoteDB.schema.hasTable('jobStore').then(exists => {
                 if (!exists) {
-                    return remoteDB.schema.createTable('jobstore', table => {
+                    return remoteDB.schema.createTable('jobStore', table => {
                         table.increments('jobId').primary();
                         table.string('org', 64).notNullable();
                         table.string('prj', 64).notNullable();
@@ -51,6 +51,20 @@ export class SqlJobStore {
                     });
                 }
             });
+            await remoteDB.schema.hasTable('buildState').then(exists => {
+                if (!exists) {
+                    return remoteDB.schema.createTable('buildState', table => {
+                        table.string('org', 64);
+                        table.string('prj', 64);
+                        table.string('build', 16);
+                        table.string('release', 16);
+                        table.string('targetLang', 8);
+                        table.json('job');
+                        table.timestamp('updatedAt');
+                        table.primary(['org', 'prj', 'build', 'release', 'targetLang']);
+                    });
+                }
+            });
             this.db = remoteDB;
             console.log(`${this.dbConfig.client} DB ${this.dbConfig.connection.database} initialized!`);
         } catch (error) {
@@ -60,7 +74,7 @@ export class SqlJobStore {
 
     async getJobManifests(status) {
         this.db || await this.init();
-        const manifests = await this.db('jobstore')
+        const manifests = await this.db('jobStore')
             .select('jobId', 'status', 'sourceLang', 'targetLang', 'translationProvider', 'inflightNum', 'requestedAt', 'updatedAt')
             .where({ 
                 org: this.org,
@@ -72,7 +86,7 @@ export class SqlJobStore {
 
     async getJobStatusByLangPair(sourceLang, targetLang) {
         this.db || await this.init();
-        const manifests = await this.db('jobstore')
+        const manifests = await this.db('jobStore')
             .select('jobId', 'status')
             .where({
                 org: this.org,
@@ -87,7 +101,7 @@ export class SqlJobStore {
         this.db || await this.init();
         const status = 'created';
         const req = JSON.stringify({ status });
-        const [ jobId ] = await this.db('jobstore').insert({
+        const [ jobId ] = await this.db('jobStore').insert({
             org: this.org,
             prj: this.prj,
             status,
@@ -107,7 +121,7 @@ export class SqlJobStore {
         // }
         row.res = JSON.stringify(jobResponse);
         row.updatedAt = currentISODate();
-        await this.db('jobstore')
+        await this.db('jobStore')
             .where({
                 org: this.org,
                 prj: this.prj,
@@ -118,7 +132,7 @@ export class SqlJobStore {
 
     async getJob(jobId) {
         this.db || await this.init();
-        const [ row ] = await this.db('jobstore')
+        const [ row ] = await this.db('jobStore')
             .select('job')
             .where({
                 org: this.org,
@@ -127,6 +141,22 @@ export class SqlJobStore {
             });
         return row.job;
     }
+
+    async updateBuildState(build, release, targetLang, job) {
+        this.db || await this.init();
+        await this.db('buildState')
+            .insert({
+                org: this.org,
+                prj: this.prj,
+                build,
+                release,
+                targetLang,
+                job: JSON.stringify(job),
+                updatedAt: currentISODate(),
+            })
+            .onConflict(['org', 'prj', 'build', 'release', 'targetLang'])
+            .merge();
+}
 
     async shutdown() {
         await this.db.destroy();

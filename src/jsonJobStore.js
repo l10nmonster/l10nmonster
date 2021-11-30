@@ -75,4 +75,8 @@ export class JsonJobStore {
         const jobPath = path.join(this.jobsDir, `job_${jobId}.json`);
         return JSON.parse(await fs.readFile(jobPath, 'utf8'));
     }
+
+    async updateBuildState(build, release, targetLang, job) {
+        // TODO: generate something (maybe an SVG to include in GIT?)
+    }
 }

@@ -80,10 +80,12 @@ monsterCLI
 monsterCLI
     .command('status')
     .description('translation status of content.')
-    .action(async () => {
+    .option('-b, --build <type>', 'build type')
+    .option('-r, --release <num>', 'release number')
+    .action(async (options) => {
     const monsterManager = await initMonster();
     if (monsterManager) {
-      const status = await monsterManager.status();
+      const status = await monsterManager.status(options.build, options.release);
       console.log(`${status.numSources} translatable resource`);
       console.log(`${status.pendingJobsNum} pending jobs`);
       for (const [lang, stats] of Object.entries(status.lang)) {
@@ -125,9 +127,9 @@ monsterCLI
 
 monsterCLI
     .command('grandfather')
+    .description('grandfather existing translations as a translation job.')
     .requiredOption('-q, --quality <level>', 'translation quality', intOptionParser)
     .option('-l, --lang <language>', 'target language to import')
-    .description('grandfather existing translations as a translation job.')
     .action(async (options) => {
     const monsterManager = await initMonster();
     if (monsterManager) {
