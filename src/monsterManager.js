@@ -9,7 +9,6 @@ import {
 } from 'crypto';  
 import wordsCountModule from 'words-count';
 import { DummyJobStore } from './dummyJobStore.js';
-import { error } from 'console';
 
 export default class MonsterManager {
     constructor({ monsterDir, monsterConfig }) {
@@ -126,7 +125,8 @@ export default class MonsterManager {
         return tm;
     }
 
-    #createTranslator(sourceLang, targetLang) {
+    async #createTranslator(sourceLang, targetLang) {
+        await this.#updateTM(sourceLang, targetLang);
         const tm = this.#getTM(sourceLang, targetLang);
         const generateGuid = this.generateGuid;
         return async function translate(rid, sid, str) {
@@ -138,14 +138,20 @@ export default class MonsterManager {
         }
     }
 
-    #prepareTranslationJob(targetLang) {
+    async #prepareTranslationJob(targetLang) {
+        const sources = Object.entries(this.sourceCache);
         const job = {
             sourceLang: this.sourceLang,
             targetLang,
             tus: [],
         };
+        await this.#updateTM(this.sourceLang, targetLang);
         const tm = this.#getTM(this.sourceLang, targetLang); // TODO: source language may vary by resource or unit, if supported
-        for (const [rid, res] of Object.entries(this.sourceCache)) {
+        let translated = {},
+            unstranslated = 0,
+            unstranslatedChars = 0,
+            unstranslatedWords = 0;
+        for (const [rid, res] of sources) {
             for (const tu of res.translationUnits) {
                 // TODO: if tu is pluralized we need to generate/suppress the relevant number of variants for the targetLang
                 if (!(tu.guid in tm.tus)) {
@@ -153,9 +159,16 @@ export default class MonsterManager {
                         ...tu,
                         rid,
                     });
+                    unstranslated++;
+                    unstranslatedChars += tu.str.length;
+                    unstranslatedWords += wordsCountModule.wordsCount(tu.str);
+            } else {
+                    translated[tm.tus[tu.guid].q] = (translated[tm.tus[tu.guid].q] || 0) + 1;
                 }
             }
         }
+        const tusNum = Object.keys(tm.tus).length;
+        job.leverage = { translated, unstranslated, unstranslatedChars, unstranslatedWords, tusNum };
         return job; // TODO: this should return a list of jobs to be able to handle multiple source languages
     }
 
@@ -169,31 +182,13 @@ export default class MonsterManager {
 
     async status() {
         await this.#updateSourceCache();
-        const sources = Object.values(this.sourceCache);
         const status = { 
-            numSources: sources.length,
+            numSources: Object.keys(this.sourceCache).length,
             lang: {},
         };
         for (const targetLang of this.monsterConfig.targetLangs) {
-            await this.#updateTM(this.sourceLang, targetLang);
-            const tm = this.#getTM(this.sourceLang, targetLang); // TODO: how do we get other non-default languages?
-            const tusNum = Object.keys(tm.tus).length;
-            let translated = {},
-                unstranslated = 0,
-                unstranslatedChars = 0,
-                unstranslatedWords = 0;
-            for (const source of sources) {
-                for (const tu of source.translationUnits) {
-                    if (tu.guid in tm.tus) {
-                        translated[tm.tus[tu.guid].q] = (translated[tm.tus[tu.guid].q] || 0) + 1;
-                    } else {
-                        unstranslated++;
-                        unstranslatedChars += tu.str.length;
-                        unstranslatedWords += wordsCountModule.wordsCount(tu.str);
-                    }
-                }
-            }
-            status.lang[targetLang] = { translated, unstranslated, unstranslatedChars, unstranslatedWords, tusNum };
+            const job = await this.#prepareTranslationJob(targetLang);
+            status.lang[targetLang] = job.leverage;
         }
         status.pendingJobsNum = (await this.jobStore.getJobManifests('pending')).length;
         return status;
@@ -203,8 +198,7 @@ export default class MonsterManager {
         const status = [];
         await this.#updateSourceCache();
         for (const targetLang of this.monsterConfig.targetLangs) {
-            await this.#updateTM(this.sourceLang, targetLang);
-            const job = this.#prepareTranslationJob(targetLang);
+            const job = await this.#prepareTranslationJob(targetLang);
             if (Object.keys(job.tus).length > 0) {
                 const jobId = await this.jobStore.createJobManifest();
                 job.jobId = jobId;
@@ -239,8 +233,7 @@ export default class MonsterManager {
             }
         }
         for (const lang of langs) {
-            await this.#updateTM(this.sourceLang, lang);
-            const job = this.#prepareTranslationJob(lang);
+            const job = await this.#prepareTranslationJob(lang);
             if (Object.keys(job.tus).length > 0) {
                 const translations = [];
                 const txCache = {};
@@ -303,8 +296,7 @@ export default class MonsterManager {
         const status = [];
         const resourceIds = (await pipeline.source.fetchResourceStats()).map(rh => rh.id);
         for (const lang of this.monsterConfig.targetLangs) {
-            await this.#updateTM(this.sourceLang, lang);
-            const translator = this.#createTranslator(this.sourceLang, lang);
+            const translator = await this.#createTranslator(this.sourceLang, lang);
             for (const resourceId of resourceIds) {
                 const resource = await pipeline.source.fetchResource(resourceId);
                 const translatedRes = await pipeline.resourceFilter.generateTranslatedResource({ resourceId, resource, lang, translator });

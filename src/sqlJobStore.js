@@ -46,6 +46,7 @@ export class SqlJobStore {
                         table.timestamp('updatedAt');
                         table.json('req');
                         table.json('res');
+                        // table.json('leverage');
                         table.index(['org', 'prj', 'sourceLang', 'targetLang']);
                     });
                 }
@@ -97,10 +98,13 @@ export class SqlJobStore {
 
     async updateJob(jobResponse, jobRequest) {
         this.db || await this.init();
-        const { inflight, tus, ...row } = jobResponse;
+        const { inflight, tus, leverage, ...row } = jobResponse;
         if (jobRequest) {
             row.req = JSON.stringify(jobRequest);
         }
+        // if (leverage) {
+        //     row.leverage = JSON.stringify(leverage);
+        // }
         row.res = JSON.stringify(jobResponse);
         row.updatedAt = currentISODate();
         await this.db('jobstore')
