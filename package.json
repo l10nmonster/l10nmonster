@@ -1,6 +1,6 @@
 {
-  "name": "l10nmonster",
-  "version": "1.0.0",
+  "name": "@l10nmonster/l10nmonster",
+  "version": "0.1.0",
   "description": "Continuous localization for the rest of us",
   "main": "l10n.js",
   "bin": {
@@ -9,7 +9,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "bundle": "./node_modules/.bin/esbuild l10n.js --bundle --outfile=bin/l10n.cjs --platform=node --target=node10.4 --minify",
+    "bundle": "esbuild l10n.js --bundle --outfile=bin/l10n.cjs --platform=node --target=node14",
     "build": "pkg -t node16-macos-x64 --out-path bin bin/l10n.cjs"
   },
   "repository": {
@@ -17,7 +17,11 @@
     "url": "git+https://github.com/l10nmonster/l10nmonster.git"
   },
   "keywords": [
-    "l10n"
+    "translation",
+    "localization",
+    "l10n",
+    "globalization",
+    "translation-files"
   ],
   "author": "Diego Lagunas",
   "license": "MIT",
