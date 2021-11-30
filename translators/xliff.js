@@ -33,6 +33,7 @@ export class XliffBridge {
         );
         if (xliff) {
             const prjPath = path.join(this.ctx.baseDir, this.requestPath(jobRequest.targetLang, jobRequest.jobId));
+            await fs.mkdir(path.dirname(prjPath), {recursive: true});
             await fs.writeFile(prjPath, xliff, 'utf8');
             jobResponse.inflight = Object.values(jobRequest.tus).map(tu => tu.guid);
             jobResponse.status = 'pending';
