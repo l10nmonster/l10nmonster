@@ -222,8 +222,8 @@ export default class MonsterManager {
     }
 
     // this is similar to push, except that existing translations in resources but not in TM
-    // are assumed to be in sync with source and imported into TM at the 050 quality level
-    async grandfather() {
+    // are assumed to be in sync with source and imported into the TM
+    async grandfather(quality) {
         const pipeline = this.monsterConfig;
         const status = [];
         await this.#updateSourceCache();
@@ -235,10 +235,17 @@ export default class MonsterManager {
                 const txCache = {};
                 for (const tu of job.tus) {
                     if (!txCache[tu.rid]) {
-                        const resource = await pipeline.target.fetchTranslatedResource(lang, tu.rid);
                         const lookup = {};
-                        const parsedResource = await pipeline.resourceFilter.parseResource({ resource, isSource: false });
-                        parsedResource.translationUnits.forEach(tu => lookup[tu.sid] = tu.str);
+                        let resource;
+                        try {
+                            resource = await pipeline.target.fetchTranslatedResource(lang, tu.rid);
+                        } catch {
+                        } finally {
+                            if (resource) {
+                                const parsedResource = await pipeline.resourceFilter.parseResource({ resource, isSource: false });
+                                parsedResource.translationUnits.forEach(tu => lookup[tu.sid] = tu.str);
+                            }
+                        }
                         txCache[tu.rid] = lookup;
                     }
                     const previousTranslation = txCache[tu.rid][tu.sid];
@@ -246,7 +253,7 @@ export default class MonsterManager {
                         translations.push({
                             guid: tu.guid,
                             str: previousTranslation,
-                            q: '050-grandfather', // this is not very high because source and target may be out of sync
+                            q: quality
                         });
                     }
                 }

@@ -10,7 +10,7 @@ export class XliffBridge {
     constructor({ requestPath, completePath, quality }) {
         this.requestPath = requestPath;
         this.completePath = completePath;
-        this.quality = quality;
+        this.quality = quality || 50;
     }
 
     async requestTranslations(jobRequest) {
@@ -54,7 +54,7 @@ export class XliffBridge {
                     tus.push({
                         guid: guid,
                         str: xt.target,
-                        q: this.quality || '075-unknown-human',
+                        q: this.quality,
                     });
                 } else {
                     // console.dir(xt);

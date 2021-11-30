@@ -5,7 +5,7 @@ import {
   existsSync,
   mkdirSync,
 } from 'fs';
-import { Command } from 'commander';
+import { Command, InvalidArgumentError } from 'commander';
 
 import MonsterManager from './src/monsterManager.js';
 import { JsonJobStore } from './src/jsonJobStore.js';
@@ -59,6 +59,14 @@ async function initMonster() {
     baseDir = path.resolve(baseDir, '..');
   }
   return null;
+}
+
+function intOptionParser(value, dummyPrevious) {
+  const parsedValue = parseInt(value, 10);
+  if (isNaN(parsedValue)) {
+    throw new InvalidArgumentError('Not an integer.');
+  }
+  return parsedValue;
 }
 
 const monsterCLI = new Command();
@@ -117,12 +125,14 @@ monsterCLI
 
 monsterCLI
     .command('grandfather')
+    .requiredOption('-q, --quality <level>', 'translation quality', intOptionParser)
     .description('grandfather existing translations as a translation job.')
-    .action(async () => {
+    .action(async (options) => {
     const monsterManager = await initMonster();
     if (monsterManager) {
-      console.log(`Grandfathering existing translations...`);
-      const status = await monsterManager.grandfather();
+      const quality = options.quality || 50;
+      console.log(`Grandfathering existing translations at quality level ${quality}...`);
+      const status = await monsterManager.grandfather(quality);
       if (status.length > 0) {
         for (const ls of status) {
           console.log(`${ls.num} translations units grandfathered for language ${ls.lang}`);

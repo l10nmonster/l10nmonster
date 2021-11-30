@@ -23,7 +23,9 @@ export default class GrampsConfig {
         this.resourceFilter = new filters.PoFilter(
             // TODO: add configuration for baseline message format (e.g. HTML on top of the "flag" format)
         );
-        this.translationProvider = new translators.PigLatinizer();
+        this.translationProvider = new translators.PigLatinizer({
+            quality: 2
+        });
         this.target = new adapters.FsTarget({
             targetPath: (lang, resourceId) => `artifacts/${lang}.po`,
         });

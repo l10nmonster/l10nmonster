@@ -38,7 +38,7 @@ export default class TachiyomiConfig {
         const xliffTranslator = new translators.XliffBridge({
             requestPath: (lang, prjId) => `xliff/outbox/prj${('0000' + prjId).substr(-4)}-${lang}.xml`,
             completePath: (lang, prjId) => `xliff/inbox/prj${('0000' + prjId).substr(-4)}-${lang}.xml`,
-            quality: '080-human-single-pass',
+            quality: 80,
         });
         const piggyTranslator = new translators.PigLatinizer();
         this.translationProvider = (job) => job.targetLang === 'piggy' ? piggyTranslator : xliffTranslator;
