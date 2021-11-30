@@ -102,7 +102,7 @@ export default class MonsterManager {
         if (inflight) {
             for (const guid of inflight) {
                 if (!(guid in tm.tus)) {
-                    tm.tus[guid] = { q: '000-pending' };
+                    tm.tus[guid] = { q: 0 };
                     dirty = true;
                 }
             }
