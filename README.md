@@ -11,10 +11,13 @@ It also, doesn't expect you and your friends to translate content yourself. Ther
 ### Installation
 
 ```sh
-npm install @l10nmonster/l10nmonster -g
+git clone git@github.com:l10nmonster/l10nmonster.git
+cd l10nmonster
+npm i
+npm link
 ```
 
-Eventually there will be a binary for each platform, but it is not implemented yet.
+Eventually there will be a binary for each platform, but this is still under heavy development.
 
 ### Configuration
 
@@ -86,6 +89,8 @@ new jobStores.SqlJobStore({
 
 The SQL job store is the preferred method for larger use cases where translations can submitted concurrently by multiple teams and leveraged in multiple branches and multiple CI jobs.
 The same DB can be shared across multiple organization (using the `org` property) and multiple projects (`prj` property). Currently, only MySQL is supported. It is recommended that connection credentials are not hard-coded and environment variables are used instead.
+
+If you don't have a MySQL DB, consider using [PlanetScale](https://planetscale.com). They're awesome and their free tier is pretty generous!
 
 ### FS Source Adapter
 
