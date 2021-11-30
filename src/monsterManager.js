@@ -9,6 +9,7 @@ import {
 } from 'crypto';  
 import wordsCountModule from 'words-count';
 import { DummyJobStore } from './dummyJobStore.js';
+import { error } from 'console';
 
 export default class MonsterManager {
     constructor({ monsterDir, monsterConfig }) {
@@ -223,11 +224,21 @@ export default class MonsterManager {
 
     // this is similar to push, except that existing translations in resources but not in TM
     // are assumed to be in sync with source and imported into the TM
-    async grandfather(quality) {
+    async grandfather(quality, limitToLang) {
         const pipeline = this.monsterConfig;
         const status = [];
         await this.#updateSourceCache();
-        for (const lang of this.monsterConfig.targetLangs) {
+        let langs = this.monsterConfig.targetLangs;
+        if (limitToLang) {
+            if (langs.includes(limitToLang)) {
+                langs = [ limitToLang ];
+            } else {
+                return {
+                    error: 'Invalid Language'
+                };
+            }
+        }
+        for (const lang of langs) {
             await this.#updateTM(this.sourceLang, lang);
             const job = this.#prepareTranslationJob(lang);
             if (Object.keys(job.tus).length > 0) {

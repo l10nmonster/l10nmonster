@@ -64,7 +64,7 @@ async function initMonster() {
 function intOptionParser(value, dummyPrevious) {
   const parsedValue = parseInt(value, 10);
   if (isNaN(parsedValue)) {
-    throw new InvalidArgumentError('Not an integer.');
+    throw new InvalidArgumentError('Not an integer');
   }
   return parsedValue;
 }
@@ -126,19 +126,24 @@ monsterCLI
 monsterCLI
     .command('grandfather')
     .requiredOption('-q, --quality <level>', 'translation quality', intOptionParser)
+    .option('-l, --lang <language>', 'target language to import')
     .description('grandfather existing translations as a translation job.')
     .action(async (options) => {
     const monsterManager = await initMonster();
     if (monsterManager) {
       const quality = options.quality || 50;
-      console.log(`Grandfathering existing translations at quality level ${quality}...`);
-      const status = await monsterManager.grandfather(quality);
-      if (status.length > 0) {
-        for (const ls of status) {
-          console.log(`${ls.num} translations units grandfathered for language ${ls.lang}`);
-        }
+      console.log(`Grandfathering existing ${options.lang} translations at quality level ${quality}...`);
+      const status = await monsterManager.grandfather(quality, options.lang);
+      if (status.error) {
+        console.error(`Failed: ${status.error}`);
       } else {
-        console.log('Nothing to grandfather!');
+        if (status.length > 0) {
+          for (const ls of status) {
+            console.log(`${ls.num} translations units grandfathered for language ${ls.lang}`);
+          }
+        } else {
+          console.log('Nothing to grandfather!');
+        }  
       }
       await monsterManager.shutdown();
     } else {
