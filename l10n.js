@@ -16,6 +16,7 @@ import { SqlStateStore } from './src/sqlStateStore.js';
 import { FsSource, FsTarget } from './adapters/fs.js';
 import { PoFilter } from './filters/po.js';
 import { AndroidFilter } from './filters/android.js';
+import { JavaPropertiesFilter } from './filters/java.js';
 import { XliffBridge } from './translators/xliff.js';
 import { PigLatinizer } from './translators/piglatinizer.js';
 
@@ -46,8 +47,9 @@ async function initMonster() {
       };
       PoFilter.prototype.ctx = ctx;
       AndroidFilter.prototype.ctx = ctx;
+      JavaPropertiesFilter.prototype.ctx = ctx;
       const filters = {
-          PoFilter, AndroidFilter,
+          PoFilter, AndroidFilter, JavaPropertiesFilter
       };
       XliffBridge.prototype.ctx = ctx;
       PigLatinizer.prototype.ctx = ctx;
@@ -121,13 +123,17 @@ monsterCLI
     const monsterManager = await initMonster();
     if (monsterManager) {
       console.log(`Pushing content upstream...`);
-      const status = await monsterManager.push();
-      if (status.length > 0) {
-        for (const ls of status) {
-          console.log(`${ls.num} translations units requested for language ${ls.lang} -> status: ${ls.status}`);
+      try {
+        const status = await monsterManager.push();
+        if (status.length > 0) {
+          for (const ls of status) {
+            console.log(`${ls.num} translations units requested for language ${ls.lang} -> status: ${ls.status}`);
+          }
+        } else {
+          console.log('Nothing to push!');
         }
-      } else {
-        console.log('Nothing to push!');
+      } catch (e) {
+        console.error(`Failed to push: ${e}`);
       }
       await monsterManager.shutdown();
     } else {

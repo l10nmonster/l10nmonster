@@ -208,14 +208,18 @@ export default class MonsterManager {
                 const jobId = await this.jobStore.createJobManifest();
                 job.jobId = jobId;
                 const translationProvider = this.#getTranslationProvider(job);
-                job.translationProvider = translationProvider.constructor.name;
-                const jobResponse = await translationProvider.requestTranslations(job);
-                await this.#processJob(jobResponse, job);
-                status.push({
-                    num: jobResponse.tus?.length || jobResponse.inflight?.length || 0,
-                    lang: jobResponse.targetLang,
-                    status: jobResponse.status
-                });
+                if (translationProvider) {
+                    job.translationProvider = translationProvider.constructor.name;
+                    const jobResponse = await translationProvider.requestTranslations(job);
+                    await this.#processJob(jobResponse, job);
+                    status.push({
+                        num: jobResponse.tus?.length || jobResponse.inflight?.length || 0,
+                        lang: jobResponse.targetLang,
+                        status: jobResponse.status
+                    });
+                } else {
+                    throw 'No translationProvider configured';
+                }
             }
         }
         return status;
