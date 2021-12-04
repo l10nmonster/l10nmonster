@@ -23,7 +23,7 @@ async function initMonster() {
   let baseDir = path.resolve('.'),
     previousDir = null;
   while (baseDir !== previousDir) {
-    const configPath = path.join(baseDir, 'l10nmonster.js');
+    const configPath = path.join(baseDir, 'l10nmonster.mjs');
     if (existsSync(configPath)) {
       const monsterDir = path.join(baseDir, '.l10nmonster');
       if (!existsSync(monsterDir)) {
@@ -102,7 +102,7 @@ monsterCLI
       }
       await monsterManager.shutdown();
     } else {
-      console.error('Unable to initialize. Do you have an l10nmonster.js file in your base directory?');
+      console.error('Unable to initialize. Do you have an l10nmonster.mjs file in your base directory?');
     }
   })
 ;
@@ -124,7 +124,7 @@ monsterCLI
       }
       await monsterManager.shutdown();
     } else {
-      console.error('Unable to initialize. Do you have an l10nmonster.js file in your base directory?');
+      console.error('Unable to initialize. Do you have an l10nmonster.mjs file in your base directory?');
     }
   })
 ;
@@ -153,7 +153,7 @@ monsterCLI
       }
       await monsterManager.shutdown();
     } else {
-      console.error('Unable to initialize. Do you have an l10nmonster.js file in your base directory?');
+      console.error('Unable to initialize. Do you have an l10nmonster.mjs file in your base directory?');
     }
   })
 ;
@@ -169,7 +169,7 @@ monsterCLI
       console.log(`Checked ${stats.numPendingJobs} pending jobs, ${stats.translatedStrings} translated strings pulled`);
       await monsterManager.shutdown();
     } else {
-      console.error('Unable to initialize. Do you have an l10nmonster.js file in your base directory?');
+      console.error('Unable to initialize. Do you have an l10nmonster.mjs file in your base directory?');
     }
   })
 ;
@@ -183,7 +183,7 @@ monsterCLI
       console.log(`Generating translated resources...`);
       await monsterManager.translate();
     } else {
-      console.error('Unable to initialize. Do you have an l10nmonster.js file in your base directory?');
+      console.error('Unable to initialize. Do you have an l10nmonster.mjs file in your base directory?');
     }
   })
 ;
