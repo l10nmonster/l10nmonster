@@ -27,10 +27,6 @@ async function initMonster() {
   while (baseDir !== previousDir) {
     const configPath = path.join(baseDir, 'l10nmonster.mjs');
     if (existsSync(configPath)) {
-      const monsterDir = path.join(baseDir, '.l10nmonster');
-      if (!existsSync(monsterDir)) {
-        mkdirSync(monsterDir);
-      }
       const ctx = {
         baseDir,
         env: process.env,
@@ -59,8 +55,17 @@ async function initMonster() {
           XliffBridge, PigLatinizer,
       };
       const configModule = await import(configPath);
-      const monsterConfig = new configModule.default({ ctx, stores, adapters, filters, translators });
-      return new MonsterManager({ monsterDir, monsterConfig });
+      try {
+        const monsterConfig = new configModule.default({ ctx, stores, adapters, filters, translators });
+        const monsterDir = path.join(baseDir, monsterConfig.monsterDir || '.l10nmonster');
+        if (!existsSync(monsterDir)) {
+          mkdirSync(monsterDir, {recursive: true});
+        }
+        return new MonsterManager({ monsterDir, monsterConfig });  
+      } catch(e) {
+        console.error(`l10nmonster.mjs failed to construct: ${e}`);
+        return null;
+      }
     }
     previousDir = baseDir;
     baseDir = path.resolve(baseDir, '..');

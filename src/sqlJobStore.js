@@ -129,6 +129,6 @@ export class SqlJobStore {
     }
 
     async shutdown() {
-        await this.db.destroy();
+        this.db && await this.db.destroy();
     }
 }

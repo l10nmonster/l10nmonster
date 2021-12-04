@@ -313,7 +313,7 @@ export default class MonsterManager {
 
     async shutdown() {
         this.monsterConfig.jobStore.shutdown && await this.monsterConfig.jobStore.shutdown();
-        this.monsterConfig.stateStore.shutdown && await this.monsterConfig.stateStore.shutdown();
+        this.monsterConfig?.stateStore?.shutdown && await this.monsterConfig.stateStore.shutdown();
     }
 
 }
