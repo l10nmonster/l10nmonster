@@ -3,13 +3,17 @@ import * as fs from 'fs/promises';
 import { globbySync } from 'globby';
 
 export class FsSource {
-    constructor({ globs }) {
+    constructor({ globs, filter }) {
         this.globs = globs;
+        this.filter = filter;
     }
 
     async fetchResourceStats() {
         const resources = [];
-        const expandedFileNames = globbySync(this.globs.map(g => path.join(this.ctx.baseDir, g)));
+        let expandedFileNames = globbySync(this.globs.map(g => path.join(this.ctx.baseDir, g)));
+        if (this.filter) {
+            expandedFileNames = expandedFileNames.filter(this.filter);
+        }
         for (const fileName of expandedFileNames) {
             const stats = await fs.stat(fileName);
             resources.push({

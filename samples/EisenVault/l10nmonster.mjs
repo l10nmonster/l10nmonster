@@ -5,6 +5,7 @@ export default class TachiyomiConfig {
     constructor({ ctx, stores, adapters, filters, translators }) {
         this.source = new adapters.FsSource({
             globs: [ '**/*_en.properties' ],
+            // filter: (resourceId) => (resourceId.indexOf('colleagues.get_en.properties') >= 0),
         });
         this.resourceFilter = new filters.JavaPropertiesFilter();
         this.target = new adapters.FsTarget({
