@@ -19,6 +19,8 @@ import { AndroidFilter } from './filters/android.js';
 import { XliffBridge } from './translators/xliff.js';
 import { PigLatinizer } from './translators/piglatinizer.js';
 
+const monsterCLI = new Command();
+
 async function initMonster() {
   let baseDir = path.resolve('.'),
     previousDir = null;
@@ -32,6 +34,7 @@ async function initMonster() {
       const ctx = {
         baseDir,
         env: process.env,
+        arg: monsterCLI.opts().arg
       };
       JsonJobStore.prototype.ctx = ctx;
       SqlJobStore.prototype.ctx = ctx;
@@ -73,12 +76,11 @@ function intOptionParser(value, dummyPrevious) {
   return parsedValue;
 }
 
-const monsterCLI = new Command();
-
 monsterCLI
     .name('l10n')
     .version('0.1.0')
     .description('Continuous localization for the rest of us.')
+    .option('-a, --arg <string>', 'optional constructor argument')
 ;
 
 monsterCLI
