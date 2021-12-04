@@ -9,7 +9,7 @@ export default class TachiyomiConfig {
     targetLangs = [ 'ja', 'it', 'piggy' ];
     guidGenerator = (rid, sid, str) => str; // ignore filename and string id
 
-    constructor({ ctx, jobStores, adapters, filters, translators }) {
+    constructor({ ctx, stores, adapters, filters, translators }) {
         this.source = new adapters.FsSource({
             globs: [ '**/values/strings.xml' ],
         });
@@ -20,11 +20,16 @@ export default class TachiyomiConfig {
             targetPath: (lang, resourceId) => resourceId.replace('values', `values-${androidLangMapping[lang] || lang}`),
         });
         
-        this.jobStore = new jobStores.JsonJobStore({
+        this.jobStore = new stores.JsonJobStore({
             jobsDir: 'translationJobs',
             logRequests: true,
         });
-        // this.jobStore = new jobStores.SqlJobStore({
+        this.stateStore = new stores.JsonStateStore({
+            org: 'test1',
+            prj: 'tachiyomi',
+            stateFileName: 'state.json',
+        });
+        // this.stateStore = new stores.SqlStateStore({
         //     org: 'test1',
         //     prj: 'tachiyomi',
         //     client: 'mysql2',

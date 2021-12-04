@@ -21,6 +21,7 @@ export default class MonsterManager {
             return sidContentHash.digest().toString('base64');
         };
         this.jobStore = monsterConfig.jobStore || new DummyJobStore();
+        this.stateStore = monsterConfig.stateStore;
         this.debug = monsterConfig.debug || {};
         this.sourceLang = monsterConfig.sourceLang;
         this.sourceCachePath = path.join(monsterDir, 'sourceCache.json');
@@ -189,9 +190,9 @@ export default class MonsterManager {
         for (const targetLang of this.monsterConfig.targetLangs) {
             const job = await this.#prepareTranslationJob(targetLang);
             status.lang[targetLang] = job.leverage;
-            if (build && version) {
+            if (build && version && this.stateStore) {
                 // TODO: calculate passing grade based on config and add it to status
-                await this.jobStore.updateBuildState(build, version, targetLang, job);
+                await this.stateStore.updateBuildState(build, version, targetLang, job);
             }
         }
         status.pendingJobsNum = (await this.jobStore.getJobManifests('pending')).length;
@@ -311,9 +312,8 @@ export default class MonsterManager {
     }
 
     async shutdown() {
-        if (this.monsterConfig.jobStore.shutdown) {
-            await this.monsterConfig.jobStore.shutdown();
-        }
+        this.monsterConfig.jobStore.shutdown && await this.monsterConfig.jobStore.shutdown();
+        this.monsterConfig.stateStore.shutdown && await this.monsterConfig.stateStore.shutdown();
     }
 
 }

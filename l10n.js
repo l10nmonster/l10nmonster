@@ -10,6 +10,8 @@ import { Command, InvalidArgumentError } from 'commander';
 import MonsterManager from './src/monsterManager.js';
 import { JsonJobStore } from './src/jsonJobStore.js';
 import { SqlJobStore } from './src/sqlJobStore.js';
+import { JsonStateStore } from './src/jsonStateStore.js';
+import { SqlStateStore } from './src/sqlStateStore.js';
 
 import { FsSource, FsTarget } from './adapters/fs.js';
 import { PoFilter } from './filters/po.js';
@@ -33,8 +35,10 @@ async function initMonster() {
       };
       JsonJobStore.prototype.ctx = ctx;
       SqlJobStore.prototype.ctx = ctx;
-      const jobStores = {
-        JsonJobStore, SqlJobStore,
+      JsonStateStore.prototype.ctx = ctx;
+      SqlStateStore.prototype.ctx = ctx;
+      const stores = {
+        JsonJobStore, SqlJobStore, JsonStateStore, SqlStateStore,
       };
       FsSource.prototype.ctx = ctx;
       FsTarget.prototype.ctx = ctx;
@@ -52,7 +56,7 @@ async function initMonster() {
           XliffBridge, PigLatinizer,
       };
       const configModule = await import(configPath);
-      const monsterConfig = new configModule.default({ ctx, jobStores, adapters, filters, translators });
+      const monsterConfig = new configModule.default({ ctx, stores, adapters, filters, translators });
       return new MonsterManager({ monsterDir, monsterConfig });
     }
     previousDir = baseDir;

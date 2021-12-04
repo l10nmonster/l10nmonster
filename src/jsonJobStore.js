@@ -8,7 +8,7 @@ import * as fs from 'fs/promises';
 
 export class JsonJobStore {
     constructor({ jobsDir, logRequests }) {
-        this.jobsDir = jobsDir;
+        this.jobsDir = path.join(this.ctx.baseDir, jobsDir);
         if (!existsSync(this.jobsDir)) {
             mkdirSync(this.jobsDir);
         }
@@ -16,8 +16,7 @@ export class JsonJobStore {
     }
 
     #jobsPathName() {
-        const jobsDir = path.join(this.ctx.baseDir, this.jobsDir);
-        return path.join(jobsDir, 'jobs.json');
+        return path.join(this.jobsDir, 'jobs.json');
     }
 
     async getJobManifests(status) {
@@ -74,9 +73,5 @@ export class JsonJobStore {
     async getJob(jobId) {
         const jobPath = path.join(this.jobsDir, `job_${jobId}.json`);
         return JSON.parse(await fs.readFile(jobPath, 'utf8'));
-    }
-
-    async updateBuildState(build, release, targetLang, job) {
-        // TODO: generate something (maybe an SVG to include in GIT?)
     }
 }
