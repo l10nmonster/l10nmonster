@@ -11,9 +11,10 @@ import wordsCountModule from 'words-count';
 import { DummyJobStore } from './dummyJobStore.js';
 
 export default class MonsterManager {
-    constructor({ monsterDir, monsterConfig }) {
+    constructor({ monsterDir, monsterConfig, verbose }) {
         this.monsterDir = monsterDir;
         this.monsterConfig = monsterConfig;
+        this.verbose = verbose;
         const guidGenerator = this.monsterConfig.guidGenerator || ((rid, sid, str) => `${rid}|${sid}|${str}`);
         this.generateGuid = function generateGuid(rid, sid, str) {
             const sidContentHash = createHash('sha256');
@@ -51,7 +52,7 @@ export default class MonsterManager {
             }
         }
         if (dirty) {
-            console.log(`Updating ${this.sourceCachePath}...`);
+            this.verbose && console.log(`Updating ${this.sourceCachePath}...`);
             await fs.writeFile(this.sourceCachePath, JSON.stringify(newCache, null, '\t'), 'utf8');
             this.sourceCache = newCache;
         }
@@ -63,7 +64,7 @@ export default class MonsterManager {
 
     async #writeTM(sourceLang, targetLang) {
         const tmPath = this.#tmPathName(sourceLang, targetLang);
-        console.log(`Updating ${tmPath}...`);
+        this.verbose && console.log(`Updating ${tmPath}...`);
         await fs.writeFile(tmPath, JSON.stringify(this.tmCache[`${sourceLang}_${targetLang}`], null, '\t'), 'utf8');
     }
 
@@ -132,8 +133,8 @@ export default class MonsterManager {
         const generateGuid = this.generateGuid;
         return async function translate(rid, sid, str) {
             const guid = generateGuid(rid, sid, str);
-            if (!tm.tus[guid]) {
-                console.error(`Couldn't find ${sourceLang}_${targetLang} entry for ${rid}+${sid}+${str}`);
+            if (!(guid in tm.tus)) {
+                this.verbose && console.log(`Couldn't find ${sourceLang}_${targetLang} entry for ${rid}+${sid}+${str}`);
             }
             return tm.tus[guid]?.str || str; // falls back to source string (should not happen)
         }
@@ -289,7 +290,7 @@ export default class MonsterManager {
         const pendingJobs = await this.jobStore.getJobManifests('pending');
         stats.numPendingJobs = pendingJobs.length;
         for (const jobManifest of pendingJobs) {
-            // console.log(`Pulling job ${jobManifest.jobId}...`);
+            this.verbose && console.log(`Pulling job ${jobManifest.jobId}...`);
             const translationProvider = this.#getTranslationProvider(jobManifest);
             const newTranslations = await translationProvider.fetchTranslations(jobManifest);
             if (newTranslations) {

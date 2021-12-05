@@ -28,10 +28,12 @@ async function initMonster() {
   while (baseDir !== previousDir) {
     const configPath = path.join(baseDir, 'l10nmonster.mjs');
     if (existsSync(configPath)) {
+      const verbose = monsterCLI.opts().verbose;
       const ctx = {
         baseDir,
         env: process.env,
-        arg: monsterCLI.opts().arg
+        arg: monsterCLI.opts().arg,
+        verbose,
       };
       JsonJobStore.prototype.ctx = ctx;
       SqlJobStore.prototype.ctx = ctx;
@@ -56,14 +58,25 @@ async function initMonster() {
       const translators = {
           XliffBridge, PigLatinizer,
       };
-      const configModule = await import(configPath);
+      verbose && console.log(`Importing config from: ${configPath}`);
+    const configModule = await import(configPath);
       try {
-        const monsterConfig = new configModule.default({ ctx, stores, adapters, filters, translators });
+        const configParams = { ctx, stores, adapters, filters, translators };
+        if (verbose) {
+          console.log('Initializing config with:');
+          console.dir(configParams);
+        }
+        const monsterConfig = new configModule.default(configParams);
+        if (verbose) {
+          console.log('Successfully got config:');
+          console.dir(monsterConfig);
+        }
         const monsterDir = path.join(baseDir, monsterConfig.monsterDir || '.l10nmonster');
+        verbose && console.log(`Monster dir: ${monsterDir}`);
         if (!existsSync(monsterDir)) {
           mkdirSync(monsterDir, {recursive: true});
         }
-        return new MonsterManager({ monsterDir, monsterConfig });  
+        return new MonsterManager({ monsterDir, monsterConfig, verbose });  
       } catch(e) {
         console.error(`l10nmonster.mjs failed to construct: ${e}`);
         return null;
@@ -88,6 +101,7 @@ monsterCLI
     .version('0.1.0')
     .description('Continuous localization for the rest of us.')
     .option('-a, --arg <string>', 'optional constructor argument')
+    .option('-v, --verbose', 'output additional debug information')
 ;
 
 monsterCLI
