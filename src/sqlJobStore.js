@@ -51,22 +51,8 @@ export class SqlJobStore {
                     });
                 }
             });
-            await remoteDB.schema.hasTable('buildState').then(exists => {
-                if (!exists) {
-                    return remoteDB.schema.createTable('buildState', table => {
-                        table.string('org', 64);
-                        table.string('prj', 64);
-                        table.string('build', 16);
-                        table.string('release', 16);
-                        table.string('targetLang', 8);
-                        table.json('job');
-                        table.timestamp('updatedAt');
-                        table.primary(['org', 'prj', 'build', 'release', 'targetLang']);
-                    });
-                }
-            });
             this.db = remoteDB;
-            console.log(`${this.dbConfig.client} DB ${this.dbConfig.connection.database} initialized!`);
+            console.log(`${this.dbConfig.client} DB ${this.dbConfig.connection.database} initialized for job store!`);
         } catch (error) {
             console.error(`${this.dbConfig.client} DB initialization failed with error: ${error}`);
         }
@@ -142,23 +128,7 @@ export class SqlJobStore {
         return row.job;
     }
 
-    async updateBuildState(build, release, targetLang, job) {
-        this.db || await this.init();
-        await this.db('buildState')
-            .insert({
-                org: this.org,
-                prj: this.prj,
-                build,
-                release,
-                targetLang,
-                job: JSON.stringify(job),
-                updatedAt: currentISODate(),
-            })
-            .onConflict(['org', 'prj', 'build', 'release', 'targetLang'])
-            .merge();
-}
-
     async shutdown() {
-        await this.db.destroy();
+        this.db && await this.db.destroy();
     }
 }

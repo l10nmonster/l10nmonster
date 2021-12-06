@@ -10,31 +10,37 @@ import { Command, InvalidArgumentError } from 'commander';
 import MonsterManager from './src/monsterManager.js';
 import { JsonJobStore } from './src/jsonJobStore.js';
 import { SqlJobStore } from './src/sqlJobStore.js';
+import { JsonStateStore } from './src/jsonStateStore.js';
+import { SqlStateStore } from './src/sqlStateStore.js';
 
 import { FsSource, FsTarget } from './adapters/fs.js';
 import { PoFilter } from './filters/po.js';
 import { AndroidFilter } from './filters/android.js';
+import { JavaPropertiesFilter } from './filters/java.js';
 import { XliffBridge } from './translators/xliff.js';
 import { PigLatinizer } from './translators/piglatinizer.js';
+
+const monsterCLI = new Command();
 
 async function initMonster() {
   let baseDir = path.resolve('.'),
     previousDir = null;
   while (baseDir !== previousDir) {
-    const configPath = path.join(baseDir, 'l10nmonster.js');
+    const configPath = path.join(baseDir, 'l10nmonster.mjs');
     if (existsSync(configPath)) {
-      const monsterDir = path.join(baseDir, '.l10nmonster');
-      if (!existsSync(monsterDir)) {
-        mkdirSync(monsterDir);
-      }
+      const verbose = monsterCLI.opts().verbose;
       const ctx = {
         baseDir,
         env: process.env,
+        arg: monsterCLI.opts().arg,
+        verbose,
       };
       JsonJobStore.prototype.ctx = ctx;
       SqlJobStore.prototype.ctx = ctx;
-      const jobStores = {
-        JsonJobStore, SqlJobStore,
+      JsonStateStore.prototype.ctx = ctx;
+      SqlStateStore.prototype.ctx = ctx;
+      const stores = {
+        JsonJobStore, SqlJobStore, JsonStateStore, SqlStateStore,
       };
       FsSource.prototype.ctx = ctx;
       FsTarget.prototype.ctx = ctx;
@@ -43,17 +49,38 @@ async function initMonster() {
       };
       PoFilter.prototype.ctx = ctx;
       AndroidFilter.prototype.ctx = ctx;
+      JavaPropertiesFilter.prototype.ctx = ctx;
       const filters = {
-          PoFilter, AndroidFilter,
+          PoFilter, AndroidFilter, JavaPropertiesFilter
       };
       XliffBridge.prototype.ctx = ctx;
       PigLatinizer.prototype.ctx = ctx;
       const translators = {
           XliffBridge, PigLatinizer,
       };
-      const configModule = await import(configPath);
-      const monsterConfig = new configModule.default({ ctx, jobStores, adapters, filters, translators });
-      return new MonsterManager({ monsterDir, monsterConfig });
+      verbose && console.log(`Importing config from: ${configPath}`);
+    const configModule = await import(configPath);
+      try {
+        const configParams = { ctx, stores, adapters, filters, translators };
+        if (verbose) {
+          console.log('Initializing config with:');
+          console.dir(configParams);
+        }
+        const monsterConfig = new configModule.default(configParams);
+        if (verbose) {
+          console.log('Successfully got config:');
+          console.dir(monsterConfig);
+        }
+        const monsterDir = path.join(baseDir, monsterConfig.monsterDir || '.l10nmonster');
+        verbose && console.log(`Monster dir: ${monsterDir}`);
+        if (!existsSync(monsterDir)) {
+          mkdirSync(monsterDir, {recursive: true});
+        }
+        return new MonsterManager({ monsterDir, monsterConfig, verbose });  
+      } catch(e) {
+        console.error(`l10nmonster.mjs failed to construct: ${e}`);
+        return null;
+      }
     }
     previousDir = baseDir;
     baseDir = path.resolve(baseDir, '..');
@@ -69,12 +96,12 @@ function intOptionParser(value, dummyPrevious) {
   return parsedValue;
 }
 
-const monsterCLI = new Command();
-
 monsterCLI
     .name('l10n')
     .version('0.1.0')
     .description('Continuous localization for the rest of us.')
+    .option('-a, --arg <string>', 'optional constructor argument')
+    .option('-v, --verbose', 'output additional debug information')
 ;
 
 monsterCLI
@@ -98,7 +125,7 @@ monsterCLI
       }
       await monsterManager.shutdown();
     } else {
-      console.error('Unable to initialize. Do you have an l10nmonster.js file in your base directory?');
+      console.error('Unable to initialize. Do you have an l10nmonster.mjs file in your base directory?');
     }
   })
 ;
@@ -110,17 +137,21 @@ monsterCLI
     const monsterManager = await initMonster();
     if (monsterManager) {
       console.log(`Pushing content upstream...`);
-      const status = await monsterManager.push();
-      if (status.length > 0) {
-        for (const ls of status) {
-          console.log(`${ls.num} translations units requested for language ${ls.lang} -> status: ${ls.status}`);
+      try {
+        const status = await monsterManager.push();
+        if (status.length > 0) {
+          for (const ls of status) {
+            console.log(`${ls.num} translations units requested for language ${ls.lang} -> status: ${ls.status}`);
+          }
+        } else {
+          console.log('Nothing to push!');
         }
-      } else {
-        console.log('Nothing to push!');
+      } catch (e) {
+        console.error(`Failed to push: ${e}`);
       }
       await monsterManager.shutdown();
     } else {
-      console.error('Unable to initialize. Do you have an l10nmonster.js file in your base directory?');
+      console.error('Unable to initialize. Do you have an l10nmonster.mjs file in your base directory?');
     }
   })
 ;
@@ -149,7 +180,7 @@ monsterCLI
       }
       await monsterManager.shutdown();
     } else {
-      console.error('Unable to initialize. Do you have an l10nmonster.js file in your base directory?');
+      console.error('Unable to initialize. Do you have an l10nmonster.mjs file in your base directory?');
     }
   })
 ;
@@ -165,7 +196,7 @@ monsterCLI
       console.log(`Checked ${stats.numPendingJobs} pending jobs, ${stats.translatedStrings} translated strings pulled`);
       await monsterManager.shutdown();
     } else {
-      console.error('Unable to initialize. Do you have an l10nmonster.js file in your base directory?');
+      console.error('Unable to initialize. Do you have an l10nmonster.mjs file in your base directory?');
     }
   })
 ;
@@ -179,7 +210,7 @@ monsterCLI
       console.log(`Generating translated resources...`);
       await monsterManager.translate();
     } else {
-      console.error('Unable to initialize. Do you have an l10nmonster.js file in your base directory?');
+      console.error('Unable to initialize. Do you have an l10nmonster.mjs file in your base directory?');
     }
   })
 ;

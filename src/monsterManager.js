@@ -11,9 +11,10 @@ import wordsCountModule from 'words-count';
 import { DummyJobStore } from './dummyJobStore.js';
 
 export default class MonsterManager {
-    constructor({ monsterDir, monsterConfig }) {
+    constructor({ monsterDir, monsterConfig, verbose }) {
         this.monsterDir = monsterDir;
         this.monsterConfig = monsterConfig;
+        this.verbose = verbose;
         const guidGenerator = this.monsterConfig.guidGenerator || ((rid, sid, str) => `${rid}|${sid}|${str}`);
         this.generateGuid = function generateGuid(rid, sid, str) {
             const sidContentHash = createHash('sha256');
@@ -21,6 +22,7 @@ export default class MonsterManager {
             return sidContentHash.digest().toString('base64');
         };
         this.jobStore = monsterConfig.jobStore || new DummyJobStore();
+        this.stateStore = monsterConfig.stateStore;
         this.debug = monsterConfig.debug || {};
         this.sourceLang = monsterConfig.sourceLang;
         this.sourceCachePath = path.join(monsterDir, 'sourceCache.json');
@@ -50,7 +52,7 @@ export default class MonsterManager {
             }
         }
         if (dirty) {
-            console.log(`Updating ${this.sourceCachePath}...`);
+            this.verbose && console.log(`Updating ${this.sourceCachePath}...`);
             await fs.writeFile(this.sourceCachePath, JSON.stringify(newCache, null, '\t'), 'utf8');
             this.sourceCache = newCache;
         }
@@ -62,7 +64,7 @@ export default class MonsterManager {
 
     async #writeTM(sourceLang, targetLang) {
         const tmPath = this.#tmPathName(sourceLang, targetLang);
-        console.log(`Updating ${tmPath}...`);
+        this.verbose && console.log(`Updating ${tmPath}...`);
         await fs.writeFile(tmPath, JSON.stringify(this.tmCache[`${sourceLang}_${targetLang}`], null, '\t'), 'utf8');
     }
 
@@ -131,8 +133,8 @@ export default class MonsterManager {
         const generateGuid = this.generateGuid;
         return async function translate(rid, sid, str) {
             const guid = generateGuid(rid, sid, str);
-            if (!tm.tus[guid]) {
-                console.error(`Couldn't find ${sourceLang}_${targetLang} entry for ${rid}+${sid}+${str}`);
+            if (!(guid in tm.tus)) {
+                this.verbose && console.log(`Couldn't find ${sourceLang}_${targetLang} entry for ${rid}+${sid}+${str}`);
             }
             return tm.tus[guid]?.str || str; // falls back to source string (should not happen)
         }
@@ -189,9 +191,9 @@ export default class MonsterManager {
         for (const targetLang of this.monsterConfig.targetLangs) {
             const job = await this.#prepareTranslationJob(targetLang);
             status.lang[targetLang] = job.leverage;
-            if (build && version) {
+            if (build && version && this.stateStore) {
                 // TODO: calculate passing grade based on config and add it to status
-                await this.jobStore.updateBuildState(build, version, targetLang, job);
+                await this.stateStore.updateBuildState(build, version, targetLang, job);
             }
         }
         status.pendingJobsNum = (await this.jobStore.getJobManifests('pending')).length;
@@ -207,14 +209,18 @@ export default class MonsterManager {
                 const jobId = await this.jobStore.createJobManifest();
                 job.jobId = jobId;
                 const translationProvider = this.#getTranslationProvider(job);
-                job.translationProvider = translationProvider.constructor.name;
-                const jobResponse = await translationProvider.requestTranslations(job);
-                await this.#processJob(jobResponse, job);
-                status.push({
-                    num: jobResponse.tus?.length || jobResponse.inflight?.length || 0,
-                    lang: jobResponse.targetLang,
-                    status: jobResponse.status
-                });
+                if (translationProvider) {
+                    job.translationProvider = translationProvider.constructor.name;
+                    const jobResponse = await translationProvider.requestTranslations(job);
+                    await this.#processJob(jobResponse, job);
+                    status.push({
+                        num: jobResponse.tus?.length || jobResponse.inflight?.length || 0,
+                        lang: jobResponse.targetLang,
+                        status: jobResponse.status
+                    });
+                } else {
+                    throw 'No translationProvider configured';
+                }
             }
         }
         return status;
@@ -284,7 +290,7 @@ export default class MonsterManager {
         const pendingJobs = await this.jobStore.getJobManifests('pending');
         stats.numPendingJobs = pendingJobs.length;
         for (const jobManifest of pendingJobs) {
-            // console.log(`Pulling job ${jobManifest.jobId}...`);
+            this.verbose && console.log(`Pulling job ${jobManifest.jobId}...`);
             const translationProvider = this.#getTranslationProvider(jobManifest);
             const newTranslations = await translationProvider.fetchTranslations(jobManifest);
             if (newTranslations) {
@@ -311,9 +317,8 @@ export default class MonsterManager {
     }
 
     async shutdown() {
-        if (this.monsterConfig.jobStore.shutdown) {
-            await this.monsterConfig.jobStore.shutdown();
-        }
+        this.monsterConfig.jobStore.shutdown && await this.monsterConfig.jobStore.shutdown();
+        this.monsterConfig?.stateStore?.shutdown && await this.monsterConfig.stateStore.shutdown();
     }
 
 }

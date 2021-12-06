@@ -21,11 +21,11 @@ Eventually there will be a binary for each platform, but this is still under hea
 
 ### Configuration
 
-At the root of your project there should be a file named `l10nmonster.js`. You can create it by hand, or you can use `l10n init` and use one of the configurators to get up and running in no time (this is not implemented yet).
+At the root of your project there should be a file named `l10nmonster.mjs`. You can create it by hand, or you can use `l10n init` and use one of the configurators to get up and running in no time (this is not implemented yet).
 
 ### Working files
 
-L10n Monster maintains its working files in a hidden `.l10nmonster` directory where the `l10nmonster.js` file is located. Working files are source-control friendly (json files with newlines) and can be checked in, or they can be destroyed and recreated.
+L10n Monster maintains its working files in a hidden `.l10nmonster` directory where the `l10nmonster.mjs` file is located. Working files are source-control friendly (json files with newlines) and can be checked in, or they can be destroyed and recreated.
 
 ## Operation
 
@@ -41,7 +41,7 @@ L10n Monster maintains its working files in a hidden `.l10nmonster` directory wh
 
 ## Configuration
 
-The `l10nmonster.js` configuration must export a default class that once instantiated provides the following properties:
+The `l10nmonster.mjs` configuration must export a default class that once instantiated provides the following properties:
 
 * `jobStore`: a durable persistence adapter to store translations
 * `sourceLang`: the default source language
@@ -53,7 +53,7 @@ The `l10nmonster.js` configuration must export a default class that once instant
 
 The constructor is invoked with an object with the following properties:
 * `ctx`: the context object with the following properties:
-    * `baseDir`: the directory where `l10nmonster.js` lives
+    * `baseDir`: the directory where `l10nmonster.mjs` lives
     * `env`: environment variables from the shell
 * `jobStores`, `adapters`, `filters`, `translators`: built-in helpers
 
@@ -100,7 +100,7 @@ new adapters.FsSource({
 })
 ```
 
-An adapter that reads sources from the filesystem. The `globs` array can specify wildcard patterns relative to the base directory where the `l10nmonster.js` is placed.
+An adapter that reads sources from the filesystem. The `globs` array can specify wildcard patterns relative to the base directory where the `l10nmonster.mjs` is placed.
 
 ### FS Target Adapter
 
