@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="str1">Darating ang tag-lamig</string>
+  <string name="move_x_to">Ilipat ang %1$s sa…</string>
+  <string name="chapter_x_of_y">Kabanata %1$d ng %2$d</string>
+  <plurals name="chapters_plural">
+      <item quantity="one">%1$d kabanata</item>
+      <item quantity="other">%1$d (na) kabanata</item>
+  </plurals>
+</resources>

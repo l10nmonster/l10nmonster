@@ -8,7 +8,7 @@
   },
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "bundle": "esbuild l10n.js --bundle --outfile=bin/l10n.cjs --platform=node --target=node14",
     "build": "pkg -t node16-macos-x64 --out-path bin bin/l10n.cjs"
   },
@@ -43,6 +43,19 @@
   },
   "devDependencies": {
     "esbuild": "^0.13.12",
+    "jest": "^27.4.3",
     "pkg": "^5.4.1"
+  },
+  "jest": {
+    "transform": {
+    },
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "adapters",
+      "src"
+    ]
   }
 }
