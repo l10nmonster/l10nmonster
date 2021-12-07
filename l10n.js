@@ -35,33 +35,28 @@ async function initMonster() {
         arg: monsterCLI.opts().arg,
         verbose,
       };
-      JsonJobStore.prototype.ctx = ctx;
-      SqlJobStore.prototype.ctx = ctx;
-      JsonStateStore.prototype.ctx = ctx;
-      SqlStateStore.prototype.ctx = ctx;
-      const stores = {
-        JsonJobStore, SqlJobStore, JsonStateStore, SqlStateStore,
-      };
-      FsSource.prototype.ctx = ctx;
-      FsTarget.prototype.ctx = ctx;
-      const adapters = {
+      const helpers = {
+        stores: {
+          JsonJobStore, SqlJobStore, JsonStateStore, SqlStateStore,
+        },
+        adapters: {
           FsSource, FsTarget,
-      };
-      PoFilter.prototype.ctx = ctx;
-      AndroidFilter.prototype.ctx = ctx;
-      JavaPropertiesFilter.prototype.ctx = ctx;
-      const filters = {
+        },
+        filters: {
           PoFilter, AndroidFilter, JavaPropertiesFilter
-      };
-      XliffBridge.prototype.ctx = ctx;
-      PigLatinizer.prototype.ctx = ctx;
-      const translators = {
+        },
+        translators: {
           XliffBridge, PigLatinizer,
+        },
       };
+      for (const helperCategory of Object.values(helpers)) {
+        for (const helper of Object.values(helperCategory))
+        helper.prototype.ctx = ctx;  
+      }
       verbose && console.log(`Importing config from: ${configPath}`);
     const configModule = await import(configPath);
       try {
-        const configParams = { ctx, stores, adapters, filters, translators };
+        const configParams = { ctx, ...helpers };
         if (verbose) {
           console.log('Initializing config with:');
           console.dir(configParams);
