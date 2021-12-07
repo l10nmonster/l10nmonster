@@ -73,14 +73,24 @@ async function initMonster() {
         }
         return new MonsterManager({ monsterDir, monsterConfig, verbose });  
       } catch(e) {
-        console.error(`l10nmonster.mjs failed to construct: ${e}`);
-        return null;
+        throw `l10nmonster.mjs failed to construct: ${e}`;
       }
     }
     previousDir = baseDir;
     baseDir = path.resolve(baseDir, '..');
   }
-  return null;
+  throw 'l10nmonster.mjs not found';
+}
+
+async function withMonsterManager(cb) {
+  try {
+    const monsterManager = await initMonster();
+    cb(monsterManager);
+    await monsterManager.shutdown();
+  } catch(e) {
+    console.error(`Unable to initialize: ${e}`);
+  }
+
 }
 
 function intOptionParser(value, dummyPrevious) {
@@ -104,9 +114,7 @@ monsterCLI
     .description('translation status of content.')
     .option('-b, --build <type>', 'build type')
     .option('-r, --release <num>', 'release number')
-    .action(async (options) => {
-    const monsterManager = await initMonster();
-    if (monsterManager) {
+    .action(async (options) => await withMonsterManager(async monsterManager => {
       const status = await monsterManager.status(options.build, options.release);
       console.log(`${status.numSources} translatable resource`);
       console.log(`${status.pendingJobsNum} pending jobs`);
@@ -118,19 +126,13 @@ monsterCLI
         }
         console.log(`  - untranslated strings: ${stats.unstranslated.toLocaleString()} (${stats.unstranslatedChars.toLocaleString()} chars - ${stats.unstranslatedWords.toLocaleString()} words - $${(stats.unstranslatedWords * .2).toFixed(2)})`);
       }
-      await monsterManager.shutdown();
-    } else {
-      console.error('Unable to initialize. Do you have an l10nmonster.mjs file in your base directory?');
-    }
-  })
+  }))
 ;
 
 monsterCLI
     .command('push')
     .description('push source content upstream (send to translation).')
-    .action(async () => {
-    const monsterManager = await initMonster();
-    if (monsterManager) {
+    .action(async () => await withMonsterManager(async monsterManager => {
       console.log(`Pushing content upstream...`);
       try {
         const status = await monsterManager.push();
@@ -144,11 +146,7 @@ monsterCLI
       } catch (e) {
         console.error(`Failed to push: ${e}`);
       }
-      await monsterManager.shutdown();
-    } else {
-      console.error('Unable to initialize. Do you have an l10nmonster.mjs file in your base directory?');
-    }
-  })
+  }))
 ;
 
 monsterCLI
@@ -156,9 +154,7 @@ monsterCLI
     .description('grandfather existing translations as a translation job.')
     .requiredOption('-q, --quality <level>', 'translation quality', intOptionParser)
     .option('-l, --lang <language>', 'target language to import')
-    .action(async (options) => {
-    const monsterManager = await initMonster();
-    if (monsterManager) {
+    .action(async (options) => await withMonsterManager(async monsterManager => {
       const quality = options.quality || 50;
       console.log(`Grandfathering existing ${options.lang} translations at quality level ${quality}...`);
       const status = await monsterManager.grandfather(quality, options.lang);
@@ -173,41 +169,26 @@ monsterCLI
           console.log('Nothing to grandfather!');
         }  
       }
-      await monsterManager.shutdown();
-    } else {
-      console.error('Unable to initialize. Do you have an l10nmonster.mjs file in your base directory?');
-    }
-  })
+  }))
 ;
 
 monsterCLI
     .command('pull')
     .description('receive outstanding translation jobs.')
-    .action(async () => {
-    const monsterManager = await initMonster();
-    if (monsterManager) {
+    .action(async () => await withMonsterManager(async monsterManager => {
       console.log(`Pulling pending translations...`);
       const stats = await monsterManager.pull();
       console.log(`Checked ${stats.numPendingJobs} pending jobs, ${stats.translatedStrings} translated strings pulled`);
-      await monsterManager.shutdown();
-    } else {
-      console.error('Unable to initialize. Do you have an l10nmonster.mjs file in your base directory?');
-    }
-  })
+  }))
 ;
 
 monsterCLI
     .command('translate')
     .description('generate translated resources based on latest source and translations.')
-    .action(async () => {
-    const monsterManager = await initMonster();
-    if (monsterManager) {
+    .action(async () => await withMonsterManager(async monsterManager => {
       console.log(`Generating translated resources...`);
       await monsterManager.translate();
-    } else {
-      console.error('Unable to initialize. Do you have an l10nmonster.mjs file in your base directory?');
-    }
-  })
+  }))
 ;
 
 (async () => await monsterCLI.parseAsync(process.argv))();
