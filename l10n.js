@@ -130,6 +130,35 @@ monsterCLI
 ;
 
 monsterCLI
+    .command('analyze')
+    .description('source content report and validation.')
+    .action(async (options) => await withMonsterManager(async monsterManager => {
+      const analysis = await monsterManager.analyze();
+      console.log(`${analysis.numStrings} strings in ${analysis.numSources} resources`);
+      const qWC = analysis.qualifiedRepetitions.reduce((p, c) => p + (c.length - 1) * c[0].wc, 0);
+      console.log(`${analysis.qualifiedRepetitions.length} qualified repetitions, ${qWC} duplicate word count`);
+      if (monsterCLI.opts().verbose) {
+        for (const qr of analysis.qualifiedRepetitions) {
+          console.log(`${qr[0].wc} words, sid: ${qr[0].sid}, txt: ${qr[0].str}`);
+          for (const r of qr) {
+            console.log(`  - ${r.rid}`);
+          }
+        }
+      }
+      const uWC = analysis.unqualifiedRepetitions.reduce((p, c) => p + (c.length - 1) * c[0].wc, 0);
+      console.log(`${analysis.unqualifiedRepetitions.length} unqualified repetitions, ${uWC} duplicate word count`);
+      if (monsterCLI.opts().verbose) {
+        for (const ur of analysis.unqualifiedRepetitions) {
+          console.log(`${ur[0].wc} words, txt: ${ur[0].str}`);
+          for (const r of ur) {
+            console.log(`  - ${r.rid}, sid: ${r.sid}`);
+          }
+        }
+      }
+  }))
+;
+
+monsterCLI
     .command('push')
     .description('push source content upstream (send to translation).')
     .action(async () => await withMonsterManager(async monsterManager => {

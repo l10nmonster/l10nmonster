@@ -10,17 +10,23 @@ import {
 import wordsCountModule from 'words-count';
 import { DummyJobStore } from './dummyJobStore.js';
 
+function generateSidQualifiedGuid(sid, str) {
+    const sidContentHash = createHash('sha256');
+    sidContentHash.update(`${sid}|${str}`, 'utf8');
+    return sidContentHash.digest().toString('base64');
+}
+
+function generateFullyQualifiedGuid(rid, sid, str) {
+    const sidContentHash = createHash('sha256');
+    sidContentHash.update(`${rid}|${sid}|${str}`, 'utf8');
+    return sidContentHash.digest().toString('base64');
+}
+
 export default class MonsterManager {
     constructor({ monsterDir, monsterConfig, verbose }) {
         this.monsterDir = monsterDir;
         this.monsterConfig = monsterConfig;
         this.verbose = verbose;
-        const guidGenerator = this.monsterConfig.guidGenerator || ((rid, sid, str) => `${rid}|${sid}|${str}`);
-        this.generateGuid = function generateGuid(rid, sid, str) {
-            const sidContentHash = createHash('sha256');
-            sidContentHash.update(guidGenerator(rid, sid, str), 'utf8');
-            return sidContentHash.digest().toString('base64');
-        };
         this.jobStore = monsterConfig.jobStore || new DummyJobStore();
         this.stateStore = monsterConfig.stateStore;
         this.debug = monsterConfig.debug || {};
@@ -46,7 +52,7 @@ export default class MonsterManager {
                 const parsedRes = await pipeline.resourceFilter.parseResource({resource: payload, isSource: true});
                 res.translationUnits = parsedRes.translationUnits;
                 for (const tu of res.translationUnits) {
-                    tu.guid = this.generateGuid(res.id, tu.sid, tu.str);
+                    tu.guid = generateFullyQualifiedGuid(res.id, tu.sid, tu.str);
                 }
                 newCache[res.id] = res;
             }
@@ -130,9 +136,8 @@ export default class MonsterManager {
     async #createTranslator(sourceLang, targetLang) {
         await this.#updateTM(sourceLang, targetLang);
         const tm = this.#getTM(sourceLang, targetLang);
-        const generateGuid = this.generateGuid;
         return async function translate(rid, sid, str) {
-            const guid = generateGuid(rid, sid, str);
+            const guid = generateFullyQualifiedGuid(rid, sid, str);
             if (!(guid in tm.tus)) {
                 this.verbose && console.log(`Couldn't find ${sourceLang}_${targetLang} entry for ${rid}+${sid}+${str}`);
             }
@@ -198,6 +203,37 @@ export default class MonsterManager {
         }
         status.pendingJobsNum = (await this.jobStore.getJobManifests('pending')).length;
         return status;
+    }
+
+    async analyze() {
+        await this.#updateSourceCache();
+        const sources = Object.entries(this.sourceCache);
+        const qualifiedMatches = {}; // sid+str
+        const unqualifiedMatches = {}; // str only
+        let numStrings = 0;
+        for (const [rid, res] of sources) {
+            for (const tu of res.translationUnits) {
+                numStrings++;
+                const wc = wordsCountModule.wordsCount(tu.str);
+                const qGuid = generateSidQualifiedGuid(tu.sid, tu.str);
+                unqualifiedMatches[tu.str] = unqualifiedMatches[tu.str] || [];
+                unqualifiedMatches[tu.str].push({ rid, sid: tu.sid, str: tu.str, wc, qGuid });
+                qualifiedMatches[qGuid] = qualifiedMatches[qGuid] || [];
+                qualifiedMatches[qGuid].push({ rid, sid: tu.sid, str: tu.str, wc });
+            }
+        }
+        for (const [k, v] of Object.entries(unqualifiedMatches)) {
+            v.length === 1 && delete unqualifiedMatches[k]
+        }
+        for (const [k, v] of Object.entries(qualifiedMatches)) {
+            v.length === 1 && delete qualifiedMatches[k]
+        }
+        return { 
+            numSources: sources.length,
+            numStrings,
+            unqualifiedRepetitions: Object.values(unqualifiedMatches),
+            qualifiedRepetitions: Object.values(qualifiedMatches),
+        };
     }
 
     async push() {
