@@ -85,7 +85,7 @@ async function initMonster() {
 async function withMonsterManager(cb) {
   try {
     const monsterManager = await initMonster();
-    cb(monsterManager);
+    await cb(monsterManager);
     await monsterManager.shutdown();
   } catch(e) {
     console.error(`Unable to initialize: ${e}`);
@@ -116,13 +116,13 @@ monsterCLI
     .option('-r, --release <num>', 'release number')
     .action(async (options) => await withMonsterManager(async monsterManager => {
       const status = await monsterManager.status(options.build, options.release);
-      console.log(`${status.numSources} translatable resource`);
-      console.log(`${status.pendingJobsNum} pending jobs`);
+      console.log(`${status.numSources.toLocaleString()} translatable resources`);
+      console.log(`${status.pendingJobsNum.toLocaleString()} pending jobs`);
       for (const [lang, stats] of Object.entries(status.lang)) {
         console.log(`Language ${lang}:`);
-        console.log(`  - strings in translation memory: ${stats.tusNum}`);
+        console.log(`  - strings in translation memory: ${stats.tusNum.toLocaleString()}`);
         for (const [q, num] of Object.entries(stats.translated).sort((a,b) => b[1] - a[1])) {
-          console.log(`  - translated strings @ quality ${q}: ${num}`);
+          console.log(q ? `  - translated strings @ quality ${q}: ${num.toLocaleString()}` : `  - strings pending translation: ${num.toLocaleString()}`);
         }
         console.log(`  - untranslated strings: ${stats.unstranslated.toLocaleString()} (${stats.unstranslatedChars.toLocaleString()} chars - ${stats.unstranslatedWords.toLocaleString()} words - $${(stats.unstranslatedWords * .2).toFixed(2)})`);
       }
@@ -132,27 +132,33 @@ monsterCLI
 monsterCLI
     .command('analyze')
     .description('source content report and validation.')
+    .option('-s, --smell', 'detect smelly source')
     .action(async (options) => await withMonsterManager(async monsterManager => {
       const analysis = await monsterManager.analyze();
-      console.log(`${analysis.numStrings} strings in ${analysis.numSources} resources`);
+      console.log(`${analysis.numStrings.toLocaleString()} strings (${analysis.totalWC.toLocaleString()} words) in ${analysis.numSources.toLocaleString()} resources`);
       const qWC = analysis.qualifiedRepetitions.reduce((p, c) => p + (c.length - 1) * c[0].wc, 0);
-      console.log(`${analysis.qualifiedRepetitions.length} qualified repetitions, ${qWC} duplicate word count`);
+      console.log(`${analysis.qualifiedRepetitions.length.toLocaleString()} locally qualified repetitions, ${qWC.toLocaleString()} duplicate word count`);
       if (monsterCLI.opts().verbose) {
         for (const qr of analysis.qualifiedRepetitions) {
-          console.log(`${qr[0].wc} words, sid: ${qr[0].sid}, txt: ${qr[0].str}`);
+          console.log(`${qr[0].wc.toLocaleString()} words, sid: ${qr[0].sid}, txt: ${qr[0].str}`);
           for (const r of qr) {
             console.log(`  - ${r.rid}`);
           }
         }
       }
       const uWC = analysis.unqualifiedRepetitions.reduce((p, c) => p + (c.length - 1) * c[0].wc, 0);
-      console.log(`${analysis.unqualifiedRepetitions.length} unqualified repetitions, ${uWC} duplicate word count`);
+      console.log(`${analysis.unqualifiedRepetitions.length.toLocaleString()} unqualified repetitions, ${uWC.toLocaleString()} duplicate word count`);
       if (monsterCLI.opts().verbose) {
         for (const ur of analysis.unqualifiedRepetitions) {
-          console.log(`${ur[0].wc} words, txt: ${ur[0].str}`);
+          console.log(`${ur[0].wc.toLocaleString()} words, txt: ${ur[0].str}`);
           for (const r of ur) {
             console.log(`  - ${r.rid}, sid: ${r.sid}`);
           }
+        }
+      }
+      if (options.smell) {
+        for (const { rid, sid, str } of analysis.smelly) {
+          console.log(`${rid}:${sid}:${str}`);
         }
       }
   }))
@@ -167,7 +173,7 @@ monsterCLI
         const status = await monsterManager.push();
         if (status.length > 0) {
           for (const ls of status) {
-            console.log(`${ls.num} translations units requested for language ${ls.lang} -> status: ${ls.status}`);
+            console.log(`${ls.num.toLocaleString()} translations units requested for language ${ls.lang} -> status: ${ls.status}`);
           }
         } else {
           console.log('Nothing to push!');
@@ -192,7 +198,7 @@ monsterCLI
       } else {
         if (status.length > 0) {
           for (const ls of status) {
-            console.log(`${ls.num} translations units grandfathered for language ${ls.lang}`);
+            console.log(`${ls.num.toLocaleString()} translations units grandfathered for language ${ls.lang}`);
           }
         } else {
           console.log('Nothing to grandfather!');
@@ -207,7 +213,7 @@ monsterCLI
     .action(async () => await withMonsterManager(async monsterManager => {
       console.log(`Pulling pending translations...`);
       const stats = await monsterManager.pull();
-      console.log(`Checked ${stats.numPendingJobs} pending jobs, ${stats.translatedStrings} translated strings pulled`);
+      console.log(`Checked ${stats.numPendingJobs.toLocaleString()} pending jobs, ${stats.translatedStrings.toLocaleString()} translated strings pulled`);
   }))
 ;
 

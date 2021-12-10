@@ -110,7 +110,7 @@ export default class MonsterManager {
         if (inflight) {
             for (const guid of inflight) {
                 if (!(guid in tm.tus)) {
-                    tm.tus[guid] = { q: 0 };
+                    tm.tus[guid] = { q: 0, jobId: jobResponse.jobId };
                     dirty = true;
                 }
             }
@@ -136,10 +136,11 @@ export default class MonsterManager {
     async #createTranslator(sourceLang, targetLang) {
         await this.#updateTM(sourceLang, targetLang);
         const tm = this.#getTM(sourceLang, targetLang);
+        const verbose = this.verbose;
         return async function translate(rid, sid, str) {
             const guid = generateFullyQualifiedGuid(rid, sid, str);
             if (!(guid in tm.tus)) {
-                this.verbose && console.log(`Couldn't find ${sourceLang}_${targetLang} entry for ${rid}+${sid}+${str}`);
+                verbose && console.log(`Couldn't find ${sourceLang}_${targetLang} entry for ${rid}+${sid}+${str}`);
             }
             return tm.tus[guid]?.str || str; // falls back to source string (should not happen)
         }
@@ -211,15 +212,22 @@ export default class MonsterManager {
         const qualifiedMatches = {}; // sid+str
         const unqualifiedMatches = {}; // str only
         let numStrings = 0;
+        let totalWC = 0;
+        const smellyRegex = /[^a-zA-Z 0-9\.\,\;\:\!\(\)\-\']/;
+        const smelly = [];
         for (const [rid, res] of sources) {
             for (const tu of res.translationUnits) {
                 numStrings++;
                 const wc = wordsCountModule.wordsCount(tu.str);
+                totalWC += wc;
                 const qGuid = generateSidQualifiedGuid(tu.sid, tu.str);
                 unqualifiedMatches[tu.str] = unqualifiedMatches[tu.str] || [];
                 unqualifiedMatches[tu.str].push({ rid, sid: tu.sid, str: tu.str, wc, qGuid });
                 qualifiedMatches[qGuid] = qualifiedMatches[qGuid] || [];
                 qualifiedMatches[qGuid].push({ rid, sid: tu.sid, str: tu.str, wc });
+                if (smellyRegex.test(tu.str)) {
+                    smelly.push({ rid, sid:tu.sid, str:tu.str });
+                }
             }
         }
         for (const [k, v] of Object.entries(unqualifiedMatches)) {
@@ -231,8 +239,10 @@ export default class MonsterManager {
         return { 
             numSources: sources.length,
             numStrings,
+            totalWC,
             unqualifiedRepetitions: Object.values(unqualifiedMatches),
             qualifiedRepetitions: Object.values(qualifiedMatches),
+            smelly,
         };
     }
 
