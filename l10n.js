@@ -29,11 +29,15 @@ async function initMonster() {
     const configPath = path.join(baseDir, 'l10nmonster.mjs');
     if (existsSync(configPath)) {
       const verbose = monsterCLI.opts().verbose;
+      const build = monsterCLI.opts().build;
+      const release = monsterCLI.opts().release;
       const ctx = {
         baseDir,
         env: process.env,
         arg: monsterCLI.opts().arg,
         verbose,
+        build,
+        release,
       };
       const helpers = {
         stores: {
@@ -71,7 +75,7 @@ async function initMonster() {
         if (!existsSync(monsterDir)) {
           mkdirSync(monsterDir, {recursive: true});
         }
-        return new MonsterManager({ monsterDir, monsterConfig, verbose });  
+        return new MonsterManager({ monsterDir, monsterConfig, verbose, build, release });  
       } catch(e) {
         throw `l10nmonster.mjs failed to construct: ${e}`;
       }
@@ -106,16 +110,16 @@ monsterCLI
     .version('0.1.0')
     .description('Continuous localization for the rest of us.')
     .option('-a, --arg <string>', 'optional constructor argument')
+    .option('-b, --build <type>', 'build type')
+    .option('-r, --release <num>', 'release number')
     .option('-v, --verbose', 'output additional debug information')
 ;
 
 monsterCLI
     .command('status')
     .description('translation status of content.')
-    .option('-b, --build <type>', 'build type')
-    .option('-r, --release <num>', 'release number')
     .action(async (options) => await withMonsterManager(async monsterManager => {
-      const status = await monsterManager.status(options.build, options.release);
+      const status = await monsterManager.status();
       console.log(`${status.numSources.toLocaleString()} translatable resources`);
       console.log(`${status.pendingJobsNum.toLocaleString()} pending jobs`);
       for (const [lang, stats] of Object.entries(status.lang)) {
