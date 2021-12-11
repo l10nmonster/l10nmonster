@@ -144,11 +144,12 @@ export default class MonsterManager {
             if (!(guid in tm.tus)) {
                 verbose && console.log(`Couldn't find ${sourceLang}_${targetLang} entry for ${rid}+${sid}+${str}`);
             }
-            return tm.tus[guid]?.str || str; // falls back to source string (should not happen)
+            return tm.tus[guid]?.str ?? str; // falls back to source string
         }
     }
 
     async #prepareTranslationJob(targetLang) {
+        const minimumQuality = this.monsterConfig.minimumQuality ?? 50;
         const sources = Object.entries(this.sourceCache);
         const job = {
             sourceLang: this.sourceLang,
@@ -164,7 +165,8 @@ export default class MonsterManager {
         for (const [rid, res] of sources) {
             for (const tu of res.translationUnits) {
                 // TODO: if tu is pluralized we need to generate/suppress the relevant number of variants for the targetLang
-                if (!(tu.guid in tm.tus)) {
+                const tmEntry = tm.tus[tu.guid];
+                if (!tmEntry || tmEntry.q < minimumQuality) {
                     job.tus.push({
                         ...tu,
                         rid,
@@ -173,7 +175,7 @@ export default class MonsterManager {
                     unstranslatedChars += tu.str.length;
                     unstranslatedWords += wordsCountModule.wordsCount(tu.str);
             } else {
-                    translated[tm.tus[tu.guid].q] = (translated[tm.tus[tu.guid].q] || 0) + 1;
+                    translated[tmEntry.q] = (translated[tmEntry.q] || 0) + 1;
                 }
             }
         }
