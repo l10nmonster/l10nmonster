@@ -75,7 +75,8 @@ async function initMonster() {
         if (!existsSync(monsterDir)) {
           mkdirSync(monsterDir, {recursive: true});
         }
-        return new MonsterManager({ monsterDir, monsterConfig, verbose, build, release });  
+        MonsterManager.prototype.verbose = verbose;
+        return new MonsterManager({ monsterDir, monsterConfig, build, release });
       } catch(e) {
         throw `l10nmonster.mjs failed to construct: ${e}`;
       }
@@ -123,8 +124,8 @@ monsterCLI
       console.log(`${status.numSources.toLocaleString()} translatable resources`);
       console.log(`${status.pendingJobsNum.toLocaleString()} pending jobs`);
       for (const [lang, stats] of Object.entries(status.lang)) {
-        console.log(`Language ${lang}:`);
-        console.log(`  - strings in translation memory: ${stats.tusNum.toLocaleString()}`);
+        console.log(`Language ${lang} (minimum quality ${stats.minimumQuality}):`);
+        console.log(`  - strings in translation memory: ${stats.tmSize.toLocaleString()}`);
         for (const [q, num] of Object.entries(stats.translated).sort((a,b) => b[1] - a[1])) {
           console.log(q ? `  - translated strings @ quality ${q}: ${num.toLocaleString()}` : `  - strings pending translation: ${num.toLocaleString()}`);
         }
@@ -195,7 +196,7 @@ monsterCLI
     .option('-l, --lang <language>', 'target language to import')
     .action(async (options) => await withMonsterManager(async monsterManager => {
       const quality = options.quality || 50;
-      console.log(`Grandfathering existing ${options.lang} translations at quality level ${quality}...`);
+      console.log(`Grandfathering existing translations at quality level ${quality}...`);
       const status = await monsterManager.grandfather(quality, options.lang);
       if (status.error) {
         console.error(`Failed: ${status.error}`);

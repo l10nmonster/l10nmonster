@@ -2,6 +2,7 @@ export default class GrampsConfig {
     sourceLang = 'en';
     targetLangs = [ 'ja', 'it' ];
     constructor({ ctx, stores, adapters, filters, translators }) {
+        this.minimumQuality = ctx.build === 'prod' ? 95 : 0; // only push production builds
         const dbConfig = {
             org: 'test1',
             prj: 'gramps',

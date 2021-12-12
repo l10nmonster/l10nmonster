@@ -8,6 +8,7 @@ import {
     createHash,
 } from 'crypto';  
 import wordsCountModule from 'words-count';
+import TMManager from './tmManager.js';
 import { DummyJobStore } from './dummyJobStore.js';
 
 function generateSidQualifiedGuid(sid, str) {
@@ -23,21 +24,28 @@ function generateFullyQualifiedGuid(rid, sid, str) {
 }
 
 export default class MonsterManager {
-    constructor({ monsterDir, monsterConfig, verbose, build, release }) {
+    constructor({ monsterDir, monsterConfig, build, release }) {
         this.monsterDir = monsterDir;
         this.monsterConfig = monsterConfig;
-        this.verbose = verbose;
         this.build = build;
         this.release = release;
-        this.jobStore = monsterConfig.jobStore || new DummyJobStore();
+        this.jobStore = monsterConfig.jobStore ?? new DummyJobStore();
+        this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore });
         this.stateStore = monsterConfig.stateStore;
-        this.debug = monsterConfig.debug || {};
+        this.debug = monsterConfig.debug ?? {};
         this.sourceLang = monsterConfig.sourceLang;
         this.sourceCachePath = path.join(monsterDir, 'sourceCache.json');
         this.sourceCache = existsSync(this.sourceCachePath) ? 
             JSON.parse(readFileSync(this.sourceCachePath, 'utf8')) :
             { };
-        this.tmCache = {};
+    }
+
+    #getMinimumQuality(jobManifest) {
+        let minimumQuality = this.monsterConfig.minimumQuality;
+        if (typeof minimumQuality === 'function') {
+            minimumQuality = minimumQuality(jobManifest);
+        }
+        return minimumQuality ?? 50;
     }
 
     async #updateSourceCache() {
@@ -66,98 +74,25 @@ export default class MonsterManager {
         }
     }
 
-    #tmPathName(sourceLang, targetLang) {
-        return path.join(this.monsterDir, `tmCache_${sourceLang}_${targetLang}.json`);
-    }
 
-    async #writeTM(sourceLang, targetLang) {
-        const tmPath = this.#tmPathName(sourceLang, targetLang);
-        this.verbose && console.log(`Updating ${tmPath}...`);
-        await fs.writeFile(tmPath, JSON.stringify(this.tmCache[`${sourceLang}_${targetLang}`], null, '\t'), 'utf8');
-    }
-
-    #getTM(sourceLang, targetLang) {
-        const langPair = `${sourceLang}_${targetLang}`;
-        if (!this.tmCache[langPair]) {
-            const tmPath = this.#tmPathName(sourceLang, targetLang);
-            const tm = existsSync(tmPath) ? 
-                JSON.parse(readFileSync(tmPath, 'utf8')) :
-                {
-                    jobStatus: {},
-                    tus: {},
-                }
-            ;
-            this.tmCache[langPair] = tm;
-        }
-        return this.tmCache[langPair];
-    }
-
-    async #updateTM(sourceLang, targetLang) {
-        const tm = this.#getTM(sourceLang, targetLang);
-        const jobs = await this.jobStore.getJobStatusByLangPair(sourceLang, targetLang);
-        for (const [jobId, status] of jobs) {
-            if (tm.jobStatus[jobId] !== status) {
-                const job = await this.jobStore.getJob(jobId);
-                await this.#processJob(job);
-            }
-        }
-    }
     
     async #processJob(jobResponse, jobRequest) {
-        const { inflight, tus, ...jobManifest } = jobResponse;
-        jobManifest.inflightNum = inflight?.length || 0;
         await this.jobStore.updateJob(jobResponse, jobRequest);
-        const tm = this.#getTM(jobResponse.sourceLang, jobResponse.targetLang);
-        let dirty = tm.jobStatus[jobResponse.jobId] !== jobResponse.status;;
-        if (inflight) {
-            for (const guid of inflight) {
-                if (!(guid in tm.tus)) {
-                    tm.tus[guid] = { q: 0, jobId: jobResponse.jobId };
-                    dirty = true;
-                }
-            }
-        }
-        if (tus) {
-            for (const tu of tus) {         
-                if (!tm.tus[tu.guid] || tm.tus[tu.guid].q < tu.q) {
-                    tm.tus[tu.guid] = {
-                        str: tu.str,
-                        q: tu.q,
-                    };
-                    dirty = true;
-                }
-            }
-        }
-        if (dirty) {
-            tm.jobStatus[jobResponse.jobId] = jobResponse.status;
-            await this.#writeTM(jobResponse.sourceLang, jobResponse.targetLang);
-        }
+        const tm = await this.tmm.getTM(jobResponse.sourceLang, jobResponse.targetLang);
+        await tm.processJob(jobResponse);
         return tm;
     }
 
-    async #createTranslator(sourceLang, targetLang) {
-        await this.#updateTM(sourceLang, targetLang);
-        const tm = this.#getTM(sourceLang, targetLang);
-        const verbose = this.verbose;
-        return async function translate(rid, sid, str) {
-            const guid = generateFullyQualifiedGuid(rid, sid, str);
-            if (!(guid in tm.tus)) {
-                verbose && console.log(`Couldn't find ${sourceLang}_${targetLang} entry for ${rid}+${sid}+${str}`);
-            }
-            return tm.tus[guid]?.str ?? str; // falls back to source string
-        }
-    }
-
     async #prepareTranslationJob(targetLang) {
-        const minimumQuality = this.monsterConfig.minimumQuality ?? 50;
         const sources = Object.entries(this.sourceCache);
         const job = {
             sourceLang: this.sourceLang,
             targetLang,
+            ts: new Date().getTime(),
             tus: [],
         };
-        await this.#updateTM(this.sourceLang, targetLang);
-        const tm = this.#getTM(this.sourceLang, targetLang); // TODO: source language may vary by resource or unit, if supported
+        const minimumQuality = this.#getMinimumQuality(job);
+        const tm = await this.tmm.getTM(this.sourceLang, targetLang); // TODO: source language may vary by resource or unit, if supported
         let translated = {},
             unstranslated = 0,
             unstranslatedChars = 0,
@@ -165,7 +100,7 @@ export default class MonsterManager {
         for (const [rid, res] of sources) {
             for (const tu of res.translationUnits) {
                 // TODO: if tu is pluralized we need to generate/suppress the relevant number of variants for the targetLang
-                const tmEntry = tm.tus[tu.guid];
+                const tmEntry = tm.getEntry(rid, tu.sid, tu.str);
                 if (!tmEntry || tmEntry.q < minimumQuality) {
                     job.tus.push({
                         ...tu,
@@ -175,12 +110,12 @@ export default class MonsterManager {
                     unstranslatedChars += tu.str.length;
                     unstranslatedWords += wordsCountModule.wordsCount(tu.str);
             } else {
-                    translated[tmEntry.q] = (translated[tmEntry.q] || 0) + 1;
+                    translated[tmEntry.q] = (translated[tmEntry.q] ?? 0) + 1;
                 }
             }
         }
-        const tusNum = Object.keys(tm.tus).length;
-        job.leverage = { translated, unstranslated, unstranslatedChars, unstranslatedWords, tusNum };
+        const tmSize = tm.size;
+        job.leverage = { minimumQuality, translated, unstranslated, unstranslatedChars, unstranslatedWords, tmSize };
         return job; // TODO: this should return a list of jobs to be able to handle multiple source languages
     }
 
@@ -225,9 +160,9 @@ export default class MonsterManager {
                 const wc = wordsCountModule.wordsCount(tu.str);
                 totalWC += wc;
                 const qGuid = generateSidQualifiedGuid(tu.sid, tu.str);
-                unqualifiedMatches[tu.str] = unqualifiedMatches[tu.str] || [];
+                unqualifiedMatches[tu.str] = unqualifiedMatches[tu.str] ?? [];
                 unqualifiedMatches[tu.str].push({ rid, sid: tu.sid, str: tu.str, wc, qGuid });
-                qualifiedMatches[qGuid] = qualifiedMatches[qGuid] || [];
+                qualifiedMatches[qGuid] = qualifiedMatches[qGuid] ?? [];
                 qualifiedMatches[qGuid].push({ rid, sid: tu.sid, str: tu.str, wc });
                 if (smellyRegex.test(tu.str)) {
                     smelly.push({ rid, sid:tu.sid, str:tu.str });
@@ -254,17 +189,17 @@ export default class MonsterManager {
         const status = [];
         await this.#updateSourceCache();
         for (const targetLang of this.monsterConfig.targetLangs) {
-            const job = await this.#prepareTranslationJob(targetLang);
-            if (Object.keys(job.tus).length > 0) {
+            const jobRequest = await this.#prepareTranslationJob(targetLang);
+            if (Object.keys(jobRequest.tus).length > 0) {
                 const jobId = await this.jobStore.createJobManifest();
-                job.jobId = jobId;
-                const translationProvider = this.#getTranslationProvider(job);
+                jobRequest.jobId = jobId;
+                const translationProvider = this.#getTranslationProvider(jobRequest);
                 if (translationProvider) {
-                    job.translationProvider = translationProvider.constructor.name;
-                    const jobResponse = await translationProvider.requestTranslations(job);
-                    await this.#processJob(jobResponse, job);
+                    jobRequest.translationProvider = translationProvider.constructor.name;
+                    const jobResponse = await translationProvider.requestTranslations(jobRequest);
+                    await this.#processJob(jobResponse, jobRequest);
                     status.push({
-                        num: jobResponse.tus?.length || jobResponse.inflight?.length || 0,
+                        num: jobResponse.tus?.length ?? jobResponse.inflight?.length ?? 0,
                         lang: jobResponse.targetLang,
                         status: jobResponse.status
                     });
@@ -293,43 +228,54 @@ export default class MonsterManager {
             }
         }
         for (const lang of langs) {
-            const job = await this.#prepareTranslationJob(lang);
-            if (Object.keys(job.tus).length > 0) {
-                const translations = [];
-                const txCache = {};
-                for (const tu of job.tus) {
-                    if (!txCache[tu.rid]) {
-                        const lookup = {};
-                        let resource;
-                        try {
-                            resource = await pipeline.target.fetchTranslatedResource(lang, tu.rid);
-                        } catch {
-                        } finally {
-                            if (resource) {
-                                const parsedResource = await pipeline.resourceFilter.parseResource({ resource, isSource: false });
-                                parsedResource.translationUnits.forEach(tu => lookup[tu.sid] = tu.str);
-                            }
+            const txCache = {};
+            const jobRequest = await this.#prepareTranslationJob(lang);
+            const sources = [];
+            const translations = [];
+            for (const tu of jobRequest.tus) {
+                if (!txCache[tu.rid]) {
+                    const lookup = {};
+                    let resource;
+                    try {
+                        // this.verbose && console.log(`Getting ${tu.rid} for language ${lang}`);
+                        resource = await pipeline.target.fetchTranslatedResource(lang, tu.rid);
+                    } catch (e) {
+                        console.error(`Couldn't fetch translated resource: ${e}`);
+                    } finally {
+                        if (resource) {
+                            const parsedResource = await pipeline.resourceFilter.parseResource({ resource, isSource: false });
+                            parsedResource.translationUnits.forEach(tu => lookup[tu.sid] = tu.str);
                         }
-                        txCache[tu.rid] = lookup;
                     }
-                    const previousTranslation = txCache[tu.rid][tu.sid];
-                    if (previousTranslation) {
-                        translations.push({
-                            guid: tu.guid,
-                            str: previousTranslation,
-                            q: quality
-                        });
-                    }
+                    txCache[tu.rid] = lookup;
                 }
-                job.tus = translations;
-                job.status = 'done';
-                job.translationProvider = 'Grandfather';
-                job.jobId = await this.jobStore.createJobManifest();
-                await this.#processJob(job);
+                const previousTranslation = txCache[tu.rid][tu.sid];
+                if (previousTranslation) {
+                    sources.push(tu);
+                    translations.push({
+                        guid: tu.guid,
+                        rid: tu.rid,
+                        sid: tu.sid,
+                        str: previousTranslation,
+                        q: quality
+                    });
+                }
+            }
+            this.verbose && console.log(`Grandfathering ${lang}... found ${jobRequest.tus.length} missing translations, of which ${translations.length} existing`);
+            if (translations.length > 0) {
+                const { tus, ...jobResponse } = jobRequest;
+                jobRequest.tus = sources;
+                jobResponse.tus = translations;
+                jobResponse.status = 'done';
+                jobResponse.translationProvider = 'Grandfather';
+                const jobId = await this.jobStore.createJobManifest();
+                jobRequest.jobId = jobId;
+                jobResponse.jobId = jobId;
+                await this.#processJob(jobResponse, jobRequest);
                 status.push({
                     num: translations.length,
                     lang,
-                });
+                });    
             }
         }
         return status;
@@ -356,7 +302,7 @@ export default class MonsterManager {
         const status = [];
         const resourceIds = (await pipeline.source.fetchResourceStats()).map(rh => rh.id);
         for (const lang of this.monsterConfig.targetLangs) {
-            const translator = await this.#createTranslator(this.sourceLang, lang);
+            const translator = (await this.tmm.getTM(this.sourceLang, lang)).translator;
             for (const resourceId of resourceIds) {
                 const resource = await pipeline.source.fetchResource(resourceId);
                 const translatedRes = await pipeline.resourceFilter.generateTranslatedResource({ resourceId, resource, lang, translator });

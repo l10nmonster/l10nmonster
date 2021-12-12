@@ -36,6 +36,7 @@ export class XliffBridge {
             await fs.mkdir(path.dirname(prjPath), {recursive: true});
             await fs.writeFile(prjPath, xliff, 'utf8');
             jobResponse.inflight = Object.values(jobRequest.tus).map(tu => tu.guid);
+            jobResponse.envelope = { expectedTus: jobResponse.inflight.length };
             jobResponse.status = 'pending';
         } else {
             jobResponse.status = 'error';
@@ -61,7 +62,7 @@ export class XliffBridge {
                     // console.dir(xt);
                 }
             }
-            if (jobManifest.inflightNum === tus.length) {
+            if (jobManifest.envelope.expectedTus === tus.length) {
                 jobManifest.status = 'done';
             }
             if (tus.length > 0) {

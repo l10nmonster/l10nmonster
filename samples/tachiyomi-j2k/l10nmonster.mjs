@@ -7,7 +7,6 @@ const androidLangMapping = {
 export default class TachiyomiConfig {
     sourceLang = 'en';
     targetLangs = [ 'ja', 'it', 'piggy' ];
-    unqualifiedRepetitionsQuality = 70; // ignore filename and string id
 
     constructor({ ctx, stores, adapters, filters, translators }) {
         this.source = new adapters.FsSource({
@@ -47,5 +46,6 @@ export default class TachiyomiConfig {
         });
         const piggyTranslator = new translators.PigLatinizer();
         this.translationProvider = (job) => job.targetLang === 'piggy' ? piggyTranslator : xliffTranslator;
+        this.minimumQuality = (job) => job.targetLang === 'piggy' ? 1 : 50;
     }
 }

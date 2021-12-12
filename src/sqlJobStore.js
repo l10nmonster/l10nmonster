@@ -41,7 +41,8 @@ export class SqlJobStore {
                         table.string('sourceLang', 8);
                         table.string('targetLang', 8);
                         table.string('translationProvider', 32);
-                        table.integer('inflightNum');
+                        table.double('ts');
+                        table.json('envelope');
                         table.timestamp('requestedAt');
                         table.timestamp('updatedAt');
                         table.json('req');
@@ -61,7 +62,7 @@ export class SqlJobStore {
     async getJobManifests(status) {
         this.db || await this.init();
         const manifests = await this.db('jobStore')
-            .select('jobId', 'status', 'sourceLang', 'targetLang', 'translationProvider', 'inflightNum', 'requestedAt', 'updatedAt')
+            .select('jobId', 'status', 'sourceLang', 'targetLang', 'translationProvider', 'envelope', 'requestedAt', 'updatedAt')
             .where({ 
                 org: this.org,
                 prj: this.prj,
@@ -98,14 +99,16 @@ export class SqlJobStore {
 
     async updateJob(jobResponse, jobRequest) {
         this.db || await this.init();
-        const { inflight, tus, leverage, ...row } = jobResponse;
+        const { inflight, tus, leverage, envelope, ...row } = jobResponse;
         if (jobRequest) {
+            row.requestedAt = currentISODate();
             row.req = JSON.stringify(jobRequest);
         }
         // if (leverage) {
         //     row.leverage = JSON.stringify(leverage);
         // }
         row.res = JSON.stringify(jobResponse);
+        envelope && (row.envelope = JSON.stringify(envelope));
         row.updatedAt = currentISODate();
         await this.db('jobStore')
             .where({
