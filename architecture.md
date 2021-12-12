@@ -6,7 +6,8 @@ The system is designed with modern translation principles in mind. Specifically:
 
 * The translation process is composed of a pipeline of steps that starts from reading the source content and ends in writing corresponding translated resources.
 * Source content is split into translation units, each with a guid that identifies them. Two translation units with the same guid would get the same identical translation.
-* By default the guid is derived from the resource id, the logical string id (if present), and the source text. This is the most strict guid generation logic and allow extreme contextual customization but prevents reuse. When translation reuse is desirable and it's safe to do so, it's possible to override guid generation to relax the uniqueness logic.
+* The guid is derived from the resource id, the logical string id, and the source text. This is the most strict guid generation logic and allows extreme contextual customization.
+* Translations of the same source text can be reused in different string id's and/or resource id's but quality may suffer because sometimes context changes translations. Users can configure, based on their use cases, how much quality is degraded and whether reuse is acceptable or not.
 * Translated resources are never source of record and can be re-generated / overwritten at any time.
 * Translations are organized in translation jobs typically sent to translation vendors. Completed translation jobs are saved and constitute the source of record.
 * Translation processes may yield different levels of quality (e.g. machine translation vs. single-pass human translation vs. human translation with review). Each translation unit carries a level of quality.
@@ -44,6 +45,27 @@ In addition to configurable modular pipelines, the system also supports pluggabl
 
 * `async fetchTranslatedResource(lang, resourceId)` -> `string` - fetch the specific translated resource as a string
 * `async commitTranslatedResource(lang, resourceId, translatedRes)` - write the specific translated resource
+
+### TM Design
+
+The collection of all translation jobs, yields internally to a translation memory that is the source of truth of all translations. Each entry in the TM has a structure as follows:
+
+```json
+"tu": {
+    "bRBL1Isi3Xj28gXDOAgjrQfgd3j4u+evwXScOaysjwk=": {
+        "guid": "7Yg93c458EbHxMIJHNXXG77jF5ZnrMzxv8ScSU0oCyQ",
+        "rid": "dashlets/activity-list.get_en.properties",
+        "sid": "title.generic",
+        "src": "New Activity",
+        "tgt": "Nuova attività",
+        "q": 80,
+        "ts": 12324543654,
+        "jobId": 1
+    }
+```
+
+The first hash used as the key in the `tu` object is based on the normalized source string, ignoring placeholder literals and only preserving positions (this is done so that, for example, iOS and Android strings can be shared if they have the same text even though they use different placeholder syntax).
+
 
 ## System Design
 

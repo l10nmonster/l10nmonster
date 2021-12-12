@@ -122,7 +122,7 @@ export class SqlJobStore {
     async getJob(jobId) {
         this.db || await this.init();
         const [ row ] = await this.db('jobStore')
-            .select('job')
+            .select('res')
             .where({
                 org: this.org,
                 prj: this.prj,

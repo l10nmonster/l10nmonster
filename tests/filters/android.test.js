@@ -9,7 +9,7 @@ describe ('android filter tests', () =>{
 
   test('parseResource returns resource object', async () => {
     const expectedOutput = {
-      "translationUnits": [{
+      "segments": [{
         "sid": "app_name",
         "str": "TachiyomiJ2K"
       }, {

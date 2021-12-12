@@ -10,7 +10,7 @@ export class PigLatinizer {
         const { tus, ...jobResponse } = jobRequest;
         jobResponse.tus = jobRequest.tus.map(tu => ({
             guid: tu.guid,
-            str: `[${pigLatin.translate(tu.str)}-${jobRequest.targetLang}]`,
+            tgt: `[${pigLatin.translate(tu.src)}-${jobRequest.targetLang}]`,
             q: this.quality
         }));
         jobResponse.status = 'done';

@@ -7,38 +7,38 @@ import gettextParser from 'gettext-parser';
 export class PoFilter {
     async parseResource({ resource, isSource }) {
         const poFile = gettextParser.po.parse(resource);
-        const translationUnits = [];
-        for (const [domain, segments] of Object.entries(poFile.translations)) {
-            for (const s of Object.values(segments)) {
+        const segments = [];
+        for (const [domain, pairs] of Object.entries(poFile.translations)) {
+            for (const s of Object.values(pairs)) {
                 if (s.msgid.length > 0) {
                     const sidHash = createHash('sha1');
                     sidHash.update(s.msgid, 'utf8');
                     const sid = `${domain}:${sidHash.digest().toString('base64')}`;
                     const str = isSource ? s.msgid : s.msgstr[0];
-                    const tu = {
+                    const seg = {
                         sid,
                         str,
                         notes: JSON.stringify(s.comments),
                     };
                     if (s?.comments?.flag) {
-                        tu.msgFmt = s.comments.flag; // TODO: don't just log this but actually use it for protecting placeholders
+                        seg.msgFmt = s.comments.flag; // TODO: don't just log this but actually use it for protecting placeholders
                     }
                     if (s.msgid_plural) {
-                        const baseSid = tu.sid;
-                        tu.isSuffixPluralized = true;
-                        translationUnits.push({
-                            ...tu,
+                        const baseSid = seg.sid;
+                        seg.isSuffixPluralized = true;
+                        segments.push({
+                            ...seg,
                             sid: `${baseSid}_one`,
                         });
-                        tu.sid = `${baseSid}_other`;
-                        tu.str = s.msgid_plural; // TODO: this is wrong if isSource === true, should get s.msgstr array and create corresponding tu's
+                        seg.sid = `${baseSid}_other`;
+                        seg.str = s.msgid_plural; // TODO: this is wrong if isSource === true, should get s.msgstr array and create corresponding segments
                     }
-                    translationUnits.push(tu);
+                    segments.push(seg);
                 }
             }
         }
         return {
-            translationUnits,
+            segments,
         };
     }
 

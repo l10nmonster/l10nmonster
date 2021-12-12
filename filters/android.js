@@ -7,30 +7,30 @@ export class AndroidFilter {
 
     async parseResource({ resource }) {
         const parsedResource = await android.asr2js(resource, { comment: this.comment });
-        const translationUnits = [];
+        const segments = [];
         for (const [sid, source] of Object.entries(parsedResource)) {
             // TODO: support pluggable message format handlers for placeholders
             // if (source.attr.translatable !== 'false') { // TODO: support translatable attribute
-                const tu = { };
+                const seg = { };
                 if (sid.indexOf('.') >= 0) {
-                    tu.isSuffixPluralized = true;
-                    tu.sid = sid.replace('.', '_');
+                    seg.isSuffixPluralized = true;
+                    seg.sid = sid.replace('.', '_');
                 } else {
-                    tu.sid = sid;
+                    seg.sid = sid;
                 }
                 if (typeof source === 'object') {
-                    tu.str = source.value;
+                    seg.str = source.value;
                     if (source.comment) {
-                        tu.notes = typeof source.comment === 'string' ? source.comment : source.comment.join('\n');
+                        seg.notes = typeof source.comment === 'string' ? source.comment : source.comment.join('\n');
                     }
                 } else {
-                    tu.str = source;
+                    seg.str = source;
                 }
-                translationUnits.push(tu);
+                segments.push(seg);
             // }
         }
         return {
-            translationUnits,
+            segments,
         };
     }
 

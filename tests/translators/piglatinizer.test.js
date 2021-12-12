@@ -5,45 +5,45 @@ describe ('pig latinizer translator tests', () =>{
   const job = {
     "tus": [{
       "guid": "app_name",
-      "str": "TachiyomiJ2K"
+      "src": "TachiyomiJ2K"
     }, {
       "guid": "app_short_name",
-      "str": "TachiJ2K"
+      "src": "TachiJ2K"
     }, {
       "guid": "str1",
-      "str": "Winter is coming"
+      "src": "Winter is coming"
     }, {
       "guid": "move_x_to",
-      "str": "Move %1$s to…"
+      "src": "Move %1$s to…"
     }, {
       "guid": "chapter_x_of_y",
-      "str": "Chapter %1$d of %2$d"
+      "src": "Chapter %1$d of %2$d"
     }, {
       "isSuffixPluralized": true,
       "guid": "chapters_plural_one",
-      "str": "%1$d chapter"
+      "src": "%1$d chapter"
     }, {
       "isSuffixPluralized": true,
       "guid": "chapters_plural_other",
-      "str": "%1$d chapters"
+      "src": "%1$d chapters"
     }]
   };
   const expectedOutput = {
       targetLang: 'fil',
       tus: [
-        { guid: 'app_name', str: '[TachiyomiJ2K-fil]', q: 80 },
-        { guid: 'app_short_name', str: '[TachiJ2K-fil]', q: 80 },
-        { guid: 'str1', str: '[Interway isyay omingcay-fil]', q: 80 },
-        { guid: 'move_x_to', str: '[Ovemay %1$s otay…-fil]', q: 80 },
+        { guid: 'app_name', tgt: '[TachiyomiJ2K-fil]', q: 80 },
+        { guid: 'app_short_name', tgt: '[TachiJ2K-fil]', q: 80 },
+        { guid: 'str1', tgt: '[Interway isyay omingcay-fil]', q: 80 },
+        { guid: 'move_x_to', tgt: '[Ovemay %1$s otay…-fil]', q: 80 },
         {
           guid: 'chapter_x_of_y',
-          str: '[Apterchay %1$d ofyay %2$d-fil]',
+          tgt: '[Apterchay %1$d ofyay %2$d-fil]',
           q: 80
         },
-        { guid: 'chapters_plural_one', str: '[%1$d apterchay-fil]', q: 80 },
+        { guid: 'chapters_plural_one', tgt: '[%1$d apterchay-fil]', q: 80 },
         {
           guid: 'chapters_plural_other',
-          str: '[%1$d apterschay-fil]',
+          tgt: '[%1$d apterschay-fil]',
           q: 80
         }
       ],

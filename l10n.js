@@ -95,7 +95,6 @@ async function withMonsterManager(cb) {
   } catch(e) {
     console.error(`Unable to initialize: ${e}`);
   }
-
 }
 
 function intOptionParser(value, dummyPrevious) {
@@ -127,8 +126,9 @@ monsterCLI
         console.log(`Language ${lang} (minimum quality ${stats.minimumQuality}):`);
         console.log(`  - strings in translation memory: ${stats.tmSize.toLocaleString()}`);
         for (const [q, num] of Object.entries(stats.translated).sort((a,b) => b[1] - a[1])) {
-          console.log(q ? `  - translated strings @ quality ${q}: ${num.toLocaleString()}` : `  - strings pending translation: ${num.toLocaleString()}`);
+          console.log(`  - translated strings @ quality ${q}: ${num.toLocaleString()}`);
         }
+        stats.pending && console.log(`  - strings pending translation: ${stats.pending.toLocaleString()}`);
         console.log(`  - untranslated strings: ${stats.unstranslated.toLocaleString()} (${stats.unstranslatedChars.toLocaleString()} chars - ${stats.unstranslatedWords.toLocaleString()} words - $${(stats.unstranslatedWords * .2).toFixed(2)})`);
       }
   }))

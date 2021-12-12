@@ -4,17 +4,9 @@ import {
     readFileSync,
 } from 'fs';
 import * as fs from 'fs/promises';
-import {
-    createHash,
-} from 'crypto';  
-
-function generateFullyQualifiedGuid(rid, sid, str) {
-    const sidContentHash = createHash('sha256');
-    sidContentHash.update(`${rid}|${sid}|${str}`, 'utf8');
-    return sidContentHash.digest().toString('base64');
-}
 
 class TM {
+    dirty = false;
     constructor(sourceLang, targetLang, tmPathName) {
         this.tmPathName = tmPathName;
         this.tm = existsSync(this.tmPathName) ? 
@@ -32,56 +24,60 @@ class TM {
         return Object.keys(this.tm.tus).length;
     }
     
-    getEntry(rid, sid, str) {
-        return this.tm.tus[generateFullyQualifiedGuid(rid, sid, str)];
+    getEntryByGuid(guid) {
+        return this.tm.tus[guid];
+    }
+
+    setEntryByGuid(guid, entry) {
+        // const existingEntry = this.tm.tus[guid] || {};
+        // this.tm.tus[guid] = { ...existingEntry, ...entry };
+        this.tm.tus[guid] = entry;
+        this.dirty = true;
     }
 
     getJobStatus(jobId) {
         return this.tm.jobStatus[jobId];
     }
 
-    get translator() {
-        const tm = this.tm;
-        const verbose = this.verbose;
-        return async function translate(rid, sid, str) {
-            const guid = generateFullyQualifiedGuid(rid, sid, str);
-            if (!(guid in tm.tus)) {
-                verbose && console.log(`Couldn't find ${sourceLang}_${targetLang} entry for ${rid}+${sid}+${str}`);
-            }
-            return tm.tus[guid]?.str ?? str; // falls back to source string
+    setJobStatus(jobId, status) {
+        if (this.tm.jobStatus[jobId] !== status) {
+            this.tm.jobStatus[jobId] = status;
+            this.dirty = true;
         }
     }
 
     async commit() {
-        this.verbose && console.log(`Updating ${this.tmPathName}...`);
-        await fs.writeFile(this.tmPathName, JSON.stringify(this.tm, null, '\t'), 'utf8');
+        if (this.dirty) {
+            this.verbose && console.log(`Updating ${this.tmPathName}...`);
+            await fs.writeFile(this.tmPathName, JSON.stringify(this.tm, null, '\t'), 'utf8');
+            this.dirty = false;
+        }
     }
 
-    async processJob(jobResponse) {
+    async processJob(jobResponse, jobRequest) {
+        const requestedUnits = (jobRequest?.tus ?? []).reduce((p,c) => (p[c.guid] = c, p), {});
         const { jobId, status, inflight, tus } = jobResponse;
-        const tmTus = this.tm.tus;
         const ts = jobResponse.ts || this.generation;
-        let dirty = this.tm.jobStatus[jobId] !== status;
         if (inflight) {
             for (const guid of inflight) {
-                if (!(guid in tmTus)) {
-                    tmTus[guid] = { q: 0, jobId };
-                    dirty = true;
+                const reqEntry = requestedUnits[guid] || {};
+                const tmEntry = this.getEntryByGuid(guid);
+                if (!tmEntry) {
+                    this.setEntryByGuid(guid, { ...reqEntry, q: 0, jobId, inflight: true });
                 }
             }
         }
         if (tus) {
             for (const tu of tus) {         
-                if (!tmTus[tu.guid] || tmTus[tu.guid].q < tu.q) {
-                    tmTus[tu.guid] = { ...tu, jobId, ts };
-                    dirty = true;
+                const tmEntry = this.getEntryByGuid(tu.guid);
+                const reqEntry = requestedUnits[tu.guid] || {};
+                if (!tmEntry || tmEntry.q < tu.q) {
+                    this.setEntryByGuid(tu.guid, { ...reqEntry, ...tu, jobId, ts });
                 }
             }
         }
-        if (dirty) {
-            this.tm.jobStatus[jobId] = status;
-            await this.commit();
-        }
+        this.setJobStatus(jobId, status);
+        await this.commit();
     }
 }
 
