@@ -213,6 +213,29 @@ monsterCLI
 ;
 
 monsterCLI
+    .command('leverage')
+    .description('leverage repetitions as a translation job.')
+    .option('-q, --qualified <level>', 'quality of qualified repetitions', intOptionParser)
+    .option('-u, --unqualified <level>', 'quality of unqualified repetitions', intOptionParser)
+    .option('-l, --lang <language>', 'target language to leverage')
+    .action(async (options) => await withMonsterManager(async monsterManager => {
+      console.log(`Leveraging translations of repetitions...`);
+      const status = await monsterManager.leverage(options.qualified, options.unqualified, options.lang);
+      if (status.error) {
+        console.error(`Failed: ${status.error}`);
+      } else {
+        if (status.length > 0) {
+          for (const ls of status) {
+            console.log(`${ls.num.toLocaleString()} translations leveraged for language ${ls.lang}`);
+          }
+        } else {
+          console.log('Nothing to leverage!');
+        }  
+      }
+  }))
+;
+
+monsterCLI
     .command('pull')
     .description('receive outstanding translation jobs.')
     .action(async () => await withMonsterManager(async monsterManager => {

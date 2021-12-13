@@ -35,6 +35,10 @@ class TM {
         this.dirty = true;
     }
 
+    getAllEntriesBySrc(src) {
+        return Object.values(this.tm.tus).filter(e => e.src === src);
+    }
+
     getJobStatus(jobId) {
         return this.tm.jobStatus[jobId];
     }

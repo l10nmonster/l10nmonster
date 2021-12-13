@@ -130,6 +130,18 @@ export default class MonsterManager {
         return translationProvider;
     }
 
+    #getLanguageList(limitToLang) {
+        let langs = this.monsterConfig.targetLangs;
+        if (limitToLang) {
+            if (langs.includes(limitToLang)) {
+                langs = [ limitToLang ];
+            } else {
+                return [ [], { error: 'Invalid Language' } ];
+            }
+        }
+        return [ langs, [] ];
+    }
+
     async status() {
         await this.#updateSourceCache();
         const status = { 
@@ -218,18 +230,8 @@ export default class MonsterManager {
     // are assumed to be in sync with source and imported into the TM
     async grandfather(quality, limitToLang) {
         const pipeline = this.monsterConfig;
-        const status = [];
         await this.#updateSourceCache();
-        let langs = this.monsterConfig.targetLangs;
-        if (limitToLang) {
-            if (langs.includes(limitToLang)) {
-                langs = [ limitToLang ];
-            } else {
-                return {
-                    error: 'Invalid Language'
-                };
-            }
-        }
+        const [langs, status] = this.#getLanguageList(limitToLang);
         for (const lang of langs) {
             const txCache = {};
             const jobRequest = await this.#prepareTranslationJob(lang);
@@ -275,6 +277,59 @@ export default class MonsterManager {
                 const jobId = await this.jobStore.createJobManifest();
                 jobRequest.jobId = jobId;
                 jobResponse.jobId = jobId;
+                await this.#processJob(jobResponse, jobRequest);
+                status.push({
+                    num: translations.length,
+                    lang,
+                });    
+            }
+        }
+        return status;
+    }
+
+    // this is similar to grandfather using translations of identical strings in different files (qualified)
+    // or different segments (unqualified)
+    async leverage(qualifiedQuality = 60, unqualifiedQuality = 50, limitToLang) {
+        await this.#updateSourceCache();
+        const [langs, status] = this.#getLanguageList(limitToLang);
+        for (const lang of langs) {
+            const tm = await this.tmm.getTM(this.sourceLang, lang);
+            const jobRequest = await this.#prepareTranslationJob(lang);
+            const sources = [];
+            const translations = [];
+            for (const tu of jobRequest.tus) {
+                const tuCandidates = tm.getAllEntriesBySrc(tu.src);
+                if (tuCandidates.length > 0) {
+                    let bestCandidate = { q: 0, ts: 0 };
+                    for (const candidate of tuCandidates) {
+                        if (tu.sid === candidate.sid || tu.sid !== bestCandidate.sid) {
+                            if (candidate.q > bestCandidate.q || (candidate.q === bestCandidate.q && candidate.ts > bestCandidate.ts)) {
+                                bestCandidate = candidate;
+                            }
+                        }
+                    }
+                    const leveragedTU = {
+                        ...bestCandidate,
+                        rid: tu.rid,
+                        sid: tu.sid,
+                        guid: generateFullyQualifiedGuid(tu.rid, tu.sid, tu.src),
+                        q: Math.min((tu.sid === bestCandidate.sid ? qualifiedQuality : unqualifiedQuality), bestCandidate.q),
+                    };
+                    sources.push(tu);
+                    translations.push(leveragedTU);
+                }
+            }
+            this.verbose && console.log(`Leveraging ${lang}... found ${jobRequest.tus.length} missing translations, of which ${translations.length} can be leveraged`);
+            if (translations.length > 0) {
+                const { tus, ...jobResponse } = jobRequest;
+                const jobId = await this.jobStore.createJobManifest();
+                jobRequest.jobId = jobId;
+                jobRequest.tus = sources;
+                jobResponse.jobId = jobId;
+                translations.forEach(tu => tu.jobId = jobId);
+                jobResponse.tus = translations;
+                jobResponse.status = 'done';
+                jobResponse.translationProvider = 'Repetition';
                 await this.#processJob(jobResponse, jobRequest);
                 status.push({
                     num: translations.length,
