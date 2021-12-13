@@ -80,7 +80,7 @@ export default class MonsterManager {
         await tm.processJob(jobResponse, jobRequest);
     }
 
-    async #prepareTranslationJob(targetLang) {
+    async #prepareTranslationJob(targetLang, minimumQuality) {
         const sources = Object.entries(this.sourceCache);
         const job = {
             sourceLang: this.sourceLang,
@@ -88,7 +88,7 @@ export default class MonsterManager {
             ts: new Date().getTime(),
             tus: [],
         };
-        const minimumQuality = this.#getMinimumQuality(job);
+        minimumQuality ?? (minimumQuality = this.#getMinimumQuality(job));
         const tm = await this.tmm.getTM(this.sourceLang, targetLang); // TODO: source language may vary by resource or unit, if supported
         let translated = {},
             unstranslated = 0,
@@ -142,14 +142,14 @@ export default class MonsterManager {
         return [ langs, [] ];
     }
 
-    async status() {
+    async status(minimumQuality) {
         await this.#updateSourceCache();
         const status = { 
             numSources: Object.keys(this.sourceCache).length,
             lang: {},
         };
         for (const targetLang of this.monsterConfig.targetLangs) {
-            const job = await this.#prepareTranslationJob(targetLang);
+            const job = await this.#prepareTranslationJob(targetLang, minimumQuality);
             status.lang[targetLang] = job.leverage;
             if (this.build && this.release && this.stateStore) {
                 // TODO: calculate passing grade based on config and add it to status

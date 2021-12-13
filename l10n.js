@@ -17,6 +17,7 @@ import { FsSource, FsTarget } from './adapters/fs.js';
 import { PoFilter } from './filters/po.js';
 import { AndroidFilter } from './filters/android.js';
 import { JavaPropertiesFilter } from './filters/java.js';
+import { IosStringsFilter } from './filters/ios.js';
 import { XliffBridge } from './translators/xliff.js';
 import { PigLatinizer } from './translators/piglatinizer.js';
 
@@ -47,7 +48,7 @@ async function initMonster() {
           FsSource, FsTarget,
         },
         filters: {
-          PoFilter, AndroidFilter, JavaPropertiesFilter
+          PoFilter, AndroidFilter, JavaPropertiesFilter, IosStringsFilter
         },
         translators: {
           XliffBridge, PigLatinizer,
@@ -118,8 +119,9 @@ monsterCLI
 monsterCLI
     .command('status')
     .description('translation status of content.')
+    .option('-q, --quality <level>', 'minimum translation quality to be considered translated', intOptionParser)
     .action(async (options) => await withMonsterManager(async monsterManager => {
-      const status = await monsterManager.status();
+      const status = await monsterManager.status(options.quality);
       console.log(`${status.numSources.toLocaleString()} translatable resources`);
       console.log(`${status.pendingJobsNum.toLocaleString()} pending jobs`);
       for (const [lang, stats] of Object.entries(status.lang)) {
