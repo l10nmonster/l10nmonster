@@ -60,7 +60,7 @@ export class SqlJobStore {
     }
 
     async getJobManifests(status) {
-        this.db || await this.init();
+        this.db ?? await this.init();
         const manifests = await this.db('jobStore')
             .select('jobId', 'status', 'sourceLang', 'targetLang', 'translationProvider', 'envelope', 'requestedAt', 'updatedAt')
             .where({ 
@@ -72,7 +72,7 @@ export class SqlJobStore {
     }
 
     async getJobStatusByLangPair(sourceLang, targetLang) {
-        this.db || await this.init();
+        this.db ?? await this.init();
         const manifests = await this.db('jobStore')
             .select('jobId', 'status')
             .where({
@@ -85,7 +85,7 @@ export class SqlJobStore {
     }
 
     async createJobManifest() {
-        this.db || await this.init();
+        this.db ?? await this.init();
         const status = 'created';
         const req = JSON.stringify({ status });
         const [ jobId ] = await this.db('jobStore').insert({
@@ -98,7 +98,7 @@ export class SqlJobStore {
     }
 
     async updateJob(jobResponse, jobRequest) {
-        this.db || await this.init();
+        this.db ?? await this.init();
         const { inflight, tus, leverage, envelope, ...row } = jobResponse;
         if (jobRequest) {
             row.requestedAt = currentISODate();
@@ -120,7 +120,7 @@ export class SqlJobStore {
     }
 
     async getJob(jobId) {
-        this.db || await this.init();
+        this.db ?? await this.init();
         const [ row ] = await this.db('jobStore')
             .select('res')
             .where({

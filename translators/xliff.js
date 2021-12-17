@@ -8,9 +8,13 @@ import xliff12ToJs from 'xliff/xliff12ToJs';
 
 export class XliffBridge {
     constructor({ requestPath, completePath, quality }) {
-        this.requestPath = requestPath;
-        this.completePath = completePath;
-        this.quality = quality || 50;
+        if ((requestPath && completePath && quality) ?? true) {
+            this.requestPath = requestPath;
+            this.completePath = completePath;
+            this.quality = quality;
+        } else {
+            throw 'You must specify requestPath, completePath, quality for XliffBridge';
+        }
     }
 
     async requestTranslations(jobRequest) {

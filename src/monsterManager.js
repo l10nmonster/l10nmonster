@@ -45,7 +45,11 @@ export default class MonsterManager {
         if (typeof minimumQuality === 'function') {
             minimumQuality = minimumQuality(jobManifest);
         }
-        return minimumQuality ?? 50;
+        if (minimumQuality ?? true) {
+            return minimumQuality;
+        } else {
+            throw 'You must specify a minimum quality';
+        }
     }
 
     async #updateSourceCache() {
@@ -88,7 +92,7 @@ export default class MonsterManager {
             ts: new Date().getTime(),
             tus: [],
         };
-        minimumQuality ?? (minimumQuality = this.#getMinimumQuality(job));
+        minimumQuality ??= this.#getMinimumQuality(job);
         const tm = await this.tmm.getTM(this.sourceLang, targetLang); // TODO: source language may vary by resource or unit, if supported
         let translated = {},
             unstranslated = 0,
@@ -289,7 +293,7 @@ export default class MonsterManager {
 
     // this is similar to grandfather using translations of identical strings in different files (qualified)
     // or different segments (unqualified)
-    async leverage(qualifiedQuality = 60, unqualifiedQuality = 50, limitToLang) {
+    async leverage(qualifiedQuality, unqualifiedQuality, limitToLang) {
         await this.#updateSourceCache();
         const [langs, status] = this.#getLanguageList(limitToLang);
         for (const lang of langs) {

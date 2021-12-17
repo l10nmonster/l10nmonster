@@ -2,8 +2,12 @@ import PigLatin from 'pig-latinizer';
 const pigLatin = new PigLatin.default();
 
 export class PigLatinizer {
-    constructor({ quality } = {}) {
-        this.quality = quality || 1;
+    constructor({ quality }) {
+        if (quality ?? true) {
+            this.quality = quality;
+        } else {
+            throw 'You must specify a quality for PigLatinizer';
+        }
     }
 
     async requestTranslations(jobRequest) {

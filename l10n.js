@@ -71,7 +71,7 @@ async function initMonster() {
           console.log('Successfully got config:');
           console.dir(monsterConfig);
         }
-        const monsterDir = path.join(baseDir, monsterConfig.monsterDir || '.l10nmonster');
+        const monsterDir = path.join(baseDir, monsterConfig.monsterDir ?? '.l10nmonster');
         verbose && console.log(`Monster dir: ${monsterDir}`);
         if (!existsSync(monsterDir)) {
           mkdirSync(monsterDir, {recursive: true});
@@ -197,7 +197,7 @@ monsterCLI
     .requiredOption('-q, --quality <level>', 'translation quality', intOptionParser)
     .option('-l, --lang <language>', 'target language to import')
     .action(async (options) => await withMonsterManager(async monsterManager => {
-      const quality = options.quality || 50;
+      const quality = options.quality;
       console.log(`Grandfathering existing translations at quality level ${quality}...`);
       const status = await monsterManager.grandfather(quality, options.lang);
       if (status.error) {
@@ -217,8 +217,8 @@ monsterCLI
 monsterCLI
     .command('leverage')
     .description('leverage repetitions as a translation job.')
-    .option('-q, --qualified <level>', 'quality of qualified repetitions', intOptionParser)
-    .option('-u, --unqualified <level>', 'quality of unqualified repetitions', intOptionParser)
+    .requiredOption('-q, --qualified <level>', 'quality of qualified repetitions', intOptionParser)
+    .requiredOption('-u, --unqualified <level>', 'quality of unqualified repetitions', intOptionParser)
     .option('-l, --lang <language>', 'target language to leverage')
     .action(async (options) => await withMonsterManager(async monsterManager => {
       console.log(`Leveraging translations of repetitions...`);

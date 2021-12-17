@@ -72,6 +72,7 @@ The configuration must export a default class that once instantiated provides th
 
 * `sourceLang`: the default source language
 * `targetLangs`: a array of languages to translate to 
+* `minimumQuality`: this is the minimum required quality for a string to be considered translated (anything below  triggers a request to translate)
 * `source`: a source adapter to read input resources from
 * `resourceFilter`: a filter to process the specific resource format
 * `translationProvider`: a connector to the translation vendor
@@ -197,7 +198,7 @@ Moreover, the constructor object also includes the following properties that can
     * `arg`: the optional `-a` argument passed from the command line
     * `build`: the build type passed from the command line
     * `release`: the release number passed from the command line
-* `minimumQuality`: this can either be a constant or a function that takes a job and returns a constant. This would be the minimum required quality for a string to be translated. Anything below would trigger a request to translate.
+* `minimumQuality`: this can also be a function that takes a job and returns a constant
 * `stores`: containing json and sql variants of job and state stores (see below)
 
 ### JSON Job Store

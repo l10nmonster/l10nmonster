@@ -19,10 +19,10 @@ export class JsonStateStore {
             JSON.parse(await fs.readFile(this.stateFileName, 'utf8')) :
             {}
         ;
-        state[this.org] = state[this.org] || {};
-        state[this.org][this.prj] = state[this.org][this.prj] || {};
-        state[this.org][this.prj][build] = state[this.org][this.prj][build] || {};
-        state[this.org][this.prj][build][release] = state[this.org][this.prj][build][release] || {};
+        state[this.org] ??= {};
+        state[this.org][this.prj] ??= {};
+        state[this.org][this.prj][build] ??= {};
+        state[this.org][this.prj][build][release] ??= {};
         state[this.org][this.prj][build][release][targetLang] = jobState;
 
         await fs.writeFile(this.stateFileName, JSON.stringify(state, null, '\t'), 'utf8');

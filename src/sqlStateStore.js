@@ -55,7 +55,7 @@ export class SqlStateStore {
     }
 
     async updateBuildState(build, release, targetLang, job) {
-        this.db || await this.init();
+        this.db ?? await this.init();
         const { tus, ...state } = job;
         const row = {
             org: this.org,

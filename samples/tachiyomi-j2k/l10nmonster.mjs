@@ -44,7 +44,7 @@ export default class TachiyomiConfig {
             completePath: (lang, prjId) => `xliff/inbox/prj${('0000' + prjId).substr(-4)}-${lang}.xml`,
             quality: 80,
         });
-        const piggyTranslator = new translators.PigLatinizer();
+        const piggyTranslator = new translators.PigLatinizer({ quality: 1 });
         this.translationProvider = (job) => job.targetLang === 'piggy' ? piggyTranslator : xliffTranslator;
         this.minimumQuality = (job) => job.targetLang === 'piggy' ? 1 : 50;
     }
