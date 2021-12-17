@@ -9,7 +9,7 @@ import {
 } from 'crypto';  
 import wordsCountModule from 'words-count';
 import TMManager from './tmManager.js';
-import { DummyJobStore } from './dummyJobStore.js';
+import { JsonJobStore } from './jsonJobStore.js';
 
 function generateSidQualifiedGuid(sid, str) {
     const sidContentHash = createHash('sha256');
@@ -29,7 +29,9 @@ export default class MonsterManager {
         this.monsterConfig = monsterConfig;
         this.build = build;
         this.release = release;
-        this.jobStore = monsterConfig.jobStore ?? new DummyJobStore();
+        this.jobStore = monsterConfig.jobStore ?? new JsonJobStore({
+            jobsDir: path.join('.l10nmonster', 'jobs'),
+        });
         this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore });
         this.stateStore = monsterConfig.stateStore;
         this.debug = monsterConfig.debug ?? {};
@@ -383,7 +385,7 @@ export default class MonsterManager {
     }
 
     async shutdown() {
-        this.monsterConfig.jobStore.shutdown && await this.monsterConfig.jobStore.shutdown();
+        this.jobStore.shutdown && await this.jobStore.shutdown();
         this.monsterConfig?.stateStore?.shutdown && await this.monsterConfig.stateStore.shutdown();
     }
 

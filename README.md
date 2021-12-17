@@ -84,10 +84,11 @@ The configuration must export a default class that once instantiated provides th
 ```js
 this.source = new adapters.FsSource({
     globs: [ '**/values/strings.xml' ],
+    filter: (resourceId) => (resourceId.indexOf('dont_translate.properties') === -1),
 });
 ```
 
-An adapter that reads sources from the filesystem. The `globs` array can specify wildcard patterns relative to the base directory where the `l10nmonster.mjs` is placed.
+An adapter that reads sources from the filesystem. The `globs` array can specify wildcard patterns relative to the base directory where the `l10nmonster.mjs` is placed. The `filter` function can further filter out what's returned by the glob patterns.
 
 ### FS Target Adapter
 

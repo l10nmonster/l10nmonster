@@ -10,7 +10,7 @@ export class JsonJobStore {
     constructor({ jobsDir, logRequests }) {
         this.jobsDir = path.join(this.ctx.baseDir, jobsDir);
         if (!existsSync(this.jobsDir)) {
-            mkdirSync(this.jobsDir);
+            mkdirSync(this.jobsDir, {recursive: true});
         }
         this.logRequests = logRequests;
     }

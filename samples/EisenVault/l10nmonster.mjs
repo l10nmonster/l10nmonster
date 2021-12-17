@@ -1,18 +1,14 @@
-export default class TachiyomiConfig {
+export default class EisenVaultConfig {
     sourceLang = 'en';
     targetLangs = [ 'it', 'ja', 'pt-BR' ];
 
-    constructor({ ctx, stores, adapters, filters, translators }) {
+    constructor({ adapters, filters }) {
         this.source = new adapters.FsSource({
             globs: [ '**/*_en.properties' ],
-            // filter: (resourceId) => (resourceId.indexOf('colleagues.get_en.properties') >= 0),
         });
         this.resourceFilter = new filters.JavaPropertiesFilter();
         this.target = new adapters.FsTarget({
             targetPath: (lang, resourceId) => resourceId.replace('_en.properties', `_${lang.replace('-', '_')}.properties`),
         });        
-        this.jobStore = new stores.JsonJobStore({
-            jobsDir: 'translationJobs',
-        });
     }
 }
