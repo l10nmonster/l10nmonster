@@ -34,7 +34,7 @@ export class AndroidFilter {
         };
     }
 
-    async generateTranslatedResource({ resourceId, resource, lang, translator }) {
+    async generateTranslatedResource({ resourceId, resource, translator }) {
         const parsedResource = await android.asr2js(resource);
         for (const [id, source] of Object.entries(parsedResource)) {
             const sid = id.indexOf('.') >= 0? id.replace('.', '_') : id;

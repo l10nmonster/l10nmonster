@@ -25,10 +25,11 @@ export class JavaPropertiesFilter {
         };
     }
 
-    async generateTranslatedResource({ resourceId, resource, lang, translator }) {
+    async generateTranslatedResource({ resourceId, resource, translator }) {
         const parsedResource = parseToEntries(resource, { sep: true, eol: true, all: true, original: true });
         const translations = await Promise.all(parsedResource.map(async e => e.key && translator(resourceId, e.key, e.element)));
         const translatedEntries = parsedResource.map((e, i) => {
+            // eslint-disable-next-line no-unused-vars
             const { original, element, ...rest } = e;
             if (e.key) {
                 return {

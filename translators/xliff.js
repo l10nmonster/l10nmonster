@@ -18,6 +18,7 @@ export class XliffBridge {
     }
 
     async requestTranslations(jobRequest) {
+        // eslint-disable-next-line no-unused-vars
         const { tus, ...jobResponse } = jobRequest;
         const notes = {};
         jobRequest.tus.forEach(tu => {

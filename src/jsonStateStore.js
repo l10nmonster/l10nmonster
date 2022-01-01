@@ -14,6 +14,7 @@ export class JsonStateStore {
     }
 
     async updateBuildState(build, release, targetLang, job) {
+        // eslint-disable-next-line no-unused-vars
         const { tus, ...jobState } = job;
         const state = existsSync(this.stateFileName) ?
             JSON.parse(await fs.readFile(this.stateFileName, 'utf8')) :

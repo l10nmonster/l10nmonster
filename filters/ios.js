@@ -13,7 +13,7 @@ export class IosStringsFilter {
         };
     }
 
-    async generateTranslatedResource({ resourceId, resource, lang, translator }) {
+    async generateTranslatedResource({ resourceId, resource, translator }) {
         const parsedResource = i18nStringsFiles.parse(resource, { 'wantsComments' : true });
         for (const [sid, source] of Object.entries(parsedResource)) {
             parsedResource[sid].text = await translator(resourceId, sid, source.text);

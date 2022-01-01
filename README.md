@@ -261,3 +261,4 @@ this.stateStore = new stores.SqlStateStore({
 
 The SQL state store can store in a centralized place both status information of each build and untranslated content. This can be used for reporting and monitoring, but also to implement more advanced workflows of translation request aggregation and management.
 
+See the overall [System Design](architecture.md#system-design) to get a better idea.

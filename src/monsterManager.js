@@ -6,7 +6,7 @@ import {
 import * as fs from 'fs/promises';
 import {
     createHash,
-} from 'crypto';  
+} from 'crypto';
 import wordsCountModule from 'words-count';
 import TMManager from './tmManager.js';
 import { JsonJobStore } from './jsonJobStore.js';
@@ -37,7 +37,7 @@ export default class MonsterManager {
         this.debug = monsterConfig.debug ?? {};
         this.sourceLang = monsterConfig.sourceLang;
         this.sourceCachePath = path.join(monsterDir, 'sourceCache.json');
-        this.sourceCache = existsSync(this.sourceCachePath) ? 
+        this.sourceCache = existsSync(this.sourceCachePath) ?
             JSON.parse(readFileSync(this.sourceCachePath, 'utf8')) :
             { };
     }
@@ -150,7 +150,7 @@ export default class MonsterManager {
 
     async status(minimumQuality) {
         await this.#updateSourceCache();
-        const status = { 
+        const status = {
             numSources: Object.keys(this.sourceCache).length,
             lang: {},
         };
@@ -173,7 +173,7 @@ export default class MonsterManager {
         const unqualifiedMatches = {}; // src only
         let numStrings = 0;
         let totalWC = 0;
-        const smellyRegex = /[^a-zA-Z 0-9\.\,\;\:\!\(\)\-\']/;
+        const smellyRegex = /[^a-zA-Z 0-9.,;:!()\-']/;
         const smelly = [];
         for (const [rid, res] of sources) {
             for (const seg of res.segments) {
@@ -196,7 +196,7 @@ export default class MonsterManager {
         for (const [k, v] of Object.entries(qualifiedMatches)) {
             v.length === 1 && delete qualifiedMatches[k]
         }
-        return { 
+        return {
             numSources: sources.length,
             numStrings,
             totalWC,
@@ -275,6 +275,7 @@ export default class MonsterManager {
             }
             this.verbose && console.log(`Grandfathering ${lang}... found ${jobRequest.tus.length} missing translations, of which ${translations.length} existing`);
             if (translations.length > 0) {
+                // eslint-disable-next-line no-unused-vars
                 const { tus, ...jobResponse } = jobRequest;
                 jobRequest.tus = sources;
                 jobResponse.tus = translations;
@@ -287,7 +288,7 @@ export default class MonsterManager {
                 status.push({
                     num: translations.length,
                     lang,
-                });    
+                });
             }
         }
         return status;
@@ -327,6 +328,7 @@ export default class MonsterManager {
             }
             this.verbose && console.log(`Leveraging ${lang}... found ${jobRequest.tus.length} missing translations, of which ${translations.length} can be leveraged`);
             if (translations.length > 0) {
+                // eslint-disable-next-line no-unused-vars
                 const { tus, ...jobResponse } = jobRequest;
                 const jobId = await this.jobStore.createJobManifest();
                 jobRequest.jobId = jobId;
@@ -340,7 +342,7 @@ export default class MonsterManager {
                 status.push({
                     num: translations.length,
                     lang,
-                });    
+                });
             }
         }
         return status;
@@ -366,9 +368,10 @@ export default class MonsterManager {
         const pipeline = this.monsterConfig;
         const status = [];
         const resourceIds = (await pipeline.source.fetchResourceStats()).map(rh => rh.id);
-        for (const lang of this.monsterConfig.targetLangs) {
+        for (const targetLang of this.monsterConfig.targetLangs) {
             const verbose = this.verbose;
-            const tm = await this.tmm.getTM(this.sourceLang, lang);
+            const sourceLang = this.sourceLang;
+            const tm = await this.tmm.getTM(sourceLang, targetLang);
             const translator = async function translate(rid, sid, src) {
                 const guid = generateFullyQualifiedGuid(rid, sid, src);
                 const entry = tm.getEntryByGuid(guid);
@@ -377,8 +380,8 @@ export default class MonsterManager {
             };
             for (const resourceId of resourceIds) {
                 const resource = await pipeline.source.fetchResource(resourceId);
-                const translatedRes = await pipeline.resourceFilter.generateTranslatedResource({ resourceId, resource, lang, translator });
-                await pipeline.target.commitTranslatedResource(lang, resourceId, translatedRes);
+                const translatedRes = await pipeline.resourceFilter.generateTranslatedResource({ resourceId, resource, targetLang, translator });
+                await pipeline.target.commitTranslatedResource(targetLang, resourceId, translatedRes);
             }
         }
         return status;

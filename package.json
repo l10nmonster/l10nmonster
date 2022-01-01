@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "esbuild": "^0.13.12",
+    "eslint": "^8.6.0",
     "jest": "^27.4.3",
     "pkg": "^5.4.1"
   },

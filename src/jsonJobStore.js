@@ -66,6 +66,7 @@ export class JsonJobStore {
             const jobPath = path.join(this.jobsDir, `job_${jobResponse.jobId}-req.json`);
             await fs.writeFile(jobPath, JSON.stringify(jobRequest, null, '\t'), 'utf8');
         }
+        // eslint-disable-next-line no-unused-vars
         const { inflight, tus, ...jobManifest } = jobResponse;
         await this.#updateJobManifest(jobManifest);
 }

@@ -42,10 +42,10 @@ export class PoFilter {
         };
     }
 
-    async generateTranslatedResource({ resourceId, resource, lang, translator }) {
+    async generateTranslatedResource({ resourceId, resource, translator }) {
         const poFile = gettextParser.po.parse(resource);
         for (const [domain, segments] of Object.entries(poFile.translations)) {
-            for (const [k, s] of Object.entries(segments)) {
+            for (const s of Object.values(segments)) {
                 if (s.msgid.length > 0) {
                     const sidHash = createHash('sha1');
                     sidHash.update(s.msgid);

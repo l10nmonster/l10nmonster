@@ -11,6 +11,7 @@ export class PigLatinizer {
     }
 
     async requestTranslations(jobRequest) {
+        // eslint-disable-next-line no-unused-vars
         const { tus, ...jobResponse } = jobRequest;
         jobResponse.tus = jobRequest.tus.map(tu => ({
             guid: tu.guid,
@@ -21,7 +22,7 @@ export class PigLatinizer {
         return jobResponse;
     }
 
-    async fetchTranslations(jobManifest) {
+    async fetchTranslations() {
         return null;
     }
 }

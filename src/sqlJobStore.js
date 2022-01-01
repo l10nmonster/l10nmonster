@@ -63,7 +63,7 @@ export class SqlJobStore {
         this.db ?? await this.init();
         const manifests = await this.db('jobStore')
             .select('jobId', 'status', 'sourceLang', 'targetLang', 'translationProvider', 'envelope', 'requestedAt', 'updatedAt')
-            .where({ 
+            .where({
                 org: this.org,
                 prj: this.prj,
                 status,
@@ -99,6 +99,7 @@ export class SqlJobStore {
 
     async updateJob(jobResponse, jobRequest) {
         this.db ?? await this.init();
+        // eslint-disable-next-line no-unused-vars
         const { inflight, tus, leverage, envelope, ...row } = jobResponse;
         if (jobRequest) {
             row.requestedAt = currentISODate();
