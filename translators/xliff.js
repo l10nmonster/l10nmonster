@@ -8,7 +8,7 @@ import xliff12ToJs from 'xliff/xliff12ToJs';
 
 export class XliffBridge {
     constructor({ requestPath, completePath, quality }) {
-        if ((requestPath && completePath && quality) ?? true) {
+        if ((requestPath && completePath && quality) ?? false) {
             this.requestPath = requestPath;
             this.completePath = completePath;
             this.quality = quality;

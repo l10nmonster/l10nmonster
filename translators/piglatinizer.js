@@ -2,8 +2,8 @@ import PigLatin from 'pig-latinizer';
 const pigLatin = new PigLatin.default();
 
 export class PigLatinizer {
-    constructor({ quality }) {
-        if (quality ?? true) {
+    constructor({ quality } = {}) {
+        if (quality ?? false) {
             this.quality = quality;
         } else {
             throw 'You must specify a quality for PigLatinizer';
