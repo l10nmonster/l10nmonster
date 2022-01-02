@@ -56,7 +56,7 @@ async function initMonster() {
       };
       for (const helperCategory of Object.values(helpers)) {
         for (const helper of Object.values(helperCategory))
-        helper.prototype.ctx = ctx;  
+        helper.prototype.ctx = ctx;
       }
       verbose && console.log(`Importing config from: ${configPath}`);
     const configModule = await import(configPath);
@@ -91,14 +91,22 @@ async function initMonster() {
 async function withMonsterManager(cb) {
   try {
     const monsterManager = await initMonster();
-    await cb(monsterManager);
-    await monsterManager.shutdown();
+    try {
+        await cb(monsterManager);
+    } catch(e) {
+        console.error(`Unable to operate: ${e}`);
+        console.error(e.stack);
+    } finally {
+        await monsterManager.shutdown();
+    }
   } catch(e) {
     console.error(`Unable to initialize: ${e}`);
+    console.error(e.stack);
   }
 }
 
-function intOptionParser(value, dummyPrevious) {
+// eslint-disable-next-line no-unused-vars
+function intOptionParser(value, _dummyPrevious) {
   const parsedValue = parseInt(value, 10);
   if (isNaN(parsedValue)) {
     throw new InvalidArgumentError('Not an integer');
@@ -209,7 +217,7 @@ monsterCLI
           }
         } else {
           console.log('Nothing to grandfather!');
-        }  
+        }
       }
   }))
 ;
@@ -232,7 +240,7 @@ monsterCLI
           }
         } else {
           console.log('Nothing to leverage!');
-        }  
+        }
       }
   }))
 ;

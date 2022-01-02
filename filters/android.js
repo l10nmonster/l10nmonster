@@ -39,7 +39,12 @@ export class AndroidFilter {
         for (const [id, source] of Object.entries(parsedResource)) {
             const sid = id.indexOf('.') >= 0? id.replace('.', '_') : id;
             const sourceStr = typeof source === 'object' ? source.value : source;
-            parsedResource[id] = await translator(resourceId, sid, sourceStr);
+            const translation = await translator(resourceId, sid, sourceStr);
+            if (translation === undefined) {
+                delete parsedResource[id];
+            } else {
+                parsedResource[id] = translation;
+            }
             // TODO: deal with plurals of the target language, not the source
         }
         return await android.js2asr(parsedResource);

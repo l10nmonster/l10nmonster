@@ -9,7 +9,7 @@ class TM {
     dirty = false;
     constructor(sourceLang, targetLang, tmPathName) {
         this.tmPathName = tmPathName;
-        this.tm = existsSync(this.tmPathName) ? 
+        this.tm = existsSync(this.tmPathName) ?
             JSON.parse(readFileSync(this.tmPathName, 'utf8')) :
             {
                 sourceLang,
@@ -23,7 +23,7 @@ class TM {
     get size() {
         return Object.keys(this.tm.tus).length;
     }
-    
+
     getEntryByGuid(guid) {
         return this.tm.tus[guid];
     }
@@ -72,7 +72,7 @@ class TM {
             }
         }
         if (tus) {
-            for (const tu of tus) {         
+            for (const tu of tus) {
                 const tmEntry = this.getEntryByGuid(tu.guid);
                 const reqEntry = requestedUnits[tu.guid] ?? {};
                 if (!tmEntry || tmEntry.q < tu.q) {

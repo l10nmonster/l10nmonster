@@ -47,10 +47,10 @@ export default class MonsterManager {
         if (typeof minimumQuality === 'function') {
             minimumQuality = minimumQuality(jobManifest);
         }
-        if (minimumQuality ?? true) {
-            return minimumQuality;
+        if (minimumQuality === undefined) {
+            throw 'You must specify a minimum quality in your config';
         } else {
-            throw 'You must specify a minimum quality';
+            return minimumQuality;
         }
     }
 
@@ -376,7 +376,7 @@ export default class MonsterManager {
                 const guid = generateFullyQualifiedGuid(rid, sid, src);
                 const entry = tm.getEntryByGuid(guid);
                 !entry && verbose && console.log(`Couldn't find ${sourceLang}_${targetLang} entry for ${rid}+${sid}+${src}`);
-                return entry ? entry.tgt : src; // falls back to source string
+                return entry?.tgt; // don't fall back, let the caller deal with it
             };
             for (const resourceId of resourceIds) {
                 const resource = await pipeline.source.fetchResource(resourceId);

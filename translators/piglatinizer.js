@@ -3,10 +3,10 @@ const pigLatin = new PigLatin.default();
 
 export class PigLatinizer {
     constructor({ quality } = {}) {
-        if (quality ?? false) {
-            this.quality = quality;
-        } else {
+        if (quality === undefined) {
             throw 'You must specify a quality for PigLatinizer';
+        } else {
+            this.quality = quality;
         }
     }
 

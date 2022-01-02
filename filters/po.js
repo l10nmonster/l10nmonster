@@ -56,6 +56,7 @@ export class PoFilter {
                     if (s.msgid_plural) {
                         // TODO
                     } else {
+                        // TODO: deal with missing translations
                         s.msgstr = [ await translator(resourceId, sid, s.msgid) ];
                     }
                 } else {

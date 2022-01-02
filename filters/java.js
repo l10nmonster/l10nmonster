@@ -31,7 +31,7 @@ export class JavaPropertiesFilter {
         const translatedEntries = parsedResource.map((e, i) => {
             // eslint-disable-next-line no-unused-vars
             const { original, element, ...rest } = e;
-            if (e.key) {
+            if (e.key && translations[i] !== undefined) {
                 return {
                     ...rest,
                     element: translations[i],

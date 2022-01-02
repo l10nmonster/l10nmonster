@@ -129,7 +129,7 @@ export class SqlJobStore {
                 prj: this.prj,
                 jobId,
             });
-        return row.job;
+        return row.res;
     }
 
     async shutdown() {

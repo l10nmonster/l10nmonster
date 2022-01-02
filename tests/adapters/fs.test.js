@@ -37,7 +37,7 @@ describe ('FsTarget tests', () =>{
     expect(resources.length).toBe(388);
   });
 
-  test('commitTranslatedResource writes a file', async () => {
-  });
+// TODO: test('commitTranslatedResource writes a file', async () => {
+//   });
 
 });

@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import * as android from '../../filters/android';
 import * as fs from 'fs/promises';
 
@@ -40,14 +41,13 @@ describe ('android filter tests', () =>{
   });
 
   var translator = async function translate(resourceId, sid, str) {
-    return `${resourceId} ${sid} ${str} - **Translation**`;
+    return sid === 'str1' ? null : `${resourceId} ${sid} ${str} - **Translation**`;
   }
   test('generateTranslatedResource returns string', async () => {
     const expectedOutput = `<?xml version=\"1.0\" encoding=\"utf-8\"?>
 <resources>
   <string name=\"app_name\">tests/files/values/strings.xml app_name TachiyomiJ2K - **Translation**</string>
   <string name=\"app_short_name\">tests/files/values/strings.xml app_short_name TachiJ2K - **Translation**</string>
-  <string name=\"str1\">tests/files/values/strings.xml str1 Winter is coming - **Translation**</string>
   <string name=\"move_x_to\">tests/files/values/strings.xml move_x_to Move %1$s to… - **Translation**</string>
   <string name=\"chapter_x_of_y\">tests/files/values/strings.xml chapter_x_of_y Chapter %1$d of %2$d - **Translation**</string>
   <plurals name=\"chapters_plural\">
