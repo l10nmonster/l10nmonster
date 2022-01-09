@@ -20,6 +20,7 @@ import { JavaPropertiesFilter } from './filters/java.js';
 import { IosStringsFilter } from './filters/ios.js';
 import { XliffBridge } from './translators/xliff.js';
 import { PigLatinizer } from './translators/piglatinizer.js';
+import { TranslationOS } from './translators/translationOS.js';
 
 const monsterCLI = new Command();
 
@@ -51,7 +52,7 @@ async function initMonster() {
           PoFilter, AndroidFilter, JavaPropertiesFilter, IosStringsFilter
         },
         translators: {
-          XliffBridge, PigLatinizer,
+          XliffBridge, PigLatinizer, TranslationOS
         },
       };
       for (const helperCategory of Object.values(helpers)) {

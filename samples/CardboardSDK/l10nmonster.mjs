@@ -8,10 +8,15 @@ export default class CardboardConfig {
             globs: [ '**/en.lproj/*.strings' ],
         });
         this.resourceFilter = new filters.IosStringsFilter();
-        this.translationProvider = new translators.PigLatinizer({ quality: 1 });
+        this.translationProvider = new translators.TranslationOS({
+            baseURL: 'https://api-sandbox.translated.com/v2',
+            apiKey: ctx.env.translated_api_key_sandbox,
+            serviceType: 'premium',
+            quality: 90,
+        });
         this.target = new adapters.FsTarget({
             targetPath: (lang, resourceId) => resourceId.replace('en.lproj/', `${lang}.lproj/`),
-        });        
+        });
         this.jobStore = new stores.JsonJobStore({
             jobsDir: 'translationJobs',
             logRequests: true,

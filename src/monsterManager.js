@@ -217,12 +217,13 @@ export default class MonsterManager {
                 const translationProvider = this.#getTranslationProvider(jobRequest);
                 if (translationProvider) {
                     jobRequest.translationProvider = translationProvider.constructor.name;
-                    const jobResponse = await translationProvider.requestTranslations(jobRequest);
-                    await this.#processJob(jobResponse, jobRequest);
+                    // this may return a "jobResponse" if syncronous or a "jobManifest" if asynchronous
+                    const job = await translationProvider.requestTranslations(jobRequest);
+                    await this.#processJob(job, jobRequest);
                     status.push({
-                        num: jobResponse.tus?.length ?? jobResponse.inflight?.length ?? 0,
-                        lang: jobResponse.targetLang,
-                        status: jobResponse.status
+                        num: job.tus?.length ?? job.inflight?.length ?? 0,
+                        lang: job.targetLang,
+                        status: job.status
                     });
                 } else {
                     throw 'No translationProvider configured';
