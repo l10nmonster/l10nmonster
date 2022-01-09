@@ -24,7 +24,6 @@ export class TranslationOS {
             'source_language': jobRequest.sourceLang,
             'target_languages': [ jobRequest.targetLang ],
             'service_type': this.serviceType,
-            'delivery_email': 'diegone@gmail.com'
         }));
         const response = await got.post({
             url: `${this.baseURL}/translate`,

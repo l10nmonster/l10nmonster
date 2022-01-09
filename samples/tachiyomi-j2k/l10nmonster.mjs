@@ -18,7 +18,7 @@ export default class TachiyomiConfig {
         this.target = new adapters.FsTarget({
             targetPath: (lang, resourceId) => resourceId.replace('values', `values-${androidLangMapping[lang] || lang}`),
         });
-        
+
         this.jobStore = new stores.JsonJobStore({
             jobsDir: 'translationJobs',
             logRequests: true,
@@ -45,7 +45,7 @@ export default class TachiyomiConfig {
             quality: 80,
         });
         const piggyTranslator = new translators.PigLatinizer({ quality: 1 });
-        this.translationProvider = (job) => job.targetLang === 'piggy' ? piggyTranslator : xliffTranslator;
-        this.minimumQuality = (job) => job.targetLang === 'piggy' ? 1 : 50;
+        this.translationProvider = (job) => (job.targetLang === 'piggy' ? piggyTranslator : xliffTranslator);
+        this.minimumQuality = (job) => (job.targetLang === 'piggy' ? 1 : 50);
     }
 }

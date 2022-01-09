@@ -19,7 +19,7 @@ export class XliffBridge {
 
     async requestTranslations(jobRequest) {
         // eslint-disable-next-line no-unused-vars
-        const { tus, ...jobResponse } = jobRequest;
+        const { tus, ...jobManifest } = jobRequest;
         const notes = {};
         jobRequest.tus.forEach(tu => {
             if (tu.notes) {
@@ -40,13 +40,13 @@ export class XliffBridge {
             const prjPath = path.join(this.ctx.baseDir, this.requestPath(jobRequest.targetLang, jobRequest.jobId));
             await fs.mkdir(path.dirname(prjPath), {recursive: true});
             await fs.writeFile(prjPath, xliff, 'utf8');
-            jobResponse.inflight = Object.values(jobRequest.tus).map(tu => tu.guid);
-            jobResponse.envelope = { expectedTus: jobResponse.inflight.length };
-            jobResponse.status = 'pending';
+            jobManifest.inflight = Object.values(jobRequest.tus).map(tu => tu.guid);
+            jobManifest.envelope = { expectedTus: jobManifest.inflight.length };
+            jobManifest.status = 'pending';
         } else {
-            jobResponse.status = 'error';
+            jobManifest.status = 'error';
         }
-        return jobResponse;
+        return jobManifest;
     }
 
     async fetchTranslations(jobManifest) {

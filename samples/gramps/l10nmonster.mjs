@@ -26,14 +26,14 @@ export default class GrampsConfig {
             ]
         });
         // TODO: add hooks to allow to manipulate content before/after processing (see https://serge.io/docs/modular-architecture/)
-        this.resourceFilter = new filters.PoFilter(
+        this.resourceFilter = new filters.PoFilter({
             // TODO: add configuration for baseline message format (e.g. HTML on top of the "flag" format)
-        );
+        });
         this.translationProvider = new translators.PigLatinizer({
             quality: 2
         });
         this.target = new adapters.FsTarget({
-            targetPath: (lang, resourceId) => `artifacts/${lang}.po`,
+            targetPath: (lang) => `artifacts/${lang}.po`,
         });
     }
-};
+}
