@@ -365,11 +365,12 @@ export default class MonsterManager {
         return stats;
     }
 
-    async translate() {
+    async translate(limitToLang) {
         const pipeline = this.monsterConfig;
         const status = [];
         const resourceIds = (await pipeline.source.fetchResourceStats()).map(rh => rh.id);
-        for (const targetLang of this.monsterConfig.targetLangs) {
+        const langList = limitToLang ? [ limitToLang ] : this.monsterConfig.targetLangs;
+        for (const targetLang of langList) {
             const verbose = this.verbose;
             const sourceLang = this.sourceLang;
             const tm = await this.tmm.getTM(sourceLang, targetLang);

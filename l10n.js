@@ -259,9 +259,10 @@ monsterCLI
 monsterCLI
     .command('translate')
     .description('generate translated resources based on latest source and translations.')
-    .action(async () => await withMonsterManager(async monsterManager => {
+    .option('-l, --lang <language>', 'target language to translate')
+    .action(async (options) => await withMonsterManager(async monsterManager => {
       console.log(`Generating translated resources...`);
-      await monsterManager.translate();
+      await monsterManager.translate(options.lang);
   }))
 ;
 
