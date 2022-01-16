@@ -260,10 +260,13 @@ monsterCLI
     .command('translate')
     .description('generate translated resources based on latest source and translations.')
     .option('-l, --lang <language>', 'target language to translate')
+    .option('-d, --dryrun', 'simulate translating and compare with existing translations')
     .action(async (options) => await withMonsterManager(async monsterManager => {
-      console.log(`Generating translated resources...`);
-      await monsterManager.translate(options.lang);
-  }))
+        const limitToLang = options.lang;
+        const dryRun = options.dryrun;
+        console.log(`Generating translated resources for ${limitToLang ? limitToLang : 'all languages'}...${dryRun && ' (dry run)'}`);
+        await monsterManager.translate({ limitToLang, dryRun });
+    }))
 ;
 
 (async () => await monsterCLI.parseAsync(process.argv))();

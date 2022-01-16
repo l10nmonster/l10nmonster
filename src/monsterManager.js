@@ -8,6 +8,11 @@ import {
     createHash,
 } from 'crypto';
 import wordsCountModule from 'words-count';
+import { diffJson } from 'diff';
+
+// https://stackoverflow.com/questions/9781218/how-to-change-node-jss-console-font-color
+const color = { red: '\x1b[31m', green: '\x1b[32m', reset: '\x1b[0m' };
+
 import TMManager from './tmManager.js';
 import { JsonJobStore } from './jsonJobStore.js';
 
@@ -365,7 +370,7 @@ export default class MonsterManager {
         return stats;
     }
 
-    async translate(limitToLang) {
+    async translate({ limitToLang, dryRun }) {
         const pipeline = this.monsterConfig;
         const status = [];
         const resourceIds = (await pipeline.source.fetchResourceStats()).map(rh => rh.id);
@@ -383,7 +388,29 @@ export default class MonsterManager {
             for (const resourceId of resourceIds) {
                 const resource = await pipeline.source.fetchResource(resourceId);
                 const translatedRes = await pipeline.resourceFilter.generateTranslatedResource({ resourceId, resource, targetLang, translator });
-                await pipeline.target.commitTranslatedResource(targetLang, resourceId, translatedRes);
+                if (dryRun) {
+                    let currentRaw;
+                    try {
+                        currentRaw = await pipeline.target.fetchTranslatedResource(targetLang, resourceId);
+                    } catch (e) {
+                        console.log(`${targetLang}: Couldn't fetch translated resource for ${resourceId}`);
+                    }
+                    if (currentRaw) {
+                        const currentParsed = await pipeline.resourceFilter.parseResource({ resource: currentRaw, isSource: false });
+                        const currentFlattened = {};
+                        currentParsed.segments.forEach(x => currentFlattened[x.sid] = x.str);
+                        const newParsed = await pipeline.resourceFilter.parseResource({ resource: translatedRes, isSource: false });
+                        const newFlattened = {};
+                        newParsed.segments.forEach(x => newFlattened[x.sid] = x.str);
+                        console.log(`${targetLang}: ${resourceId}`);
+                        console.log(diffJson(currentFlattened, newFlattened)
+                            .filter(x => x.added ?? x.removed)
+                            .map(x => `${x.added ? `${color.green}+` : `${color.red}-`} ${x.value}${color.reset}`)
+                            .join(''));
+                    }
+                } else {
+                    await pipeline.target.commitTranslatedResource(targetLang, resourceId, translatedRes);
+                }
             }
         }
         return status;
