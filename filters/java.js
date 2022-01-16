@@ -6,7 +6,7 @@ export class JavaPropertiesFilter {
         const segments = [];
         let previousComment;
         for (const e of parsedResource) {
-            if (e.key) {
+            if (e.key && e.sep.trim() === '=') {
                 const seg = {
                     sid: e.key,
                     str: e.element,
