@@ -389,11 +389,12 @@ export default class MonsterManager {
                 const resource = await pipeline.source.fetchResource(resourceId);
                 const translatedRes = await pipeline.resourceFilter.generateTranslatedResource({ resourceId, resource, targetLang, translator });
                 if (dryRun) {
+                    const translatedResourceId = pipeline.target.translatedResourceId(targetLang, resourceId);
                     let currentRaw;
                     try {
                         currentRaw = await pipeline.target.fetchTranslatedResource(targetLang, resourceId);
                     } catch (e) {
-                        console.log(`${targetLang}: Couldn't fetch translated resource for ${resourceId}`);
+                        console.log(`${targetLang}: Couldn't fetch translated resource ${translatedResourceId}`);
                     }
                     if (currentRaw) {
                         const currentParsed = await pipeline.resourceFilter.parseResource({ resource: currentRaw, isSource: false });
@@ -402,12 +403,12 @@ export default class MonsterManager {
                         const newParsed = await pipeline.resourceFilter.parseResource({ resource: translatedRes, isSource: false });
                         const newFlattened = {};
                         newParsed.segments.forEach(x => newFlattened[x.sid] = x.str);
-                        console.log(`${targetLang}: ${resourceId}`);
-                        console.log(diffJson(currentFlattened, newFlattened)
+                        const diff = diffJson(currentFlattened, newFlattened)
                             .filter(x => x.added ?? x.removed)
                             .map(x => `${x.added ? `${color.green}+` : `${color.red}-`} ${x.value}${color.reset}`)
-                            .join(''));
-                    }
+                            .join('');
+                        diff && console.log(`${color.reset}${targetLang}: ${translatedResourceId}\n${diff}`);
+                        }
                 } else {
                     await pipeline.target.commitTranslatedResource(targetLang, resourceId, translatedRes);
                 }

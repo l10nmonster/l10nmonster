@@ -34,9 +34,12 @@ export class FsTarget {
         this.targetPath = targetPath;
     }
 
+    translatedResourceId(lang, resourceId) {
+        return path.resolve(this.ctx.baseDir, this.targetPath(lang, resourceId));
+    }
+
     async fetchTranslatedResource(lang, resourceId) {
-        const translatedPath = path.resolve(this.ctx.baseDir, this.targetPath(lang, resourceId));
-        return fs.readFile(translatedPath, 'utf8'); // TODO: do we need a flag to use `readFile` for binary resources?
+        return fs.readFile(this.translatedResourceId(lang, resourceId), 'utf8'); // TODO: do we need a flag to use `readFile` for binary resources?
     }
 
     async commitTranslatedResource(lang, resourceId, translatedRes) {
