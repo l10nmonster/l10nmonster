@@ -161,7 +161,15 @@ export default class MonsterManager {
         };
         for (const targetLang of this.monsterConfig.targetLangs) {
             const job = await this.#prepareTranslationJob(targetLang, minimumQuality);
-            status.lang[targetLang] = job.leverage;
+            const unstranslatedContent = {};
+            for (const tu of job.tus) {
+                unstranslatedContent[tu.rid] ??= {};
+                unstranslatedContent[tu.rid][tu.sid] = tu.src;
+            }
+            status.lang[targetLang] = {
+                leverage: job.leverage,
+                unstranslatedContent,
+            };
             if (this.build && this.release && this.stateStore) {
                 // TODO: calculate passing grade based on config and add it to status
                 await this.stateStore.updateBuildState(this.build, this.release, targetLang, job);

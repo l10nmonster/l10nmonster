@@ -130,19 +130,28 @@ monsterCLI
     .description('translation status of content.')
     .option('-q, --quality <level>', 'minimum translation quality to be considered translated', intOptionParser)
     .action(async (options) => await withMonsterManager(async monsterManager => {
-      const status = await monsterManager.status(options.quality);
-      console.log(`${status.numSources.toLocaleString()} translatable resources`);
-      console.log(`${status.pendingJobsNum.toLocaleString()} pending jobs`);
-      for (const [lang, stats] of Object.entries(status.lang)) {
-        console.log(`Language ${lang} (minimum quality ${stats.minimumQuality}):`);
-        console.log(`  - strings in translation memory: ${stats.tmSize.toLocaleString()}`);
-        for (const [q, num] of Object.entries(stats.translated).sort((a,b) => b[1] - a[1])) {
-          console.log(`  - translated strings @ quality ${q}: ${num.toLocaleString()}`);
+        const status = await monsterManager.status(options.quality);
+        console.log(`${status.numSources.toLocaleString()} translatable resources`);
+        console.log(`${status.pendingJobsNum.toLocaleString()} pending jobs`);
+        for (const [lang, langStatus] of Object.entries(status.lang)) {
+            const leverage = langStatus.leverage;
+            console.log(`Language ${lang} (minimum quality ${leverage.minimumQuality}):`);
+            console.log(`  - strings in translation memory: ${leverage.tmSize.toLocaleString()}`);
+            for (const [q, num] of Object.entries(leverage.translated).sort((a,b) => b[1] - a[1])) {
+                console.log(`  - translated strings @ quality ${q}: ${num.toLocaleString()}`);
+            }
+            leverage.pending && console.log(`  - strings pending translation: ${leverage.pending.toLocaleString()}`);
+            console.log(`  - untranslated strings: ${leverage.untranslated.toLocaleString()} (${leverage.untranslatedChars.toLocaleString()} chars - ${leverage.untranslatedWords.toLocaleString()} words - $${(leverage.untranslatedWords * .2).toFixed(2)})`);
+            if (monsterCLI.opts().verbose) {
+                for (const [rid, content] of Object.entries(langStatus.unstranslatedContent)) {
+                    console.log(`    - ${lang} ${rid}`);
+                    for (const [sid, src] of Object.entries(content)) {
+                        console.log(`      - ${sid}: ${src}`);
+                    }
+                }
+            }
         }
-        stats.pending && console.log(`  - strings pending translation: ${stats.pending.toLocaleString()}`);
-        console.log(`  - untranslated strings: ${stats.untranslated.toLocaleString()} (${stats.untranslatedChars.toLocaleString()} chars - ${stats.untranslatedWords.toLocaleString()} words - $${(stats.untranslatedWords * .2).toFixed(2)})`);
-      }
-  }))
+    }))
 ;
 
 monsterCLI
