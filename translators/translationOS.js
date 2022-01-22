@@ -3,7 +3,7 @@ import got from 'got';
 export class TranslationOS {
     constructor({ baseURL, apiKey, serviceType, quality }) {
         if ((apiKey && quality) === undefined) {
-            throw 'You must specify apiKey for TranslationOS';
+            throw 'You must specify apiKey, quality for TranslationOS';
         } else {
             this.baseURL = baseURL ?? 'https://api.translated.com/v2';
             this.apiKey = apiKey;
@@ -63,6 +63,7 @@ export class TranslationOS {
             }
         }
         const { ...newManifest } = jobManifest;
+        // newManifest.envelope = { response };
         if (response.length === tus.length) {
             newManifest.status = 'done';
         }

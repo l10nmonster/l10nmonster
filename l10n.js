@@ -140,7 +140,7 @@ monsterCLI
           console.log(`  - translated strings @ quality ${q}: ${num.toLocaleString()}`);
         }
         stats.pending && console.log(`  - strings pending translation: ${stats.pending.toLocaleString()}`);
-        console.log(`  - untranslated strings: ${stats.unstranslated.toLocaleString()} (${stats.unstranslatedChars.toLocaleString()} chars - ${stats.unstranslatedWords.toLocaleString()} words - $${(stats.unstranslatedWords * .2).toFixed(2)})`);
+        console.log(`  - untranslated strings: ${stats.untranslated.toLocaleString()} (${stats.untranslatedChars.toLocaleString()} chars - ${stats.untranslatedWords.toLocaleString()} words - $${(stats.untranslatedWords * .2).toFixed(2)})`);
       }
   }))
 ;

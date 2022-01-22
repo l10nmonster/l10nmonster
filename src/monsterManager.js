@@ -102,9 +102,9 @@ export default class MonsterManager {
         minimumQuality ??= this.#getMinimumQuality(job);
         const tm = await this.tmm.getTM(this.sourceLang, targetLang); // TODO: source language may vary by resource or unit, if supported
         let translated = {},
-            unstranslated = 0,
-            unstranslatedChars = 0,
-            unstranslatedWords = 0,
+            untranslated = 0,
+            untranslatedChars = 0,
+            untranslatedWords = 0,
             pending = 0;
         for (const [rid, res] of sources) {
             for (const { str, ...seg } of res.segments) {
@@ -116,9 +116,9 @@ export default class MonsterManager {
                         src: str,
                         rid,
                     });
-                    unstranslated++;
-                    unstranslatedChars += str.length;
-                    unstranslatedWords += wordsCountModule.wordsCount(str);
+                    untranslated++;
+                    untranslatedChars += str.length;
+                    untranslatedWords += wordsCountModule.wordsCount(str);
                 } else {
                     if (tmEntry.inflight) {
                         pending++;
@@ -129,7 +129,7 @@ export default class MonsterManager {
             }
         }
         const tmSize = tm.size;
-        job.leverage = { minimumQuality, translated, unstranslated, unstranslatedChars, unstranslatedWords, pending, tmSize };
+        job.leverage = { minimumQuality, translated, untranslated, untranslatedChars, untranslatedWords, pending, tmSize };
         return job; // TODO: this should return a list of jobs to be able to handle multiple source languages
     }
 
