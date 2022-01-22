@@ -41,7 +41,7 @@ describe ('android filter tests', () =>{
   });
 
   var translator = async function translate(resourceId, sid, str) {
-    return sid === 'str1' ? null : `${resourceId} ${sid} ${str} - **Translation**`;
+    return sid === 'str1' ? undefined : `${resourceId} ${sid} ${str} - **Translation**`;
   }
   test('generateTranslatedResource returns string', async () => {
     const expectedOutput = `<?xml version=\"1.0\" encoding=\"utf-8\"?>
