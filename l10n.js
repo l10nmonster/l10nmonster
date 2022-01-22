@@ -264,8 +264,19 @@ monsterCLI
     .action(async (options) => await withMonsterManager(async monsterManager => {
         const limitToLang = options.lang;
         const dryRun = options.dryrun;
-        console.log(`Generating translated resources for ${limitToLang ? limitToLang : 'all languages'}...${dryRun && ' (dry run)'}`);
-        await monsterManager.translate({ limitToLang, dryRun });
+        console.log(`Generating translated resources for ${limitToLang ? limitToLang : 'all languages'}...${dryRun ? ' (dry run)' : ''}`);
+        const status = await monsterManager.translate({ limitToLang, dryRun });
+        if (dryRun) {
+            for (const [lang, diff] of Object.entries(status.diff)) {
+                for (const [fname, lines] of Object.entries(diff)) {
+                    console.log(`${lang}: diffing ${fname}\n${lines}`);
+                }
+            }
+        } else {
+            for (const [lang, files] of Object.entries(status.generatedResources)) {
+                console.log(`  - ${lang}: ${files.length} resources generated`);
+            }
+        }
     }))
 ;
 

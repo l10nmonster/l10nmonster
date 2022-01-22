@@ -372,7 +372,7 @@ export default class MonsterManager {
 
     async translate({ limitToLang, dryRun }) {
         const pipeline = this.monsterConfig;
-        const status = [];
+        const status = { generatedResources: {}, diff: {} };
         const resourceIds = (await pipeline.source.fetchResourceStats()).map(rh => rh.id);
         const langList = limitToLang ? [ limitToLang ] : this.monsterConfig.targetLangs;
         for (const targetLang of langList) {
@@ -385,16 +385,18 @@ export default class MonsterManager {
                 !entry && verbose && console.log(`Couldn't find ${sourceLang}_${targetLang} entry for ${rid}+${sid}+${src}`);
                 return entry?.tgt; // don't fall back, let the caller deal with it
             };
+            status.generatedResources[targetLang] = [];
+            status.diff[targetLang] = {};
             for (const resourceId of resourceIds) {
                 const resource = await pipeline.source.fetchResource(resourceId);
                 const translatedRes = await pipeline.resourceFilter.generateTranslatedResource({ resourceId, resource, targetLang, translator });
+                const translatedResourceId = pipeline.target.translatedResourceId(targetLang, resourceId);
                 if (dryRun) {
-                    const translatedResourceId = pipeline.target.translatedResourceId(targetLang, resourceId);
                     let currentRaw;
                     try {
                         currentRaw = await pipeline.target.fetchTranslatedResource(targetLang, resourceId);
                     } catch (e) {
-                        console.log(`${targetLang}: Couldn't fetch translated resource ${translatedResourceId}`);
+                        console.error(`${targetLang}: Couldn't fetch translated resource ${translatedResourceId}`);
                     }
                     if (currentRaw) {
                         const currentParsed = await pipeline.resourceFilter.parseResource({ resource: currentRaw, isSource: false });
@@ -407,10 +409,11 @@ export default class MonsterManager {
                             .filter(x => x.added ?? x.removed)
                             .map(x => `${x.added ? `${color.green}+` : `${color.red}-`} ${x.value}${color.reset}`)
                             .join('');
-                        diff && console.log(`${color.reset}${targetLang}: ${translatedResourceId}\n${diff}`);
-                        }
+                        diff && (status.diff[targetLang][translatedResourceId] = diff);
+                    }
                 } else {
                     await pipeline.target.commitTranslatedResource(targetLang, resourceId, translatedRes);
+                    status.generatedResources[targetLang].push(translatedResourceId);
                 }
             }
         }
