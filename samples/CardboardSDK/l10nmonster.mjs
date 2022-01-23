@@ -1,11 +1,11 @@
 export default class CardboardConfig {
     sourceLang = 'en';
-    targetLangs = [ 'ar', 'it', 'ja' ];
     minimumQuality = 50;
 
     constructor({ ctx, stores, adapters, filters, translators }) {
         this.source = new adapters.FsSource({
             globs: [ '**/en.lproj/*.strings' ],
+            targetLangs: [ 'ar', 'it', 'ja' ],
         });
         this.resourceFilter = new filters.IosStringsFilter();
         this.translationProvider = new translators.TranslationOS({

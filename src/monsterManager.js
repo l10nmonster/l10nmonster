@@ -141,16 +141,22 @@ export default class MonsterManager {
         return translationProvider;
     }
 
-    #getLanguageList(limitToLang) {
-        let langs = this.monsterConfig.targetLangs;
+    #getTargetLangs(limitToLang, resourceStats) {
+        let langs = [];
+        resourceStats ??= Object.values(this.sourceCache);
+        for (const res of resourceStats) {
+            for (const targetLang of res.targetLangs) {
+                !langs.includes(targetLang) && langs.push(targetLang);
+            }
+        }
         if (limitToLang) {
             if (langs.includes(limitToLang)) {
                 langs = [ limitToLang ];
             } else {
-                return [ [], { error: 'Invalid Language' } ];
+                throw `Invalid language: ${limitToLang}`;
             }
         }
-        return [ langs, [] ];
+        return langs;
     }
 
     async status(minimumQuality) {
@@ -159,7 +165,8 @@ export default class MonsterManager {
             numSources: Object.keys(this.sourceCache).length,
             lang: {},
         };
-        for (const targetLang of this.monsterConfig.targetLangs) {
+        const targetLangs = this.#getTargetLangs();
+        for (const targetLang of targetLangs) {
             const job = await this.#prepareTranslationJob(targetLang, minimumQuality);
             const unstranslatedContent = {};
             for (const tu of job.tus) {
@@ -222,7 +229,8 @@ export default class MonsterManager {
     async push() {
         const status = [];
         await this.#updateSourceCache();
-        for (const targetLang of this.monsterConfig.targetLangs) {
+        const targetLangs = this.#getTargetLangs();
+        for (const targetLang of targetLangs) {
             const jobRequest = await this.#prepareTranslationJob(targetLang);
             if (Object.keys(jobRequest.tus).length > 0) {
                 const jobId = await this.jobStore.createJobManifest();
@@ -251,8 +259,9 @@ export default class MonsterManager {
     async grandfather(quality, limitToLang) {
         const pipeline = this.monsterConfig;
         await this.#updateSourceCache();
-        const [langs, status] = this.#getLanguageList(limitToLang);
-        for (const lang of langs) {
+        const targetLangs = this.#getTargetLangs(limitToLang);
+        const status = [];
+        for (const lang of targetLangs) {
             const txCache = {};
             const jobRequest = await this.#prepareTranslationJob(lang);
             const sources = [];
@@ -312,8 +321,9 @@ export default class MonsterManager {
     // or different segments (unqualified)
     async leverage(qualifiedQuality, unqualifiedQuality, limitToLang) {
         await this.#updateSourceCache();
-        const [langs, status] = this.#getLanguageList(limitToLang);
-        for (const lang of langs) {
+        const targetLangs = this.#getTargetLangs(limitToLang);
+        const status = [];
+        for (const lang of targetLangs) {
             const tm = await this.tmm.getTM(this.sourceLang, lang);
             const jobRequest = await this.#prepareTranslationJob(lang);
             const sources = [];
@@ -381,9 +391,10 @@ export default class MonsterManager {
     async translate({ limitToLang, dryRun }) {
         const pipeline = this.monsterConfig;
         const status = { generatedResources: {}, diff: {} };
-        const resourceIds = (await pipeline.source.fetchResourceStats()).map(rh => rh.id);
-        const langList = limitToLang ? [ limitToLang ] : this.monsterConfig.targetLangs;
-        for (const targetLang of langList) {
+        const resourceStats = await pipeline.source.fetchResourceStats();
+        const resourceIds = resourceStats.map(rh => rh.id);
+        const targetLangs = this.#getTargetLangs(limitToLang, resourceStats);
+        for (const targetLang of targetLangs) {
             const verbose = this.verbose;
             const sourceLang = this.sourceLang;
             const tm = await this.tmm.getTM(sourceLang, targetLang);

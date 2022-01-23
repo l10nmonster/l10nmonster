@@ -9,7 +9,8 @@ const RESOURCE_ID = "tests/files/values/strings.xml";
 
 describe ('FsSource tests', () =>{
   var source = new adapters.FsSource({
-      globs: [ 'tests/files/values/strings.xml' ]
+      globs: [ 'tests/files/values/strings.xml' ],
+      targetLangs: [ 'fil' ]
   });
   source.ctx = ctx;
 

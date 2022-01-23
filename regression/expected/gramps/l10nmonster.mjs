@@ -1,12 +1,12 @@
 export default class GrampsConfig {
     sourceLang = 'en';
-    targetLangs = [ 'ja' ];
     constructor({ ctx, adapters, filters, translators }) {
         this.minimumQuality = ctx.build === 'prod' ? 95 : 0; // only push production builds
         this.source = new adapters.FsSource({
             globs: [
                 'artifacts/*.pot',
-            ]
+            ],
+            targetLangs: [ 'ja' ],
         });
         this.resourceFilter = new filters.PoFilter({
         });

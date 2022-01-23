@@ -1,11 +1,11 @@
 export default class CardboardConfig {
     sourceLang = 'en';
-    targetLangs = [ 'ar' ];
     minimumQuality = 50;
 
     constructor({ stores, adapters, filters, translators }) {
         this.source = new adapters.FsSource({
             globs: [ '**/en.lproj/*.strings' ],
+            targetLangs: [ 'ar' ],
         });
         this.resourceFilter = new filters.IosStringsFilter();
         this.translationProvider = new translators.PigLatinizer({

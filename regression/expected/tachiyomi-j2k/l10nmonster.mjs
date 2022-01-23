@@ -5,11 +5,11 @@ const androidLangMapping = {
 
 export default class TachiyomiConfig {
     sourceLang = 'en';
-    targetLangs = [ 'zh-Hans', 'zh-Hant', 'piggy' ];
 
     constructor({ stores, adapters, filters, translators }) {
         this.source = new adapters.FsSource({
             globs: [ '**/values/strings.xml' ],
+            targetLangs: [ 'zh-Hans', 'zh-Hant', 'piggy' ],
         });
         this.resourceFilter = new filters.AndroidFilter({
             comment: 'pre',

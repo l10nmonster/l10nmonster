@@ -1,6 +1,5 @@
 export default class GrampsConfig {
     sourceLang = 'en';
-    targetLangs = [ 'ja', 'it' ];
     constructor({ ctx, stores, adapters, filters, translators }) {
         this.minimumQuality = ctx.build === 'prod' ? 95 : 0; // only push production builds
         const dbConfig = {
@@ -23,7 +22,8 @@ export default class GrampsConfig {
             // TODO: we could have a decorating function that given the resource id provides the custom target lang (e.g. based on a naming convention). Potentially even at the TU level
             globs: [
                 'artifacts/*.pot',
-            ]
+            ],
+            targetLangs: [ 'ja', 'it' ],
         });
         // TODO: add hooks to allow to manipulate content before/after processing (see https://serge.io/docs/modular-architecture/)
         this.resourceFilter = new filters.PoFilter({

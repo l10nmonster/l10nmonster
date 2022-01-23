@@ -3,9 +3,15 @@ import * as fs from 'fs/promises';
 import { globbySync } from 'globby';
 
 export class FsSource {
-    constructor({ globs, filter }) {
-        this.globs = globs;
-        this.filter = filter;
+    constructor({ globs, filter, targetLangs, resDecorator }) {
+        if (globs === undefined || (targetLangs || resDecorator) === undefined) {
+            throw 'You must specify globs, targetLangs (directly or via resDecorator) in FsSource';
+        } else {
+            this.globs = globs;
+            this.filter = filter;
+            this.targetLangs = targetLangs;
+            this.resDecorator = resDecorator;
+        }
     }
 
     async fetchResourceStats() {
@@ -16,10 +22,15 @@ export class FsSource {
         }
         for (const fileName of expandedFileNames) {
             const stats = await fs.stat(fileName);
-            resources.push({
+            let resMeta = {
                 id: path.relative(this.ctx.baseDir, fileName),
                 modified: stats.mtime.toISOString(),
-            });
+                targetLangs: this.targetLangs,
+            };
+            if (typeof this.resDecorator === 'function') {
+                resMeta = this.resDecorator(resMeta);
+            }
+            resources.push(resMeta);
         }
         return resources;
     }

@@ -71,7 +71,6 @@ At the root of your project there should be a file named `l10nmonster.mjs`. You 
 The configuration must export a default class that once instantiated provides the following properties:
 
 * `sourceLang`: the default source language
-* `targetLangs`: a array of languages to translate to 
 * `minimumQuality`: this is the minimum required quality for a string to be considered translated (anything below  triggers a request to translate)
 * `source`: a source adapter to read input resources from
 * `resourceFilter`: a filter to process the specific resource format
@@ -85,10 +84,17 @@ The configuration must export a default class that once instantiated provides th
 this.source = new adapters.FsSource({
     globs: [ '**/values/strings.xml' ],
     filter: (resourceId) => (resourceId.indexOf('dont_translate.properties') === -1),
+    targetLangs: [ 'it', 'ja' ],
+    resDecorator: (resMeta) => (resMeta.resourceId.indexOf('DNT') === -1 ? resMeta : { ...resMeta, targetLangs: [] }),
 });
 ```
 
-An adapter that reads sources from the filesystem. The `globs` array can specify wildcard patterns relative to the base directory where the `l10nmonster.mjs` is placed. The `filter` function can further filter out what's returned by the glob patterns.
+An adapter that reads sources from the filesystem.
+
+* The `globs` array (mandatory) can specify wildcard patterns relative to the base directory where the `l10nmonster.mjs` is placed.
+* The optional `filter` function can further filter out what's returned by the glob patterns.
+* `targetLangs` is an array of languages to translate to
+* The optional `resDecorator` function can modify the resource metadata
 
 ### FS Target Adapter
 
