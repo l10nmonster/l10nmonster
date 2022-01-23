@@ -1,0 +1,53 @@
+{
+	"sourceLang": "en",
+	"targetLang": "zh-Hans",
+	"leverage": {
+		"minimumQuality": 50,
+		"translated": {
+			"70": 851
+		},
+		"untranslated": 31,
+		"untranslatedChars": 609,
+		"untranslatedWords": 117,
+		"pending": 0,
+		"tmSize": 851
+	},
+	"jobId": 2,
+	"tus": [
+		{
+			"isSuffixPluralized": true,
+			"sid": "migrate_manga_one",
+			"guid": "xB/NruBrwGm+TnuNNYyjVGpsAXfR7VIkbEeUbXWjyZc=",
+			"src": "Migrate %1$d%2$s manga?",
+			"rid": "app/src/main/res/values/strings.xml",
+			"tgt": "迁移 %1$d%2$s 漫画？",
+			"q": 61,
+			"jobId": 2,
+			"ts": 2
+		},
+		{
+			"isSuffixPluralized": true,
+			"sid": "copy_manga_one",
+			"guid": "ANCY8yBug2fS6YBza8w9Qh7Sup7ZSsV5B9oj2gC6f4I=",
+			"src": "Copy %1$d%2$s manga?",
+			"rid": "app/src/main/res/values/strings.xml",
+			"tgt": "复制 %1$d%2$s 漫画？",
+			"q": 61,
+			"jobId": 2,
+			"ts": 2
+		},
+		{
+			"isSuffixPluralized": true,
+			"sid": "manga_migrated_one",
+			"guid": "cIYtf0zyptX55Env0FXOdM1K7AVpeq5M2sgTCaYQWZA=",
+			"src": "%d manga migrated",
+			"rid": "app/src/main/res/values/strings.xml",
+			"tgt": "%d 漫画已迁移",
+			"q": 61,
+			"jobId": 2,
+			"ts": 2
+		}
+	],
+	"status": "done",
+	"translationProvider": "Repetition"
+}

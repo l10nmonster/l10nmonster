@@ -61,7 +61,7 @@ class TM {
     async processJob(jobResponse, jobRequest) {
         const requestedUnits = (jobRequest?.tus ?? []).reduce((p,c) => (p[c.guid] = c, p), {});
         const { jobId, status, inflight, tus } = jobResponse;
-        const ts = jobResponse.ts ?? this.generation;
+        const ts = jobResponse.ts ?? 2;//this.generation;
         if (inflight) {
             for (const guid of inflight) {
                 const reqEntry = requestedUnits[guid] ?? {};

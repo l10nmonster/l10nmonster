@@ -1,0 +1,31 @@
+{
+	"sourceLang": "en",
+	"targetLang": "ar",
+	"leverage": {
+		"minimumQuality": 50,
+		"translated": {
+			"70": 29
+		},
+		"untranslated": 3,
+		"untranslatedChars": 33,
+		"untranslatedWords": 5,
+		"pending": 0,
+		"tmSize": 29
+	},
+	"jobId": 1,
+	"tus": [
+		{
+			"sid": "AccessibilityHelpButton",
+			"notes": "Popup activity view menu text for launching an external web browser to get help. (15 chars)",
+			"guid": "d13hqt62wEq5drSC+g7auJUOAlQL+N3VrEyi1mCjMH0=",
+			"src": "Help",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"tgt": "مساعدة",
+			"q": 61,
+			"jobId": 1,
+			"ts": 2
+		}
+	],
+	"status": "done",
+	"translationProvider": "Repetition"
+}

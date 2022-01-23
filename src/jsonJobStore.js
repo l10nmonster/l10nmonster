@@ -53,7 +53,7 @@ export class JsonJobStore {
         jobManifest = {
             ...jobs[jobManifest.jobId],
             ...jobManifest,
-            updatedAt: new Date().toISOString(),
+            // updatedAt: new Date().toISOString(),
         };
         jobs[jobManifest.jobId] = jobManifest;
         await fs.writeFile(this.#jobsPathName(), JSON.stringify(jobs, null, '\t'), 'utf8');

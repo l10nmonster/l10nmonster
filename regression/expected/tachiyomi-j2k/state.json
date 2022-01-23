@@ -1,0 +1,57 @@
+{
+	"test1": {
+		"tachiyomi": {
+			"foo": {
+				"bar": {
+					"zh-Hans": {
+						"sourceLang": "en",
+						"targetLang": "zh-Hans",
+						"leverage": {
+							"minimumQuality": 50,
+							"translated": {
+								"61": 3,
+								"70": 851
+							},
+							"untranslated": 0,
+							"untranslatedChars": 0,
+							"untranslatedWords": 0,
+							"pending": 28,
+							"tmSize": 882
+						}
+					},
+					"zh-Hant": {
+						"sourceLang": "en",
+						"targetLang": "zh-Hant",
+						"leverage": {
+							"minimumQuality": 50,
+							"translated": {
+								"70": 482,
+								"80": 400
+							},
+							"untranslated": 0,
+							"untranslatedChars": 0,
+							"untranslatedWords": 0,
+							"pending": 0,
+							"tmSize": 882
+						}
+					},
+					"piggy": {
+						"sourceLang": "en",
+						"targetLang": "piggy",
+						"leverage": {
+							"minimumQuality": 1,
+							"translated": {
+								"1": 882
+							},
+							"untranslated": 0,
+							"untranslatedChars": 0,
+							"untranslatedWords": 0,
+							"pending": 0,
+							"tmSize": 882
+						}
+					}
+				}
+			}
+		}
+	}
+}

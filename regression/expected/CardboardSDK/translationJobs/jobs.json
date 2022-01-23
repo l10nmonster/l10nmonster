@@ -1,0 +1,56 @@
+[
+	{
+		"jobId": 0,
+		"status": "done",
+		"sourceLang": "en",
+		"targetLang": "ar",
+		"leverage": {
+			"minimumQuality": 50,
+			"translated": {},
+			"untranslated": 32,
+			"untranslatedChars": 614,
+			"untranslatedWords": 105,
+			"pending": 0,
+			"tmSize": 0
+		},
+		"translationProvider": "Grandfather"
+	},
+	{
+		"jobId": 1,
+		"status": "done",
+		"sourceLang": "en",
+		"targetLang": "ar",
+		"leverage": {
+			"minimumQuality": 50,
+			"translated": {
+				"70": 29
+			},
+			"untranslated": 3,
+			"untranslatedChars": 33,
+			"untranslatedWords": 5,
+			"pending": 0,
+			"tmSize": 29
+		},
+		"translationProvider": "Repetition"
+	},
+	{
+		"jobId": 2,
+		"status": "done",
+		"sourceLang": "en",
+		"targetLang": "ar",
+		"leverage": {
+			"minimumQuality": 50,
+			"translated": {
+				"61": 1,
+				"70": 29
+			},
+			"untranslated": 2,
+			"untranslatedChars": 29,
+			"untranslatedWords": 4,
+			"pending": 0,
+			"tmSize": 30
+		},
+		"translationProvider": "PigLatinizer",
+		"ts": 1
+	}
+]

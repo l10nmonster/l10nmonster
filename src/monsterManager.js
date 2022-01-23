@@ -96,7 +96,7 @@ export default class MonsterManager {
         const job = {
             sourceLang: this.sourceLang,
             targetLang,
-            ts: new Date().getTime(),
+            // ts: new Date().getTime(),
             tus: [],
         };
         minimumQuality ??= this.#getMinimumQuality(job);

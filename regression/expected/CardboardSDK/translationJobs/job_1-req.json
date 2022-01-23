@@ -1,0 +1,25 @@
+{
+	"sourceLang": "en",
+	"targetLang": "ar",
+	"tus": [
+		{
+			"sid": "AccessibilityHelpButton",
+			"notes": "Accessibility label for the information button to go to help page (read out loud)",
+			"guid": "d13hqt62wEq5drSC+g7auJUOAlQL+N3VrEyi1mCjMH0=",
+			"src": "Help",
+			"rid": "en.lproj/CardboardSDK.strings"
+		}
+	],
+	"leverage": {
+		"minimumQuality": 50,
+		"translated": {
+			"70": 29
+		},
+		"untranslated": 3,
+		"untranslatedChars": 33,
+		"untranslatedWords": 5,
+		"pending": 0,
+		"tmSize": 29
+	},
+	"jobId": 1
+}

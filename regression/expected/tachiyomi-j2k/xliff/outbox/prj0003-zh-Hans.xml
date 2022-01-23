@@ -1,0 +1,119 @@
+<xliff xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd" xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="XliffBridge" datatype="plaintext" source-language="en" target-language="zh-Hans">
+    <body>
+      <trans-unit id="kAXadpWkMY/R68bbf/7iVGBzwRjYQSI3AM1R8G7UlLE=">
+        <source>TachiyomiJ2K</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="4ZJWhsxEVWgzhYbLJn7xrJr0riE6jkbADmLiQNVPZeo=">
+        <source>TachiJ2K</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="s3vACTdhZ2buj/Wg0AF6N/JFDtLvlLLnIbUHBxnQ0qg=">
+        <source>AniList</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="dJVNyCn6bIDgocMnQANRZjjmN2yv219ej1rKTgEQG1Y=">
+        <source>MyAnimeList</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="lijVZnlsI/8wEaRccN3GhdMbkaokjlOHevHhcQl1its=">
+        <source>Kitsu</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="+GCqrIKkjCFCLsp6+nzpVdVJu1dHryOAddTaNcpolJA=">
+        <source>Bangumi</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="Ybb05vTJZmYDqAD6oEoxBMJ58ncfq903Xk0tNPmx7hU=">
+        <source>Shikimori</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="tCcKUHMi2WKFTJPbgDWUPaxQgriB9B5cI87p+NIa0zg=">
+        <source>Komga</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="jAYBWannurG5S8mC9W4J7PUBGpLCNPGMR3ljJ5zEFKI=">
+        <source>Cloudflare</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="2LZVXfTF7e7En+VmiiCJGKshKouQ4iTTvJXQ/kpyY9w=">
+        <source>Google</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="Oi/2wSlNC77uKVZa1XpR6ECAarof1ccaP95O7Tse4DA=">
+        <source>AdGuard</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="knJMaAVR62PEtQndkYhhbexC0GIjxr+r3/n/Xcu2r0s=">
+        <source>Remove %1$d downloaded chapter?</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="X/xLwLneNjaCuErpOvyVwuG5fTb8+UCP5SsHQz+puzI=">
+        <source>%1$d chapter</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="0vqefHzsJQULHZd5MNwiOZipcKE1vgaTP7+VSx7FRV4=">
+        <source>%1$d page left</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="6CfUlDdZwjQi9NBW2TB0Bhg9lLrJZJdCk6Qf334AZ8U=">
+        <source>%d category</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="D+XGn0T65+KSSIomQYzkoKzAEUsZszypFjTP1Lvid1g=">
+        <source>For %d title</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="S2ivCL4mnAN/3LvCD4eLgcF0EfIPjNBsd9I7+l5zqNE=">
+        <source>and %1$d more chapter</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="n+9x0mdfrc5EllF9g4lxFwLkppPeEQND2uhVP0ERBFU=">
+        <source>1 update failed</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="nA9Lsa5paTIiqxU3vXbGa+mttBPjFTxMMp3ZoShHoCM=">
+        <source>%d update pending</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="PDKvwcIWbKlbrMMuqEa00drfTM71kt4AE5hfbznTe/o=">
+        <source>Extension updated</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="ZNcGVkm/LvhJlULW759Z140eW5Es4GSIXDFWwYiq7Lo=">
+        <source>Extension update available</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="sL/wSvGXvK5kY+HivzhJsIzFxW6bX2dTH6UquFVCpHA=">
+        <source>%1$d page</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="TyE4yyopQMXi9xPAwddqixG0FiRUr7u1yXsHaK5cFNg=">
+        <source>Skipping 1 chapter, either the source is missing it or it has been filtered out</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="Eaze/yfF/znJ1d1oABgiBdE+HlrHoqbNbugyw6slJ3k=">
+        <source>A chapter has been removed from the source:\n%2$s\nDelete
+            its download?</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="5+3zp8SLfOTjhqThDsAlqVYw67Y1AHvVCaqYvsukLd8=">
+        <source>Done in %1$s with %2$s error</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="GoS05q9gcc/8SrsAMDpLSGWUgY57w7msDJ6H/STj6hk=">
+        <source>Cache cleared. %d file has been deleted</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="yPtONJrH7wZNy01J/ocBileV8yIllccxSdWOAT3Tb34=">
+        <source>Cleanup done. Removed %d folder</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="miGljXfpQpHYhkxvC7lslpiM2pbOH+24h0PZcIhHhd4=">
+        <source>After %1$s minute</source>
+        <target></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

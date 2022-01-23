@@ -1,0 +1,34 @@
+{
+	"sourceLang": "en",
+	"targetLang": "ar",
+	"tus": [
+		{
+			"sid": "AccessibilityCardboardButton",
+			"notes": "Accessibility label for the cardboard button to go into cardboard mode (read out loud)",
+			"guid": "hx+2oqKLjI85KARWC/EA2inj0uuSlhS0Kt6HLGARnbU=",
+			"src": "Cardboard mode",
+			"rid": "en.lproj/CardboardSDK.strings"
+		},
+		{
+			"sid": "AccessibilityFullscreenButton",
+			"notes": "Accessibility label for the fullscreen button to go into fullscreen mode (read out loud)",
+			"guid": "snWaUNjXnKuXlItO8jUPfKITKfuqshl6xCXxUgiP4jI=",
+			"src": "Fullscreen mode",
+			"rid": "en.lproj/CardboardSDK.strings"
+		}
+	],
+	"leverage": {
+		"minimumQuality": 50,
+		"translated": {
+			"61": 1,
+			"70": 29
+		},
+		"untranslated": 2,
+		"untranslatedChars": 29,
+		"untranslatedWords": 4,
+		"pending": 0,
+		"tmSize": 30
+	},
+	"jobId": 2,
+	"translationProvider": "PigLatinizer"
+}

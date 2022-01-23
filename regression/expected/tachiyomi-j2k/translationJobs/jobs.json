@@ -1,0 +1,113 @@
+[
+	{
+		"jobId": 0,
+		"status": "done",
+		"sourceLang": "en",
+		"targetLang": "zh-Hans",
+		"leverage": {
+			"minimumQuality": 50,
+			"translated": {},
+			"untranslated": 882,
+			"untranslatedChars": 17977,
+			"untranslatedWords": 3062,
+			"pending": 0,
+			"tmSize": 0
+		},
+		"translationProvider": "Grandfather"
+	},
+	{
+		"jobId": 1,
+		"status": "done",
+		"sourceLang": "en",
+		"targetLang": "zh-Hant",
+		"leverage": {
+			"minimumQuality": 50,
+			"translated": {},
+			"untranslated": 882,
+			"untranslatedChars": 17977,
+			"untranslatedWords": 3062,
+			"pending": 0,
+			"tmSize": 0
+		},
+		"translationProvider": "Grandfather"
+	},
+	{
+		"jobId": 2,
+		"status": "done",
+		"sourceLang": "en",
+		"targetLang": "zh-Hans",
+		"leverage": {
+			"minimumQuality": 50,
+			"translated": {
+				"70": 851
+			},
+			"untranslated": 31,
+			"untranslatedChars": 609,
+			"untranslatedWords": 117,
+			"pending": 0,
+			"tmSize": 851
+		},
+		"translationProvider": "Repetition"
+	},
+	{
+		"jobId": 3,
+		"status": "pending",
+		"sourceLang": "en",
+		"targetLang": "zh-Hans",
+		"leverage": {
+			"minimumQuality": 50,
+			"translated": {
+				"61": 3,
+				"70": 851
+			},
+			"untranslated": 28,
+			"untranslatedChars": 549,
+			"untranslatedWords": 102,
+			"pending": 0,
+			"tmSize": 854
+		},
+		"translationProvider": "XliffBridge",
+		"envelope": {
+			"expectedTus": 28
+		}
+	},
+	{
+		"jobId": 4,
+		"status": "done",
+		"sourceLang": "en",
+		"targetLang": "zh-Hant",
+		"leverage": {
+			"minimumQuality": 50,
+			"translated": {
+				"70": 482
+			},
+			"untranslated": 400,
+			"untranslatedChars": 9563,
+			"untranslatedWords": 1650,
+			"pending": 0,
+			"tmSize": 482
+		},
+		"translationProvider": "XliffBridge",
+		"envelope": {
+			"expectedTus": 400
+		},
+		"ts": 1
+	},
+	{
+		"jobId": 5,
+		"status": "done",
+		"sourceLang": "en",
+		"targetLang": "piggy",
+		"leverage": {
+			"minimumQuality": 1,
+			"translated": {},
+			"untranslated": 882,
+			"untranslatedChars": 17977,
+			"untranslatedWords": 3062,
+			"pending": 0,
+			"tmSize": 0
+		},
+		"translationProvider": "PigLatinizer",
+		"ts": 1
+	}
+]

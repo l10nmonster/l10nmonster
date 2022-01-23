@@ -71,6 +71,7 @@ export class XliffBridge {
                 jobManifest.status = 'done';
             }
             if (tus.length > 0) {
+                jobManifest.ts = 1; // TODO: get it from the XLIFF, possibly from <file date="2002-01-25T21:06:00Z">
                 jobManifest.tus = tus;
                 return jobManifest;
             }

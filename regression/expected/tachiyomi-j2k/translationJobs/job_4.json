@@ -1,0 +1,2024 @@
+{
+	"jobId": 4,
+	"status": "done",
+	"sourceLang": "en",
+	"targetLang": "zh-Hant",
+	"leverage": {
+		"minimumQuality": 50,
+		"translated": {
+			"70": 482
+		},
+		"untranslated": 400,
+		"untranslatedChars": 9563,
+		"untranslatedWords": 1650,
+		"pending": 0,
+		"tmSize": 482
+	},
+	"translationProvider": "XliffBridge",
+	"envelope": {
+		"expectedTus": 400
+	},
+	"ts": 1,
+	"tus": [
+		{
+			"guid": "kAXadpWkMY/R68bbf/7iVGBzwRjYQSI3AM1R8G7UlLE=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "4ZJWhsxEVWgzhYbLJn7xrJr0riE6jkbADmLiQNVPZeo=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "27qyNndOGr5Tzx4ddlKCtgGu+HA1wIjdz0DHPrL7yF8=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "wsC9QA5cF7iZfEKqhWyRlhkMyLodg6hejy8VBqRPhNc=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "tqJcDNz/ZRwr47o7D7bfseUWk+bZrORIZOvHHClSwAk=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "jxe6lKXpItYQ7tDgDvJvzwVZ+RfgcQoviUHOGfCohj4=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "WH5WLMC2qY2bMf5JBHSqSrkJVjNzv3YHD0V58wqZfV0=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "TdXyr2sR2uiqUPCk+2leWA3Vat+PDwLKkezo5p4OR4E=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "6LxJC8sf/K1lMeszDslG9Sl/Rvzv5614YKs/SdvvvXU=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "XXoLNbGH3EGehbZoQIYAlgCLCeXTFwLDRG+eFTvkRLI=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "xASOi21bwFlUiAyDq/NjUyskRF7IAJr6HsWpU0Kl6RE=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "V1z5DUJUfjPG59288u1ZgacrdXDTUYhGbyPfbjmMs7Y=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "6LBwu2wdYEGbmnqUYms3BbK63yRuliVm/ceDAyqBvfg=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "ALfGSVlR2dtPc2wD9pRK718u2FBbmpMfRsdEznu6no0=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Mz8K0HaSi4Ffvygulhy2b3Fqj38tfAeKoZeEukHyC5g=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "so0PKZwvPqpGV1xWSDbWY0znY7cKpYufeq33reXt8A0=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Z5R54ptkf0KSzqHSXbTpgusMBDC0AnVs5HlxwFuBn/g=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "dpO/z4YeTFadU1pOz/kPcMX3MJPH0ER9fKBE5s3JQ2w=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "80n7O41H3GTAIsW9t8opIF2izOHZmus3wrImbKV3iCE=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "mdJXc6b3zFcJjCiCBwa3eIMD0ftft4hpfhR8y24AKCw=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "3OTZLJcQIzg5hjfkG2FvvaLCs2bw5nf5x0eK7liio4M=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "/SEHHFJh1jzpnbQTZhpgdfhSuNgxeC2IedcO+8+eJVQ=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "2Dh5uX+r+ZGNhX0XX/9rBeP0s20EvWh1ANSjpD/Ads0=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "JPHB24YD9kPnTMIzpxSbLTHOQ3sqRd20JU0wD+6SSGg=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "9g34tPp38mY39nGP8T+WnIW3VChRwCg4CLToDOJx9zE=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Dtq1OCLeTSx3/phC8yNv9iQ1dU4+hVwD6JWEjTR8YOo=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "mHA1aAaURIeyD65vqcQOrZgktm0kcXaOteUsAQc475g=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "YH/hpEGjrEK1ltdMwc4vNcWcKdVQE59STZdql8xcazY=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "mWxC9jiOzWyfACuoV6DlcypJivwOxus5+dMFIHdVnGs=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "qIZDGt0DMbfmVZaSxqo8rBZN0RyPwAmaot7CYpXNJao=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Av/ON0E9yB1PATxomRZqmTHPlUa6IuIfdbqM3hHq9uY=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "m8j1SCe/UrzhS46X6dM3N+iYwO3/3kER3VbKiw5ixBk=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Qs6SZ3dVI6ozm00KhWIbFPFqMOYVdpBj68Qph8F1BGY=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "RNy0yE1oUBzz2PCGw4+OrDNwlclfoSUu5rtfQ9hRUMA=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "xPwj1sm9RPgXQRbze4ER9Qtvw47U4EAEnn/KMUXgI6o=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "wJDJ1kfIvhrB6fbWqin4rkKuS2hN9enFwLPW3da1Ygs=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "0UDjqW0KedOeaREpD8QGmewenZGpHkcYTXOSBVLGbeU=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "REDQuw2ffKcU28VK/OS/XkfAZPXbd+48KWPcvw9W50c=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "YQuig4jgVHZnCj7gkaqBA+YnUroIE3IsE14/X4ds/i0=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "csppXX2yY+YymAiNiJd8AJDZ22w5tTuxgpgh09frT8k=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "/3wH8/CCG6rSOzCmj6gPJXcTu3eQOR5zpcStEKu+2ZY=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "kCa+bJauYACIeWVYamRlbqKFa+Pf4yFoxGZh+qyS/dg=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "SQUbYShig4o/mD0PduPcc86T4SXt3e9vaKp/qn1NbR0=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "mxL1O8Q2FJe/7aycxLtdTnFXMnvI3dTIdPOtR2hK2Zg=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "U2UnvktkKPonD5AVbTsnU2KEnmERMztybcr2P28b6HI=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "tORAZmGGpRq9JC8iHie5axOQsNVu7dHeV0xaHX+ZML4=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "NYHyGs4jaf5TmjsVaebY6zXz7ncc7pWFn6zAf3m2hUA=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "c656MnA8GvsOTOxs4WY4nJd0SDx8+yR4m5/0O3dVg0U=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "/MmQA+fnOKmeS/awbYvANnQen4m6Hj4XtKiddmn638o=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "1yWI2lsCy15IjZhGkHRpwAWoNjMOP/rPM14bzEH3l9c=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "mUBPzydk5EoVceN21sURmqCJm3S4SHPJYKOdDeGJDk8=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "ETclr/VWLWFUhAFq6UzZX6GjOaOKAvOSOhfmlV5o8qk=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "EOfH8MF1TxExXKy711d/IZzDgIS7Hrvga0qkB6Y4HmU=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "huHrZ36lN4u4bClvKIpWCCg430CBw/V0wdCrp3pANrc=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "qvWGK/lLcPxv7O2tc/y2b1Fgqas4Uk9qikDUU8JzPCY=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "5dIhJapfUivLgbMbJjZQUOVDIRggMxJgkm2iscM7/A8=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "ToQxCqj8I/Sl1JKZSFEoFDUeVI0a5hgEgXMU/q+MHfQ=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "LsjbNhr3WEBa/R0YVVgCwjGtLFIDKeIYeawGGw4roAM=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "ZcYnJ5Od7+YKDD3xphviCHtelffw+mhq54M6Rs7tPtA=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Ph2bJ5o6hNyyzK0cUaxO+y1H/ebjPITypSCOgs8JPSw=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "zvr59y3s5K3qszjqGTIXKeg/HsuE1uajtP/Jw40Sp5U=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "ev/MbRW2ikGl8CLa17RREv5J8A5CaY2UhG0SdQNdv/I=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "QAlZS0y6i/buINaq18JblNG70LKyAsdB5SEzos785FE=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "gX2qXw9h04nSkWqum0JX/lrXBPrnakCiXfhaqiVV8OM=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "qGkF2Msp3GFeWmf1Bhwiv0fF0eC1cpmBhNbvl8xiiDY=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "VCIW6HRhoeMhpQUhRuDv4rLKq9LG90yl1F5zV+xbvQU=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "jP+v2MRaelRp+0xUUhmilWXKVm0sFGYkH+NQkgC3xAM=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "0IxzMeDYA/8V3QabO+k3En1Ld3cLA1pVnFnO/WWfoFk=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "W+OESlaLb8Tz/YavoeRWfdWpbImHRAg2Whyms6MQFYg=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "+ZXuEBcLtTSL3Tk5TFp5gsqkopJ3I2iSdHMaFKM2p08=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "96luWUe3rIPx396wuzKUZiWpL/FIvbxC+tiqyjavqJw=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "9KQnpovYTTR8EqaPS/krSrI6i65OEvrlUpYUZ8fHDF0=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "8/2VD6CoQQwIG6KI5Gi0GBE4gSJnn5YXcgUHUr7tvXE=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "mGutHcON0BUvfsxMPu1umIKcHv6zoXqgcRekXHAaCpM=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "SwJlbVJTeK7RQngegxVgj7hyxKL8WkxxvYeQDmUxXFs=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Rc8j67hJn/5B9igXN+Qk0aQulQGROwzjffyN0YKKWMA=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "uYQlEE+yMY7qUylFrutQn39vtbCdaLwds6v5WOXnH0s=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "8hfS2YX0Z2MeOtSE6o4NXrYbB7OeHBBHgdAm+l4+w+8=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "RQ0ENEOSXNoEnBacgQPuCHJcj1SCwTftRhX1VwofvdY=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "oOIsvx6JfYWIil2iOllgT2Rra6OYAyNK/n4vjqZAA2Q=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "5lghhogGQ82xg+zOoDxdqYBrMVFarbA1PGmSufW48t0=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "hnAEykZxa+ROnqZ0jvAdrj4/QmGPCUrfXq2yt8d5ZnE=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "8RiginX5c8HPKTdZLSf92yPW7OaauQvgF/mQ6bLWASs=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "2B1czib05hWKXKttgwY+nLlvNzlCyVANPK4EUwkqygo=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "ASrcs0Dz123vfvvZRaO6g4nrW3HXYfVXDAK3PnApQMQ=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "akU48sSoFBDApncaFTnxDUwvntjoVc/x/ncCPkbKfUc=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "67LG+B8pRZncuF53apGRcqFubfzZGWknM7RCqDH9SZ0=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "w1Rs6QdUEbwNfxKQ/3xpO1EmY/4HRV6aG5GQF0tFK9I=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "3asXWsKaR7y7GtHSB4gj3cKcy0QKV7ZP9Y37ZUsa4J8=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "+ZokOFEGjoKOP0ipBcoQfSs+VHrAsiXGtvmliCLnBxc=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "lxojKZjY+5yMohTxbOYeEsPXKdU35/LdTGAzh9L21hM=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "fN6EvqdvhVsR+FEQQFTaLWJEZURGvO79klFaYWce5ns=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "xtCZPDVorMQcmb88XuRrN66RmY0CaLszKaIG9rZilMw=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "vc6RPi0nmbBiytfQeWbKySuwc6Tz427bDCSe//RrgOs=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "qPY+TEoWZjeuax9ZNJUD/wMv44mSc6+WAQqtgXEPBSk=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "pF/TodxnIiM6j0nfMhGaKwG7i29NMrwslIg09Kr5NLY=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "uDn0V4BKl8/4RZG+SBfzr9WsusENKW/02EQe2UZXh7E=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "4se94QZG8B/HRubqGbQSa2z73iKBD+niP3vOOy24qeY=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "iDbzX3ua7JTK2r5fPAdwX5aGkNtciRqK3DmhR9GrDpk=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "VGxNmIVvDYZ6XN8+GGELcf5m/BTP3/nnUxF1sAUHRVg=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Bx4ksQFJA0d4IzSTzkltfMXKvQE/VFynqSen+05Xz8s=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "vOXbT2RStv9Bfve3rxZcNVYVtPleduRz+tCudb4hkm4=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "8WTohVPNZpV9njpvhCzeDzn72bq4FpnLmuH2GWJQmbU=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "09bHLJJ3TSUAIXnWuYp8zkgPz/Ktog89FUtierMakyY=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "zHEBCkIpAL7IFfPf4XupIOxAICmr++suT78fcOimS5U=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "UwRMRUlsHHvbMnyBXmfC1mLPAoK44f6GbhkwsaZA+LE=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "/LFloqjVFn0g8rA1cyKvjNh0n06tCbEN9q9cDIrD/mk=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "6ZsSto+VRKnxsZGSzwRyt7QJN8AL89DZyeutUNkCwN0=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "GrMFwP4G/U9q4P7sChaW2J/1tmJecnWYjzHc7V/iIT8=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "EJajp+vB1WGv35d6W7joH8a2s+IABgLLbQQ7if/c52o=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "TDhM0SxNSzg582MobJ+X5uctk+vwpHPzMwTVyP7pqkw=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "hdOZ2TaIpQJa51D84wSDzU6Awl+GjNr/KxXXa/SRFjw=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Gx6It2EPZkzo8gjjKMNEIdCoI3j8ApOfbv2ZnOxTfXg=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "8u4FgLqIOqKPt9ghwV7vaQd9DIIie5EIgYLM8Y+MRg8=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "rEhqIqyMOpPGm9tucXpboZ2m3WcZOJWCxH6YdSbJQvw=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "XlcudDTXzG61J5iRPIyqhRE70F5HFnn2xrll5R17+n8=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "aVTh9yvCCOJS6biHAKAoKQDWmjjqo8cIFgcwqCIilRo=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "2wtUHTjlnyifY2hE2cYObdqXt6vZKdAiyeVM4oNdf/s=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "V3T1TyRdbpM7GRMKubmLBRYDs8mAYaoJCF51qig7BrA=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "U+fM9HL6MdOpDlVta63gzSGRhDsy+EcFEPtR2FaH+dg=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "RDsq1cQDak8jiMMmyZC/3SwERo3l6v8CapJAHJdpJec=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "/8UeQtU350WWvYrLkMi8FgwaUbBpanboM42kByWdyj8=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "SlAFtpEsmyLyJ9CWwNHgoUBa/z9W5Mf4LO7mcJAtZxg=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "1XV7ZzyoiWqejk/kb8BMcUaGHMJHqLTx599EJtbIbGM=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "A1vrwmVU31UFieXjJYeCmbnFXwvAe0YhNyKDDMkYUjA=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "HSi95SVfdcpoTsIsWemtKmrx4H2aOlDoF6G2TOMmtkc=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "nbb/Qs8XacxA8ZryVmBTmYK8QhrUJOV1ll4GHF1LAVI=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "n1whErmKjcpP6XeusH8OnbllaukAYZVGuGvAwUS6vzI=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "ole/ODWFjk6iag3O8p560HO628Q/hJvMtJGIAne5pRQ=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "EpysZnLZo+1mZhou8q0OvmI8lp6fQXhnNentodbGre0=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "bLmGEWcwODjJ5TsZtvgPlllhMF7Qusd8hEa8GCnatwA=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "H4RqEMI7N9GCVCHx5OtUl6Kw6tEl1780q6W016wNcVI=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Zi3L+9A9ap581wVL6PDJp3zruecGLQwl5p9k1u9Zyrs=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "C2FNkpaLoL7VXyXMu9SaavaizdXlCQJdCFEfo18dSjI=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "/eiLmnk4fEbsRy1A9mw2gRTRnELuJtyfeEzLU5qCxpw=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "/h/8cgOacQBSamHFaN1tvSkDKO3OST3xNwxQ000qeww=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "n/HJKhrvrSRiRt5B67LREhbN2dFEGtgAs3UQhBs4WJQ=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "O3sde3hZlglgJmbDZ9GnS/sg/odYUPrskCtrEYhLq/8=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "/UQhjiOEDycVJQUiZA70CKquv1zGeK1ewLezYWEQGbc=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "CjYiNR9pPxk2Lft1ft0BzwuVz0M4pE8eWqpssfF2SVs=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "+HuD6DHwN27vOk/Pw/s14X20I/NuDj/SgyMg4gjTPqs=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "/kk+cHhadbopf9f8VouQpkf7cFf5uH4x5UATjrDbT8Y=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "SMwJKF5bm8Dw+xz6vGuwFBcxvaO3HNcEdgOamKUOZIw=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Id3pS3KM5Tkhruf5e491S+MZ6QNGErJ19JogpbvKZNU=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "wQRuzGKkvWV0vG9obp4jGSnm4RjR1bnkAXtK4twE1fY=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "223rk+Kbo+zntSmAdYrsyW+ny2zCVG0qtEqP7J11AKo=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "1Zrp6BG+DZXSWk18y0cN2K1J814wdXRxsC05kaDwynU=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "ouRwVLj6hSKJFfa3sUttbDc6Bu4XjCLn/0DqQGwx0SA=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "cJ/+rA/sG+i15fhaJLSWxUuAg26fAQSzmfLCtpXwQ7Q=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "7T/hOsg6RhtnEA4R4O2r6DgjCGl5TFtkA/MRWZbSnjk=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "W8IL7FndWDq+7+mwh7RdfpnZ+3SJj5ffNGNhAZG8S1s=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "NCIdcJxxvp00HL/yi0SD4xBMx8YwKzIdtFqHXMDHDCs=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "paXGn4VWZ5yx1GauoMOctNbsSX+BnzeZzjpXvBejZ5U=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "hInxbNXmVp8ymfLBQk2lH+7SvUPs25InX/gUWoMuX4I=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "tiuPeCuNZficiHifln3AdOnVjGqIL99OVSCJTjqRIHQ=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "bNPoLAv44j0zbzVEKB68Nquz+COQvdnao3VSBUr6gkQ=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "vdEXO8td0M3CxR2uaKOOeAFddT/lcuWlGdJDUQKv24o=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "JoF7exj/S0HkjlE/K6NxLRkE1SPsbKLIT8weHsrlRwI=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "2pjM4+I03BkSW+GbRG9AEztBy/evkZczJAm7MDgTi6k=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "FezFSoYDEiIsClrf1JqAwRgFSrfjT2/CxGdPlIOXLA8=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "rb6QdTJBmHJnWUjhhBu9GsvrqP124sw43HE2vPZK7yI=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "+p4Y62JHBpxvrQOFUkNWm8kJhR7z33NowZpXHhKis94=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "nP0t9wle+o5QMEG5fe8AdknkamcCg1ooEtEx8hQvD/A=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Bs/uAR58uFgb6bja48jt8D7VWPX+BQswoW9ILNRorIQ=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "u6D7imr8nr9n+4+mLssPJxhy+OjW5uf11LKMMXwzUq4=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "IEX6H6t2/ADlenoNGaK3o4ZydfaVNWUL8L9934J2ljA=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "yY0LZeDyRVAoWbU+M40m8KynYbHYMrFP8qU8oYKpi/o=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "hOWW/8QYlUZgntp9GjjL83aajQad31hn4E2NDGWkFAY=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "DqqYptjCq56RSd6yH1VezMFYmhJh/M2IfK6LEdB2DUQ=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "kRgL8Razjqr1+dxoAhaILzRBwXPqxmt7SbFZAhvz1Y0=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "w9hhiyhohnNbjc/qqndqLiy6QdwWj+Epv6g2TqvRPtg=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Rdfkz1wtsfZR9+D72v7XGNcQIJliJS2jVIlDQjCiSAY=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "UjJLozZAoSoe146ujO2h+ICSmd3OB8xUHXoA0sw1vuk=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "wa91V77+CNIUKXO/trOUgp+OTGRGK1xDxCnn+jgS8n4=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "mg4C6yIR8EP//v2LCqgKunkzyxby8kPofjaNzHx5x2o=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "xnANV8L5mqGqk8EDMRSOD/nXd8p0AK4IczkE+ezn8mw=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "cX9XxArHW92TEnx3pEA6Jr4BcxizkXZXT9Fl+RDaVZM=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "EbH3VudW1nCXsQ/ID9Yx1ZS01mU3OthyL0VrF3xBXR4=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "qJ1A3DenY9H9IyDNB5o4neBMDAAqqX5c+vEQd6Dgds4=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "4VnsQVEawPmvgH+O45FKaXHWGWxMnjIWsFtFV5GlyFc=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "tA0xYikn0qHMP71gVNu8p+qT0ikIpg3hFN5e/ID1rVA=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "ZYRF0uRDK/bsTpcq436kRm7TTSod3JSdVNJVsUlWSfU=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "K8uvCzrPyY2N2As1JfFODEHeKn3UlBuZ9k1znC1K6tY=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "udoZazFBKNuJIC6v5QmfjrbGyd6rlkSOBu4UjHKhWOk=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "U4k2bPmEV48jDbn2lC4J+B8kiIokopjfT9qt0J/p5ZU=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "DthVRDpslR2a/CZJ43oIuFM3jsvJRc+3YGX31hS3Fgo=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "1+jjM70wv2iQBiRQB7JgTEfYLtgjIoNFJsew2hdM2T0=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "8t1/0lUqcwdgGbFbG367z/LVPDZ8HaDYkhAtXSyWa+g=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "8v+/s7uEet4s00G7V9Pcvumf9GnoOvuXxIwKWEjb/5Y=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "BCmMe8otscjDmEhjFoIZ+BckdPme/ENvG1kiKqJe46g=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "IjIAaIn0Y6stcO+h0xUhMXdIoivMRUrgVpxrj9FeUHQ=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "s3vACTdhZ2buj/Wg0AF6N/JFDtLvlLLnIbUHBxnQ0qg=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "dJVNyCn6bIDgocMnQANRZjjmN2yv219ej1rKTgEQG1Y=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "lijVZnlsI/8wEaRccN3GhdMbkaokjlOHevHhcQl1its=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "+GCqrIKkjCFCLsp6+nzpVdVJu1dHryOAddTaNcpolJA=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Ybb05vTJZmYDqAD6oEoxBMJ58ncfq903Xk0tNPmx7hU=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "tCcKUHMi2WKFTJPbgDWUPaxQgriB9B5cI87p+NIa0zg=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "7hb5L6qGTAqPRklPIZG70MstE7elk7RcKPRLMCRQtd4=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "+PPNIbEUHwkIGu4bQUzt0Dum2AJNX33S224Q/e/ou2w=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "XNjo/w9WhrGdxKdrV8/dOdrvfQJ22YujJJ86Jb0cZr8=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "ZaFVe22GBI64JdVFR6uX+ObRD+cRk0zIKevux5wEwW4=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "lt4SHU+6CU6ShuRhAxP8PbpEMoizbRLeARXwB+oXCoE=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "WjIru3HFt1RrWI7/RapbkXcY0vlttgOm2q7YAQgUagc=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "91G3XQPJ2p1pajBE1eoRgNPgG9B+t/4PHNx3kmeUK2g=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "ELDkm24sZ2jhq4FvE5XizqKRWUrY5rYSIdvZBLjRnAk=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "dK9hIuYCY7ZjQx2fkF1hE+wlxSiGWWD0CDls4jwr0Hw=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "vlH7fPoKtNFol1m44HtsqAc/POa1glKl0jdNWEN1A/c=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "40nodRaLIGy39DOdLno37o+CdP+LndXWJmmD06atmsg=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "ROaHF48UK3ruuGBFswAs9Yb0b2w7PzW2VOn//h/XmJ8=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "N+Yl549YbT/yznYhn6exYuE3dfVAe7a/S4Mqs5cfOqk=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "xJFqLVqZOdDwGYAjfbgscpPcA6oGzcIavM/+Mgu3XOg=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "7SPzWn0HQD6BIBpK8t3zjkVsy0SkVUtIURZJtEqRj7U=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "KCxikc2zuT7uJzwvqPeb9SagV9WJX3byhb77PFwsPS0=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "OiatXmgmVshjzRHY9MOlDEQV7odBfISWmzX62vP7wBE=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "omvEJqBNnkZy6/cNJEWTibEC2IE/mhXjdIY//gdCY+k=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "dQVWYkXPeFOjGC7dZFl4+qpzZxpKrykPe1si6ZXM47U=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "J1tK+zxfRLo+qJ2LdvOy0EfXz3DKHub7cuPGCCs1bKQ=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "qgyhbpKDjI7jLUvTkyBinCJwj8i7lfiKwHOif76StvI=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "0PGoRBtjSC5DfE7pkpNcSSLKLPMNGJXcigYL1r00dOM=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "5eQfIgEoQtbNWO+1AlQOysdFQc5V5igBF2xUbmrskIs=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Lq7sHwfLa5taFKxzvjoFQ5MmaEM4wCpGJv0Yt2Q53VM=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "QbKhyhwIbEvfmSlUiktB2jG/Mr29nUVfESsqbMvQEhg=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "cXhHTgubaXopfYGQLaXme/NmQ5WY7SPT9Hk1kXrnht4=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "GWnOMuj7cc53ixBNbQN3Jgx0ndwa1tQvFWG7MN1UvOs=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "2zYHICLSMDRS4hmL3mG/GcljCxsbxDZJi/d0tEA8KeY=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Qz5uMNtrIEjaYLpAUR9s7q838MB3UfqaZ5y5kCi5Fc4=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "YanNntJpXSZIdbqr7id6VeWUtMbeD1v/ckCNpKvPhBw=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "EGkKE9cPyin0ijMsclAYu0/9Q684CojI8fjRfoN9928=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "nVBLd4D0iYUrlSTjg2WppbD0fp8tEaWrp4k0ajSXqpA=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "u5bvLpCuJ8WEuCuphGYr0Q5hpymee1gnY6mUqhhETWE=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "uz/fIYv/VXMTuwR2VMB8351T4s01F2kWVVO7N4j8ois=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "UiKTB6OG/3SxNZYan2gizCkBSbgzAGez+Qq/0gqBxUI=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "X/lcJ33w1FnORuUQsj6hr9Al2ws3lhj0mxu1ljyw1B4=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "jEhFC4GspVjYt+8LuT0NMhub4gbo2LOYa2WcH4NHFHU=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "poXkTGEcGe+O1oAhmApNbiKsqkuFvk9sd0FQGqPqlM8=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "C8BPevpvgI6WJexjUMUahmJBgFi50M07scj23iERX2k=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "/AuqOACJhbcy1WtVNzcQXxPlijRWT2KN52345xP4rBg=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "zubSvrNm5wwOPs0ztitCy+jgEV86F7C1/qio1TMfH2I=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "IUUIIBJOx9r8kQmaZlv4JUzCssUcw851UPHvDoeEcK8=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "XupCzE9DVb/DJ+vj1kNbld19gxVNja1BW/3QhxwaJOc=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "KShg/q+U/l3Mp8pT8tgYnpW1945uQkF3JiBjS1EbjbQ=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "IZ8YeylR6f1qeElImrsuwNR69XKaboPU5Ulg676rggU=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "pXb00OSWKF8OtyBtcSRxEalP5h5mLRR/VMcP78SHr/M=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "oL50pOSprU0vWXIoHmo2gS1I0+eYMcL16hwufNY8ULI=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "/HL38HQvlrx4zatV5U7Rdku/K0+BKFM2gSSScTmIAmE=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "FBUPvw4IF/dco65MT85iOp+P201ObtzHM4ewww8yo2A=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "m9LapqqyUbl4Hjm+acmQgAUIn2zH98FMK6pLSC+/jVE=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "5GX8Iq/IesOGuLkAra1Yqr9pElHtXjerK9lWMmOphyM=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "C4ZBYtDxLEoCXfuon+Up1hDVSlu47aMTUGiJEOQYKA8=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "mDWIplg3Wh7Rcjh5InA9P6ffNR9D/FzTNZn0x6ExoE4=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "m/Zja/HdTZ8QsvSIsL7BFxLzVslvGEG0jRaamPck3qQ=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "2H2FCTrO3QD6g4e3IRLHkFvN25eM13EHU4SWJ86L11s=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "yErnSrwWHEZijQHfyIuA1An321aHUSxyIeMcXjWZiAo=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "kX70JYjVLuSXfboAf8zYL1Ych/d52zS8TCi/o8QxJ7o=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "4LEwGmzLbpaz92HD1PIKy5uPNzu3Sescs2rzorTW+fg=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "59PP8cD8S/FWrK5xrlPx31M3HLElEMnaYHJ3tHdpPKw=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "H/JjnDnNORCzdlGTLjUfqofMK9rQ6AtQYWzPzAR0tPg=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "w5pSql3nh7zWPgEIPI4THTwy+pPho65K0Ib8ZgMvAVE=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "9bvm7hCxHmnizSUDHApPLv7sitYthDANe3lWJGoojSc=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "zXLKLNmS6xruqwTnlAbShfEJGiuuMK3ztU+MUk76zWE=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "D3LfdbxIIVqFCgNV1keUViOetdNJG2NwKYm8Oq1xiVw=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "bQV7fZpH3qCJh1eXfgPuAv5TNS8EN7677pXGdrpBdQE=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "yoF22AIvrvT8+SiVZinJYZKjXn3ec3+W6xwdonw73HU=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "TzwswY8NZNKxmx+0hvbNo7jEJlmDyk5FtkpRV6YVWew=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "NG5VIYqM+D/1aUYH4LZ1PeIRAJfl93HRSjwUHrlxW54=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Fm6Vq1l2shHVMSBG3SScRIRVIIllb62PT55gQ8pn6jU=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "CE1TfCDxLNUUOskfg4UlXkcmKy9RzTreJQb/XEhR+JE=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "zjRnVqvBaWL0WEb1kpUnpHu5WxQ6QlzFONOTIKfEIWQ=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "X/KLc5HBAfegVR9vZD8aXzXPwMiU8FIqSVIzsp8+4Gw=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Bp/sF4nI2Ou7xbuuuco5wo7+d9NYDY2IpxB3Ey7Uz38=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "cFIDGoTU3XlK/6EpXmirmj1HbheTAQ5vDwzEpib1vBk=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "c/RZW6BNeKjSWxBHHgg3Ii7b3Je3ohsXMPLu1tfe29Q=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "NphDMweBfMiTRwBCTAkmIySPR+p8jPY/8yafFV6yUlo=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "6kZ4y+TCeSlLR40rmH+lwkbxuWb/KeELspwgQrvljIY=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "jAYBWannurG5S8mC9W4J7PUBGpLCNPGMR3ljJ5zEFKI=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "2LZVXfTF7e7En+VmiiCJGKshKouQ4iTTvJXQ/kpyY9w=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Oi/2wSlNC77uKVZa1XpR6ECAarof1ccaP95O7Tse4DA=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "+C8OeNLt0crMLLBsboFDzha8JXGTuyYoZttXAzzBaQY=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "dwmP8JsQhLHngvqw56EBpRIwjbjeCHjFNccFSEUvGvI=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "RRrYY498SDiQ8LcoRDmSXIqvzNAHgFebOb+KsuwO1JE=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "nFeN1Bgez7Tb25X7OrgzrPHbOcLvD7MphH8IQK2Y0Eo=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "+nyi5YnV5GQb306s1HOj7B2SqJv7Awa5tmLwrrkrv7c=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "HGSy4QLH2EpxWHS47G1VD08njmJ/QODbLdG+LJYXczk=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "W3fwjwvnWNaswdtH8CkY+ptVv4kWSc00Dwo0FRe8T74=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "+wkXZ+U6feYoBLD03zOySY9bCJ2q3iJdBWNGiVyzb+w=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "RYPIepOwa5XAPzLX3PAQYJsYA06xOGDr6gVmCoK5e68=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "nEv/KSYOz12KtpTWXdNwTR49WMGpvioVTf4CqqDI/Oc=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "760JS2eBsCjbuIMJovFvLL3VDT3Sf7OOh1BwVVDD/Fc=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "JXsJHBIMLNjsigfNzdfS9wj4WHG3TZviHGoVT2WHQF8=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "/BcKOaHV9biKhmCWByQuo8e4tHyutlNooNwpysPzdJE=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Wlob/O43CrtKubqtsatG0uCYfvcCrG8ya09n6fQMlTw=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "rLH95OG9xlPkF4kPAJyeLzQRrlVlo3N8/TnKBowO8Tg=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "peDKey/OCIZBrXtm3WzN0U1MyhKG6W39qiaduKidCK0=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "rOzl7VLQsGw9eF8igLhWnXnWm0xWAix/+IMHLg8O41U=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "AdtF+yNmB1KDbirSinW1hG8PNpb1zzuA3nrjvCHAAHo=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "dhcccCE8fLfXWvszAEfDTWr7hNNe/3qT5IUdFeDqgoI=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "ecCXfY4HMfF9J918/KY7aN7GY0YzLi4DQvg6ltvASZs=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "SVlZlyNR7LfMJwSoD3PuIxOKThbqF1NzlAMB2Ol9ARE=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Aj7B9bdrUBuawnRN3X7C9j+TI3E124trgAN1lqeNA2w=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "pX3b7nl/8Y58oXPbghIIx7/0aGmWWLPeP+D5LNDblcU=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "D18ZSiCe8YZ1sci7Z2F7B1tfXEm3Or2uUalU99MhCm0=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "ODnxRXqbNkf0WZwNMNBRVzvTowiRVdu0tktSDF2ET3k=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "PjW8y4Za7kR6g7Mb6zNFAHjvaRBRDKypInCNDLP0odM=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "xnqHTdNqkhihZKApW6oBsEMOzmr2LhRFqtzqAwqqdls=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "otCPIdi35zp9xaeTNfweeQFwx7Bt1eWeY6zkqDeDnzk=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "vxXabE6T33iEG5RVMjgZRBrr++vTr/KaHh2Ajyx72aU=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "vFhmfrCpbCcBLVqtsWKLnhjBg9l4fS85fQc9uKd/DgM=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "PyCles9s84xNnlTQpzPjAWWWaXSG83AIDFp6Dj9+Mqg=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "58HNOhORcxDJQ1hQI+X8sV6dtO1+JYfEYpU8LRkwcQ0=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "5T8z0MWPbgXZdSAJcvsDsr6VjLtrWYR61l4sBGDImp4=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Xtlfkv2oa5DVpkJmuUxtxRJHUpDRKaahy15F8dIp++o=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "pyHTpdpR4jXfSwerJYFoyQ5Tt1koOKoDuNA0wJOWd94=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "UJyX84gMBxdO1PDr7VKib8lH2/E4PvFz9cj9BBBJsA4=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "eXRc26yvod4Obg8UmsDbwm7gkrsGGdpMy4TpcYAWsxk=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "6tgFpq1s7Bmdw6Wj4ju2N96GgPe7p9Y7cGiyfxSF+9E=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Vj8DOxw8uO9KY77TuWRdJxY8sMxVtwq/IyHh6/8Srro=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "wOveXNJlRMcSQDJmFr9f1aXQi4JwmzgfG2o1ZP/DK30=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "QblYKrpV4TYMwNLE5d6OuLP5+YvTFicfnEWa5+51OcY=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "dIE3zIyVYSdTpju6+vlcTUw08uEhNfHj+2NIp5kbEEw=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "cfTYdJm8FCc6Or8Fu7ngokJ3WghZMzGABQjXm7xcSSU=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "KGOpC9OGKQjYYSCjadsdtUpJQFr1+etAZOgVmTt+wtA=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "XbMMlk7ML13AJYJW0ALnnF4spRO4SHgEXRstAy0bj1o=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "rZjFH0Z7z5HV8Tov2ZWD6ABIwLcX0rWeaY9SwkUqMjg=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "0ADiasqVjRLRMzANABySTIwrsSbv6Q3vGhjBGdq+IIw=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "vl7OUGfoSDmnzzrqm8hspKJ4aOvV2ihLIZ9EkPWUXAM=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "/0n6pKXlKYwqHHaLNdlkd7RW90QAB5fVJxzB7zl1lwQ=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "F5Qal+UcgskZtk753VXobQ8Q3yplYmkVT657jxneL0A=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "vUaAJ/T90aZxkP8ht1bD71Tnu5WFLJhuxr3eKYwt9hc=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "XIondN9IflEzVsv4LVTZEl1IQhYJgrgmheRmeYXipvw=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "WnmOrMRKcpD+cIjgCliYjM+A/zZFOYCqqV0HV6n3mS8=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "yTBAyJ8Q/qMDf8yAa9hH/8o0A0LBzRENYIDSC1UbOZ0=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "ls/fBz6okS5NVH86qvIvqQMwlRo1btsu7Ad2Gug/ryY=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "DI19ciZW3OtkszGmVMopKQ46E//OZBI4oNEJ04wOPK0=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "S417iusjHCC55wRHKWuNOrbPZ/rWwYsHERGejfW0RlY=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "JsWNn2iVS2hJzhqmyD1v6NfXWqx6gSgnxren331j4U4=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "saZw6SPY56Rlmi3JFoINSWQ084jRCETCDxJLHSA9hOM=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "cVDCQqr4dEx029MnKLeeHOQ04wz3zlkYiZ3wrnukfR8=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "5vlqnpIng+j8SifyQOHpZ5wPAs1sStNeeZqu13efQtQ=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "5y/933p82LiEHRH0T2TRJkU2Ht2vfrfydo0oICLM8eo=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "mdPoUGzFrcAt/vcKcl4Bq+dsE8Le+w++ksmqvFe/D3I=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "86GoqMybPQfkFBczXnyaW9xfsDEFsikr5YqYAgVuF04=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "QU/jF1/AE5bMND233B6xjLe2AEv4NjczDkAOW2naJSw=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "7x8txAMET/dUs38fMs/8OxmVBIbyZBDmKol+PPDCVg8=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "XFN+iVYrkadpxDxOdGN1hv505ZavJL4hTK9255kN0i0=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "ziJ4SzbBrQNCMTKA0B7+oq3NDDEhBRD1XhXezbakWxk=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "ZpXdQI1wq5GAsU3xnEjBcpWfjROalsmnIIb7tINXQXg=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "e7a8pIPs/qCeSrBvxHwFa/onh2Z/jQh6qioWqNdzTsw=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "ZBYtIRVvhdgQJQHV4kVzz7Bh0NSKcofDyfXSdgX0vn8=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "tpYrOKkmWE5cSjMMmDJxRckzqx02rnXxlVHRipdb7k8=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "/btRTivRqA0hOubjcX++MF9gC8w97NmhbBhbraZPkqM=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Ibaz0PUM9RNz1CPX+V0FFy3AerxinrWF9oJxlS2FX1o=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "NOELKFmkAMzBKP9wX6wMQ2w4T/iYyNyD/ponK9hKrjw=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "UzuX5kricHracI58dBSQHVf4CAFtgNgldg8nNXYRqZI=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "xxdAI3rqdVE8jOHabaDIWlvEjGyRYRj855VS1TbCDgg=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "OTdtStwBPshNkiL3/CP6/tPZFG+4bk9E4DGl11tHJoM=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "6T1AUvI23zq9BwgpFHAkbwrcdHVorHeJnpmjCHRjffA=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "eTcrUzO0Sth5CnbCTfK1wGtj4ewcUJv5eo5KZFnYQ8k=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "xyy2hY5UiPuBVtVs5p4QNtQvD5gZ9L62Afuf68HR13A=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "zz9EoXyrp2jHix8BhQspeFceDJApEEQnL6JZNceOyEA=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "X8fO+c1VVu9rbJOhfqH9UiMS20tCwPGDKgZXFvQMp3A=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "u1sNEscwzqYmb2ep8PT9x8usydILzw76W88Sad7u+KM=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "vRdkZFDzssJRdwGv+SthUQFGxf/HerP1kXuTpXpKzyE=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Uk0VwujRIxhpe9NaWYmY3hntAOfl0OuU8eai2ofVSqk=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "huyX5FGOUKZ3pi4fe79Gfe7qvq2yU/f1NEJEFi+8iik=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "ISUovOLQ0rDHWTN8FD5Egc/BxdZCIOGr7B6UXGmtjWs=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "knJMaAVR62PEtQndkYhhbexC0GIjxr+r3/n/Xcu2r0s=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "AorevjJcBlzGUCT4pVnxp1jmksPwVsNeVFyJvcgsSII=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "X/xLwLneNjaCuErpOvyVwuG5fTb8+UCP5SsHQz+puzI=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "DA5nZGOjj3NWy6+tyV9fCoXn2a63w1YSAkX9iwI6KLI=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "0vqefHzsJQULHZd5MNwiOZipcKE1vgaTP7+VSx7FRV4=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "yi+77QTDFxbEobsI7YTOCs2QCGEenD3hrANu8aV0XhI=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "6CfUlDdZwjQi9NBW2TB0Bhg9lLrJZJdCk6Qf334AZ8U=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "D+XGn0T65+KSSIomQYzkoKzAEUsZszypFjTP1Lvid1g=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "sxJPxRjdf+qJWkXyz95hsE5+MDHLGoi6EJD3pA5r5dk=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "S2ivCL4mnAN/3LvCD4eLgcF0EfIPjNBsd9I7+l5zqNE=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "hlShNgImb0QAtMb+KhR2H6Srjw0SGAdiLMHCGjkZluc=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "n+9x0mdfrc5EllF9g4lxFwLkppPeEQND2uhVP0ERBFU=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "nA9Lsa5paTIiqxU3vXbGa+mttBPjFTxMMp3ZoShHoCM=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Raa+hZ8f4KMyB2Nz7mYq4P5H/kIxTMnGjFOwfXenE3s=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "PDKvwcIWbKlbrMMuqEa00drfTM71kt4AE5hfbznTe/o=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "2nt8/jgKb5SsaEH9lFxheOlhuINrxsfKpgrMFxgB7fc=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "ZNcGVkm/LvhJlULW759Z140eW5Es4GSIXDFWwYiq7Lo=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "sL/wSvGXvK5kY+HivzhJsIzFxW6bX2dTH6UquFVCpHA=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "RKh3lCAL61AoOWPV5MWKl2aDX9roOeiBX5DXcqW70dU=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "TyE4yyopQMXi9xPAwddqixG0FiRUr7u1yXsHaK5cFNg=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Eaze/yfF/znJ1d1oABgiBdE+HlrHoqbNbugyw6slJ3k=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "PiLPusw1sUqvz8EMPh/AHT26BoUCxAk2nZzUuU30Q20=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "xB/NruBrwGm+TnuNNYyjVGpsAXfR7VIkbEeUbXWjyZc=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "Z39lGGgo8opWOGmpI5SsVcbozqzxZSGxrudRRkeR/Lc=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "ANCY8yBug2fS6YBza8w9Qh7Sup7ZSsV5B9oj2gC6f4I=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "eDicseVZaWZpqk/QNfTmnnZXLU+Ze3wVuKVl3flFdj4=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "cIYtf0zyptX55Env0FXOdM1K7AVpeq5M2sgTCaYQWZA=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "ExRyfY9sTeTHBEQmp1wm8Ni0O7Tms0bUh2+z15pd+fk=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "5+3zp8SLfOTjhqThDsAlqVYw67Y1AHvVCaqYvsukLd8=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "GoS05q9gcc/8SrsAMDpLSGWUgY57w7msDJ6H/STj6hk=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "fDCAtisL1kEIWbyLilBMbGW4dRbeSvUyTt/OXeU4jYE=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "yPtONJrH7wZNy01J/ocBileV8yIllccxSdWOAT3Tb34=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "9sQWaHtbzN/7C6tejrC1yfO2ch9VAGcoLD5b+AkOrog=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "miGljXfpQpHYhkxvC7lslpiM2pbOH+24h0PZcIhHhd4=",
+			"tgt": "XYZ123",
+			"q": 80
+		},
+		{
+			"guid": "nVhfdggD79bzuhQQ+AMZpSAZHDvBVHMQZUC1OTGTtWs=",
+			"tgt": "XYZ123",
+			"q": 80
+		}
+	]
+}

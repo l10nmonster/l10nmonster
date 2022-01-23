@@ -19,6 +19,7 @@ export class PigLatinizer {
             q: this.quality
         }));
         jobResponse.status = 'done';
+        jobResponse.ts = 1;
         return jobResponse;
     }
 

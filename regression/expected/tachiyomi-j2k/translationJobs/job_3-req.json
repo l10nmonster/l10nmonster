@@ -1,0 +1,205 @@
+{
+	"sourceLang": "en",
+	"targetLang": "zh-Hans",
+	"tus": [
+		{
+			"sid": "app_name",
+			"guid": "kAXadpWkMY/R68bbf/7iVGBzwRjYQSI3AM1R8G7UlLE=",
+			"src": "TachiyomiJ2K",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"sid": "app_short_name",
+			"guid": "4ZJWhsxEVWgzhYbLJn7xrJr0riE6jkbADmLiQNVPZeo=",
+			"src": "TachiJ2K",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"sid": "anilist",
+			"guid": "s3vACTdhZ2buj/Wg0AF6N/JFDtLvlLLnIbUHBxnQ0qg=",
+			"src": "AniList",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"sid": "myanimelist",
+			"guid": "dJVNyCn6bIDgocMnQANRZjjmN2yv219ej1rKTgEQG1Y=",
+			"src": "MyAnimeList",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"sid": "kitsu",
+			"guid": "lijVZnlsI/8wEaRccN3GhdMbkaokjlOHevHhcQl1its=",
+			"src": "Kitsu",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"sid": "bangumi",
+			"guid": "+GCqrIKkjCFCLsp6+nzpVdVJu1dHryOAddTaNcpolJA=",
+			"src": "Bangumi",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"sid": "shikimori",
+			"guid": "Ybb05vTJZmYDqAD6oEoxBMJ58ncfq903Xk0tNPmx7hU=",
+			"src": "Shikimori",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"sid": "komga",
+			"guid": "tCcKUHMi2WKFTJPbgDWUPaxQgriB9B5cI87p+NIa0zg=",
+			"src": "Komga",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"sid": "cloudflare",
+			"guid": "jAYBWannurG5S8mC9W4J7PUBGpLCNPGMR3ljJ5zEFKI=",
+			"src": "Cloudflare",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"sid": "google",
+			"guid": "2LZVXfTF7e7En+VmiiCJGKshKouQ4iTTvJXQ/kpyY9w=",
+			"src": "Google",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"sid": "ad_guard",
+			"guid": "Oi/2wSlNC77uKVZa1XpR6ECAarof1ccaP95O7Tse4DA=",
+			"src": "AdGuard",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"isSuffixPluralized": true,
+			"sid": "remove_n_chapters_one",
+			"guid": "knJMaAVR62PEtQndkYhhbexC0GIjxr+r3/n/Xcu2r0s=",
+			"src": "Remove %1$d downloaded chapter?",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"isSuffixPluralized": true,
+			"sid": "chapters_plural_one",
+			"guid": "X/xLwLneNjaCuErpOvyVwuG5fTb8+UCP5SsHQz+puzI=",
+			"src": "%1$d chapter",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"isSuffixPluralized": true,
+			"sid": "pages_left_one",
+			"guid": "0vqefHzsJQULHZd5MNwiOZipcKE1vgaTP7+VSx7FRV4=",
+			"src": "%1$d page left",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"isSuffixPluralized": true,
+			"sid": "category_plural_one",
+			"guid": "6CfUlDdZwjQi9NBW2TB0Bhg9lLrJZJdCk6Qf334AZ8U=",
+			"src": "%d category",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"isSuffixPluralized": true,
+			"sid": "for_n_titles_one",
+			"guid": "D+XGn0T65+KSSIomQYzkoKzAEUsZszypFjTP1Lvid1g=",
+			"src": "For %d title",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"isSuffixPluralized": true,
+			"sid": "notification_and_n_more_one",
+			"guid": "S2ivCL4mnAN/3LvCD4eLgcF0EfIPjNBsd9I7+l5zqNE=",
+			"src": "and %1$d more chapter",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"isSuffixPluralized": true,
+			"sid": "notification_update_failed_one",
+			"guid": "n+9x0mdfrc5EllF9g4lxFwLkppPeEQND2uhVP0ERBFU=",
+			"src": "1 update failed",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"isSuffixPluralized": true,
+			"sid": "_updates_pending_one",
+			"guid": "nA9Lsa5paTIiqxU3vXbGa+mttBPjFTxMMp3ZoShHoCM=",
+			"src": "%d update pending",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"isSuffixPluralized": true,
+			"sid": "extensions_updated_plural_one",
+			"guid": "PDKvwcIWbKlbrMMuqEa00drfTM71kt4AE5hfbznTe/o=",
+			"src": "Extension updated",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"isSuffixPluralized": true,
+			"sid": "extension_updates_available_one",
+			"guid": "ZNcGVkm/LvhJlULW759Z140eW5Es4GSIXDFWwYiq7Lo=",
+			"src": "Extension update available",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"isSuffixPluralized": true,
+			"sid": "pages_plural_one",
+			"guid": "sL/wSvGXvK5kY+HivzhJsIzFxW6bX2dTH6UquFVCpHA=",
+			"src": "%1$d page",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"isSuffixPluralized": true,
+			"sid": "missing_chapters_warning_one",
+			"guid": "TyE4yyopQMXi9xPAwddqixG0FiRUr7u1yXsHaK5cFNg=",
+			"src": "Skipping 1 chapter, either the source is missing it or it has been filtered out",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"isSuffixPluralized": true,
+			"sid": "deleted_chapters_one",
+			"guid": "Eaze/yfF/znJ1d1oABgiBdE+HlrHoqbNbugyw6slJ3k=",
+			"src": "A chapter has been removed from the source:\\n%2$s\\nDelete\n            its download?",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"isSuffixPluralized": true,
+			"sid": "restore_completed_message_one",
+			"guid": "5+3zp8SLfOTjhqThDsAlqVYw67Y1AHvVCaqYvsukLd8=",
+			"src": "Done in %1$s with %2$s error",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"isSuffixPluralized": true,
+			"sid": "cache_cleared_one",
+			"guid": "GoS05q9gcc/8SrsAMDpLSGWUgY57w7msDJ6H/STj6hk=",
+			"src": "Cache cleared. %d file has been deleted",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"isSuffixPluralized": true,
+			"sid": "cleanup_done_one",
+			"guid": "yPtONJrH7wZNy01J/ocBileV8yIllccxSdWOAT3Tb34=",
+			"src": "Cleanup done. Removed %d folder",
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"isSuffixPluralized": true,
+			"sid": "after_minutes_one",
+			"guid": "miGljXfpQpHYhkxvC7lslpiM2pbOH+24h0PZcIhHhd4=",
+			"src": "After %1$s minute",
+			"rid": "app/src/main/res/values/strings.xml"
+		}
+	],
+	"leverage": {
+		"minimumQuality": 50,
+		"translated": {
+			"61": 3,
+			"70": 851
+		},
+		"untranslated": 28,
+		"untranslatedChars": 549,
+		"untranslatedWords": 102,
+		"pending": 0,
+		"tmSize": 854
+	},
+	"jobId": 3,
+	"translationProvider": "XliffBridge"
+}
