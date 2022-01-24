@@ -16,21 +16,21 @@ export class FsSource {
 
     async fetchResourceStats() {
         const resources = [];
-        let expandedFileNames = globbySync(this.globs.map(g => path.join(this.ctx.baseDir, g)));
-        if (this.filter) {
-            expandedFileNames = expandedFileNames.filter(this.filter);
-        }
+        const expandedFileNames = globbySync(this.globs.map(g => path.join(this.ctx.baseDir, g)));
         for (const fileName of expandedFileNames) {
-            const stats = await fs.stat(fileName);
-            let resMeta = {
-                id: path.relative(this.ctx.baseDir, fileName),
-                modified: stats.mtime.toISOString(),
-                targetLangs: this.targetLangs,
-            };
-            if (typeof this.resDecorator === 'function') {
-                resMeta = this.resDecorator(resMeta);
+            const id = path.relative(this.ctx.baseDir, fileName);
+            if (!this.filter || this.filter(id)) {
+                const stats = await fs.stat(fileName);
+                let resMeta = {
+                    id,
+                    modified: stats.mtime.toISOString(),
+                    targetLangs: this.targetLangs,
+                };
+                if (typeof this.resDecorator === 'function') {
+                    resMeta = this.resDecorator(resMeta);
+                }
+                resources.push(resMeta);
             }
-            resources.push(resMeta);
         }
         return resources;
     }
