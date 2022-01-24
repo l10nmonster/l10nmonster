@@ -1,7 +1,7 @@
 import got from 'got';
 
 export class TranslationOS {
-    constructor({ baseURL, apiKey, serviceType, quality }) {
+    constructor({ baseURL, apiKey, serviceType, quality, tuDecorator }) {
         if ((apiKey && quality) === undefined) {
             throw 'You must specify apiKey, quality for TranslationOS';
         } else {
@@ -9,22 +9,29 @@ export class TranslationOS {
             this.apiKey = apiKey;
             this.serviceType = serviceType ?? 'premium',
             this.quality = quality;
+            this.tuDecorator = tuDecorator;
         }
     }
 
     async requestTranslations(jobRequest) {
         const { tus, ...jobManifest } = jobRequest;
-        const tosPayload = tus.map(tu => ({
-            'id_order': jobRequest.jobId,
-            'id_content': tu.guid,
-            content: tu.src,
-            context: {
-                notes: tu.notes,
-            },
-            'source_language': jobRequest.sourceLang,
-            'target_languages': [ jobRequest.targetLang ],
-            'service_type': this.serviceType,
-        }));
+        const tosPayload = tus.map(tu => {
+            let tosTU = {
+                'id_order': jobRequest.jobId,
+                'id_content': tu.guid,
+                content: tu.src,
+                context: {
+                    notes: tu.notes,
+                },
+                'source_language': jobRequest.sourceLang,
+                'target_languages': [ jobRequest.targetLang ],
+                'service_type': this.serviceType,
+            };
+            if (typeof this.tuDecorator === 'function') {
+                tosTU = this.tuDecorator(tosTU);
+            }
+            return tosTU;
+        });
         const response = await got.post({
             url: `${this.baseURL}/translate`,
             json: tosPayload,
