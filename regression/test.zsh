@@ -20,4 +20,5 @@ for dir in *; regressTest $dir
 cd ..
 
 echo "\nDiffing working dir vs. expected..."
+rm -rf wd/*/.l10nmonster
 diff -qr wd expected

@@ -20,10 +20,10 @@
 			"guid": "xB/NruBrwGm+TnuNNYyjVGpsAXfR7VIkbEeUbXWjyZc=",
 			"src": "Migrate %1$d%2$s manga?",
 			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1642896537928,
 			"tgt": "迁移 %1$d%2$s 漫画？",
 			"q": 61,
-			"jobId": 2,
-			"ts": 2
+			"jobId": 2
 		},
 		{
 			"isSuffixPluralized": true,
@@ -31,10 +31,10 @@
 			"guid": "ANCY8yBug2fS6YBza8w9Qh7Sup7ZSsV5B9oj2gC6f4I=",
 			"src": "Copy %1$d%2$s manga?",
 			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1642896537928,
 			"tgt": "复制 %1$d%2$s 漫画？",
 			"q": 61,
-			"jobId": 2,
-			"ts": 2
+			"jobId": 2
 		},
 		{
 			"isSuffixPluralized": true,
@@ -42,10 +42,10 @@
 			"guid": "cIYtf0zyptX55Env0FXOdM1K7AVpeq5M2sgTCaYQWZA=",
 			"src": "%d manga migrated",
 			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1642896537928,
 			"tgt": "%d 漫画已迁移",
 			"q": 61,
-			"jobId": 2,
-			"ts": 2
+			"jobId": 2
 		}
 	],
 	"status": "done",

@@ -61,7 +61,6 @@ class TM {
     async processJob(jobResponse, jobRequest) {
         const requestedUnits = (jobRequest?.tus ?? []).reduce((p,c) => (p[c.guid] = c, p), {});
         const { jobId, status, inflight, tus } = jobResponse;
-        const ts = jobResponse.ts ?? 2;//this.generation;
         if (inflight) {
             for (const guid of inflight) {
                 const reqEntry = requestedUnits[guid] ?? {};
@@ -76,7 +75,7 @@ class TM {
                 const tmEntry = this.getEntryByGuid(tu.guid);
                 const reqEntry = requestedUnits[tu.guid] ?? {};
                 if (!tmEntry || tmEntry.q < tu.q) {
-                    this.setEntryByGuid(tu.guid, { ...reqEntry, ...tu, jobId, ts });
+                    this.setEntryByGuid(tu.guid, { ...reqEntry, ...tu, jobId });
                 }
             }
         }

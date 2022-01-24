@@ -7,7 +7,8 @@
 			"notes": "Accessibility label for the information button to go to help page (read out loud)",
 			"guid": "d13hqt62wEq5drSC+g7auJUOAlQL+N3VrEyi1mCjMH0=",
 			"src": "Help",
-			"rid": "en.lproj/CardboardSDK.strings"
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1642896537761
 		}
 	],
 	"leverage": {

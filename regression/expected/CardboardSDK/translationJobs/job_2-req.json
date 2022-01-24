@@ -7,14 +7,16 @@
 			"notes": "Accessibility label for the cardboard button to go into cardboard mode (read out loud)",
 			"guid": "hx+2oqKLjI85KARWC/EA2inj0uuSlhS0Kt6HLGARnbU=",
 			"src": "Cardboard mode",
-			"rid": "en.lproj/CardboardSDK.strings"
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1642896537761
 		},
 		{
 			"sid": "AccessibilityFullscreenButton",
 			"notes": "Accessibility label for the fullscreen button to go into fullscreen mode (read out loud)",
 			"guid": "snWaUNjXnKuXlItO8jUPfKITKfuqshl6xCXxUgiP4jI=",
 			"src": "Fullscreen mode",
-			"rid": "en.lproj/CardboardSDK.strings"
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1642896537761
 		}
 	],
 	"leverage": {

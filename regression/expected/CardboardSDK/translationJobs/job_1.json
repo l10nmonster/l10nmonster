@@ -20,10 +20,10 @@
 			"guid": "d13hqt62wEq5drSC+g7auJUOAlQL+N3VrEyi1mCjMH0=",
 			"src": "Help",
 			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1642896537761,
 			"tgt": "مساعدة",
 			"q": 61,
-			"jobId": 1,
-			"ts": 2
+			"jobId": 1
 		}
 	],
 	"status": "done",
