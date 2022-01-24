@@ -67,7 +67,7 @@ export class JsonJobStore {
             await fs.writeFile(jobPath, JSON.stringify(jobRequest, null, '\t'), 'utf8');
         }
         // eslint-disable-next-line no-unused-vars
-        const { inflight, tus, ...jobManifest } = jobResponse;
+        const { inflight, tus, envelope, ...jobManifest } = jobResponse;
         await this.#updateJobManifest(jobManifest);
 }
 

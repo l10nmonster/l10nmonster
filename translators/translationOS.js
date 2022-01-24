@@ -28,7 +28,7 @@ export class TranslationOS {
                 'service_type': this.serviceType,
             };
             if (typeof this.tuDecorator === 'function') {
-                tosTU = this.tuDecorator(tosTU);
+                tosTU = this.tuDecorator(tosTU, tu, jobManifest);
             }
             return tosTU;
         });
