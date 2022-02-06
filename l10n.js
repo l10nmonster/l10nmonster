@@ -71,8 +71,8 @@ async function initMonster() {
         }
         const monsterConfig = new configModule.default(configParams);
         if (verbose) {
-          console.log('Successfully got config:');
-          console.dir(monsterConfig);
+          console.log('Successfully got config instance:');
+          console.dir(monsterConfig, { depth: 5 });
         }
         const monsterDir = path.join(baseDir, monsterConfig.monsterDir ?? '.l10nmonster');
         verbose && console.log(`Monster dir: ${monsterDir}`);

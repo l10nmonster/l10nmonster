@@ -46,11 +46,17 @@ export default class MonsterManager {
             this.sourceLang = monsterConfig.sourceLang;
             this.minimumQuality = monsterConfig.minimumQuality;
             this.translationProvider = monsterConfig.translationProvider;
-            this.contentTypes = monsterConfig.contentTypes ?? {};
-            this.contentTypes.default ??= {};
-            this.contentTypes.default.source ??= monsterConfig.source;
-            this.contentTypes.default.resourceFilter ??= monsterConfig.resourceFilter;
-            this.contentTypes.default.target ??= monsterConfig.target;
+            if (monsterConfig.contentTypes) {
+                this.contentTypes = monsterConfig.contentTypes;
+            } else {
+                this.contentTypes = {
+                    default: {
+                        source: monsterConfig.source,
+                        resourceFilter: monsterConfig.resourceFilter,
+                        target: monsterConfig.target,
+                    }
+                };
+            }
             this.sourceCachePath = path.join(monsterDir, 'sourceCache.json');
             this.sourceCache = existsSync(this.sourceCachePath) ?
                 JSON.parse(readFileSync(this.sourceCachePath, 'utf8')) :
