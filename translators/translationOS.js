@@ -1,5 +1,12 @@
 import got from 'got';
 
+function flattenNormalizedSource(src) {
+    if (Array.isArray(src)) {
+        return src.map(e => (Array.isArray(e) ? `{${e[0]}}`: e)).join('');
+    }
+    return src;
+}
+
 export class TranslationOS {
     constructor({ baseURL, apiKey, serviceType, quality, tuDecorator }) {
         if ((apiKey && quality) === undefined) {
@@ -19,7 +26,7 @@ export class TranslationOS {
             let tosTU = {
                 'id_order': jobRequest.jobGuid,
                 'id_content': tu.guid,
-                content: tu.src,
+                content: flattenNormalizedSource(tu.nsrc ?? tu.src),
                 context: {
                     notes: tu.notes,
                     rid: tu.rid,
@@ -52,7 +59,7 @@ export class TranslationOS {
             jobManifest.status = 'pending';
             return jobManifest;
         } catch (error) {
-            console.error(error.response.body);
+            console.error(error.response?.body);
             throw "TOS call failed!";
         }
     }

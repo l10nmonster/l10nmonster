@@ -15,6 +15,7 @@ const color = { red: '\x1b[31m', green: '\x1b[32m', reset: '\x1b[0m' };
 
 import TMManager from './tmManager.js';
 import { JsonJobStore } from './jsonJobStore.js';
+import { decodeString } from '../normalizers/util.js';
 
 function generateSidQualifiedGuid(sid, str) {
     const sidContentHash = createHash('sha256');
@@ -53,6 +54,7 @@ export default class MonsterManager {
                     default: {
                         source: monsterConfig.source,
                         resourceFilter: monsterConfig.resourceFilter,
+                        decoders: monsterConfig.decoders,
                         target: monsterConfig.target,
                     }
                 };
@@ -136,16 +138,35 @@ export default class MonsterManager {
             untranslatedWords = 0,
             pending = 0;
         for (const [rid, res] of sources) {
+            const pipeline = this.contentTypes[res.contentType];
             for (const { str, ...seg } of res.segments) {
                 // TODO: if segment is pluralized we need to generate/suppress the relevant number of variants for the targetLang
                 const tmEntry = tm.getEntryByGuid(seg.guid);
                 if (!tmEntry || (tmEntry.q < minimumQuality && !tmEntry.inflight)) {
-                    job.tus.push({
+                    const tu = {
                         ...seg,
                         src: str,
                         rid,
                         ts: new Date(res.modified).getTime(),
-                    });
+                    };
+                    if (pipeline.decoders) {
+                        const parts = decodeString(str, pipeline.decoders),
+                            normalizedStr = [];
+                        let phIdx = 0;
+                        for (const part of parts) {
+                            if (typeof part === 'string') {
+                                normalizedStr.push(part);
+                            } else {
+                                phIdx++;
+                                const phName = `${phIdx}_${part.v.replaceAll(/[^0-9A-Za-z]+/g, '.').replaceAll(/(^\.+|\.+$)/g,'')}`;
+                                normalizedStr.push([ phName, part ]);
+                            }
+                        }
+                        if ((normalizedStr.length === 1 && normalizedStr[0] !== str) || normalizedStr.length > 1) {
+                            tu.nsrc = normalizedStr;
+                        }
+                    }
+                    job.tus.push(tu);
                     untranslated++;
                     untranslatedChars += str.length;
                     untranslatedWords += wordsCountModule.wordsCount(str);
@@ -223,9 +244,10 @@ export default class MonsterManager {
         const unqualifiedMatches = {}; // src only
         let numStrings = 0;
         let totalWC = 0;
-        const smellyRegex = /[^a-zA-Z 0-9.,;:!()\-']/;
+        const smellyRegex = /[^a-zA-Z 0-9.,;:!()\-'\?/\+]/;
         const smelly = [];
         for (const [rid, res] of sources) {
+            const pipeline = this.contentTypes[res.contentType];
             for (const seg of res.segments) {
                 numStrings++;
                 const wc = wordsCountModule.wordsCount(seg.str);
@@ -235,8 +257,13 @@ export default class MonsterManager {
                 unqualifiedMatches[seg.str].push({ rid, sid: seg.sid, str: seg.str, wc, qGuid });
                 qualifiedMatches[qGuid] = qualifiedMatches[qGuid] ?? [];
                 qualifiedMatches[qGuid].push({ rid, sid: seg.sid, str: seg.str, wc });
-                if (smellyRegex.test(seg.str)) {
-                    smelly.push({ rid, sid: seg.sid, str: seg.str });
+                let content = seg.str;
+                if (pipeline.decoders) {
+                    const parts = decodeString(content, pipeline.decoders);
+                    content = parts.map(e => (typeof e === 'string' ? e : '')).join('');
+                }
+                if (smellyRegex.test(content)) {
+                    smelly.push({ rid, sid: seg.sid, str: content });
                 }
             }
         }

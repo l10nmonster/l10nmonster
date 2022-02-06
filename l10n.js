@@ -21,6 +21,7 @@ import { IosStringsFilter } from './filters/ios.js';
 import { XliffBridge } from './translators/xliff.js';
 import { PigLatinizer } from './translators/piglatinizer.js';
 import { TranslationOS } from './translators/translationOS.js';
+import { xmlDecoder, bracePHDecoder, iosPHDecoder, xmlEntityDecoder, javaEscapesDecoder } from './normalizers/regex.js';
 
 const monsterCLI = new Command();
 
@@ -51,8 +52,11 @@ async function initMonster() {
           FsSource, FsTarget,
         },
         filters: {
-          PoFilter, AndroidFilter, JavaPropertiesFilter, IosStringsFilter
-        },
+            PoFilter, AndroidFilter, JavaPropertiesFilter, IosStringsFilter
+          },
+        normalizers: {
+            xmlDecoder, bracePHDecoder, iosPHDecoder, xmlEntityDecoder, javaEscapesDecoder
+          },
         translators: {
           XliffBridge, PigLatinizer, TranslationOS
         },
