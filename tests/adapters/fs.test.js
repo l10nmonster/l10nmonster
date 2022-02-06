@@ -5,6 +5,8 @@ const ctx = {
   baseDir: path.resolve('.'),
   env: process.env,
 };
+adapters.FsSource.prototype.ctx = ctx;
+adapters.FsTarget.prototype.ctx = ctx;
 const RESOURCE_ID = "tests/files/values/strings.xml";
 
 describe ('FsSource tests', () =>{
@@ -12,7 +14,6 @@ describe ('FsSource tests', () =>{
       globs: [ 'tests/files/values/strings.xml' ],
       targetLangs: [ 'fil' ]
   });
-  source.ctx = ctx;
 
 
   test('fetchResourceStats returns resource object', async () => {
@@ -32,7 +33,6 @@ describe ('FsTarget tests', () =>{
   var target = new adapters.FsTarget({
       targetPath: (lang, resourceId) => resourceId.replace('values', `values-${lang}`),
   });
-  target.ctx = ctx;
   test('fetchTranslatedResource returns a file', async () => {
     const resources = await target.fetchTranslatedResource("fil", RESOURCE_ID);
     expect(resources.length).toBe(388);

@@ -56,7 +56,7 @@ export class JsonJobStore {
         jobManifest = {
             ...jobs[jobManifest.jobId],
             ...jobManifest,
-            updatedAt: new Date(this.ctx.regression ? '2022-02-05' : undefined).toISOString(),
+            updatedAt: (this.ctx.regression ? new Date('2022-02-05') : new Date()).toISOString(),
         };
         jobs[jobManifest.jobId] = jobManifest;
         await fs.writeFile(this.#jobsPathName(), JSON.stringify(jobs, null, '\t'), 'utf8');
