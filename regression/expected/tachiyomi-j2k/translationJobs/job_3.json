@@ -14,6 +14,8 @@
 		"tmSize": 854
 	},
 	"jobId": 3,
+	"jobGuid": "x",
+	"status": "pending",
 	"translationProvider": "XliffBridge",
 	"inflight": [
 		"kAXadpWkMY/R68bbf/7iVGBzwRjYQSI3AM1R8G7UlLE=",
@@ -44,9 +46,5 @@
 		"GoS05q9gcc/8SrsAMDpLSGWUgY57w7msDJ6H/STj6hk=",
 		"yPtONJrH7wZNy01J/ocBileV8yIllccxSdWOAT3Tb34=",
 		"miGljXfpQpHYhkxvC7lslpiM2pbOH+24h0PZcIhHhd4="
-	],
-	"envelope": {
-		"expectedTus": 28
-	},
-	"status": "pending"
+	]
 }

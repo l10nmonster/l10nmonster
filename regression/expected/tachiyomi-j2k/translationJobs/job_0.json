@@ -6822,5 +6822,6 @@
 	],
 	"status": "done",
 	"translationProvider": "Grandfather",
-	"jobId": 0
+	"jobId": 0,
+	"jobGuid": "x"
 }

@@ -30,17 +30,19 @@ async function initMonster() {
   while (baseDir !== previousDir) {
     const configPath = path.join(baseDir, 'l10nmonster.mjs');
     if (existsSync(configPath)) {
-      const verbose = monsterCLI.opts().verbose;
-      const build = monsterCLI.opts().build;
-      const release = monsterCLI.opts().release;
-      const ctx = {
-        baseDir,
-        env: process.env,
-        arg: monsterCLI.opts().arg,
-        verbose,
-        build,
-        release,
-      };
+        const verbose = monsterCLI.opts().verbose;
+        const regression = monsterCLI.opts().regression;
+        const build = monsterCLI.opts().build;
+        const release = monsterCLI.opts().release;
+        const ctx = {
+            baseDir,
+            env: process.env,
+            arg: monsterCLI.opts().arg,
+            verbose,
+            regression,
+            build,
+            release,
+        };
       const helpers = {
         stores: {
           JsonJobStore, SqlJobStore, JsonStateStore, SqlStateStore,
@@ -123,6 +125,7 @@ monsterCLI
     .option('-b, --build <type>', 'build type')
     .option('-r, --release <num>', 'release number')
     .option('-v, --verbose', 'output additional debug information')
+    .option('--regression', 'keep variable constant during regression testing')
 ;
 
 monsterCLI

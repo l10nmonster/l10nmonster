@@ -11,6 +11,8 @@
 		"tmSize": 0
 	},
 	"jobId": 5,
+	"jobGuid": "x",
+	"status": "done",
 	"translationProvider": "PigLatinizer",
 	"tus": [
 		{
@@ -4424,6 +4426,5 @@
 			"q": 1
 		}
 	],
-	"status": "done",
 	"ts": 1
 }

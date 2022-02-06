@@ -43,7 +43,7 @@ export class JsonJobStore {
         const jobId = jobs.length;
         const manifest = {
             jobId,
-            jobGuid: nanoid(),
+            jobGuid: this.ctx.regression ? 'x' : nanoid(),
             status: 'created',
         };
         jobs.push(manifest);
@@ -56,7 +56,7 @@ export class JsonJobStore {
         jobManifest = {
             ...jobs[jobManifest.jobId],
             ...jobManifest,
-            // updatedAt: new Date().toISOString(),
+            updatedAt: new Date(this.ctx.regression ? '2022-02-05' : undefined).toISOString(),
         };
         jobs[jobManifest.jobId] = jobManifest;
         await fs.writeFile(this.#jobsPathName(), JSON.stringify(jobs, null, '\t'), 'utf8');

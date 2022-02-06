@@ -90,7 +90,7 @@ export class SqlJobStore {
         this.db ?? await this.init();
         const status = 'created';
         const manifest = {
-            jobGuid: nanoid(),
+            jobGuid: this.ctx.regression ? 'x' : nanoid(),
             status,
         };
         const [ jobId ] = await this.db('jobStore').insert({

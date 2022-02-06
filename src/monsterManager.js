@@ -30,25 +30,36 @@ function generateFullyQualifiedGuid(rid, sid, str) {
 
 export default class MonsterManager {
     constructor({ monsterDir, monsterConfig, build, release }) {
-        this.monsterDir = monsterDir;
-        this.monsterConfig = monsterConfig;
-        this.build = build;
-        this.release = release;
-        this.jobStore = monsterConfig.jobStore ?? new JsonJobStore({
-            jobsDir: path.join('.l10nmonster', 'jobs'),
-        });
-        this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore });
-        this.stateStore = monsterConfig.stateStore;
-        this.debug = monsterConfig.debug ?? {};
-        this.sourceLang = monsterConfig.sourceLang;
-        this.sourceCachePath = path.join(monsterDir, 'sourceCache.json');
-        this.sourceCache = existsSync(this.sourceCachePath) ?
-            JSON.parse(readFileSync(this.sourceCachePath, 'utf8')) :
-            { };
+        if (monsterDir && monsterConfig && monsterConfig.sourceLang && monsterConfig.translationProvider &&
+             (monsterConfig.contentTypes || (monsterConfig.source && monsterConfig.resourceFilter && monsterConfig.target)) === undefined) {
+            throw 'You must specify sourceLang, translationProvider, minimumQuality, contentTypes (or source+resourceFilter+target) in l10nmonster.mjs';
+        } else {
+            this.monsterDir = monsterDir;
+            this.build = build;
+            this.release = release;
+            this.jobStore = monsterConfig.jobStore ?? new JsonJobStore({
+                jobsDir: path.join('.l10nmonster', 'jobs'),
+            });
+            this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore });
+            this.stateStore = monsterConfig.stateStore;
+            this.debug = monsterConfig.debug ?? {};
+            this.sourceLang = monsterConfig.sourceLang;
+            this.minimumQuality = monsterConfig.minimumQuality;
+            this.translationProvider = monsterConfig.translationProvider;
+            this.contentTypes = monsterConfig.contentTypes ?? {};
+            this.contentTypes.default ??= {};
+            this.contentTypes.default.source ??= monsterConfig.source;
+            this.contentTypes.default.resourceFilter ??= monsterConfig.resourceFilter;
+            this.contentTypes.default.target ??= monsterConfig.target;
+            this.sourceCachePath = path.join(monsterDir, 'sourceCache.json');
+            this.sourceCache = existsSync(this.sourceCachePath) ?
+                JSON.parse(readFileSync(this.sourceCachePath, 'utf8')) :
+                { };
+        }
     }
 
     #getMinimumQuality(jobManifest) {
-        let minimumQuality = this.monsterConfig.minimumQuality;
+        let minimumQuality = this.minimumQuality;
         if (typeof minimumQuality === 'function') {
             minimumQuality = minimumQuality(jobManifest);
         }
@@ -59,21 +70,34 @@ export default class MonsterManager {
         }
     }
 
+    async #fetchResourceStats() {
+        const combinedStats = [];
+        for (const [ contentType, handler ] of Object.entries(this.contentTypes)) {
+            const stats = await handler.source.fetchResourceStats();
+            for (const res of stats) {
+                res.contentType = contentType;
+            }
+            combinedStats.push(stats);
+        }
+        return combinedStats.flat(1);
+    }
+
     async #updateSourceCache() {
-        const pipeline = this.monsterConfig;
         const newCache = { };
-        const stats = await pipeline.source.fetchResourceStats();
+        const stats = await this.#fetchResourceStats();
         let dirty = stats.length !== Object.keys(this.sourceCache).length;
         for (const res of stats) {
             if (this.sourceCache[res.id]?.modified === res.modified) {
                 newCache[res.id] = this.sourceCache[res.id];
             } else {
                 dirty = true;
+                const pipeline = this.contentTypes[res.contentType];
                 const payload = await pipeline.source.fetchResource(res.id);
                 const parsedRes = await pipeline.resourceFilter.parseResource({resource: payload, isSource: true});
                 res.segments = parsedRes.segments;
                 for (const seg of res.segments) {
                     seg.guid = generateFullyQualifiedGuid(res.id, seg.sid, seg.str);
+                    seg.contentType = res.contentType;
                 }
                 newCache[res.id] = res;
             }
@@ -134,7 +158,7 @@ export default class MonsterManager {
     }
 
     #getTranslationProvider(jobManifest) {
-        let translationProvider = this.monsterConfig.translationProvider;
+        let translationProvider = this.translationProvider;
         if (typeof translationProvider === 'function') {
             translationProvider = translationProvider(jobManifest);
         }
@@ -260,7 +284,6 @@ export default class MonsterManager {
     // this is similar to push, except that existing translations in resources but not in TM
     // are assumed to be in sync with source and imported into the TM
     async grandfather(quality, limitToLang) {
-        const pipeline = this.monsterConfig;
         await this.#updateSourceCache();
         const targetLangs = this.#getTargetLangs(limitToLang);
         const status = [];
@@ -271,6 +294,7 @@ export default class MonsterManager {
             const translations = [];
             for (const tu of jobRequest.tus) {
                 if (!txCache[tu.rid]) {
+                    const pipeline = this.contentTypes[tu.contentType];
                     const lookup = {};
                     let resource;
                     try {
@@ -308,7 +332,7 @@ export default class MonsterManager {
                 jobResponse.status = 'done';
                 jobResponse.translationProvider = 'Grandfather';
                 const manifest = await this.jobStore.createJobManifest();
-                await this.#processJob({ ...jobResponse, ...manifest }, { ...jobRequest, ...manifest });
+                await this.#processJob({ ...jobResponse, ...manifest, status: 'done' }, { ...jobRequest, ...manifest });
                 status.push({
                     num: translations.length,
                     lang,
@@ -361,7 +385,7 @@ export default class MonsterManager {
                 jobResponse.tus = translations;
                 jobResponse.status = 'done';
                 jobResponse.translationProvider = 'Repetition';
-                await this.#processJob({ ...jobResponse, ...manifest }, { ...jobRequest, ...manifest });
+                await this.#processJob({ ...jobResponse, ...manifest, status: 'done' }, { ...jobRequest, ...manifest });
                 status.push({
                     num: translations.length,
                     lang,
@@ -388,10 +412,8 @@ export default class MonsterManager {
     }
 
     async translate({ limitToLang, dryRun }) {
-        const pipeline = this.monsterConfig;
         const status = { generatedResources: {}, diff: {} };
-        const resourceStats = await pipeline.source.fetchResourceStats();
-        const resourceIds = resourceStats.map(rh => rh.id);
+        const resourceStats = await this.#fetchResourceStats();
         const targetLangs = this.#getTargetLangs(limitToLang, resourceStats);
         for (const targetLang of targetLangs) {
             const verbose = this.verbose;
@@ -405,8 +427,10 @@ export default class MonsterManager {
             };
             status.generatedResources[targetLang] = [];
             status.diff[targetLang] = {};
-            for (const resourceId of resourceIds) {
-                const resource = await pipeline.source.fetchResource(resourceId);
+            for (const res of resourceStats) {
+                const resourceId = res.id;
+                const pipeline = this.contentTypes[res.contentType];
+                const resource = await pipeline.source.fetchResource(res.id);
                 const translatedRes = await pipeline.resourceFilter.generateTranslatedResource({ resourceId, resource, targetLang, translator });
                 const translatedResourceId = pipeline.target.translatedResourceId(targetLang, resourceId);
                 if (dryRun) {
@@ -440,7 +464,7 @@ export default class MonsterManager {
 
     async shutdown() {
         this.jobStore.shutdown && await this.jobStore.shutdown();
-        this.monsterConfig?.stateStore?.shutdown && await this.monsterConfig.stateStore.shutdown();
+        this.stateStore?.shutdown && await this.stateStore.shutdown();
     }
 
 }

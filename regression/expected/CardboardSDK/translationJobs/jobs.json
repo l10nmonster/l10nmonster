@@ -1,6 +1,7 @@
 [
 	{
 		"jobId": 0,
+		"jobGuid": "x",
 		"status": "done",
 		"sourceLang": "en",
 		"targetLang": "ar",
@@ -13,10 +14,12 @@
 			"pending": 0,
 			"tmSize": 0
 		},
-		"translationProvider": "Grandfather"
+		"translationProvider": "Grandfather",
+		"updatedAt": "2022-02-05T00:00:00.000Z"
 	},
 	{
 		"jobId": 1,
+		"jobGuid": "x",
 		"status": "done",
 		"sourceLang": "en",
 		"targetLang": "ar",
@@ -31,10 +34,12 @@
 			"pending": 0,
 			"tmSize": 29
 		},
-		"translationProvider": "Repetition"
+		"translationProvider": "Repetition",
+		"updatedAt": "2022-02-05T00:00:00.000Z"
 	},
 	{
 		"jobId": 2,
+		"jobGuid": "x",
 		"status": "done",
 		"sourceLang": "en",
 		"targetLang": "ar",
@@ -51,6 +56,7 @@
 			"tmSize": 30
 		},
 		"translationProvider": "PigLatinizer",
-		"ts": 1
+		"ts": 1,
+		"updatedAt": "2022-02-05T00:00:00.000Z"
 	}
 ]
