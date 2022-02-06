@@ -17,62 +17,108 @@ export class TranslationOS {
         const { tus, ...jobManifest } = jobRequest;
         const tosPayload = tus.map(tu => {
             let tosTU = {
-                'id_order': jobRequest.jobId,
+                'id_order': jobRequest.jobGuid,
                 'id_content': tu.guid,
                 content: tu.src,
                 context: {
                     notes: tu.notes,
+                    rid: tu.rid,
+                    sid: tu.sid,
                 },
                 'source_language': jobRequest.sourceLang,
                 'target_languages': [ jobRequest.targetLang ],
                 'service_type': this.serviceType,
+                'dashboard_query_labels': [
+                    `rid:${tu.rid}`,
+                    `sid:${tu.sid}`,
+                ],
             };
             if (typeof this.tuDecorator === 'function') {
                 tosTU = this.tuDecorator(tosTU, tu, jobManifest);
             }
             return tosTU;
         });
-        const response = await got.post({
+        const request = {
             url: `${this.baseURL}/translate`,
             json: tosPayload,
             headers: {
                 'x-api-key': this.apiKey,
-                'x-idempotency-id': `jobId:${jobRequest.jobId}`,
+                'x-idempotency-id': `jobGuid:${jobRequest.jobGuid}`,
             }
-        }).json();
-        jobManifest.inflight = response.map(contentStatus => contentStatus.id_content);
-        jobManifest.envelope = { response };
-        jobManifest.status = 'pending';
-        return jobManifest;
+        };
+        try {
+            const response = await got.post(request).json();
+            jobManifest.inflight = response.map(contentStatus => contentStatus.id_content);
+            jobManifest.status = 'pending';
+            return jobManifest;
+        } catch (error) {
+            console.error(error.response.body);
+            throw "TOS call failed!";
+        }
     }
 
     async fetchTranslations(jobManifest) {
-        const response = await got.post({
+        const request = {
             url: `${this.baseURL}/status`,
             json: {
-                'id_order': jobManifest.jobId,
+                'id_order': jobManifest.jobGuid,
+                // status: 'delivered',
                 'fetch_content': true,
             },
             headers: {
                 'x-api-key': this.apiKey,
             }
-        }).json();
-        const tus = [];
-        for (const translation of response) {
-            if (translation.translated_content === null) {
-                this.ctx.verbose && console.log(`id_order: ${translation.id_order} id_content: ${translation.id} status: ${translation.status}`);
-            } else {
-                tus.push({
-                    guid: translation.id_content,
-                    tgt: translation.translated_content,
-                    q: this.quality,
-                });
+        };
+        const limit = 100;
+        const tusMap = {};
+        let offset = 0,
+            response;
+        do {
+            request.json = {
+                ...request.json,
+                offset,
+                limit,
             }
-        }
+            try {
+                this.ctx.verbose && console.log(`Fetching from TOS job ${jobManifest.jobGuid} offset ${offset} limit ${limit}`);
+                response = await got.post(request).json();
+            } catch (error) {
+                console.error(error.response.body);
+                throw "TOS call failed!";
+            }
+            for (const translation of response) {
+                if (translation.translated_content === null || translation.quality_model !== 'translated') {
+                    this.ctx.verbose && console.log(`id_order: ${translation.id_order} id_content: ${translation.id} status: ${translation.status} quality_model: ${translation.quality_model}`);
+                } else {
+                    const guid = translation.id_content;
+                    if (jobManifest.inflight.includes(guid)) {
+                        tusMap[guid] && console.error(`Duplicate translations found for guid: ${guid}`);
+                        tusMap[guid] = {
+                            guid,
+                            tgt: translation.translated_content,
+                            q: this.quality,
+                        };
+                    } else {
+                        console.error(`Found unexpected guid: ${guid}`);
+                    }
+                }
+            }
+            offset += limit;
+        } while (response.length === limit);
+        const tus = Object.values(tusMap);
         const { ...newManifest } = jobManifest;
-        // newManifest.envelope = { response };
-        if (response.length === tus.length) {
+        const missingGuids = jobManifest.inflight.filter(guid => tusMap[guid] === undefined);
+        if (missingGuids.length === 0) {
             newManifest.status = 'done';
+        } else {
+            if (this.ctx.verbose && tus.length > 0) { // if we got something but not all, log the delta
+                console.log(`Got ${tus.length} translations from TOS for job ${jobManifest.jobGuid} and was expecting ${jobManifest.inflight.length} -- missing the following:`);
+                for (const guid of jobManifest.inflight) {
+                    if (!tusMap[guid]) {
+                        console.log(guid);
+                    }
+                }
+            }
         }
         if (tus.length > 0) {
             newManifest.tus = tus;

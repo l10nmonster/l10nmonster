@@ -5,6 +5,7 @@ import {
     readFileSync,
 } from 'fs';
 import * as fs from 'fs/promises';
+import { nanoid } from 'nanoid';
 
 export class JsonJobStore {
     constructor({ jobsDir, logRequests }) {
@@ -40,12 +41,14 @@ export class JsonJobStore {
     async createJobManifest() {
         const jobs = await this.getJobManifests();
         const jobId = jobs.length;
-        jobs.push({
+        const manifest = {
             jobId,
+            jobGuid: nanoid(),
             status: 'created',
-        });
+        };
+        jobs.push(manifest);
         await fs.writeFile(this.#jobsPathName(), JSON.stringify(jobs, null, '\t'), 'utf8');
-        return jobId;
+        return manifest;
     }
 
     async #updateJobManifest(jobManifest) {

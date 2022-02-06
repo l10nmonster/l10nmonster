@@ -2,6 +2,7 @@ import {
     readFileSync,
 } from 'fs';
 import knex from 'knex';
+import { nanoid } from 'nanoid';
 
 function currentISODate() {
     return new Date().toISOString().slice(0, 19).replace('T', ' ');
@@ -88,14 +89,20 @@ export class SqlJobStore {
     async createJobManifest() {
         this.db ?? await this.init();
         const status = 'created';
-        const req = JSON.stringify({ status });
+        const manifest = {
+            jobGuid: nanoid(),
+            status,
+        };
         const [ jobId ] = await this.db('jobStore').insert({
             org: this.org,
             prj: this.prj,
             status,
-            req,
+            req: JSON.stringify(manifest),
         });
-        return jobId;
+        return {
+            ...manifest,
+            jobId,
+        };
     }
 
     async updateJob(jobResponse, jobRequest) {

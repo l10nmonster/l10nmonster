@@ -231,10 +231,13 @@ export default class MonsterManager {
         await this.#updateSourceCache();
         const targetLangs = this.#getTargetLangs();
         for (const targetLang of targetLangs) {
-            const jobRequest = await this.#prepareTranslationJob(targetLang);
-            if (Object.keys(jobRequest.tus).length > 0) {
-                const jobId = await this.jobStore.createJobManifest();
-                jobRequest.jobId = jobId;
+            const jobBody = await this.#prepareTranslationJob(targetLang);
+            if (Object.keys(jobBody.tus).length > 0) {
+                const manifest = await this.jobStore.createJobManifest();
+                const jobRequest = {
+                    ...jobBody,
+                    ...manifest,
+                };
                 const translationProvider = this.#getTranslationProvider(jobRequest);
                 if (translationProvider) {
                     jobRequest.translationProvider = translationProvider.constructor.name;
@@ -304,10 +307,8 @@ export default class MonsterManager {
                 jobResponse.tus = translations;
                 jobResponse.status = 'done';
                 jobResponse.translationProvider = 'Grandfather';
-                const jobId = await this.jobStore.createJobManifest();
-                jobRequest.jobId = jobId;
-                jobResponse.jobId = jobId;
-                await this.#processJob(jobResponse, jobRequest);
+                const manifest = await this.jobStore.createJobManifest();
+                await this.#processJob({ ...jobResponse, ...manifest }, { ...jobRequest, ...manifest });
                 status.push({
                     num: translations.length,
                     lang,
@@ -354,15 +355,13 @@ export default class MonsterManager {
             if (translations.length > 0) {
                 // eslint-disable-next-line no-unused-vars
                 const { tus, ...jobResponse } = jobRequest;
-                const jobId = await this.jobStore.createJobManifest();
-                jobRequest.jobId = jobId;
+                const manifest = await this.jobStore.createJobManifest();
                 jobRequest.tus = sources;
-                jobResponse.jobId = jobId;
-                translations.forEach(tu => tu.jobId = jobId);
+                translations.forEach(tu => tu.jobId = manifest.jobId);
                 jobResponse.tus = translations;
                 jobResponse.status = 'done';
                 jobResponse.translationProvider = 'Repetition';
-                await this.#processJob(jobResponse, jobRequest);
+                await this.#processJob({ ...jobResponse, ...manifest }, { ...jobRequest, ...manifest });
                 status.push({
                     num: translations.length,
                     lang,

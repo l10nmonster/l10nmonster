@@ -18,3 +18,4 @@ node_modules/
 # L10n Monster files
 .l10nmonster/
 regression/wd/
+samples/*/translationJobs/

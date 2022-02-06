@@ -10,7 +10,7 @@ export default class TachiyomiConfig {
     constructor({ ctx, stores, adapters, filters, translators }) {
         this.source = new adapters.FsSource({
             globs: [ '**/values/strings.xml' ],
-            targetLangs: [ 'ja', 'it', 'piggy' ],
+            targetLangs: [ 'ja', 'it' ],
         });
         this.resourceFilter = new filters.AndroidFilter({
             comment: 'pre',
@@ -39,13 +39,20 @@ export default class TachiyomiConfig {
         //     database: ctx.env.l10nmonster_database,
         //     cert: '/etc/ssl/cert.pem',
         // });
-        const xliffTranslator = new translators.XliffBridge({
-            requestPath: (lang, prjId) => `xliff/outbox/prj${('0000' + prjId).substr(-4)}-${lang}.xml`,
-            completePath: (lang, prjId) => `xliff/inbox/prj${('0000' + prjId).substr(-4)}-${lang}.xml`,
-            quality: 80,
+        // const xliffTranslator = new translators.XliffBridge({
+        //     requestPath: (lang, prjId) => `xliff/outbox/prj${('0000' + prjId).substr(-4)}-${lang}.xml`,
+        //     completePath: (lang, prjId) => `xliff/inbox/prj${('0000' + prjId).substr(-4)}-${lang}.xml`,
+        //     quality: 80,
+        // });
+        // const piggyTranslator = new translators.PigLatinizer({ quality: 1 });
+        // this.translationProvider = (job) => (job.targetLang === 'piggy' ? piggyTranslator : xliffTranslator);
+        // this.minimumQuality = (job) => (job.targetLang === 'piggy' ? 1 : 50);
+        this.translationProvider = new translators.TranslationOS({
+            baseURL: 'https://api-sandbox.translated.com/v2',
+            apiKey: ctx.env.translated_api_key_sandbox,
+            serviceType: 'premium',
+            quality: 90,
         });
-        const piggyTranslator = new translators.PigLatinizer({ quality: 1 });
-        this.translationProvider = (job) => (job.targetLang === 'piggy' ? piggyTranslator : xliffTranslator);
-        this.minimumQuality = (job) => (job.targetLang === 'piggy' ? 1 : 50);
+        this.minimumQuality = 50;
     }
 }
