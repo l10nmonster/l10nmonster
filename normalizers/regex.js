@@ -69,6 +69,6 @@ export const bracePHDecoder = regexDecoderMaker(
 // Supports %02d, %@, %1$@
 export const iosPHDecoder = regexDecoderMaker(
     // /(?<node>(?<tag>%([0-9.]+\$)?[@dfs])|(?<text>.+?))/g,
-    /(?<node>(?<tag>%([0-9\.]*[@dfs]|\d+\$[@dfs]))|(?<text>.+?))/g,
+    /(?<node>(?<tag>%([0-9\.]*[@dfsi]|\d+\$[@dfsi]))|(?<text>.+?))/g,
     (part) => (part.groups.text ?? { t: 'ph', v: part.groups.tag })
 );

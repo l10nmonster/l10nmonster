@@ -158,7 +158,7 @@ export default class MonsterManager {
                                 normalizedStr.push(part);
                             } else {
                                 phIdx++;
-                                const phName = `${phIdx}_${part.v.replaceAll(/[^0-9A-Za-z]+/g, '.').replaceAll(/(^\.+|\.+$)/g,'')}`;
+                                const phName = `${String.fromCharCode(96 + phIdx)}_${part.v.replaceAll(/[^0-9A-Za-z]+/g, '.').replaceAll(/(^\.+|\.+$)/g,'')}`;
                                 normalizedStr.push([ phName, part ]);
                             }
                         }
@@ -244,7 +244,7 @@ export default class MonsterManager {
         const unqualifiedMatches = {}; // src only
         let numStrings = 0;
         let totalWC = 0;
-        const smellyRegex = /[^a-zA-Z 0-9.,;:!()\-'\?/\+]/;
+        const smellyRegex = /[^a-zA-Z 0-9.,;:!()\-'\?/\+’“”]/;
         const smelly = [];
         for (const [rid, res] of sources) {
             const pipeline = this.contentTypes[res.contentType];

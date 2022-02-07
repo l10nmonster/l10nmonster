@@ -18,14 +18,48 @@ describe('Regex Encoder tests', () => {
         ]);
     });
 
-    test('ios strings', async () => {
+    test('1 ios string', async () => {
         expect(decodeString(
-            `Current viewer: %1$@`,
+            `Current viewer: %@`,
             [ iosPHDecoder, javaEscapesDecoder ]
         )).toMatchObject([
             "Current viewer: ",
-            { t: 'ph', v: '%1$@' }
+            { t: 'ph', v: '%@' }
         ]);
     });
 
+    test('2 ios strings', async () => {
+        console.dir(decodeString(
+            `First viewer: %1$@\\n%2$@ is the second one`,
+            [ iosPHDecoder, javaEscapesDecoder ]
+        ))
+        expect(decodeString(
+            `First viewer: %1$@\\n%2$@ is the second one`,
+            [ javaEscapesDecoder, iosPHDecoder ]
+        )).toMatchObject([
+            "First viewer: ",
+            { t: 'ph', v: '%1$@' },
+            "\n",
+            { t: 'ph', v: '%2$@' },
+            " is the second one"
+        ]);
+    });
+
+    test('ios with html', async () => {
+        expect(decodeString(
+            "you are eligible for a future travel credit with %1$@. we will charge a rebooking fee of <color name='yellow'><b>%2$@ per passenger</b></color> when you use this credit to make a new booking.",
+            [ iosPHDecoder, xmlDecoder, javaEscapesDecoder ]
+        )).toMatchObject([
+            'you are eligible for a future travel credit with ',
+            { t: 'ph', v: '%1$@' },
+            '. we will charge a rebooking fee of ',
+            { t: 'ph', v: "<color name='yellow'>" },
+            { t: 'ph', v: '<b>' },
+            { t: 'ph', v: '%2$@' },
+            ' per passenger',
+            { t: 'ph', v: '</b>' },
+            { t: 'ph', v: '</color>' },
+            ' when you use this credit to make a new booking.'
+          ]);
+    });
 });

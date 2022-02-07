@@ -188,12 +188,13 @@ monsterCLI
           }
         }
       }
-      if (options.smell) {
-        for (const { rid, sid, str } of analysis.smelly) {
-          console.log(`${rid}:${sid}:${str}`);
+        if (options.smell) {
+            for (const { rid, sid, str } of analysis.smelly) {
+                monsterCLI.opts().verbose && console.log(`- ${rid}:${sid}:`);
+                console.log(str);
+            }
         }
-      }
-  }))
+    }))
 ;
 
 monsterCLI

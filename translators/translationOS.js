@@ -2,7 +2,7 @@ import got from 'got';
 
 function flattenNormalizedSource(src) {
     if (Array.isArray(src)) {
-        return src.map(e => (Array.isArray(e) ? `{${e[0]}}`: e)).join('');
+        return src.map(e => (Array.isArray(e) ? `<ph id="${e[0]}" />`: e)).join('');
     }
     return src;
 }
