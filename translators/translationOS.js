@@ -73,8 +73,7 @@ export class TranslationOS {
                     }
                 };
                 this.ctx.verbose && console.log(`Pushing to TOS job ${jobManifest.jobGuid} chunk size: ${json.length}`);
-                // const response = await got.post(request).json();
-                console.dir(request.json)
+                const response = await got.post(request).json();
                 inflight.push(response.map(contentStatus => contentStatus.id_content));
             }
             jobManifest.inflight = inflight.flat(1);
