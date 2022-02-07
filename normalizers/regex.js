@@ -75,7 +75,6 @@ export const bracePHDecoder = regexMatchingDecoderMaker(
 // iOS-style and C-style placeholders
 // Supports %02d, %@, %1$@
 export const iosPHDecoder = regexMatchingDecoderMaker(
-    // /(?<node>(?<tag>%([0-9.]+\$)?[@dfs])|(?<text>.+?))/g,
-    /(?<tag>%([0-9\.]*[@dfsi]|\d+\$[@dfsi]))/g,
+    /(?<tag>%([0-9\.]*[lz]?[@dfsi]|\d+\$[@dfsi]))/g,
     (groups) => ({ t: 'x', v: groups.tag })
 );

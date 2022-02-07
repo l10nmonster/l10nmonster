@@ -29,10 +29,6 @@ describe('Regex Encoder tests', () => {
     });
 
     test('2 ios strings', async () => {
-        console.dir(decodeString(
-            `First viewer: %1$@\\n%2$@ is the second one`,
-            [ iosPHDecoder, javaEscapesDecoder ]
-        ))
         expect(decodeString(
             `First viewer: %1$@\\n%2$@ is the second one`,
             [ javaEscapesDecoder, iosPHDecoder ]

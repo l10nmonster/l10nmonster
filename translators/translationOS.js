@@ -21,7 +21,7 @@ function flattenNormalizedSource(src) {
 }
 
 // This is the chunking size for both upload and download
-const limit = 100;
+const limit = 20;
 
 export class TranslationOS {
     constructor({ baseURL, apiKey, serviceType, quality, tuDecorator }) {
@@ -45,7 +45,7 @@ export class TranslationOS {
                 'id_content': tu.guid,
                 content,
                 context: {
-                    notes: `notes: ${tu.notes}\nrid: ${tu.rid}\nsid: ${tu.sid}\nph: ${phNotes}`
+                    notes: `notes: ${tu.notes ?? 'n/a'}<br />rid: ${tu.rid}<br />sid: ${tu.sid}<br />ph: ${phNotes}`
                 },
                 'source_language': jobRequest.sourceLang,
                 'target_languages': [ jobRequest.targetLang ],
@@ -62,25 +62,33 @@ export class TranslationOS {
         });
         try {
             const inflight = [];
+            let chunkNumber = 0;
             while (tosPayload.length > 0) {
                 const json = tosPayload.splice(0, limit);
+                chunkNumber++;
                 const request = {
                     url: `${this.baseURL}/translate`,
                     json,
                     headers: {
                         'x-api-key': this.apiKey,
-                        'x-idempotency-id': `jobGuid:${jobRequest.jobGuid}`,
+                        'x-idempotency-id': `jobGuid:${jobRequest.jobGuid} chunk:${chunkNumber}`,
                     }
                 };
                 this.ctx.verbose && console.log(`Pushing to TOS job ${jobManifest.jobGuid} chunk size: ${json.length}`);
                 const response = await got.post(request).json();
-                inflight.push(response.map(contentStatus => contentStatus.id_content));
+                const committedGuids = response.map(contentStatus => contentStatus.id_content);
+                const missingTus = json.filter(tu => !committedGuids.includes(tu.id_content));
+                if (json.length !== committedGuids.length || missingTus.length > 0) {
+                    console.error(`sent ${json.length} got ${committedGuids.length} missing tus: ${missingTus.map(tu => tu.id_content).join(', ')}`);
+                    throw "inconsistent behavior!";
+                }
+                inflight.push(committedGuids);
             }
             jobManifest.inflight = inflight.flat(1);
             jobManifest.status = 'pending';
             return jobManifest;
         } catch (error) {
-            console.error(error.response?.body);
+            error.response && console.error(error.response.body);
             throw "TOS call failed!";
         }
     }
