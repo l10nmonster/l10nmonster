@@ -7,6 +7,9 @@ function flattenNormalizedSource(src) {
     return src;
 }
 
+// This is the chunking size for both upload and download
+const limit = 100;
+
 export class TranslationOS {
     constructor({ baseURL, apiKey, serviceType, quality, tuDecorator }) {
         if ((apiKey && quality) === undefined) {
@@ -47,15 +50,21 @@ export class TranslationOS {
         });
         const request = {
             url: `${this.baseURL}/translate`,
-            json: tosPayload,
             headers: {
                 'x-api-key': this.apiKey,
                 'x-idempotency-id': `jobGuid:${jobRequest.jobGuid}`,
             }
         };
         try {
-            const response = await got.post(request).json();
-            jobManifest.inflight = response.map(contentStatus => contentStatus.id_content);
+            const inflight = [];
+            while (tosPayload.length > 0) {
+                const chunk = tosPayload.splice(0, limit);
+                request.json = chunk;
+                this.ctx.verbose && console.log(`Pushing to TOS job ${jobManifest.jobGuid} chunk size: ${chunk.length}`);
+                const response = await got.post(request).json();
+                inflight.push(response.map(contentStatus => contentStatus.id_content));
+            }
+            jobManifest.inflight = inflight.flat(1);
             jobManifest.status = 'pending';
             return jobManifest;
         } catch (error) {
@@ -76,7 +85,6 @@ export class TranslationOS {
                 'x-api-key': this.apiKey,
             }
         };
-        const limit = 100;
         const tusMap = {};
         let offset = 0,
             response;
