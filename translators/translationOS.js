@@ -99,7 +99,7 @@ export class TranslationOS {
             url: `${this.baseURL}/status`,
             json: {
                 'id_order': jobManifest.jobGuid,
-                // status: 'delivered',
+                status: 'delivered',
                 'fetch_content': true,
             },
             headers: {
