@@ -21,7 +21,7 @@ function flattenNormalizedSource(src) {
 }
 
 // This is the chunking size for both upload and download
-const limit = 20;
+const limit = 150;
 
 export class TranslationOS {
     constructor({ baseURL, apiKey, serviceType, quality, tuDecorator }) {
