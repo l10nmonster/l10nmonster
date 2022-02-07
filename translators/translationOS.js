@@ -49,6 +49,7 @@ export class TranslationOS {
                 },
                 'source_language': jobRequest.sourceLang,
                 'target_languages': [ jobRequest.targetLang ],
+                'content_type': 'text/html',
                 'service_type': this.serviceType,
                 'dashboard_query_labels': [
                     `rid:${tu.rid}`,
