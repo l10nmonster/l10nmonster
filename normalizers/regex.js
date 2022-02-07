@@ -1,11 +1,19 @@
 // Generic pluggable decoder
-export function regexDecoderMaker(regex, partDecoder) {
+export function regexMatchingDecoderMaker(regex, partDecoder) {
     return function decoder(parts) {
         const decodedParts = parts.map(p => {
             if (typeof p === 'string') {
                 const expandedPart = [];
-                for (const part of p.matchAll(regex)) {
-                    expandedPart.push(partDecoder(part));
+                let pos = 0;
+                for (const match of p.matchAll(regex)) {
+                    if (match.index > pos) {
+                        expandedPart.push(match.input.substring(pos, match.index));
+                    }
+                    expandedPart.push(partDecoder(match.groups));
+                    pos = match.index + match[0].length;
+                }
+                if (pos < p.length) {
+                    expandedPart.push(p.substring(pos, p.length));
                 }
                 return expandedPart;
             } else {
@@ -25,13 +33,12 @@ const namedEntities = {
     '&lt;'  : '<',
     '&gt;'  : '>'
 };
-export const xmlEntityDecoder = regexDecoderMaker(
-    /(?<node>(?<text>[^&]+)|(?<namedEntity>&[^#;]+;)|&#(?<numericEntity>\d+);)/g,
-    (part) => (part.groups.text ??
-                (part.groups.namedEntity ?
-                    (namedEntities[part.groups.namedEntity] || part.groups.namedEntity) :
-                    String.fromCharCode(parseInt(part.groups.numericEntity, 10))
-                ))
+export const xmlEntityDecoder = regexMatchingDecoderMaker(
+    /(?<node>(?<namedEntity>&[^#;]+;)|&#(?<numericEntity>\d+);)/g,
+    (groups) => (groups.namedEntity ?
+                    (namedEntities[groups.namedEntity] || groups.namedEntity) :
+                    String.fromCharCode(parseInt(groups.numericEntity, 10))
+                )
 );
 
 const javaControlChars = {
@@ -41,12 +48,12 @@ const javaControlChars = {
     r: '\r',
     f: '\f',
 };
-export const javaEscapesDecoder = regexDecoderMaker(
-    /(?<node>(?<text>[^\\]+)|\\(?<escapedChar>['"\\])|\\(?<escapedControl>[tbnrf])|\\u(?<codePoint>[0-9A-Za-z]{4}))/g,
-    (part) => (part.groups.text ?? part.groups.escapedChar ??
-        (part.groups.escapedControl ?
-            (javaControlChars[part.groups.escapedControl] ?? `\\${part.groups.escapedControl}`) :
-            String.fromCharCode(parseInt(part.groups.codePoint, 16))
+export const javaEscapesDecoder = regexMatchingDecoderMaker(
+    /(?<node>\\(?<escapedChar>['"\\])|\\(?<escapedControl>[tbnrf])|\\u(?<codePoint>[0-9A-Za-z]{4}))/g,
+    (groups) => (groups.escapedChar ??
+        (groups.escapedControl ?
+            (javaControlChars[groups.escapedControl] ?? `\\${groups.escapedControl}`) :
+            String.fromCharCode(parseInt(groups.codePoint, 16))
         )
     )
 );
@@ -54,21 +61,21 @@ export const javaEscapesDecoder = regexDecoderMaker(
 //// Placeholders
 
 // Works for both XML and HTML
-export const xmlDecoder = regexDecoderMaker(
-    /(?<node>(?<text>[^<]+)|(?<tag><[^>]+>))/g,
-    (part) => (part.groups.text ?? { t: 'ph', v: part.groups.tag })
+export const xmlDecoder = regexMatchingDecoderMaker(
+    /(?<tag>(?<bx><[^>/]+>)|(?<ex><\/[^>]+>)|(?<x><[^>]+\/>))/g,
+    (groups) => ({ t: (groups.bx ? 'bx' : (groups.ex ? 'ex' : 'x')), v: groups.tag })
 );
 
 // {param} style placeholders
-export const bracePHDecoder = regexDecoderMaker(
-    /(?<node>(?<text>[^{]+)|(?<tag>{[^}]+}))/g,
-    (part) => (part.groups.text ?? { t: 'ph', v: part.groups.tag })
+export const bracePHDecoder = regexMatchingDecoderMaker(
+    /(?<x>{[^}]+})/g,
+    (groups) => ({ t: 'x', v: groups.x })
 );
 
 // iOS-style and C-style placeholders
 // Supports %02d, %@, %1$@
-export const iosPHDecoder = regexDecoderMaker(
+export const iosPHDecoder = regexMatchingDecoderMaker(
     // /(?<node>(?<tag>%([0-9.]+\$)?[@dfs])|(?<text>.+?))/g,
-    /(?<node>(?<tag>%([0-9\.]*[@dfsi]|\d+\$[@dfsi]))|(?<text>.+?))/g,
-    (part) => (part.groups.text ?? { t: 'ph', v: part.groups.tag })
+    /(?<tag>%([0-9\.]*[@dfsi]|\d+\$[@dfsi]))/g,
+    (groups) => ({ t: 'x', v: groups.tag })
 );

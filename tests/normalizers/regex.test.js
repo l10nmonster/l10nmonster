@@ -8,13 +8,13 @@ describe('Regex Encoder tests', () => {
             `<icon name='location'/>Price&amp;&#65;:\\n\\'{0,number,integer}\\"\\u0020<color name='green'>{1}</color>`,
             [ xmlDecoder, bracePHDecoder, xmlEntityDecoder, javaEscapesDecoder ]
         )).toMatchObject([
-            { t: 'ph', v: "<icon name='location'/>" },
+            { t: 'x', v: "<icon name='location'/>" },
             "Price&A:\n'",
-            { t: 'ph', v: '{0,number,integer}' },
+            { t: 'x', v: '{0,number,integer}' },
             '" ',
-            { t: 'ph', v: "<color name='green'>" },
-            { t: 'ph', v: '{1}' },
-            { t: 'ph', v: '</color>' }
+            { t: 'bx', v: "<color name='green'>" },
+            { t: 'x', v: '{1}' },
+            { t: 'ex', v: '</color>' }
         ]);
     });
 
@@ -24,7 +24,7 @@ describe('Regex Encoder tests', () => {
             [ iosPHDecoder, javaEscapesDecoder ]
         )).toMatchObject([
             "Current viewer: ",
-            { t: 'ph', v: '%@' }
+            { t: 'x', v: '%@' }
         ]);
     });
 
@@ -38,9 +38,9 @@ describe('Regex Encoder tests', () => {
             [ javaEscapesDecoder, iosPHDecoder ]
         )).toMatchObject([
             "First viewer: ",
-            { t: 'ph', v: '%1$@' },
+            { t: 'x', v: '%1$@' },
             "\n",
-            { t: 'ph', v: '%2$@' },
+            { t: 'x', v: '%2$@' },
             " is the second one"
         ]);
     });
@@ -51,14 +51,14 @@ describe('Regex Encoder tests', () => {
             [ iosPHDecoder, xmlDecoder, javaEscapesDecoder ]
         )).toMatchObject([
             'you are eligible for a future travel credit with ',
-            { t: 'ph', v: '%1$@' },
+            { t: 'x', v: '%1$@' },
             '. we will charge a rebooking fee of ',
-            { t: 'ph', v: "<color name='yellow'>" },
-            { t: 'ph', v: '<b>' },
-            { t: 'ph', v: '%2$@' },
+            { t: 'bx', v: "<color name='yellow'>" },
+            { t: 'bx', v: '<b>' },
+            { t: 'x', v: '%2$@' },
             ' per passenger',
-            { t: 'ph', v: '</b>' },
-            { t: 'ph', v: '</color>' },
+            { t: 'ex', v: '</b>' },
+            { t: 'ex', v: '</color>' },
             ' when you use this credit to make a new booking.'
           ]);
     });

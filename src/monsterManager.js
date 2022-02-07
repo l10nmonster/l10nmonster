@@ -150,19 +150,8 @@ export default class MonsterManager {
                         ts: new Date(res.modified).getTime(),
                     };
                     if (pipeline.decoders) {
-                        const parts = decodeString(str, pipeline.decoders),
-                            normalizedStr = [];
-                        let phIdx = 0;
-                        for (const part of parts) {
-                            if (typeof part === 'string') {
-                                normalizedStr.push(part);
-                            } else {
-                                phIdx++;
-                                const phName = `${String.fromCharCode(96 + phIdx)}_${part.v.replaceAll(/[^0-9A-Za-z]+/g, '.').replaceAll(/(^\.+|\.+$)/g,'')}`;
-                                normalizedStr.push([ phName, part ]);
-                            }
-                        }
-                        if ((normalizedStr.length === 1 && normalizedStr[0] !== str) || normalizedStr.length > 1) {
+                        const normalizedStr = decodeString(str, pipeline.decoders);
+                        if (normalizedStr.length !== 1 && normalizedStr[0] !== str) {
                             tu.nsrc = normalizedStr;
                         }
                     }

@@ -1,10 +1,23 @@
 import got from 'got';
 
 function flattenNormalizedSource(src) {
-    if (Array.isArray(src)) {
-        return src.map(e => (Array.isArray(e) ? `<ph id="${e[0]}" />`: e)).join('');
+     if (Array.isArray(src)) {
+        const normalizedStr = [];
+        let phIdx = 0,
+            phNotes = '';
+        for (const part of src) {
+            if (typeof part === 'string') {
+                normalizedStr.push(part);
+            } else {
+                phIdx++;
+                const phChar = String.fromCharCode(96 + phIdx);
+                normalizedStr.push(`<${part.t} id="${phChar}_${part.v.match(/[0-9A-Za-z_]+/) || ''}" />`);
+                phNotes += `${phChar}=${part.v} `;
+            }
+        }
+        return [ normalizedStr.join(''), phNotes ];
     }
-    return src;
+    return [ src, 'n/a' ];
 }
 
 // This is the chunking size for both upload and download
@@ -26,14 +39,13 @@ export class TranslationOS {
     async requestTranslations(jobRequest) {
         const { tus, ...jobManifest } = jobRequest;
         const tosPayload = tus.map(tu => {
+            const [content, phNotes ] = flattenNormalizedSource(tu.nsrc ?? tu.src);
             let tosTU = {
                 'id_order': jobRequest.jobGuid,
                 'id_content': tu.guid,
-                content: flattenNormalizedSource(tu.nsrc ?? tu.src),
+                content,
                 context: {
-                    notes: tu.notes,
-                    rid: tu.rid,
-                    sid: tu.sid,
+                    notes: `notes: ${tu.notes}\nrid: ${tu.rid}\nsid: ${tu.sid}\nph: ${phNotes}`
                 },
                 'source_language': jobRequest.sourceLang,
                 'target_languages': [ jobRequest.targetLang ],
@@ -48,20 +60,21 @@ export class TranslationOS {
             }
             return tosTU;
         });
-        const request = {
-            url: `${this.baseURL}/translate`,
-            headers: {
-                'x-api-key': this.apiKey,
-                'x-idempotency-id': `jobGuid:${jobRequest.jobGuid}`,
-            }
-        };
         try {
             const inflight = [];
             while (tosPayload.length > 0) {
-                const chunk = tosPayload.splice(0, limit);
-                request.json = chunk;
-                this.ctx.verbose && console.log(`Pushing to TOS job ${jobManifest.jobGuid} chunk size: ${chunk.length}`);
-                const response = await got.post(request).json();
+                const json = tosPayload.splice(0, limit);
+                const request = {
+                    url: `${this.baseURL}/translate`,
+                    json,
+                    headers: {
+                        'x-api-key': this.apiKey,
+                        'x-idempotency-id': `jobGuid:${jobRequest.jobGuid}`,
+                    }
+                };
+                this.ctx.verbose && console.log(`Pushing to TOS job ${jobManifest.jobGuid} chunk size: ${json.length}`);
+                // const response = await got.post(request).json();
+                console.dir(request.json)
                 inflight.push(response.map(contentStatus => contentStatus.id_content));
             }
             jobManifest.inflight = inflight.flat(1);
