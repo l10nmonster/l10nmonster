@@ -20,7 +20,6 @@ export default class CardboardConfig {
         });
         this.jobStore = new stores.JsonJobStore({
             jobsDir: 'translationJobs',
-            logRequests: true,
         });
     }
 }

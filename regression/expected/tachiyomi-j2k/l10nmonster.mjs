@@ -20,7 +20,6 @@ export default class TachiyomiConfig {
 
         this.jobStore = new stores.JsonJobStore({
             jobsDir: 'translationJobs',
-            logRequests: true,
         });
         this.stateStore = new stores.JsonStateStore({
             org: 'test1',
