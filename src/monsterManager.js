@@ -116,6 +116,11 @@ export default class MonsterManager {
         }
     }
 
+    #getSourceCacheEntries() {
+        return Object.entries(this.sourceCache)
+            .filter(([rid, res]) => (this.ctx.prj === undefined || res.prj === this.ctx.prj));
+    }
+
     async #processJob(jobResponse, jobRequest) {
         await this.jobStore.updateJob(jobResponse, jobRequest);
         const tm = await this.tmm.getTM(jobResponse.sourceLang, jobResponse.targetLang);
@@ -123,7 +128,7 @@ export default class MonsterManager {
     }
 
     async #prepareTranslationJob(targetLang, minimumQuality) {
-        const sources = Object.entries(this.sourceCache);
+        const sources = this.#getSourceCacheEntries();
         const job = {
             sourceLang: this.sourceLang,
             targetLang,
@@ -137,7 +142,7 @@ export default class MonsterManager {
             untranslatedWords = 0,
             pending = 0;
         for (const [rid, res] of sources) {
-            if (res.targetLangs.includes(targetLang) && (this.ctx.prj === undefined || res.prj === this.ctx.prj)) {
+            if (res.targetLangs.includes(targetLang)) {
                 const pipeline = this.contentTypes[res.contentType];
                 for (const { str, ...seg } of res.segments) {
                     // TODO: if segment is pluralized we need to generate/suppress the relevant number of variants for the targetLang
@@ -187,7 +192,7 @@ export default class MonsterManager {
 
     #getTargetLangs(limitToLang, resourceStats) {
         let langs = [];
-        resourceStats ??= Object.values(this.sourceCache);
+        resourceStats ??= this.#getSourceCacheEntries().map(([rid, res]) => res);
         for (const res of resourceStats) {
             for (const targetLang of res.targetLangs) {
                 !langs.includes(targetLang) && langs.push(targetLang);
@@ -206,7 +211,7 @@ export default class MonsterManager {
     async status() {
         await this.#updateSourceCache();
         const status = {
-            numSources: Object.keys(this.sourceCache).length,
+            numSources: this.#getSourceCacheEntries().length,
             lang: {},
         };
         const targetLangs = this.#getTargetLangs();
@@ -232,7 +237,7 @@ export default class MonsterManager {
 
     async analyze() {
         await this.#updateSourceCache();
-        const sources = Object.entries(this.sourceCache);
+        const sources = this.#getSourceCacheEntries();
         const qualifiedMatches = {}; // sid+src
         const unqualifiedMatches = {}; // src only
         let numStrings = 0;
