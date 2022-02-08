@@ -30,14 +30,13 @@ function generateFullyQualifiedGuid(rid, sid, str) {
 }
 
 export default class MonsterManager {
-    constructor({ monsterDir, monsterConfig, build, release }) {
+    constructor({ monsterDir, monsterConfig, ctx }) {
         if (monsterDir && monsterConfig && monsterConfig.sourceLang && monsterConfig.translationProvider &&
              (monsterConfig.contentTypes || (monsterConfig.source && monsterConfig.resourceFilter && monsterConfig.target)) === undefined) {
             throw 'You must specify sourceLang, translationProvider, minimumQuality, contentTypes (or source+resourceFilter+target) in l10nmonster.mjs';
         } else {
             this.monsterDir = monsterDir;
-            this.build = build;
-            this.release = release;
+            this.ctx = ctx;
             this.jobStore = monsterConfig.jobStore ?? new JsonJobStore({
                 jobsDir: path.join('.l10nmonster', 'jobs'),
             });
@@ -138,7 +137,7 @@ export default class MonsterManager {
             untranslatedWords = 0,
             pending = 0;
         for (const [rid, res] of sources) {
-            if (res.targetLangs.includes(targetLang)) {
+            if (res.targetLangs.includes(targetLang) && (this.ctx.prj === undefined || res.prj === this.ctx.prj)) {
                 const pipeline = this.contentTypes[res.contentType];
                 for (const { str, ...seg } of res.segments) {
                     // TODO: if segment is pluralized we need to generate/suppress the relevant number of variants for the targetLang
@@ -150,6 +149,9 @@ export default class MonsterManager {
                             rid,
                             ts: new Date(res.modified).getTime(),
                         };
+                        if (res.prj !== undefined) {
+                            tu.prj = res.prj;
+                        }
                         if (pipeline.decoders) {
                             const normalizedStr = decodeString(str, pipeline.decoders);
                             if (normalizedStr.length !== 1 && normalizedStr[0] !== str) {
@@ -201,7 +203,7 @@ export default class MonsterManager {
         return langs;
     }
 
-    async status(minimumQuality) {
+    async status() {
         await this.#updateSourceCache();
         const status = {
             numSources: Object.keys(this.sourceCache).length,
@@ -209,7 +211,7 @@ export default class MonsterManager {
         };
         const targetLangs = this.#getTargetLangs();
         for (const targetLang of targetLangs) {
-            const job = await this.#prepareTranslationJob(targetLang, minimumQuality);
+            const job = await this.#prepareTranslationJob(targetLang);
             const unstranslatedContent = {};
             for (const tu of job.tus) {
                 unstranslatedContent[tu.rid] ??= {};
@@ -219,9 +221,9 @@ export default class MonsterManager {
                 leverage: job.leverage,
                 unstranslatedContent,
             };
-            if (this.build && this.release && this.stateStore) {
+            if (this.ctx.build && this.ctx.release && this.stateStore) {
                 // TODO: calculate passing grade based on config and add it to status
-                await this.stateStore.updateBuildState(this.build, this.release, targetLang, job);
+                await this.stateStore.updateBuildState(this.ctx.build, this.ctx.release, targetLang, job);
             }
         }
         status.pendingJobsNum = (await this.jobStore.getJobManifests('pending')).length;

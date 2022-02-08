@@ -1,10 +1,10 @@
 import got from 'got';
 
-const typeToPhElement = {
-    x: 'ph',
-    bx: 'sc',
-    ex: 'ec',
-};
+// const typeToPhElement = {
+//     x: 'ph',
+//     bx: 'sc',
+//     ex: 'ec',
+// };
 
 function flattenNormalizedSource(src) {
      if (Array.isArray(src)) {
@@ -17,7 +17,7 @@ function flattenNormalizedSource(src) {
             } else {
                 phIdx++;
                 const phChar = String.fromCharCode(96 + phIdx);
-                normalizedStr.push(`{{${phChar}_${part.t}_${part.v.match(/[0-9A-Za-z_]+/) || ''}" />`);
+                normalizedStr.push(`{{${phChar}_${part.t}_${(part.v.match(/[0-9A-Za-z_]+/) || [''])[0]}}}`);
                 phNotes += `${phChar}_${part.t}=${part.v} `;
             }
         }
@@ -63,6 +63,9 @@ export class TranslationOS {
                     `sid:${tu.sid}`,
                 ],
             };
+            if (tu.prj !== undefined) {
+                tosTU.id_order_group = tu.prj;
+            }
             if (typeof this.tuDecorator === 'function') {
                 tosTU = this.tuDecorator(tosTU, tu, jobManifest);
             }

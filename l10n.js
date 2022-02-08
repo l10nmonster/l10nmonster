@@ -35,6 +35,7 @@ async function initMonster() {
         const regression = monsterCLI.opts().regression;
         const build = monsterCLI.opts().build;
         const release = monsterCLI.opts().release;
+        const prj = monsterCLI.opts().prj;
         const ctx = {
             baseDir,
             env: process.env,
@@ -43,6 +44,7 @@ async function initMonster() {
             regression,
             build,
             release,
+            prj,
         };
       const helpers = {
         stores: {
@@ -84,7 +86,7 @@ async function initMonster() {
           mkdirSync(monsterDir, {recursive: true});
         }
         MonsterManager.prototype.verbose = verbose;
-        return new MonsterManager({ monsterDir, monsterConfig, build, release });
+        return new MonsterManager({ monsterDir, monsterConfig, ctx });
       } catch(e) {
         throw `l10nmonster.mjs failed to construct: ${e}`;
       }
@@ -128,6 +130,7 @@ monsterCLI
     .option('-a, --arg <string>', 'optional constructor argument')
     .option('-b, --build <type>', 'build type')
     .option('-r, --release <num>', 'release number')
+    .option('-p, --prj <num>', 'limit to specified project')
     .option('-v, --verbose', 'output additional debug information')
     .option('--regression', 'keep variable constant during regression testing')
 ;
@@ -135,9 +138,8 @@ monsterCLI
 monsterCLI
     .command('status')
     .description('translation status of content.')
-    .option('-q, --quality <level>', 'minimum translation quality to be considered translated', intOptionParser)
-    .action(async (options) => await withMonsterManager(async monsterManager => {
-        const status = await monsterManager.status(options.quality);
+    .action(async () => await withMonsterManager(async monsterManager => {
+        const status = await monsterManager.status();
         console.log(`${status.numSources.toLocaleString()} translatable resources`);
         console.log(`${status.pendingJobsNum.toLocaleString()} pending jobs`);
         for (const [lang, langStatus] of Object.entries(status.lang)) {
