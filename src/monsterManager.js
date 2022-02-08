@@ -138,32 +138,34 @@ export default class MonsterManager {
             untranslatedWords = 0,
             pending = 0;
         for (const [rid, res] of sources) {
-            const pipeline = this.contentTypes[res.contentType];
-            for (const { str, ...seg } of res.segments) {
-                // TODO: if segment is pluralized we need to generate/suppress the relevant number of variants for the targetLang
-                const tmEntry = tm.getEntryByGuid(seg.guid);
-                if (!tmEntry || (tmEntry.q < minimumQuality && !tmEntry.inflight)) {
-                    const tu = {
-                        ...seg,
-                        src: str,
-                        rid,
-                        ts: new Date(res.modified).getTime(),
-                    };
-                    if (pipeline.decoders) {
-                        const normalizedStr = decodeString(str, pipeline.decoders);
-                        if (normalizedStr.length !== 1 && normalizedStr[0] !== str) {
-                            tu.nsrc = normalizedStr;
+            if (res.targetLangs.includes(targetLang)) {
+                const pipeline = this.contentTypes[res.contentType];
+                for (const { str, ...seg } of res.segments) {
+                    // TODO: if segment is pluralized we need to generate/suppress the relevant number of variants for the targetLang
+                    const tmEntry = tm.getEntryByGuid(seg.guid);
+                    if (!tmEntry || (tmEntry.q < minimumQuality && !tmEntry.inflight)) {
+                        const tu = {
+                            ...seg,
+                            src: str,
+                            rid,
+                            ts: new Date(res.modified).getTime(),
+                        };
+                        if (pipeline.decoders) {
+                            const normalizedStr = decodeString(str, pipeline.decoders);
+                            if (normalizedStr.length !== 1 && normalizedStr[0] !== str) {
+                                tu.nsrc = normalizedStr;
+                            }
                         }
-                    }
-                    job.tus.push(tu);
-                    untranslated++;
-                    untranslatedChars += str.length;
-                    untranslatedWords += wordsCountModule.wordsCount(str);
-                } else {
-                    if (tmEntry.inflight) {
-                        pending++;
+                        job.tus.push(tu);
+                        untranslated++;
+                        untranslatedChars += str.length;
+                        untranslatedWords += wordsCountModule.wordsCount(str);
                     } else {
-                        translated[tmEntry.q] = (translated[tmEntry.q] ?? 0) + 1;
+                        if (tmEntry.inflight) {
+                            pending++;
+                        } else {
+                            translated[tmEntry.q] = (translated[tmEntry.q] ?? 0) + 1;
+                        }
                     }
                 }
             }
