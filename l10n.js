@@ -12,6 +12,7 @@ import { JsonJobStore } from './src/jsonJobStore.js';
 import { SqlJobStore } from './src/sqlJobStore.js';
 import { JsonStateStore } from './src/jsonStateStore.js';
 import { SqlStateStore } from './src/sqlStateStore.js';
+import { FSTrafficStore } from './src/fsTrafficStore.js';
 
 import { FsSource, FsTarget } from './adapters/fs.js';
 import { PoFilter } from './filters/po.js';
@@ -48,7 +49,7 @@ async function initMonster() {
         };
       const helpers = {
         stores: {
-          JsonJobStore, SqlJobStore, JsonStateStore, SqlStateStore,
+          JsonJobStore, SqlJobStore, JsonStateStore, SqlStateStore, FSTrafficStore
         },
         adapters: {
           FsSource, FsTarget,

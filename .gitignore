@@ -19,3 +19,4 @@ node_modules/
 .l10nmonster/
 regression/wd/
 samples/*/translationJobs/
+samples/*/debugTraffic/

@@ -30,7 +30,7 @@ function flattenNormalizedSource(src) {
 const limit = 150;
 
 export class TranslationOS {
-    constructor({ baseURL, apiKey, serviceType, quality, tuDecorator }) {
+    constructor({ baseURL, apiKey, serviceType, quality, tuDecorator, trafficStore }) {
         if ((apiKey && quality) === undefined) {
             throw 'You must specify apiKey, quality for TranslationOS';
         } else {
@@ -39,6 +39,7 @@ export class TranslationOS {
             this.serviceType = serviceType ?? 'premium',
             this.quality = quality;
             this.tuDecorator = tuDecorator;
+            this.trafficStore = trafficStore;
         }
     }
 
@@ -86,7 +87,9 @@ export class TranslationOS {
                     }
                 };
                 this.ctx.verbose && console.log(`Pushing to TOS job ${jobManifest.jobGuid} chunk size: ${json.length}`);
+                this.trafficStore && await this.trafficStore.logRequest('postTranslate', request);
                 const response = await got.post(request).json();
+                this.trafficStore && await this.trafficStore.logResponse('postTranslate-ok', response);
                 const committedGuids = response.map(contentStatus => contentStatus.id_content);
                 const missingTus = json.filter(tu => !committedGuids.includes(tu.id_content));
                 if (json.length !== committedGuids.length || missingTus.length > 0) {
@@ -99,6 +102,7 @@ export class TranslationOS {
             jobManifest.status = 'pending';
             return jobManifest;
         } catch (error) {
+            this.trafficStore && await this.trafficStore.logResponse('postTranslate-error', error);
             error.response && console.error(error.response.body);
             throw "TOS call failed!";
         }
@@ -127,8 +131,11 @@ export class TranslationOS {
             }
             try {
                 this.ctx.verbose && console.log(`Fetching from TOS job ${jobManifest.jobGuid} offset ${offset} limit ${limit}`);
+                this.trafficStore && await this.trafficStore.logRequest('postStatus', request);
                 response = await got.post(request).json();
+                this.trafficStore && await this.trafficStore.logResponse('postStatus-ok', response);
             } catch (error) {
+                this.trafficStore && await this.trafficStore.logResponse('postStatus-error', error);
                 console.error(error.response.body);
                 throw "TOS call failed!";
             }
