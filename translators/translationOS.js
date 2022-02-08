@@ -17,13 +17,13 @@ function flattenNormalizedSource(src) {
             } else {
                 phIdx++;
                 const phChar = String.fromCharCode(96 + phIdx);
-                normalizedStr.push(`<${typeToPhElement[part.t]} id="${phChar}_${part.v.match(/[0-9A-Za-z_]+/) || ''}" />`);
-                phNotes += `${phChar}=${part.v} `;
+                normalizedStr.push(`{{${phChar}_${part.t}_${part.v.match(/[0-9A-Za-z_]+/) || ''}" />`);
+                phNotes += `${phChar}_${part.t}=${part.v} `;
             }
         }
         return [ normalizedStr.join(''), phNotes ];
     }
-    return [ src, 'n/a' ];
+    return [ src, '' ];
 }
 
 // This is the chunking size for both upload and download
@@ -52,11 +52,11 @@ export class TranslationOS {
                 'id_content': tu.guid,
                 content,
                 context: {
-                    notes: `${tu.notes ?? ''}\n${phNotes ? `ph: ${phNotes}\n`: ''}rid: ${tu.rid}\n sid: ${tu.sid}\n guid: ${tu.guid}`
+                    notes: `${tu.notes ?? ''}\n${phNotes.length > 0 ? `ph: ${phNotes}\n`: ''}rid: ${tu.rid}\n sid: ${tu.sid}\n guid: ${tu.guid}`
                 },
                 'source_language': jobRequest.sourceLang,
                 'target_languages': [ jobRequest.targetLang ],
-                'content_type': 'text/html',
+                // 'content_type': 'text/html',
                 'service_type': this.serviceType,
                 'dashboard_query_labels': [
                     `rid:${tu.rid}`,
