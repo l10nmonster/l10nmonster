@@ -149,6 +149,7 @@ export class TranslationOS {
                         tusMap[guid] = {
                             guid,
                             tgt: translation.translated_content,
+                            ts: new Date(translation.actual_delivery_date).getTime(),
                             q: this.quality,
                         };
                     } else {

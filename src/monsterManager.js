@@ -470,7 +470,7 @@ export default class MonsterManager {
                         try {
                             currentRaw = await pipeline.target.fetchTranslatedResource(targetLang, resourceId);
                         } catch (e) {
-                            console.error(`${targetLang}: Couldn't fetch translated resource ${translatedResourceId}`);
+                            verbose && console.log(`${targetLang}: Couldn't fetch translated resource ${translatedResourceId}`);
                         }
                         if (currentRaw) {
                             const currentParsed = await pipeline.resourceFilter.parseResource({ resource: currentRaw, isSource: false });
