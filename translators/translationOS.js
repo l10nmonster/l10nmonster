@@ -1,5 +1,11 @@
 import got from 'got';
 
+const typeToPhElement = {
+    x: 'ph',
+    bx: 'sc',
+    ex: 'ec',
+};
+
 function flattenNormalizedSource(src) {
      if (Array.isArray(src)) {
         const normalizedStr = [];
@@ -11,7 +17,7 @@ function flattenNormalizedSource(src) {
             } else {
                 phIdx++;
                 const phChar = String.fromCharCode(96 + phIdx);
-                normalizedStr.push(`<${part.t} id="${phChar}_${part.v.match(/[0-9A-Za-z_]+/) || ''}" />`);
+                normalizedStr.push(`<${typeToPhElement[part.t]} id="${phChar}_${part.v.match(/[0-9A-Za-z_]+/) || ''}" />`);
                 phNotes += `${phChar}=${part.v} `;
             }
         }
@@ -39,13 +45,14 @@ export class TranslationOS {
     async requestTranslations(jobRequest) {
         const { tus, ...jobManifest } = jobRequest;
         const tosPayload = tus.map(tu => {
-            const [content, phNotes ] = flattenNormalizedSource(tu.nsrc ?? tu.src);
+            let [content, phNotes ] = flattenNormalizedSource(tu.nsrc ?? tu.src);
+            phNotes = phNotes.replace('<', 'ᐸ').replace('>', 'ᐳ');
             let tosTU = {
                 'id_order': jobRequest.jobGuid,
                 'id_content': tu.guid,
                 content,
                 context: {
-                    notes: `notes: ${tu.notes ?? 'n/a'}<br />rid: ${tu.rid}<br />sid: ${tu.sid}<br />ph: ${phNotes}`
+                    notes: `${tu.notes ?? ''}\n${phNotes ? `ph: ${phNotes}\n`: ''}rid: ${tu.rid}\n sid: ${tu.sid}\n guid: ${tu.guid}`
                 },
                 'source_language': jobRequest.sourceLang,
                 'target_languages': [ jobRequest.targetLang ],
@@ -123,8 +130,8 @@ export class TranslationOS {
                 throw "TOS call failed!";
             }
             for (const translation of response) {
-                if (translation.translated_content === null || translation.quality_model !== 'translated') {
-                    this.ctx.verbose && console.log(`id_order: ${translation.id_order} id_content: ${translation.id} status: ${translation.status} quality_model: ${translation.quality_model}`);
+                if (translation.translated_content === null || translation.translated_content.indexOf('|||UNTRANSLATED_CONTENT_START|||') >= 0) {
+                    this.ctx.verbose && console.log(`id_order: ${translation.id_order} id_content: ${translation.id} translated_content: ${translation.translated_content}`);
                 } else {
                     const guid = translation.id_content;
                     if (jobManifest.inflight.includes(guid)) {
