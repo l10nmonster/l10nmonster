@@ -46,7 +46,7 @@ export class TranslationOS {
         const { tus, ...jobManifest } = jobRequest;
         const tosPayload = tus.map(tu => {
             let [content, phNotes ] = flattenNormalizedSource(tu.nsrc ?? tu.src);
-            phNotes = phNotes.replace('<', 'ᐸ').replace('>', 'ᐳ');
+            phNotes = phNotes.replaceAll('<', 'ᐸ').replaceAll('>', 'ᐳ'); // hack until they stop stripping html
             let tosTU = {
                 'id_order': jobRequest.jobGuid,
                 'id_content': tu.guid,
