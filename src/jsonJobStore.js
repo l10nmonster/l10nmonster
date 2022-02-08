@@ -8,12 +8,11 @@ import * as fs from 'fs/promises';
 import { nanoid } from 'nanoid';
 
 export class JsonJobStore {
-    constructor({ jobsDir, logRequests }) {
+    constructor({ jobsDir }) {
         this.jobsDir = path.join(this.ctx.baseDir, jobsDir);
         if (!existsSync(this.jobsDir)) {
             mkdirSync(this.jobsDir, {recursive: true});
         }
-        this.logRequests = logRequests;
     }
 
     #jobsPathName() {
@@ -65,10 +64,6 @@ export class JsonJobStore {
     async updateJob(jobResponse, jobRequest) {
         const jobPath = path.join(this.jobsDir, `job_${jobResponse.jobId}.json`);
         await fs.writeFile(jobPath, JSON.stringify(jobResponse, null, '\t'), 'utf8');
-        if (jobRequest && this.logRequests) {
-            const jobPath = path.join(this.jobsDir, `job_${jobResponse.jobId}-req.json`);
-            await fs.writeFile(jobPath, JSON.stringify(jobRequest, null, '\t'), 'utf8');
-        }
         // eslint-disable-next-line no-unused-vars
         const { tus, ...jobManifest } = jobResponse;
         await this.#updateJobManifest(jobManifest);
