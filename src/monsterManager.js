@@ -332,7 +332,7 @@ export default class MonsterManager {
                         // this.verbose && console.log(`Getting ${tu.rid} for language ${lang}`);
                         resource = await pipeline.target.fetchTranslatedResource(lang, tu.rid);
                     } catch (e) {
-                        console.error(`Couldn't fetch translated resource: ${e}`);
+                        this.verbose && console.log(`Couldn't fetch translated resource: ${e}`);
                     } finally {
                         if (resource) {
                             const parsedResource = await pipeline.resourceFilter.parseResource({ resource, isSource: false });
@@ -459,34 +459,36 @@ export default class MonsterManager {
             status.generatedResources[targetLang] = [];
             status.diff[targetLang] = {};
             for (const res of resourceStats) {
-                const resourceId = res.id;
-                const pipeline = this.contentTypes[res.contentType];
-                const resource = await pipeline.source.fetchResource(res.id);
-                const translatedRes = await pipeline.resourceFilter.generateTranslatedResource({ resourceId, resource, targetLang, translator });
-                const translatedResourceId = pipeline.target.translatedResourceId(targetLang, resourceId);
-                if (dryRun) {
-                    let currentRaw;
-                    try {
-                        currentRaw = await pipeline.target.fetchTranslatedResource(targetLang, resourceId);
-                    } catch (e) {
-                        console.error(`${targetLang}: Couldn't fetch translated resource ${translatedResourceId}`);
+                if (res.targetLangs.includes(targetLang)) {
+                    const resourceId = res.id;
+                    const pipeline = this.contentTypes[res.contentType];
+                    const resource = await pipeline.source.fetchResource(res.id);
+                    const translatedRes = await pipeline.resourceFilter.generateTranslatedResource({ resourceId, resource, targetLang, translator });
+                    const translatedResourceId = pipeline.target.translatedResourceId(targetLang, resourceId);
+                    if (dryRun) {
+                        let currentRaw;
+                        try {
+                            currentRaw = await pipeline.target.fetchTranslatedResource(targetLang, resourceId);
+                        } catch (e) {
+                            console.error(`${targetLang}: Couldn't fetch translated resource ${translatedResourceId}`);
+                        }
+                        if (currentRaw) {
+                            const currentParsed = await pipeline.resourceFilter.parseResource({ resource: currentRaw, isSource: false });
+                            const currentFlattened = {};
+                            currentParsed.segments.forEach(x => currentFlattened[x.sid] = x.str);
+                            const newParsed = await pipeline.resourceFilter.parseResource({ resource: translatedRes, isSource: false });
+                            const newFlattened = {};
+                            newParsed.segments.forEach(x => newFlattened[x.sid] = x.str);
+                            const diff = diffJson(currentFlattened, newFlattened)
+                                .filter(x => x.added ?? x.removed)
+                                .map(x => `${x.added ? `${color.green}+` : `${color.red}-`} ${x.value}${color.reset}`)
+                                .join('');
+                            diff && (status.diff[targetLang][translatedResourceId] = diff);
+                        }
+                    } else {
+                        await pipeline.target.commitTranslatedResource(targetLang, resourceId, translatedRes);
+                        status.generatedResources[targetLang].push(translatedResourceId);
                     }
-                    if (currentRaw) {
-                        const currentParsed = await pipeline.resourceFilter.parseResource({ resource: currentRaw, isSource: false });
-                        const currentFlattened = {};
-                        currentParsed.segments.forEach(x => currentFlattened[x.sid] = x.str);
-                        const newParsed = await pipeline.resourceFilter.parseResource({ resource: translatedRes, isSource: false });
-                        const newFlattened = {};
-                        newParsed.segments.forEach(x => newFlattened[x.sid] = x.str);
-                        const diff = diffJson(currentFlattened, newFlattened)
-                            .filter(x => x.added ?? x.removed)
-                            .map(x => `${x.added ? `${color.green}+` : `${color.red}-`} ${x.value}${color.reset}`)
-                            .join('');
-                        diff && (status.diff[targetLang][translatedResourceId] = diff);
-                    }
-                } else {
-                    await pipeline.target.commitTranslatedResource(targetLang, resourceId, translatedRes);
-                    status.generatedResources[targetLang].push(translatedResourceId);
                 }
             }
         }
