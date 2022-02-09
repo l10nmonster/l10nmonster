@@ -17,6 +17,7 @@
 			"sid": "external_storage_permission_notice",
 			"src": "TachiyomiJ2K requires access to all files in Android 11 to download chapters, create automatic backups, and read local manga. \n\nOn the next screen, enable \"Allow access to manage all files.\"",
 			"tgt": "Tachiyomi 需要有在Android 11上的儲存空間存取權限才能下載漫畫，備份設定，開啟本機漫畫。 \n \n請在下一個畫面開啟\"允許存取儲存空間\"",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -25,6 +26,7 @@
 			"sid": "external_storage_download_notice",
 			"src": "TachiyomiJ2K requires access to all files to download chapters. Tap here, then enable \"Allow access to manage all files.\"",
 			"tgt": "Tachiyomi 需要有儲存空間存取權限才能下載漫畫。請允許\"管理儲存空間\"",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -33,6 +35,7 @@
 			"sid": "manga",
 			"src": "Manga",
 			"tgt": "漫畫",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -41,6 +44,7 @@
 			"sid": "manhwa",
 			"src": "Manhwa",
 			"tgt": "漫畫",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -49,6 +53,7 @@
 			"sid": "manhua",
 			"src": "Manhua",
 			"tgt": "漫畫",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -57,6 +62,7 @@
 			"sid": "comic",
 			"src": "Comic",
 			"tgt": "漫畫",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -65,6 +71,7 @@
 			"sid": "webtoon",
 			"src": "Webtoon",
 			"tgt": "Webtoon 式",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -73,6 +80,7 @@
 			"sid": "not_started",
 			"src": "Not started",
 			"tgt": "尚未開始",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -81,6 +89,7 @@
 			"sid": "in_progress",
 			"src": "In progress",
 			"tgt": "進行中",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -89,6 +98,7 @@
 			"sid": "read",
 			"src": "Read",
 			"tgt": "已讀",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -97,6 +107,7 @@
 			"sid": "title",
 			"src": "Title",
 			"tgt": "標題",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -105,6 +116,7 @@
 			"sid": "author",
 			"src": "Author",
 			"tgt": "原作",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -113,6 +125,7 @@
 			"sid": "artist",
 			"src": "Artist",
 			"tgt": "作畫",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -121,6 +134,7 @@
 			"sid": "description",
 			"src": "Description",
 			"tgt": "詳細資訊",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -129,6 +143,7 @@
 			"sid": "move_x_to",
 			"src": "Move %1$s to…",
 			"tgt": "移動%1$s到…",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -137,6 +152,7 @@
 			"sid": "add_x_to",
 			"src": "Add %1$s to…",
 			"tgt": "新增%1$s到…",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -145,6 +161,7 @@
 			"sid": "ongoing",
 			"src": "Ongoing",
 			"tgt": "連載中",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -153,6 +170,7 @@
 			"sid": "unknown",
 			"src": "Unknown",
 			"tgt": "不明",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -161,6 +179,7 @@
 			"sid": "unknown_status",
 			"src": "Unknown Status",
 			"tgt": "連載狀態不明",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -169,6 +188,7 @@
 			"sid": "licensed",
 			"src": "Licensed",
 			"tgt": "已授權",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -177,6 +197,7 @@
 			"sid": "completed",
 			"src": "Completed",
 			"tgt": "已完結",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -185,6 +206,7 @@
 			"sid": "unlock_library",
 			"src": "Unlock to access Library",
 			"tgt": "解鎖已存取書櫃",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -193,6 +215,7 @@
 			"sid": "unlock",
 			"src": "Unlock",
 			"tgt": "解鎖",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -201,6 +224,7 @@
 			"sid": "lock_with_biometrics",
 			"src": "Lock with biometrics",
 			"tgt": "生物特徵辨識鎖定",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -209,6 +233,7 @@
 			"sid": "lock_when_idle",
 			"src": "Lock when idle",
 			"tgt": "閒置時鎖定",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -217,6 +242,7 @@
 			"sid": "chapters",
 			"src": "Chapters",
 			"tgt": "章節",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -225,6 +251,7 @@
 			"sid": "new_chapters",
 			"src": "New chapters",
 			"tgt": "新章節",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -233,6 +260,7 @@
 			"sid": "unread",
 			"src": "Unread",
 			"tgt": "未讀",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -241,6 +269,7 @@
 			"sid": "last_read_chapter_",
 			"src": "Last read Chapter %1$s",
 			"tgt": "最後閱讀的章節%1$s",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -249,6 +278,7 @@
 			"sid": "chapter_",
 			"src": "Chapter %1$s",
 			"tgt": "第 %1$s 章",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -257,6 +287,7 @@
 			"sid": "all_chapters_read",
 			"src": "All chapters read",
 			"tgt": "以下章節已讀",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -265,6 +296,7 @@
 			"sid": "bookmarked",
 			"src": "Bookmarked",
 			"tgt": "已加入書籤",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -273,6 +305,7 @@
 			"sid": "not_bookmarked",
 			"src": "Not bookmarked",
 			"tgt": "未加入書籤",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -281,6 +314,7 @@
 			"sid": "marked_as_read",
 			"src": "Marked as read",
 			"tgt": "標示為已讀",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -289,6 +323,7 @@
 			"sid": "marked_as_unread",
 			"src": "Marked as unread",
 			"tgt": "標示為未讀",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -297,6 +332,7 @@
 			"sid": "removed_bookmark",
 			"src": "Removed bookmark",
 			"tgt": "移除書籤",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -305,6 +341,7 @@
 			"sid": "chapters_removed",
 			"src": "Chapters removed.",
 			"tgt": "章節已刪除。",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -313,6 +350,7 @@
 			"sid": "chapter_not_found",
 			"src": "Chapter not found",
 			"tgt": "未找到章節",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -321,6 +359,7 @@
 			"sid": "no_chapters_error",
 			"src": "No chapters found",
 			"tgt": "沒有章節",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -329,6 +368,7 @@
 			"sid": "no_pages_found",
 			"src": "No pages found",
 			"tgt": "沒有找到頁面",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -337,6 +377,7 @@
 			"sid": "remove_all_downloads",
 			"src": "Remove all downloads?",
 			"tgt": "移除所有下載檔案?",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -345,6 +386,7 @@
 			"sid": "by_source_order",
 			"src": "By source's order",
 			"tgt": "依照來源排序",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -353,6 +395,7 @@
 			"sid": "by_chapter_number",
 			"src": "By chapter number",
 			"tgt": "依照章節編號排序",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -361,6 +404,7 @@
 			"sid": "by_update_date",
 			"src": "By upload date",
 			"tgt": "依照上傳時間排序",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -369,6 +413,7 @@
 			"sid": "categories",
 			"src": "Categories",
 			"tgt": "分類",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -377,6 +422,7 @@
 			"sid": "adding_category_to_queue",
 			"src": "Adding %1$s to update queue",
 			"tgt": "新增%1$s到佇列",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -385,6 +431,7 @@
 			"sid": "_already_in_queue",
 			"src": "%1$s is already in queue",
 			"tgt": "%1$s已經在佇列",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -393,6 +440,7 @@
 			"sid": "default_category",
 			"src": "Default category",
 			"tgt": "預設分類",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -401,6 +449,7 @@
 			"sid": "confirm_category_deletion",
 			"src": "Delete category?",
 			"tgt": "確定要刪除分類？",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -409,6 +458,7 @@
 			"sid": "add_categories",
 			"src": "Add categories",
 			"tgt": "新增分類",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -417,6 +467,7 @@
 			"sid": "edit_categories",
 			"src": "Edit categories",
 			"tgt": "管理分類",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -425,6 +476,7 @@
 			"sid": "move_to_categories",
 			"src": "Move to categories",
 			"tgt": "移至分類",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -433,6 +485,7 @@
 			"sid": "category_with_name_exists",
 			"src": "A category with that name already exists!",
 			"tgt": "已有名稱相同的分類！",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -441,6 +494,7 @@
 			"sid": "update",
 			"src": "Update",
 			"tgt": "更新",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -449,6 +503,7 @@
 			"sid": "update_available",
 			"src": "Update available",
 			"tgt": "可用的更新",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -457,6 +512,7 @@
 			"sid": "new_version_available",
 			"src": "New version available!",
 			"tgt": "有可用的更新！",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -465,6 +521,7 @@
 			"sid": "no_new_updates_available",
 			"src": "No new updates available",
 			"tgt": "沒有可用的更新",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -473,6 +530,7 @@
 			"sid": "searching_for_updates",
 			"src": "Searching for updates…",
 			"tgt": "正在檢查更新…",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -481,6 +539,7 @@
 			"sid": "could_not_install_update",
 			"src": "Could not install update",
 			"tgt": "無法安裝更新",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -489,6 +548,7 @@
 			"sid": "update_completed",
 			"src": "Update completed",
 			"tgt": "更新完成",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -497,6 +557,7 @@
 			"sid": "library",
 			"src": "Library",
 			"tgt": "書櫃",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -505,6 +566,7 @@
 			"sid": "updating_library",
 			"src": "Updating library",
 			"tgt": "正在更新書櫃",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -513,6 +575,7 @@
 			"sid": "selected_",
 			"src": "Selected: %1$d",
 			"tgt": "已選取：%1$d",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -521,6 +584,7 @@
 			"sid": "local",
 			"src": "Local",
 			"tgt": "本機",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -529,6 +593,7 @@
 			"sid": "remove_from_library_question",
 			"src": "Remove from library?",
 			"tgt": "從書櫃移除?",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -537,6 +602,7 @@
 			"sid": "library_search_hint",
 			"src": "Search title, tags, source",
 			"tgt": "搜尋標題，標籤，來源",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -545,6 +611,7 @@
 			"sid": "library_is_empty_add_from_browse",
 			"src": "Your library is empty, add series to your library from the browse tab.",
 			"tgt": "尚未收藏任何作品，探索來源以挖掘你的愛書。",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -553,6 +620,7 @@
 			"sid": "getting_started_guide",
 			"src": "Getting started guide",
 			"tgt": "入門指南",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -561,6 +629,7 @@
 			"sid": "_unread",
 			"src": "%d unread",
 			"tgt": "%d 未讀",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -569,6 +638,7 @@
 			"sid": "total_chapters",
 			"src": "Total chapters",
 			"tgt": "章節數",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -577,6 +647,7 @@
 			"sid": "date_added",
 			"src": "Date added",
 			"tgt": "收藏日期",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -585,6 +656,7 @@
 			"sid": "last_read",
 			"src": "Last read",
 			"tgt": "最近閱讀",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -593,6 +665,7 @@
 			"sid": "last_updated",
 			"src": "Last updated",
 			"tgt": "最後更新",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -601,6 +674,7 @@
 			"sid": "latest_chapter",
 			"src": "Latest chapter",
 			"tgt": "最新章節",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -609,6 +683,7 @@
 			"sid": "drag_and_drop",
 			"src": "Drag & Drop",
 			"tgt": "拖曳",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -617,6 +692,7 @@
 			"sid": "display_options",
 			"src": "Display options",
 			"tgt": "檢視選項",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -625,6 +701,7 @@
 			"sid": "list",
 			"src": "List",
 			"tgt": "清單",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -633,6 +710,7 @@
 			"sid": "comfortable_grid",
 			"src": "Comfortable Grid",
 			"tgt": "鬆散格狀",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -641,6 +719,7 @@
 			"sid": "compact_grid",
 			"src": "Compact Grid",
 			"tgt": "密集格狀",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -649,6 +728,7 @@
 			"sid": "download_badge",
 			"src": "Download badges",
 			"tgt": "已下載標記",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -657,6 +737,7 @@
 			"sid": "badges",
 			"src": "Badges",
 			"tgt": "標記",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -665,6 +746,7 @@
 			"sid": "hide_unread_badges",
 			"src": "Hide unread badges",
 			"tgt": "隱藏未讀章節",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -673,6 +755,7 @@
 			"sid": "show_unread_badges",
 			"src": "Show unread badges",
 			"tgt": "顯示未讀章節",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -681,6 +764,7 @@
 			"sid": "show_unread_count",
 			"src": "Show unread count",
 			"tgt": "顯示未讀數量",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -689,6 +773,7 @@
 			"sid": "tap_library_to_show_filters",
 			"src": "Tap the Library icon to show filters",
 			"tgt": "輕觸「書櫃」圖示即可顯示篩選器",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -697,6 +782,7 @@
 			"sid": "more_library_settings",
 			"src": "More library settings",
 			"tgt": "詳細書櫃設定",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -705,6 +791,7 @@
 			"sid": "new_chapters_found",
 			"src": "New chapters found",
 			"tgt": "發現新章節",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -713,6 +800,7 @@
 			"sid": "library_update_frequency",
 			"src": "Library update frequency",
 			"tgt": "書櫃更新頻率",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -721,6 +809,7 @@
 			"sid": "library_update_order",
 			"src": "Library update order",
 			"tgt": "書櫃更新順序",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -729,6 +818,7 @@
 			"sid": "library_update_restriction",
 			"src": "Library update restrictions",
 			"tgt": "書櫃更新限制",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -737,6 +827,7 @@
 			"sid": "library_update_restriction_summary",
 			"src": "Update only when the conditions are met",
 			"tgt": "僅在符合條件時更新",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -745,6 +836,7 @@
 			"sid": "only_update_ongoing",
 			"src": "Only update ongoing manga",
 			"tgt": "僅更新連載中的漫畫",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -753,6 +845,7 @@
 			"sid": "categories_to_include_in_global_update",
 			"src": "Categories to include in global update",
 			"tgt": "自動更新的分類",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -761,6 +854,7 @@
 			"sid": "auto_refresh_covers",
 			"src": "Automatically refresh covers",
 			"tgt": "自動重新整理書封",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -769,6 +863,7 @@
 			"sid": "updates",
 			"src": "Updates",
 			"tgt": "更新",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -777,6 +872,7 @@
 			"sid": "history",
 			"src": "History",
 			"tgt": "記錄",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -785,6 +881,7 @@
 			"sid": "recent_updates",
 			"src": "Recent updates",
 			"tgt": "新書上架",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -793,6 +890,7 @@
 			"sid": "this_will_remove_the_read_date_question",
 			"src": "This will remove the read date of this chapter. Are you sure?",
 			"tgt": "這將會清除此章節的閱讀日期，確定嗎？",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -801,6 +899,7 @@
 			"sid": "no_recent_chapters",
 			"src": "No recent chapters",
 			"tgt": "沒有新章節",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -809,6 +908,7 @@
 			"sid": "no_recently_read_manga",
 			"src": "No recently read manga",
 			"tgt": "沒有近期閱讀",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -817,6 +917,7 @@
 			"sid": "search_filters",
 			"src": "Search filters",
 			"tgt": "篩選器",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -825,6 +926,7 @@
 			"sid": "no_more_results",
 			"src": "No more results",
 			"tgt": "沒有更多結果",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -833,6 +935,7 @@
 			"sid": "no_results_found",
 			"src": "No results found",
 			"tgt": "找不到結果",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -841,6 +944,7 @@
 			"sid": "local_source",
 			"src": "Local source",
 			"tgt": "本機來源",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -849,6 +953,7 @@
 			"sid": "other",
 			"src": "Other",
 			"tgt": "其他",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -857,6 +962,7 @@
 			"sid": "global_search",
 			"src": "Global search…",
 			"tgt": "全域搜尋…",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -865,6 +971,7 @@
 			"sid": "label_global_search",
 			"src": "Global search",
 			"tgt": "全域搜尋",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -873,6 +980,7 @@
 			"sid": "latest",
 			"src": "Latest",
 			"tgt": "新上架",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -881,6 +989,7 @@
 			"sid": "browse",
 			"src": "Browse",
 			"tgt": "探索",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -889,6 +998,7 @@
 			"sid": "in_library",
 			"src": "In Library",
 			"tgt": "在書櫃中",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -897,6 +1007,7 @@
 			"sid": "sources",
 			"src": "Sources",
 			"tgt": "來源",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -905,6 +1016,7 @@
 			"sid": "last_used",
 			"src": "Last used",
 			"tgt": "最近使用",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -913,6 +1025,7 @@
 			"sid": "local_source_help_guide",
 			"src": "Local source guide",
 			"tgt": "本機來源入門教學",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -921,6 +1034,7 @@
 			"sid": "check_site_in_web",
 			"src": "Check website in WebView",
 			"tgt": "在 WebView 中檢查網站",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -929,6 +1043,7 @@
 			"sid": "extensions",
 			"src": "Extensions",
 			"tgt": "擴充套件",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -937,6 +1052,7 @@
 			"sid": "extension_info",
 			"src": "Extension info",
 			"tgt": "擴充套件資訊",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -945,6 +1061,7 @@
 			"sid": "obsolete",
 			"src": "Obsolete",
 			"tgt": "過舊",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -953,6 +1070,7 @@
 			"sid": "pending",
 			"src": "Pending",
 			"tgt": "等待中",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -961,6 +1079,7 @@
 			"sid": "installing",
 			"src": "Installing",
 			"tgt": "安裝中",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -969,6 +1088,7 @@
 			"sid": "installed",
 			"src": "Installed",
 			"tgt": "已安裝",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -977,6 +1097,7 @@
 			"sid": "trust",
 			"src": "Trust",
 			"tgt": "信任",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -985,6 +1106,7 @@
 			"sid": "untrusted",
 			"src": "Untrusted",
 			"tgt": "不信任",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -993,6 +1115,7 @@
 			"sid": "uninstall",
 			"src": "Uninstall",
 			"tgt": "解除安裝",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1001,6 +1124,7 @@
 			"sid": "untrusted_extension",
 			"src": "Untrusted extension",
 			"tgt": "不信任的擴充套件",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1009,6 +1133,7 @@
 			"sid": "untrusted_extension_message",
 			"src": "This extension was signed with an untrusted certificate and wasn't activated.\n\nA malicious extension could read any login credentials stored in Tachiyomi or execute arbitrary code.\n\nBy trusting this certificate you accept these risks.",
 			"tgt": "這個擴充套件的憑證並不可靠，且尚未被啟用。 \n \n惡意的擴充套件可能存取任何儲存於 Tachiyomi 中的登錄憑證，或執行任意的程式碼。 \n \n信任這個憑證，即表示你願意承擔上述風險。",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1017,6 +1142,7 @@
 			"sid": "obsolete_extension_message",
 			"src": "This extension is no longer available.",
 			"tgt": "這個擴充套件已無法使用。",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1025,6 +1151,7 @@
 			"sid": "unofficial_extension_message",
 			"src": "This extension is not from the official Tachiyomi extensions list.",
 			"tgt": "這個擴充套件不是由 Tachiyomi 所提供。",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1033,6 +1160,7 @@
 			"sid": "version_",
 			"src": "Version: %1$s",
 			"tgt": "版本：%1$s",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1041,6 +1169,7 @@
 			"sid": "language_",
 			"src": "Language: %1$s",
 			"tgt": "語言：%1$s",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1049,6 +1178,7 @@
 			"sid": "nsfw_short",
 			"src": "18+",
 			"tgt": "18+",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1057,6 +1187,7 @@
 			"sid": "unofficial",
 			"src": "Unofficial",
 			"tgt": "非官方",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1065,6 +1196,7 @@
 			"sid": "may_contain_nsfw",
 			"src": "May contain NSFW (18+) content",
 			"tgt": "可能包含未滿十八歲之人不宜觀賞的內容",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1073,6 +1205,7 @@
 			"sid": "set_as_cover",
 			"src": "Set as cover",
 			"tgt": "設為書封",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1081,6 +1214,7 @@
 			"sid": "cover_updated",
 			"src": "Cover updated",
 			"tgt": "已更新書封",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1089,6 +1223,7 @@
 			"sid": "page_",
 			"src": "Page %1$d",
 			"tgt": "第 %1$d 頁",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1097,6 +1232,7 @@
 			"sid": "next_chapter_not_found",
 			"src": "Next chapter not found",
 			"tgt": "找不到下一章",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1105,6 +1241,7 @@
 			"sid": "decode_image_error",
 			"src": "The image could not be decoded",
 			"tgt": "無法解碼該圖片",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1113,6 +1250,7 @@
 			"sid": "use_image_as_cover",
 			"src": "Use this image as cover art?",
 			"tgt": "要將該圖片設為書封嗎？",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1121,6 +1259,7 @@
 			"sid": "finished_chapter",
 			"src": "Finished:",
 			"tgt": "已閱畢：",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1129,6 +1268,7 @@
 			"sid": "current_chapter",
 			"src": "Current:",
 			"tgt": "當前章節:",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1137,6 +1277,7 @@
 			"sid": "next_title",
 			"src": "Next:",
 			"tgt": "接下來：",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1145,6 +1286,7 @@
 			"sid": "previous_title",
 			"src": "Previous:",
 			"tgt": "上一章：",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1153,6 +1295,7 @@
 			"sid": "theres_no_next_chapter",
 			"src": "There's no next chapter",
 			"tgt": "以下空白",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1161,6 +1304,7 @@
 			"sid": "theres_no_previous_chapter",
 			"src": "There's no previous chapter",
 			"tgt": "已達盡頭",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1169,6 +1313,7 @@
 			"sid": "loading_pages",
 			"src": "Loading pages…",
 			"tgt": "正在載入頁面…",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1177,6 +1322,7 @@
 			"sid": "failed_to_load_pages_",
 			"src": "Failed to load pages: %1$s",
 			"tgt": "第 %1$s 頁載入失敗",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1185,6 +1331,7 @@
 			"sid": "next_page",
 			"src": "Next page",
 			"tgt": "下一頁",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1193,6 +1340,7 @@
 			"sid": "previous_page",
 			"src": "Previous page",
 			"tgt": "上一頁",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1201,6 +1349,7 @@
 			"sid": "next_chapter",
 			"src": "Next chapter",
 			"tgt": "下一頁",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1209,6 +1358,7 @@
 			"sid": "previous_chapter",
 			"src": "Previous chapter",
 			"tgt": "上一頁",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1217,6 +1367,7 @@
 			"sid": "fullscreen",
 			"src": "Fullscreen",
 			"tgt": "全螢幕",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1225,6 +1376,7 @@
 			"sid": "animate_page_transitions",
 			"src": "Animate page transitions",
 			"tgt": "翻頁轉場動畫",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1233,6 +1385,7 @@
 			"sid": "double_tap_anim_speed",
 			"src": "Double tap animation speed",
 			"tgt": "輕觸兩下動畫速度",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1241,6 +1394,7 @@
 			"sid": "show_page_number",
 			"src": "Show page number",
 			"tgt": "顯示頁碼",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1249,6 +1403,7 @@
 			"sid": "true_32bit_color",
 			"src": "32-bit color",
 			"tgt": "32 位元色彩",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1257,6 +1412,7 @@
 			"sid": "reduces_banding_impacts_performance",
 			"src": "Reduces banding, but impacts performance",
 			"tgt": "減緩色調分離，但拖累效能",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1265,6 +1421,7 @@
 			"sid": "crop_borders",
 			"src": "Crop borders",
 			"tgt": "邊緣裁剪",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1273,6 +1430,7 @@
 			"sid": "use_custom_brightness",
 			"src": "Use custom brightness",
 			"tgt": "自訂亮度",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1281,6 +1439,7 @@
 			"sid": "use_custom_color_filter",
 			"src": "Use custom color filter",
 			"tgt": "色彩濾鏡",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1289,6 +1448,7 @@
 			"sid": "color_filter_blend_mode",
 			"src": "Color filter blend mode",
 			"tgt": "濾鏡融合機制",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1297,6 +1457,7 @@
 			"sid": "overlay",
 			"src": "Overlay",
 			"tgt": "覆蓋",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1305,6 +1466,7 @@
 			"sid": "multiply",
 			"src": "Multiply",
 			"tgt": "色彩增值",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1313,6 +1475,7 @@
 			"sid": "screen",
 			"src": "Screen",
 			"tgt": "濾色",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1321,6 +1484,7 @@
 			"sid": "dodge_lighten",
 			"src": "Dodge / Lighten",
 			"tgt": "減淡 / 變亮",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1329,6 +1493,7 @@
 			"sid": "burn_darken",
 			"src": "Burn / Darken",
 			"tgt": "加深 / 變暗",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1337,6 +1502,7 @@
 			"sid": "keep_screen_on",
 			"src": "Keep screen on",
 			"tgt": "保持螢幕恆亮",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1345,6 +1511,7 @@
 			"sid": "skip_read_chapters",
 			"src": "Skip chapters marked read",
 			"tgt": "略過已讀的章節",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1353,6 +1520,7 @@
 			"sid": "skip_filtered_chapters",
 			"src": "Skip filtered chapters",
 			"tgt": "略過已篩選的章節",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1361,6 +1529,7 @@
 			"sid": "navigation",
 			"src": "Navigation",
 			"tgt": "導覽",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1369,6 +1538,7 @@
 			"sid": "volume_keys",
 			"src": "Volume keys",
 			"tgt": "音量按鈕",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1377,6 +1547,7 @@
 			"sid": "invert_volume_keys",
 			"src": "Invert volume keys",
 			"tgt": "反轉音量按鈕",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1385,6 +1556,7 @@
 			"sid": "tapping",
 			"src": "Tapping",
 			"tgt": "輕觸翻頁",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1393,6 +1565,7 @@
 			"sid": "background_color",
 			"src": "Background color",
 			"tgt": "背景顏色",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1401,6 +1574,7 @@
 			"sid": "white",
 			"src": "White",
 			"tgt": "白色",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1409,6 +1583,7 @@
 			"sid": "black",
 			"src": "Black",
 			"tgt": "黑色",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1417,6 +1592,7 @@
 			"sid": "default_reading_mode",
 			"src": "Default reading mode",
 			"tgt": "預設閱讀模式",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1425,6 +1601,7 @@
 			"sid": "left_to_right_viewer",
 			"src": "Left to right",
 			"tgt": "由左至右",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1433,6 +1610,7 @@
 			"sid": "right_to_left_viewer",
 			"src": "Right to left",
 			"tgt": "由右至左",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1441,6 +1619,7 @@
 			"sid": "vertical_viewer",
 			"src": "Vertical",
 			"tgt": "由上至下",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1449,6 +1628,7 @@
 			"sid": "continuous_vertical",
 			"src": "Continuous vertical",
 			"tgt": "垂直連貫",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1457,6 +1637,7 @@
 			"sid": "paged",
 			"src": "Paged",
 			"tgt": "單頁式",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1465,6 +1646,7 @@
 			"sid": "scale_type",
 			"src": "Scale type",
 			"tgt": "縮放模式",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1473,6 +1655,7 @@
 			"sid": "nav_layout",
 			"src": "Navigation layout",
 			"tgt": "輕觸翻頁模式",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1481,6 +1664,7 @@
 			"sid": "fit_screen",
 			"src": "Fit screen",
 			"tgt": "符合螢幕",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1489,6 +1673,7 @@
 			"sid": "stretch",
 			"src": "Stretch",
 			"tgt": "延展",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1497,6 +1682,7 @@
 			"sid": "fit_width",
 			"src": "Fit width",
 			"tgt": "符合頁寬",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1505,6 +1691,7 @@
 			"sid": "fit_height",
 			"src": "Fit height",
 			"tgt": "符合頁高",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1513,6 +1700,7 @@
 			"sid": "original_size",
 			"src": "Original size",
 			"tgt": "原始大小",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1521,6 +1709,7 @@
 			"sid": "smart_fit",
 			"src": "Smart fit",
 			"tgt": "智慧型填充",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1529,6 +1718,7 @@
 			"sid": "zoom_start_position",
 			"src": "Zoom start position",
 			"tgt": "縮放原點",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1537,6 +1727,7 @@
 			"sid": "portrait",
 			"src": "Portrait",
 			"tgt": "直向",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1545,6 +1736,7 @@
 			"sid": "landscape",
 			"src": "Landscape",
 			"tgt": "橫向",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1553,6 +1745,7 @@
 			"sid": "red_initial",
 			"src": "R",
 			"tgt": "R",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1561,6 +1754,7 @@
 			"sid": "green_initial",
 			"src": "G",
 			"tgt": "G",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1569,6 +1763,7 @@
 			"sid": "blue_initial",
 			"src": "B",
 			"tgt": "B",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1577,6 +1772,7 @@
 			"sid": "alpha_initial",
 			"src": "A",
 			"tgt": "A",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1585,6 +1781,7 @@
 			"sid": "always_show_chapter_transition",
 			"src": "Always show chapter transition",
 			"tgt": "永遠顯示章節間的隔頁",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1593,6 +1790,7 @@
 			"sid": "pref_webtoon_side_padding",
 			"src": "Side padding",
 			"tgt": "頁緣留白",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1601,6 +1799,7 @@
 			"sid": "webtoon_side_padding_0",
 			"src": "None",
 			"tgt": "無",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1609,6 +1808,7 @@
 			"sid": "webtoon_side_padding_10",
 			"src": "10%",
 			"tgt": "10%",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1617,6 +1817,7 @@
 			"sid": "webtoon_side_padding_15",
 			"src": "15%",
 			"tgt": "15%",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1625,6 +1826,7 @@
 			"sid": "webtoon_side_padding_20",
 			"src": "20%",
 			"tgt": "20%",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1633,6 +1835,7 @@
 			"sid": "webtoon_side_padding_25",
 			"src": "25%",
 			"tgt": "25%",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1641,6 +1844,7 @@
 			"sid": "l_nav",
 			"src": "L shaped",
 			"tgt": "L 式",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1649,6 +1853,7 @@
 			"sid": "kindlish_nav",
 			"src": "Kindle-ish",
 			"tgt": "Kindle 式",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1657,6 +1862,7 @@
 			"sid": "edge_nav",
 			"src": "Edge",
 			"tgt": "邊緣式",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1665,6 +1871,7 @@
 			"sid": "right_and_left_nav",
 			"src": "Right and Left",
 			"tgt": "左右式",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1673,6 +1880,7 @@
 			"sid": "invert_tapping",
 			"src": "Invert tapping",
 			"tgt": "反轉輕觸方向",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1681,6 +1889,7 @@
 			"sid": "none",
 			"src": "None",
 			"tgt": "無",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1689,6 +1898,7 @@
 			"sid": "start_reading",
 			"src": "Start reading",
 			"tgt": "開始閱讀",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1697,6 +1907,7 @@
 			"sid": "start_reading_chapter_",
 			"src": "Start reading Chapter %1$s",
 			"tgt": "開始閱讀第%1$s章",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1705,6 +1916,7 @@
 			"sid": "continue_reading_chapter_",
 			"src": "Continue reading Chapter %1$s",
 			"tgt": "繼續閱讀第%1$s章",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1713,6 +1925,7 @@
 			"sid": "continue_reading",
 			"src": "Continue reading",
 			"tgt": "繼續閱讀",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1721,6 +1934,7 @@
 			"sid": "chapters_",
 			"src": "Chapters %1$s",
 			"tgt": "第 %1$s 章",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1729,6 +1943,7 @@
 			"sid": "added_to_library",
 			"src": "Added to library",
 			"tgt": "已收藏至書櫃",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1737,6 +1952,7 @@
 			"sid": "add_to_library",
 			"src": "Add to Library",
 			"tgt": "加入書櫃",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1745,6 +1961,7 @@
 			"sid": "removed_from_library",
 			"src": "Removed from library",
 			"tgt": "已從書櫃中移除",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1753,6 +1970,7 @@
 			"sid": "_copied_to_clipboard",
 			"src": "%1$s copied to clipboard",
 			"tgt": "「%1$s」已複製至剪貼簿",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1761,6 +1979,7 @@
 			"sid": "source_not_installed_",
 			"src": "Source not installed: %1$s",
 			"tgt": "來源未安裝：%1$s",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1769,6 +1988,7 @@
 			"sid": "mark_all_chapters_as_read",
 			"src": "Mark all chapters as read?",
 			"tgt": "標記全部章節為已讀?",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1777,6 +1997,7 @@
 			"sid": "mark_all_chapters_as_unread",
 			"src": "Mark all chapters as unread?",
 			"tgt": "標記全部章節為未讀?",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1785,6 +2006,7 @@
 			"sid": "remove_from_library",
 			"src": "Remove from library",
 			"tgt": "移出書櫃",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1793,6 +2015,7 @@
 			"sid": "select_starting_chapter",
 			"src": "Select starting chapter",
 			"tgt": "選擇開始章節",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1801,6 +2024,7 @@
 			"sid": "select_ending_chapter",
 			"src": "Select ending chapter",
 			"tgt": "選擇結束章節",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1809,6 +2033,7 @@
 			"sid": "search_chapters",
 			"src": "Search chapters",
 			"tgt": "搜尋章節",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1817,6 +2042,7 @@
 			"sid": "next_unread_chapter",
 			"src": "Next unread chapter",
 			"tgt": "下一章未讀章節",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1825,6 +2051,7 @@
 			"sid": "next_5_unread",
 			"src": "Next 5 unread",
 			"tgt": "下載後五章",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1833,6 +2060,7 @@
 			"sid": "custom_range",
 			"src": "Custom range",
 			"tgt": "下載自訂範圍",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1841,6 +2069,7 @@
 			"sid": "all_chapters",
 			"src": "All chapters",
 			"tgt": "下載全部",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1849,6 +2078,7 @@
 			"sid": "all_unread_chapters",
 			"src": "All unread chapters",
 			"tgt": "下載未讀",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1857,6 +2087,7 @@
 			"sid": "all_read_chapters",
 			"src": "All read chapters",
 			"tgt": "全部已讀",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1865,6 +2096,7 @@
 			"sid": "all_but_bookmarked_chapters",
 			"src": "All but bookmarked chapters",
 			"tgt": "全部已加入書籤章節",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1873,6 +2105,7 @@
 			"sid": "show_bookmarked_chapters",
 			"src": "Show bookmarked chapters",
 			"tgt": "顯示已加入書籤",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1881,6 +2114,7 @@
 			"sid": "show_downloaded_chapters",
 			"src": "Show downloaded chapters",
 			"tgt": "顯示已下載",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1889,6 +2123,7 @@
 			"sid": "show_unread_chapters",
 			"src": "Show unread chapters",
 			"tgt": "顯示未讀章節",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1897,6 +2132,7 @@
 			"sid": "show_read_chapters",
 			"src": "Show read chapters",
 			"tgt": "顯示已讀章節",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1905,6 +2141,7 @@
 			"sid": "hide_chapter_titles",
 			"src": "Hide chapter titles",
 			"tgt": "隱藏標題",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1913,6 +2150,7 @@
 			"sid": "sort_by_source_s_order",
 			"src": "Sort by source's order",
 			"tgt": "依來源排序",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1921,6 +2159,7 @@
 			"sid": "sort_by_chapter_number",
 			"src": "Sort by chapter number",
 			"tgt": "依編號排序",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1929,6 +2168,7 @@
 			"sid": "newest_first",
 			"src": "Newest to oldest",
 			"tgt": "最新到最舊",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1937,6 +2177,7 @@
 			"sid": "oldest_first",
 			"src": "Oldest to newest",
 			"tgt": "最舊到最新",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1945,6 +2186,7 @@
 			"sid": "failed_to_update_cover",
 			"src": "Failed to update cover",
 			"tgt": "書封更新失敗",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1953,6 +2195,7 @@
 			"sid": "must_be_in_library_to_edit",
 			"src": "Manga must be in your library to edit",
 			"tgt": "請先將漫畫收藏至書櫃再進行更新",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1961,6 +2204,7 @@
 			"sid": "cover_saved",
 			"src": "Cover saved",
 			"tgt": "已儲存封面",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1969,6 +2213,7 @@
 			"sid": "error_saving_cover",
 			"src": "Error saving cover",
 			"tgt": "儲存封面時發生錯誤",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1977,6 +2222,7 @@
 			"sid": "error_sharing_cover",
 			"src": "Error sharing cover",
 			"tgt": "分享封面時發生錯誤",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1985,6 +2231,7 @@
 			"sid": "custom_manga_info",
 			"src": "Custom manga info",
 			"tgt": "自訂漫畫資訊",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -1993,6 +2240,7 @@
 			"sid": "set_as_default",
 			"src": "Set as default",
 			"tgt": "設定為預設",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2001,6 +2249,7 @@
 			"sid": "tracking",
 			"src": "Tracking",
 			"tgt": "歷程",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2009,6 +2258,7 @@
 			"sid": "tracked",
 			"src": "Tracked",
 			"tgt": "已紀錄歷程",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2017,6 +2267,7 @@
 			"sid": "services",
 			"src": "Services",
 			"tgt": "服務",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2025,6 +2276,7 @@
 			"sid": "sync_chapters_after_reading",
 			"src": "Sync chapters after reading",
 			"tgt": "閱讀完後同步章節",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2033,6 +2285,7 @@
 			"sid": "reading",
 			"src": "Reading",
 			"tgt": "閱讀中",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2041,6 +2294,7 @@
 			"sid": "currently_reading",
 			"src": "Currently Reading",
 			"tgt": "閱讀中",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2049,6 +2303,7 @@
 			"sid": "dropped",
 			"src": "Dropped",
 			"tgt": "不看了",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2057,6 +2312,7 @@
 			"sid": "on_hold",
 			"src": "On hold",
 			"tgt": "擱置中",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2065,6 +2321,7 @@
 			"sid": "plan_to_read",
 			"src": "Plan to read",
 			"tgt": "準備讀",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2073,6 +2330,7 @@
 			"sid": "want_to_read",
 			"src": "Want to Read",
 			"tgt": "想要看",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2081,6 +2339,7 @@
 			"sid": "paused",
 			"src": "Paused",
 			"tgt": "擱置中",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2089,6 +2348,7 @@
 			"sid": "rereading",
 			"src": "Rereading",
 			"tgt": "重溫中",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2097,6 +2357,7 @@
 			"sid": "score",
 			"src": "Score",
 			"tgt": "評分",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2105,6 +2366,7 @@
 			"sid": "status",
 			"src": "Status",
 			"tgt": "狀態",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2113,6 +2375,7 @@
 			"sid": "started",
 			"src": "Started",
 			"tgt": "創刊",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2121,6 +2384,7 @@
 			"sid": "type",
 			"src": "Type",
 			"tgt": "類型",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2129,6 +2393,7 @@
 			"sid": "url_not_set_click_again",
 			"src": "Manga URL not set, please click title and select manga again",
 			"tgt": "漫畫網址未設置，請點擊標題再選擇一次漫畫",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2137,6 +2402,7 @@
 			"sid": "refresh_tracking",
 			"src": "Refresh tracking",
 			"tgt": "更新閱讀歷程",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2145,6 +2411,7 @@
 			"sid": "add_tracking",
 			"src": "Add tracking",
 			"tgt": "新增閱讀歷程",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2153,6 +2420,7 @@
 			"sid": "source_unsupported",
 			"src": "Source is not supported",
 			"tgt": "未支援的來源",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2161,6 +2429,7 @@
 			"sid": "started_reading_date",
 			"src": "Started reading date",
 			"tgt": "開始閱讀日期",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2169,6 +2438,7 @@
 			"sid": "finished_reading_date",
 			"src": "Finished reading date",
 			"tgt": "閱讀完畢日期",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2177,6 +2447,7 @@
 			"sid": "myanimelist_relogin",
 			"src": "Please log in to MAL again",
 			"tgt": "請重新登入 MAL",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2185,6 +2456,7 @@
 			"sid": "select_sources",
 			"src": "Select sources",
 			"tgt": "選擇來源",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2193,6 +2465,7 @@
 			"sid": "source_migration",
 			"src": "Source migration",
 			"tgt": "來源遷移",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2201,6 +2474,7 @@
 			"sid": "migrate",
 			"src": "Migrate",
 			"tgt": "遷移",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2209,6 +2483,7 @@
 			"sid": "copy_value",
 			"src": "Copy",
 			"tgt": "副本",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2217,6 +2492,7 @@
 			"sid": "settings",
 			"src": "Settings",
 			"tgt": "設定",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2225,6 +2501,7 @@
 			"sid": "general",
 			"src": "General",
 			"tgt": "一般",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2233,6 +2510,7 @@
 			"sid": "reader",
 			"src": "Reader",
 			"tgt": "閱讀",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2241,6 +2519,7 @@
 			"sid": "advanced",
 			"src": "Advanced",
 			"tgt": "進階",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2249,6 +2528,7 @@
 			"sid": "about",
 			"src": "About",
 			"tgt": "關於",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2257,6 +2537,7 @@
 			"sid": "help",
 			"src": "Help",
 			"tgt": "說明",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2265,6 +2546,7 @@
 			"sid": "search_settings",
 			"src": "Search settings",
 			"tgt": "搜尋設定",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2273,6 +2555,7 @@
 			"sid": "app_theme",
 			"src": "App theme",
 			"tgt": "佈景主題",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2281,6 +2564,7 @@
 			"sid": "light_blue",
 			"src": "Light Blue",
 			"tgt": "淺藍",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2289,6 +2573,7 @@
 			"sid": "dark",
 			"src": "Dark",
 			"tgt": "深色",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2297,6 +2582,7 @@
 			"sid": "amoled_black",
 			"src": "AMOLED Black",
 			"tgt": "全黑",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2305,6 +2591,7 @@
 			"sid": "dark_blue",
 			"src": "Dark Blue",
 			"tgt": "深藍",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2313,6 +2600,7 @@
 			"sid": "locale",
 			"src": "Locale",
 			"tgt": "在地化",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2321,6 +2609,7 @@
 			"sid": "system_default",
 			"src": "System default",
 			"tgt": "系統預設",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2329,6 +2618,7 @@
 			"sid": "date_format",
 			"src": "Date format",
 			"tgt": "日期格式",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2337,6 +2627,7 @@
 			"sid": "check_for_updates",
 			"src": "Check for updates",
 			"tgt": "檢查更新",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2345,6 +2636,7 @@
 			"sid": "updated_to_",
 			"src": "Updated to v%1$s",
 			"tgt": "已更新至 v%1$s",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2353,6 +2645,7 @@
 			"sid": "secure_screen",
 			"src": "Secure screen",
 			"tgt": "防窺畫面",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2361,6 +2654,7 @@
 			"sid": "hide_app_block_screenshots",
 			"src": "Hide app contents when switching apps and block screenshots",
 			"tgt": "在切換應用程式時隱藏預覽，並禁止擷取螢幕畫面",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2369,6 +2663,7 @@
 			"sid": "hide_notification_content",
 			"src": "Hide notification content",
 			"tgt": "隱藏通知內容",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2377,6 +2672,7 @@
 			"sid": "security",
 			"src": "Security",
 			"tgt": "隱私",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2385,6 +2681,7 @@
 			"sid": "backup",
 			"src": "Backup",
 			"tgt": "備份",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2393,6 +2690,7 @@
 			"sid": "backup_and_restore",
 			"src": "Backup and restore",
 			"tgt": "備份與還原",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2401,6 +2699,7 @@
 			"sid": "create_backup",
 			"src": "Create backup",
 			"tgt": "建立備份",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2409,6 +2708,7 @@
 			"sid": "can_be_used_to_restore",
 			"src": "Can be used to restore current library",
 			"tgt": "可用來保存目前書櫃內容",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2417,6 +2717,7 @@
 			"sid": "restore_backup",
 			"src": "Restore backup",
 			"tgt": "還原備份",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2425,6 +2726,7 @@
 			"sid": "restore_from_backup_file",
 			"src": "Restore library from backup file",
 			"tgt": "由備份檔案還原書櫃內容",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2433,6 +2735,7 @@
 			"sid": "restore_in_progress",
 			"src": "Restore already in progress",
 			"tgt": "還原已在進行",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2441,6 +2744,7 @@
 			"sid": "backup_in_progress",
 			"src": "Backup already in progress",
 			"tgt": "備份已在進行",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2449,6 +2753,7 @@
 			"sid": "backup_location",
 			"src": "Backup location",
 			"tgt": "備份位置",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2457,6 +2762,7 @@
 			"sid": "automatic_backups",
 			"src": "Automatic backups",
 			"tgt": "自動備份",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2465,6 +2771,7 @@
 			"sid": "backup_frequency",
 			"src": "Backup frequency",
 			"tgt": "備份頻率",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2473,6 +2780,7 @@
 			"sid": "max_auto_backups",
 			"src": "Max automatic backups",
 			"tgt": "最大備份保留數",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2481,6 +2789,7 @@
 			"sid": "invalid_backup_file",
 			"src": "Invalid backup file",
 			"tgt": "無效的備份檔",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2489,6 +2798,7 @@
 			"sid": "invalid_backup_file_type",
 			"src": "Invalid backup file type: %1$s\nIt should end with .proto.gz or .json.",
 			"tgt": "無效的備份檔格式：%1$s \n副檔名應為 .proto.gz 或 .json",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2497,6 +2807,7 @@
 			"sid": "file_is_missing_data",
 			"src": "File is missing data.",
 			"tgt": "檔案遺失資料",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2505,6 +2816,7 @@
 			"sid": "backup_has_no_manga",
 			"src": "Backup does not contain any manga.",
 			"tgt": "備份檔並未包含任何漫畫",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2513,6 +2825,7 @@
 			"sid": "backup_failed",
 			"src": "Backup failed",
 			"tgt": "備份失敗",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2521,6 +2834,7 @@
 			"sid": "backup_created",
 			"src": "Backup created",
 			"tgt": "已建立備份",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2529,6 +2843,7 @@
 			"sid": "restore_completed",
 			"src": "Restore completed",
 			"tgt": "還原成功",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2537,6 +2852,7 @@
 			"sid": "restore_missing_sources",
 			"src": "Missing sources:",
 			"tgt": "遺失來源：",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2545,6 +2861,7 @@
 			"sid": "restore_missing_trackers",
 			"src": "Trackers not logged into:",
 			"tgt": "尚未登入至歷程平台：",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2553,6 +2870,7 @@
 			"sid": "restore_content",
 			"src": "Restore uses sources to fetch data, carrier costs may apply.\n\nMake sure you have installed all necessary extensions and are logged in to sources and tracking services before restoring.",
 			"tgt": "還原時需連線至來源以取得資料，可能要支付數據傳輸費用。 \n \n在進行還原前，請確認你已安裝所需的擴充套件，並已登入至歷程平台及要求身分認證的來源。",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2561,6 +2879,7 @@
 			"sid": "restoring_backup_canceled",
 			"src": "Canceled restore",
 			"tgt": "已取消還原",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2569,6 +2888,7 @@
 			"sid": "creating_backup",
 			"src": "Creating backup",
 			"tgt": "正在建立備份",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2577,6 +2897,7 @@
 			"sid": "what_should_backup",
 			"src": "What do you want to backup?",
 			"tgt": "哪些項目需要備份？",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2585,6 +2906,7 @@
 			"sid": "restoring_backup",
 			"src": "Restoring backup",
 			"tgt": "正在還原",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2593,6 +2915,7 @@
 			"sid": "restore_duration",
 			"src": "%02d min, %02d sec",
 			"tgt": "%02d 分 %02d 秒",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2601,6 +2924,7 @@
 			"sid": "progress",
 			"src": "Progress",
 			"tgt": "進度",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2609,6 +2933,7 @@
 			"sid": "complete",
 			"src": "Complete",
 			"tgt": "作業完成",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2617,6 +2942,7 @@
 			"sid": "clear_chapter_cache",
 			"src": "Clear chapter cache",
 			"tgt": "清除章節快取",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2625,6 +2951,7 @@
 			"sid": "crash_logs",
 			"src": "Crash logs",
 			"tgt": "當機記錄",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2633,6 +2960,7 @@
 			"sid": "dump_crash_logs",
 			"src": "Dump crash logs",
 			"tgt": "傾印當機記錄",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2641,6 +2969,7 @@
 			"sid": "saves_error_logs",
 			"src": "Saves error logs to a file for sharing with the developers",
 			"tgt": "產生錯誤記錄檔以便分享予開發人員",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2649,6 +2978,7 @@
 			"sid": "about_dont_kill_my_app",
 			"src": "Some manufacturers have additional app restrictions that kill background services. This website has more info on how to fix it.",
 			"tgt": "部分裝置製造商設有額外的應用程式限制來終止背景服務。此網站提供了修復這項問題的詳細資訊。",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2657,6 +2987,7 @@
 			"sid": "crash_log_saved",
 			"src": "Crash logs saved",
 			"tgt": "已產生當機記錄",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2665,6 +2996,7 @@
 			"sid": "network",
 			"src": "Network",
 			"tgt": "網路",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2673,6 +3005,7 @@
 			"sid": "doh",
 			"src": "DNS over HTTPS",
 			"tgt": "DNS over HTTPS",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2681,6 +3014,7 @@
 			"sid": "requires_app_restart",
 			"src": "Requires app restart to take effect",
 			"tgt": "需要重新啟動應用程式以套用",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2689,6 +3023,7 @@
 			"sid": "used_",
 			"src": "Used: %1$s",
 			"tgt": "已使用：%1$s",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2697,6 +3032,7 @@
 			"sid": "cache_delete_error",
 			"src": "An error occurred while clearing cache",
 			"tgt": "清除快取時發生錯誤",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2705,6 +3041,7 @@
 			"sid": "clear_cookies",
 			"src": "Clear cookies",
 			"tgt": "清除 Cookies",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2713,6 +3050,7 @@
 			"sid": "cookies_cleared",
 			"src": "Cookies cleared",
 			"tgt": "已清除 Cookies",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2721,6 +3059,7 @@
 			"sid": "clear_database",
 			"src": "Clear database",
 			"tgt": "清除資料庫",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2729,6 +3068,7 @@
 			"sid": "clear_database_summary",
 			"src": "Delete manga and chapters that are not in your library",
 			"tgt": "將未收藏於書櫃中的漫畫的記錄刪除",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2737,6 +3077,7 @@
 			"sid": "clear_database_confirmation",
 			"src": "Are you sure? Read chapters and progress of non-library manga will be lost",
 			"tgt": "不在書櫃中的漫畫閱讀進度將被清除，你確定嗎？",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2745,6 +3086,7 @@
 			"sid": "clear_database_completed",
 			"src": "Entries deleted",
 			"tgt": "已刪除項目",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2753,6 +3095,7 @@
 			"sid": "refresh_library_metadata",
 			"src": "Refresh library metadata",
 			"tgt": "重新整理書櫃資料",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2761,6 +3104,7 @@
 			"sid": "updates_covers_genres_desc",
 			"src": "Updates covers, genres, description and manga status information",
 			"tgt": "更新書封、類型、描述和連載狀態等漫畫簡介",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2769,6 +3113,7 @@
 			"sid": "refresh_tracking_metadata",
 			"src": "Refresh tracking metadata",
 			"tgt": "更新閱讀歷程",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2777,6 +3122,7 @@
 			"sid": "updates_tracking_details",
 			"src": "Updates status, score and last chapter read from the tracking services",
 			"tgt": "與歷程平台同步處理閱讀狀態、評分以及進度",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2785,6 +3131,7 @@
 			"sid": "disable_battery_optimization",
 			"src": "Disable battery optimization",
 			"tgt": "停用電池效能最佳化",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2793,6 +3140,7 @@
 			"sid": "battery_optimization_disabled",
 			"src": "Battery optimization is already disabled",
 			"tgt": "已停用電池效能最佳化",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2801,6 +3149,7 @@
 			"sid": "pref_global_search",
 			"src": "Global search",
 			"tgt": "全域搜尋",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2809,6 +3158,7 @@
 			"sid": "check_for_extension_updates",
 			"src": "Check for extension updates",
 			"tgt": "自動檢查擴充套件更新",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2817,6 +3167,7 @@
 			"sid": "source_migration_guide",
 			"src": "Source migration guide",
 			"tgt": "來源遷移說明",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2825,6 +3176,7 @@
 			"sid": "nsfw_sources",
 			"src": "NSFW (18+) sources",
 			"tgt": "未滿十八歲之人不宜瀏覽的來源",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2833,6 +3185,7 @@
 			"sid": "does_not_prevent_unofficial_nsfw",
 			"src": "This does not prevent unofficial or potentially incorrectly flagged extensions from surfacing NSFW (18+) content within the app.",
 			"tgt": "即使啟用監護限制，還是可能有漏網之魚。使用者仍可藉由非官方或未正確標幟的擴充套件在本應用程式中瀏覽未滿十八歲之人不宜觀賞的內容。",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2841,6 +3194,7 @@
 			"sid": "version",
 			"src": "Version",
 			"tgt": "版本",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2849,6 +3203,7 @@
 			"sid": "build_time",
 			"src": "Build time",
 			"tgt": "組建時間",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2857,6 +3212,7 @@
 			"sid": "send_crash_report",
 			"src": "Send crash reports",
 			"tgt": "傳送錯誤報告",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2865,6 +3221,7 @@
 			"sid": "helps_fix_bugs",
 			"src": "Helps fix any bugs. No sensitive data will be sent",
 			"tgt": "協助我們修復錯誤，傳送的資料將不包含個人敏感訊息",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2873,6 +3230,7 @@
 			"sid": "whats_new",
 			"src": "What's new",
 			"tgt": "更新日誌",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2881,6 +3239,7 @@
 			"sid": "help_translate",
 			"src": "Help translate",
 			"tgt": "協助翻譯",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2889,6 +3248,7 @@
 			"sid": "website",
 			"src": "Website",
 			"tgt": "網站",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2897,6 +3257,7 @@
 			"sid": "open_source_licenses",
 			"src": "Open source licenses",
 			"tgt": "開放原始碼授權",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2905,6 +3266,7 @@
 			"sid": "log_in_to_",
 			"src": "Log in to %1$s",
 			"tgt": "登入 %1$s",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2913,6 +3275,7 @@
 			"sid": "username",
 			"src": "Username",
 			"tgt": "使用者名稱",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2921,6 +3284,7 @@
 			"sid": "email",
 			"src": "Email address",
 			"tgt": "電子郵件地址",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2929,6 +3293,7 @@
 			"sid": "password",
 			"src": "Password",
 			"tgt": "密碼",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2937,6 +3302,7 @@
 			"sid": "successfully_logged_in",
 			"src": "Successfully logged in",
 			"tgt": "登入成功",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2945,6 +3311,7 @@
 			"sid": "successfully_logged_out",
 			"src": "You are now logged out",
 			"tgt": "你已登出",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2953,6 +3320,7 @@
 			"sid": "downloads",
 			"src": "Downloads",
 			"tgt": "下載",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2961,6 +3329,7 @@
 			"sid": "download_queue",
 			"src": "Download queue",
 			"tgt": "下載佇列",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2969,6 +3338,7 @@
 			"sid": "cancel_all",
 			"src": "Cancel all",
 			"tgt": "全部取消",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2977,6 +3347,7 @@
 			"sid": "cancel_all_for_series",
 			"src": "Cancel all for this series",
 			"tgt": "取消此叢書",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2985,6 +3356,7 @@
 			"sid": "downloaded",
 			"src": "Downloaded",
 			"tgt": "已下載",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -2993,6 +3365,7 @@
 			"sid": "downloading",
 			"src": "Downloading",
 			"tgt": "下載中",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3001,6 +3374,7 @@
 			"sid": "download",
 			"src": "Download",
 			"tgt": "下載",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3009,6 +3383,7 @@
 			"sid": "downloading_progress",
 			"src": "Downloading (%1$d/%2$d)",
 			"tgt": "正在下載 (%1$d/%2$d)",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3017,6 +3392,7 @@
 			"sid": "invalid_download_location",
 			"src": "Invalid download location",
 			"tgt": "無效的下載位置",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3025,6 +3401,7 @@
 			"sid": "download_paused",
 			"src": "Download paused",
 			"tgt": "下載已暫停",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3033,6 +3410,7 @@
 			"sid": "download_complete",
 			"src": "Download complete",
 			"tgt": "下載完成",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3041,6 +3419,7 @@
 			"sid": "download_error",
 			"src": "Download error",
 			"tgt": "下載失敗",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3049,6 +3428,7 @@
 			"sid": "could_not_download_unexpected_error",
 			"src": "Could not download chapter due to unexpected error",
 			"tgt": "下載時發生不可預期的錯誤",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3057,6 +3437,7 @@
 			"sid": "no_wifi_connection",
 			"src": "No Wi-Fi connection available",
 			"tgt": "沒有可用的 Wi-Fi 連線",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3065,6 +3446,7 @@
 			"sid": "no_network_connection",
 			"src": "No network connection available",
 			"tgt": "尚未連接至網路",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3073,6 +3455,7 @@
 			"sid": "download_location",
 			"src": "Download location",
 			"tgt": "下載位置",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3081,6 +3464,7 @@
 			"sid": "only_download_over_wifi",
 			"src": "Only download over Wi-Fi",
 			"tgt": "僅透過 Wi-Fi 下載",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3089,6 +3473,7 @@
 			"sid": "remove_when_marked_as_read",
 			"src": "Remove when marked as read",
 			"tgt": "刪除標示為已讀的章節",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3097,6 +3482,7 @@
 			"sid": "remove_after_read",
 			"src": "Remove after read",
 			"tgt": "閱畢後刪除",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3105,6 +3491,7 @@
 			"sid": "custom_location",
 			"src": "Custom location",
 			"tgt": "自訂位置",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3113,6 +3500,7 @@
 			"sid": "last_read_chapter",
 			"src": "Last read chapter",
 			"tgt": "最後閱讀的章節",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3121,6 +3509,7 @@
 			"sid": "second_to_last",
 			"src": "Second to last chapter",
 			"tgt": "倒數第二章",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3129,6 +3518,7 @@
 			"sid": "third_to_last",
 			"src": "Third to last chapter",
 			"tgt": "倒數第三章",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3137,6 +3527,7 @@
 			"sid": "fourth_to_last",
 			"src": "Fourth to last chapter",
 			"tgt": "倒數第四章",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3145,6 +3536,7 @@
 			"sid": "fifth_to_last",
 			"src": "Fifth to last chapter",
 			"tgt": "倒數第五章",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3153,6 +3545,7 @@
 			"sid": "download_new_chapters",
 			"src": "Download new chapters",
 			"tgt": "自動下載新章節",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3161,6 +3554,7 @@
 			"sid": "categories_to_include_in_download",
 			"src": "Categories to include in download",
 			"tgt": "欲啟用自動下載的分類",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3169,6 +3563,7 @@
 			"sid": "manual",
 			"src": "Manual",
 			"tgt": "手動",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3177,6 +3572,7 @@
 			"sid": "hourly",
 			"src": "Hourly",
 			"tgt": "每小時",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3185,6 +3581,7 @@
 			"sid": "every_2_hours",
 			"src": "Every 2 hours",
 			"tgt": "每 2 小時",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3193,6 +3590,7 @@
 			"sid": "every_3_hours",
 			"src": "Every 3 hours",
 			"tgt": "每 3 小時",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3201,6 +3599,7 @@
 			"sid": "every_6_hours",
 			"src": "Every 6 hours",
 			"tgt": "每 6 小時",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3209,6 +3608,7 @@
 			"sid": "every_12_hours",
 			"src": "Every 12 hours",
 			"tgt": "每 12 小時",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3217,6 +3617,7 @@
 			"sid": "daily",
 			"src": "Daily",
 			"tgt": "每日",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3225,6 +3626,7 @@
 			"sid": "every_2_days",
 			"src": "Every 2 days",
 			"tgt": "每 2 日",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3233,6 +3635,7 @@
 			"sid": "weekly",
 			"src": "Weekly",
 			"tgt": "每週",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3241,6 +3644,7 @@
 			"sid": "select_cover_image",
 			"src": "Select cover image",
 			"tgt": "選擇書封圖片",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3249,6 +3653,7 @@
 			"sid": "select_backup_file",
 			"src": "Select backup file",
 			"tgt": "選擇備份檔案",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3257,6 +3662,7 @@
 			"sid": "file_picker_error",
 			"src": "No file picker app found",
 			"tgt": "找不到檔案選擇器",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3265,6 +3671,7 @@
 			"sid": "failed_to_bypass_cloudflare",
 			"src": "Failed to bypass Cloudflare",
 			"tgt": "無法繞過 Cloudflare",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3273,6 +3680,7 @@
 			"sid": "please_update_webview",
 			"src": "Please update the WebView app for better compatibility",
 			"tgt": "請更新 WebView 以獲得更佳的相容性",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3281,6 +3689,7 @@
 			"sid": "add",
 			"src": "Add",
 			"tgt": "新增",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3289,6 +3698,7 @@
 			"sid": "all",
 			"src": "All",
 			"tgt": "全部",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3297,6 +3707,7 @@
 			"sid": "alphabetically",
 			"src": "Alphabetically",
 			"tgt": "名稱",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3305,6 +3716,7 @@
 			"sid": "always",
 			"src": "Always",
 			"tgt": "立即",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3313,6 +3725,7 @@
 			"sid": "always_ask",
 			"src": "Always ask",
 			"tgt": "總是詢問",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3321,6 +3734,7 @@
 			"sid": "automatic",
 			"src": "Automatic",
 			"tgt": "自動",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3329,6 +3743,7 @@
 			"sid": "back",
 			"src": "Back",
 			"tgt": "上一頁",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3337,6 +3752,7 @@
 			"sid": "cancel",
 			"src": "Cancel",
 			"tgt": "取消",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3345,6 +3761,7 @@
 			"sid": "center",
 			"src": "Center",
 			"tgt": "中間",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3353,6 +3770,7 @@
 			"sid": "charging",
 			"src": "Charging",
 			"tgt": "充電時",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3361,6 +3779,7 @@
 			"sid": "clear",
 			"src": "Clear",
 			"tgt": "清除",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3369,6 +3788,7 @@
 			"sid": "close",
 			"src": "Close",
 			"tgt": "關閉",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3377,6 +3797,7 @@
 			"sid": "common",
 			"src": "Common",
 			"tgt": "一般",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3385,6 +3806,7 @@
 			"sid": "cover_of_image",
 			"src": "Cover of manga",
 			"tgt": "漫畫封面",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3393,6 +3815,7 @@
 			"sid": "create",
 			"src": "Create",
 			"tgt": "建立",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3401,6 +3824,7 @@
 			"sid": "default_value",
 			"src": "Default",
 			"tgt": "預設",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3409,6 +3833,7 @@
 			"sid": "delete",
 			"src": "Delete",
 			"tgt": "刪除",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3417,6 +3842,7 @@
 			"sid": "display",
 			"src": "Display",
 			"tgt": "檢視",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3425,6 +3851,7 @@
 			"sid": "edit",
 			"src": "Edit",
 			"tgt": "編輯",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3433,6 +3860,7 @@
 			"sid": "fast",
 			"src": "Fast",
 			"tgt": "快速",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3441,6 +3869,7 @@
 			"sid": "filter",
 			"src": "Filter",
 			"tgt": "篩選",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3449,6 +3878,7 @@
 			"sid": "forward",
 			"src": "Forward",
 			"tgt": "下一頁",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3457,6 +3887,7 @@
 			"sid": "free",
 			"src": "Free",
 			"tgt": "自動",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3465,6 +3896,7 @@
 			"sid": "ignore",
 			"src": "Ignore",
 			"tgt": "忽略",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3473,6 +3905,7 @@
 			"sid": "install",
 			"src": "Install",
 			"tgt": "安裝",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3481,6 +3914,7 @@
 			"sid": "left",
 			"src": "Left",
 			"tgt": "左邊",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3489,6 +3923,7 @@
 			"sid": "less",
 			"src": "Less",
 			"tgt": "較少",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3497,6 +3932,7 @@
 			"sid": "loading",
 			"src": "Loading…",
 			"tgt": "正在載入…",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3505,6 +3941,7 @@
 			"sid": "lock",
 			"src": "Lock",
 			"tgt": "鎖定",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3513,6 +3950,7 @@
 			"sid": "mark_as_read",
 			"src": "Mark as read",
 			"tgt": "標示為已讀",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3521,6 +3959,7 @@
 			"sid": "mark_as_unread",
 			"src": "Mark as unread",
 			"tgt": "標示為未讀",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3529,6 +3968,7 @@
 			"sid": "mark_previous_as_read",
 			"src": "Mark previous chapters as read",
 			"tgt": "標示過往章節為已讀",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3537,6 +3977,7 @@
 			"sid": "more",
 			"src": "More",
 			"tgt": "其他",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3545,6 +3986,7 @@
 			"sid": "move_to_bottom",
 			"src": "Move to bottom",
 			"tgt": "排至最後",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3553,6 +3995,7 @@
 			"sid": "move_to_top",
 			"src": "Move to top",
 			"tgt": "排至最前",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3561,6 +4004,7 @@
 			"sid": "language",
 			"src": "Language",
 			"tgt": "語言",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3569,6 +4013,7 @@
 			"sid": "never",
 			"src": "Never",
 			"tgt": "永不",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3577,6 +4022,7 @@
 			"sid": "newest",
 			"src": "Newest",
 			"tgt": "由新到舊",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3585,6 +4031,7 @@
 			"sid": "no_animation",
 			"src": "No animation",
 			"tgt": "停用動畫",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3593,6 +4040,7 @@
 			"sid": "normal",
 			"src": "Normal",
 			"tgt": "正常",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3601,6 +4049,7 @@
 			"sid": "oldest",
 			"src": "Oldest",
 			"tgt": "由舊到新",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3609,6 +4058,7 @@
 			"sid": "open_in_browser",
 			"src": "Open in browser",
 			"tgt": "在瀏覽器中開啟",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3617,6 +4067,7 @@
 			"sid": "open_log",
 			"src": "Open log",
 			"tgt": "檢視記錄檔",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3625,6 +4076,7 @@
 			"sid": "open_in_webview",
 			"src": "Open in WebView",
 			"tgt": "在 WebView 中開啟",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3633,6 +4085,7 @@
 			"sid": "options",
 			"src": "Options",
 			"tgt": "選項",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3641,6 +4094,7 @@
 			"sid": "pause",
 			"src": "Pause",
 			"tgt": "暫停",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3649,6 +4103,7 @@
 			"sid": "picture_saved",
 			"src": "Picture saved",
 			"tgt": "圖片已儲存",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3657,6 +4112,7 @@
 			"sid": "pin",
 			"src": "Pin",
 			"tgt": "釘選",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3665,6 +4121,7 @@
 			"sid": "pinned",
 			"src": "Pinned",
 			"tgt": "已釘選",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3673,6 +4130,7 @@
 			"sid": "remove",
 			"src": "Remove",
 			"tgt": "移除",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3681,6 +4139,7 @@
 			"sid": "reorder",
 			"src": "Reorder",
 			"tgt": "重新排序",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3689,6 +4148,7 @@
 			"sid": "reset",
 			"src": "Reset",
 			"tgt": "重設",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3697,6 +4157,7 @@
 			"sid": "restore",
 			"src": "Restore",
 			"tgt": "還原",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3705,6 +4166,7 @@
 			"sid": "resume",
 			"src": "Resume",
 			"tgt": "繼續閱讀",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3713,6 +4175,7 @@
 			"sid": "retry",
 			"src": "Retry",
 			"tgt": "重試",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3721,6 +4184,7 @@
 			"sid": "right",
 			"src": "Right",
 			"tgt": "右邊",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3729,6 +4193,7 @@
 			"sid": "rotation",
 			"src": "Rotation",
 			"tgt": "螢幕方向",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3737,6 +4202,7 @@
 			"sid": "save",
 			"src": "Save",
 			"tgt": "儲存",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3745,6 +4211,7 @@
 			"sid": "search",
 			"src": "Search",
 			"tgt": "搜尋",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3753,6 +4220,7 @@
 			"sid": "select_all",
 			"src": "Select all",
 			"tgt": "全選",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3761,6 +4229,7 @@
 			"sid": "share",
 			"src": "Share",
 			"tgt": "分享",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3769,6 +4238,7 @@
 			"sid": "sort",
 			"src": "Sort",
 			"tgt": "排序",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3777,6 +4247,7 @@
 			"sid": "start",
 			"src": "Start",
 			"tgt": "開始",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3785,6 +4256,7 @@
 			"sid": "stop",
 			"src": "Stop",
 			"tgt": "停止",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3793,6 +4265,7 @@
 			"sid": "undo",
 			"src": "Undo",
 			"tgt": "復原",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3801,6 +4274,7 @@
 			"sid": "unknown_error",
 			"src": "Unknown error",
 			"tgt": "不明的錯誤",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3809,6 +4283,7 @@
 			"sid": "unpin",
 			"src": "Unpin",
 			"tgt": "取消釘選",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3817,6 +4292,7 @@
 			"sid": "view_chapters",
 			"src": "View chapters",
 			"tgt": "檢視章節",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3825,6 +4301,7 @@
 			"sid": "wifi",
 			"src": "Wi-Fi",
 			"tgt": "僅限 Wi-Fi",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3833,6 +4310,7 @@
 			"sid": "category_plural_other",
 			"src": "%d categories",
 			"tgt": "分類",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3841,6 +4319,7 @@
 			"sid": "notification_update_failed_other",
 			"src": "%1$d updates failed",
 			"tgt": "有 %1$d 項更新失敗",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3849,6 +4328,7 @@
 			"sid": "extension_updates_available_other",
 			"src": "%d extension updates available",
 			"tgt": "%d 個擴充套件可更新",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3857,6 +4337,7 @@
 			"sid": "missing_chapters_warning_other",
 			"src": "Skipping %d chapters, either the source is missing them or they have been filtered out",
 			"tgt": "略過了 %d 章，也許是來源沒有這些章節，或其已被你的篩選規則排除",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -3865,6 +4346,7 @@
 			"sid": "restore_completed_message_other",
 			"src": "Done in %1$s with %2$s errors",
 			"tgt": "歷時 %1$s，出現 %2$s 個錯誤",
+			"contentType": "default",
 			"q": 70
 		}
 	],

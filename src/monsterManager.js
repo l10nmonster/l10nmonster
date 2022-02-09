@@ -143,12 +143,13 @@ export default class MonsterManager {
         await tm.processJob(jobResponse, jobRequest);
     }
 
-    makeTU(res, fullSeg) {
-        const { str, ...seg } = fullSeg;
+    makeTU(res, unit) {
+        const { str, src, tgt, ...seg } = unit;
+        const content = str ?? src ?? tgt;
         const pipeline = this.contentTypes[res.contentType];
         const tu = {
             ...seg,
-            src: str,
+            src: content,
             contentType: res.contentType,
             rid: res.id,
             ts: new Date(res.modified).getTime(),
@@ -157,8 +158,8 @@ export default class MonsterManager {
             tu.prj = res.prj;
         }
         if (pipeline.decoders) {
-            const normalizedStr = decodeString(str, pipeline.decoders);
-            if (normalizedStr[0] !== str) {
+            const normalizedStr = decodeString(content, pipeline.decoders);
+            if (normalizedStr[0] !== content) {
                 tu.nsrc = normalizedStr;
             }
         }

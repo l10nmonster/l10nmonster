@@ -17,6 +17,7 @@
 			"sid": "BackButtonLabel",
 			"src": "Back",
 			"tgt": "رجوع",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -25,6 +26,7 @@
 			"sid": "NavTitleLabel",
 			"src": "QR Scan",
 			"tgt": "فحص الاستجابة السريعة.",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -33,6 +35,7 @@
 			"sid": "LoadingMessage",
 			"src": "Parsing configuration data",
 			"tgt": "تحليل بيانات التهيئة",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -41,6 +44,7 @@
 			"sid": "InvalidQRCode",
 			"src": "The QR code is invalid",
 			"tgt": "إن رمز الاستجابة السريعة غير صالح",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -49,6 +53,7 @@
 			"sid": "ParsingFailed",
 			"src": "Problem in parsing the Url",
 			"tgt": "‏مشكلة في تحليل عنوان Url",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -57,7 +62,22 @@
 			"sid": "DataSynced",
 			"src": "%1$@ detected",
 			"tgt": "تم اكتشاف %1$@",
-			"q": 70
+			"contentType": "default",
+			"q": 70,
+			"ntgt": [
+				"تم اكتشاف ",
+				{
+					"t": "x",
+					"v": "%1$@"
+				}
+			],
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%1$@"
+				},
+				" detected"
+			]
 		},
 		{
 			"guid": "MmBuoyCIE3eiz_wlkLAZMeoIhXX52LOiAHNCnl3o4Fc",
@@ -65,6 +85,7 @@
 			"sid": "FindSymbolOnViewer",
 			"src": "Find this symbol on your viewer",
 			"tgt": "العثور على هذا الرمز على عارضك",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -73,6 +94,7 @@
 			"sid": "CanNotFindSymbol",
 			"src": "Can't find this symbol?",
 			"tgt": "ألا تستطيع العثور على هذا الرمز؟",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -81,6 +103,7 @@
 			"sid": "TroubleShootingTips",
 			"src": "Troubleshooting Tips",
 			"tgt": "نصائح تحرّى الخلل وإصلاحه",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -89,6 +112,7 @@
 			"sid": "SkipButtonLabel",
 			"src": "SKIP",
 			"tgt": "تخطٍ",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -97,6 +121,7 @@
 			"sid": "OnboardingIntroLine1",
 			"src": "Let's get you set up",
 			"tgt": "لنبدأ الإعداد",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -105,6 +130,7 @@
 			"sid": "OnboardingIntroLine2",
 			"src": "Pair your phone with your viewer for the best experience.",
 			"tgt": "أقرن هاتفك مع العارض للتمتّع بأفضل تجربة",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -113,6 +139,7 @@
 			"sid": "OnboardingNoViewerPrompt",
 			"src": "No cardboard viewer?",
 			"tgt": "‏أليس لديك عارض Cardboard؟",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -121,6 +148,7 @@
 			"sid": "OnboardingGetCardboardButton",
 			"src": "Get One",
 			"tgt": "الحصول على واحد",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -129,6 +157,7 @@
 			"sid": "PlaceYourPhoneInCardboard",
 			"src": "Place your phone into your Cardboard viewer.",
 			"tgt": "‏ضع هاتفك في عارض Cardboard.",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -137,7 +166,24 @@
 			"sid": "PlaceYourPhoneInViewerFormat",
 			"src": "Place your phone into your %1$@ viewer.",
 			"tgt": "ضع هاتفك في عارض %1$@.",
-			"q": 70
+			"contentType": "default",
+			"q": 70,
+			"ntgt": [
+				"ضع هاتفك في عارض ",
+				{
+					"t": "x",
+					"v": "%1$@"
+				},
+				"."
+			],
+			"nsrc": [
+				"Place your phone into your ",
+				{
+					"t": "x",
+					"v": "%1$@"
+				},
+				" viewer."
+			]
 		},
 		{
 			"guid": "6hNFreOOSaLtvtpZeirvd7YWah19RxogxrXPw89jle8",
@@ -145,6 +191,7 @@
 			"sid": "SettingsNavTitleLabel",
 			"src": "Settings",
 			"tgt": "الإعدادات",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -153,6 +200,7 @@
 			"sid": "SettingsSyncLabel",
 			"src": "Sync with Google Cardboard",
 			"tgt": "‏مزامنة مع Google Cardboard",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -161,7 +209,22 @@
 			"sid": "SettingsCurrentViewerLabelFormat",
 			"src": "Current viewer: %1$@",
 			"tgt": "العارض الحالي: %1$@",
-			"q": 70
+			"contentType": "default",
+			"q": 70,
+			"ntgt": [
+				"العارض الحالي: ",
+				{
+					"t": "x",
+					"v": "%1$@"
+				}
+			],
+			"nsrc": [
+				"Current viewer: ",
+				{
+					"t": "x",
+					"v": "%1$@"
+				}
+			]
 		},
 		{
 			"guid": "wqrXrCWCECaeOiuDSJiLjeSfPaVlrgpeDFJp8NK39WU",
@@ -169,6 +232,7 @@
 			"sid": "DefaultViewerName",
 			"src": "Default",
 			"tgt": "افتراضي",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -177,6 +241,7 @@
 			"sid": "DifferentViewerQuestion",
 			"src": "Using a different viewer?",
 			"tgt": "هل تستخدم عارضًا مختلفًا؟",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -185,6 +250,7 @@
 			"sid": "SwitchViewer",
 			"src": "SWITCH",
 			"tgt": "تبديل",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -193,7 +259,22 @@
 			"sid": "SwitchViewerActivityMenuTitle",
 			"src": "Switch viewer: %1$@",
 			"tgt": "تبديل العارض: %1$@",
-			"q": 70
+			"contentType": "default",
+			"q": 70,
+			"ntgt": [
+				"تبديل العارض: ",
+				{
+					"t": "x",
+					"v": "%1$@"
+				}
+			],
+			"nsrc": [
+				"Switch viewer: ",
+				{
+					"t": "x",
+					"v": "%1$@"
+				}
+			]
 		},
 		{
 			"guid": "_AhOCAPiMyasIto9QG_S4I0SlAYd_aMe7FWWEAduL38",
@@ -201,6 +282,7 @@
 			"sid": "HelpActivityMenuTitle",
 			"src": "Help",
 			"tgt": "مساعدة",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -209,6 +291,7 @@
 			"sid": "SuccessfullyPaired",
 			"src": "Successfully Paired!",
 			"tgt": "تم الإقران بنجاح!",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -217,7 +300,24 @@
 			"sid": "ViewerConfigured",
 			"src": "Your phone is now configured for your %1$@ viewer.",
 			"tgt": "تمت تهيئة هاتفك لعارض %1$@.",
-			"q": 70
+			"contentType": "default",
+			"q": 70,
+			"ntgt": [
+				"تمت تهيئة هاتفك لعارض ",
+				{
+					"t": "x",
+					"v": "%1$@"
+				},
+				"."
+			],
+			"nsrc": [
+				"Your phone is now configured for your ",
+				{
+					"t": "x",
+					"v": "%1$@"
+				},
+				" viewer."
+			]
 		},
 		{
 			"guid": "QBJSpbVgw6NtOonlImeo7N4Ys6aMk-tIHP-Jha6jjwk",
@@ -225,6 +325,7 @@
 			"sid": "OK",
 			"src": "OK",
 			"tgt": "موافق",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -233,6 +334,7 @@
 			"sid": "AccessibilitySettingsButton",
 			"src": "Settings",
 			"tgt": "الإعدادات",
+			"contentType": "default",
 			"q": 70
 		},
 		{
@@ -241,7 +343,11 @@
 			"sid": "AccessibilityBackButton",
 			"src": "Back\\u0020to previous screen",
 			"tgt": "رجوع إلى الشاشة السابقة",
-			"q": 70
+			"contentType": "default",
+			"q": 70,
+			"nsrc": [
+				"Back to previous screen"
+			]
 		}
 	],
 	"status": "done",

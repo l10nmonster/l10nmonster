@@ -11,6 +11,7 @@ export async function grandfatherCmd(mm, quality, limitToLang) {
         const translations = [];
         for (const tu of jobRequest.tus) {
             if (!txCache[tu.rid]) {
+                const resMeta = mm.sourceCache[tu.rid];
                 const pipeline = mm.contentTypes[tu.contentType];
                 const lookup = {};
                 let resource;
@@ -22,7 +23,7 @@ export async function grandfatherCmd(mm, quality, limitToLang) {
                 } finally {
                     if (resource) {
                         const parsedResource = await pipeline.resourceFilter.parseResource({ resource, isSource: false });
-                        parsedResource.segments.forEach(seg => lookup[seg.sid] = seg.str);
+                        parsedResource.segments.forEach(seg => lookup[seg.sid] = mm.makeTU(resMeta, seg));
                     }
                 }
                 txCache[tu.rid] = lookup;
@@ -30,14 +31,18 @@ export async function grandfatherCmd(mm, quality, limitToLang) {
             const previousTranslation = txCache[tu.rid][tu.sid];
             if (previousTranslation !== undefined) {
                 sources.push(tu);
-                translations.push({
+                const translation = {
                     guid: tu.guid,
                     rid: tu.rid,
                     sid: tu.sid,
                     src: tu.src,
-                    tgt: previousTranslation,
+                    tgt: previousTranslation.src,
+                    contentType: previousTranslation.contentType,
                     q: quality,
-                });
+                };
+                previousTranslation.nsrc && (translation.ntgt = previousTranslation.nsrc);
+                tu.nsrc && (translation.nsrc = tu.nsrc);
+                translations.push(translation);
             }
         }
         mm.verbose && console.log(`Grandfathering ${lang}... found ${jobRequest.tus.length} missing translations, of which ${translations.length} existing`);
