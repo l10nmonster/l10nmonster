@@ -49,6 +49,7 @@ describe ('pig latinizer translator tests', () =>{
       ],
       status: 'done'
     }
+    piggyTranslator.PigLatinizer.prototype.ctx = { regression: false };
     var translator = new piggyTranslator.PigLatinizer({
         quality: 80
     });
