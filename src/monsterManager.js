@@ -52,6 +52,7 @@ export default class MonsterManager {
                         source: monsterConfig.source,
                         resourceFilter: monsterConfig.resourceFilter,
                         decoders: monsterConfig.decoders,
+                        encoders: monsterConfig.encoders,
                         target: monsterConfig.target,
                     }
                 };
