@@ -14,6 +14,15 @@ import { JsonStateStore } from './src/jsonStateStore.js';
 import { SqlStateStore } from './src/sqlStateStore.js';
 import { FSTrafficStore } from './src/fsTrafficStore.js';
 
+import { analyzeCmd } from './src/analyzeCmd.js';
+import { grandfatherCmd } from './src/grandfatherCmd.js';
+import { leverageCmd } from './src/leverageCmd.js';
+import { pullCmd } from './src/pullCmd.js';
+import { pushCmd } from './src/pushCmd.js';
+import { statusCmd } from './src/statusCmd.js';
+import { tmxExportCmd } from './src/tmxExportCmd.js';
+import { translateCmd } from './src/translateCmd.js';
+
 import { FsSource, FsTarget } from './adapters/fs.js';
 import { PoFilter } from './filters/po.js';
 import { AndroidFilter } from './filters/android.js';
@@ -146,7 +155,7 @@ monsterCLI
     .command('status')
     .description('translation status of content.')
     .action(async () => await withMonsterManager(async monsterManager => {
-        const status = await monsterManager.status();
+        const status = await statusCmd(monsterManager);
         console.log(`${status.numSources.toLocaleString()} translatable resources`);
         console.log(`${status.pendingJobsNum.toLocaleString()} pending jobs`);
         for (const [lang, langStatus] of Object.entries(status.lang)) {
@@ -175,7 +184,7 @@ monsterCLI
     .description('source content report and validation.')
     .option('-s, --smell', 'detect smelly source')
     .action(async (options) => await withMonsterManager(async monsterManager => {
-      const analysis = await monsterManager.analyze();
+      const analysis = await analyzeCmd(monsterManager);
       console.log(`${analysis.numStrings.toLocaleString()} strings (${analysis.totalWC.toLocaleString()} words) in ${analysis.numSources.toLocaleString()} resources`);
       const qWC = analysis.qualifiedRepetitions.reduce((p, c) => p + (c.length - 1) * c[0].wc, 0);
       console.log(`${analysis.qualifiedRepetitions.length.toLocaleString()} locally qualified repetitions, ${qWC.toLocaleString()} duplicate word count`);
@@ -212,7 +221,7 @@ monsterCLI
     .action(async () => await withMonsterManager(async monsterManager => {
       console.log(`Pushing content upstream...`);
       try {
-        const status = await monsterManager.push();
+        const status = await pushCmd(monsterManager);
         if (status.length > 0) {
           for (const ls of status) {
             console.log(`${ls.num.toLocaleString()} translations units requested for language ${ls.lang} -> status: ${ls.status}`);
@@ -234,7 +243,7 @@ monsterCLI
     .action(async (options) => await withMonsterManager(async monsterManager => {
       const quality = options.quality;
       console.log(`Grandfathering existing translations at quality level ${quality}...`);
-      const status = await monsterManager.grandfather(quality, options.lang);
+      const status = await grandfatherCmd(monsterManager, quality, options.lang);
       if (status.error) {
         console.error(`Failed: ${status.error}`);
       } else {
@@ -255,7 +264,7 @@ monsterCLI
     .option('-l, --lang <language>', 'target language to leverage')
     .action(async (options) => await withMonsterManager(async monsterManager => {
       console.log(`Leveraging translations of repetitions...`);
-      const status = await monsterManager.leverage(options.lang);
+      const status = await leverageCmd(monsterManager, options.lang);
       if (status.error) {
         console.error(`Failed: ${status.error}`);
       } else {
@@ -275,7 +284,7 @@ monsterCLI
     .description('receive outstanding translation jobs.')
     .action(async () => await withMonsterManager(async monsterManager => {
       console.log(`Pulling pending translations...`);
-      const stats = await monsterManager.pull();
+      const stats = await pullCmd(monsterManager);
       console.log(`Checked ${stats.numPendingJobs.toLocaleString()} pending jobs, ${stats.translatedStrings.toLocaleString()} translated strings pulled`);
   }))
 ;
@@ -289,7 +298,7 @@ monsterCLI
         const limitToLang = options.lang;
         const dryRun = options.dryrun;
         console.log(`Generating translated resources for ${limitToLang ? limitToLang : 'all languages'}...${dryRun ? ' (dry run)' : ''}`);
-        const status = await monsterManager.translate({ limitToLang, dryRun });
+        const status = await translateCmd(monsterManager, { limitToLang, dryRun });
         if (dryRun) {
             for (const [lang, diff] of Object.entries(status.diff)) {
                 for (const [fname, lines] of Object.entries(diff)) {
@@ -311,7 +320,7 @@ monsterCLI
     .action(async (options) => await withMonsterManager(async monsterManager => {
         const limitToLang = options.lang;
         console.log(`Exporting TMX for ${limitToLang ? limitToLang : 'all languages'}...`);
-        const status = await monsterManager.tmxExport(limitToLang);
+        const status = await tmxExportCmd(monsterManager, limitToLang);
         console.log(`Generated files: ${status.files.join(', ')}`);
     }))
 ;

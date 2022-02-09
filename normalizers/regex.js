@@ -24,7 +24,7 @@ export function regexMatchingDecoderMaker(regex, partDecoder) {
     }
 }
 
-//// Escaping
+// Escaping
 
 const namedEntities = {
     '&nbsp;': '\u00a0',
@@ -63,11 +63,12 @@ export const javaEscapesDecoder = regexMatchingDecoderMaker(
 export const javaEscapesEncoder = (str) => str.replaceAll('\t', '\\t').replaceAll('\b', '\\b')
     .replaceAll('\n', '\\n').replaceAll('\r', '\\r').replaceAll('\f', '\\f');
 
-//// Placeholders
+// Placeholders
 
 // Works for both XML and HTML
 export const xmlDecoder = regexMatchingDecoderMaker(
     /(?<tag>(?<bx><[^>/]+>)|(?<ex><\/[^>]+>)|(?<x><[^>]+\/>))/g,
+    // eslint-disable-next-line no-nested-ternary
     (groups) => ({ t: (groups.bx ? 'bx' : (groups.ex ? 'ex' : 'x')), v: groups.tag })
 );
 
@@ -80,6 +81,7 @@ export const bracePHDecoder = regexMatchingDecoderMaker(
 // iOS-style and C-style placeholders
 // Supports %02d, %@, %1$@
 export const iosPHDecoder = regexMatchingDecoderMaker(
-    /(?<tag>%([0-9\.]*[lz]?[@dfsi]|\d+\$[@dfsi]))/g,
+    // eslint-disable-next-line prefer-named-capture-group
+    /(?<tag>%([0-9.]*[lz]?[@dfsi]|\d+\$[@dfsi]))/g,
     (groups) => ({ t: 'x', v: groups.tag })
 );
