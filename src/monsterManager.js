@@ -146,6 +146,28 @@ export default class MonsterManager {
         await tm.processJob(jobResponse, jobRequest);
     }
 
+    #makeTU(res, fullSeg) {
+        const { str, ...seg } = fullSeg;
+        const pipeline = this.contentTypes[res.contentType];
+        const tu = {
+            ...seg,
+            src: str,
+            contentType: res.contentType,
+            rid: res.id,
+            ts: new Date(res.modified).getTime(),
+        };
+        if (res.prj !== undefined) {
+            tu.prj = res.prj;
+        }
+        if (pipeline.decoders) {
+            const normalizedStr = decodeString(str, pipeline.decoders);
+            if (normalizedStr[0] !== str) {
+                tu.nsrc = normalizedStr;
+            }
+        }
+        return tu;
+    }
+
     async #prepareTranslationJob(targetLang, minimumQuality) {
         const sources = this.#getSourceCacheEntries();
         const job = {
@@ -160,33 +182,17 @@ export default class MonsterManager {
             untranslatedChars = 0,
             untranslatedWords = 0,
             pending = 0;
+        // eslint-disable-next-line no-unused-vars
         for (const [rid, res] of sources) {
             if (res.targetLangs.includes(targetLang)) {
-                const pipeline = this.contentTypes[res.contentType];
-                for (const { str, ...seg } of res.segments) {
+                for (const seg of res.segments) {
                     // TODO: if segment is pluralized we need to generate/suppress the relevant number of variants for the targetLang
                     const tmEntry = tm.getEntryByGuid(seg.guid);
                     if (!tmEntry || (tmEntry.q < minimumQuality && !tmEntry.inflight)) {
-                        const tu = {
-                            ...seg,
-                            src: str,
-                            contentType: res.contentType,
-                            rid,
-                            ts: new Date(res.modified).getTime(),
-                        };
-                        if (res.prj !== undefined) {
-                            tu.prj = res.prj;
-                        }
-                        if (pipeline.decoders) {
-                            const normalizedStr = decodeString(str, pipeline.decoders);
-                            if (normalizedStr[0] !== str) {
-                                tu.nsrc = normalizedStr;
-                            }
-                        }
-                        job.tus.push(tu);
+                        job.tus.push(this.#makeTU(res, seg));
                         untranslated++;
-                        untranslatedChars += str.length;
-                        untranslatedWords += wordsCountModule.wordsCount(str);
+                        untranslatedChars += seg.str.length;
+                        untranslatedWords += wordsCountModule.wordsCount(seg.str);
                     } else {
                         if (tmEntry.inflight) {
                             pending++;
@@ -514,6 +520,25 @@ export default class MonsterManager {
                     }
                 }
             }
+        }
+        return status;
+    }
+
+    async tmxExport(limitToLang) {
+        await this.#updateSourceCache();
+        const targetLangs = this.#getTargetLangs(limitToLang);
+        const status = { files: [] };
+        for (const targetLang of targetLangs) {
+            const sourceLookup = {};
+            for (const res of Object.values(this.sourceCache)) {
+                for (const seg of res.segments) {
+                    sourceLookup[seg.guid] = this.#makeTU(res, seg);
+                }
+            }
+            const tm = await this.tmm.getTM(this.sourceLang, targetLang);
+            const filename = `${this.sourceLang}-${targetLang}.tmx`;
+            await fs.writeFile(filename, await tm.exportTMX(sourceLookup), 'utf8');
+            status.files.push(filename);
         }
         return status;
     }

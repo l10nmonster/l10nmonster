@@ -4,6 +4,8 @@ import {
     readFileSync,
 } from 'fs';
 import * as fs from 'fs/promises';
+import {js2tmx} from 'tmexchange';
+import { flattenNormalizedSourceV1 } from './nsrcManglers.js';
 
 class TM {
     dirty = false;
@@ -81,6 +83,23 @@ class TM {
         }
         this.setJobStatus(jobId, status);
         await this.commit();
+    }
+
+    async exportTMX(sourceLookup) {
+        const getMangledSrc = tu => (tu.nsrc ? flattenNormalizedSourceV1(tu.nsrc)[0] : tu.src);
+        const getMangledTgt = tu => (tu.ntgt ? flattenNormalizedSourceV1(tu.ntgt)[0] : tu.tgt);
+        const tmx = {
+            sourceLanguage: this.tm.sourceLang,
+            resources: {},
+        };
+        for (const tu of Object.values(this.tm.tus)) {
+            const group = tu.prj || 'default';
+            tmx.resources[group] ??= {};
+            tmx.resources[group][tu.guid] = {};
+            tmx.resources[group][tu.guid][this.tm.sourceLang] = getMangledSrc(sourceLookup[tu.guid]);
+            tmx.resources[group][tu.guid][this.tm.targetLang] = getMangledTgt(tu);
+        }
+        return js2tmx(tmx);
     }
 }
 
