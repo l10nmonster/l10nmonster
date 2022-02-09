@@ -25,7 +25,7 @@ function extractNormalizedParts(str, phMap) {
         if (match.index > pos) {
             normalizedParts.push(match.input.substring(pos, match.index));
         }
-        normalizedParts.push(phMap[match[0]]);
+        normalizedParts.push(phMap[match.groups.ph]);
         pos = match.index + match[0].length;
     }
     if (pos < str.length) {
@@ -167,7 +167,7 @@ export class TranslationOS {
                 this.trafficStore && await this.trafficStore.logResponse('postStatus-ok', response);
             } catch (error) {
                 this.trafficStore && await this.trafficStore.logResponse('postStatus-error', error);
-                console.error(error.response.body);
+                console.error(error?.response?.body || error);
                 throw "TOS call failed!";
             }
             for (const translation of response) {
