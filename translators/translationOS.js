@@ -21,11 +21,11 @@ function flattenNormalizedSource(nsrc) {
 function extractNormalizedParts(str, phMap) {
     const normalizedParts = [];
     let pos = 0;
-    for (const match of str.matchAll(/(?<ph>{{(?<phIdx>[a-y]|z\d+)_(?<t>x|bx|ex)_(?<phName>[0-9A-Za-z_]+)}})/g)) {
+    for (const match of str.matchAll(/{{(?<ph>(?<phIdx>[a-y]|z\d+)_(?<t>x|bx|ex)_(?<phName>[0-9A-Za-z_]+))}}/g)) {
         if (match.index > pos) {
             normalizedParts.push(match.input.substring(pos, match.index));
         }
-        normalizedParts.push(phMap[0]);
+        normalizedParts.push(phMap[match[0]]);
         pos = match.index + match[0].length;
     }
     if (pos < str.length) {
@@ -54,7 +54,7 @@ export class TranslationOS {
 
     async requestTranslations(jobRequest) {
         const { tus, ...jobManifest } = jobRequest;
-        const tuPhMap = {};
+        const tuMeta = {};
         let phNotes = null;
         const tosPayload = tus.map(tu => {
             let content = tu.src;
@@ -62,7 +62,7 @@ export class TranslationOS {
                 const [normalizedStr, phMap ] = flattenNormalizedSource(tu.nsrc);
                 content = normalizedStr;
                 if (Object.keys(phMap).length > 0) {
-                    tuPhMap[tu.guid] = phMap;
+                    tuMeta[tu.guid] = { contentType: tu.contentType, phMap };
                     phNotes = Object.entries(phMap)
                         .reduce((p, c) => `${p} ${c[0]}=${c[1].v}`, '\n ph:')
                         .replaceAll('<', 'ᐸ')
@@ -122,10 +122,10 @@ export class TranslationOS {
                 inflight.push(committedGuids);
             }
             jobManifest.inflight = inflight.flat(1);
-            if (Object.keys(tuPhMap).length > 0) {
+            if (Object.keys(tuMeta).length > 0) {
                 jobManifest.envelope ??= {};
                 jobManifest.envelope.mf = 'v1';
-                jobManifest.envelope.tuPhMap = JSON.stringify(tuPhMap);
+                jobManifest.envelope.tuMeta = JSON.stringify(tuMeta);
             }
             jobManifest.status = 'pending';
             return jobManifest;
@@ -138,7 +138,7 @@ export class TranslationOS {
 
     // eslint-disable-next-line complexity
     async fetchTranslations(jobManifest) {
-        const tuPhMap = JSON.parse(jobManifest?.envelope?.tuPhMap ?? '{}');
+        const tuMeta = JSON.parse(jobManifest?.envelope?.tuMeta ?? '{}');
         const request = {
             url: `${this.baseURL}/status`,
             json: {
@@ -181,8 +181,9 @@ export class TranslationOS {
                             ts: new Date(translation.actual_delivery_date).getTime(),
                             q: this.quality,
                         };
-                        if (tuPhMap[guid]) {
-                            tusMap[guid].ntgt = extractNormalizedParts(translation.translated_content, tuPhMap[guid]);
+                        if (tuMeta[guid]) {
+                            tusMap[guid].ntgt = extractNormalizedParts(translation.translated_content, tuMeta[guid].phMap);
+                            tusMap[guid].contentType = tuMeta[guid].contentType;
                         } else {
                             tusMap[guid].tgt = translation.translated_content;
                         }
