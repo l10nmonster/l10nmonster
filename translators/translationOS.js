@@ -44,7 +44,10 @@ export class TranslationOS {
             throw 'You must specify apiKey, quality for TranslationOS';
         } else {
             this.baseURL = baseURL ?? 'https://api.translated.com/v2';
-            this.apiKey = apiKey;
+            this.stdHeaders = {
+                'x-api-key': apiKey,
+                'user-agent': 'l10n.monster/TOS v0.1',
+            }
             this.serviceType = serviceType ?? 'premium',
             this.quality = quality;
             this.tuDecorator = tuDecorator;
@@ -105,7 +108,7 @@ export class TranslationOS {
                     url: `${this.baseURL}/translate`,
                     json,
                     headers: {
-                        'x-api-key': this.apiKey,
+                        ...this.stdHeaders,
                         'x-idempotency-id': `jobGuid:${jobRequest.jobGuid} chunk:${chunkNumber}`,
                     }
                 };
@@ -146,9 +149,7 @@ export class TranslationOS {
                 status: 'delivered',
                 'fetch_content': true,
             },
-            headers: {
-                'x-api-key': this.apiKey,
-            }
+            headers: this.stdHeaders,
         };
         const tusMap = {};
         let offset = 0,
