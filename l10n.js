@@ -50,30 +50,30 @@ async function initMonster() {
             release,
             prj,
         };
-      const helpers = {
-        stores: {
-          JsonJobStore, SqlJobStore, JsonStateStore, SqlStateStore, FSTrafficStore
-        },
-        adapters: {
-          FsSource, FsTarget,
-        },
-        filters: {
-            PoFilter, AndroidFilter, JavaPropertiesFilter, IosStringsFilter
-          },
-        normalizers: {
-            xmlDecoder, bracePHDecoder, iosPHDecoder,
-            xmlEntityDecoder, javaEscapesDecoder,
-            xmlEntityEncoder, javaEscapesEncoder,
-            regexMatchingDecoderMaker,
-          },
-        translators: {
-          XliffBridge, PigLatinizer, TranslationOS
-        },
-      };
-      for (const helperCategory of Object.values(helpers)) {
-        for (const helper of Object.values(helperCategory))
-        helper.prototype.ctx = ctx;
-      }
+        const helpers = {
+            stores: {
+                JsonJobStore, SqlJobStore, JsonStateStore, SqlStateStore, FSTrafficStore
+            },
+            adapters: {
+                FsSource, FsTarget,
+            },
+            filters: {
+                PoFilter, AndroidFilter, JavaPropertiesFilter, IosStringsFilter
+            },
+            normalizers: {
+                xmlDecoder, bracePHDecoder, iosPHDecoder,
+                xmlEntityDecoder, javaEscapesDecoder,
+                xmlEntityEncoder, javaEscapesEncoder,
+                regexMatchingDecoderMaker,
+            },
+            translators: {
+                XliffBridge, PigLatinizer, TranslationOS
+            },
+        };
+        for (const helperCategory of Object.values(helpers)) {
+            for (const helper of Object.values(helperCategory))
+                helper.prototype && (helper.prototype.ctx = ctx);
+        }
       verbose && console.log(`Importing config from: ${configPath}`);
     const configModule = await import(configPath);
       try {
