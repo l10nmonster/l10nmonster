@@ -1,29 +1,38 @@
 import got from 'got';
 
-// const typeToPhElement = {
-//     x: 'ph',
-//     bx: 'sc',
-//     ex: 'ec',
-// };
-
-function flattenNormalizedSource(src) {
-     if (Array.isArray(src)) {
-        const normalizedStr = [];
-        let phIdx = 0,
-            phNotes = '';
-        for (const part of src) {
-            if (typeof part === 'string') {
-                normalizedStr.push(part);
-            } else {
-                phIdx++;
-                const phChar = String.fromCharCode(96 + phIdx);
-                normalizedStr.push(`{{${phChar}_${part.t}_${(part.v.match(/[0-9A-Za-z_]+/) || [''])[0]}}}`);
-                phNotes += `${phChar}_${part.t}=${part.v} `;
-            }
+function flattenNormalizedSource(nsrc) {
+    const normalizedStr = [],
+        phMap = {};
+    let phIdx = 0;
+    for (const part of nsrc) {
+        if (typeof part === 'string') {
+            normalizedStr.push(part);
+        } else {
+            phIdx++;
+            const phPrefix = phIdx < 26 ? String.fromCharCode(96 + phIdx) : `z${phIdx}`;
+            const mangledPh = `${phPrefix}_${part.t}_${(part.v.match(/[0-9A-Za-z_]+/) || [''])[0]}`;
+            normalizedStr.push(`{{${mangledPh}}}`);
+            phMap[mangledPh] = part;
         }
-        return [ normalizedStr.join(''), phNotes ];
     }
-    return [ src, '' ];
+    return [ normalizedStr.join(''), phMap ];
+}
+
+function extractNormalizedParts(str, phMap) {
+    const normalizedParts = [];
+    let pos = 0;
+    for (const match of str.matchAll(/(?<ph>{{(?<phIdx>[a-y]|z\d+)_(?<t>x|bx|ex)_(?<phName>[0-9A-Za-z_]+)}})/g)) {
+        if (match.index > pos) {
+            normalizedParts.push(match.input.substring(pos, match.index));
+        }
+        normalizedParts.push(phMap[0]);
+        pos = match.index + match[0].length;
+    }
+    if (pos < str.length) {
+        normalizedParts.push(str.substring(pos, str.length));
+    }
+    // TODO: validate actual vs. expected placeholders (name/types/number)
+    return normalizedParts;
 }
 
 // This is the chunking size for both upload and download
@@ -45,15 +54,28 @@ export class TranslationOS {
 
     async requestTranslations(jobRequest) {
         const { tus, ...jobManifest } = jobRequest;
+        const tuPhMap = {};
+        let phNotes = null;
         const tosPayload = tus.map(tu => {
-            let [content, phNotes ] = flattenNormalizedSource(tu.nsrc ?? tu.src);
-            phNotes = phNotes.replaceAll('<', 'ᐸ').replaceAll('>', 'ᐳ'); // hack until they stop stripping html
+            let content = tu.src;
+            if (tu.nsrc) {
+                const [normalizedStr, phMap ] = flattenNormalizedSource(tu.nsrc);
+                content = normalizedStr;
+                if (Object.keys(phMap).length > 0) {
+                    tuPhMap[tu.guid] = phMap;
+                    phNotes = Object.entries(phMap)
+                        .reduce((p, c) => `${p} ${c[0]}=${c[1].v}`, '\n ph:')
+                        .replaceAll('<', 'ᐸ')
+                        .replaceAll('>', 'ᐳ'); // hack until they stop stripping html
+                }
+            }
             let tosTU = {
                 'id_order': jobRequest.jobGuid,
                 'id_content': tu.guid,
                 content,
+                metadata: 'mf=v1',
                 context: {
-                    notes: `${tu.notes ?? ''}\n${phNotes.length > 0 ? `ph: ${phNotes}\n`: ''}rid: ${tu.rid}\n sid: ${tu.sid}\n guid: ${tu.guid}`
+                    notes: `${tu.notes ?? ''}${phNotes ?? ''}\n rid: ${tu.rid}\n sid: ${tu.sid}\n guid: ${tu.guid}`
                 },
                 'source_language': jobRequest.sourceLang,
                 'target_languages': [ jobRequest.targetLang ],
@@ -65,6 +87,7 @@ export class TranslationOS {
                 ],
             };
             if (tu.prj !== undefined) {
+                // eslint-disable-next-line camelcase
                 tosTU.id_order_group = tu.prj;
             }
             if (typeof this.tuDecorator === 'function') {
@@ -99,6 +122,11 @@ export class TranslationOS {
                 inflight.push(committedGuids);
             }
             jobManifest.inflight = inflight.flat(1);
+            if (Object.keys(tuPhMap).length > 0) {
+                jobManifest.envelope ??= {};
+                jobManifest.envelope.mf = 'v1';
+                jobManifest.envelope.tuPhMap = JSON.stringify(tuPhMap);
+            }
             jobManifest.status = 'pending';
             return jobManifest;
         } catch (error) {
@@ -108,7 +136,9 @@ export class TranslationOS {
         }
     }
 
+    // eslint-disable-next-line complexity
     async fetchTranslations(jobManifest) {
+        const tuPhMap = JSON.parse(jobManifest?.envelope?.tuPhMap ?? '{}');
         const request = {
             url: `${this.baseURL}/status`,
             json: {
@@ -148,11 +178,15 @@ export class TranslationOS {
                         tusMap[guid] && console.error(`Duplicate translations found for guid: ${guid}`);
                         tusMap[guid] = {
                             guid,
-                            tgt: translation.translated_content,
                             ts: new Date(translation.actual_delivery_date).getTime(),
                             q: this.quality,
                         };
-                    } else {
+                        if (tuPhMap[guid]) {
+                            tusMap[guid].ntgt = extractNormalizedParts(translation.translated_content, tuPhMap[guid]);
+                        } else {
+                            tusMap[guid].tgt = translation.translated_content;
+                        }
+                } else {
                         console.error(`Found unexpected guid: ${guid}`);
                     }
                 }

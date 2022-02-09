@@ -17,16 +17,14 @@ import TMManager from './tmManager.js';
 import { JsonJobStore } from './jsonJobStore.js';
 import { decodeString } from '../normalizers/util.js';
 
-function generateSidQualifiedGuid(sid, str) {
+function generateGuid(str) {
     const sidContentHash = createHash('sha256');
-    sidContentHash.update(`${sid}|${str}`, 'utf8');
-    return sidContentHash.digest().toString('base64');
+    sidContentHash.update(str, 'utf8');
+    return sidContentHash.digest().toString('base64').substring(0, 43).replaceAll('+', '-').replaceAll('/', '_');
 }
 
 function generateFullyQualifiedGuid(rid, sid, str) {
-    const sidContentHash = createHash('sha256');
-    sidContentHash.update(`${rid}|${sid}|${str}`, 'utf8');
-    return sidContentHash.digest().toString('base64');
+    return generateGuid(`${rid}|${sid}|${str}`);
 }
 
 export default class MonsterManager {
@@ -122,6 +120,24 @@ export default class MonsterManager {
     }
 
     async #processJob(jobResponse, jobRequest) {
+        for (const tu of jobResponse.tus ?? []) {
+            if (tu.ntgt) {
+                const pipeline = this.contentTypes[tu.contentType];
+                const tgt = [];
+                for (const part of tu.ntgt) {
+                    if (typeof part === 'string') {
+                        if (pipeline.encoders) {
+                            tgt.push(pipeline.encoders.reduce((str, encoder) => encoder(str), part));
+                        } else {
+                            tgt.push(part);
+                        }
+                    } else {
+                        tgt.push(part.v);
+                    }
+                }
+                tu.tgt = tgt.join('');
+            }
+        }
         await this.jobStore.updateJob(jobResponse, jobRequest);
         const tm = await this.tmm.getTM(jobResponse.sourceLang, jobResponse.targetLang);
         await tm.processJob(jobResponse, jobRequest);
@@ -151,6 +167,7 @@ export default class MonsterManager {
                         const tu = {
                             ...seg,
                             src: str,
+                            contentType: res.contentType,
                             rid,
                             ts: new Date(res.modified).getTime(),
                         };
@@ -159,7 +176,7 @@ export default class MonsterManager {
                         }
                         if (pipeline.decoders) {
                             const normalizedStr = decodeString(str, pipeline.decoders);
-                            if (normalizedStr.length !== 1 && normalizedStr[0] !== str) {
+                            if (normalizedStr[0] !== str) {
                                 tu.nsrc = normalizedStr;
                             }
                         }
@@ -250,7 +267,7 @@ export default class MonsterManager {
                 numStrings++;
                 const wc = wordsCountModule.wordsCount(seg.str);
                 totalWC += wc;
-                const qGuid = generateSidQualifiedGuid(seg.sid, seg.str);
+                const qGuid = generateGuid(`${seg.sid}|${seg.str}`);
                 unqualifiedMatches[seg.str] = unqualifiedMatches[seg.str] ?? [];
                 unqualifiedMatches[seg.str].push({ rid, sid: seg.sid, str: seg.str, wc, qGuid });
                 qualifiedMatches[qGuid] = qualifiedMatches[qGuid] ?? [];

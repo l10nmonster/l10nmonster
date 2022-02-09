@@ -16,7 +16,7 @@
 		{
 			"sid": "AccessibilityHelpButton",
 			"notes": "Popup activity view menu text for launching an external web browser to get help. (15 chars)",
-			"guid": "d13hqt62wEq5drSC+g7auJUOAlQL+N3VrEyi1mCjMH0=",
+			"guid": "d13hqt62wEq5drSC-g7auJUOAlQL-N3VrEyi1mCjMH0",
 			"contentType": "default",
 			"src": "Help",
 			"rid": "en.lproj/CardboardSDK.strings",

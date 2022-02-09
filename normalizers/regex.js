@@ -41,7 +41,9 @@ export const xmlEntityDecoder = regexMatchingDecoderMaker(
                 )
 );
 
-const javaControlChars = {
+export const xmlEntityEncoder = (str) => str.replaceAll('&', '&amp;').replaceAll('<', '&lt;');
+
+const javaControlCharsToDecode = {
     t: '\t',
     b: '\b',
     n: '\n',
@@ -52,11 +54,14 @@ export const javaEscapesDecoder = regexMatchingDecoderMaker(
     /(?<node>\\(?<escapedChar>['"\\])|\\(?<escapedControl>[tbnrf])|\\u(?<codePoint>[0-9A-Za-z]{4}))/g,
     (groups) => (groups.escapedChar ??
         (groups.escapedControl ?
-            (javaControlChars[groups.escapedControl] ?? `\\${groups.escapedControl}`) :
+            (javaControlCharsToDecode[groups.escapedControl] ?? `\\${groups.escapedControl}`) :
             String.fromCharCode(parseInt(groups.codePoint, 16))
         )
     )
 );
+
+export const javaEscapesEncoder = (str) => str.replaceAll('\t', '\\t').replaceAll('\b', '\\b')
+    .replaceAll('\n', '\\n').replaceAll('\r', '\\r').replaceAll('\f', '\\f');
 
 //// Placeholders
 

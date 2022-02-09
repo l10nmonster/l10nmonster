@@ -1,1615 +1,1615 @@
 <xliff xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd" xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
   <file original="XliffBridge" datatype="plaintext" source-language="en" target-language="zh-Hant">
     <body>
-      <trans-unit id="kAXadpWkMY/R68bbf/7iVGBzwRjYQSI3AM1R8G7UlLE=">
+      <trans-unit id="kAXadpWkMY_R68bbf_7iVGBzwRjYQSI3AM1R8G7UlLE">
         <source>TachiyomiJ2K</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="4ZJWhsxEVWgzhYbLJn7xrJr0riE6jkbADmLiQNVPZeo=">
+      <trans-unit id="4ZJWhsxEVWgzhYbLJn7xrJr0riE6jkbADmLiQNVPZeo">
         <source>TachiJ2K</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="27qyNndOGr5Tzx4ddlKCtgGu+HA1wIjdz0DHPrL7yF8=">
+      <trans-unit id="27qyNndOGr5Tzx4ddlKCtgGu-HA1wIjdz0DHPrL7yF8">
         <source>File permissions required</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="wsC9QA5cF7iZfEKqhWyRlhkMyLodg6hejy8VBqRPhNc=">
+      <trans-unit id="wsC9QA5cF7iZfEKqhWyRlhkMyLodg6hejy8VBqRPhNc">
         <source>Chapter %1$d of %2$d</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="tqJcDNz/ZRwr47o7D7bfseUWk+bZrORIZOvHHClSwAk=">
+      <trans-unit id="tqJcDNz_ZRwr47o7D7bfseUWk-bZrORIZOvHHClSwAk">
         <source>No chapters to delete</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="jxe6lKXpItYQ7tDgDvJvzwVZ+RfgcQoviUHOGfCohj4=">
+      <trans-unit id="jxe6lKXpItYQ7tDgDvJvzwVZ-RfgcQoviUHOGfCohj4">
         <source>Scanlators</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="WH5WLMC2qY2bMf5JBHSqSrkJVjNzv3YHD0V58wqZfV0=">
+      <trans-unit id="WH5WLMC2qY2bMf5JBHSqSrkJVjNzv3YHD0V58wqZfV0">
         <source>Category</source>
         <target>XYZ123</target>
         <note>Category</note>
       </trans-unit>
-      <trans-unit id="TdXyr2sR2uiqUPCk+2leWA3Vat+PDwLKkezo5p4OR4E=">
+      <trans-unit id="TdXyr2sR2uiqUPCk-2leWA3Vat-PDwLKkezo5p4OR4E">
         <source>Create new category</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="6LxJC8sf/K1lMeszDslG9Sl/Rvzv5614YKs/SdvvvXU=">
+      <trans-unit id="6LxJC8sf_K1lMeszDslG9Sl_Rvzv5614YKs_SdvvvXU">
         <source>New category</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="XXoLNbGH3EGehbZoQIYAlgCLCeXTFwLDRG+eFTvkRLI=">
+      <trans-unit id="XXoLNbGH3EGehbZoQIYAlgCLCeXTFwLDRG-eFTvkRLI">
         <source>Category is empty</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="xASOi21bwFlUiAyDq/NjUyskRF7IAJr6HsWpU0Kl6RE=">
+      <trans-unit id="xASOi21bwFlUiAyDq_NjUyskRF7IAJr6HsWpU0Kl6RE">
         <source>Show empty categories while filtering</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="V1z5DUJUfjPG59288u1ZgacrdXDTUYhGbyPfbjmMs7Y=">
+      <trans-unit id="V1z5DUJUfjPG59288u1ZgacrdXDTUYhGbyPfbjmMs7Y">
         <source>No matches for your filters</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="6LBwu2wdYEGbmnqUYms3BbK63yRuliVm/ceDAyqBvfg=">
+      <trans-unit id="6LBwu2wdYEGbmnqUYms3BbK63yRuliVm_ceDAyqBvfg">
         <source>Top category (%1$s)</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="ALfGSVlR2dtPc2wD9pRK718u2FBbmpMfRsdEznu6no0=">
+      <trans-unit id="ALfGSVlR2dtPc2wD9pRK718u2FBbmpMfRsdEznu6no0">
         <source>First category</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Mz8K0HaSi4Ffvygulhy2b3Fqj38tfAeKoZeEukHyC5g=">
+      <trans-unit id="Mz8K0HaSi4Ffvygulhy2b3Fqj38tfAeKoZeEukHyC5g">
         <source>Categories to update when manually refreshing</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="so0PKZwvPqpGV1xWSDbWY0znY7cKpYufeq33reXt8A0=">
+      <trans-unit id="so0PKZwvPqpGV1xWSDbWY0znY7cKpYufeq33reXt8A0">
         <source>All categories in global update</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Z5R54ptkf0KSzqHSXbTpgusMBDC0AnVs5HlxwFuBn/g=">
+      <trans-unit id="Z5R54ptkf0KSzqHSXbTpgusMBDC0AnVs5HlxwFuBn_g">
         <source>Manga in this category will moved into the default category.</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="dpO/z4YeTFadU1pOz/kPcMX3MJPH0ER9fKBE5s3JQ2w=">
+      <trans-unit id="dpO_z4YeTFadU1pOz_kPcMX3MJPH0ER9fKBE5s3JQ2w">
         <source>Manga already in category</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="80n7O41H3GTAIsW9t8opIF2izOHZmus3wrImbKV3iCE=">
+      <trans-unit id="80n7O41H3GTAIsW9t8opIF2izOHZmus3wrImbKV3iCE">
         <source>Add/Edit categories</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="mdJXc6b3zFcJjCiCBwa3eIMD0ftft4hpfhR8y24AKCw=">
+      <trans-unit id="mdJXc6b3zFcJjCiCBwa3eIMD0ftft4hpfhR8y24AKCw">
         <source>Manage category</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="3OTZLJcQIzg5hjfkG2FvvaLCs2bw5nf5x0eK7liio4M=">
+      <trans-unit id="3OTZLJcQIzg5hjfkG2FvvaLCs2bw5nf5x0eK7liio4M">
         <source>Category name cannot be blank</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="/SEHHFJh1jzpnbQTZhpgdfhSuNgxeC2IedcO+8+eJVQ=">
+      <trans-unit id="_SEHHFJh1jzpnbQTZhpgdfhSuNgxeC2IedcO-8-eJVQ">
         <source>Category deleted</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="2Dh5uX+r+ZGNhX0XX/9rBeP0s20EvWh1ANSjpD/Ads0=">
+      <trans-unit id="2Dh5uX-r-ZGNhX0XX_9rBeP0s20EvWh1ANSjpD_Ads0">
         <source>Press and hold to edit a category</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="JPHB24YD9kPnTMIzpxSbLTHOQ3sqRd20JU0wD+6SSGg=">
+      <trans-unit id="JPHB24YD9kPnTMIzpxSbLTHOQ3sqRd20JU0wD-6SSGg">
         <source>Jump to category</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="9g34tPp38mY39nGP8T+WnIW3VChRwCg4CLToDOJx9zE=">
+      <trans-unit id="9g34tPp38mY39nGP8T-WnIW3VChRwCg4CLToDOJx9zE">
         <source>What should update?</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Dtq1OCLeTSx3/phC8yNv9iQ1dU4+hVwD6JWEjTR8YOo=">
+      <trans-unit id="Dtq1OCLeTSx3_phC8yNv9iQ1dU4-hVwD6JWEjTR8YOo">
         <source>Updating %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="mHA1aAaURIeyD65vqcQOrZgktm0kcXaOteUsAQc475g=">
+      <trans-unit id="mHA1aAaURIeyD65vqcQOrZgktm0kcXaOteUsAQc475g">
         <source>Release page</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="YH/hpEGjrEK1ltdMwc4vNcWcKdVQE59STZdql8xcazY=">
+      <trans-unit id="YH_hpEGjrEK1ltdMwc4vNcWcKdVQE59STZdql8xcazY">
         <source>Your library</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="mWxC9jiOzWyfACuoV6DlcypJivwOxus5+dMFIHdVnGs=">
+      <trans-unit id="mWxC9jiOzWyfACuoV6DlcypJivwOxus5-dMFIHdVnGs">
         <source>No matches found for your current filters</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="qIZDGt0DMbfmVZaSxqo8rBZN0RyPwAmaot7CYpXNJao=">
+      <trans-unit id="qIZDGt0DMbfmVZaSxqo8rBZN0RyPwAmaot7CYpXNJao">
         <source>Show all categories</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Av/ON0E9yB1PATxomRZqmTHPlUa6IuIfdbqM3hHq9uY=">
+      <trans-unit id="Av_ON0E9yB1PATxomRZqmTHPlUa6IuIfdbqM3hHq9uY">
         <source>Move collapsed dynamic categories to bottom</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="m8j1SCe/UrzhS46X6dM3N+iYwO3/3kER3VbKiw5ixBk=">
+      <trans-unit id="m8j1SCe_UrzhS46X6dM3N-iYwO3_3kER3VbKiw5ixBk">
         <source>Show number of items</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Qs6SZ3dVI6ozm00KhWIbFPFqMOYVdpBj68Qph8F1BGY=">
+      <trans-unit id="Qs6SZ3dVI6ozm00KhWIbFPFqMOYVdpBj68Qph8F1BGY">
         <source>When grouping library by sources, status, etc.</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="RNy0yE1oUBzz2PCGw4+OrDNwlclfoSUu5rtfQ9hRUMA=">
+      <trans-unit id="RNy0yE1oUBzz2PCGw4-OrDNwlclfoSUu5rtfQ9hRUMA">
         <source>Always show current category</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="xPwj1sm9RPgXQRbze4ER9Qtvw47U4EAEnn/KMUXgI6o=">
+      <trans-unit id="xPwj1sm9RPgXQRbze4ER9Qtvw47U4EAEnn_KMUXgI6o">
         <source>Category hopper long-press action</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="wJDJ1kfIvhrB6fbWqin4rkKuS2hN9enFwLPW3da1Ygs=">
+      <trans-unit id="wJDJ1kfIvhrB6fbWqin4rkKuS2hN9enFwLPW3da1Ygs">
         <source>Expand/collapse all categories</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="0UDjqW0KedOeaREpD8QGmewenZGpHkcYTXOSBVLGbeU=">
+      <trans-unit id="0UDjqW0KedOeaREpD8QGmewenZGpHkcYTXOSBVLGbeU">
         <source>Open a random series</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="REDQuw2ffKcU28VK/OS/XkfAZPXbd+48KWPcvw9W50c=">
+      <trans-unit id="REDQuw2ffKcU28VK_OS_XkfAZPXbd-48KWPcvw9W50c">
         <source>Expand all categories</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="YQuig4jgVHZnCj7gkaqBA+YnUroIE3IsE14/X4ds/i0=">
+      <trans-unit id="YQuig4jgVHZnCj7gkaqBA-YnUroIE3IsE14_X4ds_i0">
         <source>Collapse all categories</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="csppXX2yY+YymAiNiJd8AJDZ22w5tTuxgpgh09frT8k=">
+      <trans-unit id="csppXX2yY-YymAiNiJd8AJDZ22w5tTuxgpgh09frT8k">
         <source>Reorder filters</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="/3wH8/CCG6rSOzCmj6gPJXcTu3eQOR5zpcStEKu+2ZY=">
+      <trans-unit id="_3wH8_CCG6rSOzCmj6gPJXcTu3eQOR5zpcStEKu-2ZY">
         <source>Search "%1$s" globally</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="kCa+bJauYACIeWVYamRlbqKFa+Pf4yFoxGZh+qyS/dg=">
+      <trans-unit id="kCa-bJauYACIeWVYamRlbqKFa-Pf4yFoxGZh-qyS_dg">
         <source>Read progress</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="SQUbYShig4o/mD0PduPcc86T4SXt3e9vaKp/qn1NbR0=">
+      <trans-unit id="SQUbYShig4o_mD0PduPcc86T4SXt3e9vaKp_qn1NbR0">
         <source>Series type</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="mxL1O8Q2FJe/7aycxLtdTnFXMnvI3dTIdPOtR2hK2Zg=">
+      <trans-unit id="mxL1O8Q2FJe_7aycxLtdTnFXMnvI3dTIdPOtR2hK2Zg">
         <source>Series</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="U2UnvktkKPonD5AVbTsnU2KEnmERMztybcr2P28b6HI=">
+      <trans-unit id="U2UnvktkKPonD5AVbTsnU2KEnmERMztybcr2P28b6HI">
         <source>Group library by…</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="tORAZmGGpRq9JC8iHie5axOQsNVu7dHeV0xaHX+ZML4=">
+      <trans-unit id="tORAZmGGpRq9JC8iHie5axOQsNVu7dHeV0xaHX-ZML4">
         <source>Tracking status</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="NYHyGs4jaf5TmjsVaebY6zXz7ncc7pWFn6zAf3m2hUA=">
+      <trans-unit id="NYHyGs4jaf5TmjsVaebY6zXz7ncc7pWFn6zAf3m2hUA">
         <source>Ungrouped</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="c656MnA8GvsOTOxs4WY4nJd0SDx8+yR4m5/0O3dVg0U=">
+      <trans-unit id="c656MnA8GvsOTOxs4WY4nJd0SDx8-yR4m5_0O3dVg0U">
         <source>Sort by</source>
         <target>XYZ123</target>
         <note>Library Sort</note>
       </trans-unit>
-      <trans-unit id="/MmQA+fnOKmeS/awbYvANnQen4m6Hj4XtKiddmn638o=">
+      <trans-unit id="_MmQA-fnOKmeS_awbYvANnQen4m6Hj4XtKiddmn638o">
         <source>Date fetched</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="1yWI2lsCy15IjZhGkHRpwAWoNjMOP/rPM14bzEH3l9c=">
+      <trans-unit id="1yWI2lsCy15IjZhGkHRpwAWoNjMOP_rPM14bzEH3l9c">
         <source>Can also be found by expanding library filters</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="mUBPzydk5EoVceN21sURmqCJm3S4SHPJYKOdDeGJDk8=">
+      <trans-unit id="mUBPzydk5EoVceN21sURmqCJm3S4SHPJYKOdDeGJDk8">
         <source>Hide start reading button</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="ETclr/VWLWFUhAFq6UzZX6GjOaOKAvOSOhfmlV5o8qk=">
+      <trans-unit id="ETclr_VWLWFUhAFq6UzZX6GjOaOKAvOSOhfmlV5o8qk">
         <source>Uniform grid covers</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="EOfH8MF1TxExXKy711d/IZzDgIS7Hrvga0qkB6Y4HmU=">
+      <trans-unit id="EOfH8MF1TxExXKy711d_IZzDgIS7Hrvga0qkB6Y4HmU">
         <source>Show outline around covers</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="huHrZ36lN4u4bClvKIpWCCg430CBw/V0wdCrp3pANrc=">
+      <trans-unit id="huHrZ36lN4u4bClvKIpWCCg430CBw_V0wdCrp3pANrc">
         <source>Grid size</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="qvWGK/lLcPxv7O2tc/y2b1Fgqas4Uk9qikDUU8JzPCY=">
+      <trans-unit id="qvWGK_lLcPxv7O2tc_y2b1Fgqas4Uk9qikDUU8JzPCY">
         <source>%d per row</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="5dIhJapfUivLgbMbJjZQUOVDIRggMxJgkm2iscM7/A8=">
+      <trans-unit id="5dIhJapfUivLgbMbJjZQUOVDIRggMxJgkm2iscM7_A8">
         <source>Display as</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="ToQxCqj8I/Sl1JKZSFEoFDUeVI0a5hgEgXMU/q+MHfQ=">
+      <trans-unit id="ToQxCqj8I_Sl1JKZSFEoFDUeVI0a5hgEgXMU_q-MHfQ">
         <source>Hide category hopper</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="LsjbNhr3WEBa/R0YVVgCwjGtLFIDKeIYeawGGw4roAM=">
+      <trans-unit id="LsjbNhr3WEBa_R0YVVgCwjGtLFIDKeIYeawGGw4roAM">
         <source>Shift one page over</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="ZcYnJ5Od7+YKDD3xphviCHtelffw+mhq54M6Rs7tPtA=">
+      <trans-unit id="ZcYnJ5Od7-YKDD3xphviCHtelffw-mhq54M6Rs7tPtA">
         <source>Shift double pages</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Ph2bJ5o6hNyyzK0cUaxO+y1H/ebjPITypSCOgs8JPSw=">
+      <trans-unit id="Ph2bJ5o6hNyyzK0cUaxO-y1H_ebjPITypSCOgs8JPSw">
         <source>Large updates may lead to increased battery usage and sources becoming slower</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="zvr59y3s5K3qszjqGTIXKeg/HsuE1uajtP/Jw40Sp5U=">
+      <trans-unit id="zvr59y3s5K3qszjqGTIXKeg_HsuE1uajtP_Jw40Sp5U">
         <source>Errors</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="ev/MbRW2ikGl8CLa17RREv5J8A5CaY2UhG0SdQNdv/I=">
+      <trans-unit id="ev_MbRW2ikGl8CLa17RREv5J8A5CaY2UhG0SdQNdv_I">
         <source>Restrictions: %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="QAlZS0y6i/buINaq18JblNG70LKyAsdB5SEzos785FE=">
+      <trans-unit id="QAlZS0y6i_buINaq18JblNG70LKyAsdB5SEzos785FE">
         <source>Sort by ignoring articles</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="gX2qXw9h04nSkWqum0JX/lrXBPrnakCiXfhaqiVV8OM=">
+      <trans-unit id="gX2qXw9h04nSkWqum0JX_lrXBPrnakCiXfhaqiVV8OM">
         <source>When sorting alphabetically, sort ignoring articles (a, an, the) at the start of manga titles</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="qGkF2Msp3GFeWmf1Bhwiv0fF0eC1cpmBhNbvl8xiiDY=">
+      <trans-unit id="qGkF2Msp3GFeWmf1Bhwiv0fF0eC1cpmBhNbvl8xiiDY">
         <source>Include in global update</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="VCIW6HRhoeMhpQUhRuDv4rLKq9LG90yl1F5zV+xbvQU=">
+      <trans-unit id="VCIW6HRhoeMhpQUhRuDv4rLKq9LG90yl1F5zV-xbvQU">
         <source>Refresh covers in library as well when updating library</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="jP+v2MRaelRp+0xUUhmilWXKVm0sFGYkH+NQkgC3xAM=">
+      <trans-unit id="jP-v2MRaelRp-0xUUhmilWXKVm0sFGYkH-NQkgC3xAM">
         <source>Global updates</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="0IxzMeDYA/8V3QabO+k3En1Ld3cLA1pVnFnO/WWfoFk=">
+      <trans-unit id="0IxzMeDYA_8V3QabO-k3En1Ld3cLA1pVnFnO_WWfoFk">
         <source>Buttons at bottom of reader</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="W+OESlaLb8Tz/YavoeRWfdWpbImHRAg2Whyms6MQFYg=">
+      <trans-unit id="W-OESlaLb8Tz_YavoeRWfdWpbImHRAg2Whyms6MQFYg">
         <source>Certain buttons can be found in other places if disabled here</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="+ZXuEBcLtTSL3Tk5TFp5gsqkopJ3I2iSdHMaFKM2p08=">
+      <trans-unit id="-ZXuEBcLtTSL3Tk5TFp5gsqkopJ3I2iSdHMaFKM2p08">
         <source>Search suggestions</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="96luWUe3rIPx396wuzKUZiWpL/FIvbxC+tiqyjavqJw=">
+      <trans-unit id="96luWUe3rIPx396wuzKUZiWpL_FIvbxC-tiqyjavqJw">
         <source>Search tips will show up periodically. Long press the suggestion to search it.</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="9KQnpovYTTR8EqaPS/krSrI6i65OEvrlUpYUZ8fHDF0=">
+      <trans-unit id="9KQnpovYTTR8EqaPS_krSrI6i65OEvrlUpYUZ8fHDF0">
         <source>Recents</source>
         <target>XYZ123</target>
         <note>Recents</note>
       </trans-unit>
-      <trans-unit id="8/2VD6CoQQwIG6KI5Gi0GBE4gSJnn5YXcgUHUr7tvXE=">
+      <trans-unit id="8_2VD6CoQQwIG6KI5Gi0GBE4gSJnn5YXcgUHUr7tvXE">
         <source>Updates &amp; history</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="mGutHcON0BUvfsxMPu1umIKcHv6zoXqgcRekXHAaCpM=">
+      <trans-unit id="mGutHcON0BUvfsxMPu1umIKcHv6zoXqgcRekXHAaCpM">
         <source>Newly added</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="SwJlbVJTeK7RQngegxVgj7hyxKL8WkxxvYeQDmUxXFs=">
+      <trans-unit id="SwJlbVJTeK7RQngegxVgj7hyxKL8WkxxvYeQDmUxXFs">
         <source>Reset chapter history</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Rc8j67hJn/5B9igXN+Qk0aQulQGROwzjffyN0YKKWMA=">
+      <trans-unit id="Rc8j67hJn_5B9igXN-Qk0aQulQGROwzjffyN0YKKWMA">
         <source>This will remove the read date of "%1$s". Are you sure?</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="uYQlEE+yMY7qUylFrutQn39vtbCdaLwds6v5WOXnH0s=">
+      <trans-unit id="uYQlEE-yMY7qUylFrutQn39vtbCdaLwds6v5WOXnH0s">
         <source>Reset all chapters for this %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="8hfS2YX0Z2MeOtSE6o4NXrYbB7OeHBBHgdAm+l4+w+8=">
+      <trans-unit id="8hfS2YX0Z2MeOtSE6o4NXrYbB7OeHBBHgdAm-l4-w-8">
         <source>Last read %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="RQ0ENEOSXNoEnBacgQPuCHJcj1SCwTftRhX1VwofvdY=">
+      <trans-unit id="RQ0ENEOSXNoEnBacgQPuCHJcj1SCwTftRhX1VwofvdY">
         <source>Read %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="oOIsvx6JfYWIil2iOllgT2Rra6OYAyNK/n4vjqZAA2Q=">
+      <trans-unit id="oOIsvx6JfYWIil2iOllgT2Rra6OYAyNK_n4vjqZAA2Q">
         <source>Updated %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="5lghhogGQ82xg+zOoDxdqYBrMVFarbA1PGmSufW48t0=">
+      <trans-unit id="5lghhogGQ82xg-zOoDxdqYBrMVFarbA1PGmSufW48t0">
         <source>Added %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="hnAEykZxa+ROnqZ0jvAdrj4/QmGPCUrfXq2yt8d5ZnE=">
+      <trans-unit id="hnAEykZxa-ROnqZ0jvAdrj4_QmGPCUrfXq2yt8d5ZnE">
         <source>Fetched %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="8RiginX5c8HPKTdZLSf92yPW7OaauQvgF/mQ6bLWASs=">
+      <trans-unit id="8RiginX5c8HPKTdZLSf92yPW7OaauQvgF_mQ6bLWASs">
         <source>View history</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="2B1czib05hWKXKttgwY+nLlvNzlCyVANPK4EUwkqygo=">
+      <trans-unit id="2B1czib05hWKXKttgwY-nLlvNzlCyVANPK4EUwkqygo">
         <source>View all updates</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="ASrcs0Dz123vfvvZRaO6g4nrW3HXYfVXDAK3PnApQMQ=">
+      <trans-unit id="ASrcs0Dz123vfvvZRaO6g4nrW3HXYfVXDAK3PnApQMQ">
         <source>Search recents…</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="akU48sSoFBDApncaFTnxDUwvntjoVc/x/ncCPkbKfUc=">
+      <trans-unit id="akU48sSoFBDApncaFTnxDUwvntjoVc_x_ncCPkbKfUc">
         <source>No recently read or updated manga</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="67LG+B8pRZncuF53apGRcqFubfzZGWknM7RCqDH9SZ0=">
+      <trans-unit id="67LG-B8pRZncuF53apGRcqFubfzZGWknM7RCqDH9SZ0">
         <source>Grouped</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="w1Rs6QdUEbwNfxKQ/3xpO1EmY/4HRV6aG5GQF0tFK9I=">
+      <trans-unit id="w1Rs6QdUEbwNfxKQ_3xpO1EmY_4HRV6aG5GQF0tFK9I">
         <source>Reset chapter?</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="3asXWsKaR7y7GtHSB4gj3cKcy0QKV7ZP9Y37ZUsa4J8=">
+      <trans-unit id="3asXWsKaR7y7GtHSB4gj3cKcy0QKV7ZP9Y37ZUsa4J8">
         <source>Press and hold can also reset chapter history</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="+ZokOFEGjoKOP0ipBcoQfSs+VHrAsiXGtvmliCLnBxc=">
+      <trans-unit id="-ZokOFEGjoKOP0ipBcoQfSs-VHrAsiXGtvmliCLnBxc">
         <source>Show download button</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="lxojKZjY+5yMohTxbOYeEsPXKdU35/LdTGAzh9L21hM=">
+      <trans-unit id="lxojKZjY-5yMohTxbOYeEsPXKdU35_LdTGAzh9L21hM">
         <source>Only unread</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="fN6EvqdvhVsR+FEQQFTaLWJEZURGvO79klFaYWce5ns=">
+      <trans-unit id="fN6EvqdvhVsR-FEQQFTaLWJEZURGvO79klFaYWce5ns">
         <source>Only downloaded</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="xtCZPDVorMQcmb88XuRrN66RmY0CaLszKaIG9rZilMw=">
+      <trans-unit id="xtCZPDVorMQcmb88XuRrN66RmY0CaLszKaIG9rZilMw">
         <source>Unread or downloaded</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="vc6RPi0nmbBiytfQeWbKySuwc6Tz427bDCSe//RrgOs=">
+      <trans-unit id="vc6RPi0nmbBiytfQeWbKySuwc6Tz427bDCSe__RrgOs">
         <source>Show reset history button</source>
         <target>XYZ123</target>
         <note>Recents Settings</note>
       </trans-unit>
-      <trans-unit id="qPY+TEoWZjeuax9ZNJUD/wMv44mSc6+WAQqtgXEPBSk=">
+      <trans-unit id="qPY-TEoWZjeuax9ZNJUD_wMv44mSc6-WAQqtgXEPBSk">
         <source>Show read chapters in Grouped and All</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="pF/TodxnIiM6j0nfMhGaKwG7i29NMrwslIg09Kr5NLY=">
+      <trans-unit id="pF_TodxnIiM6j0nfMhGaKwG7i29NMrwslIg09Kr5NLY">
         <source>Show title first</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="uDn0V4BKl8/4RZG+SBfzr9WsusENKW/02EQe2UZXh7E=">
+      <trans-unit id="uDn0V4BKl8_4RZG-SBfzr9WsusENKW_02EQe2UZXh7E">
         <source>A while ago</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="4se94QZG8B/HRubqGbQSa2z73iKBD+niP3vOOy24qeY=">
+      <trans-unit id="4se94QZG8B_HRubqGbQSa2z73iKBD-niP3vOOy24qeY">
         <source>Show updated time</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="iDbzX3ua7JTK2r5fPAdwX5aGkNtciRqK3DmhR9GrDpk=">
+      <trans-unit id="iDbzX3ua7JTK2r5fPAdwX5aGkNtciRqK3DmhR9GrDpk">
         <source>Group chapters together</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="VGxNmIVvDYZ6XN8+GGELcf5m/BTP3/nnUxF1sAUHRVg=">
+      <trans-unit id="VGxNmIVvDYZ6XN8-GGELcf5m_BTP3_nnUxF1sAUHRVg">
         <source>Uniform covers</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Bx4ksQFJA0d4IzSTzkltfMXKvQE/VFynqSen+05Xz8s=">
+      <trans-unit id="Bx4ksQFJA0d4IzSTzkltfMXKvQE_VFynqSen-05Xz8s">
         <source>Affects library grid covers</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="vOXbT2RStv9Bfve3rxZcNVYVtPleduRz+tCudb4hkm4=">
+      <trans-unit id="vOXbT2RStv9Bfve3rxZcNVYVtPleduRz-tCudb4hkm4">
         <source>Search extensions…</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="8WTohVPNZpV9njpvhCzeDzn72bq4FpnLmuH2GWJQmbU=">
+      <trans-unit id="8WTohVPNZpV9njpvhCzeDzn72bq4FpnLmuH2GWJQmbU">
         <source>All sources</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="09bHLJJ3TSUAIXnWuYp8zkgPz/Ktog89FUtierMakyY=">
+      <trans-unit id="09bHLJJ3TSUAIXnWuYp8zkgPz_Ktog89FUtierMakyY">
         <source>Source hidden</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="zHEBCkIpAL7IFfPf4XupIOxAICmr++suT78fcOimS5U=">
+      <trans-unit id="zHEBCkIpAL7IFfPf4XupIOxAICmr--suT78fcOimS5U">
         <source>Extension updates</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="UwRMRUlsHHvbMnyBXmfC1mLPAoK44f6GbhkwsaZA+LE=">
+      <trans-unit id="UwRMRUlsHHvbMnyBXmfC1mLPAoK44f6GbhkwsaZA-LE">
         <source>Extension updates pending</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="/LFloqjVFn0g8rA1cyKvjNh0n06tCbEN9q9cDIrD/mk=">
+      <trans-unit id="_LFloqjVFn0g8rA1cyKvjNh0n06tCbEN9q9cDIrD_mk">
         <source>Filter Languages</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="6ZsSto+VRKnxsZGSzwRyt7QJN8AL89DZyeutUNkCwN0=">
+      <trans-unit id="6ZsSto-VRKnxsZGSzwRyt7QJN8AL89DZyeutUNkCwN0">
         <source>Installed %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="GrMFwP4G/U9q4P7sChaW2J/1tmJecnWYjzHc7V/iIT8=">
+      <trans-unit id="GrMFwP4G_U9q4P7sChaW2J_1tmJecnWYjzHc7V_iIT8">
         <source>MIUI Optimization must be disabled to install extensions.</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="EJajp+vB1WGv35d6W7joH8a2s+IABgLLbQQ7if/c52o=">
+      <trans-unit id="EJajp-vB1WGv35d6W7joH8a2s-IABgLLbQQ7if_c52o">
         <source>App info</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="TDhM0SxNSzg582MobJ+X5uctk+vwpHPzMwTVyP7pqkw=">
+      <trans-unit id="TDhM0SxNSzg582MobJ-X5uctk-vwpHPzMwTVyP7pqkw">
         <source>%1$s must be enabled first</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="hdOZ2TaIpQJa51D84wSDzU6Awl+GjNr/KxXXa/SRFjw=">
+      <trans-unit id="hdOZ2TaIpQJa51D84wSDzU6Awl-GjNr_KxXXa_SRFjw">
         <source>Could not install extension</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Gx6It2EPZkzo8gjjKMNEIdCoI3j8ApOfbv2ZnOxTfXg=">
+      <trans-unit id="Gx6It2EPZkzo8gjjKMNEIdCoI3j8ApOfbv2ZnOxTfXg">
         <source>Update all</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="8u4FgLqIOqKPt9ghwV7vaQd9DIIie5EIgYLM8Y+MRg8=">
+      <trans-unit id="8u4FgLqIOqKPt9ghwV7vaQd9DIIie5EIgYLM8Y-MRg8">
         <source>Some extensions may still prompt to be installed first.</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="rEhqIqyMOpPGm9tucXpboZ2m3WcZOJWCxH6YdSbJQvw=">
+      <trans-unit id="rEhqIqyMOpPGm9tucXpboZ2m3WcZOJWCxH6YdSbJQvw">
         <source>Updating extensions</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="XlcudDTXzG61J5iRPIyqhRE70F5HFnn2xrll5R17+n8=">
+      <trans-unit id="XlcudDTXzG61J5iRPIyqhRE70F5HFnn2xrll5R17-n8">
         <source>Extensions updated</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="aVTh9yvCCOJS6biHAKAoKQDWmjjqo8cIFgcwqCIilRo=">
+      <trans-unit id="aVTh9yvCCOJS6biHAKAoKQDWmjjqo8cIFgcwqCIilRo">
         <source>Reader settings</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="2wtUHTjlnyifY2hE2cYObdqXt6vZKdAiyeVM4oNdf/s=">
+      <trans-unit id="2wtUHTjlnyifY2hE2cYObdqXt6vZKdAiyeVM4oNdf_s">
         <source>Set as default for all</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="V3T1TyRdbpM7GRMKubmLBRYDs8mAYaoJCF51qig7BrA=">
+      <trans-unit id="V3T1TyRdbpM7GRMKubmLBRYDs8mAYaoJCF51qig7BrA">
         <source>Pages %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="U+fM9HL6MdOpDlVta63gzSGRhDsy+EcFEPtR2FaH+dg=">
+      <trans-unit id="U-fM9HL6MdOpDlVta63gzSGRhDsy-EcFEPtR2FaH-dg">
         <source>Reading mode</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="RDsq1cQDak8jiMMmyZC/3SwERo3l6v8CapJAHJdpJec=">
+      <trans-unit id="RDsq1cQDak8jiMMmyZC_3SwERo3l6v8CapJAHJdpJec">
         <source>Changing this will reset the reading mode for this series</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="/8UeQtU350WWvYrLkMi8FgwaUbBpanboM42kByWdyj8=">
+      <trans-unit id="_8UeQtU350WWvYrLkMi8FgwaUbBpanboM42kByWdyj8">
         <source>Reading %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="SlAFtpEsmyLyJ9CWwNHgoUBa/z9W5Mf4LO7mcJAtZxg=">
+      <trans-unit id="SlAFtpEsmyLyJ9CWwNHgoUBa_z9W5Mf4LO7mcJAtZxg">
         <source>webtoon style</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="1XV7ZzyoiWqejk/kb8BMcUaGHMJHqLTx599EJtbIbGM=">
+      <trans-unit id="1XV7ZzyoiWqejk_kb8BMcUaGHMJHqLTx599EJtbIbGM">
         <source>Set first page as cover</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="A1vrwmVU31UFieXjJYeCmbnFXwvAe0YhNyKDDMkYUjA=">
+      <trans-unit id="A1vrwmVU31UFieXjJYeCmbnFXwvAe0YhNyKDDMkYUjA">
         <source>Share first page</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="HSi95SVfdcpoTsIsWemtKmrx4H2aOlDoF6G2TOMmtkc=">
+      <trans-unit id="HSi95SVfdcpoTsIsWemtKmrx4H2aOlDoF6G2TOMmtkc">
         <source>Save first page</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="nbb/Qs8XacxA8ZryVmBTmYK8QhrUJOV1ll4GHF1LAVI=">
+      <trans-unit id="nbb_Qs8XacxA8ZryVmBTmYK8QhrUJOV1ll4GHF1LAVI">
         <source>Set second page as cover</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="n1whErmKjcpP6XeusH8OnbllaukAYZVGuGvAwUS6vzI=">
+      <trans-unit id="n1whErmKjcpP6XeusH8OnbllaukAYZVGuGvAwUS6vzI">
         <source>Share second page</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="ole/ODWFjk6iag3O8p560HO628Q/hJvMtJGIAne5pRQ=">
+      <trans-unit id="ole_ODWFjk6iag3O8p560HO628Q_hJvMtJGIAne5pRQ">
         <source>Save second page</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="EpysZnLZo+1mZhou8q0OvmI8lp6fQXhnNentodbGre0=">
+      <trans-unit id="EpysZnLZo-1mZhou8q0OvmI8lp6fQXhnNentodbGre0">
         <source>Share combined pages</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="bLmGEWcwODjJ5TsZtvgPlllhMF7Qusd8hEa8GCnatwA=">
+      <trans-unit id="bLmGEWcwODjJ5TsZtvgPlllhMF7Qusd8hEa8GCnatwA">
         <source>Save combined pages</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="H4RqEMI7N9GCVCHx5OtUl6Kw6tEl1780q6W016wNcVI=">
+      <trans-unit id="H4RqEMI7N9GCVCHx5OtUl6Kw6tEl1780q6W016wNcVI">
         <source>Enable zoom out</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Zi3L+9A9ap581wVL6PDJp3zruecGLQwl5p9k1u9Zyrs=">
+      <trans-unit id="Zi3L-9A9ap581wVL6PDJp3zruecGLQwl5p9k1u9Zyrs">
         <source>Page preload amount</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="C2FNkpaLoL7VXyXMu9SaavaizdXlCQJdCFEfo18dSjI=">
+      <trans-unit id="C2FNkpaLoL7VXyXMu9SaavaizdXlCQJdCFEfo18dSjI">
         <source>The amount of pages to preload when reading. Higher values will result in a smoother reading experience, at the cost of higher cache and network usage.</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="/eiLmnk4fEbsRy1A9mw2gRTRnELuJtyfeEzLU5qCxpw=">
+      <trans-unit id="_eiLmnk4fEbsRy1A9mw2gRTRnELuJtyfeEzLU5qCxpw">
         <source>Invert double pages</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="/h/8cgOacQBSamHFaN1tvSkDKO3OST3xNwxQ000qeww=">
+      <trans-unit id="_h_8cgOacQBSamHFaN1tvSkDKO3OST3xNwxQ000qeww">
         <source>Split double pages in portrait</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="n/HJKhrvrSRiRt5B67LREhbN2dFEGtgAs3UQhBs4WJQ=">
+      <trans-unit id="n_HJKhrvrSRiRt5B67LREhbN2dFEGtgAs3UQhBs4WJQ">
         <source>Crop borders (Paged)</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="O3sde3hZlglgJmbDZ9GnS/sg/odYUPrskCtrEYhLq/8=">
+      <trans-unit id="O3sde3hZlglgJmbDZ9GnS_sg_odYUPrskCtrEYhLq_8">
         <source>Crop borders (Webtoon)</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="/UQhjiOEDycVJQUiZA70CKquv1zGeK1ewLezYWEQGbc=">
+      <trans-unit id="_UQhjiOEDycVJQUiZA70CKquv1zGeK1ewLezYWEQGbc">
         <source>Remove crop</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="CjYiNR9pPxk2Lft1ft0BzwuVz0M4pE8eWqpssfF2SVs=">
+      <trans-unit id="CjYiNR9pPxk2Lft1ft0BzwuVz0M4pE8eWqpssfF2SVs">
         <source>Smart (by page)</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="+HuD6DHwN27vOk/Pw/s14X20I/NuDj/SgyMg4gjTPqs=">
+      <trans-unit id="-HuD6DHwN27vOk_Pw_s14X20I_NuDj_SgyMg4gjTPqs">
         <source>Smart (by theme)</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="/kk+cHhadbopf9f8VouQpkf7cFf5uH4x5UATjrDbT8Y=">
+      <trans-unit id="_kk-cHhadbopf9f8VouQpkf7cFf5uH4x5UATjrDbT8Y">
         <source>Split double pages</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="SMwJKF5bm8Dw+xz6vGuwFBcxvaO3HNcEdgOamKUOZIw=">
+      <trans-unit id="SMwJKF5bm8Dw-xz6vGuwFBcxvaO3HNcEdgOamKUOZIw">
         <source>Double pages</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Id3pS3KM5Tkhruf5e491S+MZ6QNGErJ19JogpbvKZNU=">
+      <trans-unit id="Id3pS3KM5Tkhruf5e491S-MZ6QNGErJ19JogpbvKZNU">
         <source>Single page</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="wQRuzGKkvWV0vG9obp4jGSnm4RjR1bnkAXtK4twE1fY=">
+      <trans-unit id="wQRuzGKkvWV0vG9obp4jGSnm4RjR1bnkAXtK4twE1fY">
         <source>Switch to double pages</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="223rk+Kbo+zntSmAdYrsyW+ny2zCVG0qtEqP7J11AKo=">
+      <trans-unit id="223rk-Kbo-zntSmAdYrsyW-ny2zCVG0qtEqP7J11AKo">
         <source>Switch to single page</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="1Zrp6BG+DZXSWk18y0cN2K1J814wdXRxsC05kaDwynU=">
+      <trans-unit id="1Zrp6BG-DZXSWk18y0cN2K1J814wdXRxsC05kaDwynU">
         <source>Locked portrait</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="ouRwVLj6hSKJFfa3sUttbDc6Bu4XjCLn/0DqQGwx0SA=">
+      <trans-unit id="ouRwVLj6hSKJFfa3sUttbDc6Bu4XjCLn_0DqQGwx0SA">
         <source>Locked landscape</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="cJ/+rA/sG+i15fhaJLSWxUuAg26fAQSzmfLCtpXwQ7Q=">
+      <trans-unit id="cJ_-rA_sG-i15fhaJLSWxUuAg26fAQSzmfLCtpXwQ7Q">
         <source>Smart (based on page)</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="7T/hOsg6RhtnEA4R4O2r6DgjCGl5TFtkA/MRWZbSnjk=">
+      <trans-unit id="7T_hOsg6RhtnEA4R4O2r6DgjCGl5TFtkA_MRWZbSnjk">
         <source>Smart (based on page and theme)</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="W8IL7FndWDq+7+mwh7RdfpnZ+3SJj5ffNGNhAZG8S1s=">
+      <trans-unit id="W8IL7FndWDq-7-mwh7RdfpnZ-3SJj5ffNGNhAZG8S1s">
         <source>If disabled, the transition page will be skipped if the next chapter is loaded</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="NCIdcJxxvp00HL/yi0SD4xBMx8YwKzIdtFqHXMDHDCs=">
+      <trans-unit id="NCIdcJxxvp00HL_yi0SD4xBMx8YwKzIdtFqHXMDHDCs">
         <source>Horizontally</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="paXGn4VWZ5yx1GauoMOctNbsSX+BnzeZzjpXvBejZ5U=">
+      <trans-unit id="paXGn4VWZ5yx1GauoMOctNbsSX-BnzeZzjpXvBejZ5U">
         <source>Vertically</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="hInxbNXmVp8ymfLBQk2lH+7SvUPs25InX/gUWoMuX4I=">
+      <trans-unit id="hInxbNXmVp8ymfLBQk2lH-7SvUPs25InX_gUWoMuX4I">
         <source>Both Axes</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="tiuPeCuNZficiHifln3AdOnVjGqIL99OVSCJTjqRIHQ=">
+      <trans-unit id="tiuPeCuNZficiHifln3AdOnVjGqIL99OVSCJTjqRIHQ">
         <source>Cutout area behavior</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="bNPoLAv44j0zbzVEKB68Nquz+COQvdnao3VSBUr6gkQ=">
+      <trans-unit id="bNPoLAv44j0zbzVEKB68Nquz-COQvdnao3VSBUr6gkQ">
         <source>Pad cutout areas</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="vdEXO8td0M3CxR2uaKOOeAFddT/lcuWlGdJDUQKv24o=">
+      <trans-unit id="vdEXO8td0M3CxR2uaKOOeAFddT_lcuWlGdJDUQKv24o">
         <source>Start past cutout</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="JoF7exj/S0HkjlE/K6NxLRkE1SPsbKLIT8weHsrlRwI=">
+      <trans-unit id="JoF7exj_S0HkjlE_K6NxLRkE1SPsbKLIT8weHsrlRwI">
         <source>Ignore cutout areas</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="2pjM4+I03BkSW+GbRG9AEztBy/evkZczJAm7MDgTi6k=">
+      <trans-unit id="2pjM4-I03BkSW-GbRG9AEztBy_evkZczJAm7MDgTi6k">
         <source>Cutout area behavior only applies in portrait mode with certain scale types</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="FezFSoYDEiIsClrf1JqAwRgFSrfjT2/CxGdPlIOXLA8=">
+      <trans-unit id="FezFSoYDEiIsClrf1JqAwRgFSrfjT2_CxGdPlIOXLA8">
         <source>Page layout</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="rb6QdTJBmHJnWUjhhBu9GsvrqP124sw43HE2vPZK7yI=">
+      <trans-unit id="rb6QdTJBmHJnWUjhhBu9GsvrqP124sw43HE2vPZK7yI">
         <source>While using automatic page layout, you can still switch between layouts while reading without overriding this setting</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="+p4Y62JHBpxvrQOFUkNWm8kJhR7z33NowZpXHhKis94=">
+      <trans-unit id="-p4Y62JHBpxvrQOFUkNWm8kJhR7z33NowZpXHhKis94">
         <source>Automatic (based on orientation)</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="nP0t9wle+o5QMEG5fe8AdknkamcCg1ooEtEx8hQvD/A=">
+      <trans-unit id="nP0t9wle-o5QMEG5fe8AdknkamcCg1ooEtEx8hQvD_A">
         <source>Cannot change reading mode from webtoon. Edit the series type first to change.</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Bs/uAR58uFgb6bja48jt8D7VWPX+BQswoW9ILNRorIQ=">
+      <trans-unit id="Bs_uAR58uFgb6bja48jt8D7VWPX-BQswoW9ILNRorIQ">
         <source>Actions</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="u6D7imr8nr9n+4+mLssPJxhy+OjW5uf11LKMMXwzUq4=">
+      <trans-unit id="u6D7imr8nr9n-4-mLssPJxhy-OjW5uf11LKMMXwzUq4">
         <source>Show on long press</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="IEX6H6t2/ADlenoNGaK3o4ZydfaVNWUL8L9934J2ljA=">
+      <trans-unit id="IEX6H6t2_ADlenoNGaK3o4ZydfaVNWUL8L9934J2ljA">
         <source>Save pages in separate folders</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="yY0LZeDyRVAoWbU+M40m8KynYbHYMrFP8qU8oYKpi/o=">
+      <trans-unit id="yY0LZeDyRVAoWbU-M40m8KynYbHYMrFP8qU8oYKpi_o">
         <source>Creates folders according to manga title</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="hOWW/8QYlUZgntp9GjjL83aajQad31hn4E2NDGWkFAY=">
+      <trans-unit id="hOWW_8QYlUZgntp9GjjL83aajQad31hn4E2NDGWkFAY">
         <source>About this %1$s</source>
         <target>XYZ123</target>
         <note>Manga details</note>
       </trans-unit>
-      <trans-unit id="DqqYptjCq56RSd6yH1VezMFYmhJh/M2IfK6LEdB2DUQ=">
+      <trans-unit id="DqqYptjCq56RSd6yH1VezMFYmhJh_M2IfK6LEdB2DUQ">
         <source>Volume %1$d</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="kRgL8Razjqr1+dxoAhaILzRBwXPqxmt7SbFZAhvz1Y0=">
+      <trans-unit id="kRgL8Razjqr1-dxoAhaILzRBwXPqxmt7SbFZAhvz1Y0">
         <source>Season %1$d</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="w9hhiyhohnNbjc/qqndqLiy6QdwWj+Epv6g2TqvRPtg=">
+      <trans-unit id="w9hhiyhohnNbjc_qqndqLiy6QdwWj-Epv6g2TqvRPtg">
         <source>No description</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Rdfkz1wtsfZR9+D72v7XGNcQIJliJS2jVIlDQjCiSAY=">
+      <trans-unit id="Rdfkz1wtsfZR9-D72v7XGNcQIJliJS2jVIlDQjCiSAY">
         <source>Add %1$s to library?</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="UjJLozZAoSoe146ujO2h+ICSmd3OB8xUHXoA0sw1vuk=">
+      <trans-unit id="UjJLozZAoSoe146ujO2h-ICSmd3OB8xUHXoA0sw1vuk">
         <source>Show All</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="wa91V77+CNIUKXO/trOUgp+OTGRGK1xDxCnn+jgS8n4=">
+      <trans-unit id="wa91V77-CNIUKXO_trOUgp-OTGRGK1xDxCnn-jgS8n4">
         <source>Add tag</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="mg4C6yIR8EP//v2LCqgKunkzyxby8kPofjaNzHx5x2o=">
+      <trans-unit id="mg4C6yIR8EP__v2LCqgKunkzyxby8kPofjaNzHx5x2o">
         <source>Clear tags</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="xnANV8L5mqGqk8EDMRSOD/nXd8p0AK4IczkE+ezn8mw=">
+      <trans-unit id="xnANV8L5mqGqk8EDMRSOD_nXd8p0AK4IczkE-ezn8mw">
         <source>Reset tags</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="cX9XxArHW92TEnx3pEA6Jr4BcxizkXZXT9Fl+RDaVZM=">
+      <trans-unit id="cX9XxArHW92TEnx3pEA6Jr4BcxizkXZXT9Fl-RDaVZM">
         <source>Reset cover</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="EbH3VudW1nCXsQ/ID9Yx1ZS01mU3OthyL0VrF3xBXR4=">
+      <trans-unit id="EbH3VudW1nCXsQ_ID9Yx1ZS01mU3OthyL0VrF3xBXR4">
         <source>Remember this choice</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="qJ1A3DenY9H9IyDNB5o4neBMDAAqqX5c+vEQd6Dgds4=">
+      <trans-unit id="qJ1A3DenY9H9IyDNB5o4neBMDAAqqX5c-vEQd6Dgds4">
         <source>Source not installed</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="4VnsQVEawPmvgH+O45FKaXHWGWxMnjIWsFtFV5GlyFc=">
+      <trans-unit id="4VnsQVEawPmvgH-O45FKaXHWGWxMnjIWsFtFV5GlyFc">
         <source>Filter scanlator groups</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="tA0xYikn0qHMP71gVNu8p+qT0ikIpg3hFN5e/ID1rVA=">
+      <trans-unit id="tA0xYikn0qHMP71gVNu8p-qT0ikIpg3hFN5e_ID1rVA">
         <source>Not tracked</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="ZYRF0uRDK/bsTpcq436kRm7TTSod3JSdVNJVsUlWSfU=">
+      <trans-unit id="ZYRF0uRDK_bsTpcq436kRm7TTSod3JSdVNJVsUlWSfU">
         <source>Track when adding to library</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="K8uvCzrPyY2N2As1JfFODEHeKn3UlBuZ9k1znC1K6tY=">
+      <trans-unit id="K8uvCzrPyY2N2As1JfFODEHeKn3UlBuZ9k1znC1K6tY">
         <source>Only applies to silent trackers, such as Komga</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="udoZazFBKNuJIC6v5QmfjrbGyd6rlkSOBu4UjHKhWOk=">
+      <trans-unit id="udoZazFBKNuJIC6v5QmfjrbGyd6rlkSOBu4UjHKhWOk">
         <source>Select an entry</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="U4k2bPmEV48jDbn2lC4J+B8kiIokopjfT9qt0J/p5ZU=">
+      <trans-unit id="U4k2bPmEV48jDbn2lC4J-B8kiIokopjfT9qt0J_p5ZU">
         <source>No match found</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="DthVRDpslR2a/CZJ43oIuFM3jsvJRc+3YGX31hS3Fgo=">
+      <trans-unit id="DthVRDpslR2a_CZJ43oIuFM3jsvJRc-3YGX31hS3Fgo">
         <source>Remove tracking from app</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="1+jjM70wv2iQBiRQB7JgTEfYLtgjIoNFJsew2hdM2T0=">
+      <trans-unit id="1-jjM70wv2iQBiRQB7JgTEfYLtgjIoNFJsew2hdM2T0">
         <source>Tracker cannot be removed from %1$s while offline</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="8t1/0lUqcwdgGbFbG367z/LVPDZ8HaDYkhAtXSyWa+g=">
+      <trans-unit id="8t1_0lUqcwdgGbFbG367z_LVPDZ8HaDYkhAtXSyWa-g">
         <source>Also remove from %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="8v+/s7uEet4s00G7V9Pcvumf9GnoOvuXxIwKWEjb/5Y=">
+      <trans-unit id="8v-_s7uEet4s00G7V9Pcvumf9GnoOvuXxIwKWEjb_5Y">
         <source>Remove previous tracker?</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="BCmMe8otscjDmEhjFoIZ+BckdPme/ENvG1kiKqJe46g=">
+      <trans-unit id="BCmMe8otscjDmEhjFoIZ-BckdPme_ENvG1kiKqJe46g">
         <source>Remove %1$s from %2$s and add %3$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="IjIAaIn0Y6stcO+h0xUhMXdIoivMRUrgVpxrj9FeUHQ=">
+      <trans-unit id="IjIAaIn0Y6stcO-h0xUhMXdIoivMRUrgVpxrj9FeUHQ">
         <source>Keep both on %1$s and only replace locally</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="s3vACTdhZ2buj/Wg0AF6N/JFDtLvlLLnIbUHBxnQ0qg=">
+      <trans-unit id="s3vACTdhZ2buj_Wg0AF6N_JFDtLvlLLnIbUHBxnQ0qg">
         <source>AniList</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="dJVNyCn6bIDgocMnQANRZjjmN2yv219ej1rKTgEQG1Y=">
+      <trans-unit id="dJVNyCn6bIDgocMnQANRZjjmN2yv219ej1rKTgEQG1Y">
         <source>MyAnimeList</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="lijVZnlsI/8wEaRccN3GhdMbkaokjlOHevHhcQl1its=">
+      <trans-unit id="lijVZnlsI_8wEaRccN3GhdMbkaokjlOHevHhcQl1its">
         <source>Kitsu</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="+GCqrIKkjCFCLsp6+nzpVdVJu1dHryOAddTaNcpolJA=">
+      <trans-unit id="-GCqrIKkjCFCLsp6-nzpVdVJu1dHryOAddTaNcpolJA">
         <source>Bangumi</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Ybb05vTJZmYDqAD6oEoxBMJ58ncfq903Xk0tNPmx7hU=">
+      <trans-unit id="Ybb05vTJZmYDqAD6oEoxBMJ58ncfq903Xk0tNPmx7hU">
         <source>Shikimori</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="tCcKUHMi2WKFTJPbgDWUPaxQgriB9B5cI87p+NIa0zg=">
+      <trans-unit id="tCcKUHMi2WKFTJPbgDWUPaxQgriB9B5cI87p-NIa0zg">
         <source>Komga</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="7hb5L6qGTAqPRklPIZG70MstE7elk7RcKPRLMCRQtd4=">
+      <trans-unit id="7hb5L6qGTAqPRklPIZG70MstE7elk7RcKPRLMCRQtd4">
         <source>Use suggested date</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="+PPNIbEUHwkIGu4bQUzt0Dum2AJNX33S224Q/e/ou2w=">
+      <trans-unit id="-PPNIbEUHwkIGu4bQUzt0Dum2AJNX33S224Q_e_ou2w">
         <source>Migration</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="XNjo/w9WhrGdxKdrV8/dOdrvfQJ22YujJJ86Jb0cZr8=">
+      <trans-unit id="XNjo_w9WhrGdxKdrV8_dOdrvfQJ22YujJJ86Jb0cZr8">
         <source>Skip pre-migration</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="ZaFVe22GBI64JdVFR6uX+ObRD+cRk0zIKevux5wEwW4=">
+      <trans-unit id="ZaFVe22GBI64JdVFR6uX-ObRD-cRk0zIKevux5wEwW4">
         <source>Select a source, then select an item to migrate</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="lt4SHU+6CU6ShuRhAxP8PbpEMoizbRLeARXwB+oXCoE=">
+      <trans-unit id="lt4SHU-6CU6ShuRhAxP8PbpEMoizbRLeARXwB-oXCoE">
         <source>Data to include in migration</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="WjIru3HFt1RrWI7/RapbkXcY0vlttgOm2q7YAQgUagc=">
+      <trans-unit id="WjIru3HFt1RrWI7_RapbkXcY0vlttgOm2q7YAQgUagc">
         <source>Search parameter (e.g. language:english)</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="91G3XQPJ2p1pajBE1eoRgNPgG9B+t/4PHNx3kmeUK2g=">
+      <trans-unit id="91G3XQPJ2p1pajBE1eoRgNPgG9B-t_4PHNx3kmeUK2g">
         <source>Include extra search parameter when searching</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="ELDkm24sZ2jhq4FvE5XizqKRWUrY5rYSIdvZBLjRnAk=">
+      <trans-unit id="ELDkm24sZ2jhq4FvE5XizqKRWUrY5rYSIdvZBLjRnAk">
         <source>Use source with the most chapters (slower)</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="dK9hIuYCY7ZjQx2fkF1hE+wlxSiGWWD0CDls4jwr0Hw=">
+      <trans-unit id="dK9hIuYCY7ZjQx2fkF1hE-wlxSiGWWD0CDls4jwr0Hw">
         <source>Use first source with alternative</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="vlH7fPoKtNFol1m44HtsqAc/POa1glKl0jdNWEN1A/c=">
+      <trans-unit id="vlH7fPoKtNFol1m44HtsqAc_POa1glKl0jdNWEN1A_c">
         <source>Skip this step next time</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="40nodRaLIGy39DOdLno37o+CdP+LndXWJmmD06atmsg=">
+      <trans-unit id="40nodRaLIGy39DOdLno37o-CdP-LndXWJmmD06atmsg">
         <source>To show this screen again, go to Settings -&gt; Sources.</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="ROaHF48UK3ruuGBFswAs9Yb0b2w7PzW2VOn//h/XmJ8=">
+      <trans-unit id="ROaHF48UK3ruuGBFswAs9Yb0b2w7PzW2VOn__h_XmJ8">
         <source>Latest: %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="N+Yl549YbT/yznYhn6exYuE3dfVAe7a/S4Mqs5cfOqk=">
+      <trans-unit id="N-Yl549YbT_yznYhn6exYuE3dfVAe7a_S4Mqs5cfOqk">
         <source>migrating to</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="xJFqLVqZOdDwGYAjfbgscpPcA6oGzcIavM/+Mgu3XOg=">
+      <trans-unit id="xJFqLVqZOdDwGYAjfbgscpPcA6oGzcIavM_-Mgu3XOg">
         <source>Don't migrate</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="7SPzWn0HQD6BIBpK8t3zjkVsy0SkVUtIURZJtEqRj7U=">
+      <trans-unit id="7SPzWn0HQD6BIBpK8t3zjkVsy0SkVUtIURZJtEqRj7U">
         <source>Search manually</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="KCxikc2zuT7uJzwvqPeb9SagV9WJX3byhb77PFwsPS0=">
+      <trans-unit id="KCxikc2zuT7uJzwvqPeb9SagV9WJX3byhb77PFwsPS0">
         <source>Migrate now</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="OiatXmgmVshjzRHY9MOlDEQV7odBfISWmzX62vP7wBE=">
+      <trans-unit id="OiatXmgmVshjzRHY9MOlDEQV7odBfISWmzX62vP7wBE">
         <source>Copy now</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="omvEJqBNnkZy6/cNJEWTibEC2IE/mhXjdIY//gdCY+k=">
+      <trans-unit id="omvEJqBNnkZy6_cNJEWTibEC2IE_mhXjdIY__gdCY-k">
         <source>Migrate %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="dQVWYkXPeFOjGC7dZFl4+qpzZxpKrykPe1si6ZXM47U=">
+      <trans-unit id="dQVWYkXPeFOjGC7dZFl4-qpzZxpKrykPe1si6ZXM47U">
         <source>No chapters found, this manga cannot be used for migration</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="J1tK+zxfRLo+qJ2LdvOy0EfXz3DKHub7cuPGCCs1bKQ=">
+      <trans-unit id="J1tK-zxfRLo-qJ2LdvOy0EfXz3DKHub7cuPGCCs1bKQ">
         <source>No Alternatives Found</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="qgyhbpKDjI7jLUvTkyBinCJwj8i7lfiKwHOif76StvI=">
+      <trans-unit id="qgyhbpKDjI7jLUvTkyBinCJwj8i7lfiKwHOif76StvI">
         <source>Stop migrating?</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="0PGoRBtjSC5DfE7pkpNcSSLKLPMNGJXcigYL1r00dOM=">
+      <trans-unit id="0PGoRBtjSC5DfE7pkpNcSSLKLPMNGJXcigYL1r00dOM">
         <source>(skipping %1$d)</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="5eQfIgEoQtbNWO+1AlQOysdFQc5V5igBF2xUbmrskIs=">
+      <trans-unit id="5eQfIgEoQtbNWO-1AlQOysdFQc5V5igBF2xUbmrskIs">
         <source>Appearance</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Lq7sHwfLa5taFKxzvjoFQ5MmaEM4wCpGJv0Yt2Q53VM=">
+      <trans-unit id="Lq7sHwfLa5taFKxzvjoFQ5MmaEM4wCpGJv0Yt2Q53VM">
         <source>Turn on %s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="QbKhyhwIbEvfmSlUiktB2jG/Mr29nUVfESsqbMvQEhg=">
+      <trans-unit id="QbKhyhwIbEvfmSlUiktB2jG_Mr29nUVfESsqbMvQEhg">
         <source>Turn off %s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="cXhHTgubaXopfYGQLaXme/NmQ5WY7SPT9Hk1kXrnht4=">
+      <trans-unit id="cXhHTgubaXopfYGQLaXme_NmQ5WY7SPT9Hk1kXrnht4">
         <source>Incognito mode</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="GWnOMuj7cc53ixBNbQN3Jgx0ndwa1tQvFWG7MN1UvOs=">
+      <trans-unit id="GWnOMuj7cc53ixBNbQN3Jgx0ndwa1tQvFWG7MN1UvOs">
         <source>Pauses reading history</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="2zYHICLSMDRS4hmL3mG/GcljCxsbxDZJi/d0tEA8KeY=">
+      <trans-unit id="2zYHICLSMDRS4hmL3mG_GcljCxsbxDZJi_d0tEA8KeY">
         <source>Light theme</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Qz5uMNtrIEjaYLpAUR9s7q838MB3UfqaZ5y5kCi5Fc4=">
+      <trans-unit id="Qz5uMNtrIEjaYLpAUR9s7q838MB3UfqaZ5y5kCi5Fc4">
         <source>Dark theme</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="YanNntJpXSZIdbqr7id6VeWUtMbeD1v/ckCNpKvPhBw=">
+      <trans-unit id="YanNntJpXSZIdbqr7id6VeWUtMbeD1v_ckCNpKvPhBw">
         <source>Midnight Dusk</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="EGkKE9cPyin0ijMsclAYu0/9Q684CojI8fjRfoN9928=">
+      <trans-unit id="EGkKE9cPyin0ijMsclAYu0_9Q684CojI8fjRfoN9928">
         <source>Spring Blossom</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="nVBLd4D0iYUrlSTjg2WppbD0fp8tEaWrp4k0ajSXqpA=">
+      <trans-unit id="nVBLd4D0iYUrlSTjg2WppbD0fp8tEaWrp4k0ajSXqpA">
         <source>Strawberry Daiquiri</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="u5bvLpCuJ8WEuCuphGYr0Q5hpymee1gnY6mUqhhETWE=">
+      <trans-unit id="u5bvLpCuJ8WEuCuphGYr0Q5hpymee1gnY6mUqhhETWE">
         <source>A Brighter You (Dynamic)</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="uz/fIYv/VXMTuwR2VMB8351T4s01F2kWVVO7N4j8ois=">
+      <trans-unit id="uz_fIYv_VXMTuwR2VMB8351T4s01F2kWVVO7N4j8ois">
         <source>A Calmer You (Dynamic)</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="UiKTB6OG/3SxNZYan2gizCkBSbgzAGez+Qq/0gqBxUI=">
+      <trans-unit id="UiKTB6OG_3SxNZYan2gizCkBSbgzAGez-Qq_0gqBxUI">
         <source>Yotsuba</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="X/lcJ33w1FnORuUQsj6hr9Al2ws3lhj0mxu1ljyw1B4=">
+      <trans-unit id="X_lcJ33w1FnORuUQsj6hr9Al2ws3lhj0mxu1ljyw1B4">
         <source>Tako</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="jEhFC4GspVjYt+8LuT0NMhub4gbo2LOYa2WcH4NHFHU=">
+      <trans-unit id="jEhFC4GspVjYt-8LuT0NMhub4gbo2LOYa2WcH4NHFHU">
         <source>Yin</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="poXkTGEcGe+O1oAhmApNbiKsqkuFvk9sd0FQGqPqlM8=">
+      <trans-unit id="poXkTGEcGe-O1oAhmApNbiKsqkuFvk9sd0FQGqPqlM8">
         <source>Yang</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="C8BPevpvgI6WJexjUMUahmJBgFi50M07scj23iERX2k=">
+      <trans-unit id="C8BPevpvgI6WJexjUMUahmJBgFi50M07scj23iERX2k">
         <source>Chocolate Strawberries</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="/AuqOACJhbcy1WtVNzcQXxPlijRWT2KN52345xP4rBg=">
+      <trans-unit id="_AuqOACJhbcy1WtVNzcQXxPlijRWT2KN52345xP4rBg">
         <source>Teal Ocean</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="zubSvrNm5wwOPs0ztitCy+jgEV86F7C1/qio1TMfH2I=">
+      <trans-unit id="zubSvrNm5wwOPs0ztitCy-jgEV86F7C1_qio1TMfH2I">
         <source>Sapphire Dusk</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="IUUIIBJOx9r8kQmaZlv4JUzCssUcw851UPHvDoeEcK8=">
+      <trans-unit id="IUUIIBJOx9r8kQmaZlv4JUzCssUcw851UPHvDoeEcK8">
         <source>Hot Pink</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="XupCzE9DVb/DJ+vj1kNbld19gxVNja1BW/3QhxwaJOc=">
+      <trans-unit id="XupCzE9DVb_DJ-vj1kNbld19gxVNja1BW_3QhxwaJOc">
         <source>Flat Lime</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="KShg/q+U/l3Mp8pT8tgYnpW1945uQkF3JiBjS1EbjbQ=">
+      <trans-unit id="KShg_q-U_l3Mp8pT8tgYnpW1945uQkF3JiBjS1EbjbQ">
         <source>Pure White</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="IZ8YeylR6f1qeElImrsuwNR69XKaboPU5Ulg676rggU=">
+      <trans-unit id="IZ8YeylR6f1qeElImrsuwNR69XKaboPU5Ulg676rggU">
         <source>Last used (Library or Recents)</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="pXb00OSWKF8OtyBtcSRxEalP5h5mLRR/VMcP78SHr/M=">
+      <trans-unit id="pXb00OSWKF8OtyBtcSRxEalP5h5mLRR_VMcP78SHr_M">
         <source>Auto-hide bottom navigation</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="oL50pOSprU0vWXIoHmo2gS1I0+eYMcL16hwufNY8ULI=">
+      <trans-unit id="oL50pOSprU0vWXIoHmo2gS1I0-eYMcL16hwufNY8ULI">
         <source>Side navigation icon alignment</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="/HL38HQvlrx4zatV5U7Rdku/K0+BKFM2gSSScTmIAmE=">
+      <trans-unit id="_HL38HQvlrx4zatV5U7Rdku_K0-BKFM2gSSScTmIAmE">
         <source>Use side navigation</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="FBUPvw4IF/dco65MT85iOp+P201ObtzHM4ewww8yo2A=">
+      <trans-unit id="FBUPvw4IF_dco65MT85iOp-P201ObtzHM4ewww8yo2A">
         <source>Default behavior</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="m9LapqqyUbl4Hjm+acmQgAUIn2zH98FMK6pLSC+/jVE=">
+      <trans-unit id="m9LapqqyUbl4Hjm-acmQgAUIn2zH98FMK6pLSC-_jVE">
         <source>By default, side navigation is used for certain phones and small tablets when in landscape, and always shows on larger tablets</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="5GX8Iq/IesOGuLkAra1Yqr9pElHtXjerK9lWMmOphyM=">
+      <trans-unit id="5GX8Iq_IesOGuLkAra1Yqr9pElHtXjerK9lWMmOphyM">
         <source>Follow system theme</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="C4ZBYtDxLEoCXfuon+Up1hDVSlu47aMTUGiJEOQYKA8=">
+      <trans-unit id="C4ZBYtDxLEoCXfuon-Up1hDVSlu47aMTUGiJEOQYKA8">
         <source>Pure black dark mode</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="mDWIplg3Wh7Rcjh5InA9P6ffNR9D/FzTNZn0x6ExoE4=">
+      <trans-unit id="mDWIplg3Wh7Rcjh5InA9P6ffNR9D_FzTNZn0x6ExoE4">
         <source>Details page</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="m/Zja/HdTZ8QsvSIsL7BFxLzVslvGEG0jRaamPck3qQ=">
+      <trans-unit id="m_Zja_HdTZ8QsvSIsL7BFxLzVslvGEG0jRaamPck3qQ">
         <source>Theme buttons based on cover</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="2H2FCTrO3QD6g4e3IRLHkFvN25eM13EHU4SWJ86L11s=">
+      <trans-unit id="2H2FCTrO3QD6g4e3IRLHkFvN25eM13EHU4SWJ86L11s">
         <source>Hides when scrolling</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="yErnSrwWHEZijQHfyIuA1An321aHUSxyIeMcXjWZiAo=">
+      <trans-unit id="yErnSrwWHEZijQHfyIuA1An321aHUSxyIeMcXjWZiAo">
         <source>Starting screen</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="kX70JYjVLuSXfboAf8zYL1Ych/d52zS8TCi/o8QxJ7o=">
+      <trans-unit id="kX70JYjVLuSXfboAf8zYL1Ych_d52zS8TCi_o8QxJ7o">
         <source>Back to start</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="4LEwGmzLbpaz92HD1PIKy5uPNzu3Sescs2rzorTW+fg=">
+      <trans-unit id="4LEwGmzLbpaz92HD1PIKy5uPNzu3Sescs2rzorTW-fg">
         <source>Pressing back to starting screen</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="59PP8cD8S/FWrK5xrlPx31M3HLElEMnaYHJ3tHdpPKw=">
+      <trans-unit id="59PP8cD8S_FWrK5xrlPx31M3HLElEMnaYHJ3tHdpPKw">
         <source>Auto-updates</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="H/JjnDnNORCzdlGTLjUfqofMK9rQ6AtQYWzPzAR0tPg=">
+      <trans-unit id="H_JjnDnNORCzdlGTLjUfqofMK9rQ6AtQYWzPzAR0tPg">
         <source>Auto-update app</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="w5pSql3nh7zWPgEIPI4THTwy+pPho65K0Ib8ZgMvAVE=">
+      <trans-unit id="w5pSql3nh7zWPgEIPI4THTwy-pPho65K0Ib8ZgMvAVE">
         <source>Over Wi-Fi only</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="9bvm7hCxHmnizSUDHApPLv7sitYthDANe3lWJGoojSc=">
+      <trans-unit id="9bvm7hCxHmnizSUDHApPLv7sitYthDANe3lWJGoojSc">
         <source>Over any network</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="zXLKLNmS6xruqwTnlAbShfEJGiuuMK3ztU+MUk76zWE=">
+      <trans-unit id="zXLKLNmS6xruqwTnlAbShfEJGiuuMK3ztU-MUk76zWE">
         <source>Don't auto-update</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="D3LfdbxIIVqFCgNV1keUViOetdNJG2NwKYm8Oq1xiVw=">
+      <trans-unit id="D3LfdbxIIVqFCgNV1keUViOetdNJG2NwKYm8Oq1xiVw">
         <source>App shortcuts</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="bQV7fZpH3qCJh1eXfgPuAv5TNS8EN7677pXGdrpBdQE=">
+      <trans-unit id="bQV7fZpH3qCJh1eXfgPuAv5TNS8EN7677pXGdrpBdQE">
         <source>Show recently used sources</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="yoF22AIvrvT8+SiVZinJYZKjXn3ec3+W6xwdonw73HU=">
+      <trans-unit id="yoF22AIvrvT8-SiVZinJYZKjXn3ec3-W6xwdonw73HU">
         <source>Show recent series</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="TzwswY8NZNKxmx+0hvbNo7jEJlmDyk5FtkpRV6YVWew=">
+      <trans-unit id="TzwswY8NZNKxmx-0hvbNo7jEJlmDyk5FtkpRV6YVWew">
         <source>Includes recently read, updated, and added series</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="NG5VIYqM+D/1aUYH4LZ1PeIRAJfl93HRSjwUHrlxW54=">
+      <trans-unit id="NG5VIYqM-D_1aUYH4LZ1PeIRAJfl93HRSjwUHrlxW54">
         <source>Series shortcuts opens new chapters</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Fm6Vq1l2shHVMSBG3SScRIRVIIllb62PT55gQ8pn6jU=">
+      <trans-unit id="Fm6Vq1l2shHVMSBG3SScRIRVIIllb62PT55gQ8pn6jU">
         <source>When there's no new chapters, the series' details will open instead</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="CE1TfCDxLNUUOskfg4UlXkcmKy9RzTreJQb/XEhR+JE=">
+      <trans-unit id="CE1TfCDxLNUUOskfg4UlXkcmKy9RzTreJQb_XEhR-JE">
         <source>Failed to restore backup</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="zjRnVqvBaWL0WEb1kpUnpHu5WxQ6QlzFONOTIKfEIWQ=">
+      <trans-unit id="zjRnVqvBaWL0WEb1kpUnpHu5WxQ6QlzFONOTIKfEIWQ">
         <source>Data from the backup file will be restored.
 
 You will need to install any missing extensions and log in to tracking services afterwards to use them.</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="X/KLc5HBAfegVR9vZD8aXzXPwMiU8FIqSVIzsp8+4Gw=">
+      <trans-unit id="X_KLc5HBAfegVR9vZD8aXzXPwMiU8FIqSVIzsp8-4Gw">
         <source>Backup/restore may not function properly if MIUI Optimization is disabled.</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Bp/sF4nI2Ou7xbuuuco5wo7+d9NYDY2IpxB3Ey7Uz38=">
+      <trans-unit id="Bp_sF4nI2Ou7xbuuuco5wo7-d9NYDY2IpxB3Ey7Uz38">
         <source>Not logged into %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="cFIDGoTU3XlK/6EpXmirmj1HbheTAQ5vDwzEpib1vBk=">
+      <trans-unit id="cFIDGoTU3XlK_6EpXmirmj1HbheTAQ5vDwzEpib1vBk">
         <source>Refresh the download cache</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="c/RZW6BNeKjSWxBHHgg3Ii7b3Je3ohsXMPLu1tfe29Q=">
+      <trans-unit id="c_RZW6BNeKjSWxBHHgg3Ii7b3Je3ohsXMPLu1tfe29Q">
         <source>This will force the download cache to recalculate. Useful if you modified downloads outside of this app and want the app to pick them up</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="NphDMweBfMiTRwBCTAkmIySPR+p8jPY/8yafFV6yUlo=">
+      <trans-unit id="NphDMweBfMiTRwBCTAkmIySPR-p8jPY_8yafFV6yUlo">
         <source>Data Management</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="6kZ4y+TCeSlLR40rmH+lwkbxuWb/KeELspwgQrvljIY=">
+      <trans-unit id="6kZ4y-TCeSlLR40rmH-lwkbxuWb_KeELspwgQrvljIY">
         <source>Disabled</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="jAYBWannurG5S8mC9W4J7PUBGpLCNPGMR3ljJ5zEFKI=">
+      <trans-unit id="jAYBWannurG5S8mC9W4J7PUBGpLCNPGMR3ljJ5zEFKI">
         <source>Cloudflare</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="2LZVXfTF7e7En+VmiiCJGKshKouQ4iTTvJXQ/kpyY9w=">
+      <trans-unit id="2LZVXfTF7e7En-VmiiCJGKshKouQ4iTTvJXQ_kpyY9w">
         <source>Google</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Oi/2wSlNC77uKVZa1XpR6ECAarof1ccaP95O7Tse4DA=">
+      <trans-unit id="Oi_2wSlNC77uKVZa1XpR6ECAarof1ccaP95O7Tse4DA">
         <source>AdGuard</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="+C8OeNLt0crMLLBsboFDzha8JXGTuyYoZttXAzzBaQY=">
+      <trans-unit id="-C8OeNLt0crMLLBsboFDzha8JXGTuyYoZttXAzzBaQY">
         <source>Clean up downloaded chapters</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="dwmP8JsQhLHngvqw56EBpRIwjbjeCHjFNccFSEUvGvI=">
+      <trans-unit id="dwmP8JsQhLHngvqw56EBpRIwjbjeCHjFNccFSEUvGvI">
         <source>Delete non-existent, partially downloaded, and read chapter folders</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="RRrYY498SDiQ8LcoRDmSXIqvzNAHgFebOb+KsuwO1JE=">
+      <trans-unit id="RRrYY498SDiQ8LcoRDmSXIqvzNAHgFebOb-KsuwO1JE">
         <source>Clean orphaned</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="nFeN1Bgez7Tb25X7OrgzrPHbOcLvD7MphH8IQK2Y0Eo=">
+      <trans-unit id="nFeN1Bgez7Tb25X7OrgzrPHbOcLvD7MphH8IQK2Y0Eo">
         <source>Clean read</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="+nyi5YnV5GQb306s1HOj7B2SqJv7Awa5tmLwrrkrv7c=">
+      <trans-unit id="-nyi5YnV5GQb306s1HOj7B2SqJv7Awa5tmLwrrkrv7c">
         <source>Clean manga not in library</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="HGSy4QLH2EpxWHS47G1VD08njmJ/QODbLdG+LJYXczk=">
+      <trans-unit id="HGSy4QLH2EpxWHS47G1VD08njmJ_QODbLdG-LJYXczk">
         <source>Starting cleanup</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="W3fwjwvnWNaswdtH8CkY+ptVv4kWSc00Dwo0FRe8T74=">
+      <trans-unit id="W3fwjwvnWNaswdtH8CkY-ptVv4kWSc00Dwo0FRe8T74">
         <source>No folders to cleanup</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="+wkXZ+U6feYoBLD03zOySY9bCJ2q3iJdBWNGiVyzb+w=">
+      <trans-unit id="-wkXZ-U6feYoBLD03zOySY9bCJ2q3iJdBWNGiVyzb-w">
         <source>Disable this if you are experiencing issues with updating or restoring your library</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="RYPIepOwa5XAPzLX3PAQYJsYA06xOGDr6gVmCoK5e68=">
+      <trans-unit id="RYPIepOwa5XAPzLX3PAQYJsYA06xOGDr6gVmCoK5e68">
         <source>Clean up cached covers</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="nEv/KSYOz12KtpTWXdNwTR49WMGpvioVTf4CqqDI/Oc=">
+      <trans-unit id="nEv_KSYOz12KtpTWXdNwTR49WMGpvioVTf4CqqDI_Oc">
         <source>Delete old and unused cached covers of manga in your library that has been updated.
 Currently using: %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="760JS2eBsCjbuIMJovFvLL3VDT3Sf7OOh1BwVVDD/Fc=">
+      <trans-unit id="760JS2eBsCjbuIMJovFvLL3VDT3Sf7OOh1BwVVDD_Fc">
         <source>Clear cached covers not in library</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="JXsJHBIMLNjsigfNzdfS9wj4WHG3TZviHGoVT2WHQF8=">
+      <trans-unit id="JXsJHBIMLNjsigfNzdfS9wj4WHG3TZviHGoVT2WHQF8">
         <source>Delete all covers cached that are not in your library
 Currently using: %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="/BcKOaHV9biKhmCWByQuo8e4tHyutlNooNwpysPzdJE=">
+      <trans-unit id="_BcKOaHV9biKhmCWByQuo8e4tHyutlNooNwpysPzdJE">
         <source>Auto-update extensions</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Wlob/O43CrtKubqtsatG0uCYfvcCrG8ya09n6fQMlTw=">
+      <trans-unit id="Wlob_O43CrtKubqtsatG0uCYfvcCrG8ya09n6fQMlTw">
         <source>Notify extension has been updated</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="rLH95OG9xlPkF4kPAJyeLzQRrlVlo3N8/TnKBowO8Tg=">
+      <trans-unit id="rLH95OG9xlPkF4kPAJyeLzQRrlVlo3N8_TnKBowO8Tg">
         <source>Some extensions may not be auto-updated if they were installed outside this app</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="peDKey/OCIZBrXtm3WzN0U1MyhKG6W39qiaduKidCK0=">
+      <trans-unit id="peDKey_OCIZBrXtm3WzN0U1MyhKG6W39qiaduKidCK0">
         <source>Only search pinned sources</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="rOzl7VLQsGw9eF8igLhWnXnWm0xWAix/+IMHLg8O41U=">
+      <trans-unit id="rOzl7VLQsGw9eF8igLhWnXnWm0xWAix_-IMHLg8O41U">
         <source>Match pinned sources</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="AdtF+yNmB1KDbirSinW1hG8PNpb1zzuA3nrjvCHAAHo=">
+      <trans-unit id="AdtF-yNmB1KDbirSinW1hG8PNpb1zzuA3nrjvCHAAHo">
         <source>Match enabled sources</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="dhcccCE8fLfXWvszAEfDTWr7hNNe/3qT5IUdFeDqgoI=">
+      <trans-unit id="dhcccCE8fLfXWvszAEfDTWr7hNNe_3qT5IUdFeDqgoI">
         <source>Only enable your pinned sources for migration</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="ecCXfY4HMfF9J918/KY7aN7GY0YzLi4DQvg6ltvASZs=">
+      <trans-unit id="ecCXfY4HMfF9J918_KY7aN7GY0YzLi4DQvg6ltvASZs">
         <source>Only enable your currently enabled sources for migration</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="SVlZlyNR7LfMJwSoD3PuIxOKThbqF1NzlAMB2Ol9ARE=">
+      <trans-unit id="SVlZlyNR7LfMJwSoD3PuIxOKThbqF1NzlAMB2Ol9ARE">
         <source>Use last saved pre-migration preferences and sources to mass migrate</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Aj7B9bdrUBuawnRN3X7C9j+TI3E124trgAN1lqeNA2w=">
+      <trans-unit id="Aj7B9bdrUBuawnRN3X7C9j-TI3E124trgAN1lqeNA2w">
         <source>Migration sources changed</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="pX3b7nl/8Y58oXPbghIIx7/0aGmWWLPeP+D5LNDblcU=">
+      <trans-unit id="pX3b7nl_8Y58oXPbghIIx7_0aGmWWLPeP-D5LNDblcU">
         <source>You can also migrate by selecting manga in your library</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="D18ZSiCe8YZ1sci7Z2F7B1tfXEm3Or2uUalU99MhCm0=">
+      <trans-unit id="D18ZSiCe8YZ1sci7Z2F7B1tfXEm3Or2uUalU99MhCm0">
         <source>Show in sources and extensions lists</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="ODnxRXqbNkf0WZwNMNBRVzvTowiRVdu0tktSDF2ET3k=">
+      <trans-unit id="ODnxRXqbNkf0WZwNMNBRVzvTowiRVdu0tktSDF2ET3k">
         <source>What's new in this release</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="PjW8y4Za7kR6g7Mb6zNFAHjvaRBRDKypInCNDLP0odM=">
+      <trans-unit id="PjW8y4Za7kR6g7Mb6zNFAHjvaRBRDKypInCNDLP0odM">
         <source>Helpful translation links</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="xnqHTdNqkhihZKApW6oBsEMOzmr2LhRFqtzqAwqqdls=">
+      <trans-unit id="xnqHTdNqkhihZKApW6oBsEMOzmr2LhRFqtzqAwqqdls">
         <source>Log in</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="otCPIdi35zp9xaeTNfweeQFwx7Bt1eWeY6zkqDeDnzk=">
+      <trans-unit id="otCPIdi35zp9xaeTNfweeQFwx7Bt1eWeY6zkqDeDnzk">
         <source>Log out</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="vxXabE6T33iEG5RVMjgZRBrr++vTr/KaHh2Ajyx72aU=">
+      <trans-unit id="vxXabE6T33iEG5RVMjgZRBrr--vTr_KaHh2Ajyx72aU">
         <source>Log out from %1$s?</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="vFhmfrCpbCcBLVqtsWKLnhjBg9l4fS85fQc9uKd/DgM=">
+      <trans-unit id="vFhmfrCpbCcBLVqtsWKLnhjBg9l4fS85fQc9uKd_DgM">
         <source>Username or password cannot be blank</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="PyCles9s84xNnlTQpzPjAWWWaXSG83AIDFp6Dj9+Mqg=">
+      <trans-unit id="PyCles9s84xNnlTQpzPjAWWWaXSG83AIDFp6Dj9-Mqg">
         <source>Downloading: %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="58HNOhORcxDJQ1hQI+X8sV6dtO1+JYfEYpU8LRkwcQ0=">
+      <trans-unit id="58HNOhORcxDJQ1hQI-X8sV6dtO1-JYfEYpU8LRkwcQ0">
         <source>Not downloaded</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="5T8z0MWPbgXZdSAJcvsDsr6VjLtrWYR61l4sBGDImp4=">
+      <trans-unit id="5T8z0MWPbgXZdSAJcvsDsr6VjLtrWYR61l4sBGDImp4">
         <source>Start downloading now</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Xtlfkv2oa5DVpkJmuUxtxRJHUpDRKaahy15F8dIp++o=">
+      <trans-unit id="Xtlfkv2oa5DVpkJmuUxtxRJHUpDRKaahy15F8dIp--o">
         <source>Remove download</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="pyHTpdpR4jXfSwerJYFoyQ5Tt1koOKoDuNA0wJOWd94=">
+      <trans-unit id="pyHTpdpR4jXfSwerJYFoyQ5Tt1koOKoDuNA0wJOWd94">
         <source>Remove downloads</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="UJyX84gMBxdO1PDr7VKib8lH2/E4PvFz9cj9BBBJsA4=">
+      <trans-unit id="UJyX84gMBxdO1PDr7VKib8lH2_E4PvFz9cj9BBBJsA4">
         <source>Nothing is currently downloading</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="eXRc26yvod4Obg8UmsDbwm7gkrsGGdpMy4TpcYAWsxk=">
+      <trans-unit id="eXRc26yvod4Obg8UmsDbwm7gkrsGGdpMy4TpcYAWsxk">
         <source>Manage what's downloading</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="6tgFpq1s7Bmdw6Wj4ju2N96GgPe7p9Y7cGiyfxSF+9E=">
+      <trans-unit id="6tgFpq1s7Bmdw6Wj4ju2N96GgPe7p9Y7cGiyfxSF-9E">
         <source>Visit the recents tab to access the download queue. You can also double tap or press and hold for quicker access</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Vj8DOxw8uO9KY77TuWRdJxY8sMxVtwq/IyHh6/8Srro=">
+      <trans-unit id="Vj8DOxw8uO9KY77TuWRdJxY8sMxVtwq_IyHh6_8Srro">
         <source>Couldn't download chapters due to low disk space</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="wOveXNJlRMcSQDJmFr9f1aXQi4JwmzgfG2o1ZP/DK30=">
+      <trans-unit id="wOveXNJlRMcSQDJmFr9f1aXQi4JwmzgfG2o1ZP_DK30">
         <source>Delete removed chapters</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="QblYKrpV4TYMwNLE5d6OuLP5+YvTFicfnEWa5+51OcY=">
+      <trans-unit id="QblYKrpV4TYMwNLE5d6OuLP5-YvTFicfnEWa5-51OcY">
         <source>Delete downloaded chapters if the source has removed the chapter online</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="dIE3zIyVYSdTpju6+vlcTUw08uEhNfHj+2NIp5kbEEw=">
+      <trans-unit id="dIE3zIyVYSdTpju6-vlcTUw08uEhNfHj-2NIp5kbEEw">
         <source>Delete during global updates, ask on chapters page</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="cfTYdJm8FCc6Or8Fu7ngokJ3WghZMzGABQjXm7xcSSU=">
+      <trans-unit id="cfTYdJm8FCc6Or8Fu7ngokJ3WghZMzGABQjXm7xcSSU">
         <source>Always keep</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="KGOpC9OGKQjYYSCjadsdtUpJQFr1+etAZOgVmTt+wtA=">
+      <trans-unit id="KGOpC9OGKQjYYSCjadsdtUpJQFr1-etAZOgVmTt-wtA">
         <source>Always delete</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="XbMMlk7ML13AJYJW0ALnnF4spRO4SHgEXRstAy0bj1o=">
+      <trans-unit id="XbMMlk7ML13AJYJW0ALnnF4spRO4SHgEXRstAy0bj1o">
         <source>Automatic removal</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="rZjFH0Z7z5HV8Tov2ZWD6ABIwLcX0rWeaY9SwkUqMjg=">
+      <trans-unit id="rZjFH0Z7z5HV8Tov2ZWD6ABIwLcX0rWeaY9SwkUqMjg">
         <source>WebView is required for Tachiyomi</source>
         <target>XYZ123</target>
         <note>Do not translate "WebView"</note>
       </trans-unit>
-      <trans-unit id="0ADiasqVjRLRMzANABySTIwrsSbv6Q3vGhjBGdq+IIw=">
+      <trans-unit id="0ADiasqVjRLRMzANABySTIwrsSbv6Q3vGhjBGdq-IIw">
         <source>Add to %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="vl7OUGfoSDmnzzrqm8hspKJ4aOvV2ihLIZ9EkPWUXAM=">
+      <trans-unit id="vl7OUGfoSDmnzzrqm8hspKJ4aOvV2ihLIZ9EkPWUXAM">
         <source>Added to %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="/0n6pKXlKYwqHHaLNdlkd7RW90QAB5fVJxzB7zl1lwQ=">
+      <trans-unit id="_0n6pKXlKYwqHHaLNdlkd7RW90QAB5fVJxzB7zl1lwQ">
         <source>BETA</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="F5Qal+UcgskZtk753VXobQ8Q3yplYmkVT657jxneL0A=">
+      <trans-unit id="F5Qal-UcgskZtk753VXobQ8Q3yplYmkVT657jxneL0A">
         <source>Bottom</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="vUaAJ/T90aZxkP8ht1bD71Tnu5WFLJhuxr3eKYwt9hc=">
+      <trans-unit id="vUaAJ_T90aZxkP8ht1bD71Tnu5WFLJhuxr3eKYwt9hc">
         <source>Change</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="XIondN9IflEzVsv4LVTZEl1IQhYJgrgmheRmeYXipvw=">
+      <trans-unit id="XIondN9IflEzVsv4LVTZEl1IQhYJgrgmheRmeYXipvw">
         <source>Clear filters</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="WnmOrMRKcpD+cIjgCliYjM+A/zZFOYCqqV0HV6n3mS8=">
+      <trans-unit id="WnmOrMRKcpD-cIjgCliYjM-A_zZFOYCqqV0HV6n3mS8">
         <source>Deleted: %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="yTBAyJ8Q/qMDf8yAa9hH/8o0A0LBzRENYIDSC1UbOZ0=">
+      <trans-unit id="yTBAyJ8Q_qMDf8yAa9hH_8o0A0LBzRENYIDSC1UbOZ0">
         <source>Download unread</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="ls/fBz6okS5NVH86qvIvqQMwlRo1btsu7Ad2Gug/ryY=">
+      <trans-unit id="ls_fBz6okS5NVH86qvIvqQMwlRo1btsu7Ad2Gug_ryY">
         <source>Drag handle</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="DI19ciZW3OtkszGmVMopKQ46E//OZBI4oNEJ04wOPK0=">
+      <trans-unit id="DI19ciZW3OtkszGmVMopKQ46E__OZBI4oNEJ04wOPK0">
         <source>Enable</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="S417iusjHCC55wRHKWuNOrbPZ/rWwYsHERGejfW0RlY=">
+      <trans-unit id="S417iusjHCC55wRHKWuNOrbPZ_rWwYsHERGejfW0RlY">
         <source>Enabled</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="JsWNn2iVS2hJzhqmyD1v6NfXWqx6gSgnxren331j4U4=">
+      <trans-unit id="JsWNn2iVS2hJzhqmyD1v6NfXWqx6gSgnxren331j4U4">
         <source>Exclude: %s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="saZw6SPY56Rlmi3JFoINSWQ084jRCETCDxJLHSA9hOM=">
+      <trans-unit id="saZw6SPY56Rlmi3JFoINSWQ084jRCETCDxJLHSA9hOM">
         <source>Hide</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="cVDCQqr4dEx029MnKLeeHOQ04wz3zlkYiZ3wrnukfR8=">
+      <trans-unit id="cVDCQqr4dEx029MnKLeeHOQ04wz3zlkYiZ3wrnukfR8">
         <source>Include: %s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="5vlqnpIng+j8SifyQOHpZ5wPAs1sStNeeZqu13efQtQ=">
+      <trans-unit id="5vlqnpIng-j8SifyQOHpZ5wPAs1sStNeeZqu13efQtQ">
         <source>Keep</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="5y/933p82LiEHRH0T2TRJkU2Ht2vfrfydo0oICLM8eo=">
+      <trans-unit id="5y_933p82LiEHRH0T2TRJkU2Ht2vfrfydo0oICLM8eo">
         <source>Keep in %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="mdPoUGzFrcAt/vcKcl4Bq+dsE8Le+w++ksmqvFe/D3I=">
+      <trans-unit id="mdPoUGzFrcAt_vcKcl4Bq-dsE8Le-w--ksmqvFe_D3I">
         <source>Mark all as read</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="86GoqMybPQfkFBczXnyaW9xfsDEFsikr5YqYAgVuF04=">
+      <trans-unit id="86GoqMybPQfkFBczXnyaW9xfsDEFsikr5YqYAgVuF04">
         <source>Mark all as unread</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="QU/jF1/AE5bMND233B6xjLe2AEv4NjczDkAOW2naJSw=">
+      <trans-unit id="QU_jF1_AE5bMND233B6xjLe2AEv4NjczDkAOW2naJSw">
         <source>Mark a range of chapters as read</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="7x8txAMET/dUs38fMs/8OxmVBIbyZBDmKol+PPDCVg8=">
+      <trans-unit id="7x8txAMET_dUs38fMs_8OxmVBIbyZBDmKol-PPDCVg8">
         <source>Mark a range of chapters as unread</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="XFN+iVYrkadpxDxOdGN1hv505ZavJL4hTK9255kN0i0=">
+      <trans-unit id="XFN-iVYrkadpxDxOdGN1hv505ZavJL4hTK9255kN0i0">
         <source>Mark previous chapters as unread</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="ziJ4SzbBrQNCMTKA0B7+oq3NDDEhBRD1XhXezbakWxk=">
+      <trans-unit id="ziJ4SzbBrQNCMTKA0B7-oq3NDDEhBRD1XhXezbakWxk">
         <source>menu</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="ZpXdQI1wq5GAsU3xnEjBcpWfjROalsmnIIb7tINXQXg=">
+      <trans-unit id="ZpXdQI1wq5GAsU3xnEjBcpWfjROalsmnIIb7tINXQXg">
         <source>Move to %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="e7a8pIPs/qCeSrBvxHwFa/onh2Z/jQh6qioWqNdzTsw=">
+      <trans-unit id="e7a8pIPs_qCeSrBvxHwFa_onh2Z_jQh6qioWqNdzTsw">
         <source>Moved to %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="ZBYtIRVvhdgQJQHV4kVzz7Bh0NSKcofDyfXSdgX0vn8=">
+      <trans-unit id="ZBYtIRVvhdgQJQHV4kVzz7Bh0NSKcofDyfXSdgX0vn8">
         <source>Name</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="tpYrOKkmWE5cSjMMmDJxRckzqx02rnXxlVHRipdb7k8=">
+      <trans-unit id="tpYrOKkmWE5cSjMMmDJxRckzqx02rnXxlVHRipdb7k8">
         <source>Recently updated</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="/btRTivRqA0hOubjcX++MF9gC8w97NmhbBhbraZPkqM=">
+      <trans-unit id="_btRTivRqA0hOubjcX--MF9gC8w97NmhbBhbraZPkqM">
         <source>Recently installed</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Ibaz0PUM9RNz1CPX+V0FFy3AerxinrWF9oJxlS2FX1o=">
+      <trans-unit id="Ibaz0PUM9RNz1CPX-V0FFy3AerxinrWF9oJxlS2FX1o">
         <source>Next</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="NOELKFmkAMzBKP9wX6wMQ2w4T/iYyNyD/ponK9hKrjw=">
+      <trans-unit id="NOELKFmkAMzBKP9wX6wMQ2w4T_iYyNyD_ponK9hKrjw">
         <source>Preview</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="UzuX5kricHracI58dBSQHVf4CAFtgNgldg8nNXYRqZI=">
+      <trans-unit id="UzuX5kricHracI58dBSQHVf4CAFtgNgldg8nNXYRqZI">
         <source>Previous</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="xxdAI3rqdVE8jOHabaDIWlvEjGyRYRj855VS1TbCDgg=">
+      <trans-unit id="xxdAI3rqdVE8jOHabaDIWlvEjGyRYRj855VS1TbCDgg">
         <source>Remove from %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="OTdtStwBPshNkiL3/CP6/tPZFG+4bk9E4DGl11tHJoM=">
+      <trans-unit id="OTdtStwBPshNkiL3_CP6_tPZFG-4bk9E4DGl11tHJoM">
         <source>Default orientation</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="6T1AUvI23zq9BwgpFHAkbwrcdHVorHeJnpmjCHRjffA=">
+      <trans-unit id="6T1AUvI23zq9BwgpFHAkbwrcdHVorHeJnpmjCHRjffA">
         <source>Orientation</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="eTcrUzO0Sth5CnbCTfK1wGtj4ewcUJv5eo5KZFnYQ8k=">
+      <trans-unit id="eTcrUzO0Sth5CnbCTfK1wGtj4ewcUJv5eo5KZFnYQ8k">
         <source>Search %1$s</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="xyy2hY5UiPuBVtVs5p4QNtQvD5gZ9L62Afuf68HR13A=">
+      <trans-unit id="xyy2hY5UiPuBVtVs5p4QNtQvD5gZ9L62Afuf68HR13A">
         <source>Select none</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="zz9EoXyrp2jHix8BhQspeFceDJApEEQnL6JZNceOyEA=">
+      <trans-unit id="zz9EoXyrp2jHix8BhQspeFceDJApEEQnL6JZNceOyEA">
         <source>Selection</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="X8fO+c1VVu9rbJOhfqH9UiMS20tCwPGDKgZXFvQMp3A=">
+      <trans-unit id="X8fO-c1VVu9rbJOhfqH9UiMS20tCwPGDKgZXFvQMp3A">
         <source>Sort &amp; Filter</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="u1sNEscwzqYmb2ep8PT9x8usydILzw76W88Sad7u+KM=">
+      <trans-unit id="u1sNEscwzqYmb2ep8PT9x8usydILzw76W88Sad7u-KM">
         <source>Tag</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="vRdkZFDzssJRdwGv+SthUQFGxf/HerP1kXuTpXpKzyE=">
+      <trans-unit id="vRdkZFDzssJRdwGv-SthUQFGxf_HerP1kXuTpXpKzyE">
         <source>Top</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Uk0VwujRIxhpe9NaWYmY3hntAOfl0OuU8eai2ofVSqk=">
+      <trans-unit id="Uk0VwujRIxhpe9NaWYmY3hntAOfl0OuU8eai2ofVSqk">
         <source>Use default</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="huyX5FGOUKZ3pi4fe79Gfe7qvq2yU/f1NEJEFi+8iik=">
+      <trans-unit id="huyX5FGOUKZ3pi4fe79Gfe7qvq2yU_f1NEJEFi-8iik">
         <source>View all errors</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="ISUovOLQ0rDHWTN8FD5Egc/BxdZCIOGr7B6UXGmtjWs=">
+      <trans-unit id="ISUovOLQ0rDHWTN8FD5Egc_BxdZCIOGr7B6UXGmtjWs">
         <source>Warning</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="knJMaAVR62PEtQndkYhhbexC0GIjxr+r3/n/Xcu2r0s=">
+      <trans-unit id="knJMaAVR62PEtQndkYhhbexC0GIjxr-r3_n_Xcu2r0s">
         <source>Remove %1$d downloaded chapter?</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="AorevjJcBlzGUCT4pVnxp1jmksPwVsNeVFyJvcgsSII=">
+      <trans-unit id="AorevjJcBlzGUCT4pVnxp1jmksPwVsNeVFyJvcgsSII">
         <source>Remove %1$d downloaded chapters?</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="X/xLwLneNjaCuErpOvyVwuG5fTb8+UCP5SsHQz+puzI=">
+      <trans-unit id="X_xLwLneNjaCuErpOvyVwuG5fTb8-UCP5SsHQz-puzI">
         <source>%1$d chapter</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="DA5nZGOjj3NWy6+tyV9fCoXn2a63w1YSAkX9iwI6KLI=">
+      <trans-unit id="DA5nZGOjj3NWy6-tyV9fCoXn2a63w1YSAkX9iwI6KLI">
         <source>%1$d chapters</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="0vqefHzsJQULHZd5MNwiOZipcKE1vgaTP7+VSx7FRV4=">
+      <trans-unit id="0vqefHzsJQULHZd5MNwiOZipcKE1vgaTP7-VSx7FRV4">
         <source>%1$d page left</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="yi+77QTDFxbEobsI7YTOCs2QCGEenD3hrANu8aV0XhI=">
+      <trans-unit id="yi-77QTDFxbEobsI7YTOCs2QCGEenD3hrANu8aV0XhI">
         <source>%1$d pages left</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="6CfUlDdZwjQi9NBW2TB0Bhg9lLrJZJdCk6Qf334AZ8U=">
+      <trans-unit id="6CfUlDdZwjQi9NBW2TB0Bhg9lLrJZJdCk6Qf334AZ8U">
         <source>%d category</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="D+XGn0T65+KSSIomQYzkoKzAEUsZszypFjTP1Lvid1g=">
+      <trans-unit id="D-XGn0T65-KSSIomQYzkoKzAEUsZszypFjTP1Lvid1g">
         <source>For %d title</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="sxJPxRjdf+qJWkXyz95hsE5+MDHLGoi6EJD3pA5r5dk=">
+      <trans-unit id="sxJPxRjdf-qJWkXyz95hsE5-MDHLGoi6EJD3pA5r5dk">
         <source>For %d titles</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="S2ivCL4mnAN/3LvCD4eLgcF0EfIPjNBsd9I7+l5zqNE=">
+      <trans-unit id="S2ivCL4mnAN_3LvCD4eLgcF0EfIPjNBsd9I7-l5zqNE">
         <source>and %1$d more chapter</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="hlShNgImb0QAtMb+KhR2H6Srjw0SGAdiLMHCGjkZluc=">
+      <trans-unit id="hlShNgImb0QAtMb-KhR2H6Srjw0SGAdiLMHCGjkZluc">
         <source>and %1$d more chapters</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="n+9x0mdfrc5EllF9g4lxFwLkppPeEQND2uhVP0ERBFU=">
+      <trans-unit id="n-9x0mdfrc5EllF9g4lxFwLkppPeEQND2uhVP0ERBFU">
         <source>1 update failed</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="nA9Lsa5paTIiqxU3vXbGa+mttBPjFTxMMp3ZoShHoCM=">
+      <trans-unit id="nA9Lsa5paTIiqxU3vXbGa-mttBPjFTxMMp3ZoShHoCM">
         <source>%d update pending</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Raa+hZ8f4KMyB2Nz7mYq4P5H/kIxTMnGjFOwfXenE3s=">
+      <trans-unit id="Raa-hZ8f4KMyB2Nz7mYq4P5H_kIxTMnGjFOwfXenE3s">
         <source>%d updates pending</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="PDKvwcIWbKlbrMMuqEa00drfTM71kt4AE5hfbznTe/o=">
+      <trans-unit id="PDKvwcIWbKlbrMMuqEa00drfTM71kt4AE5hfbznTe_o">
         <source>Extension updated</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="2nt8/jgKb5SsaEH9lFxheOlhuINrxsfKpgrMFxgB7fc=">
+      <trans-unit id="2nt8_jgKb5SsaEH9lFxheOlhuINrxsfKpgrMFxgB7fc">
         <source>%d extensions updated</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="ZNcGVkm/LvhJlULW759Z140eW5Es4GSIXDFWwYiq7Lo=">
+      <trans-unit id="ZNcGVkm_LvhJlULW759Z140eW5Es4GSIXDFWwYiq7Lo">
         <source>Extension update available</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="sL/wSvGXvK5kY+HivzhJsIzFxW6bX2dTH6UquFVCpHA=">
+      <trans-unit id="sL_wSvGXvK5kY-HivzhJsIzFxW6bX2dTH6UquFVCpHA">
         <source>%1$d page</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="RKh3lCAL61AoOWPV5MWKl2aDX9roOeiBX5DXcqW70dU=">
+      <trans-unit id="RKh3lCAL61AoOWPV5MWKl2aDX9roOeiBX5DXcqW70dU">
         <source>%1$d pages</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="TyE4yyopQMXi9xPAwddqixG0FiRUr7u1yXsHaK5cFNg=">
+      <trans-unit id="TyE4yyopQMXi9xPAwddqixG0FiRUr7u1yXsHaK5cFNg">
         <source>Skipping 1 chapter, either the source is missing it or it has been filtered out</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Eaze/yfF/znJ1d1oABgiBdE+HlrHoqbNbugyw6slJ3k=">
+      <trans-unit id="Eaze_yfF_znJ1d1oABgiBdE-HlrHoqbNbugyw6slJ3k">
         <source>A chapter has been removed from the source:\n%2$s\nDelete
             its download?</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="PiLPusw1sUqvz8EMPh/AHT26BoUCxAk2nZzUuU30Q20=">
+      <trans-unit id="PiLPusw1sUqvz8EMPh_AHT26BoUCxAk2nZzUuU30Q20">
         <source>%1$s chapters have been removed from the source:\n%2$s\n\nDelete
             their downloads?</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="xB/NruBrwGm+TnuNNYyjVGpsAXfR7VIkbEeUbXWjyZc=">
+      <trans-unit id="xB_NruBrwGm-TnuNNYyjVGpsAXfR7VIkbEeUbXWjyZc">
         <source>Migrate %1$d%2$s manga?</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="Z39lGGgo8opWOGmpI5SsVcbozqzxZSGxrudRRkeR/Lc=">
+      <trans-unit id="Z39lGGgo8opWOGmpI5SsVcbozqzxZSGxrudRRkeR_Lc">
         <source>Migrate %1$d%2$s manga?</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="ANCY8yBug2fS6YBza8w9Qh7Sup7ZSsV5B9oj2gC6f4I=">
+      <trans-unit id="ANCY8yBug2fS6YBza8w9Qh7Sup7ZSsV5B9oj2gC6f4I">
         <source>Copy %1$d%2$s manga?</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="eDicseVZaWZpqk/QNfTmnnZXLU+Ze3wVuKVl3flFdj4=">
+      <trans-unit id="eDicseVZaWZpqk_QNfTmnnZXLU-Ze3wVuKVl3flFdj4">
         <source>Copy %1$d%2$s manga?</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="cIYtf0zyptX55Env0FXOdM1K7AVpeq5M2sgTCaYQWZA=">
+      <trans-unit id="cIYtf0zyptX55Env0FXOdM1K7AVpeq5M2sgTCaYQWZA">
         <source>%d manga migrated</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="ExRyfY9sTeTHBEQmp1wm8Ni0O7Tms0bUh2+z15pd+fk=">
+      <trans-unit id="ExRyfY9sTeTHBEQmp1wm8Ni0O7Tms0bUh2-z15pd-fk">
         <source>%d manga migrated</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="5+3zp8SLfOTjhqThDsAlqVYw67Y1AHvVCaqYvsukLd8=">
+      <trans-unit id="5-3zp8SLfOTjhqThDsAlqVYw67Y1AHvVCaqYvsukLd8">
         <source>Done in %1$s with %2$s error</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="GoS05q9gcc/8SrsAMDpLSGWUgY57w7msDJ6H/STj6hk=">
+      <trans-unit id="GoS05q9gcc_8SrsAMDpLSGWUgY57w7msDJ6H_STj6hk">
         <source>Cache cleared. %d file has been deleted</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="fDCAtisL1kEIWbyLilBMbGW4dRbeSvUyTt/OXeU4jYE=">
+      <trans-unit id="fDCAtisL1kEIWbyLilBMbGW4dRbeSvUyTt_OXeU4jYE">
         <source>Cache cleared. %d files have been deleted</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="yPtONJrH7wZNy01J/ocBileV8yIllccxSdWOAT3Tb34=">
+      <trans-unit id="yPtONJrH7wZNy01J_ocBileV8yIllccxSdWOAT3Tb34">
         <source>Cleanup done. Removed %d folder</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="9sQWaHtbzN/7C6tejrC1yfO2ch9VAGcoLD5b+AkOrog=">
+      <trans-unit id="9sQWaHtbzN_7C6tejrC1yfO2ch9VAGcoLD5b-AkOrog">
         <source>Cleanup done. Removed %d folders</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="miGljXfpQpHYhkxvC7lslpiM2pbOH+24h0PZcIhHhd4=">
+      <trans-unit id="miGljXfpQpHYhkxvC7lslpiM2pbOH-24h0PZcIhHhd4">
         <source>After %1$s minute</source>
         <target>XYZ123</target>
       </trans-unit>
-      <trans-unit id="nVhfdggD79bzuhQQ+AMZpSAZHDvBVHMQZUC1OTGTtWs=">
+      <trans-unit id="nVhfdggD79bzuhQQ-AMZpSAZHDvBVHMQZUC1OTGTtWs">
         <source>After %1$s minutes</source>
         <target>XYZ123</target>
       </trans-unit>

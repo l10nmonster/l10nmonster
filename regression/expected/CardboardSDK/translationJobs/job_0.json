@@ -12,7 +12,7 @@
 	},
 	"tus": [
 		{
-			"guid": "Sch+OXL3KPaFNWvKiWNmafNmqHZo8oNtcaB+9jYE1sk=",
+			"guid": "Sch-OXL3KPaFNWvKiWNmafNmqHZo8oNtcaB-9jYE1sk",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "BackButtonLabel",
 			"src": "Back",
@@ -20,7 +20,7 @@
 			"q": 70
 		},
 		{
-			"guid": "S5zXEp9KGe9nqhqgtH8vMM106HfoiBTZzDQ8qyPdB5A=",
+			"guid": "S5zXEp9KGe9nqhqgtH8vMM106HfoiBTZzDQ8qyPdB5A",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "NavTitleLabel",
 			"src": "QR Scan",
@@ -28,7 +28,7 @@
 			"q": 70
 		},
 		{
-			"guid": "PV7WBP4aNfZzq1Hre1/bkECpoSmhPedg7xfh7UKYkyw=",
+			"guid": "PV7WBP4aNfZzq1Hre1_bkECpoSmhPedg7xfh7UKYkyw",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "LoadingMessage",
 			"src": "Parsing configuration data",
@@ -36,7 +36,7 @@
 			"q": 70
 		},
 		{
-			"guid": "jkJekuVBcsiufoG2zmxszlbnMGkREPRBAeb2QTDfUaI=",
+			"guid": "jkJekuVBcsiufoG2zmxszlbnMGkREPRBAeb2QTDfUaI",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "InvalidQRCode",
 			"src": "The QR code is invalid",
@@ -44,7 +44,7 @@
 			"q": 70
 		},
 		{
-			"guid": "2n8bq0sVYs9Xil3nEw7OEVuhOSGvpaoInQAZ89RnD7c=",
+			"guid": "2n8bq0sVYs9Xil3nEw7OEVuhOSGvpaoInQAZ89RnD7c",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "ParsingFailed",
 			"src": "Problem in parsing the Url",
@@ -52,7 +52,7 @@
 			"q": 70
 		},
 		{
-			"guid": "AdyQmEgWnluTjMejDA1HHn/MJQcmdxevJUBS0y+60g0=",
+			"guid": "AdyQmEgWnluTjMejDA1HHn_MJQcmdxevJUBS0y-60g0",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "DataSynced",
 			"src": "%1$@ detected",
@@ -60,7 +60,7 @@
 			"q": 70
 		},
 		{
-			"guid": "MmBuoyCIE3eiz/wlkLAZMeoIhXX52LOiAHNCnl3o4Fc=",
+			"guid": "MmBuoyCIE3eiz_wlkLAZMeoIhXX52LOiAHNCnl3o4Fc",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "FindSymbolOnViewer",
 			"src": "Find this symbol on your viewer",
@@ -68,7 +68,7 @@
 			"q": 70
 		},
 		{
-			"guid": "QaV08RUEuxPOCugEXCnQ7tnShKARCrrKeZxYO7kxLSc=",
+			"guid": "QaV08RUEuxPOCugEXCnQ7tnShKARCrrKeZxYO7kxLSc",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "CanNotFindSymbol",
 			"src": "Can't find this symbol?",
@@ -76,7 +76,7 @@
 			"q": 70
 		},
 		{
-			"guid": "c6aK6IBRyaNfMidf7na8JYOmhVI2r4vsn3O6B+pr+xc=",
+			"guid": "c6aK6IBRyaNfMidf7na8JYOmhVI2r4vsn3O6B-pr-xc",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "TroubleShootingTips",
 			"src": "Troubleshooting Tips",
@@ -84,7 +84,7 @@
 			"q": 70
 		},
 		{
-			"guid": "ZYAxQNY0zLKx4RB3CGTDXujQrbLQclR9EH5EQ7Fzbok=",
+			"guid": "ZYAxQNY0zLKx4RB3CGTDXujQrbLQclR9EH5EQ7Fzbok",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "SkipButtonLabel",
 			"src": "SKIP",
@@ -92,7 +92,7 @@
 			"q": 70
 		},
 		{
-			"guid": "Kj45w0Rgr1SHV55MeVawhgff4UYIfb+XuWWnyf9/dks=",
+			"guid": "Kj45w0Rgr1SHV55MeVawhgff4UYIfb-XuWWnyf9_dks",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "OnboardingIntroLine1",
 			"src": "Let's get you set up",
@@ -100,7 +100,7 @@
 			"q": 70
 		},
 		{
-			"guid": "8/cqAMCRj/4YGH6+e5xWNNAupQF+OHn20AQoeGp75h4=",
+			"guid": "8_cqAMCRj_4YGH6-e5xWNNAupQF-OHn20AQoeGp75h4",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "OnboardingIntroLine2",
 			"src": "Pair your phone with your viewer for the best experience.",
@@ -108,7 +108,7 @@
 			"q": 70
 		},
 		{
-			"guid": "yiK0MVBkcMRpl+7tMMPVMmlUvDJvqVxRbLLDHOchAko=",
+			"guid": "yiK0MVBkcMRpl-7tMMPVMmlUvDJvqVxRbLLDHOchAko",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "OnboardingNoViewerPrompt",
 			"src": "No cardboard viewer?",
@@ -116,7 +116,7 @@
 			"q": 70
 		},
 		{
-			"guid": "L3Um+sKnXUAP1liD4dLFvMGh7c2p80P5DRx1ZFPYpqM=",
+			"guid": "L3Um-sKnXUAP1liD4dLFvMGh7c2p80P5DRx1ZFPYpqM",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "OnboardingGetCardboardButton",
 			"src": "Get One",
@@ -124,7 +124,7 @@
 			"q": 70
 		},
 		{
-			"guid": "6nFW5iZToYQ3LtLDeb9Adlfu+EQWDAuFyMsAlRw4cf4=",
+			"guid": "6nFW5iZToYQ3LtLDeb9Adlfu-EQWDAuFyMsAlRw4cf4",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "PlaceYourPhoneInCardboard",
 			"src": "Place your phone into your Cardboard viewer.",
@@ -132,7 +132,7 @@
 			"q": 70
 		},
 		{
-			"guid": "/Ox3fIvRn/stIM84uJyloQzxDp9QbJP4R5jez9b8WlM=",
+			"guid": "_Ox3fIvRn_stIM84uJyloQzxDp9QbJP4R5jez9b8WlM",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "PlaceYourPhoneInViewerFormat",
 			"src": "Place your phone into your %1$@ viewer.",
@@ -140,7 +140,7 @@
 			"q": 70
 		},
 		{
-			"guid": "6hNFreOOSaLtvtpZeirvd7YWah19RxogxrXPw89jle8=",
+			"guid": "6hNFreOOSaLtvtpZeirvd7YWah19RxogxrXPw89jle8",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "SettingsNavTitleLabel",
 			"src": "Settings",
@@ -148,7 +148,7 @@
 			"q": 70
 		},
 		{
-			"guid": "JdemGm2zCUjeubRLZsgXcHubo03AMla3GDG3EQOcRaA=",
+			"guid": "JdemGm2zCUjeubRLZsgXcHubo03AMla3GDG3EQOcRaA",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "SettingsSyncLabel",
 			"src": "Sync with Google Cardboard",
@@ -156,7 +156,7 @@
 			"q": 70
 		},
 		{
-			"guid": "JMQujy0s8ueEiGAYRND0qp57PBG6f5G2+PaMflyPv7A=",
+			"guid": "JMQujy0s8ueEiGAYRND0qp57PBG6f5G2-PaMflyPv7A",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "SettingsCurrentViewerLabelFormat",
 			"src": "Current viewer: %1$@",
@@ -164,7 +164,7 @@
 			"q": 70
 		},
 		{
-			"guid": "wqrXrCWCECaeOiuDSJiLjeSfPaVlrgpeDFJp8NK39WU=",
+			"guid": "wqrXrCWCECaeOiuDSJiLjeSfPaVlrgpeDFJp8NK39WU",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "DefaultViewerName",
 			"src": "Default",
@@ -172,7 +172,7 @@
 			"q": 70
 		},
 		{
-			"guid": "kNNZEkHiye4nzgXH33tGPIpo/dN9p9dtDvtyQLknghg=",
+			"guid": "kNNZEkHiye4nzgXH33tGPIpo_dN9p9dtDvtyQLknghg",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "DifferentViewerQuestion",
 			"src": "Using a different viewer?",
@@ -180,7 +180,7 @@
 			"q": 70
 		},
 		{
-			"guid": "qTP4qKQCnREcyJAH2Kaph3DNOicsXMZGYTlqeVzrb2c=",
+			"guid": "qTP4qKQCnREcyJAH2Kaph3DNOicsXMZGYTlqeVzrb2c",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "SwitchViewer",
 			"src": "SWITCH",
@@ -188,7 +188,7 @@
 			"q": 70
 		},
 		{
-			"guid": "9vxGmQDp9PWB8SwncaMftGUQYVZPMwVUUZd0s1dqo4c=",
+			"guid": "9vxGmQDp9PWB8SwncaMftGUQYVZPMwVUUZd0s1dqo4c",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "SwitchViewerActivityMenuTitle",
 			"src": "Switch viewer: %1$@",
@@ -196,7 +196,7 @@
 			"q": 70
 		},
 		{
-			"guid": "/AhOCAPiMyasIto9QG/S4I0SlAYd/aMe7FWWEAduL38=",
+			"guid": "_AhOCAPiMyasIto9QG_S4I0SlAYd_aMe7FWWEAduL38",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "HelpActivityMenuTitle",
 			"src": "Help",
@@ -204,7 +204,7 @@
 			"q": 70
 		},
 		{
-			"guid": "CBwqRfe5Ye7rqvX0p6oInX+rrmYU3pvl1Sb7GOjEY2k=",
+			"guid": "CBwqRfe5Ye7rqvX0p6oInX-rrmYU3pvl1Sb7GOjEY2k",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "SuccessfullyPaired",
 			"src": "Successfully Paired!",
@@ -212,7 +212,7 @@
 			"q": 70
 		},
 		{
-			"guid": "xZGq+VKRsUxzvE/2BEUPwIO768lsVjLoJJd5/V3Ypsg=",
+			"guid": "xZGq-VKRsUxzvE_2BEUPwIO768lsVjLoJJd5_V3Ypsg",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "ViewerConfigured",
 			"src": "Your phone is now configured for your %1$@ viewer.",
@@ -220,7 +220,7 @@
 			"q": 70
 		},
 		{
-			"guid": "QBJSpbVgw6NtOonlImeo7N4Ys6aMk+tIHP+Jha6jjwk=",
+			"guid": "QBJSpbVgw6NtOonlImeo7N4Ys6aMk-tIHP-Jha6jjwk",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "OK",
 			"src": "OK",
@@ -228,7 +228,7 @@
 			"q": 70
 		},
 		{
-			"guid": "ngT5pq/BhXgX71IJFDYZQRJX80bl9J1XPD2oBb+VEAE=",
+			"guid": "ngT5pq_BhXgX71IJFDYZQRJX80bl9J1XPD2oBb-VEAE",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "AccessibilitySettingsButton",
 			"src": "Settings",
@@ -236,7 +236,7 @@
 			"q": 70
 		},
 		{
-			"guid": "Ln6QELVxYXr2EgOv6P2+EYewhB5H6jLOJ1W5jilT/nc=",
+			"guid": "Ln6QELVxYXr2EgOv6P2-EYewhB5H6jLOJ1W5jilT_nc",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "AccessibilityBackButton",
 			"src": "Back to previous screen",
