@@ -5,8 +5,8 @@
 		"minimumQuality": 50,
 		"translated": {},
 		"untranslated": 32,
-		"untranslatedChars": 614,
-		"untranslatedWords": 105,
+		"untranslatedChars": 625,
+		"untranslatedWords": 107,
 		"pending": 0,
 		"tmSize": 0
 	},
@@ -236,10 +236,10 @@
 			"q": 70
 		},
 		{
-			"guid": "Ln6QELVxYXr2EgOv6P2-EYewhB5H6jLOJ1W5jilT_nc",
+			"guid": "nW_tFp71vkzVwlJDn7vwUbE7V1g3qnKXXPieygn0MOA",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "AccessibilityBackButton",
-			"src": "Back to previous screen",
+			"src": "Back\\u0020to previous screen",
 			"tgt": "رجوع إلى الشاشة السابقة",
 			"q": 70
 		}

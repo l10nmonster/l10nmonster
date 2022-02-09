@@ -7,8 +7,8 @@
 			"70": 29
 		},
 		"untranslated": 3,
-		"untranslatedChars": 33,
-		"untranslatedWords": 5,
+		"untranslatedChars": 39,
+		"untranslatedWords": 6,
 		"pending": 0,
 		"tmSize": 29
 	},
@@ -20,7 +20,7 @@
 			"contentType": "default",
 			"src": "Help",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1642896537761,
+			"ts": 1644385400681,
 			"tgt": "مساعدة",
 			"q": 61,
 			"jobId": 1

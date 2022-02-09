@@ -1,6 +1,8 @@
 export default class EisenVaultConfig {
     sourceLang = 'en';
     minimumQuality = 50;
+    qualifiedPenalty = 1;
+    unqualifiedPenalty = 9;
 
     constructor({ adapters, filters, translators }) {
         this.source = new adapters.FsSource({

@@ -1,5 +1,8 @@
 export default class GrampsConfig {
     sourceLang = 'en';
+    qualifiedPenalty = 1;
+    unqualifiedPenalty = 9;
+
     constructor({ ctx, adapters, filters, translators }) {
         this.minimumQuality = ctx.build === 'prod' ? 95 : 0; // only push production builds
         this.source = new adapters.FsSource({

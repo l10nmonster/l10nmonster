@@ -1,6 +1,8 @@
 export default class CardboardConfig {
     sourceLang = 'en';
     minimumQuality = 50;
+    qualifiedPenalty = 1;
+    unqualifiedPenalty = 9;
 
     constructor({ ctx, stores, adapters, filters, normalizers, translators }) {
         this.source = new adapters.FsSource({

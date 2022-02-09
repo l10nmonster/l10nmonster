@@ -43,6 +43,8 @@ export default class MonsterManager {
             this.debug = monsterConfig.debug ?? {};
             this.sourceLang = monsterConfig.sourceLang;
             this.minimumQuality = monsterConfig.minimumQuality;
+            this.qualifiedPenalty = monsterConfig.qualifiedPenalty;
+            this.unqualifiedPenalty = monsterConfig.unqualifiedPenalty;
             this.translationProvider = monsterConfig.translationProvider;
             if (monsterConfig.contentTypes) {
                 this.contentTypes = monsterConfig.contentTypes;
@@ -393,7 +395,10 @@ export default class MonsterManager {
 
     // this is similar to grandfather using translations of identical strings in different files (qualified)
     // or different segments (unqualified)
-    async leverage(qualifiedQuality, unqualifiedQuality, limitToLang) {
+    async leverage(limitToLang) {
+        if (this.qualifiedPenalty === undefined || this.unqualifiedPenalty === undefined) {
+            return { error: 'You need to define qualifiedPenalty and unqualifiedPenalty properties in the config to use leverage!' };
+        }
         await this.#updateSourceCache();
         const targetLangs = this.#getTargetLangs(limitToLang);
         const status = [];
@@ -418,7 +423,7 @@ export default class MonsterManager {
                         rid: tu.rid,
                         sid: tu.sid,
                         guid: generateFullyQualifiedGuid(tu.rid, tu.sid, tu.src),
-                        q: Math.min((tu.sid === bestCandidate.sid ? qualifiedQuality : unqualifiedQuality), bestCandidate.q),
+                        q: Math.max(0, bestCandidate.q - (tu.sid === bestCandidate.sid ? this.qualifiedPenalty : this.unqualifiedPenalty), 0),
                     };
                     sources.push(tu);
                     translations.push(leveragedTU);

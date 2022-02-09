@@ -252,12 +252,10 @@ monsterCLI
 monsterCLI
     .command('leverage')
     .description('leverage repetitions as a translation job.')
-    .requiredOption('-q, --qualified <level>', 'quality of qualified repetitions', intOptionParser)
-    .requiredOption('-u, --unqualified <level>', 'quality of unqualified repetitions', intOptionParser)
     .option('-l, --lang <language>', 'target language to leverage')
     .action(async (options) => await withMonsterManager(async monsterManager => {
       console.log(`Leveraging translations of repetitions...`);
-      const status = await monsterManager.leverage(options.qualified, options.unqualified, options.lang);
+      const status = await monsterManager.leverage(options.lang);
       if (status.error) {
         console.error(`Failed: ${status.error}`);
       } else {

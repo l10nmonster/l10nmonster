@@ -8,8 +8,8 @@
 			"70": 29
 		},
 		"untranslated": 2,
-		"untranslatedChars": 29,
-		"untranslatedWords": 4,
+		"untranslatedChars": 35,
+		"untranslatedWords": 5,
 		"pending": 0,
 		"tmSize": 30
 	},
@@ -19,9 +19,19 @@
 	"translationProvider": "PigLatinizer",
 	"tus": [
 		{
-			"guid": "hx-2oqKLjI85KARWC_EA2inj0uuSlhS0Kt6HLGARnbU",
-			"tgt": "[Ardboardcay odemay-ar]",
-			"q": 2
+			"guid": "9JufkUwvNbHKJ3kAyyWxCBCzQyMkOvhfVQ2XzduPtt8",
+			"ntgt": [
+				"[",
+				"Ardboardcay odemay: ",
+				{
+					"t": "x",
+					"v": "%1$@"
+				},
+				"-ar]"
+			],
+			"contentType": "default",
+			"q": 2,
+			"tgt": "[Ardboardcay odemay: %1$@-ar]"
 		},
 		{
 			"guid": "snWaUNjXnKuXlItO8jUPfKITKfuqshl6xCXxUgiP4jI",

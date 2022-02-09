@@ -5,6 +5,8 @@ const androidLangMapping = {
 
 export default class TachiyomiConfig {
     sourceLang = 'en';
+    qualifiedPenalty = 1;
+    unqualifiedPenalty = 9;
 
     constructor({ stores, adapters, filters, translators }) {
         this.source = new adapters.FsSource({
