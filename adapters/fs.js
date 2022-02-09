@@ -3,13 +3,14 @@ import * as fs from 'fs/promises';
 import { globbySync } from 'globby';
 
 export class FsSource {
-    constructor({ baseDir, globs, filter, targetLangs, resDecorator }) {
+    constructor({ baseDir, globs, filter, targetLangs, prj, resDecorator }) {
         if (globs === undefined || (targetLangs || resDecorator) === undefined) {
             throw 'You must specify globs, targetLangs (directly or via resDecorator) in FsSource';
         } else {
             this.globs = globs;
             this.filter = filter;
             this.targetLangs = targetLangs;
+            this.prj = prj;
             this.resDecorator = resDecorator;
             this.baseDir = baseDir ? path.join(this.ctx.baseDir, baseDir) : this.ctx.baseDir;
         }
@@ -27,6 +28,7 @@ export class FsSource {
                     modified: stats.mtime.toISOString(),
                     targetLangs: this.targetLangs,
                 };
+                this.prj && (resMeta.prj = this.prj);
                 if (typeof this.resDecorator === 'function') {
                     resMeta = this.resDecorator(resMeta);
                 }
