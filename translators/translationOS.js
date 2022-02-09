@@ -21,7 +21,7 @@ function flattenNormalizedSource(nsrc) {
 function extractNormalizedParts(str, phMap) {
     const normalizedParts = [];
     let pos = 0;
-    for (const match of str.matchAll(/{{(?<ph>(?<phIdx>[a-y]|z\d+)_(?<t>x|bx|ex)_(?<phName>[0-9A-Za-z_]+))}}/g)) {
+    for (const match of str.matchAll(/{{(?<ph>(?<phIdx>[a-y]|z\d+)_(?<t>x|bx|ex)_(?<phName>[0-9A-Za-z_]*))}}/g)) {
         if (match.index > pos) {
             normalizedParts.push(match.input.substring(pos, match.index));
         }
