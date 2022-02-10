@@ -4,9 +4,9 @@ export async function grandfatherCmd(mm, quality, limitToLang) {
     await mm.updateSourceCache();
     const targetLangs = mm.getTargetLangs(limitToLang);
     const status = [];
-    for (const lang of targetLangs) {
+    for (const targetLang of targetLangs) {
         const txCache = {};
-        const jobRequest = await mm.prepareTranslationJob(lang);
+        const jobRequest = await mm.prepareTranslationJob({ targetLang });
         const sources = [];
         const translations = [];
         for (const tu of jobRequest.tus) {
@@ -16,8 +16,8 @@ export async function grandfatherCmd(mm, quality, limitToLang) {
                 const lookup = {};
                 let resource;
                 try {
-                    // mm.verbose && console.log(`Getting ${tu.rid} for language ${lang}`);
-                    resource = await pipeline.target.fetchTranslatedResource(lang, tu.rid);
+                    // mm.verbose && console.log(`Getting ${tu.rid} for language ${targetLang}`);
+                    resource = await pipeline.target.fetchTranslatedResource(targetLang, tu.rid);
                 } catch (e) {
                     mm.verbose && console.log(`Couldn't fetch translated resource: ${e}`);
                 } finally {
@@ -45,7 +45,7 @@ export async function grandfatherCmd(mm, quality, limitToLang) {
                 translations.push(translation);
             }
         }
-        mm.verbose && console.log(`Grandfathering ${lang}... found ${jobRequest.tus.length} missing translations, of which ${translations.length} existing`);
+        mm.verbose && console.log(`Grandfathering ${targetLang}... found ${jobRequest.tus.length} missing translations, of which ${translations.length} existing`);
         if (translations.length > 0) {
             // eslint-disable-next-line no-unused-vars
             const { tus, ...jobResponse } = jobRequest;
@@ -57,7 +57,7 @@ export async function grandfatherCmd(mm, quality, limitToLang) {
             await mm.processJob({ ...jobResponse, ...manifest, status: 'done' }, { ...jobRequest, ...manifest });
             status.push({
                 num: translations.length,
-                lang,
+                targetLang,
             });
         }
     }

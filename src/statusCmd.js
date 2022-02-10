@@ -6,7 +6,7 @@ export async function statusCmd(mm) {
     };
     const targetLangs = mm.getTargetLangs();
     for (const targetLang of targetLangs) {
-        const job = await mm.prepareTranslationJob(targetLang);
+        const job = await mm.prepareTranslationJob({ targetLang });
         const unstranslatedContent = {};
         for (const tu of job.tus) {
             unstranslatedContent[tu.rid] ??= {};

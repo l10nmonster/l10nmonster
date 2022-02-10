@@ -8,9 +8,11 @@
 		"leverage": {
 			"minimumQuality": 50,
 			"translated": {},
-			"untranslated": 32,
-			"untranslatedChars": 625,
-			"untranslatedWords": 107,
+			"untranslated": 30,
+			"internalRepetitions": 2,
+			"internalRepetitionWords": 2,
+			"untranslatedChars": 613,
+			"untranslatedWords": 98,
 			"pending": 0,
 			"tmSize": 0
 		},
@@ -28,9 +30,11 @@
 			"translated": {
 				"70": 29
 			},
-			"untranslated": 3,
-			"untranslatedChars": 39,
-			"untranslatedWords": 6,
+			"untranslated": 2,
+			"internalRepetitions": 1,
+			"internalRepetitionWords": 1,
+			"untranslatedChars": 35,
+			"untranslatedWords": 4,
 			"pending": 0,
 			"tmSize": 29
 		},
@@ -50,8 +54,10 @@
 				"70": 29
 			},
 			"untranslated": 2,
+			"internalRepetitions": 0,
+			"internalRepetitionWords": 0,
 			"untranslatedChars": 35,
-			"untranslatedWords": 5,
+			"untranslatedWords": 4,
 			"pending": 0,
 			"tmSize": 30
 		},

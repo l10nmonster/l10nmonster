@@ -4,9 +4,11 @@
 	"leverage": {
 		"minimumQuality": 50,
 		"translated": {},
-		"untranslated": 32,
-		"untranslatedChars": 625,
-		"untranslatedWords": 107,
+		"untranslated": 30,
+		"internalRepetitions": 2,
+		"internalRepetitionWords": 2,
+		"untranslatedChars": 613,
+		"untranslatedWords": 98,
 		"pending": 0,
 		"tmSize": 0
 	},

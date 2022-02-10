@@ -9,9 +9,11 @@
 		"translated": {
 			"70": 482
 		},
-		"untranslated": 400,
-		"untranslatedChars": 9563,
-		"untranslatedWords": 1650,
+		"untranslated": 397,
+		"internalRepetitions": 3,
+		"internalRepetitionWords": 15,
+		"untranslatedChars": 9503,
+		"untranslatedWords": 1635,
 		"pending": 0,
 		"tmSize": 482
 	},

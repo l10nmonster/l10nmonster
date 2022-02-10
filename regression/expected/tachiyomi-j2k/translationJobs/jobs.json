@@ -8,9 +8,11 @@
 		"leverage": {
 			"minimumQuality": 50,
 			"translated": {},
-			"untranslated": 882,
-			"untranslatedChars": 17977,
-			"untranslatedWords": 3062,
+			"untranslated": 877,
+			"internalRepetitions": 5,
+			"internalRepetitionWords": 18,
+			"untranslatedChars": 17900,
+			"untranslatedWords": 3044,
 			"pending": 0,
 			"tmSize": 0
 		},
@@ -26,9 +28,11 @@
 		"leverage": {
 			"minimumQuality": 50,
 			"translated": {},
-			"untranslated": 882,
-			"untranslatedChars": 17977,
-			"untranslatedWords": 3062,
+			"untranslated": 877,
+			"internalRepetitions": 5,
+			"internalRepetitionWords": 18,
+			"untranslatedChars": 17900,
+			"untranslatedWords": 3044,
 			"pending": 0,
 			"tmSize": 0
 		},
@@ -46,9 +50,11 @@
 			"translated": {
 				"70": 851
 			},
-			"untranslated": 31,
-			"untranslatedChars": 609,
-			"untranslatedWords": 117,
+			"untranslated": 28,
+			"internalRepetitions": 3,
+			"internalRepetitionWords": 15,
+			"untranslatedChars": 549,
+			"untranslatedWords": 102,
 			"pending": 0,
 			"tmSize": 851
 		},
@@ -68,6 +74,8 @@
 				"70": 851
 			},
 			"untranslated": 28,
+			"internalRepetitions": 0,
+			"internalRepetitionWords": 0,
 			"untranslatedChars": 549,
 			"untranslatedWords": 102,
 			"pending": 0,
@@ -117,9 +125,11 @@
 			"translated": {
 				"70": 482
 			},
-			"untranslated": 400,
-			"untranslatedChars": 9563,
-			"untranslatedWords": 1650,
+			"untranslated": 397,
+			"internalRepetitions": 3,
+			"internalRepetitionWords": 15,
+			"untranslatedChars": 9503,
+			"untranslatedWords": 1635,
 			"pending": 0,
 			"tmSize": 482
 		},
@@ -538,9 +548,11 @@
 		"leverage": {
 			"minimumQuality": 1,
 			"translated": {},
-			"untranslated": 882,
-			"untranslatedChars": 17977,
-			"untranslatedWords": 3062,
+			"untranslated": 877,
+			"internalRepetitions": 5,
+			"internalRepetitionWords": 18,
+			"untranslatedChars": 17900,
+			"untranslatedWords": 3044,
 			"pending": 0,
 			"tmSize": 0
 		},

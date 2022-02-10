@@ -166,7 +166,7 @@ export default class MonsterManager {
         return tu;
     }
 
-    async prepareTranslationJob(targetLang, minimumQuality) {
+    async prepareTranslationJob({ targetLang, minimumQuality, leverage }) {
         const sources = this.getSourceCacheEntries();
         const job = {
             sourceLang: this.sourceLang,
@@ -179,7 +179,10 @@ export default class MonsterManager {
             untranslated = 0,
             untranslatedChars = 0,
             untranslatedWords = 0,
-            pending = 0;
+            pending = 0,
+            internalRepetitions = 0,
+            internalRepetitionWords = 0;
+        const repetitionMap = {};
         // eslint-disable-next-line no-unused-vars
         for (const [rid, res] of sources) {
             if (res.targetLangs.includes(targetLang)) {
@@ -187,10 +190,24 @@ export default class MonsterManager {
                     // TODO: if segment is pluralized we need to generate/suppress the relevant number of variants for the targetLang
                     const tmEntry = tm.getEntryByGuid(seg.guid);
                     if (!tmEntry || (tmEntry.q < minimumQuality && !tmEntry.inflight)) {
-                        job.tus.push(this.makeTU(res, seg));
-                        untranslated++;
-                        untranslatedChars += seg.str.length;
-                        untranslatedWords += wordsCountModule.wordsCount(seg.str);
+                        const tu = this.makeTU(res, seg);
+                        const plainText = tu.nsrc ? tu.nsrc.map(e => (typeof e === 'string' ? e : '')).join('') : tu.src;
+                        const words = wordsCountModule.wordsCount(plainText);
+                        // if the same src is in flight already, mark it as an internal repetition
+                        tm.getAllEntriesBySrc(tu.src).length > 0 && (repetitionMap[tu.src] = true);
+                        if (repetitionMap[tu.src]) {
+                            // TODO: there may be some edge cases were src is the same but contentType is different -- we may care or...
+                            //       this may be a feature (e.g. we can reuse ios and android strings without placeholders)
+                            internalRepetitions++;
+                            internalRepetitionWords += words;
+                            !leverage && job.tus.push(tu);
+                        } else {
+                            repetitionMap[tu.src] = true;
+                            job.tus.push(tu);
+                            untranslated++;
+                            untranslatedChars += seg.str.length;
+                            untranslatedWords += words;
+                        }
                     } else {
                         if (tmEntry.inflight) {
                             pending++;
@@ -202,7 +219,7 @@ export default class MonsterManager {
             }
         }
         const tmSize = tm.size;
-        job.leverage = { minimumQuality, translated, untranslated, untranslatedChars, untranslatedWords, pending, tmSize };
+        job.leverage = { minimumQuality, translated, untranslated, internalRepetitions, internalRepetitionWords, untranslatedChars, untranslatedWords, pending, tmSize };
         return job; // TODO: this should return a list of jobs to be able to handle multiple source languages
     }
 

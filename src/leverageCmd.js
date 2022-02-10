@@ -7,9 +7,9 @@ export async function leverageCmd(mm, limitToLang) {
     await mm.updateSourceCache();
     const targetLangs = mm.getTargetLangs(limitToLang);
     const status = [];
-    for (const lang of targetLangs) {
-        const tm = await mm.tmm.getTM(mm.sourceLang, lang);
-        const jobRequest = await mm.prepareTranslationJob(lang);
+    for (const targetLang of targetLangs) {
+        const tm = await mm.tmm.getTM(mm.sourceLang, targetLang);
+        const jobRequest = await mm.prepareTranslationJob({ targetLang });
         const sources = [];
         const translations = [];
         for (const tu of jobRequest.tus) {
@@ -34,7 +34,7 @@ export async function leverageCmd(mm, limitToLang) {
                 translations.push(leveragedTU);
             }
         }
-        mm.verbose && console.log(`Leveraging ${lang}... found ${jobRequest.tus.length} missing translations, of which ${translations.length} can be leveraged`);
+        mm.verbose && console.log(`Leveraging ${targetLang}... found ${jobRequest.tus.length} missing translations, of which ${translations.length} can be leveraged`);
         if (translations.length > 0) {
             // eslint-disable-next-line no-unused-vars
             const { tus, ...jobResponse } = jobRequest;
@@ -47,7 +47,7 @@ export async function leverageCmd(mm, limitToLang) {
             await mm.processJob({ ...jobResponse, ...manifest, status: 'done' }, { ...jobRequest, ...manifest });
             status.push({
                 num: translations.length,
-                lang,
+                targetLang,
             });
         }
     }

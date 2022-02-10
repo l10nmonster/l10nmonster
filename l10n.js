@@ -167,6 +167,7 @@ monsterCLI
             }
             leverage.pending && console.log(`  - strings pending translation: ${leverage.pending.toLocaleString()}`);
             console.log(`  - untranslated strings: ${leverage.untranslated.toLocaleString()} (${leverage.untranslatedChars.toLocaleString()} chars - ${leverage.untranslatedWords.toLocaleString()} words - $${(leverage.untranslatedWords * .2).toFixed(2)})`);
+            console.log(`  - untranslated repeated strings: ${leverage.internalRepetitions.toLocaleString()} (${leverage.internalRepetitionWords.toLocaleString()} words)`);
             if (monsterCLI.opts().verbose) {
                 for (const [rid, content] of Object.entries(langStatus.unstranslatedContent)) {
                     console.log(`    - ${lang} ${rid}`);
@@ -218,13 +219,18 @@ monsterCLI
 monsterCLI
     .command('push')
     .description('push source content upstream (send to translation).')
-    .action(async () => await withMonsterManager(async monsterManager => {
+    .option('-l, --lang <language>', 'target language to push')
+    .option('--leverage', 'eliminate internal repetitions from push')
+    .action(async (options) => await withMonsterManager(async monsterManager => {
+    const limitToLang = options.lang;
+    const leverage = options.leverage;
       console.log(`Pushing content upstream...`);
       try {
-        const status = await pushCmd(monsterManager);
+        const status = await pushCmd(monsterManager, { limitToLang, leverage });
         if (status.length > 0) {
           for (const ls of status) {
-            console.log(`${ls.num.toLocaleString()} translations units requested for language ${ls.lang} -> status: ${ls.status}`);
+            console.log(`${ls.num.toLocaleString()} translations units requested for language ${ls.targetLang} -> status: ${ls.status}`);
+            leverage && console.log(`${ls.internalRepetitions.toLocaleString()} untranslated strings skipped because repeated`);
           }
         } else {
           console.log('Nothing to push!');
@@ -249,7 +255,7 @@ monsterCLI
       } else {
         if (status.length > 0) {
           for (const ls of status) {
-            console.log(`${ls.num.toLocaleString()} translations units grandfathered for language ${ls.lang}`);
+            console.log(`${ls.num.toLocaleString()} translations units grandfathered for language ${ls.targetLang}`);
           }
         } else {
           console.log('Nothing to grandfather!');
@@ -270,7 +276,7 @@ monsterCLI
       } else {
         if (status.length > 0) {
           for (const ls of status) {
-            console.log(`${ls.num.toLocaleString()} translations leveraged for language ${ls.lang}`);
+            console.log(`${ls.num.toLocaleString()} translations leveraged for language ${ls.targetLang}`);
           }
         } else {
           console.log('Nothing to leverage!');

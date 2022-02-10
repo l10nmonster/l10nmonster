@@ -6,9 +6,11 @@
 		"translated": {
 			"70": 29
 		},
-		"untranslated": 3,
-		"untranslatedChars": 39,
-		"untranslatedWords": 6,
+		"untranslated": 2,
+		"internalRepetitions": 1,
+		"internalRepetitionWords": 1,
+		"untranslatedChars": 35,
+		"untranslatedWords": 4,
 		"pending": 0,
 		"tmSize": 29
 	},
