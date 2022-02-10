@@ -113,7 +113,7 @@ export class TranslationOS {
             url: `${this.baseURL}/status`,
             json: {
                 'id_order': jobManifest.jobGuid,
-                status: 'delivered',
+                // status: 'delivered', we don't filter here because it makes pagination unreliable
                 'fetch_content': true,
             },
             headers: this.stdHeaders,
@@ -138,8 +138,8 @@ export class TranslationOS {
                 throw "TOS call failed!";
             }
             for (const translation of response) {
-                if (translation.translated_content === null || translation.translated_content.indexOf('|||UNTRANSLATED_CONTENT_START|||') >= 0) {
-                    this.ctx.verbose && console.log(`id_order: ${translation.id_order} id_content: ${translation.id} translated_content: ${translation.translated_content}`);
+                if (translation.translated_content === null || translation.status !== 'delivered' || translation.translated_content.indexOf('|||UNTRANSLATED_CONTENT_START|||') >= 0) {
+                    this.ctx.verbose && console.log(`id_order: ${translation.id_order} id_content: ${translation.id} status: ${translation.status} translated_content: ${translation.translated_content}`);
                 } else {
                     const guid = translation.id_content;
                     if (jobManifest.inflight.includes(guid)) {
@@ -150,12 +150,16 @@ export class TranslationOS {
                             q: this.quality,
                         };
                         if (tuMeta[guid]) {
-                            tusMap[guid].ntgt = extractNormalizedPartsV1(translation.translated_content, tuMeta[guid].phMap);
                             tusMap[guid].contentType = tuMeta[guid].contentType;
+                            tusMap[guid].ntgt = extractNormalizedPartsV1(translation.translated_content, tuMeta[guid].phMap);
+                            if (tusMap[guid].ntgt.filter(e => e === undefined).length > 0) {
+                                this.verbose && console.error(`Unable to extract normalized parts of TU: ${JSON.stringify(tusMap[guid])}`);
+                                delete tusMap[guid];
+                            }
                         } else {
                             tusMap[guid].tgt = translation.translated_content;
                         }
-                } else {
+                    } else {
                         console.error(`Found unexpected guid: ${guid}`);
                     }
                 }

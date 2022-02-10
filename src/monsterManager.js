@@ -120,22 +120,33 @@ export default class MonsterManager {
     }
 
     async processJob(jobResponse, jobRequest) {
-        for (const tu of jobResponse.tus ?? []) {
-            if (tu.ntgt) {
-                const pipeline = this.contentTypes[tu.contentType];
-                const tgt = [];
-                for (const part of tu.ntgt) {
-                    if (typeof part === 'string') {
-                        if (pipeline.encoders) {
-                            tgt.push(pipeline.encoders.reduce((str, encoder) => encoder(str), part));
+        if (Array.isArray(jobResponse.tus)) {
+            const validTus = [];
+            for (const tu of jobResponse.tus) {
+                let valid = true;
+                if (tu.ntgt) {
+                    const pipeline = this.contentTypes[tu.contentType];
+                    const tgt = [];
+                    for (const part of tu.ntgt) {
+                        if (typeof part === 'string') {
+                            if (pipeline.encoders) {
+                                tgt.push(pipeline.encoders.reduce((str, encoder) => encoder(str), part));
+                            } else {
+                                tgt.push(part);
+                            }
+                        } else if (part?.v === undefined) {
+                            valid = false;
                         } else {
-                            tgt.push(part);
+                            tgt.push(part.v);
                         }
-                    } else {
-                        tgt.push(part.v);
                     }
+                    tu.tgt = tgt.join('');
                 }
-                tu.tgt = tgt.join('');
+                if (valid) {
+                    validTus.push(tu);
+                } else {
+                    this.verbose && console.error(`Invalid TU found: ${JSON.stringify(tu)}`);
+                }
             }
         }
         await this.jobStore.updateJob(jobResponse, jobRequest);
