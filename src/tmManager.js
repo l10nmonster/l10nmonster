@@ -92,15 +92,15 @@ class TM {
             sourceLanguage: this.tm.sourceLang,
             resources: {},
         };
-        for (const tu of Object.values(this.tm.tus)) {
+        for (const tu of Object.values(sourceLookup)) {
             const group = tu.prj || 'default';
             tmx.resources[group] ??= {};
             tmx.resources[group][tu.guid] = {};
-            tmx.resources[group][tu.guid][this.tm.sourceLang] = getMangledSrc(sourceLookup[tu.guid]);
-            const translatedTU = getMangledTgt(tu);
-            translatedTU !== undefined && (tmx.resources[group][tu.guid][this.tm.targetLang] = translatedTU);
+            tmx.resources[group][tu.guid][this.tm.sourceLang] = getMangledSrc(tu);
+            const translatedTU = this.tm.tus[tu.gui];
+            translatedTU !== undefined && (tmx.resources[group][tu.guid][this.tm.targetLang] = getMangledTgt(translatedTU));
         }
-        return js2tmx(tmx);
+        return [ tmx, await js2tmx(tmx) ];
     }
 }
 

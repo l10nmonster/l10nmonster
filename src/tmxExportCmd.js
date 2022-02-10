@@ -12,8 +12,10 @@ export async function tmxExportCmd(mm, limitToLang) {
             }
         }
         const tm = await mm.tmm.getTM(mm.sourceLang, targetLang);
-        const filename = `${mm.sourceLang}-${targetLang}.tmx`;
-        await fs.writeFile(filename, await tm.exportTMX(sourceLookup), 'utf8');
+        const filename = `${mm.sourceLang}-${targetLang}`;
+        const [ json, tmx ] = await tm.exportTMX(sourceLookup);
+        await fs.writeFile(`${filename}.json`, JSON.stringify(json, null, '\t'), 'utf8');
+        await fs.writeFile(`${filename}.tmx`, tmx, 'utf8');
         status.files.push(filename);
     }
     return status;
