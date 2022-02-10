@@ -97,7 +97,8 @@ class TM {
             tmx.resources[group] ??= {};
             tmx.resources[group][tu.guid] = {};
             tmx.resources[group][tu.guid][this.tm.sourceLang] = getMangledSrc(sourceLookup[tu.guid]);
-            tmx.resources[group][tu.guid][this.tm.targetLang] = getMangledTgt(tu);
+            const translatedTU = getMangledTgt(tu);
+            translatedTU !== undefined && (tmx.resources[group][tu.guid][this.tm.targetLang] = translatedTU);
         }
         return js2tmx(tmx);
     }
