@@ -10,7 +10,7 @@ import {
 import wordsCountModule from 'words-count';
 
 import TMManager from './tmManager.js';
-import { JsonJobStore } from './jsonJobStore.js';
+import { JsonJobStore } from '../stores/jsonJobStore.js';
 import { decodeString } from '../normalizers/util.js';
 
 export default class MonsterManager {

@@ -8,11 +8,12 @@ import {
 import { Command, InvalidArgumentError } from 'commander';
 
 import MonsterManager from './src/monsterManager.js';
-import { JsonJobStore } from './src/jsonJobStore.js';
-import { SqlJobStore } from './src/sqlJobStore.js';
-import { JsonStateStore } from './src/jsonStateStore.js';
-import { SqlStateStore } from './src/sqlStateStore.js';
-import { FSTrafficStore } from './src/fsTrafficStore.js';
+
+import { JsonJobStore } from './stores/jsonJobStore.js';
+import { SqlJobStore } from './stores/sqlJobStore.js';
+import { JsonStateStore } from './stores/jsonStateStore.js';
+import { SqlStateStore } from './stores/sqlStateStore.js';
+import { FSTrafficStore } from './stores/fsTrafficStore.js';
 
 import { analyzeCmd } from './src/analyzeCmd.js';
 import { grandfatherCmd } from './src/grandfatherCmd.js';
