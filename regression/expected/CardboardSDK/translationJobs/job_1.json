@@ -2,17 +2,22 @@
 	"sourceLang": "en",
 	"targetLang": "ar",
 	"leverage": {
+		"tmSize": 29,
 		"minimumQuality": 50,
-		"translated": {
-			"70": 29
-		},
-		"untranslated": 2,
-		"internalRepetitions": 1,
-		"internalRepetitionWords": 1,
-		"untranslatedChars": 35,
-		"untranslatedWords": 4,
-		"pending": 0,
-		"tmSize": 29
+		"prjLeverage": {
+			"default": {
+				"translated": 29,
+				"translatedByQ": {
+					"70": 29
+				},
+				"untranslated": 2,
+				"untranslatedChars": 35,
+				"untranslatedWords": 4,
+				"pending": 0,
+				"internalRepetitions": 1,
+				"internalRepetitionWords": 1
+			}
+		}
 	},
 	"tus": [
 		{

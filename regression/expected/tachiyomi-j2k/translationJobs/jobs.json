@@ -6,15 +6,20 @@
 		"sourceLang": "en",
 		"targetLang": "zh-Hans",
 		"leverage": {
+			"tmSize": 0,
 			"minimumQuality": 50,
-			"translated": {},
-			"untranslated": 877,
-			"internalRepetitions": 5,
-			"internalRepetitionWords": 18,
-			"untranslatedChars": 17900,
-			"untranslatedWords": 3044,
-			"pending": 0,
-			"tmSize": 0
+			"prjLeverage": {
+				"default": {
+					"translated": 0,
+					"translatedByQ": {},
+					"untranslated": 877,
+					"untranslatedChars": 17900,
+					"untranslatedWords": 3044,
+					"pending": 0,
+					"internalRepetitions": 5,
+					"internalRepetitionWords": 18
+				}
+			}
 		},
 		"translationProvider": "Grandfather",
 		"updatedAt": "2022-02-05T00:00:00.000Z"
@@ -26,15 +31,20 @@
 		"sourceLang": "en",
 		"targetLang": "zh-Hant",
 		"leverage": {
+			"tmSize": 0,
 			"minimumQuality": 50,
-			"translated": {},
-			"untranslated": 877,
-			"internalRepetitions": 5,
-			"internalRepetitionWords": 18,
-			"untranslatedChars": 17900,
-			"untranslatedWords": 3044,
-			"pending": 0,
-			"tmSize": 0
+			"prjLeverage": {
+				"default": {
+					"translated": 0,
+					"translatedByQ": {},
+					"untranslated": 877,
+					"untranslatedChars": 17900,
+					"untranslatedWords": 3044,
+					"pending": 0,
+					"internalRepetitions": 5,
+					"internalRepetitionWords": 18
+				}
+			}
 		},
 		"translationProvider": "Grandfather",
 		"updatedAt": "2022-02-05T00:00:00.000Z"
@@ -46,17 +56,22 @@
 		"sourceLang": "en",
 		"targetLang": "zh-Hans",
 		"leverage": {
+			"tmSize": 851,
 			"minimumQuality": 50,
-			"translated": {
-				"70": 851
-			},
-			"untranslated": 28,
-			"internalRepetitions": 3,
-			"internalRepetitionWords": 15,
-			"untranslatedChars": 549,
-			"untranslatedWords": 102,
-			"pending": 0,
-			"tmSize": 851
+			"prjLeverage": {
+				"default": {
+					"translated": 851,
+					"translatedByQ": {
+						"70": 851
+					},
+					"untranslated": 28,
+					"untranslatedChars": 549,
+					"untranslatedWords": 102,
+					"pending": 0,
+					"internalRepetitions": 3,
+					"internalRepetitionWords": 15
+				}
+			}
 		},
 		"translationProvider": "Repetition",
 		"updatedAt": "2022-02-05T00:00:00.000Z"
@@ -68,18 +83,23 @@
 		"sourceLang": "en",
 		"targetLang": "zh-Hans",
 		"leverage": {
+			"tmSize": 854,
 			"minimumQuality": 50,
-			"translated": {
-				"61": 3,
-				"70": 851
-			},
-			"untranslated": 28,
-			"internalRepetitions": 0,
-			"internalRepetitionWords": 0,
-			"untranslatedChars": 549,
-			"untranslatedWords": 102,
-			"pending": 0,
-			"tmSize": 854
+			"prjLeverage": {
+				"default": {
+					"translated": 854,
+					"translatedByQ": {
+						"61": 3,
+						"70": 851
+					},
+					"untranslated": 28,
+					"untranslatedChars": 549,
+					"untranslatedWords": 102,
+					"pending": 0,
+					"internalRepetitions": 0,
+					"internalRepetitionWords": 0
+				}
+			}
 		},
 		"translationProvider": "XliffBridge",
 		"inflight": [
@@ -121,17 +141,22 @@
 		"sourceLang": "en",
 		"targetLang": "zh-Hant",
 		"leverage": {
+			"tmSize": 482,
 			"minimumQuality": 50,
-			"translated": {
-				"70": 482
-			},
-			"untranslated": 397,
-			"internalRepetitions": 3,
-			"internalRepetitionWords": 15,
-			"untranslatedChars": 9503,
-			"untranslatedWords": 1635,
-			"pending": 0,
-			"tmSize": 482
+			"prjLeverage": {
+				"default": {
+					"translated": 482,
+					"translatedByQ": {
+						"70": 482
+					},
+					"untranslated": 397,
+					"untranslatedChars": 9503,
+					"untranslatedWords": 1635,
+					"pending": 0,
+					"internalRepetitions": 3,
+					"internalRepetitionWords": 15
+				}
+			}
 		},
 		"translationProvider": "XliffBridge",
 		"inflight": [
@@ -546,15 +571,20 @@
 		"sourceLang": "en",
 		"targetLang": "piggy",
 		"leverage": {
+			"tmSize": 0,
 			"minimumQuality": 1,
-			"translated": {},
-			"untranslated": 877,
-			"internalRepetitions": 5,
-			"internalRepetitionWords": 18,
-			"untranslatedChars": 17900,
-			"untranslatedWords": 3044,
-			"pending": 0,
-			"tmSize": 0
+			"prjLeverage": {
+				"default": {
+					"translated": 0,
+					"translatedByQ": {},
+					"untranslated": 877,
+					"untranslatedChars": 17900,
+					"untranslatedWords": 3044,
+					"pending": 0,
+					"internalRepetitions": 5,
+					"internalRepetitionWords": 18
+				}
+			}
 		},
 		"translationProvider": "PigLatinizer",
 		"ts": 1,

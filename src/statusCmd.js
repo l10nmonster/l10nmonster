@@ -1,16 +1,18 @@
-export async function statusCmd(mm) {
+export async function statusCmd(mm, { limitToLang }) {
     await mm.updateSourceCache();
     const status = {
         numSources: mm.getSourceCacheEntries().length,
         lang: {},
     };
-    const targetLangs = mm.getTargetLangs();
+    const targetLangs = mm.getTargetLangs(limitToLang);
     for (const targetLang of targetLangs) {
         const job = await mm.prepareTranslationJob({ targetLang });
         const unstranslatedContent = {};
         for (const tu of job.tus) {
-            unstranslatedContent[tu.rid] ??= {};
-            unstranslatedContent[tu.rid][tu.sid] = tu.src;
+            const prj = tu.prj || 'default';
+            unstranslatedContent[prj] ??= {};
+            unstranslatedContent[prj][tu.rid] ??= {};
+            unstranslatedContent[prj][tu.rid][tu.sid] = tu.src;
         }
         status.lang[targetLang] = {
             leverage: job.leverage,

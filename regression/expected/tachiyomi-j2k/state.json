@@ -1,60 +1,45 @@
 {
 	"test1": {
-		"tachiyomi": {
+		"default": {
 			"foo": {
 				"bar": {
 					"zh-Hans": {
-						"sourceLang": "en",
-						"targetLang": "zh-Hans",
-						"leverage": {
-							"minimumQuality": 50,
-							"translated": {
-								"61": 3,
-								"70": 851
-							},
-							"untranslated": 0,
-							"internalRepetitions": 0,
-							"internalRepetitionWords": 0,
-							"untranslatedChars": 0,
-							"untranslatedWords": 0,
-							"pending": 28,
-							"tmSize": 882
-						}
+						"translated": 854,
+						"translatedByQ": {
+							"61": 3,
+							"70": 851
+						},
+						"untranslated": 0,
+						"untranslatedChars": 0,
+						"untranslatedWords": 0,
+						"pending": 28,
+						"internalRepetitions": 0,
+						"internalRepetitionWords": 0
 					},
 					"zh-Hant": {
-						"sourceLang": "en",
-						"targetLang": "zh-Hant",
-						"leverage": {
-							"minimumQuality": 50,
-							"translated": {
-								"70": 482,
-								"80": 400
-							},
-							"untranslated": 0,
-							"internalRepetitions": 0,
-							"internalRepetitionWords": 0,
-							"untranslatedChars": 0,
-							"untranslatedWords": 0,
-							"pending": 0,
-							"tmSize": 882
-						}
+						"translated": 882,
+						"translatedByQ": {
+							"70": 482,
+							"80": 400
+						},
+						"untranslated": 0,
+						"untranslatedChars": 0,
+						"untranslatedWords": 0,
+						"pending": 0,
+						"internalRepetitions": 0,
+						"internalRepetitionWords": 0
 					},
 					"piggy": {
-						"sourceLang": "en",
-						"targetLang": "piggy",
-						"leverage": {
-							"minimumQuality": 1,
-							"translated": {
-								"1": 882
-							},
-							"untranslated": 0,
-							"internalRepetitions": 0,
-							"internalRepetitionWords": 0,
-							"untranslatedChars": 0,
-							"untranslatedWords": 0,
-							"pending": 0,
-							"tmSize": 882
-						}
+						"translated": 882,
+						"translatedByQ": {
+							"1": 882
+						},
+						"untranslated": 0,
+						"untranslatedChars": 0,
+						"untranslatedWords": 0,
+						"pending": 0,
+						"internalRepetitions": 0,
+						"internalRepetitionWords": 0
 					}
 				}
 			}

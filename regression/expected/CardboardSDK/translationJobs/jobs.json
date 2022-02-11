@@ -6,15 +6,20 @@
 		"sourceLang": "en",
 		"targetLang": "ar",
 		"leverage": {
+			"tmSize": 0,
 			"minimumQuality": 50,
-			"translated": {},
-			"untranslated": 30,
-			"internalRepetitions": 2,
-			"internalRepetitionWords": 2,
-			"untranslatedChars": 613,
-			"untranslatedWords": 98,
-			"pending": 0,
-			"tmSize": 0
+			"prjLeverage": {
+				"default": {
+					"translated": 0,
+					"translatedByQ": {},
+					"untranslated": 30,
+					"untranslatedChars": 613,
+					"untranslatedWords": 98,
+					"pending": 0,
+					"internalRepetitions": 2,
+					"internalRepetitionWords": 2
+				}
+			}
 		},
 		"translationProvider": "Grandfather",
 		"updatedAt": "2022-02-05T00:00:00.000Z"
@@ -26,17 +31,22 @@
 		"sourceLang": "en",
 		"targetLang": "ar",
 		"leverage": {
+			"tmSize": 29,
 			"minimumQuality": 50,
-			"translated": {
-				"70": 29
-			},
-			"untranslated": 2,
-			"internalRepetitions": 1,
-			"internalRepetitionWords": 1,
-			"untranslatedChars": 35,
-			"untranslatedWords": 4,
-			"pending": 0,
-			"tmSize": 29
+			"prjLeverage": {
+				"default": {
+					"translated": 29,
+					"translatedByQ": {
+						"70": 29
+					},
+					"untranslated": 2,
+					"untranslatedChars": 35,
+					"untranslatedWords": 4,
+					"pending": 0,
+					"internalRepetitions": 1,
+					"internalRepetitionWords": 1
+				}
+			}
 		},
 		"translationProvider": "Repetition",
 		"updatedAt": "2022-02-05T00:00:00.000Z"
@@ -48,18 +58,23 @@
 		"sourceLang": "en",
 		"targetLang": "ar",
 		"leverage": {
+			"tmSize": 30,
 			"minimumQuality": 50,
-			"translated": {
-				"61": 1,
-				"70": 29
-			},
-			"untranslated": 2,
-			"internalRepetitions": 0,
-			"internalRepetitionWords": 0,
-			"untranslatedChars": 35,
-			"untranslatedWords": 4,
-			"pending": 0,
-			"tmSize": 30
+			"prjLeverage": {
+				"default": {
+					"translated": 30,
+					"translatedByQ": {
+						"61": 1,
+						"70": 29
+					},
+					"untranslated": 2,
+					"untranslatedChars": 35,
+					"untranslatedWords": 4,
+					"pending": 0,
+					"internalRepetitions": 0,
+					"internalRepetitionWords": 0
+				}
+			}
 		},
 		"translationProvider": "PigLatinizer",
 		"ts": 1,

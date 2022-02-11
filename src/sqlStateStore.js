@@ -10,9 +10,8 @@ function currentISODate() {
 export class SqlStateStore {
     db;
 
-    constructor({ org, prj, client, host, port, user, password, database, cert, saveContent }) {
+    constructor({ org, client, host, port, user, password, database, cert, saveContent }) {
         this.org = org;
-        this.prj = prj;
         this.dbConfig = {
             client,
             connection: {
@@ -40,8 +39,8 @@ export class SqlStateStore {
                         table.string('build', 16);
                         table.string('release', 16);
                         table.string('targetLang', 8);
-                        table.json('state');
-                        table.json('content');
+                        table.json('leverage');
+                        // table.json('content');
                         table.timestamp('updatedAt');
                         table.primary(['org', 'prj', 'build', 'release', 'targetLang']);
                     });
@@ -56,23 +55,25 @@ export class SqlStateStore {
 
     async updateBuildState(build, release, targetLang, job) {
         this.db ?? await this.init();
-        const { tus, ...state } = job;
-        const row = {
-            org: this.org,
-            prj: this.prj,
-            build,
-            release,
-            targetLang,
-            state: JSON.stringify(state),
-            updatedAt: currentISODate(),
-        };
-        if (this.saveContent) {
-            row.content = JSON.stringify({ tus });
+        const prjLeverage = job.prjLeverage || {};
+        for (const [ prj, leverage ] of prjLeverage) {
+            const row = {
+                org: this.org,
+                prj,
+                build,
+                release,
+                targetLang,
+                leverage: JSON.stringify(leverage),
+                updatedAt: currentISODate(),
+            };
+            // if (this.saveContent) { // TODO: need to split by project
+            //     row.content = JSON.stringify({ tus });
+            // }
+            await this.db('buildState')
+                .insert(row)
+                .onConflict(['org', 'prj', 'build', 'release', 'targetLang'])
+                .merge();
         }
-        await this.db('buildState')
-            .insert(row)
-            .onConflict(['org', 'prj', 'build', 'release', 'targetLang'])
-            .merge();
     }
 
     async shutdown() {

@@ -2,18 +2,23 @@
 	"sourceLang": "en",
 	"targetLang": "ar",
 	"leverage": {
+		"tmSize": 30,
 		"minimumQuality": 50,
-		"translated": {
-			"61": 1,
-			"70": 29
-		},
-		"untranslated": 2,
-		"internalRepetitions": 0,
-		"internalRepetitionWords": 0,
-		"untranslatedChars": 35,
-		"untranslatedWords": 4,
-		"pending": 0,
-		"tmSize": 30
+		"prjLeverage": {
+			"default": {
+				"translated": 30,
+				"translatedByQ": {
+					"61": 1,
+					"70": 29
+				},
+				"untranslated": 2,
+				"untranslatedChars": 35,
+				"untranslatedWords": 4,
+				"pending": 0,
+				"internalRepetitions": 0,
+				"internalRepetitionWords": 0
+			}
+		}
 	},
 	"jobId": 2,
 	"jobGuid": "x",

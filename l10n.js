@@ -151,30 +151,58 @@ monsterCLI
     .option('--regression', 'keep variable constant during regression testing')
 ;
 
+function printLeverage(leverage) {
+    const totalStrings = leverage.translated + leverage.pending + leverage.untranslated + leverage.internalRepetitions;
+    console.log(`    - total strings for target language: ${totalStrings.toLocaleString()}`);
+    for (const [q, num] of Object.entries(leverage.translatedByQ).sort((a,b) => b[1] - a[1])) {
+        console.log(`    - translated strings @ quality ${q}: ${num.toLocaleString()}`);
+    }
+    console.log(`    - strings pending translation: ${leverage.pending.toLocaleString()}`);
+    console.log(`    - untranslated unique strings: ${leverage.untranslated.toLocaleString()} (${leverage.untranslatedChars.toLocaleString()} chars - ${leverage.untranslatedWords.toLocaleString()} words - $${(leverage.untranslatedWords * .2).toFixed(2)})`);
+    console.log(`    - untranslated repeated strings: ${leverage.internalRepetitions.toLocaleString()} (${leverage.internalRepetitionWords.toLocaleString()} words)`);
+}
+
+function computeTotals(totals, partial) {
+    for (const [ k, v ] of Object.entries(partial)) {
+        if (typeof v === 'object') {
+            totals[k] ??= {};
+            computeTotals(totals[k], v);
+        } else {
+            totals[k] ??= 0;
+            totals[k] += v;
+        }
+    }
+}
+
 monsterCLI
     .command('status')
     .description('translation status of content.')
-    .action(async () => await withMonsterManager(async monsterManager => {
-        const status = await statusCmd(monsterManager);
+    .option('-l, --lang <language>', 'only get status of target language')
+    .action(async (options) => await withMonsterManager(async monsterManager => {
+        const limitToLang = options.lang;
+        const status = await statusCmd(monsterManager, { limitToLang });
         console.log(`${status.numSources.toLocaleString()} translatable resources`);
         console.log(`${status.pendingJobsNum.toLocaleString()} pending jobs`);
         for (const [lang, langStatus] of Object.entries(status.lang)) {
-            const leverage = langStatus.leverage;
-            console.log(`Language ${lang} (minimum quality ${leverage.minimumQuality}):`);
-            console.log(`  - strings in translation memory: ${leverage.tmSize.toLocaleString()}`);
-            for (const [q, num] of Object.entries(leverage.translated).sort((a,b) => b[1] - a[1])) {
-                console.log(`  - translated strings @ quality ${q}: ${num.toLocaleString()}`);
-            }
-            leverage.pending && console.log(`  - strings pending translation: ${leverage.pending.toLocaleString()}`);
-            console.log(`  - untranslated strings: ${leverage.untranslated.toLocaleString()} (${leverage.untranslatedChars.toLocaleString()} chars - ${leverage.untranslatedWords.toLocaleString()} words - $${(leverage.untranslatedWords * .2).toFixed(2)})`);
-            console.log(`  - untranslated repeated strings: ${leverage.internalRepetitions.toLocaleString()} (${leverage.internalRepetitionWords.toLocaleString()} words)`);
-            if (monsterCLI.opts().verbose) {
-                for (const [rid, content] of Object.entries(langStatus.unstranslatedContent)) {
-                    console.log(`    - ${lang} ${rid}`);
-                    for (const [sid, src] of Object.entries(content)) {
-                        console.log(`      - ${sid}: ${src}`);
+            console.log(`\nLanguage ${lang} (minimum quality ${langStatus.leverage.minimumQuality}, TM size:${langStatus.leverage.tmSize.toLocaleString()}):`);
+            const totals = {};
+            const prjLeverage = Object.entries(langStatus.leverage.prjLeverage);
+            for (const [prj, leverage] of prjLeverage) {
+                console.log(`  Project: ${prj}`);
+                computeTotals(totals, leverage);
+                printLeverage(leverage);
+                if (monsterCLI.opts().verbose) {
+                    for (const [rid, content] of Object.entries(langStatus.unstranslatedContent[prj] || {})) {
+                        console.log(`      - ${rid}`);
+                        for (const [sid, src] of Object.entries(content)) {
+                            console.log(`        - ${sid}: ${src}`);
+                        }
                     }
                 }
+            }
+            if (prjLeverage.length > 1) {
+                console.log(`  Total:`);
+                printLeverage(totals);
             }
         }
     }))

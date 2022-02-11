@@ -186,16 +186,21 @@ export default class MonsterManager {
         };
         minimumQuality ??= this.getMinimumQuality(job);
         const tm = await this.tmm.getTM(this.sourceLang, targetLang); // TODO: source language may vary by resource or unit, if supported
-        let translated = {},
-            untranslated = 0,
-            untranslatedChars = 0,
-            untranslatedWords = 0,
-            pending = 0,
-            internalRepetitions = 0,
-            internalRepetitionWords = 0;
+        const prjLeverage = {};
         const repetitionMap = {};
         // eslint-disable-next-line no-unused-vars
         for (const [rid, res] of sources) {
+            const prj = res.prj || 'default';
+            prjLeverage[prj] ??= {
+                translated: 0,
+                translatedByQ: {},
+                untranslated: 0,
+                untranslatedChars: 0,
+                untranslatedWords: 0,
+                pending: 0,
+                internalRepetitions: 0,
+                internalRepetitionWords: 0,
+            };
             if (res.targetLangs.includes(targetLang)) {
                 for (const seg of res.segments) {
                     // TODO: if segment is pluralized we need to generate/suppress the relevant number of variants for the targetLang
@@ -209,28 +214,30 @@ export default class MonsterManager {
                         if (repetitionMap[tu.src]) {
                             // TODO: there may be some edge cases were src is the same but contentType is different -- we may care or...
                             //       this may be a feature (e.g. we can reuse ios and android strings without placeholders)
-                            internalRepetitions++;
-                            internalRepetitionWords += words;
+                            prjLeverage[prj].internalRepetitions++;
+                            prjLeverage[prj].internalRepetitionWords += words;
                             !leverage && job.tus.push(tu);
                         } else {
                             repetitionMap[tu.src] = true;
                             job.tus.push(tu);
-                            untranslated++;
-                            untranslatedChars += seg.str.length;
-                            untranslatedWords += words;
+                            prjLeverage[prj].untranslated++;
+                            prjLeverage[prj].untranslatedChars += seg.str.length;
+                            prjLeverage[prj].untranslatedWords += words;
                         }
                     } else {
                         if (tmEntry.inflight) {
-                            pending++;
+                            prjLeverage[prj].pending++;
                         } else {
-                            translated[tmEntry.q] = (translated[tmEntry.q] ?? 0) + 1;
+                            prjLeverage[prj].translated ??= 0;
+                            prjLeverage[prj].translated++;
+                            prjLeverage[prj].translatedByQ[tmEntry.q] ??= 0;
+                            prjLeverage[prj].translatedByQ[tmEntry.q]++;
                         }
                     }
                 }
             }
         }
-        const tmSize = tm.size;
-        job.leverage = { minimumQuality, translated, untranslated, internalRepetitions, internalRepetitionWords, untranslatedChars, untranslatedWords, pending, tmSize };
+        job.leverage = { tmSize: tm.size, minimumQuality, prjLeverage };
         return job; // TODO: this should return a list of jobs to be able to handle multiple source languages
     }
 

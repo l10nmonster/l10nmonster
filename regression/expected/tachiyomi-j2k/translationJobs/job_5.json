@@ -2,15 +2,20 @@
 	"sourceLang": "en",
 	"targetLang": "piggy",
 	"leverage": {
+		"tmSize": 0,
 		"minimumQuality": 1,
-		"translated": {},
-		"untranslated": 877,
-		"internalRepetitions": 5,
-		"internalRepetitionWords": 18,
-		"untranslatedChars": 17900,
-		"untranslatedWords": 3044,
-		"pending": 0,
-		"tmSize": 0
+		"prjLeverage": {
+			"default": {
+				"translated": 0,
+				"translatedByQ": {},
+				"untranslated": 877,
+				"untranslatedChars": 17900,
+				"untranslatedWords": 3044,
+				"pending": 0,
+				"internalRepetitions": 5,
+				"internalRepetitionWords": 18
+			}
+		}
 	},
 	"jobId": 5,
 	"jobGuid": "x",

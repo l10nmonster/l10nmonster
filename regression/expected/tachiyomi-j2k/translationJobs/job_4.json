@@ -5,17 +5,22 @@
 	"sourceLang": "en",
 	"targetLang": "zh-Hant",
 	"leverage": {
+		"tmSize": 482,
 		"minimumQuality": 50,
-		"translated": {
-			"70": 482
-		},
-		"untranslated": 397,
-		"internalRepetitions": 3,
-		"internalRepetitionWords": 15,
-		"untranslatedChars": 9503,
-		"untranslatedWords": 1635,
-		"pending": 0,
-		"tmSize": 482
+		"prjLeverage": {
+			"default": {
+				"translated": 482,
+				"translatedByQ": {
+					"70": 482
+				},
+				"untranslated": 397,
+				"untranslatedChars": 9503,
+				"untranslatedWords": 1635,
+				"pending": 0,
+				"internalRepetitions": 3,
+				"internalRepetitionWords": 15
+			}
+		}
 	},
 	"translationProvider": "XliffBridge",
 	"inflight": [

@@ -2,18 +2,23 @@
 	"sourceLang": "en",
 	"targetLang": "zh-Hans",
 	"leverage": {
+		"tmSize": 854,
 		"minimumQuality": 50,
-		"translated": {
-			"61": 3,
-			"70": 851
-		},
-		"untranslated": 28,
-		"internalRepetitions": 0,
-		"internalRepetitionWords": 0,
-		"untranslatedChars": 549,
-		"untranslatedWords": 102,
-		"pending": 0,
-		"tmSize": 854
+		"prjLeverage": {
+			"default": {
+				"translated": 854,
+				"translatedByQ": {
+					"61": 3,
+					"70": 851
+				},
+				"untranslated": 28,
+				"untranslatedChars": 549,
+				"untranslatedWords": 102,
+				"pending": 0,
+				"internalRepetitions": 0,
+				"internalRepetitionWords": 0
+			}
+		}
 	},
 	"jobId": 3,
 	"jobGuid": "x",
