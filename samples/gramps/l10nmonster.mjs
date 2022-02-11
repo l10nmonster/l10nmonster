@@ -3,8 +3,7 @@ export default class GrampsConfig {
     constructor({ ctx, stores, adapters, filters, translators }) {
         this.minimumQuality = ctx.build === 'prod' ? 95 : 0; // only push production builds
         const dbConfig = {
-            org: 'test1',
-            prj: 'gramps',
+            org: 'gramps',
             client: 'mysql2',
             host: ctx.env.l10nmonster_host,
             port: ctx.env.l10nmonster_port,

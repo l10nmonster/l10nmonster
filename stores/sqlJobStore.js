@@ -11,9 +11,8 @@ function currentISODate() {
 export class SqlJobStore {
     db;
 
-    constructor({ org, prj, client, host, port, user, password, database, cert }) {
+    constructor({ org, client, host, port, user, password, database, cert }) {
         this.org = org;
-        this.prj = prj;
         this.dbConfig = {
             client,
             connection: {
@@ -37,7 +36,6 @@ export class SqlJobStore {
                     return remoteDB.schema.createTable('jobStore', table => {
                         table.increments('jobId').primary();
                         table.string('org', 64).notNullable();
-                        table.string('prj', 64).notNullable();
                         table.string('status', 8);
                         table.string('sourceLang', 8);
                         table.string('targetLang', 8);
@@ -50,7 +48,7 @@ export class SqlJobStore {
                         table.json('req');
                         table.json('res');
                         // table.json('leverage');
-                        table.index(['org', 'prj', 'sourceLang', 'targetLang']);
+                        table.index(['org', 'sourceLang', 'targetLang']);
                     });
                 }
             });
@@ -67,7 +65,6 @@ export class SqlJobStore {
             .select('jobId', 'status', 'sourceLang', 'targetLang', 'translationProvider', 'inflight', 'envelope', 'requestedAt', 'updatedAt')
             .where({
                 org: this.org,
-                prj: this.prj,
                 status,
             });
         return manifests;
@@ -79,7 +76,6 @@ export class SqlJobStore {
             .select('jobId', 'status')
             .where({
                 org: this.org,
-                prj: this.prj,
                 sourceLang,
                 targetLang,
             });
@@ -95,7 +91,6 @@ export class SqlJobStore {
         };
         const [ jobId ] = await this.db('jobStore').insert({
             org: this.org,
-            prj: this.prj,
             status,
             req: JSON.stringify(manifest),
         });
@@ -123,7 +118,6 @@ export class SqlJobStore {
         await this.db('jobStore')
             .where({
                 org: this.org,
-                prj: this.prj,
                 jobId: jobResponse.jobId,
             })
             .update(row);
@@ -135,7 +129,6 @@ export class SqlJobStore {
             .select('res')
             .where({
                 org: this.org,
-                prj: this.prj,
                 jobId,
             });
         return row.res;
