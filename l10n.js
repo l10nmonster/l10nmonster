@@ -351,11 +351,13 @@ monsterCLI
 monsterCLI
     .command('tmxexport')
     .description('generate TMX resources based on the current translation memory.')
+    .option('--all', 'export also entries with no translation')
     .option('-l, --lang <language>', 'target language to export')
     .action(async (options) => await withMonsterManager(async monsterManager => {
+        const all = options.all;
         const limitToLang = options.lang;
         console.log(`Exporting TMX for ${limitToLang ? limitToLang : 'all languages'}...`);
-        const status = await tmxExportCmd(monsterManager, limitToLang);
+        const status = await tmxExportCmd(monsterManager, { limitToLang, all });
         console.log(`Generated files: ${status.files.join(', ')}`);
     }))
 ;

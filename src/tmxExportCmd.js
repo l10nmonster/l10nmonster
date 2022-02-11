@@ -1,6 +1,6 @@
 import * as fs from 'fs/promises';
 
-export async function tmxExportCmd(mm, limitToLang) {
+export async function tmxExportCmd(mm, { limitToLang, all }) {
     await mm.updateSourceCache();
     const targetLangs = mm.getTargetLangs(limitToLang);
     const status = { files: [] };
@@ -13,7 +13,7 @@ export async function tmxExportCmd(mm, limitToLang) {
         }
         const tm = await mm.tmm.getTM(mm.sourceLang, targetLang);
         const filename = `${mm.sourceLang}-${targetLang}`;
-        const [ json, tmx ] = await tm.exportTMX(sourceLookup);
+        const [ json, tmx ] = await tm.exportTMX(sourceLookup, all);
         await fs.writeFile(`${filename}.json`, JSON.stringify(json, null, '\t'), 'utf8');
         await fs.writeFile(`${filename}.tmx`, tmx, 'utf8');
         status.files.push(filename);

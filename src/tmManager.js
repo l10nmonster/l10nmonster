@@ -85,7 +85,7 @@ class TM {
         await this.commit();
     }
 
-    async exportTMX(sourceLookup) {
+    async exportTMX(sourceLookup, all) {
         const getMangledSrc = tu => (tu.nsrc ? flattenNormalizedSourceV1(tu.nsrc)[0] : tu.src);
         const getMangledTgt = tu => (tu.ntgt ? flattenNormalizedSourceV1(tu.ntgt)[0] : tu.tgt);
         const tmx = {
@@ -93,13 +93,15 @@ class TM {
             resources: {},
         };
         for (const tu of Object.values(sourceLookup)) {
-            const group = tu.prj || 'default';
-            tmx.resources[group] ??= {};
-            tmx.resources[group][tu.guid] = {};
-            tmx.resources[group][tu.guid][this.tm.sourceLang] = getMangledSrc(tu);
             const translatedTU = this.tm.tus[tu.guid];
             const mangledTgt = translatedTU !== undefined && getMangledTgt(translatedTU);
-            Boolean(mangledTgt) && (tmx.resources[group][tu.guid][this.tm.targetLang] = mangledTgt);
+            if (all || Boolean(mangledTgt)) {
+                const group = tu.prj || 'default';
+                tmx.resources[group] ??= {};
+                tmx.resources[group][tu.guid] = {};
+                tmx.resources[group][tu.guid][this.tm.sourceLang] = getMangledSrc(tu);
+                Boolean(mangledTgt) && (tmx.resources[group][tu.guid][this.tm.targetLang] = mangledTgt);
+            }
         }
         return [ tmx, await js2tmx(tmx) ];
     }
