@@ -196,7 +196,7 @@ monsterCLI
                     for (const [rid, content] of Object.entries(langStatus.unstranslatedContent[prj] || {})) {
                         console.log(`      - ${rid}`);
                         for (const [sid, src] of Object.entries(content)) {
-                            console.log(`        - ${sid}: ${src}`);
+                            console.log(`        - ${sid}: ${sid === src ? '≣' : src}`);
                         }
                     }
                 }
