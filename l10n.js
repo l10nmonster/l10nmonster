@@ -187,7 +187,7 @@ monsterCLI
         for (const [lang, langStatus] of Object.entries(status.lang)) {
             console.log(`\nLanguage ${lang} (minimum quality ${langStatus.leverage.minimumQuality}, TM size:${langStatus.leverage.tmSize.toLocaleString()}):`);
             const totals = {};
-            const prjLeverage = Object.entries(langStatus.leverage.prjLeverage);
+            const prjLeverage = Object.entries(langStatus.leverage.prjLeverage).sort((a, b) => (a[0] > b[0] ? 1 : -1));
             for (const [prj, leverage] of prjLeverage) {
                 console.log(`  Project: ${prj}`);
                 computeTotals(totals, leverage);
