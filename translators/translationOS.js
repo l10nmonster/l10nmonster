@@ -148,6 +148,7 @@ export class TranslationOS {
                             guid,
                             ts: new Date(translation.actual_delivery_date).getTime(),
                             q: this.quality,
+                            cost: [ translation.total, translation.currency, translation.wc_raw, translation.wc_weighted ],
                         };
                         if (tuMeta[guid]) {
                             tusMap[guid].contentType = tuMeta[guid].contentType;
