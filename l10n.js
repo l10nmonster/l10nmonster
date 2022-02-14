@@ -8,6 +8,7 @@ import {
 import { Command, InvalidArgumentError } from 'commander';
 
 import MonsterManager from './src/monsterManager.js';
+import { OpsMgr } from './src/opsMgr.js';
 
 import { JsonJobStore } from './stores/jsonJobStore.js';
 import { SqlJobStore } from './stores/sqlJobStore.js';
@@ -50,8 +51,11 @@ async function initMonster() {
         const build = monsterCLI.opts().build;
         const release = monsterCLI.opts().release;
         const prj = monsterCLI.opts().prj;
+        const ops = monsterCLI.opts().ops;
+        const opsMgr = ops ? new OpsMgr({ opsDir: path.join(baseDir, ops)}) : new OpsMgr();
         const ctx = {
             baseDir,
+            opsMgr,
             env: process.env,
             arg: monsterCLI.opts().arg,
             verbose,
@@ -144,11 +148,12 @@ monsterCLI
     .name('l10n')
     .version('0.1.0')
     .description('Continuous localization for the rest of us.')
-    .option('-a, --arg <string>', 'optional constructor argument')
+    .option('-v, --verbose', 'output additional debug information')
+    .option('--ops <opsDir>', 'directory to output debug operations')
+    .option('-p, --prj <num>', 'limit to specified project')
     .option('-b, --build <type>', 'build type')
     .option('-r, --release <num>', 'release number')
-    .option('-p, --prj <num>', 'limit to specified project')
-    .option('-v, --verbose', 'output additional debug information')
+    .option('-a, --arg <string>', 'optional constructor argument')
     .option('--regression', 'keep variable constant during regression testing')
 ;
 

@@ -2,6 +2,28 @@ import got from 'got';
 
 import { flattenNormalizedSourceV1, extractNormalizedPartsV1 } from '../src/nsrcManglers.js';
 
+// TODO: externalize this ase general-purpose Op
+async function gotPostOp(request) {
+    return await got.post(request).json();
+}
+
+async function tosProcessRequestTranslationResponseOp({ submittedGuids }, responses) {
+    const response = responses[0];
+    const committedGuids = response.map(contentStatus => contentStatus.id_content);
+    const missingTus = submittedGuids.filter(submittedGuid => !committedGuids.includes(submittedGuid));
+    if (submittedGuids.length !== committedGuids.length || missingTus.length > 0) {
+        console.error(`sent ${submittedGuids.length} got ${committedGuids.length} missing tus: ${missingTus.map(tu => tu.id_content).join(', ')}`);
+        throw "inconsistent behavior!";
+    }
+    return committedGuids;
+}
+
+async function tosRequestTranslationsOp({ jobManifest }, committedGuids) {
+    jobManifest.inflight = committedGuids.flat(1);
+    jobManifest.status = 'pending';
+    return jobManifest;
+}
+
 // This is the chunking size for both upload and download
 const limit = 150;
 
@@ -19,14 +41,17 @@ export class TranslationOS {
             this.quality = quality;
             this.tuDecorator = tuDecorator;
             this.trafficStore = trafficStore;
+            this.ctx.opsMgr.registerOp(gotPostOp, { idempotent: false });
+            this.ctx.opsMgr.registerOp(tosProcessRequestTranslationResponseOp, { idempotent: true });
+            this.ctx.opsMgr.registerOp(tosRequestTranslationsOp, { idempotent: true });
         }
     }
 
     async requestTranslations(jobRequest) {
         const { tus, ...jobManifest } = jobRequest;
         const tuMeta = {};
-        let phNotes = null;
         const tosPayload = tus.map(tu => {
+            let phNotes = null;
             let content = tu.src;
             if (tu.nsrc) {
                 const [normalizedStr, phMap ] = flattenNormalizedSourceV1(tu.nsrc);
@@ -65,9 +90,16 @@ export class TranslationOS {
             }
             return tosTU;
         });
+        if (Object.keys(tuMeta).length > 0) {
+            jobManifest.envelope ??= {};
+            jobManifest.envelope.mf = 'v1';
+            jobManifest.envelope.tuMeta = JSON.stringify(tuMeta);
+        }
+
+        const requestTranslationsTask = this.ctx.opsMgr.createTask();
         try {
-            const inflight = [];
             let chunkNumber = 0;
+            const chunkOps = [];
             while (tosPayload.length > 0) {
                 const json = tosPayload.splice(0, limit);
                 chunkNumber++;
@@ -80,29 +112,14 @@ export class TranslationOS {
                     }
                 };
                 this.ctx.verbose && console.log(`Pushing to TOS job ${jobManifest.jobGuid} chunk size: ${json.length}`);
-                this.trafficStore && await this.trafficStore.logRequest('postTranslate', request);
-                const response = await got.post(request).json();
-                this.trafficStore && await this.trafficStore.logResponse('postTranslate-ok', response);
-                const committedGuids = response.map(contentStatus => contentStatus.id_content);
-                const missingTus = json.filter(tu => !committedGuids.includes(tu.id_content));
-                if (json.length !== committedGuids.length || missingTus.length > 0) {
-                    console.error(`sent ${json.length} got ${committedGuids.length} missing tus: ${missingTus.map(tu => tu.id_content).join(', ')}`);
-                    throw "inconsistent behavior!";
-                }
-                inflight.push(committedGuids);
+                const gotOp = await requestTranslationsTask.enqueue(gotPostOp, request);
+                const submittedGuids = json.map(tu => tu.id_content);
+                chunkOps.push(await requestTranslationsTask.enqueue(tosProcessRequestTranslationResponseOp, { submittedGuids }, [ gotOp ]));
             }
-            jobManifest.inflight = inflight.flat(1);
-            if (Object.keys(tuMeta).length > 0) {
-                jobManifest.envelope ??= {};
-                jobManifest.envelope.mf = 'v1';
-                jobManifest.envelope.tuMeta = JSON.stringify(tuMeta);
-            }
-            jobManifest.status = 'pending';
-            return jobManifest;
+            const rootOp = await requestTranslationsTask.enqueue(tosRequestTranslationsOp, { jobManifest }, chunkOps);
+            return await requestTranslationsTask.execute(rootOp);
         } catch (error) {
-            this.trafficStore && await this.trafficStore.logResponse('postTranslate-error', error);
-            error.response && console.error(error.response.body);
-            throw "TOS call failed!";
+            throw `TOS call failed - ${error}`;
         }
     }
 
