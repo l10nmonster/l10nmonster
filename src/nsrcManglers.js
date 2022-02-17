@@ -1,3 +1,7 @@
+export function flattenNormalizedSourceToOrdinal(nsrc) {
+    return nsrc.map((e, idx) => (typeof e === 'string' ? e : `{{${idx + 1}}}`)).join('');
+}
+
 export function flattenNormalizedSourceV1(nsrc) {
     const normalizedStr = [],
         phMap = {};

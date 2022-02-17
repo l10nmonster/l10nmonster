@@ -5,7 +5,7 @@ import {
 } from 'fs';
 import * as fs from 'fs/promises';
 import {js2tmx} from 'tmexchange';
-import { flattenNormalizedSourceV1 } from './nsrcManglers.js';
+import { flattenNormalizedSourceToOrdinal, flattenNormalizedSourceV1 } from './nsrcManglers.js';
 
 class TM {
     dirty = false;
@@ -20,6 +20,8 @@ class TM {
                 tus: {},
             }
         ;
+        this.lookUpByFlattenSrc = {};
+        Object.values(this.tm.tus).forEach(tu => this.setEntryByGuid(tu.guid, tu)); // this is to generate side-effects
     }
 
     get size() {
@@ -31,14 +33,15 @@ class TM {
     }
 
     setEntryByGuid(guid, entry) {
-        // const existingEntry = this.tm.tus[guid] || {};
-        // this.tm.tus[guid] = { ...existingEntry, ...entry };
-        this.tm.tus[guid] = entry;
-        this.dirty = true;
+        (this.dirty = (this.tm.tus[guid] !== entry)) && (this.tm.tus[guid] = entry); // only updates if different
+        const flattenSrc = entry.nsrc ? flattenNormalizedSourceToOrdinal(entry.nsrc) : entry.src;
+        this.lookUpByFlattenSrc[flattenSrc] ??= [];
+        !this.lookUpByFlattenSrc[flattenSrc].includes(entry) && this.lookUpByFlattenSrc[flattenSrc].push(entry);
     }
 
     getAllEntriesBySrc(src) {
-        return Object.values(this.tm.tus).filter(e => e.src === src);
+        const flattenSrc = Array.isArray(src) ? flattenNormalizedSourceToOrdinal(src) : src;
+        return this.lookUpByFlattenSrc[flattenSrc] || [];
     }
 
     getJobStatus(jobId) {
