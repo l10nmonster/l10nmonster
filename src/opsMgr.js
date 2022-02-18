@@ -148,7 +148,7 @@ export class OpsMgr {
             }
         }
         this.registry = {};
-        this.verbose = Boolean(params.verbose);
+        this.verbose = Boolean(params?.verbose);
     }
 
     registerOp(func, options = {}) {
