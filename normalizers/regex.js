@@ -67,7 +67,7 @@ export const javaEscapesEncoder = (str) => str.replaceAll('\t', '\\t').replaceAl
 
 // Works for both XML and HTML
 export const xmlDecoder = regexMatchingDecoderMaker(
-    /(?<tag>(?<bx><[^>/]+>)|(?<ex><\/[^>]+>)|(?<x><[^>]+\/>))/g,
+    /(?<tag>(?<bx><[^/][^>]*>)|(?<ex><\/[^>]+>)|(?<x><[^>]+\/>))/g,
     // eslint-disable-next-line no-nested-ternary
     (groups) => ({ t: (groups.bx ? 'bx' : (groups.ex ? 'ex' : 'x')), v: groups.tag })
 );
