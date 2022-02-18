@@ -36,11 +36,8 @@ async function tosRequestTranslationsOp({ jobManifest }, committedGuids) {
     return jobManifest;
 }
 
-// This is the chunking size for both upload and download
-const limit = 150;
-
 export class TranslationOS {
-    constructor({ baseURL, apiKey, serviceType, quality, tuDecorator, trafficStore }) {
+    constructor({ baseURL, apiKey, serviceType, quality, tuDecorator, trafficStore, chunkSize }) {
         if ((apiKey && quality) === undefined) {
             throw 'You must specify apiKey, quality for TranslationOS';
         } else {
@@ -53,6 +50,7 @@ export class TranslationOS {
             this.quality = quality;
             this.tuDecorator = tuDecorator;
             this.trafficStore = trafficStore;
+            this.chunkSize = chunkSize || 100;
             this.ctx.opsMgr.registerOp(gotPostOp, { idempotent: false });
             this.ctx.opsMgr.registerOp(tosProcessRequestTranslationResponseOp, { idempotent: true });
             this.ctx.opsMgr.registerOp(tosRequestTranslationsOp, { idempotent: true });
@@ -90,7 +88,7 @@ export class TranslationOS {
                 'service_type': this.serviceType,
                 'dashboard_query_labels': [ tu.rid.slice(-50) ],
             };
-            (tu.sid !== tu.src) && tosTU.dashboard_query_labels.push(tu.sid.slice(-50));
+            (tu.sid !== tu.src) && tosTU.dashboard_query_labels.push(tu.sid.replaceAll('\n', '').slice(-50));
             if (tu.prj !== undefined) {
                 // eslint-disable-next-line camelcase
                 tosTU.id_order_group = tu.prj;
@@ -111,7 +109,7 @@ export class TranslationOS {
             let chunkNumber = 0;
             const chunkOps = [];
             while (tosPayload.length > 0) {
-                const json = tosPayload.splice(0, limit);
+                const json = tosPayload.splice(0, this.chunkSize);
                 chunkNumber++;
                 const request = {
                     url: `${this.baseURL}/translate`,
@@ -119,7 +117,10 @@ export class TranslationOS {
                     headers: {
                         ...this.stdHeaders,
                         'x-idempotency-id': `jobGuid:${jobRequest.jobGuid} chunk:${chunkNumber}`,
-                    }
+                    },
+                    timeout: {
+                        request: 30000,
+                    },
                 };
                 this.ctx.verbose && console.log(`Pushing to TOS job ${jobManifest.jobGuid} chunk size: ${json.length}`);
                 const gotOp = await requestTranslationsTask.enqueue(gotPostOp, request);
@@ -152,10 +153,10 @@ export class TranslationOS {
             request.json = {
                 ...request.json,
                 offset,
-                limit,
+                limit: this.chunkSize,
             }
             try {
-                this.ctx.verbose && console.log(`Fetching from TOS job ${jobManifest.jobGuid} offset ${offset} limit ${limit}`);
+                this.ctx.verbose && console.log(`Fetching from TOS job ${jobManifest.jobGuid} offset ${offset} limit ${this.chunkSize}`);
                 this.trafficStore && await this.trafficStore.logRequest('postStatus', request);
                 response = await got.post(request).json();
                 this.trafficStore && await this.trafficStore.logResponse('postStatus-ok', response);
@@ -192,8 +193,8 @@ export class TranslationOS {
                     }
                 }
             }
-            offset += limit;
-        } while (response.length === limit);
+            offset += this.chunkSize;
+        } while (response.length === this.chunkSize);
         const tus = Object.values(tusMap);
         const { ...newManifest } = jobManifest;
         const missingGuids = jobManifest.inflight.filter(guid => tusMap[guid] === undefined);
