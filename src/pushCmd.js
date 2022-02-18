@@ -19,7 +19,6 @@ export async function pushCmd(mm, { limitToLang, leverage }) {
                 await mm.processJob(jobResponse, jobRequest);
                 langStatus.status = jobResponse.status;
                 langStatus.num = jobResponse.tus?.length ?? jobResponse.inflight?.length ?? 0;
-                leverage && (langStatus.internalRepetitions = jobRequest.leverage.internalRepetitions);
                 status.push(langStatus);
             } else {
                 throw 'No translationProvider configured';

@@ -264,7 +264,6 @@ monsterCLI
         if (status.length > 0) {
           for (const ls of status) {
             console.log(`${ls.num.toLocaleString()} translations units requested for language ${ls.targetLang} -> status: ${ls.status}`);
-            leverage && console.log(`${ls.internalRepetitions.toLocaleString()} untranslated strings skipped because repeated`);
           }
         } else {
           console.log('Nothing to push!');
