@@ -52,7 +52,7 @@ async function initMonster() {
         const release = monsterCLI.opts().release;
         const prj = monsterCLI.opts().prj;
         const ops = monsterCLI.opts().ops;
-        const opsMgr = ops ? new OpsMgr({ opsDir: path.join(baseDir, ops)}) : new OpsMgr();
+        const opsMgr = ops ? new OpsMgr({ opsDir: path.join(baseDir, ops), verbose }) : new OpsMgr({ verbose });
         const ctx = {
             baseDir,
             opsMgr,
