@@ -76,11 +76,9 @@ export class TranslationOS {
                 'target_languages': [ jobRequest.targetLang ],
                 // 'content_type': 'text/html',
                 'service_type': this.serviceType,
-                'dashboard_query_labels': [
-                    `rid:${tu.rid}`,
-                    `sid:${tu.sid}`,
-                ],
+                'dashboard_query_labels': [ tu.rid ],
             };
+            (tu.sid !== tu.src) && tosTU.dashboard_query_labels.push(tu.sid);
             if (tu.prj !== undefined) {
                 // eslint-disable-next-line camelcase
                 tosTU.id_order_group = tu.prj;
