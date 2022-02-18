@@ -4,7 +4,11 @@ import { flattenNormalizedSourceV1, extractNormalizedPartsV1 } from '../normaliz
 
 // TODO: externalize this ase general-purpose Op
 async function gotPostOp(request) {
-    return await got.post(request).json();
+    try {
+        return await got.post(request).json();
+    } catch(error) {
+        throw error?.response?.body || error;
+    }
 }
 
 async function tosProcessRequestTranslationResponseOp({ submittedGuids }, responses) {
