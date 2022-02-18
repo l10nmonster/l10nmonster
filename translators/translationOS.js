@@ -7,7 +7,15 @@ async function gotPostOp(request) {
     try {
         return await got.post(request).json();
     } catch(error) {
-        throw error?.response?.body || error;
+        const errorBody = error?.response?.body;
+        if (errorBody) {
+            try {
+                throw JSON.parse(errorBody);
+            } catch(e) {
+                throw errorBody;
+            }
+        }
+        throw error;
     }
 }
 
@@ -80,9 +88,9 @@ export class TranslationOS {
                 'target_languages': [ jobRequest.targetLang ],
                 // 'content_type': 'text/html',
                 'service_type': this.serviceType,
-                'dashboard_query_labels': [ tu.rid ],
+                'dashboard_query_labels': [ tu.rid.slice(-50) ],
             };
-            (tu.sid !== tu.src) && tosTU.dashboard_query_labels.push(tu.sid);
+            (tu.sid !== tu.src) && tosTU.dashboard_query_labels.push(tu.sid.slice(-50));
             if (tu.prj !== undefined) {
                 // eslint-disable-next-line camelcase
                 tosTU.id_order_group = tu.prj;
