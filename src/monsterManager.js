@@ -194,45 +194,50 @@ export default class MonsterManager {
             const prj = res.prj || 'default';
             prjLeverage[prj] ??= {
                 translated: 0,
+                translatedWords: 0,
                 translatedByQ: {},
                 untranslated: 0,
                 untranslatedChars: 0,
                 untranslatedWords: 0,
                 pending: 0,
+                pendingWords: 0,
                 internalRepetitions: 0,
                 internalRepetitionWords: 0,
             };
+            const leverageDetails = prjLeverage[prj];
             if (res.targetLangs.includes(targetLang)) {
                 for (const seg of res.segments) {
                     // TODO: if segment is pluralized we need to generate/suppress the relevant number of variants for the targetLang
                     const tmEntry = tm.getEntryByGuid(seg.guid);
+                    const tu = this.makeTU(res, seg);
+                    const plainText = tu.nsrc ? tu.nsrc.map(e => (typeof e === 'string' ? e : '')).join('') : tu.src;
+                    const words = wordsCountModule.wordsCount(plainText);
                     if (!tmEntry || (tmEntry.q < minimumQuality && !tmEntry.inflight)) {
-                        const tu = this.makeTU(res, seg);
-                        const plainText = tu.nsrc ? tu.nsrc.map(e => (typeof e === 'string' ? e : '')).join('') : tu.src;
-                        const words = wordsCountModule.wordsCount(plainText);
                         // if the same src is in flight already, mark it as an internal repetition
                         tm.getAllEntriesBySrc(tu.src).length > 0 && (repetitionMap[tu.src] = true);
                         if (repetitionMap[tu.src]) {
                             // TODO: there may be some edge cases were src is the same but contentType is different -- we may care or...
                             //       this may be a feature (e.g. we can reuse ios and android strings without placeholders)
-                            prjLeverage[prj].internalRepetitions++;
-                            prjLeverage[prj].internalRepetitionWords += words;
+                            leverageDetails.internalRepetitions++;
+                            leverageDetails.internalRepetitionWords += words;
                             !leverage && job.tus.push(tu);
                         } else {
                             repetitionMap[tu.src] = true;
                             job.tus.push(tu);
-                            prjLeverage[prj].untranslated++;
-                            prjLeverage[prj].untranslatedChars += seg.str.length;
-                            prjLeverage[prj].untranslatedWords += words;
+                            leverageDetails.untranslated++;
+                            leverageDetails.untranslatedChars += seg.str.length;
+                            leverageDetails.untranslatedWords += words;
                         }
                     } else {
                         if (tmEntry.inflight) {
-                            prjLeverage[prj].pending++;
+                            leverageDetails.pending++;
+                            leverageDetails.pendingWords += words;
                         } else {
-                            prjLeverage[prj].translated ??= 0;
-                            prjLeverage[prj].translated++;
-                            prjLeverage[prj].translatedByQ[tmEntry.q] ??= 0;
-                            prjLeverage[prj].translatedByQ[tmEntry.q]++;
+                            leverageDetails.translated ??= 0;
+                            leverageDetails.translated++;
+                            leverageDetails.translatedWords += words;
+                            leverageDetails.translatedByQ[tmEntry.q] ??= 0;
+                            leverageDetails.translatedByQ[tmEntry.q]++;
                         }
                     }
                 }

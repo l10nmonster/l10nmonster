@@ -159,11 +159,11 @@ monsterCLI
 
 function printLeverage(leverage) {
     const totalStrings = leverage.translated + leverage.pending + leverage.untranslated + leverage.internalRepetitions;
-    console.log(`    - total strings for target language: ${totalStrings.toLocaleString()}`);
+    console.log(`    - total strings for target language: ${totalStrings.toLocaleString()} (${leverage.translatedWords.toLocaleString()} translated words)`);
     for (const [q, num] of Object.entries(leverage.translatedByQ).sort((a,b) => b[1] - a[1])) {
         console.log(`    - translated strings @ quality ${q}: ${num.toLocaleString()}`);
     }
-    console.log(`    - strings pending translation: ${leverage.pending.toLocaleString()}`);
+    console.log(`    - strings pending translation: ${leverage.pending.toLocaleString()} (${leverage.pendingWords.toLocaleString()} words)`);
     console.log(`    - untranslated unique strings: ${leverage.untranslated.toLocaleString()} (${leverage.untranslatedChars.toLocaleString()} chars - ${leverage.untranslatedWords.toLocaleString()} words - $${(leverage.untranslatedWords * .2).toFixed(2)})`);
     console.log(`    - untranslated repeated strings: ${leverage.internalRepetitions.toLocaleString()} (${leverage.internalRepetitionWords.toLocaleString()} words)`);
 }
