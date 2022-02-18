@@ -1,6 +1,6 @@
 import got from 'got';
 
-import { flattenNormalizedSourceV1, extractNormalizedPartsV1 } from '../src/nsrcManglers.js';
+import { flattenNormalizedSourceV1, extractNormalizedPartsV1 } from '../normalizers/util.js';
 
 // TODO: externalize this ase general-purpose Op
 async function gotPostOp(request) {

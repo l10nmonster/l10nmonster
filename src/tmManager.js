@@ -5,7 +5,7 @@ import {
 } from 'fs';
 import * as fs from 'fs/promises';
 import {js2tmx} from 'tmexchange';
-import { flattenNormalizedSourceToOrdinal, flattenNormalizedSourceV1 } from './nsrcManglers.js';
+import { flattenNormalizedSourceToOrdinal, flattenNormalizedSourceV1 } from '../normalizers/util.js';
 
 class TM {
     dirty = false;

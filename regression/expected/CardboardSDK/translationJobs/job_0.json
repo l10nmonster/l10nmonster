@@ -64,7 +64,7 @@
 			"q": 70
 		},
 		{
-			"guid": "AdyQmEgWnluTjMejDA1HHn_MJQcmdxevJUBS0y-60g0",
+			"guid": "XY8o8xA5C_HlR4v8LDc4L98Y0mR-4gHyLjDxwvNhDrM",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "DataSynced",
 			"src": "%1$@ detected",
@@ -168,7 +168,7 @@
 			"q": 70
 		},
 		{
-			"guid": "_Ox3fIvRn_stIM84uJyloQzxDp9QbJP4R5jez9b8WlM",
+			"guid": "4jxuTPXhhsLGShj5wDGlsktW8NV1GAYrGDxHaZV_6C4",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "PlaceYourPhoneInViewerFormat",
 			"src": "Place your phone into your %1$@ viewer.",
@@ -211,7 +211,7 @@
 			"q": 70
 		},
 		{
-			"guid": "JMQujy0s8ueEiGAYRND0qp57PBG6f5G2-PaMflyPv7A",
+			"guid": "slgigM0NfUFIqYMNDpipEAV2LaSg4PIejxEgH37p4Pw",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "SettingsCurrentViewerLabelFormat",
 			"src": "Current viewer: %1$@",
@@ -261,7 +261,7 @@
 			"q": 70
 		},
 		{
-			"guid": "9vxGmQDp9PWB8SwncaMftGUQYVZPMwVUUZd0s1dqo4c",
+			"guid": "Ko1R6hKlnw0dJtnGrwHdjhq0igmaxHWUuci1ZrEiYvg",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "SwitchViewerActivityMenuTitle",
 			"src": "Switch viewer: %1$@",
@@ -302,7 +302,7 @@
 			"q": 70
 		},
 		{
-			"guid": "xZGq-VKRsUxzvE_2BEUPwIO768lsVjLoJJd5_V3Ypsg",
+			"guid": "xX2wjf_JnaqCdoe4AvzrpR0w__P7h12WCoMygm6ru8U",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "ViewerConfigured",
 			"src": "Your phone is now configured for your %1$@ viewer.",
@@ -345,7 +345,7 @@
 			"q": 70
 		},
 		{
-			"guid": "nW_tFp71vkzVwlJDn7vwUbE7V1g3qnKXXPieygn0MOA",
+			"guid": "Ln6QELVxYXr2EgOv6P2-EYewhB5H6jLOJ1W5jilT_nc",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "AccessibilityBackButton",
 			"src": "Back\\u0020to previous screen",

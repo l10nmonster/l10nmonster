@@ -1,4 +1,5 @@
 import { diffJson } from 'diff';
+import { getNormalizedString, flattenNormalizedSourceToOrdinal } from '../normalizers/util.js';
 
 // https://stackoverflow.com/questions/9781218/how-to-change-node-jss-console-font-color
 const color = { red: '\x1b[31m', green: '\x1b[32m', reset: '\x1b[0m' };
@@ -11,18 +12,26 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
         const verbose = mm.verbose;
         const sourceLang = mm.sourceLang;
         const tm = await mm.tmm.getTM(sourceLang, targetLang);
-        const translator = async function translate(rid, sid, src) {
-            const guid = mm.generateFullyQualifiedGuid(rid, sid, src);
-            const entry = tm.getEntryByGuid(guid);
-            !entry && verbose && console.log(`Couldn't find ${sourceLang}_${targetLang} entry for ${rid}+${sid}+${src}`);
-            return entry?.tgt; // don't fall back, let the caller deal with it
-        };
         status.generatedResources[targetLang] = [];
         status.diff[targetLang] = {};
         for (const res of resourceStats) {
             if (res.targetLangs.includes(targetLang)) {
                 const resourceId = res.id;
                 const pipeline = mm.contentTypes[res.contentType];
+                const translator = async function translate(rid, sid, src) {
+                    let nsrc;
+                    if (pipeline.decoders) {
+                        const normalizedStr = getNormalizedString(src, pipeline.decoders);
+                        if (normalizedStr[0] !== src) {
+                            nsrc = normalizedStr;
+                        }
+                    }
+                    const flattenSrc = nsrc ? flattenNormalizedSourceToOrdinal(nsrc) : src;
+                    const guid = mm.generateFullyQualifiedGuid(rid, sid, flattenSrc);
+                    const entry = tm.getEntryByGuid(guid);
+                    !entry && verbose && console.log(`Couldn't find ${sourceLang}_${targetLang} entry for ${rid}+${sid}+${src}`);
+                    return entry?.tgt; // don't fall back, let the caller deal with it
+                };
                 const resource = await pipeline.source.fetchResource(res.id);
                 const translatedRes = await pipeline.resourceFilter.generateTranslatedResource({ resourceId, resource, targetLang, translator });
                 const translatedResourceId = pipeline.target.translatedResourceId(targetLang, resourceId);

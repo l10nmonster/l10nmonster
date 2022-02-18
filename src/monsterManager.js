@@ -11,7 +11,7 @@ import wordsCountModule from 'words-count';
 
 import TMManager from './tmManager.js';
 import { JsonJobStore } from '../stores/jsonJobStore.js';
-import { decodeString } from '../normalizers/util.js';
+import { getNormalizedString, flattenNormalizedSourceToOrdinal } from '../normalizers/util.js';
 
 export default class MonsterManager {
     constructor({ monsterDir, monsterConfig, ctx }) {
@@ -100,7 +100,13 @@ export default class MonsterManager {
                 const parsedRes = await pipeline.resourceFilter.parseResource({resource: payload, isSource: true});
                 res.segments = parsedRes.segments;
                 for (const seg of res.segments) {
-                    seg.guid = this.generateFullyQualifiedGuid(res.id, seg.sid, seg.str);
+                    if (pipeline.decoders) {
+                        const normalizedStr = getNormalizedString(seg.str, pipeline.decoders);
+                        if (normalizedStr[0] !== seg.str) {
+                            seg.nstr = normalizedStr;
+                        }
+                    }
+                    seg.guid = this.generateFullyQualifiedGuid(res.id, seg.sid, seg.nstr ? flattenNormalizedSourceToOrdinal(seg.nstr) : seg.str);
                     seg.contentType = res.contentType;
                 }
                 newCache[res.id] = res;
@@ -154,25 +160,20 @@ export default class MonsterManager {
         await tm.processJob(jobResponse, jobRequest);
     }
 
-    makeTU(res, unit) {
-        const { str, src, tgt, ...seg } = unit;
-        const content = str ?? src ?? tgt;
-        const pipeline = this.contentTypes[res.contentType];
+    makeTU(res, segment) {
+        const { str, nstr, ...seg } = segment;
         const tu = {
             ...seg,
-            src: content,
+            src: str,
             contentType: res.contentType,
             rid: res.id,
             ts: new Date(res.modified).getTime(),
         };
+        if (nstr !== undefined) {
+            tu.nsrc = nstr;
+        }
         if (res.prj !== undefined) {
             tu.prj = res.prj;
-        }
-        if (pipeline.decoders) {
-            const normalizedStr = decodeString(content, pipeline.decoders);
-            if (normalizedStr[0] !== content) {
-                tu.nsrc = normalizedStr;
-            }
         }
         return tu;
     }

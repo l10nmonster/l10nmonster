@@ -1,3 +1,5 @@
+import { getNormalizedString } from '../normalizers/util.js';
+
 // this is similar to push, except that existing translations in resources but not in TM
 // are assumed to be in sync with source and imported into the TM
 export async function grandfatherCmd(mm, quality, limitToLang) {
@@ -23,7 +25,15 @@ export async function grandfatherCmd(mm, quality, limitToLang) {
                 } finally {
                     if (resource) {
                         const parsedResource = await pipeline.resourceFilter.parseResource({ resource, isSource: false });
-                        parsedResource.segments.forEach(seg => lookup[seg.sid] = mm.makeTU(resMeta, seg));
+                        for (const seg of parsedResource.segments) {
+                            if (pipeline.decoders) {
+                                const normalizedStr = getNormalizedString(seg.str, pipeline.decoders);
+                                if (normalizedStr[0] !== seg.str) {
+                                    seg.nstr = normalizedStr;
+                                }
+                            }
+                            lookup[seg.sid] = mm.makeTU(resMeta, seg);
+                        }
                     }
                 }
                 txCache[tu.rid] = lookup;

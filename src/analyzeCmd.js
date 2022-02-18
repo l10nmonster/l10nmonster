@@ -1,5 +1,5 @@
 import wordsCountModule from 'words-count';
-import { decodeString } from '../normalizers/util.js';
+import { getNormalizedString } from '../normalizers/util.js';
 
 export async function analyzeCmd(mm) {
     await mm.updateSourceCache();
@@ -23,7 +23,7 @@ export async function analyzeCmd(mm) {
             qualifiedMatches[qGuid].push({ rid, sid: seg.sid, str: seg.str, wc });
             let content = seg.str;
             if (pipeline.decoders) {
-                const parts = decodeString(content, pipeline.decoders);
+                const parts = getNormalizedString(content, pipeline.decoders);
                 content = parts.map(e => (typeof e === 'string' ? e : '')).join('');
             }
             if (smellyRegex.test(content)) {
