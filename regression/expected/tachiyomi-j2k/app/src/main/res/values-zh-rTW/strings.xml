@@ -50,18 +50,6 @@
 	<string name="by_source_order">依照來源排序</string>
 	<string name="by_chapter_number">依照章節編號排序</string>
 	<string name="by_update_date">依照上傳時間排序</string>
-	<plurals name="remove_n_chapters">
-		<item quantity="one">Remove %1$d downloaded chapter?</item>
-		<item quantity="other">Remove %1$d downloaded chapters?</item>
-	</plurals>
-	<plurals name="chapters_plural">
-		<item quantity="one">%1$d chapter</item>
-		<item quantity="other">%1$d chapters</item>
-	</plurals>
-	<plurals name="pages_left">
-		<item quantity="one">%1$d page left</item>
-		<item quantity="other">%1$d pages left</item>
-	</plurals>
 	<!-- Category -->
 	<string name="categories">分類</string>
 	<string name="adding_category_to_queue">新增%1$s到佇列</string>
@@ -71,10 +59,6 @@
 	<string name="add_categories">新增分類</string>
 	<string name="edit_categories">管理分類</string>
 	<string name="move_to_categories">移至分類</string>
-	<plurals name="category_plural">
-		<item quantity="one">%d category</item>
-		<item quantity="other">分類</item>
-	</plurals>
 	<string name="category_with_name_exists">已有名稱相同的分類！</string>
 	<!-- Updates -->
 	<string name="update">更新</string>
@@ -116,18 +100,6 @@
 	<string name="more_library_settings">詳細書櫃設定</string>
 	<!-- Library update service notifications -->
 	<string name="new_chapters_found">發現新章節</string>
-	<plurals name="for_n_titles">
-		<item quantity="one">For %d title</item>
-		<item quantity="other">For %d titles</item>
-	</plurals>
-	<plurals name="notification_and_n_more">
-		<item quantity="one">and %1$d more chapter</item>
-		<item quantity="other">and %1$d more chapters</item>
-	</plurals>
-	<plurals name="notification_update_failed">
-		<item quantity="one">1 update failed</item>
-		<item quantity="other">有 %1$d 項更新失敗</item>
-	</plurals>
 	<!-- Library settings -->
 	<string name="library_update_frequency">書櫃更新頻率</string>
 	<string name="library_update_order">書櫃更新順序</string>
@@ -179,18 +151,6 @@
 	<string name="nsfw_short">18+</string>
 	<string name="unofficial">非官方</string>
 	<string name="may_contain_nsfw">可能包含未滿十八歲之人不宜觀賞的內容</string>
-	<plurals name="_updates_pending">
-		<item quantity="one">%d update pending</item>
-		<item quantity="other">%d updates pending</item>
-	</plurals>
-	<plurals name="extensions_updated_plural">
-		<item quantity="one">Extension updated</item>
-		<item quantity="other">%d extensions updated</item>
-	</plurals>
-	<plurals name="extension_updates_available">
-		<item quantity="one">Extension update available</item>
-		<item quantity="other">%d 個擴充套件可更新</item>
-	</plurals>
 	<!-- Reader -->
 	<string name="set_as_cover">設為書封</string>
 	<string name="cover_updated">已更新書封</string>
@@ -270,14 +230,6 @@
 	<string name="right_and_left_nav">左右式</string>
 	<string name="invert_tapping">反轉輕觸方向</string>
 	<string name="none">無</string>
-	<plurals name="pages_plural">
-		<item quantity="one">%1$d page</item>
-		<item quantity="other">%1$d pages</item>
-	</plurals>
-	<plurals name="missing_chapters_warning">
-		<item quantity="one">Skipping 1 chapter, either the source is missing it or it has been filtered out</item>
-		<item quantity="other">略過了 %d 章，也許是來源沒有這些章節，或其已被你的篩選規則排除</item>
-	</plurals>
 	<!-- Manga details -->
 	<string name="start_reading">開始閱讀</string>
 	<string name="start_reading_chapter_">開始閱讀第%1$s章</string>
@@ -318,12 +270,6 @@
 	<string name="error_sharing_cover">分享封面時發生錯誤</string>
 	<string name="custom_manga_info">自訂漫畫資訊</string>
 	<string name="set_as_default">設定為預設</string>
-	<plurals name="deleted_chapters">
-		<item quantity="one">A chapter has been removed from the source:\n%2$s\nDelete
-            its download?</item>
-		<item quantity="other">%1$s chapters have been removed from the source:\n%2$s\n\nDelete
-            their downloads?</item>
-	</plurals>
 	<!-- Tracking -->
 	<string name="tracking">歷程</string>
 	<string name="tracked">已紀錄歷程</string>
@@ -353,18 +299,6 @@
 	<string name="source_migration">來源遷移</string>
 	<string name="migrate">遷移</string>
 	<string name="copy_value">副本</string>
-	<plurals name="migrate_manga">
-		<item quantity="one">Migrate %1$d%2$s manga?</item>
-		<item quantity="other">Migrate %1$d%2$s manga?</item>
-	</plurals>
-	<plurals name="copy_manga">
-		<item quantity="one">Copy %1$d%2$s manga?</item>
-		<item quantity="other">Copy %1$d%2$s manga?</item>
-	</plurals>
-	<plurals name="manga_migrated">
-		<item quantity="one">%d manga migrated</item>
-		<item quantity="other">%d manga migrated</item>
-	</plurals>
 	<!-- Settings -->
 	<string name="settings">設定</string>
 	<string name="general">一般</string>
@@ -418,10 +352,6 @@
 	<string name="restore_duration">%02d 分 %02d 秒</string>
 	<string name="progress">進度</string>
 	<string name="complete">作業完成</string>
-	<plurals name="restore_completed_message">
-		<item quantity="one">Done in %1$s with %2$s error</item>
-		<item quantity="other">歷時 %1$s，出現 %2$s 個錯誤</item>
-	</plurals>
 	<!-- Advanced section -->
 	<string name="clear_chapter_cache">清除章節快取</string>
 	<string name="crash_logs">當機記錄</string>
@@ -433,10 +363,6 @@
 	<string name="doh">DNS over HTTPS</string>
 	<string name="requires_app_restart">需要重新啟動應用程式以套用</string>
 	<string name="used_">已使用：%1$s</string>
-	<plurals name="cache_cleared">
-		<item quantity="one">Cache cleared. %d file has been deleted</item>
-		<item quantity="other">Cache cleared. %d files have been deleted</item>
-	</plurals>
 	<string name="cache_delete_error">清除快取時發生錯誤</string>
 	<string name="clear_cookies">清除 Cookies</string>
 	<string name="cookies_cleared">已清除 Cookies</string>
@@ -450,10 +376,6 @@
 	<string name="updates_tracking_details">與歷程平台同步處理閱讀狀態、評分以及進度</string>
 	<string name="disable_battery_optimization">停用電池效能最佳化</string>
 	<string name="battery_optimization_disabled">已停用電池效能最佳化</string>
-	<plurals name="cleanup_done">
-		<item quantity="one">Cleanup done. Removed %d folder</item>
-		<item quantity="other">Cleanup done. Removed %d folders</item>
-	</plurals>
 	<!-- Browse Settings -->
 	<string name="pref_global_search">全域搜尋</string>
 	<string name="check_for_extension_updates">自動檢查擴充套件更新</string>
@@ -516,10 +438,6 @@
 	<string name="daily">每日</string>
 	<string name="every_2_days">每 2 日</string>
 	<string name="weekly">每週</string>
-	<plurals name="after_minutes">
-		<item quantity="one">After %1$s minute</item>
-		<item quantity="other">After %1$s minutes</item>
-	</plurals>
 	<!-- File Picker Titles -->
 	<string name="select_cover_image">選擇書封圖片</string>
 	<string name="select_backup_file">選擇備份檔案</string>

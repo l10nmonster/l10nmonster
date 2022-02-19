@@ -11,7 +11,7 @@ import { xmlEntityDecoder, androidEscapesDecoder, xmlEntityEncoder, androidEscap
 function collapseTextNodesAndDecode(node) {
     const collapsedText = node.map(e => e['#text']).join('');
     const afterXmlEntities = xmlEntityDecoder([ collapsedText ]).join('');
-    const afterSpaceCollapse = afterXmlEntities.replaceAll(/[\s]+/g, ' ');
+    const afterSpaceCollapse = afterXmlEntities.replaceAll(/[ \f\n\r\t\v\u2028\u2029]+/g, ' ');
     return androidEscapesDecoder([ afterSpaceCollapse ]).join('');
 }
 
@@ -43,13 +43,13 @@ export class AndroidFilter {
                     if ('#comment' in resNode) {
                         lastComment = collapseTextNodesAndDecode(resNode['#comment']).trim();
                     } else if ('string' in resNode && resNode[':@'].translatable !== 'false') {
-                        resNode[':@'].name === 'external_storage_permission_notice' && console.dir(resNode.string, { depth: null })
+                        // resNode[':@'].name === 'external_storage_permission_notice' && console.dir(resNode.string, { depth: null })
                         const seg = {
                             sid: resNode[':@'].name,
                             str: collapseTextNodesAndDecode(resNode.string)
                         };
                         lastComment && (seg.notes = lastComment);
-                        resNode[':@'].name === 'external_storage_permission_notice' && console.dir(seg)
+                        // resNode[':@'].name === 'external_storage_permission_notice' && console.dir(seg)
                         segments.push(seg);
                     } else if ('plurals' in resNode) {
                         for (const itemNode of resNode.plurals) {
@@ -99,13 +99,16 @@ export class AndroidFilter {
                             nodesToDelete.push(resNode);
                         }
                     } else if ('plurals' in resNode) { // TODO: deal with plurals of the target language, not the source
+                        let dropPlural = false;
                         for (const itemNode of resNode.plurals) {
                             const translation = await translator(resourceId, `${resNode[':@'].name}_${itemNode[':@'].quantity}`, collapseTextNodesAndDecode(itemNode.item));
-                            if (translation !== undefined) {
-                                // for missing items we leave the source instead of removing the them
+                            if (translation === undefined) {
+                                dropPlural = true;
+                            } else {
                                 itemNode.item = [ { '#text': xmlEntityEncoder(androidEscapesEncoder(translation)) } ];
                             }
                         }
+                        dropPlural && nodesToDelete.push(resNode);
                     }
                 }
                 rootNode.resources = rootNode.resources.filter(n => !nodesToDelete.includes(n));

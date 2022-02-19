@@ -54,18 +54,6 @@
 	<string name="by_chapter_number">按章节数</string>
 	<string name="by_update_date">按上传日期</string>
 	<string name="scanlators">扫译小组</string>
-	<plurals name="remove_n_chapters">
-		<item quantity="one">Remove %1$d downloaded chapter?</item>
-		<item quantity="other">移除已下载的 %1$d 章？</item>
-	</plurals>
-	<plurals name="chapters_plural">
-		<item quantity="one">%1$d chapter</item>
-		<item quantity="other">%1$d 章</item>
-	</plurals>
-	<plurals name="pages_left">
-		<item quantity="one">%1$d page left</item>
-		<item quantity="other">剩余 %1$d 页</item>
-	</plurals>
 	<!-- Category -->
 	<string name="category">类别</string>
 	<string name="categories">分类</string>
@@ -89,10 +77,6 @@
 	<string name="edit_categories">编辑分类</string>
 	<string name="manage_category">管理分类</string>
 	<string name="move_to_categories">移至分类</string>
-	<plurals name="category_plural">
-		<item quantity="one">%d category</item>
-		<item quantity="other">%d 个类别</item>
-	</plurals>
 	<string name="category_with_name_exists">已存在名称相同的分类！</string>
 	<string name="category_cannot_be_blank">分类名称不能为空</string>
 	<string name="category_deleted">分类已删除</string>
@@ -174,18 +158,6 @@
 	<!-- Library update service notifications -->
 	<string name="new_chapters_found">发现新章节</string>
 	<string name="notification_size_warning">大型更新可能会导致电池使用量增加和来源变慢</string>
-	<plurals name="for_n_titles">
-		<item quantity="one">For %d title</item>
-		<item quantity="other">共 %d 个漫画</item>
-	</plurals>
-	<plurals name="notification_and_n_more">
-		<item quantity="one">and %1$d more chapter</item>
-		<item quantity="other">还有 %1$d 章</item>
-	</plurals>
-	<plurals name="notification_update_failed">
-		<item quantity="one">1 update failed</item>
-		<item quantity="other">%1$d 本漫画更新失败</item>
-	</plurals>
 	<string name="channel_errors">错误</string>
 	<!-- Library settings -->
 	<string name="library_update_frequency">书架更新频率</string>
@@ -292,19 +264,7 @@
 	<string name="update_all">更新全部</string>
 	<string name="some_extensions_may_prompt">仍然会提示先安装有些扩展。</string>
 	<string name="updating_extensions">更新扩展中</string>
-	<plurals name="_updates_pending">
-		<item quantity="one">%d update pending</item>
-		<item quantity="other">%d 个待处理更新</item>
-	</plurals>
 	<string name="extensions_updated">扩展已更新</string>
-	<plurals name="extensions_updated_plural">
-		<item quantity="one">Extension updated</item>
-		<item quantity="other">更新了 %d 个扩展</item>
-	</plurals>
-	<plurals name="extension_updates_available">
-		<item quantity="one">Extension update available</item>
-		<item quantity="other">%d 个扩展插件可更新</item>
-	</plurals>
 	<!-- Reader -->
 	<string name="set_as_cover">设置为封面</string>
 	<string name="reader_settings">阅读器设置</string>
@@ -435,14 +395,6 @@
 	<string name="show_on_long_press">长按显示</string>
 	<string name="save_pages_separately">保存页面到单独文件夹</string>
 	<string name="create_folders_by_manga_title">根据漫画标题创建文件夹</string>
-	<plurals name="pages_plural">
-		<item quantity="one">%1$d page</item>
-		<item quantity="other">%1$d页</item>
-	</plurals>
-	<plurals name="missing_chapters_warning">
-		<item quantity="one">Skipping 1 chapter, either the source is missing it or it has been filtered out</item>
-		<item quantity="other">跳过 %d 个章节，要么是缺少来源，要么是被过滤掉了</item>
-	</plurals>
 	<!-- Manga details -->
 	<string name="about_this_">关于此 %1$s</string>
 	<string name="start_reading">开始阅读</string>
@@ -496,11 +448,6 @@
 	<string name="custom_manga_info">自定义漫画信息</string>
 	<string name="set_as_default">设为默认</string>
 	<string name="filter_groups">过滤扫译群组</string>
-	<plurals name="deleted_chapters">
-		<item quantity="one">A chapter has been removed from the source:\n%2$s\nDelete
-            its download?</item>
-		<item quantity="other">第%1$s章已从图源中删除： \n%2$s \n是否删除其下载内容？</item>
-	</plurals>
 	<!-- Tracking -->
 	<string name="tracking">同步中</string>
 	<string name="tracked">已同步</string>
@@ -562,19 +509,7 @@
 	<string name="no_chapters_found_for_migration">找不到章节，此漫画无法用于迁移</string>
 	<string name="no_alternatives_found">找不到替代</string>
 	<string name="stop_migrating">停止迁移？</string>
-	<plurals name="migrate_manga">
-		<item quantity="one">Migrate %1$d%2$s manga?</item>
-		<item quantity="other">迁移 %1$d%2$s 漫画？</item>
-	</plurals>
-	<plurals name="copy_manga">
-		<item quantity="one">Copy %1$d%2$s manga?</item>
-		<item quantity="other">复制 %1$d%2$s 漫画？</item>
-	</plurals>
 	<string name="skipping_">（跳过 %1$d）</string>
-	<plurals name="manga_migrated">
-		<item quantity="one">%d manga migrated</item>
-		<item quantity="other">%d 漫画已迁移</item>
-	</plurals>
 	<!-- Settings -->
 	<string name="settings">设置</string>
 	<string name="general">通用</string>
@@ -678,10 +613,6 @@
 	<string name="restore_miui_warning">如果 MIUI 优化被禁用，备份/恢复可能无法正常工作。</string>
 	<string name="progress">进度</string>
 	<string name="complete">完成</string>
-	<plurals name="restore_completed_message">
-		<item quantity="one">Done in %1$s with %2$s error</item>
-		<item quantity="other">耗时 %1$s，出现 %2$s 个错误</item>
-	</plurals>
 	<string name="not_logged_into_">尚未登陆 %1$s</string>
 	<!-- Advanced section -->
 	<string name="clear_chapter_cache">清除缓存数据</string>
@@ -698,10 +629,6 @@
 	<string name="disabled">已禁用</string>
 	<string name="requires_app_restart">需要重启应用才能生效</string>
 	<string name="used_">已使用空间：%1$s</string>
-	<plurals name="cache_cleared">
-		<item quantity="one">Cache cleared. %d file has been deleted</item>
-		<item quantity="other">缓存已清除，%d 的文件已被删除</item>
-	</plurals>
 	<string name="cache_delete_error">清除缓存时出现错误</string>
 	<string name="clear_cookies">清除 Cookies</string>
 	<string name="cookies_cleared">已清除 Cookies</string>
@@ -723,10 +650,6 @@
 	<string name="disable_battery_optimization">禁用电池优化</string>
 	<string name="disable_if_issues_with_updating">如果更新或恢复书架过程中出现问题，禁用此项</string>
 	<string name="battery_optimization_disabled">电池优化已被禁用</string>
-	<plurals name="cleanup_done">
-		<item quantity="one">Cleanup done. Removed %d folder</item>
-		<item quantity="other">清除完成，移除了 %d 个目录</item>
-	</plurals>
 	<string name="clean_up_cached_covers">清理缓存的封面</string>
 	<string name="delete_old_covers_in_library_used_">删除书架更新过后旧的和未使用的漫画封面缓存 \n当前使用：%1$s</string>
 	<string name="clear_cached_covers_non_library">清除不在书架的漫画缓存</string>
@@ -826,10 +749,6 @@
 	<string name="daily">每天</string>
 	<string name="every_2_days">每2天</string>
 	<string name="weekly">每周</string>
-	<plurals name="after_minutes">
-		<item quantity="one">After %1$s minute</item>
-		<item quantity="other">在%1$s分钟之后</item>
-	</plurals>
 	<!-- File Picker Titles -->
 	<string name="select_cover_image">选择封面图片</string>
 	<string name="select_backup_file">选择备份文件</string>
