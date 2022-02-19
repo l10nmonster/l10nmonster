@@ -41,7 +41,8 @@ export const xmlEntityDecoder = regexMatchingDecoderMaker(
                 )
 );
 
-export const xmlEntityEncoder = (str) => str.replaceAll('&', '&amp;').replaceAll('<', '&lt;');
+export const xmlEntityEncoder = (str) => str.replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;').replaceAll('\u00a0', '&#160;');
 
 const javaControlCharsToDecode = {
     t: '\t',
