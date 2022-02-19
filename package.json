@@ -31,9 +31,9 @@
   "homepage": "https://github.com/l10nmonster/l10nmonster#readme",
   "dependencies": {
     "@js.properties/properties": "^0.5.4",
-    "android-string-resource": "github:l10nmonster/android-string-resource",
     "commander": "^8.3.0",
     "diff": "^5.0.0",
+    "fast-xml-parser": "^4.0.3",
     "gettext-parser": "^4.0.4",
     "globby": "^12.0.2",
     "got": "^12.0.0",
