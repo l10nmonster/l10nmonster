@@ -60,8 +60,26 @@ export const javaEscapesDecoder = regexMatchingDecoderMaker(
     )
 );
 
+// TODO: do we need to escape also those escapedChar that we decoded?
 export const javaEscapesEncoder = (str) => str.replaceAll('\t', '\\t').replaceAll('\b', '\\b')
     .replaceAll('\n', '\\n').replaceAll('\r', '\\r').replaceAll('\f', '\\f');
+
+const androidControlCharsToDecode = {
+    n: '\n',
+    t: '\t',
+};
+export const androidEscapesDecoder = regexMatchingDecoderMaker(
+    /(?<node>\\(?<escapedChar>[@?\\'"])|\\(?<escapedControl>[nt])|\\u(?<codePoint>[0-9A-Za-z]{4}))/g,
+    (groups) => (groups.escapedChar ??
+        (groups.escapedControl ?
+            (androidControlCharsToDecode[groups.escapedControl] ?? `\\${groups.escapedControl}`) :
+            String.fromCharCode(parseInt(groups.codePoint, 16))
+        )
+    )
+);
+
+export const androidEscapesEncoder = (str) => str.replaceAll(/[@\\'"]/g, '\\$&')
+    .replaceAll('\t', '\\t').replaceAll('\n', '\\n');
 
 // Placeholders
 

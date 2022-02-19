@@ -1,32 +1,32 @@
 <xliff xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd" xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
   <file original="XliffBridge" datatype="plaintext" source-language="en" target-language="zh-Hans">
     <body>
-      <trans-unit id="knJMaAVR62PEtQndkYhhbexC0GIjxr-r3_n_Xcu2r0s">
+      <trans-unit id="t4VWxI0XBS7jJwzcIpjyWz95PtQe0nM2xUjvN4A1U_4">
         <source>Remove %1$d downloaded chapter?</source>
         <target></target>
         <note>Chapters</note>
       </trans-unit>
-      <trans-unit id="X_xLwLneNjaCuErpOvyVwuG5fTb8-UCP5SsHQz-puzI">
+      <trans-unit id="1d7HtgdwLMLoxTTiv83rLZkKjkpfAmsehateH09g4gc">
         <source>%1$d chapter</source>
         <target></target>
         <note>Chapters</note>
       </trans-unit>
-      <trans-unit id="0vqefHzsJQULHZd5MNwiOZipcKE1vgaTP7-VSx7FRV4">
+      <trans-unit id="2udl0hvWKKtR3kYZ1ZxvWfGf6Sq6I_AP1i91nZoJRuU">
         <source>%1$d page left</source>
         <target></target>
         <note>Chapters</note>
       </trans-unit>
-      <trans-unit id="6CfUlDdZwjQi9NBW2TB0Bhg9lLrJZJdCk6Qf334AZ8U">
+      <trans-unit id="PR-mra8oJXYjh-iGJbPWRJ93cqMsnv3I9kI-KHWftDI">
         <source>%d category</source>
         <target></target>
         <note>Category</note>
       </trans-unit>
-      <trans-unit id="D-XGn0T65-KSSIomQYzkoKzAEUsZszypFjTP1Lvid1g">
+      <trans-unit id="nn9ifCxTi0t0nXPKjjqANSd9RsYNb7nXBbc0e-L1MBY">
         <source>For %d title</source>
         <target></target>
         <note>Library update service notifications</note>
       </trans-unit>
-      <trans-unit id="S2ivCL4mnAN_3LvCD4eLgcF0EfIPjNBsd9I7-l5zqNE">
+      <trans-unit id="i6ms_Au63GlXHZGXAcuj1OlRcD9GhIwb0mR2FlStmOo">
         <source>and %1$d more chapter</source>
         <target></target>
         <note>Library update service notifications</note>
@@ -36,7 +36,7 @@
         <target></target>
         <note>Library update service notifications</note>
       </trans-unit>
-      <trans-unit id="nA9Lsa5paTIiqxU3vXbGa-mttBPjFTxMMp3ZoShHoCM">
+      <trans-unit id="-BgwQxYmz_OcJgZCUZeNEhbIn71aeYWQLfqDzIdO5-A">
         <source>%d update pending</source>
         <target></target>
         <note>Extensions</note>
@@ -51,7 +51,7 @@
         <target></target>
         <note>Extensions</note>
       </trans-unit>
-      <trans-unit id="sL_wSvGXvK5kY-HivzhJsIzFxW6bX2dTH6UquFVCpHA">
+      <trans-unit id="ftTBQ9mT8jzVQTlzVQThq84qga7aRnm1A_EmQPZ62tE">
         <source>%1$d page</source>
         <target></target>
         <note>Reader settings</note>
@@ -61,28 +61,44 @@
         <target></target>
         <note>Reader settings</note>
       </trans-unit>
-      <trans-unit id="Eaze_yfF_znJ1d1oABgiBdE-HlrHoqbNbugyw6slJ3k">
-        <source>A chapter has been removed from the source:\n%2$s\nDelete
-            its download?</source>
+      <trans-unit id="SSZERtfZuYpDYos6-_VXWBeWY2P0LQQBQ5wwygKih98">
+        <source>A chapter has been removed from the source:
+%2$s
+Delete its download?</source>
         <target></target>
         <note>Manga details</note>
       </trans-unit>
-      <trans-unit id="5-3zp8SLfOTjhqThDsAlqVYw67Y1AHvVCaqYvsukLd8">
+      <trans-unit id="5otAlRi18WJHdTNddhXrbauyBBuNmozvj5T1U3LdNio">
+        <source>Migrate %1$d%2$s manga?</source>
+        <target></target>
+        <note>Migration</note>
+      </trans-unit>
+      <trans-unit id="V7Ipy8tVMS_hgViqxAA2GVdKnK2eiylBmpYsz6R23AM">
+        <source>Copy %1$d%2$s manga?</source>
+        <target></target>
+        <note>Migration</note>
+      </trans-unit>
+      <trans-unit id="26atAzC3mwZ3kvEaRGvJjuffpG2YiWvLb_0uDvsLPtE">
+        <source>%d manga migrated</source>
+        <target></target>
+        <note>Migration</note>
+      </trans-unit>
+      <trans-unit id="dUY5CemIa3xpPTEoUKN5hZLIYyFYKU1bhYQvPyUJvk0">
         <source>Done in %1$s with %2$s error</source>
         <target></target>
         <note>Backup</note>
       </trans-unit>
-      <trans-unit id="GoS05q9gcc_8SrsAMDpLSGWUgY57w7msDJ6H_STj6hk">
+      <trans-unit id="5eZfQwyisFt-eAr3zUOKugP__L-uALc_ylWptAYKJQI">
         <source>Cache cleared. %d file has been deleted</source>
         <target></target>
         <note>Advanced section</note>
       </trans-unit>
-      <trans-unit id="yPtONJrH7wZNy01J_ocBileV8yIllccxSdWOAT3Tb34">
+      <trans-unit id="rh1h0cJO-5V2S5q15JDf5bxw2kDqyrXKS4r_wy5PUwU">
         <source>Cleanup done. Removed %d folder</source>
         <target></target>
         <note>Advanced section</note>
       </trans-unit>
-      <trans-unit id="miGljXfpQpHYhkxvC7lslpiM2pbOH-24h0PZcIhHhd4">
+      <trans-unit id="C0PQbeoPQFB8cyWahP6wddbk0QOh4f-mmiHyTcQUny4">
         <source>After %1$s minute</source>
         <target></target>
         <note>Time</note>

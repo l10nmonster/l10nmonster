@@ -10,31 +10,31 @@
 				"translatedWords": 0,
 				"translatedByQ": {},
 				"untranslated": 866,
-				"untranslatedChars": 18031,
-				"untranslatedWords": 3026,
+				"untranslatedChars": 17788,
+				"untranslatedWords": 2829,
 				"pending": 0,
 				"pendingWords": 0,
 				"internalRepetitions": 5,
-				"internalRepetitionWords": 18
+				"internalRepetitionWords": 9
 			}
 		}
 	},
 	"tus": [
 		{
-			"guid": "AEJ621z89Ciok0GWLNPGnbE-JuTY9Xia3PGkIydY8G0",
+			"guid": "ehbg6jluBWm1ZPyw00Prf4lbXtVyLJItrCrATkSEYGI",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "external_storage_permission_notice",
-			"src": "TachiyomiJ2K requires access to all files in Android 11 to download chapters, create automatic backups, and read local manga. \\n\\nOn the next screen, enable \\\"Allow access to manage all files.\\\"",
-			"tgt": "Tachiyomi 需要有在Android 11上的儲存空間存取權限才能下載漫畫，備份設定，開啟本機漫畫。\n\\n\n\\n請在下一個畫面開啟\\\"允許存取儲存空間\\\"",
+			"src": "TachiyomiJ2K requires access to all files in Android 11 to download chapters, create automatic backups, and read local manga. \n\nOn the next screen, enable \"Allow access to manage all files.\"",
+			"tgt": "Tachiyomi 需要有在Android 11上的儲存空間存取權限才能下載漫畫，備份設定，開啟本機漫畫。 \n \n請在下一個畫面開啟\"允許存取儲存空間\"",
 			"contentType": "default",
 			"q": 70
 		},
 		{
-			"guid": "ZaZ2rCqY1Wwny7xv1bT3LE09Nnw6fMmfqbGlHHzd8SY",
+			"guid": "0TJzTyqgSESA9Z13x0gjdb2SSI0vFps-a1UhezJeIUA",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "external_storage_download_notice",
-			"src": "TachiyomiJ2K requires access to all files to download chapters. Tap here, then enable \\\"Allow access to manage all files.\\\"",
-			"tgt": "Tachiyomi 需要有儲存空間存取權限才能下載漫畫。請允許\\\"管理儲存空間\\\"",
+			"src": "TachiyomiJ2K requires access to all files to download chapters. Tap here, then enable \"Allow access to manage all files.\"",
+			"tgt": "Tachiyomi 需要有儲存空間存取權限才能下載漫畫。請允許\"管理儲存空間\"",
 			"contentType": "default",
 			"q": 70
 		},
@@ -147,22 +147,54 @@
 			"q": 70
 		},
 		{
-			"guid": "rwzO6HF2J8CgQ6GgngRsQsFq8Ym08VNnOxW6Dxtbf5M",
+			"guid": "qyy12nArwMG9YWSYvSYn6WvDU0oILdKhax33HGh2ZRI",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "move_x_to",
 			"src": "Move %1$s to…",
 			"tgt": "移動%1$s到…",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				"移動",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				"到…"
+			],
+			"nsrc": [
+				"Move ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" to…"
+			]
 		},
 		{
-			"guid": "pZqiAMsIz6iIgBg235_X9bxcAjTL4YnDhcXQO4Vpj-w",
+			"guid": "bi_qIE1R6Oqc09vlq-RIHgB7SehgKWCfqyeEEwDLjuQ",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "add_x_to",
 			"src": "Add %1$s to…",
 			"tgt": "新增%1$s到…",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				"新增",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				"到…"
+			],
+			"nsrc": [
+				"Add ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" to…"
+			]
 		},
 		{
 			"guid": "YJHMFZmzMpH0kjwYHf0FfcpHgbud03xLRf_vpaS4iY0",
@@ -273,22 +305,51 @@
 			"q": 70
 		},
 		{
-			"guid": "flN5vZx0TeXzne9-CJ8KjcXlSlY7nSitFcya1Dd03-c",
+			"guid": "kZpwHijg068LeT08ANJVZ4v5n9kO6N4dWo9XMuADrms",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "last_read_chapter_",
 			"src": "Last read Chapter %1$s",
 			"tgt": "最後閱讀的章節%1$s",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				"最後閱讀的章節",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
+			"nsrc": [
+				"Last read Chapter ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
 		},
 		{
-			"guid": "M5NhhdWufDD01Ays6M1zSOJAOebmP9Xt-dUb0PkYDhw",
+			"guid": "VNFJrEtasSsxhW7I_SASmWbqKbGm-DB6zGqeT1T3pFg",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "chapter_",
 			"src": "Chapter %1$s",
 			"tgt": "第 %1$s 章",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				"第 ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" 章"
+			],
+			"nsrc": [
+				"Chapter ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
 		},
 		{
 			"guid": "2o1v8EPRDg7n9szthMXwcIo3yyNkD2wF4cXDrRqBXYY",
@@ -385,15 +446,15 @@
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "remove_all_downloads",
 			"src": "Remove all downloads?",
-			"tgt": "移除所有下載檔案\\?",
+			"tgt": "移除所有下載檔案?",
 			"contentType": "default",
 			"q": 70
 		},
 		{
-			"guid": "sS2-Wml_oLSQpN5ejepqpW-VCMMoW3V5yDloy9YxTfo",
+			"guid": "a5ns947pdrJnqiF2ZooyCjrJFnqIZ4Jy5QqbF3st9QY",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "by_source_order",
-			"src": "By source\\'s order",
+			"src": "By source's order",
 			"tgt": "依照來源排序",
 			"contentType": "default",
 			"q": 70
@@ -426,22 +487,52 @@
 			"q": 70
 		},
 		{
-			"guid": "aSylPyBgZk2QhWDubZz-Jc9R0cGj74O73K53x2vsjOs",
+			"guid": "dID_EzHEAL6z9VEJmNY3m-5v1JRiZ7kbArCUCG7zzEo",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "adding_category_to_queue",
 			"src": "Adding %1$s to update queue",
 			"tgt": "新增%1$s到佇列",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				"新增",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				"到佇列"
+			],
+			"nsrc": [
+				"Adding ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" to update queue"
+			]
 		},
 		{
-			"guid": "Jxf7kfjm7vfrU1gA7tSnj1krbavAP_CuykMPrmBsjh4",
+			"guid": "-CI-B_fkcR7jeeS4cH4AWqOZ0ENh5TRKcwju6Ia0zAA",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "_already_in_queue",
 			"src": "%1$s is already in queue",
 			"tgt": "%1$s已經在佇列",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				"已經在佇列"
+			],
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" is already in queue"
+			]
 		},
 		{
 			"guid": "sXEvR457Fl4so0Cv0WtTRtzPtYD_jfdREwMYK3O8nSA",
@@ -489,13 +580,20 @@
 			"q": 70
 		},
 		{
-			"guid": "SlCtIxrafFt7azlMPXXGamLP9a0ffejpfKid9ZszQ9o",
+			"guid": "xIQ8JakD15UWHPlTjfDfsR_DppXZXRKrIBcVjpnIUH0",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "category_plural_other",
 			"src": "%d categories",
 			"tgt": "分類",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" categories"
+			]
 		},
 		{
 			"guid": "tY5i_VvkSRfJYfbnaRYs6LzMY7jz1AOwB34ehHn4_8E",
@@ -588,13 +686,27 @@
 			"q": 70
 		},
 		{
-			"guid": "_RgQLDy801eq7tfIQ19uvWgWyAI4i-KWkWOhFHIafSg",
+			"guid": "YHsB_l4J3SLIHrDQP5mpuQvIaON0iySnr9D2qzz0TvA",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "selected_",
 			"src": "Selected: %1$d",
 			"tgt": "已選取：%1$d",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				"已選取：",
+				{
+					"t": "x",
+					"v": "%1$d"
+				}
+			],
+			"nsrc": [
+				"Selected: ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				}
+			]
 		},
 		{
 			"guid": "bcBVjTkX0f2rWm2C9WdMUtQGgegLyYw1WDvndJ04ECE",
@@ -610,7 +722,7 @@
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "remove_from_library_question",
 			"src": "Remove from library?",
-			"tgt": "從書櫃移除\\?",
+			"tgt": "從書櫃移除?",
 			"contentType": "default",
 			"q": 70
 		},
@@ -624,10 +736,10 @@
 			"q": 70
 		},
 		{
-			"guid": "QtrAnlObvwhOX3_N_r0bisoRpBYZnccAPWk6MHFfxVo",
+			"guid": "lquVLLePK40yidM6TxG2TmQzi_V53wQ9fGVOUNboTb4",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "library_is_empty_add_from_browse",
-			"src": "Your library is empty, add series to your\n        library from the browse tab.",
+			"src": "Your library is empty, add series to your library from the browse tab.",
 			"tgt": "尚未收藏任何作品，探索來源以挖掘你的愛書。",
 			"contentType": "default",
 			"q": 70
@@ -642,13 +754,27 @@
 			"q": 70
 		},
 		{
-			"guid": "A4IagGAhcCnK8TqvuVUY17-tXplk6fDMkByLUBt-53U",
+			"guid": "UhTDYUwAeKJFGb0P_EcHv0CRAU_7r4nf4uO_eWO-6oI",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "_unread",
 			"src": "%d unread",
 			"tgt": "%d 未讀",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" 未讀"
+			],
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" unread"
+			]
 		},
 		{
 			"guid": "zK6myoXPiHa_W_GRKdaxPE6uQzupwjSwkz1ITXqdtvQ",
@@ -696,10 +822,10 @@
 			"q": 70
 		},
 		{
-			"guid": "PNEjbK6HdLxav9QgmjC-ng6W4RgEAzXUCcRH_EmX36w",
+			"guid": "DMMCd9TlUjweJCvkzAet30izdq29jjibSAaLenVC_Ho",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "drag_and_drop",
-			"src": "Drag &amp; Drop",
+			"src": "Drag & Drop",
 			"tgt": "拖曳",
 			"contentType": "default",
 			"q": 70
@@ -813,13 +939,28 @@
 			"q": 70
 		},
 		{
-			"guid": "u2w4iURD4iP_Hw2mJ3oCASP-FlTWe4xyznyVQOUAslA",
+			"guid": "RLiMnzoXrJq8vp-WZubFf2M9nJtwc2tP_d8VRdv1W8w",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "notification_update_failed_other",
 			"src": "%1$d updates failed",
 			"tgt": "有 %1$d 項更新失敗",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				"有 ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				" 項更新失敗"
+			],
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				" updates failed"
+			]
 		},
 		{
 			"guid": "NzuzANrc8hKnsNdj5RNNivveptBt1E-e1H-Ht-pXbEo",
@@ -912,10 +1053,10 @@
 			"q": 70
 		},
 		{
-			"guid": "LTtGBoeuf8ZQL69v9YapziAX5xjQ_tAqRRhR07t0zQM",
+			"guid": "x3TEe4A97_mGw4nWI9E7Z9-WfUrxRSmYZR0IRK24l14",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "this_will_remove_the_read_date_question",
-			"src": "This will remove the read date of this\n        chapter. Are you sure?",
+			"src": "This will remove the read date of this chapter. Are you sure?",
 			"tgt": "這將會清除此章節的閱讀日期，確定嗎？",
 			"contentType": "default",
 			"q": 70
@@ -1155,11 +1296,11 @@
 			"q": 70
 		},
 		{
-			"guid": "514a18U2Og9mxITDGBmRQjj5Ljy8WoYZkyxmhXcMh-c",
+			"guid": "5i1qeSgTv4eK9tMokbsNzyBFy4aeu_6h0nSNcgRxpEw",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "untrusted_extension_message",
-			"src": "This extension was signed with an untrusted certificate and wasn\\'t activated.\\n\\nA malicious extension could read any login credentials stored in Tachiyomi or execute arbitrary code.\\n\\nBy trusting this certificate you accept these risks.",
-			"tgt": "這個擴充套件的憑證並不可靠，且尚未被啟用。\n\\n\n\\n惡意的擴充套件可能存取任何儲存於 Tachiyomi 中的登錄憑證，或執行任意的程式碼。\n\\n\n\\n信任這個憑證，即表示你願意承擔上述風險。",
+			"src": "This extension was signed with an untrusted certificate and wasn't activated.\n\nA malicious extension could read any login credentials stored in Tachiyomi or execute arbitrary code.\n\nBy trusting this certificate you accept these risks.",
+			"tgt": "這個擴充套件的憑證並不可靠，且尚未被啟用。 \n \n惡意的擴充套件可能存取任何儲存於 Tachiyomi 中的登錄憑證，或執行任意的程式碼。 \n \n信任這個憑證，即表示你願意承擔上述風險。",
 			"contentType": "default",
 			"q": 70
 		},
@@ -1182,22 +1323,50 @@
 			"q": 70
 		},
 		{
-			"guid": "New5oCVW5APGHXYyskqfPq8G8EgO2QXL4AJIR6vLyiQ",
+			"guid": "mvCSc-9yryS7Ofj0A_wL0bqca5JHjTYWlk8605Z-VQU",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "version_",
 			"src": "Version: %1$s",
 			"tgt": "版本：%1$s",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				"版本：",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
+			"nsrc": [
+				"Version: ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
 		},
 		{
-			"guid": "wklUGSMc4_wrT_7dZwa80LC3mIvW63e5v4_kHOwGJ7U",
+			"guid": "TwrJr2RHXOSAMDZgpROxE8cXWkCRS3GToOTAkCoaaAc",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "language_",
 			"src": "Language: %1$s",
 			"tgt": "語言：%1$s",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				"語言：",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
+			"nsrc": [
+				"Language: ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
 		},
 		{
 			"guid": "giDbI1awUgdbfMKkrkvn4JxnaIc35cm8z32hRszPoYU",
@@ -1227,13 +1396,27 @@
 			"q": 70
 		},
 		{
-			"guid": "DnNCJI836IsOslDQN_AO231MZYC56niM1Vi2_J1snS4",
+			"guid": "fFztA8BpN5ztR940iRrxRzG6kccQjtTmucxkNGh6npk",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "extension_updates_available_other",
 			"src": "%d extension updates available",
 			"tgt": "%d 個擴充套件可更新",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" 個擴充套件可更新"
+			],
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" extension updates available"
+			]
 		},
 		{
 			"guid": "Ib3Dl-HzwtbZ2Ml0jVectlWKgCLvYPZ6byoYri6f_Sk",
@@ -1254,13 +1437,28 @@
 			"q": 70
 		},
 		{
-			"guid": "n8byeb0LUPMyUv9VkxZ0p_gbcFbmoWTxF5ee1IAy1i4",
+			"guid": "EnR5B-t_Ampr-_FK6FCuwfxnUna0-VNGNQL73mm1j_Q",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "page_",
 			"src": "Page %1$d",
 			"tgt": "第 %1$d 頁",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				"第 ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				" 頁"
+			],
+			"nsrc": [
+				"Page ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				}
+			]
 		},
 		{
 			"guid": "Qc1ZV3Ny9VaRh6PE4IJFuKgtMzgbhfmKVWffUxkWjEQ",
@@ -1326,19 +1524,19 @@
 			"q": 70
 		},
 		{
-			"guid": "PHpJUevQ4Mlwd5CxM2MtU-LYphTA4i5R8ULqddagBEY",
+			"guid": "6sT9eOh-YFpLlMtqSLgsuD_avu1ljtGpnl6rQ1BXgFE",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "theres_no_next_chapter",
-			"src": "There\\'s no next chapter",
+			"src": "There's no next chapter",
 			"tgt": "以下空白",
 			"contentType": "default",
 			"q": 70
 		},
 		{
-			"guid": "4DHzIY-fKzgMj7AHSIYBwE_RkkhlmkUuLmXRWmsBaMY",
+			"guid": "3_5VuY-h5PQRaBiH61VNzkCK5d2Ckp8mECsUPeMJER0",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "theres_no_previous_chapter",
-			"src": "There\\'s no previous chapter",
+			"src": "There's no previous chapter",
 			"tgt": "已達盡頭",
 			"contentType": "default",
 			"q": 70
@@ -1353,13 +1551,28 @@
 			"q": 70
 		},
 		{
-			"guid": "Azc6ANikV8Nk8UqszphlzdEuGKV68HNHvlmeBrBu9QE",
+			"guid": "UoUrj8RDjA-Dro_MlGIdIgAe1JtU1ux5tV_1JvQ9Aw8",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "failed_to_load_pages_",
 			"src": "Failed to load pages: %1$s",
 			"tgt": "第 %1$s 頁載入失敗",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				"第 ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" 頁載入失敗"
+			],
+			"nsrc": [
+				"Failed to load pages: ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
 		},
 		{
 			"guid": "fg2W1c2abzFBWZ3SzFWEwEmxeiqQT8Q0tPdnz-0ham8",
@@ -1443,10 +1656,10 @@
 			"q": 70
 		},
 		{
-			"guid": "Hmt7S8CYIGvASn-4LZVQMBRdqacEK3NygUOLvHG2Fto",
+			"guid": "KhQBQDYldIJeYyASM34BR-9ILkPBggtCSCM73BnXGfc",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "reduces_banding_impacts_performance",
-			"src": "Reduces banding, but impacts\n        performance",
+			"src": "Reduces banding, but impacts performance",
 			"tgt": "減緩色調分離，但拖累效能",
 			"contentType": "default",
 			"q": 70
@@ -1929,13 +2142,29 @@
 			"q": 70
 		},
 		{
-			"guid": "k387QbCF9XCONIv1TeZYsjtbM21u1pEyznEc1O6pCYA",
+			"guid": "Pc2BUXJyZZ3NM7dQk4gQW86gJoZmz9yFo__l8s4e9MY",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "missing_chapters_warning_other",
 			"src": "Skipping %d chapters, either the source is missing them or they have been filtered out",
 			"tgt": "略過了 %d 章，也許是來源沒有這些章節，或其已被你的篩選規則排除",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				"略過了 ",
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" 章，也許是來源沒有這些章節，或其已被你的篩選規則排除"
+			],
+			"nsrc": [
+				"Skipping ",
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" chapters, either the source is missing them or they have been filtered out"
+			]
 		},
 		{
 			"guid": "-5XFw8b0YYkp0SCPdD9jr-qHCGe62QMog7cZeWlROFU",
@@ -1947,22 +2176,52 @@
 			"q": 70
 		},
 		{
-			"guid": "CAR9d__Mp6lY4bPUNfuKojdSpVwtaVUYK2la6TMpd1s",
+			"guid": "dhYxjTjRurEmRtDpvPA7Dmqy-aolxGSAbtnMeV0t7_0",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "start_reading_chapter_",
 			"src": "Start reading Chapter %1$s",
 			"tgt": "開始閱讀第%1$s章",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				"開始閱讀第",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				"章"
+			],
+			"nsrc": [
+				"Start reading Chapter ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
 		},
 		{
-			"guid": "Spe3Dyn_OZe1oPI1gAYHtWECUCAfjknGae9WFsIMe6k",
+			"guid": "VSx02unAfVpZMZjM5Ch1lClXeTWa_hZl1DBlD9g4BHE",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "continue_reading_chapter_",
 			"src": "Continue reading Chapter %1$s",
 			"tgt": "繼續閱讀第%1$s章",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				"繼續閱讀第",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				"章"
+			],
+			"nsrc": [
+				"Continue reading Chapter ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
 		},
 		{
 			"guid": "5nIU3KDWhHbJ9FJihG1SY6TwHm49uNfMfb32gEmyBjQ",
@@ -1974,13 +2233,28 @@
 			"q": 70
 		},
 		{
-			"guid": "G92Z70YZG3mmmrGhmetQOVLiLHrSP23BmQENMkpQcWQ",
+			"guid": "F1RxS0BEDD6TIHPdzRKw9ICZjpNvfpJRu4cj-9lfGoc",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "chapters_",
 			"src": "Chapters %1$s",
 			"tgt": "第 %1$s 章",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				"第 ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" 章"
+			],
+			"nsrc": [
+				"Chapters ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
 		},
 		{
 			"guid": "VzfIwCvfT_SWF4N-PSl7tLjp34mDypzzNQ98lzA9grs",
@@ -2010,29 +2284,58 @@
 			"q": 70
 		},
 		{
-			"guid": "s2S3CU_Jmhr_sDTbqTUWl_44WaW6eQiiNGWpnXjdfHQ",
+			"guid": "QSmAX5m679wB0QyJtbDO2kU8UNCbW8w4IL9BjyLisIU",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "_copied_to_clipboard",
 			"src": "%1$s copied to clipboard",
 			"tgt": "「%1$s」已複製至剪貼簿",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				"「",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				"」已複製至剪貼簿"
+			],
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" copied to clipboard"
+			]
 		},
 		{
-			"guid": "sgcwNS05G5RTD5jXNnPJgwZAtJT03iaM5x1_NvBqAXE",
+			"guid": "tWY-2CNXp4Bgu0ORF0YJvuSxU9JDAUqON9ZoFdrEirc",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "source_not_installed_",
 			"src": "Source not installed: %1$s",
 			"tgt": "來源未安裝：%1$s",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				"來源未安裝：",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
+			"nsrc": [
+				"Source not installed: ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
 		},
 		{
 			"guid": "vb6M0a5p7nlhFaVF25AqUDe_RGdqcsxarx6UG_GsqDg",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "mark_all_chapters_as_read",
 			"src": "Mark all chapters as read?",
-			"tgt": "標記全部章節為已讀\\?",
+			"tgt": "標記全部章節為已讀?",
 			"contentType": "default",
 			"q": 70
 		},
@@ -2041,7 +2344,7 @@
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "mark_all_chapters_as_unread",
 			"src": "Mark all chapters as unread?",
-			"tgt": "標記全部章節為未讀\\?",
+			"tgt": "標記全部章節為未讀?",
 			"contentType": "default",
 			"q": 70
 		},
@@ -2190,10 +2493,10 @@
 			"q": 70
 		},
 		{
-			"guid": "AyODyPVwer0JQ4x-B_VIiJwlaQgtQFa-8ABym2oXd3E",
+			"guid": "LNfxBPO_lVWgBayQDFluUF42ycjQ1VaJXg0ytvQZmo0",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "sort_by_source_s_order",
-			"src": "Sort by source\\'s order",
+			"src": "Sort by source's order",
 			"tgt": "依來源排序",
 			"contentType": "default",
 			"q": 70
@@ -2676,13 +2979,27 @@
 			"q": 70
 		},
 		{
-			"guid": "QsifWUE8oinMScILo40NuXahV6NC04eSW4sjvHC4G80",
+			"guid": "fqd4WajLYVT61enjx3OP0SiB4XZy8IYrd_n5a9Y_PDg",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "updated_to_",
 			"src": "Updated to v%1$s",
 			"tgt": "已更新至 v%1$s",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				"已更新至 v",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
+			"nsrc": [
+				"Updated to v",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
 		},
 		{
 			"guid": "9DZZYSdVPlVroNYqXg4G-64KCbH4rjaCBQ09lf61FRw",
@@ -2838,13 +3155,29 @@
 			"q": 70
 		},
 		{
-			"guid": "LpORIgyqh4HaarPR_DrsCvK4p4CvmOHyRDVJN8smWzc",
+			"guid": "P0dsynHIl_GDbEkM1tZ0wkLMmr9jFjuBDKAimkimaC8",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "invalid_backup_file_type",
-			"src": "Invalid backup file type: %1$s\\nIt should end with \".proto.gz\" or \".json\".",
-			"tgt": "無效的備份檔格式：%1$s\n\\n副檔名應為 .proto.gz 或 .json",
+			"src": "Invalid backup file type: %1$s\nIt should end with \".proto.gz\" or \".json\".",
+			"tgt": "無效的備份檔格式：%1$s \n副檔名應為 .proto.gz 或 .json",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				"無效的備份檔格式：",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" \n副檔名應為 .proto.gz 或 .json"
+			],
+			"nsrc": [
+				"Invalid backup file type: ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				"\nIt should end with \".proto.gz\" or \".json\"."
+			]
 		},
 		{
 			"guid": "DDDw6iIMN9p2Ruoe92tfwaPZBQTqcNpk9ewPUYGJtGA",
@@ -2910,11 +3243,11 @@
 			"q": 70
 		},
 		{
-			"guid": "t6hsK12o3yhJtRJE66-cpevuj-rQrJv2ZZZapNpKtc8",
+			"guid": "PhjBH-rKHup-EgEYqgYdtaGWiXltWX6_6ptAADdQ3kE",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "restore_content",
-			"src": "Restore uses sources to fetch data, carrier costs may apply.\\n\\nMake sure you have installed all necessary extensions and are logged in to sources and tracking services before restoring.",
-			"tgt": "還原時需連線至來源以取得資料，可能要支付數據傳輸費用。\n\\n\n\\n在進行還原前，請確認你已安裝所需的擴充套件，並已登入至歷程平台及要求身分認證的來源。",
+			"src": "Restore uses sources to fetch data, carrier costs may apply.\n\nMake sure you have installed all necessary extensions and are logged in to sources and tracking services before restoring.",
+			"tgt": "還原時需連線至來源以取得資料，可能要支付數據傳輸費用。 \n \n在進行還原前，請確認你已安裝所需的擴充套件，並已登入至歷程平台及要求身分認證的來源。",
 			"contentType": "default",
 			"q": 70
 		},
@@ -2955,13 +3288,37 @@
 			"q": 70
 		},
 		{
-			"guid": "EUyfGdsozYkeN-O8A6PV0nPR0NZzH1KUzFPZBF2pJH4",
+			"guid": "r317yk9kNUjZdZ66_dNR-H9_aSUYHkpIpFTdctXFHC4",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "restore_duration",
 			"src": "%02d min, %02d sec",
 			"tgt": "%02d 分 %02d 秒",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				{
+					"t": "x",
+					"v": "%02d"
+				},
+				" 分 ",
+				{
+					"t": "x",
+					"v": "%02d"
+				},
+				" 秒"
+			],
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%02d"
+				},
+				" min, ",
+				{
+					"t": "x",
+					"v": "%02d"
+				},
+				" sec"
+			]
 		},
 		{
 			"guid": "M0u5w8Tx0ZXR9dAohFW9Pt2r5giJ2G3qVNublAcig4k",
@@ -2982,13 +3339,39 @@
 			"q": 70
 		},
 		{
-			"guid": "r_oHxHDBUGOo2CDxvtxPrzT5mm5GlErIs37FlC7LoOE",
+			"guid": "tkc4zq_ATauIxzXI7kJs_cduBFCQDVR4_VODU-l2Eg8",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "restore_completed_message_other",
 			"src": "Done in %1$s with %2$s errors",
 			"tgt": "歷時 %1$s，出現 %2$s 個錯誤",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				"歷時 ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				"，出現 ",
+				{
+					"t": "x",
+					"v": "%2$s"
+				},
+				" 個錯誤"
+			],
+			"nsrc": [
+				"Done in ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" with ",
+				{
+					"t": "x",
+					"v": "%2$s"
+				},
+				" errors"
+			]
 		},
 		{
 			"guid": "gPqVDlajP2hf4NQoL37UXVQjJnqN1QR-KGD6--7lYtE",
@@ -3072,13 +3455,27 @@
 			"q": 70
 		},
 		{
-			"guid": "dYyhqzL9tg_SJ-E46nw9xRCTiNTmWAkxYifYoYrFWDo",
+			"guid": "AdFVH0FaghNvk6XBU4XoB2Fuk2i482XcsAUje9w5k9g",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "used_",
 			"src": "Used: %1$s",
 			"tgt": "已使用：%1$s",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				"已使用：",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
+			"nsrc": [
+				"Used: ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
 		},
 		{
 			"guid": "8RjflKYA-4aX6xL1kcvLIRkf1xbBklnryutVr2M1Bc0",
@@ -3279,10 +3676,10 @@
 			"q": 70
 		},
 		{
-			"guid": "Mp4qYjX4TLqyPBBimDAsQEA6HX1pxfKYqu-fDmJ1qWA",
+			"guid": "xX86TIr3yCDJeN8pEfrANiXCn559dxHyBB4GnIbsQpo",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "whats_new",
-			"src": "What\\'s new",
+			"src": "What's new",
 			"tgt": "更新日誌",
 			"contentType": "default",
 			"q": 70
@@ -3315,13 +3712,27 @@
 			"q": 70
 		},
 		{
-			"guid": "EUqQpEE6zqjeyE8-bekoC0VXbC8YTIefUZIMgMJUWF0",
+			"guid": "InKnvnpmuD0xNHX-ckxjSVPTwTV71bgSR9slh4Di5TU",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "log_in_to_",
 			"src": "Log in to %1$s",
 			"tgt": "登入 %1$s",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				"登入 ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
+			"nsrc": [
+				"Log in to ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
 		},
 		{
 			"guid": "e8o3hAJieGa7jIX7FCMTJ2392WpbkdLsmaJtLFBd8rc",
@@ -3432,13 +3843,39 @@
 			"q": 70
 		},
 		{
-			"guid": "kCBQGfcurTma62imqHVevzNtLzhJZM7ghAAQL2dNDOk",
+			"guid": "81uy_kW63TYj6zx-tvyIeg2e6pJ5ZjPmIn-L-ic7d0I",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "downloading_progress",
 			"src": "Downloading (%1$d/%2$d)",
 			"tgt": "正在下載 (%1$d/%2$d)",
 			"contentType": "default",
-			"q": 70
+			"q": 70,
+			"ntgt": [
+				"正在下載 (",
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				"/",
+				{
+					"t": "x",
+					"v": "%2$d"
+				},
+				")"
+			],
+			"nsrc": [
+				"Downloading (",
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				"/",
+				{
+					"t": "x",
+					"v": "%2$d"
+				},
+				")"
+			]
 		},
 		{
 			"guid": "MmXweZtdJCJJGY3H2n7vsRIaOSYcsnHkenMBnFbvx0w",

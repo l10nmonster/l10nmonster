@@ -1,14 +1,18 @@
 // TODO: lots of limitations to fix.
 // Check https://developer.android.com/guide/topics/resources/string-resource#FormattingAndStyling
-
 // Currently XML parsing is disabled for <string> and <item>. This is to make it easier to inject translations
-// but the downside is that we're missing CDATA handling, whitespace trimming, entity management from XML.
+// and preserve the source but the downside is that we're missing CDATA handling, whitespace trimming, entity management from XML.
+// We do decode XML entities and do whitespace trimming and escapes per Android rules but we don't handle strings surrounded by double quotes.
 
 import { XMLParser, XMLBuilder } from 'fast-xml-parser';
 import xmlFormatter from 'xml-formatter';
+import { xmlEntityDecoder, androidEscapesDecoder, xmlEntityEncoder, androidEscapesEncoder } from '../normalizers/regex.js';
 
-function collapseTextNodes(node) {
-    return node.map(e => e['#text']).join('');
+function collapseTextNodesAndDecode(node) {
+    const collapsedText = node.map(e => e['#text']).join('');
+    const afterXmlEntities = xmlEntityDecoder([ collapsedText ]).join('');
+    const afterSpaceCollapse = afterXmlEntities.replaceAll(/[\s]+/g, ' ');
+    return androidEscapesDecoder([ afterSpaceCollapse ]).join('');
 }
 
 export class AndroidFilter {
@@ -37,22 +41,22 @@ export class AndroidFilter {
                 let lastComment;
                 for (const resNode of rootNode.resources) {
                     if ('#comment' in resNode) {
-                        lastComment = collapseTextNodes(resNode['#comment']).trim();
+                        lastComment = collapseTextNodesAndDecode(resNode['#comment']).trim();
                     } else if ('string' in resNode && resNode[':@'].translatable !== 'false') {
-                        // resNode[':@'].name === 'app_name' && console.dir(resNode.string, { depth: null })
+                        resNode[':@'].name === 'external_storage_permission_notice' && console.dir(resNode.string, { depth: null })
                         const seg = {
                             sid: resNode[':@'].name,
-                            str: collapseTextNodes(resNode.string)
+                            str: collapseTextNodesAndDecode(resNode.string)
                         };
                         lastComment && (seg.notes = lastComment);
-                        // resNode[':@'].name === 'app_name' && console.dir(seg)
+                        resNode[':@'].name === 'external_storage_permission_notice' && console.dir(seg)
                         segments.push(seg);
                     } else if ('plurals' in resNode) {
                         for (const itemNode of resNode.plurals) {
                             const seg = {
                                 sid: `${resNode[':@'].name}_${itemNode[':@'].quantity}`,
                                 isSuffixPluralized: true,
-                                str: collapseTextNodes(itemNode.item)
+                                str: collapseTextNodesAndDecode(itemNode.item)
                             };
                             lastComment && (seg.notes = lastComment);
                             segments.push(seg);
@@ -87,17 +91,20 @@ export class AndroidFilter {
             if ('resources' in rootNode) {
                 for (const resNode of rootNode.resources) {
                     if ('string' in resNode) {
-                        const translation = await translator(resourceId, resNode[':@'].name, collapseTextNodes(resNode.string));
+                        const translation = await translator(resourceId, resNode[':@'].name, collapseTextNodesAndDecode(resNode.string));
                         // eslint-disable-next-line no-negated-condition
                         if (resNode[':@'].translatable !== 'false' && translation !== undefined) {
-                            resNode.string = [ { '#text': translation } ];
+                            resNode.string = [ { '#text': xmlEntityEncoder(androidEscapesEncoder(translation)) } ];
                         } else {
                             nodesToDelete.push(resNode);
                         }
                     } else if ('plurals' in resNode) { // TODO: deal with plurals of the target language, not the source
                         for (const itemNode of resNode.plurals) {
-                            const translation = await translator(resourceId, `${resNode[':@'].name}_${itemNode[':@'].quantity}`, collapseTextNodes(itemNode.item));
-                            itemNode.item = [ { '#text': translation } ];
+                            const translation = await translator(resourceId, `${resNode[':@'].name}_${itemNode[':@'].quantity}`, collapseTextNodesAndDecode(itemNode.item));
+                            if (translation !== undefined) {
+                                // for missing items we leave the source instead of removing the them
+                                itemNode.item = [ { '#text': xmlEntityEncoder(androidEscapesEncoder(translation)) } ];
+                            }
                         }
                     }
                 }

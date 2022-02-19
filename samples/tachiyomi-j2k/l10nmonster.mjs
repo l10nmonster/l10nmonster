@@ -15,7 +15,7 @@ export default class TachiyomiConfig {
         this.resourceFilter = new filters.AndroidFilter({
             comment: 'pre',
         });
-        this.decoders = [ normalizers.iosPHDecoder, normalizers.javaEscapesDecoder ];
+        this.decoders = [ normalizers.iosPHDecoder ];
         this.target = new adapters.FsTarget({
             targetPath: (lang, resourceId) => resourceId.replace('values', `values-${androidLangMapping[lang] || lang}`),
         });

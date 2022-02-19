@@ -4,38 +4,36 @@
 			"foo": {
 				"bar": {
 					"zh-Hans": {
-						"translated": 854,
-						"translatedWords": 2957,
+						"translated": 851,
+						"translatedWords": 2767,
 						"translatedByQ": {
-							"61": 3,
 							"70": 851
 						},
 						"untranslated": 0,
 						"untranslatedChars": 0,
 						"untranslatedWords": 0,
-						"pending": 17,
-						"pendingWords": 87,
+						"pending": 20,
+						"pendingWords": 71,
 						"internalRepetitions": 0,
 						"internalRepetitionWords": 0
 					},
 					"zh-Hant": {
-						"translated": 843,
-						"translatedWords": 2766,
+						"translated": 482,
+						"translatedWords": 1354,
 						"translatedByQ": {
-							"70": 482,
-							"80": 361
+							"70": 482
 						},
 						"untranslated": 0,
 						"untranslatedChars": 0,
 						"untranslatedWords": 0,
-						"pending": 28,
-						"pendingWords": 278,
+						"pending": 389,
+						"pendingWords": 1484,
 						"internalRepetitions": 0,
 						"internalRepetitionWords": 0
 					},
 					"piggy": {
 						"translated": 871,
-						"translatedWords": 3044,
+						"translatedWords": 2838,
 						"translatedByQ": {
 							"1": 871
 						},

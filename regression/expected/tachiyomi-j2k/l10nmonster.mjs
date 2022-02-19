@@ -8,7 +8,7 @@ export default class TachiyomiConfig {
     qualifiedPenalty = 1;
     unqualifiedPenalty = 9;
 
-    constructor({ stores, adapters, filters, translators }) {
+    constructor({ stores, adapters, filters, normalizers, translators }) {
         this.source = new adapters.FsSource({
             globs: [ '**/values/strings.xml' ],
             targetLangs: [ 'zh-Hans', 'zh-Hant', 'piggy' ],
@@ -16,6 +16,7 @@ export default class TachiyomiConfig {
         this.resourceFilter = new filters.AndroidFilter({
             comment: 'pre',
         });
+        this.decoders = [ normalizers.iosPHDecoder ];
         this.target = new adapters.FsTarget({
             targetPath: (lang, resourceId) => resourceId.replace('values', `values-${androidLangMapping[lang] || lang}`),
         });

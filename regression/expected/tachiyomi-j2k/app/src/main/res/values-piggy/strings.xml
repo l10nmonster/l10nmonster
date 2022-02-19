@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="all_files_permission_required">[Ilefay ermissionspay equiredray-piggy]</string>
-	<string name="external_storage_permission_notice">[TachiyomiJ2K equiresray accessyay otay allyay ilesfay inyay Androidyay 11 otay ownload-day apterschay, eatecray automaticyay ackupsbay, andyay eadray ocal-lay angamay. \n\nOn ethay extnay eenscray, enableyay \"Allowyay accessyay otay anagemay allyay ilesfay.\"-piggy]</string>
+	<string name="external_storage_permission_notice">[TachiyomiJ2K equiresray accessyay otay allyay ilesfay inyay Androidyay 11 otay ownload-day apterschay, eatecray automaticyay ackupsbay, andyay eadray ocal-lay angamay. \n\nOnyay ethay extnay eenscray, enableyay \"Allowyay accessyay otay anagemay allyay ilesfay.\"-piggy]</string>
 	<string name="external_storage_download_notice">[TachiyomiJ2K equiresray accessyay otay allyay ilesfay otay ownload-day apterschay. Aptay erehay, enthay enableyay \"Allowyay accessyay otay anagemay allyay ilesfay.\"-piggy]</string>
 	<!--Models-->
 	<!-- Manga Type -->
@@ -50,7 +50,7 @@
 	<string name="no_pages_found">[Onay agespay oundfay-piggy]</string>
 	<string name="remove_all_downloads">[Emoveray allyay ownloadsday?-piggy]</string>
 	<string name="no_chapters_to_delete">[Onay apterschay otay eleteday-piggy]</string>
-	<string name="by_source_order">[Ybay source\'s orderyay-piggy]</string>
+	<string name="by_source_order">[Ybay ources-say orderyay-piggy]</string>
 	<string name="by_chapter_number">[Ybay apterchay umbernay-piggy]</string>
 	<string name="by_update_date">[Ybay uploadyay ateday-piggy]</string>
 	<string name="scanlators">[Anlators-scay-piggy]</string>
@@ -82,8 +82,7 @@
 	<string name="categories_on_manual">[Ategoriescay otay updateyay enwhay anuallymay efreshingray-piggy]</string>
 	<string name="categories_in_global_update">[Allyay ategoriescay inyay obalglay updateyay-piggy]</string>
 	<string name="confirm_category_deletion">[Eleteday ategorycay?-piggy]</string>
-	<string name="confirm_category_deletion_message">[Angamay inyay isthay ategorycay illway ovedmay intoyay ethay
-        efaultday ategorycay.-piggy]</string>
+	<string name="confirm_category_deletion_message">[Angamay inyay isthay ategorycay illway ovedmay intoyay ethay efaultday ategorycay.-piggy]</string>
 	<string name="already_in_category">[Angamay alreadyay inyay ategorycay-piggy]</string>
 	<string name="add_categories">[Addyay ategoriescay-piggy]</string>
 	<string name="add_edit_categories">[Addyay/Edityay ategoriescay-piggy]</string>
@@ -119,8 +118,7 @@
 	<string name="local">[Ocal-lay-piggy]</string>
 	<string name="remove_from_library_question">[Emoveray omfray ibrarylay?-piggy]</string>
 	<string name="library_search_hint">[Earchsay itletay, agstay, ourcesay-piggy]</string>
-	<string name="library_is_empty_add_from_browse">[Ouryay ibrarylay isyay emptyay, addyay eries-say otay ouryay
-        ibrarylay omfray ethay owsebray abtay.-piggy]</string>
+	<string name="library_is_empty_add_from_browse">[Ouryay ibrarylay isyay emptyay, addyay eries-say otay ouryay ibrarylay omfray ethay owsebray abtay.-piggy]</string>
 	<string name="no_matches_for_filters">[Onay atchesmay oundfay orfay ouryay urrentcay iltersfay-piggy]</string>
 	<string name="getting_started_guide">[Etting-gay artedstay uidegay-piggy]</string>
 	<string name="show_all_categories">[Owshay allyay ategoriescay-piggy]</string>
@@ -150,7 +148,7 @@
 	<string name="date_fetched">[Ateday etchedfay-piggy]</string>
 	<string name="last_updated">[Astlay updatedyay-piggy]</string>
 	<string name="latest_chapter">[Atestlay apterchay-piggy]</string>
-	<string name="drag_and_drop">[Agdray &ampyay; Opdray-piggy]</string>
+	<string name="drag_and_drop">[Agdray &amp; Opdray-piggy]</string>
 	<!-- Library Display -->
 	<string name="display_options">[Isplayday optionsyay-piggy]</string>
 	<string name="can_be_found_in_library_filters">[Ancay alsoyay ebay oundfay ybay expandingyay ibrarylay iltersfay-piggy]</string>
@@ -197,13 +195,11 @@
 	<string name="restrictions_">[Estrictionsray: %1$s-piggy]</string>
 	<string name="only_update_ongoing">[Onlyay updateyay ongoingyay angamay-piggy]</string>
 	<string name="sort_by_ignoring_articles">[Ortsay ybay ignoringyay articlesyay-piggy]</string>
-	<string name="when_sorting_ignore_articles">[Enwhay ortingsay alphabeticallyay, ortsay ignoringyay
-        articlesyay (ayay, anyay, ethay) atyay ethay artstay ofyay angamay itlestay-piggy]</string>
+	<string name="when_sorting_ignore_articles">[Enwhay ortingsay alphabeticallyay, ortsay ignoringyay articlesyay (ayay, anyay, ethay) atyay ethay artstay ofyay angamay itlestay-piggy]</string>
 	<string name="categories_to_include_in_global_update">[Ategoriescay otay includeyay inyay obalglay updateyay-piggy]</string>
 	<string name="include_in_global_update">[Includeyay inyay obalglay updateyay-piggy]</string>
 	<string name="auto_refresh_covers">[Automaticallyay efreshray overscay-piggy]</string>
-	<string name="auto_refresh_covers_summary">[Efreshray overscay inyay ibrarylay asyay ellway
-        enwhay updatingyay ibrarylay-piggy]</string>
+	<string name="auto_refresh_covers_summary">[Efreshray overscay inyay ibrarylay asyay ellway enwhay updatingyay ibrarylay-piggy]</string>
 	<string name="global_updates">[Obalglay updatesyay-piggy]</string>
 	<string name="display_buttons_bottom_reader">[Uttonsbay atyay ottombay ofyay eader-ray-piggy]</string>
 	<string name="certain_buttons_can_be_found">[Ertaincay uttonsbay ancay ebay oundfay inyay otheryay acesplay ifyay isabled-day erehay-piggy]</string>
@@ -211,16 +207,14 @@
 	<string name="search_tips_show_periodically">[Earchsay ipstay illway owshay upyay eriodicallypay. Onglay esspray ethay uggestionsay otay earchsay ityay.-piggy]</string>
 	<!-- Recents -->
 	<string name="recents">[Ecentsray-piggy]</string>
-	<string name="updates_and_history">[Updatesyay &ampyay; istoryhay-piggy]</string>
+	<string name="updates_and_history">[Updatesyay &amp; istoryhay-piggy]</string>
 	<string name="updates">[Updatesyay-piggy]</string>
 	<string name="newly_added">[Ewlynay addedyay-piggy]</string>
 	<string name="history">[Istoryhay-piggy]</string>
 	<string name="reset_chapter_history">[Esetray apterchay istoryhay-piggy]</string>
 	<string name="recent_updates">[Ecentray updatesyay-piggy]</string>
-	<string name="this_will_remove_the_read_date_for_x_question">[Isthay illway emoveray ethay eadray ateday ofyay
-        \"%1$s\". Areyay ouyay uresay?-piggy]</string>
-	<string name="this_will_remove_the_read_date_question">[Isthay illway emoveray ethay eadray ateday ofyay isthay
-        apterchay. Areyay ouyay uresay?-piggy]</string>
+	<string name="this_will_remove_the_read_date_for_x_question">[Isthay illway emoveray ethay eadray ateday ofyay \"%1$s\". Areyay ouyay uresay?-piggy]</string>
+	<string name="this_will_remove_the_read_date_question">[Isthay illway emoveray ethay eadray ateday ofyay isthay apterchay. Areyay ouyay uresay?-piggy]</string>
 	<string name="reset_all_chapters_for_this_">[Esetray allyay apterschay orfay isthay %1$s-piggy]</string>
 	<string name="last_read_">[Astlay eadray %1$s-piggy]</string>
 	<string name="read_">[Eadray %1$s-piggy]</string>
@@ -282,7 +276,7 @@
 	<string name="untrusted">[Untrustedyay-piggy]</string>
 	<string name="uninstall">[Uninstallyay-piggy]</string>
 	<string name="untrusted_extension">[Untrustedyay extensionyay-piggy]</string>
-	<string name="untrusted_extension_message">[Isthay extensionyay asway ignedsay ithway anyay untrustedyay ertificatecay andyay wasn\'t activated.\n\nA aliciousmay extensionyay ouldcay eadray anyay oginlay edentialscray oredstay inyay Achiyomitay oryay executeyay arbitraryay code.\n\nBy ustingtray isthay ertificatecay ouyay acceptyay esethay isksray.-piggy]</string>
+	<string name="untrusted_extension_message">[Isthay extensionyay asway ignedsay ithway anyay untrustedyay ertificatecay andyay asntway activatedyay.\n\nAyay aliciousmay extensionyay ouldcay eadray anyay oginlay edentialscray oredstay inyay Achiyomitay oryay executeyay arbitraryay odecay.\n\nYbay ustingtray isthay ertificatecay ouyay acceptyay esethay isksray.-piggy]</string>
 	<string name="obsolete_extension_message">[Isthay extensionyay isyay onay ongerlay availableyay.-piggy]</string>
 	<string name="unofficial_extension_message">[Isthay extensionyay isyay otnay omfray ethay officialyay Achiyomitay extensionsyay istlay.-piggy]</string>
 	<string name="version_">[Ersionvay: %1$s-piggy]</string>
@@ -327,8 +321,8 @@
 	<string name="current_chapter">[Urrentcay:-piggy]</string>
 	<string name="next_title">[Extnay:-piggy]</string>
 	<string name="previous_title">[Eviouspray:-piggy]</string>
-	<string name="theres_no_next_chapter">[There\'s onay extnay apterchay-piggy]</string>
-	<string name="theres_no_previous_chapter">[There\'s onay eviouspray apterchay-piggy]</string>
+	<string name="theres_no_next_chapter">[Eresthay onay extnay apterchay-piggy]</string>
+	<string name="theres_no_previous_chapter">[Eresthay onay eviouspray apterchay-piggy]</string>
 	<string name="loading_pages">[Oadinglay agespay…-piggy]</string>
 	<string name="failed_to_load_pages_">[Ailedfay otay oadlay agespay: %1$s-piggy]</string>
 	<string name="reading_">[Eadingray %1$s-piggy]</string>
@@ -354,8 +348,7 @@
 	<string name="true_32bit_color">[32-itbay olorcay-piggy]</string>
 	<string name="page_preload_amount">[Agepay eloadpray amountyay-piggy]</string>
 	<string name="amount_of_pages_to_preload">[Ethay amountyay ofyay agespay otay eloadpray enwhay eadingray. Igherhay aluesvay illway esultray inyay ayay oothersmay eadingray experienceyay, atyay ethay ostcay ofyay igherhay achecay andyay etworknay usageyay.-piggy]</string>
-	<string name="reduces_banding_impacts_performance">[Educesray andingbay, utbay impactsyay
-        erformancepay-piggy]</string>
+	<string name="reduces_banding_impacts_performance">[Educesray andingbay, utbay impactsyay erformancepay-piggy]</string>
 	<string name="invert_double_pages">[Invertyay oubleday agespay-piggy]</string>
 	<string name="split_double_pages_portrait">[Itsplay oubleday agespay inyay ortraitpay-piggy]</string>
 	<string name="crop_borders">[Opcray ordersbay-piggy]</string>
@@ -413,8 +406,7 @@
 	<string name="smart_based_on_page">[Artsmay (asedbay onyay agepay)-piggy]</string>
 	<string name="smart_based_on_page_and_theme">[Artsmay (asedbay onyay agepay andyay emethay)-piggy]</string>
 	<string name="always_show_chapter_transition">[Alwaysyay owshay apterchay ansitiontray-piggy]</string>
-	<string name="if_disabled_transition_will_skip">[Ifyay isabled-day, ethay ansitiontray agepay illway ebay
-        ippedskay ifyay ethay extnay apterchay isyay oadedlay-piggy]</string>
+	<string name="if_disabled_transition_will_skip">[Ifyay isabled-day, ethay ansitiontray agepay illway ebay ippedskay ifyay ethay extnay apterchay isyay oadedlay-piggy]</string>
 	<string name="pref_webtoon_side_padding">[Idesay addingpay-piggy]</string>
 	<string name="webtoon_side_padding_0">[Onenay-piggy]</string>
 	<string name="webtoon_side_padding_10">[10%-piggy]</string>
@@ -486,7 +478,7 @@
 	<string name="show_unread_chapters">[Owshay unreadyay apterschay-piggy]</string>
 	<string name="show_read_chapters">[Owshay eadray apterschay-piggy]</string>
 	<string name="hide_chapter_titles">[Idehay apterchay itlestay-piggy]</string>
-	<string name="sort_by_source_s_order">[Ortsay ybay source\'s orderyay-piggy]</string>
+	<string name="sort_by_source_s_order">[Ortsay ybay ources-say orderyay-piggy]</string>
 	<string name="sort_by_chapter_number">[Ortsay ybay apterchay umbernay-piggy]</string>
 	<string name="newest_first">[Ewestnay otay oldestyay-piggy]</string>
 	<string name="oldest_first">[Oldestyay otay ewestnay-piggy]</string>
@@ -505,10 +497,8 @@
 	<string name="set_as_default">[Etsay asyay efaultday-piggy]</string>
 	<string name="filter_groups">[Ilterfay anlatorscay oupsgray-piggy]</string>
 	<plurals name="deleted_chapters">
-		<item quantity="one">[Ayay apterchay ashay eenbay emovedray omfray ethay source:\n%2$s\nDelete
-            itsyay ownload-day?-piggy]</item>
-		<item quantity="other">[%1$s apterschay avehay eenbay emovedray omfray ethay source:\n%2$s\n\nDelete
-            eirthay ownloadsday?-piggy]</item>
+		<item quantity="one">[Ayay apterchay ashay eenbay emovedray omfray ethay ourcesay:\n%2$s\nEleteday itsyay ownload-day?-piggy]</item>
+		<item quantity="other">[%1$s apterschay avehay eenbay emovedray omfray ethay ourcesay:\n%2$s\n\nEleteday eirthay ownloadsday?-piggy]</item>
 	</plurals>
 	<!-- Tracking -->
 	<string name="tracking">[Ackingtray-piggy]</string>
@@ -551,27 +541,24 @@
 	<string name="source_migration">[Ourcesay igrationmay-piggy]</string>
 	<string name="migration">[Igrationmay-piggy]</string>
 	<string name="skip_pre_migration">[Ipskay epray-igrationmay-piggy]</string>
-	<string name="select_a_source_then_item_to_migrate">[Electsay ayay ourcesay, enthay electsay anyay itemyay otay
-        igratemay-piggy]</string>
+	<string name="select_a_source_then_item_to_migrate">[Electsay ayay ourcesay, enthay electsay anyay itemyay otay igratemay-piggy]</string>
 	<string name="data_to_include_in_migration">[Ataday otay includeyay inyay igrationmay-piggy]</string>
 	<string name="search_parameter_eg">[Earchsay arameterpay (e.g. language:english)-piggy]</string>
 	<string name="include_extra_search_parameter">[Includeyay extrayay earchsay arameterpay enwhay earchingsay-piggy]</string>
 	<string name="use_most_chapters">[Useyay ourcesay ithway ethay ostmay apterschay (owerslay)-piggy]</string>
 	<string name="use_first_source">[Useyay irstfay ourcesay ithway alternativeyay-piggy]</string>
 	<string name="skip_this_step_next_time">[Ipskay isthay epstay extnay imetay-piggy]</string>
-	<string name="to_show_again_setting_sources">[Otay owshay isthay eenscray againyay, ogay otay Ettings-say ->
-        Ources-say.-piggy]</string>
+	<string name="to_show_again_setting_sources">[Otay owshay isthay eenscray againyay, ogay otay Ettings-say -> Ources-say.-piggy]</string>
 	<string name="latest_">[Atestlay: %1$s-piggy]</string>
 	<string name="migrating_to">[igratingmay otay-piggy]</string>
-	<string name="dont_migrate">[Don\'t igratemay-piggy]</string>
+	<string name="dont_migrate">[Ontday igratemay-piggy]</string>
 	<string name="search_manually">[Earchsay anuallymay-piggy]</string>
 	<string name="migrate_now">[Igratemay ownay-piggy]</string>
 	<string name="copy_now">[Opycay ownay-piggy]</string>
 	<string name="migrate">[Igratemay-piggy]</string>
 	<string name="migrate_">[Igratemay %1$s-piggy]</string>
 	<string name="copy_value">[Opycay-piggy]</string>
-	<string name="no_chapters_found_for_migration">[Onay apterschay oundfay, isthay angamay annotcay ebay usedyay orfay
-        igrationmay-piggy]</string>
+	<string name="no_chapters_found_for_migration">[Onay apterschay oundfay, isthay angamay annotcay ebay usedyay orfay igrationmay-piggy]</string>
 	<string name="no_alternatives_found">[Onay Alternativesyay Oundfay-piggy]</string>
 	<string name="stop_migrating">[Opstay igratingmay?-piggy]</string>
 	<plurals name="migrate_manga">
@@ -650,13 +637,13 @@
 	<string name="auto_update_app">[Autoyay-updateyay appyay-piggy]</string>
 	<string name="over_wifi_only">[Overyay Iway-Ifay onlyay-piggy]</string>
 	<string name="over_any_network">[Overyay anyay etworknay-piggy]</string>
-	<string name="dont_auto_update">[Don\'t autoyay-updateyay-piggy]</string>
+	<string name="dont_auto_update">[Ontday autoyay-updateyay-piggy]</string>
 	<string name="app_shortcuts">[Appyay ortcuts-shay-piggy]</string>
 	<string name="show_recent_sources">[Owshay ecentlyray usedyay ources-say-piggy]</string>
 	<string name="show_recent_series">[Owshay ecentray eries-say-piggy]</string>
 	<string name="includes_recently_read_updated_added">[Includesyay ecentlyray eadray, updatedyay, andyay addedyay eries-say-piggy]</string>
 	<string name="series_opens_new_chapters">[Eries-say ortcuts-shay opensyay ewnay apterschay-piggy]</string>
-	<string name="no_new_chapters_open_details">[Enwhay there\'s onay ewnay apterschay, ethay eries-say\' etailsday illway openyay insteadyay-piggy]</string>
+	<string name="no_new_chapters_open_details">[Enwhay eresthay onay ewnay apterschay, ethay eries-say\' etailsday illway openyay insteadyay-piggy]</string>
 	<!-- Backup -->
 	<string name="backup">[Ackupbay-piggy]</string>
 	<string name="backup_and_restore">[Ackupbay andyay estoreray-piggy]</string>
@@ -671,7 +658,7 @@
 	<string name="backup_frequency">[Ackupbay equencyfray-piggy]</string>
 	<string name="max_auto_backups">[Axmay automaticyay ackupsbay-piggy]</string>
 	<string name="invalid_backup_file">[Invalidyay ackupbay ilefay-piggy]</string>
-	<string name="invalid_backup_file_type">[Invalidyay ackupbay ilefay ypetay: %1$s\nIt ouldshay endyay ithway ".proto.gz" oryay ".onjsay".-piggy]</string>
+	<string name="invalid_backup_file_type">[Invalidyay ackupbay ilefay ypetay: %1$s\nItyay ouldshay endyay ithway \".proto.gz\" oryay \".onjsay\".-piggy]</string>
 	<string name="file_is_missing_data">[Ilefay isyay issingmay ataday.-piggy]</string>
 	<string name="backup_has_no_manga">[Ackupbay oesday otnay ontaincay anyay angamay.-piggy]</string>
 	<string name="backup_failed">[Ackupbay ailedfay-piggy]</string>
@@ -680,8 +667,8 @@
 	<string name="restore_error">[Ailedfay otay estoreray ackupbay-piggy]</string>
 	<string name="restore_missing_sources">[Issingmay ources-say:-piggy]</string>
 	<string name="restore_missing_trackers">[Ackerstray otnay oggedlay intoyay:-piggy]</string>
-	<string name="restore_content">[Estoreray usesyay ources-say otay etchfay ataday, arriercay ostscay aymay apply.\n\nMake uresay ouyay avehay installedyay allyay ecessarynay extensionsyay andyay areyay oggedlay inyay otay ources-say andyay ackingtray ervices-say eforebay estoringray.-piggy]</string>
-	<string name="restore_content_full">[Ataday omfray ethay ackupbay ilefay illway ebay restored.\n\nYou illway eednay otay installyay anyay issingmay extensionsyay andyay oglay inyay otay ackingtray ervices-say afterwardsyay otay useyay emthay.-piggy]</string>
+	<string name="restore_content">[Estoreray usesyay ources-say otay etchfay ataday, arriercay ostscay aymay applyay.\n\nAkemay uresay ouyay avehay installedyay allyay ecessarynay extensionsyay andyay areyay oggedlay inyay otay ources-say andyay ackingtray ervices-say eforebay estoringray.-piggy]</string>
+	<string name="restore_content_full">[Ataday omfray ethay ackupbay ilefay illway ebay estoredray.\n\nOuyay illway eednay otay installyay anyay issingmay extensionsyay andyay oglay inyay otay ackingtray ervices-say afterwardsyay otay useyay emthay.-piggy]</string>
 	<string name="restoring_backup_canceled">[Anceledcay estoreray-piggy]</string>
 	<string name="creating_backup">[Eatingcray ackupbay-piggy]</string>
 	<string name="what_should_backup">[Atwhay oday ouyay antway otay ackupbay?-piggy]</string>
@@ -726,27 +713,23 @@
 	<string name="refresh_tracking_metadata">[Efreshray ackingtray etadatamay-piggy]</string>
 	<string name="updates_tracking_details">[Updatesyay atus-stay, orescay andyay astlay apterchay eadray omfray ethay ackingtray ervices-say-piggy]</string>
 	<string name="clean_up_downloaded_chapters">[Eanclay upyay ownloaded-day apterschay-piggy]</string>
-	<string name="delete_unused_chapters">[Eleteday on-nay-existentyay, artiallypay ownloaded-day,
-            andyay eadray apterchay oldersfay-piggy]</string>
+	<string name="delete_unused_chapters">[Eleteday on-nay-existentyay, artiallypay ownloaded-day, andyay eadray apterchay oldersfay-piggy]</string>
 	<string name="clean_orphaned_downloads">[Eanclay orphanedyay-piggy]</string>
 	<string name="clean_read_downloads">[Eanclay eadray-piggy]</string>
 	<string name="clean_read_manga_not_in_library">[Eanclay angamay otnay inyay ibrarylay-piggy]</string>
 	<string name="starting_cleanup">[Artingstay eanupclay-piggy]</string>
 	<string name="no_folders_to_cleanup">[Onay oldersfay otay eanupclay-piggy]</string>
 	<string name="disable_battery_optimization">[Isableday atterybay optimizationyay-piggy]</string>
-	<string name="disable_if_issues_with_updating">[Isableday isthay ifyay ouyay areyay experiencingyay issuesyay
-        ithway updatingyay oryay estoringray ouryay ibrarylay-piggy]</string>
+	<string name="disable_if_issues_with_updating">[Isableday isthay ifyay ouyay areyay experiencingyay issuesyay ithway updatingyay oryay estoringray ouryay ibrarylay-piggy]</string>
 	<string name="battery_optimization_disabled">[Atterybay optimizationyay isyay alreadyay isabled-day-piggy]</string>
 	<plurals name="cleanup_done">
 		<item quantity="one">[Eanupclay oneday. Emovedray %d olderfay-piggy]</item>
 		<item quantity="other">[Eanupclay oneday. Emovedray %d oldersfay-piggy]</item>
 	</plurals>
 	<string name="clean_up_cached_covers">[Eanclay upyay achedcay overscay-piggy]</string>
-	<string name="delete_old_covers_in_library_used_">[Eleteday oldyay andyay unusedyay achedcay overscay ofyay
-        angamay inyay ouryay ibrarylay at-thay ashay eenbay updated.\nCurrently usingyay: %1$s-piggy]</string>
+	<string name="delete_old_covers_in_library_used_">[Eleteday oldyay andyay unusedyay achedcay overscay ofyay angamay inyay ouryay ibrarylay at-thay ashay eenbay updatedyay.\nUrrentlycay usingyay: %1$s-piggy]</string>
 	<string name="clear_cached_covers_non_library">[Earclay achedcay overscay otnay inyay ibrarylay-piggy]</string>
-	<string name="delete_all_covers__not_in_library_used_">[Eleteday allyay overscay achedcay at-thay areyay
-        otnay inyay ouryay ibrarylay \urrentlynCay usingyay: %1$s-piggy]</string>
+	<string name="delete_all_covers__not_in_library_used_">[Eleteday allyay overscay achedcay at-thay areyay otnay inyay ouryay ibrarylay \nUrrentlycay usingyay: %1$s-piggy]</string>
 	<!-- Browse Settings -->
 	<string name="pref_global_search">[Obalglay earchsay-piggy]</string>
 	<string name="check_for_extension_updates">[Eckchay orfay extensionyay updatesyay-piggy]</string>
@@ -756,15 +739,11 @@
 	<string name="only_search_pinned_when">[Onlyay earchsay innedpay ources-say-piggy]</string>
 	<string name="match_pinned_sources">[Atchmay innedpay ources-say-piggy]</string>
 	<string name="match_enabled_sources">[Atchmay enabledyay ources-say-piggy]</string>
-	<string name="only_enable_pinned_for_migration">[Onlyay enableyay ouryay innedpay ources-say orfay
-        igrationmay-piggy]</string>
-	<string name="only_enable_enabled_for_migration">[Onlyay enableyay ouryay urrentlycay enabledyay ources-say orfay
-        igrationmay-piggy]</string>
-	<string name="use_last_saved_migration_preferences">[Useyay astlay avedsay epray-igrationmay eferencespray
-    andyay ources-say otay assmay igratemay-piggy]</string>
+	<string name="only_enable_pinned_for_migration">[Onlyay enableyay ouryay innedpay ources-say orfay igrationmay-piggy]</string>
+	<string name="only_enable_enabled_for_migration">[Onlyay enableyay ouryay urrentlycay enabledyay ources-say orfay igrationmay-piggy]</string>
+	<string name="use_last_saved_migration_preferences">[Useyay astlay avedsay epray-igrationmay eferencespray andyay ources-say otay assmay igratemay-piggy]</string>
 	<string name="migration_sources_changed">[Igrationmay ources-say angedchay-piggy]</string>
-	<string name="you_can_migrate_in_library">[Ouyay ancay alsoyay igratemay ybay electingsay angamay inyay ouryay
-        ibrarylay-piggy]</string>
+	<string name="you_can_migrate_in_library">[Ouyay ancay alsoyay igratemay ybay electingsay angamay inyay ouryay ibrarylay-piggy]</string>
 	<string name="source_migration_guide">[Ourcesay igrationmay uidegay-piggy]</string>
 	<string name="nsfw_sources">[NSFW (18+) ources-say-piggy]</string>
 	<string name="show_in_sources_and_extensions">[Owshay inyay ources-say andyay extensionsyay istslay-piggy]</string>
@@ -774,8 +753,8 @@
 	<string name="build_time">[Uildbay imetay-piggy]</string>
 	<string name="send_crash_report">[Endsay ashcray eportsray-piggy]</string>
 	<string name="helps_fix_bugs">[Elpshay ixfay anyay ugsbay. Onay ensitivesay ataday illway ebay entsay-piggy]</string>
-	<string name="whats_new">[What\'s ewnay-piggy]</string>
-	<string name="whats_new_this_release">[What\'s ewnay inyay isthay eleaseray-piggy]</string>
+	<string name="whats_new">[Atswhay ewnay-piggy]</string>
+	<string name="whats_new_this_release">[Atswhay ewnay inyay isthay eleaseray-piggy]</string>
 	<string name="help_translate">[Elphay anslatetray-piggy]</string>
 	<string name="helpful_translation_links">[Elpfulhay anslationtray inkslay-piggy]</string>
 	<string name="website">[Ebsiteway-piggy]</string>
@@ -810,10 +789,9 @@
 	<string name="nothing_is_downloading">[Othingnay isyay urrentlycay ownloadingday-piggy]</string>
 	<string name="download_complete">[Ownload-day ompletecay-piggy]</string>
 	<string name="download_error">[Ownload-day erroryay-piggy]</string>
-	<string name="manage_whats_downloading">[Anagemay what\'s ownloadingday-piggy]</string>
-	<string name="visit_recents_for_download_queue">[Isitvay ethay ecentsray abtay otay accessyay ethay ownload-day
-        ueueqay. Ouyay ancay alsoyay oubleday aptay oryay esspray andyay oldhay orfay uickerqay accessyay-piggy]</string>
-	<string name="couldnt_download_low_space">[Couldn\'t ownload-day apterschay ueday otay owlay iskday acespay-piggy]</string>
+	<string name="manage_whats_downloading">[Anagemay atswhay ownloadingday-piggy]</string>
+	<string name="visit_recents_for_download_queue">[Isitvay ethay ecentsray abtay otay accessyay ethay ownload-day ueueqay. Ouyay ancay alsoyay oubleday aptay oryay esspray andyay oldhay orfay uickerqay accessyay-piggy]</string>
+	<string name="couldnt_download_low_space">[Ouldntcay ownload-day apterschay ueday otay owlay iskday acespay-piggy]</string>
 	<!-- Download Notification -->
 	<string name="could_not_download_unexpected_error">[Ouldcay otnay ownload-day apterchay ueday otay unexpectedyay erroryay-piggy]</string>
 	<string name="no_wifi_connection">[Onay Iway-Ifay onnectioncay availableyay-piggy]</string>
@@ -832,8 +810,7 @@
 	<string name="download_new_chapters">[Ownload-day ewnay apterschay-piggy]</string>
 	<string name="categories_to_include_in_download">[Ategoriescay otay includeyay inyay ownload-day-piggy]</string>
 	<string name="delete_removed_chapters">[Eleteday emovedray apterschay-piggy]</string>
-	<string name="delete_downloaded_if_removed_online">[Eleteday ownloaded-day apterschay ifyay ethay ourcesay
-        ashay emovedray ethay apterchay onlineyay-piggy]</string>
+	<string name="delete_downloaded_if_removed_online">[Eleteday ownloaded-day apterschay ifyay ethay ourcesay ashay emovedray ethay apterchay onlineyay-piggy]</string>
 	<string name="ask_on_chapters_page">[Eleteday uringday obalglay updatesyay, askyay onyay apterschay agepay-piggy]</string>
 	<string name="always_keep">[Alwaysyay eepkay-piggy]</string>
 	<string name="always_delete">[Alwaysyay eleteday-piggy]</string>
@@ -960,7 +937,7 @@
 	<string name="selection">[Electionsay-piggy]</string>
 	<string name="share">[Areshay-piggy]</string>
 	<string name="sort">[Ortsay-piggy]</string>
-	<string name="sort_and_filter">[Ortsay &ampyay; Ilterfay-piggy]</string>
+	<string name="sort_and_filter">[Ortsay &amp; Ilterfay-piggy]</string>
 	<string name="start">[Artstay-piggy]</string>
 	<string name="stop">[Opstay-piggy]</string>
 	<string name="tag">[Agtay-piggy]</string>
