@@ -15,7 +15,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
         status.generatedResources[targetLang] = [];
         status.diff[targetLang] = {};
         for (const res of resourceStats) {
-            if (res.targetLangs.includes(targetLang)) {
+            if (res.targetLangs.includes(targetLang) && (mm.ctx.prj === undefined || res.prj === mm.ctx.prj)) {
                 const resourceId = res.id;
                 const pipeline = mm.contentTypes[res.contentType];
                 const translator = async function translate(rid, sid, src) {
