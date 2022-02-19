@@ -42,7 +42,7 @@ export const xmlEntityDecoder = regexMatchingDecoderMaker(
 );
 
 export const xmlCDataDecoder = regexMatchingDecoderMaker(
-    /<!\[CDATA\[(?<cdata>.*?)\]\]>/g,
+    /<!\[CDATA\[(?<cdata>.*?)\]\]>/gs,
     groups =>groups.cdata
 );
 
