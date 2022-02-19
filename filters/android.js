@@ -1,16 +1,17 @@
-// TODO: lots of limitations to fix.
 // Check https://developer.android.com/guide/topics/resources/string-resource#FormattingAndStyling
 // Currently XML parsing is disabled for <string> and <item>. This is to make it easier to inject translations
-// and preserve the source but the downside is that we're missing CDATA handling, whitespace trimming, entity management from XML.
-// We do decode XML entities and do whitespace trimming and escapes per Android rules but we don't handle strings surrounded by double quotes.
+// and preserve the source but the downside is that we miss automatic CDATA handling, whitespace trimming, entity management.
+// TODO: per Android rules we don't handle keeping as-is strings surrounded by double quotes.
 
 import { XMLParser, XMLBuilder } from 'fast-xml-parser';
 import xmlFormatter from 'xml-formatter';
-import { xmlEntityDecoder, androidEscapesDecoder, xmlEntityEncoder, androidEscapesEncoder } from '../normalizers/regex.js';
+import { xmlCDataDecoder, xmlEntityDecoder, androidEscapesDecoder,
+    xmlEntityEncoder, androidEscapesEncoder } from '../normalizers/regex.js';
 
 function collapseTextNodesAndDecode(node) {
     const collapsedText = node.map(e => e['#text']).join('');
-    const afterXmlEntities = xmlEntityDecoder([ collapsedText ]).join('');
+    const afterStrippingCData = xmlCDataDecoder([ collapsedText ]).join('');
+    const afterXmlEntities = xmlEntityDecoder([ afterStrippingCData ]).join('');
     const afterSpaceCollapse = afterXmlEntities.replaceAll(/[ \f\n\r\t\v\u2028\u2029]+/g, ' ');
     return androidEscapesDecoder([ afterSpaceCollapse ]).join('');
 }

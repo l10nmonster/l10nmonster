@@ -41,6 +41,11 @@ export const xmlEntityDecoder = regexMatchingDecoderMaker(
                 )
 );
 
+export const xmlCDataDecoder = regexMatchingDecoderMaker(
+    /<!\[CDATA\[(?<cdata>.*?)\]\]>/g,
+    groups =>groups.cdata
+);
+
 export const xmlEntityEncoder = (str) => str.replaceAll('&', '&amp;')
     .replaceAll('<', '&lt;').replaceAll('\u00a0', '&#160;');
 
