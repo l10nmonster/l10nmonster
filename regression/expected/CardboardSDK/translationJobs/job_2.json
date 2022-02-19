@@ -7,6 +7,7 @@
 		"prjLeverage": {
 			"default": {
 				"translated": 30,
+				"translatedWords": 96,
 				"translatedByQ": {
 					"61": 1,
 					"70": 29
@@ -15,6 +16,7 @@
 				"untranslatedChars": 35,
 				"untranslatedWords": 4,
 				"pending": 0,
+				"pendingWords": 0,
 				"internalRepetitions": 0,
 				"internalRepetitionWords": 0
 			}

@@ -7,11 +7,13 @@
 		"prjLeverage": {
 			"default": {
 				"translated": 0,
+				"translatedWords": 0,
 				"translatedByQ": {},
-				"untranslated": 877,
-				"untranslatedChars": 17900,
-				"untranslatedWords": 3044,
+				"untranslated": 866,
+				"untranslatedChars": 18031,
+				"untranslatedWords": 3026,
 				"pending": 0,
+				"pendingWords": 0,
 				"internalRepetitions": 5,
 				"internalRepetitionWords": 18
 			}
@@ -28,19 +30,19 @@
 			"q": 70
 		},
 		{
-			"guid": "ehbg6jluBWm1ZPyw00Prf4lbXtVyLJItrCrATkSEYGI",
+			"guid": "AEJ621z89Ciok0GWLNPGnbE-JuTY9Xia3PGkIydY8G0",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "external_storage_permission_notice",
-			"src": "TachiyomiJ2K requires access to all files in Android 11 to download chapters, create automatic backups, and read local manga. \n\nOn the next screen, enable \"Allow access to manage all files.\"",
-			"tgt": "在 Android 11 中，TachiyomiJ2K 需要访问所有文件才能下载章节、创建自动备份和阅读本地漫画。 \n \n在下一个屏幕上，启用“允许访问管理所有文件”",
+			"src": "TachiyomiJ2K requires access to all files in Android 11 to download chapters, create automatic backups, and read local manga. \\n\\nOn the next screen, enable \\\"Allow access to manage all files.\\\"",
+			"tgt": "在 Android 11 中，TachiyomiJ2K 需要访问所有文件才能下载章节、创建自动备份和阅读本地漫画。\n\\n\n\\n在下一个屏幕上，启用“允许访问管理所有文件”",
 			"contentType": "default",
 			"q": 70
 		},
 		{
-			"guid": "0TJzTyqgSESA9Z13x0gjdb2SSI0vFps-a1UhezJeIUA",
+			"guid": "ZaZ2rCqY1Wwny7xv1bT3LE09Nnw6fMmfqbGlHHzd8SY",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "external_storage_download_notice",
-			"src": "TachiyomiJ2K requires access to all files to download chapters. Tap here, then enable \"Allow access to manage all files.\"",
+			"src": "TachiyomiJ2K requires access to all files to download chapters. Tap here, then enable \\\"Allow access to manage all files.\\\"",
 			"tgt": "TachiyomiJ2K 需要访问所有文件才能下载章节。 点按此处，然后启用“允许访问以管理所有文件”",
 			"contentType": "default",
 			"q": 70
@@ -415,10 +417,10 @@
 			"q": 70
 		},
 		{
-			"guid": "a5ns947pdrJnqiF2ZooyCjrJFnqIZ4Jy5QqbF3st9QY",
+			"guid": "sS2-Wml_oLSQpN5ejepqpW-VCMMoW3V5yDloy9YxTfo",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "by_source_order",
-			"src": "By source's order",
+			"src": "By source\\'s order",
 			"tgt": "按图源顺序",
 			"contentType": "default",
 			"q": 70
@@ -447,6 +449,33 @@
 			"sid": "scanlators",
 			"src": "Scanlators",
 			"tgt": "扫译小组",
+			"contentType": "default",
+			"q": 70
+		},
+		{
+			"guid": "AorevjJcBlzGUCT4pVnxp1jmksPwVsNeVFyJvcgsSII",
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "remove_n_chapters_other",
+			"src": "Remove %1$d downloaded chapters?",
+			"tgt": "移除已下载的 %1$d 章？",
+			"contentType": "default",
+			"q": 70
+		},
+		{
+			"guid": "DA5nZGOjj3NWy6-tyV9fCoXn2a63w1YSAkX9iwI6KLI",
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "chapters_plural_other",
+			"src": "%1$d chapters",
+			"tgt": "%1$d 章",
+			"contentType": "default",
+			"q": 70
+		},
+		{
+			"guid": "yi-77QTDFxbEobsI7YTOCs2QCGEenD3hrANu8aV0XhI",
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "pages_left_other",
+			"src": "%1$d pages left",
+			"tgt": "剩余 %1$d 页",
 			"contentType": "default",
 			"q": 70
 		},
@@ -586,10 +615,10 @@
 			"q": 70
 		},
 		{
-			"guid": "Z5R54ptkf0KSzqHSXbTpgusMBDC0AnVs5HlxwFuBn_g",
+			"guid": "WSq3LK9IDb76oLm1ZYSFlIxgDWCELXXRtuphJWeZ10Y",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "confirm_category_deletion_message",
-			"src": "Manga in this category will moved into the default category.",
+			"src": "Manga in this category will moved into the\n        default category.",
 			"tgt": "此分类的漫画将移至默认分类。",
 			"contentType": "default",
 			"q": 70
@@ -645,6 +674,15 @@
 			"sid": "move_to_categories",
 			"src": "Move to categories",
 			"tgt": "移至分类",
+			"contentType": "default",
+			"q": 70
+		},
+		{
+			"guid": "SlCtIxrafFt7azlMPXXGamLP9a0ffejpfKid9ZszQ9o",
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "category_plural_other",
+			"src": "%d categories",
+			"tgt": "%d 个类别",
 			"contentType": "default",
 			"q": 70
 		},
@@ -847,10 +885,10 @@
 			"q": 70
 		},
 		{
-			"guid": "lquVLLePK40yidM6TxG2TmQzi_V53wQ9fGVOUNboTb4",
+			"guid": "QtrAnlObvwhOX3_N_r0bisoRpBYZnccAPWk6MHFfxVo",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "library_is_empty_add_from_browse",
-			"src": "Your library is empty, add series to your library from the browse tab.",
+			"src": "Your library is empty, add series to your\n        library from the browse tab.",
 			"tgt": "你的书架为空，可从「浏览」中添加漫画至书架。",
 			"contentType": "default",
 			"q": 70
@@ -982,10 +1020,10 @@
 			"q": 70
 		},
 		{
-			"guid": "_3wH8_CCG6rSOzCmj6gPJXcTu3eQOR5zpcStEKu-2ZY",
+			"guid": "6k5gU--Y8lDrdC6x0fI-TPV3grEN4_CT9hNJG_-WkHI",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "search_globally",
-			"src": "Search \"%1$s\" globally",
+			"src": "Search \\\"%1$s\\\" globally",
 			"tgt": "全局搜索「%1$s」",
 			"contentType": "default",
 			"q": 70
@@ -1108,10 +1146,10 @@
 			"q": 70
 		},
 		{
-			"guid": "DMMCd9TlUjweJCvkzAet30izdq29jjibSAaLenVC_Ho",
+			"guid": "PNEjbK6HdLxav9QgmjC-ng6W4RgEAzXUCcRH_EmX36w",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "drag_and_drop",
-			"src": "Drag & Drop",
+			"src": "Drag &amp; Drop",
 			"tgt": "拖放",
 			"contentType": "default",
 			"q": 70
@@ -1324,6 +1362,33 @@
 			"q": 70
 		},
 		{
+			"guid": "sxJPxRjdf-qJWkXyz95hsE5-MDHLGoi6EJD3pA5r5dk",
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "for_n_titles_other",
+			"src": "For %d titles",
+			"tgt": "共 %d 个漫画",
+			"contentType": "default",
+			"q": 70
+		},
+		{
+			"guid": "hlShNgImb0QAtMb-KhR2H6Srjw0SGAdiLMHCGjkZluc",
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "notification_and_n_more_other",
+			"src": "and %1$d more chapters",
+			"tgt": "还有 %1$d 章",
+			"contentType": "default",
+			"q": 70
+		},
+		{
+			"guid": "u2w4iURD4iP_Hw2mJ3oCASP-FlTWe4xyznyVQOUAslA",
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "notification_update_failed_other",
+			"src": "%1$d updates failed",
+			"tgt": "%1$d 本漫画更新失败",
+			"contentType": "default",
+			"q": 70
+		},
+		{
 			"guid": "zvr59y3s5K3qszjqGTIXKeg_HsuE1uajtP_Jw40Sp5U",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "channel_errors",
@@ -1396,10 +1461,10 @@
 			"q": 70
 		},
 		{
-			"guid": "gX2qXw9h04nSkWqum0JX_lrXBPrnakCiXfhaqiVV8OM",
+			"guid": "tDcvJdk-ADFFMLE88kDq3ijiWOWuB0UehLSWJFS0Ysk",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "when_sorting_ignore_articles",
-			"src": "When sorting alphabetically, sort ignoring articles (a, an, the) at the start of manga titles",
+			"src": "When sorting alphabetically, sort ignoring\n        articles (a, an, the) at the start of manga titles",
 			"tgt": "当按字母排序时，排序忽略漫画标题开头的（a，an，the）",
 			"contentType": "default",
 			"q": 70
@@ -1432,10 +1497,10 @@
 			"q": 70
 		},
 		{
-			"guid": "VCIW6HRhoeMhpQUhRuDv4rLKq9LG90yl1F5zV-xbvQU",
+			"guid": "t_Kc2lUCYYtYD2eQ8-zxJ6jAje9wkiLFhF8ARqYli6I",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "auto_refresh_covers_summary",
-			"src": "Refresh covers in library as well when updating library",
+			"src": "Refresh covers in library as well\n        when updating library",
 			"tgt": "更新书架的同时更新书架漫画封面",
 			"contentType": "default",
 			"q": 70
@@ -1495,10 +1560,10 @@
 			"q": 70
 		},
 		{
-			"guid": "8_2VD6CoQQwIG6KI5Gi0GBE4gSJnn5YXcgUHUr7tvXE",
+			"guid": "sUwdIz8dujLXLaVOdpFXXnIJMStRzPer2xdZlNi5Qtk",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "updates_and_history",
-			"src": "Updates & history",
+			"src": "Updates &amp; history",
 			"tgt": "更新和历史",
 			"contentType": "default",
 			"q": 70
@@ -1549,19 +1614,19 @@
 			"q": 70
 		},
 		{
-			"guid": "Rc8j67hJn_5B9igXN-Qk0aQulQGROwzjffyN0YKKWMA",
+			"guid": "LV78cUMWfpiCScHFDB2EpcM6FnOCzhZSdsWI4uY-meE",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "this_will_remove_the_read_date_for_x_question",
-			"src": "This will remove the read date of \"%1$s\". Are you sure?",
-			"tgt": "这将移除\"%1$s\"的阅读日期，确定要移除吗？",
+			"src": "This will remove the read date of\n        \\\"%1$s\\\". Are you sure?",
+			"tgt": "这将移除\\\"%1$s\\\"的阅读日期，确定要移除吗？",
 			"contentType": "default",
 			"q": 70
 		},
 		{
-			"guid": "x3TEe4A97_mGw4nWI9E7Z9-WfUrxRSmYZR0IRK24l14",
+			"guid": "LTtGBoeuf8ZQL69v9YapziAX5xjQ_tAqRRhR07t0zQM",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "this_will_remove_the_read_date_question",
-			"src": "This will remove the read date of this chapter. Are you sure?",
+			"src": "This will remove the read date of this\n        chapter. Are you sure?",
 			"tgt": "将清除此章节的阅读日期，确定吗？",
 			"contentType": "default",
 			"q": 70
@@ -2080,11 +2145,11 @@
 			"q": 70
 		},
 		{
-			"guid": "5i1qeSgTv4eK9tMokbsNzyBFy4aeu_6h0nSNcgRxpEw",
+			"guid": "514a18U2Og9mxITDGBmRQjj5Ljy8WoYZkyxmhXcMh-c",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "untrusted_extension_message",
-			"src": "This extension was signed with an untrusted certificate and wasn't activated.\n\nA malicious extension could read any login credentials stored in Tachiyomi or execute arbitrary code.\n\nBy trusting this certificate you accept these risks.",
-			"tgt": "此扩展插件的证书并不可信，且尚未被启用。 \n \n恶意的扩展插件可能会读取储存在 Tachiyomi 中的任何登录凭据或执行任意代码。 \n \n信任这个证书，即代表你愿意承担上述风险。",
+			"src": "This extension was signed with an untrusted certificate and wasn\\'t activated.\\n\\nA malicious extension could read any login credentials stored in Tachiyomi or execute arbitrary code.\\n\\nBy trusting this certificate you accept these risks.",
+			"tgt": "此扩展插件的证书并不可信，且尚未被启用。\n\\n\n\\n恶意的扩展插件可能会读取储存在 Tachiyomi 中的任何登录凭据或执行任意代码。\n\\n\n\\n信任这个证书，即代表你愿意承担上述风险。",
 			"contentType": "default",
 			"q": 70
 		},
@@ -2224,11 +2289,38 @@
 			"q": 70
 		},
 		{
+			"guid": "Raa-hZ8f4KMyB2Nz7mYq4P5H_kIxTMnGjFOwfXenE3s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "_updates_pending_other",
+			"src": "%d updates pending",
+			"tgt": "%d 个待处理更新",
+			"contentType": "default",
+			"q": 70
+		},
+		{
 			"guid": "XlcudDTXzG61J5iRPIyqhRE70F5HFnn2xrll5R17-n8",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "extensions_updated",
 			"src": "Extensions updated",
 			"tgt": "扩展已更新",
+			"contentType": "default",
+			"q": 70
+		},
+		{
+			"guid": "2nt8_jgKb5SsaEH9lFxheOlhuINrxsfKpgrMFxgB7fc",
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "extensions_updated_plural_other",
+			"src": "%d extensions updated",
+			"tgt": "更新了 %d 个扩展",
+			"contentType": "default",
+			"q": 70
+		},
+		{
+			"guid": "DnNCJI836IsOslDQN_AO231MZYC56niM1Vi2_J1snS4",
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "extension_updates_available_other",
+			"src": "%d extension updates available",
+			"tgt": "%d 个扩展插件可更新",
 			"contentType": "default",
 			"q": 70
 		},
@@ -2368,19 +2460,19 @@
 			"q": 70
 		},
 		{
-			"guid": "6sT9eOh-YFpLlMtqSLgsuD_avu1ljtGpnl6rQ1BXgFE",
+			"guid": "PHpJUevQ4Mlwd5CxM2MtU-LYphTA4i5R8ULqddagBEY",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "theres_no_next_chapter",
-			"src": "There's no next chapter",
+			"src": "There\\'s no next chapter",
 			"tgt": "下面没有啦",
 			"contentType": "default",
 			"q": 70
 		},
 		{
-			"guid": "3_5VuY-h5PQRaBiH61VNzkCK5d2Ckp8mECsUPeMJER0",
+			"guid": "4DHzIY-fKzgMj7AHSIYBwE_RkkhlmkUuLmXRWmsBaMY",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "theres_no_previous_chapter",
-			"src": "There's no previous chapter",
+			"src": "There\\'s no previous chapter",
 			"tgt": "前面没有啦",
 			"contentType": "default",
 			"q": 70
@@ -2602,10 +2694,10 @@
 			"q": 70
 		},
 		{
-			"guid": "KhQBQDYldIJeYyASM34BR-9ILkPBggtCSCM73BnXGfc",
+			"guid": "Hmt7S8CYIGvASn-4LZVQMBRdqacEK3NygUOLvHG2Fto",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "reduces_banding_impacts_performance",
-			"src": "Reduces banding, but impacts performance",
+			"src": "Reduces banding, but impacts\n        performance",
 			"tgt": "减少色彩带，但会降低性能",
 			"contentType": "default",
 			"q": 70
@@ -3124,10 +3216,10 @@
 			"q": 70
 		},
 		{
-			"guid": "W8IL7FndWDq-7-mwh7RdfpnZ-3SJj5ffNGNhAZG8S1s",
+			"guid": "eUXhYXNV3Z_R-HJ_InbxenRacllPUX_ykgymt6QNUTM",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "if_disabled_transition_will_skip",
-			"src": "If disabled, the transition page will be skipped if the next chapter is loaded",
+			"src": "If disabled, the transition page will be\n        skipped if the next chapter is loaded",
 			"tgt": "如果禁用，则在加载下一章时将跳过过渡页面",
 			"contentType": "default",
 			"q": 70
@@ -3381,6 +3473,24 @@
 			"sid": "create_folders_by_manga_title",
 			"src": "Creates folders according to manga title",
 			"tgt": "根据漫画标题创建文件夹",
+			"contentType": "default",
+			"q": 70
+		},
+		{
+			"guid": "RKh3lCAL61AoOWPV5MWKl2aDX9roOeiBX5DXcqW70dU",
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "pages_plural_other",
+			"src": "%1$d pages",
+			"tgt": "%1$d页",
+			"contentType": "default",
+			"q": 70
+		},
+		{
+			"guid": "k387QbCF9XCONIv1TeZYsjtbM21u1pEyznEc1O6pCYA",
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "missing_chapters_warning_other",
+			"src": "Skipping %d chapters, either the source is missing them or they have been filtered out",
+			"tgt": "跳过 %d 个章节，要么是缺少来源，要么是被过滤掉了",
 			"contentType": "default",
 			"q": 70
 		},
@@ -3691,10 +3801,10 @@
 			"q": 70
 		},
 		{
-			"guid": "LNfxBPO_lVWgBayQDFluUF42ycjQ1VaJXg0ytvQZmo0",
+			"guid": "AyODyPVwer0JQ4x-B_VIiJwlaQgtQFa-8ABym2oXd3E",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "sort_by_source_s_order",
-			"src": "Sort by source's order",
+			"src": "Sort by source\\'s order",
 			"tgt": "按图源顺序排序",
 			"contentType": "default",
 			"q": 70
@@ -3849,6 +3959,15 @@
 			"sid": "filter_groups",
 			"src": "Filter scanlator groups",
 			"tgt": "过滤扫译群组",
+			"contentType": "default",
+			"q": 70
+		},
+		{
+			"guid": "PiLPusw1sUqvz8EMPh_AHT26BoUCxAk2nZzUuU30Q20",
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "deleted_chapters_other",
+			"src": "%1$s chapters have been removed from the source:\\n%2$s\\n\\nDelete\n            their downloads?",
+			"tgt": "第%1$s章已从图源中删除：\n\\n%2$s\n\\n是否删除其下载内容？",
 			"contentType": "default",
 			"q": 70
 		},
@@ -4204,10 +4323,10 @@
 			"q": 70
 		},
 		{
-			"guid": "ZaFVe22GBI64JdVFR6uX-ObRD-cRk0zIKevux5wEwW4",
+			"guid": "JRbRhBsAR-U706ZoslEilyNFQIN9ZY4fZJmcI-PJ_hM",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "select_a_source_then_item_to_migrate",
-			"src": "Select a source, then select an item to migrate",
+			"src": "Select a source, then select an item to\n        migrate",
 			"tgt": "选择图源，然后选择待迁移项目",
 			"contentType": "default",
 			"q": 70
@@ -4267,11 +4386,11 @@
 			"q": 70
 		},
 		{
-			"guid": "40nodRaLIGy39DOdLno37o-CdP-LndXWJmmD06atmsg",
+			"guid": "JUWKMHCihnr5dFO8hIFwvDh5ZVd791Sg-ZI5eZLg2Zk",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "to_show_again_setting_sources",
-			"src": "To show this screen again, go to Settings -> Sources.",
-			"tgt": "要再次显示此屏幕，请转到 设置 -> 图源。",
+			"src": "To show this screen again, go to Settings ->\n        Sources.",
+			"tgt": "要再次显示此屏幕，请转到 设置 -&gt; 图源。",
 			"contentType": "default",
 			"q": 70
 		},
@@ -4294,10 +4413,10 @@
 			"q": 70
 		},
 		{
-			"guid": "xJFqLVqZOdDwGYAjfbgscpPcA6oGzcIavM_-Mgu3XOg",
+			"guid": "qgVX1HegkKu91OrWchhbQ2JFkHVzpVWsGBcl4dWApQk",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "dont_migrate",
-			"src": "Don't migrate",
+			"src": "Don\\'t migrate",
 			"tgt": "不迁移",
 			"contentType": "default",
 			"q": 70
@@ -4357,10 +4476,10 @@
 			"q": 70
 		},
 		{
-			"guid": "dQVWYkXPeFOjGC7dZFl4-qpzZxpKrykPe1si6ZXM47U",
+			"guid": "krtdE0B0QsbDDQ6u5kLkJ7NN7wO9gT77E9-V56d1sSY",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "no_chapters_found_for_migration",
-			"src": "No chapters found, this manga cannot be used for migration",
+			"src": "No chapters found, this manga cannot be used for\n        migration",
 			"tgt": "找不到章节，此漫画无法用于迁移",
 			"contentType": "default",
 			"q": 70
@@ -4384,11 +4503,38 @@
 			"q": 70
 		},
 		{
+			"guid": "Z39lGGgo8opWOGmpI5SsVcbozqzxZSGxrudRRkeR_Lc",
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "migrate_manga_other",
+			"src": "Migrate %1$d%2$s manga?",
+			"tgt": "迁移 %1$d%2$s 漫画？",
+			"contentType": "default",
+			"q": 70
+		},
+		{
+			"guid": "eDicseVZaWZpqk_QNfTmnnZXLU-Ze3wVuKVl3flFdj4",
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "copy_manga_other",
+			"src": "Copy %1$d%2$s manga?",
+			"tgt": "复制 %1$d%2$s 漫画？",
+			"contentType": "default",
+			"q": 70
+		},
+		{
 			"guid": "0PGoRBtjSC5DfE7pkpNcSSLKLPMNGJXcigYL1r00dOM",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "skipping_",
 			"src": "(skipping %1$d)",
 			"tgt": "（跳过 %1$d）",
+			"contentType": "default",
+			"q": 70
+		},
+		{
+			"guid": "ExRyfY9sTeTHBEQmp1wm8Ni0O7Tms0bUh2-z15pd-fk",
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "manga_migrated_other",
+			"src": "%d manga migrated",
+			"tgt": "%d 漫画已迁移",
 			"contentType": "default",
 			"q": 70
 		},
@@ -4942,10 +5088,10 @@
 			"q": 70
 		},
 		{
-			"guid": "zXLKLNmS6xruqwTnlAbShfEJGiuuMK3ztU-MUk76zWE",
+			"guid": "3Qp0miYCNwgmsk3CEa_y49lsXlq8t52Z7Sy2JmSV7tM",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "dont_auto_update",
-			"src": "Don't auto-update",
+			"src": "Don\\'t auto-update",
 			"tgt": "不自动更新",
 			"contentType": "default",
 			"q": 70
@@ -4996,10 +5142,10 @@
 			"q": 70
 		},
 		{
-			"guid": "Fm6Vq1l2shHVMSBG3SScRIRVIIllb62PT55gQ8pn6jU",
+			"guid": "lFE9FQeVgkQEYn_679iyiQZvVVjvgM5eS1wPtjv5HK4",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "no_new_chapters_open_details",
-			"src": "When there's no new chapters, the series' details will open instead",
+			"src": "When there\\'s no new chapters, the series\\' details will open instead",
 			"tgt": "没有新章节时，将打开系列的详细信息",
 			"contentType": "default",
 			"q": 70
@@ -5122,11 +5268,11 @@
 			"q": 70
 		},
 		{
-			"guid": "ZBdq5q_plZD2JzppNYLXe9MoHYNPHTYauNQGtcd4O54",
+			"guid": "LpORIgyqh4HaarPR_DrsCvK4p4CvmOHyRDVJN8smWzc",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "invalid_backup_file_type",
-			"src": "Invalid backup file type: %1$s\nIt should end with .proto.gz or .json.",
-			"tgt": "无效的备份文件类型：%1$s \n文件扩展名应为 .proto.gz 或 .json。",
+			"src": "Invalid backup file type: %1$s\\nIt should end with \".proto.gz\" or \".json\".",
+			"tgt": "无效的备份文件类型：%1$s\n\\n文件扩展名应为 .proto.gz 或 .json。",
 			"contentType": "default",
 			"q": 70
 		},
@@ -5203,20 +5349,20 @@
 			"q": 70
 		},
 		{
-			"guid": "PhjBH-rKHup-EgEYqgYdtaGWiXltWX6_6ptAADdQ3kE",
+			"guid": "t6hsK12o3yhJtRJE66-cpevuj-rQrJv2ZZZapNpKtc8",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "restore_content",
-			"src": "Restore uses sources to fetch data, carrier costs may apply.\n\nMake sure you have installed all necessary extensions and are logged in to sources and tracking services before restoring.",
-			"tgt": "还原使用图源获取数据，可能耗费联网费用。 \n \n还原前，请确认你已安装了全部必需的扩展并已登录到图源和追踪服务。",
+			"src": "Restore uses sources to fetch data, carrier costs may apply.\\n\\nMake sure you have installed all necessary extensions and are logged in to sources and tracking services before restoring.",
+			"tgt": "还原使用图源获取数据，可能耗费联网费用。\n\\n\n\\n还原前，请确认你已安装了全部必需的扩展并已登录到图源和追踪服务。",
 			"contentType": "default",
 			"q": 70
 		},
 		{
-			"guid": "zjRnVqvBaWL0WEb1kpUnpHu5WxQ6QlzFONOTIKfEIWQ",
+			"guid": "RsTUVfGaHOEo6uBalHdSZTFjGEATkgpYiGfVXbEEGDc",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "restore_content_full",
-			"src": "Data from the backup file will be restored.\n\nYou will need to install any missing extensions and log in to tracking services afterwards to use them.",
-			"tgt": "来自备份文件的数据将被还原。 \n \n你需要安装所有缺少的扩展，之后登录到跟踪服务以使用它们。",
+			"src": "Data from the backup file will be restored.\\n\\nYou will need to install any missing extensions and log in to tracking services afterwards to use them.",
+			"tgt": "来自备份文件的数据将被还原。\n\\n\n\\n你需要安装所有缺少的扩展，之后登录到跟踪服务以使用它们。",
 			"contentType": "default",
 			"q": 70
 		},
@@ -5289,6 +5435,15 @@
 			"sid": "complete",
 			"src": "Complete",
 			"tgt": "完成",
+			"contentType": "default",
+			"q": 70
+		},
+		{
+			"guid": "r_oHxHDBUGOo2CDxvtxPrzT5mm5GlErIs37FlC7LoOE",
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "restore_completed_message_other",
+			"src": "Done in %1$s with %2$s errors",
+			"tgt": "耗时 %1$s，出现 %2$s 个错误",
 			"contentType": "default",
 			"q": 70
 		},
@@ -5428,6 +5583,15 @@
 			"q": 70
 		},
 		{
+			"guid": "fDCAtisL1kEIWbyLilBMbGW4dRbeSvUyTt_OXeU4jYE",
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "cache_cleared_other",
+			"src": "Cache cleared. %d files have been deleted",
+			"tgt": "缓存已清除，%d 的文件已被删除",
+			"contentType": "default",
+			"q": 70
+		},
+		{
 			"guid": "8RjflKYA-4aX6xL1kcvLIRkf1xbBklnryutVr2M1Bc0",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "cache_delete_error",
@@ -5536,10 +5700,10 @@
 			"q": 70
 		},
 		{
-			"guid": "dwmP8JsQhLHngvqw56EBpRIwjbjeCHjFNccFSEUvGvI",
+			"guid": "CXON9XnJIRxhkG8GaYlVgk26XqzuAc3ywVWGeuwFPU8",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "delete_unused_chapters",
-			"src": "Delete non-existent, partially downloaded, and read chapter folders",
+			"src": "Delete non-existent, partially downloaded,\n            and read chapter folders",
 			"tgt": "删除不存在、部分下载和已读过章节目录",
 			"contentType": "default",
 			"q": 70
@@ -5599,10 +5763,10 @@
 			"q": 70
 		},
 		{
-			"guid": "-wkXZ-U6feYoBLD03zOySY9bCJ2q3iJdBWNGiVyzb-w",
+			"guid": "dgUCazpapV1EzIaO1I8RZmJz1rWfQWSl6BXnA4JYgzQ",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "disable_if_issues_with_updating",
-			"src": "Disable this if you are experiencing issues with updating or restoring your library",
+			"src": "Disable this if you are experiencing issues\n        with updating or restoring your library",
 			"tgt": "如果更新或恢复书架过程中出现问题，禁用此项",
 			"contentType": "default",
 			"q": 70
@@ -5617,6 +5781,15 @@
 			"q": 70
 		},
 		{
+			"guid": "9sQWaHtbzN_7C6tejrC1yfO2ch9VAGcoLD5b-AkOrog",
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "cleanup_done_other",
+			"src": "Cleanup done. Removed %d folders",
+			"tgt": "清除完成，移除了 %d 个目录",
+			"contentType": "default",
+			"q": 70
+		},
+		{
 			"guid": "RYPIepOwa5XAPzLX3PAQYJsYA06xOGDr6gVmCoK5e68",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "clean_up_cached_covers",
@@ -5626,11 +5799,11 @@
 			"q": 70
 		},
 		{
-			"guid": "nEv_KSYOz12KtpTWXdNwTR49WMGpvioVTf4CqqDI_Oc",
+			"guid": "lFZL0Ld7CHAzPgb8iA7zmSUlUTpgfBwOaMmTDY3302Q",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "delete_old_covers_in_library_used_",
-			"src": "Delete old and unused cached covers of manga in your library that has been updated.\nCurrently using: %1$s",
-			"tgt": "删除书架更新过后旧的和未使用的漫画封面缓存 \n当前使用：%1$s",
+			"src": "Delete old and unused cached covers of\n        manga in your library that has been updated.\\nCurrently using: %1$s",
+			"tgt": "删除书架更新过后旧的和未使用的漫画封面缓存\n\\n当前使用：%1$s",
 			"contentType": "default",
 			"q": 70
 		},
@@ -5644,11 +5817,11 @@
 			"q": 70
 		},
 		{
-			"guid": "JXsJHBIMLNjsigfNzdfS9wj4WHG3TZviHGoVT2WHQF8",
+			"guid": "gJozgAahlEfxbSNWQ1gJjWNdpFa5S_Nmn5fMp4i7Wt4",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "delete_all_covers__not_in_library_used_",
-			"src": "Delete all covers cached that are not in your library \nCurrently using: %1$s",
-			"tgt": "删除不在书架的所有封面缓存 \n当前使用：%1$s",
+			"src": "Delete all covers cached that are\n        not in your library \\nCurrently using: %1$s",
+			"tgt": "删除不在书架的所有封面缓存\n\\n当前使用：%1$s",
 			"contentType": "default",
 			"q": 70
 		},
@@ -5725,28 +5898,28 @@
 			"q": 70
 		},
 		{
-			"guid": "dhcccCE8fLfXWvszAEfDTWr7hNNe_3qT5IUdFeDqgoI",
+			"guid": "6jW9DV4cZnlW29a4NLsgSWii59VPQ87cS6KMK4HPnfk",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "only_enable_pinned_for_migration",
-			"src": "Only enable your pinned sources for migration",
+			"src": "Only enable your pinned sources for\n        migration",
 			"tgt": "仅启用置顶图源用于迁移",
 			"contentType": "default",
 			"q": 70
 		},
 		{
-			"guid": "ecCXfY4HMfF9J918_KY7aN7GY0YzLi4DQvg6ltvASZs",
+			"guid": "x-snHPp1tSwtZyEr9jtF30xXPGKdVLmbRGeDCT0GnP4",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "only_enable_enabled_for_migration",
-			"src": "Only enable your currently enabled sources for migration",
+			"src": "Only enable your currently enabled sources for\n        migration",
 			"tgt": "仅启用当前启用的图源用于迁移",
 			"contentType": "default",
 			"q": 70
 		},
 		{
-			"guid": "SVlZlyNR7LfMJwSoD3PuIxOKThbqF1NzlAMB2Ol9ARE",
+			"guid": "Mr1O0bMxNujNfK2BUDVA-uD5DakHeYmz_TwAOiR8BC8",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "use_last_saved_migration_preferences",
-			"src": "Use last saved pre-migration preferences and sources to mass migrate",
+			"src": "Use last saved pre-migration preferences\n    and sources to mass migrate",
 			"tgt": "使用上次保存的迁移前首选项和来源进行批量迁移",
 			"contentType": "default",
 			"q": 70
@@ -5761,10 +5934,10 @@
 			"q": 70
 		},
 		{
-			"guid": "pX3b7nl_8Y58oXPbghIIx7_0aGmWWLPeP-D5LNDblcU",
+			"guid": "sXOALihWEmJ6YfIdfNTX4MOB4EJfqL3HC4gunKoo4hA",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "you_can_migrate_in_library",
-			"src": "You can also migrate by selecting manga in your library",
+			"src": "You can also migrate by selecting manga in your\n        library",
 			"tgt": "您还可以通过选择书架中的漫画进行迁移",
 			"contentType": "default",
 			"q": 70
@@ -5842,19 +6015,19 @@
 			"q": 70
 		},
 		{
-			"guid": "xX86TIr3yCDJeN8pEfrANiXCn559dxHyBB4GnIbsQpo",
+			"guid": "Mp4qYjX4TLqyPBBimDAsQEA6HX1pxfKYqu-fDmJ1qWA",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "whats_new",
-			"src": "What's new",
+			"src": "What\\'s new",
 			"tgt": "更新记录",
 			"contentType": "default",
 			"q": 70
 		},
 		{
-			"guid": "ODnxRXqbNkf0WZwNMNBRVzvTowiRVdu0tktSDF2ET3k",
+			"guid": "tEdjUzjV-kUfp9sCsfGjmOiajlonPoIC5BrGEpozJ5A",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "whats_new_this_release",
-			"src": "What's new in this release",
+			"src": "What\\'s new in this release",
 			"tgt": "此版本中的新功能",
 			"contentType": "default",
 			"q": 70
@@ -6148,28 +6321,28 @@
 			"q": 70
 		},
 		{
-			"guid": "eXRc26yvod4Obg8UmsDbwm7gkrsGGdpMy4TpcYAWsxk",
+			"guid": "9FoAbAZ8Z_s3yvueut4QUPKSLTzXYEe1sL1lW0JGH8M",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "manage_whats_downloading",
-			"src": "Manage what's downloading",
+			"src": "Manage what\\'s downloading",
 			"tgt": "管理下载内容",
 			"contentType": "default",
 			"q": 70
 		},
 		{
-			"guid": "6tgFpq1s7Bmdw6Wj4ju2N96GgPe7p9Y7cGiyfxSF-9E",
+			"guid": "udLADgq5aBCP3HRUgh7MRjraIGvIKv7DVRBrlvL2uqo",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "visit_recents_for_download_queue",
-			"src": "Visit the recents tab to access the download queue. You can also double tap or press and hold for quicker access",
+			"src": "Visit the recents tab to access the download\n        queue. You can also double tap or press and hold for quicker access",
 			"tgt": "访问“最近”标签以访问下载队列。 您也可以双击或按住以加快访问速度",
 			"contentType": "default",
 			"q": 70
 		},
 		{
-			"guid": "Vj8DOxw8uO9KY77TuWRdJxY8sMxVtwq_IyHh6_8Srro",
+			"guid": "RjImxDGrC9eEA33aleNOWCfM5yKBRwdZ4SrI4VCVcPw",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "couldnt_download_low_space",
-			"src": "Couldn't download chapters due to low disk space",
+			"src": "Couldn\\'t download chapters due to low disk space",
 			"tgt": "由于磁盘空间不足，无法下载章节",
 			"contentType": "default",
 			"q": 70
@@ -6319,10 +6492,10 @@
 			"q": 70
 		},
 		{
-			"guid": "QblYKrpV4TYMwNLE5d6OuLP5-YvTFicfnEWa5-51OcY",
+			"guid": "4A-SMPJKiClDuuQv7MD8Yqas6e88vrhGamWfcYDuH54",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "delete_downloaded_if_removed_online",
-			"src": "Delete downloaded chapters if the source has removed the chapter online",
+			"src": "Delete downloaded chapters if the source\n        has removed the chapter online",
 			"tgt": "如果图源已移除在线章节，则删除已下载的章节",
 			"contentType": "default",
 			"q": 70
@@ -6441,6 +6614,15 @@
 			"sid": "weekly",
 			"src": "Weekly",
 			"tgt": "每周",
+			"contentType": "default",
+			"q": 70
+		},
+		{
+			"guid": "nVhfdggD79bzuhQQ-AMZpSAZHDvBVHMQZUC1OTGTtWs",
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "after_minutes_other",
+			"src": "After %1$s minutes",
+			"tgt": "在%1$s分钟之后",
 			"contentType": "default",
 			"q": 70
 		},
@@ -7381,11 +7563,11 @@
 			"q": 70
 		},
 		{
-			"guid": "X8fO-c1VVu9rbJOhfqH9UiMS20tCwPGDKgZXFvQMp3A",
+			"guid": "MLvGWmn3vlOInLIaLzzzKs23PrXIomM3xcWe4QlUi9w",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "sort_and_filter",
-			"src": "Sort & Filter",
-			"tgt": "排序 & 筛选",
+			"src": "Sort &amp; Filter",
+			"tgt": "排序 &amp; 筛选",
 			"contentType": "default",
 			"q": 70
 		},
@@ -7494,186 +7676,6 @@
 			"sid": "wifi",
 			"src": "Wi-Fi",
 			"tgt": "已连接 Wi-Fi",
-			"contentType": "default",
-			"q": 70
-		},
-		{
-			"guid": "AorevjJcBlzGUCT4pVnxp1jmksPwVsNeVFyJvcgsSII",
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "remove_n_chapters_other",
-			"src": "Remove %1$d downloaded chapters?",
-			"tgt": "移除已下载的 %1$d 章？",
-			"contentType": "default",
-			"q": 70
-		},
-		{
-			"guid": "DA5nZGOjj3NWy6-tyV9fCoXn2a63w1YSAkX9iwI6KLI",
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "chapters_plural_other",
-			"src": "%1$d chapters",
-			"tgt": "%1$d 章",
-			"contentType": "default",
-			"q": 70
-		},
-		{
-			"guid": "yi-77QTDFxbEobsI7YTOCs2QCGEenD3hrANu8aV0XhI",
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "pages_left_other",
-			"src": "%1$d pages left",
-			"tgt": "剩余 %1$d 页",
-			"contentType": "default",
-			"q": 70
-		},
-		{
-			"guid": "SlCtIxrafFt7azlMPXXGamLP9a0ffejpfKid9ZszQ9o",
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "category_plural_other",
-			"src": "%d categories",
-			"tgt": "%d 个类别",
-			"contentType": "default",
-			"q": 70
-		},
-		{
-			"guid": "sxJPxRjdf-qJWkXyz95hsE5-MDHLGoi6EJD3pA5r5dk",
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "for_n_titles_other",
-			"src": "For %d titles",
-			"tgt": "共 %d 个漫画",
-			"contentType": "default",
-			"q": 70
-		},
-		{
-			"guid": "hlShNgImb0QAtMb-KhR2H6Srjw0SGAdiLMHCGjkZluc",
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "notification_and_n_more_other",
-			"src": "and %1$d more chapters",
-			"tgt": "还有 %1$d 章",
-			"contentType": "default",
-			"q": 70
-		},
-		{
-			"guid": "u2w4iURD4iP_Hw2mJ3oCASP-FlTWe4xyznyVQOUAslA",
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "notification_update_failed_other",
-			"src": "%1$d updates failed",
-			"tgt": "%1$d 本漫画更新失败",
-			"contentType": "default",
-			"q": 70
-		},
-		{
-			"guid": "Raa-hZ8f4KMyB2Nz7mYq4P5H_kIxTMnGjFOwfXenE3s",
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "_updates_pending_other",
-			"src": "%d updates pending",
-			"tgt": "%d 个待处理更新",
-			"contentType": "default",
-			"q": 70
-		},
-		{
-			"guid": "2nt8_jgKb5SsaEH9lFxheOlhuINrxsfKpgrMFxgB7fc",
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "extensions_updated_plural_other",
-			"src": "%d extensions updated",
-			"tgt": "更新了 %d 个扩展",
-			"contentType": "default",
-			"q": 70
-		},
-		{
-			"guid": "DnNCJI836IsOslDQN_AO231MZYC56niM1Vi2_J1snS4",
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "extension_updates_available_other",
-			"src": "%d extension updates available",
-			"tgt": "%d 个扩展插件可更新",
-			"contentType": "default",
-			"q": 70
-		},
-		{
-			"guid": "RKh3lCAL61AoOWPV5MWKl2aDX9roOeiBX5DXcqW70dU",
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "pages_plural_other",
-			"src": "%1$d pages",
-			"tgt": "%1$d页",
-			"contentType": "default",
-			"q": 70
-		},
-		{
-			"guid": "k387QbCF9XCONIv1TeZYsjtbM21u1pEyznEc1O6pCYA",
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "missing_chapters_warning_other",
-			"src": "Skipping %d chapters, either the source is missing them or they have been filtered out",
-			"tgt": "跳过 %d 个章节，要么是缺少来源，要么是被过滤掉了",
-			"contentType": "default",
-			"q": 70
-		},
-		{
-			"guid": "PiLPusw1sUqvz8EMPh_AHT26BoUCxAk2nZzUuU30Q20",
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "deleted_chapters_other",
-			"src": "%1$s chapters have been removed from the source:\\n%2$s\\n\\nDelete\n            their downloads?",
-			"tgt": "第%1$s章已从图源中删除：\n\\n%2$s\n\\n是否删除其下载内容？",
-			"contentType": "default",
-			"q": 70
-		},
-		{
-			"guid": "Z39lGGgo8opWOGmpI5SsVcbozqzxZSGxrudRRkeR_Lc",
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "migrate_manga_other",
-			"src": "Migrate %1$d%2$s manga?",
-			"tgt": "迁移 %1$d%2$s 漫画？",
-			"contentType": "default",
-			"q": 70
-		},
-		{
-			"guid": "eDicseVZaWZpqk_QNfTmnnZXLU-Ze3wVuKVl3flFdj4",
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "copy_manga_other",
-			"src": "Copy %1$d%2$s manga?",
-			"tgt": "复制 %1$d%2$s 漫画？",
-			"contentType": "default",
-			"q": 70
-		},
-		{
-			"guid": "ExRyfY9sTeTHBEQmp1wm8Ni0O7Tms0bUh2-z15pd-fk",
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "manga_migrated_other",
-			"src": "%d manga migrated",
-			"tgt": "%d 漫画已迁移",
-			"contentType": "default",
-			"q": 70
-		},
-		{
-			"guid": "r_oHxHDBUGOo2CDxvtxPrzT5mm5GlErIs37FlC7LoOE",
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "restore_completed_message_other",
-			"src": "Done in %1$s with %2$s errors",
-			"tgt": "耗时 %1$s，出现 %2$s 个错误",
-			"contentType": "default",
-			"q": 70
-		},
-		{
-			"guid": "fDCAtisL1kEIWbyLilBMbGW4dRbeSvUyTt_OXeU4jYE",
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "cache_cleared_other",
-			"src": "Cache cleared. %d files have been deleted",
-			"tgt": "缓存已清除，%d 的文件已被删除",
-			"contentType": "default",
-			"q": 70
-		},
-		{
-			"guid": "9sQWaHtbzN_7C6tejrC1yfO2ch9VAGcoLD5b-AkOrog",
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "cleanup_done_other",
-			"src": "Cleanup done. Removed %d folders",
-			"tgt": "清除完成，移除了 %d 个目录",
-			"contentType": "default",
-			"q": 70
-		},
-		{
-			"guid": "nVhfdggD79bzuhQQ-AMZpSAZHDvBVHMQZUC1OTGTtWs",
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "after_minutes_other",
-			"src": "After %1$s minutes",
-			"tgt": "在%1$s分钟之后",
 			"contentType": "default",
 			"q": 70
 		}

@@ -1,18 +1,9 @@
-
-<?xml   version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="move_x_to">
-    tests/files/values/strings.xml move_x_to Move %1$s to… - **Translation**
-  </string>
-  <string name="chapter_x_of_y">
-    tests/files/values/strings.xml chapter_x_of_y Chapter %1$d of %2$d - **Translation**
-  </string>
-  <plurals name="chapters_plural">
-    <item quantity="one">
-      tests/files/values/strings.xml chapters_plural_one %1$d chapter - **Translation**
-    </item>
-    <item quantity="other">
-      tests/files/values/strings.xml chapters_plural_other %1$d chapters - **Translation**
-    </item>
-  </plurals>
+	<string name="move_x_to">tests/files/values/strings.xml move_x_to Move %1$s to… - **Translation**</string>
+	<string name="chapter_x_of_y">tests/files/values/strings.xml chapter_x_of_y Chapter %1$d of %2$d - **Translation**</string>
+	<plurals name="chapters_plural">
+		<item quantity="one">tests/files/values/strings.xml chapters_plural_one %1$d chapter - **Translation**</item>
+		<item quantity="other">tests/files/values/strings.xml chapters_plural_other %1$d chapters - **Translation**</item>
+	</plurals>
 </resources>

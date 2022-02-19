@@ -44,7 +44,8 @@
     "pig-latinizer": "^1.0.6",
     "tmexchange": "l10nmonster/tmexchange",
     "words-count": "^2.0.2",
-    "xliff": "^5.7.1"
+    "xliff": "^5.7.1",
+    "xml-formatter": "^2.6.1"
   },
   "devDependencies": {
     "esbuild": "^0.13.12",

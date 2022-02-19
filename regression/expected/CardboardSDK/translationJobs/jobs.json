@@ -11,11 +11,13 @@
 			"prjLeverage": {
 				"default": {
 					"translated": 0,
+					"translatedWords": 0,
 					"translatedByQ": {},
 					"untranslated": 30,
 					"untranslatedChars": 613,
 					"untranslatedWords": 98,
 					"pending": 0,
+					"pendingWords": 0,
 					"internalRepetitions": 2,
 					"internalRepetitionWords": 2
 				}
@@ -36,6 +38,7 @@
 			"prjLeverage": {
 				"default": {
 					"translated": 29,
+					"translatedWords": 95,
 					"translatedByQ": {
 						"70": 29
 					},
@@ -43,6 +46,7 @@
 					"untranslatedChars": 35,
 					"untranslatedWords": 4,
 					"pending": 0,
+					"pendingWords": 0,
 					"internalRepetitions": 1,
 					"internalRepetitionWords": 1
 				}
@@ -63,6 +67,7 @@
 			"prjLeverage": {
 				"default": {
 					"translated": 30,
+					"translatedWords": 96,
 					"translatedByQ": {
 						"61": 1,
 						"70": 29
@@ -71,6 +76,7 @@
 					"untranslatedChars": 35,
 					"untranslatedWords": 4,
 					"pending": 0,
+					"pendingWords": 0,
 					"internalRepetitions": 0,
 					"internalRepetitionWords": 0
 				}

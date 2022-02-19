@@ -7,13 +7,15 @@
 		"prjLeverage": {
 			"default": {
 				"translated": 851,
+				"translatedWords": 2942,
 				"translatedByQ": {
 					"70": 851
 				},
-				"untranslated": 28,
-				"untranslatedChars": 549,
-				"untranslatedWords": 102,
+				"untranslated": 17,
+				"untranslatedChars": 462,
+				"untranslatedWords": 87,
 				"pending": 0,
+				"pendingWords": 0,
 				"internalRepetitions": 3,
 				"internalRepetitionWords": 15
 			}
@@ -21,8 +23,9 @@
 	},
 	"tus": [
 		{
-			"isSuffixPluralized": true,
 			"sid": "migrate_manga_one",
+			"isSuffixPluralized": true,
+			"notes": "Migration",
 			"guid": "xB_NruBrwGm-TnuNNYyjVGpsAXfR7VIkbEeUbXWjyZc",
 			"contentType": "default",
 			"src": "Migrate %1$d%2$s manga?",
@@ -33,8 +36,9 @@
 			"jobId": 2
 		},
 		{
-			"isSuffixPluralized": true,
 			"sid": "copy_manga_one",
+			"isSuffixPluralized": true,
+			"notes": "Migration",
 			"guid": "ANCY8yBug2fS6YBza8w9Qh7Sup7ZSsV5B9oj2gC6f4I",
 			"contentType": "default",
 			"src": "Copy %1$d%2$s manga?",
@@ -45,8 +49,9 @@
 			"jobId": 2
 		},
 		{
-			"isSuffixPluralized": true,
 			"sid": "manga_migrated_one",
+			"isSuffixPluralized": true,
+			"notes": "Migration",
 			"guid": "cIYtf0zyptX55Env0FXOdM1K7AVpeq5M2sgTCaYQWZA",
 			"contentType": "default",
 			"src": "%d manga migrated",

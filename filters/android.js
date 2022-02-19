@@ -5,6 +5,7 @@
 // but the downside is that we're missing CDATA handling, whitespace trimming, entity management from XML.
 
 import { XMLParser, XMLBuilder } from 'fast-xml-parser';
+import xmlFormatter from 'xml-formatter';
 
 function collapseTextNodes(node) {
     return node.map(e => e['#text']).join('');
@@ -103,7 +104,8 @@ export class AndroidFilter {
                 rootNode.resources = rootNode.resources.filter(n => !nodesToDelete.includes(n));
             }
         }
-        const builder = new XMLBuilder({ ...parsingOptions, format: true });
-        return builder.build(parsedResource);
+        const builder = new XMLBuilder(parsingOptions);
+        const roughXML = builder.build(parsedResource);
+        return xmlFormatter(roughXML, { collapseContent: true, indentation: '\t', lineSeparator: '\n' });
     }
 }

@@ -7,14 +7,16 @@
 		"prjLeverage": {
 			"default": {
 				"translated": 854,
+				"translatedWords": 2957,
 				"translatedByQ": {
 					"61": 3,
 					"70": 851
 				},
-				"untranslated": 28,
-				"untranslatedChars": 549,
-				"untranslatedWords": 102,
+				"untranslated": 17,
+				"untranslatedChars": 462,
+				"untranslatedWords": 87,
 				"pending": 0,
+				"pendingWords": 0,
 				"internalRepetitions": 0,
 				"internalRepetitionWords": 0
 			}
@@ -25,17 +27,6 @@
 	"status": "pending",
 	"translationProvider": "XliffBridge",
 	"inflight": [
-		"kAXadpWkMY_R68bbf_7iVGBzwRjYQSI3AM1R8G7UlLE",
-		"4ZJWhsxEVWgzhYbLJn7xrJr0riE6jkbADmLiQNVPZeo",
-		"s3vACTdhZ2buj_Wg0AF6N_JFDtLvlLLnIbUHBxnQ0qg",
-		"dJVNyCn6bIDgocMnQANRZjjmN2yv219ej1rKTgEQG1Y",
-		"lijVZnlsI_8wEaRccN3GhdMbkaokjlOHevHhcQl1its",
-		"-GCqrIKkjCFCLsp6-nzpVdVJu1dHryOAddTaNcpolJA",
-		"Ybb05vTJZmYDqAD6oEoxBMJ58ncfq903Xk0tNPmx7hU",
-		"tCcKUHMi2WKFTJPbgDWUPaxQgriB9B5cI87p-NIa0zg",
-		"jAYBWannurG5S8mC9W4J7PUBGpLCNPGMR3ljJ5zEFKI",
-		"2LZVXfTF7e7En-VmiiCJGKshKouQ4iTTvJXQ_kpyY9w",
-		"Oi_2wSlNC77uKVZa1XpR6ECAarof1ccaP95O7Tse4DA",
 		"knJMaAVR62PEtQndkYhhbexC0GIjxr-r3_n_Xcu2r0s",
 		"X_xLwLneNjaCuErpOvyVwuG5fTb8-UCP5SsHQz-puzI",
 		"0vqefHzsJQULHZd5MNwiOZipcKE1vgaTP7-VSx7FRV4",

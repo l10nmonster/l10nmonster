@@ -7,11 +7,13 @@
 		"prjLeverage": {
 			"default": {
 				"translated": 0,
+				"translatedWords": 0,
 				"translatedByQ": {},
-				"untranslated": 877,
-				"untranslatedChars": 17900,
-				"untranslatedWords": 3044,
+				"untranslated": 866,
+				"untranslatedChars": 18031,
+				"untranslatedWords": 3026,
 				"pending": 0,
+				"pendingWords": 0,
 				"internalRepetitions": 5,
 				"internalRepetitionWords": 18
 			}
@@ -23,28 +25,18 @@
 	"translationProvider": "PigLatinizer",
 	"tus": [
 		{
-			"guid": "kAXadpWkMY_R68bbf_7iVGBzwRjYQSI3AM1R8G7UlLE",
-			"tgt": "[TachiyomiJ2K-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "4ZJWhsxEVWgzhYbLJn7xrJr0riE6jkbADmLiQNVPZeo",
-			"tgt": "[TachiJ2K-piggy]",
-			"q": 1
-		},
-		{
 			"guid": "27qyNndOGr5Tzx4ddlKCtgGu-HA1wIjdz0DHPrL7yF8",
 			"tgt": "[Ilefay ermissionspay equiredray-piggy]",
 			"q": 1
 		},
 		{
-			"guid": "ehbg6jluBWm1ZPyw00Prf4lbXtVyLJItrCrATkSEYGI",
-			"tgt": "[TachiyomiJ2K equiresray accessyay otay allyay ilesfay inyay Androidyay 11 otay ownload-day apterschay, eatecray automaticyay ackupsbay, andyay eadray ocal-lay angamay. \n\nOnyay ethay extnay eenscray, enableyay \"Allowyay accessyay otay anagemay allyay ilesfay.\"-piggy]",
+			"guid": "AEJ621z89Ciok0GWLNPGnbE-JuTY9Xia3PGkIydY8G0",
+			"tgt": "[TachiyomiJ2K equiresray accessyay otay allyay ilesfay inyay Androidyay 11 otay ownload-day apterschay, eatecray automaticyay ackupsbay, andyay eadray ocal-lay angamay. \\n\\nOn ethay extnay eenscray, enableyay \\\"Allowyay accessyay otay anagemay allyay ilesfay.\\\"-piggy]",
 			"q": 1
 		},
 		{
-			"guid": "0TJzTyqgSESA9Z13x0gjdb2SSI0vFps-a1UhezJeIUA",
-			"tgt": "[TachiyomiJ2K equiresray accessyay otay allyay ilesfay otay ownload-day apterschay. Aptay erehay, enthay enableyay \"Allowyay accessyay otay anagemay allyay ilesfay.\"-piggy]",
+			"guid": "ZaZ2rCqY1Wwny7xv1bT3LE09Nnw6fMmfqbGlHHzd8SY",
+			"tgt": "[TachiyomiJ2K equiresray accessyay otay allyay ilesfay otay ownload-day apterschay. Aptay erehay, enthay enableyay \\\"Allowyay accessyay otay anagemay allyay ilesfay.\\\"-piggy]",
 			"q": 1
 		},
 		{
@@ -253,8 +245,8 @@
 			"q": 1
 		},
 		{
-			"guid": "a5ns947pdrJnqiF2ZooyCjrJFnqIZ4Jy5QqbF3st9QY",
-			"tgt": "[Ybay ources-say orderyay-piggy]",
+			"guid": "sS2-Wml_oLSQpN5ejepqpW-VCMMoW3V5yDloy9YxTfo",
+			"tgt": "[Ybay source\\'s orderyay-piggy]",
 			"q": 1
 		},
 		{
@@ -270,6 +262,36 @@
 		{
 			"guid": "jxe6lKXpItYQ7tDgDvJvzwVZ-RfgcQoviUHOGfCohj4",
 			"tgt": "[Anlators-scay-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "knJMaAVR62PEtQndkYhhbexC0GIjxr-r3_n_Xcu2r0s",
+			"tgt": "[Emoveray %1$d ownloaded-day apterchay?-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "AorevjJcBlzGUCT4pVnxp1jmksPwVsNeVFyJvcgsSII",
+			"tgt": "[Emoveray %1$d ownloaded-day apterschay?-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "X_xLwLneNjaCuErpOvyVwuG5fTb8-UCP5SsHQz-puzI",
+			"tgt": "[%1$d apterchay-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "DA5nZGOjj3NWy6-tyV9fCoXn2a63w1YSAkX9iwI6KLI",
+			"tgt": "[%1$d apterschay-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "0vqefHzsJQULHZd5MNwiOZipcKE1vgaTP7-VSx7FRV4",
+			"tgt": "[%1$d agepay eftlay-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "yi-77QTDFxbEobsI7YTOCs2QCGEenD3hrANu8aV0XhI",
+			"tgt": "[%1$d agespay eftlay-piggy]",
 			"q": 1
 		},
 		{
@@ -348,8 +370,8 @@
 			"q": 1
 		},
 		{
-			"guid": "Z5R54ptkf0KSzqHSXbTpgusMBDC0AnVs5HlxwFuBn_g",
-			"tgt": "[Angamay inyay isthay ategorycay illway ovedmay intoyay ethay efaultday ategorycay.-piggy]",
+			"guid": "WSq3LK9IDb76oLm1ZYSFlIxgDWCELXXRtuphJWeZ10Y",
+			"tgt": "[Angamay inyay isthay ategorycay illway ovedmay intoyay ethay\n        efaultday ategorycay.-piggy]",
 			"q": 1
 		},
 		{
@@ -380,6 +402,16 @@
 		{
 			"guid": "crKjl1Fgg3ZyTE2hAcUJ4rGdY1Fmkl14DbVZy3df79E",
 			"tgt": "[Ovemay otay ategoriescay-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "6CfUlDdZwjQi9NBW2TB0Bhg9lLrJZJdCk6Qf334AZ8U",
+			"tgt": "[%d ategorycay-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "SlCtIxrafFt7azlMPXXGamLP9a0ffejpfKid9ZszQ9o",
+			"tgt": "[%d ategoriescay-piggy]",
 			"q": 1
 		},
 		{
@@ -493,8 +525,8 @@
 			"q": 1
 		},
 		{
-			"guid": "lquVLLePK40yidM6TxG2TmQzi_V53wQ9fGVOUNboTb4",
-			"tgt": "[Ouryay ibrarylay isyay emptyay, addyay eries-say otay ouryay ibrarylay omfray ethay owsebray abtay.-piggy]",
+			"guid": "QtrAnlObvwhOX3_N_r0bisoRpBYZnccAPWk6MHFfxVo",
+			"tgt": "[Ouryay ibrarylay isyay emptyay, addyay eries-say otay ouryay\n        ibrarylay omfray ethay owsebray abtay.-piggy]",
 			"q": 1
 		},
 		{
@@ -568,8 +600,8 @@
 			"q": 1
 		},
 		{
-			"guid": "_3wH8_CCG6rSOzCmj6gPJXcTu3eQOR5zpcStEKu-2ZY",
-			"tgt": "[Earchsay \"%1$s\" oballyglay-piggy]",
+			"guid": "6k5gU--Y8lDrdC6x0fI-TPV3grEN4_CT9hNJG_-WkHI",
+			"tgt": "[Earchsay \\\"%1$s\\\" oballyglay-piggy]",
 			"q": 1
 		},
 		{
@@ -638,8 +670,8 @@
 			"q": 1
 		},
 		{
-			"guid": "DMMCd9TlUjweJCvkzAet30izdq29jjibSAaLenVC_Ho",
-			"tgt": "[Agdray & Opdray-piggy]",
+			"guid": "PNEjbK6HdLxav9QgmjC-ng6W4RgEAzXUCcRH_EmX36w",
+			"tgt": "[Agdray &ampyay; Opdray-piggy]",
 			"q": 1
 		},
 		{
@@ -758,6 +790,36 @@
 			"q": 1
 		},
 		{
+			"guid": "D-XGn0T65-KSSIomQYzkoKzAEUsZszypFjTP1Lvid1g",
+			"tgt": "[Orfay %d itletay-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "sxJPxRjdf-qJWkXyz95hsE5-MDHLGoi6EJD3pA5r5dk",
+			"tgt": "[Orfay %d itlestay-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "S2ivCL4mnAN_3LvCD4eLgcF0EfIPjNBsd9I7-l5zqNE",
+			"tgt": "[andyay %1$d oremay apterchay-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "hlShNgImb0QAtMb-KhR2H6Srjw0SGAdiLMHCGjkZluc",
+			"tgt": "[andyay %1$d oremay apterschay-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "n-9x0mdfrc5EllF9g4lxFwLkppPeEQND2uhVP0ERBFU",
+			"tgt": "[1 updateyay ailedfay-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "u2w4iURD4iP_Hw2mJ3oCASP-FlTWe4xyznyVQOUAslA",
+			"tgt": "[%1$d updatesyay ailedfay-piggy]",
+			"q": 1
+		},
+		{
 			"guid": "zvr59y3s5K3qszjqGTIXKeg_HsuE1uajtP_Jw40Sp5U",
 			"tgt": "[Errorsyay-piggy]",
 			"q": 1
@@ -798,8 +860,8 @@
 			"q": 1
 		},
 		{
-			"guid": "gX2qXw9h04nSkWqum0JX_lrXBPrnakCiXfhaqiVV8OM",
-			"tgt": "[Enwhay ortingsay alphabeticallyay, ortsay ignoringyay articlesyay (ayay, anyay, ethay) atyay ethay artstay ofyay angamay itlestay-piggy]",
+			"guid": "tDcvJdk-ADFFMLE88kDq3ijiWOWuB0UehLSWJFS0Ysk",
+			"tgt": "[Enwhay ortingsay alphabeticallyay, ortsay ignoringyay\n        articlesyay (ayay, anyay, ethay) atyay ethay artstay ofyay angamay itlestay-piggy]",
 			"q": 1
 		},
 		{
@@ -818,8 +880,8 @@
 			"q": 1
 		},
 		{
-			"guid": "VCIW6HRhoeMhpQUhRuDv4rLKq9LG90yl1F5zV-xbvQU",
-			"tgt": "[Efreshray overscay inyay ibrarylay asyay ellway enwhay updatingyay ibrarylay-piggy]",
+			"guid": "t_Kc2lUCYYtYD2eQ8-zxJ6jAje9wkiLFhF8ARqYli6I",
+			"tgt": "[Efreshray overscay inyay ibrarylay asyay ellway\n        enwhay updatingyay ibrarylay-piggy]",
 			"q": 1
 		},
 		{
@@ -853,8 +915,8 @@
 			"q": 1
 		},
 		{
-			"guid": "8_2VD6CoQQwIG6KI5Gi0GBE4gSJnn5YXcgUHUr7tvXE",
-			"tgt": "[Updatesyay & istoryhay-piggy]",
+			"guid": "sUwdIz8dujLXLaVOdpFXXnIJMStRzPer2xdZlNi5Qtk",
+			"tgt": "[Updatesyay &ampyay; istoryhay-piggy]",
 			"q": 1
 		},
 		{
@@ -883,13 +945,13 @@
 			"q": 1
 		},
 		{
-			"guid": "Rc8j67hJn_5B9igXN-Qk0aQulQGROwzjffyN0YKKWMA",
-			"tgt": "[Isthay illway emoveray ethay eadray ateday ofyay \"%1$s\". Areyay ouyay uresay?-piggy]",
+			"guid": "LV78cUMWfpiCScHFDB2EpcM6FnOCzhZSdsWI4uY-meE",
+			"tgt": "[Isthay illway emoveray ethay eadray ateday ofyay\n        \\\"%1$s\\\". Areyay ouyay uresay?-piggy]",
 			"q": 1
 		},
 		{
-			"guid": "x3TEe4A97_mGw4nWI9E7Z9-WfUrxRSmYZR0IRK24l14",
-			"tgt": "[Isthay illway emoveray ethay eadray ateday ofyay isthay apterchay. Areyay ouyay uresay?-piggy]",
+			"guid": "LTtGBoeuf8ZQL69v9YapziAX5xjQ_tAqRRhR07t0zQM",
+			"tgt": "[Isthay illway emoveray ethay eadray ateday ofyay isthay\n        apterchay. Areyay ouyay uresay?-piggy]",
 			"q": 1
 		},
 		{
@@ -1178,8 +1240,8 @@
 			"q": 1
 		},
 		{
-			"guid": "5i1qeSgTv4eK9tMokbsNzyBFy4aeu_6h0nSNcgRxpEw",
-			"tgt": "[Isthay extensionyay asway ignedsay ithway anyay untrustedyay ertificatecay andyay asntway activatedyay.\n\nAyay aliciousmay extensionyay ouldcay eadray anyay oginlay edentialscray oredstay inyay Achiyomitay oryay executeyay arbitraryay odecay.\n\nYbay ustingtray isthay ertificatecay ouyay acceptyay esethay isksray.-piggy]",
+			"guid": "514a18U2Og9mxITDGBmRQjj5Ljy8WoYZkyxmhXcMh-c",
+			"tgt": "[Isthay extensionyay asway ignedsay ithway anyay untrustedyay ertificatecay andyay wasn\\'t activated.\\n\\nA aliciousmay extensionyay ouldcay eadray anyay oginlay edentialscray oredstay inyay Achiyomitay oryay executeyay arbitraryay code.\\n\\nBy ustingtray isthay ertificatecay ouyay acceptyay esethay isksray.-piggy]",
 			"q": 1
 		},
 		{
@@ -1258,8 +1320,38 @@
 			"q": 1
 		},
 		{
+			"guid": "nA9Lsa5paTIiqxU3vXbGa-mttBPjFTxMMp3ZoShHoCM",
+			"tgt": "[%d updateyay endingpay-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "Raa-hZ8f4KMyB2Nz7mYq4P5H_kIxTMnGjFOwfXenE3s",
+			"tgt": "[%d updatesyay endingpay-piggy]",
+			"q": 1
+		},
+		{
 			"guid": "XlcudDTXzG61J5iRPIyqhRE70F5HFnn2xrll5R17-n8",
 			"tgt": "[Extensionsyay updatedyay-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "PDKvwcIWbKlbrMMuqEa00drfTM71kt4AE5hfbznTe_o",
+			"tgt": "[Extensionyay updatedyay-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "2nt8_jgKb5SsaEH9lFxheOlhuINrxsfKpgrMFxgB7fc",
+			"tgt": "[%d extensionsyay updatedyay-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "ZNcGVkm_LvhJlULW759Z140eW5Es4GSIXDFWwYiq7Lo",
+			"tgt": "[Extensionyay updateyay availableyay-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "DnNCJI836IsOslDQN_AO231MZYC56niM1Vi2_J1snS4",
+			"tgt": "[%d extensionyay updatesyay availableyay-piggy]",
 			"q": 1
 		},
 		{
@@ -1338,13 +1430,13 @@
 			"q": 1
 		},
 		{
-			"guid": "6sT9eOh-YFpLlMtqSLgsuD_avu1ljtGpnl6rQ1BXgFE",
-			"tgt": "[Eresthay onay extnay apterchay-piggy]",
+			"guid": "PHpJUevQ4Mlwd5CxM2MtU-LYphTA4i5R8ULqddagBEY",
+			"tgt": "[There\\'s onay extnay apterchay-piggy]",
 			"q": 1
 		},
 		{
-			"guid": "3_5VuY-h5PQRaBiH61VNzkCK5d2Ckp8mECsUPeMJER0",
-			"tgt": "[Eresthay onay eviouspray apterchay-piggy]",
+			"guid": "4DHzIY-fKzgMj7AHSIYBwE_RkkhlmkUuLmXRWmsBaMY",
+			"tgt": "[There\\'s onay eviouspray apterchay-piggy]",
 			"q": 1
 		},
 		{
@@ -1468,8 +1560,8 @@
 			"q": 1
 		},
 		{
-			"guid": "KhQBQDYldIJeYyASM34BR-9ILkPBggtCSCM73BnXGfc",
-			"tgt": "[Educesray andingbay, utbay impactsyay erformancepay-piggy]",
+			"guid": "Hmt7S8CYIGvASn-4LZVQMBRdqacEK3NygUOLvHG2Fto",
+			"tgt": "[Educesray andingbay, utbay impactsyay\n        erformancepay-piggy]",
 			"q": 1
 		},
 		{
@@ -1758,8 +1850,8 @@
 			"q": 1
 		},
 		{
-			"guid": "W8IL7FndWDq-7-mwh7RdfpnZ-3SJj5ffNGNhAZG8S1s",
-			"tgt": "[Ifyay isabled-day, ethay ansitiontray agepay illway ebay ippedskay ifyay ethay extnay apterchay isyay oadedlay-piggy]",
+			"guid": "eUXhYXNV3Z_R-HJ_InbxenRacllPUX_ykgymt6QNUTM",
+			"tgt": "[Ifyay isabled-day, ethay ansitiontray agepay illway ebay\n        ippedskay ifyay ethay extnay apterchay isyay oadedlay-piggy]",
 			"q": 1
 		},
 		{
@@ -1900,6 +1992,26 @@
 		{
 			"guid": "yY0LZeDyRVAoWbU-M40m8KynYbHYMrFP8qU8oYKpi_o",
 			"tgt": "[Eatescray oldersfay accordingyay otay angamay itletay-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "sL_wSvGXvK5kY-HivzhJsIzFxW6bX2dTH6UquFVCpHA",
+			"tgt": "[%1$d agepay-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "RKh3lCAL61AoOWPV5MWKl2aDX9roOeiBX5DXcqW70dU",
+			"tgt": "[%1$d agespay-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "TyE4yyopQMXi9xPAwddqixG0FiRUr7u1yXsHaK5cFNg",
+			"tgt": "[Ippingskay 1 apterchay, eitheryay ethay ourcesay isyay issingmay ityay oryay ityay ashay eenbay ilteredfay outyay-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "k387QbCF9XCONIv1TeZYsjtbM21u1pEyznEc1O6pCYA",
+			"tgt": "[Ippingskay %d apterschay, eitheryay ethay ourcesay isyay issingmay emthay oryay eythay avehay eenbay ilteredfay outyay-piggy]",
 			"q": 1
 		},
 		{
@@ -2073,8 +2185,8 @@
 			"q": 1
 		},
 		{
-			"guid": "LNfxBPO_lVWgBayQDFluUF42ycjQ1VaJXg0ytvQZmo0",
-			"tgt": "[Ortsay ybay ources-say orderyay-piggy]",
+			"guid": "AyODyPVwer0JQ4x-B_VIiJwlaQgtQFa-8ABym2oXd3E",
+			"tgt": "[Ortsay ybay source\\'s orderyay-piggy]",
 			"q": 1
 		},
 		{
@@ -2160,6 +2272,16 @@
 		{
 			"guid": "4VnsQVEawPmvgH-O45FKaXHWGWxMnjIWsFtFV5GlyFc",
 			"tgt": "[Ilterfay anlatorscay oupsgray-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "Eaze_yfF_znJ1d1oABgiBdE-HlrHoqbNbugyw6slJ3k",
+			"tgt": "[Ayay apterchay ashay eenbay emovedray omfray ethay source:\\n%2$s\\nDelete\n            itsyay ownload-day?-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "PiLPusw1sUqvz8EMPh_AHT26BoUCxAk2nZzUuU30Q20",
+			"tgt": "[%1$s apterschay avehay eenbay emovedray omfray ethay source:\\n%2$s\\n\\nDelete\n            eirthay ownloadsday?-piggy]",
 			"q": 1
 		},
 		{
@@ -2318,36 +2440,6 @@
 			"q": 1
 		},
 		{
-			"guid": "s3vACTdhZ2buj_Wg0AF6N_JFDtLvlLLnIbUHBxnQ0qg",
-			"tgt": "[AniListyay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "dJVNyCn6bIDgocMnQANRZjjmN2yv219ej1rKTgEQG1Y",
-			"tgt": "[YAnimeListmay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "lijVZnlsI_8wEaRccN3GhdMbkaokjlOHevHhcQl1its",
-			"tgt": "[Itsukay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "-GCqrIKkjCFCLsp6-nzpVdVJu1dHryOAddTaNcpolJA",
-			"tgt": "[Angumibay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "Ybb05vTJZmYDqAD6oEoxBMJ58ncfq903Xk0tNPmx7hU",
-			"tgt": "[Ikimorishay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "tCcKUHMi2WKFTJPbgDWUPaxQgriB9B5cI87p-NIa0zg",
-			"tgt": "[Omgakay-piggy]",
-			"q": 1
-		},
-		{
 			"guid": "IdKSaHZYLeKCreMhJvSr90in8riPYe3xZnx4rn1EEjs",
 			"tgt": "[Artedstay eadingray ateday-piggy]",
 			"q": 1
@@ -2388,8 +2480,8 @@
 			"q": 1
 		},
 		{
-			"guid": "ZaFVe22GBI64JdVFR6uX-ObRD-cRk0zIKevux5wEwW4",
-			"tgt": "[Electsay ayay ourcesay, enthay electsay anyay itemyay otay igratemay-piggy]",
+			"guid": "JRbRhBsAR-U706ZoslEilyNFQIN9ZY4fZJmcI-PJ_hM",
+			"tgt": "[Electsay ayay ourcesay, enthay electsay anyay itemyay otay\n        igratemay-piggy]",
 			"q": 1
 		},
 		{
@@ -2423,8 +2515,8 @@
 			"q": 1
 		},
 		{
-			"guid": "40nodRaLIGy39DOdLno37o-CdP-LndXWJmmD06atmsg",
-			"tgt": "[Otay owshay isthay eenscray againyay, ogay otay Ettings-say -> Ources-say.-piggy]",
+			"guid": "JUWKMHCihnr5dFO8hIFwvDh5ZVd791Sg-ZI5eZLg2Zk",
+			"tgt": "[Otay owshay isthay eenscray againyay, ogay otay Ettings-say ->\n        Ources-say.-piggy]",
 			"q": 1
 		},
 		{
@@ -2438,8 +2530,8 @@
 			"q": 1
 		},
 		{
-			"guid": "xJFqLVqZOdDwGYAjfbgscpPcA6oGzcIavM_-Mgu3XOg",
-			"tgt": "[Ontday igratemay-piggy]",
+			"guid": "qgVX1HegkKu91OrWchhbQ2JFkHVzpVWsGBcl4dWApQk",
+			"tgt": "[Don\\'t igratemay-piggy]",
 			"q": 1
 		},
 		{
@@ -2473,8 +2565,8 @@
 			"q": 1
 		},
 		{
-			"guid": "dQVWYkXPeFOjGC7dZFl4-qpzZxpKrykPe1si6ZXM47U",
-			"tgt": "[Onay apterschay oundfay, isthay angamay annotcay ebay usedyay orfay igrationmay-piggy]",
+			"guid": "krtdE0B0QsbDDQ6u5kLkJ7NN7wO9gT77E9-V56d1sSY",
+			"tgt": "[Onay apterschay oundfay, isthay angamay annotcay ebay usedyay orfay\n        igrationmay-piggy]",
 			"q": 1
 		},
 		{
@@ -2488,8 +2580,38 @@
 			"q": 1
 		},
 		{
+			"guid": "xB_NruBrwGm-TnuNNYyjVGpsAXfR7VIkbEeUbXWjyZc",
+			"tgt": "[Igratemay %1$d%2$s angamay?-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "Z39lGGgo8opWOGmpI5SsVcbozqzxZSGxrudRRkeR_Lc",
+			"tgt": "[Igratemay %1$d%2$s angamay?-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "ANCY8yBug2fS6YBza8w9Qh7Sup7ZSsV5B9oj2gC6f4I",
+			"tgt": "[Opycay %1$d%2$s angamay?-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "eDicseVZaWZpqk_QNfTmnnZXLU-Ze3wVuKVl3flFdj4",
+			"tgt": "[Opycay %1$d%2$s angamay?-piggy]",
+			"q": 1
+		},
+		{
 			"guid": "0PGoRBtjSC5DfE7pkpNcSSLKLPMNGJXcigYL1r00dOM",
 			"tgt": "[(ippingskay %1$d)-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "cIYtf0zyptX55Env0FXOdM1K7AVpeq5M2sgTCaYQWZA",
+			"tgt": "[%d angamay igratedmay-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "ExRyfY9sTeTHBEQmp1wm8Ni0O7Tms0bUh2-z15pd-fk",
+			"tgt": "[%d angamay igratedmay-piggy]",
 			"q": 1
 		},
 		{
@@ -2798,8 +2920,8 @@
 			"q": 1
 		},
 		{
-			"guid": "zXLKLNmS6xruqwTnlAbShfEJGiuuMK3ztU-MUk76zWE",
-			"tgt": "[Ontday autoyay-updateyay-piggy]",
+			"guid": "3Qp0miYCNwgmsk3CEa_y49lsXlq8t52Z7Sy2JmSV7tM",
+			"tgt": "[Don\\'t autoyay-updateyay-piggy]",
 			"q": 1
 		},
 		{
@@ -2828,8 +2950,8 @@
 			"q": 1
 		},
 		{
-			"guid": "Fm6Vq1l2shHVMSBG3SScRIRVIIllb62PT55gQ8pn6jU",
-			"tgt": "[Enwhay eresthay onay ewnay apterschay, ethay eries-say' etailsday illway openyay insteadyay-piggy]",
+			"guid": "lFE9FQeVgkQEYn_679iyiQZvVVjvgM5eS1wPtjv5HK4",
+			"tgt": "[Enwhay there\\'s onay ewnay apterschay, ethay eries-say\\' etailsday illway openyay insteadyay-piggy]",
 			"q": 1
 		},
 		{
@@ -2898,8 +3020,8 @@
 			"q": 1
 		},
 		{
-			"guid": "ZBdq5q_plZD2JzppNYLXe9MoHYNPHTYauNQGtcd4O54",
-			"tgt": "[Invalidyay ackupbay ilefay ypetay: %1$s\nItyay ouldshay endyay ithway .proto.gz oryay .onjsay.-piggy]",
+			"guid": "LpORIgyqh4HaarPR_DrsCvK4p4CvmOHyRDVJN8smWzc",
+			"tgt": "[Invalidyay ackupbay ilefay ypetay: %1$s\\nIt ouldshay endyay ithway \".proto.gz\" oryay \".onjsay\".-piggy]",
 			"q": 1
 		},
 		{
@@ -2943,13 +3065,13 @@
 			"q": 1
 		},
 		{
-			"guid": "PhjBH-rKHup-EgEYqgYdtaGWiXltWX6_6ptAADdQ3kE",
-			"tgt": "[Estoreray usesyay ources-say otay etchfay ataday, arriercay ostscay aymay applyay.\n\nAkemay uresay ouyay avehay installedyay allyay ecessarynay extensionsyay andyay areyay oggedlay inyay otay ources-say andyay ackingtray ervices-say eforebay estoringray.-piggy]",
+			"guid": "t6hsK12o3yhJtRJE66-cpevuj-rQrJv2ZZZapNpKtc8",
+			"tgt": "[Estoreray usesyay ources-say otay etchfay ataday, arriercay ostscay aymay apply.\\n\\nMake uresay ouyay avehay installedyay allyay ecessarynay extensionsyay andyay areyay oggedlay inyay otay ources-say andyay ackingtray ervices-say eforebay estoringray.-piggy]",
 			"q": 1
 		},
 		{
-			"guid": "zjRnVqvBaWL0WEb1kpUnpHu5WxQ6QlzFONOTIKfEIWQ",
-			"tgt": "[Ataday omfray ethay ackupbay ilefay illway ebay estoredray.\n\nOuyay illway eednay otay installyay anyay issingmay extensionsyay andyay oglay inyay otay ackingtray ervices-say afterwardsyay otay useyay emthay.-piggy]",
+			"guid": "RsTUVfGaHOEo6uBalHdSZTFjGEATkgpYiGfVXbEEGDc",
+			"tgt": "[Ataday omfray ethay ackupbay ilefay illway ebay restored.\\n\\nYou illway eednay otay installyay anyay issingmay extensionsyay andyay oglay inyay otay ackingtray ervices-say afterwardsyay otay useyay emthay.-piggy]",
 			"q": 1
 		},
 		{
@@ -2990,6 +3112,16 @@
 		{
 			"guid": "zH7Vwsre4K48D9Kx6IXqrnvZ24DGNogWd1ZwykkCy9U",
 			"tgt": "[Ompletecay-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "5-3zp8SLfOTjhqThDsAlqVYw67Y1AHvVCaqYvsukLd8",
+			"tgt": "[Oneday inyay %1$s ithway %2$s erroryay-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "r_oHxHDBUGOo2CDxvtxPrzT5mm5GlErIs37FlC7LoOE",
+			"tgt": "[Oneday inyay %1$s ithway %2$s errorsyay-piggy]",
 			"q": 1
 		},
 		{
@@ -3058,21 +3190,6 @@
 			"q": 1
 		},
 		{
-			"guid": "jAYBWannurG5S8mC9W4J7PUBGpLCNPGMR3ljJ5zEFKI",
-			"tgt": "[Oudflareclay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "2LZVXfTF7e7En-VmiiCJGKshKouQ4iTTvJXQ_kpyY9w",
-			"tgt": "[Ooglegay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "Oi_2wSlNC77uKVZa1XpR6ECAarof1ccaP95O7Tse4DA",
-			"tgt": "[AdGuardyay-piggy]",
-			"q": 1
-		},
-		{
 			"guid": "B2yJyY-Ik9alEwuIovrIpaE88A4zkXXyTMl6S5eLCB0",
 			"tgt": "[Equiresray appyay estartray otay aketay effectyay-piggy]",
 			"q": 1
@@ -3080,6 +3197,16 @@
 		{
 			"guid": "dYyhqzL9tg_SJ-E46nw9xRCTiNTmWAkxYifYoYrFWDo",
 			"tgt": "[Usedyay: %1$s-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "GoS05q9gcc_8SrsAMDpLSGWUgY57w7msDJ6H_STj6hk",
+			"tgt": "[Achecay earedclay. %d ilefay ashay eenbay eleted-day-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "fDCAtisL1kEIWbyLilBMbGW4dRbeSvUyTt_OXeU4jYE",
+			"tgt": "[Achecay earedclay. %d ilesfay avehay eenbay eleted-day-piggy]",
 			"q": 1
 		},
 		{
@@ -3143,8 +3270,8 @@
 			"q": 1
 		},
 		{
-			"guid": "dwmP8JsQhLHngvqw56EBpRIwjbjeCHjFNccFSEUvGvI",
-			"tgt": "[Eleteday on-nay-existentyay, artiallypay ownloaded-day, andyay eadray apterchay oldersfay-piggy]",
+			"guid": "CXON9XnJIRxhkG8GaYlVgk26XqzuAc3ywVWGeuwFPU8",
+			"tgt": "[Eleteday on-nay-existentyay, artiallypay ownloaded-day,\n            andyay eadray apterchay oldersfay-piggy]",
 			"q": 1
 		},
 		{
@@ -3178,8 +3305,8 @@
 			"q": 1
 		},
 		{
-			"guid": "-wkXZ-U6feYoBLD03zOySY9bCJ2q3iJdBWNGiVyzb-w",
-			"tgt": "[Isableday isthay ifyay ouyay areyay experiencingyay issuesyay ithway updatingyay oryay estoringray ouryay ibrarylay-piggy]",
+			"guid": "dgUCazpapV1EzIaO1I8RZmJz1rWfQWSl6BXnA4JYgzQ",
+			"tgt": "[Isableday isthay ifyay ouyay areyay experiencingyay issuesyay\n        ithway updatingyay oryay estoringray ouryay ibrarylay-piggy]",
 			"q": 1
 		},
 		{
@@ -3188,13 +3315,23 @@
 			"q": 1
 		},
 		{
+			"guid": "yPtONJrH7wZNy01J_ocBileV8yIllccxSdWOAT3Tb34",
+			"tgt": "[Eanupclay oneday. Emovedray %d olderfay-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "9sQWaHtbzN_7C6tejrC1yfO2ch9VAGcoLD5b-AkOrog",
+			"tgt": "[Eanupclay oneday. Emovedray %d oldersfay-piggy]",
+			"q": 1
+		},
+		{
 			"guid": "RYPIepOwa5XAPzLX3PAQYJsYA06xOGDr6gVmCoK5e68",
 			"tgt": "[Eanclay upyay achedcay overscay-piggy]",
 			"q": 1
 		},
 		{
-			"guid": "nEv_KSYOz12KtpTWXdNwTR49WMGpvioVTf4CqqDI_Oc",
-			"tgt": "[Eleteday oldyay andyay unusedyay achedcay overscay ofyay angamay inyay ouryay ibrarylay at-thay ashay eenbay updatedyay.\nUrrentlycay usingyay: %1$s-piggy]",
+			"guid": "lFZL0Ld7CHAzPgb8iA7zmSUlUTpgfBwOaMmTDY3302Q",
+			"tgt": "[Eleteday oldyay andyay unusedyay achedcay overscay ofyay\n        angamay inyay ouryay ibrarylay at-thay ashay eenbay updated.\\nCurrently usingyay: %1$s-piggy]",
 			"q": 1
 		},
 		{
@@ -3203,8 +3340,8 @@
 			"q": 1
 		},
 		{
-			"guid": "JXsJHBIMLNjsigfNzdfS9wj4WHG3TZviHGoVT2WHQF8",
-			"tgt": "[Eleteday allyay overscay achedcay at-thay areyay otnay inyay ouryay ibrarylay \nUrrentlycay usingyay: %1$s-piggy]",
+			"guid": "gJozgAahlEfxbSNWQ1gJjWNdpFa5S_Nmn5fMp4i7Wt4",
+			"tgt": "[Eleteday allyay overscay achedcay at-thay areyay\n        otnay inyay ouryay ibrarylay \\urrentlynCay usingyay: %1$s-piggy]",
 			"q": 1
 		},
 		{
@@ -3248,18 +3385,18 @@
 			"q": 1
 		},
 		{
-			"guid": "dhcccCE8fLfXWvszAEfDTWr7hNNe_3qT5IUdFeDqgoI",
-			"tgt": "[Onlyay enableyay ouryay innedpay ources-say orfay igrationmay-piggy]",
+			"guid": "6jW9DV4cZnlW29a4NLsgSWii59VPQ87cS6KMK4HPnfk",
+			"tgt": "[Onlyay enableyay ouryay innedpay ources-say orfay\n        igrationmay-piggy]",
 			"q": 1
 		},
 		{
-			"guid": "ecCXfY4HMfF9J918_KY7aN7GY0YzLi4DQvg6ltvASZs",
-			"tgt": "[Onlyay enableyay ouryay urrentlycay enabledyay ources-say orfay igrationmay-piggy]",
+			"guid": "x-snHPp1tSwtZyEr9jtF30xXPGKdVLmbRGeDCT0GnP4",
+			"tgt": "[Onlyay enableyay ouryay urrentlycay enabledyay ources-say orfay\n        igrationmay-piggy]",
 			"q": 1
 		},
 		{
-			"guid": "SVlZlyNR7LfMJwSoD3PuIxOKThbqF1NzlAMB2Ol9ARE",
-			"tgt": "[Useyay astlay avedsay epray-igrationmay eferencespray andyay ources-say otay assmay igratemay-piggy]",
+			"guid": "Mr1O0bMxNujNfK2BUDVA-uD5DakHeYmz_TwAOiR8BC8",
+			"tgt": "[Useyay astlay avedsay epray-igrationmay eferencespray\n    andyay ources-say otay assmay igratemay-piggy]",
 			"q": 1
 		},
 		{
@@ -3268,8 +3405,8 @@
 			"q": 1
 		},
 		{
-			"guid": "pX3b7nl_8Y58oXPbghIIx7_0aGmWWLPeP-D5LNDblcU",
-			"tgt": "[Ouyay ancay alsoyay igratemay ybay electingsay angamay inyay ouryay ibrarylay-piggy]",
+			"guid": "sXOALihWEmJ6YfIdfNTX4MOB4EJfqL3HC4gunKoo4hA",
+			"tgt": "[Ouyay ancay alsoyay igratemay ybay electingsay angamay inyay ouryay\n        ibrarylay-piggy]",
 			"q": 1
 		},
 		{
@@ -3313,13 +3450,13 @@
 			"q": 1
 		},
 		{
-			"guid": "xX86TIr3yCDJeN8pEfrANiXCn559dxHyBB4GnIbsQpo",
-			"tgt": "[Atswhay ewnay-piggy]",
+			"guid": "Mp4qYjX4TLqyPBBimDAsQEA6HX1pxfKYqu-fDmJ1qWA",
+			"tgt": "[What\\'s ewnay-piggy]",
 			"q": 1
 		},
 		{
-			"guid": "ODnxRXqbNkf0WZwNMNBRVzvTowiRVdu0tktSDF2ET3k",
-			"tgt": "[Atswhay ewnay inyay isthay eleaseray-piggy]",
+			"guid": "tEdjUzjV-kUfp9sCsfGjmOiajlonPoIC5BrGEpozJ5A",
+			"tgt": "[What\\'s ewnay inyay isthay eleaseray-piggy]",
 			"q": 1
 		},
 		{
@@ -3483,18 +3620,18 @@
 			"q": 1
 		},
 		{
-			"guid": "eXRc26yvod4Obg8UmsDbwm7gkrsGGdpMy4TpcYAWsxk",
-			"tgt": "[Anagemay atswhay ownloadingday-piggy]",
+			"guid": "9FoAbAZ8Z_s3yvueut4QUPKSLTzXYEe1sL1lW0JGH8M",
+			"tgt": "[Anagemay what\\'s ownloadingday-piggy]",
 			"q": 1
 		},
 		{
-			"guid": "6tgFpq1s7Bmdw6Wj4ju2N96GgPe7p9Y7cGiyfxSF-9E",
-			"tgt": "[Isitvay ethay ecentsray abtay otay accessyay ethay ownload-day ueueqay. Ouyay ancay alsoyay oubleday aptay oryay esspray andyay oldhay orfay uickerqay accessyay-piggy]",
+			"guid": "udLADgq5aBCP3HRUgh7MRjraIGvIKv7DVRBrlvL2uqo",
+			"tgt": "[Isitvay ethay ecentsray abtay otay accessyay ethay ownload-day\n        ueueqay. Ouyay ancay alsoyay oubleday aptay oryay esspray andyay oldhay orfay uickerqay accessyay-piggy]",
 			"q": 1
 		},
 		{
-			"guid": "Vj8DOxw8uO9KY77TuWRdJxY8sMxVtwq_IyHh6_8Srro",
-			"tgt": "[Ouldntcay ownload-day apterschay ueday otay owlay iskday acespay-piggy]",
+			"guid": "RjImxDGrC9eEA33aleNOWCfM5yKBRwdZ4SrI4VCVcPw",
+			"tgt": "[Couldn\\'t ownload-day apterschay ueday otay owlay iskday acespay-piggy]",
 			"q": 1
 		},
 		{
@@ -3578,8 +3715,8 @@
 			"q": 1
 		},
 		{
-			"guid": "QblYKrpV4TYMwNLE5d6OuLP5-YvTFicfnEWa5-51OcY",
-			"tgt": "[Eleteday ownloaded-day apterschay ifyay ethay ourcesay ashay emovedray ethay apterchay onlineyay-piggy]",
+			"guid": "4A-SMPJKiClDuuQv7MD8Yqas6e88vrhGamWfcYDuH54",
+			"tgt": "[Eleteday ownloaded-day apterschay ifyay ethay ourcesay\n        ashay emovedray ethay apterchay onlineyay-piggy]",
 			"q": 1
 		},
 		{
@@ -3645,6 +3782,16 @@
 		{
 			"guid": "HCmK5QTlCCxBY435vznXbmu8gshsoMuItS5zrNvg3uY",
 			"tgt": "[Eeklyway-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "miGljXfpQpHYhkxvC7lslpiM2pbOH-24h0PZcIhHhd4",
+			"tgt": "[Afteryay %1$s inutemay-piggy]",
+			"q": 1
+		},
+		{
+			"guid": "nVhfdggD79bzuhQQ-AMZpSAZHDvBVHMQZUC1OTGTtWs",
+			"tgt": "[Afteryay %1$s inutesmay-piggy]",
 			"q": 1
 		},
 		{
@@ -4168,8 +4315,8 @@
 			"q": 1
 		},
 		{
-			"guid": "X8fO-c1VVu9rbJOhfqH9UiMS20tCwPGDKgZXFvQMp3A",
-			"tgt": "[Ortsay & Ilterfay-piggy]",
+			"guid": "MLvGWmn3vlOInLIaLzzzKs23PrXIomM3xcWe4QlUi9w",
+			"tgt": "[Ortsay &ampyay; Ilterfay-piggy]",
 			"q": 1
 		},
 		{
@@ -4230,206 +4377,6 @@
 		{
 			"guid": "IJInAlEGMbEstVMqpcB1u5GRFSl0PTW8qyRRBIHjBN4",
 			"tgt": "[Iway-Ifay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "knJMaAVR62PEtQndkYhhbexC0GIjxr-r3_n_Xcu2r0s",
-			"tgt": "[Emoveray %1$d ownloaded-day apterchay?-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "AorevjJcBlzGUCT4pVnxp1jmksPwVsNeVFyJvcgsSII",
-			"tgt": "[Emoveray %1$d ownloaded-day apterschay?-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "X_xLwLneNjaCuErpOvyVwuG5fTb8-UCP5SsHQz-puzI",
-			"tgt": "[%1$d apterchay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "DA5nZGOjj3NWy6-tyV9fCoXn2a63w1YSAkX9iwI6KLI",
-			"tgt": "[%1$d apterschay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "0vqefHzsJQULHZd5MNwiOZipcKE1vgaTP7-VSx7FRV4",
-			"tgt": "[%1$d agepay eftlay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "yi-77QTDFxbEobsI7YTOCs2QCGEenD3hrANu8aV0XhI",
-			"tgt": "[%1$d agespay eftlay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "6CfUlDdZwjQi9NBW2TB0Bhg9lLrJZJdCk6Qf334AZ8U",
-			"tgt": "[%d ategorycay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "SlCtIxrafFt7azlMPXXGamLP9a0ffejpfKid9ZszQ9o",
-			"tgt": "[%d ategoriescay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "D-XGn0T65-KSSIomQYzkoKzAEUsZszypFjTP1Lvid1g",
-			"tgt": "[Orfay %d itletay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "sxJPxRjdf-qJWkXyz95hsE5-MDHLGoi6EJD3pA5r5dk",
-			"tgt": "[Orfay %d itlestay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "S2ivCL4mnAN_3LvCD4eLgcF0EfIPjNBsd9I7-l5zqNE",
-			"tgt": "[andyay %1$d oremay apterchay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "hlShNgImb0QAtMb-KhR2H6Srjw0SGAdiLMHCGjkZluc",
-			"tgt": "[andyay %1$d oremay apterschay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "n-9x0mdfrc5EllF9g4lxFwLkppPeEQND2uhVP0ERBFU",
-			"tgt": "[1 updateyay ailedfay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "u2w4iURD4iP_Hw2mJ3oCASP-FlTWe4xyznyVQOUAslA",
-			"tgt": "[%1$d updatesyay ailedfay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "nA9Lsa5paTIiqxU3vXbGa-mttBPjFTxMMp3ZoShHoCM",
-			"tgt": "[%d updateyay endingpay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "Raa-hZ8f4KMyB2Nz7mYq4P5H_kIxTMnGjFOwfXenE3s",
-			"tgt": "[%d updatesyay endingpay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "PDKvwcIWbKlbrMMuqEa00drfTM71kt4AE5hfbznTe_o",
-			"tgt": "[Extensionyay updatedyay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "2nt8_jgKb5SsaEH9lFxheOlhuINrxsfKpgrMFxgB7fc",
-			"tgt": "[%d extensionsyay updatedyay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "ZNcGVkm_LvhJlULW759Z140eW5Es4GSIXDFWwYiq7Lo",
-			"tgt": "[Extensionyay updateyay availableyay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "DnNCJI836IsOslDQN_AO231MZYC56niM1Vi2_J1snS4",
-			"tgt": "[%d extensionyay updatesyay availableyay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "sL_wSvGXvK5kY-HivzhJsIzFxW6bX2dTH6UquFVCpHA",
-			"tgt": "[%1$d agepay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "RKh3lCAL61AoOWPV5MWKl2aDX9roOeiBX5DXcqW70dU",
-			"tgt": "[%1$d agespay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "TyE4yyopQMXi9xPAwddqixG0FiRUr7u1yXsHaK5cFNg",
-			"tgt": "[Ippingskay 1 apterchay, eitheryay ethay ourcesay isyay issingmay ityay oryay ityay ashay eenbay ilteredfay outyay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "k387QbCF9XCONIv1TeZYsjtbM21u1pEyznEc1O6pCYA",
-			"tgt": "[Ippingskay %d apterschay, eitheryay ethay ourcesay isyay issingmay emthay oryay eythay avehay eenbay ilteredfay outyay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "Eaze_yfF_znJ1d1oABgiBdE-HlrHoqbNbugyw6slJ3k",
-			"tgt": "[Ayay apterchay ashay eenbay emovedray omfray ethay source:\\n%2$s\\nDelete\n            itsyay ownload-day?-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "PiLPusw1sUqvz8EMPh_AHT26BoUCxAk2nZzUuU30Q20",
-			"tgt": "[%1$s apterschay avehay eenbay emovedray omfray ethay source:\\n%2$s\\n\\nDelete\n            eirthay ownloadsday?-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "xB_NruBrwGm-TnuNNYyjVGpsAXfR7VIkbEeUbXWjyZc",
-			"tgt": "[Igratemay %1$d%2$s angamay?-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "Z39lGGgo8opWOGmpI5SsVcbozqzxZSGxrudRRkeR_Lc",
-			"tgt": "[Igratemay %1$d%2$s angamay?-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "ANCY8yBug2fS6YBza8w9Qh7Sup7ZSsV5B9oj2gC6f4I",
-			"tgt": "[Opycay %1$d%2$s angamay?-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "eDicseVZaWZpqk_QNfTmnnZXLU-Ze3wVuKVl3flFdj4",
-			"tgt": "[Opycay %1$d%2$s angamay?-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "cIYtf0zyptX55Env0FXOdM1K7AVpeq5M2sgTCaYQWZA",
-			"tgt": "[%d angamay igratedmay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "ExRyfY9sTeTHBEQmp1wm8Ni0O7Tms0bUh2-z15pd-fk",
-			"tgt": "[%d angamay igratedmay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "5-3zp8SLfOTjhqThDsAlqVYw67Y1AHvVCaqYvsukLd8",
-			"tgt": "[Oneday inyay %1$s ithway %2$s erroryay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "r_oHxHDBUGOo2CDxvtxPrzT5mm5GlErIs37FlC7LoOE",
-			"tgt": "[Oneday inyay %1$s ithway %2$s errorsyay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "GoS05q9gcc_8SrsAMDpLSGWUgY57w7msDJ6H_STj6hk",
-			"tgt": "[Achecay earedclay. %d ilefay ashay eenbay eleted-day-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "fDCAtisL1kEIWbyLilBMbGW4dRbeSvUyTt_OXeU4jYE",
-			"tgt": "[Achecay earedclay. %d ilesfay avehay eenbay eleted-day-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "yPtONJrH7wZNy01J_ocBileV8yIllccxSdWOAT3Tb34",
-			"tgt": "[Eanupclay oneday. Emovedray %d olderfay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "9sQWaHtbzN_7C6tejrC1yfO2ch9VAGcoLD5b-AkOrog",
-			"tgt": "[Eanupclay oneday. Emovedray %d oldersfay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "miGljXfpQpHYhkxvC7lslpiM2pbOH-24h0PZcIhHhd4",
-			"tgt": "[Afteryay %1$s inutemay-piggy]",
-			"q": 1
-		},
-		{
-			"guid": "nVhfdggD79bzuhQQ-AMZpSAZHDvBVHMQZUC1OTGTtWs",
-			"tgt": "[Afteryay %1$s inutesmay-piggy]",
 			"q": 1
 		}
 	],

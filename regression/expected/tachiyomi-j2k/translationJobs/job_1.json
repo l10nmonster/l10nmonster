@@ -7,11 +7,13 @@
 		"prjLeverage": {
 			"default": {
 				"translated": 0,
+				"translatedWords": 0,
 				"translatedByQ": {},
-				"untranslated": 877,
-				"untranslatedChars": 17900,
-				"untranslatedWords": 3044,
+				"untranslated": 866,
+				"untranslatedChars": 18031,
+				"untranslatedWords": 3026,
 				"pending": 0,
+				"pendingWords": 0,
 				"internalRepetitions": 5,
 				"internalRepetitionWords": 18
 			}
@@ -19,20 +21,20 @@
 	},
 	"tus": [
 		{
-			"guid": "ehbg6jluBWm1ZPyw00Prf4lbXtVyLJItrCrATkSEYGI",
+			"guid": "AEJ621z89Ciok0GWLNPGnbE-JuTY9Xia3PGkIydY8G0",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "external_storage_permission_notice",
-			"src": "TachiyomiJ2K requires access to all files in Android 11 to download chapters, create automatic backups, and read local manga. \n\nOn the next screen, enable \"Allow access to manage all files.\"",
-			"tgt": "Tachiyomi 需要有在Android 11上的儲存空間存取權限才能下載漫畫，備份設定，開啟本機漫畫。 \n \n請在下一個畫面開啟\"允許存取儲存空間\"",
+			"src": "TachiyomiJ2K requires access to all files in Android 11 to download chapters, create automatic backups, and read local manga. \\n\\nOn the next screen, enable \\\"Allow access to manage all files.\\\"",
+			"tgt": "Tachiyomi 需要有在Android 11上的儲存空間存取權限才能下載漫畫，備份設定，開啟本機漫畫。\n\\n\n\\n請在下一個畫面開啟\\\"允許存取儲存空間\\\"",
 			"contentType": "default",
 			"q": 70
 		},
 		{
-			"guid": "0TJzTyqgSESA9Z13x0gjdb2SSI0vFps-a1UhezJeIUA",
+			"guid": "ZaZ2rCqY1Wwny7xv1bT3LE09Nnw6fMmfqbGlHHzd8SY",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "external_storage_download_notice",
-			"src": "TachiyomiJ2K requires access to all files to download chapters. Tap here, then enable \"Allow access to manage all files.\"",
-			"tgt": "Tachiyomi 需要有儲存空間存取權限才能下載漫畫。請允許\"管理儲存空間\"",
+			"src": "TachiyomiJ2K requires access to all files to download chapters. Tap here, then enable \\\"Allow access to manage all files.\\\"",
+			"tgt": "Tachiyomi 需要有儲存空間存取權限才能下載漫畫。請允許\\\"管理儲存空間\\\"",
 			"contentType": "default",
 			"q": 70
 		},
@@ -383,15 +385,15 @@
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "remove_all_downloads",
 			"src": "Remove all downloads?",
-			"tgt": "移除所有下載檔案?",
+			"tgt": "移除所有下載檔案\\?",
 			"contentType": "default",
 			"q": 70
 		},
 		{
-			"guid": "a5ns947pdrJnqiF2ZooyCjrJFnqIZ4Jy5QqbF3st9QY",
+			"guid": "sS2-Wml_oLSQpN5ejepqpW-VCMMoW3V5yDloy9YxTfo",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "by_source_order",
-			"src": "By source's order",
+			"src": "By source\\'s order",
 			"tgt": "依照來源排序",
 			"contentType": "default",
 			"q": 70
@@ -483,6 +485,15 @@
 			"sid": "move_to_categories",
 			"src": "Move to categories",
 			"tgt": "移至分類",
+			"contentType": "default",
+			"q": 70
+		},
+		{
+			"guid": "SlCtIxrafFt7azlMPXXGamLP9a0ffejpfKid9ZszQ9o",
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "category_plural_other",
+			"src": "%d categories",
+			"tgt": "分類",
 			"contentType": "default",
 			"q": 70
 		},
@@ -599,7 +610,7 @@
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "remove_from_library_question",
 			"src": "Remove from library?",
-			"tgt": "從書櫃移除?",
+			"tgt": "從書櫃移除\\?",
 			"contentType": "default",
 			"q": 70
 		},
@@ -613,10 +624,10 @@
 			"q": 70
 		},
 		{
-			"guid": "lquVLLePK40yidM6TxG2TmQzi_V53wQ9fGVOUNboTb4",
+			"guid": "QtrAnlObvwhOX3_N_r0bisoRpBYZnccAPWk6MHFfxVo",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "library_is_empty_add_from_browse",
-			"src": "Your library is empty, add series to your library from the browse tab.",
+			"src": "Your library is empty, add series to your\n        library from the browse tab.",
 			"tgt": "尚未收藏任何作品，探索來源以挖掘你的愛書。",
 			"contentType": "default",
 			"q": 70
@@ -685,10 +696,10 @@
 			"q": 70
 		},
 		{
-			"guid": "DMMCd9TlUjweJCvkzAet30izdq29jjibSAaLenVC_Ho",
+			"guid": "PNEjbK6HdLxav9QgmjC-ng6W4RgEAzXUCcRH_EmX36w",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "drag_and_drop",
-			"src": "Drag & Drop",
+			"src": "Drag &amp; Drop",
 			"tgt": "拖曳",
 			"contentType": "default",
 			"q": 70
@@ -802,6 +813,15 @@
 			"q": 70
 		},
 		{
+			"guid": "u2w4iURD4iP_Hw2mJ3oCASP-FlTWe4xyznyVQOUAslA",
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "notification_update_failed_other",
+			"src": "%1$d updates failed",
+			"tgt": "有 %1$d 項更新失敗",
+			"contentType": "default",
+			"q": 70
+		},
+		{
 			"guid": "NzuzANrc8hKnsNdj5RNNivveptBt1E-e1H-Ht-pXbEo",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "library_update_frequency",
@@ -892,10 +912,10 @@
 			"q": 70
 		},
 		{
-			"guid": "x3TEe4A97_mGw4nWI9E7Z9-WfUrxRSmYZR0IRK24l14",
+			"guid": "LTtGBoeuf8ZQL69v9YapziAX5xjQ_tAqRRhR07t0zQM",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "this_will_remove_the_read_date_question",
-			"src": "This will remove the read date of this chapter. Are you sure?",
+			"src": "This will remove the read date of this\n        chapter. Are you sure?",
 			"tgt": "這將會清除此章節的閱讀日期，確定嗎？",
 			"contentType": "default",
 			"q": 70
@@ -1135,11 +1155,11 @@
 			"q": 70
 		},
 		{
-			"guid": "5i1qeSgTv4eK9tMokbsNzyBFy4aeu_6h0nSNcgRxpEw",
+			"guid": "514a18U2Og9mxITDGBmRQjj5Ljy8WoYZkyxmhXcMh-c",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "untrusted_extension_message",
-			"src": "This extension was signed with an untrusted certificate and wasn't activated.\n\nA malicious extension could read any login credentials stored in Tachiyomi or execute arbitrary code.\n\nBy trusting this certificate you accept these risks.",
-			"tgt": "這個擴充套件的憑證並不可靠，且尚未被啟用。 \n \n惡意的擴充套件可能存取任何儲存於 Tachiyomi 中的登錄憑證，或執行任意的程式碼。 \n \n信任這個憑證，即表示你願意承擔上述風險。",
+			"src": "This extension was signed with an untrusted certificate and wasn\\'t activated.\\n\\nA malicious extension could read any login credentials stored in Tachiyomi or execute arbitrary code.\\n\\nBy trusting this certificate you accept these risks.",
+			"tgt": "這個擴充套件的憑證並不可靠，且尚未被啟用。\n\\n\n\\n惡意的擴充套件可能存取任何儲存於 Tachiyomi 中的登錄憑證，或執行任意的程式碼。\n\\n\n\\n信任這個憑證，即表示你願意承擔上述風險。",
 			"contentType": "default",
 			"q": 70
 		},
@@ -1203,6 +1223,15 @@
 			"sid": "may_contain_nsfw",
 			"src": "May contain NSFW (18+) content",
 			"tgt": "可能包含未滿十八歲之人不宜觀賞的內容",
+			"contentType": "default",
+			"q": 70
+		},
+		{
+			"guid": "DnNCJI836IsOslDQN_AO231MZYC56niM1Vi2_J1snS4",
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "extension_updates_available_other",
+			"src": "%d extension updates available",
+			"tgt": "%d 個擴充套件可更新",
 			"contentType": "default",
 			"q": 70
 		},
@@ -1297,19 +1326,19 @@
 			"q": 70
 		},
 		{
-			"guid": "6sT9eOh-YFpLlMtqSLgsuD_avu1ljtGpnl6rQ1BXgFE",
+			"guid": "PHpJUevQ4Mlwd5CxM2MtU-LYphTA4i5R8ULqddagBEY",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "theres_no_next_chapter",
-			"src": "There's no next chapter",
+			"src": "There\\'s no next chapter",
 			"tgt": "以下空白",
 			"contentType": "default",
 			"q": 70
 		},
 		{
-			"guid": "3_5VuY-h5PQRaBiH61VNzkCK5d2Ckp8mECsUPeMJER0",
+			"guid": "4DHzIY-fKzgMj7AHSIYBwE_RkkhlmkUuLmXRWmsBaMY",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "theres_no_previous_chapter",
-			"src": "There's no previous chapter",
+			"src": "There\\'s no previous chapter",
 			"tgt": "已達盡頭",
 			"contentType": "default",
 			"q": 70
@@ -1414,10 +1443,10 @@
 			"q": 70
 		},
 		{
-			"guid": "KhQBQDYldIJeYyASM34BR-9ILkPBggtCSCM73BnXGfc",
+			"guid": "Hmt7S8CYIGvASn-4LZVQMBRdqacEK3NygUOLvHG2Fto",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "reduces_banding_impacts_performance",
-			"src": "Reduces banding, but impacts performance",
+			"src": "Reduces banding, but impacts\n        performance",
 			"tgt": "減緩色調分離，但拖累效能",
 			"contentType": "default",
 			"q": 70
@@ -1900,6 +1929,15 @@
 			"q": 70
 		},
 		{
+			"guid": "k387QbCF9XCONIv1TeZYsjtbM21u1pEyznEc1O6pCYA",
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "missing_chapters_warning_other",
+			"src": "Skipping %d chapters, either the source is missing them or they have been filtered out",
+			"tgt": "略過了 %d 章，也許是來源沒有這些章節，或其已被你的篩選規則排除",
+			"contentType": "default",
+			"q": 70
+		},
+		{
 			"guid": "-5XFw8b0YYkp0SCPdD9jr-qHCGe62QMog7cZeWlROFU",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "start_reading",
@@ -1994,7 +2032,7 @@
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "mark_all_chapters_as_read",
 			"src": "Mark all chapters as read?",
-			"tgt": "標記全部章節為已讀?",
+			"tgt": "標記全部章節為已讀\\?",
 			"contentType": "default",
 			"q": 70
 		},
@@ -2003,7 +2041,7 @@
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "mark_all_chapters_as_unread",
 			"src": "Mark all chapters as unread?",
-			"tgt": "標記全部章節為未讀?",
+			"tgt": "標記全部章節為未讀\\?",
 			"contentType": "default",
 			"q": 70
 		},
@@ -2152,10 +2190,10 @@
 			"q": 70
 		},
 		{
-			"guid": "LNfxBPO_lVWgBayQDFluUF42ycjQ1VaJXg0ytvQZmo0",
+			"guid": "AyODyPVwer0JQ4x-B_VIiJwlaQgtQFa-8ABym2oXd3E",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "sort_by_source_s_order",
-			"src": "Sort by source's order",
+			"src": "Sort by source\\'s order",
 			"tgt": "依來源排序",
 			"contentType": "default",
 			"q": 70
@@ -2800,11 +2838,11 @@
 			"q": 70
 		},
 		{
-			"guid": "ZBdq5q_plZD2JzppNYLXe9MoHYNPHTYauNQGtcd4O54",
+			"guid": "LpORIgyqh4HaarPR_DrsCvK4p4CvmOHyRDVJN8smWzc",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "invalid_backup_file_type",
-			"src": "Invalid backup file type: %1$s\nIt should end with .proto.gz or .json.",
-			"tgt": "無效的備份檔格式：%1$s \n副檔名應為 .proto.gz 或 .json",
+			"src": "Invalid backup file type: %1$s\\nIt should end with \".proto.gz\" or \".json\".",
+			"tgt": "無效的備份檔格式：%1$s\n\\n副檔名應為 .proto.gz 或 .json",
 			"contentType": "default",
 			"q": 70
 		},
@@ -2872,11 +2910,11 @@
 			"q": 70
 		},
 		{
-			"guid": "PhjBH-rKHup-EgEYqgYdtaGWiXltWX6_6ptAADdQ3kE",
+			"guid": "t6hsK12o3yhJtRJE66-cpevuj-rQrJv2ZZZapNpKtc8",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "restore_content",
-			"src": "Restore uses sources to fetch data, carrier costs may apply.\n\nMake sure you have installed all necessary extensions and are logged in to sources and tracking services before restoring.",
-			"tgt": "還原時需連線至來源以取得資料，可能要支付數據傳輸費用。 \n \n在進行還原前，請確認你已安裝所需的擴充套件，並已登入至歷程平台及要求身分認證的來源。",
+			"src": "Restore uses sources to fetch data, carrier costs may apply.\\n\\nMake sure you have installed all necessary extensions and are logged in to sources and tracking services before restoring.",
+			"tgt": "還原時需連線至來源以取得資料，可能要支付數據傳輸費用。\n\\n\n\\n在進行還原前，請確認你已安裝所需的擴充套件，並已登入至歷程平台及要求身分認證的來源。",
 			"contentType": "default",
 			"q": 70
 		},
@@ -2940,6 +2978,15 @@
 			"sid": "complete",
 			"src": "Complete",
 			"tgt": "作業完成",
+			"contentType": "default",
+			"q": 70
+		},
+		{
+			"guid": "r_oHxHDBUGOo2CDxvtxPrzT5mm5GlErIs37FlC7LoOE",
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "restore_completed_message_other",
+			"src": "Done in %1$s with %2$s errors",
+			"tgt": "歷時 %1$s，出現 %2$s 個錯誤",
 			"contentType": "default",
 			"q": 70
 		},
@@ -3232,10 +3279,10 @@
 			"q": 70
 		},
 		{
-			"guid": "xX86TIr3yCDJeN8pEfrANiXCn559dxHyBB4GnIbsQpo",
+			"guid": "Mp4qYjX4TLqyPBBimDAsQEA6HX1pxfKYqu-fDmJ1qWA",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "whats_new",
-			"src": "What's new",
+			"src": "What\\'s new",
 			"tgt": "更新日誌",
 			"contentType": "default",
 			"q": 70
@@ -4308,51 +4355,6 @@
 			"sid": "wifi",
 			"src": "Wi-Fi",
 			"tgt": "僅限 Wi-Fi",
-			"contentType": "default",
-			"q": 70
-		},
-		{
-			"guid": "SlCtIxrafFt7azlMPXXGamLP9a0ffejpfKid9ZszQ9o",
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "category_plural_other",
-			"src": "%d categories",
-			"tgt": "分類",
-			"contentType": "default",
-			"q": 70
-		},
-		{
-			"guid": "u2w4iURD4iP_Hw2mJ3oCASP-FlTWe4xyznyVQOUAslA",
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "notification_update_failed_other",
-			"src": "%1$d updates failed",
-			"tgt": "有 %1$d 項更新失敗",
-			"contentType": "default",
-			"q": 70
-		},
-		{
-			"guid": "DnNCJI836IsOslDQN_AO231MZYC56niM1Vi2_J1snS4",
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "extension_updates_available_other",
-			"src": "%d extension updates available",
-			"tgt": "%d 個擴充套件可更新",
-			"contentType": "default",
-			"q": 70
-		},
-		{
-			"guid": "k387QbCF9XCONIv1TeZYsjtbM21u1pEyznEc1O6pCYA",
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "missing_chapters_warning_other",
-			"src": "Skipping %d chapters, either the source is missing them or they have been filtered out",
-			"tgt": "略過了 %d 章，也許是來源沒有這些章節，或其已被你的篩選規則排除",
-			"contentType": "default",
-			"q": 70
-		},
-		{
-			"guid": "r_oHxHDBUGOo2CDxvtxPrzT5mm5GlErIs37FlC7LoOE",
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "restore_completed_message_other",
-			"src": "Done in %1$s with %2$s errors",
-			"tgt": "歷時 %1$s，出現 %2$s 個錯誤",
 			"contentType": "default",
 			"q": 70
 		}
