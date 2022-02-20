@@ -25,12 +25,12 @@ export class JavaPropertiesFilter {
         };
     }
 
-    async generateTranslatedResource({ resourceId, resource, translator }) {
+    async generateTranslatedResource({ resource, translator }) {
         const parsedResource = parseToEntries(resource, { sep: true, eol: true, all: true, original: true });
         const translatedEntries = [];
         for (const entry of parsedResource) {
             if (entry.key) {
-                const translation = await translator(resourceId, entry.key, entry.element);
+                const translation = await translator(entry.key, entry.element);
                 if (translation !== undefined) {
                     // eslint-disable-next-line no-unused-vars
                     const { original, element, ...rest } = entry;

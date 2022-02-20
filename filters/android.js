@@ -5,8 +5,8 @@
 
 import { XMLParser, XMLBuilder } from 'fast-xml-parser';
 import xmlFormatter from 'xml-formatter';
-import { xmlCDataDecoder, xmlEntityDecoder, androidEscapesDecoder,
-    xmlEntityEncoder, androidEscapesEncoder } from '../normalizers/regex.js';
+import { xmlCDataDecoder, xmlEntityDecoder, androidEscapesDecoder, androidEscapesEncoder,
+    xmlEntityEncoder } from '../normalizers/regex.js';
 
 function collapseTextNodesAndDecode(node) {
     const collapsedText = node.map(e => e['#text']).join('');
@@ -71,7 +71,7 @@ export class AndroidFilter {
         };
     }
 
-    async generateTranslatedResource({ resourceId, resource, translator }) {
+    async generateTranslatedResource({ resource, translator }) {
         const parsingOptions = {
             ignoreAttributes: false,
             processEntities: true,
@@ -92,7 +92,7 @@ export class AndroidFilter {
             if ('resources' in rootNode) {
                 for (const resNode of rootNode.resources) {
                     if ('string' in resNode) {
-                        const translation = await translator(resourceId, resNode[':@'].name, collapseTextNodesAndDecode(resNode.string));
+                        const translation = await translator(resNode[':@'].name, collapseTextNodesAndDecode(resNode.string));
                         // eslint-disable-next-line no-negated-condition
                         if (resNode[':@'].translatable !== 'false' && translation !== undefined) {
                             resNode.string = [ { '#text': xmlEntityEncoder(androidEscapesEncoder(translation)) } ];
@@ -102,7 +102,7 @@ export class AndroidFilter {
                     } else if ('plurals' in resNode) { // TODO: deal with plurals of the target language, not the source
                         let dropPlural = false;
                         for (const itemNode of resNode.plurals) {
-                            const translation = await translator(resourceId, `${resNode[':@'].name}_${itemNode[':@'].quantity}`, collapseTextNodesAndDecode(itemNode.item));
+                            const translation = await translator(`${resNode[':@'].name}_${itemNode[':@'].quantity}`, collapseTextNodesAndDecode(itemNode.item));
                             if (translation === undefined) {
                                 dropPlural = true;
                             } else {

@@ -36,6 +36,7 @@ import { TranslationOS } from './translators/translationOS.js';
 import { xmlDecoder, bracePHDecoder, iosPHDecoder,
     xmlEntityDecoder, javaEscapesDecoder,
     xmlEntityEncoder, javaEscapesEncoder,
+    doublePercentDecoder, doublePercentEncoder,
     regexMatchingDecoderMaker } from './normalizers/regex.js';
 
 const monsterCLI = new Command();
@@ -78,6 +79,7 @@ async function initMonster() {
                 xmlDecoder, bracePHDecoder, iosPHDecoder,
                 xmlEntityDecoder, javaEscapesDecoder,
                 xmlEntityEncoder, javaEscapesEncoder,
+                doublePercentDecoder, doublePercentEncoder,
                 regexMatchingDecoderMaker,
             },
             translators: {

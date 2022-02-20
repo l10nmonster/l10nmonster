@@ -87,6 +87,10 @@ export const androidEscapesDecoder = regexMatchingDecoderMaker(
 export const androidEscapesEncoder = (str) => str.replaceAll(/[@\\'"]/g, '\\$&')
     .replaceAll('\t', '\\t').replaceAll('\n', '\\n');
 
+export const doublePercentDecoder = (str) => str.replaceAll('%%', '%');
+
+export const doublePercentEncoder = (str) => str.replaceAll('%', '%%');
+
 // Placeholders
 
 // Works for both XML and HTML
@@ -104,6 +108,7 @@ export const bracePHDecoder = regexMatchingDecoderMaker(
 
 // iOS-style and C-style placeholders
 // Supports %02d, %@, %1$@
+// TODO: follow full specs at https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Strings/Articles/formatSpecifiers.html
 export const iosPHDecoder = regexMatchingDecoderMaker(
     // eslint-disable-next-line prefer-named-capture-group
     /(?<tag>%([0-9.]*[lz]?[@dfsi]|\d+\$[@dfsi]))/g,

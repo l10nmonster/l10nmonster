@@ -33,7 +33,7 @@ describe ('android filter tests', () =>{
     expect(output).toMatchObject(expectedOutput);
   });
 
-  var translator = async function translate(resourceId, sid, str) {
+  var translator = async function translate(sid, str) {
     return sid === 'str1' ? undefined : `${resourceId} ${sid} ${str} - **Translation**`;
   }
   test('generateTranslatedResource returns string', async () => {

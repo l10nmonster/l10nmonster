@@ -18,7 +18,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
             if (res.targetLangs.includes(targetLang) && (mm.ctx.prj === undefined || res.prj === mm.ctx.prj)) {
                 const resourceId = res.id;
                 const pipeline = mm.contentTypes[res.contentType];
-                const translator = async function translate(rid, sid, src) {
+                const translator = async function translate(sid, src) {
                     let nsrc;
                     if (pipeline.decoders) {
                         const normalizedStr = getNormalizedString(src, pipeline.decoders);
@@ -27,13 +27,32 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                         }
                     }
                     const flattenSrc = nsrc ? flattenNormalizedSourceToOrdinal(nsrc) : src;
-                    const guid = mm.generateFullyQualifiedGuid(rid, sid, flattenSrc);
+                    const guid = mm.generateFullyQualifiedGuid(resourceId, sid, flattenSrc);
                     const entry = tm.getEntryByGuid(guid);
-                    !entry && verbose && console.log(`Couldn't find ${sourceLang}_${targetLang} entry for ${rid}+${sid}+${src}`);
+                    !entry && verbose && console.log(`Couldn't find ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
+                    if (entry?.ntgt) {
+                        const tgt = [];
+                        // TODO: fetch latest placeholders from source and use those if compatible
+                        for (const part of entry.ntgt) {
+                            if (typeof part === 'string') {
+                                if (pipeline.encoders) {
+                                    tgt.push(pipeline.encoders.reduce((str, encoder) => encoder(str), part));
+                                } else {
+                                    tgt.push(part);
+                                }
+                            } else if (part?.v === undefined) {
+                                verbose && console.error(`Invalid placeholder found: ${JSON.stringify(part)}`);
+                                return undefined;
+                            } else {
+                                tgt.push(part.v);
+                            }
+                        }
+                        return tgt.join('');
+                    }
                     return entry?.tgt; // don't fall back, let the caller deal with it
                 };
                 const resource = await pipeline.source.fetchResource(res.id);
-                const translatedRes = await pipeline.resourceFilter.generateTranslatedResource({ resourceId, resource, targetLang, translator });
+                const translatedRes = await pipeline.resourceFilter.generateTranslatedResource({ resource, targetLang, translator });
                 const translatedResourceId = pipeline.target.translatedResourceId(targetLang, resourceId);
                 if (dryRun) {
                     let currentRaw;

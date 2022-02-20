@@ -42,7 +42,7 @@ export class PoFilter {
         };
     }
 
-    async generateTranslatedResource({ resourceId, resource, translator }) {
+    async generateTranslatedResource({ resource, translator }) {
         const poFile = gettextParser.po.parse(resource);
         for (const [domain, segments] of Object.entries(poFile.translations)) {
             for (const s of Object.values(segments)) {
@@ -57,7 +57,7 @@ export class PoFilter {
                         // TODO
                     } else {
                         // TODO: deal with missing translations
-                        s.msgstr = [ await translator(resourceId, sid, s.msgid) ];
+                        s.msgstr = [ await translator(sid, s.msgid) ];
                     }
                 } else {
                     // TODO: do we need to generate correct meta for empty msgid?
