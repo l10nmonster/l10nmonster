@@ -68,7 +68,7 @@ export const javaEscapesDecoder = regexMatchingDecoderMaker(
 
 // TODO: do we need to escape also those escapedChar that we decoded?
 export const javaEscapesEncoder = (str) => str.replaceAll('\t', '\\t').replaceAll('\b', '\\b')
-    .replaceAll('\n', '\\n').replaceAll('\r', '\\r').replaceAll('\f', '\\f');
+    .replaceAll('\n', '\\n').replaceAll('\r', '\\r').replaceAll('\f', '\\f').replaceAll('\u00a0', '\\u00a0');
 
 const androidControlCharsToDecode = {
     n: '\n',
@@ -87,7 +87,7 @@ export const androidEscapesDecoder = regexMatchingDecoderMaker(
 export const androidEscapesEncoder = (str) => str.replaceAll(/[@\\'"]/g, '\\$&')
     .replaceAll('\t', '\\t').replaceAll('\n', '\\n');
 
-export const doublePercentDecoder = (str) => str.replaceAll('%%', '%');
+export const doublePercentDecoder = (parts) => parts.map(p => (typeof p === 'string' ? p.replaceAll('%%', '%') : p));
 
 export const doublePercentEncoder = (str) => str.replaceAll('%', '%%');
 
