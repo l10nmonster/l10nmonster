@@ -16,6 +16,12 @@ function collapseTextNodesAndDecode(node) {
     return androidEscapesDecoder([ afterSpaceCollapse ]).join('');
 }
 
+const resourceReferenceRegex=/^@(?:[0-9A-Za-z_$]+:)?[0-9A-Za-z_$]+\/[0-9A-Za-z_$]+$/;
+
+function isTranslatableNode(resNode, str) {
+    return resNode[':@'].translatable !== 'false' && !resNode[':@']['/'] && !resourceReferenceRegex.test(str);
+}
+
 export class AndroidFilter {
     constructor({ indentation }) {
         this.indentation = indentation || '\t';
@@ -43,16 +49,17 @@ export class AndroidFilter {
                 for (const resNode of rootNode.resources) {
                     if ('#comment' in resNode) {
                         lastComment = collapseTextNodesAndDecode(resNode['#comment']).trim();
-                    } else if ('string' in resNode && resNode[':@'].translatable !== 'false' && !resNode[':@']['/']) {
-                        // resNode[':@'].name === 'app_short_name' && console.dir(resNode.string, { depth: null })
-                        const seg = {
-                            sid: resNode[':@'].name,
-                            str: collapseTextNodesAndDecode(resNode.string)
-                        };
-                        lastComment && (seg.notes = lastComment);
-                        // resNode[':@'].name === 'app_short_name' && console.dir(seg)
-                        segments.push(seg);
-                    } else if ('plurals' in resNode) {
+                    } else if ('string' in resNode) {
+                        const str = collapseTextNodesAndDecode(resNode.string);
+                        if (isTranslatableNode(resNode, str)) {
+                            const seg = {
+                                sid: resNode[':@'].name,
+                                str,
+                            };
+                            lastComment && (seg.notes = lastComment);
+                            segments.push(seg);
+                        }
+                    } else if ('plurals' in resNode) { // TODO: support string-array
                         for (const itemNode of resNode.plurals) {
                             const seg = {
                                 sid: `${resNode[':@'].name}_${itemNode[':@'].quantity}`,
@@ -62,7 +69,7 @@ export class AndroidFilter {
                             lastComment && (seg.notes = lastComment);
                             segments.push(seg);
                         }
-                    } else if (!('string' in resNode) && this?.ctx?.verbose) {
+                    } else if (this?.ctx?.verbose) {
                         console.log(`Unexpected child node in resources`);
                         console.dir(resNode, { depth: null });
                     }
@@ -95,12 +102,16 @@ export class AndroidFilter {
         for (const rootNode of parsedResource) {
             if ('resources' in rootNode) {
                 for (const resNode of rootNode.resources) {
-                    if ('string' in resNode && resNode[':@'].translatable !== 'false' && !resNode[':@']['/']) {
-                        const translation = await translator(resNode[':@'].name, collapseTextNodesAndDecode(resNode.string));
-                        // eslint-disable-next-line no-negated-condition
-                        if (resNode[':@'].translatable !== 'false' && translation !== undefined && !resNode[':@']['/']) {
-                            translated++;
-                            resNode.string = [ { '#text': xmlEntityEncoder(androidEscapesEncoder(translation)) } ];
+                    if ('string' in resNode) {
+                        const str = collapseTextNodesAndDecode(resNode.string);
+                        if (isTranslatableNode(resNode, str)) {
+                            const translation = await translator(resNode[':@'].name, str);
+                            if (translation === undefined) {
+                                nodesToDelete.push(resNode);
+                            } else {
+                                translated++;
+                                resNode.string = [ { '#text': xmlEntityEncoder(androidEscapesEncoder(translation)) } ];
+                            }
                         } else {
                             nodesToDelete.push(resNode);
                         }

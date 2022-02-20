@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">TachiyomiJ2K</string>
+    <string name="reference">@string/foo</string>
+    <string name="fullref">@package:foo/bar</string>
     <string name="app_short_name"
         formatted="false" />
     <string name="str1">Winter is coming</string>
