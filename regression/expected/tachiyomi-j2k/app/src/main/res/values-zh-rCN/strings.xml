@@ -3,14 +3,11 @@
 	<string name="all_files_permission_required">需要文件权限</string>
 	<string name="external_storage_permission_notice">在 Android 11 中，TachiyomiJ2K 需要访问所有文件才能下载章节、创建自动备份和阅读本地漫画。 \n \n在下一个屏幕上，启用“允许访问管理所有文件”</string>
 	<string name="external_storage_download_notice">TachiyomiJ2K 需要访问所有文件才能下载章节。 点按此处，然后启用“允许访问以管理所有文件”</string>
-	<!--Models-->
-	<!-- Manga Type -->
 	<string name="manga">漫画</string>
 	<string name="manhwa">韩国漫画</string>
 	<string name="manhua">漫画</string>
 	<string name="comic">漫画</string>
 	<string name="webtoon">Webtoon 模式</string>
-	<!-- Manga -->
 	<string name="not_started">未开始</string>
 	<string name="in_progress">进行中</string>
 	<string name="read">已读</string>
@@ -20,18 +17,15 @@
 	<string name="description">介绍</string>
 	<string name="move_x_to">移动 %1$s 到…</string>
 	<string name="add_x_to">添加 %1$s 到…</string>
-	<!-- Status -->
 	<string name="ongoing">连载中</string>
 	<string name="unknown">未知</string>
 	<string name="unknown_status">未知状态</string>
 	<string name="licensed">已授权</string>
 	<string name="completed">已完结</string>
-	<!-- Security -->
 	<string name="unlock_library">解锁以访问书架</string>
 	<string name="unlock">解锁</string>
 	<string name="lock_with_biometrics">用生物特征进行锁定</string>
 	<string name="lock_when_idle">应用待机时锁定</string>
-	<!-- Chapters -->
 	<string name="chapters">章节</string>
 	<string name="new_chapters">新章节</string>
 	<string name="unread">未读</string>
@@ -54,7 +48,6 @@
 	<string name="by_chapter_number">按章节数</string>
 	<string name="by_update_date">按上传日期</string>
 	<string name="scanlators">扫译小组</string>
-	<!-- Category -->
 	<string name="category">类别</string>
 	<string name="categories">分类</string>
 	<string name="adding_category_to_queue">正在将 %1$s 添加到更新队列</string>
@@ -82,7 +75,6 @@
 	<string name="category_deleted">分类已删除</string>
 	<string name="long_press_category">长按以编辑分类</string>
 	<string name="jump_to_category">分类跳转</string>
-	<!-- Updates -->
 	<string name="update">更新</string>
 	<string name="what_should_update">需要更新什么？</string>
 	<string name="updating_">正在更新 %1$s</string>
@@ -93,8 +85,6 @@
 	<string name="release_page">发布页面</string>
 	<string name="could_not_install_update">无法安装更新</string>
 	<string name="update_completed">已完成更新</string>
-	<!-- Main Screens -->
-	<!-- Library -->
 	<string name="library">书架</string>
 	<string name="your_library">你的书架</string>
 	<string name="updating_library">正在更新书架</string>
@@ -124,7 +114,6 @@
 	<string name="group_library_by">书架分组…</string>
 	<string name="tracking_status">同步状态</string>
 	<string name="ungrouped">未分组</string>
-	<!-- Library Sort -->
 	<string name="sort_by">排序方式</string>
 	<string name="total_chapters">章节数</string>
 	<string name="date_added">添加日期</string>
@@ -133,7 +122,6 @@
 	<string name="last_updated">上次更新</string>
 	<string name="latest_chapter">最新章节</string>
 	<string name="drag_and_drop">拖放</string>
-	<!-- Library Display -->
 	<string name="display_options">显示选项</string>
 	<string name="can_be_found_in_library_filters">也可以通过展开书架过滤器找到</string>
 	<string name="list">列表</string>
@@ -155,11 +143,9 @@
 	<string name="more_library_settings">更多书架设置</string>
 	<string name="shift_one_page_over">翻一页</string>
 	<string name="shift_double_pages">移动双页</string>
-	<!-- Library update service notifications -->
 	<string name="new_chapters_found">发现新章节</string>
 	<string name="notification_size_warning">大型更新可能会导致电池使用量增加和来源变慢</string>
 	<string name="channel_errors">错误</string>
-	<!-- Library settings -->
 	<string name="library_update_frequency">书架更新频率</string>
 	<string name="library_update_order">书架更新顺序</string>
 	<string name="library_update_restriction">书架更新条件</string>
@@ -177,7 +163,6 @@
 	<string name="certain_buttons_can_be_found">如在此处被禁用，可以在其他地方找到某些按钮</string>
 	<string name="search_suggestions">搜索建议</string>
 	<string name="search_tips_show_periodically">搜索提示将定期显示。 长按建议进行搜索。</string>
-	<!-- Recents -->
 	<string name="recents">最近</string>
 	<string name="updates_and_history">更新和历史</string>
 	<string name="updates">更新</string>
@@ -206,7 +191,6 @@
 	<string name="only_unread">仅未读</string>
 	<string name="only_downloaded">仅已下载</string>
 	<string name="unread_or_downloaded">未读或已下载</string>
-	<!-- Recents Settings -->
 	<string name="show_reset_history_button">显示重置历史按钮</string>
 	<string name="show_read_chapters_all">在已分组和全部中显示已读章节</string>
 	<string name="show_title_first">先显示标题</string>
@@ -215,7 +199,6 @@
 	<string name="group_chapters_together">将章节分组在一起</string>
 	<string name="uniform_covers">统一封面</string>
 	<string name="affects_library_grid">影响书架网格封面</string>
-	<!-- Browse -->
 	<string name="search_filters">按分类搜索</string>
 	<string name="no_more_results">没有更多结果</string>
 	<string name="no_results_found">未找到结果</string>
@@ -233,8 +216,6 @@
 	<string name="last_used">上次使用</string>
 	<string name="local_source_help_guide">本地图源指南</string>
 	<string name="check_site_in_web">在 WebView 中检查网站</string>
-	<!-- Other Screens -->
-	<!-- Extensions -->
 	<string name="extensions">扩展</string>
 	<string name="extension_updates">扩展更新</string>
 	<string name="extension_updates_pending">待更新扩展</string>
@@ -265,7 +246,6 @@
 	<string name="some_extensions_may_prompt">仍然会提示先安装有些扩展。</string>
 	<string name="updating_extensions">更新扩展中</string>
 	<string name="extensions_updated">扩展已更新</string>
-	<!-- Reader -->
 	<string name="set_as_cover">设置为封面</string>
 	<string name="reader_settings">阅读器设置</string>
 	<string name="set_as_default_for_all">设置为全局默认</string>
@@ -299,7 +279,6 @@
 	<string name="save_second_page">保存第二页</string>
 	<string name="share_combined_pages">分享合并页</string>
 	<string name="save_combined_pages">保存合并页</string>
-	<!-- Reader settings -->
 	<string name="fullscreen">全屏</string>
 	<string name="animate_page_transitions">页面过渡动画</string>
 	<string name="enable_zoom_out">启用缩小</string>
@@ -395,7 +374,6 @@
 	<string name="show_on_long_press">长按显示</string>
 	<string name="save_pages_separately">保存页面到单独文件夹</string>
 	<string name="create_folders_by_manga_title">根据漫画标题创建文件夹</string>
-	<!-- Manga details -->
 	<string name="about_this_">关于此 %1$s</string>
 	<string name="start_reading">开始阅读</string>
 	<string name="start_reading_chapter_">开始阅读第 %1$s 章</string>
@@ -448,7 +426,6 @@
 	<string name="custom_manga_info">自定义漫画信息</string>
 	<string name="set_as_default">设为默认</string>
 	<string name="filter_groups">过滤扫译群组</string>
-	<!-- Tracking -->
 	<string name="tracking">同步中</string>
 	<string name="tracked">已同步</string>
 	<string name="not_tracked">未同步</string>
@@ -484,7 +461,6 @@
 	<string name="finished_reading_date">完成阅读日期</string>
 	<string name="myanimelist_relogin">请重新登录 MyAnimeList</string>
 	<string name="use_suggested_date">使用建议日期</string>
-	<!-- Migration -->
 	<string name="select_sources">选择图源</string>
 	<string name="source_migration">来源迁移</string>
 	<string name="migration">迁移</string>
@@ -510,7 +486,6 @@
 	<string name="no_alternatives_found">找不到替代</string>
 	<string name="stop_migrating">停止迁移？</string>
 	<string name="skipping_">（跳过 %1$d）</string>
-	<!-- Settings -->
 	<string name="settings">设置</string>
 	<string name="general">通用</string>
 	<string name="reader">阅读</string>
@@ -523,7 +498,6 @@
 	<string name="turn_off_">关闭 %s</string>
 	<string name="incognito_mode">无痕模式</string>
 	<string name="pauses_reading_history">暂停阅读历史记录</string>
-	<!-- General settings -->
 	<string name="app_theme">主题</string>
 	<string name="light_theme">浅色主题</string>
 	<string name="dark_theme">深色主题</string>
@@ -580,7 +554,6 @@
 	<string name="includes_recently_read_updated_added">包括最近阅读、更新和添加的系列</string>
 	<string name="series_opens_new_chapters">系列快捷键打开新篇章</string>
 	<string name="no_new_chapters_open_details">没有新章节时，将打开系列的详细信息</string>
-	<!-- Backup -->
 	<string name="backup">备份</string>
 	<string name="backup_and_restore">备份和还原</string>
 	<string name="create_backup">创建备份</string>
@@ -614,7 +587,6 @@
 	<string name="progress">进度</string>
 	<string name="complete">完成</string>
 	<string name="not_logged_into_">尚未登陆 %1$s</string>
-	<!-- Advanced section -->
 	<string name="clear_chapter_cache">清除缓存数据</string>
 	<string name="force_download_cache_refresh">刷新下载缓存</string>
 	<string name="force_download_cache_refresh_summary">这会强制重新计算下载缓存。 对于在此应用程序之外修改了下载并希望应用程序接收它们很有用</string>
@@ -654,7 +626,6 @@
 	<string name="delete_old_covers_in_library_used_">删除书架更新过后旧的和未使用的漫画封面缓存 \n当前使用：%1$s</string>
 	<string name="clear_cached_covers_non_library">清除不在书架的漫画缓存</string>
 	<string name="delete_all_covers__not_in_library_used_">删除不在书架的所有封面缓存 \n当前使用：%1$s</string>
-	<!-- Browse Settings -->
 	<string name="pref_global_search">全局搜索</string>
 	<string name="check_for_extension_updates">自动检查扩展插件更新</string>
 	<string name="auto_update_extensions">自动更新扩展</string>
@@ -672,7 +643,6 @@
 	<string name="nsfw_sources">NSFW (18+) 图源</string>
 	<string name="show_in_sources_and_extensions">显示在图源和扩展列表中</string>
 	<string name="does_not_prevent_unofficial_nsfw">这并不能防止非官方或可能被错误标记的扩展插件在应用程序中显示 NSFW (18+) 内容。</string>
-	<!-- About section -->
 	<string name="version">版本</string>
 	<string name="build_time">构建时间</string>
 	<string name="send_crash_report">发送错误数据</string>
@@ -683,7 +653,6 @@
 	<string name="helpful_translation_links">有帮助的翻译链接</string>
 	<string name="website">官网</string>
 	<string name="open_source_licenses">开源许可证</string>
-	<!-- Login/Logout dialog -->
 	<string name="log_in_to_">登录到%1$s</string>
 	<string name="username">用户名</string>
 	<string name="email">邮箱地址</string>
@@ -694,7 +663,6 @@
 	<string name="successfully_logged_in">登录成功</string>
 	<string name="username_must_not_be_blank">用户名或密码不能为空</string>
 	<string name="successfully_logged_out">你已登出</string>
-	<!-- Downloads -->
 	<string name="downloads">下载</string>
 	<string name="download_queue">下载队列</string>
 	<string name="downloading_">正在下载: %1$s</string>
@@ -716,11 +684,9 @@
 	<string name="manage_whats_downloading">管理下载内容</string>
 	<string name="visit_recents_for_download_queue">访问“最近”标签以访问下载队列。 您也可以双击或按住以加快访问速度</string>
 	<string name="couldnt_download_low_space">由于磁盘空间不足，无法下载章节</string>
-	<!-- Download Notification -->
 	<string name="could_not_download_unexpected_error">下载时发生不可预期的错误</string>
 	<string name="no_wifi_connection">无可用Wi-Fi</string>
 	<string name="no_network_connection">无网络连接</string>
-	<!-- Downloads settings -->
 	<string name="download_location">下载目录</string>
 	<string name="only_download_over_wifi">仅在连接Wi-Fi时下载</string>
 	<string name="remove_when_marked_as_read">自动删除标记已读的章节</string>
@@ -739,7 +705,6 @@
 	<string name="always_keep">总是保留</string>
 	<string name="always_delete">总是删除</string>
 	<string name="automatic_removal">自动移除</string>
-	<!-- Time -->
 	<string name="manual">手动</string>
 	<string name="hourly">每小时</string>
 	<string name="every_2_hours">每2小时</string>
@@ -749,16 +714,12 @@
 	<string name="daily">每天</string>
 	<string name="every_2_days">每2天</string>
 	<string name="weekly">每周</string>
-	<!-- File Picker Titles -->
 	<string name="select_cover_image">选择封面图片</string>
 	<string name="select_backup_file">选择备份文件</string>
 	<string name="file_picker_error">未找到文件选择应用</string>
-	<!-- Webview -->
 	<string name="failed_to_bypass_cloudflare">无法绕过 Cloudflare</string>
 	<string name="please_update_webview">请更新 WebView 应用以获得更好的兼容性</string>
-	<!-- Do not translate "WebView" -->
 	<string name="webview_is_required">Tachiyomi 需要 WebView才能正常工作</string>
-	<!-- Miscellaneous -->
 	<string name="add">添加</string>
 	<string name="add_to_">添加到 %1$s</string>
 	<string name="added_to_">已添加到 %1$s</string>

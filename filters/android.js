@@ -43,7 +43,7 @@ export class AndroidFilter {
                 for (const resNode of rootNode.resources) {
                     if ('#comment' in resNode) {
                         lastComment = collapseTextNodesAndDecode(resNode['#comment']).trim();
-                    } else if ('string' in resNode && resNode[':@'].translatable !== 'false') {
+                    } else if ('string' in resNode && resNode[':@'].translatable !== 'false' && !resNode[':@']['/']) {
                         // resNode[':@'].name === 'app_short_name' && console.dir(resNode.string, { depth: null })
                         const seg = {
                             sid: resNode[':@'].name,
@@ -62,6 +62,9 @@ export class AndroidFilter {
                             lastComment && (seg.notes = lastComment);
                             segments.push(seg);
                         }
+                    } else if (!('string' in resNode) && this?.ctx?.verbose) {
+                        console.log(`Unexpected child node in resources`);
+                        console.dir(resNode, { depth: null });
                     }
                 }
             }
@@ -97,7 +100,7 @@ export class AndroidFilter {
                         toTranslate++;
                         const translation = await translator(resNode[':@'].name, collapseTextNodesAndDecode(resNode.string));
                         // eslint-disable-next-line no-negated-condition
-                        if (resNode[':@'].translatable !== 'false' && translation !== undefined) {
+                        if (resNode[':@'].translatable !== 'false' && translation !== undefined && !resNode[':@']['/']) {
                             resNode.string = [ { '#text': xmlEntityEncoder(androidEscapesEncoder(translation)) } ];
                         } else {
                             missingTranslations++;
@@ -116,6 +119,8 @@ export class AndroidFilter {
                             }
                         }
                         dropPlural && nodesToDelete.push(resNode);
+                    } else {
+                        nodesToDelete.push(resNode); // drop other nodes because of https://github.com/NaturalIntelligence/fast-xml-parser/issues/435
                     }
                 }
                 rootNode.resources = rootNode.resources.filter(n => !nodesToDelete.includes(n));

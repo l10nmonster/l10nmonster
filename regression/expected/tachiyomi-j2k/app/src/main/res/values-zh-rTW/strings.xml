@@ -2,14 +2,11 @@
 <resources>
 	<string name="external_storage_permission_notice">Tachiyomi 需要有在Android 11上的儲存空間存取權限才能下載漫畫，備份設定，開啟本機漫畫。 \n \n請在下一個畫面開啟\"允許存取儲存空間\"</string>
 	<string name="external_storage_download_notice">Tachiyomi 需要有儲存空間存取權限才能下載漫畫。請允許\"管理儲存空間\"</string>
-	<!--Models-->
-	<!-- Manga Type -->
 	<string name="manga">漫畫</string>
 	<string name="manhwa">漫畫</string>
 	<string name="manhua">漫畫</string>
 	<string name="comic">漫畫</string>
 	<string name="webtoon">Webtoon 式</string>
-	<!-- Manga -->
 	<string name="not_started">尚未開始</string>
 	<string name="in_progress">進行中</string>
 	<string name="read">已讀</string>
@@ -19,18 +16,15 @@
 	<string name="description">詳細資訊</string>
 	<string name="move_x_to">移動%1$s到…</string>
 	<string name="add_x_to">新增%1$s到…</string>
-	<!-- Status -->
 	<string name="ongoing">連載中</string>
 	<string name="unknown">不明</string>
 	<string name="unknown_status">連載狀態不明</string>
 	<string name="licensed">已授權</string>
 	<string name="completed">已完結</string>
-	<!-- Security -->
 	<string name="unlock_library">解鎖已存取書櫃</string>
 	<string name="unlock">解鎖</string>
 	<string name="lock_with_biometrics">生物特徵辨識鎖定</string>
 	<string name="lock_when_idle">閒置時鎖定</string>
-	<!-- Chapters -->
 	<string name="chapters">章節</string>
 	<string name="new_chapters">新章節</string>
 	<string name="unread">未讀</string>
@@ -50,7 +44,6 @@
 	<string name="by_source_order">依照來源排序</string>
 	<string name="by_chapter_number">依照章節編號排序</string>
 	<string name="by_update_date">依照上傳時間排序</string>
-	<!-- Category -->
 	<string name="categories">分類</string>
 	<string name="adding_category_to_queue">新增%1$s到佇列</string>
 	<string name="_already_in_queue">%1$s已經在佇列</string>
@@ -60,7 +53,6 @@
 	<string name="edit_categories">管理分類</string>
 	<string name="move_to_categories">移至分類</string>
 	<string name="category_with_name_exists">已有名稱相同的分類！</string>
-	<!-- Updates -->
 	<string name="update">更新</string>
 	<string name="update_available">可用的更新</string>
 	<string name="new_version_available">有可用的更新！</string>
@@ -68,8 +60,6 @@
 	<string name="searching_for_updates">正在檢查更新…</string>
 	<string name="could_not_install_update">無法安裝更新</string>
 	<string name="update_completed">更新完成</string>
-	<!-- Main Screens -->
-	<!-- Library -->
 	<string name="library">書櫃</string>
 	<string name="updating_library">正在更新書櫃</string>
 	<string name="selected_">已選取：%1$d</string>
@@ -79,14 +69,12 @@
 	<string name="library_is_empty_add_from_browse">尚未收藏任何作品，探索來源以挖掘你的愛書。</string>
 	<string name="getting_started_guide">入門指南</string>
 	<string name="_unread">%d 未讀</string>
-	<!-- Library Sort -->
 	<string name="total_chapters">章節數</string>
 	<string name="date_added">收藏日期</string>
 	<string name="last_read">最近閱讀</string>
 	<string name="last_updated">最後更新</string>
 	<string name="latest_chapter">最新章節</string>
 	<string name="drag_and_drop">拖曳</string>
-	<!-- Library Display -->
 	<string name="display_options">檢視選項</string>
 	<string name="list">清單</string>
 	<string name="comfortable_grid">鬆散格狀</string>
@@ -98,9 +86,7 @@
 	<string name="show_unread_count">顯示未讀數量</string>
 	<string name="tap_library_to_show_filters">輕觸「書櫃」圖示即可顯示篩選器</string>
 	<string name="more_library_settings">詳細書櫃設定</string>
-	<!-- Library update service notifications -->
 	<string name="new_chapters_found">發現新章節</string>
-	<!-- Library settings -->
 	<string name="library_update_frequency">書櫃更新頻率</string>
 	<string name="library_update_order">書櫃更新順序</string>
 	<string name="library_update_restriction">書櫃更新限制</string>
@@ -108,15 +94,12 @@
 	<string name="only_update_ongoing">僅更新連載中的漫畫</string>
 	<string name="categories_to_include_in_global_update">自動更新的分類</string>
 	<string name="auto_refresh_covers">自動重新整理書封</string>
-	<!-- Recents -->
 	<string name="updates">更新</string>
 	<string name="history">記錄</string>
 	<string name="recent_updates">新書上架</string>
 	<string name="this_will_remove_the_read_date_question">這將會清除此章節的閱讀日期，確定嗎？</string>
 	<string name="no_recent_chapters">沒有新章節</string>
 	<string name="no_recently_read_manga">沒有近期閱讀</string>
-	<!-- Recents Settings -->
-	<!-- Browse -->
 	<string name="search_filters">篩選器</string>
 	<string name="no_more_results">沒有更多結果</string>
 	<string name="no_results_found">找不到結果</string>
@@ -131,8 +114,6 @@
 	<string name="last_used">最近使用</string>
 	<string name="local_source_help_guide">本機來源入門教學</string>
 	<string name="check_site_in_web">在 WebView 中檢查網站</string>
-	<!-- Other Screens -->
-	<!-- Extensions -->
 	<string name="extensions">擴充套件</string>
 	<string name="extension_info">擴充套件資訊</string>
 	<string name="obsolete">過舊</string>
@@ -151,7 +132,6 @@
 	<string name="nsfw_short">18+</string>
 	<string name="unofficial">非官方</string>
 	<string name="may_contain_nsfw">可能包含未滿十八歲之人不宜觀賞的內容</string>
-	<!-- Reader -->
 	<string name="set_as_cover">設為書封</string>
 	<string name="cover_updated">已更新書封</string>
 	<string name="page_">第 %1$d 頁</string>
@@ -170,7 +150,6 @@
 	<string name="previous_page">上一頁</string>
 	<string name="next_chapter">下一頁</string>
 	<string name="previous_chapter">上一頁</string>
-	<!-- Reader settings -->
 	<string name="fullscreen">全螢幕</string>
 	<string name="animate_page_transitions">翻頁轉場動畫</string>
 	<string name="double_tap_anim_speed">輕觸兩下動畫速度</string>
@@ -230,7 +209,6 @@
 	<string name="right_and_left_nav">左右式</string>
 	<string name="invert_tapping">反轉輕觸方向</string>
 	<string name="none">無</string>
-	<!-- Manga details -->
 	<string name="start_reading">開始閱讀</string>
 	<string name="start_reading_chapter_">開始閱讀第%1$s章</string>
 	<string name="continue_reading_chapter_">繼續閱讀第%1$s章</string>
@@ -270,7 +248,6 @@
 	<string name="error_sharing_cover">分享封面時發生錯誤</string>
 	<string name="custom_manga_info">自訂漫畫資訊</string>
 	<string name="set_as_default">設定為預設</string>
-	<!-- Tracking -->
 	<string name="tracking">歷程</string>
 	<string name="tracked">已紀錄歷程</string>
 	<string name="services">服務</string>
@@ -294,12 +271,10 @@
 	<string name="started_reading_date">開始閱讀日期</string>
 	<string name="finished_reading_date">閱讀完畢日期</string>
 	<string name="myanimelist_relogin">請重新登入 MAL</string>
-	<!-- Migration -->
 	<string name="select_sources">選擇來源</string>
 	<string name="source_migration">來源遷移</string>
 	<string name="migrate">遷移</string>
 	<string name="copy_value">副本</string>
-	<!-- Settings -->
 	<string name="settings">設定</string>
 	<string name="general">一般</string>
 	<string name="reader">閱讀</string>
@@ -307,7 +282,6 @@
 	<string name="about">關於</string>
 	<string name="help">說明</string>
 	<string name="search_settings">搜尋設定</string>
-	<!-- General settings -->
 	<string name="app_theme">佈景主題</string>
 	<string name="light_blue">淺藍</string>
 	<string name="dark">深色</string>
@@ -322,7 +296,6 @@
 	<string name="hide_app_block_screenshots">在切換應用程式時隱藏預覽，並禁止擷取螢幕畫面</string>
 	<string name="hide_notification_content">隱藏通知內容</string>
 	<string name="security">隱私</string>
-	<!-- Backup -->
 	<string name="backup">備份</string>
 	<string name="backup_and_restore">備份與還原</string>
 	<string name="create_backup">建立備份</string>
@@ -352,7 +325,6 @@
 	<string name="restore_duration">%02d 分 %02d 秒</string>
 	<string name="progress">進度</string>
 	<string name="complete">作業完成</string>
-	<!-- Advanced section -->
 	<string name="clear_chapter_cache">清除章節快取</string>
 	<string name="crash_logs">當機記錄</string>
 	<string name="dump_crash_logs">傾印當機記錄</string>
@@ -376,13 +348,11 @@
 	<string name="updates_tracking_details">與歷程平台同步處理閱讀狀態、評分以及進度</string>
 	<string name="disable_battery_optimization">停用電池效能最佳化</string>
 	<string name="battery_optimization_disabled">已停用電池效能最佳化</string>
-	<!-- Browse Settings -->
 	<string name="pref_global_search">全域搜尋</string>
 	<string name="check_for_extension_updates">自動檢查擴充套件更新</string>
 	<string name="source_migration_guide">來源遷移說明</string>
 	<string name="nsfw_sources">未滿十八歲之人不宜瀏覽的來源</string>
 	<string name="does_not_prevent_unofficial_nsfw">即使啟用監護限制，還是可能有漏網之魚。使用者仍可藉由非官方或未正確標幟的擴充套件在本應用程式中瀏覽未滿十八歲之人不宜觀賞的內容。</string>
-	<!-- About section -->
 	<string name="version">版本</string>
 	<string name="build_time">組建時間</string>
 	<string name="send_crash_report">傳送錯誤報告</string>
@@ -391,14 +361,12 @@
 	<string name="help_translate">協助翻譯</string>
 	<string name="website">網站</string>
 	<string name="open_source_licenses">開放原始碼授權</string>
-	<!-- Login/Logout dialog -->
 	<string name="log_in_to_">登入 %1$s</string>
 	<string name="username">使用者名稱</string>
 	<string name="email">電子郵件地址</string>
 	<string name="password">密碼</string>
 	<string name="successfully_logged_in">登入成功</string>
 	<string name="successfully_logged_out">你已登出</string>
-	<!-- Downloads -->
 	<string name="downloads">下載</string>
 	<string name="download_queue">下載佇列</string>
 	<string name="cancel_all">全部取消</string>
@@ -411,11 +379,9 @@
 	<string name="download_paused">下載已暫停</string>
 	<string name="download_complete">下載完成</string>
 	<string name="download_error">下載失敗</string>
-	<!-- Download Notification -->
 	<string name="could_not_download_unexpected_error">下載時發生不可預期的錯誤</string>
 	<string name="no_wifi_connection">沒有可用的 Wi-Fi 連線</string>
 	<string name="no_network_connection">尚未連接至網路</string>
-	<!-- Downloads settings -->
 	<string name="download_location">下載位置</string>
 	<string name="only_download_over_wifi">僅透過 Wi-Fi 下載</string>
 	<string name="remove_when_marked_as_read">刪除標示為已讀的章節</string>
@@ -428,7 +394,6 @@
 	<string name="fifth_to_last">倒數第五章</string>
 	<string name="download_new_chapters">自動下載新章節</string>
 	<string name="categories_to_include_in_download">欲啟用自動下載的分類</string>
-	<!-- Time -->
 	<string name="manual">手動</string>
 	<string name="hourly">每小時</string>
 	<string name="every_2_hours">每 2 小時</string>
@@ -438,15 +403,11 @@
 	<string name="daily">每日</string>
 	<string name="every_2_days">每 2 日</string>
 	<string name="weekly">每週</string>
-	<!-- File Picker Titles -->
 	<string name="select_cover_image">選擇書封圖片</string>
 	<string name="select_backup_file">選擇備份檔案</string>
 	<string name="file_picker_error">找不到檔案選擇器</string>
-	<!-- Webview -->
 	<string name="failed_to_bypass_cloudflare">無法繞過 Cloudflare</string>
 	<string name="please_update_webview">請更新 WebView 以獲得更佳的相容性</string>
-	<!-- Do not translate "WebView" -->
-	<!-- Miscellaneous -->
 	<string name="add">新增</string>
 	<string name="all">全部</string>
 	<string name="alphabetically">名稱</string>
