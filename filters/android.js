@@ -1,7 +1,6 @@
 // Check https://developer.android.com/guide/topics/resources/string-resource#FormattingAndStyling
 // Currently XML parsing is disabled for <string> and <item>. This is to make it easier to inject translations
 // and preserve the source but the downside is that we miss automatic CDATA handling, whitespace trimming, entity management.
-// TODO: per Android rules we don't handle keeping as-is strings surrounded by double quotes.
 
 import { XMLParser, XMLBuilder } from 'fast-xml-parser';
 import xmlFormatter from 'xml-formatter';

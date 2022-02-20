@@ -10,6 +10,12 @@ describe ('android filter tests', () =>{
   test('parseResource returns resource object', async () => {
     const expectedOutput = {
       "segments": [{
+        "sid": "cdata",
+        "str": "gotta 'love' this!"
+      }, {
+        "sid": "quotes",
+        "str": "it's magic"
+      }, {
         "sid": "str1",
         "str": "Winter is coming"
       }, {
