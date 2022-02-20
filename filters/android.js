@@ -91,23 +91,20 @@ export class AndroidFilter {
         const parser = new XMLParser(parsingOptions);
         const parsedResource = parser.parse(resource);
         const nodesToDelete = [];
-        let toTranslate = 0,
-            missingTranslations = 0;
+        let translated = 0;
         for (const rootNode of parsedResource) {
             if ('resources' in rootNode) {
                 for (const resNode of rootNode.resources) {
-                    if ('string' in resNode) {
-                        toTranslate++;
+                    if ('string' in resNode && resNode[':@'].translatable !== 'false' && !resNode[':@']['/']) {
                         const translation = await translator(resNode[':@'].name, collapseTextNodesAndDecode(resNode.string));
                         // eslint-disable-next-line no-negated-condition
                         if (resNode[':@'].translatable !== 'false' && translation !== undefined && !resNode[':@']['/']) {
+                            translated++;
                             resNode.string = [ { '#text': xmlEntityEncoder(androidEscapesEncoder(translation)) } ];
                         } else {
-                            missingTranslations++;
                             nodesToDelete.push(resNode);
                         }
                     } else if ('plurals' in resNode) { // TODO: deal with plurals of the target language, not the source
-                        toTranslate++;
                         let dropPlural = false;
                         for (const itemNode of resNode.plurals) {
                             const translation = await translator(`${resNode[':@'].name}_${itemNode[':@'].quantity}`, collapseTextNodesAndDecode(itemNode.item));
@@ -118,8 +115,9 @@ export class AndroidFilter {
                             }
                         }
                         if (dropPlural) {
-                            missingTranslations++;
                             nodesToDelete.push(resNode);
+                        } else {
+                            translated++;
                         }
                     } else {
                         nodesToDelete.push(resNode); // drop other nodes because of https://github.com/NaturalIntelligence/fast-xml-parser/issues/435
@@ -128,7 +126,7 @@ export class AndroidFilter {
                 rootNode.resources = rootNode.resources.filter(n => !nodesToDelete.includes(n));
             }
         }
-        if (toTranslate === missingTranslations) {
+        if (translated === 0) {
             return null;
         }
         const builder = new XMLBuilder(parsingOptions);
