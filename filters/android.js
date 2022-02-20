@@ -131,6 +131,7 @@ export class AndroidFilter {
         }
         const builder = new XMLBuilder(parsingOptions);
         const roughXML = builder.build(parsedResource);
-        return xmlFormatter(roughXML, { collapseContent: true, indentation: this.indentation, lineSeparator: '\n' });
+        // eslint-disable-next-line prefer-template
+        return xmlFormatter(roughXML, { collapseContent: true, indentation: this.indentation, lineSeparator: '\n' }) + '\n';
     }
 }
