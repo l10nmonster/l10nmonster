@@ -17,8 +17,8 @@ function collapseTextNodesAndDecode(node) {
 }
 
 export class AndroidFilter {
-    constructor({ comment }) {
-        this.comment = comment || 'pre';
+    constructor({ indentation }) {
+        this.indentation = indentation || '\t';
     }
 
     async parseResource({ resource }) {
@@ -44,13 +44,13 @@ export class AndroidFilter {
                     if ('#comment' in resNode) {
                         lastComment = collapseTextNodesAndDecode(resNode['#comment']).trim();
                     } else if ('string' in resNode && resNode[':@'].translatable !== 'false') {
-                        // resNode[':@'].name === 'external_storage_permission_notice' && console.dir(resNode.string, { depth: null })
+                        // resNode[':@'].name === 'app_short_name' && console.dir(resNode.string, { depth: null })
                         const seg = {
                             sid: resNode[':@'].name,
                             str: collapseTextNodesAndDecode(resNode.string)
                         };
                         lastComment && (seg.notes = lastComment);
-                        // resNode[':@'].name === 'external_storage_permission_notice' && console.dir(seg)
+                        // resNode[':@'].name === 'app_short_name' && console.dir(seg)
                         segments.push(seg);
                     } else if ('plurals' in resNode) {
                         for (const itemNode of resNode.plurals) {
@@ -88,22 +88,28 @@ export class AndroidFilter {
         const parser = new XMLParser(parsingOptions);
         const parsedResource = parser.parse(resource);
         const nodesToDelete = [];
+        let toTranslate = 0,
+            missingTranslations = 0;
         for (const rootNode of parsedResource) {
             if ('resources' in rootNode) {
                 for (const resNode of rootNode.resources) {
                     if ('string' in resNode) {
+                        toTranslate++;
                         const translation = await translator(resNode[':@'].name, collapseTextNodesAndDecode(resNode.string));
                         // eslint-disable-next-line no-negated-condition
                         if (resNode[':@'].translatable !== 'false' && translation !== undefined) {
                             resNode.string = [ { '#text': xmlEntityEncoder(androidEscapesEncoder(translation)) } ];
                         } else {
+                            missingTranslations++;
                             nodesToDelete.push(resNode);
                         }
                     } else if ('plurals' in resNode) { // TODO: deal with plurals of the target language, not the source
+                        toTranslate++;
                         let dropPlural = false;
                         for (const itemNode of resNode.plurals) {
                             const translation = await translator(`${resNode[':@'].name}_${itemNode[':@'].quantity}`, collapseTextNodesAndDecode(itemNode.item));
                             if (translation === undefined) {
+                                missingTranslations++;
                                 dropPlural = true;
                             } else {
                                 itemNode.item = [ { '#text': xmlEntityEncoder(androidEscapesEncoder(translation)) } ];
@@ -115,8 +121,11 @@ export class AndroidFilter {
                 rootNode.resources = rootNode.resources.filter(n => !nodesToDelete.includes(n));
             }
         }
+        if (toTranslate === missingTranslations) {
+            return null;
+        }
         const builder = new XMLBuilder(parsingOptions);
         const roughXML = builder.build(parsedResource);
-        return xmlFormatter(roughXML, { collapseContent: true, indentation: '\t', lineSeparator: '\n' });
+        return xmlFormatter(roughXML, { collapseContent: true, indentation: this.indentation, lineSeparator: '\n' });
     }
 }

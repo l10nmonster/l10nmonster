@@ -65,7 +65,9 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                         const currentParsed = await pipeline.resourceFilter.parseResource({ resource: currentRaw, isSource: false });
                         const currentFlattened = {};
                         currentParsed.segments.forEach(x => currentFlattened[x.sid] = x.str);
-                        const newParsed = await pipeline.resourceFilter.parseResource({ resource: translatedRes, isSource: false });
+                        const newParsed = translatedRes ?
+                            await pipeline.resourceFilter.parseResource({ resource: translatedRes, isSource: false }) :
+                            { segments: [] };
                         const newFlattened = {};
                         newParsed.segments.forEach(x => newFlattened[x.sid] = x.str);
                         const diff = diffJson(currentFlattened, newFlattened)
@@ -74,6 +76,8 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                             .join('');
                         diff && (status.diff[targetLang][translatedResourceId] = diff);
                     }
+                } else if (translatedRes === null) {
+                    verbose && console.log(`${targetLang}: Skipping commit of empty resource ${translatedResourceId}`);
                 } else {
                     await pipeline.target.commitTranslatedResource(targetLang, resourceId, translatedRes);
                     status.generatedResources[targetLang].push(translatedResourceId);
