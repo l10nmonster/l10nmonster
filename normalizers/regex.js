@@ -34,10 +34,13 @@ const namedEntities = {
     '&gt;'  : '>'
 };
 export const xmlEntityDecoder = regexMatchingDecoderMaker(
-    /(?<node>(?<namedEntity>&[^#;]+;)|&#(?<numericEntity>\d+);)/g,
+    /(?<node>&#x(?<hexEntity>[0-9a-fA-F]+);|(?<namedEntity>&[^#;]+;)|&#(?<numericEntity>\d+);)/g,
+    // eslint-disable-next-line no-nested-ternary
     (groups) => (groups.namedEntity ?
                     (namedEntities[groups.namedEntity] || groups.namedEntity) :
-                    String.fromCharCode(parseInt(groups.numericEntity, 10))
+                    (groups.hexEntity ?
+                        String.fromCharCode(parseInt(groups.hexEntity, 16)) :
+                        String.fromCharCode(parseInt(groups.numericEntity, 10)))
                 )
 );
 

@@ -5,13 +5,13 @@ describe('Regex Encoder tests', () => {
 
     test('html plus braces', async () => {
         expect(getNormalizedString(
-            `<icon name='location'/>Price&amp;&#65;:\\n\\'{0,number,integer}\\"\\u0020<color name='green'>{1}</color>`,
+            `<icon name='location'/>Price&amp;&#65;:\\n\\'{0,number,integer}\\"\\u0020&#xa0;<color name='green'>{1}</color>`,
             [ xmlDecoder, bracePHDecoder, xmlEntityDecoder, javaEscapesDecoder ]
         )).toMatchObject([
             { t: 'x', v: "<icon name='location'/>" },
             "Price&A:\n'",
             { t: 'x', v: '{0,number,integer}' },
-            '" ',
+            '" \u00a0',
             { t: 'bx', v: "<color name='green'>" },
             { t: 'x', v: '{1}' },
             { t: 'ex', v: '</color>' }
