@@ -112,13 +112,15 @@ export class AndroidFilter {
                         for (const itemNode of resNode.plurals) {
                             const translation = await translator(`${resNode[':@'].name}_${itemNode[':@'].quantity}`, collapseTextNodesAndDecode(itemNode.item));
                             if (translation === undefined) {
-                                missingTranslations++;
                                 dropPlural = true;
                             } else {
                                 itemNode.item = [ { '#text': xmlEntityEncoder(androidEscapesEncoder(translation)) } ];
                             }
                         }
-                        dropPlural && nodesToDelete.push(resNode);
+                        if (dropPlural) {
+                            missingTranslations++;
+                            nodesToDelete.push(resNode);
+                        }
                     } else {
                         nodesToDelete.push(resNode); // drop other nodes because of https://github.com/NaturalIntelligence/fast-xml-parser/issues/435
                     }
