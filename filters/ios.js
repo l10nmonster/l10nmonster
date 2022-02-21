@@ -23,6 +23,8 @@ export class IosStringsFilter {
                 parsedResource[sid].text = translation;
             }
         }
-        return i18nStringsFiles.compile(parsedResource, { 'wantsComments' : true });
+        return Object.keys(parsedResource) > 0 ?
+            i18nStringsFiles.compile(parsedResource, { 'wantsComments' : false }) :
+            null;
     }
 }
