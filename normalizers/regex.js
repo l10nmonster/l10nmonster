@@ -90,9 +90,9 @@ export const androidEscapesDecoder = regexMatchingDecoderMaker(
 export const androidEscapesEncoder = (str) => {
     let escapedStr = str.replaceAll(/[@\\'"]/g, '\\$&').replaceAll('\t', '\\t').replaceAll('\n', '\\n');
     // eslint-disable-next-line prefer-template
-    escapedStr[0] === ' ' && (escapedStr = '\\u0020' + str.substring(1));
+    escapedStr[0] === ' ' && (escapedStr = '\\u0020' + escapedStr.substring(1));
     // eslint-disable-next-line prefer-template
-    escapedStr.length > 0 && escapedStr[escapedStr.length - 1] === ' ' && (escapedStr = escapedStr[escapedStr.length - 1] + '\\u0020');
+    escapedStr.length > 0 && escapedStr[escapedStr.length - 1] === ' ' && (escapedStr = escapedStr.substring(0, escapedStr.length - 1) + '\\u0020');
     return escapedStr;
 };
 
