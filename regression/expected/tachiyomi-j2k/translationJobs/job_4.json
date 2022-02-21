@@ -10,7 +10,7 @@
 				"translatedWords": 0,
 				"translatedByQ": {},
 				"untranslated": 866,
-				"untranslatedChars": 17788,
+				"untranslatedChars": 17784,
 				"untranslatedWords": 2829,
 				"pending": 0,
 				"pendingWords": 0,
@@ -3762,7 +3762,7 @@
 			"q": 1
 		},
 		{
-			"guid": "P0dsynHIl_GDbEkM1tZ0wkLMmr9jFjuBDKAimkimaC8",
+			"guid": "etVdxDl96xsnSIZe67TBgvPDHvZi-8XCK1TiYeJI61o",
 			"ntgt": [
 				"[",
 				"Invalidyay ackupbay ilefay ypetay: ",
@@ -3770,7 +3770,7 @@
 					"t": "x",
 					"v": "%1$s"
 				},
-				"\nItyay ouldshay endyay ithway \".proto.gz\" oryay \".onjsay\".",
+				"\nItyay ouldshay endyay ithway .proto.gz oryay .onjsay.",
 				"-piggy]"
 			],
 			"contentType": "default",

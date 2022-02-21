@@ -9,30 +9,33 @@ describe ('android filter tests', () =>{
 
   test('parseResource returns resource object', async () => {
     const expectedOutput = {
-      "segments": [{
-        "sid": "cdata",
-        "str": "gotta 'love' this!"
-      }, {
-        "sid": "quotes",
-        "str": "it's magic"
-      }, {
-        "sid": "str1",
-        "str": "Winter is coming"
-      }, {
-        "sid": "move_x_to",
-        "str": "Move %1$s to…"
-      }, {
-        "sid": "chapter_x_of_y",
-        "str": "Chapter %1$d of %2$d"
-      }, {
-        "isSuffixPluralized": true,
-        "sid": "chapters_plural_one",
-        "str": "%1$d chapter"
-      }, {
-        "isSuffixPluralized": true,
-        "sid": "chapters_plural_other",
-        "str": "%1$d chapters"
-      }]
+        "segments": [{
+            "sid": "cdata",
+            "str": "gotta 'love' this!"
+        }, {
+            "sid": "quotes",
+            "str": "it's magic"
+        }, {
+            "sid": "str1",
+            "str": "Winter is coming"
+        }, {
+            "sid": "move_x_to",
+            "str": "Move %1$s to…"
+        }, {
+            "sid": "chapter_x_of_y",
+            "str": "Chapter %1$d of %2$d"
+        }, {
+            "sid": "quotes",
+            "str": "nothing to see here"
+        }, {
+            "isSuffixPluralized": true,
+            "sid": "chapters_plural_one",
+            "str": "%1$d chapter"
+        }, {
+            "isSuffixPluralized": true,
+            "sid": "chapters_plural_other",
+            "str": "%1$d chapters"
+        }]
     };
     const resource = readFileSync(resourceId,'utf8');
     const output = await resourceFilter.parseResource({resource: resource, isSource: true});

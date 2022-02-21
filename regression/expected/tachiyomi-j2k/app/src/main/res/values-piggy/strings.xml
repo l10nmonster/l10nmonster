@@ -631,7 +631,7 @@
 	<string name="backup_frequency">[Ackupbay equencyfray-piggy]</string>
 	<string name="max_auto_backups">[Axmay automaticyay ackupsbay-piggy]</string>
 	<string name="invalid_backup_file">[Invalidyay ackupbay ilefay-piggy]</string>
-	<string name="invalid_backup_file_type">[Invalidyay ackupbay ilefay ypetay: %1$s\nItyay ouldshay endyay ithway \".proto.gz\" oryay \".onjsay\".-piggy]</string>
+	<string name="invalid_backup_file_type">[Invalidyay ackupbay ilefay ypetay: %1$s\nItyay ouldshay endyay ithway .proto.gz oryay .onjsay.-piggy]</string>
 	<string name="file_is_missing_data">[Ilefay isyay issingmay ataday.-piggy]</string>
 	<string name="backup_has_no_manga">[Ackupbay oesday otnay ontaincay anyay angamay.-piggy]</string>
 	<string name="backup_failed">[Ackupbay ailedfay-piggy]</string>

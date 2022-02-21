@@ -45,8 +45,8 @@ export const xmlEntityDecoder = regexMatchingDecoderMaker(
 );
 
 export const xmlCDataDecoder = regexMatchingDecoderMaker(
-    /(?:<!\[CDATA\[(?<cdata>.*?)\]\]>|"(?<quoted>[^"]*)")/gs,
-    groups => groups.cdata ?? groups.quoted
+    /(?:<!\[CDATA\[(?<cdata>.*?)\]\]>|(?:(?<firstChar>[^\\])"|^")(?<quoted>.*?)(?<lastChar>[^\\])")/gs,
+    groups => groups.cdata ?? ((groups.firstChar || '') + groups.quoted + (groups.lastChar ?? ''))
 );
 
 export const xmlEntityEncoder = (str) => str.replaceAll('&', '&amp;')

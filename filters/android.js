@@ -1,6 +1,7 @@
 // Check https://developer.android.com/guide/topics/resources/string-resource#FormattingAndStyling
 // Currently XML parsing is disabled for <string> and <item>. This is to make it easier to inject translations
 // and preserve the source but the downside is that we miss automatic CDATA handling, whitespace trimming, entity management.
+// TODO: double quotes are meant to preserve newlines but we treat double quotes like CDATA (which doesn't)
 
 import { XMLParser, XMLBuilder } from 'fast-xml-parser';
 import xmlFormatter from 'xml-formatter';
@@ -47,7 +48,7 @@ export class AndroidFilter {
                 let lastComment;
                 for (const resNode of rootNode.resources) {
                     if ('#comment' in resNode) {
-                        lastComment = collapseTextNodesAndDecode(resNode['#comment']).trim();
+                        lastComment = resNode['#comment'].map(e => e['#text']).join('').trim();
                     } else if ('string' in resNode) {
                         const str = collapseTextNodesAndDecode(resNode.string);
                         if (isTranslatableNode(resNode, str)) {

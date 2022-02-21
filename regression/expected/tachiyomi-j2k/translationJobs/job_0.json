@@ -10,7 +10,7 @@
 				"translatedWords": 0,
 				"translatedByQ": {},
 				"untranslated": 866,
-				"untranslatedChars": 17788,
+				"untranslatedChars": 17784,
 				"untranslatedWords": 2829,
 				"pending": 0,
 				"pendingWords": 0,
@@ -6264,10 +6264,10 @@
 			"q": 70
 		},
 		{
-			"guid": "P0dsynHIl_GDbEkM1tZ0wkLMmr9jFjuBDKAimkimaC8",
+			"guid": "etVdxDl96xsnSIZe67TBgvPDHvZi-8XCK1TiYeJI61o",
 			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "invalid_backup_file_type",
-			"src": "Invalid backup file type: %1$s\nIt should end with \".proto.gz\" or \".json\".",
+			"src": "Invalid backup file type: %1$s\nIt should end with .proto.gz or .json.",
 			"tgt": "无效的备份文件类型：%1$s \n文件扩展名应为 .proto.gz 或 .json。",
 			"contentType": "default",
 			"q": 70,
@@ -6285,7 +6285,7 @@
 					"t": "x",
 					"v": "%1$s"
 				},
-				"\nIt should end with \".proto.gz\" or \".json\"."
+				"\nIt should end with .proto.gz or .json."
 			]
 		},
 		{
