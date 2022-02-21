@@ -9,7 +9,7 @@ import { xmlCDataDecoder, xmlEntityDecoder, androidEscapesDecoder, androidEscape
     xmlEntityEncoder } from '../normalizers/regex.js';
 
 function collapseTextNodesAndDecode(node) {
-    const collapsedText = node.map(e => e['#text']).join('');
+    const collapsedText = node.map(e => e['#text']).join('').trim();
     const afterStrippingCData = xmlCDataDecoder([ collapsedText ]).join('');
     const afterXmlEntities = xmlEntityDecoder([ afterStrippingCData ]).join('');
     const afterSpaceCollapse = afterXmlEntities.replaceAll(/[ \f\n\r\t\v\u2028\u2029]+/g, ' ');

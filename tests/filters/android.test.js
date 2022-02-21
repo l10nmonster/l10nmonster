@@ -28,6 +28,9 @@ describe ('android filter tests', () =>{
             "sid": "quotes",
             "str": "nothing to see here"
         }, {
+            "sid": "space",
+            "str": " space "
+        }, {
             "isSuffixPluralized": true,
             "sid": "chapters_plural_one",
             "str": "%1$d chapter"

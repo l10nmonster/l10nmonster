@@ -87,8 +87,14 @@ export const androidEscapesDecoder = regexMatchingDecoderMaker(
     )
 );
 
-export const androidEscapesEncoder = (str) => str.replaceAll(/[@\\'"]/g, '\\$&')
-    .replaceAll('\t', '\\t').replaceAll('\n', '\\n');
+export const androidEscapesEncoder = (str) => {
+    let escapedStr = str.replaceAll(/[@\\'"]/g, '\\$&').replaceAll('\t', '\\t').replaceAll('\n', '\\n');
+    // eslint-disable-next-line prefer-template
+    escapedStr[0] === ' ' && (escapedStr = '\\u0020' + str.substring(1));
+    // eslint-disable-next-line prefer-template
+    escapedStr.length > 0 && escapedStr[escapedStr.length - 1] === ' ' && (escapedStr = escapedStr[escapedStr.length - 1] + '\\u0020');
+    return escapedStr;
+};
 
 export const doublePercentDecoder = (parts) => parts.map(p => (typeof p === 'string' ? p.replaceAll('%%', '%') : p));
 
