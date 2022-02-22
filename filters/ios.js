@@ -1,6 +1,10 @@
 import i18nStringsFiles from 'i18n-strings-files';
 
 export class IosStringsFilter {
+    constructor(params) {
+        this.emitComments = params?.emitComments || false;
+    }
+
     async parseResource({ resource }) {
         const parsedResource = i18nStringsFiles.parse(resource, { 'wantsComments' : true });
         const segments = Object.entries(parsedResource).map(([k, v]) => ({
@@ -21,10 +25,11 @@ export class IosStringsFilter {
                 delete parsedResource[sid];
             } else {
                 parsedResource[sid].text = translation;
+                !this.emitComments && parsedResource[sid].comment && delete parsedResource[sid].comment;
             }
         }
-        return Object.keys(parsedResource) > 0 ?
-            i18nStringsFiles.compile(parsedResource, { 'wantsComments' : false }) :
+        return Object.keys(parsedResource).length > 0 ?
+            i18nStringsFiles.compile(parsedResource, { 'wantsComments' : this.emitComments }) :
             null;
     }
 }
