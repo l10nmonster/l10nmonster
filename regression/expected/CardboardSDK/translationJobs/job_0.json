@@ -22,56 +22,36 @@
 	"tus": [
 		{
 			"guid": "Sch-OXL3KPaFNWvKiWNmafNmqHZo8oNtcaB-9jYE1sk",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "BackButtonLabel",
-			"src": "Back",
+			"q": 70,
 			"tgt": "رجوع",
-			"contentType": "default",
-			"q": 70
+			"ts": 1644385400681
 		},
 		{
 			"guid": "S5zXEp9KGe9nqhqgtH8vMM106HfoiBTZzDQ8qyPdB5A",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "NavTitleLabel",
-			"src": "QR Scan",
+			"q": 70,
 			"tgt": "فحص الاستجابة السريعة.",
-			"contentType": "default",
-			"q": 70
+			"ts": 1644385400681
 		},
 		{
 			"guid": "PV7WBP4aNfZzq1Hre1_bkECpoSmhPedg7xfh7UKYkyw",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "LoadingMessage",
-			"src": "Parsing configuration data",
+			"q": 70,
 			"tgt": "تحليل بيانات التهيئة",
-			"contentType": "default",
-			"q": 70
+			"ts": 1644385400681
 		},
 		{
 			"guid": "jkJekuVBcsiufoG2zmxszlbnMGkREPRBAeb2QTDfUaI",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "InvalidQRCode",
-			"src": "The QR code is invalid",
+			"q": 70,
 			"tgt": "إن رمز الاستجابة السريعة غير صالح",
-			"contentType": "default",
-			"q": 70
+			"ts": 1644385400681
 		},
 		{
 			"guid": "2n8bq0sVYs9Xil3nEw7OEVuhOSGvpaoInQAZ89RnD7c",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "ParsingFailed",
-			"src": "Problem in parsing the Url",
+			"q": 70,
 			"tgt": "‏مشكلة في تحليل عنوان Url",
-			"contentType": "default",
-			"q": 70
+			"ts": 1644385400681
 		},
 		{
 			"guid": "XY8o8xA5C_HlR4v8LDc4L98Y0mR-4gHyLjDxwvNhDrM",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "DataSynced",
-			"src": "%1$@ detected",
-			"tgt": "تم اكتشاف %1$@",
-			"contentType": "default",
 			"q": 70,
 			"ntgt": [
 				"تم اكتشاف ",
@@ -80,102 +60,64 @@
 					"v": "%1$@"
 				}
 			],
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "%1$@"
-				},
-				" detected"
-			]
+			"ts": 1644385400681
 		},
 		{
 			"guid": "MmBuoyCIE3eiz_wlkLAZMeoIhXX52LOiAHNCnl3o4Fc",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "FindSymbolOnViewer",
-			"src": "Find this symbol on your viewer",
+			"q": 70,
 			"tgt": "العثور على هذا الرمز على عارضك",
-			"contentType": "default",
-			"q": 70
+			"ts": 1644385400681
 		},
 		{
 			"guid": "QaV08RUEuxPOCugEXCnQ7tnShKARCrrKeZxYO7kxLSc",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "CanNotFindSymbol",
-			"src": "Can't find this symbol?",
+			"q": 70,
 			"tgt": "ألا تستطيع العثور على هذا الرمز؟",
-			"contentType": "default",
-			"q": 70
+			"ts": 1644385400681
 		},
 		{
 			"guid": "c6aK6IBRyaNfMidf7na8JYOmhVI2r4vsn3O6B-pr-xc",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "TroubleShootingTips",
-			"src": "Troubleshooting Tips",
+			"q": 70,
 			"tgt": "نصائح تحرّى الخلل وإصلاحه",
-			"contentType": "default",
-			"q": 70
+			"ts": 1644385400681
 		},
 		{
 			"guid": "ZYAxQNY0zLKx4RB3CGTDXujQrbLQclR9EH5EQ7Fzbok",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "SkipButtonLabel",
-			"src": "SKIP",
+			"q": 70,
 			"tgt": "تخطٍ",
-			"contentType": "default",
-			"q": 70
+			"ts": 1644385400681
 		},
 		{
 			"guid": "Kj45w0Rgr1SHV55MeVawhgff4UYIfb-XuWWnyf9_dks",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "OnboardingIntroLine1",
-			"src": "Let's get you set up",
+			"q": 70,
 			"tgt": "لنبدأ الإعداد",
-			"contentType": "default",
-			"q": 70
+			"ts": 1644385400681
 		},
 		{
 			"guid": "8_cqAMCRj_4YGH6-e5xWNNAupQF-OHn20AQoeGp75h4",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "OnboardingIntroLine2",
-			"src": "Pair your phone with your viewer for the best experience.",
+			"q": 70,
 			"tgt": "أقرن هاتفك مع العارض للتمتّع بأفضل تجربة",
-			"contentType": "default",
-			"q": 70
+			"ts": 1644385400681
 		},
 		{
 			"guid": "yiK0MVBkcMRpl-7tMMPVMmlUvDJvqVxRbLLDHOchAko",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "OnboardingNoViewerPrompt",
-			"src": "No cardboard viewer?",
+			"q": 70,
 			"tgt": "‏أليس لديك عارض Cardboard؟",
-			"contentType": "default",
-			"q": 70
+			"ts": 1644385400681
 		},
 		{
 			"guid": "L3Um-sKnXUAP1liD4dLFvMGh7c2p80P5DRx1ZFPYpqM",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "OnboardingGetCardboardButton",
-			"src": "Get One",
+			"q": 70,
 			"tgt": "الحصول على واحد",
-			"contentType": "default",
-			"q": 70
+			"ts": 1644385400681
 		},
 		{
 			"guid": "6nFW5iZToYQ3LtLDeb9Adlfu-EQWDAuFyMsAlRw4cf4",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "PlaceYourPhoneInCardboard",
-			"src": "Place your phone into your Cardboard viewer.",
+			"q": 70,
 			"tgt": "‏ضع هاتفك في عارض Cardboard.",
-			"contentType": "default",
-			"q": 70
+			"ts": 1644385400681
 		},
 		{
 			"guid": "4jxuTPXhhsLGShj5wDGlsktW8NV1GAYrGDxHaZV_6C4",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "PlaceYourPhoneInViewerFormat",
-			"src": "Place your phone into your %1$@ viewer.",
-			"tgt": "ضع هاتفك في عارض %1$@.",
-			"contentType": "default",
 			"q": 70,
 			"ntgt": [
 				"ضع هاتفك في عارض ",
@@ -185,40 +127,22 @@
 				},
 				"."
 			],
-			"nsrc": [
-				"Place your phone into your ",
-				{
-					"t": "x",
-					"v": "%1$@"
-				},
-				" viewer."
-			]
+			"ts": 1644385400681
 		},
 		{
 			"guid": "6hNFreOOSaLtvtpZeirvd7YWah19RxogxrXPw89jle8",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "SettingsNavTitleLabel",
-			"src": "Settings",
+			"q": 70,
 			"tgt": "الإعدادات",
-			"contentType": "default",
-			"q": 70
+			"ts": 1644385400681
 		},
 		{
 			"guid": "JdemGm2zCUjeubRLZsgXcHubo03AMla3GDG3EQOcRaA",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "SettingsSyncLabel",
-			"src": "Sync with Google Cardboard",
+			"q": 70,
 			"tgt": "‏مزامنة مع Google Cardboard",
-			"contentType": "default",
-			"q": 70
+			"ts": 1644385400681
 		},
 		{
 			"guid": "slgigM0NfUFIqYMNDpipEAV2LaSg4PIejxEgH37p4Pw",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "SettingsCurrentViewerLabelFormat",
-			"src": "Current viewer: %1$@",
-			"tgt": "العارض الحالي: %1$@",
-			"contentType": "default",
 			"q": 70,
 			"ntgt": [
 				"العارض الحالي: ",
@@ -227,48 +151,28 @@
 					"v": "%1$@"
 				}
 			],
-			"nsrc": [
-				"Current viewer: ",
-				{
-					"t": "x",
-					"v": "%1$@"
-				}
-			]
+			"ts": 1644385400681
 		},
 		{
 			"guid": "wqrXrCWCECaeOiuDSJiLjeSfPaVlrgpeDFJp8NK39WU",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "DefaultViewerName",
-			"src": "Default",
+			"q": 70,
 			"tgt": "افتراضي",
-			"contentType": "default",
-			"q": 70
+			"ts": 1644385400681
 		},
 		{
 			"guid": "kNNZEkHiye4nzgXH33tGPIpo_dN9p9dtDvtyQLknghg",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "DifferentViewerQuestion",
-			"src": "Using a different viewer?",
+			"q": 70,
 			"tgt": "هل تستخدم عارضًا مختلفًا؟",
-			"contentType": "default",
-			"q": 70
+			"ts": 1644385400681
 		},
 		{
 			"guid": "qTP4qKQCnREcyJAH2Kaph3DNOicsXMZGYTlqeVzrb2c",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "SwitchViewer",
-			"src": "SWITCH",
+			"q": 70,
 			"tgt": "تبديل",
-			"contentType": "default",
-			"q": 70
+			"ts": 1644385400681
 		},
 		{
 			"guid": "Ko1R6hKlnw0dJtnGrwHdjhq0igmaxHWUuci1ZrEiYvg",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "SwitchViewerActivityMenuTitle",
-			"src": "Switch viewer: %1$@",
-			"tgt": "تبديل العارض: %1$@",
-			"contentType": "default",
 			"q": 70,
 			"ntgt": [
 				"تبديل العارض: ",
@@ -277,39 +181,22 @@
 					"v": "%1$@"
 				}
 			],
-			"nsrc": [
-				"Switch viewer: ",
-				{
-					"t": "x",
-					"v": "%1$@"
-				}
-			]
+			"ts": 1644385400681
 		},
 		{
 			"guid": "_AhOCAPiMyasIto9QG_S4I0SlAYd_aMe7FWWEAduL38",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "HelpActivityMenuTitle",
-			"src": "Help",
+			"q": 70,
 			"tgt": "مساعدة",
-			"contentType": "default",
-			"q": 70
+			"ts": 1644385400681
 		},
 		{
 			"guid": "CBwqRfe5Ye7rqvX0p6oInX-rrmYU3pvl1Sb7GOjEY2k",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "SuccessfullyPaired",
-			"src": "Successfully Paired!",
+			"q": 70,
 			"tgt": "تم الإقران بنجاح!",
-			"contentType": "default",
-			"q": 70
+			"ts": 1644385400681
 		},
 		{
 			"guid": "xX2wjf_JnaqCdoe4AvzrpR0w__P7h12WCoMygm6ru8U",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "ViewerConfigured",
-			"src": "Your phone is now configured for your %1$@ viewer.",
-			"tgt": "تمت تهيئة هاتفك لعارض %1$@.",
-			"contentType": "default",
 			"q": 70,
 			"ntgt": [
 				"تمت تهيئة هاتفك لعارض ",
@@ -319,44 +206,25 @@
 				},
 				"."
 			],
-			"nsrc": [
-				"Your phone is now configured for your ",
-				{
-					"t": "x",
-					"v": "%1$@"
-				},
-				" viewer."
-			]
+			"ts": 1644385400681
 		},
 		{
 			"guid": "QBJSpbVgw6NtOonlImeo7N4Ys6aMk-tIHP-Jha6jjwk",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "OK",
-			"src": "OK",
+			"q": 70,
 			"tgt": "موافق",
-			"contentType": "default",
-			"q": 70
+			"ts": 1644385400681
 		},
 		{
 			"guid": "ngT5pq_BhXgX71IJFDYZQRJX80bl9J1XPD2oBb-VEAE",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "AccessibilitySettingsButton",
-			"src": "Settings",
+			"q": 70,
 			"tgt": "الإعدادات",
-			"contentType": "default",
-			"q": 70
+			"ts": 1644385400681
 		},
 		{
 			"guid": "Ln6QELVxYXr2EgOv6P2-EYewhB5H6jLOJ1W5jilT_nc",
-			"rid": "en.lproj/CardboardSDK.strings",
-			"sid": "AccessibilityBackButton",
-			"src": "Back\\u0020to previous screen",
-			"tgt": "رجوع إلى الشاشة السابقة",
-			"contentType": "default",
 			"q": 70,
-			"nsrc": [
-				"Back to previous screen"
-			]
+			"tgt": "رجوع إلى الشاشة السابقة",
+			"ts": 1644385400681
 		}
 	],
 	"status": "done",

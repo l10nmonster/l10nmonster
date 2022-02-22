@@ -43,15 +43,14 @@ export async function grandfatherCmd(mm, quality, limitToLang) {
                 sources.push(tu);
                 const translation = {
                     guid: tu.guid,
-                    rid: tu.rid,
-                    sid: tu.sid,
-                    src: tu.src,
-                    tgt: previousTranslation.src,
-                    contentType: previousTranslation.contentType,
                     q: quality,
                 };
-                previousTranslation.nsrc && (translation.ntgt = previousTranslation.nsrc);
-                tu.nsrc && (translation.nsrc = tu.nsrc);
+                if (previousTranslation.nsrc) {
+                    translation.ntgt = previousTranslation.nsrc;
+                } else {
+                    translation.tgt = previousTranslation.src;
+                }
+                previousTranslation.ts && (translation.ts = previousTranslation.ts);
                 translations.push(translation);
             }
         }

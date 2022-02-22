@@ -24,12 +24,12 @@ export async function leverageCmd(mm, limitToLang) {
                     }
                 }
                 const leveragedTU = {
-                    ...bestCandidate,
-                    rid: tu.rid,
-                    sid: tu.sid,
                     guid: mm.generateFullyQualifiedGuid(tu.rid, tu.sid, tu.src),
                     q: Math.max(0, bestCandidate.q - (tu.sid === bestCandidate.sid ? mm.qualifiedPenalty : mm.unqualifiedPenalty), 0),
                 };
+                bestCandidate.tgt && (leveragedTU.tgt = bestCandidate.tgt);
+                bestCandidate.ntgt && (leveragedTU.ntgt = bestCandidate.ntgt);
+                bestCandidate.ts && (leveragedTU.ts = bestCandidate.ts);
                 sources.push(tu);
                 translations.push(leveragedTU);
             }
