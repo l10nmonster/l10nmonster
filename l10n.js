@@ -33,6 +33,7 @@ import { IosStringsFilter } from './filters/ios.js';
 import { XliffBridge } from './translators/xliff.js';
 import { PigLatinizer } from './translators/piglatinizer.js';
 import { TranslationOS } from './translators/translationOS.js';
+import { Visicode } from './translators/visicode.js';
 import { xmlDecoder, bracePHDecoder, iosPHDecoder,
     xmlEntityDecoder, javaEscapesDecoder,
     xmlEntityEncoder, javaEscapesEncoder,
@@ -83,7 +84,7 @@ async function initMonster() {
                 regexMatchingDecoderMaker,
             },
             translators: {
-                XliffBridge, PigLatinizer, TranslationOS
+                XliffBridge, PigLatinizer, TranslationOS, Visicode
             },
         };
         for (const helperCategory of Object.values(helpers)) {
