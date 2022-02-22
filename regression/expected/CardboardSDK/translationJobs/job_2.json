@@ -25,25 +25,25 @@
 	"jobId": 2,
 	"jobGuid": "x",
 	"status": "done",
-	"translationProvider": "PigLatinizer",
+	"translationProvider": "Visicode",
 	"tus": [
 		{
 			"guid": "p72nj2yZPB-RfJOZa2iZg2pt16HznCGr_kdYQziGHxs",
 			"ntgt": [
-				"[",
-				"Ardboardcay odemay: ",
+				"⇥⒞Ⓐ",
+				"C̳a̳r̳d̳b̳o̳a̳r̳d̳ ̳m̳o̳d̳e̳:̳ ̳",
 				{
 					"t": "x",
 					"v": "%1$@"
 				},
-				"-ar]"
+				"⇤"
 			],
 			"contentType": "default",
 			"q": 2
 		},
 		{
 			"guid": "snWaUNjXnKuXlItO8jUPfKITKfuqshl6xCXxUgiP4jI",
-			"tgt": "[Ullscreenfay odemay-ar]",
+			"tgt": "⇥⒞ⒷF̳u̳l̳l̳s̳c̳r̳e̳e̳n̳ ̳m̳o̳d̳e̳⇤",
 			"q": 2
 		}
 	],
