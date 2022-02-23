@@ -18,6 +18,13 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
             if (res.targetLangs.includes(targetLang) && (mm.ctx.prj === undefined || res.prj === mm.ctx.prj)) {
                 const resourceId = res.id;
                 const pipeline = mm.contentTypes[res.contentType];
+                const encodeString = function encodeString(rawStr) {
+                    if (pipeline.encoders) {
+                        return pipeline.encoders.reduce((str, encoder) => encoder(str), rawStr);
+                    } else {
+                        return rawStr;
+                    }
+                };
                 const translator = async function translate(sid, src) {
                     let nsrc;
                     if (pipeline.decoders) {
@@ -35,11 +42,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                         // TODO: fetch latest placeholders from source and use those if compatible
                         for (const part of entry.ntgt) {
                             if (typeof part === 'string') {
-                                if (pipeline.encoders) {
-                                    tgt.push(pipeline.encoders.reduce((str, encoder) => encoder(str), part));
-                                } else {
-                                    tgt.push(part);
-                                }
+                                tgt.push(encodeString(part));
                             } else if (part?.v === undefined) {
                                 verbose && console.error(`Invalid placeholder found: ${JSON.stringify(part)}`);
                                 return undefined;
@@ -48,8 +51,10 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                             }
                         }
                         return tgt.join('');
+                    } else if (entry?.tgt !== undefined) {
+                        return encodeString(entry?.tgt);
                     }
-                    return entry?.tgt; // don't fall back, let the caller deal with it
+                    return undefined; // don't fall back, let the caller deal with it
                 };
                 const resource = await pipeline.source.fetchResource(res.id);
                 const translatedRes = await pipeline.resourceFilter.generateTranslatedResource({ resource, targetLang, translator });
