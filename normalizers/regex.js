@@ -1,3 +1,10 @@
+// Note: in general, decoders are more complicated than encoders because there are usually multiple ways
+//   to specify the same thing in input, but we choose a single way to produce in output (e.g. CDATA vs. escapes)
+//   Don't be surprised if you see we don't express the full semantics of the source, because our goals here
+//   is to protect placeholders from getting corrupted, so we may have to merge different rule sets together
+//   (e.g. MessageFormat variables and HTML markup). There are also edge cases like a Java service returning
+//   an Android message format string, where we may need to overlay both Java and Android rules together.
+
 // Generic pluggable decoder
 export function regexMatchingDecoderMaker(regex, partDecoder) {
     return function decoder(parts) {
@@ -68,6 +75,13 @@ export const javaEscapesDecoder = regexMatchingDecoderMaker(
         )
     )
 );
+
+export const javaMFQuotesDecoder = regexMatchingDecoderMaker(
+    /(?:(?<quote>')'|(?:'(?<quoted>[^']+)'))/g,
+    groups => groups.quote ?? groups.quoted
+);
+
+export const javaMFQuotesEncoder = (str) => str.replaceAll("'", "''");
 
 // TODO: do we need to escape also those escapedChar that we decoded?
 export const javaEscapesEncoder = (str) => str.replaceAll('\t', '\\t').replaceAll('\b', '\\b')

@@ -37,6 +37,7 @@ import { Visicode } from './translators/visicode.js';
 import { xmlDecoder, bracePHDecoder, iosPHDecoder,
     xmlEntityDecoder, javaEscapesDecoder,
     xmlEntityEncoder, javaEscapesEncoder,
+    javaMFQuotesDecoder, javaMFQuotesEncoder,
     doublePercentDecoder, doublePercentEncoder,
     regexMatchingDecoderMaker } from './normalizers/regex.js';
 
@@ -81,6 +82,7 @@ async function initMonster() {
                 xmlDecoder, bracePHDecoder, iosPHDecoder,
                 xmlEntityDecoder, javaEscapesDecoder,
                 xmlEntityEncoder, javaEscapesEncoder,
+                javaMFQuotesDecoder, javaMFQuotesEncoder,
                 doublePercentDecoder, doublePercentEncoder,
                 regexMatchingDecoderMaker,
             },
