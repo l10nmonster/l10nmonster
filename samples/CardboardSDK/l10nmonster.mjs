@@ -26,3 +26,5 @@ export default class CardboardConfig {
         });
     }
 }
+
+export const opsDir = 'l10nOps';

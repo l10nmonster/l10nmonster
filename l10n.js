@@ -48,13 +48,14 @@ async function initMonster() {
   while (baseDir !== previousDir) {
     const configPath = path.join(baseDir, 'l10nmonster.mjs');
     if (existsSync(configPath)) {
+        const configModule = await import(configPath);
         const verbose = monsterCLI.opts().verbose;
         const regression = monsterCLI.opts().regression;
         const build = monsterCLI.opts().build;
         const release = monsterCLI.opts().release;
         const prj = monsterCLI.opts().prj;
-        const ops = monsterCLI.opts().ops;
-        const opsMgr = ops ? new OpsMgr({ opsDir: path.join(baseDir, ops), verbose }) : new OpsMgr({ verbose });
+        const opsDir = monsterCLI.opts().ops ?? configModule.opsDir;
+        const opsMgr = opsDir ? new OpsMgr({ opsDir: path.join(baseDir, opsDir), verbose }) : new OpsMgr({ verbose });
         const ctx = {
             baseDir,
             opsMgr,
@@ -91,29 +92,28 @@ async function initMonster() {
             for (const helper of Object.values(helperCategory))
                 helper.prototype && (helper.prototype.ctx = ctx);
         }
-      verbose && console.log(`Importing config from: ${configPath}`);
-    const configModule = await import(configPath);
-      try {
-        const configParams = { ctx, ...helpers };
-        if (verbose) {
-          console.log('Initializing config with:');
-          console.dir(configParams);
+        verbose && console.log(`Importing config from: ${configPath}`);
+        try {
+            const configParams = { ctx, ...helpers };
+            if (verbose) {
+                console.log('Initializing config with:');
+                console.dir(configParams);
+            }
+            const monsterConfig = new configModule.default(configParams);
+            if (verbose) {
+                console.log('Successfully got config instance:');
+                console.dir(monsterConfig, { depth: 5 });
+            }
+            const monsterDir = path.join(baseDir, monsterConfig.monsterDir ?? '.l10nmonster');
+            verbose && console.log(`Monster dir: ${monsterDir}`);
+            if (!existsSync(monsterDir)) {
+                mkdirSync(monsterDir, {recursive: true});
+            }
+            MonsterManager.prototype.verbose = verbose;
+            return new MonsterManager({ monsterDir, monsterConfig, ctx });
+        } catch(e) {
+            throw `l10nmonster.mjs failed to construct: ${e}`;
         }
-        const monsterConfig = new configModule.default(configParams);
-        if (verbose) {
-          console.log('Successfully got config instance:');
-          console.dir(monsterConfig, { depth: 5 });
-        }
-        const monsterDir = path.join(baseDir, monsterConfig.monsterDir ?? '.l10nmonster');
-        verbose && console.log(`Monster dir: ${monsterDir}`);
-        if (!existsSync(monsterDir)) {
-          mkdirSync(monsterDir, {recursive: true});
-        }
-        MonsterManager.prototype.verbose = verbose;
-        return new MonsterManager({ monsterDir, monsterConfig, ctx });
-      } catch(e) {
-        throw `l10nmonster.mjs failed to construct: ${e}`;
-      }
     }
     previousDir = baseDir;
     baseDir = path.resolve(baseDir, '..');
