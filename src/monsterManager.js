@@ -99,7 +99,7 @@ export default class MonsterManager {
                 const pipeline = this.contentTypes[res.contentType];
                 const payload = await pipeline.source.fetchResource(res.id);
                 let parsedRes = await pipeline.resourceFilter.parseResource({resource: payload, isSource: true});
-                res.segments = pipeline.segmentDecorator ? pipeline.segmentDecorator(parsedRes.segments) : parsedRes.segments;
+                res.segments = parsedRes.segments;
                 for (const seg of res.segments) {
                     if (pipeline.decoders) {
                         const normalizedStr = getNormalizedString(seg.str, pipeline.decoders);
@@ -110,6 +110,7 @@ export default class MonsterManager {
                     seg.guid = this.generateFullyQualifiedGuid(res.id, seg.sid, seg.nstr ? flattenNormalizedSourceToOrdinal(seg.nstr) : seg.str);
                     seg.contentType = res.contentType;
                 }
+                pipeline.segmentDecorator && (res.segments = pipeline.segmentDecorator(parsedRes.segments));
                 newCache[res.id] = res;
             }
         }
