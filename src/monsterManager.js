@@ -39,7 +39,7 @@ export default class MonsterManager {
                     default: {
                         source: monsterConfig.source,
                         resourceFilter: monsterConfig.resourceFilter,
-                        resourceDecorator: monsterConfig.resourceDecorator,
+                        segmentDecorator: monsterConfig.segmentDecorator,
                         decoders: monsterConfig.decoders,
                         encoders: monsterConfig.encoders,
                         target: monsterConfig.target,
@@ -99,7 +99,7 @@ export default class MonsterManager {
                 const pipeline = this.contentTypes[res.contentType];
                 const payload = await pipeline.source.fetchResource(res.id);
                 let parsedRes = await pipeline.resourceFilter.parseResource({resource: payload, isSource: true});
-                pipeline.resourceDecorator && (parsedRes = pipeline.resourceDecorator(parsedRes));
+                pipeline.segmentDecorator && (parsedRes = pipeline.segmentDecorator(parsedRes));
                 res.segments = parsedRes.segments;
                 for (const seg of res.segments) {
                     if (pipeline.decoders) {
