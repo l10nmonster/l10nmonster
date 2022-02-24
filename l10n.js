@@ -39,7 +39,7 @@ import { xmlDecoder, bracePHDecoder, iosPHDecoder,
     xmlEntityEncoder, javaEscapesEncoder,
     javaMFQuotesDecoder, javaMFQuotesEncoder,
     doublePercentDecoder, doublePercentEncoder,
-    regexMatchingDecoderMaker } from './normalizers/regex.js';
+    regexMatchingDecoderMaker, regexMatchingEncoderMaker } from './normalizers/regex.js';
 
 const monsterCLI = new Command();
 
@@ -84,7 +84,7 @@ async function initMonster() {
                 xmlEntityEncoder, javaEscapesEncoder,
                 javaMFQuotesDecoder, javaMFQuotesEncoder,
                 doublePercentDecoder, doublePercentEncoder,
-                regexMatchingDecoderMaker,
+                regexMatchingDecoderMaker, regexMatchingEncoderMaker,
             },
             translators: {
                 XliffBridge, PigLatinizer, TranslationOS, Visicode

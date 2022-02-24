@@ -31,6 +31,12 @@ export function regexMatchingDecoderMaker(regex, partDecoder) {
     }
 }
 
+// Generic pluggable encoder
+export function regexMatchingEncoderMaker(regex, charMap) {
+    return function encoder(str) {
+        return str.replaceAll(regex, m => charMap[m]);
+    };
+}
 // Escaping
 
 const namedEntities = {
@@ -56,8 +62,14 @@ export const xmlCDataDecoder = regexMatchingDecoderMaker(
     groups => groups.cdata ?? ((groups.firstChar || '') + groups.quoted + (groups.lastChar ?? ''))
 );
 
-export const xmlEntityEncoder = (str) => str.replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;').replaceAll('\u00a0', '&#160;');
+export const xmlEntityEncoder = regexMatchingEncoderMaker(
+    /&|<|\u00a0/g,
+    {
+        '&': '&amp;',
+        '<': '&lt;',
+        '\u00a0': '&#160;',
+    }
+);
 
 const javaControlCharsToDecode = {
     t: '\t',
@@ -81,11 +93,20 @@ export const javaMFQuotesDecoder = regexMatchingDecoderMaker(
     groups => groups.quote ?? groups.quoted
 );
 
-export const javaMFQuotesEncoder = (str) => str.replaceAll("'", "''");
+// need to be smart about detecting whether MessageFormat was used or not based on presence of {vars}
+export const javaMFQuotesEncoder = (str, flags) => (flags?.hasPH ? str.replaceAll("'", "''") : str);
 
 // TODO: do we need to escape also those escapedChar that we decoded?
-export const javaEscapesEncoder = (str) => str.replaceAll('\t', '\\t').replaceAll('\b', '\\b')
-    .replaceAll('\n', '\\n').replaceAll('\r', '\\r').replaceAll('\f', '\\f').replaceAll('\u00a0', '\\u00a0');
+export const javaEscapesEncoder = regexMatchingEncoderMaker(
+    /\t|\n|\r|\f|\u00a0/g,
+    {
+        '\t': '\\t',
+        '\n': '\\n',
+        '\r': '\\r',
+        '\f': '\\f',
+        '\u00a0': '\\u00a0',
+    }
+);
 
 const androidControlCharsToDecode = {
     n: '\n',

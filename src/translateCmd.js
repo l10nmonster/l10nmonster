@@ -18,9 +18,9 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
             if (res.targetLangs.includes(targetLang) && (mm.ctx.prj === undefined || res.prj === mm.ctx.prj)) {
                 const resourceId = res.id;
                 const pipeline = mm.contentTypes[res.contentType];
-                const encodeString = function encodeString(rawStr) {
+                const encodeString = function encodeString(rawStr, flags) {
                     if (pipeline.encoders) {
-                        return pipeline.encoders.reduce((str, encoder) => encoder(str), rawStr);
+                        return pipeline.encoders.reduce((str, encoder) => encoder(str, flags), rawStr);
                     } else {
                         return rawStr;
                     }
@@ -42,7 +42,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                         // TODO: fetch latest placeholders from source and use those if compatible
                         for (const part of entry.ntgt) {
                             if (typeof part === 'string') {
-                                tgt.push(encodeString(part));
+                                tgt.push(encodeString(part, { hasPH: true }));
                             } else if (part?.v === undefined) {
                                 verbose && console.error(`Invalid placeholder found: ${JSON.stringify(part)}`);
                                 return undefined;
