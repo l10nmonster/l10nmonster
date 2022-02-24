@@ -75,9 +75,6 @@ export function sourceAndTargetAreCompatible(nsrc, ntgt) {
         for (const ph of ntgt) {
             if (typeof ph === 'object') {
                 if (!v1PhMap[ph.v1] && !valueMap[ph.v]) {
-                    console.log('incompatible source and target')
-                    console.dir(nsrc)
-                    console.dir(ntgt)
                     return false;
                 }
             }

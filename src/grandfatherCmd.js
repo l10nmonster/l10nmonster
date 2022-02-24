@@ -1,4 +1,4 @@
-import { getNormalizedString } from '../normalizers/util.js';
+import { getNormalizedString, sourceAndTargetAreCompatible } from '../normalizers/util.js';
 
 // this is similar to push, except that existing translations in resources but not in TM
 // are assumed to be in sync with source and imported into the TM
@@ -51,7 +51,10 @@ export async function grandfatherCmd(mm, quality, limitToLang) {
                     translation.tgt = previousTranslation.src;
                 }
                 previousTranslation.ts && (translation.ts = previousTranslation.ts);
-                translations.push(translation);
+                const isCompatible = sourceAndTargetAreCompatible(tu?.nsrc ?? tu?.src, translation?.ntgt ?? translation?.tgt);
+                if (isCompatible) {
+                    translations.push(translation);
+                }
             }
         }
         mm.verbose && console.log(`Grandfathering ${targetLang}... found ${jobRequest.tus.length} missing translations, of which ${translations.length} existing`);
