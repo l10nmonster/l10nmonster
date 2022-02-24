@@ -99,8 +99,7 @@ export default class MonsterManager {
                 const pipeline = this.contentTypes[res.contentType];
                 const payload = await pipeline.source.fetchResource(res.id);
                 let parsedRes = await pipeline.resourceFilter.parseResource({resource: payload, isSource: true});
-                pipeline.segmentDecorator && (parsedRes = pipeline.segmentDecorator(parsedRes));
-                res.segments = parsedRes.segments;
+                res.segments = pipeline.segmentDecorator ? pipeline.segmentDecorator(parsedRes.segments) : parsedRes.segments;
                 for (const seg of res.segments) {
                     if (pipeline.decoders) {
                         const normalizedStr = getNormalizedString(seg.str, pipeline.decoders);
