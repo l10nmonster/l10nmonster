@@ -56,7 +56,7 @@
 	{
 		"jobId": 2,
 		"jobGuid": "x",
-		"status": "pending",
+		"status": "done",
 		"sourceLang": "en",
 		"targetLang": "zh-Hans",
 		"leverage": {
@@ -69,13 +69,42 @@
 					"translatedByQ": {
 						"70": 851
 					},
-					"untranslated": 20,
-					"untranslatedChars": 508,
-					"untranslatedWords": 71,
+					"untranslated": 17,
+					"untranslatedChars": 448,
+					"untranslatedWords": 65,
 					"pending": 0,
 					"pendingWords": 0,
-					"internalRepetitions": 0,
-					"internalRepetitionWords": 0
+					"internalRepetitions": 3,
+					"internalRepetitionWords": 6
+				}
+			}
+		},
+		"translationProvider": "Repetition",
+		"updatedAt": "2022-02-05T00:00:00.000Z"
+	},
+	{
+		"jobId": 3,
+		"jobGuid": "x",
+		"status": "pending",
+		"sourceLang": "en",
+		"targetLang": "zh-Hans",
+		"leverage": {
+			"tmSize": 854,
+			"minimumQuality": 50,
+			"prjLeverage": {
+				"default": {
+					"translated": 851,
+					"translatedWords": 2767,
+					"translatedByQ": {
+						"70": 851
+					},
+					"untranslated": 17,
+					"untranslatedChars": 448,
+					"untranslatedWords": 65,
+					"pending": 0,
+					"pendingWords": 0,
+					"internalRepetitions": 3,
+					"internalRepetitionWords": 6
 				}
 			}
 		},
@@ -105,7 +134,7 @@
 		"updatedAt": "2022-02-05T00:00:00.000Z"
 	},
 	{
-		"jobId": 3,
+		"jobId": 4,
 		"jobGuid": "x",
 		"status": "pending",
 		"sourceLang": "en",
@@ -527,7 +556,7 @@
 		"ts": 1
 	},
 	{
-		"jobId": 4,
+		"jobId": 5,
 		"jobGuid": "x",
 		"status": "done",
 		"sourceLang": "en",

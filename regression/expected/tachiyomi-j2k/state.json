@@ -9,13 +9,13 @@
 						"translatedByQ": {
 							"70": 851
 						},
-						"untranslated": 16,
-						"untranslatedChars": 371,
-						"untranslatedWords": 48,
-						"pending": 0,
-						"pendingWords": 0,
-						"internalRepetitions": 4,
-						"internalRepetitionWords": 23
+						"untranslated": 0,
+						"untranslatedChars": 0,
+						"untranslatedWords": 0,
+						"pending": 20,
+						"pendingWords": 71,
+						"internalRepetitions": 0,
+						"internalRepetitionWords": 0
 					},
 					"zh-Hant": {
 						"translated": 794,
@@ -24,13 +24,13 @@
 							"70": 481,
 							"80": 313
 						},
-						"untranslated": 74,
-						"untranslatedChars": 1627,
-						"untranslatedWords": 212,
-						"pending": 0,
-						"pendingWords": 0,
-						"internalRepetitions": 3,
-						"internalRepetitionWords": 6
+						"untranslated": 0,
+						"untranslatedChars": 0,
+						"untranslatedWords": 0,
+						"pending": 77,
+						"pendingWords": 218,
+						"internalRepetitions": 0,
+						"internalRepetitionWords": 0
 					},
 					"piggy": {
 						"translated": 871,

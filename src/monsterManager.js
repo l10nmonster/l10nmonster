@@ -151,6 +151,7 @@ export default class MonsterManager {
         return tu;
     }
 
+    // eslint-disable-next-line complexity
     async prepareTranslationJob({ targetLang, minimumQuality, leverage }) {
         const sources = this.getSourceCacheEntries();
         const job = {
@@ -185,14 +186,12 @@ export default class MonsterManager {
                     const tu = this.makeTU(res, seg);
                     const plainText = tu.nsrc ? tu.nsrc.map(e => (typeof e === 'string' ? e : '')).join('') : tu.src;
                     const words = wordsCountModule.wordsCount(plainText);
+                    // TODO: compatibility is actually stricter than GUID, this leads to extra translations that can't be stored
                     const isCompatible = sourceAndTargetAreCompatible(tu?.nsrc ?? tu?.src, tmEntry?.ntgt ?? tmEntry?.tgt);
-                    // tmEntry && !isCompatible && (console.dir(tu?.nsrc ?? tu?.src), console.dir(tmEntry));
-                    if (!isCompatible || (tmEntry.q < minimumQuality && !tmEntry.inflight)) {
+                    if (!tmEntry || (!tmEntry.inflight && (!isCompatible || tmEntry.q < minimumQuality))) {
                         // if the same src is in flight already, mark it as an internal repetition
-                        tm.getAllEntriesBySrc(tu.src).length > 0 && (repetitionMap[tu.src] = true);
+                        tm.getAllEntriesBySrc(tu.nsrc ?? tu.src).length > 0 && (repetitionMap[tu.src] = true);
                         if (repetitionMap[tu.src]) {
-                            // TODO: there may be some edge cases were src is the same but contentType is different -- we may care or...
-                            //       this may be a feature (e.g. we can reuse ios and android strings without placeholders)
                             leverageDetails.internalRepetitions++;
                             leverageDetails.internalRepetitionWords += words;
                             !leverage && job.tus.push(tu);

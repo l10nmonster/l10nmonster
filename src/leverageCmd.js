@@ -16,7 +16,7 @@ export async function leverageCmd(mm, limitToLang) {
         const sources = [];
         const translations = [];
         for (const tu of jobRequest.tus) {
-            const tuCandidates = tm.getAllEntriesBySrc(tu.src);
+            const tuCandidates = tm.getAllEntriesBySrc(tu.nsrc ?? tu.src);
             if (tuCandidates.length > 0) {
                 let bestCandidate = { q: 0, ts: 0 };
                 let foundCandidate = false;
