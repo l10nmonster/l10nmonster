@@ -51,7 +51,10 @@ export function extractNormalizedPartsV1(str, phMap) {
         if (match.index > pos) {
             normalizedParts.push(match.input.substring(pos, match.index));
         }
-        normalizedParts.push(phMap[match.groups.ph]);
+        normalizedParts.push({
+            ...phMap[match.groups.ph],
+            v1: match.groups.ph,
+        });
         pos = match.index + match[0].length;
     }
     if (pos < str.length) {

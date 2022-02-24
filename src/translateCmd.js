@@ -1,5 +1,5 @@
 import { diffJson } from 'diff';
-import { getNormalizedString, flattenNormalizedSourceToOrdinal } from '../normalizers/util.js';
+import { getNormalizedString, flattenNormalizedSourceToOrdinal, flattenNormalizedSourceV1 } from '../normalizers/util.js';
 
 // https://stackoverflow.com/questions/9781218/how-to-change-node-jss-console-font-color
 const color = { red: '\x1b[31m', green: '\x1b[32m', reset: '\x1b[0m' };
@@ -26,25 +26,33 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                     }
                 };
                 const translator = async function translate(sid, src) {
-                    let nsrc;
+                    let nsrc,
+                        v1PhMap;
                     if (pipeline.decoders) {
                         const normalizedStr = getNormalizedString(src, pipeline.decoders);
                         if (normalizedStr[0] !== src) {
                             nsrc = normalizedStr;
+                            v1PhMap = flattenNormalizedSourceV1(nsrc)[1];
                         }
                     }
                     const flattenSrc = nsrc ? flattenNormalizedSourceToOrdinal(nsrc) : src;
                     const guid = mm.generateFullyQualifiedGuid(resourceId, sid, flattenSrc);
                     const entry = tm.getEntryByGuid(guid);
-                    !entry && verbose && console.log(`Couldn't find ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
+                    !entry && verbose && console.error(`Couldn't find ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
                     if (entry?.ntgt) {
                         const tgt = [];
                         // TODO: fetch latest placeholders from source and use those if compatible
                         for (const part of entry.ntgt) {
                             if (typeof part === 'string') {
                                 tgt.push(encodeString(part, { hasPH: true }));
+                            } else if (part?.v1) {
+                                if (v1PhMap && v1PhMap[part.v1]) {
+                                    tgt.push(v1PhMap[part.v1]);
+                                }
+                                verbose && console.error(`Invalid v1 placeholder found: ${JSON.stringify(part)} in ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
+                                return undefined;
                             } else if (part?.v === undefined) {
-                                verbose && console.error(`Invalid placeholder found: ${JSON.stringify(part)}`);
+                                verbose && console.error(`Invalid placeholder found: ${JSON.stringify(part)} in ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
                                 return undefined;
                             } else {
                                 tgt.push(part.v);
