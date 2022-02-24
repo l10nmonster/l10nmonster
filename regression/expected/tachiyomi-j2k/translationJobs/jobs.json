@@ -115,14 +115,14 @@
 			"minimumQuality": 50,
 			"prjLeverage": {
 				"default": {
-					"translated": 482,
-					"translatedWords": 1354,
+					"translated": 481,
+					"translatedWords": 1353,
 					"translatedByQ": {
-						"70": 482
+						"70": 481
 					},
-					"untranslated": 386,
-					"untranslatedChars": 9387,
-					"untranslatedWords": 1478,
+					"untranslated": 387,
+					"untranslatedChars": 9400,
+					"untranslatedWords": 1479,
 					"pending": 0,
 					"pendingWords": 0,
 					"internalRepetitions": 3,
@@ -157,6 +157,7 @@
 			"80n7O41H3GTAIsW9t8opIF2izOHZmus3wrImbKV3iCE",
 			"mdJXc6b3zFcJjCiCBwa3eIMD0ftft4hpfhR8y24AKCw",
 			"PR-mra8oJXYjh-iGJbPWRJ93cqMsnv3I9kI-KHWftDI",
+			"xIQ8JakD15UWHPlTjfDfsR_DppXZXRKrIBcVjpnIUH0",
 			"3OTZLJcQIzg5hjfkG2FvvaLCs2bw5nf5x0eK7liio4M",
 			"_SEHHFJh1jzpnbQTZhpgdfhSuNgxeC2IedcO-8-eJVQ",
 			"2Dh5uX-r-ZGNhX0XX_9rBeP0s20EvWh1ANSjpD_Ads0",
@@ -522,7 +523,8 @@
 			"huyX5FGOUKZ3pi4fe79Gfe7qvq2yU_f1NEJEFi-8iik",
 			"ISUovOLQ0rDHWTN8FD5Egc_BxdZCIOGr7B6UXGmtjWs"
 		],
-		"updatedAt": "2022-02-05T00:00:00.000Z"
+		"updatedAt": "2022-02-05T00:00:00.000Z",
+		"ts": 1
 	},
 	{
 		"jobId": 4,

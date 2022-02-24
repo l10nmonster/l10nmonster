@@ -125,6 +125,11 @@
         <target></target>
         <note>Category</note>
       </trans-unit>
+      <trans-unit id="xIQ8JakD15UWHPlTjfDfsR_DppXZXRKrIBcVjpnIUH0">
+        <source>%d categories</source>
+        <target></target>
+        <note>Category</note>
+      </trans-unit>
       <trans-unit id="3OTZLJcQIzg5hjfkG2FvvaLCs2bw5nf5x0eK7liio4M">
         <source>Category name cannot be blank</source>
         <target></target>

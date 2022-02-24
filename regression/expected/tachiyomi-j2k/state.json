@@ -9,27 +9,28 @@
 						"translatedByQ": {
 							"70": 851
 						},
-						"untranslated": 0,
-						"untranslatedChars": 0,
-						"untranslatedWords": 0,
-						"pending": 20,
-						"pendingWords": 71,
-						"internalRepetitions": 0,
-						"internalRepetitionWords": 0
+						"untranslated": 16,
+						"untranslatedChars": 371,
+						"untranslatedWords": 48,
+						"pending": 0,
+						"pendingWords": 0,
+						"internalRepetitions": 4,
+						"internalRepetitionWords": 23
 					},
 					"zh-Hant": {
-						"translated": 482,
-						"translatedWords": 1354,
+						"translated": 794,
+						"translatedWords": 2620,
 						"translatedByQ": {
-							"70": 482
+							"70": 481,
+							"80": 313
 						},
-						"untranslated": 0,
-						"untranslatedChars": 0,
-						"untranslatedWords": 0,
-						"pending": 389,
-						"pendingWords": 1484,
-						"internalRepetitions": 0,
-						"internalRepetitionWords": 0
+						"untranslated": 74,
+						"untranslatedChars": 1627,
+						"untranslatedWords": 212,
+						"pending": 0,
+						"pendingWords": 0,
+						"internalRepetitions": 3,
+						"internalRepetitionWords": 6
 					},
 					"piggy": {
 						"translated": 871,

@@ -27,12 +27,14 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                 };
                 const translator = async function translate(sid, src) {
                     let nsrc,
-                        v1PhMap;
+                        v1PhMap,
+                        valueMap;
                     if (pipeline.decoders) {
                         const normalizedStr = getNormalizedString(src, pipeline.decoders);
                         if (normalizedStr[0] !== src) {
                             nsrc = normalizedStr;
                             v1PhMap = flattenNormalizedSourceV1(nsrc)[1];
+                            valueMap = Object.fromEntries(Object.values(v1PhMap).map(e => [ e.v, true ]));
                         }
                     }
                     const flattenSrc = nsrc ? flattenNormalizedSourceToOrdinal(nsrc) : src;
@@ -49,14 +51,19 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                                 if (v1PhMap && v1PhMap[part.v1]) {
                                     tgt.push(v1PhMap[part.v1].v);
                                 } else {
-                                    verbose && console.error(`Invalid v1 placeholder found: ${JSON.stringify(part)} in ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
+                                    verbose && console.error(`Incompatible v1 placeholder found: ${JSON.stringify(part)} in ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
                                     return undefined;
                                 }
                             } else if (part?.v === undefined) {
-                                verbose && console.error(`Invalid placeholder found: ${JSON.stringify(part)} in ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
+                                verbose && console.error(`Unknown placeholder found: ${JSON.stringify(part)} in ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
                                 return undefined;
                             } else {
-                                tgt.push(part.v);
+                                if (valueMap[part.v]) {
+                                    tgt.push(part.v);
+                                } else {
+                                    verbose && console.error(`Incompatible value placeholder found: ${JSON.stringify(part)} in ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
+                                    return undefined;
+                                }
                             }
                         }
                         return tgt.join('');

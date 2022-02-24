@@ -11,7 +11,7 @@ import wordsCountModule from 'words-count';
 
 import TMManager from './tmManager.js';
 import { JsonJobStore } from '../stores/jsonJobStore.js';
-import { getNormalizedString, flattenNormalizedSourceToOrdinal } from '../normalizers/util.js';
+import { getNormalizedString, flattenNormalizedSourceToOrdinal, sourceAndTargetAreCompatible } from '../normalizers/util.js';
 
 export default class MonsterManager {
     constructor({ monsterDir, monsterConfig, ctx }) {
@@ -184,7 +184,9 @@ export default class MonsterManager {
                     const tu = this.makeTU(res, seg);
                     const plainText = tu.nsrc ? tu.nsrc.map(e => (typeof e === 'string' ? e : '')).join('') : tu.src;
                     const words = wordsCountModule.wordsCount(plainText);
-                    if (!tmEntry || (tmEntry.q < minimumQuality && !tmEntry.inflight)) {
+                    const isCompatible = sourceAndTargetAreCompatible(tu?.nsrc ?? tu?.src, tmEntry?.ntgt ?? tmEntry?.tgt);
+                    // tmEntry && !isCompatible && (console.dir(tu?.nsrc ?? tu?.src), console.dir(tmEntry));
+                    if (!isCompatible || (tmEntry.q < minimumQuality && !tmEntry.inflight)) {
                         // if the same src is in flight already, mark it as an internal repetition
                         tm.getAllEntriesBySrc(tu.src).length > 0 && (repetitionMap[tu.src] = true);
                         if (repetitionMap[tu.src]) {

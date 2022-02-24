@@ -63,3 +63,26 @@ export function extractNormalizedPartsV1(str, phMap) {
     // TODO: validate actual vs. expected placeholders (name/types/number)
     return normalizedParts;
 }
+
+export function sourceAndTargetAreCompatible(nsrc, ntgt) {
+    Array.isArray(nsrc) && nsrc.length === 1 && (nsrc = nsrc[0]);
+    Array.isArray(ntgt) && ntgt.length === 1 && (ntgt = ntgt[0]);
+    if (typeof nsrc === 'string' && typeof ntgt === 'string') {
+        return true;
+    } else if (Array.isArray(nsrc) && Array.isArray(ntgt)) {
+        const v1PhMap = flattenNormalizedSourceV1(nsrc)[1];
+        const valueMap = Object.fromEntries(Object.values(v1PhMap).map(e => [ e.v, true ]));
+        for (const ph of ntgt) {
+            if (typeof ph === 'object') {
+                if (!v1PhMap[ph.v1] && !valueMap[ph.v]) {
+                    console.log('incompatible source and target')
+                    console.dir(nsrc)
+                    console.dir(ntgt)
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    return false;
+}
