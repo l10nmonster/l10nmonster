@@ -47,10 +47,11 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                                 tgt.push(encodeString(part, { hasPH: true }));
                             } else if (part?.v1) {
                                 if (v1PhMap && v1PhMap[part.v1]) {
-                                    tgt.push(v1PhMap[part.v1]);
+                                    tgt.push(v1PhMap[part.v1].v);
+                                } else {
+                                    verbose && console.error(`Invalid v1 placeholder found: ${JSON.stringify(part)} in ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
+                                    return undefined;
                                 }
-                                verbose && console.error(`Invalid v1 placeholder found: ${JSON.stringify(part)} in ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
-                                return undefined;
                             } else if (part?.v === undefined) {
                                 verbose && console.error(`Invalid placeholder found: ${JSON.stringify(part)} in ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
                                 return undefined;
