@@ -5,7 +5,7 @@ regressTest() {
     cd $1
     ../../../l10n.js --regression grandfather -q 70
     ../../../l10n.js --regression leverage
-    ../../../l10n.js --regression push
+    ../../../l10n.js --regression push --quota 5000
     ../../../l10n.js --regression pull
     ../../../l10n.js --regression translate
     ../../../l10n.js --regression status -b foo -r bar
