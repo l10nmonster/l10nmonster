@@ -40,7 +40,7 @@ export async function pushCmd(mm, { limitToLang, leverage, dryRun, quota }) {
                     await mm.processJob(jobResponse, jobRequest);
                     langStatus.status = jobResponse.status;
                     langStatus.num = jobResponse.num;
-            } else {
+                } else {
                     throw 'No translationProvider configured';
                 }
             }

@@ -23,6 +23,7 @@ import { grandfatherCmd } from './src/grandfatherCmd.js';
 import { leverageCmd } from './src/leverageCmd.js';
 import { pullCmd } from './src/pullCmd.js';
 import { pushCmd } from './src/pushCmd.js';
+import { jobCmd } from './src/jobCmd.js';
 import { statusCmd } from './src/statusCmd.js';
 import { jobsCmd } from './src/jobsCmd.js';
 import { tmxExportCmd } from './src/tmxExportCmd.js';
@@ -309,6 +310,22 @@ monsterCLI
             }
         } catch (e) {
             console.error(`Failed to push: ${e}`);
+        }
+    }))
+;
+
+monsterCLI
+    .command('job')
+    .description('operations on unfinished jobs.')
+    .option('--push <jobId>', 'push a blocked job to translation provider')
+    .action(async (options) => await withMonsterManager(async monsterManager => {
+        const pushJobId = options.push;
+        console.log(`Pushing job ${pushJobId}...`);
+        try {
+            const pushResponse = await jobCmd(monsterManager, { pushJobId });
+            console.log(`${pushResponse.num.toLocaleString()} translations units requested -> status: ${pushResponse.status}`);
+        } catch (e) {
+            console.error(`Failed to push job: ${e}`);
         }
     }))
 ;
