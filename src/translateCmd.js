@@ -1,8 +1,6 @@
 import { diffJson } from 'diff';
 import { getNormalizedString, flattenNormalizedSourceToOrdinal, flattenNormalizedSourceV1 } from '../normalizers/util.js';
-
-// https://stackoverflow.com/questions/9781218/how-to-change-node-jss-console-font-color
-const color = { red: '\x1b[31m', green: '\x1b[32m', reset: '\x1b[0m' };
+import { consoleColor } from './shared.js';
 
 export async function translateCmd(mm, { limitToLang, dryRun }) {
     const status = { generatedResources: {}, diff: {} };
@@ -93,7 +91,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                         newParsed.segments.forEach(x => newFlattened[x.sid] = x.str);
                         const diff = diffJson(currentFlattened, newFlattened)
                             .filter(x => x.added ?? x.removed)
-                            .map(x => `${x.added ? `${color.green}+` : `${color.red}-`} ${x.value}${color.reset}`)
+                            .map(x => `${x.added ? `${consoleColor.green}+` : `${consoleColor.red}-`} ${x.value}${consoleColor.reset}`)
                             .join('');
                         diff && (status.diff[targetLang][translatedResourceId] = diff);
                     }

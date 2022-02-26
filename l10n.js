@@ -7,6 +7,8 @@ import {
 } from 'fs';
 import { Command, InvalidArgumentError } from 'commander';
 
+import { consoleColor } from './src/shared.js';
+
 import MonsterManager from './src/monsterManager.js';
 import { OpsMgr } from './src/opsMgr.js';
 
@@ -202,14 +204,6 @@ monsterCLI
                 console.log(`  Project: ${prj}`);
                 computeTotals(totals, leverage);
                 printLeverage(leverage);
-                if (monsterCLI.opts().verbose) {
-                    for (const [rid, content] of Object.entries(langStatus.unstranslatedContent[prj] || {})) {
-                        console.log(`      - ${rid}`);
-                        for (const [sid, src] of Object.entries(content)) {
-                            console.log(`        - ${sid}: ${sid === src ? '≣' : src}`);
-                        }
-                    }
-                }
             }
             if (prjLeverage.length > 1) {
                 console.log(`  Total:`);
@@ -260,23 +254,40 @@ monsterCLI
     .description('push source content upstream (send to translation).')
     .option('-l, --lang <language>', 'target language to push')
     .option('--leverage', 'eliminate internal repetitions from push')
+    .option('-d, --dryrun', 'simulate translating and compare with existing translations')
     .action(async (options) => await withMonsterManager(async monsterManager => {
-    const limitToLang = options.lang;
-    const leverage = options.leverage;
-      console.log(`Pushing content upstream...`);
-      try {
-        const status = await pushCmd(monsterManager, { limitToLang, leverage });
-        if (status.length > 0) {
-          for (const ls of status) {
-            console.log(`${ls.num.toLocaleString()} translations units requested for language ${ls.targetLang} -> status: ${ls.status}`);
-          }
-        } else {
-          console.log('Nothing to push!');
+        const limitToLang = options.lang;
+        const leverage = options.leverage;
+        const dryRun = options.dryrun;
+        console.log(`Pushing content upstream...${dryRun ? ' (dry run)' : ''}`);
+        try {
+            const status = await pushCmd(monsterManager, { limitToLang, leverage, dryRun });
+            if (dryRun) {
+                for (const langStatus of status) {
+                    console.log(`\nLanguage ${langStatus.targetLang}`);
+                    for (const [prj, unstranslatedContent] of Object.entries(langStatus.unstranslatedContent)) {
+                        console.log(`  Project: ${prj}`);
+                        for (const [rid, content] of Object.entries(unstranslatedContent)) {
+                            console.log(`      - ${rid}`);
+                            for (const [sid, src] of Object.entries(content)) {
+                                console.log(`        - ${consoleColor.dim}${sid}:${consoleColor.reset} ${sid === src ? '≣' : src}`);
+                            }
+                        }
+                    }
+                }
+            } else {
+                if (status.length > 0) {
+                    for (const ls of status) {
+                    console.log(`${ls.num.toLocaleString()} translations units requested for language ${ls.targetLang} -> status: ${ls.status}`);
+                    }
+                } else {
+                    console.log('Nothing to push!');
+                }
+            }
+        } catch (e) {
+            console.error(`Failed to push: ${e}`);
         }
-      } catch (e) {
-        console.error(`Failed to push: ${e}`);
-      }
-  }))
+    }))
 ;
 
 monsterCLI
@@ -371,4 +382,5 @@ monsterCLI
     }))
 ;
 
+console.log(consoleColor.reset);
 (async () => await monsterCLI.parseAsync(process.argv))();
