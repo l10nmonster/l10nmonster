@@ -16,5 +16,6 @@ export async function statusCmd(mm, { limitToLang }) {
         }
     }
     status.pendingJobsNum = (await mm.jobStore.getJobManifests('pending')).length;
+    status.blockedJobsNum = (await mm.jobStore.getJobManifests('blocked')).length;
     return status;
 }

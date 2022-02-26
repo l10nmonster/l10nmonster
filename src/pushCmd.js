@@ -1,6 +1,6 @@
 import { flattenNormalizedSourceV1 } from '../normalizers/util.js';
 
-export async function pushCmd(mm, { limitToLang, leverage, dryRun }) {
+export async function pushCmd(mm, { limitToLang, leverage, dryRun, quota }) {
     const status = [];
     await mm.updateSourceCache();
     const targetLangs = mm.getTargetLangs(limitToLang);
@@ -19,6 +19,7 @@ export async function pushCmd(mm, { limitToLang, leverage, dryRun }) {
                 langStatus.unstranslatedContent = unstranslatedContent;
             } else {
                 const manifest = await mm.jobStore.createJobManifest();
+                langStatus.jobId = manifest.jobId;
                 const jobRequest = {
                     ...jobBody,
                     ...manifest,
@@ -26,12 +27,19 @@ export async function pushCmd(mm, { limitToLang, leverage, dryRun }) {
                 const translationProvider = mm.getTranslationProvider(jobRequest);
                 if (translationProvider) {
                     jobRequest.translationProvider = translationProvider.constructor.name;
-                    // this may return a "jobResponse" if syncronous or a "jobManifest" if asynchronous
-                    const jobResponse = await translationProvider.requestTranslations(jobRequest);
+                    let jobResponse;
+                    if (jobBody.tus.length <= quota) {
+                        jobResponse = await translationProvider.requestTranslations(jobRequest);
+                    } else {
+                        jobResponse = {
+                            ...jobRequest,
+                            status: 'blocked',
+                        };
+                    }
                     await mm.processJob(jobResponse, jobRequest);
                     langStatus.status = jobResponse.status;
                     langStatus.num = jobResponse.tus?.length ?? jobResponse.inflight?.length ?? 0;
-                } else {
+            } else {
                     throw 'No translationProvider configured';
                 }
             }
