@@ -36,9 +36,10 @@ export async function pushCmd(mm, { limitToLang, leverage, dryRun, quota }) {
                             status: 'blocked',
                         };
                     }
+                    jobResponse.num = jobResponse.tus?.length ?? jobResponse.inflight?.length ?? 0;
                     await mm.processJob(jobResponse, jobRequest);
                     langStatus.status = jobResponse.status;
-                    langStatus.num = jobResponse.tus?.length ?? jobResponse.inflight?.length ?? 0;
+                    langStatus.num = jobResponse.num;
             } else {
                     throw 'No translationProvider configured';
                 }

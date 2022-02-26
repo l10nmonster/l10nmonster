@@ -24,6 +24,7 @@ import { leverageCmd } from './src/leverageCmd.js';
 import { pullCmd } from './src/pullCmd.js';
 import { pushCmd } from './src/pushCmd.js';
 import { statusCmd } from './src/statusCmd.js';
+import { jobsCmd } from './src/jobsCmd.js';
 import { tmxExportCmd } from './src/tmxExportCmd.js';
 import { translateCmd } from './src/translateCmd.js';
 
@@ -195,7 +196,6 @@ monsterCLI
         const limitToLang = options.lang;
         const status = await statusCmd(monsterManager, { limitToLang });
         console.log(`${status.numSources.toLocaleString()} translatable resources`);
-        console.log(`${status.pendingJobsNum.toLocaleString()} pending jobs ${status.blockedJobsNum.toLocaleString()} blocked jobs`);
         for (const [lang, langStatus] of Object.entries(status.lang)) {
             console.log(`\nLanguage ${lang} (minimum quality ${langStatus.leverage.minimumQuality}, TM size:${langStatus.leverage.tmSize.toLocaleString()}):`);
             const totals = {};
@@ -208,6 +208,27 @@ monsterCLI
             if (prjLeverage.length > 1) {
                 console.log(`  Total:`);
                 printLeverage(totals);
+            }
+        }
+    }))
+;
+
+monsterCLI
+    .command('jobs')
+    .description('unfinished jobs status.')
+    .option('-l, --lang <language>', 'only get jobs for the target language')
+    .action(async (options) => await withMonsterManager(async monsterManager => {
+        const limitToLang = options.lang;
+        const jobs = await jobsCmd(monsterManager, { limitToLang });
+        for (const [lang, unfinishedJobs] of Object.entries(jobs)) {
+            for (const [status, jobManifests] of Object.entries(unfinishedJobs)) {
+                if (jobManifests.length > 0) {
+                    console.log(`Target language ${lang} status ${consoleColor.bright}${status}${consoleColor.reset}:`);
+                    for (const mf of jobManifests) {
+                        const numUnits = mf.inflight?.length ?? mf.num ?? 0;
+                        console.log(`  Job ${mf.jobId}: ${numUnits.toLocaleString()} ${mf.sourceLang} units with ${mf.translationProvider} - ${new Date(mf.updatedAt).toDateString()}`);
+                    }
+                }
             }
         }
     }))

@@ -15,7 +15,5 @@ export async function statusCmd(mm, { limitToLang }) {
             await mm.stateStore.updateBuildState(mm.ctx.build, mm.ctx.release, targetLang, job);
         }
     }
-    status.pendingJobsNum = (await mm.jobStore.getJobManifests('pending')).length;
-    status.blockedJobsNum = (await mm.jobStore.getJobManifests('blocked')).length;
     return status;
 }
