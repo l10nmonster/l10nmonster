@@ -124,7 +124,7 @@ export default class MonsterManager {
     getSourceCacheEntries() {
         return Object.entries(this.sourceCache)
             // eslint-disable-next-line no-unused-vars
-            .filter(([rid, res]) => (this.ctx.prj === undefined || res.prj === this.ctx.prj));
+            .filter(([rid, res]) => (this.ctx.prj === undefined || this.ctx.prj.includes(res.prj)));
     }
 
     async processJob(jobResponse, jobRequest) {
