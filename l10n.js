@@ -228,7 +228,8 @@ monsterCLI
                     console.log(`Target language ${lang} status ${consoleColor.bright}${status}${consoleColor.reset}:`);
                     for (const mf of jobManifests) {
                         const numUnits = mf.inflight?.length ?? mf.num ?? 0;
-                        console.log(`  Job ${mf.jobId}: ${numUnits.toLocaleString()} ${mf.sourceLang} units with ${mf.translationProvider} - ${new Date(mf.updatedAt).toDateString()}`);
+                        const lastModified = new Date(mf.updatedAt);
+                        console.log(`  Job ${mf.jobId}: ${numUnits.toLocaleString()} ${mf.sourceLang} units with ${mf.translationProvider} - ${lastModified.toDateString()} ${lastModified.toLocaleTimeString()}`);
                     }
                 }
             }

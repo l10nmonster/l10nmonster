@@ -25,6 +25,7 @@ export async function pushCmd(mm, { limitToLang, leverage, dryRun, quota }) {
                         jobResponse = {
                             ...jobRequest,
                             status: 'blocked',
+                            inflight: Object.values(jobRequest.tus).map(tu => tu.guid),
                         };
                     }
                     jobResponse.num = jobResponse.tus?.length ?? jobResponse.inflight?.length ?? 0;
