@@ -1,0 +1,56 @@
+{
+	"sourceLang": "en",
+	"targetLang": "ar",
+	"tus": [
+		{
+			"sid": "AccessibilityCardboardButton",
+			"notes": "Accessibility label for the cardboard button to go into cardboard mode (read out loud)",
+			"guid": "p72nj2yZPB-RfJOZa2iZg2pt16HznCGr_kdYQziGHxs",
+			"contentType": "default",
+			"src": "Cardboard mode: %1$@",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1644385400681,
+			"nsrc": [
+				"Cardboard mode: ",
+				{
+					"t": "x",
+					"v": "%1$@"
+				}
+			]
+		},
+		{
+			"sid": "AccessibilityFullscreenButton",
+			"notes": "Accessibility label for the fullscreen button to go into fullscreen mode (read out loud)",
+			"guid": "snWaUNjXnKuXlItO8jUPfKITKfuqshl6xCXxUgiP4jI",
+			"contentType": "default",
+			"src": "Fullscreen mode",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1644385400681
+		}
+	],
+	"leverage": {
+		"tmSize": 30,
+		"minimumQuality": 50,
+		"prjLeverage": {
+			"default": {
+				"translated": 30,
+				"translatedWords": 96,
+				"translatedByQ": {
+					"61": 1,
+					"70": 29
+				},
+				"untranslated": 2,
+				"untranslatedChars": 35,
+				"untranslatedWords": 4,
+				"pending": 0,
+				"pendingWords": 0,
+				"internalRepetitions": 0,
+				"internalRepetitionWords": 0
+			}
+		}
+	},
+	"jobId": 2,
+	"jobGuid": "x",
+	"status": "created",
+	"translationProvider": "Visicode"
+}

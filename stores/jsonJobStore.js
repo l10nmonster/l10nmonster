@@ -62,15 +62,24 @@ export class JsonJobStore {
     }
 
     async updateJob(jobResponse, jobRequest) {
+        if (jobRequest) {
+            const jobPath = path.join(this.jobsDir, `job_${jobRequest.jobId}-req.json`);
+            await fs.writeFile(jobPath, JSON.stringify(jobRequest, null, '\t'), 'utf8');
+        }
         const jobPath = path.join(this.jobsDir, `job_${jobResponse.jobId}.json`);
         await fs.writeFile(jobPath, JSON.stringify(jobResponse, null, '\t'), 'utf8');
         // eslint-disable-next-line no-unused-vars
         const { tus, ...jobManifest } = jobResponse;
         await this.#updateJobManifest(jobManifest);
-}
+    }
 
     async getJob(jobId) {
         const jobPath = path.join(this.jobsDir, `job_${jobId}.json`);
+        return JSON.parse(await fs.readFile(jobPath, 'utf8'));
+    }
+
+    async getJobRequest(jobId) {
+        const jobPath = path.join(this.jobsDir, `job_${jobId}-req.json`);
         return JSON.parse(await fs.readFile(jobPath, 'utf8'));
     }
 }

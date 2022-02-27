@@ -1,5 +1,3 @@
-import { flattenNormalizedSourceV1 } from '../normalizers/util.js';
-
 export async function pushCmd(mm, { limitToLang, leverage, dryRun, quota }) {
     const status = [];
     await mm.updateSourceCache();
@@ -9,14 +7,7 @@ export async function pushCmd(mm, { limitToLang, leverage, dryRun, quota }) {
         const jobBody = await mm.prepareTranslationJob({ targetLang, leverage });
         if (Object.keys(jobBody.tus).length > 0) {
             if (dryRun) {
-                const unstranslatedContent = {};
-                for (const tu of jobBody.tus) {
-                    const prj = tu.prj || 'default';
-                    unstranslatedContent[prj] ??= {};
-                    unstranslatedContent[prj][tu.rid] ??= {};
-                    unstranslatedContent[prj][tu.rid][tu.sid] = tu.nsrc ? flattenNormalizedSourceV1(tu.nsrc)[0] : tu.src;
-                }
-                langStatus.unstranslatedContent = unstranslatedContent;
+                langStatus.tus = jobBody.tus;
             } else {
                 const manifest = await mm.jobStore.createJobManifest();
                 langStatus.jobId = manifest.jobId;

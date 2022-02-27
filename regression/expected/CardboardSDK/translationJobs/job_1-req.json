@@ -1,0 +1,38 @@
+{
+	"sourceLang": "en",
+	"targetLang": "ar",
+	"tus": [
+		{
+			"sid": "AccessibilityHelpButton",
+			"notes": "Accessibility label for the information button to go to help page (read out loud)",
+			"guid": "d13hqt62wEq5drSC-g7auJUOAlQL-N3VrEyi1mCjMH0",
+			"contentType": "default",
+			"src": "Help",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1644385400681
+		}
+	],
+	"leverage": {
+		"tmSize": 29,
+		"minimumQuality": 50,
+		"prjLeverage": {
+			"default": {
+				"translated": 29,
+				"translatedWords": 95,
+				"translatedByQ": {
+					"70": 29
+				},
+				"untranslated": 2,
+				"untranslatedChars": 35,
+				"untranslatedWords": 4,
+				"pending": 0,
+				"pendingWords": 0,
+				"internalRepetitions": 1,
+				"internalRepetitionWords": 1
+			}
+		}
+	},
+	"jobId": 1,
+	"jobGuid": "x",
+	"status": "created"
+}

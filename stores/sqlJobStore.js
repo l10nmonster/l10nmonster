@@ -134,6 +134,17 @@ export class SqlJobStore {
         return row.res;
     }
 
+    async getJobRequest(jobId) {
+        this.db ?? await this.init();
+        const [ row ] = await this.db('jobStore')
+            .select('req')
+            .where({
+                org: this.org,
+                jobId,
+            });
+        return row.req;
+    }
+
     async shutdown() {
         this.db && await this.db.destroy();
     }

@@ -7,7 +7,7 @@ import {
 } from 'fs';
 import { Command, InvalidArgumentError } from 'commander';
 
-import { consoleColor } from './src/shared.js';
+import { consoleColor, printTus } from './src/shared.js';
 
 import MonsterManager from './src/monsterManager.js';
 import { OpsMgr } from './src/opsMgr.js';
@@ -23,7 +23,7 @@ import { grandfatherCmd } from './src/grandfatherCmd.js';
 import { leverageCmd } from './src/leverageCmd.js';
 import { pullCmd } from './src/pullCmd.js';
 import { pushCmd } from './src/pushCmd.js';
-import { jobCmd } from './src/jobCmd.js';
+import { jobPush } from './src/jobCmd.js';
 import { statusCmd } from './src/statusCmd.js';
 import { jobsCmd } from './src/jobsCmd.js';
 import { tmxExportCmd } from './src/tmxExportCmd.js';
@@ -289,15 +289,7 @@ monsterCLI
             if (dryRun) {
                 for (const langStatus of status) {
                     console.log(`\nLanguage ${langStatus.targetLang}`);
-                    for (const [prj, unstranslatedContent] of Object.entries(langStatus.unstranslatedContent)) {
-                        console.log(`  Project: ${prj}`);
-                        for (const [rid, content] of Object.entries(unstranslatedContent)) {
-                            console.log(`      - ${rid}`);
-                            for (const [sid, src] of Object.entries(content)) {
-                                console.log(`        - ${consoleColor.dim}${sid}:${consoleColor.reset} ${sid === src ? '≣' : src}`);
-                            }
-                        }
-                    }
+                    printTus(langStatus.tus);
                 }
             } else {
                 if (status.length > 0) {
@@ -317,15 +309,24 @@ monsterCLI
 monsterCLI
     .command('job')
     .description('operations on unfinished jobs.')
+    .option('--show <jobId>', 'show contents of a job request')
     .option('--push <jobId>', 'push a blocked job to translation provider')
     .action(async (options) => await withMonsterManager(async monsterManager => {
+        const showJobId = options.show;
         const pushJobId = options.push;
-        console.log(`Pushing job ${pushJobId}...`);
-        try {
-            const pushResponse = await jobCmd(monsterManager, { pushJobId });
-            console.log(`${pushResponse.num.toLocaleString()} translations units requested -> status: ${pushResponse.status}`);
-        } catch (e) {
-            console.error(`Failed to push job: ${e}`);
+        // eslint-disable-next-line no-negated-condition
+        if (showJobId !== undefined) {
+            console.log(`Showing job request ${showJobId}...`);
+            const job = await monsterManager.jobStore.getJobRequest(showJobId);
+            printTus(job.tus);
+        } else if (pushJobId !== undefined) {
+            console.log(`Pushing job ${pushJobId}...`);
+            try {
+                const pushResponse = await jobPush(monsterManager, pushJobId);
+                console.log(`${pushResponse.num.toLocaleString()} translations units requested -> status: ${pushResponse.status}`);
+            } catch (e) {
+                console.error(`Failed to push job: ${e}`);
+            }
         }
     }))
 ;
