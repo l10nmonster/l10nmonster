@@ -1,5 +1,5 @@
 import { diffJson } from 'diff';
-import { getNormalizedString, flattenNormalizedSourceToOrdinal, flattenNormalizedSourceV1 } from '../normalizers/util.js';
+import { getNormalizedString, flattenNormalizedSourceToOrdinal, flattenNormalizedSourceV1, sourceAndTargetAreCompatible } from '../normalizers/util.js';
 import { consoleColor } from './shared.js';
 
 export async function translateCmd(mm, { limitToLang, dryRun }) {
@@ -23,6 +23,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                         return rawStr;
                     }
                 };
+                // eslint-disable-next-line complexity
                 const translator = async function translate(sid, src) {
                     let nsrc,
                         v1PhMap,
@@ -38,37 +39,44 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                     const flattenSrc = nsrc ? flattenNormalizedSourceToOrdinal(nsrc) : src;
                     const guid = mm.generateFullyQualifiedGuid(resourceId, sid, flattenSrc);
                     const entry = tm.getEntryByGuid(guid);
-                    !entry && verbose && console.error(`Couldn't find ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
-                    if (entry?.ntgt) {
-                        const tgt = [];
-                        // TODO: fetch latest placeholders from source and use those if compatible
-                        for (const part of entry.ntgt) {
-                            if (typeof part === 'string') {
-                                tgt.push(encodeString(part, { hasPH: true }));
-                            } else if (part?.v1) {
-                                if (v1PhMap && v1PhMap[part.v1]) {
-                                    tgt.push(v1PhMap[part.v1].v);
-                                } else {
-                                    verbose && console.error(`Incompatible v1 placeholder found: ${JSON.stringify(part)} in ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
-                                    return undefined;
+                    if (entry) {
+                        if (sourceAndTargetAreCompatible(nsrc ?? src, entry.ntgt ?? entry.tgt)) {
+                            if (entry.ntgt) {
+                                const tgt = [];
+                                // TODO: fetch latest placeholders from source and use those if compatible
+                                for (const part of entry.ntgt) {
+                                    if (typeof part === 'string') {
+                                        tgt.push(encodeString(part, { hasPH: true }));
+                                    } else if (part?.v1) {
+                                        if (v1PhMap && v1PhMap[part.v1]) {
+                                            tgt.push(v1PhMap[part.v1].v);
+                                        } else {
+                                            verbose && console.error(`Incompatible v1 placeholder found: ${JSON.stringify(part)} in ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
+                                            return undefined;
+                                        }
+                                    } else if (part?.v === undefined) {
+                                        verbose && console.error(`Unknown placeholder found: ${JSON.stringify(part)} in ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
+                                        return undefined;
+                                    } else {
+                                        if (valueMap[part.v]) {
+                                            tgt.push(part.v);
+                                        } else {
+                                            verbose && console.error(`Incompatible value placeholder found: ${JSON.stringify(part)} in ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
+                                            return undefined;
+                                        }
+                                    }
                                 }
-                            } else if (part?.v === undefined) {
-                                verbose && console.error(`Unknown placeholder found: ${JSON.stringify(part)} in ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
-                                return undefined;
+                                return tgt.join('');
                             } else {
-                                if (valueMap[part.v]) {
-                                    tgt.push(part.v);
-                                } else {
-                                    verbose && console.error(`Incompatible value placeholder found: ${JSON.stringify(part)} in ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
-                                    return undefined;
-                                }
+                                return encodeString(entry.tgt);
                             }
+                        } else {
+                            verbose && console.error(`Source ${resourceId}+${sid}+${src} is incompatible with ${sourceLang}_${targetLang} TM entry ${JSON.stringify(entry)}`);
                         }
-                        return tgt.join('');
-                    } else if (entry?.tgt !== undefined) {
-                        return encodeString(entry?.tgt);
+                    } else {
+                        verbose && console.error(`Couldn't find ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
                     }
-                    return undefined; // don't fall back, let the caller deal with it
+                    return undefined;
                 };
                 const resource = await pipeline.source.fetchResource(res.id);
                 const translatedRes = await pipeline.resourceFilter.generateTranslatedResource({ resource, targetLang, translator });
