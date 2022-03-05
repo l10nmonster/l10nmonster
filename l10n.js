@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable no-negated-condition */
 
 import * as path from 'path';
 import {
@@ -7,7 +8,7 @@ import {
 } from 'fs';
 import { Command, InvalidArgumentError } from 'commander';
 
-import { consoleColor, printTus } from './src/shared.js';
+import { consoleColor, printRequest, printResponse } from './src/shared.js';
 
 import MonsterManager from './src/monsterManager.js';
 import { OpsMgr } from './src/opsMgr.js';
@@ -291,7 +292,7 @@ monsterCLI
             if (dryRun) {
                 for (const langStatus of status) {
                     console.log(`\nLanguage ${langStatus.targetLang}`);
-                    printTus(langStatus.tus);
+                    printRequest(langStatus);
                 }
             } else {
                 if (status.length > 0) {
@@ -310,17 +311,30 @@ monsterCLI
 
 monsterCLI
     .command('job')
-    .description('operations on unfinished jobs.')
-    .option('--show <jobId>', 'show contents of a job request')
+    .description('show contents and push pending jobs.')
+    .option('--req <jobId>', 'show contents of a job request')
+    .option('--res <jobId>', 'show contents of a job response')
+    .option('--pairs <jobId>', 'show request/response pairs of a job')
     .option('--push <jobId>', 'push a blocked job to translation provider')
     .action(async (options) => await withMonsterManager(async monsterManager => {
-        const showJobId = options.show;
+        const reqJobId = options.req;
+        const resJobId = options.res;
+        const pairsJobId = options.pairs;
         const pushJobId = options.push;
-        // eslint-disable-next-line no-negated-condition
-        if (showJobId !== undefined) {
-            console.log(`Showing job request ${showJobId}...`);
-            const job = await monsterManager.jobStore.getJobRequest(showJobId);
-            printTus(job.tus);
+        if (reqJobId !== undefined) {
+            console.log(`Showing request of job ${reqJobId}...`);
+            const req = await monsterManager.jobStore.getJobRequest(reqJobId);
+            printRequest(req);
+        } else if (resJobId !== undefined) {
+            console.log(`Showing response of job ${resJobId}...`);
+            const req = await monsterManager.jobStore.getJobRequest(resJobId);
+            const res = await monsterManager.jobStore.getJob(resJobId);
+            printResponse(req, res);
+        } else if (pairsJobId !== undefined) {
+            console.log(`Showing response of job ${pairsJobId}...`);
+            const req = await monsterManager.jobStore.getJobRequest(pairsJobId);
+            const res = await monsterManager.jobStore.getJob(pairsJobId);
+            printResponse(req, res, true);
         } else if (pushJobId !== undefined) {
             console.log(`Pushing job ${pushJobId}...`);
             try {
@@ -329,6 +343,8 @@ monsterCLI
             } catch (e) {
                 console.error(`Failed to push job: ${e}`);
             }
+        } else {
+            console.error(`Nothing to do!`);
         }
     }))
 ;

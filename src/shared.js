@@ -9,15 +9,8 @@ export const consoleColor = {
     bright: '\x1b[1m',
 };
 
-export function printTus(tus) {
-    const unstranslatedContent = {};
-    for (const tu of tus) {
-        const prj = tu.prj || 'default';
-        unstranslatedContent[prj] ??= {};
-        unstranslatedContent[prj][tu.rid] ??= {};
-        unstranslatedContent[prj][tu.rid][tu.sid] = tu.nsrc ? flattenNormalizedSourceV1(tu.nsrc)[0] : tu.src;
-    }
-    for (const [prj, uc] of Object.entries(unstranslatedContent)) {
+function printContent(contentPairs) {
+    for (const [prj, uc] of Object.entries(contentPairs)) {
         console.log(`  Project: ${prj}`);
         for (const [rid, content] of Object.entries(uc)) {
             console.log(`      - ${rid}`);
@@ -26,4 +19,34 @@ export function printTus(tus) {
             }
         }
     }
+}
+
+export function printRequest(req) {
+    const untranslatedContent = {};
+    for (const tu of req.tus) {
+        const prj = tu.prj || 'default';
+        untranslatedContent[prj] ??= {};
+        untranslatedContent[prj][tu.rid] ??= {};
+        untranslatedContent[prj][tu.rid][tu.sid] = tu.nsrc ? flattenNormalizedSourceV1(tu.nsrc)[0] : tu.src;
+    }
+    printContent(untranslatedContent);
+}
+
+export function printResponse(req, res, showPair) {
+    const translations = res.tus.reduce((p,c) => (p[c.guid] = c.ntgt ?? c.tgt, p), {});
+    if (req.tus.length !== res.tus.length || req.tus.length !== Object.keys(translations).length) {
+        console.log(`${req.tus.length} TU in request, ${res.tus.length} TU in response, ${Object.keys(translations).length} matching translations`);
+    }
+    const translatedContent = {};
+    for (const tu of req.tus) {
+        const prj = tu.prj || 'default';
+        translatedContent[prj] ??= {};
+        translatedContent[prj][tu.rid] ??= {};
+        if (translations[tu.guid]) {
+            // eslint-disable-next-line no-nested-ternary
+            const key = showPair ? (tu.nsrc ? flattenNormalizedSourceV1(tu.nsrc)[0] : tu.src) : tu.sid;
+            translatedContent[prj][tu.rid][key] = Array.isArray(translations[tu.guid]) ? flattenNormalizedSourceV1(translations[tu.guid])[0] : translations[tu.guid];
+        }
+    }
+    printContent(translatedContent);
 }
