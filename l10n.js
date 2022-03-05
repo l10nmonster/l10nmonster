@@ -322,18 +322,18 @@ monsterCLI
         const pairsJobId = options.pairs;
         const pushJobId = options.push;
         if (reqJobId !== undefined) {
-            console.log(`Showing request of job ${reqJobId}...`);
             const req = await monsterManager.jobStore.getJobRequest(reqJobId);
+            console.log(`Showing request of job ${reqJobId} ${req.sourceLang} -> ${req.targetLang}`);
             printRequest(req);
         } else if (resJobId !== undefined) {
-            console.log(`Showing response of job ${resJobId}...`);
             const req = await monsterManager.jobStore.getJobRequest(resJobId);
             const res = await monsterManager.jobStore.getJob(resJobId);
+            console.log(`Showing response of job ${resJobId} ${req.sourceLang} -> ${req.targetLang} (${res.translationProvider}) ${res.status}`);
             printResponse(req, res);
         } else if (pairsJobId !== undefined) {
-            console.log(`Showing response of job ${pairsJobId}...`);
             const req = await monsterManager.jobStore.getJobRequest(pairsJobId);
             const res = await monsterManager.jobStore.getJob(pairsJobId);
+            console.log(`Showing source-target pairs of job ${pairsJobId} ${req.sourceLang} -> ${req.targetLang} (${res.translationProvider}) ${res.status}`);
             printResponse(req, res, true);
         } else if (pushJobId !== undefined) {
             console.log(`Pushing job ${pushJobId}...`);
