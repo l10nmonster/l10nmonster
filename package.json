@@ -42,6 +42,7 @@
     "mysql2": "^2.3.2",
     "nanoid": "^3.2.0",
     "pig-latinizer": "^1.0.6",
+    "tinyld": "1.2.0",
     "tmexchange": "l10nmonster/tmexchange",
     "words-count": "^2.0.2",
     "xliff": "^6.0.1",
