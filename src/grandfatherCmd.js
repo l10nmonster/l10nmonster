@@ -40,7 +40,6 @@ export async function grandfatherCmd(mm, quality, limitToLang) {
             }
             const previousTranslation = txCache[tu.rid][tu.sid];
             if (previousTranslation !== undefined) {
-                sources.push(tu);
                 const translation = {
                     guid: tu.guid,
                     q: quality,
@@ -53,6 +52,7 @@ export async function grandfatherCmd(mm, quality, limitToLang) {
                 previousTranslation.ts && (translation.ts = previousTranslation.ts);
                 const isCompatible = sourceAndTargetAreCompatible(tu?.nsrc ?? tu?.src, translation?.ntgt ?? translation?.tgt);
                 if (isCompatible) {
+                    sources.push(tu);
                     translations.push(translation);
                 }
             }

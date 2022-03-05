@@ -55,18 +55,6 @@
 Delete its download?</source>
         <note>Manga details</note>
       </trans-unit>
-      <trans-unit id="5otAlRi18WJHdTNddhXrbauyBBuNmozvj5T1U3LdNio">
-        <source>Migrate %1$d%2$s manga?</source>
-        <note>Migration</note>
-      </trans-unit>
-      <trans-unit id="V7Ipy8tVMS_hgViqxAA2GVdKnK2eiylBmpYsz6R23AM">
-        <source>Copy %1$d%2$s manga?</source>
-        <note>Migration</note>
-      </trans-unit>
-      <trans-unit id="26atAzC3mwZ3kvEaRGvJjuffpG2YiWvLb_0uDvsLPtE">
-        <source>%d manga migrated</source>
-        <note>Migration</note>
-      </trans-unit>
       <trans-unit id="dUY5CemIa3xpPTEoUKN5hZLIYyFYKU1bhYQvPyUJvk0">
         <source>Done in %1$s with %2$s error</source>
         <note>Backup</note>

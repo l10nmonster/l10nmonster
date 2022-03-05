@@ -33,7 +33,7 @@ export async function leverageCmd(mm, limitToLang) {
                 }
                 if (foundCandidate) {
                     const leveragedTU = {
-                        guid: mm.generateFullyQualifiedGuid(tu.rid, tu.sid, tu.src),
+                        guid: tu.guid,
                         q: Math.max(0, bestCandidate.q - (tu.sid === bestCandidate.sid ? mm.qualifiedPenalty : mm.unqualifiedPenalty), 0),
                     };
                     bestCandidate.tgt && (leveragedTU.tgt = bestCandidate.tgt);

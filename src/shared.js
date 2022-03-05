@@ -34,9 +34,7 @@ export function printRequest(req) {
 
 export function printResponse(req, res, showPair) {
     const translations = res.tus.reduce((p,c) => (p[c.guid] = c.ntgt ?? c.tgt, p), {});
-    if (req.tus.length !== res.tus.length || req.tus.length !== Object.keys(translations).length) {
-        console.log(`${req.tus.length} TU in request, ${res.tus.length} TU in response, ${Object.keys(translations).length} matching translations`);
-    }
+    let matchedTranslations = 0;
     const translatedContent = {};
     for (const tu of req.tus) {
         const prj = tu.prj || 'default';
@@ -46,7 +44,11 @@ export function printResponse(req, res, showPair) {
             // eslint-disable-next-line no-nested-ternary
             const key = showPair ? (tu.nsrc ? flattenNormalizedSourceV1(tu.nsrc)[0] : tu.src) : tu.sid;
             translatedContent[prj][tu.rid][key] = Array.isArray(translations[tu.guid]) ? flattenNormalizedSourceV1(translations[tu.guid])[0] : translations[tu.guid];
+            matchedTranslations++;
         }
+    }
+    if (req.tus.length !== res.tus.length || req.tus.length !== matchedTranslations) {
+        console.log(`${consoleColor.red}${req.tus.length} TU in request, ${res.tus.length} TU in response, ${matchedTranslations} matching translations${consoleColor.reset}`);
     }
     printContent(translatedContent);
 }

@@ -93,9 +93,10 @@
 			"minimumQuality": 50,
 			"prjLeverage": {
 				"default": {
-					"translated": 851,
-					"translatedWords": 2767,
+					"translated": 854,
+					"translatedWords": 2773,
 					"translatedByQ": {
+						"61": 3,
 						"70": 851
 					},
 					"untranslated": 17,
@@ -103,8 +104,8 @@
 					"untranslatedWords": 65,
 					"pending": 0,
 					"pendingWords": 0,
-					"internalRepetitions": 3,
-					"internalRepetitionWords": 6
+					"internalRepetitions": 0,
+					"internalRepetitionWords": 0
 				}
 			}
 		},
@@ -123,15 +124,12 @@
 			"ftTBQ9mT8jzVQTlzVQThq84qga7aRnm1A_EmQPZ62tE",
 			"TyE4yyopQMXi9xPAwddqixG0FiRUr7u1yXsHaK5cFNg",
 			"SSZERtfZuYpDYos6-_VXWBeWY2P0LQQBQ5wwygKih98",
-			"5otAlRi18WJHdTNddhXrbauyBBuNmozvj5T1U3LdNio",
-			"V7Ipy8tVMS_hgViqxAA2GVdKnK2eiylBmpYsz6R23AM",
-			"26atAzC3mwZ3kvEaRGvJjuffpG2YiWvLb_0uDvsLPtE",
 			"dUY5CemIa3xpPTEoUKN5hZLIYyFYKU1bhYQvPyUJvk0",
 			"5eZfQwyisFt-eAr3zUOKugP__L-uALc_ylWptAYKJQI",
 			"rh1h0cJO-5V2S5q15JDf5bxw2kDqyrXKS4r_wy5PUwU",
 			"C0PQbeoPQFB8cyWahP6wddbk0QOh4f-mmiHyTcQUny4"
 		],
-		"num": 20,
+		"num": 17,
 		"updatedAt": "2022-02-05T00:00:00.000Z"
 	},
 	{

@@ -514,23 +514,6 @@
 			"ts": 1642896537928
 		},
 		{
-			"sid": "category_plural_other",
-			"isSuffixPluralized": true,
-			"notes": "Category",
-			"guid": "xIQ8JakD15UWHPlTjfDfsR_DppXZXRKrIBcVjpnIUH0",
-			"contentType": "default",
-			"src": "%d categories",
-			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "%d"
-				},
-				" categories"
-			]
-		},
-		{
 			"sid": "category_with_name_exists",
 			"notes": "Category",
 			"guid": "tY5i_VvkSRfJYfbnaRYs6LzMY7jz1AOwB34ehHn4_8E",

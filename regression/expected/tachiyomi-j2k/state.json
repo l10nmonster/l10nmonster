@@ -4,16 +4,17 @@
 			"foo": {
 				"bar": {
 					"zh-Hans": {
-						"translated": 851,
-						"translatedWords": 2767,
+						"translated": 854,
+						"translatedWords": 2773,
 						"translatedByQ": {
+							"61": 3,
 							"70": 851
 						},
 						"untranslated": 0,
 						"untranslatedChars": 0,
 						"untranslatedWords": 0,
-						"pending": 20,
-						"pendingWords": 71,
+						"pending": 17,
+						"pendingWords": 65,
 						"internalRepetitions": 0,
 						"internalRepetitionWords": 0
 					},
