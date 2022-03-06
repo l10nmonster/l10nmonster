@@ -50,9 +50,8 @@
         <note>Reader settings</note>
       </trans-unit>
       <trans-unit id="SSZERtfZuYpDYos6-_VXWBeWY2P0LQQBQ5wwygKih98">
-        <source>A chapter has been removed from the source:
-%2$s
-Delete its download?</source>
+        <source>A chapter has been removed from the source:\n%2$s\nDelete
+            its download?</source>
         <note>Manga details</note>
       </trans-unit>
       <trans-unit id="dUY5CemIa3xpPTEoUKN5hZLIYyFYKU1bhYQvPyUJvk0">

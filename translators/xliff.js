@@ -30,7 +30,7 @@ export class XliffBridge {
         const xliff = await createxliff12(
             jobRequest.sourceLang,
             jobRequest.targetLang,
-            Object.fromEntries(jobRequest.tus.map(tu => [ tu.guid, tu.src ])),
+            Object.fromEntries(jobRequest.tus.map(tu => [ tu.guid, tu.src ])), // TODO: need to deal with nsrc
             null,
             'XliffBridge',
             null,
@@ -59,7 +59,7 @@ export class XliffBridge {
                 if (xt?.target?.length > 0) {
                     tus.push({
                         guid: guid,
-                        tgt: xt.target,
+                        tgt: xt.target, // TODO: need to deal with ntgt
                         q: this.quality,
                     });
                 } else {

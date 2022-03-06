@@ -34,18 +34,18 @@
 						"internalRepetitionWords": 0
 					},
 					"piggy": {
-						"translated": 871,
-						"translatedWords": 2838,
+						"translated": 834,
+						"translatedWords": 2444,
 						"translatedByQ": {
-							"1": 871
+							"1": 834
 						},
 						"untranslated": 0,
 						"untranslatedChars": 0,
 						"untranslatedWords": 0,
 						"pending": 0,
 						"pendingWords": 0,
-						"internalRepetitions": 0,
-						"internalRepetitionWords": 0
+						"internalRepetitions": 37,
+						"internalRepetitionWords": 394
 					}
 				}
 			}

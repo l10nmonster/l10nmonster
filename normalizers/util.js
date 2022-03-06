@@ -1,13 +1,10 @@
-export function getNormalizedString(str, decoderList) {
-    let parts = [ str ];
-    for (const decoder of decoderList) {
-        parts = decoder(parts);
-    }
+export function consolidateDecodedParts(parts, flags) {
     const consolidatedParts = [];
     let accumulatedString = '';
     for (const part of parts) {
-        if (typeof part === 'string') {
-            accumulatedString += part;
+        if (part.t === 's') {
+            accumulatedString += part.v;
+            part.f && (flags[part.flag] = true);
         } else {
             if (accumulatedString.length > 0) {
                 consolidatedParts.push(accumulatedString);
@@ -20,6 +17,14 @@ export function getNormalizedString(str, decoderList) {
         consolidatedParts.push(accumulatedString);
     }
     return consolidatedParts;
+}
+
+export function getNormalizedString(str, decoderList, flags = {}) {
+    let parts = [ { t: 's', v: str } ];
+    for (const decoder of decoderList) {
+        parts = decoder(parts);
+    }
+    return consolidateDecodedParts(parts, flags);
 }
 
 export function flattenNormalizedSourceToOrdinal(nsrc) {

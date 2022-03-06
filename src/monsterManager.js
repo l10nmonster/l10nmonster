@@ -107,7 +107,9 @@ export default class MonsterManager {
                             seg.nstr = normalizedStr;
                         }
                     }
-                    seg.guid = this.generateFullyQualifiedGuid(res.id, seg.sid, seg.nstr ? flattenNormalizedSourceToOrdinal(seg.nstr) : seg.str);
+                    const flattenStr = seg.nstr ? flattenNormalizedSourceToOrdinal(seg.nstr) : seg.str;
+                    flattenStr !== seg.str && (seg.gstr = flattenStr);
+                    seg.guid = this.generateFullyQualifiedGuid(res.id, seg.sid, flattenStr);
                     seg.contentType = res.contentType;
                 }
                 pipeline.segmentDecorator && (res.segments = pipeline.segmentDecorator(parsedRes.segments));
@@ -199,7 +201,7 @@ export default class MonsterManager {
                             repetitionMap[tu.src] = true;
                             job.tus.push(tu);
                             leverageDetails.untranslated++;
-                            leverageDetails.untranslatedChars += seg.str.length;
+                            leverageDetails.untranslatedChars += plainText.length;
                             leverageDetails.untranslatedWords += words;
                         }
                     } else {

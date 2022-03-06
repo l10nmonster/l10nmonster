@@ -28,8 +28,9 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                     let nsrc,
                         v1PhMap,
                         valueMap;
+                    const flags = {};
                     if (pipeline.decoders) {
-                        const normalizedStr = getNormalizedString(src, pipeline.decoders);
+                        const normalizedStr = getNormalizedString(src, pipeline.decoders, flags);
                         if (normalizedStr[0] !== src) {
                             nsrc = normalizedStr;
                             v1PhMap = flattenNormalizedSourceV1(nsrc)[1];
@@ -42,11 +43,11 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                     if (entry) {
                         if (sourceAndTargetAreCompatible(nsrc ?? src, entry.ntgt ?? entry.tgt)) {
                             if (entry.ntgt) {
+                                const ntgtEntries = entry.ntgt.entries();
                                 const tgt = [];
-                                // TODO: fetch latest placeholders from source and use those if compatible
-                                for (const part of entry.ntgt) {
+                                for (const [idx, part] of ntgtEntries) {
                                     if (typeof part === 'string') {
-                                        tgt.push(encodeString(part, { hasPH: true }));
+                                        tgt.push(encodeString(part, { ...flags, isFirst: idx === 0, isLast: idx === ntgtEntries.length - 1 }));
                                     } else if (part?.v1) {
                                         if (v1PhMap && v1PhMap[part.v1]) {
                                             tgt.push(v1PhMap[part.v1].v);

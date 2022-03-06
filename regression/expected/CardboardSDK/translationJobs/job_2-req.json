@@ -5,6 +5,7 @@
 		{
 			"sid": "AccessibilityCardboardButton",
 			"notes": "Accessibility label for the cardboard button to go into cardboard mode (read out loud)",
+			"gstr": "Cardboard mode: {{x}}",
 			"guid": "p72nj2yZPB-RfJOZa2iZg2pt16HznCGr_kdYQziGHxs",
 			"contentType": "default",
 			"src": "Cardboard mode: %1$@",
@@ -40,7 +41,7 @@
 					"70": 29
 				},
 				"untranslated": 2,
-				"untranslatedChars": 35,
+				"untranslatedChars": 31,
 				"untranslatedWords": 4,
 				"pending": 0,
 				"pendingWords": 0,

@@ -24,7 +24,7 @@ describe ('FsSource tests', () =>{
 
   test('fetchResource returns string', async () => {
     const output = await source.fetchResource(RESOURCE_ID);
-    expect(output.length).toBe(837);
+    expect(output.length).toBe(558);
   });
 
 })

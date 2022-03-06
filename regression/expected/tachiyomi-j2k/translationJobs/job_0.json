@@ -10,7 +10,7 @@
 				"translatedWords": 0,
 				"translatedByQ": {},
 				"untranslated": 866,
-				"untranslatedChars": 17784,
+				"untranslatedChars": 17380,
 				"untranslatedWords": 2829,
 				"pending": 0,
 				"pendingWords": 0,
@@ -29,7 +29,9 @@
 		{
 			"guid": "ehbg6jluBWm1ZPyw00Prf4lbXtVyLJItrCrATkSEYGI",
 			"q": 70,
-			"tgt": "在 Android 11 中，TachiyomiJ2K 需要访问所有文件才能下载章节、创建自动备份和阅读本地漫画。 \n \n在下一个屏幕上，启用“允许访问管理所有文件”",
+			"ntgt": [
+				"在 Android 11 中，TachiyomiJ2K 需要访问所有文件才能下载章节、创建自动备份和阅读本地漫画。 \n \n在下一个屏幕上，启用“允许访问管理所有文件”"
+			],
 			"ts": 1642896537928
 		},
 		{
@@ -1623,7 +1625,9 @@
 		{
 			"guid": "5i1qeSgTv4eK9tMokbsNzyBFy4aeu_6h0nSNcgRxpEw",
 			"q": 70,
-			"tgt": "此扩展插件的证书并不可信，且尚未被启用。 \n \n恶意的扩展插件可能会读取储存在 Tachiyomi 中的任何登录凭据或执行任意代码。 \n \n信任这个证书，即代表你愿意承担上述风险。",
+			"ntgt": [
+				"此扩展插件的证书并不可信，且尚未被启用。 \n \n恶意的扩展插件可能会读取储存在 Tachiyomi 中的任何登录凭据或执行任意代码。 \n \n信任这个证书，即代表你愿意承担上述风险。"
+			],
 			"ts": 1642896537928
 		},
 		{
@@ -3308,7 +3312,9 @@
 		{
 			"guid": "40nodRaLIGy39DOdLno37o-CdP-LndXWJmmD06atmsg",
 			"q": 70,
-			"tgt": "要再次显示此屏幕，请转到 设置 -> 图源。",
+			"ntgt": [
+				"要再次显示此屏幕，请转到 设置 -> 图源。"
+			],
 			"ts": 1642896537928
 		},
 		{
@@ -4022,13 +4028,17 @@
 		{
 			"guid": "PhjBH-rKHup-EgEYqgYdtaGWiXltWX6_6ptAADdQ3kE",
 			"q": 70,
-			"tgt": "还原使用图源获取数据，可能耗费联网费用。 \n \n还原前，请确认你已安装了全部必需的扩展并已登录到图源和追踪服务。",
+			"ntgt": [
+				"还原使用图源获取数据，可能耗费联网费用。 \n \n还原前，请确认你已安装了全部必需的扩展并已登录到图源和追踪服务。"
+			],
 			"ts": 1642896537928
 		},
 		{
 			"guid": "zjRnVqvBaWL0WEb1kpUnpHu5WxQ6QlzFONOTIKfEIWQ",
 			"q": 70,
-			"tgt": "来自备份文件的数据将被还原。 \n \n你需要安装所有缺少的扩展，之后登录到跟踪服务以使用它们。",
+			"ntgt": [
+				"来自备份文件的数据将被还原。 \n \n你需要安装所有缺少的扩展，之后登录到跟踪服务以使用它们。"
+			],
 			"ts": 1642896537928
 		},
 		{
@@ -5658,7 +5668,9 @@
 		{
 			"guid": "X8fO-c1VVu9rbJOhfqH9UiMS20tCwPGDKgZXFvQMp3A",
 			"q": 70,
-			"tgt": "排序 & 筛选",
+			"ntgt": [
+				"排序 & 筛选"
+			],
 			"ts": 1642896537928
 		},
 		{

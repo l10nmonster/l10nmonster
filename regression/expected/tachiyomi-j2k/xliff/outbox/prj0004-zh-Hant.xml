@@ -81,7 +81,8 @@
         <note>Category</note>
       </trans-unit>
       <trans-unit id="Z5R54ptkf0KSzqHSXbTpgusMBDC0AnVs5HlxwFuBn_g">
-        <source>Manga in this category will moved into the default category.</source>
+        <source>Manga in this category will moved into the
+        default category.</source>
         <note>Category</note>
       </trans-unit>
       <trans-unit id="dpO_z4YeTFadU1pOz_kPcMX3MJPH0ER9fKBE5s3JQ2w">
@@ -185,7 +186,7 @@
         <note>Library</note>
       </trans-unit>
       <trans-unit id="0Q0F8OAUKt9tljw33vEGxWOZgWoYsdvzbYGYyhonqbk">
-        <source>Search "%1$s" globally</source>
+        <source>Search \"%1$s\" globally</source>
         <note>Library</note>
       </trans-unit>
       <trans-unit id="kCa-bJauYACIeWVYamRlbqKFa-Pf4yFoxGZh-qyS_dg">
@@ -297,7 +298,8 @@
         <note>Library settings</note>
       </trans-unit>
       <trans-unit id="gX2qXw9h04nSkWqum0JX_lrXBPrnakCiXfhaqiVV8OM">
-        <source>When sorting alphabetically, sort ignoring articles (a, an, the) at the start of manga titles</source>
+        <source>When sorting alphabetically, sort ignoring
+        articles (a, an, the) at the start of manga titles</source>
         <note>Library settings</note>
       </trans-unit>
       <trans-unit id="qGkF2Msp3GFeWmf1Bhwiv0fF0eC1cpmBhNbvl8xiiDY">
@@ -305,7 +307,8 @@
         <note>Library settings</note>
       </trans-unit>
       <trans-unit id="VCIW6HRhoeMhpQUhRuDv4rLKq9LG90yl1F5zV-xbvQU">
-        <source>Refresh covers in library as well when updating library</source>
+        <source>Refresh covers in library as well
+        when updating library</source>
         <note>Library settings</note>
       </trans-unit>
       <trans-unit id="jP-v2MRaelRp-0xUUhmilWXKVm0sFGYkH-NQkgC3xAM">
@@ -345,7 +348,8 @@
         <note>Recents</note>
       </trans-unit>
       <trans-unit id="XmyxBrSHE9usAFFCG2vPzxT10mP3VHeH1CsWjzkIpZg">
-        <source>This will remove the read date of "%1$s". Are you sure?</source>
+        <source>This will remove the read date of
+        \"%1$s\". Are you sure?</source>
         <note>Recents</note>
       </trans-unit>
       <trans-unit id="fC_356xy32C7odgnD6x_BAF1M8BL09LYq_AYDWMJoww">
@@ -665,7 +669,8 @@
         <note>Reader settings</note>
       </trans-unit>
       <trans-unit id="W8IL7FndWDq-7-mwh7RdfpnZ-3SJj5ffNGNhAZG8S1s">
-        <source>If disabled, the transition page will be skipped if the next chapter is loaded</source>
+        <source>If disabled, the transition page will be
+        skipped if the next chapter is loaded</source>
         <note>Reader settings</note>
       </trans-unit>
       <trans-unit id="NCIdcJxxvp00HL_yi0SD4xBMx8YwKzIdtFqHXMDHDCs">
@@ -797,16 +802,13 @@
         <note>Manga details</note>
       </trans-unit>
       <trans-unit id="SSZERtfZuYpDYos6-_VXWBeWY2P0LQQBQ5wwygKih98">
-        <source>A chapter has been removed from the source:
-%2$s
-Delete its download?</source>
+        <source>A chapter has been removed from the source:\n%2$s\nDelete
+            its download?</source>
         <note>Manga details</note>
       </trans-unit>
       <trans-unit id="SMy5CDGGN0GtdJzMKHTWbjT3VqLYuEtNpEvWA5bRmLc">
-        <source>%1$s chapters have been removed from the source:
-%2$s
-
-Delete their downloads?</source>
+        <source>%1$s chapters have been removed from the source:\n%2$s\n\nDelete
+            their downloads?</source>
         <note>Manga details</note>
       </trans-unit>
       <trans-unit id="tA0xYikn0qHMP71gVNu8p-qT0ikIpg3hFN5e_ID1rVA">
@@ -866,7 +868,8 @@ Delete their downloads?</source>
         <note>Migration</note>
       </trans-unit>
       <trans-unit id="ZaFVe22GBI64JdVFR6uX-ObRD-cRk0zIKevux5wEwW4">
-        <source>Select a source, then select an item to migrate</source>
+        <source>Select a source, then select an item to
+        migrate</source>
         <note>Migration</note>
       </trans-unit>
       <trans-unit id="lt4SHU-6CU6ShuRhAxP8PbpEMoizbRLeARXwB-oXCoE">
@@ -894,7 +897,8 @@ Delete their downloads?</source>
         <note>Migration</note>
       </trans-unit>
       <trans-unit id="40nodRaLIGy39DOdLno37o-CdP-LndXWJmmD06atmsg">
-        <source>To show this screen again, go to Settings -&gt; Sources.</source>
+        <source>To show this screen again, go to Settings -&gt;
+        Sources.</source>
         <note>Migration</note>
       </trans-unit>
       <trans-unit id="XbpaTzrbCpE1Jod-1pTJUcUejGCs65etNfCLyrjOPCI">
@@ -906,7 +910,7 @@ Delete their downloads?</source>
         <note>Migration</note>
       </trans-unit>
       <trans-unit id="xJFqLVqZOdDwGYAjfbgscpPcA6oGzcIavM_-Mgu3XOg">
-        <source>Don't migrate</source>
+        <source>Don\'t migrate</source>
         <note>Migration</note>
       </trans-unit>
       <trans-unit id="7SPzWn0HQD6BIBpK8t3zjkVsy0SkVUtIURZJtEqRj7U">
@@ -926,7 +930,8 @@ Delete their downloads?</source>
         <note>Migration</note>
       </trans-unit>
       <trans-unit id="dQVWYkXPeFOjGC7dZFl4-qpzZxpKrykPe1si6ZXM47U">
-        <source>No chapters found, this manga cannot be used for migration</source>
+        <source>No chapters found, this manga cannot be used for
+        migration</source>
         <note>Migration</note>
       </trans-unit>
       <trans-unit id="J1tK-zxfRLo-qJ2LdvOy0EfXz3DKHub7cuPGCCs1bKQ">
@@ -1126,7 +1131,7 @@ Delete their downloads?</source>
         <note>General settings</note>
       </trans-unit>
       <trans-unit id="zXLKLNmS6xruqwTnlAbShfEJGiuuMK3ztU-MUk76zWE">
-        <source>Don't auto-update</source>
+        <source>Don\'t auto-update</source>
         <note>General settings</note>
       </trans-unit>
       <trans-unit id="D3LfdbxIIVqFCgNV1keUViOetdNJG2NwKYm8Oq1xiVw">
@@ -1150,7 +1155,7 @@ Delete their downloads?</source>
         <note>General settings</note>
       </trans-unit>
       <trans-unit id="Fm6Vq1l2shHVMSBG3SScRIRVIIllb62PT55gQ8pn6jU">
-        <source>When there's no new chapters, the series' details will open instead</source>
+        <source>When there\'s no new chapters, the series\' details will open instead</source>
         <note>General settings</note>
       </trans-unit>
       <trans-unit id="CE1TfCDxLNUUOskfg4UlXkcmKy9RzTreJQb_XEhR-JE">
@@ -1158,9 +1163,7 @@ Delete their downloads?</source>
         <note>Backup</note>
       </trans-unit>
       <trans-unit id="zjRnVqvBaWL0WEb1kpUnpHu5WxQ6QlzFONOTIKfEIWQ">
-        <source>Data from the backup file will be restored.
-
-You will need to install any missing extensions and log in to tracking services afterwards to use them.</source>
+        <source>Data from the backup file will be restored.\n\nYou will need to install any missing extensions and log in to tracking services afterwards to use them.</source>
         <note>Backup</note>
       </trans-unit>
       <trans-unit id="X_KLc5HBAfegVR9vZD8aXzXPwMiU8FIqSVIzsp8-4Gw">
@@ -1204,7 +1207,8 @@ You will need to install any missing extensions and log in to tracking services 
         <note>Advanced section</note>
       </trans-unit>
       <trans-unit id="dwmP8JsQhLHngvqw56EBpRIwjbjeCHjFNccFSEUvGvI">
-        <source>Delete non-existent, partially downloaded, and read chapter folders</source>
+        <source>Delete non-existent, partially downloaded,
+            and read chapter folders</source>
         <note>Advanced section</note>
       </trans-unit>
       <trans-unit id="RRrYY498SDiQ8LcoRDmSXIqvzNAHgFebOb-KsuwO1JE">
@@ -1228,7 +1232,8 @@ You will need to install any missing extensions and log in to tracking services 
         <note>Advanced section</note>
       </trans-unit>
       <trans-unit id="-wkXZ-U6feYoBLD03zOySY9bCJ2q3iJdBWNGiVyzb-w">
-        <source>Disable this if you are experiencing issues with updating or restoring your library</source>
+        <source>Disable this if you are experiencing issues
+        with updating or restoring your library</source>
         <note>Advanced section</note>
       </trans-unit>
       <trans-unit id="rh1h0cJO-5V2S5q15JDf5bxw2kDqyrXKS4r_wy5PUwU">
@@ -1244,8 +1249,8 @@ You will need to install any missing extensions and log in to tracking services 
         <note>Advanced section</note>
       </trans-unit>
       <trans-unit id="lSA7apVW1cOhxizHua1Cozi3U_fNiABPf20SPV5qWtg">
-        <source>Delete old and unused cached covers of manga in your library that has been updated.
-Currently using: %1$s</source>
+        <source>Delete old and unused cached covers of
+        manga in your library that has been updated.\nCurrently using: %1$s</source>
         <note>Advanced section</note>
       </trans-unit>
       <trans-unit id="760JS2eBsCjbuIMJovFvLL3VDT3Sf7OOh1BwVVDD_Fc">
@@ -1253,8 +1258,8 @@ Currently using: %1$s</source>
         <note>Advanced section</note>
       </trans-unit>
       <trans-unit id="MAJoOU3XbW2pm0bnts6394MkGigK3TCnzQ-_iRfyg8g">
-        <source>Delete all covers cached that are not in your library 
-Currently using: %1$s</source>
+        <source>Delete all covers cached that are
+        not in your library \nCurrently using: %1$s</source>
         <note>Advanced section</note>
       </trans-unit>
       <trans-unit id="_BcKOaHV9biKhmCWByQuo8e4tHyutlNooNwpysPzdJE">
@@ -1282,15 +1287,18 @@ Currently using: %1$s</source>
         <note>Browse Settings</note>
       </trans-unit>
       <trans-unit id="dhcccCE8fLfXWvszAEfDTWr7hNNe_3qT5IUdFeDqgoI">
-        <source>Only enable your pinned sources for migration</source>
+        <source>Only enable your pinned sources for
+        migration</source>
         <note>Browse Settings</note>
       </trans-unit>
       <trans-unit id="ecCXfY4HMfF9J918_KY7aN7GY0YzLi4DQvg6ltvASZs">
-        <source>Only enable your currently enabled sources for migration</source>
+        <source>Only enable your currently enabled sources for
+        migration</source>
         <note>Browse Settings</note>
       </trans-unit>
       <trans-unit id="SVlZlyNR7LfMJwSoD3PuIxOKThbqF1NzlAMB2Ol9ARE">
-        <source>Use last saved pre-migration preferences and sources to mass migrate</source>
+        <source>Use last saved pre-migration preferences
+    and sources to mass migrate</source>
         <note>Browse Settings</note>
       </trans-unit>
       <trans-unit id="Aj7B9bdrUBuawnRN3X7C9j-TI3E124trgAN1lqeNA2w">
@@ -1298,7 +1306,8 @@ Currently using: %1$s</source>
         <note>Browse Settings</note>
       </trans-unit>
       <trans-unit id="pX3b7nl_8Y58oXPbghIIx7_0aGmWWLPeP-D5LNDblcU">
-        <source>You can also migrate by selecting manga in your library</source>
+        <source>You can also migrate by selecting manga in your
+        library</source>
         <note>Browse Settings</note>
       </trans-unit>
       <trans-unit id="D18ZSiCe8YZ1sci7Z2F7B1tfXEm3Or2uUalU99MhCm0">
@@ -1306,7 +1315,7 @@ Currently using: %1$s</source>
         <note>Browse Settings</note>
       </trans-unit>
       <trans-unit id="ODnxRXqbNkf0WZwNMNBRVzvTowiRVdu0tktSDF2ET3k">
-        <source>What's new in this release</source>
+        <source>What\'s new in this release</source>
         <note>About section</note>
       </trans-unit>
       <trans-unit id="PjW8y4Za7kR6g7Mb6zNFAHjvaRBRDKypInCNDLP0odM">
@@ -1354,15 +1363,16 @@ Currently using: %1$s</source>
         <note>Downloads</note>
       </trans-unit>
       <trans-unit id="eXRc26yvod4Obg8UmsDbwm7gkrsGGdpMy4TpcYAWsxk">
-        <source>Manage what's downloading</source>
+        <source>Manage what\'s downloading</source>
         <note>Downloads</note>
       </trans-unit>
       <trans-unit id="6tgFpq1s7Bmdw6Wj4ju2N96GgPe7p9Y7cGiyfxSF-9E">
-        <source>Visit the recents tab to access the download queue. You can also double tap or press and hold for quicker access</source>
+        <source>Visit the recents tab to access the download
+        queue. You can also double tap or press and hold for quicker access</source>
         <note>Downloads</note>
       </trans-unit>
       <trans-unit id="Vj8DOxw8uO9KY77TuWRdJxY8sMxVtwq_IyHh6_8Srro">
-        <source>Couldn't download chapters due to low disk space</source>
+        <source>Couldn\'t download chapters due to low disk space</source>
         <note>Downloads</note>
       </trans-unit>
       <trans-unit id="wOveXNJlRMcSQDJmFr9f1aXQi4JwmzgfG2o1ZP_DK30">
@@ -1370,7 +1380,8 @@ Currently using: %1$s</source>
         <note>Downloads settings</note>
       </trans-unit>
       <trans-unit id="QblYKrpV4TYMwNLE5d6OuLP5-YvTFicfnEWa5-51OcY">
-        <source>Delete downloaded chapters if the source has removed the chapter online</source>
+        <source>Delete downloaded chapters if the source
+        has removed the chapter online</source>
         <note>Downloads settings</note>
       </trans-unit>
       <trans-unit id="dIE3zIyVYSdTpju6-vlcTUw08uEhNfHj-2NIp5kbEEw">

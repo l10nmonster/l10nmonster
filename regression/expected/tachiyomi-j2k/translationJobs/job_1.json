@@ -10,7 +10,7 @@
 				"translatedWords": 0,
 				"translatedByQ": {},
 				"untranslated": 866,
-				"untranslatedChars": 17784,
+				"untranslatedChars": 17380,
 				"untranslatedWords": 2829,
 				"pending": 0,
 				"pendingWords": 0,
@@ -23,13 +23,17 @@
 		{
 			"guid": "ehbg6jluBWm1ZPyw00Prf4lbXtVyLJItrCrATkSEYGI",
 			"q": 70,
-			"tgt": "Tachiyomi 需要有在Android 11上的儲存空間存取權限才能下載漫畫，備份設定，開啟本機漫畫。 \n \n請在下一個畫面開啟\"允許存取儲存空間\"",
+			"ntgt": [
+				"Tachiyomi 需要有在Android 11上的儲存空間存取權限才能下載漫畫，備份設定，開啟本機漫畫。 \n \n請在下一個畫面開啟\"允許存取儲存空間\""
+			],
 			"ts": 1642896537928
 		},
 		{
 			"guid": "0TJzTyqgSESA9Z13x0gjdb2SSI0vFps-a1UhezJeIUA",
 			"q": 70,
-			"tgt": "Tachiyomi 需要有儲存空間存取權限才能下載漫畫。請允許\"管理儲存空間\"",
+			"ntgt": [
+				"Tachiyomi 需要有儲存空間存取權限才能下載漫畫。請允許\"管理儲存空間\""
+			],
 			"ts": 1642896537928
 		},
 		{
@@ -290,7 +294,9 @@
 		{
 			"guid": "1JbgVl3XE7SmeF4jiwITPDPKkwZysXqU8iIQL5aVuDY",
 			"q": 70,
-			"tgt": "移除所有下載檔案?",
+			"ntgt": [
+				"移除所有下載檔案?"
+			],
 			"ts": 1642896537928
 		},
 		{
@@ -453,7 +459,9 @@
 		{
 			"guid": "Oh1h4BfvH9v36vvhr3RdIXN8fqA_K8AX8Ayev245P4U",
 			"q": 70,
-			"tgt": "從書櫃移除?",
+			"ntgt": [
+				"從書櫃移除?"
+			],
 			"ts": 1642896537928
 		},
 		{
@@ -832,7 +840,9 @@
 		{
 			"guid": "5i1qeSgTv4eK9tMokbsNzyBFy4aeu_6h0nSNcgRxpEw",
 			"q": 70,
-			"tgt": "這個擴充套件的憑證並不可靠，且尚未被啟用。 \n \n惡意的擴充套件可能存取任何儲存於 Tachiyomi 中的登錄憑證，或執行任意的程式碼。 \n \n信任這個憑證，即表示你願意承擔上述風險。",
+			"ntgt": [
+				"這個擴充套件的憑證並不可靠，且尚未被啟用。 \n \n惡意的擴充套件可能存取任何儲存於 Tachiyomi 中的登錄憑證，或執行任意的程式碼。 \n \n信任這個憑證，即表示你願意承擔上述風險。"
+			],
 			"ts": 1642896537928
 		},
 		{
@@ -1487,13 +1497,17 @@
 		{
 			"guid": "vb6M0a5p7nlhFaVF25AqUDe_RGdqcsxarx6UG_GsqDg",
 			"q": 70,
-			"tgt": "標記全部章節為已讀?",
+			"ntgt": [
+				"標記全部章節為已讀?"
+			],
 			"ts": 1642896537928
 		},
 		{
 			"guid": "fIe7OJGoVZirD43ou4RVwBOAP5yU7sh56qU22laqs70",
 			"q": 70,
-			"tgt": "標記全部章節為未讀?",
+			"ntgt": [
+				"標記全部章節為未讀?"
+			],
 			"ts": 1642896537928
 		},
 		{
@@ -2088,7 +2102,9 @@
 		{
 			"guid": "PhjBH-rKHup-EgEYqgYdtaGWiXltWX6_6ptAADdQ3kE",
 			"q": 70,
-			"tgt": "還原時需連線至來源以取得資料，可能要支付數據傳輸費用。 \n \n在進行還原前，請確認你已安裝所需的擴充套件，並已登入至歷程平台及要求身分認證的來源。",
+			"ntgt": [
+				"還原時需連線至來源以取得資料，可能要支付數據傳輸費用。 \n \n在進行還原前，請確認你已安裝所需的擴充套件，並已登入至歷程平台及要求身分認證的來源。"
+			],
 			"ts": 1642896537928
 		},
 		{

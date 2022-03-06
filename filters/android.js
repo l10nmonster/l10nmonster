@@ -5,15 +5,9 @@
 
 import { XMLParser, XMLBuilder } from 'fast-xml-parser';
 import xmlFormatter from 'xml-formatter';
-import { xmlCDataDecoder, xmlEntityDecoder, androidEscapesDecoder, androidEscapesEncoder,
-    xmlEntityEncoder } from '../normalizers/regex.js';
 
-function collapseTextNodesAndDecode(node) {
-    const collapsedText = node.map(e => e['#text']).join('').trim();
-    const afterStrippingCData = xmlCDataDecoder([ collapsedText ]).join('');
-    const afterXmlEntities = xmlEntityDecoder([ afterStrippingCData ]).join('');
-    const afterSpaceCollapse = afterXmlEntities.replaceAll(/[ \f\n\r\t\v\u2028\u2029]+/g, ' ');
-    return androidEscapesDecoder([ afterSpaceCollapse ]).join('');
+function collapseTextNodes(node) {
+    return node.map(e => e['#text']).join('').trim();
 }
 
 const resourceReferenceRegex=/^@(?:[0-9A-Za-z_$]+:)?[0-9A-Za-z_$]+\/[0-9A-Za-z_$]+$/;
@@ -50,7 +44,7 @@ export class AndroidFilter {
                     if ('#comment' in resNode) {
                         lastComment = resNode['#comment'].map(e => e['#text']).join('').trim();
                     } else if ('string' in resNode) {
-                        const str = collapseTextNodesAndDecode(resNode.string);
+                        const str = collapseTextNodes(resNode.string);
                         if (isTranslatableNode(resNode, str)) {
                             const seg = {
                                 sid: resNode[':@'].name,
@@ -64,7 +58,7 @@ export class AndroidFilter {
                             const seg = {
                                 sid: `${resNode[':@'].name}_${itemNode[':@'].quantity}`,
                                 isSuffixPluralized: true,
-                                str: collapseTextNodesAndDecode(itemNode.item)
+                                str: collapseTextNodes(itemNode.item)
                             };
                             lastComment && (seg.notes = lastComment);
                             segments.push(seg);
@@ -103,14 +97,14 @@ export class AndroidFilter {
             if ('resources' in rootNode) {
                 for (const resNode of rootNode.resources) {
                     if ('string' in resNode) {
-                        const str = collapseTextNodesAndDecode(resNode.string);
+                        const str = collapseTextNodes(resNode.string);
                         if (isTranslatableNode(resNode, str)) {
                             const translation = await translator(resNode[':@'].name, str);
                             if (translation === undefined) {
                                 nodesToDelete.push(resNode);
                             } else {
                                 translated++;
-                                resNode.string = [ { '#text': xmlEntityEncoder(androidEscapesEncoder(translation)) } ];
+                                resNode.string = [ { '#text': translation } ];
                             }
                         } else {
                             nodesToDelete.push(resNode);
@@ -118,11 +112,11 @@ export class AndroidFilter {
                     } else if ('plurals' in resNode) { // TODO: deal with plurals of the target language, not the source
                         let dropPlural = false;
                         for (const itemNode of resNode.plurals) {
-                            const translation = await translator(`${resNode[':@'].name}_${itemNode[':@'].quantity}`, collapseTextNodesAndDecode(itemNode.item));
+                            const translation = await translator(`${resNode[':@'].name}_${itemNode[':@'].quantity}`, collapseTextNodes(itemNode.item));
                             if (translation === undefined) {
                                 dropPlural = true;
                             } else {
-                                itemNode.item = [ { '#text': xmlEntityEncoder(androidEscapesEncoder(translation)) } ];
+                                itemNode.item = [ { '#text': translation } ];
                             }
                         }
                         if (dropPlural) {

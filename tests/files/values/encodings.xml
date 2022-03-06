@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cdata"><![CDATA[gotta 'love' this!]]></string>
+    <string name="quotes">"it's magic"</string>
+    <string name="chapter_x_of_y">Chapter %1$d of %2$d</string>
+    <string name="quotes">nothing to "see" here\n </string>
+    <string name="space">" space "</string>
+    <string name="spaceTrimming">  sp    ace  </string>
+    <string name="new">What\'s new\n</string>
+  </resources>

@@ -12,19 +12,27 @@
 		},
 		{
 			"sid": "external_storage_permission_notice",
+			"gstr": "TachiyomiJ2K requires access to all files in Android 11 to download chapters, create automatic backups, and read local manga. \n\nOn the next screen, enable \"Allow access to manage all files.\"",
 			"guid": "ehbg6jluBWm1ZPyw00Prf4lbXtVyLJItrCrATkSEYGI",
 			"contentType": "default",
-			"src": "TachiyomiJ2K requires access to all files in Android 11 to download chapters, create automatic backups, and read local manga. \n\nOn the next screen, enable \"Allow access to manage all files.\"",
+			"src": "TachiyomiJ2K requires access to all files in Android 11 to download chapters, create automatic backups, and read local manga. \\n\\nOn the next screen, enable \\\"Allow access to manage all files.\\\"",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"TachiyomiJ2K requires access to all files in Android 11 to download chapters, create automatic backups, and read local manga. \n\nOn the next screen, enable \"Allow access to manage all files.\""
+			]
 		},
 		{
 			"sid": "external_storage_download_notice",
+			"gstr": "TachiyomiJ2K requires access to all files to download chapters. Tap here, then enable \"Allow access to manage all files.\"",
 			"guid": "0TJzTyqgSESA9Z13x0gjdb2SSI0vFps-a1UhezJeIUA",
 			"contentType": "default",
-			"src": "TachiyomiJ2K requires access to all files to download chapters. Tap here, then enable \"Allow access to manage all files.\"",
+			"src": "TachiyomiJ2K requires access to all files to download chapters. Tap here, then enable \\\"Allow access to manage all files.\\\"",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"TachiyomiJ2K requires access to all files to download chapters. Tap here, then enable \"Allow access to manage all files.\""
+			]
 		},
 		{
 			"sid": "manga",
@@ -137,6 +145,7 @@
 		{
 			"sid": "move_x_to",
 			"notes": "Manga",
+			"gstr": "Move {{x}} to…",
 			"guid": "qyy12nArwMG9YWSYvSYn6WvDU0oILdKhax33HGh2ZRI",
 			"contentType": "default",
 			"src": "Move %1$s to…",
@@ -154,6 +163,7 @@
 		{
 			"sid": "add_x_to",
 			"notes": "Manga",
+			"gstr": "Add {{x}} to…",
 			"guid": "bi_qIE1R6Oqc09vlq-RIHgB7SehgKWCfqyeEEwDLjuQ",
 			"contentType": "default",
 			"src": "Add %1$s to…",
@@ -279,6 +289,7 @@
 		{
 			"sid": "last_read_chapter_",
 			"notes": "Chapters",
+			"gstr": "Last read Chapter {{x}}",
 			"guid": "kZpwHijg068LeT08ANJVZ4v5n9kO6N4dWo9XMuADrms",
 			"contentType": "default",
 			"src": "Last read Chapter %1$s",
@@ -295,6 +306,7 @@
 		{
 			"sid": "chapter_",
 			"notes": "Chapters",
+			"gstr": "Chapter {{x}}",
 			"guid": "VNFJrEtasSsxhW7I_SASmWbqKbGm-DB6zGqeT1T3pFg",
 			"contentType": "default",
 			"src": "Chapter %1$s",
@@ -311,6 +323,7 @@
 		{
 			"sid": "chapter_x_of_y",
 			"notes": "Chapters",
+			"gstr": "Chapter {{x}} of {{x}}",
 			"guid": "sz5VG6XU2cIa2wlQX17vYlxhFFkUQP4SNc4Tuf0XWoM",
 			"contentType": "default",
 			"src": "Chapter %1$d of %2$d",
@@ -440,11 +453,15 @@
 		{
 			"sid": "by_source_order",
 			"notes": "Chapters",
+			"gstr": "By source's order",
 			"guid": "a5ns947pdrJnqiF2ZooyCjrJFnqIZ4Jy5QqbF3st9QY",
 			"contentType": "default",
-			"src": "By source's order",
+			"src": "By source\\'s order",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"By source's order"
+			]
 		},
 		{
 			"sid": "by_chapter_number",
@@ -477,6 +494,7 @@
 			"sid": "remove_n_chapters_one",
 			"isSuffixPluralized": true,
 			"notes": "Chapters",
+			"gstr": "Remove {{x}} downloaded chapter?",
 			"guid": "t4VWxI0XBS7jJwzcIpjyWz95PtQe0nM2xUjvN4A1U_4",
 			"contentType": "default",
 			"src": "Remove %1$d downloaded chapter?",
@@ -495,6 +513,7 @@
 			"sid": "remove_n_chapters_other",
 			"isSuffixPluralized": true,
 			"notes": "Chapters",
+			"gstr": "Remove {{x}} downloaded chapters?",
 			"guid": "p7jJcpu_ZOzMod7iebzwKDCR2JYb4Qef0D1lq2MQLKg",
 			"contentType": "default",
 			"src": "Remove %1$d downloaded chapters?",
@@ -513,6 +532,7 @@
 			"sid": "chapters_plural_one",
 			"isSuffixPluralized": true,
 			"notes": "Chapters",
+			"gstr": "{{x}} chapter",
 			"guid": "1d7HtgdwLMLoxTTiv83rLZkKjkpfAmsehateH09g4gc",
 			"contentType": "default",
 			"src": "%1$d chapter",
@@ -530,6 +550,7 @@
 			"sid": "chapters_plural_other",
 			"isSuffixPluralized": true,
 			"notes": "Chapters",
+			"gstr": "{{x}} chapters",
 			"guid": "qwYhEI77stoakCdt86oc0Z9IcmbpLN19jqquS_d2WL0",
 			"contentType": "default",
 			"src": "%1$d chapters",
@@ -547,6 +568,7 @@
 			"sid": "pages_left_one",
 			"isSuffixPluralized": true,
 			"notes": "Chapters",
+			"gstr": "{{x}} page left",
 			"guid": "2udl0hvWKKtR3kYZ1ZxvWfGf6Sq6I_AP1i91nZoJRuU",
 			"contentType": "default",
 			"src": "%1$d page left",
@@ -564,6 +586,7 @@
 			"sid": "pages_left_other",
 			"isSuffixPluralized": true,
 			"notes": "Chapters",
+			"gstr": "{{x}} pages left",
 			"guid": "cwofMrt4vcR72muKJgdj3ynRXfS-8kRankY4lw_Cmm4",
 			"contentType": "default",
 			"src": "%1$d pages left",
@@ -598,6 +621,7 @@
 		{
 			"sid": "adding_category_to_queue",
 			"notes": "Category",
+			"gstr": "Adding {{x}} to update queue",
 			"guid": "dID_EzHEAL6z9VEJmNY3m-5v1JRiZ7kbArCUCG7zzEo",
 			"contentType": "default",
 			"src": "Adding %1$s to update queue",
@@ -615,6 +639,7 @@
 		{
 			"sid": "_already_in_queue",
 			"notes": "Category",
+			"gstr": "{{x}} is already in queue",
 			"guid": "-CI-B_fkcR7jeeS4cH4AWqOZ0ENh5TRKcwju6Ia0zAA",
 			"contentType": "default",
 			"src": "%1$s is already in queue",
@@ -676,6 +701,7 @@
 		{
 			"sid": "top_category",
 			"notes": "Category",
+			"gstr": "Top category ({{x}})",
 			"guid": "4GXpmlw4Taq7yKQyTwSQUIm6gXsdKi8xT5lg0BskTbM",
 			"contentType": "default",
 			"src": "Top category (%1$s)",
@@ -738,11 +764,15 @@
 		{
 			"sid": "confirm_category_deletion_message",
 			"notes": "Category",
+			"gstr": "Manga in this category will moved into the default category.",
 			"guid": "Z5R54ptkf0KSzqHSXbTpgusMBDC0AnVs5HlxwFuBn_g",
 			"contentType": "default",
-			"src": "Manga in this category will moved into the default category.",
+			"src": "Manga in this category will moved into the\n        default category.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"Manga in this category will moved into the default category."
+			]
 		},
 		{
 			"sid": "already_in_category",
@@ -802,6 +832,7 @@
 			"sid": "category_plural_one",
 			"isSuffixPluralized": true,
 			"notes": "Category",
+			"gstr": "{{x}} category",
 			"guid": "PR-mra8oJXYjh-iGJbPWRJ93cqMsnv3I9kI-KHWftDI",
 			"contentType": "default",
 			"src": "%d category",
@@ -819,6 +850,7 @@
 			"sid": "category_plural_other",
 			"isSuffixPluralized": true,
 			"notes": "Category",
+			"gstr": "{{x}} categories",
 			"guid": "xIQ8JakD15UWHPlTjfDfsR_DppXZXRKrIBcVjpnIUH0",
 			"contentType": "default",
 			"src": "%d categories",
@@ -898,6 +930,7 @@
 		{
 			"sid": "updating_",
 			"notes": "Updates",
+			"gstr": "Updating {{x}}",
 			"guid": "R9Wl42FJ2T6ZFFSSaMoGXjPle4BfCSiAk7BqsNC94lM",
 			"contentType": "default",
 			"src": "Updating %1$s",
@@ -1004,6 +1037,7 @@
 		{
 			"sid": "selected_",
 			"notes": "Library",
+			"gstr": "Selected: {{x}}",
 			"guid": "YHsB_l4J3SLIHrDQP5mpuQvIaON0iySnr9D2qzz0TvA",
 			"contentType": "default",
 			"src": "Selected: %1$d",
@@ -1047,11 +1081,15 @@
 		{
 			"sid": "library_is_empty_add_from_browse",
 			"notes": "Library",
+			"gstr": "Your library is empty, add series to your library from the browse tab.",
 			"guid": "lquVLLePK40yidM6TxG2TmQzi_V53wQ9fGVOUNboTb4",
 			"contentType": "default",
-			"src": "Your library is empty, add series to your library from the browse tab.",
+			"src": "Your library is empty, add series to your\n        library from the browse tab.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"Your library is empty, add series to your library from the browse tab."
+			]
 		},
 		{
 			"sid": "no_matches_for_filters",
@@ -1173,6 +1211,7 @@
 		{
 			"sid": "_unread",
 			"notes": "Library",
+			"gstr": "{{x}} unread",
 			"guid": "UhTDYUwAeKJFGb0P_EcHv0CRAU_7r4nf4uO_eWO-6oI",
 			"contentType": "default",
 			"src": "%d unread",
@@ -1189,9 +1228,10 @@
 		{
 			"sid": "search_globally",
 			"notes": "Library",
+			"gstr": "Search \"{{x}}\" globally",
 			"guid": "0Q0F8OAUKt9tljw33vEGxWOZgWoYsdvzbYGYyhonqbk",
 			"contentType": "default",
-			"src": "Search \"%1$s\" globally",
+			"src": "Search \\\"%1$s\\\" globally",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1642896537928,
 			"nsrc": [
@@ -1323,11 +1363,15 @@
 		{
 			"sid": "drag_and_drop",
 			"notes": "Library Sort",
+			"gstr": "Drag & Drop",
 			"guid": "DMMCd9TlUjweJCvkzAet30izdq29jjibSAaLenVC_Ho",
 			"contentType": "default",
-			"src": "Drag & Drop",
+			"src": "Drag &amp; Drop",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"Drag & Drop"
+			]
 		},
 		{
 			"sid": "display_options",
@@ -1431,6 +1475,7 @@
 		{
 			"sid": "_per_row",
 			"notes": "Library Display",
+			"gstr": "{{x}} per row",
 			"guid": "6hn5KZLsLGETvPcxkQGVslKsEirgO05tR8I6LUoruAc",
 			"contentType": "default",
 			"src": "%d per row",
@@ -1547,6 +1592,7 @@
 			"sid": "for_n_titles_one",
 			"isSuffixPluralized": true,
 			"notes": "Library update service notifications",
+			"gstr": "For {{x}} title",
 			"guid": "nn9ifCxTi0t0nXPKjjqANSd9RsYNb7nXBbc0e-L1MBY",
 			"contentType": "default",
 			"src": "For %d title",
@@ -1565,6 +1611,7 @@
 			"sid": "for_n_titles_other",
 			"isSuffixPluralized": true,
 			"notes": "Library update service notifications",
+			"gstr": "For {{x}} titles",
 			"guid": "9xj-HFVJXt2nNpthtY1LQ-fzWVcARPZvaiL2c39B23w",
 			"contentType": "default",
 			"src": "For %d titles",
@@ -1583,6 +1630,7 @@
 			"sid": "notification_and_n_more_one",
 			"isSuffixPluralized": true,
 			"notes": "Library update service notifications",
+			"gstr": "and {{x}} more chapter",
 			"guid": "i6ms_Au63GlXHZGXAcuj1OlRcD9GhIwb0mR2FlStmOo",
 			"contentType": "default",
 			"src": "and %1$d more chapter",
@@ -1601,6 +1649,7 @@
 			"sid": "notification_and_n_more_other",
 			"isSuffixPluralized": true,
 			"notes": "Library update service notifications",
+			"gstr": "and {{x}} more chapters",
 			"guid": "67xZqBzSLejsIoJhJeoe41TLoKsEqXHdzFIIP8ysYJs",
 			"contentType": "default",
 			"src": "and %1$d more chapters",
@@ -1629,6 +1678,7 @@
 			"sid": "notification_update_failed_other",
 			"isSuffixPluralized": true,
 			"notes": "Library update service notifications",
+			"gstr": "{{x}} updates failed",
 			"guid": "RLiMnzoXrJq8vp-WZubFf2M9nJtwc2tP_d8VRdv1W8w",
 			"contentType": "default",
 			"src": "%1$d updates failed",
@@ -1690,6 +1740,7 @@
 		{
 			"sid": "restrictions_",
 			"notes": "Library settings",
+			"gstr": "Restrictions: {{x}}",
 			"guid": "QlC_YuVsWOmivCrLSW068P3410uxlebLMQI6Y2APaqA",
 			"contentType": "default",
 			"src": "Restrictions: %1$s",
@@ -1724,11 +1775,15 @@
 		{
 			"sid": "when_sorting_ignore_articles",
 			"notes": "Library settings",
+			"gstr": "When sorting alphabetically, sort ignoring articles (a, an, the) at the start of manga titles",
 			"guid": "gX2qXw9h04nSkWqum0JX_lrXBPrnakCiXfhaqiVV8OM",
 			"contentType": "default",
-			"src": "When sorting alphabetically, sort ignoring articles (a, an, the) at the start of manga titles",
+			"src": "When sorting alphabetically, sort ignoring\n        articles (a, an, the) at the start of manga titles",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"When sorting alphabetically, sort ignoring articles (a, an, the) at the start of manga titles"
+			]
 		},
 		{
 			"sid": "categories_to_include_in_global_update",
@@ -1760,11 +1815,15 @@
 		{
 			"sid": "auto_refresh_covers_summary",
 			"notes": "Library settings",
+			"gstr": "Refresh covers in library as well when updating library",
 			"guid": "VCIW6HRhoeMhpQUhRuDv4rLKq9LG90yl1F5zV-xbvQU",
 			"contentType": "default",
-			"src": "Refresh covers in library as well when updating library",
+			"src": "Refresh covers in library as well\n        when updating library",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"Refresh covers in library as well when updating library"
+			]
 		},
 		{
 			"sid": "global_updates",
@@ -1823,11 +1882,15 @@
 		{
 			"sid": "updates_and_history",
 			"notes": "Recents",
+			"gstr": "Updates & history",
 			"guid": "8_2VD6CoQQwIG6KI5Gi0GBE4gSJnn5YXcgUHUr7tvXE",
 			"contentType": "default",
-			"src": "Updates & history",
+			"src": "Updates &amp; history",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"Updates & history"
+			]
 		},
 		{
 			"sid": "updates",
@@ -1877,9 +1940,10 @@
 		{
 			"sid": "this_will_remove_the_read_date_for_x_question",
 			"notes": "Recents",
+			"gstr": "This will remove the read date of \"{{x}}\". Are you sure?",
 			"guid": "XmyxBrSHE9usAFFCG2vPzxT10mP3VHeH1CsWjzkIpZg",
 			"contentType": "default",
-			"src": "This will remove the read date of \"%1$s\". Are you sure?",
+			"src": "This will remove the read date of\n        \\\"%1$s\\\". Are you sure?",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1642896537928,
 			"nsrc": [
@@ -1894,15 +1958,20 @@
 		{
 			"sid": "this_will_remove_the_read_date_question",
 			"notes": "Recents",
+			"gstr": "This will remove the read date of this chapter. Are you sure?",
 			"guid": "x3TEe4A97_mGw4nWI9E7Z9-WfUrxRSmYZR0IRK24l14",
 			"contentType": "default",
-			"src": "This will remove the read date of this chapter. Are you sure?",
+			"src": "This will remove the read date of this\n        chapter. Are you sure?",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"This will remove the read date of this chapter. Are you sure?"
+			]
 		},
 		{
 			"sid": "reset_all_chapters_for_this_",
 			"notes": "Recents",
+			"gstr": "Reset all chapters for this {{x}}",
 			"guid": "fC_356xy32C7odgnD6x_BAF1M8BL09LYq_AYDWMJoww",
 			"contentType": "default",
 			"src": "Reset all chapters for this %1$s",
@@ -1919,6 +1988,7 @@
 		{
 			"sid": "last_read_",
 			"notes": "Recents",
+			"gstr": "Last read {{x}}",
 			"guid": "-bYJgDGQXbmL4g_0gpKbwEHkH7eWo0cl7zRzYyn4r0M",
 			"contentType": "default",
 			"src": "Last read %1$s",
@@ -1935,6 +2005,7 @@
 		{
 			"sid": "read_",
 			"notes": "Recents",
+			"gstr": "Read {{x}}",
 			"guid": "LB5CD-tAbq-svs9PEjaUwWSgEMffx0GiHN8cf1-_fbU",
 			"contentType": "default",
 			"src": "Read %1$s",
@@ -1951,6 +2022,7 @@
 		{
 			"sid": "updated_",
 			"notes": "Recents",
+			"gstr": "Updated {{x}}",
 			"guid": "J07LWB4b1QilfozxRx51_cUQrthjI3HIuxbhfFEhCU4",
 			"contentType": "default",
 			"src": "Updated %1$s",
@@ -1967,6 +2039,7 @@
 		{
 			"sid": "added_",
 			"notes": "Recents",
+			"gstr": "Added {{x}}",
 			"guid": "_SAZorPrF5hhU5oP3l6AMfgbnFj502nP0cEMTzM6Zjw",
 			"contentType": "default",
 			"src": "Added %1$s",
@@ -1983,6 +2056,7 @@
 		{
 			"sid": "fetched_",
 			"notes": "Recents",
+			"gstr": "Fetched {{x}}",
 			"guid": "18cGsSZgW56fk4r4-oUR8Z-wVtXtQjs1knIQhisPyQE",
 			"contentType": "default",
 			"src": "Fetched %1$s",
@@ -2458,11 +2532,15 @@
 		{
 			"sid": "untrusted_extension_message",
 			"notes": "Extensions",
+			"gstr": "This extension was signed with an untrusted certificate and wasn't activated.\n\nA malicious extension could read any login credentials stored in Tachiyomi or execute arbitrary code.\n\nBy trusting this certificate you accept these risks.",
 			"guid": "5i1qeSgTv4eK9tMokbsNzyBFy4aeu_6h0nSNcgRxpEw",
 			"contentType": "default",
-			"src": "This extension was signed with an untrusted certificate and wasn't activated.\n\nA malicious extension could read any login credentials stored in Tachiyomi or execute arbitrary code.\n\nBy trusting this certificate you accept these risks.",
+			"src": "This extension was signed with an untrusted certificate and wasn\\'t activated.\\n\\nA malicious extension could read any login credentials stored in Tachiyomi or execute arbitrary code.\\n\\nBy trusting this certificate you accept these risks.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"This extension was signed with an untrusted certificate and wasn't activated.\n\nA malicious extension could read any login credentials stored in Tachiyomi or execute arbitrary code.\n\nBy trusting this certificate you accept these risks."
+			]
 		},
 		{
 			"sid": "obsolete_extension_message",
@@ -2485,6 +2563,7 @@
 		{
 			"sid": "version_",
 			"notes": "Extensions",
+			"gstr": "Version: {{x}}",
 			"guid": "mvCSc-9yryS7Ofj0A_wL0bqca5JHjTYWlk8605Z-VQU",
 			"contentType": "default",
 			"src": "Version: %1$s",
@@ -2501,6 +2580,7 @@
 		{
 			"sid": "language_",
 			"notes": "Extensions",
+			"gstr": "Language: {{x}}",
 			"guid": "TwrJr2RHXOSAMDZgpROxE8cXWkCRS3GToOTAkCoaaAc",
 			"contentType": "default",
 			"src": "Language: %1$s",
@@ -2526,6 +2606,7 @@
 		{
 			"sid": "installed_",
 			"notes": "Extensions",
+			"gstr": "Installed {{x}}",
 			"guid": "s7vmRSqvrrdDCP2CC42Mu4top-dqct55ZDXfFJ0lTWw",
 			"contentType": "default",
 			"src": "Installed %1$s",
@@ -2578,6 +2659,7 @@
 		{
 			"sid": "_must_be_enabled_first",
 			"notes": "Extensions",
+			"gstr": "{{x}} must be enabled first",
 			"guid": "j5g8prmlQCN59zCYtiyibcH_8MTrHOmsI8htpM1CPVY",
 			"contentType": "default",
 			"src": "%1$s must be enabled first",
@@ -2631,6 +2713,7 @@
 			"sid": "_updates_pending_one",
 			"isSuffixPluralized": true,
 			"notes": "Extensions",
+			"gstr": "{{x}} update pending",
 			"guid": "-BgwQxYmz_OcJgZCUZeNEhbIn71aeYWQLfqDzIdO5-A",
 			"contentType": "default",
 			"src": "%d update pending",
@@ -2648,6 +2731,7 @@
 			"sid": "_updates_pending_other",
 			"isSuffixPluralized": true,
 			"notes": "Extensions",
+			"gstr": "{{x}} updates pending",
 			"guid": "DZ_sc6S4EfGY49WXOACTA14IzN7IGl__L84uf8WbSwc",
 			"contentType": "default",
 			"src": "%d updates pending",
@@ -2684,6 +2768,7 @@
 			"sid": "extensions_updated_plural_other",
 			"isSuffixPluralized": true,
 			"notes": "Extensions",
+			"gstr": "{{x}} extensions updated",
 			"guid": "E7eIPBUFNkUQCaPZAqanJVmi_cYO9S0JCeKB3Trm0S4",
 			"contentType": "default",
 			"src": "%d extensions updated",
@@ -2711,6 +2796,7 @@
 			"sid": "extension_updates_available_other",
 			"isSuffixPluralized": true,
 			"notes": "Extensions",
+			"gstr": "{{x}} extension updates available",
 			"guid": "fFztA8BpN5ztR940iRrxRzG6kccQjtTmucxkNGh6npk",
 			"contentType": "default",
 			"src": "%d extension updates available",
@@ -2763,6 +2849,7 @@
 		{
 			"sid": "page_",
 			"notes": "Reader",
+			"gstr": "Page {{x}}",
 			"guid": "EnR5B-t_Ampr-_FK6FCuwfxnUna0-VNGNQL73mm1j_Q",
 			"contentType": "default",
 			"src": "Page %1$d",
@@ -2779,6 +2866,7 @@
 		{
 			"sid": "pages_",
 			"notes": "Reader",
+			"gstr": "Pages {{x}}",
 			"guid": "UKK9CJGLt82KF7IqPt9NB-bHsvmne8m6JVAO-LC2Ntg",
 			"contentType": "default",
 			"src": "Pages %1$s",
@@ -2876,20 +2964,28 @@
 		{
 			"sid": "theres_no_next_chapter",
 			"notes": "Reader",
+			"gstr": "There's no next chapter",
 			"guid": "6sT9eOh-YFpLlMtqSLgsuD_avu1ljtGpnl6rQ1BXgFE",
 			"contentType": "default",
-			"src": "There's no next chapter",
+			"src": "There\\'s no next chapter",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"There's no next chapter"
+			]
 		},
 		{
 			"sid": "theres_no_previous_chapter",
 			"notes": "Reader",
+			"gstr": "There's no previous chapter",
 			"guid": "3_5VuY-h5PQRaBiH61VNzkCK5d2Ckp8mECsUPeMJER0",
 			"contentType": "default",
-			"src": "There's no previous chapter",
+			"src": "There\\'s no previous chapter",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"There's no previous chapter"
+			]
 		},
 		{
 			"sid": "loading_pages",
@@ -2903,6 +2999,7 @@
 		{
 			"sid": "failed_to_load_pages_",
 			"notes": "Reader",
+			"gstr": "Failed to load pages: {{x}}",
 			"guid": "UoUrj8RDjA-Dro_MlGIdIgAe1JtU1ux5tV_1JvQ9Aw8",
 			"contentType": "default",
 			"src": "Failed to load pages: %1$s",
@@ -2919,6 +3016,7 @@
 		{
 			"sid": "reading_",
 			"notes": "Reader",
+			"gstr": "Reading {{x}}",
 			"guid": "wKFZJn57ACjX_t201lY5WbxY6xfsfi11ssSbwb6nfUs",
 			"contentType": "default",
 			"src": "Reading %1$s",
@@ -3124,11 +3222,15 @@
 		{
 			"sid": "reduces_banding_impacts_performance",
 			"notes": "Reader settings",
+			"gstr": "Reduces banding, but impacts performance",
 			"guid": "KhQBQDYldIJeYyASM34BR-9ILkPBggtCSCM73BnXGfc",
 			"contentType": "default",
-			"src": "Reduces banding, but impacts performance",
+			"src": "Reduces banding, but impacts\n        performance",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"Reduces banding, but impacts performance"
+			]
 		},
 		{
 			"sid": "invert_double_pages",
@@ -3646,11 +3748,15 @@
 		{
 			"sid": "if_disabled_transition_will_skip",
 			"notes": "Reader settings",
+			"gstr": "If disabled, the transition page will be skipped if the next chapter is loaded",
 			"guid": "W8IL7FndWDq-7-mwh7RdfpnZ-3SJj5ffNGNhAZG8S1s",
 			"contentType": "default",
-			"src": "If disabled, the transition page will be skipped if the next chapter is loaded",
+			"src": "If disabled, the transition page will be\n        skipped if the next chapter is loaded",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"If disabled, the transition page will be skipped if the next chapter is loaded"
+			]
 		},
 		{
 			"sid": "pref_webtoon_side_padding",
@@ -3908,6 +4014,7 @@
 			"sid": "pages_plural_one",
 			"isSuffixPluralized": true,
 			"notes": "Reader settings",
+			"gstr": "{{x}} page",
 			"guid": "ftTBQ9mT8jzVQTlzVQThq84qga7aRnm1A_EmQPZ62tE",
 			"contentType": "default",
 			"src": "%1$d page",
@@ -3925,6 +4032,7 @@
 			"sid": "pages_plural_other",
 			"isSuffixPluralized": true,
 			"notes": "Reader settings",
+			"gstr": "{{x}} pages",
 			"guid": "oXUmwOmJSilJYNINjFscNXUcar5msRG4KX7zU-4zQ5A",
 			"contentType": "default",
 			"src": "%1$d pages",
@@ -3952,6 +4060,7 @@
 			"sid": "missing_chapters_warning_other",
 			"isSuffixPluralized": true,
 			"notes": "Reader settings",
+			"gstr": "Skipping {{x}} chapters, either the source is missing them or they have been filtered out",
 			"guid": "Pc2BUXJyZZ3NM7dQk4gQW86gJoZmz9yFo__l8s4e9MY",
 			"contentType": "default",
 			"src": "Skipping %d chapters, either the source is missing them or they have been filtered out",
@@ -3969,6 +4078,7 @@
 		{
 			"sid": "about_this_",
 			"notes": "Manga details",
+			"gstr": "About this {{x}}",
 			"guid": "rXnFisSe-TCQMWVdPr043XAD3SjPf9t7nr3_A3JFQ4Q",
 			"contentType": "default",
 			"src": "About this %1$s",
@@ -3994,6 +4104,7 @@
 		{
 			"sid": "start_reading_chapter_",
 			"notes": "Manga details",
+			"gstr": "Start reading Chapter {{x}}",
 			"guid": "dhYxjTjRurEmRtDpvPA7Dmqy-aolxGSAbtnMeV0t7_0",
 			"contentType": "default",
 			"src": "Start reading Chapter %1$s",
@@ -4010,6 +4121,7 @@
 		{
 			"sid": "continue_reading_chapter_",
 			"notes": "Manga details",
+			"gstr": "Continue reading Chapter {{x}}",
 			"guid": "VSx02unAfVpZMZjM5Ch1lClXeTWa_hZl1DBlD9g4BHE",
 			"contentType": "default",
 			"src": "Continue reading Chapter %1$s",
@@ -4035,6 +4147,7 @@
 		{
 			"sid": "chapters_",
 			"notes": "Manga details",
+			"gstr": "Chapters {{x}}",
 			"guid": "F1RxS0BEDD6TIHPdzRKw9ICZjpNvfpJRu4cj-9lfGoc",
 			"contentType": "default",
 			"src": "Chapters %1$s",
@@ -4051,6 +4164,7 @@
 		{
 			"sid": "volume_",
 			"notes": "Manga details",
+			"gstr": "Volume {{x}}",
 			"guid": "4vSXPlqV-jor93w4akoHBtcFnxQkH294qUAPtwQzaXw",
 			"contentType": "default",
 			"src": "Volume %1$d",
@@ -4067,6 +4181,7 @@
 		{
 			"sid": "season_",
 			"notes": "Manga details",
+			"gstr": "Season {{x}}",
 			"guid": "AkTWm10nlkUtHs0SpqUi4J_fWfhHrtuPiIap8FfKdNY",
 			"contentType": "default",
 			"src": "Season %1$d",
@@ -4110,6 +4225,7 @@
 		{
 			"sid": "_copied_to_clipboard",
 			"notes": "Manga details",
+			"gstr": "{{x}} copied to clipboard",
 			"guid": "QSmAX5m679wB0QyJtbDO2kU8UNCbW8w4IL9BjyLisIU",
 			"contentType": "default",
 			"src": "%1$s copied to clipboard",
@@ -4126,6 +4242,7 @@
 		{
 			"sid": "source_not_installed_",
 			"notes": "Manga details",
+			"gstr": "Source not installed: {{x}}",
 			"guid": "tWY-2CNXp4Bgu0ORF0YJvuSxU9JDAUqON9ZoFdrEirc",
 			"contentType": "default",
 			"src": "Source not installed: %1$s",
@@ -4268,6 +4385,7 @@
 		{
 			"sid": "add_x_to_library",
 			"notes": "Manga details",
+			"gstr": "Add {{x}} to library?",
 			"guid": "lP7I0GvSzdCUMNPu5MZnqO1hE9KRTmW295hArhuKyq4",
 			"contentType": "default",
 			"src": "Add %1$s to library?",
@@ -4339,11 +4457,15 @@
 		{
 			"sid": "sort_by_source_s_order",
 			"notes": "Manga details",
+			"gstr": "Sort by source's order",
 			"guid": "LNfxBPO_lVWgBayQDFluUF42ycjQ1VaJXg0ytvQZmo0",
 			"contentType": "default",
-			"src": "Sort by source's order",
+			"src": "Sort by source\\'s order",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"Sort by source's order"
+			]
 		},
 		{
 			"sid": "sort_by_chapter_number",
@@ -4502,9 +4624,10 @@
 			"sid": "deleted_chapters_one",
 			"isSuffixPluralized": true,
 			"notes": "Manga details",
+			"gstr": "A chapter has been removed from the source:\n{{x}}\nDelete its download?",
 			"guid": "SSZERtfZuYpDYos6-_VXWBeWY2P0LQQBQ5wwygKih98",
 			"contentType": "default",
-			"src": "A chapter has been removed from the source:\n%2$s\nDelete its download?",
+			"src": "A chapter has been removed from the source:\\n%2$s\\nDelete\n            its download?",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1642896537928,
 			"nsrc": [
@@ -4520,9 +4643,10 @@
 			"sid": "deleted_chapters_other",
 			"isSuffixPluralized": true,
 			"notes": "Manga details",
+			"gstr": "{{x}} chapters have been removed from the source:\n{{x}}\n\nDelete their downloads?",
 			"guid": "SMy5CDGGN0GtdJzMKHTWbjT3VqLYuEtNpEvWA5bRmLc",
 			"contentType": "default",
-			"src": "%1$s chapters have been removed from the source:\n%2$s\n\nDelete their downloads?",
+			"src": "%1$s chapters have been removed from the source:\\n%2$s\\n\\nDelete\n            their downloads?",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1642896537928,
 			"nsrc": [
@@ -4775,6 +4899,7 @@
 		{
 			"sid": "cannot_remove_tracking_while_offline",
 			"notes": "Tracking",
+			"gstr": "Tracker cannot be removed from {{x}} while offline",
 			"guid": "EtHBbOLybHYJNZnry87GJ1zgXtr-0SCWf3ClP7wf8sY",
 			"contentType": "default",
 			"src": "Tracker cannot be removed from %1$s while offline",
@@ -4792,6 +4917,7 @@
 		{
 			"sid": "remove_tracking_from_",
 			"notes": "Tracking",
+			"gstr": "Also remove from {{x}}",
 			"guid": "p-XaUHnNCFyXbPogKtoVZVRDqAjoRntnmJt5JR4R1rU",
 			"contentType": "default",
 			"src": "Also remove from %1$s",
@@ -4817,6 +4943,7 @@
 		{
 			"sid": "remove_x_from_service_and_add_y",
 			"notes": "Tracking",
+			"gstr": "Remove {{x}} from {{x}} and add {{x}}",
 			"guid": "ehA-L9pQnrjTwKw9o5o3yPjzB8yjhIGNuOhTX96g7xo",
 			"contentType": "default",
 			"src": "Remove %1$s from %2$s and add %3$s",
@@ -4843,6 +4970,7 @@
 		{
 			"sid": "keep_both_on_service",
 			"notes": "Tracking",
+			"gstr": "Keep both on {{x}} and only replace locally",
 			"guid": "PBNBqvQp-lTb7U8FVYhn02_a9p0-R2znZFx5j9sUbpI",
 			"contentType": "default",
 			"src": "Keep both on %1$s and only replace locally",
@@ -4932,11 +5060,15 @@
 		{
 			"sid": "select_a_source_then_item_to_migrate",
 			"notes": "Migration",
+			"gstr": "Select a source, then select an item to migrate",
 			"guid": "ZaFVe22GBI64JdVFR6uX-ObRD-cRk0zIKevux5wEwW4",
 			"contentType": "default",
-			"src": "Select a source, then select an item to migrate",
+			"src": "Select a source, then select an item to\n        migrate",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"Select a source, then select an item to migrate"
+			]
 		},
 		{
 			"sid": "data_to_include_in_migration",
@@ -4995,15 +5127,20 @@
 		{
 			"sid": "to_show_again_setting_sources",
 			"notes": "Migration",
+			"gstr": "To show this screen again, go to Settings -> Sources.",
 			"guid": "40nodRaLIGy39DOdLno37o-CdP-LndXWJmmD06atmsg",
 			"contentType": "default",
-			"src": "To show this screen again, go to Settings -> Sources.",
+			"src": "To show this screen again, go to Settings ->\n        Sources.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"To show this screen again, go to Settings -> Sources."
+			]
 		},
 		{
 			"sid": "latest_",
 			"notes": "Migration",
+			"gstr": "Latest: {{x}}",
 			"guid": "XbpaTzrbCpE1Jod-1pTJUcUejGCs65etNfCLyrjOPCI",
 			"contentType": "default",
 			"src": "Latest: %1$s",
@@ -5029,11 +5166,15 @@
 		{
 			"sid": "dont_migrate",
 			"notes": "Migration",
+			"gstr": "Don't migrate",
 			"guid": "xJFqLVqZOdDwGYAjfbgscpPcA6oGzcIavM_-Mgu3XOg",
 			"contentType": "default",
-			"src": "Don't migrate",
+			"src": "Don\\'t migrate",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"Don't migrate"
+			]
 		},
 		{
 			"sid": "search_manually",
@@ -5074,6 +5215,7 @@
 		{
 			"sid": "migrate_",
 			"notes": "Migration",
+			"gstr": "Migrate {{x}}",
 			"guid": "8UBMozzQQaFAFnGCJ2oCBqqTVxAjdbeLXYrZ5jUkQoQ",
 			"contentType": "default",
 			"src": "Migrate %1$s",
@@ -5099,11 +5241,15 @@
 		{
 			"sid": "no_chapters_found_for_migration",
 			"notes": "Migration",
+			"gstr": "No chapters found, this manga cannot be used for migration",
 			"guid": "dQVWYkXPeFOjGC7dZFl4-qpzZxpKrykPe1si6ZXM47U",
 			"contentType": "default",
-			"src": "No chapters found, this manga cannot be used for migration",
+			"src": "No chapters found, this manga cannot be used for\n        migration",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"No chapters found, this manga cannot be used for migration"
+			]
 		},
 		{
 			"sid": "no_alternatives_found",
@@ -5127,6 +5273,7 @@
 			"sid": "migrate_manga_one",
 			"isSuffixPluralized": true,
 			"notes": "Migration",
+			"gstr": "Migrate {{x}}{{x}} manga?",
 			"guid": "5otAlRi18WJHdTNddhXrbauyBBuNmozvj5T1U3LdNio",
 			"contentType": "default",
 			"src": "Migrate %1$d%2$s manga?",
@@ -5149,6 +5296,7 @@
 			"sid": "migrate_manga_other",
 			"isSuffixPluralized": true,
 			"notes": "Migration",
+			"gstr": "Migrate {{x}}{{x}} manga?",
 			"guid": "NbSotC-esLltIb4qX2tNcSjKPSlGcoWI-D8v8pewC08",
 			"contentType": "default",
 			"src": "Migrate %1$d%2$s manga?",
@@ -5171,6 +5319,7 @@
 			"sid": "copy_manga_one",
 			"isSuffixPluralized": true,
 			"notes": "Migration",
+			"gstr": "Copy {{x}}{{x}} manga?",
 			"guid": "V7Ipy8tVMS_hgViqxAA2GVdKnK2eiylBmpYsz6R23AM",
 			"contentType": "default",
 			"src": "Copy %1$d%2$s manga?",
@@ -5193,6 +5342,7 @@
 			"sid": "copy_manga_other",
 			"isSuffixPluralized": true,
 			"notes": "Migration",
+			"gstr": "Copy {{x}}{{x}} manga?",
 			"guid": "8QzHRFQRgUcTAprTZeAm2ftfggD-_EULwyTccQDeOTA",
 			"contentType": "default",
 			"src": "Copy %1$d%2$s manga?",
@@ -5214,6 +5364,7 @@
 		{
 			"sid": "skipping_",
 			"notes": "Migration",
+			"gstr": "(skipping {{x}})",
 			"guid": "PT1Q-KeWPfn_xxc-bX4Y7GEGvvA-Y19t7vD-todWShg",
 			"contentType": "default",
 			"src": "(skipping %1$d)",
@@ -5232,6 +5383,7 @@
 			"sid": "manga_migrated_one",
 			"isSuffixPluralized": true,
 			"notes": "Migration",
+			"gstr": "{{x}} manga migrated",
 			"guid": "26atAzC3mwZ3kvEaRGvJjuffpG2YiWvLb_0uDvsLPtE",
 			"contentType": "default",
 			"src": "%d manga migrated",
@@ -5249,6 +5401,7 @@
 			"sid": "manga_migrated_other",
 			"isSuffixPluralized": true,
 			"notes": "Migration",
+			"gstr": "{{x}} manga migrated",
 			"guid": "NR_8aJYvx44XUvYFNO1tkp7aEhaPGsIEjxtjvkMyPyc",
 			"contentType": "default",
 			"src": "%d manga migrated",
@@ -5337,6 +5490,7 @@
 		{
 			"sid": "turn_on_",
 			"notes": "Settings",
+			"gstr": "Turn on {{x}}",
 			"guid": "uFVbUHrXOitHB2S6JDZOrs8aV5rxp7WYKecvc56IP6E",
 			"contentType": "default",
 			"src": "Turn on %s",
@@ -5353,6 +5507,7 @@
 		{
 			"sid": "turn_off_",
 			"notes": "Settings",
+			"gstr": "Turn off {{x}}",
 			"guid": "ho4L5e9G-ndHwuIF6Cmr5geXwERUZCd_jY_yTm6agc8",
 			"contentType": "default",
 			"src": "Turn off %s",
@@ -5630,6 +5785,7 @@
 		{
 			"sid": "updated_to_",
 			"notes": "General settings",
+			"gstr": "Updated to v{{x}}",
 			"guid": "fqd4WajLYVT61enjx3OP0SiB4XZy8IYrd_n5a9Y_PDg",
 			"contentType": "default",
 			"src": "Updated to v%1$s",
@@ -5835,11 +5991,15 @@
 		{
 			"sid": "dont_auto_update",
 			"notes": "General settings",
+			"gstr": "Don't auto-update",
 			"guid": "zXLKLNmS6xruqwTnlAbShfEJGiuuMK3ztU-MUk76zWE",
 			"contentType": "default",
-			"src": "Don't auto-update",
+			"src": "Don\\'t auto-update",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"Don't auto-update"
+			]
 		},
 		{
 			"sid": "app_shortcuts",
@@ -5889,11 +6049,15 @@
 		{
 			"sid": "no_new_chapters_open_details",
 			"notes": "General settings",
+			"gstr": "When there's no new chapters, the series' details will open instead",
 			"guid": "Fm6Vq1l2shHVMSBG3SScRIRVIIllb62PT55gQ8pn6jU",
 			"contentType": "default",
-			"src": "When there's no new chapters, the series' details will open instead",
+			"src": "When there\\'s no new chapters, the series\\' details will open instead",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"When there's no new chapters, the series' details will open instead"
+			]
 		},
 		{
 			"sid": "backup",
@@ -6015,9 +6179,10 @@
 		{
 			"sid": "invalid_backup_file_type",
 			"notes": "Backup",
+			"gstr": "Invalid backup file type: {{x}}\nIt should end with .proto.gz or .json.",
 			"guid": "etVdxDl96xsnSIZe67TBgvPDHvZi-8XCK1TiYeJI61o",
 			"contentType": "default",
-			"src": "Invalid backup file type: %1$s\nIt should end with .proto.gz or .json.",
+			"src": "Invalid backup file type: %1$s\\nIt should end with \".proto.gz\" or \".json\".",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1642896537928,
 			"nsrc": [
@@ -6104,20 +6269,28 @@
 		{
 			"sid": "restore_content",
 			"notes": "Backup",
+			"gstr": "Restore uses sources to fetch data, carrier costs may apply.\n\nMake sure you have installed all necessary extensions and are logged in to sources and tracking services before restoring.",
 			"guid": "PhjBH-rKHup-EgEYqgYdtaGWiXltWX6_6ptAADdQ3kE",
 			"contentType": "default",
-			"src": "Restore uses sources to fetch data, carrier costs may apply.\n\nMake sure you have installed all necessary extensions and are logged in to sources and tracking services before restoring.",
+			"src": "Restore uses sources to fetch data, carrier costs may apply.\\n\\nMake sure you have installed all necessary extensions and are logged in to sources and tracking services before restoring.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"Restore uses sources to fetch data, carrier costs may apply.\n\nMake sure you have installed all necessary extensions and are logged in to sources and tracking services before restoring."
+			]
 		},
 		{
 			"sid": "restore_content_full",
 			"notes": "Backup",
+			"gstr": "Data from the backup file will be restored.\n\nYou will need to install any missing extensions and log in to tracking services afterwards to use them.",
 			"guid": "zjRnVqvBaWL0WEb1kpUnpHu5WxQ6QlzFONOTIKfEIWQ",
 			"contentType": "default",
-			"src": "Data from the backup file will be restored.\n\nYou will need to install any missing extensions and log in to tracking services afterwards to use them.",
+			"src": "Data from the backup file will be restored.\\n\\nYou will need to install any missing extensions and log in to tracking services afterwards to use them.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"Data from the backup file will be restored.\n\nYou will need to install any missing extensions and log in to tracking services afterwards to use them."
+			]
 		},
 		{
 			"sid": "restoring_backup_canceled",
@@ -6158,6 +6331,7 @@
 		{
 			"sid": "restore_duration",
 			"notes": "Backup",
+			"gstr": "{{x}} min, {{x}} sec",
 			"guid": "r317yk9kNUjZdZ66_dNR-H9_aSUYHkpIpFTdctXFHC4",
 			"contentType": "default",
 			"src": "%02d min, %02d sec",
@@ -6207,6 +6381,7 @@
 			"sid": "restore_completed_message_one",
 			"isSuffixPluralized": true,
 			"notes": "Backup",
+			"gstr": "Done in {{x}} with {{x}} error",
 			"guid": "dUY5CemIa3xpPTEoUKN5hZLIYyFYKU1bhYQvPyUJvk0",
 			"contentType": "default",
 			"src": "Done in %1$s with %2$s error",
@@ -6230,6 +6405,7 @@
 			"sid": "restore_completed_message_other",
 			"isSuffixPluralized": true,
 			"notes": "Backup",
+			"gstr": "Done in {{x}} with {{x}} errors",
 			"guid": "tkc4zq_ATauIxzXI7kJs_cduBFCQDVR4_VODU-l2Eg8",
 			"contentType": "default",
 			"src": "Done in %1$s with %2$s errors",
@@ -6252,6 +6428,7 @@
 		{
 			"sid": "not_logged_into_",
 			"notes": "Backup",
+			"gstr": "Not logged into {{x}}",
 			"guid": "2uYPHtC1kQJwVaCe1QnpczVkqD-zdpHEtbJTGyYzpSU",
 			"contentType": "default",
 			"src": "Not logged into %1$s",
@@ -6385,6 +6562,7 @@
 		{
 			"sid": "used_",
 			"notes": "Advanced section",
+			"gstr": "Used: {{x}}",
 			"guid": "AdFVH0FaghNvk6XBU4XoB2Fuk2i482XcsAUje9w5k9g",
 			"contentType": "default",
 			"src": "Used: %1$s",
@@ -6402,6 +6580,7 @@
 			"sid": "cache_cleared_one",
 			"isSuffixPluralized": true,
 			"notes": "Advanced section",
+			"gstr": "Cache cleared. {{x}} file has been deleted",
 			"guid": "5eZfQwyisFt-eAr3zUOKugP__L-uALc_ylWptAYKJQI",
 			"contentType": "default",
 			"src": "Cache cleared. %d file has been deleted",
@@ -6420,6 +6599,7 @@
 			"sid": "cache_cleared_other",
 			"isSuffixPluralized": true,
 			"notes": "Advanced section",
+			"gstr": "Cache cleared. {{x}} files have been deleted",
 			"guid": "0MGHojsg991bW2BX_cczB7XrP0mfW2DJ6OMvNsJaj48",
 			"contentType": "default",
 			"src": "Cache cleared. %d files have been deleted",
@@ -6545,11 +6725,15 @@
 		{
 			"sid": "delete_unused_chapters",
 			"notes": "Advanced section",
+			"gstr": "Delete non-existent, partially downloaded, and read chapter folders",
 			"guid": "dwmP8JsQhLHngvqw56EBpRIwjbjeCHjFNccFSEUvGvI",
 			"contentType": "default",
-			"src": "Delete non-existent, partially downloaded, and read chapter folders",
+			"src": "Delete non-existent, partially downloaded,\n            and read chapter folders",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"Delete non-existent, partially downloaded, and read chapter folders"
+			]
 		},
 		{
 			"sid": "clean_orphaned_downloads",
@@ -6608,11 +6792,15 @@
 		{
 			"sid": "disable_if_issues_with_updating",
 			"notes": "Advanced section",
+			"gstr": "Disable this if you are experiencing issues with updating or restoring your library",
 			"guid": "-wkXZ-U6feYoBLD03zOySY9bCJ2q3iJdBWNGiVyzb-w",
 			"contentType": "default",
-			"src": "Disable this if you are experiencing issues with updating or restoring your library",
+			"src": "Disable this if you are experiencing issues\n        with updating or restoring your library",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"Disable this if you are experiencing issues with updating or restoring your library"
+			]
 		},
 		{
 			"sid": "battery_optimization_disabled",
@@ -6627,6 +6815,7 @@
 			"sid": "cleanup_done_one",
 			"isSuffixPluralized": true,
 			"notes": "Advanced section",
+			"gstr": "Cleanup done. Removed {{x}} folder",
 			"guid": "rh1h0cJO-5V2S5q15JDf5bxw2kDqyrXKS4r_wy5PUwU",
 			"contentType": "default",
 			"src": "Cleanup done. Removed %d folder",
@@ -6645,6 +6834,7 @@
 			"sid": "cleanup_done_other",
 			"isSuffixPluralized": true,
 			"notes": "Advanced section",
+			"gstr": "Cleanup done. Removed {{x}} folders",
 			"guid": "FICdN6ZTFGYJmB81aL4akRY846OS0LMXjqPMDZFDuqQ",
 			"contentType": "default",
 			"src": "Cleanup done. Removed %d folders",
@@ -6671,9 +6861,10 @@
 		{
 			"sid": "delete_old_covers_in_library_used_",
 			"notes": "Advanced section",
+			"gstr": "Delete old and unused cached covers of manga in your library that has been updated.\nCurrently using: {{x}}",
 			"guid": "lSA7apVW1cOhxizHua1Cozi3U_fNiABPf20SPV5qWtg",
 			"contentType": "default",
-			"src": "Delete old and unused cached covers of manga in your library that has been updated.\nCurrently using: %1$s",
+			"src": "Delete old and unused cached covers of\n        manga in your library that has been updated.\\nCurrently using: %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1642896537928,
 			"nsrc": [
@@ -6696,9 +6887,10 @@
 		{
 			"sid": "delete_all_covers__not_in_library_used_",
 			"notes": "Advanced section",
+			"gstr": "Delete all covers cached that are not in your library \nCurrently using: {{x}}",
 			"guid": "MAJoOU3XbW2pm0bnts6394MkGigK3TCnzQ-_iRfyg8g",
 			"contentType": "default",
-			"src": "Delete all covers cached that are not in your library \nCurrently using: %1$s",
+			"src": "Delete all covers cached that are\n        not in your library \\nCurrently using: %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1642896537928,
 			"nsrc": [
@@ -6784,29 +6976,41 @@
 		{
 			"sid": "only_enable_pinned_for_migration",
 			"notes": "Browse Settings",
+			"gstr": "Only enable your pinned sources for migration",
 			"guid": "dhcccCE8fLfXWvszAEfDTWr7hNNe_3qT5IUdFeDqgoI",
 			"contentType": "default",
-			"src": "Only enable your pinned sources for migration",
+			"src": "Only enable your pinned sources for\n        migration",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"Only enable your pinned sources for migration"
+			]
 		},
 		{
 			"sid": "only_enable_enabled_for_migration",
 			"notes": "Browse Settings",
+			"gstr": "Only enable your currently enabled sources for migration",
 			"guid": "ecCXfY4HMfF9J918_KY7aN7GY0YzLi4DQvg6ltvASZs",
 			"contentType": "default",
-			"src": "Only enable your currently enabled sources for migration",
+			"src": "Only enable your currently enabled sources for\n        migration",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"Only enable your currently enabled sources for migration"
+			]
 		},
 		{
 			"sid": "use_last_saved_migration_preferences",
 			"notes": "Browse Settings",
+			"gstr": "Use last saved pre-migration preferences and sources to mass migrate",
 			"guid": "SVlZlyNR7LfMJwSoD3PuIxOKThbqF1NzlAMB2Ol9ARE",
 			"contentType": "default",
-			"src": "Use last saved pre-migration preferences and sources to mass migrate",
+			"src": "Use last saved pre-migration preferences\n    and sources to mass migrate",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"Use last saved pre-migration preferences and sources to mass migrate"
+			]
 		},
 		{
 			"sid": "migration_sources_changed",
@@ -6820,11 +7024,15 @@
 		{
 			"sid": "you_can_migrate_in_library",
 			"notes": "Browse Settings",
+			"gstr": "You can also migrate by selecting manga in your library",
 			"guid": "pX3b7nl_8Y58oXPbghIIx7_0aGmWWLPeP-D5LNDblcU",
 			"contentType": "default",
-			"src": "You can also migrate by selecting manga in your library",
+			"src": "You can also migrate by selecting manga in your\n        library",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"You can also migrate by selecting manga in your library"
+			]
 		},
 		{
 			"sid": "source_migration_guide",
@@ -6901,20 +7109,28 @@
 		{
 			"sid": "whats_new",
 			"notes": "About section",
+			"gstr": "What's new",
 			"guid": "xX86TIr3yCDJeN8pEfrANiXCn559dxHyBB4GnIbsQpo",
 			"contentType": "default",
-			"src": "What's new",
+			"src": "What\\'s new",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"What's new"
+			]
 		},
 		{
 			"sid": "whats_new_this_release",
 			"notes": "About section",
+			"gstr": "What's new in this release",
 			"guid": "ODnxRXqbNkf0WZwNMNBRVzvTowiRVdu0tktSDF2ET3k",
 			"contentType": "default",
-			"src": "What's new in this release",
+			"src": "What\\'s new in this release",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"What's new in this release"
+			]
 		},
 		{
 			"sid": "help_translate",
@@ -6955,6 +7171,7 @@
 		{
 			"sid": "log_in_to_",
 			"notes": "Login/Logout dialog",
+			"gstr": "Log in to {{x}}",
 			"guid": "InKnvnpmuD0xNHX-ckxjSVPTwTV71bgSR9slh4Di5TU",
 			"contentType": "default",
 			"src": "Log in to %1$s",
@@ -7016,6 +7233,7 @@
 		{
 			"sid": "log_out_from_",
 			"notes": "Login/Logout dialog",
+			"gstr": "Log out from {{x}}?",
 			"guid": "bAkWLyFZwmeqXY5p5StiL_Ove18eBwQkFXS9_1Xkoe8",
 			"contentType": "default",
 			"src": "Log out from %1$s?",
@@ -7078,6 +7296,7 @@
 		{
 			"sid": "downloading_",
 			"notes": "Downloads",
+			"gstr": "Downloading: {{x}}",
 			"guid": "hPBLtewVJ0mhjgOKNagsyLfPqlTA2s4KFgxhNP5G52Q",
 			"contentType": "default",
 			"src": "Downloading: %1$s",
@@ -7175,6 +7394,7 @@
 		{
 			"sid": "downloading_progress",
 			"notes": "Downloads",
+			"gstr": "Downloading ({{x}}/{{x}})",
 			"guid": "81uy_kW63TYj6zx-tvyIeg2e6pJ5ZjPmIn-L-ic7d0I",
 			"contentType": "default",
 			"src": "Downloading (%1$d/%2$d)",
@@ -7242,29 +7462,41 @@
 		{
 			"sid": "manage_whats_downloading",
 			"notes": "Downloads",
+			"gstr": "Manage what's downloading",
 			"guid": "eXRc26yvod4Obg8UmsDbwm7gkrsGGdpMy4TpcYAWsxk",
 			"contentType": "default",
-			"src": "Manage what's downloading",
+			"src": "Manage what\\'s downloading",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"Manage what's downloading"
+			]
 		},
 		{
 			"sid": "visit_recents_for_download_queue",
 			"notes": "Downloads",
+			"gstr": "Visit the recents tab to access the download queue. You can also double tap or press and hold for quicker access",
 			"guid": "6tgFpq1s7Bmdw6Wj4ju2N96GgPe7p9Y7cGiyfxSF-9E",
 			"contentType": "default",
-			"src": "Visit the recents tab to access the download queue. You can also double tap or press and hold for quicker access",
+			"src": "Visit the recents tab to access the download\n        queue. You can also double tap or press and hold for quicker access",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"Visit the recents tab to access the download queue. You can also double tap or press and hold for quicker access"
+			]
 		},
 		{
 			"sid": "couldnt_download_low_space",
 			"notes": "Downloads",
+			"gstr": "Couldn't download chapters due to low disk space",
 			"guid": "Vj8DOxw8uO9KY77TuWRdJxY8sMxVtwq_IyHh6_8Srro",
 			"contentType": "default",
-			"src": "Couldn't download chapters due to low disk space",
+			"src": "Couldn\\'t download chapters due to low disk space",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"Couldn't download chapters due to low disk space"
+			]
 		},
 		{
 			"sid": "could_not_download_unexpected_error",
@@ -7413,11 +7645,15 @@
 		{
 			"sid": "delete_downloaded_if_removed_online",
 			"notes": "Downloads settings",
+			"gstr": "Delete downloaded chapters if the source has removed the chapter online",
 			"guid": "QblYKrpV4TYMwNLE5d6OuLP5-YvTFicfnEWa5-51OcY",
 			"contentType": "default",
-			"src": "Delete downloaded chapters if the source has removed the chapter online",
+			"src": "Delete downloaded chapters if the source\n        has removed the chapter online",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"Delete downloaded chapters if the source has removed the chapter online"
+			]
 		},
 		{
 			"sid": "ask_on_chapters_page",
@@ -7540,6 +7776,7 @@
 			"sid": "after_minutes_one",
 			"isSuffixPluralized": true,
 			"notes": "Time",
+			"gstr": "After {{x}} minute",
 			"guid": "C0PQbeoPQFB8cyWahP6wddbk0QOh4f-mmiHyTcQUny4",
 			"contentType": "default",
 			"src": "After %1$s minute",
@@ -7558,6 +7795,7 @@
 			"sid": "after_minutes_other",
 			"isSuffixPluralized": true,
 			"notes": "Time",
+			"gstr": "After {{x}} minutes",
 			"guid": "y51rnyKxtYjssSeHCmtKvJwyTUp_J-6z11PC9kxAmM4",
 			"contentType": "default",
 			"src": "After %1$s minutes",
@@ -7638,6 +7876,7 @@
 		{
 			"sid": "add_to_",
 			"notes": "Miscellaneous",
+			"gstr": "Add to {{x}}",
 			"guid": "a93fWBww9BfwOqe-ajdWFS7EBpRjHt0DvSebYl5bo7o",
 			"contentType": "default",
 			"src": "Add to %1$s",
@@ -7654,6 +7893,7 @@
 		{
 			"sid": "added_to_",
 			"notes": "Miscellaneous",
+			"gstr": "Added to {{x}}",
 			"guid": "OVv0BMULqSdXUWi0L_ebUyZcG4kz8EVFIeXdTQdp1U4",
 			"contentType": "default",
 			"src": "Added to %1$s",
@@ -7850,6 +8090,7 @@
 		{
 			"sid": "deleted_",
 			"notes": "Miscellaneous",
+			"gstr": "Deleted: {{x}}",
 			"guid": "EDPSs_fIwR6Tv2TVPaqASTdVdgCzMH0HrN1w8SaUvAc",
 			"contentType": "default",
 			"src": "Deleted: %1$s",
@@ -7920,6 +8161,7 @@
 		{
 			"sid": "exclude_",
 			"notes": "Miscellaneous",
+			"gstr": "Exclude: {{x}}",
 			"guid": "6xC7pebM5-ZxaKv6i64GbRkfsTR-nzcZ73GOATo0YLQ",
 			"contentType": "default",
 			"src": "Exclude: %s",
@@ -7990,6 +8232,7 @@
 		{
 			"sid": "include_",
 			"notes": "Miscellaneous",
+			"gstr": "Include: {{x}}",
 			"guid": "kV1JMfcYxSPaA33pPszcbnisV0t0Sfxe2ZQBKdjy2aU",
 			"contentType": "default",
 			"src": "Include: %s",
@@ -8024,6 +8267,7 @@
 		{
 			"sid": "keep_in_",
 			"notes": "Miscellaneous",
+			"gstr": "Keep in {{x}}",
 			"guid": "RfY1RTihyotw-07YpitFAyH3J5FraoAhNTcLYlVc6vk",
 			"contentType": "default",
 			"src": "Keep in %1$s",
@@ -8184,6 +8428,7 @@
 		{
 			"sid": "move_to_",
 			"notes": "Miscellaneous",
+			"gstr": "Move to {{x}}",
 			"guid": "I40yqqfSXEqxcRJEebAkoMGQoQuYuLNOa2Ud6BkMcsU",
 			"contentType": "default",
 			"src": "Move to %1$s",
@@ -8200,6 +8445,7 @@
 		{
 			"sid": "moved_to_",
 			"notes": "Miscellaneous",
+			"gstr": "Moved to {{x}}",
 			"guid": "XSREc7X2ZGv7-we3bdC1-Yfm_4RaFy8JjHhPFjrm_7E",
 			"contentType": "default",
 			"src": "Moved to %1$s",
@@ -8405,6 +8651,7 @@
 		{
 			"sid": "remove_from_",
 			"notes": "Miscellaneous",
+			"gstr": "Remove from {{x}}",
 			"guid": "zo4UIzRgDLhp4lYJvdg12RD0fTpiXjbcbuWC3ClIlgw",
 			"contentType": "default",
 			"src": "Remove from %1$s",
@@ -8520,6 +8767,7 @@
 		{
 			"sid": "search_",
 			"notes": "Miscellaneous",
+			"gstr": "Search {{x}}",
 			"guid": "dEfOMw-ElOf-gh4JNy5OhAGW36mhN-kQrhkYgsYBZVQ",
 			"contentType": "default",
 			"src": "Search %1$s",
@@ -8581,11 +8829,15 @@
 		{
 			"sid": "sort_and_filter",
 			"notes": "Miscellaneous",
+			"gstr": "Sort & Filter",
 			"guid": "X8fO-c1VVu9rbJOhfqH9UiMS20tCwPGDKgZXFvQMp3A",
 			"contentType": "default",
-			"src": "Sort & Filter",
+			"src": "Sort &amp; Filter",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1642896537928,
+			"nsrc": [
+				"Sort & Filter"
+			]
 		},
 		{
 			"sid": "start",
@@ -8705,7 +8957,7 @@
 				"translatedWords": 0,
 				"translatedByQ": {},
 				"untranslated": 866,
-				"untranslatedChars": 17784,
+				"untranslatedChars": 17380,
 				"untranslatedWords": 2829,
 				"pending": 0,
 				"pendingWords": 0,

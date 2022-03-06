@@ -6,21 +6,36 @@
 //   an Android message format string, where we may need to overlay both Java and Android rules together.
 
 // Generic pluggable decoder
-export function regexMatchingDecoderMaker(regex, partDecoder) {
+export function regexMatchingDecoderMaker(flag, regex, partDecoder) {
     return function decoder(parts) {
         const decodedParts = parts.map(p => {
-            if (typeof p === 'string') {
+            if (p.t === 's') {
                 const expandedPart = [];
                 let pos = 0;
-                for (const match of p.matchAll(regex)) {
+                for (const match of p.v.matchAll(regex)) {
                     if (match.index > pos) {
-                        expandedPart.push(match.input.substring(pos, match.index));
+                        expandedPart.push({
+                            t: 's',
+                            v: match.input.substring(pos, match.index),
+                        });
                     }
-                    expandedPart.push(partDecoder(match.groups));
+                    const decodedMatch = partDecoder(match.groups);
+                    if (typeof decodedMatch === 'string') {
+                        expandedPart.push({
+                            t: 's',
+                            v: decodedMatch,
+                            flag,
+                        });
+                    } else {
+                        expandedPart.push(decodedMatch);
+                    }
                     pos = match.index + match[0].length;
                 }
-                if (pos < p.length) {
-                    expandedPart.push(p.substring(pos, p.length));
+                if (pos < p.v.length) {
+                    expandedPart.push({
+                        t: 's',
+                        v: p.v.substring(pos, p.v.length),
+                    });
                 }
                 return expandedPart;
             } else {
@@ -47,6 +62,7 @@ const namedEntities = {
     '&gt;'  : '>'
 };
 export const xmlEntityDecoder = regexMatchingDecoderMaker(
+    'xmlEntityDecoder',
     /(?<node>&#x(?<hexEntity>[0-9a-fA-F]+);|(?<namedEntity>&[^#;]+;)|&#(?<numericEntity>\d+);)/g,
     // eslint-disable-next-line no-nested-ternary
     (groups) => (groups.namedEntity ?
@@ -57,7 +73,9 @@ export const xmlEntityDecoder = regexMatchingDecoderMaker(
                 )
 );
 
+// TODO: this is conflating generic XML CDATA with Android-specific quotes, so it's really an android-only thing
 export const xmlCDataDecoder = regexMatchingDecoderMaker(
+    'xmlCDataDecoder',
     /(?:<!\[CDATA\[(?<cdata>.*?)\]\]>|(?:(?<firstChar>[^\\])"|^")(?<quoted>.*?)(?<lastChar>[^\\])")/gs,
     groups => groups.cdata ?? ((groups.firstChar || '') + groups.quoted + (groups.lastChar ?? ''))
 );
@@ -79,6 +97,7 @@ const javaControlCharsToDecode = {
     f: '\f',
 };
 export const javaEscapesDecoder = regexMatchingDecoderMaker(
+    'javaEscapesDecoder',
     /(?<node>\\(?<escapedChar>['"\\])|\\(?<escapedControl>[tbnrf])|\\u(?<codePoint>[0-9A-Za-z]{4}))/g,
     (groups) => (groups.escapedChar ??
         (groups.escapedControl ?
@@ -89,12 +108,13 @@ export const javaEscapesDecoder = regexMatchingDecoderMaker(
 );
 
 export const javaMFQuotesDecoder = regexMatchingDecoderMaker(
+    'javaMFQuotesDecoder',
     /(?:(?<quote>')'|(?:'(?<quoted>[^']+)'))/g,
     groups => groups.quote ?? groups.quoted
 );
 
 // need to be smart about detecting whether MessageFormat was used or not based on presence of {vars}
-export const javaMFQuotesEncoder = (str, flags) => (flags?.hasPH ? str.replaceAll("'", "''") : str);
+export const javaMFQuotesEncoder = (str, flags) => (flags?.javaMFQuotesDecoder ? str.replaceAll("'", "''") : str);
 
 // TODO: do we need to escape also those escapedChar that we decoded?
 export const javaEscapesEncoder = regexMatchingEncoderMaker(
@@ -113,6 +133,7 @@ const androidControlCharsToDecode = {
     t: '\t',
 };
 export const androidEscapesDecoder = regexMatchingDecoderMaker(
+    'androidEscapesDecoder',
     /(?<node>\\(?<escapedChar>[@?\\'"])|\\(?<escapedControl>[nt])|\\u(?<codePoint>[0-9A-Za-z]{4}))/g,
     (groups) => (groups.escapedChar ??
         (groups.escapedControl ?
@@ -122,16 +143,18 @@ export const androidEscapesDecoder = regexMatchingDecoderMaker(
     )
 );
 
-export const androidEscapesEncoder = (str) => {
+export const androidEscapesEncoder = (str, flags = {}) => {
     let escapedStr = str.replaceAll(/[@\\'"]/g, '\\$&').replaceAll('\t', '\\t').replaceAll('\n', '\\n');
     // eslint-disable-next-line prefer-template
-    escapedStr[0] === ' ' && (escapedStr = '\\u0020' + escapedStr.substring(1));
+    flags.isFirst && escapedStr[0] === ' ' && (escapedStr = '\\u0020' + escapedStr.substring(1));
     // eslint-disable-next-line prefer-template
-    escapedStr.length > 0 && escapedStr[escapedStr.length - 1] === ' ' && (escapedStr = escapedStr.substring(0, escapedStr.length - 1) + '\\u0020');
+    flags.isLast && escapedStr.length > 0 && escapedStr[escapedStr.length - 1] === ' ' && (escapedStr = escapedStr.substring(0, escapedStr.length - 1) + '\\u0020');
     return escapedStr;
 };
 
-export const doublePercentDecoder = (parts) => parts.map(p => (typeof p === 'string' ? p.replaceAll('%%', '%') : p));
+export const androidSpaceCollapser = (parts) => parts.map(p => (p.t === 's' ? { ...p, v: p.v.replaceAll(/[ \f\n\r\t\v\u2028\u2029]+/g, ' ')} : p));
+
+export const doublePercentDecoder = (parts) => parts.map(p => (p.t === 's' ? { ...p, v: p.v.replaceAll('%%', '%')} : p));
 
 export const doublePercentEncoder = (str) => str.replaceAll('%', '%%');
 
@@ -139,6 +162,7 @@ export const doublePercentEncoder = (str) => str.replaceAll('%', '%%');
 
 // Works for both XML and HTML
 export const xmlDecoder = regexMatchingDecoderMaker(
+    'xmlDecoder',
     /(?<tag>(?<x><[^>]+\/>)|(?<bx><[^/][^>]*>)|(?<ex><\/[^>]+>))/g,
     // eslint-disable-next-line no-nested-ternary
     (groups) => ({ t: (groups.bx ? 'bx' : (groups.ex ? 'ex' : 'x')), v: groups.tag })
@@ -146,6 +170,7 @@ export const xmlDecoder = regexMatchingDecoderMaker(
 
 // {param} style placeholders
 export const bracePHDecoder = regexMatchingDecoderMaker(
+    'bracePHDecoder',
     /(?<x>{[^}]+})/g,
     (groups) => ({ t: 'x', v: groups.x })
 );
@@ -154,6 +179,7 @@ export const bracePHDecoder = regexMatchingDecoderMaker(
 // Supports %02d, %@, %1$@
 // TODO: follow full specs at https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Strings/Articles/formatSpecifiers.html
 export const iosPHDecoder = regexMatchingDecoderMaker(
+    'iosPHDecoder',
     // eslint-disable-next-line prefer-named-capture-group
     /(?<tag>%([0-9.]*[lz]?[@dfsi]|\d+\$[@dfsi]))/g,
     (groups) => ({ t: 'x', v: groups.tag })

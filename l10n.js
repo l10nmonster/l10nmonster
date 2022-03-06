@@ -39,12 +39,7 @@ import { XliffBridge } from './translators/xliff.js';
 import { PigLatinizer } from './translators/piglatinizer.js';
 import { TranslationOS } from './translators/translationOS.js';
 import { Visicode } from './translators/visicode.js';
-import { xmlDecoder, bracePHDecoder, iosPHDecoder,
-    xmlEntityDecoder, javaEscapesDecoder,
-    xmlEntityEncoder, javaEscapesEncoder,
-    javaMFQuotesDecoder, javaMFQuotesEncoder,
-    doublePercentDecoder, doublePercentEncoder,
-    regexMatchingDecoderMaker, regexMatchingEncoderMaker } from './normalizers/regex.js';
+import * as regexNormalizers from './normalizers/regex.js';
 
 const monsterCLI = new Command();
 
@@ -85,12 +80,7 @@ async function initMonster() {
                 PoFilter, AndroidFilter, JavaPropertiesFilter, IosStringsFilter
             },
             normalizers: {
-                xmlDecoder, bracePHDecoder, iosPHDecoder,
-                xmlEntityDecoder, javaEscapesDecoder,
-                xmlEntityEncoder, javaEscapesEncoder,
-                javaMFQuotesDecoder, javaMFQuotesEncoder,
-                doublePercentDecoder, doublePercentEncoder,
-                regexMatchingDecoderMaker, regexMatchingEncoderMaker,
+                ...regexNormalizers,
             },
             translators: {
                 XliffBridge, PigLatinizer, TranslationOS, Visicode

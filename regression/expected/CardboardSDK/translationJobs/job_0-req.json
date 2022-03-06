@@ -50,6 +50,7 @@
 		{
 			"sid": "DataSynced",
 			"notes": "Format string used as a temporary message shown after a successful device profile is set.\n* (60 chars)",
+			"gstr": "{{x}} detected",
 			"guid": "XY8o8xA5C_HlR4v8LDc4L98Y0mR-4gHyLjDxwvNhDrM",
 			"contentType": "default",
 			"src": "%1$@ detected",
@@ -147,6 +148,7 @@
 		{
 			"sid": "PlaceYourPhoneInViewerFormat",
 			"notes": "Instruction for the user that they should now put their phone in Cardboard. This is used as a\n* format string where the parameter is the view name. (50 chars)",
+			"gstr": "Place your phone into your {{x}} viewer.",
 			"guid": "4jxuTPXhhsLGShj5wDGlsktW8NV1GAYrGDxHaZV_6C4",
 			"contentType": "default",
 			"src": "Place your phone into your %1$@ viewer.",
@@ -182,6 +184,7 @@
 		{
 			"sid": "SettingsCurrentViewerLabelFormat",
 			"notes": "Format string for label that display the viewer currently configured. (30 chars)",
+			"gstr": "Current viewer: {{x}}",
 			"guid": "slgigM0NfUFIqYMNDpipEAV2LaSg4PIejxEgH37p4Pw",
 			"contentType": "default",
 			"src": "Current viewer: %1$@",
@@ -225,6 +228,7 @@
 		{
 			"sid": "SwitchViewerActivityMenuTitle",
 			"notes": "Popup activity view menu text that shows the name of the currently paired viewer but also takes\nthe user to the QRScan view controller when tapped. (30 chars)",
+			"gstr": "Switch viewer: {{x}}",
 			"guid": "Ko1R6hKlnw0dJtnGrwHdjhq0igmaxHWUuci1ZrEiYvg",
 			"contentType": "default",
 			"src": "Switch viewer: %1$@",
@@ -259,6 +263,7 @@
 		{
 			"sid": "ViewerConfigured",
 			"notes": "Dialog text shown to show user what the paired viewer is. (80 chars)",
+			"gstr": "Your phone is now configured for your {{x}} viewer.",
 			"guid": "xX2wjf_JnaqCdoe4AvzrpR0w__P7h12WCoMygm6ru8U",
 			"contentType": "default",
 			"src": "Your phone is now configured for your %1$@ viewer.",
@@ -294,6 +299,7 @@
 		{
 			"sid": "AccessibilityBackButton",
 			"notes": "Accessibility label for the back button to take us out of 3D mode (read out loud)",
+			"gstr": "Back to previous screen",
 			"guid": "Ln6QELVxYXr2EgOv6P2-EYewhB5H6jLOJ1W5jilT_nc",
 			"contentType": "default",
 			"src": "Back\\u0020to previous screen",
@@ -313,7 +319,7 @@
 				"translatedWords": 0,
 				"translatedByQ": {},
 				"untranslated": 30,
-				"untranslatedChars": 613,
+				"untranslatedChars": 584,
 				"untranslatedWords": 98,
 				"pending": 0,
 				"pendingWords": 0,
