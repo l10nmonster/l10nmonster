@@ -60,7 +60,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                                         tgt.push(encodeString(part, partFlags));
                                     } else if (part?.v1) {
                                         if (v1PhMap && v1PhMap[part.v1]) {
-                                            tgt.push(encodeString(v1PhMap[part.v1]));
+                                            tgt.push(encodeString(v1PhMap[part.v1], partFlags));
                                         } else {
                                             verbose && console.error(`Incompatible v1 placeholder found: ${JSON.stringify(part)} in ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
                                             return undefined;
@@ -70,7 +70,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                                         return undefined;
                                     } else {
                                         if (valueMap[part.v]) {
-                                            tgt.push(encodeString(part));
+                                            tgt.push(encodeString(part, partFlags));
                                         } else {
                                             verbose && console.error(`Incompatible value placeholder found: ${JSON.stringify(part)} in ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
                                             return undefined;
@@ -79,7 +79,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                                 }
                                 return tgt.join('');
                             } else {
-                                return encodeString(entry.tgt);
+                                return encodeString(entry.tgt, { ...flags, isFirst: true, isLast: true });
                             }
                         } else {
                             verbose && console.error(`Source ${resourceId}+${sid}+${src} is incompatible with ${sourceLang}_${targetLang} TM entry ${JSON.stringify(entry)}`);

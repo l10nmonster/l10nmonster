@@ -4,7 +4,7 @@ export function consolidateDecodedParts(parts, flags, convertToString) {
     for (const part of parts) {
         if (part.t === 's') {
             accumulatedString += part.v;
-            part.f && (flags[part.flag] = true);
+            part.flag && (flags[part.flag] = true);
         } else {
             if (accumulatedString.length > 0) {
                 consolidatedParts.push(convertToString ? accumulatedString : { t: 's', v: accumulatedString });
