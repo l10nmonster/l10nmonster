@@ -1,4 +1,4 @@
-export function consolidateDecodedParts(parts, flags) {
+export function consolidateDecodedParts(parts, flags, convertToString) {
     const consolidatedParts = [];
     let accumulatedString = '';
     for (const part of parts) {
@@ -7,14 +7,14 @@ export function consolidateDecodedParts(parts, flags) {
             part.f && (flags[part.flag] = true);
         } else {
             if (accumulatedString.length > 0) {
-                consolidatedParts.push(accumulatedString);
+                consolidatedParts.push(convertToString ? accumulatedString : { t: 's', v: accumulatedString });
                 accumulatedString = '';
             }
             consolidatedParts.push(part);
         }
     }
     if (accumulatedString.length > 0) {
-        consolidatedParts.push(accumulatedString);
+        consolidatedParts.push(convertToString ? accumulatedString : { t: 's', v: accumulatedString });
     }
     return consolidatedParts;
 }
@@ -22,9 +22,9 @@ export function consolidateDecodedParts(parts, flags) {
 export function getNormalizedString(str, decoderList, flags = {}) {
     let parts = [ { t: 's', v: str } ];
     for (const decoder of decoderList) {
-        parts = decoder(parts);
+        parts = consolidateDecodedParts(decoder(parts), flags);
     }
-    return consolidateDecodedParts(parts, flags);
+    return consolidateDecodedParts(parts, flags, true);
 }
 
 export function flattenNormalizedSourceToOrdinal(nsrc) {

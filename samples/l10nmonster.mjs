@@ -20,7 +20,7 @@ export default class MultiProjectConfig {
                 }),
                 resourceFilter: new filters.IosStringsFilter(),
                 decoders: [ normalizers.iosPHDecoder, normalizers.javaEscapesDecoder ],
-                encoders: [ normalizers.xmlEntityEncoder, normalizers.javaEscapesEncoder ],
+                textEncoders: [ normalizers.xmlEntityEncoder, normalizers.javaEscapesEncoder ],
                 target: new adapters.FsTarget({
                     targetPath: (lang, resourceId) => resourceId.replace('en.lproj/', `${lang}.lproj/`),
                 }),
@@ -35,7 +35,7 @@ export default class MultiProjectConfig {
                     comment: 'pre',
                 }),
                 decoders: [ normalizers.iosPHDecoder, normalizers.javaEscapesDecoder ],
-                encoders: [ normalizers.xmlEntityEncoder, normalizers.javaEscapesEncoder ],
+                textEncoders: [ normalizers.xmlEntityEncoder, normalizers.javaEscapesEncoder ],
                 target: new adapters.FsTarget({
                     targetPath: (lang, resourceId) => resourceId.replace('values', `values-${androidLangMapping[lang] || lang}`),
                 }),

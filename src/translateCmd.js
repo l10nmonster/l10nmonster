@@ -16,11 +16,20 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
             if (res.targetLangs.includes(targetLang) && (mm.ctx.prj === undefined || mm.ctx.prj.includes(res.prj))) {
                 const resourceId = res.id;
                 const pipeline = mm.contentTypes[res.contentType];
-                const encodeString = function encodeString(rawStr, flags) {
-                    if (pipeline.encoders) {
-                        return pipeline.encoders.reduce((str, encoder) => encoder(str, flags), rawStr);
+                const encodeString = function encodeString(part, flags) {
+                    let str,
+                        encoders;
+                    if (typeof part === 'string') {
+                        encoders = pipeline.textEncoders;
+                        str = part;
                     } else {
-                        return rawStr;
+                        encoders = pipeline.codeEncoders;
+                        str = part.v;
+                    }
+                    if (encoders) {
+                        return encoders.reduce((s, encoder) => encoder(s, flags), str);
+                    } else {
+                        return str;
                     }
                 };
                 // eslint-disable-next-line complexity
@@ -46,11 +55,12 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                                 const ntgtEntries = entry.ntgt.entries();
                                 const tgt = [];
                                 for (const [idx, part] of ntgtEntries) {
+                                    const partFlags = { ...flags, isFirst: idx === 0, isLast: idx === ntgtEntries.length - 1 };
                                     if (typeof part === 'string') {
-                                        tgt.push(encodeString(part, { ...flags, isFirst: idx === 0, isLast: idx === ntgtEntries.length - 1 }));
+                                        tgt.push(encodeString(part, partFlags));
                                     } else if (part?.v1) {
                                         if (v1PhMap && v1PhMap[part.v1]) {
-                                            tgt.push(v1PhMap[part.v1].v);
+                                            tgt.push(encodeString(v1PhMap[part.v1]));
                                         } else {
                                             verbose && console.error(`Incompatible v1 placeholder found: ${JSON.stringify(part)} in ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
                                             return undefined;
@@ -60,7 +70,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                                         return undefined;
                                     } else {
                                         if (valueMap[part.v]) {
-                                            tgt.push(part.v);
+                                            tgt.push(encodeString(part));
                                         } else {
                                             verbose && console.error(`Incompatible value placeholder found: ${JSON.stringify(part)} in ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
                                             return undefined;

@@ -17,7 +17,7 @@ export default class TachiyomiConfig {
             comment: 'pre',
         });
         this.decoders = [ normalizers.xmlEntityDecoder, normalizers.xmlCDataDecoder, normalizers.androidSpaceCollapser, normalizers.androidEscapesDecoder, normalizers.iosPHDecoder ];
-        this.encoders = [ normalizers.androidEscapesEncoder, normalizers.xmlEntityEncoder ];
+        this.textEncoders = [ normalizers.androidEscapesEncoder, normalizers.xmlEntityEncoder ];
         this.target = new adapters.FsTarget({
             targetPath: (lang, resourceId) => resourceId.replace('values', `values-${androidLangMapping[lang] || lang}`),
         });

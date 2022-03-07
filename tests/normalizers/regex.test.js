@@ -1,5 +1,6 @@
 import { getNormalizedString } from '../../normalizers/util.js';
-import { xmlDecoder, bracePHDecoder, iosPHDecoder, xmlEntityDecoder, javaEscapesDecoder } from '../../normalizers/regex.js';
+import { xmlDecoder, bracePHDecoder, iosPHDecoder, xmlEntityDecoder, javaEscapesDecoder,
+    gatedEncoder, xmlEntityEncoder } from '../../normalizers/regex.js';
 
 describe('Regex Encoder tests', () => {
 
@@ -58,4 +59,10 @@ describe('Regex Encoder tests', () => {
             ' when you use this credit to make a new booking.'
           ]);
     });
+
+    test('gatedEncoder', async () => {
+        expect(gatedEncoder(xmlEntityEncoder, 'foo')('<b>')).toBe('<b>');
+        expect(gatedEncoder(xmlEntityEncoder, 'foo')('<b>', { foo: true })).toBe('&lt;b>');
+    });
+
 });

@@ -41,7 +41,8 @@ export default class MonsterManager {
                         resourceFilter: monsterConfig.resourceFilter,
                         segmentDecorator: monsterConfig.segmentDecorator,
                         decoders: monsterConfig.decoders,
-                        encoders: monsterConfig.encoders,
+                        textEncoders: monsterConfig.textEncoders,
+                        codeEncoders: monsterConfig.codeEncoders,
                         target: monsterConfig.target,
                     }
                 };

@@ -52,7 +52,14 @@ export function regexMatchingEncoderMaker(regex, charMap) {
         return str.replaceAll(regex, m => charMap[m]);
     };
 }
-// Escaping
+
+// Generic flag-based encoder execution
+export function gatedEncoder(encoder, ...flagNames) {
+    return function gatedEncoder(str, flags = {}) {
+        const run = flagNames.reduce((run, flag) => run || flags[flag], false);
+        return run ? encoder(str, flags) : str;
+    }
+}
 
 const namedEntities = {
     '&nbsp;': '\u00a0',
@@ -114,7 +121,7 @@ export const javaMFQuotesDecoder = regexMatchingDecoderMaker(
 );
 
 // need to be smart about detecting whether MessageFormat was used or not based on presence of {vars}
-export const javaMFQuotesEncoder = (str, flags) => (flags?.javaMFQuotesDecoder ? str.replaceAll("'", "''") : str);
+export const javaMFQuotesEncoder = str => str.replaceAll("'", "''");
 
 // TODO: do we need to escape also those escapedChar that we decoded?
 export const javaEscapesEncoder = regexMatchingEncoderMaker(

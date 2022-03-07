@@ -2,7 +2,7 @@
 import * as android from '../../filters/android';
 import { getNormalizedString } from '../../normalizers/util.js';
 import { xmlCDataDecoder, iosPHDecoder, androidEscapesDecoder,
-    androidSpaceCollapser, xmlEntityDecoder, androidEscapesEncoder } from '../../normalizers/regex.js';
+    androidSpaceCollapser, xmlEntityDecoder, androidEscapesEncoder, xmlDecoder } from '../../normalizers/regex.js';
 import { readFileSync } from 'fs';
 
 describe('android filter tests', () => {
@@ -70,6 +70,9 @@ describe('android filter tests', () => {
                 }, {
                     "sid": "new",
                     "str": "What\\'s new\\n"
+                }, {
+                    "sid": "html",
+                    "str": "&lt;b>bold&lt;/b>"
                 }
             ]});
         expect(getNormalizedString(encodingsRes.segments[0].str, [xmlCDataDecoder])[0])
@@ -90,5 +93,8 @@ describe('android filter tests', () => {
             .toBe("sp ace");
         expect(getNormalizedString(encodingsRes.segments[6].str, standardDecoders)[0])
             .toBe("What's new\n");
-    });
+        const nsrc7 = [{"t": "bx","v": "<b>"}, "bold", {"t": "ex","v": "</b>"}];
+        expect(getNormalizedString(encodingsRes.segments[7].str, [...standardDecoders, xmlDecoder]))
+            .toMatchObject(nsrc7);
+        });
 });

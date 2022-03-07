@@ -7,4 +7,5 @@
     <string name="space">" space "</string>
     <string name="spaceTrimming">  sp    ace  </string>
     <string name="new">What\'s new\n</string>
+    <string name="html">&lt;b>bold&lt;/b></string>
   </resources>
