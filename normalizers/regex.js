@@ -46,6 +46,13 @@ export function regexMatchingDecoderMaker(flag, regex, partDecoder) {
     }
 }
 
+// Generic wrapper to rename a decoder
+export function namedDecoder(name, decoder) {
+    return function namedDecoder(parts) {
+        return decoder(parts).map(p => (p.t === 's' ? { ...p, flag: name } : p));
+    }
+}
+
 // Generic pluggable encoder
 export function regexMatchingEncoderMaker(regex, charMap) {
     return function encoder(str) {
@@ -56,7 +63,7 @@ export function regexMatchingEncoderMaker(regex, charMap) {
 // Generic flag-based encoder execution
 export function gatedEncoder(encoder, ...flagNames) {
     return function gatedEncoder(str, flags = {}) {
-        const run = flagNames.reduce((run, flag) => run || flags[flag], false);
+        const run = flagNames.reduce((run, flag) => run || (flag.charAt(0) === '!' ? !flags[flag.substring(1)] : flags[flag]), false);
         return run ? encoder(str, flags) : str;
     }
 }
