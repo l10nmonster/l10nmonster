@@ -35,6 +35,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                 };
                 // eslint-disable-next-line complexity
                 const translator = async function translate(sid, src) {
+                    const seg = { sid, str: src };
                     let nsrc,
                         v1PhMap,
                         valueMap;
@@ -46,6 +47,10 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                             v1PhMap = flattenNormalizedSourceV1(nsrc)[1];
                             valueMap = Object.fromEntries(Object.values(v1PhMap).map(e => [ e.v, true ]));
                         }
+                    }
+                    if (pipeline.segmentDecorator && pipeline.segmentDecorator([ seg ]).length === 0) {
+                        verbose && console.error(`Dropping ${sid} in ${resourceId} as decided by segment decorator`);
+                        return undefined;
                     }
                     const flattenSrc = nsrc ? flattenNormalizedSourceToOrdinal(nsrc) : src;
                     const guid = mm.generateFullyQualifiedGuid(resourceId, sid, flattenSrc);
@@ -86,7 +91,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                             verbose && console.error(`Source ${resourceId}+${sid}+${src} is incompatible with ${sourceLang}_${targetLang} TM entry ${JSON.stringify(entry)}`);
                         }
                     } else {
-                        verbose && !entry.inflight && console.error(`Couldn't find ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
+                        verbose && !entry?.inflight && console.error(`Couldn't find ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
                     }
                     return undefined;
                 };
