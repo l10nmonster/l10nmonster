@@ -70,8 +70,8 @@ export function extractNormalizedPartsV1(str, phMap) {
 }
 
 export function sourceAndTargetAreCompatible(nsrc, ntgt) {
-    Array.isArray(nsrc) && nsrc.length === 1 && (nsrc = nsrc[0]);
-    Array.isArray(ntgt) && ntgt.length === 1 && (ntgt = ntgt[0]);
+    Array.isArray(nsrc) && nsrc.length === 1 && typeof nsrc[0] === 'string' && (nsrc = nsrc[0]);
+    Array.isArray(ntgt) && ntgt.length === 1 && typeof ntgt[0] === 'string' && (ntgt = ntgt[0]);
     if (typeof nsrc === 'string' && typeof ntgt === 'string') {
         return true;
     } else if (Array.isArray(nsrc) && Array.isArray(ntgt)) {

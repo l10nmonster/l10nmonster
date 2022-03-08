@@ -7,7 +7,7 @@
 
 // Generic pluggable decoder
 export function regexMatchingDecoderMaker(flag, regex, partDecoder) {
-    return function decoder(parts) {
+    const fn = function decoder(parts) {
         const decodedParts = parts.map(p => {
             if (p.t === 's') {
                 const expandedPart = [];
@@ -43,29 +43,37 @@ export function regexMatchingDecoderMaker(flag, regex, partDecoder) {
             }
         });
         return decodedParts.flat(1);
-    }
+    };
+    Object.defineProperty(fn, 'name', { value: flag });
+    return fn;
 }
 
 // Generic wrapper to rename a decoder
 export function namedDecoder(name, decoder) {
-    return function namedDecoder(parts) {
-        return decoder(parts).map(p => (p.t === 's' ? { ...p, flag: name } : p));
+    const fn = function namedDecoder(parts) {
+        return decoder(parts).map(p => (p.flag === decoder.name ? { ...p, flag: name } : p));
     }
+    Object.defineProperty(fn, 'name', { value: name });
+    return fn;
 }
 
 // Generic pluggable encoder
-export function regexMatchingEncoderMaker(regex, charMap) {
-    return function encoder(str) {
+export function regexMatchingEncoderMaker(name, regex, charMap) {
+    const fn = function encoder(str) {
         return str.replaceAll(regex, m => charMap[m]);
     };
+    Object.defineProperty(fn, 'name', { value: name });
+    return fn;
 }
 
 // Generic flag-based encoder execution
 export function gatedEncoder(encoder, ...flagNames) {
-    return function gatedEncoder(str, flags = {}) {
+    const fn = function gatedEncoder(str, flags = {}) {
         const run = flagNames.reduce((run, flag) => run || (flag.charAt(0) === '!' ? !flags[flag.substring(1)] : flags[flag]), false);
         return run ? encoder(str, flags) : str;
-    }
+    };
+    Object.defineProperty(fn, 'name', { value: `gatedEncoder_${flagNames.join('_')}` });
+    return fn;
 }
 
 const namedEntities = {
@@ -95,6 +103,7 @@ export const xmlCDataDecoder = regexMatchingDecoderMaker(
 );
 
 export const xmlEntityEncoder = regexMatchingEncoderMaker(
+    'xmlEntityEncoder',
     /&|<|\u00a0/g,
     {
         '&': '&amp;',
@@ -132,6 +141,7 @@ export const javaMFQuotesEncoder = str => str.replaceAll("'", "''");
 
 // TODO: do we need to escape also those escapedChar that we decoded?
 export const javaEscapesEncoder = regexMatchingEncoderMaker(
+    'javaEscapesEncoder',
     /\t|\n|\r|\f|\u00a0/g,
     {
         '\t': '\\t',
@@ -177,7 +187,7 @@ export const doublePercentEncoder = (str) => str.replaceAll('%', '%%');
 // Works for both XML and HTML
 export const xmlDecoder = regexMatchingDecoderMaker(
     'xmlDecoder',
-    /(?<tag>(?<x><[^>]+\/>)|(?<bx><[^/][^>]*>)|(?<ex><\/[^>]+>))/g,
+    /(?<tag>(?<x><[^>]+\/>)|(?<bx><[^/!][^>]*>)|(?<ex><\/[^>]+>))/g,
     // eslint-disable-next-line no-nested-ternary
     (groups) => ({ t: (groups.bx ? 'bx' : (groups.ex ? 'ex' : 'x')), v: groups.tag })
 );

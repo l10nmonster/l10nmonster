@@ -1,4 +1,5 @@
 import * as path from 'path';
+import { existsSync, unlinkSync } from 'fs';
 import * as fs from 'fs/promises';
 import { globbySync } from 'globby';
 
@@ -59,7 +60,11 @@ export class FsTarget {
 
     async commitTranslatedResource(lang, resourceId, translatedRes) {
         const translatedPath = path.resolve(this.baseDir, this.targetPath(lang, resourceId));
-        await fs.mkdir(path.dirname(translatedPath), {recursive: true});
-        fs.writeFile(translatedPath, translatedRes, 'utf8');  // TODO: do we need a flag to write binary resources?
+        if (translatedRes === null) {
+            existsSync(translatedPath) && unlinkSync(translatedPath);
+        } else {
+            await fs.mkdir(path.dirname(translatedPath), {recursive: true});
+            fs.writeFile(translatedPath, translatedRes, 'utf8');  // TODO: do we need a flag to write binary resources?
+        }
     }
 }

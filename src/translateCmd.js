@@ -3,7 +3,7 @@ import { getNormalizedString, flattenNormalizedSourceToOrdinal, flattenNormalize
 import { consoleColor } from './shared.js';
 
 export async function translateCmd(mm, { limitToLang, dryRun }) {
-    const status = { generatedResources: {}, diff: {} };
+    const status = { generatedResources: {}, deleteResources: {}, diff: {} };
     const resourceStats = await mm.fetchResourceStats();
     const targetLangs = mm.getTargetLangs(limitToLang, resourceStats);
     for (const targetLang of targetLangs) {
@@ -11,6 +11,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
         const sourceLang = mm.sourceLang;
         const tm = await mm.tmm.getTM(sourceLang, targetLang);
         status.generatedResources[targetLang] = [];
+        status.deleteResources[targetLang] = [];
         status.diff[targetLang] = {};
         for (const res of resourceStats) {
             if (res.targetLangs.includes(targetLang) && (mm.ctx.prj === undefined || mm.ctx.prj.includes(res.prj))) {
@@ -49,7 +50,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                     const flattenSrc = nsrc ? flattenNormalizedSourceToOrdinal(nsrc) : src;
                     const guid = mm.generateFullyQualifiedGuid(resourceId, sid, flattenSrc);
                     const entry = tm.getEntryByGuid(guid);
-                    if (entry) {
+                    if (entry && !entry.inflight) {
                         if (sourceAndTargetAreCompatible(nsrc ?? src, entry.ntgt ?? entry.tgt)) {
                             if (entry.ntgt) {
                                 const ntgtEntries = entry.ntgt.entries();
@@ -85,7 +86,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                             verbose && console.error(`Source ${resourceId}+${sid}+${src} is incompatible with ${sourceLang}_${targetLang} TM entry ${JSON.stringify(entry)}`);
                         }
                     } else {
-                        verbose && console.error(`Couldn't find ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
+                        verbose && !entry.inflight && console.error(`Couldn't find ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
                     }
                     return undefined;
                 };
@@ -114,11 +115,9 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                             .join('');
                         diff && (status.diff[targetLang][translatedResourceId] = diff);
                     }
-                } else if (translatedRes === null) {
-                    verbose && console.log(`${targetLang}: Skipping commit of empty resource ${translatedResourceId}`);
                 } else {
                     await pipeline.target.commitTranslatedResource(targetLang, resourceId, translatedRes);
-                    status.generatedResources[targetLang].push(translatedResourceId);
+                    (translatedRes === null ? status.deleteResources : status.generatedResources)[targetLang].push(translatedResourceId);
                 }
             }
         }

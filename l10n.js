@@ -413,6 +413,9 @@ monsterCLI
             for (const [lang, files] of Object.entries(status.generatedResources)) {
                 console.log(`  - ${lang}: ${files.length} resources generated`);
             }
+            for (const [lang, files] of Object.entries(status.deleteResources)) {
+                console.log(`  - ${lang}: ${files.length} resources deleted`);
+            }
         }
     }))
 ;
