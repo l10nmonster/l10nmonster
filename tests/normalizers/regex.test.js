@@ -72,7 +72,7 @@ describe('Regex Encoder tests', () => {
             "For ", 
             {"t": "x", "v": "{0}"}, 
             ". This is a great deal, but this price won''t last."
-        ];
+        ]);
     });
     
 
