@@ -60,7 +60,7 @@ export function namedDecoder(name, decoder) {
 // Generic pluggable encoder
 export function regexMatchingEncoderMaker(name, regex, charMap) {
     const fn = function encoder(str) {
-        return str.replaceAll(regex, m => charMap[m]);
+        return str.replaceAll(regex, (match, capture) => charMap[capture]);
     };
     Object.defineProperty(fn, 'name', { value: name });
     return fn;
@@ -104,7 +104,8 @@ export const xmlCDataDecoder = regexMatchingDecoderMaker(
 
 export const xmlEntityEncoder = regexMatchingEncoderMaker(
     'xmlEntityEncoder',
-    /&|<|\u00a0/g,
+    // eslint-disable-next-line prefer-named-capture-group
+    /(&)|(<)|(\u00a0)/g,
     {
         '&': '&amp;',
         '<': '&lt;',
@@ -142,7 +143,8 @@ export const javaMFQuotesEncoder = str => str.replaceAll("'", "''");
 // TODO: do we need to escape also those escapedChar that we decoded?
 export const javaEscapesEncoder = regexMatchingEncoderMaker(
     'javaEscapesEncoder',
-    /\t|\n|\r|\f|\u00a0/g,
+    // eslint-disable-next-line prefer-named-capture-group
+    /(\t)|(\n)|(\r)|(\f)|(\u00a0)/g,
     {
         '\t': '\\t',
         '\n': '\\n',
