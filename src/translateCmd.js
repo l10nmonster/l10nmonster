@@ -44,6 +44,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                         const normalizedStr = getNormalizedString(src, pipeline.decoders, flags);
                         if (normalizedStr[0] !== src) {
                             nsrc = normalizedStr;
+                            seg.nstr = normalizedStr;
                             v1PhMap = flattenNormalizedSourceV1(nsrc)[1];
                             valueMap = Object.fromEntries(Object.values(v1PhMap).map(e => [ e.v, true ]));
                         }
