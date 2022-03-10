@@ -60,7 +60,10 @@ export function namedDecoder(name, decoder) {
 // Generic pluggable encoder
 export function regexMatchingEncoderMaker(name, regex, charMap) {
     const fn = function encoder(str) {
-        return str.replaceAll(regex, (match, ...capture) => charMap[capture.reduce((p,c) => p ?? c)]);
+        return str.replaceAll(regex, (match, ...capture) => {
+            const charToReplace = capture.reduce((p,c) => p ?? c);
+            return match.replace(charToReplace, charMap[charToReplace]);
+        });
     };
     Object.defineProperty(fn, 'name', { value: name });
     return fn;
