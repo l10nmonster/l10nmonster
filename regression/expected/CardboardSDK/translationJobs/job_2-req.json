@@ -10,7 +10,7 @@
 			"contentType": "default",
 			"src": "Cardboard mode: %1$@",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681,
+			"ts": 1647023591073,
 			"nsrc": [
 				"Cardboard mode: ",
 				{
@@ -26,7 +26,7 @@
 			"contentType": "default",
 			"src": "Fullscreen mode",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681
+			"ts": 1647023591073
 		}
 	],
 	"leverage": {

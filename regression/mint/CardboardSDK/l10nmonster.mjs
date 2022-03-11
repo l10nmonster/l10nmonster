@@ -10,8 +10,8 @@ export default class CardboardConfig {
             targetLangs: [ 'ar' ],
         });
         this.resourceFilter = new filters.IosStringsFilter();
-        this.decoders = [ normalizers.iosPHDecoder, normalizers.javaEscapesDecoder ];
-        this.textEncoders = [ normalizers.xmlEntityEncoder, normalizers.javaEscapesEncoder ];
+        this.decoders = [ normalizers.iosPHDecoder, normalizers.iosEscapesDecoder ];
+        this.textEncoders = [ normalizers.xmlEntityEncoder, normalizers.iosEscapesEncoder ];
         this.translationProvider = new translators.Visicode({
             quality: 2
         });

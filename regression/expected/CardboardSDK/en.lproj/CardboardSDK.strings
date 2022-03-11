@@ -124,7 +124,7 @@
 "AccessibilitySettingsButton" = "Settings";
 
 /* Accessibility label for the back button to take us out of 3D mode (read out loud) */
-"AccessibilityBackButton" = "Back\u0020to previous screen";
+"AccessibilityBackButton" = "Back\U0020to previous screen";
 
 /* Accessibility label for the cardboard button to go into cardboard mode (read out loud) */
 "AccessibilityCardboardButton" = "Cardboard mode: %1$@";

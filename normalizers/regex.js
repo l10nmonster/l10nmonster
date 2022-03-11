@@ -116,6 +116,38 @@ export const xmlEntityEncoder = regexMatchingEncoderMaker(
     }
 );
 
+// https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/LoadingResources/Strings/Strings.html#//apple_ref/doc/uid/10000051i-CH6-97055-CJBFDJGF
+const iosControlCharsToDecode = {
+    t: '\t',
+    n: '\n',
+    r: '\r',
+    f: '\f',
+};
+export const iosEscapesDecoder = regexMatchingDecoderMaker(
+    'iosEscapesDecoder',
+    /(?<node>\\(?<escapedChar>['"\\])|\\(?<escapedControl>[tbnrf])|\\U(?<codePoint>[0-9A-Za-z]{4}))/g, // note that in ios the \U is uppercase!
+    (groups) => (groups.escapedChar ??
+        (groups.escapedControl ?
+            (iosControlCharsToDecode[groups.escapedControl] ?? `\\${groups.escapedControl}`) :
+            String.fromCharCode(parseInt(groups.codePoint, 16))
+        )
+    )
+);
+
+export const iosEscapesEncoder = regexMatchingEncoderMaker(
+    'iosEscapesEncoder',
+    // eslint-disable-next-line prefer-named-capture-group
+    /(\t)|(\n)|(\r)|(\f)|(\u00a0)/g,
+    {
+        '\t': '\\t',
+        '\n': '\\n',
+        '\r': '\\r',
+        '\f': '\\f',
+        '"': '\\"',
+        '\\': '\\\\',
+    }
+);
+
 const javaControlCharsToDecode = {
     t: '\t',
     b: '\b',
@@ -134,15 +166,6 @@ export const javaEscapesDecoder = regexMatchingDecoderMaker(
     )
 );
 
-export const javaMFQuotesDecoder = regexMatchingDecoderMaker(
-    'javaMFQuotesDecoder',
-    /(?:(?<quote>')'|(?:'(?<quoted>[^']+)'))/g,
-    groups => groups.quote ?? groups.quoted
-);
-
-// need to be smart about detecting whether MessageFormat was used or not based on presence of {vars}
-export const javaMFQuotesEncoder = str => str.replaceAll("'", "''");
-
 // TODO: do we need to escape also those escapedChar that we decoded?
 export const javaEscapesEncoder = regexMatchingEncoderMaker(
     'javaEscapesEncoder',
@@ -154,6 +177,22 @@ export const javaEscapesEncoder = regexMatchingEncoderMaker(
         '\r': '\\r',
         '\f': '\\f',
         '\u00a0': '\\u00a0',
+    }
+);
+
+export const javaMFQuotesDecoder = regexMatchingDecoderMaker(
+    'javaMFQuotesDecoder',
+    /(?:(?<quote>')'|(?:'(?<quoted>[^']+)'))/g,
+    groups => groups.quote ?? groups.quoted
+);
+
+// need to be smart about detecting whether MessageFormat was used or not based on presence of {vars}
+export const javaMFQuotesEncoder = regexMatchingEncoderMaker(
+    'javaMFQuotesEncoder',
+    // eslint-disable-next-line prefer-named-capture-group
+    /(')/g,
+    {
+        "'": "''",
     }
 );
 

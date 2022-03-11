@@ -9,7 +9,7 @@
 			"contentType": "default",
 			"src": "Back",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681
+			"ts": 1647023591073
 		},
 		{
 			"sid": "NavTitleLabel",
@@ -18,7 +18,7 @@
 			"contentType": "default",
 			"src": "QR Scan",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681
+			"ts": 1647023591073
 		},
 		{
 			"sid": "LoadingMessage",
@@ -27,7 +27,7 @@
 			"contentType": "default",
 			"src": "Parsing configuration data",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681
+			"ts": 1647023591073
 		},
 		{
 			"sid": "InvalidQRCode",
@@ -36,7 +36,7 @@
 			"contentType": "default",
 			"src": "The QR code is invalid",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681
+			"ts": 1647023591073
 		},
 		{
 			"sid": "ParsingFailed",
@@ -45,7 +45,7 @@
 			"contentType": "default",
 			"src": "Problem in parsing the Url",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681
+			"ts": 1647023591073
 		},
 		{
 			"sid": "DataSynced",
@@ -55,7 +55,7 @@
 			"contentType": "default",
 			"src": "%1$@ detected",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681,
+			"ts": 1647023591073,
 			"nsrc": [
 				{
 					"t": "x",
@@ -71,7 +71,7 @@
 			"contentType": "default",
 			"src": "Find this symbol on your viewer",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681
+			"ts": 1647023591073
 		},
 		{
 			"sid": "CanNotFindSymbol",
@@ -80,7 +80,7 @@
 			"contentType": "default",
 			"src": "Can't find this symbol?",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681
+			"ts": 1647023591073
 		},
 		{
 			"sid": "TroubleShootingTips",
@@ -89,7 +89,7 @@
 			"contentType": "default",
 			"src": "Troubleshooting Tips",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681
+			"ts": 1647023591073
 		},
 		{
 			"sid": "SkipButtonLabel",
@@ -98,7 +98,7 @@
 			"contentType": "default",
 			"src": "SKIP",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681
+			"ts": 1647023591073
 		},
 		{
 			"sid": "OnboardingIntroLine1",
@@ -107,7 +107,7 @@
 			"contentType": "default",
 			"src": "Let's get you set up",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681
+			"ts": 1647023591073
 		},
 		{
 			"sid": "OnboardingIntroLine2",
@@ -116,7 +116,7 @@
 			"contentType": "default",
 			"src": "Pair your phone with your viewer for the best experience.",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681
+			"ts": 1647023591073
 		},
 		{
 			"sid": "OnboardingNoViewerPrompt",
@@ -125,7 +125,7 @@
 			"contentType": "default",
 			"src": "No cardboard viewer?",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681
+			"ts": 1647023591073
 		},
 		{
 			"sid": "OnboardingGetCardboardButton",
@@ -134,7 +134,7 @@
 			"contentType": "default",
 			"src": "Get One",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681
+			"ts": 1647023591073
 		},
 		{
 			"sid": "PlaceYourPhoneInCardboard",
@@ -143,7 +143,7 @@
 			"contentType": "default",
 			"src": "Place your phone into your Cardboard viewer.",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681
+			"ts": 1647023591073
 		},
 		{
 			"sid": "PlaceYourPhoneInViewerFormat",
@@ -153,7 +153,7 @@
 			"contentType": "default",
 			"src": "Place your phone into your %1$@ viewer.",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681,
+			"ts": 1647023591073,
 			"nsrc": [
 				"Place your phone into your ",
 				{
@@ -170,7 +170,7 @@
 			"contentType": "default",
 			"src": "Settings",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681
+			"ts": 1647023591073
 		},
 		{
 			"sid": "SettingsSyncLabel",
@@ -179,7 +179,7 @@
 			"contentType": "default",
 			"src": "Sync with Google Cardboard",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681
+			"ts": 1647023591073
 		},
 		{
 			"sid": "SettingsCurrentViewerLabelFormat",
@@ -189,7 +189,7 @@
 			"contentType": "default",
 			"src": "Current viewer: %1$@",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681,
+			"ts": 1647023591073,
 			"nsrc": [
 				"Current viewer: ",
 				{
@@ -205,7 +205,7 @@
 			"contentType": "default",
 			"src": "Default",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681
+			"ts": 1647023591073
 		},
 		{
 			"sid": "DifferentViewerQuestion",
@@ -214,7 +214,7 @@
 			"contentType": "default",
 			"src": "Using a different viewer?",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681
+			"ts": 1647023591073
 		},
 		{
 			"sid": "SwitchViewer",
@@ -223,7 +223,7 @@
 			"contentType": "default",
 			"src": "SWITCH",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681
+			"ts": 1647023591073
 		},
 		{
 			"sid": "SwitchViewerActivityMenuTitle",
@@ -233,7 +233,7 @@
 			"contentType": "default",
 			"src": "Switch viewer: %1$@",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681,
+			"ts": 1647023591073,
 			"nsrc": [
 				"Switch viewer: ",
 				{
@@ -249,7 +249,7 @@
 			"contentType": "default",
 			"src": "Help",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681
+			"ts": 1647023591073
 		},
 		{
 			"sid": "SuccessfullyPaired",
@@ -258,7 +258,7 @@
 			"contentType": "default",
 			"src": "Successfully Paired!",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681
+			"ts": 1647023591073
 		},
 		{
 			"sid": "ViewerConfigured",
@@ -268,7 +268,7 @@
 			"contentType": "default",
 			"src": "Your phone is now configured for your %1$@ viewer.",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681,
+			"ts": 1647023591073,
 			"nsrc": [
 				"Your phone is now configured for your ",
 				{
@@ -285,7 +285,7 @@
 			"contentType": "default",
 			"src": "OK",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681
+			"ts": 1647023591073
 		},
 		{
 			"sid": "AccessibilitySettingsButton",
@@ -294,7 +294,7 @@
 			"contentType": "default",
 			"src": "Settings",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681
+			"ts": 1647023591073
 		},
 		{
 			"sid": "AccessibilityBackButton",
@@ -302,9 +302,9 @@
 			"gstr": "Back to previous screen",
 			"guid": "Ln6QELVxYXr2EgOv6P2-EYewhB5H6jLOJ1W5jilT_nc",
 			"contentType": "default",
-			"src": "Back\\u0020to previous screen",
+			"src": "Back\\U0020to previous screen",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681,
+			"ts": 1647023591073,
 			"nsrc": [
 				"Back to previous screen"
 			]
