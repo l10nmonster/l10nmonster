@@ -73,6 +73,12 @@ describe('android filter tests', () => {
                 }, {
                     "sid": "html",
                     "str": "&lt;b>bold&lt;/b>"
+                }, {
+                    "sid": "escapedSingleQuoteInCdata",
+                    "str": "<![CDATA[Winter is <strong><color name=\\'orange\\'>coming</color></strong>]]>"
+                }, {
+                    "sid": "escapedDoubleQuoteInCdata",
+                    "str": "<![CDATA[Winter is <strong><color name=\\\"orange\\\">coming</color></strong>]]>"
                 }
             ]});
         expect(getNormalizedString(encodingsRes.segments[0].str, [xmlCDataDecoder])[0])
@@ -96,5 +102,9 @@ describe('android filter tests', () => {
         const nsrc7 = [{"t": "bx","v": "<b>"}, "bold", {"t": "ex","v": "</b>"}];
         expect(getNormalizedString(encodingsRes.segments[7].str, [...standardDecoders, xmlDecoder]))
             .toMatchObject(nsrc7);
+        expect(getNormalizedString(encodingsRes.segments[8].str, [xmlCDataDecoder])[0])
+            .toBe("Winter is <strong><color name=\\'orange\\'>coming</color></strong>");
+        expect(getNormalizedString(encodingsRes.segments[9].str, [xmlCDataDecoder])[0])
+            .toBe("Winter is <strong><color name=\\\"orange\\\">coming</color></strong>");
         });
 });
