@@ -3,7 +3,7 @@
 	"targetLang": "ar",
 	"leverage": {
 		"tmSize": 29,
-		"minimumQuality": 50,
+		"minimumQuality": 2,
 		"prjLeverage": {
 			"default": {
 				"translated": 29,
@@ -11,9 +11,9 @@
 				"translatedByQ": {
 					"70": 29
 				},
-				"untranslated": 2,
-				"untranslatedChars": 31,
-				"untranslatedWords": 4,
+				"untranslated": 3,
+				"untranslatedChars": 59,
+				"untranslatedWords": 8,
 				"pending": 0,
 				"pendingWords": 0,
 				"internalRepetitions": 1,
@@ -26,7 +26,7 @@
 			"guid": "d13hqt62wEq5drSC-g7auJUOAlQL-N3VrEyi1mCjMH0",
 			"q": 61,
 			"tgt": "مساعدة",
-			"ts": 1644385400681,
+			"ts": 1647050424451,
 			"jobId": 1
 		}
 	],

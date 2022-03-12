@@ -9,12 +9,12 @@
 			"contentType": "default",
 			"src": "Help",
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1644385400681
+			"ts": 1647050424451
 		}
 	],
 	"leverage": {
 		"tmSize": 29,
-		"minimumQuality": 50,
+		"minimumQuality": 2,
 		"prjLeverage": {
 			"default": {
 				"translated": 29,
@@ -22,9 +22,9 @@
 				"translatedByQ": {
 					"70": 29
 				},
-				"untranslated": 2,
-				"untranslatedChars": 31,
-				"untranslatedWords": 4,
+				"untranslated": 3,
+				"untranslatedChars": 59,
+				"untranslatedWords": 8,
 				"pending": 0,
 				"pendingWords": 0,
 				"internalRepetitions": 1,

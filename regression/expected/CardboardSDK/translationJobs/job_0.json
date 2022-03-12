@@ -3,15 +3,15 @@
 	"targetLang": "ar",
 	"leverage": {
 		"tmSize": 0,
-		"minimumQuality": 50,
+		"minimumQuality": 2,
 		"prjLeverage": {
 			"default": {
 				"translated": 0,
 				"translatedWords": 0,
 				"translatedByQ": {},
-				"untranslated": 30,
-				"untranslatedChars": 584,
-				"untranslatedWords": 98,
+				"untranslated": 31,
+				"untranslatedChars": 612,
+				"untranslatedWords": 102,
 				"pending": 0,
 				"pendingWords": 0,
 				"internalRepetitions": 2,
@@ -24,31 +24,31 @@
 			"guid": "Sch-OXL3KPaFNWvKiWNmafNmqHZo8oNtcaB-9jYE1sk",
 			"q": 70,
 			"tgt": "رجوع",
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "S5zXEp9KGe9nqhqgtH8vMM106HfoiBTZzDQ8qyPdB5A",
 			"q": 70,
 			"tgt": "فحص الاستجابة السريعة.",
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "PV7WBP4aNfZzq1Hre1_bkECpoSmhPedg7xfh7UKYkyw",
 			"q": 70,
 			"tgt": "تحليل بيانات التهيئة",
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "jkJekuVBcsiufoG2zmxszlbnMGkREPRBAeb2QTDfUaI",
 			"q": 70,
 			"tgt": "إن رمز الاستجابة السريعة غير صالح",
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "2n8bq0sVYs9Xil3nEw7OEVuhOSGvpaoInQAZ89RnD7c",
 			"q": 70,
 			"tgt": "‏مشكلة في تحليل عنوان Url",
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "XY8o8xA5C_HlR4v8LDc4L98Y0mR-4gHyLjDxwvNhDrM",
@@ -60,61 +60,61 @@
 					"v": "%1$@"
 				}
 			],
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "MmBuoyCIE3eiz_wlkLAZMeoIhXX52LOiAHNCnl3o4Fc",
 			"q": 70,
 			"tgt": "العثور على هذا الرمز على عارضك",
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "QaV08RUEuxPOCugEXCnQ7tnShKARCrrKeZxYO7kxLSc",
 			"q": 70,
 			"tgt": "ألا تستطيع العثور على هذا الرمز؟",
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "c6aK6IBRyaNfMidf7na8JYOmhVI2r4vsn3O6B-pr-xc",
 			"q": 70,
 			"tgt": "نصائح تحرّى الخلل وإصلاحه",
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "ZYAxQNY0zLKx4RB3CGTDXujQrbLQclR9EH5EQ7Fzbok",
 			"q": 70,
 			"tgt": "تخطٍ",
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "Kj45w0Rgr1SHV55MeVawhgff4UYIfb-XuWWnyf9_dks",
 			"q": 70,
 			"tgt": "لنبدأ الإعداد",
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "8_cqAMCRj_4YGH6-e5xWNNAupQF-OHn20AQoeGp75h4",
 			"q": 70,
 			"tgt": "أقرن هاتفك مع العارض للتمتّع بأفضل تجربة",
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "yiK0MVBkcMRpl-7tMMPVMmlUvDJvqVxRbLLDHOchAko",
 			"q": 70,
 			"tgt": "‏أليس لديك عارض Cardboard؟",
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "L3Um-sKnXUAP1liD4dLFvMGh7c2p80P5DRx1ZFPYpqM",
 			"q": 70,
 			"tgt": "الحصول على واحد",
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "6nFW5iZToYQ3LtLDeb9Adlfu-EQWDAuFyMsAlRw4cf4",
 			"q": 70,
 			"tgt": "‏ضع هاتفك في عارض Cardboard.",
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "4jxuTPXhhsLGShj5wDGlsktW8NV1GAYrGDxHaZV_6C4",
@@ -127,19 +127,19 @@
 				},
 				"."
 			],
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "6hNFreOOSaLtvtpZeirvd7YWah19RxogxrXPw89jle8",
 			"q": 70,
 			"tgt": "الإعدادات",
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "JdemGm2zCUjeubRLZsgXcHubo03AMla3GDG3EQOcRaA",
 			"q": 70,
 			"tgt": "‏مزامنة مع Google Cardboard",
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "slgigM0NfUFIqYMNDpipEAV2LaSg4PIejxEgH37p4Pw",
@@ -151,25 +151,25 @@
 					"v": "%1$@"
 				}
 			],
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "wqrXrCWCECaeOiuDSJiLjeSfPaVlrgpeDFJp8NK39WU",
 			"q": 70,
 			"tgt": "افتراضي",
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "kNNZEkHiye4nzgXH33tGPIpo_dN9p9dtDvtyQLknghg",
 			"q": 70,
 			"tgt": "هل تستخدم عارضًا مختلفًا؟",
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "qTP4qKQCnREcyJAH2Kaph3DNOicsXMZGYTlqeVzrb2c",
 			"q": 70,
 			"tgt": "تبديل",
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "Ko1R6hKlnw0dJtnGrwHdjhq0igmaxHWUuci1ZrEiYvg",
@@ -181,19 +181,19 @@
 					"v": "%1$@"
 				}
 			],
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "_AhOCAPiMyasIto9QG_S4I0SlAYd_aMe7FWWEAduL38",
 			"q": 70,
 			"tgt": "مساعدة",
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "CBwqRfe5Ye7rqvX0p6oInX-rrmYU3pvl1Sb7GOjEY2k",
 			"q": 70,
 			"tgt": "تم الإقران بنجاح!",
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "xX2wjf_JnaqCdoe4AvzrpR0w__P7h12WCoMygm6ru8U",
@@ -206,25 +206,25 @@
 				},
 				"."
 			],
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "QBJSpbVgw6NtOonlImeo7N4Ys6aMk-tIHP-Jha6jjwk",
 			"q": 70,
 			"tgt": "موافق",
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "ngT5pq_BhXgX71IJFDYZQRJX80bl9J1XPD2oBb-VEAE",
 			"q": 70,
 			"tgt": "الإعدادات",
-			"ts": 1644385400681
+			"ts": 1647050424451
 		},
 		{
 			"guid": "Ln6QELVxYXr2EgOv6P2-EYewhB5H6jLOJ1W5jilT_nc",
 			"q": 70,
 			"tgt": "رجوع إلى الشاشة السابقة",
-			"ts": 1644385400681
+			"ts": 1647050424451
 		}
 	],
 	"status": "done",

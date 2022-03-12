@@ -3,8 +3,8 @@ export async function pushCmd(mm, { limitToLang, leverage, dryRun, quota }) {
     await mm.updateSourceCache();
     const targetLangs = mm.getTargetLangs(limitToLang);
     for (const targetLang of targetLangs) {
-        const langStatus = { targetLang };
         const jobBody = await mm.prepareTranslationJob({ targetLang, leverage });
+        const langStatus = { sourceLang: jobBody.sourceLang, targetLang };
         if (Object.keys(jobBody.tus).length > 0) {
             if (dryRun) {
                 langStatus.tus = jobBody.tus;
