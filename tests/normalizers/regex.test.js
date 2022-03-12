@@ -1,6 +1,6 @@
 import { getNormalizedString } from '../../normalizers/util.js';
 import { xmlDecoder, bracePHDecoder, iosPHDecoder, xmlEntityDecoder, javaEscapesDecoder,
-    gatedEncoder, xmlEntityEncoder } from '../../normalizers/regex.js';
+    javaMFQuotesDecoder, gatedEncoder, xmlEntityEncoder } from '../../normalizers/regex.js';
 
 describe('Regex Encoder tests', () => {
 
@@ -64,16 +64,14 @@ describe('Regex Encoder tests', () => {
         expect(gatedEncoder(xmlEntityEncoder, 'foo')('<b>')).toBe('<b>');
         expect(gatedEncoder(xmlEntityEncoder, 'foo')('<b>', { foo: true })).toBe('&lt;b>');
     });
-    
-    //TODO: '' should be normalized to '
+
     test('java variable with single quote', async () => {
-        expect(getNormalizedString("For {0}. This is a great deal, but this price won''t last.",[javaEscapesDecoder, bracePHDecoder, xmlEntityDecoder]
+        expect(getNormalizedString("For {0}. This is a great deal, but this price won''t last.",[ javaMFQuotesDecoder, javaEscapesDecoder, bracePHDecoder, xmlEntityDecoder ]
         )).toMatchObject([
-            "For ", 
-            {"t": "x", "v": "{0}"}, 
-            ". This is a great deal, but this price won''t last."
+            "For ",
+            {"t": "x", "v": "{0}"},
+            ". This is a great deal, but this price won't last."
         ]);
     });
-    
 
 });
