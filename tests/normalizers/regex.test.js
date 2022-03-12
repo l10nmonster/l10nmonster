@@ -64,7 +64,7 @@ describe('Regex Encoder tests', () => {
         expect(gatedEncoder(xmlEntityEncoder, 'foo')('<b>')).toBe('<b>');
         expect(gatedEncoder(xmlEntityEncoder, 'foo')('<b>', { foo: true })).toBe('&lt;b>');
     });
-    
+
     test('java variable with single quote', async () => {
         expect(getNormalizedString("For {0}. This is a great deal, but this price won''t last.",[ javaMFQuotesDecoder, javaEscapesDecoder, bracePHDecoder, xmlEntityDecoder ]
         )).toMatchObject([
