@@ -281,7 +281,7 @@ monsterCLI
             const status = await pushCmd(monsterManager, { limitToLang, leverage, dryRun, quota });
             if (dryRun) {
                 for (const langStatus of status) {
-                    console.log(`\nLanguage ${langStatus.targetLang}`);
+                    console.log(`\nLanguage pair ${langStatus.sourceLang} -> ${langStatus.targetLang}`);
                     printRequest(langStatus);
                 }
             } else {

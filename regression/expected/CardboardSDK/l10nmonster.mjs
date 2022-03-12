@@ -1,6 +1,6 @@
 export default class CardboardConfig {
     sourceLang = 'en';
-    minimumQuality = 50;
+    minimumQuality = 2;
     qualifiedPenalty = 1;
     unqualifiedPenalty = 9;
 

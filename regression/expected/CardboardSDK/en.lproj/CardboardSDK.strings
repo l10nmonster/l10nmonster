@@ -134,3 +134,6 @@
 
 /* Accessibility label for the information button to go to help page (read out loud) */
 "AccessibilityHelpButton" = "Help";
+
+/* Test encoding and decoding */
+"HelpHack" = "Help 'encoding\' is\U00a0\"hard\"!\\\n";

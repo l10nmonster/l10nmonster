@@ -3,7 +3,7 @@
 	"targetLang": "ar",
 	"leverage": {
 		"tmSize": 30,
-		"minimumQuality": 50,
+		"minimumQuality": 2,
 		"prjLeverage": {
 			"default": {
 				"translated": 30,
@@ -12,9 +12,9 @@
 					"61": 1,
 					"70": 29
 				},
-				"untranslated": 2,
-				"untranslatedChars": 31,
-				"untranslatedWords": 4,
+				"untranslated": 3,
+				"untranslatedChars": 59,
+				"untranslatedWords": 8,
 				"pending": 0,
 				"pendingWords": 0,
 				"internalRepetitions": 0,
@@ -45,8 +45,18 @@
 			"guid": "snWaUNjXnKuXlItO8jUPfKITKfuqshl6xCXxUgiP4jI",
 			"tgt": "⇥⒞ⒷF̳u̳l̳l̳s̳c̳r̳e̳e̳n̳ ̳m̳o̳d̳e̳⇤",
 			"q": 2
+		},
+		{
+			"guid": "kjYD6n4DIB9kQKYRd0QStGsZfU2yOhcUG091zj53Skw",
+			"ntgt": [
+				"⇥⒞Ⓒ",
+				"H̳e̳l̳p̳ ̳'̳e̳n̳c̳o̳d̳i̳n̳g̳'̳ ̳i̳s̳ ̳\"̳h̳a̳r̳d̳\"̳!̳\\̳\n̳",
+				"⇤"
+			],
+			"contentType": "default",
+			"q": 2
 		}
 	],
 	"ts": 1,
-	"num": 2
+	"num": 3
 }

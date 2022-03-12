@@ -137,14 +137,12 @@ export const iosEscapesDecoder = regexMatchingDecoderMaker(
 export const iosEscapesEncoder = regexMatchingEncoderMaker(
     'iosEscapesEncoder',
     // eslint-disable-next-line prefer-named-capture-group
-    /(\t)|(\n)|(\r)|(\f)|(\u00a0)/g,
+    /(\t)|(\n)|(\r)|(\f)/g,
     {
         '\t': '\\t',
         '\n': '\\n',
         '\r': '\\r',
         '\f': '\\f',
-        '"': '\\"',
-        '\\': '\\\\',
     }
 );
 

@@ -70,11 +70,9 @@ export function extractNormalizedPartsV1(str, phMap) {
 }
 
 export function sourceAndTargetAreCompatible(nsrc, ntgt) {
-    Array.isArray(nsrc) && nsrc.length === 1 && typeof nsrc[0] === 'string' && (nsrc = nsrc[0]);
-    Array.isArray(ntgt) && ntgt.length === 1 && typeof ntgt[0] === 'string' && (ntgt = ntgt[0]);
-    if (typeof nsrc === 'string' && typeof ntgt === 'string') {
-        return true;
-    } else if (Array.isArray(nsrc) && Array.isArray(ntgt)) {
+    if (Boolean(nsrc) && Boolean(ntgt)) {
+        !Array.isArray(nsrc) && (nsrc = [ nsrc ]);
+        !Array.isArray(ntgt) && (ntgt = [ ntgt ]);
         const v1PhMap = flattenNormalizedSourceV1(nsrc)[1];
         const valueMap = Object.fromEntries(Object.values(v1PhMap).map(e => [ e.v, true ]));
         for (const ph of ntgt) {
@@ -84,7 +82,7 @@ export function sourceAndTargetAreCompatible(nsrc, ntgt) {
                 }
             }
         }
-        return true;
+        return Object.keys(v1PhMap).length === Object.keys(flattenNormalizedSourceV1(ntgt)[1]).length;
     }
     return false;
 }

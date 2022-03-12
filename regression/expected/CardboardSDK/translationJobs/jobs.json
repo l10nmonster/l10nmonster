@@ -7,15 +7,15 @@
 		"targetLang": "ar",
 		"leverage": {
 			"tmSize": 0,
-			"minimumQuality": 50,
+			"minimumQuality": 2,
 			"prjLeverage": {
 				"default": {
 					"translated": 0,
 					"translatedWords": 0,
 					"translatedByQ": {},
-					"untranslated": 30,
-					"untranslatedChars": 584,
-					"untranslatedWords": 98,
+					"untranslated": 31,
+					"untranslatedChars": 612,
+					"untranslatedWords": 102,
 					"pending": 0,
 					"pendingWords": 0,
 					"internalRepetitions": 2,
@@ -34,7 +34,7 @@
 		"targetLang": "ar",
 		"leverage": {
 			"tmSize": 29,
-			"minimumQuality": 50,
+			"minimumQuality": 2,
 			"prjLeverage": {
 				"default": {
 					"translated": 29,
@@ -42,9 +42,9 @@
 					"translatedByQ": {
 						"70": 29
 					},
-					"untranslated": 2,
-					"untranslatedChars": 31,
-					"untranslatedWords": 4,
+					"untranslated": 3,
+					"untranslatedChars": 59,
+					"untranslatedWords": 8,
 					"pending": 0,
 					"pendingWords": 0,
 					"internalRepetitions": 1,
@@ -63,7 +63,7 @@
 		"targetLang": "ar",
 		"leverage": {
 			"tmSize": 30,
-			"minimumQuality": 50,
+			"minimumQuality": 2,
 			"prjLeverage": {
 				"default": {
 					"translated": 30,
@@ -72,9 +72,9 @@
 						"61": 1,
 						"70": 29
 					},
-					"untranslated": 2,
-					"untranslatedChars": 31,
-					"untranslatedWords": 4,
+					"untranslated": 3,
+					"untranslatedChars": 59,
+					"untranslatedWords": 8,
 					"pending": 0,
 					"pendingWords": 0,
 					"internalRepetitions": 0,
@@ -84,7 +84,7 @@
 		},
 		"translationProvider": "Visicode",
 		"ts": 1,
-		"num": 2,
+		"num": 3,
 		"updatedAt": "2022-02-05T00:00:00.000Z"
 	}
 ]
