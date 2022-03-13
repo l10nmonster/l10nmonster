@@ -8,4 +8,6 @@
     <string name="spaceTrimming">  sp    ace  </string>
     <string name="new">What\'s new\n</string>
     <string name="html">&lt;b>bold&lt;/b></string>
+    <string name="escapedSingleQuoteInCdata"><![CDATA[Winter is <strong><color name=\'orange\'>coming</color></strong>]]></string>
+    <string name="escapedDoubleQuoteInCdata"><![CDATA[Winter is <strong><color name=\"orange\">coming</color></strong>]]></string>
   </resources>
