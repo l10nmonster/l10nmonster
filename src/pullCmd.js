@@ -5,7 +5,7 @@ export async function pullCmd(mm) {
     for (const jobManifest of pendingJobs) {
         mm.verbose && console.log(`Pulling job ${jobManifest.jobId}...`);
         const translationProvider = mm.getTranslationProvider(jobManifest);
-        const newTranslations = await translationProvider.fetchTranslations(jobManifest);
+        const newTranslations = await translationProvider.translator.fetchTranslations(jobManifest);
         if (newTranslations) {
             await mm.processJob(newTranslations);
             stats.translatedStrings += newTranslations.tus.length;

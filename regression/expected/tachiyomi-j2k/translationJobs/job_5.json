@@ -19,10 +19,10 @@
 			}
 		}
 	},
+	"translationProvider": "PigLatinizer",
 	"jobId": 5,
 	"jobGuid": "x",
 	"status": "done",
-	"translationProvider": "PigLatinizer",
 	"tus": [
 		{
 			"guid": "27qyNndOGr5Tzx4ddlKCtgGu-HA1wIjdz0DHPrL7yF8",

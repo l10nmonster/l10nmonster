@@ -8966,8 +8966,8 @@
 			}
 		}
 	},
+	"translationProvider": "PigLatinizer",
 	"jobId": 5,
 	"jobGuid": "x",
-	"status": "created",
-	"translationProvider": "PigLatinizer"
+	"status": "created"
 }

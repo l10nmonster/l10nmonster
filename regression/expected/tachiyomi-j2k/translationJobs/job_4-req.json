@@ -4347,8 +4347,8 @@
 			}
 		}
 	},
+	"translationProvider": "XliffBridge",
 	"jobId": 4,
 	"jobGuid": "x",
-	"status": "created",
-	"translationProvider": "XliffBridge"
+	"status": "created"
 }
