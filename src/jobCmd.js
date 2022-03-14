@@ -3,7 +3,7 @@ export async function jobPush(mm, pushJobId) {
     if (jobRequest.status === 'blocked') {
         const translationProvider = mm.getTranslationProvider(jobRequest);
         if (translationProvider) {
-            const jobResponse = await translationProvider.requestTranslations(jobRequest);
+            const jobResponse = await translationProvider.translator.requestTranslations(jobRequest);
             jobResponse.num = jobResponse.tus?.length ?? jobResponse.inflight?.length ?? 0;
             await mm.processJob(jobResponse, jobRequest);
             return {

@@ -53,7 +53,7 @@ export default class MonsterManager {
             } else {
                 this.translationProviders = { };
                 this.translationProviders[monsterConfig.translationProvider.constructor.name] = {
-                        provider: monsterConfig.translationProvider,
+                    translator: monsterConfig.translationProvider,
                 };
             }
             this.sourceCachePath = path.join(monsterDir, 'sourceCache.json');
@@ -243,7 +243,7 @@ export default class MonsterManager {
                 }
             }
         }
-        return this.translationProviders[translationProviderName].provider;
+        return this.translationProviders[translationProviderName];
     }
 
     getTargetLangs(limitToLang, resourceStats) {

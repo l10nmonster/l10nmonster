@@ -32,14 +32,14 @@ export default class TachiyomiConfig {
         });
         this.translationProviders = {
             XliffBridge: {
-                provider: new translators.XliffBridge({
+                translator: new translators.XliffBridge({
                     requestPath: (lang, prjId) => `xliff/outbox/prj${('0000' + prjId).substr(-4)}-${lang}.xml`,
                     completePath: (lang, prjId) => `xliff/inbox/prj${('0000' + prjId).substr(-4)}-${lang}.xml`,
                     quality: 80,
                 }),
             },
             PigLatinizer: {
-                provider: new translators.PigLatinizer({ quality: 1 }),
+                translator: new translators.PigLatinizer({ quality: 1 }),
                 pairs: { en: [ 'piggy' ]},
             }
         };

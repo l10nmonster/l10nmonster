@@ -22,10 +22,10 @@
 			}
 		}
 	},
+	"translationProvider": "XliffBridge",
 	"jobId": 3,
 	"jobGuid": "x",
 	"status": "pending",
-	"translationProvider": "XliffBridge",
 	"inflight": [
 		"t4VWxI0XBS7jJwzcIpjyWz95PtQe0nM2xUjvN4A1U_4",
 		"1d7HtgdwLMLoxTTiv83rLZkKjkpfAmsehateH09g4gc",

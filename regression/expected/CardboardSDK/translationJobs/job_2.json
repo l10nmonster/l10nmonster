@@ -22,10 +22,10 @@
 			}
 		}
 	},
+	"translationProvider": "Visicode",
 	"jobId": 2,
 	"jobGuid": "x",
 	"status": "done",
-	"translationProvider": "Visicode",
 	"tus": [
 		{
 			"guid": "p72nj2yZPB-RfJOZa2iZg2pt16HznCGr_kdYQziGHxs",

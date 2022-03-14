@@ -269,18 +269,16 @@ monsterCLI
     .description('push source content upstream (send to translation).')
     .option('-l, --lang <language>', 'target language to push')
     .option('--provider <name>', 'use the specified translation provider')
-    .option('--quota <number of units>', 'max number of translation units to be pushed automatically')
     .option('--leverage', 'eliminate internal repetitions from push')
     .option('-d, --dryrun', 'simulate translating and compare with existing translations')
     .action(async (options) => await withMonsterManager(async monsterManager => {
         const limitToLang = options.lang;
         const translationProviderName = options.provider;
-        const quota = options.quota;
         const leverage = options.leverage;
         const dryRun = options.dryrun;
         console.log(`Pushing content upstream...${dryRun ? ' (dry run)' : ''}`);
         try {
-            const status = await pushCmd(monsterManager, { limitToLang, leverage, dryRun, quota, translationProviderName });
+            const status = await pushCmd(monsterManager, { limitToLang, leverage, dryRun, translationProviderName });
             if (dryRun) {
                 for (const langStatus of status) {
                     console.log(`\nLanguage pair ${langStatus.sourceLang} -> ${langStatus.targetLang}`);
@@ -289,7 +287,11 @@ monsterCLI
             } else {
                 if (status.length > 0) {
                     for (const ls of status) {
-                    console.log(`${ls.num.toLocaleString()} translations units requested for language ${ls.targetLang} on job id ${ls.jobId} -> status: ${ls.status}`);
+                        if (ls.minimumJobSize !== undefined) {
+                            console.log(`${ls.num.toLocaleString()} translations units for language ${ls.targetLang} not sent because minimum ${ls.minimumJobSize} size was not reached`);
+                        } else {
+                            console.log(`${ls.num.toLocaleString()} translations units requested for language ${ls.targetLang} on job id ${ls.jobId} -> status: ${ls.status}`);
+                        }
                     }
                 } else {
                     console.log('Nothing to push!');

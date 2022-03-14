@@ -63,8 +63,8 @@
 			}
 		}
 	},
+	"translationProvider": "Visicode",
 	"jobId": 2,
 	"jobGuid": "x",
-	"status": "created",
-	"translationProvider": "Visicode"
+	"status": "created"
 }
