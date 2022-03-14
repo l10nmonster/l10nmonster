@@ -1,4 +1,4 @@
-export async function pushCmd(mm, { limitToLang, leverage, dryRun, quota }) {
+export async function pushCmd(mm, { limitToLang, leverage, dryRun, quota, translationProviderName }) {
     const status = [];
     await mm.updateSourceCache();
     const targetLangs = mm.getTargetLangs(limitToLang);
@@ -14,10 +14,10 @@ export async function pushCmd(mm, { limitToLang, leverage, dryRun, quota }) {
                 const jobRequest = {
                     ...jobBody,
                     ...manifest,
+                    translationProvider: translationProviderName,
                 };
                 const translationProvider = mm.getTranslationProvider(jobRequest);
                 if (translationProvider) {
-                    jobRequest.translationProvider = translationProvider.constructor.name;
                     let jobResponse;
                     if (jobBody.tus.length <= quota) {
                         jobResponse = await translationProvider.requestTranslations(jobRequest);

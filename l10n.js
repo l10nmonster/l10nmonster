@@ -268,17 +268,19 @@ monsterCLI
     .command('push')
     .description('push source content upstream (send to translation).')
     .option('-l, --lang <language>', 'target language to push')
+    .option('--provider <name>', 'use the specified translation provider')
     .option('--quota <number of units>', 'max number of translation units to be pushed automatically')
     .option('--leverage', 'eliminate internal repetitions from push')
     .option('-d, --dryrun', 'simulate translating and compare with existing translations')
     .action(async (options) => await withMonsterManager(async monsterManager => {
         const limitToLang = options.lang;
+        const translationProviderName = options.provider;
         const quota = options.quota;
         const leverage = options.leverage;
         const dryRun = options.dryrun;
         console.log(`Pushing content upstream...${dryRun ? ' (dry run)' : ''}`);
         try {
-            const status = await pushCmd(monsterManager, { limitToLang, leverage, dryRun, quota });
+            const status = await pushCmd(monsterManager, { limitToLang, leverage, dryRun, quota, translationProviderName });
             if (dryRun) {
                 for (const langStatus of status) {
                     console.log(`\nLanguage pair ${langStatus.sourceLang} -> ${langStatus.targetLang}`);

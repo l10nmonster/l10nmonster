@@ -15,8 +15,9 @@ import { getNormalizedString, flattenNormalizedSourceToOrdinal, sourceAndTargetA
 
 export default class MonsterManager {
     constructor({ monsterDir, monsterConfig, ctx }) {
-        if (monsterDir && monsterConfig && monsterConfig.sourceLang && monsterConfig.translationProvider &&
-             (monsterConfig.contentTypes || (monsterConfig.source && monsterConfig.resourceFilter && monsterConfig.target)) === undefined) {
+        if (monsterDir && monsterConfig && monsterConfig.sourceLang &&
+                (monsterConfig.translationProvider || monsterConfig.translationProviders) &&
+                (monsterConfig.contentTypes || (monsterConfig.source && monsterConfig.resourceFilter && monsterConfig.target)) === undefined) {
             throw 'You must specify sourceLang, translationProvider, minimumQuality, contentTypes (or source+resourceFilter+target) in l10nmonster.mjs';
         } else {
             this.monsterDir = monsterDir;
@@ -31,7 +32,6 @@ export default class MonsterManager {
             this.minimumQuality = monsterConfig.minimumQuality;
             this.qualifiedPenalty = monsterConfig.qualifiedPenalty;
             this.unqualifiedPenalty = monsterConfig.unqualifiedPenalty;
-            this.translationProvider = monsterConfig.translationProvider;
             if (monsterConfig.contentTypes) {
                 this.contentTypes = monsterConfig.contentTypes;
             } else {
@@ -45,6 +45,15 @@ export default class MonsterManager {
                         codeEncoders: monsterConfig.codeEncoders,
                         target: monsterConfig.target,
                     }
+                };
+            }
+            if (monsterConfig.translationProviders) {
+                this.translationProviders = monsterConfig.translationProviders;
+                // spell it out to use additional options like pairs: { sourceLang: [ targetLang1 ]}
+            } else {
+                this.translationProviders = { };
+                this.translationProviders[monsterConfig.translationProvider.constructor.name] = {
+                        provider: monsterConfig.translationProvider,
                 };
             }
             this.sourceCachePath = path.join(monsterDir, 'sourceCache.json');
@@ -225,11 +234,16 @@ export default class MonsterManager {
     }
 
     getTranslationProvider(jobManifest) {
-        let translationProvider = this.translationProvider;
-        if (typeof translationProvider === 'function') {
-            translationProvider = translationProvider(jobManifest);
+        let translationProviderName = jobManifest.translationProvider;
+        if (!translationProviderName) {
+            for (const [ name, value ] of Object.entries(this.translationProviders)) {
+                if (!value.pairs || (value.pairs[jobManifest.sourceLang] && value.pairs[jobManifest.sourceLang].includes(jobManifest.targetLang))) {
+                    translationProviderName = name;
+                    jobManifest.translationProvider = name;
+                }
+            }
         }
-        return translationProvider;
+        return this.translationProviders[translationProviderName].provider;
     }
 
     getTargetLangs(limitToLang, resourceStats) {
