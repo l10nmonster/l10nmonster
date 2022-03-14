@@ -45,8 +45,9 @@ export class FsSource {
 }
 
 export class FsTarget {
-    constructor({ baseDir, targetPath }) {
+    constructor({ baseDir, targetPath, deleteEmpty }) {
         this.targetPath = targetPath;
+        this.deleteEmpty = deleteEmpty;
         this.baseDir = baseDir ? path.join(this.ctx.baseDir, baseDir) : this.ctx.baseDir;
     }
 
@@ -61,7 +62,7 @@ export class FsTarget {
     async commitTranslatedResource(lang, resourceId, translatedRes) {
         const translatedPath = path.resolve(this.baseDir, this.targetPath(lang, resourceId));
         if (translatedRes === null) {
-            existsSync(translatedPath) && unlinkSync(translatedPath);
+            this.deleteEmpty && existsSync(translatedPath) && unlinkSync(translatedPath);
         } else {
             await fs.mkdir(path.dirname(translatedPath), {recursive: true});
             fs.writeFile(translatedPath, translatedRes, 'utf8');  // TODO: do we need a flag to write binary resources?
