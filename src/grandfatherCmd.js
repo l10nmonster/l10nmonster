@@ -44,6 +44,8 @@ export async function grandfatherCmd(mm, quality, limitToLang) {
                     guid: tu.guid,
                     q: quality,
                 };
+                !tu.nsrc && (translation.src = tu.src);
+                tu.nsrc && (translation.nsrc = tu.nsrc);
                 if (previousTranslation.nsrc) {
                     translation.ntgt = previousTranslation.nsrc;
                 } else {
