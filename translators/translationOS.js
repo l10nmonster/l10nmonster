@@ -74,7 +74,7 @@ export class TranslationOS {
                         .replaceAll('>', 'ᐳ'); // hack until they stop stripping html
                 }
             } else {
-                tuMeta[tu.guid] = {src: tu.src};                
+                tuMeta[tu.guid] = { src: tu.src };
             }
             let tosTU = {
                 'id_order': jobRequest.jobGuid,
@@ -181,8 +181,8 @@ export class TranslationOS {
                             cost: [ translation.total, translation.currency, translation.wc_raw, translation.wc_weighted ],
                         };
                         if (tuMeta[guid]) {
-                            tusMap[guid].src = tuMeta[guid].src;
-                            tusMap[guid].nsrc = tuMeta[guid].nsrc;
+                            tuMeta[guid].src && (tusMap[guid].src = tuMeta[guid].src);
+                            tuMeta[guid].nsrc && (tusMap[guid].nsrc = tuMeta[guid].nsrc);
                             tusMap[guid].contentType = tuMeta[guid].contentType;
                             tusMap[guid].ntgt = extractNormalizedPartsV1(translation.translated_content, tuMeta[guid].phMap);
                             if (tusMap[guid].ntgt.filter(e => e === undefined).length > 0) {
