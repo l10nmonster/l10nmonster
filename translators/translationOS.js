@@ -67,12 +67,14 @@ export class TranslationOS {
                 const [normalizedStr, phMap ] = flattenNormalizedSourceV1(tu.nsrc);
                 content = normalizedStr;
                 if (Object.keys(phMap).length > 0) {
-                    tuMeta[tu.guid] = { contentType: tu.contentType, phMap };
+                    tuMeta[tu.guid] = { contentType: tu.contentType, phMap, nsrc: tu.nsrc };
                     phNotes = Object.entries(phMap)
                         .reduce((p, c) => `${p} ${c[0]}=${c[1].v}`, '\n ph:')
                         .replaceAll('<', 'ᐸ')
                         .replaceAll('>', 'ᐳ'); // hack until they stop stripping html
                 }
+            } else {
+                tuMeta[tu.guid] = {src: tu.src};                
             }
             let tosTU = {
                 'id_order': jobRequest.jobGuid,
@@ -179,6 +181,8 @@ export class TranslationOS {
                             cost: [ translation.total, translation.currency, translation.wc_raw, translation.wc_weighted ],
                         };
                         if (tuMeta[guid]) {
+                            tusMap[guid].src = tuMeta[guid].src;
+                            tusMap[guid].nsrc = tuMeta[guid].nsrc;
                             tusMap[guid].contentType = tuMeta[guid].contentType;
                             tusMap[guid].ntgt = extractNormalizedPartsV1(translation.translated_content, tuMeta[guid].phMap);
                             if (tusMap[guid].ntgt.filter(e => e === undefined).length > 0) {
