@@ -23,12 +23,16 @@
 		{
 			"guid": "27qyNndOGr5Tzx4ddlKCtgGu-HA1wIjdz0DHPrL7yF8",
 			"q": 70,
+			"src": "File permissions required",
 			"tgt": "需要文件权限",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ehbg6jluBWm1ZPyw00Prf4lbXtVyLJItrCrATkSEYGI",
 			"q": 70,
+			"nsrc": [
+				"TachiyomiJ2K requires access to all files in Android 11 to download chapters, create automatic backups, and read local manga. \n\nOn the next screen, enable \"Allow access to manage all files.\""
+			],
 			"ntgt": [
 				"在 Android 11 中，TachiyomiJ2K 需要访问所有文件才能下载章节、创建自动备份和阅读本地漫画。 \n \n在下一个屏幕上，启用“允许访问管理所有文件”"
 			],
@@ -37,84 +41,107 @@
 		{
 			"guid": "0TJzTyqgSESA9Z13x0gjdb2SSI0vFps-a1UhezJeIUA",
 			"q": 70,
+			"nsrc": [
+				"TachiyomiJ2K requires access to all files to download chapters. Tap here, then enable \"Allow access to manage all files.\""
+			],
 			"tgt": "TachiyomiJ2K 需要访问所有文件才能下载章节。 点按此处，然后启用“允许访问以管理所有文件”",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "dyAFLf4GV8TYObR6G4ujZM0o2aXLVPScLSsRCprJogw",
 			"q": 70,
+			"src": "Manga",
 			"tgt": "漫画",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "95LEfJrqbk225lQKwSrZtJBO4DxL0qEzWfTqkFNqTDY",
 			"q": 70,
+			"src": "Manhwa",
 			"tgt": "韩国漫画",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "LfniwtGKqeEEaGiV6jkduQg-O20r45Fq0wpcVpp41fo",
 			"q": 70,
+			"src": "Manhua",
 			"tgt": "漫画",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "2t_5JXeBK5PYdIR5fHw7ah2P2mS7bfphNSeLcu03TyA",
 			"q": 70,
+			"src": "Comic",
 			"tgt": "漫画",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "se-375MyQi6YUHDneN20q9lbQ6NTuEnMRrlZta_y6Ac",
 			"q": 70,
+			"src": "Webtoon",
 			"tgt": "Webtoon 模式",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "1p5rCpa-15kwWtEh3NEfT-U-L7hb0ldPev_wqVhXKOI",
 			"q": 70,
+			"src": "Not started",
 			"tgt": "未开始",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "lUlOyYw9yd2TULBE1pTHHlKoV-I3jw8skqppn7HuIyY",
 			"q": 70,
+			"src": "In progress",
 			"tgt": "进行中",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "GkU-6eHBvCKnGCF-CMFeaPfLeh7OoKVeKdvJwtwui8w",
 			"q": 70,
+			"src": "Read",
 			"tgt": "已读",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "0xqMKHTtnfgblNXpO9B-9LxbvDTZTWPLJhzSFs_xYAs",
 			"q": 70,
+			"src": "Title",
 			"tgt": "标题",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "aW3YrcFSPuVdBZXYx8N5geyrHBeBjRhMcFL5kSLRBUo",
 			"q": 70,
+			"src": "Author",
 			"tgt": "作者",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Kp-AxX8Ck39UxT2_FYIgOzs3O564zOO76vNGcjuxH9A",
 			"q": 70,
+			"src": "Artist",
 			"tgt": "画师",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "VwqaBB3G-OoD6aUKGdwPG46AYtQWbne8sdRUeMDzAPk",
 			"q": 70,
+			"src": "Description",
 			"tgt": "介绍",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "qyy12nArwMG9YWSYvSYn6WvDU0oILdKhax33HGh2ZRI",
 			"q": 70,
+			"nsrc": [
+				"Move ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" to…"
+			],
 			"ntgt": [
 				"移动 ",
 				{
@@ -128,6 +155,14 @@
 		{
 			"guid": "bi_qIE1R6Oqc09vlq-RIHgB7SehgKWCfqyeEEwDLjuQ",
 			"q": 70,
+			"nsrc": [
+				"Add ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" to…"
+			],
 			"ntgt": [
 				"添加 ",
 				{
@@ -141,78 +176,97 @@
 		{
 			"guid": "YJHMFZmzMpH0kjwYHf0FfcpHgbud03xLRf_vpaS4iY0",
 			"q": 70,
+			"src": "Ongoing",
 			"tgt": "连载中",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "lIiPjESKF36ux46Yl2BCb6xqKgPpplFKuzXv_M793_0",
 			"q": 70,
+			"src": "Unknown",
 			"tgt": "未知",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "wa3hYFjBafWDLfwWcVAUIyR2PxRJVt2VRMJDgmUD-bg",
 			"q": 70,
+			"src": "Unknown Status",
 			"tgt": "未知状态",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "jeHAFbia7f3ADGwx8_DxCGjg6G8fpCbxfrgwg6NN6gQ",
 			"q": 70,
+			"src": "Licensed",
 			"tgt": "已授权",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "GMn2b_t2ui22c6OmdsUepNRrY4ur4fchk-0UTNFI9J0",
 			"q": 70,
+			"src": "Completed",
 			"tgt": "已完结",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "MIwZAqhf_yEYRQoIcrzIDyj7GPBqZifK4baxR5-cVvQ",
 			"q": 70,
+			"src": "Unlock to access Library",
 			"tgt": "解锁以访问书架",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "DQe5kFyjGy_DNQMR9gd3d5pydL1ne-X49-9JOScmaq8",
 			"q": 70,
+			"src": "Unlock",
 			"tgt": "解锁",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "w8BVXPDwDQJ0R_SUuwjru3U8GczA5_OjEEBamr4vyLY",
 			"q": 70,
+			"src": "Lock with biometrics",
 			"tgt": "用生物特征进行锁定",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "-Ex3KmecKwMvqHMOuUz2YkLrFtoxL10XyzBusA6LCoU",
 			"q": 70,
+			"src": "Lock when idle",
 			"tgt": "应用待机时锁定",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "wF-LDYkrxxFci3wYWoYmvhRbrns2bjxzjgD6HX-wNP8",
 			"q": 70,
+			"src": "Chapters",
 			"tgt": "章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "BedwJO3i3EMs4wjzibEX9_Zz6vNrlvYs5p1rK8Muek8",
 			"q": 70,
+			"src": "New chapters",
 			"tgt": "新章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "c1Q8vA8rLF44sVpBXm_WNX7hL38utqvkFH_tJsHIEfk",
 			"q": 70,
+			"src": "Unread",
 			"tgt": "未读",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "kZpwHijg068LeT08ANJVZ4v5n9kO6N4dWo9XMuADrms",
 			"q": 70,
+			"nsrc": [
+				"Last read Chapter ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"最后阅读的章节 ",
 				{
@@ -225,6 +279,13 @@
 		{
 			"guid": "VNFJrEtasSsxhW7I_SASmWbqKbGm-DB6zGqeT1T3pFg",
 			"q": 70,
+			"nsrc": [
+				"Chapter ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"第 ",
 				{
@@ -238,6 +299,18 @@
 		{
 			"guid": "sz5VG6XU2cIa2wlQX17vYlxhFFkUQP4SNc4Tuf0XWoM",
 			"q": 70,
+			"nsrc": [
+				"Chapter ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				" of ",
+				{
+					"t": "x",
+					"v": "%2$d"
+				}
+			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -254,102 +327,128 @@
 		{
 			"guid": "2o1v8EPRDg7n9szthMXwcIo3yyNkD2wF4cXDrRqBXYY",
 			"q": 70,
+			"src": "All chapters read",
 			"tgt": "已看完",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Ba1uIyfx0Ir8lFQpWbX2FwqG3a0YpXVdRa69dyajn-4",
 			"q": 70,
+			"src": "Bookmarked",
 			"tgt": "已添加书签",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "7-jb0lZiRNzOx-KD-gVAb6guAtSi9SElMIa5spNulek",
 			"q": 70,
+			"src": "Not bookmarked",
 			"tgt": "未加为书签",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "FO4YX66wvfqfMJIom2A6-3JuWl6tE39yLhQf6RI4v6U",
 			"q": 70,
+			"src": "Marked as read",
 			"tgt": "标记为已读",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "qS40FwIlQsZoskEfSKs6GZ-_S7uyIjUIXdgjsDrQXqg",
 			"q": 70,
+			"src": "Marked as unread",
 			"tgt": "标记为未读",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ukvJyKpjXj7Rqo1SUKCfn9X-cMwAsUO1e5mwYi239HM",
 			"q": 70,
+			"src": "Removed bookmark",
 			"tgt": "书签已移除",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "3n24FO3klocH-ZS5oOyyZVib-glRonteOU_4_88GusM",
 			"q": 70,
+			"src": "Chapters removed.",
 			"tgt": "章节已删除。",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "JYa7_Jgw-SoQtnH6Yd-ztKPXwwiSZG8sx1g2z4-0Qv4",
 			"q": 70,
+			"src": "Chapter not found",
 			"tgt": "未找到章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "fmSAuRjzSixvBE0aLDILWhduRHUBxBJYh3gNf-Ip510",
 			"q": 70,
+			"src": "No chapters found",
 			"tgt": "未找到章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "P6boOGS8s30ZGI2qzLb1K8Q_NbGoGbeyhc4iL_9c-QY",
 			"q": 70,
+			"src": "No pages found",
 			"tgt": "未找到页面",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "1JbgVl3XE7SmeF4jiwITPDPKkwZysXqU8iIQL5aVuDY",
 			"q": 70,
+			"src": "Remove all downloads?",
 			"tgt": "移除所有下载？",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "tqJcDNz_ZRwr47o7D7bfseUWk-bZrORIZOvHHClSwAk",
 			"q": 70,
+			"src": "No chapters to delete",
 			"tgt": "没有要删除的章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "a5ns947pdrJnqiF2ZooyCjrJFnqIZ4Jy5QqbF3st9QY",
 			"q": 70,
+			"nsrc": [
+				"By source's order"
+			],
 			"tgt": "按图源顺序",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "FQDqx9NU1PmHx6E4AblkzuQnyRvNVu3wiKemW4kTrTA",
 			"q": 70,
+			"src": "By chapter number",
 			"tgt": "按章节数",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "UaOinmorDOPohtOevV2dux8o2cs0mzFRJzpaiN8T4Uc",
 			"q": 70,
+			"src": "By upload date",
 			"tgt": "按上传日期",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "jxe6lKXpItYQ7tDgDvJvzwVZ-RfgcQoviUHOGfCohj4",
 			"q": 70,
+			"src": "Scanlators",
 			"tgt": "扫译小组",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "p7jJcpu_ZOzMod7iebzwKDCR2JYb4Qef0D1lq2MQLKg",
 			"q": 70,
+			"nsrc": [
+				"Remove ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				" downloaded chapters?"
+			],
 			"ntgt": [
 				"移除已下载的 ",
 				{
@@ -363,6 +462,13 @@
 		{
 			"guid": "qwYhEI77stoakCdt86oc0Z9IcmbpLN19jqquS_d2WL0",
 			"q": 70,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				" chapters"
+			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -375,6 +481,13 @@
 		{
 			"guid": "cwofMrt4vcR72muKJgdj3ynRXfS-8kRankY4lw_Cmm4",
 			"q": 70,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				" pages left"
+			],
 			"ntgt": [
 				"剩余 ",
 				{
@@ -388,18 +501,28 @@
 		{
 			"guid": "WH5WLMC2qY2bMf5JBHSqSrkJVjNzv3YHD0V58wqZfV0",
 			"q": 70,
+			"src": "Category",
 			"tgt": "类别",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "xgK_ck7xJn5JojkBvKF3PBTHL3d5VAyITpRxQo3cOU8",
 			"q": 70,
+			"src": "Categories",
 			"tgt": "分类",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "dID_EzHEAL6z9VEJmNY3m-5v1JRiZ7kbArCUCG7zzEo",
 			"q": 70,
+			"nsrc": [
+				"Adding ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" to update queue"
+			],
 			"ntgt": [
 				"正在将 ",
 				{
@@ -413,6 +536,13 @@
 		{
 			"guid": "-CI-B_fkcR7jeeS4cH4AWqOZ0ENh5TRKcwju6Ia0zAA",
 			"q": 70,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" is already in queue"
+			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -425,36 +555,49 @@
 		{
 			"guid": "TdXyr2sR2uiqUPCk-2leWA3Vat-PDwLKkezo5p4OR4E",
 			"q": 70,
+			"src": "Create new category",
 			"tgt": "创建新分类",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "6LxJC8sf_K1lMeszDslG9Sl_Rvzv5614YKs_SdvvvXU",
 			"q": 70,
+			"src": "New category",
 			"tgt": "新分类",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "XXoLNbGH3EGehbZoQIYAlgCLCeXTFwLDRG-eFTvkRLI",
 			"q": 70,
+			"src": "Category is empty",
 			"tgt": "分类为空",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "xASOi21bwFlUiAyDq_NjUyskRF7IAJr6HsWpU0Kl6RE",
 			"q": 70,
+			"src": "Show empty categories while filtering",
 			"tgt": "过滤时显示空类别",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "V1z5DUJUfjPG59288u1ZgacrdXDTUYhGbyPfbjmMs7Y",
 			"q": 70,
+			"src": "No matches for your filters",
 			"tgt": "没有匹配过滤的结果",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "4GXpmlw4Taq7yKQyTwSQUIm6gXsdKi8xT5lg0BskTbM",
 			"q": 70,
+			"nsrc": [
+				"Top category (",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				")"
+			],
 			"ntgt": [
 				"顶部分类（",
 				{
@@ -468,78 +611,99 @@
 		{
 			"guid": "sXEvR457Fl4so0Cv0WtTRtzPtYD_jfdREwMYK3O8nSA",
 			"q": 70,
+			"src": "Default category",
 			"tgt": "默认分类",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ALfGSVlR2dtPc2wD9pRK718u2FBbmpMfRsdEznu6no0",
 			"q": 70,
+			"src": "First category",
 			"tgt": "首个分类",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Mz8K0HaSi4Ffvygulhy2b3Fqj38tfAeKoZeEukHyC5g",
 			"q": 70,
+			"src": "Categories to update when manually refreshing",
 			"tgt": "手动刷新时要更新的分类",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "so0PKZwvPqpGV1xWSDbWY0znY7cKpYufeq33reXt8A0",
 			"q": 70,
+			"src": "All categories in global update",
 			"tgt": "全局更新中的所有分类",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "6V5oIJQAJOJBz78Jw0S1iS5pQi0-jcba-dzf3LwHDNI",
 			"q": 70,
+			"src": "Delete category?",
 			"tgt": "删除分类？",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Z5R54ptkf0KSzqHSXbTpgusMBDC0AnVs5HlxwFuBn_g",
 			"q": 70,
+			"nsrc": [
+				"Manga in this category will moved into the default category."
+			],
 			"tgt": "此分类的漫画将移至默认分类。",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "dpO_z4YeTFadU1pOz_kPcMX3MJPH0ER9fKBE5s3JQ2w",
 			"q": 70,
+			"src": "Manga already in category",
 			"tgt": "漫画已在该分类",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Gr8lB80zlGIz_xKnnhk6X9XxnYKun1N1fxfIuAafjN0",
 			"q": 70,
+			"src": "Add categories",
 			"tgt": "添加分类",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "80n7O41H3GTAIsW9t8opIF2izOHZmus3wrImbKV3iCE",
 			"q": 70,
+			"src": "Add/Edit categories",
 			"tgt": "添加/编辑分类",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "w2MMFrsye0LRCrgCp4a3MO-XUfByQWvTxZl6k1U1bAQ",
 			"q": 70,
+			"src": "Edit categories",
 			"tgt": "编辑分类",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "mdJXc6b3zFcJjCiCBwa3eIMD0ftft4hpfhR8y24AKCw",
 			"q": 70,
+			"src": "Manage category",
 			"tgt": "管理分类",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "crKjl1Fgg3ZyTE2hAcUJ4rGdY1Fmkl14DbVZy3df79E",
 			"q": 70,
+			"src": "Move to categories",
 			"tgt": "移至分类",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "xIQ8JakD15UWHPlTjfDfsR_DppXZXRKrIBcVjpnIUH0",
 			"q": 70,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" categories"
+			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -552,48 +716,62 @@
 		{
 			"guid": "tY5i_VvkSRfJYfbnaRYs6LzMY7jz1AOwB34ehHn4_8E",
 			"q": 70,
+			"src": "A category with that name already exists!",
 			"tgt": "已存在名称相同的分类！",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "3OTZLJcQIzg5hjfkG2FvvaLCs2bw5nf5x0eK7liio4M",
 			"q": 70,
+			"src": "Category name cannot be blank",
 			"tgt": "分类名称不能为空",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "_SEHHFJh1jzpnbQTZhpgdfhSuNgxeC2IedcO-8-eJVQ",
 			"q": 70,
+			"src": "Category deleted",
 			"tgt": "分类已删除",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "2Dh5uX-r-ZGNhX0XX_9rBeP0s20EvWh1ANSjpD_Ads0",
 			"q": 70,
+			"src": "Press and hold to edit a category",
 			"tgt": "长按以编辑分类",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "JPHB24YD9kPnTMIzpxSbLTHOQ3sqRd20JU0wD-6SSGg",
 			"q": 70,
+			"src": "Jump to category",
 			"tgt": "分类跳转",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "1J9LO1I69PkBtCO-lcjrVfJ0hLDY2P9KkW2jnd9Iia0",
 			"q": 70,
+			"src": "Update",
 			"tgt": "更新",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "9g34tPp38mY39nGP8T-WnIW3VChRwCg4CLToDOJx9zE",
 			"q": 70,
+			"src": "What should update?",
 			"tgt": "需要更新什么？",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "R9Wl42FJ2T6ZFFSSaMoGXjPle4BfCSiAk7BqsNC94lM",
 			"q": 70,
+			"nsrc": [
+				"Updating ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"正在更新 ",
 				{
@@ -606,66 +784,83 @@
 		{
 			"guid": "9WVBqhFweXU_C1G812-heD1CVXaUVAENT2wDLvhfanI",
 			"q": 70,
+			"src": "Update available",
 			"tgt": "可用的更新",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "CA2P2d3Ikapo3Lrx77PGhGyBqDqCfZhQQjn8y8-xkRc",
 			"q": 70,
+			"src": "New version available!",
 			"tgt": "有可用的更新！",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ZxwEcNS-acQZefGIv-tPQc_FiapNG62iJRnpIs2B-ew",
 			"q": 70,
+			"src": "No new updates available",
 			"tgt": "没有可用的更新",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "XNPfbAGyhvY7OEaUpmgfqvZJPfZ3Mdzvlu-6ABOcIr4",
 			"q": 70,
+			"src": "Searching for updates…",
 			"tgt": "正在检查更新…",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "mHA1aAaURIeyD65vqcQOrZgktm0kcXaOteUsAQc475g",
 			"q": 70,
+			"src": "Release page",
 			"tgt": "发布页面",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "TbkIkVi_X7f7CBO4u0f726BGsGtl_vvkV6T5BfF9P70",
 			"q": 70,
+			"src": "Could not install update",
 			"tgt": "无法安装更新",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "aMkjGx1AIigQIxs9K8Edp0YjaevyYcbOzTjWB68ffd8",
 			"q": 70,
+			"src": "Update completed",
 			"tgt": "已完成更新",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "qAcMTZXYvITCVVUsJnaeziMxq66YjeyIpN3-S0Rebyg",
 			"q": 70,
+			"src": "Library",
 			"tgt": "书架",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "YH_hpEGjrEK1ltdMwc4vNcWcKdVQE59STZdql8xcazY",
 			"q": 70,
+			"src": "Your library",
 			"tgt": "你的书架",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "jVfElJakT5GKdz1ZuVRESC3HEVkoEOjXNC9PTIozFBU",
 			"q": 70,
+			"src": "Updating library",
 			"tgt": "正在更新书架",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "YHsB_l4J3SLIHrDQP5mpuQvIaON0iySnr9D2qzz0TvA",
 			"q": 70,
+			"nsrc": [
+				"Selected: ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				}
+			],
 			"ntgt": [
 				"已选择：",
 				{
@@ -678,108 +873,134 @@
 		{
 			"guid": "bcBVjTkX0f2rWm2C9WdMUtQGgegLyYw1WDvndJ04ECE",
 			"q": 70,
+			"src": "Local",
 			"tgt": "本地",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Oh1h4BfvH9v36vvhr3RdIXN8fqA_K8AX8Ayev245P4U",
 			"q": 70,
+			"src": "Remove from library?",
 			"tgt": "从书架中移除？",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "HhMtwzf3Dq1TOtKyzHRimpmuuAzOd4Exn4F9r8xz-qs",
 			"q": 70,
+			"src": "Search title, tags, source",
 			"tgt": "搜索标题、标签、图源",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "lquVLLePK40yidM6TxG2TmQzi_V53wQ9fGVOUNboTb4",
 			"q": 70,
+			"nsrc": [
+				"Your library is empty, add series to your library from the browse tab."
+			],
 			"tgt": "你的书架为空，可从「浏览」中添加漫画至书架。",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "mWxC9jiOzWyfACuoV6DlcypJivwOxus5-dMFIHdVnGs",
 			"q": 70,
+			"src": "No matches found for your current filters",
 			"tgt": "未找到匹配当前过滤的内容",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "DchxaDnPAnphKwQMynBpe4TkqbwUOD7MsQD-GEtfSho",
 			"q": 70,
+			"src": "Getting started guide",
 			"tgt": "入门指南",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "qIZDGt0DMbfmVZaSxqo8rBZN0RyPwAmaot7CYpXNJao",
 			"q": 70,
+			"src": "Show all categories",
 			"tgt": "显示所有分类",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Av_ON0E9yB1PATxomRZqmTHPlUa6IuIfdbqM3hHq9uY",
 			"q": 70,
+			"src": "Move collapsed dynamic categories to bottom",
 			"tgt": "将折叠的动态分类移到底部",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "m8j1SCe_UrzhS46X6dM3N-iYwO3_3kER3VbKiw5ixBk",
 			"q": 70,
+			"src": "Show number of items",
 			"tgt": "显示项目数",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Qs6SZ3dVI6ozm00KhWIbFPFqMOYVdpBj68Qph8F1BGY",
 			"q": 70,
+			"src": "When grouping library by sources, status, etc.",
 			"tgt": "当按源、状态等对书架进行分组时。",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "RNy0yE1oUBzz2PCGw4-OrDNwlclfoSUu5rtfQ9hRUMA",
 			"q": 70,
+			"src": "Always show current category",
 			"tgt": "始终显示当前分类",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "xPwj1sm9RPgXQRbze4ER9Qtvw47U4EAEnn_KMUXgI6o",
 			"q": 70,
+			"src": "Category hopper long-press action",
 			"tgt": "分类漏斗长按操作",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "wJDJ1kfIvhrB6fbWqin4rkKuS2hN9enFwLPW3da1Ygs",
 			"q": 70,
+			"src": "Expand/collapse all categories",
 			"tgt": "展开/收起所有类别",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "0UDjqW0KedOeaREpD8QGmewenZGpHkcYTXOSBVLGbeU",
 			"q": 70,
+			"src": "Open a random series",
 			"tgt": "打开一个随机系列",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "REDQuw2ffKcU28VK_OS_XkfAZPXbd-48KWPcvw9W50c",
 			"q": 70,
+			"src": "Expand all categories",
 			"tgt": "展开所有分类",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "YQuig4jgVHZnCj7gkaqBA-YnUroIE3IsE14_X4ds_i0",
 			"q": 70,
+			"src": "Collapse all categories",
 			"tgt": "收起所有分类",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "csppXX2yY-YymAiNiJd8AJDZ22w5tTuxgpgh09frT8k",
 			"q": 70,
+			"src": "Reorder filters",
 			"tgt": "重新排序过滤",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "UhTDYUwAeKJFGb0P_EcHv0CRAU_7r4nf4uO_eWO-6oI",
 			"q": 70,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" unread"
+			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -792,6 +1013,14 @@
 		{
 			"guid": "0Q0F8OAUKt9tljw33vEGxWOZgWoYsdvzbYGYyhonqbk",
 			"q": 70,
+			"nsrc": [
+				"Search \"",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				"\" globally"
+			],
 			"ntgt": [
 				"全局搜索「",
 				{
@@ -805,156 +1034,190 @@
 		{
 			"guid": "kCa-bJauYACIeWVYamRlbqKFa-Pf4yFoxGZh-qyS_dg",
 			"q": 70,
+			"src": "Read progress",
 			"tgt": "阅读进度",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "SQUbYShig4o_mD0PduPcc86T4SXt3e9vaKp_qn1NbR0",
 			"q": 70,
+			"src": "Series type",
 			"tgt": "系列类型",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "mxL1O8Q2FJe_7aycxLtdTnFXMnvI3dTIdPOtR2hK2Zg",
 			"q": 70,
+			"src": "Series",
 			"tgt": "丛书",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "U2UnvktkKPonD5AVbTsnU2KEnmERMztybcr2P28b6HI",
 			"q": 70,
+			"src": "Group library by…",
 			"tgt": "书架分组…",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "tORAZmGGpRq9JC8iHie5axOQsNVu7dHeV0xaHX-ZML4",
 			"q": 70,
+			"src": "Tracking status",
 			"tgt": "同步状态",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "NYHyGs4jaf5TmjsVaebY6zXz7ncc7pWFn6zAf3m2hUA",
 			"q": 70,
+			"src": "Ungrouped",
 			"tgt": "未分组",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "c656MnA8GvsOTOxs4WY4nJd0SDx8-yR4m5_0O3dVg0U",
 			"q": 70,
+			"src": "Sort by",
 			"tgt": "排序方式",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "zK6myoXPiHa_W_GRKdaxPE6uQzupwjSwkz1ITXqdtvQ",
 			"q": 70,
+			"src": "Total chapters",
 			"tgt": "章节数",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "lQ3n6754wbp3bomwiAOq4EZN1gzxbbL4O_3U2s6oKH4",
 			"q": 70,
+			"src": "Date added",
 			"tgt": "添加日期",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "z5Ct7T4-sb7TiBjIIOJtkrCYWUq0AwxBpxJqU0EOOb4",
 			"q": 70,
+			"src": "Last read",
 			"tgt": "最近阅读",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "_MmQA-fnOKmeS_awbYvANnQen4m6Hj4XtKiddmn638o",
 			"q": 70,
+			"src": "Date fetched",
 			"tgt": "取得日期",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ymbcb0K-ZQ6Y95inlEU_x-vdap1HMxf8WUVFEmdVX0o",
 			"q": 70,
+			"src": "Last updated",
 			"tgt": "上次更新",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "etwkm_tfBq0CEj2dA5b5feaYxz8YAJ8iil0f2x4TXbw",
 			"q": 70,
+			"src": "Latest chapter",
 			"tgt": "最新章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "DMMCd9TlUjweJCvkzAet30izdq29jjibSAaLenVC_Ho",
 			"q": 70,
+			"nsrc": [
+				"Drag & Drop"
+			],
 			"tgt": "拖放",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "uS-rKfQewapxCMQccDVdJcLHKtn2SaCeJ2YmB23cIuI",
 			"q": 70,
+			"src": "Display options",
 			"tgt": "显示选项",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "1yWI2lsCy15IjZhGkHRpwAWoNjMOP_rPM14bzEH3l9c",
 			"q": 70,
+			"src": "Can also be found by expanding library filters",
 			"tgt": "也可以通过展开书架过滤器找到",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "b5s0c7AJ312O74EJBqSMNQLzFjNb2bCHZ4S3J11jxxg",
 			"q": 70,
+			"src": "List",
 			"tgt": "列表",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "W8lXl8ecgkmTxxNseApoWEjiwTVi5YjP9qyYm0BY1-o",
 			"q": 70,
+			"src": "Comfortable Grid",
 			"tgt": "宽松网格",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "JolklOJhPzS3vF0WrEXaYAttHvQz7J0eVAYKuviUbDI",
 			"q": 70,
+			"src": "Compact Grid",
 			"tgt": "紧凑网格",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "UeOCcyUNrO7NK1wCS-ZaA-6Uvndo0dTo5eUFHUTp0Rw",
 			"q": 70,
+			"src": "Download badges",
 			"tgt": "已下载标记",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "mUBPzydk5EoVceN21sURmqCJm3S4SHPJYKOdDeGJDk8",
 			"q": 70,
+			"src": "Hide start reading button",
 			"tgt": "隐藏开始阅读按钮",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "7iTceqCgayTrQXKNVybwTDhBnEdecaG1phJDAuvZBcE",
 			"q": 70,
+			"src": "Badges",
 			"tgt": "标记",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ETclr_VWLWFUhAFq6UzZX6GjOaOKAvOSOhfmlV5o8qk",
 			"q": 70,
+			"src": "Uniform grid covers",
 			"tgt": "统一网格封面",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "EOfH8MF1TxExXKy711d_IZzDgIS7Hrvga0qkB6Y4HmU",
 			"q": 70,
+			"src": "Show outline around covers",
 			"tgt": "显示封面图轮廓",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "huHrZ36lN4u4bClvKIpWCCg430CBw_V0wdCrp3pANrc",
 			"q": 70,
+			"src": "Grid size",
 			"tgt": "网格尺寸",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "6hn5KZLsLGETvPcxkQGVslKsEirgO05tR8I6LUoruAc",
 			"q": 70,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" per row"
+			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -967,72 +1230,91 @@
 		{
 			"guid": "SEo_lkPgk4lCf7gjS3A9lFkdFLO2wv1ycaNkAw3hvBM",
 			"q": 70,
+			"src": "Hide unread badges",
 			"tgt": "隐藏未读徽章",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "cP_Gz6ULSzF0DAeaDX05AQoSINybxcS6HZDh69si-Mw",
 			"q": 70,
+			"src": "Show unread badges",
 			"tgt": "显示未读徽章",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Aw6cKyajej2kaJJDGwDiuoza3bLBcu5nDVXKBiKOGFc",
 			"q": 70,
+			"src": "Show unread count",
 			"tgt": "显示未读计数",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "IRauuXgqcQbSTMjV3Ys43xV6-n3dDJkuJifY81SJT_I",
 			"q": 70,
+			"src": "Tap the Library icon to show filters",
 			"tgt": "点击「书架」图标以显示过滤",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "5dIhJapfUivLgbMbJjZQUOVDIRggMxJgkm2iscM7_A8",
 			"q": 70,
+			"src": "Display as",
 			"tgt": "显示为",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ToQxCqj8I_Sl1JKZSFEoFDUeVI0a5hgEgXMU_q-MHfQ",
 			"q": 70,
+			"src": "Hide category hopper",
 			"tgt": "隐藏分类漏斗",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "gQWO4zfGidbyOhDA3UfrzspRYaN82LLyYDDSn2zKDKo",
 			"q": 70,
+			"src": "More library settings",
 			"tgt": "更多书架设置",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "LsjbNhr3WEBa_R0YVVgCwjGtLFIDKeIYeawGGw4roAM",
 			"q": 70,
+			"src": "Shift one page over",
 			"tgt": "翻一页",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ZcYnJ5Od7-YKDD3xphviCHtelffw-mhq54M6Rs7tPtA",
 			"q": 70,
+			"src": "Shift double pages",
 			"tgt": "移动双页",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "DP9tDhyqmkFyAizNsGXaByGA7_OZZsmcD1gUxkZdVAY",
 			"q": 70,
+			"src": "New chapters found",
 			"tgt": "发现新章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Ph2bJ5o6hNyyzK0cUaxO-y1H_ebjPITypSCOgs8JPSw",
 			"q": 70,
+			"src": "Large updates may lead to increased battery usage and sources becoming slower",
 			"tgt": "大型更新可能会导致电池使用量增加和来源变慢",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "9xj-HFVJXt2nNpthtY1LQ-fzWVcARPZvaiL2c39B23w",
 			"q": 70,
+			"nsrc": [
+				"For ",
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" titles"
+			],
 			"ntgt": [
 				"共 ",
 				{
@@ -1046,6 +1328,14 @@
 		{
 			"guid": "67xZqBzSLejsIoJhJeoe41TLoKsEqXHdzFIIP8ysYJs",
 			"q": 70,
+			"nsrc": [
+				"and ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				" more chapters"
+			],
 			"ntgt": [
 				"还有 ",
 				{
@@ -1059,6 +1349,13 @@
 		{
 			"guid": "RLiMnzoXrJq8vp-WZubFf2M9nJtwc2tP_d8VRdv1W8w",
 			"q": 70,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				" updates failed"
+			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -1071,36 +1368,48 @@
 		{
 			"guid": "zvr59y3s5K3qszjqGTIXKeg_HsuE1uajtP_Jw40Sp5U",
 			"q": 70,
+			"src": "Errors",
 			"tgt": "错误",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "NzuzANrc8hKnsNdj5RNNivveptBt1E-e1H-Ht-pXbEo",
 			"q": 70,
+			"src": "Library update frequency",
 			"tgt": "书架更新频率",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "-QzO-ivc3CYbFK2bcTx1y09cUHWQAxXI_IwEWHWcdf4",
 			"q": 70,
+			"src": "Library update order",
 			"tgt": "书架更新顺序",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "h6ihcf0PNhqYo_MeRGpM3608G2PlorwY5-vFKsjSuAA",
 			"q": 70,
+			"src": "Library update restrictions",
 			"tgt": "书架更新条件",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ZOMhwECzQZpFt0DpjvLzNkEn3kCCtt0snYRw2gF1wd4",
 			"q": 70,
+			"src": "Update only when the conditions are met",
 			"tgt": "仅在符合条件时更新",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "QlC_YuVsWOmivCrLSW068P3410uxlebLMQI6Y2APaqA",
 			"q": 70,
+			"nsrc": [
+				"Restrictions: ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"限制：",
 				{
@@ -1113,120 +1422,153 @@
 		{
 			"guid": "0Yks1MGLmvTPfXrRbgF7_cpJj8jKUrSdoOpUQpMt1Lo",
 			"q": 70,
+			"src": "Only update ongoing manga",
 			"tgt": "仅更新连载中的漫画",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "QAlZS0y6i_buINaq18JblNG70LKyAsdB5SEzos785FE",
 			"q": 70,
+			"src": "Sort by ignoring articles",
 			"tgt": "按忽略条目排序",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "gX2qXw9h04nSkWqum0JX_lrXBPrnakCiXfhaqiVV8OM",
 			"q": 70,
+			"nsrc": [
+				"When sorting alphabetically, sort ignoring articles (a, an, the) at the start of manga titles"
+			],
 			"tgt": "当按字母排序时，排序忽略漫画标题开头的（a，an，the）",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "5Ug7lvfBUCu2wKLPhV0-c9jXxHz9DjEQ9EAzy6uuaiM",
 			"q": 70,
+			"src": "Categories to include in global update",
 			"tgt": "全局更新时包含的标签",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "qGkF2Msp3GFeWmf1Bhwiv0fF0eC1cpmBhNbvl8xiiDY",
 			"q": 70,
+			"src": "Include in global update",
 			"tgt": "包含在全局更新中",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "7zyAcA7JQ6aAczOccXAYPa-UDg3BvajDBkRkKBRNq-E",
 			"q": 70,
+			"src": "Automatically refresh covers",
 			"tgt": "自动刷新封面",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "VCIW6HRhoeMhpQUhRuDv4rLKq9LG90yl1F5zV-xbvQU",
 			"q": 70,
+			"nsrc": [
+				"Refresh covers in library as well when updating library"
+			],
 			"tgt": "更新书架的同时更新书架漫画封面",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "jP-v2MRaelRp-0xUUhmilWXKVm0sFGYkH-NQkgC3xAM",
 			"q": 70,
+			"src": "Global updates",
 			"tgt": "全局更新",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "0IxzMeDYA_8V3QabO-k3En1Ld3cLA1pVnFnO_WWfoFk",
 			"q": 70,
+			"src": "Buttons at bottom of reader",
 			"tgt": "阅读器底部的按钮",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "W-OESlaLb8Tz_YavoeRWfdWpbImHRAg2Whyms6MQFYg",
 			"q": 70,
+			"src": "Certain buttons can be found in other places if disabled here",
 			"tgt": "如在此处被禁用，可以在其他地方找到某些按钮",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "-ZXuEBcLtTSL3Tk5TFp5gsqkopJ3I2iSdHMaFKM2p08",
 			"q": 70,
+			"src": "Search suggestions",
 			"tgt": "搜索建议",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "96luWUe3rIPx396wuzKUZiWpL_FIvbxC-tiqyjavqJw",
 			"q": 70,
+			"src": "Search tips will show up periodically. Long press the suggestion to search it.",
 			"tgt": "搜索提示将定期显示。 长按建议进行搜索。",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "9KQnpovYTTR8EqaPS_krSrI6i65OEvrlUpYUZ8fHDF0",
 			"q": 70,
+			"src": "Recents",
 			"tgt": "最近",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "8_2VD6CoQQwIG6KI5Gi0GBE4gSJnn5YXcgUHUr7tvXE",
 			"q": 70,
+			"nsrc": [
+				"Updates & history"
+			],
 			"tgt": "更新和历史",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "sBinvyL2W3qKfYVm5ARudrwttwxjOEAtbvq5bnrisG4",
 			"q": 70,
+			"src": "Updates",
 			"tgt": "更新",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "mGutHcON0BUvfsxMPu1umIKcHv6zoXqgcRekXHAaCpM",
 			"q": 70,
+			"src": "Newly added",
 			"tgt": "最近添加",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "PM06aKufO6xe0d1WLbGbjSKaHG8MBKZaoLiU6LRnJiw",
 			"q": 70,
+			"src": "History",
 			"tgt": "历史",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "SwJlbVJTeK7RQngegxVgj7hyxKL8WkxxvYeQDmUxXFs",
 			"q": 70,
+			"src": "Reset chapter history",
 			"tgt": "重置章节历史",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "S5GUgCz4-rmA9wjHXTfRr6OUY6HZtKT-ZoOr6rPHjvo",
 			"q": 70,
+			"src": "Recent updates",
 			"tgt": "书架更新",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "XmyxBrSHE9usAFFCG2vPzxT10mP3VHeH1CsWjzkIpZg",
 			"q": 70,
+			"nsrc": [
+				"This will remove the read date of \"",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				"\". Are you sure?"
+			],
 			"ntgt": [
 				"这将移除\"",
 				{
@@ -1240,12 +1582,22 @@
 		{
 			"guid": "x3TEe4A97_mGw4nWI9E7Z9-WfUrxRSmYZR0IRK24l14",
 			"q": 70,
+			"nsrc": [
+				"This will remove the read date of this chapter. Are you sure?"
+			],
 			"tgt": "将清除此章节的阅读日期，确定吗？",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "fC_356xy32C7odgnD6x_BAF1M8BL09LYq_AYDWMJoww",
 			"q": 70,
+			"nsrc": [
+				"Reset all chapters for this ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"重置",
 				{
@@ -1259,6 +1611,13 @@
 		{
 			"guid": "-bYJgDGQXbmL4g_0gpKbwEHkH7eWo0cl7zRzYyn4r0M",
 			"q": 70,
+			"nsrc": [
+				"Last read ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"最后阅读到 ",
 				{
@@ -1271,6 +1630,13 @@
 		{
 			"guid": "LB5CD-tAbq-svs9PEjaUwWSgEMffx0GiHN8cf1-_fbU",
 			"q": 70,
+			"nsrc": [
+				"Read ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -1283,6 +1649,13 @@
 		{
 			"guid": "J07LWB4b1QilfozxRx51_cUQrthjI3HIuxbhfFEhCU4",
 			"q": 70,
+			"nsrc": [
+				"Updated ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -1295,6 +1668,13 @@
 		{
 			"guid": "_SAZorPrF5hhU5oP3l6AMfgbnFj502nP0cEMTzM6Zjw",
 			"q": 70,
+			"nsrc": [
+				"Added ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -1307,6 +1687,13 @@
 		{
 			"guid": "18cGsSZgW56fk4r4-oUR8Z-wVtXtQjs1knIQhisPyQE",
 			"q": 70,
+			"nsrc": [
+				"Fetched ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"已取得 ",
 				{
@@ -1319,312 +1706,366 @@
 		{
 			"guid": "8RiginX5c8HPKTdZLSf92yPW7OaauQvgF_mQ6bLWASs",
 			"q": 70,
+			"src": "View history",
 			"tgt": "查看历史",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "2B1czib05hWKXKttgwY-nLlvNzlCyVANPK4EUwkqygo",
 			"q": 70,
+			"src": "View all updates",
 			"tgt": "查看所有更新",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ASrcs0Dz123vfvvZRaO6g4nrW3HXYfVXDAK3PnApQMQ",
 			"q": 70,
+			"src": "Search recents…",
 			"tgt": "搜索近期…",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "akU48sSoFBDApncaFTnxDUwvntjoVc_x_ncCPkbKfUc",
 			"q": 70,
+			"src": "No recently read or updated manga",
 			"tgt": "没有最近读过或更新的漫画",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "hL4I2ivi9LosbYyWwU5Dko_fz2EIvOmPn_caCWYZ1tI",
 			"q": 70,
+			"src": "No recent chapters",
 			"tgt": "无最近章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "4VtJrOuIR9-EAjXsURnwo-iIbyhtFxsyrem9xCOA1Cc",
 			"q": 70,
+			"src": "No recently read manga",
 			"tgt": "无最近阅读",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "67LG-B8pRZncuF53apGRcqFubfzZGWknM7RCqDH9SZ0",
 			"q": 70,
+			"src": "Grouped",
 			"tgt": "已分组",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "w1Rs6QdUEbwNfxKQ_3xpO1EmY_4HRV6aG5GQF0tFK9I",
 			"q": 70,
+			"src": "Reset chapter?",
 			"tgt": "重置章节？",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "3asXWsKaR7y7GtHSB4gj3cKcy0QKV7ZP9Y37ZUsa4J8",
 			"q": 70,
+			"src": "Press and hold can also reset chapter history",
 			"tgt": "按住不放也可以重置章节历史",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "-ZokOFEGjoKOP0ipBcoQfSs-VHrAsiXGtvmliCLnBxc",
 			"q": 70,
+			"src": "Show download button",
 			"tgt": "显示下载历史",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "lxojKZjY-5yMohTxbOYeEsPXKdU35_LdTGAzh9L21hM",
 			"q": 70,
+			"src": "Only unread",
 			"tgt": "仅未读",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "fN6EvqdvhVsR-FEQQFTaLWJEZURGvO79klFaYWce5ns",
 			"q": 70,
+			"src": "Only downloaded",
 			"tgt": "仅已下载",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "xtCZPDVorMQcmb88XuRrN66RmY0CaLszKaIG9rZilMw",
 			"q": 70,
+			"src": "Unread or downloaded",
 			"tgt": "未读或已下载",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "vc6RPi0nmbBiytfQeWbKySuwc6Tz427bDCSe__RrgOs",
 			"q": 70,
+			"src": "Show reset history button",
 			"tgt": "显示重置历史按钮",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "qPY-TEoWZjeuax9ZNJUD_wMv44mSc6-WAQqtgXEPBSk",
 			"q": 70,
+			"src": "Show read chapters in Grouped and All",
 			"tgt": "在已分组和全部中显示已读章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "pF_TodxnIiM6j0nfMhGaKwG7i29NMrwslIg09Kr5NLY",
 			"q": 70,
+			"src": "Show title first",
 			"tgt": "先显示标题",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "uDn0V4BKl8_4RZG-SBfzr9WsusENKW_02EQe2UZXh7E",
 			"q": 70,
+			"src": "A while ago",
 			"tgt": "方才",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "4se94QZG8B_HRubqGbQSa2z73iKBD-niP3vOOy24qeY",
 			"q": 70,
+			"src": "Show updated time",
 			"tgt": "显示更新时间",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "iDbzX3ua7JTK2r5fPAdwX5aGkNtciRqK3DmhR9GrDpk",
 			"q": 70,
+			"src": "Group chapters together",
 			"tgt": "将章节分组在一起",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "VGxNmIVvDYZ6XN8-GGELcf5m_BTP3_nnUxF1sAUHRVg",
 			"q": 70,
+			"src": "Uniform covers",
 			"tgt": "统一封面",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Bx4ksQFJA0d4IzSTzkltfMXKvQE_VFynqSen-05Xz8s",
 			"q": 70,
+			"src": "Affects library grid covers",
 			"tgt": "影响书架网格封面",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "2Pxr4-74Ois-SejkPEpOnmVQGKUZCPMo0deqiwQYbBI",
 			"q": 70,
+			"src": "Search filters",
 			"tgt": "按分类搜索",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "qD5t9_kUsR1Rciw2C9gSZ9UCq5smk6ZGRp4e97jt0oU",
 			"q": 70,
+			"src": "No more results",
 			"tgt": "没有更多结果",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "nDWhRgwMhyySzkmB1mKyhXH4-HIkCqSzNszaabHd0Qk",
 			"q": 70,
+			"src": "No results found",
 			"tgt": "未找到结果",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "E5QVOfjAoLWc8J7M6lFj706Hi6GaLqr7-jlOMqThrX8",
 			"q": 70,
+			"src": "Local source",
 			"tgt": "本地图源",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "7bPpjSz1MY2CNSPHuORks9HUhwc9TlUOvSioRsXWYUE",
 			"q": 70,
+			"src": "Other",
 			"tgt": "其它",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "tRqUWr1CHQBGfXifeokyu2ciLA_1XxT-6Ynjo6ytbTg",
 			"q": 70,
+			"src": "Global search…",
 			"tgt": "全局搜索…",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "OD82pAlue4FA_Kid9h2lSUE2XvZqGpekY8lHnw4FHBk",
 			"q": 70,
+			"src": "Global search",
 			"tgt": "全局搜索",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "XqEe6ZH5D3OuGdp2s140bj26gJ7mFmJV-xBjYu8Tx48",
 			"q": 70,
+			"src": "Latest",
 			"tgt": "最近更新",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ZlQGjuZJmjYU7_qjO2oXa6eUZnp4YfnsbJignNiVaP0",
 			"q": 70,
+			"src": "Browse",
 			"tgt": "浏览",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "i7nQsmaH5l-83nBShn-cYtN3if_SJbHzHGpEnqR56uk",
 			"q": 70,
+			"src": "In Library",
 			"tgt": "在书架中",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "vOXbT2RStv9Bfve3rxZcNVYVtPleduRz-tCudb4hkm4",
 			"q": 70,
+			"src": "Search extensions…",
 			"tgt": "搜索拓展…",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "8WTohVPNZpV9njpvhCzeDzn72bq4FpnLmuH2GWJQmbU",
 			"q": 70,
+			"src": "All sources",
 			"tgt": "所有图源",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ZrAWCoZpge3cKfOhzcCGkS4bvEF6Mt8RaqZw9DI_qB0",
 			"q": 70,
+			"src": "Sources",
 			"tgt": "图源",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "09bHLJJ3TSUAIXnWuYp8zkgPz_Ktog89FUtierMakyY",
 			"q": 70,
+			"src": "Source hidden",
 			"tgt": "隐藏图源",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "P0C-_pU8Q5i3NzJvF2IOkYGe6BnwPi1NFRRNTTmrGa8",
 			"q": 70,
+			"src": "Last used",
 			"tgt": "上次使用",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "CGemow4PGRoks7kffKieGnelfMRnWe8kFGbz-YhskEc",
 			"q": 70,
+			"src": "Local source guide",
 			"tgt": "本地图源指南",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "IMua_RtI1sMnJZ2zTViBErqOa9it8wk-yqx_u-rmjqM",
 			"q": 70,
+			"src": "Check website in WebView",
 			"tgt": "在 WebView 中检查网站",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "aoUSYtsFoxzn0HRhrXdsX7blaRGrrGKbPPGYAHOGcYY",
 			"q": 70,
+			"src": "Extensions",
 			"tgt": "扩展",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "zHEBCkIpAL7IFfPf4XupIOxAICmr--suT78fcOimS5U",
 			"q": 70,
+			"src": "Extension updates",
 			"tgt": "扩展更新",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "UwRMRUlsHHvbMnyBXmfC1mLPAoK44f6GbhkwsaZA-LE",
 			"q": 70,
+			"src": "Extension updates pending",
 			"tgt": "待更新扩展",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "3VbPdABRbfvCf_GxLQ-haSSJISwum9GhTK-byjdMle0",
 			"q": 70,
+			"src": "Extension info",
 			"tgt": "扩展信息",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "_LFloqjVFn0g8rA1cyKvjNh0n06tCbEN9q9cDIrD_mk",
 			"q": 70,
+			"src": "Filter Languages",
 			"tgt": "过滤语言",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "uYeBuOlQx0uHTjPFSCFDqvBE7ttkCteUepsgvF0p42Y",
 			"q": 70,
+			"src": "Obsolete",
 			"tgt": "失效",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "-1oUOqtBTK56Cb3QyFI8OxxSMWVduV2fdFZCS2W1c1Q",
 			"q": 70,
+			"src": "Pending",
 			"tgt": "等待",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Ycu33slHZdgJIOKGFgNFhnXFaXDml33-QI4kzYWaqv8",
 			"q": 70,
+			"src": "Installing",
 			"tgt": "安装中",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "JP4poQgz6xE5_MntWIYkQ3A1QwYutbXOPfMaUS2QNCY",
 			"q": 70,
+			"src": "Installed",
 			"tgt": "已安装",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Kvi-OrJcWLi1AhkBcIcwc2_cva39mL8v4VPnpOa6xQg",
 			"q": 70,
+			"src": "Trust",
 			"tgt": "信任",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "28-CSpvMLQCczDRCqfByQOPtpZeUpvFuIYBb2KXhxTU",
 			"q": 70,
+			"src": "Untrusted",
 			"tgt": "不可信",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "NUM1S6DTLk8C51KWdOB6nkW0ehj3VGofXw6xMEKumpM",
 			"q": 70,
+			"src": "Uninstall",
 			"tgt": "卸载",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "-xNAvTt_5TWhX_Qevo6dfy9YGxHdcM5jvEstbFpnuYk",
 			"q": 70,
+			"src": "Untrusted extension",
 			"tgt": "不可信的扩展插件",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "5i1qeSgTv4eK9tMokbsNzyBFy4aeu_6h0nSNcgRxpEw",
 			"q": 70,
+			"nsrc": [
+				"This extension was signed with an untrusted certificate and wasn't activated.\n\nA malicious extension could read any login credentials stored in Tachiyomi or execute arbitrary code.\n\nBy trusting this certificate you accept these risks."
+			],
 			"ntgt": [
 				"此扩展插件的证书并不可信，且尚未被启用。 \n \n恶意的扩展插件可能会读取储存在 Tachiyomi 中的任何登录凭据或执行任意代码。 \n \n信任这个证书，即代表你愿意承担上述风险。"
 			],
@@ -1633,18 +2074,27 @@
 		{
 			"guid": "Vv7zXhCz4opZuOiy2_Fq0tddSF-kvnokOd4mjT_QrPE",
 			"q": 70,
+			"src": "This extension is no longer available.",
 			"tgt": "此扩展插件不再可用。",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "no3EPHkkAPUVkK9WbV_fNi6DkZryBx6xfxglmjb4MUg",
 			"q": 70,
+			"src": "This extension is not from the official Tachiyomi extensions list.",
 			"tgt": "此扩展插件不是由官方 Tachiyomi 所提供。",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "mvCSc-9yryS7Ofj0A_wL0bqca5JHjTYWlk8605Z-VQU",
 			"q": 70,
+			"nsrc": [
+				"Version: ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"版本: ",
 				{
@@ -1657,6 +2107,13 @@
 		{
 			"guid": "TwrJr2RHXOSAMDZgpROxE8cXWkCRS3GToOTAkCoaaAc",
 			"q": 70,
+			"nsrc": [
+				"Language: ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"语言: ",
 				{
@@ -1669,12 +2126,20 @@
 		{
 			"guid": "giDbI1awUgdbfMKkrkvn4JxnaIc35cm8z32hRszPoYU",
 			"q": 70,
+			"src": "18+",
 			"tgt": "18+",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "s7vmRSqvrrdDCP2CC42Mu4top-dqct55ZDXfFJ0lTWw",
 			"q": 70,
+			"nsrc": [
+				"Installed ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"已安装 ",
 				{
@@ -1687,30 +2152,41 @@
 		{
 			"guid": "f037H6fcf5TiITwnOq-9yJ2BdfESMLl1vXtx67OFvck",
 			"q": 70,
+			"src": "Unofficial",
 			"tgt": "非官方",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "GrMFwP4G_U9q4P7sChaW2J_1tmJecnWYjzHc7V_iIT8",
 			"q": 70,
+			"src": "MIUI Optimization must be disabled to install extensions.",
 			"tgt": "要安装扩展必须禁用MIUI优化。",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "FB8H7p-eU89ZuoW8zOC-VBvj77CDPKgsWkLMvL5IM3w",
 			"q": 70,
+			"src": "May contain NSFW (18+) content",
 			"tgt": "可能包含 NSFW (18+) 内容",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "EJajp-vB1WGv35d6W7joH8a2s-IABgLLbQQ7if_c52o",
 			"q": 70,
+			"src": "App info",
 			"tgt": "应用信息",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "j5g8prmlQCN59zCYtiyibcH_8MTrHOmsI8htpM1CPVY",
 			"q": 70,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" must be enabled first"
+			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -1723,30 +2199,41 @@
 		{
 			"guid": "hdOZ2TaIpQJa51D84wSDzU6Awl-GjNr_KxXXa_SRFjw",
 			"q": 70,
+			"src": "Could not install extension",
 			"tgt": "无法安装扩展",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Gx6It2EPZkzo8gjjKMNEIdCoI3j8ApOfbv2ZnOxTfXg",
 			"q": 70,
+			"src": "Update all",
 			"tgt": "更新全部",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "8u4FgLqIOqKPt9ghwV7vaQd9DIIie5EIgYLM8Y-MRg8",
 			"q": 70,
+			"src": "Some extensions may still prompt to be installed first.",
 			"tgt": "仍然会提示先安装有些扩展。",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "rEhqIqyMOpPGm9tucXpboZ2m3WcZOJWCxH6YdSbJQvw",
 			"q": 70,
+			"src": "Updating extensions",
 			"tgt": "更新扩展中",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "DZ_sc6S4EfGY49WXOACTA14IzN7IGl__L84uf8WbSwc",
 			"q": 70,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" updates pending"
+			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -1759,12 +2246,20 @@
 		{
 			"guid": "XlcudDTXzG61J5iRPIyqhRE70F5HFnn2xrll5R17-n8",
 			"q": 70,
+			"src": "Extensions updated",
 			"tgt": "扩展已更新",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "E7eIPBUFNkUQCaPZAqanJVmi_cYO9S0JCeKB3Trm0S4",
 			"q": 70,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" extensions updated"
+			],
 			"ntgt": [
 				"更新了 ",
 				{
@@ -1778,6 +2273,13 @@
 		{
 			"guid": "fFztA8BpN5ztR940iRrxRzG6kccQjtTmucxkNGh6npk",
 			"q": 70,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" extension updates available"
+			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -1790,30 +2292,41 @@
 		{
 			"guid": "Ib3Dl-HzwtbZ2Ml0jVectlWKgCLvYPZ6byoYri6f_Sk",
 			"q": 70,
+			"src": "Set as cover",
 			"tgt": "设置为封面",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "aVTh9yvCCOJS6biHAKAoKQDWmjjqo8cIFgcwqCIilRo",
 			"q": 70,
+			"src": "Reader settings",
 			"tgt": "阅读器设置",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "2wtUHTjlnyifY2hE2cYObdqXt6vZKdAiyeVM4oNdf_s",
 			"q": 70,
+			"src": "Set as default for all",
 			"tgt": "设置为全局默认",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Q-v1w9GBUdWI6zxnbfiNesSObNnkYTo1nG1pdzKW4rc",
 			"q": 70,
+			"src": "Cover updated",
 			"tgt": "封面已更新",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "EnR5B-t_Ampr-_FK6FCuwfxnUna0-VNGNQL73mm1j_Q",
 			"q": 70,
+			"nsrc": [
+				"Page ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				}
+			],
 			"ntgt": [
 				"第 ",
 				{
@@ -1827,6 +2340,13 @@
 		{
 			"guid": "UKK9CJGLt82KF7IqPt9NB-bHsvmne8m6JVAO-LC2Ntg",
 			"q": 70,
+			"nsrc": [
+				"Pages ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"页 ",
 				{
@@ -1839,78 +2359,101 @@
 		{
 			"guid": "Qc1ZV3Ny9VaRh6PE4IJFuKgtMzgbhfmKVWffUxkWjEQ",
 			"q": 70,
+			"src": "Next chapter not found",
 			"tgt": "后面没有啦",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "HPwQLSKOlrYbHyjofNfikRimEekylevIiY_d0ksrTdw",
 			"q": 70,
+			"src": "The image could not be decoded",
 			"tgt": "无法解码该图片",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "5kVJ5mq5XOSpOV0cRj20m4EjSERSHHjFb5D-B7eDKU4",
 			"q": 70,
+			"src": "Use this image as cover art?",
 			"tgt": "要将此页设为封面吗？",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "U-fM9HL6MdOpDlVta63gzSGRhDsy-EcFEPtR2FaH-dg",
 			"q": 70,
+			"src": "Reading mode",
 			"tgt": "阅读模式",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "RDsq1cQDak8jiMMmyZC_3SwERo3l6v8CapJAHJdpJec",
 			"q": 70,
+			"src": "Changing this will reset the reading mode for this series",
 			"tgt": "更改此值将重置这个系列的阅读模式",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "kNe03PPBX7947ArE1NcDm1bjk_f2BdRjXzmDiaMq22g",
 			"q": 70,
+			"src": "Finished:",
 			"tgt": "已读完:",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "xOCNiQ1-eZhVfxxb4HBtt-DTU7k3dep6EzHpl_YCf-s",
 			"q": 70,
+			"src": "Current:",
 			"tgt": "当前:",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Cu0tD99b95Y9bO_fmL3N4WkWWjhFRBnsCKEDSPMX7q4",
 			"q": 70,
+			"src": "Next:",
 			"tgt": "下一章:",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "7tIV3qzAV-hr0e12MF0i4ZPHqF_75NpVgYByiAkaHNQ",
 			"q": 70,
+			"src": "Previous:",
 			"tgt": "上一章:",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "6sT9eOh-YFpLlMtqSLgsuD_avu1ljtGpnl6rQ1BXgFE",
 			"q": 70,
+			"nsrc": [
+				"There's no next chapter"
+			],
 			"tgt": "下面没有啦",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "3_5VuY-h5PQRaBiH61VNzkCK5d2Ckp8mECsUPeMJER0",
 			"q": 70,
+			"nsrc": [
+				"There's no previous chapter"
+			],
 			"tgt": "前面没有啦",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "RwDrB8ReriDHnBT18vMtz9nt7kUIfq6If3j_0GnSfHU",
 			"q": 70,
+			"src": "Loading pages…",
 			"tgt": "页面加载中…",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "UoUrj8RDjA-Dro_MlGIdIgAe1JtU1ux5tV_1JvQ9Aw8",
 			"q": 70,
+			"nsrc": [
+				"Failed to load pages: ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"加载页面: ",
 				{
@@ -1924,6 +2467,13 @@
 		{
 			"guid": "wKFZJn57ACjX_t201lY5WbxY6xfsfi11ssSbwb6nfUs",
 			"q": 70,
+			"nsrc": [
+				"Reading ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"正在阅读 ",
 				{
@@ -1936,654 +2486,773 @@
 		{
 			"guid": "SlAFtpEsmyLyJ9CWwNHgoUBa_z9W5Mf4LO7mcJAtZxg",
 			"q": 70,
+			"src": "webtoon style",
 			"tgt": "卷纸样式",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "fg2W1c2abzFBWZ3SzFWEwEmxeiqQT8Q0tPdnz-0ham8",
 			"q": 70,
+			"src": "Next page",
 			"tgt": "下一页",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "kbO5N_QHqkdnlKV2eS1VdZgAMbpL_RMDLTR4I1X39YY",
 			"q": 70,
+			"src": "Previous page",
 			"tgt": "上一页",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "a5-K12bzP7vKwNBq_JOnpnRtZUkMQ5Q3jYGJ2V71rqA",
 			"q": 70,
+			"src": "Next chapter",
 			"tgt": "下一章",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Qgjb99vSOfspdYbFZRcg2LlM92KotKvXSnlpvUiTxrg",
 			"q": 70,
+			"src": "Previous chapter",
 			"tgt": "上一章",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "1XV7ZzyoiWqejk_kb8BMcUaGHMJHqLTx599EJtbIbGM",
 			"q": 70,
+			"src": "Set first page as cover",
 			"tgt": "将第一页设为封面",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "A1vrwmVU31UFieXjJYeCmbnFXwvAe0YhNyKDDMkYUjA",
 			"q": 70,
+			"src": "Share first page",
 			"tgt": "分享第一页",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "HSi95SVfdcpoTsIsWemtKmrx4H2aOlDoF6G2TOMmtkc",
 			"q": 70,
+			"src": "Save first page",
 			"tgt": "保存第一页",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "nbb_Qs8XacxA8ZryVmBTmYK8QhrUJOV1ll4GHF1LAVI",
 			"q": 70,
+			"src": "Set second page as cover",
 			"tgt": "将第二页设为封面",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "n1whErmKjcpP6XeusH8OnbllaukAYZVGuGvAwUS6vzI",
 			"q": 70,
+			"src": "Share second page",
 			"tgt": "分享第二页",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ole_ODWFjk6iag3O8p560HO628Q_hJvMtJGIAne5pRQ",
 			"q": 70,
+			"src": "Save second page",
 			"tgt": "保存第二页",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "EpysZnLZo-1mZhou8q0OvmI8lp6fQXhnNentodbGre0",
 			"q": 70,
+			"src": "Share combined pages",
 			"tgt": "分享合并页",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "bLmGEWcwODjJ5TsZtvgPlllhMF7Qusd8hEa8GCnatwA",
 			"q": 70,
+			"src": "Save combined pages",
 			"tgt": "保存合并页",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "pUNw1jNdpBub4YvDOOVOnB9xp9b5HhtenI0mCjut3So",
 			"q": 70,
+			"src": "Fullscreen",
 			"tgt": "全屏",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "VHhERbkrDJ_f0FYm2yd4HDXIg4Km7BRIw03XCWeE3I0",
 			"q": 70,
+			"src": "Animate page transitions",
 			"tgt": "页面过渡动画",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "H4RqEMI7N9GCVCHx5OtUl6Kw6tEl1780q6W016wNcVI",
 			"q": 70,
+			"src": "Enable zoom out",
 			"tgt": "启用缩小",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "QtV3gNtCZtvtzsOGDmDcjeE-Cv2HN1Do1Lha4HwpkSU",
 			"q": 70,
+			"src": "Double tap animation speed",
 			"tgt": "双击动画速度",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "dR_2FWiEp_4r9VQkBrdc_yNcqvwD8l8Vn9_efc-QGVw",
 			"q": 70,
+			"src": "Show page number",
 			"tgt": "显示页数",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "by17fVJInY6ur0rEkp-1jdaqj6IdZtC4Rn_tfyF6Jc0",
 			"q": 70,
+			"src": "32-bit color",
 			"tgt": "32 位色彩",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Zi3L-9A9ap581wVL6PDJp3zruecGLQwl5p9k1u9Zyrs",
 			"q": 70,
+			"src": "Page preload amount",
 			"tgt": "页面预加载数量",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "C2FNkpaLoL7VXyXMu9SaavaizdXlCQJdCFEfo18dSjI",
 			"q": 70,
+			"src": "The amount of pages to preload when reading. Higher values will result in a smoother reading experience, at the cost of higher cache and network usage.",
 			"tgt": "读取时要预加载的页数。更高的值将带来更流畅的阅读体验，但代价是更高的缓存和网络数据用量。",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "KhQBQDYldIJeYyASM34BR-9ILkPBggtCSCM73BnXGfc",
 			"q": 70,
+			"nsrc": [
+				"Reduces banding, but impacts performance"
+			],
 			"tgt": "减少色彩带，但会降低性能",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "_eiLmnk4fEbsRy1A9mw2gRTRnELuJtyfeEzLU5qCxpw",
 			"q": 70,
+			"src": "Invert double pages",
 			"tgt": "反转双页",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "_h_8cgOacQBSamHFaN1tvSkDKO3OST3xNwxQ000qeww",
 			"q": 70,
+			"src": "Split double pages in portrait",
 			"tgt": "竖排拆分双页",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "bZWNWOTR_a6vu5KHhFocNrmKcuf2Dm_ZHyLsrqkWPIo",
 			"q": 70,
+			"src": "Crop borders",
 			"tgt": "边缘剪裁",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "n_HJKhrvrSRiRt5B67LREhbN2dFEGtgAs3UQhBs4WJQ",
 			"q": 70,
+			"src": "Crop borders (Paged)",
 			"tgt": "裁剪边缘（分页）",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "O3sde3hZlglgJmbDZ9GnS_sg_odYUPrskCtrEYhLq_8",
 			"q": 70,
+			"src": "Crop borders (Webtoon)",
 			"tgt": "裁剪边缘（网络漫画）",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "_UQhjiOEDycVJQUiZA70CKquv1zGeK1ewLezYWEQGbc",
 			"q": 70,
+			"src": "Remove crop",
 			"tgt": "移除裁剪",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "4tYTM3KKeVYFJYv6_5yzTRHyQ28cGuYDCTw3mxbsrqI",
 			"q": 70,
+			"src": "Use custom brightness",
 			"tgt": "自定义亮度",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "1c85W3dFyXzu-2RzBeQIlV3MQEozuLec6TzQk5ZgkGI",
 			"q": 70,
+			"src": "Use custom color filter",
 			"tgt": "开启滤镜",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "YvEPrA_hYuYjnFBjh7C_s87KrXHO0sq2Gkbv5lmRUWY",
 			"q": 70,
+			"src": "Color filter blend mode",
 			"tgt": "滤镜调和模式",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "2b65yx3R1E_JJ-7maL5mvJdNQr_wQ6IK7FCTVwSS0Uo",
 			"q": 70,
+			"src": "Overlay",
 			"tgt": "悬浮窗",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "B4K1BKpuoFvqmYL2wmhnt3VUpb77AWmfiG_hMzH-WlM",
 			"q": 70,
+			"src": "Multiply",
 			"tgt": "正片叠底",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "mp6yzD2NNQpXEtLCjAs82oYFOTGnIRrFyDWyyXEcZ58",
 			"q": 70,
+			"src": "Screen",
 			"tgt": "屏幕",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "bJVQLX_e3mTmRx5ywvw2aXxJm-urN7kaylp6ikz-cmI",
 			"q": 70,
+			"src": "Dodge / Lighten",
 			"tgt": "减淡/变亮",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "7GCR5o4olY4EW2sPlXgG2bu-jwgBbxn-bmHpAC5-O_U",
 			"q": 70,
+			"src": "Burn / Darken",
 			"tgt": "颜色加深/变暗",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "f9rLPt76BysQKtcUJkghsKsh3HkngCULoTOK27EWiuI",
 			"q": 70,
+			"src": "Keep screen on",
 			"tgt": "保持屏幕常亮",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "3_pv2EMITFCjiGuE8euV2WQNtAZAXjzdlz-59CZW618",
 			"q": 70,
+			"src": "Skip chapters marked read",
 			"tgt": "跳过已读章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Iunr4RpoBhkijCa5-8syOpaBW0ldfPQF3ycjrsz5f6w",
 			"q": 70,
+			"src": "Skip filtered chapters",
 			"tgt": "跳过已筛选章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "35PCdwbIevpxwavStJbMM6f99gNomxLOb4xk8lLZolo",
 			"q": 70,
+			"src": "Navigation",
 			"tgt": "操作",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "X_R6-EL4Tz6_cbe-mq22Eprfpb4Jlaf2zHaiwY5_HCc",
 			"q": 70,
+			"src": "Volume keys",
 			"tgt": "音量键",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "DsjlrDhzpILpbXZrVrDLarpvHJ9oVaydBkBanBlvBKY",
 			"q": 70,
+			"src": "Invert volume keys",
 			"tgt": "反转音量键",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "tUw5PBcP3qzDlw7w1QeYtoTy2rA2_43KAXhBtc2GzGg",
 			"q": 70,
+			"src": "Tapping",
 			"tgt": "点击",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "0pLU1V_ceLaHm46CjFnQCJqSVvmTy7iYKk0bABX7zJU",
 			"q": 70,
+			"src": "Background color",
 			"tgt": "背景颜色",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "HAOMLIeWcepZpcjwJ7wpe-yK25A4vdnlPLt_aSYiocA",
 			"q": 70,
+			"src": "White",
 			"tgt": "白色",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "NupXc9sOna4VUAdbNzmvqKoq7fjWoM3Gx4eDfEPSeik",
 			"q": 70,
+			"src": "Black",
 			"tgt": "黑色",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "CjYiNR9pPxk2Lft1ft0BzwuVz0M4pE8eWqpssfF2SVs",
 			"q": 70,
+			"src": "Smart (by page)",
 			"tgt": "智能（跟随页面）",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "-HuD6DHwN27vOk_Pw_s14X20I_NuDj_SgyMg4gjTPqs",
 			"q": 70,
+			"src": "Smart (by theme)",
 			"tgt": "智能（跟随主题）",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "EOFLKmFTCe5Ae-Wtq_pK3peI_TRaQuvr3l2fmu3-Mw4",
 			"q": 70,
+			"src": "Default reading mode",
 			"tgt": "默认阅读模式",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "VPGsMk1yoj7-QyV8qOYZImyyGWfyiX3VuXs07HuPK7g",
 			"q": 70,
+			"src": "Left to right",
 			"tgt": "从左到右",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "C7CqafLAhof20BH1oRqNSTwR7eAUzM9DVuI9j4uypfo",
 			"q": 70,
+			"src": "Right to left",
 			"tgt": "从右到左",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "S76dgtuFdxKRtVLnNaVwrCpcVM8T-s1ZhTRcjLb5XUQ",
 			"q": 70,
+			"src": "Vertical",
 			"tgt": "从上到下",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "zEeTg_OfAfDiKTNf2uLorQnzgfYkYf23B79ntzxEw2Y",
 			"q": 70,
+			"src": "Continuous vertical",
 			"tgt": "从上到下（连续）",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "dJUyYY4LBbu52csjAPgjlHqv-ypUCQZp8f9httFZAQ4",
 			"q": 70,
+			"src": "Paged",
 			"tgt": "分页",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "yd6gqulAttI-Zb-AH02TbAftNIA4Ow1vMwJCkmf4egw",
 			"q": 70,
+			"src": "Scale type",
 			"tgt": "显示模式",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "LzUubPrfRnlymnz-q_KqmEdajpP4jlZ67VTh-LkD03w",
 			"q": 70,
+			"src": "Navigation layout",
 			"tgt": "导航布局",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Iurgn3LlVy6Rb23zUCv-CriesFzy0yPB9V6oy3Rr81s",
 			"q": 70,
+			"src": "Fit screen",
 			"tgt": "填充屏幕",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "MBOyB3XuLgKb1S3dOMXoHVZhewJ7t93S7YdmLqpRmxM",
 			"q": 70,
+			"src": "Stretch",
 			"tgt": "拉伸",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "QbfP6ebA6apoM7yAZAbnWM93pw_AIFJ6pF5VUVJKoIA",
 			"q": 70,
+			"src": "Fit width",
 			"tgt": "适应宽度",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "GqhKG9Odi7eN2NzGu_821KOEk7vU3N1g1i6gNNVEnFM",
 			"q": 70,
+			"src": "Fit height",
 			"tgt": "适应长度",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "3bNgWTOqb8eT6U9sVKtFuPQ7qmql_D9sUgJIu9Q8XgY",
 			"q": 70,
+			"src": "Original size",
 			"tgt": "原始大小",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "TTiu10VhVg6HKLHFrD9wDFmvshAZegRpRXnszaVNHsU",
 			"q": 70,
+			"src": "Smart fit",
 			"tgt": "智能填充",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "nN-kGmXRFPb1rRmtDZTJu4nM6yxDeDvcblqrdveatSw",
 			"q": 70,
+			"src": "Zoom start position",
 			"tgt": "缩放位置",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "_kk-cHhadbopf9f8VouQpkf7cFf5uH4x5UATjrDbT8Y",
 			"q": 70,
+			"src": "Split double pages",
 			"tgt": "拆分双页",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "SMwJKF5bm8Dw-xz6vGuwFBcxvaO3HNcEdgOamKUOZIw",
 			"q": 70,
+			"src": "Double pages",
 			"tgt": "双页",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Id3pS3KM5Tkhruf5e491S-MZ6QNGErJ19JogpbvKZNU",
 			"q": 70,
+			"src": "Single page",
 			"tgt": "单页",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "wQRuzGKkvWV0vG9obp4jGSnm4RjR1bnkAXtK4twE1fY",
 			"q": 70,
+			"src": "Switch to double pages",
 			"tgt": "转到双页",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "223rk-Kbo-zntSmAdYrsyW-ny2zCVG0qtEqP7J11AKo",
 			"q": 70,
+			"src": "Switch to single page",
 			"tgt": "转到单页",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "6DfqvfeUOEL-0Me9CWZ5B1Os0o51R1XLp7CZysoW5mo",
 			"q": 70,
+			"src": "Portrait",
 			"tgt": "竖屏",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "sb5glIdoajcge8U--UgSkN61vlf9ftAf1MHZdrXrjc0",
 			"q": 70,
+			"src": "Landscape",
 			"tgt": "横屏",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "1Zrp6BG-DZXSWk18y0cN2K1J814wdXRxsC05kaDwynU",
 			"q": 70,
+			"src": "Locked portrait",
 			"tgt": "锁定竖屏",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ouRwVLj6hSKJFfa3sUttbDc6Bu4XjCLn_0DqQGwx0SA",
 			"q": 70,
+			"src": "Locked landscape",
 			"tgt": "锁定横屏",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "hsz8t-nRDeUVMxcYTRrpOcX1DtzbBTlblROo3BGgWPg",
 			"q": 70,
+			"src": "R",
 			"tgt": "R",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "_GKKHIx-LMjL1bFqln8KRqL3KLbJOGtReVGgEvY3eng",
 			"q": 70,
+			"src": "G",
 			"tgt": "G",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "SgldSUoKiKjsDjuGTmcVnvQvtuTUjLuHebuFTrbN4EU",
 			"q": 70,
+			"src": "B",
 			"tgt": "B",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ZvPS2igGNSNfJ4GtVXrcV4HMQMU9L6qItjmF7IkWfEY",
 			"q": 70,
+			"src": "A",
 			"tgt": "A",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "cJ_-rA_sG-i15fhaJLSWxUuAg26fAQSzmfLCtpXwQ7Q",
 			"q": 70,
+			"src": "Smart (based on page)",
 			"tgt": "智能（基于页面）",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "7T_hOsg6RhtnEA4R4O2r6DgjCGl5TFtkA_MRWZbSnjk",
 			"q": 70,
+			"src": "Smart (based on page and theme)",
 			"tgt": "智能（基于页面和主题）",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "1i1B73JpFdmi62bt30a5CTg9KpnLs1Zg0vFl5BGOsoA",
 			"q": 70,
+			"src": "Always show chapter transition",
 			"tgt": "总是显示章节间的过渡页面",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "W8IL7FndWDq-7-mwh7RdfpnZ-3SJj5ffNGNhAZG8S1s",
 			"q": 70,
+			"nsrc": [
+				"If disabled, the transition page will be skipped if the next chapter is loaded"
+			],
 			"tgt": "如果禁用，则在加载下一章时将跳过过渡页面",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "DV6nS5VEc9pBa2beWxQnk1arQR62ZVgyZyDptEzXh0E",
 			"q": 70,
+			"src": "Side padding",
 			"tgt": "侧边填充",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "nr78np2ASS-G7E0zBw200Q60kDC0kJG6B9fmWpjSTrs",
 			"q": 70,
+			"src": "None",
 			"tgt": "无",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "E-07uio8Bqr7bA-fh4G9CANGkla54FuFgi-AilSVaBs",
 			"q": 70,
+			"src": "10%",
 			"tgt": "10%",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "woPpn8Wqo-SUAWwu8eUXeeAwGBcahY8gYVPmTVjobZs",
 			"q": 70,
+			"src": "15%",
 			"tgt": "15%",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "IPJddNqFEFz6ppMrqj-4ZhC6BiPw24oPRFOYP4kCuU0",
 			"q": 70,
+			"src": "20%",
 			"tgt": "20%",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "vNJLesjHxN8RVIpTAYKNO55ylnR7xAOppQAPNDjD0pw",
 			"q": 70,
+			"src": "25%",
 			"tgt": "25%",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Z3mFfFMdZspt3dzBYbf4Ya5q1hEP1B647zm1RFYgFUg",
 			"q": 70,
+			"src": "L shaped",
 			"tgt": "L 样式",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "d09gaLfQKHbqHKFGzRPW9Is4lOrCexlVd5irQEDFjN4",
 			"q": 70,
+			"src": "Kindle-ish",
 			"tgt": "Kindle 样式",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "VDS_8a6bh6aJVCen9m_nsjOcdSnzT7_Y2N6W1A2zx0w",
 			"q": 70,
+			"src": "Edge",
 			"tgt": "边缘样式",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "AoVCIaf_xmO8IjzqRqDmLTXKnKIxVa2ZzWex5-otvx0",
 			"q": 70,
+			"src": "Right and Left",
 			"tgt": "左右样式",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "DdkUOyOMpzBEq8roZG_hrtvB4aUJRtEQtjni7B5f_BE",
 			"q": 70,
+			"src": "Invert tapping",
 			"tgt": "反转轻触方向",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "E8KWrYjuV6rNYOBiHEUYJc01lcgVbWvPKCdbBU3hObk",
 			"q": 70,
+			"src": "None",
 			"tgt": "无",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "NCIdcJxxvp00HL_yi0SD4xBMx8YwKzIdtFqHXMDHDCs",
 			"q": 70,
+			"src": "Horizontally",
 			"tgt": "水平地",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "paXGn4VWZ5yx1GauoMOctNbsSX-BnzeZzjpXvBejZ5U",
 			"q": 70,
+			"src": "Vertically",
 			"tgt": "垂直地",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "hInxbNXmVp8ymfLBQk2lH-7SvUPs25InX_gUWoMuX4I",
 			"q": 70,
+			"src": "Both Axes",
 			"tgt": "两根轴",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "tiuPeCuNZficiHifln3AdOnVjGqIL99OVSCJTjqRIHQ",
 			"q": 70,
+			"src": "Cutout area behavior",
 			"tgt": "刘海屏行为",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "bNPoLAv44j0zbzVEKB68Nquz-COQvdnao3VSBUr6gkQ",
 			"q": 70,
+			"src": "Pad cutout areas",
 			"tgt": "平板刘海屏区域",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "vdEXO8td0M3CxR2uaKOOeAFddT_lcuWlGdJDUQKv24o",
 			"q": 70,
+			"src": "Start past cutout",
 			"tgt": "首次打开时忽略刘海屏",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "JoF7exj_S0HkjlE_K6NxLRkE1SPsbKLIT8weHsrlRwI",
 			"q": 70,
+			"src": "Ignore cutout areas",
 			"tgt": "忽略刘海屏区域",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "2pjM4-I03BkSW-GbRG9AEztBy_evkZczJAm7MDgTi6k",
 			"q": 70,
+			"src": "Cutout area behavior only applies in portrait mode with certain scale types",
 			"tgt": "刘海屏区域行为仅适用于某些比例类型的竖屏模式",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "FezFSoYDEiIsClrf1JqAwRgFSrfjT2_CxGdPlIOXLA8",
 			"q": 70,
+			"src": "Page layout",
 			"tgt": "页面布局",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "rb6QdTJBmHJnWUjhhBu9GsvrqP124sw43HE2vPZK7yI",
 			"q": 70,
+			"src": "While using automatic page layout, you can still switch between layouts while reading without overriding this setting",
 			"tgt": "使用自动页面布局时，你仍然可以在阅读时在不同布局之间切换，而无需覆盖此设置",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "-p4Y62JHBpxvrQOFUkNWm8kJhR7z33NowZpXHhKis94",
 			"q": 70,
+			"src": "Automatic (based on orientation)",
 			"tgt": "自动 (基于方向)",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "nP0t9wle-o5QMEG5fe8AdknkamcCg1ooEtEx8hQvD_A",
 			"q": 70,
+			"src": "Cannot change reading mode from webtoon. Edit the series type first to change.",
 			"tgt": "无法从网络漫画（webtoon）改变阅读模式。首先编辑系列类型以进行更改。",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Bs_uAR58uFgb6bja48jt8D7VWPX-BQswoW9ILNRorIQ",
 			"q": 70,
+			"src": "Actions",
 			"tgt": "操作",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "u6D7imr8nr9n-4-mLssPJxhy-OjW5uf11LKMMXwzUq4",
 			"q": 70,
+			"src": "Show on long press",
 			"tgt": "长按显示",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "IEX6H6t2_ADlenoNGaK3o4ZydfaVNWUL8L9934J2ljA",
 			"q": 70,
+			"src": "Save pages in separate folders",
 			"tgt": "保存页面到单独文件夹",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "yY0LZeDyRVAoWbU-M40m8KynYbHYMrFP8qU8oYKpi_o",
 			"q": 70,
+			"src": "Creates folders according to manga title",
 			"tgt": "根据漫画标题创建文件夹",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "oXUmwOmJSilJYNINjFscNXUcar5msRG4KX7zU-4zQ5A",
 			"q": 70,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				" pages"
+			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -2596,6 +3265,14 @@
 		{
 			"guid": "Pc2BUXJyZZ3NM7dQk4gQW86gJoZmz9yFo__l8s4e9MY",
 			"q": 70,
+			"nsrc": [
+				"Skipping ",
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" chapters, either the source is missing them or they have been filtered out"
+			],
 			"ntgt": [
 				"跳过 ",
 				{
@@ -2609,6 +3286,13 @@
 		{
 			"guid": "rXnFisSe-TCQMWVdPr043XAD3SjPf9t7nr3_A3JFQ4Q",
 			"q": 70,
+			"nsrc": [
+				"About this ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"关于此 ",
 				{
@@ -2621,12 +3305,20 @@
 		{
 			"guid": "-5XFw8b0YYkp0SCPdD9jr-qHCGe62QMog7cZeWlROFU",
 			"q": 70,
+			"src": "Start reading",
 			"tgt": "开始阅读",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "dhYxjTjRurEmRtDpvPA7Dmqy-aolxGSAbtnMeV0t7_0",
 			"q": 70,
+			"nsrc": [
+				"Start reading Chapter ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"开始阅读第 ",
 				{
@@ -2640,6 +3332,13 @@
 		{
 			"guid": "VSx02unAfVpZMZjM5Ch1lClXeTWa_hZl1DBlD9g4BHE",
 			"q": 70,
+			"nsrc": [
+				"Continue reading Chapter ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"继续阅读第 ",
 				{
@@ -2653,12 +3352,20 @@
 		{
 			"guid": "5nIU3KDWhHbJ9FJihG1SY6TwHm49uNfMfb32gEmyBjQ",
 			"q": 70,
+			"src": "Continue reading",
 			"tgt": "继续阅读",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "F1RxS0BEDD6TIHPdzRKw9ICZjpNvfpJRu4cj-9lfGoc",
 			"q": 70,
+			"nsrc": [
+				"Chapters ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"第 ",
 				{
@@ -2672,6 +3379,13 @@
 		{
 			"guid": "4vSXPlqV-jor93w4akoHBtcFnxQkH294qUAPtwQzaXw",
 			"q": 70,
+			"nsrc": [
+				"Volume ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				}
+			],
 			"ntgt": [
 				"卷 ",
 				{
@@ -2684,6 +3398,13 @@
 		{
 			"guid": "AkTWm10nlkUtHs0SpqUi4J_fWfhHrtuPiIap8FfKdNY",
 			"q": 70,
+			"nsrc": [
+				"Season ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				}
+			],
 			"ntgt": [
 				"第 ",
 				{
@@ -2697,24 +3418,34 @@
 		{
 			"guid": "VzfIwCvfT_SWF4N-PSl7tLjp34mDypzzNQ98lzA9grs",
 			"q": 70,
+			"src": "Added to library",
 			"tgt": "已添加至书架",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "-JntRMSaIHPSXHjygiupqQkbc6IuVZwdLa26WPCESm8",
 			"q": 70,
+			"src": "Add to Library",
 			"tgt": "添加至书架",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "35VYh_G4PHB9o0W7-hU6IjWIlgjgxhTRS0yEkmcb_3w",
 			"q": 70,
+			"src": "Removed from library",
 			"tgt": "已从书架删除",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "QSmAX5m679wB0QyJtbDO2kU8UNCbW8w4IL9BjyLisIU",
 			"q": 70,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" copied to clipboard"
+			],
 			"ntgt": [
 				"已复制",
 				{
@@ -2728,6 +3459,13 @@
 		{
 			"guid": "tWY-2CNXp4Bgu0ORF0YJvuSxU9JDAUqON9ZoFdrEirc",
 			"q": 70,
+			"nsrc": [
+				"Source not installed: ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"未安装图源：",
 				{
@@ -2740,90 +3478,112 @@
 		{
 			"guid": "w9hhiyhohnNbjc_qqndqLiy6QdwWj-Epv6g2TqvRPtg",
 			"q": 70,
+			"src": "No description",
 			"tgt": "没有描述",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "vb6M0a5p7nlhFaVF25AqUDe_RGdqcsxarx6UG_GsqDg",
 			"q": 70,
+			"src": "Mark all chapters as read?",
 			"tgt": "是否标记所有章节为已读？",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "fIe7OJGoVZirD43ou4RVwBOAP5yU7sh56qU22laqs70",
 			"q": 70,
+			"src": "Mark all chapters as unread?",
 			"tgt": "标记所有章节为未读？",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "vthb4GHYrwqJ25tkTSvcBTYugT9CgANmMhJr6DldzM0",
 			"q": 70,
+			"src": "Remove from library",
 			"tgt": "移出书架",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "rTa-rfbkWhT1SOkZhUEkxuCsM4muY36dfZLIp-SjVyw",
 			"q": 70,
+			"src": "Select starting chapter",
 			"tgt": "选择开始章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "M4mHJaykq6HWj58nIQzsqHlKduoaGMLjR-IDnYa4Xk8",
 			"q": 70,
+			"src": "Select ending chapter",
 			"tgt": "选择结束章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "546dbT7ZGO5rIG5FYjj6sVANQDhUb8LgjW7cp0nC4OY",
 			"q": 70,
+			"src": "Search chapters",
 			"tgt": "搜索章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "e04nJSjVw91KEg0TgQUxdPV8cIkfF7VwvYKs1ZFUH0A",
 			"q": 70,
+			"src": "Next unread chapter",
 			"tgt": "下个未读章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Rjdo1_UmkY78kK8069pLRZ2hq3_Qpf_PjUxF8KQoxr8",
 			"q": 70,
+			"src": "Next 5 unread",
 			"tgt": "下载后五章",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "TiQDmVcsTfL_uP9vYItHBvqMm4-QbEioiXRjeBE4P-w",
 			"q": 70,
+			"src": "Custom range",
 			"tgt": "自定义下载",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "xQ_fXPRobfNykpLvURDWEDqL6xjfce54bFHNUAlWLLg",
 			"q": 70,
+			"src": "All chapters",
 			"tgt": "下载全部",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "cidU4cU_62qzpISOsMJr885GLmBqMvWC69iCQnZGyvA",
 			"q": 70,
+			"src": "All unread chapters",
 			"tgt": "下载未读",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "c-b_wOG1KoH3QdvemRbT425NOfJcSxqYmampEL2IrYQ",
 			"q": 70,
+			"src": "All read chapters",
 			"tgt": "所有读过章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "XXYiOQ6ywkRMuMGi66aeLnHCmcs_BMaNIILfWTeu8Oo",
 			"q": 70,
+			"src": "All but bookmarked chapters",
 			"tgt": "所有已收藏章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "lP7I0GvSzdCUMNPu5MZnqO1hE9KRTmW295hArhuKyq4",
 			"q": 70,
+			"nsrc": [
+				"Add ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" to library?"
+			],
 			"ntgt": [
 				"添加 ",
 				{
@@ -2837,150 +3597,188 @@
 		{
 			"guid": "UjJLozZAoSoe146ujO2h-ICSmd3OB8xUHXoA0sw1vuk",
 			"q": 70,
+			"src": "Show All",
 			"tgt": "显示所有",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "59ANLfGrC9sYWWJ7soKLOgvTTiB-X56ddjZv8_wpvvk",
 			"q": 70,
+			"src": "Show bookmarked chapters",
 			"tgt": "显示已收藏章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "RdhknvMYUXEeI5xGX57XnaOOt-3QNVOXVWmFzMdt-RY",
 			"q": 70,
+			"src": "Show downloaded chapters",
 			"tgt": "显示已下载章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "bEWBwQs9W7nT5Uod7_0VmZugV3GHYc344WnH3gWBBs8",
 			"q": 70,
+			"src": "Show unread chapters",
 			"tgt": "显示未阅读章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Vr1ax3wE48yESWD5OV2cIQaBr_uuVtbCfEX_kbp2J20",
 			"q": 70,
+			"src": "Show read chapters",
 			"tgt": "显示已阅读章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "gfLT8d325ksfRKQ5Dj92YdLF1785jSmgjWimm1_nU9Q",
 			"q": 70,
+			"src": "Hide chapter titles",
 			"tgt": "隐藏章节标题",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "LNfxBPO_lVWgBayQDFluUF42ycjQ1VaJXg0ytvQZmo0",
 			"q": 70,
+			"nsrc": [
+				"Sort by source's order"
+			],
 			"tgt": "按图源顺序排序",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "8GH_VjvU5TN8RL1DJwYVByvb08G21u9LLU4jBF7FGyo",
 			"q": 70,
+			"src": "Sort by chapter number",
 			"tgt": "按章节数目排序",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "MobJA0FZoPNP6s8GgyEGk5Z05eKcjZ7knk1Qr7fAKbc",
 			"q": 70,
+			"src": "Newest to oldest",
 			"tgt": "最新",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "r0wEECvy6Uo5enPtRzDJKsLQp9_xK6W0cKlmirilMC0",
 			"q": 70,
+			"src": "Oldest to newest",
 			"tgt": "最早",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "wa91V77-CNIUKXO_trOUgp-OTGRGK1xDxCnn-jgS8n4",
 			"q": 70,
+			"src": "Add tag",
 			"tgt": "添加标签",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "mg4C6yIR8EP__v2LCqgKunkzyxby8kPofjaNzHx5x2o",
 			"q": 70,
+			"src": "Clear tags",
 			"tgt": "清除标签",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "xnANV8L5mqGqk8EDMRSOD_nXd8p0AK4IczkE-ezn8mw",
 			"q": 70,
+			"src": "Reset tags",
 			"tgt": "重置标签",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "cX9XxArHW92TEnx3pEA6Jr4BcxizkXZXT9Fl-RDaVZM",
 			"q": 70,
+			"src": "Reset cover",
 			"tgt": "重置封面",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "YQ9Pslar5DpY7LteD-YuSor3-Ohnncut5xA_womBg7c",
 			"q": 70,
+			"src": "Failed to update cover",
 			"tgt": "更新封面失败",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "re5C-dOrMmRYYatR4pDIEGir1t9sA6GrjI3uauuQ-Hs",
 			"q": 70,
+			"src": "Manga must be in your library to edit",
 			"tgt": "请先收藏漫画到书架再进行更新",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "EbH3VudW1nCXsQ_ID9Yx1ZS01mU3OthyL0VrF3xBXR4",
 			"q": 70,
+			"src": "Remember this choice",
 			"tgt": "记住这个选择",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "qJ1A3DenY9H9IyDNB5o4neBMDAAqqX5c-vEQd6Dgds4",
 			"q": 70,
+			"src": "Source not installed",
 			"tgt": "图源未安装",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "1YfuduRire5UcC4X8zgoDYQaCOhDqNRFDWwK_1CNNPo",
 			"q": 70,
+			"src": "Cover saved",
 			"tgt": "封面已保存",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "7b_tbC0vJokC6pbjnD5bInOL_7G0OdAXW356nPjaKKk",
 			"q": 70,
+			"src": "Error saving cover",
 			"tgt": "保存封面时出错",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "xQocGcan1uFSG-TezMrcv7i-cP0Pe76eIWbt4HagfMY",
 			"q": 70,
+			"src": "Error sharing cover",
 			"tgt": "分享封面时出错",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "zqx57op51LrF8xEbhH3gB9ZAjf8hRcKRWgn3rKmO51c",
 			"q": 70,
+			"src": "Custom manga info",
 			"tgt": "自定义漫画信息",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "086GVeyCI86-O4ZnovrYS29Vg0gzYkZbpU6Jr6y_Kis",
 			"q": 70,
+			"src": "Set as default",
 			"tgt": "设为默认",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "4VnsQVEawPmvgH-O45FKaXHWGWxMnjIWsFtFV5GlyFc",
 			"q": 70,
+			"src": "Filter scanlator groups",
 			"tgt": "过滤扫译群组",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "SMy5CDGGN0GtdJzMKHTWbjT3VqLYuEtNpEvWA5bRmLc",
 			"q": 70,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" chapters have been removed from the source:\n",
+				{
+					"t": "x",
+					"v": "%2$s"
+				},
+				"\n\nDelete their downloads?"
+			],
 			"ntgt": [
 				"第",
 				{
@@ -2999,162 +3797,196 @@
 		{
 			"guid": "fZhmHvNVgb2WvnwMpxmxVtQMoZMaXORd2ibT-SZm1Ys",
 			"q": 70,
+			"src": "Tracking",
 			"tgt": "同步中",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ZlLL4fGdPSuS3w2p-kWAjb7vtIsJBhD1q9KOeJEpAJA",
 			"q": 70,
+			"src": "Tracked",
 			"tgt": "已同步",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "tA0xYikn0qHMP71gVNu8p-qT0ikIpg3hFN5e_ID1rVA",
 			"q": 70,
+			"src": "Not tracked",
 			"tgt": "未同步",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "LVLfgmMnGnMA4lyB9tKtml9AFqMz8uSPYrAd_m_nvf0",
 			"q": 70,
+			"src": "Services",
 			"tgt": "服务",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "dW-LPBUDZa9ZGOMBFDvMBEx7gtRRASof1dy20CCWbxQ",
 			"q": 70,
+			"src": "Sync chapters after reading",
 			"tgt": "阅读之后同步",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ZYRF0uRDK_bsTpcq436kRm7TTSod3JSdVNJVsUlWSfU",
 			"q": 70,
+			"src": "Track when adding to library",
 			"tgt": "添加到书库时跟踪",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "K8uvCzrPyY2N2As1JfFODEHeKn3UlBuZ9k1znC1K6tY",
 			"q": 70,
+			"src": "Only applies to silent trackers, such as Komga",
 			"tgt": "仅适用于静默追踪器，例如 Komga",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "BCDgHQUuX-glRXjK5RYzWLiKvfDZfAZbV5im3himAXg",
 			"q": 70,
+			"src": "Reading",
 			"tgt": "阅读中",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "cbSe_BNLwFsomZVEWi0GTNEJ6Mao82of7c6NS6eDVM4",
 			"q": 70,
+			"src": "Currently Reading",
 			"tgt": "正在阅读",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "LYynjNIz72cF50SS1OXJbvPr7MAIjLxw9gVow_4Sz_c",
 			"q": 70,
+			"src": "Dropped",
 			"tgt": "已放弃",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "x8gsoYYeRGdYb0x6VRUjBIX8z4Vv_6B3coaf5CgwbLo",
 			"q": 70,
+			"src": "On hold",
 			"tgt": "搁置中",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "EA9iZ6SE2GG97cnEhFB_R2N09qjw5QKImKEDwi1gSGU",
 			"q": 70,
+			"src": "Plan to read",
 			"tgt": "计划读",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "XtNPZKSNMlWIZLncN7R3g2WMvjXkyok6HD8P-aLD71s",
 			"q": 70,
+			"src": "Want to Read",
 			"tgt": "想读",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "l0UZpsXZnaycQm2s1a667I4AKRUiCDoh8faRBAoIwy8",
 			"q": 70,
+			"src": "Paused",
 			"tgt": "已暂停",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "D8J75_kmWSq7IFTsNEViQj9LKmW5czbN2rvN6NhWFi0",
 			"q": 70,
+			"src": "Rereading",
 			"tgt": "重读中",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "bc1arDgNPnGeMzUyV9RBZCgCGTT-rS7QftpOUnt4xfU",
 			"q": 70,
+			"src": "Score",
 			"tgt": "评分",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "BYUSJBCIrcTUzre5sOlDt_5DTKLFSCT3gCjuLbs26Uk",
 			"q": 70,
+			"src": "Status",
 			"tgt": "状态",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Plz4DpsSw4n_xqGDSRumsnzp8uftskZiBkD-KIaPKfs",
 			"q": 70,
+			"src": "Started",
 			"tgt": "已开始",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "sV7cmhJOzX58-qayIAQRRM-sfBi6y-cLcMVyqkiD-lE",
 			"q": 70,
+			"src": "Type",
 			"tgt": "类型",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "61Apnoa_5m61OWybH8wwbXmDcq_rYqJk847c_Pj593I",
 			"q": 70,
+			"src": "Manga URL not set, please click title and select manga again",
 			"tgt": "漫画链接未设置，请点击标题再选择一次漫画",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "BBmg1wcHCXd_7-M0GdKSVka6ytQL1IxV4ghzoo_8GvI",
 			"q": 70,
+			"src": "Refresh tracking",
 			"tgt": "刷新同步进度",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "6wJlLh7DBrocgpvx47TL8hna9fKnth8bppMYBFrM-tM",
 			"q": 70,
+			"src": "Add tracking",
 			"tgt": "添加追踪进度",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "udoZazFBKNuJIC6v5QmfjrbGyd6rlkSOBu4UjHKhWOk",
 			"q": 70,
+			"src": "Select an entry",
 			"tgt": "选择一个条目",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "gks4bWWDDbYU3WqFt4sCDQzKkk818PdlB7ib_dco-_U",
 			"q": 70,
+			"src": "Source is not supported",
 			"tgt": "图源不受支持",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "U4k2bPmEV48jDbn2lC4J-B8kiIokopjfT9qt0J_p5ZU",
 			"q": 70,
+			"src": "No match found",
 			"tgt": "未找到匹配项",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "DthVRDpslR2a_CZJ43oIuFM3jsvJRc-3YGX31hS3Fgo",
 			"q": 70,
+			"src": "Remove tracking from app",
 			"tgt": "从应用程序中删除同步进度",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "EtHBbOLybHYJNZnry87GJ1zgXtr-0SCWf3ClP7wf8sY",
 			"q": 70,
+			"nsrc": [
+				"Tracker cannot be removed from ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" while offline"
+			],
 			"ntgt": [
 				"离线时无法从 ",
 				{
@@ -3168,6 +4000,13 @@
 		{
 			"guid": "p-XaUHnNCFyXbPogKtoVZVRDqAjoRntnmJt5JR4R1rU",
 			"q": 70,
+			"nsrc": [
+				"Also remove from ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"同时从 ",
 				{
@@ -3181,12 +4020,30 @@
 		{
 			"guid": "8v-_s7uEet4s00G7V9Pcvumf9GnoOvuXxIwKWEjb_5Y",
 			"q": 70,
+			"src": "Remove previous tracker?",
 			"tgt": "删除先前追踪器？",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ehA-L9pQnrjTwKw9o5o3yPjzB8yjhIGNuOhTX96g7xo",
 			"q": 70,
+			"nsrc": [
+				"Remove ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" from ",
+				{
+					"t": "x",
+					"v": "%2$s"
+				},
+				" and add ",
+				{
+					"t": "x",
+					"v": "%3$s"
+				}
+			],
 			"ntgt": [
 				"从 ",
 				{
@@ -3209,6 +4066,14 @@
 		{
 			"guid": "PBNBqvQp-lTb7U8FVYhn02_a9p0-R2znZFx5j9sUbpI",
 			"q": 70,
+			"nsrc": [
+				"Keep both on ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" and only replace locally"
+			],
 			"ntgt": [
 				"保留 ",
 				{
@@ -3222,96 +4087,116 @@
 		{
 			"guid": "IdKSaHZYLeKCreMhJvSr90in8riPYe3xZnx4rn1EEjs",
 			"q": 70,
+			"src": "Started reading date",
 			"tgt": "开始阅读日期",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "jkNC1t_pdP_Few1ZGvDlApIV5bi4RFhd7tdSlaPBm_U",
 			"q": 70,
+			"src": "Finished reading date",
 			"tgt": "完成阅读日期",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "OH8biETAPZyxtx6m-XHb4BUqwPOgCWsRBnukgGV7niE",
 			"q": 70,
+			"src": "Please log in to MAL again",
 			"tgt": "请重新登录 MyAnimeList",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "7hb5L6qGTAqPRklPIZG70MstE7elk7RcKPRLMCRQtd4",
 			"q": 70,
+			"src": "Use suggested date",
 			"tgt": "使用建议日期",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "X0_pFoQrmtP7HRDl7tJJRY9v4aAvjI8hpck4OCcfqic",
 			"q": 70,
+			"src": "Select sources",
 			"tgt": "选择图源",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Gm-hW1MyWTyz6S6nDLvIqHjT-gG1tYCMifCfrhoH7HA",
 			"q": 70,
+			"src": "Source migration",
 			"tgt": "来源迁移",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "-PPNIbEUHwkIGu4bQUzt0Dum2AJNX33S224Q_e_ou2w",
 			"q": 70,
+			"src": "Migration",
 			"tgt": "迁移",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "XNjo_w9WhrGdxKdrV8_dOdrvfQJ22YujJJ86Jb0cZr8",
 			"q": 70,
+			"src": "Skip pre-migration",
 			"tgt": "跳过迁移首选项",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ZaFVe22GBI64JdVFR6uX-ObRD-cRk0zIKevux5wEwW4",
 			"q": 70,
+			"nsrc": [
+				"Select a source, then select an item to migrate"
+			],
 			"tgt": "选择图源，然后选择待迁移项目",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "lt4SHU-6CU6ShuRhAxP8PbpEMoizbRLeARXwB-oXCoE",
 			"q": 70,
+			"src": "Data to include in migration",
 			"tgt": "迁移包含的数据",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "WjIru3HFt1RrWI7_RapbkXcY0vlttgOm2q7YAQgUagc",
 			"q": 70,
+			"src": "Search parameter (e.g. language:english)",
 			"tgt": "搜索参数（例如 language:english）",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "91G3XQPJ2p1pajBE1eoRgNPgG9B-t_4PHNx3kmeUK2g",
 			"q": 70,
+			"src": "Include extra search parameter when searching",
 			"tgt": "搜索时包含额外的搜索参数",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ELDkm24sZ2jhq4FvE5XizqKRWUrY5rYSIdvZBLjRnAk",
 			"q": 70,
+			"src": "Use source with the most chapters (slower)",
 			"tgt": "使用章节最多的图源（缓慢）",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "dK9hIuYCY7ZjQx2fkF1hE-wlxSiGWWD0CDls4jwr0Hw",
 			"q": 70,
+			"src": "Use first source with alternative",
 			"tgt": "使用第一个图源作为替代",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "vlH7fPoKtNFol1m44HtsqAc_POa1glKl0jdNWEN1A_c",
 			"q": 70,
+			"src": "Skip this step next time",
 			"tgt": "下次跳过此步骤",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "40nodRaLIGy39DOdLno37o-CdP-LndXWJmmD06atmsg",
 			"q": 70,
+			"nsrc": [
+				"To show this screen again, go to Settings -> Sources."
+			],
 			"ntgt": [
 				"要再次显示此屏幕，请转到 设置 -> 图源。"
 			],
@@ -3320,6 +4205,13 @@
 		{
 			"guid": "XbpaTzrbCpE1Jod-1pTJUcUejGCs65etNfCLyrjOPCI",
 			"q": 70,
+			"nsrc": [
+				"Latest: ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"最近：",
 				{
@@ -3332,42 +4224,57 @@
 		{
 			"guid": "N-Yl549YbT_yznYhn6exYuE3dfVAe7a_S4Mqs5cfOqk",
 			"q": 70,
+			"src": "migrating to",
 			"tgt": "迁移到",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "xJFqLVqZOdDwGYAjfbgscpPcA6oGzcIavM_-Mgu3XOg",
 			"q": 70,
+			"nsrc": [
+				"Don't migrate"
+			],
 			"tgt": "不迁移",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "7SPzWn0HQD6BIBpK8t3zjkVsy0SkVUtIURZJtEqRj7U",
 			"q": 70,
+			"src": "Search manually",
 			"tgt": "手动搜索",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "KCxikc2zuT7uJzwvqPeb9SagV9WJX3byhb77PFwsPS0",
 			"q": 70,
+			"src": "Migrate now",
 			"tgt": "立即迁移",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "OiatXmgmVshjzRHY9MOlDEQV7odBfISWmzX62vP7wBE",
 			"q": 70,
+			"src": "Copy now",
 			"tgt": "立即复制",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "mtYe3HWlkJC02486UH-CxoJ2HFrYI4YFFBMUIXpeRkw",
 			"q": 70,
+			"src": "Migrate",
 			"tgt": "迁移",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "8UBMozzQQaFAFnGCJ2oCBqqTVxAjdbeLXYrZ5jUkQoQ",
 			"q": 70,
+			"nsrc": [
+				"Migrate ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"迁移到 ",
 				{
@@ -3380,30 +4287,48 @@
 		{
 			"guid": "JUjbLHtxbd3o_tATtMLJSXSM4DthXJI9BM3oDkUcWHw",
 			"q": 70,
+			"src": "Copy",
 			"tgt": "共存",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "dQVWYkXPeFOjGC7dZFl4-qpzZxpKrykPe1si6ZXM47U",
 			"q": 70,
+			"nsrc": [
+				"No chapters found, this manga cannot be used for migration"
+			],
 			"tgt": "找不到章节，此漫画无法用于迁移",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "J1tK-zxfRLo-qJ2LdvOy0EfXz3DKHub7cuPGCCs1bKQ",
 			"q": 70,
+			"src": "No Alternatives Found",
 			"tgt": "找不到替代",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "qgyhbpKDjI7jLUvTkyBinCJwj8i7lfiKwHOif76StvI",
 			"q": 70,
+			"src": "Stop migrating?",
 			"tgt": "停止迁移？",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "NbSotC-esLltIb4qX2tNcSjKPSlGcoWI-D8v8pewC08",
 			"q": 70,
+			"nsrc": [
+				"Migrate ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				{
+					"t": "x",
+					"v": "%2$s"
+				},
+				" manga?"
+			],
 			"ntgt": [
 				"迁移 ",
 				{
@@ -3421,6 +4346,18 @@
 		{
 			"guid": "8QzHRFQRgUcTAprTZeAm2ftfggD-_EULwyTccQDeOTA",
 			"q": 70,
+			"nsrc": [
+				"Copy ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				{
+					"t": "x",
+					"v": "%2$s"
+				},
+				" manga?"
+			],
 			"ntgt": [
 				"复制 ",
 				{
@@ -3438,6 +4375,14 @@
 		{
 			"guid": "PT1Q-KeWPfn_xxc-bX4Y7GEGvvA-Y19t7vD-todWShg",
 			"q": 70,
+			"nsrc": [
+				"(skipping ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				")"
+			],
 			"ntgt": [
 				"（跳过 ",
 				{
@@ -3451,6 +4396,13 @@
 		{
 			"guid": "NR_8aJYvx44XUvYFNO1tkp7aEhaPGsIEjxtjvkMyPyc",
 			"q": 70,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" manga migrated"
+			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -3463,54 +4415,69 @@
 		{
 			"guid": "V1BNy458nW_4fby7kPg8YMQAXVoyE1I023tRCSMrLS8",
 			"q": 70,
+			"src": "Settings",
 			"tgt": "设置",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "lLI59L5MxXwJ1LV5AxkbDuJSKWXCBvp6ClAXxPBGbPQ",
 			"q": 70,
+			"src": "General",
 			"tgt": "通用",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "h48IwLQb_Kr4DzWI6wptPwL5q7m41cV5dTuAq2ZSm94",
 			"q": 70,
+			"src": "Reader",
 			"tgt": "阅读",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "5eQfIgEoQtbNWO-1AlQOysdFQc5V5igBF2xUbmrskIs",
 			"q": 70,
+			"src": "Appearance",
 			"tgt": "外观",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "MIYZSE9NSGP-yv7tdojgfdRQPPyMO1Tjle2C_C8urvk",
 			"q": 70,
+			"src": "Advanced",
 			"tgt": "高级",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "7IrQE75wPt_a7eal5Qh--VZACMEgkVYlt3S7hHc2540",
 			"q": 70,
+			"src": "About",
 			"tgt": "关于",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "18nSKxHYQvVD7z1fD6sgaxYNQoDcUpyPgWVOURJBw0A",
 			"q": 70,
+			"src": "Help",
 			"tgt": "帮助",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "VvV6N8NUb3jOkDNdLi95QMWeXD2P9Hx-CJVHw16WVLs",
 			"q": 70,
+			"src": "Search settings",
 			"tgt": "搜索设置",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "uFVbUHrXOitHB2S6JDZOrs8aV5rxp7WYKecvc56IP6E",
 			"q": 70,
+			"nsrc": [
+				"Turn on ",
+				{
+					"t": "x",
+					"v": "%s"
+				}
+			],
 			"ntgt": [
 				"打开 ",
 				{
@@ -3523,6 +4490,13 @@
 		{
 			"guid": "ho4L5e9G-ndHwuIF6Cmr5geXwERUZCd_jY_yTm6agc8",
 			"q": 70,
+			"nsrc": [
+				"Turn off ",
+				{
+					"t": "x",
+					"v": "%s"
+				}
+			],
 			"ntgt": [
 				"关闭 ",
 				{
@@ -3535,180 +4509,216 @@
 		{
 			"guid": "cXhHTgubaXopfYGQLaXme_NmQ5WY7SPT9Hk1kXrnht4",
 			"q": 70,
+			"src": "Incognito mode",
 			"tgt": "无痕模式",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "GWnOMuj7cc53ixBNbQN3Jgx0ndwa1tQvFWG7MN1UvOs",
 			"q": 70,
+			"src": "Pauses reading history",
 			"tgt": "暂停阅读历史记录",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Ay5QX19Ktp0pIgU9HrqiMQolqdwoNnVJUowNH8REpFE",
 			"q": 70,
+			"src": "App theme",
 			"tgt": "主题",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "2zYHICLSMDRS4hmL3mG_GcljCxsbxDZJi_d0tEA8KeY",
 			"q": 70,
+			"src": "Light theme",
 			"tgt": "浅色主题",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Qz5uMNtrIEjaYLpAUR9s7q838MB3UfqaZ5y5kCi5Fc4",
 			"q": 70,
+			"src": "Dark theme",
 			"tgt": "深色主题",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "b6xVBsUaBzyMbN61SiJsn2l3sKSctT5RimaMMtTgYok",
 			"q": 70,
+			"src": "Light Blue",
 			"tgt": "默认主题",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "yEll6ZALYuqOaIJT4ygenihlMWlJeO5A_2v2TEwdRR4",
 			"q": 70,
+			"src": "Dark",
 			"tgt": "夜间模式",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "xgVaJa4ZYUtko2-Zzaq9Y61dH5lC8R-P0bNcwrpfuSU",
 			"q": 70,
+			"src": "AMOLED Black",
 			"tgt": "AMOLED模式",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "GdY9V5fVWPbmZrlWiTa3fXTFAclhAPih-Kw4lRdvam8",
 			"q": 70,
+			"src": "Dark Blue",
 			"tgt": "暗蓝色主题",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "YanNntJpXSZIdbqr7id6VeWUtMbeD1v_ckCNpKvPhBw",
 			"q": 70,
+			"src": "Midnight Dusk",
 			"tgt": "午夜薄暮",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "EGkKE9cPyin0ijMsclAYu0_9Q684CojI8fjRfoN9928",
 			"q": 70,
+			"src": "Spring Blossom",
 			"tgt": "春暖花开",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "nVBLd4D0iYUrlSTjg2WppbD0fp8tEaWrp4k0ajSXqpA",
 			"q": 70,
+			"src": "Strawberry Daiquiri",
 			"tgt": "草莓黛琦丽",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "u5bvLpCuJ8WEuCuphGYr0Q5hpymee1gnY6mUqhhETWE",
 			"q": 70,
+			"src": "A Brighter You (Dynamic)",
 			"tgt": "更明亮的你 (动态)",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "uz_fIYv_VXMTuwR2VMB8351T4s01F2kWVVO7N4j8ois",
 			"q": 70,
+			"src": "A Calmer You (Dynamic)",
 			"tgt": "更平静的你 (动态)",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "UiKTB6OG_3SxNZYan2gizCkBSbgzAGez-Qq_0gqBxUI",
 			"q": 70,
+			"src": "Yotsuba",
 			"tgt": "四叶草",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "X_lcJ33w1FnORuUQsj6hr9Al2ws3lhj0mxu1ljyw1B4",
 			"q": 70,
+			"src": "Tako",
 			"tgt": "Tako",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "jEhFC4GspVjYt-8LuT0NMhub4gbo2LOYa2WcH4NHFHU",
 			"q": 70,
+			"src": "Yin",
 			"tgt": "阴",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "poXkTGEcGe-O1oAhmApNbiKsqkuFvk9sd0FQGqPqlM8",
 			"q": 70,
+			"src": "Yang",
 			"tgt": "阳",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "C8BPevpvgI6WJexjUMUahmJBgFi50M07scj23iERX2k",
 			"q": 70,
+			"src": "Chocolate Strawberries",
 			"tgt": "巧克力草莓",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "_AuqOACJhbcy1WtVNzcQXxPlijRWT2KN52345xP4rBg",
 			"q": 70,
+			"src": "Teal Ocean",
 			"tgt": "青色海洋",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "zubSvrNm5wwOPs0ztitCy-jgEV86F7C1_qio1TMfH2I",
 			"q": 70,
+			"src": "Sapphire Dusk",
 			"tgt": "蓝宝石黄昏",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "IUUIIBJOx9r8kQmaZlv4JUzCssUcw851UPHvDoeEcK8",
 			"q": 70,
+			"src": "Hot Pink",
 			"tgt": "亮粉色",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "XupCzE9DVb_DJ-vj1kNbld19gxVNja1BW_3QhxwaJOc",
 			"q": 70,
+			"src": "Flat Lime",
 			"tgt": "平石灰",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "KShg_q-U_l3Mp8pT8tgYnpW1945uQkF3JiBjS1EbjbQ",
 			"q": 70,
+			"src": "Pure White",
 			"tgt": "纯白",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "j9Gr6KxUhIsBdS32rsTQA-xZRzco-e8d4y-jj-f79No",
 			"q": 70,
+			"src": "Locale",
 			"tgt": "语言",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "IZ8YeylR6f1qeElImrsuwNR69XKaboPU5Ulg676rggU",
 			"q": 70,
+			"src": "Last used (Library or Recents)",
 			"tgt": "上次使用（书架或最近）",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "BNmjkp25hD7w3o4mKGO1yyH3veRFSMMv2JGywL44JAI",
 			"q": 70,
+			"src": "System default",
 			"tgt": "系统默认",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "kFkm5As4gCEavY_SfLR_QvMW9mvZWynNaBgFuJHY0Co",
 			"q": 70,
+			"src": "Date format",
 			"tgt": "日期格式",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Rpp7U8KuM9F7vk5LENGa35eaArh5E23L4z8CoYvE3Bc",
 			"q": 70,
+			"src": "Check for updates",
 			"tgt": "检查更新",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "fqd4WajLYVT61enjx3OP0SiB4XZy8IYrd_n5a9Y_PDg",
 			"q": 70,
+			"nsrc": [
+				"Updated to v",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"已更新到 v",
 				{
@@ -3721,252 +4731,305 @@
 		{
 			"guid": "9DZZYSdVPlVroNYqXg4G-64KCbH4rjaCBQ09lf61FRw",
 			"q": 70,
+			"src": "Secure screen",
 			"tgt": "防窥页面",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "pXb00OSWKF8OtyBtcSRxEalP5h5mLRR_VMcP78SHr_M",
 			"q": 70,
+			"src": "Auto-hide bottom navigation",
 			"tgt": "自动隐藏底部导航栏",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "oL50pOSprU0vWXIoHmo2gS1I0-eYMcL16hwufNY8ULI",
 			"q": 70,
+			"src": "Side navigation icon alignment",
 			"tgt": "侧边导航图标对齐",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "_HL38HQvlrx4zatV5U7Rdku_K0-BKFM2gSSScTmIAmE",
 			"q": 70,
+			"src": "Use side navigation",
 			"tgt": "使用侧导航",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "FBUPvw4IF_dco65MT85iOp-P201ObtzHM4ewww8yo2A",
 			"q": 70,
+			"src": "Default behavior",
 			"tgt": "默认行为",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "m9LapqqyUbl4Hjm-acmQgAUIn2zH98FMK6pLSC-_jVE",
 			"q": 70,
+			"src": "By default, side navigation is used for certain phones and small tablets when in landscape, and always shows on larger tablets",
 			"tgt": "侧导航默认仅用于某些手机和小型平板电脑上的横屏模式；在较大平板电脑上不论横屏或竖屏总是显示",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "5GX8Iq_IesOGuLkAra1Yqr9pElHtXjerK9lWMmOphyM",
 			"q": 70,
+			"src": "Follow system theme",
 			"tgt": "跟随系统主题",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "C4ZBYtDxLEoCXfuon-Up1hDVSlu47aMTUGiJEOQYKA8",
 			"q": 70,
+			"src": "Pure black dark mode",
 			"tgt": "纯黑深色模式",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "mDWIplg3Wh7Rcjh5InA9P6ffNR9D_FzTNZn0x6ExoE4",
 			"q": 70,
+			"src": "Details page",
 			"tgt": "详情页",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "m_Zja_HdTZ8QsvSIsL7BFxLzVslvGEG0jRaamPck3qQ",
 			"q": 70,
+			"src": "Theme buttons based on cover",
 			"tgt": "基于封面的主题按钮",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "2H2FCTrO3QD6g4e3IRLHkFvN25eM13EHU4SWJ86L11s",
 			"q": 70,
+			"src": "Hides when scrolling",
 			"tgt": "滚动时隐藏",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "jKZKJcy5mxyLzr83aa1Ek05MdhK8faqBN_hZUYPxguo",
 			"q": 70,
+			"src": "Hide app contents when switching apps and block screenshots",
 			"tgt": "在切换应用时隐藏此应用内容，并禁止截取屏幕截图",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "clfTjjrMOetAReVvFqYexxQGGcatR50X_lc6gRx-pUs",
 			"q": 70,
+			"src": "Hide notification content",
 			"tgt": "隐藏通知内容",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "kRJcEKPmv8QlDov9_nSLedG9YgythdNQQMmUGCwUk_4",
 			"q": 70,
+			"src": "Security",
 			"tgt": "安全",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "yErnSrwWHEZijQHfyIuA1An321aHUSxyIeMcXjWZiAo",
 			"q": 70,
+			"src": "Starting screen",
 			"tgt": "启动屏幕",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "kX70JYjVLuSXfboAf8zYL1Ych_d52zS8TCi_o8QxJ7o",
 			"q": 70,
+			"src": "Back to start",
 			"tgt": "回到启动屏",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "4LEwGmzLbpaz92HD1PIKy5uPNzu3Sescs2rzorTW-fg",
 			"q": 70,
+			"src": "Pressing back to starting screen",
 			"tgt": "按下返回启动屏幕",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "59PP8cD8S_FWrK5xrlPx31M3HLElEMnaYHJ3tHdpPKw",
 			"q": 70,
+			"src": "Auto-updates",
 			"tgt": "自动更新",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "H_JjnDnNORCzdlGTLjUfqofMK9rQ6AtQYWzPzAR0tPg",
 			"q": 70,
+			"src": "Auto-update app",
 			"tgt": "自动更新应用",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "w5pSql3nh7zWPgEIPI4THTwy-pPho65K0Ib8ZgMvAVE",
 			"q": 70,
+			"src": "Over Wi-Fi only",
 			"tgt": "仅 Wi-Fi",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "9bvm7hCxHmnizSUDHApPLv7sitYthDANe3lWJGoojSc",
 			"q": 70,
+			"src": "Over any network",
 			"tgt": "任何网络连接",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "zXLKLNmS6xruqwTnlAbShfEJGiuuMK3ztU-MUk76zWE",
 			"q": 70,
+			"nsrc": [
+				"Don't auto-update"
+			],
 			"tgt": "不自动更新",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "D3LfdbxIIVqFCgNV1keUViOetdNJG2NwKYm8Oq1xiVw",
 			"q": 70,
+			"src": "App shortcuts",
 			"tgt": "应用快捷方式",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "bQV7fZpH3qCJh1eXfgPuAv5TNS8EN7677pXGdrpBdQE",
 			"q": 70,
+			"src": "Show recently used sources",
 			"tgt": "显示最近用过的图源",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "yoF22AIvrvT8-SiVZinJYZKjXn3ec3-W6xwdonw73HU",
 			"q": 70,
+			"src": "Show recent series",
 			"tgt": "显示最近的系列",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "TzwswY8NZNKxmx-0hvbNo7jEJlmDyk5FtkpRV6YVWew",
 			"q": 70,
+			"src": "Includes recently read, updated, and added series",
 			"tgt": "包括最近阅读、更新和添加的系列",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "NG5VIYqM-D_1aUYH4LZ1PeIRAJfl93HRSjwUHrlxW54",
 			"q": 70,
+			"src": "Series shortcuts opens new chapters",
 			"tgt": "系列快捷键打开新篇章",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Fm6Vq1l2shHVMSBG3SScRIRVIIllb62PT55gQ8pn6jU",
 			"q": 70,
+			"nsrc": [
+				"When there's no new chapters, the series' details will open instead"
+			],
 			"tgt": "没有新章节时，将打开系列的详细信息",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "eCebO0-Q_ffk8Sa7ZE0i-2lvwmOgHfwL2GkkvnnSFk4",
 			"q": 70,
+			"src": "Backup",
 			"tgt": "备份",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "WauZWTAX0NfsnR76172TOgZg_C4mImMuM9-tqnwPcUo",
 			"q": 70,
+			"src": "Backup and restore",
 			"tgt": "备份和还原",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "CGPtNaR_C_SRk4krWcb4Zf0rlXEPhPcpHnYlfTervxc",
 			"q": 70,
+			"src": "Create backup",
 			"tgt": "创建备份",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "RK9xZ5md46Yq6KtbkWYRDIwKc7Ds88MK4qZa-3jeTyg",
 			"q": 70,
+			"src": "Can be used to restore current library",
 			"tgt": "可用于恢复当前数据",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "tzSOmiJwGmbpTXFRuJMYkTmU02AvEur5gzrr85WfFow",
 			"q": 70,
+			"src": "Restore backup",
 			"tgt": "恢复备份",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "rixHOjM17WNZx-jCTKrDJQ8NRBJflS0_9j8WPbzPWcQ",
 			"q": 70,
+			"src": "Restore library from backup file",
 			"tgt": "从备份文件中恢复",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "sDghU3PAgiMpGR91wOsueeHA8DCgE1wt3hEPB14lwxA",
 			"q": 70,
+			"src": "Restore already in progress",
 			"tgt": "还原已在进行",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "NWO_3AVNVY7a6PAwhKXmiBdDRkRXgOEpEEWG6ZgEMoE",
 			"q": 70,
+			"src": "Backup already in progress",
 			"tgt": "备份已在进行",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Ioi2E-Ht8s3KaZIzHx8e8DmipmT4M9f5z_RUBwksCyg",
 			"q": 70,
+			"src": "Backup location",
 			"tgt": "备份目录",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "XfQ4gUXHtnOb9Mpfxl8zti75_edqbzAJraWMOzXk0e8",
 			"q": 70,
+			"src": "Automatic backups",
 			"tgt": "自动备份",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ktPIwUSifhvZdqvcx1mg2ceKuJs2Tc1BDipEyamhAzM",
 			"q": 70,
+			"src": "Backup frequency",
 			"tgt": "备份频率",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "hnfZilcpx6HulROgOytk2gNYbW8t6ANVGp1a78gbGOg",
 			"q": 70,
+			"src": "Max automatic backups",
 			"tgt": "最大自动备份数",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "3v0ln70LR3XL4EGA8XI1Yaz62H_Mf13PtISdSjFmupQ",
 			"q": 70,
+			"src": "Invalid backup file",
 			"tgt": "无效的备份文件",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "etVdxDl96xsnSIZe67TBgvPDHvZi-8XCK1TiYeJI61o",
 			"q": 70,
+			"nsrc": [
+				"Invalid backup file type: ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				"\nIt should end with .proto.gz or .json."
+			],
 			"ntgt": [
 				"无效的备份文件类型：",
 				{
@@ -3980,54 +5043,65 @@
 		{
 			"guid": "DDDw6iIMN9p2Ruoe92tfwaPZBQTqcNpk9ewPUYGJtGA",
 			"q": 70,
+			"src": "File is missing data.",
 			"tgt": "文件是丢失数据。",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "osBbxnlybp-9yKwlhQO8OZjOrb1I-jr76y8mi7LmbV4",
 			"q": 70,
+			"src": "Backup does not contain any manga.",
 			"tgt": "备份不包含任何漫画。",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "luxHl7frItbylNTq1f7BPUsSKRqlosIhqPIk1Hu1xD0",
 			"q": 70,
+			"src": "Backup failed",
 			"tgt": "备份失败",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "e8QSmig05hQT0LZ3dnf1AnzJxc89xaKOlPdEC2wmFh8",
 			"q": 70,
+			"src": "Backup created",
 			"tgt": "已创建备份",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "GceD4atNGbpkR2QZGZEinU84V0bvXq6Zc8FJXqmvppE",
 			"q": 70,
+			"src": "Restore completed",
 			"tgt": "还原完成",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "CE1TfCDxLNUUOskfg4UlXkcmKy9RzTreJQb_XEhR-JE",
 			"q": 70,
+			"src": "Failed to restore backup",
 			"tgt": "还原备份失败",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "djxigi0SyciRAQl-OEOMoHuEEa8p9xuayG9KTbpCR28",
 			"q": 70,
+			"src": "Missing sources:",
 			"tgt": "缺少图源：",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "sa4MzeqmxQ3XFc7ctN6YzykxZC0pOVpUhPb8_DSxlB0",
 			"q": 70,
+			"src": "Trackers not logged into:",
 			"tgt": "未登录的同步源：",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "PhjBH-rKHup-EgEYqgYdtaGWiXltWX6_6ptAADdQ3kE",
 			"q": 70,
+			"nsrc": [
+				"Restore uses sources to fetch data, carrier costs may apply.\n\nMake sure you have installed all necessary extensions and are logged in to sources and tracking services before restoring."
+			],
 			"ntgt": [
 				"还原使用图源获取数据，可能耗费联网费用。 \n \n还原前，请确认你已安装了全部必需的扩展并已登录到图源和追踪服务。"
 			],
@@ -4036,6 +5110,9 @@
 		{
 			"guid": "zjRnVqvBaWL0WEb1kpUnpHu5WxQ6QlzFONOTIKfEIWQ",
 			"q": 70,
+			"nsrc": [
+				"Data from the backup file will be restored.\n\nYou will need to install any missing extensions and log in to tracking services afterwards to use them."
+			],
 			"ntgt": [
 				"来自备份文件的数据将被还原。 \n \n你需要安装所有缺少的扩展，之后登录到跟踪服务以使用它们。"
 			],
@@ -4044,30 +5121,46 @@
 		{
 			"guid": "OIaxORNUZfwVDzX01uwaJa5oR0PYWEOtOenrDBasOvE",
 			"q": 70,
+			"src": "Canceled restore",
 			"tgt": "已取消还原",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "J9K5-pkb0cVrN5vUL6mzxzOmfv_2oCf40iN0t6kvo7I",
 			"q": 70,
+			"src": "Creating backup",
 			"tgt": "正在创建备份",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "RZVzTRYcbBzNbAuEmJ-XtUhLMoGa4FvjFVEWVJtuZDI",
 			"q": 70,
+			"src": "What do you want to backup?",
 			"tgt": "需要备份什么？",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "EV7Yy2F1isCBR5L6yJKOO4BheyLn8Iq0hIs5TZZ0CHY",
 			"q": 70,
+			"src": "Restoring backup",
 			"tgt": "正在还原备份",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "r317yk9kNUjZdZ66_dNR-H9_aSUYHkpIpFTdctXFHC4",
 			"q": 70,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%02d"
+				},
+				" min, ",
+				{
+					"t": "x",
+					"v": "%02d"
+				},
+				" sec"
+			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -4085,24 +5178,40 @@
 		{
 			"guid": "X_KLc5HBAfegVR9vZD8aXzXPwMiU8FIqSVIzsp8-4Gw",
 			"q": 70,
+			"src": "Backup/restore may not function properly if MIUI Optimization is disabled.",
 			"tgt": "如果 MIUI 优化被禁用，备份/恢复可能无法正常工作。",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "M0u5w8Tx0ZXR9dAohFW9Pt2r5giJ2G3qVNublAcig4k",
 			"q": 70,
+			"src": "Progress",
 			"tgt": "进度",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "zH7Vwsre4K48D9Kx6IXqrnvZ24DGNogWd1ZwykkCy9U",
 			"q": 70,
+			"src": "Complete",
 			"tgt": "完成",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "tkc4zq_ATauIxzXI7kJs_cduBFCQDVR4_VODU-l2Eg8",
 			"q": 70,
+			"nsrc": [
+				"Done in ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" with ",
+				{
+					"t": "x",
+					"v": "%2$s"
+				},
+				" errors"
+			],
 			"ntgt": [
 				"耗时 ",
 				{
@@ -4121,6 +5230,13 @@
 		{
 			"guid": "2uYPHtC1kQJwVaCe1QnpczVkqD-zdpHEtbJTGyYzpSU",
 			"q": 70,
+			"nsrc": [
+				"Not logged into ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"尚未登陆 ",
 				{
@@ -4133,84 +5249,104 @@
 		{
 			"guid": "gPqVDlajP2hf4NQoL37UXVQjJnqN1QR-KGD6--7lYtE",
 			"q": 70,
+			"src": "Clear chapter cache",
 			"tgt": "清除缓存数据",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "cFIDGoTU3XlK_6EpXmirmj1HbheTAQ5vDwzEpib1vBk",
 			"q": 70,
+			"src": "Refresh the download cache",
 			"tgt": "刷新下载缓存",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "c_RZW6BNeKjSWxBHHgg3Ii7b3Je3ohsXMPLu1tfe29Q",
 			"q": 70,
+			"src": "This will force the download cache to recalculate. Useful if you modified downloads outside of this app and want the app to pick them up",
 			"tgt": "这会强制重新计算下载缓存。 对于在此应用程序之外修改了下载并希望应用程序接收它们很有用",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "NphDMweBfMiTRwBCTAkmIySPR-p8jPY_8yafFV6yUlo",
 			"q": 70,
+			"src": "Data Management",
 			"tgt": "数据管理",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "lIXJcIs2OgdQnz8l1ScAB3uJBlr3eRxRbu2eOYaKSrU",
 			"q": 70,
+			"src": "Crash logs",
 			"tgt": "崩溃记录",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "x2ESLT5DKdxeN0Gej8LPA5qWG7iTo316O-4ovaSc4P0",
 			"q": 70,
+			"src": "Dump crash logs",
 			"tgt": "转储崩溃记录",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "7j9C8QVF6eIpcKUJ6LGHnlcBd4nZDvc03H902rJx10U",
 			"q": 70,
+			"src": "Saves error logs to a file for sharing with the developers",
 			"tgt": "将错误记录保存到文件中，以便与开发人员共享",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Js9xCgRWwBllPruft_FjppRnU_ck81Btaifs8bDjuGk",
 			"q": 70,
+			"src": "Some manufacturers have additional app restrictions that kill background services. This website has more info on how to fix it.",
 			"tgt": "某些厂商有额外的应用限制，会扼杀后台服务。这个网站有更多关于如何修复此问题的信息。",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "VNDe5KyDmv9zBodAWEcOTblNRXVjuGIcMx9wpLxMHso",
 			"q": 70,
+			"src": "Crash logs saved",
 			"tgt": "崩溃记录已保存",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "7AsEn5zVY6GoazdYSrGd81H6NqEM73ogrxfv4aV49S4",
 			"q": 70,
+			"src": "Network",
 			"tgt": "网络",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "5S5FDxrRvlAASxwWoPmSk7vN0XUUrPx_ifntVXAkxV4",
 			"q": 70,
+			"src": "DNS over HTTPS",
 			"tgt": "DNS over HTTPS",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "6kZ4y-TCeSlLR40rmH-lwkbxuWb_KeELspwgQrvljIY",
 			"q": 70,
+			"src": "Disabled",
 			"tgt": "已禁用",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "B2yJyY-Ik9alEwuIovrIpaE88A4zkXXyTMl6S5eLCB0",
 			"q": 70,
+			"src": "Requires app restart to take effect",
 			"tgt": "需要重启应用才能生效",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "AdFVH0FaghNvk6XBU4XoB2Fuk2i482XcsAUje9w5k9g",
 			"q": 70,
+			"nsrc": [
+				"Used: ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"已使用空间：",
 				{
@@ -4223,6 +5359,14 @@
 		{
 			"guid": "0MGHojsg991bW2BX_cczB7XrP0mfW2DJ6OMvNsJaj48",
 			"q": 70,
+			"nsrc": [
+				"Cache cleared. ",
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" files have been deleted"
+			],
 			"ntgt": [
 				"缓存已清除，",
 				{
@@ -4236,132 +5380,165 @@
 		{
 			"guid": "8RjflKYA-4aX6xL1kcvLIRkf1xbBklnryutVr2M1Bc0",
 			"q": 70,
+			"src": "An error occurred while clearing cache",
 			"tgt": "清除缓存时出现错误",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "dzx3G5Py0eW9oqePjZ2jEOsVZAdjDn183wt77mhykcQ",
 			"q": 70,
+			"src": "Clear cookies",
 			"tgt": "清除 Cookies",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "H0anFcXApFwm8ev81zq9VxUfAl8ZQ0vz-ozBrP2M-yY",
 			"q": 70,
+			"src": "Cookies cleared",
 			"tgt": "已清除 Cookies",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "TUlhHhCu6Wa0Ty0Hz2_QEBfUZpEdtpnGCjs7kxNdWHE",
 			"q": 70,
+			"src": "Clear database",
 			"tgt": "清除数据库",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ZEC1H9NgSi7t1Imj1qFmGLrytxKGpLcszjGs2xK9L9E",
 			"q": 70,
+			"src": "Delete manga and chapters that are not in your library",
 			"tgt": "删除未在书架的漫画与章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "q_ded1icFGvvG0m5eV1p8qGaiiVsbSyrKfqvKcjuQ5c",
 			"q": 70,
+			"src": "Are you sure? Read chapters and progress of non-library manga will be lost",
 			"tgt": "你确定吗？未在书架中的漫画的已读章节和进度将会丢失",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "DCi_MG1zMHzi3rS4wc1P6jU-lTwPk0e13_e8nUSzUDU",
 			"q": 70,
+			"src": "Entries deleted",
 			"tgt": "已删除条目",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "R6-BryB-1IdS52xaKDk8-Nncu2IKi1NFAKpJ5wtPi_U",
 			"q": 70,
+			"src": "Refresh library metadata",
 			"tgt": "刷新书架数据",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "3PlB8cVhX0dPDXCpg8fxJKEuq8ZOMLUh7Bx2ZO7AK38",
 			"q": 70,
+			"src": "Updates covers, genres, description and manga status information",
 			"tgt": "更新封面，类型，描述与漫画状态信息",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "X-yVD39TIZsdSgLenZ_BtX_yyXcYOdTLZ0-1LYO267I",
 			"q": 70,
+			"src": "Refresh tracking metadata",
 			"tgt": "刷新同步数据",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "G-WK9_JktZetIRTFSUfRknukZGCuNaD4A0QXwSY4NAU",
 			"q": 70,
+			"src": "Updates status, score and last chapter read from the tracking services",
 			"tgt": "更新同步服务的状态，评分以及已读章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "-C8OeNLt0crMLLBsboFDzha8JXGTuyYoZttXAzzBaQY",
 			"q": 70,
+			"src": "Clean up downloaded chapters",
 			"tgt": "清除已下载章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "dwmP8JsQhLHngvqw56EBpRIwjbjeCHjFNccFSEUvGvI",
 			"q": 70,
+			"nsrc": [
+				"Delete non-existent, partially downloaded, and read chapter folders"
+			],
 			"tgt": "删除不存在、部分下载和已读过章节目录",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "RRrYY498SDiQ8LcoRDmSXIqvzNAHgFebOb-KsuwO1JE",
 			"q": 70,
+			"src": "Clean orphaned",
 			"tgt": "清除孤本",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "nFeN1Bgez7Tb25X7OrgzrPHbOcLvD7MphH8IQK2Y0Eo",
 			"q": 70,
+			"src": "Clean read",
 			"tgt": "清除读过",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "-nyi5YnV5GQb306s1HOj7B2SqJv7Awa5tmLwrrkrv7c",
 			"q": 70,
+			"src": "Clean manga not in library",
 			"tgt": "清除不在书架的漫画",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "HGSy4QLH2EpxWHS47G1VD08njmJ_QODbLdG-LJYXczk",
 			"q": 70,
+			"src": "Starting cleanup",
 			"tgt": "开始清除",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "W3fwjwvnWNaswdtH8CkY-ptVv4kWSc00Dwo0FRe8T74",
 			"q": 70,
+			"src": "No folders to cleanup",
 			"tgt": "没有待清除的目录",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "M8xom0r1nkKelngOGeJgflYmt8FO-yov7Jm1EpBFFbE",
 			"q": 70,
+			"src": "Disable battery optimization",
 			"tgt": "禁用电池优化",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "-wkXZ-U6feYoBLD03zOySY9bCJ2q3iJdBWNGiVyzb-w",
 			"q": 70,
+			"nsrc": [
+				"Disable this if you are experiencing issues with updating or restoring your library"
+			],
 			"tgt": "如果更新或恢复书架过程中出现问题，禁用此项",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "pWgteS6BQNpqcpyE5Y55fX1j9VDQI_E2t26klBLISIQ",
 			"q": 70,
+			"src": "Battery optimization is already disabled",
 			"tgt": "电池优化已被禁用",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "FICdN6ZTFGYJmB81aL4akRY846OS0LMXjqPMDZFDuqQ",
 			"q": 70,
+			"nsrc": [
+				"Cleanup done. Removed ",
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" folders"
+			],
 			"ntgt": [
 				"清除完成，移除了 ",
 				{
@@ -4375,12 +5552,20 @@
 		{
 			"guid": "RYPIepOwa5XAPzLX3PAQYJsYA06xOGDr6gVmCoK5e68",
 			"q": 70,
+			"src": "Clean up cached covers",
 			"tgt": "清理缓存的封面",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "lSA7apVW1cOhxizHua1Cozi3U_fNiABPf20SPV5qWtg",
 			"q": 70,
+			"nsrc": [
+				"Delete old and unused cached covers of manga in your library that has been updated.\nCurrently using: ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"删除书架更新过后旧的和未使用的漫画封面缓存 \n当前使用：",
 				{
@@ -4393,12 +5578,20 @@
 		{
 			"guid": "760JS2eBsCjbuIMJovFvLL3VDT3Sf7OOh1BwVVDD_Fc",
 			"q": 70,
+			"src": "Clear cached covers not in library",
 			"tgt": "清除不在书架的漫画缓存",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "MAJoOU3XbW2pm0bnts6394MkGigK3TCnzQ-_iRfyg8g",
 			"q": 70,
+			"nsrc": [
+				"Delete all covers cached that are not in your library \nCurrently using: ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"删除不在书架的所有封面缓存 \n当前使用：",
 				{
@@ -4411,168 +5604,214 @@
 		{
 			"guid": "jGTNihNi77LY5QuFDPIr4FnkGEV4PZtqxGw8mrBR2gQ",
 			"q": 70,
+			"src": "Global search",
 			"tgt": "全局搜索",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "GD3DpsrGAxDGF6AFR_0j22WvGo43tqniyxdw7Um42HA",
 			"q": 70,
+			"src": "Check for extension updates",
 			"tgt": "自动检查扩展插件更新",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "_BcKOaHV9biKhmCWByQuo8e4tHyutlNooNwpysPzdJE",
 			"q": 70,
+			"src": "Auto-update extensions",
 			"tgt": "自动更新扩展",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Wlob_O43CrtKubqtsatG0uCYfvcCrG8ya09n6fQMlTw",
 			"q": 70,
+			"src": "Notify extension has been updated",
 			"tgt": "通知扩展已更新",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "rLH95OG9xlPkF4kPAJyeLzQRrlVlo3N8_TnKBowO8Tg",
 			"q": 70,
+			"src": "Some extensions may not be auto-updated if they were installed outside this app",
 			"tgt": "一些扩展可能不会自动更新，如果它们是通过外部途径安装的",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "peDKey_OCIZBrXtm3WzN0U1MyhKG6W39qiaduKidCK0",
 			"q": 70,
+			"src": "Only search pinned sources",
 			"tgt": "仅搜索置顶图源",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "rOzl7VLQsGw9eF8igLhWnXnWm0xWAix_-IMHLg8O41U",
 			"q": 70,
+			"src": "Match pinned sources",
 			"tgt": "匹配置顶图源",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "AdtF-yNmB1KDbirSinW1hG8PNpb1zzuA3nrjvCHAAHo",
 			"q": 70,
+			"src": "Match enabled sources",
 			"tgt": "匹配启用图源",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "dhcccCE8fLfXWvszAEfDTWr7hNNe_3qT5IUdFeDqgoI",
 			"q": 70,
+			"nsrc": [
+				"Only enable your pinned sources for migration"
+			],
 			"tgt": "仅启用置顶图源用于迁移",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ecCXfY4HMfF9J918_KY7aN7GY0YzLi4DQvg6ltvASZs",
 			"q": 70,
+			"nsrc": [
+				"Only enable your currently enabled sources for migration"
+			],
 			"tgt": "仅启用当前启用的图源用于迁移",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "SVlZlyNR7LfMJwSoD3PuIxOKThbqF1NzlAMB2Ol9ARE",
 			"q": 70,
+			"nsrc": [
+				"Use last saved pre-migration preferences and sources to mass migrate"
+			],
 			"tgt": "使用上次保存的迁移前首选项和来源进行批量迁移",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Aj7B9bdrUBuawnRN3X7C9j-TI3E124trgAN1lqeNA2w",
 			"q": 70,
+			"src": "Migration sources changed",
 			"tgt": "迁移图源已更改",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "pX3b7nl_8Y58oXPbghIIx7_0aGmWWLPeP-D5LNDblcU",
 			"q": 70,
+			"nsrc": [
+				"You can also migrate by selecting manga in your library"
+			],
 			"tgt": "您还可以通过选择书架中的漫画进行迁移",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "qhRTZYzxAUhGMhxN8LmWkStHXtKoxmCc2hdYZ1Gsa6M",
 			"q": 70,
+			"src": "Source migration guide",
 			"tgt": "图源迁移指南",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "tZKAOsp0izb2s8Fp2rC3SG4uE72YV-nh0p9UqjVCtmw",
 			"q": 70,
+			"src": "NSFW (18+) sources",
 			"tgt": "NSFW (18+) 图源",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "D18ZSiCe8YZ1sci7Z2F7B1tfXEm3Or2uUalU99MhCm0",
 			"q": 70,
+			"src": "Show in sources and extensions lists",
 			"tgt": "显示在图源和扩展列表中",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "g0sNGJBq3Ghkqfoqn6a6JmB0wymPgSvCExRqhcN2v4Y",
 			"q": 70,
+			"src": "This does not prevent unofficial or potentially incorrectly flagged extensions from surfacing NSFW (18+) content within the app.",
 			"tgt": "这并不能防止非官方或可能被错误标记的扩展插件在应用程序中显示 NSFW (18+) 内容。",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "sb5XQe86ziaiqZLmsrnjcQOJ_Rt1PvwvgsU-7JTAvSo",
 			"q": 70,
+			"src": "Version",
 			"tgt": "版本",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "XXnhMGyLbPDet3oqguEeXAzNNJj4upOP07q0xEG5iIE",
 			"q": 70,
+			"src": "Build time",
 			"tgt": "构建时间",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "EB5eRVbDnd66TwpaE1R3-GbyHiiKgt-ec1gwYARDDeU",
 			"q": 70,
+			"src": "Send crash reports",
 			"tgt": "发送错误数据",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "G-ApZju-AZ1PLQ8H2-IbFMDHpgjCHi196C7-BRVo8ag",
 			"q": 70,
+			"src": "Helps fix any bugs. No sensitive data will be sent",
 			"tgt": "帮助我们修复bug。不会发送个人信息",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "xX86TIr3yCDJeN8pEfrANiXCn559dxHyBB4GnIbsQpo",
 			"q": 70,
+			"nsrc": [
+				"What's new"
+			],
 			"tgt": "更新记录",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ODnxRXqbNkf0WZwNMNBRVzvTowiRVdu0tktSDF2ET3k",
 			"q": 70,
+			"nsrc": [
+				"What's new in this release"
+			],
 			"tgt": "此版本中的新功能",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "1aPLaqjJR9LjyH8Zzwi-KIY7CSYsIXEC70FDiI6t6v8",
 			"q": 70,
+			"src": "Help translate",
 			"tgt": "协助翻译",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "PjW8y4Za7kR6g7Mb6zNFAHjvaRBRDKypInCNDLP0odM",
 			"q": 70,
+			"src": "Helpful translation links",
 			"tgt": "有帮助的翻译链接",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "w3CWJsUNFTyIdIS3m7fiFEYBm2PHano4H3rTSpilrv8",
 			"q": 70,
+			"src": "Website",
 			"tgt": "官网",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Chtgyv3I8rRJwxg7nvVfCWNa1sb2NMU4KmnPkwafU_k",
 			"q": 70,
+			"src": "Open source licenses",
 			"tgt": "开源许可证",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "InKnvnpmuD0xNHX-ckxjSVPTwTV71bgSR9slh4Di5TU",
 			"q": 70,
+			"nsrc": [
+				"Log in to ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"登录到",
 				{
@@ -4585,36 +5824,49 @@
 		{
 			"guid": "e8o3hAJieGa7jIX7FCMTJ2392WpbkdLsmaJtLFBd8rc",
 			"q": 70,
+			"src": "Username",
 			"tgt": "用户名",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "pXRrWXBoHlehUXj-PoLeEbst1P6QKZC8MONn1Ol8y98",
 			"q": 70,
+			"src": "Email address",
 			"tgt": "邮箱地址",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "CHD1bX4PMKkk1IdLDSzo1G7RTyYv3-iS17d7-uxVw74",
 			"q": 70,
+			"src": "Password",
 			"tgt": "密码",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "xnqHTdNqkhihZKApW6oBsEMOzmr2LhRFqtzqAwqqdls",
 			"q": 70,
+			"src": "Log in",
 			"tgt": "登录",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "otCPIdi35zp9xaeTNfweeQFwx7Bt1eWeY6zkqDeDnzk",
 			"q": 70,
+			"src": "Log out",
 			"tgt": "退出",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "bAkWLyFZwmeqXY5p5StiL_Ove18eBwQkFXS9_1Xkoe8",
 			"q": 70,
+			"nsrc": [
+				"Log out from ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				"?"
+			],
 			"ntgt": [
 				"从 ",
 				{
@@ -4628,36 +5880,48 @@
 		{
 			"guid": "F6Yn7VLHOw-rQ4Lls3ORWAPSNda2-kStq6kPDlUXEhU",
 			"q": 70,
+			"src": "Successfully logged in",
 			"tgt": "登录成功",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "vFhmfrCpbCcBLVqtsWKLnhjBg9l4fS85fQc9uKd_DgM",
 			"q": 70,
+			"src": "Username or password cannot be blank",
 			"tgt": "用户名或密码不能为空",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "p2dj3pTbNKm2JMx8QKGK_OCsgi_WVVCJvFDxF6yVIh8",
 			"q": 70,
+			"src": "You are now logged out",
 			"tgt": "你已登出",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "01irCDYQ91DVaCsdMtWG-GvJl-r1RIzXqCSRsQ9BG9s",
 			"q": 70,
+			"src": "Downloads",
 			"tgt": "下载",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "5s3kWqsrD7O2oTys1pm8TfT9Nf85hQ40JZmH1xHYl3c",
 			"q": 70,
+			"src": "Download queue",
 			"tgt": "下载队列",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "hPBLtewVJ0mhjgOKNagsyLfPqlTA2s4KFgxhNP5G52Q",
 			"q": 70,
+			"nsrc": [
+				"Downloading: ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"正在下载: ",
 				{
@@ -4670,60 +5934,82 @@
 		{
 			"guid": "02096t4uRb_DClwj1RAxbx72BHNtiB5zWzLbQoVR3Q0",
 			"q": 70,
+			"src": "Cancel all",
 			"tgt": "全部取消",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "lrfy3VCuwyx51QsTF2Amlv07tRCQSoK_sCJYvEufnSI",
 			"q": 70,
+			"src": "Cancel all for this series",
 			"tgt": "取消这个系列的全部",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "7Id5JKNLrjJDzGvf784Yb6hg_2wdXFcBCj6hEXYxp78",
 			"q": 70,
+			"src": "Downloaded",
 			"tgt": "已下载",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "58HNOhORcxDJQ1hQI-X8sV6dtO1-JYfEYpU8LRkwcQ0",
 			"q": 70,
+			"src": "Not downloaded",
 			"tgt": "未下载",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "3oSI7SBlzkJ3OzmVXYSk5-EElcRhNrq8c6Siyar3fAw",
 			"q": 70,
+			"src": "Downloading",
 			"tgt": "下载中",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "3T96bQW_C_WUxp0dvWrFYDVh393--CtzjEZjNvwlNKk",
 			"q": 70,
+			"src": "Download",
 			"tgt": "下载",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "5T8z0MWPbgXZdSAJcvsDsr6VjLtrWYR61l4sBGDImp4",
 			"q": 70,
+			"src": "Start downloading now",
 			"tgt": "现在开始下载",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Xtlfkv2oa5DVpkJmuUxtxRJHUpDRKaahy15F8dIp--o",
 			"q": 70,
+			"src": "Remove download",
 			"tgt": "移除下载内容",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "pyHTpdpR4jXfSwerJYFoyQ5Tt1koOKoDuNA0wJOWd94",
 			"q": 70,
+			"src": "Remove downloads",
 			"tgt": "移除下载内容",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "81uy_kW63TYj6zx-tvyIeg2e6pJ5ZjPmIn-L-ic7d0I",
 			"q": 70,
+			"nsrc": [
+				"Downloading (",
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				"/",
+				{
+					"t": "x",
+					"v": "%2$d"
+				},
+				")"
+			],
 			"ntgt": [
 				"正在下载 (",
 				{
@@ -4742,234 +6028,288 @@
 		{
 			"guid": "MmXweZtdJCJJGY3H2n7vsRIaOSYcsnHkenMBnFbvx0w",
 			"q": 70,
+			"src": "Invalid download location",
 			"tgt": "下载路径错误",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "XPJMFgQaenD38tFc5nFJlrWs1xBcwCcHZXAMnv0IoYA",
 			"q": 70,
+			"src": "Download paused",
 			"tgt": "下载暂停",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "UJyX84gMBxdO1PDr7VKib8lH2_E4PvFz9cj9BBBJsA4",
 			"q": 70,
+			"src": "Nothing is currently downloading",
 			"tgt": "目前没有任何下载",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "lLnmND1rbBVG0JnB2HF-SBDzZVQmUpkX5wJrzDg12Ro",
 			"q": 70,
+			"src": "Download complete",
 			"tgt": "下载完成",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "BOmUGm-ZUKJIBiNMNZ_ZqORmFujeKQ4b9q4oQcLtI3s",
 			"q": 70,
+			"src": "Download error",
 			"tgt": "下载时发生错误",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "eXRc26yvod4Obg8UmsDbwm7gkrsGGdpMy4TpcYAWsxk",
 			"q": 70,
+			"nsrc": [
+				"Manage what's downloading"
+			],
 			"tgt": "管理下载内容",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "6tgFpq1s7Bmdw6Wj4ju2N96GgPe7p9Y7cGiyfxSF-9E",
 			"q": 70,
+			"nsrc": [
+				"Visit the recents tab to access the download queue. You can also double tap or press and hold for quicker access"
+			],
 			"tgt": "访问“最近”标签以访问下载队列。 您也可以双击或按住以加快访问速度",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Vj8DOxw8uO9KY77TuWRdJxY8sMxVtwq_IyHh6_8Srro",
 			"q": 70,
+			"nsrc": [
+				"Couldn't download chapters due to low disk space"
+			],
 			"tgt": "由于磁盘空间不足，无法下载章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Y8AsbiJF6S3sa0567L2JUCRVf9fYWKmar8LjHj-0c8Y",
 			"q": 70,
+			"src": "Could not download chapter due to unexpected error",
 			"tgt": "下载时发生不可预期的错误",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "7cDGIJC5BIPgP9g-w3Kd7htH-TI2ZXqkSic0rRIEiQw",
 			"q": 70,
+			"src": "No Wi-Fi connection available",
 			"tgt": "无可用Wi-Fi",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "C6iZEg4tBP2EWnTvNhc_NJUMp3Y2Z1ogTC_geamgzzo",
 			"q": 70,
+			"src": "No network connection available",
 			"tgt": "无网络连接",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "odSG9pkfdNSGknVDYXMWKrX3Q6gsCTqxieewL4XkU7I",
 			"q": 70,
+			"src": "Download location",
 			"tgt": "下载目录",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "wcYCrKmKLXwPwoWSjG0rMQg-kXrbXkQSVDetZ7IaB58",
 			"q": 70,
+			"src": "Only download over Wi-Fi",
 			"tgt": "仅在连接Wi-Fi时下载",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "7gMOD9i_Ssa24Pmeay7aIft1s_yQdKMNoLUzmbZEGqw",
 			"q": 70,
+			"src": "Remove when marked as read",
 			"tgt": "自动删除标记已读的章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "H3kKPe3dY0_Pzoa1gMdWPo3ahBakZ3uHD8as1AVCqGg",
 			"q": 70,
+			"src": "Remove after read",
 			"tgt": "阅后即删",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "SF4SExryZvE7To-hrBNkLeVQWXrUY-ui8rB8w6p8HZU",
 			"q": 70,
+			"src": "Custom location",
 			"tgt": "自定义目录",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "dTUVRro3zEsvDdoPnEiIRkMe9uqzpG68lBS6EO65oPw",
 			"q": 70,
+			"src": "Last read chapter",
 			"tgt": "最后阅读的章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "fvyCSzdA8bCkdypRpqaB3USqPPNZdM8R9qbIboFzvgE",
 			"q": 70,
+			"src": "Second to last chapter",
 			"tgt": "倒数第二章",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ceJa0rH8d15zkpGomRJHNmn5OeIiRCoc1DbwP1zouWo",
 			"q": 70,
+			"src": "Third to last chapter",
 			"tgt": "倒数第三章",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Hvxqjvakv1w-hZsdWy9YHO5FHubrtv3c9zH1EnyBFyc",
 			"q": 70,
+			"src": "Fourth to last chapter",
 			"tgt": "倒数第四章",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "eIxha-9GFU51ImXa689hyyRM8BqbGHaRpGA2ecFo0W4",
 			"q": 70,
+			"src": "Fifth to last chapter",
 			"tgt": "倒数第五章",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "WhM02YzRBlk4dkfpqUVttsAtFJw7g5MA6puGdYU7Dv0",
 			"q": 70,
+			"src": "Download new chapters",
 			"tgt": "自动下载新章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "EyFamOuH--WG_ITDZh8Pc4m5J0xR0bXz-AFEsBHaXG4",
 			"q": 70,
+			"src": "Categories to include in download",
 			"tgt": "自动下载标签",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "wOveXNJlRMcSQDJmFr9f1aXQi4JwmzgfG2o1ZP_DK30",
 			"q": 70,
+			"src": "Delete removed chapters",
 			"tgt": "删除已移除的章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "QblYKrpV4TYMwNLE5d6OuLP5-YvTFicfnEWa5-51OcY",
 			"q": 70,
+			"nsrc": [
+				"Delete downloaded chapters if the source has removed the chapter online"
+			],
 			"tgt": "如果图源已移除在线章节，则删除已下载的章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "dIE3zIyVYSdTpju6-vlcTUw08uEhNfHj-2NIp5kbEEw",
 			"q": 70,
+			"src": "Delete during global updates, ask on chapters page",
 			"tgt": "在全局更新期间删除，在章节页上询问",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "cfTYdJm8FCc6Or8Fu7ngokJ3WghZMzGABQjXm7xcSSU",
 			"q": 70,
+			"src": "Always keep",
 			"tgt": "总是保留",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "KGOpC9OGKQjYYSCjadsdtUpJQFr1-etAZOgVmTt-wtA",
 			"q": 70,
+			"src": "Always delete",
 			"tgt": "总是删除",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "XbMMlk7ML13AJYJW0ALnnF4spRO4SHgEXRstAy0bj1o",
 			"q": 70,
+			"src": "Automatic removal",
 			"tgt": "自动移除",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "iArTjefVMKZ7WycdX6VmQEm2g4q4u4d9M3UCNZ87PjI",
 			"q": 70,
+			"src": "Manual",
 			"tgt": "手动",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "PNEvrNLnY_HYeIBsyikFPkutyQKuS4km2afklDWLg8Q",
 			"q": 70,
+			"src": "Hourly",
 			"tgt": "每小时",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "XzTsMVydGqkb4lq_j7XjCC3CH3TJm4pOj4HXRfn_kdw",
 			"q": 70,
+			"src": "Every 2 hours",
 			"tgt": "每2小时",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "vuUfj-FpwjdPSuh65loj0OUkxnoLF2XM4jIYZXqPWWk",
 			"q": 70,
+			"src": "Every 3 hours",
 			"tgt": "每3小时",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "QQuSpiNUnNc2fVsl_56IzkbR945KxEdLGO0w08vIgsU",
 			"q": 70,
+			"src": "Every 6 hours",
 			"tgt": "每6小时",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Kz5yw3Ej_ftssgM-QJRrpgCo93LIpFnFx_rFE61BYMo",
 			"q": 70,
+			"src": "Every 12 hours",
 			"tgt": "每12小时",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "mqd0K3gpVnuzzZxJRW3yl4AtCqriOf9HMJFtgLqX9bg",
 			"q": 70,
+			"src": "Daily",
 			"tgt": "每天",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "sAKvJ7Z-LPf9_l7LlabKylNC6vueyZNhSdOfL_M0Y7E",
 			"q": 70,
+			"src": "Every 2 days",
 			"tgt": "每2天",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "HCmK5QTlCCxBY435vznXbmu8gshsoMuItS5zrNvg3uY",
 			"q": 70,
+			"src": "Weekly",
 			"tgt": "每周",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "y51rnyKxtYjssSeHCmtKvJwyTUp_J-6z11PC9kxAmM4",
 			"q": 70,
+			"nsrc": [
+				"After ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" minutes"
+			],
 			"ntgt": [
 				"在",
 				{
@@ -4983,48 +6323,62 @@
 		{
 			"guid": "Te7pPZ65D4bQDzeyVNYM9_Z5yplFGchiPgl5JPY3wmA",
 			"q": 70,
+			"src": "Select cover image",
 			"tgt": "选择封面图片",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "xpPXMV_2TSn4z7jY72sTDXe6DZYbFVC8HA5A72CX4P8",
 			"q": 70,
+			"src": "Select backup file",
 			"tgt": "选择备份文件",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "FqGUk3hvbPcAOaeCc0znlssRYURdtfsV9u7GdqCu1Os",
 			"q": 70,
+			"src": "No file picker app found",
 			"tgt": "未找到文件选择应用",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "zWeCtEgPBsrg7KcpKPPISpUksK5U1-2bUhJNNsqQRpM",
 			"q": 70,
+			"src": "Failed to bypass Cloudflare",
 			"tgt": "无法绕过 Cloudflare",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "8Zn7T-2vD2MLNKfen7FUH2MgPjU6jIlheCyE0aGZl9Y",
 			"q": 70,
+			"src": "Please update the WebView app for better compatibility",
 			"tgt": "请更新 WebView 应用以获得更好的兼容性",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "rZjFH0Z7z5HV8Tov2ZWD6ABIwLcX0rWeaY9SwkUqMjg",
 			"q": 70,
+			"src": "WebView is required for Tachiyomi",
 			"tgt": "Tachiyomi 需要 WebView才能正常工作",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "kaPFz8SHU7y4fCLvM2RPEFk5ZRUbqQlKtiU0Q-k0KvY",
 			"q": 70,
+			"src": "Add",
 			"tgt": "添加",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "a93fWBww9BfwOqe-ajdWFS7EBpRjHt0DvSebYl5bo7o",
 			"q": 70,
+			"nsrc": [
+				"Add to ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"添加到 ",
 				{
@@ -5037,6 +6391,13 @@
 		{
 			"guid": "OVv0BMULqSdXUWi0L_ebUyZcG4kz8EVFIeXdTQdp1U4",
 			"q": 70,
+			"nsrc": [
+				"Added to ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"已添加到 ",
 				{
@@ -5049,126 +6410,153 @@
 		{
 			"guid": "HaQhgr6Rs1gPxtUbM4nhClW85gvYkE3A-Ty3EdO70XA",
 			"q": 70,
+			"src": "All",
 			"tgt": "全部",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "acyg9T7bdW7L3J7wKjC3VCzjVcvurkTB9csPlnFjzks",
 			"q": 70,
+			"src": "Alphabetically",
 			"tgt": "字母序",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "BvfigdYO1jTo2MJIsH_V8EnDB3Jp_zGiYy4XF1z-1Lo",
 			"q": 70,
+			"src": "Always",
 			"tgt": "总是",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "mE0y-N3-sjSPz8uM0Dqn-Nt--y27pa_Iq1zjCZp_jyc",
 			"q": 70,
+			"src": "Always ask",
 			"tgt": "每次询问",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "iL64BKW_rJLisxaanXFPxRlZA_ROn4cwi6uPEmFuzJg",
 			"q": 70,
+			"src": "Automatic",
 			"tgt": "自动",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "vnF4_2Uf2iLFQlqAE4cFFEp_ExUy8GC0uKG7lwNWajM",
 			"q": 70,
+			"src": "Back",
 			"tgt": "返回",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "_0n6pKXlKYwqHHaLNdlkd7RW90QAB5fVJxzB7zl1lwQ",
 			"q": 70,
+			"src": "BETA",
 			"tgt": "测试",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "F5Qal-UcgskZtk753VXobQ8Q3yplYmkVT657jxneL0A",
 			"q": 70,
+			"src": "Bottom",
 			"tgt": "底部",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "-WLnDOl-nui71zWhGAz7AZovbmuaPT_9fc_uU_6hNns",
 			"q": 70,
+			"src": "Cancel",
 			"tgt": "取消",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "b9jaqz1sakscWNdLZuH86pP8gYFA4TdEeJMVgCK_erA",
 			"q": 70,
+			"src": "Center",
 			"tgt": "中间",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "vUaAJ_T90aZxkP8ht1bD71Tnu5WFLJhuxr3eKYwt9hc",
 			"q": 70,
+			"src": "Change",
 			"tgt": "更改",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "u0s4dRB3FMJvZqL46-zg7vLvCA6MSzARnIwLTvqjN6E",
 			"q": 70,
+			"src": "Charging",
 			"tgt": "正在充电",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "H65DnsMBQ38MSdd-W8j4D0epcBzAhmcNNxhlu8G4niI",
 			"q": 70,
+			"src": "Clear",
 			"tgt": "清除",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "XIondN9IflEzVsv4LVTZEl1IQhYJgrgmheRmeYXipvw",
 			"q": 70,
+			"src": "Clear filters",
 			"tgt": "清除过滤器",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "FdBYxGp2ECy02J5ZVdOD91c6-bSN9V0CBL2lfM7wPNA",
 			"q": 70,
+			"src": "Close",
 			"tgt": "关闭",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "XJZMsvE4EPaqLdyrXZ9Eop0NzTXPeA47k9BFBuCV3NI",
 			"q": 70,
+			"src": "Common",
 			"tgt": "普通",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "fWE_U-8J9owOnGhB39dKx2lqB54OAyAcfycwMvo50mE",
 			"q": 70,
+			"src": "Cover of manga",
 			"tgt": "漫画封面",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "N4_USxNuuLZRIyGDOKun6_yj-5rCYuiADvrADSWnQ6E",
 			"q": 70,
+			"src": "Create",
 			"tgt": "创建",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "z7tH7vHgbn8iPEugslpYi2vl1ZiF8VrPkVi1kt2TCqE",
 			"q": 70,
+			"src": "Default",
 			"tgt": "默认",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "l56Tb9H8AEQyL6O6Wcup7_LNt01lKztPpOM9VVmawvQ",
 			"q": 70,
+			"src": "Delete",
 			"tgt": "删除",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "EDPSs_fIwR6Tv2TVPaqASTdVdgCzMH0HrN1w8SaUvAc",
 			"q": 70,
+			"nsrc": [
+				"Deleted: ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"已删除：",
 				{
@@ -5181,42 +6569,55 @@
 		{
 			"guid": "hSkwpxVE5Esf63mO_FARnvDTQPKoAbJS6bajB3Cmlf8",
 			"q": 70,
+			"src": "Display",
 			"tgt": "显示",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "yTBAyJ8Q_qMDf8yAa9hH_8o0A0LBzRENYIDSC1UbOZ0",
 			"q": 70,
+			"src": "Download unread",
 			"tgt": "下载未读",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ls_fBz6okS5NVH86qvIvqQMwlRo1btsu7Ad2Gug_ryY",
 			"q": 70,
+			"src": "Drag handle",
 			"tgt": "拖动手柄",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Rv2cMmkuA3GBmfZzkGmLfudHVO0w9NUy-ePfQs22KUQ",
 			"q": 70,
+			"src": "Edit",
 			"tgt": "编辑",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "DI19ciZW3OtkszGmVMopKQ46E__OZBI4oNEJ04wOPK0",
 			"q": 70,
+			"src": "Enable",
 			"tgt": "启用",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "S417iusjHCC55wRHKWuNOrbPZ_rWwYsHERGejfW0RlY",
 			"q": 70,
+			"src": "Enabled",
 			"tgt": "已启用",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "6xC7pebM5-ZxaKv6i64GbRkfsTR-nzcZ73GOATo0YLQ",
 			"q": 70,
+			"nsrc": [
+				"Exclude: ",
+				{
+					"t": "x",
+					"v": "%s"
+				}
+			],
 			"ntgt": [
 				"排除：",
 				{
@@ -5229,42 +6630,55 @@
 		{
 			"guid": "XnhDdYKlMdJUtcyCWKgY0LWnGBo7IA5Ifh9TBo_biTo",
 			"q": 70,
+			"src": "Fast",
 			"tgt": "快速",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "YuxFqrm5_hdUbaqZA3cNvsp8QTgnTGJg2fKvD8u2ank",
 			"q": 70,
+			"src": "Filter",
 			"tgt": "筛选",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "-zbKwlSYt2qtgFCcSgk7d5QWTDMgkLPiRsOjmWrzJhA",
 			"q": 70,
+			"src": "Forward",
 			"tgt": "前进",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "D2cdGpYGDdUIA8sRHM-rqWap2VaWw-zHpv8ksNupPRA",
 			"q": 70,
+			"src": "Free",
 			"tgt": "自动",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "saZw6SPY56Rlmi3JFoINSWQ084jRCETCDxJLHSA9hOM",
 			"q": 70,
+			"src": "Hide",
 			"tgt": "隐藏",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "2TpxvpQhAajJXtTh0v0YJ_8oUue0AUiiEjdhoe4ZW0M",
 			"q": 70,
+			"src": "Ignore",
 			"tgt": "忽略",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "kV1JMfcYxSPaA33pPszcbnisV0t0Sfxe2ZQBKdjy2aU",
 			"q": 70,
+			"nsrc": [
+				"Include: ",
+				{
+					"t": "x",
+					"v": "%s"
+				}
+			],
 			"ntgt": [
 				"包含：",
 				{
@@ -5277,18 +6691,27 @@
 		{
 			"guid": "qN_PWXwNzEkB1pKbj3DZxErBvSoXz7D-0YOIy44nfFI",
 			"q": 70,
+			"src": "Install",
 			"tgt": "安装",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "5vlqnpIng-j8SifyQOHpZ5wPAs1sStNeeZqu13efQtQ",
 			"q": 70,
+			"src": "Keep",
 			"tgt": "保留",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "RfY1RTihyotw-07YpitFAyH3J5FraoAhNTcLYlVc6vk",
 			"q": 70,
+			"nsrc": [
+				"Keep in ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"保留在 ",
 				{
@@ -5301,102 +6724,125 @@
 		{
 			"guid": "Dq_i0GnlAlnDhbhzPauW5NHOFRSkJCWrm-F6OeyYGpM",
 			"q": 70,
+			"src": "Left",
 			"tgt": "左",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "AD5Smw9YTvttmnZFm0WBp6roAohdKU4J5de6KHWYhpY",
 			"q": 70,
+			"src": "Less",
 			"tgt": "显示更少",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "qB0sTYELGfdSAXg8MWIO9dJkPMiJKMGbIpD-brXxlwA",
 			"q": 70,
+			"src": "Loading…",
 			"tgt": "正在加载…",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "8dLGZ533nCgGLKl5ZyGKaqaRODy2t8CN17LB5TL0BxU",
 			"q": 70,
+			"src": "Lock",
 			"tgt": "锁定",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "mdPoUGzFrcAt_vcKcl4Bq-dsE8Le-w--ksmqvFe_D3I",
 			"q": 70,
+			"src": "Mark all as read",
 			"tgt": "标记已读",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "86GoqMybPQfkFBczXnyaW9xfsDEFsikr5YqYAgVuF04",
 			"q": 70,
+			"src": "Mark all as unread",
 			"tgt": "标记所有章节未读",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "22CVrtYyzOOBddTIN64URwTUz-9uGC7SIkXOK8QuI9k",
 			"q": 70,
+			"src": "Mark as read",
 			"tgt": "标记已读",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "oZHWZ8wvBUkj97iUqNloTzvzJrtZYfzJfVW_gr78COw",
 			"q": 70,
+			"src": "Mark as unread",
 			"tgt": "标记未读",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "QU_jF1_AE5bMND233B6xjLe2AEv4NjczDkAOW2naJSw",
 			"q": 70,
+			"src": "Mark a range of chapters as read",
 			"tgt": "将一些章节标记为已读",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "7x8txAMET_dUs38fMs_8OxmVBIbyZBDmKol-PPDCVg8",
 			"q": 70,
+			"src": "Mark a range of chapters as unread",
 			"tgt": "将一些章节标记为未读",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "IQEMUF1NLWkhIxg96Nt7j6SvDg70HxWAGFsP3UXRJiA",
 			"q": 70,
+			"src": "Mark previous chapters as read",
 			"tgt": "标记之前章节为已读",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "XFN-iVYrkadpxDxOdGN1hv505ZavJL4hTK9255kN0i0",
 			"q": 70,
+			"src": "Mark previous chapters as unread",
 			"tgt": "标记之前章节为未读",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ziJ4SzbBrQNCMTKA0B7-oq3NDDEhBRD1XhXezbakWxk",
 			"q": 70,
+			"src": "menu",
 			"tgt": "菜单",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Z8glbymLPxVjwoHlE3yA2QJ6fUFpf-YSrwuKPOlddb0",
 			"q": 70,
+			"src": "More",
 			"tgt": "更多",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "yGQeYKS5Bv2xAEqxJ6s3Z-7Gd98xnx6ZYCLJXzt2Iwc",
 			"q": 70,
+			"src": "Move to bottom",
 			"tgt": "移至底部",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "kXACYJ_GEYd9r18ZZtcJQTaMNblMSSD9ZZYv4FySmXE",
 			"q": 70,
+			"src": "Move to top",
 			"tgt": "移至顶部",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "I40yqqfSXEqxcRJEebAkoMGQoQuYuLNOa2Ud6BkMcsU",
 			"q": 70,
+			"nsrc": [
+				"Move to ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"移动到 ",
 				{
@@ -5409,6 +6855,13 @@
 		{
 			"guid": "XSREc7X2ZGv7-we3bdC1-Yfm_4RaFy8JjHhPFjrm_7E",
 			"q": 70,
+			"nsrc": [
+				"Moved to ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"已移至",
 				{
@@ -5421,132 +6874,160 @@
 		{
 			"guid": "ZBYtIRVvhdgQJQHV4kVzz7Bh0NSKcofDyfXSdgX0vn8",
 			"q": 70,
+			"src": "Name",
 			"tgt": "名称",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "tpYrOKkmWE5cSjMMmDJxRckzqx02rnXxlVHRipdb7k8",
 			"q": 70,
+			"src": "Recently updated",
 			"tgt": "最近更新",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "_btRTivRqA0hOubjcX--MF9gC8w97NmhbBhbraZPkqM",
 			"q": 70,
+			"src": "Recently installed",
 			"tgt": "最近安装",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "wHVvimYxCq_ptB1cQQc_VLrYhiz05An7qU61WmGt2gQ",
 			"q": 70,
+			"src": "Language",
 			"tgt": "语言",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "G-kj181iakzKKEEJ6HB2eVBq_coqE7Ub3-WRoyWJA5A",
 			"q": 70,
+			"src": "Never",
 			"tgt": "从不",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "D21t1nOCvPQz8ezejnuCG10XG5-rtv916QePqa1Tm9s",
 			"q": 70,
+			"src": "Newest",
 			"tgt": "最新",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Ibaz0PUM9RNz1CPX-V0FFy3AerxinrWF9oJxlS2FX1o",
 			"q": 70,
+			"src": "Next",
 			"tgt": "下一个",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "jUCLPfd2pt2EgOUsIGD_BtOJhSpHZRV7F1fbNn7dPSI",
 			"q": 70,
+			"src": "No animation",
 			"tgt": "无动画",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "z2pPo6OyjBEg72bZUGs9ebiLmXauGjpNfTYQbgpWCzU",
 			"q": 70,
+			"src": "Normal",
 			"tgt": "普通",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "pXwvpirtrULpntCUbwUbN6xNIeq0N1To6-5Rc-KdRR0",
 			"q": 70,
+			"src": "Oldest",
 			"tgt": "最旧",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "jZQJfS6ZSY8KxQSMHPzL6kOUmYs2uSSRMboM8UytKps",
 			"q": 70,
+			"src": "Open in browser",
 			"tgt": "在浏览器中打开",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "3pVlPDm1tcLrMVYCMp7vNhulWHs15u3-9zs82x9IkM8",
 			"q": 70,
+			"src": "Open log",
 			"tgt": "打开日志",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "01PCaCl5Aaf5yKYuNmTsg-jZJENhXLfFX29cUSg62E4",
 			"q": 70,
+			"src": "Open in WebView",
 			"tgt": "用外部浏览器打开",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "vbDWxoIbEXe9zt-rTW9uNrJ5BhJ2VdZ2G93F2PZe9Rc",
 			"q": 70,
+			"src": "Options",
 			"tgt": "选项",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "07h1dhPItw0xqflwYmT76Hn_vZ0hE6usC4jadmy1rfI",
 			"q": 70,
+			"src": "Pause",
 			"tgt": "暂停",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "LVOyc2DI1_tIv-Wh-U-xBVOqDPbzXX88OH9KomjJzS8",
 			"q": 70,
+			"src": "Picture saved",
 			"tgt": "图片已保存",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "s-5E2wEISld-FfOmB993k92NOGb-4LNZ0F66yDUPZOs",
 			"q": 70,
+			"src": "Pin",
 			"tgt": "置顶",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "CQz0j3d_KWW8TDyTjWFaMKS0aNpki_JTkuI380NhNYQ",
 			"q": 70,
+			"src": "Pinned",
 			"tgt": "已置顶",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "NOELKFmkAMzBKP9wX6wMQ2w4T_iYyNyD_ponK9hKrjw",
 			"q": 70,
+			"src": "Preview",
 			"tgt": "预览",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "UzuX5kricHracI58dBSQHVf4CAFtgNgldg8nNXYRqZI",
 			"q": 70,
+			"src": "Previous",
 			"tgt": "上一个",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "2KbhXFK-2sKLM-PsKNO6DNg15kSoJy4c9b33gmpL6OQ",
 			"q": 70,
+			"src": "Remove",
 			"tgt": "移除",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "zo4UIzRgDLhp4lYJvdg12RD0fTpiXjbcbuWC3ClIlgw",
 			"q": 70,
+			"nsrc": [
+				"Remove from ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"从 ",
 				{
@@ -5560,72 +7041,90 @@
 		{
 			"guid": "08RvXmShyf-NM-YC6_wRkH93qxXMv8DNOn9OlKmgAdQ",
 			"q": 70,
+			"src": "Reorder",
 			"tgt": "重新排序",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "0rtEzXkR8w2DP8mkxaP0DzaZIpD3-2wo5uY4f8L4M-g",
 			"q": 70,
+			"src": "Reset",
 			"tgt": "重置",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "roEBh3ZbzoNg6WDjUe-rNtB7jOSm-0JWZebEjzWDnh0",
 			"q": 70,
+			"src": "Restore",
 			"tgt": "恢复",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "XZdAu-R9NcFoDpXCgDtXf8BRK9qLWMzzcrKNIO1NxKg",
 			"q": 70,
+			"src": "Resume",
 			"tgt": "继续阅读",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "4xkktM2wu4OjIWaL01NuHoBTv0xn9-KlBpimONxfH4o",
 			"q": 70,
+			"src": "Retry",
 			"tgt": "重试",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "L31ZyyF8NVcR-spPZHf2ifwxeoYLS_SE00CYdz8I8YQ",
 			"q": 70,
+			"src": "Right",
 			"tgt": "右",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ON5clTnvErryOihsvfP7AU5B0Ixpr9f82E8ERxfIG4A",
 			"q": 70,
+			"src": "Rotation",
 			"tgt": "方向",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "OTdtStwBPshNkiL3_CP6_tPZFG-4bk9E4DGl11tHJoM",
 			"q": 70,
+			"src": "Default orientation",
 			"tgt": "默认方向",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "6T1AUvI23zq9BwgpFHAkbwrcdHVorHeJnpmjCHRjffA",
 			"q": 70,
+			"src": "Orientation",
 			"tgt": "方向",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "3tX_483aH9UFwmvAJh93d72n9JQyihjdOq6xPfQyBSQ",
 			"q": 70,
+			"src": "Save",
 			"tgt": "保存",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "XifptHssXgtjDHmj5ltpAQl3FjABypzpTRFYIohV_mE",
 			"q": 70,
+			"src": "Search",
 			"tgt": "搜索",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "dEfOMw-ElOf-gh4JNy5OhAGW36mhN-kQrhkYgsYBZVQ",
 			"q": 70,
+			"nsrc": [
+				"Search ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			],
 			"ntgt": [
 				"搜索 ",
 				{
@@ -5638,36 +7137,44 @@
 		{
 			"guid": "pPxhvx0b_LutbB7fcHN2NjPOq24i4m6O4X3Z9TbVgjM",
 			"q": 70,
+			"src": "Select all",
 			"tgt": "选择所有",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "xyy2hY5UiPuBVtVs5p4QNtQvD5gZ9L62Afuf68HR13A",
 			"q": 70,
+			"src": "Select none",
 			"tgt": "全不选",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "zz9EoXyrp2jHix8BhQspeFceDJApEEQnL6JZNceOyEA",
 			"q": 70,
+			"src": "Selection",
 			"tgt": "选择",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "UqZtdEOUO3w2PBstWBFmuC3mGStUMFQ3UVKK99hBQLo",
 			"q": 70,
+			"src": "Share",
 			"tgt": "分享",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "cUeSzBAxHb_c2IQnyYlA7bVygFPiHxSoBK9EbbPbhMI",
 			"q": 70,
+			"src": "Sort",
 			"tgt": "排序",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "X8fO-c1VVu9rbJOhfqH9UiMS20tCwPGDKgZXFvQMp3A",
 			"q": 70,
+			"nsrc": [
+				"Sort & Filter"
+			],
 			"ntgt": [
 				"排序 & 筛选"
 			],
@@ -5676,72 +7183,84 @@
 		{
 			"guid": "scJ9d4haERDN89PbJSC-EKL1J1Zbvjmd7KSFoL1bMSI",
 			"q": 70,
+			"src": "Start",
 			"tgt": "开始",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "LfyYYMOVNKIgtNKQH0MttWyt2OaPJi1FcXlLtQei9ro",
 			"q": 70,
+			"src": "Stop",
 			"tgt": "停止",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "u1sNEscwzqYmb2ep8PT9x8usydILzw76W88Sad7u-KM",
 			"q": 70,
+			"src": "Tag",
 			"tgt": "标签",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "vRdkZFDzssJRdwGv-SthUQFGxf_HerP1kXuTpXpKzyE",
 			"q": 70,
+			"src": "Top",
 			"tgt": "顶部",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "8RlbaPOnEpLZVjZCafHf65rxbG2ghAC0E07ABarDA4w",
 			"q": 70,
+			"src": "Undo",
 			"tgt": "撤销",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "c3i5rexqP3K-3xXQ8UmZicdtD1LDoT5r-tCEwnKLRg8",
 			"q": 70,
+			"src": "Unknown error",
 			"tgt": "未知错误",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "_wRYzMse2B7r2ua6b9MgKFqHhMtFhturJ-JwkJ0UImI",
 			"q": 70,
+			"src": "Unpin",
 			"tgt": "取消置顶",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "Uk0VwujRIxhpe9NaWYmY3hntAOfl0OuU8eai2ofVSqk",
 			"q": 70,
+			"src": "Use default",
 			"tgt": "使用默认",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "huyX5FGOUKZ3pi4fe79Gfe7qvq2yU_f1NEJEFi-8iik",
 			"q": 70,
+			"src": "View all errors",
 			"tgt": "查看所有错误",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "na9i-6I0FiG2wQ_1QGez33sgK5oWVx6WidW-BQo3Ync",
 			"q": 70,
+			"src": "View chapters",
 			"tgt": "查看章节",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "ISUovOLQ0rDHWTN8FD5Egc_BxdZCIOGr7B6UXGmtjWs",
 			"q": 70,
+			"src": "Warning",
 			"tgt": "警告",
 			"ts": 1642896537928
 		},
 		{
 			"guid": "IJInAlEGMbEstVMqpcB1u5GRFSl0PTW8qyRRBIHjBN4",
 			"q": 70,
+			"src": "Wi-Fi",
 			"tgt": "已连接 Wi-Fi",
 			"ts": 1642896537928
 		}

@@ -36,6 +36,8 @@ export async function leverageCmd(mm, limitToLang) {
                         guid: tu.guid,
                         q: Math.max(0, bestCandidate.q - (tu.sid === bestCandidate.sid ? mm.qualifiedPenalty : mm.unqualifiedPenalty), 0),
                     };
+                    !bestCandidate.nsrc && (leveragedTU.src = bestCandidate.src);
+                    bestCandidate.nsrc && (leveragedTU.nsrc = bestCandidate.nsrc);
                     bestCandidate.tgt && (leveragedTU.tgt = bestCandidate.tgt);
                     bestCandidate.ntgt && (leveragedTU.ntgt = bestCandidate.ntgt);
                     bestCandidate.ts && (leveragedTU.ts = bestCandidate.ts);

@@ -20,7 +20,7 @@ function printContent(contentPairs) {
         for (const [rid, content] of Object.entries(uc)) {
             console.log(`  ‣ ${rid}`);
             for (const [sid, str] of Object.entries(content)) {
-                console.log(`    ∙ ${consoleColor.dim}${sid}:${consoleColor.reset} ${str.color}${sid === str.txt ? '≣' : str.txt}${consoleColor.reset}`);
+                console.log(`    ∙ ${consoleColor.dim}${sid}:${consoleColor.reset} ${str.color}${str.confidence ? `[${str.confidence.toFixed(2)}] ` : ''}${sid === str.txt ? '≣' : str.txt}${consoleColor.reset}`);
             }
         }
     }
@@ -38,7 +38,8 @@ export function printRequest(req) {
         const heuristics = Object.fromEntries(tinyld.detectAll(text).map(x => [ x.lang, x.accuracy ]));
         const confidence = heuristics[srcLang] ?? 0;
         untranslatedContent[prj][tu.rid][tu.sid] = {
-            txt: `[${confidence.toFixed(2)}] ${tu.nsrc ? flattenNormalizedSourceV1(tu.nsrc)[0] : tu.src}`,
+            confidence,
+            txt: tu.nsrc ? flattenNormalizedSourceV1(tu.nsrc)[0] : tu.src,
             // eslint-disable-next-line no-nested-ternary
             color: confidence <= 0.1 ? consoleColor.red : (confidence <= 0.2 ? consoleColor.yellow : consoleColor.green),
         }
