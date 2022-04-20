@@ -223,7 +223,7 @@ export const androidSpaceCollapser = (parts) => parts.map(p => (p.t === 's' ? { 
 export const doublePercentDecoder = regexMatchingDecoderMaker(
     'doublePercentDecoder',
     /(?<percent>%%)/g,
-    (groups) => groups.percent.replace('%%', '%'));
+    (groups) => '%');
 
 export const doublePercentEncoder = (str) => str.replaceAll('%', '%%');
 
