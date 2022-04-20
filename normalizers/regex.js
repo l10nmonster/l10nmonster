@@ -48,24 +48,6 @@ export function regexMatchingDecoderMaker(flag, regex, partDecoder) {
     return fn;
 }
 
-//Generic pluggable decoder for {t: 's', v: 'text'} elements
-export function regexMatchingDecoderMakerFlat(flag, regex, partDecoder) {
-    const fn = function decoder(parts) {
-        const decodedParts = parts.map(p => {
-            if (p.t === 's') {
-                if (p.v.match(regex)) {
-                    p.v = partDecoder(p.v);
-                    p.flag = flag;
-                }
-            }
-            return p;
-        });
-        return decodedParts.flat(1);
-    };
-    Object.defineProperty(fn, 'name', { value: flag });
-    return fn;
-}
-
 // Generic wrapper to rename a decoder
 export function namedDecoder(name, decoder) {
     const fn = function namedDecoder(parts) {
@@ -238,10 +220,10 @@ export const androidEscapesEncoder = (str, flags = {}) => {
 
 export const androidSpaceCollapser = (parts) => parts.map(p => (p.t === 's' ? { ...p, v: p.v.replaceAll(/[ \f\n\r\t\v\u2028\u2029]+/g, ' ')} : p));
 
-export const doublePercentDecoder = regexMatchingDecoderMakerFlat(
+export const doublePercentDecoder = regexMatchingDecoderMaker(
     'doublePercentDecoder',
-    /%%/g,
-    (part) => part.replaceAll('%%', '%'));
+    /(?<percent>%%)/g,
+    (groups) => groups.percent.replace('%%', '%'));
 
 export const doublePercentEncoder = (str) => str.replaceAll('%', '%%');
 
