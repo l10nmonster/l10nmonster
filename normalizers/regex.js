@@ -209,8 +209,9 @@ export const androidEscapesDecoder = regexMatchingDecoderMaker(
     )
 );
 
+//Android lint doesn't accept % but accepts %%.  % should be replaced with '\u0025' but %% shouldn't
 export const androidEscapesEncoder = (str, flags = {}) => {
-    let escapedStr = str.replaceAll(/[@\\'"]/g, '\\$&').replaceAll('\t', '\\t').replaceAll('\n', '\\n');
+    let escapedStr = str.replaceAll(/[@\\'"]/g, '\\$&').replaceAll('\t', '\\t').replaceAll('\n', '\\n').replaceAll(/(?<!%)%(?!%)/g, '\\u0025');
     // eslint-disable-next-line prefer-template
     flags.isFirst && escapedStr[0] === ' ' && (escapedStr = '\\u0020' + escapedStr.substring(1));
     // eslint-disable-next-line prefer-template
