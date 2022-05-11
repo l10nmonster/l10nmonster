@@ -10,4 +10,5 @@
     <string name="html">&lt;b>bold&lt;/b></string>
     <string name="escapedSingleQuoteInCdata"><![CDATA[Winter is <strong><color name=\'orange\'>coming</color></strong>]]></string>
     <string name="escapedDoubleQuoteInCdata"><![CDATA[Winter is <strong><color name=\"orange\">coming</color></strong>]]></string>
+    <string name="percent">one % two %% escaped \u0025</string>
   </resources>
