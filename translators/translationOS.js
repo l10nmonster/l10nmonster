@@ -168,7 +168,7 @@ export class TranslationOS {
                 throw "TOS call failed!";
             }
             for (const translation of response) {
-                if (translation.translated_content === null || translation.status !== 'delivered' || translation.translated_content.indexOf('|||UNTRANSLATED_CONTENT_START|||') >= 0) {
+                if (translation.translated_content === null || ![ 'delivered', 'invoiced' ].includes(translation.status) || translation.translated_content.indexOf('|||UNTRANSLATED_CONTENT_START|||') >= 0) {
                     this.ctx.verbose && console.log(`id_order: ${translation.id_order} id_content: ${translation.id} status: ${translation.status} translated_content: ${translation.translated_content}`);
                 } else {
                     const guid = translation.id_content;
