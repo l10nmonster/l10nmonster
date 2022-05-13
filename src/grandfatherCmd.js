@@ -1,4 +1,4 @@
-import { getNormalizedString, sourceAndTargetAreCompatible } from '../normalizers/util.js';
+import { getNormalizedString, sourceAndTargetAreCompatible, flattenNormalizedSourceV1, extractNormalizedPartsV1 } from '../normalizers/util.js';
 
 // this is similar to push, except that existing translations in resources but not in TM
 // are assumed to be in sync with source and imported into the TM
@@ -47,7 +47,8 @@ export async function grandfatherCmd(mm, quality, limitToLang) {
                 !tu.nsrc && (translation.src = tu.src);
                 tu.nsrc && (translation.nsrc = tu.nsrc);
                 if (previousTranslation.nsrc) {
-                    translation.ntgt = previousTranslation.nsrc;
+                    const [ flattenSrc, phMap ] = flattenNormalizedSourceV1(previousTranslation.nsrc);
+                    translation.ntgt = extractNormalizedPartsV1(flattenSrc, phMap);
                 } else {
                     translation.tgt = previousTranslation.src;
                 }
