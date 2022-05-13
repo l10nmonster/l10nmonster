@@ -75,7 +75,7 @@ export class AndroidFilter {
         };
     }
 
-    async generateTranslatedResource({ resource, translator }) {
+    async translateResource({ resource, translator }) {
         const parsingOptions = {
             ignoreAttributes: false,
             processEntities: true,

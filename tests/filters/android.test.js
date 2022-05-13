@@ -36,11 +36,11 @@ describe('android filter tests', () => {
   const translator = async function translate(sid, str) {
     return sid === 'str1' ? undefined : `${resourceId} ${sid} ${str} - **Translation**`;
   }
-  test('generateTranslatedResource returns string', async () => {
+  test('translateResource returns string', async () => {
     const expectedOutput = readFileSync('tests/files/values/strings_t9n.xml', 'utf8');
     const resource = readFileSync(resourceId,'utf8');
     const lang = 'fil';
-    const translatedRes = await resourceFilter.generateTranslatedResource({ resourceId, resource, lang, translator });
+    const translatedRes = await resourceFilter.translateResource({ resourceId, resource, lang, translator });
     expect(translatedRes).toBe(expectedOutput);
   });
 

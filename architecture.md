@@ -34,7 +34,7 @@ In addition to configurable modular pipelines, the system also supports pluggabl
 ### Format Filter
 
 * `async parseResource({ resource, isSource })` -> `{ translationUnits }` - convert a raw resource into a normalized list of translation units, each as `{ sid, str, notes, msgFmt, isSuffixPluralized }`
-* `generateTranslatedResource({ resourceId, resource, lang, translator })` -> `string` - generate the translated version of a raw resource
+* `translateResource({ resourceId, resource, lang, translator })` -> `string` - generate the translated version of a raw resource
 
 ### Translator
 
