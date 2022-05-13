@@ -142,6 +142,10 @@ A filter for XML files used in Android apps. The `comment` property specifies wh
 * [TODO] it needs configuration to deal with message formats.
 * [BUG] it doesn't honor the `translatable` attribute.
 
+### Node JSON Filter
+
+A filter for JSON files used in Node JS apps using the [i18next](https://www.i18next.com/misc/json-format) format.  Currently supported are comments, nested keys and plurals.
+
 ### PO Filter
 
 ```js
