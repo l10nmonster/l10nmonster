@@ -25,7 +25,7 @@ export class JavaPropertiesFilter {
         };
     }
 
-    async generateTranslatedResource({ resource, translator }) {
+    async translateResource({ resource, translator }) {
         const parsedResource = parseToEntries(resource, { sep: true, eol: true, all: true, original: true });
         const translatedEntries = [];
         for (const entry of parsedResource) {

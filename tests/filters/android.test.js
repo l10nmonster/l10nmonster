@@ -2,7 +2,7 @@
 import * as android from '../../filters/android';
 import { getNormalizedString } from '../../normalizers/util.js';
 import { xmlCDataDecoder, iosPHDecoder, androidEscapesDecoder,
-    androidSpaceCollapser, xmlEntityDecoder, androidEscapesEncoder, xmlDecoder } from '../../normalizers/regex.js';
+    androidSpaceCollapser, xmlEntityDecoder, androidEscapesEncoder, xmlDecoder, doublePercentDecoder } from '../../normalizers/regex.js';
 import { readFileSync } from 'fs';
 
 describe('android filter tests', () => {
@@ -36,18 +36,18 @@ describe('android filter tests', () => {
   const translator = async function translate(sid, str) {
     return sid === 'str1' ? undefined : `${resourceId} ${sid} ${str} - **Translation**`;
   }
-  test('generateTranslatedResource returns string', async () => {
+  test('translateResource returns string', async () => {
     const expectedOutput = readFileSync('tests/files/values/strings_t9n.xml', 'utf8');
     const resource = readFileSync(resourceId,'utf8');
     const lang = 'fil';
-    const translatedRes = await resourceFilter.generateTranslatedResource({ resourceId, resource, lang, translator });
+    const translatedRes = await resourceFilter.translateResource({ resourceId, resource, lang, translator });
     expect(translatedRes).toBe(expectedOutput);
   });
 
     test('android normalizers work as expected', async () => {
         const encodings = readFileSync('tests/files/values/encodings.xml', 'utf8');
         const encodingsRes = await resourceFilter.parseResource({resource: encodings, isSource: true});
-        const standardDecoders = [ xmlEntityDecoder, xmlCDataDecoder, androidSpaceCollapser, androidEscapesDecoder, iosPHDecoder ];
+        const standardDecoders = [ xmlEntityDecoder, xmlCDataDecoder, androidSpaceCollapser, androidEscapesDecoder, iosPHDecoder, doublePercentDecoder ];
         expect(encodingsRes)
             .toMatchObject({ "segments": [{
                     "sid": "cdata",
@@ -79,6 +79,9 @@ describe('android filter tests', () => {
                 }, {
                     "sid": "escapedDoubleQuoteInCdata",
                     "str": "<![CDATA[Winter is <strong><color name=\\\"orange\\\">coming</color></strong>]]>"
+                }, {
+                    "sid": "percent",
+                    "str": "one % two %% escaped \\u0025"
                 }
             ]});
         expect(getNormalizedString(encodingsRes.segments[0].str, [xmlCDataDecoder])[0])
@@ -106,5 +109,11 @@ describe('android filter tests', () => {
             .toBe("Winter is <strong><color name=\\'orange\\'>coming</color></strong>");
         expect(getNormalizedString(encodingsRes.segments[9].str, [xmlCDataDecoder])[0])
             .toBe("Winter is <strong><color name=\\\"orange\\\">coming</color></strong>");
+        expect(getNormalizedString(encodingsRes.segments[10].str, [androidEscapesDecoder])[0])
+            .toBe("one % two %% escaped %");
+        expect(getNormalizedString(encodingsRes.segments[10].str, [doublePercentDecoder])[0])
+            .toBe("one % two % escaped \\u0025");
+        expect(getNormalizedString(encodingsRes.segments[10].str, standardDecoders)[0])
+            .toBe("one % two % escaped %");
         });
 });

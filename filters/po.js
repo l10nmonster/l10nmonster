@@ -42,7 +42,7 @@ export class PoFilter {
         };
     }
 
-    async generateTranslatedResource({ resource, translator }) {
+    async translateResource({ resource, translator }) {
         const poFile = gettextParser.po.parse(resource);
         for (const [domain, segments] of Object.entries(poFile.translations)) {
             for (const s of Object.values(segments)) {

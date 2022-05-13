@@ -348,10 +348,10 @@
 	<string name="if_disabled_transition_will_skip">如果禁用，则在加载下一章时将跳过过渡页面</string>
 	<string name="pref_webtoon_side_padding">侧边填充</string>
 	<string name="webtoon_side_padding_0">无</string>
-	<string name="webtoon_side_padding_10">10%</string>
-	<string name="webtoon_side_padding_15">15%</string>
-	<string name="webtoon_side_padding_20">20%</string>
-	<string name="webtoon_side_padding_25">25%</string>
+	<string name="webtoon_side_padding_10">10\u0025</string>
+	<string name="webtoon_side_padding_15">15\u0025</string>
+	<string name="webtoon_side_padding_20">20\u0025</string>
+	<string name="webtoon_side_padding_25">25\u0025</string>
 	<string name="l_nav">L 样式</string>
 	<string name="kindlish_nav">Kindle 样式</string>
 	<string name="edge_nav">边缘样式</string>
@@ -455,7 +455,6 @@
 	<string name="cannot_remove_tracking_while_offline">离线时无法从 %1$s 删除追踪器</string>
 	<string name="remove_tracking_from_">同时从 %1$s 移除</string>
 	<string name="remove_previous_tracker">删除先前追踪器？</string>
-	<string name="remove_x_from_service_and_add_y">从 %2$s 删除 %1$s 并添加 %3$s</string>
 	<string name="keep_both_on_service">保留 %1$s 上的两个，仅本地替换</string>
 	<string name="started_reading_date">开始阅读日期</string>
 	<string name="finished_reading_date">完成阅读日期</string>

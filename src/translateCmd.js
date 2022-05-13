@@ -97,7 +97,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                     return undefined;
                 };
                 const resource = await pipeline.source.fetchResource(res.id);
-                const translatedRes = await pipeline.resourceFilter.generateTranslatedResource({ resource, targetLang, translator });
+                const translatedRes = await pipeline.resourceFilter.translateResource({ resource, translator });
                 const translatedResourceId = pipeline.target.translatedResourceId(targetLang, resourceId);
                 if (dryRun) {
                     let currentRaw;
