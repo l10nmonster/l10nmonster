@@ -78,7 +78,6 @@ describe('node filter tests', () => {
             ]
           };
           const output = await resourceFilter.parseResource(input);
-          console.log(JSON.stringify(output, null, 2));
           expect(output).toMatchObject(expectedOutput);
         });
 
