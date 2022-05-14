@@ -79,9 +79,8 @@ export function flattenNormalizedSourceToXmlV1(nsrc) {
         } else {
             phIdx++;
             const phPrefix = phIdx < 26 ? String.fromCharCode(96 + phIdx) : `z${phIdx}`;
-            const mangledPh = `${phPrefix}_${part.t}_${(part.v.match(/[0-9A-Za-z_]+/) || [''])[0]}`;
-            normalizedStr.push(`<${part.t === 'ex' ? '/' : ''}${mangledPh}${part.t === 'x' ? ' /' : ''}>`);
-            phMap[mangledPh] = part;
+            normalizedStr.push(`<${phPrefix} />`);
+            phMap[phPrefix] = part;
         }
     }
     return [ normalizedStr.join(''), phMap ];
@@ -90,20 +89,16 @@ export function flattenNormalizedSourceToXmlV1(nsrc) {
 export function extractNormalizedPartsFromXmlV1(str, phMap) {
     const normalizedParts = [];
     let pos = 0;
-    for (const match of str.matchAll(/<(?:\/)?(?<ph>(?<phIdx>[a-y]|z\d+)_(?<t>x|bx|ex)_(?<phName>[0-9A-Za-z_]*))(?: \/)?>/g)) {
+    for (const match of str.matchAll(/<(?<phIdx>[a-y]|z\d+) \/>/g)) {
         if (match.index > pos) {
             normalizedParts.push(match.input.substring(pos, match.index).replaceAll('&lt;', '<'));
         }
-        normalizedParts.push({
-            ...phMap[match.groups.ph],
-            v1: match.groups.ph,
-        });
+        normalizedParts.push(phMap[match.groups.phIdx]);
         pos = match.index + match[0].length;
     }
     if (pos < str.length) {
         normalizedParts.push(str.substring(pos, str.length).replaceAll('&lt;', '<'));
     }
-    // TODO: validate actual vs. expected placeholders (name/types/number)
     return normalizedParts;
 }
 

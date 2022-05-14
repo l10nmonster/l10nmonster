@@ -39,6 +39,7 @@ import { XliffBridge } from './translators/xliff.js';
 import { PigLatinizer } from './translators/piglatinizer.js';
 import { TranslationOS } from './translators/translationOS.js';
 import { Visicode } from './translators/visicode.js';
+import { ModernMT } from './translators/modernMT.js';
 import * as regexNormalizers from './normalizers/regex.js';
 
 const monsterCLI = new Command();
@@ -83,7 +84,7 @@ async function initMonster() {
                 ...regexNormalizers,
             },
             translators: {
-                XliffBridge, PigLatinizer, TranslationOS, Visicode
+                XliffBridge, PigLatinizer, TranslationOS, Visicode, ModernMT
             },
         };
         for (const helperCategory of Object.values(helpers)) {
