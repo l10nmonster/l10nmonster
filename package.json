@@ -52,7 +52,7 @@
     "esbuild": "^0.14.23",
     "eslint": "^8.6.0",
     "eslint-plugin-jest": "^26.1.1",
-    "jest": "^27.4.3",
+    "jest": "^28",
     "pkg": "^5.4.1"
   },
   "jest": {
