@@ -2,6 +2,8 @@ import got from 'got';
 
 import { flattenNormalizedSourceToXmlV1, extractNormalizedPartsFromXmlV1 } from '../normalizers/util.js';
 
+const MAX_CHAR_LENGTH = 9000;
+
 // TODO: externalize this as a general-purpose Op
 async function gotGetOp(params) {
     const { req, ...otherParams } = params;
@@ -47,7 +49,7 @@ async function mmtMergeTranslationChunksOp({ jobRequest, tuMeta, quality, ts }, 
 }
 
 export class ModernMT {
-    constructor({ baseURL, apiKey, priority, multiline, quality, chunkSize }) {
+    constructor({ baseURL, apiKey, priority, multiline, quality }) {
         if ((apiKey && quality) === undefined) {
             throw 'You must specify apiKey, quality for ModernMT';
         } else {
@@ -60,7 +62,6 @@ export class ModernMT {
             this.priority = priority ?? 'normal',
             this.multiline = multiline ?? true,
             this.quality = quality;
-            this.chunkSize = chunkSize || 100;
             this.ctx.opsMgr.registerOp(gotGetOp, { idempotent: false });
             this.ctx.opsMgr.registerOp(mmtMergeTranslationChunksOp, { idempotent: true });
         }
@@ -94,15 +95,26 @@ export class ModernMT {
         const requestTranslationsTask = this.ctx.opsMgr.createTask();
         try {
             const chunkOps = [];
-            for (let offset = 0; mmtPayload.length > 0; offset += this.chunkSize) {
+            for (let currentIdx = 0; currentIdx < mmtPayload.length;) {
+                const offset = currentIdx;
+                const q = [];
+                let currentTotalLength = 0;
+                while (currentIdx < mmtPayload.length && mmtPayload[currentIdx].length + currentTotalLength < MAX_CHAR_LENGTH) {
+                    currentTotalLength += mmtPayload[currentIdx].length;
+                    q.push(mmtPayload[currentIdx]);
+                    currentIdx++;
+                }
+                if (q.length === 0) {
+                    throw `String at index ${currentIdx} exceeds ${MAX_CHAR_LENGTH} max char length`;
+                }
                 const chunkReq = {
                     ...baseRequest,
                     json: {
                         ...baseRequest.json,
-                        q: mmtPayload.splice(0, this.chunkSize), // TODO: need to deal with 10k limitation
+                        q,
                     }
                 };
-                this.ctx.verbose && console.log(`Calling MMT translate, offset: ${offset} chunk size: ${chunkReq.json.q.length}`);
+                this.ctx.verbose && console.log(`Preparing MMT translate, offset: ${offset} chunk strings: ${q.length} chunk char length: ${currentTotalLength}`);
                 const translateOp = await requestTranslationsTask.enqueue(gotGetOp, { req: chunkReq, offset });
                 chunkOps.push(translateOp);
             }
