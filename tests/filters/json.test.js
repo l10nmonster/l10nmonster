@@ -4,6 +4,28 @@ describe("json parseResource - description", () => {
     const resourceFilter = new json.JsonFilter({
         enableARBAnnotations: true,
     });
+
+    test("parseResource returns raw parsed resource for simple string no description", async () => {
+        const resource = {
+            homeSubtitle: "Book the trip you've been waiting for.",
+            "home@Subtitle": "@ Book the trip you've been waiting for.",
+        };
+        const expectedOutput = {
+            segments: [
+                {
+                    sid: "homeSubtitle",
+                    str: "Book the trip you've been waiting for.",
+                },
+                {
+                    sid: "home@Subtitle",
+                    str: "@ Book the trip you've been waiting for.",
+                },
+            ],
+        };
+        const output = await resourceFilter.parseResource({ resource });
+        expect(output).toMatchObject(expectedOutput);
+    });
+
     test("parseResource returns raw parsed resource for simple string", async () => {
         const resource = {
             homeSubtitle: "Book the trip you've been waiting for.",
@@ -11,6 +33,16 @@ describe("json parseResource - description", () => {
                 description:
                     "header - This is the welcome message subtitle on the home page",
             },
+            "home@Subtitle": "Book the trip you've been waiting for.",
+            "@home@Subtitle": {
+                description:
+                    "header - This is the welcome message subtitle on the home page",
+            },
+            "@homeSubtitle1": {
+                description:
+                    "header - This is the welcome message subtitle on the home page 1",
+            },
+            homeSubtitle1: "Book the trip you've been waiting for. 1",
         };
         const expectedOutput = {
             segments: [
@@ -19,26 +51,15 @@ describe("json parseResource - description", () => {
                     str: "Book the trip you've been waiting for.",
                     notes: "header - This is the welcome message subtitle on the home page",
                 },
-            ],
-        };
-        const output = await resourceFilter.parseResource({ resource });
-        expect(output).toMatchObject(expectedOutput);
-    });
-
-    test("parseResource returns raw parsed resource for simple string description after property", async () => {
-        const resource = {
-            "@homeSubtitle": {
-                description:
-                    "header - This is the welcome message subtitle on the home page",
-            },
-            homeSubtitle: "Book the trip you've been waiting for.",
-        };
-        const expectedOutput = {
-            segments: [
                 {
-                    sid: "homeSubtitle",
+                    sid: "home@Subtitle",
                     str: "Book the trip you've been waiting for.",
                     notes: "header - This is the welcome message subtitle on the home page",
+                },
+                {
+                    sid: "homeSubtitle1",
+                    str: "Book the trip you've been waiting for. 1",
+                    notes: "header - This is the welcome message subtitle on the home page 1",
                 },
             ],
         };
@@ -77,6 +98,41 @@ describe("json parseResource - description", () => {
         const output = await resourceFilter.parseResource({ resource });
         expect(output).toMatchObject(expectedOutput);
     });
+
+    test("parseResource returns raw parsed resource for multiple arb attributes", async () => {
+        const resource = {
+            flightHome: {
+                title: "<strong>Welcome back</strong> to travel.",
+                "@title": {
+                    description: "header - welcome message of flight flow",
+                    context: "context attribute",
+                    type: "type attribute",
+                },
+
+                "@subtitle": {
+                    description: "subtitle - flight landing page subheading",
+                },
+                subtitle: "Book the trip you've been waiting for.",
+            },
+        };
+        const expectedOutput = {
+            segments: [
+                {
+                    sid: "flightHome.title",
+                    str: "<strong>Welcome back</strong> to travel.",
+                    notes: "header - welcome message of flight flow. context attribute. type attribute"
+                },
+                {
+                    sid: "flightHome.subtitle",
+                    str: "Book the trip you've been waiting for.",
+                    notes: "subtitle - flight landing page subheading"
+                },
+            ],
+        };
+        const output = await resourceFilter.parseResource({ resource });
+        expect(output).toMatchObject(expectedOutput);
+    });
+
 });
 describe("json parseResource - no options", () => {
     const resourceFilter = new json.JsonFilter();
@@ -149,6 +205,7 @@ describe("json parseResource - no options", () => {
         const output = await resourceFilter.parseResource({ resource });
         expect(output).toMatchObject(expectedOutput);
     });
+
 });
 
 describe("json parseResource -  plurals", () => {
@@ -270,12 +327,24 @@ describe("json generateTranslatedResource - emit comments", () => {
                 description:
                     "header - This is the welcome message subtitle on the home page",
             },
-        };
+            title: "<strong>Welcome back</strong> to travel.",
+            "@title": {
+                description: "header - welcome message of flight flow",
+                context: "context attribute",
+                type: "type attribute",
+            },
+    };
         const expectedOutput = {
             homeSubtitle: "homeSubtitle Book the trip you've been waiting for. - **Translation**",
             "@homeSubtitle": {
                 description:
                     "header - This is the welcome message subtitle on the home page",
+            },
+            title: "title <strong>Welcome back</strong> to travel. - **Translation**",
+            "@title": {
+                description: "header - welcome message of flight flow",
+                context: "context attribute",
+                type: "type attribute",
             },
         };
 
@@ -383,13 +452,19 @@ describe("json generateTranslatedResource - don't emit comments", () => {
                 description:
                     "header - This is the welcome message subtitle on the home page",
             },
+            title: "<strong>Welcome back</strong> to travel.",
+            "@title": {
+                description: "header - welcome message of flight flow",
+                context: "context attribute",
+                type: "type attribute",
+            },
         };
         const expectedOutput = {
             homeSubtitle: "homeSubtitle Book the trip you've been waiting for. - **Translation**",
+            title: "title <strong>Welcome back</strong> to travel. - **Translation**",
         };
 
         const output = await resourceFilter.generateTranslatedResource({resource, translator});
-        console.log(JSON.stringify(output, null, 2));
         expect(output).toMatchObject(expectedOutput);
     });
 });

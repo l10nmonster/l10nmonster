@@ -11,28 +11,34 @@ export class JsonFilter {
     async parseResource({ resource }) {
         var segments = [];
         var notes = {};
-        for (const [key, value] of Object.entries(flatten(resource))) {
-            if (key.indexOf("@") === -1) {
+        const parsedResource = Object.entries(flatten(resource));
+
+        for (const [key, value] of parsedResource) {
+            if (this.enableARBAnnotations &&key.split(".").slice(-2)[0].startsWith("@")) {
+                const regExpKey =
+                    /(?<prefix>.+?\.)?@(?<key>\S+)\.(?<attribute>\S+)/;
+                const match = regExpKey.exec(key);
+                if (["description", "type", "context", "placeholders", "screenshot", "video", "source_text"]
+                    .some((attribute) => match.groups.attribute === attribute)) {
+                    const sid = `${match.groups.prefix ?? ""}${match.groups.key}`;
+                    notes[sid] = notes[sid] ?
+                        (notes[sid] += `. ${value}`) :
+                        value;
+                } else if (this?.ctx?.verbose) {
+                    console.log(`Unexpected ARB format: ${match.groups.attribute} for ${match.groups.key}`);
+                    console.dir(resource, { depth: null });
+                }
+            }
+        }
+
+        for (const [key, value] of parsedResource) {
+            if (!key.split(".").slice(-2)[0].startsWith("@")) {
                 var seg = { sid: key, str: value };
                 notes[key] && (seg.notes = notes[key]);
                 this.enablePluralSuffixes &&
-                    ["_one", "_other", "_zero", "_two", "_few", "_many"].some((plural) => key.endsWith(plural)) &&
-                    (seg.isSuffixPluralized = true);
+                    ["_one", "_other", "_zero", "_two", "_few", "_many"].some((plural) => key.endsWith(plural)) && 
+                        (seg.isSuffixPluralized = true);
                 segments.push(seg);
-            } else {
-                if (this.enableARBAnnotations && key.endsWith(".description")) {
-                    const sid = key
-                        .replace("@", "")
-                        .replace(".description", "");
-                    const seg = segments.find((e) => e.sid === sid);
-                    if (seg) {
-                        seg.notes = value;
-                    } else {
-                        notes[sid] = value;
-                    }
-                } else {
-                    console.error("Unsupported ARB format");
-                }
             }
         }
         return {
@@ -41,20 +47,19 @@ export class JsonFilter {
     }
 
     async generateTranslatedResource({ resource, translator }) {
-        let parsedResource = flatten(resource);
+        const parsedResource = flatten(resource);
         for (const [sid, str] of Object.entries(parsedResource)) {
-            if (sid.indexOf("@") === -1) {
+            if (sid.split(".").slice(-2)[0].startsWith("@")) {
+                !this.emitComments &&
+                    this.enableARBAnnotations &&
+                    delete parsedResource[sid];
+            } else {
                 const translation = await translator(sid, str);
                 if (translation === undefined) {
                     delete parsedResource[sid];
                 } else {
                     parsedResource[sid] = translation;
                 }
-            } else {
-                !this.emitComments &&
-                    this.enableARBAnnotations &&
-                    parsedResource[sid].endsWith(".description") &&
-                    delete parsedResource[sid];
             }
         }
         return flatten.unflatten(parsedResource);
