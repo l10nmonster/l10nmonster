@@ -13,8 +13,8 @@ export class JsonFilter {
         var notes = {};
         const parsedResource = Object.entries(flatten(resource));
 
-        for (const [key, value] of parsedResource) {
-            if (this.enableArbAnnotations &&key.split(".").slice(-2)[0].startsWith("@")) {
+        if (this.enableArbAnnotations) {
+            for (const [key, value] of parsedResource.filter(e => e[0].split(".").slice(-2)[0].startsWith("@"))) {
                 const regExpKey =
                     /(?<prefix>.+?\.)?@(?<key>\S+)\.(?<attribute>\S+)/;
                 const match = regExpKey.exec(key);
@@ -29,19 +29,26 @@ export class JsonFilter {
                     console.dir(resource, { depth: null });
                 }
             }
-        }
 
-        for (const [key, value] of parsedResource) {
-            if (!key.split(".").slice(-2)[0].startsWith("@")) {
-                var seg = { sid: key, str: value };
+            for (const [key, value] of parsedResource.filter(e => !e[0].split(".").slice(-2)[0].startsWith("@"))) {
+                let seg = { sid: key, str: value };
                 notes[key] && (seg.notes = notes[key]);
                 this.enablePluralSuffixes &&
                     ["_one", "_other", "_zero", "_two", "_few", "_many"].some((plural) => key.endsWith(plural)) && 
-                        (seg.isSuffixPluralized = true);
+                    (seg.isSuffixPluralized = true);
+                segments.push(seg);
+            }
+        } else {
+            for (const [key, value] of parsedResource) {
+                let seg = { sid: key, str: value };
+                this.enablePluralSuffixes &&
+                    ["_one", "_other", "_zero", "_two", "_few", "_many"].some((plural) => key.endsWith(plural)) && 
+                    (seg.isSuffixPluralized = true);
                 segments.push(seg);
             }
         }
-        return {
+    
+    return {
             segments,
         };
     }

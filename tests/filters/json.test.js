@@ -150,6 +150,10 @@ describe("json parseResource - no options", () => {
                     sid: "homeSubtitle",
                     str: "Book the trip you've been waiting for.",
                 },
+                {
+                    sid: "@homeSubtitle.description",
+                    str: "header - This is the welcome message subtitle on the home page",
+                },                
             ],
         };
         const output = await resourceFilter.parseResource({ resource });
@@ -166,6 +170,10 @@ describe("json parseResource - no options", () => {
         };
         const expectedOutput = {
             segments: [
+                {
+                    sid: "@homeSubtitle.description",
+                    str: "header - This is the welcome message subtitle on the home page",
+                },                
                 {
                     sid: "homeSubtitle",
                     str: "Book the trip you've been waiting for.",
@@ -195,6 +203,14 @@ describe("json parseResource - no options", () => {
                 {
                     sid: "flightHome.title",
                     str: "<strong>Welcome back</strong> to travel.",
+                },
+                {
+                    sid: "flightHome.@title.description",
+                    str: "header - welcome message of flight flow",
+                },
+                {
+                    sid: "flightHome.@subtitle.description",
+                    str: "subtitle - flight landing page subheading",
                 },
                 {
                     sid: "flightHome.subtitle",
