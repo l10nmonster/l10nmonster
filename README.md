@@ -142,9 +142,16 @@ A filter for XML files used in Android apps. The `comment` property specifies wh
 * [TODO] it needs configuration to deal with message formats.
 * [BUG] it doesn't honor the `translatable` attribute.
 
-### Node JSON Filter
+### JSON Filter
 
-A filter for JSON files used in Node JS apps using the [i18next](https://www.i18next.com/misc/json-format) format.  Currently supported are comments, nested keys and plurals.
+A filter for JSON files using the [ARB spec](https://github.com/google/app-resource-bundle/wiki/ApplicationResourceBundleSpecification) as defined by the [i18next JSON v4](https://www.i18next.com/misc/json-format) format.  Currently supporting comments, nested keys and plurals.
+
+```js
+this.resourceFilter = new filters.JsonFilter({
+    enableARBAnnotations: true,
+    enablePluralSuffixes: true
+});
+```
 
 ### PO Filter
 
