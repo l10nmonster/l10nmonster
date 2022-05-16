@@ -263,7 +263,7 @@ describe("json generateTranslatedResource - emit comments", () => {
         return `${sid} ${str} - **Translation**`;
     }
     
-    test("parseResource returns raw parsed resource for plural", async () => {
+    test("generateTranslatedResource with descriptions", async () => {
         const resource = {
             homeSubtitle: "Book the trip you've been waiting for.",
             "@homeSubtitle": {
@@ -280,9 +280,90 @@ describe("json generateTranslatedResource - emit comments", () => {
         };
 
         const output = await resourceFilter.generateTranslatedResource({resource, translator});
-        console.log(JSON.stringify(output, null, 2));
         expect(output).toMatchObject(expectedOutput);
     });
+
+    test("generateTranslatedResource with plurals", async () => {
+        const resource = {
+            timeCount: {
+                day_one: "{{count}} day",
+                "@day_one": {
+                    description: "copy - time copy for day singular",
+                },
+
+                day_other: "{{count}} days",
+                "@day_other": {
+                    description: "copy - time copy for days plural",
+                },
+                day_zero: "{{count}} days",
+                "@day_zero": {
+                    description: "copy - time copy for days plural",
+                },
+                day_two: "{{count}} days",
+                "@day_two": {
+                    description: "copy - time copy for days plural",
+                },
+                day_few: "{{count}} days",
+                "@day_few": {
+                    description: "copy - time copy for days plural",
+                },
+                day_many: "{{count}} days",
+                "@day_many": {
+                    description: "copy - time copy for days plural",
+                },
+                second_one: "{{count}} second",
+                "@second_one": {
+                    description: "copy - time copy for second singular",
+                },
+
+                second_other: "{{count}} seconds",
+                "@second_other": {
+                    description: "copy - time copy for seconds plural",
+                },
+            },
+        };
+        const expectedOutput = {
+            timeCount: {
+                day_one: "timeCount.day_one {{count}} day - **Translation**",
+                "@day_one": {
+                    description: "copy - time copy for day singular",
+                },
+
+                day_other: "timeCount.day_other {{count}} days - **Translation**",
+                "@day_other": {
+                    description: "copy - time copy for days plural",
+                },
+                day_zero: "timeCount.day_zero {{count}} days - **Translation**",
+                "@day_zero": {
+                    description: "copy - time copy for days plural",
+                },
+                day_two: "timeCount.day_two {{count}} days - **Translation**",
+                "@day_two": {
+                    description: "copy - time copy for days plural",
+                },
+                day_few: "timeCount.day_few {{count}} days - **Translation**",
+                "@day_few": {
+                    description: "copy - time copy for days plural",
+                },
+                day_many: "timeCount.day_many {{count}} days - **Translation**",
+                "@day_many": {
+                    description: "copy - time copy for days plural",
+                },
+                second_one: "timeCount.second_one {{count}} second - **Translation**",
+                "@second_one": {
+                    description: "copy - time copy for second singular",
+                },
+
+                second_other: "timeCount.second_other {{count}} seconds - **Translation**",
+                "@second_other": {
+                    description: "copy - time copy for seconds plural",
+                },
+            },
+        };
+        const output = await resourceFilter.generateTranslatedResource({resource, translator});
+        expect(output).toMatchObject(expectedOutput);
+    });
+
 });
 
 describe("json generateTranslatedResource - don't emit comments", () => {
@@ -295,7 +376,7 @@ describe("json generateTranslatedResource - don't emit comments", () => {
         return `${sid} ${str} - **Translation**`;
     }
     
-    test("parseResource returns raw parsed resource for plural", async () => {
+    test("generateTranslatedResource with descriptions", async () => {
         const resource = {
             homeSubtitle: "Book the trip you've been waiting for.",
             "@homeSubtitle": {
