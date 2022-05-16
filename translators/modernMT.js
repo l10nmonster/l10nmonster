@@ -2,7 +2,7 @@ import got from 'got';
 
 import { flattenNormalizedSourceToXmlV1, extractNormalizedPartsFromXmlV1 } from '../normalizers/util.js';
 
-const MAX_CHAR_LENGTH = 9000;
+const MAX_CHAR_LENGTH = 8000;
 
 // TODO: externalize this as a general-purpose Op
 async function mmtTranslateChunkOp({ baseURL, json, headers, offset}) {
@@ -53,7 +53,7 @@ async function mmtMergeTranslatedChunksOp({ jobRequest, tuMeta, quality, ts }, c
 }
 
 export class ModernMT {
-    constructor({ baseURL, apiKey, priority, multiline, quality }) {
+    constructor({ baseURL, apiKey, priority, multiline, quality, maxCharLength }) {
         if ((apiKey && quality) === undefined) {
             throw 'You must specify apiKey, quality for ModernMT';
         } else {
@@ -66,6 +66,7 @@ export class ModernMT {
             this.priority = priority ?? 'normal',
             this.multiline = multiline ?? true,
             this.quality = quality;
+            this.maxCharLength = maxCharLength ?? MAX_CHAR_LENGTH;
             this.ctx.opsMgr.registerOp(mmtTranslateChunkOp, { idempotent: false });
             this.ctx.opsMgr.registerOp(mmtMergeTranslatedChunksOp, { idempotent: true });
         }
@@ -81,21 +82,6 @@ export class ModernMT {
             return xmlSrc;
         });
 
-        const baseRequest = {
-            url: `${this.baseURL}/translate`,
-            json: {
-                source: jobRequest.sourceLang,
-                target: jobRequest.targetLang,
-                priority: this.priority,
-                'project_id': jobRequest.jobGuid,
-                multiline: this.multiline,
-            },
-            headers: this.stdHeaders,
-            timeout: {
-                request: 60000,
-            },
-            allowGetBody: true,
-        };
         const requestTranslationsTask = this.ctx.opsMgr.createTask();
         try {
             const chunkOps = [];
@@ -103,27 +89,31 @@ export class ModernMT {
                 const offset = currentIdx;
                 const q = [];
                 let currentTotalLength = 0;
-                while (currentIdx < mmtPayload.length && mmtPayload[currentIdx].length + currentTotalLength < MAX_CHAR_LENGTH) {
+                while (currentIdx < mmtPayload.length && mmtPayload[currentIdx].length + currentTotalLength < this.maxCharLength) {
                     currentTotalLength += mmtPayload[currentIdx].length;
                     q.push(mmtPayload[currentIdx]);
                     currentIdx++;
                 }
                 if (q.length === 0) {
-                    throw `String at index ${currentIdx} exceeds ${MAX_CHAR_LENGTH} max char length`;
+                    throw `String at index ${currentIdx} exceeds ${this.maxCharLength} max char length`;
                 }
                 this.ctx.verbose && console.log(`Preparing MMT translate, offset: ${offset} chunk strings: ${q.length} chunk char length: ${currentTotalLength}`);
-                const translateOp = await requestTranslationsTask.enqueue(mmtTranslateChunkOp, {
-                    baseURL: this.baseURL,
-                    json: {
-                        source: jobRequest.sourceLang,
-                        target: jobRequest.targetLang,
-                        priority: this.priority,
-                        'project_id': jobRequest.jobGuid,
-                        multiline: this.multiline,
-                        q,
-                    },
-                    headers: this.stdHeaders,
-                    offset });
+                const translateOp = await requestTranslationsTask.enqueue(
+                    mmtTranslateChunkOp,
+                    {
+                        baseURL: this.baseURL,
+                        json: {
+                            source: jobRequest.sourceLang,
+                            target: jobRequest.targetLang,
+                            priority: this.priority,
+                            'project_id': jobRequest.jobGuid,
+                            multiline: this.multiline,
+                            q,
+                        },
+                        headers: this.stdHeaders,
+                        offset
+                    }
+                );
                 chunkOps.push(translateOp);
             }
             const rootOp = await requestTranslationsTask.enqueue(mmtMergeTranslatedChunksOp, { 

@@ -21,7 +21,7 @@ export default class CardboardConfig {
         this.translationProvider = new translators.ModernMT({
             apiKey: ctx.env.mmt_api_key,
             quality: 40,
-            chunkSize: 16,
+            maxCharLength: 100,
         });
         this.target = new adapters.FsTarget({
             targetPath: (lang, resourceId) => resourceId.replace('en.lproj/', `${lang}.lproj/`),
