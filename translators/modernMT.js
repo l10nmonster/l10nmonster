@@ -2,7 +2,8 @@ import got from 'got';
 
 import { flattenNormalizedSourceToXmlV1, extractNormalizedPartsFromXmlV1 } from '../normalizers/util.js';
 
-const MAX_CHAR_LENGTH = 8000;
+const MAX_CHAR_LENGTH = 9900;
+const MAX_CHUNK_SIZE = 125;
 
 // TODO: externalize this as a general-purpose Op
 async function mmtTranslateChunkOp({ baseURL, json, headers, offset}) {
@@ -89,7 +90,7 @@ export class ModernMT {
                 const offset = currentIdx;
                 const q = [];
                 let currentTotalLength = 0;
-                while (currentIdx < mmtPayload.length && mmtPayload[currentIdx].length + currentTotalLength < this.maxCharLength) {
+                while (currentIdx < mmtPayload.length && q.length < MAX_CHUNK_SIZE && mmtPayload[currentIdx].length + currentTotalLength < this.maxCharLength) {
                     currentTotalLength += mmtPayload[currentIdx].length;
                     q.push(mmtPayload[currentIdx]);
                     currentIdx++;
