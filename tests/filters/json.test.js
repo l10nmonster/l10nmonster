@@ -5,7 +5,7 @@ describe("json parseResource - description", () => {
         enableARBAnnotations: true,
     });
     test("parseResource returns raw parsed resource for simple string", async () => {
-        const input = {
+        const resource = {
             homeSubtitle: "Book the trip you've been waiting for.",
             "@homeSubtitle": {
                 description:
@@ -21,12 +21,12 @@ describe("json parseResource - description", () => {
                 },
             ],
         };
-        const output = await resourceFilter.parseResource(input);
+        const output = await resourceFilter.parseResource({ resource });
         expect(output).toMatchObject(expectedOutput);
     });
 
     test("parseResource returns raw parsed resource for simple string description after property", async () => {
-        const input = {
+        const resource = {
             "@homeSubtitle": {
                 description:
                     "header - This is the welcome message subtitle on the home page",
@@ -42,12 +42,12 @@ describe("json parseResource - description", () => {
                 },
             ],
         };
-        const output = await resourceFilter.parseResource(input);
+        const output = await resourceFilter.parseResource({ resource });
         expect(output).toMatchObject(expectedOutput);
     });
 
     test("parseResource returns raw parsed resource for nested strings", async () => {
-        const input = {
+        const resource = {
             flightHome: {
                 title: "<strong>Welcome back</strong> to travel.",
                 "@title": {
@@ -74,14 +74,14 @@ describe("json parseResource - description", () => {
                 },
             ],
         };
-        const output = await resourceFilter.parseResource(input);
+        const output = await resourceFilter.parseResource({ resource });
         expect(output).toMatchObject(expectedOutput);
     });
 });
 describe("json parseResource - no options", () => {
     const resourceFilter = new json.JsonFilter();
     test("parseResource returns raw parsed resource for simple string", async () => {
-        const input = {
+        const resource = {
             homeSubtitle: "Book the trip you've been waiting for.",
             "@homeSubtitle": {
                 description:
@@ -96,12 +96,12 @@ describe("json parseResource - no options", () => {
                 },
             ],
         };
-        const output = await resourceFilter.parseResource(input);
+        const output = await resourceFilter.parseResource({ resource });
         expect(output).toMatchObject(expectedOutput);
     });
 
     test("parseResource returns raw parsed resource for simple string description after property", async () => {
-        const input = {
+        const resource = {
             "@homeSubtitle": {
                 description:
                     "header - This is the welcome message subtitle on the home page",
@@ -116,12 +116,12 @@ describe("json parseResource - no options", () => {
                 },
             ],
         };
-        const output = await resourceFilter.parseResource(input);
+        const output = await resourceFilter.parseResource({ resource });
         expect(output).toMatchObject(expectedOutput);
     });
 
     test("parseResource returns raw parsed resource for nested strings", async () => {
-        const input = {
+        const resource = {
             flightHome: {
                 title: "<strong>Welcome back</strong> to travel.",
                 "@title": {
@@ -146,7 +146,7 @@ describe("json parseResource - no options", () => {
                 },
             ],
         };
-        const output = await resourceFilter.parseResource(input);
+        const output = await resourceFilter.parseResource({ resource });
         expect(output).toMatchObject(expectedOutput);
     });
 });
@@ -157,7 +157,7 @@ describe("json parseResource -  plurals", () => {
         enablePluralSuffixes: true,
     });
     test("parseResource returns raw parsed resource for plural", async () => {
-        const input = {
+        const resource = {
             timeCount: {
                 day_one: "{{count}} day",
                 "@day_one": {
@@ -247,7 +247,7 @@ describe("json parseResource -  plurals", () => {
                 },
             ],
         };
-        const output = await resourceFilter.parseResource(input);
+        const output = await resourceFilter.parseResource({ resource });
         expect(output).toMatchObject(expectedOutput);
     });
 });

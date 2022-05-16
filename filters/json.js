@@ -8,19 +8,22 @@ export class JsonFilter {
         this.emitComments = params?.emitComments || false;
     }
 
-    async parseResource(resource) {
+    async parseResource({ resource }) {
         var segments = [];
         var notes = {};
         for (const [key, value] of Object.entries(flatten(resource))) {
             if (key.indexOf("@") === -1) {
                 var seg = { sid: key, str: value };
                 notes[key] && (seg.notes = notes[key]);
-                this.enablePluralSuffixes && ["_one", "_other", "_zero", "_two", "_few", "_many"].some((plural) => key.endsWith(plural)) &&
+                this.enablePluralSuffixes &&
+                    ["_one", "_other", "_zero", "_two", "_few", "_many"].some((plural) => key.endsWith(plural)) &&
                     (seg.isSuffixPluralized = true);
                 segments.push(seg);
             } else {
                 if (this.enableARBAnnotations && key.endsWith(".description")) {
-                    const sid = key.replace("@", "").replace(".description", "");
+                    const sid = key
+                        .replace("@", "")
+                        .replace(".description", "");
                     const seg = segments.find((e) => e.sid === sid);
                     if (seg) {
                         seg.notes = value;
@@ -34,7 +37,7 @@ export class JsonFilter {
         }
         return {
             segments,
-        }
+        };
     }
 
     async generateTranslatedResource({ resource, translator }) {
@@ -48,9 +51,11 @@ export class JsonFilter {
                     parsedResource[sid] = translation;
                 }
             } else {
-                !this.emitComments && this.enableARBAnnotations && parsedResource[sid].endsWith(".description") && delete parsedResource[sid];
+                !this.emitComments &&
+                    this.enableARBAnnotations &&
+                    parsedResource[sid].endsWith(".description") &&
+                    delete parsedResource[sid];
             }
-
         }
         return flatten.unflatten(parsedResource);
     }
