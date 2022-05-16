@@ -3,9 +3,9 @@ import flatten from "flat";
 
 export class JsonFilter {
     constructor(params) {
-        this.enableARBAnnotations = params?.enableARBAnnotations || false;
+        this.enableArbAnnotations = params?.enableArbAnnotations || false;
         this.enablePluralSuffixes = params?.enablePluralSuffixes || false;
-        this.emitComments = params?.emitComments || false;
+        this.emitArbAnnotations = params?.emitArbAnnotations || false;
     }
 
     async parseResource({ resource }) {
@@ -14,7 +14,7 @@ export class JsonFilter {
         const parsedResource = Object.entries(flatten(resource));
 
         for (const [key, value] of parsedResource) {
-            if (this.enableARBAnnotations &&key.split(".").slice(-2)[0].startsWith("@")) {
+            if (this.enableArbAnnotations &&key.split(".").slice(-2)[0].startsWith("@")) {
                 const regExpKey =
                     /(?<prefix>.+?\.)?@(?<key>\S+)\.(?<attribute>\S+)/;
                 const match = regExpKey.exec(key);
@@ -50,8 +50,8 @@ export class JsonFilter {
         const parsedResource = flatten(resource);
         for (const [sid, str] of Object.entries(parsedResource)) {
             if (sid.split(".").slice(-2)[0].startsWith("@")) {
-                !this.emitComments &&
-                    this.enableARBAnnotations &&
+                !this.emitArbAnnotations &&
+                    this.enableArbAnnotations &&
                     delete parsedResource[sid];
             } else {
                 const translation = await translator(sid, str);

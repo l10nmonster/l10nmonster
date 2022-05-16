@@ -2,7 +2,7 @@ import * as json from "../../filters/json";
 
 describe("json parseResource - description", () => {
     const resourceFilter = new json.JsonFilter({
-        enableARBAnnotations: true,
+        enableArbAnnotations: true,
     });
 
     test("parseResource returns raw parsed resource for simple string no description", async () => {
@@ -210,7 +210,7 @@ describe("json parseResource - no options", () => {
 
 describe("json parseResource -  plurals", () => {
     const resourceFilter = new json.JsonFilter({
-        enableARBAnnotations: true,
+        enableArbAnnotations: true,
         enablePluralSuffixes: true,
     });
     test("parseResource returns raw parsed resource for plural", async () => {
@@ -309,11 +309,11 @@ describe("json parseResource -  plurals", () => {
     });
 });
 
-describe("json generateTranslatedResource - emit comments", () => {
+describe("json generateTranslatedResource - emit annotations", () => {
     const resourceFilter = new json.JsonFilter({
-        enableARBAnnotations: true,
+        enableArbAnnotations: true,
         enablePluralSuffixes: true,
-        emitComments: true,
+        emitArbAnnotations: true,
     });
 
     const translator = async function translate(sid, str) {
@@ -435,9 +435,9 @@ describe("json generateTranslatedResource - emit comments", () => {
 
 });
 
-describe("json generateTranslatedResource - don't emit comments", () => {
+describe("json generateTranslatedResource - don't emit annotations", () => {
     const resourceFilter = new json.JsonFilter({
-        enableARBAnnotations: true,
+        enableArbAnnotations: true,
         enablePluralSuffixes: true,
     });
 
