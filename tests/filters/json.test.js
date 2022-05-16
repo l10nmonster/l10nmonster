@@ -484,3 +484,42 @@ describe("json generateTranslatedResource - don't emit annotations", () => {
         expect(output).toMatchObject(expectedOutput);
     });
 });
+
+describe("json generateTranslatedResource - if no translation, delete annotations", () => {
+    const resourceFilter = new json.JsonFilter({
+        enableArbAnnotations: true,
+        enablePluralSuffixes: true,
+        emitArbAnnotations: true,
+    });
+
+    const translator = async function translate(sid, str) {
+        return sid === "homeSubtitle" ? null : `${sid} ${str} - **Translation**`;
+    }
+    
+    test("generateTranslatedResource with descriptions", async () => {
+        const resource = {
+            homeSubtitle: "Book the trip you've been waiting for.",
+            "@homeSubtitle": {
+                description:
+                    "header - This is the welcome message subtitle on the home page",
+            },
+            title: "<strong>Welcome back</strong> to travel.",
+            "@title": {
+                description: "header - welcome message of flight flow",
+                context: "context attribute",
+                type: "type attribute",
+            },
+        };
+        const expectedOutput = {
+            title: "title <strong>Welcome back</strong> to travel. - **Translation**",
+            "@title": {
+                description: "header - welcome message of flight flow",
+                context: "context attribute",
+                type: "type attribute",
+            },
+        };
+
+        const output = await resourceFilter.generateTranslatedResource({resource, translator});
+        expect(output).toMatchObject(expectedOutput);
+    });
+});

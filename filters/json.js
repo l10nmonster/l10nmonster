@@ -15,8 +15,7 @@ export class JsonFilter {
 
         if (this.enableArbAnnotations) {
             for (const [key, value] of parsedResource.filter(e => e[0].split(".").slice(-2)[0].startsWith("@"))) {
-                const regExpKey =
-                    /(?<prefix>.+?\.)?@(?<key>\S+)\.(?<attribute>\S+)/;
+                const regExpKey = /(?<prefix>.+?\.)?@(?<key>\S+)\.(?<attribute>\S+)/;
                 const match = regExpKey.exec(key);
                 if (["description", "type", "context", "placeholders", "screenshot", "video", "source_text"]
                     .some((attribute) => match.groups.attribute === attribute)) {
@@ -29,7 +28,6 @@ export class JsonFilter {
                     console.dir(resource, { depth: null });
                 }
             }
-
             for (const [key, value] of parsedResource.filter(e => !e[0].split(".").slice(-2)[0].startsWith("@"))) {
                 let seg = { sid: key, str: value };
                 notes[key] && (seg.notes = notes[key]);
@@ -55,17 +53,25 @@ export class JsonFilter {
 
     async generateTranslatedResource({ resource, translator }) {
         const parsedResource = flatten(resource);
-        for (const [sid, str] of Object.entries(parsedResource)) {
-            if (sid.split(".").slice(-2)[0].startsWith("@")) {
-                !this.emitArbAnnotations &&
-                    this.enableArbAnnotations &&
-                    delete parsedResource[sid];
+        for (const [sid, str] of Object.entries(parsedResource).filter(e => !e[0].split(".").slice(-2)[0].startsWith("@"))) {
+            const translation = await translator(sid, str);
+            if (translation === undefined) {
+                delete parsedResource[sid];
             } else {
-                const translation = await translator(sid, str);
-                if (translation === undefined) {
-                    delete parsedResource[sid];
+                parsedResource[sid] = translation;
+            }
+        }
+        if (this.enableArbAnnotations) {
+            for (const key of Object.keys(parsedResource).filter(e => e[0].split(".").slice(-2)[0].startsWith("@"))) {
+                if (this.emitArbAnnotations) {
+                    const regExpKey = /(?<prefix>.+?\.)?@(?<key>\S+)\.(?<attribute>\S+)/;
+                    const match = regExpKey.exec(key);    
+                    const sid = `${match.groups.prefix ?? ""}${match.groups.key}`;
+                    if (!parsedResource[sid]) {
+                        delete parsedResource[sid];
+                    }
                 } else {
-                    parsedResource[sid] = translation;
+                    delete parsedResource[key];
                 }
             }
         }
