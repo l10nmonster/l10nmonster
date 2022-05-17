@@ -144,17 +144,15 @@ A filter for XML files used in Android apps. The `comment` property specifies wh
 
 ### JSON Filter
 
-A filter for JSON files using the [ARB spec](https://github.com/google/app-resource-bundle/wiki/ApplicationResourceBundleSpecification) as defined by the [i18next JSON v4](https://www.i18next.com/misc/json-format) format.  Currently supporting annotations, nested keys and plurals.
+A filter for JSON files. It supports annotations as defined by the [ARB spec](https://github.com/google/app-resource-bundle/wiki/ApplicationResourceBundleSpecification). In addition it supports nested keys and plurals as defined by the [i18next JSON v4](https://www.i18next.com/misc/json-format) format.
 
 ```js
 this.resourceFilter = new filters.JsonFilter({
         enableArbAnnotations: true,
         enablePluralSuffixes: true,
         emitArbAnnotations: true
-
 });
 ```
-
 
 ### PO Filter
 

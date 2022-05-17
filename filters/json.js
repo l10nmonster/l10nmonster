@@ -1,5 +1,28 @@
 // i18next j4 json format defined at https://www.i18next.com/misc/json-format
-import flatten from "flat";
+import { default as flat } from 'flat';
+
+const isArbAnnotations = e => e[0].split('.').slice(-2)[0].startsWith('@');
+const validArbAnnotations = new Set(['description', 'type', 'context', 'placeholders', 'screenshot', 'video', 'source_text']);
+const validPluralSuffixes = new Set(['one', 'other', 'zero', 'two', 'few', 'many']);
+const extractArbGroupsRegex = /(?<prefix>.+?\.)?@(?<key>\S+)\.(?<attribute>\S+)/;
+
+function parseResourceAnnotations(resource, enableArbAnnotations, verbose) {
+    let parsedResource = Object.entries(flat.flatten(resource));
+    const notes = {};
+    if (enableArbAnnotations) {
+        for (const [key, value] of parsedResource.filter(isArbAnnotations)) {
+            const arbGroups = extractArbGroupsRegex.exec(key).groups;
+            const sid = `${arbGroups.prefix ?? ''}${arbGroups.key}`;
+            if (validArbAnnotations.has(arbGroups.attribute)) {
+                notes[sid] = `${notes[sid] ? `${notes[sid]}\n` : ''}${arbGroups.attribute === 'description' ? '' : `${arbGroups.attribute}: `}${arbGroups.attribute === 'placeholders' ? JSON.stringify(value) : value}`;
+            } else if (verbose) {
+                console.error(`Unexpected ${arbGroups.attribute} annotation for SID ${sid}`);
+            }
+        }    
+    }
+    enableArbAnnotations && (parsedResource = parsedResource.filter(e => !isArbAnnotations(e)));
+    return [ parsedResource, notes ];
+}
 
 export class JsonFilter {
     constructor(params) {
@@ -9,72 +32,43 @@ export class JsonFilter {
     }
 
     async parseResource({ resource }) {
-        var segments = [];
-        var notes = {};
-        const parsedResource = Object.entries(flatten(resource));
-
-        if (this.enableArbAnnotations) {
-            for (const [key, value] of parsedResource.filter(e => e[0].split(".").slice(-2)[0].startsWith("@"))) {
-                const regExpKey = /(?<prefix>.+?\.)?@(?<key>\S+)\.(?<attribute>\S+)/;
-                const match = regExpKey.exec(key);
-                if (["description", "type", "context", "placeholders", "screenshot", "video", "source_text"]
-                    .some((attribute) => match.groups.attribute === attribute)) {
-                    const sid = `${match.groups.prefix ?? ""}${match.groups.key}`;
-                    notes[sid] = notes[sid] ?
-                        (notes[sid] += `. ${value}`) :
-                        value;
-                } else if (this?.ctx?.verbose) {
-                    console.log(`Unexpected ARB format: ${match.groups.attribute} for ${match.groups.key}`);
-                    console.dir(resource, { depth: null });
-                }
+        const segments = [];
+        const [ parsedResource, notes ] = parseResourceAnnotations(resource, this.enableArbAnnotations, this?.ctx?.verbose);
+        for (const [key, value] of parsedResource) {
+            let seg = { sid: key, str: value };
+            notes[key] && (seg.notes = notes[key]);
+            if (this.enablePluralSuffixes && key.indexOf('_') !== -1 && validPluralSuffixes.has(key.split('_').slice(-1)[0])) {
+                seg.isSuffixPluralized = true;
             }
-            for (const [key, value] of parsedResource.filter(e => !e[0].split(".").slice(-2)[0].startsWith("@"))) {
-                let seg = { sid: key, str: value };
-                notes[key] && (seg.notes = notes[key]);
-                this.enablePluralSuffixes &&
-                    ["_one", "_other", "_zero", "_two", "_few", "_many"].some((plural) => key.endsWith(plural)) && 
-                    (seg.isSuffixPluralized = true);
-                segments.push(seg);
-            }
-        } else {
-            for (const [key, value] of parsedResource) {
-                let seg = { sid: key, str: value };
-                this.enablePluralSuffixes &&
-                    ["_one", "_other", "_zero", "_two", "_few", "_many"].some((plural) => key.endsWith(plural)) && 
-                    (seg.isSuffixPluralized = true);
-                segments.push(seg);
-            }
-        }
-    
-    return {
+            segments.push(seg);
+        }    
+        return {
             segments,
         };
     }
 
-    async generateTranslatedResource({ resource, translator }) {
-        const parsedResource = flatten(resource);
-        for (const [sid, str] of Object.entries(parsedResource).filter(e => !e[0].split(".").slice(-2)[0].startsWith("@"))) {
-            const translation = await translator(sid, str);
-            if (translation === undefined) {
-                delete parsedResource[sid];
-            } else {
-                parsedResource[sid] = translation;
+    async translateResource({ resource, translator }) {
+        let flatResource = flat.flatten(resource);
+        for (const entry of Object.entries(flatResource)) {
+            if (!this.enableArbAnnotations || !isArbAnnotations(entry)) {
+                const translation = await translator(...entry);
+                if (translation === undefined) {
+                    delete flatResource[entry[0]];
+                } else {
+                    flatResource[entry[0]] = translation;
+                    // TODO: deal with pluralized forms as well
+                }    
             }
         }
         if (this.enableArbAnnotations) {
-            for (const key of Object.keys(parsedResource).filter(e => e[0].split(".").slice(-2)[0].startsWith("@"))) {
-                if (this.emitArbAnnotations) {
-                    const regExpKey = /(?<prefix>.+?\.)?@(?<key>\S+)\.(?<attribute>\S+)/;
-                    const match = regExpKey.exec(key);    
-                    const sid = `${match.groups.prefix ?? ""}${match.groups.key}`;
-                    if (!parsedResource[sid]) {
-                        delete parsedResource[sid];
-                    }
-                } else {
-                    delete parsedResource[key];
+            for (const entry of Object.entries(flatResource).filter(entry => isArbAnnotations(entry))) {
+                const arbGroups = extractArbGroupsRegex.exec(entry[0]).groups;
+                const sid = `${arbGroups.prefix ?? ''}${arbGroups.key}`;
+                if (!this.emitArbAnnotations || !flatResource[sid]) {
+                    delete flatResource[entry[0]];
                 }
             }
         }
-        return flatten.unflatten(parsedResource);
+        return flat.unflatten(flatResource);
     }
 }

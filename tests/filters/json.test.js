@@ -120,7 +120,7 @@ describe("json parseResource - description", () => {
                 {
                     sid: "flightHome.title",
                     str: "<strong>Welcome back</strong> to travel.",
-                    notes: "header - welcome message of flight flow. context attribute. type attribute"
+                    notes: "header - welcome message of flight flow\ncontext: context attribute\ntype: type attribute"
                 },
                 {
                     sid: "flightHome.subtitle",
@@ -325,7 +325,7 @@ describe("json parseResource -  plurals", () => {
     });
 });
 
-describe("json generateTranslatedResource - emit annotations", () => {
+describe("json translateResource - emit annotations", () => {
     const resourceFilter = new json.JsonFilter({
         enableArbAnnotations: true,
         enablePluralSuffixes: true,
@@ -336,7 +336,7 @@ describe("json generateTranslatedResource - emit annotations", () => {
         return `${sid} ${str} - **Translation**`;
     }
     
-    test("generateTranslatedResource with descriptions", async () => {
+    test("translateResource with descriptions", async () => {
         const resource = {
             homeSubtitle: "Book the trip you've been waiting for.",
             "@homeSubtitle": {
@@ -364,11 +364,11 @@ describe("json generateTranslatedResource - emit annotations", () => {
             },
         };
 
-        const output = await resourceFilter.generateTranslatedResource({resource, translator});
+        const output = await resourceFilter.translateResource({resource, translator});
         expect(output).toMatchObject(expectedOutput);
     });
 
-    test("generateTranslatedResource with plurals", async () => {
+    test("translateResource with plurals", async () => {
         const resource = {
             timeCount: {
                 day_one: "{{count}} day",
@@ -445,13 +445,13 @@ describe("json generateTranslatedResource - emit annotations", () => {
                 },
             },
         };
-        const output = await resourceFilter.generateTranslatedResource({resource, translator});
+        const output = await resourceFilter.translateResource({resource, translator});
         expect(output).toMatchObject(expectedOutput);
     });
 
 });
 
-describe("json generateTranslatedResource - don't emit annotations", () => {
+describe("json translateResource - don't emit annotations", () => {
     const resourceFilter = new json.JsonFilter({
         enableArbAnnotations: true,
         enablePluralSuffixes: true,
@@ -461,7 +461,7 @@ describe("json generateTranslatedResource - don't emit annotations", () => {
         return `${sid} ${str} - **Translation**`;
     }
     
-    test("generateTranslatedResource with descriptions", async () => {
+    test("translateResource with descriptions", async () => {
         const resource = {
             homeSubtitle: "Book the trip you've been waiting for.",
             "@homeSubtitle": {
@@ -480,12 +480,12 @@ describe("json generateTranslatedResource - don't emit annotations", () => {
             title: "title <strong>Welcome back</strong> to travel. - **Translation**",
         };
 
-        const output = await resourceFilter.generateTranslatedResource({resource, translator});
+        const output = await resourceFilter.translateResource({resource, translator});
         expect(output).toMatchObject(expectedOutput);
     });
 });
 
-describe("json generateTranslatedResource - if no translation, delete annotations", () => {
+describe("json translateResource - if no translation, delete annotations", () => {
     const resourceFilter = new json.JsonFilter({
         enableArbAnnotations: true,
         enablePluralSuffixes: true,
@@ -496,7 +496,7 @@ describe("json generateTranslatedResource - if no translation, delete annotation
         return sid === "homeSubtitle" ? null : `${sid} ${str} - **Translation**`;
     }
     
-    test("generateTranslatedResource with descriptions", async () => {
+    test("translateResource with descriptions", async () => {
         const resource = {
             homeSubtitle: "Book the trip you've been waiting for.",
             "@homeSubtitle": {
@@ -519,7 +519,7 @@ describe("json generateTranslatedResource - if no translation, delete annotation
             },
         };
 
-        const output = await resourceFilter.generateTranslatedResource({resource, translator});
+        const output = await resourceFilter.translateResource({resource, translator});
         expect(output).toMatchObject(expectedOutput);
     });
 });
