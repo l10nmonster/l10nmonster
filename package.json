@@ -34,6 +34,7 @@
     "commander": "^9.0.0",
     "diff": "^5.0.0",
     "fast-xml-parser": "^4.0.3",
+    "flat": "^5.0.2",
     "gettext-parser": "^5.0.0",
     "globby": "^13.1.1",
     "got": "^12.0.0",

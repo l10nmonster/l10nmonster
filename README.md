@@ -142,6 +142,20 @@ A filter for XML files used in Android apps. The `comment` property specifies wh
 * [TODO] it needs configuration to deal with message formats.
 * [BUG] it doesn't honor the `translatable` attribute.
 
+### JSON Filter
+
+A filter for JSON files using the [ARB spec](https://github.com/google/app-resource-bundle/wiki/ApplicationResourceBundleSpecification) as defined by the [i18next JSON v4](https://www.i18next.com/misc/json-format) format.  Currently supporting annotations, nested keys and plurals.
+
+```js
+this.resourceFilter = new filters.JsonFilter({
+        enableArbAnnotations: true,
+        enablePluralSuffixes: true,
+        emitArbAnnotations: true
+
+});
+```
+
+
 ### PO Filter
 
 ```js
