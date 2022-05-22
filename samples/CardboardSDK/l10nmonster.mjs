@@ -18,10 +18,14 @@ export default class CardboardConfig {
         //     quality: 90,
         //     trafficStore: new stores.FSTrafficStore(),
         // });
-        this.translationProvider = new translators.ModernMT({
-            apiKey: ctx.env.mmt_api_key,
+        // this.translationProvider = new translators.ModernMT({
+        //     apiKey: ctx.env.mmt_api_key,
+        //     quality: 40,
+        //     maxCharLength: 100,
+        // });
+        this.translationProvider = new translators.DeepL({
+            apiKey: ctx.env.deepl_api_key,
             quality: 40,
-            maxCharLength: 100,
         });
         this.target = new adapters.FsTarget({
             targetPath: (lang, resourceId) => resourceId.replace('en.lproj/', `${lang}.lproj/`),
