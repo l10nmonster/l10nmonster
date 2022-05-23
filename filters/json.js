@@ -33,7 +33,7 @@ export class JsonFilter {
 
     async parseResource({ resource }) {
         const segments = [];
-        const [ parsedResource, notes ] = parseResourceAnnotations(resource, this.enableArbAnnotations, this?.ctx?.verbose);
+        const [ parsedResource, notes ] = parseResourceAnnotations(JSON.parse(resource), this.enableArbAnnotations, this?.ctx?.verbose);
         for (const [key, value] of parsedResource) {
             let seg = { sid: key, str: value };
             notes[key] && (seg.notes = notes[key]);
@@ -48,7 +48,7 @@ export class JsonFilter {
     }
 
     async translateResource({ resource, translator }) {
-        let flatResource = flat.flatten(resource);
+        let flatResource = flat.flatten(JSON.parse(resource));
         for (const entry of Object.entries(flatResource)) {
             if (!this.enableArbAnnotations || !isArbAnnotations(entry)) {
                 const translation = await translator(...entry);
@@ -69,6 +69,6 @@ export class JsonFilter {
                 }
             }
         }
-        return flat.unflatten(flatResource);
+        return JSON.stringify(flat.unflatten(flatResource), null, 2);
     }
 }

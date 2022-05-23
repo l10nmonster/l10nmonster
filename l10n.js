@@ -35,6 +35,7 @@ import { PoFilter } from './filters/po.js';
 import { AndroidFilter } from './filters/android.js';
 import { JavaPropertiesFilter } from './filters/java.js';
 import { IosStringsFilter } from './filters/ios.js';
+import { JsonFilter } from './filters/json.js';
 import { XliffBridge } from './translators/xliff.js';
 import { PigLatinizer } from './translators/piglatinizer.js';
 import { TranslationOS } from './translators/translationOS.js';
@@ -79,7 +80,7 @@ async function initMonster() {
                 FsSource, FsTarget,
             },
             filters: {
-                PoFilter, AndroidFilter, JavaPropertiesFilter, IosStringsFilter
+                PoFilter, AndroidFilter, JavaPropertiesFilter, IosStringsFilter, JsonFilter
             },
             normalizers: {
                 ...regexNormalizers,
