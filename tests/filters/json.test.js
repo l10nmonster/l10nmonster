@@ -22,7 +22,7 @@ describe("json parseResource - description", () => {
                 },
             ],
         };
-        const output = await resourceFilter.parseResource({ resource });
+        const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
         expect(output).toMatchObject(expectedOutput);
     });
 
@@ -63,7 +63,7 @@ describe("json parseResource - description", () => {
                 },
             ],
         };
-        const output = await resourceFilter.parseResource({ resource });
+        const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
         expect(output).toMatchObject(expectedOutput);
     });
 
@@ -95,7 +95,7 @@ describe("json parseResource - description", () => {
                 },
             ],
         };
-        const output = await resourceFilter.parseResource({ resource });
+        const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
         expect(output).toMatchObject(expectedOutput);
     });
 
@@ -120,19 +120,18 @@ describe("json parseResource - description", () => {
                 {
                     sid: "flightHome.title",
                     str: "<strong>Welcome back</strong> to travel.",
-                    notes: "header - welcome message of flight flow\ncontext: context attribute\ntype: type attribute"
+                    notes: "header - welcome message of flight flow\ncontext: context attribute\ntype: type attribute",
                 },
                 {
                     sid: "flightHome.subtitle",
                     str: "Book the trip you've been waiting for.",
-                    notes: "subtitle - flight landing page subheading"
+                    notes: "subtitle - flight landing page subheading",
                 },
             ],
         };
-        const output = await resourceFilter.parseResource({ resource });
+        const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
         expect(output).toMatchObject(expectedOutput);
     });
-
 });
 describe("json parseResource - no options", () => {
     const resourceFilter = new json.JsonFilter();
@@ -153,10 +152,10 @@ describe("json parseResource - no options", () => {
                 {
                     sid: "@homeSubtitle.description",
                     str: "header - This is the welcome message subtitle on the home page",
-                },                
+                },
             ],
         };
-        const output = await resourceFilter.parseResource({ resource });
+        const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
         expect(output).toMatchObject(expectedOutput);
     });
 
@@ -173,14 +172,14 @@ describe("json parseResource - no options", () => {
                 {
                     sid: "@homeSubtitle.description",
                     str: "header - This is the welcome message subtitle on the home page",
-                },                
+                },
                 {
                     sid: "homeSubtitle",
                     str: "Book the trip you've been waiting for.",
                 },
             ],
         };
-        const output = await resourceFilter.parseResource({ resource });
+        const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
         expect(output).toMatchObject(expectedOutput);
     });
 
@@ -218,10 +217,9 @@ describe("json parseResource - no options", () => {
                 },
             ],
         };
-        const output = await resourceFilter.parseResource({ resource });
+        const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
         expect(output).toMatchObject(expectedOutput);
     });
-
 });
 
 describe("json parseResource -  plurals", () => {
@@ -320,7 +318,7 @@ describe("json parseResource -  plurals", () => {
                 },
             ],
         };
-        const output = await resourceFilter.parseResource({ resource });
+        const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
         expect(output).toMatchObject(expectedOutput);
     });
 });
@@ -334,8 +332,8 @@ describe("json translateResource - emit annotations", () => {
 
     const translator = async function translate(sid, str) {
         return `${sid} ${str} - **Translation**`;
-    }
-    
+    };
+
     test("translateResource with descriptions", async () => {
         const resource = {
             homeSubtitle: "Book the trip you've been waiting for.",
@@ -349,9 +347,10 @@ describe("json translateResource - emit annotations", () => {
                 context: "context attribute",
                 type: "type attribute",
             },
-    };
+        };
         const expectedOutput = {
-            homeSubtitle: "homeSubtitle Book the trip you've been waiting for. - **Translation**",
+            homeSubtitle:
+                "homeSubtitle Book the trip you've been waiting for. - **Translation**",
             "@homeSubtitle": {
                 description:
                     "header - This is the welcome message subtitle on the home page",
@@ -364,8 +363,11 @@ describe("json translateResource - emit annotations", () => {
             },
         };
 
-        const output = await resourceFilter.translateResource({resource, translator});
-        expect(output).toMatchObject(expectedOutput);
+        const output = await resourceFilter.translateResource({
+            resource: JSON.stringify(resource),
+            translator,
+        });
+        expect(JSON.parse(output)).toMatchObject(expectedOutput);
     });
 
     test("translateResource with plurals", async () => {
@@ -414,7 +416,8 @@ describe("json translateResource - emit annotations", () => {
                     description: "copy - time copy for day singular",
                 },
 
-                day_other: "timeCount.day_other {{count}} days - **Translation**",
+                day_other:
+                    "timeCount.day_other {{count}} days - **Translation**",
                 "@day_other": {
                     description: "copy - time copy for days plural",
                 },
@@ -434,21 +437,25 @@ describe("json translateResource - emit annotations", () => {
                 "@day_many": {
                     description: "copy - time copy for days plural",
                 },
-                second_one: "timeCount.second_one {{count}} second - **Translation**",
+                second_one:
+                    "timeCount.second_one {{count}} second - **Translation**",
                 "@second_one": {
                     description: "copy - time copy for second singular",
                 },
 
-                second_other: "timeCount.second_other {{count}} seconds - **Translation**",
+                second_other:
+                    "timeCount.second_other {{count}} seconds - **Translation**",
                 "@second_other": {
                     description: "copy - time copy for seconds plural",
                 },
             },
         };
-        const output = await resourceFilter.translateResource({resource, translator});
-        expect(output).toMatchObject(expectedOutput);
+        const output = await resourceFilter.translateResource({
+            resource: JSON.stringify(resource),
+            translator,
+        });
+        expect(JSON.parse(output)).toMatchObject(expectedOutput);
     });
-
 });
 
 describe("json translateResource - don't emit annotations", () => {
@@ -459,8 +466,8 @@ describe("json translateResource - don't emit annotations", () => {
 
     const translator = async function translate(sid, str) {
         return `${sid} ${str} - **Translation**`;
-    }
-    
+    };
+
     test("translateResource with descriptions", async () => {
         const resource = {
             homeSubtitle: "Book the trip you've been waiting for.",
@@ -476,12 +483,16 @@ describe("json translateResource - don't emit annotations", () => {
             },
         };
         const expectedOutput = {
-            homeSubtitle: "homeSubtitle Book the trip you've been waiting for. - **Translation**",
+            homeSubtitle:
+                "homeSubtitle Book the trip you've been waiting for. - **Translation**",
             title: "title <strong>Welcome back</strong> to travel. - **Translation**",
         };
 
-        const output = await resourceFilter.translateResource({resource, translator});
-        expect(output).toMatchObject(expectedOutput);
+        const output = await resourceFilter.translateResource({
+            resource: JSON.stringify(resource),
+            translator,
+        });
+        expect(JSON.parse(output)).toMatchObject(expectedOutput);
     });
 });
 
@@ -493,9 +504,11 @@ describe("json translateResource - if no translation, delete annotations", () =>
     });
 
     const translator = async function translate(sid, str) {
-        return sid === "homeSubtitle" ? null : `${sid} ${str} - **Translation**`;
-    }
-    
+        return sid === "homeSubtitle" ?
+            null :
+            `${sid} ${str} - **Translation**`;
+    };
+
     test("translateResource with descriptions", async () => {
         const resource = {
             homeSubtitle: "Book the trip you've been waiting for.",
@@ -519,7 +532,10 @@ describe("json translateResource - if no translation, delete annotations", () =>
             },
         };
 
-        const output = await resourceFilter.translateResource({resource, translator});
-        expect(output).toMatchObject(expectedOutput);
+        const output = await resourceFilter.translateResource({
+            resource: JSON.stringify(resource),
+            translator,
+        });
+        expect(JSON.parse(output)).toMatchObject(expectedOutput);
     });
 });
