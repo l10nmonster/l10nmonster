@@ -1,0 +1,61 @@
+[
+	{
+		"jobId": 0,
+		"jobGuid": "x",
+		"status": "done",
+		"sourceLang": "en",
+		"targetLang": "de",
+		"leverage": {
+			"tmSize": 0,
+			"minimumQuality": 50,
+			"prjLeverage": {
+				"default": {
+					"translated": 0,
+					"translatedWords": 0,
+					"translatedByQ": {},
+					"untranslated": 18,
+					"untranslatedChars": 419,
+					"untranslatedWords": 69,
+					"pending": 0,
+					"pendingWords": 0,
+					"internalRepetitions": 0,
+					"internalRepetitionWords": 0
+				}
+			}
+		},
+		"translationProvider": "Grandfather",
+		"updatedAt": "2022-02-05T00:00:00.000Z"
+	},
+	{
+		"jobId": 1,
+		"jobGuid": "x",
+		"status": "done",
+		"sourceLang": "en",
+		"targetLang": "ru",
+		"leverage": {
+			"tmSize": 0,
+			"minimumQuality": 50,
+			"prjLeverage": {
+				"default": {
+					"translated": 0,
+					"translatedWords": 0,
+					"translatedByQ": {},
+					"untranslated": 18,
+					"untranslatedChars": 419,
+					"untranslatedWords": 69,
+					"pending": 0,
+					"pendingWords": 0,
+					"internalRepetitions": 0,
+					"internalRepetitionWords": 0
+				}
+			}
+		},
+		"translationProvider": "Grandfather",
+		"updatedAt": "2022-02-05T00:00:00.000Z"
+	},
+	{
+		"jobId": 2,
+		"jobGuid": "x",
+		"status": "created"
+	}
+]

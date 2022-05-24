@@ -1,0 +1,137 @@
+{
+	"sourceLang": "en",
+	"targetLang": "de",
+	"leverage": {
+		"tmSize": 0,
+		"minimumQuality": 50,
+		"prjLeverage": {
+			"default": {
+				"translated": 0,
+				"translatedWords": 0,
+				"translatedByQ": {},
+				"untranslated": 18,
+				"untranslatedChars": 419,
+				"untranslatedWords": 69,
+				"pending": 0,
+				"pendingWords": 0,
+				"internalRepetitions": 0,
+				"internalRepetitionWords": 0
+			}
+		}
+	},
+	"tus": [
+		{
+			"guid": "wUtgDUDVeLsT_x9VEGH_peG9Ujs3DvX1H3cvHtxgcjw",
+			"q": 70,
+			"src": "Welcome to react using react-i18next",
+			"tgt": "Willkommen zu react und react-i18next",
+			"ts": 1653362971093
+		},
+		{
+			"guid": "cghma_NsjtZInytTsem0CwlHb1dS2hT2uQGVfDLNkaI",
+			"q": 70,
+			"nsrc": [
+				"To get started, edit ",
+				{
+					"t": "bx",
+					"v": "<1>"
+				},
+				"src/App.js",
+				{
+					"t": "ex",
+					"v": "</1>"
+				},
+				" and save to reload."
+			],
+			"ntgt": [
+				"Um loszulegen, ändere ",
+				{
+					"t": "bx",
+					"v": "<1>",
+					"v1": "a_bx_1"
+				},
+				"src/App.js",
+				{
+					"t": "ex",
+					"v": "</1>",
+					"v1": "b_ex_1"
+				},
+				" speicheren und neuladen."
+			],
+			"ts": 1653362971093
+		},
+		{
+			"guid": "B2tOpN7eXoM6vDTFJdnZEO-5fTC49LtcVxOOxviW7z8",
+			"q": 70,
+			"src": "Switch language between english and german using buttons above.",
+			"tgt": "Ändere die Sprachen zwischen deutsch und englisch mit Hilfe der beiden Schalter.",
+			"ts": 1653362971093
+		},
+		{
+			"guid": "mVpp2sfDV8h1yTpK3YpunsGCCyrOtgRsoijdn0rbpfo",
+			"q": 70,
+			"nsrc": [
+				"Welcome, ",
+				{
+					"t": "x",
+					"v": "{name}"
+				},
+				"!"
+			],
+			"ntgt": [
+				"Willkommen, ",
+				{
+					"t": "x",
+					"v": "{name}",
+					"v1": "a_x_name"
+				},
+				"!"
+			],
+			"ts": 1653362971093
+		},
+		{
+			"guid": "RLKDBvHhlr-qK3r-qduFToaGzxrPq1lCG1NlVq7u80s",
+			"q": 70,
+			"nsrc": [
+				"Welcome, ",
+				{
+					"t": "bx",
+					"v": "<0>"
+				},
+				{
+					"t": "x",
+					"v": "{name}"
+				},
+				{
+					"t": "ex",
+					"v": "</0>"
+				},
+				"!"
+			],
+			"ntgt": [
+				"Willkommen, ",
+				{
+					"t": "bx",
+					"v": "<0>",
+					"v1": "a_bx_0"
+				},
+				{
+					"t": "x",
+					"v": "{name}",
+					"v1": "b_x_name"
+				},
+				{
+					"t": "ex",
+					"v": "</0>",
+					"v1": "c_ex_0"
+				},
+				"!"
+			],
+			"ts": 1653362971093
+		}
+	],
+	"status": "done",
+	"translationProvider": "Grandfather",
+	"jobId": 0,
+	"jobGuid": "x"
+}
