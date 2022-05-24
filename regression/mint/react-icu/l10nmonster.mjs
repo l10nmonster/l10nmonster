@@ -12,14 +12,6 @@ export default class ReactConfig {
             quality: 90,
             trafficStore: new stores.FSTrafficStore(),
         });
-        // this.translationProvider = new translators.ModernMT({
-        //     apiKey: ctx.env.mmt_api_key,
-        //     quality: 40,
-        //     maxCharLength: 100,
-        // });
-        // this.translationProvider  = new translators.Visicode({
-        //     quality: 2
-        // });
         this.jobStore = new stores.JsonJobStore({
             jobsDir: 'translationJobs',
         });
@@ -34,10 +26,8 @@ export default class ReactConfig {
                     enablePluralSuffixes : true,
                     emitArbAnnotations : true,
                 }),
-                decoders: [ normalizers.javaEscapesDecoder, normalizers.xmlDecoder, 
-                    normalizers.doubleBracePHDecoder,
-                    normalizers.bracePHDecoder, 
-                    normalizers.xmlEntityDecoder, normalizers.i18nextKeyDecoder ],
+                decoders: [ normalizers.xmlDecoder, normalizers.doubleBracePHDecoder,
+                    normalizers.xmlEntityDecoder, normalizers.i18nextKeyDecoder ],                
                 target: new adapters.FsTarget({
                     targetPath: (lang, resourceId) => resourceId.replace('en/', `${lang}/`),
                 }),
