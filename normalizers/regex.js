@@ -260,8 +260,8 @@ export const iosPHDecoder = regexMatchingDecoderMaker(
 // See: https://www.i18next.com/misc/json-format#i18next-json-v4
 export const i18nextKeyDecoder = regexMatchingDecoderMaker(
     'i18nextKey',
-    /(?<fn>\$\w)\((?<tag>[\w:.]+)\)/g,
-    (groups) => ({ t: 'x', v: groups.tag })
+    /\$(?<fn>\w)\((?<tag>[\w:.]+)\)/g,
+    (groups) => ({ t: 'x', v: `$${groups.fn}(${groups.tag})` })
 );
 
 // {{param}} style placeholders
