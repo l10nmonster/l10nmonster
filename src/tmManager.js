@@ -4,8 +4,7 @@ import {
     readFileSync,
 } from 'fs';
 import * as fs from 'fs/promises';
-import {js2tmx} from 'tmexchange';
-import { flattenNormalizedSourceToOrdinal, flattenNormalizedSourceV1 } from '../normalizers/util.js';
+import { flattenNormalizedSourceToOrdinal } from '../normalizers/util.js';
 
 class TM {
     dirty = false;
@@ -90,27 +89,6 @@ class TM {
         }
         this.setJobStatus(jobId, status);
         await this.commit();
-    }
-
-    async exportTMX(sourceLookup, all) {
-        const getMangledSrc = tu => (tu.nsrc ? flattenNormalizedSourceV1(tu.nsrc)[0] : tu.src);
-        const getMangledTgt = tu => (tu.ntgt ? flattenNormalizedSourceV1(tu.ntgt)[0] : tu.tgt);
-        const tmx = {
-            sourceLanguage: this.tm.sourceLang,
-            resources: {},
-        };
-        for (const tu of Object.values(sourceLookup)) {
-            const translatedTU = this.tm.tus[tu.guid];
-            const mangledTgt = translatedTU !== undefined && getMangledTgt(translatedTU);
-            if (all || Boolean(mangledTgt)) {
-                const group = tu.prj || 'default';
-                tmx.resources[group] ??= {};
-                tmx.resources[group][tu.guid] = {};
-                tmx.resources[group][tu.guid][this.tm.sourceLang] = getMangledSrc(tu);
-                Boolean(mangledTgt) && (tmx.resources[group][tu.guid][this.tm.targetLang] = mangledTgt);
-            }
-        }
-        return [ tmx, await js2tmx(tmx) ];
     }
 }
 

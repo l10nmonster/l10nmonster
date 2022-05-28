@@ -27,7 +27,7 @@ import { pushCmd } from './src/pushCmd.js';
 import { jobPush } from './src/jobCmd.js';
 import { statusCmd } from './src/statusCmd.js';
 import { jobsCmd } from './src/jobsCmd.js';
-import { tmxExportCmd } from './src/tmxExportCmd.js';
+import { tmExportCmd } from './src/tmExportCmd.js';
 import { translateCmd } from './src/translateCmd.js';
 
 import { FsSource, FsTarget } from './adapters/fs.js';
@@ -428,16 +428,22 @@ monsterCLI
 ;
 
 monsterCLI
-    .command('tmxexport')
-    .description('generate TMX resources based on the current translation memory.')
-    .option('--all', 'export also entries with no translation')
+    .command('tmexport')
+    .description('generate translation pairs of current source in various formats.')
+    .requiredOption('-f, --format <tmx|json>', 'exported file format')
+    .option('--all', 'also export entries with no translations')
     .option('-l, --lang <language>', 'target language to export')
     .action(async (options) => await withMonsterManager(async monsterManager => {
         const all = options.all;
         const limitToLang = options.lang;
-        console.log(`Exporting TMX for ${limitToLang ? limitToLang : 'all languages'}...`);
-        const status = await tmxExportCmd(monsterManager, { limitToLang, all });
-        console.log(`Generated files: ${status.files.join(', ')}`);
+        const format = options.format;
+        if (['json', 'tmx'].includes(format)) {
+            console.log(`Exporting TMX for ${limitToLang ? limitToLang : 'all languages'}...`);
+            const status = await tmExportCmd(monsterManager, { limitToLang, all, format });
+            console.log(`Generated files: ${status.files.join(', ')}`);
+        } else {
+            console.log('Invalid export format');
+          }
     }))
 ;
 
