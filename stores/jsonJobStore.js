@@ -80,6 +80,6 @@ export class JsonJobStore {
 
     async getJobRequest(jobId) {
         const jobPath = path.join(this.jobsDir, `job_${jobId}-req.json`);
-        return JSON.parse(await fs.readFile(jobPath, 'utf8'));
+        return existsSync(jobPath) ? JSON.parse(await fs.readFile(jobPath, 'utf8')) : {};
     }
 }

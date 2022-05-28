@@ -113,8 +113,9 @@ export default class TMManager {
             const jobs = await this.jobStore.getJobStatusByLangPair(sourceLang, targetLang);
             for (const [jobId, status] of jobs) {
                 if (tm.getJobStatus(jobId) !== status) {
-                    const job = await this.jobStore.getJob(jobId);
-                    await tm.processJob(job);
+                    const jobResponse = await this.jobStore.getJob(jobId);
+                    const jobRequest = await this.jobStore.getJobRequest(jobId);
+                    await tm.processJob(jobResponse, jobRequest);
                 }
             }
         }
