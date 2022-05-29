@@ -441,21 +441,25 @@ monsterCLI
 
 monsterCLI
     .command('tmexport')
-    .description('generate translation pairs of current source in various formats.')
-    .requiredOption('-f, --format <tmx|json>', 'exported file format')
-    .option('--all', 'also export entries with no translations')
+    .description('export translation memory in various formats.')
+    .requiredOption('-f, --format <tmx|json|job>', 'exported file format')
+    .requiredOption('-m, --mode <source|tm>', 'export all source entries (including untranslated) or all tm entries (including missing in source)')
     .option('-l, --lang <language>', 'target language to export')
     .action(async (options) => await withMonsterManager(async monsterManager => {
-        const all = options.all;
-        const limitToLang = options.lang;
         const format = options.format;
-        if (['json', 'tmx'].includes(format)) {
-            console.log(`Exporting TMX for ${limitToLang ? limitToLang : 'all languages'}...`);
-            const status = await tmExportCmd(monsterManager, { limitToLang, all, format });
-            console.log(`Generated files: ${status.files.join(', ')}`);
+        const mode = options.mode;
+        const limitToLang = options.lang;
+        if (['job', 'json', 'tmx'].includes(format)) {
+            if (['source', 'tm'].includes(mode)) {
+                console.log(`Exporting TM in mode ${consoleColor.bright}${mode}${consoleColor.reset} and format ${consoleColor.bright}${format}${consoleColor.reset} for ${consoleColor.bright}${limitToLang ? limitToLang : 'all languages'}${consoleColor.reset}...`);
+                const status = await tmExportCmd(monsterManager, { limitToLang, mode, format });
+                console.log(`Generated files: ${status.files.join(', ')}`);
+            } else {
+                console.error('Invalid mode');
+            }
         } else {
-            console.log('Invalid export format');
-          }
+            console.error('Invalid export format');
+        }
     }))
 ;
 

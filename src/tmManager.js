@@ -23,8 +23,8 @@ class TM {
         Object.values(this.tm.tus).forEach(tu => this.setEntryByGuid(tu.guid, tu)); // this is to generate side-effects
     }
 
-    get size() {
-        return Object.keys(this.tm.tus).length;
+    get guids() {
+        return Object.keys(this.tm.tus);
     }
 
     getEntryByGuid(guid) {

@@ -230,7 +230,7 @@ export default class MonsterManager {
             }
         }
         // TODO: job should actually be a list of jobs to be able to handle multiple source languages and pipelines
-        return [ job, { tmSize: tm.size, minimumQuality, prjLeverage } ];
+        return [ job, { tmSize: tm.guids.length, minimumQuality, prjLeverage } ];
     }
 
     async prepareTranslationJob({ targetLang, minimumQuality, leverage }) {
