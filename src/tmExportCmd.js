@@ -2,6 +2,7 @@ import * as fs from 'fs/promises';
 import {js2tmx} from 'tmexchange';
 import { nanoid } from 'nanoid';
 import { flattenNormalizedSourceV1 } from '../normalizers/util.js';
+import { cleanupTU, sourceTUWhitelist, targetTUWhitelist } from './schemas.js';
 
 async function exportTMX(mm, targetLang, sourceLookup, tmBased) {
     const tm = await mm.tmm.getTM(mm.sourceLang, targetLang);
@@ -34,9 +35,6 @@ async function exportTMX(mm, targetLang, sourceLookup, tmBased) {
     return tmx;
 }
 
-const cleanupTU = (tu, whitelist) => Object.fromEntries(Object.entries(tu).filter(e => whitelist.includes(e[0])));
-const sourceTUWhitelist = [ 'guid', 'rid', 'sid', 'contentType', 'src', 'nsrc', 'ts', 'prj', 'notes'];
-const targetTUWhitelist = [ 'guid', 'q', 'src', 'nsrc', 'tgt', 'ngtg', 'ts', 'cost' ];
 async function exportAsJob(mm, targetLang, sourceLookup, tmBased) {
     const tm = await mm.tmm.getTM(mm.sourceLang, targetLang);
     const jobReq = {

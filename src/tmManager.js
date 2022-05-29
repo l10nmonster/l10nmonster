@@ -5,6 +5,7 @@ import {
 } from 'fs';
 import * as fs from 'fs/promises';
 import { flattenNormalizedSourceToOrdinal } from '../normalizers/util.js';
+import { cleanupTU, targetTUWhitelist } from './schemas.js';
 
 class TM {
     dirty = false;
@@ -32,10 +33,18 @@ class TM {
     }
 
     setEntryByGuid(guid, entry) {
-        (this.dirty = (this.tm.tus[guid] !== entry)) && (this.tm.tus[guid] = entry); // only updates if different
-        const flattenSrc = entry.nsrc ? flattenNormalizedSourceToOrdinal(entry.nsrc) : entry.src;
+        // const getSpurious = (tu, whitelist) => Object.entries(tu)
+        //     .filter(e => !whitelist.includes(e[0]))
+        //     .map(e => e[0])
+        //     .join(', ');
+        // const spurious = getSpurious(entry, targetTUWhitelist);
+        // spurious && console.error(spurious);
+        const cleanedTU = cleanupTU(entry, targetTUWhitelist);
+        this.tm.tus[guid] = cleanedTU;
+        this.dirty = true;
+        const flattenSrc = cleanedTU.nsrc ? flattenNormalizedSourceToOrdinal(cleanedTU.nsrc) : cleanedTU.src;
         this.lookUpByFlattenSrc[flattenSrc] ??= [];
-        !this.lookUpByFlattenSrc[flattenSrc].includes(entry) && this.lookUpByFlattenSrc[flattenSrc].push(entry);
+        !this.lookUpByFlattenSrc[flattenSrc].includes(cleanedTU) && this.lookUpByFlattenSrc[flattenSrc].push(cleanedTU);
     }
 
     getAllEntriesBySrc(src) {
