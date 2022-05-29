@@ -15,7 +15,7 @@ export async function pushCmd(mm, { limitToLang, leverage, dryRun, translationPr
                     const minimumJobSize = translationProvider.minimumJobSize ?? 0;
                     if (jobBody.tus.length >= minimumJobSize) {
                         const manifest = await mm.jobStore.createJobManifest();
-                        langStatus.jobId = manifest.jobId;
+                        langStatus.jobGuid = manifest.jobGuid;
                         const jobRequest = {
                             ...jobBody,
                             ...manifest,

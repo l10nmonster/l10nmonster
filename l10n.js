@@ -14,9 +14,9 @@ import MonsterManager from './src/monsterManager.js';
 import { OpsMgr } from './src/opsMgr.js';
 
 import { JsonJobStore } from './stores/jsonJobStore.js';
-import { SqlJobStore } from './stores/sqlJobStore.js';
+// import { SqlJobStore } from './stores/sqlJobStore.js';
 import { JsonStateStore } from './stores/jsonStateStore.js';
-import { SqlStateStore } from './stores/sqlStateStore.js';
+// import { SqlStateStore } from './stores/sqlStateStore.js';
 import { FSTrafficStore } from './stores/fsTrafficStore.js';
 
 import { analyzeCmd } from './src/analyzeCmd.js';
@@ -24,7 +24,7 @@ import { grandfatherCmd } from './src/grandfatherCmd.js';
 import { leverageCmd } from './src/leverageCmd.js';
 import { pullCmd } from './src/pullCmd.js';
 import { pushCmd } from './src/pushCmd.js';
-import { jobPush } from './src/jobCmd.js';
+import { jobPushCmd } from './src/jobCmd.js';
 import { statusCmd } from './src/statusCmd.js';
 import { jobsCmd } from './src/jobsCmd.js';
 import { tmExportCmd } from './src/tmExportCmd.js';
@@ -74,7 +74,7 @@ async function initMonster() {
         };
         const helpers = {
             stores: {
-                JsonJobStore, SqlJobStore, JsonStateStore, SqlStateStore, FSTrafficStore
+                JsonJobStore, JsonStateStore, FSTrafficStore
             },
             adapters: {
                 FsSource, FsTarget,
@@ -216,15 +216,13 @@ monsterCLI
     .action(async (options) => await withMonsterManager(async monsterManager => {
         const limitToLang = options.lang;
         const jobs = await jobsCmd(monsterManager, { limitToLang });
-        for (const [lang, unfinishedJobs] of Object.entries(jobs)) {
-            for (const [status, jobManifests] of Object.entries(unfinishedJobs)) {
-                if (jobManifests.length > 0) {
-                    console.log(`Target language ${lang} status ${consoleColor.bright}${status}${consoleColor.reset}:`);
-                    for (const mf of jobManifests) {
-                        const numUnits = mf.inflight?.length ?? mf.num ?? 0;
-                        const lastModified = new Date(mf.updatedAt);
-                        console.log(`  Job ${mf.jobId}: ${numUnits.toLocaleString()} ${mf.sourceLang} units with ${mf.translationProvider} - ${lastModified.toDateString()} ${lastModified.toLocaleTimeString()}`);
-                    }
+        for (const [lang, jobManifests] of Object.entries(jobs)) {
+            if (jobManifests.length > 0) {
+                console.log(`Target language ${lang}:`);
+                for (const mf of jobManifests) {
+                    const numUnits = mf.inflight?.length ?? mf.num ?? 0;
+                    const lastModified = new Date(mf.updatedAt);
+                    console.log(`  Job ${mf.jobGuid}: status ${consoleColor.bright}${mf.status}${consoleColor.reset} ${numUnits.toLocaleString()} ${mf.sourceLang} units with ${mf.translationProvider} - ${lastModified.toDateString()} ${lastModified.toLocaleTimeString()}`);
                 }
             }
         }
@@ -293,7 +291,7 @@ monsterCLI
                         if (ls.minimumJobSize !== undefined) {
                             console.log(`${ls.num.toLocaleString()} translations units for language ${ls.targetLang} not sent because minimum ${ls.minimumJobSize} size was not reached`);
                         } else {
-                            console.log(`${ls.num.toLocaleString()} translations units requested for language ${ls.targetLang} on job id ${ls.jobId} -> status: ${ls.status}`);
+                            console.log(`${ls.num.toLocaleString()} translations units requested for language ${ls.targetLang} on job ${ls.jobGuid} -> status: ${ls.status}`);
                         }
                     }
                 } else {
@@ -309,33 +307,45 @@ monsterCLI
 monsterCLI
     .command('job')
     .description('show contents and push pending jobs.')
-    .option('--req <jobId>', 'show contents of a job request')
-    .option('--res <jobId>', 'show contents of a job response')
-    .option('--pairs <jobId>', 'show request/response pairs of a job')
-    .option('--push <jobId>', 'push a blocked job to translation provider')
+    .option('--req <jobGuid>', 'show contents of a job request')
+    .option('--res <jobGuid>', 'show contents of a job response')
+    .option('--pairs <jobGuid>', 'show request/response pairs of a job')
+    .option('--push <jobGuid>', 'push a blocked job to translation provider')
     .action(async (options) => await withMonsterManager(async monsterManager => {
-        const reqJobId = options.req;
-        const resJobId = options.res;
-        const pairsJobId = options.pairs;
-        const pushJobId = options.push;
-        if (reqJobId !== undefined) {
-            const req = await monsterManager.jobStore.getJobRequest(reqJobId);
-            console.log(`Showing request of job ${reqJobId} ${req.sourceLang} -> ${req.targetLang}`);
-            printRequest(req);
-        } else if (resJobId !== undefined) {
-            const req = await monsterManager.jobStore.getJobRequest(resJobId);
-            const res = await monsterManager.jobStore.getJob(resJobId);
-            console.log(`Showing response of job ${resJobId} ${req.sourceLang} -> ${req.targetLang} (${res.translationProvider}) ${res.status}`);
-            printResponse(req, res);
-        } else if (pairsJobId !== undefined) {
-            const req = await monsterManager.jobStore.getJobRequest(pairsJobId);
-            const res = await monsterManager.jobStore.getJob(pairsJobId);
-            console.log(`Showing source-target pairs of job ${pairsJobId} ${req.sourceLang} -> ${req.targetLang} (${res.translationProvider}) ${res.status}`);
-            printResponse(req, res, true);
-        } else if (pushJobId !== undefined) {
-            console.log(`Pushing job ${pushJobId}...`);
+        const reqJobGuid = options.req;
+        const resJobGuid = options.res;
+        const pairsJobGuid = options.pairs;
+        const pushJobGuid = options.push;
+        if (reqJobGuid !== undefined) {
+            const req = await monsterManager.jobStore.getJobRequest(reqJobGuid);
+            if (req) {
+                console.log(`Showing request of job ${reqJobGuid} ${req.sourceLang} -> ${req.targetLang}`);
+                printRequest(req);
+            } else {
+                console.error('Could not fetch the specified job');
+            }
+        } else if (resJobGuid !== undefined) {
+            const req = await monsterManager.jobStore.getJobRequest(resJobGuid);
+            const res = await monsterManager.jobStore.getJob(resJobGuid);
+            if (req && res) {
+                console.log(`Showing response of job ${resJobGuid} ${req.sourceLang} -> ${req.targetLang} (${res.translationProvider}) ${res.status}`);
+                printResponse(req, res);
+            } else {
+                console.error('Could not fetch the specified job');
+            }
+    } else if (pairsJobGuid !== undefined) {
+            const req = await monsterManager.jobStore.getJobRequest(pairsJobGuid);
+            const res = await monsterManager.jobStore.getJob(pairsJobGuid);
+            if (req && res) {
+                console.log(`Showing source-target pairs of job ${pairsJobGuid} ${req.sourceLang} -> ${req.targetLang} (${res.translationProvider}) ${res.status}`);
+                printResponse(req, res, true);
+            } else {
+                console.error('Could not fetch the specified job');
+            }
+        } else if (pushJobGuid !== undefined) {
+            console.log(`Pushing job ${pushJobGuid}...`);
             try {
-                const pushResponse = await jobPush(monsterManager, pushJobId);
+                const pushResponse = await jobPushCmd(monsterManager, pushJobGuid);
                 console.log(`${pushResponse.num.toLocaleString()} translations units requested -> status: ${pushResponse.status}`);
             } catch (e) {
                 console.error(`Failed to push job: ${e}`);
@@ -393,9 +403,11 @@ monsterCLI
 monsterCLI
     .command('pull')
     .description('receive outstanding translation jobs.')
-    .action(async () => await withMonsterManager(async monsterManager => {
+    .option('-l, --lang <language>', 'only get jobs for the target language')
+    .action(async (options) => await withMonsterManager(async monsterManager => {
+    const limitToLang = options.lang;
       console.log(`Pulling pending translations...`);
-      const stats = await pullCmd(monsterManager);
+      const stats = await pullCmd(monsterManager, { limitToLang });
       console.log(`Checked ${stats.numPendingJobs.toLocaleString()} pending jobs, ${stats.translatedStrings.toLocaleString()} translated strings pulled`);
   }))
 ;

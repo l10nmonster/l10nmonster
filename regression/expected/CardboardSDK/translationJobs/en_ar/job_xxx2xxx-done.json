@@ -1,0 +1,41 @@
+{
+	"sourceLang": "en",
+	"targetLang": "ar",
+	"translationProvider": "Visicode",
+	"jobGuid": "xxx2xxx",
+	"status": "done",
+	"tus": [
+		{
+			"guid": "p72nj2yZPB-RfJOZa2iZg2pt16HznCGr_kdYQziGHxs",
+			"ntgt": [
+				"⇥",
+				"C̳a̳r̳d̳b̳o̳a̳r̳d̳ ̳m̳o̳d̳e̳:̳ ̳",
+				{
+					"t": "x",
+					"v": "%1$@"
+				},
+				"⇤"
+			],
+			"contentType": "default",
+			"q": 2
+		},
+		{
+			"guid": "snWaUNjXnKuXlItO8jUPfKITKfuqshl6xCXxUgiP4jI",
+			"tgt": "⇥F̳u̳l̳l̳s̳c̳r̳e̳e̳n̳ ̳m̳o̳d̳e̳⇤",
+			"q": 2
+		},
+		{
+			"guid": "kjYD6n4DIB9kQKYRd0QStGsZfU2yOhcUG091zj53Skw",
+			"ntgt": [
+				"⇥",
+				"H̳e̳l̳p̳ ̳'̳e̳n̳c̳o̳d̳i̳n̳g̳'̳ ̳i̳s̳ ̳\"̳h̳a̳r̳d̳\"̳!̳\\̳\n̳",
+				"⇤"
+			],
+			"contentType": "default",
+			"q": 2
+		}
+	],
+	"ts": 1,
+	"num": 3,
+	"updatedAt": "2022-05-29T00:00:00.000Z"
+}

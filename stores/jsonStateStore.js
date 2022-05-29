@@ -12,12 +12,12 @@ export class JsonStateStore {
         mkdirSync(path.dirname(this.stateFileName), {recursive: true});
     }
 
-    async updateBuildState(build, release, targetLang, job) {
+    async updateBuildState(build, release, targetLang, leverage) {
         const state = existsSync(this.stateFileName) ?
             JSON.parse(await fs.readFile(this.stateFileName, 'utf8')) :
             {}
         ;
-        const prjLeverage = job.leverage.prjLeverage || {};
+        const prjLeverage = leverage.prjLeverage || {};
         for (const [ prj, leverage ] of Object.entries(prjLeverage)) {
             state[this.org] ??= {};
             state[this.org][prj] ??= {};

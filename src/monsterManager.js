@@ -23,7 +23,7 @@ export default class MonsterManager {
             this.monsterDir = monsterDir;
             this.ctx = ctx;
             this.jobStore = monsterConfig.jobStore ?? new JsonJobStore({
-                jobsDir: path.join('.l10nmonster', 'jobs'),
+                jobsDir: 'l10njobs',
             });
             this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore });
             this.stateStore = monsterConfig.stateStore;
@@ -164,7 +164,7 @@ export default class MonsterManager {
     }
 
     // eslint-disable-next-line complexity
-    async prepareTranslationJob({ targetLang, minimumQuality, leverage }) {
+    async #internalPrepareTranslationJob({ targetLang, minimumQuality, leverage }) {
         const sources = this.getSourceCacheEntries();
         const job = {
             sourceLang: this.sourceLang,
@@ -229,8 +229,16 @@ export default class MonsterManager {
                 }
             }
         }
-        job.leverage = { tmSize: tm.size, minimumQuality, prjLeverage };
-        return job; // TODO: this should return a list of jobs to be able to handle multiple source languages
+        // TODO: job should actually be a list of jobs to be able to handle multiple source languages and pipelines
+        return [ job, { tmSize: tm.size, minimumQuality, prjLeverage } ];
+    }
+
+    async prepareTranslationJob({ targetLang, minimumQuality, leverage }) {
+        return (await this.#internalPrepareTranslationJob({ targetLang, minimumQuality, leverage }))[0];
+    }
+
+    async estimateTranslationJob({ targetLang }) {
+        return (await this.#internalPrepareTranslationJob({ targetLang }))[1];
     }
 
     getTranslationProvider(jobManifest) {

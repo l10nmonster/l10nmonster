@@ -1,0 +1,26 @@
+{
+	"sourceLang": "en",
+	"targetLang": "it",
+	"tus": [
+		{
+			"guid": "c-6fDjw00nB1UJtukMnmj1d18-MHF12J24XzB-fT4xg",
+			"q": 69,
+			"src": "This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed.",
+			"tgt": "Questo dashlet mostra il feed RSS selezionato. Fare clic sull'icona Modifica del dashlet per modificare il feed.",
+			"ts": 1642896537873,
+			"jobGuid": "xxx1xxx"
+		},
+		{
+			"guid": "dI6k9BSigj6gEI0usWMTDR1B9zsFO8ws9atTiah-8Y4",
+			"q": 61,
+			"src": "Configure",
+			"tgt": "Configura",
+			"ts": 1642896537873,
+			"jobGuid": "xxx1xxx"
+		}
+	],
+	"status": "done",
+	"translationProvider": "Repetition",
+	"jobGuid": "xxx1xxx",
+	"updatedAt": "2022-05-29T00:00:00.000Z"
+}

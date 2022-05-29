@@ -1,0 +1,2341 @@
+{
+	"sourceLang": "en",
+	"targetLang": "it",
+	"tus": [
+		{
+			"guid": "7Yg93c458EbHxMIJHNXXG77jF5ZnrMzxv8ScSU0oCyQ",
+			"q": 70,
+			"src": "New Activity",
+			"tgt": "Nuova attivit\\u00e0",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "ofwlKHXIDQCXV7Rlk9WYgltn8MJ9Gl4AW6TlRxtAcII",
+			"q": 70,
+			"src": "{0} more",
+			"tgt": "{0} in pi\\u00f9",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "bRBL1Isi3Xj28gXDOAgjrQfgd3j4u-evwXScOaysjwk",
+			"q": 70,
+			"src": "Alfresco Activities Site Feed for {0}",
+			"tgt": "Feed sito attivit\\u00e0 Alfresco per {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "XUv30xi6gpjueW7GyKJZN-sblwll3XDAXmR8lVDCRmk",
+			"q": 70,
+			"src": "Alfresco Activities User Feed for {0}",
+			"tgt": "Feed utente attivit\\u00e0 Alfresco per {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "WhkdZt3NHyKL3rEFJ74k-QKHkviBt0-1j6WxSUTtGrI",
+			"q": 70,
+			"src": "{0} in {1}",
+			"tgt": "{0} in {1}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "ZWi4GhbkcHflQik2kDutG_MLwv1dkR0b20-BoPLZAWk",
+			"q": 70,
+			"src": "{1} created blog post {0}",
+			"tgt": "{1} ha creato\\n il post di blog {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "16xbZ-N9Mj0qr-wexdWn9u36v6HK7TAuMwRNEt5aza0",
+			"q": 70,
+			"src": "{1} updated blog post {0}",
+			"tgt": "{1} ha aggiornato il post di blog {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "rw0So7rhNIszXReiLESNOPruP9Hb6GP7Cp0cCgpHMCM",
+			"q": 70,
+			"src": "{1} deleted blog post {0}",
+			"tgt": "{1} ha eliminato il post di blog {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "3uiLfF59XnMc7EeZ9-UylkneK26E0zSHF_LC-4ZtWq0",
+			"q": 70,
+			"src": "{1} commented on {0}",
+			"tgt": "{1} ha inserito un commento su {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "G6Lbc_ipVQtXeOXl8X8DnClK37cntOPCmkDl6XM8dPA",
+			"q": 70,
+			"src": "{1} updated comment on {0}",
+			"tgt": "{1} ha aggiornato un commento su {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "wsF4kbW6urWDUD6c85EaJxf8d52Z23XPQG_wLYFvij8",
+			"q": 70,
+			"src": "{1} deleted a comment from {0}",
+			"tgt": "{1} ha eliminato un commento da {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "3Kb9009ZaZeuLQn2aRJkV37oFzxBfWWkaVf_wVe4hAg",
+			"q": 70,
+			"src": "{1} started discussion {0}",
+			"tgt": "{1} ha avviato la discussione {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "-N86KJHTblzDW9SIB4Od6kwm7JOh-KW5rG6Ab__5GqE",
+			"q": 70,
+			"src": "{1} updated discussion {0}",
+			"tgt": "{1} ha aggiornato la discussione {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "b6TN2gZcmHvSWu7e3-txqsq-WTkmdk0HHBcZcw9UF28",
+			"q": 70,
+			"src": "{1} deleted discussion {0}",
+			"tgt": "{1} ha eliminato la discussione {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "jjDVrJljU0PiZ9B3zVZwldIxaqlfrxyo63XMnEcuV_k",
+			"q": 70,
+			"src": "{1} replied to the discussion {0}",
+			"tgt": "{1} ha risposto alla discussione {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "PDR1Je479Y9z7AjaE9mV7ehWdyhGu34-T-l-US2wL5Y",
+			"q": 70,
+			"src": "{1} updated a reply to {0}",
+			"tgt": "{1} ha aggiornato una risposta a {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "6q0Lm3WR0Ku1n7996IOmLJ8Vc4fDpPR_5HM-hmcF9uE",
+			"q": 70,
+			"src": "{1} created calendar event {0}",
+			"tgt": "{1} ha creato l''evento di calendario {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "yoheZ92UTZ3mza7NteBGXaSnvzDJd0OknumW0Cz6fM8",
+			"q": 70,
+			"src": "{1} updated calendar event {0}",
+			"tgt": "{1} ha aggiornato l''evento di calendario {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "VgdGxqulIdRSg5Jyg_0T-FTuPRDPQE227Y8qjgxK2BQ",
+			"q": 70,
+			"src": "{1} deleted calendar event {0}",
+			"tgt": "{1} ha eliminato l''evento di calendario {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "vmbsZYP4BuGtkocM0w4QcfmbGfICF9F0Hv-Ud57kmaI",
+			"q": 70,
+			"src": "{1} added document {0}",
+			"tgt": "{1} ha aggiunto il documento {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "883RSYFaMYi3uwaftO4_-4aC2O1oZP5Sv6GvizrJq3E",
+			"q": 70,
+			"src": "{1} added {0} documents",
+			"tgt": "{1} ha aggiunto {0} documenti",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "_9LL4GTp9WHKiXIm5r14B7BfkmInyHf8Vs83xyEna1w",
+			"q": 70,
+			"src": "{1} created document {0}",
+			"tgt": "{1} ha creato il documento {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "sPYwUzgdvwtIiHXCL_9of_fZ--1Q727bMQHR6yA7jFk",
+			"q": 70,
+			"src": "{1} deleted document {0}",
+			"tgt": "{1} ha eliminato il documento {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "XPjEYsR5CCbtC-jeH-yj751hxVKTKJE--sSg8KQDnuE",
+			"q": 70,
+			"src": "{1} deleted {0} documents",
+			"tgt": "{1} ha eliminato {0} documenti",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "3V5-tPuD1PHpSNjVLf8GVNkwX5ZuCmvO75dSWbl8ha8",
+			"q": 70,
+			"src": "{1} updated document {0}",
+			"tgt": "{1} ha aggiornato il documento {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "rsaP7IOf0Oa5-Hj_qGVyCLWPXYwCdsJFm0Dsp5vnMtY",
+			"q": 70,
+			"src": "{1} updated {0} documents",
+			"tgt": "{1} ha aggiornato {0} documenti",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "ypQEplYTadjGOqtasis193JuIItQNCqXcI8piPmFJaA",
+			"q": 70,
+			"src": "{1} added folder {0}",
+			"tgt": "{1} ha aggiunto la cartella {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "TYkYgHNbrX-X3YxjXnn_5Ytfdj4cn1yI3Vetgwj4z-o",
+			"q": 70,
+			"src": "{1} deleted folder {0}",
+			"tgt": "{1} ha eliminato la cartella {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "qfgYnT8CLoo4GujU8L-46UlxDf_o1JTDzEsfbuxLXkw",
+			"q": 70,
+			"src": "{1} added {0} folders",
+			"tgt": "{1} ha aggiunto {0} cartelle",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "z_oSiSqgjkCZ1268ejoywlZQeADe6QfU1jhVJ_sWXnQ",
+			"q": 70,
+			"src": "{1} deleted {0} folders",
+			"tgt": "{1} ha eliminato {0} cartelle",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "YCVtGhe4Ba6Xw4R04stZnOpW7nkxgWr39fjcfPERH0w",
+			"q": 70,
+			"src": "{1} edited document {0}",
+			"tgt": "{1} ha modificato il documento {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "AsCbG9nAAZi5qIlEccm_cno2ezAvucWasLbvzott41I",
+			"q": 70,
+			"src": "{1} previewed document {0}",
+			"tgt": "{1} ha visualizzato il documento in anteprima {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "exsPXFfrA3QuilustThrPxWPKWD1P3pRecmy_EMIp4U",
+			"q": 70,
+			"src": "{1} downloaded document {0}",
+			"tgt": "{1} ha scaricato il documento {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "Xyt9VETKUGrKRLW3l-HnJROXi1jaILiB8339asDQ2-o",
+			"q": 70,
+			"src": "{1} liked document {0}",
+			"tgt": "{1} ha suggerito il documento {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "cKIKtJAQZxt9CCvUb11iNrcMM7tqnd-KAC7-M1xXsus",
+			"q": 70,
+			"src": "{1} liked folder {0}",
+			"tgt": "{1} ha suggerito la cartella {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "Qxw1-SWsL9Fn8Ii5cfGDuyqh2EVuwRPljuGwqE4D53Y",
+			"q": 70,
+			"src": "{1} created wiki page {0}",
+			"tgt": "{1} ha creato la pagina wiki {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "J_LpWWgVh7uAus3UQIsiRcaDa9Rt4shWigqOUyyqVzI",
+			"q": 70,
+			"src": "{1} updated wiki page {0}",
+			"tgt": "{1} ha aggiornato la pagina wiki {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "YAd3H1CfCm0JLFBc8o7S4ijqpaEz3moi0xRjnVq2RFs",
+			"q": 70,
+			"src": "{1} renamed wiki page from {2} to {0}",
+			"tgt": "{1} ha rinominato la pagina wiki da {2} in {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "M5En8DVyyYtLEHAlbfVpHGzkFLQ9o5MQpMUN-RTo0gI",
+			"q": 70,
+			"src": "{1} deleted wiki page {0}",
+			"tgt": "{1} ha eliminato la pagina wiki {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "Zh_QedEsvGno6WYgjgF9Z1u4V9ly6yBrmTiN77jUu1E",
+			"q": 70,
+			"src": "{1} group added to site {4} with role {2}",
+			"tgt": "Gruppo {1} aggiunto al sito {4} con ruolo {2}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "CWAiASc-GOGqkTu_6C_s8THhKVUXxqThCc91K1T7W0s",
+			"q": 70,
+			"src": "{1} group removed from site {4}",
+			"tgt": "Gruppo {1} rimosso dal sito {4}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "0-t6eLygBR5o39DejQ8pU6A83nv3nEzW45ORFw-fLUE",
+			"q": 70,
+			"src": "{1} group role changed to {2}",
+			"tgt": "Ruolo del gruppo {1} cambiato in {2}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "Y-k-5Gmyp2UhN0LQMqxJDv2fOoAQc6nk01UpkWGcipU",
+			"q": 70,
+			"src": "{1} joined site {4} with role {2}",
+			"tgt": "{1} ha accettato di partecipare al sito {4} con ruolo {2}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "n0SZ3i7SUV0onko3ymARsEYrdPDkAUx2iRYE88Ta_os",
+			"q": 70,
+			"src": "{1} left site {4}",
+			"tgt": "{1} ha abbandonato il sito {4}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "dloHOufaiPoUDiZfJ4T-ambjudN6YrpzAzEHlPbhL8s",
+			"q": 70,
+			"src": "{1} role changed to {2}",
+			"tgt": "Ruolo {1} cambiato in {2}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "PV8_8c23nw09mdMRt5vdQNJX4J_OL_M00CfuChIdwxc",
+			"q": 70,
+			"src": "{1} liked site {0}",
+			"tgt": "{1} ha suggerito il sito {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "omKhvF5NGnH056zLeYjUVGP89_F241iNA4mIxv7Pk-U",
+			"q": 70,
+			"src": "{1} created link {0}",
+			"tgt": "{1} ha creato il link {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "fY87YornhX9oBaY4C0m4ujGe_FKJ5sZnZ_pBphtAyyM",
+			"q": 70,
+			"src": "{1} updated link {0}",
+			"tgt": "{1} ha aggiornato il link {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "B_oC56ZasI0FnbgzCGZmIWEZmSZhpq-jKbBzxQVfmBc",
+			"q": 70,
+			"src": "{1} deleted link {0}",
+			"tgt": "{1} ha eliminato il link {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "R_my9HxByJ-Kka8W_0shsSLsObmrJBkGDZ4my3Y1ZjQ",
+			"q": 70,
+			"src": "{1} created data list {0}",
+			"tgt": "{1} ha creato l''elenco dati {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "FN2vpGr0btQUOn8UQ0b9IZ96sLI6T7sUNqdzGRCk5wk",
+			"q": 70,
+			"src": "{1} updated data list {0}",
+			"tgt": "{1} ha aggiornato l''elenco dati {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "mPygAsBNdVN4Um8jA0TDxnbgVrRPwRQE72OtqgQbklU",
+			"q": 70,
+			"src": "{1} deleted data list {0}",
+			"tgt": "{1} ha eliminato l''elenco dati {0}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "0EDpMmUaF1HHe1AG9qEJReV7XuFFfMrSG54OoKqigLs",
+			"q": 70,
+			"src": "{1} is now following {5}",
+			"tgt": "{1} sta ora seguendo {5}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "e9Xw0Jzs-y0ZL5zd1vG6ByD5xd4D2f8cj_HXjynfIr8",
+			"q": 70,
+			"src": "{1} has subscribed to {2}",
+			"tgt": "{1} si \\u00e8 iscritto a {2}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "faMqWWwPGfL2ojQpJKVq5ag3W9oKmvVS4vT4_XpaDIA",
+			"q": 70,
+			"src": "{1}: {2}",
+			"tgt": "{1}: {2}",
+			"ts": 1642896537854
+		},
+		{
+			"guid": "mpN5e7DwX3x1lq6tGeCw3pN5XojDAp0yBMSeOOyuCpc",
+			"q": 70,
+			"src": "Alfresco Add-ons RSS Feed",
+			"tgt": "Alfresco Add-ons RSS Feed",
+			"ts": 1642896537786
+		},
+		{
+			"guid": "Syq3DJy_QDcM0m1nqYZXpqFjMMuR87HPZXL4tQ8hfGk",
+			"q": 70,
+			"src": "Configure",
+			"tgt": "Configura",
+			"ts": 1642896537786
+		},
+		{
+			"guid": "94dyHElU-pvxBH_xvcPNYroCw8bbsYZVi9PRkhsVtfk",
+			"q": 70,
+			"src": "No news items",
+			"tgt": "Nessun elemento delle news",
+			"ts": 1642896537786
+		},
+		{
+			"guid": "P5GRExSyOI9DJatrN4HtEGB0YnefpGW6JB2Nm1SM5_E",
+			"q": 70,
+			"src": "Loading items - please wait...",
+			"tgt": "Caricamento elementi in corso, attendere...",
+			"ts": 1642896537786
+		},
+		{
+			"guid": "JYRC8Zfqy9a0-fUUB2YNIS8zc6WQL5RMh8o0ZqD0bcc",
+			"q": 70,
+			"src": "RSS feed can't be read",
+			"tgt": "Impossibile leggere il feed RSS",
+			"ts": 1642896537786
+		},
+		{
+			"guid": "bmGBoEsRYHhWkiRPZzQvvaQVk96lAyjLazEIevIvhbE",
+			"q": 70,
+			"src": "RSS feed is not available",
+			"tgt": "Il feed RSS non \\u00e8 disponibile",
+			"ts": 1642896537786
+		},
+		{
+			"guid": "jXh3uF9cDUKZtHxEG2JBn2BrdG_ZLsJ31Ej8xwl1E_Y",
+			"q": 70,
+			"src": "RSS feed format is not supported",
+			"tgt": "Il formato del feed RSS non \\u00e8 supportato",
+			"ts": 1642896537786
+		},
+		{
+			"guid": "WvR4sh0AUEY-PZKx-eo1nNvJQW5CWA-gp6u2BTfT9D0",
+			"q": 70,
+			"src": "This dashlet shows the latest news from Alfresco Add-ons. Click the edit icon on the dashlet to configure the feed.",
+			"tgt": "Questa dashlet mostra le ultime news dall'Addon di Alfresco Fare clic sull'icona Modifica del dashlet per modificare il feed.",
+			"ts": 1642896537786
+		},
+		{
+			"guid": "rHlW0n89eNdd459GykI6D4NBZtJGidWSP86B5BG0kQg",
+			"q": 70,
+			"src": "Find, rate, and contribute Alfresco add-ons and extensions.",
+			"tgt": "Trova, valuta e contribuisci alle extension e addon di Alfresco",
+			"ts": 1642896537786
+		},
+		{
+			"guid": "LDHWLHERVQjJ1o-kvogktdzBFC_6nhgsVuTzxoHbhWI",
+			"q": 70,
+			"src": "http://addons.alfresco.com",
+			"tgt": "http://addons.alfresco.com",
+			"ts": 1642896537786
+		},
+		{
+			"guid": "m70JMPI9T9GiVlanb29OGMpQQrneQXCFFecW1wlENPs",
+			"q": 70,
+			"src": "Visit the Alfresco Add-ons Home Page",
+			"tgt": "Visita la Home page degli  Add-ons di Alfresco",
+			"ts": 1642896537786
+		},
+		{
+			"guid": "QX3X1g-Kh1UpJ-aEY4FOSO2WdKt5afp4FyUk8z00kOk",
+			"q": 70,
+			"src": "RSS Feed",
+			"tgt": "Feed RSS",
+			"ts": 1642896537805
+		},
+		{
+			"guid": "vwrKccRIjjVNjVNl0CRZJsRMOUbmwQ_yWgR6XdOhD40",
+			"q": 70,
+			"src": "Configure",
+			"tgt": "Configura",
+			"ts": 1642896537805
+		},
+		{
+			"guid": "_BTHCps8KAbIpS9udVg6HYpF7QWwxNp8-0ZWvEDr8bI",
+			"q": 70,
+			"src": "No news items",
+			"tgt": "Nessun elemento delle news",
+			"ts": 1642896537805
+		},
+		{
+			"guid": "rKmLOWykQIl0HH0r_50MOd07oRk8KqT9Pk-4CnXceEY",
+			"q": 70,
+			"src": "RSS feed can't be read",
+			"tgt": "Impossibile leggere il feed RSS",
+			"ts": 1642896537805
+		},
+		{
+			"guid": "3Gxz8EmGRNOELmhuwipqf5luMeaD5qELsN7df_cxAno",
+			"q": 70,
+			"src": "RSS feed is not available",
+			"tgt": "Il feed RSS non \\u00e8 disponibile",
+			"ts": 1642896537805
+		},
+		{
+			"guid": "5ZZj-jxDgUbAfyjrMe0cfeQcP0eFIZvFlDCSL84Nrqg",
+			"q": 70,
+			"src": "RSS feed format is not supported",
+			"tgt": "Il formato del feed RSS non \\u00e8 supportato",
+			"ts": 1642896537805
+		},
+		{
+			"guid": "jzkfUdJohmFfMtS_GItKtYifp-ZgzcyJKVo8serpi7I",
+			"q": 70,
+			"src": "This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed.",
+			"tgt": "Questo dashlet mostra il feed RSS selezionato. Fare clic sull'icona Modifica del dashlet per modificare il feed.",
+			"ts": 1642896537805
+		},
+		{
+			"guid": "EFn3t-e0JoDulp-WrmSoRotUUCXkYlE7Kv3biN7WDW0",
+			"q": 70,
+			"src": "RSS Feed",
+			"tgt": "Feed RSS",
+			"ts": 1642896537873
+		},
+		{
+			"guid": "rMLO-fUZZZq87EB3WIeu2F2GZOtTACGvobKcGojueyA",
+			"q": 70,
+			"src": "Configure",
+			"tgt": "Configura",
+			"ts": 1642896537873
+		},
+		{
+			"guid": "Y3VBfG0zC6kDtBZHDxZFCLZRLHwPC2obJTXEwJnkan8",
+			"q": 70,
+			"src": "No news items",
+			"tgt": "Nessun elemento delle news",
+			"ts": 1642896537873
+		},
+		{
+			"guid": "HCGGtFbvY0TT_hr0VH80CI-RpsEephuBsTnrXUnBZOU",
+			"q": 70,
+			"src": "RSS feed can't be read",
+			"tgt": "Impossibile leggere il feed RSS",
+			"ts": 1642896537873
+		},
+		{
+			"guid": "Mryr53ZTSsgu5W2iuspPnNZPC0TxwXUNUtdn_fWrvz8",
+			"q": 70,
+			"src": "RSS feed is not available",
+			"tgt": "Il feed RSS non \\u00e8 disponibile",
+			"ts": 1642896537873
+		},
+		{
+			"guid": "WAt8kKCVxWOIxpe-RdYHi0lOvIQt3JBh5cOqlBAyY2s",
+			"q": 70,
+			"src": "RSS feed format is not supported",
+			"tgt": "Il formato del feed RSS non \\u00e8 supportato",
+			"ts": 1642896537873
+		},
+		{
+			"guid": "IfdF05CMkiWoN-Hems6QAju5Peau9w0OtBN8AvnMGcQ",
+			"q": 70,
+			"src": "This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed.",
+			"tgt": "Questo dashlet mostra il feed RSS selezionato. Fare clic sull'icona Modifica del dashlet per modificare il feed.",
+			"ts": 1642896537873
+		},
+		{
+			"guid": "MoJ9WnVlNIDG5uEqTEgK-SIijATplqSaRGJaxOx-CoM",
+			"q": 70,
+			"src": "Site Calendar",
+			"tgt": "Calendario del sito",
+			"ts": 1642896537788
+		},
+		{
+			"guid": "GOD7gmCgDoOkTDZrQvELAvKSHk2F8hfwz_JMe8JdCsY",
+			"q": 70,
+			"src": "No upcoming events",
+			"tgt": "Nessun evento imminente",
+			"ts": 1642896537788
+		},
+		{
+			"guid": "nRPmwwxUzPSSMPswBuNBiozTKk-M3XWZAJv6BKAL0Os",
+			"q": 70,
+			"src": "until",
+			"tgt": "finch\\u00e9",
+			"ts": 1642896537788
+		},
+		{
+			"guid": "pCbsFvMcdwJ4xUDch0i4cL0N-N8vVkvhqjYTWzg1P-U",
+			"q": 70,
+			"src": "This dashlet shows the upcoming events for this site.",
+			"tgt": "Questo dashlet mostra gli eventi imminenti per il sito.",
+			"ts": 1642896537788
+		},
+		{
+			"guid": "UQLku8Jgbj4t7oXKzYbS-N1q016ts3c93ZU5sHSqm7M",
+			"q": 70,
+			"src": "Site Members",
+			"tgt": "Membri del sito",
+			"ts": 1642896537890
+		},
+		{
+			"guid": "IMup8Q-qpnRDXDpvhrXgM6oMmHeceIZeswR9_BPg-UA",
+			"q": 70,
+			"src": "Invite",
+			"tgt": "Invita",
+			"ts": 1642896537890
+		},
+		{
+			"guid": "I3DX1xbVZ6MDdYOsdpgUIKj0BsLDjNPcclfJTGbJyIg",
+			"q": 70,
+			"src": "All Members",
+			"tgt": "Tutti i membri",
+			"ts": 1642896537890
+		},
+		{
+			"guid": "I1YmkUpPIu1-92fwMeYB2OEkyL4rkgB40BShuDUTwUs",
+			"q": 70,
+			"src": "{0} - {1} of {2}",
+			"tgt": "{0} - {1} di {2}",
+			"ts": 1642896537890
+		},
+		{
+			"guid": "vynLWxNQ6RmzPhT-_6ow3CEd72t6volbvWUEnYiNzZU",
+			"q": 70,
+			"src": "Shown the first {0} members",
+			"tgt": "Mostrati i primi {0} membri",
+			"ts": 1642896537890
+		},
+		{
+			"guid": "Z7s4QyJAhYHCiMy_1QBsnWuFYjFGjeUweCymtEG5EI0",
+			"q": 70,
+			"src": "You are the only site member.",
+			"tgt": "L'utente \\u00e8 l'unico membro del sito.",
+			"ts": 1642896537890
+		},
+		{
+			"guid": "T1fBipItJf3g1oC_7JEB10ZFfwRyyY2NNdgg5KYNWD4",
+			"q": 70,
+			"src": "<p>Use this dashlet to see who belongs to this site. You can click their name to view their profile and get to know them.</p><p>Clicking All Members lets you see everyone in this site. If you're a site manager, click Invite to send out some site invitations.</p>",
+			"tgt": "<p>Utilizzare questo dashlet per individuare i membri del sito. \\u00c8 possibile fare clic sul nome di un membro per visualizzarne il profilo e i dettagli.</p><p>Fare clic su Tutti i membri per visualizzare tutti i membri del sito. Se si dispone del ruolo di manager del sito, fare clic su Invita per inviare alcuni inviti a visitare il sito.</p>",
+			"ts": 1642896537890
+		},
+		{
+			"guid": "-jkZ8mNn1-5gY57cN8Iwf4TRvNgsswnWDCYc9YU1-DI",
+			"q": 70,
+			"src": "Site Content",
+			"tgt": "Contenuto del sito",
+			"ts": 1642896537863
+		},
+		{
+			"guid": "Eq6kdX8FRZrnHXZ8tj-1WkbVn79SRm10JD2L8-8Sy8w",
+			"q": 70,
+			"src": "My Favorites",
+			"tgt": "I miei preferiti",
+			"ts": 1642896537863
+		},
+		{
+			"guid": "97cVTH-GAwwPwiPkLIvfcpnA5adMWSAGoEbc3MRek1o",
+			"q": 70,
+			"src": "I'm Editing",
+			"tgt": "Che sto modificando",
+			"ts": 1642896537863
+		},
+		{
+			"guid": "hf7blJXAg22Fri6NHgJ7s70yxHa6yBhqcqADR_1yjVw",
+			"q": 70,
+			"src": "I've Recently Modified",
+			"tgt": "Elementi modificati di recente",
+			"ts": 1642896537863
+		},
+		{
+			"guid": "qbkzWNAbC_TxskmbnRMPTAFC_Qivo452sE-eKom4sEk",
+			"q": 70,
+			"src": "Synced content",
+			"tgt": "Contenuto sincronizzato",
+			"ts": 1642896537863
+		},
+		{
+			"guid": "r39Zh1WRDhk2ssx_nqreCADYUoE4NLCBoirF7Hyz0pc",
+			"q": 70,
+			"src": "Synced with Errors",
+			"tgt": "Sincronizzato con errori",
+			"ts": 1642896537863
+		},
+		{
+			"guid": "JRcN8pfbtc9OtGAhnn5foEsq1M7RTW7U_xk4GzVE5lc",
+			"q": 70,
+			"src": "Keep track of content changes",
+			"tgt": "Tieni traccia delle modifiche al contenuto",
+			"ts": 1642896537863
+		},
+		{
+			"guid": "AoGMEuVT8eQgM6akvguJJHpfNLiR5zK9PCNZ6dZJ89s",
+			"q": 70,
+			"src": "Easily see which document library items site members have been working on. In the detailed view you can like an item and mark it as a favorite. You can also jump to the details page to leave a comment.",
+			"tgt": "\\u00c8 possibile visualizzare con facilit\\u00e0 quali elementi della raccolta documenti sono stati modificati dai membri del sito. Nella vista dettagliata, \\u00e8 possibile esprimere l'apprezzamento per un elemento e contrassegnarlo come preferito. Inoltre, \\u00e8 possibile passare direttamente alla pagina dei dettagli per lasciare un commento.",
+			"ts": 1642896537863
+		},
+		{
+			"guid": "h1g5XmmTuEIqMYxKpSVcWKq08Ejs5PK-zbnEWpNWp9I",
+			"q": 70,
+			"src": "<p>This dashlet makes it easy to keep track of your recent changes to library content in this site. Clicking the item name or thumbnail takes you to the details page so you can preview or work with the item.</p><p>There are two views for this dashlet. The detailed view lets you:<ul><li>Mark an item as a favorite so it appears in Favorites lists for easy access</li><li>Like (and unlike) an item</li><li>Jump to the item details page to leave a comment</li></ul></p>",
+			"tgt": "<p>Questo dashlet consente di tenere traccia in modo semplice delle modifiche recenti apportate al contenuto della raccolta del sito. Facendo clic sul nome o la miniatura dell'elemento, viene visualizzata la pagina dei dettagli che consente di ottenere un'anteprima o utilizzare l'elemento.</p><p>Sono disponibili due viste per questo dashlet. La vista dettagliata consente di:<ul><li>Contrassegnare un elemento come preferito in modo che sia visualizzato negli elenchi dei preferiti per un accesso rapido</li><li>Inserire Mi piace o Non mi piace per un elemento</li><li>Andare alla pagina dei dettagli dell'elemento per inserire un commento</li></ul></p>",
+			"ts": 1642896537863
+		},
+		{
+			"guid": "SgsEBwfly_jtUaVDiiUw-VTimvInak8B40fAu7PiaiE",
+			"q": 70,
+			"src": "Welcome to your dashboard, {0}",
+			"tgt": "Benvenuto nel pannello di controllo, {0}",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "4-73j3Yex5pN2u2OhV8dSx5RuzWc7yE1aKyKd1jGxg4",
+			"q": 70,
+			"src": "Welcome to {1}, {0}",
+			"tgt": "Benvenuto in {1}, {0}",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "_XrOsbXsUwQ_8bszzlCDI2uJW88xOEBL0N8XglS9iJE",
+			"q": 70,
+			"src": "The personal dashboard shows you what's going on in the sites you belong to.",
+			"tgt": "Il pannello di controllo personale mostra una vista riepilogativa delle attivit\\u00e0 dei siti di cui si \\u00e8 membri.",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "LFDNhc3x4IOU2jEMEDAutCGuf0RLtaFpI9Npx5mEaHo",
+			"q": 70,
+			"src": "The site dashboard lets you know what's been happening in this particular site.",
+			"tgt": "Il pannello di controllo del sito consente di controllare le attivit\\u00e0 di quel particolare sito.",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "Hl2jAekbOlU5b2UgbSDPKnsTR1-LeGI_x1vrWZmXIc4",
+			"q": 70,
+			"src": "Let's get you started...",
+			"tgt": "Per iniziare...",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "0HBlSg4TQpBa_3gnTevKWAo91w1FXZmnFD20mezdFn0",
+			"q": 70,
+			"src": "Confirm Removal",
+			"tgt": "Conferma rimozione",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "311BhkRDuAPx8E5vVnHKZLqTXbf6R7wDXiVjvJSYdbs",
+			"q": 70,
+			"src": "Are you sure you want to permanently remove the assistance panel from this dashboard?",
+			"tgt": "Si desidera rimuovere in modo permanente il pannello di assistenza dal pannello di controllo?",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "NRkVbdTNHz_qlna4LgnOAPki1p82gd23HqBhboT0FCM",
+			"q": 70,
+			"src": "Unable to remove dashlet.",
+			"tgt": "Impossibile rimuovere il dashlet.",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "EwYyoBOiJdg6oM-YE3IceFEdrI4YodM54PJ9lxi5coA",
+			"q": 70,
+			"src": "Remove",
+			"tgt": "Rimuovi",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "Dzd-t_8JGLQYnlP7l4_2CRVb4ogwRapR7Pv_eri26N0",
+			"q": 70,
+			"src": "Learning",
+			"tgt": "Formazione",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "cq7dB3PO5aldkcR0mnQAuz30CtWgT3tVz7pQTb0Fo8E",
+			"q": 70,
+			"src": "See what you can do with Alfresco by watching a video tutorial.",
+			"tgt": "Le esercitazioni video consentono di visualizzare le operazioni che si possono effettuare con Alfresco.",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "Kd8IjUiDGWqwJ8_wCe9j8IPCULuggAu07-69RVwUGsE",
+			"q": 70,
+			"src": "View the tutorials",
+			"tgt": "Visualizza esercitazioni video",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "yzKCcxaBfHVKgCT65Yqwp34_PqIAGgb63qGEv7X4JRo",
+			"q": 70,
+			"src": "Sharing",
+			"tgt": "Condivisione",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "sU0ERYq-NYM1suS9gBdoAY_rZ7GgozUoC2ODYyZo_68",
+			"q": 70,
+			"src": "Create a site to share content with other site members.",
+			"tgt": "Creare un sito per condividere contenuti con gli altri membri.",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "jtWkUsCWeOhFAHH9cyWJg3pnZTO6EXkp-wS_VsFxMnE",
+			"q": 70,
+			"src": "Create a site",
+			"tgt": "Crea sito",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "EvF0tZmcww2tlRFKWqnWSDHmN__vnbBi-RLjXQUqGlM",
+			"q": 70,
+			"src": "Personalizing",
+			"tgt": "Personalizzazione",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "Od4t7qwpOzcjCy82k9h-8jpdK3p5Feiy8qHkcBdbs8g",
+			"q": 70,
+			"src": "Update your personal and business information so others can get to know you.",
+			"tgt": "Aggiornare le informazioni personali e aziendali in modo che altri utenti possano visualizzarle.",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "dGqwaQvTpU3JFzGx7FxOgalBei43MI1PoD4Um6snUR8",
+			"q": 70,
+			"src": "Edit your profile",
+			"tgt": "Modifica profilo",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "oaEMzNKQDA6D0ZxLsgWbK9Asm5vGm8mqaOrfV3ifMlE",
+			"q": 70,
+			"src": "Customizing",
+			"tgt": "Personalizzazione",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "7hYl8_UBb4dBVjKwIs5Ss29v7cg1culTTUQNTK4aAw0",
+			"q": 70,
+			"src": "Set up your dashboard to show the information you want to see.",
+			"tgt": "Configurare il pannello di controllo in modo da mostrare le informazioni desiderate.",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "IySJzAxorEnDt5PhB1lErXiAOn_qlIbmoNDT_77W2Ns",
+			"q": 70,
+			"src": "Customize your dashboard",
+			"tgt": "Personalizza pannello di controllo",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "lNCvVsgpTSKpr39mRmojNPuHOr-txvsV8NzkcfIxUpE",
+			"q": 70,
+			"src": "Exploring",
+			"tgt": "Esplorazione",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "hA5l02jvfwLhJUrTJwk5shcVXoi5xjUO8TI2KfcTSSA",
+			"q": 70,
+			"src": "Have a look at the sites already in Alfresco. You can visit public sites and join them straightaway.",
+			"tgt": "Una panoramica dei siti di Alfresco. \\u00c8 possibile visitare i siti pubblici e registrarsi immediatamente.",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "FdjstiwWjJHZeBQyRFGvayIrBA1A1Q8A44EFiaRpgc4",
+			"q": 70,
+			"src": "View all sites",
+			"tgt": "Visualizza tutti i siti",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "C0xFmTN5j00pG2pEoc5qD9XwfMp5NnIHyyooJCwdcmI",
+			"q": 70,
+			"src": "Customizing",
+			"tgt": "Personalizzazione",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "jSsDMOjgzLle4wBpQciLVaV7kIWOO15lLvWjFT2fsj8",
+			"q": 70,
+			"src": "Set up this dashboard to show information you want others to see.",
+			"tgt": "Configurare il pannello di controllo con le informazioni che si desidera mostrare agli altri utenti.",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "k_sZf4xYFd3q_jShZ4KCg3pMyb7k30h_GJzCOhjXh2Q",
+			"q": 70,
+			"src": "Customize the site dashboard",
+			"tgt": "Personalizza pannello di controllo del sito",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "C3Bpk8ksl0oRqtnFh1rqmccVNArfSSLDaxQYufhd8Yg",
+			"q": 70,
+			"src": "Joining",
+			"tgt": "Partecipazione",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "TDCRo5CmTHxib6eq6zDJVk_HZdONjyv7NWsdRc-olL4",
+			"q": 70,
+			"src": "This site's membership is moderated. You can request to join and a site manager will be notified.",
+			"tgt": "La partecipazione al sito \\u00e8 sottoposta a moderazione. \\u00c8 possibile richiedere la partecipazione in modo che la richiesta venga notificata a un manager del sito.",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "z7pget80mARdHz2d5oVY8rQKjU718-IHuOfSPexFR64",
+			"q": 70,
+			"src": "Request to join",
+			"tgt": "Richiedi partecipazione",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "YjY9B7bbslXXS_BZu5t0flKRmJBYbvJXy7WtcMrnbAM",
+			"q": 70,
+			"src": "Collaborating",
+			"tgt": "Collaborazione",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "-mfz92vriJPFOruq0CrewWec5ztycvbhGR56ZCSKccw",
+			"q": 70,
+			"src": "Upload content to the document library to start collaborating with others.",
+			"tgt": "Caricare il contenuto nella raccolta documenti per avviare la collaborazione con altri utenti.",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "-PJoTPxUYJLIwWOLCu8zldxDGyaXYY9Hsex1AGb6w1I",
+			"q": 70,
+			"src": "Upload content",
+			"tgt": "Carica contenuto",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "6ogdr7A0_gwlw-ljmLYVDzrSJoigK6v7Bgp0Qpk6lmM",
+			"q": 70,
+			"src": "Inviting",
+			"tgt": "Inviti",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "fKl1u7uNfFUT5Jsq63a4keItOXxeOXevvCvOe8tgeBc",
+			"q": 70,
+			"src": "Start inviting others to join your site.",
+			"tgt": "Invitare altri utenti ad unirsi al sito.",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "AL3Ti9Vq1Q9-WfGSOlvyPjteL7dQ0Jg7KvwJGfGCv4Y",
+			"q": 70,
+			"src": "Invite people",
+			"tgt": "Invita persone",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "5mqaDtT14XgYTRi-WVMX4xmdeQGEZcg4iWnhPx5qlfU",
+			"q": 70,
+			"src": "Socializing",
+			"tgt": "Social network",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "OYyKEvCSU3nWDCB9fWmXj5h-JDfOqqBAkAWYwo9rhcY",
+			"q": 70,
+			"src": "Find out who belongs to this site. From the member list you can view user profiles to get to know others.",
+			"tgt": "Individuare i membri del sito. Nell'elenco, \\u00e8 possibile visualizzare i profili utente per conoscere gli altri membri.",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "P92KXznSg66CZcQdToPezgdFAcXpp0tei9RImF088tw",
+			"q": 70,
+			"src": "View site members",
+			"tgt": "Visualizza membri del sito",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "2xEEnWSco7FwAlnHENjdj7z2tX9hcRurv-r_f7VdrI8",
+			"q": 70,
+			"src": "Exploring",
+			"tgt": "Esplorazione",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "kO8OlqPrZKO_KP88Z4QYR3PVYjUCg7oA_1dJbCgQnLM",
+			"q": 70,
+			"src": "Find out what content has been added to the site by browsing the document library.",
+			"tgt": "Individuare il contenuto aggiunto al sito effettuando una ricerca nella raccolta documenti.",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "I1t1cPUy3locFAZ3wfj1n4hgCbRzysFljfBLOvzpJLE",
+			"q": 70,
+			"src": "Go to document library",
+			"tgt": "Vai alla raccolta documenti",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "-QwKxl5l4G0bSHzunF6PDxbtFAjOGaw1gbMAPvbPvdw",
+			"q": 70,
+			"src": "Cloud",
+			"tgt": "Cloud",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "Z8SdGcwUf6vyZv2DdWizfqlOPFLSidgQwHAdt8kRes4",
+			"q": 70,
+			"src": "Sign up today to claim your free network in the cloud.",
+			"tgt": "Registrati oggi per richiedere la tua rete gratuita nel cloud.",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "Uh32mWY8aps0Zd9KWVc47xITBfl4BUWL3y9F_B4oNWM",
+			"q": 70,
+			"src": "Sign up",
+			"tgt": "Registrati",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "Pz54JiX2JjML3oc7pZncR6j4g9uK2RQqvTfJL6BszGI",
+			"q": 70,
+			"src": "Requesting to add user {0} to site {1}...",
+			"tgt": "Richiesta di aggiungere l''utente {0} al sito {1} in corso...",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "OA3l4iadptsLLp7LqaUyUL8HAYdcQMTs_U40Ph1P3KE",
+			"q": 70,
+			"src": "Request to join site {1} successfully sent. You will now be returned to your personal dashboard.",
+			"tgt": "Richiesta di partecipazione al sito {1} inviata. Verr\\u00e0 visualizzato il pannello di controllo personale.",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "xIvx5MFuL4xbFhSVUzoWVs1-vtBi41Cjw3CQ0f5Cxp8",
+			"q": 70,
+			"src": "Could not make the request to add user {0} to site {1}.",
+			"tgt": "Impossibile inviare la richiesta di aggiungere l''utente {0} al sito {1}.",
+			"ts": 1642896537891
+		},
+		{
+			"guid": "-mF3ugEQpGdMiNj6mR92iwaVMBtHy4HL5ZIJThK6iZU",
+			"q": 70,
+			"src": "My Discussions",
+			"tgt": "Le mie discussioni",
+			"ts": 1642896537889
+		},
+		{
+			"guid": "AOIIEpiCu9WedMyqPeO1AyNZSHlySVzODmPV5o8kjUc",
+			"q": 70,
+			"src": "New Topic",
+			"tgt": "Nuovo argomento",
+			"ts": 1642896537889
+		},
+		{
+			"guid": "4Zbp5n5fAngZAKluzQ_hZqBwFptprKA-c5yHlUS0S98",
+			"q": 70,
+			"src": "There are no topics matching your filters.",
+			"tgt": "Nessun argomento corrispondente ai filtri.",
+			"ts": 1642896537889
+		},
+		{
+			"guid": "zfEXHMjig8Nq0hRvJFavv0YSYI687AAYRF7VDNBhedY",
+			"q": 70,
+			"src": "Updated",
+			"tgt": "Aggiornato",
+			"ts": 1642896537889
+		},
+		{
+			"guid": "5IJAuQL6UV5_ZA0wQJNE9qi9ehoZcQRR2m6pX3S-DKE",
+			"q": 70,
+			"src": "Created by {0} {1}.",
+			"tgt": "Creato da {0} {1}.",
+			"ts": 1642896537889
+		},
+		{
+			"guid": "xxSe_S0aI5ez8bvNdqKQb9ZwoYONnrfp0gcWTfaxo2c",
+			"q": 70,
+			"src": "There is 1 reply.",
+			"tgt": "1 risposta.",
+			"ts": 1642896537889
+		},
+		{
+			"guid": "S5_Kvt-LzA6yEdKFBlXbBmCWhFdlxvUWAKP2od-bXfI",
+			"q": 70,
+			"src": "There are {0} replies.",
+			"tgt": "{0} risposte.",
+			"ts": 1642896537889
+		},
+		{
+			"guid": "Hs0E72WcBUBty_ns32PTWF4Yhm-hP0tXa2W01ic4iQc",
+			"q": 70,
+			"src": "The last reply was posted by {0} {1}.",
+			"tgt": "L''ultima risposta \\u00e8 stata postata da {0} {1}.",
+			"ts": 1642896537889
+		},
+		{
+			"guid": "SaF5jfhsK1yJhYCtKwNK14xZFItSKzIHbyfOX09s3j4",
+			"q": 70,
+			"src": "My Topics",
+			"tgt": "I miei argomenti",
+			"ts": 1642896537889
+		},
+		{
+			"guid": "MSPfQF1UwlwAcvWVCifinQbfh_Awliii9Ah1cS-YNAA",
+			"q": 70,
+			"src": "All Topics",
+			"tgt": "Tutti gli argomenti",
+			"ts": 1642896537889
+		},
+		{
+			"guid": "1xmZmVo3sItH_a_W99LVgEsp-40jP-cffl9A0AyIIDk",
+			"q": 70,
+			"src": "Topics updated in the last day",
+			"tgt": "Argomenti aggiornati nelle ultime 24 ore",
+			"ts": 1642896537889
+		},
+		{
+			"guid": "EvEWSxMZ0JyvlAQYQw7vxRTgVod348eqh3WUYn6EFIo",
+			"q": 70,
+			"src": "Topics updated in the last 7 days",
+			"tgt": "Argomenti aggiornati negli ultimi 7 giorni",
+			"ts": 1642896537889
+		},
+		{
+			"guid": "dre_B9YD3fbTKFCI4LdUyv2UQ9BuyWEC1OKW3YJUW6Y",
+			"q": 70,
+			"src": "Topics updated in the last 14 days",
+			"tgt": "Argomenti aggiornati negli ultimi 14 giorni",
+			"ts": 1642896537889
+		},
+		{
+			"guid": "mdEbnp88stSHwlqd2IFsRxHPOrXFWK1pt2g6GfJet3Y",
+			"q": 70,
+			"src": "Topics updated in the last 28 days",
+			"tgt": "Argomenti aggiornati negli ultimi 28 giorni",
+			"ts": 1642896537889
+		},
+		{
+			"guid": "_XhAveHZT2LcvmXH7ZCmxIS6UvISIcG0nWvGw1_ZG5U",
+			"q": 70,
+			"src": "<p>Discussion Forum dashlet.</p><p>View your latest posts on the Discussion Forum.</p>",
+			"tgt": "<p>Dashlet forum discussione.</p><p>Visualizza gli ultimi post sul forum della discussione.</p>",
+			"ts": 1642896537889
+		},
+		{
+			"guid": "fOzFYWf5p9zLAoul1h5_L8PRFB9JVo_HcIXCbFZ22FY",
+			"q": 70,
+			"src": "Image Preview",
+			"tgt": "Anteprima immagine",
+			"ts": 1642896537893
+		},
+		{
+			"guid": "0-GrFX12d4kQcyxamhrCI4tuDTExyjLmiUZ8exmZxDo",
+			"q": 70,
+			"src": "No items to display",
+			"tgt": "Nessun elemento da visualizzare",
+			"ts": 1642896537893
+		},
+		{
+			"guid": "F4j7Lk_GWSsx28kOloQ_uKeLyLdFgS6YkRDe2iRm9wQ",
+			"q": 70,
+			"src": "Modified by {0}",
+			"tgt": "Modificato da {0}",
+			"ts": 1642896537893
+		},
+		{
+			"guid": "a5bR8I0N7j5L8MapbxBGktzTLltOl3widThdkGwzBhg",
+			"q": 70,
+			"src": "Select Image Folder in {0}...",
+			"tgt": "Seleziona la cartella Immagini in {0}...",
+			"ts": 1642896537893
+		},
+		{
+			"guid": "Ly4fkat27mxTxU9l3TSeFaUihGmSkMhBS1OmC1dHGfY",
+			"q": 70,
+			"src": "This dashlet shows a thumbnail of each image in the document library. Clicking a thumbnail opens the image in the current window.",
+			"tgt": "Questo dashlet mostra una miniatura di ciascuna immagine della raccolta documenti. Fare clic su una miniatura per aprire l'immagine nella finestra corrente.",
+			"ts": 1642896537893
+		},
+		{
+			"guid": "AkOVY2nm-Cf2dwDHuUTJpT98X3WA0NPXYZE9jhCcjX0",
+			"q": 70,
+			"src": "My Activities",
+			"tgt": "Le mie attivit\\u00e0",
+			"ts": 1642896537780
+		},
+		{
+			"guid": "airW-7rNpHg3ZedTeodPgXLO5o3tuBdYT4bSg8PkIo4",
+			"q": 70,
+			"src": "Could not load activities list",
+			"tgt": "Impossibile caricare l'elenco attivit\\u00e0",
+			"ts": 1642896537780
+		},
+		{
+			"guid": "q8fd6Vngp46xiXf7YfGIUPWkBjlfIFgzAe7MhW5Tfps",
+			"q": 70,
+			"src": "Show",
+			"tgt": "Mostra",
+			"ts": 1642896537780
+		},
+		{
+			"guid": "jsg7kitbc9wGCKFRKSV3j_NZN21QhAg7AwR2Nf_KfpE",
+			"q": 70,
+			"src": "Older Activities",
+			"tgt": "Attivit\\u00e0 precedenti",
+			"ts": 1642896537780
+		},
+		{
+			"guid": "lYYzgCGkzccr-pT7UZ4i4kg7sG6k6f3jFdc6n8EN4N8",
+			"q": 70,
+			"src": "My activities",
+			"tgt": "Le mie attivit\\u00e0",
+			"ts": 1642896537780
+		},
+		{
+			"guid": "s4SvMdwfKMU6ccV6QqV3hxXIE-EzYdNfDOpAa_qen1o",
+			"q": 70,
+			"src": "Everyone else's activities",
+			"tgt": "Le attivit\\u00e0 di altri utenti",
+			"ts": 1642896537780
+		},
+		{
+			"guid": "WzSe9I99A25oVVk5smwr-UVIa9nedcgn5MHlq4_ycoE",
+			"q": 70,
+			"src": "Everyone's activities",
+			"tgt": "Tutte le attivit\\u00e0",
+			"ts": 1642896537780
+		},
+		{
+			"guid": "vxTDpMP5KNPD326mYrmygx-sSyHTLyKyg_J88cfgfYQ",
+			"q": 70,
+			"src": "I'm following",
+			"tgt": "Sto seguendo",
+			"ts": 1642896537780
+		},
+		{
+			"guid": "VuYFBmp8W917yvy6FDEnusaF740C6phWH-JIUrTYwc0",
+			"q": 70,
+			"src": "all items",
+			"tgt": "tutti gli elementi",
+			"ts": 1642896537780
+		},
+		{
+			"guid": "9pCIQFQxRalDew1kFulGYgME6nG1b-H580ALZ6kf4rQ",
+			"q": 70,
+			"src": "status updates",
+			"tgt": "aggiornamenti di stato",
+			"ts": 1642896537780
+		},
+		{
+			"guid": "mgUol9Z645in6zK0RM990o_78khH6p8NMdzX1Mp4b6k",
+			"q": 70,
+			"src": "comments",
+			"tgt": "commenti",
+			"ts": 1642896537780
+		},
+		{
+			"guid": "ruuQ9F125RY3PUE1KBUvz5XETYN3uQQxUGlrf4uihw0",
+			"q": 70,
+			"src": "content",
+			"tgt": "contenuto",
+			"ts": 1642896537780
+		},
+		{
+			"guid": "MwlTDK7YJbk4KimjzvBTNWO7mzIyQWs8aqhDMdwaTLs",
+			"q": 70,
+			"src": "memberships",
+			"tgt": "appartenenza",
+			"ts": 1642896537780
+		},
+		{
+			"guid": "ew1Cta4NZUO58z_VftSCMsMI7As-GxknGadESOGGxtI",
+			"q": 70,
+			"src": "today",
+			"tgt": "oggi",
+			"ts": 1642896537780
+		},
+		{
+			"guid": "G-kVvVlHI0aJBqvYbTHfRbAsDfGIlqcB2LRkmSYzV1A",
+			"q": 70,
+			"src": "in the last 7 days",
+			"tgt": "negli ultimi 7 giorni",
+			"ts": 1642896537780
+		},
+		{
+			"guid": "lJ4UhR4FcJ2ZfGcZm8WmI1zucHBKt458WX9cx5HsHG0",
+			"q": 70,
+			"src": "in the last 14 days",
+			"tgt": "negli ultimi 14 giorni",
+			"ts": 1642896537780
+		},
+		{
+			"guid": "82JTNLI_g7fqBtaJ-Cu1hMnp7jXHvGd7tX7gLNwDTsM",
+			"q": 70,
+			"src": "in the last 28 days",
+			"tgt": "negli ultimi 28 giorni",
+			"ts": 1642896537780
+		},
+		{
+			"guid": "_gINTlZvl1A81Hu1S4xQyj3N2YmM-e-Ej9sbKZ-45tQ",
+			"q": 70,
+			"src": "Follow what's going on in your sites",
+			"tgt": "Segui cosa accade nei siti",
+			"ts": 1642896537780
+		},
+		{
+			"guid": "P_2n50nItJIiq3IMSYSe0EmV3qw4ECxzGDtp5B8ViNc",
+			"q": 70,
+			"src": "The activities in this list let you follow the changes in the sites you belong to. You'll see things such as content updates and likes. You can also see who is joining and leaving your sites.",
+			"tgt": "Le attivit\\u00e0 di questo elenco consentono di tenere traccia delle modifiche apportate ai siti di cui si \\u00e8 membri. Sono visualizzate attivit\\u00e0 quali aggiornamenti dei contenuti e preferenze. \\u00c8 anche possibile visualizzare i nuovi membri o quelli che si rimuovono dai propri siti.",
+			"ts": 1642896537780
+		},
+		{
+			"guid": "2vPQobJcTQblu46SKlLEO2Nos8w7Y8u3_N4CSL9e_ig",
+			"q": 70,
+			"src": "<p>Following what goes on in your sites is easy with this dashlet. It shows the activities in all the sites you belong to, such as content that's been added, deleted, and edited. You can also see who is joining and leaving your sites.</p><p>Filters let you view activities by time period and ownership.</p>",
+			"tgt": "<p>\\u00c8 molto semplice seguire cosa accade nei propri siti utilizzando questo dashlet. Vengono visualizzate le attivit\\u00e0 eseguite in tutti i siti di appartenenza, ad esempio l'aggiunta, l'eliminazione o la modifica di contenuto. \\u00c8 anche possibile vedere chi si unisce e chi si rimuove da tali siti.</p><p>I filtri consentono di visualizzare le attivit\\u00e0 in base al periodo di tempo e alla propriet\\u00e0.</p>",
+			"ts": 1642896537780
+		},
+		{
+			"guid": "kVq7Hxzh1nxrGyUwKNHYSW6FQgPe1o3oLXMXZ9m6KvE",
+			"q": 70,
+			"src": "Content I'm Editing",
+			"tgt": "Contenuto che sto modificando",
+			"ts": 1642896537812
+		},
+		{
+			"guid": "VaDhmkZ2ZWWHWdcH144kDe7K5E5gOW5DO9nPN-5fxNU",
+			"q": 70,
+			"src": "No items to display",
+			"tgt": "Nessun elemento da visualizzare",
+			"ts": 1642896537812
+		},
+		{
+			"guid": "Dm0Z706m2IOjE27Dnqz0iNRrbESVyE9L3njuiI_AGbc",
+			"q": 70,
+			"src": "Could not load data",
+			"tgt": "Impossibile caricare i dati",
+			"ts": 1642896537812
+		},
+		{
+			"guid": "tgc74AW51JeDBDeerxVKIO6Sxr_56JKdtaTMSBN2JoI",
+			"q": 70,
+			"src": "Edited {0} in {1}",
+			"tgt": "Modificato il {0} nel {1}",
+			"ts": 1642896537812
+		},
+		{
+			"guid": "-lMS7-u6z9glHmbrX3w1Ta0CO_w20cZOEVdEgy7KAWo",
+			"q": 70,
+			"src": "Blog posts",
+			"tgt": "Post del blog",
+			"ts": 1642896537812
+		},
+		{
+			"guid": "kht1hnZxYg5z2oDabqluhIpdRLnLQiK48GRI9uRQ0dY",
+			"q": 70,
+			"src": "Forum posts",
+			"tgt": "Post del forum",
+			"ts": 1642896537812
+		},
+		{
+			"guid": "vaP3NW7ujyij8Ah5awtcl-VTn-TgXotOTo3xh-0d5Sg",
+			"q": 70,
+			"src": "Wiki pages",
+			"tgt": "Pagine wiki",
+			"ts": 1642896537812
+		},
+		{
+			"guid": "mma7KIJnCz1r0BNPr7a8fDOCcCHL402bw0whYy0wTZU",
+			"q": 70,
+			"src": "Documents",
+			"tgt": "Documenti",
+			"ts": 1642896537812
+		},
+		{
+			"guid": "vkvoNwRn2JIB_pYL7kCudI2BBrl0Uw4yhYNWHloHAT8",
+			"q": 70,
+			"src": "Check this dashlet to quickly see the items you are working on.",
+			"tgt": "Controllare la dashlet per visualizzare rapidamente gli elementi attualmente in uso.",
+			"ts": 1642896537812
+		},
+		{
+			"guid": "Zr8WyWG3RhlGY6Ni69YgvBIDRjGacfuKAxPi1HvCmWQ",
+			"q": 70,
+			"src": "My Documents",
+			"tgt": "I miei documenti",
+			"ts": 1642896537869
+		},
+		{
+			"guid": "16dwhpoku0nRZdnDK3zN4gY9CzQrNxTrbsgwSm6DGfk",
+			"q": 70,
+			"src": "My Favorites",
+			"tgt": "I miei preferiti",
+			"ts": 1642896537869
+		},
+		{
+			"guid": "T45JY1JPTF8w3-9djuQrQqNt1qo8go5BrnY-0gq_XiM",
+			"q": 70,
+			"src": "I'm Editing",
+			"tgt": "Che sto modificando",
+			"ts": 1642896537869
+		},
+		{
+			"guid": "69OAs0aOL6ZqIcXL4Fizzt7ocJPdHMPqRnxI7gdwxXY",
+			"q": 70,
+			"src": "I've Recently Modified",
+			"tgt": "Elementi modificati di recente",
+			"ts": 1642896537869
+		},
+		{
+			"guid": "CIwEJyo5_StommBSbdzYai9bLZOnMhok9di6JIE7bgc",
+			"q": 70,
+			"src": "Synced content",
+			"tgt": "Contenuto sincronizzato",
+			"ts": 1642896537869
+		},
+		{
+			"guid": "yV-PN0fv77TSTS-mNgk_pcjMnf-LdfCFBcsfNb-eAJA",
+			"q": 70,
+			"src": "Synced with Errors",
+			"tgt": "Sincronizzato con errori",
+			"ts": 1642896537869
+		},
+		{
+			"guid": "8XoIyfOkoCz_nXAZEuq2rAkrOzDIktohodTvmnKDPos",
+			"q": 70,
+			"src": "Keep track of your own content",
+			"tgt": "Tieni traccia dei contenuti",
+			"ts": 1642896537869
+		},
+		{
+			"guid": "ll8G2DYvYEBCintesx4VmEGESLsVncMkqwdXMUxqKcQ",
+			"q": 70,
+			"src": "This dashlet lists all of the content that's important to you, no matter which site it is in. Use the filters to easily find what you're looking for.",
+			"tgt": "Questo dashlet elenca tutti i contenuti importanti per l'utente, indipendente dal sito di provenienza. Utilizzare i filtri per modificare in modo semplice gli elementi desiderati.",
+			"ts": 1642896537869
+		},
+		{
+			"guid": "ShcUB-kxdjwKH2AdlbqM0l75IOjnsUHlasxuZRfjRPA",
+			"q": 70,
+			"src": "<p>This dashlet makes it easy to keep track of your own content, no matter which site it is in. Use the filter to easily find what you're looking for.</p><p>There are two views for this dashlet. The detailed view lets you:<ul><li>Mark an item as a favorite so it appears in Favorites lists for easy access</li><li>Like (and unlike) an item</li><li>Jump to the item details page to leave a comment</li></ul></p>",
+			"tgt": "<p>Questo dashlet consente di tenere traccia in modo semplice dei propri contenuti, indipendentemente dal sito di provenienza. Utilizzare il filtro per individuare con facilit\\u00e0 gli elementi desiderati.</p><p>Sono disponibili due viste per questo dashlet. La vista dettagliata consente di:<ul><li>Contrassegnare un elemento come preferito in modo che sia visualizzato negli elenchi dei preferiti per un accesso rapido</li><li>Inserire Mi piace o Non mi piace per un elemento</li><li>Andare alla pagina dei dettagli dell'elemento per inserire un commento</li></ul></p>",
+			"ts": 1642896537869
+		},
+		{
+			"guid": "xdSxt3fOBafJlhTuB-UYZBP6Yuaa3zikmNIKnn_3b80",
+			"q": 70,
+			"src": "My Meeting Workspaces",
+			"tgt": "I miei spazi di lavoro per riunioni",
+			"ts": 1642896537816
+		},
+		{
+			"guid": "95wufLScOHKhQTSbDmm0fY-sgDbl3CzFbTrf7EIcaco",
+			"q": 70,
+			"src": "Delete",
+			"tgt": "Elimina",
+			"ts": 1642896537816
+		},
+		{
+			"guid": "hEx8GA1O-_qTlP-B6JO83QStuzstF54FrJg9scNduiE",
+			"q": 70,
+			"src": "No meeting workspaces to display",
+			"tgt": "Nessuno spazio di lavoro per riunioni da visualizzare",
+			"ts": 1642896537816
+		},
+		{
+			"guid": "86X3guH-QznpXsT3DHHEw9PPgKLlRXKsKpTX0_GetnE",
+			"q": 70,
+			"src": "The favorite setting for the meeting workspace could not be saved",
+			"tgt": "Impossibile salvare l'impostazione come preferito per lo spazio di lavoro per riunioni",
+			"ts": 1642896537816
+		},
+		{
+			"guid": "chVcIGwRxOqTMMJSOVBci-X9dwfTrQqqbM_B4f5Hr8I",
+			"q": 70,
+			"src": "Mark or unmark meeting workspace as favorite",
+			"tgt": "Seleziona o deseleziona lo spazio di lavoro per riunioni come preferito",
+			"ts": 1642896537816
+		},
+		{
+			"guid": "0mXtDKcqSsQ2f-bn_WNhCJPjWuOImGuV2N4MzXFcGm4",
+			"q": 70,
+			"src": "Mark or unmark meeting workspace as IMAP favorite",
+			"tgt": "Seleziona o deseleziona lo spazio di lavoro per riunioni come preferito IMAP",
+			"ts": 1642896537816
+		},
+		{
+			"guid": "tudlLtXq92sWC7gywpc1T6B7E8uxGJZDc8HHygFDZFM",
+			"q": 70,
+			"src": "<p>A Meeting Workspace is a type of site that is created outside of Alfresco. This dashlet lists all of your Meeting Workspace sites.</p><p>From here you can navigate to a Meeting Workspace site. You can also delete a site, if you have the correct permissions.</p>",
+			"tgt": "<p>Uno spazio di lavoro per riunioni \\u00e8 un tipo di sito creato fuori da Alfresco. Questo dashlet contiene un elenco di tutti gli spazi di lavoro per riunioni dell'utente.</p><p>Da qui, \\u00e8 possibile visitare il sito di uno spazio di lavoro per riunioni. \\u00c8 anche possibile eliminare un sito, se si dispone dei permessi appropriati.</p>",
+			"ts": 1642896537816
+		},
+		{
+			"guid": "8bQlFmPjhRmQhEl_D3zucOoRAJwuTt-y982jqcFNmQg",
+			"q": 70,
+			"src": "My Profile",
+			"tgt": "Il mio profilo",
+			"ts": 1642896537834
+		},
+		{
+			"guid": "gwYKzILRTzurUCmf_I5JFHSzbAYK-qnKKqTk2OEqx58",
+			"q": 70,
+			"src": "View Full Profile",
+			"tgt": "Vedi profilo completo",
+			"ts": 1642896537834
+		},
+		{
+			"guid": "zYMbzhPI5FMRos67sdXQfWhFklnMLVEOoBQnWWEBlAk",
+			"q": 70,
+			"src": "This dashlet shows a summary of your personal details. From here you can access your full user profile.",
+			"tgt": "Questo dashlet mostra un riepilogo dei dettagli personali dell'utente. Da qui, \\u00e8 possibile accedere al profilo utente completo.",
+			"ts": 1642896537834
+		},
+		{
+			"guid": "UlZQ7MSqJC0zqQY0D4YOldD5F93cOpqhfne5pP2FWXc",
+			"q": 70,
+			"src": "My Sites",
+			"tgt": "I miei siti",
+			"ts": 1642896537847
+		},
+		{
+			"guid": "CNYZHwdG54uOPssvos2FeIoUucBpQgemdb5f3ZS3NOY",
+			"q": 70,
+			"src": "Create Site",
+			"tgt": "Crea sito",
+			"ts": 1642896537847
+		},
+		{
+			"guid": "pVbMCPTUkdxbzFMpurxmq3lfQYnXGvga70FOMpLWja0",
+			"q": 70,
+			"src": "Delete",
+			"tgt": "Elimina",
+			"ts": 1642896537847
+		},
+		{
+			"guid": "sym--UQ1RTuzq-6wohlntwmHh5bgnIyTlCFl8qdxFcQ",
+			"q": 70,
+			"src": "All",
+			"tgt": "Tutti",
+			"ts": 1642896537847
+		},
+		{
+			"guid": "i3ag0zcuvGFcbpZBiM8Pa-uiyQSUsnVUP3Rw86jIk9U",
+			"q": 70,
+			"src": "My Favorites",
+			"tgt": "I miei preferiti",
+			"ts": 1642896537847
+		},
+		{
+			"guid": "hbAeApluyJZr9vgdIibjX3E5CWn2gLKZDz-Q2edB6WE",
+			"q": 70,
+			"src": "Recent",
+			"tgt": "Recenti",
+			"ts": 1642896537847
+		},
+		{
+			"guid": "tI5VvhguKK2Np_Ymu6r2Ej0RIHbejD58RIz6_m2jxnA",
+			"q": 70,
+			"src": "Quickly access your sites",
+			"tgt": "Accesso rapido ai siti",
+			"ts": 1642896537847
+		},
+		{
+			"guid": "pORmuIaIpyiwAr733qjgG40a_bzACims7cH11c7xlsA",
+			"q": 70,
+			"src": "A site is a project area where you can share and discuss content with other site members.",
+			"tgt": "Per sito si intende un'area di progetto in cui \\u00e8 possibile condividere e utilizzare contenuti con altri membri del sito.",
+			"ts": 1642896537847
+		},
+		{
+			"guid": "DxEjNf9NRyr2lYuojO109PzRdfZbhlOasKBZeCFkxsM",
+			"q": 70,
+			"src": "We've included a sample site for you. Use this to explore the features in Alfresco.",
+			"tgt": "Viene riportato un sito di esempio per l'utente. Utilizzare questo sito per conoscere le funzionalit\\u00e0 di Alfresco.",
+			"ts": 1642896537847
+		},
+		{
+			"guid": "eB_cJ-hCnjl2LXlUNHQ41obId7vKpIoi1hnckcOilEw",
+			"q": 70,
+			"src": "<p>Sites are project areas where you collaborate with others, sharing content and working on it together. This dashlet lists the sites you belong to. You can filter this list to show only your favorite sites.</p><p>From here you can:<ul><li>Navigate to a site</li><li>Create a new site</li><li>Delete a site if you are the site manager</li><li>Mark a site as a favorite so that it shows in the Sites menu for easy access</li></ul></p>",
+			"tgt": "<p>I siti sono delle aree di progetti in cui l'utente pu\\u00f2 collaborare con altri utenti, condividere dei contenuti ed effettuare delle attivit\\u00e0 comuni. Questo dashlet riporta i siti a cui l'utente \\u00e8 iscritto. \\u00c8 possibile filtrare questo elenco per visualizzare solo i siti preferiti.</p><p>Da questo dashlet, \\u00e8 possibile:<ul><li>Visitare un sito</li><li>Creare un nuovo sito</li><li>Eliminare un sito se si ha il ruolo di manager del sito</li><li>Contrassegnare un sito come preferito in modo che sia visibile nel menu dei siti per un rapido accesso</li></ul></p>",
+			"ts": 1642896537847
+		},
+		{
+			"guid": "epKRcIosvdiNUQNTCllZBTpcyfk6yJLi37bwHg7nm_4",
+			"q": 70,
+			"src": "My Tasks",
+			"tgt": "I miei compiti",
+			"ts": 1642896537787
+		},
+		{
+			"guid": "vPu9Gy2eFkiPNaDAoIlmc9whCRzTvQ984kOHZANKJ0w",
+			"q": 70,
+			"src": "Start Workflow",
+			"tgt": "Avvia workflow",
+			"ts": 1642896537787
+		},
+		{
+			"guid": "Nlkm4Se8KVfvio8MJgmKKuvD49w9k4sJ5AJWs28somg",
+			"q": 70,
+			"src": "Active Tasks",
+			"tgt": "Compiti attivi",
+			"ts": 1642896537787
+		},
+		{
+			"guid": "Q4u2myLfcHsknqOi0r4uKtFBLaoJuJ0iiQ31G31sUJc",
+			"q": 70,
+			"src": "Completed Tasks",
+			"tgt": "Compiti completati",
+			"ts": 1642896537787
+		},
+		{
+			"guid": "xK24KgsSyM1av2EI_uMsC3k54yBUL2cNf3a6bMsygxs",
+			"q": 70,
+			"src": "View Task",
+			"tgt": "Vedi compito",
+			"ts": 1642896537787
+		},
+		{
+			"guid": "a75DwZSR97TRCv7Tu9buoQvS62zyWJSTBBIe0T_Sd9o",
+			"q": 70,
+			"src": "Edit Task",
+			"tgt": "Modifica compito",
+			"ts": 1642896537787
+		},
+		{
+			"guid": "firH6Wg83voQWGdKTeEaKvZFM2MSNnut6mwVBLZDrMg",
+			"q": 70,
+			"src": "Pooled task",
+			"tgt": "Compito assegnato al pool",
+			"ts": 1642896537787
+		},
+		{
+			"guid": "9ojyq_V8cDZqYBDFgCRU2RCQACTid4bhx26xBqL7MZ0",
+			"q": 70,
+			"src": "{0}, {1}",
+			"tgt": "{0}, {1}",
+			"ts": 1642896537787
+		},
+		{
+			"guid": "I5Kr0TjUoHgmE5HZ6Hkqw0kUIr0QjFzbFvz2YAG0Q0I",
+			"q": 70,
+			"src": "Unassigned",
+			"tgt": "Non assegnato",
+			"ts": 1642896537787
+		},
+		{
+			"guid": "hG8Ox3Xatkr7diGEMafsNauMsSkvfyxOTLNUNkOeJKA",
+			"q": 70,
+			"src": "Due on: {0}",
+			"tgt": "Scade il: {0}",
+			"ts": 1642896537787
+		},
+		{
+			"guid": "8AuA3JdZzJKOkRh8OQvnVJRzVHUPMIUiOjfrX86Bibo",
+			"q": 70,
+			"src": "No tasks",
+			"tgt": "Nessun compito",
+			"ts": 1642896537787
+		},
+		{
+			"guid": "cOIEcKcpYHdpYaHlWXxK8eAyMraCIZSfEAfQTDWLQSA",
+			"q": 70,
+			"src": "Type: {0}, Status: {1}",
+			"tgt": "Tipo: {0}, Stato: {1}",
+			"ts": 1642896537787
+		},
+		{
+			"guid": "3tkVM3WAlZnqn435TugK4MhJQgzntlZ-FuPgfHZ3hUM",
+			"q": 70,
+			"src": "Active Tasks",
+			"tgt": "Compiti attivi",
+			"ts": 1642896537787
+		},
+		{
+			"guid": "Qhtg8zhuobjkBNy9a9u6G9KpckRWn6ekNkSOWHYwutM",
+			"q": 70,
+			"src": "Completed Tasks",
+			"tgt": "Compiti completati",
+			"ts": 1642896537787
+		},
+		{
+			"guid": "K47iNY3XGCsnPWrz6ZcWoO9giYn2dV69Va9Gdq3B-eo",
+			"q": 70,
+			"src": "High Priority Tasks",
+			"tgt": "Compiti con priorit\\u00e0 alta",
+			"ts": 1642896537787
+		},
+		{
+			"guid": "BF4C3yrZszaNM52DTm4r3KQP78KDvTz-dY01BhVkF40",
+			"q": 70,
+			"src": "Tasks Due Today",
+			"tgt": "Compiti in scadenza oggi",
+			"ts": 1642896537787
+		},
+		{
+			"guid": "zS4uKDkVTrVts6ULIO2JJ_lfqs6so9Un-GRoLkYGxBA",
+			"q": 70,
+			"src": "Tasks Assigned to Me",
+			"tgt": "Compiti assegnati a me",
+			"ts": 1642896537787
+		},
+		{
+			"guid": "R09PDx_fzdUUGKSC__kqAXYqL0VbKfaRfunC2Enkszs",
+			"q": 70,
+			"src": "Unassigned (Pooled Tasks)",
+			"tgt": "Non assegnati (compiti assegnati al pool)",
+			"ts": 1642896537787
+		},
+		{
+			"guid": "xpJxcWOzyfOz6JiicCx8wipfHxU-XMnfeSwlvTCYc-U",
+			"q": 70,
+			"src": "Overdue Tasks",
+			"tgt": "Compiti scaduti",
+			"ts": 1642896537787
+		},
+		{
+			"guid": "xH9OYoIO3y2KixIP4p0-xd961rMhUmo9u7256vRHDBk",
+			"q": 70,
+			"src": "{CurrentPageReport}",
+			"tgt": "{CurrentPageReport}",
+			"ts": 1642896537787
+		},
+		{
+			"guid": "Ds8bBnEJR-0VpzdYDULimg0je5qAcolVn2NTMwav6zE",
+			"q": 70,
+			"src": "{startRecord} - {endRecord} of {totalRecords}",
+			"tgt": "{startRecord} - {endRecord} di {totalRecords}",
+			"ts": 1642896537787
+		},
+		{
+			"guid": "N0x4ZqYxFgSph2esNLhC1q4h8K7ebU4JR-Cynw1Tpew",
+			"q": 70,
+			"src": "Review the tasks assigned to you",
+			"tgt": "Esamina compiti assegnati",
+			"ts": 1642896537787
+		},
+		{
+			"guid": "pFJZM7Jmnr--w3m9nPZhK-2c0arLCxHQQMMiLc8O7jg",
+			"q": 70,
+			"src": "Different types of tasks can appear in this task list and you need to address each one. This could involve reviewing a document or simply accepting an invitation to a site.",
+			"tgt": "Nell'elenco dei compiti possono essere visualizzati diversi tipi di compiti che \\u00e8 necessario gestire singolarmente. Un compito pu\\u00f2 riguardare la revisione di un documento o semplicemente l'accettazione di un invito a un sito.",
+			"ts": 1642896537787
+		},
+		{
+			"guid": "yuZ8kL-RtX72I1i938tuPNva3s7BVSoDl7UGjK2UodU",
+			"q": 70,
+			"src": "<p>This dashlet lists the tasks assigned to you, including invitations to join sites. You can filter the list to view different types of tasks.</p><p>From here you can:<ul><li>Edit a task to manage it</li><li>View a single task</li><li>Open the My Tasks page to manage all of your tasks</li><li>Start a workflow to create tasks for others or yourself</li></ul></p>",
+			"tgt": "<p>Questo dashlet riporta i compiti assegnati all'utente, inclusi gli inviti di partecipazione ai siti. \\u00c8 possibile filtrare l'elenco per visualizzare i diversi tipi di compiti.</p><p>Da questo dashlet, \\u00e8 possibile:<ul><li>Modificare un compito per la gestione</li><li>Visualizzare un singolo compito</li><li>Aprire la pagina I miei compiti per gestire tutti i compiti</li><li>Avviare un workflow per creare compiti per altri utenti o per se stessi</li></ul></p>",
+			"ts": 1642896537787
+		},
+		{
+			"guid": "_uhE3KrGLJQO9NYX40QzZhCOAiGm53PUnKCKMHuIJHU",
+			"q": 70,
+			"src": "My Document Workspaces",
+			"tgt": "I miei spazi di lavoro per documenti",
+			"ts": 1642896537855
+		},
+		{
+			"guid": "o7jl6L3FLIXgeTEJ6_ChHV1ZOAQnp31thchwcDIpNPc",
+			"q": 70,
+			"src": "Delete",
+			"tgt": "Elimina",
+			"ts": 1642896537855
+		},
+		{
+			"guid": "WYzhdU3b8DtgLJUXn7Tn7zat4OE1EFCkAVcIOUV8oUs",
+			"q": 70,
+			"src": "No document workspaces to display",
+			"tgt": "Nessuno spazio di lavoro per documenti da visualizzare",
+			"ts": 1642896537855
+		},
+		{
+			"guid": "aGx4T_7P8p5whU4-Swu-yuVqZzjb0OhOhPh8OyzV42U",
+			"q": 70,
+			"src": "The favorite setting for the document workspace could not be saved",
+			"tgt": "Impossibile salvare l'impostazione come preferito per lo spazio di lavoro per documenti",
+			"ts": 1642896537855
+		},
+		{
+			"guid": "01beH-pALpRN0Q9lIKbOgEguRhml7Wj6yTj27zLVyAo",
+			"q": 70,
+			"src": "Mark or unmark document workspace as favorite",
+			"tgt": "Seleziona o deseleziona lo spazio di lavoro per documenti come preferito",
+			"ts": 1642896537855
+		},
+		{
+			"guid": "pYmD4nSAgI0AAp5sU_y8dj-SgmRPtsi_gEBYVwsL4C8",
+			"q": 70,
+			"src": "Mark or unmark document workspace as IMAP favorite",
+			"tgt": "Seleziona o deseleziona lo spazio di lavoro per documenti come preferito IMAP",
+			"ts": 1642896537855
+		},
+		{
+			"guid": "9AaA2VphgbM4i28Q0Dsd-5lMNS_-SHTdSRhUohVWaH8",
+			"q": 70,
+			"src": "<p>A Document Workspace is a type of site that is created outside of Alfresco. This dashlet lists all of your Document Workspace sites.</p><p>From here you can navigate to a Document Workspace site. You can also delete a site, if you have the correct permissions.</p>",
+			"tgt": "<p>Uno spazio di lavoro per documenti \\u00e8 un tipo di sito creato fuori da Alfresco. Questo dashlet contiene un elenco di tutti gli spazi di lavoro per documenti dell'utente.</p><p>Da qui, \\u00e8 possibile visitare il sito di uno spazio di lavoro per documenti. \\u00c8 anche possibile eliminare un sito, se si dispone dei permessi appropriati.</p>",
+			"ts": 1642896537855
+		},
+		{
+			"guid": "i6iRLGJMzgct3Ed5dX6quhzt5quYzAu4Zly3wVhMBeA",
+			"q": 70,
+			"src": "RSS Feed",
+			"tgt": "Feed RSS",
+			"ts": 1642896537817
+		},
+		{
+			"guid": "kJ9JAWQxUUCxiX4I0UKRyc8prgKz7vhCbHyRcFfSVbo",
+			"q": 70,
+			"src": "Configure",
+			"tgt": "Configura",
+			"ts": 1642896537817
+		},
+		{
+			"guid": "bl2r_NUdz3LRYApviS0mdZovycfmxK_1NX5e_dV3WGY",
+			"q": 70,
+			"src": "No news items",
+			"tgt": "Nessun elemento delle news",
+			"ts": 1642896537817
+		},
+		{
+			"guid": "TO0t9t7HB8sVD0LpC1mK9cydH5rfK18pVvjp1ukpvsU",
+			"q": 70,
+			"src": "Loading items - please wait...",
+			"tgt": "Caricamento elementi in corso, attendere...",
+			"ts": 1642896537817
+		},
+		{
+			"guid": "DXyZQwGvjI-wMwixtVE508JdQMvcior88KIFVTxvf7E",
+			"q": 70,
+			"src": "RSS feed can't be read",
+			"tgt": "Impossibile leggere il feed RSS",
+			"ts": 1642896537817
+		},
+		{
+			"guid": "wC9kcHAKpkTzWB31xwa9EMVYQwJXfj2pPAlxNYyyigs",
+			"q": 70,
+			"src": "RSS feed is not available",
+			"tgt": "Il feed RSS non \\u00e8 disponibile",
+			"ts": 1642896537817
+		},
+		{
+			"guid": "uWxJ2W5ssGnSAno1hIPCnJYbqmbLejphqst_gp1jfcc",
+			"q": 70,
+			"src": "RSS feed format is not supported",
+			"tgt": "Il formato del feed RSS non \\u00e8 supportato",
+			"ts": 1642896537817
+		},
+		{
+			"guid": "vOu-eNJHDEBQChRKqLed8BwIg3TYqS4vXtfiyYVOock",
+			"q": 70,
+			"src": "Saved Search",
+			"tgt": "Ricerca salvata",
+			"ts": 1642896537879
+		},
+		{
+			"guid": "6N6CvXFOJN5MW5CDAOCRUtAKv52ovL-gvXdY_uFAsuI",
+			"q": 70,
+			"src": "No results found.",
+			"tgt": "Nessun risultato trovato.",
+			"ts": 1642896537879
+		},
+		{
+			"guid": "2qDllQZkvpfUJXE0R5eq---oiS-52r1TJEFY9jaK0UM",
+			"q": 70,
+			"src": "in site",
+			"tgt": "nel sito",
+			"ts": 1642896537879
+		},
+		{
+			"guid": "xXeLvRnk8L9fg4rs4ABDXD3OP5laKu69E_AWs5MuyOc",
+			"q": 70,
+			"src": "<p>Use this dashlet to set up a search and view the results.</p><p>Configure the dashlet to save the search and set the title text of the dashlet.</p><p>Only a Site Manager can configure the search and title - this dashlet is ideal for generating report views in a site.</p>",
+			"tgt": "<p>Utilizzare questo dashlet per configurare una ricerca e visualizzare i risultati.</p><p>Configurare il dashlet per salvare la ricerca e impostare il testo titolo del dashlet.</p><p>Solo un manager del sito pu\\u00f2 configurare la ricerca e il titolo. Questo dashlet \\u00e8 l'ideale per generare visualizzazioni di rapporti in un sito.</p>",
+			"ts": 1642896537879
+		},
+		{
+			"guid": "9RU0-MtMA3IQ_HZWDTRlbtGICfYhmwwukPBoTOUNm84",
+			"q": 70,
+			"src": "Site Activities",
+			"tgt": "Attivit\\u00e0 del sito",
+			"ts": 1642896537767
+		},
+		{
+			"guid": "dXT2U75dxHuNIUPU-t03LIHyx2Xot9nfTYzt0wC7mX4",
+			"q": 70,
+			"src": "Could not load activities list",
+			"tgt": "Impossibile caricare l'elenco attivit\\u00e0",
+			"ts": 1642896537767
+		},
+		{
+			"guid": "5lPhH3wyUosnjY8D20zaDr3pvcSu5-4SHVcyxzNNyy8",
+			"q": 70,
+			"src": "Show",
+			"tgt": "Mostra",
+			"ts": 1642896537767
+		},
+		{
+			"guid": "X7hfuKglEIfBzyBP8hjkNyTVWbzADzO5qZeZrNwktVc",
+			"q": 70,
+			"src": "Older Activities",
+			"tgt": "Attivit\\u00e0 precedenti",
+			"ts": 1642896537767
+		},
+		{
+			"guid": "Udt6eFrWTD8LIPEn855TExZ8hKbdZ-XnDwZViiOfKjI",
+			"q": 70,
+			"src": "My activities",
+			"tgt": "Le mie attivit\\u00e0",
+			"ts": 1642896537767
+		},
+		{
+			"guid": "tf1yRhKe3Pz7u0eLwnf0vL6GRU-JEiOcDEEVohFUgBU",
+			"q": 70,
+			"src": "Everyone else's activities",
+			"tgt": "Le attivit\\u00e0 di altri utenti",
+			"ts": 1642896537767
+		},
+		{
+			"guid": "KGMwBkZzgvkB79vKnn9KTUdjpDd06urpF6Dm4CI65hk",
+			"q": 70,
+			"src": "Everyone's activities",
+			"tgt": "Tutte le attivit\\u00e0",
+			"ts": 1642896537767
+		},
+		{
+			"guid": "6VXScrtHrW6_RXucbYRhLaIIxk-PcKWCpucU-DXYuto",
+			"q": 70,
+			"src": "I'm following",
+			"tgt": "Sto seguendo",
+			"ts": 1642896537767
+		},
+		{
+			"guid": "vRZ8-bFg84NQr-JCGfCiYSgCFpyIVfkRsbewPxPUKWE",
+			"q": 70,
+			"src": "all items",
+			"tgt": "tutti gli elementi",
+			"ts": 1642896537767
+		},
+		{
+			"guid": "JyI-4jM5rBXorGP3KgW17ipL1vKGfX-vFdiQC3hJSxo",
+			"q": 70,
+			"src": "status updates",
+			"tgt": "aggiornamenti di stato",
+			"ts": 1642896537767
+		},
+		{
+			"guid": "p6ZwVEZOg2J8KszdlWUcLhmNYYhXgvGJAWrDtDpJq2U",
+			"q": 70,
+			"src": "comments",
+			"tgt": "commenti",
+			"ts": 1642896537767
+		},
+		{
+			"guid": "dIVUO_Ot8QvPYU5zjVyiWNQ9N4mnQMqs-HfBlrPGGC4",
+			"q": 70,
+			"src": "content",
+			"tgt": "contenuto",
+			"ts": 1642896537767
+		},
+		{
+			"guid": "h0ht26CvHSGS_Uww8ADVUAHxjrBN3SSfAbkQqsswkcc",
+			"q": 70,
+			"src": "memberships",
+			"tgt": "appartenenza",
+			"ts": 1642896537767
+		},
+		{
+			"guid": "3TQRV9f1141RY8JHLgGCs9MqJXCfUHGCPKoH346i8Ns",
+			"q": 70,
+			"src": "today",
+			"tgt": "oggi",
+			"ts": 1642896537767
+		},
+		{
+			"guid": "lZ1vxUkINGFrKtKYt4sXEWFtpRIR__IShFVOehBUyi0",
+			"q": 70,
+			"src": "in the last 7 days",
+			"tgt": "negli ultimi 7 giorni",
+			"ts": 1642896537767
+		},
+		{
+			"guid": "Vqe7ORCDAj0-3slbq6Y5GRiOE5OkVwpQLLkK0AnV7Ec",
+			"q": 70,
+			"src": "in the last 14 days",
+			"tgt": "negli ultimi 14 giorni",
+			"ts": 1642896537767
+		},
+		{
+			"guid": "es1WhpDaK4xTyYraeum4hgyUSD9UgerNfV9BGbPcy8I",
+			"q": 70,
+			"src": "in the last 28 days",
+			"tgt": "negli ultimi 28 giorni",
+			"ts": 1642896537767
+		},
+		{
+			"guid": "D5uLM2Y7lh5HKdwbw8Oh9zS4NvyemL-ifgDD6NROlug",
+			"q": 70,
+			"src": "Follow what's going on in this site",
+			"tgt": "Segui cosa accade nel sito corrente",
+			"ts": 1642896537767
+		},
+		{
+			"guid": "RLaiyI_cVexQQDovlu1wqNhAlA03prM3H8xpI72wVj8",
+			"q": 70,
+			"src": "Watch this list to keep up on the recent site changes. You'll see activities such as content updates and likes. You can also track the site membership by seeing who is joining and leaving.",
+			"tgt": "Verificare questo elenco per tenersi aggiornati sulle modifiche recenti apportate al sito. Sono visualizzate attivit\\u00e0 quali aggiornamenti dei contenuti e preferenze. \\u00c8 anche possibile tenere traccia delle iscrizioni al sito controllando i nuovi membri e quelli che si rimuovono.",
+			"ts": 1642896537767
+		},
+		{
+			"guid": "N5EWKvy-98rVgly4vkrJ1jgGynPaCl13TPSgRfK-DtA",
+			"q": 70,
+			"src": "<p>Following what goes on in the site is easy with this dashlet. It shows all activities, such as content that's been added, edited, and deleted. You can also see who is joining and leaving the site.</p><p>Filters let you view activities by time period and ownership.</p>",
+			"tgt": "<p>\\u00c8 molto semplice seguire le attivit\\u00e0 del sito utilizzando questo dashlet. Vengono visualizzate tutte le attivit\\u00e0, ad esempio l'aggiunta, la modifica e l'eliminazione di contenuti. \\u00c8 anche possibile vedere chi si unisce e chi si rimuove dal sito.</p><p>I filtri consentono di visualizzare le attivit\\u00e0 in base al periodo di tempo e alla propriet\\u00e0.</p>",
+			"ts": 1642896537767
+		},
+		{
+			"guid": "dMY8CN6sydoqUsRlFLrrNXGTDjgS3A4bFt7nv1DroMI",
+			"q": 70,
+			"src": "Site Data Lists",
+			"tgt": "Elenchi dati del sito",
+			"ts": 1642896537884
+		},
+		{
+			"guid": "UEdkz_oEge0EOVJV3nqTxzXuNnOFrX9tjMCPElAgRIU",
+			"q": 70,
+			"src": "No lists to display",
+			"tgt": "Nessun elenco da visualizzare",
+			"ts": 1642896537884
+		},
+		{
+			"guid": "s4s9nIqDYizLbFsc8sUeKYUtewrvGVq7HCuzzJMAyoM",
+			"q": 70,
+			"src": "Create Data List",
+			"tgt": "Crea elenco dati",
+			"ts": 1642896537884
+		},
+		{
+			"guid": "e0V7MJ88IW05x2ffT3zZKd7c2VGh38qlGaphUkWnFps",
+			"q": 70,
+			"src": "This dashlet shows lists relevant to the site. Clicking a list opens it.",
+			"tgt": "Questo dashlet mostra gli elenchi relativi al sito. Fare clic su un elenco per aprirlo.",
+			"ts": 1642896537884
+		},
+		{
+			"guid": "uBR0WvZq-dGOy09nZgCpNCSo9RZNSCZT2Du7IZG4Bsk",
+			"q": 70,
+			"src": "Site Links",
+			"tgt": "Link del sito",
+			"ts": 1642896537862
+		},
+		{
+			"guid": "_zCDNnMNZ1euI5GwWkU25cGMkUpXOZ-KbEs8dQr5VQw",
+			"q": 70,
+			"src": "Create Link",
+			"tgt": "Crea link",
+			"ts": 1642896537862
+		},
+		{
+			"guid": "8HjmVxKr0DkRi6RE5Mzx8Mytqr7ZTMgSLOga8bp7Gss",
+			"q": 70,
+			"src": "Link's details",
+			"tgt": "Dettagli link",
+			"ts": 1642896537862
+		},
+		{
+			"guid": "x6nxGD5yw60z5CfGz8xuv5PBEK3ms-y_5Coe_UG_7Ds",
+			"q": 70,
+			"src": "No links to display",
+			"tgt": "Nessun link da visualizzare",
+			"ts": 1642896537862
+		},
+		{
+			"guid": "xMaXXd9iLQTkboNcA5CI6YjOzza6t5fIYKN4nVTLvA0",
+			"q": 70,
+			"src": "This dashlet shows links relevant to this site. The list is compiled by site members. Clicking a link opens it in a new window.",
+			"tgt": "Questo dashlet mostra i link relativi al sito corrente. L'elenco viene compilato dai membri del sito. Fare clic su un link per aprirlo in una nuova finestra.",
+			"ts": 1642896537862
+		},
+		{
+			"guid": "qpNzDxIKznWjF3VhKBN4jSc4frLkqQGGBn7JqtJa8vE",
+			"q": 70,
+			"src": "URL not specified",
+			"tgt": "URL non specificato",
+			"ts": 1642896537862
+		},
+		{
+			"guid": "nxBPgM21nUdzaHwzKDAUOpPecwgSIOm6hqYTcX9bfwE",
+			"q": 70,
+			"src": "Site Notice",
+			"tgt": "Notifica sito",
+			"ts": 1642896537771
+		},
+		{
+			"guid": "yj4g5ndRJ2pR2YT6I5HJFiWAQwVkHxyWyuDH43euBnc",
+			"q": 70,
+			"src": "No text has been configured",
+			"tgt": "Non \\u00e8 stato configurato alcun testo",
+			"ts": 1642896537771
+		},
+		{
+			"guid": "mJhAoE9OxVj0OEm8MJe4izRbFC6F9eoyGp58nxDpzys",
+			"q": 70,
+			"src": "This dashlet displays a custom message on the dashboard, specified by the site manager",
+			"tgt": "Questo dashlet consente di visualizzare un messaggio personalizzato sul pannello di controllo, specificato dal manager del sito",
+			"ts": 1642896537771
+		},
+		{
+			"guid": "khf1feCavm6ibe8MqlZGGmPoAkxw1Fg-9CiardufKSE",
+			"q": 70,
+			"src": "Site Profile",
+			"tgt": "Profilo del sito",
+			"ts": 1642896537871
+		},
+		{
+			"guid": "xnjOvr8ZbL9c_zjhwEhHZECoM5O-B6LrHqJlydnHSk0",
+			"q": 70,
+			"src": "Welcome to {0}",
+			"tgt": "Benvenuto in {0}",
+			"ts": 1642896537871
+		},
+		{
+			"guid": "HD5X-d2HoQZXAQO4dA6XVjmwyDzxx7atfjumP0wXc8o",
+			"q": 70,
+			"src": "Site Manager(s):",
+			"tgt": "Manager del sito:",
+			"ts": 1642896537871
+		},
+		{
+			"guid": "sc0C0MkFSy_nMBTS8jU14d-HZ-yMGxWuHP3wcTt9yHA",
+			"q": 70,
+			"src": "Visibility:",
+			"tgt": "Visibilit\\u00e0:",
+			"ts": 1642896537871
+		},
+		{
+			"guid": "IM1fWv6-HAAWG9JWOwHN2PwqGFm84BL77kEkg73DENw",
+			"q": 70,
+			"src": "Public",
+			"tgt": "Pubblico",
+			"ts": 1642896537871
+		},
+		{
+			"guid": "sLsiWSXiT6OMWxIzGzVDhw3JQPzfKBdbII82UggAw90",
+			"q": 70,
+			"src": "Moderated",
+			"tgt": "Moderato",
+			"ts": 1642896537871
+		},
+		{
+			"guid": "BaIEq8aWhiGESKvrIdPctiXxiYBDVYWJJbPRg-brYNY",
+			"q": 70,
+			"src": "Private",
+			"tgt": "Privato",
+			"ts": 1642896537871
+		},
+		{
+			"guid": "nzBKPR27tGvdJTHt81bRETluPFYJ2Gg-H2gE9IUXAJs",
+			"q": 70,
+			"src": "Unknown",
+			"tgt": "Sconosciuto",
+			"ts": 1642896537871
+		},
+		{
+			"guid": "N1IcZ5QfrSM8ZDsOz5i0tr8gggb063aQJ0iUZgEs5To",
+			"q": 70,
+			"src": "This dashlet displays the site details. Only the site manager can change this information.",
+			"tgt": "In questo dashlet vengono visualizzati i dettagli del sito. Solo il manager del sito pu\\u00f2 modificare queste informazioni.",
+			"ts": 1642896537871
+		},
+		{
+			"guid": "7VTnCLwh2yhUtrL1y6RF5Dwfn2XQbLUztctjl78G2YU",
+			"q": 70,
+			"src": "Site Search",
+			"tgt": "Ricerca sito",
+			"ts": 1642896537806
+		},
+		{
+			"guid": "P9gayAUj9HlSgxvLBDwgnL6DpANGiR9nVrMe0FytAtU",
+			"q": 70,
+			"src": "Search",
+			"tgt": "Cerca",
+			"ts": 1642896537806
+		},
+		{
+			"guid": "gNmjQRRdC_hcOykrH-oV68pAvGcA-dAJC5fkJL8rxrw",
+			"q": 70,
+			"src": "No results found.",
+			"tgt": "Nessun risultato trovato.",
+			"ts": 1642896537806
+		},
+		{
+			"guid": "pp4AQNiSgKNV1PqmRFEsBGUVJiBdUd_0qK0wm3u6fBY",
+			"q": 70,
+			"src": "in site",
+			"tgt": "nel sito",
+			"ts": 1642896537806
+		},
+		{
+			"guid": "AW5j6bWDZUj8JF7o4Je_uO5R7rFsTZBn4e8U6upZ0JQ",
+			"q": 70,
+			"src": "<p>Use this dashlet to perform a site search and view the results.</p><p>Clicking the item name takes you to the details page so you can preview or work with the item.</p>",
+			"tgt": "<p>Utilizzare questo dashlet per eseguire una ricerca sito e visualizzare i risultati.</p><p>Facendo clic sul nome dell'elemento viene visualizzata la pagina dei dettagli che consente di ottenere un'anteprima o utilizzare l'elemento.</p>",
+			"ts": 1642896537806
+		},
+		{
+			"guid": "SPKdfv3dFWX7-7XFoRAq7On20IfLoU6TqTWJEw5jloU",
+			"q": 70,
+			"src": "My Calendar",
+			"tgt": "Il mio calendario",
+			"ts": 1642896537792
+		},
+		{
+			"guid": "qwOsbKeQ6XPLwXDcsYMNfNxnZkyoyMpXxz6_LSsWlzQ",
+			"q": 70,
+			"src": "No upcoming events",
+			"tgt": "Nessun evento imminente",
+			"ts": 1642896537792
+		},
+		{
+			"guid": "ZtTwkAcJjMlS2vtVGe9GQ2o5rFvpkyLIOLYQa-a3I9g",
+			"q": 70,
+			"src": "Could not load calendar data",
+			"tgt": "Impossibile caricare i dati del calendario",
+			"ts": 1642896537792
+		},
+		{
+			"guid": "IGy5p0jghtEk0sW4dXZLtM3lEa2gpWZ_FqWyBaew8do",
+			"q": 70,
+			"src": "All Day",
+			"tgt": "Giornata intera",
+			"ts": 1642896537792
+		},
+		{
+			"guid": "2IwY_Ard4ZTTuZMfTDeJi7K7mzgJeX4xwkpgXeW7ALY",
+			"q": 70,
+			"src": "in {0}",
+			"tgt": "in {0}",
+			"ts": 1642896537792
+		},
+		{
+			"guid": "yhoc5qivuex4c_K-BMYUFbP9nKbkdCrqEfDm1BnOX-8",
+			"q": 70,
+			"src": "This dashlet shows the upcoming events in sites you belong to. ",
+			"tgt": "In questo dashlet vengono visualizzati gli eventi imminenti nei siti di cui si \\u00e8 membri. ",
+			"ts": 1642896537792
+		},
+		{
+			"guid": "aEl7teKlCV7HKIC-OPv_prNQPwpaRzw60o4hAdE15GA",
+			"q": 70,
+			"src": "Please use the Configure link to enter the URL of the web page you wish to display",
+			"tgt": "Utilizzare il link Configura per immettere l'URL della pagina web da visualizzare",
+			"ts": 1642896537843
+		},
+		{
+			"guid": "KDBdUg-NyvIug1C7Rz4pKcBurbMKwVTWuh_9fF-84E4",
+			"q": 70,
+			"src": "Web View",
+			"tgt": "Vista web",
+			"ts": 1642896537894
+		},
+		{
+			"guid": "Tno6fdToJWn893cGorCoah96RqkheH8C4KN9ItLLcaE",
+			"q": 70,
+			"src": "No web page to display.",
+			"tgt": "Nessuna pagina web da visualizzare.",
+			"ts": 1642896537894
+		},
+		{
+			"guid": "qEmg83eG4VzuormYT5QzxsU8gVIOBWSxN-d3erkcNL8",
+			"q": 70,
+			"src": "Web View",
+			"tgt": "Vista web",
+			"ts": 1642896537894
+		},
+		{
+			"guid": "vnTi9G3JfmxMw4TI_DbSAMrv0zvUXjl7xMZlaZqNC_0",
+			"q": 70,
+			"src": "The domain of the page to display is not listed as a trusted domain inside your server's IFramePolicy config.",
+			"tgt": "Il dominio della pagina da visualizzare non \\u00e8 nella lista dei domini di fiducia all'interno della configurazione IFramePolicy del tuo server.",
+			"ts": 1642896537894
+		},
+		{
+			"guid": "PW3HC0pFONNYOo4XrRLAjPfzrPhU7ql3Vcb-RLr5q3I",
+			"q": 70,
+			"src": "The domain of the url is not listed as a trusted domain inside your server's IFramePolicy config.",
+			"tgt": "Il dominio dell'url non \\u00e8 nella lista dei domini di fiducia all'interno della configurazione IFramePolicy del tuo server.",
+			"ts": 1642896537894
+		},
+		{
+			"guid": "GW2RqmBtr_dCSi4GUl6Hi-7odVfFPXFWvyOZxvLord4",
+			"q": 70,
+			"src": "<p>This dashlet shows the website of your choice. Click the edit icon on the dashlet to change the web address.</p><p>Clicking the dashlet title opens the website in a separate window.</p>",
+			"tgt": "<p>Questo dashlet mostra il sito web selezionato. Fare clic sull'icona Modifica del dashlet per modificare l'indirizzo web.</p><p>Fare clic sul titolo del dashlet per aprire il sito web in una finestra separata.</p>",
+			"ts": 1642896537894
+		},
+		{
+			"guid": "tsUhoDa8t8CFonVR8KHvel4WKS9SQ9FXHzCcsTkt3bs",
+			"q": 70,
+			"src": "Wiki",
+			"tgt": "Wiki del sito",
+			"ts": 1642896537773
+		},
+		{
+			"guid": "gksc8DHW-8RthR-g1Dm982LeG5shOJQG1_FUXaGG8RA",
+			"q": 70,
+			"src": "Wiki",
+			"tgt": "Wiki",
+			"ts": 1642896537773
+		},
+		{
+			"guid": "iVQEaDYs1oi356F_6MZiUW905O8LQl1bKRWNJg4DGqk",
+			"q": 70,
+			"src": "Configure",
+			"tgt": "Configura",
+			"ts": 1642896537773
+		},
+		{
+			"guid": "WbL_w7F4YtPHfi2CGZuO_iHD42Gsfv9JFL3uE8B3hmY",
+			"q": 70,
+			"src": "No page is configured",
+			"tgt": "Nessuna pagina configurata",
+			"ts": 1642896537773
+		},
+		{
+			"guid": "aL0XpXO85q1QEFuRWmswSmwCBo0bP18SrErZq1mm-YY",
+			"q": 70,
+			"src": "<p>This dashlet shows a page selected from the site's wiki.</p><p>Navigate to the wiki to see all related content.</p>",
+			"tgt": "<p>Questo dashlet mostra una pagina selezionata dal wiki del sito.</p><p>Accedere al wiki per visualizzarne tutto il contenuto.</p>",
+			"ts": 1642896537773
+		}
+	],
+	"status": "done",
+	"translationProvider": "Grandfather",
+	"jobGuid": "xxx0xxx",
+	"updatedAt": "2022-05-29T00:00:00.000Z"
+}

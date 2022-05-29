@@ -37,7 +37,7 @@ export class XliffBridge {
             notes,
         );
         if (xliff) {
-            const prjPath = path.join(this.ctx.baseDir, this.requestPath(jobRequest.targetLang, jobRequest.jobId));
+            const prjPath = path.join(this.ctx.baseDir, this.requestPath(jobRequest.targetLang, jobRequest.jobGuid));
             await fs.mkdir(path.dirname(prjPath), {recursive: true});
             await fs.writeFile(prjPath, xliff, 'utf8');
             jobManifest.inflight = Object.values(jobRequest.tus).map(tu => tu.guid);
@@ -49,7 +49,7 @@ export class XliffBridge {
     }
 
     async fetchTranslations(jobManifest) {
-        const completePath = path.join(this.ctx.baseDir, this.completePath(jobManifest.targetLang, jobManifest.jobId));
+        const completePath = path.join(this.ctx.baseDir, this.completePath(jobManifest.targetLang, jobManifest.jobGuid));
         if (existsSync(completePath)) {
             const translatedRes = await fs.readFile(completePath, 'utf8');
             const translations = await xliff12ToJs(translatedRes);

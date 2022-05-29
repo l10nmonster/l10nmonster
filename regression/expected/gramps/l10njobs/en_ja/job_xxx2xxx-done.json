@@ -1,0 +1,237 @@
+{
+	"sourceLang": "en",
+	"targetLang": "ja",
+	"translationProvider": "PigLatinizer",
+	"jobGuid": "xxx2xxx",
+	"status": "done",
+	"tus": [
+		{
+			"guid": "tWpG6kvtcp4w1JHvJBozB5DYm72_cxXTa7-sS-Jp73Y",
+			"tgt": "[{umbernay_ofyay} earyay-ja]",
+			"q": 2
+		},
+		{
+			"guid": "_87wA9D4M9voQ_w6H91oJK1WuLi8xHepJByZ2p7bsh0",
+			"tgt": "[{umbernay_ofyay} onthmay-ja]",
+			"q": 2
+		},
+		{
+			"guid": "VQ0t9COydoCCVczwd3Ms0ct2P6q3zU6nxN7hk3uCn5w",
+			"tgt": "[{umbernay_ofyay} ayday-ja]",
+			"q": 2
+		},
+		{
+			"guid": "C4LDQvKjaSL96clj2716BwTWyxRSN87lKbNKcuJejBc",
+			"tgt": "[{umbernay_ofyay} addonyay asway installedyay.-ja]",
+			"q": 2
+		},
+		{
+			"guid": "52fFK7YU_ccWFhAc7GAd1CJzcLvSPpGc5qONECGFd7g",
+			"tgt": "[{umbernay_ofyay} Ersonpay-ja]",
+			"q": 2
+		},
+		{
+			"guid": "IQx4S7xr_W2d5tkGFC-scMYKpme8JI-HxTSVZJWrHx8",
+			"tgt": "[ avehay {umbernay_ofyay} individualyay\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "KHaT7qGoTJDVr1FkNoF15mGIzP9EIUs1ahhuL555Nbg",
+			"tgt": "[{umbernay_ofyay} ildchay-ja]",
+			"q": 2
+		},
+		{
+			"guid": "wY1iViRNNjA6R_qnS5q8ngddu_kmWlmZgKKe1wKPmLE",
+			"tgt": "[Importyay Ompletecay: {umbernay_ofyay} econdsay-ja]",
+			"q": 2
+		},
+		{
+			"guid": "ZksxR_L4za64gfjPrHGtdWfdPNy_WBuikTmlEqZ-avQ",
+			"tgt": "[Ilterfay atchedmay {umbernay_ofyay} ecordray.-ja]",
+			"q": 2
+		},
+		{
+			"guid": "u6DC_V9_6MNGf_xspU8EaafQ_5gI9qEAnCri64HmWF0",
+			"tgt": "[Erethay isyay {umbernay_ofyay} ersonpay ithway ayay atchingmay amenay, oryay alternateyay amenay.\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "8i_dOcQL1DV-dX7ptnc2RJIokU3nmEMcbnbo-IiJ7Y4",
+			"tgt": "[Enerationgay {umbernay} ashay {ountcay} individualyay. {ercentpay}-ja]",
+			"q": 2
+		},
+		{
+			"guid": "fIvlt3kRinJeXX3e71ECtuffOQLgT4SHqvs6TgGdc5o",
+			"tgt": "[{umbernay_ofyay} eventyay ecordray asway odifiedmay.-ja]",
+			"q": 2
+		},
+		{
+			"guid": "13cPQ9HKDCx9_sVjbkxFBSPc_gcK3uANYzWAqwYUm-Y",
+			"tgt": "[{uantityqay} okenbray ildchay/amilyfay inklay asway ixedfay\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "Kz1YyxhVGwxg-KND6z-rqSX8pzdJJh96u1gMT0NAXL0",
+			"tgt": "[{uantityqay} okenbray ousespay/amilyfay inklay asway ixedfay\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "WCwhpoEDpGuOPjy3TrIrBScZRd6h3GT0b4WKNuO2S_U",
+			"tgt": "[{uantityqay} uplicateday ousespay/amilyfay inklay asway oundfay\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "vQHMfY8837RwrIIqU7HLK9famo_lvmbtJtf8hBTQ4ow",
+			"tgt": "[{uantityqay} amilyfay ithway onay arentspay oryay ildrenchay oundfay, emovedray.\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "IcF_YX8GICNbs_CRG13ZoKlMVxPekudOh-VfTd1tDeI",
+			"tgt": "[{uantityqay} orruptedcay amilyfay elationshipray ixedfay\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "-bKKv1HHXjwXHedUwHZ-6-5xGaOqN4IqqqPcxLYVv0s",
+			"tgt": "[{uantityqay} aceplay alternateyay amenay ixedfay\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "6fdUWHnhrslGjPNPsPpFC1HDmmfONhDdpdHHS2slKIA",
+			"tgt": "[{uantityqay} ersonpay asway eferencedray utbay otnay oundfay\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "Uu0xlJw2siyEBlvKDWLIey-Zm6PEaPsdEL406IZLdf8",
+			"tgt": "[{uantityqay} amilyfay asway eferencedray utbay otnay oundfay\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "eNTIFTR817KsHIKsm0_mRPoMGDXN6ZBnxgj_5Ej9XY0",
+			"tgt": "[{uantityqay} ateday asway orrectedcay\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "Qxae29sBRzdXTQzEt9bvXrAjXXvKWRegnI3N4wR9t_A",
+			"tgt": "[{uantityqay} epositoryray asway eferencedray utbay otnay oundfay\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "CoIcte-ThOwZANev_gMxQQGQ9nTH9VTs7ep1w2ZIsms",
+			"tgt": "[{uantityqay} ediamay objectyay asway eferencedray utbay otnay oundfay\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "rkeaxIJ77tXnsb7pEnNpP8UOLPRRVo8sU9-3PvB9FlQ",
+			"tgt": "[Eferenceray otay {uantityqay} issingmay ediamay objectyay asway eptkay\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "KlmjbWDERFIdVDq0YITG5pwIREQMbQFdQlB8i4ce6rE",
+			"tgt": "[{uantityqay} issingmay ediamay objectyay asway eplacedray\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "uJxVQoreavCWv7YwEkAfizWJPNB9UW2--q3NxZKmr6I",
+			"tgt": "[{uantityqay} issingmay ediamay objectyay asway emovedray\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "WABUyeFf5_gZX9g6kEHHwKIJuIY0aJlWEY9oxMjB5g4",
+			"tgt": "[{uantityqay} eventyay asway eferencedray utbay otnay oundfay\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "xmcD_zdEdnlOYEdPbAoozHjM0OMM88dHnZBOGNvo-m8",
+			"tgt": "[{uantityqay} invalidyay irthbay eventyay amenay asway ixedfay\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "NRjk9Z71qglGAPy2lhyzfny96uFDgmS51ngiJ_mp_cs",
+			"tgt": "[{uantityqay} invalidyay eathday eventyay amenay asway ixedfay\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "S8Zi6fXQvDrnKeEYsRQKdA_MLPQ82hSOw7g_oyobnPI",
+			"tgt": "[{uantityqay} aceplay asway eferencedray utbay otnay oundfay\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "8ngYiHrWV4UQKNkO8WS3uX-QsmCc2i7Oi_yMr3yv_rg",
+			"tgt": "[{uantityqay} itationcay asway eferencedray utbay otnay oundfay\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "i8m8qHVOGFQrDT91VH7m4sAwtAIinwpk7DIWvgt9dl4",
+			"tgt": "[{uantityqay} ourcesay asway eferencedray utbay otnay oundfay\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "jst3bGm_Z9HUagXQYevz_uFQ0VDRS6yGRFNIkYYmA88",
+			"tgt": "[{uantityqay} otenay objectyay asway eferencedray utbay otnay oundfay\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "Z-hOuDQ3askVPas8q7WwTq1XqW2D5w1nL1Ib0MZOrbE",
+			"tgt": "[{uantityqay} agtay objectyay asway eferencedray utbay otnay oundfay\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "JAiW9CRI-mkvwnbofDSgpu2mG7p11fNEhRepDtB2kXs",
+			"tgt": "[{uantityqay} invalidyay amenay ormatfay eferenceray asway emovedray\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "6aulFZQckxb1kvfVwWweov3NbB7jB-oB9q3LqwA_h0M",
+			"tgt": "[{uantityqay} invalidyay ourcesay itationcay asway ixedfay\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "-3aSl-XTGqrROk1fnWpKyJpunLpmmtBDx4-kBalwarU",
+			"tgt": "[{uantityqay} Uplicated-day Ampsgray IDYAY ixedfay\n-ja]",
+			"q": 2
+		},
+		{
+			"guid": "HSb9E851zTTxoEE0gGxMMlPdDH9zgpLdSxfWX199YgY",
+			"tgt": "[{uantityqay} eventyay escriptionday ashay eenbay addedyay-ja]",
+			"q": 2
+		},
+		{
+			"guid": "Co0uUzcdiZ8xXy6rZT4N0WMXkBrjZlf0mRhNkoPURds",
+			"tgt": "[{umbernay_ofyay} itationcay ergedmay-ja]",
+			"q": 2
+		},
+		{
+			"guid": "d_Du-v_WdHY38q6UDVVUOa_25zmpu-VrL7B_Xe0lEQQ",
+			"tgt": "[Ettingsay agtay orfay {umbernay_ofyay} ersonpay-ja]",
+			"q": 2
+		},
+		{
+			"guid": "0VC7WXtzQ4PsqMGx9ynCCLdKVxG04b8mMOjHQmPsSf0",
+			"tgt": "[Indingfay elationshipsray etweenbay {umbernay_ofyay} ersonpay-ja]",
+			"q": 2
+		},
+		{
+			"guid": "f-r6d6lsd9voAUl2yjbQkJLu0Tj-ngCo_guw5ofXDg0",
+			"tgt": "[Ookinglay orfay {umbernay_ofyay} ersonpay-ja]",
+			"q": 2
+		},
+		{
+			"guid": "XVnkkNbUDm8Zgw92U8DHAs8gctXaVUJ-7mrbxrR9DN4",
+			"tgt": "[Ookinglay upyay ethay amenay ofyay {umbernay_ofyay} ersonpay-ja]",
+			"q": 2
+		},
+		{
+			"guid": "WsftiLYR-5jScGSFuKczAqMwNGL-PoRAxVeXv_w2OmQ",
+			"tgt": "[ ({umbernay_ofyay} iblingsay)-ja]",
+			"q": 2
+		},
+		{
+			"guid": "SFE1HaDG_fhuJQLVzSg_AxTYXvDGU2GMi7Mk35e3XqU",
+			"tgt": "[ ({umbernay_ofyay} ildchay)-ja]",
+			"q": 2
+		}
+	],
+	"ts": 1,
+	"num": 45,
+	"updatedAt": "2022-05-29T00:00:00.000Z"
+}

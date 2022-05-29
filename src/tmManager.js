@@ -43,13 +43,13 @@ class TM {
         return this.lookUpByFlattenSrc[flattenSrc] || [];
     }
 
-    getJobStatus(jobId) {
-        return this.tm.jobStatus[jobId];
+    getJobStatus(jobGuid) {
+        return this.tm.jobStatus[jobGuid];
     }
 
-    setJobStatus(jobId, status) {
-        if (this.tm.jobStatus[jobId] !== status) {
-            this.tm.jobStatus[jobId] = status;
+    setJobStatus(jobGuid, status) {
+        if (this.tm.jobStatus[jobGuid] !== status) {
+            this.tm.jobStatus[jobGuid] = status;
             this.dirty = true;
         }
     }
@@ -64,13 +64,13 @@ class TM {
 
     async processJob(jobResponse, jobRequest) {
         const requestedUnits = (jobRequest?.tus ?? []).reduce((p,c) => (p[c.guid] = c, p), {});
-        const { jobId, status, inflight, tus } = jobResponse;
+        const { jobGuid, status, inflight, tus } = jobResponse;
         if (inflight) {
             for (const guid of inflight) {
                 const reqEntry = requestedUnits[guid] ?? {};
                 const tmEntry = this.getEntryByGuid(guid);
                 if (!tmEntry) {
-                    this.setEntryByGuid(guid, { ...reqEntry, q: 0, jobId, inflight: true });
+                    this.setEntryByGuid(guid, { ...reqEntry, q: 0, jobGuid, inflight: true });
                 }
             }
         }
@@ -83,11 +83,11 @@ class TM {
                 // also note that this may result in non-deterministic behavior (equal ts means later one wins)
                 const isNewish = !(tmEntry?.ts <= tu.ts);
                 if (!tmEntry || tmEntry.q < tu.q || (tmEntry.q === tu.q && isNewish)) {
-                    this.setEntryByGuid(tu.guid, { ...reqEntry, ...tu, jobId });
+                    this.setEntryByGuid(tu.guid, { ...reqEntry, ...tu, jobGuid });
                 }
             }
         }
-        this.setJobStatus(jobId, status);
+        this.setJobStatus(jobGuid, status);
         await this.commit();
     }
 }
@@ -111,10 +111,13 @@ export default class TMManager {
         if (tm.generation !== this.generation) {
             tm.generation = this.generation;
             const jobs = await this.jobStore.getJobStatusByLangPair(sourceLang, targetLang);
-            for (const [jobId, status] of jobs) {
-                if (tm.getJobStatus(jobId) !== status) {
-                    const jobResponse = await this.jobStore.getJob(jobId);
-                    const jobRequest = await this.jobStore.getJobRequest(jobId);
+            for (const [jobGuid, status] of jobs) {
+                // this is messy but should work
+                // getJobStatusByLangPair returns "wip but getJobStatus returns "pending"
+                // because so far wip is mutable, it's good to reload the latest every time
+                if (tm.getJobStatus(jobGuid) !== status) {
+                    const jobResponse = await this.jobStore.getJob(jobGuid);
+                    const jobRequest = await this.jobStore.getJobRequest(jobGuid);
                     await tm.processJob(jobResponse, jobRequest);
                 }
             }

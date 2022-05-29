@@ -52,7 +52,7 @@ export async function leverageCmd(mm, limitToLang) {
             const { tus, ...jobResponse } = jobRequest;
             const manifest = await mm.jobStore.createJobManifest();
             jobRequest.tus = sources;
-            translations.forEach(tu => tu.jobId = manifest.jobId);
+            translations.forEach(tu => tu.jobGuid = manifest.jobGuid);
             jobResponse.tus = translations;
             jobResponse.status = 'done';
             jobResponse.translationProvider = 'Repetition';

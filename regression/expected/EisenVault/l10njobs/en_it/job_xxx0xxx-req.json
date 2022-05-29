@@ -1,0 +1,2705 @@
+{
+	"sourceLang": "en",
+	"targetLang": "it",
+	"tus": [
+		{
+			"sid": "title.generic",
+			"guid": "7Yg93c458EbHxMIJHNXXG77jF5ZnrMzxv8ScSU0oCyQ",
+			"contentType": "default",
+			"src": "New Activity",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "more.activities",
+			"notes": "## Rollup",
+			"guid": "ofwlKHXIDQCXV7Rlk9WYgltn8MJ9Gl4AW6TlRxtAcII",
+			"contentType": "default",
+			"src": "{0} more",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "atom.title.site",
+			"notes": "## ATOM feed messages",
+			"guid": "bRBL1Isi3Xj28gXDOAgjrQfgd3j4u-evwXScOaysjwk",
+			"contentType": "default",
+			"src": "Alfresco Activities Site Feed for {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "atom.title.user",
+			"guid": "XUv30xi6gpjueW7GyKJZN-sblwll3XDAXmR8lVDCRmk",
+			"contentType": "default",
+			"src": "Alfresco Activities User Feed for {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "in.site",
+			"notes": "## Optional Site link",
+			"guid": "WhkdZt3NHyKL3rEFJ74k-QKHkviBt0-1j6WxSUTtGrI",
+			"contentType": "default",
+			"src": "{0} in {1}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.blog.post-created",
+			"notes": "## 0 = Item title / page link, 1 = User profile link, 2 = custom0, 3 = custom1, 4 = Site link, 5 = second user profile link",
+			"guid": "ZWi4GhbkcHflQik2kDutG_MLwv1dkR0b20-BoPLZAWk",
+			"contentType": "default",
+			"src": "{1} created blog post {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.blog.post-updated",
+			"guid": "16xbZ-N9Mj0qr-wexdWn9u36v6HK7TAuMwRNEt5aza0",
+			"contentType": "default",
+			"src": "{1} updated blog post {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.blog.post-deleted",
+			"guid": "rw0So7rhNIszXReiLESNOPruP9Hb6GP7Cp0cCgpHMCM",
+			"contentType": "default",
+			"src": "{1} deleted blog post {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.comments.comment-created",
+			"guid": "3uiLfF59XnMc7EeZ9-UylkneK26E0zSHF_LC-4ZtWq0",
+			"contentType": "default",
+			"src": "{1} commented on {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.comments.comment-updated",
+			"guid": "G6Lbc_ipVQtXeOXl8X8DnClK37cntOPCmkDl6XM8dPA",
+			"contentType": "default",
+			"src": "{1} updated comment on {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.comments.comment-deleted",
+			"guid": "wsF4kbW6urWDUD6c85EaJxf8d52Z23XPQG_wLYFvij8",
+			"contentType": "default",
+			"src": "{1} deleted a comment from {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.discussions.post-created",
+			"guid": "3Kb9009ZaZeuLQn2aRJkV37oFzxBfWWkaVf_wVe4hAg",
+			"contentType": "default",
+			"src": "{1} started discussion {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.discussions.post-updated",
+			"guid": "-N86KJHTblzDW9SIB4Od6kwm7JOh-KW5rG6Ab__5GqE",
+			"contentType": "default",
+			"src": "{1} updated discussion {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.discussions.post-deleted",
+			"guid": "b6TN2gZcmHvSWu7e3-txqsq-WTkmdk0HHBcZcw9UF28",
+			"contentType": "default",
+			"src": "{1} deleted discussion {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.discussions.reply-created",
+			"guid": "jjDVrJljU0PiZ9B3zVZwldIxaqlfrxyo63XMnEcuV_k",
+			"contentType": "default",
+			"src": "{1} replied to the discussion {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.discussions.reply-updated",
+			"guid": "PDR1Je479Y9z7AjaE9mV7ehWdyhGu34-T-l-US2wL5Y",
+			"contentType": "default",
+			"src": "{1} updated a reply to {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.calendar.event-created",
+			"guid": "6q0Lm3WR0Ku1n7996IOmLJ8Vc4fDpPR_5HM-hmcF9uE",
+			"contentType": "default",
+			"src": "{1} created calendar event {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.calendar.event-updated",
+			"guid": "yoheZ92UTZ3mza7NteBGXaSnvzDJd0OknumW0Cz6fM8",
+			"contentType": "default",
+			"src": "{1} updated calendar event {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.calendar.event-deleted",
+			"guid": "VgdGxqulIdRSg5Jyg_0T-FTuPRDPQE227Y8qjgxK2BQ",
+			"contentType": "default",
+			"src": "{1} deleted calendar event {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.documentlibrary.file-added",
+			"guid": "vmbsZYP4BuGtkocM0w4QcfmbGfICF9F0Hv-Ud57kmaI",
+			"contentType": "default",
+			"src": "{1} added document {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.documentlibrary.files-added",
+			"guid": "883RSYFaMYi3uwaftO4_-4aC2O1oZP5Sv6GvizrJq3E",
+			"contentType": "default",
+			"src": "{1} added {0} documents",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.documentlibrary.file-created",
+			"guid": "_9LL4GTp9WHKiXIm5r14B7BfkmInyHf8Vs83xyEna1w",
+			"contentType": "default",
+			"src": "{1} created document {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.documentlibrary.file-deleted",
+			"guid": "sPYwUzgdvwtIiHXCL_9of_fZ--1Q727bMQHR6yA7jFk",
+			"contentType": "default",
+			"src": "{1} deleted document {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.documentlibrary.files-deleted",
+			"guid": "XPjEYsR5CCbtC-jeH-yj751hxVKTKJE--sSg8KQDnuE",
+			"contentType": "default",
+			"src": "{1} deleted {0} documents",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.documentlibrary.file-updated",
+			"guid": "3V5-tPuD1PHpSNjVLf8GVNkwX5ZuCmvO75dSWbl8ha8",
+			"contentType": "default",
+			"src": "{1} updated document {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.documentlibrary.files-updated",
+			"guid": "rsaP7IOf0Oa5-Hj_qGVyCLWPXYwCdsJFm0Dsp5vnMtY",
+			"contentType": "default",
+			"src": "{1} updated {0} documents",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.documentlibrary.folder-added",
+			"guid": "ypQEplYTadjGOqtasis193JuIItQNCqXcI8piPmFJaA",
+			"contentType": "default",
+			"src": "{1} added folder {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.documentlibrary.folder-deleted",
+			"guid": "TYkYgHNbrX-X3YxjXnn_5Ytfdj4cn1yI3Vetgwj4z-o",
+			"contentType": "default",
+			"src": "{1} deleted folder {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.documentlibrary.folders-added",
+			"guid": "qfgYnT8CLoo4GujU8L-46UlxDf_o1JTDzEsfbuxLXkw",
+			"contentType": "default",
+			"src": "{1} added {0} folders",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.documentlibrary.folders-deleted",
+			"guid": "z_oSiSqgjkCZ1268ejoywlZQeADe6QfU1jhVJ_sWXnQ",
+			"contentType": "default",
+			"src": "{1} deleted {0} folders",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.documentlibrary.inline-edit",
+			"guid": "YCVtGhe4Ba6Xw4R04stZnOpW7nkxgWr39fjcfPERH0w",
+			"contentType": "default",
+			"src": "{1} edited document {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.documentlibrary.file-previewed",
+			"guid": "AsCbG9nAAZi5qIlEccm_cno2ezAvucWasLbvzott41I",
+			"contentType": "default",
+			"src": "{1} previewed document {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.documentlibrary.file-downloaded",
+			"guid": "exsPXFfrA3QuilustThrPxWPKWD1P3pRecmy_EMIp4U",
+			"contentType": "default",
+			"src": "{1} downloaded document {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.documentlibrary.file-liked",
+			"guid": "Xyt9VETKUGrKRLW3l-HnJROXi1jaILiB8339asDQ2-o",
+			"contentType": "default",
+			"src": "{1} liked document {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.documentlibrary.folder-liked",
+			"guid": "cKIKtJAQZxt9CCvUb11iNrcMM7tqnd-KAC7-M1xXsus",
+			"contentType": "default",
+			"src": "{1} liked folder {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.wiki.page-created",
+			"guid": "Qxw1-SWsL9Fn8Ii5cfGDuyqh2EVuwRPljuGwqE4D53Y",
+			"contentType": "default",
+			"src": "{1} created wiki page {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.wiki.page-edited",
+			"guid": "J_LpWWgVh7uAus3UQIsiRcaDa9Rt4shWigqOUyyqVzI",
+			"contentType": "default",
+			"src": "{1} updated wiki page {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.wiki.page-renamed",
+			"guid": "YAd3H1CfCm0JLFBc8o7S4ijqpaEz3moi0xRjnVq2RFs",
+			"contentType": "default",
+			"src": "{1} renamed wiki page from {2} to {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.wiki.page-deleted",
+			"guid": "M5En8DVyyYtLEHAlbfVpHGzkFLQ9o5MQpMUN-RTo0gI",
+			"contentType": "default",
+			"src": "{1} deleted wiki page {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.site.group-added",
+			"guid": "Zh_QedEsvGno6WYgjgF9Z1u4V9ly6yBrmTiN77jUu1E",
+			"contentType": "default",
+			"src": "{1} group added to site {4} with role {2}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.site.group-removed",
+			"guid": "CWAiASc-GOGqkTu_6C_s8THhKVUXxqThCc91K1T7W0s",
+			"contentType": "default",
+			"src": "{1} group removed from site {4}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.site.group-role-changed",
+			"guid": "0-t6eLygBR5o39DejQ8pU6A83nv3nEzW45ORFw-fLUE",
+			"contentType": "default",
+			"src": "{1} group role changed to {2}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.site.user-joined",
+			"guid": "Y-k-5Gmyp2UhN0LQMqxJDv2fOoAQc6nk01UpkWGcipU",
+			"contentType": "default",
+			"src": "{1} joined site {4} with role {2}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.site.user-left",
+			"guid": "n0SZ3i7SUV0onko3ymARsEYrdPDkAUx2iRYE88Ta_os",
+			"contentType": "default",
+			"src": "{1} left site {4}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.site.user-role-changed",
+			"guid": "dloHOufaiPoUDiZfJ4T-ambjudN6YrpzAzEHlPbhL8s",
+			"contentType": "default",
+			"src": "{1} role changed to {2}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.site.liked",
+			"guid": "PV8_8c23nw09mdMRt5vdQNJX4J_OL_M00CfuChIdwxc",
+			"contentType": "default",
+			"src": "{1} liked site {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.links.link-created",
+			"guid": "omKhvF5NGnH056zLeYjUVGP89_F241iNA4mIxv7Pk-U",
+			"contentType": "default",
+			"src": "{1} created link {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.links.link-updated",
+			"guid": "fY87YornhX9oBaY4C0m4ujGe_FKJ5sZnZ_pBphtAyyM",
+			"contentType": "default",
+			"src": "{1} updated link {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.links.link-deleted",
+			"guid": "B_oC56ZasI0FnbgzCGZmIWEZmSZhpq-jKbBzxQVfmBc",
+			"contentType": "default",
+			"src": "{1} deleted link {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.datalists.list-created",
+			"guid": "R_my9HxByJ-Kka8W_0shsSLsObmrJBkGDZ4my3Y1ZjQ",
+			"contentType": "default",
+			"src": "{1} created data list {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.datalists.list-updated",
+			"guid": "FN2vpGr0btQUOn8UQ0b9IZ96sLI6T7sUNqdzGRCk5wk",
+			"contentType": "default",
+			"src": "{1} updated data list {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.datalists.list-deleted",
+			"guid": "mPygAsBNdVN4Um8jA0TDxnbgVrRPwRQE72OtqgQbklU",
+			"contentType": "default",
+			"src": "{1} deleted data list {0}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.subscriptions.followed",
+			"guid": "0EDpMmUaF1HHe1AG9qEJReV7XuFFfMrSG54OoKqigLs",
+			"contentType": "default",
+			"src": "{1} is now following {5}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.subscriptions.subscribed",
+			"guid": "e9Xw0Jzs-y0ZL5zd1vG6ByD5xd4D2f8cj_HXjynfIr8",
+			"contentType": "default",
+			"src": "{1} has subscribed to {2}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "org.alfresco.profile.status-changed",
+			"guid": "faMqWWwPGfL2ojQpJKVq5ag3W9oKmvVS4vT4_XpaDIA",
+			"contentType": "default",
+			"src": "{1}: {2}",
+			"rid": "dashlets/activity-list.get_en.properties",
+			"ts": 1642896537854
+		},
+		{
+			"sid": "label.header",
+			"guid": "mpN5e7DwX3x1lq6tGeCw3pN5XojDAp0yBMSeOOyuCpc",
+			"contentType": "default",
+			"src": "Alfresco Add-ons RSS Feed",
+			"rid": "dashlets/addons.get_en.properties",
+			"ts": 1642896537786
+		},
+		{
+			"sid": "label.configure",
+			"guid": "Syq3DJy_QDcM0m1nqYZXpqFjMMuR87HPZXL4tQ8hfGk",
+			"contentType": "default",
+			"src": "Configure",
+			"rid": "dashlets/addons.get_en.properties",
+			"ts": 1642896537786
+		},
+		{
+			"sid": "label.noItems",
+			"guid": "94dyHElU-pvxBH_xvcPNYroCw8bbsYZVi9PRkhsVtfk",
+			"contentType": "default",
+			"src": "No news items",
+			"rid": "dashlets/addons.get_en.properties",
+			"ts": 1642896537786
+		},
+		{
+			"sid": "label.loading",
+			"guid": "P5GRExSyOI9DJatrN4HtEGB0YnefpGW6JB2Nm1SM5_E",
+			"contentType": "default",
+			"src": "Loading items - please wait...",
+			"rid": "dashlets/addons.get_en.properties",
+			"ts": 1642896537786
+		},
+		{
+			"sid": "title.error.bad_data",
+			"guid": "JYRC8Zfqy9a0-fUUB2YNIS8zc6WQL5RMh8o0ZqD0bcc",
+			"contentType": "default",
+			"src": "RSS feed can't be read",
+			"rid": "dashlets/addons.get_en.properties",
+			"ts": 1642896537786
+		},
+		{
+			"sid": "title.error.unavailable",
+			"guid": "bmGBoEsRYHhWkiRPZzQvvaQVk96lAyjLazEIevIvhbE",
+			"contentType": "default",
+			"src": "RSS feed is not available",
+			"rid": "dashlets/addons.get_en.properties",
+			"ts": 1642896537786
+		},
+		{
+			"sid": "title.error.unsupported",
+			"guid": "jXh3uF9cDUKZtHxEG2JBn2BrdG_ZLsJ31Ej8xwl1E_Y",
+			"contentType": "default",
+			"src": "RSS feed format is not supported",
+			"rid": "dashlets/addons.get_en.properties",
+			"ts": 1642896537786
+		},
+		{
+			"sid": "dashlet.help",
+			"guid": "WvR4sh0AUEY-PZKx-eo1nNvJQW5CWA-gp6u2BTfT9D0",
+			"contentType": "default",
+			"src": "This dashlet shows the latest news from Alfresco Add-ons. Click the edit icon on the dashlet to configure the feed.",
+			"rid": "dashlets/addons.get_en.properties",
+			"ts": 1642896537786
+		},
+		{
+			"sid": "label.body",
+			"guid": "rHlW0n89eNdd459GykI6D4NBZtJGidWSP86B5BG0kQg",
+			"contentType": "default",
+			"src": "Find, rate, and contribute Alfresco add-ons and extensions.",
+			"rid": "dashlets/addons.get_en.properties",
+			"ts": 1642896537786
+		},
+		{
+			"sid": "label.addonsLink",
+			"guid": "LDHWLHERVQjJ1o-kvogktdzBFC_6nhgsVuTzxoHbhWI",
+			"contentType": "default",
+			"src": "http://addons.alfresco.com",
+			"rid": "dashlets/addons.get_en.properties",
+			"ts": 1642896537786
+		},
+		{
+			"sid": "label.addonsText",
+			"guid": "m70JMPI9T9GiVlanb29OGMpQQrneQXCFFecW1wlENPs",
+			"contentType": "default",
+			"src": "Visit the Alfresco Add-ons Home Page",
+			"rid": "dashlets/addons.get_en.properties",
+			"ts": 1642896537786
+		},
+		{
+			"sid": "label.header",
+			"guid": "QX3X1g-Kh1UpJ-aEY4FOSO2WdKt5afp4FyUk8z00kOk",
+			"contentType": "default",
+			"src": "RSS Feed",
+			"rid": "dashlets/async-rssfeed.get_en.properties",
+			"ts": 1642896537805
+		},
+		{
+			"sid": "label.configure",
+			"guid": "vwrKccRIjjVNjVNl0CRZJsRMOUbmwQ_yWgR6XdOhD40",
+			"contentType": "default",
+			"src": "Configure",
+			"rid": "dashlets/async-rssfeed.get_en.properties",
+			"ts": 1642896537805
+		},
+		{
+			"sid": "label.noItems",
+			"guid": "_BTHCps8KAbIpS9udVg6HYpF7QWwxNp8-0ZWvEDr8bI",
+			"contentType": "default",
+			"src": "No news items",
+			"rid": "dashlets/async-rssfeed.get_en.properties",
+			"ts": 1642896537805
+		},
+		{
+			"sid": "title.error.bad_data",
+			"guid": "rKmLOWykQIl0HH0r_50MOd07oRk8KqT9Pk-4CnXceEY",
+			"contentType": "default",
+			"src": "RSS feed can't be read",
+			"rid": "dashlets/async-rssfeed.get_en.properties",
+			"ts": 1642896537805
+		},
+		{
+			"sid": "title.error.unavailable",
+			"guid": "3Gxz8EmGRNOELmhuwipqf5luMeaD5qELsN7df_cxAno",
+			"contentType": "default",
+			"src": "RSS feed is not available",
+			"rid": "dashlets/async-rssfeed.get_en.properties",
+			"ts": 1642896537805
+		},
+		{
+			"sid": "title.error.unsupported",
+			"guid": "5ZZj-jxDgUbAfyjrMe0cfeQcP0eFIZvFlDCSL84Nrqg",
+			"contentType": "default",
+			"src": "RSS feed format is not supported",
+			"rid": "dashlets/async-rssfeed.get_en.properties",
+			"ts": 1642896537805
+		},
+		{
+			"sid": "dashlet.help",
+			"guid": "jzkfUdJohmFfMtS_GItKtYifp-ZgzcyJKVo8serpi7I",
+			"contentType": "default",
+			"src": "This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed.",
+			"rid": "dashlets/async-rssfeed.get_en.properties",
+			"ts": 1642896537805
+		},
+		{
+			"sid": "label.header",
+			"guid": "EFn3t-e0JoDulp-WrmSoRotUUCXkYlE7Kv3biN7WDW0",
+			"contentType": "default",
+			"src": "RSS Feed",
+			"rid": "dashlets/async-rssfeed.post_en.properties",
+			"ts": 1642896537873
+		},
+		{
+			"sid": "label.configure",
+			"guid": "rMLO-fUZZZq87EB3WIeu2F2GZOtTACGvobKcGojueyA",
+			"contentType": "default",
+			"src": "Configure",
+			"rid": "dashlets/async-rssfeed.post_en.properties",
+			"ts": 1642896537873
+		},
+		{
+			"sid": "label.noItems",
+			"guid": "Y3VBfG0zC6kDtBZHDxZFCLZRLHwPC2obJTXEwJnkan8",
+			"contentType": "default",
+			"src": "No news items",
+			"rid": "dashlets/async-rssfeed.post_en.properties",
+			"ts": 1642896537873
+		},
+		{
+			"sid": "title.error.bad_data",
+			"guid": "HCGGtFbvY0TT_hr0VH80CI-RpsEephuBsTnrXUnBZOU",
+			"contentType": "default",
+			"src": "RSS feed can't be read",
+			"rid": "dashlets/async-rssfeed.post_en.properties",
+			"ts": 1642896537873
+		},
+		{
+			"sid": "title.error.unavailable",
+			"guid": "Mryr53ZTSsgu5W2iuspPnNZPC0TxwXUNUtdn_fWrvz8",
+			"contentType": "default",
+			"src": "RSS feed is not available",
+			"rid": "dashlets/async-rssfeed.post_en.properties",
+			"ts": 1642896537873
+		},
+		{
+			"sid": "title.error.unsupported",
+			"guid": "WAt8kKCVxWOIxpe-RdYHi0lOvIQt3JBh5cOqlBAyY2s",
+			"contentType": "default",
+			"src": "RSS feed format is not supported",
+			"rid": "dashlets/async-rssfeed.post_en.properties",
+			"ts": 1642896537873
+		},
+		{
+			"sid": "dashlet.help",
+			"guid": "IfdF05CMkiWoN-Hems6QAju5Peau9w0OtBN8AvnMGcQ",
+			"contentType": "default",
+			"src": "This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed.",
+			"rid": "dashlets/async-rssfeed.post_en.properties",
+			"ts": 1642896537873
+		},
+		{
+			"sid": "label.header",
+			"guid": "MoJ9WnVlNIDG5uEqTEgK-SIijATplqSaRGJaxOx-CoM",
+			"contentType": "default",
+			"src": "Site Calendar",
+			"rid": "dashlets/calendar.get_en.properties",
+			"ts": 1642896537788
+		},
+		{
+			"sid": "label.no-items",
+			"guid": "GOD7gmCgDoOkTDZrQvELAvKSHk2F8hfwz_JMe8JdCsY",
+			"contentType": "default",
+			"src": "No upcoming events",
+			"rid": "dashlets/calendar.get_en.properties",
+			"ts": 1642896537788
+		},
+		{
+			"sid": "label.until",
+			"guid": "nRPmwwxUzPSSMPswBuNBiozTKk-M3XWZAJv6BKAL0Os",
+			"contentType": "default",
+			"src": "until",
+			"rid": "dashlets/calendar.get_en.properties",
+			"ts": 1642896537788
+		},
+		{
+			"sid": "dashlet.help",
+			"guid": "pCbsFvMcdwJ4xUDch0i4cL0N-N8vVkvhqjYTWzg1P-U",
+			"contentType": "default",
+			"src": "This dashlet shows the upcoming events for this site.",
+			"rid": "dashlets/calendar.get_en.properties",
+			"ts": 1642896537788
+		},
+		{
+			"sid": "header",
+			"guid": "UQLku8Jgbj4t7oXKzYbS-N1q016ts3c93ZU5sHSqm7M",
+			"contentType": "default",
+			"src": "Site Members",
+			"rid": "dashlets/colleagues.get_en.properties",
+			"ts": 1642896537890
+		},
+		{
+			"sid": "link.invite",
+			"guid": "IMup8Q-qpnRDXDpvhrXgM6oMmHeceIZeswR9_BPg-UA",
+			"contentType": "default",
+			"src": "Invite",
+			"rid": "dashlets/colleagues.get_en.properties",
+			"ts": 1642896537890
+		},
+		{
+			"sid": "link.all-members",
+			"guid": "I3DX1xbVZ6MDdYOsdpgUIKj0BsLDjNPcclfJTGbJyIg",
+			"contentType": "default",
+			"src": "All Members",
+			"rid": "dashlets/colleagues.get_en.properties",
+			"ts": 1642896537890
+		},
+		{
+			"sid": "pagination.template",
+			"notes": "#{startRecord} - {endRecord} of {totalRecords}",
+			"guid": "I1YmkUpPIu1-92fwMeYB2OEkyL4rkgB40BShuDUTwUs",
+			"contentType": "default",
+			"src": "{0} - {1} of {2}",
+			"rid": "dashlets/colleagues.get_en.properties",
+			"ts": 1642896537890
+		},
+		{
+			"sid": "pagination.template2",
+			"guid": "vynLWxNQ6RmzPhT-_6ow3CEd72t6volbvWUEnYiNzZU",
+			"contentType": "default",
+			"src": "Shown the first {0} members",
+			"rid": "dashlets/colleagues.get_en.properties",
+			"ts": 1642896537890
+		},
+		{
+			"sid": "empty.title",
+			"guid": "Z7s4QyJAhYHCiMy_1QBsnWuFYjFGjeUweCymtEG5EI0",
+			"contentType": "default",
+			"src": "You are the only site member.",
+			"rid": "dashlets/colleagues.get_en.properties",
+			"ts": 1642896537890
+		},
+		{
+			"sid": "dashlet.help",
+			"notes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+			"guid": "T1fBipItJf3g1oC_7JEB10ZFfwRyyY2NNdgg5KYNWD4",
+			"contentType": "default",
+			"src": "<p>Use this dashlet to see who belongs to this site. You can click their name to view their profile and get to know them.</p><p>Clicking All Members lets you see everyone in this site. If you're a site manager, click Invite to send out some site invitations.</p>",
+			"rid": "dashlets/colleagues.get_en.properties",
+			"ts": 1642896537890
+		},
+		{
+			"sid": "header",
+			"guid": "-jkZ8mNn1-5gY57cN8Iwf4TRvNgsswnWDCYc9YU1-DI",
+			"contentType": "default",
+			"src": "Site Content",
+			"rid": "dashlets/docsummary.get_en.properties",
+			"ts": 1642896537863
+		},
+		{
+			"sid": "filter.favourites",
+			"notes": "## Filters",
+			"guid": "Eq6kdX8FRZrnHXZ8tj-1WkbVn79SRm10JD2L8-8Sy8w",
+			"contentType": "default",
+			"src": "My Favorites",
+			"rid": "dashlets/docsummary.get_en.properties",
+			"ts": 1642896537863
+		},
+		{
+			"sid": "filter.editingMe",
+			"guid": "97cVTH-GAwwPwiPkLIvfcpnA5adMWSAGoEbc3MRek1o",
+			"contentType": "default",
+			"src": "I'm Editing",
+			"rid": "dashlets/docsummary.get_en.properties",
+			"ts": 1642896537863
+		},
+		{
+			"sid": "filter.recentlyModifiedByMe",
+			"guid": "hf7blJXAg22Fri6NHgJ7s70yxHa6yBhqcqADR_1yjVw",
+			"contentType": "default",
+			"src": "I've Recently Modified",
+			"rid": "dashlets/docsummary.get_en.properties",
+			"ts": 1642896537863
+		},
+		{
+			"sid": "filter.synced",
+			"guid": "qbkzWNAbC_TxskmbnRMPTAFC_Qivo452sE-eKom4sEk",
+			"contentType": "default",
+			"src": "Synced content",
+			"rid": "dashlets/docsummary.get_en.properties",
+			"ts": 1642896537863
+		},
+		{
+			"sid": "filter.syncedErrors",
+			"guid": "r39Zh1WRDhk2ssx_nqreCADYUoE4NLCBoirF7Hyz0pc",
+			"contentType": "default",
+			"src": "Synced with Errors",
+			"rid": "dashlets/docsummary.get_en.properties",
+			"ts": 1642896537863
+		},
+		{
+			"sid": "empty.title",
+			"guid": "JRcN8pfbtc9OtGAhnn5foEsq1M7RTW7U_xk4GzVE5lc",
+			"contentType": "default",
+			"src": "Keep track of content changes",
+			"rid": "dashlets/docsummary.get_en.properties",
+			"ts": 1642896537863
+		},
+		{
+			"sid": "empty.description",
+			"guid": "AoGMEuVT8eQgM6akvguJJHpfNLiR5zK9PCNZ6dZJ89s",
+			"contentType": "default",
+			"src": "Easily see which document library items site members have been working on. In the detailed view you can like an item and mark it as a favorite. You can also jump to the details page to leave a comment.",
+			"rid": "dashlets/docsummary.get_en.properties",
+			"ts": 1642896537863
+		},
+		{
+			"sid": "dashlet.help",
+			"notes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+			"guid": "h1g5XmmTuEIqMYxKpSVcWKq08Ejs5PK-zbnEWpNWp9I",
+			"contentType": "default",
+			"src": "<p>This dashlet makes it easy to keep track of your recent changes to library content in this site. Clicking the item name or thumbnail takes you to the details page so you can preview or work with the item.</p><p>There are two views for this dashlet. The detailed view lets you:<ul><li>Mark an item as a favorite so it appears in Favorites lists for easy access</li><li>Like (and unlike) an item</li><li>Jump to the item details page to leave a comment</li></ul></p>",
+			"rid": "dashlets/docsummary.get_en.properties",
+			"ts": 1642896537863
+		},
+		{
+			"sid": "welcome.user",
+			"guid": "SgsEBwfly_jtUaVDiiUw-VTimvInak8B40fAu7PiaiE",
+			"contentType": "default",
+			"src": "Welcome to your dashboard, {0}",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.site",
+			"guid": "4-73j3Yex5pN2u2OhV8dSx5RuzWc7yE1aKyKd1jGxg4",
+			"contentType": "default",
+			"src": "Welcome to {1}, {0}",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.user.description",
+			"guid": "_XrOsbXsUwQ_8bszzlCDI2uJW88xOEBL0N8XglS9iJE",
+			"contentType": "default",
+			"src": "The personal dashboard shows you what's going on in the sites you belong to.",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.site.description",
+			"guid": "LFDNhc3x4IOU2jEMEDAutCGuf0RLtaFpI9Npx5mEaHo",
+			"contentType": "default",
+			"src": "The site dashboard lets you know what's been happening in this particular site.",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "get.started.message",
+			"guid": "Hl2jAekbOlU5b2UgbSDPKnsTR1-LeGI_x1vrWZmXIc4",
+			"contentType": "default",
+			"src": "Let's get you started...",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "panel.delete.header",
+			"guid": "0HBlSg4TQpBa_3gnTevKWAo91w1FXZmnFD20mezdFn0",
+			"contentType": "default",
+			"src": "Confirm Removal",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "panel.delete.msg",
+			"guid": "311BhkRDuAPx8E5vVnHKZLqTXbf6R7wDXiVjvJSYdbs",
+			"contentType": "default",
+			"src": "Are you sure you want to permanently remove the assistance panel from this dashboard?",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "panel.delete.fail",
+			"guid": "NRkVbdTNHz_qlna4LgnOAPki1p82gd23HqBhboT0FCM",
+			"contentType": "default",
+			"src": "Unable to remove dashlet.",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.close",
+			"guid": "EwYyoBOiJdg6oM-YE3IceFEdrI4YodM54PJ9lxi5coA",
+			"contentType": "default",
+			"src": "Remove",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.user.tutorial.title",
+			"guid": "Dzd-t_8JGLQYnlP7l4_2CRVb4ogwRapR7Pv_eri26N0",
+			"contentType": "default",
+			"src": "Learning",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.user.tutorial.description",
+			"guid": "cq7dB3PO5aldkcR0mnQAuz30CtWgT3tVz7pQTb0Fo8E",
+			"contentType": "default",
+			"src": "See what you can do with Alfresco by watching a video tutorial.",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.user.tutorial.link",
+			"guid": "Kd8IjUiDGWqwJ8_wCe9j8IPCULuggAu07-69RVwUGsE",
+			"contentType": "default",
+			"src": "View the tutorials",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.user.sites.title",
+			"guid": "yzKCcxaBfHVKgCT65Yqwp34_PqIAGgb63qGEv7X4JRo",
+			"contentType": "default",
+			"src": "Sharing",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.user.sites.description",
+			"guid": "sU0ERYq-NYM1suS9gBdoAY_rZ7GgozUoC2ODYyZo_68",
+			"contentType": "default",
+			"src": "Create a site to share content with other site members.",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.user.sites.link",
+			"guid": "jtWkUsCWeOhFAHH9cyWJg3pnZTO6EXkp-wS_VsFxMnE",
+			"contentType": "default",
+			"src": "Create a site",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.user.profile.title",
+			"guid": "EvF0tZmcww2tlRFKWqnWSDHmN__vnbBi-RLjXQUqGlM",
+			"contentType": "default",
+			"src": "Personalizing",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.user.profile.description",
+			"guid": "Od4t7qwpOzcjCy82k9h-8jpdK3p5Feiy8qHkcBdbs8g",
+			"contentType": "default",
+			"src": "Update your personal and business information so others can get to know you.",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.user.profile.link",
+			"guid": "dGqwaQvTpU3JFzGx7FxOgalBei43MI1PoD4Um6snUR8",
+			"contentType": "default",
+			"src": "Edit your profile",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.user.dashboard.title",
+			"guid": "oaEMzNKQDA6D0ZxLsgWbK9Asm5vGm8mqaOrfV3ifMlE",
+			"contentType": "default",
+			"src": "Customizing",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.user.dashboard.description",
+			"guid": "7hYl8_UBb4dBVjKwIs5Ss29v7cg1culTTUQNTK4aAw0",
+			"contentType": "default",
+			"src": "Set up your dashboard to show the information you want to see.",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.user.dashboard.link",
+			"guid": "IySJzAxorEnDt5PhB1lErXiAOn_qlIbmoNDT_77W2Ns",
+			"contentType": "default",
+			"src": "Customize your dashboard",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.user.explore.title",
+			"guid": "lNCvVsgpTSKpr39mRmojNPuHOr-txvsV8NzkcfIxUpE",
+			"contentType": "default",
+			"src": "Exploring",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.user.explore.description",
+			"guid": "hA5l02jvfwLhJUrTJwk5shcVXoi5xjUO8TI2KfcTSSA",
+			"contentType": "default",
+			"src": "Have a look at the sites already in Alfresco. You can visit public sites and join them straightaway.",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.user.explore.link",
+			"guid": "FdjstiwWjJHZeBQyRFGvayIrBA1A1Q8A44EFiaRpgc4",
+			"contentType": "default",
+			"src": "View all sites",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.site.dashboard.title",
+			"guid": "C0xFmTN5j00pG2pEoc5qD9XwfMp5NnIHyyooJCwdcmI",
+			"contentType": "default",
+			"src": "Customizing",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.site.dashboard.description",
+			"guid": "jSsDMOjgzLle4wBpQciLVaV7kIWOO15lLvWjFT2fsj8",
+			"contentType": "default",
+			"src": "Set up this dashboard to show information you want others to see.",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.site.dashboard.link",
+			"guid": "k_sZf4xYFd3q_jShZ4KCg3pMyb7k30h_GJzCOhjXh2Q",
+			"contentType": "default",
+			"src": "Customize the site dashboard",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.site.moderated.title",
+			"guid": "C3Bpk8ksl0oRqtnFh1rqmccVNArfSSLDaxQYufhd8Yg",
+			"contentType": "default",
+			"src": "Joining",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.site.moderated.description",
+			"guid": "TDCRo5CmTHxib6eq6zDJVk_HZdONjyv7NWsdRc-olL4",
+			"contentType": "default",
+			"src": "This site's membership is moderated. You can request to join and a site manager will be notified.",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.site.moderated.link",
+			"guid": "z7pget80mARdHz2d5oVY8rQKjU718-IHuOfSPexFR64",
+			"contentType": "default",
+			"src": "Request to join",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.site.upload.title",
+			"guid": "YjY9B7bbslXXS_BZu5t0flKRmJBYbvJXy7WtcMrnbAM",
+			"contentType": "default",
+			"src": "Collaborating",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.site.upload.description",
+			"guid": "-mfz92vriJPFOruq0CrewWec5ztycvbhGR56ZCSKccw",
+			"contentType": "default",
+			"src": "Upload content to the document library to start collaborating with others.",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.site.upload.link",
+			"guid": "-PJoTPxUYJLIwWOLCu8zldxDGyaXYY9Hsex1AGb6w1I",
+			"contentType": "default",
+			"src": "Upload content",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.site.invite.title",
+			"guid": "6ogdr7A0_gwlw-ljmLYVDzrSJoigK6v7Bgp0Qpk6lmM",
+			"contentType": "default",
+			"src": "Inviting",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.site.invite.description",
+			"guid": "fKl1u7uNfFUT5Jsq63a4keItOXxeOXevvCvOe8tgeBc",
+			"contentType": "default",
+			"src": "Start inviting others to join your site.",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.site.invite.link",
+			"guid": "AL3Ti9Vq1Q9-WfGSOlvyPjteL7dQ0Jg7KvwJGfGCv4Y",
+			"contentType": "default",
+			"src": "Invite people",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.site.members.title",
+			"guid": "5mqaDtT14XgYTRi-WVMX4xmdeQGEZcg4iWnhPx5qlfU",
+			"contentType": "default",
+			"src": "Socializing",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.site.members.description",
+			"guid": "OYyKEvCSU3nWDCB9fWmXj5h-JDfOqqBAkAWYwo9rhcY",
+			"contentType": "default",
+			"src": "Find out who belongs to this site. From the member list you can view user profiles to get to know others.",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.site.members.link",
+			"guid": "P92KXznSg66CZcQdToPezgdFAcXpp0tei9RImF088tw",
+			"contentType": "default",
+			"src": "View site members",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.site.browse.title",
+			"guid": "2xEEnWSco7FwAlnHENjdj7z2tX9hcRurv-r_f7VdrI8",
+			"contentType": "default",
+			"src": "Exploring",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.site.browse.description",
+			"guid": "kO8OlqPrZKO_KP88Z4QYR3PVYjUCg7oA_1dJbCgQnLM",
+			"contentType": "default",
+			"src": "Find out what content has been added to the site by browsing the document library.",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.site.browse.link",
+			"guid": "I1t1cPUy3locFAZ3wfj1n4hgCbRzysFljfBLOvzpJLE",
+			"contentType": "default",
+			"src": "Go to document library",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.cloud.sign-up.title",
+			"guid": "-QwKxl5l4G0bSHzunF6PDxbtFAjOGaw1gbMAPvbPvdw",
+			"contentType": "default",
+			"src": "Cloud",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.cloud.sign-up.description",
+			"guid": "Z8SdGcwUf6vyZv2DdWizfqlOPFLSidgQwHAdt8kRes4",
+			"contentType": "default",
+			"src": "Sign up today to claim your free network in the cloud.",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "welcome.cloud.sign-up.link",
+			"guid": "Uh32mWY8aps0Zd9KWVc47xITBfl4BUWL3y9F_B4oNWM",
+			"contentType": "default",
+			"src": "Sign up",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "message.request-joining",
+			"guid": "Pz54JiX2JjML3oc7pZncR6j4g9uK2RQqvTfJL6BszGI",
+			"contentType": "default",
+			"src": "Requesting to add user {0} to site {1}...",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "message.request-join-success",
+			"guid": "OA3l4iadptsLLp7LqaUyUL8HAYdcQMTs_U40Ph1P3KE",
+			"contentType": "default",
+			"src": "Request to join site {1} successfully sent. You will now be returned to your personal dashboard.",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "message.request-join-failure",
+			"guid": "xIvx5MFuL4xbFhSVUzoWVs1-vtBi41Cjw3CQ0f5Cxp8",
+			"contentType": "default",
+			"src": "Could not make the request to add user {0} to site {1}.",
+			"rid": "dashlets/dynamic-welcome.get_en.properties",
+			"ts": 1642896537891
+		},
+		{
+			"sid": "header.title",
+			"guid": "-mF3ugEQpGdMiNj6mR92iwaVMBtHy4HL5ZIJThK6iZU",
+			"contentType": "default",
+			"src": "My Discussions",
+			"rid": "dashlets/forum-summary.get_en.properties",
+			"ts": 1642896537889
+		},
+		{
+			"sid": "newTopic.button",
+			"guid": "AOIIEpiCu9WedMyqPeO1AyNZSHlySVzODmPV5o8kjUc",
+			"contentType": "default",
+			"src": "New Topic",
+			"rid": "dashlets/forum-summary.get_en.properties",
+			"ts": 1642896537889
+		},
+		{
+			"sid": "no.result",
+			"guid": "4Zbp5n5fAngZAKluzQ_hZqBwFptprKA-c5yHlUS0S98",
+			"contentType": "default",
+			"src": "There are no topics matching your filters.",
+			"rid": "dashlets/forum-summary.get_en.properties",
+			"ts": 1642896537889
+		},
+		{
+			"sid": "topicList.updated",
+			"guid": "zfEXHMjig8Nq0hRvJFavv0YSYI687AAYRF7VDNBhedY",
+			"contentType": "default",
+			"src": "Updated",
+			"rid": "dashlets/forum-summary.get_en.properties",
+			"ts": 1642896537889
+		},
+		{
+			"sid": "topicList.createdBy",
+			"notes": "## In topicList.createdBy {0} is Author Name and {1} is relative date.",
+			"guid": "5IJAuQL6UV5_ZA0wQJNE9qi9ehoZcQRR2m6pX3S-DKE",
+			"contentType": "default",
+			"src": "Created by {0} {1}.",
+			"rid": "dashlets/forum-summary.get_en.properties",
+			"ts": 1642896537889
+		},
+		{
+			"sid": "topicList.replies.single",
+			"guid": "xxSe_S0aI5ez8bvNdqKQb9ZwoYONnrfp0gcWTfaxo2c",
+			"contentType": "default",
+			"src": "There is 1 reply.",
+			"rid": "dashlets/forum-summary.get_en.properties",
+			"ts": 1642896537889
+		},
+		{
+			"sid": "topicList.replies.plural",
+			"guid": "S5_Kvt-LzA6yEdKFBlXbBmCWhFdlxvUWAKP2od-bXfI",
+			"contentType": "default",
+			"src": "There are {0} replies.",
+			"rid": "dashlets/forum-summary.get_en.properties",
+			"ts": 1642896537889
+		},
+		{
+			"sid": "topicList.lastReplyBy",
+			"notes": "## In topicList.lastReplyBy {0} is Author Name and {1} is relative date.",
+			"guid": "Hs0E72WcBUBty_ns32PTWF4Yhm-hP0tXa2W01ic4iQc",
+			"contentType": "default",
+			"src": "The last reply was posted by {0} {1}.",
+			"rid": "dashlets/forum-summary.get_en.properties",
+			"ts": 1642896537889
+		},
+		{
+			"sid": "filter.topics.mine",
+			"notes": "# Filter 1",
+			"guid": "SaF5jfhsK1yJhYCtKwNK14xZFItSKzIHbyfOX09s3j4",
+			"contentType": "default",
+			"src": "My Topics",
+			"rid": "dashlets/forum-summary.get_en.properties",
+			"ts": 1642896537889
+		},
+		{
+			"sid": "filter.topics.all",
+			"guid": "MSPfQF1UwlwAcvWVCifinQbfh_Awliii9Ah1cS-YNAA",
+			"contentType": "default",
+			"src": "All Topics",
+			"rid": "dashlets/forum-summary.get_en.properties",
+			"ts": 1642896537889
+		},
+		{
+			"sid": "filter.history.1day",
+			"notes": "# Filter 2",
+			"guid": "1xmZmVo3sItH_a_W99LVgEsp-40jP-cffl9A0AyIIDk",
+			"contentType": "default",
+			"src": "Topics updated in the last day",
+			"rid": "dashlets/forum-summary.get_en.properties",
+			"ts": 1642896537889
+		},
+		{
+			"sid": "filter.history.7days",
+			"guid": "EvEWSxMZ0JyvlAQYQw7vxRTgVod348eqh3WUYn6EFIo",
+			"contentType": "default",
+			"src": "Topics updated in the last 7 days",
+			"rid": "dashlets/forum-summary.get_en.properties",
+			"ts": 1642896537889
+		},
+		{
+			"sid": "filter.history.14days",
+			"guid": "dre_B9YD3fbTKFCI4LdUyv2UQ9BuyWEC1OKW3YJUW6Y",
+			"contentType": "default",
+			"src": "Topics updated in the last 14 days",
+			"rid": "dashlets/forum-summary.get_en.properties",
+			"ts": 1642896537889
+		},
+		{
+			"sid": "filter.history.28days",
+			"guid": "mdEbnp88stSHwlqd2IFsRxHPOrXFWK1pt2g6GfJet3Y",
+			"contentType": "default",
+			"src": "Topics updated in the last 28 days",
+			"rid": "dashlets/forum-summary.get_en.properties",
+			"ts": 1642896537889
+		},
+		{
+			"sid": "dashlet.help",
+			"notes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+			"guid": "_XhAveHZT2LcvmXH7ZCmxIS6UvISIcG0nWvGw1_ZG5U",
+			"contentType": "default",
+			"src": "<p>Discussion Forum dashlet.</p><p>View your latest posts on the Discussion Forum.</p>",
+			"rid": "dashlets/forum-summary.get_en.properties",
+			"ts": 1642896537889
+		},
+		{
+			"sid": "header.title",
+			"guid": "fOzFYWf5p9zLAoul1h5_L8PRFB9JVo_HcIXCbFZ22FY",
+			"contentType": "default",
+			"src": "Image Preview",
+			"rid": "dashlets/imagesummary.get_en.properties",
+			"ts": 1642896537893
+		},
+		{
+			"sid": "label.noitems",
+			"guid": "0-GrFX12d4kQcyxamhrCI4tuDTExyjLmiUZ8exmZxDo",
+			"contentType": "default",
+			"src": "No items to display",
+			"rid": "dashlets/imagesummary.get_en.properties",
+			"ts": 1642896537893
+		},
+		{
+			"sid": "text.modified-by",
+			"guid": "F4j7Lk_GWSsx28kOloQ_uKeLyLdFgS6YkRDe2iRm9wQ",
+			"contentType": "default",
+			"src": "Modified by {0}",
+			"rid": "dashlets/imagesummary.get_en.properties",
+			"ts": 1642896537893
+		},
+		{
+			"sid": "text.selectfolder",
+			"guid": "a5bR8I0N7j5L8MapbxBGktzTLltOl3widThdkGwzBhg",
+			"contentType": "default",
+			"src": "Select Image Folder in {0}...",
+			"rid": "dashlets/imagesummary.get_en.properties",
+			"ts": 1642896537893
+		},
+		{
+			"sid": "dashlet.help",
+			"guid": "Ly4fkat27mxTxU9l3TSeFaUihGmSkMhBS1OmC1dHGfY",
+			"contentType": "default",
+			"src": "This dashlet shows a thumbnail of each image in the document library. Clicking a thumbnail opens the image in the current window.",
+			"rid": "dashlets/imagesummary.get_en.properties",
+			"ts": 1642896537893
+		},
+		{
+			"sid": "header",
+			"guid": "AkOVY2nm-Cf2dwDHuUTJpT98X3WA0NPXYZE9jhCcjX0",
+			"contentType": "default",
+			"src": "My Activities",
+			"rid": "dashlets/my-activities.get_en.properties",
+			"ts": 1642896537780
+		},
+		{
+			"sid": "label.load-failed",
+			"guid": "airW-7rNpHg3ZedTeodPgXLO5o3tuBdYT4bSg8PkIo4",
+			"contentType": "default",
+			"src": "Could not load activities list",
+			"rid": "dashlets/my-activities.get_en.properties",
+			"ts": 1642896537780
+		},
+		{
+			"sid": "label.filter",
+			"guid": "q8fd6Vngp46xiXf7YfGIUPWkBjlfIFgzAe7MhW5Tfps",
+			"contentType": "default",
+			"src": "Show",
+			"rid": "dashlets/my-activities.get_en.properties",
+			"ts": 1642896537780
+		},
+		{
+			"sid": "label.older-activities",
+			"guid": "jsg7kitbc9wGCKFRKSV3j_NZN21QhAg7AwR2Nf_KfpE",
+			"contentType": "default",
+			"src": "Older Activities",
+			"rid": "dashlets/my-activities.get_en.properties",
+			"ts": 1642896537780
+		},
+		{
+			"sid": "filter.mine",
+			"notes": "# Filter 1",
+			"guid": "lYYzgCGkzccr-pT7UZ4i4kg7sG6k6f3jFdc6n8EN4N8",
+			"contentType": "default",
+			"src": "My activities",
+			"rid": "dashlets/my-activities.get_en.properties",
+			"ts": 1642896537780
+		},
+		{
+			"sid": "filter.others",
+			"guid": "s4SvMdwfKMU6ccV6QqV3hxXIE-EzYdNfDOpAa_qen1o",
+			"contentType": "default",
+			"src": "Everyone else's activities",
+			"rid": "dashlets/my-activities.get_en.properties",
+			"ts": 1642896537780
+		},
+		{
+			"sid": "filter.all",
+			"guid": "WzSe9I99A25oVVk5smwr-UVIa9nedcgn5MHlq4_ycoE",
+			"contentType": "default",
+			"src": "Everyone's activities",
+			"rid": "dashlets/my-activities.get_en.properties",
+			"ts": 1642896537780
+		},
+		{
+			"sid": "filter.following",
+			"guid": "vxTDpMP5KNPD326mYrmygx-sSyHTLyKyg_J88cfgfYQ",
+			"contentType": "default",
+			"src": "I'm following",
+			"rid": "dashlets/my-activities.get_en.properties",
+			"ts": 1642896537780
+		},
+		{
+			"sid": "filter.allItems",
+			"notes": "# Filter 2",
+			"guid": "VuYFBmp8W917yvy6FDEnusaF740C6phWH-JIUrTYwc0",
+			"contentType": "default",
+			"src": "all items",
+			"rid": "dashlets/my-activities.get_en.properties",
+			"ts": 1642896537780
+		},
+		{
+			"sid": "filter.statusItems",
+			"guid": "9pCIQFQxRalDew1kFulGYgME6nG1b-H580ALZ6kf4rQ",
+			"contentType": "default",
+			"src": "status updates",
+			"rid": "dashlets/my-activities.get_en.properties",
+			"ts": 1642896537780
+		},
+		{
+			"sid": "filter.commentItems",
+			"guid": "mgUol9Z645in6zK0RM990o_78khH6p8NMdzX1Mp4b6k",
+			"contentType": "default",
+			"src": "comments",
+			"rid": "dashlets/my-activities.get_en.properties",
+			"ts": 1642896537780
+		},
+		{
+			"sid": "filter.contentItems",
+			"guid": "ruuQ9F125RY3PUE1KBUvz5XETYN3uQQxUGlrf4uihw0",
+			"contentType": "default",
+			"src": "content",
+			"rid": "dashlets/my-activities.get_en.properties",
+			"ts": 1642896537780
+		},
+		{
+			"sid": "filter.membershipItems",
+			"guid": "MwlTDK7YJbk4KimjzvBTNWO7mzIyQWs8aqhDMdwaTLs",
+			"contentType": "default",
+			"src": "memberships",
+			"rid": "dashlets/my-activities.get_en.properties",
+			"ts": 1642896537780
+		},
+		{
+			"sid": "filter.today",
+			"notes": "# Filter 3",
+			"guid": "ew1Cta4NZUO58z_VftSCMsMI7As-GxknGadESOGGxtI",
+			"contentType": "default",
+			"src": "today",
+			"rid": "dashlets/my-activities.get_en.properties",
+			"ts": 1642896537780
+		},
+		{
+			"sid": "filter.7days",
+			"guid": "G-kVvVlHI0aJBqvYbTHfRbAsDfGIlqcB2LRkmSYzV1A",
+			"contentType": "default",
+			"src": "in the last 7 days",
+			"rid": "dashlets/my-activities.get_en.properties",
+			"ts": 1642896537780
+		},
+		{
+			"sid": "filter.14days",
+			"guid": "lJ4UhR4FcJ2ZfGcZm8WmI1zucHBKt458WX9cx5HsHG0",
+			"contentType": "default",
+			"src": "in the last 14 days",
+			"rid": "dashlets/my-activities.get_en.properties",
+			"ts": 1642896537780
+		},
+		{
+			"sid": "filter.28days",
+			"guid": "82JTNLI_g7fqBtaJ-Cu1hMnp7jXHvGd7tX7gLNwDTsM",
+			"contentType": "default",
+			"src": "in the last 28 days",
+			"rid": "dashlets/my-activities.get_en.properties",
+			"ts": 1642896537780
+		},
+		{
+			"sid": "empty.title",
+			"guid": "_gINTlZvl1A81Hu1S4xQyj3N2YmM-e-Ej9sbKZ-45tQ",
+			"contentType": "default",
+			"src": "Follow what's going on in your sites",
+			"rid": "dashlets/my-activities.get_en.properties",
+			"ts": 1642896537780
+		},
+		{
+			"sid": "empty.description",
+			"guid": "P_2n50nItJIiq3IMSYSe0EmV3qw4ECxzGDtp5B8ViNc",
+			"contentType": "default",
+			"src": "The activities in this list let you follow the changes in the sites you belong to. You'll see things such as content updates and likes. You can also see who is joining and leaving your sites.",
+			"rid": "dashlets/my-activities.get_en.properties",
+			"ts": 1642896537780
+		},
+		{
+			"sid": "dashlet.help",
+			"notes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+			"guid": "2vPQobJcTQblu46SKlLEO2Nos8w7Y8u3_N4CSL9e_ig",
+			"contentType": "default",
+			"src": "<p>Following what goes on in your sites is easy with this dashlet. It shows the activities in all the sites you belong to, such as content that's been added, deleted, and edited. You can also see who is joining and leaving your sites.</p><p>Filters let you view activities by time period and ownership.</p>",
+			"rid": "dashlets/my-activities.get_en.properties",
+			"ts": 1642896537780
+		},
+		{
+			"sid": "header",
+			"guid": "kVq7Hxzh1nxrGyUwKNHYSW6FQgPe1o3oLXMXZ9m6KvE",
+			"contentType": "default",
+			"src": "Content I'm Editing",
+			"rid": "dashlets/my-docs-editing.get_en.properties",
+			"ts": 1642896537812
+		},
+		{
+			"sid": "label.noItems",
+			"guid": "VaDhmkZ2ZWWHWdcH144kDe7K5E5gOW5DO9nPN-5fxNU",
+			"contentType": "default",
+			"src": "No items to display",
+			"rid": "dashlets/my-docs-editing.get_en.properties",
+			"ts": 1642896537812
+		},
+		{
+			"sid": "label.error",
+			"guid": "Dm0Z706m2IOjE27Dnqz0iNRrbESVyE9L3njuiI_AGbc",
+			"contentType": "default",
+			"src": "Could not load data",
+			"rid": "dashlets/my-docs-editing.get_en.properties",
+			"ts": 1642896537812
+		},
+		{
+			"sid": "text.edited-on",
+			"guid": "tgc74AW51JeDBDeerxVKIO6Sxr_56JKdtaTMSBN2JoI",
+			"contentType": "default",
+			"src": "Edited {0} in {1}",
+			"rid": "dashlets/my-docs-editing.get_en.properties",
+			"ts": 1642896537812
+		},
+		{
+			"sid": "text.blogposts",
+			"guid": "-lMS7-u6z9glHmbrX3w1Ta0CO_w20cZOEVdEgy7KAWo",
+			"contentType": "default",
+			"src": "Blog posts",
+			"rid": "dashlets/my-docs-editing.get_en.properties",
+			"ts": 1642896537812
+		},
+		{
+			"sid": "text.forumposts",
+			"guid": "kht1hnZxYg5z2oDabqluhIpdRLnLQiK48GRI9uRQ0dY",
+			"contentType": "default",
+			"src": "Forum posts",
+			"rid": "dashlets/my-docs-editing.get_en.properties",
+			"ts": 1642896537812
+		},
+		{
+			"sid": "text.wikipages",
+			"guid": "vaP3NW7ujyij8Ah5awtcl-VTn-TgXotOTo3xh-0d5Sg",
+			"contentType": "default",
+			"src": "Wiki pages",
+			"rid": "dashlets/my-docs-editing.get_en.properties",
+			"ts": 1642896537812
+		},
+		{
+			"sid": "text.documents",
+			"guid": "mma7KIJnCz1r0BNPr7a8fDOCcCHL402bw0whYy0wTZU",
+			"contentType": "default",
+			"src": "Documents",
+			"rid": "dashlets/my-docs-editing.get_en.properties",
+			"ts": 1642896537812
+		},
+		{
+			"sid": "dashlet.help",
+			"guid": "vkvoNwRn2JIB_pYL7kCudI2BBrl0Uw4yhYNWHloHAT8",
+			"contentType": "default",
+			"src": "Check this dashlet to quickly see the items you are working on.",
+			"rid": "dashlets/my-docs-editing.get_en.properties",
+			"ts": 1642896537812
+		},
+		{
+			"sid": "header",
+			"guid": "Zr8WyWG3RhlGY6Ni69YgvBIDRjGacfuKAxPi1HvCmWQ",
+			"contentType": "default",
+			"src": "My Documents",
+			"rid": "dashlets/my-documents.get_en.properties",
+			"ts": 1642896537869
+		},
+		{
+			"sid": "filter.favourites",
+			"notes": "## Filters",
+			"guid": "16dwhpoku0nRZdnDK3zN4gY9CzQrNxTrbsgwSm6DGfk",
+			"contentType": "default",
+			"src": "My Favorites",
+			"rid": "dashlets/my-documents.get_en.properties",
+			"ts": 1642896537869
+		},
+		{
+			"sid": "filter.editingMe",
+			"guid": "T45JY1JPTF8w3-9djuQrQqNt1qo8go5BrnY-0gq_XiM",
+			"contentType": "default",
+			"src": "I'm Editing",
+			"rid": "dashlets/my-documents.get_en.properties",
+			"ts": 1642896537869
+		},
+		{
+			"sid": "filter.recentlyModifiedByMe",
+			"guid": "69OAs0aOL6ZqIcXL4Fizzt7ocJPdHMPqRnxI7gdwxXY",
+			"contentType": "default",
+			"src": "I've Recently Modified",
+			"rid": "dashlets/my-documents.get_en.properties",
+			"ts": 1642896537869
+		},
+		{
+			"sid": "filter.synced",
+			"guid": "CIwEJyo5_StommBSbdzYai9bLZOnMhok9di6JIE7bgc",
+			"contentType": "default",
+			"src": "Synced content",
+			"rid": "dashlets/my-documents.get_en.properties",
+			"ts": 1642896537869
+		},
+		{
+			"sid": "filter.syncedErrors",
+			"guid": "yV-PN0fv77TSTS-mNgk_pcjMnf-LdfCFBcsfNb-eAJA",
+			"contentType": "default",
+			"src": "Synced with Errors",
+			"rid": "dashlets/my-documents.get_en.properties",
+			"ts": 1642896537869
+		},
+		{
+			"sid": "empty.title",
+			"guid": "8XoIyfOkoCz_nXAZEuq2rAkrOzDIktohodTvmnKDPos",
+			"contentType": "default",
+			"src": "Keep track of your own content",
+			"rid": "dashlets/my-documents.get_en.properties",
+			"ts": 1642896537869
+		},
+		{
+			"sid": "empty.description",
+			"guid": "ll8G2DYvYEBCintesx4VmEGESLsVncMkqwdXMUxqKcQ",
+			"contentType": "default",
+			"src": "This dashlet lists all of the content that's important to you, no matter which site it is in. Use the filters to easily find what you're looking for.",
+			"rid": "dashlets/my-documents.get_en.properties",
+			"ts": 1642896537869
+		},
+		{
+			"sid": "dashlet.help",
+			"notes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+			"guid": "ShcUB-kxdjwKH2AdlbqM0l75IOjnsUHlasxuZRfjRPA",
+			"contentType": "default",
+			"src": "<p>This dashlet makes it easy to keep track of your own content, no matter which site it is in. Use the filter to easily find what you're looking for.</p><p>There are two views for this dashlet. The detailed view lets you:<ul><li>Mark an item as a favorite so it appears in Favorites lists for easy access</li><li>Like (and unlike) an item</li><li>Jump to the item details page to leave a comment</li></ul></p>",
+			"rid": "dashlets/my-documents.get_en.properties",
+			"ts": 1642896537869
+		},
+		{
+			"sid": "header.myMeetingWorkspaces",
+			"guid": "xdSxt3fOBafJlhTuB-UYZBP6Yuaa3zikmNIKnn_3b80",
+			"contentType": "default",
+			"src": "My Meeting Workspaces",
+			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
+			"ts": 1642896537816
+		},
+		{
+			"sid": "link.deleteMeetingWorkspace",
+			"guid": "95wufLScOHKhQTSbDmm0fY-sgDbl3CzFbTrf7EIcaco",
+			"contentType": "default",
+			"src": "Delete",
+			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
+			"ts": 1642896537816
+		},
+		{
+			"sid": "label.noMeetingWorkspaces",
+			"guid": "hEx8GA1O-_qTlP-B6JO83QStuzstF54FrJg9scNduiE",
+			"contentType": "default",
+			"src": "No meeting workspaces to display",
+			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
+			"ts": 1642896537816
+		},
+		{
+			"sid": "message.meetingWorkspaceFavourite.failure",
+			"guid": "86X3guH-QznpXsT3DHHEw9PPgKLlRXKsKpTX0_GetnE",
+			"contentType": "default",
+			"src": "The favorite setting for the meeting workspace could not be saved",
+			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
+			"ts": 1642896537816
+		},
+		{
+			"sid": "link.favouriteMeetingWorkspace",
+			"guid": "chVcIGwRxOqTMMJSOVBci-X9dwfTrQqqbM_B4f5Hr8I",
+			"contentType": "default",
+			"src": "Mark or unmark meeting workspace as favorite",
+			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
+			"ts": 1642896537816
+		},
+		{
+			"sid": "link.imap_favouriteMeetingWorkspace",
+			"guid": "0mXtDKcqSsQ2f-bn_WNhCJPjWuOImGuV2N4MzXFcGm4",
+			"contentType": "default",
+			"src": "Mark or unmark meeting workspace as IMAP favorite",
+			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
+			"ts": 1642896537816
+		},
+		{
+			"sid": "dashlet.help",
+			"notes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+			"guid": "tudlLtXq92sWC7gywpc1T6B7E8uxGJZDc8HHygFDZFM",
+			"contentType": "default",
+			"src": "<p>A Meeting Workspace is a type of site that is created outside of Alfresco. This dashlet lists all of your Meeting Workspace sites.</p><p>From here you can navigate to a Meeting Workspace site. You can also delete a site, if you have the correct permissions.</p>",
+			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
+			"ts": 1642896537816
+		},
+		{
+			"sid": "header.myLimitedProfile",
+			"guid": "8bQlFmPjhRmQhEl_D3zucOoRAJwuTt-y982jqcFNmQg",
+			"contentType": "default",
+			"src": "My Profile",
+			"rid": "dashlets/my-profile.get_en.properties",
+			"ts": 1642896537834
+		},
+		{
+			"sid": "link.viewFullProfile",
+			"guid": "gwYKzILRTzurUCmf_I5JFHSzbAYK-qnKKqTk2OEqx58",
+			"contentType": "default",
+			"src": "View Full Profile",
+			"rid": "dashlets/my-profile.get_en.properties",
+			"ts": 1642896537834
+		},
+		{
+			"sid": "dashlet.help",
+			"guid": "zYMbzhPI5FMRos67sdXQfWhFklnMLVEOoBQnWWEBlAk",
+			"contentType": "default",
+			"src": "This dashlet shows a summary of your personal details. From here you can access your full user profile.",
+			"rid": "dashlets/my-profile.get_en.properties",
+			"ts": 1642896537834
+		},
+		{
+			"sid": "header",
+			"guid": "UlZQ7MSqJC0zqQY0D4YOldD5F93cOpqhfne5pP2FWXc",
+			"contentType": "default",
+			"src": "My Sites",
+			"rid": "dashlets/my-sites.get_en.properties",
+			"ts": 1642896537847
+		},
+		{
+			"sid": "link.createSite",
+			"guid": "CNYZHwdG54uOPssvos2FeIoUucBpQgemdb5f3ZS3NOY",
+			"contentType": "default",
+			"src": "Create Site",
+			"rid": "dashlets/my-sites.get_en.properties",
+			"ts": 1642896537847
+		},
+		{
+			"sid": "link.deleteSite",
+			"guid": "pVbMCPTUkdxbzFMpurxmq3lfQYnXGvga70FOMpLWja0",
+			"contentType": "default",
+			"src": "Delete",
+			"rid": "dashlets/my-sites.get_en.properties",
+			"ts": 1642896537847
+		},
+		{
+			"sid": "filter.all",
+			"guid": "sym--UQ1RTuzq-6wohlntwmHh5bgnIyTlCFl8qdxFcQ",
+			"contentType": "default",
+			"src": "All",
+			"rid": "dashlets/my-sites.get_en.properties",
+			"ts": 1642896537847
+		},
+		{
+			"sid": "filter.favSites",
+			"guid": "i3ag0zcuvGFcbpZBiM8Pa-uiyQSUsnVUP3Rw86jIk9U",
+			"contentType": "default",
+			"src": "My Favorites",
+			"rid": "dashlets/my-sites.get_en.properties",
+			"ts": 1642896537847
+		},
+		{
+			"sid": "filter.recentSites",
+			"guid": "hbAeApluyJZr9vgdIibjX3E5CWn2gLKZDz-Q2edB6WE",
+			"contentType": "default",
+			"src": "Recent",
+			"rid": "dashlets/my-sites.get_en.properties",
+			"ts": 1642896537847
+		},
+		{
+			"sid": "empty.title",
+			"guid": "tI5VvhguKK2Np_Ymu6r2Ej0RIHbejD58RIz6_m2jxnA",
+			"contentType": "default",
+			"src": "Quickly access your sites",
+			"rid": "dashlets/my-sites.get_en.properties",
+			"ts": 1642896537847
+		},
+		{
+			"sid": "empty.description",
+			"guid": "pORmuIaIpyiwAr733qjgG40a_bzACims7cH11c7xlsA",
+			"contentType": "default",
+			"src": "A site is a project area where you can share and discuss content with other site members.",
+			"rid": "dashlets/my-sites.get_en.properties",
+			"ts": 1642896537847
+		},
+		{
+			"sid": "empty.description.sample-site",
+			"guid": "DxEjNf9NRyr2lYuojO109PzRdfZbhlOasKBZeCFkxsM",
+			"contentType": "default",
+			"src": "We've included a sample site for you. Use this to explore the features in Alfresco.",
+			"rid": "dashlets/my-sites.get_en.properties",
+			"ts": 1642896537847
+		},
+		{
+			"sid": "dashlet.help",
+			"notes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+			"guid": "eB_cJ-hCnjl2LXlUNHQ41obId7vKpIoi1hnckcOilEw",
+			"contentType": "default",
+			"src": "<p>Sites are project areas where you collaborate with others, sharing content and working on it together. This dashlet lists the sites you belong to. You can filter this list to show only your favorite sites.</p><p>From here you can:<ul><li>Navigate to a site</li><li>Create a new site</li><li>Delete a site if you are the site manager</li><li>Mark a site as a favorite so that it shows in the Sites menu for easy access</li></ul></p>",
+			"rid": "dashlets/my-sites.get_en.properties",
+			"ts": 1642896537847
+		},
+		{
+			"sid": "header",
+			"guid": "epKRcIosvdiNUQNTCllZBTpcyfk6yJLi37bwHg7nm_4",
+			"contentType": "default",
+			"src": "My Tasks",
+			"rid": "dashlets/my-tasks.get_en.properties",
+			"ts": 1642896537787
+		},
+		{
+			"sid": "link.startWorkflow",
+			"guid": "vPu9Gy2eFkiPNaDAoIlmc9whCRzTvQ984kOHZANKJ0w",
+			"contentType": "default",
+			"src": "Start Workflow",
+			"rid": "dashlets/my-tasks.get_en.properties",
+			"ts": 1642896537787
+		},
+		{
+			"sid": "link.activeTasks",
+			"guid": "Nlkm4Se8KVfvio8MJgmKKuvD49w9k4sJ5AJWs28somg",
+			"contentType": "default",
+			"src": "Active Tasks",
+			"rid": "dashlets/my-tasks.get_en.properties",
+			"ts": 1642896537787
+		},
+		{
+			"sid": "link.completedTasks",
+			"guid": "Q4u2myLfcHsknqOi0r4uKtFBLaoJuJ0iiQ31G31sUJc",
+			"contentType": "default",
+			"src": "Completed Tasks",
+			"rid": "dashlets/my-tasks.get_en.properties",
+			"ts": 1642896537787
+		},
+		{
+			"sid": "title.viewTask",
+			"guid": "xK24KgsSyM1av2EI_uMsC3k54yBUL2cNf3a6bMsygxs",
+			"contentType": "default",
+			"src": "View Task",
+			"rid": "dashlets/my-tasks.get_en.properties",
+			"ts": 1642896537787
+		},
+		{
+			"sid": "title.editTask",
+			"guid": "a75DwZSR97TRCv7Tu9buoQvS62zyWJSTBBIe0T_Sd9o",
+			"contentType": "default",
+			"src": "Edit Task",
+			"rid": "dashlets/my-tasks.get_en.properties",
+			"ts": 1642896537787
+		},
+		{
+			"sid": "label.pooledTask",
+			"guid": "firH6Wg83voQWGdKTeEaKvZFM2MSNnut6mwVBLZDrMg",
+			"contentType": "default",
+			"src": "Pooled task",
+			"rid": "dashlets/my-tasks.get_en.properties",
+			"ts": 1642896537787
+		},
+		{
+			"sid": "label.taskSummary",
+			"guid": "9ojyq_V8cDZqYBDFgCRU2RCQACTid4bhx26xBqL7MZ0",
+			"contentType": "default",
+			"src": "{0}, {1}",
+			"rid": "dashlets/my-tasks.get_en.properties",
+			"ts": 1642896537787
+		},
+		{
+			"sid": "label.unassignedTask",
+			"guid": "I5Kr0TjUoHgmE5HZ6Hkqw0kUIr0QjFzbFvz2YAG0Q0I",
+			"contentType": "default",
+			"src": "Unassigned",
+			"rid": "dashlets/my-tasks.get_en.properties",
+			"ts": 1642896537787
+		},
+		{
+			"sid": "title.dueOn",
+			"guid": "hG8Ox3Xatkr7diGEMafsNauMsSkvfyxOTLNUNkOeJKA",
+			"contentType": "default",
+			"src": "Due on: {0}",
+			"rid": "dashlets/my-tasks.get_en.properties",
+			"ts": 1642896537787
+		},
+		{
+			"sid": "message.noTasks",
+			"guid": "8AuA3JdZzJKOkRh8OQvnVJRzVHUPMIUiOjfrX86Bibo",
+			"contentType": "default",
+			"src": "No tasks",
+			"rid": "dashlets/my-tasks.get_en.properties",
+			"ts": 1642896537787
+		},
+		{
+			"sid": "title.taskSummary",
+			"guid": "cOIEcKcpYHdpYaHlWXxK8eAyMraCIZSfEAfQTDWLQSA",
+			"contentType": "default",
+			"src": "Type: {0}, Status: {1}",
+			"rid": "dashlets/my-tasks.get_en.properties",
+			"ts": 1642896537787
+		},
+		{
+			"sid": "filter.activeTasks",
+			"guid": "3tkVM3WAlZnqn435TugK4MhJQgzntlZ-FuPgfHZ3hUM",
+			"contentType": "default",
+			"src": "Active Tasks",
+			"rid": "dashlets/my-tasks.get_en.properties",
+			"ts": 1642896537787
+		},
+		{
+			"sid": "filter.completedTasks",
+			"guid": "Qhtg8zhuobjkBNy9a9u6G9KpckRWn6ekNkSOWHYwutM",
+			"contentType": "default",
+			"src": "Completed Tasks",
+			"rid": "dashlets/my-tasks.get_en.properties",
+			"ts": 1642896537787
+		},
+		{
+			"sid": "filter.highPriorityTasks",
+			"guid": "K47iNY3XGCsnPWrz6ZcWoO9giYn2dV69Va9Gdq3B-eo",
+			"contentType": "default",
+			"src": "High Priority Tasks",
+			"rid": "dashlets/my-tasks.get_en.properties",
+			"ts": 1642896537787
+		},
+		{
+			"sid": "filter.tasksDueToday",
+			"guid": "BF4C3yrZszaNM52DTm4r3KQP78KDvTz-dY01BhVkF40",
+			"contentType": "default",
+			"src": "Tasks Due Today",
+			"rid": "dashlets/my-tasks.get_en.properties",
+			"ts": 1642896537787
+		},
+		{
+			"sid": "filter.tasksAssignedToMe",
+			"guid": "zS4uKDkVTrVts6ULIO2JJ_lfqs6so9Un-GRoLkYGxBA",
+			"contentType": "default",
+			"src": "Tasks Assigned to Me",
+			"rid": "dashlets/my-tasks.get_en.properties",
+			"ts": 1642896537787
+		},
+		{
+			"sid": "filter.unassignedPooledTasks",
+			"guid": "R09PDx_fzdUUGKSC__kqAXYqL0VbKfaRfunC2Enkszs",
+			"contentType": "default",
+			"src": "Unassigned (Pooled Tasks)",
+			"rid": "dashlets/my-tasks.get_en.properties",
+			"ts": 1642896537787
+		},
+		{
+			"sid": "filter.overdueTasks",
+			"guid": "xpJxcWOzyfOz6JiicCx8wipfHxU-XMnfeSwlvTCYc-U",
+			"contentType": "default",
+			"src": "Overdue Tasks",
+			"rid": "dashlets/my-tasks.get_en.properties",
+			"ts": 1642896537787
+		},
+		{
+			"sid": "pagination.template",
+			"notes": "## Override pagination templates with a minified version",
+			"guid": "xH9OYoIO3y2KixIP4p0-xd961rMhUmo9u7256vRHDBk",
+			"contentType": "default",
+			"src": "{CurrentPageReport}",
+			"rid": "dashlets/my-tasks.get_en.properties",
+			"ts": 1642896537787
+		},
+		{
+			"sid": "pagination.template.page-report",
+			"guid": "Ds8bBnEJR-0VpzdYDULimg0je5qAcolVn2NTMwav6zE",
+			"contentType": "default",
+			"src": "{startRecord} - {endRecord} of {totalRecords}",
+			"rid": "dashlets/my-tasks.get_en.properties",
+			"ts": 1642896537787
+		},
+		{
+			"sid": "empty.title",
+			"guid": "N0x4ZqYxFgSph2esNLhC1q4h8K7ebU4JR-Cynw1Tpew",
+			"contentType": "default",
+			"src": "Review the tasks assigned to you",
+			"rid": "dashlets/my-tasks.get_en.properties",
+			"ts": 1642896537787
+		},
+		{
+			"sid": "empty.description",
+			"guid": "pFJZM7Jmnr--w3m9nPZhK-2c0arLCxHQQMMiLc8O7jg",
+			"contentType": "default",
+			"src": "Different types of tasks can appear in this task list and you need to address each one. This could involve reviewing a document or simply accepting an invitation to a site.",
+			"rid": "dashlets/my-tasks.get_en.properties",
+			"ts": 1642896537787
+		},
+		{
+			"sid": "dashlet.help",
+			"notes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+			"guid": "yuZ8kL-RtX72I1i938tuPNva3s7BVSoDl7UGjK2UodU",
+			"contentType": "default",
+			"src": "<p>This dashlet lists the tasks assigned to you, including invitations to join sites. You can filter the list to view different types of tasks.</p><p>From here you can:<ul><li>Edit a task to manage it</li><li>View a single task</li><li>Open the My Tasks page to manage all of your tasks</li><li>Start a workflow to create tasks for others or yourself</li></ul></p>",
+			"rid": "dashlets/my-tasks.get_en.properties",
+			"ts": 1642896537787
+		},
+		{
+			"sid": "header.myWorkspaces",
+			"guid": "_uhE3KrGLJQO9NYX40QzZhCOAiGm53PUnKCKMHuIJHU",
+			"contentType": "default",
+			"src": "My Document Workspaces",
+			"rid": "dashlets/my-workspaces.get_en.properties",
+			"ts": 1642896537855
+		},
+		{
+			"sid": "link.deleteWorkspace",
+			"guid": "o7jl6L3FLIXgeTEJ6_ChHV1ZOAQnp31thchwcDIpNPc",
+			"contentType": "default",
+			"src": "Delete",
+			"rid": "dashlets/my-workspaces.get_en.properties",
+			"ts": 1642896537855
+		},
+		{
+			"sid": "label.noWorkspaces",
+			"guid": "WYzhdU3b8DtgLJUXn7Tn7zat4OE1EFCkAVcIOUV8oUs",
+			"contentType": "default",
+			"src": "No document workspaces to display",
+			"rid": "dashlets/my-workspaces.get_en.properties",
+			"ts": 1642896537855
+		},
+		{
+			"sid": "message.workspaceFavourite.failure",
+			"guid": "aGx4T_7P8p5whU4-Swu-yuVqZzjb0OhOhPh8OyzV42U",
+			"contentType": "default",
+			"src": "The favorite setting for the document workspace could not be saved",
+			"rid": "dashlets/my-workspaces.get_en.properties",
+			"ts": 1642896537855
+		},
+		{
+			"sid": "link.favouriteWorkspace",
+			"guid": "01beH-pALpRN0Q9lIKbOgEguRhml7Wj6yTj27zLVyAo",
+			"contentType": "default",
+			"src": "Mark or unmark document workspace as favorite",
+			"rid": "dashlets/my-workspaces.get_en.properties",
+			"ts": 1642896537855
+		},
+		{
+			"sid": "link.imap_favouriteWorkspace",
+			"guid": "pYmD4nSAgI0AAp5sU_y8dj-SgmRPtsi_gEBYVwsL4C8",
+			"contentType": "default",
+			"src": "Mark or unmark document workspace as IMAP favorite",
+			"rid": "dashlets/my-workspaces.get_en.properties",
+			"ts": 1642896537855
+		},
+		{
+			"sid": "dashlet.help",
+			"notes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+			"guid": "9AaA2VphgbM4i28Q0Dsd-5lMNS_-SHTdSRhUohVWaH8",
+			"contentType": "default",
+			"src": "<p>A Document Workspace is a type of site that is created outside of Alfresco. This dashlet lists all of your Document Workspace sites.</p><p>From here you can navigate to a Document Workspace site. You can also delete a site, if you have the correct permissions.</p>",
+			"rid": "dashlets/my-workspaces.get_en.properties",
+			"ts": 1642896537855
+		},
+		{
+			"sid": "label.header",
+			"guid": "i6iRLGJMzgct3Ed5dX6quhzt5quYzAu4Zly3wVhMBeA",
+			"contentType": "default",
+			"src": "RSS Feed",
+			"rid": "dashlets/rssfeed.get_en.properties",
+			"ts": 1642896537817
+		},
+		{
+			"sid": "label.configure",
+			"guid": "kJ9JAWQxUUCxiX4I0UKRyc8prgKz7vhCbHyRcFfSVbo",
+			"contentType": "default",
+			"src": "Configure",
+			"rid": "dashlets/rssfeed.get_en.properties",
+			"ts": 1642896537817
+		},
+		{
+			"sid": "label.noItems",
+			"guid": "bl2r_NUdz3LRYApviS0mdZovycfmxK_1NX5e_dV3WGY",
+			"contentType": "default",
+			"src": "No news items",
+			"rid": "dashlets/rssfeed.get_en.properties",
+			"ts": 1642896537817
+		},
+		{
+			"sid": "label.loading",
+			"guid": "TO0t9t7HB8sVD0LpC1mK9cydH5rfK18pVvjp1ukpvsU",
+			"contentType": "default",
+			"src": "Loading items - please wait...",
+			"rid": "dashlets/rssfeed.get_en.properties",
+			"ts": 1642896537817
+		},
+		{
+			"sid": "title.error.bad_data",
+			"guid": "DXyZQwGvjI-wMwixtVE508JdQMvcior88KIFVTxvf7E",
+			"contentType": "default",
+			"src": "RSS feed can't be read",
+			"rid": "dashlets/rssfeed.get_en.properties",
+			"ts": 1642896537817
+		},
+		{
+			"sid": "title.error.unavailable",
+			"guid": "wC9kcHAKpkTzWB31xwa9EMVYQwJXfj2pPAlxNYyyigs",
+			"contentType": "default",
+			"src": "RSS feed is not available",
+			"rid": "dashlets/rssfeed.get_en.properties",
+			"ts": 1642896537817
+		},
+		{
+			"sid": "title.error.unsupported",
+			"guid": "uWxJ2W5ssGnSAno1hIPCnJYbqmbLejphqst_gp1jfcc",
+			"contentType": "default",
+			"src": "RSS feed format is not supported",
+			"rid": "dashlets/rssfeed.get_en.properties",
+			"ts": 1642896537817
+		},
+		{
+			"sid": "header.title",
+			"guid": "vOu-eNJHDEBQChRKqLed8BwIg3TYqS4vXtfiyYVOock",
+			"contentType": "default",
+			"src": "Saved Search",
+			"rid": "dashlets/saved-search.get_en.properties",
+			"ts": 1642896537879
+		},
+		{
+			"sid": "no.result",
+			"guid": "6N6CvXFOJN5MW5CDAOCRUtAKv52ovL-gvXdY_uFAsuI",
+			"contentType": "default",
+			"src": "No results found.",
+			"rid": "dashlets/saved-search.get_en.properties",
+			"ts": 1642896537879
+		},
+		{
+			"sid": "message.insite",
+			"guid": "2qDllQZkvpfUJXE0R5eq---oiS-52r1TJEFY9jaK0UM",
+			"contentType": "default",
+			"src": "in site",
+			"rid": "dashlets/saved-search.get_en.properties",
+			"ts": 1642896537879
+		},
+		{
+			"sid": "dashlet.help",
+			"notes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+			"guid": "xXeLvRnk8L9fg4rs4ABDXD3OP5laKu69E_AWs5MuyOc",
+			"contentType": "default",
+			"src": "<p>Use this dashlet to set up a search and view the results.</p><p>Configure the dashlet to save the search and set the title text of the dashlet.</p><p>Only a Site Manager can configure the search and title - this dashlet is ideal for generating report views in a site.</p>",
+			"rid": "dashlets/saved-search.get_en.properties",
+			"ts": 1642896537879
+		},
+		{
+			"sid": "header",
+			"guid": "9RU0-MtMA3IQ_HZWDTRlbtGICfYhmwwukPBoTOUNm84",
+			"contentType": "default",
+			"src": "Site Activities",
+			"rid": "dashlets/site-activities.get_en.properties",
+			"ts": 1642896537767
+		},
+		{
+			"sid": "label.load-failed",
+			"guid": "dXT2U75dxHuNIUPU-t03LIHyx2Xot9nfTYzt0wC7mX4",
+			"contentType": "default",
+			"src": "Could not load activities list",
+			"rid": "dashlets/site-activities.get_en.properties",
+			"ts": 1642896537767
+		},
+		{
+			"sid": "label.filter",
+			"guid": "5lPhH3wyUosnjY8D20zaDr3pvcSu5-4SHVcyxzNNyy8",
+			"contentType": "default",
+			"src": "Show",
+			"rid": "dashlets/site-activities.get_en.properties",
+			"ts": 1642896537767
+		},
+		{
+			"sid": "label.older-activities",
+			"guid": "X7hfuKglEIfBzyBP8hjkNyTVWbzADzO5qZeZrNwktVc",
+			"contentType": "default",
+			"src": "Older Activities",
+			"rid": "dashlets/site-activities.get_en.properties",
+			"ts": 1642896537767
+		},
+		{
+			"sid": "filter.mine",
+			"notes": "# Filter 1",
+			"guid": "Udt6eFrWTD8LIPEn855TExZ8hKbdZ-XnDwZViiOfKjI",
+			"contentType": "default",
+			"src": "My activities",
+			"rid": "dashlets/site-activities.get_en.properties",
+			"ts": 1642896537767
+		},
+		{
+			"sid": "filter.others",
+			"guid": "tf1yRhKe3Pz7u0eLwnf0vL6GRU-JEiOcDEEVohFUgBU",
+			"contentType": "default",
+			"src": "Everyone else's activities",
+			"rid": "dashlets/site-activities.get_en.properties",
+			"ts": 1642896537767
+		},
+		{
+			"sid": "filter.all",
+			"guid": "KGMwBkZzgvkB79vKnn9KTUdjpDd06urpF6Dm4CI65hk",
+			"contentType": "default",
+			"src": "Everyone's activities",
+			"rid": "dashlets/site-activities.get_en.properties",
+			"ts": 1642896537767
+		},
+		{
+			"sid": "filter.following",
+			"guid": "6VXScrtHrW6_RXucbYRhLaIIxk-PcKWCpucU-DXYuto",
+			"contentType": "default",
+			"src": "I'm following",
+			"rid": "dashlets/site-activities.get_en.properties",
+			"ts": 1642896537767
+		},
+		{
+			"sid": "filter.allItems",
+			"notes": "# Filter 2",
+			"guid": "vRZ8-bFg84NQr-JCGfCiYSgCFpyIVfkRsbewPxPUKWE",
+			"contentType": "default",
+			"src": "all items",
+			"rid": "dashlets/site-activities.get_en.properties",
+			"ts": 1642896537767
+		},
+		{
+			"sid": "filter.statusItems",
+			"guid": "JyI-4jM5rBXorGP3KgW17ipL1vKGfX-vFdiQC3hJSxo",
+			"contentType": "default",
+			"src": "status updates",
+			"rid": "dashlets/site-activities.get_en.properties",
+			"ts": 1642896537767
+		},
+		{
+			"sid": "filter.commentItems",
+			"guid": "p6ZwVEZOg2J8KszdlWUcLhmNYYhXgvGJAWrDtDpJq2U",
+			"contentType": "default",
+			"src": "comments",
+			"rid": "dashlets/site-activities.get_en.properties",
+			"ts": 1642896537767
+		},
+		{
+			"sid": "filter.contentItems",
+			"guid": "dIVUO_Ot8QvPYU5zjVyiWNQ9N4mnQMqs-HfBlrPGGC4",
+			"contentType": "default",
+			"src": "content",
+			"rid": "dashlets/site-activities.get_en.properties",
+			"ts": 1642896537767
+		},
+		{
+			"sid": "filter.membershipItems",
+			"guid": "h0ht26CvHSGS_Uww8ADVUAHxjrBN3SSfAbkQqsswkcc",
+			"contentType": "default",
+			"src": "memberships",
+			"rid": "dashlets/site-activities.get_en.properties",
+			"ts": 1642896537767
+		},
+		{
+			"sid": "filter.today",
+			"notes": "# Filter 3",
+			"guid": "3TQRV9f1141RY8JHLgGCs9MqJXCfUHGCPKoH346i8Ns",
+			"contentType": "default",
+			"src": "today",
+			"rid": "dashlets/site-activities.get_en.properties",
+			"ts": 1642896537767
+		},
+		{
+			"sid": "filter.7days",
+			"guid": "lZ1vxUkINGFrKtKYt4sXEWFtpRIR__IShFVOehBUyi0",
+			"contentType": "default",
+			"src": "in the last 7 days",
+			"rid": "dashlets/site-activities.get_en.properties",
+			"ts": 1642896537767
+		},
+		{
+			"sid": "filter.14days",
+			"guid": "Vqe7ORCDAj0-3slbq6Y5GRiOE5OkVwpQLLkK0AnV7Ec",
+			"contentType": "default",
+			"src": "in the last 14 days",
+			"rid": "dashlets/site-activities.get_en.properties",
+			"ts": 1642896537767
+		},
+		{
+			"sid": "filter.28days",
+			"guid": "es1WhpDaK4xTyYraeum4hgyUSD9UgerNfV9BGbPcy8I",
+			"contentType": "default",
+			"src": "in the last 28 days",
+			"rid": "dashlets/site-activities.get_en.properties",
+			"ts": 1642896537767
+		},
+		{
+			"sid": "empty.title",
+			"guid": "D5uLM2Y7lh5HKdwbw8Oh9zS4NvyemL-ifgDD6NROlug",
+			"contentType": "default",
+			"src": "Follow what's going on in this site",
+			"rid": "dashlets/site-activities.get_en.properties",
+			"ts": 1642896537767
+		},
+		{
+			"sid": "empty.description",
+			"guid": "RLaiyI_cVexQQDovlu1wqNhAlA03prM3H8xpI72wVj8",
+			"contentType": "default",
+			"src": "Watch this list to keep up on the recent site changes. You'll see activities such as content updates and likes. You can also track the site membership by seeing who is joining and leaving.",
+			"rid": "dashlets/site-activities.get_en.properties",
+			"ts": 1642896537767
+		},
+		{
+			"sid": "dashlet.help",
+			"notes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+			"guid": "N5EWKvy-98rVgly4vkrJ1jgGynPaCl13TPSgRfK-DtA",
+			"contentType": "default",
+			"src": "<p>Following what goes on in the site is easy with this dashlet. It shows all activities, such as content that's been added, edited, and deleted. You can also see who is joining and leaving the site.</p><p>Filters let you view activities by time period and ownership.</p>",
+			"rid": "dashlets/site-activities.get_en.properties",
+			"ts": 1642896537767
+		},
+		{
+			"sid": "header.datalists",
+			"guid": "dMY8CN6sydoqUsRlFLrrNXGTDjgS3A4bFt7nv1DroMI",
+			"contentType": "default",
+			"src": "Site Data Lists",
+			"rid": "dashlets/site-data-lists.get_en.properties",
+			"ts": 1642896537884
+		},
+		{
+			"sid": "label.noLists",
+			"guid": "UEdkz_oEge0EOVJV3nqTxzXuNnOFrX9tjMCPElAgRIU",
+			"contentType": "default",
+			"src": "No lists to display",
+			"rid": "dashlets/site-data-lists.get_en.properties",
+			"ts": 1642896537884
+		},
+		{
+			"sid": "list.createLink",
+			"guid": "s4s9nIqDYizLbFsc8sUeKYUtewrvGVq7HCuzzJMAyoM",
+			"contentType": "default",
+			"src": "Create Data List",
+			"rid": "dashlets/site-data-lists.get_en.properties",
+			"ts": 1642896537884
+		},
+		{
+			"sid": "dashlet.help",
+			"guid": "e0V7MJ88IW05x2ffT3zZKd7c2VGh38qlGaphUkWnFps",
+			"contentType": "default",
+			"src": "This dashlet shows lists relevant to the site. Clicking a list opens it.",
+			"rid": "dashlets/site-data-lists.get_en.properties",
+			"ts": 1642896537884
+		},
+		{
+			"sid": "header.links",
+			"guid": "uBR0WvZq-dGOy09nZgCpNCSo9RZNSCZT2Du7IZG4Bsk",
+			"contentType": "default",
+			"src": "Site Links",
+			"rid": "dashlets/site-links.get_en.properties",
+			"ts": 1642896537862
+		},
+		{
+			"sid": "link.createLink",
+			"guid": "_zCDNnMNZ1euI5GwWkU25cGMkUpXOZ-KbEs8dQr5VQw",
+			"contentType": "default",
+			"src": "Create Link",
+			"rid": "dashlets/site-links.get_en.properties",
+			"ts": 1642896537862
+		},
+		{
+			"sid": "link.details",
+			"guid": "8HjmVxKr0DkRi6RE5Mzx8Mytqr7ZTMgSLOga8bp7Gss",
+			"contentType": "default",
+			"src": "Link's details",
+			"rid": "dashlets/site-links.get_en.properties",
+			"ts": 1642896537862
+		},
+		{
+			"sid": "label.noLinks",
+			"guid": "x6nxGD5yw60z5CfGz8xuv5PBEK3ms-y_5Coe_UG_7Ds",
+			"contentType": "default",
+			"src": "No links to display",
+			"rid": "dashlets/site-links.get_en.properties",
+			"ts": 1642896537862
+		},
+		{
+			"sid": "dashlet.help",
+			"guid": "xMaXXd9iLQTkboNcA5CI6YjOzza6t5fIYKN4nVTLvA0",
+			"contentType": "default",
+			"src": "This dashlet shows links relevant to this site. The list is compiled by site members. Clicking a link opens it in a new window.",
+			"rid": "dashlets/site-links.get_en.properties",
+			"ts": 1642896537862
+		},
+		{
+			"sid": "link.noUrl",
+			"guid": "qpNzDxIKznWjF3VhKBN4jSc4frLkqQGGBn7JqtJa8vE",
+			"contentType": "default",
+			"src": "URL not specified",
+			"rid": "dashlets/site-links.get_en.properties",
+			"ts": 1642896537862
+		},
+		{
+			"sid": "notice.defaultTitle",
+			"guid": "nxBPgM21nUdzaHwzKDAUOpPecwgSIOm6hqYTcX9bfwE",
+			"contentType": "default",
+			"src": "Site Notice",
+			"rid": "dashlets/site-notice.get_en.properties",
+			"ts": 1642896537771
+		},
+		{
+			"sid": "notice.defaultText",
+			"guid": "yj4g5ndRJ2pR2YT6I5HJFiWAQwVkHxyWyuDH43euBnc",
+			"contentType": "default",
+			"src": "No text has been configured",
+			"rid": "dashlets/site-notice.get_en.properties",
+			"ts": 1642896537771
+		},
+		{
+			"sid": "dashlet.help",
+			"guid": "mJhAoE9OxVj0OEm8MJe4izRbFC6F9eoyGp58nxDpzys",
+			"contentType": "default",
+			"src": "This dashlet displays a custom message on the dashboard, specified by the site manager",
+			"rid": "dashlets/site-notice.get_en.properties",
+			"ts": 1642896537771
+		},
+		{
+			"sid": "header.siteProfile",
+			"guid": "khf1feCavm6ibe8MqlZGGmPoAkxw1Fg-9CiardufKSE",
+			"contentType": "default",
+			"src": "Site Profile",
+			"rid": "dashlets/site-profile.get_en.properties",
+			"ts": 1642896537871
+		},
+		{
+			"sid": "text.welcome",
+			"guid": "xnjOvr8ZbL9c_zjhwEhHZECoM5O-B6LrHqJlydnHSk0",
+			"contentType": "default",
+			"src": "Welcome to {0}",
+			"rid": "dashlets/site-profile.get_en.properties",
+			"ts": 1642896537871
+		},
+		{
+			"sid": "label.siteAdmin",
+			"guid": "HD5X-d2HoQZXAQO4dA6XVjmwyDzxx7atfjumP0wXc8o",
+			"contentType": "default",
+			"src": "Site Manager(s):",
+			"rid": "dashlets/site-profile.get_en.properties",
+			"ts": 1642896537871
+		},
+		{
+			"sid": "label.visibility",
+			"guid": "sc0C0MkFSy_nMBTS8jU14d-HZ-yMGxWuHP3wcTt9yHA",
+			"contentType": "default",
+			"src": "Visibility:",
+			"rid": "dashlets/site-profile.get_en.properties",
+			"ts": 1642896537871
+		},
+		{
+			"sid": "text.public",
+			"guid": "IM1fWv6-HAAWG9JWOwHN2PwqGFm84BL77kEkg73DENw",
+			"contentType": "default",
+			"src": "Public",
+			"rid": "dashlets/site-profile.get_en.properties",
+			"ts": 1642896537871
+		},
+		{
+			"sid": "text.moderated",
+			"guid": "sLsiWSXiT6OMWxIzGzVDhw3JQPzfKBdbII82UggAw90",
+			"contentType": "default",
+			"src": "Moderated",
+			"rid": "dashlets/site-profile.get_en.properties",
+			"ts": 1642896537871
+		},
+		{
+			"sid": "text.private",
+			"guid": "BaIEq8aWhiGESKvrIdPctiXxiYBDVYWJJbPRg-brYNY",
+			"contentType": "default",
+			"src": "Private",
+			"rid": "dashlets/site-profile.get_en.properties",
+			"ts": 1642896537871
+		},
+		{
+			"sid": "text.unknown",
+			"guid": "nzBKPR27tGvdJTHt81bRETluPFYJ2Gg-H2gE9IUXAJs",
+			"contentType": "default",
+			"src": "Unknown",
+			"rid": "dashlets/site-profile.get_en.properties",
+			"ts": 1642896537871
+		},
+		{
+			"sid": "dashlet.help",
+			"guid": "N1IcZ5QfrSM8ZDsOz5i0tr8gggb063aQJ0iUZgEs5To",
+			"contentType": "default",
+			"src": "This dashlet displays the site details. Only the site manager can change this information.",
+			"rid": "dashlets/site-profile.get_en.properties",
+			"ts": 1642896537871
+		},
+		{
+			"sid": "header.title",
+			"guid": "7VTnCLwh2yhUtrL1y6RF5Dwfn2XQbLUztctjl78G2YU",
+			"contentType": "default",
+			"src": "Site Search",
+			"rid": "dashlets/site-search.get_en.properties",
+			"ts": 1642896537806
+		},
+		{
+			"sid": "searchButton.text",
+			"guid": "P9gayAUj9HlSgxvLBDwgnL6DpANGiR9nVrMe0FytAtU",
+			"contentType": "default",
+			"src": "Search",
+			"rid": "dashlets/site-search.get_en.properties",
+			"ts": 1642896537806
+		},
+		{
+			"sid": "no.result",
+			"guid": "gNmjQRRdC_hcOykrH-oV68pAvGcA-dAJC5fkJL8rxrw",
+			"contentType": "default",
+			"src": "No results found.",
+			"rid": "dashlets/site-search.get_en.properties",
+			"ts": 1642896537806
+		},
+		{
+			"sid": "message.insite",
+			"guid": "pp4AQNiSgKNV1PqmRFEsBGUVJiBdUd_0qK0wm3u6fBY",
+			"contentType": "default",
+			"src": "in site",
+			"rid": "dashlets/site-search.get_en.properties",
+			"ts": 1642896537806
+		},
+		{
+			"sid": "dashlet.help",
+			"notes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+			"guid": "AW5j6bWDZUj8JF7o4Je_uO5R7rFsTZBn4e8U6upZ0JQ",
+			"contentType": "default",
+			"src": "<p>Use this dashlet to perform a site search and view the results.</p><p>Clicking the item name takes you to the details page so you can preview or work with the item.</p>",
+			"rid": "dashlets/site-search.get_en.properties",
+			"ts": 1642896537806
+		},
+		{
+			"sid": "label.header",
+			"guid": "SPKdfv3dFWX7-7XFoRAq7On20IfLoU6TqTWJEw5jloU",
+			"contentType": "default",
+			"src": "My Calendar",
+			"rid": "dashlets/user-calendar.get_en.properties",
+			"ts": 1642896537792
+		},
+		{
+			"sid": "label.noEvents",
+			"guid": "qwOsbKeQ6XPLwXDcsYMNfNxnZkyoyMpXxz6_LSsWlzQ",
+			"contentType": "default",
+			"src": "No upcoming events",
+			"rid": "dashlets/user-calendar.get_en.properties",
+			"ts": 1642896537792
+		},
+		{
+			"sid": "label.error",
+			"guid": "ZtTwkAcJjMlS2vtVGe9GQ2o5rFvpkyLIOLYQa-a3I9g",
+			"contentType": "default",
+			"src": "Could not load calendar data",
+			"rid": "dashlets/user-calendar.get_en.properties",
+			"ts": 1642896537792
+		},
+		{
+			"sid": "label.allday",
+			"guid": "IGy5p0jghtEk0sW4dXZLtM3lEa2gpWZ_FqWyBaew8do",
+			"contentType": "default",
+			"src": "All Day",
+			"rid": "dashlets/user-calendar.get_en.properties",
+			"ts": 1642896537792
+		},
+		{
+			"sid": "label.in-site",
+			"guid": "2IwY_Ard4ZTTuZMfTDeJi7K7mzgJeX4xwkpgXeW7ALY",
+			"contentType": "default",
+			"src": "in {0}",
+			"rid": "dashlets/user-calendar.get_en.properties",
+			"ts": 1642896537792
+		},
+		{
+			"sid": "dashlet.help",
+			"guid": "yhoc5qivuex4c_K-BMYUFbP9nKbkdCrqEfDm1BnOX-8",
+			"contentType": "default",
+			"src": "This dashlet shows the upcoming events in sites you belong to. ",
+			"rid": "dashlets/user-calendar.get_en.properties",
+			"ts": 1642896537792
+		},
+		{
+			"sid": "label.defaultText",
+			"guid": "aEl7teKlCV7HKIC-OPv_prNQPwpaRzw60o4hAdE15GA",
+			"contentType": "default",
+			"src": "Please use the Configure link to enter the URL of the web page you wish to display",
+			"rid": "dashlets/webview-default.get_en.properties",
+			"ts": 1642896537843
+		},
+		{
+			"sid": "label.header",
+			"guid": "KDBdUg-NyvIug1C7Rz4pKcBurbMKwVTWuh_9fF-84E4",
+			"contentType": "default",
+			"src": "Web View",
+			"rid": "dashlets/webview.get_en.properties",
+			"ts": 1642896537894
+		},
+		{
+			"sid": "label.noWebPage",
+			"guid": "Tno6fdToJWn893cGorCoah96RqkheH8C4KN9ItLLcaE",
+			"contentType": "default",
+			"src": "No web page to display.",
+			"rid": "dashlets/webview.get_en.properties",
+			"ts": 1642896537894
+		},
+		{
+			"sid": "label.notSecureHeader",
+			"guid": "qEmg83eG4VzuormYT5QzxsU8gVIOBWSxN-d3erkcNL8",
+			"contentType": "default",
+			"src": "Web View",
+			"rid": "dashlets/webview.get_en.properties",
+			"ts": 1642896537894
+		},
+		{
+			"sid": "label.notSecurePage",
+			"guid": "vnTi9G3JfmxMw4TI_DbSAMrv0zvUXjl7xMZlaZqNC_0",
+			"contentType": "default",
+			"src": "The domain of the page to display is not listed as a trusted domain inside your server's IFramePolicy config.",
+			"rid": "dashlets/webview.get_en.properties",
+			"ts": 1642896537894
+		},
+		{
+			"sid": "form.url.validation.failure",
+			"guid": "PW3HC0pFONNYOo4XrRLAjPfzrPhU7ql3Vcb-RLr5q3I",
+			"contentType": "default",
+			"src": "The domain of the url is not listed as a trusted domain inside your server's IFramePolicy config.",
+			"rid": "dashlets/webview.get_en.properties",
+			"ts": 1642896537894
+		},
+		{
+			"sid": "dashlet.help",
+			"notes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+			"guid": "GW2RqmBtr_dCSi4GUl6Hi-7odVfFPXFWvyOZxvLord4",
+			"contentType": "default",
+			"src": "<p>This dashlet shows the website of your choice. Click the edit icon on the dashlet to change the web address.</p><p>Clicking the dashlet title opens the website in a separate window.</p>",
+			"rid": "dashlets/webview.get_en.properties",
+			"ts": 1642896537894
+		},
+		{
+			"sid": "label.header",
+			"guid": "tsUhoDa8t8CFonVR8KHvel4WKS9SQ9FXHzCcsTkt3bs",
+			"contentType": "default",
+			"src": "Wiki",
+			"rid": "dashlets/wiki.get_en.properties",
+			"ts": 1642896537773
+		},
+		{
+			"sid": "label.header-prefix",
+			"guid": "gksc8DHW-8RthR-g1Dm982LeG5shOJQG1_FUXaGG8RA",
+			"contentType": "default",
+			"src": "Wiki",
+			"rid": "dashlets/wiki.get_en.properties",
+			"ts": 1642896537773
+		},
+		{
+			"sid": "label.configure",
+			"guid": "iVQEaDYs1oi356F_6MZiUW905O8LQl1bKRWNJg4DGqk",
+			"contentType": "default",
+			"src": "Configure",
+			"rid": "dashlets/wiki.get_en.properties",
+			"ts": 1642896537773
+		},
+		{
+			"sid": "label.noConfig",
+			"guid": "WbL_w7F4YtPHfi2CGZuO_iHD42Gsfv9JFL3uE8B3hmY",
+			"contentType": "default",
+			"src": "No page is configured",
+			"rid": "dashlets/wiki.get_en.properties",
+			"ts": 1642896537773
+		},
+		{
+			"sid": "dashlet.help",
+			"notes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+			"guid": "aL0XpXO85q1QEFuRWmswSmwCBo0bP18SrErZq1mm-YY",
+			"contentType": "default",
+			"src": "<p>This dashlet shows a page selected from the site's wiki.</p><p>Navigate to the wiki to see all related content.</p>",
+			"rid": "dashlets/wiki.get_en.properties",
+			"ts": 1642896537773
+		}
+	],
+	"jobGuid": "xxx0xxx",
+	"status": "created",
+	"updatedAt": "2022-05-29T00:00:00.000Z"
+}

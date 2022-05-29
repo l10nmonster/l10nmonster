@@ -1,0 +1,25 @@
+{
+	"sourceLang": "en",
+	"targetLang": "it",
+	"tus": [
+		{
+			"sid": "dashlet.help",
+			"guid": "c-6fDjw00nB1UJtukMnmj1d18-MHF12J24XzB-fT4xg",
+			"contentType": "default",
+			"src": "This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed.",
+			"rid": "dashlets/rssfeed.get_en.properties",
+			"ts": 1642896537817
+		},
+		{
+			"sid": "link.configure",
+			"guid": "dI6k9BSigj6gEI0usWMTDR1B9zsFO8ws9atTiah-8Y4",
+			"contentType": "default",
+			"src": "Configure",
+			"rid": "dashlets/site-notice.get_en.properties",
+			"ts": 1642896537771
+		}
+	],
+	"jobGuid": "xxx1xxx",
+	"status": "created",
+	"updatedAt": "2022-05-29T00:00:00.000Z"
+}

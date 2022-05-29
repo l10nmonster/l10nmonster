@@ -7,15 +7,15 @@ function underlineString(str) {
     return newStr.join('');
 }
 
-function encodeNumber(base, startingCodepoint, num) {
-    const newStr = [];
-    do {
-        const idx = num % base;
-        newStr.unshift(String.fromCodePoint(startingCodepoint + idx));
-        num = Math.floor(num / base);
-    } while (num > 0);
-    return newStr.join('');
-}
+// function encodeNumber(base, startingCodepoint, num) {
+//     const newStr = [];
+//     do {
+//         const idx = num % base;
+//         newStr.unshift(String.fromCodePoint(startingCodepoint + idx));
+//         num = Math.floor(num / base);
+//     } while (num > 0);
+//     return newStr.join('');
+// }
 
 export class Visicode {
     constructor({ quality } = {}) {
@@ -29,22 +29,19 @@ export class Visicode {
     async requestTranslations(jobRequest) {
         // eslint-disable-next-line no-unused-vars
         const { tus, ...jobResponse } = jobRequest;
-        const jobIdString = encodeNumber(26, 9372, jobRequest.jobId);
-        let tuIdx = 0;
         jobResponse.tus = jobRequest.tus.map(tu => {
             const translation = { guid: tu.guid };
             if (tu.nsrc) {
                 translation.ntgt = [
-                    `\u21e5${jobIdString}${encodeNumber(52, 9398, tuIdx)}`,
+                    `\u21e5`,
                     ...tu.nsrc.map(n => (typeof n === 'string' ? underlineString(n) : n)),
                     `\u21e4`
                 ];
                 translation.contentType = tu.contentType;
             } else {
-                translation.tgt = `\u21e5${jobIdString}${encodeNumber(52, 9398, tuIdx)}${underlineString(tu.src)}\u21e4`;
+                translation.tgt = `\u21e5${underlineString(tu.src)}\u21e4`;
             }
             translation.q = this.quality;
-            tuIdx++;
             return translation;
         });
         jobResponse.status = 'done';
