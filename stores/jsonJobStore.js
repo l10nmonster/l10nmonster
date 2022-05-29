@@ -22,7 +22,7 @@ export class JsonJobStore {
     }
 
     async getJobStatusByLangPair(sourceLang, targetLang) {
-        const files = globbySync(path.join(this.#jobsDirForPair(sourceLang, targetLang), 'job_*.json'));
+        const files = globbySync(path.join(this.jobsBaseDir, '*', `${sourceLang}_${targetLang}_job_*.json`));
         const statusMap = {};
         for (const file of files) {
             const entry = file.match(/job_(?<guid>[^-]+)-(?<status>req|wip|done)\.json$/)?.groups;
@@ -44,7 +44,7 @@ export class JsonJobStore {
 
     async createJobManifest() {
         return {
-            jobGuid: this.ctx.regression ? `xxx${globbySync(path.join(this.jobsBaseDir, '*', 'job_*-req.json')).length}xxx` : nanoid(),
+            jobGuid: this.ctx.regression ? `xxx${globbySync(path.join(this.jobsBaseDir, '*', '*job_*-req.json')).length}xxx` : nanoid(),
             status: 'created',
         };
     }
@@ -53,23 +53,24 @@ export class JsonJobStore {
     async updateJob(jobResponse, jobRequest) {
         const updatedAt = (this.ctx.regression ? new Date('2022-05-29T00:00:00.000Z') : new Date()).toISOString();
         const langPath = this.#jobsDirForPair(jobResponse.sourceLang, jobResponse.targetLang);
-        const jobPath = path.join(langPath, `job_${jobResponse.jobGuid}-${jobResponse.status === 'done' ? 'done' : 'wip'}.json`);
+        const filename = `${jobResponse.sourceLang}_${jobResponse.targetLang}_job_${jobResponse.jobGuid}`;
+        const jobPath = path.join(langPath, `${filename}-${jobResponse.status === 'done' ? 'done' : 'wip'}.json`);
         await writeFileSync(jobPath, JSON.stringify({ ...jobResponse, updatedAt }, null, '\t'), 'utf8');
         if (jobRequest) {
-            const jobPath = path.join(langPath, `job_${jobRequest.jobGuid}-req.json`);
+            const jobPath = path.join(langPath, `${filename}-req.json`);
             await writeFileSync(jobPath, JSON.stringify({ ...jobRequest, updatedAt }, null, '\t'), 'utf8');
         }
     }
 
     async getJob(jobGuid) {
-        const wip = globbySync(path.join(this.jobsBaseDir, '*', `job_${jobGuid}-wip.json`))[0];
-        const done = globbySync(path.join(this.jobsBaseDir, '*', `job_${jobGuid}-done.json`))[0];
+        const wip = globbySync(path.join(this.jobsBaseDir, '*', `*job_${jobGuid}-wip.json`))[0];
+        const done = globbySync(path.join(this.jobsBaseDir, '*', `*job_${jobGuid}-done.json`))[0];
         const job = done ?? wip;
         return job ? JSON.parse(readFileSync(job, 'utf8')) : null;
     }
 
     async getJobRequest(jobGuid) {
-        const req = globbySync(path.join(this.jobsBaseDir, '*', `job_${jobGuid}-req.json`))[0];
+        const req = globbySync(path.join(this.jobsBaseDir, '*', `*job_${jobGuid}-req.json`))[0];
         return req ? JSON.parse(readFileSync(req, 'utf8')) : null;
     }
 }
