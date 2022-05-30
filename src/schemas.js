@@ -5,7 +5,7 @@ const coreTUprops = [
     'sid', // we need sid in the target so that we can qualify repetitions
     'src', // TODO: deprecate src and always populate nsrc, this is only needed for debugging decoder bugs
     'nsrc', // we need this to support repetition leveraging (based on matching the source)
-    'ts', // TODO: do we really need in the source?
+    'ts', // TODO: do we really need it in the source?
     'isSuffixPluralized', // TODO: change this from boolean to `pluralForm` enumeration (so it doesn't have to be a suffix)
 ];
 export const sourceTUWhitelist = [

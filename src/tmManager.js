@@ -39,6 +39,9 @@ class TM {
         //     .join(', ');
         // const spurious = getSpurious(entry, targetTUWhitelist);
         // spurious && console.error(spurious);
+        if (!entry.guid || !Number.isInteger(entry.q) || !entry.sid || !entry.ts || !(typeof entry.tgt === 'string' || entry.ntgt || entry.inflight) || !(typeof entry.src === 'string' || entry.nsrc)) {
+            throw `cannot set TM entry missing mandatory field: ${JSON.stringify(entry)}`;
+        }
         const cleanedTU = cleanupTU(entry, targetTUWhitelist);
         this.tm.tus[guid] = cleanedTU;
         this.dirty = true;

@@ -41,6 +41,7 @@ export class XliffBridge {
             await fs.mkdir(path.dirname(prjPath), {recursive: true});
             await fs.writeFile(prjPath, xliff, 'utf8');
             jobManifest.inflight = Object.values(jobRequest.tus).map(tu => tu.guid);
+            jobManifest.envelope = jobRequest.tus.map(tu => [ tu.guid, { sid: tu.sid, ts: tu.ts } ]);
             jobManifest.status = 'pending';
         } else {
             jobManifest.status = 'error';
@@ -50,6 +51,7 @@ export class XliffBridge {
 
     async fetchTranslations(jobManifest) {
         const completePath = path.join(this.ctx.baseDir, this.completePath(jobManifest.targetLang, jobManifest.jobGuid));
+        const tuMeta = Object.fromEntries(jobManifest.envelope);
         if (existsSync(completePath)) {
             const translatedRes = await fs.readFile(completePath, 'utf8');
             const translations = await xliff12ToJs(translatedRes);
@@ -58,7 +60,10 @@ export class XliffBridge {
             for (const [guid, xt] of Object.entries(translations.resources.XliffBridge)) {
                 if (xt?.target?.length > 0) {
                     tus.push({
-                        guid: guid,
+                        guid,
+                        sid: tuMeta[guid].sid,
+                        ts: tuMeta[guid].ts,
+                        src: xt.source,
                         tgt: xt.target, // TODO: need to deal with ntgt
                         q: this.quality,
                     });

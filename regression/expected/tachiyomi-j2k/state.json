@@ -28,10 +28,10 @@
 						"untranslated": 0,
 						"untranslatedChars": 0,
 						"untranslatedWords": 0,
-						"pending": 77,
-						"pendingWords": 218,
-						"internalRepetitions": 0,
-						"internalRepetitionWords": 0
+						"pending": 0,
+						"pendingWords": 0,
+						"internalRepetitions": 77,
+						"internalRepetitionWords": 218
 					},
 					"piggy": {
 						"translated": 871,
