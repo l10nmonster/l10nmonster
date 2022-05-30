@@ -25,7 +25,7 @@ export class JsonJobStore {
         const files = globbySync(path.join(this.jobsBaseDir, '*', `${sourceLang}_${targetLang}_job_*.json`));
         const statusMap = {};
         for (const file of files) {
-            const entry = file.match(/job_(?<guid>[^-]+)-(?<status>req|wip|done)\.json$/)?.groups;
+            const entry = file.match(/job_(?<guid>[0-9A-Za-z_-]+)-(?<status>req|wip|done)\.json$/)?.groups;
             if (entry) {
                 if (entry.status === 'done') {
                     statusMap[entry.guid] = 'done';

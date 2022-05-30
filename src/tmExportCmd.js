@@ -49,6 +49,7 @@ async function exportAsJob(mm, targetLang, sourceLookup, tmBased) {
         ...jobReq,
         translationProvider: 'TMExport',
         status: 'done',
+        tus: [],
     };
     const guidList = tmBased ? tm.guids : Object.keys(sourceLookup);
     for (const guid of guidList) {
@@ -66,7 +67,9 @@ async function exportAsJob(mm, targetLang, sourceLookup, tmBased) {
         if (useAsTargetTU.inflight) {
             mm.verbose && console.error(`Warning: in-flight translation unit ${guid} can't be exported`);
         } else {
-            jobRes.tus.push(cleanupTU(useAsTargetTU, targetTUWhitelist));
+            const cleanTU = cleanupTU(useAsTargetTU, targetTUWhitelist);
+            cleanTU.ts = cleanTU.ts || new Date().getTime();
+            jobRes.tus.push(cleanTU);
         }
     }
     return [ jobReq, jobRes ];
