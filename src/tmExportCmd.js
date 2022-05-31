@@ -76,16 +76,10 @@ async function exportAsJob(mm, targetLang, sourceLookup, tmBased) {
 }
 
 export async function tmExportCmd(mm, { limitToLang, mode, format }) {
-    await mm.updateSourceCache();
+    const sourceLookup = await mm.getSourceAsTus();
     const targetLangs = mm.getTargetLangs(limitToLang);
     const status = { files: [] };
     for (const targetLang of targetLangs) {
-        const sourceLookup = {};
-        for (const res of Object.values(mm.sourceCache)) {
-            for (const seg of res.segments) {
-                sourceLookup[seg.guid] = mm.makeTU(res, seg);
-            }
-        }
         let filename;
         if (format === 'job') {
             const [ jobReq, jobRes ] = await exportAsJob(mm, targetLang, sourceLookup, mode === 'tm');

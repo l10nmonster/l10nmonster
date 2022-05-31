@@ -1,9 +1,12 @@
-export async function pushCmd(mm, { limitToLang, leverage, dryRun, translationProviderName }) {
+export async function pushCmd(mm, { limitToLang, bugfix, bugfixmode, translationProviderName, leverage, dryRun }) {
+    if (bugfix && !mm.bugfixFilters[bugfix]) {
+        throw `Couldn't find ${bugfix} bugfix filter`;
+    }
     const status = [];
     await mm.updateSourceCache();
     const targetLangs = mm.getTargetLangs(limitToLang);
     for (const targetLang of targetLangs) {
-        const jobBody = await mm.prepareTranslationJob({ targetLang, leverage });
+        const jobBody = await (bugfix ? mm.prepareBugfixJob({ targetLang, bugfix, tmBased: bugfixmode === 'tm' }) : mm.prepareTranslationJob({ targetLang, leverage }));
         const langStatus = { sourceLang: jobBody.sourceLang, targetLang };
         if (Object.keys(jobBody.tus).length > 0) {
             if (dryRun) {
@@ -40,7 +43,7 @@ export async function pushCmd(mm, { limitToLang, leverage, dryRun, translationPr
                         langStatus.num = jobBody.tus.length;
                     }
                 } else {
-                    throw 'No translationProvider configured';
+                    throw `No ${translationProviderName} translationProvider configured`;
                 }
             }
             status.push(langStatus);

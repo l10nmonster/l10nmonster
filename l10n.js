@@ -38,7 +38,7 @@ import { IosStringsFilter } from './filters/ios.js';
 import { JsonFilter } from './filters/json.js';
 import { XliffBridge } from './translators/xliff.js';
 import { PigLatinizer } from './translators/piglatinizer.js';
-import { TranslationOS } from './translators/translationOS.js';
+import { TranslationOS, TOSRefresh } from './translators/translationOS.js';
 import { Visicode } from './translators/visicode.js';
 import { ModernMT } from './translators/modernMT.js';
 import { DeepL } from './translators/deepL.js';
@@ -86,7 +86,7 @@ async function initMonster() {
                 ...regexNormalizers,
             },
             translators: {
-                XliffBridge, PigLatinizer, TranslationOS, Visicode, ModernMT, DeepL
+                XliffBridge, PigLatinizer, TranslationOS, TOSRefresh, Visicode, ModernMT, DeepL
             },
         };
         for (const helperCategory of Object.values(helpers)) {
@@ -269,17 +269,24 @@ monsterCLI
     .command('push')
     .description('push source content upstream (send to translation).')
     .option('-l, --lang <language>', 'target language to push')
+    .option('--bugfix <process>', 'use the specified bugfix process')
+    .option('--bugfixmode <source|tm>', 'filter all sources or tm entries when evaluating bugfix candidates')
     .option('--provider <name>', 'use the specified translation provider')
     .option('--leverage', 'eliminate internal repetitions from push')
     .option('-d, --dryrun', 'simulate translating and compare with existing translations')
     .action(async (options) => await withMonsterManager(async monsterManager => {
         const limitToLang = options.lang;
+        const bugfix = options.bugfix;
+        let bugfixmode = options.bugfixmode ?? 'tm';
+        if (bugfix && ![ 'source', 'tm' ].includes(bugfixmode)) {
+            throw `invalid ${bugfixmode} bugfix mode`;
+        }
         const translationProviderName = options.provider;
         const leverage = options.leverage;
         const dryRun = options.dryrun;
         console.log(`Pushing content upstream...${dryRun ? ' (dry run)' : ''}`);
         try {
-            const status = await pushCmd(monsterManager, { limitToLang, leverage, dryRun, translationProviderName });
+            const status = await pushCmd(monsterManager, { limitToLang, bugfix, bugfixmode, translationProviderName, leverage, dryRun });
             if (dryRun) {
                 for (const langStatus of status) {
                     console.log(`\nLanguage pair ${langStatus.sourceLang} -> ${langStatus.targetLang}`);

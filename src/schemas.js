@@ -23,4 +23,5 @@ export const targetTUWhitelist = [
     'ntgt',
     'cost',
     'jobGuid',
+    'th', // this is used by TOS for a translation hash to detect bug fixes vendor-side
 ];

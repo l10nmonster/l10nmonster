@@ -56,6 +56,7 @@ export default class MonsterManager {
                     translator: monsterConfig.translationProvider,
                 };
             }
+            this.bugfixFilters = monsterConfig.bugfixFilters;
             this.sourceCachePath = path.join(monsterDir, 'sourceCache.json');
             this.sourceCache = existsSync(this.sourceCachePath) ?
                 JSON.parse(readFileSync(this.sourceCachePath, 'utf8')) :
@@ -139,10 +140,25 @@ export default class MonsterManager {
             .filter(([rid, res]) => (this.ctx.prj === undefined || this.ctx.prj.includes(res.prj)));
     }
 
+    async getSourceAsTus() {
+        const sourceLookup = {};
+        await this.updateSourceCache();
+        // eslint-disable-next-line no-unused-vars
+        for (const [ rid, res ] of this.getSourceCacheEntries()) {
+            for (const seg of res.segments) {
+                sourceLookup[seg.guid] = this.makeTU(res, seg);
+            }
+        }
+        return sourceLookup;
+    }
+
     async processJob(jobResponse, jobRequest) {
-        await this.jobStore.updateJob(jobResponse, jobRequest);
-        const tm = await this.tmm.getTM(jobResponse.sourceLang, jobResponse.targetLang);
-        await tm.processJob(jobResponse, jobRequest);
+        // created status usually indicates failure, so we ignore those as well as empty jobs
+        if (jobResponse.status !== 'created' && jobResponse.tus.length > 0) {
+            await this.jobStore.updateJob(jobResponse, jobRequest);
+            const tm = await this.tmm.getTM(jobResponse.sourceLang, jobResponse.targetLang);
+            await tm.processJob(jobResponse, jobRequest);
+        }
     }
 
     makeTU(res, segment) {
@@ -239,6 +255,22 @@ export default class MonsterManager {
 
     async estimateTranslationJob({ targetLang }) {
         return (await this.#internalPrepareTranslationJob({ targetLang }))[1];
+    }
+
+    async prepareBugfixJob({ targetLang, bugfix, tmBased }) {
+        const tm = await this.tmm.getTM(this.sourceLang, targetLang);
+        const sourceLookup = await this.getSourceAsTus();
+        const guidList = tmBased ? tm.guids : Object.keys(sourceLookup);
+        const tus = guidList.map(guid => {
+            const sourceTU = sourceLookup[guid] ?? {};
+            const translatedTU = tm.getEntryByGuid(guid) ?? {};
+            return { ...sourceTU, ...translatedTU }; // this is a superset of source and target properties so that filters have more to work with
+        }).filter(tu => this.bugfixFilters[bugfix](tu));
+        return {
+            sourceLang: this.sourceLang,
+            targetLang,
+            tus,
+        };
     }
 
     getTranslationProvider(jobManifest) {

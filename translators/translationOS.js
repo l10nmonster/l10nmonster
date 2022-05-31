@@ -1,6 +1,64 @@
+/* eslint-disable camelcase */
 import got from 'got';
 
 import { flattenNormalizedSourceV1, extractNormalizedPartsV1 } from '../normalizers/util.js';
+
+function getTUMaps(tus) {
+    const contentMap = {};
+    const tuMeta = {};
+    const phNotes = {};
+    for (const tu of tus) {
+        const guid = tu.guid;
+        if (tu.nsrc) {
+            const [normalizedStr, phMap ] = flattenNormalizedSourceV1(tu.nsrc);
+            contentMap[guid] = normalizedStr;
+            if (Object.keys(phMap).length > 0) {
+                tuMeta[guid] = { contentType: tu.contentType, phMap, nsrc: tu.nsrc };
+                phNotes[guid] = Object.entries(phMap)
+                    .reduce((p, c) => `${p} ${c[0]}=${c[1].v}`, '\n ph:')
+                    .replaceAll('<', 'ᐸ')
+                    .replaceAll('>', 'ᐳ'); // hack until they stop stripping html
+            }
+            if (tu.ntgt) {
+                // eslint-disable-next-line no-unused-vars
+                const [normalizedStr, phMap ] = flattenNormalizedSourceV1(tu.ntgt);
+                phNotes[guid] += `\n current translation: ${normalizedStr}`;
+            }
+        } else {
+            contentMap[guid] = tu.src;
+            tuMeta[guid] = { src: tu.src };
+            if (tu.tgt) {
+                phNotes[guid] = `\n current translation: ${tu.tgt}`;
+            }
+        }
+    }
+    return [ contentMap, tuMeta, phNotes ];
+}
+
+function createTUFromTOSTranslation({ tosUnit, content, tuMeta, quality, verbose }) {
+    const guid = tosUnit.id_content;
+    !content && (content = tosUnit.translated_content);
+    const tu = {
+        guid,
+        ts: new Date().getTime(), // actual_delivery_date is garbage as it doesn't change after a bugfix, so it's better to use the retrieval time
+        q: quality,
+        cost: [ tosUnit.total, tosUnit.currency, tosUnit.wc_raw, tosUnit.wc_weighted ],
+        th: tosUnit.translated_content_hash, // this is vendor-specific but it's ok to generalize
+    };
+    if (tuMeta[guid]) {
+        tuMeta[guid].src && (tu.src = tuMeta[guid].src);
+        tuMeta[guid].nsrc && (tu.nsrc = tuMeta[guid].nsrc);
+        tu.contentType = tuMeta[guid].contentType;
+        tu.ntgt = extractNormalizedPartsV1(content, tuMeta[guid].phMap);
+        if (tu.ntgt.filter(e => e === undefined).length > 0) {
+            verbose && console.error(`Unable to extract normalized parts of TU: ${JSON.stringify(tu)}`);
+            return null;
+        }
+    } else {
+        tu.tgt = content;
+    }
+    return tu;
+}
 
 // TODO: externalize this ase general-purpose Op
 async function gotPostOp(request) {
@@ -59,30 +117,15 @@ export class TranslationOS {
 
     async requestTranslations(jobRequest) {
         const { tus, ...jobManifest } = jobRequest;
-        const tuMeta = {};
+        const [ contentMap, tuMeta, phNotes ] = getTUMaps(tus);
         const tosPayload = tus.map(tu => {
-            let phNotes = null;
-            let content = tu.src;
-            if (tu.nsrc) {
-                const [normalizedStr, phMap ] = flattenNormalizedSourceV1(tu.nsrc);
-                content = normalizedStr;
-                if (Object.keys(phMap).length > 0) {
-                    tuMeta[tu.guid] = { contentType: tu.contentType, phMap, nsrc: tu.nsrc };
-                    phNotes = Object.entries(phMap)
-                        .reduce((p, c) => `${p} ${c[0]}=${c[1].v}`, '\n ph:')
-                        .replaceAll('<', 'ᐸ')
-                        .replaceAll('>', 'ᐳ'); // hack until they stop stripping html
-                }
-            } else {
-                tuMeta[tu.guid] = { src: tu.src };
-            }
             let tosTU = {
                 'id_order': jobRequest.jobGuid,
                 'id_content': tu.guid,
-                content,
+                content: contentMap[tu.guid],
                 metadata: 'mf=v1',
                 context: {
-                    notes: `${tu.notes ?? ''}${phNotes ?? ''}\n rid: ${tu.rid}\n sid: ${tu.sid}\n guid: ${tu.guid}`
+                    notes: `${tu.notes ?? ''}${phNotes[tu.guid] ?? ''}\n rid: ${tu.rid}\n sid: ${tu.sid}\n guid: ${tu.guid}`
                 },
                 'source_language': jobRequest.sourceLang,
                 'target_languages': [ jobRequest.targetLang ],
@@ -167,31 +210,15 @@ export class TranslationOS {
                 console.error(error?.response?.body || error);
                 throw "TOS call failed!";
             }
-            for (const translation of response) {
-                if (translation.translated_content === null || ![ 'delivered', 'invoiced' ].includes(translation.status) || translation.translated_content.indexOf('|||UNTRANSLATED_CONTENT_START|||') >= 0) {
-                    this.ctx.verbose && console.log(`id_order: ${translation.id_order} id_content: ${translation.id} status: ${translation.status} translated_content: ${translation.translated_content}`);
+            for (const tosUnit of response) {
+                if (tosUnit.translated_content === null || ![ 'delivered', 'invoiced' ].includes(tosUnit.status) || tosUnit.translated_content.indexOf('|||UNTRANSLATED_CONTENT_START|||') >= 0) {
+                    this.ctx.verbose && console.log(`id_order: ${tosUnit.id_order} id_content: ${tosUnit.id} status: ${tosUnit.status} translated_content: ${tosUnit.translated_content}`);
                 } else {
-                    const guid = translation.id_content;
+                    const guid = tosUnit.id_content;
                     if (jobManifest.inflight.includes(guid)) {
                         tusMap[guid] && console.error(`Duplicate translations found for guid: ${guid}`);
-                        tusMap[guid] = {
-                            guid,
-                            ts: new Date(translation.actual_delivery_date).getTime(),
-                            q: this.quality,
-                            cost: [ translation.total, translation.currency, translation.wc_raw, translation.wc_weighted ],
-                        };
-                        if (tuMeta[guid]) {
-                            tuMeta[guid].src && (tusMap[guid].src = tuMeta[guid].src);
-                            tuMeta[guid].nsrc && (tusMap[guid].nsrc = tuMeta[guid].nsrc);
-                            tusMap[guid].contentType = tuMeta[guid].contentType;
-                            tusMap[guid].ntgt = extractNormalizedPartsV1(translation.translated_content, tuMeta[guid].phMap);
-                            if (tusMap[guid].ntgt.filter(e => e === undefined).length > 0) {
-                                this.verbose && console.error(`Unable to extract normalized parts of TU: ${JSON.stringify(tusMap[guid])}`);
-                                delete tusMap[guid];
-                            }
-                        } else {
-                            tusMap[guid].tgt = translation.translated_content;
-                        }
+                        tusMap[guid] = createTUFromTOSTranslation({ tosUnit, tuMeta, quality: this.quality, verbose: this.verbose });
+                        !tusMap[guid] && delete tusMap[guid];
                     } else {
                         console.error(`Found unexpected guid: ${guid}`);
                     }
@@ -219,5 +246,73 @@ export class TranslationOS {
             return newManifest;
         }
         return null;
+    }
+}
+
+const MAX_TOS_REFRESH_CHUNK_SIZE = 1000;
+
+export class TOSRefresh {
+    constructor({ baseURL, apiKey, quality }) {
+        if ((apiKey && quality) === undefined) {
+            throw 'You must specify apiKey, quality for TOSRefresh';
+        } else {
+            this.baseURL = baseURL ?? 'https://api.translated.com/v2';
+            this.stdHeaders = {
+                'x-api-key': apiKey,
+                'user-agent': 'l10n.monster/TOSRefresh v0.1',
+            }
+            this.quality = quality;
+        }
+    }
+
+    async requestTranslations(jobRequest) {
+        const { tus, ...newManifest } = jobRequest;
+        const tuMap = tus.reduce((p,c) => (p[c.guid] = c, p), {});
+        const guidsToRefresh = tus.filter(tu => tu.src ?? tu.nsrc).map(tu => tu.guid);
+        // eslint-disable-next-line no-unused-vars
+        const [ contentMap, tuMeta, phNotes ] = getTUMaps(tus);
+        let chunkNumber = 0;
+        const refreshedTus = [];
+        try {
+            while (guidsToRefresh.length > 0) {
+                const guids = guidsToRefresh.splice(0, MAX_TOS_REFRESH_CHUNK_SIZE);
+                chunkNumber++;
+                this.ctx.verbose && console.log(`Refreshing TOS chunk ${chunkNumber}...`);
+                const latestContent = await got.post({
+                    url: `${this.baseURL}/status`,
+                    json: {
+                        id_content: guids,
+                        target_language: jobRequest.targetLang,
+                        last_delivered_only: true,
+                        status: ['delivered', 'invoiced'],
+                        fetch_content: false,
+                        limit: MAX_TOS_REFRESH_CHUNK_SIZE,
+                    },
+                    headers: this.stdHeaders,
+                    timeout: {
+                        request: 60000,
+                    },
+                }).json();
+                for (const tosUnit of latestContent) {
+                    const tu = tuMap[tosUnit.id_content];
+                    if (tu.th !== tosUnit.translated_content_hash) {
+                        this.ctx.verbose && console.log(`Fetching content id ${tosUnit.id}...`);
+                        const content = await got(tosUnit.translated_content_url).text();
+                        const newTU = createTUFromTOSTranslation({ tosUnit, content, tuMeta, quality: this.quality, verbose: this.verbose });
+                        delete newTU.cost;
+                        refreshedTus.push(newTU);
+                    }
+                }
+            }
+        } catch(e) {
+            throw e.toString();
+        }
+        newManifest.tus = refreshedTus;
+        newManifest.status = 'done';
+        return newManifest;
+    }
+
+    async fetchTranslations() {
+        throw 'TOSRefresh is a synchronous-only provider';
     }
 }
