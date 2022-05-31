@@ -269,24 +269,29 @@ monsterCLI
     .command('push')
     .description('push source content upstream (send to translation).')
     .option('-l, --lang <language>', 'target language to push')
-    .option('--bugfix <process>', 'use the specified bugfix process')
-    .option('--bugfixmode <source|tm>', 'filter all sources or tm entries when evaluating bugfix candidates')
+    .option('--bugfixfilter <filter>', 'use the specified bugfix filter')
+    .option('--bugfixdriver <source|tm|job:jobGuid>', 'drive the bugfix filter from the desired source')
     .option('--provider <name>', 'use the specified translation provider')
     .option('--leverage', 'eliminate internal repetitions from push')
     .option('-d, --dryrun', 'simulate translating and compare with existing translations')
     .action(async (options) => await withMonsterManager(async monsterManager => {
         const limitToLang = options.lang;
-        const bugfix = options.bugfix;
-        let bugfixmode = options.bugfixmode ?? 'tm';
-        if (bugfix && ![ 'source', 'tm' ].includes(bugfixmode)) {
-            throw `invalid ${bugfixmode} bugfix mode`;
+        let bugfixFilter, bugfixDriver, bugfixJobGuid;
+        if (options.bugfixfilter || options.bugfixdriver) {
+            bugfixFilter = options.bugfixfilter;
+            bugfixDriver = options.bugfixdriver ?? 'tm';
+            if (bugfixDriver.indexOf('job:') === 0) {
+                bugfixJobGuid = bugfixDriver.split(':')[1];
+            } else if (![ 'source', 'tm' ].includes(bugfixDriver)) {
+                throw `invalid ${bugfixDriver} bugfix driver`;
+            }
         }
         const translationProviderName = options.provider;
         const leverage = options.leverage;
         const dryRun = options.dryrun;
         console.log(`Pushing content upstream...${dryRun ? ' (dry run)' : ''}`);
         try {
-            const status = await pushCmd(monsterManager, { limitToLang, bugfix, bugfixmode, translationProviderName, leverage, dryRun });
+            const status = await pushCmd(monsterManager, { limitToLang, bugfixFilter, bugfixDriver, bugfixJobGuid, translationProviderName, leverage, dryRun });
             if (dryRun) {
                 for (const langStatus of status) {
                     console.log(`\nLanguage pair ${langStatus.sourceLang} -> ${langStatus.targetLang}`);

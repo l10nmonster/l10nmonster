@@ -26,9 +26,13 @@ export default class CardboardConfig {
             TOSRefresh: {
                 translator: new translators.TOSRefresh(defaultTOSConfig),
             },
+            TOSBugfix: {
+                translator: new translators.TranslationOS({ ...defaultTOSConfig, requestOnly: true }),
+                pairs: { 'en': [ 'ar', 'it', 'ja' ] },
+            },
         };
         this.bugfixFilters = {
-            all: () => true,
+            initial: tu => tu.sid.indexOf(ctx.arg) === 0,
         };
         // this.translationProvider = new translators.ModernMT({
         //     apiKey: ctx.env.mmt_api_key,

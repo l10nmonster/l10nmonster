@@ -1,12 +1,20 @@
-export async function pushCmd(mm, { limitToLang, bugfix, bugfixmode, translationProviderName, leverage, dryRun }) {
-    if (bugfix && !mm.bugfixFilters[bugfix]) {
-        throw `Couldn't find ${bugfix} bugfix filter`;
+export async function pushCmd(mm, { limitToLang, bugfixFilter, bugfixDriver, bugfixJobGuid, translationProviderName, leverage, dryRun }) {
+    if (bugfixFilter && !mm.bugfixFilters[bugfixFilter]) {
+        throw `Couldn't find ${bugfixFilter} bugfix filter`;
+    }
+    let guidList;
+    if (bugfixJobGuid) {
+        const req = await mm.jobStore.getJobRequest(bugfixJobGuid);
+        if (!req) {
+            throw `jobGuid ${bugfixJobGuid} not found`;
+        }
+        guidList = req.tus.map(tu => tu.guid);
     }
     const status = [];
     await mm.updateSourceCache();
     const targetLangs = mm.getTargetLangs(limitToLang);
     for (const targetLang of targetLangs) {
-        const jobBody = await (bugfix ? mm.prepareBugfixJob({ targetLang, bugfix, tmBased: bugfixmode === 'tm' }) : mm.prepareTranslationJob({ targetLang, leverage }));
+        const jobBody = await (bugfixDriver ? mm.prepareBugfixJob({ targetLang, filter: bugfixFilter, tmBased: bugfixDriver === 'tm', guidList }) : mm.prepareTranslationJob({ targetLang, leverage }));
         const langStatus = { sourceLang: jobBody.sourceLang, targetLang };
         if (Object.keys(jobBody.tus).length > 0) {
             if (dryRun) {

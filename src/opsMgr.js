@@ -154,12 +154,16 @@ export class OpsMgr {
     registerOp(func, options = {}) {
         options.opName ??= func.name;
         if (this.registry[options.opName]) {
-            throw `Op ${options.opName} already exists in registry`;
+            if (this.registry[options.opName].callback !== func) {
+                throw `Op ${options.opName} already exists in registry`;
+            }
+            // if multiple instances of the same class try to register ops, ignore them
+        } else {
+            options.callback = func;
+            options.idempotent ??= false;
+            options.bind ??= null;
+            this.registry[options.opName] = options;
         }
-        options.callback = func;
-        options.idempotent ??= false;
-        options.bind ??= null;
-        this.registry[options.opName] = options;
     }
 
     createTask() {

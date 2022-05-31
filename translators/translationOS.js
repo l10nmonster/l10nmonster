@@ -95,7 +95,7 @@ async function tosRequestTranslationsOp({ jobManifest }, committedGuids) {
 }
 
 export class TranslationOS {
-    constructor({ baseURL, apiKey, serviceType, quality, tuDecorator, trafficStore, chunkSize }) {
+    constructor({ baseURL, apiKey, serviceType, quality, tuDecorator, trafficStore, chunkSize, requestOnly }) {
         if ((apiKey && quality) === undefined) {
             throw 'You must specify apiKey, quality for TranslationOS';
         } else {
@@ -109,6 +109,7 @@ export class TranslationOS {
             this.tuDecorator = tuDecorator;
             this.trafficStore = trafficStore;
             this.chunkSize = chunkSize || 100;
+            this.requestOnly = requestOnly;
             this.ctx.opsMgr.registerOp(gotPostOp, { idempotent: false });
             this.ctx.opsMgr.registerOp(tosProcessRequestTranslationResponseOp, { idempotent: true });
             this.ctx.opsMgr.registerOp(tosRequestTranslationsOp, { idempotent: true });
@@ -173,7 +174,9 @@ export class TranslationOS {
                 chunkOps.push(await requestTranslationsTask.enqueue(tosProcessRequestTranslationResponseOp, { submittedGuids }, [ gotOp ]));
             }
             const rootOp = await requestTranslationsTask.enqueue(tosRequestTranslationsOp, { jobManifest }, chunkOps);
-            return await requestTranslationsTask.execute(rootOp);
+            const jobResponse = await requestTranslationsTask.execute(rootOp);
+            this.requestOnly && (jobResponse.status = 'done');
+            return jobResponse;
         } catch (error) {
             throw `TOS call failed - ${error}`;
         }
@@ -277,7 +280,7 @@ export class TOSRefresh {
             while (guidsToRefresh.length > 0) {
                 const guids = guidsToRefresh.splice(0, MAX_TOS_REFRESH_CHUNK_SIZE);
                 chunkNumber++;
-                this.ctx.verbose && console.log(`Refreshing TOS chunk ${chunkNumber}...`);
+                this.ctx.verbose && console.log(`Refreshing TOS chunk ${chunkNumber} (${guids.length} units)...`);
                 const latestContent = await got.post({
                     url: `${this.baseURL}/status`,
                     json: {

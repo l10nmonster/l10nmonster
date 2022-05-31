@@ -158,6 +158,8 @@ export default class MonsterManager {
             await this.jobStore.updateJob(jobResponse, jobRequest);
             const tm = await this.tmm.getTM(jobResponse.sourceLang, jobResponse.targetLang);
             await tm.processJob(jobResponse, jobRequest);
+        } else {
+            jobResponse.status = 'cancelled';
         }
     }
 
@@ -257,15 +259,16 @@ export default class MonsterManager {
         return (await this.#internalPrepareTranslationJob({ targetLang }))[1];
     }
 
-    async prepareBugfixJob({ targetLang, bugfix, tmBased }) {
+    async prepareBugfixJob({ targetLang, filter, tmBased, guidList }) {
         const tm = await this.tmm.getTM(this.sourceLang, targetLang);
         const sourceLookup = await this.getSourceAsTus();
-        const guidList = tmBased ? tm.guids : Object.keys(sourceLookup);
-        const tus = guidList.map(guid => {
+        !guidList && (guidList = tmBased ? tm.guids : Object.keys(sourceLookup));
+        let tus = guidList.map(guid => {
             const sourceTU = sourceLookup[guid] ?? {};
             const translatedTU = tm.getEntryByGuid(guid) ?? {};
             return { ...sourceTU, ...translatedTU }; // this is a superset of source and target properties so that filters have more to work with
-        }).filter(tu => this.bugfixFilters[bugfix](tu));
+        });
+        filter && (tus = tus.filter(tu => this.bugfixFilters[filter](tu)));
         return {
             sourceLang: this.sourceLang,
             targetLang,
