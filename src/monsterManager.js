@@ -154,7 +154,7 @@ export default class MonsterManager {
 
     async processJob(jobResponse, jobRequest) {
         // created status usually indicates failure, so we ignore those as well as empty jobs
-        if (jobResponse.status !== 'created' && jobResponse.tus.length > 0) {
+        if (jobResponse.status !== 'created' && (jobResponse.tus?.length > 0 || jobResponse.inflight?.length > 0)) {
             await this.jobStore.updateJob(jobResponse, jobRequest);
             const tm = await this.tmm.getTM(jobResponse.sourceLang, jobResponse.targetLang);
             await tm.processJob(jobResponse, jobRequest);
