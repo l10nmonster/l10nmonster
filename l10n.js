@@ -301,7 +301,7 @@ monsterCLI
                 if (status.length > 0) {
                     for (const ls of status) {
                         if (ls.minimumJobSize !== undefined) {
-                            console.log(`${ls.num.toLocaleString()} translations units for language ${ls.targetLang} not sent because minimum ${ls.minimumJobSize} size was not reached`);
+                            console.log(`${ls.num.toLocaleString()} translations units for language ${ls.targetLang} not sent because you need at least ${ls.minimumJobSize}`);
                         } else {
                             console.log(`${ls.num.toLocaleString()} translations units requested for language ${ls.targetLang} on job ${ls.jobGuid} -> status: ${ls.status}`);
                         }

@@ -44,7 +44,7 @@ export class XliffBridge {
             jobManifest.envelope = jobRequest.tus.map(tu => [ tu.guid, { sid: tu.sid, ts: tu.ts } ]);
             jobManifest.status = 'pending';
         } else {
-            jobManifest.status = 'error';
+            jobManifest.status = 'blocked';
         }
         return jobManifest;
     }

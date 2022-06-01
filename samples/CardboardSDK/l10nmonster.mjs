@@ -29,19 +29,25 @@ export default class CardboardConfig {
             TOSLQA: { // fake sample of a "push and forget" configuration
                 translator: new translators.TranslationOS({ ...defaultTOSConfig, serviceType: 'bugfix', requestOnly: true }),
             },
+            ModernMT: {
+                translator: new translators.ModernMT({
+                    apiKey: ctx.env.mmt_api_key,
+                    quality: 40,
+                    maxCharLength: 100,
+                }),
+                quota: 0,
+            },
+            DeepL: {
+                translator: new translators.DeepL({
+                    apiKey: ctx.env.deepl_api_key,
+                    quality: 40,
+                }),
+                quota: 0,
+            },
         };
         this.bugfixFilters = {
             initial: tu => tu.sid.indexOf(ctx.arg) === 0,
         };
-        // this.translationProvider = new translators.ModernMT({
-        //     apiKey: ctx.env.mmt_api_key,
-        //     quality: 40,
-        //     maxCharLength: 100,
-        // });
-        // this.translationProvider = new translators.DeepL({
-        //     apiKey: ctx.env.deepl_api_key,
-        //     quality: 40,
-        // });
         this.target = new adapters.FsTarget({
             targetPath: (lang, resourceId) => resourceId.replace('en.lproj/', `${lang}.lproj/`),
         });

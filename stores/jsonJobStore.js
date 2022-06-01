@@ -37,11 +37,6 @@ export class JsonJobStore {
         return Object.entries(statusMap);
     }
 
-    async getWIPJobs(sourceLang, targetLang) {
-        const jobStatus = await this.getJobStatusByLangPair(sourceLang, targetLang);
-        return jobStatus.filter(e => e[1] === 'wip').map(e => e[0]);
-    }
-
     async createJobManifest() {
         return {
             jobGuid: this.ctx.regression ? `xxx${globbySync(path.join(this.jobsBaseDir, '*', '*job_*-req.json')).length}xxx` : nanoid(),
@@ -49,16 +44,16 @@ export class JsonJobStore {
         };
     }
 
-    // TODO: convert this to a create-only method (check if it exists, then throw)
-    async updateJob(jobResponse, jobRequest) {
-        const updatedAt = (this.ctx.regression ? new Date('2022-05-29T00:00:00.000Z') : new Date()).toISOString();
-        const langPath = this.#jobsDirForPair(jobResponse.sourceLang, jobResponse.targetLang);
-        const filename = `${jobResponse.translationProvider}_${jobResponse.sourceLang}_${jobResponse.targetLang}_job_${jobResponse.jobGuid}`;
-        const jobPath = path.join(langPath, `${filename}-${jobResponse.status === 'done' ? 'done' : 'wip'}.json`);
-        await writeFileSync(jobPath, JSON.stringify({ ...jobResponse, updatedAt }, null, '\t'), 'utf8');
-        if (jobRequest) {
-            const jobPath = path.join(langPath, `${filename}-req.json`);
-            await writeFileSync(jobPath, JSON.stringify({ ...jobRequest, updatedAt }, null, '\t'), 'utf8');
+    async writeJob(job) {
+        // eslint-disable-next-line no-nested-ternary
+        const state = job.status === 'done' ? 'done' : (job.status === 'pending' ? 'wip' : 'req');
+        const filename = `${job.translationProvider}_${job.sourceLang}_${job.targetLang}_job_${job.jobGuid}-${state}.json`;
+        const jobPath = path.join(this.#jobsDirForPair(job.sourceLang, job.targetLang), filename);
+        if (existsSync(jobPath)) {
+            throw `can't overwrite immutable job ${jobPath}`;
+        } else {
+            const updatedAt = (this.ctx.regression ? new Date('2022-05-29T00:00:00.000Z') : new Date()).toISOString();
+            writeFileSync(jobPath, JSON.stringify({ ...job, updatedAt }, null, '\t'), 'utf8');
         }
     }
 

@@ -152,14 +152,24 @@ export default class MonsterManager {
         return sourceLookup;
     }
 
+    // use cases:
+    //   1 - both are passed as both are created at the same time -> may cancel if response is empty
+    //   2 - only jobRequest is passed because it's blocked -> write if "blocked", cancel if "created"
+    //   3 - only jobResponse is passed because it's pulled -> must write even if empty or it will show as blocked/pending
     async processJob(jobResponse, jobRequest) {
-        // created status usually indicates failure, so we ignore those as well as empty jobs
-        if (jobResponse.status !== 'created' && (jobResponse.tus?.length > 0 || jobResponse.inflight?.length > 0)) {
-            await this.jobStore.updateJob(jobResponse, jobRequest);
+        if (jobRequest && jobResponse && !(jobResponse.tus?.length > 0 || jobResponse.inflight?.length > 0)) {
+            jobResponse.status = 'cancelled';
+            return;
+        }
+        if (jobRequest && !jobResponse && jobRequest.status === 'created') {
+            jobRequest.status = 'cancelled';
+            return;
+        }
+        jobRequest && await this.jobStore.writeJob(jobRequest);
+        if (jobResponse) {
+            await this.jobStore.writeJob(jobResponse);
             const tm = await this.tmm.getTM(jobResponse.sourceLang, jobResponse.targetLang);
             await tm.processJob(jobResponse, jobRequest);
-        } else {
-            jobResponse.status = 'cancelled';
         }
     }
 

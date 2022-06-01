@@ -1,5 +1,5 @@
 export async function jobPushCmd(mm, pushJobGuid) {
-    const blockedRequest = await mm.jobStore.getJob(pushJobGuid);
+    const blockedRequest = await mm.jobStore.getJobRequest(pushJobGuid);
     if (blockedRequest.status === 'blocked') {
         const translationProvider = mm.getTranslationProvider(blockedRequest);
         if (translationProvider) {
@@ -11,7 +11,7 @@ export async function jobPushCmd(mm, pushJobGuid) {
                 num: jobResponse.num,
             };
         } else {
-            throw 'No translationProvider configured';
+            throw 'No corresponding translationProvider configured';
         }
     } else {
         throw `Only blocked jobs can be submitted (current status is ${blockedRequest.status})`;

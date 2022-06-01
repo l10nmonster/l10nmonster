@@ -35,17 +35,13 @@ export async function pushCmd(mm, { limitToLang, bugfixFilter, bugfixDriver, bug
                         let jobResponse;
                         if (jobBody.tus.length <= quota) {
                             jobResponse = await translationProvider.translator.requestTranslations(jobRequest);
+                            jobResponse.num = jobResponse.tus?.length ?? jobResponse.inflight?.length ?? 0;
                         } else {
-                            jobResponse = {
-                                ...jobRequest,
-                                status: 'blocked',
-                                inflight: Object.values(jobRequest.tus).map(tu => tu.guid),
-                            };
+                            jobRequest.status = 'blocked';
                         }
-                        jobResponse.num = jobResponse.tus?.length ?? jobResponse.inflight?.length ?? 0;
                         await mm.processJob(jobResponse, jobRequest);
-                        langStatus.status = jobResponse.status;
-                        langStatus.num = jobResponse.num;
+                        langStatus.status = jobResponse?.status ?? jobRequest.status;
+                        langStatus.num = jobResponse?.num ?? jobRequest.tus.length;
                     } else {
                         langStatus.minimumJobSize = minimumJobSize;
                         langStatus.num = jobBody.tus.length;
