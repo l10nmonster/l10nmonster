@@ -25,11 +25,11 @@ export class JsonJobStore {
         const files = globbySync(path.join(this.jobsBaseDir, '*', `*${sourceLang}_${targetLang}_job_*.json`));
         const statusMap = {};
         for (const file of files) {
-            const entry = file.match(/job_(?<guid>[0-9A-Za-z_-]+)-(?<status>req|wip|done)\.json$/)?.groups;
+            const entry = file.match(/job_(?<guid>[0-9A-Za-z_-]+)-(?<status>req|pending|done)\.json$/)?.groups;
             if (entry) {
                 if (entry.status === 'done') {
                     statusMap[entry.guid] = 'done';
-                } else if (![ 'wip', 'done' ].includes(statusMap[entry.guid])) {
+                } else if (![ 'pending', 'done' ].includes(statusMap[entry.guid])) {
                     statusMap[entry.guid] = entry.status;
                 }
             }
@@ -46,7 +46,7 @@ export class JsonJobStore {
 
     async writeJob(job) {
         // eslint-disable-next-line no-nested-ternary
-        const state = job.status === 'done' ? 'done' : (job.status === 'pending' ? 'wip' : 'req');
+        const state = [ 'created', 'blocked' ].includes(job.status) ? 'req' : job.status;
         const filename = `${job.translationProvider}_${job.sourceLang}_${job.targetLang}_job_${job.jobGuid}-${state}.json`;
         const jobPath = path.join(this.#jobsDirForPair(job.sourceLang, job.targetLang), filename);
         if (existsSync(jobPath)) {
@@ -58,9 +58,9 @@ export class JsonJobStore {
     }
 
     async getJob(jobGuid) {
-        const wip = globbySync(path.join(this.jobsBaseDir, '*', `*job_${jobGuid}-wip.json`))[0];
+        const pending = globbySync(path.join(this.jobsBaseDir, '*', `*job_${jobGuid}-pending.json`))[0];
         const done = globbySync(path.join(this.jobsBaseDir, '*', `*job_${jobGuid}-done.json`))[0];
-        const job = done ?? wip;
+        const job = done ?? pending;
         return job ? JSON.parse(readFileSync(job, 'utf8')) : null;
     }
 

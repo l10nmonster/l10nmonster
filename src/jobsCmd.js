@@ -7,7 +7,7 @@ export async function jobsCmd(mm, { limitToLang }) {
             .map(e => e[0]);
         unfinishedJobs[targetLang] = [];
         for (const [ jobGuid, status ] of pendingJobs) {
-            unfinishedJobs[targetLang].push(await (status === 'req' ? mm.jobStore.getJobRequest(jobGuid) : mm.jobStore.getJob(jobGuid)));
+            unfinishedJobs[targetLang].push(await (status === 'pending' ? mm.jobStore.getJob(jobGuid) : mm.jobStore.getJobRequest(jobGuid)));
         }
     }
     return unfinishedJobs;

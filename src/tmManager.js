@@ -124,9 +124,6 @@ export default class TMManager {
             tm.generation = this.generation;
             const jobs = await this.jobStore.getJobStatusByLangPair(sourceLang, targetLang);
             for (const [jobGuid, status] of jobs) {
-                // this is messy but should work
-                // getJobStatusByLangPair returns "wip but getJobStatus returns "pending"
-                // because so far wip is mutable, it's good to reload the latest every time
                 if (tm.getJobStatus(jobGuid) !== status) {
                     const jobResponse = await this.jobStore.getJob(jobGuid);
                     const jobRequest = await this.jobStore.getJobRequest(jobGuid);
