@@ -27,7 +27,7 @@ async function mmtTranslateChunkOp({ baseURL, json, headers, offset}) {
         }
         return translations;
     } catch(error) {
-        throw error.toString();
+        throw `${error.toString()}: ${error.response?.body}`;
     }
 }
 
