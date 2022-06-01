@@ -54,7 +54,7 @@ async function mmtMergeTranslatedChunksOp({ jobRequest, tuMeta, quality, ts }, c
 }
 
 export class ModernMT {
-    constructor({ baseURL, apiKey, priority, multiline, quality, maxCharLength }) {
+    constructor({ baseURL, apiKey, priority, multiline, quality, maxCharLength, languageMapper }) {
         if ((apiKey && quality) === undefined) {
             throw 'You must specify apiKey, quality for ModernMT';
         } else {
@@ -68,12 +68,15 @@ export class ModernMT {
             this.multiline = multiline ?? true,
             this.quality = quality;
             this.maxCharLength = maxCharLength ?? MAX_CHAR_LENGTH;
+            this.languageMapper = languageMapper;
             this.ctx.opsMgr.registerOp(mmtTranslateChunkOp, { idempotent: false });
             this.ctx.opsMgr.registerOp(mmtMergeTranslatedChunksOp, { idempotent: true });
         }
     }
 
     async requestTranslations(jobRequest) {
+        const sourceLang = (this.languageMapper && this.languageMapper(jobRequest.sourceLang)) ?? jobRequest.sourceLang;
+        const targetLang = (this.languageMapper && this.languageMapper(jobRequest.targetLang)) ?? jobRequest.targetLang;
         const tuMeta = {};
         const mmtPayload = jobRequest.tus.map((tu, idx) => {
             const [xmlSrc, phMap ] = flattenNormalizedSourceToXmlV1(tu.nsrc || [ tu.src ]);
@@ -104,8 +107,8 @@ export class ModernMT {
                     {
                         baseURL: this.baseURL,
                         json: {
-                            source: jobRequest.sourceLang,
-                            target: jobRequest.targetLang,
+                            source: sourceLang,
+                            target: targetLang,
                             priority: this.priority,
                             'project_id': jobRequest.jobGuid,
                             multiline: this.multiline,
@@ -117,10 +120,10 @@ export class ModernMT {
                 );
                 chunkOps.push(translateOp);
             }
-            const rootOp = await requestTranslationsTask.enqueue(mmtMergeTranslatedChunksOp, { 
-                jobRequest, 
-                tuMeta, 
-                quality: this.quality, 
+            const rootOp = await requestTranslationsTask.enqueue(mmtMergeTranslatedChunksOp, {
+                jobRequest,
+                tuMeta,
+                quality: this.quality,
                 ts: this.ctx.regression ? 1 : new Date().getTime(),
             }, chunkOps);
             return await requestTranslationsTask.execute(rootOp);

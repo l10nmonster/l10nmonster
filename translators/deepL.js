@@ -61,7 +61,7 @@ export class DeepL {
             this.preserveFormatting = preserveFormatting ?? '0',
             this.formalityMap = formalityMap ?? {},
             this.quality = quality;
-            this.languageMapper = languageMapper,
+            this.languageMapper = languageMapper;
             this.ctx.opsMgr.registerOp(deeplTranslateChunkOp, { idempotent: false });
             this.ctx.opsMgr.registerOp(deeplMergeTranslatedChunksOp, { idempotent: true });
         }
