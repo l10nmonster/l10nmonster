@@ -23,12 +23,11 @@ export default class CardboardConfig {
                 translator: new translators.TranslationOS(defaultTOSConfig),
                 pairs: { 'en': [ 'ar', 'it', 'ja' ] },
             },
-            TOSRefresh: {
+            TOSRefresh: { // since there are no pairs, this must be chosen manually
                 translator: new translators.TOSRefresh(defaultTOSConfig),
             },
-            TOSBugfix: {
-                translator: new translators.TranslationOS({ ...defaultTOSConfig, requestOnly: true }),
-                pairs: { 'en': [ 'ar', 'it', 'ja' ] },
+            TOSLQA: { // fake sample of a "push and forget" configuration
+                translator: new translators.TranslationOS({ ...defaultTOSConfig, serviceType: 'bugfix', requestOnly: true }),
             },
         };
         this.bugfixFilters = {

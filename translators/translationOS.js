@@ -175,7 +175,11 @@ export class TranslationOS {
             }
             const rootOp = await requestTranslationsTask.enqueue(tosRequestTranslationsOp, { jobManifest }, chunkOps);
             const jobResponse = await requestTranslationsTask.execute(rootOp);
-            this.requestOnly && (jobResponse.status = 'done');
+            if (this.requestOnly) {
+                delete jobResponse.inflight;
+                jobResponse.tus = [];
+                jobResponse.status = 'done';
+            }
             return jobResponse;
         } catch (error) {
             throw `TOS call failed - ${error}`;
