@@ -101,7 +101,7 @@ export class ModernMT {
                 if (q.length === 0) {
                     throw `String at index ${currentIdx} exceeds ${this.maxCharLength} max char length`;
                 }
-                this.ctx.verbose && console.log(`Preparing MMT translate, offset: ${offset} chunk strings: ${q.length} chunk char length: ${currentTotalLength}`);
+                this.ctx.logger.info(`Preparing MMT translate, offset: ${offset} chunk strings: ${q.length} chunk char length: ${currentTotalLength}`);
                 const translateOp = await requestTranslationsTask.enqueue(
                     mmtTranslateChunkOp,
                     {

@@ -47,7 +47,7 @@ export async function leverageCmd(mm, limitToLang) {
                 }
             }
         }
-        mm.verbose && console.log(`Leveraging ${targetLang}... found ${jobRequest.tus.length} missing translations, of which ${translations.length} can be leveraged`);
+        mm.ctx.logger.info(`Leveraging ${targetLang}... found ${jobRequest.tus.length} missing translations, of which ${translations.length} can be leveraged`);
         if (translations.length > 0) {
             // eslint-disable-next-line no-unused-vars
             const { tus, ...jobResponse } = jobRequest;

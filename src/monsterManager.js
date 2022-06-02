@@ -25,7 +25,7 @@ export default class MonsterManager {
             this.jobStore = monsterConfig.jobStore ?? new JsonJobStore({
                 jobsDir: 'l10njobs',
             });
-            this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore });
+            this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, ctx });
             this.stateStore = monsterConfig.stateStore;
             this.debug = monsterConfig.debug ?? {};
             this.sourceLang = monsterConfig.sourceLang;
@@ -128,7 +128,7 @@ export default class MonsterManager {
             }
         }
         if (dirty) {
-            this.verbose && console.log(`Updating ${this.sourceCachePath}...`);
+            this.ctx.logger.info(`Updating ${this.sourceCachePath}...`);
             await fs.writeFile(this.sourceCachePath, JSON.stringify(newCache, null, '\t'), 'utf8');
             this.sourceCache = newCache;
         }

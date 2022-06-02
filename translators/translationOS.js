@@ -35,7 +35,7 @@ function getTUMaps(tus) {
     return [ contentMap, tuMeta, phNotes ];
 }
 
-function createTUFromTOSTranslation({ tosUnit, content, tuMeta, quality, verbose }) {
+function createTUFromTOSTranslation({ tosUnit, content, tuMeta, quality, logger }) {
     const guid = tosUnit.id_content;
     !content && (content = tosUnit.translated_content);
     const tu = {
@@ -54,7 +54,7 @@ function createTUFromTOSTranslation({ tosUnit, content, tuMeta, quality, verbose
         tu.contentType = tuMeta[guid].contentType;
         tu.ntgt = extractNormalizedPartsV1(content, tuMeta[guid].phMap);
         if (tu.ntgt.filter(e => e === undefined).length > 0) {
-            verbose && console.error(`Unable to extract normalized parts of TU: ${JSON.stringify(tu)}`);
+            logger.warn(`Unable to extract normalized parts of TU: ${JSON.stringify(tu)}`);
             return null;
         }
     } else {
@@ -171,7 +171,7 @@ export class TranslationOS {
                         request: 30000,
                     },
                 };
-                this.ctx.verbose && console.log(`Pushing to TOS job ${jobManifest.jobGuid} chunk size: ${json.length}`);
+                this.ctx.logger.info(`Pushing to TOS job ${jobManifest.jobGuid} chunk size: ${json.length}`);
                 const gotOp = await requestTranslationsTask.enqueue(gotPostOp, request);
                 const submittedGuids = json.map(tu => tu.id_content);
                 chunkOps.push(await requestTranslationsTask.enqueue(tosProcessRequestTranslationResponseOp, { submittedGuids }, [ gotOp ]));
@@ -211,26 +211,26 @@ export class TranslationOS {
                 limit: this.chunkSize,
             }
             try {
-                this.ctx.verbose && console.log(`Fetching from TOS job ${jobManifest.jobGuid} offset ${offset} limit ${this.chunkSize}`);
+                this.ctx.logger.info(`Fetching from TOS job ${jobManifest.jobGuid} offset ${offset} limit ${this.chunkSize}`);
                 this.trafficStore && await this.trafficStore.logRequest('postStatus', request);
                 response = await got.post(request).json();
                 this.trafficStore && await this.trafficStore.logResponse('postStatus-ok', response);
             } catch (error) {
                 this.trafficStore && await this.trafficStore.logResponse('postStatus-error', error);
-                console.error(error?.response?.body || error);
+                this.ctx.logger.warn(error?.response?.body || error);
                 throw "TOS call failed!";
             }
             for (const tosUnit of response) {
                 if (tosUnit.translated_content === null || ![ 'delivered', 'invoiced' ].includes(tosUnit.status) || tosUnit.translated_content.indexOf('|||UNTRANSLATED_CONTENT_START|||') >= 0) {
-                    this.ctx.verbose && console.log(`id_order: ${tosUnit.id_order} id_content: ${tosUnit.id} status: ${tosUnit.status} translated_content: ${tosUnit.translated_content}`);
+                    this.ctx.logger.info(`id_order: ${tosUnit.id_order} id_content: ${tosUnit.id} status: ${tosUnit.status} translated_content: ${tosUnit.translated_content}`);
                 } else {
                     const guid = tosUnit.id_content;
                     if (jobManifest.inflight.includes(guid)) {
-                        tusMap[guid] && console.error(`Duplicate translations found for guid: ${guid}`);
-                        tusMap[guid] = createTUFromTOSTranslation({ tosUnit, tuMeta, quality: this.quality, verbose: this.verbose });
+                        tusMap[guid] && this.ctx.logger.warn(`Duplicate translations found for guid: ${guid}`);
+                        tusMap[guid] = createTUFromTOSTranslation({ tosUnit, tuMeta, quality: this.quality, logger: this.ctx.logger });
                         !tusMap[guid] && delete tusMap[guid];
                     } else {
-                        console.error(`Found unexpected guid: ${guid}`);
+                        this.ctx.logger.warn(`Found unexpected guid: ${guid}`);
                     }
                 }
             }
@@ -242,11 +242,11 @@ export class TranslationOS {
         if (missingGuids.length === 0) {
             newManifest.status = 'done';
         } else {
-            if (this.ctx.verbose && tus.length > 0) { // if we got something but not all, log the delta
-                console.log(`Got ${tus.length} translations from TOS for job ${jobManifest.jobGuid} and was expecting ${jobManifest.inflight.length} -- missing the following:`);
+            if (tus.length > 0) { // if we got something but not all, log the delta
+                this.ctx.logger.warn(`Got ${tus.length} translations from TOS for job ${jobManifest.jobGuid} and was expecting ${jobManifest.inflight.length} -- missing the following:`);
                 for (const guid of jobManifest.inflight) {
                     if (!tusMap[guid]) {
-                        console.log(guid);
+                        this.ctx.logger.warn(guid);
                     }
                 }
             }
@@ -287,7 +287,7 @@ export class TOSRefresh {
             while (guidsToRefresh.length > 0) {
                 const guids = guidsToRefresh.splice(0, MAX_TOS_REFRESH_CHUNK_SIZE);
                 chunkNumber++;
-                this.ctx.verbose && console.log(`Refreshing TOS chunk ${chunkNumber} (${guids.length} units)...`);
+                this.ctx.logger.info(`Refreshing TOS chunk ${chunkNumber} (${guids.length} units)...`);
                 const latestContent = await got.post({
                     url: `${this.baseURL}/status`,
                     json: {
@@ -306,9 +306,9 @@ export class TOSRefresh {
                 for (const tosUnit of latestContent) {
                     const tu = tuMap[tosUnit.id_content];
                     if (tu.th !== tosUnit.translated_content_hash) {
-                        this.ctx.verbose && console.log(`Fetching content id ${tosUnit.id}...`);
+                        this.ctx.logger.info(`Fetching content id ${tosUnit.id}...`);
                         const content = await got(tosUnit.translated_content_url).text();
-                        const newTU = createTUFromTOSTranslation({ tosUnit, content, tuMeta, quality: this.quality, verbose: this.verbose });
+                        const newTU = createTUFromTOSTranslation({ tosUnit, content, tuMeta, quality: this.quality, logger: this.ctx.logger });
                         delete newTU.cost;
                         refreshedTus.push(newTU);
                     }

@@ -9,8 +9,9 @@ import { cleanupTU, targetTUWhitelist } from './schemas.js';
 
 class TM {
     dirty = false;
-    constructor(sourceLang, targetLang, tmPathName) {
+    constructor(sourceLang, targetLang, tmPathName, logger) {
         this.tmPathName = tmPathName;
+        this.logger = logger;
         this.tm = existsSync(this.tmPathName) ?
             JSON.parse(readFileSync(this.tmPathName, 'utf8')) :
             {
@@ -68,7 +69,7 @@ class TM {
 
     async commit() {
         if (this.dirty) {
-            this.verbose && console.log(`Updating ${this.tmPathName}...`);
+            this.logger.info(`Updating ${this.tmPathName}...`);
             await fs.writeFile(this.tmPathName, JSON.stringify(this.tm, null, '\t'), 'utf8');
             this.dirty = false;
         }
@@ -105,9 +106,10 @@ class TM {
 }
 
 export default class TMManager {
-    constructor({ monsterDir, jobStore }) {
+    constructor({ monsterDir, jobStore, ctx }) {
         this.monsterDir = monsterDir;
         this.jobStore = jobStore;
+        this.ctx = ctx;
         this.tmCache = {};
         this.generation = new Date().getTime();
     }
@@ -116,13 +118,13 @@ export default class TMManager {
         const tmFileName = `tmCache_${sourceLang}_${targetLang}.json`;
         let tm = this.tmCache[tmFileName];
         if (!tm) {
-            TM.prototype.verbose = this.verbose;
-            tm = new TM(sourceLang, targetLang, path.join(this.monsterDir, tmFileName));
+            tm = new TM(sourceLang, targetLang, path.join(this.monsterDir, tmFileName), this.ctx.logger);
             this.tmCache[tmFileName] = tm;
         }
         if (tm.generation !== this.generation) {
             tm.generation = this.generation;
             const jobs = await this.jobStore.getJobStatusByLangPair(sourceLang, targetLang);
+            this.ctx.logger.info(`Scanning ${jobs.length} jobs to ensure the ${sourceLang} -> ${targetLang} TM is up to date...`);
             for (const [jobGuid, status] of jobs) {
                 if (tm.getJobStatus(jobGuid) !== status) {
                     const jobResponse = await this.jobStore.getJob(jobGuid);

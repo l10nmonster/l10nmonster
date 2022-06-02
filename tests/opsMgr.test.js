@@ -11,7 +11,7 @@ async function bar(args, inputs) {
 describe ('OpsMgr tests', () =>{
 
   test('task with 3 ops', async () => {
-    const om = new OpsMgr();
+    const om = new OpsMgr({ logger: { info: () => true } });
     om.registerOp(foo);
     om.registerOp(bar);
     const t = om.createTask();

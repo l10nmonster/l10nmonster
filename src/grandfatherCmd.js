@@ -19,7 +19,7 @@ export async function grandfatherCmd(mm, quality, limitToLang) {
                 const lookup = {};
                 let resource;
                 try {
-                    // mm.verbose && console.log(`Getting ${tu.rid} for language ${targetLang}`);
+                    // mm.ctx.logger.info(`Getting ${tu.rid} for language ${targetLang}`);
                     resource = await pipeline.target.fetchTranslatedResource(targetLang, tu.rid);
                 } catch (e) {
                     mm.verbose && console.error(`Couldn't fetch translated resource: ${e}`);
@@ -61,7 +61,7 @@ export async function grandfatherCmd(mm, quality, limitToLang) {
                 }
             }
         }
-        mm.verbose && console.log(`Grandfathering ${targetLang}... found ${jobRequest.tus.length} missing translations, of which ${translations.length} existing`);
+        mm.ctx.logger.info(`Grandfathering ${targetLang}... found ${jobRequest.tus.length} missing translations, of which ${translations.length} existing`);
         if (translations.length > 0) {
             // eslint-disable-next-line no-unused-vars
             const { tus, ...jobResponse } = jobRequest;

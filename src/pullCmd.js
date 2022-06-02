@@ -9,7 +9,7 @@ export async function pullCmd(mm, { limitToLang }) {
         for (const jobGuid of pendingJobs) {
             const jobManifest = await mm.jobStore.getJob(jobGuid);
             if (jobManifest.status === 'pending') {
-                mm.verbose && console.log(`Pulling job ${jobGuid}...`);
+                mm.ctx.logger.info(`Pulling job ${jobGuid}...`);
                 const translationProvider = mm.getTranslationProvider(jobManifest);
                 const jobResponse = await translationProvider.translator.fetchTranslations(jobManifest);
                 if (jobResponse?.status === 'done') {

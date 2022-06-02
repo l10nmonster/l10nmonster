@@ -87,7 +87,7 @@ export class DeepL {
                     q.push(deeplPayload[currentIdx]);
                     currentIdx++;
                 }
-                this.ctx.verbose && console.log(`Preparing DeepL translate, offset: ${offset} chunk strings: ${q.length}`);
+                this.ctx.logger.info(`Preparing DeepL translate, offset: ${offset} chunk strings: ${q.length}`);
                 const sourceLang = (this.languageMapper && this.languageMapper(jobRequest.sourceLang)) ?? jobRequest.sourceLang;
                 const targetLang = (this.languageMapper && this.languageMapper(jobRequest.targetLang)) ?? jobRequest.targetLang;
                 const baseParams = {

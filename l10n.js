@@ -6,7 +6,9 @@ import {
   existsSync,
   mkdirSync,
 } from 'fs';
+import * as util from 'node:util';
 import { Command, InvalidArgumentError } from 'commander';
+import * as winston from 'winston';
 
 import { consoleColor, printRequest, printResponse } from './src/shared.js';
 
@@ -53,20 +55,39 @@ async function initMonster() {
     const configPath = path.join(baseDir, 'l10nmonster.mjs');
     if (existsSync(configPath)) {
         const configModule = await import(configPath);
-        const verbose = monsterCLI.opts().verbose;
+        const verboseOption = monsterCLI.opts().verbose;
+            // eslint-disable-next-line no-nested-ternary
+            const verboseLevel = (verboseOption === undefined || verboseOption === 0) ?
+                'error' :
+            // eslint-disable-next-line no-nested-ternary
+                ((verboseOption === 1) ?
+                    'warn' :
+                    ((verboseOption === true || verboseOption === 2) ? 'info' : 'verbose'));
         const regression = monsterCLI.opts().regression;
         const build = monsterCLI.opts().build;
         const release = monsterCLI.opts().release;
         let prj = monsterCLI.opts().prj;
         prj && (prj = prj.split(','));
+        const logger = winston.createLogger({
+            level: verboseLevel,
+            transports: [
+                new winston.transports.Console({
+                    format: winston.format.combine(
+                        winston.format.ms(),
+                        winston.format.timestamp(),
+                        winston.format.printf(({ level, message, timestamp, ms }) => `${consoleColor.yellow}${timestamp.substr(11, 12)} (${ms}) ${level}: ${typeof message === 'string' ? message : util.inspect(message)}${consoleColor.reset}`)
+                    ),
+                }),
+            ],
+        });
         const opsDir = monsterCLI.opts().ops ?? configModule.opsDir;
-        const opsMgr = opsDir ? new OpsMgr({ opsDir: path.join(baseDir, opsDir), verbose }) : new OpsMgr({ verbose });
+        const opsMgr = opsDir ? new OpsMgr({ opsDir: path.join(baseDir, opsDir), logger }) : new OpsMgr({ logger });
         const ctx = {
             baseDir,
             opsMgr,
             env: process.env,
             arg: monsterCLI.opts().arg,
-            verbose,
+            logger,
             regression,
             build,
             release,
@@ -93,24 +114,19 @@ async function initMonster() {
             for (const helper of Object.values(helperCategory))
                 helper.prototype && (helper.prototype.ctx = ctx);
         }
-        verbose && console.log(`Importing config from: ${configPath}`);
+        logger.info(`Importing config from: ${configPath}`);
         try {
             const configParams = { ctx, ...helpers };
-            if (verbose) {
-                console.log('Initializing config with:');
-                console.dir(configParams);
-            }
+            logger.verbose('Initializing config with:');
+            logger.verbose(configParams);
             const monsterConfig = new configModule.default(configParams);
-            if (verbose) {
-                console.log('Successfully got config instance:');
-                console.dir(monsterConfig, { depth: 5 });
-            }
+            logger.verbose('Successfully got config instance:');
+            logger.verbose(monsterConfig, { depth: 5 });
             const monsterDir = path.join(baseDir, monsterConfig.monsterDir ?? '.l10nmonster');
-            verbose && console.log(`Monster dir: ${monsterDir}`);
+            logger.info(`Monster dir: ${monsterDir}`);
             if (!existsSync(monsterDir)) {
                 mkdirSync(monsterDir, {recursive: true});
             }
-            MonsterManager.prototype.verbose = verbose;
             return new MonsterManager({ monsterDir, monsterConfig, ctx });
         } catch(e) {
             throw `l10nmonster.mjs failed to construct: ${e}`;
@@ -152,7 +168,7 @@ monsterCLI
     .name('l10n')
     .version('0.1.0')
     .description('Continuous localization for the rest of us.')
-    .option('-v, --verbose', 'output additional debug information')
+    .option('-v, --verbose [level]', '0=error, 1=warning, 2=info, 3=verbose', intOptionParser)
     .option('--ops <opsDir>', 'directory to output debug operations')
     .option('-p, --prj <num>', 'limit to specified project')
     .option('-b, --build <type>', 'build type')
@@ -238,12 +254,13 @@ monsterCLI
     .command('analyze')
     .description('source content report and validation.')
     .option('-s, --smell', 'detect smelly source')
+    .option('--long', 'extended report')
     .action(async (options) => await withMonsterManager(async monsterManager => {
       const analysis = await analyzeCmd(monsterManager);
       console.log(`${analysis.numStrings.toLocaleString()} strings (${analysis.totalWC.toLocaleString()} words) in ${analysis.numSources.toLocaleString()} resources`);
       const qWC = analysis.qualifiedRepetitions.reduce((p, c) => p + (c.length - 1) * c[0].wc, 0);
       console.log(`${analysis.qualifiedRepetitions.length.toLocaleString()} locally qualified repetitions, ${qWC.toLocaleString()} duplicate word count`);
-      if (monsterCLI.opts().verbose) {
+      if (options.long) {
         for (const qr of analysis.qualifiedRepetitions) {
           console.log(`${qr[0].wc.toLocaleString()} words, sid: ${qr[0].sid}, txt: ${qr[0].str}`);
           for (const r of qr) {
@@ -253,7 +270,7 @@ monsterCLI
       }
       const uWC = analysis.unqualifiedRepetitions.reduce((p, c) => p + (c.length - 1) * c[0].wc, 0);
       console.log(`${analysis.unqualifiedRepetitions.length.toLocaleString()} unqualified repetitions, ${uWC.toLocaleString()} duplicate word count`);
-      if (monsterCLI.opts().verbose) {
+      if (options.long) {
         for (const ur of analysis.unqualifiedRepetitions) {
           console.log(`${ur[0].wc.toLocaleString()} words, txt: ${ur[0].str}`);
           for (const r of ur) {
@@ -263,7 +280,7 @@ monsterCLI
       }
         if (options.smell) {
             for (const { rid, sid, str } of analysis.smelly) {
-                monsterCLI.opts().verbose && console.log(`- ${rid}:${sid}:`);
+                options.long && console.log(`- ${rid}:${sid}:`);
                 console.log(str);
             }
         }
