@@ -9,6 +9,7 @@ export async function grandfatherCmd(mm, quality, limitToLang) {
     for (const targetLang of targetLangs) {
         const txCache = {};
         const jobRequest = await mm.prepareTranslationJob({ targetLang });
+        jobRequest.translationProvider = 'Grandfather';
         const sources = [];
         const translations = [];
         for (const tu of jobRequest.tus) {
@@ -67,7 +68,6 @@ export async function grandfatherCmd(mm, quality, limitToLang) {
             jobRequest.tus = sources;
             jobResponse.tus = translations;
             jobResponse.status = 'done';
-            jobResponse.translationProvider = 'Grandfather';
             const manifest = await mm.jobStore.createJobManifest();
             await mm.processJob({ ...jobResponse, ...manifest, status: 'done' }, { ...jobRequest, ...manifest });
             status.push({
