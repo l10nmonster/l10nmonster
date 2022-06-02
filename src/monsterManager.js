@@ -52,9 +52,9 @@ export default class MonsterManager {
                 // spell it out to use additional options like pairs: { sourceLang: [ targetLang1 ]}
             } else {
                 this.translationProviders = { };
-                this.translationProviders[monsterConfig.translationProvider.constructor.name] = {
+                monsterConfig.translationProvider && (this.translationProviders[monsterConfig.translationProvider.constructor.name] = {
                     translator: monsterConfig.translationProvider,
-                };
+                });
             }
             this.bugfixFilters = monsterConfig.bugfixFilters;
             this.sourceCachePath = path.join(monsterDir, 'sourceCache.json');

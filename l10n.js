@@ -161,15 +161,15 @@ monsterCLI
     .option('--regression', 'keep variable constant during regression testing')
 ;
 
-function printLeverage(leverage) {
+function printLeverage(leverage, detailed) {
     const totalStrings = leverage.translated + leverage.pending + leverage.untranslated + leverage.internalRepetitions;
-    console.log(`    - total strings for target language: ${totalStrings.toLocaleString()} (${leverage.translatedWords.toLocaleString()} translated words)`);
+    detailed && console.log(`    - total strings for target language: ${totalStrings.toLocaleString()} (${leverage.translatedWords.toLocaleString()} translated words)`);
     for (const [q, num] of Object.entries(leverage.translatedByQ).sort((a,b) => b[1] - a[1])) {
-        console.log(`    - translated strings @ quality ${q}: ${num.toLocaleString()}`);
+        detailed && console.log(`    - translated strings @ quality ${q}: ${num.toLocaleString()}`);
     }
-    console.log(`    - strings pending translation: ${leverage.pending.toLocaleString()} (${leverage.pendingWords.toLocaleString()} words)`);
-    console.log(`    - untranslated unique strings: ${leverage.untranslated.toLocaleString()} (${leverage.untranslatedChars.toLocaleString()} chars - ${leverage.untranslatedWords.toLocaleString()} words - $${(leverage.untranslatedWords * .2).toFixed(2)})`);
-    console.log(`    - untranslated repeated strings: ${leverage.internalRepetitions.toLocaleString()} (${leverage.internalRepetitionWords.toLocaleString()} words)`);
+    leverage.pending && console.log(`    - strings pending translation: ${leverage.pending.toLocaleString()} (${leverage.pendingWords.toLocaleString()} words)`);
+    leverage.untranslated && console.log(`    - untranslated unique strings: ${leverage.untranslated.toLocaleString()} (${leverage.untranslatedChars.toLocaleString()} chars - ${leverage.untranslatedWords.toLocaleString()} words - $${(leverage.untranslatedWords * .2).toFixed(2)})`);
+    leverage.internalRepetitions && console.log(`    - untranslated repeated strings: ${leverage.internalRepetitions.toLocaleString()} (${leverage.internalRepetitionWords.toLocaleString()} words)`);
 }
 
 function computeTotals(totals, partial) {
@@ -188,22 +188,26 @@ monsterCLI
     .command('status')
     .description('translation status of content.')
     .option('-l, --lang <language>', 'only get status of target language')
+    .option('-a, --all', 'show information for all projects, not just untranslated ones')
     .action(async (options) => await withMonsterManager(async monsterManager => {
         const limitToLang = options.lang;
+        const all = Boolean(options.all);
         const status = await statusCmd(monsterManager, { limitToLang });
         console.log(`${status.numSources.toLocaleString()} translatable resources`);
         for (const [lang, langStatus] of Object.entries(status.lang)) {
-            console.log(`\nLanguage ${lang} (minimum quality ${langStatus.leverage.minimumQuality}, TM size:${langStatus.leverage.tmSize.toLocaleString()}):`);
+            console.log(`\n${consoleColor.bright}Language ${lang}${consoleColor.reset} (minimum quality ${langStatus.leverage.minimumQuality}, TM size:${langStatus.leverage.tmSize.toLocaleString()}):`);
             const totals = {};
             const prjLeverage = Object.entries(langStatus.leverage.prjLeverage).sort((a, b) => (a[0] > b[0] ? 1 : -1));
             for (const [prj, leverage] of prjLeverage) {
-                console.log(`  Project: ${prj}`);
                 computeTotals(totals, leverage);
-                printLeverage(leverage);
+                if (leverage.translated + leverage.pending + leverage.untranslated + leverage.internalRepetitions > 0) {
+                    console.log(`  Project: ${consoleColor.bright}${prj}${consoleColor.reset}`);
+                    printLeverage(leverage, all);
+                }
             }
             if (prjLeverage.length > 1) {
                 console.log(`  Total:`);
-                printLeverage(totals);
+                printLeverage(totals, true);
             }
         }
     }))
