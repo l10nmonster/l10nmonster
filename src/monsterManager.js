@@ -289,10 +289,11 @@ export default class MonsterManager {
     getTranslationProvider(jobManifest) {
         let translationProviderName = jobManifest.translationProvider;
         if (!translationProviderName) {
-            for (const [ name, value ] of Object.entries(this.translationProviders)) {
-                if (!value.pairs || (value.pairs[jobManifest.sourceLang] && value.pairs[jobManifest.sourceLang].includes(jobManifest.targetLang))) {
+            for (const [ name, providerCfg ] of Object.entries(this.translationProviders)) {
+                if (providerCfg.pairs && providerCfg.pairs[jobManifest.sourceLang] && providerCfg.pairs[jobManifest.sourceLang].includes(jobManifest.targetLang)) {
                     translationProviderName = name;
                     jobManifest.translationProvider = name;
+                    break;
                 }
             }
         }
