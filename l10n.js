@@ -200,8 +200,9 @@ monsterCLI
             const prjLeverage = Object.entries(langStatus.leverage.prjLeverage).sort((a, b) => (a[0] > b[0] ? 1 : -1));
             for (const [prj, leverage] of prjLeverage) {
                 computeTotals(totals, leverage);
-                if (leverage.translated + leverage.pending + leverage.untranslated + leverage.internalRepetitions > 0) {
-                    console.log(`  Project: ${consoleColor.bright}${prj}${consoleColor.reset}`);
+                const untranslated = leverage.pending + leverage.untranslated + leverage.internalRepetitions;
+                if (leverage.translated + untranslated > 0) {
+                    (all || untranslated > 0) && console.log(`  Project: ${consoleColor.bright}${prj}${consoleColor.reset}`);
                     printLeverage(leverage, all);
                 }
             }
