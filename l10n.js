@@ -220,7 +220,7 @@ monsterCLI
             if (jobManifests.length > 0) {
                 console.log(`Target language ${lang}:`);
                 for (const mf of jobManifests) {
-                    const numUnits = mf.inflight?.length ?? mf.num ?? 0;
+                    const numUnits = mf.inflight?.length ?? mf.tus?.length ?? 0;
                     const lastModified = new Date(mf.updatedAt);
                     console.log(`  Job ${mf.jobGuid}: status ${consoleColor.bright}${mf.status}${consoleColor.reset} ${numUnits.toLocaleString()} ${mf.sourceLang} units with ${mf.translationProvider} - ${lastModified.toDateString()} ${lastModified.toLocaleTimeString()}`);
                 }
