@@ -123,7 +123,8 @@ export default class TMManager {
         }
         if (tm.generation !== this.generation) {
             tm.generation = this.generation;
-            const jobs = await this.jobStore.getJobStatusByLangPair(sourceLang, targetLang);
+            const jobs = (await this.jobStore.getJobStatusByLangPair(sourceLang, targetLang))
+                .filter(e => [ 'pending', 'done' ].includes(e[1]));
             this.ctx.logger.info(`Scanning ${jobs.length} jobs to ensure the ${sourceLang} -> ${targetLang} TM is up to date...`);
             for (const [jobGuid, status] of jobs) {
                 if (tm.getJobStatus(jobGuid) !== status) {
