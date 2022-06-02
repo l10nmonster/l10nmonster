@@ -1,6 +1,7 @@
 {
 	"sourceLang": "en",
 	"targetLang": "it",
+	"translationProvider": "Repetition",
 	"tus": [
 		{
 			"guid": "c-6fDjw00nB1UJtukMnmj1d18-MHF12J24XzB-fT4xg",
@@ -20,7 +21,6 @@
 		}
 	],
 	"status": "done",
-	"translationProvider": "Repetition",
 	"jobGuid": "xxx1xxx",
 	"updatedAt": "2022-05-29T00:00:00.000Z"
 }

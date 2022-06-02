@@ -31,6 +31,10 @@ export default class TachiyomiConfig {
             stateFileName: 'state.json',
         });
         this.translationProviders = {
+            PigLatinizer: {
+                translator: new translators.PigLatinizer({ quality: 1 }),
+                pairs: { en: [ 'piggy' ]},
+            },
             XliffBridge: {
                 translator: new translators.XliffBridge({
                     requestPath: (lang, prjId) => `xliff/outbox/prj${prjId}-${lang}.xml`,
@@ -38,10 +42,6 @@ export default class TachiyomiConfig {
                     quality: 80,
                 }),
             },
-            PigLatinizer: {
-                translator: new translators.PigLatinizer({ quality: 1 }),
-                pairs: { en: [ 'piggy' ]},
-            }
         };
         this.minimumQuality = (job) => (job.targetLang === 'piggy' ? 1 : 50);
     }

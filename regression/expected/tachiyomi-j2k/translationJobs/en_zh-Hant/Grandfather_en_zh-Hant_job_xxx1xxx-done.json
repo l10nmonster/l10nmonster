@@ -1,6 +1,7 @@
 {
 	"sourceLang": "en",
 	"targetLang": "zh-Hant",
+	"translationProvider": "Grandfather",
 	"tus": [
 		{
 			"guid": "ehbg6jluBWm1ZPyw00Prf4lbXtVyLJItrCrATkSEYGI",
@@ -3819,7 +3820,6 @@
 		}
 	],
 	"status": "done",
-	"translationProvider": "Grandfather",
 	"jobGuid": "xxx1xxx",
 	"updatedAt": "2022-05-29T00:00:00.000Z"
 }
