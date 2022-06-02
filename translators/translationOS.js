@@ -45,6 +45,9 @@ function createTUFromTOSTranslation({ tosUnit, content, tuMeta, quality, verbose
         cost: [ tosUnit.total, tosUnit.currency, tosUnit.wc_raw, tosUnit.wc_weighted ],
         th: tosUnit.translated_content_hash, // this is vendor-specific but it's ok to generalize
     };
+    if (tosUnit.revised_words) {
+        tu.rev = [ tosUnit.revised_words, tosUnit.error_points ?? 0];
+    }
     if (tuMeta[guid]) {
         tuMeta[guid].src && (tu.src = tuMeta[guid].src);
         tuMeta[guid].nsrc && (tu.nsrc = tuMeta[guid].nsrc);
