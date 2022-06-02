@@ -66,8 +66,8 @@ describe('Regex Encoder tests', () => {
     });
 
     test('java variable with single quote', async () => {
-        expect(getNormalizedString("For {0}. This is a great deal, but this price won''t last.",[ javaMFQuotesDecoder, javaEscapesDecoder, bracePHDecoder, xmlEntityDecoder ]
-        )).toMatchObject([
+        expect(getNormalizedString("For {0}. This is a great deal, but this price won''t last.",[ javaMFQuotesDecoder, javaEscapesDecoder, bracePHDecoder, xmlEntityDecoder ]))
+        .toMatchObject([
             "For ",
             {"t": "x", "v": "{0}"},
             ". This is a great deal, but this price won't last."

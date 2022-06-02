@@ -86,18 +86,19 @@ export function flattenNormalizedSourceToXmlV1(nsrc) {
     return [ normalizedStr.join(''), phMap ];
 }
 
+const cleanXMLEntities = str => str.replaceAll('&lt;', '<').replaceAll('&amp;', '&').replaceAll('&nbsp;', '\xa0')
 export function extractNormalizedPartsFromXmlV1(str, phMap) {
     const normalizedParts = [];
     let pos = 0;
     for (const match of str.matchAll(/<(?<phIdx>[a-y]|z\d+) \/>/g)) {
         if (match.index > pos) {
-            normalizedParts.push(match.input.substring(pos, match.index).replaceAll('&lt;', '<'));
+            normalizedParts.push(cleanXMLEntities(match.input.substring(pos, match.index)));
         }
         normalizedParts.push(phMap[match.groups.phIdx]);
         pos = match.index + match[0].length;
     }
     if (pos < str.length) {
-        normalizedParts.push(str.substring(pos, str.length).replaceAll('&lt;', '<'));
+        normalizedParts.push(cleanXMLEntities(str.substring(pos, str.length)));
     }
     return normalizedParts;
 }
