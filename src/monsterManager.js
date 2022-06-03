@@ -90,6 +90,7 @@ export default class MonsterManager {
         const combinedStats = [];
         for (const [ contentType, handler ] of Object.entries(this.contentTypes)) {
             const stats = await handler.source.fetchResourceStats();
+            this.ctx.logger.verbose(`Fetched resource stats for content type ${contentType}`);
             for (const res of stats) {
                 res.contentType = contentType;
             }

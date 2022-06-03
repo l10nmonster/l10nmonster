@@ -306,7 +306,7 @@ export class TOSRefresh {
                 for (const tosUnit of latestContent) {
                     const tu = tuMap[tosUnit.id_content];
                     if (tu.th !== tosUnit.translated_content_hash) {
-                        this.ctx.logger.info(`Fetching content id ${tosUnit.id}...`);
+                        this.ctx.logger.info(`Fetching content id ${tosUnit.id} for guid ${tosUnit.id_content}...`);
                         const content = await got(tosUnit.translated_content_url).text();
                         const newTU = createTUFromTOSTranslation({ tosUnit, content, tuMeta, quality: this.quality, logger: this.ctx.logger });
                         delete newTU.cost;

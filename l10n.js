@@ -127,7 +127,9 @@ async function initMonster() {
             if (!existsSync(monsterDir)) {
                 mkdirSync(monsterDir, {recursive: true});
             }
-            return new MonsterManager({ monsterDir, monsterConfig, ctx });
+            const mm = await new MonsterManager({ monsterDir, monsterConfig, ctx });
+            logger.info(`L10n Monster initialized!`);
+            return mm;
         } catch(e) {
             throw `l10nmonster.mjs failed to construct: ${e}`;
         }

@@ -20,6 +20,7 @@ export class FsSource {
     async fetchResourceStats() {
         const resources = [];
         const expandedFileNames = globbySync(this.globs.map(g => path.join(this.baseDir, g)));
+        this.ctx.logger.info(`Fetched fs globs: ${this.globs}`);
         for (const fileName of expandedFileNames) {
             const id = path.relative(this.baseDir, fileName);
             if (!this.filter || this.filter(id)) {
