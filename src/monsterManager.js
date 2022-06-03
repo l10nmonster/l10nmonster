@@ -273,12 +273,19 @@ export default class MonsterManager {
     async prepareBugfixJob({ targetLang, filter, tmBased, guidList }) {
         const tm = await this.tmm.getTM(this.sourceLang, targetLang);
         const sourceLookup = await this.getSourceAsTus();
-        !guidList && (guidList = tmBased ? tm.guids : Object.keys(sourceLookup));
+        if (!guidList) {
+            if (tmBased) {
+                guidList = tm.guids;
+            } else {
+                guidList = Object.keys(sourceLookup);
+            }
+        }
         let tus = guidList.map(guid => {
             const sourceTU = sourceLookup[guid] ?? {};
             const translatedTU = tm.getEntryByGuid(guid) ?? {};
             return { ...sourceTU, ...translatedTU }; // this is a superset of source and target properties so that filters have more to work with
         });
+        this.ctx.prj !== undefined && (tus = tus.filter(tu => this.ctx.prj.includes(tu.prj)));
         filter && (tus = tus.filter(tu => this.bugfixFilters[filter](tu)));
         return {
             sourceLang: this.sourceLang,
