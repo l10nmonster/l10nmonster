@@ -94,7 +94,7 @@ class TM {
 
                 // this is convoluted because tmEntry.ts may be undefined
                 // also note that this may result in non-deterministic behavior (equal ts means later one wins)
-                const isNewish = !(tmEntry?.ts <= tu.ts);
+                const isNewish = !(tmEntry?.ts > tu.ts);
                 if (!tmEntry || tmEntry.q < tu.q || (tmEntry.q === tu.q && isNewish)) {
                     this.setEntryByGuid(tu.guid, { ...reqEntry, ...tu, jobGuid });
                 }
