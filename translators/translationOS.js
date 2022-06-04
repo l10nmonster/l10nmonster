@@ -171,7 +171,7 @@ export class TranslationOS {
                         request: 30000,
                     },
                 };
-                this.ctx.logger.info(`Pushing to TOS job ${jobManifest.jobGuid} chunk size: ${json.length}`);
+                this.ctx.logger.info(`Enqueueing TOS translation job ${jobManifest.jobGuid} chunk size: ${json.length}`);
                 const gotOp = await requestTranslationsTask.enqueue(gotPostOp, request);
                 const submittedGuids = json.map(tu => tu.id_content);
                 chunkOps.push(await requestTranslationsTask.enqueue(tosProcessRequestTranslationResponseOp, { submittedGuids }, [ gotOp ]));
@@ -260,6 +260,58 @@ export class TranslationOS {
 }
 
 const MAX_TOS_REFRESH_CHUNK_SIZE = 1000;
+const MAX_AWS_CONCURRENCY = 8;
+
+// single-threaded version
+// async function tosGetGuidsToRefreshOp({ tuMap, tuMeta, request, quality }) {
+//     try {
+//         const latestContent = await got.post(request).json();
+//         const refreshedTus = [];
+//         for (const tosUnit of latestContent) {
+//             const tu = tuMap[tosUnit.id_content];
+//             if (tu.th !== tosUnit.translated_content_hash) {
+//                 // logger.info(`Fetching content id ${tosUnit.id} for guid ${tosUnit.id_content}...`);
+//                 const content = await got(tosUnit.translated_content_url).text();
+//                 // eslint-disable-next-line no-invalid-this
+//                 const newTU = createTUFromTOSTranslation({ tosUnit, content, tuMeta, quality, logger: this.logger });
+//                 // we need to delete cost because refreshing is free and this has been charged already
+//                 // but on the other hand the previous unit will be gone so we need to preserve it
+//                 // delete newTU.cost;
+//                 refreshedTus.push(newTU);
+//             }
+//         }
+//         return refreshedTus;
+//     } catch(e) {
+//         throw e.toString();
+//     }
+// }
+
+async function tosGetGuidsToRefreshOp({ tuMap, tuMeta, request, quality }) {
+    try {
+        const latestContent = (await got.post(request).json());
+        const newEntries = latestContent.filter(tosUnit => tuMap[tosUnit.id_content].th !== tosUnit.translated_content_hash);
+        const refreshedTus = [];
+        while (newEntries.length > 0) {
+            const chunk = newEntries.splice(0, MAX_AWS_CONCURRENCY);
+            // eslint-disable-next-line no-invalid-this
+            this.logger.info(`Fetching content for ${chunk.length} units...`);
+            const fetchedContent = await Promise.all(chunk.map(tosUnit => got(tosUnit.translated_content_url).text()));
+            chunk.forEach((tosUnit, idx) => {
+                // eslint-disable-next-line no-invalid-this
+                const newTU = createTUFromTOSTranslation({ tosUnit, content: fetchedContent[idx], tuMeta, quality, logger: this.logger });
+                refreshedTus.push(newTU);
+            });
+        }
+        return refreshedTus;
+    } catch(e) {
+        throw e.toString();
+    }
+}
+
+async function tosCombineRefreshedTusOp(args, tuChunks) {
+    return tuChunks.flat(1);
+}
+
 
 export class TOSRefresh {
     constructor({ baseURL, apiKey, quality }) {
@@ -272,26 +324,32 @@ export class TOSRefresh {
                 'user-agent': 'l10n.monster/TOSRefresh v0.1',
             }
             this.quality = quality;
+            this.ctx.opsMgr.registerOp(tosGetGuidsToRefreshOp, { idempotent: true });
+            this.ctx.opsMgr.registerOp(tosCombineRefreshedTusOp, { idempotent: true });
         }
     }
 
     async requestTranslations(jobRequest) {
         const { tus, ...newManifest } = jobRequest;
-        const tuMap = tus.reduce((p,c) => (p[c.guid] = c, p), {});
         const guidsToRefresh = tus.filter(tu => tu.src ?? tu.nsrc).map(tu => tu.guid);
-        // eslint-disable-next-line no-unused-vars
-        const [ contentMap, tuMeta, phNotes ] = getTUMaps(tus);
+
+        const refreshTranslationsTask = this.ctx.opsMgr.createTask();
         let chunkNumber = 0;
-        const refreshedTus = [];
-        try {
-            while (guidsToRefresh.length > 0) {
-                const guids = guidsToRefresh.splice(0, MAX_TOS_REFRESH_CHUNK_SIZE);
-                chunkNumber++;
-                this.ctx.logger.info(`Refreshing TOS chunk ${chunkNumber} (${guids.length} units)...`);
-                const latestContent = await got.post({
+        const refreshOps = [];
+        while (guidsToRefresh.length > 0) {
+            chunkNumber++;
+            const guidsInChunk = guidsToRefresh.splice(0, MAX_TOS_REFRESH_CHUNK_SIZE);
+            const tusInChunk = tus.filter(tu => guidsInChunk.includes(tu.guid));
+            const tuMap = tusInChunk.reduce((p,c) => (p[c.guid] = c, p), {});
+            const tuMeta = getTUMaps(tusInChunk)[1];
+            this.ctx.logger.info(`Enqueueing refresh of TOS chunk ${chunkNumber} (${guidsInChunk.length} units)...`);
+            const refreshOp = await refreshTranslationsTask.enqueue(tosGetGuidsToRefreshOp, {
+                tuMap,
+                tuMeta,
+                request: {
                     url: `${this.baseURL}/status`,
                     json: {
-                        id_content: guids,
+                        id_content: guidsInChunk,
                         target_language: jobRequest.targetLang,
                         last_delivered_only: true,
                         status: ['delivered', 'invoiced'],
@@ -302,22 +360,13 @@ export class TOSRefresh {
                     timeout: {
                         request: 60000,
                     },
-                }).json();
-                for (const tosUnit of latestContent) {
-                    const tu = tuMap[tosUnit.id_content];
-                    if (tu.th !== tosUnit.translated_content_hash) {
-                        this.ctx.logger.info(`Fetching content id ${tosUnit.id} for guid ${tosUnit.id_content}...`);
-                        const content = await got(tosUnit.translated_content_url).text();
-                        const newTU = createTUFromTOSTranslation({ tosUnit, content, tuMeta, quality: this.quality, logger: this.ctx.logger });
-                        delete newTU.cost;
-                        refreshedTus.push(newTU);
-                    }
-                }
-            }
-        } catch(e) {
-            throw e.toString();
+                },
+                quality: this.quality,
+            });
+            refreshOps.push(refreshOp);
         }
-        newManifest.tus = refreshedTus;
+        const rootOp = await refreshTranslationsTask.enqueue(tosCombineRefreshedTusOp, null, refreshOps);
+        newManifest.tus = await refreshTranslationsTask.execute(rootOp);
         newManifest.status = 'done';
         return newManifest;
     }
