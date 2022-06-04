@@ -166,6 +166,8 @@ export class OpsMgr {
     }
 
     createTask() {
-        return new Task(this);
+        const task = new Task(this);
+        task.logger = this.logger;
+        return task;
     }
 }
