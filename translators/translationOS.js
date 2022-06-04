@@ -259,43 +259,21 @@ export class TranslationOS {
     }
 }
 
-const MAX_TOS_REFRESH_CHUNK_SIZE = 1000;
-const MAX_AWS_CONCURRENCY = 8;
-
-// single-threaded version
-// async function tosGetGuidsToRefreshOp({ tuMap, tuMeta, request, quality }) {
-//     try {
-//         const latestContent = await got.post(request).json();
-//         const refreshedTus = [];
-//         for (const tosUnit of latestContent) {
-//             const tu = tuMap[tosUnit.id_content];
-//             if (tu.th !== tosUnit.translated_content_hash) {
-//                 // logger.info(`Fetching content id ${tosUnit.id} for guid ${tosUnit.id_content}...`);
-//                 const content = await got(tosUnit.translated_content_url).text();
-//                 // eslint-disable-next-line no-invalid-this
-//                 const newTU = createTUFromTOSTranslation({ tosUnit, content, tuMeta, quality, logger: this.logger });
-//                 // we need to delete cost because refreshing is free and this has been charged already
-//                 // but on the other hand the previous unit will be gone so we need to preserve it
-//                 // delete newTU.cost;
-//                 refreshedTus.push(newTU);
-//             }
-//         }
-//         return refreshedTus;
-//     } catch(e) {
-//         throw e.toString();
-//     }
-// }
+const MAX_TOS_REFRESH_CHUNK_SIZE = 768;
+const MAX_AWS_CONCURRENCY = 64;
 
 async function tosGetGuidsToRefreshOp({ tuMap, tuMeta, request, quality }) {
     try {
         const latestContent = (await got.post(request).json());
+        // eslint-disable-next-line no-invalid-this
+        this.logger.info(`Retrieved latest ${latestContent.length} translations from TOS`);
         const newEntries = latestContent.filter(tosUnit => tuMap[tosUnit.id_content].th !== tosUnit.translated_content_hash);
         const refreshedTus = [];
         while (newEntries.length > 0) {
             const chunk = newEntries.splice(0, MAX_AWS_CONCURRENCY);
-            // eslint-disable-next-line no-invalid-this
-            this.logger.info(`Fetching content for ${chunk.length} units...`);
             const fetchedContent = await Promise.all(chunk.map(tosUnit => got(tosUnit.translated_content_url).text()));
+            // eslint-disable-next-line no-invalid-this
+            this.logger.info(`Fetched ${chunk.length} pieces of content from AWS`);
             chunk.forEach((tosUnit, idx) => {
                 // eslint-disable-next-line no-invalid-this
                 const newTU = createTUFromTOSTranslation({ tosUnit, content: fetchedContent[idx], tuMeta, quality, logger: this.logger });
@@ -342,7 +320,7 @@ export class TOSRefresh {
             const tusInChunk = tus.filter(tu => guidsInChunk.includes(tu.guid));
             const tuMap = tusInChunk.reduce((p,c) => (p[c.guid] = c, p), {});
             const tuMeta = getTUMaps(tusInChunk)[1];
-            this.ctx.logger.info(`Enqueueing refresh of TOS chunk ${chunkNumber} (${guidsInChunk.length} units)...`);
+            this.ctx.logger.verbose(`Enqueueing refresh of TOS chunk ${chunkNumber} (${guidsInChunk.length} units)...`);
             const refreshOp = await refreshTranslationsTask.enqueue(tosGetGuidsToRefreshOp, {
                 tuMap,
                 tuMeta,
