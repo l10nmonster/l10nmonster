@@ -259,10 +259,7 @@ export class TranslationOS {
     }
 }
 
-const MAX_TOS_REFRESH_CHUNK_SIZE = 768;
-const MAX_AWS_CONCURRENCY = 64;
-
-async function tosGetGuidsToRefreshOp({ tuMap, tuMeta, request, quality }) {
+async function tosGetGuidsToRefreshOp({ tuMap, tuMeta, request, quality, parallelism }) {
     try {
         const latestContent = (await got.post(request).json());
         // eslint-disable-next-line no-invalid-this
@@ -270,7 +267,7 @@ async function tosGetGuidsToRefreshOp({ tuMap, tuMeta, request, quality }) {
         const newEntries = latestContent.filter(tosUnit => tuMap[tosUnit.id_content].th !== tosUnit.translated_content_hash);
         const refreshedTus = [];
         while (newEntries.length > 0) {
-            const chunk = newEntries.splice(0, MAX_AWS_CONCURRENCY);
+            const chunk = newEntries.splice(0, parallelism);
             const fetchedContent = await Promise.all(chunk.map(tosUnit => got(tosUnit.translated_content_url).text()));
             // eslint-disable-next-line no-invalid-this
             this.logger.info(`Fetched ${chunk.length} pieces of content from AWS`);
@@ -292,7 +289,7 @@ async function tosCombineRefreshedTusOp(args, tuChunks) {
 
 
 export class TOSRefresh {
-    constructor({ baseURL, apiKey, quality }) {
+    constructor({ baseURL, apiKey, quality, chunkSize, parallelism }) {
         if ((apiKey && quality) === undefined) {
             throw 'You must specify apiKey, quality for TOSRefresh';
         } else {
@@ -302,6 +299,8 @@ export class TOSRefresh {
                 'user-agent': 'l10n.monster/TOSRefresh v0.1',
             }
             this.quality = quality;
+            this.chunkSize = chunkSize || 768;
+            this.parallelism = parallelism || 128;
             this.ctx.opsMgr.registerOp(tosGetGuidsToRefreshOp, { idempotent: true });
             this.ctx.opsMgr.registerOp(tosCombineRefreshedTusOp, { idempotent: true });
         }
@@ -316,7 +315,7 @@ export class TOSRefresh {
         const refreshOps = [];
         while (guidsToRefresh.length > 0) {
             chunkNumber++;
-            const guidsInChunk = guidsToRefresh.splice(0, MAX_TOS_REFRESH_CHUNK_SIZE);
+            const guidsInChunk = guidsToRefresh.splice(0, this.chunkSize);
             const tusInChunk = tus.filter(tu => guidsInChunk.includes(tu.guid));
             const tuMap = tusInChunk.reduce((p,c) => (p[c.guid] = c, p), {});
             const tuMeta = getTUMaps(tusInChunk)[1];
@@ -332,7 +331,7 @@ export class TOSRefresh {
                         last_delivered_only: true,
                         status: ['delivered', 'invoiced'],
                         fetch_content: false,
-                        limit: MAX_TOS_REFRESH_CHUNK_SIZE,
+                        limit: this.chunkSize,
                     },
                     headers: this.stdHeaders,
                     timeout: {
@@ -340,6 +339,7 @@ export class TOSRefresh {
                     },
                 },
                 quality: this.quality,
+                parallelism: this.parallelism,
             });
             refreshOps.push(refreshOp);
         }
