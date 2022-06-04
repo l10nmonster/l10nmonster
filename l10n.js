@@ -241,7 +241,7 @@ monsterCLI
         const jobs = await jobsCmd(monsterManager, { limitToLang });
         for (const [lang, jobManifests] of Object.entries(jobs)) {
             if (jobManifests.length > 0) {
-                console.log(`Target language ${lang}:`);
+                console.log(`Target language ${consoleColor.bright}${lang}${consoleColor.reset}:`);
                 for (const mf of jobManifests) {
                     const numUnits = mf.inflight?.length ?? mf.tus?.length ?? 0;
                     const lastModified = new Date(mf.updatedAt);
@@ -327,7 +327,7 @@ monsterCLI
                         if (ls.minimumJobSize !== undefined) {
                             console.log(`${ls.num.toLocaleString()} translations units for language ${ls.targetLang} not sent because you need at least ${ls.minimumJobSize}`);
                         } else {
-                            console.log(`${ls.num.toLocaleString()} translations units requested for language ${ls.targetLang} on job ${ls.jobGuid} -> status: ${ls.status}`);
+                            console.log(`${ls.num.toLocaleString()} translations units requested for language ${consoleColor.bright}${ls.targetLang}${consoleColor.reset} on job ${ls.jobGuid} -> status: ${consoleColor.bright}${ls.status}${consoleColor.reset}`);
                         }
                     }
                 } else {
