@@ -4,6 +4,7 @@ import * as path from 'path';
 const ctx = {
   baseDir: path.resolve('.'),
   env: process.env,
+  logger: { info: () => true },
 };
 adapters.FsSource.prototype.ctx = ctx;
 adapters.FsTarget.prototype.ctx = ctx;
