@@ -347,11 +347,13 @@ monsterCLI
     .option('--res <jobGuid>', 'show contents of a job response')
     .option('--pairs <jobGuid>', 'show request/response pairs of a job')
     .option('--push <jobGuid>', 'push a blocked job to translation provider')
+    .option('--delete <jobGuid>', 'delete a blocked/failed job')
     .action(async (options) => await withMonsterManager(async monsterManager => {
         const reqJobGuid = options.req;
         const resJobGuid = options.res;
         const pairsJobGuid = options.pairs;
         const pushJobGuid = options.push;
+        const deleteJobGuid = options.delete;
         if (reqJobGuid !== undefined) {
             const req = await monsterManager.jobStore.getJobRequest(reqJobGuid);
             if (req) {
@@ -383,6 +385,17 @@ monsterCLI
             try {
                 const pushResponse = await jobPushCmd(monsterManager, pushJobGuid);
                 console.log(`${pushResponse.num.toLocaleString()} translations units requested -> status: ${pushResponse.status}`);
+            } catch (e) {
+                console.error(`Failed to push job: ${e}`);
+            }
+        } else if (deleteJobGuid !== undefined) {
+            console.log(`Deleting job ${deleteJobGuid}...`);
+            try {
+                const res = await monsterManager.jobStore.getJob(deleteJobGuid);
+                if (res) {
+                    console.error(`Can only push blocked/failed jobs. This job has status: ${res.status}`);
+                }
+                await monsterManager.jobStore.deleteJobRequest(deleteJobGuid);
             } catch (e) {
                 console.error(`Failed to push job: ${e}`);
             }

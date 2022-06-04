@@ -4,6 +4,7 @@ import {
     mkdirSync,
     readFileSync,
     writeFileSync,
+    unlinkSync,
 } from 'fs';
 import { nanoid } from 'nanoid';
 import { globbySync } from 'globby';
@@ -67,5 +68,10 @@ export class JsonJobStore {
     async getJobRequest(jobGuid) {
         const req = globbySync(path.join(this.jobsBaseDir, '*', `*job_${jobGuid}-req.json`))[0];
         return req ? JSON.parse(readFileSync(req, 'utf8')) : null;
+    }
+
+    async deleteJobRequest(jobGuid) {
+        const req = globbySync(path.join(this.jobsBaseDir, '*', `*job_${jobGuid}-req.json`))[0];
+        return unlinkSync(req);
     }
 }
