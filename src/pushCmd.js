@@ -37,7 +37,7 @@ export async function pushCmd(mm, { limitToLang, bugfixFilter, bugfixDriver, bug
                             const quota = translationProvider.quota ?? Number.MAX_VALUE;
                             let jobResponse;
                             if (jobBody.tus.length <= quota) {
-                                jobResponse = await translationProvider.translator.requestTranslations(jobRequest);
+                                jobResponse = await (bugfixDriver ? translationProvider.translator.refreshTranslations(jobRequest) : translationProvider.translator.requestTranslations(jobRequest));
                                 jobResponse.num = jobResponse.tus?.length ?? jobResponse.inflight?.length ?? 0;
                             } else {
                                 jobRequest.status = 'blocked';

@@ -16,15 +16,11 @@ export default class CardboardConfig {
             apiKey: ctx.env.translated_api_key_sandbox,
             serviceType: 'premium',
             quality: 90,
-            trafficStore: new stores.FSTrafficStore(),
         };
         this.translationProviders = {
             TranslationOS: {
                 translator: new translators.TranslationOS(defaultTOSConfig),
                 pairs: { 'en': [ 'ar', 'it', 'ja' ] },
-            },
-            TOSRefresh: { // since there are no pairs, this must be chosen manually
-                translator: new translators.TOSRefresh(defaultTOSConfig),
             },
             TOSLQA: { // fake sample of a "push and forget" configuration
                 translator: new translators.TranslationOS({ ...defaultTOSConfig, serviceType: 'bugfix', requestOnly: true }),

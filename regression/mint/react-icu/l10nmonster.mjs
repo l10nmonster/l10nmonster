@@ -16,7 +16,6 @@ export default class ReactConfig {
         //     apiKey: ctx.env.translated_api_key_sandbox,
         //     serviceType: 'premium',
         //     quality: 90,
-        //     trafficStore: new stores.FSTrafficStore(),
         // });
         // this.translationProvider = new translators.ModernMT({
         //     apiKey: ctx.env.mmt_api_key,

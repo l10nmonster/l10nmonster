@@ -127,7 +127,7 @@ export class DeepL {
 
     // sync api only for now
     async fetchTranslations() {
-        return null;
+        throw 'DeepL is a synchronous-only provider';
     }
 
 }

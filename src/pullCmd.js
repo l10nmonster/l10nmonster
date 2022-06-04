@@ -7,11 +7,12 @@ export async function pullCmd(mm, { limitToLang }) {
             .map(e => e[0]);
         stats.numPendingJobs += pendingJobs.length;
         for (const jobGuid of pendingJobs) {
-            const jobManifest = await mm.jobStore.getJob(jobGuid);
-            if (jobManifest.status === 'pending') {
+            const jobRequest = await mm.jobStore.getJobRequest(jobGuid);
+            const pendingJob = await mm.jobStore.getJob(jobGuid);
+            if (pendingJob.status === 'pending') {
                 mm.ctx.logger.info(`Pulling job ${jobGuid}...`);
-                const translationProvider = mm.getTranslationProvider(jobManifest);
-                const jobResponse = await translationProvider.translator.fetchTranslations(jobManifest);
+                const translationProvider = mm.getTranslationProvider(pendingJob);
+                const jobResponse = await translationProvider.translator.fetchTranslations(pendingJob, jobRequest);
                 if (jobResponse?.status === 'done') {
                     await mm.processJob(jobResponse);
                     stats.translatedStrings += jobResponse.tus.length;

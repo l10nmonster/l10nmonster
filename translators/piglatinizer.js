@@ -34,6 +34,6 @@ export class PigLatinizer {
     }
 
     async fetchTranslations() {
-        return null;
+        throw 'PigLatinizer is a synchronous-only provider';
     }
 }

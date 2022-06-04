@@ -19,7 +19,6 @@ import { JsonJobStore } from './stores/jsonJobStore.js';
 // import { SqlJobStore } from './stores/sqlJobStore.js';
 import { JsonStateStore } from './stores/jsonStateStore.js';
 // import { SqlStateStore } from './stores/sqlStateStore.js';
-import { FSTrafficStore } from './stores/fsTrafficStore.js';
 
 import { analyzeCmd } from './src/analyzeCmd.js';
 import { grandfatherCmd } from './src/grandfatherCmd.js';
@@ -40,7 +39,7 @@ import { IosStringsFilter } from './filters/ios.js';
 import { JsonFilter } from './filters/json.js';
 import { XliffBridge } from './translators/xliff.js';
 import { PigLatinizer } from './translators/piglatinizer.js';
-import { TranslationOS, TOSRefresh } from './translators/translationOS.js';
+import { TranslationOS } from './translators/translationOS.js';
 import { Visicode } from './translators/visicode.js';
 import { ModernMT } from './translators/modernMT.js';
 import { DeepL } from './translators/deepL.js';
@@ -95,7 +94,7 @@ async function initMonster() {
         };
         const helpers = {
             stores: {
-                JsonJobStore, JsonStateStore, FSTrafficStore
+                JsonJobStore, JsonStateStore
             },
             adapters: {
                 FsSource, FsTarget,
@@ -107,7 +106,7 @@ async function initMonster() {
                 ...regexNormalizers,
             },
             translators: {
-                XliffBridge, PigLatinizer, TranslationOS, TOSRefresh, Visicode, ModernMT, DeepL
+                XliffBridge, PigLatinizer, TranslationOS, Visicode, ModernMT, DeepL
             },
         };
         for (const helperCategory of Object.values(helpers)) {

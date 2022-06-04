@@ -50,6 +50,6 @@ export class Visicode {
     }
 
     async fetchTranslations() {
-        return null;
+        throw 'Visicode is a synchronous-only provider';
     }
 }

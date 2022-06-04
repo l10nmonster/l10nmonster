@@ -5,6 +5,7 @@ import {
 import * as fs from 'fs/promises';
 import createxliff12 from 'xliff/createxliff12';
 import xliff12ToJs from 'xliff/xliff12ToJs';
+import { getTUMaps } from '../normalizers/util.js';
 
 export class XliffBridge {
     constructor({ requestPath, completePath, quality }) {
@@ -41,7 +42,6 @@ export class XliffBridge {
             await fs.mkdir(path.dirname(prjPath), {recursive: true});
             await fs.writeFile(prjPath, xliff, 'utf8');
             jobManifest.inflight = Object.values(jobRequest.tus).map(tu => tu.guid);
-            jobManifest.envelope = jobRequest.tus.map(tu => [ tu.guid, { sid: tu.sid, ts: tu.ts } ]);
             jobManifest.status = 'pending';
         } else {
             jobManifest.status = 'blocked';
@@ -49,9 +49,10 @@ export class XliffBridge {
         return jobManifest;
     }
 
-    async fetchTranslations(jobManifest) {
-        const completePath = path.join(this.ctx.baseDir, this.completePath(jobManifest.targetLang, jobManifest.jobGuid));
-        const tuMeta = Object.fromEntries(jobManifest.envelope);
+    async fetchTranslations(pendingJob, jobRequest) {
+        const { inflight, ...jobResponse } = pendingJob;
+        const completePath = path.join(this.ctx.baseDir, this.completePath(jobResponse.targetLang, jobResponse.jobGuid));
+        const tuMap = jobRequest.tus.reduce((p,c) => (p[c.guid] = c, p), {});
         if (existsSync(completePath)) {
             const translatedRes = await fs.readFile(completePath, 'utf8');
             const translations = await xliff12ToJs(translatedRes);
@@ -61,8 +62,8 @@ export class XliffBridge {
                 if (xt?.target?.length > 0) {
                     tus.push({
                         guid,
-                        sid: tuMeta[guid].sid,
-                        ts: tuMeta[guid].ts,
+                        sid: tuMap[guid].sid,
+                        ts: tuMap[guid].ts,
                         src: xt.source,
                         tgt: xt.target, // TODO: need to deal with ntgt
                         q: this.quality,
@@ -71,15 +72,18 @@ export class XliffBridge {
                     // console.dir(xt);
                 }
             }
-            if (jobManifest.inflight.length === tus.length) {
-                jobManifest.status = 'done';
-            }
-            if (tus.length > 0) {
-                jobManifest.ts = 1; // TODO: get it from the XLIFF, possibly from <file date="2002-01-25T21:06:00Z">
-                jobManifest.tus = tus;
-                return jobManifest;
+            if (inflight.length === tus.length) {
+                return {
+                    ...jobResponse,
+                    tus,
+                    status: 'done',
+                }
             }
         }
         return null;
+    }
+
+    async refreshTranslations() {
+        throw `XliffBridge doesn't support refreshing translations`;
     }
 }

@@ -121,3 +121,35 @@ export function sourceAndTargetAreCompatible(nsrc, ntgt) {
     }
     return false;
 }
+
+export function getTUMaps(tus) {
+    const contentMap = {};
+    const tuMeta = {};
+    const phNotes = {};
+    for (const tu of tus) {
+        const guid = tu.guid;
+        if (tu.nsrc) {
+            const [normalizedStr, phMap ] = flattenNormalizedSourceV1(tu.nsrc);
+            contentMap[guid] = normalizedStr;
+            if (Object.keys(phMap).length > 0) {
+                tuMeta[guid] = { contentType: tu.contentType, phMap, nsrc: tu.nsrc };
+                phNotes[guid] = Object.entries(phMap)
+                    .reduce((p, c) => `${p} ${c[0]}=${c[1].v}`, '\n ph:')
+                    .replaceAll('<', 'ᐸ')
+                    .replaceAll('>', 'ᐳ'); // hack until they stop stripping html
+            }
+            if (tu.ntgt) {
+                // eslint-disable-next-line no-unused-vars
+                const [normalizedStr, phMap ] = flattenNormalizedSourceV1(tu.ntgt);
+                phNotes[guid] += `\n current translation: ${normalizedStr}`;
+            }
+        } else {
+            contentMap[guid] = tu.src;
+            tuMeta[guid] = { src: tu.src };
+            if (tu.tgt) {
+                phNotes[guid] = `\n current translation: ${tu.tgt}`;
+            }
+        }
+    }
+    return { contentMap, tuMeta, phNotes };
+}
