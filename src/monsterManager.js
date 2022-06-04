@@ -61,6 +61,7 @@ export default class MonsterManager {
             this.sourceCache = existsSync(this.sourceCachePath) ?
                 JSON.parse(readFileSync(this.sourceCachePath, 'utf8')) :
                 { };
+            this.sourceCacheStale = true;
         }
     }
 
@@ -100,38 +101,41 @@ export default class MonsterManager {
     }
 
     async updateSourceCache() {
-        const newCache = { };
-        const stats = await this.fetchResourceStats();
-        let dirty = stats.length !== Object.keys(this.sourceCache).length;
-        for (const res of stats) {
-            if (this.sourceCache[res.id]?.modified === res.modified) {
-                newCache[res.id] = this.sourceCache[res.id];
-            } else {
-                dirty = true;
-                const pipeline = this.contentTypes[res.contentType];
-                const payload = await pipeline.source.fetchResource(res.id);
-                let parsedRes = await pipeline.resourceFilter.parseResource({resource: payload, isSource: true});
-                res.segments = parsedRes.segments;
-                for (const seg of res.segments) {
-                    if (pipeline.decoders) {
-                        const normalizedStr = getNormalizedString(seg.str, pipeline.decoders);
-                        if (normalizedStr[0] !== seg.str) {
-                            seg.nstr = normalizedStr;
+        if (this.sourceCacheStale) {
+            const newCache = { };
+            const stats = await this.fetchResourceStats();
+            let dirty = stats.length !== Object.keys(this.sourceCache).length;
+            for (const res of stats) {
+                if (this.sourceCache[res.id]?.modified === res.modified) {
+                    newCache[res.id] = this.sourceCache[res.id];
+                } else {
+                    dirty = true;
+                    const pipeline = this.contentTypes[res.contentType];
+                    const payload = await pipeline.source.fetchResource(res.id);
+                    let parsedRes = await pipeline.resourceFilter.parseResource({resource: payload, isSource: true});
+                    res.segments = parsedRes.segments;
+                    for (const seg of res.segments) {
+                        if (pipeline.decoders) {
+                            const normalizedStr = getNormalizedString(seg.str, pipeline.decoders);
+                            if (normalizedStr[0] !== seg.str) {
+                                seg.nstr = normalizedStr;
+                            }
                         }
+                        const flattenStr = seg.nstr ? flattenNormalizedSourceToOrdinal(seg.nstr) : seg.str;
+                        flattenStr !== seg.str && (seg.gstr = flattenStr);
+                        seg.guid = this.generateFullyQualifiedGuid(res.id, seg.sid, flattenStr);
+                        seg.contentType = res.contentType;
                     }
-                    const flattenStr = seg.nstr ? flattenNormalizedSourceToOrdinal(seg.nstr) : seg.str;
-                    flattenStr !== seg.str && (seg.gstr = flattenStr);
-                    seg.guid = this.generateFullyQualifiedGuid(res.id, seg.sid, flattenStr);
-                    seg.contentType = res.contentType;
+                    pipeline.segmentDecorator && (res.segments = pipeline.segmentDecorator(parsedRes.segments));
+                    newCache[res.id] = res;
                 }
-                pipeline.segmentDecorator && (res.segments = pipeline.segmentDecorator(parsedRes.segments));
-                newCache[res.id] = res;
             }
-        }
-        if (dirty) {
-            this.ctx.logger.info(`Updating ${this.sourceCachePath}...`);
-            await fs.writeFile(this.sourceCachePath, JSON.stringify(newCache, null, '\t'), 'utf8');
-            this.sourceCache = newCache;
+            if (dirty) {
+                this.ctx.logger.info(`Updating ${this.sourceCachePath}...`);
+                await fs.writeFile(this.sourceCachePath, JSON.stringify(newCache, null, '\t'), 'utf8');
+                this.sourceCache = newCache;
+            }
+            this.sourceCacheStale = false;
         }
     }
 
