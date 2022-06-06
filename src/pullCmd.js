@@ -16,6 +16,8 @@ export async function pullCmd(mm, { limitToLang }) {
                 if (jobResponse?.status === 'done') {
                     await mm.processJob(jobResponse);
                     stats.translatedStrings += jobResponse.tus.length;
+                } else if (jobResponse?.status === 'pending') {
+                    mm.ctx.logger.info(`Got ${jobResponse.tus.length} translations from TOS for job ${jobRequest.jobGuid} but there are still ${jobResponse.inflight.length} translations in flight`);
                 }
             }
         }

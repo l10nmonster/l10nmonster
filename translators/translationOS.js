@@ -234,16 +234,16 @@ export class TranslationOS {
     async fetchTranslations(pendingJob, jobRequest) {
         const { inflight, ...jobResponse } = pendingJob;
         const tus = await this.#fetchTranslatedTus({ targetLang: jobRequest.targetLang, reqTus: jobRequest.tus });
-        if (inflight.length === tus.length) {
-            return {
+        const tuMap = tus.reduce((p,c) => (p[c.guid] = c, p), {});
+        const nowInflight = inflight.filter(guid => !tuMap[guid]);
+        if (tus.length > 0) {
+            const response = {
                 ...jobResponse,
                 tus,
-                status: 'done',
+                status: nowInflight.length === 0 ? 'done' : 'pending',
             };
-        } else {
-            if (tus.length > 0) { // if we got something but not all, log the delta
-                this.ctx.logger.info(`Got ${tus.length} translations from TOS for job ${jobRequest.jobGuid} but was expecting ${inflight.length}`);
-            }
+            nowInflight.length > 0 && (response.inflight = nowInflight);
+            return response;
         }
         return null;
     }
