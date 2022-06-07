@@ -5,7 +5,6 @@ import {
 import * as fs from 'fs/promises';
 import createxliff12 from 'xliff/createxliff12';
 import xliff12ToJs from 'xliff/xliff12ToJs';
-import { getTUMaps } from '../normalizers/util.js';
 
 export class XliffBridge {
     constructor({ requestPath, completePath, quality }) {

@@ -1,5 +1,5 @@
 // eslint-disable-next-line complexity
-export async function pushCmd(mm, { limitToLang, tuFilter, driver, refresh, translationProviderName, leverage, dryRun }) {
+export async function pushCmd(mm, { limitToLang, tuFilter, driver, refresh, translationProviderName, leverage, dryRun, instructions }) {
     if (tuFilter && !mm.tuFilters[tuFilter]) {
         throw `Couldn't find ${tuFilter} tu filter`;
     }
@@ -36,6 +36,7 @@ export async function pushCmd(mm, { limitToLang, tuFilter, driver, refresh, tran
                                 ...jobBody,
                                 ...manifest,
                             };
+                            instructions && (jobRequest.instructions = instructions);
                             const quota = translationProvider.quota ?? Number.MAX_VALUE;
                             let jobResponse;
                             if (jobBody.tus.length <= quota) {

@@ -297,6 +297,7 @@ monsterCLI
     .option('--leverage', 'eliminate internal repetitions from untranslated driver')
     .option('--refresh', 'refresh existing translations without requesting new ones')
     .option('--provider <name>', 'use the specified translation provider')
+    .option('--instructions <instructions>', 'send the specified translation provider')
     .option('--dryrun', 'simulate translating and compare with existing translations')
     .action(async (options) => await withMonsterManager(async monsterManager => {
         const limitToLang = options.lang;
@@ -314,9 +315,10 @@ monsterCLI
         const translationProviderName = options.provider;
         const leverage = options.leverage;
         const dryRun = options.dryrun;
+        const instructions = options.instructions;
         console.log(`Pushing content upstream...${dryRun ? ' (dry run)' : ''}`);
         try {
-            const status = await pushCmd(monsterManager, { limitToLang, tuFilter, driver, refresh, translationProviderName, leverage, dryRun });
+            const status = await pushCmd(monsterManager, { limitToLang, tuFilter, driver, refresh, translationProviderName, leverage, dryRun, instructions });
             if (dryRun) {
                 for (const langStatus of status) {
                     console.log(`\nLanguage pair ${langStatus.sourceLang} -> ${langStatus.targetLang}`);

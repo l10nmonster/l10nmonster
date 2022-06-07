@@ -134,6 +134,7 @@ export class TranslationOS {
                 'service_type': this.serviceType,
                 'dashboard_query_labels': [ tu.rid.slice(-50) ],
             };
+            jobRequest.instructions && (tosTU.context.instructions = jobRequest.instructions);
             (tu.sid !== tu.src) && tosTU.dashboard_query_labels.push(tu.sid.replaceAll('\n', '').slice(-50));
             if (tu.prj !== undefined) {
                 // eslint-disable-next-line camelcase
