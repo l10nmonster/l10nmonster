@@ -41,7 +41,7 @@ export default class CardboardConfig {
                 quota: 0,
             },
         };
-        this.bugfixFilters = {
+        this.tuFilters = {
             initial: tu => tu.sid.indexOf(ctx.arg) === 0,
         };
         this.target = new adapters.FsTarget({

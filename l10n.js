@@ -172,9 +172,9 @@ monsterCLI
     .option('-v, --verbose [level]', '0=error, 1=warning, 2=info, 3=verbose', intOptionParser)
     .option('--ops <opsDir>', 'directory to output debug operations')
     .option('-p, --prj <num>', 'limit to specified project')
-    .option('-b, --build <type>', 'build type')
-    .option('-r, --release <num>', 'release number')
-    .option('-a, --arg <string>', 'optional constructor argument')
+    .option('--build <type>', 'build type')
+    .option('--release <num>', 'release number')
+    .option('--arg <string>', 'optional constructor argument')
     .option('--regression', 'keep variable constant during regression testing')
 ;
 
@@ -292,29 +292,31 @@ monsterCLI
     .command('push')
     .description('push source content upstream (send to translation).')
     .option('-l, --lang <language>', 'target language to push')
-    .option('--bugfixfilter <filter>', 'use the specified bugfix filter')
-    .option('--bugfixdriver <source|tm|job:jobGuid>', 'drive the bugfix filter from the desired source')
+    .option('--filter <filter>', 'use the specified tu filter')
+    .option('--driver <untranslated|source|tm|job:jobGuid>', 'driver of translations need to be pushed (default: untranslated)')
+    .option('--leverage', 'eliminate internal repetitions from untranslated driver')
+    .option('--refresh', 'refresh existing translations without requesting new ones')
     .option('--provider <name>', 'use the specified translation provider')
-    .option('--leverage', 'eliminate internal repetitions from push')
-    .option('-d, --dryrun', 'simulate translating and compare with existing translations')
+    .option('--dryrun', 'simulate translating and compare with existing translations')
     .action(async (options) => await withMonsterManager(async monsterManager => {
         const limitToLang = options.lang;
-        let bugfixFilter, bugfixDriver, bugfixJobGuid;
-        if (options.bugfixfilter || options.bugfixdriver) {
-            bugfixFilter = options.bugfixfilter;
-            bugfixDriver = options.bugfixdriver ?? 'tm';
-            if (bugfixDriver.indexOf('job:') === 0) {
-                bugfixJobGuid = bugfixDriver.split(':')[1];
-            } else if (![ 'source', 'tm' ].includes(bugfixDriver)) {
-                throw `invalid ${bugfixDriver} bugfix driver`;
-            }
+        const tuFilter = options.filter;
+        const driverOption = options.driver ?? 'untranslated';
+        const driver = {};
+        if (driverOption.indexOf('job:') === 0) {
+            driver.jobGuid = driverOption.split(':')[1];
+        } else if ([ 'untranslated', 'source', 'tm' ].includes(driverOption)) {
+            driver[driverOption] = true;
+        } else {
+            throw `invalid ${driverOption} driver`;
         }
+        const refresh = options.refresh;
         const translationProviderName = options.provider;
         const leverage = options.leverage;
         const dryRun = options.dryrun;
         console.log(`Pushing content upstream...${dryRun ? ' (dry run)' : ''}`);
         try {
-            const status = await pushCmd(monsterManager, { limitToLang, bugfixFilter, bugfixDriver, bugfixJobGuid, translationProviderName, leverage, dryRun });
+            const status = await pushCmd(monsterManager, { limitToLang, tuFilter, driver, refresh, translationProviderName, leverage, dryRun });
             if (dryRun) {
                 for (const langStatus of status) {
                     console.log(`\nLanguage pair ${langStatus.sourceLang} -> ${langStatus.targetLang}`);

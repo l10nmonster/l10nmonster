@@ -56,7 +56,7 @@ export default class MonsterManager {
                     translator: monsterConfig.translationProvider,
                 });
             }
-            this.bugfixFilters = monsterConfig.bugfixFilters;
+            this.tuFilters = monsterConfig.tuFilters;
             this.sourceCachePath = path.join(monsterDir, 'sourceCache.json');
             this.sourceCache = existsSync(this.sourceCachePath) ?
                 JSON.parse(readFileSync(this.sourceCachePath, 'utf8')) :
@@ -274,7 +274,7 @@ export default class MonsterManager {
         return (await this.#internalPrepareTranslationJob({ targetLang }))[1];
     }
 
-    async prepareBugfixJob({ targetLang, filter, tmBased, guidList }) {
+    async prepareFilterBasedJob({ targetLang, tmBased, guidList }) {
         const tm = await this.tmm.getTM(this.sourceLang, targetLang);
         const sourceLookup = await this.getSourceAsTus();
         if (!guidList) {
@@ -290,7 +290,6 @@ export default class MonsterManager {
             return { ...sourceTU, ...translatedTU }; // this is a superset of source and target properties so that filters have more to work with
         });
         this.ctx.prj !== undefined && (tus = tus.filter(tu => this.ctx.prj.includes(tu.prj)));
-        filter && (tus = tus.filter(tu => this.bugfixFilters[filter](tu)));
         return {
             sourceLang: this.sourceLang,
             targetLang,

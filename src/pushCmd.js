@@ -1,12 +1,13 @@
-export async function pushCmd(mm, { limitToLang, bugfixFilter, bugfixDriver, bugfixJobGuid, translationProviderName, leverage, dryRun }) {
-    if (bugfixFilter && !mm.bugfixFilters[bugfixFilter]) {
-        throw `Couldn't find ${bugfixFilter} bugfix filter`;
+// eslint-disable-next-line complexity
+export async function pushCmd(mm, { limitToLang, tuFilter, driver, refresh, translationProviderName, leverage, dryRun }) {
+    if (tuFilter && !mm.tuFilters[tuFilter]) {
+        throw `Couldn't find ${tuFilter} tu filter`;
     }
     let guidList;
-    if (bugfixJobGuid) {
-        const req = await mm.jobStore.getJobRequest(bugfixJobGuid);
+    if (driver.jobGuid) {
+        const req = await mm.jobStore.getJobRequest(driver.jobGuid);
         if (!req) {
-            throw `jobGuid ${bugfixJobGuid} not found`;
+            throw `jobGuid ${driver.jobGuid} not found`;
         }
         guidList = req.tus.map(tu => tu.guid);
     }
@@ -17,7 +18,8 @@ export async function pushCmd(mm, { limitToLang, bugfixFilter, bugfixDriver, bug
         const blockedJobs = (await mm.jobStore.getJobStatusByLangPair(mm.sourceLang, targetLang))
             .filter(e => e[1] === 'req');
         if (blockedJobs.length === 0) {
-            const jobBody = await (bugfixDriver ? mm.prepareBugfixJob({ targetLang, filter: bugfixFilter, tmBased: bugfixDriver === 'tm', guidList }) : mm.prepareTranslationJob({ targetLang, leverage }));
+            const jobBody = await (driver.untranslated ? mm.prepareTranslationJob({ targetLang, leverage }) : mm.prepareFilterBasedJob({ targetLang, tmBased: driver.tm, guidList }));
+            tuFilter && (jobBody.tus = jobBody.tus.filter(tu => mm.tuFilters[tuFilter](tu)));
             const langStatus = { sourceLang: jobBody.sourceLang, targetLang };
             if (Object.keys(jobBody.tus).length > 0) {
                 if (dryRun) {
@@ -37,7 +39,7 @@ export async function pushCmd(mm, { limitToLang, bugfixFilter, bugfixDriver, bug
                             const quota = translationProvider.quota ?? Number.MAX_VALUE;
                             let jobResponse;
                             if (jobBody.tus.length <= quota) {
-                                jobResponse = await (bugfixDriver ? translationProvider.translator.refreshTranslations(jobRequest) : translationProvider.translator.requestTranslations(jobRequest));
+                                jobResponse = await (refresh ? translationProvider.translator.refreshTranslations(jobRequest) : translationProvider.translator.requestTranslations(jobRequest));
                                 jobResponse.num = jobResponse.tus?.length ?? jobResponse.inflight?.length ?? 0;
                             } else {
                                 jobRequest.status = 'blocked';
