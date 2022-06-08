@@ -374,7 +374,7 @@ monsterCLI
             } else {
                 console.error('Could not fetch the specified job');
             }
-    } else if (pairsJobGuid !== undefined) {
+        } else if (pairsJobGuid !== undefined) {
             const req = await monsterManager.jobStore.getJobRequest(pairsJobGuid);
             const res = await monsterManager.jobStore.getJob(pairsJobGuid);
             if (req && res) {
@@ -396,9 +396,10 @@ monsterCLI
             try {
                 const res = await monsterManager.jobStore.getJob(deleteJobGuid);
                 if (res) {
-                    console.error(`Can only push blocked/failed jobs. This job has status: ${res.status}`);
+                    console.error(`Can only delete blocked/failed jobs. This job has status: ${res.status}`);
+                } else {
+                    await monsterManager.jobStore.deleteJobRequest(deleteJobGuid);
                 }
-                await monsterManager.jobStore.deleteJobRequest(deleteJobGuid);
             } catch (e) {
                 console.error(`Failed to push job: ${e}`);
             }
@@ -455,12 +456,14 @@ monsterCLI
 monsterCLI
     .command('pull')
     .description('receive outstanding translation jobs.')
+    .option('--partial', 'commit partial deliveries')
     .option('-l, --lang <language>', 'only get jobs for the target language')
     .action(async (options) => await withMonsterManager(async monsterManager => {
-    const limitToLang = options.lang;
-      console.log(`Pulling pending translations...`);
-      const stats = await pullCmd(monsterManager, { limitToLang });
-      console.log(`Checked ${stats.numPendingJobs.toLocaleString()} pending jobs, ${stats.translatedStrings.toLocaleString()} translated strings pulled`);
+        const limitToLang = options.lang;
+        const partial = options.partial;
+        console.log(`Pulling pending translations...`);
+        const stats = await pullCmd(monsterManager, { limitToLang, partial });
+        console.log(`Checked ${stats.numPendingJobs.toLocaleString()} pending jobs, ${stats.doneJobs.toLocaleString()} done jobs, ${stats.newPendingJobs.toLocaleString()} pending jobs created, ${stats.translatedStrings.toLocaleString()} translated strings found`);
   }))
 ;
 

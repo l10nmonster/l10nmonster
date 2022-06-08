@@ -4,11 +4,10 @@ export async function jobPushCmd(mm, pushJobGuid) {
         const translationProvider = mm.getTranslationProvider(blockedRequest);
         if (translationProvider) {
             const jobResponse = await translationProvider.translator.requestTranslations(blockedRequest);
-            jobResponse.num = jobResponse.tus?.length ?? jobResponse.inflight?.length ?? 0;
             await mm.processJob(jobResponse);
             return {
                 status: jobResponse.status,
-                num: jobResponse.num,
+                num: jobResponse.tus?.length ?? jobResponse.inflight?.length ?? 0,
             };
         } else {
             throw 'No corresponding translationProvider configured';
