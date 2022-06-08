@@ -29,7 +29,7 @@ export async function pushCmd(mm, { limitToLang, tuFilter, driver, refresh, tran
                     const translationProvider = mm.getTranslationProvider(jobBody);
                     if (translationProvider) {
                         const minimumJobSize = translationProvider.minimumJobSize ?? 0;
-                        if (jobBody.tus.length >= minimumJobSize) {
+                        if (jobBody.tus.length >= minimumJobSize || refresh) {
                             const manifest = await mm.jobStore.createJobManifest();
                             langStatus.jobGuid = manifest.jobGuid;
                             const jobRequest = {
@@ -39,7 +39,7 @@ export async function pushCmd(mm, { limitToLang, tuFilter, driver, refresh, tran
                             instructions && (jobRequest.instructions = instructions);
                             const quota = translationProvider.quota ?? Number.MAX_VALUE;
                             let jobResponse;
-                            if (jobBody.tus.length <= quota) {
+                            if (jobBody.tus.length <= quota || refresh) {
                                 jobResponse = await (refresh ? translationProvider.translator.refreshTranslations(jobRequest) : translationProvider.translator.requestTranslations(jobRequest));
                             } else {
                                 jobRequest.status = 'blocked';
