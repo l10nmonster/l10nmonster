@@ -46,10 +46,10 @@ export async function pushCmd(mm, { limitToLang, tuFilter, driver, refresh, tran
                             }
                             await mm.processJob(jobResponse, jobRequest);
                             langStatus.status = jobResponse?.status ?? jobRequest.status;
-                            langStatus.num = jobResponse.tus?.length ?? jobResponse.inflight?.length ?? 0;
+                            langStatus.num = jobResponse?.tus?.length ?? jobResponse?.inflight?.length ?? 0;
                         } else {
                             langStatus.minimumJobSize = minimumJobSize;
-                            langStatus.num = jobBody.tus.length;
+                            langStatus.num = jobBody?.tus?.length ?? 0;
                         }
                     } else {
                         throw `No ${translationProviderName} translationProvider configured`;
