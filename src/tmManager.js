@@ -83,7 +83,7 @@ class TM {
                 const reqEntry = requestedUnits[guid] ?? {};
                 const tmEntry = this.getEntryByGuid(guid);
                 if (!tmEntry) {
-                    this.setEntryByGuid(guid, { ...reqEntry, q: 0, jobGuid, inflight: true });
+                    this.setEntryByGuid(guid, { ...reqEntry, ts: jobResponse.ts, q: 0, jobGuid, inflight: true });
                 }
             }
         }
@@ -96,7 +96,7 @@ class TM {
                 // also note that this may result in non-deterministic behavior (equal ts means later one wins)
                 const isNewish = !(tmEntry?.ts > tu.ts);
                 if (!tmEntry || tmEntry.q < tu.q || (tmEntry.q === tu.q && isNewish)) {
-                    this.setEntryByGuid(tu.guid, { ...reqEntry, ...tu, jobGuid });
+                    this.setEntryByGuid(tu.guid, { ...reqEntry, ts: jobResponse.ts, ...tu, jobGuid });
                 }
             }
         }
