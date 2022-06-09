@@ -2,14 +2,50 @@ import got from 'got';
 
 import {
     flattenNormalizedSourceToXmlV1, extractNormalizedPartsFromXmlV1,
-    flattenNormalizedSourceV1, extractNormalizedPartsV1,
     normalizedStringsAreEqual,
 } from '../normalizers/util.js';
 
 const MAX_CHAR_LENGTH = 9900;
 const MAX_CHUNK_SIZE = 125;
 
-// TODO: externalize this as a general-purpose Op
+export function flattenNormalizedSourceUnicode(nsrc) {
+    const normalizedStr = [],
+        phMap = {};
+    let phIdx = 0;
+    for (const part of nsrc) {
+        if (typeof part === 'string') {
+            normalizedStr.push(part);
+        } else {
+            const ph = String.fromCodePoint(9312 + phIdx);
+            phIdx++;
+            normalizedStr.push(ph);
+            phMap[ph] = part;
+        }
+    }
+    return [ normalizedStr.join(''), phMap ];
+}
+
+// eslint-disable-next-line prefer-regex-literals
+const unicodePhRegex = new RegExp('[\u{2460}-\u{24ff}]','g');
+export function extractNormalizedPartsUnicode(str, phMap) {
+    const normalizedParts = [];
+    let pos = 0;
+    for (const match of str.matchAll(unicodePhRegex)) {
+        if (match.index > pos) {
+            normalizedParts.push(match.input.substring(pos, match.index));
+        }
+        normalizedParts.push({
+            ...phMap[match[0]],
+            v1: match[0],
+        });
+        pos = match.index + match[0].length;
+    }
+    if (pos < str.length) {
+        normalizedParts.push(str.substring(pos, str.length));
+    }
+    return normalizedParts;
+}
+
 async function mmtTranslateChunkOp({ baseURL, json, headers, offset}) {
     try {
         const response = await got.get({
@@ -41,7 +77,7 @@ async function mmtMergeTranslatedChunksOp({ jobRequest, tuMeta, quality, ts, phS
     jobResponse.tus = tus.map((tu, idx) => {
         const translation = { guid: tu.guid };
         const mmtTx = translations[idx] || {};
-        const ntgt = (phSerialization === 'xml' ? extractNormalizedPartsFromXmlV1 : extractNormalizedPartsV1)(mmtTx.translation, tuMeta[idx] || {});
+        const ntgt = (phSerialization === 'xml' ? extractNormalizedPartsFromXmlV1 : extractNormalizedPartsUnicode)(mmtTx.translation, tuMeta[idx] || {});
         if (tu.nsrc) {
             translation.ntgt = ntgt;
             translation.contentType = tu.contentType;
@@ -84,7 +120,7 @@ export class ModernMT {
         const targetLang = (this.languageMapper && this.languageMapper(jobRequest.targetLang)) ?? jobRequest.targetLang;
         const tuMeta = {};
         const mmtPayload = jobRequest.tus.map((tu, idx) => {
-            const [xmlSrc, phMap ] = (this.phSerialization === 'xml' ? flattenNormalizedSourceToXmlV1 : flattenNormalizedSourceV1)(tu.nsrc || [ tu.src ]);
+            const [xmlSrc, phMap ] = (this.phSerialization === 'xml' ? flattenNormalizedSourceToXmlV1 : flattenNormalizedSourceUnicode)(tu.nsrc || [ tu.src ]);
             if (Object.keys(phMap).length > 0) {
                 tuMeta[idx] = phMap;
             }
