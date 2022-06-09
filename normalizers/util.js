@@ -122,6 +122,12 @@ export function sourceAndTargetAreCompatible(nsrc, ntgt) {
     return false;
 }
 
+export function normalizedStringsAreEqual(s1, s2) {
+    const f1 = Array.isArray(s1) ? flattenNormalizedSourceToOrdinal(s1) : s1;
+    const f2 = Array.isArray(s2) ? flattenNormalizedSourceToOrdinal(s2) : s2;
+    return f1 === f2;
+}
+
 export function getTUMaps(tus) {
     const contentMap = {};
     const tuMeta = {};
