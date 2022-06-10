@@ -18,8 +18,13 @@ export function flattenNormalizedSourceUnicode(nsrc) {
         } else {
             const ph = String.fromCodePoint(9312 + phIdx);
             phIdx++;
+            const phPrefix = phIdx < 26 ? String.fromCharCode(96 + phIdx) : `z${phIdx}`;
+            const mangledPh = `${phPrefix}_${part.t}_${(part.v.match(/[0-9A-Za-z_]+/) || [''])[0]}`;
             normalizedStr.push(ph);
-            phMap[ph] = part;
+            phMap[ph] = {
+                ...part,
+                v1: mangledPh,
+            };
         }
     }
     return [ normalizedStr.join(''), phMap ];
@@ -34,10 +39,7 @@ export function extractNormalizedPartsUnicode(str, phMap) {
         if (match.index > pos) {
             normalizedParts.push(match.input.substring(pos, match.index));
         }
-        normalizedParts.push({
-            ...phMap[match[0]],
-            v1: match[0],
-        });
+        normalizedParts.push(phMap[match[0]]);
         pos = match.index + match[0].length;
     }
     if (pos < str.length) {
