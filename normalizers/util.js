@@ -79,8 +79,12 @@ export function flattenNormalizedSourceToXmlV1(nsrc) {
         } else {
             phIdx++;
             const phPrefix = phIdx < 26 ? String.fromCharCode(96 + phIdx) : `z${phIdx}`;
+            const mangledPh = `${phPrefix}_${part.t}_${(part.v.match(/[0-9A-Za-z_]+/) || [''])[0]}`;
             normalizedStr.push(`<${phPrefix} />`);
-            phMap[phPrefix] = part;
+            phMap[phPrefix] = {
+                ...part,
+                v1: mangledPh,
+            };
         }
     }
     return [ normalizedStr.join(''), phMap ];

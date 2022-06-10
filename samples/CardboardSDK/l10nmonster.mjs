@@ -29,18 +29,16 @@ export default class CardboardConfig {
                 translator: new translators.ModernMT({
                     apiKey: ctx.env.mmt_api_key,
                     quality: 40,
-                    maxCharLength: 100,
+                    maxCharLength: 1000,
                 }),
-                quota: 0,
             },
             MMTBraces: {
                 translator: new translators.ModernMT({
                     apiKey: ctx.env.mmt_api_key,
                     quality: 40,
-                    maxCharLength: 100,
+                    maxCharLength: 1000,
                     phSerialization: 'mustache',
                 }),
-                quota: 0,
             },
             DeepL: {
                 translator: new translators.DeepL({
