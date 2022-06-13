@@ -1,0 +1,49 @@
+{
+	"sourceLang": "en",
+	"targetLang": "ar",
+	"tus": [
+		{
+			"sid": "AccessibilityCardboardButton",
+			"notes": "Accessibility label for the cardboard button to go into cardboard mode (read out loud)",
+			"gstr": "Cardboard mode: {{x}}",
+			"guid": "p72nj2yZPB-RfJOZa2iZg2pt16HznCGr_kdYQziGHxs",
+			"contentType": "default",
+			"src": "Cardboard mode: %1$@",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451,
+			"nsrc": [
+				"Cardboard mode: ",
+				{
+					"t": "x",
+					"v": "%1$@"
+				}
+			]
+		},
+		{
+			"sid": "AccessibilityFullscreenButton",
+			"notes": "Accessibility label for the fullscreen button to go into fullscreen mode (read out loud)",
+			"guid": "snWaUNjXnKuXlItO8jUPfKITKfuqshl6xCXxUgiP4jI",
+			"contentType": "default",
+			"src": "Fullscreen mode",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451
+		},
+		{
+			"sid": "HelpHack",
+			"notes": "Test encoding and decoding",
+			"gstr": "Help 'encoding' is \"hard\"!\\\n",
+			"guid": "kjYD6n4DIB9kQKYRd0QStGsZfU2yOhcUG091zj53Skw",
+			"contentType": "default",
+			"src": "Help 'encoding\\' is\\U00a0\"hard\"!\\\\\n",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451,
+			"nsrc": [
+				"Help 'encoding' is \"hard\"!\\\n"
+			]
+		}
+	],
+	"translationProvider": "Visicode",
+	"jobGuid": "xxx2xxx",
+	"status": "created",
+	"updatedAt": "2022-05-29T00:00:00.000Z"
+}

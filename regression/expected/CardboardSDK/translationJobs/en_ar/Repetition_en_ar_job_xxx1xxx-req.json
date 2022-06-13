@@ -1,0 +1,19 @@
+{
+	"sourceLang": "en",
+	"targetLang": "ar",
+	"tus": [
+		{
+			"sid": "AccessibilityHelpButton",
+			"notes": "Accessibility label for the information button to go to help page (read out loud)",
+			"guid": "d13hqt62wEq5drSC-g7auJUOAlQL-N3VrEyi1mCjMH0",
+			"contentType": "default",
+			"src": "Help",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451
+		}
+	],
+	"translationProvider": "Repetition",
+	"jobGuid": "xxx1xxx",
+	"status": "created",
+	"updatedAt": "2022-05-29T00:00:00.000Z"
+}

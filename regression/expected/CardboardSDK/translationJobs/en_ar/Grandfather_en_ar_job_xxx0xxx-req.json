@@ -1,0 +1,317 @@
+{
+	"sourceLang": "en",
+	"targetLang": "ar",
+	"tus": [
+		{
+			"sid": "BackButtonLabel",
+			"notes": "Back button label used to go back to the previous screen. (15 chars)",
+			"guid": "Sch-OXL3KPaFNWvKiWNmafNmqHZo8oNtcaB-9jYE1sk",
+			"contentType": "default",
+			"src": "Back",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451
+		},
+		{
+			"sid": "NavTitleLabel",
+			"notes": "Label of the app title bar when on the QR code scanner screen. (45 chars)",
+			"guid": "S5zXEp9KGe9nqhqgtH8vMM106HfoiBTZzDQ8qyPdB5A",
+			"contentType": "default",
+			"src": "QR Scan",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451
+		},
+		{
+			"sid": "LoadingMessage",
+			"notes": "Message shown to the user while waiting to process the QR code. (60 chars)",
+			"guid": "PV7WBP4aNfZzq1Hre1_bkECpoSmhPedg7xfh7UKYkyw",
+			"contentType": "default",
+			"src": "Parsing configuration data",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451
+		},
+		{
+			"sid": "InvalidQRCode",
+			"notes": "Error message shown to the user if the QR code is invalid. (60 chars)",
+			"guid": "jkJekuVBcsiufoG2zmxszlbnMGkREPRBAeb2QTDfUaI",
+			"contentType": "default",
+			"src": "The QR code is invalid",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451
+		},
+		{
+			"sid": "ParsingFailed",
+			"notes": "Error message shown to the user if the QR code is not a valid device profile. (60 chars)",
+			"guid": "2n8bq0sVYs9Xil3nEw7OEVuhOSGvpaoInQAZ89RnD7c",
+			"contentType": "default",
+			"src": "Problem in parsing the Url",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451
+		},
+		{
+			"sid": "DataSynced",
+			"notes": "Format string used as a temporary message shown after a successful device profile is set.\n* (60 chars)",
+			"gstr": "{{x}} detected",
+			"guid": "XY8o8xA5C_HlR4v8LDc4L98Y0mR-4gHyLjDxwvNhDrM",
+			"contentType": "default",
+			"src": "%1$@ detected",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%1$@"
+				},
+				" detected"
+			]
+		},
+		{
+			"sid": "FindSymbolOnViewer",
+			"notes": "Label shown next to example QR code. (40 chars)",
+			"guid": "MmBuoyCIE3eiz_wlkLAZMeoIhXX52LOiAHNCnl3o4Fc",
+			"contentType": "default",
+			"src": "Find this symbol on your viewer",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451
+		},
+		{
+			"sid": "CanNotFindSymbol",
+			"notes": "Label shown next to skip button that allows the user to skip the QR code step. (40 chars)",
+			"guid": "QaV08RUEuxPOCugEXCnQ7tnShKARCrrKeZxYO7kxLSc",
+			"contentType": "default",
+			"src": "Can't find this symbol?",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451
+		},
+		{
+			"sid": "TroubleShootingTips",
+			"notes": "Label shown next to skip button that allows the user to go to troubleshooting tips. (40 chars)",
+			"guid": "c6aK6IBRyaNfMidf7na8JYOmhVI2r4vsn3O6B-pr-xc",
+			"contentType": "default",
+			"src": "Troubleshooting Tips",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451
+		},
+		{
+			"sid": "SkipButtonLabel",
+			"notes": "Button label for the control that allows the user to skip the QR code step. (40 chars)",
+			"guid": "ZYAxQNY0zLKx4RB3CGTDXujQrbLQclR9EH5EQ7Fzbok",
+			"contentType": "default",
+			"src": "SKIP",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451
+		},
+		{
+			"sid": "OnboardingIntroLine1",
+			"notes": "First line of the onboarding introduction. (40 chars)",
+			"guid": "Kj45w0Rgr1SHV55MeVawhgff4UYIfb-XuWWnyf9_dks",
+			"contentType": "default",
+			"src": "Let's get you set up",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451
+		},
+		{
+			"sid": "OnboardingIntroLine2",
+			"notes": "Second line of the onboarding introduction. (80 chars)",
+			"guid": "8_cqAMCRj_4YGH6-e5xWNNAupQF-OHn20AQoeGp75h4",
+			"contentType": "default",
+			"src": "Pair your phone with your viewer for the best experience.",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451
+		},
+		{
+			"sid": "OnboardingNoViewerPrompt",
+			"notes": "Label shown below the onboarding intro line to ask if they have a cardboard viewer. (40 chars)",
+			"guid": "yiK0MVBkcMRpl-7tMMPVMmlUvDJvqVxRbLLDHOchAko",
+			"contentType": "default",
+			"src": "No cardboard viewer?",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451
+		},
+		{
+			"sid": "OnboardingGetCardboardButton",
+			"notes": "Button title shown next to the \"no cardboard viewer\" prompt to go get one. (15 chars)",
+			"guid": "L3Um-sKnXUAP1liD4dLFvMGh7c2p80P5DRx1ZFPYpqM",
+			"contentType": "default",
+			"src": "Get One",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451
+		},
+		{
+			"sid": "PlaceYourPhoneInCardboard",
+			"notes": "Instruction for the user that they should now put their phone in Cardboard. This is a generic\n* instruction when the view type is not known. (50 chars)",
+			"guid": "6nFW5iZToYQ3LtLDeb9Adlfu-EQWDAuFyMsAlRw4cf4",
+			"contentType": "default",
+			"src": "Place your phone into your Cardboard viewer.",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451
+		},
+		{
+			"sid": "PlaceYourPhoneInViewerFormat",
+			"notes": "Instruction for the user that they should now put their phone in Cardboard. This is used as a\n* format string where the parameter is the view name. (50 chars)",
+			"gstr": "Place your phone into your {{x}} viewer.",
+			"guid": "4jxuTPXhhsLGShj5wDGlsktW8NV1GAYrGDxHaZV_6C4",
+			"contentType": "default",
+			"src": "Place your phone into your %1$@ viewer.",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451,
+			"nsrc": [
+				"Place your phone into your ",
+				{
+					"t": "x",
+					"v": "%1$@"
+				},
+				" viewer."
+			]
+		},
+		{
+			"sid": "SettingsNavTitleLabel",
+			"notes": "Title of settings view. (20 chars)",
+			"guid": "6hNFreOOSaLtvtpZeirvd7YWah19RxogxrXPw89jle8",
+			"contentType": "default",
+			"src": "Settings",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451
+		},
+		{
+			"sid": "SettingsSyncLabel",
+			"notes": "Button label for enabling Cardboard viewer configurating sharing via the Cardboard app.\n* (40 chars)",
+			"guid": "JdemGm2zCUjeubRLZsgXcHubo03AMla3GDG3EQOcRaA",
+			"contentType": "default",
+			"src": "Sync with Google Cardboard",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451
+		},
+		{
+			"sid": "SettingsCurrentViewerLabelFormat",
+			"notes": "Format string for label that display the viewer currently configured. (30 chars)",
+			"gstr": "Current viewer: {{x}}",
+			"guid": "slgigM0NfUFIqYMNDpipEAV2LaSg4PIejxEgH37p4Pw",
+			"contentType": "default",
+			"src": "Current viewer: %1$@",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451,
+			"nsrc": [
+				"Current viewer: ",
+				{
+					"t": "x",
+					"v": "%1$@"
+				}
+			]
+		},
+		{
+			"sid": "DefaultViewerName",
+			"notes": "Reported name of Cardboard viewer when no viewer configured. (40 chars)",
+			"guid": "wqrXrCWCECaeOiuDSJiLjeSfPaVlrgpeDFJp8NK39WU",
+			"contentType": "default",
+			"src": "Default",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451
+		},
+		{
+			"sid": "DifferentViewerQuestion",
+			"notes": "Question shown to the user if they would like to switch their Cardboard\nviewer. (40 chars)",
+			"guid": "kNNZEkHiye4nzgXH33tGPIpo_dN9p9dtDvtyQLknghg",
+			"contentType": "default",
+			"src": "Using a different viewer?",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451
+		},
+		{
+			"sid": "SwitchViewer",
+			"notes": "Button text shown with the DifferentViewerQuestion that takes the user to the\nscreen to pair with a different Cardboard viewer. (15 chars)",
+			"guid": "qTP4qKQCnREcyJAH2Kaph3DNOicsXMZGYTlqeVzrb2c",
+			"contentType": "default",
+			"src": "SWITCH",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451
+		},
+		{
+			"sid": "SwitchViewerActivityMenuTitle",
+			"notes": "Popup activity view menu text that shows the name of the currently paired viewer but also takes\nthe user to the QRScan view controller when tapped. (30 chars)",
+			"gstr": "Switch viewer: {{x}}",
+			"guid": "Ko1R6hKlnw0dJtnGrwHdjhq0igmaxHWUuci1ZrEiYvg",
+			"contentType": "default",
+			"src": "Switch viewer: %1$@",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451,
+			"nsrc": [
+				"Switch viewer: ",
+				{
+					"t": "x",
+					"v": "%1$@"
+				}
+			]
+		},
+		{
+			"sid": "HelpActivityMenuTitle",
+			"notes": "Popup activity view menu text for launching an external web browser to get help. (15 chars)",
+			"guid": "_AhOCAPiMyasIto9QG_S4I0SlAYd_aMe7FWWEAduL38",
+			"contentType": "default",
+			"src": "Help",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451
+		},
+		{
+			"sid": "SuccessfullyPaired",
+			"notes": "Dialog title shown to confirm that view pairing is successful. (40 chars)",
+			"guid": "CBwqRfe5Ye7rqvX0p6oInX-rrmYU3pvl1Sb7GOjEY2k",
+			"contentType": "default",
+			"src": "Successfully Paired!",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451
+		},
+		{
+			"sid": "ViewerConfigured",
+			"notes": "Dialog text shown to show user what the paired viewer is. (80 chars)",
+			"gstr": "Your phone is now configured for your {{x}} viewer.",
+			"guid": "xX2wjf_JnaqCdoe4AvzrpR0w__P7h12WCoMygm6ru8U",
+			"contentType": "default",
+			"src": "Your phone is now configured for your %1$@ viewer.",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451,
+			"nsrc": [
+				"Your phone is now configured for your ",
+				{
+					"t": "x",
+					"v": "%1$@"
+				},
+				" viewer."
+			]
+		},
+		{
+			"sid": "OK",
+			"notes": "Button label for user to confirm that they know the viewer is paired. (20 chars)",
+			"guid": "QBJSpbVgw6NtOonlImeo7N4Ys6aMk-tIHP-Jha6jjwk",
+			"contentType": "default",
+			"src": "OK",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451
+		},
+		{
+			"sid": "AccessibilitySettingsButton",
+			"notes": "Accessibility label for the gear icon to bring up settings (read out loud)",
+			"guid": "ngT5pq_BhXgX71IJFDYZQRJX80bl9J1XPD2oBb-VEAE",
+			"contentType": "default",
+			"src": "Settings",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451
+		},
+		{
+			"sid": "AccessibilityBackButton",
+			"notes": "Accessibility label for the back button to take us out of 3D mode (read out loud)",
+			"gstr": "Back to previous screen",
+			"guid": "Ln6QELVxYXr2EgOv6P2-EYewhB5H6jLOJ1W5jilT_nc",
+			"contentType": "default",
+			"src": "Back\\U0020to previous screen",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1647050424451,
+			"nsrc": [
+				"Back to previous screen"
+			]
+		}
+	],
+	"translationProvider": "Grandfather",
+	"jobGuid": "xxx0xxx",
+	"status": "created",
+	"updatedAt": "2022-05-29T00:00:00.000Z"
+}

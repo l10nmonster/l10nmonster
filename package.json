@@ -45,6 +45,7 @@
     "pig-latinizer": "^1.0.6",
     "tinyld": "1.2.0",
     "tmexchange": "l10nmonster/tmexchange",
+    "winston": "^3.7.2",
     "words-count": "^2.0.2",
     "xliff": "^6.0.1",
     "xml-formatter": "^2.6.1"

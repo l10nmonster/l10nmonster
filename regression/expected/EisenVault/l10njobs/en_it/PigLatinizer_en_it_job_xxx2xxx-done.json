@@ -1,0 +1,16 @@
+{
+	"sourceLang": "en",
+	"targetLang": "it",
+	"translationProvider": "PigLatinizer",
+	"jobGuid": "xxx2xxx",
+	"status": "done",
+	"tus": [
+		{
+			"guid": "izQWYgYqKwqWjsdbFGDGR2vStXjgSKPkDzfkUNC_dZY",
+			"tgt": "[-it]",
+			"q": 2
+		}
+	],
+	"ts": 1,
+	"updatedAt": "2022-05-29T00:00:00.000Z"
+}

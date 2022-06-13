@@ -1,0 +1,284 @@
+{
+	"sourceLang": "en",
+	"targetLang": "ar",
+	"translationProvider": "Grandfather",
+	"tus": [
+		{
+			"guid": "Sch-OXL3KPaFNWvKiWNmafNmqHZo8oNtcaB-9jYE1sk",
+			"q": 70,
+			"src": "Back",
+			"tgt": "رجوع",
+			"ts": 1647050424451
+		},
+		{
+			"guid": "S5zXEp9KGe9nqhqgtH8vMM106HfoiBTZzDQ8qyPdB5A",
+			"q": 70,
+			"src": "QR Scan",
+			"tgt": "فحص الاستجابة السريعة.",
+			"ts": 1647050424451
+		},
+		{
+			"guid": "PV7WBP4aNfZzq1Hre1_bkECpoSmhPedg7xfh7UKYkyw",
+			"q": 70,
+			"src": "Parsing configuration data",
+			"tgt": "تحليل بيانات التهيئة",
+			"ts": 1647050424451
+		},
+		{
+			"guid": "jkJekuVBcsiufoG2zmxszlbnMGkREPRBAeb2QTDfUaI",
+			"q": 70,
+			"src": "The QR code is invalid",
+			"tgt": "إن رمز الاستجابة السريعة غير صالح",
+			"ts": 1647050424451
+		},
+		{
+			"guid": "2n8bq0sVYs9Xil3nEw7OEVuhOSGvpaoInQAZ89RnD7c",
+			"q": 70,
+			"src": "Problem in parsing the Url",
+			"tgt": "‏مشكلة في تحليل عنوان Url",
+			"ts": 1647050424451
+		},
+		{
+			"guid": "XY8o8xA5C_HlR4v8LDc4L98Y0mR-4gHyLjDxwvNhDrM",
+			"q": 70,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%1$@"
+				},
+				" detected"
+			],
+			"ntgt": [
+				"تم اكتشاف ",
+				{
+					"t": "x",
+					"v": "%1$@",
+					"v1": "a_x_1"
+				}
+			],
+			"ts": 1647050424451
+		},
+		{
+			"guid": "MmBuoyCIE3eiz_wlkLAZMeoIhXX52LOiAHNCnl3o4Fc",
+			"q": 70,
+			"src": "Find this symbol on your viewer",
+			"tgt": "العثور على هذا الرمز على عارضك",
+			"ts": 1647050424451
+		},
+		{
+			"guid": "QaV08RUEuxPOCugEXCnQ7tnShKARCrrKeZxYO7kxLSc",
+			"q": 70,
+			"src": "Can't find this symbol?",
+			"tgt": "ألا تستطيع العثور على هذا الرمز؟",
+			"ts": 1647050424451
+		},
+		{
+			"guid": "c6aK6IBRyaNfMidf7na8JYOmhVI2r4vsn3O6B-pr-xc",
+			"q": 70,
+			"src": "Troubleshooting Tips",
+			"tgt": "نصائح تحرّى الخلل وإصلاحه",
+			"ts": 1647050424451
+		},
+		{
+			"guid": "ZYAxQNY0zLKx4RB3CGTDXujQrbLQclR9EH5EQ7Fzbok",
+			"q": 70,
+			"src": "SKIP",
+			"tgt": "تخطٍ",
+			"ts": 1647050424451
+		},
+		{
+			"guid": "Kj45w0Rgr1SHV55MeVawhgff4UYIfb-XuWWnyf9_dks",
+			"q": 70,
+			"src": "Let's get you set up",
+			"tgt": "لنبدأ الإعداد",
+			"ts": 1647050424451
+		},
+		{
+			"guid": "8_cqAMCRj_4YGH6-e5xWNNAupQF-OHn20AQoeGp75h4",
+			"q": 70,
+			"src": "Pair your phone with your viewer for the best experience.",
+			"tgt": "أقرن هاتفك مع العارض للتمتّع بأفضل تجربة",
+			"ts": 1647050424451
+		},
+		{
+			"guid": "yiK0MVBkcMRpl-7tMMPVMmlUvDJvqVxRbLLDHOchAko",
+			"q": 70,
+			"src": "No cardboard viewer?",
+			"tgt": "‏أليس لديك عارض Cardboard؟",
+			"ts": 1647050424451
+		},
+		{
+			"guid": "L3Um-sKnXUAP1liD4dLFvMGh7c2p80P5DRx1ZFPYpqM",
+			"q": 70,
+			"src": "Get One",
+			"tgt": "الحصول على واحد",
+			"ts": 1647050424451
+		},
+		{
+			"guid": "6nFW5iZToYQ3LtLDeb9Adlfu-EQWDAuFyMsAlRw4cf4",
+			"q": 70,
+			"src": "Place your phone into your Cardboard viewer.",
+			"tgt": "‏ضع هاتفك في عارض Cardboard.",
+			"ts": 1647050424451
+		},
+		{
+			"guid": "4jxuTPXhhsLGShj5wDGlsktW8NV1GAYrGDxHaZV_6C4",
+			"q": 70,
+			"nsrc": [
+				"Place your phone into your ",
+				{
+					"t": "x",
+					"v": "%1$@"
+				},
+				" viewer."
+			],
+			"ntgt": [
+				"ضع هاتفك في عارض ",
+				{
+					"t": "x",
+					"v": "%1$@",
+					"v1": "a_x_1"
+				},
+				"."
+			],
+			"ts": 1647050424451
+		},
+		{
+			"guid": "6hNFreOOSaLtvtpZeirvd7YWah19RxogxrXPw89jle8",
+			"q": 70,
+			"src": "Settings",
+			"tgt": "الإعدادات",
+			"ts": 1647050424451
+		},
+		{
+			"guid": "JdemGm2zCUjeubRLZsgXcHubo03AMla3GDG3EQOcRaA",
+			"q": 70,
+			"src": "Sync with Google Cardboard",
+			"tgt": "‏مزامنة مع Google Cardboard",
+			"ts": 1647050424451
+		},
+		{
+			"guid": "slgigM0NfUFIqYMNDpipEAV2LaSg4PIejxEgH37p4Pw",
+			"q": 70,
+			"nsrc": [
+				"Current viewer: ",
+				{
+					"t": "x",
+					"v": "%1$@"
+				}
+			],
+			"ntgt": [
+				"العارض الحالي: ",
+				{
+					"t": "x",
+					"v": "%1$@",
+					"v1": "a_x_1"
+				}
+			],
+			"ts": 1647050424451
+		},
+		{
+			"guid": "wqrXrCWCECaeOiuDSJiLjeSfPaVlrgpeDFJp8NK39WU",
+			"q": 70,
+			"src": "Default",
+			"tgt": "افتراضي",
+			"ts": 1647050424451
+		},
+		{
+			"guid": "kNNZEkHiye4nzgXH33tGPIpo_dN9p9dtDvtyQLknghg",
+			"q": 70,
+			"src": "Using a different viewer?",
+			"tgt": "هل تستخدم عارضًا مختلفًا؟",
+			"ts": 1647050424451
+		},
+		{
+			"guid": "qTP4qKQCnREcyJAH2Kaph3DNOicsXMZGYTlqeVzrb2c",
+			"q": 70,
+			"src": "SWITCH",
+			"tgt": "تبديل",
+			"ts": 1647050424451
+		},
+		{
+			"guid": "Ko1R6hKlnw0dJtnGrwHdjhq0igmaxHWUuci1ZrEiYvg",
+			"q": 70,
+			"nsrc": [
+				"Switch viewer: ",
+				{
+					"t": "x",
+					"v": "%1$@"
+				}
+			],
+			"ntgt": [
+				"تبديل العارض: ",
+				{
+					"t": "x",
+					"v": "%1$@",
+					"v1": "a_x_1"
+				}
+			],
+			"ts": 1647050424451
+		},
+		{
+			"guid": "_AhOCAPiMyasIto9QG_S4I0SlAYd_aMe7FWWEAduL38",
+			"q": 70,
+			"src": "Help",
+			"tgt": "مساعدة",
+			"ts": 1647050424451
+		},
+		{
+			"guid": "CBwqRfe5Ye7rqvX0p6oInX-rrmYU3pvl1Sb7GOjEY2k",
+			"q": 70,
+			"src": "Successfully Paired!",
+			"tgt": "تم الإقران بنجاح!",
+			"ts": 1647050424451
+		},
+		{
+			"guid": "xX2wjf_JnaqCdoe4AvzrpR0w__P7h12WCoMygm6ru8U",
+			"q": 70,
+			"nsrc": [
+				"Your phone is now configured for your ",
+				{
+					"t": "x",
+					"v": "%1$@"
+				},
+				" viewer."
+			],
+			"ntgt": [
+				"تمت تهيئة هاتفك لعارض ",
+				{
+					"t": "x",
+					"v": "%1$@",
+					"v1": "a_x_1"
+				},
+				"."
+			],
+			"ts": 1647050424451
+		},
+		{
+			"guid": "QBJSpbVgw6NtOonlImeo7N4Ys6aMk-tIHP-Jha6jjwk",
+			"q": 70,
+			"src": "OK",
+			"tgt": "موافق",
+			"ts": 1647050424451
+		},
+		{
+			"guid": "ngT5pq_BhXgX71IJFDYZQRJX80bl9J1XPD2oBb-VEAE",
+			"q": 70,
+			"src": "Settings",
+			"tgt": "الإعدادات",
+			"ts": 1647050424451
+		},
+		{
+			"guid": "Ln6QELVxYXr2EgOv6P2-EYewhB5H6jLOJ1W5jilT_nc",
+			"q": 70,
+			"nsrc": [
+				"Back to previous screen"
+			],
+			"tgt": "رجوع إلى الشاشة السابقة",
+			"ts": 1647050424451
+		}
+	],
+	"status": "done",
+	"jobGuid": "xxx0xxx",
+	"updatedAt": "2022-05-29T00:00:00.000Z"
+}

@@ -1,0 +1,18 @@
+{
+	"sourceLang": "en",
+	"targetLang": "ar",
+	"translationProvider": "Repetition",
+	"tus": [
+		{
+			"guid": "d13hqt62wEq5drSC-g7auJUOAlQL-N3VrEyi1mCjMH0",
+			"q": 61,
+			"src": "Help",
+			"tgt": "مساعدة",
+			"ts": 1647050424451,
+			"jobGuid": "xxx1xxx"
+		}
+	],
+	"status": "done",
+	"jobGuid": "xxx1xxx",
+	"updatedAt": "2022-05-29T00:00:00.000Z"
+}
