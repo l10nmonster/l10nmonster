@@ -1,30 +1,8 @@
 {
 	"sourceLang": "en",
 	"targetLang": "zh-Hans",
-	"leverage": {
-		"tmSize": 854,
-		"minimumQuality": 50,
-		"prjLeverage": {
-			"default": {
-				"translated": 854,
-				"translatedWords": 2773,
-				"translatedByQ": {
-					"61": 3,
-					"70": 851
-				},
-				"untranslated": 17,
-				"untranslatedChars": 402,
-				"untranslatedWords": 65,
-				"pending": 0,
-				"pendingWords": 0,
-				"internalRepetitions": 0,
-				"internalRepetitionWords": 0
-			}
-		}
-	},
 	"translationProvider": "XliffBridge",
-	"jobId": 3,
-	"jobGuid": "x",
+	"jobGuid": "xxx3xxx",
 	"status": "pending",
 	"inflight": [
 		"t4VWxI0XBS7jJwzcIpjyWz95PtQe0nM2xUjvN4A1U_4",
@@ -45,5 +23,5 @@
 		"rh1h0cJO-5V2S5q15JDf5bxw2kDqyrXKS4r_wy5PUwU",
 		"C0PQbeoPQFB8cyWahP6wddbk0QOh4f-mmiHyTcQUny4"
 	],
-	"num": 17
+	"updatedAt": "2022-05-29T00:00:00.000Z"
 }

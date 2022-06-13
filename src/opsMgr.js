@@ -80,7 +80,7 @@ class Task {
             this.rootOpId = rootOpId;
             this.taskName = `Task-${this.opList[rootOpId].opName}-${new Date().getTime()}`;
             await this.saveState();
-            this.opsMgr.verbose && console.log(`${this.taskName} committed`);
+            this.opsMgr.logger.info(`${this.taskName} committed`);
         }
         let doneOps;
         let progress = 1;
@@ -100,10 +100,10 @@ class Task {
                                 throw `Op ${op.opName} not found in registry`;
                             }
                             const inputs = op.inputs.map(this.getOutputByOpId.bind(this));
-                            const boundFunc = op.bind ? func.bind(op.bind) : func;
+                            const boundFunc = func.bind(this);
                             op.lastRanAt = new Date().toISOString();
-                            this.opsMgr.verbose && console.log(`Executing opId: ${op.opId} opName: ${op.opName}...`);
-                            const response = await boundFunc(op.args, inputs);
+                            this.opsMgr.logger.info(`Executing opId: ${op.opId} opName: ${op.opName}...`);
+                            const response = await boundFunc(op.args, inputs); // TODO: do we want to pass op instead of op.args so that we have access to our opId in case we need to chain our output to something else?
                             const responseJSON = JSON.stringify(response, null, '\t');
                             if (responseJSON.length > MAX_INLINE_OUTPUT && this.opsMgr.opsDir) {
                                 const fullPath = path.join(this.opsMgr.opsDir, `${this.taskName}-out${op.opId}.json`);
@@ -148,21 +148,26 @@ export class OpsMgr {
             }
         }
         this.registry = {};
-        this.verbose = Boolean(params?.verbose);
+        this.logger = params.logger;
     }
 
     registerOp(func, options = {}) {
         options.opName ??= func.name;
         if (this.registry[options.opName]) {
-            throw `Op ${options.opName} already exists in registry`;
+            if (this.registry[options.opName].callback !== func) {
+                throw `Op ${options.opName} already exists in registry`;
+            }
+            // if multiple instances of the same class try to register ops, ignore them
+        } else {
+            options.callback = func;
+            options.idempotent ??= false;
+            this.registry[options.opName] = options;
         }
-        options.callback = func;
-        options.idempotent ??= false;
-        options.bind ??= null;
-        this.registry[options.opName] = options;
     }
 
     createTask() {
-        return new Task(this);
+        const task = new Task(this);
+        task.logger = this.logger;
+        return task;
     }
 }

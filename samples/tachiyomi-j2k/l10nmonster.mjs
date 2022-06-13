@@ -40,8 +40,8 @@ export default class TachiyomiConfig {
         //     cert: '/etc/ssl/cert.pem',
         // });
         // const xliffTranslator = new translators.XliffBridge({
-        //     requestPath: (lang, prjId) => `xliff/outbox/prj${('0000' + prjId).substr(-4)}-${lang}.xml`,
-        //     completePath: (lang, prjId) => `xliff/inbox/prj${('0000' + prjId).substr(-4)}-${lang}.xml`,
+        //     requestPath: (lang, prjId) => `xliff/outbox/prj${prjId}-${lang}.xml`,
+        //     completePath: (lang, prjId) => `xliff/inbox/prj${prjId}-${lang}.xml`,
         //     quality: 80,
         // });
         // const piggyTranslator = new translators.PigLatinizer({ quality: 1 });

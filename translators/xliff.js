@@ -37,19 +37,21 @@ export class XliffBridge {
             notes,
         );
         if (xliff) {
-            const prjPath = path.join(this.ctx.baseDir, this.requestPath(jobRequest.targetLang, jobRequest.jobId));
+            const prjPath = path.join(this.ctx.baseDir, this.requestPath(jobRequest.targetLang, jobRequest.jobGuid));
             await fs.mkdir(path.dirname(prjPath), {recursive: true});
             await fs.writeFile(prjPath, xliff, 'utf8');
             jobManifest.inflight = Object.values(jobRequest.tus).map(tu => tu.guid);
             jobManifest.status = 'pending';
         } else {
-            jobManifest.status = 'error';
+            jobManifest.status = 'blocked';
         }
         return jobManifest;
     }
 
-    async fetchTranslations(jobManifest) {
-        const completePath = path.join(this.ctx.baseDir, this.completePath(jobManifest.targetLang, jobManifest.jobId));
+    async fetchTranslations(pendingJob, jobRequest) {
+        const { inflight, ...jobResponse } = pendingJob;
+        const completePath = path.join(this.ctx.baseDir, this.completePath(jobResponse.targetLang, jobResponse.jobGuid));
+        const tuMap = jobRequest.tus.reduce((p,c) => (p[c.guid] = c, p), {});
         if (existsSync(completePath)) {
             const translatedRes = await fs.readFile(completePath, 'utf8');
             const translations = await xliff12ToJs(translatedRes);
@@ -58,7 +60,10 @@ export class XliffBridge {
             for (const [guid, xt] of Object.entries(translations.resources.XliffBridge)) {
                 if (xt?.target?.length > 0) {
                     tus.push({
-                        guid: guid,
+                        guid,
+                        sid: tuMap[guid].sid,
+                        ts: tuMap[guid].ts,
+                        src: xt.source,
                         tgt: xt.target, // TODO: need to deal with ntgt
                         q: this.quality,
                     });
@@ -66,15 +71,18 @@ export class XliffBridge {
                     // console.dir(xt);
                 }
             }
-            if (jobManifest.inflight.length === tus.length) {
-                jobManifest.status = 'done';
-            }
-            if (tus.length > 0) {
-                jobManifest.ts = 1; // TODO: get it from the XLIFF, possibly from <file date="2002-01-25T21:06:00Z">
-                jobManifest.tus = tus;
-                return jobManifest;
+            if (inflight.length === tus.length) {
+                return {
+                    ...jobResponse,
+                    tus,
+                    status: 'done',
+                }
             }
         }
         return null;
+    }
+
+    async refreshTranslations() {
+        throw `XliffBridge doesn't support refreshing translations`;
     }
 }

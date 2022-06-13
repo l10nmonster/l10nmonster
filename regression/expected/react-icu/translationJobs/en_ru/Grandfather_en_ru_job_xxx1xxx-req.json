@@ -1,6 +1,6 @@
 {
 	"sourceLang": "en",
-	"targetLang": "de",
+	"targetLang": "ru",
 	"tus": [
 		{
 			"sid": "title",
@@ -8,7 +8,7 @@
 			"contentType": "node",
 			"src": "Welcome to react using react-i18next",
 			"rid": "public/locales/en/translations.json",
-			"ts": 1653362971093
+			"ts": 1653363932437
 		},
 		{
 			"sid": "description.part1",
@@ -17,7 +17,7 @@
 			"contentType": "node",
 			"src": "To get started, edit <1>src/App.js</1> and save to reload.",
 			"rid": "public/locales/en/translations.json",
-			"ts": 1653362971093,
+			"ts": 1653363932437,
 			"nsrc": [
 				"To get started, edit ",
 				{
@@ -38,43 +38,31 @@
 			"contentType": "node",
 			"src": "Switch language between english and german using buttons above.",
 			"rid": "public/locales/en/translations.json",
-			"ts": 1653362971093
+			"ts": 1653363932437
 		},
 		{
 			"sid": "welcome.name1",
-			"gstr": "Welcome, {{x}}!",
-			"guid": "mVpp2sfDV8h1yTpK3YpunsGCCyrOtgRsoijdn0rbpfo",
+			"guid": "dAA7Av4cfiuuB8oFviBEq4BAYLxOwSB2ujboTuOhjrI",
 			"contentType": "node",
 			"src": "Welcome, {name}!",
 			"rid": "public/locales/en/translations.json",
-			"ts": 1653362971093,
-			"nsrc": [
-				"Welcome, ",
-				{
-					"t": "x",
-					"v": "{name}"
-				},
-				"!"
-			]
+			"ts": 1653363932437
 		},
 		{
 			"sid": "welcome.name2",
-			"gstr": "Welcome, {{bx}}{{x}}{{ex}}!",
-			"guid": "RLKDBvHhlr-qK3r-qduFToaGzxrPq1lCG1NlVq7u80s",
+			"gstr": "Welcome, {{bx}}{name}{{ex}}!",
+			"guid": "0v-UepMBUCv9savc1xVoqbGx759Lx2Xrsi-HgZ2sWu0",
 			"contentType": "node",
 			"src": "Welcome, <0>{name}</0>!",
 			"rid": "public/locales/en/translations.json",
-			"ts": 1653362971093,
+			"ts": 1653363932437,
 			"nsrc": [
 				"Welcome, ",
 				{
 					"t": "bx",
 					"v": "<0>"
 				},
-				{
-					"t": "x",
-					"v": "{name}"
-				},
+				"{name}",
 				{
 					"t": "ex",
 					"v": "</0>"
@@ -83,25 +71,8 @@
 			]
 		}
 	],
-	"leverage": {
-		"tmSize": 0,
-		"minimumQuality": 50,
-		"prjLeverage": {
-			"default": {
-				"translated": 0,
-				"translatedWords": 0,
-				"translatedByQ": {},
-				"untranslated": 18,
-				"untranslatedChars": 419,
-				"untranslatedWords": 69,
-				"pending": 0,
-				"pendingWords": 0,
-				"internalRepetitions": 0,
-				"internalRepetitionWords": 0
-			}
-		}
-	},
-	"jobId": 0,
-	"jobGuid": "x",
-	"status": "created"
+	"translationProvider": "Grandfather",
+	"jobGuid": "xxx1xxx",
+	"status": "created",
+	"updatedAt": "2022-05-29T00:00:00.000Z"
 }

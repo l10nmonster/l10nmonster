@@ -1,19 +1,18 @@
-export async function jobPush(mm, pushJobId) {
-    const jobRequest = await mm.jobStore.getJob(pushJobId);
-    if (jobRequest.status === 'blocked') {
-        const translationProvider = mm.getTranslationProvider(jobRequest);
+export async function jobPushCmd(mm, pushJobGuid) {
+    const blockedRequest = await mm.jobStore.getJobRequest(pushJobGuid);
+    if (blockedRequest.status === 'blocked') {
+        const translationProvider = mm.getTranslationProvider(blockedRequest);
         if (translationProvider) {
-            const jobResponse = await translationProvider.translator.requestTranslations(jobRequest);
-            jobResponse.num = jobResponse.tus?.length ?? jobResponse.inflight?.length ?? 0;
-            await mm.processJob(jobResponse, jobRequest);
+            const jobResponse = await translationProvider.translator.requestTranslations(blockedRequest);
+            await mm.processJob(jobResponse);
             return {
                 status: jobResponse.status,
-                num: jobResponse.num,
+                num: jobResponse.tus?.length ?? jobResponse.inflight?.length ?? 0,
             };
         } else {
-            throw 'No translationProvider configured';
+            throw 'No corresponding translationProvider configured';
         }
     } else {
-        throw `Only blocked jobs can be submitted (current status is ${jobRequest.status})`;
+        throw `Only blocked jobs can be submitted (current status is ${blockedRequest.status})`;
     }
 }

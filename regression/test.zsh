@@ -8,7 +8,7 @@ regressTest() {
     ../../../l10n.js --regression push
     ../../../l10n.js --regression pull
     ../../../l10n.js --regression translate
-    ../../../l10n.js --regression status -b foo -r bar
+    ../../../l10n.js --regression status --build foo --release bar
     cd ..
 }
 
@@ -17,7 +17,10 @@ rm -rf wd
 mkdir wd
 cp -pr mint/* wd
 cd wd
-for dir in *; regressTest $dir
+for dir in *
+do
+    regressTest $dir
+done
 cd ..
 
 echo "\nDiffing working dir vs. expected..."

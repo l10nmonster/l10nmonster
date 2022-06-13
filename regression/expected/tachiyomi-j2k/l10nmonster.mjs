@@ -31,17 +31,17 @@ export default class TachiyomiConfig {
             stateFileName: 'state.json',
         });
         this.translationProviders = {
-            XliffBridge: {
-                translator: new translators.XliffBridge({
-                    requestPath: (lang, prjId) => `xliff/outbox/prj${('0000' + prjId).substr(-4)}-${lang}.xml`,
-                    completePath: (lang, prjId) => `xliff/inbox/prj${('0000' + prjId).substr(-4)}-${lang}.xml`,
-                    quality: 80,
-                }),
-            },
             PigLatinizer: {
                 translator: new translators.PigLatinizer({ quality: 1 }),
                 pairs: { en: [ 'piggy' ]},
-            }
+            },
+            XliffBridge: {
+                translator: new translators.XliffBridge({
+                    requestPath: (lang, prjId) => `xliff/outbox/prj${prjId}-${lang}.xml`,
+                    completePath: (lang, prjId) => `xliff/inbox/prj${prjId}-${lang}.xml`,
+                    quality: 80,
+                }),
+            },
         };
         this.minimumQuality = (job) => (job.targetLang === 'piggy' ? 1 : 50);
     }

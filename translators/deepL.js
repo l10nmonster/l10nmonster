@@ -61,7 +61,7 @@ export class DeepL {
             this.preserveFormatting = preserveFormatting ?? '0',
             this.formalityMap = formalityMap ?? {},
             this.quality = quality;
-            this.languageMapper = languageMapper,
+            this.languageMapper = languageMapper;
             this.ctx.opsMgr.registerOp(deeplTranslateChunkOp, { idempotent: false });
             this.ctx.opsMgr.registerOp(deeplMergeTranslatedChunksOp, { idempotent: true });
         }
@@ -87,7 +87,7 @@ export class DeepL {
                     q.push(deeplPayload[currentIdx]);
                     currentIdx++;
                 }
-                this.ctx.verbose && console.log(`Preparing DeepL translate, offset: ${offset} chunk strings: ${q.length}`);
+                this.ctx.logger.info(`Preparing DeepL translate, offset: ${offset} chunk strings: ${q.length}`);
                 const sourceLang = (this.languageMapper && this.languageMapper(jobRequest.sourceLang)) ?? jobRequest.sourceLang;
                 const targetLang = (this.languageMapper && this.languageMapper(jobRequest.targetLang)) ?? jobRequest.targetLang;
                 const baseParams = {
@@ -127,7 +127,7 @@ export class DeepL {
 
     // sync api only for now
     async fetchTranslations() {
-        return null;
+        throw 'DeepL is a synchronous-only provider';
     }
 
 }

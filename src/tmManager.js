@@ -4,13 +4,14 @@ import {
     readFileSync,
 } from 'fs';
 import * as fs from 'fs/promises';
-import {js2tmx} from 'tmexchange';
-import { flattenNormalizedSourceToOrdinal, flattenNormalizedSourceV1 } from '../normalizers/util.js';
+import { flattenNormalizedSourceToOrdinal } from '../normalizers/util.js';
+import { cleanupTU, targetTUWhitelist } from './schemas.js';
 
 class TM {
     dirty = false;
-    constructor(sourceLang, targetLang, tmPathName) {
+    constructor(sourceLang, targetLang, tmPathName, logger) {
         this.tmPathName = tmPathName;
+        this.logger = logger;
         this.tm = existsSync(this.tmPathName) ?
             JSON.parse(readFileSync(this.tmPathName, 'utf8')) :
             {
@@ -24,8 +25,8 @@ class TM {
         Object.values(this.tm.tus).forEach(tu => this.setEntryByGuid(tu.guid, tu)); // this is to generate side-effects
     }
 
-    get size() {
-        return Object.keys(this.tm.tus).length;
+    get guids() {
+        return Object.keys(this.tm.tus);
     }
 
     getEntryByGuid(guid) {
@@ -33,10 +34,21 @@ class TM {
     }
 
     setEntryByGuid(guid, entry) {
-        (this.dirty = (this.tm.tus[guid] !== entry)) && (this.tm.tus[guid] = entry); // only updates if different
-        const flattenSrc = entry.nsrc ? flattenNormalizedSourceToOrdinal(entry.nsrc) : entry.src;
+        // const getSpurious = (tu, whitelist) => Object.entries(tu)
+        //     .filter(e => !whitelist.includes(e[0]))
+        //     .map(e => e[0])
+        //     .join(', ');
+        // const spurious = getSpurious(entry, targetTUWhitelist);
+        // spurious && console.error(spurious);
+        if (!entry.guid || !Number.isInteger(entry.q) || !Number.isInteger(entry.ts) || !(typeof entry.tgt === 'string' || entry.ntgt || entry.inflight)) {
+            throw `cannot set TM entry missing mandatory field: ${JSON.stringify(entry)}`;
+        }
+        const cleanedTU = cleanupTU(entry, targetTUWhitelist);
+        this.tm.tus[guid] = cleanedTU;
+        this.dirty = true;
+        const flattenSrc = cleanedTU.nsrc ? flattenNormalizedSourceToOrdinal(cleanedTU.nsrc) : cleanedTU.src;
         this.lookUpByFlattenSrc[flattenSrc] ??= [];
-        !this.lookUpByFlattenSrc[flattenSrc].includes(entry) && this.lookUpByFlattenSrc[flattenSrc].push(entry);
+        !this.lookUpByFlattenSrc[flattenSrc].includes(cleanedTU) && this.lookUpByFlattenSrc[flattenSrc].push(cleanedTU);
     }
 
     getAllEntriesBySrc(src) {
@@ -44,20 +56,20 @@ class TM {
         return this.lookUpByFlattenSrc[flattenSrc] || [];
     }
 
-    getJobStatus(jobId) {
-        return this.tm.jobStatus[jobId];
+    getJobStatus(jobGuid) {
+        return this.tm.jobStatus[jobGuid];
     }
 
-    setJobStatus(jobId, status) {
-        if (this.tm.jobStatus[jobId] !== status) {
-            this.tm.jobStatus[jobId] = status;
+    setJobStatus(jobGuid, status) {
+        if (this.tm.jobStatus[jobGuid] !== status) {
+            this.tm.jobStatus[jobGuid] = status;
             this.dirty = true;
         }
     }
 
     async commit() {
         if (this.dirty) {
-            this.verbose && console.log(`Updating ${this.tmPathName}...`);
+            this.logger.info(`Updating ${this.tmPathName}...`);
             await fs.writeFile(this.tmPathName, JSON.stringify(this.tm, null, '\t'), 'utf8');
             this.dirty = false;
         }
@@ -65,13 +77,13 @@ class TM {
 
     async processJob(jobResponse, jobRequest) {
         const requestedUnits = (jobRequest?.tus ?? []).reduce((p,c) => (p[c.guid] = c, p), {});
-        const { jobId, status, inflight, tus } = jobResponse;
+        const { jobGuid, status, inflight, tus } = jobResponse;
         if (inflight) {
             for (const guid of inflight) {
                 const reqEntry = requestedUnits[guid] ?? {};
                 const tmEntry = this.getEntryByGuid(guid);
                 if (!tmEntry) {
-                    this.setEntryByGuid(guid, { ...reqEntry, q: 0, jobId, inflight: true });
+                    this.setEntryByGuid(guid, { ...reqEntry, ts: jobResponse.ts, q: 0, jobGuid, inflight: true });
                 }
             }
         }
@@ -82,42 +94,22 @@ class TM {
 
                 // this is convoluted because tmEntry.ts may be undefined
                 // also note that this may result in non-deterministic behavior (equal ts means later one wins)
-                const isNewish = !(tmEntry?.ts <= tu.ts);
+                const isNewish = !(tmEntry?.ts > tu.ts);
                 if (!tmEntry || tmEntry.q < tu.q || (tmEntry.q === tu.q && isNewish)) {
-                    this.setEntryByGuid(tu.guid, { ...reqEntry, ...tu, jobId });
+                    this.setEntryByGuid(tu.guid, { ...reqEntry, ts: jobResponse.ts, ...tu, jobGuid });
                 }
             }
         }
-        this.setJobStatus(jobId, status);
+        this.setJobStatus(jobGuid, status);
         await this.commit();
-    }
-
-    async exportTMX(sourceLookup, all) {
-        const getMangledSrc = tu => (tu.nsrc ? flattenNormalizedSourceV1(tu.nsrc)[0] : tu.src);
-        const getMangledTgt = tu => (tu.ntgt ? flattenNormalizedSourceV1(tu.ntgt)[0] : tu.tgt);
-        const tmx = {
-            sourceLanguage: this.tm.sourceLang,
-            resources: {},
-        };
-        for (const tu of Object.values(sourceLookup)) {
-            const translatedTU = this.tm.tus[tu.guid];
-            const mangledTgt = translatedTU !== undefined && getMangledTgt(translatedTU);
-            if (all || Boolean(mangledTgt)) {
-                const group = tu.prj || 'default';
-                tmx.resources[group] ??= {};
-                tmx.resources[group][tu.guid] = {};
-                tmx.resources[group][tu.guid][this.tm.sourceLang] = getMangledSrc(tu);
-                Boolean(mangledTgt) && (tmx.resources[group][tu.guid][this.tm.targetLang] = mangledTgt);
-            }
-        }
-        return [ tmx, await js2tmx(tmx) ];
     }
 }
 
 export default class TMManager {
-    constructor({ monsterDir, jobStore }) {
+    constructor({ monsterDir, jobStore, ctx }) {
         this.monsterDir = monsterDir;
         this.jobStore = jobStore;
+        this.ctx = ctx;
         this.tmCache = {};
         this.generation = new Date().getTime();
     }
@@ -126,17 +118,19 @@ export default class TMManager {
         const tmFileName = `tmCache_${sourceLang}_${targetLang}.json`;
         let tm = this.tmCache[tmFileName];
         if (!tm) {
-            TM.prototype.verbose = this.verbose;
-            tm = new TM(sourceLang, targetLang, path.join(this.monsterDir, tmFileName));
+            tm = new TM(sourceLang, targetLang, path.join(this.monsterDir, tmFileName), this.ctx.logger);
             this.tmCache[tmFileName] = tm;
         }
         if (tm.generation !== this.generation) {
             tm.generation = this.generation;
-            const jobs = await this.jobStore.getJobStatusByLangPair(sourceLang, targetLang);
-            for (const [jobId, status] of jobs) {
-                if (tm.getJobStatus(jobId) !== status) {
-                    const job = await this.jobStore.getJob(jobId);
-                    await tm.processJob(job);
+            const jobs = (await this.jobStore.getJobStatusByLangPair(sourceLang, targetLang))
+                .filter(e => [ 'pending', 'done' ].includes(e[1]));
+            for (const [jobGuid, status] of jobs) {
+                if (tm.getJobStatus(jobGuid) !== status) {
+                    this.ctx.logger.info(`Applying job ${jobGuid} to the ${sourceLang} -> ${targetLang} TM...`);
+                    const jobResponse = await this.jobStore.getJob(jobGuid);
+                    const jobRequest = await this.jobStore.getJobRequest(jobGuid);
+                    await tm.processJob(jobResponse, jobRequest);
                 }
             }
         }

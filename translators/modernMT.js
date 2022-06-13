@@ -1,11 +1,53 @@
 import got from 'got';
 
-import { flattenNormalizedSourceToXmlV1, extractNormalizedPartsFromXmlV1 } from '../normalizers/util.js';
+import {
+    flattenNormalizedSourceToXmlV1, extractNormalizedPartsFromXmlV1,
+    normalizedStringsAreEqual,
+} from '../normalizers/util.js';
 
 const MAX_CHAR_LENGTH = 9900;
 const MAX_CHUNK_SIZE = 125;
 
-// TODO: externalize this as a general-purpose Op
+export function flattenNormalizedSourceUnicode(nsrc) {
+    const normalizedStr = [],
+        phMap = {};
+    let phIdx = 0;
+    for (const part of nsrc) {
+        if (typeof part === 'string') {
+            normalizedStr.push(part);
+        } else {
+            const ph = String.fromCodePoint(9312 + phIdx);
+            phIdx++;
+            const phPrefix = phIdx < 26 ? String.fromCharCode(96 + phIdx) : `z${phIdx}`;
+            const mangledPh = `${phPrefix}_${part.t}_${(part.v.match(/[0-9A-Za-z_]+/) || [''])[0]}`;
+            normalizedStr.push(ph);
+            phMap[ph] = {
+                ...part,
+                v1: mangledPh,
+            };
+        }
+    }
+    return [ normalizedStr.join(''), phMap ];
+}
+
+// eslint-disable-next-line prefer-regex-literals
+const unicodePhRegex = new RegExp('[\u{2460}-\u{24ff}]','g');
+export function extractNormalizedPartsUnicode(str, phMap) {
+    const normalizedParts = [];
+    let pos = 0;
+    for (const match of str.matchAll(unicodePhRegex)) {
+        if (match.index > pos) {
+            normalizedParts.push(match.input.substring(pos, match.index));
+        }
+        normalizedParts.push(phMap[match[0]]);
+        pos = match.index + match[0].length;
+    }
+    if (pos < str.length) {
+        normalizedParts.push(str.substring(pos, str.length));
+    }
+    return normalizedParts;
+}
+
 async function mmtTranslateChunkOp({ baseURL, json, headers, offset}) {
     try {
         const response = await got.get({
@@ -27,17 +69,17 @@ async function mmtTranslateChunkOp({ baseURL, json, headers, offset}) {
         }
         return translations;
     } catch(error) {
-        throw error.toString();
+        throw `${error.toString()}: ${error.response?.body}`;
     }
 }
 
-async function mmtMergeTranslatedChunksOp({ jobRequest, tuMeta, quality, ts }, chunks) {
+async function mmtMergeTranslatedChunksOp({ jobRequest, tuMeta, quality, ts, phSerialization }, chunks) {
     const { tus, ...jobResponse } = jobRequest;
     const translations = Object.assign({}, ...chunks);
     jobResponse.tus = tus.map((tu, idx) => {
         const translation = { guid: tu.guid };
         const mmtTx = translations[idx] || {};
-        const ntgt = extractNormalizedPartsFromXmlV1(mmtTx.translation, tuMeta[idx] || {});
+        const ntgt = (phSerialization === 'xml' ? extractNormalizedPartsFromXmlV1 : extractNormalizedPartsUnicode)(mmtTx.translation, tuMeta[idx] || {});
         if (tu.nsrc) {
             translation.ntgt = ntgt;
             translation.contentType = tu.contentType;
@@ -54,7 +96,7 @@ async function mmtMergeTranslatedChunksOp({ jobRequest, tuMeta, quality, ts }, c
 }
 
 export class ModernMT {
-    constructor({ baseURL, apiKey, priority, multiline, quality, maxCharLength }) {
+    constructor({ baseURL, apiKey, priority, multiline, quality, maxCharLength, languageMapper, phSerialization }) {
         if ((apiKey && quality) === undefined) {
             throw 'You must specify apiKey, quality for ModernMT';
         } else {
@@ -68,15 +110,19 @@ export class ModernMT {
             this.multiline = multiline ?? true,
             this.quality = quality;
             this.maxCharLength = maxCharLength ?? MAX_CHAR_LENGTH;
+            this.languageMapper = languageMapper;
+            this.phSerialization = phSerialization ?? 'xml';
             this.ctx.opsMgr.registerOp(mmtTranslateChunkOp, { idempotent: false });
             this.ctx.opsMgr.registerOp(mmtMergeTranslatedChunksOp, { idempotent: true });
         }
     }
 
     async requestTranslations(jobRequest) {
+        const sourceLang = (this.languageMapper && this.languageMapper(jobRequest.sourceLang)) ?? jobRequest.sourceLang;
+        const targetLang = (this.languageMapper && this.languageMapper(jobRequest.targetLang)) ?? jobRequest.targetLang;
         const tuMeta = {};
         const mmtPayload = jobRequest.tus.map((tu, idx) => {
-            const [xmlSrc, phMap ] = flattenNormalizedSourceToXmlV1(tu.nsrc || [ tu.src ]);
+            const [xmlSrc, phMap ] = (this.phSerialization === 'xml' ? flattenNormalizedSourceToXmlV1 : flattenNormalizedSourceUnicode)(tu.nsrc || [ tu.src ]);
             if (Object.keys(phMap).length > 0) {
                 tuMeta[idx] = phMap;
             }
@@ -98,14 +144,14 @@ export class ModernMT {
                 if (q.length === 0) {
                     throw `String at index ${currentIdx} exceeds ${this.maxCharLength} max char length`;
                 }
-                this.ctx.verbose && console.log(`Preparing MMT translate, offset: ${offset} chunk strings: ${q.length} chunk char length: ${currentTotalLength}`);
+                this.ctx.logger.info(`Preparing MMT translate, offset: ${offset} chunk strings: ${q.length} chunk char length: ${currentTotalLength}`);
                 const translateOp = await requestTranslationsTask.enqueue(
                     mmtTranslateChunkOp,
                     {
                         baseURL: this.baseURL,
                         json: {
-                            source: jobRequest.sourceLang,
-                            target: jobRequest.targetLang,
+                            source: sourceLang,
+                            target: targetLang,
                             priority: this.priority,
                             'project_id': jobRequest.jobGuid,
                             multiline: this.multiline,
@@ -117,11 +163,12 @@ export class ModernMT {
                 );
                 chunkOps.push(translateOp);
             }
-            const rootOp = await requestTranslationsTask.enqueue(mmtMergeTranslatedChunksOp, { 
-                jobRequest, 
-                tuMeta, 
-                quality: this.quality, 
+            const rootOp = await requestTranslationsTask.enqueue(mmtMergeTranslatedChunksOp, {
+                jobRequest,
+                tuMeta,
+                quality: this.quality,
                 ts: this.ctx.regression ? 1 : new Date().getTime(),
+                phSerialization: this.phSerialization,
             }, chunkOps);
             return await requestTranslationsTask.execute(rootOp);
         } catch (error) {
@@ -134,4 +181,12 @@ export class ModernMT {
         return null;
     }
 
+    async refreshTranslations(jobRequest) {
+        const fullResponse = await this.requestTranslations(jobRequest);
+        const reqTuMap = jobRequest.tus.reduce((p,c) => (p[c.guid] = c, p), {});
+        return {
+            ...fullResponse,
+            tus: fullResponse.tus.filter(tu => !normalizedStringsAreEqual(reqTuMap[tu.guid].ntgt ?? reqTuMap[tu.guid].tgt, tu.ntgt ?? tu.tgt)),
+        };
+    }
 }

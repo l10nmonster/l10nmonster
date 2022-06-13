@@ -4327,28 +4327,8 @@
 			"ts": 1642896537928
 		}
 	],
-	"leverage": {
-		"tmSize": 481,
-		"minimumQuality": 50,
-		"prjLeverage": {
-			"default": {
-				"translated": 481,
-				"translatedWords": 1353,
-				"translatedByQ": {
-					"70": 481
-				},
-				"untranslated": 387,
-				"untranslatedChars": 9110,
-				"untranslatedWords": 1479,
-				"pending": 0,
-				"pendingWords": 0,
-				"internalRepetitions": 3,
-				"internalRepetitionWords": 6
-			}
-		}
-	},
 	"translationProvider": "XliffBridge",
-	"jobId": 4,
-	"jobGuid": "x",
-	"status": "created"
+	"jobGuid": "xxx4xxx",
+	"status": "created",
+	"updatedAt": "2022-05-29T00:00:00.000Z"
 }

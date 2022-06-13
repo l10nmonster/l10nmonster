@@ -9,6 +9,7 @@ export async function grandfatherCmd(mm, quality, limitToLang) {
     for (const targetLang of targetLangs) {
         const txCache = {};
         const jobRequest = await mm.prepareTranslationJob({ targetLang });
+        jobRequest.translationProvider = 'Grandfather';
         const sources = [];
         const translations = [];
         for (const tu of jobRequest.tus) {
@@ -18,10 +19,10 @@ export async function grandfatherCmd(mm, quality, limitToLang) {
                 const lookup = {};
                 let resource;
                 try {
-                    // mm.verbose && console.log(`Getting ${tu.rid} for language ${targetLang}`);
+                    // mm.ctx.logger.info(`Getting ${tu.rid} for language ${targetLang}`);
                     resource = await pipeline.target.fetchTranslatedResource(targetLang, tu.rid);
                 } catch (e) {
-                    mm.verbose && console.log(`Couldn't fetch translated resource: ${e}`);
+                    mm.verbose && console.error(`Couldn't fetch translated resource: ${e}`);
                 } finally {
                     if (resource) {
                         const parsedResource = await pipeline.resourceFilter.parseResource({ resource, isSource: false });
@@ -60,14 +61,13 @@ export async function grandfatherCmd(mm, quality, limitToLang) {
                 }
             }
         }
-        mm.verbose && console.log(`Grandfathering ${targetLang}... found ${jobRequest.tus.length} missing translations, of which ${translations.length} existing`);
+        mm.ctx.logger.info(`Grandfathering ${targetLang}... found ${jobRequest.tus.length} missing translations, of which ${translations.length} existing`);
         if (translations.length > 0) {
             // eslint-disable-next-line no-unused-vars
             const { tus, ...jobResponse } = jobRequest;
             jobRequest.tus = sources;
             jobResponse.tus = translations;
             jobResponse.status = 'done';
-            jobResponse.translationProvider = 'Grandfather';
             const manifest = await mm.jobStore.createJobManifest();
             await mm.processJob({ ...jobResponse, ...manifest, status: 'done' }, { ...jobRequest, ...manifest });
             status.push({

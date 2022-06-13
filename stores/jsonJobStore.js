@@ -3,83 +3,75 @@ import {
     existsSync,
     mkdirSync,
     readFileSync,
+    writeFileSync,
+    unlinkSync,
 } from 'fs';
-import * as fs from 'fs/promises';
 import { nanoid } from 'nanoid';
+import { globbySync } from 'globby';
 
 export class JsonJobStore {
     constructor({ jobsDir }) {
-        this.jobsDir = path.join(this.ctx.baseDir, jobsDir);
-        if (!existsSync(this.jobsDir)) {
-            mkdirSync(this.jobsDir, {recursive: true});
+        this.jobsBaseDir = path.join(this.ctx.baseDir, jobsDir);
+    }
+
+    #jobsDirForPair(sourceLang, targetLang) {
+        const jobsDir = path.join(this.jobsBaseDir, `${sourceLang}_${targetLang}`);
+        if (!existsSync(jobsDir)) {
+            mkdirSync(jobsDir, {recursive: true});
         }
-    }
-
-    #jobsPathName() {
-        return path.join(this.jobsDir, 'jobs.json');
-    }
-
-    async getJobManifests(status) {
-        const jobsPath = this.#jobsPathName();
-        const manifests = existsSync(jobsPath) ?
-            JSON.parse(readFileSync(jobsPath, 'utf8')) :
-            []
-        ;
-        return status ?
-            manifests.filter(j => j.status === status) :
-            manifests
-        ;
+        return jobsDir;
     }
 
     async getJobStatusByLangPair(sourceLang, targetLang) {
-        return (await this.getJobManifests())
-            .filter(j => j.sourceLang === sourceLang && j.targetLang === targetLang)
-            .map(j => [ j.jobId, j.status ]);
+        const files = globbySync(path.join(this.jobsBaseDir, '*', `*${sourceLang}_${targetLang}_job_*.json`));
+        const statusMap = {};
+        for (const file of files) {
+            const entry = file.match(/job_(?<guid>[0-9A-Za-z_-]+)-(?<status>req|pending|done)\.json$/)?.groups;
+            if (entry) {
+                if (entry.status === 'done') {
+                    statusMap[entry.guid] = 'done';
+                } else if (![ 'pending', 'done' ].includes(statusMap[entry.guid])) {
+                    statusMap[entry.guid] = entry.status;
+                }
+            }
+        }
+        return Object.entries(statusMap);
     }
 
     async createJobManifest() {
-        const jobs = await this.getJobManifests();
-        const jobId = jobs.length;
-        const manifest = {
-            jobId,
-            jobGuid: this.ctx.regression ? 'x' : nanoid(),
+        return {
+            jobGuid: this.ctx.regression ? `xxx${globbySync(path.join(this.jobsBaseDir, '*', '*job_*-req.json')).length}xxx` : nanoid(),
             status: 'created',
         };
-        jobs.push(manifest);
-        await fs.writeFile(this.#jobsPathName(), JSON.stringify(jobs, null, '\t'), 'utf8');
-        return manifest;
     }
 
-    async #updateJobManifest(jobManifest) {
-        const jobs = await this.getJobManifests();
-        jobManifest = {
-            ...jobs[jobManifest.jobId],
-            ...jobManifest,
-            updatedAt: (this.ctx.regression ? new Date('2022-02-05') : new Date()).toISOString(),
-        };
-        jobs[jobManifest.jobId] = jobManifest;
-        await fs.writeFile(this.#jobsPathName(), JSON.stringify(jobs, null, '\t'), 'utf8');
-    }
-
-    async updateJob(jobResponse, jobRequest) {
-        if (jobRequest) {
-            const jobPath = path.join(this.jobsDir, `job_${jobRequest.jobId}-req.json`);
-            await fs.writeFile(jobPath, JSON.stringify(jobRequest, null, '\t'), 'utf8');
+    async writeJob(job) {
+        // eslint-disable-next-line no-nested-ternary
+        const state = [ 'created', 'blocked' ].includes(job.status) ? 'req' : job.status;
+        const filename = `${job.translationProvider}_${job.sourceLang}_${job.targetLang}_job_${job.jobGuid}-${state}.json`;
+        const jobPath = path.join(this.#jobsDirForPair(job.sourceLang, job.targetLang), filename);
+        if (existsSync(jobPath)) {
+            throw `can't overwrite immutable job ${jobPath}`;
+        } else {
+            const updatedAt = (this.ctx.regression ? new Date('2022-05-29T00:00:00.000Z') : new Date()).toISOString();
+            writeFileSync(jobPath, JSON.stringify({ ...job, updatedAt }, null, '\t'), 'utf8');
         }
-        const jobPath = path.join(this.jobsDir, `job_${jobResponse.jobId}.json`);
-        await fs.writeFile(jobPath, JSON.stringify(jobResponse, null, '\t'), 'utf8');
-        // eslint-disable-next-line no-unused-vars
-        const { tus, ...jobManifest } = jobResponse;
-        await this.#updateJobManifest(jobManifest);
     }
 
-    async getJob(jobId) {
-        const jobPath = path.join(this.jobsDir, `job_${jobId}.json`);
-        return JSON.parse(await fs.readFile(jobPath, 'utf8'));
+    async getJob(jobGuid) {
+        const pending = globbySync(path.join(this.jobsBaseDir, '*', `*job_${jobGuid}-pending.json`))[0];
+        const done = globbySync(path.join(this.jobsBaseDir, '*', `*job_${jobGuid}-done.json`))[0];
+        const job = done ?? pending;
+        return job ? JSON.parse(readFileSync(job, 'utf8')) : null;
     }
 
-    async getJobRequest(jobId) {
-        const jobPath = path.join(this.jobsDir, `job_${jobId}-req.json`);
-        return JSON.parse(await fs.readFile(jobPath, 'utf8'));
+    async getJobRequest(jobGuid) {
+        const req = globbySync(path.join(this.jobsBaseDir, '*', `*job_${jobGuid}-req.json`))[0];
+        return req ? JSON.parse(readFileSync(req, 'utf8')) : null;
+    }
+
+    async deleteJobRequest(jobGuid) {
+        const req = globbySync(path.join(this.jobsBaseDir, '*', `*job_${jobGuid}-req.json`))[0];
+        return unlinkSync(req);
     }
 }

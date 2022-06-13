@@ -23,9 +23,9 @@ export default class MonsterManager {
             this.monsterDir = monsterDir;
             this.ctx = ctx;
             this.jobStore = monsterConfig.jobStore ?? new JsonJobStore({
-                jobsDir: path.join('.l10nmonster', 'jobs'),
+                jobsDir: 'l10njobs',
             });
-            this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore });
+            this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, ctx });
             this.stateStore = monsterConfig.stateStore;
             this.debug = monsterConfig.debug ?? {};
             this.sourceLang = monsterConfig.sourceLang;
@@ -52,14 +52,16 @@ export default class MonsterManager {
                 // spell it out to use additional options like pairs: { sourceLang: [ targetLang1 ]}
             } else {
                 this.translationProviders = { };
-                this.translationProviders[monsterConfig.translationProvider.constructor.name] = {
+                monsterConfig.translationProvider && (this.translationProviders[monsterConfig.translationProvider.constructor.name] = {
                     translator: monsterConfig.translationProvider,
-                };
+                });
             }
+            this.tuFilters = monsterConfig.tuFilters;
             this.sourceCachePath = path.join(monsterDir, 'sourceCache.json');
             this.sourceCache = existsSync(this.sourceCachePath) ?
                 JSON.parse(readFileSync(this.sourceCachePath, 'utf8')) :
                 { };
+            this.sourceCacheStale = true;
         }
     }
 
@@ -89,6 +91,7 @@ export default class MonsterManager {
         const combinedStats = [];
         for (const [ contentType, handler ] of Object.entries(this.contentTypes)) {
             const stats = await handler.source.fetchResourceStats();
+            this.ctx.logger.verbose(`Fetched resource stats for content type ${contentType}`);
             for (const res of stats) {
                 res.contentType = contentType;
             }
@@ -98,38 +101,41 @@ export default class MonsterManager {
     }
 
     async updateSourceCache() {
-        const newCache = { };
-        const stats = await this.fetchResourceStats();
-        let dirty = stats.length !== Object.keys(this.sourceCache).length;
-        for (const res of stats) {
-            if (this.sourceCache[res.id]?.modified === res.modified) {
-                newCache[res.id] = this.sourceCache[res.id];
-            } else {
-                dirty = true;
-                const pipeline = this.contentTypes[res.contentType];
-                const payload = await pipeline.source.fetchResource(res.id);
-                let parsedRes = await pipeline.resourceFilter.parseResource({resource: payload, isSource: true});
-                res.segments = parsedRes.segments;
-                for (const seg of res.segments) {
-                    if (pipeline.decoders) {
-                        const normalizedStr = getNormalizedString(seg.str, pipeline.decoders);
-                        if (normalizedStr[0] !== seg.str) {
-                            seg.nstr = normalizedStr;
+        if (this.sourceCacheStale) {
+            const newCache = { };
+            const stats = await this.fetchResourceStats();
+            let dirty = stats.length !== Object.keys(this.sourceCache).length;
+            for (const res of stats) {
+                if (this.sourceCache[res.id]?.modified === res.modified) {
+                    newCache[res.id] = this.sourceCache[res.id];
+                } else {
+                    dirty = true;
+                    const pipeline = this.contentTypes[res.contentType];
+                    const payload = await pipeline.source.fetchResource(res.id);
+                    let parsedRes = await pipeline.resourceFilter.parseResource({resource: payload, isSource: true});
+                    res.segments = parsedRes.segments;
+                    for (const seg of res.segments) {
+                        if (pipeline.decoders) {
+                            const normalizedStr = getNormalizedString(seg.str, pipeline.decoders);
+                            if (normalizedStr[0] !== seg.str) {
+                                seg.nstr = normalizedStr;
+                            }
                         }
+                        const flattenStr = seg.nstr ? flattenNormalizedSourceToOrdinal(seg.nstr) : seg.str;
+                        flattenStr !== seg.str && (seg.gstr = flattenStr);
+                        seg.guid = this.generateFullyQualifiedGuid(res.id, seg.sid, flattenStr);
+                        seg.contentType = res.contentType;
                     }
-                    const flattenStr = seg.nstr ? flattenNormalizedSourceToOrdinal(seg.nstr) : seg.str;
-                    flattenStr !== seg.str && (seg.gstr = flattenStr);
-                    seg.guid = this.generateFullyQualifiedGuid(res.id, seg.sid, flattenStr);
-                    seg.contentType = res.contentType;
+                    pipeline.segmentDecorator && (res.segments = pipeline.segmentDecorator(parsedRes.segments));
+                    newCache[res.id] = res;
                 }
-                pipeline.segmentDecorator && (res.segments = pipeline.segmentDecorator(parsedRes.segments));
-                newCache[res.id] = res;
             }
-        }
-        if (dirty) {
-            this.verbose && console.log(`Updating ${this.sourceCachePath}...`);
-            await fs.writeFile(this.sourceCachePath, JSON.stringify(newCache, null, '\t'), 'utf8');
-            this.sourceCache = newCache;
+            if (dirty) {
+                this.ctx.logger.info(`Updating ${this.sourceCachePath}...`);
+                await fs.writeFile(this.sourceCachePath, JSON.stringify(newCache, null, '\t'), 'utf8');
+                this.sourceCache = newCache;
+            }
+            this.sourceCacheStale = false;
         }
     }
 
@@ -139,10 +145,37 @@ export default class MonsterManager {
             .filter(([rid, res]) => (this.ctx.prj === undefined || this.ctx.prj.includes(res.prj)));
     }
 
+    async getSourceAsTus() {
+        const sourceLookup = {};
+        await this.updateSourceCache();
+        // eslint-disable-next-line no-unused-vars
+        for (const [ rid, res ] of this.getSourceCacheEntries()) {
+            for (const seg of res.segments) {
+                sourceLookup[seg.guid] = this.makeTU(res, seg);
+            }
+        }
+        return sourceLookup;
+    }
+
+    // use cases:
+    //   1 - both are passed as both are created at the same time -> may cancel if response is empty
+    //   2 - only jobRequest is passed because it's blocked -> write if "blocked", cancel if "created"
+    //   3 - only jobResponse is passed because it's pulled -> must write even if empty or it will show as blocked/pending
     async processJob(jobResponse, jobRequest) {
-        await this.jobStore.updateJob(jobResponse, jobRequest);
-        const tm = await this.tmm.getTM(jobResponse.sourceLang, jobResponse.targetLang);
-        await tm.processJob(jobResponse, jobRequest);
+        if (jobRequest && jobResponse && !(jobResponse.tus?.length > 0 || jobResponse.inflight?.length > 0)) {
+            jobResponse.status = 'cancelled';
+            return;
+        }
+        if (jobRequest && !jobResponse && jobRequest.status === 'created') {
+            jobRequest.status = 'cancelled';
+            return;
+        }
+        jobRequest && await this.jobStore.writeJob(jobRequest);
+        if (jobResponse) {
+            await this.jobStore.writeJob(jobResponse);
+            const tm = await this.tmm.getTM(jobResponse.sourceLang, jobResponse.targetLang);
+            await tm.processJob(jobResponse, jobRequest);
+        }
     }
 
     makeTU(res, segment) {
@@ -164,7 +197,7 @@ export default class MonsterManager {
     }
 
     // eslint-disable-next-line complexity
-    async prepareTranslationJob({ targetLang, minimumQuality, leverage }) {
+    async #internalPrepareTranslationJob({ targetLang, minimumQuality, leverage }) {
         const sources = this.getSourceCacheEntries();
         const job = {
             sourceLang: this.sourceLang,
@@ -229,17 +262,49 @@ export default class MonsterManager {
                 }
             }
         }
-        job.leverage = { tmSize: tm.size, minimumQuality, prjLeverage };
-        return job; // TODO: this should return a list of jobs to be able to handle multiple source languages
+        // TODO: job should actually be a list of jobs to be able to handle multiple source languages and pipelines
+        return [ job, { tmSize: tm.guids.length, minimumQuality, prjLeverage } ];
+    }
+
+    async prepareTranslationJob({ targetLang, minimumQuality, leverage }) {
+        return (await this.#internalPrepareTranslationJob({ targetLang, minimumQuality, leverage }))[0];
+    }
+
+    async estimateTranslationJob({ targetLang }) {
+        return (await this.#internalPrepareTranslationJob({ targetLang }))[1];
+    }
+
+    async prepareFilterBasedJob({ targetLang, tmBased, guidList }) {
+        const tm = await this.tmm.getTM(this.sourceLang, targetLang);
+        const sourceLookup = await this.getSourceAsTus();
+        if (!guidList) {
+            if (tmBased) {
+                guidList = tm.guids;
+            } else {
+                guidList = Object.keys(sourceLookup);
+            }
+        }
+        let tus = guidList.map(guid => {
+            const sourceTU = sourceLookup[guid] ?? {};
+            const translatedTU = tm.getEntryByGuid(guid) ?? {};
+            return { ...sourceTU, ...translatedTU }; // this is a superset of source and target properties so that filters have more to work with
+        });
+        this.ctx.prj !== undefined && (tus = tus.filter(tu => this.ctx.prj.includes(tu.prj)));
+        return {
+            sourceLang: this.sourceLang,
+            targetLang,
+            tus,
+        };
     }
 
     getTranslationProvider(jobManifest) {
         let translationProviderName = jobManifest.translationProvider;
         if (!translationProviderName) {
-            for (const [ name, value ] of Object.entries(this.translationProviders)) {
-                if (!value.pairs || (value.pairs[jobManifest.sourceLang] && value.pairs[jobManifest.sourceLang].includes(jobManifest.targetLang))) {
+            for (const [ name, providerCfg ] of Object.entries(this.translationProviders)) {
+                if (!providerCfg.pairs || (providerCfg.pairs[jobManifest.sourceLang] && providerCfg.pairs[jobManifest.sourceLang].includes(jobManifest.targetLang))) {
                     translationProviderName = name;
                     jobManifest.translationProvider = name;
+                    break;
                 }
             }
         }

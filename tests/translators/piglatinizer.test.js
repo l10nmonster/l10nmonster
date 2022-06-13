@@ -60,9 +60,4 @@ describe ('pig latinizer translator tests', () =>{
     expect(jobResponse).toMatchObject(expectedOutput);
   });
 
-  test('fetchTranslations returns jobResponse', async () => {
-    const jobResponse = await translator.fetchTranslations(job);
-    expect(jobResponse).toBeNull();
-  });
-
 });

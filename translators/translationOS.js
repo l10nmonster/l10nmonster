@@ -1,26 +1,44 @@
+/* eslint-disable camelcase */
 import got from 'got';
 
-import { flattenNormalizedSourceV1, extractNormalizedPartsV1 } from '../normalizers/util.js';
+import { extractNormalizedPartsV1, getTUMaps } from '../normalizers/util.js';
 
-// TODO: externalize this ase general-purpose Op
-async function gotPostOp(request) {
-    try {
-        return await got.post(request).json();
-    } catch(error) {
-        const errorBody = error?.response?.body;
-        if (errorBody) {
-            try {
-                throw JSON.parse(errorBody);
-            } catch(e) {
-                throw errorBody;
-            }
-        }
-        throw error;
+function createTUFromTOSTranslation({ tosUnit, content, tuMeta, quality, logger }) {
+    const guid = tosUnit.id_content;
+    !content && (content = tosUnit.translated_content);
+    const tu = {
+        guid,
+        ts: new Date().getTime(), // actual_delivery_date is garbage as it doesn't change after a bugfix, so it's better to use the retrieval time
+        q: quality,
+        cost: [ tosUnit.total, tosUnit.currency, tosUnit.wc_raw, tosUnit.wc_weighted ],
+        th: tosUnit.translated_content_hash, // this is vendor-specific but it's ok to generalize
+    };
+    if (tosUnit.revised_words) {
+        tu.rev = [ tosUnit.revised_words, tosUnit.error_points ?? 0];
     }
+    if (tuMeta[guid]) {
+        tuMeta[guid].src && (tu.src = tuMeta[guid].src);
+        tuMeta[guid].nsrc && (tu.nsrc = tuMeta[guid].nsrc);
+        tu.contentType = tuMeta[guid].contentType;
+        tu.ntgt = extractNormalizedPartsV1(content, tuMeta[guid].phMap);
+        if (tu.ntgt.filter(e => e === undefined).length > 0) {
+            logger.warn(`Unable to extract normalized parts of TU: ${JSON.stringify(tu)}`);
+            return null;
+        }
+    } else {
+        tu.tgt = content;
+    }
+    return tu;
 }
 
-async function tosProcessRequestTranslationResponseOp({ submittedGuids }, responses) {
-    const response = responses[0];
+async function tosRequestTranslationOfChunkOp({ request }) {
+    let response;
+    try {
+        response = await got.post(request).json();
+    } catch(error) {
+        throw `${error.toString()}: ${error.response?.body}`;
+    }
+    const submittedGuids = request.json.map(tu => tu.id_content);
     const committedGuids = response.map(contentStatus => contentStatus.id_content);
     const missingTus = submittedGuids.filter(submittedGuid => !committedGuids.includes(submittedGuid));
     if (submittedGuids.length !== committedGuids.length || missingTus.length > 0) {
@@ -30,14 +48,52 @@ async function tosProcessRequestTranslationResponseOp({ submittedGuids }, respon
     return committedGuids;
 }
 
-async function tosRequestTranslationsOp({ jobManifest }, committedGuids) {
-    jobManifest.inflight = committedGuids.flat(1);
-    jobManifest.status = 'pending';
-    return jobManifest;
+async function tosCombineTranslationChunksOp(args, committedGuids) {
+    return committedGuids.flat(1);
+}
+
+async function tosFetchContentByGuidOp({ onlyDeltas, tuMap, tuMeta, request, quality, parallelism }) {
+    try {
+        let tosContent = (await got.post(request).json());
+        // eslint-disable-next-line no-invalid-this
+        this.logger.info(`Retrieved ${tosContent.length} translations from TOS`);
+        onlyDeltas && (tosContent = tosContent.filter(tosUnit => !(tuMap[tosUnit.id_content].th === tosUnit.translated_content_hash))); // need to consider th being undefined/null for some entries
+        // sanitize bad responses
+        const fetchedTus = [];
+        const seenGuids = {};
+        while (tosContent.length > 0) {
+            const chunk = tosContent.splice(0, parallelism);
+            const fetchedContent = await Promise.all(chunk.map(tosUnit => got(tosUnit.translated_content_url).text()));
+            // eslint-disable-next-line no-invalid-this
+            this.logger.info(`Fetched ${chunk.length} pieces of content from AWS`);
+            chunk.forEach((tosUnit, idx) => {
+                if (seenGuids[tosUnit.id_content]) {
+                    throw `TOS: Duplicate translations found for guid: ${tosUnit.id_content}`;
+                } else {
+                    seenGuids[tosUnit.id_content] = true;
+                }
+                if (fetchedContent[idx] !== null && fetchedContent[idx].indexOf('|||UNTRANSLATED_CONTENT_START|||') === -1) {
+                    // eslint-disable-next-line no-invalid-this
+                    const newTU = createTUFromTOSTranslation({ tosUnit, content: fetchedContent[idx], tuMeta, quality, logger: this.logger });
+                    fetchedTus.push(newTU);
+                } else {
+                    // eslint-disable-next-line no-invalid-this
+                    this.logger.info(`TOS: for guid ${tosUnit.id_content} retrieved untranslated content ${fetchedContent[idx]}`);
+                }
+            });
+        }
+        return fetchedTus;
+    } catch(error) {
+        throw `${error.toString()}: ${error.response?.body}`;
+    }
+}
+
+async function tosCombineFetchedTusOp(args, tuChunks) {
+    return tuChunks.flat(1);
 }
 
 export class TranslationOS {
-    constructor({ baseURL, apiKey, serviceType, quality, tuDecorator, trafficStore, chunkSize }) {
+    constructor({ baseURL, apiKey, serviceType, quality, tuDecorator, maxTranslationRequestSize, maxFetchSize, parallelism, requestOnly }) {
         if ((apiKey && quality) === undefined) {
             throw 'You must specify apiKey, quality for TranslationOS';
         } else {
@@ -49,40 +105,28 @@ export class TranslationOS {
             this.serviceType = serviceType ?? 'premium',
             this.quality = quality;
             this.tuDecorator = tuDecorator;
-            this.trafficStore = trafficStore;
-            this.chunkSize = chunkSize || 100;
-            this.ctx.opsMgr.registerOp(gotPostOp, { idempotent: false });
-            this.ctx.opsMgr.registerOp(tosProcessRequestTranslationResponseOp, { idempotent: true });
-            this.ctx.opsMgr.registerOp(tosRequestTranslationsOp, { idempotent: true });
+            this.maxTranslationRequestSize = maxTranslationRequestSize || 100;
+            this.maxFetchSize = maxFetchSize || 512;
+            this.parallelism = parallelism || 128;
+            this.requestOnly = requestOnly;
+            this.ctx.opsMgr.registerOp(tosRequestTranslationOfChunkOp, { idempotent: false });
+            this.ctx.opsMgr.registerOp(tosCombineTranslationChunksOp, { idempotent: true });
+            this.ctx.opsMgr.registerOp(tosFetchContentByGuidOp, { idempotent: true });
+            this.ctx.opsMgr.registerOp(tosCombineFetchedTusOp, { idempotent: true });
         }
     }
 
     async requestTranslations(jobRequest) {
-        const { tus, ...jobManifest } = jobRequest;
-        const tuMeta = {};
+        const { tus, ...jobResponse } = jobRequest;
+        const { contentMap, phNotes } = getTUMaps(tus);
         const tosPayload = tus.map(tu => {
-            let phNotes = null;
-            let content = tu.src;
-            if (tu.nsrc) {
-                const [normalizedStr, phMap ] = flattenNormalizedSourceV1(tu.nsrc);
-                content = normalizedStr;
-                if (Object.keys(phMap).length > 0) {
-                    tuMeta[tu.guid] = { contentType: tu.contentType, phMap, nsrc: tu.nsrc };
-                    phNotes = Object.entries(phMap)
-                        .reduce((p, c) => `${p} ${c[0]}=${c[1].v}`, '\n ph:')
-                        .replaceAll('<', 'ᐸ')
-                        .replaceAll('>', 'ᐳ'); // hack until they stop stripping html
-                }
-            } else {
-                tuMeta[tu.guid] = { src: tu.src };
-            }
             let tosTU = {
                 'id_order': jobRequest.jobGuid,
                 'id_content': tu.guid,
-                content,
+                content: contentMap[tu.guid],
                 metadata: 'mf=v1',
                 context: {
-                    notes: `${tu.notes ?? ''}${phNotes ?? ''}\n rid: ${tu.rid}\n sid: ${tu.sid}\n guid: ${tu.guid}`
+                    notes: `${tu.notes ?? ''}${phNotes[tu.guid] ?? ''}\n rid: ${tu.rid}\n sid: ${tu.sid}\n guid: ${tu.guid}`
                 },
                 'source_language': jobRequest.sourceLang,
                 'target_languages': [ jobRequest.targetLang ],
@@ -90,134 +134,123 @@ export class TranslationOS {
                 'service_type': this.serviceType,
                 'dashboard_query_labels': [ tu.rid.slice(-50) ],
             };
+            jobRequest.instructions && (tosTU.context.instructions = jobRequest.instructions);
             (tu.sid !== tu.src) && tosTU.dashboard_query_labels.push(tu.sid.replaceAll('\n', '').slice(-50));
             if (tu.prj !== undefined) {
                 // eslint-disable-next-line camelcase
                 tosTU.id_order_group = tu.prj;
             }
             if (typeof this.tuDecorator === 'function') {
-                tosTU = this.tuDecorator(tosTU, tu, jobManifest);
+                tosTU = this.tuDecorator(tosTU, tu, jobResponse);
             }
             return tosTU;
         });
-        if (Object.keys(tuMeta).length > 0) {
-            jobManifest.envelope ??= {};
-            jobManifest.envelope.mf = 'v1';
-            jobManifest.envelope.tuMeta = JSON.stringify(tuMeta);
-        }
 
         const requestTranslationsTask = this.ctx.opsMgr.createTask();
         try {
             let chunkNumber = 0;
             const chunkOps = [];
             while (tosPayload.length > 0) {
-                const json = tosPayload.splice(0, this.chunkSize);
+                const json = tosPayload.splice(0, this.maxTranslationRequestSize);
                 chunkNumber++;
-                const request = {
-                    url: `${this.baseURL}/translate`,
-                    json,
-                    headers: {
-                        ...this.stdHeaders,
-                        'x-idempotency-id': `jobGuid:${jobRequest.jobGuid} chunk:${chunkNumber}`,
+                this.ctx.logger.info(`Enqueueing TOS translation job ${jobResponse.jobGuid} chunk size: ${json.length}`);
+                chunkOps.push(await requestTranslationsTask.enqueue(tosRequestTranslationOfChunkOp, {
+                    request: {
+                        url: `${this.baseURL}/translate`,
+                        json,
+                        headers: {
+                            ...this.stdHeaders,
+                            'x-idempotency-id': `jobGuid:${jobRequest.jobGuid} chunk:${chunkNumber}`,
+                        },
+                        timeout: {
+                            request: 30000,
+                        },
                     },
-                    timeout: {
-                        request: 30000,
-                    },
-                };
-                this.ctx.verbose && console.log(`Pushing to TOS job ${jobManifest.jobGuid} chunk size: ${json.length}`);
-                const gotOp = await requestTranslationsTask.enqueue(gotPostOp, request);
-                const submittedGuids = json.map(tu => tu.id_content);
-                chunkOps.push(await requestTranslationsTask.enqueue(tosProcessRequestTranslationResponseOp, { submittedGuids }, [ gotOp ]));
+                 }));
             }
-            const rootOp = await requestTranslationsTask.enqueue(tosRequestTranslationsOp, { jobManifest }, chunkOps);
-            return await requestTranslationsTask.execute(rootOp);
+            const combineChunksOp = await requestTranslationsTask.enqueue(tosCombineTranslationChunksOp, null, chunkOps);
+            const committedGuids = await requestTranslationsTask.execute(combineChunksOp);
+            if (this.requestOnly) {
+                return {
+                    ...jobResponse,
+                    tus: [],
+                    status: 'done'
+                };
+            }
+            return {
+                ...jobResponse,
+                inflight: committedGuids,
+                status: 'pending'
+            };
         } catch (error) {
             throw `TOS call failed - ${error}`;
         }
     }
 
-    // eslint-disable-next-line complexity
-    async fetchTranslations(jobManifest) {
-        const tuMeta = JSON.parse(jobManifest?.envelope?.tuMeta ?? '{}');
-        const request = {
-            url: `${this.baseURL}/status`,
-            json: {
-                'id_order': jobManifest.jobGuid,
-                // status: 'delivered', we don't filter here because it makes pagination unreliable
-                'fetch_content': true,
-            },
-            headers: this.stdHeaders,
-        };
-        const tusMap = {};
-        let offset = 0,
-            response;
-        do {
-            request.json = {
-                ...request.json,
-                offset,
-                limit: this.chunkSize,
-            }
-            try {
-                this.ctx.verbose && console.log(`Fetching from TOS job ${jobManifest.jobGuid} offset ${offset} limit ${this.chunkSize}`);
-                this.trafficStore && await this.trafficStore.logRequest('postStatus', request);
-                response = await got.post(request).json();
-                this.trafficStore && await this.trafficStore.logResponse('postStatus-ok', response);
-            } catch (error) {
-                this.trafficStore && await this.trafficStore.logResponse('postStatus-error', error);
-                console.error(error?.response?.body || error);
-                throw "TOS call failed!";
-            }
-            for (const translation of response) {
-                if (translation.translated_content === null || ![ 'delivered', 'invoiced' ].includes(translation.status) || translation.translated_content.indexOf('|||UNTRANSLATED_CONTENT_START|||') >= 0) {
-                    this.ctx.verbose && console.log(`id_order: ${translation.id_order} id_content: ${translation.id} status: ${translation.status} translated_content: ${translation.translated_content}`);
-                } else {
-                    const guid = translation.id_content;
-                    if (jobManifest.inflight.includes(guid)) {
-                        tusMap[guid] && console.error(`Duplicate translations found for guid: ${guid}`);
-                        tusMap[guid] = {
-                            guid,
-                            ts: new Date(translation.actual_delivery_date).getTime(),
-                            q: this.quality,
-                            cost: [ translation.total, translation.currency, translation.wc_raw, translation.wc_weighted ],
-                        };
-                        if (tuMeta[guid]) {
-                            tuMeta[guid].src && (tusMap[guid].src = tuMeta[guid].src);
-                            tuMeta[guid].nsrc && (tusMap[guid].nsrc = tuMeta[guid].nsrc);
-                            tusMap[guid].contentType = tuMeta[guid].contentType;
-                            tusMap[guid].ntgt = extractNormalizedPartsV1(translation.translated_content, tuMeta[guid].phMap);
-                            if (tusMap[guid].ntgt.filter(e => e === undefined).length > 0) {
-                                this.verbose && console.error(`Unable to extract normalized parts of TU: ${JSON.stringify(tusMap[guid])}`);
-                                delete tusMap[guid];
-                            }
-                        } else {
-                            tusMap[guid].tgt = translation.translated_content;
-                        }
-                    } else {
-                        console.error(`Found unexpected guid: ${guid}`);
-                    }
-                }
-            }
-            offset += this.chunkSize;
-        } while (response.length === this.chunkSize);
-        const tus = Object.values(tusMap);
-        const { ...newManifest } = jobManifest;
-        const missingGuids = jobManifest.inflight.filter(guid => tusMap[guid] === undefined);
-        if (missingGuids.length === 0) {
-            newManifest.status = 'done';
-        } else {
-            if (this.ctx.verbose && tus.length > 0) { // if we got something but not all, log the delta
-                console.log(`Got ${tus.length} translations from TOS for job ${jobManifest.jobGuid} and was expecting ${jobManifest.inflight.length} -- missing the following:`);
-                for (const guid of jobManifest.inflight) {
-                    if (!tusMap[guid]) {
-                        console.log(guid);
-                    }
-                }
-            }
+    async #fetchTranslatedTus({ targetLang, reqTus, onlyDeltas }) {
+        const guids = reqTus.filter(tu => tu.src ?? tu.nsrc).map(tu => tu.guid);
+        const refreshTranslationsTask = this.ctx.opsMgr.createTask();
+        let chunkNumber = 0;
+        const refreshOps = [];
+        while (guids.length > 0) {
+            chunkNumber++;
+            const guidsInChunk = guids.splice(0, this.maxFetchSize);
+            const tusInChunk = reqTus.filter(tu => guidsInChunk.includes(tu.guid));
+            const tuMap = tusInChunk.reduce((p,c) => (p[c.guid] = c, p), {});
+            const { tuMeta } = getTUMaps(tusInChunk);
+            this.ctx.logger.verbose(`Enqueueing refresh of TOS chunk ${chunkNumber} (${guidsInChunk.length} units)...`);
+            const json = {
+                id_content: guidsInChunk,
+                target_language: targetLang,
+                status: ['delivered', 'invoiced'],
+                fetch_content: false,
+                last_delivered_only: true,
+                limit: this.maxFetchSize,
+            };
+            const refreshOp = await refreshTranslationsTask.enqueue(tosFetchContentByGuidOp, {
+                onlyDeltas,
+                tuMap,
+                tuMeta,
+                request: {
+                    url: `${this.baseURL}/status`,
+                    json,
+                    headers: this.stdHeaders,
+                    timeout: {
+                        request: 60000,
+                    },
+                },
+                quality: this.quality,
+                parallelism: this.parallelism,
+            });
+            refreshOps.push(refreshOp);
         }
+        const rootOp = await refreshTranslationsTask.enqueue(tosCombineFetchedTusOp, null, refreshOps);
+        return await refreshTranslationsTask.execute(rootOp);
+    }
+
+    async fetchTranslations(pendingJob, jobRequest) {
+        const { inflight, ...jobResponse } = pendingJob;
+        const reqTus = jobRequest.tus.filter(tu => inflight.includes(tu.guid));
+        const tus = await this.#fetchTranslatedTus({ targetLang: jobRequest.targetLang, reqTus, onlyDeltas: false });
+        const tuMap = tus.reduce((p,c) => (p[c.guid] = c, p), {});
+        const nowInflight = inflight.filter(guid => !tuMap[guid]);
         if (tus.length > 0) {
-            newManifest.tus = tus;
-            return newManifest;
+            const response = {
+                ...jobResponse,
+                tus,
+                status: nowInflight.length === 0 ? 'done' : 'pending',
+            };
+            nowInflight.length > 0 && (response.inflight = nowInflight);
+            return response;
         }
         return null;
+    }
+
+    async refreshTranslations(jobRequest) {
+        return {
+            ...jobRequest,
+            tus: await this.#fetchTranslatedTus({ targetLang: jobRequest.targetLang, reqTus: jobRequest.tus, onlyDeltas: true }),
+            status: 'done',
+        };
     }
 }

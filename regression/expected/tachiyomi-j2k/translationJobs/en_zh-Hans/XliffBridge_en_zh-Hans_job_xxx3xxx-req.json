@@ -290,29 +290,8 @@
 			]
 		}
 	],
-	"leverage": {
-		"tmSize": 854,
-		"minimumQuality": 50,
-		"prjLeverage": {
-			"default": {
-				"translated": 854,
-				"translatedWords": 2773,
-				"translatedByQ": {
-					"61": 3,
-					"70": 851
-				},
-				"untranslated": 17,
-				"untranslatedChars": 402,
-				"untranslatedWords": 65,
-				"pending": 0,
-				"pendingWords": 0,
-				"internalRepetitions": 0,
-				"internalRepetitionWords": 0
-			}
-		}
-	},
 	"translationProvider": "XliffBridge",
-	"jobId": 3,
-	"jobGuid": "x",
-	"status": "created"
+	"jobGuid": "xxx3xxx",
+	"status": "created",
+	"updatedAt": "2022-05-29T00:00:00.000Z"
 }
