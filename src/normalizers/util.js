@@ -43,7 +43,10 @@ export function flattenNormalizedSourceV1(nsrc) {
             const phPrefix = phIdx < 26 ? String.fromCharCode(96 + phIdx) : `z${phIdx}`;
             const mangledPh = `${phPrefix}_${part.t}_${(part.v.match(/[0-9A-Za-z_]+/) || [''])[0]}`;
             normalizedStr.push(`{{${mangledPh}}}`);
-            phMap[mangledPh] = part;
+            phMap[mangledPh] = {
+                ...part,
+                v1: mangledPh,
+            };
         }
     }
     return [ normalizedStr.join(''), phMap ];
@@ -72,7 +75,9 @@ export function extractNormalizedPartsV1(str, phMap) {
 export function flattenNormalizedSourceToXmlV1(nsrc) {
     const normalizedStr = [],
         phMap = {};
-    let phIdx = 0;
+    let phIdx = 0,
+        nestingLevel = 0,
+        openTagShorthand = [];
     for (const part of nsrc) {
         if (typeof part === 'string') {
             normalizedStr.push(part.replaceAll('<', '&lt;'));
@@ -80,8 +85,22 @@ export function flattenNormalizedSourceToXmlV1(nsrc) {
             phIdx++;
             const phPrefix = phIdx < 26 ? String.fromCharCode(96 + phIdx) : `z${phIdx}`;
             const mangledPh = `${phPrefix}_${part.t}_${(part.v.match(/[0-9A-Za-z_]+/) || [''])[0]}`;
-            normalizedStr.push(`<${phPrefix} />`);
-            phMap[phPrefix] = {
+            let phShorthand = `x${phIdx}`;
+            if (part.t === 'x' || (part.t === 'ex' && nestingLevel === 0)) { // if we get a close tag before an open one, treat it like a single tag
+                normalizedStr.push(`<${phShorthand} />`);
+            } else if (part.t === 'bx') {
+                normalizedStr.push(`<${phShorthand}>`);
+                openTagShorthand[nestingLevel] = phShorthand;
+                nestingLevel++;
+                phShorthand = `b${phShorthand}`;
+            } else if (part.t === 'ex') {
+                nestingLevel--;
+                phIdx--;
+                phShorthand = openTagShorthand[nestingLevel];
+                normalizedStr.push(`</${phShorthand}>`);
+                phShorthand = `e${phShorthand}`;
+            }
+            phMap[phShorthand] = {
                 ...part,
                 v1: mangledPh,
             };
@@ -94,11 +113,13 @@ const cleanXMLEntities = str => str.replaceAll('&lt;', '<').replaceAll('&amp;', 
 export function extractNormalizedPartsFromXmlV1(str, phMap) {
     const normalizedParts = [];
     let pos = 0;
-    for (const match of str.matchAll(/<(?<phIdx>[a-y]|z\d+) \/>/g)) {
+    for (const match of str.matchAll(/<(?<x>x\d+) \/>|<(?<bx>x\d+)>|<\/(?<ex>x\d+)>/g)) {
         if (match.index > pos) {
             normalizedParts.push(cleanXMLEntities(match.input.substring(pos, match.index)));
         }
-        normalizedParts.push(phMap[match.groups.phIdx]);
+        normalizedParts.push(phMap[match.groups.x ??
+            (match.groups.bx && `b${match.groups.bx}`) ??
+            (match.groups.ex && `e${match.groups.ex}`)]);
         pos = match.index + match[0].length;
     }
     if (pos < str.length) {
