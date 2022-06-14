@@ -455,6 +455,7 @@
 	<string name="cannot_remove_tracking_while_offline">离线时无法从 %1$s 删除追踪器</string>
 	<string name="remove_tracking_from_">同时从 %1$s 移除</string>
 	<string name="remove_previous_tracker">删除先前追踪器？</string>
+	<string name="remove_x_from_service_and_add_y">从 %1$s 删除 %2$s 并添加 %3$s</string>
 	<string name="keep_both_on_service">保留 %1$s 上的两个，仅本地替换</string>
 	<string name="started_reading_date">开始阅读日期</string>
 	<string name="finished_reading_date">完成阅读日期</string>

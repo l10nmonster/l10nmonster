@@ -1,5 +1,5 @@
 import { diffJson } from 'diff';
-import { getNormalizedString, flattenNormalizedSourceToOrdinal, flattenNormalizedSourceV1, sourceAndTargetAreCompatible } from './normalizers/util.js';
+import { getNormalizedString, flattenNormalizedSourceToOrdinal, sourceAndTargetAreCompatible, phMatcherMaker } from './normalizers/util.js';
 import { consoleColor } from './shared.js';
 
 export async function translateCmd(mm, { limitToLang, dryRun }) {
@@ -7,7 +7,6 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
     const resourceStats = await mm.fetchResourceStats();
     const targetLangs = mm.getTargetLangs(limitToLang, resourceStats);
     for (const targetLang of targetLangs) {
-        const verbose = mm.verbose;
         const sourceLang = mm.sourceLang;
         const tm = await mm.tmm.getTM(sourceLang, targetLang);
         status.generatedResources[targetLang] = [];
@@ -36,21 +35,17 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                 // eslint-disable-next-line complexity
                 const translator = async function translate(sid, src) {
                     const seg = { sid, str: src };
-                    let nsrc,
-                        v1PhMap,
-                        valueMap;
+                    let nsrc;
                     const flags = {};
                     if (pipeline.decoders) {
                         const normalizedStr = getNormalizedString(src, pipeline.decoders, flags);
                         if (normalizedStr[0] !== src) {
                             nsrc = normalizedStr;
                             seg.nstr = normalizedStr;
-                            v1PhMap = flattenNormalizedSourceV1(nsrc)[1];
-                            valueMap = Object.fromEntries(Object.values(v1PhMap).map(e => [ e.v, true ]));
                         }
                     }
                     if (pipeline.segmentDecorator && pipeline.segmentDecorator([ seg ]).length === 0) {
-                        verbose && console.error(`Dropping ${sid} in ${resourceId} as decided by segment decorator`);
+                        mm.ctx.logger.info(`Dropping ${sid} in ${resourceId} as decided by segment decorator`);
                         return undefined;
                     }
                     const flattenSrc = nsrc ? flattenNormalizedSourceToOrdinal(nsrc) : src;
@@ -59,27 +54,19 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                     if (entry && !entry.inflight) {
                         if (sourceAndTargetAreCompatible(nsrc ?? src, entry.ntgt ?? entry.tgt)) {
                             if (entry.ntgt) {
+                                const phMatcher = phMatcherMaker(nsrc ?? [ src ]);
                                 const ntgtEntries = entry.ntgt.entries();
                                 const tgt = [];
                                 for (const [idx, part] of ntgtEntries) {
                                     const partFlags = { ...flags, isFirst: idx === 0, isLast: idx === ntgtEntries.length - 1 };
                                     if (typeof part === 'string') {
                                         tgt.push(encodeString(part, partFlags));
-                                    } else if (part?.v1) {
-                                        if (v1PhMap && v1PhMap[part.v1]) {
-                                            tgt.push(encodeString(v1PhMap[part.v1], partFlags));
-                                        } else {
-                                            verbose && console.error(`Incompatible v1 placeholder found: ${JSON.stringify(part)} in ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
-                                            return undefined;
-                                        }
-                                    } else if (part?.v === undefined) {
-                                        verbose && console.error(`Unknown placeholder found: ${JSON.stringify(part)} in ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
-                                        return undefined;
                                     } else {
-                                        if (valueMap[part.v]) {
-                                            tgt.push(encodeString(part, partFlags));
+                                        const ph = phMatcher(part);
+                                        if (ph) {
+                                            tgt.push(encodeString(ph, partFlags));
                                         } else {
-                                            verbose && console.error(`Incompatible value placeholder found: ${JSON.stringify(part)} in ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
+                                            mm.ctx.logger.info(`Unknown placeholder found: ${JSON.stringify(part)} in ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
                                             return undefined;
                                         }
                                     }
@@ -89,10 +76,10 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                                 return encodeString(entry.tgt, { ...flags, isFirst: true, isLast: true });
                             }
                         } else {
-                            verbose && console.error(`Source ${resourceId}+${sid}+${src} is incompatible with ${sourceLang}_${targetLang} TM entry ${JSON.stringify(entry)}`);
+                            mm.ctx.logger.info(`Source ${resourceId}+${sid}+${src} is incompatible with ${sourceLang}_${targetLang} TM entry ${JSON.stringify(entry)}`);
                         }
                     } else {
-                        verbose && !entry?.inflight && console.error(`Couldn't find ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
+                        !entry?.inflight && mm.ctx.logger.info(`Couldn't find ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
                     }
                     return undefined;
                 };
@@ -104,7 +91,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                     try {
                         currentRaw = await pipeline.target.fetchTranslatedResource(targetLang, resourceId);
                     } catch (e) {
-                        verbose && console.log(`${targetLang}: Couldn't fetch translated resource ${translatedResourceId}`);
+                        mm.ctx.logger.info(`${targetLang}: Couldn't fetch translated resource ${translatedResourceId}`);
                     }
                     if (currentRaw) {
                         const currentParsed = await pipeline.resourceFilter.parseResource({ resource: currentRaw, isSource: false });

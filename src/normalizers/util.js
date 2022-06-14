@@ -108,20 +108,33 @@ export function extractNormalizedPartsFromXmlV1(str, phMap) {
 }
 
 const minifyV1PH = v1ph => v1ph && v1ph.split('_').slice(0, -1).join('_');
+
+export function phMatcherMaker(nsrc) {
+    const phMap = flattenNormalizedSourceV1(nsrc)[1];
+    const v1PhMap = Object.fromEntries(Object.entries(phMap).map(([k, v]) => [minifyV1PH(k), v]));
+    const valueMap = Object.fromEntries(Object.values(v1PhMap).map(e => [ e.v, true ]));
+    return function matchPH(part) {
+        return v1PhMap[minifyV1PH(part.v1)] ?? (valueMap[part.v] && part);
+    }
+}
+
 export function sourceAndTargetAreCompatible(nsrc, ntgt) {
     if (Boolean(nsrc) && Boolean(ntgt)) {
         !Array.isArray(nsrc) && (nsrc = [ nsrc ]);
         !Array.isArray(ntgt) && (ntgt = [ ntgt ]);
-        const v1PhMap = Object.fromEntries(Object.entries(flattenNormalizedSourceV1(nsrc)[1]).map(([k, v]) => [minifyV1PH(k), v]));
-        const valueMap = Object.fromEntries(Object.values(v1PhMap).map(e => [ e.v, true ]));
-        for (const ph of ntgt) {
-            if (typeof ph === 'object') {
-                if (!v1PhMap[minifyV1PH(ph.v1)] && !valueMap[ph.v]) {
+        const phMatcher = phMatcherMaker(nsrc);
+        if (!phMatcher) {
+            return false;
+        }
+        for (const part of ntgt) {
+            if (typeof part === 'object') {
+                if (phMatcher(part) === undefined) {
                     return false;
                 }
             }
         }
-        return Object.keys(v1PhMap).length === Object.keys(flattenNormalizedSourceV1(ntgt)[1]).length;
+        // the loop above may pass, yet the target may have fewer placeholder, so we check the number of ph is the same
+        return Object.keys(nsrc.filter(e => typeof e === 'object')).length === Object.keys(ntgt.filter(e => typeof e === 'object')).length;
     }
     return false;
 }

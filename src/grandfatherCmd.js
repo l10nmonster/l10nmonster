@@ -22,7 +22,7 @@ export async function grandfatherCmd(mm, quality, limitToLang) {
                     // mm.ctx.logger.info(`Getting ${tu.rid} for language ${targetLang}`);
                     resource = await pipeline.target.fetchTranslatedResource(targetLang, tu.rid);
                 } catch (e) {
-                    mm.verbose && console.error(`Couldn't fetch translated resource: ${e}`);
+                    mm.ctx.logger.info(`Couldn't fetch translated resource: ${e}`);
                 } finally {
                     if (resource) {
                         const parsedResource = await pipeline.resourceFilter.parseResource({ resource, isSource: false });

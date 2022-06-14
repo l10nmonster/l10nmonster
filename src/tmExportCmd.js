@@ -29,7 +29,7 @@ async function exportTMX(mm, targetLang, sourceLookup, tmBased) {
                 Boolean(mangledTgt) && (tmx.resources[group][guid][targetLang] = mangledTgt);
             }
         } else {
-            mm.verbose && console.error(`Couldn't retrieve source for guid: ${guid}`);
+            mm.ctx.logger.info(`Couldn't retrieve source for guid: ${guid}`);
         }
     }
     return tmx;
@@ -60,12 +60,12 @@ async function exportAsJob(mm, targetLang, sourceLookup, tmBased) {
         if (useAsSourceTU.src || useAsSourceTU.nsrc) {
             jobReq.tus.push(cleanupTU(useAsSourceTU, sourceTUWhitelist));
         } else {
-            mm.verbose && console.error(`Couldn't retrieve source for guid: ${guid}`);
+            mm.ctx.logger.info(`Couldn't retrieve source for guid: ${guid}`);
         }
         // we want to include source in target in case it's missing
         const useAsTargetTU = { ...sourceTU, ...translatedTU };
         if (useAsTargetTU.inflight) {
-            mm.verbose && console.error(`Warning: in-flight translation unit ${guid} can't be exported`);
+            mm.ctx.logger.info(`Warning: in-flight translation unit ${guid} can't be exported`);
         } else {
             const cleanTU = cleanupTU(useAsTargetTU, targetTUWhitelist);
             cleanTU.ts = cleanTU.ts || new Date().getTime();
