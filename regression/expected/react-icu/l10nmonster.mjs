@@ -31,8 +31,7 @@ export default class ReactConfig {
                     enablePluralSuffixes : true,
                     emitArbAnnotations : true,
                 }),
-                decoders: [ normalizers.xmlDecoder, normalizers.doubleBracePHDecoder,
-                    normalizers.xmlEntityDecoder, normalizers.i18nextKeyDecoder ],                
+                decoders: [ normalizers.xmlDecoder, normalizers.xmlEntityDecoder, normalizers.i18nextPHDecoder ],
                 target: new adapters.FsTarget({
                     targetPath: (lang, resourceId) => resourceId.replace('en/', `${lang}/`),
                 }),

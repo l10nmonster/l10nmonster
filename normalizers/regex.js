@@ -255,18 +255,12 @@ export const iosPHDecoder = regexMatchingDecoderMaker(
     (groups) => ({ t: 'x', v: groups.tag })
 );
 
-// i18next v4 keyNesting format
-//  "keyNesting": "reuse $t(keyDeep.inner)"
+// i18next v4 placeholder formats
+// - "keyNesting": "reuse $t(keyDeep.inner)", or
+// - "keyInterpolate": "replace this {{value}}"
 // See: https://www.i18next.com/misc/json-format#i18next-json-v4
-export const i18nextKeyDecoder = regexMatchingDecoderMaker(
+export const i18nextPHDecoder = regexMatchingDecoderMaker(
     'i18nextKey',
-    /\$(?<fn>\w)\((?<tag>[\w:.]+)\)/g,
-    (groups) => ({ t: 'x', v: `$${groups.fn}(${groups.tag})` })
-);
-
-// {{param}} style placeholders
-export const doubleBracePHDecoder = regexMatchingDecoderMaker(
-    'doubleBracePHDecoder',
-    /(?<x>{{[^}]+}})/g,
-    (groups) => ({ t: 'x', v: groups.x })
+    /(?<nestingPh>\$t\([\w:.]+\))|(?<doubleBracePh>{{[^}]+}})/g,
+    (groups) => ({ t: 'x', v: groups.nestingPh ?? groups.doubleBracePh })
 );
