@@ -439,14 +439,6 @@
 			"ts": 1
 		},
 		{
-			"sid": "org.alfresco.profile.status-changed",
-			"guid": "faMqWWwPGfL2ojQpJKVq5ag3W9oKmvVS4vT4_XpaDIA",
-			"contentType": "default",
-			"src": "{1}: {2}",
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
-		},
-		{
 			"sid": "label.header",
 			"guid": "mpN5e7DwX3x1lq6tGeCw3pN5XojDAp0yBMSeOOyuCpc",
 			"contentType": "default",

@@ -382,13 +382,6 @@
 			"ts": 1
 		},
 		{
-			"guid": "faMqWWwPGfL2ojQpJKVq5ag3W9oKmvVS4vT4_XpaDIA",
-			"q": 70,
-			"src": "{1}: {2}",
-			"tgt": "{1}: {2}",
-			"ts": 1
-		},
-		{
 			"guid": "mpN5e7DwX3x1lq6tGeCw3pN5XojDAp0yBMSeOOyuCpc",
 			"q": 70,
 			"src": "Alfresco Add-ons RSS Feed",
