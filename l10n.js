@@ -15,10 +15,10 @@ import { consoleColor, printRequest, printResponse } from './src/shared.js';
 import MonsterManager from './src/monsterManager.js';
 import { OpsMgr } from './src/opsMgr.js';
 
-import { JsonJobStore } from './stores/jsonJobStore.js';
-// import { SqlJobStore } from './stores/sqlJobStore.js';
-import { JsonStateStore } from './stores/jsonStateStore.js';
-// import { SqlStateStore } from './stores/sqlStateStore.js';
+import { JsonJobStore } from './src/stores/jsonJobStore.js';
+// import { SqlJobStore } from './src/stores/sqlJobStore.js';
+import { JsonStateStore } from './src/stores/jsonStateStore.js';
+// import { SqlStateStore } from './src/stores/sqlStateStore.js';
 
 import { analyzeCmd } from './src/analyzeCmd.js';
 import { grandfatherCmd } from './src/grandfatherCmd.js';
@@ -31,19 +31,19 @@ import { jobsCmd } from './src/jobsCmd.js';
 import { tmExportCmd } from './src/tmExportCmd.js';
 import { translateCmd } from './src/translateCmd.js';
 
-import { FsSource, FsTarget } from './adapters/fs.js';
-import { PoFilter } from './filters/po.js';
-import { AndroidFilter } from './filters/android.js';
-import { JavaPropertiesFilter } from './filters/java.js';
-import { IosStringsFilter } from './filters/ios.js';
-import { JsonFilter } from './filters/json.js';
-import { XliffBridge } from './translators/xliff.js';
-import { PigLatinizer } from './translators/piglatinizer.js';
-import { TranslationOS } from './translators/translationOS.js';
-import { Visicode } from './translators/visicode.js';
-import { ModernMT } from './translators/modernMT.js';
-import { DeepL } from './translators/deepL.js';
-import * as regexNormalizers from './normalizers/regex.js';
+import { FsSource, FsTarget } from './src/adapters/fs.js';
+import { PoFilter } from './src/filters/po.js';
+import { AndroidFilter } from './src/filters/android.js';
+import { JavaPropertiesFilter } from './src/filters/java.js';
+import { IosStringsFilter } from './src/filters/ios.js';
+import { JsonFilter } from './src/filters/json.js';
+import { XliffBridge } from './src/translators/xliff.js';
+import { PigLatinizer } from './src/translators/piglatinizer.js';
+import { TranslationOS } from './src/translators/translationOS.js';
+import { Visicode } from './src/translators/visicode.js';
+import { ModernMT } from './src/translators/modernMT.js';
+import { DeepL } from './src/translators/deepL.js';
+import * as regexNormalizers from './src/normalizers/regex.js';
 
 const monsterCLI = new Command();
 

@@ -27,7 +27,7 @@ export class FsSource {
                 const stats = await fs.stat(fileName);
                 let resMeta = {
                     id,
-                    modified: stats.mtime.toISOString(),
+                    modified: this.ctx.regression ? 1 : stats.mtime.toISOString(),
                     targetLangs: this.targetLangs,
                 };
                 this.prj && (resMeta.prj = this.prj);

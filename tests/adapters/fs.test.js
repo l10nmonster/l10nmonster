@@ -1,4 +1,4 @@
-import * as adapters from '../../adapters/fs';
+import * as adapters from '../../src/adapters/fs';
 import * as path from 'path';
 
 const ctx = {

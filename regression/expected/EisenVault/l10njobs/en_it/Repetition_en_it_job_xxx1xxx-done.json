@@ -8,7 +8,7 @@
 			"q": 69,
 			"src": "This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed.",
 			"tgt": "Questo dashlet mostra il feed RSS selezionato. Fare clic sull'icona Modifica del dashlet per modificare il feed.",
-			"ts": 1642896537873,
+			"ts": 1,
 			"jobGuid": "xxx1xxx"
 		},
 		{
@@ -16,7 +16,7 @@
 			"q": 61,
 			"src": "Configure",
 			"tgt": "Configura",
-			"ts": 1642896537873,
+			"ts": 1,
 			"jobGuid": "xxx1xxx"
 		}
 	],

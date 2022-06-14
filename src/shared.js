@@ -1,4 +1,4 @@
-import { flattenNormalizedSourceV1 } from '../normalizers/util.js';
+import { flattenNormalizedSourceV1 } from './normalizers/util.js';
 import tinyld from 'tinyld';
 // import LD from 'languagedetect';
 // const lngDetector = new LD();

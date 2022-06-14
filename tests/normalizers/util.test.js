@@ -1,4 +1,4 @@
-import { flattenNormalizedSourceToXmlV1, extractNormalizedPartsFromXmlV1 } from '../../normalizers/util.js';
+import { flattenNormalizedSourceToXmlV1, extractNormalizedPartsFromXmlV1 } from '../../src/normalizers/util.js';
 
 const nsrc1 = [
     { t: 'x', v: "<icon name='location'/>" },

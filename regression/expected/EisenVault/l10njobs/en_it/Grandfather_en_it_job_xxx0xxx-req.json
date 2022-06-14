@@ -8,7 +8,7 @@
 			"contentType": "default",
 			"src": "New Activity",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "more.activities",
@@ -17,7 +17,7 @@
 			"contentType": "default",
 			"src": "{0} more",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "atom.title.site",
@@ -26,7 +26,7 @@
 			"contentType": "default",
 			"src": "Alfresco Activities Site Feed for {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "atom.title.user",
@@ -34,7 +34,7 @@
 			"contentType": "default",
 			"src": "Alfresco Activities User Feed for {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "in.site",
@@ -43,7 +43,7 @@
 			"contentType": "default",
 			"src": "{0} in {1}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.blog.post-created",
@@ -52,7 +52,7 @@
 			"contentType": "default",
 			"src": "{1} created blog post {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.blog.post-updated",
@@ -60,7 +60,7 @@
 			"contentType": "default",
 			"src": "{1} updated blog post {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.blog.post-deleted",
@@ -68,7 +68,7 @@
 			"contentType": "default",
 			"src": "{1} deleted blog post {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.comments.comment-created",
@@ -76,7 +76,7 @@
 			"contentType": "default",
 			"src": "{1} commented on {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.comments.comment-updated",
@@ -84,7 +84,7 @@
 			"contentType": "default",
 			"src": "{1} updated comment on {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.comments.comment-deleted",
@@ -92,7 +92,7 @@
 			"contentType": "default",
 			"src": "{1} deleted a comment from {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.discussions.post-created",
@@ -100,7 +100,7 @@
 			"contentType": "default",
 			"src": "{1} started discussion {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.discussions.post-updated",
@@ -108,7 +108,7 @@
 			"contentType": "default",
 			"src": "{1} updated discussion {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.discussions.post-deleted",
@@ -116,7 +116,7 @@
 			"contentType": "default",
 			"src": "{1} deleted discussion {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.discussions.reply-created",
@@ -124,7 +124,7 @@
 			"contentType": "default",
 			"src": "{1} replied to the discussion {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.discussions.reply-updated",
@@ -132,7 +132,7 @@
 			"contentType": "default",
 			"src": "{1} updated a reply to {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.calendar.event-created",
@@ -140,7 +140,7 @@
 			"contentType": "default",
 			"src": "{1} created calendar event {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.calendar.event-updated",
@@ -148,7 +148,7 @@
 			"contentType": "default",
 			"src": "{1} updated calendar event {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.calendar.event-deleted",
@@ -156,7 +156,7 @@
 			"contentType": "default",
 			"src": "{1} deleted calendar event {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.file-added",
@@ -164,7 +164,7 @@
 			"contentType": "default",
 			"src": "{1} added document {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.files-added",
@@ -172,7 +172,7 @@
 			"contentType": "default",
 			"src": "{1} added {0} documents",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.file-created",
@@ -180,7 +180,7 @@
 			"contentType": "default",
 			"src": "{1} created document {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.file-deleted",
@@ -188,7 +188,7 @@
 			"contentType": "default",
 			"src": "{1} deleted document {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.files-deleted",
@@ -196,7 +196,7 @@
 			"contentType": "default",
 			"src": "{1} deleted {0} documents",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.file-updated",
@@ -204,7 +204,7 @@
 			"contentType": "default",
 			"src": "{1} updated document {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.files-updated",
@@ -212,7 +212,7 @@
 			"contentType": "default",
 			"src": "{1} updated {0} documents",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.folder-added",
@@ -220,7 +220,7 @@
 			"contentType": "default",
 			"src": "{1} added folder {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.folder-deleted",
@@ -228,7 +228,7 @@
 			"contentType": "default",
 			"src": "{1} deleted folder {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.folders-added",
@@ -236,7 +236,7 @@
 			"contentType": "default",
 			"src": "{1} added {0} folders",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.folders-deleted",
@@ -244,7 +244,7 @@
 			"contentType": "default",
 			"src": "{1} deleted {0} folders",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.inline-edit",
@@ -252,7 +252,7 @@
 			"contentType": "default",
 			"src": "{1} edited document {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.file-previewed",
@@ -260,7 +260,7 @@
 			"contentType": "default",
 			"src": "{1} previewed document {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.file-downloaded",
@@ -268,7 +268,7 @@
 			"contentType": "default",
 			"src": "{1} downloaded document {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.file-liked",
@@ -276,7 +276,7 @@
 			"contentType": "default",
 			"src": "{1} liked document {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.folder-liked",
@@ -284,7 +284,7 @@
 			"contentType": "default",
 			"src": "{1} liked folder {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.wiki.page-created",
@@ -292,7 +292,7 @@
 			"contentType": "default",
 			"src": "{1} created wiki page {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.wiki.page-edited",
@@ -300,7 +300,7 @@
 			"contentType": "default",
 			"src": "{1} updated wiki page {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.wiki.page-renamed",
@@ -308,7 +308,7 @@
 			"contentType": "default",
 			"src": "{1} renamed wiki page from {2} to {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.wiki.page-deleted",
@@ -316,7 +316,7 @@
 			"contentType": "default",
 			"src": "{1} deleted wiki page {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.site.group-added",
@@ -324,7 +324,7 @@
 			"contentType": "default",
 			"src": "{1} group added to site {4} with role {2}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.site.group-removed",
@@ -332,7 +332,7 @@
 			"contentType": "default",
 			"src": "{1} group removed from site {4}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.site.group-role-changed",
@@ -340,7 +340,7 @@
 			"contentType": "default",
 			"src": "{1} group role changed to {2}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.site.user-joined",
@@ -348,7 +348,7 @@
 			"contentType": "default",
 			"src": "{1} joined site {4} with role {2}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.site.user-left",
@@ -356,7 +356,7 @@
 			"contentType": "default",
 			"src": "{1} left site {4}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.site.user-role-changed",
@@ -364,7 +364,7 @@
 			"contentType": "default",
 			"src": "{1} role changed to {2}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.site.liked",
@@ -372,7 +372,7 @@
 			"contentType": "default",
 			"src": "{1} liked site {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.links.link-created",
@@ -380,7 +380,7 @@
 			"contentType": "default",
 			"src": "{1} created link {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.links.link-updated",
@@ -388,7 +388,7 @@
 			"contentType": "default",
 			"src": "{1} updated link {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.links.link-deleted",
@@ -396,7 +396,7 @@
 			"contentType": "default",
 			"src": "{1} deleted link {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.datalists.list-created",
@@ -404,7 +404,7 @@
 			"contentType": "default",
 			"src": "{1} created data list {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.datalists.list-updated",
@@ -412,7 +412,7 @@
 			"contentType": "default",
 			"src": "{1} updated data list {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.datalists.list-deleted",
@@ -420,7 +420,7 @@
 			"contentType": "default",
 			"src": "{1} deleted data list {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.subscriptions.followed",
@@ -428,7 +428,7 @@
 			"contentType": "default",
 			"src": "{1} is now following {5}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.subscriptions.subscribed",
@@ -436,7 +436,7 @@
 			"contentType": "default",
 			"src": "{1} has subscribed to {2}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "org.alfresco.profile.status-changed",
@@ -444,7 +444,7 @@
 			"contentType": "default",
 			"src": "{1}: {2}",
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1642896537854
+			"ts": 1
 		},
 		{
 			"sid": "label.header",
@@ -452,7 +452,7 @@
 			"contentType": "default",
 			"src": "Alfresco Add-ons RSS Feed",
 			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1642896537786
+			"ts": 1
 		},
 		{
 			"sid": "label.configure",
@@ -460,7 +460,7 @@
 			"contentType": "default",
 			"src": "Configure",
 			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1642896537786
+			"ts": 1
 		},
 		{
 			"sid": "label.noItems",
@@ -468,7 +468,7 @@
 			"contentType": "default",
 			"src": "No news items",
 			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1642896537786
+			"ts": 1
 		},
 		{
 			"sid": "label.loading",
@@ -476,7 +476,7 @@
 			"contentType": "default",
 			"src": "Loading items - please wait...",
 			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1642896537786
+			"ts": 1
 		},
 		{
 			"sid": "title.error.bad_data",
@@ -484,7 +484,7 @@
 			"contentType": "default",
 			"src": "RSS feed can't be read",
 			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1642896537786
+			"ts": 1
 		},
 		{
 			"sid": "title.error.unavailable",
@@ -492,7 +492,7 @@
 			"contentType": "default",
 			"src": "RSS feed is not available",
 			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1642896537786
+			"ts": 1
 		},
 		{
 			"sid": "title.error.unsupported",
@@ -500,7 +500,7 @@
 			"contentType": "default",
 			"src": "RSS feed format is not supported",
 			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1642896537786
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -508,7 +508,7 @@
 			"contentType": "default",
 			"src": "This dashlet shows the latest news from Alfresco Add-ons. Click the edit icon on the dashlet to configure the feed.",
 			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1642896537786
+			"ts": 1
 		},
 		{
 			"sid": "label.body",
@@ -516,7 +516,7 @@
 			"contentType": "default",
 			"src": "Find, rate, and contribute Alfresco add-ons and extensions.",
 			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1642896537786
+			"ts": 1
 		},
 		{
 			"sid": "label.addonsLink",
@@ -524,7 +524,7 @@
 			"contentType": "default",
 			"src": "http://addons.alfresco.com",
 			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1642896537786
+			"ts": 1
 		},
 		{
 			"sid": "label.addonsText",
@@ -532,7 +532,7 @@
 			"contentType": "default",
 			"src": "Visit the Alfresco Add-ons Home Page",
 			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1642896537786
+			"ts": 1
 		},
 		{
 			"sid": "label.header",
@@ -540,7 +540,7 @@
 			"contentType": "default",
 			"src": "RSS Feed",
 			"rid": "dashlets/async-rssfeed.get_en.properties",
-			"ts": 1642896537805
+			"ts": 1
 		},
 		{
 			"sid": "label.configure",
@@ -548,7 +548,7 @@
 			"contentType": "default",
 			"src": "Configure",
 			"rid": "dashlets/async-rssfeed.get_en.properties",
-			"ts": 1642896537805
+			"ts": 1
 		},
 		{
 			"sid": "label.noItems",
@@ -556,7 +556,7 @@
 			"contentType": "default",
 			"src": "No news items",
 			"rid": "dashlets/async-rssfeed.get_en.properties",
-			"ts": 1642896537805
+			"ts": 1
 		},
 		{
 			"sid": "title.error.bad_data",
@@ -564,7 +564,7 @@
 			"contentType": "default",
 			"src": "RSS feed can't be read",
 			"rid": "dashlets/async-rssfeed.get_en.properties",
-			"ts": 1642896537805
+			"ts": 1
 		},
 		{
 			"sid": "title.error.unavailable",
@@ -572,7 +572,7 @@
 			"contentType": "default",
 			"src": "RSS feed is not available",
 			"rid": "dashlets/async-rssfeed.get_en.properties",
-			"ts": 1642896537805
+			"ts": 1
 		},
 		{
 			"sid": "title.error.unsupported",
@@ -580,7 +580,7 @@
 			"contentType": "default",
 			"src": "RSS feed format is not supported",
 			"rid": "dashlets/async-rssfeed.get_en.properties",
-			"ts": 1642896537805
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -588,7 +588,7 @@
 			"contentType": "default",
 			"src": "This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed.",
 			"rid": "dashlets/async-rssfeed.get_en.properties",
-			"ts": 1642896537805
+			"ts": 1
 		},
 		{
 			"sid": "label.header",
@@ -596,7 +596,7 @@
 			"contentType": "default",
 			"src": "RSS Feed",
 			"rid": "dashlets/async-rssfeed.post_en.properties",
-			"ts": 1642896537873
+			"ts": 1
 		},
 		{
 			"sid": "label.configure",
@@ -604,7 +604,7 @@
 			"contentType": "default",
 			"src": "Configure",
 			"rid": "dashlets/async-rssfeed.post_en.properties",
-			"ts": 1642896537873
+			"ts": 1
 		},
 		{
 			"sid": "label.noItems",
@@ -612,7 +612,7 @@
 			"contentType": "default",
 			"src": "No news items",
 			"rid": "dashlets/async-rssfeed.post_en.properties",
-			"ts": 1642896537873
+			"ts": 1
 		},
 		{
 			"sid": "title.error.bad_data",
@@ -620,7 +620,7 @@
 			"contentType": "default",
 			"src": "RSS feed can't be read",
 			"rid": "dashlets/async-rssfeed.post_en.properties",
-			"ts": 1642896537873
+			"ts": 1
 		},
 		{
 			"sid": "title.error.unavailable",
@@ -628,7 +628,7 @@
 			"contentType": "default",
 			"src": "RSS feed is not available",
 			"rid": "dashlets/async-rssfeed.post_en.properties",
-			"ts": 1642896537873
+			"ts": 1
 		},
 		{
 			"sid": "title.error.unsupported",
@@ -636,7 +636,7 @@
 			"contentType": "default",
 			"src": "RSS feed format is not supported",
 			"rid": "dashlets/async-rssfeed.post_en.properties",
-			"ts": 1642896537873
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -644,7 +644,7 @@
 			"contentType": "default",
 			"src": "This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed.",
 			"rid": "dashlets/async-rssfeed.post_en.properties",
-			"ts": 1642896537873
+			"ts": 1
 		},
 		{
 			"sid": "label.header",
@@ -652,7 +652,7 @@
 			"contentType": "default",
 			"src": "Site Calendar",
 			"rid": "dashlets/calendar.get_en.properties",
-			"ts": 1642896537788
+			"ts": 1
 		},
 		{
 			"sid": "label.no-items",
@@ -660,7 +660,7 @@
 			"contentType": "default",
 			"src": "No upcoming events",
 			"rid": "dashlets/calendar.get_en.properties",
-			"ts": 1642896537788
+			"ts": 1
 		},
 		{
 			"sid": "label.until",
@@ -668,7 +668,7 @@
 			"contentType": "default",
 			"src": "until",
 			"rid": "dashlets/calendar.get_en.properties",
-			"ts": 1642896537788
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -676,7 +676,7 @@
 			"contentType": "default",
 			"src": "This dashlet shows the upcoming events for this site.",
 			"rid": "dashlets/calendar.get_en.properties",
-			"ts": 1642896537788
+			"ts": 1
 		},
 		{
 			"sid": "header",
@@ -684,7 +684,7 @@
 			"contentType": "default",
 			"src": "Site Members",
 			"rid": "dashlets/colleagues.get_en.properties",
-			"ts": 1642896537890
+			"ts": 1
 		},
 		{
 			"sid": "link.invite",
@@ -692,7 +692,7 @@
 			"contentType": "default",
 			"src": "Invite",
 			"rid": "dashlets/colleagues.get_en.properties",
-			"ts": 1642896537890
+			"ts": 1
 		},
 		{
 			"sid": "link.all-members",
@@ -700,7 +700,7 @@
 			"contentType": "default",
 			"src": "All Members",
 			"rid": "dashlets/colleagues.get_en.properties",
-			"ts": 1642896537890
+			"ts": 1
 		},
 		{
 			"sid": "pagination.template",
@@ -709,7 +709,7 @@
 			"contentType": "default",
 			"src": "{0} - {1} of {2}",
 			"rid": "dashlets/colleagues.get_en.properties",
-			"ts": 1642896537890
+			"ts": 1
 		},
 		{
 			"sid": "pagination.template2",
@@ -717,7 +717,7 @@
 			"contentType": "default",
 			"src": "Shown the first {0} members",
 			"rid": "dashlets/colleagues.get_en.properties",
-			"ts": 1642896537890
+			"ts": 1
 		},
 		{
 			"sid": "empty.title",
@@ -725,7 +725,7 @@
 			"contentType": "default",
 			"src": "You are the only site member.",
 			"rid": "dashlets/colleagues.get_en.properties",
-			"ts": 1642896537890
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -734,7 +734,7 @@
 			"contentType": "default",
 			"src": "<p>Use this dashlet to see who belongs to this site. You can click their name to view their profile and get to know them.</p><p>Clicking All Members lets you see everyone in this site. If you're a site manager, click Invite to send out some site invitations.</p>",
 			"rid": "dashlets/colleagues.get_en.properties",
-			"ts": 1642896537890
+			"ts": 1
 		},
 		{
 			"sid": "header",
@@ -742,7 +742,7 @@
 			"contentType": "default",
 			"src": "Site Content",
 			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1642896537863
+			"ts": 1
 		},
 		{
 			"sid": "filter.favourites",
@@ -751,7 +751,7 @@
 			"contentType": "default",
 			"src": "My Favorites",
 			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1642896537863
+			"ts": 1
 		},
 		{
 			"sid": "filter.editingMe",
@@ -759,7 +759,7 @@
 			"contentType": "default",
 			"src": "I'm Editing",
 			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1642896537863
+			"ts": 1
 		},
 		{
 			"sid": "filter.recentlyModifiedByMe",
@@ -767,7 +767,7 @@
 			"contentType": "default",
 			"src": "I've Recently Modified",
 			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1642896537863
+			"ts": 1
 		},
 		{
 			"sid": "filter.synced",
@@ -775,7 +775,7 @@
 			"contentType": "default",
 			"src": "Synced content",
 			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1642896537863
+			"ts": 1
 		},
 		{
 			"sid": "filter.syncedErrors",
@@ -783,7 +783,7 @@
 			"contentType": "default",
 			"src": "Synced with Errors",
 			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1642896537863
+			"ts": 1
 		},
 		{
 			"sid": "empty.title",
@@ -791,7 +791,7 @@
 			"contentType": "default",
 			"src": "Keep track of content changes",
 			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1642896537863
+			"ts": 1
 		},
 		{
 			"sid": "empty.description",
@@ -799,7 +799,7 @@
 			"contentType": "default",
 			"src": "Easily see which document library items site members have been working on. In the detailed view you can like an item and mark it as a favorite. You can also jump to the details page to leave a comment.",
 			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1642896537863
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -808,7 +808,7 @@
 			"contentType": "default",
 			"src": "<p>This dashlet makes it easy to keep track of your recent changes to library content in this site. Clicking the item name or thumbnail takes you to the details page so you can preview or work with the item.</p><p>There are two views for this dashlet. The detailed view lets you:<ul><li>Mark an item as a favorite so it appears in Favorites lists for easy access</li><li>Like (and unlike) an item</li><li>Jump to the item details page to leave a comment</li></ul></p>",
 			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1642896537863
+			"ts": 1
 		},
 		{
 			"sid": "welcome.user",
@@ -816,7 +816,7 @@
 			"contentType": "default",
 			"src": "Welcome to your dashboard, {0}",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.site",
@@ -824,7 +824,7 @@
 			"contentType": "default",
 			"src": "Welcome to {1}, {0}",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.user.description",
@@ -832,7 +832,7 @@
 			"contentType": "default",
 			"src": "The personal dashboard shows you what's going on in the sites you belong to.",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.site.description",
@@ -840,7 +840,7 @@
 			"contentType": "default",
 			"src": "The site dashboard lets you know what's been happening in this particular site.",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "get.started.message",
@@ -848,7 +848,7 @@
 			"contentType": "default",
 			"src": "Let's get you started...",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "panel.delete.header",
@@ -856,7 +856,7 @@
 			"contentType": "default",
 			"src": "Confirm Removal",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "panel.delete.msg",
@@ -864,7 +864,7 @@
 			"contentType": "default",
 			"src": "Are you sure you want to permanently remove the assistance panel from this dashboard?",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "panel.delete.fail",
@@ -872,7 +872,7 @@
 			"contentType": "default",
 			"src": "Unable to remove dashlet.",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.close",
@@ -880,7 +880,7 @@
 			"contentType": "default",
 			"src": "Remove",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.user.tutorial.title",
@@ -888,7 +888,7 @@
 			"contentType": "default",
 			"src": "Learning",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.user.tutorial.description",
@@ -896,7 +896,7 @@
 			"contentType": "default",
 			"src": "See what you can do with Alfresco by watching a video tutorial.",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.user.tutorial.link",
@@ -904,7 +904,7 @@
 			"contentType": "default",
 			"src": "View the tutorials",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.user.sites.title",
@@ -912,7 +912,7 @@
 			"contentType": "default",
 			"src": "Sharing",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.user.sites.description",
@@ -920,7 +920,7 @@
 			"contentType": "default",
 			"src": "Create a site to share content with other site members.",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.user.sites.link",
@@ -928,7 +928,7 @@
 			"contentType": "default",
 			"src": "Create a site",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.user.profile.title",
@@ -936,7 +936,7 @@
 			"contentType": "default",
 			"src": "Personalizing",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.user.profile.description",
@@ -944,7 +944,7 @@
 			"contentType": "default",
 			"src": "Update your personal and business information so others can get to know you.",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.user.profile.link",
@@ -952,7 +952,7 @@
 			"contentType": "default",
 			"src": "Edit your profile",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.user.dashboard.title",
@@ -960,7 +960,7 @@
 			"contentType": "default",
 			"src": "Customizing",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.user.dashboard.description",
@@ -968,7 +968,7 @@
 			"contentType": "default",
 			"src": "Set up your dashboard to show the information you want to see.",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.user.dashboard.link",
@@ -976,7 +976,7 @@
 			"contentType": "default",
 			"src": "Customize your dashboard",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.user.explore.title",
@@ -984,7 +984,7 @@
 			"contentType": "default",
 			"src": "Exploring",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.user.explore.description",
@@ -992,7 +992,7 @@
 			"contentType": "default",
 			"src": "Have a look at the sites already in Alfresco. You can visit public sites and join them straightaway.",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.user.explore.link",
@@ -1000,7 +1000,7 @@
 			"contentType": "default",
 			"src": "View all sites",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.site.dashboard.title",
@@ -1008,7 +1008,7 @@
 			"contentType": "default",
 			"src": "Customizing",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.site.dashboard.description",
@@ -1016,7 +1016,7 @@
 			"contentType": "default",
 			"src": "Set up this dashboard to show information you want others to see.",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.site.dashboard.link",
@@ -1024,7 +1024,7 @@
 			"contentType": "default",
 			"src": "Customize the site dashboard",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.site.moderated.title",
@@ -1032,7 +1032,7 @@
 			"contentType": "default",
 			"src": "Joining",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.site.moderated.description",
@@ -1040,7 +1040,7 @@
 			"contentType": "default",
 			"src": "This site's membership is moderated. You can request to join and a site manager will be notified.",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.site.moderated.link",
@@ -1048,7 +1048,7 @@
 			"contentType": "default",
 			"src": "Request to join",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.site.upload.title",
@@ -1056,7 +1056,7 @@
 			"contentType": "default",
 			"src": "Collaborating",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.site.upload.description",
@@ -1064,7 +1064,7 @@
 			"contentType": "default",
 			"src": "Upload content to the document library to start collaborating with others.",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.site.upload.link",
@@ -1072,7 +1072,7 @@
 			"contentType": "default",
 			"src": "Upload content",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.site.invite.title",
@@ -1080,7 +1080,7 @@
 			"contentType": "default",
 			"src": "Inviting",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.site.invite.description",
@@ -1088,7 +1088,7 @@
 			"contentType": "default",
 			"src": "Start inviting others to join your site.",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.site.invite.link",
@@ -1096,7 +1096,7 @@
 			"contentType": "default",
 			"src": "Invite people",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.site.members.title",
@@ -1104,7 +1104,7 @@
 			"contentType": "default",
 			"src": "Socializing",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.site.members.description",
@@ -1112,7 +1112,7 @@
 			"contentType": "default",
 			"src": "Find out who belongs to this site. From the member list you can view user profiles to get to know others.",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.site.members.link",
@@ -1120,7 +1120,7 @@
 			"contentType": "default",
 			"src": "View site members",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.site.browse.title",
@@ -1128,7 +1128,7 @@
 			"contentType": "default",
 			"src": "Exploring",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.site.browse.description",
@@ -1136,7 +1136,7 @@
 			"contentType": "default",
 			"src": "Find out what content has been added to the site by browsing the document library.",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.site.browse.link",
@@ -1144,7 +1144,7 @@
 			"contentType": "default",
 			"src": "Go to document library",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.cloud.sign-up.title",
@@ -1152,7 +1152,7 @@
 			"contentType": "default",
 			"src": "Cloud",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.cloud.sign-up.description",
@@ -1160,7 +1160,7 @@
 			"contentType": "default",
 			"src": "Sign up today to claim your free network in the cloud.",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "welcome.cloud.sign-up.link",
@@ -1168,7 +1168,7 @@
 			"contentType": "default",
 			"src": "Sign up",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "message.request-joining",
@@ -1176,7 +1176,7 @@
 			"contentType": "default",
 			"src": "Requesting to add user {0} to site {1}...",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "message.request-join-success",
@@ -1184,7 +1184,7 @@
 			"contentType": "default",
 			"src": "Request to join site {1} successfully sent. You will now be returned to your personal dashboard.",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "message.request-join-failure",
@@ -1192,7 +1192,7 @@
 			"contentType": "default",
 			"src": "Could not make the request to add user {0} to site {1}.",
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1642896537891
+			"ts": 1
 		},
 		{
 			"sid": "header.title",
@@ -1200,7 +1200,7 @@
 			"contentType": "default",
 			"src": "My Discussions",
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1642896537889
+			"ts": 1
 		},
 		{
 			"sid": "newTopic.button",
@@ -1208,7 +1208,7 @@
 			"contentType": "default",
 			"src": "New Topic",
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1642896537889
+			"ts": 1
 		},
 		{
 			"sid": "no.result",
@@ -1216,7 +1216,7 @@
 			"contentType": "default",
 			"src": "There are no topics matching your filters.",
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1642896537889
+			"ts": 1
 		},
 		{
 			"sid": "topicList.updated",
@@ -1224,7 +1224,7 @@
 			"contentType": "default",
 			"src": "Updated",
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1642896537889
+			"ts": 1
 		},
 		{
 			"sid": "topicList.createdBy",
@@ -1233,7 +1233,7 @@
 			"contentType": "default",
 			"src": "Created by {0} {1}.",
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1642896537889
+			"ts": 1
 		},
 		{
 			"sid": "topicList.replies.single",
@@ -1241,7 +1241,7 @@
 			"contentType": "default",
 			"src": "There is 1 reply.",
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1642896537889
+			"ts": 1
 		},
 		{
 			"sid": "topicList.replies.plural",
@@ -1249,7 +1249,7 @@
 			"contentType": "default",
 			"src": "There are {0} replies.",
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1642896537889
+			"ts": 1
 		},
 		{
 			"sid": "topicList.lastReplyBy",
@@ -1258,7 +1258,7 @@
 			"contentType": "default",
 			"src": "The last reply was posted by {0} {1}.",
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1642896537889
+			"ts": 1
 		},
 		{
 			"sid": "filter.topics.mine",
@@ -1267,7 +1267,7 @@
 			"contentType": "default",
 			"src": "My Topics",
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1642896537889
+			"ts": 1
 		},
 		{
 			"sid": "filter.topics.all",
@@ -1275,7 +1275,7 @@
 			"contentType": "default",
 			"src": "All Topics",
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1642896537889
+			"ts": 1
 		},
 		{
 			"sid": "filter.history.1day",
@@ -1284,7 +1284,7 @@
 			"contentType": "default",
 			"src": "Topics updated in the last day",
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1642896537889
+			"ts": 1
 		},
 		{
 			"sid": "filter.history.7days",
@@ -1292,7 +1292,7 @@
 			"contentType": "default",
 			"src": "Topics updated in the last 7 days",
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1642896537889
+			"ts": 1
 		},
 		{
 			"sid": "filter.history.14days",
@@ -1300,7 +1300,7 @@
 			"contentType": "default",
 			"src": "Topics updated in the last 14 days",
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1642896537889
+			"ts": 1
 		},
 		{
 			"sid": "filter.history.28days",
@@ -1308,7 +1308,7 @@
 			"contentType": "default",
 			"src": "Topics updated in the last 28 days",
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1642896537889
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -1317,7 +1317,7 @@
 			"contentType": "default",
 			"src": "<p>Discussion Forum dashlet.</p><p>View your latest posts on the Discussion Forum.</p>",
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1642896537889
+			"ts": 1
 		},
 		{
 			"sid": "header.title",
@@ -1325,7 +1325,7 @@
 			"contentType": "default",
 			"src": "Image Preview",
 			"rid": "dashlets/imagesummary.get_en.properties",
-			"ts": 1642896537893
+			"ts": 1
 		},
 		{
 			"sid": "label.noitems",
@@ -1333,7 +1333,7 @@
 			"contentType": "default",
 			"src": "No items to display",
 			"rid": "dashlets/imagesummary.get_en.properties",
-			"ts": 1642896537893
+			"ts": 1
 		},
 		{
 			"sid": "text.modified-by",
@@ -1341,7 +1341,7 @@
 			"contentType": "default",
 			"src": "Modified by {0}",
 			"rid": "dashlets/imagesummary.get_en.properties",
-			"ts": 1642896537893
+			"ts": 1
 		},
 		{
 			"sid": "text.selectfolder",
@@ -1349,7 +1349,7 @@
 			"contentType": "default",
 			"src": "Select Image Folder in {0}...",
 			"rid": "dashlets/imagesummary.get_en.properties",
-			"ts": 1642896537893
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -1357,7 +1357,7 @@
 			"contentType": "default",
 			"src": "This dashlet shows a thumbnail of each image in the document library. Clicking a thumbnail opens the image in the current window.",
 			"rid": "dashlets/imagesummary.get_en.properties",
-			"ts": 1642896537893
+			"ts": 1
 		},
 		{
 			"sid": "header",
@@ -1365,7 +1365,7 @@
 			"contentType": "default",
 			"src": "My Activities",
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1642896537780
+			"ts": 1
 		},
 		{
 			"sid": "label.load-failed",
@@ -1373,7 +1373,7 @@
 			"contentType": "default",
 			"src": "Could not load activities list",
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1642896537780
+			"ts": 1
 		},
 		{
 			"sid": "label.filter",
@@ -1381,7 +1381,7 @@
 			"contentType": "default",
 			"src": "Show",
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1642896537780
+			"ts": 1
 		},
 		{
 			"sid": "label.older-activities",
@@ -1389,7 +1389,7 @@
 			"contentType": "default",
 			"src": "Older Activities",
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1642896537780
+			"ts": 1
 		},
 		{
 			"sid": "filter.mine",
@@ -1398,7 +1398,7 @@
 			"contentType": "default",
 			"src": "My activities",
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1642896537780
+			"ts": 1
 		},
 		{
 			"sid": "filter.others",
@@ -1406,7 +1406,7 @@
 			"contentType": "default",
 			"src": "Everyone else's activities",
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1642896537780
+			"ts": 1
 		},
 		{
 			"sid": "filter.all",
@@ -1414,7 +1414,7 @@
 			"contentType": "default",
 			"src": "Everyone's activities",
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1642896537780
+			"ts": 1
 		},
 		{
 			"sid": "filter.following",
@@ -1422,7 +1422,7 @@
 			"contentType": "default",
 			"src": "I'm following",
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1642896537780
+			"ts": 1
 		},
 		{
 			"sid": "filter.allItems",
@@ -1431,7 +1431,7 @@
 			"contentType": "default",
 			"src": "all items",
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1642896537780
+			"ts": 1
 		},
 		{
 			"sid": "filter.statusItems",
@@ -1439,7 +1439,7 @@
 			"contentType": "default",
 			"src": "status updates",
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1642896537780
+			"ts": 1
 		},
 		{
 			"sid": "filter.commentItems",
@@ -1447,7 +1447,7 @@
 			"contentType": "default",
 			"src": "comments",
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1642896537780
+			"ts": 1
 		},
 		{
 			"sid": "filter.contentItems",
@@ -1455,7 +1455,7 @@
 			"contentType": "default",
 			"src": "content",
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1642896537780
+			"ts": 1
 		},
 		{
 			"sid": "filter.membershipItems",
@@ -1463,7 +1463,7 @@
 			"contentType": "default",
 			"src": "memberships",
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1642896537780
+			"ts": 1
 		},
 		{
 			"sid": "filter.today",
@@ -1472,7 +1472,7 @@
 			"contentType": "default",
 			"src": "today",
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1642896537780
+			"ts": 1
 		},
 		{
 			"sid": "filter.7days",
@@ -1480,7 +1480,7 @@
 			"contentType": "default",
 			"src": "in the last 7 days",
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1642896537780
+			"ts": 1
 		},
 		{
 			"sid": "filter.14days",
@@ -1488,7 +1488,7 @@
 			"contentType": "default",
 			"src": "in the last 14 days",
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1642896537780
+			"ts": 1
 		},
 		{
 			"sid": "filter.28days",
@@ -1496,7 +1496,7 @@
 			"contentType": "default",
 			"src": "in the last 28 days",
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1642896537780
+			"ts": 1
 		},
 		{
 			"sid": "empty.title",
@@ -1504,7 +1504,7 @@
 			"contentType": "default",
 			"src": "Follow what's going on in your sites",
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1642896537780
+			"ts": 1
 		},
 		{
 			"sid": "empty.description",
@@ -1512,7 +1512,7 @@
 			"contentType": "default",
 			"src": "The activities in this list let you follow the changes in the sites you belong to. You'll see things such as content updates and likes. You can also see who is joining and leaving your sites.",
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1642896537780
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -1521,7 +1521,7 @@
 			"contentType": "default",
 			"src": "<p>Following what goes on in your sites is easy with this dashlet. It shows the activities in all the sites you belong to, such as content that's been added, deleted, and edited. You can also see who is joining and leaving your sites.</p><p>Filters let you view activities by time period and ownership.</p>",
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1642896537780
+			"ts": 1
 		},
 		{
 			"sid": "header",
@@ -1529,7 +1529,7 @@
 			"contentType": "default",
 			"src": "Content I'm Editing",
 			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1642896537812
+			"ts": 1
 		},
 		{
 			"sid": "label.noItems",
@@ -1537,7 +1537,7 @@
 			"contentType": "default",
 			"src": "No items to display",
 			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1642896537812
+			"ts": 1
 		},
 		{
 			"sid": "label.error",
@@ -1545,7 +1545,7 @@
 			"contentType": "default",
 			"src": "Could not load data",
 			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1642896537812
+			"ts": 1
 		},
 		{
 			"sid": "text.edited-on",
@@ -1553,7 +1553,7 @@
 			"contentType": "default",
 			"src": "Edited {0} in {1}",
 			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1642896537812
+			"ts": 1
 		},
 		{
 			"sid": "text.blogposts",
@@ -1561,7 +1561,7 @@
 			"contentType": "default",
 			"src": "Blog posts",
 			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1642896537812
+			"ts": 1
 		},
 		{
 			"sid": "text.forumposts",
@@ -1569,7 +1569,7 @@
 			"contentType": "default",
 			"src": "Forum posts",
 			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1642896537812
+			"ts": 1
 		},
 		{
 			"sid": "text.wikipages",
@@ -1577,7 +1577,7 @@
 			"contentType": "default",
 			"src": "Wiki pages",
 			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1642896537812
+			"ts": 1
 		},
 		{
 			"sid": "text.documents",
@@ -1585,7 +1585,7 @@
 			"contentType": "default",
 			"src": "Documents",
 			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1642896537812
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -1593,7 +1593,7 @@
 			"contentType": "default",
 			"src": "Check this dashlet to quickly see the items you are working on.",
 			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1642896537812
+			"ts": 1
 		},
 		{
 			"sid": "header",
@@ -1601,7 +1601,7 @@
 			"contentType": "default",
 			"src": "My Documents",
 			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1642896537869
+			"ts": 1
 		},
 		{
 			"sid": "filter.favourites",
@@ -1610,7 +1610,7 @@
 			"contentType": "default",
 			"src": "My Favorites",
 			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1642896537869
+			"ts": 1
 		},
 		{
 			"sid": "filter.editingMe",
@@ -1618,7 +1618,7 @@
 			"contentType": "default",
 			"src": "I'm Editing",
 			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1642896537869
+			"ts": 1
 		},
 		{
 			"sid": "filter.recentlyModifiedByMe",
@@ -1626,7 +1626,7 @@
 			"contentType": "default",
 			"src": "I've Recently Modified",
 			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1642896537869
+			"ts": 1
 		},
 		{
 			"sid": "filter.synced",
@@ -1634,7 +1634,7 @@
 			"contentType": "default",
 			"src": "Synced content",
 			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1642896537869
+			"ts": 1
 		},
 		{
 			"sid": "filter.syncedErrors",
@@ -1642,7 +1642,7 @@
 			"contentType": "default",
 			"src": "Synced with Errors",
 			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1642896537869
+			"ts": 1
 		},
 		{
 			"sid": "empty.title",
@@ -1650,7 +1650,7 @@
 			"contentType": "default",
 			"src": "Keep track of your own content",
 			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1642896537869
+			"ts": 1
 		},
 		{
 			"sid": "empty.description",
@@ -1658,7 +1658,7 @@
 			"contentType": "default",
 			"src": "This dashlet lists all of the content that's important to you, no matter which site it is in. Use the filters to easily find what you're looking for.",
 			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1642896537869
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -1667,7 +1667,7 @@
 			"contentType": "default",
 			"src": "<p>This dashlet makes it easy to keep track of your own content, no matter which site it is in. Use the filter to easily find what you're looking for.</p><p>There are two views for this dashlet. The detailed view lets you:<ul><li>Mark an item as a favorite so it appears in Favorites lists for easy access</li><li>Like (and unlike) an item</li><li>Jump to the item details page to leave a comment</li></ul></p>",
 			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1642896537869
+			"ts": 1
 		},
 		{
 			"sid": "header.myMeetingWorkspaces",
@@ -1675,7 +1675,7 @@
 			"contentType": "default",
 			"src": "My Meeting Workspaces",
 			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
-			"ts": 1642896537816
+			"ts": 1
 		},
 		{
 			"sid": "link.deleteMeetingWorkspace",
@@ -1683,7 +1683,7 @@
 			"contentType": "default",
 			"src": "Delete",
 			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
-			"ts": 1642896537816
+			"ts": 1
 		},
 		{
 			"sid": "label.noMeetingWorkspaces",
@@ -1691,7 +1691,7 @@
 			"contentType": "default",
 			"src": "No meeting workspaces to display",
 			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
-			"ts": 1642896537816
+			"ts": 1
 		},
 		{
 			"sid": "message.meetingWorkspaceFavourite.failure",
@@ -1699,7 +1699,7 @@
 			"contentType": "default",
 			"src": "The favorite setting for the meeting workspace could not be saved",
 			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
-			"ts": 1642896537816
+			"ts": 1
 		},
 		{
 			"sid": "link.favouriteMeetingWorkspace",
@@ -1707,7 +1707,7 @@
 			"contentType": "default",
 			"src": "Mark or unmark meeting workspace as favorite",
 			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
-			"ts": 1642896537816
+			"ts": 1
 		},
 		{
 			"sid": "link.imap_favouriteMeetingWorkspace",
@@ -1715,7 +1715,7 @@
 			"contentType": "default",
 			"src": "Mark or unmark meeting workspace as IMAP favorite",
 			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
-			"ts": 1642896537816
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -1724,7 +1724,7 @@
 			"contentType": "default",
 			"src": "<p>A Meeting Workspace is a type of site that is created outside of Alfresco. This dashlet lists all of your Meeting Workspace sites.</p><p>From here you can navigate to a Meeting Workspace site. You can also delete a site, if you have the correct permissions.</p>",
 			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
-			"ts": 1642896537816
+			"ts": 1
 		},
 		{
 			"sid": "header.myLimitedProfile",
@@ -1732,7 +1732,7 @@
 			"contentType": "default",
 			"src": "My Profile",
 			"rid": "dashlets/my-profile.get_en.properties",
-			"ts": 1642896537834
+			"ts": 1
 		},
 		{
 			"sid": "link.viewFullProfile",
@@ -1740,7 +1740,7 @@
 			"contentType": "default",
 			"src": "View Full Profile",
 			"rid": "dashlets/my-profile.get_en.properties",
-			"ts": 1642896537834
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -1748,7 +1748,7 @@
 			"contentType": "default",
 			"src": "This dashlet shows a summary of your personal details. From here you can access your full user profile.",
 			"rid": "dashlets/my-profile.get_en.properties",
-			"ts": 1642896537834
+			"ts": 1
 		},
 		{
 			"sid": "header",
@@ -1756,7 +1756,7 @@
 			"contentType": "default",
 			"src": "My Sites",
 			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1642896537847
+			"ts": 1
 		},
 		{
 			"sid": "link.createSite",
@@ -1764,7 +1764,7 @@
 			"contentType": "default",
 			"src": "Create Site",
 			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1642896537847
+			"ts": 1
 		},
 		{
 			"sid": "link.deleteSite",
@@ -1772,7 +1772,7 @@
 			"contentType": "default",
 			"src": "Delete",
 			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1642896537847
+			"ts": 1
 		},
 		{
 			"sid": "filter.all",
@@ -1780,7 +1780,7 @@
 			"contentType": "default",
 			"src": "All",
 			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1642896537847
+			"ts": 1
 		},
 		{
 			"sid": "filter.favSites",
@@ -1788,7 +1788,7 @@
 			"contentType": "default",
 			"src": "My Favorites",
 			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1642896537847
+			"ts": 1
 		},
 		{
 			"sid": "filter.recentSites",
@@ -1796,7 +1796,7 @@
 			"contentType": "default",
 			"src": "Recent",
 			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1642896537847
+			"ts": 1
 		},
 		{
 			"sid": "empty.title",
@@ -1804,7 +1804,7 @@
 			"contentType": "default",
 			"src": "Quickly access your sites",
 			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1642896537847
+			"ts": 1
 		},
 		{
 			"sid": "empty.description",
@@ -1812,7 +1812,7 @@
 			"contentType": "default",
 			"src": "A site is a project area where you can share and discuss content with other site members.",
 			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1642896537847
+			"ts": 1
 		},
 		{
 			"sid": "empty.description.sample-site",
@@ -1820,7 +1820,7 @@
 			"contentType": "default",
 			"src": "We've included a sample site for you. Use this to explore the features in Alfresco.",
 			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1642896537847
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -1829,7 +1829,7 @@
 			"contentType": "default",
 			"src": "<p>Sites are project areas where you collaborate with others, sharing content and working on it together. This dashlet lists the sites you belong to. You can filter this list to show only your favorite sites.</p><p>From here you can:<ul><li>Navigate to a site</li><li>Create a new site</li><li>Delete a site if you are the site manager</li><li>Mark a site as a favorite so that it shows in the Sites menu for easy access</li></ul></p>",
 			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1642896537847
+			"ts": 1
 		},
 		{
 			"sid": "header",
@@ -1837,7 +1837,7 @@
 			"contentType": "default",
 			"src": "My Tasks",
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1642896537787
+			"ts": 1
 		},
 		{
 			"sid": "link.startWorkflow",
@@ -1845,7 +1845,7 @@
 			"contentType": "default",
 			"src": "Start Workflow",
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1642896537787
+			"ts": 1
 		},
 		{
 			"sid": "link.activeTasks",
@@ -1853,7 +1853,7 @@
 			"contentType": "default",
 			"src": "Active Tasks",
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1642896537787
+			"ts": 1
 		},
 		{
 			"sid": "link.completedTasks",
@@ -1861,7 +1861,7 @@
 			"contentType": "default",
 			"src": "Completed Tasks",
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1642896537787
+			"ts": 1
 		},
 		{
 			"sid": "title.viewTask",
@@ -1869,7 +1869,7 @@
 			"contentType": "default",
 			"src": "View Task",
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1642896537787
+			"ts": 1
 		},
 		{
 			"sid": "title.editTask",
@@ -1877,7 +1877,7 @@
 			"contentType": "default",
 			"src": "Edit Task",
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1642896537787
+			"ts": 1
 		},
 		{
 			"sid": "label.pooledTask",
@@ -1885,7 +1885,7 @@
 			"contentType": "default",
 			"src": "Pooled task",
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1642896537787
+			"ts": 1
 		},
 		{
 			"sid": "label.taskSummary",
@@ -1893,7 +1893,7 @@
 			"contentType": "default",
 			"src": "{0}, {1}",
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1642896537787
+			"ts": 1
 		},
 		{
 			"sid": "label.unassignedTask",
@@ -1901,7 +1901,7 @@
 			"contentType": "default",
 			"src": "Unassigned",
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1642896537787
+			"ts": 1
 		},
 		{
 			"sid": "title.dueOn",
@@ -1909,7 +1909,7 @@
 			"contentType": "default",
 			"src": "Due on: {0}",
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1642896537787
+			"ts": 1
 		},
 		{
 			"sid": "message.noTasks",
@@ -1917,7 +1917,7 @@
 			"contentType": "default",
 			"src": "No tasks",
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1642896537787
+			"ts": 1
 		},
 		{
 			"sid": "title.taskSummary",
@@ -1925,7 +1925,7 @@
 			"contentType": "default",
 			"src": "Type: {0}, Status: {1}",
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1642896537787
+			"ts": 1
 		},
 		{
 			"sid": "filter.activeTasks",
@@ -1933,7 +1933,7 @@
 			"contentType": "default",
 			"src": "Active Tasks",
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1642896537787
+			"ts": 1
 		},
 		{
 			"sid": "filter.completedTasks",
@@ -1941,7 +1941,7 @@
 			"contentType": "default",
 			"src": "Completed Tasks",
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1642896537787
+			"ts": 1
 		},
 		{
 			"sid": "filter.highPriorityTasks",
@@ -1949,7 +1949,7 @@
 			"contentType": "default",
 			"src": "High Priority Tasks",
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1642896537787
+			"ts": 1
 		},
 		{
 			"sid": "filter.tasksDueToday",
@@ -1957,7 +1957,7 @@
 			"contentType": "default",
 			"src": "Tasks Due Today",
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1642896537787
+			"ts": 1
 		},
 		{
 			"sid": "filter.tasksAssignedToMe",
@@ -1965,7 +1965,7 @@
 			"contentType": "default",
 			"src": "Tasks Assigned to Me",
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1642896537787
+			"ts": 1
 		},
 		{
 			"sid": "filter.unassignedPooledTasks",
@@ -1973,7 +1973,7 @@
 			"contentType": "default",
 			"src": "Unassigned (Pooled Tasks)",
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1642896537787
+			"ts": 1
 		},
 		{
 			"sid": "filter.overdueTasks",
@@ -1981,7 +1981,7 @@
 			"contentType": "default",
 			"src": "Overdue Tasks",
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1642896537787
+			"ts": 1
 		},
 		{
 			"sid": "pagination.template",
@@ -1990,7 +1990,7 @@
 			"contentType": "default",
 			"src": "{CurrentPageReport}",
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1642896537787
+			"ts": 1
 		},
 		{
 			"sid": "pagination.template.page-report",
@@ -1998,7 +1998,7 @@
 			"contentType": "default",
 			"src": "{startRecord} - {endRecord} of {totalRecords}",
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1642896537787
+			"ts": 1
 		},
 		{
 			"sid": "empty.title",
@@ -2006,7 +2006,7 @@
 			"contentType": "default",
 			"src": "Review the tasks assigned to you",
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1642896537787
+			"ts": 1
 		},
 		{
 			"sid": "empty.description",
@@ -2014,7 +2014,7 @@
 			"contentType": "default",
 			"src": "Different types of tasks can appear in this task list and you need to address each one. This could involve reviewing a document or simply accepting an invitation to a site.",
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1642896537787
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -2023,7 +2023,7 @@
 			"contentType": "default",
 			"src": "<p>This dashlet lists the tasks assigned to you, including invitations to join sites. You can filter the list to view different types of tasks.</p><p>From here you can:<ul><li>Edit a task to manage it</li><li>View a single task</li><li>Open the My Tasks page to manage all of your tasks</li><li>Start a workflow to create tasks for others or yourself</li></ul></p>",
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1642896537787
+			"ts": 1
 		},
 		{
 			"sid": "header.myWorkspaces",
@@ -2031,7 +2031,7 @@
 			"contentType": "default",
 			"src": "My Document Workspaces",
 			"rid": "dashlets/my-workspaces.get_en.properties",
-			"ts": 1642896537855
+			"ts": 1
 		},
 		{
 			"sid": "link.deleteWorkspace",
@@ -2039,7 +2039,7 @@
 			"contentType": "default",
 			"src": "Delete",
 			"rid": "dashlets/my-workspaces.get_en.properties",
-			"ts": 1642896537855
+			"ts": 1
 		},
 		{
 			"sid": "label.noWorkspaces",
@@ -2047,7 +2047,7 @@
 			"contentType": "default",
 			"src": "No document workspaces to display",
 			"rid": "dashlets/my-workspaces.get_en.properties",
-			"ts": 1642896537855
+			"ts": 1
 		},
 		{
 			"sid": "message.workspaceFavourite.failure",
@@ -2055,7 +2055,7 @@
 			"contentType": "default",
 			"src": "The favorite setting for the document workspace could not be saved",
 			"rid": "dashlets/my-workspaces.get_en.properties",
-			"ts": 1642896537855
+			"ts": 1
 		},
 		{
 			"sid": "link.favouriteWorkspace",
@@ -2063,7 +2063,7 @@
 			"contentType": "default",
 			"src": "Mark or unmark document workspace as favorite",
 			"rid": "dashlets/my-workspaces.get_en.properties",
-			"ts": 1642896537855
+			"ts": 1
 		},
 		{
 			"sid": "link.imap_favouriteWorkspace",
@@ -2071,7 +2071,7 @@
 			"contentType": "default",
 			"src": "Mark or unmark document workspace as IMAP favorite",
 			"rid": "dashlets/my-workspaces.get_en.properties",
-			"ts": 1642896537855
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -2080,7 +2080,7 @@
 			"contentType": "default",
 			"src": "<p>A Document Workspace is a type of site that is created outside of Alfresco. This dashlet lists all of your Document Workspace sites.</p><p>From here you can navigate to a Document Workspace site. You can also delete a site, if you have the correct permissions.</p>",
 			"rid": "dashlets/my-workspaces.get_en.properties",
-			"ts": 1642896537855
+			"ts": 1
 		},
 		{
 			"sid": "label.header",
@@ -2088,7 +2088,7 @@
 			"contentType": "default",
 			"src": "RSS Feed",
 			"rid": "dashlets/rssfeed.get_en.properties",
-			"ts": 1642896537817
+			"ts": 1
 		},
 		{
 			"sid": "label.configure",
@@ -2096,7 +2096,7 @@
 			"contentType": "default",
 			"src": "Configure",
 			"rid": "dashlets/rssfeed.get_en.properties",
-			"ts": 1642896537817
+			"ts": 1
 		},
 		{
 			"sid": "label.noItems",
@@ -2104,7 +2104,7 @@
 			"contentType": "default",
 			"src": "No news items",
 			"rid": "dashlets/rssfeed.get_en.properties",
-			"ts": 1642896537817
+			"ts": 1
 		},
 		{
 			"sid": "label.loading",
@@ -2112,7 +2112,7 @@
 			"contentType": "default",
 			"src": "Loading items - please wait...",
 			"rid": "dashlets/rssfeed.get_en.properties",
-			"ts": 1642896537817
+			"ts": 1
 		},
 		{
 			"sid": "title.error.bad_data",
@@ -2120,7 +2120,7 @@
 			"contentType": "default",
 			"src": "RSS feed can't be read",
 			"rid": "dashlets/rssfeed.get_en.properties",
-			"ts": 1642896537817
+			"ts": 1
 		},
 		{
 			"sid": "title.error.unavailable",
@@ -2128,7 +2128,7 @@
 			"contentType": "default",
 			"src": "RSS feed is not available",
 			"rid": "dashlets/rssfeed.get_en.properties",
-			"ts": 1642896537817
+			"ts": 1
 		},
 		{
 			"sid": "title.error.unsupported",
@@ -2136,7 +2136,7 @@
 			"contentType": "default",
 			"src": "RSS feed format is not supported",
 			"rid": "dashlets/rssfeed.get_en.properties",
-			"ts": 1642896537817
+			"ts": 1
 		},
 		{
 			"sid": "header.title",
@@ -2144,7 +2144,7 @@
 			"contentType": "default",
 			"src": "Saved Search",
 			"rid": "dashlets/saved-search.get_en.properties",
-			"ts": 1642896537879
+			"ts": 1
 		},
 		{
 			"sid": "no.result",
@@ -2152,7 +2152,7 @@
 			"contentType": "default",
 			"src": "No results found.",
 			"rid": "dashlets/saved-search.get_en.properties",
-			"ts": 1642896537879
+			"ts": 1
 		},
 		{
 			"sid": "message.insite",
@@ -2160,7 +2160,7 @@
 			"contentType": "default",
 			"src": "in site",
 			"rid": "dashlets/saved-search.get_en.properties",
-			"ts": 1642896537879
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -2169,7 +2169,7 @@
 			"contentType": "default",
 			"src": "<p>Use this dashlet to set up a search and view the results.</p><p>Configure the dashlet to save the search and set the title text of the dashlet.</p><p>Only a Site Manager can configure the search and title - this dashlet is ideal for generating report views in a site.</p>",
 			"rid": "dashlets/saved-search.get_en.properties",
-			"ts": 1642896537879
+			"ts": 1
 		},
 		{
 			"sid": "header",
@@ -2177,7 +2177,7 @@
 			"contentType": "default",
 			"src": "Site Activities",
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1642896537767
+			"ts": 1
 		},
 		{
 			"sid": "label.load-failed",
@@ -2185,7 +2185,7 @@
 			"contentType": "default",
 			"src": "Could not load activities list",
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1642896537767
+			"ts": 1
 		},
 		{
 			"sid": "label.filter",
@@ -2193,7 +2193,7 @@
 			"contentType": "default",
 			"src": "Show",
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1642896537767
+			"ts": 1
 		},
 		{
 			"sid": "label.older-activities",
@@ -2201,7 +2201,7 @@
 			"contentType": "default",
 			"src": "Older Activities",
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1642896537767
+			"ts": 1
 		},
 		{
 			"sid": "filter.mine",
@@ -2210,7 +2210,7 @@
 			"contentType": "default",
 			"src": "My activities",
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1642896537767
+			"ts": 1
 		},
 		{
 			"sid": "filter.others",
@@ -2218,7 +2218,7 @@
 			"contentType": "default",
 			"src": "Everyone else's activities",
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1642896537767
+			"ts": 1
 		},
 		{
 			"sid": "filter.all",
@@ -2226,7 +2226,7 @@
 			"contentType": "default",
 			"src": "Everyone's activities",
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1642896537767
+			"ts": 1
 		},
 		{
 			"sid": "filter.following",
@@ -2234,7 +2234,7 @@
 			"contentType": "default",
 			"src": "I'm following",
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1642896537767
+			"ts": 1
 		},
 		{
 			"sid": "filter.allItems",
@@ -2243,7 +2243,7 @@
 			"contentType": "default",
 			"src": "all items",
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1642896537767
+			"ts": 1
 		},
 		{
 			"sid": "filter.statusItems",
@@ -2251,7 +2251,7 @@
 			"contentType": "default",
 			"src": "status updates",
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1642896537767
+			"ts": 1
 		},
 		{
 			"sid": "filter.commentItems",
@@ -2259,7 +2259,7 @@
 			"contentType": "default",
 			"src": "comments",
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1642896537767
+			"ts": 1
 		},
 		{
 			"sid": "filter.contentItems",
@@ -2267,7 +2267,7 @@
 			"contentType": "default",
 			"src": "content",
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1642896537767
+			"ts": 1
 		},
 		{
 			"sid": "filter.membershipItems",
@@ -2275,7 +2275,7 @@
 			"contentType": "default",
 			"src": "memberships",
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1642896537767
+			"ts": 1
 		},
 		{
 			"sid": "filter.today",
@@ -2284,7 +2284,7 @@
 			"contentType": "default",
 			"src": "today",
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1642896537767
+			"ts": 1
 		},
 		{
 			"sid": "filter.7days",
@@ -2292,7 +2292,7 @@
 			"contentType": "default",
 			"src": "in the last 7 days",
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1642896537767
+			"ts": 1
 		},
 		{
 			"sid": "filter.14days",
@@ -2300,7 +2300,7 @@
 			"contentType": "default",
 			"src": "in the last 14 days",
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1642896537767
+			"ts": 1
 		},
 		{
 			"sid": "filter.28days",
@@ -2308,7 +2308,7 @@
 			"contentType": "default",
 			"src": "in the last 28 days",
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1642896537767
+			"ts": 1
 		},
 		{
 			"sid": "empty.title",
@@ -2316,7 +2316,7 @@
 			"contentType": "default",
 			"src": "Follow what's going on in this site",
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1642896537767
+			"ts": 1
 		},
 		{
 			"sid": "empty.description",
@@ -2324,7 +2324,7 @@
 			"contentType": "default",
 			"src": "Watch this list to keep up on the recent site changes. You'll see activities such as content updates and likes. You can also track the site membership by seeing who is joining and leaving.",
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1642896537767
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -2333,7 +2333,7 @@
 			"contentType": "default",
 			"src": "<p>Following what goes on in the site is easy with this dashlet. It shows all activities, such as content that's been added, edited, and deleted. You can also see who is joining and leaving the site.</p><p>Filters let you view activities by time period and ownership.</p>",
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1642896537767
+			"ts": 1
 		},
 		{
 			"sid": "header.datalists",
@@ -2341,7 +2341,7 @@
 			"contentType": "default",
 			"src": "Site Data Lists",
 			"rid": "dashlets/site-data-lists.get_en.properties",
-			"ts": 1642896537884
+			"ts": 1
 		},
 		{
 			"sid": "label.noLists",
@@ -2349,7 +2349,7 @@
 			"contentType": "default",
 			"src": "No lists to display",
 			"rid": "dashlets/site-data-lists.get_en.properties",
-			"ts": 1642896537884
+			"ts": 1
 		},
 		{
 			"sid": "list.createLink",
@@ -2357,7 +2357,7 @@
 			"contentType": "default",
 			"src": "Create Data List",
 			"rid": "dashlets/site-data-lists.get_en.properties",
-			"ts": 1642896537884
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -2365,7 +2365,7 @@
 			"contentType": "default",
 			"src": "This dashlet shows lists relevant to the site. Clicking a list opens it.",
 			"rid": "dashlets/site-data-lists.get_en.properties",
-			"ts": 1642896537884
+			"ts": 1
 		},
 		{
 			"sid": "header.links",
@@ -2373,7 +2373,7 @@
 			"contentType": "default",
 			"src": "Site Links",
 			"rid": "dashlets/site-links.get_en.properties",
-			"ts": 1642896537862
+			"ts": 1
 		},
 		{
 			"sid": "link.createLink",
@@ -2381,7 +2381,7 @@
 			"contentType": "default",
 			"src": "Create Link",
 			"rid": "dashlets/site-links.get_en.properties",
-			"ts": 1642896537862
+			"ts": 1
 		},
 		{
 			"sid": "link.details",
@@ -2389,7 +2389,7 @@
 			"contentType": "default",
 			"src": "Link's details",
 			"rid": "dashlets/site-links.get_en.properties",
-			"ts": 1642896537862
+			"ts": 1
 		},
 		{
 			"sid": "label.noLinks",
@@ -2397,7 +2397,7 @@
 			"contentType": "default",
 			"src": "No links to display",
 			"rid": "dashlets/site-links.get_en.properties",
-			"ts": 1642896537862
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -2405,7 +2405,7 @@
 			"contentType": "default",
 			"src": "This dashlet shows links relevant to this site. The list is compiled by site members. Clicking a link opens it in a new window.",
 			"rid": "dashlets/site-links.get_en.properties",
-			"ts": 1642896537862
+			"ts": 1
 		},
 		{
 			"sid": "link.noUrl",
@@ -2413,7 +2413,7 @@
 			"contentType": "default",
 			"src": "URL not specified",
 			"rid": "dashlets/site-links.get_en.properties",
-			"ts": 1642896537862
+			"ts": 1
 		},
 		{
 			"sid": "notice.defaultTitle",
@@ -2421,7 +2421,7 @@
 			"contentType": "default",
 			"src": "Site Notice",
 			"rid": "dashlets/site-notice.get_en.properties",
-			"ts": 1642896537771
+			"ts": 1
 		},
 		{
 			"sid": "notice.defaultText",
@@ -2429,7 +2429,7 @@
 			"contentType": "default",
 			"src": "No text has been configured",
 			"rid": "dashlets/site-notice.get_en.properties",
-			"ts": 1642896537771
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -2437,7 +2437,7 @@
 			"contentType": "default",
 			"src": "This dashlet displays a custom message on the dashboard, specified by the site manager",
 			"rid": "dashlets/site-notice.get_en.properties",
-			"ts": 1642896537771
+			"ts": 1
 		},
 		{
 			"sid": "header.siteProfile",
@@ -2445,7 +2445,7 @@
 			"contentType": "default",
 			"src": "Site Profile",
 			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1642896537871
+			"ts": 1
 		},
 		{
 			"sid": "text.welcome",
@@ -2453,7 +2453,7 @@
 			"contentType": "default",
 			"src": "Welcome to {0}",
 			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1642896537871
+			"ts": 1
 		},
 		{
 			"sid": "label.siteAdmin",
@@ -2461,7 +2461,7 @@
 			"contentType": "default",
 			"src": "Site Manager(s):",
 			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1642896537871
+			"ts": 1
 		},
 		{
 			"sid": "label.visibility",
@@ -2469,7 +2469,7 @@
 			"contentType": "default",
 			"src": "Visibility:",
 			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1642896537871
+			"ts": 1
 		},
 		{
 			"sid": "text.public",
@@ -2477,7 +2477,7 @@
 			"contentType": "default",
 			"src": "Public",
 			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1642896537871
+			"ts": 1
 		},
 		{
 			"sid": "text.moderated",
@@ -2485,7 +2485,7 @@
 			"contentType": "default",
 			"src": "Moderated",
 			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1642896537871
+			"ts": 1
 		},
 		{
 			"sid": "text.private",
@@ -2493,7 +2493,7 @@
 			"contentType": "default",
 			"src": "Private",
 			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1642896537871
+			"ts": 1
 		},
 		{
 			"sid": "text.unknown",
@@ -2501,7 +2501,7 @@
 			"contentType": "default",
 			"src": "Unknown",
 			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1642896537871
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -2509,7 +2509,7 @@
 			"contentType": "default",
 			"src": "This dashlet displays the site details. Only the site manager can change this information.",
 			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1642896537871
+			"ts": 1
 		},
 		{
 			"sid": "header.title",
@@ -2517,7 +2517,7 @@
 			"contentType": "default",
 			"src": "Site Search",
 			"rid": "dashlets/site-search.get_en.properties",
-			"ts": 1642896537806
+			"ts": 1
 		},
 		{
 			"sid": "searchButton.text",
@@ -2525,7 +2525,7 @@
 			"contentType": "default",
 			"src": "Search",
 			"rid": "dashlets/site-search.get_en.properties",
-			"ts": 1642896537806
+			"ts": 1
 		},
 		{
 			"sid": "no.result",
@@ -2533,7 +2533,7 @@
 			"contentType": "default",
 			"src": "No results found.",
 			"rid": "dashlets/site-search.get_en.properties",
-			"ts": 1642896537806
+			"ts": 1
 		},
 		{
 			"sid": "message.insite",
@@ -2541,7 +2541,7 @@
 			"contentType": "default",
 			"src": "in site",
 			"rid": "dashlets/site-search.get_en.properties",
-			"ts": 1642896537806
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -2550,7 +2550,7 @@
 			"contentType": "default",
 			"src": "<p>Use this dashlet to perform a site search and view the results.</p><p>Clicking the item name takes you to the details page so you can preview or work with the item.</p>",
 			"rid": "dashlets/site-search.get_en.properties",
-			"ts": 1642896537806
+			"ts": 1
 		},
 		{
 			"sid": "label.header",
@@ -2558,7 +2558,7 @@
 			"contentType": "default",
 			"src": "My Calendar",
 			"rid": "dashlets/user-calendar.get_en.properties",
-			"ts": 1642896537792
+			"ts": 1
 		},
 		{
 			"sid": "label.noEvents",
@@ -2566,7 +2566,7 @@
 			"contentType": "default",
 			"src": "No upcoming events",
 			"rid": "dashlets/user-calendar.get_en.properties",
-			"ts": 1642896537792
+			"ts": 1
 		},
 		{
 			"sid": "label.error",
@@ -2574,7 +2574,7 @@
 			"contentType": "default",
 			"src": "Could not load calendar data",
 			"rid": "dashlets/user-calendar.get_en.properties",
-			"ts": 1642896537792
+			"ts": 1
 		},
 		{
 			"sid": "label.allday",
@@ -2582,7 +2582,7 @@
 			"contentType": "default",
 			"src": "All Day",
 			"rid": "dashlets/user-calendar.get_en.properties",
-			"ts": 1642896537792
+			"ts": 1
 		},
 		{
 			"sid": "label.in-site",
@@ -2590,7 +2590,7 @@
 			"contentType": "default",
 			"src": "in {0}",
 			"rid": "dashlets/user-calendar.get_en.properties",
-			"ts": 1642896537792
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -2598,7 +2598,7 @@
 			"contentType": "default",
 			"src": "This dashlet shows the upcoming events in sites you belong to. ",
 			"rid": "dashlets/user-calendar.get_en.properties",
-			"ts": 1642896537792
+			"ts": 1
 		},
 		{
 			"sid": "label.defaultText",
@@ -2606,7 +2606,7 @@
 			"contentType": "default",
 			"src": "Please use the Configure link to enter the URL of the web page you wish to display",
 			"rid": "dashlets/webview-default.get_en.properties",
-			"ts": 1642896537843
+			"ts": 1
 		},
 		{
 			"sid": "label.header",
@@ -2614,7 +2614,7 @@
 			"contentType": "default",
 			"src": "Web View",
 			"rid": "dashlets/webview.get_en.properties",
-			"ts": 1642896537894
+			"ts": 1
 		},
 		{
 			"sid": "label.noWebPage",
@@ -2622,7 +2622,7 @@
 			"contentType": "default",
 			"src": "No web page to display.",
 			"rid": "dashlets/webview.get_en.properties",
-			"ts": 1642896537894
+			"ts": 1
 		},
 		{
 			"sid": "label.notSecureHeader",
@@ -2630,7 +2630,7 @@
 			"contentType": "default",
 			"src": "Web View",
 			"rid": "dashlets/webview.get_en.properties",
-			"ts": 1642896537894
+			"ts": 1
 		},
 		{
 			"sid": "label.notSecurePage",
@@ -2638,7 +2638,7 @@
 			"contentType": "default",
 			"src": "The domain of the page to display is not listed as a trusted domain inside your server's IFramePolicy config.",
 			"rid": "dashlets/webview.get_en.properties",
-			"ts": 1642896537894
+			"ts": 1
 		},
 		{
 			"sid": "form.url.validation.failure",
@@ -2646,7 +2646,7 @@
 			"contentType": "default",
 			"src": "The domain of the url is not listed as a trusted domain inside your server's IFramePolicy config.",
 			"rid": "dashlets/webview.get_en.properties",
-			"ts": 1642896537894
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -2655,7 +2655,7 @@
 			"contentType": "default",
 			"src": "<p>This dashlet shows the website of your choice. Click the edit icon on the dashlet to change the web address.</p><p>Clicking the dashlet title opens the website in a separate window.</p>",
 			"rid": "dashlets/webview.get_en.properties",
-			"ts": 1642896537894
+			"ts": 1
 		},
 		{
 			"sid": "label.header",
@@ -2663,7 +2663,7 @@
 			"contentType": "default",
 			"src": "Wiki",
 			"rid": "dashlets/wiki.get_en.properties",
-			"ts": 1642896537773
+			"ts": 1
 		},
 		{
 			"sid": "label.header-prefix",
@@ -2671,7 +2671,7 @@
 			"contentType": "default",
 			"src": "Wiki",
 			"rid": "dashlets/wiki.get_en.properties",
-			"ts": 1642896537773
+			"ts": 1
 		},
 		{
 			"sid": "label.configure",
@@ -2679,7 +2679,7 @@
 			"contentType": "default",
 			"src": "Configure",
 			"rid": "dashlets/wiki.get_en.properties",
-			"ts": 1642896537773
+			"ts": 1
 		},
 		{
 			"sid": "label.noConfig",
@@ -2687,7 +2687,7 @@
 			"contentType": "default",
 			"src": "No page is configured",
 			"rid": "dashlets/wiki.get_en.properties",
-			"ts": 1642896537773
+			"ts": 1
 		},
 		{
 			"sid": "dashlet.help",
@@ -2696,7 +2696,7 @@
 			"contentType": "default",
 			"src": "<p>This dashlet shows a page selected from the site's wiki.</p><p>Navigate to the wiki to see all related content.</p>",
 			"rid": "dashlets/wiki.get_en.properties",
-			"ts": 1642896537773
+			"ts": 1
 		}
 	],
 	"translationProvider": "Grandfather",

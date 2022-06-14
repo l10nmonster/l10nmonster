@@ -8,7 +8,7 @@
 			"q": 61,
 			"src": "{person}, {age}",
 			"tgt": "{person}, {age}",
-			"ts": 1642896537903,
+			"ts": 1,
 			"jobGuid": "xxx1xxx"
 		},
 		{
@@ -16,7 +16,7 @@
 			"q": 61,
 			"src": "{spouse} and\n {person}, {nyears}",
 			"tgt": "{spouse} and\n {person}, {nyears}",
-			"ts": 1642896537903,
+			"ts": 1,
 			"jobGuid": "xxx1xxx"
 		},
 		{
@@ -24,7 +24,7 @@
 			"q": 61,
 			"src": " has {count_person} of {max_count_person} individuals ({percent} complete)\n",
 			"tgt": " has {count_person} of {max_count_person} individuals ({percent} complete)\n",
-			"ts": 1642896537903,
+			"ts": 1,
 			"jobGuid": "xxx1xxx"
 		},
 		{
@@ -32,7 +32,7 @@
 			"q": 61,
 			"src": "* {year}{person}{dead}, {age}{relation}",
 			"tgt": "* {year}{person}{dead}, {age}{relation}",
-			"ts": 1642896537903,
+			"ts": 1,
 			"jobGuid": "xxx1xxx"
 		},
 		{
@@ -40,7 +40,7 @@
 			"q": 61,
 			"src": "⚭ {year}{spouse}{deadtxt2} and\n {person}{deadtxt1}, {nyears}",
 			"tgt": "⚭ {year}{spouse}{deadtxt2} and\n {person}{deadtxt1}, {nyears}",
-			"ts": 1642896537903,
+			"ts": 1,
 			"jobGuid": "xxx1xxx"
 		},
 		{
@@ -48,7 +48,7 @@
 			"q": 61,
 			"src": "✝ {year}{person}, {age}{relation}",
 			"tgt": "✝ {year}{person}, {age}{relation}",
-			"ts": 1642896537903,
+			"ts": 1,
 			"jobGuid": "xxx1xxx"
 		},
 		{
@@ -56,7 +56,7 @@
 			"q": 61,
 			"src": "{couple}, {years} year anniversary",
 			"tgt": "{couple}, {years} year anniversary",
-			"ts": 1642896537903,
+			"ts": 1,
 			"jobGuid": "xxx1xxx"
 		}
 	],

@@ -8,7 +8,7 @@
 			"q": 70,
 			"src": "Welcome to react using react-i18next",
 			"tgt": "Willkommen zu react und react-i18next",
-			"ts": 1653363932437
+			"ts": 1
 		},
 		{
 			"guid": "cghma_NsjtZInytTsem0CwlHb1dS2hT2uQGVfDLNkaI",
@@ -41,21 +41,21 @@
 				},
 				" speicheren und neuladen."
 			],
-			"ts": 1653363932437
+			"ts": 1
 		},
 		{
 			"guid": "B2tOpN7eXoM6vDTFJdnZEO-5fTC49LtcVxOOxviW7z8",
 			"q": 70,
 			"src": "Switch language between english and german using buttons above.",
 			"tgt": "Ändere die Sprachen zwischen deutsch und englisch mit Hilfe der beiden Schalter.",
-			"ts": 1653363932437
+			"ts": 1
 		},
 		{
 			"guid": "dAA7Av4cfiuuB8oFviBEq4BAYLxOwSB2ujboTuOhjrI",
 			"q": 70,
 			"src": "Welcome, {name}!",
 			"tgt": "Willkommen, {name}!",
-			"ts": 1653363932437
+			"ts": 1
 		},
 		{
 			"guid": "0v-UepMBUCv9savc1xVoqbGx759Lx2Xrsi-HgZ2sWu0",
@@ -88,7 +88,7 @@
 				},
 				"!"
 			],
-			"ts": 1653363932437
+			"ts": 1
 		}
 	],
 	"status": "done",

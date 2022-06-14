@@ -11,7 +11,7 @@
 			"contentType": "default",
 			"src": "{person}, {age}",
 			"rid": "artifacts/gramps.pot",
-			"ts": 1642896537903
+			"ts": 1
 		},
 		{
 			"sid": ":plTWcM4c5cjJ1ZELQ1knETZrjss=_one",
@@ -22,7 +22,7 @@
 			"contentType": "default",
 			"src": "{spouse} and\n {person}, {nyears}",
 			"rid": "artifacts/gramps.pot",
-			"ts": 1642896537903
+			"ts": 1
 		},
 		{
 			"sid": ":NOm4MITy9dnNl2AKX9iwsu2/Bzk=_one",
@@ -33,7 +33,7 @@
 			"contentType": "default",
 			"src": " has {count_person} of {max_count_person} individuals ({percent} complete)\n",
 			"rid": "artifacts/gramps.pot",
-			"ts": 1642896537903
+			"ts": 1
 		},
 		{
 			"sid": ":Et17iDo9mfTAk6Zi7oklKt0h8fE=_one",
@@ -44,7 +44,7 @@
 			"contentType": "default",
 			"src": "* {year}{person}{dead}, {age}{relation}",
 			"rid": "artifacts/gramps.pot",
-			"ts": 1642896537903
+			"ts": 1
 		},
 		{
 			"sid": ":1RNxpnv5+/b54aeds3c4O7HCeL8=_one",
@@ -55,7 +55,7 @@
 			"contentType": "default",
 			"src": "⚭ {year}{spouse}{deadtxt2} and\n {person}{deadtxt1}, {nyears}",
 			"rid": "artifacts/gramps.pot",
-			"ts": 1642896537903
+			"ts": 1
 		},
 		{
 			"sid": ":m0d7dJNAlakXfACdnFhrS5YwaPs=_one",
@@ -66,7 +66,7 @@
 			"contentType": "default",
 			"src": "✝ {year}{person}, {age}{relation}",
 			"rid": "artifacts/gramps.pot",
-			"ts": 1642896537903
+			"ts": 1
 		},
 		{
 			"sid": ":F4GKadKTtyPj7NwI851PUwVpx7o=_one",
@@ -77,7 +77,7 @@
 			"contentType": "default",
 			"src": "{couple}, {years} year anniversary",
 			"rid": "artifacts/gramps.pot",
-			"ts": 1642896537903
+			"ts": 1
 		}
 	],
 	"translationProvider": "Repetition",

@@ -1,7 +1,7 @@
 import * as fs from 'fs/promises';
 import {js2tmx} from 'tmexchange';
 import { nanoid } from 'nanoid';
-import { flattenNormalizedSourceV1 } from '../normalizers/util.js';
+import { flattenNormalizedSourceV1 } from './normalizers/util.js';
 import { cleanupTU, sourceTUWhitelist, targetTUWhitelist } from './schemas.js';
 
 async function exportTMX(mm, targetLang, sourceLookup, tmBased) {

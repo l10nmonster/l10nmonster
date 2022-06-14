@@ -4,7 +4,7 @@ import {
     readFileSync,
 } from 'fs';
 import * as fs from 'fs/promises';
-import { flattenNormalizedSourceToOrdinal } from '../normalizers/util.js';
+import { flattenNormalizedSourceToOrdinal } from './normalizers/util.js';
 import { cleanupTU, targetTUWhitelist } from './schemas.js';
 
 class TM {
@@ -40,7 +40,7 @@ class TM {
         //     .join(', ');
         // const spurious = getSpurious(entry, targetTUWhitelist);
         // spurious && console.error(spurious);
-        if (!entry.guid || !Number.isInteger(entry.q) || !Number.isInteger(entry.ts) || !(typeof entry.tgt === 'string' || entry.ntgt || entry.inflight)) {
+        if (!entry.guid || !Number.isInteger(entry.q) || ((!Number.isInteger(entry.ts) || !(typeof entry.tgt === 'string' || entry.ntgt)) && !entry.inflight)) {
             throw `cannot set TM entry missing mandatory field: ${JSON.stringify(entry)}`;
         }
         const cleanedTU = cleanupTU(entry, targetTUWhitelist);

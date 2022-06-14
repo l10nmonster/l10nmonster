@@ -9,7 +9,7 @@
 		{
 			"guid": "27qyNndOGr5Tzx4ddlKCtgGu-HA1wIjdz0DHPrL7yF8",
 			"sid": "all_files_permission_required",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "File permissions required",
 			"tgt": "XYZ123",
 			"q": 80
@@ -17,7 +17,7 @@
 		{
 			"guid": "sz5VG6XU2cIa2wlQX17vYlxhFFkUQP4SNc4Tuf0XWoM",
 			"sid": "chapter_x_of_y",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Chapter %1$d of %2$d",
 			"tgt": "XYZ123",
 			"q": 80
@@ -25,7 +25,7 @@
 		{
 			"guid": "tqJcDNz_ZRwr47o7D7bfseUWk-bZrORIZOvHHClSwAk",
 			"sid": "no_chapters_to_delete",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "No chapters to delete",
 			"tgt": "XYZ123",
 			"q": 80
@@ -33,7 +33,7 @@
 		{
 			"guid": "jxe6lKXpItYQ7tDgDvJvzwVZ-RfgcQoviUHOGfCohj4",
 			"sid": "scanlators",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Scanlators",
 			"tgt": "XYZ123",
 			"q": 80
@@ -41,7 +41,7 @@
 		{
 			"guid": "t4VWxI0XBS7jJwzcIpjyWz95PtQe0nM2xUjvN4A1U_4",
 			"sid": "remove_n_chapters_one",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Remove %1$d downloaded chapter?",
 			"tgt": "XYZ123",
 			"q": 80
@@ -49,7 +49,7 @@
 		{
 			"guid": "p7jJcpu_ZOzMod7iebzwKDCR2JYb4Qef0D1lq2MQLKg",
 			"sid": "remove_n_chapters_other",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Remove %1$d downloaded chapters?",
 			"tgt": "XYZ123",
 			"q": 80
@@ -57,7 +57,7 @@
 		{
 			"guid": "1d7HtgdwLMLoxTTiv83rLZkKjkpfAmsehateH09g4gc",
 			"sid": "chapters_plural_one",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "%1$d chapter",
 			"tgt": "XYZ123",
 			"q": 80
@@ -65,7 +65,7 @@
 		{
 			"guid": "qwYhEI77stoakCdt86oc0Z9IcmbpLN19jqquS_d2WL0",
 			"sid": "chapters_plural_other",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "%1$d chapters",
 			"tgt": "XYZ123",
 			"q": 80
@@ -73,7 +73,7 @@
 		{
 			"guid": "2udl0hvWKKtR3kYZ1ZxvWfGf6Sq6I_AP1i91nZoJRuU",
 			"sid": "pages_left_one",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "%1$d page left",
 			"tgt": "XYZ123",
 			"q": 80
@@ -81,7 +81,7 @@
 		{
 			"guid": "cwofMrt4vcR72muKJgdj3ynRXfS-8kRankY4lw_Cmm4",
 			"sid": "pages_left_other",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "%1$d pages left",
 			"tgt": "XYZ123",
 			"q": 80
@@ -89,7 +89,7 @@
 		{
 			"guid": "WH5WLMC2qY2bMf5JBHSqSrkJVjNzv3YHD0V58wqZfV0",
 			"sid": "category",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Category",
 			"tgt": "XYZ123",
 			"q": 80
@@ -97,7 +97,7 @@
 		{
 			"guid": "TdXyr2sR2uiqUPCk-2leWA3Vat-PDwLKkezo5p4OR4E",
 			"sid": "create_new_category",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Create new category",
 			"tgt": "XYZ123",
 			"q": 80
@@ -105,7 +105,7 @@
 		{
 			"guid": "6LxJC8sf_K1lMeszDslG9Sl_Rvzv5614YKs_SdvvvXU",
 			"sid": "new_category",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "New category",
 			"tgt": "XYZ123",
 			"q": 80
@@ -113,7 +113,7 @@
 		{
 			"guid": "XXoLNbGH3EGehbZoQIYAlgCLCeXTFwLDRG-eFTvkRLI",
 			"sid": "category_is_empty",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Category is empty",
 			"tgt": "XYZ123",
 			"q": 80
@@ -121,7 +121,7 @@
 		{
 			"guid": "xASOi21bwFlUiAyDq_NjUyskRF7IAJr6HsWpU0Kl6RE",
 			"sid": "show_categories_while_filtering",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Show empty categories while filtering",
 			"tgt": "XYZ123",
 			"q": 80
@@ -129,7 +129,7 @@
 		{
 			"guid": "V1z5DUJUfjPG59288u1ZgacrdXDTUYhGbyPfbjmMs7Y",
 			"sid": "no_matches_for_filters_short",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "No matches for your filters",
 			"tgt": "XYZ123",
 			"q": 80
@@ -137,7 +137,7 @@
 		{
 			"guid": "4GXpmlw4Taq7yKQyTwSQUIm6gXsdKi8xT5lg0BskTbM",
 			"sid": "top_category",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Top category (%1$s)",
 			"tgt": "XYZ123",
 			"q": 80
@@ -145,7 +145,7 @@
 		{
 			"guid": "ALfGSVlR2dtPc2wD9pRK718u2FBbmpMfRsdEznu6no0",
 			"sid": "first_category",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "First category",
 			"tgt": "XYZ123",
 			"q": 80
@@ -153,7 +153,7 @@
 		{
 			"guid": "Mz8K0HaSi4Ffvygulhy2b3Fqj38tfAeKoZeEukHyC5g",
 			"sid": "categories_on_manual",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Categories to update when manually refreshing",
 			"tgt": "XYZ123",
 			"q": 80
@@ -161,7 +161,7 @@
 		{
 			"guid": "so0PKZwvPqpGV1xWSDbWY0znY7cKpYufeq33reXt8A0",
 			"sid": "categories_in_global_update",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "All categories in global update",
 			"tgt": "XYZ123",
 			"q": 80
@@ -169,7 +169,7 @@
 		{
 			"guid": "Z5R54ptkf0KSzqHSXbTpgusMBDC0AnVs5HlxwFuBn_g",
 			"sid": "confirm_category_deletion_message",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Manga in this category will moved into the\n        default category.",
 			"tgt": "XYZ123",
 			"q": 80
@@ -177,7 +177,7 @@
 		{
 			"guid": "dpO_z4YeTFadU1pOz_kPcMX3MJPH0ER9fKBE5s3JQ2w",
 			"sid": "already_in_category",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Manga already in category",
 			"tgt": "XYZ123",
 			"q": 80
@@ -185,7 +185,7 @@
 		{
 			"guid": "80n7O41H3GTAIsW9t8opIF2izOHZmus3wrImbKV3iCE",
 			"sid": "add_edit_categories",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Add/Edit categories",
 			"tgt": "XYZ123",
 			"q": 80
@@ -193,7 +193,7 @@
 		{
 			"guid": "mdJXc6b3zFcJjCiCBwa3eIMD0ftft4hpfhR8y24AKCw",
 			"sid": "manage_category",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Manage category",
 			"tgt": "XYZ123",
 			"q": 80
@@ -201,7 +201,7 @@
 		{
 			"guid": "PR-mra8oJXYjh-iGJbPWRJ93cqMsnv3I9kI-KHWftDI",
 			"sid": "category_plural_one",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "%d category",
 			"tgt": "XYZ123",
 			"q": 80
@@ -209,7 +209,7 @@
 		{
 			"guid": "xIQ8JakD15UWHPlTjfDfsR_DppXZXRKrIBcVjpnIUH0",
 			"sid": "category_plural_other",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "%d categories",
 			"tgt": "XYZ123",
 			"q": 80
@@ -217,7 +217,7 @@
 		{
 			"guid": "3OTZLJcQIzg5hjfkG2FvvaLCs2bw5nf5x0eK7liio4M",
 			"sid": "category_cannot_be_blank",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Category name cannot be blank",
 			"tgt": "XYZ123",
 			"q": 80
@@ -225,7 +225,7 @@
 		{
 			"guid": "_SEHHFJh1jzpnbQTZhpgdfhSuNgxeC2IedcO-8-eJVQ",
 			"sid": "category_deleted",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Category deleted",
 			"tgt": "XYZ123",
 			"q": 80
@@ -233,7 +233,7 @@
 		{
 			"guid": "2Dh5uX-r-ZGNhX0XX_9rBeP0s20EvWh1ANSjpD_Ads0",
 			"sid": "long_press_category",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Press and hold to edit a category",
 			"tgt": "XYZ123",
 			"q": 80
@@ -241,7 +241,7 @@
 		{
 			"guid": "JPHB24YD9kPnTMIzpxSbLTHOQ3sqRd20JU0wD-6SSGg",
 			"sid": "jump_to_category",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Jump to category",
 			"tgt": "XYZ123",
 			"q": 80
@@ -249,7 +249,7 @@
 		{
 			"guid": "9g34tPp38mY39nGP8T-WnIW3VChRwCg4CLToDOJx9zE",
 			"sid": "what_should_update",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "What should update?",
 			"tgt": "XYZ123",
 			"q": 80
@@ -257,7 +257,7 @@
 		{
 			"guid": "R9Wl42FJ2T6ZFFSSaMoGXjPle4BfCSiAk7BqsNC94lM",
 			"sid": "updating_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Updating %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -265,7 +265,7 @@
 		{
 			"guid": "mHA1aAaURIeyD65vqcQOrZgktm0kcXaOteUsAQc475g",
 			"sid": "release_page",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Release page",
 			"tgt": "XYZ123",
 			"q": 80
@@ -273,7 +273,7 @@
 		{
 			"guid": "YH_hpEGjrEK1ltdMwc4vNcWcKdVQE59STZdql8xcazY",
 			"sid": "your_library",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Your library",
 			"tgt": "XYZ123",
 			"q": 80
@@ -281,7 +281,7 @@
 		{
 			"guid": "mWxC9jiOzWyfACuoV6DlcypJivwOxus5-dMFIHdVnGs",
 			"sid": "no_matches_for_filters",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "No matches found for your current filters",
 			"tgt": "XYZ123",
 			"q": 80
@@ -289,7 +289,7 @@
 		{
 			"guid": "qIZDGt0DMbfmVZaSxqo8rBZN0RyPwAmaot7CYpXNJao",
 			"sid": "show_all_categories",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Show all categories",
 			"tgt": "XYZ123",
 			"q": 80
@@ -297,7 +297,7 @@
 		{
 			"guid": "Av_ON0E9yB1PATxomRZqmTHPlUa6IuIfdbqM3hHq9uY",
 			"sid": "move_dynamic_to_bottom",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Move collapsed dynamic categories to bottom",
 			"tgt": "XYZ123",
 			"q": 80
@@ -305,7 +305,7 @@
 		{
 			"guid": "m8j1SCe_UrzhS46X6dM3N-iYwO3_3kER3VbKiw5ixBk",
 			"sid": "show_number_of_items",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Show number of items",
 			"tgt": "XYZ123",
 			"q": 80
@@ -313,7 +313,7 @@
 		{
 			"guid": "Qs6SZ3dVI6ozm00KhWIbFPFqMOYVdpBj68Qph8F1BGY",
 			"sid": "when_grouping_by_sources_tags",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "When grouping library by sources, status, etc.",
 			"tgt": "XYZ123",
 			"q": 80
@@ -321,7 +321,7 @@
 		{
 			"guid": "RNy0yE1oUBzz2PCGw4-OrDNwlclfoSUu5rtfQ9hRUMA",
 			"sid": "always_show_current_category",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Always show current category",
 			"tgt": "XYZ123",
 			"q": 80
@@ -329,7 +329,7 @@
 		{
 			"guid": "xPwj1sm9RPgXQRbze4ER9Qtvw47U4EAEnn_KMUXgI6o",
 			"sid": "category_hopper_long_press",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Category hopper long-press action",
 			"tgt": "XYZ123",
 			"q": 80
@@ -337,7 +337,7 @@
 		{
 			"guid": "wJDJ1kfIvhrB6fbWqin4rkKuS2hN9enFwLPW3da1Ygs",
 			"sid": "expand_collapse_all_categories",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Expand/collapse all categories",
 			"tgt": "XYZ123",
 			"q": 80
@@ -345,7 +345,7 @@
 		{
 			"guid": "0UDjqW0KedOeaREpD8QGmewenZGpHkcYTXOSBVLGbeU",
 			"sid": "open_random_series",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Open a random series",
 			"tgt": "XYZ123",
 			"q": 80
@@ -353,7 +353,7 @@
 		{
 			"guid": "REDQuw2ffKcU28VK_OS_XkfAZPXbd-48KWPcvw9W50c",
 			"sid": "expand_all_categories",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Expand all categories",
 			"tgt": "XYZ123",
 			"q": 80
@@ -361,7 +361,7 @@
 		{
 			"guid": "YQuig4jgVHZnCj7gkaqBA-YnUroIE3IsE14_X4ds_i0",
 			"sid": "collapse_all_categories",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Collapse all categories",
 			"tgt": "XYZ123",
 			"q": 80
@@ -369,7 +369,7 @@
 		{
 			"guid": "csppXX2yY-YymAiNiJd8AJDZ22w5tTuxgpgh09frT8k",
 			"sid": "reorder_filters",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Reorder filters",
 			"tgt": "XYZ123",
 			"q": 80
@@ -377,7 +377,7 @@
 		{
 			"guid": "0Q0F8OAUKt9tljw33vEGxWOZgWoYsdvzbYGYyhonqbk",
 			"sid": "search_globally",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Search \\\"%1$s\\\" globally",
 			"tgt": "XYZ123",
 			"q": 80
@@ -385,7 +385,7 @@
 		{
 			"guid": "kCa-bJauYACIeWVYamRlbqKFa-Pf4yFoxGZh-qyS_dg",
 			"sid": "read_progress",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Read progress",
 			"tgt": "XYZ123",
 			"q": 80
@@ -393,7 +393,7 @@
 		{
 			"guid": "SQUbYShig4o_mD0PduPcc86T4SXt3e9vaKp_qn1NbR0",
 			"sid": "series_type",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Series type",
 			"tgt": "XYZ123",
 			"q": 80
@@ -401,7 +401,7 @@
 		{
 			"guid": "mxL1O8Q2FJe_7aycxLtdTnFXMnvI3dTIdPOtR2hK2Zg",
 			"sid": "series",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Series",
 			"tgt": "XYZ123",
 			"q": 80
@@ -409,7 +409,7 @@
 		{
 			"guid": "U2UnvktkKPonD5AVbTsnU2KEnmERMztybcr2P28b6HI",
 			"sid": "group_library_by",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Group library by…",
 			"tgt": "XYZ123",
 			"q": 80
@@ -417,7 +417,7 @@
 		{
 			"guid": "tORAZmGGpRq9JC8iHie5axOQsNVu7dHeV0xaHX-ZML4",
 			"sid": "tracking_status",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Tracking status",
 			"tgt": "XYZ123",
 			"q": 80
@@ -425,7 +425,7 @@
 		{
 			"guid": "NYHyGs4jaf5TmjsVaebY6zXz7ncc7pWFn6zAf3m2hUA",
 			"sid": "ungrouped",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Ungrouped",
 			"tgt": "XYZ123",
 			"q": 80
@@ -433,7 +433,7 @@
 		{
 			"guid": "c656MnA8GvsOTOxs4WY4nJd0SDx8-yR4m5_0O3dVg0U",
 			"sid": "sort_by",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Sort by",
 			"tgt": "XYZ123",
 			"q": 80
@@ -441,7 +441,7 @@
 		{
 			"guid": "_MmQA-fnOKmeS_awbYvANnQen4m6Hj4XtKiddmn638o",
 			"sid": "date_fetched",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Date fetched",
 			"tgt": "XYZ123",
 			"q": 80
@@ -449,7 +449,7 @@
 		{
 			"guid": "1yWI2lsCy15IjZhGkHRpwAWoNjMOP_rPM14bzEH3l9c",
 			"sid": "can_be_found_in_library_filters",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Can also be found by expanding library filters",
 			"tgt": "XYZ123",
 			"q": 80
@@ -457,7 +457,7 @@
 		{
 			"guid": "mUBPzydk5EoVceN21sURmqCJm3S4SHPJYKOdDeGJDk8",
 			"sid": "hide_start_reading_button",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Hide start reading button",
 			"tgt": "XYZ123",
 			"q": 80
@@ -465,7 +465,7 @@
 		{
 			"guid": "ETclr_VWLWFUhAFq6UzZX6GjOaOKAvOSOhfmlV5o8qk",
 			"sid": "uniform_grid_covers",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Uniform grid covers",
 			"tgt": "XYZ123",
 			"q": 80
@@ -473,7 +473,7 @@
 		{
 			"guid": "EOfH8MF1TxExXKy711d_IZzDgIS7Hrvga0qkB6Y4HmU",
 			"sid": "show_outline_around_covers",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Show outline around covers",
 			"tgt": "XYZ123",
 			"q": 80
@@ -481,7 +481,7 @@
 		{
 			"guid": "huHrZ36lN4u4bClvKIpWCCg430CBw_V0wdCrp3pANrc",
 			"sid": "grid_size",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Grid size",
 			"tgt": "XYZ123",
 			"q": 80
@@ -489,7 +489,7 @@
 		{
 			"guid": "6hn5KZLsLGETvPcxkQGVslKsEirgO05tR8I6LUoruAc",
 			"sid": "_per_row",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "%d per row",
 			"tgt": "XYZ123",
 			"q": 80
@@ -497,7 +497,7 @@
 		{
 			"guid": "5dIhJapfUivLgbMbJjZQUOVDIRggMxJgkm2iscM7_A8",
 			"sid": "display_as",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Display as",
 			"tgt": "XYZ123",
 			"q": 80
@@ -505,7 +505,7 @@
 		{
 			"guid": "ToQxCqj8I_Sl1JKZSFEoFDUeVI0a5hgEgXMU_q-MHfQ",
 			"sid": "hide_category_hopper",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Hide category hopper",
 			"tgt": "XYZ123",
 			"q": 80
@@ -513,7 +513,7 @@
 		{
 			"guid": "LsjbNhr3WEBa_R0YVVgCwjGtLFIDKeIYeawGGw4roAM",
 			"sid": "shift_one_page_over",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Shift one page over",
 			"tgt": "XYZ123",
 			"q": 80
@@ -521,7 +521,7 @@
 		{
 			"guid": "ZcYnJ5Od7-YKDD3xphviCHtelffw-mhq54M6Rs7tPtA",
 			"sid": "shift_double_pages",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Shift double pages",
 			"tgt": "XYZ123",
 			"q": 80
@@ -529,7 +529,7 @@
 		{
 			"guid": "Ph2bJ5o6hNyyzK0cUaxO-y1H_ebjPITypSCOgs8JPSw",
 			"sid": "notification_size_warning",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Large updates may lead to increased battery usage and sources becoming slower",
 			"tgt": "XYZ123",
 			"q": 80
@@ -537,7 +537,7 @@
 		{
 			"guid": "nn9ifCxTi0t0nXPKjjqANSd9RsYNb7nXBbc0e-L1MBY",
 			"sid": "for_n_titles_one",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "For %d title",
 			"tgt": "XYZ123",
 			"q": 80
@@ -545,7 +545,7 @@
 		{
 			"guid": "9xj-HFVJXt2nNpthtY1LQ-fzWVcARPZvaiL2c39B23w",
 			"sid": "for_n_titles_other",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "For %d titles",
 			"tgt": "XYZ123",
 			"q": 80
@@ -553,7 +553,7 @@
 		{
 			"guid": "i6ms_Au63GlXHZGXAcuj1OlRcD9GhIwb0mR2FlStmOo",
 			"sid": "notification_and_n_more_one",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "and %1$d more chapter",
 			"tgt": "XYZ123",
 			"q": 80
@@ -561,7 +561,7 @@
 		{
 			"guid": "67xZqBzSLejsIoJhJeoe41TLoKsEqXHdzFIIP8ysYJs",
 			"sid": "notification_and_n_more_other",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "and %1$d more chapters",
 			"tgt": "XYZ123",
 			"q": 80
@@ -569,7 +569,7 @@
 		{
 			"guid": "n-9x0mdfrc5EllF9g4lxFwLkppPeEQND2uhVP0ERBFU",
 			"sid": "notification_update_failed_one",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "1 update failed",
 			"tgt": "XYZ123",
 			"q": 80
@@ -577,7 +577,7 @@
 		{
 			"guid": "zvr59y3s5K3qszjqGTIXKeg_HsuE1uajtP_Jw40Sp5U",
 			"sid": "channel_errors",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Errors",
 			"tgt": "XYZ123",
 			"q": 80
@@ -585,7 +585,7 @@
 		{
 			"guid": "QlC_YuVsWOmivCrLSW068P3410uxlebLMQI6Y2APaqA",
 			"sid": "restrictions_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Restrictions: %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -593,7 +593,7 @@
 		{
 			"guid": "QAlZS0y6i_buINaq18JblNG70LKyAsdB5SEzos785FE",
 			"sid": "sort_by_ignoring_articles",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Sort by ignoring articles",
 			"tgt": "XYZ123",
 			"q": 80
@@ -601,7 +601,7 @@
 		{
 			"guid": "gX2qXw9h04nSkWqum0JX_lrXBPrnakCiXfhaqiVV8OM",
 			"sid": "when_sorting_ignore_articles",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "When sorting alphabetically, sort ignoring\n        articles (a, an, the) at the start of manga titles",
 			"tgt": "XYZ123",
 			"q": 80
@@ -609,7 +609,7 @@
 		{
 			"guid": "qGkF2Msp3GFeWmf1Bhwiv0fF0eC1cpmBhNbvl8xiiDY",
 			"sid": "include_in_global_update",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Include in global update",
 			"tgt": "XYZ123",
 			"q": 80
@@ -617,7 +617,7 @@
 		{
 			"guid": "VCIW6HRhoeMhpQUhRuDv4rLKq9LG90yl1F5zV-xbvQU",
 			"sid": "auto_refresh_covers_summary",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Refresh covers in library as well\n        when updating library",
 			"tgt": "XYZ123",
 			"q": 80
@@ -625,7 +625,7 @@
 		{
 			"guid": "jP-v2MRaelRp-0xUUhmilWXKVm0sFGYkH-NQkgC3xAM",
 			"sid": "global_updates",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Global updates",
 			"tgt": "XYZ123",
 			"q": 80
@@ -633,7 +633,7 @@
 		{
 			"guid": "0IxzMeDYA_8V3QabO-k3En1Ld3cLA1pVnFnO_WWfoFk",
 			"sid": "display_buttons_bottom_reader",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Buttons at bottom of reader",
 			"tgt": "XYZ123",
 			"q": 80
@@ -641,7 +641,7 @@
 		{
 			"guid": "W-OESlaLb8Tz_YavoeRWfdWpbImHRAg2Whyms6MQFYg",
 			"sid": "certain_buttons_can_be_found",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Certain buttons can be found in other places if disabled here",
 			"tgt": "XYZ123",
 			"q": 80
@@ -649,7 +649,7 @@
 		{
 			"guid": "-ZXuEBcLtTSL3Tk5TFp5gsqkopJ3I2iSdHMaFKM2p08",
 			"sid": "search_suggestions",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Search suggestions",
 			"tgt": "XYZ123",
 			"q": 80
@@ -657,7 +657,7 @@
 		{
 			"guid": "96luWUe3rIPx396wuzKUZiWpL_FIvbxC-tiqyjavqJw",
 			"sid": "search_tips_show_periodically",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Search tips will show up periodically. Long press the suggestion to search it.",
 			"tgt": "XYZ123",
 			"q": 80
@@ -665,7 +665,7 @@
 		{
 			"guid": "9KQnpovYTTR8EqaPS_krSrI6i65OEvrlUpYUZ8fHDF0",
 			"sid": "recents",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Recents",
 			"tgt": "XYZ123",
 			"q": 80
@@ -673,7 +673,7 @@
 		{
 			"guid": "8_2VD6CoQQwIG6KI5Gi0GBE4gSJnn5YXcgUHUr7tvXE",
 			"sid": "updates_and_history",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Updates & history",
 			"tgt": "XYZ123",
 			"q": 80
@@ -681,7 +681,7 @@
 		{
 			"guid": "mGutHcON0BUvfsxMPu1umIKcHv6zoXqgcRekXHAaCpM",
 			"sid": "newly_added",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Newly added",
 			"tgt": "XYZ123",
 			"q": 80
@@ -689,7 +689,7 @@
 		{
 			"guid": "SwJlbVJTeK7RQngegxVgj7hyxKL8WkxxvYeQDmUxXFs",
 			"sid": "reset_chapter_history",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Reset chapter history",
 			"tgt": "XYZ123",
 			"q": 80
@@ -697,7 +697,7 @@
 		{
 			"guid": "XmyxBrSHE9usAFFCG2vPzxT10mP3VHeH1CsWjzkIpZg",
 			"sid": "this_will_remove_the_read_date_for_x_question",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "This will remove the read date of\n        \\\"%1$s\\\". Are you sure?",
 			"tgt": "XYZ123",
 			"q": 80
@@ -705,7 +705,7 @@
 		{
 			"guid": "fC_356xy32C7odgnD6x_BAF1M8BL09LYq_AYDWMJoww",
 			"sid": "reset_all_chapters_for_this_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Reset all chapters for this %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -713,7 +713,7 @@
 		{
 			"guid": "-bYJgDGQXbmL4g_0gpKbwEHkH7eWo0cl7zRzYyn4r0M",
 			"sid": "last_read_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Last read %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -721,7 +721,7 @@
 		{
 			"guid": "LB5CD-tAbq-svs9PEjaUwWSgEMffx0GiHN8cf1-_fbU",
 			"sid": "read_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Read %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -729,7 +729,7 @@
 		{
 			"guid": "J07LWB4b1QilfozxRx51_cUQrthjI3HIuxbhfFEhCU4",
 			"sid": "updated_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Updated %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -737,7 +737,7 @@
 		{
 			"guid": "_SAZorPrF5hhU5oP3l6AMfgbnFj502nP0cEMTzM6Zjw",
 			"sid": "added_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Added %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -745,7 +745,7 @@
 		{
 			"guid": "18cGsSZgW56fk4r4-oUR8Z-wVtXtQjs1knIQhisPyQE",
 			"sid": "fetched_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Fetched %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -753,7 +753,7 @@
 		{
 			"guid": "8RiginX5c8HPKTdZLSf92yPW7OaauQvgF_mQ6bLWASs",
 			"sid": "view_history",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "View history",
 			"tgt": "XYZ123",
 			"q": 80
@@ -761,7 +761,7 @@
 		{
 			"guid": "2B1czib05hWKXKttgwY-nLlvNzlCyVANPK4EUwkqygo",
 			"sid": "view_all_updates",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "View all updates",
 			"tgt": "XYZ123",
 			"q": 80
@@ -769,7 +769,7 @@
 		{
 			"guid": "ASrcs0Dz123vfvvZRaO6g4nrW3HXYfVXDAK3PnApQMQ",
 			"sid": "search_recents",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Search recents…",
 			"tgt": "XYZ123",
 			"q": 80
@@ -777,7 +777,7 @@
 		{
 			"guid": "akU48sSoFBDApncaFTnxDUwvntjoVc_x_ncCPkbKfUc",
 			"sid": "no_recent_read_updated_manga",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "No recently read or updated manga",
 			"tgt": "XYZ123",
 			"q": 80
@@ -785,7 +785,7 @@
 		{
 			"guid": "67LG-B8pRZncuF53apGRcqFubfzZGWknM7RCqDH9SZ0",
 			"sid": "grouped",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Grouped",
 			"tgt": "XYZ123",
 			"q": 80
@@ -793,7 +793,7 @@
 		{
 			"guid": "w1Rs6QdUEbwNfxKQ_3xpO1EmY_4HRV6aG5GQF0tFK9I",
 			"sid": "reset_chapter_question",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Reset chapter?",
 			"tgt": "XYZ123",
 			"q": 80
@@ -801,7 +801,7 @@
 		{
 			"guid": "3asXWsKaR7y7GtHSB4gj3cKcy0QKV7ZP9Y37ZUsa4J8",
 			"sid": "press_and_hold_to_also_reset",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Press and hold can also reset chapter history",
 			"tgt": "XYZ123",
 			"q": 80
@@ -809,7 +809,7 @@
 		{
 			"guid": "-ZokOFEGjoKOP0ipBcoQfSs-VHrAsiXGtvmliCLnBxc",
 			"sid": "show_download_button",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Show download button",
 			"tgt": "XYZ123",
 			"q": 80
@@ -817,7 +817,7 @@
 		{
 			"guid": "lxojKZjY-5yMohTxbOYeEsPXKdU35_LdTGAzh9L21hM",
 			"sid": "only_unread",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Only unread",
 			"tgt": "XYZ123",
 			"q": 80
@@ -825,7 +825,7 @@
 		{
 			"guid": "fN6EvqdvhVsR-FEQQFTaLWJEZURGvO79klFaYWce5ns",
 			"sid": "only_downloaded",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Only downloaded",
 			"tgt": "XYZ123",
 			"q": 80
@@ -833,7 +833,7 @@
 		{
 			"guid": "xtCZPDVorMQcmb88XuRrN66RmY0CaLszKaIG9rZilMw",
 			"sid": "unread_or_downloaded",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Unread or downloaded",
 			"tgt": "XYZ123",
 			"q": 80
@@ -841,7 +841,7 @@
 		{
 			"guid": "vc6RPi0nmbBiytfQeWbKySuwc6Tz427bDCSe__RrgOs",
 			"sid": "show_reset_history_button",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Show reset history button",
 			"tgt": "XYZ123",
 			"q": 80
@@ -849,7 +849,7 @@
 		{
 			"guid": "qPY-TEoWZjeuax9ZNJUD_wMv44mSc6-WAQqtgXEPBSk",
 			"sid": "show_read_chapters_all",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Show read chapters in Grouped and All",
 			"tgt": "XYZ123",
 			"q": 80
@@ -857,7 +857,7 @@
 		{
 			"guid": "pF_TodxnIiM6j0nfMhGaKwG7i29NMrwslIg09Kr5NLY",
 			"sid": "show_title_first",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Show title first",
 			"tgt": "XYZ123",
 			"q": 80
@@ -865,7 +865,7 @@
 		{
 			"guid": "uDn0V4BKl8_4RZG-SBfzr9WsusENKW_02EQe2UZXh7E",
 			"sid": "a_while_ago",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "A while ago",
 			"tgt": "XYZ123",
 			"q": 80
@@ -873,7 +873,7 @@
 		{
 			"guid": "4se94QZG8B_HRubqGbQSa2z73iKBD-niP3vOOy24qeY",
 			"sid": "show_updated_time",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Show updated time",
 			"tgt": "XYZ123",
 			"q": 80
@@ -881,7 +881,7 @@
 		{
 			"guid": "iDbzX3ua7JTK2r5fPAdwX5aGkNtciRqK3DmhR9GrDpk",
 			"sid": "group_chapters_together",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Group chapters together",
 			"tgt": "XYZ123",
 			"q": 80
@@ -889,7 +889,7 @@
 		{
 			"guid": "VGxNmIVvDYZ6XN8-GGELcf5m_BTP3_nnUxF1sAUHRVg",
 			"sid": "uniform_covers",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Uniform covers",
 			"tgt": "XYZ123",
 			"q": 80
@@ -897,7 +897,7 @@
 		{
 			"guid": "Bx4ksQFJA0d4IzSTzkltfMXKvQE_VFynqSen-05Xz8s",
 			"sid": "affects_library_grid",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Affects library grid covers",
 			"tgt": "XYZ123",
 			"q": 80
@@ -905,7 +905,7 @@
 		{
 			"guid": "vOXbT2RStv9Bfve3rxZcNVYVtPleduRz-tCudb4hkm4",
 			"sid": "search_extensions",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Search extensions…",
 			"tgt": "XYZ123",
 			"q": 80
@@ -913,7 +913,7 @@
 		{
 			"guid": "8WTohVPNZpV9njpvhCzeDzn72bq4FpnLmuH2GWJQmbU",
 			"sid": "all_sources",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "All sources",
 			"tgt": "XYZ123",
 			"q": 80
@@ -921,7 +921,7 @@
 		{
 			"guid": "09bHLJJ3TSUAIXnWuYp8zkgPz_Ktog89FUtierMakyY",
 			"sid": "source_hidden",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Source hidden",
 			"tgt": "XYZ123",
 			"q": 80
@@ -929,7 +929,7 @@
 		{
 			"guid": "zHEBCkIpAL7IFfPf4XupIOxAICmr--suT78fcOimS5U",
 			"sid": "extension_updates",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Extension updates",
 			"tgt": "XYZ123",
 			"q": 80
@@ -937,7 +937,7 @@
 		{
 			"guid": "UwRMRUlsHHvbMnyBXmfC1mLPAoK44f6GbhkwsaZA-LE",
 			"sid": "extension_updates_pending",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Extension updates pending",
 			"tgt": "XYZ123",
 			"q": 80
@@ -945,7 +945,7 @@
 		{
 			"guid": "_LFloqjVFn0g8rA1cyKvjNh0n06tCbEN9q9cDIrD_mk",
 			"sid": "filter_languages",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Filter Languages",
 			"tgt": "XYZ123",
 			"q": 80
@@ -953,7 +953,7 @@
 		{
 			"guid": "s7vmRSqvrrdDCP2CC42Mu4top-dqct55ZDXfFJ0lTWw",
 			"sid": "installed_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Installed %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -961,7 +961,7 @@
 		{
 			"guid": "GrMFwP4G_U9q4P7sChaW2J_1tmJecnWYjzHc7V_iIT8",
 			"sid": "extensions_miui_warning",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "MIUI Optimization must be disabled to install extensions.",
 			"tgt": "XYZ123",
 			"q": 80
@@ -969,7 +969,7 @@
 		{
 			"guid": "EJajp-vB1WGv35d6W7joH8a2s-IABgLLbQQ7if_c52o",
 			"sid": "app_info",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "App info",
 			"tgt": "XYZ123",
 			"q": 80
@@ -977,7 +977,7 @@
 		{
 			"guid": "j5g8prmlQCN59zCYtiyibcH_8MTrHOmsI8htpM1CPVY",
 			"sid": "_must_be_enabled_first",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "%1$s must be enabled first",
 			"tgt": "XYZ123",
 			"q": 80
@@ -985,7 +985,7 @@
 		{
 			"guid": "hdOZ2TaIpQJa51D84wSDzU6Awl-GjNr_KxXXa_SRFjw",
 			"sid": "could_not_install_extension",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Could not install extension",
 			"tgt": "XYZ123",
 			"q": 80
@@ -993,7 +993,7 @@
 		{
 			"guid": "Gx6It2EPZkzo8gjjKMNEIdCoI3j8ApOfbv2ZnOxTfXg",
 			"sid": "update_all",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Update all",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1001,7 +1001,7 @@
 		{
 			"guid": "8u4FgLqIOqKPt9ghwV7vaQd9DIIie5EIgYLM8Y-MRg8",
 			"sid": "some_extensions_may_prompt",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Some extensions may still prompt to be installed first.",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1009,7 +1009,7 @@
 		{
 			"guid": "rEhqIqyMOpPGm9tucXpboZ2m3WcZOJWCxH6YdSbJQvw",
 			"sid": "updating_extensions",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Updating extensions",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1017,7 +1017,7 @@
 		{
 			"guid": "-BgwQxYmz_OcJgZCUZeNEhbIn71aeYWQLfqDzIdO5-A",
 			"sid": "_updates_pending_one",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "%d update pending",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1025,7 +1025,7 @@
 		{
 			"guid": "DZ_sc6S4EfGY49WXOACTA14IzN7IGl__L84uf8WbSwc",
 			"sid": "_updates_pending_other",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "%d updates pending",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1033,7 +1033,7 @@
 		{
 			"guid": "XlcudDTXzG61J5iRPIyqhRE70F5HFnn2xrll5R17-n8",
 			"sid": "extensions_updated",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Extensions updated",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1041,7 +1041,7 @@
 		{
 			"guid": "PDKvwcIWbKlbrMMuqEa00drfTM71kt4AE5hfbznTe_o",
 			"sid": "extensions_updated_plural_one",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Extension updated",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1049,7 +1049,7 @@
 		{
 			"guid": "E7eIPBUFNkUQCaPZAqanJVmi_cYO9S0JCeKB3Trm0S4",
 			"sid": "extensions_updated_plural_other",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "%d extensions updated",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1057,7 +1057,7 @@
 		{
 			"guid": "ZNcGVkm_LvhJlULW759Z140eW5Es4GSIXDFWwYiq7Lo",
 			"sid": "extension_updates_available_one",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Extension update available",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1065,7 +1065,7 @@
 		{
 			"guid": "aVTh9yvCCOJS6biHAKAoKQDWmjjqo8cIFgcwqCIilRo",
 			"sid": "reader_settings",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Reader settings",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1073,7 +1073,7 @@
 		{
 			"guid": "2wtUHTjlnyifY2hE2cYObdqXt6vZKdAiyeVM4oNdf_s",
 			"sid": "set_as_default_for_all",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Set as default for all",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1081,7 +1081,7 @@
 		{
 			"guid": "UKK9CJGLt82KF7IqPt9NB-bHsvmne8m6JVAO-LC2Ntg",
 			"sid": "pages_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Pages %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1089,7 +1089,7 @@
 		{
 			"guid": "U-fM9HL6MdOpDlVta63gzSGRhDsy-EcFEPtR2FaH-dg",
 			"sid": "reading_mode",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Reading mode",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1097,7 +1097,7 @@
 		{
 			"guid": "RDsq1cQDak8jiMMmyZC_3SwERo3l6v8CapJAHJdpJec",
 			"sid": "changing_will_reset_reading_mode",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Changing this will reset the reading mode for this series",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1105,7 +1105,7 @@
 		{
 			"guid": "wKFZJn57ACjX_t201lY5WbxY6xfsfi11ssSbwb6nfUs",
 			"sid": "reading_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Reading %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1113,7 +1113,7 @@
 		{
 			"guid": "SlAFtpEsmyLyJ9CWwNHgoUBa_z9W5Mf4LO7mcJAtZxg",
 			"sid": "webtoon_style",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "webtoon style",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1121,7 +1121,7 @@
 		{
 			"guid": "1XV7ZzyoiWqejk_kb8BMcUaGHMJHqLTx599EJtbIbGM",
 			"sid": "set_first_page_as_cover",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Set first page as cover",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1129,7 +1129,7 @@
 		{
 			"guid": "A1vrwmVU31UFieXjJYeCmbnFXwvAe0YhNyKDDMkYUjA",
 			"sid": "share_first_page",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Share first page",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1137,7 +1137,7 @@
 		{
 			"guid": "HSi95SVfdcpoTsIsWemtKmrx4H2aOlDoF6G2TOMmtkc",
 			"sid": "save_first_page",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Save first page",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1145,7 +1145,7 @@
 		{
 			"guid": "nbb_Qs8XacxA8ZryVmBTmYK8QhrUJOV1ll4GHF1LAVI",
 			"sid": "set_second_page_as_cover",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Set second page as cover",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1153,7 +1153,7 @@
 		{
 			"guid": "n1whErmKjcpP6XeusH8OnbllaukAYZVGuGvAwUS6vzI",
 			"sid": "share_second_page",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Share second page",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1161,7 +1161,7 @@
 		{
 			"guid": "ole_ODWFjk6iag3O8p560HO628Q_hJvMtJGIAne5pRQ",
 			"sid": "save_second_page",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Save second page",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1169,7 +1169,7 @@
 		{
 			"guid": "EpysZnLZo-1mZhou8q0OvmI8lp6fQXhnNentodbGre0",
 			"sid": "share_combined_pages",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Share combined pages",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1177,7 +1177,7 @@
 		{
 			"guid": "bLmGEWcwODjJ5TsZtvgPlllhMF7Qusd8hEa8GCnatwA",
 			"sid": "save_combined_pages",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Save combined pages",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1185,7 +1185,7 @@
 		{
 			"guid": "H4RqEMI7N9GCVCHx5OtUl6Kw6tEl1780q6W016wNcVI",
 			"sid": "enable_zoom_out",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Enable zoom out",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1193,7 +1193,7 @@
 		{
 			"guid": "Zi3L-9A9ap581wVL6PDJp3zruecGLQwl5p9k1u9Zyrs",
 			"sid": "page_preload_amount",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Page preload amount",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1201,7 +1201,7 @@
 		{
 			"guid": "C2FNkpaLoL7VXyXMu9SaavaizdXlCQJdCFEfo18dSjI",
 			"sid": "amount_of_pages_to_preload",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "The amount of pages to preload when reading. Higher values will result in a smoother reading experience, at the cost of higher cache and network usage.",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1209,7 +1209,7 @@
 		{
 			"guid": "_eiLmnk4fEbsRy1A9mw2gRTRnELuJtyfeEzLU5qCxpw",
 			"sid": "invert_double_pages",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Invert double pages",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1217,7 +1217,7 @@
 		{
 			"guid": "_h_8cgOacQBSamHFaN1tvSkDKO3OST3xNwxQ000qeww",
 			"sid": "split_double_pages_portrait",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Split double pages in portrait",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1225,7 +1225,7 @@
 		{
 			"guid": "n_HJKhrvrSRiRt5B67LREhbN2dFEGtgAs3UQhBs4WJQ",
 			"sid": "crop_borders_paged",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Crop borders (Paged)",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1233,7 +1233,7 @@
 		{
 			"guid": "O3sde3hZlglgJmbDZ9GnS_sg_odYUPrskCtrEYhLq_8",
 			"sid": "crop_borders_webtoon",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Crop borders (Webtoon)",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1241,7 +1241,7 @@
 		{
 			"guid": "_UQhjiOEDycVJQUiZA70CKquv1zGeK1ewLezYWEQGbc",
 			"sid": "remove_crop",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Remove crop",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1249,7 +1249,7 @@
 		{
 			"guid": "CjYiNR9pPxk2Lft1ft0BzwuVz0M4pE8eWqpssfF2SVs",
 			"sid": "smart_by_page",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Smart (by page)",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1257,7 +1257,7 @@
 		{
 			"guid": "-HuD6DHwN27vOk_Pw_s14X20I_NuDj_SgyMg4gjTPqs",
 			"sid": "smart_by_theme",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Smart (by theme)",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1265,7 +1265,7 @@
 		{
 			"guid": "_kk-cHhadbopf9f8VouQpkf7cFf5uH4x5UATjrDbT8Y",
 			"sid": "split_double_pages",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Split double pages",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1273,7 +1273,7 @@
 		{
 			"guid": "SMwJKF5bm8Dw-xz6vGuwFBcxvaO3HNcEdgOamKUOZIw",
 			"sid": "double_pages",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Double pages",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1281,7 +1281,7 @@
 		{
 			"guid": "Id3pS3KM5Tkhruf5e491S-MZ6QNGErJ19JogpbvKZNU",
 			"sid": "single_page",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Single page",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1289,7 +1289,7 @@
 		{
 			"guid": "wQRuzGKkvWV0vG9obp4jGSnm4RjR1bnkAXtK4twE1fY",
 			"sid": "switch_to_double",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Switch to double pages",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1297,7 +1297,7 @@
 		{
 			"guid": "223rk-Kbo-zntSmAdYrsyW-ny2zCVG0qtEqP7J11AKo",
 			"sid": "switch_to_single",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Switch to single page",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1305,7 +1305,7 @@
 		{
 			"guid": "1Zrp6BG-DZXSWk18y0cN2K1J814wdXRxsC05kaDwynU",
 			"sid": "locked_portrait",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Locked portrait",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1313,7 +1313,7 @@
 		{
 			"guid": "ouRwVLj6hSKJFfa3sUttbDc6Bu4XjCLn_0DqQGwx0SA",
 			"sid": "locked_landscape",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Locked landscape",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1321,7 +1321,7 @@
 		{
 			"guid": "cJ_-rA_sG-i15fhaJLSWxUuAg26fAQSzmfLCtpXwQ7Q",
 			"sid": "smart_based_on_page",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Smart (based on page)",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1329,7 +1329,7 @@
 		{
 			"guid": "7T_hOsg6RhtnEA4R4O2r6DgjCGl5TFtkA_MRWZbSnjk",
 			"sid": "smart_based_on_page_and_theme",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Smart (based on page and theme)",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1337,7 +1337,7 @@
 		{
 			"guid": "W8IL7FndWDq-7-mwh7RdfpnZ-3SJj5ffNGNhAZG8S1s",
 			"sid": "if_disabled_transition_will_skip",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "If disabled, the transition page will be\n        skipped if the next chapter is loaded",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1345,7 +1345,7 @@
 		{
 			"guid": "NCIdcJxxvp00HL_yi0SD4xBMx8YwKzIdtFqHXMDHDCs",
 			"sid": "horizontally",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Horizontally",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1353,7 +1353,7 @@
 		{
 			"guid": "paXGn4VWZ5yx1GauoMOctNbsSX-BnzeZzjpXvBejZ5U",
 			"sid": "vertically",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Vertically",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1361,7 +1361,7 @@
 		{
 			"guid": "hInxbNXmVp8ymfLBQk2lH-7SvUPs25InX_gUWoMuX4I",
 			"sid": "both_axes",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Both Axes",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1369,7 +1369,7 @@
 		{
 			"guid": "tiuPeCuNZficiHifln3AdOnVjGqIL99OVSCJTjqRIHQ",
 			"sid": "cutout_area_behavior",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Cutout area behavior",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1377,7 +1377,7 @@
 		{
 			"guid": "bNPoLAv44j0zbzVEKB68Nquz-COQvdnao3VSBUr6gkQ",
 			"sid": "pad_cutout_areas",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Pad cutout areas",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1385,7 +1385,7 @@
 		{
 			"guid": "vdEXO8td0M3CxR2uaKOOeAFddT_lcuWlGdJDUQKv24o",
 			"sid": "start_past_cutout",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Start past cutout",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1393,7 +1393,7 @@
 		{
 			"guid": "JoF7exj_S0HkjlE_K6NxLRkE1SPsbKLIT8weHsrlRwI",
 			"sid": "ignore_cutout_areas",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Ignore cutout areas",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1401,7 +1401,7 @@
 		{
 			"guid": "2pjM4-I03BkSW-GbRG9AEztBy_evkZczJAm7MDgTi6k",
 			"sid": "cutout_behavior_only_applies",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Cutout area behavior only applies in portrait mode with certain scale types",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1409,7 +1409,7 @@
 		{
 			"guid": "FezFSoYDEiIsClrf1JqAwRgFSrfjT2_CxGdPlIOXLA8",
 			"sid": "page_layout",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Page layout",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1417,7 +1417,7 @@
 		{
 			"guid": "rb6QdTJBmHJnWUjhhBu9GsvrqP124sw43HE2vPZK7yI",
 			"sid": "automatic_can_still_switch",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "While using automatic page layout, you can still switch between layouts while reading without overriding this setting",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1425,7 +1425,7 @@
 		{
 			"guid": "-p4Y62JHBpxvrQOFUkNWm8kJhR7z33NowZpXHhKis94",
 			"sid": "automatic_orientation",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Automatic (based on orientation)",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1433,7 +1433,7 @@
 		{
 			"guid": "nP0t9wle-o5QMEG5fe8AdknkamcCg1ooEtEx8hQvD_A",
 			"sid": "webtoon_cannot_change",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Cannot change reading mode from webtoon. Edit the series type first to change.",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1441,7 +1441,7 @@
 		{
 			"guid": "Bs_uAR58uFgb6bja48jt8D7VWPX-BQswoW9ILNRorIQ",
 			"sid": "actions",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Actions",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1449,7 +1449,7 @@
 		{
 			"guid": "u6D7imr8nr9n-4-mLssPJxhy-OjW5uf11LKMMXwzUq4",
 			"sid": "show_on_long_press",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Show on long press",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1457,7 +1457,7 @@
 		{
 			"guid": "IEX6H6t2_ADlenoNGaK3o4ZydfaVNWUL8L9934J2ljA",
 			"sid": "save_pages_separately",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Save pages in separate folders",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1465,7 +1465,7 @@
 		{
 			"guid": "yY0LZeDyRVAoWbU-M40m8KynYbHYMrFP8qU8oYKpi_o",
 			"sid": "create_folders_by_manga_title",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Creates folders according to manga title",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1473,7 +1473,7 @@
 		{
 			"guid": "ftTBQ9mT8jzVQTlzVQThq84qga7aRnm1A_EmQPZ62tE",
 			"sid": "pages_plural_one",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "%1$d page",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1481,7 +1481,7 @@
 		{
 			"guid": "oXUmwOmJSilJYNINjFscNXUcar5msRG4KX7zU-4zQ5A",
 			"sid": "pages_plural_other",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "%1$d pages",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1489,7 +1489,7 @@
 		{
 			"guid": "TyE4yyopQMXi9xPAwddqixG0FiRUr7u1yXsHaK5cFNg",
 			"sid": "missing_chapters_warning_one",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Skipping 1 chapter, either the source is missing it or it has been filtered out",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1497,7 +1497,7 @@
 		{
 			"guid": "rXnFisSe-TCQMWVdPr043XAD3SjPf9t7nr3_A3JFQ4Q",
 			"sid": "about_this_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "About this %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1505,7 +1505,7 @@
 		{
 			"guid": "4vSXPlqV-jor93w4akoHBtcFnxQkH294qUAPtwQzaXw",
 			"sid": "volume_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Volume %1$d",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1513,7 +1513,7 @@
 		{
 			"guid": "AkTWm10nlkUtHs0SpqUi4J_fWfhHrtuPiIap8FfKdNY",
 			"sid": "season_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Season %1$d",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1521,7 +1521,7 @@
 		{
 			"guid": "w9hhiyhohnNbjc_qqndqLiy6QdwWj-Epv6g2TqvRPtg",
 			"sid": "no_description",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "No description",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1529,7 +1529,7 @@
 		{
 			"guid": "lP7I0GvSzdCUMNPu5MZnqO1hE9KRTmW295hArhuKyq4",
 			"sid": "add_x_to_library",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Add %1$s to library?",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1537,7 +1537,7 @@
 		{
 			"guid": "UjJLozZAoSoe146ujO2h-ICSmd3OB8xUHXoA0sw1vuk",
 			"sid": "show_all",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Show All",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1545,7 +1545,7 @@
 		{
 			"guid": "wa91V77-CNIUKXO_trOUgp-OTGRGK1xDxCnn-jgS8n4",
 			"sid": "add_tag",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Add tag",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1553,7 +1553,7 @@
 		{
 			"guid": "mg4C6yIR8EP__v2LCqgKunkzyxby8kPofjaNzHx5x2o",
 			"sid": "clear_tags",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Clear tags",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1561,7 +1561,7 @@
 		{
 			"guid": "xnANV8L5mqGqk8EDMRSOD_nXd8p0AK4IczkE-ezn8mw",
 			"sid": "reset_tags",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Reset tags",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1569,7 +1569,7 @@
 		{
 			"guid": "cX9XxArHW92TEnx3pEA6Jr4BcxizkXZXT9Fl-RDaVZM",
 			"sid": "reset_cover",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Reset cover",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1577,7 +1577,7 @@
 		{
 			"guid": "EbH3VudW1nCXsQ_ID9Yx1ZS01mU3OthyL0VrF3xBXR4",
 			"sid": "remember_this_choice",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Remember this choice",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1585,7 +1585,7 @@
 		{
 			"guid": "qJ1A3DenY9H9IyDNB5o4neBMDAAqqX5c-vEQd6Dgds4",
 			"sid": "source_not_installed",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Source not installed",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1593,7 +1593,7 @@
 		{
 			"guid": "4VnsQVEawPmvgH-O45FKaXHWGWxMnjIWsFtFV5GlyFc",
 			"sid": "filter_groups",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Filter scanlator groups",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1601,7 +1601,7 @@
 		{
 			"guid": "SSZERtfZuYpDYos6-_VXWBeWY2P0LQQBQ5wwygKih98",
 			"sid": "deleted_chapters_one",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "A chapter has been removed from the source:\\n%2$s\\nDelete\n            its download?",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1609,7 +1609,7 @@
 		{
 			"guid": "SMy5CDGGN0GtdJzMKHTWbjT3VqLYuEtNpEvWA5bRmLc",
 			"sid": "deleted_chapters_other",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "%1$s chapters have been removed from the source:\\n%2$s\\n\\nDelete\n            their downloads?",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1617,7 +1617,7 @@
 		{
 			"guid": "tA0xYikn0qHMP71gVNu8p-qT0ikIpg3hFN5e_ID1rVA",
 			"sid": "not_tracked",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Not tracked",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1625,7 +1625,7 @@
 		{
 			"guid": "ZYRF0uRDK_bsTpcq436kRm7TTSod3JSdVNJVsUlWSfU",
 			"sid": "track_when_adding_to_library",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Track when adding to library",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1633,7 +1633,7 @@
 		{
 			"guid": "K8uvCzrPyY2N2As1JfFODEHeKn3UlBuZ9k1znC1K6tY",
 			"sid": "only_applies_silent_trackers",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Only applies to silent trackers, such as Komga",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1641,7 +1641,7 @@
 		{
 			"guid": "udoZazFBKNuJIC6v5QmfjrbGyd6rlkSOBu4UjHKhWOk",
 			"sid": "select_an_entry",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Select an entry",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1649,7 +1649,7 @@
 		{
 			"guid": "U4k2bPmEV48jDbn2lC4J-B8kiIokopjfT9qt0J_p5ZU",
 			"sid": "no_match_found",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "No match found",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1657,7 +1657,7 @@
 		{
 			"guid": "DthVRDpslR2a_CZJ43oIuFM3jsvJRc-3YGX31hS3Fgo",
 			"sid": "remove_tracking",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Remove tracking from app",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1665,7 +1665,7 @@
 		{
 			"guid": "EtHBbOLybHYJNZnry87GJ1zgXtr-0SCWf3ClP7wf8sY",
 			"sid": "cannot_remove_tracking_while_offline",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Tracker cannot be removed from %1$s while offline",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1673,7 +1673,7 @@
 		{
 			"guid": "p-XaUHnNCFyXbPogKtoVZVRDqAjoRntnmJt5JR4R1rU",
 			"sid": "remove_tracking_from_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Also remove from %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1681,7 +1681,7 @@
 		{
 			"guid": "8v-_s7uEet4s00G7V9Pcvumf9GnoOvuXxIwKWEjb_5Y",
 			"sid": "remove_previous_tracker",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Remove previous tracker?",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1689,7 +1689,7 @@
 		{
 			"guid": "ehA-L9pQnrjTwKw9o5o3yPjzB8yjhIGNuOhTX96g7xo",
 			"sid": "remove_x_from_service_and_add_y",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Remove %1$s from %2$s and add %3$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1697,7 +1697,7 @@
 		{
 			"guid": "PBNBqvQp-lTb7U8FVYhn02_a9p0-R2znZFx5j9sUbpI",
 			"sid": "keep_both_on_service",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Keep both on %1$s and only replace locally",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1705,7 +1705,7 @@
 		{
 			"guid": "7hb5L6qGTAqPRklPIZG70MstE7elk7RcKPRLMCRQtd4",
 			"sid": "use_suggested_date",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Use suggested date",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1713,7 +1713,7 @@
 		{
 			"guid": "-PPNIbEUHwkIGu4bQUzt0Dum2AJNX33S224Q_e_ou2w",
 			"sid": "migration",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Migration",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1721,7 +1721,7 @@
 		{
 			"guid": "XNjo_w9WhrGdxKdrV8_dOdrvfQJ22YujJJ86Jb0cZr8",
 			"sid": "skip_pre_migration",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Skip pre-migration",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1729,7 +1729,7 @@
 		{
 			"guid": "ZaFVe22GBI64JdVFR6uX-ObRD-cRk0zIKevux5wEwW4",
 			"sid": "select_a_source_then_item_to_migrate",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Select a source, then select an item to\n        migrate",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1737,7 +1737,7 @@
 		{
 			"guid": "lt4SHU-6CU6ShuRhAxP8PbpEMoizbRLeARXwB-oXCoE",
 			"sid": "data_to_include_in_migration",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Data to include in migration",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1745,7 +1745,7 @@
 		{
 			"guid": "WjIru3HFt1RrWI7_RapbkXcY0vlttgOm2q7YAQgUagc",
 			"sid": "search_parameter_eg",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Search parameter (e.g. language:english)",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1753,7 +1753,7 @@
 		{
 			"guid": "91G3XQPJ2p1pajBE1eoRgNPgG9B-t_4PHNx3kmeUK2g",
 			"sid": "include_extra_search_parameter",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Include extra search parameter when searching",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1761,7 +1761,7 @@
 		{
 			"guid": "ELDkm24sZ2jhq4FvE5XizqKRWUrY5rYSIdvZBLjRnAk",
 			"sid": "use_most_chapters",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Use source with the most chapters (slower)",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1769,7 +1769,7 @@
 		{
 			"guid": "dK9hIuYCY7ZjQx2fkF1hE-wlxSiGWWD0CDls4jwr0Hw",
 			"sid": "use_first_source",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Use first source with alternative",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1777,7 +1777,7 @@
 		{
 			"guid": "vlH7fPoKtNFol1m44HtsqAc_POa1glKl0jdNWEN1A_c",
 			"sid": "skip_this_step_next_time",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Skip this step next time",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1785,7 +1785,7 @@
 		{
 			"guid": "40nodRaLIGy39DOdLno37o-CdP-LndXWJmmD06atmsg",
 			"sid": "to_show_again_setting_sources",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "To show this screen again, go to Settings ->\n        Sources.",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1793,7 +1793,7 @@
 		{
 			"guid": "XbpaTzrbCpE1Jod-1pTJUcUejGCs65etNfCLyrjOPCI",
 			"sid": "latest_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Latest: %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1801,7 +1801,7 @@
 		{
 			"guid": "N-Yl549YbT_yznYhn6exYuE3dfVAe7a_S4Mqs5cfOqk",
 			"sid": "migrating_to",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "migrating to",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1809,7 +1809,7 @@
 		{
 			"guid": "xJFqLVqZOdDwGYAjfbgscpPcA6oGzcIavM_-Mgu3XOg",
 			"sid": "dont_migrate",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Don\\'t migrate",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1817,7 +1817,7 @@
 		{
 			"guid": "7SPzWn0HQD6BIBpK8t3zjkVsy0SkVUtIURZJtEqRj7U",
 			"sid": "search_manually",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Search manually",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1825,7 +1825,7 @@
 		{
 			"guid": "KCxikc2zuT7uJzwvqPeb9SagV9WJX3byhb77PFwsPS0",
 			"sid": "migrate_now",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Migrate now",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1833,7 +1833,7 @@
 		{
 			"guid": "OiatXmgmVshjzRHY9MOlDEQV7odBfISWmzX62vP7wBE",
 			"sid": "copy_now",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Copy now",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1841,7 +1841,7 @@
 		{
 			"guid": "8UBMozzQQaFAFnGCJ2oCBqqTVxAjdbeLXYrZ5jUkQoQ",
 			"sid": "migrate_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Migrate %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1849,7 +1849,7 @@
 		{
 			"guid": "dQVWYkXPeFOjGC7dZFl4-qpzZxpKrykPe1si6ZXM47U",
 			"sid": "no_chapters_found_for_migration",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "No chapters found, this manga cannot be used for\n        migration",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1857,7 +1857,7 @@
 		{
 			"guid": "J1tK-zxfRLo-qJ2LdvOy0EfXz3DKHub7cuPGCCs1bKQ",
 			"sid": "no_alternatives_found",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "No Alternatives Found",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1865,7 +1865,7 @@
 		{
 			"guid": "qgyhbpKDjI7jLUvTkyBinCJwj8i7lfiKwHOif76StvI",
 			"sid": "stop_migrating",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Stop migrating?",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1873,7 +1873,7 @@
 		{
 			"guid": "5otAlRi18WJHdTNddhXrbauyBBuNmozvj5T1U3LdNio",
 			"sid": "migrate_manga_one",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Migrate %1$d%2$s manga?",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1881,7 +1881,7 @@
 		{
 			"guid": "NbSotC-esLltIb4qX2tNcSjKPSlGcoWI-D8v8pewC08",
 			"sid": "migrate_manga_other",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Migrate %1$d%2$s manga?",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1889,7 +1889,7 @@
 		{
 			"guid": "V7Ipy8tVMS_hgViqxAA2GVdKnK2eiylBmpYsz6R23AM",
 			"sid": "copy_manga_one",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Copy %1$d%2$s manga?",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1897,7 +1897,7 @@
 		{
 			"guid": "8QzHRFQRgUcTAprTZeAm2ftfggD-_EULwyTccQDeOTA",
 			"sid": "copy_manga_other",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Copy %1$d%2$s manga?",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1905,7 +1905,7 @@
 		{
 			"guid": "PT1Q-KeWPfn_xxc-bX4Y7GEGvvA-Y19t7vD-todWShg",
 			"sid": "skipping_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "(skipping %1$d)",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1913,7 +1913,7 @@
 		{
 			"guid": "26atAzC3mwZ3kvEaRGvJjuffpG2YiWvLb_0uDvsLPtE",
 			"sid": "manga_migrated_one",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "%d manga migrated",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1921,7 +1921,7 @@
 		{
 			"guid": "NR_8aJYvx44XUvYFNO1tkp7aEhaPGsIEjxtjvkMyPyc",
 			"sid": "manga_migrated_other",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "%d manga migrated",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1929,7 +1929,7 @@
 		{
 			"guid": "5eQfIgEoQtbNWO-1AlQOysdFQc5V5igBF2xUbmrskIs",
 			"sid": "appearance",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Appearance",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1937,7 +1937,7 @@
 		{
 			"guid": "uFVbUHrXOitHB2S6JDZOrs8aV5rxp7WYKecvc56IP6E",
 			"sid": "turn_on_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Turn on %s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1945,7 +1945,7 @@
 		{
 			"guid": "ho4L5e9G-ndHwuIF6Cmr5geXwERUZCd_jY_yTm6agc8",
 			"sid": "turn_off_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Turn off %s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1953,7 +1953,7 @@
 		{
 			"guid": "cXhHTgubaXopfYGQLaXme_NmQ5WY7SPT9Hk1kXrnht4",
 			"sid": "incognito_mode",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Incognito mode",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1961,7 +1961,7 @@
 		{
 			"guid": "GWnOMuj7cc53ixBNbQN3Jgx0ndwa1tQvFWG7MN1UvOs",
 			"sid": "pauses_reading_history",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Pauses reading history",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1969,7 +1969,7 @@
 		{
 			"guid": "2zYHICLSMDRS4hmL3mG_GcljCxsbxDZJi_d0tEA8KeY",
 			"sid": "light_theme",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Light theme",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1977,7 +1977,7 @@
 		{
 			"guid": "Qz5uMNtrIEjaYLpAUR9s7q838MB3UfqaZ5y5kCi5Fc4",
 			"sid": "dark_theme",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Dark theme",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1985,7 +1985,7 @@
 		{
 			"guid": "YanNntJpXSZIdbqr7id6VeWUtMbeD1v_ckCNpKvPhBw",
 			"sid": "midnight_dusk",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Midnight Dusk",
 			"tgt": "XYZ123",
 			"q": 80
@@ -1993,7 +1993,7 @@
 		{
 			"guid": "EGkKE9cPyin0ijMsclAYu0_9Q684CojI8fjRfoN9928",
 			"sid": "spring_blossom",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Spring Blossom",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2001,7 +2001,7 @@
 		{
 			"guid": "nVBLd4D0iYUrlSTjg2WppbD0fp8tEaWrp4k0ajSXqpA",
 			"sid": "strawberry_daiquiri",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Strawberry Daiquiri",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2009,7 +2009,7 @@
 		{
 			"guid": "u5bvLpCuJ8WEuCuphGYr0Q5hpymee1gnY6mUqhhETWE",
 			"sid": "a_brighter_you",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "A Brighter You (Dynamic)",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2017,7 +2017,7 @@
 		{
 			"guid": "uz_fIYv_VXMTuwR2VMB8351T4s01F2kWVVO7N4j8ois",
 			"sid": "a_calmer_you",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "A Calmer You (Dynamic)",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2025,7 +2025,7 @@
 		{
 			"guid": "UiKTB6OG_3SxNZYan2gizCkBSbgzAGez-Qq_0gqBxUI",
 			"sid": "yotsuba",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Yotsuba",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2033,7 +2033,7 @@
 		{
 			"guid": "X_lcJ33w1FnORuUQsj6hr9Al2ws3lhj0mxu1ljyw1B4",
 			"sid": "tako",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Tako",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2041,7 +2041,7 @@
 		{
 			"guid": "jEhFC4GspVjYt-8LuT0NMhub4gbo2LOYa2WcH4NHFHU",
 			"sid": "yin",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Yin",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2049,7 +2049,7 @@
 		{
 			"guid": "poXkTGEcGe-O1oAhmApNbiKsqkuFvk9sd0FQGqPqlM8",
 			"sid": "yang",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Yang",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2057,7 +2057,7 @@
 		{
 			"guid": "C8BPevpvgI6WJexjUMUahmJBgFi50M07scj23iERX2k",
 			"sid": "chocolate_strawberries",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Chocolate Strawberries",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2065,7 +2065,7 @@
 		{
 			"guid": "_AuqOACJhbcy1WtVNzcQXxPlijRWT2KN52345xP4rBg",
 			"sid": "teal_ocean",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Teal Ocean",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2073,7 +2073,7 @@
 		{
 			"guid": "zubSvrNm5wwOPs0ztitCy-jgEV86F7C1_qio1TMfH2I",
 			"sid": "sapphire_dusk",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Sapphire Dusk",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2081,7 +2081,7 @@
 		{
 			"guid": "IUUIIBJOx9r8kQmaZlv4JUzCssUcw851UPHvDoeEcK8",
 			"sid": "hot_pink",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Hot Pink",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2089,7 +2089,7 @@
 		{
 			"guid": "XupCzE9DVb_DJ-vj1kNbld19gxVNja1BW_3QhxwaJOc",
 			"sid": "flat_lime",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Flat Lime",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2097,7 +2097,7 @@
 		{
 			"guid": "KShg_q-U_l3Mp8pT8tgYnpW1945uQkF3JiBjS1EbjbQ",
 			"sid": "white_theme",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Pure White",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2105,7 +2105,7 @@
 		{
 			"guid": "IZ8YeylR6f1qeElImrsuwNR69XKaboPU5Ulg676rggU",
 			"sid": "last_used_library_recents",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Last used (Library or Recents)",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2113,7 +2113,7 @@
 		{
 			"guid": "pXb00OSWKF8OtyBtcSRxEalP5h5mLRR_VMcP78SHr_M",
 			"sid": "hide_bottom_nav",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Auto-hide bottom navigation",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2121,7 +2121,7 @@
 		{
 			"guid": "oL50pOSprU0vWXIoHmo2gS1I0-eYMcL16hwufNY8ULI",
 			"sid": "side_nav_icon_alignment",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Side navigation icon alignment",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2129,7 +2129,7 @@
 		{
 			"guid": "_HL38HQvlrx4zatV5U7Rdku_K0-BKFM2gSSScTmIAmE",
 			"sid": "use_side_navigation",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Use side navigation",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2137,7 +2137,7 @@
 		{
 			"guid": "FBUPvw4IF_dco65MT85iOp-P201ObtzHM4ewww8yo2A",
 			"sid": "default_behavior",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Default behavior",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2145,7 +2145,7 @@
 		{
 			"guid": "m9LapqqyUbl4Hjm-acmQgAUIn2zH98FMK6pLSC-_jVE",
 			"sid": "by_default_side_nav_info",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "By default, side navigation is used for certain phones and small tablets when in landscape, and always shows on larger tablets",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2153,7 +2153,7 @@
 		{
 			"guid": "5GX8Iq_IesOGuLkAra1Yqr9pElHtXjerK9lWMmOphyM",
 			"sid": "follow_system_theme",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Follow system theme",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2161,7 +2161,7 @@
 		{
 			"guid": "C4ZBYtDxLEoCXfuon-Up1hDVSlu47aMTUGiJEOQYKA8",
 			"sid": "pure_black_dark_mode",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Pure black dark mode",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2169,7 +2169,7 @@
 		{
 			"guid": "mDWIplg3Wh7Rcjh5InA9P6ffNR9D_FzTNZn0x6ExoE4",
 			"sid": "details_page",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Details page",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2177,7 +2177,7 @@
 		{
 			"guid": "m_Zja_HdTZ8QsvSIsL7BFxLzVslvGEG0jRaamPck3qQ",
 			"sid": "theme_buttons_based_on_cover",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Theme buttons based on cover",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2185,7 +2185,7 @@
 		{
 			"guid": "2H2FCTrO3QD6g4e3IRLHkFvN25eM13EHU4SWJ86L11s",
 			"sid": "hides_on_scroll",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Hides when scrolling",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2193,7 +2193,7 @@
 		{
 			"guid": "yErnSrwWHEZijQHfyIuA1An321aHUSxyIeMcXjWZiAo",
 			"sid": "starting_screen",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Starting screen",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2201,7 +2201,7 @@
 		{
 			"guid": "kX70JYjVLuSXfboAf8zYL1Ych_d52zS8TCi_o8QxJ7o",
 			"sid": "back_to_start",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Back to start",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2209,7 +2209,7 @@
 		{
 			"guid": "4LEwGmzLbpaz92HD1PIKy5uPNzu3Sescs2rzorTW-fg",
 			"sid": "pressing_back_to_start",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Pressing back to starting screen",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2217,7 +2217,7 @@
 		{
 			"guid": "59PP8cD8S_FWrK5xrlPx31M3HLElEMnaYHJ3tHdpPKw",
 			"sid": "auto_updates",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Auto-updates",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2225,7 +2225,7 @@
 		{
 			"guid": "H_JjnDnNORCzdlGTLjUfqofMK9rQ6AtQYWzPzAR0tPg",
 			"sid": "auto_update_app",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Auto-update app",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2233,7 +2233,7 @@
 		{
 			"guid": "w5pSql3nh7zWPgEIPI4THTwy-pPho65K0Ib8ZgMvAVE",
 			"sid": "over_wifi_only",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Over Wi-Fi only",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2241,7 +2241,7 @@
 		{
 			"guid": "9bvm7hCxHmnizSUDHApPLv7sitYthDANe3lWJGoojSc",
 			"sid": "over_any_network",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Over any network",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2249,7 +2249,7 @@
 		{
 			"guid": "zXLKLNmS6xruqwTnlAbShfEJGiuuMK3ztU-MUk76zWE",
 			"sid": "dont_auto_update",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Don\\'t auto-update",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2257,7 +2257,7 @@
 		{
 			"guid": "D3LfdbxIIVqFCgNV1keUViOetdNJG2NwKYm8Oq1xiVw",
 			"sid": "app_shortcuts",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "App shortcuts",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2265,7 +2265,7 @@
 		{
 			"guid": "bQV7fZpH3qCJh1eXfgPuAv5TNS8EN7677pXGdrpBdQE",
 			"sid": "show_recent_sources",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Show recently used sources",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2273,7 +2273,7 @@
 		{
 			"guid": "yoF22AIvrvT8-SiVZinJYZKjXn3ec3-W6xwdonw73HU",
 			"sid": "show_recent_series",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Show recent series",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2281,7 +2281,7 @@
 		{
 			"guid": "TzwswY8NZNKxmx-0hvbNo7jEJlmDyk5FtkpRV6YVWew",
 			"sid": "includes_recently_read_updated_added",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Includes recently read, updated, and added series",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2289,7 +2289,7 @@
 		{
 			"guid": "NG5VIYqM-D_1aUYH4LZ1PeIRAJfl93HRSjwUHrlxW54",
 			"sid": "series_opens_new_chapters",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Series shortcuts opens new chapters",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2297,7 +2297,7 @@
 		{
 			"guid": "Fm6Vq1l2shHVMSBG3SScRIRVIIllb62PT55gQ8pn6jU",
 			"sid": "no_new_chapters_open_details",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "When there\\'s no new chapters, the series\\' details will open instead",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2305,7 +2305,7 @@
 		{
 			"guid": "CE1TfCDxLNUUOskfg4UlXkcmKy9RzTreJQb_XEhR-JE",
 			"sid": "restore_error",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Failed to restore backup",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2313,7 +2313,7 @@
 		{
 			"guid": "zjRnVqvBaWL0WEb1kpUnpHu5WxQ6QlzFONOTIKfEIWQ",
 			"sid": "restore_content_full",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Data from the backup file will be restored.\\n\\nYou will need to install any missing extensions and log in to tracking services afterwards to use them.",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2321,7 +2321,7 @@
 		{
 			"guid": "X_KLc5HBAfegVR9vZD8aXzXPwMiU8FIqSVIzsp8-4Gw",
 			"sid": "restore_miui_warning",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Backup/restore may not function properly if MIUI Optimization is disabled.",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2329,7 +2329,7 @@
 		{
 			"guid": "dUY5CemIa3xpPTEoUKN5hZLIYyFYKU1bhYQvPyUJvk0",
 			"sid": "restore_completed_message_one",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Done in %1$s with %2$s error",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2337,7 +2337,7 @@
 		{
 			"guid": "2uYPHtC1kQJwVaCe1QnpczVkqD-zdpHEtbJTGyYzpSU",
 			"sid": "not_logged_into_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Not logged into %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2345,7 +2345,7 @@
 		{
 			"guid": "cFIDGoTU3XlK_6EpXmirmj1HbheTAQ5vDwzEpib1vBk",
 			"sid": "force_download_cache_refresh",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Refresh the download cache",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2353,7 +2353,7 @@
 		{
 			"guid": "c_RZW6BNeKjSWxBHHgg3Ii7b3Je3ohsXMPLu1tfe29Q",
 			"sid": "force_download_cache_refresh_summary",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "This will force the download cache to recalculate. Useful if you modified downloads outside of this app and want the app to pick them up",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2361,7 +2361,7 @@
 		{
 			"guid": "NphDMweBfMiTRwBCTAkmIySPR-p8jPY_8yafFV6yUlo",
 			"sid": "data_management",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Data Management",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2369,7 +2369,7 @@
 		{
 			"guid": "6kZ4y-TCeSlLR40rmH-lwkbxuWb_KeELspwgQrvljIY",
 			"sid": "disabled",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Disabled",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2377,7 +2377,7 @@
 		{
 			"guid": "5eZfQwyisFt-eAr3zUOKugP__L-uALc_ylWptAYKJQI",
 			"sid": "cache_cleared_one",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Cache cleared. %d file has been deleted",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2385,7 +2385,7 @@
 		{
 			"guid": "0MGHojsg991bW2BX_cczB7XrP0mfW2DJ6OMvNsJaj48",
 			"sid": "cache_cleared_other",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Cache cleared. %d files have been deleted",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2393,7 +2393,7 @@
 		{
 			"guid": "-C8OeNLt0crMLLBsboFDzha8JXGTuyYoZttXAzzBaQY",
 			"sid": "clean_up_downloaded_chapters",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Clean up downloaded chapters",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2401,7 +2401,7 @@
 		{
 			"guid": "dwmP8JsQhLHngvqw56EBpRIwjbjeCHjFNccFSEUvGvI",
 			"sid": "delete_unused_chapters",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Delete non-existent, partially downloaded,\n            and read chapter folders",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2409,7 +2409,7 @@
 		{
 			"guid": "RRrYY498SDiQ8LcoRDmSXIqvzNAHgFebOb-KsuwO1JE",
 			"sid": "clean_orphaned_downloads",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Clean orphaned",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2417,7 +2417,7 @@
 		{
 			"guid": "nFeN1Bgez7Tb25X7OrgzrPHbOcLvD7MphH8IQK2Y0Eo",
 			"sid": "clean_read_downloads",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Clean read",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2425,7 +2425,7 @@
 		{
 			"guid": "-nyi5YnV5GQb306s1HOj7B2SqJv7Awa5tmLwrrkrv7c",
 			"sid": "clean_read_manga_not_in_library",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Clean manga not in library",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2433,7 +2433,7 @@
 		{
 			"guid": "HGSy4QLH2EpxWHS47G1VD08njmJ_QODbLdG-LJYXczk",
 			"sid": "starting_cleanup",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Starting cleanup",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2441,7 +2441,7 @@
 		{
 			"guid": "W3fwjwvnWNaswdtH8CkY-ptVv4kWSc00Dwo0FRe8T74",
 			"sid": "no_folders_to_cleanup",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "No folders to cleanup",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2449,7 +2449,7 @@
 		{
 			"guid": "-wkXZ-U6feYoBLD03zOySY9bCJ2q3iJdBWNGiVyzb-w",
 			"sid": "disable_if_issues_with_updating",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Disable this if you are experiencing issues\n        with updating or restoring your library",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2457,7 +2457,7 @@
 		{
 			"guid": "rh1h0cJO-5V2S5q15JDf5bxw2kDqyrXKS4r_wy5PUwU",
 			"sid": "cleanup_done_one",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Cleanup done. Removed %d folder",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2465,7 +2465,7 @@
 		{
 			"guid": "FICdN6ZTFGYJmB81aL4akRY846OS0LMXjqPMDZFDuqQ",
 			"sid": "cleanup_done_other",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Cleanup done. Removed %d folders",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2473,7 +2473,7 @@
 		{
 			"guid": "RYPIepOwa5XAPzLX3PAQYJsYA06xOGDr6gVmCoK5e68",
 			"sid": "clean_up_cached_covers",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Clean up cached covers",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2481,7 +2481,7 @@
 		{
 			"guid": "lSA7apVW1cOhxizHua1Cozi3U_fNiABPf20SPV5qWtg",
 			"sid": "delete_old_covers_in_library_used_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Delete old and unused cached covers of\n        manga in your library that has been updated.\\nCurrently using: %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2489,7 +2489,7 @@
 		{
 			"guid": "760JS2eBsCjbuIMJovFvLL3VDT3Sf7OOh1BwVVDD_Fc",
 			"sid": "clear_cached_covers_non_library",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Clear cached covers not in library",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2497,7 +2497,7 @@
 		{
 			"guid": "MAJoOU3XbW2pm0bnts6394MkGigK3TCnzQ-_iRfyg8g",
 			"sid": "delete_all_covers__not_in_library_used_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Delete all covers cached that are\n        not in your library \\nCurrently using: %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2505,7 +2505,7 @@
 		{
 			"guid": "_BcKOaHV9biKhmCWByQuo8e4tHyutlNooNwpysPzdJE",
 			"sid": "auto_update_extensions",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Auto-update extensions",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2513,7 +2513,7 @@
 		{
 			"guid": "Wlob_O43CrtKubqtsatG0uCYfvcCrG8ya09n6fQMlTw",
 			"sid": "notify_extension_updated",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Notify extension has been updated",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2521,7 +2521,7 @@
 		{
 			"guid": "rLH95OG9xlPkF4kPAJyeLzQRrlVlo3N8_TnKBowO8Tg",
 			"sid": "some_extensions_may_not_update",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Some extensions may not be auto-updated if they were installed outside this app",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2529,7 +2529,7 @@
 		{
 			"guid": "peDKey_OCIZBrXtm3WzN0U1MyhKG6W39qiaduKidCK0",
 			"sid": "only_search_pinned_when",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Only search pinned sources",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2537,7 +2537,7 @@
 		{
 			"guid": "rOzl7VLQsGw9eF8igLhWnXnWm0xWAix_-IMHLg8O41U",
 			"sid": "match_pinned_sources",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Match pinned sources",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2545,7 +2545,7 @@
 		{
 			"guid": "AdtF-yNmB1KDbirSinW1hG8PNpb1zzuA3nrjvCHAAHo",
 			"sid": "match_enabled_sources",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Match enabled sources",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2553,7 +2553,7 @@
 		{
 			"guid": "dhcccCE8fLfXWvszAEfDTWr7hNNe_3qT5IUdFeDqgoI",
 			"sid": "only_enable_pinned_for_migration",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Only enable your pinned sources for\n        migration",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2561,7 +2561,7 @@
 		{
 			"guid": "ecCXfY4HMfF9J918_KY7aN7GY0YzLi4DQvg6ltvASZs",
 			"sid": "only_enable_enabled_for_migration",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Only enable your currently enabled sources for\n        migration",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2569,7 +2569,7 @@
 		{
 			"guid": "SVlZlyNR7LfMJwSoD3PuIxOKThbqF1NzlAMB2Ol9ARE",
 			"sid": "use_last_saved_migration_preferences",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Use last saved pre-migration preferences\n    and sources to mass migrate",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2577,7 +2577,7 @@
 		{
 			"guid": "Aj7B9bdrUBuawnRN3X7C9j-TI3E124trgAN1lqeNA2w",
 			"sid": "migration_sources_changed",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Migration sources changed",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2585,7 +2585,7 @@
 		{
 			"guid": "pX3b7nl_8Y58oXPbghIIx7_0aGmWWLPeP-D5LNDblcU",
 			"sid": "you_can_migrate_in_library",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "You can also migrate by selecting manga in your\n        library",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2593,7 +2593,7 @@
 		{
 			"guid": "D18ZSiCe8YZ1sci7Z2F7B1tfXEm3Or2uUalU99MhCm0",
 			"sid": "show_in_sources_and_extensions",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Show in sources and extensions lists",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2601,7 +2601,7 @@
 		{
 			"guid": "ODnxRXqbNkf0WZwNMNBRVzvTowiRVdu0tktSDF2ET3k",
 			"sid": "whats_new_this_release",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "What\\'s new in this release",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2609,7 +2609,7 @@
 		{
 			"guid": "PjW8y4Za7kR6g7Mb6zNFAHjvaRBRDKypInCNDLP0odM",
 			"sid": "helpful_translation_links",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Helpful translation links",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2617,7 +2617,7 @@
 		{
 			"guid": "xnqHTdNqkhihZKApW6oBsEMOzmr2LhRFqtzqAwqqdls",
 			"sid": "log_in",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Log in",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2625,7 +2625,7 @@
 		{
 			"guid": "otCPIdi35zp9xaeTNfweeQFwx7Bt1eWeY6zkqDeDnzk",
 			"sid": "log_out",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Log out",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2633,7 +2633,7 @@
 		{
 			"guid": "bAkWLyFZwmeqXY5p5StiL_Ove18eBwQkFXS9_1Xkoe8",
 			"sid": "log_out_from_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Log out from %1$s?",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2641,7 +2641,7 @@
 		{
 			"guid": "vFhmfrCpbCcBLVqtsWKLnhjBg9l4fS85fQc9uKd_DgM",
 			"sid": "username_must_not_be_blank",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Username or password cannot be blank",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2649,7 +2649,7 @@
 		{
 			"guid": "hPBLtewVJ0mhjgOKNagsyLfPqlTA2s4KFgxhNP5G52Q",
 			"sid": "downloading_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Downloading: %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2657,7 +2657,7 @@
 		{
 			"guid": "58HNOhORcxDJQ1hQI-X8sV6dtO1-JYfEYpU8LRkwcQ0",
 			"sid": "not_downloaded",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Not downloaded",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2665,7 +2665,7 @@
 		{
 			"guid": "5T8z0MWPbgXZdSAJcvsDsr6VjLtrWYR61l4sBGDImp4",
 			"sid": "start_downloading_now",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Start downloading now",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2673,7 +2673,7 @@
 		{
 			"guid": "Xtlfkv2oa5DVpkJmuUxtxRJHUpDRKaahy15F8dIp--o",
 			"sid": "remove_download",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Remove download",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2681,7 +2681,7 @@
 		{
 			"guid": "pyHTpdpR4jXfSwerJYFoyQ5Tt1koOKoDuNA0wJOWd94",
 			"sid": "remove_downloads",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Remove downloads",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2689,7 +2689,7 @@
 		{
 			"guid": "UJyX84gMBxdO1PDr7VKib8lH2_E4PvFz9cj9BBBJsA4",
 			"sid": "nothing_is_downloading",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Nothing is currently downloading",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2697,7 +2697,7 @@
 		{
 			"guid": "eXRc26yvod4Obg8UmsDbwm7gkrsGGdpMy4TpcYAWsxk",
 			"sid": "manage_whats_downloading",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Manage what\\'s downloading",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2705,7 +2705,7 @@
 		{
 			"guid": "6tgFpq1s7Bmdw6Wj4ju2N96GgPe7p9Y7cGiyfxSF-9E",
 			"sid": "visit_recents_for_download_queue",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Visit the recents tab to access the download\n        queue. You can also double tap or press and hold for quicker access",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2713,7 +2713,7 @@
 		{
 			"guid": "Vj8DOxw8uO9KY77TuWRdJxY8sMxVtwq_IyHh6_8Srro",
 			"sid": "couldnt_download_low_space",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Couldn\\'t download chapters due to low disk space",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2721,7 +2721,7 @@
 		{
 			"guid": "wOveXNJlRMcSQDJmFr9f1aXQi4JwmzgfG2o1ZP_DK30",
 			"sid": "delete_removed_chapters",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Delete removed chapters",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2729,7 +2729,7 @@
 		{
 			"guid": "QblYKrpV4TYMwNLE5d6OuLP5-YvTFicfnEWa5-51OcY",
 			"sid": "delete_downloaded_if_removed_online",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Delete downloaded chapters if the source\n        has removed the chapter online",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2737,7 +2737,7 @@
 		{
 			"guid": "dIE3zIyVYSdTpju6-vlcTUw08uEhNfHj-2NIp5kbEEw",
 			"sid": "ask_on_chapters_page",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Delete during global updates, ask on chapters page",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2745,7 +2745,7 @@
 		{
 			"guid": "cfTYdJm8FCc6Or8Fu7ngokJ3WghZMzGABQjXm7xcSSU",
 			"sid": "always_keep",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Always keep",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2753,7 +2753,7 @@
 		{
 			"guid": "KGOpC9OGKQjYYSCjadsdtUpJQFr1-etAZOgVmTt-wtA",
 			"sid": "always_delete",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Always delete",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2761,7 +2761,7 @@
 		{
 			"guid": "XbMMlk7ML13AJYJW0ALnnF4spRO4SHgEXRstAy0bj1o",
 			"sid": "automatic_removal",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Automatic removal",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2769,7 +2769,7 @@
 		{
 			"guid": "C0PQbeoPQFB8cyWahP6wddbk0QOh4f-mmiHyTcQUny4",
 			"sid": "after_minutes_one",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "After %1$s minute",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2777,7 +2777,7 @@
 		{
 			"guid": "y51rnyKxtYjssSeHCmtKvJwyTUp_J-6z11PC9kxAmM4",
 			"sid": "after_minutes_other",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "After %1$s minutes",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2785,7 +2785,7 @@
 		{
 			"guid": "rZjFH0Z7z5HV8Tov2ZWD6ABIwLcX0rWeaY9SwkUqMjg",
 			"sid": "webview_is_required",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "WebView is required for Tachiyomi",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2793,7 +2793,7 @@
 		{
 			"guid": "a93fWBww9BfwOqe-ajdWFS7EBpRjHt0DvSebYl5bo7o",
 			"sid": "add_to_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Add to %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2801,7 +2801,7 @@
 		{
 			"guid": "OVv0BMULqSdXUWi0L_ebUyZcG4kz8EVFIeXdTQdp1U4",
 			"sid": "added_to_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Added to %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2809,7 +2809,7 @@
 		{
 			"guid": "_0n6pKXlKYwqHHaLNdlkd7RW90QAB5fVJxzB7zl1lwQ",
 			"sid": "beta",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "BETA",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2817,7 +2817,7 @@
 		{
 			"guid": "F5Qal-UcgskZtk753VXobQ8Q3yplYmkVT657jxneL0A",
 			"sid": "bottom",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Bottom",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2825,7 +2825,7 @@
 		{
 			"guid": "vUaAJ_T90aZxkP8ht1bD71Tnu5WFLJhuxr3eKYwt9hc",
 			"sid": "change",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Change",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2833,7 +2833,7 @@
 		{
 			"guid": "XIondN9IflEzVsv4LVTZEl1IQhYJgrgmheRmeYXipvw",
 			"sid": "clear_filters",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Clear filters",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2841,7 +2841,7 @@
 		{
 			"guid": "EDPSs_fIwR6Tv2TVPaqASTdVdgCzMH0HrN1w8SaUvAc",
 			"sid": "deleted_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Deleted: %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2849,7 +2849,7 @@
 		{
 			"guid": "yTBAyJ8Q_qMDf8yAa9hH_8o0A0LBzRENYIDSC1UbOZ0",
 			"sid": "download_unread",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Download unread",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2857,7 +2857,7 @@
 		{
 			"guid": "ls_fBz6okS5NVH86qvIvqQMwlRo1btsu7Ad2Gug_ryY",
 			"sid": "drag_handle",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Drag handle",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2865,7 +2865,7 @@
 		{
 			"guid": "DI19ciZW3OtkszGmVMopKQ46E__OZBI4oNEJ04wOPK0",
 			"sid": "enable",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Enable",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2873,7 +2873,7 @@
 		{
 			"guid": "S417iusjHCC55wRHKWuNOrbPZ_rWwYsHERGejfW0RlY",
 			"sid": "enabled",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Enabled",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2881,7 +2881,7 @@
 		{
 			"guid": "6xC7pebM5-ZxaKv6i64GbRkfsTR-nzcZ73GOATo0YLQ",
 			"sid": "exclude_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Exclude: %s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2889,7 +2889,7 @@
 		{
 			"guid": "saZw6SPY56Rlmi3JFoINSWQ084jRCETCDxJLHSA9hOM",
 			"sid": "hide",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Hide",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2897,7 +2897,7 @@
 		{
 			"guid": "kV1JMfcYxSPaA33pPszcbnisV0t0Sfxe2ZQBKdjy2aU",
 			"sid": "include_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Include: %s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2905,7 +2905,7 @@
 		{
 			"guid": "5vlqnpIng-j8SifyQOHpZ5wPAs1sStNeeZqu13efQtQ",
 			"sid": "keep",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Keep",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2913,7 +2913,7 @@
 		{
 			"guid": "RfY1RTihyotw-07YpitFAyH3J5FraoAhNTcLYlVc6vk",
 			"sid": "keep_in_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Keep in %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2921,7 +2921,7 @@
 		{
 			"guid": "mdPoUGzFrcAt_vcKcl4Bq-dsE8Le-w--ksmqvFe_D3I",
 			"sid": "mark_all_as_read",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Mark all as read",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2929,7 +2929,7 @@
 		{
 			"guid": "86GoqMybPQfkFBczXnyaW9xfsDEFsikr5YqYAgVuF04",
 			"sid": "mark_all_as_unread",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Mark all as unread",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2937,7 +2937,7 @@
 		{
 			"guid": "QU_jF1_AE5bMND233B6xjLe2AEv4NjczDkAOW2naJSw",
 			"sid": "mark_range_as_read",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Mark a range of chapters as read",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2945,7 +2945,7 @@
 		{
 			"guid": "7x8txAMET_dUs38fMs_8OxmVBIbyZBDmKol-PPDCVg8",
 			"sid": "mark_range_as_unread",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Mark a range of chapters as unread",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2953,7 +2953,7 @@
 		{
 			"guid": "XFN-iVYrkadpxDxOdGN1hv505ZavJL4hTK9255kN0i0",
 			"sid": "mark_previous_as_unread",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Mark previous chapters as unread",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2961,7 +2961,7 @@
 		{
 			"guid": "ziJ4SzbBrQNCMTKA0B7-oq3NDDEhBRD1XhXezbakWxk",
 			"sid": "menu",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "menu",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2969,7 +2969,7 @@
 		{
 			"guid": "I40yqqfSXEqxcRJEebAkoMGQoQuYuLNOa2Ud6BkMcsU",
 			"sid": "move_to_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Move to %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2977,7 +2977,7 @@
 		{
 			"guid": "XSREc7X2ZGv7-we3bdC1-Yfm_4RaFy8JjHhPFjrm_7E",
 			"sid": "moved_to_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Moved to %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2985,7 +2985,7 @@
 		{
 			"guid": "ZBYtIRVvhdgQJQHV4kVzz7Bh0NSKcofDyfXSdgX0vn8",
 			"sid": "name",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Name",
 			"tgt": "XYZ123",
 			"q": 80
@@ -2993,7 +2993,7 @@
 		{
 			"guid": "tpYrOKkmWE5cSjMMmDJxRckzqx02rnXxlVHRipdb7k8",
 			"sid": "recently_updated",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Recently updated",
 			"tgt": "XYZ123",
 			"q": 80
@@ -3001,7 +3001,7 @@
 		{
 			"guid": "_btRTivRqA0hOubjcX--MF9gC8w97NmhbBhbraZPkqM",
 			"sid": "recently_installed",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Recently installed",
 			"tgt": "XYZ123",
 			"q": 80
@@ -3009,7 +3009,7 @@
 		{
 			"guid": "Ibaz0PUM9RNz1CPX-V0FFy3AerxinrWF9oJxlS2FX1o",
 			"sid": "next",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Next",
 			"tgt": "XYZ123",
 			"q": 80
@@ -3017,7 +3017,7 @@
 		{
 			"guid": "NOELKFmkAMzBKP9wX6wMQ2w4T_iYyNyD_ponK9hKrjw",
 			"sid": "preview",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Preview",
 			"tgt": "XYZ123",
 			"q": 80
@@ -3025,7 +3025,7 @@
 		{
 			"guid": "UzuX5kricHracI58dBSQHVf4CAFtgNgldg8nNXYRqZI",
 			"sid": "previous",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Previous",
 			"tgt": "XYZ123",
 			"q": 80
@@ -3033,7 +3033,7 @@
 		{
 			"guid": "zo4UIzRgDLhp4lYJvdg12RD0fTpiXjbcbuWC3ClIlgw",
 			"sid": "remove_from_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Remove from %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -3041,7 +3041,7 @@
 		{
 			"guid": "OTdtStwBPshNkiL3_CP6_tPZFG-4bk9E4DGl11tHJoM",
 			"sid": "default_orientation",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Default orientation",
 			"tgt": "XYZ123",
 			"q": 80
@@ -3049,7 +3049,7 @@
 		{
 			"guid": "6T1AUvI23zq9BwgpFHAkbwrcdHVorHeJnpmjCHRjffA",
 			"sid": "orientation",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Orientation",
 			"tgt": "XYZ123",
 			"q": 80
@@ -3057,7 +3057,7 @@
 		{
 			"guid": "dEfOMw-ElOf-gh4JNy5OhAGW36mhN-kQrhkYgsYBZVQ",
 			"sid": "search_",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Search %1$s",
 			"tgt": "XYZ123",
 			"q": 80
@@ -3065,7 +3065,7 @@
 		{
 			"guid": "xyy2hY5UiPuBVtVs5p4QNtQvD5gZ9L62Afuf68HR13A",
 			"sid": "select_none",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Select none",
 			"tgt": "XYZ123",
 			"q": 80
@@ -3073,7 +3073,7 @@
 		{
 			"guid": "zz9EoXyrp2jHix8BhQspeFceDJApEEQnL6JZNceOyEA",
 			"sid": "selection",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Selection",
 			"tgt": "XYZ123",
 			"q": 80
@@ -3081,7 +3081,7 @@
 		{
 			"guid": "X8fO-c1VVu9rbJOhfqH9UiMS20tCwPGDKgZXFvQMp3A",
 			"sid": "sort_and_filter",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Sort & Filter",
 			"tgt": "XYZ123",
 			"q": 80
@@ -3089,7 +3089,7 @@
 		{
 			"guid": "u1sNEscwzqYmb2ep8PT9x8usydILzw76W88Sad7u-KM",
 			"sid": "tag",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Tag",
 			"tgt": "XYZ123",
 			"q": 80
@@ -3097,7 +3097,7 @@
 		{
 			"guid": "vRdkZFDzssJRdwGv-SthUQFGxf_HerP1kXuTpXpKzyE",
 			"sid": "top",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Top",
 			"tgt": "XYZ123",
 			"q": 80
@@ -3105,7 +3105,7 @@
 		{
 			"guid": "Uk0VwujRIxhpe9NaWYmY3hntAOfl0OuU8eai2ofVSqk",
 			"sid": "use_default",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Use default",
 			"tgt": "XYZ123",
 			"q": 80
@@ -3113,7 +3113,7 @@
 		{
 			"guid": "huyX5FGOUKZ3pi4fe79Gfe7qvq2yU_f1NEJEFi-8iik",
 			"sid": "view_all_errors",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "View all errors",
 			"tgt": "XYZ123",
 			"q": 80
@@ -3121,7 +3121,7 @@
 		{
 			"guid": "ISUovOLQ0rDHWTN8FD5Egc_BxdZCIOGr7B6UXGmtjWs",
 			"sid": "warning",
-			"ts": 1642896537928,
+			"ts": 1,
 			"src": "Warning",
 			"tgt": "XYZ123",
 			"q": 80

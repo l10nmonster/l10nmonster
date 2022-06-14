@@ -8,7 +8,7 @@
 			"contentType": "default",
 			"src": "File permissions required",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "external_storage_permission_notice",
@@ -17,7 +17,7 @@
 			"contentType": "default",
 			"src": "TachiyomiJ2K requires access to all files in Android 11 to download chapters, create automatic backups, and read local manga. \\n\\nOn the next screen, enable \\\"Allow access to manage all files.\\\"",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"TachiyomiJ2K requires access to all files in Android 11 to download chapters, create automatic backups, and read local manga. \n\nOn the next screen, enable \"Allow access to manage all files.\""
 			]
@@ -29,7 +29,7 @@
 			"contentType": "default",
 			"src": "TachiyomiJ2K requires access to all files to download chapters. Tap here, then enable \\\"Allow access to manage all files.\\\"",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"TachiyomiJ2K requires access to all files to download chapters. Tap here, then enable \"Allow access to manage all files.\""
 			]
@@ -41,7 +41,7 @@
 			"contentType": "default",
 			"src": "Manga",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "manhwa",
@@ -50,7 +50,7 @@
 			"contentType": "default",
 			"src": "Manhwa",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "manhua",
@@ -59,7 +59,7 @@
 			"contentType": "default",
 			"src": "Manhua",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "comic",
@@ -68,7 +68,7 @@
 			"contentType": "default",
 			"src": "Comic",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "webtoon",
@@ -77,7 +77,7 @@
 			"contentType": "default",
 			"src": "Webtoon",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "not_started",
@@ -86,7 +86,7 @@
 			"contentType": "default",
 			"src": "Not started",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "in_progress",
@@ -95,7 +95,7 @@
 			"contentType": "default",
 			"src": "In progress",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "read",
@@ -104,7 +104,7 @@
 			"contentType": "default",
 			"src": "Read",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "title",
@@ -113,7 +113,7 @@
 			"contentType": "default",
 			"src": "Title",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "author",
@@ -122,7 +122,7 @@
 			"contentType": "default",
 			"src": "Author",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "artist",
@@ -131,7 +131,7 @@
 			"contentType": "default",
 			"src": "Artist",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "description",
@@ -140,7 +140,7 @@
 			"contentType": "default",
 			"src": "Description",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "move_x_to",
@@ -150,7 +150,7 @@
 			"contentType": "default",
 			"src": "Move %1$s to…",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Move ",
 				{
@@ -168,7 +168,7 @@
 			"contentType": "default",
 			"src": "Add %1$s to…",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Add ",
 				{
@@ -185,7 +185,7 @@
 			"contentType": "default",
 			"src": "Ongoing",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "unknown",
@@ -194,7 +194,7 @@
 			"contentType": "default",
 			"src": "Unknown",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "unknown_status",
@@ -203,7 +203,7 @@
 			"contentType": "default",
 			"src": "Unknown Status",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "licensed",
@@ -212,7 +212,7 @@
 			"contentType": "default",
 			"src": "Licensed",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "completed",
@@ -221,7 +221,7 @@
 			"contentType": "default",
 			"src": "Completed",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "unlock_library",
@@ -230,7 +230,7 @@
 			"contentType": "default",
 			"src": "Unlock to access Library",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "unlock",
@@ -239,7 +239,7 @@
 			"contentType": "default",
 			"src": "Unlock",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "lock_with_biometrics",
@@ -248,7 +248,7 @@
 			"contentType": "default",
 			"src": "Lock with biometrics",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "lock_when_idle",
@@ -257,7 +257,7 @@
 			"contentType": "default",
 			"src": "Lock when idle",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "chapters",
@@ -266,7 +266,7 @@
 			"contentType": "default",
 			"src": "Chapters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "new_chapters",
@@ -275,7 +275,7 @@
 			"contentType": "default",
 			"src": "New chapters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "unread",
@@ -284,7 +284,7 @@
 			"contentType": "default",
 			"src": "Unread",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "last_read_chapter_",
@@ -294,7 +294,7 @@
 			"contentType": "default",
 			"src": "Last read Chapter %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Last read Chapter ",
 				{
@@ -311,7 +311,7 @@
 			"contentType": "default",
 			"src": "Chapter %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Chapter ",
 				{
@@ -328,7 +328,7 @@
 			"contentType": "default",
 			"src": "Chapter %1$d of %2$d",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Chapter ",
 				{
@@ -349,7 +349,7 @@
 			"contentType": "default",
 			"src": "All chapters read",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "bookmarked",
@@ -358,7 +358,7 @@
 			"contentType": "default",
 			"src": "Bookmarked",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "not_bookmarked",
@@ -367,7 +367,7 @@
 			"contentType": "default",
 			"src": "Not bookmarked",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "marked_as_read",
@@ -376,7 +376,7 @@
 			"contentType": "default",
 			"src": "Marked as read",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "marked_as_unread",
@@ -385,7 +385,7 @@
 			"contentType": "default",
 			"src": "Marked as unread",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "removed_bookmark",
@@ -394,7 +394,7 @@
 			"contentType": "default",
 			"src": "Removed bookmark",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "chapters_removed",
@@ -403,7 +403,7 @@
 			"contentType": "default",
 			"src": "Chapters removed.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "chapter_not_found",
@@ -412,7 +412,7 @@
 			"contentType": "default",
 			"src": "Chapter not found",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "no_chapters_error",
@@ -421,7 +421,7 @@
 			"contentType": "default",
 			"src": "No chapters found",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "no_pages_found",
@@ -430,7 +430,7 @@
 			"contentType": "default",
 			"src": "No pages found",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "remove_all_downloads",
@@ -439,7 +439,7 @@
 			"contentType": "default",
 			"src": "Remove all downloads?",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "no_chapters_to_delete",
@@ -448,7 +448,7 @@
 			"contentType": "default",
 			"src": "No chapters to delete",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "by_source_order",
@@ -458,7 +458,7 @@
 			"contentType": "default",
 			"src": "By source\\'s order",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"By source's order"
 			]
@@ -470,7 +470,7 @@
 			"contentType": "default",
 			"src": "By chapter number",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "by_update_date",
@@ -479,7 +479,7 @@
 			"contentType": "default",
 			"src": "By upload date",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "scanlators",
@@ -488,7 +488,7 @@
 			"contentType": "default",
 			"src": "Scanlators",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "remove_n_chapters_other",
@@ -499,7 +499,7 @@
 			"contentType": "default",
 			"src": "Remove %1$d downloaded chapters?",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Remove ",
 				{
@@ -518,7 +518,7 @@
 			"contentType": "default",
 			"src": "%1$d chapters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -536,7 +536,7 @@
 			"contentType": "default",
 			"src": "%1$d pages left",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -552,7 +552,7 @@
 			"contentType": "default",
 			"src": "Category",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "categories",
@@ -561,7 +561,7 @@
 			"contentType": "default",
 			"src": "Categories",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "adding_category_to_queue",
@@ -571,7 +571,7 @@
 			"contentType": "default",
 			"src": "Adding %1$s to update queue",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Adding ",
 				{
@@ -589,7 +589,7 @@
 			"contentType": "default",
 			"src": "%1$s is already in queue",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -605,7 +605,7 @@
 			"contentType": "default",
 			"src": "Create new category",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "new_category",
@@ -614,7 +614,7 @@
 			"contentType": "default",
 			"src": "New category",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "category_is_empty",
@@ -623,7 +623,7 @@
 			"contentType": "default",
 			"src": "Category is empty",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "show_categories_while_filtering",
@@ -632,7 +632,7 @@
 			"contentType": "default",
 			"src": "Show empty categories while filtering",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "no_matches_for_filters_short",
@@ -641,7 +641,7 @@
 			"contentType": "default",
 			"src": "No matches for your filters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "top_category",
@@ -651,7 +651,7 @@
 			"contentType": "default",
 			"src": "Top category (%1$s)",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Top category (",
 				{
@@ -668,7 +668,7 @@
 			"contentType": "default",
 			"src": "Default category",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "first_category",
@@ -677,7 +677,7 @@
 			"contentType": "default",
 			"src": "First category",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "categories_on_manual",
@@ -686,7 +686,7 @@
 			"contentType": "default",
 			"src": "Categories to update when manually refreshing",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "categories_in_global_update",
@@ -695,7 +695,7 @@
 			"contentType": "default",
 			"src": "All categories in global update",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "confirm_category_deletion",
@@ -704,7 +704,7 @@
 			"contentType": "default",
 			"src": "Delete category?",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "confirm_category_deletion_message",
@@ -714,7 +714,7 @@
 			"contentType": "default",
 			"src": "Manga in this category will moved into the\n        default category.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Manga in this category will moved into the default category."
 			]
@@ -726,7 +726,7 @@
 			"contentType": "default",
 			"src": "Manga already in category",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "add_categories",
@@ -735,7 +735,7 @@
 			"contentType": "default",
 			"src": "Add categories",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "add_edit_categories",
@@ -744,7 +744,7 @@
 			"contentType": "default",
 			"src": "Add/Edit categories",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "edit_categories",
@@ -753,7 +753,7 @@
 			"contentType": "default",
 			"src": "Edit categories",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "manage_category",
@@ -762,7 +762,7 @@
 			"contentType": "default",
 			"src": "Manage category",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "move_to_categories",
@@ -771,7 +771,7 @@
 			"contentType": "default",
 			"src": "Move to categories",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "category_plural_other",
@@ -782,7 +782,7 @@
 			"contentType": "default",
 			"src": "%d categories",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -798,7 +798,7 @@
 			"contentType": "default",
 			"src": "A category with that name already exists!",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "category_cannot_be_blank",
@@ -807,7 +807,7 @@
 			"contentType": "default",
 			"src": "Category name cannot be blank",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "category_deleted",
@@ -816,7 +816,7 @@
 			"contentType": "default",
 			"src": "Category deleted",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "long_press_category",
@@ -825,7 +825,7 @@
 			"contentType": "default",
 			"src": "Press and hold to edit a category",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "jump_to_category",
@@ -834,7 +834,7 @@
 			"contentType": "default",
 			"src": "Jump to category",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "update",
@@ -843,7 +843,7 @@
 			"contentType": "default",
 			"src": "Update",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "what_should_update",
@@ -852,7 +852,7 @@
 			"contentType": "default",
 			"src": "What should update?",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "updating_",
@@ -862,7 +862,7 @@
 			"contentType": "default",
 			"src": "Updating %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Updating ",
 				{
@@ -878,7 +878,7 @@
 			"contentType": "default",
 			"src": "Update available",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "new_version_available",
@@ -887,7 +887,7 @@
 			"contentType": "default",
 			"src": "New version available!",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "no_new_updates_available",
@@ -896,7 +896,7 @@
 			"contentType": "default",
 			"src": "No new updates available",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "searching_for_updates",
@@ -905,7 +905,7 @@
 			"contentType": "default",
 			"src": "Searching for updates…",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "release_page",
@@ -914,7 +914,7 @@
 			"contentType": "default",
 			"src": "Release page",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "could_not_install_update",
@@ -923,7 +923,7 @@
 			"contentType": "default",
 			"src": "Could not install update",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "update_completed",
@@ -932,7 +932,7 @@
 			"contentType": "default",
 			"src": "Update completed",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "library",
@@ -941,7 +941,7 @@
 			"contentType": "default",
 			"src": "Library",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "your_library",
@@ -950,7 +950,7 @@
 			"contentType": "default",
 			"src": "Your library",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "updating_library",
@@ -959,7 +959,7 @@
 			"contentType": "default",
 			"src": "Updating library",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "selected_",
@@ -969,7 +969,7 @@
 			"contentType": "default",
 			"src": "Selected: %1$d",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Selected: ",
 				{
@@ -985,7 +985,7 @@
 			"contentType": "default",
 			"src": "Local",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "remove_from_library_question",
@@ -994,7 +994,7 @@
 			"contentType": "default",
 			"src": "Remove from library?",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "library_search_hint",
@@ -1003,7 +1003,7 @@
 			"contentType": "default",
 			"src": "Search title, tags, source",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "library_is_empty_add_from_browse",
@@ -1013,7 +1013,7 @@
 			"contentType": "default",
 			"src": "Your library is empty, add series to your\n        library from the browse tab.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Your library is empty, add series to your library from the browse tab."
 			]
@@ -1025,7 +1025,7 @@
 			"contentType": "default",
 			"src": "No matches found for your current filters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "getting_started_guide",
@@ -1034,7 +1034,7 @@
 			"contentType": "default",
 			"src": "Getting started guide",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "show_all_categories",
@@ -1043,7 +1043,7 @@
 			"contentType": "default",
 			"src": "Show all categories",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "move_dynamic_to_bottom",
@@ -1052,7 +1052,7 @@
 			"contentType": "default",
 			"src": "Move collapsed dynamic categories to bottom",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "show_number_of_items",
@@ -1061,7 +1061,7 @@
 			"contentType": "default",
 			"src": "Show number of items",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "when_grouping_by_sources_tags",
@@ -1070,7 +1070,7 @@
 			"contentType": "default",
 			"src": "When grouping library by sources, status, etc.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "always_show_current_category",
@@ -1079,7 +1079,7 @@
 			"contentType": "default",
 			"src": "Always show current category",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "category_hopper_long_press",
@@ -1088,7 +1088,7 @@
 			"contentType": "default",
 			"src": "Category hopper long-press action",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "expand_collapse_all_categories",
@@ -1097,7 +1097,7 @@
 			"contentType": "default",
 			"src": "Expand/collapse all categories",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "open_random_series",
@@ -1106,7 +1106,7 @@
 			"contentType": "default",
 			"src": "Open a random series",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "expand_all_categories",
@@ -1115,7 +1115,7 @@
 			"contentType": "default",
 			"src": "Expand all categories",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "collapse_all_categories",
@@ -1124,7 +1124,7 @@
 			"contentType": "default",
 			"src": "Collapse all categories",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "reorder_filters",
@@ -1133,7 +1133,7 @@
 			"contentType": "default",
 			"src": "Reorder filters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "_unread",
@@ -1143,7 +1143,7 @@
 			"contentType": "default",
 			"src": "%d unread",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -1160,7 +1160,7 @@
 			"contentType": "default",
 			"src": "Search \\\"%1$s\\\" globally",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Search \"",
 				{
@@ -1177,7 +1177,7 @@
 			"contentType": "default",
 			"src": "Read progress",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "series_type",
@@ -1186,7 +1186,7 @@
 			"contentType": "default",
 			"src": "Series type",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "series",
@@ -1195,7 +1195,7 @@
 			"contentType": "default",
 			"src": "Series",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "group_library_by",
@@ -1204,7 +1204,7 @@
 			"contentType": "default",
 			"src": "Group library by…",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "tracking_status",
@@ -1213,7 +1213,7 @@
 			"contentType": "default",
 			"src": "Tracking status",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "ungrouped",
@@ -1222,7 +1222,7 @@
 			"contentType": "default",
 			"src": "Ungrouped",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "sort_by",
@@ -1231,7 +1231,7 @@
 			"contentType": "default",
 			"src": "Sort by",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "total_chapters",
@@ -1240,7 +1240,7 @@
 			"contentType": "default",
 			"src": "Total chapters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "date_added",
@@ -1249,7 +1249,7 @@
 			"contentType": "default",
 			"src": "Date added",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "last_read",
@@ -1258,7 +1258,7 @@
 			"contentType": "default",
 			"src": "Last read",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "date_fetched",
@@ -1267,7 +1267,7 @@
 			"contentType": "default",
 			"src": "Date fetched",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "last_updated",
@@ -1276,7 +1276,7 @@
 			"contentType": "default",
 			"src": "Last updated",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "latest_chapter",
@@ -1285,7 +1285,7 @@
 			"contentType": "default",
 			"src": "Latest chapter",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "drag_and_drop",
@@ -1295,7 +1295,7 @@
 			"contentType": "default",
 			"src": "Drag &amp; Drop",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Drag & Drop"
 			]
@@ -1307,7 +1307,7 @@
 			"contentType": "default",
 			"src": "Display options",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "can_be_found_in_library_filters",
@@ -1316,7 +1316,7 @@
 			"contentType": "default",
 			"src": "Can also be found by expanding library filters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "list",
@@ -1325,7 +1325,7 @@
 			"contentType": "default",
 			"src": "List",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "comfortable_grid",
@@ -1334,7 +1334,7 @@
 			"contentType": "default",
 			"src": "Comfortable Grid",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "compact_grid",
@@ -1343,7 +1343,7 @@
 			"contentType": "default",
 			"src": "Compact Grid",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "download_badge",
@@ -1352,7 +1352,7 @@
 			"contentType": "default",
 			"src": "Download badges",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "hide_start_reading_button",
@@ -1361,7 +1361,7 @@
 			"contentType": "default",
 			"src": "Hide start reading button",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "badges",
@@ -1370,7 +1370,7 @@
 			"contentType": "default",
 			"src": "Badges",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "uniform_grid_covers",
@@ -1379,7 +1379,7 @@
 			"contentType": "default",
 			"src": "Uniform grid covers",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "show_outline_around_covers",
@@ -1388,7 +1388,7 @@
 			"contentType": "default",
 			"src": "Show outline around covers",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "grid_size",
@@ -1397,7 +1397,7 @@
 			"contentType": "default",
 			"src": "Grid size",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "_per_row",
@@ -1407,7 +1407,7 @@
 			"contentType": "default",
 			"src": "%d per row",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -1423,7 +1423,7 @@
 			"contentType": "default",
 			"src": "Hide unread badges",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "show_unread_badges",
@@ -1432,7 +1432,7 @@
 			"contentType": "default",
 			"src": "Show unread badges",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "show_unread_count",
@@ -1441,7 +1441,7 @@
 			"contentType": "default",
 			"src": "Show unread count",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "tap_library_to_show_filters",
@@ -1450,7 +1450,7 @@
 			"contentType": "default",
 			"src": "Tap the Library icon to show filters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "display_as",
@@ -1459,7 +1459,7 @@
 			"contentType": "default",
 			"src": "Display as",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "hide_category_hopper",
@@ -1468,7 +1468,7 @@
 			"contentType": "default",
 			"src": "Hide category hopper",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "more_library_settings",
@@ -1477,7 +1477,7 @@
 			"contentType": "default",
 			"src": "More library settings",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "shift_one_page_over",
@@ -1486,7 +1486,7 @@
 			"contentType": "default",
 			"src": "Shift one page over",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "shift_double_pages",
@@ -1495,7 +1495,7 @@
 			"contentType": "default",
 			"src": "Shift double pages",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "new_chapters_found",
@@ -1504,7 +1504,7 @@
 			"contentType": "default",
 			"src": "New chapters found",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "notification_size_warning",
@@ -1513,7 +1513,7 @@
 			"contentType": "default",
 			"src": "Large updates may lead to increased battery usage and sources becoming slower",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "for_n_titles_other",
@@ -1524,7 +1524,7 @@
 			"contentType": "default",
 			"src": "For %d titles",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"For ",
 				{
@@ -1543,7 +1543,7 @@
 			"contentType": "default",
 			"src": "and %1$d more chapters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"and ",
 				{
@@ -1562,7 +1562,7 @@
 			"contentType": "default",
 			"src": "%1$d updates failed",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -1578,7 +1578,7 @@
 			"contentType": "default",
 			"src": "Errors",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "library_update_frequency",
@@ -1587,7 +1587,7 @@
 			"contentType": "default",
 			"src": "Library update frequency",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "library_update_order",
@@ -1596,7 +1596,7 @@
 			"contentType": "default",
 			"src": "Library update order",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "library_update_restriction",
@@ -1605,7 +1605,7 @@
 			"contentType": "default",
 			"src": "Library update restrictions",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "library_update_restriction_summary",
@@ -1614,7 +1614,7 @@
 			"contentType": "default",
 			"src": "Update only when the conditions are met",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "restrictions_",
@@ -1624,7 +1624,7 @@
 			"contentType": "default",
 			"src": "Restrictions: %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Restrictions: ",
 				{
@@ -1640,7 +1640,7 @@
 			"contentType": "default",
 			"src": "Only update ongoing manga",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "sort_by_ignoring_articles",
@@ -1649,7 +1649,7 @@
 			"contentType": "default",
 			"src": "Sort by ignoring articles",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "when_sorting_ignore_articles",
@@ -1659,7 +1659,7 @@
 			"contentType": "default",
 			"src": "When sorting alphabetically, sort ignoring\n        articles (a, an, the) at the start of manga titles",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"When sorting alphabetically, sort ignoring articles (a, an, the) at the start of manga titles"
 			]
@@ -1671,7 +1671,7 @@
 			"contentType": "default",
 			"src": "Categories to include in global update",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "include_in_global_update",
@@ -1680,7 +1680,7 @@
 			"contentType": "default",
 			"src": "Include in global update",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "auto_refresh_covers",
@@ -1689,7 +1689,7 @@
 			"contentType": "default",
 			"src": "Automatically refresh covers",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "auto_refresh_covers_summary",
@@ -1699,7 +1699,7 @@
 			"contentType": "default",
 			"src": "Refresh covers in library as well\n        when updating library",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Refresh covers in library as well when updating library"
 			]
@@ -1711,7 +1711,7 @@
 			"contentType": "default",
 			"src": "Global updates",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "display_buttons_bottom_reader",
@@ -1720,7 +1720,7 @@
 			"contentType": "default",
 			"src": "Buttons at bottom of reader",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "certain_buttons_can_be_found",
@@ -1729,7 +1729,7 @@
 			"contentType": "default",
 			"src": "Certain buttons can be found in other places if disabled here",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "search_suggestions",
@@ -1738,7 +1738,7 @@
 			"contentType": "default",
 			"src": "Search suggestions",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "search_tips_show_periodically",
@@ -1747,7 +1747,7 @@
 			"contentType": "default",
 			"src": "Search tips will show up periodically. Long press the suggestion to search it.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "recents",
@@ -1756,7 +1756,7 @@
 			"contentType": "default",
 			"src": "Recents",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "updates_and_history",
@@ -1766,7 +1766,7 @@
 			"contentType": "default",
 			"src": "Updates &amp; history",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Updates & history"
 			]
@@ -1778,7 +1778,7 @@
 			"contentType": "default",
 			"src": "Updates",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "newly_added",
@@ -1787,7 +1787,7 @@
 			"contentType": "default",
 			"src": "Newly added",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "history",
@@ -1796,7 +1796,7 @@
 			"contentType": "default",
 			"src": "History",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "reset_chapter_history",
@@ -1805,7 +1805,7 @@
 			"contentType": "default",
 			"src": "Reset chapter history",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "recent_updates",
@@ -1814,7 +1814,7 @@
 			"contentType": "default",
 			"src": "Recent updates",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "this_will_remove_the_read_date_for_x_question",
@@ -1824,7 +1824,7 @@
 			"contentType": "default",
 			"src": "This will remove the read date of\n        \\\"%1$s\\\". Are you sure?",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"This will remove the read date of \"",
 				{
@@ -1842,7 +1842,7 @@
 			"contentType": "default",
 			"src": "This will remove the read date of this\n        chapter. Are you sure?",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"This will remove the read date of this chapter. Are you sure?"
 			]
@@ -1855,7 +1855,7 @@
 			"contentType": "default",
 			"src": "Reset all chapters for this %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Reset all chapters for this ",
 				{
@@ -1872,7 +1872,7 @@
 			"contentType": "default",
 			"src": "Last read %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Last read ",
 				{
@@ -1889,7 +1889,7 @@
 			"contentType": "default",
 			"src": "Read %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Read ",
 				{
@@ -1906,7 +1906,7 @@
 			"contentType": "default",
 			"src": "Updated %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Updated ",
 				{
@@ -1923,7 +1923,7 @@
 			"contentType": "default",
 			"src": "Added %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Added ",
 				{
@@ -1940,7 +1940,7 @@
 			"contentType": "default",
 			"src": "Fetched %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Fetched ",
 				{
@@ -1956,7 +1956,7 @@
 			"contentType": "default",
 			"src": "View history",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "view_all_updates",
@@ -1965,7 +1965,7 @@
 			"contentType": "default",
 			"src": "View all updates",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "search_recents",
@@ -1974,7 +1974,7 @@
 			"contentType": "default",
 			"src": "Search recents…",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "no_recent_read_updated_manga",
@@ -1983,7 +1983,7 @@
 			"contentType": "default",
 			"src": "No recently read or updated manga",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "no_recent_chapters",
@@ -1992,7 +1992,7 @@
 			"contentType": "default",
 			"src": "No recent chapters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "no_recently_read_manga",
@@ -2001,7 +2001,7 @@
 			"contentType": "default",
 			"src": "No recently read manga",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "grouped",
@@ -2010,7 +2010,7 @@
 			"contentType": "default",
 			"src": "Grouped",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "reset_chapter_question",
@@ -2019,7 +2019,7 @@
 			"contentType": "default",
 			"src": "Reset chapter?",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "press_and_hold_to_also_reset",
@@ -2028,7 +2028,7 @@
 			"contentType": "default",
 			"src": "Press and hold can also reset chapter history",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "show_download_button",
@@ -2037,7 +2037,7 @@
 			"contentType": "default",
 			"src": "Show download button",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "only_unread",
@@ -2046,7 +2046,7 @@
 			"contentType": "default",
 			"src": "Only unread",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "only_downloaded",
@@ -2055,7 +2055,7 @@
 			"contentType": "default",
 			"src": "Only downloaded",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "unread_or_downloaded",
@@ -2064,7 +2064,7 @@
 			"contentType": "default",
 			"src": "Unread or downloaded",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "show_reset_history_button",
@@ -2073,7 +2073,7 @@
 			"contentType": "default",
 			"src": "Show reset history button",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "show_read_chapters_all",
@@ -2082,7 +2082,7 @@
 			"contentType": "default",
 			"src": "Show read chapters in Grouped and All",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "show_title_first",
@@ -2091,7 +2091,7 @@
 			"contentType": "default",
 			"src": "Show title first",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "a_while_ago",
@@ -2100,7 +2100,7 @@
 			"contentType": "default",
 			"src": "A while ago",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "show_updated_time",
@@ -2109,7 +2109,7 @@
 			"contentType": "default",
 			"src": "Show updated time",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "group_chapters_together",
@@ -2118,7 +2118,7 @@
 			"contentType": "default",
 			"src": "Group chapters together",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "uniform_covers",
@@ -2127,7 +2127,7 @@
 			"contentType": "default",
 			"src": "Uniform covers",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "affects_library_grid",
@@ -2136,7 +2136,7 @@
 			"contentType": "default",
 			"src": "Affects library grid covers",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "search_filters",
@@ -2145,7 +2145,7 @@
 			"contentType": "default",
 			"src": "Search filters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "no_more_results",
@@ -2154,7 +2154,7 @@
 			"contentType": "default",
 			"src": "No more results",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "no_results_found",
@@ -2163,7 +2163,7 @@
 			"contentType": "default",
 			"src": "No results found",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "local_source",
@@ -2172,7 +2172,7 @@
 			"contentType": "default",
 			"src": "Local source",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "other",
@@ -2181,7 +2181,7 @@
 			"contentType": "default",
 			"src": "Other",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "global_search",
@@ -2190,7 +2190,7 @@
 			"contentType": "default",
 			"src": "Global search…",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "label_global_search",
@@ -2199,7 +2199,7 @@
 			"contentType": "default",
 			"src": "Global search",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "latest",
@@ -2208,7 +2208,7 @@
 			"contentType": "default",
 			"src": "Latest",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "browse",
@@ -2217,7 +2217,7 @@
 			"contentType": "default",
 			"src": "Browse",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "in_library",
@@ -2226,7 +2226,7 @@
 			"contentType": "default",
 			"src": "In Library",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "search_extensions",
@@ -2235,7 +2235,7 @@
 			"contentType": "default",
 			"src": "Search extensions…",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "all_sources",
@@ -2244,7 +2244,7 @@
 			"contentType": "default",
 			"src": "All sources",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "sources",
@@ -2253,7 +2253,7 @@
 			"contentType": "default",
 			"src": "Sources",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "source_hidden",
@@ -2262,7 +2262,7 @@
 			"contentType": "default",
 			"src": "Source hidden",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "last_used",
@@ -2271,7 +2271,7 @@
 			"contentType": "default",
 			"src": "Last used",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "local_source_help_guide",
@@ -2280,7 +2280,7 @@
 			"contentType": "default",
 			"src": "Local source guide",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "check_site_in_web",
@@ -2289,7 +2289,7 @@
 			"contentType": "default",
 			"src": "Check website in WebView",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "extensions",
@@ -2298,7 +2298,7 @@
 			"contentType": "default",
 			"src": "Extensions",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "extension_updates",
@@ -2307,7 +2307,7 @@
 			"contentType": "default",
 			"src": "Extension updates",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "extension_updates_pending",
@@ -2316,7 +2316,7 @@
 			"contentType": "default",
 			"src": "Extension updates pending",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "extension_info",
@@ -2325,7 +2325,7 @@
 			"contentType": "default",
 			"src": "Extension info",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "filter_languages",
@@ -2334,7 +2334,7 @@
 			"contentType": "default",
 			"src": "Filter Languages",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "obsolete",
@@ -2343,7 +2343,7 @@
 			"contentType": "default",
 			"src": "Obsolete",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "pending",
@@ -2352,7 +2352,7 @@
 			"contentType": "default",
 			"src": "Pending",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "installing",
@@ -2361,7 +2361,7 @@
 			"contentType": "default",
 			"src": "Installing",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "installed",
@@ -2370,7 +2370,7 @@
 			"contentType": "default",
 			"src": "Installed",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "trust",
@@ -2379,7 +2379,7 @@
 			"contentType": "default",
 			"src": "Trust",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "untrusted",
@@ -2388,7 +2388,7 @@
 			"contentType": "default",
 			"src": "Untrusted",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "uninstall",
@@ -2397,7 +2397,7 @@
 			"contentType": "default",
 			"src": "Uninstall",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "untrusted_extension",
@@ -2406,7 +2406,7 @@
 			"contentType": "default",
 			"src": "Untrusted extension",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "untrusted_extension_message",
@@ -2416,7 +2416,7 @@
 			"contentType": "default",
 			"src": "This extension was signed with an untrusted certificate and wasn\\'t activated.\\n\\nA malicious extension could read any login credentials stored in Tachiyomi or execute arbitrary code.\\n\\nBy trusting this certificate you accept these risks.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"This extension was signed with an untrusted certificate and wasn't activated.\n\nA malicious extension could read any login credentials stored in Tachiyomi or execute arbitrary code.\n\nBy trusting this certificate you accept these risks."
 			]
@@ -2428,7 +2428,7 @@
 			"contentType": "default",
 			"src": "This extension is no longer available.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "unofficial_extension_message",
@@ -2437,7 +2437,7 @@
 			"contentType": "default",
 			"src": "This extension is not from the official Tachiyomi extensions list.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "version_",
@@ -2447,7 +2447,7 @@
 			"contentType": "default",
 			"src": "Version: %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Version: ",
 				{
@@ -2464,7 +2464,7 @@
 			"contentType": "default",
 			"src": "Language: %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Language: ",
 				{
@@ -2480,7 +2480,7 @@
 			"contentType": "default",
 			"src": "18+",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "installed_",
@@ -2490,7 +2490,7 @@
 			"contentType": "default",
 			"src": "Installed %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Installed ",
 				{
@@ -2506,7 +2506,7 @@
 			"contentType": "default",
 			"src": "Unofficial",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "extensions_miui_warning",
@@ -2515,7 +2515,7 @@
 			"contentType": "default",
 			"src": "MIUI Optimization must be disabled to install extensions.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "may_contain_nsfw",
@@ -2524,7 +2524,7 @@
 			"contentType": "default",
 			"src": "May contain NSFW (18+) content",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "app_info",
@@ -2533,7 +2533,7 @@
 			"contentType": "default",
 			"src": "App info",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "_must_be_enabled_first",
@@ -2543,7 +2543,7 @@
 			"contentType": "default",
 			"src": "%1$s must be enabled first",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -2559,7 +2559,7 @@
 			"contentType": "default",
 			"src": "Could not install extension",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "update_all",
@@ -2568,7 +2568,7 @@
 			"contentType": "default",
 			"src": "Update all",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "some_extensions_may_prompt",
@@ -2577,7 +2577,7 @@
 			"contentType": "default",
 			"src": "Some extensions may still prompt to be installed first.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "updating_extensions",
@@ -2586,7 +2586,7 @@
 			"contentType": "default",
 			"src": "Updating extensions",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "_updates_pending_other",
@@ -2597,7 +2597,7 @@
 			"contentType": "default",
 			"src": "%d updates pending",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -2613,7 +2613,7 @@
 			"contentType": "default",
 			"src": "Extensions updated",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "extensions_updated_plural_other",
@@ -2624,7 +2624,7 @@
 			"contentType": "default",
 			"src": "%d extensions updated",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -2642,7 +2642,7 @@
 			"contentType": "default",
 			"src": "%d extension updates available",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -2658,7 +2658,7 @@
 			"contentType": "default",
 			"src": "Set as cover",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "reader_settings",
@@ -2667,7 +2667,7 @@
 			"contentType": "default",
 			"src": "Reader settings",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "set_as_default_for_all",
@@ -2676,7 +2676,7 @@
 			"contentType": "default",
 			"src": "Set as default for all",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "cover_updated",
@@ -2685,7 +2685,7 @@
 			"contentType": "default",
 			"src": "Cover updated",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "page_",
@@ -2695,7 +2695,7 @@
 			"contentType": "default",
 			"src": "Page %1$d",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Page ",
 				{
@@ -2712,7 +2712,7 @@
 			"contentType": "default",
 			"src": "Pages %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Pages ",
 				{
@@ -2728,7 +2728,7 @@
 			"contentType": "default",
 			"src": "Next chapter not found",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "decode_image_error",
@@ -2737,7 +2737,7 @@
 			"contentType": "default",
 			"src": "The image could not be decoded",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "use_image_as_cover",
@@ -2746,7 +2746,7 @@
 			"contentType": "default",
 			"src": "Use this image as cover art?",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "reading_mode",
@@ -2755,7 +2755,7 @@
 			"contentType": "default",
 			"src": "Reading mode",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "changing_will_reset_reading_mode",
@@ -2764,7 +2764,7 @@
 			"contentType": "default",
 			"src": "Changing this will reset the reading mode for this series",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "finished_chapter",
@@ -2773,7 +2773,7 @@
 			"contentType": "default",
 			"src": "Finished:",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "current_chapter",
@@ -2782,7 +2782,7 @@
 			"contentType": "default",
 			"src": "Current:",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "next_title",
@@ -2791,7 +2791,7 @@
 			"contentType": "default",
 			"src": "Next:",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "previous_title",
@@ -2800,7 +2800,7 @@
 			"contentType": "default",
 			"src": "Previous:",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "theres_no_next_chapter",
@@ -2810,7 +2810,7 @@
 			"contentType": "default",
 			"src": "There\\'s no next chapter",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"There's no next chapter"
 			]
@@ -2823,7 +2823,7 @@
 			"contentType": "default",
 			"src": "There\\'s no previous chapter",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"There's no previous chapter"
 			]
@@ -2835,7 +2835,7 @@
 			"contentType": "default",
 			"src": "Loading pages…",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "failed_to_load_pages_",
@@ -2845,7 +2845,7 @@
 			"contentType": "default",
 			"src": "Failed to load pages: %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Failed to load pages: ",
 				{
@@ -2862,7 +2862,7 @@
 			"contentType": "default",
 			"src": "Reading %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Reading ",
 				{
@@ -2878,7 +2878,7 @@
 			"contentType": "default",
 			"src": "webtoon style",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "next_page",
@@ -2887,7 +2887,7 @@
 			"contentType": "default",
 			"src": "Next page",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "previous_page",
@@ -2896,7 +2896,7 @@
 			"contentType": "default",
 			"src": "Previous page",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "next_chapter",
@@ -2905,7 +2905,7 @@
 			"contentType": "default",
 			"src": "Next chapter",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "previous_chapter",
@@ -2914,7 +2914,7 @@
 			"contentType": "default",
 			"src": "Previous chapter",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "set_first_page_as_cover",
@@ -2923,7 +2923,7 @@
 			"contentType": "default",
 			"src": "Set first page as cover",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "share_first_page",
@@ -2932,7 +2932,7 @@
 			"contentType": "default",
 			"src": "Share first page",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "save_first_page",
@@ -2941,7 +2941,7 @@
 			"contentType": "default",
 			"src": "Save first page",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "set_second_page_as_cover",
@@ -2950,7 +2950,7 @@
 			"contentType": "default",
 			"src": "Set second page as cover",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "share_second_page",
@@ -2959,7 +2959,7 @@
 			"contentType": "default",
 			"src": "Share second page",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "save_second_page",
@@ -2968,7 +2968,7 @@
 			"contentType": "default",
 			"src": "Save second page",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "share_combined_pages",
@@ -2977,7 +2977,7 @@
 			"contentType": "default",
 			"src": "Share combined pages",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "save_combined_pages",
@@ -2986,7 +2986,7 @@
 			"contentType": "default",
 			"src": "Save combined pages",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "fullscreen",
@@ -2995,7 +2995,7 @@
 			"contentType": "default",
 			"src": "Fullscreen",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "animate_page_transitions",
@@ -3004,7 +3004,7 @@
 			"contentType": "default",
 			"src": "Animate page transitions",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "enable_zoom_out",
@@ -3013,7 +3013,7 @@
 			"contentType": "default",
 			"src": "Enable zoom out",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "double_tap_anim_speed",
@@ -3022,7 +3022,7 @@
 			"contentType": "default",
 			"src": "Double tap animation speed",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "show_page_number",
@@ -3031,7 +3031,7 @@
 			"contentType": "default",
 			"src": "Show page number",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "true_32bit_color",
@@ -3040,7 +3040,7 @@
 			"contentType": "default",
 			"src": "32-bit color",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "page_preload_amount",
@@ -3049,7 +3049,7 @@
 			"contentType": "default",
 			"src": "Page preload amount",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "amount_of_pages_to_preload",
@@ -3058,7 +3058,7 @@
 			"contentType": "default",
 			"src": "The amount of pages to preload when reading. Higher values will result in a smoother reading experience, at the cost of higher cache and network usage.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "reduces_banding_impacts_performance",
@@ -3068,7 +3068,7 @@
 			"contentType": "default",
 			"src": "Reduces banding, but impacts\n        performance",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Reduces banding, but impacts performance"
 			]
@@ -3080,7 +3080,7 @@
 			"contentType": "default",
 			"src": "Invert double pages",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "split_double_pages_portrait",
@@ -3089,7 +3089,7 @@
 			"contentType": "default",
 			"src": "Split double pages in portrait",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "crop_borders",
@@ -3098,7 +3098,7 @@
 			"contentType": "default",
 			"src": "Crop borders",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "crop_borders_paged",
@@ -3107,7 +3107,7 @@
 			"contentType": "default",
 			"src": "Crop borders (Paged)",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "crop_borders_webtoon",
@@ -3116,7 +3116,7 @@
 			"contentType": "default",
 			"src": "Crop borders (Webtoon)",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "remove_crop",
@@ -3125,7 +3125,7 @@
 			"contentType": "default",
 			"src": "Remove crop",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "use_custom_brightness",
@@ -3134,7 +3134,7 @@
 			"contentType": "default",
 			"src": "Use custom brightness",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "use_custom_color_filter",
@@ -3143,7 +3143,7 @@
 			"contentType": "default",
 			"src": "Use custom color filter",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "color_filter_blend_mode",
@@ -3152,7 +3152,7 @@
 			"contentType": "default",
 			"src": "Color filter blend mode",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "overlay",
@@ -3161,7 +3161,7 @@
 			"contentType": "default",
 			"src": "Overlay",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "multiply",
@@ -3170,7 +3170,7 @@
 			"contentType": "default",
 			"src": "Multiply",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "screen",
@@ -3179,7 +3179,7 @@
 			"contentType": "default",
 			"src": "Screen",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "dodge_lighten",
@@ -3188,7 +3188,7 @@
 			"contentType": "default",
 			"src": "Dodge / Lighten",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "burn_darken",
@@ -3197,7 +3197,7 @@
 			"contentType": "default",
 			"src": "Burn / Darken",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "keep_screen_on",
@@ -3206,7 +3206,7 @@
 			"contentType": "default",
 			"src": "Keep screen on",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "skip_read_chapters",
@@ -3215,7 +3215,7 @@
 			"contentType": "default",
 			"src": "Skip chapters marked read",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "skip_filtered_chapters",
@@ -3224,7 +3224,7 @@
 			"contentType": "default",
 			"src": "Skip filtered chapters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "navigation",
@@ -3233,7 +3233,7 @@
 			"contentType": "default",
 			"src": "Navigation",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "volume_keys",
@@ -3242,7 +3242,7 @@
 			"contentType": "default",
 			"src": "Volume keys",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "invert_volume_keys",
@@ -3251,7 +3251,7 @@
 			"contentType": "default",
 			"src": "Invert volume keys",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "tapping",
@@ -3260,7 +3260,7 @@
 			"contentType": "default",
 			"src": "Tapping",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "background_color",
@@ -3269,7 +3269,7 @@
 			"contentType": "default",
 			"src": "Background color",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "white",
@@ -3278,7 +3278,7 @@
 			"contentType": "default",
 			"src": "White",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "black",
@@ -3287,7 +3287,7 @@
 			"contentType": "default",
 			"src": "Black",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "smart_by_page",
@@ -3296,7 +3296,7 @@
 			"contentType": "default",
 			"src": "Smart (by page)",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "smart_by_theme",
@@ -3305,7 +3305,7 @@
 			"contentType": "default",
 			"src": "Smart (by theme)",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "default_reading_mode",
@@ -3314,7 +3314,7 @@
 			"contentType": "default",
 			"src": "Default reading mode",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "left_to_right_viewer",
@@ -3323,7 +3323,7 @@
 			"contentType": "default",
 			"src": "Left to right",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "right_to_left_viewer",
@@ -3332,7 +3332,7 @@
 			"contentType": "default",
 			"src": "Right to left",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "vertical_viewer",
@@ -3341,7 +3341,7 @@
 			"contentType": "default",
 			"src": "Vertical",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "continuous_vertical",
@@ -3350,7 +3350,7 @@
 			"contentType": "default",
 			"src": "Continuous vertical",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "paged",
@@ -3359,7 +3359,7 @@
 			"contentType": "default",
 			"src": "Paged",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "scale_type",
@@ -3368,7 +3368,7 @@
 			"contentType": "default",
 			"src": "Scale type",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "nav_layout",
@@ -3377,7 +3377,7 @@
 			"contentType": "default",
 			"src": "Navigation layout",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "fit_screen",
@@ -3386,7 +3386,7 @@
 			"contentType": "default",
 			"src": "Fit screen",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "stretch",
@@ -3395,7 +3395,7 @@
 			"contentType": "default",
 			"src": "Stretch",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "fit_width",
@@ -3404,7 +3404,7 @@
 			"contentType": "default",
 			"src": "Fit width",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "fit_height",
@@ -3413,7 +3413,7 @@
 			"contentType": "default",
 			"src": "Fit height",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "original_size",
@@ -3422,7 +3422,7 @@
 			"contentType": "default",
 			"src": "Original size",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "smart_fit",
@@ -3431,7 +3431,7 @@
 			"contentType": "default",
 			"src": "Smart fit",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "zoom_start_position",
@@ -3440,7 +3440,7 @@
 			"contentType": "default",
 			"src": "Zoom start position",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "split_double_pages",
@@ -3449,7 +3449,7 @@
 			"contentType": "default",
 			"src": "Split double pages",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "double_pages",
@@ -3458,7 +3458,7 @@
 			"contentType": "default",
 			"src": "Double pages",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "single_page",
@@ -3467,7 +3467,7 @@
 			"contentType": "default",
 			"src": "Single page",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "switch_to_double",
@@ -3476,7 +3476,7 @@
 			"contentType": "default",
 			"src": "Switch to double pages",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "switch_to_single",
@@ -3485,7 +3485,7 @@
 			"contentType": "default",
 			"src": "Switch to single page",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "portrait",
@@ -3494,7 +3494,7 @@
 			"contentType": "default",
 			"src": "Portrait",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "landscape",
@@ -3503,7 +3503,7 @@
 			"contentType": "default",
 			"src": "Landscape",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "locked_portrait",
@@ -3512,7 +3512,7 @@
 			"contentType": "default",
 			"src": "Locked portrait",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "locked_landscape",
@@ -3521,7 +3521,7 @@
 			"contentType": "default",
 			"src": "Locked landscape",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "red_initial",
@@ -3530,7 +3530,7 @@
 			"contentType": "default",
 			"src": "R",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "green_initial",
@@ -3539,7 +3539,7 @@
 			"contentType": "default",
 			"src": "G",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "blue_initial",
@@ -3548,7 +3548,7 @@
 			"contentType": "default",
 			"src": "B",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "alpha_initial",
@@ -3557,7 +3557,7 @@
 			"contentType": "default",
 			"src": "A",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "smart_based_on_page",
@@ -3566,7 +3566,7 @@
 			"contentType": "default",
 			"src": "Smart (based on page)",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "smart_based_on_page_and_theme",
@@ -3575,7 +3575,7 @@
 			"contentType": "default",
 			"src": "Smart (based on page and theme)",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "always_show_chapter_transition",
@@ -3584,7 +3584,7 @@
 			"contentType": "default",
 			"src": "Always show chapter transition",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "if_disabled_transition_will_skip",
@@ -3594,7 +3594,7 @@
 			"contentType": "default",
 			"src": "If disabled, the transition page will be\n        skipped if the next chapter is loaded",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"If disabled, the transition page will be skipped if the next chapter is loaded"
 			]
@@ -3606,7 +3606,7 @@
 			"contentType": "default",
 			"src": "Side padding",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "webtoon_side_padding_0",
@@ -3615,7 +3615,7 @@
 			"contentType": "default",
 			"src": "None",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "webtoon_side_padding_10",
@@ -3624,7 +3624,7 @@
 			"contentType": "default",
 			"src": "10%",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "webtoon_side_padding_15",
@@ -3633,7 +3633,7 @@
 			"contentType": "default",
 			"src": "15%",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "webtoon_side_padding_20",
@@ -3642,7 +3642,7 @@
 			"contentType": "default",
 			"src": "20%",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "webtoon_side_padding_25",
@@ -3651,7 +3651,7 @@
 			"contentType": "default",
 			"src": "25%",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "l_nav",
@@ -3660,7 +3660,7 @@
 			"contentType": "default",
 			"src": "L shaped",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "kindlish_nav",
@@ -3669,7 +3669,7 @@
 			"contentType": "default",
 			"src": "Kindle-ish",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "edge_nav",
@@ -3678,7 +3678,7 @@
 			"contentType": "default",
 			"src": "Edge",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "right_and_left_nav",
@@ -3687,7 +3687,7 @@
 			"contentType": "default",
 			"src": "Right and Left",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "invert_tapping",
@@ -3696,7 +3696,7 @@
 			"contentType": "default",
 			"src": "Invert tapping",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "none",
@@ -3705,7 +3705,7 @@
 			"contentType": "default",
 			"src": "None",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "horizontally",
@@ -3714,7 +3714,7 @@
 			"contentType": "default",
 			"src": "Horizontally",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "vertically",
@@ -3723,7 +3723,7 @@
 			"contentType": "default",
 			"src": "Vertically",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "both_axes",
@@ -3732,7 +3732,7 @@
 			"contentType": "default",
 			"src": "Both Axes",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "cutout_area_behavior",
@@ -3741,7 +3741,7 @@
 			"contentType": "default",
 			"src": "Cutout area behavior",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "pad_cutout_areas",
@@ -3750,7 +3750,7 @@
 			"contentType": "default",
 			"src": "Pad cutout areas",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "start_past_cutout",
@@ -3759,7 +3759,7 @@
 			"contentType": "default",
 			"src": "Start past cutout",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "ignore_cutout_areas",
@@ -3768,7 +3768,7 @@
 			"contentType": "default",
 			"src": "Ignore cutout areas",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "cutout_behavior_only_applies",
@@ -3777,7 +3777,7 @@
 			"contentType": "default",
 			"src": "Cutout area behavior only applies in portrait mode with certain scale types",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "page_layout",
@@ -3786,7 +3786,7 @@
 			"contentType": "default",
 			"src": "Page layout",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "automatic_can_still_switch",
@@ -3795,7 +3795,7 @@
 			"contentType": "default",
 			"src": "While using automatic page layout, you can still switch between layouts while reading without overriding this setting",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "automatic_orientation",
@@ -3804,7 +3804,7 @@
 			"contentType": "default",
 			"src": "Automatic (based on orientation)",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "webtoon_cannot_change",
@@ -3813,7 +3813,7 @@
 			"contentType": "default",
 			"src": "Cannot change reading mode from webtoon. Edit the series type first to change.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "actions",
@@ -3822,7 +3822,7 @@
 			"contentType": "default",
 			"src": "Actions",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "show_on_long_press",
@@ -3831,7 +3831,7 @@
 			"contentType": "default",
 			"src": "Show on long press",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "save_pages_separately",
@@ -3840,7 +3840,7 @@
 			"contentType": "default",
 			"src": "Save pages in separate folders",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "create_folders_by_manga_title",
@@ -3849,7 +3849,7 @@
 			"contentType": "default",
 			"src": "Creates folders according to manga title",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "pages_plural_other",
@@ -3860,7 +3860,7 @@
 			"contentType": "default",
 			"src": "%1$d pages",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -3878,7 +3878,7 @@
 			"contentType": "default",
 			"src": "Skipping %d chapters, either the source is missing them or they have been filtered out",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Skipping ",
 				{
@@ -3896,7 +3896,7 @@
 			"contentType": "default",
 			"src": "About this %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"About this ",
 				{
@@ -3912,7 +3912,7 @@
 			"contentType": "default",
 			"src": "Start reading",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "start_reading_chapter_",
@@ -3922,7 +3922,7 @@
 			"contentType": "default",
 			"src": "Start reading Chapter %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Start reading Chapter ",
 				{
@@ -3939,7 +3939,7 @@
 			"contentType": "default",
 			"src": "Continue reading Chapter %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Continue reading Chapter ",
 				{
@@ -3955,7 +3955,7 @@
 			"contentType": "default",
 			"src": "Continue reading",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "chapters_",
@@ -3965,7 +3965,7 @@
 			"contentType": "default",
 			"src": "Chapters %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Chapters ",
 				{
@@ -3982,7 +3982,7 @@
 			"contentType": "default",
 			"src": "Volume %1$d",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Volume ",
 				{
@@ -3999,7 +3999,7 @@
 			"contentType": "default",
 			"src": "Season %1$d",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Season ",
 				{
@@ -4015,7 +4015,7 @@
 			"contentType": "default",
 			"src": "Added to library",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "add_to_library",
@@ -4024,7 +4024,7 @@
 			"contentType": "default",
 			"src": "Add to Library",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "removed_from_library",
@@ -4033,7 +4033,7 @@
 			"contentType": "default",
 			"src": "Removed from library",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "_copied_to_clipboard",
@@ -4043,7 +4043,7 @@
 			"contentType": "default",
 			"src": "%1$s copied to clipboard",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -4060,7 +4060,7 @@
 			"contentType": "default",
 			"src": "Source not installed: %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Source not installed: ",
 				{
@@ -4076,7 +4076,7 @@
 			"contentType": "default",
 			"src": "No description",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "mark_all_chapters_as_read",
@@ -4085,7 +4085,7 @@
 			"contentType": "default",
 			"src": "Mark all chapters as read?",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "mark_all_chapters_as_unread",
@@ -4094,7 +4094,7 @@
 			"contentType": "default",
 			"src": "Mark all chapters as unread?",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "remove_from_library",
@@ -4103,7 +4103,7 @@
 			"contentType": "default",
 			"src": "Remove from library",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "select_starting_chapter",
@@ -4112,7 +4112,7 @@
 			"contentType": "default",
 			"src": "Select starting chapter",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "select_ending_chapter",
@@ -4121,7 +4121,7 @@
 			"contentType": "default",
 			"src": "Select ending chapter",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "search_chapters",
@@ -4130,7 +4130,7 @@
 			"contentType": "default",
 			"src": "Search chapters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "next_unread_chapter",
@@ -4139,7 +4139,7 @@
 			"contentType": "default",
 			"src": "Next unread chapter",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "next_5_unread",
@@ -4148,7 +4148,7 @@
 			"contentType": "default",
 			"src": "Next 5 unread",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "custom_range",
@@ -4157,7 +4157,7 @@
 			"contentType": "default",
 			"src": "Custom range",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "all_chapters",
@@ -4166,7 +4166,7 @@
 			"contentType": "default",
 			"src": "All chapters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "all_unread_chapters",
@@ -4175,7 +4175,7 @@
 			"contentType": "default",
 			"src": "All unread chapters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "all_read_chapters",
@@ -4184,7 +4184,7 @@
 			"contentType": "default",
 			"src": "All read chapters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "all_but_bookmarked_chapters",
@@ -4193,7 +4193,7 @@
 			"contentType": "default",
 			"src": "All but bookmarked chapters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "add_x_to_library",
@@ -4203,7 +4203,7 @@
 			"contentType": "default",
 			"src": "Add %1$s to library?",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Add ",
 				{
@@ -4220,7 +4220,7 @@
 			"contentType": "default",
 			"src": "Show All",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "show_bookmarked_chapters",
@@ -4229,7 +4229,7 @@
 			"contentType": "default",
 			"src": "Show bookmarked chapters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "show_downloaded_chapters",
@@ -4238,7 +4238,7 @@
 			"contentType": "default",
 			"src": "Show downloaded chapters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "show_unread_chapters",
@@ -4247,7 +4247,7 @@
 			"contentType": "default",
 			"src": "Show unread chapters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "show_read_chapters",
@@ -4256,7 +4256,7 @@
 			"contentType": "default",
 			"src": "Show read chapters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "hide_chapter_titles",
@@ -4265,7 +4265,7 @@
 			"contentType": "default",
 			"src": "Hide chapter titles",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "sort_by_source_s_order",
@@ -4275,7 +4275,7 @@
 			"contentType": "default",
 			"src": "Sort by source\\'s order",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Sort by source's order"
 			]
@@ -4287,7 +4287,7 @@
 			"contentType": "default",
 			"src": "Sort by chapter number",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "newest_first",
@@ -4296,7 +4296,7 @@
 			"contentType": "default",
 			"src": "Newest to oldest",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "oldest_first",
@@ -4305,7 +4305,7 @@
 			"contentType": "default",
 			"src": "Oldest to newest",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "add_tag",
@@ -4314,7 +4314,7 @@
 			"contentType": "default",
 			"src": "Add tag",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "clear_tags",
@@ -4323,7 +4323,7 @@
 			"contentType": "default",
 			"src": "Clear tags",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "reset_tags",
@@ -4332,7 +4332,7 @@
 			"contentType": "default",
 			"src": "Reset tags",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "reset_cover",
@@ -4341,7 +4341,7 @@
 			"contentType": "default",
 			"src": "Reset cover",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "failed_to_update_cover",
@@ -4350,7 +4350,7 @@
 			"contentType": "default",
 			"src": "Failed to update cover",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "must_be_in_library_to_edit",
@@ -4359,7 +4359,7 @@
 			"contentType": "default",
 			"src": "Manga must be in your library to edit",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "remember_this_choice",
@@ -4368,7 +4368,7 @@
 			"contentType": "default",
 			"src": "Remember this choice",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "source_not_installed",
@@ -4377,7 +4377,7 @@
 			"contentType": "default",
 			"src": "Source not installed",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "cover_saved",
@@ -4386,7 +4386,7 @@
 			"contentType": "default",
 			"src": "Cover saved",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "error_saving_cover",
@@ -4395,7 +4395,7 @@
 			"contentType": "default",
 			"src": "Error saving cover",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "error_sharing_cover",
@@ -4404,7 +4404,7 @@
 			"contentType": "default",
 			"src": "Error sharing cover",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "custom_manga_info",
@@ -4413,7 +4413,7 @@
 			"contentType": "default",
 			"src": "Custom manga info",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "set_as_default",
@@ -4422,7 +4422,7 @@
 			"contentType": "default",
 			"src": "Set as default",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "filter_groups",
@@ -4431,7 +4431,7 @@
 			"contentType": "default",
 			"src": "Filter scanlator groups",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "deleted_chapters_other",
@@ -4442,7 +4442,7 @@
 			"contentType": "default",
 			"src": "%1$s chapters have been removed from the source:\\n%2$s\\n\\nDelete\n            their downloads?",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -4463,7 +4463,7 @@
 			"contentType": "default",
 			"src": "Tracking",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "tracked",
@@ -4472,7 +4472,7 @@
 			"contentType": "default",
 			"src": "Tracked",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "not_tracked",
@@ -4481,7 +4481,7 @@
 			"contentType": "default",
 			"src": "Not tracked",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "services",
@@ -4490,7 +4490,7 @@
 			"contentType": "default",
 			"src": "Services",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "sync_chapters_after_reading",
@@ -4499,7 +4499,7 @@
 			"contentType": "default",
 			"src": "Sync chapters after reading",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "track_when_adding_to_library",
@@ -4508,7 +4508,7 @@
 			"contentType": "default",
 			"src": "Track when adding to library",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "only_applies_silent_trackers",
@@ -4517,7 +4517,7 @@
 			"contentType": "default",
 			"src": "Only applies to silent trackers, such as Komga",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "reading",
@@ -4526,7 +4526,7 @@
 			"contentType": "default",
 			"src": "Reading",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "currently_reading",
@@ -4535,7 +4535,7 @@
 			"contentType": "default",
 			"src": "Currently Reading",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "dropped",
@@ -4544,7 +4544,7 @@
 			"contentType": "default",
 			"src": "Dropped",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "on_hold",
@@ -4553,7 +4553,7 @@
 			"contentType": "default",
 			"src": "On hold",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "plan_to_read",
@@ -4562,7 +4562,7 @@
 			"contentType": "default",
 			"src": "Plan to read",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "want_to_read",
@@ -4571,7 +4571,7 @@
 			"contentType": "default",
 			"src": "Want to Read",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "paused",
@@ -4580,7 +4580,7 @@
 			"contentType": "default",
 			"src": "Paused",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "rereading",
@@ -4589,7 +4589,7 @@
 			"contentType": "default",
 			"src": "Rereading",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "score",
@@ -4598,7 +4598,7 @@
 			"contentType": "default",
 			"src": "Score",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "status",
@@ -4607,7 +4607,7 @@
 			"contentType": "default",
 			"src": "Status",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "started",
@@ -4616,7 +4616,7 @@
 			"contentType": "default",
 			"src": "Started",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "type",
@@ -4625,7 +4625,7 @@
 			"contentType": "default",
 			"src": "Type",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "url_not_set_click_again",
@@ -4634,7 +4634,7 @@
 			"contentType": "default",
 			"src": "Manga URL not set, please click title and select manga again",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "refresh_tracking",
@@ -4643,7 +4643,7 @@
 			"contentType": "default",
 			"src": "Refresh tracking",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "add_tracking",
@@ -4652,7 +4652,7 @@
 			"contentType": "default",
 			"src": "Add tracking",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "select_an_entry",
@@ -4661,7 +4661,7 @@
 			"contentType": "default",
 			"src": "Select an entry",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "source_unsupported",
@@ -4670,7 +4670,7 @@
 			"contentType": "default",
 			"src": "Source is not supported",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "no_match_found",
@@ -4679,7 +4679,7 @@
 			"contentType": "default",
 			"src": "No match found",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "remove_tracking",
@@ -4688,7 +4688,7 @@
 			"contentType": "default",
 			"src": "Remove tracking from app",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "cannot_remove_tracking_while_offline",
@@ -4698,7 +4698,7 @@
 			"contentType": "default",
 			"src": "Tracker cannot be removed from %1$s while offline",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Tracker cannot be removed from ",
 				{
@@ -4716,7 +4716,7 @@
 			"contentType": "default",
 			"src": "Also remove from %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Also remove from ",
 				{
@@ -4732,7 +4732,7 @@
 			"contentType": "default",
 			"src": "Remove previous tracker?",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "remove_x_from_service_and_add_y",
@@ -4742,7 +4742,7 @@
 			"contentType": "default",
 			"src": "Remove %1$s from %2$s and add %3$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Remove ",
 				{
@@ -4769,7 +4769,7 @@
 			"contentType": "default",
 			"src": "Keep both on %1$s and only replace locally",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Keep both on ",
 				{
@@ -4786,7 +4786,7 @@
 			"contentType": "default",
 			"src": "Started reading date",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "finished_reading_date",
@@ -4795,7 +4795,7 @@
 			"contentType": "default",
 			"src": "Finished reading date",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "myanimelist_relogin",
@@ -4804,7 +4804,7 @@
 			"contentType": "default",
 			"src": "Please log in to MAL again",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "use_suggested_date",
@@ -4813,7 +4813,7 @@
 			"contentType": "default",
 			"src": "Use suggested date",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "select_sources",
@@ -4822,7 +4822,7 @@
 			"contentType": "default",
 			"src": "Select sources",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "source_migration",
@@ -4831,7 +4831,7 @@
 			"contentType": "default",
 			"src": "Source migration",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "migration",
@@ -4840,7 +4840,7 @@
 			"contentType": "default",
 			"src": "Migration",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "skip_pre_migration",
@@ -4849,7 +4849,7 @@
 			"contentType": "default",
 			"src": "Skip pre-migration",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "select_a_source_then_item_to_migrate",
@@ -4859,7 +4859,7 @@
 			"contentType": "default",
 			"src": "Select a source, then select an item to\n        migrate",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Select a source, then select an item to migrate"
 			]
@@ -4871,7 +4871,7 @@
 			"contentType": "default",
 			"src": "Data to include in migration",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "search_parameter_eg",
@@ -4880,7 +4880,7 @@
 			"contentType": "default",
 			"src": "Search parameter (e.g. language:english)",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "include_extra_search_parameter",
@@ -4889,7 +4889,7 @@
 			"contentType": "default",
 			"src": "Include extra search parameter when searching",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "use_most_chapters",
@@ -4898,7 +4898,7 @@
 			"contentType": "default",
 			"src": "Use source with the most chapters (slower)",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "use_first_source",
@@ -4907,7 +4907,7 @@
 			"contentType": "default",
 			"src": "Use first source with alternative",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "skip_this_step_next_time",
@@ -4916,7 +4916,7 @@
 			"contentType": "default",
 			"src": "Skip this step next time",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "to_show_again_setting_sources",
@@ -4926,7 +4926,7 @@
 			"contentType": "default",
 			"src": "To show this screen again, go to Settings ->\n        Sources.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"To show this screen again, go to Settings -> Sources."
 			]
@@ -4939,7 +4939,7 @@
 			"contentType": "default",
 			"src": "Latest: %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Latest: ",
 				{
@@ -4955,7 +4955,7 @@
 			"contentType": "default",
 			"src": "migrating to",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "dont_migrate",
@@ -4965,7 +4965,7 @@
 			"contentType": "default",
 			"src": "Don\\'t migrate",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Don't migrate"
 			]
@@ -4977,7 +4977,7 @@
 			"contentType": "default",
 			"src": "Search manually",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "migrate_now",
@@ -4986,7 +4986,7 @@
 			"contentType": "default",
 			"src": "Migrate now",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "copy_now",
@@ -4995,7 +4995,7 @@
 			"contentType": "default",
 			"src": "Copy now",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "migrate",
@@ -5004,7 +5004,7 @@
 			"contentType": "default",
 			"src": "Migrate",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "migrate_",
@@ -5014,7 +5014,7 @@
 			"contentType": "default",
 			"src": "Migrate %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Migrate ",
 				{
@@ -5030,7 +5030,7 @@
 			"contentType": "default",
 			"src": "Copy",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "no_chapters_found_for_migration",
@@ -5040,7 +5040,7 @@
 			"contentType": "default",
 			"src": "No chapters found, this manga cannot be used for\n        migration",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"No chapters found, this manga cannot be used for migration"
 			]
@@ -5052,7 +5052,7 @@
 			"contentType": "default",
 			"src": "No Alternatives Found",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "stop_migrating",
@@ -5061,7 +5061,7 @@
 			"contentType": "default",
 			"src": "Stop migrating?",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "migrate_manga_other",
@@ -5072,7 +5072,7 @@
 			"contentType": "default",
 			"src": "Migrate %1$d%2$s manga?",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Migrate ",
 				{
@@ -5095,7 +5095,7 @@
 			"contentType": "default",
 			"src": "Copy %1$d%2$s manga?",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Copy ",
 				{
@@ -5117,7 +5117,7 @@
 			"contentType": "default",
 			"src": "(skipping %1$d)",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"(skipping ",
 				{
@@ -5136,7 +5136,7 @@
 			"contentType": "default",
 			"src": "%d manga migrated",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -5152,7 +5152,7 @@
 			"contentType": "default",
 			"src": "Settings",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "general",
@@ -5161,7 +5161,7 @@
 			"contentType": "default",
 			"src": "General",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "reader",
@@ -5170,7 +5170,7 @@
 			"contentType": "default",
 			"src": "Reader",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "appearance",
@@ -5179,7 +5179,7 @@
 			"contentType": "default",
 			"src": "Appearance",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "advanced",
@@ -5188,7 +5188,7 @@
 			"contentType": "default",
 			"src": "Advanced",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "about",
@@ -5197,7 +5197,7 @@
 			"contentType": "default",
 			"src": "About",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "help",
@@ -5206,7 +5206,7 @@
 			"contentType": "default",
 			"src": "Help",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "search_settings",
@@ -5215,7 +5215,7 @@
 			"contentType": "default",
 			"src": "Search settings",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "turn_on_",
@@ -5225,7 +5225,7 @@
 			"contentType": "default",
 			"src": "Turn on %s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Turn on ",
 				{
@@ -5242,7 +5242,7 @@
 			"contentType": "default",
 			"src": "Turn off %s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Turn off ",
 				{
@@ -5258,7 +5258,7 @@
 			"contentType": "default",
 			"src": "Incognito mode",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "pauses_reading_history",
@@ -5267,7 +5267,7 @@
 			"contentType": "default",
 			"src": "Pauses reading history",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "app_theme",
@@ -5276,7 +5276,7 @@
 			"contentType": "default",
 			"src": "App theme",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "light_theme",
@@ -5285,7 +5285,7 @@
 			"contentType": "default",
 			"src": "Light theme",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "dark_theme",
@@ -5294,7 +5294,7 @@
 			"contentType": "default",
 			"src": "Dark theme",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "light_blue",
@@ -5303,7 +5303,7 @@
 			"contentType": "default",
 			"src": "Light Blue",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "dark",
@@ -5312,7 +5312,7 @@
 			"contentType": "default",
 			"src": "Dark",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "amoled_black",
@@ -5321,7 +5321,7 @@
 			"contentType": "default",
 			"src": "AMOLED Black",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "dark_blue",
@@ -5330,7 +5330,7 @@
 			"contentType": "default",
 			"src": "Dark Blue",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "midnight_dusk",
@@ -5339,7 +5339,7 @@
 			"contentType": "default",
 			"src": "Midnight Dusk",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "spring_blossom",
@@ -5348,7 +5348,7 @@
 			"contentType": "default",
 			"src": "Spring Blossom",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "strawberry_daiquiri",
@@ -5357,7 +5357,7 @@
 			"contentType": "default",
 			"src": "Strawberry Daiquiri",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "a_brighter_you",
@@ -5366,7 +5366,7 @@
 			"contentType": "default",
 			"src": "A Brighter You (Dynamic)",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "a_calmer_you",
@@ -5375,7 +5375,7 @@
 			"contentType": "default",
 			"src": "A Calmer You (Dynamic)",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "yotsuba",
@@ -5384,7 +5384,7 @@
 			"contentType": "default",
 			"src": "Yotsuba",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "tako",
@@ -5393,7 +5393,7 @@
 			"contentType": "default",
 			"src": "Tako",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "yin",
@@ -5402,7 +5402,7 @@
 			"contentType": "default",
 			"src": "Yin",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "yang",
@@ -5411,7 +5411,7 @@
 			"contentType": "default",
 			"src": "Yang",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "chocolate_strawberries",
@@ -5420,7 +5420,7 @@
 			"contentType": "default",
 			"src": "Chocolate Strawberries",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "teal_ocean",
@@ -5429,7 +5429,7 @@
 			"contentType": "default",
 			"src": "Teal Ocean",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "sapphire_dusk",
@@ -5438,7 +5438,7 @@
 			"contentType": "default",
 			"src": "Sapphire Dusk",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "hot_pink",
@@ -5447,7 +5447,7 @@
 			"contentType": "default",
 			"src": "Hot Pink",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "flat_lime",
@@ -5456,7 +5456,7 @@
 			"contentType": "default",
 			"src": "Flat Lime",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "white_theme",
@@ -5465,7 +5465,7 @@
 			"contentType": "default",
 			"src": "Pure White",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "locale",
@@ -5474,7 +5474,7 @@
 			"contentType": "default",
 			"src": "Locale",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "last_used_library_recents",
@@ -5483,7 +5483,7 @@
 			"contentType": "default",
 			"src": "Last used (Library or Recents)",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "system_default",
@@ -5492,7 +5492,7 @@
 			"contentType": "default",
 			"src": "System default",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "date_format",
@@ -5501,7 +5501,7 @@
 			"contentType": "default",
 			"src": "Date format",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "check_for_updates",
@@ -5510,7 +5510,7 @@
 			"contentType": "default",
 			"src": "Check for updates",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "updated_to_",
@@ -5520,7 +5520,7 @@
 			"contentType": "default",
 			"src": "Updated to v%1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Updated to v",
 				{
@@ -5536,7 +5536,7 @@
 			"contentType": "default",
 			"src": "Secure screen",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "hide_bottom_nav",
@@ -5545,7 +5545,7 @@
 			"contentType": "default",
 			"src": "Auto-hide bottom navigation",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "side_nav_icon_alignment",
@@ -5554,7 +5554,7 @@
 			"contentType": "default",
 			"src": "Side navigation icon alignment",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "use_side_navigation",
@@ -5563,7 +5563,7 @@
 			"contentType": "default",
 			"src": "Use side navigation",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "default_behavior",
@@ -5572,7 +5572,7 @@
 			"contentType": "default",
 			"src": "Default behavior",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "by_default_side_nav_info",
@@ -5581,7 +5581,7 @@
 			"contentType": "default",
 			"src": "By default, side navigation is used for certain phones and small tablets when in landscape, and always shows on larger tablets",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "follow_system_theme",
@@ -5590,7 +5590,7 @@
 			"contentType": "default",
 			"src": "Follow system theme",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "pure_black_dark_mode",
@@ -5599,7 +5599,7 @@
 			"contentType": "default",
 			"src": "Pure black dark mode",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "details_page",
@@ -5608,7 +5608,7 @@
 			"contentType": "default",
 			"src": "Details page",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "theme_buttons_based_on_cover",
@@ -5617,7 +5617,7 @@
 			"contentType": "default",
 			"src": "Theme buttons based on cover",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "hides_on_scroll",
@@ -5626,7 +5626,7 @@
 			"contentType": "default",
 			"src": "Hides when scrolling",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "hide_app_block_screenshots",
@@ -5635,7 +5635,7 @@
 			"contentType": "default",
 			"src": "Hide app contents when switching apps and block screenshots",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "hide_notification_content",
@@ -5644,7 +5644,7 @@
 			"contentType": "default",
 			"src": "Hide notification content",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "security",
@@ -5653,7 +5653,7 @@
 			"contentType": "default",
 			"src": "Security",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "starting_screen",
@@ -5662,7 +5662,7 @@
 			"contentType": "default",
 			"src": "Starting screen",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "back_to_start",
@@ -5671,7 +5671,7 @@
 			"contentType": "default",
 			"src": "Back to start",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "pressing_back_to_start",
@@ -5680,7 +5680,7 @@
 			"contentType": "default",
 			"src": "Pressing back to starting screen",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "auto_updates",
@@ -5689,7 +5689,7 @@
 			"contentType": "default",
 			"src": "Auto-updates",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "auto_update_app",
@@ -5698,7 +5698,7 @@
 			"contentType": "default",
 			"src": "Auto-update app",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "over_wifi_only",
@@ -5707,7 +5707,7 @@
 			"contentType": "default",
 			"src": "Over Wi-Fi only",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "over_any_network",
@@ -5716,7 +5716,7 @@
 			"contentType": "default",
 			"src": "Over any network",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "dont_auto_update",
@@ -5726,7 +5726,7 @@
 			"contentType": "default",
 			"src": "Don\\'t auto-update",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Don't auto-update"
 			]
@@ -5738,7 +5738,7 @@
 			"contentType": "default",
 			"src": "App shortcuts",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "show_recent_sources",
@@ -5747,7 +5747,7 @@
 			"contentType": "default",
 			"src": "Show recently used sources",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "show_recent_series",
@@ -5756,7 +5756,7 @@
 			"contentType": "default",
 			"src": "Show recent series",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "includes_recently_read_updated_added",
@@ -5765,7 +5765,7 @@
 			"contentType": "default",
 			"src": "Includes recently read, updated, and added series",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "series_opens_new_chapters",
@@ -5774,7 +5774,7 @@
 			"contentType": "default",
 			"src": "Series shortcuts opens new chapters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "no_new_chapters_open_details",
@@ -5784,7 +5784,7 @@
 			"contentType": "default",
 			"src": "When there\\'s no new chapters, the series\\' details will open instead",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"When there's no new chapters, the series' details will open instead"
 			]
@@ -5796,7 +5796,7 @@
 			"contentType": "default",
 			"src": "Backup",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "backup_and_restore",
@@ -5805,7 +5805,7 @@
 			"contentType": "default",
 			"src": "Backup and restore",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "create_backup",
@@ -5814,7 +5814,7 @@
 			"contentType": "default",
 			"src": "Create backup",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "can_be_used_to_restore",
@@ -5823,7 +5823,7 @@
 			"contentType": "default",
 			"src": "Can be used to restore current library",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "restore_backup",
@@ -5832,7 +5832,7 @@
 			"contentType": "default",
 			"src": "Restore backup",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "restore_from_backup_file",
@@ -5841,7 +5841,7 @@
 			"contentType": "default",
 			"src": "Restore library from backup file",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "restore_in_progress",
@@ -5850,7 +5850,7 @@
 			"contentType": "default",
 			"src": "Restore already in progress",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "backup_in_progress",
@@ -5859,7 +5859,7 @@
 			"contentType": "default",
 			"src": "Backup already in progress",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "backup_location",
@@ -5868,7 +5868,7 @@
 			"contentType": "default",
 			"src": "Backup location",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "automatic_backups",
@@ -5877,7 +5877,7 @@
 			"contentType": "default",
 			"src": "Automatic backups",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "backup_frequency",
@@ -5886,7 +5886,7 @@
 			"contentType": "default",
 			"src": "Backup frequency",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "max_auto_backups",
@@ -5895,7 +5895,7 @@
 			"contentType": "default",
 			"src": "Max automatic backups",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "invalid_backup_file",
@@ -5904,7 +5904,7 @@
 			"contentType": "default",
 			"src": "Invalid backup file",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "invalid_backup_file_type",
@@ -5914,7 +5914,7 @@
 			"contentType": "default",
 			"src": "Invalid backup file type: %1$s\\nIt should end with \".proto.gz\" or \".json\".",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Invalid backup file type: ",
 				{
@@ -5931,7 +5931,7 @@
 			"contentType": "default",
 			"src": "File is missing data.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "backup_has_no_manga",
@@ -5940,7 +5940,7 @@
 			"contentType": "default",
 			"src": "Backup does not contain any manga.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "backup_failed",
@@ -5949,7 +5949,7 @@
 			"contentType": "default",
 			"src": "Backup failed",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "backup_created",
@@ -5958,7 +5958,7 @@
 			"contentType": "default",
 			"src": "Backup created",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "restore_completed",
@@ -5967,7 +5967,7 @@
 			"contentType": "default",
 			"src": "Restore completed",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "restore_error",
@@ -5976,7 +5976,7 @@
 			"contentType": "default",
 			"src": "Failed to restore backup",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "restore_missing_sources",
@@ -5985,7 +5985,7 @@
 			"contentType": "default",
 			"src": "Missing sources:",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "restore_missing_trackers",
@@ -5994,7 +5994,7 @@
 			"contentType": "default",
 			"src": "Trackers not logged into:",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "restore_content",
@@ -6004,7 +6004,7 @@
 			"contentType": "default",
 			"src": "Restore uses sources to fetch data, carrier costs may apply.\\n\\nMake sure you have installed all necessary extensions and are logged in to sources and tracking services before restoring.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Restore uses sources to fetch data, carrier costs may apply.\n\nMake sure you have installed all necessary extensions and are logged in to sources and tracking services before restoring."
 			]
@@ -6017,7 +6017,7 @@
 			"contentType": "default",
 			"src": "Data from the backup file will be restored.\\n\\nYou will need to install any missing extensions and log in to tracking services afterwards to use them.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Data from the backup file will be restored.\n\nYou will need to install any missing extensions and log in to tracking services afterwards to use them."
 			]
@@ -6029,7 +6029,7 @@
 			"contentType": "default",
 			"src": "Canceled restore",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "creating_backup",
@@ -6038,7 +6038,7 @@
 			"contentType": "default",
 			"src": "Creating backup",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "what_should_backup",
@@ -6047,7 +6047,7 @@
 			"contentType": "default",
 			"src": "What do you want to backup?",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "restoring_backup",
@@ -6056,7 +6056,7 @@
 			"contentType": "default",
 			"src": "Restoring backup",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "restore_duration",
@@ -6066,7 +6066,7 @@
 			"contentType": "default",
 			"src": "%02d min, %02d sec",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -6087,7 +6087,7 @@
 			"contentType": "default",
 			"src": "Backup/restore may not function properly if MIUI Optimization is disabled.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "progress",
@@ -6096,7 +6096,7 @@
 			"contentType": "default",
 			"src": "Progress",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "complete",
@@ -6105,7 +6105,7 @@
 			"contentType": "default",
 			"src": "Complete",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "restore_completed_message_other",
@@ -6116,7 +6116,7 @@
 			"contentType": "default",
 			"src": "Done in %1$s with %2$s errors",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Done in ",
 				{
@@ -6139,7 +6139,7 @@
 			"contentType": "default",
 			"src": "Not logged into %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Not logged into ",
 				{
@@ -6155,7 +6155,7 @@
 			"contentType": "default",
 			"src": "Clear chapter cache",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "force_download_cache_refresh",
@@ -6164,7 +6164,7 @@
 			"contentType": "default",
 			"src": "Refresh the download cache",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "force_download_cache_refresh_summary",
@@ -6173,7 +6173,7 @@
 			"contentType": "default",
 			"src": "This will force the download cache to recalculate. Useful if you modified downloads outside of this app and want the app to pick them up",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "data_management",
@@ -6182,7 +6182,7 @@
 			"contentType": "default",
 			"src": "Data Management",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "crash_logs",
@@ -6191,7 +6191,7 @@
 			"contentType": "default",
 			"src": "Crash logs",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "dump_crash_logs",
@@ -6200,7 +6200,7 @@
 			"contentType": "default",
 			"src": "Dump crash logs",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "saves_error_logs",
@@ -6209,7 +6209,7 @@
 			"contentType": "default",
 			"src": "Saves error logs to a file for sharing with the developers",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "about_dont_kill_my_app",
@@ -6218,7 +6218,7 @@
 			"contentType": "default",
 			"src": "Some manufacturers have additional app restrictions that kill background services. This website has more info on how to fix it.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "crash_log_saved",
@@ -6227,7 +6227,7 @@
 			"contentType": "default",
 			"src": "Crash logs saved",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "network",
@@ -6236,7 +6236,7 @@
 			"contentType": "default",
 			"src": "Network",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "doh",
@@ -6245,7 +6245,7 @@
 			"contentType": "default",
 			"src": "DNS over HTTPS",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "disabled",
@@ -6254,7 +6254,7 @@
 			"contentType": "default",
 			"src": "Disabled",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "requires_app_restart",
@@ -6263,7 +6263,7 @@
 			"contentType": "default",
 			"src": "Requires app restart to take effect",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "used_",
@@ -6273,7 +6273,7 @@
 			"contentType": "default",
 			"src": "Used: %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Used: ",
 				{
@@ -6291,7 +6291,7 @@
 			"contentType": "default",
 			"src": "Cache cleared. %d files have been deleted",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Cache cleared. ",
 				{
@@ -6308,7 +6308,7 @@
 			"contentType": "default",
 			"src": "An error occurred while clearing cache",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "clear_cookies",
@@ -6317,7 +6317,7 @@
 			"contentType": "default",
 			"src": "Clear cookies",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "cookies_cleared",
@@ -6326,7 +6326,7 @@
 			"contentType": "default",
 			"src": "Cookies cleared",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "clear_database",
@@ -6335,7 +6335,7 @@
 			"contentType": "default",
 			"src": "Clear database",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "clear_database_summary",
@@ -6344,7 +6344,7 @@
 			"contentType": "default",
 			"src": "Delete manga and chapters that are not in your library",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "clear_database_confirmation",
@@ -6353,7 +6353,7 @@
 			"contentType": "default",
 			"src": "Are you sure? Read chapters and progress of non-library manga will be lost",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "clear_database_completed",
@@ -6362,7 +6362,7 @@
 			"contentType": "default",
 			"src": "Entries deleted",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "refresh_library_metadata",
@@ -6371,7 +6371,7 @@
 			"contentType": "default",
 			"src": "Refresh library metadata",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "updates_covers_genres_desc",
@@ -6380,7 +6380,7 @@
 			"contentType": "default",
 			"src": "Updates covers, genres, description and manga status information",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "refresh_tracking_metadata",
@@ -6389,7 +6389,7 @@
 			"contentType": "default",
 			"src": "Refresh tracking metadata",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "updates_tracking_details",
@@ -6398,7 +6398,7 @@
 			"contentType": "default",
 			"src": "Updates status, score and last chapter read from the tracking services",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "clean_up_downloaded_chapters",
@@ -6407,7 +6407,7 @@
 			"contentType": "default",
 			"src": "Clean up downloaded chapters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "delete_unused_chapters",
@@ -6417,7 +6417,7 @@
 			"contentType": "default",
 			"src": "Delete non-existent, partially downloaded,\n            and read chapter folders",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Delete non-existent, partially downloaded, and read chapter folders"
 			]
@@ -6429,7 +6429,7 @@
 			"contentType": "default",
 			"src": "Clean orphaned",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "clean_read_downloads",
@@ -6438,7 +6438,7 @@
 			"contentType": "default",
 			"src": "Clean read",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "clean_read_manga_not_in_library",
@@ -6447,7 +6447,7 @@
 			"contentType": "default",
 			"src": "Clean manga not in library",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "starting_cleanup",
@@ -6456,7 +6456,7 @@
 			"contentType": "default",
 			"src": "Starting cleanup",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "no_folders_to_cleanup",
@@ -6465,7 +6465,7 @@
 			"contentType": "default",
 			"src": "No folders to cleanup",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "disable_battery_optimization",
@@ -6474,7 +6474,7 @@
 			"contentType": "default",
 			"src": "Disable battery optimization",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "disable_if_issues_with_updating",
@@ -6484,7 +6484,7 @@
 			"contentType": "default",
 			"src": "Disable this if you are experiencing issues\n        with updating or restoring your library",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Disable this if you are experiencing issues with updating or restoring your library"
 			]
@@ -6496,7 +6496,7 @@
 			"contentType": "default",
 			"src": "Battery optimization is already disabled",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "cleanup_done_other",
@@ -6507,7 +6507,7 @@
 			"contentType": "default",
 			"src": "Cleanup done. Removed %d folders",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Cleanup done. Removed ",
 				{
@@ -6524,7 +6524,7 @@
 			"contentType": "default",
 			"src": "Clean up cached covers",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "delete_old_covers_in_library_used_",
@@ -6534,7 +6534,7 @@
 			"contentType": "default",
 			"src": "Delete old and unused cached covers of\n        manga in your library that has been updated.\\nCurrently using: %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Delete old and unused cached covers of manga in your library that has been updated.\nCurrently using: ",
 				{
@@ -6550,7 +6550,7 @@
 			"contentType": "default",
 			"src": "Clear cached covers not in library",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "delete_all_covers__not_in_library_used_",
@@ -6560,7 +6560,7 @@
 			"contentType": "default",
 			"src": "Delete all covers cached that are\n        not in your library \\nCurrently using: %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Delete all covers cached that are not in your library \nCurrently using: ",
 				{
@@ -6576,7 +6576,7 @@
 			"contentType": "default",
 			"src": "Global search",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "check_for_extension_updates",
@@ -6585,7 +6585,7 @@
 			"contentType": "default",
 			"src": "Check for extension updates",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "auto_update_extensions",
@@ -6594,7 +6594,7 @@
 			"contentType": "default",
 			"src": "Auto-update extensions",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "notify_extension_updated",
@@ -6603,7 +6603,7 @@
 			"contentType": "default",
 			"src": "Notify extension has been updated",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "some_extensions_may_not_update",
@@ -6612,7 +6612,7 @@
 			"contentType": "default",
 			"src": "Some extensions may not be auto-updated if they were installed outside this app",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "only_search_pinned_when",
@@ -6621,7 +6621,7 @@
 			"contentType": "default",
 			"src": "Only search pinned sources",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "match_pinned_sources",
@@ -6630,7 +6630,7 @@
 			"contentType": "default",
 			"src": "Match pinned sources",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "match_enabled_sources",
@@ -6639,7 +6639,7 @@
 			"contentType": "default",
 			"src": "Match enabled sources",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "only_enable_pinned_for_migration",
@@ -6649,7 +6649,7 @@
 			"contentType": "default",
 			"src": "Only enable your pinned sources for\n        migration",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Only enable your pinned sources for migration"
 			]
@@ -6662,7 +6662,7 @@
 			"contentType": "default",
 			"src": "Only enable your currently enabled sources for\n        migration",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Only enable your currently enabled sources for migration"
 			]
@@ -6675,7 +6675,7 @@
 			"contentType": "default",
 			"src": "Use last saved pre-migration preferences\n    and sources to mass migrate",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Use last saved pre-migration preferences and sources to mass migrate"
 			]
@@ -6687,7 +6687,7 @@
 			"contentType": "default",
 			"src": "Migration sources changed",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "you_can_migrate_in_library",
@@ -6697,7 +6697,7 @@
 			"contentType": "default",
 			"src": "You can also migrate by selecting manga in your\n        library",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"You can also migrate by selecting manga in your library"
 			]
@@ -6709,7 +6709,7 @@
 			"contentType": "default",
 			"src": "Source migration guide",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "nsfw_sources",
@@ -6718,7 +6718,7 @@
 			"contentType": "default",
 			"src": "NSFW (18+) sources",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "show_in_sources_and_extensions",
@@ -6727,7 +6727,7 @@
 			"contentType": "default",
 			"src": "Show in sources and extensions lists",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "does_not_prevent_unofficial_nsfw",
@@ -6736,7 +6736,7 @@
 			"contentType": "default",
 			"src": "This does not prevent unofficial or potentially incorrectly flagged extensions from surfacing NSFW (18+) content within the app.",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "version",
@@ -6745,7 +6745,7 @@
 			"contentType": "default",
 			"src": "Version",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "build_time",
@@ -6754,7 +6754,7 @@
 			"contentType": "default",
 			"src": "Build time",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "send_crash_report",
@@ -6763,7 +6763,7 @@
 			"contentType": "default",
 			"src": "Send crash reports",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "helps_fix_bugs",
@@ -6772,7 +6772,7 @@
 			"contentType": "default",
 			"src": "Helps fix any bugs. No sensitive data will be sent",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "whats_new",
@@ -6782,7 +6782,7 @@
 			"contentType": "default",
 			"src": "What\\'s new",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"What's new"
 			]
@@ -6795,7 +6795,7 @@
 			"contentType": "default",
 			"src": "What\\'s new in this release",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"What's new in this release"
 			]
@@ -6807,7 +6807,7 @@
 			"contentType": "default",
 			"src": "Help translate",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "helpful_translation_links",
@@ -6816,7 +6816,7 @@
 			"contentType": "default",
 			"src": "Helpful translation links",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "website",
@@ -6825,7 +6825,7 @@
 			"contentType": "default",
 			"src": "Website",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "open_source_licenses",
@@ -6834,7 +6834,7 @@
 			"contentType": "default",
 			"src": "Open source licenses",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "log_in_to_",
@@ -6844,7 +6844,7 @@
 			"contentType": "default",
 			"src": "Log in to %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Log in to ",
 				{
@@ -6860,7 +6860,7 @@
 			"contentType": "default",
 			"src": "Username",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "email",
@@ -6869,7 +6869,7 @@
 			"contentType": "default",
 			"src": "Email address",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "password",
@@ -6878,7 +6878,7 @@
 			"contentType": "default",
 			"src": "Password",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "log_in",
@@ -6887,7 +6887,7 @@
 			"contentType": "default",
 			"src": "Log in",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "log_out",
@@ -6896,7 +6896,7 @@
 			"contentType": "default",
 			"src": "Log out",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "log_out_from_",
@@ -6906,7 +6906,7 @@
 			"contentType": "default",
 			"src": "Log out from %1$s?",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Log out from ",
 				{
@@ -6923,7 +6923,7 @@
 			"contentType": "default",
 			"src": "Successfully logged in",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "username_must_not_be_blank",
@@ -6932,7 +6932,7 @@
 			"contentType": "default",
 			"src": "Username or password cannot be blank",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "successfully_logged_out",
@@ -6941,7 +6941,7 @@
 			"contentType": "default",
 			"src": "You are now logged out",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "downloads",
@@ -6950,7 +6950,7 @@
 			"contentType": "default",
 			"src": "Downloads",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "download_queue",
@@ -6959,7 +6959,7 @@
 			"contentType": "default",
 			"src": "Download queue",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "downloading_",
@@ -6969,7 +6969,7 @@
 			"contentType": "default",
 			"src": "Downloading: %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Downloading: ",
 				{
@@ -6985,7 +6985,7 @@
 			"contentType": "default",
 			"src": "Cancel all",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "cancel_all_for_series",
@@ -6994,7 +6994,7 @@
 			"contentType": "default",
 			"src": "Cancel all for this series",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "downloaded",
@@ -7003,7 +7003,7 @@
 			"contentType": "default",
 			"src": "Downloaded",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "not_downloaded",
@@ -7012,7 +7012,7 @@
 			"contentType": "default",
 			"src": "Not downloaded",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "downloading",
@@ -7021,7 +7021,7 @@
 			"contentType": "default",
 			"src": "Downloading",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "download",
@@ -7030,7 +7030,7 @@
 			"contentType": "default",
 			"src": "Download",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "start_downloading_now",
@@ -7039,7 +7039,7 @@
 			"contentType": "default",
 			"src": "Start downloading now",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "remove_download",
@@ -7048,7 +7048,7 @@
 			"contentType": "default",
 			"src": "Remove download",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "remove_downloads",
@@ -7057,7 +7057,7 @@
 			"contentType": "default",
 			"src": "Remove downloads",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "downloading_progress",
@@ -7067,7 +7067,7 @@
 			"contentType": "default",
 			"src": "Downloading (%1$d/%2$d)",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Downloading (",
 				{
@@ -7089,7 +7089,7 @@
 			"contentType": "default",
 			"src": "Invalid download location",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "download_paused",
@@ -7098,7 +7098,7 @@
 			"contentType": "default",
 			"src": "Download paused",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "nothing_is_downloading",
@@ -7107,7 +7107,7 @@
 			"contentType": "default",
 			"src": "Nothing is currently downloading",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "download_complete",
@@ -7116,7 +7116,7 @@
 			"contentType": "default",
 			"src": "Download complete",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "download_error",
@@ -7125,7 +7125,7 @@
 			"contentType": "default",
 			"src": "Download error",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "manage_whats_downloading",
@@ -7135,7 +7135,7 @@
 			"contentType": "default",
 			"src": "Manage what\\'s downloading",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Manage what's downloading"
 			]
@@ -7148,7 +7148,7 @@
 			"contentType": "default",
 			"src": "Visit the recents tab to access the download\n        queue. You can also double tap or press and hold for quicker access",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Visit the recents tab to access the download queue. You can also double tap or press and hold for quicker access"
 			]
@@ -7161,7 +7161,7 @@
 			"contentType": "default",
 			"src": "Couldn\\'t download chapters due to low disk space",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Couldn't download chapters due to low disk space"
 			]
@@ -7173,7 +7173,7 @@
 			"contentType": "default",
 			"src": "Could not download chapter due to unexpected error",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "no_wifi_connection",
@@ -7182,7 +7182,7 @@
 			"contentType": "default",
 			"src": "No Wi-Fi connection available",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "no_network_connection",
@@ -7191,7 +7191,7 @@
 			"contentType": "default",
 			"src": "No network connection available",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "download_location",
@@ -7200,7 +7200,7 @@
 			"contentType": "default",
 			"src": "Download location",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "only_download_over_wifi",
@@ -7209,7 +7209,7 @@
 			"contentType": "default",
 			"src": "Only download over Wi-Fi",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "remove_when_marked_as_read",
@@ -7218,7 +7218,7 @@
 			"contentType": "default",
 			"src": "Remove when marked as read",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "remove_after_read",
@@ -7227,7 +7227,7 @@
 			"contentType": "default",
 			"src": "Remove after read",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "custom_location",
@@ -7236,7 +7236,7 @@
 			"contentType": "default",
 			"src": "Custom location",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "last_read_chapter",
@@ -7245,7 +7245,7 @@
 			"contentType": "default",
 			"src": "Last read chapter",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "second_to_last",
@@ -7254,7 +7254,7 @@
 			"contentType": "default",
 			"src": "Second to last chapter",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "third_to_last",
@@ -7263,7 +7263,7 @@
 			"contentType": "default",
 			"src": "Third to last chapter",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "fourth_to_last",
@@ -7272,7 +7272,7 @@
 			"contentType": "default",
 			"src": "Fourth to last chapter",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "fifth_to_last",
@@ -7281,7 +7281,7 @@
 			"contentType": "default",
 			"src": "Fifth to last chapter",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "download_new_chapters",
@@ -7290,7 +7290,7 @@
 			"contentType": "default",
 			"src": "Download new chapters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "categories_to_include_in_download",
@@ -7299,7 +7299,7 @@
 			"contentType": "default",
 			"src": "Categories to include in download",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "delete_removed_chapters",
@@ -7308,7 +7308,7 @@
 			"contentType": "default",
 			"src": "Delete removed chapters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "delete_downloaded_if_removed_online",
@@ -7318,7 +7318,7 @@
 			"contentType": "default",
 			"src": "Delete downloaded chapters if the source\n        has removed the chapter online",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Delete downloaded chapters if the source has removed the chapter online"
 			]
@@ -7330,7 +7330,7 @@
 			"contentType": "default",
 			"src": "Delete during global updates, ask on chapters page",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "always_keep",
@@ -7339,7 +7339,7 @@
 			"contentType": "default",
 			"src": "Always keep",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "always_delete",
@@ -7348,7 +7348,7 @@
 			"contentType": "default",
 			"src": "Always delete",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "automatic_removal",
@@ -7357,7 +7357,7 @@
 			"contentType": "default",
 			"src": "Automatic removal",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "manual",
@@ -7366,7 +7366,7 @@
 			"contentType": "default",
 			"src": "Manual",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "hourly",
@@ -7375,7 +7375,7 @@
 			"contentType": "default",
 			"src": "Hourly",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "every_2_hours",
@@ -7384,7 +7384,7 @@
 			"contentType": "default",
 			"src": "Every 2 hours",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "every_3_hours",
@@ -7393,7 +7393,7 @@
 			"contentType": "default",
 			"src": "Every 3 hours",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "every_6_hours",
@@ -7402,7 +7402,7 @@
 			"contentType": "default",
 			"src": "Every 6 hours",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "every_12_hours",
@@ -7411,7 +7411,7 @@
 			"contentType": "default",
 			"src": "Every 12 hours",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "daily",
@@ -7420,7 +7420,7 @@
 			"contentType": "default",
 			"src": "Daily",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "every_2_days",
@@ -7429,7 +7429,7 @@
 			"contentType": "default",
 			"src": "Every 2 days",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "weekly",
@@ -7438,7 +7438,7 @@
 			"contentType": "default",
 			"src": "Weekly",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "after_minutes_other",
@@ -7449,7 +7449,7 @@
 			"contentType": "default",
 			"src": "After %1$s minutes",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"After ",
 				{
@@ -7466,7 +7466,7 @@
 			"contentType": "default",
 			"src": "Select cover image",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "select_backup_file",
@@ -7475,7 +7475,7 @@
 			"contentType": "default",
 			"src": "Select backup file",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "file_picker_error",
@@ -7484,7 +7484,7 @@
 			"contentType": "default",
 			"src": "No file picker app found",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "failed_to_bypass_cloudflare",
@@ -7493,7 +7493,7 @@
 			"contentType": "default",
 			"src": "Failed to bypass Cloudflare",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "please_update_webview",
@@ -7502,7 +7502,7 @@
 			"contentType": "default",
 			"src": "Please update the WebView app for better compatibility",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "webview_is_required",
@@ -7511,7 +7511,7 @@
 			"contentType": "default",
 			"src": "WebView is required for Tachiyomi",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "add",
@@ -7520,7 +7520,7 @@
 			"contentType": "default",
 			"src": "Add",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "add_to_",
@@ -7530,7 +7530,7 @@
 			"contentType": "default",
 			"src": "Add to %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Add to ",
 				{
@@ -7547,7 +7547,7 @@
 			"contentType": "default",
 			"src": "Added to %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Added to ",
 				{
@@ -7563,7 +7563,7 @@
 			"contentType": "default",
 			"src": "All",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "alphabetically",
@@ -7572,7 +7572,7 @@
 			"contentType": "default",
 			"src": "Alphabetically",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "always",
@@ -7581,7 +7581,7 @@
 			"contentType": "default",
 			"src": "Always",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "always_ask",
@@ -7590,7 +7590,7 @@
 			"contentType": "default",
 			"src": "Always ask",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "automatic",
@@ -7599,7 +7599,7 @@
 			"contentType": "default",
 			"src": "Automatic",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "back",
@@ -7608,7 +7608,7 @@
 			"contentType": "default",
 			"src": "Back",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "beta",
@@ -7617,7 +7617,7 @@
 			"contentType": "default",
 			"src": "BETA",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "bottom",
@@ -7626,7 +7626,7 @@
 			"contentType": "default",
 			"src": "Bottom",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "cancel",
@@ -7635,7 +7635,7 @@
 			"contentType": "default",
 			"src": "Cancel",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "center",
@@ -7644,7 +7644,7 @@
 			"contentType": "default",
 			"src": "Center",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "change",
@@ -7653,7 +7653,7 @@
 			"contentType": "default",
 			"src": "Change",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "charging",
@@ -7662,7 +7662,7 @@
 			"contentType": "default",
 			"src": "Charging",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "clear",
@@ -7671,7 +7671,7 @@
 			"contentType": "default",
 			"src": "Clear",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "clear_filters",
@@ -7680,7 +7680,7 @@
 			"contentType": "default",
 			"src": "Clear filters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "close",
@@ -7689,7 +7689,7 @@
 			"contentType": "default",
 			"src": "Close",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "common",
@@ -7698,7 +7698,7 @@
 			"contentType": "default",
 			"src": "Common",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "cover_of_image",
@@ -7707,7 +7707,7 @@
 			"contentType": "default",
 			"src": "Cover of manga",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "create",
@@ -7716,7 +7716,7 @@
 			"contentType": "default",
 			"src": "Create",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "default_value",
@@ -7725,7 +7725,7 @@
 			"contentType": "default",
 			"src": "Default",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "delete",
@@ -7734,7 +7734,7 @@
 			"contentType": "default",
 			"src": "Delete",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "deleted_",
@@ -7744,7 +7744,7 @@
 			"contentType": "default",
 			"src": "Deleted: %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Deleted: ",
 				{
@@ -7760,7 +7760,7 @@
 			"contentType": "default",
 			"src": "Display",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "download_unread",
@@ -7769,7 +7769,7 @@
 			"contentType": "default",
 			"src": "Download unread",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "drag_handle",
@@ -7778,7 +7778,7 @@
 			"contentType": "default",
 			"src": "Drag handle",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "edit",
@@ -7787,7 +7787,7 @@
 			"contentType": "default",
 			"src": "Edit",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "enable",
@@ -7796,7 +7796,7 @@
 			"contentType": "default",
 			"src": "Enable",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "enabled",
@@ -7805,7 +7805,7 @@
 			"contentType": "default",
 			"src": "Enabled",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "exclude_",
@@ -7815,7 +7815,7 @@
 			"contentType": "default",
 			"src": "Exclude: %s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Exclude: ",
 				{
@@ -7831,7 +7831,7 @@
 			"contentType": "default",
 			"src": "Fast",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "filter",
@@ -7840,7 +7840,7 @@
 			"contentType": "default",
 			"src": "Filter",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "forward",
@@ -7849,7 +7849,7 @@
 			"contentType": "default",
 			"src": "Forward",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "free",
@@ -7858,7 +7858,7 @@
 			"contentType": "default",
 			"src": "Free",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "hide",
@@ -7867,7 +7867,7 @@
 			"contentType": "default",
 			"src": "Hide",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "ignore",
@@ -7876,7 +7876,7 @@
 			"contentType": "default",
 			"src": "Ignore",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "include_",
@@ -7886,7 +7886,7 @@
 			"contentType": "default",
 			"src": "Include: %s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Include: ",
 				{
@@ -7902,7 +7902,7 @@
 			"contentType": "default",
 			"src": "Install",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "keep",
@@ -7911,7 +7911,7 @@
 			"contentType": "default",
 			"src": "Keep",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "keep_in_",
@@ -7921,7 +7921,7 @@
 			"contentType": "default",
 			"src": "Keep in %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Keep in ",
 				{
@@ -7937,7 +7937,7 @@
 			"contentType": "default",
 			"src": "Left",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "less",
@@ -7946,7 +7946,7 @@
 			"contentType": "default",
 			"src": "Less",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "loading",
@@ -7955,7 +7955,7 @@
 			"contentType": "default",
 			"src": "Loading…",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "lock",
@@ -7964,7 +7964,7 @@
 			"contentType": "default",
 			"src": "Lock",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "mark_all_as_read",
@@ -7973,7 +7973,7 @@
 			"contentType": "default",
 			"src": "Mark all as read",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "mark_all_as_unread",
@@ -7982,7 +7982,7 @@
 			"contentType": "default",
 			"src": "Mark all as unread",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "mark_as_read",
@@ -7991,7 +7991,7 @@
 			"contentType": "default",
 			"src": "Mark as read",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "mark_as_unread",
@@ -8000,7 +8000,7 @@
 			"contentType": "default",
 			"src": "Mark as unread",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "mark_range_as_read",
@@ -8009,7 +8009,7 @@
 			"contentType": "default",
 			"src": "Mark a range of chapters as read",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "mark_range_as_unread",
@@ -8018,7 +8018,7 @@
 			"contentType": "default",
 			"src": "Mark a range of chapters as unread",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "mark_previous_as_read",
@@ -8027,7 +8027,7 @@
 			"contentType": "default",
 			"src": "Mark previous chapters as read",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "mark_previous_as_unread",
@@ -8036,7 +8036,7 @@
 			"contentType": "default",
 			"src": "Mark previous chapters as unread",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "menu",
@@ -8045,7 +8045,7 @@
 			"contentType": "default",
 			"src": "menu",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "more",
@@ -8054,7 +8054,7 @@
 			"contentType": "default",
 			"src": "More",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "move_to_bottom",
@@ -8063,7 +8063,7 @@
 			"contentType": "default",
 			"src": "Move to bottom",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "move_to_top",
@@ -8072,7 +8072,7 @@
 			"contentType": "default",
 			"src": "Move to top",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "move_to_",
@@ -8082,7 +8082,7 @@
 			"contentType": "default",
 			"src": "Move to %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Move to ",
 				{
@@ -8099,7 +8099,7 @@
 			"contentType": "default",
 			"src": "Moved to %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Moved to ",
 				{
@@ -8115,7 +8115,7 @@
 			"contentType": "default",
 			"src": "Name",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "recently_updated",
@@ -8124,7 +8124,7 @@
 			"contentType": "default",
 			"src": "Recently updated",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "recently_installed",
@@ -8133,7 +8133,7 @@
 			"contentType": "default",
 			"src": "Recently installed",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "language",
@@ -8142,7 +8142,7 @@
 			"contentType": "default",
 			"src": "Language",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "never",
@@ -8151,7 +8151,7 @@
 			"contentType": "default",
 			"src": "Never",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "newest",
@@ -8160,7 +8160,7 @@
 			"contentType": "default",
 			"src": "Newest",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "next",
@@ -8169,7 +8169,7 @@
 			"contentType": "default",
 			"src": "Next",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "no_animation",
@@ -8178,7 +8178,7 @@
 			"contentType": "default",
 			"src": "No animation",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "normal",
@@ -8187,7 +8187,7 @@
 			"contentType": "default",
 			"src": "Normal",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "oldest",
@@ -8196,7 +8196,7 @@
 			"contentType": "default",
 			"src": "Oldest",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "open_in_browser",
@@ -8205,7 +8205,7 @@
 			"contentType": "default",
 			"src": "Open in browser",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "open_log",
@@ -8214,7 +8214,7 @@
 			"contentType": "default",
 			"src": "Open log",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "open_in_webview",
@@ -8223,7 +8223,7 @@
 			"contentType": "default",
 			"src": "Open in WebView",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "options",
@@ -8232,7 +8232,7 @@
 			"contentType": "default",
 			"src": "Options",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "pause",
@@ -8241,7 +8241,7 @@
 			"contentType": "default",
 			"src": "Pause",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "picture_saved",
@@ -8250,7 +8250,7 @@
 			"contentType": "default",
 			"src": "Picture saved",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "pin",
@@ -8259,7 +8259,7 @@
 			"contentType": "default",
 			"src": "Pin",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "pinned",
@@ -8268,7 +8268,7 @@
 			"contentType": "default",
 			"src": "Pinned",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "preview",
@@ -8277,7 +8277,7 @@
 			"contentType": "default",
 			"src": "Preview",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "previous",
@@ -8286,7 +8286,7 @@
 			"contentType": "default",
 			"src": "Previous",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "remove",
@@ -8295,7 +8295,7 @@
 			"contentType": "default",
 			"src": "Remove",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "remove_from_",
@@ -8305,7 +8305,7 @@
 			"contentType": "default",
 			"src": "Remove from %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Remove from ",
 				{
@@ -8321,7 +8321,7 @@
 			"contentType": "default",
 			"src": "Reorder",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "reset",
@@ -8330,7 +8330,7 @@
 			"contentType": "default",
 			"src": "Reset",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "restore",
@@ -8339,7 +8339,7 @@
 			"contentType": "default",
 			"src": "Restore",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "resume",
@@ -8348,7 +8348,7 @@
 			"contentType": "default",
 			"src": "Resume",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "retry",
@@ -8357,7 +8357,7 @@
 			"contentType": "default",
 			"src": "Retry",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "right",
@@ -8366,7 +8366,7 @@
 			"contentType": "default",
 			"src": "Right",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "rotation",
@@ -8375,7 +8375,7 @@
 			"contentType": "default",
 			"src": "Rotation",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "default_orientation",
@@ -8384,7 +8384,7 @@
 			"contentType": "default",
 			"src": "Default orientation",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "orientation",
@@ -8393,7 +8393,7 @@
 			"contentType": "default",
 			"src": "Orientation",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "save",
@@ -8402,7 +8402,7 @@
 			"contentType": "default",
 			"src": "Save",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "search",
@@ -8411,7 +8411,7 @@
 			"contentType": "default",
 			"src": "Search",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "search_",
@@ -8421,7 +8421,7 @@
 			"contentType": "default",
 			"src": "Search %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Search ",
 				{
@@ -8437,7 +8437,7 @@
 			"contentType": "default",
 			"src": "Select all",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "select_none",
@@ -8446,7 +8446,7 @@
 			"contentType": "default",
 			"src": "Select none",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "selection",
@@ -8455,7 +8455,7 @@
 			"contentType": "default",
 			"src": "Selection",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "share",
@@ -8464,7 +8464,7 @@
 			"contentType": "default",
 			"src": "Share",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "sort",
@@ -8473,7 +8473,7 @@
 			"contentType": "default",
 			"src": "Sort",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "sort_and_filter",
@@ -8483,7 +8483,7 @@
 			"contentType": "default",
 			"src": "Sort &amp; Filter",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Sort & Filter"
 			]
@@ -8495,7 +8495,7 @@
 			"contentType": "default",
 			"src": "Start",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "stop",
@@ -8504,7 +8504,7 @@
 			"contentType": "default",
 			"src": "Stop",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "tag",
@@ -8513,7 +8513,7 @@
 			"contentType": "default",
 			"src": "Tag",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "top",
@@ -8522,7 +8522,7 @@
 			"contentType": "default",
 			"src": "Top",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "undo",
@@ -8531,7 +8531,7 @@
 			"contentType": "default",
 			"src": "Undo",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "unknown_error",
@@ -8540,7 +8540,7 @@
 			"contentType": "default",
 			"src": "Unknown error",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "unpin",
@@ -8549,7 +8549,7 @@
 			"contentType": "default",
 			"src": "Unpin",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "use_default",
@@ -8558,7 +8558,7 @@
 			"contentType": "default",
 			"src": "Use default",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "view_all_errors",
@@ -8567,7 +8567,7 @@
 			"contentType": "default",
 			"src": "View all errors",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "view_chapters",
@@ -8576,7 +8576,7 @@
 			"contentType": "default",
 			"src": "View chapters",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "warning",
@@ -8585,7 +8585,7 @@
 			"contentType": "default",
 			"src": "Warning",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "wifi",
@@ -8594,7 +8594,7 @@
 			"contentType": "default",
 			"src": "Wi-Fi",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		}
 	],
 	"translationProvider": "Grandfather",

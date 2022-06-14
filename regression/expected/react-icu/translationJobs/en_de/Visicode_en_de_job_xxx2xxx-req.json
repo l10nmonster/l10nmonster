@@ -10,7 +10,7 @@
 			"contentType": "node",
 			"src": "<b>Welcome</b> to $t(brand:portalName).",
 			"rid": "public/locales/en/app.json",
-			"ts": 1655099484884,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "bx",
@@ -37,7 +37,7 @@
 			"contentType": "node",
 			"src": "<strong>Welcome back</strong> to travel.",
 			"rid": "public/locales/en/app.json",
-			"ts": 1655099484884,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "bx",
@@ -58,7 +58,7 @@
 			"contentType": "node",
 			"src": "Book the trip you've been waiting for.",
 			"rid": "public/locales/en/app.json",
-			"ts": 1655099484884
+			"ts": 1
 		},
 		{
 			"sid": "pickerTraveler_one",
@@ -67,7 +67,7 @@
 			"contentType": "node",
 			"src": "Traveler",
 			"rid": "public/locales/en/app.json",
-			"ts": 1655099484884
+			"ts": 1
 		},
 		{
 			"sid": "pickerTraveler_other",
@@ -76,7 +76,7 @@
 			"contentType": "node",
 			"src": "Travelers",
 			"rid": "public/locales/en/app.json",
-			"ts": 1655099484884
+			"ts": 1
 		},
 		{
 			"sid": "warningMessage",
@@ -86,7 +86,7 @@
 			"contentType": "node",
 			"src": "You can search for up to {{maximumCount}} travelers",
 			"rid": "public/locales/en/app.json",
-			"ts": 1655099484884,
+			"ts": 1,
 			"nsrc": [
 				"You can search for up to ",
 				{
@@ -104,7 +104,7 @@
 			"contentType": "node",
 			"src": "<p>$t(brand:portalName) price services and notifications. $t(brand:clientName) work hard to ensure the accuracy of its predictions. </p>",
 			"rid": "public/locales/en/app.json",
-			"ts": 1655099484884,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "bx",
@@ -135,7 +135,7 @@
 			"contentType": "node",
 			"src": "{{count}} day",
 			"rid": "public/locales/en/app.json",
-			"ts": 1655099484884,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -153,7 +153,7 @@
 			"contentType": "node",
 			"src": "{{count}} days",
 			"rid": "public/locales/en/app.json",
-			"ts": 1655099484884,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -171,7 +171,7 @@
 			"contentType": "node",
 			"src": "{{count}} hour",
 			"rid": "public/locales/en/app.json",
-			"ts": 1655099484884,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -189,7 +189,7 @@
 			"contentType": "node",
 			"src": "{{count}} hours",
 			"rid": "public/locales/en/app.json",
-			"ts": 1655099484884,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -207,7 +207,7 @@
 			"contentType": "node",
 			"src": "{{count}} second",
 			"rid": "public/locales/en/app.json",
-			"ts": 1655099484884,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -225,7 +225,7 @@
 			"contentType": "node",
 			"src": "{{count}} seconds",
 			"rid": "public/locales/en/app.json",
-			"ts": 1655099484884,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",

@@ -1,5 +1,5 @@
 import { diffJson } from 'diff';
-import { getNormalizedString, flattenNormalizedSourceToOrdinal, flattenNormalizedSourceV1, sourceAndTargetAreCompatible } from '../normalizers/util.js';
+import { getNormalizedString, flattenNormalizedSourceToOrdinal, flattenNormalizedSourceV1, sourceAndTargetAreCompatible } from './normalizers/util.js';
 import { consoleColor } from './shared.js';
 
 export async function translateCmd(mm, { limitToLang, dryRun }) {

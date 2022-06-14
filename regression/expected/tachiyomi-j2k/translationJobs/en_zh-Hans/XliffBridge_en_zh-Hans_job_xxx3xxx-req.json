@@ -11,7 +11,7 @@
 			"contentType": "default",
 			"src": "Remove %1$d downloaded chapter?",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Remove ",
 				{
@@ -30,7 +30,7 @@
 			"contentType": "default",
 			"src": "%1$d chapter",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -48,7 +48,7 @@
 			"contentType": "default",
 			"src": "%1$d page left",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -66,7 +66,7 @@
 			"contentType": "default",
 			"src": "%d category",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -84,7 +84,7 @@
 			"contentType": "default",
 			"src": "For %d title",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"For ",
 				{
@@ -103,7 +103,7 @@
 			"contentType": "default",
 			"src": "and %1$d more chapter",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"and ",
 				{
@@ -121,7 +121,7 @@
 			"contentType": "default",
 			"src": "1 update failed",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "_updates_pending_one",
@@ -132,7 +132,7 @@
 			"contentType": "default",
 			"src": "%d update pending",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -149,7 +149,7 @@
 			"contentType": "default",
 			"src": "Extension updated",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "extension_updates_available_one",
@@ -159,7 +159,7 @@
 			"contentType": "default",
 			"src": "Extension update available",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "pages_plural_one",
@@ -170,7 +170,7 @@
 			"contentType": "default",
 			"src": "%1$d page",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -187,7 +187,7 @@
 			"contentType": "default",
 			"src": "Skipping 1 chapter, either the source is missing it or it has been filtered out",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928
+			"ts": 1
 		},
 		{
 			"sid": "deleted_chapters_one",
@@ -198,7 +198,7 @@
 			"contentType": "default",
 			"src": "A chapter has been removed from the source:\\n%2$s\\nDelete\n            its download?",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"A chapter has been removed from the source:\n",
 				{
@@ -217,7 +217,7 @@
 			"contentType": "default",
 			"src": "Done in %1$s with %2$s error",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Done in ",
 				{
@@ -241,7 +241,7 @@
 			"contentType": "default",
 			"src": "Cache cleared. %d file has been deleted",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Cache cleared. ",
 				{
@@ -260,7 +260,7 @@
 			"contentType": "default",
 			"src": "Cleanup done. Removed %d folder",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Cleanup done. Removed ",
 				{
@@ -279,7 +279,7 @@
 			"contentType": "default",
 			"src": "After %1$s minute",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"After ",
 				{

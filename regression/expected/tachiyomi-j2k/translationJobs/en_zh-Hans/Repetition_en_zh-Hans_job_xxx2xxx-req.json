@@ -11,7 +11,7 @@
 			"contentType": "default",
 			"src": "Migrate %1$d%2$s manga?",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Migrate ",
 				{
@@ -34,7 +34,7 @@
 			"contentType": "default",
 			"src": "Copy %1$d%2$s manga?",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				"Copy ",
 				{
@@ -57,7 +57,7 @@
 			"contentType": "default",
 			"src": "%d manga migrated",
 			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1642896537928,
+			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",

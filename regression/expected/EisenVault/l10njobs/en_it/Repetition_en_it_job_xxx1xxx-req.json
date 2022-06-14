@@ -8,7 +8,7 @@
 			"contentType": "default",
 			"src": "This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed.",
 			"rid": "dashlets/rssfeed.get_en.properties",
-			"ts": 1642896537817
+			"ts": 1
 		},
 		{
 			"sid": "link.configure",
@@ -16,7 +16,7 @@
 			"contentType": "default",
 			"src": "Configure",
 			"rid": "dashlets/site-notice.get_en.properties",
-			"ts": 1642896537771
+			"ts": 1
 		}
 	],
 	"translationProvider": "Repetition",
