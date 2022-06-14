@@ -14,22 +14,27 @@ const phMap1 = {
     a: {
         t: "x",
         v: "<icon name='location'/>",
+        v1: "a_x_icon",
     },
     b: {
         t: "x",
         v: "{0,number,integer}",
+        v1: "b_x_0",
     },
     c: {
         t: "bx",
         v: "<color name='green'>",
+        v1: "c_bx_color",
     },
     d: {
         t: "x",
         v: "{1}",
+        v1: "d_x_1",
     },
     e: {
         t: "ex",
         v: "</color>",
+        v1: "e_ex_color",
     }
 };
 

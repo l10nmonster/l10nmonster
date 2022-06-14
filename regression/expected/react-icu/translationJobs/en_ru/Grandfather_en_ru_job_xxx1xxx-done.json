@@ -8,119 +8,87 @@
 			"q": 70,
 			"src": "Welcome to react using react-i18next",
 			"tgt": "Добро пожаловать в React и react-i18next",
-			"ts": 1653323478091
+			"ts": 1653363932437
 		},
 		{
-			"guid": "BrxAEiGogfP3tM7gdyDV8ZyWRYxTFt55z9C-jkwTGEs",
+			"guid": "cghma_NsjtZInytTsem0CwlHb1dS2hT2uQGVfDLNkaI",
 			"q": 70,
-			"src": "To get started, edit <1>src/App.js</1> and save to reload.",
-			"tgt": "Что би начать, отредактируйте <1>src/App.js</1> и сохраните, что бы обновилось.",
-			"ts": 1653323478091
+			"nsrc": [
+				"To get started, edit ",
+				{
+					"t": "bx",
+					"v": "<1>"
+				},
+				"src/App.js",
+				{
+					"t": "ex",
+					"v": "</1>"
+				},
+				" and save to reload."
+			],
+			"ntgt": [
+				"Что би начать, отредактируйте ",
+				{
+					"t": "bx",
+					"v": "<1>",
+					"v1": "a_bx_1"
+				},
+				"src/App.js",
+				{
+					"t": "ex",
+					"v": "</1>",
+					"v1": "b_ex_1"
+				},
+				" и сохраните, что бы обновилось."
+			],
+			"ts": 1653363932437
 		},
 		{
 			"guid": "B2tOpN7eXoM6vDTFJdnZEO-5fTC49LtcVxOOxviW7z8",
 			"q": 70,
 			"src": "Switch language between english and german using buttons above.",
 			"tgt": "Переключайте языки между английским, немецким и русским чуть выше.",
-			"ts": 1653323478091
+			"ts": 1653363932437
 		},
 		{
-			"guid": "1q8R1pyXLus27MiTj3hdPVecpeU8A4tOZQyLN5gWb18",
-			"q": 70,
-			"src": "{numPersons, plural, =0 {no persons} =1 {one person} other {# persons}}",
-			"tgt": "{numPersons, plural, =0 {\nнет людей} one {# персона} few {# персоны} many {# персон} other {# персон}}",
-			"ts": 1653323478091
-		},
-		{
-			"guid": "XxZijxT1zwyt1jA-ywMObKs32K1xRoUqPI2JWqjLxHM",
-			"q": 70,
-			"src": "We invited <0>{numPersons, plural, =0 {no persons} =1 {one person} other {# persons}}</0>.",
-			"tgt": "Мы пригласили <0>{numPersons, plural, =0 {никого} one {# персону} few {# персоны} many {# персон} other {# персон}}</0>.",
-			"ts": 1653323478091
-		},
-		{
-			"guid": "L1jpIN8iuoU1Kriec8a14ZKUOOiuUlkIDqroRSvGA3U",
+			"guid": "dAA7Av4cfiuuB8oFviBEq4BAYLxOwSB2ujboTuOhjrI",
 			"q": 70,
 			"src": "Welcome, {name}!",
 			"tgt": "Добро пожаловать, {name}!",
-			"ts": 1653323478091
+			"ts": 1653363932437
 		},
 		{
-			"guid": "9SjJrU62jFjvRbkAXkVy-cQD2rRcc9oHbNrI4GSJcPE",
+			"guid": "0v-UepMBUCv9savc1xVoqbGx759Lx2Xrsi-HgZ2sWu0",
 			"q": 70,
-			"src": "Welcome, <0>{name}</0>!",
-			"tgt": "Добро пожаловать, <0>{name}</0>!",
-			"ts": 1653323478091
-		},
-		{
-			"guid": "R52KupXGaK6bqRVR78e3Wg4bMmouBnEspeULKTvhWXw",
-			"q": 70,
-			"src": "Trainers: {trainersCount, number}",
-			"tgt": "Тренера: {trainersCount, number}",
-			"ts": 1653323478091
-		},
-		{
-			"guid": "W1rOhnU2Bt45fLg7WCLmL0adFMFNJAbv9JPniUOZ4Gg",
-			"q": 70,
-			"src": "Trainers: <0>{trainersCount, number}</0>!",
-			"tgt": "Тренера: <0>{trainersCount, number}</0>!",
-			"ts": 1653323478091
-		},
-		{
-			"guid": "oMwQ1YPO865Pu5bE0o1cKu__ejVQvlYQx38_Ne83Goo",
-			"q": 70,
-			"src": "Caught on {catchDate, date, full}",
-			"tgt": "Пойман в {catchDate, date, full}",
-			"ts": 1653323478091
-		},
-		{
-			"guid": "Jv6rT45mIpefDdQBoxcQOXt9BRv3RguzGo1wk96LZaw",
-			"q": 70,
-			"src": "Caught on <0>{catchDate, date, full}</0>!",
-			"tgt": "Пойман в <0>{catchDate, date, full}</0>!",
-			"ts": 1653323478091
-		},
-		{
-			"guid": "u65vHA420Mp-kMIAQ2uGN21V280I-TNRO7oMDSWrUu4",
-			"q": 70,
-			"src": "{gender, select,  male {He avoids bugs.} female {She avoids bugs.} other {They avoid bugs.}}",
-			"tgt": "{gender, select,  male {Он избегает ошибок.} female {Она избегает ошибок.} other {Они избегают ошибок.}}",
-			"ts": 1653323478091
-		},
-		{
-			"guid": "YWpKNwkycXaTD4fxD57YuzLPgh3MmvmOmVqQGKgxENs",
-			"q": 70,
-			"src": "{gender, select,  male {<0>He</0> avoids bugs.} female {<1>She</1> avoids bugs.} other {<2>They</2> avoid bugs.}}",
-			"tgt": "{gender, select,  male {<0>Он</0> избегает ошибок.} female {<1>Она</1> избегает ошибок.} other {<2>Они</2> избегают ошибок.}}",
-			"ts": 1653323478091
-		},
-		{
-			"guid": "aEi38nqkbXOTkHRLbUbDlNDl2BFYMq6IL6yqAXpnifY",
-			"q": 70,
-			"src": "{itemsCount1, plural,  =0 {There is no item.} one {There is # item.} other {There are # items.}}",
-			"tgt": "{itemsCount1, plural,  =0 {Нет ни одной штуки} one {Есть # штука.} few {Есть # штуки.} many {Есть # штук.} other {Есть # штук.}}",
-			"ts": 1653323478091
-		},
-		{
-			"guid": "yI8wwsBNG83aeEuIawYFdV8Ms8IgWqRiZub1XxwbKvk",
-			"q": 70,
-			"src": "{itemsCount2, plural,  =0 {There is no item.} one {There is # item.} other {There are # items.}}",
-			"tgt": "{itemsCount2, plural,  =0 {Нет ни одной штуки} one {Есть # штука.} few {Есть # штуки.} many {Есть # штук.} other {Есть # штук.}}",
-			"ts": 1653323478091
-		},
-		{
-			"guid": "Vdouv60vw5bpUue66CngwGlaKNKjMRFrSC47auuL490",
-			"q": 70,
-			"src": "{itemsCount3, plural,  =0 {There is no item.} one {There is # item.} other {There are # items.}}",
-			"tgt": "{itemsCount3, plural,  =0 {Нет ни одной штуки} one {Есть # штука.} few {Есть # штуки.} many {Есть # штук.} other {Есть # штук.}}",
-			"ts": 1653323478091
-		},
-		{
-			"guid": "3M5I-NfMIfckyFI-FdMo5TzaBZMzkYpjNXdmX16XENg",
-			"q": 70,
-			"src": "{itemsCount3, plural,  =0 { There is <0>no</0> item. } one { There is <1>#</1> item. } other { There are <2>#</2> items. }}",
-			"tgt": "{itemsCount3, plural,  =0 {Нет <0>ни одной</0> штуки. } one {Есть <0>#</0> штука.} few {Есть <0>#</0> штуки.} many {Есть <0>#</0> штук.} other {Есть <0>#</0> штук.}}",
-			"ts": 1653323478091
+			"nsrc": [
+				"Welcome, ",
+				{
+					"t": "bx",
+					"v": "<0>"
+				},
+				"{name}",
+				{
+					"t": "ex",
+					"v": "</0>"
+				},
+				"!"
+			],
+			"ntgt": [
+				"Добро пожаловать, ",
+				{
+					"t": "bx",
+					"v": "<0>",
+					"v1": "a_bx_0"
+				},
+				"{name}",
+				{
+					"t": "ex",
+					"v": "</0>",
+					"v1": "b_ex_0"
+				},
+				"!"
+			],
+			"ts": 1653363932437
 		}
 	],
 	"status": "done",

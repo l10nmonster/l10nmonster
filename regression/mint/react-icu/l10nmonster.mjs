@@ -11,20 +11,8 @@ export default class ReactConfig {
         });
         this.resourceFilter = new filters.JsonFilter();
         this.decoders = [ normalizers.iosPHDecoder, normalizers.javaEscapesDecoder ];
-        // this.translationProvider = new translators.TranslationOS({
-        //     baseURL: 'https://api-sandbox.translated.com/v2',
-        //     apiKey: ctx.env.translated_api_key_sandbox,
-        //     serviceType: 'premium',
-        //     quality: 90,
-        // });
-        // this.translationProvider = new translators.ModernMT({
-        //     apiKey: ctx.env.mmt_api_key,
-        //     quality: 40,
-        //     maxCharLength: 100,
-        // });
-        this.translationProvider = new translators.DeepL({
-            apiKey: ctx.env.deepl_api_key,
-            quality: 40,
+        this.translationProvider = new translators.Visicode({
+            quality: 2
         });
         this.target = new adapters.FsTarget({
             targetPath: (lang, resourceId) => resourceId.replace('en/', `${lang}/`),
@@ -32,6 +20,23 @@ export default class ReactConfig {
         this.jobStore = new stores.JsonJobStore({
             jobsDir: 'translationJobs',
         });
+        this.contentTypes = {
+            node: {
+                source: new adapters.FsSource({
+                    targetLangs: [ 'de', 'ru' ],
+                    globs: [ '**/en/*.json' ],
+                }),
+                resourceFilter: new filters.JsonFilter({
+                    enableArbAnnotations : true,
+                    enablePluralSuffixes : true,
+                    emitArbAnnotations : true,
+                }),
+                decoders: [ normalizers.xmlDecoder, normalizers.xmlEntityDecoder, normalizers.i18nextPHDecoder ],
+                target: new adapters.FsTarget({
+                    targetPath: (lang, resourceId) => resourceId.replace('en/', `${lang}/`),
+                }),
+            },            
+        }
     }
 }
 

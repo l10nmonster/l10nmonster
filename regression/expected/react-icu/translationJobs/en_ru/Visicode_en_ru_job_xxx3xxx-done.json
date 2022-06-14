@@ -1,0 +1,195 @@
+{
+	"sourceLang": "en",
+	"targetLang": "ru",
+	"translationProvider": "Visicode",
+	"jobGuid": "xxx3xxx",
+	"status": "done",
+	"tus": [
+		{
+			"guid": "Yhu_PT_gxnNEP6i5cnfpdYCQ577w0kcHlKdPIp1rHWM",
+			"ntgt": [
+				"⇥",
+				{
+					"t": "bx",
+					"v": "<b>"
+				},
+				"W̳e̳l̳c̳o̳m̳e̳",
+				{
+					"t": "ex",
+					"v": "</b>"
+				},
+				" ̳t̳o̳ ̳",
+				{
+					"t": "x",
+					"v": "$t(brand:portalName)"
+				},
+				".̳",
+				"⇤"
+			],
+			"contentType": "node",
+			"q": 2
+		},
+		{
+			"guid": "8QAVB3VDxOUUy1YKjJmy1pgdVR0m497ZhCOVS16GBQM",
+			"ntgt": [
+				"⇥",
+				{
+					"t": "bx",
+					"v": "<strong>"
+				},
+				"W̳e̳l̳c̳o̳m̳e̳ ̳b̳a̳c̳k̳",
+				{
+					"t": "ex",
+					"v": "</strong>"
+				},
+				" ̳t̳o̳ ̳t̳r̳a̳v̳e̳l̳.̳",
+				"⇤"
+			],
+			"contentType": "node",
+			"q": 2
+		},
+		{
+			"guid": "AGkOSI-2cbdKB0hwucpDtAhetdvAytGYurYD7hvcezM",
+			"tgt": "⇥B̳o̳o̳k̳ ̳t̳h̳e̳ ̳t̳r̳i̳p̳ ̳y̳o̳u̳'̳v̳e̳ ̳b̳e̳e̳n̳ ̳w̳a̳i̳t̳i̳n̳g̳ ̳f̳o̳r̳.̳⇤",
+			"q": 2
+		},
+		{
+			"guid": "YpoIEBkIfKjKzReUIQX2mqEn2bLQ8YPiTSt1FDHIkI4",
+			"tgt": "⇥T̳r̳a̳v̳e̳l̳e̳r̳⇤",
+			"q": 2
+		},
+		{
+			"guid": "sTGxO3wYiDt-d_Nrg22Dm5CCdRJYPprzgXAZ9M2S81w",
+			"tgt": "⇥T̳r̳a̳v̳e̳l̳e̳r̳s̳⇤",
+			"q": 2
+		},
+		{
+			"guid": "KuM3WlVRMaBLFo6E0fg4vATKm955gBDBbAGTLdLITAk",
+			"ntgt": [
+				"⇥",
+				"Y̳o̳u̳ ̳c̳a̳n̳ ̳s̳e̳a̳r̳c̳h̳ ̳f̳o̳r̳ ̳u̳p̳ ̳t̳o̳ ̳",
+				{
+					"t": "x",
+					"v": "{{maximumCount}}"
+				},
+				" ̳t̳r̳a̳v̳e̳l̳e̳r̳s̳",
+				"⇤"
+			],
+			"contentType": "node",
+			"q": 2
+		},
+		{
+			"guid": "qJxPXXst0F8DLkzVVG63hebwXP80N7CFgJfuXtr8mM8",
+			"ntgt": [
+				"⇥",
+				{
+					"t": "bx",
+					"v": "<p>"
+				},
+				{
+					"t": "x",
+					"v": "$t(brand:portalName)"
+				},
+				" ̳p̳r̳i̳c̳e̳ ̳s̳e̳r̳v̳i̳c̳e̳s̳ ̳a̳n̳d̳ ̳n̳o̳t̳i̳f̳i̳c̳a̳t̳i̳o̳n̳s̳.̳ ̳",
+				{
+					"t": "x",
+					"v": "$t(brand:clientName)"
+				},
+				" ̳w̳o̳r̳k̳ ̳h̳a̳r̳d̳ ̳t̳o̳ ̳e̳n̳s̳u̳r̳e̳ ̳t̳h̳e̳ ̳a̳c̳c̳u̳r̳a̳c̳y̳ ̳o̳f̳ ̳i̳t̳s̳ ̳p̳r̳e̳d̳i̳c̳t̳i̳o̳n̳s̳.̳ ̳",
+				{
+					"t": "ex",
+					"v": "</p>"
+				},
+				"⇤"
+			],
+			"contentType": "node",
+			"q": 2
+		},
+		{
+			"guid": "bws_LnxH_75t_Jdprc_zeTdGgUOWjzRFnDe6YfvjOYg",
+			"ntgt": [
+				"⇥",
+				{
+					"t": "x",
+					"v": "{{count}}"
+				},
+				" ̳d̳a̳y̳",
+				"⇤"
+			],
+			"contentType": "node",
+			"q": 2
+		},
+		{
+			"guid": "Jqw-OIo4U6fG5lyDl3mUsrBOVyxTbyNSBtYPAz3soPQ",
+			"ntgt": [
+				"⇥",
+				{
+					"t": "x",
+					"v": "{{count}}"
+				},
+				" ̳d̳a̳y̳s̳",
+				"⇤"
+			],
+			"contentType": "node",
+			"q": 2
+		},
+		{
+			"guid": "u-b8MhBsF9k7Q4SquD9h_vGYUIfEhi_gRzuA9i36PfY",
+			"ntgt": [
+				"⇥",
+				{
+					"t": "x",
+					"v": "{{count}}"
+				},
+				" ̳h̳o̳u̳r̳",
+				"⇤"
+			],
+			"contentType": "node",
+			"q": 2
+		},
+		{
+			"guid": "haJeL1bazwQ1yTntetVJeSFWmn5a9hPwuTBVoh9ISjo",
+			"ntgt": [
+				"⇥",
+				{
+					"t": "x",
+					"v": "{{count}}"
+				},
+				" ̳h̳o̳u̳r̳s̳",
+				"⇤"
+			],
+			"contentType": "node",
+			"q": 2
+		},
+		{
+			"guid": "YjPgqgOdTMkHKTRSeQTqRnPKYg-aPkWmF4PtExUoI6Q",
+			"ntgt": [
+				"⇥",
+				{
+					"t": "x",
+					"v": "{{count}}"
+				},
+				" ̳s̳e̳c̳o̳n̳d̳",
+				"⇤"
+			],
+			"contentType": "node",
+			"q": 2
+		},
+		{
+			"guid": "x1xQynOoxM1xfd0g5iSmzZfrIWxwjHfV3x-1xaoiFJk",
+			"ntgt": [
+				"⇥",
+				{
+					"t": "x",
+					"v": "{{count}}"
+				},
+				" ̳s̳e̳c̳o̳n̳d̳s̳",
+				"⇤"
+			],
+			"contentType": "node",
+			"q": 2
+		}
+	],
+	"ts": 1,
+	"updatedAt": "2022-05-29T00:00:00.000Z"
+}

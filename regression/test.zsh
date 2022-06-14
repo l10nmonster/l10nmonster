@@ -17,7 +17,10 @@ rm -rf wd
 mkdir wd
 cp -pr mint/* wd
 cd wd
-for dir in *; regressTest $dir
+for dir in *
+do
+    regressTest $dir
+done
 cd ..
 
 echo "\nDiffing working dir vs. expected..."

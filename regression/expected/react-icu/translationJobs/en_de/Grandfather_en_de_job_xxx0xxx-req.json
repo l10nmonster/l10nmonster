@@ -5,138 +5,70 @@
 		{
 			"sid": "title",
 			"guid": "wUtgDUDVeLsT_x9VEGH_peG9Ujs3DvX1H3cvHtxgcjw",
-			"contentType": "default",
+			"contentType": "node",
 			"src": "Welcome to react using react-i18next",
 			"rid": "public/locales/en/translations.json",
-			"ts": 1653323478091
+			"ts": 1653363932437
 		},
 		{
 			"sid": "description.part1",
-			"guid": "BrxAEiGogfP3tM7gdyDV8ZyWRYxTFt55z9C-jkwTGEs",
-			"contentType": "default",
+			"gstr": "To get started, edit {{bx}}src/App.js{{ex}} and save to reload.",
+			"guid": "cghma_NsjtZInytTsem0CwlHb1dS2hT2uQGVfDLNkaI",
+			"contentType": "node",
 			"src": "To get started, edit <1>src/App.js</1> and save to reload.",
 			"rid": "public/locales/en/translations.json",
-			"ts": 1653323478091
+			"ts": 1653363932437,
+			"nsrc": [
+				"To get started, edit ",
+				{
+					"t": "bx",
+					"v": "<1>"
+				},
+				"src/App.js",
+				{
+					"t": "ex",
+					"v": "</1>"
+				},
+				" and save to reload."
+			]
 		},
 		{
 			"sid": "description.part2",
 			"guid": "B2tOpN7eXoM6vDTFJdnZEO-5fTC49LtcVxOOxviW7z8",
-			"contentType": "default",
+			"contentType": "node",
 			"src": "Switch language between english and german using buttons above.",
 			"rid": "public/locales/en/translations.json",
-			"ts": 1653323478091
+			"ts": 1653363932437
 		},
 		{
-			"sid": "icu",
-			"guid": "1q8R1pyXLus27MiTj3hdPVecpeU8A4tOZQyLN5gWb18",
-			"contentType": "default",
-			"src": "{numPersons, plural, =0 {no persons} =1 {one person} other {# persons}}",
-			"rid": "public/locales/en/translations.json",
-			"ts": 1653323478091
-		},
-		{
-			"sid": "icu_and_trans",
-			"guid": "XxZijxT1zwyt1jA-ywMObKs32K1xRoUqPI2JWqjLxHM",
-			"contentType": "default",
-			"src": "We invited <0>{numPersons, plural, =0 {no persons} =1 {one person} other {# persons}}</0>.",
-			"rid": "public/locales/en/translations.json",
-			"ts": 1653323478091
-		},
-		{
-			"sid": "Welcome, {name}!",
-			"guid": "L1jpIN8iuoU1Kriec8a14ZKUOOiuUlkIDqroRSvGA3U",
-			"contentType": "default",
+			"sid": "welcome.name1",
+			"guid": "dAA7Av4cfiuuB8oFviBEq4BAYLxOwSB2ujboTuOhjrI",
+			"contentType": "node",
 			"src": "Welcome, {name}!",
 			"rid": "public/locales/en/translations.json",
-			"ts": 1653323478091
+			"ts": 1653363932437
 		},
 		{
-			"sid": "Welcome, <0>{name}</0>!",
-			"guid": "9SjJrU62jFjvRbkAXkVy-cQD2rRcc9oHbNrI4GSJcPE",
-			"contentType": "default",
+			"sid": "welcome.name2",
+			"gstr": "Welcome, {{bx}}{name}{{ex}}!",
+			"guid": "0v-UepMBUCv9savc1xVoqbGx759Lx2Xrsi-HgZ2sWu0",
+			"contentType": "node",
 			"src": "Welcome, <0>{name}</0>!",
 			"rid": "public/locales/en/translations.json",
-			"ts": 1653323478091
-		},
-		{
-			"sid": "Trainers: {trainersCount, number}",
-			"guid": "R52KupXGaK6bqRVR78e3Wg4bMmouBnEspeULKTvhWXw",
-			"contentType": "default",
-			"src": "Trainers: {trainersCount, number}",
-			"rid": "public/locales/en/translations.json",
-			"ts": 1653323478091
-		},
-		{
-			"sid": "Trainers: <0>{trainersCount, number}</0>!",
-			"guid": "W1rOhnU2Bt45fLg7WCLmL0adFMFNJAbv9JPniUOZ4Gg",
-			"contentType": "default",
-			"src": "Trainers: <0>{trainersCount, number}</0>!",
-			"rid": "public/locales/en/translations.json",
-			"ts": 1653323478091
-		},
-		{
-			"sid": "Caught on {catchDate, date, full}",
-			"guid": "oMwQ1YPO865Pu5bE0o1cKu__ejVQvlYQx38_Ne83Goo",
-			"contentType": "default",
-			"src": "Caught on {catchDate, date, full}",
-			"rid": "public/locales/en/translations.json",
-			"ts": 1653323478091
-		},
-		{
-			"sid": "Caught on <0>{catchDate, date, full}</0>!",
-			"guid": "Jv6rT45mIpefDdQBoxcQOXt9BRv3RguzGo1wk96LZaw",
-			"contentType": "default",
-			"src": "Caught on <0>{catchDate, date, full}</0>!",
-			"rid": "public/locales/en/translations.json",
-			"ts": 1653323478091
-		},
-		{
-			"sid": "{gender, select,  male {He avoids bugs.} female {She avoids bugs.} other {They avoid bugs.}}",
-			"guid": "u65vHA420Mp-kMIAQ2uGN21V280I-TNRO7oMDSWrUu4",
-			"contentType": "default",
-			"src": "{gender, select,  male {He avoids bugs.} female {She avoids bugs.} other {They avoid bugs.}}",
-			"rid": "public/locales/en/translations.json",
-			"ts": 1653323478091
-		},
-		{
-			"sid": "{gender, select,  male {<0>He</0> avoids bugs.} female {<1>She</1> avoids bugs.} other {<2>They</2> avoid bugs.}}",
-			"guid": "YWpKNwkycXaTD4fxD57YuzLPgh3MmvmOmVqQGKgxENs",
-			"contentType": "default",
-			"src": "{gender, select,  male {<0>He</0> avoids bugs.} female {<1>She</1> avoids bugs.} other {<2>They</2> avoid bugs.}}",
-			"rid": "public/locales/en/translations.json",
-			"ts": 1653323478091
-		},
-		{
-			"sid": "{itemsCount1, plural,  =0 {There is no item.} one {There is # item.} other {There are # items.}}",
-			"guid": "aEi38nqkbXOTkHRLbUbDlNDl2BFYMq6IL6yqAXpnifY",
-			"contentType": "default",
-			"src": "{itemsCount1, plural,  =0 {There is no item.} one {There is # item.} other {There are # items.}}",
-			"rid": "public/locales/en/translations.json",
-			"ts": 1653323478091
-		},
-		{
-			"sid": "{itemsCount2, plural,  =0 {There is no item.} one {There is # item.} other {There are # items.}}",
-			"guid": "yI8wwsBNG83aeEuIawYFdV8Ms8IgWqRiZub1XxwbKvk",
-			"contentType": "default",
-			"src": "{itemsCount2, plural,  =0 {There is no item.} one {There is # item.} other {There are # items.}}",
-			"rid": "public/locales/en/translations.json",
-			"ts": 1653323478091
-		},
-		{
-			"sid": "{itemsCount3, plural,  =0 {There is no item.} one {There is # item.} other {There are # items.}}",
-			"guid": "Vdouv60vw5bpUue66CngwGlaKNKjMRFrSC47auuL490",
-			"contentType": "default",
-			"src": "{itemsCount3, plural,  =0 {There is no item.} one {There is # item.} other {There are # items.}}",
-			"rid": "public/locales/en/translations.json",
-			"ts": 1653323478091
-		},
-		{
-			"sid": "testKey",
-			"guid": "3M5I-NfMIfckyFI-FdMo5TzaBZMzkYpjNXdmX16XENg",
-			"contentType": "default",
-			"src": "{itemsCount3, plural,  =0 { There is <0>no</0> item. } one { There is <1>#</1> item. } other { There are <2>#</2> items. }}",
-			"rid": "public/locales/en/translations.json",
-			"ts": 1653323478091
+			"ts": 1653363932437,
+			"nsrc": [
+				"Welcome, ",
+				{
+					"t": "bx",
+					"v": "<0>"
+				},
+				"{name}",
+				{
+					"t": "ex",
+					"v": "</0>"
+				},
+				"!"
+			]
 		}
 	],
 	"translationProvider": "Grandfather",
