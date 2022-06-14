@@ -1,4 +1,4 @@
-import * as json from "../../filters/json";
+import * as json from "../../src/filters/json";
 
 describe("json parseResource - description", () => {
     const resourceFilter = new json.JsonFilter({

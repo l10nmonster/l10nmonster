@@ -1,4 +1,4 @@
-import { getNormalizedString, sourceAndTargetAreCompatible, flattenNormalizedSourceV1, extractNormalizedPartsV1 } from '../normalizers/util.js';
+import { getNormalizedString, sourceAndTargetAreCompatible, flattenNormalizedSourceV1, extractNormalizedPartsV1 } from './normalizers/util.js';
 
 // this is similar to push, except that existing translations in resources but not in TM
 // are assumed to be in sync with source and imported into the TM

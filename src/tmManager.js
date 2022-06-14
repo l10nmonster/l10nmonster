@@ -4,7 +4,7 @@ import {
     readFileSync,
 } from 'fs';
 import * as fs from 'fs/promises';
-import { flattenNormalizedSourceToOrdinal } from '../normalizers/util.js';
+import { flattenNormalizedSourceToOrdinal } from './normalizers/util.js';
 import { cleanupTU, targetTUWhitelist } from './schemas.js';
 
 class TM {

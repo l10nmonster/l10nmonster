@@ -1,8 +1,8 @@
 /* eslint-disable no-useless-escape */
-import * as android from '../../filters/android';
-import { getNormalizedString } from '../../normalizers/util.js';
+import * as android from '../../src/filters/android';
+import { getNormalizedString } from '../../src/normalizers/util.js';
 import { xmlCDataDecoder, iosPHDecoder, androidEscapesDecoder,
-    androidSpaceCollapser, xmlEntityDecoder, androidEscapesEncoder, xmlDecoder, doublePercentDecoder } from '../../normalizers/regex.js';
+    androidSpaceCollapser, xmlEntityDecoder, androidEscapesEncoder, xmlDecoder, doublePercentDecoder } from '../../src/normalizers/regex.js';
 import { readFileSync } from 'fs';
 
 describe('android filter tests', () => {

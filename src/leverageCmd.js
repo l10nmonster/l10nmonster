@@ -1,4 +1,4 @@
-import { sourceAndTargetAreCompatible } from '../normalizers/util.js';
+import { sourceAndTargetAreCompatible } from './normalizers/util.js';
 
 // this is similar to grandfather using translations of identical strings in different files (qualified)
 // or different segments (unqualified)

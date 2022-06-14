@@ -1,4 +1,4 @@
-import * as piggyTranslator from '../../translators/piglatinizer';
+import * as piggyTranslator from '../../src/translators/piglatinizer';
 
 describe ('pig latinizer translator tests', () =>{
 

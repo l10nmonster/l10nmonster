@@ -1,5 +1,5 @@
 import wordsCountModule from 'words-count';
-import { getNormalizedString } from '../normalizers/util.js';
+import { getNormalizedString } from './normalizers/util.js';
 
 export async function analyzeCmd(mm) {
     await mm.updateSourceCache();

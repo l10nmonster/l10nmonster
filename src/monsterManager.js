@@ -10,8 +10,8 @@ import {
 import wordsCountModule from 'words-count';
 
 import TMManager from './tmManager.js';
-import { JsonJobStore } from '../stores/jsonJobStore.js';
-import { getNormalizedString, flattenNormalizedSourceToOrdinal, sourceAndTargetAreCompatible } from '../normalizers/util.js';
+import { JsonJobStore } from './stores/jsonJobStore.js';
+import { getNormalizedString, flattenNormalizedSourceToOrdinal, sourceAndTargetAreCompatible } from './normalizers/util.js';
 
 export default class MonsterManager {
     constructor({ monsterDir, monsterConfig, ctx }) {
