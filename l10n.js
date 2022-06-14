@@ -130,7 +130,7 @@ async function initMonster() {
             logger.info(`L10n Monster initialized!`);
             return mm;
         } catch(e) {
-            throw `l10nmonster.mjs failed to construct: ${e}`;
+            throw `l10nmonster.mjs failed to construct: ${e.stack}`;
         }
     }
     previousDir = baseDir;
@@ -145,14 +145,12 @@ async function withMonsterManager(cb) {
     try {
         await cb(monsterManager);
     } catch(e) {
-        console.error(`Unable to operate: ${e}`);
-        console.error(e.stack);
+        console.error(`Unable to operate: ${e.stack}`);
     } finally {
         await monsterManager.shutdown();
     }
   } catch(e) {
-    console.error(`Unable to initialize: ${e}`);
-    console.error(e.stack);
+    console.error(`Unable to initialize: ${e.stack}`);
   }
 }
 

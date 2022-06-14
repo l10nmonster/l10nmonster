@@ -24,7 +24,7 @@ async function deeplTranslateChunkOp({ baseURL, headers, searchParams, offset}) 
         }
         return translations;
     } catch(error) {
-        throw error.toString();
+        throw `${error.toString()}: ${error.response?.body}`;
     }
 }
 
