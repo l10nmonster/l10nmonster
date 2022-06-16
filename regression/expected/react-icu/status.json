@@ -1,0 +1,49 @@
+{
+	"numSources": 2,
+	"lang": {
+		"de": {
+			"leverage": {
+				"tmSize": 18,
+				"minimumQuality": 50,
+				"prjLeverage": {
+					"default": {
+						"translated": 5,
+						"translatedWords": 30,
+						"translatedByQ": {
+							"70": 5
+						},
+						"untranslated": 0,
+						"untranslatedChars": 0,
+						"untranslatedWords": 0,
+						"pending": 0,
+						"pendingWords": 0,
+						"internalRepetitions": 13,
+						"internalRepetitionWords": 41
+					}
+				}
+			}
+		},
+		"ru": {
+			"leverage": {
+				"tmSize": 18,
+				"minimumQuality": 50,
+				"prjLeverage": {
+					"default": {
+						"translated": 5,
+						"translatedWords": 30,
+						"translatedByQ": {
+							"70": 5
+						},
+						"untranslated": 0,
+						"untranslatedChars": 0,
+						"untranslatedWords": 0,
+						"pending": 0,
+						"pendingWords": 0,
+						"internalRepetitions": 13,
+						"internalRepetitionWords": 41
+					}
+				}
+			}
+		}
+	}
+}

@@ -41,9 +41,5 @@ export default class MultiProjectConfig {
                 }),
             },
         };
-        this.stateStore = new stores.JsonStateStore({
-            org: 'Sample',
-            stateFileName: 'state.json',
-        });
     }
 }

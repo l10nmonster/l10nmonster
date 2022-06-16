@@ -1,9 +1,12 @@
 {
-	"test1": {
-		"default": {
-			"foo": {
-				"bar": {
-					"zh-Hans": {
+	"numSources": 1,
+	"lang": {
+		"zh-Hans": {
+			"leverage": {
+				"tmSize": 871,
+				"minimumQuality": 50,
+				"prjLeverage": {
+					"default": {
 						"translated": 854,
 						"translatedWords": 2773,
 						"translatedByQ": {
@@ -17,8 +20,16 @@
 						"pendingWords": 65,
 						"internalRepetitions": 0,
 						"internalRepetitionWords": 0
-					},
-					"zh-Hant": {
+					}
+				}
+			}
+		},
+		"zh-Hant": {
+			"leverage": {
+				"tmSize": 871,
+				"minimumQuality": 50,
+				"prjLeverage": {
+					"default": {
 						"translated": 794,
 						"translatedWords": 2620,
 						"translatedByQ": {
@@ -32,8 +43,16 @@
 						"pendingWords": 0,
 						"internalRepetitions": 3,
 						"internalRepetitionWords": 6
-					},
-					"piggy": {
+					}
+				}
+			}
+		},
+		"piggy": {
+			"leverage": {
+				"tmSize": 871,
+				"minimumQuality": 1,
+				"prjLeverage": {
+					"default": {
 						"translated": 871,
 						"translatedWords": 2838,
 						"translatedByQ": {

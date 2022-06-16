@@ -5,6 +5,7 @@ import * as path from 'path';
 import {
   existsSync,
   mkdirSync,
+  writeFileSync,
 } from 'fs';
 import * as util from 'node:util';
 import { Command, InvalidArgumentError } from 'commander';
@@ -16,9 +17,6 @@ import MonsterManager from './src/monsterManager.js';
 import { OpsMgr } from './src/opsMgr.js';
 
 import { JsonJobStore } from './src/stores/jsonJobStore.js';
-// import { SqlJobStore } from './src/stores/sqlJobStore.js';
-import { JsonStateStore } from './src/stores/jsonStateStore.js';
-// import { SqlStateStore } from './src/stores/sqlStateStore.js';
 
 import { analyzeCmd } from './src/analyzeCmd.js';
 import { grandfatherCmd } from './src/grandfatherCmd.js';
@@ -63,8 +61,6 @@ async function initMonster() {
                     'warn' :
                     ((verboseOption === true || verboseOption === 2) ? 'info' : 'verbose'));
         const regression = monsterCLI.opts().regression;
-        const build = monsterCLI.opts().build;
-        const release = monsterCLI.opts().release;
         let prj = monsterCLI.opts().prj;
         prj && (prj = prj.split(','));
         const logger = winston.createLogger({
@@ -88,13 +84,11 @@ async function initMonster() {
             arg: monsterCLI.opts().arg,
             logger,
             regression,
-            build,
-            release,
             prj,
         };
         const helpers = {
             stores: {
-                JsonJobStore, JsonStateStore
+                JsonJobStore
             },
             adapters: {
                 FsSource, FsTarget,
@@ -170,8 +164,6 @@ monsterCLI
     .option('-v, --verbose [level]', '0=error, 1=warning, 2=info, 3=verbose', intOptionParser)
     .option('--ops <opsDir>', 'directory to output debug operations')
     .option('-p, --prj <num>', 'limit to specified project')
-    .option('--build <type>', 'build type')
-    .option('--release <num>', 'release number')
     .option('--arg <string>', 'optional constructor argument')
     .option('--regression', 'keep variable constant during regression testing')
 ;
@@ -204,26 +196,32 @@ monsterCLI
     .description('translation status of content.')
     .option('-l, --lang <language>', 'only get status of target language')
     .option('-a, --all', 'show information for all projects, not just untranslated ones')
+    .option('--output <filename>', 'write status to the specified file')
     .action(async (options) => await withMonsterManager(async monsterManager => {
         const limitToLang = options.lang;
         const all = Boolean(options.all);
+        const output = options.output;
         const status = await statusCmd(monsterManager, { limitToLang });
-        console.log(`${status.numSources.toLocaleString()} translatable resources`);
-        for (const [lang, langStatus] of Object.entries(status.lang)) {
-            console.log(`\n${consoleColor.bright}Language ${lang}${consoleColor.reset} (minimum quality ${langStatus.leverage.minimumQuality}, TM size:${langStatus.leverage.tmSize.toLocaleString()}):`);
-            const totals = {};
-            const prjLeverage = Object.entries(langStatus.leverage.prjLeverage).sort((a, b) => (a[0] > b[0] ? 1 : -1));
-            for (const [prj, leverage] of prjLeverage) {
-                computeTotals(totals, leverage);
-                const untranslated = leverage.pending + leverage.untranslated + leverage.internalRepetitions;
-                if (leverage.translated + untranslated > 0) {
-                    (all || untranslated > 0) && console.log(`  Project: ${consoleColor.bright}${prj}${consoleColor.reset}`);
-                    printLeverage(leverage, all);
+        if (output) {
+            writeFileSync(output, JSON.stringify(status, null, '\t'), 'utf8');
+        } else {
+            console.log(`${status.numSources.toLocaleString()} translatable resources`);
+            for (const [lang, langStatus] of Object.entries(status.lang)) {
+                console.log(`\n${consoleColor.bright}Language ${lang}${consoleColor.reset} (minimum quality ${langStatus.leverage.minimumQuality}, TM size:${langStatus.leverage.tmSize.toLocaleString()}):`);
+                const totals = {};
+                const prjLeverage = Object.entries(langStatus.leverage.prjLeverage).sort((a, b) => (a[0] > b[0] ? 1 : -1));
+                for (const [prj, leverage] of prjLeverage) {
+                    computeTotals(totals, leverage);
+                    const untranslated = leverage.pending + leverage.untranslated + leverage.internalRepetitions;
+                    if (leverage.translated + untranslated > 0) {
+                        (all || untranslated > 0) && console.log(`  Project: ${consoleColor.bright}${prj}${consoleColor.reset}`);
+                        printLeverage(leverage, all);
+                    }
                 }
-            }
-            if (prjLeverage.length > 1) {
-                console.log(`  Total:`);
-                printLeverage(totals, true);
+                if (prjLeverage.length > 1) {
+                    console.log(`  Total:`);
+                    printLeverage(totals, true);
+                }
             }
         }
     }))

@@ -8,7 +8,7 @@ regressTest() {
     ../../../l10n.js --regression push
     ../../../l10n.js --regression pull
     ../../../l10n.js --regression translate
-    ../../../l10n.js --regression status --build foo --release bar
+    ../../../l10n.js --regression status --output status.json
     cd ..
 }
 

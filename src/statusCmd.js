@@ -11,10 +11,6 @@ export async function statusCmd(mm, { limitToLang }) {
         status.lang[targetLang] = {
             leverage,
         };
-        if (mm.ctx.build && mm.ctx.release && mm.stateStore) {
-            // TODO: calculate passing grade based on config and add it to status
-            await mm.stateStore.updateBuildState(mm.ctx.build, mm.ctx.release, targetLang, leverage);
-        }
         mm.ctx.logger.info(`Calculated status of ${targetLang}`);
     }
     return status;
