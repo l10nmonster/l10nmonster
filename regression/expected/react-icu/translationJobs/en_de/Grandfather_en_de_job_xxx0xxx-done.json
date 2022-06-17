@@ -17,12 +17,12 @@
 				"To get started, edit ",
 				{
 					"t": "bx",
-					"v": "<1>"
+					"v": "<a>"
 				},
 				"src/App.js",
 				{
 					"t": "ex",
-					"v": "</1>"
+					"v": "</a>"
 				},
 				" and save to reload."
 			],
@@ -30,14 +30,14 @@
 				"Um loszulegen, ändere ",
 				{
 					"t": "bx",
-					"v": "<1>",
-					"v1": "a_bx_1"
+					"v": "<a>",
+					"v1": "a_bx_a"
 				},
 				"src/App.js",
 				{
 					"t": "ex",
-					"v": "</1>",
-					"v1": "b_ex_1"
+					"v": "</a>",
+					"v1": "b_ex_a"
 				},
 				" speicheren und neuladen."
 			],
@@ -51,25 +51,43 @@
 			"ts": 1
 		},
 		{
-			"guid": "dAA7Av4cfiuuB8oFviBEq4BAYLxOwSB2ujboTuOhjrI",
+			"guid": "mVpp2sfDV8h1yTpK3YpunsGCCyrOtgRsoijdn0rbpfo",
 			"q": 70,
-			"src": "Welcome, {name}!",
-			"tgt": "Willkommen, {name}!",
+			"nsrc": [
+				"Welcome, ",
+				{
+					"t": "x",
+					"v": "{{name}}"
+				},
+				"!"
+			],
+			"ntgt": [
+				"Willkommen, ",
+				{
+					"t": "x",
+					"v": "{{name}}",
+					"v1": "a_x_name"
+				},
+				"!"
+			],
 			"ts": 1
 		},
 		{
-			"guid": "0v-UepMBUCv9savc1xVoqbGx759Lx2Xrsi-HgZ2sWu0",
+			"guid": "RLKDBvHhlr-qK3r-qduFToaGzxrPq1lCG1NlVq7u80s",
 			"q": 70,
 			"nsrc": [
 				"Welcome, ",
 				{
 					"t": "bx",
-					"v": "<0>"
+					"v": "<a>"
 				},
-				"{name}",
+				{
+					"t": "x",
+					"v": "{{name}}"
+				},
 				{
 					"t": "ex",
-					"v": "</0>"
+					"v": "</a>"
 				},
 				"!"
 			],
@@ -77,14 +95,18 @@
 				"Willkommen, ",
 				{
 					"t": "bx",
-					"v": "<0>",
-					"v1": "a_bx_0"
+					"v": "<a>",
+					"v1": "a_bx_a"
 				},
-				"{name}",
+				{
+					"t": "x",
+					"v": "{{name}}",
+					"v1": "b_x_name"
+				},
 				{
 					"t": "ex",
-					"v": "</0>",
-					"v1": "b_ex_0"
+					"v": "</a>",
+					"v1": "c_ex_a"
 				},
 				"!"
 			],

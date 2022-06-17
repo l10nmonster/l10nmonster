@@ -15,19 +15,19 @@
 			"gstr": "To get started, edit {{bx}}src/App.js{{ex}} and save to reload.",
 			"guid": "cghma_NsjtZInytTsem0CwlHb1dS2hT2uQGVfDLNkaI",
 			"contentType": "node",
-			"src": "To get started, edit <1>src/App.js</1> and save to reload.",
+			"src": "To get started, edit <a>src/App.js</a> and save to reload.",
 			"rid": "public/locales/en/translations.json",
 			"ts": 1,
 			"nsrc": [
 				"To get started, edit ",
 				{
 					"t": "bx",
-					"v": "<1>"
+					"v": "<a>"
 				},
 				"src/App.js",
 				{
 					"t": "ex",
-					"v": "</1>"
+					"v": "</a>"
 				},
 				" and save to reload."
 			]
@@ -42,30 +42,42 @@
 		},
 		{
 			"sid": "welcome.name1",
-			"guid": "dAA7Av4cfiuuB8oFviBEq4BAYLxOwSB2ujboTuOhjrI",
+			"gstr": "Welcome, {{x}}!",
+			"guid": "mVpp2sfDV8h1yTpK3YpunsGCCyrOtgRsoijdn0rbpfo",
 			"contentType": "node",
-			"src": "Welcome, {name}!",
+			"src": "Welcome, {{name}}!",
 			"rid": "public/locales/en/translations.json",
-			"ts": 1
+			"ts": 1,
+			"nsrc": [
+				"Welcome, ",
+				{
+					"t": "x",
+					"v": "{{name}}"
+				},
+				"!"
+			]
 		},
 		{
 			"sid": "welcome.name2",
-			"gstr": "Welcome, {{bx}}{name}{{ex}}!",
-			"guid": "0v-UepMBUCv9savc1xVoqbGx759Lx2Xrsi-HgZ2sWu0",
+			"gstr": "Welcome, {{bx}}{{x}}{{ex}}!",
+			"guid": "RLKDBvHhlr-qK3r-qduFToaGzxrPq1lCG1NlVq7u80s",
 			"contentType": "node",
-			"src": "Welcome, <0>{name}</0>!",
+			"src": "Welcome, <a>{{name}}</a>!",
 			"rid": "public/locales/en/translations.json",
 			"ts": 1,
 			"nsrc": [
 				"Welcome, ",
 				{
 					"t": "bx",
-					"v": "<0>"
+					"v": "<a>"
 				},
-				"{name}",
+				{
+					"t": "x",
+					"v": "{{name}}"
+				},
 				{
 					"t": "ex",
-					"v": "</0>"
+					"v": "</a>"
 				},
 				"!"
 			]
