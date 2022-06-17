@@ -2,6 +2,38 @@ import { diffJson } from 'diff';
 import { getNormalizedString, flattenNormalizedSourceToOrdinal, sourceAndTargetAreCompatible, phMatcherMaker } from './normalizers/util.js';
 import { consoleColor } from './shared.js';
 
+export function translateWithEntry(src, nsrc, entry, flags, encodeString) {
+    if (entry && !entry.inflight) {
+        if (sourceAndTargetAreCompatible(nsrc ?? src, entry.ntgt ?? entry.tgt)) {
+            if (entry.ntgt) {
+                const phMatcher = phMatcherMaker(nsrc ?? [ src ]);
+                const ntgtEntries = entry.ntgt.entries();
+                const tgt = [];
+                for (const [idx, part] of ntgtEntries) {
+                    const partFlags = { ...flags, isFirst: idx === 0, isLast: idx === ntgtEntries.length - 1 };
+                    if (typeof part === 'string') {
+                        tgt.push(encodeString(part, partFlags));
+                    } else {
+                        const ph = phMatcher(part);
+                        if (ph) {
+                            tgt.push(encodeString(ph, partFlags));
+                        } else {
+                            throw `unknown placeholder found: ${JSON.stringify(part)}`;
+                        }
+                    }
+                }
+                return tgt.join('');
+            } else {
+                return encodeString(entry.tgt, { ...flags, isFirst: true, isLast: true });
+            }
+        } else {
+            throw `source and target are incompatible`;
+        }
+    } else {
+        throw `TM entry missing or in flight`;
+    }
+}
+
 export async function translateCmd(mm, { limitToLang, dryRun }) {
     const status = { generatedResources: {}, deleteResources: {}, diff: {} };
     const resourceStats = await mm.fetchResourceStats();
@@ -51,37 +83,12 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                     const flattenSrc = nsrc ? flattenNormalizedSourceToOrdinal(nsrc) : src;
                     const guid = mm.generateFullyQualifiedGuid(resourceId, sid, flattenSrc);
                     const entry = tm.getEntryByGuid(guid);
-                    if (entry && !entry.inflight) {
-                        if (sourceAndTargetAreCompatible(nsrc ?? src, entry.ntgt ?? entry.tgt)) {
-                            if (entry.ntgt) {
-                                const phMatcher = phMatcherMaker(nsrc ?? [ src ]);
-                                const ntgtEntries = entry.ntgt.entries();
-                                const tgt = [];
-                                for (const [idx, part] of ntgtEntries) {
-                                    const partFlags = { ...flags, isFirst: idx === 0, isLast: idx === ntgtEntries.length - 1 };
-                                    if (typeof part === 'string') {
-                                        tgt.push(encodeString(part, partFlags));
-                                    } else {
-                                        const ph = phMatcher(part);
-                                        if (ph) {
-                                            tgt.push(encodeString(ph, partFlags));
-                                        } else {
-                                            mm.ctx.logger.info(`Unknown placeholder found: ${JSON.stringify(part)} in ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
-                                            return undefined;
-                                        }
-                                    }
-                                }
-                                return tgt.join('');
-                            } else {
-                                return encodeString(entry.tgt, { ...flags, isFirst: true, isLast: true });
-                            }
-                        } else {
-                            mm.ctx.logger.info(`Source ${resourceId}+${sid}+${src} is incompatible with ${sourceLang}_${targetLang} TM entry ${JSON.stringify(entry)}`);
-                        }
-                    } else {
-                        !entry?.inflight && mm.ctx.logger.info(`Couldn't find ${sourceLang}_${targetLang} entry for ${resourceId}+${sid}+${src}`);
+                    try {
+                        return translateWithEntry(src, nsrc, entry, flags, encodeString);
+                    } catch(e) {
+                        mm.ctx.logger.verbose(`Problem translating ${resourceId}+${sid}+${src} to ${targetLang}: ${e}`);
+                        return undefined;
                     }
-                    return undefined;
                 };
                 const resource = await pipeline.source.fetchResource(res.id);
                 const translatedRes = await pipeline.resourceFilter.translateResource({ resource, translator });

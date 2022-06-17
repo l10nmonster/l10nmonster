@@ -95,7 +95,6 @@ export function flattenNormalizedSourceToXmlV1(nsrc) {
                 phShorthand = `b${phShorthand}`;
             } else if (part.t === 'ex') {
                 nestingLevel--;
-                phIdx--;
                 phShorthand = openTagShorthand[nestingLevel];
                 normalizedStr.push(`</${phShorthand}>`);
                 phShorthand = `e${phShorthand}`;
