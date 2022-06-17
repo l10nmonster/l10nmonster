@@ -159,9 +159,13 @@ export function sourceAndTargetAreCompatible(nsrc, ntgt) {
     return false;
 }
 
+function flattenNormalizedSourceToMiniV1(nsrc) {
+    return nsrc.map(e => (typeof e === 'string' ? e : `{{${e.v1 ? minifyV1PH(e.v1) : e.v}}}`)).join('');
+}
+
 export function normalizedStringsAreEqual(s1, s2) {
-    const f1 = Array.isArray(s1) ? flattenNormalizedSourceToOrdinal(s1) : s1;
-    const f2 = Array.isArray(s2) ? flattenNormalizedSourceToOrdinal(s2) : s2;
+    const f1 = Array.isArray(s1) ? flattenNormalizedSourceToMiniV1(s1) : s1;
+    const f2 = Array.isArray(s2) ? flattenNormalizedSourceToMiniV1(s2) : s2;
     return f1 === f2;
 }
 
