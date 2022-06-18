@@ -77,7 +77,7 @@ async function exportAsJob(mm, targetLang, sourceLookup, tmBased) {
 
 export async function tmExportCmd(mm, { limitToLang, mode, format }) {
     const sourceLookup = await mm.getSourceAsTus();
-    const targetLangs = mm.getTargetLangs(limitToLang);
+    const targetLangs = await mm.source.getTargetLangs(limitToLang);
     const status = { files: [] };
     for (const targetLang of targetLangs) {
         let filename;

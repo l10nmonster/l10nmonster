@@ -7,8 +7,7 @@ export async function leverageCmd(mm, limitToLang) {
     if (mm.qualifiedPenalty === undefined || mm.unqualifiedPenalty === undefined) {
         return { error: 'You need to define qualifiedPenalty and unqualifiedPenalty properties in the config to use leverage!' };
     }
-    await mm.updateSourceCache();
-    const targetLangs = mm.getTargetLangs(limitToLang);
+    const targetLangs = await mm.source.getTargetLangs(limitToLang);
     const status = [];
     for (const targetLang of targetLangs) {
         const tm = await mm.tmm.getTM(mm.sourceLang, targetLang);

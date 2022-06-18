@@ -6,6 +6,7 @@ import {
   existsSync,
   mkdirSync,
   writeFileSync,
+  statSync,
 } from 'fs';
 import * as util from 'node:util';
 import { Command, InvalidArgumentError } from 'commander';
@@ -52,6 +53,7 @@ async function initMonster() {
     const configPath = path.join(baseDir, 'l10nmonster.mjs');
     if (existsSync(configPath)) {
         const configModule = await import(configPath);
+        const configSeal = statSync(configPath).mtime.toISOString();
         const verboseOption = monsterCLI.opts().verbose;
             // eslint-disable-next-line no-nested-ternary
             const verboseLevel = (verboseOption === undefined || verboseOption === 0) ?
@@ -120,7 +122,7 @@ async function initMonster() {
             if (!existsSync(monsterDir)) {
                 mkdirSync(monsterDir, {recursive: true});
             }
-            const mm = await new MonsterManager({ monsterDir, monsterConfig, ctx });
+            const mm = await new MonsterManager({ monsterDir, monsterConfig, configSeal, ctx });
             logger.info(`L10n Monster initialized!`);
             return mm;
         } catch(e) {
@@ -249,7 +251,7 @@ monsterCLI
 
 monsterCLI
     .command('analyze')
-    .description('source content report and validation.')
+    .description('content reports and validation.')
     .option('-s, --smell', 'detect smelly source')
     .option('--long', 'extended report')
     .action(async (options) => await withMonsterManager(async monsterManager => {

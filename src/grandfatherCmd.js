@@ -3,8 +3,8 @@ import { getNormalizedString, sourceAndTargetAreCompatible, flattenNormalizedSou
 // this is similar to push, except that existing translations in resources but not in TM
 // are assumed to be in sync with source and imported into the TM
 export async function grandfatherCmd(mm, quality, limitToLang) {
-    await mm.updateSourceCache();
-    const targetLangs = mm.getTargetLangs(limitToLang);
+    const sourceCache = Object.fromEntries(await mm.source.getEntries());
+    const targetLangs = await mm.source.getTargetLangs(limitToLang);
     const status = [];
     for (const targetLang of targetLangs) {
         const txCache = {};
@@ -14,7 +14,7 @@ export async function grandfatherCmd(mm, quality, limitToLang) {
         const translations = [];
         for (const tu of jobRequest.tus) {
             if (!txCache[tu.rid]) {
-                const resMeta = mm.sourceCache[tu.rid];
+                const resMeta = sourceCache[tu.rid];
                 const pipeline = mm.contentTypes[tu.contentType];
                 const lookup = {};
                 let resource;

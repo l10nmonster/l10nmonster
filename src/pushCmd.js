@@ -12,8 +12,7 @@ export async function pushCmd(mm, { limitToLang, tuFilter, driver, refresh, tran
         guidList = req.tus.map(tu => tu.guid);
     }
     const status = [];
-    await mm.updateSourceCache();
-    const targetLangs = mm.getTargetLangs(limitToLang);
+    const targetLangs = await mm.source.getTargetLangs(limitToLang);
     for (const targetLang of targetLangs) {
         const blockedJobs = (await mm.jobStore.getJobStatusByLangPair(mm.sourceLang, targetLang))
             .filter(e => e[1] === 'req');

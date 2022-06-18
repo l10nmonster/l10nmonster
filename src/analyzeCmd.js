@@ -2,8 +2,7 @@ import wordsCountModule from 'words-count';
 import { getNormalizedString } from './normalizers/util.js';
 
 export async function analyzeCmd(mm) {
-    await mm.updateSourceCache();
-    const sources = mm.getSourceCacheEntries();
+    const sources = await mm.source.getEntries();
     const qualifiedMatches = {}; // sid+src
     const unqualifiedMatches = {}; // src only
     let numStrings = 0;

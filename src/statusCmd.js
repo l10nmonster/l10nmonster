@@ -1,11 +1,9 @@
 export async function statusCmd(mm, { limitToLang }) {
-    await mm.updateSourceCache();
-    mm.ctx.logger.info(`Source cache updated`);
     const status = {
-        numSources: mm.getSourceCacheEntries().length,
+        numSources: (await mm.source.getEntries()).length,
         lang: {},
     };
-    const targetLangs = mm.getTargetLangs(limitToLang);
+    const targetLangs = await mm.source.getTargetLangs(limitToLang);
     for (const targetLang of targetLangs) {
         const leverage = await mm.estimateTranslationJob({ targetLang });
         status.lang[targetLang] = {
