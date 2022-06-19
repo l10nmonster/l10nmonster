@@ -14,7 +14,7 @@ export default class SourceManager {
         this.sourceCachePath = path.join(monsterManager.monsterDir, 'sourceCache.json');
         existsSync(this.sourceCachePath) && (this.sourceCache = JSON.parse(readFileSync(this.sourceCachePath, 'utf8')));
         // negative logic to allow undefined properties
-        !(this.sourceCache?.configSeal === monsterManager.configSeal) && (this.sourceCache = { configSeal: monsterManager.configSeal });
+        !(this.sourceCache?.configSeal === monsterManager.configSeal) && (this.sourceCache = { sources: {} });
         this.sourceCacheStale = true; // check resource timestamps once
     }
 
@@ -33,12 +33,12 @@ export default class SourceManager {
 
     async getEntries() {
         if (this.sourceCacheStale) {
-            const newCache = { };
+            const newCache = { configSeal: this.mm.configSeal, sources: {} };
             const stats = await this.#fetchResourceStats();
-            let dirty = stats.length !== Object.keys(this.sourceCache).length;
+            let dirty = stats.length !== Object.keys(this.sourceCache.sources).length;
             for (const res of stats) {
-                if (this.sourceCache[res.id]?.modified === res.modified) {
-                    newCache[res.id] = this.sourceCache[res.id];
+                if (this.sourceCache.sources[res.id]?.modified === res.modified) {
+                    newCache.sources[res.id] = this.sourceCache.sources[res.id];
                 } else {
                     dirty = true;
                     const pipeline = this.mm.contentTypes[res.contentType];
@@ -58,7 +58,7 @@ export default class SourceManager {
                         seg.contentType = res.contentType;
                     }
                     pipeline.segmentDecorator && (res.segments = pipeline.segmentDecorator(parsedRes.segments));
-                    newCache[res.id] = res;
+                    newCache.sources[res.id] = res;
                 }
             }
             if (dirty) {
@@ -68,7 +68,7 @@ export default class SourceManager {
             }
             this.sourceCacheStale = false;
         }
-        return Object.entries(this.sourceCache)
+        return Object.entries(this.sourceCache.sources)
             // eslint-disable-next-line no-unused-vars
             .filter(([rid, res]) => (this.prj === undefined || this.prj.includes(res.prj)));
     }

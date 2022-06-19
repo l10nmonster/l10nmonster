@@ -15,7 +15,7 @@ export async function pushCmd(mm, { limitToLang, tuFilter, driver, refresh, tran
     const targetLangs = await mm.source.getTargetLangs(limitToLang);
     for (const targetLang of targetLangs) {
         const blockedJobs = (await mm.jobStore.getJobStatusByLangPair(mm.sourceLang, targetLang))
-            .filter(e => e[1] === 'req');
+            .filter(e => e[1].status === 'req');
         if (blockedJobs.length === 0) {
             const jobBody = await (driver.untranslated ? mm.prepareTranslationJob({ targetLang, leverage }) : mm.prepareFilterBasedJob({ targetLang, tmBased: driver.tm, guidList }));
             tuFilter && (jobBody.tus = jobBody.tus.filter(tu => mm.tuFilters[tuFilter](tu)));

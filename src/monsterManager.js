@@ -21,7 +21,7 @@ export default class MonsterManager {
             this.jobStore = monsterConfig.jobStore ?? new JsonJobStore({
                 jobsDir: 'l10njobs',
             });
-            this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, ctx });
+            this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, ctx, configSeal });
             this.debug = monsterConfig.debug ?? {};
             this.sourceLang = monsterConfig.sourceLang;
             this.minimumQuality = monsterConfig.minimumQuality;
@@ -235,5 +235,4 @@ export default class MonsterManager {
     async shutdown() {
         this.jobStore.shutdown && await this.jobStore.shutdown();
     }
-
 }
