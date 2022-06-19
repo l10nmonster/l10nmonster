@@ -8,17 +8,28 @@ import { flattenNormalizedSourceToOrdinal } from './normalizers/util.js';
 import { cleanupTU, targetTUWhitelist } from './schemas.js';
 
 class TM {
-    constructor(sourceLang, targetLang, tmPathName, logger, configSeal) {
-        this.tmPathName = tmPathName;
-        this.logger = logger;
-        this.tm = existsSync(this.tmPathName) && JSON.parse(readFileSync(this.tmPathName, 'utf8'));
-        !(this.tm?.configSeal === configSeal) && (this.tm = {
+    constructor(sourceLang, targetLang, tmPathName, logger, configSeal, jobs) {
+        const EMPTY_TM = {
             sourceLang,
             targetLang,
             configSeal,
             jobStatus: {},
             tus: {},
-        });
+        };
+        this.tmPathName = tmPathName;
+        this.logger = logger;
+        if (existsSync(tmPathName)) {
+            this.tm = JSON.parse(readFileSync(tmPathName, 'utf8'));
+            const jobMap = Object.fromEntries(jobs);
+            const extraJobs = Object.keys(this.tm?.jobStatus ?? {}).filter(jobGuid => !jobMap[jobGuid]);
+            // nuke the cache if config seal is broken or jobs were removed
+            if (!(this.tm?.configSeal === configSeal) || extraJobs.length > 0) {
+                this.tm = EMPTY_TM;
+                logger.info(`Nuking existing TM ${tmPathName}`);
+            }
+        } else {
+            this.tm = EMPTY_TM;
+        }
         this.lookUpByFlattenSrc = {};
         Object.values(this.tm.tus).forEach(tu => this.setEntryByGuid(tu.guid, tu)); // this is to generate side-effects
     }
@@ -110,10 +121,10 @@ export default class TMManager {
         const tmFileName = `tmCache_${sourceLang}_${targetLang}.json`;
         let tm = this.tmCache[tmFileName];
         if (!tm) {
-            tm = new TM(sourceLang, targetLang, path.join(this.monsterDir, tmFileName), this.ctx.logger, this.configSeal);
-            this.tmCache[tmFileName] = tm;
             const jobs = (await this.jobStore.getJobStatusByLangPair(sourceLang, targetLang))
                 .filter(e => [ 'pending', 'done' ].includes(e[1].status));
+            tm = new TM(sourceLang, targetLang, path.join(this.monsterDir, tmFileName), this.ctx.logger, this.configSeal, jobs);
+            this.tmCache[tmFileName] = tm;
             for (const [jobGuid, jobStat] of jobs) {
                 const jobInTM = tm.getJobStatus(jobGuid);
                 if (!(jobInTM?.status === jobStat.status) || !(jobInTM?.mtime === jobStat.mtime)) {
