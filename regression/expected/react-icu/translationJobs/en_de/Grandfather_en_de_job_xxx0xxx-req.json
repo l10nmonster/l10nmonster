@@ -3,6 +3,238 @@
 	"targetLang": "de",
 	"tus": [
 		{
+			"sid": "homeTitle",
+			"notes": "header - This is the welcome message on the home page",
+			"gstr": "{{bx}}Welcome{{ex}} to {{x}}.",
+			"guid": "Yhu_PT_gxnNEP6i5cnfpdYCQ577w0kcHlKdPIp1rHWM",
+			"contentType": "node",
+			"src": "<b>Welcome</b> to $t(brand:portalName).",
+			"rid": "public/locales/en/app.json",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "bx",
+					"v": "<b>"
+				},
+				"Welcome",
+				{
+					"t": "ex",
+					"v": "</b>"
+				},
+				" to ",
+				{
+					"t": "x",
+					"v": "$t(brand:portalName)"
+				},
+				"."
+			]
+		},
+		{
+			"sid": "flightHome.title",
+			"notes": "header - welcome message of flight flow",
+			"gstr": "{{bx}}Welcome back{{ex}} to travel.",
+			"guid": "8QAVB3VDxOUUy1YKjJmy1pgdVR0m497ZhCOVS16GBQM",
+			"contentType": "node",
+			"src": "<strong>Welcome back</strong> to travel.",
+			"rid": "public/locales/en/app.json",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "bx",
+					"v": "<strong>"
+				},
+				"Welcome back",
+				{
+					"t": "ex",
+					"v": "</strong>"
+				},
+				" to travel."
+			]
+		},
+		{
+			"sid": "flightHome.subtitle",
+			"notes": "subtitle - flight landing page subheading",
+			"guid": "AGkOSI-2cbdKB0hwucpDtAhetdvAytGYurYD7hvcezM",
+			"contentType": "node",
+			"src": "Book the trip you've been waiting for.",
+			"rid": "public/locales/en/app.json",
+			"ts": 1
+		},
+		{
+			"sid": "pickerTraveler_one",
+			"isSuffixPluralized": true,
+			"guid": "YpoIEBkIfKjKzReUIQX2mqEn2bLQ8YPiTSt1FDHIkI4",
+			"contentType": "node",
+			"src": "Traveler",
+			"rid": "public/locales/en/app.json",
+			"ts": 1
+		},
+		{
+			"sid": "pickerTraveler_other",
+			"isSuffixPluralized": true,
+			"guid": "sTGxO3wYiDt-d_Nrg22Dm5CCdRJYPprzgXAZ9M2S81w",
+			"contentType": "node",
+			"src": "Travelers",
+			"rid": "public/locales/en/app.json",
+			"ts": 1
+		},
+		{
+			"sid": "warningMessage",
+			"notes": "copy - passenger count picker warning message",
+			"gstr": "You can search for up to {{x}} travelers",
+			"guid": "KuM3WlVRMaBLFo6E0fg4vATKm955gBDBbAGTLdLITAk",
+			"contentType": "node",
+			"src": "You can search for up to {{maximumCount}} travelers",
+			"rid": "public/locales/en/app.json",
+			"ts": 1,
+			"nsrc": [
+				"You can search for up to ",
+				{
+					"t": "x",
+					"v": "{{maximumCount}}"
+				},
+				" travelers"
+			]
+		},
+		{
+			"sid": "termsAndConditions",
+			"notes": "copy - price  terms and conditions copy",
+			"gstr": "{{bx}}{{x}} price services and notifications. {{x}} work hard to ensure the accuracy of its predictions. {{ex}}",
+			"guid": "qJxPXXst0F8DLkzVVG63hebwXP80N7CFgJfuXtr8mM8",
+			"contentType": "node",
+			"src": "<p>$t(brand:portalName) price services and notifications. $t(brand:clientName) work hard to ensure the accuracy of its predictions. </p>",
+			"rid": "public/locales/en/app.json",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "bx",
+					"v": "<p>"
+				},
+				{
+					"t": "x",
+					"v": "$t(brand:portalName)"
+				},
+				" price services and notifications. ",
+				{
+					"t": "x",
+					"v": "$t(brand:clientName)"
+				},
+				" work hard to ensure the accuracy of its predictions. ",
+				{
+					"t": "ex",
+					"v": "</p>"
+				}
+			]
+		},
+		{
+			"sid": "timeCount.day_one",
+			"notes": "copy - time copy for day singular",
+			"isSuffixPluralized": true,
+			"gstr": "{{x}} day",
+			"guid": "bws_LnxH_75t_Jdprc_zeTdGgUOWjzRFnDe6YfvjOYg",
+			"contentType": "node",
+			"src": "{{count}} day",
+			"rid": "public/locales/en/app.json",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "{{count}}"
+				},
+				" day"
+			]
+		},
+		{
+			"sid": "timeCount.day_other",
+			"notes": "copy - time copy for days plural",
+			"isSuffixPluralized": true,
+			"gstr": "{{x}} days",
+			"guid": "Jqw-OIo4U6fG5lyDl3mUsrBOVyxTbyNSBtYPAz3soPQ",
+			"contentType": "node",
+			"src": "{{count}} days",
+			"rid": "public/locales/en/app.json",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "{{count}}"
+				},
+				" days"
+			]
+		},
+		{
+			"sid": "timeCount.hour_one",
+			"notes": "copy - time copy for hour singular",
+			"isSuffixPluralized": true,
+			"gstr": "{{x}} hour",
+			"guid": "u-b8MhBsF9k7Q4SquD9h_vGYUIfEhi_gRzuA9i36PfY",
+			"contentType": "node",
+			"src": "{{count}} hour",
+			"rid": "public/locales/en/app.json",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "{{count}}"
+				},
+				" hour"
+			]
+		},
+		{
+			"sid": "timeCount.hour_other",
+			"notes": "copy - time copy for hours plural",
+			"isSuffixPluralized": true,
+			"gstr": "{{x}} hours",
+			"guid": "haJeL1bazwQ1yTntetVJeSFWmn5a9hPwuTBVoh9ISjo",
+			"contentType": "node",
+			"src": "{{count}} hours",
+			"rid": "public/locales/en/app.json",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "{{count}}"
+				},
+				" hours"
+			]
+		},
+		{
+			"sid": "timeCount.second_one",
+			"notes": "copy - time copy for second singular",
+			"isSuffixPluralized": true,
+			"gstr": "{{x}} second",
+			"guid": "YjPgqgOdTMkHKTRSeQTqRnPKYg-aPkWmF4PtExUoI6Q",
+			"contentType": "node",
+			"src": "{{count}} second",
+			"rid": "public/locales/en/app.json",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "{{count}}"
+				},
+				" second"
+			]
+		},
+		{
+			"sid": "timeCount.second_other",
+			"notes": "copy - time copy for seconds plural",
+			"isSuffixPluralized": true,
+			"gstr": "{{x}} seconds",
+			"guid": "x1xQynOoxM1xfd0g5iSmzZfrIWxwjHfV3x-1xaoiFJk",
+			"contentType": "node",
+			"src": "{{count}} seconds",
+			"rid": "public/locales/en/app.json",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "{{count}}"
+				},
+				" seconds"
+			]
+		},
+		{
 			"sid": "title",
 			"guid": "wUtgDUDVeLsT_x9VEGH_peG9Ujs3DvX1H3cvHtxgcjw",
 			"contentType": "node",

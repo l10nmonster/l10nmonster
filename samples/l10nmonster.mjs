@@ -7,8 +7,6 @@ const androidLangMapping = {
 export default class MultiProjectConfig {
     sourceLang = 'en';
     minimumQuality = 50;
-    qualifiedPenalty = 1;
-    unqualifiedPenalty = 9;
 
     constructor({ adapters, filters, normalizers, stores }) {
         this.contentTypes = {

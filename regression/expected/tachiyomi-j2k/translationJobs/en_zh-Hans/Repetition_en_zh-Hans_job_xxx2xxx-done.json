@@ -2,6 +2,8 @@
 	"sourceLang": "en",
 	"targetLang": "zh-Hans",
 	"translationProvider": "Repetition",
+	"jobGuid": "xxx2xxx",
+	"status": "done",
 	"tus": [
 		{
 			"guid": "5otAlRi18WJHdTNddhXrbauyBBuNmozvj5T1U3LdNio",
@@ -32,8 +34,7 @@
 				},
 				" 漫画？"
 			],
-			"ts": 1,
-			"jobGuid": "xxx2xxx"
+			"ts": 1
 		},
 		{
 			"guid": "V7Ipy8tVMS_hgViqxAA2GVdKnK2eiylBmpYsz6R23AM",
@@ -64,8 +65,7 @@
 				},
 				" 漫画？"
 			],
-			"ts": 1,
-			"jobGuid": "xxx2xxx"
+			"ts": 1
 		},
 		{
 			"guid": "26atAzC3mwZ3kvEaRGvJjuffpG2YiWvLb_0uDvsLPtE",
@@ -85,11 +85,8 @@
 				},
 				" 漫画已迁移"
 			],
-			"ts": 1,
-			"jobGuid": "xxx2xxx"
+			"ts": 1
 		}
 	],
-	"status": "done",
-	"jobGuid": "xxx2xxx",
 	"updatedAt": "2022-05-29T00:00:00.000Z"
 }

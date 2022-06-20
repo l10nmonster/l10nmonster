@@ -1,8 +1,6 @@
 export default class CardboardConfig {
     sourceLang = 'en';
     minimumQuality = 50;
-    qualifiedPenalty = 1;
-    unqualifiedPenalty = 9;
 
     constructor({ ctx, stores, adapters, filters, normalizers, translators }) {
         this.source = new adapters.FsSource({
@@ -38,6 +36,17 @@ export default class CardboardConfig {
                     quality: 40,
                 }),
                 quota: 0,
+            },
+            Repetition: {
+                translator: new translators.Repetition({
+                    qualifiedPenalty: 1,
+                    unqualifiedPenalty: 9,
+                }),
+            },
+            Grandfather: {
+                translator: new translators.Grandfather({
+                    quality: 70,
+                }),
             },
         };
         this.tuFilters = {

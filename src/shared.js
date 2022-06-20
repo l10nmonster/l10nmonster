@@ -14,6 +14,12 @@ export const consoleColor = {
     bright: '\x1b[1m',
 };
 
+// https://stackoverflow.com/questions/12484386/access-javascript-property-case-insensitively
+export function fixCaseInsensitiveKey(object, key) {
+    const asLowercase = key.toLowerCase();
+    return Object.keys(object).find(k => k.toLowerCase() === asLowercase);
+}
+
 function printContent(contentPairs) {
     for (const [prj, uc] of Object.entries(contentPairs)) {
         console.log(`Project: ${prj}`);
@@ -69,4 +75,27 @@ export function printResponse(req, res, showPair) {
         console.log(`${consoleColor.red}${req.tus.length} TU in request, ${res.tus.length} TU in response, ${matchedTranslations} matching translations${consoleColor.reset}`);
     }
     printContent(translatedContent);
+}
+
+export function printLeverage(leverage, detailed) {
+    const totalStrings = leverage.translated + leverage.pending + leverage.untranslated + leverage.internalRepetitions;
+    detailed && console.log(`    - total strings for target language: ${totalStrings.toLocaleString()} (${leverage.translatedWords.toLocaleString()} translated words)`);
+    for (const [q, num] of Object.entries(leverage.translatedByQ).sort((a,b) => b[1] - a[1])) {
+        detailed && console.log(`    - translated strings @ quality ${q}: ${num.toLocaleString()}`);
+    }
+    leverage.pending && console.log(`    - strings pending translation: ${leverage.pending.toLocaleString()} (${leverage.pendingWords.toLocaleString()} words)`);
+    leverage.untranslated && console.log(`    - untranslated unique strings: ${leverage.untranslated.toLocaleString()} (${leverage.untranslatedChars.toLocaleString()} chars - ${leverage.untranslatedWords.toLocaleString()} words - $${(leverage.untranslatedWords * .2).toFixed(2)})`);
+    leverage.internalRepetitions && console.log(`    - untranslated repeated strings: ${leverage.internalRepetitions.toLocaleString()} (${leverage.internalRepetitionWords.toLocaleString()} words)`);
+}
+
+export function computeTotals(totals, partial) {
+    for (const [ k, v ] of Object.entries(partial)) {
+        if (typeof v === 'object') {
+            totals[k] ??= {};
+            computeTotals(totals[k], v);
+        } else {
+            totals[k] ??= 0;
+            totals[k] += v;
+        }
+    }
 }

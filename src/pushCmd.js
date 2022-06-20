@@ -1,7 +1,14 @@
+import { fixCaseInsensitiveKey } from './shared.js';
+
 // eslint-disable-next-line complexity
 export async function pushCmd(mm, { limitToLang, tuFilter, driver, refresh, translationProviderName, leverage, dryRun, instructions }) {
-    if (tuFilter && !mm.tuFilters[tuFilter]) {
-        throw `Couldn't find ${tuFilter} tu filter`;
+    let tuFilterFunction;
+    if (tuFilter) {
+        tuFilter = fixCaseInsensitiveKey(mm.tuFilters, tuFilter);
+        tuFilterFunction = mm.tuFilters[tuFilter];
+        if (tuFilterFunction) {
+            throw `Couldn't find ${tuFilter} tu filter`;
+        }
     }
     let guidList;
     if (driver.jobGuid) {
@@ -18,7 +25,7 @@ export async function pushCmd(mm, { limitToLang, tuFilter, driver, refresh, tran
             .filter(e => e[1].status === 'req');
         if (blockedJobs.length === 0) {
             const jobBody = await (driver.untranslated ? mm.prepareTranslationJob({ targetLang, leverage }) : mm.prepareFilterBasedJob({ targetLang, tmBased: driver.tm, guidList }));
-            tuFilter && (jobBody.tus = jobBody.tus.filter(tu => mm.tuFilters[tuFilter](tu)));
+            tuFilterFunction && (jobBody.tus = jobBody.tus.filter(tu => tuFilterFunction(tu)));
             const langStatus = { sourceLang: jobBody.sourceLang, targetLang };
             if (Object.keys(jobBody.tus).length > 0) {
                 if (dryRun) {
@@ -26,6 +33,7 @@ export async function pushCmd(mm, { limitToLang, tuFilter, driver, refresh, tran
                 } else {
                     jobBody.translationProvider = translationProviderName;
                     const translationProvider = mm.getTranslationProvider(jobBody);
+                    langStatus.provider = jobBody.translationProvider; // this may have its case fixed by getTranslationProvider()
                     if (translationProvider) {
                         const minimumJobSize = translationProvider.minimumJobSize ?? 0;
                         if (jobBody.tus.length >= minimumJobSize || refresh) {

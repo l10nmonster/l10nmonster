@@ -12,7 +12,11 @@ import * as util from 'node:util';
 import { Command, InvalidArgumentError } from 'commander';
 import * as winston from 'winston';
 
-import { consoleColor, printRequest, printResponse } from './src/shared.js';
+import {
+    consoleColor, fixCaseInsensitiveKey,
+    printRequest, printResponse,
+    printLeverage, computeTotals,
+} from './src/shared.js';
 
 import MonsterManager from './src/monsterManager.js';
 import { OpsMgr } from './src/opsMgr.js';
@@ -20,8 +24,6 @@ import { OpsMgr } from './src/opsMgr.js';
 import { JsonJobStore } from './src/stores/jsonJobStore.js';
 
 import { analyzeCmd } from './src/analyzeCmd.js';
-import { grandfatherCmd } from './src/grandfatherCmd.js';
-import { leverageCmd } from './src/leverageCmd.js';
 import { pullCmd } from './src/pullCmd.js';
 import { pushCmd } from './src/pushCmd.js';
 import { jobPushCmd } from './src/jobCmd.js';
@@ -36,6 +38,9 @@ import { AndroidFilter } from './src/filters/android.js';
 import { JavaPropertiesFilter } from './src/filters/java.js';
 import { IosStringsFilter } from './src/filters/ios.js';
 import { JsonFilter } from './src/filters/json.js';
+
+import { Repetition } from './src/translators/repetition.js';
+import { Grandfather } from './src/translators/grandfather.js';
 import { XliffBridge } from './src/translators/xliff.js';
 import { PigLatinizer } from './src/translators/piglatinizer.js';
 import { TranslationOS } from './src/translators/translationOS.js';
@@ -82,8 +87,7 @@ async function initMonster() {
                 }),
             ],
         });
-        const opsDir = monsterCLI.opts().ops ?? configModule.opsDir;
-        const opsMgr = opsDir ? new OpsMgr({ opsDir: path.join(baseDir, opsDir), logger }) : new OpsMgr({ logger });
+        const opsMgr = configModule.opsDir ? new OpsMgr({ opsDir: path.join(baseDir, configModule.opsDir), logger }) : new OpsMgr({ logger });
         const ctx = {
             baseDir,
             opsMgr,
@@ -107,7 +111,7 @@ async function initMonster() {
                 ...regexNormalizers,
             },
             translators: {
-                XliffBridge, PigLatinizer, TranslationOS, Visicode, ModernMT, DeepL
+                Repetition, Grandfather, XliffBridge, PigLatinizer, TranslationOS, Visicode, ModernMT, DeepL
             },
         };
         for (const helperCategory of Object.values(helpers)) {
@@ -131,10 +135,11 @@ async function initMonster() {
                 mkdirSync(monsterDir, {recursive: true});
             }
             const mm = await new MonsterManager({ monsterDir, monsterConfig, configSeal, ctx, defaultAnalyzers });
+            ctx.mm = mm;
             logger.info(`L10n Monster initialized!`);
             return mm;
         } catch(e) {
-            throw `l10nmonster.mjs failed to construct: ${e.stack}`;
+            throw `l10nmonster.mjs failed to construct: ${e.stack || e}`;
         }
     }
     previousDir = baseDir;
@@ -172,34 +177,10 @@ monsterCLI
     .version('0.1.0', '--version', 'output the current version number')
     .description('Continuous localization for the rest of us.')
     .option('-v, --verbose [level]', '0=error, 1=warning, 2=info, 3=verbose', intOptionParser)
-    .option('--ops <opsDir>', 'directory to output debug operations')
-    .option('-p, --prj <num>', 'limit to specified project')
-    .option('--arg <string>', 'optional constructor argument')
-    .option('--regression', 'keep variable constant during regression testing')
+    .option('-p, --prj <prj1,...>', 'limit source to specified projects')
+    .option('--arg <string>', 'optional config constructor argument')
+    .option('--regression', 'keep variables constant during regression testing')
 ;
-
-function printLeverage(leverage, detailed) {
-    const totalStrings = leverage.translated + leverage.pending + leverage.untranslated + leverage.internalRepetitions;
-    detailed && console.log(`    - total strings for target language: ${totalStrings.toLocaleString()} (${leverage.translatedWords.toLocaleString()} translated words)`);
-    for (const [q, num] of Object.entries(leverage.translatedByQ).sort((a,b) => b[1] - a[1])) {
-        detailed && console.log(`    - translated strings @ quality ${q}: ${num.toLocaleString()}`);
-    }
-    leverage.pending && console.log(`    - strings pending translation: ${leverage.pending.toLocaleString()} (${leverage.pendingWords.toLocaleString()} words)`);
-    leverage.untranslated && console.log(`    - untranslated unique strings: ${leverage.untranslated.toLocaleString()} (${leverage.untranslatedChars.toLocaleString()} chars - ${leverage.untranslatedWords.toLocaleString()} words - $${(leverage.untranslatedWords * .2).toFixed(2)})`);
-    leverage.internalRepetitions && console.log(`    - untranslated repeated strings: ${leverage.internalRepetitions.toLocaleString()} (${leverage.internalRepetitionWords.toLocaleString()} words)`);
-}
-
-function computeTotals(totals, partial) {
-    for (const [ k, v ] of Object.entries(partial)) {
-        if (typeof v === 'object') {
-            totals[k] ??= {};
-            computeTotals(totals[k], v);
-        } else {
-            totals[k] ??= 0;
-            totals[k] += v;
-        }
-    }
-}
 
 monsterCLI
     .command('status')
@@ -267,7 +248,8 @@ monsterCLI
     .action(async (analyzer, params, options) => await withMonsterManager(async monsterManager => {
         try {
             if (analyzer) {
-                const Analyzer = monsterManager.analyzers[analyzer.toLowerCase()];
+                analyzer = fixCaseInsensitiveKey(monsterManager.analyzers, analyzer);
+                const Analyzer = monsterManager.analyzers[analyzer];
                 if (!Analyzer) {
                     throw `couldn't find a ${analyzer} analyzer`;
                 }
@@ -350,7 +332,7 @@ monsterCLI
                         if (ls.minimumJobSize !== undefined) {
                             console.log(`${ls.num.toLocaleString()} translations units for language ${ls.targetLang} not sent because you need at least ${ls.minimumJobSize}`);
                         } else {
-                            console.log(`${ls.num.toLocaleString()} translations units requested for language ${consoleColor.bright}${ls.targetLang}${consoleColor.reset} on job ${ls.jobGuid} -> status: ${consoleColor.bright}${ls.status}${consoleColor.reset}`);
+                            console.log(`job ${ls.jobGuid} with ${ls.num.toLocaleString()} translations requested for language ${consoleColor.bright}${ls.targetLang}${consoleColor.reset} with provider ${consoleColor.bright}${ls.provider}${consoleColor.reset} -> status: ${consoleColor.bright}${ls.status}${consoleColor.reset}`);
                         }
                     }
                 } else {
@@ -430,50 +412,6 @@ monsterCLI
 ;
 
 monsterCLI
-    .command('grandfather')
-    .description('Grandfather existing translations as a translation job.')
-    .requiredOption('-q, --quality <level>', 'translation quality', intOptionParser)
-    .option('-l, --lang <language>', 'target language to import')
-    .action(async (options) => await withMonsterManager(async monsterManager => {
-      const quality = options.quality;
-      console.log(`Grandfathering existing translations at quality level ${quality}...`);
-      const status = await grandfatherCmd(monsterManager, quality, options.lang);
-      if (status.error) {
-        console.error(`Failed: ${status.error}`);
-      } else {
-        if (status.length > 0) {
-          for (const ls of status) {
-            console.log(`${ls.num.toLocaleString()} translations units grandfathered for language ${ls.targetLang}`);
-          }
-        } else {
-          console.log('Nothing to grandfather!');
-        }
-      }
-  }))
-;
-
-monsterCLI
-    .command('leverage')
-    .description('Leverage repetitions as a translation job.')
-    .option('-l, --lang <language>', 'target language to leverage')
-    .action(async (options) => await withMonsterManager(async monsterManager => {
-      console.log(`Leveraging translations of repetitions...`);
-      const status = await leverageCmd(monsterManager, options.lang);
-      if (status.error) {
-        console.error(`Failed: ${status.error}`);
-      } else {
-        if (status.length > 0) {
-          for (const ls of status) {
-            console.log(`${ls.num.toLocaleString()} translations leveraged for language ${ls.targetLang}`);
-          }
-        } else {
-          console.log('Nothing to leverage!');
-        }
-      }
-  }))
-;
-
-monsterCLI
     .command('pull')
     .description('Receive outstanding translation jobs.')
     .option('--partial', 'commit partial deliveries')
@@ -535,6 +473,32 @@ monsterCLI
         } else {
             console.error('Invalid export format');
         }
+    }))
+;
+
+// this seems useless but it still initializes MonsterManager so it can be
+// used as a no-op to test the config/initialization process
+// lifted from https://www.asciiart.eu/mythology/monsters
+monsterCLI
+    .command('monster')
+    .description('Just because...')
+    .action(async () => await withMonsterManager(async () => {
+        console.log(`
+            _.------.                        .----.__
+           /         \\_.       ._           /---.__  \\
+          |  O    O   |\\\\___  //|          /       \`\\ |
+          |  .vvvvv.  | )   \`(/ |         | o     o  \\|
+          /  |     |  |/      \\ |  /|   ./| .vvvvv.  |\\
+         /   \`^^^^^'  / _   _  \`|_ ||  / /| |     |  | \\
+       ./  /|         | O)  O   ) \\|| //' | \`^vvvv'  |/\\\\
+      /   / |         \\        /  | | ~   \\          |  \\\\
+      \\  /  |        / \\ Y   /'   | \\     |          |   ~
+       \`'   |  _     |  \`._/' |   |  \\     7        /
+         _.-'-' \`-'-'|  |\`-._/   /    \\ _ /    .    |
+    __.-'            \\  \\   .   / \\_.  \\ -|_/\\/ \`--.|_
+ --'                  \\  \\ |   /    |  |              \`-
+                       \\uU \\UU/     |  /   :F_P:
+        `);
     }))
 ;
 

@@ -3,6 +3,14 @@
 	"targetLang": "zh-Hant",
 	"tus": [
 		{
+			"sid": "all_files_permission_required",
+			"guid": "27qyNndOGr5Tzx4ddlKCtgGu-HA1wIjdz0DHPrL7yF8",
+			"contentType": "default",
+			"src": "File permissions required",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "external_storage_permission_notice",
 			"gstr": "TachiyomiJ2K requires access to all files in Android 11 to download chapters, create automatic backups, and read local manga. \n\nOn the next screen, enable \"Allow access to manage all files.\"",
 			"guid": "ehbg6jluBWm1ZPyw00Prf4lbXtVyLJItrCrATkSEYGI",
@@ -313,6 +321,28 @@
 			]
 		},
 		{
+			"sid": "chapter_x_of_y",
+			"notes": "Chapters",
+			"gstr": "Chapter {{x}} of {{x}}",
+			"guid": "sz5VG6XU2cIa2wlQX17vYlxhFFkUQP4SNc4Tuf0XWoM",
+			"contentType": "default",
+			"src": "Chapter %1$d of %2$d",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Chapter ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				" of ",
+				{
+					"t": "x",
+					"v": "%2$d"
+				}
+			]
+		},
+		{
 			"sid": "all_chapters_read",
 			"notes": "Chapters",
 			"guid": "2o1v8EPRDg7n9szthMXwcIo3yyNkD2wF4cXDrRqBXYY",
@@ -412,6 +442,15 @@
 			"ts": 1
 		},
 		{
+			"sid": "no_chapters_to_delete",
+			"notes": "Chapters",
+			"guid": "tqJcDNz_ZRwr47o7D7bfseUWk-bZrORIZOvHHClSwAk",
+			"contentType": "default",
+			"src": "No chapters to delete",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "by_source_order",
 			"notes": "Chapters",
 			"gstr": "By source's order",
@@ -439,6 +478,134 @@
 			"guid": "UaOinmorDOPohtOevV2dux8o2cs0mzFRJzpaiN8T4Uc",
 			"contentType": "default",
 			"src": "By upload date",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "scanlators",
+			"notes": "Chapters",
+			"guid": "jxe6lKXpItYQ7tDgDvJvzwVZ-RfgcQoviUHOGfCohj4",
+			"contentType": "default",
+			"src": "Scanlators",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "remove_n_chapters_one",
+			"isSuffixPluralized": true,
+			"notes": "Chapters",
+			"gstr": "Remove {{x}} downloaded chapter?",
+			"guid": "t4VWxI0XBS7jJwzcIpjyWz95PtQe0nM2xUjvN4A1U_4",
+			"contentType": "default",
+			"src": "Remove %1$d downloaded chapter?",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Remove ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				" downloaded chapter?"
+			]
+		},
+		{
+			"sid": "remove_n_chapters_other",
+			"isSuffixPluralized": true,
+			"notes": "Chapters",
+			"gstr": "Remove {{x}} downloaded chapters?",
+			"guid": "p7jJcpu_ZOzMod7iebzwKDCR2JYb4Qef0D1lq2MQLKg",
+			"contentType": "default",
+			"src": "Remove %1$d downloaded chapters?",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Remove ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				" downloaded chapters?"
+			]
+		},
+		{
+			"sid": "chapters_plural_one",
+			"isSuffixPluralized": true,
+			"notes": "Chapters",
+			"gstr": "{{x}} chapter",
+			"guid": "1d7HtgdwLMLoxTTiv83rLZkKjkpfAmsehateH09g4gc",
+			"contentType": "default",
+			"src": "%1$d chapter",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				" chapter"
+			]
+		},
+		{
+			"sid": "chapters_plural_other",
+			"isSuffixPluralized": true,
+			"notes": "Chapters",
+			"gstr": "{{x}} chapters",
+			"guid": "qwYhEI77stoakCdt86oc0Z9IcmbpLN19jqquS_d2WL0",
+			"contentType": "default",
+			"src": "%1$d chapters",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				" chapters"
+			]
+		},
+		{
+			"sid": "pages_left_one",
+			"isSuffixPluralized": true,
+			"notes": "Chapters",
+			"gstr": "{{x}} page left",
+			"guid": "2udl0hvWKKtR3kYZ1ZxvWfGf6Sq6I_AP1i91nZoJRuU",
+			"contentType": "default",
+			"src": "%1$d page left",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				" page left"
+			]
+		},
+		{
+			"sid": "pages_left_other",
+			"isSuffixPluralized": true,
+			"notes": "Chapters",
+			"gstr": "{{x}} pages left",
+			"guid": "cwofMrt4vcR72muKJgdj3ynRXfS-8kRankY4lw_Cmm4",
+			"contentType": "default",
+			"src": "%1$d pages left",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				" pages left"
+			]
+		},
+		{
+			"sid": "category",
+			"notes": "Category",
+			"guid": "WH5WLMC2qY2bMf5JBHSqSrkJVjNzv3YHD0V58wqZfV0",
+			"contentType": "default",
+			"src": "Category",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -487,11 +654,101 @@
 			]
 		},
 		{
+			"sid": "create_new_category",
+			"notes": "Category",
+			"guid": "TdXyr2sR2uiqUPCk-2leWA3Vat-PDwLKkezo5p4OR4E",
+			"contentType": "default",
+			"src": "Create new category",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "new_category",
+			"notes": "Category",
+			"guid": "6LxJC8sf_K1lMeszDslG9Sl_Rvzv5614YKs_SdvvvXU",
+			"contentType": "default",
+			"src": "New category",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "category_is_empty",
+			"notes": "Category",
+			"guid": "XXoLNbGH3EGehbZoQIYAlgCLCeXTFwLDRG-eFTvkRLI",
+			"contentType": "default",
+			"src": "Category is empty",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "show_categories_while_filtering",
+			"notes": "Category",
+			"guid": "xASOi21bwFlUiAyDq_NjUyskRF7IAJr6HsWpU0Kl6RE",
+			"contentType": "default",
+			"src": "Show empty categories while filtering",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "no_matches_for_filters_short",
+			"notes": "Category",
+			"guid": "V1z5DUJUfjPG59288u1ZgacrdXDTUYhGbyPfbjmMs7Y",
+			"contentType": "default",
+			"src": "No matches for your filters",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "top_category",
+			"notes": "Category",
+			"gstr": "Top category ({{x}})",
+			"guid": "4GXpmlw4Taq7yKQyTwSQUIm6gXsdKi8xT5lg0BskTbM",
+			"contentType": "default",
+			"src": "Top category (%1$s)",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Top category (",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				")"
+			]
+		},
+		{
 			"sid": "default_category",
 			"notes": "Category",
 			"guid": "sXEvR457Fl4so0Cv0WtTRtzPtYD_jfdREwMYK3O8nSA",
 			"contentType": "default",
 			"src": "Default category",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "first_category",
+			"notes": "Category",
+			"guid": "ALfGSVlR2dtPc2wD9pRK718u2FBbmpMfRsdEznu6no0",
+			"contentType": "default",
+			"src": "First category",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "categories_on_manual",
+			"notes": "Category",
+			"guid": "Mz8K0HaSi4Ffvygulhy2b3Fqj38tfAeKoZeEukHyC5g",
+			"contentType": "default",
+			"src": "Categories to update when manually refreshing",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "categories_in_global_update",
+			"notes": "Category",
+			"guid": "so0PKZwvPqpGV1xWSDbWY0znY7cKpYufeq33reXt8A0",
+			"contentType": "default",
+			"src": "All categories in global update",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -505,11 +762,42 @@
 			"ts": 1
 		},
 		{
+			"sid": "confirm_category_deletion_message",
+			"notes": "Category",
+			"gstr": "Manga in this category will moved into the default category.",
+			"guid": "Z5R54ptkf0KSzqHSXbTpgusMBDC0AnVs5HlxwFuBn_g",
+			"contentType": "default",
+			"src": "Manga in this category will moved into the\n        default category.",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Manga in this category will moved into the default category."
+			]
+		},
+		{
+			"sid": "already_in_category",
+			"notes": "Category",
+			"guid": "dpO_z4YeTFadU1pOz_kPcMX3MJPH0ER9fKBE5s3JQ2w",
+			"contentType": "default",
+			"src": "Manga already in category",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "add_categories",
 			"notes": "Category",
 			"guid": "Gr8lB80zlGIz_xKnnhk6X9XxnYKun1N1fxfIuAafjN0",
 			"contentType": "default",
 			"src": "Add categories",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "add_edit_categories",
+			"notes": "Category",
+			"guid": "80n7O41H3GTAIsW9t8opIF2izOHZmus3wrImbKV3iCE",
+			"contentType": "default",
+			"src": "Add/Edit categories",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -523,6 +811,15 @@
 			"ts": 1
 		},
 		{
+			"sid": "manage_category",
+			"notes": "Category",
+			"guid": "mdJXc6b3zFcJjCiCBwa3eIMD0ftft4hpfhR8y24AKCw",
+			"contentType": "default",
+			"src": "Manage category",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "move_to_categories",
 			"notes": "Category",
 			"guid": "crKjl1Fgg3ZyTE2hAcUJ4rGdY1Fmkl14DbVZy3df79E",
@@ -530,6 +827,42 @@
 			"src": "Move to categories",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
+		},
+		{
+			"sid": "category_plural_one",
+			"isSuffixPluralized": true,
+			"notes": "Category",
+			"gstr": "{{x}} category",
+			"guid": "PR-mra8oJXYjh-iGJbPWRJ93cqMsnv3I9kI-KHWftDI",
+			"contentType": "default",
+			"src": "%d category",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" category"
+			]
+		},
+		{
+			"sid": "category_plural_other",
+			"isSuffixPluralized": true,
+			"notes": "Category",
+			"gstr": "{{x}} categories",
+			"guid": "xIQ8JakD15UWHPlTjfDfsR_DppXZXRKrIBcVjpnIUH0",
+			"contentType": "default",
+			"src": "%d categories",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" categories"
+			]
 		},
 		{
 			"sid": "category_with_name_exists",
@@ -541,6 +874,42 @@
 			"ts": 1
 		},
 		{
+			"sid": "category_cannot_be_blank",
+			"notes": "Category",
+			"guid": "3OTZLJcQIzg5hjfkG2FvvaLCs2bw5nf5x0eK7liio4M",
+			"contentType": "default",
+			"src": "Category name cannot be blank",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "category_deleted",
+			"notes": "Category",
+			"guid": "_SEHHFJh1jzpnbQTZhpgdfhSuNgxeC2IedcO-8-eJVQ",
+			"contentType": "default",
+			"src": "Category deleted",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "long_press_category",
+			"notes": "Category",
+			"guid": "2Dh5uX-r-ZGNhX0XX_9rBeP0s20EvWh1ANSjpD_Ads0",
+			"contentType": "default",
+			"src": "Press and hold to edit a category",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "jump_to_category",
+			"notes": "Category",
+			"guid": "JPHB24YD9kPnTMIzpxSbLTHOQ3sqRd20JU0wD-6SSGg",
+			"contentType": "default",
+			"src": "Jump to category",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "update",
 			"notes": "Updates",
 			"guid": "1J9LO1I69PkBtCO-lcjrVfJ0hLDY2P9KkW2jnd9Iia0",
@@ -548,6 +917,32 @@
 			"src": "Update",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
+		},
+		{
+			"sid": "what_should_update",
+			"notes": "Updates",
+			"guid": "9g34tPp38mY39nGP8T-WnIW3VChRwCg4CLToDOJx9zE",
+			"contentType": "default",
+			"src": "What should update?",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "updating_",
+			"notes": "Updates",
+			"gstr": "Updating {{x}}",
+			"guid": "R9Wl42FJ2T6ZFFSSaMoGXjPle4BfCSiAk7BqsNC94lM",
+			"contentType": "default",
+			"src": "Updating %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Updating ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
 		},
 		{
 			"sid": "update_available",
@@ -586,6 +981,15 @@
 			"ts": 1
 		},
 		{
+			"sid": "release_page",
+			"notes": "Updates",
+			"guid": "mHA1aAaURIeyD65vqcQOrZgktm0kcXaOteUsAQc475g",
+			"contentType": "default",
+			"src": "Release page",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "could_not_install_update",
 			"notes": "Updates",
 			"guid": "TbkIkVi_X7f7CBO4u0f726BGsGtl_vvkV6T5BfF9P70",
@@ -609,6 +1013,15 @@
 			"guid": "qAcMTZXYvITCVVUsJnaeziMxq66YjeyIpN3-S0Rebyg",
 			"contentType": "default",
 			"src": "Library",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "your_library",
+			"notes": "Library",
+			"guid": "YH_hpEGjrEK1ltdMwc4vNcWcKdVQE59STZdql8xcazY",
+			"contentType": "default",
+			"src": "Your library",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -679,11 +1092,119 @@
 			]
 		},
 		{
+			"sid": "no_matches_for_filters",
+			"notes": "Library",
+			"guid": "mWxC9jiOzWyfACuoV6DlcypJivwOxus5-dMFIHdVnGs",
+			"contentType": "default",
+			"src": "No matches found for your current filters",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "getting_started_guide",
 			"notes": "Library",
 			"guid": "DchxaDnPAnphKwQMynBpe4TkqbwUOD7MsQD-GEtfSho",
 			"contentType": "default",
 			"src": "Getting started guide",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "show_all_categories",
+			"notes": "Library",
+			"guid": "qIZDGt0DMbfmVZaSxqo8rBZN0RyPwAmaot7CYpXNJao",
+			"contentType": "default",
+			"src": "Show all categories",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "move_dynamic_to_bottom",
+			"notes": "Library",
+			"guid": "Av_ON0E9yB1PATxomRZqmTHPlUa6IuIfdbqM3hHq9uY",
+			"contentType": "default",
+			"src": "Move collapsed dynamic categories to bottom",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "show_number_of_items",
+			"notes": "Library",
+			"guid": "m8j1SCe_UrzhS46X6dM3N-iYwO3_3kER3VbKiw5ixBk",
+			"contentType": "default",
+			"src": "Show number of items",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "when_grouping_by_sources_tags",
+			"notes": "Library",
+			"guid": "Qs6SZ3dVI6ozm00KhWIbFPFqMOYVdpBj68Qph8F1BGY",
+			"contentType": "default",
+			"src": "When grouping library by sources, status, etc.",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "always_show_current_category",
+			"notes": "Library",
+			"guid": "RNy0yE1oUBzz2PCGw4-OrDNwlclfoSUu5rtfQ9hRUMA",
+			"contentType": "default",
+			"src": "Always show current category",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "category_hopper_long_press",
+			"notes": "Library",
+			"guid": "xPwj1sm9RPgXQRbze4ER9Qtvw47U4EAEnn_KMUXgI6o",
+			"contentType": "default",
+			"src": "Category hopper long-press action",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "expand_collapse_all_categories",
+			"notes": "Library",
+			"guid": "wJDJ1kfIvhrB6fbWqin4rkKuS2hN9enFwLPW3da1Ygs",
+			"contentType": "default",
+			"src": "Expand/collapse all categories",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "open_random_series",
+			"notes": "Library",
+			"guid": "0UDjqW0KedOeaREpD8QGmewenZGpHkcYTXOSBVLGbeU",
+			"contentType": "default",
+			"src": "Open a random series",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "expand_all_categories",
+			"notes": "Library",
+			"guid": "REDQuw2ffKcU28VK_OS_XkfAZPXbd-48KWPcvw9W50c",
+			"contentType": "default",
+			"src": "Expand all categories",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "collapse_all_categories",
+			"notes": "Library",
+			"guid": "YQuig4jgVHZnCj7gkaqBA-YnUroIE3IsE14_X4ds_i0",
+			"contentType": "default",
+			"src": "Collapse all categories",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "reorder_filters",
+			"notes": "Library",
+			"guid": "csppXX2yY-YymAiNiJd8AJDZ22w5tTuxgpgh09frT8k",
+			"contentType": "default",
+			"src": "Reorder filters",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -703,6 +1224,87 @@
 				},
 				" unread"
 			]
+		},
+		{
+			"sid": "search_globally",
+			"notes": "Library",
+			"gstr": "Search \"{{x}}\" globally",
+			"guid": "0Q0F8OAUKt9tljw33vEGxWOZgWoYsdvzbYGYyhonqbk",
+			"contentType": "default",
+			"src": "Search \\\"%1$s\\\" globally",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Search \"",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				"\" globally"
+			]
+		},
+		{
+			"sid": "read_progress",
+			"notes": "Library",
+			"guid": "kCa-bJauYACIeWVYamRlbqKFa-Pf4yFoxGZh-qyS_dg",
+			"contentType": "default",
+			"src": "Read progress",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "series_type",
+			"notes": "Library",
+			"guid": "SQUbYShig4o_mD0PduPcc86T4SXt3e9vaKp_qn1NbR0",
+			"contentType": "default",
+			"src": "Series type",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "series",
+			"notes": "Library",
+			"guid": "mxL1O8Q2FJe_7aycxLtdTnFXMnvI3dTIdPOtR2hK2Zg",
+			"contentType": "default",
+			"src": "Series",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "group_library_by",
+			"notes": "Library",
+			"guid": "U2UnvktkKPonD5AVbTsnU2KEnmERMztybcr2P28b6HI",
+			"contentType": "default",
+			"src": "Group library by…",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "tracking_status",
+			"notes": "Library",
+			"guid": "tORAZmGGpRq9JC8iHie5axOQsNVu7dHeV0xaHX-ZML4",
+			"contentType": "default",
+			"src": "Tracking status",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "ungrouped",
+			"notes": "Library",
+			"guid": "NYHyGs4jaf5TmjsVaebY6zXz7ncc7pWFn6zAf3m2hUA",
+			"contentType": "default",
+			"src": "Ungrouped",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "sort_by",
+			"notes": "Library Sort",
+			"guid": "c656MnA8GvsOTOxs4WY4nJd0SDx8-yR4m5_0O3dVg0U",
+			"contentType": "default",
+			"src": "Sort by",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
 		},
 		{
 			"sid": "total_chapters",
@@ -728,6 +1330,15 @@
 			"guid": "z5Ct7T4-sb7TiBjIIOJtkrCYWUq0AwxBpxJqU0EOOb4",
 			"contentType": "default",
 			"src": "Last read",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "date_fetched",
+			"notes": "Library Sort",
+			"guid": "_MmQA-fnOKmeS_awbYvANnQen4m6Hj4XtKiddmn638o",
+			"contentType": "default",
+			"src": "Date fetched",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -772,6 +1383,15 @@
 			"ts": 1
 		},
 		{
+			"sid": "can_be_found_in_library_filters",
+			"notes": "Library Display",
+			"guid": "1yWI2lsCy15IjZhGkHRpwAWoNjMOP_rPM14bzEH3l9c",
+			"contentType": "default",
+			"src": "Can also be found by expanding library filters",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "list",
 			"notes": "Library Display",
 			"guid": "b5s0c7AJ312O74EJBqSMNQLzFjNb2bCHZ4S3J11jxxg",
@@ -808,6 +1428,15 @@
 			"ts": 1
 		},
 		{
+			"sid": "hide_start_reading_button",
+			"notes": "Library Display",
+			"guid": "mUBPzydk5EoVceN21sURmqCJm3S4SHPJYKOdDeGJDk8",
+			"contentType": "default",
+			"src": "Hide start reading button",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "badges",
 			"notes": "Library Display",
 			"guid": "7iTceqCgayTrQXKNVybwTDhBnEdecaG1phJDAuvZBcE",
@@ -815,6 +1444,50 @@
 			"src": "Badges",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
+		},
+		{
+			"sid": "uniform_grid_covers",
+			"notes": "Library Display",
+			"guid": "ETclr_VWLWFUhAFq6UzZX6GjOaOKAvOSOhfmlV5o8qk",
+			"contentType": "default",
+			"src": "Uniform grid covers",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "show_outline_around_covers",
+			"notes": "Library Display",
+			"guid": "EOfH8MF1TxExXKy711d_IZzDgIS7Hrvga0qkB6Y4HmU",
+			"contentType": "default",
+			"src": "Show outline around covers",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "grid_size",
+			"notes": "Library Display",
+			"guid": "huHrZ36lN4u4bClvKIpWCCg430CBw_V0wdCrp3pANrc",
+			"contentType": "default",
+			"src": "Grid size",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "_per_row",
+			"notes": "Library Display",
+			"gstr": "{{x}} per row",
+			"guid": "6hn5KZLsLGETvPcxkQGVslKsEirgO05tR8I6LUoruAc",
+			"contentType": "default",
+			"src": "%d per row",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" per row"
+			]
 		},
 		{
 			"sid": "hide_unread_badges",
@@ -853,6 +1526,24 @@
 			"ts": 1
 		},
 		{
+			"sid": "display_as",
+			"notes": "Library Display",
+			"guid": "5dIhJapfUivLgbMbJjZQUOVDIRggMxJgkm2iscM7_A8",
+			"contentType": "default",
+			"src": "Display as",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "hide_category_hopper",
+			"notes": "Library Display",
+			"guid": "ToQxCqj8I_Sl1JKZSFEoFDUeVI0a5hgEgXMU_q-MHfQ",
+			"contentType": "default",
+			"src": "Hide category hopper",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "more_library_settings",
 			"notes": "Library Display",
 			"guid": "gQWO4zfGidbyOhDA3UfrzspRYaN82LLyYDDSn2zKDKo",
@@ -862,11 +1553,124 @@
 			"ts": 1
 		},
 		{
+			"sid": "shift_one_page_over",
+			"notes": "Library Display",
+			"guid": "LsjbNhr3WEBa_R0YVVgCwjGtLFIDKeIYeawGGw4roAM",
+			"contentType": "default",
+			"src": "Shift one page over",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "shift_double_pages",
+			"notes": "Library Display",
+			"guid": "ZcYnJ5Od7-YKDD3xphviCHtelffw-mhq54M6Rs7tPtA",
+			"contentType": "default",
+			"src": "Shift double pages",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "new_chapters_found",
 			"notes": "Library update service notifications",
 			"guid": "DP9tDhyqmkFyAizNsGXaByGA7_OZZsmcD1gUxkZdVAY",
 			"contentType": "default",
 			"src": "New chapters found",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "notification_size_warning",
+			"notes": "Library update service notifications",
+			"guid": "Ph2bJ5o6hNyyzK0cUaxO-y1H_ebjPITypSCOgs8JPSw",
+			"contentType": "default",
+			"src": "Large updates may lead to increased battery usage and sources becoming slower",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "for_n_titles_one",
+			"isSuffixPluralized": true,
+			"notes": "Library update service notifications",
+			"gstr": "For {{x}} title",
+			"guid": "nn9ifCxTi0t0nXPKjjqANSd9RsYNb7nXBbc0e-L1MBY",
+			"contentType": "default",
+			"src": "For %d title",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"For ",
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" title"
+			]
+		},
+		{
+			"sid": "for_n_titles_other",
+			"isSuffixPluralized": true,
+			"notes": "Library update service notifications",
+			"gstr": "For {{x}} titles",
+			"guid": "9xj-HFVJXt2nNpthtY1LQ-fzWVcARPZvaiL2c39B23w",
+			"contentType": "default",
+			"src": "For %d titles",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"For ",
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" titles"
+			]
+		},
+		{
+			"sid": "notification_and_n_more_one",
+			"isSuffixPluralized": true,
+			"notes": "Library update service notifications",
+			"gstr": "and {{x}} more chapter",
+			"guid": "i6ms_Au63GlXHZGXAcuj1OlRcD9GhIwb0mR2FlStmOo",
+			"contentType": "default",
+			"src": "and %1$d more chapter",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"and ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				" more chapter"
+			]
+		},
+		{
+			"sid": "notification_and_n_more_other",
+			"isSuffixPluralized": true,
+			"notes": "Library update service notifications",
+			"gstr": "and {{x}} more chapters",
+			"guid": "67xZqBzSLejsIoJhJeoe41TLoKsEqXHdzFIIP8ysYJs",
+			"contentType": "default",
+			"src": "and %1$d more chapters",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"and ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				" more chapters"
+			]
+		},
+		{
+			"sid": "notification_update_failed_one",
+			"isSuffixPluralized": true,
+			"notes": "Library update service notifications",
+			"guid": "n-9x0mdfrc5EllF9g4lxFwLkppPeEQND2uhVP0ERBFU",
+			"contentType": "default",
+			"src": "1 update failed",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -887,6 +1691,15 @@
 				},
 				" updates failed"
 			]
+		},
+		{
+			"sid": "channel_errors",
+			"notes": "Library update service notifications",
+			"guid": "zvr59y3s5K3qszjqGTIXKeg_HsuE1uajtP_Jw40Sp5U",
+			"contentType": "default",
+			"src": "Errors",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
 		},
 		{
 			"sid": "library_update_frequency",
@@ -925,6 +1738,23 @@
 			"ts": 1
 		},
 		{
+			"sid": "restrictions_",
+			"notes": "Library settings",
+			"gstr": "Restrictions: {{x}}",
+			"guid": "QlC_YuVsWOmivCrLSW068P3410uxlebLMQI6Y2APaqA",
+			"contentType": "default",
+			"src": "Restrictions: %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Restrictions: ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
+		},
+		{
 			"sid": "only_update_ongoing",
 			"notes": "Library settings",
 			"guid": "0Yks1MGLmvTPfXrRbgF7_cpJj8jKUrSdoOpUQpMt1Lo",
@@ -934,11 +1764,42 @@
 			"ts": 1
 		},
 		{
+			"sid": "sort_by_ignoring_articles",
+			"notes": "Library settings",
+			"guid": "QAlZS0y6i_buINaq18JblNG70LKyAsdB5SEzos785FE",
+			"contentType": "default",
+			"src": "Sort by ignoring articles",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "when_sorting_ignore_articles",
+			"notes": "Library settings",
+			"gstr": "When sorting alphabetically, sort ignoring articles (a, an, the) at the start of manga titles",
+			"guid": "gX2qXw9h04nSkWqum0JX_lrXBPrnakCiXfhaqiVV8OM",
+			"contentType": "default",
+			"src": "When sorting alphabetically, sort ignoring\n        articles (a, an, the) at the start of manga titles",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"When sorting alphabetically, sort ignoring articles (a, an, the) at the start of manga titles"
+			]
+		},
+		{
 			"sid": "categories_to_include_in_global_update",
 			"notes": "Library settings",
 			"guid": "5Ug7lvfBUCu2wKLPhV0-c9jXxHz9DjEQ9EAzy6uuaiM",
 			"contentType": "default",
 			"src": "Categories to include in global update",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "include_in_global_update",
+			"notes": "Library settings",
+			"guid": "qGkF2Msp3GFeWmf1Bhwiv0fF0eC1cpmBhNbvl8xiiDY",
+			"contentType": "default",
+			"src": "Include in global update",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -952,11 +1813,100 @@
 			"ts": 1
 		},
 		{
+			"sid": "auto_refresh_covers_summary",
+			"notes": "Library settings",
+			"gstr": "Refresh covers in library as well when updating library",
+			"guid": "VCIW6HRhoeMhpQUhRuDv4rLKq9LG90yl1F5zV-xbvQU",
+			"contentType": "default",
+			"src": "Refresh covers in library as well\n        when updating library",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Refresh covers in library as well when updating library"
+			]
+		},
+		{
+			"sid": "global_updates",
+			"notes": "Library settings",
+			"guid": "jP-v2MRaelRp-0xUUhmilWXKVm0sFGYkH-NQkgC3xAM",
+			"contentType": "default",
+			"src": "Global updates",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "display_buttons_bottom_reader",
+			"notes": "Library settings",
+			"guid": "0IxzMeDYA_8V3QabO-k3En1Ld3cLA1pVnFnO_WWfoFk",
+			"contentType": "default",
+			"src": "Buttons at bottom of reader",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "certain_buttons_can_be_found",
+			"notes": "Library settings",
+			"guid": "W-OESlaLb8Tz_YavoeRWfdWpbImHRAg2Whyms6MQFYg",
+			"contentType": "default",
+			"src": "Certain buttons can be found in other places if disabled here",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "search_suggestions",
+			"notes": "Library settings",
+			"guid": "-ZXuEBcLtTSL3Tk5TFp5gsqkopJ3I2iSdHMaFKM2p08",
+			"contentType": "default",
+			"src": "Search suggestions",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "search_tips_show_periodically",
+			"notes": "Library settings",
+			"guid": "96luWUe3rIPx396wuzKUZiWpL_FIvbxC-tiqyjavqJw",
+			"contentType": "default",
+			"src": "Search tips will show up periodically. Long press the suggestion to search it.",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "recents",
+			"notes": "Recents",
+			"guid": "9KQnpovYTTR8EqaPS_krSrI6i65OEvrlUpYUZ8fHDF0",
+			"contentType": "default",
+			"src": "Recents",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "updates_and_history",
+			"notes": "Recents",
+			"gstr": "Updates & history",
+			"guid": "8_2VD6CoQQwIG6KI5Gi0GBE4gSJnn5YXcgUHUr7tvXE",
+			"contentType": "default",
+			"src": "Updates &amp; history",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Updates & history"
+			]
+		},
+		{
 			"sid": "updates",
 			"notes": "Recents",
 			"guid": "sBinvyL2W3qKfYVm5ARudrwttwxjOEAtbvq5bnrisG4",
 			"contentType": "default",
 			"src": "Updates",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "newly_added",
+			"notes": "Recents",
+			"guid": "mGutHcON0BUvfsxMPu1umIKcHv6zoXqgcRekXHAaCpM",
+			"contentType": "default",
+			"src": "Newly added",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -970,6 +1920,15 @@
 			"ts": 1
 		},
 		{
+			"sid": "reset_chapter_history",
+			"notes": "Recents",
+			"guid": "SwJlbVJTeK7RQngegxVgj7hyxKL8WkxxvYeQDmUxXFs",
+			"contentType": "default",
+			"src": "Reset chapter history",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "recent_updates",
 			"notes": "Recents",
 			"guid": "S5GUgCz4-rmA9wjHXTfRr6OUY6HZtKT-ZoOr6rPHjvo",
@@ -977,6 +1936,24 @@
 			"src": "Recent updates",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
+		},
+		{
+			"sid": "this_will_remove_the_read_date_for_x_question",
+			"notes": "Recents",
+			"gstr": "This will remove the read date of \"{{x}}\". Are you sure?",
+			"guid": "XmyxBrSHE9usAFFCG2vPzxT10mP3VHeH1CsWjzkIpZg",
+			"contentType": "default",
+			"src": "This will remove the read date of\n        \\\"%1$s\\\". Are you sure?",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"This will remove the read date of \"",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				"\". Are you sure?"
+			]
 		},
 		{
 			"sid": "this_will_remove_the_read_date_question",
@@ -990,6 +1967,144 @@
 			"nsrc": [
 				"This will remove the read date of this chapter. Are you sure?"
 			]
+		},
+		{
+			"sid": "reset_all_chapters_for_this_",
+			"notes": "Recents",
+			"gstr": "Reset all chapters for this {{x}}",
+			"guid": "fC_356xy32C7odgnD6x_BAF1M8BL09LYq_AYDWMJoww",
+			"contentType": "default",
+			"src": "Reset all chapters for this %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Reset all chapters for this ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
+		},
+		{
+			"sid": "last_read_",
+			"notes": "Recents",
+			"gstr": "Last read {{x}}",
+			"guid": "-bYJgDGQXbmL4g_0gpKbwEHkH7eWo0cl7zRzYyn4r0M",
+			"contentType": "default",
+			"src": "Last read %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Last read ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
+		},
+		{
+			"sid": "read_",
+			"notes": "Recents",
+			"gstr": "Read {{x}}",
+			"guid": "LB5CD-tAbq-svs9PEjaUwWSgEMffx0GiHN8cf1-_fbU",
+			"contentType": "default",
+			"src": "Read %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Read ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
+		},
+		{
+			"sid": "updated_",
+			"notes": "Recents",
+			"gstr": "Updated {{x}}",
+			"guid": "J07LWB4b1QilfozxRx51_cUQrthjI3HIuxbhfFEhCU4",
+			"contentType": "default",
+			"src": "Updated %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Updated ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
+		},
+		{
+			"sid": "added_",
+			"notes": "Recents",
+			"gstr": "Added {{x}}",
+			"guid": "_SAZorPrF5hhU5oP3l6AMfgbnFj502nP0cEMTzM6Zjw",
+			"contentType": "default",
+			"src": "Added %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Added ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
+		},
+		{
+			"sid": "fetched_",
+			"notes": "Recents",
+			"gstr": "Fetched {{x}}",
+			"guid": "18cGsSZgW56fk4r4-oUR8Z-wVtXtQjs1knIQhisPyQE",
+			"contentType": "default",
+			"src": "Fetched %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Fetched ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
+		},
+		{
+			"sid": "view_history",
+			"notes": "Recents",
+			"guid": "8RiginX5c8HPKTdZLSf92yPW7OaauQvgF_mQ6bLWASs",
+			"contentType": "default",
+			"src": "View history",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "view_all_updates",
+			"notes": "Recents",
+			"guid": "2B1czib05hWKXKttgwY-nLlvNzlCyVANPK4EUwkqygo",
+			"contentType": "default",
+			"src": "View all updates",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "search_recents",
+			"notes": "Recents",
+			"guid": "ASrcs0Dz123vfvvZRaO6g4nrW3HXYfVXDAK3PnApQMQ",
+			"contentType": "default",
+			"src": "Search recents…",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "no_recent_read_updated_manga",
+			"notes": "Recents",
+			"guid": "akU48sSoFBDApncaFTnxDUwvntjoVc_x_ncCPkbKfUc",
+			"contentType": "default",
+			"src": "No recently read or updated manga",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
 		},
 		{
 			"sid": "no_recent_chapters",
@@ -1006,6 +2121,141 @@
 			"guid": "4VtJrOuIR9-EAjXsURnwo-iIbyhtFxsyrem9xCOA1Cc",
 			"contentType": "default",
 			"src": "No recently read manga",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "grouped",
+			"notes": "Recents",
+			"guid": "67LG-B8pRZncuF53apGRcqFubfzZGWknM7RCqDH9SZ0",
+			"contentType": "default",
+			"src": "Grouped",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "reset_chapter_question",
+			"notes": "Recents",
+			"guid": "w1Rs6QdUEbwNfxKQ_3xpO1EmY_4HRV6aG5GQF0tFK9I",
+			"contentType": "default",
+			"src": "Reset chapter?",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "press_and_hold_to_also_reset",
+			"notes": "Recents",
+			"guid": "3asXWsKaR7y7GtHSB4gj3cKcy0QKV7ZP9Y37ZUsa4J8",
+			"contentType": "default",
+			"src": "Press and hold can also reset chapter history",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "show_download_button",
+			"notes": "Recents",
+			"guid": "-ZokOFEGjoKOP0ipBcoQfSs-VHrAsiXGtvmliCLnBxc",
+			"contentType": "default",
+			"src": "Show download button",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "only_unread",
+			"notes": "Recents",
+			"guid": "lxojKZjY-5yMohTxbOYeEsPXKdU35_LdTGAzh9L21hM",
+			"contentType": "default",
+			"src": "Only unread",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "only_downloaded",
+			"notes": "Recents",
+			"guid": "fN6EvqdvhVsR-FEQQFTaLWJEZURGvO79klFaYWce5ns",
+			"contentType": "default",
+			"src": "Only downloaded",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "unread_or_downloaded",
+			"notes": "Recents",
+			"guid": "xtCZPDVorMQcmb88XuRrN66RmY0CaLszKaIG9rZilMw",
+			"contentType": "default",
+			"src": "Unread or downloaded",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "show_reset_history_button",
+			"notes": "Recents Settings",
+			"guid": "vc6RPi0nmbBiytfQeWbKySuwc6Tz427bDCSe__RrgOs",
+			"contentType": "default",
+			"src": "Show reset history button",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "show_read_chapters_all",
+			"notes": "Recents Settings",
+			"guid": "qPY-TEoWZjeuax9ZNJUD_wMv44mSc6-WAQqtgXEPBSk",
+			"contentType": "default",
+			"src": "Show read chapters in Grouped and All",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "show_title_first",
+			"notes": "Recents Settings",
+			"guid": "pF_TodxnIiM6j0nfMhGaKwG7i29NMrwslIg09Kr5NLY",
+			"contentType": "default",
+			"src": "Show title first",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "a_while_ago",
+			"notes": "Recents Settings",
+			"guid": "uDn0V4BKl8_4RZG-SBfzr9WsusENKW_02EQe2UZXh7E",
+			"contentType": "default",
+			"src": "A while ago",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "show_updated_time",
+			"notes": "Recents Settings",
+			"guid": "4se94QZG8B_HRubqGbQSa2z73iKBD-niP3vOOy24qeY",
+			"contentType": "default",
+			"src": "Show updated time",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "group_chapters_together",
+			"notes": "Recents Settings",
+			"guid": "iDbzX3ua7JTK2r5fPAdwX5aGkNtciRqK3DmhR9GrDpk",
+			"contentType": "default",
+			"src": "Group chapters together",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "uniform_covers",
+			"notes": "Recents Settings",
+			"guid": "VGxNmIVvDYZ6XN8-GGELcf5m_BTP3_nnUxF1sAUHRVg",
+			"contentType": "default",
+			"src": "Uniform covers",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "affects_library_grid",
+			"notes": "Recents Settings",
+			"guid": "Bx4ksQFJA0d4IzSTzkltfMXKvQE_VFynqSen-05Xz8s",
+			"contentType": "default",
+			"src": "Affects library grid covers",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -1100,11 +2350,38 @@
 			"ts": 1
 		},
 		{
+			"sid": "search_extensions",
+			"notes": "Browse",
+			"guid": "vOXbT2RStv9Bfve3rxZcNVYVtPleduRz-tCudb4hkm4",
+			"contentType": "default",
+			"src": "Search extensions…",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "all_sources",
+			"notes": "Browse",
+			"guid": "8WTohVPNZpV9njpvhCzeDzn72bq4FpnLmuH2GWJQmbU",
+			"contentType": "default",
+			"src": "All sources",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "sources",
 			"notes": "Browse",
 			"guid": "ZrAWCoZpge3cKfOhzcCGkS4bvEF6Mt8RaqZw9DI_qB0",
 			"contentType": "default",
 			"src": "Sources",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "source_hidden",
+			"notes": "Browse",
+			"guid": "09bHLJJ3TSUAIXnWuYp8zkgPz_Ktog89FUtierMakyY",
+			"contentType": "default",
+			"src": "Source hidden",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -1145,11 +2422,38 @@
 			"ts": 1
 		},
 		{
+			"sid": "extension_updates",
+			"notes": "Extensions",
+			"guid": "zHEBCkIpAL7IFfPf4XupIOxAICmr--suT78fcOimS5U",
+			"contentType": "default",
+			"src": "Extension updates",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "extension_updates_pending",
+			"notes": "Extensions",
+			"guid": "UwRMRUlsHHvbMnyBXmfC1mLPAoK44f6GbhkwsaZA-LE",
+			"contentType": "default",
+			"src": "Extension updates pending",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "extension_info",
 			"notes": "Extensions",
 			"guid": "3VbPdABRbfvCf_GxLQ-haSSJISwum9GhTK-byjdMle0",
 			"contentType": "default",
 			"src": "Extension info",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "filter_languages",
+			"notes": "Extensions",
+			"guid": "_LFloqjVFn0g8rA1cyKvjNh0n06tCbEN9q9cDIrD_mk",
+			"contentType": "default",
+			"src": "Filter Languages",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -1300,6 +2604,23 @@
 			"ts": 1
 		},
 		{
+			"sid": "installed_",
+			"notes": "Extensions",
+			"gstr": "Installed {{x}}",
+			"guid": "s7vmRSqvrrdDCP2CC42Mu4top-dqct55ZDXfFJ0lTWw",
+			"contentType": "default",
+			"src": "Installed %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Installed ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
+		},
+		{
 			"sid": "unofficial",
 			"notes": "Extensions",
 			"guid": "f037H6fcf5TiITwnOq-9yJ2BdfESMLl1vXtx67OFvck",
@@ -1309,11 +2630,165 @@
 			"ts": 1
 		},
 		{
+			"sid": "extensions_miui_warning",
+			"notes": "Extensions",
+			"guid": "GrMFwP4G_U9q4P7sChaW2J_1tmJecnWYjzHc7V_iIT8",
+			"contentType": "default",
+			"src": "MIUI Optimization must be disabled to install extensions.",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "may_contain_nsfw",
 			"notes": "Extensions",
 			"guid": "FB8H7p-eU89ZuoW8zOC-VBvj77CDPKgsWkLMvL5IM3w",
 			"contentType": "default",
 			"src": "May contain NSFW (18+) content",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "app_info",
+			"notes": "Extensions",
+			"guid": "EJajp-vB1WGv35d6W7joH8a2s-IABgLLbQQ7if_c52o",
+			"contentType": "default",
+			"src": "App info",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "_must_be_enabled_first",
+			"notes": "Extensions",
+			"gstr": "{{x}} must be enabled first",
+			"guid": "j5g8prmlQCN59zCYtiyibcH_8MTrHOmsI8htpM1CPVY",
+			"contentType": "default",
+			"src": "%1$s must be enabled first",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" must be enabled first"
+			]
+		},
+		{
+			"sid": "could_not_install_extension",
+			"notes": "Extensions",
+			"guid": "hdOZ2TaIpQJa51D84wSDzU6Awl-GjNr_KxXXa_SRFjw",
+			"contentType": "default",
+			"src": "Could not install extension",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "update_all",
+			"notes": "Extensions",
+			"guid": "Gx6It2EPZkzo8gjjKMNEIdCoI3j8ApOfbv2ZnOxTfXg",
+			"contentType": "default",
+			"src": "Update all",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "some_extensions_may_prompt",
+			"notes": "Extensions",
+			"guid": "8u4FgLqIOqKPt9ghwV7vaQd9DIIie5EIgYLM8Y-MRg8",
+			"contentType": "default",
+			"src": "Some extensions may still prompt to be installed first.",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "updating_extensions",
+			"notes": "Extensions",
+			"guid": "rEhqIqyMOpPGm9tucXpboZ2m3WcZOJWCxH6YdSbJQvw",
+			"contentType": "default",
+			"src": "Updating extensions",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "_updates_pending_one",
+			"isSuffixPluralized": true,
+			"notes": "Extensions",
+			"gstr": "{{x}} update pending",
+			"guid": "-BgwQxYmz_OcJgZCUZeNEhbIn71aeYWQLfqDzIdO5-A",
+			"contentType": "default",
+			"src": "%d update pending",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" update pending"
+			]
+		},
+		{
+			"sid": "_updates_pending_other",
+			"isSuffixPluralized": true,
+			"notes": "Extensions",
+			"gstr": "{{x}} updates pending",
+			"guid": "DZ_sc6S4EfGY49WXOACTA14IzN7IGl__L84uf8WbSwc",
+			"contentType": "default",
+			"src": "%d updates pending",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" updates pending"
+			]
+		},
+		{
+			"sid": "extensions_updated",
+			"notes": "Extensions",
+			"guid": "XlcudDTXzG61J5iRPIyqhRE70F5HFnn2xrll5R17-n8",
+			"contentType": "default",
+			"src": "Extensions updated",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "extensions_updated_plural_one",
+			"isSuffixPluralized": true,
+			"notes": "Extensions",
+			"guid": "PDKvwcIWbKlbrMMuqEa00drfTM71kt4AE5hfbznTe_o",
+			"contentType": "default",
+			"src": "Extension updated",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "extensions_updated_plural_other",
+			"isSuffixPluralized": true,
+			"notes": "Extensions",
+			"gstr": "{{x}} extensions updated",
+			"guid": "E7eIPBUFNkUQCaPZAqanJVmi_cYO9S0JCeKB3Trm0S4",
+			"contentType": "default",
+			"src": "%d extensions updated",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" extensions updated"
+			]
+		},
+		{
+			"sid": "extension_updates_available_one",
+			"isSuffixPluralized": true,
+			"notes": "Extensions",
+			"guid": "ZNcGVkm_LvhJlULW759Z140eW5Es4GSIXDFWwYiq7Lo",
+			"contentType": "default",
+			"src": "Extension update available",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -1345,6 +2820,24 @@
 			"ts": 1
 		},
 		{
+			"sid": "reader_settings",
+			"notes": "Reader",
+			"guid": "aVTh9yvCCOJS6biHAKAoKQDWmjjqo8cIFgcwqCIilRo",
+			"contentType": "default",
+			"src": "Reader settings",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "set_as_default_for_all",
+			"notes": "Reader",
+			"guid": "2wtUHTjlnyifY2hE2cYObdqXt6vZKdAiyeVM4oNdf_s",
+			"contentType": "default",
+			"src": "Set as default for all",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "cover_updated",
 			"notes": "Reader",
 			"guid": "Q-v1w9GBUdWI6zxnbfiNesSObNnkYTo1nG1pdzKW4rc",
@@ -1367,6 +2860,23 @@
 				{
 					"t": "x",
 					"v": "%1$d"
+				}
+			]
+		},
+		{
+			"sid": "pages_",
+			"notes": "Reader",
+			"gstr": "Pages {{x}}",
+			"guid": "UKK9CJGLt82KF7IqPt9NB-bHsvmne8m6JVAO-LC2Ntg",
+			"contentType": "default",
+			"src": "Pages %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Pages ",
+				{
+					"t": "x",
+					"v": "%1$s"
 				}
 			]
 		},
@@ -1394,6 +2904,24 @@
 			"guid": "5kVJ5mq5XOSpOV0cRj20m4EjSERSHHjFb5D-B7eDKU4",
 			"contentType": "default",
 			"src": "Use this image as cover art?",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "reading_mode",
+			"notes": "Reader",
+			"guid": "U-fM9HL6MdOpDlVta63gzSGRhDsy-EcFEPtR2FaH-dg",
+			"contentType": "default",
+			"src": "Reading mode",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "changing_will_reset_reading_mode",
+			"notes": "Reader",
+			"guid": "RDsq1cQDak8jiMMmyZC_3SwERo3l6v8CapJAHJdpJec",
+			"contentType": "default",
+			"src": "Changing this will reset the reading mode for this series",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -1486,6 +3014,32 @@
 			]
 		},
 		{
+			"sid": "reading_",
+			"notes": "Reader",
+			"gstr": "Reading {{x}}",
+			"guid": "wKFZJn57ACjX_t201lY5WbxY6xfsfi11ssSbwb6nfUs",
+			"contentType": "default",
+			"src": "Reading %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Reading ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
+		},
+		{
+			"sid": "webtoon_style",
+			"notes": "Reader",
+			"guid": "SlAFtpEsmyLyJ9CWwNHgoUBa_z9W5Mf4LO7mcJAtZxg",
+			"contentType": "default",
+			"src": "webtoon style",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "next_page",
 			"notes": "Reader",
 			"guid": "fg2W1c2abzFBWZ3SzFWEwEmxeiqQT8Q0tPdnz-0ham8",
@@ -1522,6 +3076,78 @@
 			"ts": 1
 		},
 		{
+			"sid": "set_first_page_as_cover",
+			"notes": "Reader",
+			"guid": "1XV7ZzyoiWqejk_kb8BMcUaGHMJHqLTx599EJtbIbGM",
+			"contentType": "default",
+			"src": "Set first page as cover",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "share_first_page",
+			"notes": "Reader",
+			"guid": "A1vrwmVU31UFieXjJYeCmbnFXwvAe0YhNyKDDMkYUjA",
+			"contentType": "default",
+			"src": "Share first page",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "save_first_page",
+			"notes": "Reader",
+			"guid": "HSi95SVfdcpoTsIsWemtKmrx4H2aOlDoF6G2TOMmtkc",
+			"contentType": "default",
+			"src": "Save first page",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "set_second_page_as_cover",
+			"notes": "Reader",
+			"guid": "nbb_Qs8XacxA8ZryVmBTmYK8QhrUJOV1ll4GHF1LAVI",
+			"contentType": "default",
+			"src": "Set second page as cover",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "share_second_page",
+			"notes": "Reader",
+			"guid": "n1whErmKjcpP6XeusH8OnbllaukAYZVGuGvAwUS6vzI",
+			"contentType": "default",
+			"src": "Share second page",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "save_second_page",
+			"notes": "Reader",
+			"guid": "ole_ODWFjk6iag3O8p560HO628Q_hJvMtJGIAne5pRQ",
+			"contentType": "default",
+			"src": "Save second page",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "share_combined_pages",
+			"notes": "Reader",
+			"guid": "EpysZnLZo-1mZhou8q0OvmI8lp6fQXhnNentodbGre0",
+			"contentType": "default",
+			"src": "Share combined pages",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "save_combined_pages",
+			"notes": "Reader",
+			"guid": "bLmGEWcwODjJ5TsZtvgPlllhMF7Qusd8hEa8GCnatwA",
+			"contentType": "default",
+			"src": "Save combined pages",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "fullscreen",
 			"notes": "Reader settings",
 			"guid": "pUNw1jNdpBub4YvDOOVOnB9xp9b5HhtenI0mCjut3So",
@@ -1536,6 +3162,15 @@
 			"guid": "VHhERbkrDJ_f0FYm2yd4HDXIg4Km7BRIw03XCWeE3I0",
 			"contentType": "default",
 			"src": "Animate page transitions",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "enable_zoom_out",
+			"notes": "Reader settings",
+			"guid": "H4RqEMI7N9GCVCHx5OtUl6Kw6tEl1780q6W016wNcVI",
+			"contentType": "default",
+			"src": "Enable zoom out",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -1567,6 +3202,24 @@
 			"ts": 1
 		},
 		{
+			"sid": "page_preload_amount",
+			"notes": "Reader settings",
+			"guid": "Zi3L-9A9ap581wVL6PDJp3zruecGLQwl5p9k1u9Zyrs",
+			"contentType": "default",
+			"src": "Page preload amount",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "amount_of_pages_to_preload",
+			"notes": "Reader settings",
+			"guid": "C2FNkpaLoL7VXyXMu9SaavaizdXlCQJdCFEfo18dSjI",
+			"contentType": "default",
+			"src": "The amount of pages to preload when reading. Higher values will result in a smoother reading experience, at the cost of higher cache and network usage.",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "reduces_banding_impacts_performance",
 			"notes": "Reader settings",
 			"gstr": "Reduces banding, but impacts performance",
@@ -1580,11 +3233,56 @@
 			]
 		},
 		{
+			"sid": "invert_double_pages",
+			"notes": "Reader settings",
+			"guid": "_eiLmnk4fEbsRy1A9mw2gRTRnELuJtyfeEzLU5qCxpw",
+			"contentType": "default",
+			"src": "Invert double pages",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "split_double_pages_portrait",
+			"notes": "Reader settings",
+			"guid": "_h_8cgOacQBSamHFaN1tvSkDKO3OST3xNwxQ000qeww",
+			"contentType": "default",
+			"src": "Split double pages in portrait",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "crop_borders",
 			"notes": "Reader settings",
 			"guid": "bZWNWOTR_a6vu5KHhFocNrmKcuf2Dm_ZHyLsrqkWPIo",
 			"contentType": "default",
 			"src": "Crop borders",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "crop_borders_paged",
+			"notes": "Reader settings",
+			"guid": "n_HJKhrvrSRiRt5B67LREhbN2dFEGtgAs3UQhBs4WJQ",
+			"contentType": "default",
+			"src": "Crop borders (Paged)",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "crop_borders_webtoon",
+			"notes": "Reader settings",
+			"guid": "O3sde3hZlglgJmbDZ9GnS_sg_odYUPrskCtrEYhLq_8",
+			"contentType": "default",
+			"src": "Crop borders (Webtoon)",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "remove_crop",
+			"notes": "Reader settings",
+			"guid": "_UQhjiOEDycVJQUiZA70CKquv1zGeK1ewLezYWEQGbc",
+			"contentType": "default",
+			"src": "Remove crop",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -1751,6 +3449,24 @@
 			"ts": 1
 		},
 		{
+			"sid": "smart_by_page",
+			"notes": "Reader settings",
+			"guid": "CjYiNR9pPxk2Lft1ft0BzwuVz0M4pE8eWqpssfF2SVs",
+			"contentType": "default",
+			"src": "Smart (by page)",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "smart_by_theme",
+			"notes": "Reader settings",
+			"guid": "-HuD6DHwN27vOk_Pw_s14X20I_NuDj_SgyMg4gjTPqs",
+			"contentType": "default",
+			"src": "Smart (by theme)",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "default_reading_mode",
 			"notes": "Reader settings",
 			"guid": "EOFLKmFTCe5Ae-Wtq_pK3peI_TRaQuvr3l2fmu3-Mw4",
@@ -1886,6 +3602,51 @@
 			"ts": 1
 		},
 		{
+			"sid": "split_double_pages",
+			"notes": "Reader settings",
+			"guid": "_kk-cHhadbopf9f8VouQpkf7cFf5uH4x5UATjrDbT8Y",
+			"contentType": "default",
+			"src": "Split double pages",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "double_pages",
+			"notes": "Reader settings",
+			"guid": "SMwJKF5bm8Dw-xz6vGuwFBcxvaO3HNcEdgOamKUOZIw",
+			"contentType": "default",
+			"src": "Double pages",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "single_page",
+			"notes": "Reader settings",
+			"guid": "Id3pS3KM5Tkhruf5e491S-MZ6QNGErJ19JogpbvKZNU",
+			"contentType": "default",
+			"src": "Single page",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "switch_to_double",
+			"notes": "Reader settings",
+			"guid": "wQRuzGKkvWV0vG9obp4jGSnm4RjR1bnkAXtK4twE1fY",
+			"contentType": "default",
+			"src": "Switch to double pages",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "switch_to_single",
+			"notes": "Reader settings",
+			"guid": "223rk-Kbo-zntSmAdYrsyW-ny2zCVG0qtEqP7J11AKo",
+			"contentType": "default",
+			"src": "Switch to single page",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "portrait",
 			"notes": "Reader settings",
 			"guid": "6DfqvfeUOEL-0Me9CWZ5B1Os0o51R1XLp7CZysoW5mo",
@@ -1900,6 +3661,24 @@
 			"guid": "sb5glIdoajcge8U--UgSkN61vlf9ftAf1MHZdrXrjc0",
 			"contentType": "default",
 			"src": "Landscape",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "locked_portrait",
+			"notes": "Reader settings",
+			"guid": "1Zrp6BG-DZXSWk18y0cN2K1J814wdXRxsC05kaDwynU",
+			"contentType": "default",
+			"src": "Locked portrait",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "locked_landscape",
+			"notes": "Reader settings",
+			"guid": "ouRwVLj6hSKJFfa3sUttbDc6Bu4XjCLn_0DqQGwx0SA",
+			"contentType": "default",
+			"src": "Locked landscape",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -1940,6 +3719,24 @@
 			"ts": 1
 		},
 		{
+			"sid": "smart_based_on_page",
+			"notes": "Reader settings",
+			"guid": "cJ_-rA_sG-i15fhaJLSWxUuAg26fAQSzmfLCtpXwQ7Q",
+			"contentType": "default",
+			"src": "Smart (based on page)",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "smart_based_on_page_and_theme",
+			"notes": "Reader settings",
+			"guid": "7T_hOsg6RhtnEA4R4O2r6DgjCGl5TFtkA_MRWZbSnjk",
+			"contentType": "default",
+			"src": "Smart (based on page and theme)",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "always_show_chapter_transition",
 			"notes": "Reader settings",
 			"guid": "1i1B73JpFdmi62bt30a5CTg9KpnLs1Zg0vFl5BGOsoA",
@@ -1947,6 +3744,19 @@
 			"src": "Always show chapter transition",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
+		},
+		{
+			"sid": "if_disabled_transition_will_skip",
+			"notes": "Reader settings",
+			"gstr": "If disabled, the transition page will be skipped if the next chapter is loaded",
+			"guid": "W8IL7FndWDq-7-mwh7RdfpnZ-3SJj5ffNGNhAZG8S1s",
+			"contentType": "default",
+			"src": "If disabled, the transition page will be\n        skipped if the next chapter is loaded",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"If disabled, the transition page will be skipped if the next chapter is loaded"
+			]
 		},
 		{
 			"sid": "pref_webtoon_side_padding",
@@ -2057,6 +3867,196 @@
 			"ts": 1
 		},
 		{
+			"sid": "horizontally",
+			"notes": "Reader settings",
+			"guid": "NCIdcJxxvp00HL_yi0SD4xBMx8YwKzIdtFqHXMDHDCs",
+			"contentType": "default",
+			"src": "Horizontally",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "vertically",
+			"notes": "Reader settings",
+			"guid": "paXGn4VWZ5yx1GauoMOctNbsSX-BnzeZzjpXvBejZ5U",
+			"contentType": "default",
+			"src": "Vertically",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "both_axes",
+			"notes": "Reader settings",
+			"guid": "hInxbNXmVp8ymfLBQk2lH-7SvUPs25InX_gUWoMuX4I",
+			"contentType": "default",
+			"src": "Both Axes",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "cutout_area_behavior",
+			"notes": "Reader settings",
+			"guid": "tiuPeCuNZficiHifln3AdOnVjGqIL99OVSCJTjqRIHQ",
+			"contentType": "default",
+			"src": "Cutout area behavior",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "pad_cutout_areas",
+			"notes": "Reader settings",
+			"guid": "bNPoLAv44j0zbzVEKB68Nquz-COQvdnao3VSBUr6gkQ",
+			"contentType": "default",
+			"src": "Pad cutout areas",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "start_past_cutout",
+			"notes": "Reader settings",
+			"guid": "vdEXO8td0M3CxR2uaKOOeAFddT_lcuWlGdJDUQKv24o",
+			"contentType": "default",
+			"src": "Start past cutout",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "ignore_cutout_areas",
+			"notes": "Reader settings",
+			"guid": "JoF7exj_S0HkjlE_K6NxLRkE1SPsbKLIT8weHsrlRwI",
+			"contentType": "default",
+			"src": "Ignore cutout areas",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "cutout_behavior_only_applies",
+			"notes": "Reader settings",
+			"guid": "2pjM4-I03BkSW-GbRG9AEztBy_evkZczJAm7MDgTi6k",
+			"contentType": "default",
+			"src": "Cutout area behavior only applies in portrait mode with certain scale types",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "page_layout",
+			"notes": "Reader settings",
+			"guid": "FezFSoYDEiIsClrf1JqAwRgFSrfjT2_CxGdPlIOXLA8",
+			"contentType": "default",
+			"src": "Page layout",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "automatic_can_still_switch",
+			"notes": "Reader settings",
+			"guid": "rb6QdTJBmHJnWUjhhBu9GsvrqP124sw43HE2vPZK7yI",
+			"contentType": "default",
+			"src": "While using automatic page layout, you can still switch between layouts while reading without overriding this setting",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "automatic_orientation",
+			"notes": "Reader settings",
+			"guid": "-p4Y62JHBpxvrQOFUkNWm8kJhR7z33NowZpXHhKis94",
+			"contentType": "default",
+			"src": "Automatic (based on orientation)",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "webtoon_cannot_change",
+			"notes": "Reader settings",
+			"guid": "nP0t9wle-o5QMEG5fe8AdknkamcCg1ooEtEx8hQvD_A",
+			"contentType": "default",
+			"src": "Cannot change reading mode from webtoon. Edit the series type first to change.",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "actions",
+			"notes": "Reader settings",
+			"guid": "Bs_uAR58uFgb6bja48jt8D7VWPX-BQswoW9ILNRorIQ",
+			"contentType": "default",
+			"src": "Actions",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "show_on_long_press",
+			"notes": "Reader settings",
+			"guid": "u6D7imr8nr9n-4-mLssPJxhy-OjW5uf11LKMMXwzUq4",
+			"contentType": "default",
+			"src": "Show on long press",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "save_pages_separately",
+			"notes": "Reader settings",
+			"guid": "IEX6H6t2_ADlenoNGaK3o4ZydfaVNWUL8L9934J2ljA",
+			"contentType": "default",
+			"src": "Save pages in separate folders",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "create_folders_by_manga_title",
+			"notes": "Reader settings",
+			"guid": "yY0LZeDyRVAoWbU-M40m8KynYbHYMrFP8qU8oYKpi_o",
+			"contentType": "default",
+			"src": "Creates folders according to manga title",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "pages_plural_one",
+			"isSuffixPluralized": true,
+			"notes": "Reader settings",
+			"gstr": "{{x}} page",
+			"guid": "ftTBQ9mT8jzVQTlzVQThq84qga7aRnm1A_EmQPZ62tE",
+			"contentType": "default",
+			"src": "%1$d page",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				" page"
+			]
+		},
+		{
+			"sid": "pages_plural_other",
+			"isSuffixPluralized": true,
+			"notes": "Reader settings",
+			"gstr": "{{x}} pages",
+			"guid": "oXUmwOmJSilJYNINjFscNXUcar5msRG4KX7zU-4zQ5A",
+			"contentType": "default",
+			"src": "%1$d pages",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				" pages"
+			]
+		},
+		{
+			"sid": "missing_chapters_warning_one",
+			"isSuffixPluralized": true,
+			"notes": "Reader settings",
+			"guid": "TyE4yyopQMXi9xPAwddqixG0FiRUr7u1yXsHaK5cFNg",
+			"contentType": "default",
+			"src": "Skipping 1 chapter, either the source is missing it or it has been filtered out",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "missing_chapters_warning_other",
 			"isSuffixPluralized": true,
 			"notes": "Reader settings",
@@ -2073,6 +4073,23 @@
 					"v": "%d"
 				},
 				" chapters, either the source is missing them or they have been filtered out"
+			]
+		},
+		{
+			"sid": "about_this_",
+			"notes": "Manga details",
+			"gstr": "About this {{x}}",
+			"guid": "rXnFisSe-TCQMWVdPr043XAD3SjPf9t7nr3_A3JFQ4Q",
+			"contentType": "default",
+			"src": "About this %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"About this ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
 			]
 		},
 		{
@@ -2145,6 +4162,40 @@
 			]
 		},
 		{
+			"sid": "volume_",
+			"notes": "Manga details",
+			"gstr": "Volume {{x}}",
+			"guid": "4vSXPlqV-jor93w4akoHBtcFnxQkH294qUAPtwQzaXw",
+			"contentType": "default",
+			"src": "Volume %1$d",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Volume ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				}
+			]
+		},
+		{
+			"sid": "season_",
+			"notes": "Manga details",
+			"gstr": "Season {{x}}",
+			"guid": "AkTWm10nlkUtHs0SpqUi4J_fWfhHrtuPiIap8FfKdNY",
+			"contentType": "default",
+			"src": "Season %1$d",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Season ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				}
+			]
+		},
+		{
 			"sid": "added_to_library",
 			"notes": "Manga details",
 			"guid": "VzfIwCvfT_SWF4N-PSl7tLjp34mDypzzNQ98lzA9grs",
@@ -2204,6 +4255,15 @@
 					"v": "%1$s"
 				}
 			]
+		},
+		{
+			"sid": "no_description",
+			"notes": "Manga details",
+			"guid": "w9hhiyhohnNbjc_qqndqLiy6QdwWj-Epv6g2TqvRPtg",
+			"contentType": "default",
+			"src": "No description",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
 		},
 		{
 			"sid": "mark_all_chapters_as_read",
@@ -2323,6 +4383,33 @@
 			"ts": 1
 		},
 		{
+			"sid": "add_x_to_library",
+			"notes": "Manga details",
+			"gstr": "Add {{x}} to library?",
+			"guid": "lP7I0GvSzdCUMNPu5MZnqO1hE9KRTmW295hArhuKyq4",
+			"contentType": "default",
+			"src": "Add %1$s to library?",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Add ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" to library?"
+			]
+		},
+		{
+			"sid": "show_all",
+			"notes": "Manga details",
+			"guid": "UjJLozZAoSoe146ujO2h-ICSmd3OB8xUHXoA0sw1vuk",
+			"contentType": "default",
+			"src": "Show All",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "show_bookmarked_chapters",
 			"notes": "Manga details",
 			"guid": "59ANLfGrC9sYWWJ7soKLOgvTTiB-X56ddjZv8_wpvvk",
@@ -2408,6 +4495,42 @@
 			"ts": 1
 		},
 		{
+			"sid": "add_tag",
+			"notes": "Manga details",
+			"guid": "wa91V77-CNIUKXO_trOUgp-OTGRGK1xDxCnn-jgS8n4",
+			"contentType": "default",
+			"src": "Add tag",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "clear_tags",
+			"notes": "Manga details",
+			"guid": "mg4C6yIR8EP__v2LCqgKunkzyxby8kPofjaNzHx5x2o",
+			"contentType": "default",
+			"src": "Clear tags",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "reset_tags",
+			"notes": "Manga details",
+			"guid": "xnANV8L5mqGqk8EDMRSOD_nXd8p0AK4IczkE-ezn8mw",
+			"contentType": "default",
+			"src": "Reset tags",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "reset_cover",
+			"notes": "Manga details",
+			"guid": "cX9XxArHW92TEnx3pEA6Jr4BcxizkXZXT9Fl-RDaVZM",
+			"contentType": "default",
+			"src": "Reset cover",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "failed_to_update_cover",
 			"notes": "Manga details",
 			"guid": "YQ9Pslar5DpY7LteD-YuSor3-Ohnncut5xA_womBg7c",
@@ -2422,6 +4545,24 @@
 			"guid": "re5C-dOrMmRYYatR4pDIEGir1t9sA6GrjI3uauuQ-Hs",
 			"contentType": "default",
 			"src": "Manga must be in your library to edit",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "remember_this_choice",
+			"notes": "Manga details",
+			"guid": "EbH3VudW1nCXsQ_ID9Yx1ZS01mU3OthyL0VrF3xBXR4",
+			"contentType": "default",
+			"src": "Remember this choice",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "source_not_installed",
+			"notes": "Manga details",
+			"guid": "qJ1A3DenY9H9IyDNB5o4neBMDAAqqX5c-vEQd6Dgds4",
+			"contentType": "default",
+			"src": "Source not installed",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -2471,6 +4612,57 @@
 			"ts": 1
 		},
 		{
+			"sid": "filter_groups",
+			"notes": "Manga details",
+			"guid": "4VnsQVEawPmvgH-O45FKaXHWGWxMnjIWsFtFV5GlyFc",
+			"contentType": "default",
+			"src": "Filter scanlator groups",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "deleted_chapters_one",
+			"isSuffixPluralized": true,
+			"notes": "Manga details",
+			"gstr": "A chapter has been removed from the source:\n{{x}}\nDelete its download?",
+			"guid": "SSZERtfZuYpDYos6-_VXWBeWY2P0LQQBQ5wwygKih98",
+			"contentType": "default",
+			"src": "A chapter has been removed from the source:\\n%2$s\\nDelete\n            its download?",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"A chapter has been removed from the source:\n",
+				{
+					"t": "x",
+					"v": "%2$s"
+				},
+				"\nDelete its download?"
+			]
+		},
+		{
+			"sid": "deleted_chapters_other",
+			"isSuffixPluralized": true,
+			"notes": "Manga details",
+			"gstr": "{{x}} chapters have been removed from the source:\n{{x}}\n\nDelete their downloads?",
+			"guid": "SMy5CDGGN0GtdJzMKHTWbjT3VqLYuEtNpEvWA5bRmLc",
+			"contentType": "default",
+			"src": "%1$s chapters have been removed from the source:\\n%2$s\\n\\nDelete\n            their downloads?",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" chapters have been removed from the source:\n",
+				{
+					"t": "x",
+					"v": "%2$s"
+				},
+				"\n\nDelete their downloads?"
+			]
+		},
+		{
 			"sid": "tracking",
 			"notes": "Tracking",
 			"guid": "fZhmHvNVgb2WvnwMpxmxVtQMoZMaXORd2ibT-SZm1Ys",
@@ -2489,6 +4681,15 @@
 			"ts": 1
 		},
 		{
+			"sid": "not_tracked",
+			"notes": "Tracking",
+			"guid": "tA0xYikn0qHMP71gVNu8p-qT0ikIpg3hFN5e_ID1rVA",
+			"contentType": "default",
+			"src": "Not tracked",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "services",
 			"notes": "Tracking",
 			"guid": "LVLfgmMnGnMA4lyB9tKtml9AFqMz8uSPYrAd_m_nvf0",
@@ -2503,6 +4704,24 @@
 			"guid": "dW-LPBUDZa9ZGOMBFDvMBEx7gtRRASof1dy20CCWbxQ",
 			"contentType": "default",
 			"src": "Sync chapters after reading",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "track_when_adding_to_library",
+			"notes": "Tracking",
+			"guid": "ZYRF0uRDK_bsTpcq436kRm7TTSod3JSdVNJVsUlWSfU",
+			"contentType": "default",
+			"src": "Track when adding to library",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "only_applies_silent_trackers",
+			"notes": "Tracking",
+			"guid": "K8uvCzrPyY2N2As1JfFODEHeKn3UlBuZ9k1znC1K6tY",
+			"contentType": "default",
+			"src": "Only applies to silent trackers, such as Komga",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -2642,6 +4861,15 @@
 			"ts": 1
 		},
 		{
+			"sid": "select_an_entry",
+			"notes": "Tracking",
+			"guid": "udoZazFBKNuJIC6v5QmfjrbGyd6rlkSOBu4UjHKhWOk",
+			"contentType": "default",
+			"src": "Select an entry",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "source_unsupported",
 			"notes": "Tracking",
 			"guid": "gks4bWWDDbYU3WqFt4sCDQzKkk818PdlB7ib_dco-_U",
@@ -2649,6 +4877,113 @@
 			"src": "Source is not supported",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
+		},
+		{
+			"sid": "no_match_found",
+			"notes": "Tracking",
+			"guid": "U4k2bPmEV48jDbn2lC4J-B8kiIokopjfT9qt0J_p5ZU",
+			"contentType": "default",
+			"src": "No match found",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "remove_tracking",
+			"notes": "Tracking",
+			"guid": "DthVRDpslR2a_CZJ43oIuFM3jsvJRc-3YGX31hS3Fgo",
+			"contentType": "default",
+			"src": "Remove tracking from app",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "cannot_remove_tracking_while_offline",
+			"notes": "Tracking",
+			"gstr": "Tracker cannot be removed from {{x}} while offline",
+			"guid": "EtHBbOLybHYJNZnry87GJ1zgXtr-0SCWf3ClP7wf8sY",
+			"contentType": "default",
+			"src": "Tracker cannot be removed from %1$s while offline",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Tracker cannot be removed from ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" while offline"
+			]
+		},
+		{
+			"sid": "remove_tracking_from_",
+			"notes": "Tracking",
+			"gstr": "Also remove from {{x}}",
+			"guid": "p-XaUHnNCFyXbPogKtoVZVRDqAjoRntnmJt5JR4R1rU",
+			"contentType": "default",
+			"src": "Also remove from %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Also remove from ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
+		},
+		{
+			"sid": "remove_previous_tracker",
+			"notes": "Tracking",
+			"guid": "8v-_s7uEet4s00G7V9Pcvumf9GnoOvuXxIwKWEjb_5Y",
+			"contentType": "default",
+			"src": "Remove previous tracker?",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "remove_x_from_service_and_add_y",
+			"notes": "Tracking",
+			"gstr": "Remove {{x}} from {{x}} and add {{x}}",
+			"guid": "ehA-L9pQnrjTwKw9o5o3yPjzB8yjhIGNuOhTX96g7xo",
+			"contentType": "default",
+			"src": "Remove %1$s from %2$s and add %3$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Remove ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" from ",
+				{
+					"t": "x",
+					"v": "%2$s"
+				},
+				" and add ",
+				{
+					"t": "x",
+					"v": "%3$s"
+				}
+			]
+		},
+		{
+			"sid": "keep_both_on_service",
+			"notes": "Tracking",
+			"gstr": "Keep both on {{x}} and only replace locally",
+			"guid": "PBNBqvQp-lTb7U8FVYhn02_a9p0-R2znZFx5j9sUbpI",
+			"contentType": "default",
+			"src": "Keep both on %1$s and only replace locally",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Keep both on ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" and only replace locally"
+			]
 		},
 		{
 			"sid": "started_reading_date",
@@ -2678,6 +5013,15 @@
 			"ts": 1
 		},
 		{
+			"sid": "use_suggested_date",
+			"notes": "Tracking",
+			"guid": "7hb5L6qGTAqPRklPIZG70MstE7elk7RcKPRLMCRQtd4",
+			"contentType": "default",
+			"src": "Use suggested date",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "select_sources",
 			"notes": "Migration",
 			"guid": "X0_pFoQrmtP7HRDl7tJJRY9v4aAvjI8hpck4OCcfqic",
@@ -2696,6 +5040,170 @@
 			"ts": 1
 		},
 		{
+			"sid": "migration",
+			"notes": "Migration",
+			"guid": "-PPNIbEUHwkIGu4bQUzt0Dum2AJNX33S224Q_e_ou2w",
+			"contentType": "default",
+			"src": "Migration",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "skip_pre_migration",
+			"notes": "Migration",
+			"guid": "XNjo_w9WhrGdxKdrV8_dOdrvfQJ22YujJJ86Jb0cZr8",
+			"contentType": "default",
+			"src": "Skip pre-migration",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "select_a_source_then_item_to_migrate",
+			"notes": "Migration",
+			"gstr": "Select a source, then select an item to migrate",
+			"guid": "ZaFVe22GBI64JdVFR6uX-ObRD-cRk0zIKevux5wEwW4",
+			"contentType": "default",
+			"src": "Select a source, then select an item to\n        migrate",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Select a source, then select an item to migrate"
+			]
+		},
+		{
+			"sid": "data_to_include_in_migration",
+			"notes": "Migration",
+			"guid": "lt4SHU-6CU6ShuRhAxP8PbpEMoizbRLeARXwB-oXCoE",
+			"contentType": "default",
+			"src": "Data to include in migration",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "search_parameter_eg",
+			"notes": "Migration",
+			"guid": "WjIru3HFt1RrWI7_RapbkXcY0vlttgOm2q7YAQgUagc",
+			"contentType": "default",
+			"src": "Search parameter (e.g. language:english)",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "include_extra_search_parameter",
+			"notes": "Migration",
+			"guid": "91G3XQPJ2p1pajBE1eoRgNPgG9B-t_4PHNx3kmeUK2g",
+			"contentType": "default",
+			"src": "Include extra search parameter when searching",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "use_most_chapters",
+			"notes": "Migration",
+			"guid": "ELDkm24sZ2jhq4FvE5XizqKRWUrY5rYSIdvZBLjRnAk",
+			"contentType": "default",
+			"src": "Use source with the most chapters (slower)",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "use_first_source",
+			"notes": "Migration",
+			"guid": "dK9hIuYCY7ZjQx2fkF1hE-wlxSiGWWD0CDls4jwr0Hw",
+			"contentType": "default",
+			"src": "Use first source with alternative",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "skip_this_step_next_time",
+			"notes": "Migration",
+			"guid": "vlH7fPoKtNFol1m44HtsqAc_POa1glKl0jdNWEN1A_c",
+			"contentType": "default",
+			"src": "Skip this step next time",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "to_show_again_setting_sources",
+			"notes": "Migration",
+			"gstr": "To show this screen again, go to Settings -> Sources.",
+			"guid": "40nodRaLIGy39DOdLno37o-CdP-LndXWJmmD06atmsg",
+			"contentType": "default",
+			"src": "To show this screen again, go to Settings ->\n        Sources.",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"To show this screen again, go to Settings -> Sources."
+			]
+		},
+		{
+			"sid": "latest_",
+			"notes": "Migration",
+			"gstr": "Latest: {{x}}",
+			"guid": "XbpaTzrbCpE1Jod-1pTJUcUejGCs65etNfCLyrjOPCI",
+			"contentType": "default",
+			"src": "Latest: %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Latest: ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
+		},
+		{
+			"sid": "migrating_to",
+			"notes": "Migration",
+			"guid": "N-Yl549YbT_yznYhn6exYuE3dfVAe7a_S4Mqs5cfOqk",
+			"contentType": "default",
+			"src": "migrating to",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "dont_migrate",
+			"notes": "Migration",
+			"gstr": "Don't migrate",
+			"guid": "xJFqLVqZOdDwGYAjfbgscpPcA6oGzcIavM_-Mgu3XOg",
+			"contentType": "default",
+			"src": "Don\\'t migrate",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Don't migrate"
+			]
+		},
+		{
+			"sid": "search_manually",
+			"notes": "Migration",
+			"guid": "7SPzWn0HQD6BIBpK8t3zjkVsy0SkVUtIURZJtEqRj7U",
+			"contentType": "default",
+			"src": "Search manually",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "migrate_now",
+			"notes": "Migration",
+			"guid": "KCxikc2zuT7uJzwvqPeb9SagV9WJX3byhb77PFwsPS0",
+			"contentType": "default",
+			"src": "Migrate now",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "copy_now",
+			"notes": "Migration",
+			"guid": "OiatXmgmVshjzRHY9MOlDEQV7odBfISWmzX62vP7wBE",
+			"contentType": "default",
+			"src": "Copy now",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "migrate",
 			"notes": "Migration",
 			"guid": "mtYe3HWlkJC02486UH-CxoJ2HFrYI4YFFBMUIXpeRkw",
@@ -2705,6 +5213,23 @@
 			"ts": 1
 		},
 		{
+			"sid": "migrate_",
+			"notes": "Migration",
+			"gstr": "Migrate {{x}}",
+			"guid": "8UBMozzQQaFAFnGCJ2oCBqqTVxAjdbeLXYrZ5jUkQoQ",
+			"contentType": "default",
+			"src": "Migrate %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Migrate ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
+		},
+		{
 			"sid": "copy_value",
 			"notes": "Migration",
 			"guid": "JUjbLHtxbd3o_tATtMLJSXSM4DthXJI9BM3oDkUcWHw",
@@ -2712,6 +5237,183 @@
 			"src": "Copy",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
+		},
+		{
+			"sid": "no_chapters_found_for_migration",
+			"notes": "Migration",
+			"gstr": "No chapters found, this manga cannot be used for migration",
+			"guid": "dQVWYkXPeFOjGC7dZFl4-qpzZxpKrykPe1si6ZXM47U",
+			"contentType": "default",
+			"src": "No chapters found, this manga cannot be used for\n        migration",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"No chapters found, this manga cannot be used for migration"
+			]
+		},
+		{
+			"sid": "no_alternatives_found",
+			"notes": "Migration",
+			"guid": "J1tK-zxfRLo-qJ2LdvOy0EfXz3DKHub7cuPGCCs1bKQ",
+			"contentType": "default",
+			"src": "No Alternatives Found",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "stop_migrating",
+			"notes": "Migration",
+			"guid": "qgyhbpKDjI7jLUvTkyBinCJwj8i7lfiKwHOif76StvI",
+			"contentType": "default",
+			"src": "Stop migrating?",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "migrate_manga_one",
+			"isSuffixPluralized": true,
+			"notes": "Migration",
+			"gstr": "Migrate {{x}}{{x}} manga?",
+			"guid": "5otAlRi18WJHdTNddhXrbauyBBuNmozvj5T1U3LdNio",
+			"contentType": "default",
+			"src": "Migrate %1$d%2$s manga?",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Migrate ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				{
+					"t": "x",
+					"v": "%2$s"
+				},
+				" manga?"
+			]
+		},
+		{
+			"sid": "migrate_manga_other",
+			"isSuffixPluralized": true,
+			"notes": "Migration",
+			"gstr": "Migrate {{x}}{{x}} manga?",
+			"guid": "NbSotC-esLltIb4qX2tNcSjKPSlGcoWI-D8v8pewC08",
+			"contentType": "default",
+			"src": "Migrate %1$d%2$s manga?",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Migrate ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				{
+					"t": "x",
+					"v": "%2$s"
+				},
+				" manga?"
+			]
+		},
+		{
+			"sid": "copy_manga_one",
+			"isSuffixPluralized": true,
+			"notes": "Migration",
+			"gstr": "Copy {{x}}{{x}} manga?",
+			"guid": "V7Ipy8tVMS_hgViqxAA2GVdKnK2eiylBmpYsz6R23AM",
+			"contentType": "default",
+			"src": "Copy %1$d%2$s manga?",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Copy ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				{
+					"t": "x",
+					"v": "%2$s"
+				},
+				" manga?"
+			]
+		},
+		{
+			"sid": "copy_manga_other",
+			"isSuffixPluralized": true,
+			"notes": "Migration",
+			"gstr": "Copy {{x}}{{x}} manga?",
+			"guid": "8QzHRFQRgUcTAprTZeAm2ftfggD-_EULwyTccQDeOTA",
+			"contentType": "default",
+			"src": "Copy %1$d%2$s manga?",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Copy ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				{
+					"t": "x",
+					"v": "%2$s"
+				},
+				" manga?"
+			]
+		},
+		{
+			"sid": "skipping_",
+			"notes": "Migration",
+			"gstr": "(skipping {{x}})",
+			"guid": "PT1Q-KeWPfn_xxc-bX4Y7GEGvvA-Y19t7vD-todWShg",
+			"contentType": "default",
+			"src": "(skipping %1$d)",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"(skipping ",
+				{
+					"t": "x",
+					"v": "%1$d"
+				},
+				")"
+			]
+		},
+		{
+			"sid": "manga_migrated_one",
+			"isSuffixPluralized": true,
+			"notes": "Migration",
+			"gstr": "{{x}} manga migrated",
+			"guid": "26atAzC3mwZ3kvEaRGvJjuffpG2YiWvLb_0uDvsLPtE",
+			"contentType": "default",
+			"src": "%d manga migrated",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" manga migrated"
+			]
+		},
+		{
+			"sid": "manga_migrated_other",
+			"isSuffixPluralized": true,
+			"notes": "Migration",
+			"gstr": "{{x}} manga migrated",
+			"guid": "NR_8aJYvx44XUvYFNO1tkp7aEhaPGsIEjxtjvkMyPyc",
+			"contentType": "default",
+			"src": "%d manga migrated",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" manga migrated"
+			]
 		},
 		{
 			"sid": "settings",
@@ -2737,6 +5439,15 @@
 			"guid": "h48IwLQb_Kr4DzWI6wptPwL5q7m41cV5dTuAq2ZSm94",
 			"contentType": "default",
 			"src": "Reader",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "appearance",
+			"notes": "Settings",
+			"guid": "5eQfIgEoQtbNWO-1AlQOysdFQc5V5igBF2xUbmrskIs",
+			"contentType": "default",
+			"src": "Appearance",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -2777,11 +5488,81 @@
 			"ts": 1
 		},
 		{
+			"sid": "turn_on_",
+			"notes": "Settings",
+			"gstr": "Turn on {{x}}",
+			"guid": "uFVbUHrXOitHB2S6JDZOrs8aV5rxp7WYKecvc56IP6E",
+			"contentType": "default",
+			"src": "Turn on %s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Turn on ",
+				{
+					"t": "x",
+					"v": "%s"
+				}
+			]
+		},
+		{
+			"sid": "turn_off_",
+			"notes": "Settings",
+			"gstr": "Turn off {{x}}",
+			"guid": "ho4L5e9G-ndHwuIF6Cmr5geXwERUZCd_jY_yTm6agc8",
+			"contentType": "default",
+			"src": "Turn off %s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Turn off ",
+				{
+					"t": "x",
+					"v": "%s"
+				}
+			]
+		},
+		{
+			"sid": "incognito_mode",
+			"notes": "Settings",
+			"guid": "cXhHTgubaXopfYGQLaXme_NmQ5WY7SPT9Hk1kXrnht4",
+			"contentType": "default",
+			"src": "Incognito mode",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "pauses_reading_history",
+			"notes": "Settings",
+			"guid": "GWnOMuj7cc53ixBNbQN3Jgx0ndwa1tQvFWG7MN1UvOs",
+			"contentType": "default",
+			"src": "Pauses reading history",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "app_theme",
 			"notes": "General settings",
 			"guid": "Ay5QX19Ktp0pIgU9HrqiMQolqdwoNnVJUowNH8REpFE",
 			"contentType": "default",
 			"src": "App theme",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "light_theme",
+			"notes": "General settings",
+			"guid": "2zYHICLSMDRS4hmL3mG_GcljCxsbxDZJi_d0tEA8KeY",
+			"contentType": "default",
+			"src": "Light theme",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "dark_theme",
+			"notes": "General settings",
+			"guid": "Qz5uMNtrIEjaYLpAUR9s7q838MB3UfqaZ5y5kCi5Fc4",
+			"contentType": "default",
+			"src": "Dark theme",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -2822,11 +5603,155 @@
 			"ts": 1
 		},
 		{
+			"sid": "midnight_dusk",
+			"notes": "General settings",
+			"guid": "YanNntJpXSZIdbqr7id6VeWUtMbeD1v_ckCNpKvPhBw",
+			"contentType": "default",
+			"src": "Midnight Dusk",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "spring_blossom",
+			"notes": "General settings",
+			"guid": "EGkKE9cPyin0ijMsclAYu0_9Q684CojI8fjRfoN9928",
+			"contentType": "default",
+			"src": "Spring Blossom",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "strawberry_daiquiri",
+			"notes": "General settings",
+			"guid": "nVBLd4D0iYUrlSTjg2WppbD0fp8tEaWrp4k0ajSXqpA",
+			"contentType": "default",
+			"src": "Strawberry Daiquiri",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "a_brighter_you",
+			"notes": "General settings",
+			"guid": "u5bvLpCuJ8WEuCuphGYr0Q5hpymee1gnY6mUqhhETWE",
+			"contentType": "default",
+			"src": "A Brighter You (Dynamic)",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "a_calmer_you",
+			"notes": "General settings",
+			"guid": "uz_fIYv_VXMTuwR2VMB8351T4s01F2kWVVO7N4j8ois",
+			"contentType": "default",
+			"src": "A Calmer You (Dynamic)",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "yotsuba",
+			"notes": "General settings",
+			"guid": "UiKTB6OG_3SxNZYan2gizCkBSbgzAGez-Qq_0gqBxUI",
+			"contentType": "default",
+			"src": "Yotsuba",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "tako",
+			"notes": "General settings",
+			"guid": "X_lcJ33w1FnORuUQsj6hr9Al2ws3lhj0mxu1ljyw1B4",
+			"contentType": "default",
+			"src": "Tako",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "yin",
+			"notes": "General settings",
+			"guid": "jEhFC4GspVjYt-8LuT0NMhub4gbo2LOYa2WcH4NHFHU",
+			"contentType": "default",
+			"src": "Yin",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "yang",
+			"notes": "General settings",
+			"guid": "poXkTGEcGe-O1oAhmApNbiKsqkuFvk9sd0FQGqPqlM8",
+			"contentType": "default",
+			"src": "Yang",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "chocolate_strawberries",
+			"notes": "General settings",
+			"guid": "C8BPevpvgI6WJexjUMUahmJBgFi50M07scj23iERX2k",
+			"contentType": "default",
+			"src": "Chocolate Strawberries",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "teal_ocean",
+			"notes": "General settings",
+			"guid": "_AuqOACJhbcy1WtVNzcQXxPlijRWT2KN52345xP4rBg",
+			"contentType": "default",
+			"src": "Teal Ocean",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "sapphire_dusk",
+			"notes": "General settings",
+			"guid": "zubSvrNm5wwOPs0ztitCy-jgEV86F7C1_qio1TMfH2I",
+			"contentType": "default",
+			"src": "Sapphire Dusk",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "hot_pink",
+			"notes": "General settings",
+			"guid": "IUUIIBJOx9r8kQmaZlv4JUzCssUcw851UPHvDoeEcK8",
+			"contentType": "default",
+			"src": "Hot Pink",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "flat_lime",
+			"notes": "General settings",
+			"guid": "XupCzE9DVb_DJ-vj1kNbld19gxVNja1BW_3QhxwaJOc",
+			"contentType": "default",
+			"src": "Flat Lime",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "white_theme",
+			"notes": "General settings",
+			"guid": "KShg_q-U_l3Mp8pT8tgYnpW1945uQkF3JiBjS1EbjbQ",
+			"contentType": "default",
+			"src": "Pure White",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "locale",
 			"notes": "General settings",
 			"guid": "j9Gr6KxUhIsBdS32rsTQA-xZRzco-e8d4y-jj-f79No",
 			"contentType": "default",
 			"src": "Locale",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "last_used_library_recents",
+			"notes": "General settings",
+			"guid": "IZ8YeylR6f1qeElImrsuwNR69XKaboPU5Ulg676rggU",
+			"contentType": "default",
+			"src": "Last used (Library or Recents)",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -2884,6 +5809,96 @@
 			"ts": 1
 		},
 		{
+			"sid": "hide_bottom_nav",
+			"notes": "General settings",
+			"guid": "pXb00OSWKF8OtyBtcSRxEalP5h5mLRR_VMcP78SHr_M",
+			"contentType": "default",
+			"src": "Auto-hide bottom navigation",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "side_nav_icon_alignment",
+			"notes": "General settings",
+			"guid": "oL50pOSprU0vWXIoHmo2gS1I0-eYMcL16hwufNY8ULI",
+			"contentType": "default",
+			"src": "Side navigation icon alignment",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "use_side_navigation",
+			"notes": "General settings",
+			"guid": "_HL38HQvlrx4zatV5U7Rdku_K0-BKFM2gSSScTmIAmE",
+			"contentType": "default",
+			"src": "Use side navigation",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "default_behavior",
+			"notes": "General settings",
+			"guid": "FBUPvw4IF_dco65MT85iOp-P201ObtzHM4ewww8yo2A",
+			"contentType": "default",
+			"src": "Default behavior",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "by_default_side_nav_info",
+			"notes": "General settings",
+			"guid": "m9LapqqyUbl4Hjm-acmQgAUIn2zH98FMK6pLSC-_jVE",
+			"contentType": "default",
+			"src": "By default, side navigation is used for certain phones and small tablets when in landscape, and always shows on larger tablets",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "follow_system_theme",
+			"notes": "General settings",
+			"guid": "5GX8Iq_IesOGuLkAra1Yqr9pElHtXjerK9lWMmOphyM",
+			"contentType": "default",
+			"src": "Follow system theme",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "pure_black_dark_mode",
+			"notes": "General settings",
+			"guid": "C4ZBYtDxLEoCXfuon-Up1hDVSlu47aMTUGiJEOQYKA8",
+			"contentType": "default",
+			"src": "Pure black dark mode",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "details_page",
+			"notes": "General settings",
+			"guid": "mDWIplg3Wh7Rcjh5InA9P6ffNR9D_FzTNZn0x6ExoE4",
+			"contentType": "default",
+			"src": "Details page",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "theme_buttons_based_on_cover",
+			"notes": "General settings",
+			"guid": "m_Zja_HdTZ8QsvSIsL7BFxLzVslvGEG0jRaamPck3qQ",
+			"contentType": "default",
+			"src": "Theme buttons based on cover",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "hides_on_scroll",
+			"notes": "General settings",
+			"guid": "2H2FCTrO3QD6g4e3IRLHkFvN25eM13EHU4SWJ86L11s",
+			"contentType": "default",
+			"src": "Hides when scrolling",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "hide_app_block_screenshots",
 			"notes": "General settings",
 			"guid": "jKZKJcy5mxyLzr83aa1Ek05MdhK8faqBN_hZUYPxguo",
@@ -2909,6 +5924,140 @@
 			"src": "Security",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
+		},
+		{
+			"sid": "starting_screen",
+			"notes": "General settings",
+			"guid": "yErnSrwWHEZijQHfyIuA1An321aHUSxyIeMcXjWZiAo",
+			"contentType": "default",
+			"src": "Starting screen",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "back_to_start",
+			"notes": "General settings",
+			"guid": "kX70JYjVLuSXfboAf8zYL1Ych_d52zS8TCi_o8QxJ7o",
+			"contentType": "default",
+			"src": "Back to start",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "pressing_back_to_start",
+			"notes": "General settings",
+			"guid": "4LEwGmzLbpaz92HD1PIKy5uPNzu3Sescs2rzorTW-fg",
+			"contentType": "default",
+			"src": "Pressing back to starting screen",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "auto_updates",
+			"notes": "General settings",
+			"guid": "59PP8cD8S_FWrK5xrlPx31M3HLElEMnaYHJ3tHdpPKw",
+			"contentType": "default",
+			"src": "Auto-updates",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "auto_update_app",
+			"notes": "General settings",
+			"guid": "H_JjnDnNORCzdlGTLjUfqofMK9rQ6AtQYWzPzAR0tPg",
+			"contentType": "default",
+			"src": "Auto-update app",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "over_wifi_only",
+			"notes": "General settings",
+			"guid": "w5pSql3nh7zWPgEIPI4THTwy-pPho65K0Ib8ZgMvAVE",
+			"contentType": "default",
+			"src": "Over Wi-Fi only",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "over_any_network",
+			"notes": "General settings",
+			"guid": "9bvm7hCxHmnizSUDHApPLv7sitYthDANe3lWJGoojSc",
+			"contentType": "default",
+			"src": "Over any network",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "dont_auto_update",
+			"notes": "General settings",
+			"gstr": "Don't auto-update",
+			"guid": "zXLKLNmS6xruqwTnlAbShfEJGiuuMK3ztU-MUk76zWE",
+			"contentType": "default",
+			"src": "Don\\'t auto-update",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Don't auto-update"
+			]
+		},
+		{
+			"sid": "app_shortcuts",
+			"notes": "General settings",
+			"guid": "D3LfdbxIIVqFCgNV1keUViOetdNJG2NwKYm8Oq1xiVw",
+			"contentType": "default",
+			"src": "App shortcuts",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "show_recent_sources",
+			"notes": "General settings",
+			"guid": "bQV7fZpH3qCJh1eXfgPuAv5TNS8EN7677pXGdrpBdQE",
+			"contentType": "default",
+			"src": "Show recently used sources",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "show_recent_series",
+			"notes": "General settings",
+			"guid": "yoF22AIvrvT8-SiVZinJYZKjXn3ec3-W6xwdonw73HU",
+			"contentType": "default",
+			"src": "Show recent series",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "includes_recently_read_updated_added",
+			"notes": "General settings",
+			"guid": "TzwswY8NZNKxmx-0hvbNo7jEJlmDyk5FtkpRV6YVWew",
+			"contentType": "default",
+			"src": "Includes recently read, updated, and added series",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "series_opens_new_chapters",
+			"notes": "General settings",
+			"guid": "NG5VIYqM-D_1aUYH4LZ1PeIRAJfl93HRSjwUHrlxW54",
+			"contentType": "default",
+			"src": "Series shortcuts opens new chapters",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "no_new_chapters_open_details",
+			"notes": "General settings",
+			"gstr": "When there's no new chapters, the series' details will open instead",
+			"guid": "Fm6Vq1l2shHVMSBG3SScRIRVIIllb62PT55gQ8pn6jU",
+			"contentType": "default",
+			"src": "When there\\'s no new chapters, the series\\' details will open instead",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"When there's no new chapters, the series' details will open instead"
+			]
 		},
 		{
 			"sid": "backup",
@@ -3091,6 +6240,15 @@
 			"ts": 1
 		},
 		{
+			"sid": "restore_error",
+			"notes": "Backup",
+			"guid": "CE1TfCDxLNUUOskfg4UlXkcmKy9RzTreJQb_XEhR-JE",
+			"contentType": "default",
+			"src": "Failed to restore backup",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "restore_missing_sources",
 			"notes": "Backup",
 			"guid": "djxigi0SyciRAQl-OEOMoHuEEa8p9xuayG9KTbpCR28",
@@ -3119,6 +6277,19 @@
 			"ts": 1,
 			"nsrc": [
 				"Restore uses sources to fetch data, carrier costs may apply.\n\nMake sure you have installed all necessary extensions and are logged in to sources and tracking services before restoring."
+			]
+		},
+		{
+			"sid": "restore_content_full",
+			"notes": "Backup",
+			"gstr": "Data from the backup file will be restored.\n\nYou will need to install any missing extensions and log in to tracking services afterwards to use them.",
+			"guid": "zjRnVqvBaWL0WEb1kpUnpHu5WxQ6QlzFONOTIKfEIWQ",
+			"contentType": "default",
+			"src": "Data from the backup file will be restored.\\n\\nYou will need to install any missing extensions and log in to tracking services afterwards to use them.",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Data from the backup file will be restored.\n\nYou will need to install any missing extensions and log in to tracking services afterwards to use them."
 			]
 		},
 		{
@@ -3180,6 +6351,15 @@
 			]
 		},
 		{
+			"sid": "restore_miui_warning",
+			"notes": "Backup",
+			"guid": "X_KLc5HBAfegVR9vZD8aXzXPwMiU8FIqSVIzsp8-4Gw",
+			"contentType": "default",
+			"src": "Backup/restore may not function properly if MIUI Optimization is disabled.",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "progress",
 			"notes": "Backup",
 			"guid": "M0u5w8Tx0ZXR9dAohFW9Pt2r5giJ2G3qVNublAcig4k",
@@ -3196,6 +6376,30 @@
 			"src": "Complete",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
+		},
+		{
+			"sid": "restore_completed_message_one",
+			"isSuffixPluralized": true,
+			"notes": "Backup",
+			"gstr": "Done in {{x}} with {{x}} error",
+			"guid": "dUY5CemIa3xpPTEoUKN5hZLIYyFYKU1bhYQvPyUJvk0",
+			"contentType": "default",
+			"src": "Done in %1$s with %2$s error",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Done in ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" with ",
+				{
+					"t": "x",
+					"v": "%2$s"
+				},
+				" error"
+			]
 		},
 		{
 			"sid": "restore_completed_message_other",
@@ -3222,11 +6426,55 @@
 			]
 		},
 		{
+			"sid": "not_logged_into_",
+			"notes": "Backup",
+			"gstr": "Not logged into {{x}}",
+			"guid": "2uYPHtC1kQJwVaCe1QnpczVkqD-zdpHEtbJTGyYzpSU",
+			"contentType": "default",
+			"src": "Not logged into %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Not logged into ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
+		},
+		{
 			"sid": "clear_chapter_cache",
 			"notes": "Advanced section",
 			"guid": "gPqVDlajP2hf4NQoL37UXVQjJnqN1QR-KGD6--7lYtE",
 			"contentType": "default",
 			"src": "Clear chapter cache",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "force_download_cache_refresh",
+			"notes": "Advanced section",
+			"guid": "cFIDGoTU3XlK_6EpXmirmj1HbheTAQ5vDwzEpib1vBk",
+			"contentType": "default",
+			"src": "Refresh the download cache",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "force_download_cache_refresh_summary",
+			"notes": "Advanced section",
+			"guid": "c_RZW6BNeKjSWxBHHgg3Ii7b3Je3ohsXMPLu1tfe29Q",
+			"contentType": "default",
+			"src": "This will force the download cache to recalculate. Useful if you modified downloads outside of this app and want the app to pick them up",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "data_management",
+			"notes": "Advanced section",
+			"guid": "NphDMweBfMiTRwBCTAkmIySPR-p8jPY_8yafFV6yUlo",
+			"contentType": "default",
+			"src": "Data Management",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -3294,6 +6542,15 @@
 			"ts": 1
 		},
 		{
+			"sid": "disabled",
+			"notes": "Advanced section",
+			"guid": "6kZ4y-TCeSlLR40rmH-lwkbxuWb_KeELspwgQrvljIY",
+			"contentType": "default",
+			"src": "Disabled",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "requires_app_restart",
 			"notes": "Advanced section",
 			"guid": "B2yJyY-Ik9alEwuIovrIpaE88A4zkXXyTMl6S5eLCB0",
@@ -3317,6 +6574,44 @@
 					"t": "x",
 					"v": "%1$s"
 				}
+			]
+		},
+		{
+			"sid": "cache_cleared_one",
+			"isSuffixPluralized": true,
+			"notes": "Advanced section",
+			"gstr": "Cache cleared. {{x}} file has been deleted",
+			"guid": "5eZfQwyisFt-eAr3zUOKugP__L-uALc_ylWptAYKJQI",
+			"contentType": "default",
+			"src": "Cache cleared. %d file has been deleted",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Cache cleared. ",
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" file has been deleted"
+			]
+		},
+		{
+			"sid": "cache_cleared_other",
+			"isSuffixPluralized": true,
+			"notes": "Advanced section",
+			"gstr": "Cache cleared. {{x}} files have been deleted",
+			"guid": "0MGHojsg991bW2BX_cczB7XrP0mfW2DJ6OMvNsJaj48",
+			"contentType": "default",
+			"src": "Cache cleared. %d files have been deleted",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Cache cleared. ",
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" files have been deleted"
 			]
 		},
 		{
@@ -3419,6 +6714,73 @@
 			"ts": 1
 		},
 		{
+			"sid": "clean_up_downloaded_chapters",
+			"notes": "Advanced section",
+			"guid": "-C8OeNLt0crMLLBsboFDzha8JXGTuyYoZttXAzzBaQY",
+			"contentType": "default",
+			"src": "Clean up downloaded chapters",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "delete_unused_chapters",
+			"notes": "Advanced section",
+			"gstr": "Delete non-existent, partially downloaded, and read chapter folders",
+			"guid": "dwmP8JsQhLHngvqw56EBpRIwjbjeCHjFNccFSEUvGvI",
+			"contentType": "default",
+			"src": "Delete non-existent, partially downloaded,\n            and read chapter folders",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Delete non-existent, partially downloaded, and read chapter folders"
+			]
+		},
+		{
+			"sid": "clean_orphaned_downloads",
+			"notes": "Advanced section",
+			"guid": "RRrYY498SDiQ8LcoRDmSXIqvzNAHgFebOb-KsuwO1JE",
+			"contentType": "default",
+			"src": "Clean orphaned",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "clean_read_downloads",
+			"notes": "Advanced section",
+			"guid": "nFeN1Bgez7Tb25X7OrgzrPHbOcLvD7MphH8IQK2Y0Eo",
+			"contentType": "default",
+			"src": "Clean read",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "clean_read_manga_not_in_library",
+			"notes": "Advanced section",
+			"guid": "-nyi5YnV5GQb306s1HOj7B2SqJv7Awa5tmLwrrkrv7c",
+			"contentType": "default",
+			"src": "Clean manga not in library",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "starting_cleanup",
+			"notes": "Advanced section",
+			"guid": "HGSy4QLH2EpxWHS47G1VD08njmJ_QODbLdG-LJYXczk",
+			"contentType": "default",
+			"src": "Starting cleanup",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "no_folders_to_cleanup",
+			"notes": "Advanced section",
+			"guid": "W3fwjwvnWNaswdtH8CkY-ptVv4kWSc00Dwo0FRe8T74",
+			"contentType": "default",
+			"src": "No folders to cleanup",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "disable_battery_optimization",
 			"notes": "Advanced section",
 			"guid": "M8xom0r1nkKelngOGeJgflYmt8FO-yov7Jm1EpBFFbE",
@@ -3428,6 +6790,19 @@
 			"ts": 1
 		},
 		{
+			"sid": "disable_if_issues_with_updating",
+			"notes": "Advanced section",
+			"gstr": "Disable this if you are experiencing issues with updating or restoring your library",
+			"guid": "-wkXZ-U6feYoBLD03zOySY9bCJ2q3iJdBWNGiVyzb-w",
+			"contentType": "default",
+			"src": "Disable this if you are experiencing issues\n        with updating or restoring your library",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Disable this if you are experiencing issues with updating or restoring your library"
+			]
+		},
+		{
 			"sid": "battery_optimization_disabled",
 			"notes": "Advanced section",
 			"guid": "pWgteS6BQNpqcpyE5Y55fX1j9VDQI_E2t26klBLISIQ",
@@ -3435,6 +6810,96 @@
 			"src": "Battery optimization is already disabled",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
+		},
+		{
+			"sid": "cleanup_done_one",
+			"isSuffixPluralized": true,
+			"notes": "Advanced section",
+			"gstr": "Cleanup done. Removed {{x}} folder",
+			"guid": "rh1h0cJO-5V2S5q15JDf5bxw2kDqyrXKS4r_wy5PUwU",
+			"contentType": "default",
+			"src": "Cleanup done. Removed %d folder",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Cleanup done. Removed ",
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" folder"
+			]
+		},
+		{
+			"sid": "cleanup_done_other",
+			"isSuffixPluralized": true,
+			"notes": "Advanced section",
+			"gstr": "Cleanup done. Removed {{x}} folders",
+			"guid": "FICdN6ZTFGYJmB81aL4akRY846OS0LMXjqPMDZFDuqQ",
+			"contentType": "default",
+			"src": "Cleanup done. Removed %d folders",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Cleanup done. Removed ",
+				{
+					"t": "x",
+					"v": "%d"
+				},
+				" folders"
+			]
+		},
+		{
+			"sid": "clean_up_cached_covers",
+			"notes": "Advanced section",
+			"guid": "RYPIepOwa5XAPzLX3PAQYJsYA06xOGDr6gVmCoK5e68",
+			"contentType": "default",
+			"src": "Clean up cached covers",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "delete_old_covers_in_library_used_",
+			"notes": "Advanced section",
+			"gstr": "Delete old and unused cached covers of manga in your library that has been updated.\nCurrently using: {{x}}",
+			"guid": "lSA7apVW1cOhxizHua1Cozi3U_fNiABPf20SPV5qWtg",
+			"contentType": "default",
+			"src": "Delete old and unused cached covers of\n        manga in your library that has been updated.\\nCurrently using: %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Delete old and unused cached covers of manga in your library that has been updated.\nCurrently using: ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
+		},
+		{
+			"sid": "clear_cached_covers_non_library",
+			"notes": "Advanced section",
+			"guid": "760JS2eBsCjbuIMJovFvLL3VDT3Sf7OOh1BwVVDD_Fc",
+			"contentType": "default",
+			"src": "Clear cached covers not in library",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "delete_all_covers__not_in_library_used_",
+			"notes": "Advanced section",
+			"gstr": "Delete all covers cached that are not in your library \nCurrently using: {{x}}",
+			"guid": "MAJoOU3XbW2pm0bnts6394MkGigK3TCnzQ-_iRfyg8g",
+			"contentType": "default",
+			"src": "Delete all covers cached that are\n        not in your library \\nCurrently using: %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Delete all covers cached that are not in your library \nCurrently using: ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
 		},
 		{
 			"sid": "pref_global_search",
@@ -3455,6 +6920,121 @@
 			"ts": 1
 		},
 		{
+			"sid": "auto_update_extensions",
+			"notes": "Browse Settings",
+			"guid": "_BcKOaHV9biKhmCWByQuo8e4tHyutlNooNwpysPzdJE",
+			"contentType": "default",
+			"src": "Auto-update extensions",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "notify_extension_updated",
+			"notes": "Browse Settings",
+			"guid": "Wlob_O43CrtKubqtsatG0uCYfvcCrG8ya09n6fQMlTw",
+			"contentType": "default",
+			"src": "Notify extension has been updated",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "some_extensions_may_not_update",
+			"notes": "Browse Settings",
+			"guid": "rLH95OG9xlPkF4kPAJyeLzQRrlVlo3N8_TnKBowO8Tg",
+			"contentType": "default",
+			"src": "Some extensions may not be auto-updated if they were installed outside this app",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "only_search_pinned_when",
+			"notes": "Browse Settings",
+			"guid": "peDKey_OCIZBrXtm3WzN0U1MyhKG6W39qiaduKidCK0",
+			"contentType": "default",
+			"src": "Only search pinned sources",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "match_pinned_sources",
+			"notes": "Browse Settings",
+			"guid": "rOzl7VLQsGw9eF8igLhWnXnWm0xWAix_-IMHLg8O41U",
+			"contentType": "default",
+			"src": "Match pinned sources",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "match_enabled_sources",
+			"notes": "Browse Settings",
+			"guid": "AdtF-yNmB1KDbirSinW1hG8PNpb1zzuA3nrjvCHAAHo",
+			"contentType": "default",
+			"src": "Match enabled sources",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "only_enable_pinned_for_migration",
+			"notes": "Browse Settings",
+			"gstr": "Only enable your pinned sources for migration",
+			"guid": "dhcccCE8fLfXWvszAEfDTWr7hNNe_3qT5IUdFeDqgoI",
+			"contentType": "default",
+			"src": "Only enable your pinned sources for\n        migration",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Only enable your pinned sources for migration"
+			]
+		},
+		{
+			"sid": "only_enable_enabled_for_migration",
+			"notes": "Browse Settings",
+			"gstr": "Only enable your currently enabled sources for migration",
+			"guid": "ecCXfY4HMfF9J918_KY7aN7GY0YzLi4DQvg6ltvASZs",
+			"contentType": "default",
+			"src": "Only enable your currently enabled sources for\n        migration",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Only enable your currently enabled sources for migration"
+			]
+		},
+		{
+			"sid": "use_last_saved_migration_preferences",
+			"notes": "Browse Settings",
+			"gstr": "Use last saved pre-migration preferences and sources to mass migrate",
+			"guid": "SVlZlyNR7LfMJwSoD3PuIxOKThbqF1NzlAMB2Ol9ARE",
+			"contentType": "default",
+			"src": "Use last saved pre-migration preferences\n    and sources to mass migrate",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Use last saved pre-migration preferences and sources to mass migrate"
+			]
+		},
+		{
+			"sid": "migration_sources_changed",
+			"notes": "Browse Settings",
+			"guid": "Aj7B9bdrUBuawnRN3X7C9j-TI3E124trgAN1lqeNA2w",
+			"contentType": "default",
+			"src": "Migration sources changed",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "you_can_migrate_in_library",
+			"notes": "Browse Settings",
+			"gstr": "You can also migrate by selecting manga in your library",
+			"guid": "pX3b7nl_8Y58oXPbghIIx7_0aGmWWLPeP-D5LNDblcU",
+			"contentType": "default",
+			"src": "You can also migrate by selecting manga in your\n        library",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"You can also migrate by selecting manga in your library"
+			]
+		},
+		{
 			"sid": "source_migration_guide",
 			"notes": "Browse Settings",
 			"guid": "qhRTZYzxAUhGMhxN8LmWkStHXtKoxmCc2hdYZ1Gsa6M",
@@ -3469,6 +7049,15 @@
 			"guid": "tZKAOsp0izb2s8Fp2rC3SG4uE72YV-nh0p9UqjVCtmw",
 			"contentType": "default",
 			"src": "NSFW (18+) sources",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "show_in_sources_and_extensions",
+			"notes": "Browse Settings",
+			"guid": "D18ZSiCe8YZ1sci7Z2F7B1tfXEm3Or2uUalU99MhCm0",
+			"contentType": "default",
+			"src": "Show in sources and extensions lists",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -3531,11 +7120,33 @@
 			]
 		},
 		{
+			"sid": "whats_new_this_release",
+			"notes": "About section",
+			"gstr": "What's new in this release",
+			"guid": "ODnxRXqbNkf0WZwNMNBRVzvTowiRVdu0tktSDF2ET3k",
+			"contentType": "default",
+			"src": "What\\'s new in this release",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"What's new in this release"
+			]
+		},
+		{
 			"sid": "help_translate",
 			"notes": "About section",
 			"guid": "1aPLaqjJR9LjyH8Zzwi-KIY7CSYsIXEC70FDiI6t6v8",
 			"contentType": "default",
 			"src": "Help translate",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "helpful_translation_links",
+			"notes": "About section",
+			"guid": "PjW8y4Za7kR6g7Mb6zNFAHjvaRBRDKypInCNDLP0odM",
+			"contentType": "default",
+			"src": "Helpful translation links",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -3602,11 +7213,56 @@
 			"ts": 1
 		},
 		{
+			"sid": "log_in",
+			"notes": "Login/Logout dialog",
+			"guid": "xnqHTdNqkhihZKApW6oBsEMOzmr2LhRFqtzqAwqqdls",
+			"contentType": "default",
+			"src": "Log in",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "log_out",
+			"notes": "Login/Logout dialog",
+			"guid": "otCPIdi35zp9xaeTNfweeQFwx7Bt1eWeY6zkqDeDnzk",
+			"contentType": "default",
+			"src": "Log out",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "log_out_from_",
+			"notes": "Login/Logout dialog",
+			"gstr": "Log out from {{x}}?",
+			"guid": "bAkWLyFZwmeqXY5p5StiL_Ove18eBwQkFXS9_1Xkoe8",
+			"contentType": "default",
+			"src": "Log out from %1$s?",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Log out from ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				"?"
+			]
+		},
+		{
 			"sid": "successfully_logged_in",
 			"notes": "Login/Logout dialog",
 			"guid": "F6Yn7VLHOw-rQ4Lls3ORWAPSNda2-kStq6kPDlUXEhU",
 			"contentType": "default",
 			"src": "Successfully logged in",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "username_must_not_be_blank",
+			"notes": "Login/Logout dialog",
+			"guid": "vFhmfrCpbCcBLVqtsWKLnhjBg9l4fS85fQc9uKd_DgM",
+			"contentType": "default",
+			"src": "Username or password cannot be blank",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -3638,6 +7294,23 @@
 			"ts": 1
 		},
 		{
+			"sid": "downloading_",
+			"notes": "Downloads",
+			"gstr": "Downloading: {{x}}",
+			"guid": "hPBLtewVJ0mhjgOKNagsyLfPqlTA2s4KFgxhNP5G52Q",
+			"contentType": "default",
+			"src": "Downloading: %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Downloading: ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
+		},
+		{
 			"sid": "cancel_all",
 			"notes": "Downloads",
 			"guid": "02096t4uRb_DClwj1RAxbx72BHNtiB5zWzLbQoVR3Q0",
@@ -3665,6 +7338,15 @@
 			"ts": 1
 		},
 		{
+			"sid": "not_downloaded",
+			"notes": "Downloads",
+			"guid": "58HNOhORcxDJQ1hQI-X8sV6dtO1-JYfEYpU8LRkwcQ0",
+			"contentType": "default",
+			"src": "Not downloaded",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "downloading",
 			"notes": "Downloads",
 			"guid": "3oSI7SBlzkJ3OzmVXYSk5-EElcRhNrq8c6Siyar3fAw",
@@ -3679,6 +7361,33 @@
 			"guid": "3T96bQW_C_WUxp0dvWrFYDVh393--CtzjEZjNvwlNKk",
 			"contentType": "default",
 			"src": "Download",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "start_downloading_now",
+			"notes": "Downloads",
+			"guid": "5T8z0MWPbgXZdSAJcvsDsr6VjLtrWYR61l4sBGDImp4",
+			"contentType": "default",
+			"src": "Start downloading now",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "remove_download",
+			"notes": "Downloads",
+			"guid": "Xtlfkv2oa5DVpkJmuUxtxRJHUpDRKaahy15F8dIp--o",
+			"contentType": "default",
+			"src": "Remove download",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "remove_downloads",
+			"notes": "Downloads",
+			"guid": "pyHTpdpR4jXfSwerJYFoyQ5Tt1koOKoDuNA0wJOWd94",
+			"contentType": "default",
+			"src": "Remove downloads",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -3724,6 +7433,15 @@
 			"ts": 1
 		},
 		{
+			"sid": "nothing_is_downloading",
+			"notes": "Downloads",
+			"guid": "UJyX84gMBxdO1PDr7VKib8lH2_E4PvFz9cj9BBBJsA4",
+			"contentType": "default",
+			"src": "Nothing is currently downloading",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "download_complete",
 			"notes": "Downloads",
 			"guid": "lLnmND1rbBVG0JnB2HF-SBDzZVQmUpkX5wJrzDg12Ro",
@@ -3740,6 +7458,45 @@
 			"src": "Download error",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
+		},
+		{
+			"sid": "manage_whats_downloading",
+			"notes": "Downloads",
+			"gstr": "Manage what's downloading",
+			"guid": "eXRc26yvod4Obg8UmsDbwm7gkrsGGdpMy4TpcYAWsxk",
+			"contentType": "default",
+			"src": "Manage what\\'s downloading",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Manage what's downloading"
+			]
+		},
+		{
+			"sid": "visit_recents_for_download_queue",
+			"notes": "Downloads",
+			"gstr": "Visit the recents tab to access the download queue. You can also double tap or press and hold for quicker access",
+			"guid": "6tgFpq1s7Bmdw6Wj4ju2N96GgPe7p9Y7cGiyfxSF-9E",
+			"contentType": "default",
+			"src": "Visit the recents tab to access the download\n        queue. You can also double tap or press and hold for quicker access",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Visit the recents tab to access the download queue. You can also double tap or press and hold for quicker access"
+			]
+		},
+		{
+			"sid": "couldnt_download_low_space",
+			"notes": "Downloads",
+			"gstr": "Couldn't download chapters due to low disk space",
+			"guid": "Vj8DOxw8uO9KY77TuWRdJxY8sMxVtwq_IyHh6_8Srro",
+			"contentType": "default",
+			"src": "Couldn\\'t download chapters due to low disk space",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Couldn't download chapters due to low disk space"
+			]
 		},
 		{
 			"sid": "could_not_download_unexpected_error",
@@ -3877,6 +7634,64 @@
 			"ts": 1
 		},
 		{
+			"sid": "delete_removed_chapters",
+			"notes": "Downloads settings",
+			"guid": "wOveXNJlRMcSQDJmFr9f1aXQi4JwmzgfG2o1ZP_DK30",
+			"contentType": "default",
+			"src": "Delete removed chapters",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "delete_downloaded_if_removed_online",
+			"notes": "Downloads settings",
+			"gstr": "Delete downloaded chapters if the source has removed the chapter online",
+			"guid": "QblYKrpV4TYMwNLE5d6OuLP5-YvTFicfnEWa5-51OcY",
+			"contentType": "default",
+			"src": "Delete downloaded chapters if the source\n        has removed the chapter online",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Delete downloaded chapters if the source has removed the chapter online"
+			]
+		},
+		{
+			"sid": "ask_on_chapters_page",
+			"notes": "Downloads settings",
+			"guid": "dIE3zIyVYSdTpju6-vlcTUw08uEhNfHj-2NIp5kbEEw",
+			"contentType": "default",
+			"src": "Delete during global updates, ask on chapters page",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "always_keep",
+			"notes": "Downloads settings",
+			"guid": "cfTYdJm8FCc6Or8Fu7ngokJ3WghZMzGABQjXm7xcSSU",
+			"contentType": "default",
+			"src": "Always keep",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "always_delete",
+			"notes": "Downloads settings",
+			"guid": "KGOpC9OGKQjYYSCjadsdtUpJQFr1-etAZOgVmTt-wtA",
+			"contentType": "default",
+			"src": "Always delete",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "automatic_removal",
+			"notes": "Downloads settings",
+			"guid": "XbMMlk7ML13AJYJW0ALnnF4spRO4SHgEXRstAy0bj1o",
+			"contentType": "default",
+			"src": "Automatic removal",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "manual",
 			"notes": "Time",
 			"guid": "iArTjefVMKZ7WycdX6VmQEm2g4q4u4d9M3UCNZ87PjI",
@@ -3958,6 +7773,44 @@
 			"ts": 1
 		},
 		{
+			"sid": "after_minutes_one",
+			"isSuffixPluralized": true,
+			"notes": "Time",
+			"gstr": "After {{x}} minute",
+			"guid": "C0PQbeoPQFB8cyWahP6wddbk0QOh4f-mmiHyTcQUny4",
+			"contentType": "default",
+			"src": "After %1$s minute",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"After ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" minute"
+			]
+		},
+		{
+			"sid": "after_minutes_other",
+			"isSuffixPluralized": true,
+			"notes": "Time",
+			"gstr": "After {{x}} minutes",
+			"guid": "y51rnyKxtYjssSeHCmtKvJwyTUp_J-6z11PC9kxAmM4",
+			"contentType": "default",
+			"src": "After %1$s minutes",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"After ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" minutes"
+			]
+		},
+		{
 			"sid": "select_cover_image",
 			"notes": "File Picker Titles",
 			"guid": "Te7pPZ65D4bQDzeyVNYM9_Z5yplFGchiPgl5JPY3wmA",
@@ -4003,6 +7856,15 @@
 			"ts": 1
 		},
 		{
+			"sid": "webview_is_required",
+			"notes": "Do not translate \"WebView\"",
+			"guid": "rZjFH0Z7z5HV8Tov2ZWD6ABIwLcX0rWeaY9SwkUqMjg",
+			"contentType": "default",
+			"src": "WebView is required for Tachiyomi",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "add",
 			"notes": "Miscellaneous",
 			"guid": "kaPFz8SHU7y4fCLvM2RPEFk5ZRUbqQlKtiU0Q-k0KvY",
@@ -4010,6 +7872,40 @@
 			"src": "Add",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
+		},
+		{
+			"sid": "add_to_",
+			"notes": "Miscellaneous",
+			"gstr": "Add to {{x}}",
+			"guid": "a93fWBww9BfwOqe-ajdWFS7EBpRjHt0DvSebYl5bo7o",
+			"contentType": "default",
+			"src": "Add to %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Add to ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
+		},
+		{
+			"sid": "added_to_",
+			"notes": "Miscellaneous",
+			"gstr": "Added to {{x}}",
+			"guid": "OVv0BMULqSdXUWi0L_ebUyZcG4kz8EVFIeXdTQdp1U4",
+			"contentType": "default",
+			"src": "Added to %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Added to ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
 		},
 		{
 			"sid": "all",
@@ -4066,6 +7962,24 @@
 			"ts": 1
 		},
 		{
+			"sid": "beta",
+			"notes": "Miscellaneous",
+			"guid": "_0n6pKXlKYwqHHaLNdlkd7RW90QAB5fVJxzB7zl1lwQ",
+			"contentType": "default",
+			"src": "BETA",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "bottom",
+			"notes": "Miscellaneous",
+			"guid": "F5Qal-UcgskZtk753VXobQ8Q3yplYmkVT657jxneL0A",
+			"contentType": "default",
+			"src": "Bottom",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "cancel",
 			"notes": "Miscellaneous",
 			"guid": "-WLnDOl-nui71zWhGAz7AZovbmuaPT_9fc_uU_6hNns",
@@ -4084,6 +7998,15 @@
 			"ts": 1
 		},
 		{
+			"sid": "change",
+			"notes": "Miscellaneous",
+			"guid": "vUaAJ_T90aZxkP8ht1bD71Tnu5WFLJhuxr3eKYwt9hc",
+			"contentType": "default",
+			"src": "Change",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "charging",
 			"notes": "Miscellaneous",
 			"guid": "u0s4dRB3FMJvZqL46-zg7vLvCA6MSzARnIwLTvqjN6E",
@@ -4098,6 +8021,15 @@
 			"guid": "H65DnsMBQ38MSdd-W8j4D0epcBzAhmcNNxhlu8G4niI",
 			"contentType": "default",
 			"src": "Clear",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "clear_filters",
+			"notes": "Miscellaneous",
+			"guid": "XIondN9IflEzVsv4LVTZEl1IQhYJgrgmheRmeYXipvw",
+			"contentType": "default",
+			"src": "Clear filters",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -4156,11 +8088,46 @@
 			"ts": 1
 		},
 		{
+			"sid": "deleted_",
+			"notes": "Miscellaneous",
+			"gstr": "Deleted: {{x}}",
+			"guid": "EDPSs_fIwR6Tv2TVPaqASTdVdgCzMH0HrN1w8SaUvAc",
+			"contentType": "default",
+			"src": "Deleted: %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Deleted: ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
+		},
+		{
 			"sid": "display",
 			"notes": "Miscellaneous",
 			"guid": "hSkwpxVE5Esf63mO_FARnvDTQPKoAbJS6bajB3Cmlf8",
 			"contentType": "default",
 			"src": "Display",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "download_unread",
+			"notes": "Miscellaneous",
+			"guid": "yTBAyJ8Q_qMDf8yAa9hH_8o0A0LBzRENYIDSC1UbOZ0",
+			"contentType": "default",
+			"src": "Download unread",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "drag_handle",
+			"notes": "Miscellaneous",
+			"guid": "ls_fBz6okS5NVH86qvIvqQMwlRo1btsu7Ad2Gug_ryY",
+			"contentType": "default",
+			"src": "Drag handle",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -4172,6 +8139,41 @@
 			"src": "Edit",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
+		},
+		{
+			"sid": "enable",
+			"notes": "Miscellaneous",
+			"guid": "DI19ciZW3OtkszGmVMopKQ46E__OZBI4oNEJ04wOPK0",
+			"contentType": "default",
+			"src": "Enable",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "enabled",
+			"notes": "Miscellaneous",
+			"guid": "S417iusjHCC55wRHKWuNOrbPZ_rWwYsHERGejfW0RlY",
+			"contentType": "default",
+			"src": "Enabled",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "exclude_",
+			"notes": "Miscellaneous",
+			"gstr": "Exclude: {{x}}",
+			"guid": "6xC7pebM5-ZxaKv6i64GbRkfsTR-nzcZ73GOATo0YLQ",
+			"contentType": "default",
+			"src": "Exclude: %s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Exclude: ",
+				{
+					"t": "x",
+					"v": "%s"
+				}
+			]
 		},
 		{
 			"sid": "fast",
@@ -4210,6 +8212,15 @@
 			"ts": 1
 		},
 		{
+			"sid": "hide",
+			"notes": "Miscellaneous",
+			"guid": "saZw6SPY56Rlmi3JFoINSWQ084jRCETCDxJLHSA9hOM",
+			"contentType": "default",
+			"src": "Hide",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "ignore",
 			"notes": "Miscellaneous",
 			"guid": "2TpxvpQhAajJXtTh0v0YJ_8oUue0AUiiEjdhoe4ZW0M",
@@ -4219,6 +8230,23 @@
 			"ts": 1
 		},
 		{
+			"sid": "include_",
+			"notes": "Miscellaneous",
+			"gstr": "Include: {{x}}",
+			"guid": "kV1JMfcYxSPaA33pPszcbnisV0t0Sfxe2ZQBKdjy2aU",
+			"contentType": "default",
+			"src": "Include: %s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Include: ",
+				{
+					"t": "x",
+					"v": "%s"
+				}
+			]
+		},
+		{
 			"sid": "install",
 			"notes": "Miscellaneous",
 			"guid": "qN_PWXwNzEkB1pKbj3DZxErBvSoXz7D-0YOIy44nfFI",
@@ -4226,6 +8254,32 @@
 			"src": "Install",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
+		},
+		{
+			"sid": "keep",
+			"notes": "Miscellaneous",
+			"guid": "5vlqnpIng-j8SifyQOHpZ5wPAs1sStNeeZqu13efQtQ",
+			"contentType": "default",
+			"src": "Keep",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "keep_in_",
+			"notes": "Miscellaneous",
+			"gstr": "Keep in {{x}}",
+			"guid": "RfY1RTihyotw-07YpitFAyH3J5FraoAhNTcLYlVc6vk",
+			"contentType": "default",
+			"src": "Keep in %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Keep in ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
 		},
 		{
 			"sid": "left",
@@ -4264,6 +8318,24 @@
 			"ts": 1
 		},
 		{
+			"sid": "mark_all_as_read",
+			"notes": "Miscellaneous",
+			"guid": "mdPoUGzFrcAt_vcKcl4Bq-dsE8Le-w--ksmqvFe_D3I",
+			"contentType": "default",
+			"src": "Mark all as read",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "mark_all_as_unread",
+			"notes": "Miscellaneous",
+			"guid": "86GoqMybPQfkFBczXnyaW9xfsDEFsikr5YqYAgVuF04",
+			"contentType": "default",
+			"src": "Mark all as unread",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "mark_as_read",
 			"notes": "Miscellaneous",
 			"guid": "22CVrtYyzOOBddTIN64URwTUz-9uGC7SIkXOK8QuI9k",
@@ -4282,11 +8354,47 @@
 			"ts": 1
 		},
 		{
+			"sid": "mark_range_as_read",
+			"notes": "Miscellaneous",
+			"guid": "QU_jF1_AE5bMND233B6xjLe2AEv4NjczDkAOW2naJSw",
+			"contentType": "default",
+			"src": "Mark a range of chapters as read",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "mark_range_as_unread",
+			"notes": "Miscellaneous",
+			"guid": "7x8txAMET_dUs38fMs_8OxmVBIbyZBDmKol-PPDCVg8",
+			"contentType": "default",
+			"src": "Mark a range of chapters as unread",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "mark_previous_as_read",
 			"notes": "Miscellaneous",
 			"guid": "IQEMUF1NLWkhIxg96Nt7j6SvDg70HxWAGFsP3UXRJiA",
 			"contentType": "default",
 			"src": "Mark previous chapters as read",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "mark_previous_as_unread",
+			"notes": "Miscellaneous",
+			"guid": "XFN-iVYrkadpxDxOdGN1hv505ZavJL4hTK9255kN0i0",
+			"contentType": "default",
+			"src": "Mark previous chapters as unread",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "menu",
+			"notes": "Miscellaneous",
+			"guid": "ziJ4SzbBrQNCMTKA0B7-oq3NDDEhBRD1XhXezbakWxk",
+			"contentType": "default",
+			"src": "menu",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -4318,6 +8426,67 @@
 			"ts": 1
 		},
 		{
+			"sid": "move_to_",
+			"notes": "Miscellaneous",
+			"gstr": "Move to {{x}}",
+			"guid": "I40yqqfSXEqxcRJEebAkoMGQoQuYuLNOa2Ud6BkMcsU",
+			"contentType": "default",
+			"src": "Move to %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Move to ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
+		},
+		{
+			"sid": "moved_to_",
+			"notes": "Miscellaneous",
+			"gstr": "Moved to {{x}}",
+			"guid": "XSREc7X2ZGv7-we3bdC1-Yfm_4RaFy8JjHhPFjrm_7E",
+			"contentType": "default",
+			"src": "Moved to %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Moved to ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
+		},
+		{
+			"sid": "name",
+			"notes": "Miscellaneous",
+			"guid": "ZBYtIRVvhdgQJQHV4kVzz7Bh0NSKcofDyfXSdgX0vn8",
+			"contentType": "default",
+			"src": "Name",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "recently_updated",
+			"notes": "Miscellaneous",
+			"guid": "tpYrOKkmWE5cSjMMmDJxRckzqx02rnXxlVHRipdb7k8",
+			"contentType": "default",
+			"src": "Recently updated",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "recently_installed",
+			"notes": "Miscellaneous",
+			"guid": "_btRTivRqA0hOubjcX--MF9gC8w97NmhbBhbraZPkqM",
+			"contentType": "default",
+			"src": "Recently installed",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "language",
 			"notes": "Miscellaneous",
 			"guid": "wHVvimYxCq_ptB1cQQc_VLrYhiz05An7qU61WmGt2gQ",
@@ -4341,6 +8510,15 @@
 			"guid": "D21t1nOCvPQz8ezejnuCG10XG5-rtv916QePqa1Tm9s",
 			"contentType": "default",
 			"src": "Newest",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "next",
+			"notes": "Miscellaneous",
+			"guid": "Ibaz0PUM9RNz1CPX-V0FFy3AerxinrWF9oJxlS2FX1o",
+			"contentType": "default",
+			"src": "Next",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -4444,6 +8622,24 @@
 			"ts": 1
 		},
 		{
+			"sid": "preview",
+			"notes": "Miscellaneous",
+			"guid": "NOELKFmkAMzBKP9wX6wMQ2w4T_iYyNyD_ponK9hKrjw",
+			"contentType": "default",
+			"src": "Preview",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "previous",
+			"notes": "Miscellaneous",
+			"guid": "UzuX5kricHracI58dBSQHVf4CAFtgNgldg8nNXYRqZI",
+			"contentType": "default",
+			"src": "Previous",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "remove",
 			"notes": "Miscellaneous",
 			"guid": "2KbhXFK-2sKLM-PsKNO6DNg15kSoJy4c9b33gmpL6OQ",
@@ -4451,6 +8647,23 @@
 			"src": "Remove",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
+		},
+		{
+			"sid": "remove_from_",
+			"notes": "Miscellaneous",
+			"gstr": "Remove from {{x}}",
+			"guid": "zo4UIzRgDLhp4lYJvdg12RD0fTpiXjbcbuWC3ClIlgw",
+			"contentType": "default",
+			"src": "Remove from %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Remove from ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
 		},
 		{
 			"sid": "reorder",
@@ -4516,6 +8729,24 @@
 			"ts": 1
 		},
 		{
+			"sid": "default_orientation",
+			"notes": "Miscellaneous",
+			"guid": "OTdtStwBPshNkiL3_CP6_tPZFG-4bk9E4DGl11tHJoM",
+			"contentType": "default",
+			"src": "Default orientation",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "orientation",
+			"notes": "Miscellaneous",
+			"guid": "6T1AUvI23zq9BwgpFHAkbwrcdHVorHeJnpmjCHRjffA",
+			"contentType": "default",
+			"src": "Orientation",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "save",
 			"notes": "Miscellaneous",
 			"guid": "3tX_483aH9UFwmvAJh93d72n9JQyihjdOq6xPfQyBSQ",
@@ -4534,11 +8765,46 @@
 			"ts": 1
 		},
 		{
+			"sid": "search_",
+			"notes": "Miscellaneous",
+			"gstr": "Search {{x}}",
+			"guid": "dEfOMw-ElOf-gh4JNy5OhAGW36mhN-kQrhkYgsYBZVQ",
+			"contentType": "default",
+			"src": "Search %1$s",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Search ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				}
+			]
+		},
+		{
 			"sid": "select_all",
 			"notes": "Miscellaneous",
 			"guid": "pPxhvx0b_LutbB7fcHN2NjPOq24i4m6O4X3Z9TbVgjM",
 			"contentType": "default",
 			"src": "Select all",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "select_none",
+			"notes": "Miscellaneous",
+			"guid": "xyy2hY5UiPuBVtVs5p4QNtQvD5gZ9L62Afuf68HR13A",
+			"contentType": "default",
+			"src": "Select none",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "selection",
+			"notes": "Miscellaneous",
+			"guid": "zz9EoXyrp2jHix8BhQspeFceDJApEEQnL6JZNceOyEA",
+			"contentType": "default",
+			"src": "Selection",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -4561,6 +8827,19 @@
 			"ts": 1
 		},
 		{
+			"sid": "sort_and_filter",
+			"notes": "Miscellaneous",
+			"gstr": "Sort & Filter",
+			"guid": "X8fO-c1VVu9rbJOhfqH9UiMS20tCwPGDKgZXFvQMp3A",
+			"contentType": "default",
+			"src": "Sort &amp; Filter",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1,
+			"nsrc": [
+				"Sort & Filter"
+			]
+		},
+		{
 			"sid": "start",
 			"notes": "Miscellaneous",
 			"guid": "scJ9d4haERDN89PbJSC-EKL1J1Zbvjmd7KSFoL1bMSI",
@@ -4575,6 +8854,24 @@
 			"guid": "LfyYYMOVNKIgtNKQH0MttWyt2OaPJi1FcXlLtQei9ro",
 			"contentType": "default",
 			"src": "Stop",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "tag",
+			"notes": "Miscellaneous",
+			"guid": "u1sNEscwzqYmb2ep8PT9x8usydILzw76W88Sad7u-KM",
+			"contentType": "default",
+			"src": "Tag",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "top",
+			"notes": "Miscellaneous",
+			"guid": "vRdkZFDzssJRdwGv-SthUQFGxf_HerP1kXuTpXpKzyE",
+			"contentType": "default",
+			"src": "Top",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -4606,11 +8903,38 @@
 			"ts": 1
 		},
 		{
+			"sid": "use_default",
+			"notes": "Miscellaneous",
+			"guid": "Uk0VwujRIxhpe9NaWYmY3hntAOfl0OuU8eai2ofVSqk",
+			"contentType": "default",
+			"src": "Use default",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "view_all_errors",
+			"notes": "Miscellaneous",
+			"guid": "huyX5FGOUKZ3pi4fe79Gfe7qvq2yU_f1NEJEFi-8iik",
+			"contentType": "default",
+			"src": "View all errors",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
 			"sid": "view_chapters",
 			"notes": "Miscellaneous",
 			"guid": "na9i-6I0FiG2wQ_1QGez33sgK5oWVx6WidW-BQo3Ync",
 			"contentType": "default",
 			"src": "View chapters",
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
+		},
+		{
+			"sid": "warning",
+			"notes": "Miscellaneous",
+			"guid": "ISUovOLQ0rDHWTN8FD5Egc_BxdZCIOGr7B6UXGmtjWs",
+			"contentType": "default",
+			"src": "Warning",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},

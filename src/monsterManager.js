@@ -7,6 +7,7 @@ import TMManager from './tmManager.js';
 import SourceManager from './sourceManager.js';
 import { JsonJobStore } from './stores/jsonJobStore.js';
 import { sourceAndTargetAreCompatible } from './normalizers/util.js';
+import { fixCaseInsensitiveKey } from './shared.js';
 
 export default class MonsterManager {
     constructor({ monsterDir, monsterConfig, configSeal, ctx, defaultAnalyzers = {} }) {
@@ -25,8 +26,6 @@ export default class MonsterManager {
             this.debug = monsterConfig.debug ?? {};
             this.sourceLang = monsterConfig.sourceLang;
             this.minimumQuality = monsterConfig.minimumQuality;
-            this.qualifiedPenalty = monsterConfig.qualifiedPenalty;
-            this.unqualifiedPenalty = monsterConfig.unqualifiedPenalty;
             if (monsterConfig.contentTypes) {
                 this.contentTypes = monsterConfig.contentTypes;
             } else {
@@ -57,7 +56,6 @@ export default class MonsterManager {
                 ...defaultAnalyzers,
                 ...(monsterConfig.analyzers ?? {}),
             };
-            this.analyzers = Object.fromEntries(Object.entries(this.analyzers).map(e => [e[0].toLowerCase(), e[1]]));
         }
     }
 
@@ -224,17 +222,17 @@ export default class MonsterManager {
     }
 
     getTranslationProvider(jobManifest) {
-        let translationProviderName = jobManifest.translationProvider;
-        if (!translationProviderName) {
+        if (jobManifest.translationProvider) {
+            jobManifest.translationProvider = fixCaseInsensitiveKey(this.translationProviders, jobManifest.translationProvider);
+        } else {
             for (const [ name, providerCfg ] of Object.entries(this.translationProviders)) {
                 if (!providerCfg.pairs || (providerCfg.pairs[jobManifest.sourceLang] && providerCfg.pairs[jobManifest.sourceLang].includes(jobManifest.targetLang))) {
-                    translationProviderName = name;
                     jobManifest.translationProvider = name;
                     break;
                 }
             }
         }
-        return this.translationProviders[translationProviderName];
+        return this.translationProviders[jobManifest.translationProvider];
     }
 
     async shutdown() {

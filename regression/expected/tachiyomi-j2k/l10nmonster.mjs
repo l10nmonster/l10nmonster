@@ -5,8 +5,6 @@ const androidLangMapping = {
 
 export default class TachiyomiConfig {
     sourceLang = 'en';
-    qualifiedPenalty = 1;
-    unqualifiedPenalty = 9;
 
     constructor({ stores, adapters, filters, normalizers, translators }) {
         this.source = new adapters.FsSource({
@@ -35,6 +33,17 @@ export default class TachiyomiConfig {
                     requestPath: (lang, prjId) => `xliff/outbox/prj${prjId}-${lang}.xml`,
                     completePath: (lang, prjId) => `xliff/inbox/prj${prjId}-${lang}.xml`,
                     quality: 80,
+                }),
+            },
+            Repetition: {
+                translator: new translators.Repetition({
+                    qualifiedPenalty: 1,
+                    unqualifiedPenalty: 9,
+                }),
+            },
+            Grandfather: {
+                translator: new translators.Grandfather({
+                    quality: 70,
                 }),
             },
         };
