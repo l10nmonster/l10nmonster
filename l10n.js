@@ -337,7 +337,7 @@ monsterCLI
                         if (ls.minimumJobSize !== undefined) {
                             console.log(`${ls.num.toLocaleString()} translations units for language ${ls.targetLang} not sent to provider ${consoleColor.bright}${ls.provider}${consoleColor.reset} because you need at least ${ls.minimumJobSize}`);
                         } else {
-                            console.log(`job ${ls.jobGuid} with ${ls.num.toLocaleString()} translations requested for language ${consoleColor.bright}${ls.targetLang}${consoleColor.reset} with provider ${consoleColor.bright}${ls.provider}${consoleColor.reset} -> status: ${consoleColor.bright}${ls.status}${consoleColor.reset}`);
+                            console.log(`job ${ls.jobGuid} with ${ls.num.toLocaleString()} translations received for language ${consoleColor.bright}${ls.targetLang}${consoleColor.reset} from provider ${consoleColor.bright}${ls.provider}${consoleColor.reset} -> status: ${consoleColor.bright}${ls.status}${consoleColor.reset}`);
                         }
                     }
                 } else {

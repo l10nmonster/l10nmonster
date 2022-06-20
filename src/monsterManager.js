@@ -200,7 +200,7 @@ export default class MonsterManager {
 
     async prepareFilterBasedJob({ targetLang, tmBased, guidList }) {
         const tm = await this.tmm.getTM(this.sourceLang, targetLang);
-        const sourceLookup = await this.getSourceAsTus();
+        const sourceLookup = await this.source.getSourceAsTus();
         if (!guidList) {
             if (tmBased) {
                 guidList = tm.guids;
