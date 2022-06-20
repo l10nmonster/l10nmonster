@@ -298,7 +298,7 @@ monsterCLI
     .option('--driver <untranslated|source|tm|job:jobGuid>', 'driver of translations need to be pushed (default: untranslated)')
     .option('--leverage', 'eliminate internal repetitions from untranslated driver')
     .option('--refresh', 'refresh existing translations without requesting new ones')
-    .option('--provider <name>', 'use the specified translation provider')
+    .option('--provider <name,...>', 'use the specified translation providers')
     .option('--instructions <instructions>', 'send the specified translation provider')
     .option('--dryrun', 'simulate translating and compare with existing translations')
     .action(async (options) => await withMonsterManager(async monsterManager => {
@@ -314,23 +314,28 @@ monsterCLI
             throw `invalid ${driverOption} driver`;
         }
         const refresh = options.refresh;
-        const translationProviderName = options.provider;
         const leverage = options.leverage;
         const dryRun = options.dryrun;
         const instructions = options.instructions;
         console.log(`Pushing content upstream...${dryRun ? ' (dry run)' : ''}`);
         try {
-            const status = await pushCmd(monsterManager, { limitToLang, tuFilter, driver, refresh, translationProviderName, leverage, dryRun, instructions });
             if (dryRun) {
+                const status = await pushCmd(monsterManager, { limitToLang, tuFilter, driver, refresh, leverage, dryRun, instructions });
                 for (const langStatus of status) {
-                    console.log(`\nLanguage pair ${langStatus.sourceLang} -> ${langStatus.targetLang}`);
+                    console.log(`\nDry run of ${langStatus.sourceLang} -> ${langStatus.targetLang} push:`);
                     printRequest(langStatus);
                 }
             } else {
-                if (status.length > 0) {
+                let status = [];
+                for (const provider of (options.provider ?? 'default').split(',')) {
+                    const translationProviderName = provider.toLowerCase() === 'default' ? undefined : provider;
+                    status.push(await pushCmd(monsterManager, { limitToLang, tuFilter, driver, refresh, translationProviderName, leverage, dryRun, instructions }));
+                }
+                status = status.flat(1);
+                    if (status.length > 0) {
                     for (const ls of status) {
                         if (ls.minimumJobSize !== undefined) {
-                            console.log(`${ls.num.toLocaleString()} translations units for language ${ls.targetLang} not sent because you need at least ${ls.minimumJobSize}`);
+                            console.log(`${ls.num.toLocaleString()} translations units for language ${ls.targetLang} not sent to provider ${consoleColor.bright}${ls.provider}${consoleColor.reset} because you need at least ${ls.minimumJobSize}`);
                         } else {
                             console.log(`job ${ls.jobGuid} with ${ls.num.toLocaleString()} translations requested for language ${consoleColor.bright}${ls.targetLang}${consoleColor.reset} with provider ${consoleColor.bright}${ls.provider}${consoleColor.reset} -> status: ${consoleColor.bright}${ls.status}${consoleColor.reset}`);
                         }
@@ -340,7 +345,7 @@ monsterCLI
                 }
             }
         } catch (e) {
-            console.error(`Failed to push: ${e}`);
+            console.error(`Failed to push: ${e.stack || e}`);
         }
     }))
 ;

@@ -3,9 +3,7 @@ set -e
 regressTest() {
     echo "\nTesting $1..."
     cd $1
-    ../../../l10n.js --regression push --provider grandfather
-    ../../../l10n.js --regression push --provider repetition
-    ../../../l10n.js --regression push
+    ../../../l10n.js --regression push --provider grandfather,repetition,default
     ../../../l10n.js --regression pull
     ../../../l10n.js --regression translate
     ../../../l10n.js --regression status --output status.json
