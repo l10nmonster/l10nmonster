@@ -9,7 +9,7 @@ import { JsonJobStore } from './stores/jsonJobStore.js';
 import { sourceAndTargetAreCompatible } from './normalizers/util.js';
 
 export default class MonsterManager {
-    constructor({ monsterDir, monsterConfig, configSeal, ctx }) {
+    constructor({ monsterDir, monsterConfig, configSeal, ctx, defaultAnalyzers = {} }) {
         if (monsterDir && monsterConfig && monsterConfig.sourceLang &&
                 (monsterConfig.translationProvider || monsterConfig.translationProviders) &&
                 (monsterConfig.contentTypes || (monsterConfig.source && monsterConfig.resourceFilter && monsterConfig.target)) === undefined) {
@@ -53,6 +53,11 @@ export default class MonsterManager {
             }
             this.tuFilters = monsterConfig.tuFilters;
             this.source = new SourceManager(this);
+            this.analyzers = {
+                ...defaultAnalyzers,
+                ...(monsterConfig.analyzers ?? {}),
+            };
+            this.analyzers = Object.fromEntries(Object.entries(this.analyzers).map(e => [e[0].toLowerCase(), e[1]]));
         }
     }
 
