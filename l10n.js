@@ -266,15 +266,23 @@ monsterCLI
                         const groups = Analyzer.analysisGroupBy;
                         let previousGroup;
                         for (const row of analysis) {
+                            const columns = row.map((col, idx) => [col, idx]);
                             if (groups) {
-                                const currentGroup = row.map((col, idx) => (groups.includes(header[idx]) ? col : null));
-                                const currentGroupSmashed = currentGroup.join('|');
+                                // eslint-disable-next-line no-unused-vars
+                                const currentGroup = columns.filter(([col, idx]) => groups.includes(header[idx]));
+                                // eslint-disable-next-line no-unused-vars
+                                const currentGroupSmashed = currentGroup.map(([col, idx]) => col).join('|');
                                 if (currentGroupSmashed !== previousGroup) {
                                     previousGroup = currentGroupSmashed;
-                                    console.log(row.map((col, idx) => ((col === null || col === undefined || !groups.includes(header[idx])) ? '' : `${consoleColor.dim}${header[idx]}: ${consoleColor.reset}${consoleColor.bright}${col}${consoleColor.reset}`)).join('\t'));
+                                    console.log(currentGroup
+                                        .map(([col, idx]) => `${consoleColor.dim}${header[idx]}: ${consoleColor.reset}${consoleColor.bright}${col}${consoleColor.reset}`)
+                                        .join('\t'));
                                 }
                             }
-                            console.log(row.map((col, idx) => ((col === null || col === undefined || (groups && groups.includes(header[idx]))) ? '' : `${consoleColor.dim}${header[idx]}: ${consoleColor.reset}${col}`)).join('\t'));
+                            const currentData = columns.filter(([col, idx]) => (!groups || !groups.includes(header[idx])) && col !== null && col !== undefined);
+                            console.log(currentData
+                                .map(([col, idx]) => `\t${consoleColor.dim}${header[idx]}: ${consoleColor.reset}${col}`)
+                                .join(''));
                         }
                     } else { // unstructured analysis
                         console.log(analysis.join('\n'));

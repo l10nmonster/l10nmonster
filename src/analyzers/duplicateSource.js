@@ -23,9 +23,8 @@ export default class DuplicateSource {
         const qualifiedRepetitions = Object.values(this.qualifiedMatches).filter(e => e.length > 1);
         const unqualifiedRepetitions = Object.values(this.unqualifiedMatches).filter(e => e.length > 1);
         for (const rep of [...qualifiedRepetitions, ...unqualifiedRepetitions]) {
-            analysis.push([rep[0].str]);
             for (const r of rep) {
-                analysis.push([null, r.prj, r.rid, r.sid]);
+                analysis.push([rep[0].str, r.prj, r.rid, r.sid]);
             }
         }
         return analysis;
