@@ -1,6 +1,6 @@
 import { diffJson } from 'diff';
 import { getNormalizedString, flattenNormalizedSourceToOrdinal, sourceAndTargetAreCompatible, phMatcherMaker } from './normalizers/util.js';
-import { consoleColor } from './shared.js';
+import { consoleColor, generateFullyQualifiedGuid } from './shared.js';
 
 export function translateWithEntry(src, nsrc, entry, flags, encodeString) {
     if (entry && !entry.inflight) {
@@ -82,7 +82,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                         return undefined;
                     }
                     const flattenSrc = nsrc ? flattenNormalizedSourceToOrdinal(nsrc) : src;
-                    const guid = mm.generateFullyQualifiedGuid(resourceId, sid, flattenSrc);
+                    const guid = generateFullyQualifiedGuid(resourceId, sid, flattenSrc);
                     const entry = tm.getEntryByGuid(guid);
                     try {
                         return translateWithEntry(src, nsrc, entry, flags, encodeString);

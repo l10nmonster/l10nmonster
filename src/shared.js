@@ -1,3 +1,6 @@
+import {
+    createHash,
+} from 'crypto';
 import { flattenNormalizedSourceV1 } from './normalizers/util.js';
 import tinyld from 'tinyld';
 // import LD from 'languagedetect';
@@ -13,6 +16,34 @@ export const consoleColor = {
     dim: '\x1b[2m',
     bright: '\x1b[1m',
 };
+
+export function generateGuid(str) {
+    const sidContentHash = createHash('sha256');
+    sidContentHash.update(str, 'utf8');
+    return sidContentHash.digest().toString('base64').substring(0, 43).replaceAll('+', '-').replaceAll('/', '_');
+}
+
+export function generateFullyQualifiedGuid(rid, sid, str) {
+    return generateGuid(`${rid}|${sid}|${str}`);
+}
+
+export function makeTU(res, segment) {
+    const { str, nstr, ...seg } = segment;
+    const tu = {
+        ...seg,
+        src: str,
+        contentType: res.contentType,
+        rid: res.id,
+        ts: new Date(res.modified).getTime(),
+    };
+    if (nstr !== undefined) {
+        tu.nsrc = nstr;
+    }
+    if (res.prj !== undefined) {
+        tu.prj = res.prj;
+    }
+    return tu;
+}
 
 // https://stackoverflow.com/questions/12484386/access-javascript-property-case-insensitively
 export function fixCaseInsensitiveKey(object, key) {

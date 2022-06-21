@@ -2,6 +2,7 @@ import {
     getNormalizedString, sourceAndTargetAreCompatible, normalizedStringsAreEqual,
     flattenNormalizedSourceV1, extractNormalizedPartsV1,
 } from '../normalizers/util.js';
+import { makeTU } from '../shared.js';
 
 // existing translations in resources but not in TM are assumed to be in sync
 // with source and are imported into the TM at the configured quality level
@@ -38,7 +39,7 @@ export class Grandfather {
                                     seg.nstr = normalizedStr;
                                 }
                             }
-                            lookup[seg.sid] = this.ctx.mm.makeTU(resMeta, seg);
+                            lookup[seg.sid] = makeTU(resMeta, seg);
                         }
                     }
                 }

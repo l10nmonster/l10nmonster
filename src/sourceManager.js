@@ -4,23 +4,25 @@ import {
     readFileSync,
     writeFileSync,
 } from 'fs';
+import { generateFullyQualifiedGuid, makeTU } from './shared.js';
 import { getNormalizedString, flattenNormalizedSourceToOrdinal } from './normalizers/util.js';
 
 export default class SourceManager {
-    constructor(monsterManager) {
-        this.mm = monsterManager;
-        this.logger = monsterManager.ctx.logger;
-        this.prj = monsterManager.ctx.prj;
-        this.sourceCachePath = path.join(monsterManager.monsterDir, 'sourceCache.json');
+    constructor({ logger, prj, monsterDir, configSeal, contentTypes}) {
+        this.logger = logger;
+        this.prj = prj;
+        this.configSeal = configSeal;
+        this.contentTypes = contentTypes;
+        this.sourceCachePath = path.join(monsterDir, 'sourceCache.json');
         existsSync(this.sourceCachePath) && (this.sourceCache = JSON.parse(readFileSync(this.sourceCachePath, 'utf8')));
         // negative logic to allow undefined properties
-        !(this.sourceCache?.configSeal === monsterManager.configSeal) && (this.sourceCache = { sources: {} });
+        !(this.sourceCache?.configSeal === configSeal) && (this.sourceCache = { sources: {} });
         this.sourceCacheStale = true; // check resource timestamps once
     }
 
     async #fetchResourceStats() {
         const combinedStats = [];
-        for (const [ contentType, handler ] of Object.entries(this.mm.contentTypes)) {
+        for (const [ contentType, handler ] of Object.entries(this.contentTypes)) {
             const stats = await handler.source.fetchResourceStats();
             this.logger.verbose(`Fetched resource stats for content type ${contentType}`);
             for (const res of stats) {
@@ -33,7 +35,7 @@ export default class SourceManager {
 
     async getEntries() {
         if (this.sourceCacheStale) {
-            const newCache = { configSeal: this.mm.configSeal, sources: {} };
+            const newCache = { configSeal: this.configSeal, sources: {} };
             const stats = await this.#fetchResourceStats();
             let dirty = stats.length !== Object.keys(this.sourceCache.sources).length;
             for (const res of stats) {
@@ -41,7 +43,7 @@ export default class SourceManager {
                     newCache.sources[res.id] = this.sourceCache.sources[res.id];
                 } else {
                     dirty = true;
-                    const pipeline = this.mm.contentTypes[res.contentType];
+                    const pipeline = this.contentTypes[res.contentType];
                     const payload = await pipeline.source.fetchResource(res.id);
                     let parsedRes = await pipeline.resourceFilter.parseResource({resource: payload, isSource: true});
                     res.segments = parsedRes.segments;
@@ -54,7 +56,7 @@ export default class SourceManager {
                         }
                         const flattenStr = seg.nstr ? flattenNormalizedSourceToOrdinal(seg.nstr) : seg.str;
                         flattenStr !== seg.str && (seg.gstr = flattenStr);
-                        seg.guid = this.mm.generateFullyQualifiedGuid(res.id, seg.sid, flattenStr);
+                        seg.guid = generateFullyQualifiedGuid(res.id, seg.sid, flattenStr);
                         seg.contentType = res.contentType;
                     }
                     pipeline.segmentDecorator && (res.segments = pipeline.segmentDecorator(parsedRes.segments));
@@ -79,7 +81,7 @@ export default class SourceManager {
         // eslint-disable-next-line no-unused-vars
         for (const [ rid, res ] of source) {
             for (const seg of res.segments) {
-                sourceLookup[seg.guid] = this.mm.makeTU(res, seg);
+                sourceLookup[seg.guid] = makeTU(res, seg);
             }
         }
         return sourceLookup;

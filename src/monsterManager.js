@@ -1,13 +1,10 @@
-import {
-    createHash,
-} from 'crypto';
 import wordsCountModule from 'words-count';
 
 import TMManager from './tmManager.js';
 import SourceManager from './sourceManager.js';
 import { JsonJobStore } from './stores/jsonJobStore.js';
 import { sourceAndTargetAreCompatible } from './normalizers/util.js';
-import { fixCaseInsensitiveKey } from './shared.js';
+import { makeTU, fixCaseInsensitiveKey } from './shared.js';
 
 export default class MonsterManager {
     constructor({ monsterDir, monsterConfig, configSeal, ctx, defaultAnalyzers = {} }) {
@@ -51,22 +48,12 @@ export default class MonsterManager {
                 });
             }
             this.tuFilters = monsterConfig.tuFilters;
-            this.source = new SourceManager(this);
+            this.source = new SourceManager({ logger: ctx.logger, prj: ctx.prj, monsterDir, configSeal, contentTypes: this.contentTypes});
             this.analyzers = {
                 ...defaultAnalyzers,
                 ...(monsterConfig.analyzers ?? {}),
             };
         }
-    }
-
-    generateGuid(str) {
-        const sidContentHash = createHash('sha256');
-        sidContentHash.update(str, 'utf8');
-        return sidContentHash.digest().toString('base64').substring(0, 43).replaceAll('+', '-').replaceAll('/', '_');
-    }
-
-    generateFullyQualifiedGuid(rid, sid, str) {
-        return this.generateGuid(`${rid}|${sid}|${str}`);
     }
 
     getMinimumQuality(jobManifest) {
@@ -102,24 +89,6 @@ export default class MonsterManager {
         }
     }
 
-    makeTU(res, segment) {
-        const { str, nstr, ...seg } = segment;
-        const tu = {
-            ...seg,
-            src: str,
-            contentType: res.contentType,
-            rid: res.id,
-            ts: new Date(res.modified).getTime(),
-        };
-        if (nstr !== undefined) {
-            tu.nsrc = nstr;
-        }
-        if (res.prj !== undefined) {
-            tu.prj = res.prj;
-        }
-        return tu;
-    }
-
     // eslint-disable-next-line complexity
     async #internalPrepareTranslationJob({ targetLang, minimumQuality, leverage }) {
         const sources = await this.source.getEntries();
@@ -152,7 +121,7 @@ export default class MonsterManager {
                 for (const seg of res.segments) {
                     // TODO: if segment is pluralized we need to generate/suppress the relevant number of variants for the targetLang
                     const tmEntry = tm.getEntryByGuid(seg.guid);
-                    const tu = this.makeTU(res, seg);
+                    const tu = makeTU(res, seg);
                     const plainText = tu.nsrc ? tu.nsrc.map(e => (typeof e === 'string' ? e : '')).join('') : tu.src;
                     const words = wordsCountModule.wordsCount(plainText);
                     // TODO: compatibility is actually stricter than GUID, this leads to extra translations that can't be stored
