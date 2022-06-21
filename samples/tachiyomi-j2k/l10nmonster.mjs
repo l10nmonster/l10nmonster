@@ -42,12 +42,27 @@ export default class TachiyomiConfig {
         // const piggyTranslator = new translators.PigLatinizer({ quality: 1 });
         // this.translationProvider = (job) => (job.targetLang === 'piggy' ? piggyTranslator : xliffTranslator);
         // this.minimumQuality = (job) => (job.targetLang === 'piggy' ? 1 : 50);
-        this.translationProvider = new translators.TranslationOS({
-            baseURL: 'https://api-sandbox.translated.com/v2',
-            apiKey: ctx.env.translated_api_key_sandbox,
-            serviceType: 'premium',
-            quality: 90,
-        });
+        this.translationProviders = {
+            TranslationOS: {
+                translator: new translators.TranslationOS({
+                    baseURL: 'https://api-sandbox.translated.com/v2',
+                    apiKey: ctx.env.translated_api_key_sandbox,
+                    serviceType: 'premium',
+                    quality: 90,
+                }),
+            },
+            Repetition: {
+                translator: new translators.Repetition({
+                    qualifiedPenalty: 1,
+                    unqualifiedPenalty: 9,
+                }),
+            },
+            Grandfather: {
+                translator: new translators.Grandfather({
+                    quality: 70,
+                }),
+            },
+        };
         this.minimumQuality = 50;
     }
 }

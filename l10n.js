@@ -53,6 +53,7 @@ import DuplicateSource from './src/analyzers/duplicateSource.js';
 import SmellySource from './src/analyzers/smellySource.js';
 import TextExpansionSummary from './src/analyzers/textExpansionSummary.js';
 import FindByExpansion from './src/analyzers/findByExpansion.js';
+import MismatchedTags from './src/analyzers/mismatchedTags.js';
 
 const monsterCLI = new Command();
 
@@ -119,7 +120,7 @@ async function initMonster() {
                 helper.prototype && (helper.prototype.ctx = ctx);
         }
         const defaultAnalyzers = {
-            DuplicateSource, SmellySource, TextExpansionSummary, FindByExpansion
+            DuplicateSource, SmellySource, TextExpansionSummary, FindByExpansion, MismatchedTags
         };
         logger.info(`Importing config from: ${configPath}`);
         try {
