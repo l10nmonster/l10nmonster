@@ -89,6 +89,7 @@ async function initMonster() {
             ],
         });
         const opsMgr = configModule.opsDir ? new OpsMgr({ opsDir: path.join(baseDir, configModule.opsDir), logger }) : new OpsMgr({ logger });
+        const sourceMirrorDir = configModule.sourceMirrorDir && path.join(baseDir, configModule.sourceMirrorDir);
         const ctx = {
             baseDir,
             opsMgr,
@@ -135,7 +136,7 @@ async function initMonster() {
             if (!existsSync(monsterDir)) {
                 mkdirSync(monsterDir, {recursive: true});
             }
-            const mm = await new MonsterManager({ monsterDir, monsterConfig, configSeal, ctx, defaultAnalyzers });
+            const mm = await new MonsterManager({ monsterDir, monsterConfig, configSeal, ctx, defaultAnalyzers, sourceMirrorDir });
             ctx.mm = mm;
             logger.info(`L10n Monster initialized!`);
             return mm;

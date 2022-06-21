@@ -3,12 +3,21 @@ import {
     existsSync,
     readFileSync,
     writeFileSync,
+    mkdirSync,
+    readdirSync,
+    unlinkSync,
+    statSync,
 } from 'fs';
+import YAML from 'yaml';
 import { generateFullyQualifiedGuid, makeTU } from './shared.js';
 import { getNormalizedString, flattenNormalizedSourceToOrdinal } from './normalizers/util.js';
 
+function mangleResourceId(id) {
+    return id.replaceAll('/', '$').replaceAll('\\', '$');
+}
+
 export default class SourceManager {
-    constructor({ logger, prj, monsterDir, configSeal, contentTypes}) {
+    constructor({ logger, prj, monsterDir, configSeal, contentTypes, sourceMirrorDir }) {
         this.logger = logger;
         this.prj = prj;
         this.configSeal = configSeal;
@@ -18,6 +27,11 @@ export default class SourceManager {
         // negative logic to allow undefined properties
         !(this.sourceCache?.configSeal === configSeal) && (this.sourceCache = { sources: {} });
         this.sourceCacheStale = true; // check resource timestamps once
+        if (sourceMirrorDir) {
+            this.sourceMirrorDir = sourceMirrorDir;
+            !existsSync(sourceMirrorDir) && mkdirSync(sourceMirrorDir, {recursive: true});
+        }
+
     }
 
     async #fetchResourceStats() {
@@ -62,6 +76,44 @@ export default class SourceManager {
                     pipeline.segmentDecorator && (res.segments = pipeline.segmentDecorator(parsedRes.segments));
                     newCache.sources[res.id] = res;
                 }
+            }
+            if (this.sourceMirrorDir) {
+                const mirror = this.sourceCache.mirror || {},
+                    newMirror = {},
+                    filesToKeep = [];
+                let filesWritten = 0;
+                for (const res of Object.values(newCache.sources)) {
+                    const mangledPathname = path.join(this.sourceMirrorDir, `${mangleResourceId(res.id)}.yml`);
+                    filesToKeep.push(mangledPathname);
+                    const mirrorMtime = existsSync(mangledPathname) && statSync(mangledPathname)?.mtime?.toISOString();
+                    const mirrorMeta = mirror[res.id];
+                    if (!(mirrorMeta?.sourceMtime === res.modified) || !(mirrorMeta?.mirrorMtime === mirrorMtime)) {
+                        const yml = YAML.stringify(Object.fromEntries(res.segments.map(s => [s.sid, s.gstr ?? s.str])), null, {
+                            indent: 4,
+                            collectionStyle: 'block',
+                            doubleQuotedMinMultiLineLength: 80,
+                            doubleQuotedAsJSON: true,
+                        });
+                        writeFileSync(mangledPathname, yml);
+                        newMirror[res.id] = {
+                            sourceMtime: res.modified,
+                            mirrorMtime: statSync(mangledPathname).mtime.toISOString(),
+                        }
+                        dirty = true;
+                        filesWritten++;
+                    }
+
+                }
+                const filesToDelete = readdirSync(this.sourceMirrorDir, { withFileTypes: true })
+                    .filter(d => d.isFile())
+                    .map(d => path.join(this.sourceMirrorDir, d.name))
+                    .filter(existingFile => !filesToKeep.includes(existingFile));
+                if (filesToDelete.length > 0) {
+                    filesToDelete.forEach(pathToDelete => unlinkSync(pathToDelete));
+                    dirty = true;
+                }
+                dirty && this.logger.info(`Source mirror updated: ${filesWritten} files written, ${filesToDelete.length} files deleted`);
+                newCache.mirror = newMirror;
             }
             if (dirty) {
                 this.logger.info(`Updating ${this.sourceCachePath}...`);

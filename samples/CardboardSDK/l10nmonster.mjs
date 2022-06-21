@@ -62,3 +62,4 @@ export default class CardboardConfig {
 }
 
 export const opsDir = 'l10nOps';
+export const sourceMirrorDir = 'sourceMirror';
