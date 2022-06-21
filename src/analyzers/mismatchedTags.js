@@ -1,3 +1,25 @@
+function nestingIsValid(normalizedString) {
+    if (!Array.isArray(normalizedString)) {
+        return true;
+    }
+    let nestingLevel = 0;
+    for (const part of normalizedString) {
+        if (part.t === 'bx') {
+            nestingLevel++;
+        } else if (part.t === 'ex') {
+            nestingLevel--;
+            if (nestingLevel < 0) {
+                break;
+            }
+        }
+    }
+    return nestingLevel === 0;
+}
+
+function makeCSVCompatibleString(nstr) {
+    return nstr.map(e => (typeof e === 'string' ? e : `{${e.t}}`)).join('').replaceAll(',', '').replaceAll('\n', ' ');
+}
+
 export default class MismatchedTags {
     static help = 'find mismatched open/close placeholders in translations';
     static driver = 'tm';
@@ -9,28 +31,13 @@ export default class MismatchedTags {
     }
 
     processTU({ targetLang, tu }) {
-        if (tu.ntgt) {
-            let nestingLevel = 0;
-            for (const part of tu.ntgt) {
-                if (part.t === 'bx') {
-                    nestingLevel++;
-                } else if (part.t === 'ex') {
-                    nestingLevel--;
-                    if (nestingLevel < 0) {
-                        break;
-                    }
-                }
-            }
-            if (nestingLevel !== 0) {
-                const src = tu.nsrc ? tu.nsrc.map(e => (typeof e === 'string' ? e : `{${e.t}}`)).join('') : tu.src;
-                const tgt = tu.ntgt ? tu.ntgt.map(e => (typeof e === 'string' ? e : `{${e.t}}`)).join('') : tu.tgt;
-                this.foundTus.push([
-                    targetLang,
-                    tu.guid,
-                    src,
-                    tgt,
-                ]);
-            }
+        if (nestingIsValid(tu.nsrc) && !nestingIsValid(tu.ntgt)) {
+            this.foundTus.push([
+                targetLang,
+                tu.guid,
+                makeCSVCompatibleString(tu.nsrc ?? tu.src),
+                makeCSVCompatibleString(tu.ntgt ?? tu.tgt),
+            ]);
         }
     }
 
