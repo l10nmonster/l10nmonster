@@ -6,7 +6,7 @@ export async function pushCmd(mm, { limitToLang, tuFilter, driver, refresh, tran
     if (tuFilter) {
         tuFilter = fixCaseInsensitiveKey(mm.tuFilters, tuFilter);
         tuFilterFunction = mm.tuFilters[tuFilter];
-        if (tuFilterFunction) {
+        if (!tuFilterFunction) {
             throw `Couldn't find ${tuFilter} tu filter`;
         }
     }

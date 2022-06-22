@@ -41,7 +41,7 @@ export function flattenNormalizedSourceV1(nsrc) {
         } else {
             phIdx++;
             const phPrefix = phIdx < 26 ? String.fromCharCode(96 + phIdx) : `z${phIdx}`;
-            const mangledPh = `${phPrefix}_${part.t}_${(part.v.match(/[0-9A-Za-z_]+/) || [''])[0]}`;
+            const mangledPh = `${phPrefix}_${part.t}_${(part.v?.match(/[0-9A-Za-z_]+/) || [''])[0]}`;
             normalizedStr.push(`{{${mangledPh}}}`);
             phMap[mangledPh] = {
                 ...part,
@@ -59,7 +59,7 @@ export function extractNormalizedPartsV1(str, phMap) {
         if (match.index > pos) {
             normalizedParts.push(match.input.substring(pos, match.index));
         }
-        normalizedParts.push({
+        normalizedParts.push(phMap[match.groups.ph] && {
             ...phMap[match.groups.ph],
             v1: match.groups.ph,
         });

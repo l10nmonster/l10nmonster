@@ -89,7 +89,7 @@ async function tosFetchContentByGuidOp({ onlyDeltas, tuMap, tuMeta, request, qua
 }
 
 async function tosCombineFetchedTusOp(args, tuChunks) {
-    return tuChunks.flat(1);
+    return tuChunks.flat(1).filter(tu => Boolean(tu));
 }
 
 export class TranslationOS {
