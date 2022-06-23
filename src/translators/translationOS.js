@@ -132,9 +132,10 @@ export class TranslationOS {
                 'target_languages': [ jobRequest.targetLang ],
                 // 'content_type': 'text/html',
                 'service_type': this.serviceType,
-                'dashboard_query_labels': [ tu.rid.slice(-50) ],
+                'dashboard_query_labels': [],
             };
             jobRequest.instructions && (tosTU.context.instructions = jobRequest.instructions);
+            tu.rid && tosTU.dashboard_query_labels.push(tu.rid.slice(-50));
             (tu.sid !== tu.src) && tosTU.dashboard_query_labels.push(tu.sid.replaceAll('\n', '').slice(-50));
             if (tu.prj !== undefined) {
                 // eslint-disable-next-line camelcase
