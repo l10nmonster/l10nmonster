@@ -1,4 +1,13 @@
-export const cleanupTU = (tu, whitelist) => Object.fromEntries(Object.entries(tu).filter(e => whitelist.includes(e[0])));
+import { extractNormalizedPartsV1, flattenNormalizedSourceV1 } from './normalizers/util.js';
+
+export function cleanupTU(tu, whitelist) {
+    const cleanTU = Object.fromEntries(Object.entries(tu).filter(e => whitelist.includes(e[0])));
+    // make sure v1 placeholders are there
+    // TODO: remove (for performance reasons) when v1 are strongly enforced
+    cleanTU.nsrc && (cleanTU.nsrc = extractNormalizedPartsV1(...flattenNormalizedSourceV1(cleanTU.nsrc)));
+    cleanTU.ntgt && (cleanTU.ntgt = extractNormalizedPartsV1(...flattenNormalizedSourceV1(cleanTU.ntgt)));
+    return cleanTU;
+}
 
 const coreTUprops = [
     'guid',
