@@ -14,6 +14,7 @@ export class Repetition {
         this.unqualifiedPenalty = unqualifiedPenalty;
     }
 
+    // eslint-disable-next-line complexity
     async requestTranslations(jobRequest) {
         const { tus, ...jobResponse } = jobRequest;
         jobResponse.tus = [];
@@ -35,16 +36,23 @@ export class Repetition {
                     }
                 }
                 if (foundCandidate) {
+                    const q = Math.max(0, bestCandidate.q - (tu.sid === bestCandidate.sid ? this.qualifiedPenalty : this.unqualifiedPenalty), 0);
                     const leveragedTU = {
                         guid: tu.guid,
-                        q: Math.max(0, bestCandidate.q - (tu.sid === bestCandidate.sid ? this.qualifiedPenalty : this.unqualifiedPenalty), 0),
+                        q,
                     };
                     !bestCandidate.nsrc && (leveragedTU.src = bestCandidate.src);
                     bestCandidate.nsrc && (leveragedTU.nsrc = bestCandidate.nsrc);
-                    bestCandidate.tgt && (leveragedTU.tgt = bestCandidate.tgt);
+                    !bestCandidate.ntgt && (leveragedTU.tgt = bestCandidate.tgt);
                     bestCandidate.ntgt && (leveragedTU.ntgt = bestCandidate.ntgt);
-                    bestCandidate.ts && (leveragedTU.ts = bestCandidate.ts);
-                    jobResponse.tus.push(leveragedTU);
+                    const existingTU = tm.getEntryByGuid(tu.guid);
+                    if (existingTU && normalizedStringsAreEqual(existingTU.ntgt ?? existingTU.ntgt, leveragedTU.ntgt ?? leveragedTU.ntgt)) {
+                        this.ctx.logger.verbose(`Did not leverage ${bestCandidate.guid} for ${tu.guid} because TM already has an identical entry (maybe of quality < minimum quality)`);
+                    } else {
+                        leveragedTU.ts = this.ctx.regression ? (existingTU?.ts ?? 0) + 1 : new Date().getTime(); // if there's an entry already we want to make sure we're more recent
+                        jobResponse.tus.push(leveragedTU);
+                        this.ctx.logger.verbose(`Leveraged ${bestCandidate.guid} for ${tu.guid}`);
+                    }
                 }
             }
         }
