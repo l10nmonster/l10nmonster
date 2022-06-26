@@ -491,13 +491,14 @@ monsterCLI
     }))
 ;
 
-// this seems useless but it still initializes MonsterManager so it can be
-// used as a no-op to test the config/initialization process
+// this seems useless but it still initializes MonsterManager, loads
+// all sources and all TM's, so it can be used as a no-op to test the
+// config/initialization process and debug
 // lifted from https://www.asciiart.eu/mythology/monsters
 monsterCLI
     .command('monster')
     .description('Just because...')
-    .action(async () => await withMonsterManager(async () => {
+    .action(async () => await withMonsterManager(async monsterManager => {
         console.log(`
             _.------.                        .----.__
            /         \\_.       ._           /---.__  \\
@@ -514,6 +515,16 @@ monsterCLI
  --'                  \\  \\ |   /    |  |              \`-
                        \\uU \\UU/     |  /   :F_P:
         `);
+        console.time('initialization time');
+        const sources = await monsterManager.source.getEntries();
+        const numSegments = sources.reduce((p, c) => p + c[1].segments.length, 0);
+        const targetLangs = (await monsterManager.source.getTargetLangs()).sort();
+        console.log(`${numSegments} segments in ${sources.length} resources needing ${targetLangs.length} languages`);
+        for (const targetLang of targetLangs) {
+            const tm = await monsterManager.tmm.getTM(monsterManager.sourceLang, targetLang);
+            console.log(`${targetLang} TM has ${tm.guids.length} entries`);
+        }
+        console.timeEnd('initialization time');
     }))
 ;
 
