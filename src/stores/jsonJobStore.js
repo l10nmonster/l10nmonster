@@ -10,6 +10,8 @@ import {
 import { nanoid } from 'nanoid';
 import { globbySync } from 'globby';
 
+const statusPriority = { done: 0, pending: 1, req: 2 };
+
 export class JsonJobStore {
     constructor({ jobsDir }) {
         this.jobsBaseDir = path.join(this.ctx.baseDir, jobsDir);
@@ -29,11 +31,8 @@ export class JsonJobStore {
         for (const file of files) {
             const entry = file.match(/job_(?<guid>[0-9A-Za-z_-]+)-(?<status>req|pending|done)\.json$/)?.groups;
             if (entry) {
-                const mtime = statSync(file).mtime.toISOString();
-                if (entry.status === 'done') {
-                    statusMap[entry.guid] = { mtime, status: 'done' };
-                } else if (![ 'pending', 'done' ].includes(statusMap[entry.guid]?.status)) {
-                    statusMap[entry.guid] = { mtime, status: entry.status };
+                if (!statusMap[entry.guid] || statusPriority[entry.status] < statusPriority[statusMap[entry.guid].status]) {
+                    statusMap[entry.guid] = { mtime: statSync(file).mtime.toISOString(), status: entry.status };
                 }
             }
         }
