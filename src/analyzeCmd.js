@@ -14,16 +14,18 @@ export async function analyzeCmd(mm, Analyzer, params, limitToLang) {
         } else {
             const targetLangs = (await mm.source.getTargetLangs(limitToLang)).sort();
             const aggregateAnalysis = [];
+            const hasAggregateAnalysis = Boolean(Analyzer.prototype.getAggregateAnalysis);
+            let analyzer;
             for (const targetLang of targetLangs) {
-                const analyzer = new Analyzer(...params);
+                (!hasAggregateAnalysis || !analyzer) && (analyzer = new Analyzer(...params));
                 const tm = await mm.tmm.getTM(mm.sourceLang, targetLang);
                 const tus = tm.guids.map(guid => tm.getEntryByGuid(guid));
                 for (const tu of tus) {
                     analyzer.processTU({ targetLang, tu });
                 }
-                aggregateAnalysis.push(analyzer.getAnalysis());
+                !hasAggregateAnalysis && aggregateAnalysis.push(analyzer.getAnalysis());
             }
-            analysis = aggregateAnalysis.flat(1);
+            analysis = hasAggregateAnalysis ? analyzer.getAggregateAnalysis() : aggregateAnalysis.flat(1);
         }
         return analysis;
     } else {
