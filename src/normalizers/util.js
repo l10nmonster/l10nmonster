@@ -214,6 +214,8 @@ function getValueToV1Map(nstr) {
                 }
             }
         }
+    } else {
+        return null;
     }
     return map;
 }
