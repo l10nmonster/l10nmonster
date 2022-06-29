@@ -4,8 +4,8 @@ import {
     readFileSync,
     writeFileSync,
 } from 'fs';
-import { flattenNormalizedSourceToOrdinal } from './normalizers/util.js';
-import { cleanupTU, targetTUWhitelist } from './schemas.js';
+import { flattenNormalizedSourceToOrdinal, cleanupTU } from './normalizers/util.js';
+import { targetTUWhitelist } from './schemas.js';
 
 class TM {
     constructor(sourceLang, targetLang, tmPathName, logger, configSeal, jobs) {

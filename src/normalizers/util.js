@@ -200,3 +200,36 @@ export function getTUMaps(tus) {
     }
     return { contentMap, tuMeta, phNotes };
 }
+
+function getValueToV1Map(nstr) {
+    const map = {};
+    if (Array.isArray(nstr)) {
+        for (const part of nstr) {
+            if (typeof part === 'object') {
+                if (part.v1) {
+                    map[part.v] ??= [];
+                    map[part.v].push(part.v1);
+                } else {
+                    return null;
+                }
+            }
+        }
+    }
+    return map;
+}
+
+export function cleanupTU(tu, whitelist) {
+    const cleanTU = Object.fromEntries(Object.entries(tu).filter(e => whitelist.includes(e[0])));
+    // if we have the normalized source, and the target doesn't have v1 placeholders, we can try to build them
+    // TODO: remove (for performance reasons) when v1 are strongly enforced
+    const sourceValueMap = getValueToV1Map(cleanTU.nsrc);
+    if (sourceValueMap && !getValueToV1Map(cleanTU.ntgt)) {
+        for (const part of cleanTU.ntgt) {
+            if (typeof part === 'object') {
+                // any kind of mismatch should be fatal because src/tgt should be in sync
+                part.v1 = sourceValueMap[part.v].shift(); // there's no guarantee we pick the right one, so we go FIFO
+            }
+        }
+    }
+    return cleanTU;
+}
