@@ -2,6 +2,8 @@
 	"sourceLang": "en",
 	"targetLang": "it",
 	"translationProvider": "Grandfather",
+	"jobGuid": "xxx0xxx",
+	"status": "done",
 	"tus": [
 		{
 			"guid": "7Yg93c458EbHxMIJHNXXG77jF5ZnrMzxv8ScSU0oCyQ",
@@ -379,13 +381,6 @@
 			"q": 70,
 			"src": "{1} has subscribed to {2}",
 			"tgt": "{1} si \\u00e8 iscritto a {2}",
-			"ts": 1
-		},
-		{
-			"guid": "faMqWWwPGfL2ojQpJKVq5ag3W9oKmvVS4vT4_XpaDIA",
-			"q": 70,
-			"src": "{1}: {2}",
-			"tgt": "{1}: {2}",
 			"ts": 1
 		},
 		{
@@ -2335,7 +2330,5 @@
 			"ts": 1
 		}
 	],
-	"status": "done",
-	"jobGuid": "xxx0xxx",
 	"updatedAt": "2022-05-29T00:00:00.000Z"
 }

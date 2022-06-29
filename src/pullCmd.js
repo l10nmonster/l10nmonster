@@ -1,9 +1,9 @@
 export async function pullCmd(mm, { limitToLang, partial }) {
     const stats = { numPendingJobs: 0, translatedStrings: 0, doneJobs: 0, newPendingJobs: 0 };
-    const targetLangs = mm.getTargetLangs(limitToLang);
+    const targetLangs = await mm.source.getTargetLangs(limitToLang);
     for (const targetLang of targetLangs) {
         const pendingJobs = (await mm.jobStore.getJobStatusByLangPair(mm.sourceLang, targetLang))
-            .filter(e => e[1] === 'pending')
+            .filter(e => e[1].status === 'pending')
             .map(e => e[0]);
         stats.numPendingJobs += pendingJobs.length;
         for (const jobGuid of pendingJobs) {

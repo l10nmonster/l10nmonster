@@ -1,8 +1,6 @@
 export default class CardboardConfig {
     sourceLang = 'en';
     minimumQuality = 50;
-    qualifiedPenalty = 1;
-    unqualifiedPenalty = 9;
 
     constructor({ ctx, stores, adapters, filters, normalizers, translators }) {
         this.source = new adapters.FsSource({
@@ -32,20 +30,23 @@ export default class CardboardConfig {
                     maxCharLength: 1000,
                 }),
             },
-            MMTBraces: {
-                translator: new translators.ModernMT({
-                    apiKey: ctx.env.mmt_api_key,
-                    quality: 40,
-                    maxCharLength: 1000,
-                    phSerialization: 'mustache',
-                }),
-            },
             DeepL: {
                 translator: new translators.DeepL({
                     apiKey: ctx.env.deepl_api_key,
                     quality: 40,
                 }),
                 quota: 0,
+            },
+            Repetition: {
+                translator: new translators.Repetition({
+                    qualifiedPenalty: 1,
+                    unqualifiedPenalty: 9,
+                }),
+            },
+            Grandfather: {
+                translator: new translators.Grandfather({
+                    quality: 70,
+                }),
             },
         };
         this.tuFilters = {
@@ -61,3 +62,4 @@ export default class CardboardConfig {
 }
 
 export const opsDir = 'l10nOps';
+export const sourceMirrorDir = 'sourceMirror';

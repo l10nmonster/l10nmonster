@@ -41,9 +41,12 @@ export function flattenNormalizedSourceV1(nsrc) {
         } else {
             phIdx++;
             const phPrefix = phIdx < 26 ? String.fromCharCode(96 + phIdx) : `z${phIdx}`;
-            const mangledPh = `${phPrefix}_${part.t}_${(part.v.match(/[0-9A-Za-z_]+/) || [''])[0]}`;
+            const mangledPh = `${phPrefix}_${part.t}_${(part.v?.match(/[0-9A-Za-z_]+/) || [''])[0]}`;
             normalizedStr.push(`{{${mangledPh}}}`);
-            phMap[mangledPh] = part;
+            phMap[mangledPh] = {
+                ...part,
+                v1: mangledPh,
+            };
         }
     }
     return [ normalizedStr.join(''), phMap ];
@@ -56,7 +59,7 @@ export function extractNormalizedPartsV1(str, phMap) {
         if (match.index > pos) {
             normalizedParts.push(match.input.substring(pos, match.index));
         }
-        normalizedParts.push({
+        normalizedParts.push(phMap[match.groups.ph] && {
             ...phMap[match.groups.ph],
             v1: match.groups.ph,
         });
@@ -72,7 +75,9 @@ export function extractNormalizedPartsV1(str, phMap) {
 export function flattenNormalizedSourceToXmlV1(nsrc) {
     const normalizedStr = [],
         phMap = {};
-    let phIdx = 0;
+    let phIdx = 0,
+        nestingLevel = 0,
+        openTagShorthand = [];
     for (const part of nsrc) {
         if (typeof part === 'string') {
             normalizedStr.push(part.replaceAll('<', '&lt;'));
@@ -80,8 +85,21 @@ export function flattenNormalizedSourceToXmlV1(nsrc) {
             phIdx++;
             const phPrefix = phIdx < 26 ? String.fromCharCode(96 + phIdx) : `z${phIdx}`;
             const mangledPh = `${phPrefix}_${part.t}_${(part.v.match(/[0-9A-Za-z_]+/) || [''])[0]}`;
-            normalizedStr.push(`<${phPrefix} />`);
-            phMap[phPrefix] = {
+            let phShorthand = `x${phIdx}`;
+            if (part.t === 'x' || (part.t === 'ex' && nestingLevel === 0)) { // if we get a close tag before an open one, treat it like a single tag
+                normalizedStr.push(`<${phShorthand} />`);
+            } else if (part.t === 'bx') {
+                normalizedStr.push(`<${phShorthand}>`);
+                openTagShorthand[nestingLevel] = phShorthand;
+                nestingLevel++;
+                phShorthand = `b${phShorthand}`;
+            } else if (part.t === 'ex') {
+                nestingLevel--;
+                phShorthand = openTagShorthand[nestingLevel];
+                normalizedStr.push(`</${phShorthand}>`);
+                phShorthand = `e${phShorthand}`;
+            }
+            phMap[phShorthand] = {
                 ...part,
                 v1: mangledPh,
             };
@@ -94,11 +112,13 @@ const cleanXMLEntities = str => str.replaceAll('&lt;', '<').replaceAll('&amp;', 
 export function extractNormalizedPartsFromXmlV1(str, phMap) {
     const normalizedParts = [];
     let pos = 0;
-    for (const match of str.matchAll(/<(?<phIdx>[a-y]|z\d+) \/>/g)) {
+    for (const match of str.matchAll(/<(?<x>x\d+) \/>|<(?<bx>x\d+)>|<\/(?<ex>x\d+)>/g)) {
         if (match.index > pos) {
             normalizedParts.push(cleanXMLEntities(match.input.substring(pos, match.index)));
         }
-        normalizedParts.push(phMap[match.groups.phIdx]);
+        normalizedParts.push(phMap[match.groups.x ??
+            (match.groups.bx && `b${match.groups.bx}`) ??
+            (match.groups.ex && `e${match.groups.ex}`)]);
         pos = match.index + match[0].length;
     }
     if (pos < str.length) {
@@ -108,27 +128,44 @@ export function extractNormalizedPartsFromXmlV1(str, phMap) {
 }
 
 const minifyV1PH = v1ph => v1ph && v1ph.split('_').slice(0, -1).join('_');
+
+export function phMatcherMaker(nsrc) {
+    const phMap = flattenNormalizedSourceV1(nsrc)[1];
+    const v1PhMap = Object.fromEntries(Object.entries(phMap).map(([k, v]) => [minifyV1PH(k), v]));
+    const valueMap = Object.fromEntries(Object.values(v1PhMap).map(e => [ e.v, true ]));
+    return function matchPH(part) {
+        return v1PhMap[minifyV1PH(part.v1)] ?? (valueMap[part.v] && part);
+    }
+}
+
 export function sourceAndTargetAreCompatible(nsrc, ntgt) {
     if (Boolean(nsrc) && Boolean(ntgt)) {
         !Array.isArray(nsrc) && (nsrc = [ nsrc ]);
         !Array.isArray(ntgt) && (ntgt = [ ntgt ]);
-        const v1PhMap = Object.fromEntries(Object.entries(flattenNormalizedSourceV1(nsrc)[1]).map(([k, v]) => [minifyV1PH(k), v]));
-        const valueMap = Object.fromEntries(Object.values(v1PhMap).map(e => [ e.v, true ]));
-        for (const ph of ntgt) {
-            if (typeof ph === 'object') {
-                if (!v1PhMap[minifyV1PH(ph.v1)] && !valueMap[ph.v]) {
+        const phMatcher = phMatcherMaker(nsrc);
+        if (!phMatcher) {
+            return false;
+        }
+        for (const part of ntgt) {
+            if (typeof part === 'object') {
+                if (phMatcher(part) === undefined) {
                     return false;
                 }
             }
         }
-        return Object.keys(v1PhMap).length === Object.keys(flattenNormalizedSourceV1(ntgt)[1]).length;
+        // the loop above may pass, yet the target may have fewer placeholder, so we check the number of ph is the same
+        return Object.keys(nsrc.filter(e => typeof e === 'object')).length === Object.keys(ntgt.filter(e => typeof e === 'object')).length;
     }
     return false;
 }
 
+function flattenNormalizedSourceToMiniV1(nsrc) {
+    return nsrc.map(e => (typeof e === 'string' ? e : `{{${e.v1 ? minifyV1PH(e.v1) : e.v}}}`)).join('');
+}
+
 export function normalizedStringsAreEqual(s1, s2) {
-    const f1 = Array.isArray(s1) ? flattenNormalizedSourceToOrdinal(s1) : s1;
-    const f2 = Array.isArray(s2) ? flattenNormalizedSourceToOrdinal(s2) : s2;
+    const f1 = Array.isArray(s1) ? flattenNormalizedSourceToMiniV1(s1) : s1;
+    const f2 = Array.isArray(s2) ? flattenNormalizedSourceToMiniV1(s2) : s2;
     return f1 === f2;
 }
 

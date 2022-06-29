@@ -5,9 +5,12 @@ import {
     readFileSync,
     writeFileSync,
     unlinkSync,
+    statSync,
 } from 'fs';
 import { nanoid } from 'nanoid';
 import { globbySync } from 'globby';
+
+const statusPriority = { done: 0, pending: 1, req: 2 };
 
 export class JsonJobStore {
     constructor({ jobsDir }) {
@@ -28,10 +31,8 @@ export class JsonJobStore {
         for (const file of files) {
             const entry = file.match(/job_(?<guid>[0-9A-Za-z_-]+)-(?<status>req|pending|done)\.json$/)?.groups;
             if (entry) {
-                if (entry.status === 'done') {
-                    statusMap[entry.guid] = 'done';
-                } else if (![ 'pending', 'done' ].includes(statusMap[entry.guid])) {
-                    statusMap[entry.guid] = entry.status;
+                if (!statusMap[entry.guid] || statusPriority[entry.status] < statusPriority[statusMap[entry.guid].status]) {
+                    statusMap[entry.guid] = { mtime: statSync(file).mtime.toISOString(), status: entry.status };
                 }
             }
         }

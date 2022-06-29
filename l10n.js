@@ -5,24 +5,25 @@ import * as path from 'path';
 import {
   existsSync,
   mkdirSync,
+  writeFileSync,
+  statSync,
 } from 'fs';
 import * as util from 'node:util';
 import { Command, InvalidArgumentError } from 'commander';
 import * as winston from 'winston';
 
-import { consoleColor, printRequest, printResponse } from './src/shared.js';
+import {
+    consoleColor, fixCaseInsensitiveKey,
+    printRequest, printResponse,
+    printLeverage, computeTotals,
+} from './src/shared.js';
 
 import MonsterManager from './src/monsterManager.js';
 import { OpsMgr } from './src/opsMgr.js';
 
 import { JsonJobStore } from './src/stores/jsonJobStore.js';
-// import { SqlJobStore } from './src/stores/sqlJobStore.js';
-import { JsonStateStore } from './src/stores/jsonStateStore.js';
-// import { SqlStateStore } from './src/stores/sqlStateStore.js';
 
 import { analyzeCmd } from './src/analyzeCmd.js';
-import { grandfatherCmd } from './src/grandfatherCmd.js';
-import { leverageCmd } from './src/leverageCmd.js';
 import { pullCmd } from './src/pullCmd.js';
 import { pushCmd } from './src/pushCmd.js';
 import { jobPushCmd } from './src/jobCmd.js';
@@ -37,6 +38,9 @@ import { AndroidFilter } from './src/filters/android.js';
 import { JavaPropertiesFilter } from './src/filters/java.js';
 import { IosStringsFilter } from './src/filters/ios.js';
 import { JsonFilter } from './src/filters/json.js';
+
+import { Repetition } from './src/translators/repetition.js';
+import { Grandfather } from './src/translators/grandfather.js';
 import { XliffBridge } from './src/translators/xliff.js';
 import { PigLatinizer } from './src/translators/piglatinizer.js';
 import { TranslationOS } from './src/translators/translationOS.js';
@@ -44,6 +48,12 @@ import { Visicode } from './src/translators/visicode.js';
 import { ModernMT } from './src/translators/modernMT.js';
 import { DeepL } from './src/translators/deepL.js';
 import * as regexNormalizers from './src/normalizers/regex.js';
+
+import DuplicateSource from './src/analyzers/duplicateSource.js';
+import SmellySource from './src/analyzers/smellySource.js';
+import TextExpansionSummary from './src/analyzers/textExpansionSummary.js';
+import FindByExpansion from './src/analyzers/findByExpansion.js';
+import MismatchedTags from './src/analyzers/mismatchedTags.js';
 
 const monsterCLI = new Command();
 
@@ -54,6 +64,7 @@ async function initMonster() {
     const configPath = path.join(baseDir, 'l10nmonster.mjs');
     if (existsSync(configPath)) {
         const configModule = await import(configPath);
+        const configSeal = statSync(configPath).mtime.toISOString();
         const verboseOption = monsterCLI.opts().verbose;
             // eslint-disable-next-line no-nested-ternary
             const verboseLevel = (verboseOption === undefined || verboseOption === 0) ?
@@ -63,8 +74,6 @@ async function initMonster() {
                     'warn' :
                     ((verboseOption === true || verboseOption === 2) ? 'info' : 'verbose'));
         const regression = monsterCLI.opts().regression;
-        const build = monsterCLI.opts().build;
-        const release = monsterCLI.opts().release;
         let prj = monsterCLI.opts().prj;
         prj && (prj = prj.split(','));
         const logger = winston.createLogger({
@@ -74,13 +83,13 @@ async function initMonster() {
                     format: winston.format.combine(
                         winston.format.ms(),
                         winston.format.timestamp(),
-                        winston.format.printf(({ level, message, timestamp, ms }) => `${consoleColor.yellow}${timestamp.substr(11, 12)} (${ms}) ${level}: ${typeof message === 'string' ? message : util.inspect(message)}${consoleColor.reset}`)
+                        winston.format.printf(({ level, message, timestamp, ms }) => `${consoleColor.yellow}${timestamp.substr(11, 12)} (${ms}) [${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB] ${level}: ${typeof message === 'string' ? message : util.inspect(message)}${consoleColor.reset}`)
                     ),
                 }),
             ],
         });
-        const opsDir = monsterCLI.opts().ops ?? configModule.opsDir;
-        const opsMgr = opsDir ? new OpsMgr({ opsDir: path.join(baseDir, opsDir), logger }) : new OpsMgr({ logger });
+        const opsMgr = configModule.opsDir ? new OpsMgr({ opsDir: path.join(baseDir, configModule.opsDir), logger }) : new OpsMgr({ logger });
+        const sourceMirrorDir = configModule.sourceMirrorDir && path.join(baseDir, configModule.sourceMirrorDir);
         const ctx = {
             baseDir,
             opsMgr,
@@ -88,13 +97,11 @@ async function initMonster() {
             arg: monsterCLI.opts().arg,
             logger,
             regression,
-            build,
-            release,
             prj,
         };
         const helpers = {
             stores: {
-                JsonJobStore, JsonStateStore
+                JsonJobStore
             },
             adapters: {
                 FsSource, FsTarget,
@@ -106,13 +113,16 @@ async function initMonster() {
                 ...regexNormalizers,
             },
             translators: {
-                XliffBridge, PigLatinizer, TranslationOS, Visicode, ModernMT, DeepL
+                Repetition, Grandfather, XliffBridge, PigLatinizer, TranslationOS, Visicode, ModernMT, DeepL
             },
         };
         for (const helperCategory of Object.values(helpers)) {
             for (const helper of Object.values(helperCategory))
                 helper.prototype && (helper.prototype.ctx = ctx);
         }
+        const defaultAnalyzers = {
+            DuplicateSource, SmellySource, TextExpansionSummary, FindByExpansion, MismatchedTags
+        };
         logger.info(`Importing config from: ${configPath}`);
         try {
             const configParams = { ctx, ...helpers };
@@ -126,11 +136,12 @@ async function initMonster() {
             if (!existsSync(monsterDir)) {
                 mkdirSync(monsterDir, {recursive: true});
             }
-            const mm = await new MonsterManager({ monsterDir, monsterConfig, ctx });
+            const mm = await new MonsterManager({ monsterDir, monsterConfig, configSeal, ctx, defaultAnalyzers, sourceMirrorDir });
+            ctx.mm = mm;
             logger.info(`L10n Monster initialized!`);
             return mm;
         } catch(e) {
-            throw `l10nmonster.mjs failed to construct: ${e}`;
+            throw `l10nmonster.mjs failed to construct: ${e.stack || e}`;
         }
     }
     previousDir = baseDir;
@@ -145,14 +156,12 @@ async function withMonsterManager(cb) {
     try {
         await cb(monsterManager);
     } catch(e) {
-        console.error(`Unable to operate: ${e}`);
-        console.error(e.stack);
+        console.error(`Unable to operate: ${e.stack || e}`);
     } finally {
         await monsterManager.shutdown();
     }
   } catch(e) {
-    console.error(`Unable to initialize: ${e}`);
-    console.error(e.stack);
+    console.error(`Unable to initialize: ${e.stack || e}`);
   }
 }
 
@@ -167,65 +176,45 @@ function intOptionParser(value, _dummyPrevious) {
 
 monsterCLI
     .name('l10n')
-    .version('0.1.0')
+    .version('0.1.0', '--version', 'output the current version number')
     .description('Continuous localization for the rest of us.')
     .option('-v, --verbose [level]', '0=error, 1=warning, 2=info, 3=verbose', intOptionParser)
-    .option('--ops <opsDir>', 'directory to output debug operations')
-    .option('-p, --prj <num>', 'limit to specified project')
-    .option('--build <type>', 'build type')
-    .option('--release <num>', 'release number')
-    .option('--arg <string>', 'optional constructor argument')
-    .option('--regression', 'keep variable constant during regression testing')
+    .option('-p, --prj <prj1,...>', 'limit source to specified projects')
+    .option('--arg <string>', 'optional config constructor argument')
+    .option('--regression', 'keep variables constant during regression testing')
 ;
-
-function printLeverage(leverage, detailed) {
-    const totalStrings = leverage.translated + leverage.pending + leverage.untranslated + leverage.internalRepetitions;
-    detailed && console.log(`    - total strings for target language: ${totalStrings.toLocaleString()} (${leverage.translatedWords.toLocaleString()} translated words)`);
-    for (const [q, num] of Object.entries(leverage.translatedByQ).sort((a,b) => b[1] - a[1])) {
-        detailed && console.log(`    - translated strings @ quality ${q}: ${num.toLocaleString()}`);
-    }
-    leverage.pending && console.log(`    - strings pending translation: ${leverage.pending.toLocaleString()} (${leverage.pendingWords.toLocaleString()} words)`);
-    leverage.untranslated && console.log(`    - untranslated unique strings: ${leverage.untranslated.toLocaleString()} (${leverage.untranslatedChars.toLocaleString()} chars - ${leverage.untranslatedWords.toLocaleString()} words - $${(leverage.untranslatedWords * .2).toFixed(2)})`);
-    leverage.internalRepetitions && console.log(`    - untranslated repeated strings: ${leverage.internalRepetitions.toLocaleString()} (${leverage.internalRepetitionWords.toLocaleString()} words)`);
-}
-
-function computeTotals(totals, partial) {
-    for (const [ k, v ] of Object.entries(partial)) {
-        if (typeof v === 'object') {
-            totals[k] ??= {};
-            computeTotals(totals[k], v);
-        } else {
-            totals[k] ??= 0;
-            totals[k] += v;
-        }
-    }
-}
 
 monsterCLI
     .command('status')
-    .description('translation status of content.')
+    .description('Translation status of content.')
     .option('-l, --lang <language>', 'only get status of target language')
     .option('-a, --all', 'show information for all projects, not just untranslated ones')
+    .option('--output <filename>', 'write status to the specified file')
     .action(async (options) => await withMonsterManager(async monsterManager => {
         const limitToLang = options.lang;
         const all = Boolean(options.all);
+        const output = options.output;
         const status = await statusCmd(monsterManager, { limitToLang });
-        console.log(`${status.numSources.toLocaleString()} translatable resources`);
-        for (const [lang, langStatus] of Object.entries(status.lang)) {
-            console.log(`\n${consoleColor.bright}Language ${lang}${consoleColor.reset} (minimum quality ${langStatus.leverage.minimumQuality}, TM size:${langStatus.leverage.tmSize.toLocaleString()}):`);
-            const totals = {};
-            const prjLeverage = Object.entries(langStatus.leverage.prjLeverage).sort((a, b) => (a[0] > b[0] ? 1 : -1));
-            for (const [prj, leverage] of prjLeverage) {
-                computeTotals(totals, leverage);
-                const untranslated = leverage.pending + leverage.untranslated + leverage.internalRepetitions;
-                if (leverage.translated + untranslated > 0) {
-                    (all || untranslated > 0) && console.log(`  Project: ${consoleColor.bright}${prj}${consoleColor.reset}`);
-                    printLeverage(leverage, all);
+        if (output) {
+            writeFileSync(output, JSON.stringify(status, null, '\t'), 'utf8');
+        } else {
+            console.log(`${status.numSources.toLocaleString()} translatable resources`);
+            for (const [lang, langStatus] of Object.entries(status.lang)) {
+                console.log(`\n${consoleColor.bright}Language ${lang}${consoleColor.reset} (minimum quality ${langStatus.leverage.minimumQuality}, TM size:${langStatus.leverage.tmSize.toLocaleString()}):`);
+                const totals = {};
+                const prjLeverage = Object.entries(langStatus.leverage.prjLeverage).sort((a, b) => (a[0] > b[0] ? 1 : -1));
+                for (const [prj, leverage] of prjLeverage) {
+                    computeTotals(totals, leverage);
+                    const untranslated = leverage.pending + leverage.untranslated + leverage.internalRepetitions;
+                    if (leverage.translated + untranslated > 0) {
+                        (all || untranslated > 0) && console.log(`  Project: ${consoleColor.bright}${prj}${consoleColor.reset}`);
+                        printLeverage(leverage, all);
+                    }
                 }
-            }
-            if (prjLeverage.length > 1) {
-                console.log(`  Total:`);
-                printLeverage(totals, true);
+                if (prjLeverage.length > 1) {
+                    console.log(`  Total:`);
+                    printLeverage(totals, true);
+                }
             }
         }
     }))
@@ -233,7 +222,7 @@ monsterCLI
 
 monsterCLI
     .command('jobs')
-    .description('unfinished jobs status.')
+    .description('Unfinished jobs status.')
     .option('-l, --lang <language>', 'only get jobs for the target language')
     .action(async (options) => await withMonsterManager(async monsterManager => {
         const limitToLang = options.lang;
@@ -253,50 +242,73 @@ monsterCLI
 
 monsterCLI
     .command('analyze')
-    .description('source content report and validation.')
-    .option('-s, --smell', 'detect smelly source')
-    .option('--long', 'extended report')
-    .action(async (options) => await withMonsterManager(async monsterManager => {
-      const analysis = await analyzeCmd(monsterManager);
-      console.log(`${analysis.numStrings.toLocaleString()} strings (${analysis.totalWC.toLocaleString()} words) in ${analysis.numSources.toLocaleString()} resources`);
-      const qWC = analysis.qualifiedRepetitions.reduce((p, c) => p + (c.length - 1) * c[0].wc, 0);
-      console.log(`${analysis.qualifiedRepetitions.length.toLocaleString()} locally qualified repetitions, ${qWC.toLocaleString()} duplicate word count`);
-      if (options.long) {
-        for (const qr of analysis.qualifiedRepetitions) {
-          console.log(`${qr[0].wc.toLocaleString()} words, sid: ${qr[0].sid}, txt: ${qr[0].str}`);
-          for (const r of qr) {
-            console.log(`  - ${r.rid}`);
-          }
-        }
-      }
-      const uWC = analysis.unqualifiedRepetitions.reduce((p, c) => p + (c.length - 1) * c[0].wc, 0);
-      console.log(`${analysis.unqualifiedRepetitions.length.toLocaleString()} unqualified repetitions, ${uWC.toLocaleString()} duplicate word count`);
-      if (options.long) {
-        for (const ur of analysis.unqualifiedRepetitions) {
-          console.log(`${ur[0].wc.toLocaleString()} words, txt: ${ur[0].str}`);
-          for (const r of ur) {
-            console.log(`  - ${r.rid}, sid: ${r.sid}`);
-          }
-        }
-      }
-        if (options.smell) {
-            for (const { rid, sid, str } of analysis.smelly) {
-                options.long && console.log(`- ${rid}:${sid}:`);
-                console.log(str);
+    .description('Content reports and validation.')
+    .argument('[analyzer]', 'name of the analyzer to run')
+    .argument('[params...]', 'optional parameters to the analyzer')
+    .option('-l, --lang <language>', 'target language to analyze (if TM analyzer)')
+    .option('--output <filename>', 'filename to write the analysis to)')
+    .action(async (analyzer, params, options) => await withMonsterManager(async monsterManager => {
+        try {
+            if (analyzer) {
+                analyzer = fixCaseInsensitiveKey(monsterManager.analyzers, analyzer);
+                const Analyzer = monsterManager.analyzers[analyzer];
+                if (!Analyzer) {
+                    throw `couldn't find a ${analyzer} analyzer`;
+                }
+                const analysis = await analyzeCmd(monsterManager, Analyzer, params, options.lang);
+                const header = Analyzer.analysisStructure;
+                if (options.output) {
+                    const rows = header ? [ header, ...analysis].map(row => row.join(',')) : analysis;
+                    rows.push('\n');
+                    writeFileSync(options.output, rows.join('\n'));
+                } else {
+                    if (header) { // structured analysis
+                        const groups = Analyzer.analysisGroupBy;
+                        let previousGroup;
+                        for (const row of analysis) {
+                            const columns = row.map((col, idx) => [col, idx]);
+                            if (groups) {
+                                // eslint-disable-next-line no-unused-vars
+                                const currentGroup = columns.filter(([col, idx]) => groups.includes(header[idx]));
+                                // eslint-disable-next-line no-unused-vars
+                                const currentGroupSmashed = currentGroup.map(([col, idx]) => col).join('|');
+                                if (currentGroupSmashed !== previousGroup) {
+                                    previousGroup = currentGroupSmashed;
+                                    console.log(currentGroup
+                                        .map(([col, idx]) => `${consoleColor.dim}${header[idx]}: ${consoleColor.reset}${consoleColor.bright}${col}${consoleColor.reset}`)
+                                        .join('\t'));
+                                }
+                            }
+                            const currentData = columns.filter(([col, idx]) => (!groups || !groups.includes(header[idx])) && col !== null && col !== undefined);
+                            console.log(currentData
+                                .map(([col, idx]) => `\t${consoleColor.dim}${header[idx]}: ${consoleColor.reset}${col}`)
+                                .join(''));
+                        }
+                    } else { // unstructured analysis
+                        console.log(analysis.join('\n'));
+                    }
+                }
+            } else {
+                console.log('Available analyzers:');
+                for (const [name, analyzer] of Object.entries(monsterManager.analyzers)) {
+                    console.log(`  - ${consoleColor.bright}${name} ${analyzer.helpParams ?? ''}${consoleColor.reset} ${analyzer.help}`);
+                }
             }
+        } catch (e) {
+            console.error(`Failed to analyze: ${e.stack || e}`);
         }
     }))
 ;
 
 monsterCLI
     .command('push')
-    .description('push source content upstream (send to translation).')
+    .description('Push source content upstream (send to translation).')
     .option('-l, --lang <language>', 'target language to push')
     .option('--filter <filter>', 'use the specified tu filter')
     .option('--driver <untranslated|source|tm|job:jobGuid>', 'driver of translations need to be pushed (default: untranslated)')
     .option('--leverage', 'eliminate internal repetitions from untranslated driver')
     .option('--refresh', 'refresh existing translations without requesting new ones')
-    .option('--provider <name>', 'use the specified translation provider')
+    .option('--provider <name,...>', 'use the specified translation providers')
     .option('--instructions <instructions>', 'send the specified translation provider')
     .option('--dryrun', 'simulate translating and compare with existing translations')
     .action(async (options) => await withMonsterManager(async monsterManager => {
@@ -312,25 +324,30 @@ monsterCLI
             throw `invalid ${driverOption} driver`;
         }
         const refresh = options.refresh;
-        const translationProviderName = options.provider;
         const leverage = options.leverage;
         const dryRun = options.dryrun;
         const instructions = options.instructions;
         console.log(`Pushing content upstream...${dryRun ? ' (dry run)' : ''}`);
         try {
-            const status = await pushCmd(monsterManager, { limitToLang, tuFilter, driver, refresh, translationProviderName, leverage, dryRun, instructions });
             if (dryRun) {
+                const status = await pushCmd(monsterManager, { limitToLang, tuFilter, driver, refresh, leverage, dryRun, instructions });
                 for (const langStatus of status) {
-                    console.log(`\nLanguage pair ${langStatus.sourceLang} -> ${langStatus.targetLang}`);
+                    console.log(`\nDry run of ${langStatus.sourceLang} -> ${langStatus.targetLang} push:`);
                     printRequest(langStatus);
                 }
             } else {
-                if (status.length > 0) {
+                let status = [];
+                for (const provider of (options.provider ?? 'default').split(',')) {
+                    const translationProviderName = provider.toLowerCase() === 'default' ? undefined : provider;
+                    status.push(await pushCmd(monsterManager, { limitToLang, tuFilter, driver, refresh, translationProviderName, leverage, dryRun, instructions }));
+                }
+                status = status.flat(1);
+                    if (status.length > 0) {
                     for (const ls of status) {
                         if (ls.minimumJobSize !== undefined) {
-                            console.log(`${ls.num.toLocaleString()} translations units for language ${ls.targetLang} not sent because you need at least ${ls.minimumJobSize}`);
+                            console.log(`${ls.num.toLocaleString()} translations units for language ${ls.targetLang} not sent to provider ${consoleColor.bright}${ls.provider}${consoleColor.reset} because you need at least ${ls.minimumJobSize}`);
                         } else {
-                            console.log(`${ls.num.toLocaleString()} translations units requested for language ${consoleColor.bright}${ls.targetLang}${consoleColor.reset} on job ${ls.jobGuid} -> status: ${consoleColor.bright}${ls.status}${consoleColor.reset}`);
+                            console.log(`job ${ls.jobGuid} with ${ls.num.toLocaleString()} translations received for language ${consoleColor.bright}${ls.targetLang}${consoleColor.reset} from provider ${consoleColor.bright}${ls.provider}${consoleColor.reset} -> status: ${consoleColor.bright}${ls.status}${consoleColor.reset}`);
                         }
                     }
                 } else {
@@ -338,14 +355,14 @@ monsterCLI
                 }
             }
         } catch (e) {
-            console.error(`Failed to push: ${e}`);
+            console.error(`Failed to push: ${e.stack || e}`);
         }
     }))
 ;
 
 monsterCLI
     .command('job')
-    .description('show contents and push pending jobs.')
+    .description('Show contents and push pending jobs.')
     .option('--req <jobGuid>', 'show contents of a job request')
     .option('--res <jobGuid>', 'show contents of a job response')
     .option('--pairs <jobGuid>', 'show request/response pairs of a job')
@@ -410,52 +427,8 @@ monsterCLI
 ;
 
 monsterCLI
-    .command('grandfather')
-    .description('grandfather existing translations as a translation job.')
-    .requiredOption('-q, --quality <level>', 'translation quality', intOptionParser)
-    .option('-l, --lang <language>', 'target language to import')
-    .action(async (options) => await withMonsterManager(async monsterManager => {
-      const quality = options.quality;
-      console.log(`Grandfathering existing translations at quality level ${quality}...`);
-      const status = await grandfatherCmd(monsterManager, quality, options.lang);
-      if (status.error) {
-        console.error(`Failed: ${status.error}`);
-      } else {
-        if (status.length > 0) {
-          for (const ls of status) {
-            console.log(`${ls.num.toLocaleString()} translations units grandfathered for language ${ls.targetLang}`);
-          }
-        } else {
-          console.log('Nothing to grandfather!');
-        }
-      }
-  }))
-;
-
-monsterCLI
-    .command('leverage')
-    .description('leverage repetitions as a translation job.')
-    .option('-l, --lang <language>', 'target language to leverage')
-    .action(async (options) => await withMonsterManager(async monsterManager => {
-      console.log(`Leveraging translations of repetitions...`);
-      const status = await leverageCmd(monsterManager, options.lang);
-      if (status.error) {
-        console.error(`Failed: ${status.error}`);
-      } else {
-        if (status.length > 0) {
-          for (const ls of status) {
-            console.log(`${ls.num.toLocaleString()} translations leveraged for language ${ls.targetLang}`);
-          }
-        } else {
-          console.log('Nothing to leverage!');
-        }
-      }
-  }))
-;
-
-monsterCLI
     .command('pull')
-    .description('receive outstanding translation jobs.')
+    .description('Receive outstanding translation jobs.')
     .option('--partial', 'commit partial deliveries')
     .option('-l, --lang <language>', 'only get jobs for the target language')
     .action(async (options) => await withMonsterManager(async monsterManager => {
@@ -469,7 +442,7 @@ monsterCLI
 
 monsterCLI
     .command('translate')
-    .description('generate translated resources based on latest source and translations.')
+    .description('Generate translated resources based on latest source and translations.')
     .option('-l, --lang <language>', 'target language to translate')
     .option('-d, --dryrun', 'simulate translating and compare with existing translations')
     .action(async (options) => await withMonsterManager(async monsterManager => {
@@ -496,7 +469,7 @@ monsterCLI
 
 monsterCLI
     .command('tmexport')
-    .description('export translation memory in various formats.')
+    .description('Export translation memory in various formats.')
     .requiredOption('-f, --format <tmx|json|job>', 'exported file format')
     .requiredOption('-m, --mode <source|tm>', 'export all source entries (including untranslated) or all tm entries (including missing in source)')
     .option('-l, --lang <language>', 'target language to export')
@@ -515,6 +488,43 @@ monsterCLI
         } else {
             console.error('Invalid export format');
         }
+    }))
+;
+
+// this seems useless but it still initializes MonsterManager, loads
+// all sources and all TM's, so it can be used as a no-op to test the
+// config/initialization process and debug
+// lifted from https://www.asciiart.eu/mythology/monsters
+monsterCLI
+    .command('monster')
+    .description('Just because...')
+    .action(async () => await withMonsterManager(async monsterManager => {
+        console.log(`
+            _.------.                        .----.__
+           /         \\_.       ._           /---.__  \\
+          |  O    O   |\\\\___  //|          /       \`\\ |
+          |  .vvvvv.  | )   \`(/ |         | o     o  \\|
+          /  |     |  |/      \\ |  /|   ./| .vvvvv.  |\\
+         /   \`^^^^^'  / _   _  \`|_ ||  / /| |     |  | \\
+       ./  /|         | O)  O   ) \\|| //' | \`^vvvv'  |/\\\\
+      /   / |         \\        /  | | ~   \\          |  \\\\
+      \\  /  |        / \\ Y   /'   | \\     |          |   ~
+       \`'   |  _     |  \`._/' |   |  \\     7        /
+         _.-'-' \`-'-'|  |\`-._/   /    \\ _ /    .    |
+    __.-'            \\  \\   .   / \\_.  \\ -|_/\\/ \`--.|_
+ --'                  \\  \\ |   /    |  |              \`-
+                       \\uU \\UU/     |  /   :F_P:
+        `);
+        console.time('initialization time');
+        const sources = await monsterManager.source.getEntries();
+        const numSegments = sources.reduce((p, c) => p + c[1].segments.length, 0);
+        const targetLangs = (await monsterManager.source.getTargetLangs()).sort();
+        console.log(`${numSegments} segments in ${sources.length} resources needing ${targetLangs.length} languages`);
+        for (const targetLang of targetLangs) {
+            const tm = await monsterManager.tmm.getTM(monsterManager.sourceLang, targetLang);
+            console.log(`${targetLang} TM has ${tm.guids.length} entries`);
+        }
+        console.timeEnd('initialization time');
     }))
 ;
 

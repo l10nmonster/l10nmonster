@@ -2,6 +2,8 @@
 	"sourceLang": "en",
 	"targetLang": "ja",
 	"translationProvider": "Grandfather",
+	"jobGuid": "xxx0xxx",
+	"status": "done",
 	"tus": [
 		{
 			"guid": "-F2Yq3lwYOhHG0xz8mEFU_MyPwv5P12jhHCozNyJ0SY",
@@ -48339,7 +48341,5 @@
 			"ts": 1
 		}
 	],
-	"status": "done",
-	"jobGuid": "xxx0xxx",
 	"updatedAt": "2022-05-29T00:00:00.000Z"
 }

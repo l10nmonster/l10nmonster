@@ -439,14 +439,6 @@
 			"ts": 1
 		},
 		{
-			"sid": "org.alfresco.profile.status-changed",
-			"guid": "faMqWWwPGfL2ojQpJKVq5ag3W9oKmvVS4vT4_XpaDIA",
-			"contentType": "default",
-			"src": "{1}: {2}",
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
-		},
-		{
 			"sid": "label.header",
 			"guid": "mpN5e7DwX3x1lq6tGeCw3pN5XojDAp0yBMSeOOyuCpc",
 			"contentType": "default",
@@ -724,6 +716,14 @@
 			"guid": "Z7s4QyJAhYHCiMy_1QBsnWuFYjFGjeUweCymtEG5EI0",
 			"contentType": "default",
 			"src": "You are the only site member.",
+			"rid": "dashlets/colleagues.get_en.properties",
+			"ts": 1
+		},
+		{
+			"sid": "empty.description",
+			"guid": "izQWYgYqKwqWjsdbFGDGR2vStXjgSKPkDzfkUNC_dZY",
+			"contentType": "default",
+			"src": "",
 			"rid": "dashlets/colleagues.get_en.properties",
 			"ts": 1
 		},
@@ -2139,6 +2139,14 @@
 			"ts": 1
 		},
 		{
+			"sid": "dashlet.help",
+			"guid": "c-6fDjw00nB1UJtukMnmj1d18-MHF12J24XzB-fT4xg",
+			"contentType": "default",
+			"src": "This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed.",
+			"rid": "dashlets/rssfeed.get_en.properties",
+			"ts": 1
+		},
+		{
 			"sid": "header.title",
 			"guid": "vOu-eNJHDEBQChRKqLed8BwIg3TYqS4vXtfiyYVOock",
 			"contentType": "default",
@@ -2428,6 +2436,14 @@
 			"guid": "yj4g5ndRJ2pR2YT6I5HJFiWAQwVkHxyWyuDH43euBnc",
 			"contentType": "default",
 			"src": "No text has been configured",
+			"rid": "dashlets/site-notice.get_en.properties",
+			"ts": 1
+		},
+		{
+			"sid": "link.configure",
+			"guid": "dI6k9BSigj6gEI0usWMTDR1B9zsFO8ws9atTiah-8Y4",
+			"contentType": "default",
+			"src": "Configure",
 			"rid": "dashlets/site-notice.get_en.properties",
 			"ts": 1
 		},

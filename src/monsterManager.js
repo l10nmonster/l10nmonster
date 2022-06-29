@@ -1,37 +1,28 @@
-import * as path from 'path';
-import {
-    existsSync,
-    readFileSync,
-} from 'fs';
-import * as fs from 'fs/promises';
-import {
-    createHash,
-} from 'crypto';
 import wordsCountModule from 'words-count';
 
 import TMManager from './tmManager.js';
+import SourceManager from './sourceManager.js';
 import { JsonJobStore } from './stores/jsonJobStore.js';
-import { getNormalizedString, flattenNormalizedSourceToOrdinal, sourceAndTargetAreCompatible } from './normalizers/util.js';
+import { sourceAndTargetAreCompatible } from './normalizers/util.js';
+import { makeTU, fixCaseInsensitiveKey } from './shared.js';
 
 export default class MonsterManager {
-    constructor({ monsterDir, monsterConfig, ctx }) {
+    constructor({ monsterDir, monsterConfig, configSeal, ctx, defaultAnalyzers = {}, sourceMirrorDir }) {
         if (monsterDir && monsterConfig && monsterConfig.sourceLang &&
                 (monsterConfig.translationProvider || monsterConfig.translationProviders) &&
                 (monsterConfig.contentTypes || (monsterConfig.source && monsterConfig.resourceFilter && monsterConfig.target)) === undefined) {
             throw 'You must specify sourceLang, translationProvider, minimumQuality, contentTypes (or source+resourceFilter+target) in l10nmonster.mjs';
         } else {
             this.monsterDir = monsterDir;
+            this.configSeal = configSeal;
             this.ctx = ctx;
             this.jobStore = monsterConfig.jobStore ?? new JsonJobStore({
                 jobsDir: 'l10njobs',
             });
-            this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, ctx });
-            this.stateStore = monsterConfig.stateStore;
+            this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, ctx, configSeal });
             this.debug = monsterConfig.debug ?? {};
             this.sourceLang = monsterConfig.sourceLang;
             this.minimumQuality = monsterConfig.minimumQuality;
-            this.qualifiedPenalty = monsterConfig.qualifiedPenalty;
-            this.unqualifiedPenalty = monsterConfig.unqualifiedPenalty;
             if (monsterConfig.contentTypes) {
                 this.contentTypes = monsterConfig.contentTypes;
             } else {
@@ -57,22 +48,12 @@ export default class MonsterManager {
                 });
             }
             this.tuFilters = monsterConfig.tuFilters;
-            this.sourceCachePath = path.join(monsterDir, 'sourceCache.json');
-            this.sourceCache = existsSync(this.sourceCachePath) ?
-                JSON.parse(readFileSync(this.sourceCachePath, 'utf8')) :
-                { };
-            this.sourceCacheStale = true;
+            this.source = new SourceManager({ logger: ctx.logger, prj: ctx.prj, monsterDir, configSeal, contentTypes: this.contentTypes, sourceMirrorDir });
+            this.analyzers = {
+                ...defaultAnalyzers,
+                ...(monsterConfig.analyzers ?? {}),
+            };
         }
-    }
-
-    generateGuid(str) {
-        const sidContentHash = createHash('sha256');
-        sidContentHash.update(str, 'utf8');
-        return sidContentHash.digest().toString('base64').substring(0, 43).replaceAll('+', '-').replaceAll('/', '_');
-    }
-
-    generateFullyQualifiedGuid(rid, sid, str) {
-        return this.generateGuid(`${rid}|${sid}|${str}`);
     }
 
     getMinimumQuality(jobManifest) {
@@ -85,76 +66,6 @@ export default class MonsterManager {
         } else {
             return minimumQuality;
         }
-    }
-
-    async fetchResourceStats() {
-        const combinedStats = [];
-        for (const [ contentType, handler ] of Object.entries(this.contentTypes)) {
-            const stats = await handler.source.fetchResourceStats();
-            this.ctx.logger.verbose(`Fetched resource stats for content type ${contentType}`);
-            for (const res of stats) {
-                res.contentType = contentType;
-            }
-            combinedStats.push(stats);
-        }
-        return combinedStats.flat(1);
-    }
-
-    async updateSourceCache() {
-        if (this.sourceCacheStale) {
-            const newCache = { };
-            const stats = await this.fetchResourceStats();
-            let dirty = stats.length !== Object.keys(this.sourceCache).length;
-            for (const res of stats) {
-                if (this.sourceCache[res.id]?.modified === res.modified) {
-                    newCache[res.id] = this.sourceCache[res.id];
-                } else {
-                    dirty = true;
-                    const pipeline = this.contentTypes[res.contentType];
-                    const payload = await pipeline.source.fetchResource(res.id);
-                    let parsedRes = await pipeline.resourceFilter.parseResource({resource: payload, isSource: true});
-                    res.segments = parsedRes.segments;
-                    for (const seg of res.segments) {
-                        if (pipeline.decoders) {
-                            const normalizedStr = getNormalizedString(seg.str, pipeline.decoders);
-                            if (normalizedStr[0] !== seg.str) {
-                                seg.nstr = normalizedStr;
-                            }
-                        }
-                        const flattenStr = seg.nstr ? flattenNormalizedSourceToOrdinal(seg.nstr) : seg.str;
-                        flattenStr !== seg.str && (seg.gstr = flattenStr);
-                        seg.guid = this.generateFullyQualifiedGuid(res.id, seg.sid, flattenStr);
-                        seg.contentType = res.contentType;
-                    }
-                    pipeline.segmentDecorator && (res.segments = pipeline.segmentDecorator(parsedRes.segments));
-                    newCache[res.id] = res;
-                }
-            }
-            if (dirty) {
-                this.ctx.logger.info(`Updating ${this.sourceCachePath}...`);
-                await fs.writeFile(this.sourceCachePath, JSON.stringify(newCache, null, '\t'), 'utf8');
-                this.sourceCache = newCache;
-            }
-            this.sourceCacheStale = false;
-        }
-    }
-
-    getSourceCacheEntries() {
-        return Object.entries(this.sourceCache)
-            // eslint-disable-next-line no-unused-vars
-            .filter(([rid, res]) => (this.ctx.prj === undefined || this.ctx.prj.includes(res.prj)));
-    }
-
-    async getSourceAsTus() {
-        const sourceLookup = {};
-        await this.updateSourceCache();
-        // eslint-disable-next-line no-unused-vars
-        for (const [ rid, res ] of this.getSourceCacheEntries()) {
-            for (const seg of res.segments) {
-                sourceLookup[seg.guid] = this.makeTU(res, seg);
-            }
-        }
-        return sourceLookup;
     }
 
     // use cases:
@@ -178,27 +89,9 @@ export default class MonsterManager {
         }
     }
 
-    makeTU(res, segment) {
-        const { str, nstr, ...seg } = segment;
-        const tu = {
-            ...seg,
-            src: str,
-            contentType: res.contentType,
-            rid: res.id,
-            ts: new Date(res.modified).getTime(),
-        };
-        if (nstr !== undefined) {
-            tu.nsrc = nstr;
-        }
-        if (res.prj !== undefined) {
-            tu.prj = res.prj;
-        }
-        return tu;
-    }
-
     // eslint-disable-next-line complexity
     async #internalPrepareTranslationJob({ targetLang, minimumQuality, leverage }) {
-        const sources = this.getSourceCacheEntries();
+        const sources = await this.source.getEntries();
         const job = {
             sourceLang: this.sourceLang,
             targetLang,
@@ -228,7 +121,7 @@ export default class MonsterManager {
                 for (const seg of res.segments) {
                     // TODO: if segment is pluralized we need to generate/suppress the relevant number of variants for the targetLang
                     const tmEntry = tm.getEntryByGuid(seg.guid);
-                    const tu = this.makeTU(res, seg);
+                    const tu = makeTU(res, seg);
                     const plainText = tu.nsrc ? tu.nsrc.map(e => (typeof e === 'string' ? e : '')).join('') : tu.src;
                     const words = wordsCountModule.wordsCount(plainText);
                     // TODO: compatibility is actually stricter than GUID, this leads to extra translations that can't be stored
@@ -276,7 +169,7 @@ export default class MonsterManager {
 
     async prepareFilterBasedJob({ targetLang, tmBased, guidList }) {
         const tm = await this.tmm.getTM(this.sourceLang, targetLang);
-        const sourceLookup = await this.getSourceAsTus();
+        const sourceLookup = await this.source.getSourceAsTus();
         if (!guidList) {
             if (tmBased) {
                 guidList = tm.guids;
@@ -298,41 +191,20 @@ export default class MonsterManager {
     }
 
     getTranslationProvider(jobManifest) {
-        let translationProviderName = jobManifest.translationProvider;
-        if (!translationProviderName) {
+        if (jobManifest.translationProvider) {
+            jobManifest.translationProvider = fixCaseInsensitiveKey(this.translationProviders, jobManifest.translationProvider);
+        } else {
             for (const [ name, providerCfg ] of Object.entries(this.translationProviders)) {
                 if (!providerCfg.pairs || (providerCfg.pairs[jobManifest.sourceLang] && providerCfg.pairs[jobManifest.sourceLang].includes(jobManifest.targetLang))) {
-                    translationProviderName = name;
                     jobManifest.translationProvider = name;
                     break;
                 }
             }
         }
-        return this.translationProviders[translationProviderName];
-    }
-
-    getTargetLangs(limitToLang, resourceStats) {
-        let langs = [];
-        // eslint-disable-next-line no-unused-vars
-        resourceStats ??= this.getSourceCacheEntries().map(([rid, res]) => res);
-        for (const res of resourceStats) {
-            for (const targetLang of res.targetLangs) {
-                !langs.includes(targetLang) && langs.push(targetLang);
-            }
-        }
-        if (limitToLang) {
-            if (langs.includes(limitToLang)) {
-                langs = [ limitToLang ];
-            } else {
-                throw `Invalid language: ${limitToLang}`;
-            }
-        }
-        return langs;
+        return this.translationProviders[jobManifest.translationProvider];
     }
 
     async shutdown() {
         this.jobStore.shutdown && await this.jobStore.shutdown();
-        this.stateStore?.shutdown && await this.stateStore.shutdown();
     }
-
 }

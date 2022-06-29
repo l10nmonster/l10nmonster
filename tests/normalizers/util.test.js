@@ -1,4 +1,8 @@
-import { flattenNormalizedSourceToXmlV1, extractNormalizedPartsFromXmlV1 } from '../../src/normalizers/util.js';
+/* eslint-disable camelcase */
+import {
+    flattenNormalizedSourceV1, extractNormalizedPartsV1,
+    flattenNormalizedSourceToXmlV1, extractNormalizedPartsFromXmlV1,
+ } from '../../src/normalizers/util.js';
 
 const nsrc1 = [
     { t: 'x', v: "<icon name='location'/>" },
@@ -11,50 +15,90 @@ const nsrc1 = [
 ];
 
 const phMap1 = {
-    a: {
+    a_x_icon: {
         t: "x",
         v: "<icon name='location'/>",
         v1: "a_x_icon",
     },
-    b: {
+    b_x_0: {
         t: "x",
         v: "{0,number,integer}",
         v1: "b_x_0",
     },
-    c: {
+    c_bx_color: {
         t: "bx",
         v: "<color name='green'>",
         v1: "c_bx_color",
     },
-    d: {
+    d_x_1: {
         t: "x",
         v: "{1}",
         v1: "d_x_1",
     },
-    e: {
+    e_ex_color: {
         t: "ex",
         v: "</color>",
         v1: "e_ex_color",
     }
 };
 
-const xml1 = '<a />Price&A:\n\'<b />"  <c /><d /><e />';
+const v1String1 = '{{a_x_icon}}Price&A:\n\'{{b_x_0}}"  {{c_bx_color}}{{d_x_1}}{{e_ex_color}}';
+
+const xml1 = '<x1 />Price&A:\n\'<x2 />"  <x3><x4 /></x3>';
+
+const xmlPhMap1 = {
+    x1: {
+        t: "x",
+        v: "<icon name='location'/>",
+        v1: "a_x_icon",
+    },
+    x2: {
+        t: "x",
+        v: "{0,number,integer}",
+        v1: "b_x_0",
+    },
+    bx3: {
+        t: "bx",
+        v: "<color name='green'>",
+        v1: "c_bx_color",
+    },
+    x4: {
+        t: "x",
+        v: "{1}",
+        v1: "d_x_1",
+    },
+    ex3: {
+        t: "ex",
+        v: "</color>",
+        v1: "e_ex_color",
+    }
+};
 
 describe('Normalizers Util tests', () => {
 
+    test('flattenNormalizedSourceV1', async () => {
+        const xml = flattenNormalizedSourceV1(nsrc1);
+        expect(xml).toEqual([ v1String1, phMap1 ]);
+    });
+
+    test('extractNormalizedPartsV1', async () => {
+        expect(extractNormalizedPartsV1(v1String1, phMap1))
+            .toMatchObject(nsrc1);
+    });
+
     test('flattenNormalizedSourceToXmlV1', async () => {
         const xml = flattenNormalizedSourceToXmlV1(nsrc1);
-        expect(xml).toEqual([ xml1, phMap1 ]);
+        expect(xml).toEqual([ xml1, xmlPhMap1 ]);
     });
 
     test('extractNormalizedPartsFromXmlV1', async () => {
-        expect(extractNormalizedPartsFromXmlV1(xml1, phMap1))
+        expect(extractNormalizedPartsFromXmlV1(xml1, xmlPhMap1))
             .toMatchObject(nsrc1);
     });
 
     test('xmlRoundtripNoMarkup', async () => {
-        const [ xml, phMap ] = flattenNormalizedSourceToXmlV1([ 'foo' ]);
+        const [ xml, phMap ] = flattenNormalizedSourceToXmlV1([ 'foo&bar <8' ]);
         expect(extractNormalizedPartsFromXmlV1(xml, phMap))
-            .toMatchObject([ 'foo' ]);
+            .toMatchObject([ 'foo&bar <8' ]);
     });
 });

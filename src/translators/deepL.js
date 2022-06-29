@@ -1,6 +1,8 @@
 import got from 'got';
-
-import { flattenNormalizedSourceToXmlV1, extractNormalizedPartsFromXmlV1 } from '../normalizers/util.js';
+import {
+    flattenNormalizedSourceToXmlV1, extractNormalizedPartsFromXmlV1,
+    normalizedStringsAreEqual,
+} from '../normalizers/util.js';
 
 const MAX_CHUNK_SIZE = 50;
 
@@ -24,7 +26,7 @@ async function deeplTranslateChunkOp({ baseURL, headers, searchParams, offset}) 
         }
         return translations;
     } catch(error) {
-        throw error.toString();
+        throw `${error.toString()}: ${error.response?.body}`;
     }
 }
 
@@ -130,4 +132,13 @@ export class DeepL {
         throw 'DeepL is a synchronous-only provider';
     }
 
+
+    async refreshTranslations(jobRequest) {
+        const fullResponse = await this.requestTranslations(jobRequest);
+        const reqTuMap = jobRequest.tus.reduce((p,c) => (p[c.guid] = c, p), {});
+        return {
+            ...fullResponse,
+            tus: fullResponse.tus.filter(tu => !normalizedStringsAreEqual(reqTuMap[tu.guid].ntgt ?? reqTuMap[tu.guid].tgt, tu.ntgt ?? tu.tgt)),
+        };
+    }
 }

@@ -1,8 +1,6 @@
 export default class EisenVaultConfig {
     sourceLang = 'en';
     minimumQuality = 50;
-    qualifiedPenalty = 1;
-    unqualifiedPenalty = 9;
 
     constructor({ adapters, filters, translators }) {
         this.source = new adapters.FsSource({
@@ -13,8 +11,23 @@ export default class EisenVaultConfig {
         this.target = new adapters.FsTarget({
             targetPath: (lang, resourceId) => resourceId.replace('_en.properties', `_${lang.replace('-', '_')}.properties`),
         });
-        this.translationProvider = new translators.PigLatinizer({
-            quality: 2
-        });
+        this.translationProviders = {
+            PigLatinizer: {
+                translator: new translators.PigLatinizer({
+                    quality: 2
+                }),
+            },
+            Repetition: {
+                translator: new translators.Repetition({
+                    qualifiedPenalty: 1,
+                    unqualifiedPenalty: 9,
+                }),
+            },
+            Grandfather: {
+                translator: new translators.Grandfather({
+                    quality: 70,
+                }),
+            },
+        };
     }
 }

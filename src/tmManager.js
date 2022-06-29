@@ -2,25 +2,34 @@ import * as path from 'path';
 import {
     existsSync,
     readFileSync,
+    writeFileSync,
 } from 'fs';
-import * as fs from 'fs/promises';
 import { flattenNormalizedSourceToOrdinal } from './normalizers/util.js';
 import { cleanupTU, targetTUWhitelist } from './schemas.js';
 
 class TM {
-    dirty = false;
-    constructor(sourceLang, targetLang, tmPathName, logger) {
+    constructor(sourceLang, targetLang, tmPathName, logger, configSeal, jobs) {
+        const EMPTY_TM = {
+            sourceLang,
+            targetLang,
+            configSeal,
+            jobStatus: {},
+            tus: {},
+        };
         this.tmPathName = tmPathName;
         this.logger = logger;
-        this.tm = existsSync(this.tmPathName) ?
-            JSON.parse(readFileSync(this.tmPathName, 'utf8')) :
-            {
-                sourceLang,
-                targetLang,
-                jobStatus: {},
-                tus: {},
+        if (existsSync(tmPathName)) {
+            this.tm = JSON.parse(readFileSync(tmPathName, 'utf8'));
+            const jobMap = Object.fromEntries(jobs);
+            const extraJobs = Object.keys(this.tm?.jobStatus ?? {}).filter(jobGuid => !jobMap[jobGuid]);
+            // nuke the cache if config seal is broken or jobs were removed
+            if (!(this.tm?.configSeal === configSeal) || extraJobs.length > 0) {
+                this.tm = EMPTY_TM;
+                logger.info(`Nuking existing TM ${tmPathName}`);
             }
-        ;
+        } else {
+            this.tm = EMPTY_TM;
+        }
         this.lookUpByFlattenSrc = {};
         Object.values(this.tm.tus).forEach(tu => this.setEntryByGuid(tu.guid, tu)); // this is to generate side-effects
     }
@@ -45,7 +54,6 @@ class TM {
         }
         const cleanedTU = cleanupTU(entry, targetTUWhitelist);
         this.tm.tus[guid] = cleanedTU;
-        this.dirty = true;
         const flattenSrc = cleanedTU.nsrc ? flattenNormalizedSourceToOrdinal(cleanedTU.nsrc) : cleanedTU.src;
         this.lookUpByFlattenSrc[flattenSrc] ??= [];
         !this.lookUpByFlattenSrc[flattenSrc].includes(cleanedTU) && this.lookUpByFlattenSrc[flattenSrc].push(cleanedTU);
@@ -60,22 +68,16 @@ class TM {
         return this.tm.jobStatus[jobGuid];
     }
 
-    setJobStatus(jobGuid, status) {
-        if (this.tm.jobStatus[jobGuid] !== status) {
-            this.tm.jobStatus[jobGuid] = status;
-            this.dirty = true;
-        }
+    setJobStatus(jobGuid, status, mtime) {
+        this.tm.jobStatus[jobGuid] = { status, mtime };
     }
 
     async commit() {
-        if (this.dirty) {
-            this.logger.info(`Updating ${this.tmPathName}...`);
-            await fs.writeFile(this.tmPathName, JSON.stringify(this.tm, null, '\t'), 'utf8');
-            this.dirty = false;
-        }
+        this.logger.info(`Updating ${this.tmPathName}...`);
+        writeFileSync(this.tmPathName, JSON.stringify(this.tm, null, '\t'), 'utf8');
     }
 
-    async processJob(jobResponse, jobRequest) {
+    async processJob(jobResponse, jobRequest, mtime) {
         const requestedUnits = (jobRequest?.tus ?? []).reduce((p,c) => (p[c.guid] = c, p), {});
         const { jobGuid, status, inflight, tus } = jobResponse;
         if (inflight) {
@@ -100,39 +102,40 @@ class TM {
                 }
             }
         }
-        this.setJobStatus(jobGuid, status);
-        await this.commit();
+        this.setJobStatus(jobGuid, status, mtime);
     }
 }
 
 export default class TMManager {
-    constructor({ monsterDir, jobStore, ctx }) {
+    constructor({ monsterDir, jobStore, ctx, configSeal }) {
         this.monsterDir = monsterDir;
         this.jobStore = jobStore;
         this.ctx = ctx;
+        this.configSeal = configSeal;
         this.tmCache = {};
         this.generation = new Date().getTime();
     }
 
     async getTM(sourceLang, targetLang) {
+        let dirty = false;
         const tmFileName = `tmCache_${sourceLang}_${targetLang}.json`;
         let tm = this.tmCache[tmFileName];
         if (!tm) {
-            tm = new TM(sourceLang, targetLang, path.join(this.monsterDir, tmFileName), this.ctx.logger);
-            this.tmCache[tmFileName] = tm;
-        }
-        if (tm.generation !== this.generation) {
-            tm.generation = this.generation;
             const jobs = (await this.jobStore.getJobStatusByLangPair(sourceLang, targetLang))
-                .filter(e => [ 'pending', 'done' ].includes(e[1]));
-            for (const [jobGuid, status] of jobs) {
-                if (tm.getJobStatus(jobGuid) !== status) {
+                .filter(e => [ 'pending', 'done' ].includes(e[1].status));
+            tm = new TM(sourceLang, targetLang, path.join(this.monsterDir, tmFileName), this.ctx.logger, this.configSeal, jobs);
+            this.tmCache[tmFileName] = tm;
+            for (const [jobGuid, jobStat] of jobs) {
+                const jobInTM = tm.getJobStatus(jobGuid);
+                if (!(jobInTM?.status === jobStat.status) || !(jobInTM?.mtime === jobStat.mtime)) {
                     this.ctx.logger.info(`Applying job ${jobGuid} to the ${sourceLang} -> ${targetLang} TM...`);
                     const jobResponse = await this.jobStore.getJob(jobGuid);
                     const jobRequest = await this.jobStore.getJobRequest(jobGuid);
-                    await tm.processJob(jobResponse, jobRequest);
+                    await tm.processJob(jobResponse, jobRequest, jobStat.mtime);
+                    dirty = true;
                 }
             }
+            dirty && (await tm.commit());
         }
         return tm;
     }

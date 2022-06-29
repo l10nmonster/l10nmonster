@@ -1,5 +1,6 @@
 export default class EisenVaultConfig {
     sourceLang = 'en';
+    minimumQuality = 50;
 
     constructor({ adapters, filters, normalizers }) {
         this.source = new adapters.FsSource({

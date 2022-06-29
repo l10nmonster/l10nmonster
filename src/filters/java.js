@@ -12,10 +12,16 @@ export class JavaPropertiesFilter {
                     str: e.element,
                 };
                 if (previousComment) {
-                    seg.notes = previousComment;
+                    if (previousComment.indexOf('DO_NOT_TRANSLATE') === -1) {
+                        segments.push({
+                            ...seg,
+                            notes: previousComment,
+                        });
+                    }
                     previousComment = null;
+                } else {
+                    segments.push(seg);
                 }
-                segments.push(seg);
             } else {
                 previousComment = e.original;
             }

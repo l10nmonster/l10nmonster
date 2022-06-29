@@ -1,0 +1,29 @@
+{
+	"numSources": 1,
+	"lang": {
+		"ja": {
+			"leverage": {
+				"tmSize": 6957,
+				"minimumQuality": 0,
+				"prjLeverage": {
+					"default": {
+						"translated": 6957,
+						"translatedWords": 41629,
+						"translatedByQ": {
+							"2": 45,
+							"61": 7,
+							"70": 6905
+						},
+						"untranslated": 0,
+						"untranslatedChars": 0,
+						"untranslatedWords": 0,
+						"pending": 0,
+						"pendingWords": 0,
+						"internalRepetitions": 0,
+						"internalRepetitionWords": 0
+					}
+				}
+			}
+		}
+	}
+}
