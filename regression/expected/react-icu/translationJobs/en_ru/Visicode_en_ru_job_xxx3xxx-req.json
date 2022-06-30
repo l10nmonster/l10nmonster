@@ -14,17 +14,20 @@
 			"nsrc": [
 				{
 					"t": "bx",
-					"v": "<b>"
+					"v": "<b>",
+					"v1": "a_bx_b"
 				},
 				"Welcome",
 				{
 					"t": "ex",
-					"v": "</b>"
+					"v": "</b>",
+					"v1": "b_ex_b"
 				},
 				" to ",
 				{
 					"t": "x",
-					"v": "$t(brand:portalName)"
+					"v": "$t(brand:portalName)",
+					"v1": "c_x_t"
 				},
 				"."
 			]
@@ -41,12 +44,14 @@
 			"nsrc": [
 				{
 					"t": "bx",
-					"v": "<strong>"
+					"v": "<strong>",
+					"v1": "a_bx_strong"
 				},
 				"Welcome back",
 				{
 					"t": "ex",
-					"v": "</strong>"
+					"v": "</strong>",
+					"v1": "b_ex_strong"
 				},
 				" to travel."
 			]
@@ -91,7 +96,8 @@
 				"You can search for up to ",
 				{
 					"t": "x",
-					"v": "{{maximumCount}}"
+					"v": "{{maximumCount}}",
+					"v1": "a_x_maximumCount"
 				},
 				" travelers"
 			]
@@ -108,21 +114,25 @@
 			"nsrc": [
 				{
 					"t": "bx",
-					"v": "<p>"
+					"v": "<p>",
+					"v1": "a_bx_p"
 				},
 				{
 					"t": "x",
-					"v": "$t(brand:portalName)"
+					"v": "$t(brand:portalName)",
+					"v1": "b_x_t"
 				},
 				" price services and notifications. ",
 				{
 					"t": "x",
-					"v": "$t(brand:clientName)"
+					"v": "$t(brand:clientName)",
+					"v1": "c_x_t"
 				},
 				" work hard to ensure the accuracy of its predictions. ",
 				{
 					"t": "ex",
-					"v": "</p>"
+					"v": "</p>",
+					"v1": "d_ex_p"
 				}
 			]
 		},
@@ -139,7 +149,8 @@
 			"nsrc": [
 				{
 					"t": "x",
-					"v": "{{count}}"
+					"v": "{{count}}",
+					"v1": "a_x_count"
 				},
 				" day"
 			]
@@ -157,7 +168,8 @@
 			"nsrc": [
 				{
 					"t": "x",
-					"v": "{{count}}"
+					"v": "{{count}}",
+					"v1": "a_x_count"
 				},
 				" days"
 			]
@@ -175,7 +187,8 @@
 			"nsrc": [
 				{
 					"t": "x",
-					"v": "{{count}}"
+					"v": "{{count}}",
+					"v1": "a_x_count"
 				},
 				" hour"
 			]
@@ -193,7 +206,8 @@
 			"nsrc": [
 				{
 					"t": "x",
-					"v": "{{count}}"
+					"v": "{{count}}",
+					"v1": "a_x_count"
 				},
 				" hours"
 			]
@@ -211,7 +225,8 @@
 			"nsrc": [
 				{
 					"t": "x",
-					"v": "{{count}}"
+					"v": "{{count}}",
+					"v1": "a_x_count"
 				},
 				" second"
 			]
@@ -229,7 +244,8 @@
 			"nsrc": [
 				{
 					"t": "x",
-					"v": "{{count}}"
+					"v": "{{count}}",
+					"v1": "a_x_count"
 				},
 				" seconds"
 			]

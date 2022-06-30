@@ -11,17 +11,20 @@
 				"⇥",
 				{
 					"t": "bx",
-					"v": "<b>"
+					"v": "<b>",
+					"v1": "a_bx_b"
 				},
 				"W̳e̳l̳c̳o̳m̳e̳",
 				{
 					"t": "ex",
-					"v": "</b>"
+					"v": "</b>",
+					"v1": "b_ex_b"
 				},
 				" ̳t̳o̳ ̳",
 				{
 					"t": "x",
-					"v": "$t(brand:portalName)"
+					"v": "$t(brand:portalName)",
+					"v1": "c_x_t"
 				},
 				".̳",
 				"⇤"
@@ -35,12 +38,14 @@
 				"⇥",
 				{
 					"t": "bx",
-					"v": "<strong>"
+					"v": "<strong>",
+					"v1": "a_bx_strong"
 				},
 				"W̳e̳l̳c̳o̳m̳e̳ ̳b̳a̳c̳k̳",
 				{
 					"t": "ex",
-					"v": "</strong>"
+					"v": "</strong>",
+					"v1": "b_ex_strong"
 				},
 				" ̳t̳o̳ ̳t̳r̳a̳v̳e̳l̳.̳",
 				"⇤"
@@ -70,7 +75,8 @@
 				"Y̳o̳u̳ ̳c̳a̳n̳ ̳s̳e̳a̳r̳c̳h̳ ̳f̳o̳r̳ ̳u̳p̳ ̳t̳o̳ ̳",
 				{
 					"t": "x",
-					"v": "{{maximumCount}}"
+					"v": "{{maximumCount}}",
+					"v1": "a_x_maximumCount"
 				},
 				" ̳t̳r̳a̳v̳e̳l̳e̳r̳s̳",
 				"⇤"
@@ -84,21 +90,25 @@
 				"⇥",
 				{
 					"t": "bx",
-					"v": "<p>"
+					"v": "<p>",
+					"v1": "a_bx_p"
 				},
 				{
 					"t": "x",
-					"v": "$t(brand:portalName)"
+					"v": "$t(brand:portalName)",
+					"v1": "b_x_t"
 				},
 				" ̳p̳r̳i̳c̳e̳ ̳s̳e̳r̳v̳i̳c̳e̳s̳ ̳a̳n̳d̳ ̳n̳o̳t̳i̳f̳i̳c̳a̳t̳i̳o̳n̳s̳.̳ ̳",
 				{
 					"t": "x",
-					"v": "$t(brand:clientName)"
+					"v": "$t(brand:clientName)",
+					"v1": "c_x_t"
 				},
 				" ̳w̳o̳r̳k̳ ̳h̳a̳r̳d̳ ̳t̳o̳ ̳e̳n̳s̳u̳r̳e̳ ̳t̳h̳e̳ ̳a̳c̳c̳u̳r̳a̳c̳y̳ ̳o̳f̳ ̳i̳t̳s̳ ̳p̳r̳e̳d̳i̳c̳t̳i̳o̳n̳s̳.̳ ̳",
 				{
 					"t": "ex",
-					"v": "</p>"
+					"v": "</p>",
+					"v1": "d_ex_p"
 				},
 				"⇤"
 			],
@@ -111,7 +121,8 @@
 				"⇥",
 				{
 					"t": "x",
-					"v": "{{count}}"
+					"v": "{{count}}",
+					"v1": "a_x_count"
 				},
 				" ̳d̳a̳y̳",
 				"⇤"
@@ -125,7 +136,8 @@
 				"⇥",
 				{
 					"t": "x",
-					"v": "{{count}}"
+					"v": "{{count}}",
+					"v1": "a_x_count"
 				},
 				" ̳d̳a̳y̳s̳",
 				"⇤"
@@ -139,7 +151,8 @@
 				"⇥",
 				{
 					"t": "x",
-					"v": "{{count}}"
+					"v": "{{count}}",
+					"v1": "a_x_count"
 				},
 				" ̳h̳o̳u̳r̳",
 				"⇤"
@@ -153,7 +166,8 @@
 				"⇥",
 				{
 					"t": "x",
-					"v": "{{count}}"
+					"v": "{{count}}",
+					"v1": "a_x_count"
 				},
 				" ̳h̳o̳u̳r̳s̳",
 				"⇤"
@@ -167,7 +181,8 @@
 				"⇥",
 				{
 					"t": "x",
-					"v": "{{count}}"
+					"v": "{{count}}",
+					"v1": "a_x_count"
 				},
 				" ̳s̳e̳c̳o̳n̳d̳",
 				"⇤"
@@ -181,7 +196,8 @@
 				"⇥",
 				{
 					"t": "x",
-					"v": "{{count}}"
+					"v": "{{count}}",
+					"v1": "a_x_count"
 				},
 				" ̳s̳e̳c̳o̳n̳d̳s̳",
 				"⇤"
