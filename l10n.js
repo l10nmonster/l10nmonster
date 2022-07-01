@@ -38,6 +38,7 @@ import { AndroidFilter } from './src/filters/android.js';
 import { JavaPropertiesFilter } from './src/filters/java.js';
 import { IosStringsFilter } from './src/filters/ios.js';
 import { JsonFilter } from './src/filters/json.js';
+import { HTMLFilter } from './src/filters/html.js';
 
 import { Repetition } from './src/translators/repetition.js';
 import { Grandfather } from './src/translators/grandfather.js';
@@ -107,7 +108,7 @@ async function initMonster() {
                 FsSource, FsTarget,
             },
             filters: {
-                PoFilter, AndroidFilter, JavaPropertiesFilter, IosStringsFilter, JsonFilter
+                PoFilter, AndroidFilter, JavaPropertiesFilter, IosStringsFilter, JsonFilter, HTMLFilter
             },
             normalizers: {
                 ...regexNormalizers,

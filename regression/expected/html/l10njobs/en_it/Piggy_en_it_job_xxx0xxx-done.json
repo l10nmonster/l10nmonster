@@ -1,0 +1,1198 @@
+{
+	"sourceLang": "en",
+	"targetLang": "it",
+	"translationProvider": "Piggy",
+	"jobGuid": "xxx0xxx",
+	"status": "done",
+	"tus": [
+		{
+			"guid": "7Zu7CxuYzs5ZR0W1CgMZ3Y60_TzEYEhb42mXanyeHXI",
+			"tgt": "[HTML Atternspay-it]",
+			"q": 1
+		},
+		{
+			"guid": "LjDrR5b5nHk64-qjOasBlp2I8RDRPnU7O2JQcZ_hoxY",
+			"tgt": "[HTML-it]",
+			"q": 1
+		},
+		{
+			"guid": "LZ7oZfH9c9Th-bJLS_z3nFjp6JO4ZZZ-aOI0bcQAq5w",
+			"tgt": "[Itesay itletay-it]",
+			"q": 1
+		},
+		{
+			"guid": "kSISVxd-A8cFnlN_ShhjPojxAm1zr7DWhuHP9Y-tWBA",
+			"ntgt": [
+				"[",
+				{
+					"t": "bx",
+					"v": "<a href=\"#\" title=\"Home\">"
+				},
+				"Omehay",
+				{
+					"t": "ex",
+					"v": "</a>"
+				},
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		},
+		{
+			"guid": "Yap997wEEsIyvcjBXwkfDwV6OMNlFrDZQRma-EKlJis",
+			"ntgt": [
+				"[",
+				{
+					"t": "bx",
+					"v": "<a href=\"#\" title=\"About\">"
+				},
+				"Aboutyay",
+				{
+					"t": "ex",
+					"v": "</a>"
+				},
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		},
+		{
+			"guid": "53EOx6hhx30ZfMcHlUlZqoagnkTSjJAMEfMXXnq0U7Q",
+			"ntgt": [
+				"[",
+				{
+					"t": "bx",
+					"v": "<a href=\"#\" title=\"Sign Up\">"
+				},
+				"Ignsay Upyay",
+				{
+					"t": "ex",
+					"v": "</a>"
+				},
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		},
+		{
+			"guid": "ACSOaEr33qAxlLjVOSqJXiTOvytg_yKJsU9RvLpA81w",
+			"ntgt": [
+				"[",
+				{
+					"t": "bx",
+					"v": "<a href=\"#\" title=\"Contact\">"
+				},
+				"Ontactcay",
+				{
+					"t": "ex",
+					"v": "</a>"
+				},
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		},
+		{
+			"guid": "coxExN8zoB7YZooahTk8eeV3tmNziNZEMAd81rCYu8o",
+			"ntgt": [
+				"[",
+				{
+					"t": "bx",
+					"v": "<a href=\"#\" title=\"Careers\">"
+				},
+				"Areerscay",
+				{
+					"t": "ex",
+					"v": "</a>"
+				},
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		},
+		{
+			"guid": "SOxT5faplVXI4GGokCOPqgIQ1ZUnf5ypouTCjSr14aM",
+			"ntgt": [
+				"[",
+				"Eadingshay & Opycay",
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		},
+		{
+			"guid": "SEQc8QE_rTYPGRu3nHP4sJCfYoYCvNX_KkI6_YOu3oo",
+			"tgt": "[Irstfay Eaderhay h1-it]",
+			"q": 1
+		},
+		{
+			"guid": "11yPtt1t4_DADcX9X7sPiyxemTUY-oMJPmGI18oaH6U",
+			"tgt": "[Atyay erovay eosyay etyay accusamusyay etyay iustoyay odioyay ignissimosday ucimusday uiqay anditiisblay\n        aesentiumpray oluptatumvay elenitiday atqueyay orrupticay uosqay.-it]",
+			"q": 1
+		},
+		{
+			"guid": "3wdLhbAMOn_6qB0SZZ6TjaIoqDHkGVCV3X5OPwdt_yo",
+			"tgt": "[Econdsay eaderhay h2-it]",
+			"q": 1
+		},
+		{
+			"guid": "Xqgi42f66G5S52MOye5A3MTaUoyNKJ3h_jgLQuyKwKA",
+			"tgt": "[Oremlay ipsumyay olorday itsay ametyay, onsecteturcay adipisicingyay elityay, edsay oday eiusmodyay\n        emportay incididuntyay utyay aborelay etyay oloreday agnamay aliquayay. Utyay enimyay adyay inim-may eniamvay,\n        uisqay ostrudnay exercitationyay ullamcoyay aborislay isinay utyay aliquipyay exyay eayay ommodocay\n        onsequatcay. Uisday auteyay irureyay olorday inyay eprehenderitray inyay oluptatevay elitvay esseyay\n        illumcay oloreday euyay ugiatfay ullanay ariaturpay. Excepteuryay intsay occaecatyay upidatatcay\n        on-nay oidentpray, untsay inyay ulpacay uiqay officiayay eseruntday ollitmay animyay idyay estyay aborumlay.-it]",
+			"q": 1
+		},
+		{
+			"guid": "fpWY0mqxFUwyUXEGZSiJCpi2LK1_5bDgk1icXB2C_wY",
+			"tgt": "[Irdthay eaderhay h3-it]",
+			"q": 1
+		},
+		{
+			"guid": "6q2bDflGzN6uGFeDBVrUrKvaS9m2kspmKFqQXphCBwk",
+			"tgt": "[Atyay erovay eosyay etyay accusamusyay etyay iustoyay odioyay ignissimosday ucimusday uiqay anditiisblay\n        aesentiumpray oluptatumvay elenitiday atqueyay orrupticay uosqay oloresday etyay uasqay\n        olestiasmay excepturiyay intsay occaecatiyay upiditatecay on-nay ovidentpray, imiliquesay untsay\n        inyay ulpacay uiqay officiayay eseruntday ollitiamay animiyay, idyay estyay aborumlay etyay olorumday\n        ugafay. Etyay arumhay uidemqay erumray acilisfay estyay etyay expeditayay istinctioday.-it]",
+			"q": 1
+		},
+		{
+			"guid": "pX8gAVMEgJAZ_8wY7l3lzd-62aZLBxUbv_LqyjpskcE",
+			"tgt": "[Ourthfay eaderhay h4-it]",
+			"q": 1
+		},
+		{
+			"guid": "jtXnstFgLfEwP9X5yf3CJeRyasWfzu-JOYGC0uPHKCQ",
+			"tgt": "[Equenay orropay uisquamqay estyay, uiqay oloremday ipsumyay uiaqay olorday itsay ametyay,\n        onsecteturcay, adipisciyay elitvay, edsay uiaqay on-nay umquamnay eiusyay odimay emporatay inciduntyay\n        utyay aborelay etyay oloreday agnam-may aliquamyay uaeratqay oluptatemvay. Utyay enimyay adyay inimamay\n        eniamvay, uisqay ostrumnay exercitationemyay ullamyay orporiscay uscipitsay aboriosamlay, isinay\n        utyay aliquidyay exyay eayay ommodicay onsequaturcay? Uisqay autemyay elvay eumyay iureyay eprehenderitray\n        uiqay inyay eayay oluptatevay elitvay esseyay uamqay ihilnay olestiaemay onsequaturcay, elvay illumyay\n        uiqay oloremday eumyay ugiatfay uoqay oluptasvay ullanay ariaturpay?\"-it]",
+			"q": 1
+		},
+		{
+			"guid": "MQZrFKeco9Yk1m0URYB4veN1R6QGlokZgTmSpsEFMrA",
+			"tgt": "[Ifthfay eaderhay h5-it]",
+			"q": 1
+		},
+		{
+			"guid": "428B6CFch7RxyhDzVVNF6RrmQkPy-mm7BzHQPkEDD4A",
+			"tgt": "[Edsay utyay erspiciatispay undeyay omnisyay isteyay atusnay erroryay itsay oluptatemvay accusantiumyay\n        oloremqueday audantiumlay, otamtay emray aperiamyay, eaqueyay ipsayay uaeqay abyay illoyay inventoreyay\n        eritatisvay etyay uasiqay architectoyay eataebay itaevay ictaday untsay explicaboyay. Emonay enimyay\n        ipsamyay oluptatemvay uiaqay oluptasvay itsay aspernaturyay autyay odityay autyay ugitfay, edsay uiaqay\n        onsequunturcay agnimay oloresday eosyay uiqay ationeray oluptatemvay equisay esciuntnay.-it]",
+			"q": 1
+		},
+		{
+			"guid": "jFWYyTeNykq3mNWSARoBtSjXag7PO4EH5M62CfGE_bo",
+			"tgt": "[Ixthsay eaderhay h6-it]",
+			"q": 1
+		},
+		{
+			"guid": "c5CFcSj2SA3Zg8V0IKc-Smp1zg4pWo-ndDa10XFDilc",
+			"ntgt": [
+				"[",
+				{
+					"t": "bx",
+					"v": "<h1 class=\"other-class\">"
+				},
+				"Inkslay",
+				{
+					"t": "ex",
+					"v": "</h1>"
+				},
+				" ",
+				{
+					"t": "bx",
+					"v": "<a href=\"#\">"
+				},
+				"Amplesay ext-tay inklay",
+				{
+					"t": "ex",
+					"v": "</a>"
+				},
+				" ",
+				{
+					"t": "bx",
+					"v": "<a href=\"#\">"
+				},
+				"Amplesay uttonbay inklay",
+				{
+					"t": "ex",
+					"v": "</a>"
+				},
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		},
+		{
+			"guid": "hLuOGX6OWOfGm6cL2KGzXiw0kAh3K3Y0GeW3BH0GuRc",
+			"tgt": "[Istslay-it]",
+			"q": 1
+		},
+		{
+			"guid": "8VxambcNHJ8CWDumld2cKm4OLn-6ts7N1lBfT8ZDL2k",
+			"tgt": "[Unorderedyay istlay-it]",
+			"q": 1
+		},
+		{
+			"guid": "JZ4vq8z-jT8n-LZuTqi7gsvASaejO9fBcTkR7bY2ozk",
+			"tgt": "[Orangeyay-it]",
+			"q": 1
+		},
+		{
+			"guid": "AJBY9KKwCAkR8r_LtTEoVRJ39q4VzFHA-zatPHcJz4U",
+			"tgt": "[Appleyay-it]",
+			"q": 1
+		},
+		{
+			"guid": "VUhkykhQWwBRlKIrRfXD9eLJgnj79hp51lmZomqaLWU",
+			"tgt": "[Ubarbrhay-it]",
+			"q": 1
+		},
+		{
+			"guid": "6iq-hrBdZCbp6SOew9HL9PmB2Vzg_lfzgyCkzOuzsug",
+			"tgt": "[Asberryray-it]",
+			"q": 1
+		},
+		{
+			"guid": "GFdgI2xn0rKvCZ3vrk2ZdC6FestuwwxWTNuZ2m7Uqbg",
+			"tgt": "[Ueberryblay-it]",
+			"q": 1
+		},
+		{
+			"guid": "n1L9PmjKI-z_yRSe3TjLx3-aUa1iXtjIKgHXx-_XL40",
+			"tgt": "[Errychay-it]",
+			"q": 1
+		},
+		{
+			"guid": "03lUO_w_mLEpBEOMOkvaW_X0W-Xl4lPLks11U90QIFo",
+			"tgt": "[Orderedyay istlay-it]",
+			"q": 1
+		},
+		{
+			"guid": "A-ZEyBnJrNMi_tYDsrPLGG2NpWZCUMo6Lo8npYdjP7Q",
+			"tgt": "[Irstfay-it]",
+			"q": 1
+		},
+		{
+			"guid": "VF08A4ZiTDyAGTiiVjNWSiUCymd4iVBq0uNwtdwLHdg",
+			"tgt": "[Econdsay-it]",
+			"q": 1
+		},
+		{
+			"guid": "joEdJrFdV2jqjJzV0vY3OaGRoliLuHdpGsndtLt72FI",
+			"tgt": "[Irdthay-it]",
+			"q": 1
+		},
+		{
+			"guid": "WN8aiYMlvpgeGA9ERepAgdpbjcYDkL8vmodm0gVVk-I",
+			"tgt": "[Ourthfay-it]",
+			"q": 1
+		},
+		{
+			"guid": "ALInauWsE7G3R_-b2JAJIDomWjwx7p3sFkME5VuYx9Y",
+			"tgt": "[Ifthfay-it]",
+			"q": 1
+		},
+		{
+			"guid": "sCV1ETyyU59UctfjWAkAnzEofhFpA0HIXB7jxCjW4uM",
+			"tgt": "[Ixthsay-it]",
+			"q": 1
+		},
+		{
+			"guid": "bLd1kKl3LNFEFG1fJ-J2Ox2BfCcrWlL-6JfVDMtvFPI",
+			"tgt": "[Efinitionday istlay-it]",
+			"q": 1
+		},
+		{
+			"guid": "C6oiHLzP_2K42tAcE22-zg2_to80wuL5LuBrXhaM9kk",
+			"tgt": "[Ick-kay-it]",
+			"q": 1
+		},
+		{
+			"guid": "x8W6ncPvnTS2TsZYta0AAn8ya3b0pK1vM1HkjHJWL0Y",
+			"tgt": "[808-it]",
+			"q": 1
+		},
+		{
+			"guid": "8xYN_3SHcK7LO3GBJu-hlPqvn74J9dKSaYFI9wcdLO0",
+			"tgt": "[Aresnay-it]",
+			"q": 1
+		},
+		{
+			"guid": "J02n8Zq-DmVENt-gBzE20MO-yV0B-pHI0N36vOe8u-c",
+			"tgt": "[909-it]",
+			"q": 1
+		},
+		{
+			"guid": "Oc8teRwdM9kR3KqfPSkSsnNiGKOrJwOa7D8x2pCuxYM",
+			"tgt": "[Ainemay-it]",
+			"q": 1
+		},
+		{
+			"guid": "JJTQsNYkBQvvA0Khfzb56P0mdnhquLLchhQBO7Xke-w",
+			"tgt": "[Augustayay-it]",
+			"q": 1
+		},
+		{
+			"guid": "epcNCiu6b8J_C1odX2IyOFuvY5un_ezr_LiI0Dth_O8",
+			"tgt": "[Aliforniacay-it]",
+			"q": 1
+		},
+		{
+			"guid": "ZG7e62U8UPK67YnvRadPlRy1nmJ5NuHSbuN3fRg-k2s",
+			"tgt": "[Acrementosay-it]",
+			"q": 1
+		},
+		{
+			"guid": "UFFyrjUYXcrkLp7fP0QdaXZFwFdv3r184W_l7YGIUvM",
+			"tgt": "[Oregonyay-it]",
+			"q": 1
+		},
+		{
+			"guid": "SSaLXCmUKfovWc6hx-trZcFonvLDhmeM5096__B4YYo",
+			"tgt": "[Alemsay-it]",
+			"q": 1
+		},
+		{
+			"guid": "YQcHJP2ssjMzVggkDJWy7RHQpTVb62NbvhMdcs5WNa8",
+			"tgt": "[Ewnay Orkyay-it]",
+			"q": 1
+		},
+		{
+			"guid": "y7XbnYFbsfinNkGdv4UPl6gCmXUY-whVJK00MZJL-yE",
+			"tgt": "[Albanyay-it]",
+			"q": 1
+		},
+		{
+			"guid": "Ah0x02bjt_rnbKh7Lti0KkiGFbnyKQtNlPRnxQDbDiQ",
+			"tgt": "[Ascenderyay-it]",
+			"q": 1
+		},
+		{
+			"guid": "u2BF5lbdflKABPF0Q6cPefOCBhfJj58q0Xnm4p4b8po",
+			"tgt": "[Ethay artpay ofyay ertaincay owercaselay etterslay at-thay extendsyay aboveyay ethay x-eighthay ofyay ayay ontfay.-it]",
+			"q": 1
+		},
+		{
+			"guid": "9xYRYfIKVIBfoVMh9Nx2yH8h7CGVbZ0CITnpQpad8B0",
+			"tgt": "[Ontfay-it]",
+			"q": 1
+		},
+		{
+			"guid": "xLj9X6yOgIjx_7CG4n7ZzBAFvDCtuX5LdMFKndSl1kI",
+			"tgt": "[Aditionallytray, ayay ompletecay etsay ofyay aracterschay orfay oneyay ypefacetay atyay\n        oneyay articularpay ypetay izesay. Oftenyay usedyay oremay ooselylay asyay ayay ynonymsay orfay\n        \"ypefacetay\".-it]",
+			"q": 1
+		},
+		{
+			"guid": "nI1B2nZtk6AhJOsJ4RsyjlNu2BVM7bT80bnG2neLCwI",
+			"tgt": "[Oldengay Ectionsay-it]",
+			"q": 1
+		},
+		{
+			"guid": "YHzt_o1hR4rm9Bgi63k-WklNjdTVWLQbwzsQ369Y21w",
+			"tgt": "[Ethay idealyay oportionpray accordingyay otay ethay ancientyay Eeksgray. Ityay isyay isualizedvay asyay ethay\n        ivisionday ofyay ayay inelay intoyay otway unequalyay egments-say inyay uchsay ayay ayway at-thay ethay atioray ofyay ethay\n        allersmay egmentsay otay ethay argerlay egmentsay isyay equalyay otay ethay atioray ofyay ethay argerlay otay ethay\n        olewhay. Ityay isyay usuallyay efined-day asyay 21:34, at-thay isyay, 21/34 andyay 34/(21+34) othbay equalyay\n        approximatelyay 0.618. Ayay ectangleray osewhay ides-say areyay ofyay isthay oportionpray isyay alledcay ayay\n        \"oldengay ectangleray\". Oldengay ectanglesray ancay ebay oundfay inyay ethay oportionspray ofyay ethay\n        Arthenonpay andyay anymay edievalmay anuscriptsmay.-it]",
+			"q": 1
+		},
+		{
+			"guid": "WJDzJa090w_WEXs6l-p0ChOJ1DP3bAqq9OPXZIt1mCE",
+			"tgt": "[Ormsfay-it]",
+			"q": 1
+		},
+		{
+			"guid": "fFY_d9LYcvovb5qSr2Y3xbddhLoe2z6pAlPrzHminkE",
+			"tgt": "[Egendlay Exampleyay-it]",
+			"q": 1
+		},
+		{
+			"guid": "ZJMivmgpTnXv_R1kHwrSbiwms8zIu_bsdJ_mHO6eRIw",
+			"tgt": "[Ext-tay Inputyay Abel-lay-it]",
+			"q": 1
+		},
+		{
+			"guid": "TyCAPgwY_vAkgA6hgd5UqPUuknbU0YolPPtkXlMghhc",
+			"tgt": "[Elperhay ext-tay ifyay ecessarynay.-it]",
+			"q": 1
+		},
+		{
+			"guid": "j7igpR2yGHn9Gzy4rqoX92tAXexl4X6gnSm_ELGxSsM",
+			"tgt": "[Asswordpay-it]",
+			"q": 1
+		},
+		{
+			"guid": "qg9aE_JGO2rPji4qun8Iw8ufCa5k7AkcynMA2fxi9_s",
+			"tgt": "[Erroryay essagesmay enwhay appropriateyay.-it]",
+			"q": 1
+		},
+		{
+			"guid": "24kyFHKALg1_SGvfLhkk3KYkPc9BTaLT7cIe8e6mLrw",
+			"tgt": "[Irstfay Amenay-it]",
+			"q": 1
+		},
+		{
+			"guid": "Q__56V-XhiKC6828IvJoA-PuhsDZL2xSWJG1S6K3uT4",
+			"tgt": "[Astlay Amenay-it]",
+			"q": 1
+		},
+		{
+			"guid": "4C1KXolKOBN4CCdRnqzL3RISeulqLNweT9yoDNiQOrw",
+			"tgt": "[Emailyay-it]",
+			"q": 1
+		},
+		{
+			"guid": "LDXiJT2W9HC1OhfEERSqJJkSYMwLVGSvJnD86pohnsM",
+			"tgt": "[Opdowndray-it]",
+			"q": 1
+		},
+		{
+			"guid": "yz29T5vrV1bE6lMyf9PkjglSajBL0qSxxwKduSzdlKU",
+			"tgt": "[Optionyay 1-it]",
+			"q": 1
+		},
+		{
+			"guid": "UFIfzY8TYu_N5PV7XlFsafy49OgrItLIn2Ev-d8Jc9Q",
+			"tgt": "[Optionyay 2-it]",
+			"q": 1
+		},
+		{
+			"guid": "LOE5-K12dS88gurCavTFXEZC2x5evqNPhjWsnLLReLU",
+			"tgt": "[Optionyay 3-it]",
+			"q": 1
+		},
+		{
+			"guid": "M9GJbEOZ1olVy-4LBzSWpAQwSoevSt66ez1E0kuSK-8",
+			"tgt": "[Adioray Uttonsbay-it]",
+			"q": 1
+		},
+		{
+			"guid": "UZ0Cv13iUsbDNPt42CEZ4dTB_gcHM4f9hb0eSZtM_bk",
+			"ntgt": [
+				"[",
+				{
+					"t": "bx",
+					"v": "<input type=\"radio\">"
+				},
+				" Abel-lay 1",
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		},
+		{
+			"guid": "YFb1VKvETkcEnDQ9p6z28xiTQtzUMAJlfTUS2RdIKS0",
+			"ntgt": [
+				"[",
+				{
+					"t": "bx",
+					"v": "<input type=\"radio\">"
+				},
+				" Abel-lay 2",
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		},
+		{
+			"guid": "2DkSPhAccctP9xbftX-ge5biCx7xeVzOM3_RDsJIx68",
+			"ntgt": [
+				"[",
+				{
+					"t": "bx",
+					"v": "<input type=\"radio\">"
+				},
+				" Abel-lay 3",
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		},
+		{
+			"guid": "lybT978I26VJ1MripKeAaat7yqvvvU0-E_qDxfdAJIM",
+			"tgt": "[URLYAY Inputyay-it]",
+			"q": 1
+		},
+		{
+			"guid": "DLm2EvPN8Cn2oKloabN0uzZ4GVtWJilY_rEmPgeqHgI",
+			"tgt": "[Ext-tay areayay-it]",
+			"q": 1
+		},
+		{
+			"guid": "_16Z6B36infrZ6WvKEMKj7CAbhE_7TGCmX7WFshJGEg",
+			"ntgt": [
+				"[",
+				{
+					"t": "bx",
+					"v": "<input type=\"checkbox\">"
+				},
+				" Isthay isyay ayay eckboxchay.",
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		},
+		{
+			"guid": "ulIpbphdgeSugVpYCj_8mVaeZYMpOG8Aw68Fed0fzec",
+			"tgt": "[Uttonsbay-it]",
+			"q": 1
+		},
+		{
+			"guid": "78S7cOM9Md65DwCCgcA6KOilobwxjG5JVhJc2ljvx8g",
+			"tgt": "[Ayay uttonbay-it]",
+			"q": 1
+		},
+		{
+			"guid": "Dwt7824hAFfcrBxrZRX20CSCmawIxKeyWEqR42E3KT0",
+			"tgt": "[Ayay argelay uttonbay-it]",
+			"q": 1
+		},
+		{
+			"guid": "ZGhBTKl_RPeMpaokLMih0Qvndp0AtKRHxLSyKbDLVSI",
+			"tgt": "[Anyay Exampleyay Articleyay-it]",
+			"q": 1
+		},
+		{
+			"guid": "1x8sWyFaug-pkJXVegXzdrw2FH2EXWITXtaNCa0OxWE",
+			"tgt": "[Itletay-it]",
+			"q": 1
+		},
+		{
+			"guid": "uHGRiZz6oGySM1kG5GL07n-SFbXleQ7jKIkVP6jtOq4",
+			"ntgt": [
+				"[",
+				"Oremlay ipsumyay olorday itsay ametyay, ",
+				{
+					"t": "bx",
+					"v": "<b>"
+				},
+				"onsecteturcay adipisicingyay elityay",
+				{
+					"t": "ex",
+					"v": "</b>"
+				},
+				", edsay oday eiusmodyay\n          emportay incididuntyay utyay aborelay etyay oloreday agnamay aliquayay. Utyay enimyay adyay inim-may eniamvay,\n          uisqay ostrudnay ",
+				{
+					"t": "bx",
+					"v": "<em>"
+				},
+				"exercitationyay ullamcoyay aborislay isinay utyay aliquipyay exyay eayay ommodocay\n            onsequatcay",
+				{
+					"t": "ex",
+					"v": "</em>"
+				},
+				". Uisday auteyay irureyay olorday inyay eprehenderitray inyay oluptatevay elitvay esseyay\n          illumcay oloreday euyay ugiatfay ullanay ariaturpay. Excepteuryay intsay occaecatyay upidatatcay\n          on-nay oidentpray, untsay inyay ulpacay uiqay officiayay eseruntday ollitmay animyay idyay estyay aborumlay.",
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		},
+		{
+			"guid": "8WZvhVI6hiZDXI7qdAK9prYQPAu0Bq7WdNYk91RvtME",
+			"ntgt": [
+				"[",
+				{
+					"t": "bx",
+					"v": "<p class=\"test-class\">"
+				},
+				"\n            Isthay isyay ayay EATGRAY ullpay uoteqay.\n          ",
+				{
+					"t": "ex",
+					"v": "</p>"
+				},
+				" ",
+				{
+					"t": "bx",
+					"v": "<a href=\"#\">"
+				},
+				"- Authoryay",
+				{
+					"t": "ex",
+					"v": "</a>"
+				},
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		},
+		{
+			"guid": "FL_o286PoUpWhKK3P7ryA2F_KE_Li1RxEpy50bhWA6w",
+			"tgt": "[Equenay orropay uisquamqay estyay, uiqay oloremday ipsumyay uiaqay olorday itsay ametyay,\n          onsecteturcay, adipisciyay elitvay, edsay uiaqay on-nay umquamnay eiusyay odimay emporatay inciduntyay\n          utyay aborelay etyay oloreday agnam-may aliquamyay uaeratqay oluptatemvay. Utyay enimyay adyay inimamay\n          eniamvay, uisqay ostrumnay exercitationemyay ullamyay orporiscay uscipitsay aboriosamlay, isinay\n          utyay aliquidyay exyay eayay ommodicay onsequaturcay? Uisqay autemyay elvay eumyay iureyay eprehenderitray\n          uiqay inyay eayay oluptatevay elitvay esseyay uamqay ihilnay olestiaemay onsequaturcay, elvay illumyay\n          uiqay oloremday eumyay ugiatfay uoqay oluptasvay ullanay ariaturpay?\"-it]",
+			"q": 1
+		},
+		{
+			"guid": "xtvaHaKUn_OcoemqVBlzjHvPknJPpefHhofk3eCxO1k",
+			"tgt": "[Atyay erovay eosyay etyay accusamusyay etyay iustoyay odioyay ignissimosday ucimusday uiqay anditiisblay\n          aesentiumpray oluptatumvay elenitiday atqueyay orrupticay uosqay oloresday etyay uasqay\n          olestiasmay excepturiyay intsay occaecatiyay upiditatecay on-nay ovidentpray, imiliquesay untsay\n          inyay ulpacay uiqay officiayay eseruntday ollitiamay animiyay, idyay estyay aborumlay etyay olorumday\n          ugafay. Etyay arumhay uidemqay erumray acilisfay estyay etyay expeditayay istinctioday.-it]",
+			"q": 1
+		},
+		{
+			"guid": "SGnCu2Z_JcpRCxXjRNrAONuzN62zB4jjBCQ5h5TyY2g",
+			"tgt": "[Odecay examplesyay-it]",
+			"q": 1
+		},
+		{
+			"guid": "l-v6a7CcytVaRmmCv7SJWsUZLcFTKlTK62x0cbTCN_Q",
+			"tgt": "[Ooterfay-it]",
+			"q": 1
+		},
+		{
+			"guid": "cvTg-Sy-fO2hLL1qq777dn9QiwHRB0M11_xl6nTSKmc",
+			"ntgt": [
+				"[",
+				"Opyrightcay 2013. Ademay ithway ovelay ybay ",
+				{
+					"t": "bx",
+					"v": "<a href=\"http://mrmrs.cc/\" title=\"MRMRS - Designer\">"
+				},
+				"mrmrs",
+				{
+					"t": "ex",
+					"v": "</a>"
+				},
+				".",
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		},
+		{
+			"guid": "2m1mTIaFZdX1o7MXNgPodaFkM8AZ2b_jP2gBSmS1c-s",
+			"ntgt": [
+				"[",
+				{
+					"t": "bx",
+					"v": "<a href=\"#\">"
+				},
+				"Omehay",
+				{
+					"t": "ex",
+					"v": "</a>"
+				},
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		},
+		{
+			"guid": "OaHG_iT3yWkdAfJNC6Ah8XUDb3MHz55_9RLmzaAvb7U",
+			"ntgt": [
+				"[",
+				{
+					"t": "bx",
+					"v": "<a href=\"#\">"
+				},
+				"Ontactcay",
+				{
+					"t": "ex",
+					"v": "</a>"
+				},
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		},
+		{
+			"guid": "70n89fM2fEkuQ93CJVT9I8y5No3mUUNPkZRy-5VRjNA",
+			"ntgt": [
+				"[",
+				{
+					"t": "bx",
+					"v": "<a href=\"#\">"
+				},
+				"Obsjay",
+				{
+					"t": "ex",
+					"v": "</a>"
+				},
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		},
+		{
+			"guid": "KcRd9dKPHDUmXwFe-JdS9TiGgHcI4PKBnPi8nhbxtBk",
+			"ntgt": [
+				"[",
+				{
+					"t": "bx",
+					"v": "<a href=\"http://twitter.com/\" title=\" on Twitter\">"
+				},
+				"Ittertway",
+				{
+					"t": "ex",
+					"v": "</a>"
+				},
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		},
+		{
+			"guid": "B7lXiNqoY_d9qO3D4JU6qDJwr1zcV2Czb_UErLZjo_Y",
+			"ntgt": [
+				"[",
+				{
+					"t": "bx",
+					"v": "<a href=\"http://pinterest.com/\" title=\" on Pinterest\">"
+				},
+				"Interestpay",
+				{
+					"t": "ex",
+					"v": "</a>"
+				},
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		},
+		{
+			"guid": "KFRXNyHUm1WHby9hQg320mnjK1kgNiSesQeNY0TRU00",
+			"ntgt": [
+				"[",
+				{
+					"t": "bx",
+					"v": "<a href=\"http://instagram.com/\" title=\" on Instagram\">"
+				},
+				"Instagramyay",
+				{
+					"t": "ex",
+					"v": "</a>"
+				},
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		},
+		{
+			"guid": "n_y53axBvLkWYnaUdxb_7glhFWiEwRNxNPv7XJUB42s",
+			"ntgt": [
+				"[",
+				{
+					"t": "bx",
+					"v": "<a href=\"http://dribbbble.com/\" title=\" on Dribbble\">"
+				},
+				"Ibbbledray",
+				{
+					"t": "ex",
+					"v": "</a>"
+				},
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		},
+		{
+			"guid": "O6SunN5KLprNJjUrlLVxmxpdm3_ByhtCm1bAiqNQjWQ",
+			"ntgt": [
+				"[",
+				{
+					"t": "bx",
+					"v": "<a href=\"http://github.com/\" title=\" on Github\">"
+				},
+				"Ithubgay",
+				{
+					"t": "ex",
+					"v": "</a>"
+				},
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		},
+		{
+			"guid": "vnCT6R3Cu726ochkWdYlvNSSwossKVzU-V6MK_FvG24",
+			"ntgt": [
+				"[",
+				{
+					"t": "bx",
+					"v": "<h1 class=\"other-class\">"
+				},
+				"Ewnay awtnesshay",
+				{
+					"t": "ex",
+					"v": "</h1>"
+				},
+				" ",
+				{
+					"t": "bx",
+					"v": "<progress value=\"80\" max=\"100\">"
+				},
+				"80 %",
+				{
+					"t": "ex",
+					"v": "</progress>"
+				},
+				" ",
+				{
+					"t": "bx",
+					"v": "<p class=\"test-class\">"
+				},
+				"Eway areyay isthay oseclay otay ethay oalgay: ",
+				{
+					"t": "bx",
+					"v": "<meter min=\"0\" max=\"1000\" value=\"824\">"
+				},
+				"$824",
+				{
+					"t": "ex",
+					"v": "</meter>"
+				},
+				".",
+				{
+					"t": "ex",
+					"v": "</p>"
+				},
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		},
+		{
+			"guid": "BONn8ZBMmW6xloq3Iu-pwLNqX9uWEevpYvo8WaSXgvo",
+			"tgt": "[Andomray Uffstay-it]",
+			"q": 1
+		},
+		{
+			"guid": "zbYRC-uinCQEq1h1v3Sasgj8RnKYCl2dBogNobosi7k",
+			"ntgt": [
+				"[",
+				{
+					"t": "bx",
+					"v": "<header>"
+				},
+				" ",
+				{
+					"t": "bx",
+					"v": "<h1 class=\"other-class\">"
+				},
+				"Andomray Uffstay",
+				{
+					"t": "ex",
+					"v": "</h1>"
+				},
+				" ",
+				{
+					"t": "ex",
+					"v": "</header>"
+				},
+				" ",
+				{
+					"t": "bx",
+					"v": "<small>"
+				},
+				"Isthay isyay orfay ingsthay ikelay opyrightcay infoyay",
+				{
+					"t": "ex",
+					"v": "</small>"
+				},
+				" ",
+				{
+					"t": "bx",
+					"v": "<s>"
+				},
+				"Ontentcay at-thay isntyay accurateyay oryay elevantray anymoreyay.",
+				{
+					"t": "ex",
+					"v": "</s>"
+				},
+				" ",
+				{
+					"t": "bx",
+					"v": "<span>"
+				},
+				"Enericgay anspay apperwray",
+				{
+					"t": "ex",
+					"v": "</span>"
+				},
+				" ",
+				{
+					"t": "bx",
+					"v": "<abbr>"
+				},
+				"HTML Owhay otay eetmay adieslay",
+				{
+					"t": "ex",
+					"v": "</abbr>"
+				},
+				" ",
+				{
+					"t": "bx",
+					"v": "<p class=\"test-class\">"
+				},
+				"Isthay isyay inlineyay ext-tay ithway ",
+				{
+					"t": "bx",
+					"v": "<sub>"
+				},
+				"ubscriptsay",
+				{
+					"t": "ex",
+					"v": "</sub>"
+				},
+				" andyay ",
+				{
+					"t": "bx",
+					"v": "<sup>"
+				},
+				"uperscriptsay",
+				{
+					"t": "ex",
+					"v": "</sup>"
+				},
+				" elementsyay.",
+				{
+					"t": "ex",
+					"v": "</p>"
+				},
+				" ",
+				{
+					"t": "bx",
+					"v": "<p class=\"test-class\">"
+				},
+				" ",
+				{
+					"t": "bx",
+					"v": "<var>"
+				},
+				"f",
+				{
+					"t": "ex",
+					"v": "</var>"
+				},
+				"(",
+				{
+					"t": "bx",
+					"v": "<var>"
+				},
+				"x",
+				{
+					"t": "ex",
+					"v": "</var>"
+				},
+				") = ",
+				{
+					"t": "bx",
+					"v": "<var>"
+				},
+				"ayay",
+				{
+					"t": "ex",
+					"v": "</var>"
+				},
+				{
+					"t": "bx",
+					"v": "<sub>"
+				},
+				"0",
+				{
+					"t": "ex",
+					"v": "</sub>"
+				},
+				" + ",
+				{
+					"t": "bx",
+					"v": "<var>"
+				},
+				"ayay",
+				{
+					"t": "ex",
+					"v": "</var>"
+				},
+				{
+					"t": "bx",
+					"v": "<sub>"
+				},
+				"1",
+				{
+					"t": "ex",
+					"v": "</sub>"
+				},
+				{
+					"t": "bx",
+					"v": "<var>"
+				},
+				"x",
+				{
+					"t": "ex",
+					"v": "</var>"
+				},
+				" +\n      ",
+				{
+					"t": "bx",
+					"v": "<var>"
+				},
+				"ayay",
+				{
+					"t": "ex",
+					"v": "</var>"
+				},
+				{
+					"t": "bx",
+					"v": "<sub>"
+				},
+				"2",
+				{
+					"t": "ex",
+					"v": "</sub>"
+				},
+				{
+					"t": "bx",
+					"v": "<var>"
+				},
+				"x",
+				{
+					"t": "ex",
+					"v": "</var>"
+				},
+				{
+					"t": "bx",
+					"v": "<sup>"
+				},
+				"2",
+				{
+					"t": "ex",
+					"v": "</sup>"
+				},
+				", erewhay ",
+				{
+					"t": "bx",
+					"v": "<var>"
+				},
+				"ayay",
+				{
+					"t": "ex",
+					"v": "</var>"
+				},
+				{
+					"t": "bx",
+					"v": "<sup>"
+				},
+				"2",
+				{
+					"t": "ex",
+					"v": "</sup>"
+				},
+				" ≠ 0\n    ",
+				{
+					"t": "ex",
+					"v": "</p>"
+				},
+				" ",
+				{
+					"t": "bx",
+					"v": "<time datetime=\"2013-09-07\" pubdate=\"\">"
+				},
+				"07 Eptembersay 2013",
+				{
+					"t": "ex",
+					"v": "</time>"
+				},
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		},
+		{
+			"guid": "ZYw_6GqbfiaPtyNLkYd8MIcADvP8plZ7fgz4lOiszAI",
+			"ntgt": [
+				"[",
+				"Otophay ofyay ethay yskay atyay ightnay. Originalyay ybay ",
+				{
+					"t": "bx",
+					"v": "<a href=\"http://flickr.com/photos/heyitsadam/\">"
+				},
+				"@mrmrs",
+				{
+					"t": "ex",
+					"v": "</a>"
+				},
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		},
+		{
+			"guid": "_wSlN0GU0mr_xYdfgXWteqlWj2YsmEN5SdgkRsOIL2M",
+			"tgt": "[Ablestay-it]",
+			"q": 1
+		},
+		{
+			"guid": "L2YVc39h1TmYezSbT2M-BCTnpdTvUGTQ1ljYJEAR8JA",
+			"tgt": "[Isthay isyay ayay aptioncay orfay ayay abletay-it]",
+			"q": 1
+		},
+		{
+			"guid": "Z2i4E-FJWXybsGmyhzoZDo6j1_UBS1BVbm4B_M3q-KE",
+			"tgt": "[IDYAY-it]",
+			"q": 1
+		},
+		{
+			"guid": "E_7vArdYGI9xh_TRVyrz9OdghiMzAz87FA3kgcJOi6g",
+			"tgt": "[Amenay-it]",
+			"q": 1
+		},
+		{
+			"guid": "St0YB7UDCNTcEo32S-NSQ5yvX5NFvTGvIOn7t1BWXqI",
+			"tgt": "[Ateday-it]",
+			"q": 1
+		},
+		{
+			"guid": "4MhJhcc3RTl9rHY_oTZjz4U5MexWDbXX1Y9a0kye7rU",
+			"tgt": "[Addressyay-it]",
+			"q": 1
+		},
+		{
+			"guid": "11x7A0O1pTL4izTsINb58lgAnu8Qmmz3DZz__DLNJvg",
+			"tgt": "[Abletay ooterfay infoyay-it]",
+			"q": 1
+		},
+		{
+			"guid": "bE06G5hwWAekdhVZao8w3-uUJsunuONSJ9zFv897_5k",
+			"tgt": "[#999-32ac-it]",
+			"q": 1
+		},
+		{
+			"guid": "eAtK2hjyDqES8SHJxyUx1I-9rfqyBWjHNlYslroZop0",
+			"tgt": "[13 Aymay, 2013-it]",
+			"q": 1
+		},
+		{
+			"guid": "_sn4I6huH1Pj1KgV0qAK_DQNLVDtcsiCxlHDfbNASjk",
+			"tgt": "[999 Ucespray Anelay, Omewheresay, ACAY 94101-it]",
+			"q": 1
+		},
+		{
+			"guid": "lbd7LwfOwoepPJqG9ItV8TUT6CRfTbDWrSCfi59zOjQ",
+			"tgt": "[#888-32dd-it]",
+			"q": 1
+		},
+		{
+			"guid": "RuOBDqzq8Tks8n1cDVTRZtxARkXIxlpIu4GbX3Eng5k",
+			"tgt": "[Amplesay Amenay-it]",
+			"q": 1
+		},
+		{
+			"guid": "x8XMaXJHOiphXzQFZoL24HxEXHCZNZNCfvDB6tR_5gE",
+			"tgt": "[17 Aymay, 1984-it]",
+			"q": 1
+		},
+		{
+			"guid": "5DV2smTYTOz2vV-bhvUx6RqiCbBlZn0-K9pEZoxwFHs",
+			"ntgt": [
+				"[",
+				{
+					"t": "bx",
+					"v": "<small>"
+				},
+				"© 2014 Omesay ompanycay amenay",
+				{
+					"t": "ex",
+					"v": "</small>"
+				},
+				" ",
+				{
+					"t": "bx",
+					"v": "<address>"
+				},
+				"email@email.com",
+				{
+					"t": "ex",
+					"v": "</address>"
+				},
+				"-it]"
+			],
+			"contentType": "default",
+			"q": 1
+		}
+	],
+	"ts": 1,
+	"updatedAt": "2022-05-29T00:00:00.000Z"
+}
