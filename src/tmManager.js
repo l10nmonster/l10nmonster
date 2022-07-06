@@ -93,12 +93,9 @@ class TM {
             for (const tu of tus) {
                 const tmEntry = this.getEntryByGuid(tu.guid);
                 const reqEntry = requestedUnits[tu.guid] ?? {};
-
-                // this is convoluted because tmEntry.ts may be undefined
-                // also note that this may result in non-deterministic behavior (equal ts means later one wins)
-                const isNewish = !(tmEntry?.ts > tu.ts);
-                if (!tmEntry || tmEntry.q < tu.q || (tmEntry.q === tu.q && isNewish)) {
-                    this.setEntryByGuid(tu.guid, { ...reqEntry, ts: jobResponse.ts, ...tu, jobGuid });
+                const rectifiedTU = { ...reqEntry, ts: jobResponse.ts, ...tu, jobGuid };
+                if (!tmEntry || tmEntry.q < tu.q || (tmEntry.q === tu.q && tmEntry.ts < rectifiedTU.ts)) {
+                    this.setEntryByGuid(tu.guid, rectifiedTU);
                 }
             }
         }
