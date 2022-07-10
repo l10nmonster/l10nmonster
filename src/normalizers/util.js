@@ -179,7 +179,7 @@ export function getTUMaps(tus) {
             const [normalizedStr, phMap ] = flattenNormalizedSourceV1(tu.nsrc);
             contentMap[guid] = normalizedStr;
             if (Object.keys(phMap).length > 0) {
-                tuMeta[guid] = { contentType: tu.contentType, phMap, nsrc: tu.nsrc };
+                tuMeta[guid] = { phMap, nsrc: tu.nsrc };
                 phNotes[guid] = Object.entries(phMap)
                     .reduce((p, c) => `${p} ${c[0]}=${c[1].v}`, '\n ph:')
                     .replaceAll('<', 'ᐸ')

@@ -29,7 +29,6 @@
 				".̳",
 				"⇤"
 			],
-			"contentType": "node",
 			"q": 2
 		},
 		{
@@ -50,7 +49,6 @@
 				" ̳t̳o̳ ̳t̳r̳a̳v̳e̳l̳.̳",
 				"⇤"
 			],
-			"contentType": "node",
 			"q": 2
 		},
 		{
@@ -81,7 +79,6 @@
 				" ̳t̳r̳a̳v̳e̳l̳e̳r̳s̳",
 				"⇤"
 			],
-			"contentType": "node",
 			"q": 2
 		},
 		{
@@ -112,7 +109,6 @@
 				},
 				"⇤"
 			],
-			"contentType": "node",
 			"q": 2
 		},
 		{
@@ -127,7 +123,6 @@
 				" ̳d̳a̳y̳",
 				"⇤"
 			],
-			"contentType": "node",
 			"q": 2
 		},
 		{
@@ -142,7 +137,6 @@
 				" ̳d̳a̳y̳s̳",
 				"⇤"
 			],
-			"contentType": "node",
 			"q": 2
 		},
 		{
@@ -157,7 +151,6 @@
 				" ̳h̳o̳u̳r̳",
 				"⇤"
 			],
-			"contentType": "node",
 			"q": 2
 		},
 		{
@@ -172,7 +165,6 @@
 				" ̳h̳o̳u̳r̳s̳",
 				"⇤"
 			],
-			"contentType": "node",
 			"q": 2
 		},
 		{
@@ -187,7 +179,6 @@
 				" ̳s̳e̳c̳o̳n̳d̳",
 				"⇤"
 			],
-			"contentType": "node",
 			"q": 2
 		},
 		{
@@ -202,7 +193,6 @@
 				" ̳s̳e̳c̳o̳n̳d̳s̳",
 				"⇤"
 			],
-			"contentType": "node",
 			"q": 2
 		}
 	],

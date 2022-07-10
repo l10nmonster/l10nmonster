@@ -37,7 +37,6 @@ export class Visicode {
                     ...tu.nsrc.map(n => (typeof n === 'string' ? underlineString(n) : n)),
                     `\u21e4`
                 ];
-                translation.contentType = tu.contentType;
             } else {
                 translation.tgt = `\u21e5${underlineString(tu.src)}\u21e4`;
             }

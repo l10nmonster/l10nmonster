@@ -71,7 +71,6 @@ export default class SourceManager {
                         const flattenStr = seg.nstr ? flattenNormalizedSourceToOrdinal(seg.nstr) : seg.str;
                         flattenStr !== seg.str && (seg.gstr = flattenStr);
                         seg.guid = generateFullyQualifiedGuid(res.id, seg.sid, flattenStr);
-                        seg.contentType = res.contentType;
                     }
                     pipeline.segmentDecorator && (res.segments = pipeline.segmentDecorator(parsedRes.segments));
                     newCache.sources[res.id] = res;

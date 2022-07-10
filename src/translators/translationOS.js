@@ -19,7 +19,6 @@ function createTUFromTOSTranslation({ tosUnit, content, tuMeta, quality, logger 
     if (tuMeta[guid]) {
         tuMeta[guid].src && (tu.src = tuMeta[guid].src);
         tuMeta[guid].nsrc && (tu.nsrc = tuMeta[guid].nsrc);
-        tu.contentType = tuMeta[guid].contentType;
         tu.ntgt = extractNormalizedPartsV1(content, tuMeta[guid].phMap);
         if (tu.ntgt.filter(e => e === undefined).length > 0) {
             logger.warn(`Unable to extract normalized parts of TU: ${JSON.stringify(tu)}`);
