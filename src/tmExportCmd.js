@@ -1,5 +1,5 @@
 import * as fs from 'fs/promises';
-import {js2tmx} from 'tmexchange';
+import {js2tmx} from '@l10nmonster/tmexchange';
 import { nanoid } from 'nanoid';
 import { flattenNormalizedSourceV1, cleanupTU } from './normalizers/util.js';
 import { sourceTUWhitelist, targetTUWhitelist } from './schemas.js';
