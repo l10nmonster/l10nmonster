@@ -117,7 +117,7 @@ export default class MonsterManager {
                 internalRepetitionWords: 0,
             };
             const leverageDetails = prjLeverage[prj];
-            if (res.targetLangs.includes(targetLang)) {
+            if (res.targetLangs.includes(targetLang) && targetLang !== this.sourceLang) {
                 for (const seg of res.segments) {
                     // TODO: if segment is pluralized we need to generate/suppress the relevant number of variants for the targetLang
                     const tmEntry = tm.getEntryByGuid(seg.guid);

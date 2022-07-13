@@ -1,14 +1,38 @@
-export default class CardboardConfig {
+export default class HtmlConfig {
     sourceLang = 'en';
     minimumQuality = 50;
 
     constructor({ ctx, adapters, filters, normalizers, translators }) {
-        this.source = new adapters.FsSource({
-            globs: [ 'en/*.html' ],
-            targetLangs: [ 'it' ],
-        });
-        this.resourceFilter = new filters.HTMLFilter();
-        this.decoders = [ normalizers.xmlDecoder, normalizers.xmlEntityDecoder ];
+        this.contentTypes = {
+            local: {
+                source: new adapters.FsSource({
+                    globs: [ 'en/*.html' ],
+                    targetLangs: [ 'it' ],
+                    prj: 'local',
+                }),
+                resourceFilter: new filters.HTMLFilter(),
+                decoders: [ normalizers.xmlDecoder, normalizers.xmlEntityDecoder ],
+                textEncoders: [ normalizers.xmlEntityEncoder ],
+                target: new adapters.FsTarget({
+                    targetPath: (lang, resourceId) => resourceId.replace('en/', `${lang}/`),
+                }),
+            },
+            remote: {
+                source: new adapters.HttpSource({
+                    urlMap: {
+                        'google': 'https://www.google.com/',
+                    },
+                    targetLangs: [ 'en', 'it' ],
+                    prj: 'remote',
+                }),
+                resourceFilter: new filters.HTMLFilter(),
+                decoders: [ normalizers.xmlDecoder, normalizers.xmlEntityDecoder ],
+                textEncoders: [ normalizers.xmlEntityEncoder ],
+                target: new adapters.FsTarget({
+                    targetPath: (lang, resourceId) => `remote/${lang}/${resourceId}.html`,
+                }),
+            },
+        };
         this.translationProviders = {
             Piggy: {
                 translator: new translators.PigLatinizer({ quality: 1 }),
@@ -40,8 +64,5 @@ export default class CardboardConfig {
                 }),
             },
         };
-        this.target = new adapters.FsTarget({
-            targetPath: (lang, resourceId) => resourceId.replace('en/', `${lang}/`),
-        });
     }
 }

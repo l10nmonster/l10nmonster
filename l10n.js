@@ -33,6 +33,7 @@ import { tmExportCmd } from './src/tmExportCmd.js';
 import { translateCmd } from './src/translateCmd.js';
 
 import { FsSource, FsTarget } from './src/adapters/fs.js';
+import { HttpSource } from './src/adapters/http.js';
 import { PoFilter } from './src/filters/po.js';
 import { AndroidFilter } from './src/filters/android.js';
 import { JavaPropertiesFilter } from './src/filters/java.js';
@@ -105,7 +106,7 @@ async function initMonster() {
                 JsonJobStore
             },
             adapters: {
-                FsSource, FsTarget,
+                FsSource, FsTarget, HttpSource,
             },
             filters: {
                 PoFilter, AndroidFilter, JavaPropertiesFilter, IosStringsFilter, JsonFilter, HTMLFilter
