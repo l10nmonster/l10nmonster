@@ -2,6 +2,7 @@ import * as util from 'node:util';
 import * as path from 'path';
 import {
     existsSync,
+    statSync,
     mkdirSync,
 } from 'fs';
 import * as winston from 'winston';
@@ -38,7 +39,10 @@ import TextExpansionSummary from './analyzers/textExpansionSummary.js';
 import FindByExpansion from './analyzers/findByExpansion.js';
 import MismatchedTags from './analyzers/mismatchedTags.js';
 
-export async function createMonsterManager(baseDir, configModule, configSeal, options) {
+export async function createMonsterManager(configPath, options, cb) {
+    const baseDir = path.dirname(configPath);
+    const configModule = await import(configPath);
+    const configSeal = statSync(configPath).mtime.toISOString();
     const verboseOption = options.verbose;
     // eslint-disable-next-line no-nested-ternary
     const verboseLevel = (verboseOption === undefined || verboseOption === 0) ?
@@ -112,6 +116,15 @@ export async function createMonsterManager(baseDir, configModule, configSeal, op
         const mm = await new MonsterManager({ monsterDir, monsterConfig, configSeal, ctx, defaultAnalyzers, sourceMirrorDir });
         ctx.mm = mm;
         logger.info(`L10n Monster initialized!`);
+        if (cb) {
+            try {
+                await cb(mm);
+            } catch(e) {
+                console.error(`Unable to operate: ${e.stack || e}`);
+            } finally {
+                mm && (await mm.shutdown());
+            }
+        }
         return mm;
     } catch(e) {
         throw `l10nmonster.mjs failed to construct: ${e.stack || e}`;

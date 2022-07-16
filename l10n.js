@@ -5,22 +5,19 @@
 import * as path from 'path';
 import {
   existsSync,
-  statSync,
 } from 'fs';
 import { Command, InvalidArgumentError } from 'commander';
 import { consoleColor } from './src/shared.js';
 import { createMonsterManager } from './src/defaultMonster.js';
 import * as cli from './src/cli.js';
 
-async function findMonster(options) {
+async function findMonster(options, cb) {
     let baseDir = path.resolve('.'),
         previousDir = null;
     while (baseDir !== previousDir) {
         const configPath = path.join(baseDir, 'l10nmonster.mjs');
         if (existsSync(configPath)) {
-            const configModule = await import(configPath);
-            const configSeal = statSync(configPath).mtime.toISOString();
-            return createMonsterManager(baseDir, configModule, configSeal, options);
+            return createMonsterManager(configPath, options, cb);
         }
         previousDir = baseDir;
         baseDir = path.resolve(baseDir, '..');
@@ -127,14 +124,12 @@ function createMonsterCLI(cliCtx, preAction) {
 
 console.log(consoleColor.reset);
 (async () => {
-    const cliCtx = {};
     try {
-        await createMonsterCLI(cliCtx, async thisCommand => {
-            cliCtx.monsterManager = await findMonster(thisCommand.opts());
+        const cliCtx = {};
+        await createMonsterCLI(cliCtx, async cli => {
+            await findMonster(cli.opts(), async mm => cliCtx.monsterManager = mm);
         }).parseAsync();
     } catch(e) {
-        console.error(`Unable to operate: ${e.stack || e}`);
-    } finally {
-        cliCtx.monsterManager && (await cliCtx.monsterManager.shutdown());
+        console.error(`Unable to start: ${e.stack || e}`);
     }
 })();

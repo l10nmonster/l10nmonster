@@ -87,7 +87,6 @@ describe ('translateCmd tests', () =>{
   });
 
   test('complex translation', async () => {
-    console.log(translateWithEntry(undefined, nsrc1, entry1, {}, dummyEncodeString))
     expect(translateWithEntry(undefined, nsrc1, entry1, {}, dummyEncodeString))
     .toBe('<strike>%1$s</strike> • <color name="green"> %3$s 1%2$s泊分</color>');
   });
