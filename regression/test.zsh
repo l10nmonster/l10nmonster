@@ -1,12 +1,19 @@
 set -e
 
-regressTest() {
+regressTestFromCLI() {
     echo "\nTesting $1..."
     cd $1
     ../../../l10n.js --regression push --provider grandfather,repetition,default
     ../../../l10n.js --regression pull
     ../../../l10n.js --regression translate
     ../../../l10n.js --regression status --output status.json
+    cd ..
+}
+
+regressTestFromScript() {
+    echo "\nTesting $1..."
+    cd $1
+    node ../../regressionScript.js
     cd ..
 }
 
@@ -17,7 +24,8 @@ cp -pr mint/* wd
 cd wd
 for dir in *
 do
-    regressTest $dir
+    # regressTestFromCLI $dir
+    regressTestFromScript $dir
 done
 cd ..
 
