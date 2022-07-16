@@ -1,6 +1,6 @@
 #!/usr/bin/env node
+
 /* eslint-disable no-invalid-this */
-/* eslint-disable func-names */
 
 import * as path from 'path';
 import {
@@ -11,18 +11,19 @@ import { consoleColor } from './src/shared.js';
 import { createMonsterManager } from './src/defaultMonster.js';
 import * as cli from './src/cli.js';
 
-async function findMonster(options, cb) {
+function findConfig() {
     let baseDir = path.resolve('.'),
         previousDir = null;
     while (baseDir !== previousDir) {
         const configPath = path.join(baseDir, 'l10nmonster.mjs');
         if (existsSync(configPath)) {
-            return createMonsterManager(configPath, options, cb);
+            const cliExtensions = path.join(baseDir, 'l10nmonster-cli.mjs');
+            return [ configPath, existsSync(cliExtensions) && cliExtensions ];
         }
         previousDir = baseDir;
         baseDir = path.resolve(baseDir, '..');
     }
-    throw 'l10nmonster.mjs not found';
+    return [];
 }
 
 // eslint-disable-next-line no-unused-vars
@@ -50,13 +51,13 @@ function createMonsterCLI(cliCtx, preAction) {
         .option('-l, --lang <language>', 'only get status of target language')
         .option('-a, --all', 'show information for all projects, not just untranslated ones')
         .option('--output <filename>', 'write status to the specified file')
-        .action(async function() {
+        .action(async function status() {
             await cli.status(cliCtx.monsterManager, this.optsWithGlobals());
         });
     monsterCLI.command('jobs')
         .description('Unfinished jobs status.')
         .option('-l, --lang <language>', 'only get jobs for the target language')
-        .action(async function() {
+        .action(async function jobs() {
             await cli.jobs(cliCtx.monsterManager, this.optsWithGlobals());
         });
     monsterCLI.command('analyze')
@@ -65,7 +66,7 @@ function createMonsterCLI(cliCtx, preAction) {
         .argument('[params...]', 'optional parameters to the analyzer')
         .option('-l, --lang <language>', 'target language to analyze (if TM analyzer)')
         .option('--output <filename>', 'filename to write the analysis to)')
-        .action(async function(analyzer, params) {
+        .action(async function analyze(analyzer, params) {
             await cli.analyze(cliCtx.monsterManager, { ...this.optsWithGlobals(), analyzer, params });
         });
     monsterCLI.command('push')
@@ -78,7 +79,7 @@ function createMonsterCLI(cliCtx, preAction) {
         .option('--provider <name,...>', 'use the specified translation providers')
         .option('--instructions <instructions>', 'send the specified translation provider')
         .option('--dryrun', 'simulate translating and compare with existing translations')
-        .action(async function() {
+        .action(async function push() {
             await cli.push(cliCtx.monsterManager, this.optsWithGlobals());
         });
     monsterCLI.command('job')
@@ -88,21 +89,21 @@ function createMonsterCLI(cliCtx, preAction) {
         .option('--pairs <jobGuid>', 'show request/response pairs of a job')
         .option('--push <jobGuid>', 'push a blocked job to translation provider')
         .option('--delete <jobGuid>', 'delete a blocked/failed job')
-        .action(async function() {
+        .action(async function job() {
             await cli.job(cliCtx.monsterManager, this.optsWithGlobals());
         });
     monsterCLI.command('pull')
         .description('Receive outstanding translation jobs.')
         .option('--partial', 'commit partial deliveries')
         .option('-l, --lang <language>', 'only get jobs for the target language')
-        .action(async function() {
+        .action(async function pull() {
             await cli.pull(cliCtx.monsterManager, this.optsWithGlobals());
         });
     monsterCLI.command('translate')
         .description('Generate translated resources based on latest source and translations.')
         .option('-l, --lang <language>', 'target language to translate')
         .option('-d, --dryrun', 'simulate translating and compare with existing translations')
-        .action(async function() {
+        .action(async function translate() {
             await cli.translate(cliCtx.monsterManager, this.optsWithGlobals());
         });
     monsterCLI.command('tmexport')
@@ -110,26 +111,44 @@ function createMonsterCLI(cliCtx, preAction) {
         .requiredOption('-f, --format <tmx|json|job>', 'exported file format')
         .requiredOption('-m, --mode <source|tm>', 'export all source entries (including untranslated) or all tm entries (including missing in source)')
         .option('-l, --lang <language>', 'target language to export')
-        .action(async function() {
+        .action(async function tmexport() {
             await cli.tmexport(cliCtx.monsterManager, this.optsWithGlobals());
         });
     monsterCLI.command('monster')
         .description('Just because...')
-        .action(async function() {
+        .action(async function monster() {
             await cli.monster(cliCtx.monsterManager, this.optsWithGlobals());
-        })
-    ;
+        });
+    cliCtx.setupExtensions && cliCtx.setupExtensions(monsterCLI, cliCtx);
     return monsterCLI;
 }
 
 console.log(consoleColor.reset);
-(async () => {
-    try {
-        const cliCtx = {};
-        await createMonsterCLI(cliCtx, async cli => {
-            await findMonster(cli.opts(), async mm => cliCtx.monsterManager = mm);
-        }).parseAsync();
-    } catch(e) {
-        console.error(`Unable to start: ${e.stack || e}`);
+const [ configPath, cliExtensions ] = findConfig();
+if (configPath) {
+    const cliCtx = {};
+    if (cliExtensions) {
+        try {
+            const extensionsModule = await import(cliExtensions);
+            if (extensionsModule.setupExtensions) {
+                cliCtx.setupExtensions = extensionsModule.setupExtensions;
+            } else {
+                console.log('Found extensions but no setupExtensions export found');
+            }
+        } catch(e) {
+            console.log(`Couldn't load extensions from ${cliExtensions}: ${e.stack || e}`);
+        }
     }
-})();
+    (async () => {
+        await createMonsterCLI(
+            cliCtx,
+            async cli => await createMonsterManager(
+                configPath,
+                cli.opts(),
+                async mm => cliCtx.monsterManager = mm
+            )
+        ).parseAsync();
+    })();
+} else {
+    console.log('Unable to start: l10nmonster.mjs not found');
+}

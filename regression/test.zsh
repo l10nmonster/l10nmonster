@@ -1,4 +1,7 @@
-set -e
+#!/usr/bin/zsh
+
+setopt ERR_EXIT
+setopt MONITOR
 
 regressTestFromCLI() {
     echo "\nTesting $1..."
@@ -24,11 +27,14 @@ cp -pr mint/* wd
 cd wd
 for dir in *
 do
-    # regressTestFromCLI $dir
-    regressTestFromScript $dir
+    if [ "$#" -ne 1 ]; then
+        regressTestFromScript $dir &
+    else
+        regressTestFromCLI $dir &
+    fi
 done
 cd ..
-
+wait
 echo "\nDiffing working dir vs. expected..."
 rm -rf wd/*/.l10nmonster
 diff -qr wd expected
