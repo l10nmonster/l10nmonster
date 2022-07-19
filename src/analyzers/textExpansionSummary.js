@@ -24,7 +24,7 @@ export default class TextExpansionSummary {
             this.langStats[targetLang].push([
                 src.length,
                 tgt.length,
-                tgt.length / src.length - 1,
+                tgt.length >= src.length ? tgt.length / src.length - 1 : -src.length / tgt.length + 1,
             ]);
         }
     }

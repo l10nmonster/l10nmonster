@@ -17,8 +17,8 @@ export default class FindByExpansion {
         const src = tu.nsrc ? tu.nsrc.map(e => (typeof e === 'string' ? e : '')).join('') : tu.src;
         const tgt = tu.ntgt ? tu.ntgt.map(e => (typeof e === 'string' ? e : '')).join('') : tu.tgt;
         if (src && tgt && src.length > 0 && tgt.length > 0) {
-            const growth = tgt.length / src.length - 1;
-            growth >= this.minGrowth && this.foundTus.push([
+            const growth = tgt.length >= src.length ? tgt.length / src.length - 1 : -src.length / tgt.length + 1;
+            Math.abs(growth) >= this.minGrowth && this.foundTus.push([
                 targetLang,
                 tu.guid,
                 src,
