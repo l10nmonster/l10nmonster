@@ -51,12 +51,12 @@ async function tosCombineTranslationChunksOp(args, committedGuids) {
     return committedGuids.flat(1);
 }
 
-async function tosFetchContentByGuidOp({ onlyDeltas, tuMap, tuMeta, request, quality, parallelism }) {
+async function tosFetchContentByGuidOp({ refreshMode, tuMap, tuMeta, request, quality, parallelism }) {
     try {
         let tosContent = (await got.post(request).json());
         // eslint-disable-next-line no-invalid-this
         this.logger.info(`Retrieved ${tosContent.length} translations from TOS`);
-        onlyDeltas && (tosContent = tosContent.filter(tosUnit => !(tuMap[tosUnit.id_content].th === tosUnit.translated_content_hash))); // need to consider th being undefined/null for some entries
+        refreshMode && (tosContent = tosContent.filter(tosUnit => !(tuMap[tosUnit.id_content].th === tosUnit.translated_content_hash))); // need to consider th being undefined/null for some entries
         // sanitize bad responses
         const fetchedTus = [];
         const seenGuids = {};
@@ -187,7 +187,7 @@ export class TranslationOS {
         }
     }
 
-    async #fetchTranslatedTus({ targetLang, reqTus, onlyDeltas }) {
+    async #fetchTranslatedTus({ jobGuid, targetLang, reqTus, refreshMode }) {
         const guids = reqTus.filter(tu => tu.src ?? tu.nsrc).map(tu => tu.guid);
         const refreshTranslationsTask = this.ctx.opsMgr.createTask();
         let chunkNumber = 0;
@@ -202,13 +202,17 @@ export class TranslationOS {
             const json = {
                 id_content: guidsInChunk,
                 target_language: targetLang,
-                status: ['delivered', 'invoiced'],
                 fetch_content: false,
-                last_delivered_only: true,
                 limit: this.maxFetchSize,
             };
+            if (refreshMode) {
+                json.status = ['delivered', 'invoiced'];
+                json.last_delivered_only = true;
+            } else {
+                json.id_order = jobGuid;
+            }
             const refreshOp = await refreshTranslationsTask.enqueue(tosFetchContentByGuidOp, {
-                onlyDeltas,
+                refreshMode,
                 tuMap,
                 tuMeta,
                 request: {
@@ -231,7 +235,7 @@ export class TranslationOS {
     async fetchTranslations(pendingJob, jobRequest) {
         const { inflight, ...jobResponse } = pendingJob;
         const reqTus = jobRequest.tus.filter(tu => inflight.includes(tu.guid));
-        const tus = await this.#fetchTranslatedTus({ targetLang: jobRequest.targetLang, reqTus, onlyDeltas: false });
+        const tus = await this.#fetchTranslatedTus({ jobGuid: jobRequest.jobGuid, targetLang: jobRequest.targetLang, reqTus, refreshMode: false });
         const tuMap = tus.reduce((p,c) => (p[c.guid] = c, p), {});
         const nowInflight = inflight.filter(guid => !tuMap[guid]);
         if (tus.length > 0) {
@@ -249,7 +253,7 @@ export class TranslationOS {
     async refreshTranslations(jobRequest) {
         return {
             ...jobRequest,
-            tus: await this.#fetchTranslatedTus({ targetLang: jobRequest.targetLang, reqTus: jobRequest.tus, onlyDeltas: true }),
+            tus: await this.#fetchTranslatedTus({ targetLang: jobRequest.targetLang, reqTus: jobRequest.tus, refreshMode: true }),
             status: 'done',
         };
     }
