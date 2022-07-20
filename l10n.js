@@ -65,6 +65,7 @@ function createMonsterCLI(cliCtx, preAction) {
         .argument('[analyzer]', 'name of the analyzer to run')
         .argument('[params...]', 'optional parameters to the analyzer')
         .option('-l, --lang <language>', 'target language to analyze (if TM analyzer)')
+        .option('--filter <filter>', 'use the specified tu filter')
         .option('--output <filename>', 'filename to write the analysis to)')
         .action(async function analyze(analyzer, params) {
             await cli.analyze(cliCtx.monsterManager, { ...this.optsWithGlobals(), analyzer, params });

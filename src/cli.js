@@ -69,7 +69,7 @@ export async function analyze(monsterManager, options) {
             if (!Analyzer) {
                 throw `couldn't find a ${analyzer} analyzer`;
             }
-            const analysis = await analyzeCmd(monsterManager, Analyzer, options.params, options.lang);
+            const analysis = await analyzeCmd(monsterManager, Analyzer, options.params, options.lang, options.filter);
             const header = Analyzer.analysisStructure;
             if (options.output) {
                 const rows = header ? [ header, ...analysis].map(row => row.join(',')) : analysis;

@@ -1,13 +1,23 @@
-export async function analyzeCmd(mm, Analyzer, params, limitToLang) {
+import { makeTU, fixCaseInsensitiveKey } from './shared.js';
+
+export async function analyzeCmd(mm, Analyzer, params, limitToLang, tuFilter) {
     const driver = Analyzer.driver;
     if (['source', 'tm'].includes(driver)) {
+        let tuFilterFunction;
+        if (tuFilter) {
+            tuFilter = fixCaseInsensitiveKey(mm.tuFilters, tuFilter);
+            tuFilterFunction = mm.tuFilters[tuFilter];
+            if (!tuFilterFunction) {
+                throw `Couldn't find ${tuFilter} tu filter`;
+            }
+        }
         let analysis;
         if (driver === 'source') {
             const analyzer = new Analyzer(...params);
             const sources = await mm.source.getEntries();
             for (const [rid, res] of sources) {
                 for (const seg of res.segments) {
-                    analyzer.processSegment({ rid, prj: res.prj, seg });
+                    (!tuFilterFunction || tuFilterFunction(makeTU(res, seg))) && analyzer.processSegment({ rid, prj: res.prj, seg });
                 }
             }
             analysis = analyzer.getAnalysis();
@@ -21,7 +31,7 @@ export async function analyzeCmd(mm, Analyzer, params, limitToLang) {
                 const tm = await mm.tmm.getTM(mm.sourceLang, targetLang);
                 const tus = tm.guids.map(guid => tm.getEntryByGuid(guid));
                 for (const tu of tus) {
-                    analyzer.processTU({ targetLang, tu });
+                    (!tuFilterFunction || tuFilterFunction(tu)) && analyzer.processTU({ targetLang, tu });
                 }
                 !hasAggregateAnalysis && aggregateAnalysis.push(analyzer.getAnalysis());
             }
