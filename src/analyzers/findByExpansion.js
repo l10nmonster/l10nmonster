@@ -2,7 +2,9 @@ import {
     readFileSync,
 } from 'fs';
 
-const makeCSVCompatibleString = nstr => (Array.isArray(nstr) ? nstr.map(e => (typeof e === 'string' ? e : '')).join('').replaceAll(',', '').replaceAll('\n', ' ') : null);
+const makeCSVCompatibleString = nstr => (Array.isArray(nstr) ?
+    nstr.map(e => (typeof e === 'string' ? e : '')).join('').replaceAll(',', '').replaceAll('\n', ' ') :
+    (nstr ?? '').replaceAll(',', '').replaceAll('\n', ' '));
 
 export default class FindByExpansion {
     static helpParams = '<average|csvFile> <minDelta|sigmas>';
@@ -29,8 +31,8 @@ export default class FindByExpansion {
     }
 
     processTU({ targetLang, tu }) {
-        const src = makeCSVCompatibleString(tu.nsrc) ?? tu.src;
-        const tgt = makeCSVCompatibleString(tu.ntgt) ?? tu.tgt;
+        const src = makeCSVCompatibleString(tu.nsrc ?? tu.src);
+        const tgt = makeCSVCompatibleString(tu.ntgt ?? tu.tgt);
         const avg = this.stats ? this.stats[targetLang][0] : this.average;
         const delta = this.stats ? this.stats[targetLang][1] * this.minDelta : this.minDelta;
         if (src && tgt && src.length > 0 && tgt.length > 0) {
