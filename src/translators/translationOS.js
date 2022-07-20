@@ -54,6 +54,7 @@ async function tosCombineTranslationChunksOp(args, committedGuids) {
 async function tosFetchContentByGuidOp({ refreshMode, tuMap, tuMeta, request, quality, parallelism }) {
     try {
         let tosContent = (await got.post(request).json());
+        tosContent = tosContent.filter(tosUnit => tosUnit.translated_content_url);
         // eslint-disable-next-line no-invalid-this
         this.logger.info(`Retrieved ${tosContent.length} translations from TOS`);
         refreshMode && (tosContent = tosContent.filter(tosUnit => !(tuMap[tosUnit.id_content].th === tosUnit.translated_content_hash))); // need to consider th being undefined/null for some entries
@@ -83,7 +84,7 @@ async function tosFetchContentByGuidOp({ refreshMode, tuMap, tuMeta, request, qu
         }
         return fetchedTus;
     } catch(error) {
-        throw `${error.toString()}: ${error.response?.body}`;
+        throw `${error.toString()}: ${error.response?.body ?? error.stack}`;
     }
 }
 
