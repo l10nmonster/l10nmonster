@@ -20,8 +20,6 @@ export default class FindByExpansion {
                     const row = line.split(',');
                     return [ row[0], [ row[3], row[4] ]];
                 }));
-                console.dir(teSummary)
-                console.dir(this.stats)
             }
         } else {
             throw `invalid parameters ${this.average} ${this.minDelta}`;
