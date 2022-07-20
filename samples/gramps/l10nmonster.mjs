@@ -1,22 +1,7 @@
 export default class GrampsConfig {
     sourceLang = 'en';
-    constructor({ ctx, stores, adapters, filters, translators }) {
+    constructor({ ctx, adapters, filters, translators }) {
         this.minimumQuality = ctx.build === 'prod' ? 95 : 0; // only push production builds
-        const dbConfig = {
-            org: 'gramps',
-            client: 'mysql2',
-            host: ctx.env.l10nmonster_host,
-            port: ctx.env.l10nmonster_port,
-            user: ctx.env.l10nmonster_user,
-            password: ctx.env.l10nmonster_password,
-            database: ctx.env.l10nmonster_database,
-            cert: '/etc/ssl/cert.pem',
-        };
-        this.jobStore = new stores.SqlJobStore(dbConfig);
-        this.stateStore = new stores.SqlStateStore({
-            ...dbConfig,
-            saveContent: true,
-        });
         this.source = new adapters.FsSource({
             // TODO: we could have a decorating function that given the resource id provides the custom target lang (e.g. based on a naming convention). Potentially even at the TU level
             globs: [
