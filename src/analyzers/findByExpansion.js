@@ -2,6 +2,8 @@ import {
     readFileSync,
 } from 'fs';
 
+const makeCSVCompatibleString = nstr => (Array.isArray(nstr) ? nstr.map(e => (typeof e === 'string' ? e : '')).join('').replaceAll(',', '').replaceAll('\n', ' ') : null);
+
 export default class FindByExpansion {
     static helpParams = '<average|csvFile> <minDelta|sigmas>';
     static help = 'find in TM all translations that grew more than minDelta/sigma multiples from average';
@@ -27,8 +29,8 @@ export default class FindByExpansion {
     }
 
     processTU({ targetLang, tu }) {
-        const src = tu.nsrc ? tu.nsrc.map(e => (typeof e === 'string' ? e : '')).join('') : tu.src;
-        const tgt = tu.ntgt ? tu.ntgt.map(e => (typeof e === 'string' ? e : '')).join('') : tu.tgt;
+        const src = makeCSVCompatibleString(tu.nsrc) ?? tu.src;
+        const tgt = makeCSVCompatibleString(tu.ntgt) ?? tu.tgt;
         const avg = this.stats ? this.stats[targetLang][0] : this.average;
         const delta = this.stats ? this.stats[targetLang][1] * this.minDelta : this.minDelta;
         if (src && tgt && src.length > 0 && tgt.length > 0) {
