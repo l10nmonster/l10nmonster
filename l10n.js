@@ -78,7 +78,7 @@ function createMonsterCLI(cliCtx, preAction) {
         .option('--leverage', 'eliminate internal repetitions from untranslated driver')
         .option('--refresh', 'refresh existing translations without requesting new ones')
         .option('--provider <name,...>', 'use the specified translation providers')
-        .option('--instructions <instructions>', 'send the specified translation provider')
+        .option('--instructions <instructions>', 'send the specified translation instructions')
         .option('--dryrun', 'simulate translating and compare with existing translations')
         .action(async function push() {
             await cli.push(cliCtx.monsterManager, this.optsWithGlobals());

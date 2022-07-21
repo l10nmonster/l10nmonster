@@ -1221,7 +1221,7 @@
 		},
 		{
 			"sid": "filter.mine",
-			"notes": "# Filter 1",
+			"notes": "## Note to translators: The User Interface renders Filters 1, 2, 3 next to each other. The English translation gives these the appearance of a sentence, for example: \"My activities, status updates, in the last 14 days\".\n## This is entirely optional. If the language doesn't allow for this structure, please capitalise the messages in Filter 2+3 so they appear disconnected.\n# Filter 1",
 			"guid": "lYYzgCGkzccr-pT7UZ4i4kg7sG6k6f3jFdc6n8EN4N8",
 			"src": "My activities",
 			"rid": "dashlets/my-activities.get_en.properties",
@@ -1940,7 +1940,7 @@
 		},
 		{
 			"sid": "filter.mine",
-			"notes": "# Filter 1",
+			"notes": "## Note to translators: The User Interface renders Filters 1, 2, 3 next to each other. The English translation gives these the appearance of a sentence, for example: \"My activities, status updates, in the last 14 days\".\n## This is entirely optional. If the language doesn't allow for this structure, please capitalise the messages in Filter 2+3 so they appear disconnected.\n# Filter 1",
 			"guid": "Udt6eFrWTD8LIPEn855TExZ8hKbdZ-XnDwZViiOfKjI",
 			"src": "My activities",
 			"rid": "dashlets/site-activities.get_en.properties",
