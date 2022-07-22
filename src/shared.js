@@ -32,7 +32,6 @@ export function makeTU(res, segment) {
     const tu = {
         ...seg,
         src: str,
-        contentType: res.contentType,
         rid: res.id,
         ts: new Date(res.modified).getTime(),
     };

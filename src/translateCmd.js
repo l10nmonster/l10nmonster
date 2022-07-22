@@ -69,7 +69,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                 const translator = async function translate(sid, src) {
                     const seg = { sid, str: src };
                     let nsrc;
-                    const flags = {};
+                    const flags = { sourceLang, targetLang, prj: res.prj };
                     if (pipeline.decoders) {
                         const normalizedStr = getNormalizedString(src, pipeline.decoders, flags);
                         if (normalizedStr[0] !== src) {

@@ -38,7 +38,6 @@ async function deeplMergeTranslatedChunksOp({ jobRequest, tuMeta, quality, ts },
         const ntgt = extractNormalizedPartsFromXmlV1(translations[idx] || {}, tuMeta[idx] || {});
         if (tu.nsrc) {
             translation.ntgt = ntgt;
-            translation.contentType = tu.contentType;
         } else {
             translation.tgt = ntgt[0];
         }

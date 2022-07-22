@@ -115,7 +115,7 @@ class Task {
                             op.state = 'done';
                         } catch (error) {
                             op.state = 'error';
-                            op.output = error;
+                            op.output = error.stack ?? error;
                             noErrorOps = false;
                         }
                         await this.saveState();

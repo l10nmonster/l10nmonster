@@ -22,7 +22,7 @@ export class Grandfather {
         for (const tu of tus) {
             if (!txCache[tu.rid]) {
                 const resMeta = sourceCache[tu.rid];
-                const pipeline = this.ctx.mm.contentTypes[tu.contentType];
+                const pipeline = this.ctx.mm.contentTypes[resMeta.contentType];
                 const lookup = {};
                 let resource;
                 try {

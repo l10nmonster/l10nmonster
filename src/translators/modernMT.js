@@ -42,7 +42,6 @@ async function mmtMergeTranslatedChunksOp({ jobRequest, tuMeta, quality, ts }, c
         const ntgt = extractNormalizedPartsFromXmlV1(mmtTx.translation, tuMeta[idx] || {});
         if (tu.nsrc) {
             translation.ntgt = ntgt;
-            translation.contentType = tu.contentType;
         } else {
             translation.tgt = ntgt[0];
         }

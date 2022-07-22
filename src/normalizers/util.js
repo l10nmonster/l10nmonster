@@ -179,7 +179,7 @@ export function getTUMaps(tus) {
             const [normalizedStr, phMap ] = flattenNormalizedSourceV1(tu.nsrc);
             contentMap[guid] = normalizedStr;
             if (Object.keys(phMap).length > 0) {
-                tuMeta[guid] = { contentType: tu.contentType, phMap, nsrc: tu.nsrc };
+                tuMeta[guid] = { phMap, nsrc: tu.nsrc };
                 phNotes[guid] = Object.entries(phMap)
                     .reduce((p, c) => `${p} ${c[0]}=${c[1].v}`, '\n ph:')
                     .replaceAll('<', 'ᐸ')
@@ -201,33 +201,27 @@ export function getTUMaps(tus) {
     return { contentMap, tuMeta, phNotes };
 }
 
-function getValueToV1Map(nstr) {
-    const map = {};
-    if (Array.isArray(nstr)) {
-        for (const part of nstr) {
-            if (typeof part === 'object') {
-                if (part.v1) {
-                    map[part.v] ??= [];
-                    map[part.v].push(part.v1);
-                } else {
-                    return null;
-                }
-            }
+function nstrHasV1Missing(nstr) {
+    for (const part of nstr) {
+        if (typeof part === 'object' && !part.v1) {
+            return true;
         }
     }
-    return map;
+    return false;
 }
 
 export function cleanupTU(tu, whitelist) {
     const cleanTU = Object.fromEntries(Object.entries(tu).filter(e => whitelist.includes(e[0])));
     // if we have the normalized source, and the target doesn't have v1 placeholders, we can try to build them
     // TODO: remove (for performance reasons) when v1 are strongly enforced
-    const sourceValueMap = getValueToV1Map(cleanTU.nsrc);
-    if (sourceValueMap && !getValueToV1Map(cleanTU.ntgt)) {
+    if (cleanTU.nsrc && cleanTU.ntgt && nstrHasV1Missing(cleanTU.ntgt)) {
+        const lookup = {};
+        const sourcePhMap = flattenNormalizedSourceV1(cleanTU.nsrc)[1];
+        Object.values(sourcePhMap).forEach(part => (lookup[part.v] ??= []).push(part.v1));
         for (const part of cleanTU.ntgt) {
             if (typeof part === 'object') {
                 // any kind of mismatch should be fatal because src/tgt should be in sync
-                part.v1 = sourceValueMap[part.v].shift(); // there's no guarantee we pick the right one, so we go FIFO
+                part.v1 = lookup[part.v].shift(); // there's no guarantee we pick the right one, so we go FIFO
             }
         }
     }

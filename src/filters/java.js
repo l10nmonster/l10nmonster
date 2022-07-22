@@ -4,26 +4,27 @@ export class JavaPropertiesFilter {
     async parseResource({ resource }) {
         const parsedResource = parseToEntries(resource, { sep: true, eol: true, all: true, original: true });
         const segments = [];
-        let previousComment;
+        let previousComments = [];
         for (const e of parsedResource) {
             if (e.key && e.sep.trim() === '=') {
                 const seg = {
                     sid: e.key,
                     str: e.element,
                 };
-                if (previousComment) {
-                    if (previousComment.indexOf('DO_NOT_TRANSLATE') === -1) {
+                if (previousComments.length > 0) {
+                    const notes = previousComments.join('\n');
+                    if (notes.indexOf('DO_NOT_TRANSLATE') === -1) {
                         segments.push({
                             ...seg,
-                            notes: previousComment,
+                            notes,
                         });
                     }
-                    previousComment = null;
+                    previousComments = [];
                 } else {
                     segments.push(seg);
                 }
             } else {
-                previousComment = e.original;
+                e.original.trim().length > 0 && previousComments.push(e.original);
             }
         }
         return {

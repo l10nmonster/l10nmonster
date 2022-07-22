@@ -10,7 +10,6 @@ const coreTUprops = [
 ];
 export const sourceTUWhitelist = [
     ...coreTUprops,
-    'contentType', // TODO: do we need this?
     'notes', // this is for bug fixes
 ];
 export const targetTUWhitelist = [
