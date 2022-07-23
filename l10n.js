@@ -131,7 +131,6 @@ function createMonsterCLI(cliCtx, preAction) {
     return monsterCLI;
 }
 
-console.log(consoleColor.reset);
 const [ monsterConfig, monsterCLI ] = findConfig();
 const cliCtx = {};
 const cliExtensions = monsterCLI || (process.env.l10nmonster_cliextensions && path.resolve('.', process.env.l10nmonster_cliextensions));

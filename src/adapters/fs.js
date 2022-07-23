@@ -1,12 +1,18 @@
 import * as path from 'path';
-import { existsSync, unlinkSync } from 'fs';
-import * as fs from 'fs/promises';
+import {
+    existsSync,
+    unlinkSync,
+    statSync,
+    readFileSync,
+    mkdirSync,
+    writeFileSync,
+} from 'fs';
 import { globbySync } from 'globby';
 
 export class FsSource {
     constructor({ baseDir, globs, filter, targetLangs, prj, resDecorator }) {
-        if (globs === undefined || (targetLangs || resDecorator) === undefined) {
-            throw 'You must specify globs, targetLangs (directly or via resDecorator) in FsSource';
+        if (globs === undefined) {
+            throw 'a globs property is required in FsSource';
         } else {
             this.globs = globs;
             this.filter = filter;
@@ -24,12 +30,12 @@ export class FsSource {
         for (const fileName of expandedFileNames) {
             const id = path.relative(this.baseDir, fileName);
             if (!this.filter || this.filter(id)) {
-                const stats = await fs.stat(fileName);
+                const stats = statSync(fileName);
                 let resMeta = {
                     id,
                     modified: this.ctx.regression ? 1 : stats.mtime.toISOString(),
-                    targetLangs: this.targetLangs,
                 };
+                this.targetLangs && (resMeta.targetLangs = this.targetLangs);
                 this.prj && (resMeta.prj = this.prj);
                 if (typeof this.resDecorator === 'function') {
                     resMeta = this.resDecorator(resMeta);
@@ -41,7 +47,7 @@ export class FsSource {
     }
 
     async fetchResource(resourceId) {
-        return fs.readFile(path.resolve(this.baseDir, resourceId), 'utf8'); // TODO: do we need a flag to use `readFile` for binary resources?
+        return readFileSync(path.resolve(this.baseDir, resourceId), 'utf8');
     }
 }
 
@@ -57,7 +63,7 @@ export class FsTarget {
     }
 
     async fetchTranslatedResource(lang, resourceId) {
-        return fs.readFile(this.translatedResourceId(lang, resourceId), 'utf8'); // TODO: do we need a flag to use `readFile` for binary resources?
+        return readFileSync(this.translatedResourceId(lang, resourceId), 'utf8');
     }
 
     async commitTranslatedResource(lang, resourceId, translatedRes) {
@@ -65,8 +71,8 @@ export class FsTarget {
         if (translatedRes === null) {
             this.deleteEmpty && existsSync(translatedPath) && unlinkSync(translatedPath);
         } else {
-            await fs.mkdir(path.dirname(translatedPath), {recursive: true});
-            fs.writeFile(translatedPath, translatedRes, 'utf8');  // TODO: do we need a flag to write binary resources?
+            await mkdirSync(path.dirname(translatedPath), {recursive: true});
+            writeFileSync(translatedPath, translatedRes, 'utf8');
         }
     }
 }

@@ -9,9 +9,8 @@ import { makeTU, fixCaseInsensitiveKey } from './shared.js';
 export default class MonsterManager {
     constructor({ monsterDir, monsterConfig, configSeal, ctx, defaultAnalyzers = {} }) {
         if (monsterDir && monsterConfig && monsterConfig.sourceLang &&
-                (monsterConfig.translationProvider || monsterConfig.translationProviders) &&
-                (monsterConfig.contentTypes || (monsterConfig.source && monsterConfig.resourceFilter && monsterConfig.target)) === undefined) {
-            throw 'You must specify sourceLang, translationProvider, minimumQuality, contentTypes (or source+resourceFilter+target) in l10nmonster.mjs';
+                (monsterConfig.contentTypes || monsterConfig.source) === undefined) {
+            throw 'You must specify sourceLang and contentTypes / source in l10nmonster.mjs';
         } else {
             this.monsterDir = monsterDir;
             this.configSeal = configSeal;
@@ -49,7 +48,7 @@ export default class MonsterManager {
             }
             this.tuFilters = monsterConfig.tuFilters;
             this.source = new SourceManager({ logger: ctx.logger, prj: ctx.prj, monsterDir, configSeal, contentTypes: this.contentTypes });
-            this.snap = monsterConfig.snap;
+            this.snapStore = monsterConfig.snapStore;
             this.analyzers = {
                 ...defaultAnalyzers,
                 ...(monsterConfig.analyzers ?? {}),
