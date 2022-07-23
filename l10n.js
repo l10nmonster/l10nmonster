@@ -45,6 +45,7 @@ function createMonsterCLI(cliCtx, preAction) {
         .option('-v, --verbose [level]', '0=error, 1=warning, 2=info, 3=verbose', intOptionParser)
         .option('-p, --prj <prj1,...>', 'limit source to specified projects')
         .option('--arg <string>', 'optional config constructor argument')
+        .option('--cfg <filename.mjs>', 'specify the configuration file to use')
         .option('--regression', 'keep variables constant during regression testing');
     preAction && monsterCLI.hook('preAction', preAction);
     monsterCLI.command('status')
@@ -131,37 +132,38 @@ function createMonsterCLI(cliCtx, preAction) {
 }
 
 console.log(consoleColor.reset);
-const [ configPath, cliExtensions ] = findConfig();
-if (configPath) {
-    const cliCtx = {};
-    if (cliExtensions) {
-        try {
-            const extensionsModule = await import(cliExtensions);
-            if (extensionsModule.setupExtensions) {
-                cliCtx.setupExtensions = extensionsModule.setupExtensions;
-            } else {
-                console.log('Found extensions but no setupExtensions export found');
-            }
-        } catch(e) {
-            console.log(`Couldn't load extensions from ${cliExtensions}: ${e.stack || e}`);
+const [ monsterConfig, monsterCLI ] = findConfig();
+const cliCtx = {};
+const cliExtensions = monsterCLI || (process.env.l10nmonster_cliextensions && path.resolve('.', process.env.l10nmonster_cliextensions));
+if (cliExtensions) {
+    try {
+        const extensionsModule = await import(cliExtensions);
+        if (extensionsModule.setupExtensions) {
+            cliCtx.setupExtensions = extensionsModule.setupExtensions;
+        } else {
+            console.log('Found extensions but no setupExtensions export found');
         }
+    } catch(e) {
+        console.log(`Couldn't load extensions from ${cliExtensions}: ${e.stack || e}`);
     }
-    (async () => {
-        try {
-            await createMonsterCLI(
-                cliCtx,
-                async cli => await createMonsterManager(
-                    configPath,
-                    cli.opts(),
-                    async mm => cliCtx.monsterManager = mm
-                )
-            ).parseAsync();
-        } catch(e) {
-            console.error(`Unable to run: ${e.stack || e}`);
-        } finally {
-            cliCtx.monsterManager && (await cliCtx.monsterManager.shutdown());
-        }
-    })();
-} else {
-    console.log('Unable to start: l10nmonster.mjs not found');
 }
+(async () => {
+    try {
+        await createMonsterCLI(
+            cliCtx,
+            async cli => {
+                const options = cli.opts();
+                const configPath = (options.cfg && path.resolve('.', options.cfg)) ?? monsterConfig;
+                await createMonsterManager(
+                    configPath,
+                    options,
+                    async mm => cliCtx.monsterManager = mm
+                );
+            }
+        ).parseAsync();
+    } catch(e) {
+        console.error(`Unable to run: ${e.stack || e}`);
+    } finally {
+        cliCtx.monsterManager && (await cliCtx.monsterManager.shutdown());
+    }
+})();

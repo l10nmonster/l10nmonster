@@ -41,6 +41,9 @@ import FindByExpansion from './analyzers/findByExpansion.js';
 import MismatchedTags from './analyzers/mismatchedTags.js';
 
 export async function createMonsterManager(configPath, options, cb) {
+    if (!configPath) {
+        throw 'missing configuration';
+    }
     const baseDir = path.dirname(configPath);
     const configModule = await import(configPath);
     const configSeal = statSync(configPath).mtime.toISOString();
