@@ -13,6 +13,7 @@ import MonsterManager from './monsterManager.js';
 import { OpsMgr } from './opsMgr.js';
 
 import { JsonJobStore } from './stores/jsonJobStore.js';
+import { FsSnapStore } from './stores/fsSnapStore.js';
 
 import { FsSource, FsTarget } from './adapters/fs.js';
 import { HttpSource } from './adapters/http.js';
@@ -67,7 +68,6 @@ export async function createMonsterManager(configPath, options, cb) {
         ],
     });
     const opsMgr = configModule.opsDir ? new OpsMgr({ opsDir: path.join(baseDir, configModule.opsDir), logger }) : new OpsMgr({ logger });
-    const sourceMirrorDir = configModule.sourceMirrorDir && path.join(baseDir, configModule.sourceMirrorDir);
     const ctx = {
         baseDir,
         opsMgr,
@@ -79,7 +79,7 @@ export async function createMonsterManager(configPath, options, cb) {
     };
     const helpers = {
         stores: {
-            JsonJobStore
+            JsonJobStore, FsSnapStore
         },
         adapters: {
             FsSource, FsTarget, HttpSource,
@@ -113,16 +113,14 @@ export async function createMonsterManager(configPath, options, cb) {
         if (!existsSync(monsterDir)) {
             mkdirSync(monsterDir, {recursive: true});
         }
-        const mm = await new MonsterManager({ monsterDir, monsterConfig, configSeal, ctx, defaultAnalyzers, sourceMirrorDir });
+        const mm = await new MonsterManager({ monsterDir, monsterConfig, configSeal, ctx, defaultAnalyzers });
         ctx.mm = mm;
         logger.info(`L10n Monster initialized!`);
         if (cb) {
             try {
                 await cb(mm);
             } catch(e) {
-                console.error(`Unable to operate: ${e.stack || e}`);
-            } finally {
-                mm && (await mm.shutdown());
+                console.error(`Unable to initialize: ${e.stack || e}`);
             }
         }
         return mm;

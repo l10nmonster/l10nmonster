@@ -7,7 +7,7 @@ import { sourceAndTargetAreCompatible } from './normalizers/util.js';
 import { makeTU, fixCaseInsensitiveKey } from './shared.js';
 
 export default class MonsterManager {
-    constructor({ monsterDir, monsterConfig, configSeal, ctx, defaultAnalyzers = {}, sourceMirrorDir }) {
+    constructor({ monsterDir, monsterConfig, configSeal, ctx, defaultAnalyzers = {} }) {
         if (monsterDir && monsterConfig && monsterConfig.sourceLang &&
                 (monsterConfig.translationProvider || monsterConfig.translationProviders) &&
                 (monsterConfig.contentTypes || (monsterConfig.source && monsterConfig.resourceFilter && monsterConfig.target)) === undefined) {
@@ -48,7 +48,8 @@ export default class MonsterManager {
                 });
             }
             this.tuFilters = monsterConfig.tuFilters;
-            this.source = new SourceManager({ logger: ctx.logger, prj: ctx.prj, monsterDir, configSeal, contentTypes: this.contentTypes, sourceMirrorDir });
+            this.source = new SourceManager({ logger: ctx.logger, prj: ctx.prj, monsterDir, configSeal, contentTypes: this.contentTypes });
+            this.snap = monsterConfig.snap;
             this.analyzers = {
                 ...defaultAnalyzers,
                 ...(monsterConfig.analyzers ?? {}),

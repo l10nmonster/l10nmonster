@@ -7,6 +7,9 @@ export default class CardboardConfig {
             globs: [ '**/en.lproj/*.strings' ],
             targetLangs: [ 'ar', 'it', 'ja' ],
         });
+        this.snap = new stores.FsSnapStore({
+            snapDir: 'snap',
+        });
         this.resourceFilter = new filters.IosStringsFilter();
         this.decoders = [ normalizers.iosPHDecoder, normalizers.javaEscapesDecoder ];
         const defaultTOSConfig = {
@@ -62,4 +65,3 @@ export default class CardboardConfig {
 }
 
 export const opsDir = 'l10nOps';
-export const sourceMirrorDir = 'sourceMirror';

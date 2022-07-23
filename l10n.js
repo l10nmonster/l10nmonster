@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+/* eslint-disable prefer-arrow-callback */
 /* eslint-disable no-invalid-this */
 
 import * as path from 'path';
@@ -100,6 +101,11 @@ function createMonsterCLI(cliCtx, preAction) {
         .action(async function pull() {
             await cli.pull(cliCtx.monsterManager, this.optsWithGlobals());
         });
+    monsterCLI.command('snap')
+        .description('Commits a snapshot of sources in normalized format.')
+        .action(async function snap() {
+            await cli.snap(cliCtx.monsterManager);
+        });
     monsterCLI.command('translate')
         .description('Generate translated resources based on latest source and translations.')
         .option('-l, --lang <language>', 'target language to translate')
@@ -141,14 +147,20 @@ if (configPath) {
         }
     }
     (async () => {
-        await createMonsterCLI(
-            cliCtx,
-            async cli => await createMonsterManager(
-                configPath,
-                cli.opts(),
-                async mm => cliCtx.monsterManager = mm
-            )
-        ).parseAsync();
+        try {
+            await createMonsterCLI(
+                cliCtx,
+                async cli => await createMonsterManager(
+                    configPath,
+                    cli.opts(),
+                    async mm => cliCtx.monsterManager = mm
+                )
+            ).parseAsync();
+        } catch(e) {
+            console.error(`Unable to run: ${e.stack || e}`);
+        } finally {
+            cliCtx.monsterManager && (await cliCtx.monsterManager.shutdown());
+        }
     })();
 } else {
     console.log('Unable to start: l10nmonster.mjs not found');
