@@ -58,9 +58,9 @@ export function namedDecoder(name, decoder) {
 }
 
 //Checks for values in the map based on the flags
-export function findReplacement (charMap, flags) {
+export function findFlagValue (charMap, flags) {
     const v = !charMap || typeof charMap === 'string'? charMap : Object.values(flags).find((v) => charMap[v]);
-    return !charMap[v] || typeof charMap[v] === 'string' ? charMap[v] : findReplacement (charMap[v], flags);
+    return !charMap[v] || typeof charMap[v] === 'string' ? charMap[v] : findFlagValue (charMap[v], flags);
 }
  
 // Generic pluggable encoder
@@ -68,7 +68,7 @@ export function regexMatchingEncoderMaker(name, regex, charMap) {
     const fn = function encoder(str, flags = {}) {
         return str.replaceAll(regex, (match, ...capture) => {
             const charToReplace = capture.reduce((p,c) => p ?? c);
-            const replacement = typeof charMap[charToReplace] === 'string' ? charMap[charToReplace] : findReplacement(charMap[charToReplace], flags) || charToReplace;
+            const replacement = typeof charMap[charToReplace] === 'string' ? charMap[charToReplace] : findFlagValue(charMap[charToReplace], flags) || charToReplace;
             return match.replace(charToReplace, replacement);
         });
     };
