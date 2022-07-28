@@ -109,6 +109,7 @@ describe('Regex Encoder tests', () => {
     test("findReplacement", async () => {
         const flags = { targetLang: "da-DK-x-MMT", prj: "l10n-adhoc-requests" };
         expect(findReplacement({  }, flags)).toBeUndefined();
+        expect(findReplacement("test", flags)).toBeUndefined();
         expect(findReplacement({ "fr-FR": "Lannister" }, flags)).toBeUndefined();
         expect(findReplacement({ "da-DK-x-MMT": { "anotherPrj" : "Lannister" } }, flags)).toBeUndefined();
         expect(findReplacement({ "anotherPrj": { "da-DK-x-MMT" : "Lannister" } }, flags)).toBeUndefined();
