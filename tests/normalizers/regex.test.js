@@ -102,17 +102,17 @@ describe('Regex Encoder tests', () => {
         ]);
     });
 
-    test("findFlagValue", async () => {
-        const flags = { targetLang: "da-DK-x-MMT", prj: "l10n-adhoc-requests" };
+    test('findFlagValue', async () => {
+        const flags = { targetLang: 'da-DK-x-MMT', prj: 'l10n-adhoc-requests' };
         expect(findFlagValue({  }, flags)).toBeUndefined();
-        expect(findFlagValue("test", flags)).toBeUndefined();
-        expect(findFlagValue({ "fr-FR": "Lannister" }, flags)).toBeUndefined();
-        expect(findFlagValue({ "da-DK-x-MMT": { "anotherPrj" : "Lannister" } }, flags)).toBeUndefined();
-        expect(findFlagValue({ "anotherPrj": { "da-DK-x-MMT" : "Lannister" } }, flags)).toBeUndefined();
-        expect(findFlagValue({ "da-DK-x-MMT": "Lannister" }, flags)).toMatch(/Lannister/);
-        expect(findFlagValue({ "l10n-adhoc-requests": "Lannister" }, flags)).toMatch(/Lannister/);
-        expect(findFlagValue({ "da-DK-x-MMT": { "l10n-adhoc-requests" : "Lannister" } }, flags)).toMatch(/Lannister/);
-        expect(findFlagValue({ "l10n-adhoc-requests": { "da-DK-x-MMT" : "Lannister" } }, flags)).toMatch(/Lannister/);
+        expect(findFlagValue('test', flags)).toBeUndefined();
+        expect(findFlagValue({ 'fr-FR': 'Lannister' }, flags)).toBeUndefined();
+        expect(findFlagValue({ 'da-DK-x-MMT': { 'anotherPrj' : 'Lannister' } }, flags)).toBeUndefined();
+        expect(findFlagValue({ 'anotherPrj': { 'da-DK-x-MMT' : 'Lannister' } }, flags)).toBeUndefined();
+        expect(findFlagValue({ 'da-DK-x-MMT': 'Lannister' }, flags)).toMatch(/Lannister/);
+        expect(findFlagValue({ 'l10n-adhoc-requests': 'Lannister' }, flags)).toMatch(/Lannister/);
+        expect(findFlagValue({ 'da-DK-x-MMT': { 'l10n-adhoc-requests' : 'Lannister' } }, flags)).toMatch(/Lannister/);
+        expect(findFlagValue({ 'l10n-adhoc-requests': { 'da-DK-x-MMT' : 'Lannister' } }, flags)).toMatch(/Lannister/);
     });
 
 });
