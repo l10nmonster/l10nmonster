@@ -59,7 +59,6 @@ export function namedDecoder(name, decoder) {
 
 //Checks for values in the map based on the flags
 export function findReplacement (charMap, flags) {
-    if (!charMap) return charMap;
     const v = findMatchingFlag (charMap, flags);
     return !charMap[v] || typeof charMap[v] === 'string' ? charMap[v] : findReplacement (charMap[v], flags);
 }
