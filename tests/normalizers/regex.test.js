@@ -68,28 +68,28 @@ describe('Regex Encoder tests', () => {
     test('regexMatchingEncoderMaker', async () => {
         //No match found, input returned
         expect(regexMatchingEncoderMaker('foo', /(?<protector>protector:\w+)/g, 
-            { "protector:House": { "l10n-adhoc-requests": { "da-DK-x-MMT" : "Lannister" } } })
-            ("test", { targetLang: "da-DK-x-MMT", prj: "l10n-adhoc-requests" })).toMatch(/test/);
+            { 'protector:House': { 'l10n-adhoc-requests': { 'da-DK-x-MMT' : 'Lannister' } } })
+            ('test', { targetLang: 'da-DK-x-MMT', prj: 'l10n-adhoc-requests' })).toMatch(/test/);
 
         //Match found for str, but no matching flags found, input returned
         expect(regexMatchingEncoderMaker('foo', /(?<protector>protector:\w+)/g, 
-            { "protector:House": { "l10n-adhoc-requests1": { "da-DK-x-MMT" : "Lannister" } } })
-            ("protector:House", { targetLang: "da-DK-x-MMT", prj: "l10n-adhoc-requests" })).toMatch(/protector:House/);
+            { 'protector:House': { 'l10n-adhoc-requests1': { 'da-DK-x-MMT' : 'Lannister' } } })
+            ('protector:House', { targetLang: 'da-DK-x-MMT', prj: 'l10n-adhoc-requests' })).toMatch(/protector:House/);
 
         //Match found for str, but no matching flags found, input returned
         expect(regexMatchingEncoderMaker('foo', /(?<protector>protector:\w+)/g, 
-            { "protector:House": { "l10n-adhoc-requests1": { "da-DK-x-MMT" : "Lannister" } } })
-            ("protector:House", { targetLang: "da-DK-x-MMT", prj: "l10n-adhoc-requests" })).toMatch(/protector:House/);
+            { 'protector:House': { 'l10n-adhoc-requests1': { 'da-DK-x-MMT' : 'Lannister' } } })
+            ('protector:House', { targetLang: 'da-DK-x-MMT', prj: 'l10n-adhoc-requests' })).toMatch(/protector:House/);
 
         //Match found, no flags, input returned
         expect(regexMatchingEncoderMaker('foo', /(?<protector>protector:\w+)/g, 
-            { "protector:House": "Lannister" })
-            ("protector:House", { targetLang: "da-DK-x-MMT", prj: "l10n-adhoc-requests" })).toMatch(/Lannister/);
+            { 'protector:House': 'Lannister' })
+            ('protector:House', { targetLang: 'da-DK-x-MMT', prj: 'l10n-adhoc-requests' })).toMatch(/Lannister/);
 
         //Match found, input returned
         expect(regexMatchingEncoderMaker('protectedStringsDecoder', /(?<protector>protector:\w+)/g, 
-            { "protector:House": { "l10n-adhoc-requests": { "da-DK-x-MMT" : "Lannister" } } })
-            ("protector:House", { targetLang: "da-DK-x-MMT", prj: "l10n-adhoc-requests" })).toMatch(/Lannister/);
+            { 'protector:House': { 'l10n-adhoc-requests': { 'da-DK-x-MMT' : 'Lannister' } } })
+            ('protector:House', { targetLang: 'da-DK-x-MMT', prj: 'l10n-adhoc-requests' })).toMatch(/Lannister/);
 
     });
 
