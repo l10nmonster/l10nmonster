@@ -70,25 +70,21 @@ describe('Regex Encoder tests', () => {
         expect(regexMatchingEncoderMaker('foo', /(?<protector>protector:\w+)/g, 
             { "protector:House": { "l10n-adhoc-requests": { "da-DK-x-MMT" : "Lannister" } } })
             ("test", { targetLang: "da-DK-x-MMT", prj: "l10n-adhoc-requests" })).toMatch(/test/);
-        console.log('1');
 
         //Match found for str, but no matching flags found, input returned
         expect(regexMatchingEncoderMaker('foo', /(?<protector>protector:\w+)/g, 
             { "protector:House": { "l10n-adhoc-requests1": { "da-DK-x-MMT" : "Lannister" } } })
             ("protector:House", { targetLang: "da-DK-x-MMT", prj: "l10n-adhoc-requests" })).toMatch(/protector:House/);
-        console.log('2');
 
         //Match found for str, but no matching flags found, input returned
         expect(regexMatchingEncoderMaker('foo', /(?<protector>protector:\w+)/g, 
             { "protector:House": { "l10n-adhoc-requests1": { "da-DK-x-MMT" : "Lannister" } } })
             ("protector:House", { targetLang: "da-DK-x-MMT", prj: "l10n-adhoc-requests" })).toMatch(/protector:House/);
-        console.log('2');
 
         //Match found, no flags, input returned
         expect(regexMatchingEncoderMaker('foo', /(?<protector>protector:\w+)/g, 
             { "protector:House": "Lannister" })
             ("protector:House", { targetLang: "da-DK-x-MMT", prj: "l10n-adhoc-requests" })).toMatch(/Lannister/);
-        console.log('3');
 
         //Match found, input returned
         expect(regexMatchingEncoderMaker('protectedStringsDecoder', /(?<protector>protector:\w+)/g, 
