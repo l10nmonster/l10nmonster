@@ -10,16 +10,33 @@ function mangleResourceId(id) {
     return id.replaceAll('/', '$').replaceAll('\\', '$');
 }
 
+function writeSnapshot(snapDir, snapshot) {
+    existsSync(snapDir) && rmSync(snapDir, { recursive: true });
+    mkdirSync(snapDir, { recursive: true });
+    for (const source of snapshot) {
+        writeFileSync(path.join(snapDir, `${mangleResourceId(source.id)}.json`), JSON.stringify(source, null, '\t'), 'utf8');
+    }
+}
+
 export class FsSnapStore {
-    constructor({ snapDir }) {
+    constructor({ snapDir, splitByPrj }) {
         this.snapDir = path.join(this.ctx.baseDir, snapDir ?? 'snap');
+        this.splitByPrj = splitByPrj;
     }
 
     async commitSnapshot(snapshot) {
-        existsSync(this.snapDir) && rmSync(this.snapDir, { recursive: true });
-        mkdirSync(this.snapDir, { recursive: true });
-        for (const source of snapshot) {
-            writeFileSync(path.join(this.snapDir, `${mangleResourceId(source.id)}.json`), JSON.stringify(source, null, '\t'), 'utf8');
+        if (this.splitByPrj) {
+            const prjMap = {};
+            for (const source of snapshot) {
+                const prj = source.prj ?? 'default';
+                prjMap[prj] ??= [];
+                prjMap[prj].push(source);
+            }
+            for (const prj of Object.keys(prjMap)) {
+                writeSnapshot(path.join(this.snapDir, prj), prjMap[prj]);
+            }
+        } else {
+            writeSnapshot(this.snapDir, snapshot);
         }
     }
 }
