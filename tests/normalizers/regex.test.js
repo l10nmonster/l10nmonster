@@ -1,6 +1,6 @@
 import { getNormalizedString } from '../../src/normalizers/util.js';
 import { xmlDecoder, bracePHDecoder, iosPHDecoder, xmlEntityDecoder, javaEscapesDecoder,
-    javaMFQuotesDecoder, gatedEncoder, xmlEntityEncoder, regexMatchingEncoderMaker, findFlagValue } from '../../src/normalizers/regex.js';
+    javaMFQuotesDecoder, gatedEncoder, xmlEntityEncoder, regexMatchingEncoderMaker } from '../../src/normalizers/regex.js';
 
 describe('Regex Encoder tests', () => {
 
@@ -65,34 +65,6 @@ describe('Regex Encoder tests', () => {
         expect(gatedEncoder(xmlEntityEncoder, 'foo')('<b>', { foo: true })).toBe('&lt;b>');
     });
 
-    test('regexMatchingEncoderMaker', async () => {
-        //No match found, input returned
-        expect(regexMatchingEncoderMaker('foo', /(?<protector>protector:\w+)/g, 
-            { 'protector:House': { 'l10n-adhoc-requests': { 'da-DK-x-MMT' : 'Lannister' } } })
-            ('test', { targetLang: 'da-DK-x-MMT', prj: 'l10n-adhoc-requests' })).toMatch(/test/);
-
-        //Match found for str, but no matching flags found, input returned
-        expect(regexMatchingEncoderMaker('foo', /(?<protector>protector:\w+)/g, 
-            { 'protector:House': { 'l10n-adhoc-requests1': { 'da-DK-x-MMT' : 'Lannister' } } })
-            ('protector:House', { targetLang: 'da-DK-x-MMT', prj: 'l10n-adhoc-requests' })).toMatch(/protector:House/);
-
-        //Match found for str, but no matching flags found, input returned
-        expect(regexMatchingEncoderMaker('foo', /(?<protector>protector:\w+)/g, 
-            { 'protector:House': { 'l10n-adhoc-requests1': { 'da-DK-x-MMT' : 'Lannister' } } })
-            ('protector:House', { targetLang: 'da-DK-x-MMT', prj: 'l10n-adhoc-requests' })).toMatch(/protector:House/);
-
-        //Match found, no flags, input returned
-        expect(regexMatchingEncoderMaker('foo', /(?<protector>protector:\w+)/g, 
-            { 'protector:House': 'Lannister' })
-            ('protector:House', { targetLang: 'da-DK-x-MMT', prj: 'l10n-adhoc-requests' })).toMatch(/Lannister/);
-
-        //Match found, input returned
-        expect(regexMatchingEncoderMaker('protectedStringsDecoder', /(?<protector>protector:\w+)/g, 
-            { 'protector:House': { 'l10n-adhoc-requests': { 'da-DK-x-MMT' : 'Lannister' } } })
-            ('protector:House', { targetLang: 'da-DK-x-MMT', prj: 'l10n-adhoc-requests' })).toMatch(/Lannister/);
-
-    });
-
     test('java variable with single quote', async () => {
         expect(getNormalizedString("For {0}. This is a great deal, but this price won''t last.",[ javaMFQuotesDecoder, javaEscapesDecoder, bracePHDecoder, xmlEntityDecoder ]))
         .toMatchObject([
@@ -100,19 +72,6 @@ describe('Regex Encoder tests', () => {
             {"t": "x", "v": "{0}"},
             ". This is a great deal, but this price won't last."
         ]);
-    });
-
-    test('findFlagValue', async () => {
-        const flags = { targetLang: 'da-DK-x-MMT', prj: 'l10n-adhoc-requests' };
-        expect(findFlagValue({  }, flags)).toBeUndefined();
-        expect(findFlagValue('test', flags)).toBeUndefined();
-        expect(findFlagValue({ 'fr-FR': 'Lannister' }, flags)).toBeUndefined();
-        expect(findFlagValue({ 'da-DK-x-MMT': { 'anotherPrj' : 'Lannister' } }, flags)).toBeUndefined();
-        expect(findFlagValue({ 'anotherPrj': { 'da-DK-x-MMT' : 'Lannister' } }, flags)).toBeUndefined();
-        expect(findFlagValue({ 'da-DK-x-MMT': 'Lannister' }, flags)).toMatch(/Lannister/);
-        expect(findFlagValue({ 'l10n-adhoc-requests': 'Lannister' }, flags)).toMatch(/Lannister/);
-        expect(findFlagValue({ 'da-DK-x-MMT': { 'l10n-adhoc-requests' : 'Lannister' } }, flags)).toMatch(/Lannister/);
-        expect(findFlagValue({ 'l10n-adhoc-requests': { 'da-DK-x-MMT' : 'Lannister' } }, flags)).toMatch(/Lannister/);
     });
 
 });
