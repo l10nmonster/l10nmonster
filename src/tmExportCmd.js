@@ -4,44 +4,39 @@ import { nanoid } from 'nanoid';
 import { flattenNormalizedSourceV1, cleanupTU } from './normalizers/util.js';
 import { sourceTUWhitelist, targetTUWhitelist } from './schemas.js';
 
-async function exportTMX(mm, targetLang, sourceLookup, tmBased) {
-    const tm = await mm.tmm.getTM(mm.sourceLang, targetLang);
+async function exportTMX(ctx, content, emitMissingTranslations) {
     const getMangledSrc = tu => (tu.nsrc ? flattenNormalizedSourceV1(tu.nsrc)[0] : tu.src);
     const getMangledTgt = tu => (tu.ntgt ? flattenNormalizedSourceV1(tu.ntgt)[0] : tu.tgt);
     const tmx = {
-        sourceLanguage: mm.sourceLang,
+        sourceLanguage: content.sourceLang,
         resources: {},
     };
-    const guidList = tmBased ? tm.guids : Object.keys(sourceLookup);
-    for (const guid of guidList) {
-        const sourceTU = sourceLookup[guid];
-        const translatedTU = tm.getEntryByGuid(guid);
-        const mangledTgt = translatedTU !== undefined && getMangledTgt(translatedTU);
+    for (const pair of content.pairs) {
+        const mangledTgt = pair.translatedTU !== undefined && getMangledTgt(pair.translatedTU);
         // sometimes we lose the source and we can't recreate the pair anymore
-        if (sourceTU || (translatedTU.src || translatedTU.nsrc)) {
-            const useAsSourceTU = sourceTU || translatedTU;
+        if (pair.sourceTU || (pair.translatedTU.src || pair.translatedTU.nsrc)) {
+            const useAsSourceTU = pair.sourceTU || pair.translatedTU;
             // if guid is source-based we emit the entry even if translation is missing
-            if (!tmBased || Boolean(mangledTgt)) {
+            if (emitMissingTranslations || Boolean(mangledTgt)) {
                 const group = useAsSourceTU.prj || 'default';
                 tmx.resources[group] ??= {};
-                tmx.resources[group][guid] = {};
-                tmx.resources[group][guid][mm.sourceLang] = getMangledSrc(useAsSourceTU);
-                Boolean(mangledTgt) && (tmx.resources[group][guid][targetLang] = mangledTgt);
+                tmx.resources[group][pair.sourceTU.guid] = {};
+                tmx.resources[group][pair.sourceTU.guid][content.sourceLang] = getMangledSrc(useAsSourceTU);
+                Boolean(mangledTgt) && (tmx.resources[group][pair.sourceTU.guid][content.targetLang] = mangledTgt);
             }
         } else {
-            mm.ctx.logger.info(`Couldn't retrieve source for guid: ${guid}`);
+            ctx.logger.info(`Couldn't retrieve source for guid: ${pair.sourceTU.guid}`);
         }
     }
     return tmx;
 }
 
-async function exportAsJob(mm, targetLang, sourceLookup, tmBased) {
-    const tm = await mm.tmm.getTM(mm.sourceLang, targetLang);
+async function exportAsJob(ctx, content) {
     const jobReq = {
-        sourceLang: mm.sourceLang,
-        targetLang,
-        jobGuid: mm.ctx.regression ? 'tmexport' : nanoid(),
-        updatedAt: (mm.ctx.regression ? new Date('2022-05-30T00:00:00.000Z') : new Date()).toISOString(),
+        sourceLang: content.sourceLang,
+        targetLang: content.targetLang,
+        jobGuid: ctx.regression ? 'tmexport' : nanoid(),
+        updatedAt: (ctx.regression ? new Date('2022-05-30T00:00:00.000Z') : new Date()).toISOString(),
         status: 'created',
         tus: [],
     };
@@ -51,21 +46,18 @@ async function exportAsJob(mm, targetLang, sourceLookup, tmBased) {
         status: 'done',
         tus: [],
     };
-    const guidList = tmBased ? tm.guids : Object.keys(sourceLookup);
-    for (const guid of guidList) {
-        const sourceTU = sourceLookup[guid];
-        const translatedTU = tm.getEntryByGuid(guid);
+    for (const pair of content.pairs) {
         // sometimes we lose the source so we merge source and target hoping the target TU has a copy of the source
-        const useAsSourceTU = { ...translatedTU, ...sourceTU };
+        const useAsSourceTU = { ...pair.translatedTU, ...pair.sourceTU };
         if (useAsSourceTU.src || useAsSourceTU.nsrc) {
             jobReq.tus.push(cleanupTU(useAsSourceTU, sourceTUWhitelist));
         } else {
-            mm.ctx.logger.info(`Couldn't retrieve source for guid: ${guid}`);
+            ctx.logger.info(`Couldn't retrieve source for guid: ${pair.sourceTU.guid}`);
         }
         // we want to include source in target in case it's missing
-        const useAsTargetTU = { ...sourceTU, ...translatedTU };
+        const useAsTargetTU = { ...pair.sourceTU, ...pair.translatedTU };
         if (useAsTargetTU.inflight) {
-            mm.ctx.logger.info(`Warning: in-flight translation unit ${guid} can't be exported`);
+            ctx.logger.info(`Warning: in-flight translation unit ${pair.sourceTU.guid} can't be exported`);
         } else {
             const cleanTU = cleanupTU(useAsTargetTU, targetTUWhitelist);
             cleanTU.ts = cleanTU.ts || new Date().getTime();
@@ -75,27 +67,45 @@ async function exportAsJob(mm, targetLang, sourceLookup, tmBased) {
     return [ jobReq, jobRes ];
 }
 
-export async function tmExportCmd(mm, { limitToLang, mode, format }) {
+export async function tmExportCmd(mm, { limitToLang, mode, format, prjsplit }) {
     const sourceLookup = await mm.source.getSourceAsTus();
     const targetLangs = await mm.source.getTargetLangs(limitToLang);
     const status = { files: [] };
     for (const targetLang of targetLangs) {
-        let filename;
-        if (format === 'job') {
-            const [ jobReq, jobRes ] = await exportAsJob(mm, targetLang, sourceLookup, mode === 'tm');
-            filename = `${mm.sourceLang}_${targetLang}_job_${jobReq.jobGuid}`;
-            await fs.writeFile(`${filename}-req.json`, JSON.stringify(jobReq, null, '\t'), 'utf8');
-            await fs.writeFile(`${filename}-done.json`, JSON.stringify(jobRes, null, '\t'), 'utf8');
-        } else if (format === 'json') {
-            const json = await exportTMX(mm, targetLang, sourceLookup, mode === 'tm');
-            filename = `${mm.sourceLang}_${targetLang}.json`;
-            await fs.writeFile(`${filename}`, JSON.stringify(json, null, '\t'), 'utf8');
-        } else {
-            const json = await exportTMX(mm, targetLang, sourceLookup, mode === 'tm');
-            filename = `${mm.sourceLang}_${targetLang}.tmx`;
-            await fs.writeFile(`${filename}`, await js2tmx(json), 'utf8');
+        const tm = await mm.tmm.getTM(mm.sourceLang, targetLang);
+        const guidList = mode === 'tm' ? tm.guids : Object.keys(sourceLookup);
+        const guidsByPrj = {};
+        guidList.forEach(guid => {
+            const prj = (prjsplit && sourceLookup[guid]?.prj) || 'default';
+            guidsByPrj[prj] ??= [];
+            guidsByPrj[prj].push(guid);
+        });
+        for (const prj of Object.keys(guidsByPrj)) {
+            const content = {
+                sourceLang: mm.sourceLang,
+                targetLang,
+                pairs: guidsByPrj[prj].map(guid => ({
+                    sourceTU: sourceLookup[guid],
+                    translatedTU: tm.getEntryByGuid(guid),
+                })),
+            };
+            let filename;
+            if (format === 'job') {
+                const [ jobReq, jobRes ] = await exportAsJob(mm.ctx, content);
+                filename = `${prjsplit ? `${prj}_` : ''}${mm.sourceLang}_${targetLang}_job_${jobReq.jobGuid}`;
+                await fs.writeFile(`${filename}-req.json`, JSON.stringify(jobReq, null, '\t'), 'utf8');
+                await fs.writeFile(`${filename}-done.json`, JSON.stringify(jobRes, null, '\t'), 'utf8');
+            } else if (format === 'json') {
+                const json = await exportTMX(mm.ctx, content, mode !== 'tm');
+                filename = `${prjsplit ? `${prj}_` : ''}${mm.sourceLang}_${targetLang}.json`;
+                await fs.writeFile(`${filename}`, JSON.stringify(json, null, '\t'), 'utf8');
+            } else {
+                const json = await exportTMX(mm.ctx, content, mode !== 'tm');
+                filename = `${prjsplit ? `${prj}_` : ''}${mm.sourceLang}_${targetLang}.tmx`;
+                await fs.writeFile(`${filename}`, await js2tmx(json), 'utf8');
+            }
+            status.files.push(filename);
         }
-        status.files.push(filename);
     }
     return status;
 }

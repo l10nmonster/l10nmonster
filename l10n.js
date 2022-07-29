@@ -8,7 +8,6 @@ import {
   existsSync,
 } from 'fs';
 import { Command, InvalidArgumentError } from 'commander';
-import { consoleColor } from './src/shared.js';
 import { createMonsterManager } from './src/defaultMonster.js';
 import * as cli from './src/cli.js';
 
@@ -116,11 +115,12 @@ function createMonsterCLI(cliCtx, preAction) {
         });
     monsterCLI.command('tmexport')
         .description('Export translation memory in various formats.')
-        .requiredOption('-f, --format <tmx|json|job>', 'exported file format')
-        .requiredOption('-m, --mode <source|tm>', 'export all source entries (including untranslated) or all tm entries (including missing in source)')
+        .argument('<mode>', 'export all `source` entries (including untranslated) or all `tm` entries (including missing in source)')
+        .argument('<format>', 'exported file format (tmx|json|job)')
         .option('-l, --lang <language>', 'target language to export')
-        .action(async function tmexport() {
-            await cli.tmexport(cliCtx.monsterManager, this.optsWithGlobals());
+        .option('--prjsplit', 'split target files by project')
+        .action(async function tmexport(mode, format) {
+            await cli.tmexport(cliCtx.monsterManager, { ...this.optsWithGlobals(), mode, format });
         });
     monsterCLI.command('monster')
         .description('Just because...')
