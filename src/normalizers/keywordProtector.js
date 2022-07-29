@@ -30,7 +30,7 @@ export default class KeywordProtector {
     //Checks for values in the map based on the flags
     findFlagValue (charMap, flags) {
         const v = !charMap || typeof charMap === 'string'? charMap : Object.values(flags).find((v) => charMap[v]);
-        return !charMap[v] || typeof charMap[v] === 'string' ? charMap[v] : this.findFlagValue (charMap[v], flags);
+        return !charMap ? charMap : !charMap[v] || typeof charMap[v] === 'string' ? charMap[v] : this.findFlagValue (charMap[v], flags);
     }
  
     // Generic pluggable encoder that can process values based on flags
