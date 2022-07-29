@@ -1,6 +1,6 @@
 import { getNormalizedString } from '../../src/normalizers/util.js';
 import { xmlDecoder, bracePHDecoder, iosPHDecoder, xmlEntityDecoder, javaEscapesDecoder,
-    javaMFQuotesDecoder, gatedEncoder, xmlEntityEncoder, regexMatchingEncoderMaker } from '../../src/normalizers/regex.js';
+    javaMFQuotesDecoder, gatedEncoder, xmlEntityEncoder } from '../../src/normalizers/regex.js';
 
 describe('Regex Encoder tests', () => {
 
