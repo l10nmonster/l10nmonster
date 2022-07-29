@@ -1,8 +1,8 @@
-import { keywordProtector } from '../../src/normalizers/keywordProtector';
+import { keywordTranslatorMaker } from '../../src/normalizers/keywordTranslatorMaker';
 
-describe('Keyword Protector tests', () => {
+describe('Keyword Translator tests', () => {
 
-    const [ decoder, encoder ] = keywordProtector({Hopper: {ja: 'ホッペー', ko: '홉 따는 사람'}, 'Price Freeze': {}}); 
+    const [ decoder, encoder ] = keywordTranslatorMaker('kp', {Hopper: {ja: 'ホッペー', ko: '홉 따는 사람'}, 'Price Freeze': {}}); 
 
     test('keyword with mapped values', async() => {
 
@@ -19,7 +19,8 @@ describe('Keyword Protector tests', () => {
             .toMatch('Hopper');
 
     });
-    test('keyword without mapped values ', async() => {
+
+    test('Keyword without mapped values', async() => {
 
         expect(decoder([ { t: "s", v: "Price Freeze Deposit and Savings from the rental car price breakdown Freeze"} ]))
             .toMatchObject([ { t: "x", v: "protector:Price Freeze"}, { t: "s",  v: " Deposit and Savings from the rental car price breakdown Freeze" } ]);
@@ -29,6 +30,15 @@ describe('Keyword Protector tests', () => {
 
         expect(encoder("protector:Price Freeze", { targetLang: 'da-DK', prj: 'l10n-adhoc-requests' }))
             .toMatch('Price Freeze');
+
+    });    
+});
+
+describe('Keyword Translator tests', () => {
+
+    test('No key map ', async() => {
+
+        expect(keywordTranslatorMaker).toThrowError('You have to specify a keyword map as in input paramter');
 
     });    
 

@@ -58,11 +58,11 @@ export function namedDecoder(name, decoder) {
 }
 
 // Generic pluggable encoder
-export function regexMatchingEncoderMaker(name, regex, charMap) {
-    const fn = function encoder(str) {
+export function regexMatchingEncoderMaker(name, regex, charMap, cb) {
+    const fn = function encoder(str, flags = {}) {
         return str.replaceAll(regex, (match, ...capture) => {
             const charToReplace = capture.reduce((p,c) => p ?? c);
-            return match.replace(charToReplace, charMap[charToReplace]);
+            return match.replace(charToReplace, cb? cb(name, charMap, charToReplace, flags) : charMap[charToReplace]);
         });
     };
     Object.defineProperty(fn, 'name', { value: name });
