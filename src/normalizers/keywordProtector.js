@@ -4,13 +4,13 @@ export function keywordProtector (keywordMap) {
     const defaultEncoder = regexMatchingEncoderMaker(
         'protectedStringsDecoder',
         /(?<protector>protector:\w+)/g,
-        Object.keys(keywordMap).reduce((out, str) => { out[`protector:${str}`] = str; return out}, {})
+        Object.fromEntries(Object.keys(keywordMap).map(kw => [ `protector:${kw}`, kw ]))
     );
 
     const mappedEncoder = regexMatchingEncoderMaker(
         'protectedStringsMappedDecoder',
         /(?<protector>protector:\w+)/g,
-        renameKeys(keywordMap)
+        Object.fromEntries(Object.keys(keywordMap).map(kw => [ `protector:${kw}`, keywordMap[kw] ]))
     );
 
     const decoder = regexMatchingDecoderMaker(
@@ -20,10 +20,6 @@ export function keywordProtector (keywordMap) {
     );
     return [ decoder, defaultEncoder, mappedEncoder ]
 }
-
-function renameKeys(obj) {
-    return Object.keys(obj).reduce((acc, key) => ({...acc, ...{[`protector:${key}`]: obj[key]}}), {});
-} 
 
 //Checks for values in the map based on the flags
 function findFlagValue (charMap, flags) {
