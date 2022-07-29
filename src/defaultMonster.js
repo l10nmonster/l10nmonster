@@ -32,6 +32,7 @@ import { TranslationOS } from './translators/translationOS.js';
 import { Visicode } from './translators/visicode.js';
 import { ModernMT } from './translators/modernMT.js';
 import { DeepL } from './translators/deepL.js';
+import { GoogleCloudTranslateV3 } from './translators/gctV3.js';
 import * as regexNormalizers from './normalizers/regex.js';
 
 import DuplicateSource from './analyzers/duplicateSource.js';
@@ -94,7 +95,7 @@ export async function createMonsterManager(configPath, options, cb) {
             ...regexNormalizers,
         },
         translators: {
-            Repetition, Grandfather, XliffBridge, PigLatinizer, TranslationOS, Visicode, ModernMT, DeepL
+            Repetition, Grandfather, XliffBridge, PigLatinizer, TranslationOS, Visicode, ModernMT, DeepL, GoogleCloudTranslateV3
         },
     };
     for (const helperCategory of Object.values(helpers)) {

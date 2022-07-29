@@ -35,6 +35,13 @@ export default class CardboardConfigTranslationOnly {
                 }),
                 quota: 0,
             },
+            GCT: {
+                translator: new translators.GoogleCloudTranslateV3({
+                    keyFilename: ctx.env.gct_credentials,
+                    projectId: ctx.env.gct_project,
+                    quality: 40,
+                }),
+            },
             Repetition: {
                 translator: new translators.Repetition({
                     qualifiedPenalty: 1,
