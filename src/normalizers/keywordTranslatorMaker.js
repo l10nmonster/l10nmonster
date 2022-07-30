@@ -12,9 +12,7 @@ export function keywordTranslatorMaker (name, keywordMap) {
             name,
             /(?<protector>protector:\w+)/g,
             charMap,
-            (name, charToReplace, flags) => {
-                return charMap[charToReplace] && typeof charMap[charToReplace] === 'object' ? charMap[charToReplace][flags.targetLang] || charMap[charToReplace][flags.prj] || charToReplace : charToReplace
-            }
+            (name, charToReplace, flags) => charMap[charToReplace] && typeof charMap[charToReplace] === 'object' ? charMap[charToReplace][flags.targetLang] || charMap[charToReplace][flags.prj] || charToReplace : charToReplace
         );
         return [ decoder, encoder ]    
     } else {
