@@ -57,12 +57,12 @@ export function namedDecoder(name, decoder) {
     return fn;
 }
 
-// Generic pluggable encoder
-export function regexMatchingEncoderMaker(name, regex, charMap, cb) {
+// Generic pluggable encoder based on a regex and a mapping table or function
+export function regexMatchingEncoderMaker(name, regex, matchMap) {
     const fn = function encoder(str, flags = {}) {
         return str.replaceAll(regex, (match, ...capture) => {
-            const charToReplace = capture.reduce((p,c) => p ?? c);
-            return match.replace(charToReplace, cb? cb(name, charToReplace, flags) : charMap[charToReplace]);
+            const matchToReplace = capture.reduce((p,c) => p ?? c);
+            return match.replace(matchToReplace, typeof matchMap === 'function' ? matchMap(matchToReplace, flags) : matchMap[matchToReplace]);
         });
     };
     Object.defineProperty(fn, 'name', { value: name });
@@ -209,7 +209,7 @@ export const androidEscapesDecoder = regexMatchingDecoderMaker(
     )
 );
 
-//Android lint doesn't accept % but accepts %%.  % should be replaced with '\u0025' but %% shouldn't
+// Android lint doesn't accept % but accepts %%.  % should be replaced with '\u0025' but %% shouldn't
 export const androidEscapesEncoder = (str, flags = {}) => {
     let escapedStr = str.replaceAll(/[@\\'"]/g, '\\$&').replaceAll('\t', '\\t').replaceAll('\n', '\\n').replaceAll(/(?<!%)%(?!%)/g, '\\u0025');
     // eslint-disable-next-line prefer-template
@@ -224,7 +224,8 @@ export const androidSpaceCollapser = (parts) => parts.map(p => (p.t === 's' ? { 
 export const doublePercentDecoder = regexMatchingDecoderMaker(
     'doublePercentDecoder',
     /(?<percent>%%)/g,
-    (groups) => '%');
+    () => '%'
+);
 
 export const doublePercentEncoder = (str) => str.replaceAll('%', '%%');
 

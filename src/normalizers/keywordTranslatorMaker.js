@@ -1,21 +1,22 @@
 import { regexMatchingDecoderMaker, regexMatchingEncoderMaker } from './regex.js';
 
-export function keywordTranslatorMaker (name, keywordMap) {
-    if (keywordMap && Object.keys(keywordMap).length > 0) {
+export function keywordTranslatorMaker(name, keywordToTranslationMap) {
+    if (keywordToTranslationMap && Object.keys(keywordToTranslationMap).length > 0) {
         const decoder = regexMatchingDecoderMaker(
             name,
-            new RegExp(`(?<protector>${Object.keys(keywordMap).join("|")})`, 'g'),
-            (groups) => ({ t: 'x', v: `protector:${groups.protector}` })
+            new RegExp(`(?<kw>${Object.keys(keywordToTranslationMap).join("|")})`, 'g'),
+            (groups) => ({ t: 'x', v: `${name}:${groups.kw}` })
         );
-        const charMap = Object.fromEntries(Object.keys(keywordMap).map(kw => [ `protector:${kw}`, keywordMap[kw] ]));
         const encoder = regexMatchingEncoderMaker(
             name,
-            /(?<protector>protector:\w+)/g,
-            charMap,
-            (name, charToReplace, flags) => charMap[charToReplace] && typeof charMap[charToReplace] === 'object' ? charMap[charToReplace][flags.targetLang] || charMap[charToReplace][flags.prj] || charToReplace : charToReplace
+            new RegExp(`^${name}:(?<kw>.+)$`, 'g'),
+            (kw, flags) => {
+                const tx = keywordToTranslationMap[kw];
+                return tx && typeof tx === 'object' ? tx[flags.targetLang] ?? tx[flags.prj] ?? kw : kw;
+            }
         );
-        return [ decoder, encoder ]    
+        return [ decoder, encoder ];
     } else {
-        throw 'You have to specify a keyword map as in input paramter';
+        throw 'You have to specify a keyword map to keywordTranslatorMaker';
     }
 }
