@@ -52,12 +52,12 @@ async function exportAsJob(ctx, content) {
         if (useAsSourceTU.src || useAsSourceTU.nsrc) {
             jobReq.tus.push(cleanupTU(useAsSourceTU, sourceTUWhitelist));
         } else {
-            ctx.logger.info(`Couldn't retrieve source for guid: ${pair.sourceTU.guid}`);
+            ctx.logger.info(`Couldn't retrieve source for guid: ${useAsSourceTU.guid}`);
         }
         // we want to include source in target in case it's missing
         const useAsTargetTU = { ...pair.sourceTU, ...pair.translatedTU };
         if (useAsTargetTU.inflight) {
-            ctx.logger.info(`Warning: in-flight translation unit ${pair.sourceTU.guid} can't be exported`);
+            ctx.logger.info(`Warning: in-flight translation unit ${useAsTargetTU.guid} can't be exported`);
         } else {
             const cleanTU = cleanupTU(useAsTargetTU, targetTUWhitelist);
             cleanTU.ts = cleanTU.ts || new Date().getTime();
