@@ -82,6 +82,7 @@ export function gatedEncoder(encoder, ...flagNames) {
 const namedEntities = {
     '&nbsp;': '\u00a0',
     '&amp;' : '&',
+    '&apos;' : "'",
     '&quot;': '"',
     '&lt;'  : '<',
     '&gt;'  : '>'
