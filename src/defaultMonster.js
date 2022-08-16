@@ -34,6 +34,7 @@ import { ModernMT } from './translators/modernMT.js';
 import { DeepL } from './translators/deepL.js';
 import { GoogleCloudTranslateV3 } from './translators/gctV3.js';
 import * as regexNormalizers from './normalizers/regex.js';
+import * as keywordTranslatorMaker from './normalizers/keywordTranslatorMaker.js';
 
 import DuplicateSource from './analyzers/duplicateSource.js';
 import SmellySource from './analyzers/smellySource.js';
@@ -93,6 +94,7 @@ export async function createMonsterManager(configPath, options, cb) {
         },
         normalizers: {
             ...regexNormalizers,
+            ...keywordTranslatorMaker,            
         },
         translators: {
             Repetition, Grandfather, XliffBridge, PigLatinizer, TranslationOS, Visicode, ModernMT, DeepL, GoogleCloudTranslateV3
