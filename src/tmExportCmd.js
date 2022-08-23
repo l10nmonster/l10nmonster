@@ -1,6 +1,5 @@
 import * as fs from 'fs/promises';
 import {js2tmx} from '@l10nmonster/tmexchange';
-import { nanoid } from 'nanoid';
 import { flattenNormalizedSourceV1, cleanupTU } from './normalizers/util.js';
 import { sourceTUWhitelist, targetTUWhitelist } from './schemas.js';
 
@@ -35,7 +34,7 @@ async function exportAsJob(ctx, content) {
     const jobReq = {
         sourceLang: content.sourceLang,
         targetLang: content.targetLang,
-        jobGuid: ctx.regression ? 'tmexport' : nanoid(),
+        jobGuid: 'tmexport',
         updatedAt: (ctx.regression ? new Date('2022-05-30T00:00:00.000Z') : new Date()).toISOString(),
         status: 'created',
         tus: [],
@@ -92,7 +91,7 @@ export async function tmExportCmd(mm, { limitToLang, mode, format, prjsplit }) {
             let filename;
             if (format === 'job') {
                 const [ jobReq, jobRes ] = await exportAsJob(mm.ctx, content);
-                filename = `${prjsplit ? `${prj}_` : ''}${mm.sourceLang}_${targetLang}_job_${jobReq.jobGuid}`;
+                filename = `${prjsplit ? `${prj}_` : ''}${mm.sourceLang}_${targetLang}_job_tmexport`;
                 await fs.writeFile(`${filename}-req.json`, JSON.stringify(jobReq, null, '\t'), 'utf8');
                 await fs.writeFile(`${filename}-done.json`, JSON.stringify(jobRes, null, '\t'), 'utf8');
             } else if (format === 'json') {
