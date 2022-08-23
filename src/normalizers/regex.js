@@ -113,6 +113,8 @@ export const xmlEntityEncoder = regexMatchingEncoderMaker(
     {
         '&': '&amp;',
         '<': '&lt;',
+        '>': '&gt;',
+        "'": '&apos;',
         '\u00a0': '&#160;',
     }
 );
