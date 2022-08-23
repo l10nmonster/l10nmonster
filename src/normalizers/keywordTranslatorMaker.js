@@ -9,9 +9,8 @@ export function keywordTranslatorMaker(name, keywordToTranslationMap) {
         );
         const encoder = regexMatchingEncoderMaker(
             name,
-            new RegExp(`(?<kwv>^${name}:.+)$`, 'g'),
-            (kwv, flags) => {
-                const kw = kwv.replace(`${name}:`, '');
+            new RegExp(`^(?:${name}:(?<kw>.+))$`, 'g'),
+            (match, flags, kw) => {
                 const tx = keywordToTranslationMap[kw];
                 return tx && typeof tx === 'object' ? tx[flags.targetLang] ?? tx[flags.prj] ?? kw : kw;
             }

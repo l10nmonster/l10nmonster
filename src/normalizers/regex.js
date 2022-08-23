@@ -62,7 +62,7 @@ export function regexMatchingEncoderMaker(name, regex, matchMap) {
     const fn = function encoder(str, flags = {}) {
         return str.replaceAll(regex, (match, ...capture) => {
             const matchToReplace = capture.reduce((p,c) => p ?? c);
-            return match.replace(matchToReplace, typeof matchMap === 'function' ? matchMap(matchToReplace, flags) : matchMap[matchToReplace]);
+            return typeof matchMap === 'function' ? matchMap(match, flags, ...capture) : match.replace(matchToReplace, matchMap[matchToReplace]);
         });
     };
     Object.defineProperty(fn, 'name', { value: name });
