@@ -163,59 +163,56 @@ export async function push(monsterManager, options) {
 }
 
 export async function job(monsterManager, options) {
-    const reqJobGuid = options.req;
-    const resJobGuid = options.res;
-    const pairsJobGuid = options.pairs;
-    const pushJobGuid = options.push;
-    const deleteJobGuid = options.delete;
-    if (reqJobGuid !== undefined) {
-        const req = await monsterManager.jobStore.getJobRequest(reqJobGuid);
+    const op = options.operation;
+    const jobGuid = options.jobGuid;
+    if (op === 'req') {
+        const req = await monsterManager.jobStore.getJobRequest(jobGuid);
         if (req) {
-            console.log(`Showing request of job ${reqJobGuid} ${req.sourceLang} -> ${req.targetLang}`);
+            console.log(`Showing request of job ${jobGuid} ${req.sourceLang} -> ${req.targetLang}`);
             printRequest(req);
         } else {
             console.error('Could not fetch the specified job');
         }
-    } else if (resJobGuid !== undefined) {
-        const req = await monsterManager.jobStore.getJobRequest(resJobGuid);
-        const res = await monsterManager.jobStore.getJob(resJobGuid);
+    } else if (op === 'res') {
+        const req = await monsterManager.jobStore.getJobRequest(jobGuid);
+        const res = await monsterManager.jobStore.getJob(jobGuid);
         if (req && res) {
-            console.log(`Showing response of job ${resJobGuid} ${req.sourceLang} -> ${req.targetLang} (${res.translationProvider}) ${res.status}`);
+            console.log(`Showing response of job ${jobGuid} ${req.sourceLang} -> ${req.targetLang} (${res.translationProvider}) ${res.status}`);
             printResponse(req, res);
         } else {
             console.error('Could not fetch the specified job');
         }
-    } else if (pairsJobGuid !== undefined) {
-        const req = await monsterManager.jobStore.getJobRequest(pairsJobGuid);
-        const res = await monsterManager.jobStore.getJob(pairsJobGuid);
+    } else if (op === 'pairs') {
+        const req = await monsterManager.jobStore.getJobRequest(jobGuid);
+        const res = await monsterManager.jobStore.getJob(jobGuid);
         if (req && res) {
-            console.log(`Showing source-target pairs of job ${pairsJobGuid} ${req.sourceLang} -> ${req.targetLang} (${res.translationProvider}) ${res.status}`);
+            console.log(`Showing source-target pairs of job ${jobGuid} ${req.sourceLang} -> ${req.targetLang} (${res.translationProvider}) ${res.status}`);
             printResponse(req, res, true);
         } else {
             console.error('Could not fetch the specified job');
         }
-    } else if (pushJobGuid !== undefined) {
-        console.log(`Pushing job ${pushJobGuid}...`);
+    } else if (op === 'push') {
+        console.log(`Pushing job ${jobGuid}...`);
         try {
-            const pushResponse = await jobPushCmd(monsterManager, pushJobGuid);
+            const pushResponse = await jobPushCmd(monsterManager, jobGuid);
             console.log(`${pushResponse.num.toLocaleString()} translations units requested -> status: ${pushResponse.status}`);
         } catch (e) {
             console.error(`Failed to push job: ${e}`);
         }
-    } else if (deleteJobGuid !== undefined) {
-        console.log(`Deleting job ${deleteJobGuid}...`);
+    } else if (op === 'delete') {
+        console.log(`Deleting job ${jobGuid}...`);
         try {
-            const res = await monsterManager.jobStore.getJob(deleteJobGuid);
+            const res = await monsterManager.jobStore.getJob(jobGuid);
             if (res) {
                 console.error(`Can only delete blocked/failed jobs. This job has status: ${res.status}`);
             } else {
-                await monsterManager.jobStore.deleteJobRequest(deleteJobGuid);
+                await monsterManager.jobStore.deleteJobRequest(jobGuid);
             }
         } catch (e) {
             console.error(`Failed to push job: ${e}`);
         }
     } else {
-        console.error(`Nothing to do!`);
+        console.error(`Invalid operation: ${op}`);
     }
 }
 

@@ -85,14 +85,11 @@ function createMonsterCLI(cliCtx, preAction) {
             await cli.push(cliCtx.monsterManager, this.optsWithGlobals());
         });
     monsterCLI.command('job')
-        .description('Show contents and push pending jobs.')
-        .option('--req <jobGuid>', 'show contents of a job request')
-        .option('--res <jobGuid>', 'show contents of a job response')
-        .option('--pairs <jobGuid>', 'show request/response pairs of a job')
-        .option('--push <jobGuid>', 'push a blocked job to translation provider')
-        .option('--delete <jobGuid>', 'delete a blocked/failed job')
-        .action(async function job() {
-            await cli.job(cliCtx.monsterManager, this.optsWithGlobals());
+        .description('Show request/response/pairs of a job or push/delete jobs.')
+        .argument('<operation>', 'operation to perform on job (req|res|pairs|push|delete)')
+        .argument('<jobGuid>', 'guid of job')
+        .action(async function job(operation, jobGuid) {
+            await cli.job(cliCtx.monsterManager, { operation, jobGuid });
         });
     monsterCLI.command('pull')
         .description('Receive outstanding translation jobs.')
