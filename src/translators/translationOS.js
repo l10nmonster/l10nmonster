@@ -3,16 +3,16 @@ import got from 'got';
 
 import { extractNormalizedPartsV1, getTUMaps } from '../normalizers/util.js';
 
-function createTUFromTOSTranslation({ tosUnit, content, tuMeta, quality, logger }) {
+function createTUFromTOSTranslation({ tosUnit, content, tuMeta, quality, refreshMode, logger }) {
     const guid = tosUnit.id_content;
     !content && (content = tosUnit.translated_content);
     const tu = {
         guid,
         ts: new Date().getTime(), // actual_delivery_date is garbage as it doesn't change after a bugfix, so it's better to use the retrieval time
         q: quality,
-        cost: [ tosUnit.total, tosUnit.currency, tosUnit.wc_raw, tosUnit.wc_weighted ],
         th: tosUnit.translated_content_hash, // this is vendor-specific but it's ok to generalize
     };
+    !refreshMode && (tu.cost = [ tosUnit.total, tosUnit.currency, tosUnit.wc_raw, tosUnit.wc_weighted ]);
     if (tosUnit.revised_words) {
         tu.rev = [ tosUnit.revised_words, tosUnit.error_points ?? 0];
     }
@@ -74,7 +74,7 @@ async function tosFetchContentByGuidOp({ refreshMode, tuMap, tuMeta, request, qu
                 }
                 if (fetchedContent[idx] !== null && fetchedContent[idx].indexOf('|||UNTRANSLATED_CONTENT_START|||') === -1) {
                     // eslint-disable-next-line no-invalid-this
-                    const newTU = createTUFromTOSTranslation({ tosUnit, content: fetchedContent[idx], tuMeta, quality, logger: this.logger });
+                    const newTU = createTUFromTOSTranslation({ tosUnit, content: fetchedContent[idx], tuMeta, quality, refreshMode, logger: this.logger });
                     fetchedTus.push(newTU);
                 } else {
                     // eslint-disable-next-line no-invalid-this
