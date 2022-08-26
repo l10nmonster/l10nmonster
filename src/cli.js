@@ -71,16 +71,16 @@ export async function analyze(monsterManager, options) {
                 throw `couldn't find a ${analyzer} analyzer`;
             }
             const analysis = await analyzeCmd(monsterManager, Analyzer, options.params, options.lang, options.filter);
-            const header = Analyzer.analysisStructure;
+            const header = analysis.head;
             if (options.output) {
-                const rows = header ? [ header, ...analysis].map(row => row.join(',')) : analysis;
+                const rows = header ? [ header, ...analysis.body].map(row => row.join(',')) : analysis.body;
                 rows.push('\n');
                 writeFileSync(options.output, rows.join('\n'));
             } else {
                 if (header) { // structured analysis
-                    const groups = Analyzer.analysisGroupBy;
+                    const groups = analysis.groupBy;
                     let previousGroup;
-                    for (const row of analysis) {
+                    for (const row of analysis.body) {
                         const columns = row.map((col, idx) => [col, idx]);
                         if (groups) {
                             // eslint-disable-next-line no-unused-vars
@@ -100,7 +100,7 @@ export async function analyze(monsterManager, options) {
                             .join(''));
                     }
                 } else { // unstructured analysis
-                    console.log(analysis.join('\n'));
+                    console.log(analysis.body.join('\n'));
                 }
             }
         } else {

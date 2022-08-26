@@ -9,9 +9,6 @@ const makeCSVCompatibleString = nstr => (Array.isArray(nstr) ?
 export default class FindByExpansion {
     static helpParams = '<average|csvFile> <minDelta|sigmas>';
     static help = 'find in TM all translations that grew more than minDelta/sigma multiples from average';
-    static driver = 'tm';
-    static analysisStructure = ['lang', 'guid', 'src', 'tgt', 'delta'];
-    static analysisGroupBy = ['lang'];
 
     constructor(average, minDelta) {
         this.foundTus = [];
@@ -48,6 +45,10 @@ export default class FindByExpansion {
     }
 
     getAnalysis() {
-        return this.foundTus;
+        return {
+            head: ['lang', 'guid', 'src', 'tgt', 'delta'],
+            groupBy: ['lang'],
+            body: this.foundTus,
+        };
     }
 }

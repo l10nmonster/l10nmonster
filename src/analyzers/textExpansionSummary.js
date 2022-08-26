@@ -9,8 +9,6 @@ function stdDev(numArray, position) {
 
 export default class TextExpansionSummary {
     static help = 'compute average lengths, growth, and standard deviation based on TM contents';
-    static driver = 'tm';
-    static analysisStructure = ['lang', 'avgSrc', 'avgTgt', 'avgGrowth', 'growthStdDev'];
 
     constructor() {
         this.langStats = {};
@@ -30,12 +28,15 @@ export default class TextExpansionSummary {
     }
 
     getAnalysis() {
-        return Object.entries(this.langStats).map(([targetLang, stats]) => [
-            targetLang,
-            mean(stats, 0).toFixed(1),
-            mean(stats, 1).toFixed(1),
-            mean(stats, 2).toFixed(2),
-            stdDev(stats, 2).toFixed(2),
-        ]);
+        return {
+            head: ['lang', 'avgSrc', 'avgTgt', 'avgGrowth', 'growthStdDev'],
+            body: Object.entries(this.langStats).map(([targetLang, stats]) => [
+                targetLang,
+                mean(stats, 0).toFixed(1),
+                mean(stats, 1).toFixed(1),
+                mean(stats, 2).toFixed(2),
+                stdDev(stats, 2).toFixed(2),
+            ]),
+        };
     }
 }
