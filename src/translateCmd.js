@@ -77,7 +77,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                             seg.nstr = normalizedStr;
                         }
                     }
-                    if (pipeline.segmentDecorator && pipeline.segmentDecorator([ seg ]).length === 0) {
+                    if (pipeline.segmentDecorator && pipeline.segmentDecorator([ seg ], targetLang).length === 0) {
                         mm.ctx.logger.info(`Dropping ${sid} in ${resourceId} as decided by segment decorator`);
                         return undefined;
                     }
