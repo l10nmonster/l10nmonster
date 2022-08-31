@@ -75,9 +75,11 @@ export async function tmExportCmd(mm, { limitToLang, mode, format, prjsplit }) {
         const guidList = mode === 'tm' ? tm.guids : Object.keys(sourceLookup);
         const guidsByPrj = {};
         guidList.forEach(guid => {
-            const prj = (prjsplit && sourceLookup[guid]?.prj) || 'default';
-            guidsByPrj[prj] ??= [];
-            guidsByPrj[prj].push(guid);
+            if (!prjsplit || !mm.ctx.prj || mm.ctx.prj === sourceLookup[guid].prj) { // either export everything or only content in the specified project
+                const prj = (prjsplit && sourceLookup[guid]?.prj) || 'default';
+                guidsByPrj[prj] ??= [];
+                guidsByPrj[prj].push(guid);
+            }
         });
         for (const prj of Object.keys(guidsByPrj)) {
             const content = {
