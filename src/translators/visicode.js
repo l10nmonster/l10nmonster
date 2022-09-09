@@ -34,14 +34,15 @@ export class Visicode {
         const { tus, ...jobResponse } = jobRequest;
         jobResponse.tus = jobRequest.tus.map(tu => {
             const translation = { guid: tu.guid };
+            const prolog = `\u21e5${tu.seq ? `${integerToLabel(tu.seq)}:` : ''}`;
             if (tu.nsrc) {
                 translation.ntgt = [
-                    `\u21e5`,
+                    prolog,
                     ...tu.nsrc.map(n => (typeof n === 'string' ? underlineString(n) : n)),
                     `\u21e4`
                 ];
             } else {
-                translation.tgt = `\u21e5${tu.seq ? `${integerToLabel(tu.seq)}:` : ''}${underlineString(tu.src)}\u21e4`;
+                translation.tgt = `${prolog}${underlineString(tu.src)}\u21e4`;
             }
             translation.q = this.quality;
             return translation;
