@@ -2,6 +2,7 @@
 import got from 'got';
 
 import { extractNormalizedPartsV1, getTUMaps } from '../normalizers/util.js';
+import { integerToLabel } from '../shared.js';
 
 function createTUFromTOSTranslation({ tosUnit, content, tuMeta, quality, refreshMode, logger }) {
     const guid = tosUnit.id_content;
@@ -135,6 +136,7 @@ export class TranslationOS {
                 'dashboard_query_labels': [],
             };
             jobRequest.instructions && (tosTU.context.instructions = jobRequest.instructions);
+            tu.seq && tosTU.dashboard_query_labels.push(`id_${integerToLabel(tu.seq)}`);
             tu.rid && tosTU.dashboard_query_labels.push(tu.rid.slice(-50));
             (tu.sid !== tu.src) && tosTU.dashboard_query_labels.push(tu.sid.replaceAll('\n', '').slice(-50));
             if (tu.prj !== undefined) {

@@ -129,3 +129,13 @@ export function computeTotals(totals, partial) {
         }
     }
 }
+
+const base62Chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+export function integerToLabel(int) {
+    const label = [];
+    while (int > 0) {
+        label.push(base62Chars.charAt(int % 62));
+        int = Math.floor(int / 62);
+    }
+    return label.join('');
+}

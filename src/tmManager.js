@@ -5,10 +5,10 @@ import {
     writeFileSync,
 } from 'fs';
 import { flattenNormalizedSourceToOrdinal, cleanupTU } from './normalizers/util.js';
-import { targetTUWhitelist } from './schemas.js';
+import { targetTUWhitelist, refreshedFromSource } from './schemas.js';
 
 class TM {
-    constructor(sourceLang, targetLang, tmPathName, logger, configSeal, jobs) {
+    constructor(sourceLang, targetLang, tmPathName, logger, configSeal, jobs, srcGuidMap) {
         const EMPTY_TM = {
             sourceLang,
             targetLang,
@@ -32,6 +32,7 @@ class TM {
         }
         this.lookUpByFlattenSrc = {};
         Object.values(this.tm.tus).forEach(tu => this.setEntryByGuid(tu.guid, tu)); // this is to generate side-effects
+        this.srcGuidMap = srcGuidMap;
     }
 
     get guids() {
@@ -44,7 +45,7 @@ class TM {
 
     setEntryByGuid(guid, entry) {
         // const getSpurious = (tu, whitelist) => Object.entries(tu)
-        //     .filter(e => !whitelist.includes(e[0]))
+        //     .filter(e => !whitelist.has(e[0]))
         //     .map(e => e[0])
         //     .join(', ');
         // const spurious = getSpurious(entry, targetTUWhitelist);
@@ -78,7 +79,8 @@ class TM {
     }
 
     async processJob(jobResponse, jobRequest, mtime) {
-        const requestedUnits = (jobRequest?.tus ?? []).reduce((p,c) => (p[c.guid] = c, p), {});
+        const requestedUnits = {};
+        jobRequest?.tus && jobRequest.tus.forEach(tu => requestedUnits[tu.guid] = tu);
         const { jobGuid, status, inflight, tus } = jobResponse;
         if (inflight) {
             for (const guid of inflight) {
@@ -93,7 +95,8 @@ class TM {
             for (const tu of tus) {
                 const tmEntry = this.getEntryByGuid(tu.guid);
                 const reqEntry = requestedUnits[tu.guid] ?? {};
-                const rectifiedTU = { ...reqEntry, ts: jobResponse.ts, ...tu, jobGuid };
+                const srcEntry = Object.fromEntries(Object.entries(this.srcGuidMap[tu.guid] ?? {}).filter(p => refreshedFromSource.has(p[0])));
+                const rectifiedTU = { ...reqEntry, ts: jobResponse.ts, ...tu, jobGuid, ...srcEntry };
                 if (!tmEntry || tmEntry.q < tu.q || (tmEntry.q === tu.q && tmEntry.ts < rectifiedTU.ts)) {
                     this.setEntryByGuid(tu.guid, rectifiedTU);
                 }
@@ -104,9 +107,10 @@ class TM {
 }
 
 export default class TMManager {
-    constructor({ monsterDir, jobStore, ctx, configSeal }) {
+    constructor({ monsterDir, jobStore, sourceMgr, ctx, configSeal }) {
         this.monsterDir = monsterDir;
         this.jobStore = jobStore;
+        this.sourceMgr = sourceMgr;
         this.ctx = ctx;
         this.configSeal = configSeal;
         this.tmCache = {};
@@ -118,9 +122,10 @@ export default class TMManager {
         const tmFileName = `tmCache_${sourceLang}_${targetLang}.json`;
         let tm = this.tmCache[tmFileName];
         if (!tm) {
+            !this.srcGuidMap && (this.srcGuidMap = await this.sourceMgr.getGuidMap());
             const jobs = (await this.jobStore.getJobStatusByLangPair(sourceLang, targetLang))
                 .filter(e => [ 'pending', 'done' ].includes(e[1].status));
-            tm = new TM(sourceLang, targetLang, path.join(this.monsterDir, tmFileName), this.ctx.logger, this.configSeal, jobs);
+            tm = new TM(sourceLang, targetLang, path.join(this.monsterDir, tmFileName), this.ctx.logger, this.configSeal, jobs, this.srcGuidMap);
             this.tmCache[tmFileName] = tm;
             for (const [jobGuid, jobStat] of jobs) {
                 const jobInTM = tm.getJobStatus(jobGuid);

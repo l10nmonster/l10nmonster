@@ -8,11 +8,23 @@ import { generateFullyQualifiedGuid, makeTU } from './shared.js';
 import { getNormalizedString, flattenNormalizedSourceToOrdinal } from './normalizers/util.js';
 
 export default class SourceManager {
-    constructor({ logger, prj, monsterDir, configSeal, contentTypes }) {
+    constructor({ logger, prj, monsterDir, configSeal, contentTypes, seqMapPath }) {
         this.logger = logger;
         this.prj = prj;
         this.configSeal = configSeal;
         this.contentTypes = contentTypes;
+        if (seqMapPath) {
+            this.seqMapPath = seqMapPath;
+            if (existsSync(seqMapPath)) {
+                this.seqMap = JSON.parse(readFileSync(seqMapPath, 'utf8'));
+                let max = 0;
+                Object.values(this.seqMap).forEach(s => s > max && (max = s));
+                this.maxSeq = max;
+            } else {
+                this.seqMap = {};
+                this.maxSeq = 0;
+            }
+        }
         this.sourceCachePath = path.join(monsterDir, 'sourceCache.json');
         existsSync(this.sourceCachePath) && (this.sourceCache = JSON.parse(readFileSync(this.sourceCachePath, 'utf8')));
         // negative logic to allow undefined properties
@@ -33,7 +45,18 @@ export default class SourceManager {
         return combinedStats.flat(1);
     }
 
-    async getEntries() {
+    #generateSequence(guid) {
+        const seq = this.seqMap[guid];
+        if (seq) {
+            return seq;
+        } else {
+            this.maxSeq++;
+            this.seqMap[guid] = this.maxSeq;
+            return this.maxSeq;
+        }
+    }
+
+    async #updateSourceCache() {
         if (this.sourceCacheStale) {
             const newCache = { configSeal: this.configSeal, sources: {} };
             const stats = await this.#fetchResourceStats();
@@ -60,6 +83,7 @@ export default class SourceManager {
                         const flattenStr = seg.nstr ? flattenNormalizedSourceToOrdinal(seg.nstr) : seg.str;
                         flattenStr !== seg.str && (seg.gstr = flattenStr);
                         seg.guid = generateFullyQualifiedGuid(res.id, seg.sid, flattenStr);
+                        this.seqMapPath && (seg.seq = this.#generateSequence(seg.guid));
                     }
                     newCache.sources[res.id] = res;
                 }
@@ -67,13 +91,24 @@ export default class SourceManager {
             if (dirty) {
                 this.logger.info(`Updating ${this.sourceCachePath}...`);
                 writeFileSync(this.sourceCachePath, JSON.stringify(newCache, null, '\t'), 'utf8');
+                this.seqMapPath && writeFileSync(this.seqMapPath, JSON.stringify(this.seqMap, null, '\t'), 'utf8');
                 this.sourceCache = newCache;
             }
             this.sourceCacheStale = false;
         }
+    }
+
+    async getEntries() {
+        await this.#updateSourceCache();
         return Object.entries(this.sourceCache.sources)
-            // eslint-disable-next-line no-unused-vars
-            .filter(([rid, res]) => (this.prj === undefined || this.prj.includes(res.prj)));
+            .filter(e => (this.prj === undefined || this.prj.includes(e[1].prj)));
+    }
+
+    async getGuidMap() {
+        await this.#updateSourceCache();
+        const guidMap = {};
+        Object.values(this.sourceCache.sources).forEach(res => res.segments.forEach(seg => guidMap[seg.guid] = seg));
+        return guidMap;
     }
 
     async getSourceAsTus() {

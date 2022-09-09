@@ -211,7 +211,7 @@ function nstrHasV1Missing(nstr) {
 }
 
 export function cleanupTU(tu, whitelist) {
-    const cleanTU = Object.fromEntries(Object.entries(tu).filter(e => whitelist.includes(e[0])));
+    const cleanTU = Object.fromEntries(Object.entries(tu).filter(e => whitelist.has(e[0])));
     // if we have the normalized source, and the target doesn't have v1 placeholders, we can try to build them
     // TODO: remove (for performance reasons) when v1 are strongly enforced
     if (cleanTU.nsrc && cleanTU.ntgt && nstrHasV1Missing(cleanTU.ntgt)) {

@@ -1,3 +1,5 @@
+import { integerToLabel } from '../shared.js';
+
 function underlineString(str) {
     const newStr = [];
     for (const c of str) {
@@ -16,6 +18,7 @@ function underlineString(str) {
 //     } while (num > 0);
 //     return newStr.join('');
 // }
+// e.g. encodeNumber(26, 9372, jobRequest.jobId) or encodeNumber(52, 9398, tuIdx)
 
 export class Visicode {
     constructor({ quality } = {}) {
@@ -38,7 +41,7 @@ export class Visicode {
                     `\u21e4`
                 ];
             } else {
-                translation.tgt = `\u21e5${underlineString(tu.src)}\u21e4`;
+                translation.tgt = `\u21e5${tu.seq ? `${integerToLabel(tu.seq)}:` : ''}${underlineString(tu.src)}\u21e4`;
             }
             translation.q = this.quality;
             return translation;

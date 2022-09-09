@@ -1,6 +1,7 @@
 export default class CardboardConfig {
     sourceLang = 'en';
     minimumQuality = 2;
+    seqMap = 'seqMap.json';
 
     constructor({ stores, adapters, filters, normalizers, translators }) {
         this.source = new adapters.FsSource({

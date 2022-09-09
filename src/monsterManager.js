@@ -1,3 +1,4 @@
+import * as path from 'path';
 import wordsCountModule from 'words-count';
 
 import TMManager from './tmManager.js';
@@ -18,7 +19,6 @@ export default class MonsterManager {
             this.jobStore = monsterConfig.jobStore ?? new JsonJobStore({
                 jobsDir: 'l10njobs',
             });
-            this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, ctx, configSeal });
             this.debug = monsterConfig.debug ?? {};
             this.sourceLang = monsterConfig.sourceLang;
             this.minimumQuality = monsterConfig.minimumQuality;
@@ -47,7 +47,9 @@ export default class MonsterManager {
                 });
             }
             this.tuFilters = monsterConfig.tuFilters;
-            this.source = new SourceManager({ logger: ctx.logger, prj: ctx.prj, monsterDir, configSeal, contentTypes: this.contentTypes });
+            const seqMapPath = monsterConfig.seqMap && path.join(ctx.baseDir, monsterConfig.seqMap);
+            this.source = new SourceManager({ logger: ctx.logger, prj: ctx.prj, monsterDir, configSeal, contentTypes: this.contentTypes, seqMapPath });
+            this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, sourceMgr: this.source, ctx, configSeal });
             this.snapStore = monsterConfig.snapStore;
             this.analyzers = {
                 ...defaultAnalyzers,

@@ -6,6 +6,7 @@ const androidLangMapping = {
 
 export default class TachiyomiConfig {
     sourceLang = 'en';
+    seqMap = 'seqMap.json';
 
     constructor({ ctx, stores, adapters, filters, normalizers, translators }) {
         this.source = new adapters.FsSource({
