@@ -1,10 +1,11 @@
 import { integerToLabel } from '../shared.js';
 
-function underlineString(str) {
+function underlineString(str, runningLength) {
     const newStr = [];
     for (const c of str) {
+        runningLength++;
         newStr.push(c);
-        newStr.push('\u0333'); // double low-line
+        newStr.push(runningLength % 5 === 0 ? '\u0332\u031f' : '\u0332'); // low-line and plus sign below
     }
     return newStr.join('');
 }
@@ -36,13 +37,23 @@ export class Visicode {
             const translation = { guid: tu.guid };
             const prolog = `\u21e5${tu.seq ? `${integerToLabel(tu.seq)}:` : ''}`;
             if (tu.nsrc) {
+                const parts = [];
+                let runningLength = 0;
+                for (const part of tu.nsrc) {
+                    if (typeof part === 'string') {
+                        parts.push(underlineString(part, runningLength));
+                        runningLength += part.length;
+                    } else {
+                        parts.push(part);
+                    }
+                }
                 translation.ntgt = [
                     prolog,
-                    ...tu.nsrc.map(n => (typeof n === 'string' ? underlineString(n) : n)),
+                    ...parts,
                     `\u21e4`
                 ];
             } else {
-                translation.tgt = `${prolog}${underlineString(tu.src)}\u21e4`;
+                translation.tgt = `${prolog}${underlineString(tu.src, 0)}\u21e4`;
             }
             translation.q = this.quality;
             return translation;
