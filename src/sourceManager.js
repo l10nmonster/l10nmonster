@@ -143,11 +143,12 @@ export default class SourceManager {
             }
         }
         if (limitToLang) {
-            if (langs.includes(limitToLang)) {
-                langs = [ limitToLang ];
-            } else {
-                throw `Invalid language: ${limitToLang}`;
+            const langsToLimit = limitToLang.split(',');
+            const invalidLangs = langsToLimit.filter(limitedLang => !langs.includes(limitedLang));
+            if (invalidLangs.length > 0) {
+                throw `Invalid languages: ${invalidLangs.join(',')}`;
             }
+            return langsToLimit;
         }
         return langs;
     }

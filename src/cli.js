@@ -26,7 +26,7 @@ export async function status(monsterManager, options) {
     if (output) {
         writeFileSync(output, JSON.stringify(status, null, '\t'), 'utf8');
     } else {
-        console.log(`${status.numSources.toLocaleString()} translatable resources`);
+        console.log(`${consoleColor.reset}${status.numSources.toLocaleString()} translatable resources`);
         for (const [lang, langStatus] of Object.entries(status.lang)) {
             console.log(`\n${consoleColor.bright}Language ${lang}${consoleColor.reset} (minimum quality ${langStatus.leverage.minimumQuality}, TM size:${langStatus.leverage.tmSize.toLocaleString()}):`);
             const totals = {};
