@@ -8,21 +8,28 @@ import { generateFullyQualifiedGuid, makeTU } from './shared.js';
 import { getNormalizedString, flattenNormalizedSourceToOrdinal } from './normalizers/util.js';
 
 export default class SourceManager {
-    constructor({ logger, prj, monsterDir, configSeal, contentTypes, seqMapPath }) {
+    constructor({ logger, prj, monsterDir, configSeal, contentTypes, seqMapPath, seqThreshold }) {
         this.logger = logger;
         this.prj = prj;
         this.configSeal = configSeal;
         this.contentTypes = contentTypes;
         if (seqMapPath) {
             this.seqMapPath = seqMapPath;
+            this.seqThreshold = seqThreshold ?? 7;
             if (existsSync(seqMapPath)) {
                 this.seqMap = JSON.parse(readFileSync(seqMapPath, 'utf8'));
-                let max = 0;
-                Object.values(this.seqMap).forEach(s => s > max && (max = s));
+                let max = 0,
+                    min = Number.MAX_SAFE_INTEGER;
+                Object.values(this.seqMap).forEach(s => {
+                    s > max && (max = s);
+                    s < min && (min = s);
+                });
                 this.maxSeq = max;
+                this.minSeq = min;
             } else {
                 this.seqMap = {};
-                this.maxSeq = 0;
+                this.maxSeq = 32 * 32 - 1;
+                this.minSeq = 32 * 32;
             }
         }
         this.sourceCachePath = path.join(monsterDir, 'sourceCache.json');
@@ -45,14 +52,17 @@ export default class SourceManager {
         return combinedStats.flat(1);
     }
 
-    #generateSequence(guid) {
-        const seq = this.seqMap[guid];
+    // produce at least a 2-char label and try to assign shorter numbers to shorter strings
+    #generateSequence(seg) {
+        const seq = this.seqMap[seg.guid];
         if (seq) {
             return seq;
         } else {
-            this.maxSeq++;
-            this.seqMap[guid] = this.maxSeq;
-            return this.maxSeq;
+            // eslint-disable-next-line no-nested-ternary
+            const sl = (seg.nstr?.map(e => (typeof e === 'string' ? e : (e.t === 'x' ? '1234567' : '')))?.join('') ?? seg.str).length;
+            const newSeq = sl <= this.seqThreshold && this.minSeq > 32 ? --this.minSeq : ++this.maxSeq;
+            this.seqMap[seg.guid] = newSeq;
+            return newSeq;
         }
     }
 
@@ -83,7 +93,7 @@ export default class SourceManager {
                         const flattenStr = seg.nstr ? flattenNormalizedSourceToOrdinal(seg.nstr) : seg.str;
                         flattenStr !== seg.str && (seg.gstr = flattenStr);
                         seg.guid = generateFullyQualifiedGuid(res.id, seg.sid, flattenStr);
-                        this.seqMapPath && (seg.seq = this.#generateSequence(seg.guid));
+                        this.seqMapPath && (seg.seq = this.#generateSequence(seg));
                     }
                     newCache.sources[res.id] = res;
                 }

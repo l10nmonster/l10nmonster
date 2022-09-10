@@ -48,7 +48,15 @@ export default class MonsterManager {
             }
             this.tuFilters = monsterConfig.tuFilters;
             const seqMapPath = monsterConfig.seqMap && path.join(ctx.baseDir, monsterConfig.seqMap);
-            this.source = new SourceManager({ logger: ctx.logger, prj: ctx.prj, monsterDir, configSeal, contentTypes: this.contentTypes, seqMapPath });
+            this.source = new SourceManager({
+                logger: ctx.logger,
+                prj: ctx.prj,
+                monsterDir,
+                configSeal,
+                contentTypes: this.contentTypes,
+                seqMapPath,
+                seqThreshold: monsterConfig.seqThreshold,
+            });
             this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, sourceMgr: this.source, ctx, configSeal });
             this.snapStore = monsterConfig.snapStore;
             this.analyzers = {
