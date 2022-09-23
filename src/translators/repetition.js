@@ -25,21 +25,19 @@ export class Repetition {
                 let bestCandidate = { q: 0, ts: 0 };
                 let foundCandidate = false;
                 for (const candidate of tuCandidates) {
-                    if (tu.sid === candidate.sid || tu.sid !== bestCandidate.sid) { // prefer a qualified match
-                        const isCompatible = sourceAndTargetAreCompatible(tu?.nsrc ?? tu?.src, candidate?.ntgt ?? candidate?.tgt);
-                        const isSameQualityButNewer = candidate.q === bestCandidate.q && candidate.ts > bestCandidate.ts;
-                        const isBetterCandidate = candidate.q > bestCandidate.q || isSameQualityButNewer;
-                        if (isCompatible && isBetterCandidate) {
-                            bestCandidate = candidate;
-                            foundCandidate = true;
-                        }
+                    const isCompatible = sourceAndTargetAreCompatible(tu?.nsrc ?? tu?.src, candidate?.ntgt ?? candidate?.tgt);
+                    const adjustedQuality = Math.max(0, candidate.q - (tu.sid === candidate.sid ? this.qualifiedPenalty : this.unqualifiedPenalty), 0);
+                    const isSameQualityButNewer = adjustedQuality === bestCandidate.q && candidate.ts > bestCandidate.ts;
+                    const isBetterCandidate = adjustedQuality > bestCandidate.q || isSameQualityButNewer;
+                    if (isCompatible && isBetterCandidate) {
+                        bestCandidate = { ...candidate, q: adjustedQuality };
+                        foundCandidate = true;
                     }
                 }
                 if (foundCandidate) {
-                    const q = Math.max(0, bestCandidate.q - (tu.sid === bestCandidate.sid ? this.qualifiedPenalty : this.unqualifiedPenalty), 0);
                     const leveragedTU = {
                         guid: tu.guid,
-                        q,
+                        q: bestCandidate.q,
                     };
                     !bestCandidate.nsrc && (leveragedTU.src = bestCandidate.src);
                     bestCandidate.nsrc && (leveragedTU.nsrc = bestCandidate.nsrc);
