@@ -1,50 +1,50 @@
 {
-  "homeTitle": "⇥<b>W̳e̳l̳c̳o̳m̳e̳</b> ̳t̳o̳ ̳$t(brand:portalName).̳⇤",
+  "homeTitle": "⇥99:<b>W̲e̲l̲c̲o̲̟m̲e̲</b> ̲t̲o̲̟ ̲$t(brand:portalName).̲⇤",
   "@homeTitle": {
     "description": "header - This is the welcome message on the home page"
   },
   "flightHome": {
-    "title": "⇥<strong>W̳e̳l̳c̳o̳m̳e̳ ̳b̳a̳c̳k̳</strong> ̳t̳o̳ ̳t̳r̳a̳v̳e̳l̳.̳⇤",
+    "title": "⇥89:<strong>W̲e̲l̲c̲o̲̟m̲e̲ ̲b̲a̲̟c̲k̲</strong> ̲t̲o̲̟ ̲t̲r̲a̲v̲̟e̲l̲.̲⇤",
     "@title": {
       "description": "header - welcome message of flight flow"
     },
-    "subtitle": "⇥B̳o̳o̳k̳ ̳t̳h̳e̳ ̳t̳r̳i̳p̳ ̳y̳o̳u̳'̳v̳e̳ ̳b̳e̳e̳n̳ ̳w̳a̳i̳t̳i̳n̳g̳ ̳f̳o̳r̳.̳⇤",
+    "subtitle": "⇥79:B̲o̲o̲k̲ ̲̟t̲h̲e̲ ̲t̲̟r̲i̲p̲ ̲y̲̟o̲u̲'̲v̲e̲̟ ̲b̲e̲e̲n̲̟ ̲w̲a̲i̲t̲̟i̲n̲g̲ ̲f̲̟o̲r̲.̲⇤",
     "@subtitle": {
       "description": "subtitle - flight landing page subheading"
     }
   },
-  "pickerTraveler_one": "⇥T̳r̳a̳v̳e̳l̳e̳r̳⇤",
-  "pickerTraveler_other": "⇥T̳r̳a̳v̳e̳l̳e̳r̳s̳⇤",
-  "warningMessage": "⇥Y̳o̳u̳ ̳c̳a̳n̳ ̳s̳e̳a̳r̳c̳h̳ ̳f̳o̳r̳ ̳u̳p̳ ̳t̳o̳ ̳{{maximumCount}} ̳t̳r̳a̳v̳e̳l̳e̳r̳s̳⇤",
+  "pickerTraveler_one": "⇥69:T̲r̲a̲v̲e̲̟l̲e̲r̲⇤",
+  "pickerTraveler_other": "⇥59:T̲r̲a̲v̲e̲̟l̲e̲r̲s̲⇤",
+  "warningMessage": "⇥49:Y̲o̲u̲ ̲c̲̟a̲n̲ ̲s̲e̲̟a̲r̲c̲h̲ ̲̟f̲o̲r̲ ̲u̲̟p̲ ̲t̲o̲ ̲̟{{maximumCount}} ̲t̲r̲a̲v̲̟e̲l̲e̲r̲s̲̟⇤",
   "@warningMessage": {
     "description": "copy - passenger count picker warning message"
   },
-  "termsAndConditions": "⇥<p>$t(brand:portalName) ̳p̳r̳i̳c̳e̳ ̳s̳e̳r̳v̳i̳c̳e̳s̳ ̳a̳n̳d̳ ̳n̳o̳t̳i̳f̳i̳c̳a̳t̳i̳o̳n̳s̳.̳ ̳$t(brand:clientName) ̳w̳o̳r̳k̳ ̳h̳a̳r̳d̳ ̳t̳o̳ ̳e̳n̳s̳u̳r̳e̳ ̳t̳h̳e̳ ̳a̳c̳c̳u̳r̳a̳c̳y̳ ̳o̳f̳ ̳i̳t̳s̳ ̳p̳r̳e̳d̳i̳c̳t̳i̳o̳n̳s̳.̳ ̳</p>⇤",
+  "termsAndConditions": "⇥AAB:<p>$t(brand:portalName) ̲p̲r̲i̲c̲̟e̲ ̲s̲e̲r̲̟v̲i̲c̲e̲s̲̟ ̲a̲n̲d̲ ̲̟n̲o̲t̲i̲f̲̟i̲c̲a̲t̲i̲̟o̲n̲s̲.̲ ̲̟$t(brand:clientName) ̲w̲o̲r̲k̲̟ ̲h̲a̲r̲d̲̟ ̲t̲o̲ ̲e̲̟n̲s̲u̲r̲e̲̟ ̲t̲h̲e̲ ̲̟a̲c̲c̲u̲r̲̟a̲c̲y̲ ̲o̲̟f̲ ̲i̲t̲s̲̟ ̲p̲r̲e̲d̲̟i̲c̲t̲i̲o̲̟n̲s̲.̲ ̲</p>⇤",
   "@termsAndConditions": {
     "description": "copy - price  terms and conditions copy"
   },
   "timeCount": {
-    "day_one": "⇥{{count}} ̳d̳a̳y̳⇤",
+    "day_one": "⇥39:{{count}} ̲d̲a̲y̲⇤",
     "@day_one": {
       "description": "copy - time copy for day singular"
     },
-    "day_other": "⇥{{count}} ̳d̳a̳y̳s̳⇤",
+    "day_other": "⇥29:{{count}} ̲d̲a̲y̲s̲̟⇤",
     "@day_other": {
       "description": "copy - time copy for days plural"
     },
-    "hour_one": "⇥{{count}} ̳h̳o̳u̳r̳⇤",
+    "hour_one": "⇥Z9:{{count}} ̲h̲o̲u̲r̲̟⇤",
     "@hour_one": {
       "description": "copy - time copy for hour singular"
     },
-    "hour_other": "⇥{{count}} ̳h̳o̳u̳r̳s̳⇤",
+    "hour_other": "⇥Y9:{{count}} ̲h̲o̲u̲r̲̟s̲⇤",
     "@hour_other": {
       "description": "copy - time copy for hours plural"
     },
-    "second_one": "⇥{{count}} ̳s̳e̳c̳o̳n̳d̳⇤",
+    "second_one": "⇥X9:{{count}} ̲s̲e̲c̲o̲̟n̲d̲⇤",
     "@second_one": {
       "description": "copy - time copy for second singular"
     },
-    "second_other": "⇥{{count}} ̳s̳e̳c̳o̳n̳d̳s̳⇤",
+    "second_other": "⇥W9:{{count}} ̲s̲e̲c̲o̲̟n̲d̲s̲⇤",
     "@second_other": {
       "description": "copy - time copy for seconds plural"
     }

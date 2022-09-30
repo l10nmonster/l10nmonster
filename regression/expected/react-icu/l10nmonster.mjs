@@ -1,6 +1,8 @@
 export default class ReactConfig {
     sourceLang = 'en';
     minimumQuality = 50;
+    seqMap = 'seqMap.json';
+    seqThreshold = 100;
 
     constructor({ stores, adapters, filters, normalizers, translators }) {
         this.source = new adapters.FsSource({

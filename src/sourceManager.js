@@ -8,11 +8,30 @@ import { generateFullyQualifiedGuid, makeTU } from './shared.js';
 import { getNormalizedString, flattenNormalizedSourceToOrdinal } from './normalizers/util.js';
 
 export default class SourceManager {
-    constructor({ logger, prj, monsterDir, configSeal, contentTypes }) {
+    constructor({ logger, prj, monsterDir, configSeal, contentTypes, seqMapPath, seqThreshold }) {
         this.logger = logger;
         this.prj = prj;
         this.configSeal = configSeal;
         this.contentTypes = contentTypes;
+        if (seqMapPath) {
+            this.seqMapPath = seqMapPath;
+            this.seqThreshold = seqThreshold ?? 7;
+            if (existsSync(seqMapPath)) {
+                this.seqMap = JSON.parse(readFileSync(seqMapPath, 'utf8'));
+                let max = 0,
+                    min = Number.MAX_SAFE_INTEGER;
+                Object.values(this.seqMap).forEach(s => {
+                    s > max && (max = s);
+                    s < min && (min = s);
+                });
+                this.maxSeq = max;
+                this.minSeq = min;
+            } else {
+                this.seqMap = {};
+                this.maxSeq = 32 * 32 - 1;
+                this.minSeq = 32 * 32;
+            }
+        }
         this.sourceCachePath = path.join(monsterDir, 'sourceCache.json');
         existsSync(this.sourceCachePath) && (this.sourceCache = JSON.parse(readFileSync(this.sourceCachePath, 'utf8')));
         // negative logic to allow undefined properties
@@ -33,7 +52,21 @@ export default class SourceManager {
         return combinedStats.flat(1);
     }
 
-    async getEntries() {
+    // produce at least a 2-char label and try to assign shorter numbers to shorter strings
+    #generateSequence(seg) {
+        const seq = this.seqMap[seg.guid];
+        if (seq) {
+            return seq;
+        } else {
+            // eslint-disable-next-line no-nested-ternary
+            const sl = (seg.nstr?.map(e => (typeof e === 'string' ? e : (e.t === 'x' ? '1234567' : '')))?.join('') ?? seg.str).length;
+            const newSeq = sl <= this.seqThreshold && this.minSeq > 32 ? --this.minSeq : ++this.maxSeq;
+            this.seqMap[seg.guid] = newSeq;
+            return newSeq;
+        }
+    }
+
+    async #updateSourceCache() {
         if (this.sourceCacheStale) {
             const newCache = { configSeal: this.configSeal, sources: {} };
             const stats = await this.#fetchResourceStats();
@@ -60,21 +93,32 @@ export default class SourceManager {
                         const flattenStr = seg.nstr ? flattenNormalizedSourceToOrdinal(seg.nstr) : seg.str;
                         flattenStr !== seg.str && (seg.gstr = flattenStr);
                         seg.guid = generateFullyQualifiedGuid(res.id, seg.sid, flattenStr);
+                        this.seqMapPath && (seg.seq = this.#generateSequence(seg));
                     }
-                    pipeline.segmentDecorator && (res.segments = pipeline.segmentDecorator(parsedRes.segments));
                     newCache.sources[res.id] = res;
                 }
             }
             if (dirty) {
                 this.logger.info(`Updating ${this.sourceCachePath}...`);
                 writeFileSync(this.sourceCachePath, JSON.stringify(newCache, null, '\t'), 'utf8');
+                this.seqMapPath && writeFileSync(this.seqMapPath, JSON.stringify(this.seqMap, null, '\t'), 'utf8');
                 this.sourceCache = newCache;
             }
             this.sourceCacheStale = false;
         }
+    }
+
+    async getEntries() {
+        await this.#updateSourceCache();
         return Object.entries(this.sourceCache.sources)
-            // eslint-disable-next-line no-unused-vars
-            .filter(([rid, res]) => (this.prj === undefined || this.prj.includes(res.prj)));
+            .filter(e => (this.prj === undefined || this.prj.includes(e[1].prj)));
+    }
+
+    async getGuidMap() {
+        await this.#updateSourceCache();
+        const guidMap = {};
+        Object.values(this.sourceCache.sources).forEach(res => res.segments.forEach(seg => guidMap[seg.guid] = seg));
+        return guidMap;
     }
 
     async getSourceAsTus() {
@@ -99,11 +143,12 @@ export default class SourceManager {
             }
         }
         if (limitToLang) {
-            if (langs.includes(limitToLang)) {
-                langs = [ limitToLang ];
-            } else {
-                throw `Invalid language: ${limitToLang}`;
+            const langsToLimit = limitToLang.split(',');
+            const invalidLangs = langsToLimit.filter(limitedLang => !langs.includes(limitedLang));
+            if (invalidLangs.length > 0) {
+                throw `Invalid languages: ${invalidLangs.join(',')}`;
             }
+            return langsToLimit;
         }
         return langs;
     }

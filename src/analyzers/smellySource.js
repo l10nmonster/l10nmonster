@@ -1,9 +1,6 @@
 export default class SmellySource {
     static helpParams = '[smellyRegex]';
     static help = 'find all source segments that match the regular expression';
-    static driver = 'source';
-    static analysisStructure = ['prj', 'rid', 'sid', 'str'];
-    static analysisGroupBy = ['prj', 'rid'];
 
     constructor(smellyRegex) {
         this.smelly = [];
@@ -18,6 +15,10 @@ export default class SmellySource {
     }
 
     getAnalysis() {
-        return this.smelly;
+        return {
+            head: ['prj', 'rid', 'sid', 'str'],
+            groupBy: ['prj', 'rid'],
+            body: this.smelly,
+        };
     }
 }

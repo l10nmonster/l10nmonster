@@ -22,9 +22,6 @@ function makeCSVCompatibleString(nstr) {
 
 export default class MismatchedTags {
     static help = 'find mismatched open/close placeholders in translations';
-    static driver = 'tm';
-    static analysisStructure = ['lang', 'guid', 'src', 'tgt'];
-    static analysisGroupBy = ['lang'];
 
     constructor() {
         this.foundTus = [];
@@ -42,6 +39,10 @@ export default class MismatchedTags {
     }
 
     getAnalysis() {
-        return this.foundTus;
+        return {
+            head: ['lang', 'guid', 'src', 'tgt'],
+            groupBy: ['lang'],
+            body: this.foundTus,
+        };
     }
 }

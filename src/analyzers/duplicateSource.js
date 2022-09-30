@@ -1,8 +1,5 @@
 export default class DuplicateSource {
     static help = 'find duplicate text in source that could be leveraged as qualified/unqualified';
-    static driver = 'source';
-    static analysisStructure = ['str', 'prj', 'rid', 'sid'];
-    static analysisGroupBy = ['str'];
 
     constructor() {
         this.qualifiedMatches = {}; // sid+src
@@ -19,12 +16,16 @@ export default class DuplicateSource {
     }
 
     getAnalysis() {
-        const analysis = [];
+        const analysis = {
+            head: ['str', 'prj', 'rid', 'sid'],
+            groupBy: ['str'],
+            body: [],
+        };
         const qualifiedRepetitions = Object.values(this.qualifiedMatches).filter(e => e.length > 1);
         const unqualifiedRepetitions = Object.values(this.unqualifiedMatches).filter(e => e.length > 1);
         for (const rep of [...qualifiedRepetitions, ...unqualifiedRepetitions]) {
             for (const r of rep) {
-                analysis.push([rep[0].str, r.prj, r.rid, r.sid]);
+                analysis.body.push([rep[0].str, r.prj, r.rid, r.sid]);
             }
         }
         return analysis;

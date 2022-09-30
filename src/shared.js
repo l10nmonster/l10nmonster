@@ -129,3 +129,15 @@ export function computeTotals(totals, partial) {
         }
     }
 }
+
+// this encoding tries to minimize confusion especially when rendered small in devices without copy&paste (e.g. mobile apps)
+// 01OI removed because they can be mistaken and lowercase also removed as if this is indexed it may be case-insensitive
+const base32Chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+export function integerToLabel(int) {
+    const label = [];
+    while (int > 0) {
+        label.push(base32Chars.charAt(int % 32));
+        int = Math.floor(int / 32);
+    }
+    return label.join('');
+}

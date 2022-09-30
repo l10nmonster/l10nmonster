@@ -25,8 +25,12 @@ export class JsonJobStore {
         return jobsDir;
     }
 
+    #findGlob(glob) {
+        return globbySync(path.join(this.jobsBaseDir, '**', glob));
+    }
+
     async getJobStatusByLangPair(sourceLang, targetLang) {
-        const files = globbySync(path.join(this.jobsBaseDir, '*', `*${sourceLang}_${targetLang}_job_*.json`));
+        const files = this.#findGlob(`*${sourceLang}_${targetLang}_job_*.json`);
         const statusMap = {};
         for (const file of files) {
             const entry = file.match(/job_(?<guid>[0-9A-Za-z_-]+)-(?<status>req|pending|done)\.json$/)?.groups;
@@ -41,7 +45,7 @@ export class JsonJobStore {
 
     async createJobManifest() {
         return {
-            jobGuid: this.ctx.regression ? `xxx${globbySync(path.join(this.jobsBaseDir, '*', '*job_*-req.json')).length}xxx` : nanoid(),
+            jobGuid: this.ctx.regression ? `xxx${this.#findGlob('*job_*-req.json').length}xxx` : nanoid(),
             status: 'created',
         };
     }
@@ -60,19 +64,19 @@ export class JsonJobStore {
     }
 
     async getJob(jobGuid) {
-        const pending = globbySync(path.join(this.jobsBaseDir, '*', `*job_${jobGuid}-pending.json`))[0];
-        const done = globbySync(path.join(this.jobsBaseDir, '*', `*job_${jobGuid}-done.json`))[0];
+        const pending = this.#findGlob(`*job_${jobGuid}-pending.json`)[0];
+        const done = this.#findGlob(`*job_${jobGuid}-done.json`)[0];
         const job = done ?? pending;
         return job ? JSON.parse(readFileSync(job, 'utf8')) : null;
     }
 
     async getJobRequest(jobGuid) {
-        const req = globbySync(path.join(this.jobsBaseDir, '*', `*job_${jobGuid}-req.json`))[0];
+        const req = this.#findGlob(`*job_${jobGuid}-req.json`)[0];
         return req ? JSON.parse(readFileSync(req, 'utf8')) : null;
     }
 
     async deleteJobRequest(jobGuid) {
-        const req = globbySync(path.join(this.jobsBaseDir, '*', `*job_${jobGuid}-req.json`))[0];
+        const req = this.#findGlob(`*job_${jobGuid}-req.json`)[0];
         return unlinkSync(req);
     }
 }

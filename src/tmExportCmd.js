@@ -30,11 +30,11 @@ async function exportTMX(ctx, content, emitMissingTranslations) {
     return tmx;
 }
 
-async function exportAsJob(ctx, content) {
+async function exportAsJob(ctx, content, jobGuid) {
     const jobReq = {
         sourceLang: content.sourceLang,
         targetLang: content.targetLang,
-        jobGuid: 'tmexport',
+        jobGuid,
         updatedAt: (ctx.regression ? new Date('2022-05-30T00:00:00.000Z') : new Date()).toISOString(),
         status: 'created',
         tus: [],
@@ -75,9 +75,11 @@ export async function tmExportCmd(mm, { limitToLang, mode, format, prjsplit }) {
         const guidList = mode === 'tm' ? tm.guids : Object.keys(sourceLookup);
         const guidsByPrj = {};
         guidList.forEach(guid => {
-            const prj = (prjsplit && sourceLookup[guid]?.prj) || 'default';
-            guidsByPrj[prj] ??= [];
-            guidsByPrj[prj].push(guid);
+            if (!prjsplit || !mm.ctx.prj || mm.ctx.prj.includes(mode === 'tm' ? tm.getEntryByGuid(guid).prj : sourceLookup[guid].prj)) { // either export everything or only content in the specified project
+                const prj = (prjsplit && sourceLookup[guid]?.prj) || 'default';
+                guidsByPrj[prj] ??= [];
+                guidsByPrj[prj].push(guid);
+            }
         });
         for (const prj of Object.keys(guidsByPrj)) {
             const content = {
@@ -90,8 +92,9 @@ export async function tmExportCmd(mm, { limitToLang, mode, format, prjsplit }) {
             };
             let filename;
             if (format === 'job') {
-                const [ jobReq, jobRes ] = await exportAsJob(mm.ctx, content);
-                filename = `${prjsplit ? `${prj}_` : ''}${mm.sourceLang}_${targetLang}_job_tmexport`;
+                const jobGuid = `tmexport_${prjsplit ? `${prj}_` : ''}${mm.sourceLang}_${targetLang}`;
+                const [ jobReq, jobRes ] = await exportAsJob(mm.ctx, content, jobGuid);
+                filename = `${mm.sourceLang}_${targetLang}_job_${jobGuid}`;
                 await fs.writeFile(`${filename}-req.json`, JSON.stringify(jobReq, null, '\t'), 'utf8');
                 await fs.writeFile(`${filename}-done.json`, JSON.stringify(jobRes, null, '\t'), 'utf8');
             } else if (format === 'json') {

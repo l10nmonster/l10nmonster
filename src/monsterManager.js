@@ -1,3 +1,4 @@
+import * as path from 'path';
 import wordsCountModule from 'words-count';
 
 import TMManager from './tmManager.js';
@@ -18,7 +19,6 @@ export default class MonsterManager {
             this.jobStore = monsterConfig.jobStore ?? new JsonJobStore({
                 jobsDir: 'l10njobs',
             });
-            this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, ctx, configSeal });
             this.debug = monsterConfig.debug ?? {};
             this.sourceLang = monsterConfig.sourceLang;
             this.minimumQuality = monsterConfig.minimumQuality;
@@ -47,7 +47,17 @@ export default class MonsterManager {
                 });
             }
             this.tuFilters = monsterConfig.tuFilters;
-            this.source = new SourceManager({ logger: ctx.logger, prj: ctx.prj, monsterDir, configSeal, contentTypes: this.contentTypes });
+            const seqMapPath = monsterConfig.seqMap && path.join(ctx.baseDir, monsterConfig.seqMap);
+            this.source = new SourceManager({
+                logger: ctx.logger,
+                prj: ctx.prj,
+                monsterDir,
+                configSeal,
+                contentTypes: this.contentTypes,
+                seqMapPath,
+                seqThreshold: monsterConfig.seqThreshold,
+            });
+            this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, sourceMgr: this.source, ctx, configSeal });
             this.snapStore = monsterConfig.snapStore;
             this.analyzers = {
                 ...defaultAnalyzers,
@@ -103,6 +113,7 @@ export default class MonsterManager {
         const repetitionMap = {};
         // eslint-disable-next-line no-unused-vars
         for (const [rid, res] of sources) {
+            const pipeline = this.contentTypes[res.contentType];
             const prj = res.prj || 'default';
             prjLeverage[prj] ??= {
                 translated: 0,
@@ -118,7 +129,8 @@ export default class MonsterManager {
             };
             const leverageDetails = prjLeverage[prj];
             if (res.targetLangs.includes(targetLang) && targetLang !== this.sourceLang) {
-                for (const seg of res.segments) {
+                const filteredSegments = pipeline.segmentDecorator ? pipeline.segmentDecorator(res.segments, targetLang) : res.segments;
+                for (const seg of filteredSegments) {
                     // TODO: if segment is pluralized we need to generate/suppress the relevant number of variants for the targetLang
                     const tmEntry = tm.getEntryByGuid(seg.guid);
                     const tu = makeTU(res, seg);

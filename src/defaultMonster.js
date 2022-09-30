@@ -41,6 +41,7 @@ import SmellySource from './analyzers/smellySource.js';
 import TextExpansionSummary from './analyzers/textExpansionSummary.js';
 import FindByExpansion from './analyzers/findByExpansion.js';
 import MismatchedTags from './analyzers/mismatchedTags.js';
+import * as contentExporters from './analyzers/contentExport.js';
 
 export async function createMonsterManager(configPath, options, cb) {
     if (!configPath) {
@@ -105,7 +106,7 @@ export async function createMonsterManager(configPath, options, cb) {
             helper.prototype && (helper.prototype.ctx = ctx);
     }
     const defaultAnalyzers = {
-        DuplicateSource, SmellySource, TextExpansionSummary, FindByExpansion, MismatchedTags
+        DuplicateSource, SmellySource, TextExpansionSummary, FindByExpansion, MismatchedTags, ...contentExporters
     };
     try {
         const configParams = { ctx, ...helpers };

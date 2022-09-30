@@ -7,7 +7,7 @@ import * as path from 'path';
 import {
   existsSync,
 } from 'fs';
-import { Command, InvalidArgumentError } from 'commander';
+import { Command, Argument, InvalidArgumentError } from 'commander';
 import { createMonsterManager } from './src/defaultMonster.js';
 import * as cli from './src/cli.js';
 
@@ -85,14 +85,11 @@ function createMonsterCLI(cliCtx, preAction) {
             await cli.push(cliCtx.monsterManager, this.optsWithGlobals());
         });
     monsterCLI.command('job')
-        .description('Show contents and push pending jobs.')
-        .option('--req <jobGuid>', 'show contents of a job request')
-        .option('--res <jobGuid>', 'show contents of a job response')
-        .option('--pairs <jobGuid>', 'show request/response pairs of a job')
-        .option('--push <jobGuid>', 'push a blocked job to translation provider')
-        .option('--delete <jobGuid>', 'delete a blocked/failed job')
-        .action(async function job() {
-            await cli.job(cliCtx.monsterManager, this.optsWithGlobals());
+        .description('Show request/response/pairs of a job or push/delete jobs.')
+        .addArgument(new Argument('<operation>', 'operation to perform on job').choices(['req', 'res', 'pairs', 'push', 'delete']))
+        .requiredOption('-g, --jobGuid <guid>', 'guid of job')
+        .action(async function job(operation) {
+            await cli.job(cliCtx.monsterManager, { ...this.optsWithGlobals(), operation });
         });
     monsterCLI.command('pull')
         .description('Receive outstanding translation jobs.')
@@ -115,8 +112,8 @@ function createMonsterCLI(cliCtx, preAction) {
         });
     monsterCLI.command('tmexport')
         .description('Export translation memory in various formats.')
-        .argument('<mode>', 'export all `source` entries (including untranslated) or all `tm` entries (including missing in source)')
-        .argument('<format>', 'exported file format (tmx|json|job)')
+        .addArgument(new Argument('<mode>', 'export source (including untranslated) or tm entries (including missing in source)').choices(['source', 'tm']))
+        .addArgument(new Argument('<format>', 'exported file format').choices(['tmx', 'json', 'job']))
         .option('-l, --lang <language>', 'target language to export')
         .option('--prjsplit', 'split target files by project')
         .action(async function tmexport(mode, format) {
