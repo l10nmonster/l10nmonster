@@ -127,7 +127,7 @@ export class TranslationOS {
                 content: contentMap[tu.guid],
                 metadata: 'mf=v1',
                 context: {
-                    notes: `${tu.notes ?? ''}${phNotes[tu.guid] ?? ''}\n rid: ${tu.rid}\n sid: ${tu.sid}\n guid: ${tu.guid}`
+                    notes: `${tu.notes ?? ''}${phNotes[tu.guid] ?? ''}\n rid: ${tu.rid}\n sid: ${tu.sid}\n guid: ${tu.guid}\n seq: ${tu.seq}`
                 },
                 'source_language': jobRequest.sourceLang,
                 'target_languages': [ jobRequest.targetLang ],
