@@ -125,7 +125,7 @@ export class TranslationOS {
                 'id_order': jobRequest.jobGuid,
                 'id_content': tu.guid,
                 content: contentMap[tu.guid],
-                metadata: 'mf=v1',?
+                metadata: 'mf=v1',
                 context: {
                     notes: `${tu.notes ?? ''}${phNotes[tu.guid] ?? ''}\n rid: ${tu.rid}\n sid: ${tu.sid}\n guid: ${tu.guid}\n ${tu.seq ? `seq: ${tu.seq}` : ''}`
                 },
