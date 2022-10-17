@@ -29,9 +29,6 @@ describe('html filter tests', () => {
             )
 
             let out = getNormalizedString(pageRes.segments[0].str, [xmlDecoder]); 
-            expect(out).toMatchObject ( [ 'coming' ] );
-
-            out = getNormalizedString(pageRes.segments[1].str, [xmlDecoder]); 
             expect(out)
                 .toMatchObject (
                     [{"t": "bx", "v": "<h1>"}, 
