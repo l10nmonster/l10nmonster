@@ -1388,6 +1388,62 @@
 					"v": "</address>"
 				}
 			]
+		},
+		{
+			"sid": "_7-rxUyoom72VOHf7M6YAtljJoaRmfSx26wK2x_n3gY",
+			"guid": "VVTevgSiQdkU0psySIzres9i6lc0JtDHIpwwWMecPKI",
+			"src": "coming",
+			"rid": "en/voucher.html",
+			"ts": 1
+		},
+		{
+			"sid": "P9vq1R3XnX7Fy2UZ-nadhNNa5PiFG4DIxs5QvyT2wKA",
+			"gstr": "{{bx}}Winter is 🎉{{ex}} {{bx}} {{bx}}coming{{ex}} {{ex}} {{bx}}Redeem Gift{{ex}}",
+			"guid": "vVc1_vsNL4nHHXr5LbrkF4sXNxiuqLYsqUvFuwxl_3g",
+			"src": "<h1>Winter is 🎉</h1> <div> <div class=\"body-paragraph\">coming</div> </div> <a href=\"#\" id=\"redeemButton\" class=\"button white w-button\">Redeem Gift</a>",
+			"rid": "en/voucher.html",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "bx",
+					"v": "<h1>"
+				},
+				"Winter is 🎉",
+				{
+					"t": "ex",
+					"v": "</h1>"
+				},
+				" ",
+				{
+					"t": "bx",
+					"v": "<div>"
+				},
+				" ",
+				{
+					"t": "bx",
+					"v": "<div class=\"body-paragraph\">"
+				},
+				"coming",
+				{
+					"t": "ex",
+					"v": "</div>"
+				},
+				" ",
+				{
+					"t": "ex",
+					"v": "</div>"
+				},
+				" ",
+				{
+					"t": "bx",
+					"v": "<a href=\"#\" id=\"redeemButton\" class=\"button white w-button\">"
+				},
+				"Redeem Gift",
+				{
+					"t": "ex",
+					"v": "</a>"
+				}
+			]
 		}
 	],
 	"translationProvider": "Piggy",

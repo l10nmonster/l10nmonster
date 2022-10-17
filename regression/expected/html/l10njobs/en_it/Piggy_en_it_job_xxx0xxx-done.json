@@ -1165,6 +1165,58 @@
 				"-it]"
 			],
 			"q": 1
+		},
+		{
+			"guid": "VVTevgSiQdkU0psySIzres9i6lc0JtDHIpwwWMecPKI",
+			"tgt": "[omingcay-it]",
+			"q": 1
+		},
+		{
+			"guid": "vVc1_vsNL4nHHXr5LbrkF4sXNxiuqLYsqUvFuwxl_3g",
+			"ntgt": [
+				"[",
+				{
+					"t": "bx",
+					"v": "<h1>"
+				},
+				"Interway isyay 🎉",
+				{
+					"t": "ex",
+					"v": "</h1>"
+				},
+				" ",
+				{
+					"t": "bx",
+					"v": "<div>"
+				},
+				" ",
+				{
+					"t": "bx",
+					"v": "<div class=\"body-paragraph\">"
+				},
+				"omingcay",
+				{
+					"t": "ex",
+					"v": "</div>"
+				},
+				" ",
+				{
+					"t": "ex",
+					"v": "</div>"
+				},
+				" ",
+				{
+					"t": "bx",
+					"v": "<a href=\"#\" id=\"redeemButton\" class=\"button white w-button\">"
+				},
+				"Edeemray Iftgay",
+				{
+					"t": "ex",
+					"v": "</a>"
+				},
+				"-it]"
+			],
+			"q": 1
 		}
 	],
 	"ts": 1,
