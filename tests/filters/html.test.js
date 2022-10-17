@@ -52,4 +52,17 @@ describe('html filter tests', () => {
                     );
     });
 
+    const translator = async function translate(sid, str) {
+        return sid === 'str1' ? undefined : `***${str}***`;
+    }
+
+    test('translateResource returns string', async () => {
+        const resource = readFileSync(resourceId, 'utf8');
+        const expectedOutput = readFileSync('tests/files/values-fil/page.html', 'utf8');
+        const translatedRes = await resourceFilter.translateResource({ resource, translator });
+        console.log(translatedRes);
+        expect(translatedRes).toBe(expectedOutput);
+      });
+        
+
 });
