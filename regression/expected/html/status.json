@@ -1,9 +1,9 @@
 {
-	"numSources": 1,
+	"numSources": 2,
 	"lang": {
 		"it": {
 			"leverage": {
-				"tmSize": 113,
+				"tmSize": 115,
 				"minimumQuality": 50,
 				"prjLeverage": {
 					"default": {
@@ -15,8 +15,8 @@
 						"untranslatedWords": 0,
 						"pending": 0,
 						"pendingWords": 0,
-						"internalRepetitions": 113,
-						"internalRepetitionWords": 869
+						"internalRepetitions": 115,
+						"internalRepetitionWords": 876
 					}
 				}
 			}
