@@ -5,7 +5,7 @@ export function keywordTranslatorMaker(name, keywordToTranslationMap) {
         const decoder = regexMatchingDecoderMaker(
             name,
             new RegExp(`(?<kw>${Object.keys(keywordToTranslationMap).join("|")})`, 'g'),
-            (groups) => ({ t: 'x', v: `${name}:${groups.kw}` })
+            (groups) => ({ t: 'x', v: `${name}:${groups.kw}`, s: groups.kw })
         );
         const encoder = regexMatchingEncoderMaker(
             name,
