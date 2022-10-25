@@ -87,7 +87,11 @@ export function flattenNormalizedSourceToXmlV1(nsrc) {
             const mangledPh = `${phPrefix}_${part.t}_${(part.v.match(/[0-9A-Za-z_]+/) || [''])[0]}`;
             let phShorthand = `x${phIdx}`;
             if (part.t === 'x' || (part.t === 'ex' && nestingLevel === 0)) { // if we get a close tag before an open one, treat it like a single tag
-                normalizedStr.push(`<${phShorthand} />`);
+                if (part.s) { // if we have a ph sample, we emit it as a child text node
+                    normalizedStr.push(`<${phShorthand}>${part.s}</${phShorthand}>`);
+                } else {
+                    normalizedStr.push(`<${phShorthand} />`);
+                }
             } else if (part.t === 'bx') {
                 normalizedStr.push(`<${phShorthand}>`);
                 openTagShorthand[nestingLevel] = phShorthand;
@@ -113,12 +117,15 @@ export function extractNormalizedPartsFromXmlV1(str, phMap) {
     const normalizedParts = [];
     let pos = 0;
     for (const match of str.matchAll(/<(?<x>x\d+) \/>|<(?<bx>x\d+)>|<\/(?<ex>x\d+)>/g)) {
-        if (match.index > pos) {
+        const phSample = phMap[match.groups.ex];
+        if (match.index > pos && !phSample) {  // if we have a ph sample, skip the text node
             normalizedParts.push(cleanXMLEntities(match.input.substring(pos, match.index)));
         }
-        normalizedParts.push(phMap[match.groups.x ??
-            (match.groups.bx && `b${match.groups.bx}`) ??
-            (match.groups.ex && `e${match.groups.ex}`)]);
+        !phMap[match.groups.bx] && // if we have a ph sample, skip the open tag
+            normalizedParts.push(phSample ??
+                phMap[match.groups.x] ??
+                phMap[match.groups.bx && `b${match.groups.bx}`] ??
+                phMap[match.groups.ex && `e${match.groups.ex}`]);
         pos = match.index + match[0].length;
     }
     if (pos < str.length) {

@@ -7,7 +7,7 @@ import {
 const nsrc1 = [
     { t: 'x', v: "<icon name='location'/>" },
     "Price&A:\n'",
-    { t: 'x', v: '{0,number,integer}' },
+    { t: 'x', v: '{0,number,integer}', s: '$10' },
     '" \u00a0',
     { t: 'bx', v: "<color name='green'>" },
     { t: 'x', v: '{1}' },
@@ -23,6 +23,7 @@ const phMap1 = {
     b_x_0: {
         t: "x",
         v: "{0,number,integer}",
+        s: '$10',
         v1: "b_x_0",
     },
     c_bx_color: {
@@ -44,7 +45,7 @@ const phMap1 = {
 
 const v1String1 = '{{a_x_icon}}Price&A:\n\'{{b_x_0}}"  {{c_bx_color}}{{d_x_1}}{{e_ex_color}}';
 
-const xml1 = '<x1 />Price&A:\n\'<x2 />"  <x3><x4 /></x3>';
+const xml1 = '<x1 />Price&A:\n\'<x2>$10</x2>"  <x3><x4 /></x3>';
 
 const xmlPhMap1 = {
     x1: {
@@ -55,6 +56,7 @@ const xmlPhMap1 = {
     x2: {
         t: "x",
         v: "{0,number,integer}",
+        s: '$10',
         v1: "b_x_0",
     },
     bx3: {
