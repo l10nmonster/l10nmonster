@@ -137,14 +137,20 @@ export function extractNormalizedPartsFromXmlV1(str, phMap) {
     let pos = 0;
     for (const match of str.matchAll(/<(?<x>x\d+) \/>|<(?<bx>x\d+)>|<\/(?<ex>x\d+)>/g)) {
         const phSample = phMap[match.groups.ex];
-        if (match.index > pos && !phSample) {  // if we have a ph sample, skip the text node
-            normalizedParts.push(cleanXMLEntities(match.input.substring(pos, match.index)));
+        if (match.index > pos) {
+            if (phSample) {  // if we have a ph sample, skip the text node and only preserve the leading space if there
+                match.input.charAt(pos) === ' ' && normalizedParts.push(' ');
+            } else {
+                normalizedParts.push(cleanXMLEntities(match.input.substring(pos, match.index)));
+            }
         }
         !phMap[match.groups.bx] && // if we have a ph sample, skip the open tag
             normalizedParts.push(phSample ??
                 phMap[match.groups.x] ??
                 phMap[match.groups.bx && `b${match.groups.bx}`] ??
                 phMap[match.groups.ex && `e${match.groups.ex}`]);
+        // if we have a ph sample preserve the trailing space if there
+        match.index > pos && phSample && match.input.charAt(match.index - 1) === ' ' && normalizedParts.push(' ');
         pos = match.index + match[0].length;
     }
     if (pos < str.length) {

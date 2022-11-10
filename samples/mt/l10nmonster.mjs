@@ -29,7 +29,8 @@ export default class MTConfig {
                         'Payments Testing': {
                             'it': '**Payment Testing**'
                         },
-                        'testing scenarios': {}
+                        'testing scenarios': {},
+                        'Giant': {},
                     },
                 }),
             },

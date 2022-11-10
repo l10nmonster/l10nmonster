@@ -2,5 +2,6 @@
     "title": "Payments Testing Guide: Ensure Flawless Checkouts",
     "p1": "Payment gateways are the vital financial link between customer and business. You risk a lost sale if a customer encounters even a minor issue during checkout.",
     "p2": "Payment gateway testing mimics each step of the payment process to verify that connections, transactions, and paths for communications are working. Testers uncover issues that impact a seamless transaction and user experience.",
-    "p3": "This guide provides a full overview of payments testing, from definitions to use cases to actionable testing scenarios."
+    "p3": "This guide provides a full overview of payments testing, from definitions to use cases to actionable testing scenarios.",
+    "brand": "Giant's guarantee"
 }
