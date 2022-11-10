@@ -1,8 +1,8 @@
 import { diffJson } from 'diff';
-import { getNormalizedString, flattenNormalizedSourceToOrdinal, sourceAndTargetAreCompatible, phMatcherMaker } from './normalizers/util.js';
+import { getNormalizedString, flattenNormalizedSourceToOrdinal, sourceAndTargetAreCompatible, phMatcherMaker, partEncoderMaker } from './normalizers/util.js';
 import { consoleColor, generateFullyQualifiedGuid } from './shared.js';
 
-export function translateWithEntry(src, nsrc, entry, flags, encodeString) {
+export function translateWithEntry(src, nsrc, entry, flags, encodePart) {
     if (entry && !entry.inflight) {
         if (sourceAndTargetAreCompatible(nsrc ?? src, entry.ntgt ?? entry.tgt)) {
             if (entry.ntgt) {
@@ -12,11 +12,11 @@ export function translateWithEntry(src, nsrc, entry, flags, encodeString) {
                 for (const [idx, part] of ntgtEntries) {
                     const partFlags = { ...flags, isFirst: idx === 0, isLast: idx === ntgtEntries.length - 1 };
                     if (typeof part === 'string') {
-                        tgt.push(encodeString(part, partFlags));
+                        tgt.push(encodePart(part, partFlags));
                     } else {
                         const ph = phMatcher(part);
                         if (ph) {
-                            tgt.push(encodeString(ph, partFlags));
+                            tgt.push(encodePart(ph, partFlags));
                         } else {
                             throw `unknown placeholder found: ${JSON.stringify(part)}`;
                         }
@@ -24,7 +24,7 @@ export function translateWithEntry(src, nsrc, entry, flags, encodeString) {
                 }
                 return tgt.join('');
             } else {
-                return encodeString(entry.tgt, { ...flags, isFirst: true, isLast: true });
+                return encodePart(entry.tgt, { ...flags, isFirst: true, isLast: true });
             }
         } else {
             throw `source and target are incompatible`;
@@ -49,22 +49,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
             if (res.targetLangs.includes(targetLang) && (mm.ctx.prj === undefined || mm.ctx.prj.includes(res.prj))) {
                 const resourceId = res.id;
                 const pipeline = mm.contentTypes[res.contentType];
-                const encodeString = function encodeString(part, flags) {
-                    let str,
-                        encoders;
-                    if (typeof part === 'string') {
-                        encoders = pipeline.textEncoders;
-                        str = part;
-                    } else {
-                        encoders = pipeline.codeEncoders;
-                        str = part.v;
-                    }
-                    if (encoders) {
-                        return encoders.reduce((s, encoder) => encoder(s, flags), str);
-                    } else {
-                        return str;
-                    }
-                };
+                const encodePart = partEncoderMaker(pipeline.textEncoders, pipeline.codeEncoders);
                 // eslint-disable-next-line complexity
                 const translator = async function translate(sid, src) {
                     const seg = { sid, str: src };
@@ -85,7 +70,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                     const guid = generateFullyQualifiedGuid(resourceId, sid, flattenSrc);
                     const entry = tm.getEntryByGuid(guid);
                     try {
-                        return translateWithEntry(src, nsrc, entry, flags, encodeString);
+                        return translateWithEntry(src, nsrc, entry, flags, encodePart);
                     } catch(e) {
                         mm.ctx.logger.verbose(`Problem translating ${resourceId}+${sid}+${src} to ${targetLang}: ${e}`);
                         return undefined;

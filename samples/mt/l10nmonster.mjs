@@ -2,16 +2,7 @@ export default class MTConfig {
     sourceLang = 'en';
     minimumQuality = 50;
 
-    constructor({ ctx, adapters, filters, normalizers, translators }) {
-        const [ kwTranslatorDecoder, kwTranslatorEncoder ] = normalizers.keywordTranslatorMaker(
-            'kw', 
-            { 
-                'Payments Testing': { 
-                    'it': '**Payment Testing**'
-                },
-                'testing scenarios': {}
-            });
-
+    constructor({ ctx, adapters, filters, translators }) {
         this.contentTypes = {
             local: {
                 source: new adapters.FsSource({
@@ -19,9 +10,6 @@ export default class MTConfig {
                     targetLangs: [ 'it' ]
                 }),
                 resourceFilter: new filters.JsonFilter(),
-                decoders: [ kwTranslatorDecoder ],
-                textEncoders: [ kwTranslatorEncoder ],
-                codeEncoders: [ kwTranslatorEncoder ],
                 target: new adapters.FsTarget({
                     targetPath: (lang, resourceId) => resourceId.replace('en/', `${lang}/`),
                 }),
@@ -37,6 +25,12 @@ export default class MTConfig {
                     apiKey: ctx.env.mmt_api_key,
                     quality: 40,
                     maxCharLength: 1000,
+                    glossary: {
+                        'Payments Testing': {
+                            'it': '**Payment Testing**'
+                        },
+                        'testing scenarios': {}
+                    },
                 }),
             },
             DeepL: {
@@ -59,6 +53,6 @@ export default class MTConfig {
             },
         };
     }
-} 
+}
 
 export const opsDir = 'l10nOps';

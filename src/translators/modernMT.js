@@ -2,8 +2,9 @@ import got from 'got';
 
 import {
     flattenNormalizedSourceToXmlV1, extractNormalizedPartsFromXmlV1,
-    normalizedStringsAreEqual,
+    normalizedStringsAreEqual, decodeNormalizedString, consolidateDecodedParts,
 } from '../normalizers/util.js';
+import { keywordTranslatorMaker } from '../normalizers/keywordTranslatorMaker.js'
 
 const MAX_CHAR_LENGTH = 9900;
 const MAX_CHUNK_SIZE = 125;
@@ -39,12 +40,7 @@ async function mmtMergeTranslatedChunksOp({ jobRequest, tuMeta, quality, ts }, c
     jobResponse.tus = tus.map((tu, idx) => {
         const translation = { guid: tu.guid };
         const mmtTx = translations[idx] || {};
-        const ntgt = extractNormalizedPartsFromXmlV1(mmtTx.translation, tuMeta[idx] || {});
-        if (tu.nsrc) {
-            translation.ntgt = ntgt;
-        } else {
-            translation.tgt = ntgt[0];
-        }
+        translation.ntgt = extractNormalizedPartsFromXmlV1(mmtTx.translation, tuMeta[idx] || {});
         translation.q = quality;
         translation.cost = [ mmtTx.billedCharacters, mmtTx.billed, mmtTx.characters ];
         return translation;
@@ -55,7 +51,7 @@ async function mmtMergeTranslatedChunksOp({ jobRequest, tuMeta, quality, ts }, c
 }
 
 export class ModernMT {
-    constructor({ baseURL, apiKey, priority, multiline, quality, maxCharLength, languageMapper }) {
+    constructor({ baseURL, apiKey, priority, multiline, quality, maxCharLength, languageMapper, glossary }) {
         if ((apiKey && quality) === undefined) {
             throw 'You must specify apiKey, quality for ModernMT';
         } else {
@@ -70,6 +66,11 @@ export class ModernMT {
             this.quality = quality;
             this.maxCharLength = maxCharLength ?? MAX_CHAR_LENGTH;
             this.languageMapper = languageMapper;
+            if (glossary) {
+                const [ glossaryDecoder, glossaryEncoder ] = keywordTranslatorMaker('glossary', glossary);
+                this.glossaryDecoder = [ glossaryDecoder ];
+                this.glossaryEncoder = glossaryEncoder;
+            }
             this.ctx.opsMgr.registerOp(mmtTranslateChunkOp, { idempotent: false });
             this.ctx.opsMgr.registerOp(mmtMergeTranslatedChunksOp, { idempotent: true });
         }
@@ -80,7 +81,8 @@ export class ModernMT {
         const targetLang = (this.languageMapper && this.languageMapper(jobRequest.targetLang)) ?? jobRequest.targetLang;
         const tuMeta = {};
         const mmtPayload = jobRequest.tus.map((tu, idx) => {
-            const [xmlSrc, phMap ] = flattenNormalizedSourceToXmlV1(tu.nsrc || [ tu.src ]);
+            const nsrc = decodeNormalizedString(tu.nsrc || [ { t: 's', v: tu.src } ], this.glossaryDecoder);
+            const [xmlSrc, phMap ] = flattenNormalizedSourceToXmlV1(nsrc);
             if (Object.keys(phMap).length > 0) {
                 tuMeta[idx] = phMap;
             }
@@ -126,7 +128,20 @@ export class ModernMT {
                 quality: this.quality,
                 ts: this.ctx.regression ? 1 : new Date().getTime(),
             }, chunkOps);
-            return await requestTranslationsTask.execute(rootOp);
+            const jobResponse = await requestTranslationsTask.execute(rootOp);
+            if (this.glossaryEncoder) {
+                const flags = { targetLang: jobRequest.targetLang };
+                for (const tu of jobResponse.tus) {
+                    tu.ntgt.forEach((part, idx) => {
+                        // not very solid, but if placeholder follows glossary conventions, then convert it back to a string
+                        if (typeof part === 'object' && part.v.indexOf('glossary:') === 0) {
+                            tu.ntgt[idx] = this.glossaryEncoder(part.v, flags);
+                        }
+                    });
+                    tu.ntgt = consolidateDecodedParts(tu.ntgt, flags, true);
+                }
+            }
+            return jobResponse;
         } catch (error) {
             throw `MMT call failed - ${error}`;
         }

@@ -72,6 +72,7 @@ describe('Keyword Translator tests - prj', () => {
 
 describe('Keyword Translator tests - conflicting kw', () => {
 
+    // eslint-disable-next-line no-unused-vars
     const [ decoder, encoder ] = keywordTranslatorMaker('kw', {Targaryen: {}, 'House Targaryen': {}, House: {}});
 
     test('keyword without mapped values', async() => {

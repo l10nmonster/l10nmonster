@@ -2,8 +2,8 @@ export function consolidateDecodedParts(parts, flags, convertToString) {
     const consolidatedParts = [];
     let accumulatedString = '';
     for (const part of parts) {
-        if (part.t === 's') {
-            accumulatedString += part.v;
+        if (part.t === 's' || typeof part === 'string') {
+            accumulatedString += typeof part === 'string' ? part : part.v;
             part.flag && (flags[part.flag] = true);
         } else {
             if (accumulatedString.length > 0) {
@@ -19,12 +19,31 @@ export function consolidateDecodedParts(parts, flags, convertToString) {
     return consolidatedParts;
 }
 
-export function getNormalizedString(str, decoderList, flags = {}) {
-    let parts = [ { t: 's', v: str } ];
-    for (const decoder of decoderList) {
-        parts = consolidateDecodedParts(decoder(parts), flags);
+export function decodeNormalizedString(nstr, decoderList, flags = {}) {
+    if (decoderList) {
+        for (const decoder of decoderList) {
+            nstr = consolidateDecodedParts(decoder(nstr), flags);
+        }
+        return consolidateDecodedParts(nstr, flags, true);
+    } else {
+        return nstr;
     }
-    return consolidateDecodedParts(parts, flags, true);
+}
+
+export function getNormalizedString(str, decoderList, flags = {}) {
+    return decodeNormalizedString([ { t: 's', v: str } ], decoderList, flags);
+}
+
+export function partEncoderMaker(textEncoders, codeEncoders) {
+    return function encodePart(part, flags) {
+        const encoders = typeof part === 'string' ? textEncoders : codeEncoders;
+        const str = typeof part === 'string' ? part : part.v;
+        if (encoders) {
+            return encoders.reduce((s, encoder) => encoder(s, flags), str);
+        } else {
+            return str;
+        }
+    };
 }
 
 export function flattenNormalizedSourceToOrdinal(nsrc) {
