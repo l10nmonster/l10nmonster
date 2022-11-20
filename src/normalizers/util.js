@@ -24,10 +24,8 @@ export function decodeNormalizedString(nstr, decoderList, flags = {}) {
         for (const decoder of decoderList) {
             nstr = consolidateDecodedParts(decoder(nstr), flags);
         }
-        return consolidateDecodedParts(nstr, flags, true);
-    } else {
-        return nstr;
     }
+    return consolidateDecodedParts(nstr, flags, true);
 }
 
 export function getNormalizedString(str, decoderList, flags = {}) {
