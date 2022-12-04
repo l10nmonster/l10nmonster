@@ -10,13 +10,13 @@
 						"translated": 0,
 						"translatedWords": 0,
 						"translatedByQ": {},
-						"untranslated": 0,
-						"untranslatedChars": 0,
-						"untranslatedWords": 0,
+						"untranslated": 115,
+						"untranslatedChars": 5700,
+						"untranslatedWords": 876,
 						"pending": 0,
 						"pendingWords": 0,
-						"internalRepetitions": 115,
-						"internalRepetitionWords": 876
+						"internalRepetitions": 0,
+						"internalRepetitionWords": 0
 					}
 				}
 			}

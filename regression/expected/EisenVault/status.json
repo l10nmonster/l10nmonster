@@ -14,12 +14,12 @@
 							"69": 1,
 							"70": 332
 						},
-						"untranslated": 0,
+						"untranslated": 1,
 						"untranslatedChars": 0,
 						"untranslatedWords": 0,
 						"pending": 0,
 						"pendingWords": 0,
-						"internalRepetitions": 1,
+						"internalRepetitions": 0,
 						"internalRepetitionWords": 0
 					}
 				}
