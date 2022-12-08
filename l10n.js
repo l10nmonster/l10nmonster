@@ -159,6 +159,7 @@ if (cliExtensions) {
         ).parseAsync();
     } catch(e) {
         console.error(`Unable to run: ${e.stack || e}`);
+        process.exit(1);
     } finally {
         cliCtx.monsterManager && (await cliCtx.monsterManager.shutdown());
     }
