@@ -52,6 +52,7 @@ export class AndroidFilter {
                             };
                             lastComment && (seg.notes = lastComment);
                             segments.push(seg);
+                            lastComment = null;
                         }
                     } else if ('plurals' in resNode) { // TODO: support string-array
                         for (const itemNode of resNode.plurals) {
@@ -63,6 +64,7 @@ export class AndroidFilter {
                             lastComment && (seg.notes = lastComment);
                             segments.push(seg);
                         }
+                        lastComment = null;
                     } else if (this?.ctx?.verbose) {
                         console.log(`Unexpected child node in resources`);
                         console.dir(resNode, { depth: null });
