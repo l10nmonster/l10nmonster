@@ -4,7 +4,9 @@
 	"tus": [
 		{
 			"sid": ":Klk5buhibbTcBq2dg0VJJkDMNiw=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/gen/lib/date.py:427 ../gramps/gen/lib/date.py:434\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/gen/lib/date.py:427 ../gramps/gen/lib/date.py:434\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "tWpG6kvtcp4w1JHvJBozB5DYm72_cxXTa7-sS-Jp73Y",
@@ -14,7 +16,9 @@
 		},
 		{
 			"sid": ":x0wMZXoxOhEq3gS1YoZYQSmkiYY=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/gen/lib/date.py:443\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/gen/lib/date.py:443\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "_87wA9D4M9voQ_w6H91oJK1WuLi8xHepJByZ2p7bsh0",
@@ -24,7 +28,9 @@
 		},
 		{
 			"sid": ":MrEmMIkwcZ2ERE+ADvjRg+tj5Po=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/gen/lib/date.py:454\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/gen/lib/date.py:454\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "VQ0t9COydoCCVczwd3Ms0ct2P6q3zU6nxN7hk3uCn5w",
@@ -34,7 +40,9 @@
 		},
 		{
 			"sid": ":UloLNP7CK3LRKMyB2QAj+E2D4K0=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/gui/plug/_windows.py:1224\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/gui/plug/_windows.py:1224\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "C4LDQvKjaSL96clj2716BwTWyxRSN87lKbNKcuJejBc",
@@ -44,7 +52,9 @@
 		},
 		{
 			"sid": ":d0EIEdyitFXR40/b56H28IcQLYY=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/gui/plug/export/_exportoptions.py:167\\n../gramps/gui/plug/export/_exportoptions.py:274\\n../gramps/gui/plug/export/_exportoptions.py:582\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/gui/plug/export/_exportoptions.py:167\\n../gramps/gui/plug/export/_exportoptions.py:274\\n../gramps/gui/plug/export/_exportoptions.py:582\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "52fFK7YU_ccWFhAc7GAd1CJzcLvSPpGc5qONECGFd7g",
@@ -54,7 +64,9 @@
 		},
 		{
 			"sid": ":XRL1bxmKZlZiSQHU89Av70Q7DgY=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/gramplet/pedigreegramplet.py:283\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/gramplet/pedigreegramplet.py:283\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "IQx4S7xr_W2d5tkGFC-scMYKpme8JI-HxTSVZJWrHx8",
@@ -64,7 +76,9 @@
 		},
 		{
 			"sid": ":E41HF506iDwOpmNIjQPPCRPLA94=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/graph/gvfamilylines.py:982\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/graph/gvfamilylines.py:982\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "KHaT7qGoTJDVr1FkNoF15mGIzP9EIUs1ahhuL555Nbg",
@@ -74,7 +88,9 @@
 		},
 		{
 			"sid": ":Ci088NrETDJUJ9lGLxd/at6xr0U=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/importer/importcsv.py:374\\n../gramps/plugins/importer/importgeneweb.py:274\\n../gramps/plugins/importer/importvcard.py:249\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/importer/importcsv.py:374\\n../gramps/plugins/importer/importgeneweb.py:274\\n../gramps/plugins/importer/importvcard.py:249\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "wY1iViRNNjA6R_qnS5q8ngddu_kmWlmZgKKe1wKPmLE",
@@ -84,7 +100,9 @@
 		},
 		{
 			"sid": ":dWOZpUagH+lAIGcvpyoUDe7ah9g=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/quickview/filterbyname.py:420\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/quickview/filterbyname.py:420\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "ZksxR_L4za64gfjPrHGtdWfdPNy_WBuikTmlEqZ-avQ",
@@ -94,7 +112,9 @@
 		},
 		{
 			"sid": ":M2fNuh4B3C6Hpf1WSp65q4Q9Oak=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/quickview/samesurnames.py:135\\n../gramps/plugins/quickview/samesurnames.py:180\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/quickview/samesurnames.py:135\\n../gramps/plugins/quickview/samesurnames.py:180\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "u6DC_V9_6MNGf_xspU8EaafQ_5gI9qEAnCri64HmWF0",
@@ -104,7 +124,9 @@
 		},
 		{
 			"sid": ":Al3cIGcPoJzhU6nractrnDhR5Hw=_one",
-			"notes": "{\"reference\":\"../gramps/plugins/textreport/numberofancestorsreport.py:125\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"reference\":\"../gramps/plugins/textreport/numberofancestorsreport.py:125\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "8i_dOcQL1DV-dX7ptnc2RJIokU3nmEMcbnbo-IiJ7Y4",
@@ -114,7 +136,9 @@
 		},
 		{
 			"sid": ":2CWIawq3W7ULcChSpkQusPvSYHA=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/changetypes.py:137\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/changetypes.py:137\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "fIvlt3kRinJeXX3e71ECtuffOQLgT4SHqvs6TgGdc5o",
@@ -124,7 +148,9 @@
 		},
 		{
 			"sid": ":qN++qdj8bl8zZctNNp/xCjKCtuQ=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2462\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2462\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "13cPQ9HKDCx9_sVjbkxFBSPc_gcK3uANYzWAqwYUm-Y",
@@ -134,7 +160,9 @@
 		},
 		{
 			"sid": ":LQhfAY/Vf4LVOTlwYdQFXyhoAGc=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2488\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2488\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "Kz1YyxhVGwxg-KND6z-rqSX8pzdJJh96u1gMT0NAXL0",
@@ -144,7 +172,9 @@
 		},
 		{
 			"sid": ":pr4PdDbfFOu8LVa8oOwiTKjbk2A=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2514\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2514\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "WCwhpoEDpGuOPjy3TrIrBScZRd6h3GT0b4WKNuO2S_U",
@@ -154,7 +184,9 @@
 		},
 		{
 			"sid": ":ppBh/QcxWdGljv56rxIGEbtUvCk=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2542\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2542\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "vQHMfY8837RwrIIqU7HLK9famo_lvmbtJtf8hBTQ4ow",
@@ -164,7 +196,9 @@
 		},
 		{
 			"sid": ":044GtX8Zt3ilLSLAmFlUSWze5d8=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2554\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2554\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "IcF_YX8GICNbs_CRG13ZoKlMVxPekudOh-VfTd1tDeI",
@@ -174,7 +208,9 @@
 		},
 		{
 			"sid": ":MA7VXuqeqmk0JiZ/0lZBa7Mi8pE=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2562\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2562\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "-bKKv1HHXjwXHedUwHZ-6-5xGaOqN4IqqqPcxLYVv0s",
@@ -184,7 +220,9 @@
 		},
 		{
 			"sid": ":/60mX2fCOJenE9J5GyPvdRiygbo=_one",
-			"notes": "{\"reference\":\"../gramps/plugins/tool/check.py:2571\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"reference\":\"../gramps/plugins/tool/check.py:2571\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "6fdUWHnhrslGjPNPsPpFC1HDmmfONhDdpdHHS2slKIA",
@@ -194,7 +232,9 @@
 		},
 		{
 			"sid": ":G1Dod/Ni1JBgQlFFAYIrsaRGz00=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2579\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2579\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "Uu0xlJw2siyEBlvKDWLIey-Zm6PEaPsdEL406IZLdf8",
@@ -204,7 +244,9 @@
 		},
 		{
 			"sid": ":2YQ6uAUtRYutSZJZG5B1QzKluJs=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2589\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2589\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "eNTIFTR817KsHIKsm0_mRPoMGDXN6ZBnxgj_5Ej9XY0",
@@ -214,7 +256,9 @@
 		},
 		{
 			"sid": ":57J6ULwKOuMNiOst95eOlz0FJgY=_one",
-			"notes": "{\"reference\":\"../gramps/plugins/tool/check.py:2598\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"reference\":\"../gramps/plugins/tool/check.py:2598\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "Qxae29sBRzdXTQzEt9bvXrAjXXvKWRegnI3N4wR9t_A",
@@ -224,7 +268,9 @@
 		},
 		{
 			"sid": ":4eX6X7ftbUB6/lIwLMhNZ56Dtl8=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2608 ../gramps/plugins/tool/check.py:2695\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2608 ../gramps/plugins/tool/check.py:2695\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "CoIcte-ThOwZANev_gMxQQGQ9nTH9VTs7ep1w2ZIsms",
@@ -234,7 +280,9 @@
 		},
 		{
 			"sid": ":hmwT4QZNVUUhLX9xDkjdUH/z280=_one",
-			"notes": "{\"reference\":\"../gramps/plugins/tool/check.py:2619\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"reference\":\"../gramps/plugins/tool/check.py:2619\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "rkeaxIJ77tXnsb7pEnNpP8UOLPRRVo8sU9-3PvB9FlQ",
@@ -244,7 +292,9 @@
 		},
 		{
 			"sid": ":iYg1x9e7q40fLt1+hCtZEMM621M=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2627\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2627\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "KlmjbWDERFIdVDq0YITG5pwIREQMbQFdQlB8i4ce6rE",
@@ -254,7 +304,9 @@
 		},
 		{
 			"sid": ":2lCO7uXEhHtQHWgsbjvaUg2xRyU=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2635\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2635\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "uJxVQoreavCWv7YwEkAfizWJPNB9UW2--q3NxZKmr6I",
@@ -264,7 +316,9 @@
 		},
 		{
 			"sid": ":abI4OjG+xmWjhbceNkth2LfOCFA=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2643\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2643\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "WABUyeFf5_gZX9g6kEHHwKIJuIY0aJlWEY9oxMjB5g4",
@@ -274,7 +328,9 @@
 		},
 		{
 			"sid": ":sVRbuRxUXihvIjcCrZ2ekj8oS0M=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2651\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2651\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "xmcD_zdEdnlOYEdPbAoozHjM0OMM88dHnZBOGNvo-m8",
@@ -284,7 +340,9 @@
 		},
 		{
 			"sid": ":aIqT87hS8qKsshWVgz1jRCZu4es=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2659\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2659\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "NRjk9Z71qglGAPy2lhyzfny96uFDgmS51ngiJ_mp_cs",
@@ -294,7 +352,9 @@
 		},
 		{
 			"sid": ":YO+zqljvf9bgP7t6sfsuHTmru0k=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2667\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2667\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "S8Zi6fXQvDrnKeEYsRQKdA_MLPQ82hSOw7g_oyobnPI",
@@ -304,7 +364,9 @@
 		},
 		{
 			"sid": ":R2upnNkhIs7Lb1KdlTrjnAQGe9Y=_one",
-			"notes": "{\"reference\":\"../gramps/plugins/tool/check.py:2676\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"reference\":\"../gramps/plugins/tool/check.py:2676\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "8ngYiHrWV4UQKNkO8WS3uX-QsmCc2i7Oi_yMr3yv_rg",
@@ -314,7 +376,9 @@
 		},
 		{
 			"sid": ":e05PGSXxquR+zf/EsxVU6B36Ku0=_one",
-			"notes": "{\"reference\":\"../gramps/plugins/tool/check.py:2686\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"reference\":\"../gramps/plugins/tool/check.py:2686\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "i8m8qHVOGFQrDT91VH7m4sAwtAIinwpk7DIWvgt9dl4",
@@ -324,7 +388,9 @@
 		},
 		{
 			"sid": ":aiJfPGHttcEQX7j8Odd8Mj+kzKY=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2704\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2704\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "jst3bGm_Z9HUagXQYevz_uFQ0VDRS6yGRFNIkYYmA88",
@@ -334,7 +400,9 @@
 		},
 		{
 			"sid": ":D3HV9wxmGmzhPusmS34nrp0V4BU=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2714 ../gramps/plugins/tool/check.py:2724\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2714 ../gramps/plugins/tool/check.py:2724\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "Z-hOuDQ3askVPas8q7WwTq1XqW2D5w1nL1Ib0MZOrbE",
@@ -344,7 +412,9 @@
 		},
 		{
 			"sid": ":BlMp42o1fSgxQKSEnLu7TIY4FfM=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2734\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2734\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "JAiW9CRI-mkvwnbofDSgpu2mG7p11fNEhRepDtB2kXs",
@@ -354,7 +424,9 @@
 		},
 		{
 			"sid": ":UKjJJF+F3xr/LE5cUKLUGqdP0f8=_one",
-			"notes": "{\"reference\":\"../gramps/plugins/tool/check.py:2745\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"reference\":\"../gramps/plugins/tool/check.py:2745\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "6aulFZQckxb1kvfVwWweov3NbB7jB-oB9q3LqwA_h0M",
@@ -364,7 +436,9 @@
 		},
 		{
 			"sid": ":lq0AcDdatjUE4TEiSCjx8LYlHLI=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2754\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2754\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "-3aSl-XTGqrROk1fnWpKyJpunLpmmtBDx4-kBalwarU",
@@ -374,7 +448,9 @@
 		},
 		{
 			"sid": ":SpPwZ0H2zBCg84YU1baQRriPatQ=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/eventnames.py:120\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/eventnames.py:120\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "HSb9E851zTTxoEE0gGxMMlPdDH9zgpLdSxfWX199YgY",
@@ -384,7 +460,9 @@
 		},
 		{
 			"sid": ":WEfMikMfjrCrtT6elof/CURGz3Y=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/mergecitations.py:235\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/mergecitations.py:235\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "Co0uUzcdiZ8xXy6rZT4N0WMXkBrjZlf0mRhNkoPURds",
@@ -394,7 +472,9 @@
 		},
 		{
 			"sid": ":e4ih3Q573YEebduiozdIPH70vRM=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\\nTRANS: no singular form needed, as rows is always > 1\",\"reference\":\"../gramps/plugins/tool/notrelated.py:262\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\\nTRANS: no singular form needed, as rows is always > 1\",\"reference\":\"../gramps/plugins/tool/notrelated.py:262\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "d_Du-v_WdHY38q6UDVVUOa_25zmpu-VrL7B_Xe0lEQQ",
@@ -404,7 +484,9 @@
 		},
 		{
 			"sid": ":2Ez8qnFmXOPxNZwktH1b11RwDj8=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\\nTRANS: No singular form is needed.\",\"reference\":\"../gramps/plugins/tool/notrelated.py:305\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\\nTRANS: No singular form is needed.\",\"reference\":\"../gramps/plugins/tool/notrelated.py:305\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "0VC7WXtzQ4PsqMGx9ynCCLdKVxG04b8mMOjHQmPsSf0",
@@ -414,7 +496,9 @@
 		},
 		{
 			"sid": ":ihc8d3E02wtxrV4QL7cFVZagcVs=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/notrelated.py:385\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/notrelated.py:385\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "f-r6d6lsd9voAUl2yjbQkJLu0Tj-ngCo_guw5ofXDg0",
@@ -424,7 +508,9 @@
 		},
 		{
 			"sid": ":7yXtNRGtVj6gfH5b2/G5NtoMx/c=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/notrelated.py:413\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/notrelated.py:413\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "XVnkkNbUDm8Zgw92U8DHAs8gctXaVUJ-7mrbxrR9DN4",
@@ -434,7 +520,9 @@
 		},
 		{
 			"sid": ":QmTa95RZ0ENvgJLytIA8b6LnMms=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/view/relview.py:1044\\n../gramps/plugins/view/relview.py:1099\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/view/relview.py:1044\\n../gramps/plugins/view/relview.py:1099\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "WsftiLYR-5jScGSFuKczAqMwNGL-PoRAxVeXv_w2OmQ",
@@ -444,7 +532,9 @@
 		},
 		{
 			"sid": ":1TkuKQ2PAtzaEuVIVuy/cyxgCK8=_one",
-			"notes": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/view/relview.py:1564\\n../gramps/plugins/view/relview.py:1610\",\"flag\":\"python-brace-format\"}",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/view/relview.py:1564\\n../gramps/plugins/view/relview.py:1610\",\"flag\":\"python-brace-format\"}"
+			},
 			"msgFmt": "python-brace-format",
 			"isSuffixPluralized": true,
 			"guid": "SFE1HaDG_fhuJQLVzSg_AxTYXvDGU2GMi7Mk35e3XqU",

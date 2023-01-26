@@ -4,7 +4,9 @@
 	"tus": [
 		{
 			"sid": "homeTitle",
-			"notes": "header - This is the welcome message on the home page",
+			"notes": {
+				"desc": "header - This is the welcome message on the home page"
+			},
 			"gstr": "{{bx}}Welcome{{ex}} to {{x}}.",
 			"guid": "Yhu_PT_gxnNEP6i5cnfpdYCQ577w0kcHlKdPIp1rHWM",
 			"seq": 1023,
@@ -31,7 +33,9 @@
 		},
 		{
 			"sid": "flightHome.title",
-			"notes": "header - welcome message of flight flow",
+			"notes": {
+				"desc": "header - welcome message of flight flow"
+			},
 			"gstr": "{{bx}}Welcome back{{ex}} to travel.",
 			"guid": "8QAVB3VDxOUUy1YKjJmy1pgdVR0m497ZhCOVS16GBQM",
 			"seq": 1022,
@@ -53,7 +57,9 @@
 		},
 		{
 			"sid": "flightHome.subtitle",
-			"notes": "subtitle - flight landing page subheading",
+			"notes": {
+				"desc": "subtitle - flight landing page subheading"
+			},
 			"guid": "AGkOSI-2cbdKB0hwucpDtAhetdvAytGYurYD7hvcezM",
 			"seq": 1021,
 			"src": "Book the trip you've been waiting for.",
@@ -80,7 +86,9 @@
 		},
 		{
 			"sid": "warningMessage",
-			"notes": "copy - passenger count picker warning message",
+			"notes": {
+				"desc": "copy - passenger count picker warning message"
+			},
 			"gstr": "You can search for up to {{x}} travelers",
 			"guid": "KuM3WlVRMaBLFo6E0fg4vATKm955gBDBbAGTLdLITAk",
 			"seq": 1018,
@@ -98,7 +106,9 @@
 		},
 		{
 			"sid": "termsAndConditions",
-			"notes": "copy - price  terms and conditions copy",
+			"notes": {
+				"desc": "copy - price  terms and conditions copy"
+			},
 			"gstr": "{{bx}}{{x}} price services and notifications. {{x}} work hard to ensure the accuracy of its predictions. {{ex}}",
 			"guid": "qJxPXXst0F8DLkzVVG63hebwXP80N7CFgJfuXtr8mM8",
 			"seq": 1024,
@@ -128,7 +138,9 @@
 		},
 		{
 			"sid": "timeCount.day_one",
-			"notes": "copy - time copy for day singular",
+			"notes": {
+				"desc": "copy - time copy for day singular"
+			},
 			"isSuffixPluralized": true,
 			"gstr": "{{x}} day",
 			"guid": "bws_LnxH_75t_Jdprc_zeTdGgUOWjzRFnDe6YfvjOYg",
@@ -146,7 +158,9 @@
 		},
 		{
 			"sid": "timeCount.day_other",
-			"notes": "copy - time copy for days plural",
+			"notes": {
+				"desc": "copy - time copy for days plural"
+			},
 			"isSuffixPluralized": true,
 			"gstr": "{{x}} days",
 			"guid": "Jqw-OIo4U6fG5lyDl3mUsrBOVyxTbyNSBtYPAz3soPQ",
@@ -164,7 +178,9 @@
 		},
 		{
 			"sid": "timeCount.hour_one",
-			"notes": "copy - time copy for hour singular",
+			"notes": {
+				"desc": "copy - time copy for hour singular"
+			},
 			"isSuffixPluralized": true,
 			"gstr": "{{x}} hour",
 			"guid": "u-b8MhBsF9k7Q4SquD9h_vGYUIfEhi_gRzuA9i36PfY",
@@ -182,7 +198,9 @@
 		},
 		{
 			"sid": "timeCount.hour_other",
-			"notes": "copy - time copy for hours plural",
+			"notes": {
+				"desc": "copy - time copy for hours plural"
+			},
 			"isSuffixPluralized": true,
 			"gstr": "{{x}} hours",
 			"guid": "haJeL1bazwQ1yTntetVJeSFWmn5a9hPwuTBVoh9ISjo",
@@ -200,7 +218,9 @@
 		},
 		{
 			"sid": "timeCount.second_one",
-			"notes": "copy - time copy for second singular",
+			"notes": {
+				"desc": "copy - time copy for second singular"
+			},
 			"isSuffixPluralized": true,
 			"gstr": "{{x}} second",
 			"guid": "YjPgqgOdTMkHKTRSeQTqRnPKYg-aPkWmF4PtExUoI6Q",
@@ -218,7 +238,9 @@
 		},
 		{
 			"sid": "timeCount.second_other",
-			"notes": "copy - time copy for seconds plural",
+			"notes": {
+				"desc": "copy - time copy for seconds plural"
+			},
 			"isSuffixPluralized": true,
 			"gstr": "{{x}} seconds",
 			"guid": "x1xQynOoxM1xfd0g5iSmzZfrIWxwjHfV3x-1xaoiFJk",

@@ -4,7 +4,9 @@
 	"tus": [
 		{
 			"sid": "AccessibilityCardboardButton",
-			"notes": "Accessibility label for the cardboard button to go into cardboard mode (read out loud)",
+			"notes": {
+				"desc": "Accessibility label for the cardboard button to go into cardboard mode (read out loud)"
+			},
 			"gstr": "Cardboard mode: {{x}}",
 			"guid": "p72nj2yZPB-RfJOZa2iZg2pt16HznCGr_kdYQziGHxs",
 			"seq": 1045,
@@ -21,7 +23,9 @@
 		},
 		{
 			"sid": "AccessibilityFullscreenButton",
-			"notes": "Accessibility label for the fullscreen button to go into fullscreen mode (read out loud)",
+			"notes": {
+				"desc": "Accessibility label for the fullscreen button to go into fullscreen mode (read out loud)"
+			},
 			"guid": "snWaUNjXnKuXlItO8jUPfKITKfuqshl6xCXxUgiP4jI",
 			"seq": 1046,
 			"src": "Fullscreen mode",
@@ -30,7 +34,9 @@
 		},
 		{
 			"sid": "AccessibilityHelpButton",
-			"notes": "Accessibility label for the information button to go to help page (read out loud)",
+			"notes": {
+				"desc": "Accessibility label for the information button to go to help page (read out loud)"
+			},
 			"guid": "d13hqt62wEq5drSC-g7auJUOAlQL-N3VrEyi1mCjMH0",
 			"seq": 1015,
 			"src": "Help",
@@ -39,7 +45,9 @@
 		},
 		{
 			"sid": "HelpHack",
-			"notes": "Test encoding and decoding",
+			"notes": {
+				"desc": "Test encoding and decoding"
+			},
 			"gstr": "Help 'encoding' is \"hard\"!\\\n",
 			"guid": "kjYD6n4DIB9kQKYRd0QStGsZfU2yOhcUG091zj53Skw",
 			"seq": 1047,

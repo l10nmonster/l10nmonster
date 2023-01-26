@@ -16,6 +16,22 @@ export default class TachiyomiConfig {
         this.resourceFilter = new filters.AndroidFilter({
             comment: 'pre',
         });
+        // demo of how to programmatically update notes
+        this.segmentEnricher = (seg) => {
+            if (seg.sid === 'adding_category_to_queue') {
+                seg.notes = {
+                    desc: 'Command to add a category to a queue',
+                    maxWidth: 50,
+                    ph: {
+                        '%1$s': {
+                            sample: 'Manga',
+                            desc: 'Category name'
+                        },
+                    },
+                    screenshot: 'https://example.org',
+                }
+            }
+        };
         this.decoders = [ normalizers.iosPHDecoder ];
         this.target = new adapters.FsTarget({
             targetPath: (lang, resourceId) => resourceId.replace('values', `values-${androidLangMapping[lang] || lang}`),
@@ -67,3 +83,5 @@ export default class TachiyomiConfig {
         this.minimumQuality = 50;
     }
 }
+
+export const opsDir = 'l10nOps';

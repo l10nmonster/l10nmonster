@@ -210,8 +210,9 @@ export function getTUMaps(tus) {
             contentMap[guid] = normalizedStr;
             if (Object.keys(phMap).length > 0) {
                 tuMeta[guid] = { phMap, nsrc: tu.nsrc };
+                const sourcePhNotes = tu?.notes?.ph ?? {};
                 phNotes[guid] = Object.entries(phMap)
-                    .reduce((p, c) => `${p} ${c[0]}=${c[1].v}`, '\n ph:')
+                    .reduce((p, c) => `${p} ${c[0]}=${c[1].v}${c[1].s === undefined ? '' : ` (${c[1].s})`}${sourcePhNotes[c[1].v]?.desc ? ` - ${sourcePhNotes[c[1].v].desc}` : ''}`, '\n ph:')
                     .replaceAll('<', 'ᐸ')
                     .replaceAll('>', 'ᐳ'); // hack until they stop stripping html
             }

@@ -7,6 +7,27 @@ import {
 import { generateFullyQualifiedGuid, makeTU } from './shared.js';
 import { getNormalizedString, flattenNormalizedSourceToOrdinal } from './normalizers/util.js';
 
+const notesAnnotationRegex = /(?:PH\((?<phName>[^)|]+)(?:\|(?<phSample>[^)|]+))(?:\|(?<phDesc>[^)|]+))?\)|MAXWIDTH\((?<maxWidth>\d+)\)|SCREENSHOT\((?<screenshot>[^)]+)\))/g;
+function extractStructuredNotes(notes) {
+    const sNotes = {};
+    const cleanDesc = notes.replaceAll(notesAnnotationRegex, (match, phName, phSample, phDesc, maxWidth, screenshot) => {
+            if (maxWidth !== undefined) {
+                sNotes.maxWidth = Number(maxWidth);
+            } else if (phName !== undefined) {
+                sNotes.ph = sNotes.ph ?? {};
+                sNotes.ph[phName] = {
+                    sample: phSample,
+                };
+                phDesc && (sNotes.ph[phName].desc = phDesc);
+            } else if (screenshot !== undefined) {
+                sNotes.screenshot = screenshot;
+            }
+            return '';
+        });
+    sNotes.desc = cleanDesc;
+    return sNotes;
+}
+
 export default class SourceManager {
     constructor({ logger, prj, monsterDir, configSeal, contentTypes, seqMapPath, seqThreshold }) {
         this.logger = logger;
@@ -66,6 +87,7 @@ export default class SourceManager {
         }
     }
 
+    // eslint-disable-next-line complexity
     async #updateSourceCache() {
         if (this.sourceCacheStale) {
             const newCache = { configSeal: this.configSeal, sources: {} };
@@ -94,6 +116,18 @@ export default class SourceManager {
                         flattenStr !== seg.str && (seg.gstr = flattenStr);
                         seg.guid = generateFullyQualifiedGuid(res.id, seg.sid, flattenStr);
                         this.seqMapPath && (seg.seq = this.#generateSequence(seg));
+                        if (typeof seg.notes === 'string') {
+                            seg.notes = extractStructuredNotes(seg.notes);
+                        }
+                        pipeline.segmentEnricher && pipeline.segmentEnricher(seg);
+                        // populate ph samples from comments
+                        if (seg?.notes?.ph && seg.nstr) {
+                            for (const part of seg.nstr) {
+                                if (part.t === 'x' && seg.notes.ph[part.v]?.sample !== undefined && part.s === undefined) {
+                                    part.s = seg.notes.ph[part.v].sample;
+                                }
+                            }
+                        }
                     }
                     newCache.sources[res.id] = res;
                 }

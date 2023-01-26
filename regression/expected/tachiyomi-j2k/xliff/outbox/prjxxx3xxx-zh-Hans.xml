@@ -3,72 +3,55 @@
     <body>
       <trans-unit id="t4VWxI0XBS7jJwzcIpjyWz95PtQe0nM2xUjvN4A1U_4">
         <source>Remove %1$d downloaded chapter?</source>
-        <note>Chapters</note>
       </trans-unit>
       <trans-unit id="1d7HtgdwLMLoxTTiv83rLZkKjkpfAmsehateH09g4gc">
         <source>%1$d chapter</source>
-        <note>Chapters</note>
       </trans-unit>
       <trans-unit id="2udl0hvWKKtR3kYZ1ZxvWfGf6Sq6I_AP1i91nZoJRuU">
         <source>%1$d page left</source>
-        <note>Chapters</note>
       </trans-unit>
       <trans-unit id="PR-mra8oJXYjh-iGJbPWRJ93cqMsnv3I9kI-KHWftDI">
         <source>%d category</source>
-        <note>Category</note>
       </trans-unit>
       <trans-unit id="nn9ifCxTi0t0nXPKjjqANSd9RsYNb7nXBbc0e-L1MBY">
         <source>For %d title</source>
-        <note>Library update service notifications</note>
       </trans-unit>
       <trans-unit id="i6ms_Au63GlXHZGXAcuj1OlRcD9GhIwb0mR2FlStmOo">
         <source>and %1$d more chapter</source>
-        <note>Library update service notifications</note>
       </trans-unit>
       <trans-unit id="n-9x0mdfrc5EllF9g4lxFwLkppPeEQND2uhVP0ERBFU">
         <source>1 update failed</source>
-        <note>Library update service notifications</note>
       </trans-unit>
       <trans-unit id="-BgwQxYmz_OcJgZCUZeNEhbIn71aeYWQLfqDzIdO5-A">
         <source>%d update pending</source>
-        <note>Extensions</note>
       </trans-unit>
       <trans-unit id="PDKvwcIWbKlbrMMuqEa00drfTM71kt4AE5hfbznTe_o">
         <source>Extension updated</source>
-        <note>Extensions</note>
       </trans-unit>
       <trans-unit id="ZNcGVkm_LvhJlULW759Z140eW5Es4GSIXDFWwYiq7Lo">
         <source>Extension update available</source>
-        <note>Extensions</note>
       </trans-unit>
       <trans-unit id="ftTBQ9mT8jzVQTlzVQThq84qga7aRnm1A_EmQPZ62tE">
         <source>%1$d page</source>
-        <note>Reader settings</note>
       </trans-unit>
       <trans-unit id="TyE4yyopQMXi9xPAwddqixG0FiRUr7u1yXsHaK5cFNg">
         <source>Skipping 1 chapter, either the source is missing it or it has been filtered out</source>
-        <note>Reader settings</note>
       </trans-unit>
       <trans-unit id="SSZERtfZuYpDYos6-_VXWBeWY2P0LQQBQ5wwygKih98">
         <source>A chapter has been removed from the source:\n%2$s\nDelete
             its download?</source>
-        <note>Manga details</note>
       </trans-unit>
       <trans-unit id="dUY5CemIa3xpPTEoUKN5hZLIYyFYKU1bhYQvPyUJvk0">
         <source>Done in %1$s with %2$s error</source>
-        <note>Backup</note>
       </trans-unit>
       <trans-unit id="5eZfQwyisFt-eAr3zUOKugP__L-uALc_ylWptAYKJQI">
         <source>Cache cleared. %d file has been deleted</source>
-        <note>Advanced section</note>
       </trans-unit>
       <trans-unit id="rh1h0cJO-5V2S5q15JDf5bxw2kDqyrXKS4r_wy5PUwU">
         <source>Cleanup done. Removed %d folder</source>
-        <note>Advanced section</note>
       </trans-unit>
       <trans-unit id="C0PQbeoPQFB8cyWahP6wddbk0QOh4f-mmiHyTcQUny4">
         <source>After %1$s minute</source>
-        <note>Time</note>
       </trans-unit>
     </body>
   </file>

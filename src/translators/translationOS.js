@@ -127,7 +127,7 @@ export class TranslationOS {
                 content: contentMap[tu.guid],
                 metadata: 'mf=v1',
                 context: {
-                    notes: `${tu.notes ?? ''}${phNotes[tu.guid] ?? ''}\n rid: ${tu.rid}\n sid: ${tu.sid}\n guid: ${tu.guid}\n ${tu.seq ? `seq: id_${integerToLabel(tu.seq)}` : ''}`
+                    notes: `${tu?.notes?.desc ?? ''}${tu?.notes?.maxWidth ? ` == MAXIMUM WIDTH ${tu.notes.maxWidth} chars ==` : ''}${phNotes[tu.guid] ?? ''}\n rid: ${tu.rid}\n sid: ${tu.sid}\n guid: ${tu.guid}\n ${tu.seq ? `seq: id_${integerToLabel(tu.seq)}` : ''}`
                 },
                 'source_language': jobRequest.sourceLang,
                 'target_languages': [ jobRequest.targetLang ],
@@ -135,6 +135,7 @@ export class TranslationOS {
                 'service_type': this.serviceType,
                 'dashboard_query_labels': [],
             };
+            tu?.notes?.screenshot && (tosTU.context.screenshot = tu.notes.screenshot);
             jobRequest.instructions && (tosTU.context.instructions = jobRequest.instructions);
             tu.seq && tosTU.dashboard_query_labels.push(`id_${integerToLabel(tu.seq)}`);
             tu.rid && tosTU.dashboard_query_labels.push(tu.rid.slice(-50));
