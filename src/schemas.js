@@ -1,5 +1,6 @@
 const coreTUprops = [
     'guid',
+    'nid', // optional opaque native id of the segment (in the original storage format)
     'seq', // optional sequence number to shorten guid
     'rid', // this is for adding context to translation (also in case of refresh job from TM)
     'sid', // we need sid in the target so that we can qualify repetitions
