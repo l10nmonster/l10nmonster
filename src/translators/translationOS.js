@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import got from 'got';
 
-import { extractNormalizedPartsV1, getTUMaps } from '../normalizers/util.js';
+import { extractNormalizedPartsV1, getTUMaps, extractStructuredNotes } from '../normalizers/util.js';
 import { integerToLabel } from '../shared.js';
 
 function createTUFromTOSTranslation({ tosUnit, content, tuMeta, quality, refreshMode, logger }) {
@@ -121,13 +121,14 @@ export class TranslationOS {
         const { tus, ...jobResponse } = jobRequest;
         const { contentMap, phNotes } = getTUMaps(tus);
         const tosPayload = tus.map(tu => {
+            const notes = typeof tu.notes === 'string' ? extractStructuredNotes(tu.notes) : tu.notes;
             let tosTU = {
                 'id_order': jobRequest.jobGuid,
                 'id_content': tu.guid,
                 content: contentMap[tu.guid],
                 metadata: 'mf=v1',
                 context: {
-                    notes: `${tu?.notes?.desc ?? ''}${tu?.notes?.maxWidth ? ` == MAXIMUM WIDTH ${tu.notes.maxWidth} chars ==` : ''}${phNotes[tu.guid] ?? ''}\n rid: ${tu.rid}\n sid: ${tu.sid}\n guid: ${tu.guid}\n ${tu.seq ? `seq: id_${integerToLabel(tu.seq)}` : ''}`
+                    notes: `${notes?.maxWidth ? `🙈 MAXIMUM WIDTH ${notes.maxWidth} chars 🙈\n` : ''}${notes?.desc ?? ''}${phNotes[tu.guid] ?? ''}\n rid: ${tu.rid}\n sid: ${tu.sid}\n ${tu.seq ? `seq: id_${integerToLabel(tu.seq)}` : ''}`
                 },
                 'source_language': jobRequest.sourceLang,
                 'target_languages': [ jobRequest.targetLang ],
@@ -135,7 +136,7 @@ export class TranslationOS {
                 'service_type': this.serviceType,
                 'dashboard_query_labels': [],
             };
-            tu?.notes?.screenshot && (tosTU.context.screenshot = tu.notes.screenshot);
+            notes?.screenshot && (tosTU.context.screenshot = notes.screenshot);
             jobRequest.instructions && (tosTU.context.instructions = jobRequest.instructions);
             tu.seq && tosTU.dashboard_query_labels.push(`id_${integerToLabel(tu.seq)}`);
             tu.rid && tosTU.dashboard_query_labels.push(tu.rid.slice(-50));

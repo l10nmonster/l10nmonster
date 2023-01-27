@@ -212,7 +212,7 @@ export function getTUMaps(tus) {
                 tuMeta[guid] = { phMap, nsrc: tu.nsrc };
                 const sourcePhNotes = tu?.notes?.ph ?? {};
                 phNotes[guid] = Object.entries(phMap)
-                    .reduce((p, c) => `${p} ${c[0]}=${c[1].v}${c[1].s === undefined ? '' : ` (${c[1].s})`}${sourcePhNotes[c[1].v]?.desc ? ` - ${sourcePhNotes[c[1].v].desc}` : ''}`, '\n ph:')
+                    .reduce((p, c) => `${p}\n  👉 ${c[0]} → ${c[1].v}${c[1].s === undefined ? '' : ` (${c[1].s})`}${sourcePhNotes[c[1].v]?.desc ? ` - ${sourcePhNotes[c[1].v].desc}` : ''}`, '\n ph:')
                     .replaceAll('<', 'ᐸ')
                     .replaceAll('>', 'ᐳ'); // hack until they stop stripping html
             }
@@ -257,4 +257,25 @@ export function cleanupTU(tu, whitelist) {
         }
     }
     return cleanTU;
+}
+
+const notesAnnotationRegex = /(?:PH\((?<phName>[^)|]+)(?:\|(?<phSample>[^)|]+))(?:\|(?<phDesc>[^)|]+))?\)|MAXWIDTH\((?<maxWidth>\d+)\)|SCREENSHOT\((?<screenshot>[^)]+)\))/g;
+export function extractStructuredNotes(notes) {
+    const sNotes = {};
+    const cleanDesc = notes.replaceAll(notesAnnotationRegex, (match, phName, phSample, phDesc, maxWidth, screenshot) => {
+            if (maxWidth !== undefined) {
+                sNotes.maxWidth = Number(maxWidth);
+            } else if (phName !== undefined) {
+                sNotes.ph = sNotes.ph ?? {};
+                sNotes.ph[phName] = {
+                    sample: phSample,
+                };
+                phDesc && (sNotes.ph[phName].desc = phDesc);
+            } else if (screenshot !== undefined) {
+                sNotes.screenshot = screenshot;
+            }
+            return '';
+        });
+    sNotes.desc = cleanDesc;
+    return sNotes;
 }

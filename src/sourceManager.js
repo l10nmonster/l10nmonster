@@ -5,28 +5,7 @@ import {
     writeFileSync,
 } from 'fs';
 import { generateFullyQualifiedGuid, makeTU } from './shared.js';
-import { getNormalizedString, flattenNormalizedSourceToOrdinal } from './normalizers/util.js';
-
-const notesAnnotationRegex = /(?:PH\((?<phName>[^)|]+)(?:\|(?<phSample>[^)|]+))(?:\|(?<phDesc>[^)|]+))?\)|MAXWIDTH\((?<maxWidth>\d+)\)|SCREENSHOT\((?<screenshot>[^)]+)\))/g;
-function extractStructuredNotes(notes) {
-    const sNotes = {};
-    const cleanDesc = notes.replaceAll(notesAnnotationRegex, (match, phName, phSample, phDesc, maxWidth, screenshot) => {
-            if (maxWidth !== undefined) {
-                sNotes.maxWidth = Number(maxWidth);
-            } else if (phName !== undefined) {
-                sNotes.ph = sNotes.ph ?? {};
-                sNotes.ph[phName] = {
-                    sample: phSample,
-                };
-                phDesc && (sNotes.ph[phName].desc = phDesc);
-            } else if (screenshot !== undefined) {
-                sNotes.screenshot = screenshot;
-            }
-            return '';
-        });
-    sNotes.desc = cleanDesc;
-    return sNotes;
-}
+import { getNormalizedString, flattenNormalizedSourceToOrdinal, extractStructuredNotes } from './normalizers/util.js';
 
 export default class SourceManager {
     constructor({ logger, prj, monsterDir, configSeal, contentTypes, seqMapPath, seqThreshold }) {
