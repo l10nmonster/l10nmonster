@@ -128,7 +128,7 @@ export class TranslationOS {
                 content: contentMap[tu.guid],
                 metadata: 'mf=v1',
                 context: {
-                    notes: `${notes?.maxWidth ? `🙈 MAXIMUM WIDTH ${notes.maxWidth} chars 🙈\n` : ''}${notes?.desc ?? ''}${phNotes[tu.guid] ?? ''}\n rid: ${tu.rid}\n sid: ${tu.sid}\n ${tu.seq ? `seq: id_${integerToLabel(tu.seq)}` : ''}`
+                    notes: `${notes?.maxWidth ? `▶▶▶MAXIMUM WIDTH ${notes.maxWidth} chars◀◀◀\n` : ''}${notes?.desc ?? ''}${phNotes[tu.guid] ?? ''}\n rid: ${tu.rid}\n sid: ${tu.sid}\n ${tu.seq ? `seq: id_${integerToLabel(tu.seq)}` : ''}`
                 },
                 'source_language': jobRequest.sourceLang,
                 'target_languages': [ jobRequest.targetLang ],
