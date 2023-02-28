@@ -10,8 +10,6 @@ describe('html filter tests', () => {
     test('html normalizers work as expected', async () => {
         const page = readFileSync(resourceId, 'utf8');
         const pageRes = await resourceFilter.parseResource({resource: page});
-        // const standardDecoders = [ xmlDecoder, xmlEntityDecoder ];
-        console.log(pageRes);
         expect(pageRes)
             .toMatchObject({
                     segments: [
@@ -26,7 +24,7 @@ describe('html filter tests', () => {
                     ]
             });
 
-            const out = getNormalizedString(pageRes.segments[0].str, [xmlDecoder]);
+            const out = getNormalizedString(pageRes.segments[1].str, [xmlDecoder]);
             expect(out)
                 .toMatchObject ([
                     {"t": "bx", "v": "<h1>"},
@@ -55,9 +53,16 @@ describe('html filter tests', () => {
         const resource = readFileSync(resourceId, 'utf8');
         const expectedOutput = readFileSync('tests/files/values-fil/page.html', 'utf8');
         const translatedRes = await resourceFilter.translateResource({ resource, translator });
-        console.log(translatedRes);
         expect(translatedRes).toBe(expectedOutput);
-      });
+    });
+
+    test('translateResource for a text fragmentreturns string', async () => {
+        const resource = 'Hello world';
+        const expectedOutput = '***Hello world***';
+        const translatedRes = await resourceFilter.translateResource({ resource, translator });
+        expect(translatedRes).toBe(expectedOutput);
+    });
+
 
 
 });
