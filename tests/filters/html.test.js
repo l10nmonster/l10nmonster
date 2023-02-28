@@ -70,7 +70,7 @@ describe('html filter fragment tests', () => {
       const expectedOutput = '<html><head></head><body>***Hello world***</body></html>';
       const translatedRes = await resourceFilter.translateResource({ resource, translator });
       expect(translatedRes).toBe(expectedOutput);
-  });
+    });
 
 
 
