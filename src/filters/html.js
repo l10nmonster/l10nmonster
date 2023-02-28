@@ -82,7 +82,7 @@ export class HTMLFilter {
             const translation = await translator(generateGuid(str), str);
             return translation && parseFragment(translation);
         });
-        return this.allowFragments? serialize(htmlAST).replace('<html><head></head><body>', '').replace('</body></html>', '') :
+        return this.allowFragments && resource.indexOf('<html>')===-1? serialize(htmlAST).replace('<html><head></head><body>', '').replace('</body></html>', '') :
             serialize(htmlAST);
     }
 }

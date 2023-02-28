@@ -3,6 +3,10 @@ import { getNormalizedString } from '../../src/normalizers/util.js';
 import { xmlDecoder /* , xmlEntityDecoder */ } from '../../src/normalizers/regex.js';
 import { readFileSync } from 'fs';
 
+const translator = async function translate(sid, str) {
+  return sid === 'str1' ? undefined : `***${str}***`;
+}
+
 describe('html filter tests', () => {
     const resourceFilter = new html.HTMLFilter();
     const resourceId = 'tests/files/values/page.html';
@@ -45,23 +49,28 @@ describe('html filter tests', () => {
                 ]);
     });
 
-    const translator = async function translate(sid, str) {
-        return sid === 'str1' ? undefined : `***${str}***`;
-    }
-
     test('translateResource returns string', async () => {
         const resource = readFileSync(resourceId, 'utf8');
         const expectedOutput = readFileSync('tests/files/values-fil/page.html', 'utf8');
         const translatedRes = await resourceFilter.translateResource({ resource, translator });
         expect(translatedRes).toBe(expectedOutput);
     });
+});
 
+describe('html filter fragment tests', () => {
+    const resourceFilter = new html.HTMLFilter({allowFragments: true});
     test('translateResource for a text fragmentreturns string', async () => {
         const resource = 'Hello world';
         const expectedOutput = '***Hello world***';
         const translatedRes = await resourceFilter.translateResource({ resource, translator });
         expect(translatedRes).toBe(expectedOutput);
     });
+    test('translateResource for a text fragmentreturns string', async () => {
+      const resource = '<html><head></head><body>Hello world</body></html>';
+      const expectedOutput = '<html><head></head><body>***Hello world***</body></html>';
+      const translatedRes = await resourceFilter.translateResource({ resource, translator });
+      expect(translatedRes).toBe(expectedOutput);
+  });
 
 
 
