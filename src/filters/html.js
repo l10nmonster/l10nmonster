@@ -58,9 +58,6 @@ async function findTranslatableStrings(node, c, cb) {
 }
 
 export class HTMLFilter {
-    constructor( params ) {
-        this.allowFragments = params?.allowFragments || false;
-    }
 
     async parseResource({ resource }) {
         const htmlAST = parse(resource);
@@ -82,7 +79,7 @@ export class HTMLFilter {
             const translation = await translator(generateGuid(str), str);
             return translation && parseFragment(translation);
         });
-        return this.allowFragments && resource.indexOf('<html>')===-1? serialize(htmlAST).replace('<html><head></head><body>', '').replace('</body></html>', '') :
+        return resource.indexOf('<html>')===-1? serialize(htmlAST).replace('<html><head></head><body>', '').replace('</body></html>', '') :
             serialize(htmlAST);
     }
 }

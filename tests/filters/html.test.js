@@ -58,7 +58,7 @@ describe('html filter tests', () => {
 });
 
 describe('html filter fragment tests', () => {
-    const resourceFilter = new html.HTMLFilter({allowFragments: true});
+    const resourceFilter = new html.HTMLFilter();
     test('translateResource for a text fragmentreturns string', async () => {
         const resource = 'Hello world';
         const expectedOutput = '***Hello world***';
@@ -71,7 +71,4 @@ describe('html filter fragment tests', () => {
       const translatedRes = await resourceFilter.translateResource({ resource, translator });
       expect(translatedRes).toBe(expectedOutput);
     });
-
-
-
 });
