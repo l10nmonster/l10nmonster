@@ -3,16 +3,16 @@
 	"lang": {
 		"it": {
 			"leverage": {
-				"tmSize": 115,
+				"tmSize": 113,
 				"minimumQuality": 50,
 				"prjLeverage": {
 					"default": {
 						"translated": 0,
 						"translatedWords": 0,
 						"translatedByQ": {},
-						"untranslated": 115,
-						"untranslatedChars": 5700,
-						"untranslatedWords": 876,
+						"untranslated": 113,
+						"untranslatedChars": 5682,
+						"untranslatedWords": 873,
 						"pending": 0,
 						"pendingWords": 0,
 						"internalRepetitions": 0,

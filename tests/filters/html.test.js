@@ -4,7 +4,7 @@ import { xmlDecoder /* , xmlEntityDecoder */ } from '../../src/normalizers/regex
 import { readFileSync } from 'fs';
 
 const translator = async function translate(sid, str) {
-  return sid === 'str1' ? undefined : `***${str}***`;
+  return `***${str}***`;
 }
 
 describe('html filter tests', () => {
@@ -18,17 +18,13 @@ describe('html filter tests', () => {
             .toMatchObject({
                     segments: [
                       {
-                        sid: '_7-rxUyoom72VOHf7M6YAtljJoaRmfSx26wK2x_n3gY',
-                        str: 'coming'
-                      },
-                      {
                         sid: 'P9vq1R3XnX7Fy2UZ-nadhNNa5PiFG4DIxs5QvyT2wKA',
                         str: '<h1>Winter is 🎉</h1> <div> <div class="body-paragraph">coming</div> </div> <a href="#" id="redeemButton" class="button white w-button">Redeem Gift</a>'
                       }
                     ]
             });
 
-            const out = getNormalizedString(pageRes.segments[1].str, [xmlDecoder]);
+            const out = getNormalizedString(pageRes.segments[0].str, [xmlDecoder]);
             expect(out)
                 .toMatchObject ([
                     {"t": "bx", "v": "<h1>"},
@@ -51,21 +47,26 @@ describe('html filter tests', () => {
 
     test('translateResource returns string', async () => {
         const resource = readFileSync(resourceId, 'utf8');
-        const expectedOutput = readFileSync('tests/files/values-fil/page.html', 'utf8');
         const translatedRes = await resourceFilter.translateResource({ resource, translator });
-        expect(translatedRes).toBe(expectedOutput);
+        expect(translatedRes).toBe("<!DOCTYPE html><!-- Last Published: Tue Oct 04 2022 16:40:09 GMT+0000 (Coordinated Universal Time) --><html><head></head>\n    <body class=\"bodyvoucher\">\n        <div class=\"container-2\">***<h1>Winter is 🎉</h1> <div> <div class=\"body-paragraph\">coming</div> </div> <a href=\"#\" id=\"redeemButton\" class=\"button white w-button\">Redeem Gift</a>***</div>\n    \n\n</body></html>");
     });
 });
 
 describe('html filter fragment tests', () => {
     const resourceFilter = new html.HTMLFilter();
-    test('translateResource for a text fragmentreturns string', async () => {
+    test('translateResource for a text fragment returns string', async () => {
         const resource = 'Hello world';
         const expectedOutput = '***Hello world***';
         const translatedRes = await resourceFilter.translateResource({ resource, translator });
         expect(translatedRes).toBe(expectedOutput);
     });
-    test('translateResource for a text fragmentreturns string', async () => {
+    test('translateResource for a text fragment with markup returns string', async () => {
+        const resource = 'Hello <b>world</b>';
+        const expectedOutput = '***Hello <b>world</b>***';
+        const translatedRes = await resourceFilter.translateResource({ resource, translator });
+        expect(translatedRes).toBe(expectedOutput);
+    });
+    test('translateResource for a full html returns string', async () => {
       const resource = '<html><head></head><body>Hello world</body></html>';
       const expectedOutput = '<html><head></head><body>***Hello world***</body></html>';
       const translatedRes = await resourceFilter.translateResource({ resource, translator });
