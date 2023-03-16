@@ -106,7 +106,7 @@ export async function analyze(monsterManager, options) {
         } else {
             console.log('Available analyzers:');
             for (const [name, analyzer] of Object.entries(monsterManager.analyzers)) {
-                console.log(`  - ${consoleColor.bright}${name} ${analyzer.helpParams ?? ''}${consoleColor.reset} ${analyzer.help}`);
+                console.log(`  ${typeof analyzer.prototype.processSegment === 'function' ? '(src)' : ' (tu)'} ${consoleColor.bright}${name} ${analyzer.helpParams ?? ''}${consoleColor.reset} ${analyzer.help}`);
             }
         }
     } catch (e) {
