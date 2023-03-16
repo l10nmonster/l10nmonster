@@ -1,6 +1,6 @@
 import * as path from 'path';
 import { createMonsterManager } from '../src/defaultMonster.js';
-import * as l10n from '../src/cli.js';
+import * as l10n from '../src/l10nCommands.js';
 
 (async () => {
     const globalOptions = { regression: true };

@@ -9,7 +9,7 @@ import {
 } from 'fs';
 import { Command, Argument, InvalidArgumentError } from 'commander';
 import { createMonsterManager } from './src/defaultMonster.js';
-import * as cli from './src/cli.js';
+import * as cli from './src/l10nCommands.js';
 
 function findConfig() {
     let baseDir = path.resolve('.'),
@@ -143,24 +143,23 @@ if (cliExtensions) {
         console.log(`Couldn't load extensions from ${cliExtensions}: ${e.stack || e}`);
     }
 }
-(async () => {
-    try {
-        await createMonsterCLI(
-            cliCtx,
-            async cli => {
-                const options = cli.opts();
-                const configPath = (options.cfg && path.resolve('.', options.cfg)) ?? monsterConfig;
-                await createMonsterManager(
-                    configPath,
-                    options,
-                    async mm => cliCtx.monsterManager = mm
-                );
-            }
-        ).parseAsync();
-    } catch(e) {
-        console.error(`Unable to run: ${e.stack || e}`);
-        process.exit(1);
-    } finally {
-        cliCtx.monsterManager && (await cliCtx.monsterManager.shutdown());
-    }
-})();
+
+try {
+    await createMonsterCLI(
+        cliCtx,
+        async cli => {
+            const options = cli.opts();
+            const configPath = (options.cfg && path.resolve('.', options.cfg)) ?? monsterConfig;
+            await createMonsterManager(
+                configPath,
+                options,
+                async mm => cliCtx.monsterManager = mm
+            );
+        }
+    ).parseAsync();
+} catch(e) {
+    console.error(`Unable to run: ${e.stack || e}`);
+    process.exit(1);
+} finally {
+    cliCtx.monsterManager && (await cliCtx.monsterManager.shutdown());
+}
