@@ -248,12 +248,13 @@ export const bracePHDecoder = regexMatchingDecoderMaker(
 );
 
 // iOS-style and C-style placeholders
-// Supports %02d, %@, %1$@
-// TODO: follow full specs at https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Strings/Articles/formatSpecifiers.html
+// full specs at https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Strings/Articles/formatSpecifiers.html
+// and https://pubs.opengroup.org/onlinepubs/009695399/functions/printf.html
+// loosely based on https://stackoverflow.com/questions/45215648/regex-capture-type-specifiers-in-format-string
+// space and quote tags have been omitted to avoid matching unexpected combinations
 export const iosPHDecoder = regexMatchingDecoderMaker(
     'iosPHDecoder',
-    // eslint-disable-next-line prefer-named-capture-group
-    /(?<tag>%([0-9.]*[lz]?[@dfsi]|\d+\$[@dfsi]))/g,
+    /(?<tag>%(?:\d\$)?[0#+-]?[0-9*]*\.?\d*[hl]{0,2}[jztL]?[diuoxXeEfgGaAcpsSn@])/g,
     (groups) => ({ t: 'x', v: groups.tag })
 );
 

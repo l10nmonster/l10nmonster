@@ -42,6 +42,20 @@ describe('Regex Encoder tests', () => {
         ]);
     });
 
+    test('3 iosPHDecoder', async () => {
+        expect(getNormalizedString(
+            `Some nasty phs: %1$ld %02d %3$zd`,
+            [ iosPHDecoder ]
+        )).toMatchObject([
+            "Some nasty phs: ",
+            { t: 'x', v: '%1$ld' },
+            " ",
+            { t: 'x', v: '%02d' },
+            " ",
+            { t: 'x', v: '%3$zd' }
+        ]);
+    });
+
     test('ios with html', async () => {
         expect(getNormalizedString(
             "you are eligible for a future travel credit with %1$@. we will charge a rebooking fee of <color name='yellow'><b>%2$@ per passenger</b></color> when you use this credit to make a new booking.",
