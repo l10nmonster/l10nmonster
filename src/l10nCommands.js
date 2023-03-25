@@ -2,6 +2,7 @@
 import {
     writeFileSync,
   } from 'fs';
+import * as path from 'path';
 import { analyzeCmd } from './analyzeCmd.js';
 import { pullCmd } from './pullCmd.js';
 import { snapCmd } from './snapCmd.js';
@@ -11,6 +12,7 @@ import { statusCmd } from './statusCmd.js';
 import { jobsCmd } from './jobsCmd.js';
 import { tmExportCmd } from './tmExportCmd.js';
 import { translateCmd } from './translateCmd.js';
+import { createMonsterManager } from './defaultMonster.js';
 
 import {
     consoleColor, fixCaseInsensitiveKey,
@@ -300,4 +302,19 @@ __.-'            \\  \\   .   / \\_.  \\ -|_/\\/ \`--.|_
         console.log(`${targetLang} TM has ${tm.guids.length} entries`);
     }
     console.timeEnd('initialization time');
+}
+
+export async function runL10nMonster(relativePath, globalOptions, cb) {
+    const configPath = path.resolve('.', relativePath);
+    return createMonsterManager(configPath, globalOptions, async mm => cb({
+        status: opts => status(mm, { ...globalOptions, ...opts}),
+        jobs: opts => jobs(mm, { ...globalOptions, ...opts}),
+        job: opts => job(mm, { ...globalOptions, ...opts}),
+        push: opts => push(mm, { ...globalOptions, ...opts}),
+        pull: opts => pull(mm, { ...globalOptions, ...opts}),
+        snap: opts => snap(mm, { ...globalOptions, ...opts}),
+        translate: opts => translate(mm, { ...globalOptions, ...opts}),
+        tmexport: opts => tmexport(mm, { ...globalOptions, ...opts}),
+        monster: opts => monster(mm, { ...globalOptions, ...opts}),
+    }));
 }
