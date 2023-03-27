@@ -4,6 +4,10 @@
 	"tus": [
 		{
 			"sid": "empty.description",
+			"location": {
+				"startLine": 12,
+				"endLine": 12
+			},
 			"guid": "izQWYgYqKwqWjsdbFGDGR2vStXjgSKPkDzfkUNC_dZY",
 			"src": "",
 			"rid": "dashlets/colleagues.get_en.properties",
