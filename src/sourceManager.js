@@ -98,7 +98,6 @@ export default class SourceManager {
                         if (typeof seg.notes === 'string') {
                             seg.notes = extractStructuredNotes(seg.notes);
                         }
-                        pipeline.segmentEnricher && pipeline.segmentEnricher(seg);
                         // populate ph samples from comments
                         if (seg?.notes?.ph && seg.nstr) {
                             for (const part of seg.nstr) {

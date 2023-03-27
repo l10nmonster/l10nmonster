@@ -29,7 +29,6 @@ export default class MonsterManager {
                     default: {
                         source: monsterConfig.source,
                         resourceFilter: monsterConfig.resourceFilter,
-                        segmentEnricher: monsterConfig.segmentEnricher,
                         segmentDecorator: monsterConfig.segmentDecorator,
                         decoders: monsterConfig.decoders,
                         textEncoders: monsterConfig.textEncoders,
