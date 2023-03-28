@@ -1,0 +1,17 @@
+name: Test
+on: [pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '18.x'
+      - run: npm ci
+      - run: npm run test
+      # For some reason zsh installed here does not have "setopt monitor" and fails.
+      #  > test.zsh:setopt:4: can't change option: MONITOR
+      # Either remove that from script or fix zsh issue to enable regression tests.
+      # - run: sudo apt-get install zsh
+      # - run: cd regression; zsh test.zsh
