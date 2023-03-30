@@ -259,18 +259,19 @@ export function cleanupTU(tu, whitelist) {
     return cleanTU;
 }
 
-const notesAnnotationRegex = /(?:PH\((?<phName>[^)|]+)(?:\|(?<phSample>[^)|]+))(?:\|(?<phDesc>[^)|]+))?\)|MAXWIDTH\((?<maxWidth>\d+)\)|SCREENSHOT\((?<screenshot>[^)]+)\))/g;
+const notesAnnotationRegex = /(?:PH\((?<phName>(?:[^()|]+|[^(|]*\([^()|]*\)[^()|]*))(?:\|(?<phSample>[^)|]+))(?:\|(?<phDesc>[^)|]+))?\)|MAXWIDTH\((?<maxWidth>\d+)\)|SCREENSHOT\((?<screenshot>[^)]+)\))/g;
 export function extractStructuredNotes(notes) {
     const sNotes = {};
     const cleanDesc = notes.replaceAll(notesAnnotationRegex, (match, phName, phSample, phDesc, maxWidth, screenshot) => {
             if (maxWidth !== undefined) {
                 sNotes.maxWidth = Number(maxWidth);
             } else if (phName !== undefined) {
+                phName = phName.trim();
                 sNotes.ph = sNotes.ph ?? {};
                 sNotes.ph[phName] = {
-                    sample: phSample,
+                    sample: phSample.trim(),
                 };
-                phDesc && (sNotes.ph[phName].desc = phDesc);
+                phDesc && (sNotes.ph[phName].desc = phDesc.trim());
             } else if (screenshot !== undefined) {
                 sNotes.screenshot = screenshot;
             }

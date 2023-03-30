@@ -2,6 +2,7 @@
 import {
     flattenNormalizedSourceV1, extractNormalizedPartsV1,
     flattenNormalizedSourceToXmlV1, extractNormalizedPartsFromXmlV1,
+    extractStructuredNotes,
  } from '../../src/normalizers/util.js';
 
 const nsrc1 = [
@@ -102,5 +103,40 @@ describe('Normalizers Util tests', () => {
         const [ xml, phMap ] = flattenNormalizedSourceToXmlV1([ 'foo&bar <8' ]);
         expect(extractNormalizedPartsFromXmlV1(xml, phMap))
             .toMatchObject([ 'foo&bar <8' ]);
+    });
+
+    test('extractStructuredNotes no annotations', async () => {
+        expect(extractStructuredNotes('foo'))
+            .toMatchObject({
+                desc: 'foo',
+            });
+    });
+
+    test('simple extractStructuredNotes', async () => {
+        expect(extractStructuredNotes('fooPH(0 | SF | city)MAXWIDTH(42)SCREENSHOT(http://sample.org)'))
+            .toMatchObject({
+                desc: 'foo',
+                ph: {
+                    0: {
+                        sample: 'SF',
+                        desc: 'city',
+                    }
+                },
+                maxWidth: 42,
+                screenshot: 'http://sample.org',
+            });
+    });
+
+    test('nested extractStructuredNotes', async () => {
+        expect(extractStructuredNotes('fooPH(duh(0)|SF|city)'))
+            .toMatchObject({
+                desc: 'foo',
+                ph: {
+                    'duh(0)': {
+                        sample: 'SF',
+                        desc: 'city',
+                    }
+                },
+            });
     });
 });
