@@ -10,6 +10,7 @@
 			"gstr": "Cardboard mode: {{x}}",
 			"guid": "p72nj2yZPB-RfJOZa2iZg2pt16HznCGr_kdYQziGHxs",
 			"seq": 1045,
+			"rawNotes": "Accessibility label for the cardboard button to go into cardboard mode (read out loud)",
 			"src": "Cardboard mode: %1$@",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1,
@@ -28,6 +29,7 @@
 			},
 			"guid": "snWaUNjXnKuXlItO8jUPfKITKfuqshl6xCXxUgiP4jI",
 			"seq": 1046,
+			"rawNotes": "Accessibility label for the fullscreen button to go into fullscreen mode (read out loud)",
 			"src": "Fullscreen mode",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -40,6 +42,7 @@
 			"gstr": "Help 'encoding' is \"hard\"!\\\n",
 			"guid": "kjYD6n4DIB9kQKYRd0QStGsZfU2yOhcUG091zj53Skw",
 			"seq": 1047,
+			"rawNotes": "Test encoding and decoding",
 			"src": "Help 'encoding\\' is\\U00a0\"hard\"!\\\\\n",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1,

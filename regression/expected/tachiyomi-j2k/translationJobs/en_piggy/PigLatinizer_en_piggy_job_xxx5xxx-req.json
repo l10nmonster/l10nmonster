@@ -37,6 +37,7 @@
 				"desc": "Manga Type"
 			},
 			"guid": "dyAFLf4GV8TYObR6G4ujZM0o2aXLVPScLSsRCprJogw",
+			"rawNotes": "Manga Type",
 			"src": "Manga",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -75,6 +76,7 @@
 				"desc": "Manga"
 			},
 			"guid": "1p5rCpa-15kwWtEh3NEfT-U-L7hb0ldPev_wqVhXKOI",
+			"rawNotes": "Manga",
 			"src": "Not started",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -159,6 +161,7 @@
 				"desc": "Status"
 			},
 			"guid": "YJHMFZmzMpH0kjwYHf0FfcpHgbud03xLRf_vpaS4iY0",
+			"rawNotes": "Status",
 			"src": "Ongoing",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -197,6 +200,7 @@
 				"desc": "Security"
 			},
 			"guid": "MIwZAqhf_yEYRQoIcrzIDyj7GPBqZifK4baxR5-cVvQ",
+			"rawNotes": "Security",
 			"src": "Unlock to access Library",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -228,6 +232,7 @@
 				"desc": "Chapters"
 			},
 			"guid": "wF-LDYkrxxFci3wYWoYmvhRbrns2bjxzjgD6HX-wNP8",
+			"rawNotes": "Chapters",
 			"src": "Chapters",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -516,6 +521,7 @@
 				"desc": "Category"
 			},
 			"guid": "WH5WLMC2qY2bMf5JBHSqSrkJVjNzv3YHD0V58wqZfV0",
+			"rawNotes": "Category",
 			"src": "Category",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -770,6 +776,7 @@
 				"desc": "Updates"
 			},
 			"guid": "1J9LO1I69PkBtCO-lcjrVfJ0hLDY2P9KkW2jnd9Iia0",
+			"rawNotes": "Updates",
 			"src": "Update",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -851,6 +858,7 @@
 				"desc": "Library"
 			},
 			"guid": "qAcMTZXYvITCVVUsJnaeziMxq66YjeyIpN3-S0Rebyg",
+			"rawNotes": "Library",
 			"src": "Library",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -1086,6 +1094,7 @@
 				"desc": "Library Sort"
 			},
 			"guid": "c656MnA8GvsOTOxs4WY4nJd0SDx8-yR4m5_0O3dVg0U",
+			"rawNotes": "Library Sort",
 			"src": "Sort by",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -1149,6 +1158,7 @@
 				"desc": "Library Display"
 			},
 			"guid": "uS-rKfQewapxCMQccDVdJcLHKtn2SaCeJ2YmB23cIuI",
+			"rawNotes": "Library Display",
 			"src": "Display options",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -1307,6 +1317,7 @@
 				"desc": "Library update service notifications"
 			},
 			"guid": "DP9tDhyqmkFyAizNsGXaByGA7_OZZsmcD1gUxkZdVAY",
+			"rawNotes": "Library update service notifications",
 			"src": "New chapters found",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -1423,6 +1434,7 @@
 				"desc": "Library settings"
 			},
 			"guid": "NzuzANrc8hKnsNdj5RNNivveptBt1E-e1H-Ht-pXbEo",
+			"rawNotes": "Library settings",
 			"src": "Library update frequency",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -1561,6 +1573,7 @@
 				"desc": "Recents"
 			},
 			"guid": "9KQnpovYTTR8EqaPS_krSrI6i65OEvrlUpYUZ8fHDF0",
+			"rawNotes": "Recents",
 			"src": "Recents",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -1825,6 +1838,7 @@
 				"desc": "Recents Settings"
 			},
 			"guid": "vc6RPi0nmbBiytfQeWbKySuwc6Tz427bDCSe__RrgOs",
+			"rawNotes": "Recents Settings",
 			"src": "Show reset history button",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -1884,6 +1898,7 @@
 				"desc": "Browse"
 			},
 			"guid": "2Pxr4-74Ois-SejkPEpOnmVQGKUZCPMo0deqiwQYbBI",
+			"rawNotes": "Browse",
 			"src": "Search filters",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -2006,6 +2021,7 @@
 				"desc": "Extensions"
 			},
 			"guid": "aoUSYtsFoxzn0HRhrXdsX7blaRGrrGKbPPGYAHOGcYY",
+			"rawNotes": "Extensions",
 			"src": "Extensions",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -2335,6 +2351,7 @@
 				"desc": "Reader"
 			},
 			"guid": "Ib3Dl-HzwtbZ2Ml0jVectlWKgCLvYPZ6byoYri6f_Sk",
+			"rawNotes": "Reader",
 			"src": "Set as cover",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -2609,6 +2626,7 @@
 				"desc": "Reader settings"
 			},
 			"guid": "pUNw1jNdpBub4YvDOOVOnB9xp9b5HhtenI0mCjut3So",
+			"rawNotes": "Reader settings",
 			"src": "Fullscreen",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -3343,6 +3361,7 @@
 			},
 			"gstr": "About this {{x}}",
 			"guid": "rXnFisSe-TCQMWVdPr043XAD3SjPf9t7nr3_A3JFQ4Q",
+			"rawNotes": "Manga details",
 			"src": "About this %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -3824,6 +3843,7 @@
 				"desc": "Tracking"
 			},
 			"guid": "fZhmHvNVgb2WvnwMpxmxVtQMoZMaXORd2ibT-SZm1Ys",
+			"rawNotes": "Tracking",
 			"src": "Tracking",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -4116,6 +4136,7 @@
 				"desc": "Migration"
 			},
 			"guid": "X0_pFoQrmtP7HRDl7tJJRY9v4aAvjI8hpck4OCcfqic",
+			"rawNotes": "Migration",
 			"src": "Select sources",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -4451,6 +4472,7 @@
 				"desc": "Settings"
 			},
 			"guid": "V1BNy458nW_4fby7kPg8YMQAXVoyE1I023tRCSMrLS8",
+			"rawNotes": "Settings",
 			"src": "Settings",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -4554,6 +4576,7 @@
 				"desc": "General settings"
 			},
 			"guid": "Ay5QX19Ktp0pIgU9HrqiMQolqdwoNnVJUowNH8REpFE",
+			"rawNotes": "General settings",
 			"src": "App theme",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -4965,6 +4988,7 @@
 				"desc": "Backup"
 			},
 			"guid": "eCebO0-Q_ffk8Sa7ZE0i-2lvwmOgHfwL2GkkvnnSFk4",
+			"rawNotes": "Backup",
 			"src": "Backup",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -5281,6 +5305,7 @@
 				"desc": "Advanced section"
 			},
 			"guid": "gPqVDlajP2hf4NQoL37UXVQjJnqN1QR-KGD6--7lYtE",
+			"rawNotes": "Advanced section",
 			"src": "Clear chapter cache",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -5657,6 +5682,7 @@
 				"desc": "Browse Settings"
 			},
 			"guid": "jGTNihNi77LY5QuFDPIr4FnkGEV4PZtqxGw8mrBR2gQ",
+			"rawNotes": "Browse Settings",
 			"src": "Global search",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -5795,6 +5821,7 @@
 				"desc": "About section"
 			},
 			"guid": "sb5XQe86ziaiqZLmsrnjcQOJ_Rt1PvwvgsU-7JTAvSo",
+			"rawNotes": "About section",
 			"src": "Version",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -5877,6 +5904,7 @@
 			},
 			"gstr": "Log in to {{x}}",
 			"guid": "InKnvnpmuD0xNHX-ckxjSVPTwTV71bgSR9slh4Di5TU",
+			"rawNotes": "Login/Logout dialog",
 			"src": "Log in to %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -5966,6 +5994,7 @@
 				"desc": "Downloads"
 			},
 			"guid": "01irCDYQ91DVaCsdMtWG-GvJl-r1RIzXqCSRsQ9BG9s",
+			"rawNotes": "Downloads",
 			"src": "Downloads",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -6150,6 +6179,7 @@
 				"desc": "Download Notification"
 			},
 			"guid": "Y8AsbiJF6S3sa0567L2JUCRVf9fYWKmar8LjHj-0c8Y",
+			"rawNotes": "Download Notification",
 			"src": "Could not download chapter due to unexpected error",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -6174,6 +6204,7 @@
 				"desc": "Downloads settings"
 			},
 			"guid": "odSG9pkfdNSGknVDYXMWKrX3Q6gsCTqxieewL4XkU7I",
+			"rawNotes": "Downloads settings",
 			"src": "Download location",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -6307,6 +6338,7 @@
 				"desc": "Time"
 			},
 			"guid": "iArTjefVMKZ7WycdX6VmQEm2g4q4u4d9M3UCNZ87PjI",
+			"rawNotes": "Time",
 			"src": "Manual",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -6407,6 +6439,7 @@
 				"desc": "File Picker Titles"
 			},
 			"guid": "Te7pPZ65D4bQDzeyVNYM9_Z5yplFGchiPgl5JPY3wmA",
+			"rawNotes": "File Picker Titles",
 			"src": "Select cover image",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -6431,6 +6464,7 @@
 				"desc": "Webview"
 			},
 			"guid": "zWeCtEgPBsrg7KcpKPPISpUksK5U1-2bUhJNNsqQRpM",
+			"rawNotes": "Webview",
 			"src": "Failed to bypass Cloudflare",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -6448,6 +6482,7 @@
 				"desc": "Do not translate \"WebView\""
 			},
 			"guid": "rZjFH0Z7z5HV8Tov2ZWD6ABIwLcX0rWeaY9SwkUqMjg",
+			"rawNotes": "Do not translate \"WebView\"",
 			"src": "WebView is required for Tachiyomi",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -6458,6 +6493,7 @@
 				"desc": "Miscellaneous"
 			},
 			"guid": "kaPFz8SHU7y4fCLvM2RPEFk5ZRUbqQlKtiU0Q-k0KvY",
+			"rawNotes": "Miscellaneous",
 			"src": "Add",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1

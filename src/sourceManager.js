@@ -96,6 +96,7 @@ export default class SourceManager {
                         seg.guid = generateFullyQualifiedGuid(res.id, seg.sid, flattenStr);
                         this.seqMapPath && (seg.seq = this.#generateSequence(seg));
                         if (typeof seg.notes === 'string') {
+                            seg.rawNotes = seg.notes;
                             seg.notes = extractStructuredNotes(seg.notes);
                         }
                         // populate ph samples from comments

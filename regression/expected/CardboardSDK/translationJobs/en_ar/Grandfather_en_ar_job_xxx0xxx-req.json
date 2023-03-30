@@ -9,6 +9,7 @@
 			},
 			"guid": "Sch-OXL3KPaFNWvKiWNmafNmqHZo8oNtcaB-9jYE1sk",
 			"seq": 1023,
+			"rawNotes": "Back button label used to go back to the previous screen. (15 chars)",
 			"src": "Back",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -20,6 +21,7 @@
 			},
 			"guid": "S5zXEp9KGe9nqhqgtH8vMM106HfoiBTZzDQ8qyPdB5A",
 			"seq": 1022,
+			"rawNotes": "Label of the app title bar when on the QR code scanner screen. (45 chars)",
 			"src": "QR Scan",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -31,6 +33,7 @@
 			},
 			"guid": "PV7WBP4aNfZzq1Hre1_bkECpoSmhPedg7xfh7UKYkyw",
 			"seq": 1024,
+			"rawNotes": "Message shown to the user while waiting to process the QR code. (60 chars)",
 			"src": "Parsing configuration data",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -42,6 +45,7 @@
 			},
 			"guid": "jkJekuVBcsiufoG2zmxszlbnMGkREPRBAeb2QTDfUaI",
 			"seq": 1025,
+			"rawNotes": "Error message shown to the user if the QR code is invalid. (60 chars)",
 			"src": "The QR code is invalid",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -53,6 +57,7 @@
 			},
 			"guid": "2n8bq0sVYs9Xil3nEw7OEVuhOSGvpaoInQAZ89RnD7c",
 			"seq": 1026,
+			"rawNotes": "Error message shown to the user if the QR code is not a valid device profile. (60 chars)",
 			"src": "Problem in parsing the Url",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -65,6 +70,7 @@
 			"gstr": "{{x}} detected",
 			"guid": "XY8o8xA5C_HlR4v8LDc4L98Y0mR-4gHyLjDxwvNhDrM",
 			"seq": 1027,
+			"rawNotes": "Format string used as a temporary message shown after a successful device profile is set.\n* (60 chars)",
 			"src": "%1$@ detected",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1,
@@ -83,6 +89,7 @@
 			},
 			"guid": "MmBuoyCIE3eiz_wlkLAZMeoIhXX52LOiAHNCnl3o4Fc",
 			"seq": 1028,
+			"rawNotes": "Label shown next to example QR code. (40 chars)",
 			"src": "Find this symbol on your viewer",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -94,6 +101,7 @@
 			},
 			"guid": "QaV08RUEuxPOCugEXCnQ7tnShKARCrrKeZxYO7kxLSc",
 			"seq": 1029,
+			"rawNotes": "Label shown next to skip button that allows the user to skip the QR code step. (40 chars)",
 			"src": "Can't find this symbol?",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -105,6 +113,7 @@
 			},
 			"guid": "c6aK6IBRyaNfMidf7na8JYOmhVI2r4vsn3O6B-pr-xc",
 			"seq": 1030,
+			"rawNotes": "Label shown next to skip button that allows the user to go to troubleshooting tips. (40 chars)",
 			"src": "Troubleshooting Tips",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -116,6 +125,7 @@
 			},
 			"guid": "ZYAxQNY0zLKx4RB3CGTDXujQrbLQclR9EH5EQ7Fzbok",
 			"seq": 1021,
+			"rawNotes": "Button label for the control that allows the user to skip the QR code step. (40 chars)",
 			"src": "SKIP",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -127,6 +137,7 @@
 			},
 			"guid": "Kj45w0Rgr1SHV55MeVawhgff4UYIfb-XuWWnyf9_dks",
 			"seq": 1031,
+			"rawNotes": "First line of the onboarding introduction. (40 chars)",
 			"src": "Let's get you set up",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -138,6 +149,7 @@
 			},
 			"guid": "8_cqAMCRj_4YGH6-e5xWNNAupQF-OHn20AQoeGp75h4",
 			"seq": 1032,
+			"rawNotes": "Second line of the onboarding introduction. (80 chars)",
 			"src": "Pair your phone with your viewer for the best experience.",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -149,6 +161,7 @@
 			},
 			"guid": "yiK0MVBkcMRpl-7tMMPVMmlUvDJvqVxRbLLDHOchAko",
 			"seq": 1033,
+			"rawNotes": "Label shown below the onboarding intro line to ask if they have a cardboard viewer. (40 chars)",
 			"src": "No cardboard viewer?",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -160,6 +173,7 @@
 			},
 			"guid": "L3Um-sKnXUAP1liD4dLFvMGh7c2p80P5DRx1ZFPYpqM",
 			"seq": 1020,
+			"rawNotes": "Button title shown next to the \"no cardboard viewer\" prompt to go get one. (15 chars)",
 			"src": "Get One",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -171,6 +185,7 @@
 			},
 			"guid": "6nFW5iZToYQ3LtLDeb9Adlfu-EQWDAuFyMsAlRw4cf4",
 			"seq": 1034,
+			"rawNotes": "Instruction for the user that they should now put their phone in Cardboard. This is a generic\n* instruction when the view type is not known. (50 chars)",
 			"src": "Place your phone into your Cardboard viewer.",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -183,6 +198,7 @@
 			"gstr": "Place your phone into your {{x}} viewer.",
 			"guid": "4jxuTPXhhsLGShj5wDGlsktW8NV1GAYrGDxHaZV_6C4",
 			"seq": 1035,
+			"rawNotes": "Instruction for the user that they should now put their phone in Cardboard. This is used as a\n* format string where the parameter is the view name. (50 chars)",
 			"src": "Place your phone into your %1$@ viewer.",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1,
@@ -202,6 +218,7 @@
 			},
 			"guid": "6hNFreOOSaLtvtpZeirvd7YWah19RxogxrXPw89jle8",
 			"seq": 1036,
+			"rawNotes": "Title of settings view. (20 chars)",
 			"src": "Settings",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -213,6 +230,7 @@
 			},
 			"guid": "JdemGm2zCUjeubRLZsgXcHubo03AMla3GDG3EQOcRaA",
 			"seq": 1037,
+			"rawNotes": "Button label for enabling Cardboard viewer configurating sharing via the Cardboard app.\n* (40 chars)",
 			"src": "Sync with Google Cardboard",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -225,6 +243,7 @@
 			"gstr": "Current viewer: {{x}}",
 			"guid": "slgigM0NfUFIqYMNDpipEAV2LaSg4PIejxEgH37p4Pw",
 			"seq": 1038,
+			"rawNotes": "Format string for label that display the viewer currently configured. (30 chars)",
 			"src": "Current viewer: %1$@",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1,
@@ -243,6 +262,7 @@
 			},
 			"guid": "wqrXrCWCECaeOiuDSJiLjeSfPaVlrgpeDFJp8NK39WU",
 			"seq": 1019,
+			"rawNotes": "Reported name of Cardboard viewer when no viewer configured. (40 chars)",
 			"src": "Default",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -254,6 +274,7 @@
 			},
 			"guid": "kNNZEkHiye4nzgXH33tGPIpo_dN9p9dtDvtyQLknghg",
 			"seq": 1039,
+			"rawNotes": "Question shown to the user if they would like to switch their Cardboard\nviewer. (40 chars)",
 			"src": "Using a different viewer?",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -265,6 +286,7 @@
 			},
 			"guid": "qTP4qKQCnREcyJAH2Kaph3DNOicsXMZGYTlqeVzrb2c",
 			"seq": 1018,
+			"rawNotes": "Button text shown with the DifferentViewerQuestion that takes the user to the\nscreen to pair with a different Cardboard viewer. (15 chars)",
 			"src": "SWITCH",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -277,6 +299,7 @@
 			"gstr": "Switch viewer: {{x}}",
 			"guid": "Ko1R6hKlnw0dJtnGrwHdjhq0igmaxHWUuci1ZrEiYvg",
 			"seq": 1040,
+			"rawNotes": "Popup activity view menu text that shows the name of the currently paired viewer but also takes\nthe user to the QRScan view controller when tapped. (30 chars)",
 			"src": "Switch viewer: %1$@",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1,
@@ -295,6 +318,7 @@
 			},
 			"guid": "_AhOCAPiMyasIto9QG_S4I0SlAYd_aMe7FWWEAduL38",
 			"seq": 1017,
+			"rawNotes": "Popup activity view menu text for launching an external web browser to get help. (15 chars)",
 			"src": "Help",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -306,6 +330,7 @@
 			},
 			"guid": "CBwqRfe5Ye7rqvX0p6oInX-rrmYU3pvl1Sb7GOjEY2k",
 			"seq": 1041,
+			"rawNotes": "Dialog title shown to confirm that view pairing is successful. (40 chars)",
 			"src": "Successfully Paired!",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -318,6 +343,7 @@
 			"gstr": "Your phone is now configured for your {{x}} viewer.",
 			"guid": "xX2wjf_JnaqCdoe4AvzrpR0w__P7h12WCoMygm6ru8U",
 			"seq": 1042,
+			"rawNotes": "Dialog text shown to show user what the paired viewer is. (80 chars)",
 			"src": "Your phone is now configured for your %1$@ viewer.",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1,
@@ -337,6 +363,7 @@
 			},
 			"guid": "QBJSpbVgw6NtOonlImeo7N4Ys6aMk-tIHP-Jha6jjwk",
 			"seq": 1016,
+			"rawNotes": "Button label for user to confirm that they know the viewer is paired. (20 chars)",
 			"src": "OK",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -348,6 +375,7 @@
 			},
 			"guid": "ngT5pq_BhXgX71IJFDYZQRJX80bl9J1XPD2oBb-VEAE",
 			"seq": 1043,
+			"rawNotes": "Accessibility label for the gear icon to bring up settings (read out loud)",
 			"src": "Settings",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -360,6 +388,7 @@
 			"gstr": "Back to previous screen",
 			"guid": "Ln6QELVxYXr2EgOv6P2-EYewhB5H6jLOJ1W5jilT_nc",
 			"seq": 1044,
+			"rawNotes": "Accessibility label for the back button to take us out of 3D mode (read out loud)",
 			"src": "Back\\U0020to previous screen",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1,
@@ -375,6 +404,7 @@
 			"gstr": "Cardboard mode: {{x}}",
 			"guid": "p72nj2yZPB-RfJOZa2iZg2pt16HznCGr_kdYQziGHxs",
 			"seq": 1045,
+			"rawNotes": "Accessibility label for the cardboard button to go into cardboard mode (read out loud)",
 			"src": "Cardboard mode: %1$@",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1,
@@ -393,6 +423,7 @@
 			},
 			"guid": "snWaUNjXnKuXlItO8jUPfKITKfuqshl6xCXxUgiP4jI",
 			"seq": 1046,
+			"rawNotes": "Accessibility label for the fullscreen button to go into fullscreen mode (read out loud)",
 			"src": "Fullscreen mode",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -404,6 +435,7 @@
 			},
 			"guid": "d13hqt62wEq5drSC-g7auJUOAlQL-N3VrEyi1mCjMH0",
 			"seq": 1015,
+			"rawNotes": "Accessibility label for the information button to go to help page (read out loud)",
 			"src": "Help",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1
@@ -416,6 +448,7 @@
 			"gstr": "Help 'encoding' is \"hard\"!\\\n",
 			"guid": "kjYD6n4DIB9kQKYRd0QStGsZfU2yOhcUG091zj53Skw",
 			"seq": 1047,
+			"rawNotes": "Test encoding and decoding",
 			"src": "Help 'encoding\\' is\\U00a0\"hard\"!\\\\\n",
 			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1,

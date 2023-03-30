@@ -23,6 +23,7 @@
 				"desc": "## Rollup"
 			},
 			"guid": "ofwlKHXIDQCXV7Rlk9WYgltn8MJ9Gl4AW6TlRxtAcII",
+			"rawNotes": "## Rollup",
 			"src": "{0} more",
 			"rid": "dashlets/activity-list.get_en.properties",
 			"ts": 1
@@ -37,6 +38,7 @@
 				"desc": "## ATOM feed messages"
 			},
 			"guid": "bRBL1Isi3Xj28gXDOAgjrQfgd3j4u-evwXScOaysjwk",
+			"rawNotes": "## ATOM feed messages",
 			"src": "Alfresco Activities Site Feed for {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
 			"ts": 1
@@ -62,6 +64,7 @@
 				"desc": "## Optional Site link"
 			},
 			"guid": "WhkdZt3NHyKL3rEFJ74k-QKHkviBt0-1j6WxSUTtGrI",
+			"rawNotes": "## Optional Site link",
 			"src": "{0} in {1}",
 			"rid": "dashlets/activity-list.get_en.properties",
 			"ts": 1
@@ -76,6 +79,7 @@
 				"desc": "## 0 = Item title / page link, 1 = User profile link, 2 = custom0, 3 = custom1, 4 = Site link, 5 = second user profile link"
 			},
 			"guid": "ZWi4GhbkcHflQik2kDutG_MLwv1dkR0b20-BoPLZAWk",
+			"rawNotes": "## 0 = Item title / page link, 1 = User profile link, 2 = custom0, 3 = custom1, 4 = Site link, 5 = second user profile link",
 			"src": "{1} created blog post {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
 			"ts": 1
@@ -970,6 +974,7 @@
 				"desc": "#{startRecord} - {endRecord} of {totalRecords}"
 			},
 			"guid": "I1YmkUpPIu1-92fwMeYB2OEkyL4rkgB40BShuDUTwUs",
+			"rawNotes": "#{startRecord} - {endRecord} of {totalRecords}",
 			"src": "{0} - {1} of {2}",
 			"rid": "dashlets/colleagues.get_en.properties",
 			"ts": 1
@@ -1017,6 +1022,7 @@
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
 			"guid": "T1fBipItJf3g1oC_7JEB10ZFfwRyyY2NNdgg5KYNWD4",
+			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"src": "<p>Use this dashlet to see who belongs to this site. You can click their name to view their profile and get to know them.</p><p>Clicking All Members lets you see everyone in this site. If you're a site manager, click Invite to send out some site invitations.</p>",
 			"rid": "dashlets/colleagues.get_en.properties",
 			"ts": 1
@@ -1042,6 +1048,7 @@
 				"desc": "## Filters"
 			},
 			"guid": "Eq6kdX8FRZrnHXZ8tj-1WkbVn79SRm10JD2L8-8Sy8w",
+			"rawNotes": "## Filters",
 			"src": "My Favorites",
 			"rid": "dashlets/docsummary.get_en.properties",
 			"ts": 1
@@ -1122,6 +1129,7 @@
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
 			"guid": "h1g5XmmTuEIqMYxKpSVcWKq08Ejs5PK-zbnEWpNWp9I",
+			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"src": "<p>This dashlet makes it easy to keep track of your recent changes to library content in this site. Clicking the item name or thumbnail takes you to the details page so you can preview or work with the item.</p><p>There are two views for this dashlet. The detailed view lets you:<ul><li>Mark an item as a favorite so it appears in Favorites lists for easy access</li><li>Like (and unlike) an item</li><li>Jump to the item details page to leave a comment</li></ul></p>",
 			"rid": "dashlets/docsummary.get_en.properties",
 			"ts": 1
@@ -1708,6 +1716,7 @@
 				"desc": "## In topicList.createdBy {0} is Author Name and {1} is relative date."
 			},
 			"guid": "5IJAuQL6UV5_ZA0wQJNE9qi9ehoZcQRR2m6pX3S-DKE",
+			"rawNotes": "## In topicList.createdBy {0} is Author Name and {1} is relative date.",
 			"src": "Created by {0} {1}.",
 			"rid": "dashlets/forum-summary.get_en.properties",
 			"ts": 1
@@ -1744,6 +1753,7 @@
 				"desc": "## In topicList.lastReplyBy {0} is Author Name and {1} is relative date."
 			},
 			"guid": "Hs0E72WcBUBty_ns32PTWF4Yhm-hP0tXa2W01ic4iQc",
+			"rawNotes": "## In topicList.lastReplyBy {0} is Author Name and {1} is relative date.",
 			"src": "The last reply was posted by {0} {1}.",
 			"rid": "dashlets/forum-summary.get_en.properties",
 			"ts": 1
@@ -1758,6 +1768,7 @@
 				"desc": "# Filter 1"
 			},
 			"guid": "SaF5jfhsK1yJhYCtKwNK14xZFItSKzIHbyfOX09s3j4",
+			"rawNotes": "# Filter 1",
 			"src": "My Topics",
 			"rid": "dashlets/forum-summary.get_en.properties",
 			"ts": 1
@@ -1783,6 +1794,7 @@
 				"desc": "# Filter 2"
 			},
 			"guid": "1xmZmVo3sItH_a_W99LVgEsp-40jP-cffl9A0AyIIDk",
+			"rawNotes": "# Filter 2",
 			"src": "Topics updated in the last day",
 			"rid": "dashlets/forum-summary.get_en.properties",
 			"ts": 1
@@ -1830,6 +1842,7 @@
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
 			"guid": "_XhAveHZT2LcvmXH7ZCmxIS6UvISIcG0nWvGw1_ZG5U",
+			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"src": "<p>Discussion Forum dashlet.</p><p>View your latest posts on the Discussion Forum.</p>",
 			"rid": "dashlets/forum-summary.get_en.properties",
 			"ts": 1
@@ -1943,6 +1956,7 @@
 				"desc": "## Note to translators: The User Interface renders Filters 1, 2, 3 next to each other. The English translation gives these the appearance of a sentence, for example: \"My activities, status updates, in the last 14 days\".\n## This is entirely optional. If the language doesn't allow for this structure, please capitalise the messages in Filter 2+3 so they appear disconnected.\n# Filter 1"
 			},
 			"guid": "lYYzgCGkzccr-pT7UZ4i4kg7sG6k6f3jFdc6n8EN4N8",
+			"rawNotes": "## Note to translators: The User Interface renders Filters 1, 2, 3 next to each other. The English translation gives these the appearance of a sentence, for example: \"My activities, status updates, in the last 14 days\".\n## This is entirely optional. If the language doesn't allow for this structure, please capitalise the messages in Filter 2+3 so they appear disconnected.\n# Filter 1",
 			"src": "My activities",
 			"rid": "dashlets/my-activities.get_en.properties",
 			"ts": 1
@@ -1990,6 +2004,7 @@
 				"desc": "# Filter 2"
 			},
 			"guid": "VuYFBmp8W917yvy6FDEnusaF740C6phWH-JIUrTYwc0",
+			"rawNotes": "# Filter 2",
 			"src": "all items",
 			"rid": "dashlets/my-activities.get_en.properties",
 			"ts": 1
@@ -2048,6 +2063,7 @@
 				"desc": "# Filter 3"
 			},
 			"guid": "ew1Cta4NZUO58z_VftSCMsMI7As-GxknGadESOGGxtI",
+			"rawNotes": "# Filter 3",
 			"src": "today",
 			"rid": "dashlets/my-activities.get_en.properties",
 			"ts": 1
@@ -2117,6 +2133,7 @@
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
 			"guid": "2vPQobJcTQblu46SKlLEO2Nos8w7Y8u3_N4CSL9e_ig",
+			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"src": "<p>Following what goes on in your sites is easy with this dashlet. It shows the activities in all the sites you belong to, such as content that's been added, deleted, and edited. You can also see who is joining and leaving your sites.</p><p>Filters let you view activities by time period and ownership.</p>",
 			"rid": "dashlets/my-activities.get_en.properties",
 			"ts": 1
@@ -2241,6 +2258,7 @@
 				"desc": "## Filters"
 			},
 			"guid": "16dwhpoku0nRZdnDK3zN4gY9CzQrNxTrbsgwSm6DGfk",
+			"rawNotes": "## Filters",
 			"src": "My Favorites",
 			"rid": "dashlets/my-documents.get_en.properties",
 			"ts": 1
@@ -2321,6 +2339,7 @@
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
 			"guid": "ShcUB-kxdjwKH2AdlbqM0l75IOjnsUHlasxuZRfjRPA",
+			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"src": "<p>This dashlet makes it easy to keep track of your own content, no matter which site it is in. Use the filter to easily find what you're looking for.</p><p>There are two views for this dashlet. The detailed view lets you:<ul><li>Mark an item as a favorite so it appears in Favorites lists for easy access</li><li>Like (and unlike) an item</li><li>Jump to the item details page to leave a comment</li></ul></p>",
 			"rid": "dashlets/my-documents.get_en.properties",
 			"ts": 1
@@ -2401,6 +2420,7 @@
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
 			"guid": "tudlLtXq92sWC7gywpc1T6B7E8uxGJZDc8HHygFDZFM",
+			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"src": "<p>A Meeting Workspace is a type of site that is created outside of Alfresco. This dashlet lists all of your Meeting Workspace sites.</p><p>From here you can navigate to a Meeting Workspace site. You can also delete a site, if you have the correct permissions.</p>",
 			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
 			"ts": 1
@@ -2547,6 +2567,7 @@
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
 			"guid": "eB_cJ-hCnjl2LXlUNHQ41obId7vKpIoi1hnckcOilEw",
+			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"src": "<p>Sites are project areas where you collaborate with others, sharing content and working on it together. This dashlet lists the sites you belong to. You can filter this list to show only your favorite sites.</p><p>From here you can:<ul><li>Navigate to a site</li><li>Create a new site</li><li>Delete a site if you are the site manager</li><li>Mark a site as a favorite so that it shows in the Sites menu for easy access</li></ul></p>",
 			"rid": "dashlets/my-sites.get_en.properties",
 			"ts": 1
@@ -2770,6 +2791,7 @@
 				"desc": "## Override pagination templates with a minified version"
 			},
 			"guid": "xH9OYoIO3y2KixIP4p0-xd961rMhUmo9u7256vRHDBk",
+			"rawNotes": "## Override pagination templates with a minified version",
 			"src": "{CurrentPageReport}",
 			"rid": "dashlets/my-tasks.get_en.properties",
 			"ts": 1
@@ -2817,6 +2839,7 @@
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
 			"guid": "yuZ8kL-RtX72I1i938tuPNva3s7BVSoDl7UGjK2UodU",
+			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"src": "<p>This dashlet lists the tasks assigned to you, including invitations to join sites. You can filter the list to view different types of tasks.</p><p>From here you can:<ul><li>Edit a task to manage it</li><li>View a single task</li><li>Open the My Tasks page to manage all of your tasks</li><li>Start a workflow to create tasks for others or yourself</li></ul></p>",
 			"rid": "dashlets/my-tasks.get_en.properties",
 			"ts": 1
@@ -2897,6 +2920,7 @@
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
 			"guid": "9AaA2VphgbM4i28Q0Dsd-5lMNS_-SHTdSRhUohVWaH8",
+			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"src": "<p>A Document Workspace is a type of site that is created outside of Alfresco. This dashlet lists all of your Document Workspace sites.</p><p>From here you can navigate to a Document Workspace site. You can also delete a site, if you have the correct permissions.</p>",
 			"rid": "dashlets/my-workspaces.get_en.properties",
 			"ts": 1
@@ -3032,6 +3056,7 @@
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
 			"guid": "xXeLvRnk8L9fg4rs4ABDXD3OP5laKu69E_AWs5MuyOc",
+			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"src": "<p>Use this dashlet to set up a search and view the results.</p><p>Configure the dashlet to save the search and set the title text of the dashlet.</p><p>Only a Site Manager can configure the search and title - this dashlet is ideal for generating report views in a site.</p>",
 			"rid": "dashlets/saved-search.get_en.properties",
 			"ts": 1
@@ -3090,6 +3115,7 @@
 				"desc": "## Note to translators: The User Interface renders Filters 1, 2, 3 next to each other. The English translation gives these the appearance of a sentence, for example: \"My activities, status updates, in the last 14 days\".\n## This is entirely optional. If the language doesn't allow for this structure, please capitalise the messages in Filter 2+3 so they appear disconnected.\n# Filter 1"
 			},
 			"guid": "Udt6eFrWTD8LIPEn855TExZ8hKbdZ-XnDwZViiOfKjI",
+			"rawNotes": "## Note to translators: The User Interface renders Filters 1, 2, 3 next to each other. The English translation gives these the appearance of a sentence, for example: \"My activities, status updates, in the last 14 days\".\n## This is entirely optional. If the language doesn't allow for this structure, please capitalise the messages in Filter 2+3 so they appear disconnected.\n# Filter 1",
 			"src": "My activities",
 			"rid": "dashlets/site-activities.get_en.properties",
 			"ts": 1
@@ -3137,6 +3163,7 @@
 				"desc": "# Filter 2"
 			},
 			"guid": "vRZ8-bFg84NQr-JCGfCiYSgCFpyIVfkRsbewPxPUKWE",
+			"rawNotes": "# Filter 2",
 			"src": "all items",
 			"rid": "dashlets/site-activities.get_en.properties",
 			"ts": 1
@@ -3195,6 +3222,7 @@
 				"desc": "# Filter 3"
 			},
 			"guid": "3TQRV9f1141RY8JHLgGCs9MqJXCfUHGCPKoH346i8Ns",
+			"rawNotes": "# Filter 3",
 			"src": "today",
 			"rid": "dashlets/site-activities.get_en.properties",
 			"ts": 1
@@ -3264,6 +3292,7 @@
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
 			"guid": "N5EWKvy-98rVgly4vkrJ1jgGynPaCl13TPSgRfK-DtA",
+			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"src": "<p>Following what goes on in the site is easy with this dashlet. It shows all activities, such as content that's been added, edited, and deleted. You can also see who is joining and leaving the site.</p><p>Filters let you view activities by time period and ownership.</p>",
 			"rid": "dashlets/site-activities.get_en.properties",
 			"ts": 1
@@ -3575,6 +3604,7 @@
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
 			"guid": "AW5j6bWDZUj8JF7o4Je_uO5R7rFsTZBn4e8U6upZ0JQ",
+			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"src": "<p>Use this dashlet to perform a site search and view the results.</p><p>Clicking the item name takes you to the details page so you can preview or work with the item.</p>",
 			"rid": "dashlets/site-search.get_en.properties",
 			"ts": 1
@@ -3721,6 +3751,7 @@
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
 			"guid": "GW2RqmBtr_dCSi4GUl6Hi-7odVfFPXFWvyOZxvLord4",
+			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"src": "<p>This dashlet shows the website of your choice. Click the edit icon on the dashlet to change the web address.</p><p>Clicking the dashlet title opens the website in a separate window.</p>",
 			"rid": "dashlets/webview.get_en.properties",
 			"ts": 1
@@ -3779,6 +3810,7 @@
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
 			"guid": "aL0XpXO85q1QEFuRWmswSmwCBo0bP18SrErZq1mm-YY",
+			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"src": "<p>This dashlet shows a page selected from the site's wiki.</p><p>Navigate to the wiki to see all related content.</p>",
 			"rid": "dashlets/wiki.get_en.properties",
 			"ts": 1

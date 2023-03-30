@@ -147,6 +147,7 @@
 				"desc": "Category"
 			},
 			"guid": "WH5WLMC2qY2bMf5JBHSqSrkJVjNzv3YHD0V58wqZfV0",
+			"rawNotes": "Category",
 			"src": "Category",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -499,6 +500,7 @@
 				"desc": "Library Sort"
 			},
 			"guid": "c656MnA8GvsOTOxs4WY4nJd0SDx8-yR4m5_0O3dVg0U",
+			"rawNotes": "Library Sort",
 			"src": "Sort by",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -770,6 +772,7 @@
 				"desc": "Recents"
 			},
 			"guid": "9KQnpovYTTR8EqaPS_krSrI6i65OEvrlUpYUZ8fHDF0",
+			"rawNotes": "Recents",
 			"src": "Recents",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -988,6 +991,7 @@
 				"desc": "Recents Settings"
 			},
 			"guid": "vc6RPi0nmbBiytfQeWbKySuwc6Tz427bDCSe__RrgOs",
+			"rawNotes": "Recents Settings",
 			"src": "Show reset history button",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
@@ -1650,6 +1654,7 @@
 			},
 			"gstr": "About this {{x}}",
 			"guid": "rXnFisSe-TCQMWVdPr043XAD3SjPf9t7nr3_A3JFQ4Q",
+			"rawNotes": "Manga details",
 			"src": "About this %1$s",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -3183,6 +3188,7 @@
 				"desc": "Do not translate \"WebView\""
 			},
 			"guid": "rZjFH0Z7z5HV8Tov2ZWD6ABIwLcX0rWeaY9SwkUqMjg",
+			"rawNotes": "Do not translate \"WebView\"",
 			"src": "WebView is required for Tachiyomi",
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
