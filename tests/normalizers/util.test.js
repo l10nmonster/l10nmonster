@@ -113,7 +113,7 @@ describe('Normalizers Util tests', () => {
     });
 
     test('simple extractStructuredNotes', async () => {
-        expect(extractStructuredNotes('fooPH(0 | SF | city)MAXWIDTH(42)SCREENSHOT(http://sample.org)'))
+        expect(extractStructuredNotes('fooPH(0 | SF | city)MAXWIDTH(42)SCREENSHOT(http://sample.org)TAG(a, b)'))
             .toMatchObject({
                 desc: 'foo',
                 ph: {
@@ -124,6 +124,7 @@ describe('Normalizers Util tests', () => {
                 },
                 maxWidth: 42,
                 screenshot: 'http://sample.org',
+                tags: [ 'a', 'b' ],
             });
     });
 
