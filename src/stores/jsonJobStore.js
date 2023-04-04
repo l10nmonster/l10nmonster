@@ -11,6 +11,7 @@ import { nanoid } from 'nanoid';
 import { globbySync } from 'globby';
 
 const statusPriority = { done: 0, pending: 1, req: 2 };
+const jobFilenameRegex = /(?<provider>[^_]+)_(?<sourceLang>[^_]+)_(?<targetLang>[^_]+)_job_(?<guid>[0-9A-Za-z_-]+)-(?<status>req|pending|done)\.json$/;
 
 export class JsonJobStore {
     constructor({ jobsDir }) {
@@ -29,11 +30,21 @@ export class JsonJobStore {
         return globbySync(path.join(this.jobsBaseDir, '**', glob));
     }
 
+    async getAvailableLangPairs() {
+        const files = this.#findGlob(`*_job_*.json`);
+        const pairs = new Map();
+        for (const file of files) {
+            const entry = file.match(jobFilenameRegex)?.groups;
+            entry && pairs.set(`${entry.sourceLang}_${entry.targetLang}`, [entry.sourceLang, entry.targetLang]);
+        }
+        return Array.from(pairs.values());
+    }
+
     async getJobStatusByLangPair(sourceLang, targetLang) {
         const files = this.#findGlob(`*${sourceLang}_${targetLang}_job_*.json`);
         const statusMap = {};
         for (const file of files) {
-            const entry = file.match(/job_(?<guid>[0-9A-Za-z_-]+)-(?<status>req|pending|done)\.json$/)?.groups;
+            const entry = file.match(jobFilenameRegex)?.groups;
             if (entry) {
                 if (!statusMap[entry.guid] || statusPriority[entry.status] < statusPriority[statusMap[entry.guid].status]) {
                     statusMap[entry.guid] = { mtime: statSync(file).mtime.toISOString(), status: entry.status };
