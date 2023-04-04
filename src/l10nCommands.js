@@ -307,6 +307,7 @@ __.-'            \\  \\   .   / \\_.  \\ -|_/\\/ \`--.|_
 export async function runL10nMonster(relativePath, globalOptions, cb) {
     const configPath = path.resolve('.', relativePath);
     return createMonsterManager(configPath, globalOptions, async mm => cb({
+        analyze: opts => analyze(mm, { ...globalOptions, ...opts}),
         status: opts => status(mm, { ...globalOptions, ...opts}),
         jobs: opts => jobs(mm, { ...globalOptions, ...opts}),
         job: opts => job(mm, { ...globalOptions, ...opts}),
