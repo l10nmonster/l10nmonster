@@ -75,9 +75,7 @@
 				"startLine": 14,
 				"endLine": 14
 			},
-			"notes": {
-				"desc": "## 0 = Item title / page link, 1 = User profile link, 2 = custom0, 3 = custom1, 4 = Site link, 5 = second user profile link"
-			},
+			"notes": "PH({0}|Hello World|Item title / page link)",
 			"guid": "ZWi4GhbkcHflQik2kDutG_MLwv1dkR0b20-BoPLZAWk",
 			"rawNotes": "## 0 = Item title / page link, 1 = User profile link, 2 = custom0, 3 = custom1, 4 = Site link, 5 = second user profile link",
 			"src": "{1} created blog post {0}",
@@ -91,6 +89,7 @@
 				"endLine": 15
 			},
 			"guid": "16xbZ-N9Mj0qr-wexdWn9u36v6HK7TAuMwRNEt5aza0",
+			"notes": "PH({0}|Hello World|Item title / page link)",
 			"src": "{1} updated blog post {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
 			"ts": 1
@@ -102,6 +101,7 @@
 				"endLine": 16
 			},
 			"guid": "rw0So7rhNIszXReiLESNOPruP9Hb6GP7Cp0cCgpHMCM",
+			"notes": "PH({0}|Hello World|Item title / page link)",
 			"src": "{1} deleted blog post {0}",
 			"rid": "dashlets/activity-list.get_en.properties",
 			"ts": 1

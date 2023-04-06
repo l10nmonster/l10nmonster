@@ -8,6 +8,12 @@ export default class EisenVaultConfig {
             targetLangs: [ 'it' ],
         });
         this.resourceFilter = new filters.JavaPropertiesFilter();
+        this.segmentDecorator = segments => segments.map(seg => {
+            if (seg.sid.indexOf('org.alfresco.blog.post-') === 0) {
+                return { ...seg, notes: 'PH({0}|Hello World|Item title / page link)' };
+            }
+            return seg;
+        });
         this.target = new adapters.FsTarget({
             targetPath: (lang, resourceId) => resourceId.replace('_en.properties', `_${lang.replace('-', '_')}.properties`),
         });
