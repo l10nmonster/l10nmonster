@@ -69,7 +69,7 @@ export default class MonsterManager {
     // get source, decorate it for the target languge, and convert it to tu format
     async getSourceAsTus(targetLang) {
         const sourceLookup = {};
-        const source = await this.getEntries();
+        const source = await this.source.getEntries();
         // eslint-disable-next-line no-unused-vars
         for (const [ rid, res ] of source) {
             const pipeline = this.contentTypes[res.contentType];
