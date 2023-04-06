@@ -4,7 +4,7 @@ import {
     readFileSync,
     writeFileSync,
 } from 'fs';
-import { generateFullyQualifiedGuid, makeTU } from './shared.js';
+import { generateFullyQualifiedGuid } from './shared.js';
 import { getNormalizedString, flattenNormalizedSourceToOrdinal, extractStructuredNotes } from './normalizers/util.js';
 
 export default class SourceManager {
@@ -132,18 +132,6 @@ export default class SourceManager {
         const guidMap = {};
         Object.values(this.sourceCache.sources).forEach(res => res.segments.forEach(seg => guidMap[seg.guid] = seg));
         return guidMap;
-    }
-
-    async getSourceAsTus() {
-        const sourceLookup = {};
-        const source = await this.getEntries();
-        // eslint-disable-next-line no-unused-vars
-        for (const [ rid, res ] of source) {
-            for (const seg of res.segments) {
-                sourceLookup[seg.guid] = makeTU(res, seg);
-            }
-        }
-        return sourceLookup;
     }
 
     async getTargetLangs(limitToLang) {

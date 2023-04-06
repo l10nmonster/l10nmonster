@@ -66,6 +66,21 @@ export default class MonsterManager {
         }
     }
 
+    // get source, decorate it for the target languge, and convert it to tu format
+    async getSourceAsTus(targetLang) {
+        const sourceLookup = {};
+        const source = await this.getEntries();
+        // eslint-disable-next-line no-unused-vars
+        for (const [ rid, res ] of source) {
+            const pipeline = this.contentTypes[res.contentType];
+            const filteredSegments = pipeline.segmentDecorator ? pipeline.segmentDecorator(res.segments, targetLang) : res.segments;
+            for (const seg of filteredSegments) {
+                sourceLookup[seg.guid] = makeTU(res, seg);
+            }
+        }
+        return sourceLookup;
+    }
+
     getMinimumQuality(jobManifest) {
         let minimumQuality = this.minimumQuality;
         if (typeof minimumQuality === 'function') {
@@ -181,7 +196,7 @@ export default class MonsterManager {
 
     async prepareFilterBasedJob({ targetLang, tmBased, guidList }) {
         const tm = await this.tmm.getTM(this.sourceLang, targetLang);
-        const sourceLookup = await this.source.getSourceAsTus();
+        const sourceLookup = await this.getSourceAsTus(targetLang);
         if (!guidList) {
             if (tmBased) {
                 guidList = tm.guids;
