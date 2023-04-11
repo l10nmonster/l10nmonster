@@ -94,7 +94,7 @@ export async function tmExportCmd(mm, { limitToLang, mode, format, prjsplit }) {
             if (format === 'job') {
                 const jobGuid = `tmexport_${prjsplit ? `${prj}_` : ''}${mm.sourceLang}_${targetLang}`;
                 const [ jobReq, jobRes ] = await exportAsJob(mm.ctx, content, jobGuid);
-                filename = `${mm.sourceLang}_${targetLang}_job_${jobGuid}`;
+                filename = `TMExport_${mm.sourceLang}_${targetLang}_job_${jobGuid}`;
                 await fs.writeFile(`${filename}-req.json`, JSON.stringify(jobReq, null, '\t'), 'utf8');
                 await fs.writeFile(`${filename}-done.json`, JSON.stringify(jobRes, null, '\t'), 'utf8');
             } else if (format === 'json') {
