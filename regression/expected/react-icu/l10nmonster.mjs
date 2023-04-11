@@ -54,5 +54,3 @@ export default class ReactConfig {
         }
     }
 }
-
-export const opsDir = 'l10nOps';
