@@ -2,7 +2,7 @@
 import {
     flattenNormalizedSourceV1, extractNormalizedPartsV1,
     flattenNormalizedSourceToXmlV1, extractNormalizedPartsFromXmlV1,
-    extractStructuredNotes,
+    extractStructuredNotes, getTUMaps,
  } from '../../src/normalizers/util.js';
 
 const nsrc1 = [
@@ -76,6 +76,71 @@ const xmlPhMap1 = {
         v1: "e_ex_color",
     }
 };
+const tuWithPh = [ 
+    {
+        "guid": "foo",
+        "notes": {
+            "ph": { 
+                "{0}": { "sample": "12 May, 2023", "desc": "Departure date" },
+                "{1}": { "sample": "23 May, 2023", "desc": "Return date" },
+                "{2}": { "sample": "2", "desc": "Number of travellers" }
+            },
+        },
+        "nsrc": [
+            "Round Trip, ",
+            { "t": "x", "v": "{0}" },
+            " - ",
+            { "t": "x", "v": "{1}" },
+            " • ",
+            { "t": "x", "v": "{2}" }
+        ],
+        "ntgt": [
+            "Ida y vuelta, ",
+            { "t": "x", "v": "{0}", "v1": "a_x_0" },
+            " - ",
+            { "t": "x", "v": "{1}", "v1": "b_x_1" },
+            " • ",
+            { "t": "x", "v": "{2}", "v1": "c_x_2" }
+        ],
+    },
+];
+const tuWithPhMap =       {
+    "contentMap": {
+      "foo": "Round Trip, {{a_x_0}} - {{b_x_1}} • {{c_x_2}}"
+    },
+    "tuMeta": {
+      "foo": {
+        "phMap": {
+          "a_x_0": {
+            "t": "x",
+            "v": "{0}",
+            "v1": "a_x_0"
+          },
+          "b_x_1": {
+            "t": "x",
+            "v": "{1}",
+            "v1": "b_x_1"
+          },
+          "c_x_2": {
+            "t": "x",
+            "v": "{2}",
+            "v1": "c_x_2"
+          }
+        },
+        "nsrc": [
+            "Round Trip, ",
+            { "t": "x", "v": "{0}" },
+            " - ",
+            { "t": "x", "v": "{1}" },
+            " • ",
+            { "t": "x", "v": "{2}" }
+        ],
+      }
+    },
+    "phNotes": {
+      "foo": "\n ph:\n  ①  a_x_0 → {0}   (Departure date : 12 May, 2023)\n  ②  b_x_1 → {1}   (Return date : 23 May, 2023)\n  ③  c_x_2 → {2}   (Number of travellers : 2)\n current translation: Ida y vuelta, {{a_x_0}} - {{b_x_1}} • {{c_x_2}}"
+    }
+  };
 
 describe('Normalizers Util tests', () => {
 
@@ -140,4 +205,9 @@ describe('Normalizers Util tests', () => {
                 },
             });
     });
+
+    test('getTUMaps', async () => {
+        expect(getTUMaps(tuWithPh))
+            .toMatchObject(tuWithPhMap);
+    });    
 });
