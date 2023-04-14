@@ -212,7 +212,7 @@ export function getTUMaps(tus) {
                 tuMeta[guid] = { phMap, nsrc: tu.nsrc };
                 const sourcePhNotes = tu?.notes?.ph ?? {};
                 phNotes[guid] = Object.entries(phMap)
-                    .reduce((p, c, i) => `${p}\n  ${String.fromCodePoint(9312 + i)}  ${c[0]} → ${c[1].v}${c[1].s === undefined ? '' : ` → ${c[1].s}`}${sourcePhNotes[c[1].v]?.desc ? `   (${sourcePhNotes[c[1].v].desc})` : ''}`, '\n ph:')
+                    .reduce((p, c, i) => `${p}\n  ${String.fromCodePoint(9312 + i)}  ${c[0]} → ${c[1].v}${c[1].s === undefined ? '' : ` → ${c[1].s}`}${sourcePhNotes[c[1].v]?.desc ? `   (${sourcePhNotes[c[1].v].desc}${sourcePhNotes[c[1].v]?.sample ? ` : ${sourcePhNotes[c[1].v]?.sample}` : ''})` : ''}`, '\n ph:')
                     .replaceAll('<', 'ᐸ')
                     .replaceAll('>', 'ᐳ'); // hack until they stop stripping html
             }
