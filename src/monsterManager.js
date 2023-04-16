@@ -106,11 +106,14 @@ export default class MonsterManager {
             jobRequest.status = 'cancelled';
             return;
         }
-        jobRequest && await this.jobStore.writeJob(jobRequest);
+        const updatedAt = (this.ctx.regression ? new Date('2022-05-29T00:00:00.000Z') : new Date()).toISOString();
+        if (jobRequest) {
+            jobRequest.updatedAt = updatedAt;
+            await this.jobStore.writeJob(jobRequest);
+        }
         if (jobResponse) {
+            jobResponse.updatedAt = updatedAt;
             await this.jobStore.writeJob(jobResponse);
-            const tm = await this.tmm.getTM(jobResponse.sourceLang, jobResponse.targetLang);
-            await tm.processJob(jobResponse, jobRequest);
         }
     }
 
@@ -233,5 +236,7 @@ export default class MonsterManager {
 
     async shutdown() {
         this.jobStore.shutdown && await this.jobStore.shutdown();
+        await this.source.shutdown();
+        await this.tmm.shutdown();
     }
 }

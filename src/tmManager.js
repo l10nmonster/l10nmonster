@@ -8,7 +8,7 @@ import { flattenNormalizedSourceToOrdinal, cleanupTU } from './normalizers/util.
 import { targetTUWhitelist, refreshedFromSource } from './schemas.js';
 
 class TM {
-    constructor(sourceLang, targetLang, tmPathName, logger, configSeal, jobs, srcGuidMap) {
+    constructor(sourceLang, targetLang, tmPathName, logger, configSeal, jobs, sourceMgr) {
         const EMPTY_TM = {
             sourceLang,
             targetLang,
@@ -32,7 +32,7 @@ class TM {
         }
         this.lookUpByFlattenSrc = {};
         Object.values(this.tm.tus).forEach(tu => this.setEntryByGuid(tu.guid, tu)); // this is to generate side-effects
-        this.srcGuidMap = srcGuidMap;
+        this.sourceMgr = sourceMgr;
     }
 
     get guids() {
@@ -69,25 +69,22 @@ class TM {
         return this.tm.jobStatus[jobGuid];
     }
 
-    setJobStatus(jobGuid, status, mtime) {
-        this.tm.jobStatus[jobGuid] = { status, mtime };
-    }
-
     async commit() {
         this.logger.info(`Updating ${this.tmPathName}...`);
         writeFileSync(this.tmPathName, JSON.stringify(this.tm, null, '\t'), 'utf8');
     }
 
-    async processJob(jobResponse, jobRequest, mtime) {
+    processJob(jobResponse, jobRequest) {
+        this.dirty = true;
         const requestedUnits = {};
         jobRequest?.tus && jobRequest.tus.forEach(tu => requestedUnits[tu.guid] = tu);
-        const { jobGuid, status, inflight, tus } = jobResponse;
+        const { jobGuid, status, inflight, tus, updatedAt } = jobResponse;
         if (inflight) {
             for (const guid of inflight) {
                 const reqEntry = requestedUnits[guid] ?? {};
                 const tmEntry = this.getEntryByGuid(guid);
                 if (!tmEntry) {
-                    this.setEntryByGuid(guid, { ...reqEntry, ts: jobResponse.ts, q: 0, jobGuid, inflight: true });
+                    this.setEntryByGuid(guid, { ...reqEntry, q: 0, jobGuid, inflight: true });
                 }
             }
         }
@@ -95,14 +92,14 @@ class TM {
             for (const tu of tus) {
                 const tmEntry = this.getEntryByGuid(tu.guid);
                 const reqEntry = requestedUnits[tu.guid] ?? {};
-                const srcEntry = Object.fromEntries(Object.entries(this.srcGuidMap[tu.guid] ?? {}).filter(p => refreshedFromSource.has(p[0])));
-                const rectifiedTU = { ...reqEntry, ts: jobResponse.ts, ...tu, jobGuid, ...srcEntry };
+                const srcEntry = Object.fromEntries(Object.entries(this.sourceMgr.getSourceByGuid(tu.guid) ?? {}).filter(p => refreshedFromSource.has(p[0])));
+                const rectifiedTU = { ...reqEntry, ...tu, jobGuid, ...srcEntry };
                 if (!tmEntry || tmEntry.q < tu.q || (tmEntry.q === tu.q && tmEntry.ts < rectifiedTU.ts)) {
                     this.setEntryByGuid(tu.guid, rectifiedTU);
                 }
             }
         }
-        this.setJobStatus(jobGuid, status, mtime);
+        this.tm.jobStatus[jobGuid] = { status, updatedAt };
     }
 }
 
@@ -113,32 +110,37 @@ export default class TMManager {
         this.sourceMgr = sourceMgr;
         this.ctx = ctx;
         this.configSeal = configSeal;
-        this.tmCache = {};
+        this.tmCache = new Map();
         this.generation = new Date().getTime();
     }
 
     async getTM(sourceLang, targetLang) {
-        let dirty = false;
+        const jobs = (await this.jobStore.getJobStatusByLangPair(sourceLang, targetLang))
+            .filter(e => [ 'pending', 'done' ].includes(e[1].status));
         const tmFileName = `tmCache_${sourceLang}_${targetLang}.json`;
-        let tm = this.tmCache[tmFileName];
+        let tm = this.tmCache.get(tmFileName);
         if (!tm) {
-            !this.srcGuidMap && (this.srcGuidMap = await this.sourceMgr.getGuidMap());
-            const jobs = (await this.jobStore.getJobStatusByLangPair(sourceLang, targetLang))
-                .filter(e => [ 'pending', 'done' ].includes(e[1].status));
-            tm = new TM(sourceLang, targetLang, path.join(this.monsterDir, tmFileName), this.ctx.logger, this.configSeal, jobs, this.srcGuidMap);
-            this.tmCache[tmFileName] = tm;
-            for (const [jobGuid, jobStat] of jobs) {
-                const jobInTM = tm.getJobStatus(jobGuid);
-                if (!(jobInTM?.status === jobStat.status) || !(jobInTM?.mtime === jobStat.mtime)) {
+            tm = new TM(sourceLang, targetLang, path.join(this.monsterDir, tmFileName), this.ctx.logger, this.configSeal, jobs, this.sourceMgr);
+            this.tmCache.set(tmFileName, tm);
+        }
+        for (const [jobGuid, jobStat] of jobs) {
+            const jobInTM = tm.getJobStatus(jobGuid);
+            // always try to update pending jobs (because mutable) or if status has changed
+            if (jobStat.status === 'pending' || jobInTM?.status !== jobStat.status) {
+                const jobResponse = await this.jobStore.getJob(jobGuid);
+                if (jobResponse.updatedAt !== jobInTM?.updatedAt) {
                     this.ctx.logger.info(`Applying job ${jobGuid} to the ${sourceLang} -> ${targetLang} TM...`);
-                    const jobResponse = await this.jobStore.getJob(jobGuid);
                     const jobRequest = await this.jobStore.getJobRequest(jobGuid);
-                    await tm.processJob(jobResponse, jobRequest, jobStat.mtime);
-                    dirty = true;
+                    tm.processJob(jobResponse, jobRequest);
                 }
             }
-            dirty && (await tm.commit());
         }
         return tm;
+    }
+
+    async shutdown() {
+        for (const tm of this.tmCache.values()) {
+            tm.dirty && (await tm.commit());
+        }
     }
 }

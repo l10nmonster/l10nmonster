@@ -48,6 +48,13 @@ export function flattenNormalizedSourceToOrdinal(nsrc) {
     return nsrc.map(e => (typeof e === 'string' ? e : `{{${e.t}}}`)).join('');
 }
 
+// takes a normalized source and converts it to a flat string using the "v1" algorithm
+// v1 encodes placeholders in a `{{${mangledPh}}}` format where mangledPh has 3
+// components separated by "_":
+//   1. an index from "a" to "zX" (where X is an integer)
+//   2. the placeholder type (bx=beginning tag, ex=end tag, x=value)
+//   3. a human-readable contraction of the original raw placeholder name
+// it returns the flattened string and corresponding map to convert back to normalized array
 export function flattenNormalizedSourceV1(nsrc) {
     const normalizedStr = [],
         phMap = {};
@@ -69,6 +76,10 @@ export function flattenNormalizedSourceV1(nsrc) {
     return [ normalizedStr.join(''), phMap ];
 }
 
+// takes a flat string using the "v1" algorithm (usually a translation) and a ph map
+// and converts it to a normalized string
+// placeholders in the resulting normalized string contain an extra "v1" property that
+// allows to better validate and determine compatibility with textual matches (repetitions)
 export function extractNormalizedPartsV1(str, phMap) {
     const normalizedParts = [];
     let pos = 0;
@@ -78,7 +89,7 @@ export function extractNormalizedPartsV1(str, phMap) {
         }
         normalizedParts.push(phMap[match.groups.ph] && {
             ...phMap[match.groups.ph],
-            v1: match.groups.ph,
+            v1: match.groups.ph, // TODO: why do we need this? shouldn't the phMap already contain v1?
         });
         pos = match.index + match[0].length;
     }
@@ -89,6 +100,7 @@ export function extractNormalizedPartsV1(str, phMap) {
     return normalizedParts;
 }
 
+// analogous to flattenNormalizedSourceV1 but using xml-compatible placeholders
 export function flattenNormalizedSourceToXmlV1(nsrc) {
     const normalizedStr = [],
         phMap = {};
@@ -130,6 +142,8 @@ export function flattenNormalizedSourceToXmlV1(nsrc) {
 }
 
 const cleanXMLEntities = str => str.replaceAll('&lt;', '<').replaceAll('&amp;', '&').replaceAll('&nbsp;', '\xa0')
+
+// analogous to extractNormalizedPartsV1 but using xml-compatible placeholders
 export function extractNormalizedPartsFromXmlV1(str, phMap) {
     const normalizedParts = [];
     let pos = 0;
@@ -157,8 +171,12 @@ export function extractNormalizedPartsFromXmlV1(str, phMap) {
     return normalizedParts;
 }
 
+// for the purpose of compatibility, only the index and the ph type are relevat, so strip the
+// last part of a v1 mangled placeholder
 const minifyV1PH = v1ph => v1ph && v1ph.split('_').slice(0, -1).join('_');
 
+// returns a functions that given a placeholder in a translation it tells if matches a placeholder
+// in the given source using either v1-based compatibility or straight literal match
 export function phMatcherMaker(nsrc) {
     const phMap = flattenNormalizedSourceV1(nsrc)[1];
     const v1PhMap = Object.fromEntries(Object.entries(phMap).map(([k, v]) => [minifyV1PH(k), v]));
@@ -168,6 +186,7 @@ export function phMatcherMaker(nsrc) {
     }
 }
 
+// compares compatibility of placeholders in source and target and returns a boolean
 export function sourceAndTargetAreCompatible(nsrc, ntgt) {
     if (Boolean(nsrc) && Boolean(ntgt)) {
         !Array.isArray(nsrc) && (nsrc = [ nsrc ]);
@@ -189,10 +208,13 @@ export function sourceAndTargetAreCompatible(nsrc, ntgt) {
     return false;
 }
 
+// converts a normalized source to another normalized source but stripping detailed ph information
+// (i.e. stripping the last part of the v1 mangled placeholder format)
 function flattenNormalizedSourceToMiniV1(nsrc) {
     return nsrc.map(e => (typeof e === 'string' ? e : `{{${e.v1 ? minifyV1PH(e.v1) : e.v}}}`)).join('');
 }
 
+// compares normalized strings assuming placeholders are equal if they are compatible
 export function normalizedStringsAreEqual(s1, s2) {
     const f1 = Array.isArray(s1) ? flattenNormalizedSourceToMiniV1(s1) : s1;
     const f2 = Array.isArray(s2) ? flattenNormalizedSourceToMiniV1(s2) : s2;
@@ -241,6 +263,7 @@ function nstrHasV1Missing(nstr) {
     return false;
 }
 
+// takes a tu-like object and creates a new object only with properties listed in the whitelist object
 export function cleanupTU(tu, whitelist) {
     const cleanTU = Object.fromEntries(Object.entries(tu).filter(e => whitelist.has(e[0])));
     // if we have the normalized source, and the target doesn't have v1 placeholders, we can try to build them

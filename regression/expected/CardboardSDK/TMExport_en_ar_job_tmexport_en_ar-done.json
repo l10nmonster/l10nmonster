@@ -1,0 +1,473 @@
+{
+	"sourceLang": "en",
+	"targetLang": "ar",
+	"jobGuid": "tmexport_en_ar",
+	"updatedAt": "2022-05-30T00:00:00.000Z",
+	"status": "done",
+	"tus": [
+		{
+			"sid": "BackButtonLabel",
+			"guid": "Sch-OXL3KPaFNWvKiWNmafNmqHZo8oNtcaB-9jYE1sk",
+			"seq": 1023,
+			"src": "Back",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"q": 70,
+			"tgt": "رجوع",
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "NavTitleLabel",
+			"guid": "S5zXEp9KGe9nqhqgtH8vMM106HfoiBTZzDQ8qyPdB5A",
+			"seq": 1022,
+			"src": "QR Scan",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"q": 70,
+			"tgt": "فحص الاستجابة السريعة.",
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "LoadingMessage",
+			"guid": "PV7WBP4aNfZzq1Hre1_bkECpoSmhPedg7xfh7UKYkyw",
+			"seq": 1024,
+			"src": "Parsing configuration data",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"q": 70,
+			"tgt": "تحليل بيانات التهيئة",
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "InvalidQRCode",
+			"guid": "jkJekuVBcsiufoG2zmxszlbnMGkREPRBAeb2QTDfUaI",
+			"seq": 1025,
+			"src": "The QR code is invalid",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"q": 70,
+			"tgt": "إن رمز الاستجابة السريعة غير صالح",
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "ParsingFailed",
+			"guid": "2n8bq0sVYs9Xil3nEw7OEVuhOSGvpaoInQAZ89RnD7c",
+			"seq": 1026,
+			"src": "Problem in parsing the Url",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"q": 70,
+			"tgt": "‏مشكلة في تحليل عنوان Url",
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "DataSynced",
+			"guid": "XY8o8xA5C_HlR4v8LDc4L98Y0mR-4gHyLjDxwvNhDrM",
+			"seq": 1027,
+			"src": "%1$@ detected",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "%1$@"
+				},
+				" detected"
+			],
+			"q": 70,
+			"ntgt": [
+				"تم اكتشاف ",
+				{
+					"t": "x",
+					"v": "%1$@",
+					"v1": "a_x_1"
+				}
+			],
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "FindSymbolOnViewer",
+			"guid": "MmBuoyCIE3eiz_wlkLAZMeoIhXX52LOiAHNCnl3o4Fc",
+			"seq": 1028,
+			"src": "Find this symbol on your viewer",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"q": 70,
+			"tgt": "العثور على هذا الرمز على عارضك",
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "CanNotFindSymbol",
+			"guid": "QaV08RUEuxPOCugEXCnQ7tnShKARCrrKeZxYO7kxLSc",
+			"seq": 1029,
+			"src": "Can't find this symbol?",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"q": 70,
+			"tgt": "ألا تستطيع العثور على هذا الرمز؟",
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "TroubleShootingTips",
+			"guid": "c6aK6IBRyaNfMidf7na8JYOmhVI2r4vsn3O6B-pr-xc",
+			"seq": 1030,
+			"src": "Troubleshooting Tips",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"q": 70,
+			"tgt": "نصائح تحرّى الخلل وإصلاحه",
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "SkipButtonLabel",
+			"guid": "ZYAxQNY0zLKx4RB3CGTDXujQrbLQclR9EH5EQ7Fzbok",
+			"seq": 1021,
+			"src": "SKIP",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"q": 70,
+			"tgt": "تخطٍ",
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "OnboardingIntroLine1",
+			"guid": "Kj45w0Rgr1SHV55MeVawhgff4UYIfb-XuWWnyf9_dks",
+			"seq": 1031,
+			"src": "Let's get you set up",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"q": 70,
+			"tgt": "لنبدأ الإعداد",
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "OnboardingIntroLine2",
+			"guid": "8_cqAMCRj_4YGH6-e5xWNNAupQF-OHn20AQoeGp75h4",
+			"seq": 1032,
+			"src": "Pair your phone with your viewer for the best experience.",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"q": 70,
+			"tgt": "أقرن هاتفك مع العارض للتمتّع بأفضل تجربة",
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "OnboardingNoViewerPrompt",
+			"guid": "yiK0MVBkcMRpl-7tMMPVMmlUvDJvqVxRbLLDHOchAko",
+			"seq": 1033,
+			"src": "No cardboard viewer?",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"q": 70,
+			"tgt": "‏أليس لديك عارض Cardboard؟",
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "OnboardingGetCardboardButton",
+			"guid": "L3Um-sKnXUAP1liD4dLFvMGh7c2p80P5DRx1ZFPYpqM",
+			"seq": 1020,
+			"src": "Get One",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"q": 70,
+			"tgt": "الحصول على واحد",
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "PlaceYourPhoneInCardboard",
+			"guid": "6nFW5iZToYQ3LtLDeb9Adlfu-EQWDAuFyMsAlRw4cf4",
+			"seq": 1034,
+			"src": "Place your phone into your Cardboard viewer.",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"q": 70,
+			"tgt": "‏ضع هاتفك في عارض Cardboard.",
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "PlaceYourPhoneInViewerFormat",
+			"guid": "4jxuTPXhhsLGShj5wDGlsktW8NV1GAYrGDxHaZV_6C4",
+			"seq": 1035,
+			"src": "Place your phone into your %1$@ viewer.",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"nsrc": [
+				"Place your phone into your ",
+				{
+					"t": "x",
+					"v": "%1$@"
+				},
+				" viewer."
+			],
+			"q": 70,
+			"ntgt": [
+				"ضع هاتفك في عارض ",
+				{
+					"t": "x",
+					"v": "%1$@",
+					"v1": "a_x_1"
+				},
+				"."
+			],
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "SettingsNavTitleLabel",
+			"guid": "6hNFreOOSaLtvtpZeirvd7YWah19RxogxrXPw89jle8",
+			"seq": 1036,
+			"src": "Settings",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"q": 70,
+			"tgt": "الإعدادات",
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "SettingsSyncLabel",
+			"guid": "JdemGm2zCUjeubRLZsgXcHubo03AMla3GDG3EQOcRaA",
+			"seq": 1037,
+			"src": "Sync with Google Cardboard",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"q": 70,
+			"tgt": "‏مزامنة مع Google Cardboard",
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "SettingsCurrentViewerLabelFormat",
+			"guid": "slgigM0NfUFIqYMNDpipEAV2LaSg4PIejxEgH37p4Pw",
+			"seq": 1038,
+			"src": "Current viewer: %1$@",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"nsrc": [
+				"Current viewer: ",
+				{
+					"t": "x",
+					"v": "%1$@"
+				}
+			],
+			"q": 70,
+			"ntgt": [
+				"العارض الحالي: ",
+				{
+					"t": "x",
+					"v": "%1$@",
+					"v1": "a_x_1"
+				}
+			],
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "DefaultViewerName",
+			"guid": "wqrXrCWCECaeOiuDSJiLjeSfPaVlrgpeDFJp8NK39WU",
+			"seq": 1019,
+			"src": "Default",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"q": 70,
+			"tgt": "افتراضي",
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "DifferentViewerQuestion",
+			"guid": "kNNZEkHiye4nzgXH33tGPIpo_dN9p9dtDvtyQLknghg",
+			"seq": 1039,
+			"src": "Using a different viewer?",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"q": 70,
+			"tgt": "هل تستخدم عارضًا مختلفًا؟",
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "SwitchViewer",
+			"guid": "qTP4qKQCnREcyJAH2Kaph3DNOicsXMZGYTlqeVzrb2c",
+			"seq": 1018,
+			"src": "SWITCH",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"q": 70,
+			"tgt": "تبديل",
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "SwitchViewerActivityMenuTitle",
+			"guid": "Ko1R6hKlnw0dJtnGrwHdjhq0igmaxHWUuci1ZrEiYvg",
+			"seq": 1040,
+			"src": "Switch viewer: %1$@",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"nsrc": [
+				"Switch viewer: ",
+				{
+					"t": "x",
+					"v": "%1$@"
+				}
+			],
+			"q": 70,
+			"ntgt": [
+				"تبديل العارض: ",
+				{
+					"t": "x",
+					"v": "%1$@",
+					"v1": "a_x_1"
+				}
+			],
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "HelpActivityMenuTitle",
+			"guid": "_AhOCAPiMyasIto9QG_S4I0SlAYd_aMe7FWWEAduL38",
+			"seq": 1017,
+			"src": "Help",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"q": 70,
+			"tgt": "مساعدة",
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "SuccessfullyPaired",
+			"guid": "CBwqRfe5Ye7rqvX0p6oInX-rrmYU3pvl1Sb7GOjEY2k",
+			"seq": 1041,
+			"src": "Successfully Paired!",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"q": 70,
+			"tgt": "تم الإقران بنجاح!",
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "ViewerConfigured",
+			"guid": "xX2wjf_JnaqCdoe4AvzrpR0w__P7h12WCoMygm6ru8U",
+			"seq": 1042,
+			"src": "Your phone is now configured for your %1$@ viewer.",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"nsrc": [
+				"Your phone is now configured for your ",
+				{
+					"t": "x",
+					"v": "%1$@"
+				},
+				" viewer."
+			],
+			"q": 70,
+			"ntgt": [
+				"تمت تهيئة هاتفك لعارض ",
+				{
+					"t": "x",
+					"v": "%1$@",
+					"v1": "a_x_1"
+				},
+				"."
+			],
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "OK",
+			"guid": "QBJSpbVgw6NtOonlImeo7N4Ys6aMk-tIHP-Jha6jjwk",
+			"seq": 1016,
+			"src": "OK",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"q": 70,
+			"tgt": "موافق",
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "AccessibilitySettingsButton",
+			"guid": "ngT5pq_BhXgX71IJFDYZQRJX80bl9J1XPD2oBb-VEAE",
+			"seq": 1043,
+			"src": "Settings",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"q": 70,
+			"tgt": "الإعدادات",
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "AccessibilityBackButton",
+			"guid": "Ln6QELVxYXr2EgOv6P2-EYewhB5H6jLOJ1W5jilT_nc",
+			"seq": 1044,
+			"src": "Back\\U0020to previous screen",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"nsrc": [
+				"Back to previous screen"
+			],
+			"q": 70,
+			"tgt": "رجوع إلى الشاشة السابقة",
+			"jobGuid": "xxx0xxx"
+		},
+		{
+			"sid": "AccessibilityHelpButton",
+			"guid": "d13hqt62wEq5drSC-g7auJUOAlQL-N3VrEyi1mCjMH0",
+			"seq": 1015,
+			"src": "Help",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"q": 61,
+			"tgt": "مساعدة",
+			"jobGuid": "xxx1xxx"
+		},
+		{
+			"sid": "AccessibilityCardboardButton",
+			"guid": "p72nj2yZPB-RfJOZa2iZg2pt16HznCGr_kdYQziGHxs",
+			"seq": 1045,
+			"src": "Cardboard mode: %1$@",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"nsrc": [
+				"Cardboard mode: ",
+				{
+					"t": "x",
+					"v": "%1$@"
+				}
+			],
+			"ntgt": [
+				"⇥XAB:",
+				"C̲a̲r̲d̲b̲̟o̲a̲r̲d̲ ̲̟m̲o̲d̲e̲:̲̟ ̲",
+				{
+					"t": "x",
+					"v": "%1$@",
+					"v1": "a_x_1"
+				},
+				"⇤"
+			],
+			"q": 2,
+			"jobGuid": "xxx2xxx"
+		},
+		{
+			"sid": "AccessibilityFullscreenButton",
+			"guid": "snWaUNjXnKuXlItO8jUPfKITKfuqshl6xCXxUgiP4jI",
+			"seq": 1046,
+			"src": "Fullscreen mode",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"tgt": "⇥YAB:F̲u̲l̲l̲s̲̟c̲r̲e̲e̲n̲̟ ̲m̲o̲d̲e̲̟⇤",
+			"q": 2,
+			"jobGuid": "xxx2xxx"
+		},
+		{
+			"sid": "HelpHack",
+			"guid": "kjYD6n4DIB9kQKYRd0QStGsZfU2yOhcUG091zj53Skw",
+			"seq": 1047,
+			"src": "Help 'encoding\\' is\\U00a0\"hard\"!\\\\\n",
+			"rid": "en.lproj/CardboardSDK.strings",
+			"ts": 1,
+			"nsrc": [
+				"Help 'encoding' is \"hard\"!\\\n"
+			],
+			"ntgt": [
+				"⇥ZAB:",
+				"H̲e̲l̲p̲ ̲̟'̲e̲n̲c̲o̲̟d̲i̲n̲g̲'̲̟ ̲i̲s̲ ̲\"̲̟h̲a̲r̲d̲\"̲̟!̲\\̲\n̲",
+				"⇤"
+			],
+			"q": 2,
+			"jobGuid": "xxx2xxx"
+		}
+	],
+	"translationProvider": "TMExport"
+}

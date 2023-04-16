@@ -68,7 +68,7 @@ export async function createMonsterManager(configPath, options, cb) {
                 format: winston.format.combine(
                     winston.format.ms(),
                     winston.format.timestamp(),
-                    winston.format.printf(({ level, message, timestamp, ms }) => `${consoleColor.yellow}${timestamp.substr(11, 12)} (${ms}) [${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB] ${level}: ${typeof message === 'string' ? message : util.inspect(message)}${consoleColor.reset}`)
+                    winston.format.printf(({ level, message, timestamp, ms }) => `${consoleColor.green}${timestamp.substr(11, 12)} (${ms}) [${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB] ${level}: ${typeof message === 'string' ? message : util.inspect(message)}${consoleColor.reset}`)
                 ),
             }),
         ],

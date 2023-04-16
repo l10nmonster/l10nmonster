@@ -71,12 +71,12 @@ export default class SourceManager {
         if (this.sourceCacheStale) {
             const newCache = { configSeal: this.configSeal, sources: {} };
             const stats = await this.#fetchResourceStats();
-            let dirty = stats.length !== Object.keys(this.sourceCache.sources).length;
+            this.dirty = stats.length !== Object.keys(this.sourceCache.sources).length;
             for (const res of stats) {
                 if (this.sourceCache.sources[res.id]?.modified === res.modified) {
                     newCache.sources[res.id] = this.sourceCache.sources[res.id];
                 } else {
-                    dirty = true;
+                    this.dirty = true;
                     const pipeline = this.contentTypes[res.contentType];
                     const payload = await pipeline.source.fetchResource(res.id);
                     let parsedRes = pipeline.resourceFilter ?
@@ -111,12 +111,7 @@ export default class SourceManager {
                     newCache.sources[res.id] = res;
                 }
             }
-            if (dirty) {
-                this.logger.info(`Updating ${this.sourceCachePath}...`);
-                writeFileSync(this.sourceCachePath, JSON.stringify(newCache, null, '\t'), 'utf8');
-                this.seqMapPath && writeFileSync(this.seqMapPath, JSON.stringify(this.seqMap, null, '\t'), 'utf8');
-                this.sourceCache = newCache;
-            }
+            this.dirty && (this.sourceCache = newCache);
             this.sourceCacheStale = false;
         }
     }
@@ -127,11 +122,14 @@ export default class SourceManager {
             .filter(e => (this.prj === undefined || this.prj.includes(e[1].prj)));
     }
 
-    async getGuidMap() {
-        await this.#updateSourceCache();
-        const guidMap = {};
-        Object.values(this.sourceCache.sources).forEach(res => res.segments.forEach(seg => guidMap[seg.guid] = seg));
-        return guidMap;
+    // this assumes that source cache never gets updated more than once
+    async getSourceByGuid(guid) {
+        if (!this.guidMap) {
+            this.guidMap = new Map();
+            await this.#updateSourceCache();
+            Object.values(this.sourceCache.sources).forEach(res => res.segments.forEach(seg => this.guidMap.set(seg.guid, seg)));
+        }
+        return this.guidMap.get(guid);
     }
 
     async getTargetLangs(limitToLang) {
@@ -152,5 +150,13 @@ export default class SourceManager {
             return langsToLimit;
         }
         return langs;
+    }
+
+    async shutdown() {
+        if (this.dirty) {
+            this.logger.info(`Updating ${this.sourceCachePath}...`);
+            writeFileSync(this.sourceCachePath, JSON.stringify(this.sourceCache, null, '\t'), 'utf8');
+            this.seqMapPath && writeFileSync(this.seqMapPath, JSON.stringify(this.seqMap, null, '\t'), 'utf8');
+        }
     }
 }

@@ -18,7 +18,7 @@ export class PigLatinizer {
             if (tu.nsrc) {
                 translation.ntgt = [
                     '[',
-                    ...tu.nsrc.map(n => (typeof n === 'string' ? pigLatin.translate(n) : n)),
+                    ...tu.nsrc.map(n => (typeof n === 'string' ? pigLatin.translate(n) : { ...n })),
                     `-${jobRequest.targetLang}]`
                 ];
             } else {

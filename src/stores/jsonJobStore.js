@@ -47,7 +47,7 @@ export class JsonJobStore {
             const entry = file.match(jobFilenameRegex)?.groups;
             if (entry) {
                 if (!statusMap[entry.guid] || statusPriority[entry.status] < statusPriority[statusMap[entry.guid].status]) {
-                    statusMap[entry.guid] = { mtime: statSync(file).mtime.toISOString(), status: entry.status };
+                    statusMap[entry.guid] = { status: entry.status };
                 }
             }
         }
@@ -69,8 +69,7 @@ export class JsonJobStore {
         if (existsSync(jobPath)) {
             throw `can't overwrite immutable job ${jobPath}`;
         } else {
-            const updatedAt = (this.ctx.regression ? new Date('2022-05-29T00:00:00.000Z') : new Date()).toISOString();
-            writeFileSync(jobPath, JSON.stringify({ ...job, updatedAt }, null, '\t'), 'utf8');
+            writeFileSync(jobPath, JSON.stringify(job, null, '\t'), 'utf8');
         }
     }
 
@@ -78,7 +77,12 @@ export class JsonJobStore {
         const pending = this.#findGlob(`*job_${jobGuid}-pending.json`)[0];
         const done = this.#findGlob(`*job_${jobGuid}-done.json`)[0];
         const job = done ?? pending;
-        return job ? JSON.parse(readFileSync(job, 'utf8')) : null;
+        if (job) {
+            const jobFile = readFileSync(job, 'utf8');
+            const parsedJob = JSON.parse(jobFile);
+            return parsedJob;
+        }
+        return null;
     }
 
     async getJobRequest(jobGuid) {

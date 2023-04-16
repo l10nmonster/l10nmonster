@@ -307,16 +307,20 @@ __.-'            \\  \\   .   / \\_.  \\ -|_/\\/ \`--.|_
 
 export async function runL10nMonster(relativePath, globalOptions, cb) {
     const configPath = path.resolve('.', relativePath);
-    return createMonsterManager(configPath, globalOptions, async mm => cb({
-        status: opts => status(mm, { ...globalOptions, ...opts}),
-        jobs: opts => jobs(mm, { ...globalOptions, ...opts}),
-        analyze: opts => analyze(mm, { ...globalOptions, ...opts}),
-        push: opts => push(mm, { ...globalOptions, ...opts}),
-        job: opts => job(mm, { ...globalOptions, ...opts}),
-        pull: opts => pull(mm, { ...globalOptions, ...opts}),
-        snap: opts => snap(mm, { ...globalOptions, ...opts}),
-        translate: opts => translate(mm, { ...globalOptions, ...opts}),
-        tmexport: opts => tmexport(mm, { ...globalOptions, ...opts}),
-        monster: opts => monster(mm, { ...globalOptions, ...opts}),
-    }));
+
+    await createMonsterManager(configPath, globalOptions, async mm => {
+        await cb({
+            status: opts => status(mm, { ...globalOptions, ...opts}),
+            jobs: opts => jobs(mm, { ...globalOptions, ...opts}),
+            analyze: opts => analyze(mm, { ...globalOptions, ...opts}),
+            push: opts => push(mm, { ...globalOptions, ...opts}),
+            job: opts => job(mm, { ...globalOptions, ...opts}),
+            pull: opts => pull(mm, { ...globalOptions, ...opts}),
+            snap: opts => snap(mm, { ...globalOptions, ...opts}),
+            translate: opts => translate(mm, { ...globalOptions, ...opts}),
+            tmexport: opts => tmexport(mm, { ...globalOptions, ...opts}),
+            monster: opts => monster(mm, { ...globalOptions, ...opts}),
+        });
+        mm && (await mm.shutdown());
+    });
 }

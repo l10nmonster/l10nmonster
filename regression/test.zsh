@@ -6,17 +6,18 @@ setopt MONITOR
 regressTestFromCLI() {
     echo "\nTesting $1..."
     cd $1
-    ../../../l10n.js --regression push --provider grandfather,repetition,default
-    ../../../l10n.js --regression pull
-    ../../../l10n.js --regression translate
-    ../../../l10n.js --regression status --output status.json
+    time ../../../l10n.js --regression push --provider grandfather,repetition,default
+    time ../../../l10n.js --regression pull
+    time ../../../l10n.js --regression translate
+    time ../../../l10n.js --regression status --output status.json
+    time ../../../l10n.js --regression tmexport tm job
     cd ..
 }
 
 regressTestFromScript() {
     echo "\nTesting $1..."
     cd $1
-    node ../../regressionScript.js
+    time node ../../regressionScript.js
     cd ..
 }
 
@@ -28,9 +29,9 @@ cd wd
 for dir in *
 do
     if [ "$#" -ne 1 ]; then
-        regressTestFromScript $dir &
+        regressTestFromScript $dir
     else
-        regressTestFromCLI $dir &
+        regressTestFromCLI $dir
     fi
 done
 cd ..

@@ -44,7 +44,7 @@ export class Visicode {
                         parts.push(underlineString(part, runningLength));
                         runningLength += part.length;
                     } else {
-                        parts.push(part);
+                        parts.push({ ...part});
                     }
                 }
                 translation.ntgt = [

@@ -5,4 +5,5 @@ await runL10nMonster('l10nmonster.mjs', { regression: true }, async l10n => {
     await l10n.pull();
     await l10n.translate();
     await l10n.status({ output: 'status.json' });
+    await l10n.tmexport({ mode: 'tm', format: 'job' });
 });
