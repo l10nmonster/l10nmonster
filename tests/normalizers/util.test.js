@@ -138,7 +138,7 @@ const tuWithPhMap =       {
       }
     },
     "phNotes": {
-      "foo": "\n ph:\n  ①  a_x_0 → {0}   (Departure date : 12 May, 2023)\n  ②  b_x_1 → {1}   (Return date : 23 May, 2023)\n  ③  c_x_2 → {2}   (Number of travellers : 2)\n current translation: Ida y vuelta, {{a_x_0}} - {{b_x_1}} • {{c_x_2}}"
+      "foo": "\n ph:\n  ①  a_x_0 → {0} → 12 May, 2023   (Departure date)\n  ②  b_x_1 → {1} → 23 May, 2023   (Return date)\n  ③  c_x_2 → {2} → 2   (Number of travellers)\n current translation: Ida y vuelta, {{a_x_0}} - {{b_x_1}} • {{c_x_2}}"
     }
   };
 
