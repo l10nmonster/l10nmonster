@@ -18,8 +18,8 @@ describe('html filter tests', () => {
             .toMatchObject({
                     segments: [
                       {
-                        sid: 'P9vq1R3XnX7Fy2UZ-nadhNNa5PiFG4DIxs5QvyT2wKA',
-                        str: '<h1>Winter is 🎉</h1> <div> <div class="body-paragraph">coming</div> </div> <a href="#" id="redeemButton" class="button white w-button">Redeem Gift</a>'
+                        sid: 'EWFCVWRUZoI4ECU1nE2PdXEq_RSvrn_YW5HGjrLwP4Q',
+                        str: '<h1>Winter is 🎉</h1>  <div> <div class="body-paragraph">coming</div> </div> <a href="#" id="redeemButton" class="button white w-button">Redeem Gift</a>'
                       }
                     ]
             });
@@ -30,7 +30,7 @@ describe('html filter tests', () => {
                     {"t": "bx", "v": "<h1>"},
                     "Winter is 🎉",
                     {"t": "ex", "v": "</h1>"},
-                    " ",
+                    "  ",
                     {"t": "bx", "v": "<div>"},
                     " ",
                     {"t": "bx", "v": "<div class=\"body-paragraph\">"},
@@ -48,7 +48,7 @@ describe('html filter tests', () => {
     test('translateResource returns string', async () => {
         const resource = readFileSync(resourceId, 'utf8');
         const translatedRes = await resourceFilter.translateResource({ resource, translator });
-        expect(translatedRes).toBe("<!DOCTYPE html><!-- Last Published: Tue Oct 04 2022 16:40:09 GMT+0000 (Coordinated Universal Time) --><html><head></head>\n    <body class=\"bodyvoucher\">\n        <div class=\"container-2\">***<h1>Winter is 🎉</h1> <div> <div class=\"body-paragraph\">coming</div> </div> <a href=\"#\" id=\"redeemButton\" class=\"button white w-button\">Redeem Gift</a>***</div>\n    \n\n</body></html>");
+        expect(translatedRes).toBe("<!DOCTYPE html><!-- Last Published: Tue Oct 04 2022 16:40:09 GMT+0000 (Coordinated Universal Time) --><html><head></head>\n    <body class=\"bodyvoucher\">\n        <div class=\"container-2\">***<h1>Winter is 🎉</h1>  <div> <div class=\"body-paragraph\">coming</div> </div> <a href=\"#\" id=\"redeemButton\" class=\"button white w-button\">Redeem Gift</a>***</div>\n    \n\n</body></html>");
     });
 });
 
