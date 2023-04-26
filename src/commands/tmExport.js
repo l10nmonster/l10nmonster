@@ -1,7 +1,7 @@
 import * as fs from 'fs/promises';
 import {js2tmx} from '@l10nmonster/tmexchange';
-import { flattenNormalizedSourceV1, cleanupTU } from './normalizers/util.js';
-import { sourceTUWhitelist, targetTUWhitelist } from './schemas.js';
+import { flattenNormalizedSourceV1, cleanupTU } from '../normalizers/util.js';
+import { sourceTUWhitelist, targetTUWhitelist } from '../schemas.js';
 
 async function exportTMX(ctx, content, emitMissingTranslations) {
     const getMangledSrc = tu => (tu.nsrc ? flattenNormalizedSourceV1(tu.nsrc)[0] : tu.src);

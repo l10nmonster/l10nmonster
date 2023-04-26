@@ -1,4 +1,4 @@
-import { fixCaseInsensitiveKey } from './shared.js';
+import { fixCaseInsensitiveKey } from '../shared.js';
 
 // eslint-disable-next-line complexity
 export async function pushCmd(mm, { limitToLang, tuFilter, driver, refresh, translationProviderName, leverage, dryRun, instructions }) {

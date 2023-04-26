@@ -3,15 +3,15 @@ import {
     writeFileSync,
   } from 'fs';
 import * as path from 'path';
-import { analyzeCmd } from './analyzeCmd.js';
-import { pullCmd } from './pullCmd.js';
-import { snapCmd } from './snapCmd.js';
-import { pushCmd } from './pushCmd.js';
+import { analyzeCmd } from './commands/analyze.js';
+import { pullCmd } from './commands/pull.js';
+import { snapCmd } from './commands/snap.js';
+import { pushCmd } from './commands/push.js';
 import { jobPushCmd } from './jobCmd.js';
-import { statusCmd } from './statusCmd.js';
-import { jobsCmd } from './jobsCmd.js';
-import { tmExportCmd } from './tmExportCmd.js';
-import { translateCmd } from './translateCmd.js';
+import { statusCmd } from './commands/status.js';
+import { jobsCmd } from './commands/jobs.js';
+import { tmExportCmd } from './commands/tmExport.js';
+import { translateCmd } from './commands/translate.js';
 import { createMonsterManager } from './defaultMonster.js';
 
 import {

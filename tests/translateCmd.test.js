@@ -1,4 +1,4 @@
-import { translateWithEntry } from '../src/translateCmd.js';
+import { translateWithEntry } from '../src/commands/translate.js';
 
 const dummyEncodeString = (p) => (typeof p === 'object' ? p.v : p);
 

@@ -1,6 +1,6 @@
 import { diffJson } from 'diff';
-import { getNormalizedString, flattenNormalizedSourceToOrdinal, sourceAndTargetAreCompatible, phMatcherMaker, partEncoderMaker } from './normalizers/util.js';
-import { consoleColor, generateFullyQualifiedGuid } from './shared.js';
+import { getNormalizedString, flattenNormalizedSourceToOrdinal, sourceAndTargetAreCompatible, phMatcherMaker, partEncoderMaker } from '../normalizers/util.js';
+import { consoleColor, generateFullyQualifiedGuid } from '../shared.js';
 
 export function translateWithEntry(src, nsrc, entry, flags, encodePart) {
     if (entry && !entry.inflight) {

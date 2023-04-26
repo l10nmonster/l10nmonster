@@ -1,4 +1,4 @@
-import { makeTU, fixCaseInsensitiveKey } from './shared.js';
+import { makeTU, fixCaseInsensitiveKey } from '../shared.js';
 
 export async function analyzeCmd(mm, Analyzer, params, limitToLang, tuFilter) {
     let tuFilterFunction;
