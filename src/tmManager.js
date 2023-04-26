@@ -54,6 +54,7 @@ class TM {
             throw `cannot set TM entry missing mandatory field: ${JSON.stringify(entry)}`;
         }
         const cleanedTU = cleanupTU(entry, targetTUWhitelist);
+        Object.freeze(cleanedTU);
         this.tm.tus[guid] = cleanedTU;
         const flattenSrc = cleanedTU.nsrc ? flattenNormalizedSourceToOrdinal(cleanedTU.nsrc) : cleanedTU.src;
         this.lookUpByFlattenSrc[flattenSrc] ??= [];

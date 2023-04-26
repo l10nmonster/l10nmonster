@@ -107,7 +107,9 @@ export default class SourceManager {
                                 }
                             }
                         }
+                        Object.freeze(seg);
                     }
+                    Object.freeze(res);
                     newCache.sources[res.id] = res;
                 }
             }
