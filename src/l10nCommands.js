@@ -293,10 +293,10 @@ __.-'            \\  \\   .   / \\_.  \\ -|_/\\/ \`--.|_
                \\uU \\UU/     |  /   :F_P:
 `);
     console.time('initialization time');
-    const sources = await monsterManager.source.getEntries();
-    const numSegments = sources.reduce((p, c) => p + c[1].segments.length, 0);
+    const resources = await monsterManager.source.getResources();
+    const numSegments = resources.reduce((p, c) => p + c.segments.length, 0);
     const targetLangs = await monsterManager.source.getTargetLangs();
-    console.log(`${numSegments} segments in ${sources.length} resources needing ${targetLangs.length} languages`);
+    console.log(`${numSegments} segments in ${resources.length} resources needing ${targetLangs.length} languages`);
     const availableLangPairs = (await monsterManager.jobStore.getAvailableLangPairs()).sort();
     for (const [sourceLang, targetLang] of availableLangPairs) {
         const tm = await monsterManager.tmm.getTM(sourceLang, targetLang);

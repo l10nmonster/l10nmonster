@@ -116,10 +116,10 @@ export default class SourceManager {
         }
     }
 
-    async getEntries() {
+    async getResources() {
         await this.#updateSourceCache();
-        return Object.entries(this.sourceCache.sources)
-            .filter(e => (this.prj === undefined || this.prj.includes(e[1].prj)));
+        return Object.values(this.sourceCache.sources)
+            .filter(e => (this.prj === undefined || this.prj.includes(e.prj)));
     }
 
     // this assumes that source cache never gets updated more than once
@@ -135,7 +135,7 @@ export default class SourceManager {
     async getTargetLangs(limitToLang) {
         let langs = [];
         // eslint-disable-next-line no-unused-vars
-        const resourceStats = (await this.getEntries()).map(([rid, res]) => res);
+        const resourceStats = await this.getResources();
         for (const res of resourceStats) {
             for (const targetLang of res.targetLangs) {
                 !langs.includes(targetLang) && langs.push(targetLang);

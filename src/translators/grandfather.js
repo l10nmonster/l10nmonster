@@ -18,7 +18,7 @@ export class Grandfather {
         const { tus, ...jobResponse } = jobRequest;
         jobResponse.tus = [];
         const txCache = {};
-        const sourceCache = Object.fromEntries(await this.ctx.mm.source.getEntries());
+        const sourceCache = Object.fromEntries((await this.ctx.mm.source.getResources()).map(r => [r.id, r]));
         for (const tu of tus) {
             if (!txCache[tu.rid]) {
                 const resMeta = sourceCache[tu.rid];

@@ -36,8 +36,7 @@ export function translateWithEntry(src, nsrc, entry, flags, encodePart) {
 
 export async function translateCmd(mm, { limitToLang, dryRun }) {
     const status = { generatedResources: {}, deleteResources: {}, diff: {} };
-    // eslint-disable-next-line no-unused-vars
-    const resourceStats = (await mm.source.getEntries()).map(([rid, res]) => res);
+    const resourceStats = await mm.source.getResources();
     const targetLangs = await mm.source.getTargetLangs(limitToLang);
     for (const targetLang of targetLangs) {
         const sourceLang = mm.sourceLang;

@@ -66,15 +66,20 @@ export default class MonsterManager {
         }
     }
 
+    // return segments in a resource decorated for the target languge
+    #getDecoratedSegments(res, targetLang) {
+        const pipeline = this.contentTypes[res.contentType];
+        return pipeline.segmentDecorator ? pipeline.segmentDecorator(res.segments, targetLang) : res.segments;
+    }
+
     // get source, decorate it for the target languge, and convert it to tu format
     async getSourceAsTus(targetLang) {
         const sourceLookup = {};
-        const source = await this.source.getEntries();
+        const resources = await this.source.getResources();
         // eslint-disable-next-line no-unused-vars
-        for (const [ rid, res ] of source) {
-            const pipeline = this.contentTypes[res.contentType];
-            const filteredSegments = pipeline.segmentDecorator ? pipeline.segmentDecorator(res.segments, targetLang) : res.segments;
-            for (const seg of filteredSegments) {
+        for (const res of resources) {
+            const decoratedSegments = this.#getDecoratedSegments(res, targetLang);
+            for (const seg of decoratedSegments) {
                 sourceLookup[seg.guid] = makeTU(res, seg);
             }
         }
@@ -119,7 +124,7 @@ export default class MonsterManager {
 
     // eslint-disable-next-line complexity
     async #internalPrepareTranslationJob({ targetLang, minimumQuality, leverage }) {
-        const sources = await this.source.getEntries();
+        const resources = await this.source.getResources();
         const job = {
             sourceLang: this.sourceLang,
             targetLang,
@@ -129,9 +134,7 @@ export default class MonsterManager {
         const tm = await this.tmm.getTM(this.sourceLang, targetLang); // TODO: source language may vary by resource or unit, if supported
         const prjLeverage = {};
         const repetitionMap = {};
-        // eslint-disable-next-line no-unused-vars
-        for (const [rid, res] of sources) {
-            const pipeline = this.contentTypes[res.contentType];
+        for (const res of resources) {
             const prj = res.prj || 'default';
             prjLeverage[prj] ??= {
                 translated: 0,
@@ -147,8 +150,8 @@ export default class MonsterManager {
             };
             const leverageDetails = prjLeverage[prj];
             if (res.targetLangs.includes(targetLang) && targetLang !== this.sourceLang) {
-                const filteredSegments = pipeline.segmentDecorator ? pipeline.segmentDecorator(res.segments, targetLang) : res.segments;
-                for (const seg of filteredSegments) {
+                const decoratedSegments = this.#getDecoratedSegments(res, targetLang);
+                for (const seg of decoratedSegments) {
                     // TODO: if segment is pluralized we need to generate/suppress the relevant number of variants for the targetLang
                     const tmEntry = tm.getEntryByGuid(seg.guid);
                     const tu = makeTU(res, seg);

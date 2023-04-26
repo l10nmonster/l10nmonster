@@ -1,6 +1,6 @@
 export async function statusCmd(mm, { limitToLang }) {
     const status = {
-        numSources: (await mm.source.getEntries()).length,
+        numSources: (await mm.source.getResources()).length,
         lang: {},
     };
     const targetLangs = await mm.source.getTargetLangs(limitToLang);

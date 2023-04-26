@@ -1,8 +1,8 @@
 export async function snapCmd(mm) {
     if (mm.snapStore) {
-        const snapshot = (await mm.source.getEntries()).map(e => {
+        const snapshot = (await mm.source.getResources()).map(e => {
             // eslint-disable-next-line no-unused-vars
-            const { modified, contentType, ...cleanSource } = e[1];
+            const { modified, contentType, ...cleanSource } = e;
             return cleanSource;
         });
         await mm.snapStore.commitSnapshot(snapshot);

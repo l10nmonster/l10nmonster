@@ -11,10 +11,10 @@ export async function analyzeCmd(mm, Analyzer, params, limitToLang, tuFilter) {
     }
     if (typeof Analyzer.prototype.processSegment === 'function') { // this analyzer needs a source driver
         const analyzer = new Analyzer(...params);
-        const sources = await mm.source.getEntries();
-        for (const [rid, res] of sources) {
+        const resources = await mm.source.getResources();
+        for (const res of resources) {
             for (const seg of res.segments) {
-                (!tuFilterFunction || tuFilterFunction(makeTU(res, seg))) && analyzer.processSegment({ rid, prj: res.prj, seg });
+                (!tuFilterFunction || tuFilterFunction(makeTU(res, seg))) && analyzer.processSegment({ rid: res.id, prj: res.prj, seg });
             }
         }
         return analyzer.getAnalysis();
