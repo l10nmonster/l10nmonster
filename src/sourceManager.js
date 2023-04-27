@@ -79,9 +79,7 @@ export default class SourceManager {
                     this.dirty = true;
                     const pipeline = this.contentTypes[res.contentType];
                     const payload = await pipeline.source.fetchResource(res.id);
-                    let parsedRes = pipeline.resourceFilter ?
-                        (await pipeline.resourceFilter.parseResource({resource: payload, isSource: true})) :
-                        JSON.parse(payload);
+                    let parsedRes = await pipeline.resourceFilter.parseResource({resource: payload, isSource: true});
                     res.segments = parsedRes.segments;
                     parsedRes.targetLangs && (res.targetLangs = parsedRes.targetLangs);
                     for (const seg of res.segments) {

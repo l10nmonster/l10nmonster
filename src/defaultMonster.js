@@ -23,6 +23,7 @@ import { JavaPropertiesFilter } from './filters/java.js';
 import { IosStringsFilter } from './filters/ios.js';
 import { JsonFilter } from './filters/json.js';
 import { HTMLFilter } from './filters/html.js';
+import { SnapFilter } from './filters/snap.js';
 
 import { Repetition } from './translators/repetition.js';
 import { Grandfather } from './translators/grandfather.js';
@@ -91,7 +92,7 @@ export async function createMonsterManager(configPath, options, cb) {
             FsSource, FsTarget, HttpSource,
         },
         filters: {
-            PoFilter, AndroidFilter, JavaPropertiesFilter, IosStringsFilter, JsonFilter, HTMLFilter
+            PoFilter, AndroidFilter, JavaPropertiesFilter, IosStringsFilter, JsonFilter, HTMLFilter, SnapFilter
         },
         normalizers: {
             ...regexNormalizers,

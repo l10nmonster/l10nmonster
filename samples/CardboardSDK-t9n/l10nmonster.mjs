@@ -2,11 +2,12 @@ export default class CardboardConfigTranslationOnly {
     sourceLang = 'en';
     minimumQuality = 50;
 
-    constructor({ ctx, stores, adapters, translators }) {
+    constructor({ ctx, stores, adapters, filters, translators }) {
         this.source = new adapters.FsSource({
             globs: [ '../CardboardSDK/snap/*.json' ],
             targetLangs: [ 'ar', 'it', 'ja' ],
         });
+        this.resourceFilter = new filters.SnapFilter();
         const defaultTOSConfig = {
             baseURL: 'https://api-sandbox.translated.com/v2',
             apiKey: ctx.env.translated_api_key_sandbox,
@@ -49,6 +50,9 @@ export default class CardboardConfigTranslationOnly {
                 }),
             },
         };
+        this.target = new adapters.FsTarget({
+            targetPath: (lang, resourceId) => resourceId.replace('../CardboardSDK/snap/en.lproj', `translatedSnaps/${lang}`),
+        });
         this.tuFilters = {
             initial: tu => tu.sid.indexOf(ctx.arg) === 0,
         };
