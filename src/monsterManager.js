@@ -63,6 +63,14 @@ export default class MonsterManager {
                 ...defaultAnalyzers,
                 ...(monsterConfig.analyzers ?? {}),
             };
+            this.capabilitiesByType = Object.fromEntries(Object.entries(this.contentTypes).map(([type, pipeline]) => [ type, {
+                snap: Boolean(pipeline.source && pipeline.resourceFilter && this.snapStore),
+                status: Boolean(pipeline.source && pipeline.resourceFilter),
+                push: Boolean(pipeline.source && pipeline.resourceFilter && Object.keys(this.translationProviders).length > 0),
+                pull: Boolean(Object.keys(this.translationProviders).length > 0),
+                translate: Boolean(pipeline.source && pipeline.resourceFilter && pipeline.target),
+            }]));
+            this.capabilities = Object.values(this.capabilitiesByType).reduce((p, c) => Object.fromEntries(Object.entries(c).map(([k, v]) => [ k, (p[k] === undefined ? true : p[k]) && v ])), {});
         }
     }
 

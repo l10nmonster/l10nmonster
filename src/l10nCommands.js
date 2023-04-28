@@ -7,7 +7,7 @@ import { analyzeCmd } from './commands/analyze.js';
 import { pullCmd } from './commands/pull.js';
 import { snapCmd } from './commands/snap.js';
 import { pushCmd } from './commands/push.js';
-import { jobPushCmd } from './jobCmd.js';
+import { jobPushCmd } from './commands/job.js';
 import { statusCmd } from './commands/status.js';
 import { jobsCmd } from './commands/jobs.js';
 import { tmExportCmd } from './commands/tmExport.js';
@@ -303,6 +303,12 @@ __.-'            \\  \\   .   / \\_.  \\ -|_/\\/ \`--.|_
         console.log(`${sourceLang} -> ${targetLang} TM has ${tm.guids.length} entries`);
     }
     console.timeEnd('initialization time');
+    console.log('Overall capabilities:');
+    console.dir(monsterManager.capabilities);
+    if (Object.keys(monsterManager.capabilitiesByType).length > 1) {
+        console.log('Capabilities by content type:');
+        console.dir(monsterManager.capabilitiesByType);
+    }
 }
 
 export async function runL10nMonster(relativePath, globalOptions, cb) {
