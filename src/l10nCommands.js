@@ -303,11 +303,10 @@ __.-'            \\  \\   .   / \\_.  \\ -|_/\\/ \`--.|_
         console.log(`${sourceLang} -> ${targetLang} TM has ${tm.guids.length} entries`);
     }
     console.timeEnd('initialization time');
-    console.log('Overall capabilities:');
-    console.dir(monsterManager.capabilities);
+    const printCapabilities = cap => `${Object.entries(cap).map(([cmd, available]) => `${available ? consoleColor.green : consoleColor.red}${cmd}`).join(' ')}${consoleColor.reset}`;
+    console.log(`Overall capabilities: ${printCapabilities(monsterManager.capabilities)}`);
     if (Object.keys(monsterManager.capabilitiesByType).length > 1) {
-        console.log('Capabilities by content type:');
-        console.dir(monsterManager.capabilitiesByType);
+        Object.entries(monsterManager.capabilitiesByType).forEach(([type, cap]) => console.log(`  - ${type}: ${printCapabilities(cap)}`));
     }
 }
 
