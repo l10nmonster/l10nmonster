@@ -79,7 +79,7 @@ class TM {
         this.dirty = true;
         const requestedUnits = {};
         jobRequest?.tus && jobRequest.tus.forEach(tu => requestedUnits[tu.guid] = tu);
-        const { jobGuid, status, inflight, tus, updatedAt } = jobResponse;
+        const { jobGuid, status, inflight, tus, updatedAt, translationProvider } = jobResponse;
         if (inflight) {
             for (const guid of inflight) {
                 const reqEntry = requestedUnits[guid] ?? {};
@@ -94,7 +94,7 @@ class TM {
                 const tmEntry = this.getEntryByGuid(tu.guid);
                 const reqEntry = requestedUnits[tu.guid] ?? {};
                 const srcEntry = Object.fromEntries(Object.entries(this.sourceMgr.getSourceByGuid(tu.guid) ?? {}).filter(p => refreshedFromSource.has(p[0])));
-                const rectifiedTU = { ...reqEntry, ...tu, jobGuid, ...srcEntry };
+                const rectifiedTU = { ...reqEntry, ...tu, jobGuid, translationProvider, ...srcEntry };
                 if (!tmEntry || tmEntry.q < tu.q || (tmEntry.q === tu.q && tmEntry.ts < rectifiedTU.ts)) {
                     this.setEntryByGuid(tu.guid, rectifiedTU);
                 }

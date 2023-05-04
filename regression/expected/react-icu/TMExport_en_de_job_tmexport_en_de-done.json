@@ -14,7 +14,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Willkommen zu react und react-i18next",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "description.part1",
@@ -52,7 +53,8 @@
 				},
 				" speicheren und neuladen."
 			],
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "description.part2",
@@ -63,7 +65,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Ändere die Sprachen zwischen deutsch und englisch mit Hilfe der beiden Schalter.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.name1",
@@ -90,7 +93,8 @@
 				},
 				"!"
 			],
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.name2",
@@ -135,7 +139,8 @@
 				},
 				"!"
 			],
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "homeTitle",
@@ -184,7 +189,8 @@
 				"⇤"
 			],
 			"q": 2,
-			"jobGuid": "xxx2xxx"
+			"jobGuid": "xxx2xxx",
+			"translationProvider": "Visicode"
 		},
 		{
 			"sid": "flightHome.title",
@@ -222,7 +228,8 @@
 				"⇤"
 			],
 			"q": 2,
-			"jobGuid": "xxx2xxx"
+			"jobGuid": "xxx2xxx",
+			"translationProvider": "Visicode"
 		},
 		{
 			"sid": "flightHome.subtitle",
@@ -233,7 +240,8 @@
 			"ts": 1,
 			"tgt": "⇥79:B̲o̲o̲k̲ ̲̟t̲h̲e̲ ̲t̲̟r̲i̲p̲ ̲y̲̟o̲u̲'̲v̲e̲̟ ̲b̲e̲e̲n̲̟ ̲w̲a̲i̲t̲̟i̲n̲g̲ ̲f̲̟o̲r̲.̲⇤",
 			"q": 2,
-			"jobGuid": "xxx2xxx"
+			"jobGuid": "xxx2xxx",
+			"translationProvider": "Visicode"
 		},
 		{
 			"sid": "pickerTraveler_one",
@@ -245,7 +253,8 @@
 			"ts": 1,
 			"tgt": "⇥69:T̲r̲a̲v̲e̲̟l̲e̲r̲⇤",
 			"q": 2,
-			"jobGuid": "xxx2xxx"
+			"jobGuid": "xxx2xxx",
+			"translationProvider": "Visicode"
 		},
 		{
 			"sid": "pickerTraveler_other",
@@ -257,7 +266,8 @@
 			"ts": 1,
 			"tgt": "⇥59:T̲r̲a̲v̲e̲̟l̲e̲r̲s̲⇤",
 			"q": 2,
-			"jobGuid": "xxx2xxx"
+			"jobGuid": "xxx2xxx",
+			"translationProvider": "Visicode"
 		},
 		{
 			"sid": "warningMessage",
@@ -286,7 +296,8 @@
 				"⇤"
 			],
 			"q": 2,
-			"jobGuid": "xxx2xxx"
+			"jobGuid": "xxx2xxx",
+			"translationProvider": "Visicode"
 		},
 		{
 			"sid": "termsAndConditions",
@@ -342,7 +353,8 @@
 				"⇤"
 			],
 			"q": 2,
-			"jobGuid": "xxx2xxx"
+			"jobGuid": "xxx2xxx",
+			"translationProvider": "Visicode"
 		},
 		{
 			"sid": "timeCount.day_one",
@@ -370,7 +382,8 @@
 				"⇤"
 			],
 			"q": 2,
-			"jobGuid": "xxx2xxx"
+			"jobGuid": "xxx2xxx",
+			"translationProvider": "Visicode"
 		},
 		{
 			"sid": "timeCount.day_other",
@@ -398,7 +411,8 @@
 				"⇤"
 			],
 			"q": 2,
-			"jobGuid": "xxx2xxx"
+			"jobGuid": "xxx2xxx",
+			"translationProvider": "Visicode"
 		},
 		{
 			"sid": "timeCount.hour_one",
@@ -426,7 +440,8 @@
 				"⇤"
 			],
 			"q": 2,
-			"jobGuid": "xxx2xxx"
+			"jobGuid": "xxx2xxx",
+			"translationProvider": "Visicode"
 		},
 		{
 			"sid": "timeCount.hour_other",
@@ -454,7 +469,8 @@
 				"⇤"
 			],
 			"q": 2,
-			"jobGuid": "xxx2xxx"
+			"jobGuid": "xxx2xxx",
+			"translationProvider": "Visicode"
 		},
 		{
 			"sid": "timeCount.second_one",
@@ -482,7 +498,8 @@
 				"⇤"
 			],
 			"q": 2,
-			"jobGuid": "xxx2xxx"
+			"jobGuid": "xxx2xxx",
+			"translationProvider": "Visicode"
 		},
 		{
 			"sid": "timeCount.second_other",
@@ -510,7 +527,8 @@
 				"⇤"
 			],
 			"q": 2,
-			"jobGuid": "xxx2xxx"
+			"jobGuid": "xxx2xxx",
+			"translationProvider": "Visicode"
 		}
 	],
 	"translationProvider": "TMExport"

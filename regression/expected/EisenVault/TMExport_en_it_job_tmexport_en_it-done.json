@@ -13,7 +13,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Nuova attivit\\u00e0",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "more.activities",
@@ -23,7 +24,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{0} in pi\\u00f9",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "atom.title.site",
@@ -33,7 +35,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Feed sito attivit\\u00e0 Alfresco per {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "atom.title.user",
@@ -43,7 +46,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Feed utente attivit\\u00e0 Alfresco per {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "in.site",
@@ -53,7 +57,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{0} in {1}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.blog.post-created",
@@ -63,7 +68,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha creato\\n il post di blog {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.blog.post-updated",
@@ -73,7 +79,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha aggiornato il post di blog {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.blog.post-deleted",
@@ -83,7 +90,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha eliminato il post di blog {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.comments.comment-created",
@@ -93,7 +101,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha inserito un commento su {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.comments.comment-updated",
@@ -103,7 +112,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha aggiornato un commento su {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.comments.comment-deleted",
@@ -113,7 +123,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha eliminato un commento da {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.discussions.post-created",
@@ -123,7 +134,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha avviato la discussione {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.discussions.post-updated",
@@ -133,7 +145,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha aggiornato la discussione {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.discussions.post-deleted",
@@ -143,7 +156,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha eliminato la discussione {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.discussions.reply-created",
@@ -153,7 +167,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha risposto alla discussione {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.discussions.reply-updated",
@@ -163,7 +178,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha aggiornato una risposta a {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.calendar.event-created",
@@ -173,7 +189,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha creato l''evento di calendario {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.calendar.event-updated",
@@ -183,7 +200,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha aggiornato l''evento di calendario {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.calendar.event-deleted",
@@ -193,7 +211,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha eliminato l''evento di calendario {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.file-added",
@@ -203,7 +222,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha aggiunto il documento {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.files-added",
@@ -213,7 +233,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha aggiunto {0} documenti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.file-created",
@@ -223,7 +244,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha creato il documento {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.file-deleted",
@@ -233,7 +255,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha eliminato il documento {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.files-deleted",
@@ -243,7 +266,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha eliminato {0} documenti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.file-updated",
@@ -253,7 +277,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha aggiornato il documento {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.files-updated",
@@ -263,7 +288,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha aggiornato {0} documenti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.folder-added",
@@ -273,7 +299,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha aggiunto la cartella {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.folder-deleted",
@@ -283,7 +310,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha eliminato la cartella {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.folders-added",
@@ -293,7 +321,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha aggiunto {0} cartelle",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.folders-deleted",
@@ -303,7 +332,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha eliminato {0} cartelle",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.inline-edit",
@@ -313,7 +343,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha modificato il documento {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.file-previewed",
@@ -323,7 +354,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha visualizzato il documento in anteprima {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.file-downloaded",
@@ -333,7 +365,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha scaricato il documento {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.file-liked",
@@ -343,7 +376,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha suggerito il documento {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.folder-liked",
@@ -353,7 +387,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha suggerito la cartella {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.wiki.page-created",
@@ -363,7 +398,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha creato la pagina wiki {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.wiki.page-edited",
@@ -373,7 +409,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha aggiornato la pagina wiki {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.wiki.page-renamed",
@@ -383,7 +420,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha rinominato la pagina wiki da {2} in {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.wiki.page-deleted",
@@ -393,7 +431,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha eliminato la pagina wiki {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.site.group-added",
@@ -403,7 +442,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Gruppo {1} aggiunto al sito {4} con ruolo {2}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.site.group-removed",
@@ -413,7 +453,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Gruppo {1} rimosso dal sito {4}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.site.group-role-changed",
@@ -423,7 +464,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Ruolo del gruppo {1} cambiato in {2}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.site.user-joined",
@@ -433,7 +475,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha accettato di partecipare al sito {4} con ruolo {2}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.site.user-left",
@@ -443,7 +486,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha abbandonato il sito {4}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.site.user-role-changed",
@@ -453,7 +497,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Ruolo {1} cambiato in {2}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.site.liked",
@@ -463,7 +508,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha suggerito il sito {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.links.link-created",
@@ -473,7 +519,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha creato il link {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.links.link-updated",
@@ -483,7 +530,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha aggiornato il link {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.links.link-deleted",
@@ -493,7 +541,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha eliminato il link {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.datalists.list-created",
@@ -503,7 +552,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha creato l''elenco dati {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.datalists.list-updated",
@@ -513,7 +563,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha aggiornato l''elenco dati {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.datalists.list-deleted",
@@ -523,7 +574,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} ha eliminato l''elenco dati {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.subscriptions.followed",
@@ -533,7 +585,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} sta ora seguendo {5}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "org.alfresco.subscriptions.subscribed",
@@ -543,7 +596,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{1} si \\u00e8 iscritto a {2}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.header",
@@ -553,7 +607,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Alfresco Add-ons RSS Feed",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.configure",
@@ -563,7 +618,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Configura",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.noItems",
@@ -573,7 +629,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Nessun elemento delle news",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.loading",
@@ -583,7 +640,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Caricamento elementi in corso, attendere...",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "title.error.bad_data",
@@ -593,7 +651,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Impossibile leggere il feed RSS",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "title.error.unavailable",
@@ -603,7 +662,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Il feed RSS non \\u00e8 disponibile",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "title.error.unsupported",
@@ -613,7 +673,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Il formato del feed RSS non \\u00e8 supportato",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -623,7 +684,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Questa dashlet mostra le ultime news dall'Addon di Alfresco Fare clic sull'icona Modifica del dashlet per modificare il feed.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.body",
@@ -633,7 +695,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Trova, valuta e contribuisci alle extension e addon di Alfresco",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.addonsLink",
@@ -643,7 +706,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "http://addons.alfresco.com",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.addonsText",
@@ -653,7 +717,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Visita la Home page degli  Add-ons di Alfresco",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.header",
@@ -663,7 +728,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Feed RSS",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.configure",
@@ -673,7 +739,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Configura",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.noItems",
@@ -683,7 +750,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Nessun elemento delle news",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "title.error.bad_data",
@@ -693,7 +761,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Impossibile leggere il feed RSS",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "title.error.unavailable",
@@ -703,7 +772,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Il feed RSS non \\u00e8 disponibile",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "title.error.unsupported",
@@ -713,7 +783,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Il formato del feed RSS non \\u00e8 supportato",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -723,7 +794,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Questo dashlet mostra il feed RSS selezionato. Fare clic sull'icona Modifica del dashlet per modificare il feed.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.header",
@@ -733,7 +805,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Feed RSS",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.configure",
@@ -743,7 +816,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Configura",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.noItems",
@@ -753,7 +827,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Nessun elemento delle news",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "title.error.bad_data",
@@ -763,7 +838,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Impossibile leggere il feed RSS",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "title.error.unavailable",
@@ -773,7 +849,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Il feed RSS non \\u00e8 disponibile",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "title.error.unsupported",
@@ -783,7 +860,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Il formato del feed RSS non \\u00e8 supportato",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -793,7 +871,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Questo dashlet mostra il feed RSS selezionato. Fare clic sull'icona Modifica del dashlet per modificare il feed.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.header",
@@ -803,7 +882,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Calendario del sito",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.no-items",
@@ -813,7 +893,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Nessun evento imminente",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.until",
@@ -823,7 +904,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "finch\\u00e9",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -833,7 +915,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Questo dashlet mostra gli eventi imminenti per il sito.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "header",
@@ -843,7 +926,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Membri del sito",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "link.invite",
@@ -853,7 +937,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Invita",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "link.all-members",
@@ -863,7 +948,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Tutti i membri",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "pagination.template",
@@ -873,7 +959,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{0} - {1} di {2}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "pagination.template2",
@@ -883,7 +970,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Mostrati i primi {0} membri",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "empty.title",
@@ -893,7 +981,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "L'utente \\u00e8 l'unico membro del sito.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -903,7 +992,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "<p>Utilizzare questo dashlet per individuare i membri del sito. \\u00c8 possibile fare clic sul nome di un membro per visualizzarne il profilo e i dettagli.</p><p>Fare clic su Tutti i membri per visualizzare tutti i membri del sito. Se si dispone del ruolo di manager del sito, fare clic su Invita per inviare alcuni inviti a visitare il sito.</p>",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "header",
@@ -913,7 +1003,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Contenuto del sito",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.favourites",
@@ -923,7 +1014,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "I miei preferiti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.editingMe",
@@ -933,7 +1025,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Che sto modificando",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.recentlyModifiedByMe",
@@ -943,7 +1036,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Elementi modificati di recente",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.synced",
@@ -953,7 +1047,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Contenuto sincronizzato",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.syncedErrors",
@@ -963,7 +1058,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Sincronizzato con errori",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "empty.title",
@@ -973,7 +1069,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Tieni traccia delle modifiche al contenuto",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "empty.description",
@@ -983,7 +1080,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "\\u00c8 possibile visualizzare con facilit\\u00e0 quali elementi della raccolta documenti sono stati modificati dai membri del sito. Nella vista dettagliata, \\u00e8 possibile esprimere l'apprezzamento per un elemento e contrassegnarlo come preferito. Inoltre, \\u00e8 possibile passare direttamente alla pagina dei dettagli per lasciare un commento.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -993,7 +1091,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "<p>Questo dashlet consente di tenere traccia in modo semplice delle modifiche recenti apportate al contenuto della raccolta del sito. Facendo clic sul nome o la miniatura dell'elemento, viene visualizzata la pagina dei dettagli che consente di ottenere un'anteprima o utilizzare l'elemento.</p><p>Sono disponibili due viste per questo dashlet. La vista dettagliata consente di:<ul><li>Contrassegnare un elemento come preferito in modo che sia visualizzato negli elenchi dei preferiti per un accesso rapido</li><li>Inserire Mi piace o Non mi piace per un elemento</li><li>Andare alla pagina dei dettagli dell'elemento per inserire un commento</li></ul></p>",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.user",
@@ -1003,7 +1102,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Benvenuto nel pannello di controllo, {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.site",
@@ -1013,7 +1113,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Benvenuto in {1}, {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.user.description",
@@ -1023,7 +1124,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Il pannello di controllo personale mostra una vista riepilogativa delle attivit\\u00e0 dei siti di cui si \\u00e8 membri.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.site.description",
@@ -1033,7 +1135,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Il pannello di controllo del sito consente di controllare le attivit\\u00e0 di quel particolare sito.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "get.started.message",
@@ -1043,7 +1146,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Per iniziare...",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "panel.delete.header",
@@ -1053,7 +1157,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Conferma rimozione",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "panel.delete.msg",
@@ -1063,7 +1168,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Si desidera rimuovere in modo permanente il pannello di assistenza dal pannello di controllo?",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "panel.delete.fail",
@@ -1073,7 +1179,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Impossibile rimuovere il dashlet.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.close",
@@ -1083,7 +1190,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Rimuovi",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.user.tutorial.title",
@@ -1093,7 +1201,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Formazione",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.user.tutorial.description",
@@ -1103,7 +1212,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Le esercitazioni video consentono di visualizzare le operazioni che si possono effettuare con Alfresco.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.user.tutorial.link",
@@ -1113,7 +1223,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Visualizza esercitazioni video",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.user.sites.title",
@@ -1123,7 +1234,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Condivisione",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.user.sites.description",
@@ -1133,7 +1245,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Creare un sito per condividere contenuti con gli altri membri.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.user.sites.link",
@@ -1143,7 +1256,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Crea sito",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.user.profile.title",
@@ -1153,7 +1267,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Personalizzazione",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.user.profile.description",
@@ -1163,7 +1278,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Aggiornare le informazioni personali e aziendali in modo che altri utenti possano visualizzarle.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.user.profile.link",
@@ -1173,7 +1289,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Modifica profilo",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.user.dashboard.title",
@@ -1183,7 +1300,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Personalizzazione",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.user.dashboard.description",
@@ -1193,7 +1311,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Configurare il pannello di controllo in modo da mostrare le informazioni desiderate.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.user.dashboard.link",
@@ -1203,7 +1322,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Personalizza pannello di controllo",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.user.explore.title",
@@ -1213,7 +1333,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Esplorazione",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.user.explore.description",
@@ -1223,7 +1344,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Una panoramica dei siti di Alfresco. \\u00c8 possibile visitare i siti pubblici e registrarsi immediatamente.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.user.explore.link",
@@ -1233,7 +1355,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Visualizza tutti i siti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.site.dashboard.title",
@@ -1243,7 +1366,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Personalizzazione",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.site.dashboard.description",
@@ -1253,7 +1377,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Configurare il pannello di controllo con le informazioni che si desidera mostrare agli altri utenti.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.site.dashboard.link",
@@ -1263,7 +1388,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Personalizza pannello di controllo del sito",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.site.moderated.title",
@@ -1273,7 +1399,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Partecipazione",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.site.moderated.description",
@@ -1283,7 +1410,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "La partecipazione al sito \\u00e8 sottoposta a moderazione. \\u00c8 possibile richiedere la partecipazione in modo che la richiesta venga notificata a un manager del sito.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.site.moderated.link",
@@ -1293,7 +1421,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Richiedi partecipazione",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.site.upload.title",
@@ -1303,7 +1432,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Collaborazione",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.site.upload.description",
@@ -1313,7 +1443,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Caricare il contenuto nella raccolta documenti per avviare la collaborazione con altri utenti.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.site.upload.link",
@@ -1323,7 +1454,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Carica contenuto",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.site.invite.title",
@@ -1333,7 +1465,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Inviti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.site.invite.description",
@@ -1343,7 +1476,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Invitare altri utenti ad unirsi al sito.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.site.invite.link",
@@ -1353,7 +1487,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Invita persone",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.site.members.title",
@@ -1363,7 +1498,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Social network",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.site.members.description",
@@ -1373,7 +1509,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Individuare i membri del sito. Nell'elenco, \\u00e8 possibile visualizzare i profili utente per conoscere gli altri membri.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.site.members.link",
@@ -1383,7 +1520,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Visualizza membri del sito",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.site.browse.title",
@@ -1393,7 +1531,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Esplorazione",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.site.browse.description",
@@ -1403,7 +1542,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Individuare il contenuto aggiunto al sito effettuando una ricerca nella raccolta documenti.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.site.browse.link",
@@ -1413,7 +1553,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Vai alla raccolta documenti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.cloud.sign-up.title",
@@ -1423,7 +1564,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Cloud",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.cloud.sign-up.description",
@@ -1433,7 +1575,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Registrati oggi per richiedere la tua rete gratuita nel cloud.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "welcome.cloud.sign-up.link",
@@ -1443,7 +1586,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Registrati",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "message.request-joining",
@@ -1453,7 +1597,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Richiesta di aggiungere l''utente {0} al sito {1} in corso...",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "message.request-join-success",
@@ -1463,7 +1608,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Richiesta di partecipazione al sito {1} inviata. Verr\\u00e0 visualizzato il pannello di controllo personale.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "message.request-join-failure",
@@ -1473,7 +1619,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Impossibile inviare la richiesta di aggiungere l''utente {0} al sito {1}.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "header.title",
@@ -1483,7 +1630,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Le mie discussioni",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "newTopic.button",
@@ -1493,7 +1641,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Nuovo argomento",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "no.result",
@@ -1503,7 +1652,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Nessun argomento corrispondente ai filtri.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "topicList.updated",
@@ -1513,7 +1663,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Aggiornato",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "topicList.createdBy",
@@ -1523,7 +1674,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Creato da {0} {1}.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "topicList.replies.single",
@@ -1533,7 +1685,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "1 risposta.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "topicList.replies.plural",
@@ -1543,7 +1696,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{0} risposte.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "topicList.lastReplyBy",
@@ -1553,7 +1707,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "L''ultima risposta \\u00e8 stata postata da {0} {1}.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.topics.mine",
@@ -1563,7 +1718,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "I miei argomenti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.topics.all",
@@ -1573,7 +1729,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Tutti gli argomenti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.history.1day",
@@ -1583,7 +1740,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Argomenti aggiornati nelle ultime 24 ore",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.history.7days",
@@ -1593,7 +1751,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Argomenti aggiornati negli ultimi 7 giorni",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.history.14days",
@@ -1603,7 +1762,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Argomenti aggiornati negli ultimi 14 giorni",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.history.28days",
@@ -1613,7 +1773,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Argomenti aggiornati negli ultimi 28 giorni",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -1623,7 +1784,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "<p>Dashlet forum discussione.</p><p>Visualizza gli ultimi post sul forum della discussione.</p>",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "header.title",
@@ -1633,7 +1795,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Anteprima immagine",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.noitems",
@@ -1643,7 +1806,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Nessun elemento da visualizzare",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "text.modified-by",
@@ -1653,7 +1817,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Modificato da {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "text.selectfolder",
@@ -1663,7 +1828,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Seleziona la cartella Immagini in {0}...",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -1673,7 +1839,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Questo dashlet mostra una miniatura di ciascuna immagine della raccolta documenti. Fare clic su una miniatura per aprire l'immagine nella finestra corrente.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "header",
@@ -1683,7 +1850,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Le mie attivit\\u00e0",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.load-failed",
@@ -1693,7 +1861,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Impossibile caricare l'elenco attivit\\u00e0",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.filter",
@@ -1703,7 +1872,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Mostra",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.older-activities",
@@ -1713,7 +1883,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Attivit\\u00e0 precedenti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.mine",
@@ -1723,7 +1894,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Le mie attivit\\u00e0",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.others",
@@ -1733,7 +1905,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Le attivit\\u00e0 di altri utenti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.all",
@@ -1743,7 +1916,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Tutte le attivit\\u00e0",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.following",
@@ -1753,7 +1927,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Sto seguendo",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.allItems",
@@ -1763,7 +1938,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "tutti gli elementi",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.statusItems",
@@ -1773,7 +1949,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "aggiornamenti di stato",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.commentItems",
@@ -1783,7 +1960,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "commenti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.contentItems",
@@ -1793,7 +1971,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "contenuto",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.membershipItems",
@@ -1803,7 +1982,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "appartenenza",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.today",
@@ -1813,7 +1993,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "oggi",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.7days",
@@ -1823,7 +2004,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "negli ultimi 7 giorni",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.14days",
@@ -1833,7 +2015,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "negli ultimi 14 giorni",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.28days",
@@ -1843,7 +2026,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "negli ultimi 28 giorni",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "empty.title",
@@ -1853,7 +2037,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Segui cosa accade nei siti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "empty.description",
@@ -1863,7 +2048,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Le attivit\\u00e0 di questo elenco consentono di tenere traccia delle modifiche apportate ai siti di cui si \\u00e8 membri. Sono visualizzate attivit\\u00e0 quali aggiornamenti dei contenuti e preferenze. \\u00c8 anche possibile visualizzare i nuovi membri o quelli che si rimuovono dai propri siti.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -1873,7 +2059,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "<p>\\u00c8 molto semplice seguire cosa accade nei propri siti utilizzando questo dashlet. Vengono visualizzate le attivit\\u00e0 eseguite in tutti i siti di appartenenza, ad esempio l'aggiunta, l'eliminazione o la modifica di contenuto. \\u00c8 anche possibile vedere chi si unisce e chi si rimuove da tali siti.</p><p>I filtri consentono di visualizzare le attivit\\u00e0 in base al periodo di tempo e alla propriet\\u00e0.</p>",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "header",
@@ -1883,7 +2070,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Contenuto che sto modificando",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.noItems",
@@ -1893,7 +2081,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Nessun elemento da visualizzare",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.error",
@@ -1903,7 +2092,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Impossibile caricare i dati",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "text.edited-on",
@@ -1913,7 +2103,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Modificato il {0} nel {1}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "text.blogposts",
@@ -1923,7 +2114,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Post del blog",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "text.forumposts",
@@ -1933,7 +2125,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Post del forum",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "text.wikipages",
@@ -1943,7 +2136,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Pagine wiki",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "text.documents",
@@ -1953,7 +2147,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Documenti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -1963,7 +2158,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Controllare la dashlet per visualizzare rapidamente gli elementi attualmente in uso.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "header",
@@ -1973,7 +2169,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "I miei documenti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.favourites",
@@ -1983,7 +2180,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "I miei preferiti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.editingMe",
@@ -1993,7 +2191,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Che sto modificando",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.recentlyModifiedByMe",
@@ -2003,7 +2202,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Elementi modificati di recente",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.synced",
@@ -2013,7 +2213,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Contenuto sincronizzato",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.syncedErrors",
@@ -2023,7 +2224,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Sincronizzato con errori",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "empty.title",
@@ -2033,7 +2235,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Tieni traccia dei contenuti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "empty.description",
@@ -2043,7 +2246,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Questo dashlet elenca tutti i contenuti importanti per l'utente, indipendente dal sito di provenienza. Utilizzare i filtri per modificare in modo semplice gli elementi desiderati.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -2053,7 +2257,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "<p>Questo dashlet consente di tenere traccia in modo semplice dei propri contenuti, indipendentemente dal sito di provenienza. Utilizzare il filtro per individuare con facilit\\u00e0 gli elementi desiderati.</p><p>Sono disponibili due viste per questo dashlet. La vista dettagliata consente di:<ul><li>Contrassegnare un elemento come preferito in modo che sia visualizzato negli elenchi dei preferiti per un accesso rapido</li><li>Inserire Mi piace o Non mi piace per un elemento</li><li>Andare alla pagina dei dettagli dell'elemento per inserire un commento</li></ul></p>",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "header.myMeetingWorkspaces",
@@ -2063,7 +2268,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "I miei spazi di lavoro per riunioni",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "link.deleteMeetingWorkspace",
@@ -2073,7 +2279,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Elimina",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.noMeetingWorkspaces",
@@ -2083,7 +2290,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Nessuno spazio di lavoro per riunioni da visualizzare",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "message.meetingWorkspaceFavourite.failure",
@@ -2093,7 +2301,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Impossibile salvare l'impostazione come preferito per lo spazio di lavoro per riunioni",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "link.favouriteMeetingWorkspace",
@@ -2103,7 +2312,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Seleziona o deseleziona lo spazio di lavoro per riunioni come preferito",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "link.imap_favouriteMeetingWorkspace",
@@ -2113,7 +2323,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Seleziona o deseleziona lo spazio di lavoro per riunioni come preferito IMAP",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -2123,7 +2334,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "<p>Uno spazio di lavoro per riunioni \\u00e8 un tipo di sito creato fuori da Alfresco. Questo dashlet contiene un elenco di tutti gli spazi di lavoro per riunioni dell'utente.</p><p>Da qui, \\u00e8 possibile visitare il sito di uno spazio di lavoro per riunioni. \\u00c8 anche possibile eliminare un sito, se si dispone dei permessi appropriati.</p>",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "header.myLimitedProfile",
@@ -2133,7 +2345,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Il mio profilo",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "link.viewFullProfile",
@@ -2143,7 +2356,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Vedi profilo completo",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -2153,7 +2367,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Questo dashlet mostra un riepilogo dei dettagli personali dell'utente. Da qui, \\u00e8 possibile accedere al profilo utente completo.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "header",
@@ -2163,7 +2378,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "I miei siti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "link.createSite",
@@ -2173,7 +2389,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Crea sito",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "link.deleteSite",
@@ -2183,7 +2400,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Elimina",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.all",
@@ -2193,7 +2411,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Tutti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.favSites",
@@ -2203,7 +2422,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "I miei preferiti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.recentSites",
@@ -2213,7 +2433,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Recenti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "empty.title",
@@ -2223,7 +2444,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Accesso rapido ai siti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "empty.description",
@@ -2233,7 +2455,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Per sito si intende un'area di progetto in cui \\u00e8 possibile condividere e utilizzare contenuti con altri membri del sito.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "empty.description.sample-site",
@@ -2243,7 +2466,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Viene riportato un sito di esempio per l'utente. Utilizzare questo sito per conoscere le funzionalit\\u00e0 di Alfresco.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -2253,7 +2477,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "<p>I siti sono delle aree di progetti in cui l'utente pu\\u00f2 collaborare con altri utenti, condividere dei contenuti ed effettuare delle attivit\\u00e0 comuni. Questo dashlet riporta i siti a cui l'utente \\u00e8 iscritto. \\u00c8 possibile filtrare questo elenco per visualizzare solo i siti preferiti.</p><p>Da questo dashlet, \\u00e8 possibile:<ul><li>Visitare un sito</li><li>Creare un nuovo sito</li><li>Eliminare un sito se si ha il ruolo di manager del sito</li><li>Contrassegnare un sito come preferito in modo che sia visibile nel menu dei siti per un rapido accesso</li></ul></p>",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "header",
@@ -2263,7 +2488,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "I miei compiti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "link.startWorkflow",
@@ -2273,7 +2499,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Avvia workflow",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "link.activeTasks",
@@ -2283,7 +2510,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Compiti attivi",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "link.completedTasks",
@@ -2293,7 +2521,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Compiti completati",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "title.viewTask",
@@ -2303,7 +2532,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Vedi compito",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "title.editTask",
@@ -2313,7 +2543,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Modifica compito",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.pooledTask",
@@ -2323,7 +2554,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Compito assegnato al pool",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.taskSummary",
@@ -2333,7 +2565,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{0}, {1}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.unassignedTask",
@@ -2343,7 +2576,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Non assegnato",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "title.dueOn",
@@ -2353,7 +2587,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Scade il: {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "message.noTasks",
@@ -2363,7 +2598,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Nessun compito",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "title.taskSummary",
@@ -2373,7 +2609,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Tipo: {0}, Stato: {1}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.activeTasks",
@@ -2383,7 +2620,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Compiti attivi",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.completedTasks",
@@ -2393,7 +2631,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Compiti completati",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.highPriorityTasks",
@@ -2403,7 +2642,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Compiti con priorit\\u00e0 alta",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.tasksDueToday",
@@ -2413,7 +2653,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Compiti in scadenza oggi",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.tasksAssignedToMe",
@@ -2423,7 +2664,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Compiti assegnati a me",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.unassignedPooledTasks",
@@ -2433,7 +2675,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Non assegnati (compiti assegnati al pool)",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.overdueTasks",
@@ -2443,7 +2686,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Compiti scaduti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "pagination.template",
@@ -2453,7 +2697,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{CurrentPageReport}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "pagination.template.page-report",
@@ -2463,7 +2708,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "{startRecord} - {endRecord} di {totalRecords}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "empty.title",
@@ -2473,7 +2719,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Esamina compiti assegnati",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "empty.description",
@@ -2483,7 +2730,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Nell'elenco dei compiti possono essere visualizzati diversi tipi di compiti che \\u00e8 necessario gestire singolarmente. Un compito pu\\u00f2 riguardare la revisione di un documento o semplicemente l'accettazione di un invito a un sito.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -2493,7 +2741,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "<p>Questo dashlet riporta i compiti assegnati all'utente, inclusi gli inviti di partecipazione ai siti. \\u00c8 possibile filtrare l'elenco per visualizzare i diversi tipi di compiti.</p><p>Da questo dashlet, \\u00e8 possibile:<ul><li>Modificare un compito per la gestione</li><li>Visualizzare un singolo compito</li><li>Aprire la pagina I miei compiti per gestire tutti i compiti</li><li>Avviare un workflow per creare compiti per altri utenti o per se stessi</li></ul></p>",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "header.myWorkspaces",
@@ -2503,7 +2752,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "I miei spazi di lavoro per documenti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "link.deleteWorkspace",
@@ -2513,7 +2763,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Elimina",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.noWorkspaces",
@@ -2523,7 +2774,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Nessuno spazio di lavoro per documenti da visualizzare",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "message.workspaceFavourite.failure",
@@ -2533,7 +2785,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Impossibile salvare l'impostazione come preferito per lo spazio di lavoro per documenti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "link.favouriteWorkspace",
@@ -2543,7 +2796,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Seleziona o deseleziona lo spazio di lavoro per documenti come preferito",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "link.imap_favouriteWorkspace",
@@ -2553,7 +2807,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Seleziona o deseleziona lo spazio di lavoro per documenti come preferito IMAP",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -2563,7 +2818,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "<p>Uno spazio di lavoro per documenti \\u00e8 un tipo di sito creato fuori da Alfresco. Questo dashlet contiene un elenco di tutti gli spazi di lavoro per documenti dell'utente.</p><p>Da qui, \\u00e8 possibile visitare il sito di uno spazio di lavoro per documenti. \\u00c8 anche possibile eliminare un sito, se si dispone dei permessi appropriati.</p>",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.header",
@@ -2573,7 +2829,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Feed RSS",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.configure",
@@ -2583,7 +2840,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Configura",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.noItems",
@@ -2593,7 +2851,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Nessun elemento delle news",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.loading",
@@ -2603,7 +2862,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Caricamento elementi in corso, attendere...",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "title.error.bad_data",
@@ -2613,7 +2873,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Impossibile leggere il feed RSS",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "title.error.unavailable",
@@ -2623,7 +2884,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Il feed RSS non \\u00e8 disponibile",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "title.error.unsupported",
@@ -2633,7 +2895,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Il formato del feed RSS non \\u00e8 supportato",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "header.title",
@@ -2643,7 +2906,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Ricerca salvata",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "no.result",
@@ -2653,7 +2917,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Nessun risultato trovato.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "message.insite",
@@ -2663,7 +2928,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "nel sito",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -2673,7 +2939,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "<p>Utilizzare questo dashlet per configurare una ricerca e visualizzare i risultati.</p><p>Configurare il dashlet per salvare la ricerca e impostare il testo titolo del dashlet.</p><p>Solo un manager del sito pu\\u00f2 configurare la ricerca e il titolo. Questo dashlet \\u00e8 l'ideale per generare visualizzazioni di rapporti in un sito.</p>",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "header",
@@ -2683,7 +2950,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Attivit\\u00e0 del sito",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.load-failed",
@@ -2693,7 +2961,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Impossibile caricare l'elenco attivit\\u00e0",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.filter",
@@ -2703,7 +2972,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Mostra",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.older-activities",
@@ -2713,7 +2983,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Attivit\\u00e0 precedenti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.mine",
@@ -2723,7 +2994,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Le mie attivit\\u00e0",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.others",
@@ -2733,7 +3005,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Le attivit\\u00e0 di altri utenti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.all",
@@ -2743,7 +3016,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Tutte le attivit\\u00e0",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.following",
@@ -2753,7 +3027,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Sto seguendo",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.allItems",
@@ -2763,7 +3038,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "tutti gli elementi",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.statusItems",
@@ -2773,7 +3049,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "aggiornamenti di stato",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.commentItems",
@@ -2783,7 +3060,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "commenti",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.contentItems",
@@ -2793,7 +3071,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "contenuto",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.membershipItems",
@@ -2803,7 +3082,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "appartenenza",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.today",
@@ -2813,7 +3093,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "oggi",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.7days",
@@ -2823,7 +3104,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "negli ultimi 7 giorni",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.14days",
@@ -2833,7 +3115,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "negli ultimi 14 giorni",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter.28days",
@@ -2843,7 +3126,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "negli ultimi 28 giorni",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "empty.title",
@@ -2853,7 +3137,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Segui cosa accade nel sito corrente",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "empty.description",
@@ -2863,7 +3148,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Verificare questo elenco per tenersi aggiornati sulle modifiche recenti apportate al sito. Sono visualizzate attivit\\u00e0 quali aggiornamenti dei contenuti e preferenze. \\u00c8 anche possibile tenere traccia delle iscrizioni al sito controllando i nuovi membri e quelli che si rimuovono.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -2873,7 +3159,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "<p>\\u00c8 molto semplice seguire le attivit\\u00e0 del sito utilizzando questo dashlet. Vengono visualizzate tutte le attivit\\u00e0, ad esempio l'aggiunta, la modifica e l'eliminazione di contenuti. \\u00c8 anche possibile vedere chi si unisce e chi si rimuove dal sito.</p><p>I filtri consentono di visualizzare le attivit\\u00e0 in base al periodo di tempo e alla propriet\\u00e0.</p>",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "header.datalists",
@@ -2883,7 +3170,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Elenchi dati del sito",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.noLists",
@@ -2893,7 +3181,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Nessun elenco da visualizzare",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "list.createLink",
@@ -2903,7 +3192,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Crea elenco dati",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -2913,7 +3203,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Questo dashlet mostra gli elenchi relativi al sito. Fare clic su un elenco per aprirlo.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "header.links",
@@ -2923,7 +3214,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Link del sito",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "link.createLink",
@@ -2933,7 +3225,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Crea link",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "link.details",
@@ -2943,7 +3236,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Dettagli link",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.noLinks",
@@ -2953,7 +3247,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Nessun link da visualizzare",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -2963,7 +3258,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Questo dashlet mostra i link relativi al sito corrente. L'elenco viene compilato dai membri del sito. Fare clic su un link per aprirlo in una nuova finestra.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "link.noUrl",
@@ -2973,7 +3269,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "URL non specificato",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "notice.defaultTitle",
@@ -2983,7 +3280,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Notifica sito",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "notice.defaultText",
@@ -2993,7 +3291,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Non \\u00e8 stato configurato alcun testo",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -3003,7 +3302,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Questo dashlet consente di visualizzare un messaggio personalizzato sul pannello di controllo, specificato dal manager del sito",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "header.siteProfile",
@@ -3013,7 +3313,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Profilo del sito",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "text.welcome",
@@ -3023,7 +3324,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Benvenuto in {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.siteAdmin",
@@ -3033,7 +3335,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Manager del sito:",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.visibility",
@@ -3043,7 +3346,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Visibilit\\u00e0:",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "text.public",
@@ -3053,7 +3357,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Pubblico",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "text.moderated",
@@ -3063,7 +3368,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Moderato",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "text.private",
@@ -3073,7 +3379,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Privato",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "text.unknown",
@@ -3083,7 +3390,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Sconosciuto",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -3093,7 +3401,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "In questo dashlet vengono visualizzati i dettagli del sito. Solo il manager del sito pu\\u00f2 modificare queste informazioni.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "header.title",
@@ -3103,7 +3412,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Ricerca sito",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "searchButton.text",
@@ -3113,7 +3423,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Cerca",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "no.result",
@@ -3123,7 +3434,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Nessun risultato trovato.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "message.insite",
@@ -3133,7 +3445,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "nel sito",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -3143,7 +3456,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "<p>Utilizzare questo dashlet per eseguire una ricerca sito e visualizzare i risultati.</p><p>Facendo clic sul nome dell'elemento viene visualizzata la pagina dei dettagli che consente di ottenere un'anteprima o utilizzare l'elemento.</p>",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.header",
@@ -3153,7 +3467,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Il mio calendario",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.noEvents",
@@ -3163,7 +3478,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Nessun evento imminente",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.error",
@@ -3173,7 +3489,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Impossibile caricare i dati del calendario",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.allday",
@@ -3183,7 +3500,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Giornata intera",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.in-site",
@@ -3193,7 +3511,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "in {0}",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -3203,7 +3522,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "In questo dashlet vengono visualizzati gli eventi imminenti nei siti di cui si \\u00e8 membri. ",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.defaultText",
@@ -3213,7 +3533,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Utilizzare il link Configura per immettere l'URL della pagina web da visualizzare",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.header",
@@ -3223,7 +3544,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Vista web",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.noWebPage",
@@ -3233,7 +3555,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Nessuna pagina web da visualizzare.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.notSecureHeader",
@@ -3243,7 +3566,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Vista web",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.notSecurePage",
@@ -3253,7 +3577,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Il dominio della pagina da visualizzare non \\u00e8 nella lista dei domini di fiducia all'interno della configurazione IFramePolicy del tuo server.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "form.url.validation.failure",
@@ -3263,7 +3588,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Il dominio dell'url non \\u00e8 nella lista dei domini di fiducia all'interno della configurazione IFramePolicy del tuo server.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -3273,7 +3599,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "<p>Questo dashlet mostra il sito web selezionato. Fare clic sull'icona Modifica del dashlet per modificare l'indirizzo web.</p><p>Fare clic sul titolo del dashlet per aprire il sito web in una finestra separata.</p>",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.header",
@@ -3283,7 +3610,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Wiki del sito",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.header-prefix",
@@ -3293,7 +3621,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Wiki",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.configure",
@@ -3303,7 +3632,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Configura",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label.noConfig",
@@ -3313,7 +3643,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Nessuna pagina configurata",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -3323,7 +3654,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "<p>Questo dashlet mostra una pagina selezionata dal wiki del sito.</p><p>Accedere al wiki per visualizzarne tutto il contenuto.</p>",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dashlet.help",
@@ -3333,7 +3665,8 @@
 			"ts": 1,
 			"q": 69,
 			"tgt": "Questo dashlet mostra il feed RSS selezionato. Fare clic sull'icona Modifica del dashlet per modificare il feed.",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Repetition"
 		},
 		{
 			"sid": "link.configure",
@@ -3343,7 +3676,8 @@
 			"ts": 1,
 			"q": 61,
 			"tgt": "Configura",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Repetition"
 		},
 		{
 			"sid": "empty.description",
@@ -3353,7 +3687,8 @@
 			"ts": 1,
 			"tgt": "[-it]",
 			"q": 2,
-			"jobGuid": "xxx2xxx"
+			"jobGuid": "xxx2xxx",
+			"translationProvider": "PigLatinizer"
 		}
 	],
 	"translationProvider": "TMExport"

@@ -14,7 +14,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "رجوع",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "NavTitleLabel",
@@ -25,7 +26,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "فحص الاستجابة السريعة.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "LoadingMessage",
@@ -36,7 +38,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "تحليل بيانات التهيئة",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "InvalidQRCode",
@@ -47,7 +50,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "إن رمز الاستجابة السريعة غير صالح",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "ParsingFailed",
@@ -58,7 +62,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "‏مشكلة في تحليل عنوان Url",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "DataSynced",
@@ -83,7 +88,8 @@
 					"v1": "a_x_1"
 				}
 			],
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "FindSymbolOnViewer",
@@ -94,7 +100,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "العثور على هذا الرمز على عارضك",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "CanNotFindSymbol",
@@ -105,7 +112,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "ألا تستطيع العثور على هذا الرمز؟",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "TroubleShootingTips",
@@ -116,7 +124,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "نصائح تحرّى الخلل وإصلاحه",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "SkipButtonLabel",
@@ -127,7 +136,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "تخطٍ",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "OnboardingIntroLine1",
@@ -138,7 +148,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "لنبدأ الإعداد",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "OnboardingIntroLine2",
@@ -149,7 +160,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "أقرن هاتفك مع العارض للتمتّع بأفضل تجربة",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "OnboardingNoViewerPrompt",
@@ -160,7 +172,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "‏أليس لديك عارض Cardboard؟",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "OnboardingGetCardboardButton",
@@ -171,7 +184,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "الحصول على واحد",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "PlaceYourPhoneInCardboard",
@@ -182,7 +196,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "‏ضع هاتفك في عارض Cardboard.",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "PlaceYourPhoneInViewerFormat",
@@ -209,7 +224,8 @@
 				},
 				"."
 			],
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "SettingsNavTitleLabel",
@@ -220,7 +236,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "الإعدادات",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "SettingsSyncLabel",
@@ -231,7 +248,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "‏مزامنة مع Google Cardboard",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "SettingsCurrentViewerLabelFormat",
@@ -256,7 +274,8 @@
 					"v1": "a_x_1"
 				}
 			],
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "DefaultViewerName",
@@ -267,7 +286,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "افتراضي",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "DifferentViewerQuestion",
@@ -278,7 +298,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "هل تستخدم عارضًا مختلفًا؟",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "SwitchViewer",
@@ -289,7 +310,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "تبديل",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "SwitchViewerActivityMenuTitle",
@@ -314,7 +336,8 @@
 					"v1": "a_x_1"
 				}
 			],
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "HelpActivityMenuTitle",
@@ -325,7 +348,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "مساعدة",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "SuccessfullyPaired",
@@ -336,7 +360,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "تم الإقران بنجاح!",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "ViewerConfigured",
@@ -363,7 +388,8 @@
 				},
 				"."
 			],
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "OK",
@@ -374,7 +400,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "موافق",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "AccessibilitySettingsButton",
@@ -385,7 +412,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "الإعدادات",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "AccessibilityBackButton",
@@ -399,7 +427,8 @@
 			],
 			"q": 70,
 			"tgt": "رجوع إلى الشاشة السابقة",
-			"jobGuid": "xxx0xxx"
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "AccessibilityHelpButton",
@@ -410,7 +439,8 @@
 			"ts": 1,
 			"q": 61,
 			"tgt": "مساعدة",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Repetition"
 		},
 		{
 			"sid": "AccessibilityCardboardButton",
@@ -437,7 +467,8 @@
 				"⇤"
 			],
 			"q": 2,
-			"jobGuid": "xxx2xxx"
+			"jobGuid": "xxx2xxx",
+			"translationProvider": "Visicode"
 		},
 		{
 			"sid": "AccessibilityFullscreenButton",
@@ -448,7 +479,8 @@
 			"ts": 1,
 			"tgt": "⇥YAB:F̲u̲l̲l̲s̲̟c̲r̲e̲e̲n̲̟ ̲m̲o̲d̲e̲̟⇤",
 			"q": 2,
-			"jobGuid": "xxx2xxx"
+			"jobGuid": "xxx2xxx",
+			"translationProvider": "Visicode"
 		},
 		{
 			"sid": "HelpHack",
@@ -466,7 +498,8 @@
 				"⇤"
 			],
 			"q": 2,
-			"jobGuid": "xxx2xxx"
+			"jobGuid": "xxx2xxx",
+			"translationProvider": "Visicode"
 		}
 	],
 	"translationProvider": "TMExport"

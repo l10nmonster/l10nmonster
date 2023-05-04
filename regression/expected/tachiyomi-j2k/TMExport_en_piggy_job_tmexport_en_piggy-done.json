@@ -13,7 +13,8 @@
 			"ts": 1,
 			"tgt": "[Ilefay ermissionspay equiredray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "external_storage_permission_notice",
@@ -30,7 +31,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "external_storage_download_notice",
@@ -47,7 +49,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "manga",
@@ -57,7 +60,8 @@
 			"ts": 1,
 			"tgt": "[Angamay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "manhwa",
@@ -67,7 +71,8 @@
 			"ts": 1,
 			"tgt": "[Anhwamay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "manhua",
@@ -77,7 +82,8 @@
 			"ts": 1,
 			"tgt": "[Anhuamay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "comic",
@@ -87,7 +93,8 @@
 			"ts": 1,
 			"tgt": "[Omic-cay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "webtoon",
@@ -97,7 +104,8 @@
 			"ts": 1,
 			"tgt": "[Ebtoonway-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "not_started",
@@ -107,7 +115,8 @@
 			"ts": 1,
 			"tgt": "[Otnay artedstay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "in_progress",
@@ -117,7 +126,8 @@
 			"ts": 1,
 			"tgt": "[Inyay ogresspray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "read",
@@ -127,7 +137,8 @@
 			"ts": 1,
 			"tgt": "[Eadray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "title",
@@ -137,7 +148,8 @@
 			"ts": 1,
 			"tgt": "[Itletay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "author",
@@ -147,7 +159,8 @@
 			"ts": 1,
 			"tgt": "[Authoryay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "artist",
@@ -157,7 +170,8 @@
 			"ts": 1,
 			"tgt": "[Artistyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "description",
@@ -167,7 +181,8 @@
 			"ts": 1,
 			"tgt": "[Escriptionday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "move_x_to",
@@ -195,7 +210,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "add_x_to",
@@ -223,7 +239,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "ongoing",
@@ -233,7 +250,8 @@
 			"ts": 1,
 			"tgt": "[Ongoingyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "unknown",
@@ -243,7 +261,8 @@
 			"ts": 1,
 			"tgt": "[Unknownyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "unknown_status",
@@ -253,7 +272,8 @@
 			"ts": 1,
 			"tgt": "[Unknownyay Atus-stay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "licensed",
@@ -263,7 +283,8 @@
 			"ts": 1,
 			"tgt": "[Icensedlay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "completed",
@@ -273,7 +294,8 @@
 			"ts": 1,
 			"tgt": "[Ompletedcay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "unlock_library",
@@ -283,7 +305,8 @@
 			"ts": 1,
 			"tgt": "[Unlockyay otay accessyay Ibrarylay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "unlock",
@@ -293,7 +316,8 @@
 			"ts": 1,
 			"tgt": "[Unlockyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "lock_with_biometrics",
@@ -303,7 +327,8 @@
 			"ts": 1,
 			"tgt": "[Ocklay ithway iometricsbay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "lock_when_idle",
@@ -313,7 +338,8 @@
 			"ts": 1,
 			"tgt": "[Ocklay enwhay idleyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "chapters",
@@ -323,7 +349,8 @@
 			"ts": 1,
 			"tgt": "[Apterschay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "new_chapters",
@@ -333,7 +360,8 @@
 			"ts": 1,
 			"tgt": "[Ewnay apterschay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "unread",
@@ -343,7 +371,8 @@
 			"ts": 1,
 			"tgt": "[Unreadyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "last_read_chapter_",
@@ -369,7 +398,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "chapter_",
@@ -395,7 +425,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "chapter_x_of_y",
@@ -432,7 +463,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "all_chapters_read",
@@ -442,7 +474,8 @@
 			"ts": 1,
 			"tgt": "[Allyay apterschay eadray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "bookmarked",
@@ -452,7 +485,8 @@
 			"ts": 1,
 			"tgt": "[Ookmarkedbay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "not_bookmarked",
@@ -462,7 +496,8 @@
 			"ts": 1,
 			"tgt": "[Otnay ookmarkedbay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "marked_as_read",
@@ -472,7 +507,8 @@
 			"ts": 1,
 			"tgt": "[Arkedmay asyay eadray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "marked_as_unread",
@@ -482,7 +518,8 @@
 			"ts": 1,
 			"tgt": "[Arkedmay asyay unreadyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "removed_bookmark",
@@ -492,7 +529,8 @@
 			"ts": 1,
 			"tgt": "[Emovedray ookmarkbay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "chapters_removed",
@@ -502,7 +540,8 @@
 			"ts": 1,
 			"tgt": "[Apterschay emovedray.-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "chapter_not_found",
@@ -512,7 +551,8 @@
 			"ts": 1,
 			"tgt": "[Apterchay otnay oundfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "no_chapters_error",
@@ -522,7 +562,8 @@
 			"ts": 1,
 			"tgt": "[Onay apterschay oundfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "no_pages_found",
@@ -532,7 +573,8 @@
 			"ts": 1,
 			"tgt": "[Onay agespay oundfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "remove_all_downloads",
@@ -542,7 +584,8 @@
 			"ts": 1,
 			"tgt": "[Emoveray allyay ownloadsday?-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "no_chapters_to_delete",
@@ -552,7 +595,8 @@
 			"ts": 1,
 			"tgt": "[Onay apterschay otay eleteday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "by_source_order",
@@ -569,7 +613,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "by_chapter_number",
@@ -579,7 +624,8 @@
 			"ts": 1,
 			"tgt": "[Ybay apterchay umbernay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "by_update_date",
@@ -589,7 +635,8 @@
 			"ts": 1,
 			"tgt": "[Ybay uploadyay ateday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "scanlators",
@@ -599,7 +646,8 @@
 			"ts": 1,
 			"tgt": "[Anlators-scay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "remove_n_chapters_one",
@@ -628,7 +676,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "remove_n_chapters_other",
@@ -657,7 +706,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "chapters_plural_one",
@@ -684,7 +734,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "chapters_plural_other",
@@ -711,7 +762,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "pages_left_one",
@@ -738,7 +790,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "pages_left_other",
@@ -765,7 +818,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "category",
@@ -775,7 +829,8 @@
 			"ts": 1,
 			"tgt": "[Ategorycay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "categories",
@@ -785,7 +840,8 @@
 			"ts": 1,
 			"tgt": "[Ategoriescay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "adding_category_to_queue",
@@ -813,7 +869,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "_already_in_queue",
@@ -839,7 +896,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "create_new_category",
@@ -849,7 +907,8 @@
 			"ts": 1,
 			"tgt": "[Eatecray ewnay ategorycay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "new_category",
@@ -859,7 +918,8 @@
 			"ts": 1,
 			"tgt": "[Ewnay ategorycay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "category_is_empty",
@@ -869,7 +929,8 @@
 			"ts": 1,
 			"tgt": "[Ategorycay isyay emptyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "show_categories_while_filtering",
@@ -879,7 +940,8 @@
 			"ts": 1,
 			"tgt": "[Owshay emptyay ategoriescay ilewhay ilteringfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "no_matches_for_filters_short",
@@ -889,7 +951,8 @@
 			"ts": 1,
 			"tgt": "[Onay atchesmay orfay ouryay iltersfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "top_category",
@@ -917,7 +980,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "default_category",
@@ -927,7 +991,8 @@
 			"ts": 1,
 			"tgt": "[Efaultday ategorycay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "first_category",
@@ -937,7 +1002,8 @@
 			"ts": 1,
 			"tgt": "[Irstfay ategorycay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "categories_on_manual",
@@ -947,7 +1013,8 @@
 			"ts": 1,
 			"tgt": "[Ategoriescay otay updateyay enwhay anuallymay efreshingray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "categories_in_global_update",
@@ -957,7 +1024,8 @@
 			"ts": 1,
 			"tgt": "[Allyay ategoriescay inyay obalglay updateyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "confirm_category_deletion",
@@ -967,7 +1035,8 @@
 			"ts": 1,
 			"tgt": "[Eleteday ategorycay?-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "confirm_category_deletion_message",
@@ -984,7 +1053,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "already_in_category",
@@ -994,7 +1064,8 @@
 			"ts": 1,
 			"tgt": "[Angamay alreadyay inyay ategorycay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "add_categories",
@@ -1004,7 +1075,8 @@
 			"ts": 1,
 			"tgt": "[Addyay ategoriescay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "add_edit_categories",
@@ -1014,7 +1086,8 @@
 			"ts": 1,
 			"tgt": "[Addyay/Edityay ategoriescay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "edit_categories",
@@ -1024,7 +1097,8 @@
 			"ts": 1,
 			"tgt": "[Edityay ategoriescay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "manage_category",
@@ -1034,7 +1108,8 @@
 			"ts": 1,
 			"tgt": "[Anagemay ategorycay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "move_to_categories",
@@ -1044,7 +1119,8 @@
 			"ts": 1,
 			"tgt": "[Ovemay otay ategoriescay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "category_plural_one",
@@ -1071,7 +1147,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "category_plural_other",
@@ -1098,7 +1175,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "category_with_name_exists",
@@ -1108,7 +1186,8 @@
 			"ts": 1,
 			"tgt": "[Ayay ategorycay ithway at-thay amenay alreadyay existsyay!-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "category_cannot_be_blank",
@@ -1118,7 +1197,8 @@
 			"ts": 1,
 			"tgt": "[Ategorycay amenay annotcay ebay ankblay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "category_deleted",
@@ -1128,7 +1208,8 @@
 			"ts": 1,
 			"tgt": "[Ategorycay eleted-day-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "long_press_category",
@@ -1138,7 +1219,8 @@
 			"ts": 1,
 			"tgt": "[Esspray andyay oldhay otay edityay ayay ategorycay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "jump_to_category",
@@ -1148,7 +1230,8 @@
 			"ts": 1,
 			"tgt": "[Umpjay otay ategorycay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "update",
@@ -1158,7 +1241,8 @@
 			"ts": 1,
 			"tgt": "[Updateyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "what_should_update",
@@ -1168,7 +1252,8 @@
 			"ts": 1,
 			"tgt": "[Atwhay ouldshay updateyay?-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "updating_",
@@ -1194,7 +1279,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "update_available",
@@ -1204,7 +1290,8 @@
 			"ts": 1,
 			"tgt": "[Updateyay availableyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "new_version_available",
@@ -1214,7 +1301,8 @@
 			"ts": 1,
 			"tgt": "[Ewnay ersionvay availableyay!-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "no_new_updates_available",
@@ -1224,7 +1312,8 @@
 			"ts": 1,
 			"tgt": "[Onay ewnay updatesyay availableyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "searching_for_updates",
@@ -1234,7 +1323,8 @@
 			"ts": 1,
 			"tgt": "[Earchingsay orfay updatesyay…-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "release_page",
@@ -1244,7 +1334,8 @@
 			"ts": 1,
 			"tgt": "[Eleaseray agepay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "could_not_install_update",
@@ -1254,7 +1345,8 @@
 			"ts": 1,
 			"tgt": "[Ouldcay otnay installyay updateyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "update_completed",
@@ -1264,7 +1356,8 @@
 			"ts": 1,
 			"tgt": "[Updateyay ompletedcay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "library",
@@ -1274,7 +1367,8 @@
 			"ts": 1,
 			"tgt": "[Ibrarylay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "your_library",
@@ -1284,7 +1378,8 @@
 			"ts": 1,
 			"tgt": "[Ouryay ibrarylay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "updating_library",
@@ -1294,7 +1389,8 @@
 			"ts": 1,
 			"tgt": "[Updatingyay ibrarylay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "selected_",
@@ -1320,7 +1416,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "local",
@@ -1330,7 +1427,8 @@
 			"ts": 1,
 			"tgt": "[Ocal-lay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "remove_from_library_question",
@@ -1340,7 +1438,8 @@
 			"ts": 1,
 			"tgt": "[Emoveray omfray ibrarylay?-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "library_search_hint",
@@ -1350,7 +1449,8 @@
 			"ts": 1,
 			"tgt": "[Earchsay itletay, agstay, ourcesay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "library_is_empty_add_from_browse",
@@ -1367,7 +1467,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "no_matches_for_filters",
@@ -1377,7 +1478,8 @@
 			"ts": 1,
 			"tgt": "[Onay atchesmay oundfay orfay ouryay urrentcay iltersfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "getting_started_guide",
@@ -1387,7 +1489,8 @@
 			"ts": 1,
 			"tgt": "[Etting-gay artedstay uidegay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "show_all_categories",
@@ -1397,7 +1500,8 @@
 			"ts": 1,
 			"tgt": "[Owshay allyay ategoriescay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "move_dynamic_to_bottom",
@@ -1407,7 +1511,8 @@
 			"ts": 1,
 			"tgt": "[Ovemay ollapsedcay ynamicday ategoriescay otay ottombay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "show_number_of_items",
@@ -1417,7 +1522,8 @@
 			"ts": 1,
 			"tgt": "[Owshay umbernay ofyay itemsyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "when_grouping_by_sources_tags",
@@ -1427,7 +1533,8 @@
 			"ts": 1,
 			"tgt": "[Enwhay ouping-gray ibrarylay ybay ources-say, atus-stay, etcyay.-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "always_show_current_category",
@@ -1437,7 +1544,8 @@
 			"ts": 1,
 			"tgt": "[Alwaysyay owshay urrentcay ategorycay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "category_hopper_long_press",
@@ -1447,7 +1555,8 @@
 			"ts": 1,
 			"tgt": "[Ategorycay opperhay onglay-esspray actionyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "expand_collapse_all_categories",
@@ -1457,7 +1566,8 @@
 			"ts": 1,
 			"tgt": "[Expandyay/ollapsecay allyay ategoriescay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "open_random_series",
@@ -1467,7 +1577,8 @@
 			"ts": 1,
 			"tgt": "[Openyay ayay andomray eries-say-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "expand_all_categories",
@@ -1477,7 +1588,8 @@
 			"ts": 1,
 			"tgt": "[Expandyay allyay ategoriescay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "collapse_all_categories",
@@ -1487,7 +1599,8 @@
 			"ts": 1,
 			"tgt": "[Ollapsecay allyay ategoriescay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "reorder_filters",
@@ -1497,7 +1610,8 @@
 			"ts": 1,
 			"tgt": "[Eorder-ray iltersfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "_unread",
@@ -1523,7 +1637,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "search_globally",
@@ -1551,7 +1666,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "read_progress",
@@ -1561,7 +1677,8 @@
 			"ts": 1,
 			"tgt": "[Eadray ogresspray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "series_type",
@@ -1571,7 +1688,8 @@
 			"ts": 1,
 			"tgt": "[Eries-say ypetay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "series",
@@ -1581,7 +1699,8 @@
 			"ts": 1,
 			"tgt": "[Eries-say-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "group_library_by",
@@ -1591,7 +1710,8 @@
 			"ts": 1,
 			"tgt": "[Oupgray ibrarylay ybay…-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "tracking_status",
@@ -1601,7 +1721,8 @@
 			"ts": 1,
 			"tgt": "[Ackingtray atus-stay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "ungrouped",
@@ -1611,7 +1732,8 @@
 			"ts": 1,
 			"tgt": "[Ungroupedyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "sort_by",
@@ -1621,7 +1743,8 @@
 			"ts": 1,
 			"tgt": "[Ortsay ybay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "total_chapters",
@@ -1631,7 +1754,8 @@
 			"ts": 1,
 			"tgt": "[Otaltay apterschay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "date_added",
@@ -1641,7 +1765,8 @@
 			"ts": 1,
 			"tgt": "[Ateday addedyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "last_read",
@@ -1651,7 +1776,8 @@
 			"ts": 1,
 			"tgt": "[Astlay eadray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "date_fetched",
@@ -1661,7 +1787,8 @@
 			"ts": 1,
 			"tgt": "[Ateday etchedfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "last_updated",
@@ -1671,7 +1798,8 @@
 			"ts": 1,
 			"tgt": "[Astlay updatedyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "latest_chapter",
@@ -1681,7 +1809,8 @@
 			"ts": 1,
 			"tgt": "[Atestlay apterchay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "drag_and_drop",
@@ -1698,7 +1827,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "display_options",
@@ -1708,7 +1838,8 @@
 			"ts": 1,
 			"tgt": "[Isplayday optionsyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "can_be_found_in_library_filters",
@@ -1718,7 +1849,8 @@
 			"ts": 1,
 			"tgt": "[Ancay alsoyay ebay oundfay ybay expandingyay ibrarylay iltersfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "list",
@@ -1728,7 +1860,8 @@
 			"ts": 1,
 			"tgt": "[Istlay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "comfortable_grid",
@@ -1738,7 +1871,8 @@
 			"ts": 1,
 			"tgt": "[Omfortablecay Idgray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "compact_grid",
@@ -1748,7 +1882,8 @@
 			"ts": 1,
 			"tgt": "[Ompactcay Idgray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "download_badge",
@@ -1758,7 +1893,8 @@
 			"ts": 1,
 			"tgt": "[Ownload-day adgesbay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "hide_start_reading_button",
@@ -1768,7 +1904,8 @@
 			"ts": 1,
 			"tgt": "[Idehay artstay eadingray uttonbay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "badges",
@@ -1778,7 +1915,8 @@
 			"ts": 1,
 			"tgt": "[Adgesbay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "uniform_grid_covers",
@@ -1788,7 +1926,8 @@
 			"ts": 1,
 			"tgt": "[Uniformyay idgray overscay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "show_outline_around_covers",
@@ -1798,7 +1937,8 @@
 			"ts": 1,
 			"tgt": "[Owshay outlineyay aroundyay overscay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "grid_size",
@@ -1808,7 +1948,8 @@
 			"ts": 1,
 			"tgt": "[Idgray izesay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "_per_row",
@@ -1834,7 +1975,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "hide_unread_badges",
@@ -1844,7 +1986,8 @@
 			"ts": 1,
 			"tgt": "[Idehay unreadyay adgesbay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "show_unread_badges",
@@ -1854,7 +1997,8 @@
 			"ts": 1,
 			"tgt": "[Owshay unreadyay adgesbay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "show_unread_count",
@@ -1864,7 +2008,8 @@
 			"ts": 1,
 			"tgt": "[Owshay unreadyay ountcay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "tap_library_to_show_filters",
@@ -1874,7 +2019,8 @@
 			"ts": 1,
 			"tgt": "[Aptay ethay Ibrarylay iconyay otay owshay iltersfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "display_as",
@@ -1884,7 +2030,8 @@
 			"ts": 1,
 			"tgt": "[Isplayday asyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "hide_category_hopper",
@@ -1894,7 +2041,8 @@
 			"ts": 1,
 			"tgt": "[Idehay ategorycay opperhay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "more_library_settings",
@@ -1904,7 +2052,8 @@
 			"ts": 1,
 			"tgt": "[Oremay ibrarylay ettings-say-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "shift_one_page_over",
@@ -1914,7 +2063,8 @@
 			"ts": 1,
 			"tgt": "[Iftshay oneyay agepay overyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "shift_double_pages",
@@ -1924,7 +2074,8 @@
 			"ts": 1,
 			"tgt": "[Iftshay oubleday agespay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "new_chapters_found",
@@ -1934,7 +2085,8 @@
 			"ts": 1,
 			"tgt": "[Ewnay apterschay oundfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "notification_size_warning",
@@ -1944,7 +2096,8 @@
 			"ts": 1,
 			"tgt": "[Argelay updatesyay aymay eadlay otay increasedyay atterybay usageyay andyay ources-say ecomingbay owerslay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "for_n_titles_one",
@@ -1973,7 +2126,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "for_n_titles_other",
@@ -2002,7 +2156,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "notification_and_n_more_one",
@@ -2031,7 +2186,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "notification_and_n_more_other",
@@ -2060,7 +2216,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "notification_update_failed_one",
@@ -2071,7 +2228,8 @@
 			"ts": 1,
 			"tgt": "[1 updateyay ailedfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "notification_update_failed_other",
@@ -2098,7 +2256,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "channel_errors",
@@ -2108,7 +2267,8 @@
 			"ts": 1,
 			"tgt": "[Errorsyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "library_update_frequency",
@@ -2118,7 +2278,8 @@
 			"ts": 1,
 			"tgt": "[Ibrarylay updateyay equencyfray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "library_update_order",
@@ -2128,7 +2289,8 @@
 			"ts": 1,
 			"tgt": "[Ibrarylay updateyay orderyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "library_update_restriction",
@@ -2138,7 +2300,8 @@
 			"ts": 1,
 			"tgt": "[Ibrarylay updateyay estrictionsray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "library_update_restriction_summary",
@@ -2148,7 +2311,8 @@
 			"ts": 1,
 			"tgt": "[Updateyay onlyay enwhay ethay onditionscay areyay etmay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "restrictions_",
@@ -2174,7 +2338,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "only_update_ongoing",
@@ -2184,7 +2349,8 @@
 			"ts": 1,
 			"tgt": "[Onlyay updateyay ongoingyay angamay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "sort_by_ignoring_articles",
@@ -2194,7 +2360,8 @@
 			"ts": 1,
 			"tgt": "[Ortsay ybay ignoringyay articlesyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "when_sorting_ignore_articles",
@@ -2211,7 +2378,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "categories_to_include_in_global_update",
@@ -2221,7 +2389,8 @@
 			"ts": 1,
 			"tgt": "[Ategoriescay otay includeyay inyay obalglay updateyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "include_in_global_update",
@@ -2231,7 +2400,8 @@
 			"ts": 1,
 			"tgt": "[Includeyay inyay obalglay updateyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "auto_refresh_covers",
@@ -2241,7 +2411,8 @@
 			"ts": 1,
 			"tgt": "[Automaticallyay efreshray overscay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "auto_refresh_covers_summary",
@@ -2258,7 +2429,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "global_updates",
@@ -2268,7 +2440,8 @@
 			"ts": 1,
 			"tgt": "[Obalglay updatesyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "display_buttons_bottom_reader",
@@ -2278,7 +2451,8 @@
 			"ts": 1,
 			"tgt": "[Uttonsbay atyay ottombay ofyay eader-ray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "certain_buttons_can_be_found",
@@ -2288,7 +2462,8 @@
 			"ts": 1,
 			"tgt": "[Ertaincay uttonsbay ancay ebay oundfay inyay otheryay acesplay ifyay isabled-day erehay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "search_suggestions",
@@ -2298,7 +2473,8 @@
 			"ts": 1,
 			"tgt": "[Earchsay uggestions-say-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "search_tips_show_periodically",
@@ -2308,7 +2484,8 @@
 			"ts": 1,
 			"tgt": "[Earchsay ipstay illway owshay upyay eriodicallypay. Onglay esspray ethay uggestionsay otay earchsay ityay.-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "recents",
@@ -2318,7 +2495,8 @@
 			"ts": 1,
 			"tgt": "[Ecentsray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "updates_and_history",
@@ -2335,7 +2513,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "updates",
@@ -2345,7 +2524,8 @@
 			"ts": 1,
 			"tgt": "[Updatesyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "newly_added",
@@ -2355,7 +2535,8 @@
 			"ts": 1,
 			"tgt": "[Ewlynay addedyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "history",
@@ -2365,7 +2546,8 @@
 			"ts": 1,
 			"tgt": "[Istoryhay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "reset_chapter_history",
@@ -2375,7 +2557,8 @@
 			"ts": 1,
 			"tgt": "[Esetray apterchay istoryhay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "recent_updates",
@@ -2385,7 +2568,8 @@
 			"ts": 1,
 			"tgt": "[Ecentray updatesyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "this_will_remove_the_read_date_for_x_question",
@@ -2413,7 +2597,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "this_will_remove_the_read_date_question",
@@ -2430,7 +2615,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "reset_all_chapters_for_this_",
@@ -2456,7 +2642,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "last_read_",
@@ -2482,7 +2669,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "read_",
@@ -2508,7 +2696,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "updated_",
@@ -2534,7 +2723,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "added_",
@@ -2560,7 +2750,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "fetched_",
@@ -2586,7 +2777,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "view_history",
@@ -2596,7 +2788,8 @@
 			"ts": 1,
 			"tgt": "[Iewvay istoryhay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "view_all_updates",
@@ -2606,7 +2799,8 @@
 			"ts": 1,
 			"tgt": "[Iewvay allyay updatesyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "search_recents",
@@ -2616,7 +2810,8 @@
 			"ts": 1,
 			"tgt": "[Earchsay ecentsray…-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "no_recent_read_updated_manga",
@@ -2626,7 +2821,8 @@
 			"ts": 1,
 			"tgt": "[Onay ecentlyray eadray oryay updatedyay angamay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "no_recent_chapters",
@@ -2636,7 +2832,8 @@
 			"ts": 1,
 			"tgt": "[Onay ecentray apterschay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "no_recently_read_manga",
@@ -2646,7 +2843,8 @@
 			"ts": 1,
 			"tgt": "[Onay ecentlyray eadray angamay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "grouped",
@@ -2656,7 +2854,8 @@
 			"ts": 1,
 			"tgt": "[Oupedgray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "reset_chapter_question",
@@ -2666,7 +2865,8 @@
 			"ts": 1,
 			"tgt": "[Esetray apterchay?-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "press_and_hold_to_also_reset",
@@ -2676,7 +2876,8 @@
 			"ts": 1,
 			"tgt": "[Esspray andyay oldhay ancay alsoyay esetray apterchay istoryhay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "show_download_button",
@@ -2686,7 +2887,8 @@
 			"ts": 1,
 			"tgt": "[Owshay ownload-day uttonbay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "only_unread",
@@ -2696,7 +2898,8 @@
 			"ts": 1,
 			"tgt": "[Onlyay unreadyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "only_downloaded",
@@ -2706,7 +2909,8 @@
 			"ts": 1,
 			"tgt": "[Onlyay ownloaded-day-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "unread_or_downloaded",
@@ -2716,7 +2920,8 @@
 			"ts": 1,
 			"tgt": "[Unreadyay oryay ownloaded-day-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "show_reset_history_button",
@@ -2726,7 +2931,8 @@
 			"ts": 1,
 			"tgt": "[Owshay esetray istoryhay uttonbay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "show_read_chapters_all",
@@ -2736,7 +2942,8 @@
 			"ts": 1,
 			"tgt": "[Owshay eadray apterschay inyay Oupedgray andyay Allyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "show_title_first",
@@ -2746,7 +2953,8 @@
 			"ts": 1,
 			"tgt": "[Owshay itletay irstfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "a_while_ago",
@@ -2756,7 +2964,8 @@
 			"ts": 1,
 			"tgt": "[Ayay ilewhay agoyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "show_updated_time",
@@ -2766,7 +2975,8 @@
 			"ts": 1,
 			"tgt": "[Owshay updatedyay imetay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "group_chapters_together",
@@ -2776,7 +2986,8 @@
 			"ts": 1,
 			"tgt": "[Oupgray apterschay ogethertay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "uniform_covers",
@@ -2786,7 +2997,8 @@
 			"ts": 1,
 			"tgt": "[Uniformyay overscay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "affects_library_grid",
@@ -2796,7 +3008,8 @@
 			"ts": 1,
 			"tgt": "[Affectsyay ibrarylay idgray overscay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "search_filters",
@@ -2806,7 +3019,8 @@
 			"ts": 1,
 			"tgt": "[Earchsay iltersfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "no_more_results",
@@ -2816,7 +3030,8 @@
 			"ts": 1,
 			"tgt": "[Onay oremay esultsray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "no_results_found",
@@ -2826,7 +3041,8 @@
 			"ts": 1,
 			"tgt": "[Onay esultsray oundfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "local_source",
@@ -2836,7 +3052,8 @@
 			"ts": 1,
 			"tgt": "[Ocal-lay ourcesay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "other",
@@ -2846,7 +3063,8 @@
 			"ts": 1,
 			"tgt": "[Otheryay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "global_search",
@@ -2856,7 +3074,8 @@
 			"ts": 1,
 			"tgt": "[Obalglay earchsay…-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "label_global_search",
@@ -2866,7 +3085,8 @@
 			"ts": 1,
 			"tgt": "[Obalglay earchsay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "latest",
@@ -2876,7 +3096,8 @@
 			"ts": 1,
 			"tgt": "[Atestlay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "browse",
@@ -2886,7 +3107,8 @@
 			"ts": 1,
 			"tgt": "[Owsebray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "in_library",
@@ -2896,7 +3118,8 @@
 			"ts": 1,
 			"tgt": "[Inyay Ibrarylay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "search_extensions",
@@ -2906,7 +3129,8 @@
 			"ts": 1,
 			"tgt": "[Earchsay extensionsyay…-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "all_sources",
@@ -2916,7 +3140,8 @@
 			"ts": 1,
 			"tgt": "[Allyay ources-say-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "sources",
@@ -2926,7 +3151,8 @@
 			"ts": 1,
 			"tgt": "[Ources-say-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "source_hidden",
@@ -2936,7 +3162,8 @@
 			"ts": 1,
 			"tgt": "[Ourcesay iddenhay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "last_used",
@@ -2946,7 +3173,8 @@
 			"ts": 1,
 			"tgt": "[Astlay usedyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "local_source_help_guide",
@@ -2956,7 +3184,8 @@
 			"ts": 1,
 			"tgt": "[Ocal-lay ourcesay uidegay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "check_site_in_web",
@@ -2966,7 +3195,8 @@
 			"ts": 1,
 			"tgt": "[Eckchay ebsiteway inyay EbView-way-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "extensions",
@@ -2976,7 +3206,8 @@
 			"ts": 1,
 			"tgt": "[Extensionsyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "extension_updates",
@@ -2986,7 +3217,8 @@
 			"ts": 1,
 			"tgt": "[Extensionyay updatesyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "extension_updates_pending",
@@ -2996,7 +3228,8 @@
 			"ts": 1,
 			"tgt": "[Extensionyay updatesyay endingpay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "extension_info",
@@ -3006,7 +3239,8 @@
 			"ts": 1,
 			"tgt": "[Extensionyay infoyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "filter_languages",
@@ -3016,7 +3250,8 @@
 			"ts": 1,
 			"tgt": "[Ilterfay Anguageslay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "obsolete",
@@ -3026,7 +3261,8 @@
 			"ts": 1,
 			"tgt": "[Obsoleteyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "pending",
@@ -3036,7 +3272,8 @@
 			"ts": 1,
 			"tgt": "[Endingpay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "installing",
@@ -3046,7 +3283,8 @@
 			"ts": 1,
 			"tgt": "[Installingyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "installed",
@@ -3056,7 +3294,8 @@
 			"ts": 1,
 			"tgt": "[Installedyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "trust",
@@ -3066,7 +3305,8 @@
 			"ts": 1,
 			"tgt": "[Ust-tray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "untrusted",
@@ -3076,7 +3316,8 @@
 			"ts": 1,
 			"tgt": "[Untrustedyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "uninstall",
@@ -3086,7 +3327,8 @@
 			"ts": 1,
 			"tgt": "[Uninstallyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "untrusted_extension",
@@ -3096,7 +3338,8 @@
 			"ts": 1,
 			"tgt": "[Untrustedyay extensionyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "untrusted_extension_message",
@@ -3113,7 +3356,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "obsolete_extension_message",
@@ -3123,7 +3367,8 @@
 			"ts": 1,
 			"tgt": "[Isthay extensionyay isyay onay ongerlay availableyay.-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "unofficial_extension_message",
@@ -3133,7 +3378,8 @@
 			"ts": 1,
 			"tgt": "[Isthay extensionyay isyay otnay omfray ethay officialyay Achiyomitay extensionsyay istlay.-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "version_",
@@ -3159,7 +3405,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "language_",
@@ -3185,7 +3432,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "nsfw_short",
@@ -3195,7 +3443,8 @@
 			"ts": 1,
 			"tgt": "[18+-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "installed_",
@@ -3221,7 +3470,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "unofficial",
@@ -3231,7 +3481,8 @@
 			"ts": 1,
 			"tgt": "[Unofficialyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "extensions_miui_warning",
@@ -3241,7 +3492,8 @@
 			"ts": 1,
 			"tgt": "[IUIMAY Optimizationyay ustmay ebay isabled-day otay installyay extensionsyay.-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "may_contain_nsfw",
@@ -3251,7 +3503,8 @@
 			"ts": 1,
 			"tgt": "[Aymay ontaincay NSFW (18+) ontentcay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "app_info",
@@ -3261,7 +3514,8 @@
 			"ts": 1,
 			"tgt": "[Appyay infoyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "_must_be_enabled_first",
@@ -3287,7 +3541,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "could_not_install_extension",
@@ -3297,7 +3552,8 @@
 			"ts": 1,
 			"tgt": "[Ouldcay otnay installyay extensionyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "update_all",
@@ -3307,7 +3563,8 @@
 			"ts": 1,
 			"tgt": "[Updateyay allyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "some_extensions_may_prompt",
@@ -3317,7 +3574,8 @@
 			"ts": 1,
 			"tgt": "[Omesay extensionsyay aymay illstay omptpray otay ebay installedyay irstfay.-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "updating_extensions",
@@ -3327,7 +3585,8 @@
 			"ts": 1,
 			"tgt": "[Updatingyay extensionsyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "_updates_pending_one",
@@ -3354,7 +3613,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "_updates_pending_other",
@@ -3381,7 +3641,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "extensions_updated",
@@ -3391,7 +3652,8 @@
 			"ts": 1,
 			"tgt": "[Extensionsyay updatedyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "extensions_updated_plural_one",
@@ -3402,7 +3664,8 @@
 			"ts": 1,
 			"tgt": "[Extensionyay updatedyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "extensions_updated_plural_other",
@@ -3429,7 +3692,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "extension_updates_available_one",
@@ -3440,7 +3704,8 @@
 			"ts": 1,
 			"tgt": "[Extensionyay updateyay availableyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "extension_updates_available_other",
@@ -3467,7 +3732,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "set_as_cover",
@@ -3477,7 +3743,8 @@
 			"ts": 1,
 			"tgt": "[Etsay asyay overcay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "reader_settings",
@@ -3487,7 +3754,8 @@
 			"ts": 1,
 			"tgt": "[Eader-ray ettings-say-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "set_as_default_for_all",
@@ -3497,7 +3765,8 @@
 			"ts": 1,
 			"tgt": "[Etsay asyay efaultday orfay allyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "cover_updated",
@@ -3507,7 +3776,8 @@
 			"ts": 1,
 			"tgt": "[Overcay updatedyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "page_",
@@ -3533,7 +3803,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "pages_",
@@ -3559,7 +3830,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "next_chapter_not_found",
@@ -3569,7 +3841,8 @@
 			"ts": 1,
 			"tgt": "[Extnay apterchay otnay oundfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "decode_image_error",
@@ -3579,7 +3852,8 @@
 			"ts": 1,
 			"tgt": "[Ethay imageyay ouldcay otnay ebay ecoded-day-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "use_image_as_cover",
@@ -3589,7 +3863,8 @@
 			"ts": 1,
 			"tgt": "[Useyay isthay imageyay asyay overcay artyay?-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "reading_mode",
@@ -3599,7 +3874,8 @@
 			"ts": 1,
 			"tgt": "[Eadingray odemay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "changing_will_reset_reading_mode",
@@ -3609,7 +3885,8 @@
 			"ts": 1,
 			"tgt": "[Angingchay isthay illway esetray ethay eadingray odemay orfay isthay eries-say-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "finished_chapter",
@@ -3619,7 +3896,8 @@
 			"ts": 1,
 			"tgt": "[Inishedfay:-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "current_chapter",
@@ -3629,7 +3907,8 @@
 			"ts": 1,
 			"tgt": "[Urrentcay:-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "next_title",
@@ -3639,7 +3918,8 @@
 			"ts": 1,
 			"tgt": "[Extnay:-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "previous_title",
@@ -3649,7 +3929,8 @@
 			"ts": 1,
 			"tgt": "[Eviouspray:-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "theres_no_next_chapter",
@@ -3666,7 +3947,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "theres_no_previous_chapter",
@@ -3683,7 +3965,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "loading_pages",
@@ -3693,7 +3976,8 @@
 			"ts": 1,
 			"tgt": "[Oadinglay agespay…-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "failed_to_load_pages_",
@@ -3719,7 +4003,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "reading_",
@@ -3745,7 +4030,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "webtoon_style",
@@ -3755,7 +4041,8 @@
 			"ts": 1,
 			"tgt": "[ebtoonway ylestay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "next_page",
@@ -3765,7 +4052,8 @@
 			"ts": 1,
 			"tgt": "[Extnay agepay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "previous_page",
@@ -3775,7 +4063,8 @@
 			"ts": 1,
 			"tgt": "[Eviouspray agepay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "next_chapter",
@@ -3785,7 +4074,8 @@
 			"ts": 1,
 			"tgt": "[Extnay apterchay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "previous_chapter",
@@ -3795,7 +4085,8 @@
 			"ts": 1,
 			"tgt": "[Eviouspray apterchay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "set_first_page_as_cover",
@@ -3805,7 +4096,8 @@
 			"ts": 1,
 			"tgt": "[Etsay irstfay agepay asyay overcay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "share_first_page",
@@ -3815,7 +4107,8 @@
 			"ts": 1,
 			"tgt": "[Areshay irstfay agepay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "save_first_page",
@@ -3825,7 +4118,8 @@
 			"ts": 1,
 			"tgt": "[Avesay irstfay agepay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "set_second_page_as_cover",
@@ -3835,7 +4129,8 @@
 			"ts": 1,
 			"tgt": "[Etsay econdsay agepay asyay overcay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "share_second_page",
@@ -3845,7 +4140,8 @@
 			"ts": 1,
 			"tgt": "[Areshay econdsay agepay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "save_second_page",
@@ -3855,7 +4151,8 @@
 			"ts": 1,
 			"tgt": "[Avesay econdsay agepay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "share_combined_pages",
@@ -3865,7 +4162,8 @@
 			"ts": 1,
 			"tgt": "[Areshay ombinedcay agespay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "save_combined_pages",
@@ -3875,7 +4173,8 @@
 			"ts": 1,
 			"tgt": "[Avesay ombinedcay agespay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "fullscreen",
@@ -3885,7 +4184,8 @@
 			"ts": 1,
 			"tgt": "[Ullscreenfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "animate_page_transitions",
@@ -3895,7 +4195,8 @@
 			"ts": 1,
 			"tgt": "[Animateyay agepay ansitionstray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "enable_zoom_out",
@@ -3905,7 +4206,8 @@
 			"ts": 1,
 			"tgt": "[Enableyay oomzay outyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "double_tap_anim_speed",
@@ -3915,7 +4217,8 @@
 			"ts": 1,
 			"tgt": "[Oubleday aptay animationyay eedspay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "show_page_number",
@@ -3925,7 +4228,8 @@
 			"ts": 1,
 			"tgt": "[Owshay agepay umbernay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "true_32bit_color",
@@ -3935,7 +4239,8 @@
 			"ts": 1,
 			"tgt": "[32-itbay olorcay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "page_preload_amount",
@@ -3945,7 +4250,8 @@
 			"ts": 1,
 			"tgt": "[Agepay eloadpray amountyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "amount_of_pages_to_preload",
@@ -3955,7 +4261,8 @@
 			"ts": 1,
 			"tgt": "[Ethay amountyay ofyay agespay otay eloadpray enwhay eadingray. Igherhay aluesvay illway esultray inyay ayay oothersmay eadingray experienceyay, atyay ethay ostcay ofyay igherhay achecay andyay etworknay usageyay.-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "reduces_banding_impacts_performance",
@@ -3972,7 +4279,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "invert_double_pages",
@@ -3982,7 +4290,8 @@
 			"ts": 1,
 			"tgt": "[Invertyay oubleday agespay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "split_double_pages_portrait",
@@ -3992,7 +4301,8 @@
 			"ts": 1,
 			"tgt": "[Itsplay oubleday agespay inyay ortraitpay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "crop_borders",
@@ -4002,7 +4312,8 @@
 			"ts": 1,
 			"tgt": "[Opcray ordersbay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "crop_borders_paged",
@@ -4012,7 +4323,8 @@
 			"ts": 1,
 			"tgt": "[Opcray ordersbay (Agedpay)-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "crop_borders_webtoon",
@@ -4022,7 +4334,8 @@
 			"ts": 1,
 			"tgt": "[Opcray ordersbay (Ebtoonway)-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "remove_crop",
@@ -4032,7 +4345,8 @@
 			"ts": 1,
 			"tgt": "[Emoveray opcray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "use_custom_brightness",
@@ -4042,7 +4356,8 @@
 			"ts": 1,
 			"tgt": "[Useyay ustomcay ightnessbray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "use_custom_color_filter",
@@ -4052,7 +4367,8 @@
 			"ts": 1,
 			"tgt": "[Useyay ustomcay olorcay ilterfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "color_filter_blend_mode",
@@ -4062,7 +4378,8 @@
 			"ts": 1,
 			"tgt": "[Olorcay ilterfay endblay odemay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "overlay",
@@ -4072,7 +4389,8 @@
 			"ts": 1,
 			"tgt": "[Overlayay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "multiply",
@@ -4082,7 +4400,8 @@
 			"ts": 1,
 			"tgt": "[Ultiplymay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "screen",
@@ -4092,7 +4411,8 @@
 			"ts": 1,
 			"tgt": "[Eenscray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "dodge_lighten",
@@ -4102,7 +4422,8 @@
 			"ts": 1,
 			"tgt": "[Odgeday / Ightenlay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "burn_darken",
@@ -4112,7 +4433,8 @@
 			"ts": 1,
 			"tgt": "[Urnbay / Arkenday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "keep_screen_on",
@@ -4122,7 +4444,8 @@
 			"ts": 1,
 			"tgt": "[Eepkay eenscray onyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "skip_read_chapters",
@@ -4132,7 +4455,8 @@
 			"ts": 1,
 			"tgt": "[Ipskay apterschay arkedmay eadray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "skip_filtered_chapters",
@@ -4142,7 +4466,8 @@
 			"ts": 1,
 			"tgt": "[Ipskay ilteredfay apterschay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "navigation",
@@ -4152,7 +4477,8 @@
 			"ts": 1,
 			"tgt": "[Avigation-nay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "volume_keys",
@@ -4162,7 +4488,8 @@
 			"ts": 1,
 			"tgt": "[Olumevay eyskay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "invert_volume_keys",
@@ -4172,7 +4499,8 @@
 			"ts": 1,
 			"tgt": "[Invertyay olumevay eyskay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "tapping",
@@ -4182,7 +4510,8 @@
 			"ts": 1,
 			"tgt": "[Appingtay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "background_color",
@@ -4192,7 +4521,8 @@
 			"ts": 1,
 			"tgt": "[Ackgroundbay olorcay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "white",
@@ -4202,7 +4532,8 @@
 			"ts": 1,
 			"tgt": "[Itewhay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "black",
@@ -4212,7 +4543,8 @@
 			"ts": 1,
 			"tgt": "[Ackblay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "smart_by_page",
@@ -4222,7 +4554,8 @@
 			"ts": 1,
 			"tgt": "[Artsmay (ybay agepay)-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "smart_by_theme",
@@ -4232,7 +4565,8 @@
 			"ts": 1,
 			"tgt": "[Artsmay (ybay emethay)-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "default_reading_mode",
@@ -4242,7 +4576,8 @@
 			"ts": 1,
 			"tgt": "[Efaultday eadingray odemay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "left_to_right_viewer",
@@ -4252,7 +4587,8 @@
 			"ts": 1,
 			"tgt": "[Eftlay otay ightray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "right_to_left_viewer",
@@ -4262,7 +4598,8 @@
 			"ts": 1,
 			"tgt": "[Ightray otay eftlay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "vertical_viewer",
@@ -4272,7 +4609,8 @@
 			"ts": 1,
 			"tgt": "[Erticalvay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "continuous_vertical",
@@ -4282,7 +4620,8 @@
 			"ts": 1,
 			"tgt": "[Ontinuouscay erticalvay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "paged",
@@ -4292,7 +4631,8 @@
 			"ts": 1,
 			"tgt": "[Agedpay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "scale_type",
@@ -4302,7 +4642,8 @@
 			"ts": 1,
 			"tgt": "[Alescay ypetay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "nav_layout",
@@ -4312,7 +4653,8 @@
 			"ts": 1,
 			"tgt": "[Avigation-nay ayoutlay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "fit_screen",
@@ -4322,7 +4664,8 @@
 			"ts": 1,
 			"tgt": "[Itfay eenscray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "stretch",
@@ -4332,7 +4675,8 @@
 			"ts": 1,
 			"tgt": "[Etchstray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "fit_width",
@@ -4342,7 +4686,8 @@
 			"ts": 1,
 			"tgt": "[Itfay idthway-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "fit_height",
@@ -4352,7 +4697,8 @@
 			"ts": 1,
 			"tgt": "[Itfay eighthay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "original_size",
@@ -4362,7 +4708,8 @@
 			"ts": 1,
 			"tgt": "[Originalyay izesay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "smart_fit",
@@ -4372,7 +4719,8 @@
 			"ts": 1,
 			"tgt": "[Artsmay itfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "zoom_start_position",
@@ -4382,7 +4730,8 @@
 			"ts": 1,
 			"tgt": "[Oomzay artstay ositionpay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "split_double_pages",
@@ -4392,7 +4741,8 @@
 			"ts": 1,
 			"tgt": "[Itsplay oubleday agespay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "double_pages",
@@ -4402,7 +4752,8 @@
 			"ts": 1,
 			"tgt": "[Oubleday agespay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "single_page",
@@ -4412,7 +4763,8 @@
 			"ts": 1,
 			"tgt": "[Inglesay agepay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "switch_to_double",
@@ -4422,7 +4774,8 @@
 			"ts": 1,
 			"tgt": "[Itchsway otay oubleday agespay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "switch_to_single",
@@ -4432,7 +4785,8 @@
 			"ts": 1,
 			"tgt": "[Itchsway otay inglesay agepay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "portrait",
@@ -4442,7 +4796,8 @@
 			"ts": 1,
 			"tgt": "[Ortraitpay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "landscape",
@@ -4452,7 +4807,8 @@
 			"ts": 1,
 			"tgt": "[Andscapelay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "locked_portrait",
@@ -4462,7 +4818,8 @@
 			"ts": 1,
 			"tgt": "[Ockedlay ortraitpay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "locked_landscape",
@@ -4472,7 +4829,8 @@
 			"ts": 1,
 			"tgt": "[Ockedlay andscapelay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "red_initial",
@@ -4482,7 +4840,8 @@
 			"ts": 1,
 			"tgt": "[R-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "green_initial",
@@ -4492,7 +4851,8 @@
 			"ts": 1,
 			"tgt": "[G-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "blue_initial",
@@ -4502,7 +4862,8 @@
 			"ts": 1,
 			"tgt": "[B-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "alpha_initial",
@@ -4512,7 +4873,8 @@
 			"ts": 1,
 			"tgt": "[Ayay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "smart_based_on_page",
@@ -4522,7 +4884,8 @@
 			"ts": 1,
 			"tgt": "[Artsmay (asedbay onyay agepay)-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "smart_based_on_page_and_theme",
@@ -4532,7 +4895,8 @@
 			"ts": 1,
 			"tgt": "[Artsmay (asedbay onyay agepay andyay emethay)-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "always_show_chapter_transition",
@@ -4542,7 +4906,8 @@
 			"ts": 1,
 			"tgt": "[Alwaysyay owshay apterchay ansitiontray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "if_disabled_transition_will_skip",
@@ -4559,7 +4924,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "pref_webtoon_side_padding",
@@ -4569,7 +4935,8 @@
 			"ts": 1,
 			"tgt": "[Idesay addingpay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "webtoon_side_padding_0",
@@ -4579,7 +4946,8 @@
 			"ts": 1,
 			"tgt": "[Onenay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "webtoon_side_padding_10",
@@ -4589,7 +4957,8 @@
 			"ts": 1,
 			"tgt": "[10%-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "webtoon_side_padding_15",
@@ -4599,7 +4968,8 @@
 			"ts": 1,
 			"tgt": "[15%-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "webtoon_side_padding_20",
@@ -4609,7 +4979,8 @@
 			"ts": 1,
 			"tgt": "[20%-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "webtoon_side_padding_25",
@@ -4619,7 +4990,8 @@
 			"ts": 1,
 			"tgt": "[25%-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "l_nav",
@@ -4629,7 +5001,8 @@
 			"ts": 1,
 			"tgt": "[L apedshay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "kindlish_nav",
@@ -4639,7 +5012,8 @@
 			"ts": 1,
 			"tgt": "[Indlekay-ishyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "edge_nav",
@@ -4649,7 +5023,8 @@
 			"ts": 1,
 			"tgt": "[Edgeyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "right_and_left_nav",
@@ -4659,7 +5034,8 @@
 			"ts": 1,
 			"tgt": "[Ightray andyay Eftlay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "invert_tapping",
@@ -4669,7 +5045,8 @@
 			"ts": 1,
 			"tgt": "[Invertyay appingtay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "none",
@@ -4679,7 +5056,8 @@
 			"ts": 1,
 			"tgt": "[Onenay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "horizontally",
@@ -4689,7 +5067,8 @@
 			"ts": 1,
 			"tgt": "[Orizontallyhay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "vertically",
@@ -4699,7 +5078,8 @@
 			"ts": 1,
 			"tgt": "[Erticallyvay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "both_axes",
@@ -4709,7 +5089,8 @@
 			"ts": 1,
 			"tgt": "[Othbay Axesyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "cutout_area_behavior",
@@ -4719,7 +5100,8 @@
 			"ts": 1,
 			"tgt": "[Utoutcay areayay ehaviorbay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "pad_cutout_areas",
@@ -4729,7 +5111,8 @@
 			"ts": 1,
 			"tgt": "[Adpay utoutcay areasyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "start_past_cutout",
@@ -4739,7 +5122,8 @@
 			"ts": 1,
 			"tgt": "[Artstay astpay utoutcay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "ignore_cutout_areas",
@@ -4749,7 +5133,8 @@
 			"ts": 1,
 			"tgt": "[Ignoreyay utoutcay areasyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "cutout_behavior_only_applies",
@@ -4759,7 +5144,8 @@
 			"ts": 1,
 			"tgt": "[Utoutcay areayay ehaviorbay onlyay appliesyay inyay ortraitpay odemay ithway ertaincay alescay ypestay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "page_layout",
@@ -4769,7 +5155,8 @@
 			"ts": 1,
 			"tgt": "[Agepay ayoutlay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "automatic_can_still_switch",
@@ -4779,7 +5166,8 @@
 			"ts": 1,
 			"tgt": "[Ilewhay usingyay automaticyay agepay ayoutlay, ouyay ancay illstay itchsway etweenbay ayoutslay ilewhay eadingray ithoutway overridingyay isthay ettingsay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "automatic_orientation",
@@ -4789,7 +5177,8 @@
 			"ts": 1,
 			"tgt": "[Automaticyay (asedbay onyay orientationyay)-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "webtoon_cannot_change",
@@ -4799,7 +5188,8 @@
 			"ts": 1,
 			"tgt": "[Annotcay angechay eadingray odemay omfray ebtoonway. Edityay ethay eries-say ypetay irstfay otay angechay.-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "actions",
@@ -4809,7 +5199,8 @@
 			"ts": 1,
 			"tgt": "[Actionsyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "show_on_long_press",
@@ -4819,7 +5210,8 @@
 			"ts": 1,
 			"tgt": "[Owshay onyay onglay esspray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "save_pages_separately",
@@ -4829,7 +5221,8 @@
 			"ts": 1,
 			"tgt": "[Avesay agespay inyay eparatesay oldersfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "create_folders_by_manga_title",
@@ -4839,7 +5232,8 @@
 			"ts": 1,
 			"tgt": "[Eatescray oldersfay accordingyay otay angamay itletay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "pages_plural_one",
@@ -4866,7 +5260,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "pages_plural_other",
@@ -4893,7 +5288,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "missing_chapters_warning_one",
@@ -4904,7 +5300,8 @@
 			"ts": 1,
 			"tgt": "[Ippingskay 1 apterchay, eitheryay ethay ourcesay isyay issingmay ityay oryay ityay ashay eenbay ilteredfay outyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "missing_chapters_warning_other",
@@ -4933,7 +5330,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "about_this_",
@@ -4959,7 +5357,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "start_reading",
@@ -4969,7 +5368,8 @@
 			"ts": 1,
 			"tgt": "[Artstay eadingray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "start_reading_chapter_",
@@ -4995,7 +5395,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "continue_reading_chapter_",
@@ -5021,7 +5422,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "continue_reading",
@@ -5031,7 +5433,8 @@
 			"ts": 1,
 			"tgt": "[Ontinuecay eadingray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "chapters_",
@@ -5057,7 +5460,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "volume_",
@@ -5083,7 +5487,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "season_",
@@ -5109,7 +5514,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "added_to_library",
@@ -5119,7 +5525,8 @@
 			"ts": 1,
 			"tgt": "[Addedyay otay ibrarylay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "add_to_library",
@@ -5129,7 +5536,8 @@
 			"ts": 1,
 			"tgt": "[Addyay otay Ibrarylay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "removed_from_library",
@@ -5139,7 +5547,8 @@
 			"ts": 1,
 			"tgt": "[Emovedray omfray ibrarylay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "_copied_to_clipboard",
@@ -5165,7 +5574,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "source_not_installed_",
@@ -5191,7 +5601,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "no_description",
@@ -5201,7 +5612,8 @@
 			"ts": 1,
 			"tgt": "[Onay escriptionday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "mark_all_chapters_as_read",
@@ -5211,7 +5623,8 @@
 			"ts": 1,
 			"tgt": "[Arkmay allyay apterschay asyay eadray?-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "mark_all_chapters_as_unread",
@@ -5221,7 +5634,8 @@
 			"ts": 1,
 			"tgt": "[Arkmay allyay apterschay asyay unreadyay?-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "remove_from_library",
@@ -5231,7 +5645,8 @@
 			"ts": 1,
 			"tgt": "[Emoveray omfray ibrarylay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "select_starting_chapter",
@@ -5241,7 +5656,8 @@
 			"ts": 1,
 			"tgt": "[Electsay artingstay apterchay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "select_ending_chapter",
@@ -5251,7 +5667,8 @@
 			"ts": 1,
 			"tgt": "[Electsay endingyay apterchay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "search_chapters",
@@ -5261,7 +5678,8 @@
 			"ts": 1,
 			"tgt": "[Earchsay apterschay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "next_unread_chapter",
@@ -5271,7 +5689,8 @@
 			"ts": 1,
 			"tgt": "[Extnay unreadyay apterchay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "next_5_unread",
@@ -5281,7 +5700,8 @@
 			"ts": 1,
 			"tgt": "[Extnay 5 unreadyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "custom_range",
@@ -5291,7 +5711,8 @@
 			"ts": 1,
 			"tgt": "[Ustomcay angeray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "all_chapters",
@@ -5301,7 +5722,8 @@
 			"ts": 1,
 			"tgt": "[Allyay apterschay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "all_unread_chapters",
@@ -5311,7 +5733,8 @@
 			"ts": 1,
 			"tgt": "[Allyay unreadyay apterschay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "all_read_chapters",
@@ -5321,7 +5744,8 @@
 			"ts": 1,
 			"tgt": "[Allyay eadray apterschay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "all_but_bookmarked_chapters",
@@ -5331,7 +5755,8 @@
 			"ts": 1,
 			"tgt": "[Allyay utbay ookmarkedbay apterschay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "add_x_to_library",
@@ -5359,7 +5784,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "show_all",
@@ -5369,7 +5795,8 @@
 			"ts": 1,
 			"tgt": "[Owshay Allyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "show_bookmarked_chapters",
@@ -5379,7 +5806,8 @@
 			"ts": 1,
 			"tgt": "[Owshay ookmarkedbay apterschay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "show_downloaded_chapters",
@@ -5389,7 +5817,8 @@
 			"ts": 1,
 			"tgt": "[Owshay ownloaded-day apterschay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "show_unread_chapters",
@@ -5399,7 +5828,8 @@
 			"ts": 1,
 			"tgt": "[Owshay unreadyay apterschay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "show_read_chapters",
@@ -5409,7 +5839,8 @@
 			"ts": 1,
 			"tgt": "[Owshay eadray apterschay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "hide_chapter_titles",
@@ -5419,7 +5850,8 @@
 			"ts": 1,
 			"tgt": "[Idehay apterchay itlestay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "sort_by_source_s_order",
@@ -5436,7 +5868,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "sort_by_chapter_number",
@@ -5446,7 +5879,8 @@
 			"ts": 1,
 			"tgt": "[Ortsay ybay apterchay umbernay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "newest_first",
@@ -5456,7 +5890,8 @@
 			"ts": 1,
 			"tgt": "[Ewestnay otay oldestyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "oldest_first",
@@ -5466,7 +5901,8 @@
 			"ts": 1,
 			"tgt": "[Oldestyay otay ewestnay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "add_tag",
@@ -5476,7 +5912,8 @@
 			"ts": 1,
 			"tgt": "[Addyay agtay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "clear_tags",
@@ -5486,7 +5923,8 @@
 			"ts": 1,
 			"tgt": "[Earclay agstay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "reset_tags",
@@ -5496,7 +5934,8 @@
 			"ts": 1,
 			"tgt": "[Esetray agstay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "reset_cover",
@@ -5506,7 +5945,8 @@
 			"ts": 1,
 			"tgt": "[Esetray overcay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "failed_to_update_cover",
@@ -5516,7 +5956,8 @@
 			"ts": 1,
 			"tgt": "[Ailedfay otay updateyay overcay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "must_be_in_library_to_edit",
@@ -5526,7 +5967,8 @@
 			"ts": 1,
 			"tgt": "[Angamay ustmay ebay inyay ouryay ibrarylay otay edityay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "remember_this_choice",
@@ -5536,7 +5978,8 @@
 			"ts": 1,
 			"tgt": "[Emember-ray isthay oicechay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "source_not_installed",
@@ -5546,7 +5989,8 @@
 			"ts": 1,
 			"tgt": "[Ourcesay otnay installedyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "cover_saved",
@@ -5556,7 +6000,8 @@
 			"ts": 1,
 			"tgt": "[Overcay avedsay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "error_saving_cover",
@@ -5566,7 +6011,8 @@
 			"ts": 1,
 			"tgt": "[Erroryay avingsay overcay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "error_sharing_cover",
@@ -5576,7 +6022,8 @@
 			"ts": 1,
 			"tgt": "[Erroryay aringshay overcay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "custom_manga_info",
@@ -5586,7 +6033,8 @@
 			"ts": 1,
 			"tgt": "[Ustomcay angamay infoyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "set_as_default",
@@ -5596,7 +6044,8 @@
 			"ts": 1,
 			"tgt": "[Etsay asyay efaultday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "filter_groups",
@@ -5606,7 +6055,8 @@
 			"ts": 1,
 			"tgt": "[Ilterfay anlatorscay oupsgray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "deleted_chapters_one",
@@ -5635,7 +6085,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "deleted_chapters_other",
@@ -5673,7 +6124,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "tracking",
@@ -5683,7 +6135,8 @@
 			"ts": 1,
 			"tgt": "[Ackingtray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "tracked",
@@ -5693,7 +6146,8 @@
 			"ts": 1,
 			"tgt": "[Ackedtray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "not_tracked",
@@ -5703,7 +6157,8 @@
 			"ts": 1,
 			"tgt": "[Otnay ackedtray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "services",
@@ -5713,7 +6168,8 @@
 			"ts": 1,
 			"tgt": "[Ervices-say-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "sync_chapters_after_reading",
@@ -5723,7 +6179,8 @@
 			"ts": 1,
 			"tgt": "[Yncsay apterschay afteryay eadingray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "track_when_adding_to_library",
@@ -5733,7 +6190,8 @@
 			"ts": 1,
 			"tgt": "[Acktray enwhay addingyay otay ibrarylay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "only_applies_silent_trackers",
@@ -5743,7 +6201,8 @@
 			"ts": 1,
 			"tgt": "[Onlyay appliesyay otay ilentsay ackerstray, uchsay asyay Omgakay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "reading",
@@ -5753,7 +6212,8 @@
 			"ts": 1,
 			"tgt": "[Eadingray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "currently_reading",
@@ -5763,7 +6223,8 @@
 			"ts": 1,
 			"tgt": "[Urrentlycay Eadingray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "dropped",
@@ -5773,7 +6234,8 @@
 			"ts": 1,
 			"tgt": "[Opped-dray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "on_hold",
@@ -5783,7 +6245,8 @@
 			"ts": 1,
 			"tgt": "[Onyay oldhay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "plan_to_read",
@@ -5793,7 +6256,8 @@
 			"ts": 1,
 			"tgt": "[Anplay otay eadray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "want_to_read",
@@ -5803,7 +6267,8 @@
 			"ts": 1,
 			"tgt": "[Antway otay Eadray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "paused",
@@ -5813,7 +6278,8 @@
 			"ts": 1,
 			"tgt": "[Ausedpay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "rereading",
@@ -5823,7 +6289,8 @@
 			"ts": 1,
 			"tgt": "[Ereadingray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "score",
@@ -5833,7 +6300,8 @@
 			"ts": 1,
 			"tgt": "[Orescay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "status",
@@ -5843,7 +6311,8 @@
 			"ts": 1,
 			"tgt": "[Atus-stay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "started",
@@ -5853,7 +6322,8 @@
 			"ts": 1,
 			"tgt": "[Artedstay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "type",
@@ -5863,7 +6333,8 @@
 			"ts": 1,
 			"tgt": "[Ypetay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "url_not_set_click_again",
@@ -5873,7 +6344,8 @@
 			"ts": 1,
 			"tgt": "[Angamay URLYAY otnay etsay, easeplay ickclay itletay andyay electsay angamay againyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "refresh_tracking",
@@ -5883,7 +6355,8 @@
 			"ts": 1,
 			"tgt": "[Efreshray ackingtray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "add_tracking",
@@ -5893,7 +6366,8 @@
 			"ts": 1,
 			"tgt": "[Addyay ackingtray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "select_an_entry",
@@ -5903,7 +6377,8 @@
 			"ts": 1,
 			"tgt": "[Electsay anyay entryay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "source_unsupported",
@@ -5913,7 +6388,8 @@
 			"ts": 1,
 			"tgt": "[Ourcesay isyay otnay upportedsay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "no_match_found",
@@ -5923,7 +6399,8 @@
 			"ts": 1,
 			"tgt": "[Onay atchmay oundfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "remove_tracking",
@@ -5933,7 +6410,8 @@
 			"ts": 1,
 			"tgt": "[Emoveray ackingtray omfray appyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "cannot_remove_tracking_while_offline",
@@ -5961,7 +6439,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "remove_tracking_from_",
@@ -5987,7 +6466,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "remove_previous_tracker",
@@ -5997,7 +6477,8 @@
 			"ts": 1,
 			"tgt": "[Emoveray eviouspray ackertray?-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "remove_x_from_service_and_add_y",
@@ -6045,7 +6526,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "keep_both_on_service",
@@ -6073,7 +6555,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "started_reading_date",
@@ -6083,7 +6566,8 @@
 			"ts": 1,
 			"tgt": "[Artedstay eadingray ateday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "finished_reading_date",
@@ -6093,7 +6577,8 @@
 			"ts": 1,
 			"tgt": "[Inishedfay eadingray ateday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "myanimelist_relogin",
@@ -6103,7 +6588,8 @@
 			"ts": 1,
 			"tgt": "[Easeplay oglay inyay otay ALMAY againyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "use_suggested_date",
@@ -6113,7 +6599,8 @@
 			"ts": 1,
 			"tgt": "[Useyay uggestedsay ateday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "select_sources",
@@ -6123,7 +6610,8 @@
 			"ts": 1,
 			"tgt": "[Electsay ources-say-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "source_migration",
@@ -6133,7 +6621,8 @@
 			"ts": 1,
 			"tgt": "[Ourcesay igrationmay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "migration",
@@ -6143,7 +6632,8 @@
 			"ts": 1,
 			"tgt": "[Igrationmay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "skip_pre_migration",
@@ -6153,7 +6643,8 @@
 			"ts": 1,
 			"tgt": "[Ipskay epray-igrationmay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "select_a_source_then_item_to_migrate",
@@ -6170,7 +6661,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "data_to_include_in_migration",
@@ -6180,7 +6672,8 @@
 			"ts": 1,
 			"tgt": "[Ataday otay includeyay inyay igrationmay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "search_parameter_eg",
@@ -6190,7 +6683,8 @@
 			"ts": 1,
 			"tgt": "[Earchsay arameterpay (e.g. language:english)-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "include_extra_search_parameter",
@@ -6200,7 +6694,8 @@
 			"ts": 1,
 			"tgt": "[Includeyay extrayay earchsay arameterpay enwhay earchingsay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "use_most_chapters",
@@ -6210,7 +6705,8 @@
 			"ts": 1,
 			"tgt": "[Useyay ourcesay ithway ethay ostmay apterschay (owerslay)-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "use_first_source",
@@ -6220,7 +6716,8 @@
 			"ts": 1,
 			"tgt": "[Useyay irstfay ourcesay ithway alternativeyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "skip_this_step_next_time",
@@ -6230,7 +6727,8 @@
 			"ts": 1,
 			"tgt": "[Ipskay isthay epstay extnay imetay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "to_show_again_setting_sources",
@@ -6247,7 +6745,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "latest_",
@@ -6273,7 +6772,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "migrating_to",
@@ -6283,7 +6783,8 @@
 			"ts": 1,
 			"tgt": "[igratingmay otay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "dont_migrate",
@@ -6300,7 +6801,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "search_manually",
@@ -6310,7 +6812,8 @@
 			"ts": 1,
 			"tgt": "[Earchsay anuallymay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "migrate_now",
@@ -6320,7 +6823,8 @@
 			"ts": 1,
 			"tgt": "[Igratemay ownay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "copy_now",
@@ -6330,7 +6834,8 @@
 			"ts": 1,
 			"tgt": "[Opycay ownay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "migrate",
@@ -6340,7 +6845,8 @@
 			"ts": 1,
 			"tgt": "[Igratemay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "migrate_",
@@ -6366,7 +6872,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "copy_value",
@@ -6376,7 +6883,8 @@
 			"ts": 1,
 			"tgt": "[Opycay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "no_chapters_found_for_migration",
@@ -6393,7 +6901,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "no_alternatives_found",
@@ -6403,7 +6912,8 @@
 			"ts": 1,
 			"tgt": "[Onay Alternativesyay Oundfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "stop_migrating",
@@ -6413,7 +6923,8 @@
 			"ts": 1,
 			"tgt": "[Opstay igratingmay?-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "migrate_manga_one",
@@ -6451,7 +6962,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "migrate_manga_other",
@@ -6489,7 +7001,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "copy_manga_one",
@@ -6527,7 +7040,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "copy_manga_other",
@@ -6565,7 +7079,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "skipping_",
@@ -6593,7 +7108,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "manga_migrated_one",
@@ -6620,7 +7136,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "manga_migrated_other",
@@ -6647,7 +7164,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "settings",
@@ -6657,7 +7175,8 @@
 			"ts": 1,
 			"tgt": "[Ettings-say-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "general",
@@ -6667,7 +7186,8 @@
 			"ts": 1,
 			"tgt": "[Eneralgay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "reader",
@@ -6677,7 +7197,8 @@
 			"ts": 1,
 			"tgt": "[Eader-ray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "appearance",
@@ -6687,7 +7208,8 @@
 			"ts": 1,
 			"tgt": "[Appearanceyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "advanced",
@@ -6697,7 +7219,8 @@
 			"ts": 1,
 			"tgt": "[Advancedyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "about",
@@ -6707,7 +7230,8 @@
 			"ts": 1,
 			"tgt": "[Aboutyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "help",
@@ -6717,7 +7241,8 @@
 			"ts": 1,
 			"tgt": "[Elphay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "search_settings",
@@ -6727,7 +7252,8 @@
 			"ts": 1,
 			"tgt": "[Earchsay ettings-say-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "turn_on_",
@@ -6753,7 +7279,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "turn_off_",
@@ -6779,7 +7306,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "incognito_mode",
@@ -6789,7 +7317,8 @@
 			"ts": 1,
 			"tgt": "[Incognitoyay odemay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "pauses_reading_history",
@@ -6799,7 +7328,8 @@
 			"ts": 1,
 			"tgt": "[Ausespay eadingray istoryhay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "app_theme",
@@ -6809,7 +7339,8 @@
 			"ts": 1,
 			"tgt": "[Appyay emethay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "light_theme",
@@ -6819,7 +7350,8 @@
 			"ts": 1,
 			"tgt": "[Ightlay emethay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "dark_theme",
@@ -6829,7 +7361,8 @@
 			"ts": 1,
 			"tgt": "[Arkday emethay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "light_blue",
@@ -6839,7 +7372,8 @@
 			"ts": 1,
 			"tgt": "[Ightlay Ueblay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "dark",
@@ -6849,7 +7383,8 @@
 			"ts": 1,
 			"tgt": "[Arkday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "amoled_black",
@@ -6859,7 +7394,8 @@
 			"ts": 1,
 			"tgt": "[AMOLEDYAY Ackblay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "dark_blue",
@@ -6869,7 +7405,8 @@
 			"ts": 1,
 			"tgt": "[Arkday Ueblay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "midnight_dusk",
@@ -6879,7 +7416,8 @@
 			"ts": 1,
 			"tgt": "[Idnightmay Uskday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "spring_blossom",
@@ -6889,7 +7427,8 @@
 			"ts": 1,
 			"tgt": "[Ingspray Ossomblay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "strawberry_daiquiri",
@@ -6899,7 +7438,8 @@
 			"ts": 1,
 			"tgt": "[Awberrystray Aiquiriday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "a_brighter_you",
@@ -6909,7 +7449,8 @@
 			"ts": 1,
 			"tgt": "[Ayay Ighterbray Ouyay (Ynamicday)-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "a_calmer_you",
@@ -6919,7 +7460,8 @@
 			"ts": 1,
 			"tgt": "[Ayay Almercay Ouyay (Ynamicday)-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "yotsuba",
@@ -6929,7 +7471,8 @@
 			"ts": 1,
 			"tgt": "[Otsubayay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "tako",
@@ -6939,7 +7482,8 @@
 			"ts": 1,
 			"tgt": "[Akotay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "yin",
@@ -6949,7 +7493,8 @@
 			"ts": 1,
 			"tgt": "[Inyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "yang",
@@ -6959,7 +7504,8 @@
 			"ts": 1,
 			"tgt": "[Angyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "chocolate_strawberries",
@@ -6969,7 +7515,8 @@
 			"ts": 1,
 			"tgt": "[Ocolatechay Awberries-stray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "teal_ocean",
@@ -6979,7 +7526,8 @@
 			"ts": 1,
 			"tgt": "[Ealtay Oceanyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "sapphire_dusk",
@@ -6989,7 +7537,8 @@
 			"ts": 1,
 			"tgt": "[Apphiresay Uskday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "hot_pink",
@@ -6999,7 +7548,8 @@
 			"ts": 1,
 			"tgt": "[Othay Inkpay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "flat_lime",
@@ -7009,7 +7559,8 @@
 			"ts": 1,
 			"tgt": "[Atflay Imelay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "white_theme",
@@ -7019,7 +7570,8 @@
 			"ts": 1,
 			"tgt": "[Urepay Itewhay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "locale",
@@ -7029,7 +7581,8 @@
 			"ts": 1,
 			"tgt": "[Ocalelay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "last_used_library_recents",
@@ -7039,7 +7592,8 @@
 			"ts": 1,
 			"tgt": "[Astlay usedyay (Ibrarylay oryay Ecentsray)-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "system_default",
@@ -7049,7 +7603,8 @@
 			"ts": 1,
 			"tgt": "[Ystemsay efaultday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "date_format",
@@ -7059,7 +7614,8 @@
 			"ts": 1,
 			"tgt": "[Ateday ormatfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "check_for_updates",
@@ -7069,7 +7625,8 @@
 			"ts": 1,
 			"tgt": "[Eckchay orfay updatesyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "updated_to_",
@@ -7095,7 +7652,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "secure_screen",
@@ -7105,7 +7663,8 @@
 			"ts": 1,
 			"tgt": "[Ecuresay eenscray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "hide_bottom_nav",
@@ -7115,7 +7674,8 @@
 			"ts": 1,
 			"tgt": "[Autoyay-idehay ottombay avigation-nay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "side_nav_icon_alignment",
@@ -7125,7 +7685,8 @@
 			"ts": 1,
 			"tgt": "[Idesay avigation-nay iconyay alignmentyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "use_side_navigation",
@@ -7135,7 +7696,8 @@
 			"ts": 1,
 			"tgt": "[Useyay idesay avigation-nay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "default_behavior",
@@ -7145,7 +7707,8 @@
 			"ts": 1,
 			"tgt": "[Efaultday ehaviorbay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "by_default_side_nav_info",
@@ -7155,7 +7718,8 @@
 			"ts": 1,
 			"tgt": "[Ybay efaultday, idesay avigation-nay isyay usedyay orfay ertaincay onesphay andyay allsmay abletstay enwhay inyay andscapelay, andyay alwaysyay ows-shay onyay argerlay abletstay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "follow_system_theme",
@@ -7165,7 +7729,8 @@
 			"ts": 1,
 			"tgt": "[Ollowfay ystemsay emethay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "pure_black_dark_mode",
@@ -7175,7 +7740,8 @@
 			"ts": 1,
 			"tgt": "[Urepay ackblay arkday odemay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "details_page",
@@ -7185,7 +7751,8 @@
 			"ts": 1,
 			"tgt": "[Etailsday agepay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "theme_buttons_based_on_cover",
@@ -7195,7 +7762,8 @@
 			"ts": 1,
 			"tgt": "[Emethay uttonsbay asedbay onyay overcay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "hides_on_scroll",
@@ -7205,7 +7773,8 @@
 			"ts": 1,
 			"tgt": "[Ideshay enwhay ollingscray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "hide_app_block_screenshots",
@@ -7215,7 +7784,8 @@
 			"ts": 1,
 			"tgt": "[Idehay appyay ontentscay enwhay itchingsway appsyay andyay ockblay eenshots-scray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "hide_notification_content",
@@ -7225,7 +7795,8 @@
 			"ts": 1,
 			"tgt": "[Idehay otification-nay ontentcay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "security",
@@ -7235,7 +7806,8 @@
 			"ts": 1,
 			"tgt": "[Ecuritysay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "starting_screen",
@@ -7245,7 +7817,8 @@
 			"ts": 1,
 			"tgt": "[Artingstay eenscray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "back_to_start",
@@ -7255,7 +7828,8 @@
 			"ts": 1,
 			"tgt": "[Ackbay otay artstay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "pressing_back_to_start",
@@ -7265,7 +7839,8 @@
 			"ts": 1,
 			"tgt": "[Essingpray ackbay otay artingstay eenscray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "auto_updates",
@@ -7275,7 +7850,8 @@
 			"ts": 1,
 			"tgt": "[Autoyay-updatesyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "auto_update_app",
@@ -7285,7 +7861,8 @@
 			"ts": 1,
 			"tgt": "[Autoyay-updateyay appyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "over_wifi_only",
@@ -7295,7 +7872,8 @@
 			"ts": 1,
 			"tgt": "[Overyay Iway-Ifay onlyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "over_any_network",
@@ -7305,7 +7883,8 @@
 			"ts": 1,
 			"tgt": "[Overyay anyay etworknay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "dont_auto_update",
@@ -7322,7 +7901,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "app_shortcuts",
@@ -7332,7 +7912,8 @@
 			"ts": 1,
 			"tgt": "[Appyay ortcuts-shay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "show_recent_sources",
@@ -7342,7 +7923,8 @@
 			"ts": 1,
 			"tgt": "[Owshay ecentlyray usedyay ources-say-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "show_recent_series",
@@ -7352,7 +7934,8 @@
 			"ts": 1,
 			"tgt": "[Owshay ecentray eries-say-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "includes_recently_read_updated_added",
@@ -7362,7 +7945,8 @@
 			"ts": 1,
 			"tgt": "[Includesyay ecentlyray eadray, updatedyay, andyay addedyay eries-say-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "series_opens_new_chapters",
@@ -7372,7 +7956,8 @@
 			"ts": 1,
 			"tgt": "[Eries-say ortcuts-shay opensyay ewnay apterschay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "no_new_chapters_open_details",
@@ -7389,7 +7974,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "backup",
@@ -7399,7 +7985,8 @@
 			"ts": 1,
 			"tgt": "[Ackupbay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "backup_and_restore",
@@ -7409,7 +7996,8 @@
 			"ts": 1,
 			"tgt": "[Ackupbay andyay estoreray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "create_backup",
@@ -7419,7 +8007,8 @@
 			"ts": 1,
 			"tgt": "[Eatecray ackupbay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "can_be_used_to_restore",
@@ -7429,7 +8018,8 @@
 			"ts": 1,
 			"tgt": "[Ancay ebay usedyay otay estoreray urrentcay ibrarylay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "restore_backup",
@@ -7439,7 +8029,8 @@
 			"ts": 1,
 			"tgt": "[Estoreray ackupbay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "restore_from_backup_file",
@@ -7449,7 +8040,8 @@
 			"ts": 1,
 			"tgt": "[Estoreray ibrarylay omfray ackupbay ilefay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "restore_in_progress",
@@ -7459,7 +8051,8 @@
 			"ts": 1,
 			"tgt": "[Estoreray alreadyay inyay ogresspray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "backup_in_progress",
@@ -7469,7 +8062,8 @@
 			"ts": 1,
 			"tgt": "[Ackupbay alreadyay inyay ogresspray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "backup_location",
@@ -7479,7 +8073,8 @@
 			"ts": 1,
 			"tgt": "[Ackupbay ocationlay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "automatic_backups",
@@ -7489,7 +8084,8 @@
 			"ts": 1,
 			"tgt": "[Automaticyay ackupsbay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "backup_frequency",
@@ -7499,7 +8095,8 @@
 			"ts": 1,
 			"tgt": "[Ackupbay equencyfray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "max_auto_backups",
@@ -7509,7 +8106,8 @@
 			"ts": 1,
 			"tgt": "[Axmay automaticyay ackupsbay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "invalid_backup_file",
@@ -7519,7 +8117,8 @@
 			"ts": 1,
 			"tgt": "[Invalidyay ackupbay ilefay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "invalid_backup_file_type",
@@ -7547,7 +8146,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "file_is_missing_data",
@@ -7557,7 +8157,8 @@
 			"ts": 1,
 			"tgt": "[Ilefay isyay issingmay ataday.-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "backup_has_no_manga",
@@ -7567,7 +8168,8 @@
 			"ts": 1,
 			"tgt": "[Ackupbay oesday otnay ontaincay anyay angamay.-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "backup_failed",
@@ -7577,7 +8179,8 @@
 			"ts": 1,
 			"tgt": "[Ackupbay ailedfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "backup_created",
@@ -7587,7 +8190,8 @@
 			"ts": 1,
 			"tgt": "[Ackupbay eatedcray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "restore_completed",
@@ -7597,7 +8201,8 @@
 			"ts": 1,
 			"tgt": "[Estoreray ompletedcay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "restore_error",
@@ -7607,7 +8212,8 @@
 			"ts": 1,
 			"tgt": "[Ailedfay otay estoreray ackupbay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "restore_missing_sources",
@@ -7617,7 +8223,8 @@
 			"ts": 1,
 			"tgt": "[Issingmay ources-say:-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "restore_missing_trackers",
@@ -7627,7 +8234,8 @@
 			"ts": 1,
 			"tgt": "[Ackerstray otnay oggedlay intoyay:-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "restore_content",
@@ -7644,7 +8252,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "restore_content_full",
@@ -7661,7 +8270,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "restoring_backup_canceled",
@@ -7671,7 +8281,8 @@
 			"ts": 1,
 			"tgt": "[Anceledcay estoreray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "creating_backup",
@@ -7681,7 +8292,8 @@
 			"ts": 1,
 			"tgt": "[Eatingcray ackupbay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "what_should_backup",
@@ -7691,7 +8303,8 @@
 			"ts": 1,
 			"tgt": "[Atwhay oday ouyay antway otay ackupbay?-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "restoring_backup",
@@ -7701,7 +8314,8 @@
 			"ts": 1,
 			"tgt": "[Estoringray ackupbay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "restore_duration",
@@ -7738,7 +8352,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "restore_miui_warning",
@@ -7748,7 +8363,8 @@
 			"ts": 1,
 			"tgt": "[Ackupbay/estoreray aymay otnay unctionfay operlypray ifyay IUIMAY Optimizationyay isyay isabled-day.-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "progress",
@@ -7758,7 +8374,8 @@
 			"ts": 1,
 			"tgt": "[Ogresspray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "complete",
@@ -7768,7 +8385,8 @@
 			"ts": 1,
 			"tgt": "[Ompletecay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "restore_completed_message_one",
@@ -7808,7 +8426,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "restore_completed_message_other",
@@ -7848,7 +8467,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "not_logged_into_",
@@ -7874,7 +8494,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "clear_chapter_cache",
@@ -7884,7 +8505,8 @@
 			"ts": 1,
 			"tgt": "[Earclay apterchay achecay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "force_download_cache_refresh",
@@ -7894,7 +8516,8 @@
 			"ts": 1,
 			"tgt": "[Efreshray ethay ownload-day achecay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "force_download_cache_refresh_summary",
@@ -7904,7 +8527,8 @@
 			"ts": 1,
 			"tgt": "[Isthay illway orcefay ethay ownload-day achecay otay ecalculateray. Usefulyay ifyay ouyay odifiedmay ownloadsday outsideyay ofyay isthay appyay andyay antway ethay appyay otay ickpay emthay upyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "data_management",
@@ -7914,7 +8538,8 @@
 			"ts": 1,
 			"tgt": "[Ataday Anagementmay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "crash_logs",
@@ -7924,7 +8549,8 @@
 			"ts": 1,
 			"tgt": "[Ashcray ogslay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "dump_crash_logs",
@@ -7934,7 +8560,8 @@
 			"ts": 1,
 			"tgt": "[Umpday ashcray ogslay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "saves_error_logs",
@@ -7944,7 +8571,8 @@
 			"ts": 1,
 			"tgt": "[Aves-say erroryay ogslay otay ayay ilefay orfay aringshay ithway ethay evelopersday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "about_dont_kill_my_app",
@@ -7954,7 +8582,8 @@
 			"ts": 1,
 			"tgt": "[Omesay anufacturersmay avehay additionalyay appyay estrictionsray at-thay illkay ackgroundbay ervices-say. Isthay ebsiteway ashay oremay infoyay onyay owhay otay ixfay ityay.-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "crash_log_saved",
@@ -7964,7 +8593,8 @@
 			"ts": 1,
 			"tgt": "[Ashcray ogslay avedsay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "network",
@@ -7974,7 +8604,8 @@
 			"ts": 1,
 			"tgt": "[Etworknay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "doh",
@@ -7984,7 +8615,8 @@
 			"ts": 1,
 			"tgt": "[DNS overyay HTTPS-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "disabled",
@@ -7994,7 +8626,8 @@
 			"ts": 1,
 			"tgt": "[Isabled-day-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "requires_app_restart",
@@ -8004,7 +8637,8 @@
 			"ts": 1,
 			"tgt": "[Equiresray appyay estartray otay aketay effectyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "used_",
@@ -8030,7 +8664,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "cache_cleared_one",
@@ -8059,7 +8694,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "cache_cleared_other",
@@ -8088,7 +8724,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "cache_delete_error",
@@ -8098,7 +8735,8 @@
 			"ts": 1,
 			"tgt": "[Anyay erroryay occurredyay ilewhay earingclay achecay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "clear_cookies",
@@ -8108,7 +8746,8 @@
 			"ts": 1,
 			"tgt": "[Earclay ookiescay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "cookies_cleared",
@@ -8118,7 +8757,8 @@
 			"ts": 1,
 			"tgt": "[Ookiescay earedclay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "clear_database",
@@ -8128,7 +8768,8 @@
 			"ts": 1,
 			"tgt": "[Earclay atabaseday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "clear_database_summary",
@@ -8138,7 +8779,8 @@
 			"ts": 1,
 			"tgt": "[Eleteday angamay andyay apterschay at-thay areyay otnay inyay ouryay ibrarylay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "clear_database_confirmation",
@@ -8148,7 +8790,8 @@
 			"ts": 1,
 			"tgt": "[Areyay ouyay uresay? Eadray apterschay andyay ogresspray ofyay on-nay-ibrarylay angamay illway ebay ostlay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "clear_database_completed",
@@ -8158,7 +8801,8 @@
 			"ts": 1,
 			"tgt": "[Entriesyay eleted-day-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "refresh_library_metadata",
@@ -8168,7 +8812,8 @@
 			"ts": 1,
 			"tgt": "[Efreshray ibrarylay etadatamay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "updates_covers_genres_desc",
@@ -8178,7 +8823,8 @@
 			"ts": 1,
 			"tgt": "[Updatesyay overscay, enresgay, escriptionday andyay angamay atus-stay informationyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "refresh_tracking_metadata",
@@ -8188,7 +8834,8 @@
 			"ts": 1,
 			"tgt": "[Efreshray ackingtray etadatamay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "updates_tracking_details",
@@ -8198,7 +8845,8 @@
 			"ts": 1,
 			"tgt": "[Updatesyay atus-stay, orescay andyay astlay apterchay eadray omfray ethay ackingtray ervices-say-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "clean_up_downloaded_chapters",
@@ -8208,7 +8856,8 @@
 			"ts": 1,
 			"tgt": "[Eanclay upyay ownloaded-day apterschay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "delete_unused_chapters",
@@ -8225,7 +8874,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "clean_orphaned_downloads",
@@ -8235,7 +8885,8 @@
 			"ts": 1,
 			"tgt": "[Eanclay orphanedyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "clean_read_downloads",
@@ -8245,7 +8896,8 @@
 			"ts": 1,
 			"tgt": "[Eanclay eadray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "clean_read_manga_not_in_library",
@@ -8255,7 +8907,8 @@
 			"ts": 1,
 			"tgt": "[Eanclay angamay otnay inyay ibrarylay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "starting_cleanup",
@@ -8265,7 +8918,8 @@
 			"ts": 1,
 			"tgt": "[Artingstay eanupclay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "no_folders_to_cleanup",
@@ -8275,7 +8929,8 @@
 			"ts": 1,
 			"tgt": "[Onay oldersfay otay eanupclay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "disable_battery_optimization",
@@ -8285,7 +8940,8 @@
 			"ts": 1,
 			"tgt": "[Isableday atterybay optimizationyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "disable_if_issues_with_updating",
@@ -8302,7 +8958,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "battery_optimization_disabled",
@@ -8312,7 +8969,8 @@
 			"ts": 1,
 			"tgt": "[Atterybay optimizationyay isyay alreadyay isabled-day-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "cleanup_done_one",
@@ -8341,7 +8999,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "cleanup_done_other",
@@ -8370,7 +9029,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "clean_up_cached_covers",
@@ -8380,7 +9040,8 @@
 			"ts": 1,
 			"tgt": "[Eanclay upyay achedcay overscay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "delete_old_covers_in_library_used_",
@@ -8406,7 +9067,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "clear_cached_covers_non_library",
@@ -8416,7 +9078,8 @@
 			"ts": 1,
 			"tgt": "[Earclay achedcay overscay otnay inyay ibrarylay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "delete_all_covers__not_in_library_used_",
@@ -8442,7 +9105,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "pref_global_search",
@@ -8452,7 +9116,8 @@
 			"ts": 1,
 			"tgt": "[Obalglay earchsay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "check_for_extension_updates",
@@ -8462,7 +9127,8 @@
 			"ts": 1,
 			"tgt": "[Eckchay orfay extensionyay updatesyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "auto_update_extensions",
@@ -8472,7 +9138,8 @@
 			"ts": 1,
 			"tgt": "[Autoyay-updateyay extensionsyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "notify_extension_updated",
@@ -8482,7 +9149,8 @@
 			"ts": 1,
 			"tgt": "[Otifynay extensionyay ashay eenbay updatedyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "some_extensions_may_not_update",
@@ -8492,7 +9160,8 @@
 			"ts": 1,
 			"tgt": "[Omesay extensionsyay aymay otnay ebay autoyay-updatedyay ifyay eythay ereway installedyay outsideyay isthay appyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "only_search_pinned_when",
@@ -8502,7 +9171,8 @@
 			"ts": 1,
 			"tgt": "[Onlyay earchsay innedpay ources-say-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "match_pinned_sources",
@@ -8512,7 +9182,8 @@
 			"ts": 1,
 			"tgt": "[Atchmay innedpay ources-say-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "match_enabled_sources",
@@ -8522,7 +9193,8 @@
 			"ts": 1,
 			"tgt": "[Atchmay enabledyay ources-say-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "only_enable_pinned_for_migration",
@@ -8539,7 +9211,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "only_enable_enabled_for_migration",
@@ -8556,7 +9229,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "use_last_saved_migration_preferences",
@@ -8573,7 +9247,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "migration_sources_changed",
@@ -8583,7 +9258,8 @@
 			"ts": 1,
 			"tgt": "[Igrationmay ources-say angedchay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "you_can_migrate_in_library",
@@ -8600,7 +9276,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "source_migration_guide",
@@ -8610,7 +9287,8 @@
 			"ts": 1,
 			"tgt": "[Ourcesay igrationmay uidegay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "nsfw_sources",
@@ -8620,7 +9298,8 @@
 			"ts": 1,
 			"tgt": "[NSFW (18+) ources-say-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "show_in_sources_and_extensions",
@@ -8630,7 +9309,8 @@
 			"ts": 1,
 			"tgt": "[Owshay inyay ources-say andyay extensionsyay istslay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "does_not_prevent_unofficial_nsfw",
@@ -8640,7 +9320,8 @@
 			"ts": 1,
 			"tgt": "[Isthay oesday otnay eventpray unofficialyay oryay otentiallypay incorrectlyay aggedflay extensionsyay omfray urfacingsay NSFW (18+) ontentcay ithinway ethay appyay.-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "version",
@@ -8650,7 +9331,8 @@
 			"ts": 1,
 			"tgt": "[Ersionvay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "build_time",
@@ -8660,7 +9342,8 @@
 			"ts": 1,
 			"tgt": "[Uildbay imetay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "send_crash_report",
@@ -8670,7 +9353,8 @@
 			"ts": 1,
 			"tgt": "[Endsay ashcray eportsray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "helps_fix_bugs",
@@ -8680,7 +9364,8 @@
 			"ts": 1,
 			"tgt": "[Elpshay ixfay anyay ugsbay. Onay ensitivesay ataday illway ebay entsay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "whats_new",
@@ -8697,7 +9382,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "whats_new_this_release",
@@ -8714,7 +9400,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "help_translate",
@@ -8724,7 +9411,8 @@
 			"ts": 1,
 			"tgt": "[Elphay anslatetray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "helpful_translation_links",
@@ -8734,7 +9422,8 @@
 			"ts": 1,
 			"tgt": "[Elpfulhay anslationtray inkslay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "website",
@@ -8744,7 +9433,8 @@
 			"ts": 1,
 			"tgt": "[Ebsiteway-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "open_source_licenses",
@@ -8754,7 +9444,8 @@
 			"ts": 1,
 			"tgt": "[Openyay ourcesay icenseslay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "log_in_to_",
@@ -8780,7 +9471,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "username",
@@ -8790,7 +9482,8 @@
 			"ts": 1,
 			"tgt": "[Usernameyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "email",
@@ -8800,7 +9493,8 @@
 			"ts": 1,
 			"tgt": "[Emailyay addressyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "password",
@@ -8810,7 +9504,8 @@
 			"ts": 1,
 			"tgt": "[Asswordpay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "log_in",
@@ -8820,7 +9515,8 @@
 			"ts": 1,
 			"tgt": "[Oglay inyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "log_out",
@@ -8830,7 +9526,8 @@
 			"ts": 1,
 			"tgt": "[Oglay outyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "log_out_from_",
@@ -8858,7 +9555,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "successfully_logged_in",
@@ -8868,7 +9566,8 @@
 			"ts": 1,
 			"tgt": "[Uccessfullysay oggedlay inyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "username_must_not_be_blank",
@@ -8878,7 +9577,8 @@
 			"ts": 1,
 			"tgt": "[Usernameyay oryay asswordpay annotcay ebay ankblay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "successfully_logged_out",
@@ -8888,7 +9588,8 @@
 			"ts": 1,
 			"tgt": "[Ouyay areyay ownay oggedlay outyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "downloads",
@@ -8898,7 +9599,8 @@
 			"ts": 1,
 			"tgt": "[Ownloadsday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "download_queue",
@@ -8908,7 +9610,8 @@
 			"ts": 1,
 			"tgt": "[Ownload-day ueueqay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "downloading_",
@@ -8934,7 +9637,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "cancel_all",
@@ -8944,7 +9648,8 @@
 			"ts": 1,
 			"tgt": "[Ancelcay allyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "cancel_all_for_series",
@@ -8954,7 +9659,8 @@
 			"ts": 1,
 			"tgt": "[Ancelcay allyay orfay isthay eries-say-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "downloaded",
@@ -8964,7 +9670,8 @@
 			"ts": 1,
 			"tgt": "[Ownloaded-day-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "not_downloaded",
@@ -8974,7 +9681,8 @@
 			"ts": 1,
 			"tgt": "[Otnay ownloaded-day-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "downloading",
@@ -8984,7 +9692,8 @@
 			"ts": 1,
 			"tgt": "[Ownloadingday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "download",
@@ -8994,7 +9703,8 @@
 			"ts": 1,
 			"tgt": "[Ownload-day-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "start_downloading_now",
@@ -9004,7 +9714,8 @@
 			"ts": 1,
 			"tgt": "[Artstay ownloadingday ownay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "remove_download",
@@ -9014,7 +9725,8 @@
 			"ts": 1,
 			"tgt": "[Emoveray ownload-day-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "remove_downloads",
@@ -9024,7 +9736,8 @@
 			"ts": 1,
 			"tgt": "[Emoveray ownloadsday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "downloading_progress",
@@ -9063,7 +9776,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "invalid_download_location",
@@ -9073,7 +9787,8 @@
 			"ts": 1,
 			"tgt": "[Invalidyay ownload-day ocationlay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "download_paused",
@@ -9083,7 +9798,8 @@
 			"ts": 1,
 			"tgt": "[Ownload-day ausedpay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "nothing_is_downloading",
@@ -9093,7 +9809,8 @@
 			"ts": 1,
 			"tgt": "[Othingnay isyay urrentlycay ownloadingday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "download_complete",
@@ -9103,7 +9820,8 @@
 			"ts": 1,
 			"tgt": "[Ownload-day ompletecay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "download_error",
@@ -9113,7 +9831,8 @@
 			"ts": 1,
 			"tgt": "[Ownload-day erroryay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "manage_whats_downloading",
@@ -9130,7 +9849,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "visit_recents_for_download_queue",
@@ -9147,7 +9867,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "couldnt_download_low_space",
@@ -9164,7 +9885,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "could_not_download_unexpected_error",
@@ -9174,7 +9896,8 @@
 			"ts": 1,
 			"tgt": "[Ouldcay otnay ownload-day apterchay ueday otay unexpectedyay erroryay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "no_wifi_connection",
@@ -9184,7 +9907,8 @@
 			"ts": 1,
 			"tgt": "[Onay Iway-Ifay onnectioncay availableyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "no_network_connection",
@@ -9194,7 +9918,8 @@
 			"ts": 1,
 			"tgt": "[Onay etworknay onnectioncay availableyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "download_location",
@@ -9204,7 +9929,8 @@
 			"ts": 1,
 			"tgt": "[Ownload-day ocationlay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "only_download_over_wifi",
@@ -9214,7 +9940,8 @@
 			"ts": 1,
 			"tgt": "[Onlyay ownload-day overyay Iway-Ifay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "remove_when_marked_as_read",
@@ -9224,7 +9951,8 @@
 			"ts": 1,
 			"tgt": "[Emoveray enwhay arkedmay asyay eadray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "remove_after_read",
@@ -9234,7 +9962,8 @@
 			"ts": 1,
 			"tgt": "[Emoveray afteryay eadray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "custom_location",
@@ -9244,7 +9973,8 @@
 			"ts": 1,
 			"tgt": "[Ustomcay ocationlay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "last_read_chapter",
@@ -9254,7 +9984,8 @@
 			"ts": 1,
 			"tgt": "[Astlay eadray apterchay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "second_to_last",
@@ -9264,7 +9995,8 @@
 			"ts": 1,
 			"tgt": "[Econdsay otay astlay apterchay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "third_to_last",
@@ -9274,7 +10006,8 @@
 			"ts": 1,
 			"tgt": "[Irdthay otay astlay apterchay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "fourth_to_last",
@@ -9284,7 +10017,8 @@
 			"ts": 1,
 			"tgt": "[Ourthfay otay astlay apterchay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "fifth_to_last",
@@ -9294,7 +10028,8 @@
 			"ts": 1,
 			"tgt": "[Ifthfay otay astlay apterchay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "download_new_chapters",
@@ -9304,7 +10039,8 @@
 			"ts": 1,
 			"tgt": "[Ownload-day ewnay apterschay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "categories_to_include_in_download",
@@ -9314,7 +10050,8 @@
 			"ts": 1,
 			"tgt": "[Ategoriescay otay includeyay inyay ownload-day-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "delete_removed_chapters",
@@ -9324,7 +10061,8 @@
 			"ts": 1,
 			"tgt": "[Eleteday emovedray apterschay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "delete_downloaded_if_removed_online",
@@ -9341,7 +10079,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "ask_on_chapters_page",
@@ -9351,7 +10090,8 @@
 			"ts": 1,
 			"tgt": "[Eleteday uringday obalglay updatesyay, askyay onyay apterschay agepay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "always_keep",
@@ -9361,7 +10101,8 @@
 			"ts": 1,
 			"tgt": "[Alwaysyay eepkay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "always_delete",
@@ -9371,7 +10112,8 @@
 			"ts": 1,
 			"tgt": "[Alwaysyay eleteday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "automatic_removal",
@@ -9381,7 +10123,8 @@
 			"ts": 1,
 			"tgt": "[Automaticyay emovalray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "manual",
@@ -9391,7 +10134,8 @@
 			"ts": 1,
 			"tgt": "[Anualmay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "hourly",
@@ -9401,7 +10145,8 @@
 			"ts": 1,
 			"tgt": "[Ourlyhay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "every_2_hours",
@@ -9411,7 +10156,8 @@
 			"ts": 1,
 			"tgt": "[Everyay 2 ourshay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "every_3_hours",
@@ -9421,7 +10167,8 @@
 			"ts": 1,
 			"tgt": "[Everyay 3 ourshay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "every_6_hours",
@@ -9431,7 +10178,8 @@
 			"ts": 1,
 			"tgt": "[Everyay 6 ourshay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "every_12_hours",
@@ -9441,7 +10189,8 @@
 			"ts": 1,
 			"tgt": "[Everyay 12 ourshay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "daily",
@@ -9451,7 +10200,8 @@
 			"ts": 1,
 			"tgt": "[Ailyday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "every_2_days",
@@ -9461,7 +10211,8 @@
 			"ts": 1,
 			"tgt": "[Everyay 2 aysday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "weekly",
@@ -9471,7 +10222,8 @@
 			"ts": 1,
 			"tgt": "[Eeklyway-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "after_minutes_one",
@@ -9500,7 +10252,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "after_minutes_other",
@@ -9529,7 +10282,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "select_cover_image",
@@ -9539,7 +10293,8 @@
 			"ts": 1,
 			"tgt": "[Electsay overcay imageyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "select_backup_file",
@@ -9549,7 +10304,8 @@
 			"ts": 1,
 			"tgt": "[Electsay ackupbay ilefay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "file_picker_error",
@@ -9559,7 +10315,8 @@
 			"ts": 1,
 			"tgt": "[Onay ilefay ickerpay appyay oundfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "failed_to_bypass_cloudflare",
@@ -9569,7 +10326,8 @@
 			"ts": 1,
 			"tgt": "[Ailedfay otay ypassbay Oudflareclay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "please_update_webview",
@@ -9579,7 +10337,8 @@
 			"ts": 1,
 			"tgt": "[Easeplay updateyay ethay EbView-way appyay orfay etterbay ompatibilitycay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "webview_is_required",
@@ -9589,7 +10348,8 @@
 			"ts": 1,
 			"tgt": "[EbView-way isyay equiredray orfay Achiyomitay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "add",
@@ -9599,7 +10359,8 @@
 			"ts": 1,
 			"tgt": "[Addyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "add_to_",
@@ -9625,7 +10386,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "added_to_",
@@ -9651,7 +10413,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "all",
@@ -9661,7 +10424,8 @@
 			"ts": 1,
 			"tgt": "[Allyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "alphabetically",
@@ -9671,7 +10435,8 @@
 			"ts": 1,
 			"tgt": "[Alphabeticallyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "always",
@@ -9681,7 +10446,8 @@
 			"ts": 1,
 			"tgt": "[Alwaysyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "always_ask",
@@ -9691,7 +10457,8 @@
 			"ts": 1,
 			"tgt": "[Alwaysyay askyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "automatic",
@@ -9701,7 +10468,8 @@
 			"ts": 1,
 			"tgt": "[Automaticyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "back",
@@ -9711,7 +10479,8 @@
 			"ts": 1,
 			"tgt": "[Ackbay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "beta",
@@ -9721,7 +10490,8 @@
 			"ts": 1,
 			"tgt": "[ETABAY-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "bottom",
@@ -9731,7 +10501,8 @@
 			"ts": 1,
 			"tgt": "[Ottombay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "cancel",
@@ -9741,7 +10512,8 @@
 			"ts": 1,
 			"tgt": "[Ancelcay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "center",
@@ -9751,7 +10523,8 @@
 			"ts": 1,
 			"tgt": "[Entercay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "change",
@@ -9761,7 +10534,8 @@
 			"ts": 1,
 			"tgt": "[Angechay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "charging",
@@ -9771,7 +10545,8 @@
 			"ts": 1,
 			"tgt": "[Argingchay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "clear",
@@ -9781,7 +10556,8 @@
 			"ts": 1,
 			"tgt": "[Earclay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "clear_filters",
@@ -9791,7 +10567,8 @@
 			"ts": 1,
 			"tgt": "[Earclay iltersfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "close",
@@ -9801,7 +10578,8 @@
 			"ts": 1,
 			"tgt": "[Oseclay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "common",
@@ -9811,7 +10589,8 @@
 			"ts": 1,
 			"tgt": "[Ommoncay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "cover_of_image",
@@ -9821,7 +10600,8 @@
 			"ts": 1,
 			"tgt": "[Overcay ofyay angamay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "create",
@@ -9831,7 +10611,8 @@
 			"ts": 1,
 			"tgt": "[Eatecray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "default_value",
@@ -9841,7 +10622,8 @@
 			"ts": 1,
 			"tgt": "[Efaultday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "delete",
@@ -9851,7 +10633,8 @@
 			"ts": 1,
 			"tgt": "[Eleteday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "deleted_",
@@ -9877,7 +10660,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "display",
@@ -9887,7 +10671,8 @@
 			"ts": 1,
 			"tgt": "[Isplayday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "download_unread",
@@ -9897,7 +10682,8 @@
 			"ts": 1,
 			"tgt": "[Ownload-day unreadyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "drag_handle",
@@ -9907,7 +10693,8 @@
 			"ts": 1,
 			"tgt": "[Agdray andlehay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "edit",
@@ -9917,7 +10704,8 @@
 			"ts": 1,
 			"tgt": "[Edityay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "enable",
@@ -9927,7 +10715,8 @@
 			"ts": 1,
 			"tgt": "[Enableyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "enabled",
@@ -9937,7 +10726,8 @@
 			"ts": 1,
 			"tgt": "[Enabledyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "exclude_",
@@ -9963,7 +10753,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "fast",
@@ -9973,7 +10764,8 @@
 			"ts": 1,
 			"tgt": "[Astfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "filter",
@@ -9983,7 +10775,8 @@
 			"ts": 1,
 			"tgt": "[Ilterfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "forward",
@@ -9993,7 +10786,8 @@
 			"ts": 1,
 			"tgt": "[Orwardfay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "free",
@@ -10003,7 +10797,8 @@
 			"ts": 1,
 			"tgt": "[Eefray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "hide",
@@ -10013,7 +10808,8 @@
 			"ts": 1,
 			"tgt": "[Idehay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "ignore",
@@ -10023,7 +10819,8 @@
 			"ts": 1,
 			"tgt": "[Ignoreyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "include_",
@@ -10049,7 +10846,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "install",
@@ -10059,7 +10857,8 @@
 			"ts": 1,
 			"tgt": "[Installyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "keep",
@@ -10069,7 +10868,8 @@
 			"ts": 1,
 			"tgt": "[Eepkay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "keep_in_",
@@ -10095,7 +10895,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "left",
@@ -10105,7 +10906,8 @@
 			"ts": 1,
 			"tgt": "[Eftlay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "less",
@@ -10115,7 +10917,8 @@
 			"ts": 1,
 			"tgt": "[Esslay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "loading",
@@ -10125,7 +10928,8 @@
 			"ts": 1,
 			"tgt": "[Oadinglay…-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "lock",
@@ -10135,7 +10939,8 @@
 			"ts": 1,
 			"tgt": "[Ocklay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "mark_all_as_read",
@@ -10145,7 +10950,8 @@
 			"ts": 1,
 			"tgt": "[Arkmay allyay asyay eadray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "mark_all_as_unread",
@@ -10155,7 +10961,8 @@
 			"ts": 1,
 			"tgt": "[Arkmay allyay asyay unreadyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "mark_as_read",
@@ -10165,7 +10972,8 @@
 			"ts": 1,
 			"tgt": "[Arkmay asyay eadray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "mark_as_unread",
@@ -10175,7 +10983,8 @@
 			"ts": 1,
 			"tgt": "[Arkmay asyay unreadyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "mark_range_as_read",
@@ -10185,7 +10994,8 @@
 			"ts": 1,
 			"tgt": "[Arkmay ayay angeray ofyay apterschay asyay eadray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "mark_range_as_unread",
@@ -10195,7 +11005,8 @@
 			"ts": 1,
 			"tgt": "[Arkmay ayay angeray ofyay apterschay asyay unreadyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "mark_previous_as_read",
@@ -10205,7 +11016,8 @@
 			"ts": 1,
 			"tgt": "[Arkmay eviouspray apterschay asyay eadray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "mark_previous_as_unread",
@@ -10215,7 +11027,8 @@
 			"ts": 1,
 			"tgt": "[Arkmay eviouspray apterschay asyay unreadyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "menu",
@@ -10225,7 +11038,8 @@
 			"ts": 1,
 			"tgt": "[enumay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "more",
@@ -10235,7 +11049,8 @@
 			"ts": 1,
 			"tgt": "[Oremay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "move_to_bottom",
@@ -10245,7 +11060,8 @@
 			"ts": 1,
 			"tgt": "[Ovemay otay ottombay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "move_to_top",
@@ -10255,7 +11071,8 @@
 			"ts": 1,
 			"tgt": "[Ovemay otay optay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "move_to_",
@@ -10281,7 +11098,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "moved_to_",
@@ -10307,7 +11125,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "name",
@@ -10317,7 +11136,8 @@
 			"ts": 1,
 			"tgt": "[Amenay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "recently_updated",
@@ -10327,7 +11147,8 @@
 			"ts": 1,
 			"tgt": "[Ecentlyray updatedyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "recently_installed",
@@ -10337,7 +11158,8 @@
 			"ts": 1,
 			"tgt": "[Ecentlyray installedyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "language",
@@ -10347,7 +11169,8 @@
 			"ts": 1,
 			"tgt": "[Anguagelay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "never",
@@ -10357,7 +11180,8 @@
 			"ts": 1,
 			"tgt": "[Evernay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "newest",
@@ -10367,7 +11191,8 @@
 			"ts": 1,
 			"tgt": "[Ewestnay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "next",
@@ -10377,7 +11202,8 @@
 			"ts": 1,
 			"tgt": "[Extnay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "no_animation",
@@ -10387,7 +11213,8 @@
 			"ts": 1,
 			"tgt": "[Onay animationyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "normal",
@@ -10397,7 +11224,8 @@
 			"ts": 1,
 			"tgt": "[Ormalnay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "oldest",
@@ -10407,7 +11235,8 @@
 			"ts": 1,
 			"tgt": "[Oldestyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "open_in_browser",
@@ -10417,7 +11246,8 @@
 			"ts": 1,
 			"tgt": "[Openyay inyay owserbray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "open_log",
@@ -10427,7 +11257,8 @@
 			"ts": 1,
 			"tgt": "[Openyay oglay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "open_in_webview",
@@ -10437,7 +11268,8 @@
 			"ts": 1,
 			"tgt": "[Openyay inyay EbView-way-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "options",
@@ -10447,7 +11279,8 @@
 			"ts": 1,
 			"tgt": "[Optionsyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "pause",
@@ -10457,7 +11290,8 @@
 			"ts": 1,
 			"tgt": "[Ausepay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "picture_saved",
@@ -10467,7 +11301,8 @@
 			"ts": 1,
 			"tgt": "[Icturepay avedsay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "pin",
@@ -10477,7 +11312,8 @@
 			"ts": 1,
 			"tgt": "[Inpay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "pinned",
@@ -10487,7 +11323,8 @@
 			"ts": 1,
 			"tgt": "[Innedpay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "preview",
@@ -10497,7 +11334,8 @@
 			"ts": 1,
 			"tgt": "[Eviewpray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "previous",
@@ -10507,7 +11345,8 @@
 			"ts": 1,
 			"tgt": "[Eviouspray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "remove",
@@ -10517,7 +11356,8 @@
 			"ts": 1,
 			"tgt": "[Emoveray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "remove_from_",
@@ -10543,7 +11383,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "reorder",
@@ -10553,7 +11394,8 @@
 			"ts": 1,
 			"tgt": "[Eorder-ray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "reset",
@@ -10563,7 +11405,8 @@
 			"ts": 1,
 			"tgt": "[Esetray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "restore",
@@ -10573,7 +11416,8 @@
 			"ts": 1,
 			"tgt": "[Estoreray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "resume",
@@ -10583,7 +11427,8 @@
 			"ts": 1,
 			"tgt": "[Esumeray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "retry",
@@ -10593,7 +11438,8 @@
 			"ts": 1,
 			"tgt": "[Etryray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "right",
@@ -10603,7 +11449,8 @@
 			"ts": 1,
 			"tgt": "[Ightray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "rotation",
@@ -10613,7 +11460,8 @@
 			"ts": 1,
 			"tgt": "[Otationray-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "default_orientation",
@@ -10623,7 +11471,8 @@
 			"ts": 1,
 			"tgt": "[Efaultday orientationyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "orientation",
@@ -10633,7 +11482,8 @@
 			"ts": 1,
 			"tgt": "[Orientationyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "save",
@@ -10643,7 +11493,8 @@
 			"ts": 1,
 			"tgt": "[Avesay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "search",
@@ -10653,7 +11504,8 @@
 			"ts": 1,
 			"tgt": "[Earchsay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "search_",
@@ -10679,7 +11531,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "select_all",
@@ -10689,7 +11542,8 @@
 			"ts": 1,
 			"tgt": "[Electsay allyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "select_none",
@@ -10699,7 +11553,8 @@
 			"ts": 1,
 			"tgt": "[Electsay onenay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "selection",
@@ -10709,7 +11564,8 @@
 			"ts": 1,
 			"tgt": "[Electionsay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "share",
@@ -10719,7 +11575,8 @@
 			"ts": 1,
 			"tgt": "[Areshay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "sort",
@@ -10729,7 +11586,8 @@
 			"ts": 1,
 			"tgt": "[Ortsay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "sort_and_filter",
@@ -10746,7 +11604,8 @@
 				"-piggy]"
 			],
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "start",
@@ -10756,7 +11615,8 @@
 			"ts": 1,
 			"tgt": "[Artstay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "stop",
@@ -10766,7 +11626,8 @@
 			"ts": 1,
 			"tgt": "[Opstay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "tag",
@@ -10776,7 +11637,8 @@
 			"ts": 1,
 			"tgt": "[Agtay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "top",
@@ -10786,7 +11648,8 @@
 			"ts": 1,
 			"tgt": "[Optay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "undo",
@@ -10796,7 +11659,8 @@
 			"ts": 1,
 			"tgt": "[Undoyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "unknown_error",
@@ -10806,7 +11670,8 @@
 			"ts": 1,
 			"tgt": "[Unknownyay erroryay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "unpin",
@@ -10816,7 +11681,8 @@
 			"ts": 1,
 			"tgt": "[Unpinyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "use_default",
@@ -10826,7 +11692,8 @@
 			"ts": 1,
 			"tgt": "[Useyay efaultday-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "view_all_errors",
@@ -10836,7 +11703,8 @@
 			"ts": 1,
 			"tgt": "[Iewvay allyay errorsyay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "view_chapters",
@@ -10846,7 +11714,8 @@
 			"ts": 1,
 			"tgt": "[Iewvay apterschay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "warning",
@@ -10856,7 +11725,8 @@
 			"ts": 1,
 			"tgt": "[Arningway-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		},
 		{
 			"sid": "wifi",
@@ -10866,7 +11736,8 @@
 			"ts": 1,
 			"tgt": "[Iway-Ifay-piggy]",
 			"q": 1,
-			"jobGuid": "xxx5xxx"
+			"jobGuid": "xxx5xxx",
+			"translationProvider": "PigLatinizer"
 		}
 	],
 	"translationProvider": "TMExport"

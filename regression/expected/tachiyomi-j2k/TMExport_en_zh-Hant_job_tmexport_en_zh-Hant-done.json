@@ -18,7 +18,8 @@
 			"ntgt": [
 				"Tachiyomi 需要有在Android 11上的儲存空間存取權限才能下載漫畫，備份設定，開啟本機漫畫。 \n \n請在下一個畫面開啟\"允許存取儲存空間\""
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "external_storage_download_notice",
@@ -33,7 +34,8 @@
 			"ntgt": [
 				"Tachiyomi 需要有儲存空間存取權限才能下載漫畫。請允許\"管理儲存空間\""
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "manga",
@@ -43,7 +45,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "漫畫",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "manhwa",
@@ -53,7 +56,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "漫畫",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "manhua",
@@ -63,7 +67,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "漫畫",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "comic",
@@ -73,7 +78,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "漫畫",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "webtoon",
@@ -83,7 +89,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Webtoon 式",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "not_started",
@@ -93,7 +100,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "尚未開始",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "in_progress",
@@ -103,7 +111,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "進行中",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "read",
@@ -113,7 +122,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "已讀",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "title",
@@ -123,7 +133,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "標題",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "author",
@@ -133,7 +144,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "原作",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "artist",
@@ -143,7 +155,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "作畫",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "description",
@@ -153,7 +166,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "詳細資訊",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "move_x_to",
@@ -179,7 +193,8 @@
 				},
 				"到…"
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "add_x_to",
@@ -205,7 +220,8 @@
 				},
 				"到…"
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "ongoing",
@@ -215,7 +231,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "連載中",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "unknown",
@@ -225,7 +242,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "不明",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "unknown_status",
@@ -235,7 +253,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "連載狀態不明",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "licensed",
@@ -245,7 +264,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "已授權",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "completed",
@@ -255,7 +275,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "已完結",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "unlock_library",
@@ -265,7 +286,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "解鎖已存取書櫃",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "unlock",
@@ -275,7 +297,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "解鎖",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "lock_with_biometrics",
@@ -285,7 +308,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "生物特徵辨識鎖定",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "lock_when_idle",
@@ -295,7 +319,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "閒置時鎖定",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "chapters",
@@ -305,7 +330,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "章節",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "new_chapters",
@@ -315,7 +341,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "新章節",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "unread",
@@ -325,7 +352,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "未讀",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "last_read_chapter_",
@@ -349,7 +377,8 @@
 					"v1": "a_x_1"
 				}
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "chapter_",
@@ -374,7 +403,8 @@
 				},
 				" 章"
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "all_chapters_read",
@@ -384,7 +414,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "以下章節已讀",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "bookmarked",
@@ -394,7 +425,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "已加入書籤",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "not_bookmarked",
@@ -404,7 +436,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "未加入書籤",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "marked_as_read",
@@ -414,7 +447,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "標示為已讀",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "marked_as_unread",
@@ -424,7 +458,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "標示為未讀",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "removed_bookmark",
@@ -434,7 +469,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "移除書籤",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "chapters_removed",
@@ -444,7 +480,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "章節已刪除。",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "chapter_not_found",
@@ -454,7 +491,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "未找到章節",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "no_chapters_error",
@@ -464,7 +502,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "沒有章節",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "no_pages_found",
@@ -474,7 +513,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "沒有找到頁面",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "remove_all_downloads",
@@ -486,7 +526,8 @@
 			"ntgt": [
 				"移除所有下載檔案?"
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "by_source_order",
@@ -499,7 +540,8 @@
 			],
 			"q": 70,
 			"tgt": "依照來源排序",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "by_chapter_number",
@@ -509,7 +551,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "依照章節編號排序",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "by_update_date",
@@ -519,7 +562,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "依照上傳時間排序",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "categories",
@@ -529,7 +573,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "分類",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "adding_category_to_queue",
@@ -555,7 +600,8 @@
 				},
 				"到佇列"
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "_already_in_queue",
@@ -579,7 +625,8 @@
 				},
 				"已經在佇列"
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "default_category",
@@ -589,7 +636,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "預設分類",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "confirm_category_deletion",
@@ -599,7 +647,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "確定要刪除分類？",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "add_categories",
@@ -609,7 +658,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "新增分類",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "edit_categories",
@@ -619,7 +669,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "管理分類",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "move_to_categories",
@@ -629,7 +680,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "移至分類",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "category_with_name_exists",
@@ -639,7 +691,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "已有名稱相同的分類！",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "update",
@@ -649,7 +702,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "更新",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "update_available",
@@ -659,7 +713,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "可用的更新",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "new_version_available",
@@ -669,7 +724,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "有可用的更新！",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "no_new_updates_available",
@@ -679,7 +735,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "沒有可用的更新",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "searching_for_updates",
@@ -689,7 +746,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "正在檢查更新…",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "could_not_install_update",
@@ -699,7 +757,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "無法安裝更新",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "update_completed",
@@ -709,7 +768,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "更新完成",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "library",
@@ -719,7 +779,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "書櫃",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "updating_library",
@@ -729,7 +790,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "正在更新書櫃",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "selected_",
@@ -753,7 +815,8 @@
 					"v1": "a_x_1"
 				}
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "local",
@@ -763,7 +826,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "本機",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "remove_from_library_question",
@@ -775,7 +839,8 @@
 			"ntgt": [
 				"從書櫃移除?"
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "library_search_hint",
@@ -785,7 +850,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "搜尋標題，標籤，來源",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "library_is_empty_add_from_browse",
@@ -798,7 +864,8 @@
 			],
 			"q": 70,
 			"tgt": "尚未收藏任何作品，探索來源以挖掘你的愛書。",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "getting_started_guide",
@@ -808,7 +875,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "入門指南",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "_unread",
@@ -832,7 +900,8 @@
 				},
 				" 未讀"
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "total_chapters",
@@ -842,7 +911,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "章節數",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "date_added",
@@ -852,7 +922,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "收藏日期",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "last_read",
@@ -862,7 +933,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "最近閱讀",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "last_updated",
@@ -872,7 +944,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "最後更新",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "latest_chapter",
@@ -882,7 +955,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "最新章節",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "drag_and_drop",
@@ -895,7 +969,8 @@
 			],
 			"q": 70,
 			"tgt": "拖曳",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "display_options",
@@ -905,7 +980,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "檢視選項",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "list",
@@ -915,7 +991,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "清單",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "comfortable_grid",
@@ -925,7 +1002,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "鬆散格狀",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "compact_grid",
@@ -935,7 +1013,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "密集格狀",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "download_badge",
@@ -945,7 +1024,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "已下載標記",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "badges",
@@ -955,7 +1035,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "標記",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "hide_unread_badges",
@@ -965,7 +1046,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "隱藏未讀章節",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "show_unread_badges",
@@ -975,7 +1057,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "顯示未讀章節",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "show_unread_count",
@@ -985,7 +1068,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "顯示未讀數量",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "tap_library_to_show_filters",
@@ -995,7 +1079,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "輕觸「書櫃」圖示即可顯示篩選器",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "more_library_settings",
@@ -1005,7 +1090,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "詳細書櫃設定",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "new_chapters_found",
@@ -1015,7 +1101,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "發現新章節",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "notification_update_failed_other",
@@ -1041,7 +1128,8 @@
 				},
 				" 項更新失敗"
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "library_update_frequency",
@@ -1051,7 +1139,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "書櫃更新頻率",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "library_update_order",
@@ -1061,7 +1150,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "書櫃更新順序",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "library_update_restriction",
@@ -1071,7 +1161,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "書櫃更新限制",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "library_update_restriction_summary",
@@ -1081,7 +1172,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "僅在符合條件時更新",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "only_update_ongoing",
@@ -1091,7 +1183,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "僅更新連載中的漫畫",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "categories_to_include_in_global_update",
@@ -1101,7 +1194,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "自動更新的分類",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "auto_refresh_covers",
@@ -1111,7 +1205,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "自動重新整理書封",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "updates",
@@ -1121,7 +1216,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "更新",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "history",
@@ -1131,7 +1227,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "記錄",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "recent_updates",
@@ -1141,7 +1238,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "新書上架",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "this_will_remove_the_read_date_question",
@@ -1154,7 +1252,8 @@
 			],
 			"q": 70,
 			"tgt": "這將會清除此章節的閱讀日期，確定嗎？",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "no_recent_chapters",
@@ -1164,7 +1263,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "沒有新章節",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "no_recently_read_manga",
@@ -1174,7 +1274,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "沒有近期閱讀",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "search_filters",
@@ -1184,7 +1285,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "篩選器",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "no_more_results",
@@ -1194,7 +1296,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "沒有更多結果",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "no_results_found",
@@ -1204,7 +1307,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "找不到結果",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "local_source",
@@ -1214,7 +1318,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "本機來源",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "other",
@@ -1224,7 +1329,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "其他",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "global_search",
@@ -1234,7 +1340,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "全域搜尋…",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "label_global_search",
@@ -1244,7 +1351,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "全域搜尋",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "latest",
@@ -1254,7 +1362,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "新上架",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "browse",
@@ -1264,7 +1373,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "探索",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "in_library",
@@ -1274,7 +1384,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "在書櫃中",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "sources",
@@ -1284,7 +1395,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "來源",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "last_used",
@@ -1294,7 +1406,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "最近使用",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "local_source_help_guide",
@@ -1304,7 +1417,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "本機來源入門教學",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "check_site_in_web",
@@ -1314,7 +1428,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "在 WebView 中檢查網站",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "extensions",
@@ -1324,7 +1439,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "擴充套件",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "extension_info",
@@ -1334,7 +1450,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "擴充套件資訊",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "obsolete",
@@ -1344,7 +1461,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "過舊",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "pending",
@@ -1354,7 +1472,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "等待中",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "installing",
@@ -1364,7 +1483,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "安裝中",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "installed",
@@ -1374,7 +1494,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "已安裝",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "trust",
@@ -1384,7 +1505,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "信任",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "untrusted",
@@ -1394,7 +1516,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "不信任",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "uninstall",
@@ -1404,7 +1527,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "解除安裝",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "untrusted_extension",
@@ -1414,7 +1538,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "不信任的擴充套件",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "untrusted_extension_message",
@@ -1429,7 +1554,8 @@
 			"ntgt": [
 				"這個擴充套件的憑證並不可靠，且尚未被啟用。 \n \n惡意的擴充套件可能存取任何儲存於 Tachiyomi 中的登錄憑證，或執行任意的程式碼。 \n \n信任這個憑證，即表示你願意承擔上述風險。"
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "obsolete_extension_message",
@@ -1439,7 +1565,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "這個擴充套件已無法使用。",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "unofficial_extension_message",
@@ -1449,7 +1576,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "這個擴充套件不是由 Tachiyomi 所提供。",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "version_",
@@ -1473,7 +1601,8 @@
 					"v1": "a_x_1"
 				}
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "language_",
@@ -1497,7 +1626,8 @@
 					"v1": "a_x_1"
 				}
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "nsfw_short",
@@ -1507,7 +1637,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "18+",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "unofficial",
@@ -1517,7 +1648,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "非官方",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "may_contain_nsfw",
@@ -1527,7 +1659,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "可能包含未滿十八歲之人不宜觀賞的內容",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "extension_updates_available_other",
@@ -1552,7 +1685,8 @@
 				},
 				" 個擴充套件可更新"
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "set_as_cover",
@@ -1562,7 +1696,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "設為書封",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "cover_updated",
@@ -1572,7 +1707,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "已更新書封",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "page_",
@@ -1597,7 +1733,8 @@
 				},
 				" 頁"
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "next_chapter_not_found",
@@ -1607,7 +1744,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "找不到下一章",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "decode_image_error",
@@ -1617,7 +1755,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "無法解碼該圖片",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "use_image_as_cover",
@@ -1627,7 +1766,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "要將該圖片設為書封嗎？",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "finished_chapter",
@@ -1637,7 +1777,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "已閱畢：",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "current_chapter",
@@ -1647,7 +1788,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "當前章節:",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "next_title",
@@ -1657,7 +1799,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "接下來：",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "previous_title",
@@ -1667,7 +1810,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "上一章：",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "theres_no_next_chapter",
@@ -1680,7 +1824,8 @@
 			],
 			"q": 70,
 			"tgt": "以下空白",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "theres_no_previous_chapter",
@@ -1693,7 +1838,8 @@
 			],
 			"q": 70,
 			"tgt": "已達盡頭",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "loading_pages",
@@ -1703,7 +1849,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "正在載入頁面…",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "failed_to_load_pages_",
@@ -1728,7 +1875,8 @@
 				},
 				" 頁載入失敗"
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "next_page",
@@ -1738,7 +1886,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "下一頁",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "previous_page",
@@ -1748,7 +1897,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "上一頁",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "next_chapter",
@@ -1758,7 +1908,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "下一頁",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "previous_chapter",
@@ -1768,7 +1919,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "上一頁",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "fullscreen",
@@ -1778,7 +1930,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "全螢幕",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "animate_page_transitions",
@@ -1788,7 +1941,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "翻頁轉場動畫",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "double_tap_anim_speed",
@@ -1798,7 +1952,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "輕觸兩下動畫速度",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "show_page_number",
@@ -1808,7 +1963,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "顯示頁碼",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "true_32bit_color",
@@ -1818,7 +1974,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "32 位元色彩",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "reduces_banding_impacts_performance",
@@ -1831,7 +1988,8 @@
 			],
 			"q": 70,
 			"tgt": "減緩色調分離，但拖累效能",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "crop_borders",
@@ -1841,7 +1999,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "邊緣裁剪",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "use_custom_brightness",
@@ -1851,7 +2010,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "自訂亮度",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "use_custom_color_filter",
@@ -1861,7 +2021,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "色彩濾鏡",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "color_filter_blend_mode",
@@ -1871,7 +2032,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "濾鏡融合機制",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "overlay",
@@ -1881,7 +2043,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "覆蓋",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "multiply",
@@ -1891,7 +2054,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "色彩增值",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "screen",
@@ -1901,7 +2065,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "濾色",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dodge_lighten",
@@ -1911,7 +2076,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "減淡 / 變亮",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "burn_darken",
@@ -1921,7 +2087,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "加深 / 變暗",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "keep_screen_on",
@@ -1931,7 +2098,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "保持螢幕恆亮",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "skip_read_chapters",
@@ -1941,7 +2109,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "略過已讀的章節",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "skip_filtered_chapters",
@@ -1951,7 +2120,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "略過已篩選的章節",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "navigation",
@@ -1961,7 +2131,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "導覽",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "volume_keys",
@@ -1971,7 +2142,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "音量按鈕",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "invert_volume_keys",
@@ -1981,7 +2153,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "反轉音量按鈕",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "tapping",
@@ -1991,7 +2164,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "輕觸翻頁",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "background_color",
@@ -2001,7 +2175,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "背景顏色",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "white",
@@ -2011,7 +2186,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "白色",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "black",
@@ -2021,7 +2197,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "黑色",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "default_reading_mode",
@@ -2031,7 +2208,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "預設閱讀模式",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "left_to_right_viewer",
@@ -2041,7 +2219,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "由左至右",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "right_to_left_viewer",
@@ -2051,7 +2230,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "由右至左",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "vertical_viewer",
@@ -2061,7 +2241,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "由上至下",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "continuous_vertical",
@@ -2071,7 +2252,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "垂直連貫",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "paged",
@@ -2081,7 +2263,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "單頁式",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "scale_type",
@@ -2091,7 +2274,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "縮放模式",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "nav_layout",
@@ -2101,7 +2285,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "輕觸翻頁模式",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "fit_screen",
@@ -2111,7 +2296,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "符合螢幕",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "stretch",
@@ -2121,7 +2307,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "延展",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "fit_width",
@@ -2131,7 +2318,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "符合頁寬",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "fit_height",
@@ -2141,7 +2329,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "符合頁高",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "original_size",
@@ -2151,7 +2340,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "原始大小",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "smart_fit",
@@ -2161,7 +2351,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "智慧型填充",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "zoom_start_position",
@@ -2171,7 +2362,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "縮放原點",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "portrait",
@@ -2181,7 +2373,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "直向",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "landscape",
@@ -2191,7 +2384,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "橫向",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "red_initial",
@@ -2201,7 +2395,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "R",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "green_initial",
@@ -2211,7 +2406,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "G",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "blue_initial",
@@ -2221,7 +2417,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "B",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "alpha_initial",
@@ -2231,7 +2428,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "A",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "always_show_chapter_transition",
@@ -2241,7 +2439,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "永遠顯示章節間的隔頁",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "pref_webtoon_side_padding",
@@ -2251,7 +2450,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "頁緣留白",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "webtoon_side_padding_0",
@@ -2261,7 +2461,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "無",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "webtoon_side_padding_10",
@@ -2271,7 +2472,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "10%",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "webtoon_side_padding_15",
@@ -2281,7 +2483,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "15%",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "webtoon_side_padding_20",
@@ -2291,7 +2494,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "20%",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "webtoon_side_padding_25",
@@ -2301,7 +2505,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "25%",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "l_nav",
@@ -2311,7 +2516,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "L 式",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "kindlish_nav",
@@ -2321,7 +2527,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "Kindle 式",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "edge_nav",
@@ -2331,7 +2538,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "邊緣式",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "right_and_left_nav",
@@ -2341,7 +2549,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "左右式",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "invert_tapping",
@@ -2351,7 +2560,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "反轉輕觸方向",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "none",
@@ -2361,7 +2571,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "無",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "missing_chapters_warning_other",
@@ -2388,7 +2599,8 @@
 				},
 				" 章，也許是來源沒有這些章節，或其已被你的篩選規則排除"
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "start_reading",
@@ -2398,7 +2610,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "開始閱讀",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "start_reading_chapter_",
@@ -2423,7 +2636,8 @@
 				},
 				"章"
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "continue_reading_chapter_",
@@ -2448,7 +2662,8 @@
 				},
 				"章"
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "continue_reading",
@@ -2458,7 +2673,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "繼續閱讀",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "chapters_",
@@ -2483,7 +2699,8 @@
 				},
 				" 章"
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "added_to_library",
@@ -2493,7 +2710,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "已收藏至書櫃",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "add_to_library",
@@ -2503,7 +2721,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "加入書櫃",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "removed_from_library",
@@ -2513,7 +2732,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "已從書櫃中移除",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "_copied_to_clipboard",
@@ -2538,7 +2758,8 @@
 				},
 				"」已複製至剪貼簿"
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "source_not_installed_",
@@ -2562,7 +2783,8 @@
 					"v1": "a_x_1"
 				}
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "mark_all_chapters_as_read",
@@ -2574,7 +2796,8 @@
 			"ntgt": [
 				"標記全部章節為已讀?"
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "mark_all_chapters_as_unread",
@@ -2586,7 +2809,8 @@
 			"ntgt": [
 				"標記全部章節為未讀?"
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "remove_from_library",
@@ -2596,7 +2820,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "移出書櫃",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "select_starting_chapter",
@@ -2606,7 +2831,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "選擇開始章節",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "select_ending_chapter",
@@ -2616,7 +2842,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "選擇結束章節",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "search_chapters",
@@ -2626,7 +2853,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "搜尋章節",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "next_unread_chapter",
@@ -2636,7 +2864,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "下一章未讀章節",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "next_5_unread",
@@ -2646,7 +2875,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "下載後五章",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "custom_range",
@@ -2656,7 +2886,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "下載自訂範圍",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "all_chapters",
@@ -2666,7 +2897,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "下載全部",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "all_unread_chapters",
@@ -2676,7 +2908,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "下載未讀",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "all_read_chapters",
@@ -2686,7 +2919,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "全部已讀",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "all_but_bookmarked_chapters",
@@ -2696,7 +2930,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "全部已加入書籤章節",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "show_bookmarked_chapters",
@@ -2706,7 +2941,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "顯示已加入書籤",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "show_downloaded_chapters",
@@ -2716,7 +2952,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "顯示已下載",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "show_unread_chapters",
@@ -2726,7 +2963,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "顯示未讀章節",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "show_read_chapters",
@@ -2736,7 +2974,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "顯示已讀章節",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "hide_chapter_titles",
@@ -2746,7 +2985,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "隱藏標題",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "sort_by_source_s_order",
@@ -2759,7 +2999,8 @@
 			],
 			"q": 70,
 			"tgt": "依來源排序",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "sort_by_chapter_number",
@@ -2769,7 +3010,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "依編號排序",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "newest_first",
@@ -2779,7 +3021,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "最新到最舊",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "oldest_first",
@@ -2789,7 +3032,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "最舊到最新",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "failed_to_update_cover",
@@ -2799,7 +3043,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "書封更新失敗",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "must_be_in_library_to_edit",
@@ -2809,7 +3054,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "請先將漫畫收藏至書櫃再進行更新",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "cover_saved",
@@ -2819,7 +3065,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "已儲存封面",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "error_saving_cover",
@@ -2829,7 +3076,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "儲存封面時發生錯誤",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "error_sharing_cover",
@@ -2839,7 +3087,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "分享封面時發生錯誤",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "custom_manga_info",
@@ -2849,7 +3098,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "自訂漫畫資訊",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "set_as_default",
@@ -2859,7 +3109,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "設定為預設",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "tracking",
@@ -2869,7 +3120,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "歷程",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "tracked",
@@ -2879,7 +3131,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "已紀錄歷程",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "services",
@@ -2889,7 +3142,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "服務",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "sync_chapters_after_reading",
@@ -2899,7 +3153,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "閱讀完後同步章節",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "reading",
@@ -2909,7 +3164,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "閱讀中",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "currently_reading",
@@ -2919,7 +3175,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "閱讀中",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dropped",
@@ -2929,7 +3186,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "不看了",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "on_hold",
@@ -2939,7 +3197,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "擱置中",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "plan_to_read",
@@ -2949,7 +3208,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "準備讀",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "want_to_read",
@@ -2959,7 +3219,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "想要看",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "paused",
@@ -2969,7 +3230,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "擱置中",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "rereading",
@@ -2979,7 +3241,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "重溫中",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "score",
@@ -2989,7 +3252,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "評分",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "status",
@@ -2999,7 +3263,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "狀態",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "started",
@@ -3009,7 +3274,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "創刊",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "type",
@@ -3019,7 +3285,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "類型",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "url_not_set_click_again",
@@ -3029,7 +3296,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "漫畫網址未設置，請點擊標題再選擇一次漫畫",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "refresh_tracking",
@@ -3039,7 +3307,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "更新閱讀歷程",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "add_tracking",
@@ -3049,7 +3318,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "新增閱讀歷程",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "source_unsupported",
@@ -3059,7 +3329,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "未支援的來源",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "started_reading_date",
@@ -3069,7 +3340,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "開始閱讀日期",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "finished_reading_date",
@@ -3079,7 +3351,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "閱讀完畢日期",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "myanimelist_relogin",
@@ -3089,7 +3362,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "請重新登入 MAL",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "select_sources",
@@ -3099,7 +3373,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "選擇來源",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "source_migration",
@@ -3109,7 +3384,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "來源遷移",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "migrate",
@@ -3119,7 +3395,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "遷移",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "copy_value",
@@ -3129,7 +3406,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "副本",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "settings",
@@ -3139,7 +3417,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "設定",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "general",
@@ -3149,7 +3428,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "一般",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "reader",
@@ -3159,7 +3439,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "閱讀",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "advanced",
@@ -3169,7 +3450,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "進階",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "about",
@@ -3179,7 +3461,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "關於",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "help",
@@ -3189,7 +3472,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "說明",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "search_settings",
@@ -3199,7 +3483,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "搜尋設定",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "app_theme",
@@ -3209,7 +3494,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "佈景主題",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "light_blue",
@@ -3219,7 +3505,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "淺藍",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dark",
@@ -3229,7 +3516,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "深色",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "amoled_black",
@@ -3239,7 +3527,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "全黑",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dark_blue",
@@ -3249,7 +3538,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "深藍",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "locale",
@@ -3259,7 +3549,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "在地化",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "system_default",
@@ -3269,7 +3560,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "系統預設",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "date_format",
@@ -3279,7 +3571,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "日期格式",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "check_for_updates",
@@ -3289,7 +3582,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "檢查更新",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "updated_to_",
@@ -3313,7 +3607,8 @@
 					"v1": "a_x_1"
 				}
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "secure_screen",
@@ -3323,7 +3618,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "防窺畫面",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "hide_app_block_screenshots",
@@ -3333,7 +3629,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "在切換應用程式時隱藏預覽，並禁止擷取螢幕畫面",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "hide_notification_content",
@@ -3343,7 +3640,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "隱藏通知內容",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "security",
@@ -3353,7 +3651,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "隱私",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "backup",
@@ -3363,7 +3662,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "備份",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "backup_and_restore",
@@ -3373,7 +3673,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "備份與還原",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "create_backup",
@@ -3383,7 +3684,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "建立備份",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "can_be_used_to_restore",
@@ -3393,7 +3695,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "可用來保存目前書櫃內容",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "restore_backup",
@@ -3403,7 +3706,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "還原備份",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "restore_from_backup_file",
@@ -3413,7 +3717,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "由備份檔案還原書櫃內容",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "restore_in_progress",
@@ -3423,7 +3728,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "還原已在進行",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "backup_in_progress",
@@ -3433,7 +3739,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "備份已在進行",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "backup_location",
@@ -3443,7 +3750,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "備份位置",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "automatic_backups",
@@ -3453,7 +3761,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "自動備份",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "backup_frequency",
@@ -3463,7 +3772,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "備份頻率",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "max_auto_backups",
@@ -3473,7 +3783,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "最大備份保留數",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "invalid_backup_file",
@@ -3483,7 +3794,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "無效的備份檔",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "invalid_backup_file_type",
@@ -3509,7 +3821,8 @@
 				},
 				" \n副檔名應為 .proto.gz 或 .json"
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "file_is_missing_data",
@@ -3519,7 +3832,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "檔案遺失資料",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "backup_has_no_manga",
@@ -3529,7 +3843,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "備份檔並未包含任何漫畫",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "backup_failed",
@@ -3539,7 +3854,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "備份失敗",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "backup_created",
@@ -3549,7 +3865,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "已建立備份",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "restore_completed",
@@ -3559,7 +3876,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "還原成功",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "restore_missing_sources",
@@ -3569,7 +3887,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "遺失來源：",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "restore_missing_trackers",
@@ -3579,7 +3898,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "尚未登入至歷程平台：",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "restore_content",
@@ -3594,7 +3914,8 @@
 			"ntgt": [
 				"還原時需連線至來源以取得資料，可能要支付數據傳輸費用。 \n \n在進行還原前，請確認你已安裝所需的擴充套件，並已登入至歷程平台及要求身分認證的來源。"
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "restoring_backup_canceled",
@@ -3604,7 +3925,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "已取消還原",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "creating_backup",
@@ -3614,7 +3936,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "正在建立備份",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "what_should_backup",
@@ -3624,7 +3947,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "哪些項目需要備份？",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "restoring_backup",
@@ -3634,7 +3958,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "正在還原",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "restore_duration",
@@ -3669,7 +3994,8 @@
 				},
 				" 秒"
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "progress",
@@ -3679,7 +4005,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "進度",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "complete",
@@ -3689,7 +4016,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "作業完成",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "restore_completed_message_other",
@@ -3727,7 +4055,8 @@
 				},
 				" 個錯誤"
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "clear_chapter_cache",
@@ -3737,7 +4066,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "清除章節快取",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "crash_logs",
@@ -3747,7 +4077,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "當機記錄",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "dump_crash_logs",
@@ -3757,7 +4088,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "傾印當機記錄",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "saves_error_logs",
@@ -3767,7 +4099,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "產生錯誤記錄檔以便分享予開發人員",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "about_dont_kill_my_app",
@@ -3777,7 +4110,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "部分裝置製造商設有額外的應用程式限制來終止背景服務。此網站提供了修復這項問題的詳細資訊。",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "crash_log_saved",
@@ -3787,7 +4121,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "已產生當機記錄",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "network",
@@ -3797,7 +4132,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "網路",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "doh",
@@ -3807,7 +4143,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "DNS over HTTPS",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "requires_app_restart",
@@ -3817,7 +4154,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "需要重新啟動應用程式以套用",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "used_",
@@ -3841,7 +4179,8 @@
 					"v1": "a_x_1"
 				}
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "cache_delete_error",
@@ -3851,7 +4190,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "清除快取時發生錯誤",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "clear_cookies",
@@ -3861,7 +4201,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "清除 Cookies",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "cookies_cleared",
@@ -3871,7 +4212,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "已清除 Cookies",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "clear_database",
@@ -3881,7 +4223,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "清除資料庫",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "clear_database_summary",
@@ -3891,7 +4234,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "將未收藏於書櫃中的漫畫的記錄刪除",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "clear_database_confirmation",
@@ -3901,7 +4245,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "不在書櫃中的漫畫閱讀進度將被清除，你確定嗎？",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "clear_database_completed",
@@ -3911,7 +4256,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "已刪除項目",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "refresh_library_metadata",
@@ -3921,7 +4267,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "重新整理書櫃資料",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "updates_covers_genres_desc",
@@ -3931,7 +4278,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "更新書封、類型、描述和連載狀態等漫畫簡介",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "refresh_tracking_metadata",
@@ -3941,7 +4289,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "更新閱讀歷程",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "updates_tracking_details",
@@ -3951,7 +4300,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "與歷程平台同步處理閱讀狀態、評分以及進度",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "disable_battery_optimization",
@@ -3961,7 +4311,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "停用電池效能最佳化",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "battery_optimization_disabled",
@@ -3971,7 +4322,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "已停用電池效能最佳化",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "pref_global_search",
@@ -3981,7 +4333,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "全域搜尋",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "check_for_extension_updates",
@@ -3991,7 +4344,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "自動檢查擴充套件更新",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "source_migration_guide",
@@ -4001,7 +4355,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "來源遷移說明",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "nsfw_sources",
@@ -4011,7 +4366,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "未滿十八歲之人不宜瀏覽的來源",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "does_not_prevent_unofficial_nsfw",
@@ -4021,7 +4377,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "即使啟用監護限制，還是可能有漏網之魚。使用者仍可藉由非官方或未正確標幟的擴充套件在本應用程式中瀏覽未滿十八歲之人不宜觀賞的內容。",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "version",
@@ -4031,7 +4388,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "版本",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "build_time",
@@ -4041,7 +4399,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "組建時間",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "send_crash_report",
@@ -4051,7 +4410,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "傳送錯誤報告",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "helps_fix_bugs",
@@ -4061,7 +4421,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "協助我們修復錯誤，傳送的資料將不包含個人敏感訊息",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "whats_new",
@@ -4074,7 +4435,8 @@
 			],
 			"q": 70,
 			"tgt": "更新日誌",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "help_translate",
@@ -4084,7 +4446,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "協助翻譯",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "website",
@@ -4094,7 +4457,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "網站",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "open_source_licenses",
@@ -4104,7 +4468,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "開放原始碼授權",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "log_in_to_",
@@ -4128,7 +4493,8 @@
 					"v1": "a_x_1"
 				}
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "username",
@@ -4138,7 +4504,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "使用者名稱",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "email",
@@ -4148,7 +4515,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "電子郵件地址",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "password",
@@ -4158,7 +4526,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "密碼",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "successfully_logged_in",
@@ -4168,7 +4537,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "登入成功",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "successfully_logged_out",
@@ -4178,7 +4548,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "你已登出",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "downloads",
@@ -4188,7 +4559,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "下載",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "download_queue",
@@ -4198,7 +4570,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "下載佇列",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "cancel_all",
@@ -4208,7 +4581,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "全部取消",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "cancel_all_for_series",
@@ -4218,7 +4592,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "取消此叢書",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "downloaded",
@@ -4228,7 +4603,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "已下載",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "downloading",
@@ -4238,7 +4614,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "下載中",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "download",
@@ -4248,7 +4625,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "下載",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "downloading_progress",
@@ -4285,7 +4663,8 @@
 				},
 				")"
 			],
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "invalid_download_location",
@@ -4295,7 +4674,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "無效的下載位置",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "download_paused",
@@ -4305,7 +4685,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "下載已暫停",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "download_complete",
@@ -4315,7 +4696,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "下載完成",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "download_error",
@@ -4325,7 +4707,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "下載失敗",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "could_not_download_unexpected_error",
@@ -4335,7 +4718,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "下載時發生不可預期的錯誤",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "no_wifi_connection",
@@ -4345,7 +4729,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "沒有可用的 Wi-Fi 連線",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "no_network_connection",
@@ -4355,7 +4740,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "尚未連接至網路",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "download_location",
@@ -4365,7 +4751,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "下載位置",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "only_download_over_wifi",
@@ -4375,7 +4762,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "僅透過 Wi-Fi 下載",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "remove_when_marked_as_read",
@@ -4385,7 +4773,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "刪除標示為已讀的章節",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "remove_after_read",
@@ -4395,7 +4784,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "閱畢後刪除",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "custom_location",
@@ -4405,7 +4795,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "自訂位置",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "last_read_chapter",
@@ -4415,7 +4806,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "最後閱讀的章節",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "second_to_last",
@@ -4425,7 +4817,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "倒數第二章",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "third_to_last",
@@ -4435,7 +4828,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "倒數第三章",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "fourth_to_last",
@@ -4445,7 +4839,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "倒數第四章",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "fifth_to_last",
@@ -4455,7 +4850,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "倒數第五章",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "download_new_chapters",
@@ -4465,7 +4861,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "自動下載新章節",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "categories_to_include_in_download",
@@ -4475,7 +4872,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "欲啟用自動下載的分類",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "manual",
@@ -4485,7 +4883,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "手動",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "hourly",
@@ -4495,7 +4894,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "每小時",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "every_2_hours",
@@ -4505,7 +4905,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "每 2 小時",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "every_3_hours",
@@ -4515,7 +4916,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "每 3 小時",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "every_6_hours",
@@ -4525,7 +4927,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "每 6 小時",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "every_12_hours",
@@ -4535,7 +4938,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "每 12 小時",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "daily",
@@ -4545,7 +4949,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "每日",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "every_2_days",
@@ -4555,7 +4960,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "每 2 日",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "weekly",
@@ -4565,7 +4971,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "每週",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "select_cover_image",
@@ -4575,7 +4982,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "選擇書封圖片",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "select_backup_file",
@@ -4585,7 +4993,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "選擇備份檔案",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "file_picker_error",
@@ -4595,7 +5004,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "找不到檔案選擇器",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "failed_to_bypass_cloudflare",
@@ -4605,7 +5015,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "無法繞過 Cloudflare",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "please_update_webview",
@@ -4615,7 +5026,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "請更新 WebView 以獲得更佳的相容性",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "add",
@@ -4625,7 +5037,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "新增",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "all",
@@ -4635,7 +5048,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "全部",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "alphabetically",
@@ -4645,7 +5059,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "名稱",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "always",
@@ -4655,7 +5070,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "立即",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "always_ask",
@@ -4665,7 +5081,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "總是詢問",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "automatic",
@@ -4675,7 +5092,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "自動",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "back",
@@ -4685,7 +5103,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "上一頁",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "cancel",
@@ -4695,7 +5114,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "取消",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "center",
@@ -4705,7 +5125,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "中間",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "charging",
@@ -4715,7 +5136,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "充電時",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "clear",
@@ -4725,7 +5147,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "清除",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "close",
@@ -4735,7 +5158,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "關閉",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "common",
@@ -4745,7 +5169,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "一般",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "cover_of_image",
@@ -4755,7 +5180,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "漫畫封面",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "create",
@@ -4765,7 +5191,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "建立",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "default_value",
@@ -4775,7 +5202,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "預設",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "delete",
@@ -4785,7 +5213,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "刪除",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "display",
@@ -4795,7 +5224,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "檢視",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "edit",
@@ -4805,7 +5235,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "編輯",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "fast",
@@ -4815,7 +5246,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "快速",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "filter",
@@ -4825,7 +5257,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "篩選",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "forward",
@@ -4835,7 +5268,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "下一頁",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "free",
@@ -4845,7 +5279,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "自動",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "ignore",
@@ -4855,7 +5290,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "忽略",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "install",
@@ -4865,7 +5301,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "安裝",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "left",
@@ -4875,7 +5312,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "左邊",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "less",
@@ -4885,7 +5323,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "較少",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "loading",
@@ -4895,7 +5334,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "正在載入…",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "lock",
@@ -4905,7 +5345,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "鎖定",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "mark_as_read",
@@ -4915,7 +5356,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "標示為已讀",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "mark_as_unread",
@@ -4925,7 +5367,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "標示為未讀",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "mark_previous_as_read",
@@ -4935,7 +5378,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "標示過往章節為已讀",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "more",
@@ -4945,7 +5389,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "其他",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "move_to_bottom",
@@ -4955,7 +5400,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "排至最後",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "move_to_top",
@@ -4965,7 +5411,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "排至最前",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "language",
@@ -4975,7 +5422,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "語言",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "never",
@@ -4985,7 +5433,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "永不",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "newest",
@@ -4995,7 +5444,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "由新到舊",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "no_animation",
@@ -5005,7 +5455,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "停用動畫",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "normal",
@@ -5015,7 +5466,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "正常",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "oldest",
@@ -5025,7 +5477,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "由舊到新",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "open_in_browser",
@@ -5035,7 +5488,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "在瀏覽器中開啟",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "open_log",
@@ -5045,7 +5499,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "檢視記錄檔",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "open_in_webview",
@@ -5055,7 +5510,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "在 WebView 中開啟",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "options",
@@ -5065,7 +5521,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "選項",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "pause",
@@ -5075,7 +5532,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "暫停",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "picture_saved",
@@ -5085,7 +5543,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "圖片已儲存",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "pin",
@@ -5095,7 +5554,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "釘選",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "pinned",
@@ -5105,7 +5565,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "已釘選",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "remove",
@@ -5115,7 +5576,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "移除",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "reorder",
@@ -5125,7 +5587,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "重新排序",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "reset",
@@ -5135,7 +5598,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "重設",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "restore",
@@ -5145,7 +5609,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "還原",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "resume",
@@ -5155,7 +5620,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "繼續閱讀",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "retry",
@@ -5165,7 +5631,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "重試",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "right",
@@ -5175,7 +5642,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "右邊",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "rotation",
@@ -5185,7 +5653,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "螢幕方向",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "save",
@@ -5195,7 +5664,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "儲存",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "search",
@@ -5205,7 +5675,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "搜尋",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "select_all",
@@ -5215,7 +5686,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "全選",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "share",
@@ -5225,7 +5697,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "分享",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "sort",
@@ -5235,7 +5708,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "排序",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "start",
@@ -5245,7 +5719,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "開始",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "stop",
@@ -5255,7 +5730,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "停止",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "undo",
@@ -5265,7 +5741,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "復原",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "unknown_error",
@@ -5275,7 +5752,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "不明的錯誤",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "unpin",
@@ -5285,7 +5763,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "取消釘選",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "view_chapters",
@@ -5295,7 +5774,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "檢視章節",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "wifi",
@@ -5305,7 +5785,8 @@
 			"ts": 1,
 			"q": 70,
 			"tgt": "僅限 Wi-Fi",
-			"jobGuid": "xxx1xxx"
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"sid": "all_files_permission_required",
@@ -5315,7 +5796,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "chapter_x_of_y",
@@ -5337,7 +5819,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "no_chapters_to_delete",
@@ -5347,7 +5830,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "scanlators",
@@ -5357,7 +5841,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "remove_n_chapters_one",
@@ -5376,7 +5861,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "remove_n_chapters_other",
@@ -5395,7 +5881,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "chapters_plural_one",
@@ -5413,7 +5900,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "chapters_plural_other",
@@ -5431,7 +5919,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "pages_left_one",
@@ -5449,7 +5938,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "pages_left_other",
@@ -5467,7 +5957,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "category",
@@ -5477,7 +5968,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "create_new_category",
@@ -5487,7 +5979,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "new_category",
@@ -5497,7 +5990,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "category_is_empty",
@@ -5507,7 +6001,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "show_categories_while_filtering",
@@ -5517,7 +6012,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "no_matches_for_filters_short",
@@ -5527,7 +6023,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "top_category",
@@ -5545,7 +6042,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "first_category",
@@ -5555,7 +6053,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "categories_on_manual",
@@ -5565,7 +6064,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "categories_in_global_update",
@@ -5575,7 +6075,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "confirm_category_deletion_message",
@@ -5588,7 +6089,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "already_in_category",
@@ -5598,7 +6100,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "add_edit_categories",
@@ -5608,7 +6111,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "manage_category",
@@ -5618,7 +6122,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "category_plural_one",
@@ -5636,7 +6141,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "category_plural_other",
@@ -5654,7 +6160,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "category_cannot_be_blank",
@@ -5664,7 +6171,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "category_deleted",
@@ -5674,7 +6182,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "long_press_category",
@@ -5684,7 +6193,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "jump_to_category",
@@ -5694,7 +6204,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "what_should_update",
@@ -5704,7 +6215,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "updating_",
@@ -5721,7 +6233,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "release_page",
@@ -5731,7 +6244,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "your_library",
@@ -5741,7 +6255,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "no_matches_for_filters",
@@ -5751,7 +6266,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "show_all_categories",
@@ -5761,7 +6277,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "move_dynamic_to_bottom",
@@ -5771,7 +6288,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "show_number_of_items",
@@ -5781,7 +6299,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "when_grouping_by_sources_tags",
@@ -5791,7 +6310,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "always_show_current_category",
@@ -5801,7 +6321,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "category_hopper_long_press",
@@ -5811,7 +6332,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "expand_collapse_all_categories",
@@ -5821,7 +6343,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "open_random_series",
@@ -5831,7 +6354,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "expand_all_categories",
@@ -5841,7 +6365,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "collapse_all_categories",
@@ -5851,7 +6376,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "reorder_filters",
@@ -5861,7 +6387,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "search_globally",
@@ -5879,7 +6406,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "read_progress",
@@ -5889,7 +6417,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "series_type",
@@ -5899,7 +6428,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "series",
@@ -5909,7 +6439,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "group_library_by",
@@ -5919,7 +6450,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "tracking_status",
@@ -5929,7 +6461,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "ungrouped",
@@ -5939,7 +6472,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "sort_by",
@@ -5949,7 +6483,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "date_fetched",
@@ -5959,7 +6494,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "can_be_found_in_library_filters",
@@ -5969,7 +6505,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "hide_start_reading_button",
@@ -5979,7 +6516,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "uniform_grid_covers",
@@ -5989,7 +6527,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "show_outline_around_covers",
@@ -5999,7 +6538,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "grid_size",
@@ -6009,7 +6549,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "_per_row",
@@ -6026,7 +6567,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "display_as",
@@ -6036,7 +6578,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "hide_category_hopper",
@@ -6046,7 +6589,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "shift_one_page_over",
@@ -6056,7 +6600,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "shift_double_pages",
@@ -6066,7 +6611,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "notification_size_warning",
@@ -6076,7 +6622,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "for_n_titles_one",
@@ -6095,7 +6642,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "for_n_titles_other",
@@ -6114,7 +6662,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "notification_and_n_more_one",
@@ -6133,7 +6682,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "notification_and_n_more_other",
@@ -6152,7 +6702,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "notification_update_failed_one",
@@ -6163,7 +6714,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "channel_errors",
@@ -6173,7 +6725,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "restrictions_",
@@ -6190,7 +6743,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "sort_by_ignoring_articles",
@@ -6200,7 +6754,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "when_sorting_ignore_articles",
@@ -6213,7 +6768,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "include_in_global_update",
@@ -6223,7 +6779,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "auto_refresh_covers_summary",
@@ -6236,7 +6793,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "global_updates",
@@ -6246,7 +6804,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "display_buttons_bottom_reader",
@@ -6256,7 +6815,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "certain_buttons_can_be_found",
@@ -6266,7 +6826,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "search_suggestions",
@@ -6276,7 +6837,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "search_tips_show_periodically",
@@ -6286,7 +6848,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "recents",
@@ -6296,7 +6859,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "updates_and_history",
@@ -6309,7 +6873,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "newly_added",
@@ -6319,7 +6884,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "reset_chapter_history",
@@ -6329,7 +6895,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "this_will_remove_the_read_date_for_x_question",
@@ -6347,7 +6914,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "reset_all_chapters_for_this_",
@@ -6364,7 +6932,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "last_read_",
@@ -6381,7 +6950,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "read_",
@@ -6398,7 +6968,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "updated_",
@@ -6415,7 +6986,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "added_",
@@ -6432,7 +7004,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "fetched_",
@@ -6449,7 +7022,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "view_history",
@@ -6459,7 +7033,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "view_all_updates",
@@ -6469,7 +7044,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "search_recents",
@@ -6479,7 +7055,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "no_recent_read_updated_manga",
@@ -6489,7 +7066,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "grouped",
@@ -6499,7 +7077,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "reset_chapter_question",
@@ -6509,7 +7088,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "press_and_hold_to_also_reset",
@@ -6519,7 +7099,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "show_download_button",
@@ -6529,7 +7110,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "only_unread",
@@ -6539,7 +7121,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "only_downloaded",
@@ -6549,7 +7132,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "unread_or_downloaded",
@@ -6559,7 +7143,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "show_reset_history_button",
@@ -6569,7 +7154,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "show_read_chapters_all",
@@ -6579,7 +7165,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "show_title_first",
@@ -6589,7 +7176,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "a_while_ago",
@@ -6599,7 +7187,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "show_updated_time",
@@ -6609,7 +7198,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "group_chapters_together",
@@ -6619,7 +7209,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "uniform_covers",
@@ -6629,7 +7220,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "affects_library_grid",
@@ -6639,7 +7231,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "search_extensions",
@@ -6649,7 +7242,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "all_sources",
@@ -6659,7 +7253,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "source_hidden",
@@ -6669,7 +7264,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "extension_updates",
@@ -6679,7 +7275,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "extension_updates_pending",
@@ -6689,7 +7286,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "filter_languages",
@@ -6699,7 +7297,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "installed_",
@@ -6716,7 +7315,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "extensions_miui_warning",
@@ -6726,7 +7326,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "app_info",
@@ -6736,7 +7337,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "_must_be_enabled_first",
@@ -6753,7 +7355,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "could_not_install_extension",
@@ -6763,7 +7366,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "update_all",
@@ -6773,7 +7377,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "some_extensions_may_prompt",
@@ -6783,7 +7388,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "updating_extensions",
@@ -6793,7 +7399,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "_updates_pending_one",
@@ -6811,7 +7418,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "_updates_pending_other",
@@ -6829,7 +7437,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "extensions_updated",
@@ -6839,7 +7448,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "extensions_updated_plural_one",
@@ -6850,7 +7460,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "extensions_updated_plural_other",
@@ -6868,7 +7479,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "extension_updates_available_one",
@@ -6879,7 +7491,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "reader_settings",
@@ -6889,7 +7502,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "set_as_default_for_all",
@@ -6899,7 +7513,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "pages_",
@@ -6916,7 +7531,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "reading_mode",
@@ -6926,7 +7542,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "changing_will_reset_reading_mode",
@@ -6936,7 +7553,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "reading_",
@@ -6953,7 +7571,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "webtoon_style",
@@ -6963,7 +7582,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "set_first_page_as_cover",
@@ -6973,7 +7593,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "share_first_page",
@@ -6983,7 +7604,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "save_first_page",
@@ -6993,7 +7615,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "set_second_page_as_cover",
@@ -7003,7 +7626,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "share_second_page",
@@ -7013,7 +7637,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "save_second_page",
@@ -7023,7 +7648,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "share_combined_pages",
@@ -7033,7 +7659,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "save_combined_pages",
@@ -7043,7 +7670,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "enable_zoom_out",
@@ -7053,7 +7681,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "page_preload_amount",
@@ -7063,7 +7692,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "amount_of_pages_to_preload",
@@ -7073,7 +7703,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "invert_double_pages",
@@ -7083,7 +7714,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "split_double_pages_portrait",
@@ -7093,7 +7725,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "crop_borders_paged",
@@ -7103,7 +7736,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "crop_borders_webtoon",
@@ -7113,7 +7747,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "remove_crop",
@@ -7123,7 +7758,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "smart_by_page",
@@ -7133,7 +7769,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "smart_by_theme",
@@ -7143,7 +7780,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "split_double_pages",
@@ -7153,7 +7791,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "double_pages",
@@ -7163,7 +7802,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "single_page",
@@ -7173,7 +7813,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "switch_to_double",
@@ -7183,7 +7824,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "switch_to_single",
@@ -7193,7 +7835,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "locked_portrait",
@@ -7203,7 +7846,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "locked_landscape",
@@ -7213,7 +7857,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "smart_based_on_page",
@@ -7223,7 +7868,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "smart_based_on_page_and_theme",
@@ -7233,7 +7879,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "if_disabled_transition_will_skip",
@@ -7246,7 +7893,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "horizontally",
@@ -7256,7 +7904,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "vertically",
@@ -7266,7 +7915,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "both_axes",
@@ -7276,7 +7926,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "cutout_area_behavior",
@@ -7286,7 +7937,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "pad_cutout_areas",
@@ -7296,7 +7948,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "start_past_cutout",
@@ -7306,7 +7959,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "ignore_cutout_areas",
@@ -7316,7 +7970,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "cutout_behavior_only_applies",
@@ -7326,7 +7981,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "page_layout",
@@ -7336,7 +7992,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "automatic_can_still_switch",
@@ -7346,7 +8003,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "automatic_orientation",
@@ -7356,7 +8014,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "webtoon_cannot_change",
@@ -7366,7 +8025,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "actions",
@@ -7376,7 +8036,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "show_on_long_press",
@@ -7386,7 +8047,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "save_pages_separately",
@@ -7396,7 +8058,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "create_folders_by_manga_title",
@@ -7406,7 +8069,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "pages_plural_one",
@@ -7424,7 +8088,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "pages_plural_other",
@@ -7442,7 +8107,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "missing_chapters_warning_one",
@@ -7453,7 +8119,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "about_this_",
@@ -7470,7 +8137,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "volume_",
@@ -7487,7 +8155,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "season_",
@@ -7504,7 +8173,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "no_description",
@@ -7514,7 +8184,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "add_x_to_library",
@@ -7532,7 +8203,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "show_all",
@@ -7542,7 +8214,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "add_tag",
@@ -7552,7 +8225,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "clear_tags",
@@ -7562,7 +8236,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "reset_tags",
@@ -7572,7 +8247,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "reset_cover",
@@ -7582,7 +8258,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "remember_this_choice",
@@ -7592,7 +8269,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "source_not_installed",
@@ -7602,7 +8280,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "filter_groups",
@@ -7612,7 +8291,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "deleted_chapters_one",
@@ -7631,7 +8311,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "deleted_chapters_other",
@@ -7654,7 +8335,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "not_tracked",
@@ -7664,7 +8346,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "track_when_adding_to_library",
@@ -7674,7 +8357,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "only_applies_silent_trackers",
@@ -7684,7 +8368,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "select_an_entry",
@@ -7694,7 +8379,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "no_match_found",
@@ -7704,7 +8390,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "remove_tracking",
@@ -7714,7 +8401,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "cannot_remove_tracking_while_offline",
@@ -7732,7 +8420,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "remove_tracking_from_",
@@ -7749,7 +8438,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "remove_previous_tracker",
@@ -7759,7 +8449,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "remove_x_from_service_and_add_y",
@@ -7786,7 +8477,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "keep_both_on_service",
@@ -7804,7 +8496,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "use_suggested_date",
@@ -7814,7 +8507,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "migration",
@@ -7824,7 +8518,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "skip_pre_migration",
@@ -7834,7 +8529,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "select_a_source_then_item_to_migrate",
@@ -7847,7 +8543,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "data_to_include_in_migration",
@@ -7857,7 +8554,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "search_parameter_eg",
@@ -7867,7 +8565,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "include_extra_search_parameter",
@@ -7877,7 +8576,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "use_most_chapters",
@@ -7887,7 +8587,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "use_first_source",
@@ -7897,7 +8598,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "skip_this_step_next_time",
@@ -7907,7 +8609,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "to_show_again_setting_sources",
@@ -7920,7 +8623,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "latest_",
@@ -7937,7 +8641,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "migrating_to",
@@ -7947,7 +8652,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "dont_migrate",
@@ -7960,7 +8666,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "search_manually",
@@ -7970,7 +8677,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "migrate_now",
@@ -7980,7 +8688,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "copy_now",
@@ -7990,7 +8699,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "migrate_",
@@ -8007,7 +8717,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "no_chapters_found_for_migration",
@@ -8020,7 +8731,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "no_alternatives_found",
@@ -8030,7 +8742,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "stop_migrating",
@@ -8040,7 +8753,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "migrate_manga_one",
@@ -8063,7 +8777,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "migrate_manga_other",
@@ -8086,7 +8801,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "copy_manga_one",
@@ -8109,7 +8825,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "copy_manga_other",
@@ -8132,7 +8849,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "skipping_",
@@ -8150,7 +8868,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "manga_migrated_one",
@@ -8168,7 +8887,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "manga_migrated_other",
@@ -8186,7 +8906,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "appearance",
@@ -8196,7 +8917,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "turn_on_",
@@ -8213,7 +8935,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "turn_off_",
@@ -8230,7 +8953,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "incognito_mode",
@@ -8240,7 +8964,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "pauses_reading_history",
@@ -8250,7 +8975,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "light_theme",
@@ -8260,7 +8986,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "dark_theme",
@@ -8270,7 +8997,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "midnight_dusk",
@@ -8280,7 +9008,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "spring_blossom",
@@ -8290,7 +9019,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "strawberry_daiquiri",
@@ -8300,7 +9030,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "a_brighter_you",
@@ -8310,7 +9041,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "a_calmer_you",
@@ -8320,7 +9052,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "yotsuba",
@@ -8330,7 +9063,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "tako",
@@ -8340,7 +9074,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "yin",
@@ -8350,7 +9085,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "yang",
@@ -8360,7 +9096,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "chocolate_strawberries",
@@ -8370,7 +9107,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "teal_ocean",
@@ -8380,7 +9118,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "sapphire_dusk",
@@ -8390,7 +9129,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "hot_pink",
@@ -8400,7 +9140,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "flat_lime",
@@ -8410,7 +9151,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "white_theme",
@@ -8420,7 +9162,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "last_used_library_recents",
@@ -8430,7 +9173,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "hide_bottom_nav",
@@ -8440,7 +9184,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "side_nav_icon_alignment",
@@ -8450,7 +9195,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "use_side_navigation",
@@ -8460,7 +9206,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "default_behavior",
@@ -8470,7 +9217,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "by_default_side_nav_info",
@@ -8480,7 +9228,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "follow_system_theme",
@@ -8490,7 +9239,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "pure_black_dark_mode",
@@ -8500,7 +9250,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "details_page",
@@ -8510,7 +9261,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "theme_buttons_based_on_cover",
@@ -8520,7 +9272,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "hides_on_scroll",
@@ -8530,7 +9283,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "starting_screen",
@@ -8540,7 +9294,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "back_to_start",
@@ -8550,7 +9305,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "pressing_back_to_start",
@@ -8560,7 +9316,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "auto_updates",
@@ -8570,7 +9327,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "auto_update_app",
@@ -8580,7 +9338,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "over_wifi_only",
@@ -8590,7 +9349,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "over_any_network",
@@ -8600,7 +9360,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "dont_auto_update",
@@ -8613,7 +9374,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "app_shortcuts",
@@ -8623,7 +9385,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "show_recent_sources",
@@ -8633,7 +9396,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "show_recent_series",
@@ -8643,7 +9407,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "includes_recently_read_updated_added",
@@ -8653,7 +9418,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "series_opens_new_chapters",
@@ -8663,7 +9429,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "no_new_chapters_open_details",
@@ -8676,7 +9443,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "restore_error",
@@ -8686,7 +9454,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "restore_content_full",
@@ -8699,7 +9468,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "restore_miui_warning",
@@ -8709,7 +9479,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "restore_completed_message_one",
@@ -8733,7 +9504,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "not_logged_into_",
@@ -8750,7 +9522,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "force_download_cache_refresh",
@@ -8760,7 +9533,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "force_download_cache_refresh_summary",
@@ -8770,7 +9544,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "data_management",
@@ -8780,7 +9555,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "disabled",
@@ -8790,7 +9566,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "cache_cleared_one",
@@ -8809,7 +9586,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "cache_cleared_other",
@@ -8828,7 +9606,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "clean_up_downloaded_chapters",
@@ -8838,7 +9617,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "delete_unused_chapters",
@@ -8851,7 +9631,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "clean_orphaned_downloads",
@@ -8861,7 +9642,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "clean_read_downloads",
@@ -8871,7 +9653,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "clean_read_manga_not_in_library",
@@ -8881,7 +9664,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "starting_cleanup",
@@ -8891,7 +9675,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "no_folders_to_cleanup",
@@ -8901,7 +9686,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "disable_if_issues_with_updating",
@@ -8914,7 +9700,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "cleanup_done_one",
@@ -8933,7 +9720,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "cleanup_done_other",
@@ -8952,7 +9740,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "clean_up_cached_covers",
@@ -8962,7 +9751,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "delete_old_covers_in_library_used_",
@@ -8979,7 +9769,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "clear_cached_covers_non_library",
@@ -8989,7 +9780,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "delete_all_covers__not_in_library_used_",
@@ -9006,7 +9798,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "auto_update_extensions",
@@ -9016,7 +9809,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "notify_extension_updated",
@@ -9026,7 +9820,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "some_extensions_may_not_update",
@@ -9036,7 +9831,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "only_search_pinned_when",
@@ -9046,7 +9842,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "match_pinned_sources",
@@ -9056,7 +9853,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "match_enabled_sources",
@@ -9066,7 +9864,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "only_enable_pinned_for_migration",
@@ -9079,7 +9878,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "only_enable_enabled_for_migration",
@@ -9092,7 +9892,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "use_last_saved_migration_preferences",
@@ -9105,7 +9906,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "migration_sources_changed",
@@ -9115,7 +9917,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "you_can_migrate_in_library",
@@ -9128,7 +9931,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "show_in_sources_and_extensions",
@@ -9138,7 +9942,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "whats_new_this_release",
@@ -9151,7 +9956,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "helpful_translation_links",
@@ -9161,7 +9967,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "log_in",
@@ -9171,7 +9978,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "log_out",
@@ -9181,7 +9989,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "log_out_from_",
@@ -9199,7 +10008,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "username_must_not_be_blank",
@@ -9209,7 +10019,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "downloading_",
@@ -9226,7 +10037,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "not_downloaded",
@@ -9236,7 +10048,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "start_downloading_now",
@@ -9246,7 +10059,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "remove_download",
@@ -9256,7 +10070,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "remove_downloads",
@@ -9266,7 +10081,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "nothing_is_downloading",
@@ -9276,7 +10092,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "manage_whats_downloading",
@@ -9289,7 +10106,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "visit_recents_for_download_queue",
@@ -9302,7 +10120,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "couldnt_download_low_space",
@@ -9315,7 +10134,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "delete_removed_chapters",
@@ -9325,7 +10145,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "delete_downloaded_if_removed_online",
@@ -9338,7 +10159,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "ask_on_chapters_page",
@@ -9348,7 +10170,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "always_keep",
@@ -9358,7 +10181,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "always_delete",
@@ -9368,7 +10192,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "automatic_removal",
@@ -9378,7 +10203,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "after_minutes_one",
@@ -9397,7 +10223,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "after_minutes_other",
@@ -9416,7 +10243,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "webview_is_required",
@@ -9426,7 +10254,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "add_to_",
@@ -9443,7 +10272,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "added_to_",
@@ -9460,7 +10290,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "beta",
@@ -9470,7 +10301,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "bottom",
@@ -9480,7 +10312,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "change",
@@ -9490,7 +10323,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "clear_filters",
@@ -9500,7 +10334,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "deleted_",
@@ -9517,7 +10352,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "download_unread",
@@ -9527,7 +10363,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "drag_handle",
@@ -9537,7 +10374,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "enable",
@@ -9547,7 +10385,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "enabled",
@@ -9557,7 +10396,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "exclude_",
@@ -9574,7 +10414,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "hide",
@@ -9584,7 +10425,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "include_",
@@ -9601,7 +10443,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "keep",
@@ -9611,7 +10454,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "keep_in_",
@@ -9628,7 +10472,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "mark_all_as_read",
@@ -9638,7 +10483,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "mark_all_as_unread",
@@ -9648,7 +10494,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "mark_range_as_read",
@@ -9658,7 +10505,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "mark_range_as_unread",
@@ -9668,7 +10516,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "mark_previous_as_unread",
@@ -9678,7 +10527,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "menu",
@@ -9688,7 +10538,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "move_to_",
@@ -9705,7 +10556,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "moved_to_",
@@ -9722,7 +10574,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "name",
@@ -9732,7 +10585,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "recently_updated",
@@ -9742,7 +10596,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "recently_installed",
@@ -9752,7 +10607,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "next",
@@ -9762,7 +10618,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "preview",
@@ -9772,7 +10629,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "previous",
@@ -9782,7 +10640,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "remove_from_",
@@ -9799,7 +10658,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "default_orientation",
@@ -9809,7 +10669,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "orientation",
@@ -9819,7 +10680,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "search_",
@@ -9836,7 +10698,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "select_none",
@@ -9846,7 +10709,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "selection",
@@ -9856,7 +10720,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "sort_and_filter",
@@ -9869,7 +10734,8 @@
 			],
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "tag",
@@ -9879,7 +10745,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "top",
@@ -9889,7 +10756,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "use_default",
@@ -9899,7 +10767,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "view_all_errors",
@@ -9909,7 +10778,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		},
 		{
 			"sid": "warning",
@@ -9919,7 +10789,8 @@
 			"ts": 1,
 			"tgt": "XYZ123",
 			"q": 80,
-			"jobGuid": "xxx4xxx"
+			"jobGuid": "xxx4xxx",
+			"translationProvider": "XliffBridge"
 		}
 	],
 	"translationProvider": "TMExport"
