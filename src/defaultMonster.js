@@ -17,6 +17,7 @@ import { FsSnapStore } from './stores/fsSnapStore.js';
 
 import { FsSource, FsTarget } from './adapters/fs.js';
 import { HttpSource } from './adapters/http.js';
+import { SnapSource } from './adapters/snap.js';
 import { PoFilter } from './filters/po.js';
 import { AndroidFilter } from './filters/android.js';
 import { JavaPropertiesFilter } from './filters/java.js';
@@ -89,7 +90,7 @@ export async function createMonsterManager(configPath, options, cb) {
             JsonJobStore, FsSnapStore
         },
         adapters: {
-            FsSource, FsTarget, HttpSource,
+            FsSource, FsTarget, HttpSource, SnapSource
         },
         filters: {
             PoFilter, AndroidFilter, JavaPropertiesFilter, IosStringsFilter, JsonFilter, HTMLFilter, SnapFilter

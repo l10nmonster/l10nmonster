@@ -10,7 +10,7 @@ import {
 import { globbySync } from 'globby';
 
 export class FsSource {
-    constructor({ baseDir, globs, filter, targetLangs, prj, resDecorator }) {
+    constructor({ baseDir, globs, filter, targetLangs, prj, resDecorator, idFromPath, pathFromId }) {
         if (globs === undefined) {
             throw 'a globs property is required in FsSource';
         } else {
@@ -19,6 +19,8 @@ export class FsSource {
             this.targetLangs = targetLangs;
             this.prj = prj;
             this.resDecorator = resDecorator;
+            this.idFromPath = idFromPath;
+            this.pathFromId = pathFromId;
             this.baseDir = baseDir ? path.join(this.ctx.baseDir, baseDir) : this.ctx.baseDir;
         }
     }
@@ -28,8 +30,11 @@ export class FsSource {
         const expandedFileNames = globbySync(this.globs.map(g => path.join(this.baseDir, g)));
         this.ctx.logger.info(`Fetched fs globs: ${this.globs}`);
         for (const fileName of expandedFileNames) {
-            const id = path.relative(this.baseDir, fileName);
-            if (!this.filter || this.filter(id)) {
+            let id = path.relative(this.baseDir, fileName);
+            if (typeof this.idFromPath === 'function') {
+                id = this.idFromPath(id);
+            }
+        if (!this.filter || this.filter(id)) {
                 const stats = statSync(fileName);
                 let resMeta = {
                     id,
@@ -47,7 +52,10 @@ export class FsSource {
     }
 
     async fetchResource(resourceId) {
-        return readFileSync(path.resolve(this.baseDir, resourceId), 'utf8');
+        if (typeof this.pathFromId === 'function') {
+            resourceId = this.pathFromId(resourceId);
+        }
+    return readFileSync(path.resolve(this.baseDir, resourceId), 'utf8');
     }
 }
 

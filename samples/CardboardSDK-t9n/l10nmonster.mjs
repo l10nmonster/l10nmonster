@@ -3,8 +3,8 @@ export default class CardboardConfigTranslationOnly {
     minimumQuality = 50;
 
     constructor({ ctx, stores, adapters, filters, translators }) {
-        this.source = new adapters.FsSource({
-            globs: [ '../CardboardSDK/snap/*.json' ],
+        this.source = new adapters.SnapSource({
+            baseDir: '../CardboardSDK/snap',
             targetLangs: [ 'ar', 'it', 'ja' ],
         });
         this.resourceFilter = new filters.SnapFilter();
