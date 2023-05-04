@@ -19,7 +19,7 @@ export async function analyzeCmd(mm, Analyzer, params, limitToLang, tuFilter) {
         }
         return analyzer.getAnalysis();
     } else if (typeof Analyzer.prototype.processTU === 'function') { // this analyzer needs a tm driver
-        const targetLangs = (await mm.source.getTargetLangs(limitToLang)).sort();
+        const targetLangs = (await mm.getTargetLangs(limitToLang)).sort();
         const bodies = [];
         let lastAnalysis;
         const hasAggregateAnalysis = typeof Analyzer.prototype.getAggregateAnalysis === 'function';

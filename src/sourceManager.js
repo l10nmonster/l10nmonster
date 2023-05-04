@@ -132,26 +132,6 @@ export default class SourceManager {
         return this.guidMap.get(guid);
     }
 
-    async getTargetLangs(limitToLang) {
-        let langs = [];
-        // eslint-disable-next-line no-unused-vars
-        const resourceStats = await this.getResources();
-        for (const res of resourceStats) {
-            for (const targetLang of res.targetLangs) {
-                !langs.includes(targetLang) && langs.push(targetLang);
-            }
-        }
-        if (limitToLang) {
-            const langsToLimit = limitToLang.split(',');
-            const invalidLangs = langsToLimit.filter(limitedLang => !langs.includes(limitedLang));
-            if (invalidLangs.length > 0) {
-                throw `Invalid languages: ${invalidLangs.join(',')}`;
-            }
-            return langsToLimit;
-        }
-        return langs;
-    }
-
     async shutdown() {
         if (this.dirty) {
             this.logger.info(`Updating ${this.sourceCachePath}...`);

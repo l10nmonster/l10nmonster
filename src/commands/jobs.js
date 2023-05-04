@@ -1,6 +1,6 @@
 export async function jobsCmd(mm, { limitToLang }) {
     const unfinishedJobs = {};
-    const targetLangs = await mm.source.getTargetLangs(limitToLang);
+    const targetLangs = await mm.getTargetLangs(limitToLang);
     for (const targetLang of targetLangs) {
         const pendingJobs = (await mm.jobStore.getJobStatusByLangPair(mm.sourceLang, targetLang))
             .filter(e => e[1].status !== 'done');

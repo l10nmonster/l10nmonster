@@ -80,6 +80,26 @@ export default class MonsterManager {
         return pipeline.segmentDecorator ? pipeline.segmentDecorator(res.segments, targetLang) : res.segments;
     }
 
+    // get all possible target languages from sources and from TMs
+    async getTargetLangs(limitToLang, includeAll) {
+        let srcTargetLangs = new Set();
+        // eslint-disable-next-line no-unused-vars
+        const resourceStats = await this.source.getResources();
+        resourceStats.forEach(res => res.targetLangs.forEach(targetLang => srcTargetLangs.add(targetLang)));
+        const allTargetLangs = new Set(srcTargetLangs);
+        Object.values(await this.jobStore.getAvailableLangPairs())
+            .forEach(pair => allTargetLangs.add(pair[1]));
+        if (limitToLang) {
+            const langsToLimit = limitToLang.split(',');
+            const invalidLangs = langsToLimit.filter(limitedLang => !allTargetLangs.has(limitedLang));
+            if (invalidLangs.length > 0) {
+                throw `Invalid languages: ${invalidLangs.join(',')}`;
+            }
+            return langsToLimit;
+        }
+        return includeAll ? [...allTargetLangs] : [...srcTargetLangs];
+    }
+
     // get source, decorate it for the target languge, and convert it to tu format
     async getSourceAsTus(targetLang) {
         const sourceLookup = {};

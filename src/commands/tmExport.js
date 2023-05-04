@@ -67,7 +67,7 @@ async function exportAsJob(ctx, content, jobGuid) {
 }
 
 export async function tmExportCmd(mm, { limitToLang, mode, format, prjsplit }) {
-    const targetLangs = await mm.source.getTargetLangs(limitToLang);
+    const targetLangs = await mm.getTargetLangs(limitToLang);
     const status = { files: [] };
     for (const targetLang of targetLangs) {
         const sourceLookup = await mm.getSourceAsTus(targetLang);

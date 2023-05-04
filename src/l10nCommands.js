@@ -295,12 +295,14 @@ __.-'            \\  \\   .   / \\_.  \\ -|_/\\/ \`--.|_
     console.time('initialization time');
     const resources = await monsterManager.source.getResources();
     const numSegments = resources.reduce((p, c) => p + c.segments.length, 0);
-    const targetLangs = await monsterManager.source.getTargetLangs();
-    console.log(`${numSegments} segments in ${resources.length} resources needing ${targetLangs.length} languages`);
+    const targetLangs = await monsterManager.getTargetLangs(false, true);
+    console.log(`Sources: ${numSegments} segments in ${resources.length} resources`);
+    console.log(`Possible languages: ${targetLangs.join(', ')}`);
+    console.log('Translation Memories:')
     const availableLangPairs = (await monsterManager.jobStore.getAvailableLangPairs()).sort();
     for (const [sourceLang, targetLang] of availableLangPairs) {
         const tm = await monsterManager.tmm.getTM(sourceLang, targetLang);
-        console.log(`${sourceLang} -> ${targetLang} TM has ${tm.guids.length} entries`);
+        console.log(`  - ${sourceLang} / ${targetLang} (${tm.guids.length} entries)`);
     }
     console.timeEnd('initialization time');
     const printCapabilities = cap => `${Object.entries(cap).map(([cmd, available]) => `${available ? consoleColor.green : consoleColor.red}${cmd}`).join(' ')}${consoleColor.reset}`;
