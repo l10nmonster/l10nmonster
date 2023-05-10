@@ -37,6 +37,11 @@ export default class MonsterManager {
                     }
                 };
             }
+            for (const [type, pipeline] of Object.entries(this.contentTypes)) {
+                if (!pipeline.resourceFilter) {
+                    throw `You must specify a resourceFilter in content type ${type}`;
+                }
+            }
             if (monsterConfig.translationProviders) {
                 this.translationProviders = monsterConfig.translationProviders;
                 // spell it out to use additional options like pairs: { sourceLang: [ targetLang1 ]}
@@ -64,11 +69,11 @@ export default class MonsterManager {
                 ...(monsterConfig.analyzers ?? {}),
             };
             this.capabilitiesByType = Object.fromEntries(Object.entries(this.contentTypes).map(([type, pipeline]) => [ type, {
-                snap: Boolean(pipeline.source && pipeline.resourceFilter && this.snapStore),
-                status: Boolean(pipeline.source && pipeline.resourceFilter),
-                push: Boolean(pipeline.source && pipeline.resourceFilter && Object.keys(this.translationProviders).length > 0),
+                snap: Boolean(pipeline.source && this.snapStore),
+                status: Boolean(pipeline.source),
+                push: Boolean(pipeline.source && Object.keys(this.translationProviders).length > 0),
                 pull: Boolean(Object.keys(this.translationProviders).length > 0),
-                translate: Boolean(pipeline.source && pipeline.resourceFilter && pipeline.target),
+                translate: Boolean(pipeline.source && pipeline.target),
             }]));
             this.capabilities = Object.values(this.capabilitiesByType).reduce((p, c) => Object.fromEntries(Object.entries(c).map(([k, v]) => [ k, (p[k] === undefined ? true : p[k]) && v ])), {});
         }

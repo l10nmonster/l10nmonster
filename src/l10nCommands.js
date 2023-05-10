@@ -292,7 +292,7 @@ __.-'            \\  \\   .   / \\_.  \\ -|_/\\/ \`--.|_
 --'                  \\  \\ |   /    |  |              \`-
                \\uU \\UU/     |  /   :F_P:
 `);
-    console.time('initialization time');
+    console.time('Initialization time');
     const resources = await monsterManager.source.getResources();
     const numSegments = resources.reduce((p, c) => p + c.segments.length, 0);
     const targetLangs = await monsterManager.getTargetLangs(false, true);
@@ -304,9 +304,9 @@ __.-'            \\  \\   .   / \\_.  \\ -|_/\\/ \`--.|_
         const tm = await monsterManager.tmm.getTM(sourceLang, targetLang);
         console.log(`  - ${sourceLang} / ${targetLang} (${tm.guids.length} entries)`);
     }
-    console.timeEnd('initialization time');
+    console.timeEnd('Initialization time');
     const printCapabilities = cap => `${Object.entries(cap).map(([cmd, available]) => `${available ? consoleColor.green : consoleColor.red}${cmd}`).join(' ')}${consoleColor.reset}`;
-    console.log(`Overall capabilities: ${printCapabilities(monsterManager.capabilities)}`);
+    console.log(`\nYour config allows the following commands: ${printCapabilities(monsterManager.capabilities)}`);
     if (Object.keys(monsterManager.capabilitiesByType).length > 1) {
         Object.entries(monsterManager.capabilitiesByType).forEach(([type, cap]) => console.log(`  - ${type}: ${printCapabilities(cap)}`));
     }
