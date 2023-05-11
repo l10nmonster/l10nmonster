@@ -258,7 +258,7 @@ export class TranslationOS {
     async refreshTranslations(jobRequest) {
         return {
             ...jobRequest,
-            tus: await this.#fetchTranslatedTus({ targetLang: jobRequest.targetLang, reqTus: jobRequest.tus, refreshMode: true }),
+            tus: await this.#fetchTranslatedTus({ targetLang: jobRequest.originalJobGuid ?? jobRequest.targetLang, reqTus: jobRequest.tus, refreshMode: true }),
             status: 'done',
         };
     }

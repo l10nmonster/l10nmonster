@@ -18,7 +18,7 @@ export async function pullCmd(mm, { limitToLang, partial }) {
                     stats.translatedStrings += jobResponse.tus.length;
                     stats.doneJobs++;
                 } else if (jobResponse?.status === 'pending') {
-                    mm.ctx.logger.info(`Got ${jobResponse.tus.length} translations from TOS for job ${jobRequest.jobGuid} but there are still ${jobResponse.inflight.length} translations in flight`);
+                    mm.ctx.logger.info(`Got ${jobResponse.tus.length} translations for job ${jobRequest.jobGuid} but there are still ${jobResponse.inflight.length} translations in flight`);
                     if (partial) {
                         const { inflight, ...doneResponse } = jobResponse;
                         doneResponse.status = 'done';
@@ -27,10 +27,12 @@ export async function pullCmd(mm, { limitToLang, partial }) {
 
                         const newRequest = await mm.jobStore.getJobRequest(jobResponse.jobGuid);
                         const newManifest = await mm.jobStore.createJobManifest();
+                        newRequest.originalJobGuid = jobResponse.jobGuid;
                         newRequest.jobGuid = newManifest.jobGuid;
                         newRequest.tus = newRequest.tus.filter(tu => inflight.includes(tu.guid));
                         // eslint-disable-next-line no-unused-vars
                         const { tus, ...newResponse } = doneResponse;
+                        newResponse.originalJobGuid = jobResponse.jobGuid;
                         newResponse.jobGuid = newManifest.jobGuid;
                         newResponse.inflight = inflight;
                         newResponse.status = 'pending';
