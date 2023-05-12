@@ -240,7 +240,7 @@ export class TranslationOS {
     async fetchTranslations(pendingJob, jobRequest) {
         const { inflight, ...jobResponse } = pendingJob;
         const reqTus = jobRequest.tus.filter(tu => inflight.includes(tu.guid));
-        const tus = await this.#fetchTranslatedTus({ jobGuid: jobRequest.jobGuid, targetLang: jobRequest.targetLang, reqTus, refreshMode: false });
+        const tus = await this.#fetchTranslatedTus({ jobGuid: pendingJob.originalJobGuid ?? jobRequest.originalJobGuid ?? jobRequest.jobGuid, targetLang: jobRequest.targetLang, reqTus, refreshMode: false });
         const tuMap = tus.reduce((p,c) => (p[c.guid] = c, p), {});
         const nowInflight = inflight.filter(guid => !tuMap[guid]);
         if (tus.length > 0) {
