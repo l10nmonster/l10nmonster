@@ -13,8 +13,9 @@ export class PigLatinizer {
     async requestTranslations(jobRequest) {
         // eslint-disable-next-line no-unused-vars
         const { tus, ...jobResponse } = jobRequest;
+        const ts = this.ctx.regression ? 1 : new Date().getTime();
         jobResponse.tus = jobRequest.tus.map(tu => {
-            const translation = { guid: tu.guid };
+            const translation = { guid: tu.guid, ts };
             if (tu.nsrc) {
                 translation.ntgt = [
                     '[',
@@ -28,7 +29,6 @@ export class PigLatinizer {
             return translation;
         });
         jobResponse.status = 'done';
-        jobResponse.ts = this.ctx.regression ? 1 : new Date().getTime();
         return jobResponse;
     }
 

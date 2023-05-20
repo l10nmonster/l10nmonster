@@ -7,6 +7,7 @@
 	"tus": [
 		{
 			"guid": "p72nj2yZPB-RfJOZa2iZg2pt16HznCGr_kdYQziGHxs",
+			"ts": 1,
 			"ntgt": [
 				"⇥XAB:",
 				"C̲a̲r̲d̲b̲̟o̲a̲r̲d̲ ̲̟m̲o̲d̲e̲:̲̟ ̲",
@@ -20,11 +21,13 @@
 		},
 		{
 			"guid": "snWaUNjXnKuXlItO8jUPfKITKfuqshl6xCXxUgiP4jI",
+			"ts": 1,
 			"tgt": "⇥YAB:F̲u̲l̲l̲s̲̟c̲r̲e̲e̲n̲̟ ̲m̲o̲d̲e̲̟⇤",
 			"q": 2
 		},
 		{
 			"guid": "kjYD6n4DIB9kQKYRd0QStGsZfU2yOhcUG091zj53Skw",
+			"ts": 1,
 			"ntgt": [
 				"⇥ZAB:",
 				"H̲e̲l̲p̲ ̲̟'̲e̲n̲c̲o̲̟d̲i̲n̲g̲'̲̟ ̲i̲s̲ ̲\"̲̟h̲a̲r̲d̲\"̲̟!̲\\̲\n̲",
@@ -33,6 +36,5 @@
 			"q": 2
 		}
 	],
-	"ts": 1,
 	"updatedAt": "2022-05-29T00:00:00.000Z"
 }

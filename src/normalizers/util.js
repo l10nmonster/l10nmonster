@@ -141,7 +141,12 @@ export function flattenNormalizedSourceToXmlV1(nsrc) {
     return [ normalizedStr.join(''), phMap ];
 }
 
-const cleanXMLEntities = str => str.replaceAll('&lt;', '<').replaceAll('&amp;', '&').replaceAll('&nbsp;', '\xa0')
+const cleanXMLEntities = str => str.replaceAll('&lt;', '<')
+    .replaceAll('&gt;', '>')
+    .replaceAll('&quot;', '"')
+    .replaceAll('&apos;', "'")
+    .replaceAll('&nbsp;', '\xa0')
+    .replaceAll('&amp;', '&'); // make sure to replace &amp; last to avoid double unescaping
 
 // analogous to extractNormalizedPartsV1 but using xml-compatible placeholders
 export function extractNormalizedPartsFromXmlV1(str, phMap) {

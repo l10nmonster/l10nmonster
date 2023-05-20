@@ -34,7 +34,7 @@ async function deeplMergeTranslatedChunksOp({ jobRequest, tuMeta, quality, ts },
     const { tus, ...jobResponse } = jobRequest;
     const translations = Object.assign({}, ...chunks);
     jobResponse.tus = tus.map((tu, idx) => {
-        const translation = { guid: tu.guid };
+        const translation = { guid: tu.guid, ts };
         const ntgt = extractNormalizedPartsFromXmlV1(translations[idx] || {}, tuMeta[idx] || {});
         if (tu.nsrc) {
             translation.ntgt = ntgt;
@@ -45,7 +45,6 @@ async function deeplMergeTranslatedChunksOp({ jobRequest, tuMeta, quality, ts },
         return translation;
     });
     jobResponse.status = 'done';
-    jobResponse.ts = ts;
     return jobResponse;
 }
 

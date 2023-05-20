@@ -26,7 +26,7 @@ async function gctMergeTranslatedChunksOp({ jobRequest, tuMeta, quality, ts }, c
     const { tus, ...jobResponse } = jobRequest;
     const translations = Object.assign({}, ...chunks);
     jobResponse.tus = tus.map((tu, idx) => {
-        const translation = { guid: tu.guid };
+        const translation = { guid: tu.guid, ts };
         const gctTx = translations[idx] || {};
         const ntgt = extractNormalizedPartsFromXmlV1(gctTx, tuMeta[idx] || {});
         if (tu.nsrc) {
@@ -38,7 +38,6 @@ async function gctMergeTranslatedChunksOp({ jobRequest, tuMeta, quality, ts }, c
         return translation;
     });
     jobResponse.status = 'done';
-    jobResponse.ts = ts;
     return jobResponse;
 }
 
