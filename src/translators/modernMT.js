@@ -187,28 +187,32 @@ export class ModernMT {
     }
 
     async fetchTranslations(pendingJob, jobRequest) {
-        // eslint-disable-next-line no-unused-vars
-        const requestTranslationsTask = this.ctx.opsMgr.createTask();
-        const chunkOps = [];
-        pendingJob.envelope.chunkSizes.forEach(async (chunkSize, chunk) => {
-            this.ctx.logger.info(`Calling chunk fetcher for job: ${jobRequest.jobGuid} chunk:${chunk} chunkSize:${chunkSize}`);
-            chunkOps.push(requestTranslationsTask.enqueue(this.chunkFetcher, {
-                jobGuid: jobRequest.jobGuid,
-                chunk,
-                chunkSize,
-            }));
-        });
-        requestTranslationsTask.commit(mmtMergeTranslatedChunksOp, {
-            jobRequest,
-            tuMeta: pendingJob.envelope.tuMeta,
-            quality: this.quality,
-            ts: this.ctx.regression ? 1 : new Date().getTime(),
-            chunkSizes: pendingJob.envelope.chunkSizes,
-        }, chunkOps);
-        const jobResponse = await requestTranslationsTask.execute();
-        jobResponse.taskName = this.ctx.regression ? 'x' : requestTranslationsTask.taskName;
-        applyGlossary(this.glossaryEncoder, jobResponse);
-        return jobResponse;
+        try {
+            // eslint-disable-next-line no-unused-vars
+            const requestTranslationsTask = this.ctx.opsMgr.createTask();
+            const chunkOps = [];
+            pendingJob.envelope.chunkSizes.forEach(async (chunkSize, chunk) => {
+                this.ctx.logger.info(`Enqueue chunk fetcher for job: ${jobRequest.jobGuid} chunk:${chunk} chunkSize:${chunkSize}`);
+                chunkOps.push(requestTranslationsTask.enqueue(this.chunkFetcher, {
+                    jobGuid: jobRequest.jobGuid,
+                    chunk,
+                    chunkSize,
+                }));
+            });
+            requestTranslationsTask.commit(mmtMergeTranslatedChunksOp, {
+                jobRequest,
+                tuMeta: pendingJob.envelope.tuMeta,
+                quality: this.quality,
+                ts: this.ctx.regression ? 1 : new Date().getTime(),
+                chunkSizes: pendingJob.envelope.chunkSizes,
+            }, chunkOps);
+            const jobResponse = await requestTranslationsTask.execute();
+            jobResponse.taskName = this.ctx.regression ? 'x' : requestTranslationsTask.taskName;
+            applyGlossary(this.glossaryEncoder, jobResponse);
+            return jobResponse;
+        } catch (error) {
+            return null; // getting errors is expected, just leave the job pending
+        }
     }
 
     async refreshTranslations(jobRequest) {
