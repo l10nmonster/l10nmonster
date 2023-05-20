@@ -104,8 +104,21 @@ export default class SourceManager {
     async *getAllResources() {
         this.logger.info(`Getting all resource...`);
         for (const [ contentType, pipeline ] of Object.entries(this.contentTypes)) {
-            for await (const [resourceStat, rawResource] of pipeline.source.fetchAllResources(this.prj)) {
-                yield await this.#getParsedResource(pipeline, { ...resourceStat, contentType }, rawResource);
+            if (pipeline.source.fetchAllResources) {
+                for await (const [resourceStat, rawResource] of pipeline.source.fetchAllResources(this.prj)) {
+                    yield await this.#getParsedResource(pipeline, { ...resourceStat, contentType }, rawResource);
+                }
+            } else {
+                const stats = await pipeline.source.fetchResourceStats();
+                for (const rs of stats) {
+                    if (this.prj === undefined || this.prj.includes(rs.prj)) {
+                        yield await this.#getParsedResource(
+                            pipeline,
+                            { ...rs, contentType },
+                            await pipeline.source.fetchResource(rs.id)
+                        );
+                    }
+                }
             }
         }
     }

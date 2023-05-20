@@ -57,15 +57,6 @@ export class FsSource {
         }
         return readFileSync(path.resolve(this.baseDir, resourceId), 'utf8');
     }
-
-    async *fetchAllResources(prj) {
-        const stats = await this.fetchResourceStats();
-        for (const rs of stats) {
-            if (prj === undefined || prj.includes(rs.prj)) {
-                yield [rs, await this.fetchResource(rs.id)];
-            }
-        }
-    }
 }
 
 export class FsTarget {

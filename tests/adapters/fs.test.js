@@ -28,12 +28,12 @@ describe ('FsSource tests', () =>{
     expect(output.length).toBe(558);
   });
 
-  test('fetchAllResources returns stats and resource object', async () => {
-    for await (const [resourceStat, rawResource] of source.fetchAllResources()) {
-        expect(resourceStat.id).toBe(RESOURCE_ID);
-        expect(rawResource.length).toBe(558);
-    }
-  });
+//   test('fetchAllResources returns stats and resource object', async () => {
+//     for await (const [resourceStat, rawResource] of source.fetchAllResources()) {
+//         expect(resourceStat.id).toBe(RESOURCE_ID);
+//         expect(rawResource.length).toBe(558);
+//     }
+//   });
 
 });
 
