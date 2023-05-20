@@ -33,6 +33,7 @@ class Task {
     constructor(opsMgr) {
         this.opsMgr = opsMgr;
         this.opList = [];
+        this.context = {};
     }
 
     saveState() {
@@ -40,11 +41,17 @@ class Task {
             const state = {
                 taskName: this.taskName,
                 rootOpId: this.rootOpId,
+                context: this.context,
                 opList: this.opList,
             };
             const fullPath = path.join(this.opsMgr.opsDir, `${this.taskName}-plan.json`);
             return fs.writeFileSync(fullPath, JSON.stringify(state, null, '\t'), 'utf8');
         }
+    }
+
+    setContext(context) {
+        Object.freeze(context);
+        this.context = context;
     }
 
     enqueue(opName, args, inputs) {
@@ -92,7 +99,7 @@ class Task {
             for (const op of this.opList) {
                 if (op.state === 'done') {
                     doneOps++;
-                } else if (op.state !== 'done' && noErrorOps) {
+                } else if (noErrorOps) {
                     const doneInputs = op.inputs.filter(id => this.opList[id].state === 'done');
                     if (doneInputs.length === op.inputs.length) {
                         try {
@@ -138,6 +145,7 @@ class Task {
             const state = JSON.parse(fs.readFileSync(fullPath));
             this.taskName = state.taskName;
             this.rootOpId = state.rootOpId;
+            this.context = state.context;
             this.opList = state.opList;
         } else {
             throw "Can't hydrate if opsDir is not configured";

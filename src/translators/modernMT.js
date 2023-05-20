@@ -1,3 +1,4 @@
+/* eslint-disable no-invalid-this */
 import got from 'got';
 
 import {
@@ -9,39 +10,39 @@ import { keywordTranslatorMaker } from '../normalizers/keywordTranslatorMaker.js
 const MAX_CHAR_LENGTH = 9900;
 const MAX_CHUNK_SIZE = 125;
 
-async function mmtTranslateChunkOp({ method, url, json, headers, offset }) {
+async function mmtTranslateChunkOp({ headers, json }) {
+    const request = {
+        ...this.context.baseRequest,
+        timeout: {
+            request: 60000,
+        },
+        allowGetBody: true,
+    };
+    request.headers = { ...request.headers, ...headers };
+    request.json = { ...request.json, ...json };
     try {
-        const response = await got({
-            method,
-            url,
-            json,
-            headers,
-            timeout: {
-                request: 60000,
-            },
-            allowGetBody: true,
-        }).json();
+        const response = await got(request).json();
         if (response.status !== 200) {
             throw `MMT returned status ${response.status}: ${response.error?.message}`;
         }
-        return {
-            offset,
-            translations: response.data
-        };
+        return response.data;
     } catch(error) {
         throw `${error.toString()}: ${error.response?.body}`;
     }
 }
 
-async function mmtSinkChunkSubmisionOp() {
+async function mmtMergeSubmittedChunksOp(args, chunks) {
+    chunks.forEach((data, idx) => this.opsMgr.logger.verbose(`MMT Chunk ${idx} enqueued=${data.enqueued}`));
 }
 
-async function mmtMergeTranslatedChunksOp({ jobRequest, tuMeta, quality, ts }, chunks) {
+async function mmtMergeTranslatedChunksOp({ jobRequest, tuMeta, quality, ts, chunkSizes }, chunks) {
+    chunks.forEach((chunk, idx) => {
+        if (chunk.length !== chunkSizes[idx]) {
+            throw `MMT: Expected chunk ${idx} to have ${chunkSizes[idx]} translations but got ${chunk.length}`;
+        }
+    });
     const { tus, ...jobResponse } = jobRequest;
-    const translations = [];
-    for (const chunk of chunks) {
-        chunk.translations.forEach((t, idx) => translations[chunk.offset + idx] = t);
-    }
+    const translations = chunks.flat(1);
     jobResponse.tus = tus.map((tu, idx) => {
         const translation = { guid: tu.guid, ts };
         const mmtTx = translations[idx] || {};
@@ -97,7 +98,7 @@ export class ModernMT {
                 this.glossaryEncoder = glossaryEncoder;
             }
             this.ctx.opsMgr.registerOp(mmtTranslateChunkOp, { idempotent: false });
-            this.ctx.opsMgr.registerOp(mmtSinkChunkSubmisionOp, { idempotent: true });
+            this.ctx.opsMgr.registerOp(mmtMergeSubmittedChunksOp, { idempotent: true });
             this.ctx.opsMgr.registerOp(mmtMergeTranslatedChunksOp, { idempotent: true });
         }
     }
@@ -114,54 +115,56 @@ export class ModernMT {
             }
             return xmlSrc;
         });
-
-        const requestTranslationsTask = this.ctx.opsMgr.createTask();
-        try {
-            const chunkOps = [];
-            const offsets = [];
-            for (let currentIdx = 0; currentIdx < mmtPayload.length;) {
-                const offset = currentIdx;
-                const q = [];
-                let currentTotalLength = 0;
-                while (currentIdx < mmtPayload.length && q.length < MAX_CHUNK_SIZE && mmtPayload[currentIdx].length + currentTotalLength < this.maxCharLength) {
-                    currentTotalLength += mmtPayload[currentIdx].length;
-                    q.push(mmtPayload[currentIdx]);
-                    currentIdx++;
-                }
-                if (q.length === 0) {
-                    throw `String at index ${currentIdx} exceeds ${this.maxCharLength} max char length`;
-                }
-                this.ctx.logger.info(`Preparing MMT translate, offset: ${offset} chunk strings: ${q.length} chunk char length: ${currentTotalLength}`);
-                const req = {
-                    method: 'GET',
-                    url: `${this.baseURL}/translate`,
-                    json: {
-                        source: sourceLang,
-                        target: targetLang,
-                        hints: this.hints,
-                        multiline: this.multiline,
-                        format: 'text/xml',
-                        q,
-                    },
-                    headers: this.stdHeaders,
-                    offset
-                };
-                if (this.webhook) {
-                    req.method = 'POST';
-                    req.url = `${req.url}/batch`;
-                    req.json.webhook = this.webhook;
-                    req.json.metadata = { jobGuid: jobRequest.jobGuid, chunk: chunkOps.length };
-                    req.headers = { ...this.stdHeaders, 'x-idempotency-key': `jobGuid:${jobRequest.jobGuid} chunk:${chunkOps.length}`};
-                    offsets.push(offset);
-                }
-                chunkOps.push(requestTranslationsTask.enqueue(mmtTranslateChunkOp, req));
+        const context = {
+            baseRequest: {
+                method: 'GET',
+                url: `${this.baseURL}/translate`,
+                headers: this.stdHeaders,
+                json: {
+                    source: sourceLang,
+                    target: targetLang,
+                    hints: this.hints,
+                    multiline: this.multiline,
+                    format: 'text/xml',
+                },
             }
+        };
+        if (this.webhook) {
+            context.baseRequest.method = 'POST';
+            context.baseRequest.url = `${context.baseRequest.url}/batch`;
+            context.baseRequest.json.webhook = this.webhook;
+        }
+        const requestTranslationsTask = this.ctx.opsMgr.createTask();
+        requestTranslationsTask.setContext(context);
+        const chunkOps = [];
+        const chunkSizes = [];
+        for (let currentIdx = 0; currentIdx < mmtPayload.length;) {
+            const q = [];
+            let currentTotalLength = 0;
+            while (currentIdx < mmtPayload.length && q.length < MAX_CHUNK_SIZE && mmtPayload[currentIdx].length + currentTotalLength < this.maxCharLength) {
+                currentTotalLength += mmtPayload[currentIdx].length;
+                q.push(mmtPayload[currentIdx]);
+                currentIdx++;
+            }
+            if (q.length === 0) {
+                throw `String at index ${currentIdx} exceeds ${this.maxCharLength} max char length`;
+            }
+            this.ctx.logger.info(`Preparing MMT translate: chunk strings: ${q.length} chunk char length: ${currentTotalLength}`);
+            const req = { json: { q } };
             if (this.webhook) {
-                requestTranslationsTask.commit(mmtSinkChunkSubmisionOp, null, chunkOps);
+                req.headers = { 'x-idempotency-key': `jobGuid:${jobRequest.jobGuid} chunk:${chunkOps.length}`};
+                req.json.metadata = { jobGuid: jobRequest.jobGuid, chunk: chunkOps.length };
+            }
+            chunkSizes.push(q.length);
+            chunkOps.push(requestTranslationsTask.enqueue(mmtTranslateChunkOp, req));
+        }
+        try {
+            if (this.webhook) {
+                requestTranslationsTask.commit(mmtMergeSubmittedChunksOp, null, chunkOps);
                 await requestTranslationsTask.execute();
                 const { tus, ...jobResponse } = jobRequest;
                 jobResponse.inflight = tus.map(tu => tu.guid);
-                jobResponse.envelope = { offsets, tuMeta };
+                jobResponse.envelope = { chunkSizes, tuMeta };
                 jobResponse.status = 'pending';
                 jobResponse.taskName = requestTranslationsTask.taskName;
                 return jobResponse;
@@ -171,6 +174,7 @@ export class ModernMT {
                     tuMeta,
                     quality: this.quality,
                     ts: this.ctx.regression ? 1 : new Date().getTime(),
+                    chunkSizes,
                 }, chunkOps);
                 const jobResponse = await requestTranslationsTask.execute();
                 jobResponse.taskName = requestTranslationsTask.taskName;
@@ -186,12 +190,12 @@ export class ModernMT {
         // eslint-disable-next-line no-unused-vars
         const requestTranslationsTask = this.ctx.opsMgr.createTask();
         const chunkOps = [];
-        pendingJob.envelope.offsets.forEach(async (offset, chunk) => {
-            this.ctx.logger.info(`Calling chunk fetcher for job: ${jobRequest.jobGuid} chunk:${chunk} offset:${offset}`);
+        pendingJob.envelope.chunkSizes.forEach(async (chunkSize, chunk) => {
+            this.ctx.logger.info(`Calling chunk fetcher for job: ${jobRequest.jobGuid} chunk:${chunk} chunkSize:${chunkSize}`);
             chunkOps.push(requestTranslationsTask.enqueue(this.chunkFetcher, {
                 jobGuid: jobRequest.jobGuid,
                 chunk,
-                offset,
+                chunkSize,
             }));
         });
         requestTranslationsTask.commit(mmtMergeTranslatedChunksOp, {
@@ -199,6 +203,7 @@ export class ModernMT {
             tuMeta: pendingJob.envelope.tuMeta,
             quality: this.quality,
             ts: this.ctx.regression ? 1 : new Date().getTime(),
+            chunkSizes: pendingJob.envelope.chunkSizes,
         }, chunkOps);
         const jobResponse = await requestTranslationsTask.execute();
         jobResponse.taskName = requestTranslationsTask.taskName;
