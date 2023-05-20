@@ -154,23 +154,26 @@ export class ModernMT {
                     req.headers = { ...this.stdHeaders, 'x-idempotency-key': `jobGuid:${jobRequest.jobGuid} chunk:${chunkOps.length}`};
                     offsets.push(offset);
                 }
-                chunkOps.push(await requestTranslationsTask.enqueue(mmtTranslateChunkOp, req));
+                chunkOps.push(requestTranslationsTask.enqueue(mmtTranslateChunkOp, req));
             }
             if (this.webhook) {
-                await requestTranslationsTask.execute(await requestTranslationsTask.enqueue(mmtSinkChunkSubmisionOp, null, chunkOps));
+                requestTranslationsTask.commit(mmtSinkChunkSubmisionOp, null, chunkOps);
+                await requestTranslationsTask.execute();
                 const { tus, ...jobResponse } = jobRequest;
                 jobResponse.inflight = tus.map(tu => tu.guid);
                 jobResponse.envelope = { offsets, tuMeta };
                 jobResponse.status = 'pending';
+                jobResponse.taskName = requestTranslationsTask.taskName;
                 return jobResponse;
             } else {
-                const collectRealtimeTranslations = await requestTranslationsTask.enqueue(mmtMergeTranslatedChunksOp, {
+                requestTranslationsTask.commit(mmtMergeTranslatedChunksOp, {
                     jobRequest,
                     tuMeta,
                     quality: this.quality,
                     ts: this.ctx.regression ? 1 : new Date().getTime(),
                 }, chunkOps);
-                const jobResponse = await requestTranslationsTask.execute(collectRealtimeTranslations);
+                const jobResponse = await requestTranslationsTask.execute();
+                jobResponse.taskName = requestTranslationsTask.taskName;
                 applyGlossary(this.glossaryEncoder, jobResponse);
                 return jobResponse;
             }
@@ -185,19 +188,20 @@ export class ModernMT {
         const chunkOps = [];
         pendingJob.envelope.offsets.forEach(async (offset, chunk) => {
             this.ctx.logger.info(`Calling chunk fetcher for job: ${jobRequest.jobGuid} chunk:${chunk} offset:${offset}`);
-            chunkOps.push(await requestTranslationsTask.enqueue(this.chunkFetcher, {
+            chunkOps.push(requestTranslationsTask.enqueue(this.chunkFetcher, {
                 jobGuid: jobRequest.jobGuid,
                 chunk,
                 offset,
             }));
         });
-        const collectBatchTranslations = await requestTranslationsTask.enqueue(mmtMergeTranslatedChunksOp, {
+        requestTranslationsTask.commit(mmtMergeTranslatedChunksOp, {
             jobRequest,
             tuMeta: pendingJob.envelope.tuMeta,
             quality: this.quality,
             ts: this.ctx.regression ? 1 : new Date().getTime(),
         }, chunkOps);
-        const jobResponse = await requestTranslationsTask.execute(collectBatchTranslations);
+        const jobResponse = await requestTranslationsTask.execute();
+        jobResponse.taskName = requestTranslationsTask.taskName;
         applyGlossary(this.glossaryEncoder, jobResponse);
         return jobResponse;
     }

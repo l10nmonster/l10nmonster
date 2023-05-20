@@ -80,7 +80,7 @@ export class GoogleCloudTranslateV3 {
                     currentIdx++;
                 }
                 this.ctx.logger.info(`Preparing GCT translate, offset: ${offset} chunk strings: ${contents.length} chunk char length: ${currentTotalLength}`);
-                const translateOp = await requestTranslationsTask.enqueue(
+                const translateOp = requestTranslationsTask.enqueue(
                     gctTranslateChunkOp,
                     {
                         keyFilename: this.keyFilename,
@@ -96,7 +96,7 @@ export class GoogleCloudTranslateV3 {
                 );
                 chunkOps.push(translateOp);
             }
-            const rootOp = await requestTranslationsTask.enqueue(
+            requestTranslationsTask.commit(
                 gctMergeTranslatedChunksOp,
                 {
                     jobRequest,
@@ -106,7 +106,9 @@ export class GoogleCloudTranslateV3 {
                 },
                 chunkOps
             );
-            return await requestTranslationsTask.execute(rootOp);
+            const jobResponse = await requestTranslationsTask.execute();
+            jobResponse.taskName = requestTranslationsTask.taskName;
+            return jobResponse;
         } catch (error) {
             throw `GCT call failed - ${error}`;
         }

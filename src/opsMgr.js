@@ -35,7 +35,7 @@ class Task {
         this.opList = [];
     }
 
-    async saveState() {
+    saveState() {
         if (this.opsMgr.opsDir) {
             const state = {
                 taskName: this.taskName,
@@ -47,7 +47,7 @@ class Task {
         }
     }
 
-    async enqueue(opName, args, inputs) {
+    enqueue(opName, args, inputs) {
         inputs ??= [];
         const opId = this.opList.length;
         opName = typeof opName === 'function' ? opName.name : opName;
@@ -55,7 +55,14 @@ class Task {
         return opId;
     }
 
-    async addInputDependency(opId, input) {
+    commit(opName, args, inputs) {
+        this.rootOpId = this.enqueue(opName, args, inputs);
+        this.taskName = `Task-${this.opList[this.rootOpId].opName}-${new Date().getTime()}`;
+        this.saveState();
+        this.opsMgr.logger.info(`${this.taskName} committed`);
+    }
+
+    addInputDependency(opId, input) {
         const op = this.opList[opId];
         op.inputs ??= [];
         if (!op.inputs.includes(input)) {
@@ -75,13 +82,7 @@ class Task {
         }
     }
 
-    async execute(rootOpId) {
-        if (this.rootOpId === undefined) { // the first time we call it we also persist
-            this.rootOpId = rootOpId;
-            this.taskName = `Task-${this.opList[rootOpId].opName}-${new Date().getTime()}`;
-            await this.saveState();
-            this.opsMgr.logger.info(`${this.taskName} committed`);
-        }
+    async execute() {
         let doneOps;
         let progress = 1;
         let noErrorOps = true;
@@ -91,7 +92,7 @@ class Task {
             for (const op of this.opList) {
                 if (op.state === 'done') {
                     doneOps++;
-                } else if (op.state === 'pending' && noErrorOps) {
+                } else if (op.state !== 'done' && noErrorOps) {
                     const doneInputs = op.inputs.filter(id => this.opList[id].state === 'done');
                     if (doneInputs.length === op.inputs.length) {
                         try {
@@ -118,7 +119,7 @@ class Task {
                             op.output = error.stack ?? error;
                             noErrorOps = false;
                         }
-                        await this.saveState();
+                        this.saveState();
                         progress++;
                     }
                 }
@@ -131,11 +132,16 @@ class Task {
         }
     }
 
-    async hydrate(filename) {
-        const state = JSON.parse(fs.readFileSync(filename));
-        this.taskName = state.taskName;
-        this.rootOpId = state.rootOpId;
-        this.opList = state.opList;
+    hydrate(filename) {
+        if (this.opsMgr.opsDir) {
+            const fullPath = path.join(this.opsMgr.opsDir, filename);
+            const state = JSON.parse(fs.readFileSync(fullPath));
+            this.taskName = state.taskName;
+            this.rootOpId = state.rootOpId;
+            this.opList = state.opList;
+        } else {
+            throw "Can't hydrate if opsDir is not configured";
+        }
     }
 }
 

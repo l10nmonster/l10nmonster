@@ -159,7 +159,7 @@ export class TranslationOS {
                 const json = tosPayload.splice(0, this.maxTranslationRequestSize);
                 chunkNumber++;
                 this.ctx.logger.info(`Enqueueing TOS translation job ${jobResponse.jobGuid} chunk size: ${json.length}`);
-                chunkOps.push(await requestTranslationsTask.enqueue(tosRequestTranslationOfChunkOp, {
+                chunkOps.push(requestTranslationsTask.enqueue(tosRequestTranslationOfChunkOp, {
                     request: {
                         url: `${this.baseURL}/translate`,
                         json,
@@ -173,8 +173,9 @@ export class TranslationOS {
                     },
                  }));
             }
-            const combineChunksOp = await requestTranslationsTask.enqueue(tosCombineTranslationChunksOp, null, chunkOps);
-            const committedGuids = await requestTranslationsTask.execute(combineChunksOp);
+            requestTranslationsTask.commit(tosCombineTranslationChunksOp, null, chunkOps);
+            jobResponse.taskName = requestTranslationsTask.taskName;
+            const committedGuids = await requestTranslationsTask.execute();
             if (this.requestOnly) {
                 return {
                     ...jobResponse,
@@ -216,7 +217,7 @@ export class TranslationOS {
             } else {
                 json.id_order = jobGuid;
             }
-            const refreshOp = await refreshTranslationsTask.enqueue(tosFetchContentByGuidOp, {
+            refreshOps.push(refreshTranslationsTask.enqueue(tosFetchContentByGuidOp, {
                 refreshMode,
                 tuMap,
                 tuMeta,
@@ -230,11 +231,12 @@ export class TranslationOS {
                 },
                 quality: this.quality,
                 parallelism: this.parallelism,
-            });
-            refreshOps.push(refreshOp);
+            }));
         }
-        const rootOp = await refreshTranslationsTask.enqueue(tosCombineFetchedTusOp, null, refreshOps);
-        return await refreshTranslationsTask.execute(rootOp);
+        refreshTranslationsTask.commit(tosCombineFetchedTusOp, null, refreshOps);
+        const jobResponse = await refreshTranslationsTask.execute();
+        jobResponse.taskName = refreshTranslationsTask.taskName;
+        return jobResponse;
     }
 
     async fetchTranslations(pendingJob, jobRequest) {

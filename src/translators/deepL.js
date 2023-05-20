@@ -102,7 +102,7 @@ export class DeepL {
                     ...Object.entries(baseParams),
                     ...q.map(s => [ 'text', s]),
                 ];
-                const translateOp = await requestTranslationsTask.enqueue(
+                const translateOp = requestTranslationsTask.enqueue(
                     deeplTranslateChunkOp,
                     {
                         baseURL: this.baseURL,
@@ -113,13 +113,15 @@ export class DeepL {
                 );
                 chunkOps.push(translateOp);
             }
-            const rootOp = await requestTranslationsTask.enqueue(deeplMergeTranslatedChunksOp, {
+            requestTranslationsTask.commit(deeplMergeTranslatedChunksOp, {
                 jobRequest,
                 tuMeta,
                 quality: this.quality,
                 ts: this.ctx.regression ? 1 : new Date().getTime(),
             }, chunkOps);
-            return await requestTranslationsTask.execute(rootOp);
+            const jobResponse = await requestTranslationsTask.execute();
+            jobResponse.taskName = requestTranslationsTask.taskName;
+            return jobResponse;
         } catch (error) {
             throw `DeepL call failed - ${error}`;
         }

@@ -10,7 +10,7 @@ async function bar(args, inputs) {
 
 async function additiveOp() {
     // eslint-disable-next-line no-invalid-this
-    const o2 = await this.enqueue(foo, 1);
+    const o2 = this.enqueue(foo, 1);
     // eslint-disable-next-line no-invalid-this
     this.addInputDependency(this.rootOpId, o2)
     return 1;
@@ -23,10 +23,10 @@ describe ('OpsMgr tests', () =>{
     om.registerOp(foo);
     om.registerOp(bar);
     const t = om.createTask();
-    const o1 = await t.enqueue(foo, 1);
-    const o2 = await t.enqueue(foo, 10);
-    const root = await t.enqueue(bar, null, [ o1, o2 ]);
-    expect(await t.execute(root)).toMatchObject([ 2, 11 ]);
+    const o1 = t.enqueue(foo, 1);
+    const o2 = t.enqueue(foo, 10);
+    t.commit(bar, null, [ o1, o2 ]);
+    expect(await t.execute()).toMatchObject([ 2, 11 ]);
   });
 
   test('Add an op on the fly', async () => {
@@ -35,9 +35,9 @@ describe ('OpsMgr tests', () =>{
     om.registerOp(foo);
     om.registerOp(bar);
     const t = om.createTask();
-    const o1 = await t.enqueue(additiveOp, 1);
-    const root = await t.enqueue(bar, null, [ o1 ]);
-    expect(await t.execute(root)).toMatchObject([ 1, 2 ]);
+    const o1 = t.enqueue(additiveOp, 1);
+    t.commit(bar, null, [ o1 ]);
+    expect(await t.execute()).toMatchObject([ 1, 2 ]);
   });
 
 });
