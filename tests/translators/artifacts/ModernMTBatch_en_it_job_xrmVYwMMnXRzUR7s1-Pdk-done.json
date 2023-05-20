@@ -1,0 +1,75 @@
+{
+	"sourceLang": "en",
+	"targetLang": "it",
+	"translationProvider": "ModernMTBatch",
+	"jobGuid": "xrmVYwMMnXRzUR7s1-Pdk",
+	"status": "done",
+	"tus": [
+		{
+			"guid": "Q6atGCxMzEiusRkN4mXARrkpqaaKAVq6CVlz7pIJ0DU",
+			"ts": 1,
+			"ntgt": [
+				"Guida ai **Payment Testing**: garantire check-out impeccabili"
+			],
+			"q": 40,
+			"cost": [
+				51,
+				true,
+				51
+			]
+		},
+		{
+			"guid": "ECdT6RLLNyRxTb7Xha6PIzytq2ZkS5g0asqUOYLcOHA",
+			"ts": 1,
+			"ntgt": [
+				"I gateway di pagamento sono il collegamento finanziario vitale tra cliente e azienda. Rischi di perdere una vendita se un cliente incontra anche un problema minore durante il checkout."
+			],
+			"q": 40,
+			"cost": [
+				158,
+				true,
+				158
+			]
+		},
+		{
+			"guid": "xBXWwysXeVHO7_OgWxL44qTu30PxrCkG_jkzAFp3JI4",
+			"ts": 1,
+			"ntgt": [
+				"Il test del gateway di pagamento imita ogni fase del processo di pagamento per verificare che le connessioni, le transazioni e i percorsi per le comunicazioni funzionino. I tester scoprono problemi che influiscono su una transazione e un'esperienza utente senza soluzione di continuità."
+			],
+			"q": 40,
+			"cost": [
+				226,
+				true,
+				226
+			]
+		},
+		{
+			"guid": "SODQAQuKsgIFGvOgzCoAi85KGeIwHcvim4U59juXXnA",
+			"ts": 1,
+			"ntgt": [
+				"Questa guida fornisce una panoramica completa dei test dei pagamenti, dalle definizioni ai casi d'uso agli testing scenarios attuabili."
+			],
+			"q": 40,
+			"cost": [
+				121,
+				true,
+				121
+			]
+		},
+		{
+			"guid": "Zu8-DRKyPbW3MHG62Mou1orfoGMLbhxvGviCSrnX4iU",
+			"ts": 1,
+			"ntgt": [
+				"Garanzia del Giant"
+			],
+			"q": 40,
+			"cost": [
+				19,
+				true,
+				19
+			]
+		}
+	],
+	"taskName": "x"
+}

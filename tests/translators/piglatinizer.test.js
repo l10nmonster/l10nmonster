@@ -1,4 +1,4 @@
-import * as piggyTranslator from '../../src/translators/piglatinizer';
+import { PigLatinizer } from '../../src/translators/piglatinizer';
 
 describe ('pig latinizer translator tests', () =>{
 
@@ -49,8 +49,8 @@ describe ('pig latinizer translator tests', () =>{
       ],
       status: 'done'
     }
-    piggyTranslator.PigLatinizer.prototype.ctx = { regression: false };
-    var translator = new piggyTranslator.PigLatinizer({
+    PigLatinizer.prototype.ctx = { regression: false };
+    var translator = new PigLatinizer({
         quality: 80
     });
     job.targetLang = 'fil';

@@ -166,7 +166,7 @@ export class ModernMT {
                 jobResponse.inflight = tus.map(tu => tu.guid);
                 jobResponse.envelope = { chunkSizes, tuMeta };
                 jobResponse.status = 'pending';
-                jobResponse.taskName = requestTranslationsTask.taskName;
+                jobResponse.taskName = this.ctx.regression ? 'x' : requestTranslationsTask.taskName;
                 return jobResponse;
             } else {
                 requestTranslationsTask.commit(mmtMergeTranslatedChunksOp, {
@@ -177,7 +177,7 @@ export class ModernMT {
                     chunkSizes,
                 }, chunkOps);
                 const jobResponse = await requestTranslationsTask.execute();
-                jobResponse.taskName = requestTranslationsTask.taskName;
+                jobResponse.taskName = this.ctx.regression ? 'x' : requestTranslationsTask.taskName;
                 applyGlossary(this.glossaryEncoder, jobResponse);
                 return jobResponse;
             }
@@ -206,7 +206,7 @@ export class ModernMT {
             chunkSizes: pendingJob.envelope.chunkSizes,
         }, chunkOps);
         const jobResponse = await requestTranslationsTask.execute();
-        jobResponse.taskName = requestTranslationsTask.taskName;
+        jobResponse.taskName = this.ctx.regression ? 'x' : requestTranslationsTask.taskName;
         applyGlossary(this.glossaryEncoder, jobResponse);
         return jobResponse;
     }

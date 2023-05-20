@@ -13,7 +13,7 @@ async function dummyChunkFetcher({ jobGuid, chunk }) {
             "billed": true
         },
         {
-            "translation": "Il test del gateway di pagamento imita ogni fase del processo di pagamento per verificare che le connessioni, le transazioni e i percorsi per le comunicazioni funzionino. I tester scoprono problemi che influiscono su una transazione e un'esperienza utente senza soluzione di continuitÃ .",
+            "translation": "Il test del gateway di pagamento imita ogni fase del processo di pagamento per verificare che le connessioni, le transazioni e i percorsi per le comunicazioni funzionino. I tester scoprono problemi che influiscono su una transazione e un'esperienza utente senza soluzione di continuità.",
             "characters": 226,
             "billedCharacters": 226,
             "billed": true

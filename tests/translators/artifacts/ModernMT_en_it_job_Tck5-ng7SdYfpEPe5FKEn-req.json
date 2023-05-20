@@ -1,0 +1,45 @@
+{
+	"sourceLang": "en",
+	"targetLang": "it",
+	"tus": [
+		{
+			"sid": "title",
+			"guid": "Q6atGCxMzEiusRkN4mXARrkpqaaKAVq6CVlz7pIJ0DU",
+			"src": "Payments Testing Guide: Ensure Flawless Checkouts",
+			"rid": "en/guide.json",
+			"ts": 1668113179406
+		},
+		{
+			"sid": "p1",
+			"guid": "ECdT6RLLNyRxTb7Xha6PIzytq2ZkS5g0asqUOYLcOHA",
+			"src": "Payment gateways are the vital financial link between customer and business. You risk a lost sale if a customer encounters even a minor issue during checkout.",
+			"rid": "en/guide.json",
+			"ts": 1668113179406
+		},
+		{
+			"sid": "p2",
+			"guid": "xBXWwysXeVHO7_OgWxL44qTu30PxrCkG_jkzAFp3JI4",
+			"src": "Payment gateway testing mimics each step of the payment process to verify that connections, transactions, and paths for communications are working. Testers uncover issues that impact a seamless transaction and user experience.",
+			"rid": "en/guide.json",
+			"ts": 1668113179406
+		},
+		{
+			"sid": "p3",
+			"guid": "SODQAQuKsgIFGvOgzCoAi85KGeIwHcvim4U59juXXnA",
+			"src": "This guide provides a full overview of payments testing, from definitions to use cases to actionable testing scenarios.",
+			"rid": "en/guide.json",
+			"ts": 1668113179406
+		},
+		{
+			"sid": "brand",
+			"guid": "Zu8-DRKyPbW3MHG62Mou1orfoGMLbhxvGviCSrnX4iU",
+			"src": "Giant's guarantee",
+			"rid": "en/guide.json",
+			"ts": 1668113179406
+		}
+	],
+	"translationProvider": "ModernMT",
+	"jobGuid": "Tck5-ng7SdYfpEPe5FKEn",
+	"status": "created",
+	"updatedAt": "2023-05-20T15:26:03.522Z"
+}

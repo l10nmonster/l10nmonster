@@ -92,14 +92,14 @@ class Task {
     async execute() {
         let doneOps;
         let progress = 1;
-        let noErrorOps = true;
+        let errorMessage;
         while (progress > 0) {
             doneOps = 0;
             progress = 0;
             for (const op of this.opList) {
                 if (op.state === 'done') {
                     doneOps++;
-                } else if (noErrorOps) {
+                } else if (!errorMessage) {
                     const doneInputs = op.inputs.filter(id => this.opList[id].state === 'done');
                     if (doneInputs.length === op.inputs.length) {
                         try {
@@ -122,9 +122,9 @@ class Task {
                             }
                             op.state = 'done';
                         } catch (error) {
+                            errorMessage = error.stack ?? error;
                             op.state = 'error';
-                            op.output = error.stack ?? error;
-                            noErrorOps = false;
+                            op.output = errorMessage;
                         }
                         this.saveState();
                         progress++;
@@ -135,7 +135,7 @@ class Task {
         if (doneOps === this.opList.length) {
             return this.getOutputByOpId(this.rootOpId);
         } else {
-            throw `OpsMgr: unable to execute task ${this.taskName}`;
+            throw `OpsMgr: unable to execute task ${this.taskName} (${errorMessage})`;
         }
     }
 
