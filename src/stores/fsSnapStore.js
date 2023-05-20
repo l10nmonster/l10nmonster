@@ -10,12 +10,8 @@ function mangleResourceId(id) {
     return id.replaceAll('/', '$').replaceAll('\\', '$');
 }
 
-function writeSnapshot(snapDir, snapshot) {
-    existsSync(snapDir) && rmSync(snapDir, { recursive: true });
-    mkdirSync(snapDir, { recursive: true });
-    for (const source of snapshot) {
-        writeFileSync(path.join(snapDir, `${mangleResourceId(source.id)}.json`), JSON.stringify(source, null, '\t'), 'utf8');
-    }
+function writeResource(snapDir, resource) {
+        writeFileSync(path.join(snapDir, `${mangleResourceId(resource.id)}.json`), JSON.stringify(resource, null, '\t'), 'utf8');
 }
 
 export class FsSnapStore {
@@ -24,19 +20,19 @@ export class FsSnapStore {
         this.splitByPrj = splitByPrj;
     }
 
-    async commitSnapshot(snapshot) {
+    async startSnapshot() {
+        existsSync(this.snapDir) && rmSync(this.snapDir, { recursive: true });
+        mkdirSync(this.snapDir, { recursive: true });
+    }
+
+    async commitResource(resource) {
         if (this.splitByPrj) {
-            const prjMap = {};
-            for (const source of snapshot) {
-                const prj = source.prj ?? 'default';
-                prjMap[prj] ??= [];
-                prjMap[prj].push(source);
-            }
-            for (const prj of Object.keys(prjMap)) {
-                writeSnapshot(path.join(this.snapDir, prj), prjMap[prj]);
-            }
+            writeResource(path.join(this.snapDir, resource.prj ?? 'default'), resource);
         } else {
-            writeSnapshot(this.snapDir, snapshot);
+            writeResource(this.snapDir, resource);
         }
+    }
+
+    async endSnapshot() {
     }
 }

@@ -55,7 +55,16 @@ export class FsSource {
         if (typeof this.pathFromId === 'function') {
             resourceId = this.pathFromId(resourceId);
         }
-    return readFileSync(path.resolve(this.baseDir, resourceId), 'utf8');
+        return readFileSync(path.resolve(this.baseDir, resourceId), 'utf8');
+    }
+
+    async *fetchAllResources(prj) {
+        const stats = await this.fetchResourceStats();
+        for (const rs of stats) {
+            if (prj === undefined || prj.includes(rs.prj)) {
+                yield [rs, await this.fetchResource(rs.id)];
+            }
+        }
     }
 }
 

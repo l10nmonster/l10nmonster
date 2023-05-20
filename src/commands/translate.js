@@ -36,7 +36,7 @@ export function translateWithEntry(src, nsrc, entry, flags, encodePart) {
 
 export async function translateCmd(mm, { limitToLang, dryRun }) {
     const status = { generatedResources: {}, deleteResources: {}, diff: {} };
-    const resourceStats = await mm.source.getResources();
+    const resourceStats = await mm.source.getResourceStats();
     const targetLangs = await mm.getTargetLangs(limitToLang);
     for (const targetLang of targetLangs) {
         const sourceLang = mm.sourceLang;

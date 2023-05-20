@@ -18,30 +18,26 @@ export class Grandfather {
         const { tus, ...jobResponse } = jobRequest;
         jobResponse.tus = [];
         const txCache = {};
-        const sourceCache = Object.fromEntries((await this.ctx.mm.source.getResources()).map(r => [r.id, r]));
+        const resourceStats = Object.fromEntries((await this.ctx.mm.source.getResourceStats()).map(r => [r.id, r]));
         for (const tu of tus) {
             if (!txCache[tu.rid]) {
-                const resMeta = sourceCache[tu.rid];
+                const resMeta = resourceStats[tu.rid];
                 const pipeline = this.ctx.mm.contentTypes[resMeta.contentType];
                 const lookup = {};
-                let resource;
                 try {
-                    resource = await pipeline.target.fetchTranslatedResource(jobRequest.targetLang, tu.rid);
-                } catch (e) {
-                    this.ctx.logger.info(`Couldn't fetch translated resource: ${e}`);
-                } finally {
-                    if (resource) {
-                        const parsedResource = await pipeline.resourceFilter.parseResource({ resource, isSource: false });
-                        for (const seg of parsedResource.segments) {
-                            if (pipeline.decoders) {
-                                const normalizedStr = getNormalizedString(seg.str, pipeline.decoders);
-                                if (normalizedStr[0] !== seg.str) {
-                                    seg.nstr = normalizedStr;
-                                }
+                    const resource = await pipeline.target.fetchTranslatedResource(jobRequest.targetLang, tu.rid);
+                    const parsedResource = await pipeline.resourceFilter.parseResource({ resource, isSource: false });
+                    for (const seg of parsedResource.segments) {
+                        if (pipeline.decoders) {
+                            const normalizedStr = getNormalizedString(seg.str, pipeline.decoders);
+                            if (normalizedStr[0] !== seg.str) {
+                                seg.nstr = normalizedStr;
                             }
-                            lookup[seg.sid] = makeTU(resMeta, seg);
                         }
+                        lookup[seg.sid] = makeTU(resMeta, seg);
                     }
+            } catch (e) {
+                    this.ctx.logger.info(`Couldn't fetch translated resource: ${e}`);
                 }
                 txCache[tu.rid] = lookup;
             }

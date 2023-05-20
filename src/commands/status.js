@@ -1,6 +1,5 @@
 export async function statusCmd(mm, { limitToLang }) {
     const status = {
-        numSources: (await mm.source.getResources()).length,
         lang: {},
     };
     const targetLangs = await mm.getTargetLangs(limitToLang);
@@ -9,6 +8,7 @@ export async function statusCmd(mm, { limitToLang }) {
         status.lang[targetLang] = {
             leverage,
         };
+        status.numSources = leverage.numSources;
         mm.ctx.logger.info(`Calculated status of ${targetLang}`);
     }
     return status;

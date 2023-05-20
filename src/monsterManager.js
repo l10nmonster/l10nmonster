@@ -56,13 +56,13 @@ export default class MonsterManager {
             this.source = new SourceManager({
                 logger: ctx.logger,
                 prj: ctx.prj,
-                monsterDir,
                 configSeal,
                 contentTypes: this.contentTypes,
+                snapStore: monsterConfig.snapStore,
                 seqMapPath,
                 seqThreshold: monsterConfig.seqThreshold,
             });
-            this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, sourceMgr: this.source, ctx, configSeal });
+            this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, ctx, configSeal });
             this.snapStore = monsterConfig.snapStore;
             this.analyzers = {
                 ...defaultAnalyzers,
@@ -89,7 +89,7 @@ export default class MonsterManager {
     async getTargetLangs(limitToLang, includeAll) {
         let srcTargetLangs = new Set();
         // eslint-disable-next-line no-unused-vars
-        const resourceStats = await this.source.getResources();
+        const resourceStats = await this.source.getResourceStats();
         resourceStats.forEach(res => res.targetLangs.forEach(targetLang => srcTargetLangs.add(targetLang)));
         const allTargetLangs = new Set(srcTargetLangs);
         Object.values(await this.jobStore.getAvailableLangPairs())
@@ -108,9 +108,7 @@ export default class MonsterManager {
     // get source, decorate it for the target languge, and convert it to tu format
     async getSourceAsTus(targetLang) {
         const sourceLookup = {};
-        const resources = await this.source.getResources();
-        // eslint-disable-next-line no-unused-vars
-        for (const res of resources) {
+        for await (const res of this.source.getAllResources()) {
             const decoratedSegments = this.#getDecoratedSegments(res, targetLang);
             for (const seg of decoratedSegments) {
                 sourceLookup[seg.guid] = makeTU(res, seg);
@@ -157,7 +155,6 @@ export default class MonsterManager {
 
     // eslint-disable-next-line complexity
     async #internalPrepareTranslationJob({ targetLang, minimumQuality, leverage }) {
-        const resources = await this.source.getResources();
         const job = {
             sourceLang: this.sourceLang,
             targetLang,
@@ -167,7 +164,9 @@ export default class MonsterManager {
         const tm = await this.tmm.getTM(this.sourceLang, targetLang); // TODO: source language may vary by resource or unit, if supported
         const prjLeverage = {};
         const repetitionMap = {};
-        for (const res of resources) {
+        let resourceCount = 0;
+        for await (const res of this.source.getAllResources()) {
+            resourceCount++;
             const prj = res.prj || 'default';
             prjLeverage[prj] ??= {
                 translated: 0,
@@ -222,7 +221,7 @@ export default class MonsterManager {
             }
         }
         // TODO: job should actually be a list of jobs to be able to handle multiple source languages and pipelines
-        return [ job, { tmSize: tm.guids.length, minimumQuality, prjLeverage } ];
+        return [ job, { tmSize: tm.guids.length, minimumQuality, prjLeverage, numSources: resourceCount } ];
     }
 
     async prepareTranslationJob({ targetLang, minimumQuality, leverage }) {

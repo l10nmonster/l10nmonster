@@ -29,8 +29,9 @@ export const targetTUWhitelist = new Set([
     'rev', // this is used by TOS to capture reviewed words and errors found
 ]);
 
-export const refreshedFromSource = new Set([
-    'seq',
-    'prj',
-    'notes',
-]);
+// TODO: do we really need to refresh from source? when?
+// export const refreshedFromSource = new Set([
+//     'seq',
+//     'prj',
+//     'notes',
+// ]);

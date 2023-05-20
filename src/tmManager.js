@@ -5,10 +5,10 @@ import {
     writeFileSync,
 } from 'fs';
 import { flattenNormalizedSourceToOrdinal, cleanupTU } from './normalizers/util.js';
-import { targetTUWhitelist, refreshedFromSource } from './schemas.js';
+import { targetTUWhitelist } from './schemas.js';
 
 class TM {
-    constructor(sourceLang, targetLang, tmPathName, logger, configSeal, jobs, sourceMgr) {
+    constructor(sourceLang, targetLang, tmPathName, logger, configSeal, jobs) {
         const EMPTY_TM = {
             sourceLang,
             targetLang,
@@ -32,7 +32,6 @@ class TM {
         }
         this.lookUpByFlattenSrc = {};
         Object.values(this.tm.tus).forEach(tu => this.setEntryByGuid(tu.guid, tu)); // this is to generate side-effects
-        this.sourceMgr = sourceMgr;
     }
 
     get guids() {
@@ -93,8 +92,11 @@ class TM {
             for (const tu of tus) {
                 const tmEntry = this.getEntryByGuid(tu.guid);
                 const reqEntry = requestedUnits[tu.guid] ?? {};
-                const srcEntry = Object.fromEntries(Object.entries(this.sourceMgr.getSourceByGuid(tu.guid) ?? {}).filter(p => refreshedFromSource.has(p[0])));
-                const rectifiedTU = { ...reqEntry, ...tu, jobGuid, translationProvider, ...srcEntry };
+                // the problem trying to refresh from source is that it's going to be stale anyway
+                // and it requires all sources to be in memory. removing this since it seems to be
+                // just a legacy from when we didn't capture the request
+                // const srcEntry = Object.fromEntries(Object.entries(this.sourceMgr.getSourceByGuid(tu.guid) ?? {}).filter(p => refreshedFromSource.has(p[0])));
+                const rectifiedTU = { ...reqEntry, ...tu, jobGuid, translationProvider };
                 if (!tmEntry || tmEntry.q < tu.q || (tmEntry.q === tu.q && tmEntry.ts < rectifiedTU.ts)) {
                     this.setEntryByGuid(tu.guid, rectifiedTU);
                 }
@@ -105,10 +107,9 @@ class TM {
 }
 
 export default class TMManager {
-    constructor({ monsterDir, jobStore, sourceMgr, ctx, configSeal }) {
+    constructor({ monsterDir, jobStore, ctx, configSeal }) {
         this.monsterDir = monsterDir;
         this.jobStore = jobStore;
-        this.sourceMgr = sourceMgr;
         this.ctx = ctx;
         this.configSeal = configSeal;
         this.tmCache = new Map();
@@ -121,7 +122,7 @@ export default class TMManager {
         const tmFileName = `tmCache_${sourceLang}_${targetLang}.json`;
         let tm = this.tmCache.get(tmFileName);
         if (!tm) {
-            tm = new TM(sourceLang, targetLang, path.join(this.monsterDir, tmFileName), this.ctx.logger, this.configSeal, jobs, this.sourceMgr);
+            tm = new TM(sourceLang, targetLang, path.join(this.monsterDir, tmFileName), this.ctx.logger, this.configSeal, jobs);
             this.tmCache.set(tmFileName, tm);
         }
         for (const [jobGuid, jobStat] of jobs) {

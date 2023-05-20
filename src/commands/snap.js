@@ -1,13 +1,16 @@
 export async function snapCmd(mm) {
     if (mm.snapStore) {
-        const snapshot = (await mm.source.getResources()).map(e => {
+        let resourceCount = 0;
+        await mm.snapStore.startSnapshot();
+        for await (const res of mm.source.getAllResources()) {
             // eslint-disable-next-line no-unused-vars
-            const { modified, contentType, ...cleanSource } = e;
-            return cleanSource;
-        });
-        await mm.snapStore.commitSnapshot(snapshot);
-        return snapshot.length;
+            const { modified, contentType, ...cleanSource } = res;
+            await mm.snapStore.commitResource(cleanSource);
+            resourceCount++;
+        }
+        await mm.snapStore.endSnapshot();
+        return resourceCount;
     } else {
-        throw `snap store not configured`;
+        throw `Snap store not configured`;
     }
 }

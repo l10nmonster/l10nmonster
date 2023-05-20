@@ -1,5 +1,4 @@
 {
-	"numSources": 1,
 	"lang": {
 		"zh-Hans": {
 			"leverage": {
@@ -21,7 +20,8 @@
 						"internalRepetitions": 0,
 						"internalRepetitionWords": 0
 					}
-				}
+				},
+				"numSources": 1
 			}
 		},
 		"zh-Hant": {
@@ -44,7 +44,8 @@
 						"internalRepetitions": 77,
 						"internalRepetitionWords": 218
 					}
-				}
+				},
+				"numSources": 1
 			}
 		},
 		"piggy": {
@@ -66,8 +67,10 @@
 						"internalRepetitions": 0,
 						"internalRepetitionWords": 0
 					}
-				}
+				},
+				"numSources": 1
 			}
 		}
-	}
+	},
+	"numSources": 1
 }

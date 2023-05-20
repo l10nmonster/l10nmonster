@@ -1,5 +1,4 @@
 {
-	"numSources": 2,
 	"lang": {
 		"it": {
 			"leverage": {
@@ -18,8 +17,10 @@
 						"internalRepetitions": 0,
 						"internalRepetitionWords": 0
 					}
-				}
+				},
+				"numSources": 2
 			}
 		}
-	}
+	},
+	"numSources": 2
 }
