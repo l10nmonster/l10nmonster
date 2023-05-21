@@ -226,9 +226,9 @@ export async function pull(monsterManager, options) {
     console.log(`Checked ${stats.numPendingJobs.toLocaleString()} pending jobs, ${stats.doneJobs.toLocaleString()} done jobs, ${stats.newPendingJobs.toLocaleString()} pending jobs created, ${stats.translatedStrings.toLocaleString()} translated strings found`);
 }
 
-export async function snap(monsterManager) {
+export async function snap(monsterManager, options) {
     console.log(`Taking a snapshot of sources...`);
-    const numSources = await snapCmd(monsterManager);
+    const numSources = await snapCmd(monsterManager, options);
     console.log(`${numSources} sources committed`);
 }
 

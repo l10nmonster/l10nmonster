@@ -1,0 +1,4856 @@
+[
+	{
+		"id": "dashlets/activity-list.get_en.properties",
+		"modified": "2022-07-21T23:56:25.171Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "title.generic",
+				"str": "New Activity",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "7Yg93c458EbHxMIJHNXXG77jF5ZnrMzxv8ScSU0oCyQ"
+			},
+			{
+				"sid": "more.activities",
+				"str": "{0} more",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"notes": {
+					"desc": "## Rollup"
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" more"
+				],
+				"gstr": "{{x}} more",
+				"guid": "iFr1XEoi3u89bv1K36QYJ8mOO-8yj4RdSWXpMtkowNo",
+				"rawNotes": "## Rollup"
+			},
+			{
+				"sid": "atom.title.site",
+				"str": "Alfresco Activities Site Feed for {0}",
+				"location": {
+					"startLine": 7,
+					"endLine": 7
+				},
+				"notes": {
+					"desc": "## ATOM feed messages"
+				},
+				"nstr": [
+					"Alfresco Activities Site Feed for ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "Alfresco Activities Site Feed for {{x}}",
+				"guid": "DQ_hE0YU3Dc1i-RCzydiH221mS2bCTGrix7yN0NVYjs",
+				"rawNotes": "## ATOM feed messages"
+			},
+			{
+				"sid": "atom.title.user",
+				"str": "Alfresco Activities User Feed for {0}",
+				"location": {
+					"startLine": 8,
+					"endLine": 8
+				},
+				"nstr": [
+					"Alfresco Activities User Feed for ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "Alfresco Activities User Feed for {{x}}",
+				"guid": "QUNbFFCnev-5nePd6x-GLS_ECDiaiAilPFQsud2YAoE"
+			},
+			{
+				"sid": "in.site",
+				"str": "{0} in {1}",
+				"location": {
+					"startLine": 11,
+					"endLine": 11
+				},
+				"notes": {
+					"desc": "## Optional Site link"
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" in ",
+					{
+						"t": "x",
+						"v": "{1}"
+					}
+				],
+				"gstr": "{{x}} in {{x}}",
+				"guid": "BpkBpKi4k1zbxxMBjLweUIMIakji86zWvO-jLYTfbc8",
+				"rawNotes": "## Optional Site link"
+			},
+			{
+				"sid": "org.alfresco.blog.post-created",
+				"str": "{1} created blog post {0}",
+				"location": {
+					"startLine": 14,
+					"endLine": 14
+				},
+				"notes": {
+					"desc": "## 0 = Item title / page link, 1 = User profile link, 2 = custom0, 3 = custom1, 4 = Site link, 5 = second user profile link"
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" created blog post ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} created blog post {{x}}",
+				"guid": "3rblxtRQl_XxzcIRIcuXD1YiqWoZZGm2OK6VT_3AvEE",
+				"rawNotes": "## 0 = Item title / page link, 1 = User profile link, 2 = custom0, 3 = custom1, 4 = Site link, 5 = second user profile link"
+			},
+			{
+				"sid": "org.alfresco.blog.post-updated",
+				"str": "{1} updated blog post {0}",
+				"location": {
+					"startLine": 15,
+					"endLine": 15
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" updated blog post ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} updated blog post {{x}}",
+				"guid": "YWxB6wV9NKqyi_xBz9gfJXM9gVGUn8fmMLpstgYj4GQ"
+			},
+			{
+				"sid": "org.alfresco.blog.post-deleted",
+				"str": "{1} deleted blog post {0}",
+				"location": {
+					"startLine": 16,
+					"endLine": 16
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" deleted blog post ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} deleted blog post {{x}}",
+				"guid": "M9uKQf1rlQ2VvflkhXLRngLoR1dO97dbM0pgqzAYWBQ"
+			},
+			{
+				"sid": "org.alfresco.comments.comment-created",
+				"str": "{1} commented on {0}",
+				"location": {
+					"startLine": 17,
+					"endLine": 17
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" commented on ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} commented on {{x}}",
+				"guid": "Es__KuVLCYEEqbxJ7UH0OufVMIRx1P1XxjQorI3KvoM"
+			},
+			{
+				"sid": "org.alfresco.comments.comment-updated",
+				"str": "{1} updated comment on {0}",
+				"location": {
+					"startLine": 18,
+					"endLine": 18
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" updated comment on ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} updated comment on {{x}}",
+				"guid": "SMBJeA-SZElxfZ3ogui9-bgmMdN-AW7Wn3K_RzxHgnM"
+			},
+			{
+				"sid": "org.alfresco.comments.comment-deleted",
+				"str": "{1} deleted a comment from {0}",
+				"location": {
+					"startLine": 19,
+					"endLine": 19
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" deleted a comment from ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} deleted a comment from {{x}}",
+				"guid": "a8SuqJb6qftuXW9zPPZ6uOsN8HzkGBQTu1gkrLtn-y8"
+			},
+			{
+				"sid": "org.alfresco.discussions.post-created",
+				"str": "{1} started discussion {0}",
+				"location": {
+					"startLine": 20,
+					"endLine": 20
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" started discussion ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} started discussion {{x}}",
+				"guid": "lL5Nz22Eel1_uruDJPcXXY6GRPfiFUNIkPHHnkwJjTA"
+			},
+			{
+				"sid": "org.alfresco.discussions.post-updated",
+				"str": "{1} updated discussion {0}",
+				"location": {
+					"startLine": 21,
+					"endLine": 21
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" updated discussion ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} updated discussion {{x}}",
+				"guid": "yY_62owOshI5WedZZ56RMH0mAHZqkoQFzrl72QouUxM"
+			},
+			{
+				"sid": "org.alfresco.discussions.post-deleted",
+				"str": "{1} deleted discussion {0}",
+				"location": {
+					"startLine": 22,
+					"endLine": 22
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" deleted discussion ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} deleted discussion {{x}}",
+				"guid": "FLMtjIXON6hrlKJM6PGLnITDdlaxsrB-TMZcUwfOucE"
+			},
+			{
+				"sid": "org.alfresco.discussions.reply-created",
+				"str": "{1} replied to the discussion {0}",
+				"location": {
+					"startLine": 23,
+					"endLine": 23
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" replied to the discussion ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} replied to the discussion {{x}}",
+				"guid": "G7fyHbsNuus4ZSyQBBbgTKT8wGSRnTILfVHPH6wEH6A"
+			},
+			{
+				"sid": "org.alfresco.discussions.reply-updated",
+				"str": "{1} updated a reply to {0}",
+				"location": {
+					"startLine": 24,
+					"endLine": 24
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" updated a reply to ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} updated a reply to {{x}}",
+				"guid": "4P3iwkdyW7FrOtYbhDH0Ubzp2SkQjh16-5cEasPP7Wg"
+			},
+			{
+				"sid": "org.alfresco.calendar.event-created",
+				"str": "{1} created calendar event {0}",
+				"location": {
+					"startLine": 25,
+					"endLine": 25
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" created calendar event ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} created calendar event {{x}}",
+				"guid": "EpZriwYtslQ1Izp3rQ1x2B6n6gH-cWMAJvwjBI-vb3c"
+			},
+			{
+				"sid": "org.alfresco.calendar.event-updated",
+				"str": "{1} updated calendar event {0}",
+				"location": {
+					"startLine": 26,
+					"endLine": 26
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" updated calendar event ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} updated calendar event {{x}}",
+				"guid": "a9CEM5Ua1GPhvul1Sd8EtIUHss9ao3oWUcRNTDvpcIU"
+			},
+			{
+				"sid": "org.alfresco.calendar.event-deleted",
+				"str": "{1} deleted calendar event {0}",
+				"location": {
+					"startLine": 27,
+					"endLine": 27
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" deleted calendar event ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} deleted calendar event {{x}}",
+				"guid": "DIP9jIIiKl8ruyh8W69Wny6LPeVdb8fpRZaDsrBV86U"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.file-added",
+				"str": "{1} added document {0}",
+				"location": {
+					"startLine": 28,
+					"endLine": 28
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" added document ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} added document {{x}}",
+				"guid": "k5JI_WYPDUNRUh0sFZquifwJkCf4g1VKj1PKIM0A_JE"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.files-added",
+				"str": "{1} added {0} documents",
+				"location": {
+					"startLine": 29,
+					"endLine": 29
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" added ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" documents"
+				],
+				"gstr": "{{x}} added {{x}} documents",
+				"guid": "FpjduiGSXQ5iah8xYImPZthEzoV0MzzT60prVEZhdEI"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.file-created",
+				"str": "{1} created document {0}",
+				"location": {
+					"startLine": 30,
+					"endLine": 30
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" created document ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} created document {{x}}",
+				"guid": "AN4ncvCCj7nzsY4-Ke7CzA6iVA--CMdk1mNrOJztpzw"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.file-deleted",
+				"str": "{1} deleted document {0}",
+				"location": {
+					"startLine": 31,
+					"endLine": 31
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" deleted document ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} deleted document {{x}}",
+				"guid": "P1ByqIYS2ma6bymP1W7DSf4FHxRbI-9KaQ2sdBE71T8"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.files-deleted",
+				"str": "{1} deleted {0} documents",
+				"location": {
+					"startLine": 32,
+					"endLine": 32
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" deleted ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" documents"
+				],
+				"gstr": "{{x}} deleted {{x}} documents",
+				"guid": "K7TJHd23oMM3cpKocUkxiAaqxOji9bwR1Mg8t-BHMFI"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.file-updated",
+				"str": "{1} updated document {0}",
+				"location": {
+					"startLine": 33,
+					"endLine": 33
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" updated document ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} updated document {{x}}",
+				"guid": "k1cgnaImIwxlUrS497kcSNmvzuv5I68j0ioyzX7c8Ic"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.files-updated",
+				"str": "{1} updated {0} documents",
+				"location": {
+					"startLine": 34,
+					"endLine": 34
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" updated ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" documents"
+				],
+				"gstr": "{{x}} updated {{x}} documents",
+				"guid": "MRW4EYDzbzarsY0z4zraAtLm1WKLPN1ghyiMvB1Hipo"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.folder-added",
+				"str": "{1} added folder {0}",
+				"location": {
+					"startLine": 35,
+					"endLine": 35
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" added folder ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} added folder {{x}}",
+				"guid": "-OYvZdJn7BfWeFGaR9ed039gXtmFY4HJFPio2jMWHaQ"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.folder-deleted",
+				"str": "{1} deleted folder {0}",
+				"location": {
+					"startLine": 36,
+					"endLine": 36
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" deleted folder ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} deleted folder {{x}}",
+				"guid": "ofzKoQpmR2mq6Plf9V5MSEd6Fz5Ltq13-U1tFAqrq0U"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.folders-added",
+				"str": "{1} added {0} folders",
+				"location": {
+					"startLine": 37,
+					"endLine": 37
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" added ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" folders"
+				],
+				"gstr": "{{x}} added {{x}} folders",
+				"guid": "7dt9A3Z7_mUhwpEHH4bkovTsRMMtaKLj5y5U-wjXkkY"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.folders-deleted",
+				"str": "{1} deleted {0} folders",
+				"location": {
+					"startLine": 38,
+					"endLine": 38
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" deleted ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" folders"
+				],
+				"gstr": "{{x}} deleted {{x}} folders",
+				"guid": "swTAfUTLMpla4apCLpqnjgXkZ3TcF5AsbRcqSddr8fI"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.inline-edit",
+				"str": "{1} edited document {0}",
+				"location": {
+					"startLine": 39,
+					"endLine": 39
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" edited document ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} edited document {{x}}",
+				"guid": "5XD_c2iyMf_fWIRXdm7xW8g44PE7UlsQeAjKlI8Pis8"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.file-previewed",
+				"str": "{1} previewed document {0}",
+				"location": {
+					"startLine": 40,
+					"endLine": 40
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" previewed document ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} previewed document {{x}}",
+				"guid": "XUhHCOGm5hUKfi2Bu7miIbFB-1Z2aH57be4DnySac54"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.file-downloaded",
+				"str": "{1} downloaded document {0}",
+				"location": {
+					"startLine": 41,
+					"endLine": 41
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" downloaded document ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} downloaded document {{x}}",
+				"guid": "yGyNdsHARZCGXEefYEHIvYF0x9iBeUQH6UjRtlN0zVM"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.file-liked",
+				"str": "{1} liked document {0}",
+				"location": {
+					"startLine": 42,
+					"endLine": 42
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" liked document ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} liked document {{x}}",
+				"guid": "sq53xWPD5py_YTmisWVdG6XPVrXq0zyPVuQVFy_ZMFI"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.folder-liked",
+				"str": "{1} liked folder {0}",
+				"location": {
+					"startLine": 43,
+					"endLine": 43
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" liked folder ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} liked folder {{x}}",
+				"guid": "mEgaZISppd-nymvlS1qgCdLHUDUUK7eW54oV-cISyWU"
+			},
+			{
+				"sid": "org.alfresco.wiki.page-created",
+				"str": "{1} created wiki page {0}",
+				"location": {
+					"startLine": 44,
+					"endLine": 44
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" created wiki page ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} created wiki page {{x}}",
+				"guid": "naHyoyk-BovSB4V50pMdNZPzjnAZ6r0ncF1VEa5JWHs"
+			},
+			{
+				"sid": "org.alfresco.wiki.page-edited",
+				"str": "{1} updated wiki page {0}",
+				"location": {
+					"startLine": 45,
+					"endLine": 45
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" updated wiki page ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} updated wiki page {{x}}",
+				"guid": "YtQhKd3eEaTLfIaJrfYcuRyGunfwREShOn86r67mgYE"
+			},
+			{
+				"sid": "org.alfresco.wiki.page-renamed",
+				"str": "{1} renamed wiki page from {2} to {0}",
+				"location": {
+					"startLine": 46,
+					"endLine": 46
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" renamed wiki page from ",
+					{
+						"t": "x",
+						"v": "{2}"
+					},
+					" to ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} renamed wiki page from {{x}} to {{x}}",
+				"guid": "gNnHDtYlPLhKdm9AZdp9RSZRN28Lz5yhhXqCjSTtmoI"
+			},
+			{
+				"sid": "org.alfresco.wiki.page-deleted",
+				"str": "{1} deleted wiki page {0}",
+				"location": {
+					"startLine": 47,
+					"endLine": 47
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" deleted wiki page ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} deleted wiki page {{x}}",
+				"guid": "l9ZP_Bfh4tHIGY9ZcxlxUXabgDhEw0f-wpMCcc-8NKU"
+			},
+			{
+				"sid": "org.alfresco.site.group-added",
+				"str": "{1} group added to site {4} with role {2}",
+				"location": {
+					"startLine": 48,
+					"endLine": 48
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" group added to site ",
+					{
+						"t": "x",
+						"v": "{4}"
+					},
+					" with role ",
+					{
+						"t": "x",
+						"v": "{2}"
+					}
+				],
+				"gstr": "{{x}} group added to site {{x}} with role {{x}}",
+				"guid": "timdMkW30K9sQGhUufC1DXZfOpkDLerkyptYkocdi-U"
+			},
+			{
+				"sid": "org.alfresco.site.group-removed",
+				"str": "{1} group removed from site {4}",
+				"location": {
+					"startLine": 49,
+					"endLine": 49
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" group removed from site ",
+					{
+						"t": "x",
+						"v": "{4}"
+					}
+				],
+				"gstr": "{{x}} group removed from site {{x}}",
+				"guid": "MDvXxJekx5BhFE-YdFYqbKhnwbB11OtusxMefSw9Ovg"
+			},
+			{
+				"sid": "org.alfresco.site.group-role-changed",
+				"str": "{1} group role changed to {2}",
+				"location": {
+					"startLine": 50,
+					"endLine": 50
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" group role changed to ",
+					{
+						"t": "x",
+						"v": "{2}"
+					}
+				],
+				"gstr": "{{x}} group role changed to {{x}}",
+				"guid": "NMYuYdSO9wouYhDUSuSg37bFIkNCGZwfz76qM7WhIjc"
+			},
+			{
+				"sid": "org.alfresco.site.user-joined",
+				"str": "{1} joined site {4} with role {2}",
+				"location": {
+					"startLine": 51,
+					"endLine": 51
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" joined site ",
+					{
+						"t": "x",
+						"v": "{4}"
+					},
+					" with role ",
+					{
+						"t": "x",
+						"v": "{2}"
+					}
+				],
+				"gstr": "{{x}} joined site {{x}} with role {{x}}",
+				"guid": "UrEORD8AVE8d6EZqdgDvuDphITHpJAbuffhHQBMVUl4"
+			},
+			{
+				"sid": "org.alfresco.site.user-left",
+				"str": "{1} left site {4}",
+				"location": {
+					"startLine": 52,
+					"endLine": 52
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" left site ",
+					{
+						"t": "x",
+						"v": "{4}"
+					}
+				],
+				"gstr": "{{x}} left site {{x}}",
+				"guid": "27t2xPG0q5-I0c7i1uNxq8WBB20gzzoOd3BkbXj4udc"
+			},
+			{
+				"sid": "org.alfresco.site.user-role-changed",
+				"str": "{1} role changed to {2}",
+				"location": {
+					"startLine": 53,
+					"endLine": 53
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" role changed to ",
+					{
+						"t": "x",
+						"v": "{2}"
+					}
+				],
+				"gstr": "{{x}} role changed to {{x}}",
+				"guid": "NpcPUf7fkYkWBbp6clR1ToMNmBieBCT3KEmIljcByzc"
+			},
+			{
+				"sid": "org.alfresco.site.liked",
+				"str": "{1} liked site {0}",
+				"location": {
+					"startLine": 54,
+					"endLine": 54
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" liked site ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} liked site {{x}}",
+				"guid": "cCf_rWAkkua88a1zzltV1eBivRh9kqs4fomioU9L98c"
+			},
+			{
+				"sid": "org.alfresco.links.link-created",
+				"str": "{1} created link {0}",
+				"location": {
+					"startLine": 55,
+					"endLine": 55
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" created link ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} created link {{x}}",
+				"guid": "t_HZsv3of9h80u81tC9VgLeo36DqS-rp_l_Px7giuGs"
+			},
+			{
+				"sid": "org.alfresco.links.link-updated",
+				"str": "{1} updated link {0}",
+				"location": {
+					"startLine": 56,
+					"endLine": 56
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" updated link ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} updated link {{x}}",
+				"guid": "VbtwoVbSa-yFaG_Ut_rPeJJ_8aQ5oP7H-mSlnos0xu0"
+			},
+			{
+				"sid": "org.alfresco.links.link-deleted",
+				"str": "{1} deleted link {0}",
+				"location": {
+					"startLine": 57,
+					"endLine": 57
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" deleted link ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} deleted link {{x}}",
+				"guid": "KHTUkize79M1wpypmG2Vxaa9BbHVNCRz4aN6ofMGZHY"
+			},
+			{
+				"sid": "org.alfresco.datalists.list-created",
+				"str": "{1} created data list {0}",
+				"location": {
+					"startLine": 58,
+					"endLine": 58
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" created data list ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} created data list {{x}}",
+				"guid": "BxA_N4Lc1M41EAZJXgG9aF_wt8HFVtjXD9qtcC636iA"
+			},
+			{
+				"sid": "org.alfresco.datalists.list-updated",
+				"str": "{1} updated data list {0}",
+				"location": {
+					"startLine": 59,
+					"endLine": 59
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" updated data list ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} updated data list {{x}}",
+				"guid": "ZZ07qmBXDMVo247WJgTyZ0gicloP70B_XJRnKI05HsI"
+			},
+			{
+				"sid": "org.alfresco.datalists.list-deleted",
+				"str": "{1} deleted data list {0}",
+				"location": {
+					"startLine": 60,
+					"endLine": 60
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" deleted data list ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} deleted data list {{x}}",
+				"guid": "OHO4FPrPe3sl47lzd7xNOprvy7sFJdjt7rAGV5-hv84"
+			},
+			{
+				"sid": "org.alfresco.subscriptions.followed",
+				"str": "{1} is now following {5}",
+				"location": {
+					"startLine": 61,
+					"endLine": 61
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" is now following ",
+					{
+						"t": "x",
+						"v": "{5}"
+					}
+				],
+				"gstr": "{{x}} is now following {{x}}",
+				"guid": "ZzwTjI7FDa82Eow7Bt9ZUOER1m_KoaAwpegPsYgABJA"
+			},
+			{
+				"sid": "org.alfresco.subscriptions.subscribed",
+				"str": "{1} has subscribed to {2}",
+				"location": {
+					"startLine": 62,
+					"endLine": 62
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" has subscribed to ",
+					{
+						"t": "x",
+						"v": "{2}"
+					}
+				],
+				"gstr": "{{x}} has subscribed to {{x}}",
+				"guid": "2AOJVDOcxcIal-UZ58LBGqUvETSCrFonNSdskqwn8zQ"
+			},
+			{
+				"sid": "org.alfresco.profile.status-changed",
+				"str": "{1}: {2}",
+				"location": {
+					"startLine": 63,
+					"endLine": 63
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					": ",
+					{
+						"t": "x",
+						"v": "{2}"
+					}
+				],
+				"gstr": "{{x}}: {{x}}",
+				"guid": "PcOlYWnFGlHetTuVT8GlQk6iQXqNNcSnYfgUS6QqTbQ"
+			}
+		]
+	},
+	{
+		"id": "dashlets/addons.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "label.header",
+				"str": "Alfresco Add-ons RSS Feed",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "mpN5e7DwX3x1lq6tGeCw3pN5XojDAp0yBMSeOOyuCpc"
+			},
+			{
+				"sid": "label.configure",
+				"str": "Configure",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"guid": "Syq3DJy_QDcM0m1nqYZXpqFjMMuR87HPZXL4tQ8hfGk"
+			},
+			{
+				"sid": "label.noItems",
+				"str": "No news items",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"guid": "94dyHElU-pvxBH_xvcPNYroCw8bbsYZVi9PRkhsVtfk"
+			},
+			{
+				"sid": "label.loading",
+				"str": "Loading items - please wait...",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"guid": "P5GRExSyOI9DJatrN4HtEGB0YnefpGW6JB2Nm1SM5_E"
+			},
+			{
+				"sid": "title.error.bad_data",
+				"str": "RSS feed can't be read",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"guid": "JYRC8Zfqy9a0-fUUB2YNIS8zc6WQL5RMh8o0ZqD0bcc"
+			},
+			{
+				"sid": "title.error.unavailable",
+				"str": "RSS feed is not available",
+				"location": {
+					"startLine": 6,
+					"endLine": 6
+				},
+				"guid": "bmGBoEsRYHhWkiRPZzQvvaQVk96lAyjLazEIevIvhbE"
+			},
+			{
+				"sid": "title.error.unsupported",
+				"str": "RSS feed format is not supported",
+				"location": {
+					"startLine": 7,
+					"endLine": 7
+				},
+				"guid": "jXh3uF9cDUKZtHxEG2JBn2BrdG_ZLsJ31Ej8xwl1E_Y"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "This dashlet shows the latest news from Alfresco Add-ons. Click the edit icon on the dashlet to configure the feed.",
+				"location": {
+					"startLine": 9,
+					"endLine": 9
+				},
+				"guid": "WvR4sh0AUEY-PZKx-eo1nNvJQW5CWA-gp6u2BTfT9D0"
+			},
+			{
+				"sid": "label.body",
+				"str": "Find, rate, and contribute Alfresco add-ons and extensions.",
+				"location": {
+					"startLine": 11,
+					"endLine": 11
+				},
+				"guid": "rHlW0n89eNdd459GykI6D4NBZtJGidWSP86B5BG0kQg"
+			},
+			{
+				"sid": "label.addonsLink",
+				"str": "http://addons.alfresco.com",
+				"location": {
+					"startLine": 12,
+					"endLine": 12
+				},
+				"guid": "LDHWLHERVQjJ1o-kvogktdzBFC_6nhgsVuTzxoHbhWI"
+			},
+			{
+				"sid": "label.addonsText",
+				"str": "Visit the Alfresco Add-ons Home Page",
+				"location": {
+					"startLine": 13,
+					"endLine": 13
+				},
+				"guid": "m70JMPI9T9GiVlanb29OGMpQQrneQXCFFecW1wlENPs"
+			}
+		]
+	},
+	{
+		"id": "dashlets/async-rssfeed.get_en.properties",
+		"modified": "2022-06-14T22:09:41.224Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "label.header",
+				"str": "RSS Feed",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "QX3X1g-Kh1UpJ-aEY4FOSO2WdKt5afp4FyUk8z00kOk"
+			},
+			{
+				"sid": "label.configure",
+				"str": "Configure",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"guid": "vwrKccRIjjVNjVNl0CRZJsRMOUbmwQ_yWgR6XdOhD40"
+			},
+			{
+				"sid": "label.noItems",
+				"str": "No news items",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"guid": "_BTHCps8KAbIpS9udVg6HYpF7QWwxNp8-0ZWvEDr8bI"
+			},
+			{
+				"sid": "title.error.bad_data",
+				"str": "RSS feed can't be read",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"guid": "rKmLOWykQIl0HH0r_50MOd07oRk8KqT9Pk-4CnXceEY"
+			},
+			{
+				"sid": "title.error.unavailable",
+				"str": "RSS feed is not available",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"guid": "3Gxz8EmGRNOELmhuwipqf5luMeaD5qELsN7df_cxAno"
+			},
+			{
+				"sid": "title.error.unsupported",
+				"str": "RSS feed format is not supported",
+				"location": {
+					"startLine": 6,
+					"endLine": 6
+				},
+				"guid": "5ZZj-jxDgUbAfyjrMe0cfeQcP0eFIZvFlDCSL84Nrqg"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed.",
+				"location": {
+					"startLine": 8,
+					"endLine": 8
+				},
+				"guid": "jzkfUdJohmFfMtS_GItKtYifp-ZgzcyJKVo8serpi7I"
+			}
+		]
+	},
+	{
+		"id": "dashlets/async-rssfeed.post_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "label.header",
+				"str": "RSS Feed",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "EFn3t-e0JoDulp-WrmSoRotUUCXkYlE7Kv3biN7WDW0"
+			},
+			{
+				"sid": "label.configure",
+				"str": "Configure",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"guid": "rMLO-fUZZZq87EB3WIeu2F2GZOtTACGvobKcGojueyA"
+			},
+			{
+				"sid": "label.noItems",
+				"str": "No news items",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"guid": "Y3VBfG0zC6kDtBZHDxZFCLZRLHwPC2obJTXEwJnkan8"
+			},
+			{
+				"sid": "title.error.bad_data",
+				"str": "RSS feed can't be read",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"guid": "HCGGtFbvY0TT_hr0VH80CI-RpsEephuBsTnrXUnBZOU"
+			},
+			{
+				"sid": "title.error.unavailable",
+				"str": "RSS feed is not available",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"guid": "Mryr53ZTSsgu5W2iuspPnNZPC0TxwXUNUtdn_fWrvz8"
+			},
+			{
+				"sid": "title.error.unsupported",
+				"str": "RSS feed format is not supported",
+				"location": {
+					"startLine": 6,
+					"endLine": 6
+				},
+				"guid": "WAt8kKCVxWOIxpe-RdYHi0lOvIQt3JBh5cOqlBAyY2s"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed.",
+				"location": {
+					"startLine": 8,
+					"endLine": 8
+				},
+				"guid": "IfdF05CMkiWoN-Hems6QAju5Peau9w0OtBN8AvnMGcQ"
+			}
+		]
+	},
+	{
+		"id": "dashlets/calendar.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "label.header",
+				"str": "Site Calendar",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "MoJ9WnVlNIDG5uEqTEgK-SIijATplqSaRGJaxOx-CoM"
+			},
+			{
+				"sid": "label.no-items",
+				"str": "No upcoming events",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"guid": "GOD7gmCgDoOkTDZrQvELAvKSHk2F8hfwz_JMe8JdCsY"
+			},
+			{
+				"sid": "label.until",
+				"str": "until",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"guid": "nRPmwwxUzPSSMPswBuNBiozTKk-M3XWZAJv6BKAL0Os"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "This dashlet shows the upcoming events for this site.",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"guid": "pCbsFvMcdwJ4xUDch0i4cL0N-N8vVkvhqjYTWzg1P-U"
+			}
+		]
+	},
+	{
+		"id": "dashlets/colleagues.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "header",
+				"str": "Site Members",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "UQLku8Jgbj4t7oXKzYbS-N1q016ts3c93ZU5sHSqm7M"
+			},
+			{
+				"sid": "link.invite",
+				"str": "Invite",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"guid": "IMup8Q-qpnRDXDpvhrXgM6oMmHeceIZeswR9_BPg-UA"
+			},
+			{
+				"sid": "link.all-members",
+				"str": "All Members",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"guid": "I3DX1xbVZ6MDdYOsdpgUIKj0BsLDjNPcclfJTGbJyIg"
+			},
+			{
+				"sid": "pagination.template",
+				"str": "{0} - {1} of {2}",
+				"location": {
+					"startLine": 7,
+					"endLine": 7
+				},
+				"notes": {
+					"desc": "#{startRecord} - {endRecord} of {totalRecords}"
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" - ",
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" of ",
+					{
+						"t": "x",
+						"v": "{2}"
+					}
+				],
+				"gstr": "{{x}} - {{x}} of {{x}}",
+				"guid": "mLALtuF1QW-Bmat_BnqBWJoZuRPft920lMrphwmUgRE",
+				"rawNotes": "#{startRecord} - {endRecord} of {totalRecords}"
+			},
+			{
+				"sid": "pagination.template2",
+				"str": "Shown the first {0} members",
+				"location": {
+					"startLine": 9,
+					"endLine": 9
+				},
+				"nstr": [
+					"Shown the first ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" members"
+				],
+				"gstr": "Shown the first {{x}} members",
+				"guid": "ydV8IMtAfS3uFzlz0sR5iGjM8A3xaZxhv7DpcaEObv8"
+			},
+			{
+				"sid": "empty.title",
+				"str": "You are the only site member.",
+				"location": {
+					"startLine": 11,
+					"endLine": 11
+				},
+				"guid": "Z7s4QyJAhYHCiMy_1QBsnWuFYjFGjeUweCymtEG5EI0"
+			},
+			{
+				"sid": "empty.description",
+				"str": "",
+				"location": {
+					"startLine": 12,
+					"endLine": 12
+				},
+				"nstr": [],
+				"guid": "izQWYgYqKwqWjsdbFGDGR2vStXjgSKPkDzfkUNC_dZY"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "<p>Use this dashlet to see who belongs to this site. You can click their name to view their profile and get to know them.</p><p>Clicking All Members lets you see everyone in this site. If you're a site manager, click Invite to send out some site invitations.</p>",
+				"location": {
+					"startLine": 15,
+					"endLine": 16
+				},
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				},
+				"nstr": [
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"Use this dashlet to see who belongs to this site. You can click their name to view their profile and get to know them.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					},
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"Clicking All Members lets you see everyone in this site. If you're a site manager, click Invite to send out some site invitations.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					}
+				],
+				"gstr": "{{bx}}Use this dashlet to see who belongs to this site. You can click their name to view their profile and get to know them.{{ex}}{{bx}}Clicking All Members lets you see everyone in this site. If you're a site manager, click Invite to send out some site invitations.{{ex}}",
+				"guid": "KTiNW5209TexcCzIt4JuDtEciEbxhHTDof1fPUXxPy8",
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			}
+		]
+	},
+	{
+		"id": "dashlets/docsummary.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "header",
+				"str": "Site Content",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "-jkZ8mNn1-5gY57cN8Iwf4TRvNgsswnWDCYc9YU1-DI"
+			},
+			{
+				"sid": "filter.favourites",
+				"str": "My Favorites",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"notes": {
+					"desc": "## Filters"
+				},
+				"guid": "Eq6kdX8FRZrnHXZ8tj-1WkbVn79SRm10JD2L8-8Sy8w",
+				"rawNotes": "## Filters"
+			},
+			{
+				"sid": "filter.editingMe",
+				"str": "I'm Editing",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"guid": "97cVTH-GAwwPwiPkLIvfcpnA5adMWSAGoEbc3MRek1o"
+			},
+			{
+				"sid": "filter.recentlyModifiedByMe",
+				"str": "I've Recently Modified",
+				"location": {
+					"startLine": 6,
+					"endLine": 6
+				},
+				"guid": "hf7blJXAg22Fri6NHgJ7s70yxHa6yBhqcqADR_1yjVw"
+			},
+			{
+				"sid": "filter.synced",
+				"str": "Synced content",
+				"location": {
+					"startLine": 7,
+					"endLine": 7
+				},
+				"guid": "qbkzWNAbC_TxskmbnRMPTAFC_Qivo452sE-eKom4sEk"
+			},
+			{
+				"sid": "filter.syncedErrors",
+				"str": "Synced with Errors",
+				"location": {
+					"startLine": 8,
+					"endLine": 8
+				},
+				"guid": "r39Zh1WRDhk2ssx_nqreCADYUoE4NLCBoirF7Hyz0pc"
+			},
+			{
+				"sid": "empty.title",
+				"str": "Keep track of content changes",
+				"location": {
+					"startLine": 10,
+					"endLine": 10
+				},
+				"guid": "JRcN8pfbtc9OtGAhnn5foEsq1M7RTW7U_xk4GzVE5lc"
+			},
+			{
+				"sid": "empty.description",
+				"str": "Easily see which document library items site members have been working on. In the detailed view you can like an item and mark it as a favorite. You can also jump to the details page to leave a comment.",
+				"location": {
+					"startLine": 11,
+					"endLine": 11
+				},
+				"guid": "AoGMEuVT8eQgM6akvguJJHpfNLiR5zK9PCNZ6dZJ89s"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "<p>This dashlet makes it easy to keep track of your recent changes to library content in this site. Clicking the item name or thumbnail takes you to the details page so you can preview or work with the item.</p><p>There are two views for this dashlet. The detailed view lets you:<ul><li>Mark an item as a favorite so it appears in Favorites lists for easy access</li><li>Like (and unlike) an item</li><li>Jump to the item details page to leave a comment</li></ul></p>",
+				"location": {
+					"startLine": 14,
+					"endLine": 18
+				},
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				},
+				"nstr": [
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"This dashlet makes it easy to keep track of your recent changes to library content in this site. Clicking the item name or thumbnail takes you to the details page so you can preview or work with the item.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					},
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"There are two views for this dashlet. The detailed view lets you:",
+					{
+						"t": "bx",
+						"v": "<ul>"
+					},
+					{
+						"t": "bx",
+						"v": "<li>"
+					},
+					"Mark an item as a favorite so it appears in Favorites lists for easy access",
+					{
+						"t": "ex",
+						"v": "</li>"
+					},
+					{
+						"t": "bx",
+						"v": "<li>"
+					},
+					"Like (and unlike) an item",
+					{
+						"t": "ex",
+						"v": "</li>"
+					},
+					{
+						"t": "bx",
+						"v": "<li>"
+					},
+					"Jump to the item details page to leave a comment",
+					{
+						"t": "ex",
+						"v": "</li>"
+					},
+					{
+						"t": "ex",
+						"v": "</ul>"
+					},
+					{
+						"t": "ex",
+						"v": "</p>"
+					}
+				],
+				"gstr": "{{bx}}This dashlet makes it easy to keep track of your recent changes to library content in this site. Clicking the item name or thumbnail takes you to the details page so you can preview or work with the item.{{ex}}{{bx}}There are two views for this dashlet. The detailed view lets you:{{bx}}{{bx}}Mark an item as a favorite so it appears in Favorites lists for easy access{{ex}}{{bx}}Like (and unlike) an item{{ex}}{{bx}}Jump to the item details page to leave a comment{{ex}}{{ex}}{{ex}}",
+				"guid": "LiZ1Us13QP3ByVIcMm62HGr4E_GM48xSJKMED2MBqn4",
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			}
+		]
+	},
+	{
+		"id": "dashlets/dynamic-welcome.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "welcome.user",
+				"str": "Welcome to your dashboard, {0}",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"nstr": [
+					"Welcome to your dashboard, ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "Welcome to your dashboard, {{x}}",
+				"guid": "eXhVEg9o9noL3Qu7Pbbo7HSzaK70HRF4gHThovLijH0"
+			},
+			{
+				"sid": "welcome.site",
+				"str": "Welcome to {1}, {0}",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"nstr": [
+					"Welcome to ",
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					", ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "Welcome to {{x}}, {{x}}",
+				"guid": "eOQ0ymwgcOgUMBykpFlcXll14QGH4_djMj-_x4bl9Zk"
+			},
+			{
+				"sid": "welcome.user.description",
+				"str": "The personal dashboard shows you what's going on in the sites you belong to.",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"guid": "_XrOsbXsUwQ_8bszzlCDI2uJW88xOEBL0N8XglS9iJE"
+			},
+			{
+				"sid": "welcome.site.description",
+				"str": "The site dashboard lets you know what's been happening in this particular site.",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"guid": "LFDNhc3x4IOU2jEMEDAutCGuf0RLtaFpI9Npx5mEaHo"
+			},
+			{
+				"sid": "get.started.message",
+				"str": "Let's get you started...",
+				"location": {
+					"startLine": 6,
+					"endLine": 6
+				},
+				"guid": "Hl2jAekbOlU5b2UgbSDPKnsTR1-LeGI_x1vrWZmXIc4"
+			},
+			{
+				"sid": "panel.delete.header",
+				"str": "Confirm Removal",
+				"location": {
+					"startLine": 8,
+					"endLine": 8
+				},
+				"guid": "0HBlSg4TQpBa_3gnTevKWAo91w1FXZmnFD20mezdFn0"
+			},
+			{
+				"sid": "panel.delete.msg",
+				"str": "Are you sure you want to permanently remove the assistance panel from this dashboard?",
+				"location": {
+					"startLine": 9,
+					"endLine": 9
+				},
+				"guid": "311BhkRDuAPx8E5vVnHKZLqTXbf6R7wDXiVjvJSYdbs"
+			},
+			{
+				"sid": "panel.delete.fail",
+				"str": "Unable to remove dashlet.",
+				"location": {
+					"startLine": 10,
+					"endLine": 10
+				},
+				"guid": "NRkVbdTNHz_qlna4LgnOAPki1p82gd23HqBhboT0FCM"
+			},
+			{
+				"sid": "welcome.close",
+				"str": "Remove",
+				"location": {
+					"startLine": 12,
+					"endLine": 12
+				},
+				"guid": "EwYyoBOiJdg6oM-YE3IceFEdrI4YodM54PJ9lxi5coA"
+			},
+			{
+				"sid": "welcome.user.tutorial.title",
+				"str": "Learning",
+				"location": {
+					"startLine": 14,
+					"endLine": 14
+				},
+				"guid": "Dzd-t_8JGLQYnlP7l4_2CRVb4ogwRapR7Pv_eri26N0"
+			},
+			{
+				"sid": "welcome.user.tutorial.description",
+				"str": "See what you can do with Alfresco by watching a video tutorial.",
+				"location": {
+					"startLine": 15,
+					"endLine": 15
+				},
+				"guid": "cq7dB3PO5aldkcR0mnQAuz30CtWgT3tVz7pQTb0Fo8E"
+			},
+			{
+				"sid": "welcome.user.tutorial.link",
+				"str": "View the tutorials",
+				"location": {
+					"startLine": 16,
+					"endLine": 16
+				},
+				"guid": "Kd8IjUiDGWqwJ8_wCe9j8IPCULuggAu07-69RVwUGsE"
+			},
+			{
+				"sid": "welcome.user.sites.title",
+				"str": "Sharing",
+				"location": {
+					"startLine": 18,
+					"endLine": 18
+				},
+				"guid": "yzKCcxaBfHVKgCT65Yqwp34_PqIAGgb63qGEv7X4JRo"
+			},
+			{
+				"sid": "welcome.user.sites.description",
+				"str": "Create a site to share content with other site members.",
+				"location": {
+					"startLine": 19,
+					"endLine": 19
+				},
+				"guid": "sU0ERYq-NYM1suS9gBdoAY_rZ7GgozUoC2ODYyZo_68"
+			},
+			{
+				"sid": "welcome.user.sites.link",
+				"str": "Create a site",
+				"location": {
+					"startLine": 20,
+					"endLine": 20
+				},
+				"guid": "jtWkUsCWeOhFAHH9cyWJg3pnZTO6EXkp-wS_VsFxMnE"
+			},
+			{
+				"sid": "welcome.user.profile.title",
+				"str": "Personalizing",
+				"location": {
+					"startLine": 22,
+					"endLine": 22
+				},
+				"guid": "EvF0tZmcww2tlRFKWqnWSDHmN__vnbBi-RLjXQUqGlM"
+			},
+			{
+				"sid": "welcome.user.profile.description",
+				"str": "Update your personal and business information so others can get to know you.",
+				"location": {
+					"startLine": 23,
+					"endLine": 23
+				},
+				"guid": "Od4t7qwpOzcjCy82k9h-8jpdK3p5Feiy8qHkcBdbs8g"
+			},
+			{
+				"sid": "welcome.user.profile.link",
+				"str": "Edit your profile",
+				"location": {
+					"startLine": 24,
+					"endLine": 24
+				},
+				"guid": "dGqwaQvTpU3JFzGx7FxOgalBei43MI1PoD4Um6snUR8"
+			},
+			{
+				"sid": "welcome.user.dashboard.title",
+				"str": "Customizing",
+				"location": {
+					"startLine": 26,
+					"endLine": 26
+				},
+				"guid": "oaEMzNKQDA6D0ZxLsgWbK9Asm5vGm8mqaOrfV3ifMlE"
+			},
+			{
+				"sid": "welcome.user.dashboard.description",
+				"str": "Set up your dashboard to show the information you want to see.",
+				"location": {
+					"startLine": 27,
+					"endLine": 27
+				},
+				"guid": "7hYl8_UBb4dBVjKwIs5Ss29v7cg1culTTUQNTK4aAw0"
+			},
+			{
+				"sid": "welcome.user.dashboard.link",
+				"str": "Customize your dashboard",
+				"location": {
+					"startLine": 28,
+					"endLine": 28
+				},
+				"guid": "IySJzAxorEnDt5PhB1lErXiAOn_qlIbmoNDT_77W2Ns"
+			},
+			{
+				"sid": "welcome.user.explore.title",
+				"str": "Exploring",
+				"location": {
+					"startLine": 30,
+					"endLine": 30
+				},
+				"guid": "lNCvVsgpTSKpr39mRmojNPuHOr-txvsV8NzkcfIxUpE"
+			},
+			{
+				"sid": "welcome.user.explore.description",
+				"str": "Have a look at the sites already in Alfresco. You can visit public sites and join them straightaway.",
+				"location": {
+					"startLine": 31,
+					"endLine": 31
+				},
+				"guid": "hA5l02jvfwLhJUrTJwk5shcVXoi5xjUO8TI2KfcTSSA"
+			},
+			{
+				"sid": "welcome.user.explore.link",
+				"str": "View all sites",
+				"location": {
+					"startLine": 32,
+					"endLine": 32
+				},
+				"guid": "FdjstiwWjJHZeBQyRFGvayIrBA1A1Q8A44EFiaRpgc4"
+			},
+			{
+				"sid": "welcome.site.dashboard.title",
+				"str": "Customizing",
+				"location": {
+					"startLine": 34,
+					"endLine": 34
+				},
+				"guid": "C0xFmTN5j00pG2pEoc5qD9XwfMp5NnIHyyooJCwdcmI"
+			},
+			{
+				"sid": "welcome.site.dashboard.description",
+				"str": "Set up this dashboard to show information you want others to see.",
+				"location": {
+					"startLine": 35,
+					"endLine": 35
+				},
+				"guid": "jSsDMOjgzLle4wBpQciLVaV7kIWOO15lLvWjFT2fsj8"
+			},
+			{
+				"sid": "welcome.site.dashboard.link",
+				"str": "Customize the site dashboard",
+				"location": {
+					"startLine": 36,
+					"endLine": 36
+				},
+				"guid": "k_sZf4xYFd3q_jShZ4KCg3pMyb7k30h_GJzCOhjXh2Q"
+			},
+			{
+				"sid": "welcome.site.moderated.title",
+				"str": "Joining",
+				"location": {
+					"startLine": 38,
+					"endLine": 38
+				},
+				"guid": "C3Bpk8ksl0oRqtnFh1rqmccVNArfSSLDaxQYufhd8Yg"
+			},
+			{
+				"sid": "welcome.site.moderated.description",
+				"str": "This site's membership is moderated. You can request to join and a site manager will be notified.",
+				"location": {
+					"startLine": 39,
+					"endLine": 39
+				},
+				"guid": "TDCRo5CmTHxib6eq6zDJVk_HZdONjyv7NWsdRc-olL4"
+			},
+			{
+				"sid": "welcome.site.moderated.link",
+				"str": "Request to join",
+				"location": {
+					"startLine": 40,
+					"endLine": 40
+				},
+				"guid": "z7pget80mARdHz2d5oVY8rQKjU718-IHuOfSPexFR64"
+			},
+			{
+				"sid": "welcome.site.upload.title",
+				"str": "Collaborating",
+				"location": {
+					"startLine": 42,
+					"endLine": 42
+				},
+				"guid": "YjY9B7bbslXXS_BZu5t0flKRmJBYbvJXy7WtcMrnbAM"
+			},
+			{
+				"sid": "welcome.site.upload.description",
+				"str": "Upload content to the document library to start collaborating with others.",
+				"location": {
+					"startLine": 43,
+					"endLine": 43
+				},
+				"guid": "-mfz92vriJPFOruq0CrewWec5ztycvbhGR56ZCSKccw"
+			},
+			{
+				"sid": "welcome.site.upload.link",
+				"str": "Upload content",
+				"location": {
+					"startLine": 44,
+					"endLine": 44
+				},
+				"guid": "-PJoTPxUYJLIwWOLCu8zldxDGyaXYY9Hsex1AGb6w1I"
+			},
+			{
+				"sid": "welcome.site.invite.title",
+				"str": "Inviting",
+				"location": {
+					"startLine": 46,
+					"endLine": 46
+				},
+				"guid": "6ogdr7A0_gwlw-ljmLYVDzrSJoigK6v7Bgp0Qpk6lmM"
+			},
+			{
+				"sid": "welcome.site.invite.description",
+				"str": "Start inviting others to join your site.",
+				"location": {
+					"startLine": 47,
+					"endLine": 47
+				},
+				"guid": "fKl1u7uNfFUT5Jsq63a4keItOXxeOXevvCvOe8tgeBc"
+			},
+			{
+				"sid": "welcome.site.invite.link",
+				"str": "Invite people",
+				"location": {
+					"startLine": 48,
+					"endLine": 48
+				},
+				"guid": "AL3Ti9Vq1Q9-WfGSOlvyPjteL7dQ0Jg7KvwJGfGCv4Y"
+			},
+			{
+				"sid": "welcome.site.members.title",
+				"str": "Socializing",
+				"location": {
+					"startLine": 50,
+					"endLine": 50
+				},
+				"guid": "5mqaDtT14XgYTRi-WVMX4xmdeQGEZcg4iWnhPx5qlfU"
+			},
+			{
+				"sid": "welcome.site.members.description",
+				"str": "Find out who belongs to this site. From the member list you can view user profiles to get to know others.",
+				"location": {
+					"startLine": 51,
+					"endLine": 51
+				},
+				"guid": "OYyKEvCSU3nWDCB9fWmXj5h-JDfOqqBAkAWYwo9rhcY"
+			},
+			{
+				"sid": "welcome.site.members.link",
+				"str": "View site members",
+				"location": {
+					"startLine": 52,
+					"endLine": 52
+				},
+				"guid": "P92KXznSg66CZcQdToPezgdFAcXpp0tei9RImF088tw"
+			},
+			{
+				"sid": "welcome.site.browse.title",
+				"str": "Exploring",
+				"location": {
+					"startLine": 54,
+					"endLine": 54
+				},
+				"guid": "2xEEnWSco7FwAlnHENjdj7z2tX9hcRurv-r_f7VdrI8"
+			},
+			{
+				"sid": "welcome.site.browse.description",
+				"str": "Find out what content has been added to the site by browsing the document library.",
+				"location": {
+					"startLine": 55,
+					"endLine": 55
+				},
+				"guid": "kO8OlqPrZKO_KP88Z4QYR3PVYjUCg7oA_1dJbCgQnLM"
+			},
+			{
+				"sid": "welcome.site.browse.link",
+				"str": "Go to document library",
+				"location": {
+					"startLine": 56,
+					"endLine": 56
+				},
+				"guid": "I1t1cPUy3locFAZ3wfj1n4hgCbRzysFljfBLOvzpJLE"
+			},
+			{
+				"sid": "welcome.cloud.sign-up.title",
+				"str": "Cloud",
+				"location": {
+					"startLine": 58,
+					"endLine": 58
+				},
+				"guid": "-QwKxl5l4G0bSHzunF6PDxbtFAjOGaw1gbMAPvbPvdw"
+			},
+			{
+				"sid": "welcome.cloud.sign-up.description",
+				"str": "Sign up today to claim your free network in the cloud.",
+				"location": {
+					"startLine": 59,
+					"endLine": 59
+				},
+				"guid": "Z8SdGcwUf6vyZv2DdWizfqlOPFLSidgQwHAdt8kRes4"
+			},
+			{
+				"sid": "welcome.cloud.sign-up.link",
+				"str": "Sign up",
+				"location": {
+					"startLine": 60,
+					"endLine": 60
+				},
+				"guid": "Uh32mWY8aps0Zd9KWVc47xITBfl4BUWL3y9F_B4oNWM"
+			},
+			{
+				"sid": "message.request-joining",
+				"str": "Requesting to add user {0} to site {1}...",
+				"location": {
+					"startLine": 62,
+					"endLine": 62
+				},
+				"nstr": [
+					"Requesting to add user ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" to site ",
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					"..."
+				],
+				"gstr": "Requesting to add user {{x}} to site {{x}}...",
+				"guid": "IWi0-MUz7xZe3ZAf4X68WugB14jsOWuPXAI8W2PZVt8"
+			},
+			{
+				"sid": "message.request-join-success",
+				"str": "Request to join site {1} successfully sent. You will now be returned to your personal dashboard.",
+				"location": {
+					"startLine": 63,
+					"endLine": 63
+				},
+				"nstr": [
+					"Request to join site ",
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" successfully sent. You will now be returned to your personal dashboard."
+				],
+				"gstr": "Request to join site {{x}} successfully sent. You will now be returned to your personal dashboard.",
+				"guid": "oe6sXNrVCpir8UgtWITsu94Yf0pUexLFiUko3Ta_dpc"
+			},
+			{
+				"sid": "message.request-join-failure",
+				"str": "Could not make the request to add user {0} to site {1}.",
+				"location": {
+					"startLine": 64,
+					"endLine": 64
+				},
+				"nstr": [
+					"Could not make the request to add user ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" to site ",
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					"."
+				],
+				"gstr": "Could not make the request to add user {{x}} to site {{x}}.",
+				"guid": "9kYNZ3_ktVpcuJuuRdX__VHqhk2anewy39BA-ieCop8"
+			}
+		]
+	},
+	{
+		"id": "dashlets/forum-summary.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "header.title",
+				"str": "My Discussions",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "-mF3ugEQpGdMiNj6mR92iwaVMBtHy4HL5ZIJThK6iZU"
+			},
+			{
+				"sid": "newTopic.button",
+				"str": "New Topic",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"guid": "AOIIEpiCu9WedMyqPeO1AyNZSHlySVzODmPV5o8kjUc"
+			},
+			{
+				"sid": "no.result",
+				"str": "There are no topics matching your filters.",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"guid": "4Zbp5n5fAngZAKluzQ_hZqBwFptprKA-c5yHlUS0S98"
+			},
+			{
+				"sid": "topicList.updated",
+				"str": "Updated",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"guid": "zfEXHMjig8Nq0hRvJFavv0YSYI687AAYRF7VDNBhedY"
+			},
+			{
+				"sid": "topicList.createdBy",
+				"str": "Created by {0} {1}.",
+				"location": {
+					"startLine": 7,
+					"endLine": 7
+				},
+				"notes": {
+					"desc": "## In topicList.createdBy {0} is Author Name and {1} is relative date."
+				},
+				"nstr": [
+					"Created by ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" ",
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					"."
+				],
+				"gstr": "Created by {{x}} {{x}}.",
+				"guid": "dIbVwxFYE1hxYeNCVvrHssPzog8X8nJJPpXXyZSsaHk",
+				"rawNotes": "## In topicList.createdBy {0} is Author Name and {1} is relative date."
+			},
+			{
+				"sid": "topicList.replies.single",
+				"str": "There is 1 reply.",
+				"location": {
+					"startLine": 8,
+					"endLine": 8
+				},
+				"guid": "xxSe_S0aI5ez8bvNdqKQb9ZwoYONnrfp0gcWTfaxo2c"
+			},
+			{
+				"sid": "topicList.replies.plural",
+				"str": "There are {0} replies.",
+				"location": {
+					"startLine": 9,
+					"endLine": 9
+				},
+				"nstr": [
+					"There are ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" replies."
+				],
+				"gstr": "There are {{x}} replies.",
+				"guid": "BKLINPpUNByqgqo-yseHMuAwNi5ux1F490G2zkx43bY"
+			},
+			{
+				"sid": "topicList.lastReplyBy",
+				"str": "The last reply was posted by {0} {1}.",
+				"location": {
+					"startLine": 11,
+					"endLine": 11
+				},
+				"notes": {
+					"desc": "## In topicList.lastReplyBy {0} is Author Name and {1} is relative date."
+				},
+				"nstr": [
+					"The last reply was posted by ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" ",
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					"."
+				],
+				"gstr": "The last reply was posted by {{x}} {{x}}.",
+				"guid": "3rxLae7mZjGkYb8BFHhRL2HRVinODjyavdUOs1PeKKc",
+				"rawNotes": "## In topicList.lastReplyBy {0} is Author Name and {1} is relative date."
+			},
+			{
+				"sid": "filter.topics.mine",
+				"str": "My Topics",
+				"location": {
+					"startLine": 14,
+					"endLine": 14
+				},
+				"notes": {
+					"desc": "# Filter 1"
+				},
+				"guid": "SaF5jfhsK1yJhYCtKwNK14xZFItSKzIHbyfOX09s3j4",
+				"rawNotes": "# Filter 1"
+			},
+			{
+				"sid": "filter.topics.all",
+				"str": "All Topics",
+				"location": {
+					"startLine": 15,
+					"endLine": 15
+				},
+				"guid": "MSPfQF1UwlwAcvWVCifinQbfh_Awliii9Ah1cS-YNAA"
+			},
+			{
+				"sid": "filter.history.1day",
+				"str": "Topics updated in the last day",
+				"location": {
+					"startLine": 17,
+					"endLine": 17
+				},
+				"notes": {
+					"desc": "# Filter 2"
+				},
+				"guid": "1xmZmVo3sItH_a_W99LVgEsp-40jP-cffl9A0AyIIDk",
+				"rawNotes": "# Filter 2"
+			},
+			{
+				"sid": "filter.history.7days",
+				"str": "Topics updated in the last 7 days",
+				"location": {
+					"startLine": 18,
+					"endLine": 18
+				},
+				"guid": "EvEWSxMZ0JyvlAQYQw7vxRTgVod348eqh3WUYn6EFIo"
+			},
+			{
+				"sid": "filter.history.14days",
+				"str": "Topics updated in the last 14 days",
+				"location": {
+					"startLine": 19,
+					"endLine": 19
+				},
+				"guid": "dre_B9YD3fbTKFCI4LdUyv2UQ9BuyWEC1OKW3YJUW6Y"
+			},
+			{
+				"sid": "filter.history.28days",
+				"str": "Topics updated in the last 28 days",
+				"location": {
+					"startLine": 20,
+					"endLine": 20
+				},
+				"guid": "mdEbnp88stSHwlqd2IFsRxHPOrXFWK1pt2g6GfJet3Y"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "<p>Discussion Forum dashlet.</p><p>View your latest posts on the Discussion Forum.</p>",
+				"location": {
+					"startLine": 23,
+					"endLine": 24
+				},
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				},
+				"nstr": [
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"Discussion Forum dashlet.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					},
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"View your latest posts on the Discussion Forum.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					}
+				],
+				"gstr": "{{bx}}Discussion Forum dashlet.{{ex}}{{bx}}View your latest posts on the Discussion Forum.{{ex}}",
+				"guid": "oVOocmmwS1_ao_0kAZ16L3x5qJASG71Nw-hgbl22TnQ",
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			}
+		]
+	},
+	{
+		"id": "dashlets/imagesummary.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "header.title",
+				"str": "Image Preview",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "fOzFYWf5p9zLAoul1h5_L8PRFB9JVo_HcIXCbFZ22FY"
+			},
+			{
+				"sid": "label.noitems",
+				"str": "No items to display",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"guid": "0-GrFX12d4kQcyxamhrCI4tuDTExyjLmiUZ8exmZxDo"
+			},
+			{
+				"sid": "text.modified-by",
+				"str": "Modified by {0}",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"nstr": [
+					"Modified by ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "Modified by {{x}}",
+				"guid": "7hvIhLuGVxH0OLkjSIpS2xfo-eU_VI1zH5GxHtGdhpM"
+			},
+			{
+				"sid": "text.selectfolder",
+				"str": "Select Image Folder in {0}...",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"nstr": [
+					"Select Image Folder in ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					"..."
+				],
+				"gstr": "Select Image Folder in {{x}}...",
+				"guid": "XPbxA8FEoDrdItRlt4KXXtwCJRKixsE78JnRZ9vBRHY"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "This dashlet shows a thumbnail of each image in the document library. Clicking a thumbnail opens the image in the current window.",
+				"location": {
+					"startLine": 6,
+					"endLine": 6
+				},
+				"guid": "Ly4fkat27mxTxU9l3TSeFaUihGmSkMhBS1OmC1dHGfY"
+			}
+		]
+	},
+	{
+		"id": "dashlets/my-activities.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "header",
+				"str": "My Activities",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "AkOVY2nm-Cf2dwDHuUTJpT98X3WA0NPXYZE9jhCcjX0"
+			},
+			{
+				"sid": "label.load-failed",
+				"str": "Could not load activities list",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"guid": "airW-7rNpHg3ZedTeodPgXLO5o3tuBdYT4bSg8PkIo4"
+			},
+			{
+				"sid": "label.filter",
+				"str": "Show",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"guid": "q8fd6Vngp46xiXf7YfGIUPWkBjlfIFgzAe7MhW5Tfps"
+			},
+			{
+				"sid": "label.older-activities",
+				"str": "Older Activities",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"guid": "jsg7kitbc9wGCKFRKSV3j_NZN21QhAg7AwR2Nf_KfpE"
+			},
+			{
+				"sid": "filter.mine",
+				"str": "My activities",
+				"location": {
+					"startLine": 10,
+					"endLine": 10
+				},
+				"notes": {
+					"desc": "## Note to translators: The User Interface renders Filters 1, 2, 3 next to each other. The English translation gives these the appearance of a sentence, for example: \"My activities, status updates, in the last 14 days\".\n## This is entirely optional. If the language doesn't allow for this structure, please capitalise the messages in Filter 2+3 so they appear disconnected.\n# Filter 1"
+				},
+				"guid": "lYYzgCGkzccr-pT7UZ4i4kg7sG6k6f3jFdc6n8EN4N8",
+				"rawNotes": "## Note to translators: The User Interface renders Filters 1, 2, 3 next to each other. The English translation gives these the appearance of a sentence, for example: \"My activities, status updates, in the last 14 days\".\n## This is entirely optional. If the language doesn't allow for this structure, please capitalise the messages in Filter 2+3 so they appear disconnected.\n# Filter 1"
+			},
+			{
+				"sid": "filter.others",
+				"str": "Everyone else's activities",
+				"location": {
+					"startLine": 11,
+					"endLine": 11
+				},
+				"guid": "s4SvMdwfKMU6ccV6QqV3hxXIE-EzYdNfDOpAa_qen1o"
+			},
+			{
+				"sid": "filter.all",
+				"str": "Everyone's activities",
+				"location": {
+					"startLine": 12,
+					"endLine": 12
+				},
+				"guid": "WzSe9I99A25oVVk5smwr-UVIa9nedcgn5MHlq4_ycoE"
+			},
+			{
+				"sid": "filter.following",
+				"str": "I'm following",
+				"location": {
+					"startLine": 13,
+					"endLine": 13
+				},
+				"guid": "vxTDpMP5KNPD326mYrmygx-sSyHTLyKyg_J88cfgfYQ"
+			},
+			{
+				"sid": "filter.allItems",
+				"str": "all items",
+				"location": {
+					"startLine": 15,
+					"endLine": 15
+				},
+				"notes": {
+					"desc": "# Filter 2"
+				},
+				"guid": "VuYFBmp8W917yvy6FDEnusaF740C6phWH-JIUrTYwc0",
+				"rawNotes": "# Filter 2"
+			},
+			{
+				"sid": "filter.statusItems",
+				"str": "status updates",
+				"location": {
+					"startLine": 16,
+					"endLine": 16
+				},
+				"guid": "9pCIQFQxRalDew1kFulGYgME6nG1b-H580ALZ6kf4rQ"
+			},
+			{
+				"sid": "filter.commentItems",
+				"str": "comments",
+				"location": {
+					"startLine": 17,
+					"endLine": 17
+				},
+				"guid": "mgUol9Z645in6zK0RM990o_78khH6p8NMdzX1Mp4b6k"
+			},
+			{
+				"sid": "filter.contentItems",
+				"str": "content",
+				"location": {
+					"startLine": 18,
+					"endLine": 18
+				},
+				"guid": "ruuQ9F125RY3PUE1KBUvz5XETYN3uQQxUGlrf4uihw0"
+			},
+			{
+				"sid": "filter.membershipItems",
+				"str": "memberships",
+				"location": {
+					"startLine": 19,
+					"endLine": 19
+				},
+				"guid": "MwlTDK7YJbk4KimjzvBTNWO7mzIyQWs8aqhDMdwaTLs"
+			},
+			{
+				"sid": "filter.today",
+				"str": "today",
+				"location": {
+					"startLine": 21,
+					"endLine": 21
+				},
+				"notes": {
+					"desc": "# Filter 3"
+				},
+				"guid": "ew1Cta4NZUO58z_VftSCMsMI7As-GxknGadESOGGxtI",
+				"rawNotes": "# Filter 3"
+			},
+			{
+				"sid": "filter.7days",
+				"str": "in the last 7 days",
+				"location": {
+					"startLine": 22,
+					"endLine": 22
+				},
+				"guid": "G-kVvVlHI0aJBqvYbTHfRbAsDfGIlqcB2LRkmSYzV1A"
+			},
+			{
+				"sid": "filter.14days",
+				"str": "in the last 14 days",
+				"location": {
+					"startLine": 23,
+					"endLine": 23
+				},
+				"guid": "lJ4UhR4FcJ2ZfGcZm8WmI1zucHBKt458WX9cx5HsHG0"
+			},
+			{
+				"sid": "filter.28days",
+				"str": "in the last 28 days",
+				"location": {
+					"startLine": 24,
+					"endLine": 24
+				},
+				"guid": "82JTNLI_g7fqBtaJ-Cu1hMnp7jXHvGd7tX7gLNwDTsM"
+			},
+			{
+				"sid": "empty.title",
+				"str": "Follow what's going on in your sites",
+				"location": {
+					"startLine": 26,
+					"endLine": 26
+				},
+				"guid": "_gINTlZvl1A81Hu1S4xQyj3N2YmM-e-Ej9sbKZ-45tQ"
+			},
+			{
+				"sid": "empty.description",
+				"str": "The activities in this list let you follow the changes in the sites you belong to. You'll see things such as content updates and likes. You can also see who is joining and leaving your sites.",
+				"location": {
+					"startLine": 27,
+					"endLine": 27
+				},
+				"guid": "P_2n50nItJIiq3IMSYSe0EmV3qw4ECxzGDtp5B8ViNc"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "<p>Following what goes on in your sites is easy with this dashlet. It shows the activities in all the sites you belong to, such as content that's been added, deleted, and edited. You can also see who is joining and leaving your sites.</p><p>Filters let you view activities by time period and ownership.</p>",
+				"location": {
+					"startLine": 30,
+					"endLine": 31
+				},
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				},
+				"nstr": [
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"Following what goes on in your sites is easy with this dashlet. It shows the activities in all the sites you belong to, such as content that's been added, deleted, and edited. You can also see who is joining and leaving your sites.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					},
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"Filters let you view activities by time period and ownership.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					}
+				],
+				"gstr": "{{bx}}Following what goes on in your sites is easy with this dashlet. It shows the activities in all the sites you belong to, such as content that's been added, deleted, and edited. You can also see who is joining and leaving your sites.{{ex}}{{bx}}Filters let you view activities by time period and ownership.{{ex}}",
+				"guid": "gyzuA8K0OaZnihjH2ZONepwEMPxTtE_NosFIbn_AM8E",
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			}
+		]
+	},
+	{
+		"id": "dashlets/my-docs-editing.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "header",
+				"str": "Content I'm Editing",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "kVq7Hxzh1nxrGyUwKNHYSW6FQgPe1o3oLXMXZ9m6KvE"
+			},
+			{
+				"sid": "label.noItems",
+				"str": "No items to display",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"guid": "VaDhmkZ2ZWWHWdcH144kDe7K5E5gOW5DO9nPN-5fxNU"
+			},
+			{
+				"sid": "label.error",
+				"str": "Could not load data",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"guid": "Dm0Z706m2IOjE27Dnqz0iNRrbESVyE9L3njuiI_AGbc"
+			},
+			{
+				"sid": "text.edited-on",
+				"str": "Edited {0} in {1}",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"nstr": [
+					"Edited ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" in ",
+					{
+						"t": "x",
+						"v": "{1}"
+					}
+				],
+				"gstr": "Edited {{x}} in {{x}}",
+				"guid": "B4HZwxXRlX_AFD_LgYIAXSdPKMLA9n7sdZx9F2wvXWA"
+			},
+			{
+				"sid": "text.blogposts",
+				"str": "Blog posts",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"guid": "-lMS7-u6z9glHmbrX3w1Ta0CO_w20cZOEVdEgy7KAWo"
+			},
+			{
+				"sid": "text.forumposts",
+				"str": "Forum posts",
+				"location": {
+					"startLine": 6,
+					"endLine": 6
+				},
+				"guid": "kht1hnZxYg5z2oDabqluhIpdRLnLQiK48GRI9uRQ0dY"
+			},
+			{
+				"sid": "text.wikipages",
+				"str": "Wiki pages",
+				"location": {
+					"startLine": 7,
+					"endLine": 7
+				},
+				"guid": "vaP3NW7ujyij8Ah5awtcl-VTn-TgXotOTo3xh-0d5Sg"
+			},
+			{
+				"sid": "text.documents",
+				"str": "Documents",
+				"location": {
+					"startLine": 8,
+					"endLine": 8
+				},
+				"guid": "mma7KIJnCz1r0BNPr7a8fDOCcCHL402bw0whYy0wTZU"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "Check this dashlet to quickly see the items you are working on.",
+				"location": {
+					"startLine": 10,
+					"endLine": 10
+				},
+				"guid": "vkvoNwRn2JIB_pYL7kCudI2BBrl0Uw4yhYNWHloHAT8"
+			}
+		]
+	},
+	{
+		"id": "dashlets/my-documents.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "header",
+				"str": "My Documents",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "Zr8WyWG3RhlGY6Ni69YgvBIDRjGacfuKAxPi1HvCmWQ"
+			},
+			{
+				"sid": "filter.favourites",
+				"str": "My Favorites",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"notes": {
+					"desc": "## Filters"
+				},
+				"guid": "16dwhpoku0nRZdnDK3zN4gY9CzQrNxTrbsgwSm6DGfk",
+				"rawNotes": "## Filters"
+			},
+			{
+				"sid": "filter.editingMe",
+				"str": "I'm Editing",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"guid": "T45JY1JPTF8w3-9djuQrQqNt1qo8go5BrnY-0gq_XiM"
+			},
+			{
+				"sid": "filter.recentlyModifiedByMe",
+				"str": "I've Recently Modified",
+				"location": {
+					"startLine": 6,
+					"endLine": 6
+				},
+				"guid": "69OAs0aOL6ZqIcXL4Fizzt7ocJPdHMPqRnxI7gdwxXY"
+			},
+			{
+				"sid": "filter.synced",
+				"str": "Synced content",
+				"location": {
+					"startLine": 7,
+					"endLine": 7
+				},
+				"guid": "CIwEJyo5_StommBSbdzYai9bLZOnMhok9di6JIE7bgc"
+			},
+			{
+				"sid": "filter.syncedErrors",
+				"str": "Synced with Errors",
+				"location": {
+					"startLine": 8,
+					"endLine": 8
+				},
+				"guid": "yV-PN0fv77TSTS-mNgk_pcjMnf-LdfCFBcsfNb-eAJA"
+			},
+			{
+				"sid": "empty.title",
+				"str": "Keep track of your own content",
+				"location": {
+					"startLine": 10,
+					"endLine": 10
+				},
+				"guid": "8XoIyfOkoCz_nXAZEuq2rAkrOzDIktohodTvmnKDPos"
+			},
+			{
+				"sid": "empty.description",
+				"str": "This dashlet lists all of the content that's important to you, no matter which site it is in. Use the filters to easily find what you're looking for.",
+				"location": {
+					"startLine": 11,
+					"endLine": 11
+				},
+				"guid": "ll8G2DYvYEBCintesx4VmEGESLsVncMkqwdXMUxqKcQ"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "<p>This dashlet makes it easy to keep track of your own content, no matter which site it is in. Use the filter to easily find what you're looking for.</p><p>There are two views for this dashlet. The detailed view lets you:<ul><li>Mark an item as a favorite so it appears in Favorites lists for easy access</li><li>Like (and unlike) an item</li><li>Jump to the item details page to leave a comment</li></ul></p>",
+				"location": {
+					"startLine": 14,
+					"endLine": 18
+				},
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				},
+				"nstr": [
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"This dashlet makes it easy to keep track of your own content, no matter which site it is in. Use the filter to easily find what you're looking for.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					},
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"There are two views for this dashlet. The detailed view lets you:",
+					{
+						"t": "bx",
+						"v": "<ul>"
+					},
+					{
+						"t": "bx",
+						"v": "<li>"
+					},
+					"Mark an item as a favorite so it appears in Favorites lists for easy access",
+					{
+						"t": "ex",
+						"v": "</li>"
+					},
+					{
+						"t": "bx",
+						"v": "<li>"
+					},
+					"Like (and unlike) an item",
+					{
+						"t": "ex",
+						"v": "</li>"
+					},
+					{
+						"t": "bx",
+						"v": "<li>"
+					},
+					"Jump to the item details page to leave a comment",
+					{
+						"t": "ex",
+						"v": "</li>"
+					},
+					{
+						"t": "ex",
+						"v": "</ul>"
+					},
+					{
+						"t": "ex",
+						"v": "</p>"
+					}
+				],
+				"gstr": "{{bx}}This dashlet makes it easy to keep track of your own content, no matter which site it is in. Use the filter to easily find what you're looking for.{{ex}}{{bx}}There are two views for this dashlet. The detailed view lets you:{{bx}}{{bx}}Mark an item as a favorite so it appears in Favorites lists for easy access{{ex}}{{bx}}Like (and unlike) an item{{ex}}{{bx}}Jump to the item details page to leave a comment{{ex}}{{ex}}{{ex}}",
+				"guid": "AVJwgn96gVZOTR9gxVVWAIYybHIrSmQXlxVblGOA_-M",
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			}
+		]
+	},
+	{
+		"id": "dashlets/my-meeting-workspaces.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "header.myMeetingWorkspaces",
+				"str": "My Meeting Workspaces",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "xdSxt3fOBafJlhTuB-UYZBP6Yuaa3zikmNIKnn_3b80"
+			},
+			{
+				"sid": "link.deleteMeetingWorkspace",
+				"str": "Delete",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"guid": "95wufLScOHKhQTSbDmm0fY-sgDbl3CzFbTrf7EIcaco"
+			},
+			{
+				"sid": "label.noMeetingWorkspaces",
+				"str": "No meeting workspaces to display",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"guid": "hEx8GA1O-_qTlP-B6JO83QStuzstF54FrJg9scNduiE"
+			},
+			{
+				"sid": "message.meetingWorkspaceFavourite.failure",
+				"str": "The favorite setting for the meeting workspace could not be saved",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"guid": "86X3guH-QznpXsT3DHHEw9PPgKLlRXKsKpTX0_GetnE"
+			},
+			{
+				"sid": "link.favouriteMeetingWorkspace",
+				"str": "Mark or unmark meeting workspace as favorite",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"guid": "chVcIGwRxOqTMMJSOVBci-X9dwfTrQqqbM_B4f5Hr8I"
+			},
+			{
+				"sid": "link.imap_favouriteMeetingWorkspace",
+				"str": "Mark or unmark meeting workspace as IMAP favorite",
+				"location": {
+					"startLine": 6,
+					"endLine": 6
+				},
+				"guid": "0mXtDKcqSsQ2f-bn_WNhCJPjWuOImGuV2N4MzXFcGm4"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "<p>A Meeting Workspace is a type of site that is created outside of Alfresco. This dashlet lists all of your Meeting Workspace sites.</p><p>From here you can navigate to a Meeting Workspace site. You can also delete a site, if you have the correct permissions.</p>",
+				"location": {
+					"startLine": 9,
+					"endLine": 10
+				},
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				},
+				"nstr": [
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"A Meeting Workspace is a type of site that is created outside of Alfresco. This dashlet lists all of your Meeting Workspace sites.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					},
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"From here you can navigate to a Meeting Workspace site. You can also delete a site, if you have the correct permissions.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					}
+				],
+				"gstr": "{{bx}}A Meeting Workspace is a type of site that is created outside of Alfresco. This dashlet lists all of your Meeting Workspace sites.{{ex}}{{bx}}From here you can navigate to a Meeting Workspace site. You can also delete a site, if you have the correct permissions.{{ex}}",
+				"guid": "KwRk8xsR7NqNEUmQq062j5EhNOvcXlAZjD3-gRDpuTQ",
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			}
+		]
+	},
+	{
+		"id": "dashlets/my-profile.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "header.myLimitedProfile",
+				"str": "My Profile",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "8bQlFmPjhRmQhEl_D3zucOoRAJwuTt-y982jqcFNmQg"
+			},
+			{
+				"sid": "link.viewFullProfile",
+				"str": "View Full Profile",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"guid": "gwYKzILRTzurUCmf_I5JFHSzbAYK-qnKKqTk2OEqx58"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "This dashlet shows a summary of your personal details. From here you can access your full user profile.",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"guid": "zYMbzhPI5FMRos67sdXQfWhFklnMLVEOoBQnWWEBlAk"
+			}
+		]
+	},
+	{
+		"id": "dashlets/my-sites.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "header",
+				"str": "My Sites",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "UlZQ7MSqJC0zqQY0D4YOldD5F93cOpqhfne5pP2FWXc"
+			},
+			{
+				"sid": "link.createSite",
+				"str": "Create Site",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"guid": "CNYZHwdG54uOPssvos2FeIoUucBpQgemdb5f3ZS3NOY"
+			},
+			{
+				"sid": "link.deleteSite",
+				"str": "Delete",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"guid": "pVbMCPTUkdxbzFMpurxmq3lfQYnXGvga70FOMpLWja0"
+			},
+			{
+				"sid": "filter.all",
+				"str": "All",
+				"location": {
+					"startLine": 6,
+					"endLine": 6
+				},
+				"guid": "sym--UQ1RTuzq-6wohlntwmHh5bgnIyTlCFl8qdxFcQ"
+			},
+			{
+				"sid": "filter.favSites",
+				"str": "My Favorites",
+				"location": {
+					"startLine": 7,
+					"endLine": 7
+				},
+				"guid": "i3ag0zcuvGFcbpZBiM8Pa-uiyQSUsnVUP3Rw86jIk9U"
+			},
+			{
+				"sid": "filter.recentSites",
+				"str": "Recent",
+				"location": {
+					"startLine": 8,
+					"endLine": 8
+				},
+				"guid": "hbAeApluyJZr9vgdIibjX3E5CWn2gLKZDz-Q2edB6WE"
+			},
+			{
+				"sid": "empty.title",
+				"str": "Quickly access your sites",
+				"location": {
+					"startLine": 10,
+					"endLine": 10
+				},
+				"guid": "tI5VvhguKK2Np_Ymu6r2Ej0RIHbejD58RIz6_m2jxnA"
+			},
+			{
+				"sid": "empty.description",
+				"str": "A site is a project area where you can share and discuss content with other site members.",
+				"location": {
+					"startLine": 11,
+					"endLine": 11
+				},
+				"guid": "pORmuIaIpyiwAr733qjgG40a_bzACims7cH11c7xlsA"
+			},
+			{
+				"sid": "empty.description.sample-site",
+				"str": "We've included a sample site for you. Use this to explore the features in Alfresco.",
+				"location": {
+					"startLine": 12,
+					"endLine": 12
+				},
+				"guid": "DxEjNf9NRyr2lYuojO109PzRdfZbhlOasKBZeCFkxsM"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "<p>Sites are project areas where you collaborate with others, sharing content and working on it together. This dashlet lists the sites you belong to. You can filter this list to show only your favorite sites.</p><p>From here you can:<ul><li>Navigate to a site</li><li>Create a new site</li><li>Delete a site if you are the site manager</li><li>Mark a site as a favorite so that it shows in the Sites menu for easy access</li></ul></p>",
+				"location": {
+					"startLine": 15,
+					"endLine": 20
+				},
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				},
+				"nstr": [
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"Sites are project areas where you collaborate with others, sharing content and working on it together. This dashlet lists the sites you belong to. You can filter this list to show only your favorite sites.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					},
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"From here you can:",
+					{
+						"t": "bx",
+						"v": "<ul>"
+					},
+					{
+						"t": "bx",
+						"v": "<li>"
+					},
+					"Navigate to a site",
+					{
+						"t": "ex",
+						"v": "</li>"
+					},
+					{
+						"t": "bx",
+						"v": "<li>"
+					},
+					"Create a new site",
+					{
+						"t": "ex",
+						"v": "</li>"
+					},
+					{
+						"t": "bx",
+						"v": "<li>"
+					},
+					"Delete a site if you are the site manager",
+					{
+						"t": "ex",
+						"v": "</li>"
+					},
+					{
+						"t": "bx",
+						"v": "<li>"
+					},
+					"Mark a site as a favorite so that it shows in the Sites menu for easy access",
+					{
+						"t": "ex",
+						"v": "</li>"
+					},
+					{
+						"t": "ex",
+						"v": "</ul>"
+					},
+					{
+						"t": "ex",
+						"v": "</p>"
+					}
+				],
+				"gstr": "{{bx}}Sites are project areas where you collaborate with others, sharing content and working on it together. This dashlet lists the sites you belong to. You can filter this list to show only your favorite sites.{{ex}}{{bx}}From here you can:{{bx}}{{bx}}Navigate to a site{{ex}}{{bx}}Create a new site{{ex}}{{bx}}Delete a site if you are the site manager{{ex}}{{bx}}Mark a site as a favorite so that it shows in the Sites menu for easy access{{ex}}{{ex}}{{ex}}",
+				"guid": "bSLC8teKK1MEOmFgrXsZZjcAatcZwSLvnMITBrJEYhg",
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			}
+		]
+	},
+	{
+		"id": "dashlets/my-tasks.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "header",
+				"str": "My Tasks",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "epKRcIosvdiNUQNTCllZBTpcyfk6yJLi37bwHg7nm_4"
+			},
+			{
+				"sid": "link.startWorkflow",
+				"str": "Start Workflow",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"guid": "vPu9Gy2eFkiPNaDAoIlmc9whCRzTvQ984kOHZANKJ0w"
+			},
+			{
+				"sid": "link.activeTasks",
+				"str": "Active Tasks",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"guid": "Nlkm4Se8KVfvio8MJgmKKuvD49w9k4sJ5AJWs28somg"
+			},
+			{
+				"sid": "link.completedTasks",
+				"str": "Completed Tasks",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"guid": "Q4u2myLfcHsknqOi0r4uKtFBLaoJuJ0iiQ31G31sUJc"
+			},
+			{
+				"sid": "title.viewTask",
+				"str": "View Task",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"guid": "xK24KgsSyM1av2EI_uMsC3k54yBUL2cNf3a6bMsygxs"
+			},
+			{
+				"sid": "title.editTask",
+				"str": "Edit Task",
+				"location": {
+					"startLine": 6,
+					"endLine": 6
+				},
+				"guid": "a75DwZSR97TRCv7Tu9buoQvS62zyWJSTBBIe0T_Sd9o"
+			},
+			{
+				"sid": "label.pooledTask",
+				"str": "Pooled task",
+				"location": {
+					"startLine": 7,
+					"endLine": 7
+				},
+				"guid": "firH6Wg83voQWGdKTeEaKvZFM2MSNnut6mwVBLZDrMg"
+			},
+			{
+				"sid": "label.taskSummary",
+				"str": "{0}, {1}",
+				"location": {
+					"startLine": 8,
+					"endLine": 8
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					", ",
+					{
+						"t": "x",
+						"v": "{1}"
+					}
+				],
+				"gstr": "{{x}}, {{x}}",
+				"guid": "D2rH5S5SVG9kZHu8uClAV7K53S5ui9rsH7PcHD6s4vo"
+			},
+			{
+				"sid": "label.unassignedTask",
+				"str": "Unassigned",
+				"location": {
+					"startLine": 9,
+					"endLine": 9
+				},
+				"guid": "I5Kr0TjUoHgmE5HZ6Hkqw0kUIr0QjFzbFvz2YAG0Q0I"
+			},
+			{
+				"sid": "title.dueOn",
+				"str": "Due on: {0}",
+				"location": {
+					"startLine": 10,
+					"endLine": 10
+				},
+				"nstr": [
+					"Due on: ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "Due on: {{x}}",
+				"guid": "aC3z5tMbWMuuupMZu2_1R-K25wJHI364qbTgePZVVtA"
+			},
+			{
+				"sid": "message.noTasks",
+				"str": "No tasks",
+				"location": {
+					"startLine": 11,
+					"endLine": 11
+				},
+				"guid": "8AuA3JdZzJKOkRh8OQvnVJRzVHUPMIUiOjfrX86Bibo"
+			},
+			{
+				"sid": "title.taskSummary",
+				"str": "Type: {0}, Status: {1}",
+				"location": {
+					"startLine": 12,
+					"endLine": 12
+				},
+				"nstr": [
+					"Type: ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					", Status: ",
+					{
+						"t": "x",
+						"v": "{1}"
+					}
+				],
+				"gstr": "Type: {{x}}, Status: {{x}}",
+				"guid": "6Kh_d7z5vDrSeZpdWqHEoCrGVNEd8GJ5uOXN-WfFD24"
+			},
+			{
+				"sid": "filter.activeTasks",
+				"str": "Active Tasks",
+				"location": {
+					"startLine": 14,
+					"endLine": 14
+				},
+				"guid": "3tkVM3WAlZnqn435TugK4MhJQgzntlZ-FuPgfHZ3hUM"
+			},
+			{
+				"sid": "filter.completedTasks",
+				"str": "Completed Tasks",
+				"location": {
+					"startLine": 15,
+					"endLine": 15
+				},
+				"guid": "Qhtg8zhuobjkBNy9a9u6G9KpckRWn6ekNkSOWHYwutM"
+			},
+			{
+				"sid": "filter.highPriorityTasks",
+				"str": "High Priority Tasks",
+				"location": {
+					"startLine": 16,
+					"endLine": 16
+				},
+				"guid": "K47iNY3XGCsnPWrz6ZcWoO9giYn2dV69Va9Gdq3B-eo"
+			},
+			{
+				"sid": "filter.tasksDueToday",
+				"str": "Tasks Due Today",
+				"location": {
+					"startLine": 17,
+					"endLine": 17
+				},
+				"guid": "BF4C3yrZszaNM52DTm4r3KQP78KDvTz-dY01BhVkF40"
+			},
+			{
+				"sid": "filter.tasksAssignedToMe",
+				"str": "Tasks Assigned to Me",
+				"location": {
+					"startLine": 18,
+					"endLine": 18
+				},
+				"guid": "zS4uKDkVTrVts6ULIO2JJ_lfqs6so9Un-GRoLkYGxBA"
+			},
+			{
+				"sid": "filter.unassignedPooledTasks",
+				"str": "Unassigned (Pooled Tasks)",
+				"location": {
+					"startLine": 19,
+					"endLine": 19
+				},
+				"guid": "R09PDx_fzdUUGKSC__kqAXYqL0VbKfaRfunC2Enkszs"
+			},
+			{
+				"sid": "filter.overdueTasks",
+				"str": "Overdue Tasks",
+				"location": {
+					"startLine": 20,
+					"endLine": 20
+				},
+				"guid": "xpJxcWOzyfOz6JiicCx8wipfHxU-XMnfeSwlvTCYc-U"
+			},
+			{
+				"sid": "pagination.template",
+				"str": "{CurrentPageReport}",
+				"location": {
+					"startLine": 23,
+					"endLine": 23
+				},
+				"notes": {
+					"desc": "## Override pagination templates with a minified version"
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{CurrentPageReport}"
+					}
+				],
+				"gstr": "{{x}}",
+				"guid": "_eSMhA7GvQyFwpD3TteCK07HiJy_tNJvu6Z6RlD1Yqw",
+				"rawNotes": "## Override pagination templates with a minified version"
+			},
+			{
+				"sid": "pagination.template.page-report",
+				"str": "{startRecord} - {endRecord} of {totalRecords}",
+				"location": {
+					"startLine": 24,
+					"endLine": 24
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{startRecord}"
+					},
+					" - ",
+					{
+						"t": "x",
+						"v": "{endRecord}"
+					},
+					" of ",
+					{
+						"t": "x",
+						"v": "{totalRecords}"
+					}
+				],
+				"gstr": "{{x}} - {{x}} of {{x}}",
+				"guid": "wnsZ134YkmZDAvNeDs1ybrrJ3GD5gV1wAPGIHmHlGcI"
+			},
+			{
+				"sid": "empty.title",
+				"str": "Review the tasks assigned to you",
+				"location": {
+					"startLine": 26,
+					"endLine": 26
+				},
+				"guid": "N0x4ZqYxFgSph2esNLhC1q4h8K7ebU4JR-Cynw1Tpew"
+			},
+			{
+				"sid": "empty.description",
+				"str": "Different types of tasks can appear in this task list and you need to address each one. This could involve reviewing a document or simply accepting an invitation to a site.",
+				"location": {
+					"startLine": 27,
+					"endLine": 27
+				},
+				"guid": "pFJZM7Jmnr--w3m9nPZhK-2c0arLCxHQQMMiLc8O7jg"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "<p>This dashlet lists the tasks assigned to you, including invitations to join sites. You can filter the list to view different types of tasks.</p><p>From here you can:<ul><li>Edit a task to manage it</li><li>View a single task</li><li>Open the My Tasks page to manage all of your tasks</li><li>Start a workflow to create tasks for others or yourself</li></ul></p>",
+				"location": {
+					"startLine": 30,
+					"endLine": 35
+				},
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				},
+				"nstr": [
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"This dashlet lists the tasks assigned to you, including invitations to join sites. You can filter the list to view different types of tasks.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					},
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"From here you can:",
+					{
+						"t": "bx",
+						"v": "<ul>"
+					},
+					{
+						"t": "bx",
+						"v": "<li>"
+					},
+					"Edit a task to manage it",
+					{
+						"t": "ex",
+						"v": "</li>"
+					},
+					{
+						"t": "bx",
+						"v": "<li>"
+					},
+					"View a single task",
+					{
+						"t": "ex",
+						"v": "</li>"
+					},
+					{
+						"t": "bx",
+						"v": "<li>"
+					},
+					"Open the My Tasks page to manage all of your tasks",
+					{
+						"t": "ex",
+						"v": "</li>"
+					},
+					{
+						"t": "bx",
+						"v": "<li>"
+					},
+					"Start a workflow to create tasks for others or yourself",
+					{
+						"t": "ex",
+						"v": "</li>"
+					},
+					{
+						"t": "ex",
+						"v": "</ul>"
+					},
+					{
+						"t": "ex",
+						"v": "</p>"
+					}
+				],
+				"gstr": "{{bx}}This dashlet lists the tasks assigned to you, including invitations to join sites. You can filter the list to view different types of tasks.{{ex}}{{bx}}From here you can:{{bx}}{{bx}}Edit a task to manage it{{ex}}{{bx}}View a single task{{ex}}{{bx}}Open the My Tasks page to manage all of your tasks{{ex}}{{bx}}Start a workflow to create tasks for others or yourself{{ex}}{{ex}}{{ex}}",
+				"guid": "Pgq9rxA8-EktqqbL9yOcNuncrLEDjhwr6gLGv4XzYuo",
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			}
+		]
+	},
+	{
+		"id": "dashlets/my-workspaces.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "header.myWorkspaces",
+				"str": "My Document Workspaces",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "_uhE3KrGLJQO9NYX40QzZhCOAiGm53PUnKCKMHuIJHU"
+			},
+			{
+				"sid": "link.deleteWorkspace",
+				"str": "Delete",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"guid": "o7jl6L3FLIXgeTEJ6_ChHV1ZOAQnp31thchwcDIpNPc"
+			},
+			{
+				"sid": "label.noWorkspaces",
+				"str": "No document workspaces to display",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"guid": "WYzhdU3b8DtgLJUXn7Tn7zat4OE1EFCkAVcIOUV8oUs"
+			},
+			{
+				"sid": "message.workspaceFavourite.failure",
+				"str": "The favorite setting for the document workspace could not be saved",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"guid": "aGx4T_7P8p5whU4-Swu-yuVqZzjb0OhOhPh8OyzV42U"
+			},
+			{
+				"sid": "link.favouriteWorkspace",
+				"str": "Mark or unmark document workspace as favorite",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"guid": "01beH-pALpRN0Q9lIKbOgEguRhml7Wj6yTj27zLVyAo"
+			},
+			{
+				"sid": "link.imap_favouriteWorkspace",
+				"str": "Mark or unmark document workspace as IMAP favorite",
+				"location": {
+					"startLine": 6,
+					"endLine": 6
+				},
+				"guid": "pYmD4nSAgI0AAp5sU_y8dj-SgmRPtsi_gEBYVwsL4C8"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "<p>A Document Workspace is a type of site that is created outside of Alfresco. This dashlet lists all of your Document Workspace sites.</p><p>From here you can navigate to a Document Workspace site. You can also delete a site, if you have the correct permissions.</p>",
+				"location": {
+					"startLine": 9,
+					"endLine": 10
+				},
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				},
+				"nstr": [
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"A Document Workspace is a type of site that is created outside of Alfresco. This dashlet lists all of your Document Workspace sites.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					},
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"From here you can navigate to a Document Workspace site. You can also delete a site, if you have the correct permissions.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					}
+				],
+				"gstr": "{{bx}}A Document Workspace is a type of site that is created outside of Alfresco. This dashlet lists all of your Document Workspace sites.{{ex}}{{bx}}From here you can navigate to a Document Workspace site. You can also delete a site, if you have the correct permissions.{{ex}}",
+				"guid": "QbstBkZNdzkfITuXaZAuGgvTliwWQC8mHM_3rV_7Sk4",
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			}
+		]
+	},
+	{
+		"id": "dashlets/rssfeed.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "label.header",
+				"str": "RSS Feed",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "i6iRLGJMzgct3Ed5dX6quhzt5quYzAu4Zly3wVhMBeA"
+			},
+			{
+				"sid": "label.configure",
+				"str": "Configure",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"guid": "kJ9JAWQxUUCxiX4I0UKRyc8prgKz7vhCbHyRcFfSVbo"
+			},
+			{
+				"sid": "label.noItems",
+				"str": "No news items",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"guid": "bl2r_NUdz3LRYApviS0mdZovycfmxK_1NX5e_dV3WGY"
+			},
+			{
+				"sid": "label.loading",
+				"str": "Loading items - please wait...",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"guid": "TO0t9t7HB8sVD0LpC1mK9cydH5rfK18pVvjp1ukpvsU"
+			},
+			{
+				"sid": "title.error.bad_data",
+				"str": "RSS feed can't be read",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"guid": "DXyZQwGvjI-wMwixtVE508JdQMvcior88KIFVTxvf7E"
+			},
+			{
+				"sid": "title.error.unavailable",
+				"str": "RSS feed is not available",
+				"location": {
+					"startLine": 6,
+					"endLine": 6
+				},
+				"guid": "wC9kcHAKpkTzWB31xwa9EMVYQwJXfj2pPAlxNYyyigs"
+			},
+			{
+				"sid": "title.error.unsupported",
+				"str": "RSS feed format is not supported",
+				"location": {
+					"startLine": 7,
+					"endLine": 7
+				},
+				"guid": "uWxJ2W5ssGnSAno1hIPCnJYbqmbLejphqst_gp1jfcc"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed.",
+				"location": {
+					"startLine": 9,
+					"endLine": 9
+				},
+				"guid": "c-6fDjw00nB1UJtukMnmj1d18-MHF12J24XzB-fT4xg"
+			}
+		]
+	},
+	{
+		"id": "dashlets/saved-search.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "header.title",
+				"str": "Saved Search",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "vOu-eNJHDEBQChRKqLed8BwIg3TYqS4vXtfiyYVOock"
+			},
+			{
+				"sid": "no.result",
+				"str": "No results found.",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"guid": "6N6CvXFOJN5MW5CDAOCRUtAKv52ovL-gvXdY_uFAsuI"
+			},
+			{
+				"sid": "message.insite",
+				"str": "in site",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"guid": "2qDllQZkvpfUJXE0R5eq---oiS-52r1TJEFY9jaK0UM"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "<p>Use this dashlet to set up a search and view the results.</p><p>Configure the dashlet to save the search and set the title text of the dashlet.</p><p>Only a Site Manager can configure the search and title - this dashlet is ideal for generating report views in a site.</p>",
+				"location": {
+					"startLine": 6,
+					"endLine": 8
+				},
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				},
+				"nstr": [
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"Use this dashlet to set up a search and view the results.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					},
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"Configure the dashlet to save the search and set the title text of the dashlet.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					},
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"Only a Site Manager can configure the search and title - this dashlet is ideal for generating report views in a site.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					}
+				],
+				"gstr": "{{bx}}Use this dashlet to set up a search and view the results.{{ex}}{{bx}}Configure the dashlet to save the search and set the title text of the dashlet.{{ex}}{{bx}}Only a Site Manager can configure the search and title - this dashlet is ideal for generating report views in a site.{{ex}}",
+				"guid": "9ZZmsgCdj4VOoUo-5nhEuqaBDfZBHGfiK_v5nkOMIrQ",
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			}
+		]
+	},
+	{
+		"id": "dashlets/site-activities.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "header",
+				"str": "Site Activities",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "9RU0-MtMA3IQ_HZWDTRlbtGICfYhmwwukPBoTOUNm84"
+			},
+			{
+				"sid": "label.load-failed",
+				"str": "Could not load activities list",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"guid": "dXT2U75dxHuNIUPU-t03LIHyx2Xot9nfTYzt0wC7mX4"
+			},
+			{
+				"sid": "label.filter",
+				"str": "Show",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"guid": "5lPhH3wyUosnjY8D20zaDr3pvcSu5-4SHVcyxzNNyy8"
+			},
+			{
+				"sid": "label.older-activities",
+				"str": "Older Activities",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"guid": "X7hfuKglEIfBzyBP8hjkNyTVWbzADzO5qZeZrNwktVc"
+			},
+			{
+				"sid": "filter.mine",
+				"str": "My activities",
+				"location": {
+					"startLine": 10,
+					"endLine": 10
+				},
+				"notes": {
+					"desc": "## Note to translators: The User Interface renders Filters 1, 2, 3 next to each other. The English translation gives these the appearance of a sentence, for example: \"My activities, status updates, in the last 14 days\".\n## This is entirely optional. If the language doesn't allow for this structure, please capitalise the messages in Filter 2+3 so they appear disconnected.\n# Filter 1"
+				},
+				"guid": "Udt6eFrWTD8LIPEn855TExZ8hKbdZ-XnDwZViiOfKjI",
+				"rawNotes": "## Note to translators: The User Interface renders Filters 1, 2, 3 next to each other. The English translation gives these the appearance of a sentence, for example: \"My activities, status updates, in the last 14 days\".\n## This is entirely optional. If the language doesn't allow for this structure, please capitalise the messages in Filter 2+3 so they appear disconnected.\n# Filter 1"
+			},
+			{
+				"sid": "filter.others",
+				"str": "Everyone else's activities",
+				"location": {
+					"startLine": 11,
+					"endLine": 11
+				},
+				"guid": "tf1yRhKe3Pz7u0eLwnf0vL6GRU-JEiOcDEEVohFUgBU"
+			},
+			{
+				"sid": "filter.all",
+				"str": "Everyone's activities",
+				"location": {
+					"startLine": 12,
+					"endLine": 12
+				},
+				"guid": "KGMwBkZzgvkB79vKnn9KTUdjpDd06urpF6Dm4CI65hk"
+			},
+			{
+				"sid": "filter.following",
+				"str": "I'm following",
+				"location": {
+					"startLine": 13,
+					"endLine": 13
+				},
+				"guid": "6VXScrtHrW6_RXucbYRhLaIIxk-PcKWCpucU-DXYuto"
+			},
+			{
+				"sid": "filter.allItems",
+				"str": "all items",
+				"location": {
+					"startLine": 15,
+					"endLine": 15
+				},
+				"notes": {
+					"desc": "# Filter 2"
+				},
+				"guid": "vRZ8-bFg84NQr-JCGfCiYSgCFpyIVfkRsbewPxPUKWE",
+				"rawNotes": "# Filter 2"
+			},
+			{
+				"sid": "filter.statusItems",
+				"str": "status updates",
+				"location": {
+					"startLine": 16,
+					"endLine": 16
+				},
+				"guid": "JyI-4jM5rBXorGP3KgW17ipL1vKGfX-vFdiQC3hJSxo"
+			},
+			{
+				"sid": "filter.commentItems",
+				"str": "comments",
+				"location": {
+					"startLine": 17,
+					"endLine": 17
+				},
+				"guid": "p6ZwVEZOg2J8KszdlWUcLhmNYYhXgvGJAWrDtDpJq2U"
+			},
+			{
+				"sid": "filter.contentItems",
+				"str": "content",
+				"location": {
+					"startLine": 18,
+					"endLine": 18
+				},
+				"guid": "dIVUO_Ot8QvPYU5zjVyiWNQ9N4mnQMqs-HfBlrPGGC4"
+			},
+			{
+				"sid": "filter.membershipItems",
+				"str": "memberships",
+				"location": {
+					"startLine": 19,
+					"endLine": 19
+				},
+				"guid": "h0ht26CvHSGS_Uww8ADVUAHxjrBN3SSfAbkQqsswkcc"
+			},
+			{
+				"sid": "filter.today",
+				"str": "today",
+				"location": {
+					"startLine": 21,
+					"endLine": 21
+				},
+				"notes": {
+					"desc": "# Filter 3"
+				},
+				"guid": "3TQRV9f1141RY8JHLgGCs9MqJXCfUHGCPKoH346i8Ns",
+				"rawNotes": "# Filter 3"
+			},
+			{
+				"sid": "filter.7days",
+				"str": "in the last 7 days",
+				"location": {
+					"startLine": 22,
+					"endLine": 22
+				},
+				"guid": "lZ1vxUkINGFrKtKYt4sXEWFtpRIR__IShFVOehBUyi0"
+			},
+			{
+				"sid": "filter.14days",
+				"str": "in the last 14 days",
+				"location": {
+					"startLine": 23,
+					"endLine": 23
+				},
+				"guid": "Vqe7ORCDAj0-3slbq6Y5GRiOE5OkVwpQLLkK0AnV7Ec"
+			},
+			{
+				"sid": "filter.28days",
+				"str": "in the last 28 days",
+				"location": {
+					"startLine": 24,
+					"endLine": 24
+				},
+				"guid": "es1WhpDaK4xTyYraeum4hgyUSD9UgerNfV9BGbPcy8I"
+			},
+			{
+				"sid": "empty.title",
+				"str": "Follow what's going on in this site",
+				"location": {
+					"startLine": 26,
+					"endLine": 26
+				},
+				"guid": "D5uLM2Y7lh5HKdwbw8Oh9zS4NvyemL-ifgDD6NROlug"
+			},
+			{
+				"sid": "empty.description",
+				"str": "Watch this list to keep up on the recent site changes. You'll see activities such as content updates and likes. You can also track the site membership by seeing who is joining and leaving.",
+				"location": {
+					"startLine": 27,
+					"endLine": 27
+				},
+				"guid": "RLaiyI_cVexQQDovlu1wqNhAlA03prM3H8xpI72wVj8"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "<p>Following what goes on in the site is easy with this dashlet. It shows all activities, such as content that's been added, edited, and deleted. You can also see who is joining and leaving the site.</p><p>Filters let you view activities by time period and ownership.</p>",
+				"location": {
+					"startLine": 30,
+					"endLine": 31
+				},
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				},
+				"nstr": [
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"Following what goes on in the site is easy with this dashlet. It shows all activities, such as content that's been added, edited, and deleted. You can also see who is joining and leaving the site.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					},
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"Filters let you view activities by time period and ownership.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					}
+				],
+				"gstr": "{{bx}}Following what goes on in the site is easy with this dashlet. It shows all activities, such as content that's been added, edited, and deleted. You can also see who is joining and leaving the site.{{ex}}{{bx}}Filters let you view activities by time period and ownership.{{ex}}",
+				"guid": "jELqCyiqm8dxzBgOPcgJUmQozbaajsr2JF0Sld2lA50",
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			}
+		]
+	},
+	{
+		"id": "dashlets/site-data-lists.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "header.datalists",
+				"str": "Site Data Lists",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "dMY8CN6sydoqUsRlFLrrNXGTDjgS3A4bFt7nv1DroMI"
+			},
+			{
+				"sid": "label.noLists",
+				"str": "No lists to display",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"guid": "UEdkz_oEge0EOVJV3nqTxzXuNnOFrX9tjMCPElAgRIU"
+			},
+			{
+				"sid": "list.createLink",
+				"str": "Create Data List",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"guid": "s4s9nIqDYizLbFsc8sUeKYUtewrvGVq7HCuzzJMAyoM"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "This dashlet shows lists relevant to the site. Clicking a list opens it.",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"guid": "e0V7MJ88IW05x2ffT3zZKd7c2VGh38qlGaphUkWnFps"
+			}
+		]
+	},
+	{
+		"id": "dashlets/site-links.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "header.links",
+				"str": "Site Links",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "uBR0WvZq-dGOy09nZgCpNCSo9RZNSCZT2Du7IZG4Bsk"
+			},
+			{
+				"sid": "link.createLink",
+				"str": "Create Link",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"guid": "_zCDNnMNZ1euI5GwWkU25cGMkUpXOZ-KbEs8dQr5VQw"
+			},
+			{
+				"sid": "link.details",
+				"str": "Link's details",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"guid": "8HjmVxKr0DkRi6RE5Mzx8Mytqr7ZTMgSLOga8bp7Gss"
+			},
+			{
+				"sid": "label.noLinks",
+				"str": "No links to display",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"guid": "x6nxGD5yw60z5CfGz8xuv5PBEK3ms-y_5Coe_UG_7Ds"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "This dashlet shows links relevant to this site. The list is compiled by site members. Clicking a link opens it in a new window.",
+				"location": {
+					"startLine": 6,
+					"endLine": 6
+				},
+				"guid": "xMaXXd9iLQTkboNcA5CI6YjOzza6t5fIYKN4nVTLvA0"
+			},
+			{
+				"sid": "link.noUrl",
+				"str": "URL not specified",
+				"location": {
+					"startLine": 7,
+					"endLine": 7
+				},
+				"guid": "qpNzDxIKznWjF3VhKBN4jSc4frLkqQGGBn7JqtJa8vE"
+			}
+		]
+	},
+	{
+		"id": "dashlets/site-notice.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "notice.defaultTitle",
+				"str": "Site Notice",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "nxBPgM21nUdzaHwzKDAUOpPecwgSIOm6hqYTcX9bfwE"
+			},
+			{
+				"sid": "notice.defaultText",
+				"str": "No text has been configured",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"guid": "yj4g5ndRJ2pR2YT6I5HJFiWAQwVkHxyWyuDH43euBnc"
+			},
+			{
+				"sid": "link.configure",
+				"str": "Configure",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"guid": "dI6k9BSigj6gEI0usWMTDR1B9zsFO8ws9atTiah-8Y4"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "This dashlet displays a custom message on the dashboard, specified by the site manager",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"guid": "mJhAoE9OxVj0OEm8MJe4izRbFC6F9eoyGp58nxDpzys"
+			}
+		]
+	},
+	{
+		"id": "dashlets/site-profile.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "header.siteProfile",
+				"str": "Site Profile",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "khf1feCavm6ibe8MqlZGGmPoAkxw1Fg-9CiardufKSE"
+			},
+			{
+				"sid": "text.welcome",
+				"str": "Welcome to {0}",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"nstr": [
+					"Welcome to ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "Welcome to {{x}}",
+				"guid": "lR_WBAOjwONxbc4Uj8-ALtsxQjAPSO6L_AynCWPxMYk"
+			},
+			{
+				"sid": "label.siteAdmin",
+				"str": "Site Manager(s):",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"guid": "HD5X-d2HoQZXAQO4dA6XVjmwyDzxx7atfjumP0wXc8o"
+			},
+			{
+				"sid": "label.visibility",
+				"str": "Visibility:",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"guid": "sc0C0MkFSy_nMBTS8jU14d-HZ-yMGxWuHP3wcTt9yHA"
+			},
+			{
+				"sid": "text.public",
+				"str": "Public",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"guid": "IM1fWv6-HAAWG9JWOwHN2PwqGFm84BL77kEkg73DENw"
+			},
+			{
+				"sid": "text.moderated",
+				"str": "Moderated",
+				"location": {
+					"startLine": 6,
+					"endLine": 6
+				},
+				"guid": "sLsiWSXiT6OMWxIzGzVDhw3JQPzfKBdbII82UggAw90"
+			},
+			{
+				"sid": "text.private",
+				"str": "Private",
+				"location": {
+					"startLine": 7,
+					"endLine": 7
+				},
+				"guid": "BaIEq8aWhiGESKvrIdPctiXxiYBDVYWJJbPRg-brYNY"
+			},
+			{
+				"sid": "text.unknown",
+				"str": "Unknown",
+				"location": {
+					"startLine": 8,
+					"endLine": 8
+				},
+				"guid": "nzBKPR27tGvdJTHt81bRETluPFYJ2Gg-H2gE9IUXAJs"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "This dashlet displays the site details. Only the site manager can change this information.",
+				"location": {
+					"startLine": 10,
+					"endLine": 10
+				},
+				"guid": "N1IcZ5QfrSM8ZDsOz5i0tr8gggb063aQJ0iUZgEs5To"
+			}
+		]
+	},
+	{
+		"id": "dashlets/site-search.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "header.title",
+				"str": "Site Search",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "7VTnCLwh2yhUtrL1y6RF5Dwfn2XQbLUztctjl78G2YU"
+			},
+			{
+				"sid": "searchButton.text",
+				"str": "Search",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"guid": "P9gayAUj9HlSgxvLBDwgnL6DpANGiR9nVrMe0FytAtU"
+			},
+			{
+				"sid": "no.result",
+				"str": "No results found.",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"guid": "gNmjQRRdC_hcOykrH-oV68pAvGcA-dAJC5fkJL8rxrw"
+			},
+			{
+				"sid": "message.insite",
+				"str": "in site",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"guid": "pp4AQNiSgKNV1PqmRFEsBGUVJiBdUd_0qK0wm3u6fBY"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "<p>Use this dashlet to perform a site search and view the results.</p><p>Clicking the item name takes you to the details page so you can preview or work with the item.</p>",
+				"location": {
+					"startLine": 7,
+					"endLine": 8
+				},
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				},
+				"nstr": [
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"Use this dashlet to perform a site search and view the results.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					},
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"Clicking the item name takes you to the details page so you can preview or work with the item.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					}
+				],
+				"gstr": "{{bx}}Use this dashlet to perform a site search and view the results.{{ex}}{{bx}}Clicking the item name takes you to the details page so you can preview or work with the item.{{ex}}",
+				"guid": "uxRPvaEIZZh5Hj1s8oWFsdzucSUdwfQ1M2mzyBMjr7A",
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			}
+		]
+	},
+	{
+		"id": "dashlets/user-calendar.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "label.header",
+				"str": "My Calendar",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "SPKdfv3dFWX7-7XFoRAq7On20IfLoU6TqTWJEw5jloU"
+			},
+			{
+				"sid": "label.noEvents",
+				"str": "No upcoming events",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"guid": "qwOsbKeQ6XPLwXDcsYMNfNxnZkyoyMpXxz6_LSsWlzQ"
+			},
+			{
+				"sid": "label.error",
+				"str": "Could not load calendar data",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"guid": "ZtTwkAcJjMlS2vtVGe9GQ2o5rFvpkyLIOLYQa-a3I9g"
+			},
+			{
+				"sid": "label.allday",
+				"str": "All Day",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"guid": "IGy5p0jghtEk0sW4dXZLtM3lEa2gpWZ_FqWyBaew8do"
+			},
+			{
+				"sid": "label.in-site",
+				"str": "in {0}",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"nstr": [
+					"in ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "in {{x}}",
+				"guid": "0Gpn2OtT9mxsfFCmTdSgMSTQYzw10MRlH_jZZl0CRl8"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "This dashlet shows the upcoming events in sites you belong to. ",
+				"location": {
+					"startLine": 7,
+					"endLine": 7
+				},
+				"guid": "yhoc5qivuex4c_K-BMYUFbP9nKbkdCrqEfDm1BnOX-8"
+			}
+		]
+	},
+	{
+		"id": "dashlets/webview-default.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "label.defaultText",
+				"str": "Please use the Configure link to enter the URL of the web page you wish to display",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "aEl7teKlCV7HKIC-OPv_prNQPwpaRzw60o4hAdE15GA"
+			}
+		]
+	},
+	{
+		"id": "dashlets/webview.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "label.header",
+				"str": "Web View",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "KDBdUg-NyvIug1C7Rz4pKcBurbMKwVTWuh_9fF-84E4"
+			},
+			{
+				"sid": "label.noWebPage",
+				"str": "No web page to display.",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"guid": "Tno6fdToJWn893cGorCoah96RqkheH8C4KN9ItLLcaE"
+			},
+			{
+				"sid": "label.notSecureHeader",
+				"str": "Web View",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"guid": "qEmg83eG4VzuormYT5QzxsU8gVIOBWSxN-d3erkcNL8"
+			},
+			{
+				"sid": "label.notSecurePage",
+				"str": "The domain of the page to display is not listed as a trusted domain inside your server's IFramePolicy config.",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"guid": "vnTi9G3JfmxMw4TI_DbSAMrv0zvUXjl7xMZlaZqNC_0"
+			},
+			{
+				"sid": "form.url.validation.failure",
+				"str": "The domain of the url is not listed as a trusted domain inside your server's IFramePolicy config.",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"guid": "PW3HC0pFONNYOo4XrRLAjPfzrPhU7ql3Vcb-RLr5q3I"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "<p>This dashlet shows the website of your choice. Click the edit icon on the dashlet to change the web address.</p><p>Clicking the dashlet title opens the website in a separate window.</p>",
+				"location": {
+					"startLine": 8,
+					"endLine": 9
+				},
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				},
+				"nstr": [
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"This dashlet shows the website of your choice. Click the edit icon on the dashlet to change the web address.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					},
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"Clicking the dashlet title opens the website in a separate window.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					}
+				],
+				"gstr": "{{bx}}This dashlet shows the website of your choice. Click the edit icon on the dashlet to change the web address.{{ex}}{{bx}}Clicking the dashlet title opens the website in a separate window.{{ex}}",
+				"guid": "2qtigSYsaPbxFxLIPrzVUQ4OvX_Er6wq1nvCsmIXh4I",
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			}
+		]
+	},
+	{
+		"id": "dashlets/wiki.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "label.header",
+				"str": "Wiki",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "tsUhoDa8t8CFonVR8KHvel4WKS9SQ9FXHzCcsTkt3bs"
+			},
+			{
+				"sid": "label.header-prefix",
+				"str": "Wiki",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"guid": "gksc8DHW-8RthR-g1Dm982LeG5shOJQG1_FUXaGG8RA"
+			},
+			{
+				"sid": "label.configure",
+				"str": "Configure",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"guid": "iVQEaDYs1oi356F_6MZiUW905O8LQl1bKRWNJg4DGqk"
+			},
+			{
+				"sid": "label.noConfig",
+				"str": "No page is configured",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"guid": "WbL_w7F4YtPHfi2CGZuO_iHD42Gsfv9JFL3uE8B3hmY"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "<p>This dashlet shows a page selected from the site's wiki.</p><p>Navigate to the wiki to see all related content.</p>",
+				"location": {
+					"startLine": 7,
+					"endLine": 8
+				},
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				},
+				"nstr": [
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"This dashlet shows a page selected from the site's wiki.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					},
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"Navigate to the wiki to see all related content.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					}
+				],
+				"gstr": "{{bx}}This dashlet shows a page selected from the site's wiki.{{ex}}{{bx}}Navigate to the wiki to see all related content.{{ex}}",
+				"guid": "vhg8jKxMyyqUEyhnwsgqh8K2eG9SPJY2FXylniirXmA",
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			}
+		]
+	}
+]

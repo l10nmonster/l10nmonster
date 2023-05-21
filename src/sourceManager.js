@@ -34,7 +34,7 @@ export default class SourceManager {
         }
     }
 
-    async getResourceStats() {
+    async getResourceStatsFromAllSources() {
         this.logger.info(`Getting resource stats from all sources...`);
         const combinedStats = [];
         for (const [ contentType, pipeline ] of Object.entries(this.contentTypes)) {
@@ -45,6 +45,10 @@ export default class SourceManager {
         return combinedStats
             .flat(1)
             .filter(e => (this.prj === undefined || this.prj.includes(e.prj)));
+    }
+
+    async getResourceStats() {
+        return this.snapStore ? this.snapStore.getResourceStats() : this.getResourceStatsFromAllSources();
     }
 
     // produce at least a 2-char label and try to assign shorter numbers to shorter strings
@@ -94,14 +98,18 @@ export default class SourceManager {
         return res;
     }
 
-    async getResource(resourceStat) {
+    async getResourceFromSource(resourceStat) {
         this.logger.verbose(`Getting resource ${resourceStat.id}...`);
         const pipeline = this.contentTypes[resourceStat.contentType];
         const rawResource = await pipeline.source.fetchResource(resourceStat.id);
         return this.#getParsedResource(pipeline, resourceStat, rawResource);
     }
 
-    async *getAllResources() {
+    async getResource(resourceStat) {
+        return this.snapStore ? this.snapStore.getResource(resourceStat) : this.getResourceFromSource(resourceStat);
+    }
+
+    async *getAllResourcesFromSources() {
         this.logger.info(`Getting all resource...`);
         for (const [ contentType, pipeline ] of Object.entries(this.contentTypes)) {
             if (pipeline.source.fetchAllResources) {
@@ -123,15 +131,9 @@ export default class SourceManager {
         }
     }
 
-    // removing this since it's a scalability concern. if needed it needs to go into a store
-    // async getSourceByGuid(guid) {
-    //     if (!this.guidMap) {
-    //         this.guidMap = new Map();
-    //         await this.#updateSourceCache();
-    //         Object.values(this.sourceCache.sources).forEach(res => res.segments.forEach(seg => this.guidMap.set(seg.guid, seg)));
-    //     }
-    //     return this.guidMap.get(guid);
-    // }
+    async *getAllResources() {
+        return this.snapStore ? yield* this.snapStore.getAllResources() : yield* this.getAllResourcesFromSources();
+    }
 
     async shutdown() {
         if (this.seqMapPath) {

@@ -5,7 +5,6 @@ import {
     readFileSync,
     writeFileSync,
     unlinkSync,
-    statSync,
 } from 'fs';
 import { nanoid } from 'nanoid';
 import { globbySync } from 'globby';

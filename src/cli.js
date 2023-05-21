@@ -80,8 +80,9 @@ function createMonsterCLI(cliCtx, preAction) {
         });
     monsterCLI.command('snap')
         .description('Commits a snapshot of sources in normalized format.')
+        .option('--maxSegments <number>', 'threshold to break up snapshots into chunks')
         .action(async function snap() {
-            await cli.snap(cliCtx.monsterManager);
+            await cli.snap(cliCtx.monsterManager, this.optsWithGlobals());
         });
     monsterCLI.command('translate')
         .description('Generate translated resources based on latest source and translations.')

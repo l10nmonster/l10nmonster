@@ -3,9 +3,8 @@ export default class CardboardConfigTranslationOnly {
     minimumQuality = 50;
 
     constructor({ ctx, stores, adapters, filters, translators }) {
-        this.source = new adapters.SnapSource({
-            baseDir: '../CardboardSDK/snap',
-            targetLangs: [ 'ar', 'it', 'ja' ],
+        this.snapStore = new stores.FsSnapStore({
+            snapDir: '../CardboardSDK/snap',
         });
         this.resourceFilter = new filters.SnapFilter();
         const defaultTOSConfig = {
@@ -22,27 +21,27 @@ export default class CardboardConfigTranslationOnly {
             TOSLQA: { // fake sample of a "push and forget" configuration
                 translator: new translators.TranslationOS({ ...defaultTOSConfig, serviceType: 'bugfix', requestOnly: true }),
             },
-            ModernMT: {
-                translator: new translators.ModernMT({
-                    apiKey: ctx.env.mmt_api_key,
-                    quality: 40,
-                    maxCharLength: 1000,
-                }),
-            },
-            DeepL: {
-                translator: new translators.DeepL({
-                    apiKey: ctx.env.deepl_api_key,
-                    quality: 40,
-                }),
-                quota: 0,
-            },
-            GCT: {
-                translator: new translators.GoogleCloudTranslateV3({
-                    keyFilename: ctx.env.gct_credentials,
-                    projectId: ctx.env.gct_project,
-                    quality: 40,
-                }),
-            },
+            // ModernMT: {
+            //     translator: new translators.ModernMT({
+            //         apiKey: ctx.env.mmt_api_key,
+            //         quality: 40,
+            //         maxCharLength: 1000,
+            //     }),
+            // },
+            // DeepL: {
+            //     translator: new translators.DeepL({
+            //         apiKey: ctx.env.deepl_api_key,
+            //         quality: 40,
+            //     }),
+            //     quota: 0,
+            // },
+            // GCT: {
+            //     translator: new translators.GoogleCloudTranslateV3({
+            //         keyFilename: ctx.env.gct_credentials,
+            //         projectId: ctx.env.gct_project,
+            //         quality: 40,
+            //     }),
+            // },
             Repetition: {
                 translator: new translators.Repetition({
                     qualifiedPenalty: 1,

@@ -1,0 +1,14 @@
+{
+	"default-1.json": {
+		"en.lproj/CardboardSDK.strings": {
+			"id": "en.lproj/CardboardSDK.strings",
+			"modified": "2022-02-10T01:19:22.492Z",
+			"targetLangs": [
+				"ar",
+				"it",
+				"ja"
+			],
+			"contentType": "default"
+		}
+	}
+}

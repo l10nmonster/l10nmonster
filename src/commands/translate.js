@@ -75,8 +75,15 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                         return undefined;
                     }
                 };
-                const resource = await pipeline.source.fetchResource(res.id);
-                const translatedRes = await pipeline.resourceFilter.translateResource({ resource, translator });
+                let translatedRes;
+                // give priority to generators over translators (for performance)
+                if (pipeline.resourceFilter.generateResource) {
+                    const resource = await mm.source.getResource(res);
+                    translatedRes = await pipeline.resourceFilter.generateResource({ resource, translator });
+                } else {
+                    const resource = await pipeline.source.fetchResource(res.id);
+                    translatedRes = await pipeline.resourceFilter.translateResource({ resource, translator });
+                }
                 const translatedResourceId = pipeline.target.translatedResourceId(targetLang, resourceId);
                 if (dryRun) {
                     let currentRaw;

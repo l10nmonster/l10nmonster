@@ -10,8 +10,8 @@ import { makeTU, fixCaseInsensitiveKey } from './shared.js';
 export default class MonsterManager {
     constructor({ monsterDir, monsterConfig, configSeal, ctx, defaultAnalyzers = {} }) {
         if (monsterDir && monsterConfig && monsterConfig.sourceLang &&
-                (monsterConfig.contentTypes || monsterConfig.source) === undefined) {
-            throw 'You must specify sourceLang and contentTypes / source in l10nmonster.mjs';
+                (monsterConfig.contentTypes || monsterConfig.source || monsterConfig.snapStore) === undefined) {
+            throw 'You must specify sourceLang and contentTypes / source / snapStore in your config';
         } else {
             this.monsterDir = monsterDir;
             this.configSeal = configSeal;
