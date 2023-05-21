@@ -1,7 +1,7 @@
 import * as path from 'path';
 import { Command, Argument, InvalidArgumentError } from 'commander';
 import { createMonsterManager } from './defaultMonster.js';
-import * as cli from './l10nCommands.js';
+import * as l10n from './l10nCommands.js';
 
 /* eslint-disable no-invalid-this */
 /* eslint-disable prefer-arrow-callback */
@@ -33,13 +33,13 @@ function createMonsterCLI(cliCtx, preAction) {
         .option('-a, --all', 'show information for all projects, not just untranslated ones')
         .option('--output <filename>', 'write status to the specified file')
         .action(async function status() {
-            await cli.status(cliCtx.monsterManager, this.optsWithGlobals());
+            await l10n.status(cliCtx.monsterManager, this.optsWithGlobals());
         });
     monsterCLI.command('jobs')
         .description('Unfinished jobs status.')
         .option('-l, --lang <language>', 'only get jobs for the target language')
         .action(async function jobs() {
-            await cli.jobs(cliCtx.monsterManager, this.optsWithGlobals());
+            await l10n.jobs(cliCtx.monsterManager, this.optsWithGlobals());
         });
     monsterCLI.command('analyze')
         .description('Content reports and validation.')
@@ -49,7 +49,7 @@ function createMonsterCLI(cliCtx, preAction) {
         .option('--filter <filter>', 'use the specified tu filter')
         .option('--output <filename>', 'filename to write the analysis to)')
         .action(async function analyze(analyzer, params) {
-            await cli.analyze(cliCtx.monsterManager, { ...this.optsWithGlobals(), analyzer, params });
+            await l10n.analyze(cliCtx.monsterManager, { ...this.optsWithGlobals(), analyzer, params });
         });
     monsterCLI.command('push')
         .description('Push source content upstream (send to translation).')
@@ -62,34 +62,34 @@ function createMonsterCLI(cliCtx, preAction) {
         .option('--instructions <instructions>', 'send the specified translation instructions')
         .option('--dryrun', 'simulate translating and compare with existing translations')
         .action(async function push() {
-            await cli.push(cliCtx.monsterManager, this.optsWithGlobals());
+            await l10n.push(cliCtx.monsterManager, this.optsWithGlobals());
         });
     monsterCLI.command('job')
         .description('Show request/response/pairs of a job or push/delete jobs.')
         .addArgument(new Argument('<operation>', 'operation to perform on job').choices(['req', 'res', 'pairs', 'push', 'delete']))
         .requiredOption('-g, --jobGuid <guid>', 'guid of job')
         .action(async function job(operation) {
-            await cli.job(cliCtx.monsterManager, { ...this.optsWithGlobals(), operation });
+            await l10n.job(cliCtx.monsterManager, { ...this.optsWithGlobals(), operation });
         });
     monsterCLI.command('pull')
         .description('Receive outstanding translation jobs.')
         .option('--partial', 'commit partial deliveries')
         .option('-l, --lang <language>', 'only get jobs for the target language')
         .action(async function pull() {
-            await cli.pull(cliCtx.monsterManager, this.optsWithGlobals());
+            await l10n.pull(cliCtx.monsterManager, this.optsWithGlobals());
         });
     monsterCLI.command('snap')
         .description('Commits a snapshot of sources in normalized format.')
         .option('--maxSegments <number>', 'threshold to break up snapshots into chunks')
         .action(async function snap() {
-            await cli.snap(cliCtx.monsterManager, this.optsWithGlobals());
+            await l10n.snap(cliCtx.monsterManager, this.optsWithGlobals());
         });
     monsterCLI.command('translate')
         .description('Generate translated resources based on latest source and translations.')
         .option('-l, --lang <language>', 'target language to translate')
         .option('-d, --dryrun', 'simulate translating and compare with existing translations')
         .action(async function translate() {
-            await cli.translate(cliCtx.monsterManager, this.optsWithGlobals());
+            await l10n.translate(cliCtx.monsterManager, this.optsWithGlobals());
         });
     monsterCLI.command('tmexport')
         .description('Export translation memory in various formats.')
@@ -98,12 +98,12 @@ function createMonsterCLI(cliCtx, preAction) {
         .option('-l, --lang <language>', 'target language to export')
         .option('--prjsplit', 'split target files by project')
         .action(async function tmexport(mode, format) {
-            await cli.tmexport(cliCtx.monsterManager, { ...this.optsWithGlobals(), mode, format });
+            await l10n.tmexport(cliCtx.monsterManager, { ...this.optsWithGlobals(), mode, format });
         });
     monsterCLI.command('monster')
         .description('Just because...')
         .action(async function monster() {
-            await cli.monster(cliCtx.monsterManager, this.optsWithGlobals());
+            await l10n.monster(cliCtx.monsterManager, this.optsWithGlobals());
         });
     cliCtx.setupExtensions && cliCtx.setupExtensions(monsterCLI, cliCtx);
     return monsterCLI;
@@ -131,11 +131,14 @@ export async function runMonsterCLI(monsterConfigPath, extensionsPath) {
             async cli => {
                 const options = cli.opts();
                 const configPath = (options.cfg && path.resolve('.', options.cfg)) ?? monsterConfigPath;
-                await createMonsterManager(
+                const logger = l10n.createLogger(options.verbose);
+                const mm = await createMonsterManager({
                     configPath,
                     options,
-                    async mm => cliCtx.monsterManager = mm
-                );
+                    logger,
+                    env: process.env,
+                });
+                cliCtx.monsterManager = mm;
             }
         ).parseAsync();
     } catch(e) {

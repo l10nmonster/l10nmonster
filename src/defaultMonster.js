@@ -1,13 +1,9 @@
-import * as util from 'node:util';
 import * as path from 'path';
 import {
     existsSync,
     statSync,
     mkdirSync,
 } from 'fs';
-import * as winston from 'winston';
-
-import { consoleColor } from './shared.js';
 
 import MonsterManager from './monsterManager.js';
 import { OpsMgr } from './opsMgr.js';
@@ -44,43 +40,23 @@ import FindByExpansion from './analyzers/findByExpansion.js';
 import MismatchedTags from './analyzers/mismatchedTags.js';
 import * as contentExporters from './analyzers/contentExport.js';
 
-export async function createMonsterManager(configPath, options, cb) {
+export async function createMonsterManager({ configPath, options, logger, env }) {
     if (!configPath) {
         throw 'missing configuration';
     }
     const baseDir = path.dirname(configPath);
     const configModule = configPath.indexOf('.mjs') > 0 ? await import(configPath) : require(configPath);
     const configSeal = statSync(configPath).mtime.toISOString();
-    const verboseOption = options.verbose;
-    // eslint-disable-next-line no-nested-ternary
-    const verboseLevel = (verboseOption === undefined || verboseOption === 0) ?
-        'error' :
-    // eslint-disable-next-line no-nested-ternary
-        ((verboseOption === 1) ?
-            'warn' :
-            ((verboseOption === true || verboseOption === 2) ? 'info' : 'verbose'));
     const regression = options.regression;
     let prj = options.prj;
     prj && (prj = prj.split(','));
-    const logger = winston.createLogger({
-        level: verboseLevel,
-        transports: [
-            new winston.transports.Console({
-                format: winston.format.combine(
-                    winston.format.ms(),
-                    winston.format.timestamp(),
-                    winston.format.printf(({ level, message, timestamp, ms }) => `${consoleColor.green}${timestamp.substr(11, 12)} (${ms}) [${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB] ${level}: ${typeof message === 'string' ? message : util.inspect(message)}${consoleColor.reset}`)
-                ),
-            }),
-        ],
-    });
     const opsMgr = configModule.opsDir ? new OpsMgr({ opsDir: path.join(baseDir, configModule.opsDir), logger }) : new OpsMgr({ logger });
     const ctx = {
         baseDir,
         opsMgr,
-        env: process.env,
+        env: env ?? {},
         arg: options.arg,
-        logger,
+        logger: logger ?? { verbose: () => false, info: () => false, warn: () => false, error: () => false },
         regression,
         prj,
     };
@@ -121,16 +97,9 @@ export async function createMonsterManager(configPath, options, cb) {
         if (!existsSync(monsterDir)) {
             mkdirSync(monsterDir, {recursive: true});
         }
-        const mm = await new MonsterManager({ monsterDir, monsterConfig, configSeal, ctx, defaultAnalyzers });
+        const mm = new MonsterManager({ monsterDir, monsterConfig, configSeal, ctx, defaultAnalyzers });
         ctx.mm = mm;
         logger.info(`L10n Monster initialized!`);
-        if (cb) {
-            try {
-                await cb(mm);
-            } catch(e) {
-                console.error(`Unable to initialize: ${e.stack || e}`);
-            }
-        }
         return mm;
     } catch(e) {
         throw `l10nmonster.mjs failed to construct: ${e.stack || e}`;

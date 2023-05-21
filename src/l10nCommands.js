@@ -3,6 +3,8 @@ import {
     writeFileSync,
   } from 'fs';
 import * as path from 'path';
+import * as util from 'node:util';
+import * as winston from 'winston';
 import { analyzeCmd } from './commands/analyze.js';
 import { pullCmd } from './commands/pull.js';
 import { snapCmd } from './commands/snap.js';
@@ -311,10 +313,37 @@ __.-'            \\  \\   .   / \\_.  \\ -|_/\\/ \`--.|_
     }
 }
 
+export function createLogger(verboseOption) {
+    // eslint-disable-next-line no-nested-ternary
+    const verboseLevel = (verboseOption === undefined || verboseOption === 0) ?
+        'error' :
+    // eslint-disable-next-line no-nested-ternary
+        ((verboseOption === 1) ?
+            'warn' :
+            ((verboseOption === true || verboseOption === 2) ? 'info' : 'verbose'));
+    return winston.createLogger({
+        level: verboseLevel,
+        transports: [
+            new winston.transports.Console({
+                format: winston.format.combine(
+                    winston.format.ms(),
+                    winston.format.timestamp(),
+                    winston.format.printf(({ level, message, timestamp, ms }) => `${consoleColor.green}${timestamp.substr(11, 12)} (${ms}) [${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB] ${level}: ${typeof message === 'string' ? message : util.inspect(message)}${consoleColor.reset}`)
+                ),
+            }),
+        ],
+    });
+}
+
 export async function runL10nMonster(relativePath, globalOptions, cb) {
     const configPath = path.resolve('.', relativePath);
-
-    await createMonsterManager(configPath, globalOptions, async mm => {
+    const mm = await createMonsterManager({
+        configPath,
+        options: globalOptions,
+        logger: createLogger(globalOptions.verbose),
+        env: process.env,
+    });
+    try {
         await cb({
             status: opts => status(mm, { ...globalOptions, ...opts}),
             jobs: opts => jobs(mm, { ...globalOptions, ...opts}),
@@ -327,6 +356,9 @@ export async function runL10nMonster(relativePath, globalOptions, cb) {
             tmexport: opts => tmexport(mm, { ...globalOptions, ...opts}),
             monster: opts => monster(mm, { ...globalOptions, ...opts}),
         });
+    } catch(e) {
+        console.error(`Unable to run: ${e.stack || e}`);
+    } finally {
         mm && (await mm.shutdown());
-    });
+    }
 }
