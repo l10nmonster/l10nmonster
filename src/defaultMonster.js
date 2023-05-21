@@ -50,7 +50,7 @@ export async function createMonsterManager(configPath, options, cb) {
         throw 'missing configuration';
     }
     const baseDir = path.dirname(configPath);
-    const configModule = await import(configPath);
+    const configModule = configPath.indexOf('.mjs') > 0 ? await import(configPath) : require(configPath);
     const configSeal = statSync(configPath).mtime.toISOString();
     const verboseOption = options.verbose;
     // eslint-disable-next-line no-nested-ternary

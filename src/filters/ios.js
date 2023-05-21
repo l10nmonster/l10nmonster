@@ -1,4 +1,4 @@
-import i18nStringsFiles from 'i18n-strings-files';
+import i18nStringsFiles from '@l10nmonster/i18n-strings-files';
 
 export class IosStringsFilter {
     constructor(params) {
