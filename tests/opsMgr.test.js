@@ -1,4 +1,4 @@
-import { OpsMgr } from '../src/opsMgr.js';
+const { OpsMgr } = require('@l10nmonster/core');
 
 async function foo(x) {
     return x + 1;

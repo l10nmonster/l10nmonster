@@ -1,13 +1,13 @@
-import { getNormalizedString } from '../../src/normalizers/util.js';
-import { xmlDecoder, bracePHDecoder, iosPHDecoder, xmlEntityDecoder, javaEscapesDecoder,
-    javaMFQuotesDecoder, gatedEncoder, xmlEntityEncoder } from '../../src/normalizers/regex.js';
+const { utils, normalizers, xml } = require('@l10nmonster/helpers');
+const ios = require('@l10nmonster/helpers-ios');
+const java = require('@l10nmonster/helpers-java');
 
 describe('Regex Encoder tests', () => {
 
     test('html plus braces', async () => {
-        expect(getNormalizedString(
+        expect(utils.getNormalizedString(
             `<icon name='location'/>Price&amp;&#65;:\\n\\'{0,number,integer}\\"\\u0020&#xa0;<color name='green'>{1}</color>`,
-            [ xmlDecoder, bracePHDecoder, xmlEntityDecoder, javaEscapesDecoder ]
+            [ xml.tagDecoder, normalizers.bracePHDecoder, xml.entityDecoder, java.escapesDecoder ]
         )).toMatchObject([
             { t: 'x', v: "<icon name='location'/>" },
             "Price&A:\n'",
@@ -20,9 +20,9 @@ describe('Regex Encoder tests', () => {
     });
 
     test('1 ios string', async () => {
-        expect(getNormalizedString(
+        expect(utils.getNormalizedString(
             `Current viewer: %@`,
-            [ iosPHDecoder, javaEscapesDecoder ]
+            [ ios.phDecoder, java.escapesDecoder ]
         )).toMatchObject([
             "Current viewer: ",
             { t: 'x', v: '%@' }
@@ -30,9 +30,9 @@ describe('Regex Encoder tests', () => {
     });
 
     test('2 ios strings', async () => {
-        expect(getNormalizedString(
+        expect(utils.getNormalizedString(
             `First viewer: %1$@\\n%2$@ is the second one`,
-            [ javaEscapesDecoder, iosPHDecoder ]
+            [ java.escapesDecoder, ios.phDecoder ]
         )).toMatchObject([
             "First viewer: ",
             { t: 'x', v: '%1$@' },
@@ -42,10 +42,10 @@ describe('Regex Encoder tests', () => {
         ]);
     });
 
-    test('3 iosPHDecoder', async () => {
-        expect(getNormalizedString(
+    test('3 ios.phDecoder', async () => {
+        expect(utils.getNormalizedString(
             `Some nasty phs: %1$ld %02d %3$zd`,
-            [ iosPHDecoder ]
+            [ ios.phDecoder ]
         )).toMatchObject([
             "Some nasty phs: ",
             { t: 'x', v: '%1$ld' },
@@ -57,9 +57,9 @@ describe('Regex Encoder tests', () => {
     });
 
     test('ios with html', async () => {
-        expect(getNormalizedString(
+        expect(utils.getNormalizedString(
             "you are eligible for a future travel credit with %1$@. we will charge a rebooking fee of <color name='yellow'><b>%2$@ per passenger</b></color> when you use this credit to make a new booking.",
-            [ iosPHDecoder, xmlDecoder, javaEscapesDecoder ]
+            [ ios.phDecoder, xml.tagDecoder, java.escapesDecoder ]
         )).toMatchObject([
             'you are eligible for a future travel credit with ',
             { t: 'x', v: '%1$@' },
@@ -74,13 +74,13 @@ describe('Regex Encoder tests', () => {
           ]);
     });
 
-    test('gatedEncoder', async () => {
-        expect(gatedEncoder(xmlEntityEncoder, 'foo')('<b>')).toBe('<b>');
-        expect(gatedEncoder(xmlEntityEncoder, 'foo')('<b>', { foo: true })).toBe('&lt;b>');
+    test('normalizers.gatedEncoder', async () => {
+        expect(normalizers.gatedEncoder(xml.entityEncoder, 'foo')('<b>')).toBe('<b>');
+        expect(normalizers.gatedEncoder(xml.entityEncoder, 'foo')('<b>', { foo: true })).toBe('&lt;b>');
     });
 
     test('java variable with single quote', async () => {
-        expect(getNormalizedString("For {0}. This is a great deal, but this price won''t last.",[ javaMFQuotesDecoder, javaEscapesDecoder, bracePHDecoder, xmlEntityDecoder ]))
+        expect(utils.getNormalizedString("For {0}. This is a great deal, but this price won''t last.",[ java.MFQuotesDecoder, java.escapesDecoder, normalizers.bracePHDecoder, xml.entityDecoder ]))
         .toMatchObject([
             "For ",
             {"t": "x", "v": "{0}"},

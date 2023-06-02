@@ -1,5 +1,5 @@
 {
-	"default-1.json": {
+	"activity-0.json": {
 		"dashlets/activity-list.get_en.properties": {
 			"id": "dashlets/activity-list.get_en.properties",
 			"modified": "2022-07-21T23:56:25.171Z",
@@ -8,8 +8,11 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "activity",
 			"contentType": "default"
-		},
+		}
+	},
+	"addons-0.json": {
 		"dashlets/addons.get_en.properties": {
 			"id": "dashlets/addons.get_en.properties",
 			"modified": "2015-03-30T12:25:10.000Z",
@@ -18,8 +21,11 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "addons",
 			"contentType": "default"
-		},
+		}
+	},
+	"async-0.json": {
 		"dashlets/async-rssfeed.get_en.properties": {
 			"id": "dashlets/async-rssfeed.get_en.properties",
 			"modified": "2022-06-14T22:09:41.224Z",
@@ -28,6 +34,7 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "async",
 			"contentType": "default"
 		},
 		"dashlets/async-rssfeed.post_en.properties": {
@@ -38,8 +45,11 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "async",
 			"contentType": "default"
-		},
+		}
+	},
+	"calendar-0.json": {
 		"dashlets/calendar.get_en.properties": {
 			"id": "dashlets/calendar.get_en.properties",
 			"modified": "2015-03-30T12:25:10.000Z",
@@ -48,8 +58,11 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "calendar",
 			"contentType": "default"
-		},
+		}
+	},
+	"colleagues-0.json": {
 		"dashlets/colleagues.get_en.properties": {
 			"id": "dashlets/colleagues.get_en.properties",
 			"modified": "2015-03-30T12:25:10.000Z",
@@ -58,8 +71,11 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "colleagues",
 			"contentType": "default"
-		},
+		}
+	},
+	"docsummary-0.json": {
 		"dashlets/docsummary.get_en.properties": {
 			"id": "dashlets/docsummary.get_en.properties",
 			"modified": "2015-03-30T12:25:10.000Z",
@@ -68,8 +84,11 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "docsummary",
 			"contentType": "default"
-		},
+		}
+	},
+	"dynamic-0.json": {
 		"dashlets/dynamic-welcome.get_en.properties": {
 			"id": "dashlets/dynamic-welcome.get_en.properties",
 			"modified": "2015-03-30T12:25:10.000Z",
@@ -78,8 +97,11 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "dynamic",
 			"contentType": "default"
-		},
+		}
+	},
+	"forum-0.json": {
 		"dashlets/forum-summary.get_en.properties": {
 			"id": "dashlets/forum-summary.get_en.properties",
 			"modified": "2015-03-30T12:25:10.000Z",
@@ -88,8 +110,11 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "forum",
 			"contentType": "default"
-		},
+		}
+	},
+	"imagesummary-0.json": {
 		"dashlets/imagesummary.get_en.properties": {
 			"id": "dashlets/imagesummary.get_en.properties",
 			"modified": "2015-03-30T12:25:10.000Z",
@@ -98,8 +123,11 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "imagesummary",
 			"contentType": "default"
-		},
+		}
+	},
+	"my-0.json": {
 		"dashlets/my-activities.get_en.properties": {
 			"id": "dashlets/my-activities.get_en.properties",
 			"modified": "2015-03-30T12:25:10.000Z",
@@ -108,6 +136,7 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "my",
 			"contentType": "default"
 		},
 		"dashlets/my-docs-editing.get_en.properties": {
@@ -118,6 +147,7 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "my",
 			"contentType": "default"
 		},
 		"dashlets/my-documents.get_en.properties": {
@@ -128,6 +158,7 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "my",
 			"contentType": "default"
 		},
 		"dashlets/my-meeting-workspaces.get_en.properties": {
@@ -138,6 +169,7 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "my",
 			"contentType": "default"
 		},
 		"dashlets/my-profile.get_en.properties": {
@@ -148,6 +180,7 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "my",
 			"contentType": "default"
 		},
 		"dashlets/my-sites.get_en.properties": {
@@ -158,6 +191,7 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "my",
 			"contentType": "default"
 		},
 		"dashlets/my-tasks.get_en.properties": {
@@ -168,6 +202,7 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "my",
 			"contentType": "default"
 		},
 		"dashlets/my-workspaces.get_en.properties": {
@@ -178,8 +213,11 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "my",
 			"contentType": "default"
-		},
+		}
+	},
+	"rssfeed-0.json": {
 		"dashlets/rssfeed.get_en.properties": {
 			"id": "dashlets/rssfeed.get_en.properties",
 			"modified": "2015-03-30T12:25:10.000Z",
@@ -188,8 +226,11 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "rssfeed",
 			"contentType": "default"
-		},
+		}
+	},
+	"saved-0.json": {
 		"dashlets/saved-search.get_en.properties": {
 			"id": "dashlets/saved-search.get_en.properties",
 			"modified": "2015-03-30T12:25:10.000Z",
@@ -198,8 +239,11 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "saved",
 			"contentType": "default"
-		},
+		}
+	},
+	"site-0.json": {
 		"dashlets/site-activities.get_en.properties": {
 			"id": "dashlets/site-activities.get_en.properties",
 			"modified": "2015-03-30T12:25:10.000Z",
@@ -208,6 +252,7 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "site",
 			"contentType": "default"
 		},
 		"dashlets/site-data-lists.get_en.properties": {
@@ -218,6 +263,7 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "site",
 			"contentType": "default"
 		},
 		"dashlets/site-links.get_en.properties": {
@@ -228,6 +274,7 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "site",
 			"contentType": "default"
 		},
 		"dashlets/site-notice.get_en.properties": {
@@ -238,6 +285,7 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "site",
 			"contentType": "default"
 		},
 		"dashlets/site-profile.get_en.properties": {
@@ -248,6 +296,7 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "site",
 			"contentType": "default"
 		},
 		"dashlets/site-search.get_en.properties": {
@@ -258,8 +307,11 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "site",
 			"contentType": "default"
-		},
+		}
+	},
+	"user-0.json": {
 		"dashlets/user-calendar.get_en.properties": {
 			"id": "dashlets/user-calendar.get_en.properties",
 			"modified": "2015-03-30T12:25:10.000Z",
@@ -268,8 +320,11 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "user",
 			"contentType": "default"
-		},
+		}
+	},
+	"webview-0.json": {
 		"dashlets/webview-default.get_en.properties": {
 			"id": "dashlets/webview-default.get_en.properties",
 			"modified": "2015-03-30T12:25:10.000Z",
@@ -278,6 +333,7 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "webview",
 			"contentType": "default"
 		},
 		"dashlets/webview.get_en.properties": {
@@ -288,8 +344,11 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "webview",
 			"contentType": "default"
-		},
+		}
+	},
+	"wiki-0.json": {
 		"dashlets/wiki.get_en.properties": {
 			"id": "dashlets/wiki.get_en.properties",
 			"modified": "2015-03-30T12:25:10.000Z",
@@ -298,6 +357,7 @@
 				"ja",
 				"pt-BR"
 			],
+			"prj": "wiki",
 			"contentType": "default"
 		}
 	}

@@ -1,10 +1,10 @@
-import * as java from "../../src/filters/java";
-import { readFileSync } from 'fs';
+const java = require('@l10nmonster/helpers-java');
+const fs = require('fs');
 
 describe("java parseResource", () => {
-    const resourceFilter = new java.JavaPropertiesFilter();
-    const resourceId = 'tests/files/values/messages.properties';
-    const resource = readFileSync(resourceId, 'utf8');
+    const resourceFilter = new java.PropertiesFilter();
+    const resourceId = 'files/values/messages.properties';
+    const resource = fs.readFileSync(resourceId, 'utf8');
 
 
     test('basic parsing logic', async () => {

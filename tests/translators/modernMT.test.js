@@ -1,15 +1,16 @@
-import { readFileSync } from 'fs';
-import * as path from 'path';
-import { ModernMT } from '../../src/translators/modernMT';
-import { OpsMgr } from '../../src/opsMgr';
+const path = require('path');
+const fs = require('fs');
+const translated = require('@l10nmonster/helpers-translated');
+const { OpsMgr } = require('@l10nmonster/core');
+const { sharedCtx, mergeProps } = require('@l10nmonster/helpers');
 
-const getArtifact = filename => JSON.parse(readFileSync(path.join('tests', 'translators', 'artifacts', filename)));
+const getArtifact = filename => JSON.parse(fs.readFileSync(path.join('translators', 'artifacts', filename)));
 const logger = { info: () => true, verbose: () => true };
-ModernMT.prototype.ctx = {
+mergeProps({
     logger,
     opsMgr: new OpsMgr({ logger }),
     regression: true,
-};
+});
 const glossary = {
     'Payments Testing': {
         'it': '**Payment Testing**'
@@ -19,19 +20,19 @@ const glossary = {
 };
 
 describe('Modern MT translator', () => {
-    const realtimeTranslator = new ModernMT({
+    const realtimeTranslator = new translated.ModernMT({
         apiKey: 'x',
         quality: 40,
         glossary,
     });
-    const batchTranslator = new ModernMT({
+    const batchTranslator = new translated.ModernMT({
         apiKey: 'x',
         webhook: 'x',
         chunkFetcher: () => getArtifact('MMT-realtime-op0.json'),
         quality: 40,
         glossary,
     });
-    ModernMT.prototype.ctx.opsMgr.registry.mmtTranslateChunkOp.callback = async function mockTranslateChunkOp() {
+    sharedCtx().opsMgr.registry.mmtTranslateChunkOp.callback = async function mockTranslateChunkOp() {
         // eslint-disable-next-line no-invalid-this
         return this.opList[1].opName === 'mmtMergeTranslatedChunksOp' ?
             getArtifact('MMT-realtime-op0.json') :
@@ -49,8 +50,10 @@ describe('Modern MT translator', () => {
     });
 
     test('batch fetchTranslations returns done jobResponse', async () => {
-        const jobResponse = await batchTranslator.fetchTranslations(getArtifact('ModernMTBatch_en_it_job_xrmVYwMMnXRzUR7s1-Pdk-pending.json'),
-            getArtifact('ModernMTBatch_en_it_job_xrmVYwMMnXRzUR7s1-Pdk-req.json'));
+        const jobResponse = await batchTranslator.fetchTranslations(
+            getArtifact('ModernMTBatch_en_it_job_xrmVYwMMnXRzUR7s1-Pdk-pending.json'),
+            getArtifact('ModernMTBatch_en_it_job_xrmVYwMMnXRzUR7s1-Pdk-req.json')
+        );
         expect(jobResponse).toMatchObject(getArtifact('ModernMTBatch_en_it_job_xrmVYwMMnXRzUR7s1-Pdk-done.json'));
     });
 });

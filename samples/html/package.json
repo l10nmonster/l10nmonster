@@ -1,0 +1,10 @@
+{
+    "name": "html-demo",
+    "dependencies": {
+        "@l10nmonster/helpers": "../../helpers",
+        "@l10nmonster/helpers-http": "../../helpers-http",
+        "@l10nmonster/helpers-html": "../../helpers-html",
+        "@l10nmonster/helpers-translated": "../../helpers-translated",
+        "@l10nmonster/helpers-demo": "../../helpers-demo"
+    }
+  }

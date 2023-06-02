@@ -1,0 +1,77 @@
+{
+	"dashlets/imagesummary.get_en.properties": {
+		"id": "dashlets/imagesummary.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"prj": "imagesummary",
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "header.title",
+				"str": "Image Preview",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "fOzFYWf5p9zLAoul1h5_L8PRFB9JVo_HcIXCbFZ22FY"
+			},
+			{
+				"sid": "label.noitems",
+				"str": "No items to display",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"guid": "0-GrFX12d4kQcyxamhrCI4tuDTExyjLmiUZ8exmZxDo"
+			},
+			{
+				"sid": "text.modified-by",
+				"str": "Modified by {0}",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"nstr": [
+					"Modified by ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "Modified by {{x}}",
+				"guid": "7hvIhLuGVxH0OLkjSIpS2xfo-eU_VI1zH5GxHtGdhpM"
+			},
+			{
+				"sid": "text.selectfolder",
+				"str": "Select Image Folder in {0}...",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"nstr": [
+					"Select Image Folder in ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					"..."
+				],
+				"gstr": "Select Image Folder in {{x}}...",
+				"guid": "XPbxA8FEoDrdItRlt4KXXtwCJRKixsE78JnRZ9vBRHY"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "This dashlet shows a thumbnail of each image in the document library. Clicking a thumbnail opens the image in the current window.",
+				"location": {
+					"startLine": 6,
+					"endLine": 6
+				},
+				"guid": "Ly4fkat27mxTxU9l3TSeFaUihGmSkMhBS1OmC1dHGfY"
+			}
+		]
+	}
+}

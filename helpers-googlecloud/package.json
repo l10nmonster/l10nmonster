@@ -1,0 +1,17 @@
+{
+  "name": "@l10nmonster/helpers-googlecloud",
+  "version": "1.0.0",
+  "description": "Helpers to integrate with Google Cloud Platfrom",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Diego Lagunas",
+  "license": "MIT",
+  "dependencies": {
+    "@google-cloud/translate": "^7.0.0",
+  },
+  "peerDependencies": {
+    "@l10nmonster/helpers": "../helpers"
+  }
+}

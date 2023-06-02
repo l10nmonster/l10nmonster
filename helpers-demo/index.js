@@ -1,0 +1,1 @@
+exports.PigLatinizer = require('./piglatinizer');

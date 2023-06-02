@@ -1,0 +1,17 @@
+{
+  "name": "@l10nmonster/helpers-xliff",
+  "version": "1.0.0",
+  "description": "Helpers to deal with the XLIFF file format",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Diego Lagunas",
+  "license": "MIT",
+  "dependencies": {
+    "xliff": "^6.0.1"
+  },
+  "peerDependencies": {
+    "@l10nmonster/helpers": "../helpers"
+  }
+}

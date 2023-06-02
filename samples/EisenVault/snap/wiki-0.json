@@ -1,0 +1,85 @@
+{
+	"dashlets/wiki.get_en.properties": {
+		"id": "dashlets/wiki.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"prj": "wiki",
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "label.header",
+				"str": "Wiki",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "tsUhoDa8t8CFonVR8KHvel4WKS9SQ9FXHzCcsTkt3bs"
+			},
+			{
+				"sid": "label.header-prefix",
+				"str": "Wiki",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"guid": "gksc8DHW-8RthR-g1Dm982LeG5shOJQG1_FUXaGG8RA"
+			},
+			{
+				"sid": "label.configure",
+				"str": "Configure",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"guid": "iVQEaDYs1oi356F_6MZiUW905O8LQl1bKRWNJg4DGqk"
+			},
+			{
+				"sid": "label.noConfig",
+				"str": "No page is configured",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"guid": "WbL_w7F4YtPHfi2CGZuO_iHD42Gsfv9JFL3uE8B3hmY"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "<p>This dashlet shows a page selected from the site's wiki.</p><p>Navigate to the wiki to see all related content.</p>",
+				"location": {
+					"startLine": 7,
+					"endLine": 8
+				},
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				},
+				"nstr": [
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"This dashlet shows a page selected from the site's wiki.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					},
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"Navigate to the wiki to see all related content.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					}
+				],
+				"gstr": "{{bx}}This dashlet shows a page selected from the site's wiki.{{ex}}{{bx}}Navigate to the wiki to see all related content.{{ex}}",
+				"guid": "vhg8jKxMyyqUEyhnwsgqh8K2eG9SPJY2FXylniirXmA",
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			}
+		]
+	}
+}

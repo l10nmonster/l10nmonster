@@ -1,0 +1,160 @@
+{
+	"dashlets/docsummary.get_en.properties": {
+		"id": "dashlets/docsummary.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"prj": "docsummary",
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "header",
+				"str": "Site Content",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "-jkZ8mNn1-5gY57cN8Iwf4TRvNgsswnWDCYc9YU1-DI"
+			},
+			{
+				"sid": "filter.favourites",
+				"str": "My Favorites",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"notes": {
+					"desc": "## Filters"
+				},
+				"guid": "Eq6kdX8FRZrnHXZ8tj-1WkbVn79SRm10JD2L8-8Sy8w",
+				"rawNotes": "## Filters"
+			},
+			{
+				"sid": "filter.editingMe",
+				"str": "I'm Editing",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"guid": "97cVTH-GAwwPwiPkLIvfcpnA5adMWSAGoEbc3MRek1o"
+			},
+			{
+				"sid": "filter.recentlyModifiedByMe",
+				"str": "I've Recently Modified",
+				"location": {
+					"startLine": 6,
+					"endLine": 6
+				},
+				"guid": "hf7blJXAg22Fri6NHgJ7s70yxHa6yBhqcqADR_1yjVw"
+			},
+			{
+				"sid": "filter.synced",
+				"str": "Synced content",
+				"location": {
+					"startLine": 7,
+					"endLine": 7
+				},
+				"guid": "qbkzWNAbC_TxskmbnRMPTAFC_Qivo452sE-eKom4sEk"
+			},
+			{
+				"sid": "filter.syncedErrors",
+				"str": "Synced with Errors",
+				"location": {
+					"startLine": 8,
+					"endLine": 8
+				},
+				"guid": "r39Zh1WRDhk2ssx_nqreCADYUoE4NLCBoirF7Hyz0pc"
+			},
+			{
+				"sid": "empty.title",
+				"str": "Keep track of content changes",
+				"location": {
+					"startLine": 10,
+					"endLine": 10
+				},
+				"guid": "JRcN8pfbtc9OtGAhnn5foEsq1M7RTW7U_xk4GzVE5lc"
+			},
+			{
+				"sid": "empty.description",
+				"str": "Easily see which document library items site members have been working on. In the detailed view you can like an item and mark it as a favorite. You can also jump to the details page to leave a comment.",
+				"location": {
+					"startLine": 11,
+					"endLine": 11
+				},
+				"guid": "AoGMEuVT8eQgM6akvguJJHpfNLiR5zK9PCNZ6dZJ89s"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "<p>This dashlet makes it easy to keep track of your recent changes to library content in this site. Clicking the item name or thumbnail takes you to the details page so you can preview or work with the item.</p><p>There are two views for this dashlet. The detailed view lets you:<ul><li>Mark an item as a favorite so it appears in Favorites lists for easy access</li><li>Like (and unlike) an item</li><li>Jump to the item details page to leave a comment</li></ul></p>",
+				"location": {
+					"startLine": 14,
+					"endLine": 18
+				},
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				},
+				"nstr": [
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"This dashlet makes it easy to keep track of your recent changes to library content in this site. Clicking the item name or thumbnail takes you to the details page so you can preview or work with the item.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					},
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"There are two views for this dashlet. The detailed view lets you:",
+					{
+						"t": "bx",
+						"v": "<ul>"
+					},
+					{
+						"t": "bx",
+						"v": "<li>"
+					},
+					"Mark an item as a favorite so it appears in Favorites lists for easy access",
+					{
+						"t": "ex",
+						"v": "</li>"
+					},
+					{
+						"t": "bx",
+						"v": "<li>"
+					},
+					"Like (and unlike) an item",
+					{
+						"t": "ex",
+						"v": "</li>"
+					},
+					{
+						"t": "bx",
+						"v": "<li>"
+					},
+					"Jump to the item details page to leave a comment",
+					{
+						"t": "ex",
+						"v": "</li>"
+					},
+					{
+						"t": "ex",
+						"v": "</ul>"
+					},
+					{
+						"t": "ex",
+						"v": "</p>"
+					}
+				],
+				"gstr": "{{bx}}This dashlet makes it easy to keep track of your recent changes to library content in this site. Clicking the item name or thumbnail takes you to the details page so you can preview or work with the item.{{ex}}{{bx}}There are two views for this dashlet. The detailed view lets you:{{bx}}{{bx}}Mark an item as a favorite so it appears in Favorites lists for easy access{{ex}}{{bx}}Like (and unlike) an item{{ex}}{{bx}}Jump to the item details page to leave a comment{{ex}}{{ex}}{{ex}}",
+				"guid": "LiZ1Us13QP3ByVIcMm62HGr4E_GM48xSJKMED2MBqn4",
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			}
+		]
+	}
+}

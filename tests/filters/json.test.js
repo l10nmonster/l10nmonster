@@ -1,7 +1,7 @@
-import * as json from "../../src/filters/json";
+const { i18next } = require('@l10nmonster/helpers-json');
 
 describe("json parseResource - description", () => {
-    const resourceFilter = new json.JsonFilter({
+    const resourceFilter = new i18next.Filter({
         enableArbAnnotations: true,
     });
 
@@ -134,7 +134,7 @@ describe("json parseResource - description", () => {
     });
 });
 describe("json parseResource - no options", () => {
-    const resourceFilter = new json.JsonFilter();
+    const resourceFilter = new i18next.Filter();
     test("parseResource returns raw parsed resource for simple string", async () => {
         const resource = {
             homeSubtitle: "Book the trip you've been waiting for.",
@@ -223,7 +223,7 @@ describe("json parseResource - no options", () => {
 });
 
 describe("json parseResource -  plurals", () => {
-    const resourceFilter = new json.JsonFilter({
+    const resourceFilter = new i18next.Filter({
         enableArbAnnotations: true,
         enablePluralSuffixes: true,
     });
@@ -324,7 +324,7 @@ describe("json parseResource -  plurals", () => {
 });
 
 describe("json translateResource - emit annotations", () => {
-    const resourceFilter = new json.JsonFilter({
+    const resourceFilter = new i18next.Filter({
         enableArbAnnotations: true,
         enablePluralSuffixes: true,
         emitArbAnnotations: true,
@@ -459,7 +459,7 @@ describe("json translateResource - emit annotations", () => {
 });
 
 describe("json translateResource - don't emit annotations", () => {
-    const resourceFilter = new json.JsonFilter({
+    const resourceFilter = new i18next.Filter({
         enableArbAnnotations: true,
         enablePluralSuffixes: true,
     });
@@ -497,7 +497,7 @@ describe("json translateResource - don't emit annotations", () => {
 });
 
 describe("json translateResource - if no translation, delete annotations", () => {
-    const resourceFilter = new json.JsonFilter({
+    const resourceFilter = new i18next.Filter({
         enableArbAnnotations: true,
         enablePluralSuffixes: true,
         emitArbAnnotations: true,

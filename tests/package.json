@@ -1,0 +1,37 @@
+{
+    "name": "l10nmonster-tests",
+    "version": "1.0.0",
+    "description": "Integration test suite",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "test": "node node_modules/jest/bin/jest.js"
+    },
+    "author": "Diego Lagunas",
+    "license": "MIT",
+    "engines": {
+        "node": ">=18"
+    },
+    "dependencies": {
+        "@l10nmonster/helpers": "../helpers",
+        "@l10nmonster/helpers-android": "../helpers-android",
+        "@l10nmonster/helpers-demo": "../helpers-demo",
+        "@l10nmonster/helpers-html": "../helpers-html",
+        "@l10nmonster/helpers-ios": "../helpers-ios",
+        "@l10nmonster/helpers-java": "../helpers-java",
+        "@l10nmonster/helpers-json": "../helpers-json",
+        "@l10nmonster/helpers-translated": "../helpers-translated",
+        "@l10nmonster/core": "../core"
+    },
+    "devDependencies": {
+        "eslint": "^8",
+        "eslint-plugin-jest": "^27",
+        "jest": "^29"
+    },
+    "jest": {
+        "transform": {},
+        "moduleFileExtensions": [
+            "js"
+        ]
+    }
+}

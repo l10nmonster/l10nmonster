@@ -1,0 +1,228 @@
+{
+	"dashlets/forum-summary.get_en.properties": {
+		"id": "dashlets/forum-summary.get_en.properties",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"prj": "forum",
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "header.title",
+				"str": "My Discussions",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "-mF3ugEQpGdMiNj6mR92iwaVMBtHy4HL5ZIJThK6iZU"
+			},
+			{
+				"sid": "newTopic.button",
+				"str": "New Topic",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"guid": "AOIIEpiCu9WedMyqPeO1AyNZSHlySVzODmPV5o8kjUc"
+			},
+			{
+				"sid": "no.result",
+				"str": "There are no topics matching your filters.",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"guid": "4Zbp5n5fAngZAKluzQ_hZqBwFptprKA-c5yHlUS0S98"
+			},
+			{
+				"sid": "topicList.updated",
+				"str": "Updated",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"guid": "zfEXHMjig8Nq0hRvJFavv0YSYI687AAYRF7VDNBhedY"
+			},
+			{
+				"sid": "topicList.createdBy",
+				"str": "Created by {0} {1}.",
+				"location": {
+					"startLine": 7,
+					"endLine": 7
+				},
+				"notes": {
+					"desc": "## In topicList.createdBy {0} is Author Name and {1} is relative date."
+				},
+				"nstr": [
+					"Created by ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" ",
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					"."
+				],
+				"gstr": "Created by {{x}} {{x}}.",
+				"guid": "dIbVwxFYE1hxYeNCVvrHssPzog8X8nJJPpXXyZSsaHk",
+				"rawNotes": "## In topicList.createdBy {0} is Author Name and {1} is relative date."
+			},
+			{
+				"sid": "topicList.replies.single",
+				"str": "There is 1 reply.",
+				"location": {
+					"startLine": 8,
+					"endLine": 8
+				},
+				"guid": "xxSe_S0aI5ez8bvNdqKQb9ZwoYONnrfp0gcWTfaxo2c"
+			},
+			{
+				"sid": "topicList.replies.plural",
+				"str": "There are {0} replies.",
+				"location": {
+					"startLine": 9,
+					"endLine": 9
+				},
+				"nstr": [
+					"There are ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" replies."
+				],
+				"gstr": "There are {{x}} replies.",
+				"guid": "BKLINPpUNByqgqo-yseHMuAwNi5ux1F490G2zkx43bY"
+			},
+			{
+				"sid": "topicList.lastReplyBy",
+				"str": "The last reply was posted by {0} {1}.",
+				"location": {
+					"startLine": 11,
+					"endLine": 11
+				},
+				"notes": {
+					"desc": "## In topicList.lastReplyBy {0} is Author Name and {1} is relative date."
+				},
+				"nstr": [
+					"The last reply was posted by ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" ",
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					"."
+				],
+				"gstr": "The last reply was posted by {{x}} {{x}}.",
+				"guid": "3rxLae7mZjGkYb8BFHhRL2HRVinODjyavdUOs1PeKKc",
+				"rawNotes": "## In topicList.lastReplyBy {0} is Author Name and {1} is relative date."
+			},
+			{
+				"sid": "filter.topics.mine",
+				"str": "My Topics",
+				"location": {
+					"startLine": 14,
+					"endLine": 14
+				},
+				"notes": {
+					"desc": "# Filter 1"
+				},
+				"guid": "SaF5jfhsK1yJhYCtKwNK14xZFItSKzIHbyfOX09s3j4",
+				"rawNotes": "# Filter 1"
+			},
+			{
+				"sid": "filter.topics.all",
+				"str": "All Topics",
+				"location": {
+					"startLine": 15,
+					"endLine": 15
+				},
+				"guid": "MSPfQF1UwlwAcvWVCifinQbfh_Awliii9Ah1cS-YNAA"
+			},
+			{
+				"sid": "filter.history.1day",
+				"str": "Topics updated in the last day",
+				"location": {
+					"startLine": 17,
+					"endLine": 17
+				},
+				"notes": {
+					"desc": "# Filter 2"
+				},
+				"guid": "1xmZmVo3sItH_a_W99LVgEsp-40jP-cffl9A0AyIIDk",
+				"rawNotes": "# Filter 2"
+			},
+			{
+				"sid": "filter.history.7days",
+				"str": "Topics updated in the last 7 days",
+				"location": {
+					"startLine": 18,
+					"endLine": 18
+				},
+				"guid": "EvEWSxMZ0JyvlAQYQw7vxRTgVod348eqh3WUYn6EFIo"
+			},
+			{
+				"sid": "filter.history.14days",
+				"str": "Topics updated in the last 14 days",
+				"location": {
+					"startLine": 19,
+					"endLine": 19
+				},
+				"guid": "dre_B9YD3fbTKFCI4LdUyv2UQ9BuyWEC1OKW3YJUW6Y"
+			},
+			{
+				"sid": "filter.history.28days",
+				"str": "Topics updated in the last 28 days",
+				"location": {
+					"startLine": 20,
+					"endLine": 20
+				},
+				"guid": "mdEbnp88stSHwlqd2IFsRxHPOrXFWK1pt2g6GfJet3Y"
+			},
+			{
+				"sid": "dashlet.help",
+				"str": "<p>Discussion Forum dashlet.</p><p>View your latest posts on the Discussion Forum.</p>",
+				"location": {
+					"startLine": 23,
+					"endLine": 24
+				},
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				},
+				"nstr": [
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"Discussion Forum dashlet.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					},
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"View your latest posts on the Discussion Forum.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					}
+				],
+				"gstr": "{{bx}}Discussion Forum dashlet.{{ex}}{{bx}}View your latest posts on the Discussion Forum.{{ex}}",
+				"guid": "oVOocmmwS1_ao_0kAZ16L3x5qJASG71Nw-hgbl22TnQ",
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			}
+		]
+	}
+}

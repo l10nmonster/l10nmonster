@@ -1,0 +1,1182 @@
+{
+	"dashlets/activity-list.get_en.properties": {
+		"id": "dashlets/activity-list.get_en.properties",
+		"modified": "2022-07-21T23:56:25.171Z",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"prj": "activity",
+		"contentType": "default",
+		"segments": [
+			{
+				"sid": "title.generic",
+				"str": "New Activity",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"guid": "7Yg93c458EbHxMIJHNXXG77jF5ZnrMzxv8ScSU0oCyQ"
+			},
+			{
+				"sid": "more.activities",
+				"str": "{0} more",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"notes": {
+					"desc": "## Rollup"
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" more"
+				],
+				"gstr": "{{x}} more",
+				"guid": "iFr1XEoi3u89bv1K36QYJ8mOO-8yj4RdSWXpMtkowNo",
+				"rawNotes": "## Rollup"
+			},
+			{
+				"sid": "atom.title.site",
+				"str": "Alfresco Activities Site Feed for {0}",
+				"location": {
+					"startLine": 7,
+					"endLine": 7
+				},
+				"notes": {
+					"desc": "## ATOM feed messages"
+				},
+				"nstr": [
+					"Alfresco Activities Site Feed for ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "Alfresco Activities Site Feed for {{x}}",
+				"guid": "DQ_hE0YU3Dc1i-RCzydiH221mS2bCTGrix7yN0NVYjs",
+				"rawNotes": "## ATOM feed messages"
+			},
+			{
+				"sid": "atom.title.user",
+				"str": "Alfresco Activities User Feed for {0}",
+				"location": {
+					"startLine": 8,
+					"endLine": 8
+				},
+				"nstr": [
+					"Alfresco Activities User Feed for ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "Alfresco Activities User Feed for {{x}}",
+				"guid": "QUNbFFCnev-5nePd6x-GLS_ECDiaiAilPFQsud2YAoE"
+			},
+			{
+				"sid": "in.site",
+				"str": "{0} in {1}",
+				"location": {
+					"startLine": 11,
+					"endLine": 11
+				},
+				"notes": {
+					"desc": "## Optional Site link"
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" in ",
+					{
+						"t": "x",
+						"v": "{1}"
+					}
+				],
+				"gstr": "{{x}} in {{x}}",
+				"guid": "BpkBpKi4k1zbxxMBjLweUIMIakji86zWvO-jLYTfbc8",
+				"rawNotes": "## Optional Site link"
+			},
+			{
+				"sid": "org.alfresco.blog.post-created",
+				"str": "{1} created blog post {0}",
+				"location": {
+					"startLine": 14,
+					"endLine": 14
+				},
+				"notes": {
+					"desc": "## 0 = Item title / page link, 1 = User profile link, 2 = custom0, 3 = custom1, 4 = Site link, 5 = second user profile link"
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" created blog post ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} created blog post {{x}}",
+				"guid": "3rblxtRQl_XxzcIRIcuXD1YiqWoZZGm2OK6VT_3AvEE",
+				"rawNotes": "## 0 = Item title / page link, 1 = User profile link, 2 = custom0, 3 = custom1, 4 = Site link, 5 = second user profile link"
+			},
+			{
+				"sid": "org.alfresco.blog.post-updated",
+				"str": "{1} updated blog post {0}",
+				"location": {
+					"startLine": 15,
+					"endLine": 15
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" updated blog post ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} updated blog post {{x}}",
+				"guid": "YWxB6wV9NKqyi_xBz9gfJXM9gVGUn8fmMLpstgYj4GQ"
+			},
+			{
+				"sid": "org.alfresco.blog.post-deleted",
+				"str": "{1} deleted blog post {0}",
+				"location": {
+					"startLine": 16,
+					"endLine": 16
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" deleted blog post ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} deleted blog post {{x}}",
+				"guid": "M9uKQf1rlQ2VvflkhXLRngLoR1dO97dbM0pgqzAYWBQ"
+			},
+			{
+				"sid": "org.alfresco.comments.comment-created",
+				"str": "{1} commented on {0}",
+				"location": {
+					"startLine": 17,
+					"endLine": 17
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" commented on ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} commented on {{x}}",
+				"guid": "Es__KuVLCYEEqbxJ7UH0OufVMIRx1P1XxjQorI3KvoM"
+			},
+			{
+				"sid": "org.alfresco.comments.comment-updated",
+				"str": "{1} updated comment on {0}",
+				"location": {
+					"startLine": 18,
+					"endLine": 18
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" updated comment on ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} updated comment on {{x}}",
+				"guid": "SMBJeA-SZElxfZ3ogui9-bgmMdN-AW7Wn3K_RzxHgnM"
+			},
+			{
+				"sid": "org.alfresco.comments.comment-deleted",
+				"str": "{1} deleted a comment from {0}",
+				"location": {
+					"startLine": 19,
+					"endLine": 19
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" deleted a comment from ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} deleted a comment from {{x}}",
+				"guid": "a8SuqJb6qftuXW9zPPZ6uOsN8HzkGBQTu1gkrLtn-y8"
+			},
+			{
+				"sid": "org.alfresco.discussions.post-created",
+				"str": "{1} started discussion {0}",
+				"location": {
+					"startLine": 20,
+					"endLine": 20
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" started discussion ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} started discussion {{x}}",
+				"guid": "lL5Nz22Eel1_uruDJPcXXY6GRPfiFUNIkPHHnkwJjTA"
+			},
+			{
+				"sid": "org.alfresco.discussions.post-updated",
+				"str": "{1} updated discussion {0}",
+				"location": {
+					"startLine": 21,
+					"endLine": 21
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" updated discussion ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} updated discussion {{x}}",
+				"guid": "yY_62owOshI5WedZZ56RMH0mAHZqkoQFzrl72QouUxM"
+			},
+			{
+				"sid": "org.alfresco.discussions.post-deleted",
+				"str": "{1} deleted discussion {0}",
+				"location": {
+					"startLine": 22,
+					"endLine": 22
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" deleted discussion ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} deleted discussion {{x}}",
+				"guid": "FLMtjIXON6hrlKJM6PGLnITDdlaxsrB-TMZcUwfOucE"
+			},
+			{
+				"sid": "org.alfresco.discussions.reply-created",
+				"str": "{1} replied to the discussion {0}",
+				"location": {
+					"startLine": 23,
+					"endLine": 23
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" replied to the discussion ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} replied to the discussion {{x}}",
+				"guid": "G7fyHbsNuus4ZSyQBBbgTKT8wGSRnTILfVHPH6wEH6A"
+			},
+			{
+				"sid": "org.alfresco.discussions.reply-updated",
+				"str": "{1} updated a reply to {0}",
+				"location": {
+					"startLine": 24,
+					"endLine": 24
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" updated a reply to ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} updated a reply to {{x}}",
+				"guid": "4P3iwkdyW7FrOtYbhDH0Ubzp2SkQjh16-5cEasPP7Wg"
+			},
+			{
+				"sid": "org.alfresco.calendar.event-created",
+				"str": "{1} created calendar event {0}",
+				"location": {
+					"startLine": 25,
+					"endLine": 25
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" created calendar event ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} created calendar event {{x}}",
+				"guid": "EpZriwYtslQ1Izp3rQ1x2B6n6gH-cWMAJvwjBI-vb3c"
+			},
+			{
+				"sid": "org.alfresco.calendar.event-updated",
+				"str": "{1} updated calendar event {0}",
+				"location": {
+					"startLine": 26,
+					"endLine": 26
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" updated calendar event ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} updated calendar event {{x}}",
+				"guid": "a9CEM5Ua1GPhvul1Sd8EtIUHss9ao3oWUcRNTDvpcIU"
+			},
+			{
+				"sid": "org.alfresco.calendar.event-deleted",
+				"str": "{1} deleted calendar event {0}",
+				"location": {
+					"startLine": 27,
+					"endLine": 27
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" deleted calendar event ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} deleted calendar event {{x}}",
+				"guid": "DIP9jIIiKl8ruyh8W69Wny6LPeVdb8fpRZaDsrBV86U"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.file-added",
+				"str": "{1} added document {0}",
+				"location": {
+					"startLine": 28,
+					"endLine": 28
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" added document ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} added document {{x}}",
+				"guid": "k5JI_WYPDUNRUh0sFZquifwJkCf4g1VKj1PKIM0A_JE"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.files-added",
+				"str": "{1} added {0} documents",
+				"location": {
+					"startLine": 29,
+					"endLine": 29
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" added ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" documents"
+				],
+				"gstr": "{{x}} added {{x}} documents",
+				"guid": "FpjduiGSXQ5iah8xYImPZthEzoV0MzzT60prVEZhdEI"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.file-created",
+				"str": "{1} created document {0}",
+				"location": {
+					"startLine": 30,
+					"endLine": 30
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" created document ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} created document {{x}}",
+				"guid": "AN4ncvCCj7nzsY4-Ke7CzA6iVA--CMdk1mNrOJztpzw"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.file-deleted",
+				"str": "{1} deleted document {0}",
+				"location": {
+					"startLine": 31,
+					"endLine": 31
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" deleted document ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} deleted document {{x}}",
+				"guid": "P1ByqIYS2ma6bymP1W7DSf4FHxRbI-9KaQ2sdBE71T8"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.files-deleted",
+				"str": "{1} deleted {0} documents",
+				"location": {
+					"startLine": 32,
+					"endLine": 32
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" deleted ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" documents"
+				],
+				"gstr": "{{x}} deleted {{x}} documents",
+				"guid": "K7TJHd23oMM3cpKocUkxiAaqxOji9bwR1Mg8t-BHMFI"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.file-updated",
+				"str": "{1} updated document {0}",
+				"location": {
+					"startLine": 33,
+					"endLine": 33
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" updated document ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} updated document {{x}}",
+				"guid": "k1cgnaImIwxlUrS497kcSNmvzuv5I68j0ioyzX7c8Ic"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.files-updated",
+				"str": "{1} updated {0} documents",
+				"location": {
+					"startLine": 34,
+					"endLine": 34
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" updated ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" documents"
+				],
+				"gstr": "{{x}} updated {{x}} documents",
+				"guid": "MRW4EYDzbzarsY0z4zraAtLm1WKLPN1ghyiMvB1Hipo"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.folder-added",
+				"str": "{1} added folder {0}",
+				"location": {
+					"startLine": 35,
+					"endLine": 35
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" added folder ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} added folder {{x}}",
+				"guid": "-OYvZdJn7BfWeFGaR9ed039gXtmFY4HJFPio2jMWHaQ"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.folder-deleted",
+				"str": "{1} deleted folder {0}",
+				"location": {
+					"startLine": 36,
+					"endLine": 36
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" deleted folder ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} deleted folder {{x}}",
+				"guid": "ofzKoQpmR2mq6Plf9V5MSEd6Fz5Ltq13-U1tFAqrq0U"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.folders-added",
+				"str": "{1} added {0} folders",
+				"location": {
+					"startLine": 37,
+					"endLine": 37
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" added ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" folders"
+				],
+				"gstr": "{{x}} added {{x}} folders",
+				"guid": "7dt9A3Z7_mUhwpEHH4bkovTsRMMtaKLj5y5U-wjXkkY"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.folders-deleted",
+				"str": "{1} deleted {0} folders",
+				"location": {
+					"startLine": 38,
+					"endLine": 38
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" deleted ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" folders"
+				],
+				"gstr": "{{x}} deleted {{x}} folders",
+				"guid": "swTAfUTLMpla4apCLpqnjgXkZ3TcF5AsbRcqSddr8fI"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.inline-edit",
+				"str": "{1} edited document {0}",
+				"location": {
+					"startLine": 39,
+					"endLine": 39
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" edited document ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} edited document {{x}}",
+				"guid": "5XD_c2iyMf_fWIRXdm7xW8g44PE7UlsQeAjKlI8Pis8"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.file-previewed",
+				"str": "{1} previewed document {0}",
+				"location": {
+					"startLine": 40,
+					"endLine": 40
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" previewed document ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} previewed document {{x}}",
+				"guid": "XUhHCOGm5hUKfi2Bu7miIbFB-1Z2aH57be4DnySac54"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.file-downloaded",
+				"str": "{1} downloaded document {0}",
+				"location": {
+					"startLine": 41,
+					"endLine": 41
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" downloaded document ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} downloaded document {{x}}",
+				"guid": "yGyNdsHARZCGXEefYEHIvYF0x9iBeUQH6UjRtlN0zVM"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.file-liked",
+				"str": "{1} liked document {0}",
+				"location": {
+					"startLine": 42,
+					"endLine": 42
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" liked document ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} liked document {{x}}",
+				"guid": "sq53xWPD5py_YTmisWVdG6XPVrXq0zyPVuQVFy_ZMFI"
+			},
+			{
+				"sid": "org.alfresco.documentlibrary.folder-liked",
+				"str": "{1} liked folder {0}",
+				"location": {
+					"startLine": 43,
+					"endLine": 43
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" liked folder ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} liked folder {{x}}",
+				"guid": "mEgaZISppd-nymvlS1qgCdLHUDUUK7eW54oV-cISyWU"
+			},
+			{
+				"sid": "org.alfresco.wiki.page-created",
+				"str": "{1} created wiki page {0}",
+				"location": {
+					"startLine": 44,
+					"endLine": 44
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" created wiki page ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} created wiki page {{x}}",
+				"guid": "naHyoyk-BovSB4V50pMdNZPzjnAZ6r0ncF1VEa5JWHs"
+			},
+			{
+				"sid": "org.alfresco.wiki.page-edited",
+				"str": "{1} updated wiki page {0}",
+				"location": {
+					"startLine": 45,
+					"endLine": 45
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" updated wiki page ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} updated wiki page {{x}}",
+				"guid": "YtQhKd3eEaTLfIaJrfYcuRyGunfwREShOn86r67mgYE"
+			},
+			{
+				"sid": "org.alfresco.wiki.page-renamed",
+				"str": "{1} renamed wiki page from {2} to {0}",
+				"location": {
+					"startLine": 46,
+					"endLine": 46
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" renamed wiki page from ",
+					{
+						"t": "x",
+						"v": "{2}"
+					},
+					" to ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} renamed wiki page from {{x}} to {{x}}",
+				"guid": "gNnHDtYlPLhKdm9AZdp9RSZRN28Lz5yhhXqCjSTtmoI"
+			},
+			{
+				"sid": "org.alfresco.wiki.page-deleted",
+				"str": "{1} deleted wiki page {0}",
+				"location": {
+					"startLine": 47,
+					"endLine": 47
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" deleted wiki page ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} deleted wiki page {{x}}",
+				"guid": "l9ZP_Bfh4tHIGY9ZcxlxUXabgDhEw0f-wpMCcc-8NKU"
+			},
+			{
+				"sid": "org.alfresco.site.group-added",
+				"str": "{1} group added to site {4} with role {2}",
+				"location": {
+					"startLine": 48,
+					"endLine": 48
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" group added to site ",
+					{
+						"t": "x",
+						"v": "{4}"
+					},
+					" with role ",
+					{
+						"t": "x",
+						"v": "{2}"
+					}
+				],
+				"gstr": "{{x}} group added to site {{x}} with role {{x}}",
+				"guid": "timdMkW30K9sQGhUufC1DXZfOpkDLerkyptYkocdi-U"
+			},
+			{
+				"sid": "org.alfresco.site.group-removed",
+				"str": "{1} group removed from site {4}",
+				"location": {
+					"startLine": 49,
+					"endLine": 49
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" group removed from site ",
+					{
+						"t": "x",
+						"v": "{4}"
+					}
+				],
+				"gstr": "{{x}} group removed from site {{x}}",
+				"guid": "MDvXxJekx5BhFE-YdFYqbKhnwbB11OtusxMefSw9Ovg"
+			},
+			{
+				"sid": "org.alfresco.site.group-role-changed",
+				"str": "{1} group role changed to {2}",
+				"location": {
+					"startLine": 50,
+					"endLine": 50
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" group role changed to ",
+					{
+						"t": "x",
+						"v": "{2}"
+					}
+				],
+				"gstr": "{{x}} group role changed to {{x}}",
+				"guid": "NMYuYdSO9wouYhDUSuSg37bFIkNCGZwfz76qM7WhIjc"
+			},
+			{
+				"sid": "org.alfresco.site.user-joined",
+				"str": "{1} joined site {4} with role {2}",
+				"location": {
+					"startLine": 51,
+					"endLine": 51
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" joined site ",
+					{
+						"t": "x",
+						"v": "{4}"
+					},
+					" with role ",
+					{
+						"t": "x",
+						"v": "{2}"
+					}
+				],
+				"gstr": "{{x}} joined site {{x}} with role {{x}}",
+				"guid": "UrEORD8AVE8d6EZqdgDvuDphITHpJAbuffhHQBMVUl4"
+			},
+			{
+				"sid": "org.alfresco.site.user-left",
+				"str": "{1} left site {4}",
+				"location": {
+					"startLine": 52,
+					"endLine": 52
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" left site ",
+					{
+						"t": "x",
+						"v": "{4}"
+					}
+				],
+				"gstr": "{{x}} left site {{x}}",
+				"guid": "27t2xPG0q5-I0c7i1uNxq8WBB20gzzoOd3BkbXj4udc"
+			},
+			{
+				"sid": "org.alfresco.site.user-role-changed",
+				"str": "{1} role changed to {2}",
+				"location": {
+					"startLine": 53,
+					"endLine": 53
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" role changed to ",
+					{
+						"t": "x",
+						"v": "{2}"
+					}
+				],
+				"gstr": "{{x}} role changed to {{x}}",
+				"guid": "NpcPUf7fkYkWBbp6clR1ToMNmBieBCT3KEmIljcByzc"
+			},
+			{
+				"sid": "org.alfresco.site.liked",
+				"str": "{1} liked site {0}",
+				"location": {
+					"startLine": 54,
+					"endLine": 54
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" liked site ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} liked site {{x}}",
+				"guid": "cCf_rWAkkua88a1zzltV1eBivRh9kqs4fomioU9L98c"
+			},
+			{
+				"sid": "org.alfresco.links.link-created",
+				"str": "{1} created link {0}",
+				"location": {
+					"startLine": 55,
+					"endLine": 55
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" created link ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} created link {{x}}",
+				"guid": "t_HZsv3of9h80u81tC9VgLeo36DqS-rp_l_Px7giuGs"
+			},
+			{
+				"sid": "org.alfresco.links.link-updated",
+				"str": "{1} updated link {0}",
+				"location": {
+					"startLine": 56,
+					"endLine": 56
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" updated link ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} updated link {{x}}",
+				"guid": "VbtwoVbSa-yFaG_Ut_rPeJJ_8aQ5oP7H-mSlnos0xu0"
+			},
+			{
+				"sid": "org.alfresco.links.link-deleted",
+				"str": "{1} deleted link {0}",
+				"location": {
+					"startLine": 57,
+					"endLine": 57
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" deleted link ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} deleted link {{x}}",
+				"guid": "KHTUkize79M1wpypmG2Vxaa9BbHVNCRz4aN6ofMGZHY"
+			},
+			{
+				"sid": "org.alfresco.datalists.list-created",
+				"str": "{1} created data list {0}",
+				"location": {
+					"startLine": 58,
+					"endLine": 58
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" created data list ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} created data list {{x}}",
+				"guid": "BxA_N4Lc1M41EAZJXgG9aF_wt8HFVtjXD9qtcC636iA"
+			},
+			{
+				"sid": "org.alfresco.datalists.list-updated",
+				"str": "{1} updated data list {0}",
+				"location": {
+					"startLine": 59,
+					"endLine": 59
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" updated data list ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} updated data list {{x}}",
+				"guid": "ZZ07qmBXDMVo247WJgTyZ0gicloP70B_XJRnKI05HsI"
+			},
+			{
+				"sid": "org.alfresco.datalists.list-deleted",
+				"str": "{1} deleted data list {0}",
+				"location": {
+					"startLine": 60,
+					"endLine": 60
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" deleted data list ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "{{x}} deleted data list {{x}}",
+				"guid": "OHO4FPrPe3sl47lzd7xNOprvy7sFJdjt7rAGV5-hv84"
+			},
+			{
+				"sid": "org.alfresco.subscriptions.followed",
+				"str": "{1} is now following {5}",
+				"location": {
+					"startLine": 61,
+					"endLine": 61
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" is now following ",
+					{
+						"t": "x",
+						"v": "{5}"
+					}
+				],
+				"gstr": "{{x}} is now following {{x}}",
+				"guid": "ZzwTjI7FDa82Eow7Bt9ZUOER1m_KoaAwpegPsYgABJA"
+			},
+			{
+				"sid": "org.alfresco.subscriptions.subscribed",
+				"str": "{1} has subscribed to {2}",
+				"location": {
+					"startLine": 62,
+					"endLine": 62
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" has subscribed to ",
+					{
+						"t": "x",
+						"v": "{2}"
+					}
+				],
+				"gstr": "{{x}} has subscribed to {{x}}",
+				"guid": "2AOJVDOcxcIal-UZ58LBGqUvETSCrFonNSdskqwn8zQ"
+			},
+			{
+				"sid": "org.alfresco.profile.status-changed",
+				"str": "{1}: {2}",
+				"location": {
+					"startLine": 63,
+					"endLine": 63
+				},
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					": ",
+					{
+						"t": "x",
+						"v": "{2}"
+					}
+				],
+				"gstr": "{{x}}: {{x}}",
+				"guid": "PcOlYWnFGlHetTuVT8GlQk6iQXqNNcSnYfgUS6QqTbQ"
+			}
+		]
+	}
+}

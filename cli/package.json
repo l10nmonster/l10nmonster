@@ -1,0 +1,53 @@
+{
+  "name": "@l10nmonster/cli",
+  "version": "1.0.0",
+  "description": "Continuous localization for the rest of us",
+  "bin": {
+    "l10n": "out/l10n.cjs"
+  },
+  "exports": {
+    "import": "./l10nCommands.js",
+    "require": "./out/l10nCommands.cjs"
+  },
+  "main": "out/l10nCommands.cjs",
+  "type": "module",
+  "scripts": {
+    "esbuild-cmd": "esbuild l10n.js --bundle --sourcemap --outfile=out/l10n.cjs --platform=node --target=node18",
+    "package": "pkg -t node18-macos-x64 --out-path bin out/l10n.cjs",
+    "esbuild-lib": "esbuild l10nCommands.js --bundle --sourcemap --outfile=out/l10nCommands.cjs --platform=node --target=node18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/l10nmonster/l10nmonster.git"
+  },
+  "keywords": [
+    "translation",
+    "localization",
+    "l10n",
+    "globalization",
+    "translation-files"
+  ],
+  "author": "Diego Lagunas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/l10nmonster/l10nmonster/issues"
+  },
+  "homepage": "https://github.com/l10nmonster/l10nmonster#readme",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@l10nmonster/core": "../core",
+    "commander": "^10",
+    "tinyld": "^1.3.0",
+    "winston": "^3.7.2"
+  },
+  "peerDependencies": {
+    "@l10nmonster/helpers": "../helpers"
+  },
+  "devDependencies": {
+    "esbuild": "latest",
+    "eslint": "^8",
+    "pkg": "^5.4.1"
+  }
+}

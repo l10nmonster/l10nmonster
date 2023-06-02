@@ -2,281 +2,125 @@
 
 Do you want to set up continuous localization for your project but don't have a whole team to look after it? Do you know how `git` works? Have you set up a build like `webpack` before? You've come to the right place and you'll feel right at home!
 
-L10n Monster is a tool to push source content out to translation vendors and to pull translations back in. No more no less.
-It doesn't try to tell you how to consume content or deliver it to production. It doesn't deal with formatting and other internationalization concerns. There are a plenty of libraries to do that already, and some of them are really good.
-It also, doesn't expect you and your friends to translate content yourself. There are plenty of agencies and professionals that do this for a living, you should use them!
+L10n Monster is the first headless and serverless TMS in the industry!
 
-## Getting started
+Why have the whole translation UI and capabilities when you don’t have any translators to manage yourself? Why maintain a system for your vendor to log in when they already have one they’re familiar with?
+L10n Monster is also a solution to manage translation vendors, not translators. It pushes source content out to translation vendors and pulls translations back in. No more no less. It doesn't try to tell you how to consume content or deliver it to production. It doesn't deal with formatting and other internationalization concerns.
 
-### Installation
+# Components
 
-```sh
-git clone git@github.com:l10nmonster/l10nmonster.git
-cd l10nmonster
-npm i
-npm link
-```
+To help manage dependencies and allow the variety of integrations required by the localization industry, the are a lot of packages to choose from and it's very easy to create your own extensions.
 
-Eventually there will be a binary for each platform, but this is still under heavy development.
+1. Core: the foundational classes where most of the functionality lives. Written as ESM and compiled into VJS.
+2. CLI: the main command-line utility to invoke from the shell or from Node.js scripts. Suitable for batch jobs. Written as ESM, potentially compiled to a binary.
+3. VS Code L10n Manager: a VS Code extension to provide a more intuitive UI than the CLI. Written as CJS.
+4. Helpers: common utilities and configuration components with minimal or no dependencies. Written as CJS.
+5. Helpers-*: optional specific configuration components with additional dependencies. Written as CJS.
 
-## Basic Operation
+See the overall [System Design (OUTDATED)](architecture.md#system-design) to get a better idea.
 
-```sh
-l10n push
-```
-It will re-read all your source content, figure out what needs translation, and send it to your translator.
+# Testing
 
-```sh
-l10n status
-```
-It will give you an overview of the state of translation of your project.
+Unit testing is performed centrally rather than module by module. Run `npm test` from /tests.
 
-```sh
-l10n analyze
-```
-It will analyze your sources and report insights like repeated content in different files and keys.
+Regression testing is a suite of tests from the command line (both from zsh and node). Run `zsh tesh.zsh` from /regression. By default it tests using a node script. By passing an argument it tests the shell version.
 
-```sh
-l10n grandfather -q 80
-```
-For all missing translations, it will extract translations from the current translated files and, if present, import them at the specified quality level. This assume translations are faithful translations of the current source (i.e. they didn't become outdated if the source has changed). This is probably only used at the beginning, in order to establish a baseline. Afterwards, translated files are always recreated from the TM and overwritten.
+# Helpers
 
-```sh
-l10n leverage -q 70 -u 60
-```
-For all missing translations, it will look into the TM for translations of the exact same source text but in different resources, while matching or not the string id (called respectively qualified and unqualified repetition). Since reusing translations may lead to a loss of quality, you can choose what quality levels to assign to your specific content. Leveraging can be done on a regular basis before pushing content to translation, or never if it's not safe to do so.
+Translation pipelines are highly customizable, so all stages are componentized and configured separately.
 
-```sh
-l10n pull
-```
-If there are pending translations, it will check if they became available and it will fetch them.
+## Sources
 
-```sh
-l10n translate
-```
-It will generate translated files based on the latest sources and translations in the TM.
+Sources are *adapters* used to interface with a source of content. They only deal with transport concerns and not format. They return a raw string with the content of resources and metadata associated to them. They can be configured in content types as a single `source` property.
 
-### Working files
+|Module|Export|Description|
+|---|---|---|
+|*(built-in)*|`adapters.FsSource`|Read from file-system-like sources.
+|`helpers-http`|`Source`|Read from url sources.
 
-L10n Monster maintains its working files in a hidden `.l10nmonster` directory at the root of the project. Working files are source-control friendly (json files with newlines) and can be checked in. On the other hand, they can also be destroyed and recreated on the fly if all you want to preserve is translations in your current files.
+## Resource Filters
 
-## Demo
+Filters are used to convert raw strings returned by sources into segments that are suitable for translation (ideally not too small that they can't be translated, and not too long that prevent translation reuse). They can be configured in content types as a single `resourceFilter` property.
 
-![Demo screen](tty.gif)
+|Module|Export|Description|
+|---|---|---|
+|*(built-in)*|`filters.SnapFilter`|Filter for normalized resources in snap store.
+|`helpers-android`|`Filter`|Filter for Android xml files.|
+|`helpers-html`|`Filter`|Filter for HTML files.|
+|`helpers-ios`|`StringsFilter`|Filter for .strings files.|
+|`helpers-java`|`PropertiesFilter`|Filter for Java properties files.|
+|`helpers-json`|`i18next.Filter`|Filter for ARB-like JSON files used by [i18next v4](https://www.i18next.com/misc/json-format).|
+|`helpers-po`|`Filter`|Filter for PO files.|
 
-## Basic Configuration
+## Decoders
 
-At the root of your project there should be a file named `l10nmonster.mjs`. You can create it by hand, or you can use `l10n init` and use one of the configurators to get up and running in no time. Well, that's the plan, it's not implemented yet!
+Decoders are used to convert strings with specific formats into either pure strings or placeholders. They can be configured in content types as a chain of decoders via the `decoders` property.
 
-The configuration must export a default class that once instantiated provides the following properties:
+|Module|Export|Description|
+|---|---|---|
+|`helpers`|`normalizers.namedDecoder`|Generic wrapper to rename a decoder.|
+|`helpers`|`normalizers.doublePercentDecoder`|Decoder for `%%` escaping.|
+|`helpers`|`normalizers.bracePHDecoder`|Decoder for `{param}` style placeholders.|
+|`helpers`|`normalizers.keywordTranslatorMaker`|Decoder/encoder pair to protect/replace keywords.|
+|`helpers`|`regex.decoderMaker(flag, regex, partDecoder)`|Internal utility to create decoders.|
+|`helpers`|`xml.entityDecoder`|Decoder for XML entities.|
+|`helpers`|`xml.CDataDecoder`|Decoder for XML CData.|
+|`helpers`|`xml.tagDecoder`|Decoder for XML tags.|
+|`helpers-android`|`escapesDecoder`|Decoder for escaped chars like `\n` and `\u00a0`.|
+|`helpers-android`|`spaceCollapser`|Decoder to convert multiple whitespace into a single space.|
+|`helpers-android`|`phDecoder`|Decoder for `%d` style placeholders.|
+|`helpers-ios`|`escapesDecoder`|Decoder for escaped chars like `\n` and `\U00a0`.|
+|`helpers-ios`|`phDecoder`|Decoder for `%d` style placeholders.|
+|`helpers-java`|`escapesDecoder`|Decoder for escaped chars like `\n` and `\u00a0`.|
+|`helpers-java`|`MFQuotesDecoder`|Decoder for dealing with quotes in MessageFormat strings.|
+|`helpers-json`|`i18next.phDecoder`|Decoder for `{{param}}` and `$t(key)` style placeholders.|
 
-* `sourceLang`: the default source language
-* `minimumQuality`: this is the minimum required quality for a string to be considered translated (anything below  triggers a request to translate)
-* `source`: a source adapter to read input resources from
-* `resourceFilter`: a filter to process the specific resource format
-* `translationProvider`: a connector to the translation vendor
-* `target`: a target adapter to write translated resources to
-* `adapters`, `filters`, `translators`: built-in helpers (see below)
+## Encoders
 
-### FS Source Adapter
+Encoders are used to convert pure strings and placeholders back to their original format. They can be configured in content types as a chain of encoders via the `textEncoders` and `codeEncoders` properties.
 
-```js
-this.source = new adapters.FsSource({
-    globs: [ '**/values/strings.xml' ],
-    filter: (resourceId) => (resourceId.indexOf('dont_translate.properties') === -1),
-    targetLangs: [ 'it', 'ja' ],
-    resDecorator: (resMeta) => (resMeta.resourceId.indexOf('DNT') === -1 ? resMeta : { ...resMeta, targetLangs: [] }),
-});
-```
+|Module|Export|Description|
+|---|---|---|
+|`helpers`|`normalizers.gatedEncoder`|Generic flag-based encoder execution.|
+|`helpers`|`normalizers.doublePercentEncoder`|Encoder for `%%` escaping.|
+|`helpers`|`regex.encoderMaker(name, regex, matchMap)`|Internal utility to create encoders.|
+|`helpers`|`xml.entityEncoder`|Encoder for XML entities.|
+|`helpers-android`|`escapesEncoder`|Encoder for escaped chars as required by Android.|
+|`helpers-ios`|`escapesEncoder`|Encoder for escaped chars like `\n`.|
+|`helpers-java`|`escapesEncoder`|Encoder for escaped chars like `\n`.|
+|`helpers-java`|`MFQuotesEncoder`|Encoder for dealing with quotes in MessageFormat strings.|
 
-An adapter that reads sources from the filesystem.
+## Targets
 
-* The `globs` array (mandatory) can specify wildcard patterns relative to the base directory where the `l10nmonster.mjs` is placed.
-* The optional `filter` function can further filter out what's returned by the glob patterns.
-* `targetLangs` is an array of languages to translate to
-* The optional `resDecorator` function can modify the resource metadata
+Targets are *adapters* used to interface with a content store. They may or may not go hand-in-hand with their source counterpart. Typically you want to read and write into the same store and structure, but you could also read from one structure and write into a different one in more sophisticated setups. They take a raw string with the content of translated resources and commit it to storage.
 
-### FS Target Adapter
+|Module|Export|Description|
+|---|---|---|
+|*(built-in)*|`adapters.FsTarget`|Write to file-system-like sources.
 
-```js
-this.target = new adapters.FsTarget({
-    targetPath: (lang, resourceId) => resourceId.replace('values', `values-${lang}`),
-});
-```
+## Translation Providers
 
-An adapter that writes translated resources to the filesystem. It takes in the object constructor a `targetPath` function that given a language and the resource id of the source, it produces the target resource id.
+Translation providers are used to interface with the translation process. There are 2 kinds of providers and 2 modes of operation. Synchronous providers return translations right away. Typically these are machine translation engines that respond in real-time. Jobs submitted to syncronous providers will go from `req` state to `done` state upon a push. Asynchronous providers will take longer to return translations (e.g. days for human translation). Jobs submitted to asyncronous providers will go from `req` state to `pending` to `done` state upon a push.
+Providers can also support a `translation` push as opposed to a `refresh` push. The former meant for new submissions and the latter to pick up changes from previous submissions (e.g. translation bug fixes). A refresh push is always synchronous and generates a `done` job only if it produces differences (if all translations are unchanged then the job is cancelled).
 
-
-###  Java Properties Filter
-
-```js
-this.resourceFilter = new filters.JavaPropertiesFilter();
-```
-
-A filter for properties files used as defined by the Java bundle specification.
-
-* [TODO] it needs configuration to deal with message formats.
-* [TODO] it needs an option to make it stricter to deal with technically invalid files.
-
-### iOS Strings Filter
-
-```js
-this.resourceFilter = new filters.IosStringsFilter();
-```
-
-A filter for strings files used in iOS apps.
-
-* [TODO] it needs configuration to deal with message formats.
-* [LIMIT] it doesn't support files encoded in UTF-16.
-
-### Android XML Filter
-
-```js
-this.resourceFilter = new filters.AndroidFilter({
-    comment: 'pre',
-});
-```
-
-A filter for XML files used in Android apps. The `comment` property specifies whether developer notes are placed before, after, or on the same line (`pre`, `post`, `right` respectively).
-
-* [TODO] it needs configuration to deal with message formats.
-* [BUG] it doesn't honor the `translatable` attribute.
-
-### JSON Filter
-
-A filter for JSON files. It supports annotations as defined by the [ARB spec](https://github.com/google/app-resource-bundle/wiki/ApplicationResourceBundleSpecification). In addition it supports nested keys and plurals as defined by the [i18next JSON v4](https://www.i18next.com/misc/json-format) format.
-
-```js
-this.resourceFilter = new filters.JsonFilter({
-        enableArbAnnotations: true,
-        enablePluralSuffixes: true,
-        emitArbAnnotations: true
-});
-```
-
-### PO Filter
-
-```js
-this.resourceFilter = new filters.PoFilter();
-```
-
-A filter for PO files.
-
-* [TODO] it needs configuration to deal with message formats.
-
-### Pig Latinizer Translator
-
-```js
-this.translationProvider = new translators.PigLatinizer({
-    quality: 1
-});
-```
-
-This is a pseudo-localization helper that converts source into [Pig Latin](https://en.wikipedia.org/wiki/Pig_Latin) to provide visual testing of hard-coded strings, concatenation, and text expansion. By default, quality is set to `1` but it can be overwritten in the constructor by passing the `quality` property.
-
-### XLIFF Translator
-
-```js
-this.translationProvider = new translators.XliffBridge({
-    requestPath: (lang, prjId) => `xliff/outbox/prj${prjId)}-${lang}.xml`,
-    completePath: (lang, prjId) => `xliff/inbox/prj${(prjId)}-${lang}.xml`,
-    quality: 80,
-});
-```
-
-XLIFF is the industry standard for translation exchange. The adapter writes translation requests as XLIFF files that can be manually given to a translation vendor. Once translations are received, the corresponding translated files can be imported and saved.
-There are no standard naming conventions for xliff files, so any can be implemented by providing 2 functions in the `requestPath` and `completePath` properties. The functions are given the target language and the project id as parameters from which to form a naming convention. By default, quality is set to `50` but it should be specified by passing the `quality` property.
-
-## Advanced CLI
-
-The CLI support additional options to control its behavior:
-
-* `-a, --arg <string>`: this is a user-defined argument that allows to customize the user config behavior
-* `-b, --build <type>`: a string indicating a build type (e.g. qa or production)
-* `-r, --release <num>`: a string indicating a version number
-* `-v, --verbose`: output additional debug information
-
-Some commands also allow additional options. For more information type `l10n help <command>`.
-
-## Advanced Configuration
-
-There is also additional functionality in the configuration that can be useful, especially in environments with larger teams.
-
-The the following properties can optionally be defined:
-
-* `jobStore`: a durable persistence adapter to store translations
-* `stateStore`: a durable persistence adapter to store status of a particular build/release (see the status command)
-* `translationProvider`: this can also be a function that given a job request returns the desired vendor (e.g. `(job) => job.targetLang === 'piggy' ? piggyTranslator : xliffTranslator`)
-
-Moreover, the constructor object also includes the following properties that can be used:
-
-* `ctx`: the context object with the following properties:
-    * `baseDir`: the directory where `l10nmonster.mjs` lives
-    * `env`: environment variables from the shell
-    * `verbose`: a boolean used for controlling logging
-    * `arg`: the optional `-a` argument passed from the command line
-    * `build`: the build type passed from the command line
-    * `release`: the release number passed from the command line
-* `minimumQuality`: this can also be a function that takes a job and returns a constant
-* `stores`: containing json and sql variants of job and state stores (see below)
-
-### JSON Job Store
-
-```js
-this.jobStore = new stores.JsonJobStore({
-    jobsDir: 'translationJobs',
-    logRequests: true,
-});
-```
-
-The JSON job store is appropriate for small dev teams where all translations are managed by a single person and there little possibility of conflicts among members. Translation jobs are stored locally in JSON file in a specified folder. This is the default job store that is used when it's not specified, but it can be included in order to provide different parameters.
-
-* `jobsDir` is the directory containing translation jobs. It should be kept (e.g. checked into git) as it is needed to regenerate translated resources in a reliable way.
-* `logRequests` can optionally be specified to store translation requests to vendor. This is mostly used for debugging.
-
-### JSON State Store
-
-```js
-this.stateStore = new stores.JsonStateStore({
-    org: 'myOrg',
-    prj: 'myProject',
-    stateFileName: 'state.json',
-});
-```
-
-The JSON state store can be used to store in a json file the information returned by the status command. This can be used for reporting and monitoring.
-
-### SQL Job Store
-
-```js
-const dbConfig = {
-    org: 'test1',
-    prj: 'gramps',
-    client: 'mysql2',
-    host: ctx.env.l10nmonster_host,
-    port: ctx.env.l10nmonster_port,
-    user: ctx.env.l10nmonster_user,
-    password: ctx.env.l10nmonster_password,
-    database: ctx.env.l10nmonster_database,
-    cert: '/etc/ssl/cert.pem',
-};
-this.jobStore = new stores.SqlJobStore(dbConfig);
-```
-
-The SQL job store is the preferred method for larger use cases where translations can submitted concurrently by multiple teams and leveraged in multiple branches and multiple CI jobs.
-The same DB can be shared across multiple organization (using the `org` property) and multiple projects (`prj` property). Currently, only MySQL is supported. It is recommended that connection credentials are not hard-coded and environment variables are used instead.
-
-If you don't have a MySQL DB, consider using [PlanetScale](https://planetscale.com). They're awesome and their free tier is pretty generous!
-
-### SQL State Store
-
-```js
-this.stateStore = new stores.SqlStateStore({
-    ...dbConfig,
-    saveContent: true,
-});
-```
-
-The SQL state store can store in a centralized place both status information of each build and untranslated content. This can be used for reporting and monitoring, but also to implement more advanced workflows of translation request aggregation and management.
-
-See the overall [System Design](architecture.md#system-design) to get a better idea.
+|Module|Export|Async|Sync|Translation|Refresh|Description|
+|---|---|:---:|:---:|:---:|:---:|---|
+|*(built-in)*|`translators.Grandfather`|❌|✅|✅|✅|Create translations based on existing translated resources.
+|*(built-in)*|`translators.Repetitions`|❌|✅|✅|✅|Create translations based on leverage of 100% text matches.
+|*(built-in)*|`translators.Visicode`|❌|✅|✅|✅|Pseudo-localization with visual identification of string id's.
+|`helpers-deepl`|`DeepL`|✅|❌|✅|💰|DeepL translation [API](https://www.deepl.com/docs-api).
+|`helpers-demo`|`PigLatinizer`|✅|❌|✅|✅|Translator into pig latin for demo and pseudo-localization.
+|`helpers-googlecloud`|`GoogleCloudTranslateV3`|✅|❌|✅|💰|Google Translate V3 [API](https://cloud.google.com/translate/docs).
+|`helpers-translated`|`ModernMT`|✅|✅|✅|💰|Modern MT translation [API](https://www.modernmt.com/api/#introduction) (both realtime and batch).
+|`helpers-translated`|`TranslationOS`|✅|❌|✅|✅|TOS human translation [API](https://api.translated.com/v2).
+|`helpers-xliff`|`BridgeTranslator`|✅|❌|✅|❌|Translator via XLIFF files in filesystem.
+
+## Other
+
+
+|Module|Export|Description|
+|------|---|---|
+|`helpers`|`sharedCtx()`|Shared context object. Used to carry state across modules.|
+|`helpers`|`mergeProps(props)`|Merge props into shared context.|
+|`helpers`|`setCtx(ctx)`|Replace context from one module into the context of another module.|
+|`helpers`|`utils.*`|Internal utilities. No stable interface. Use at your own risk.|

@@ -1,4 +1,4 @@
-import { PigLatinizer } from '../../src/translators/piglatinizer';
+const { PigLatinizer } = require('@l10nmonster/helpers-demo');
 
 describe ('pig latinizer translator tests', () =>{
 
@@ -49,7 +49,6 @@ describe ('pig latinizer translator tests', () =>{
       ],
       status: 'done'
     }
-    PigLatinizer.prototype.ctx = { regression: false };
     var translator = new PigLatinizer({
         quality: 80
     });
