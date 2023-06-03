@@ -44,7 +44,7 @@ export async function fetchStatusPanel(mm) {
 // note: this will run as a method of the provider class, so `this` will point to that instance
 export async function fetchStatusByLanguage(lang) {
     return withMonsterManager(this.configPath, async mm => {
-        const status = await statusCmd(mm, {lang});
+        const status = await statusCmd(mm, { limitToLang: lang });
         const langStatus = status.lang[lang];
         const totals = {};
         const prjDetail = [];

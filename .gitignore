@@ -24,3 +24,4 @@ samples/*/translationJobs/
 samples/*/debugTraffic/
 **/l10nOps/*
 **/l10njobs/**
+vscode-l10nmanager/out/*

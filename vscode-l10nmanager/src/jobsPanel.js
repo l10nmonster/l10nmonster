@@ -13,6 +13,7 @@ export async function fetchJobsPanel(mm) {
                 const sectionIdx = stats.status === 'done' ? 1 : 0;
                 jobsSection[sectionIdx].push({
                     key: jobGuid,
+                    iconPath: vscode.ThemeIcon.File,
                     label: `${stats.status}: ${jobGuid}`,
                     command: {
                         command: 'l10nmonster.viewJob',
