@@ -55,6 +55,7 @@ function getPrintable(plain, structured, inflight) {
     return inflight ? '🚀' : '❌';
 }
 
+// note: this will run as a method of the provider class, so `this` will point to that instance
 export async function viewJob(jobGuid, hasRes) {
     return withMonsterManager(this.configPath, async mm => {
         const req = await mm.jobStore.getJobRequest(jobGuid);

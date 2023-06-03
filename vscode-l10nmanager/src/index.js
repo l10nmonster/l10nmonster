@@ -1,7 +1,7 @@
 import vscode from 'vscode';
 import * as path from 'path';
 import { existsSync } from 'fs';
-import { fetchStatusPanel } from './statusPanel.js';
+import { fetchStatusPanel, fetchStatusByLanguage } from './statusPanel.js';
 import { fetchJobsPanel, viewJob } from './jobsPanel.js';
 import { fetchAnalyzePanel, runAnalyzer } from './analyzePanel.js';
 import { withMonsterManager, L10nMonsterViewTreeDataProvider, logger } from './monsterUtils.js';
@@ -14,16 +14,22 @@ async function initL10nMonster(context) {
             const printCapabilities = cap => Object.entries(cap).filter(e => e[1]).map(e => e[0]).join(', ');
             logger.info(`L10n Monster initialized. Supported commands: ${printCapabilities(mm.capabilities)}`);
             await vscode.commands.executeCommand('setContext', 'l10nMonsterEnabled', true);
+
             const statusViewProvider = new L10nMonsterViewTreeDataProvider(configPath, fetchStatusPanel);
+            context.subscriptions.push(vscode.commands.registerCommand('l10nmonster.fetchStatusByLanguage', (lang) => statusViewProvider.fetchStatusByLanguage(lang)));
             vscode.window.registerTreeDataProvider('statusView', statusViewProvider);
+            statusViewProvider.fetchStatusByLanguage = fetchStatusByLanguage;
+
             const jobsViewProvider = new L10nMonsterViewTreeDataProvider(configPath, fetchJobsPanel);
             jobsViewProvider.viewJob = viewJob;
             context.subscriptions.push(vscode.commands.registerCommand('l10nmonster.viewJob', (jobGuid, hasRes) => jobsViewProvider.viewJob(jobGuid, hasRes)));
             vscode.window.registerTreeDataProvider('jobsView', jobsViewProvider);
+
             const analyzeViewProvider = new L10nMonsterViewTreeDataProvider(configPath, fetchAnalyzePanel);
             analyzeViewProvider.runAnalyzer = runAnalyzer;
             context.subscriptions.push(vscode.commands.registerCommand('l10nmonster.runAnalyzer', (name, helpParams) => analyzeViewProvider.runAnalyzer(name, helpParams)));
             vscode.window.registerTreeDataProvider('analyzeView', analyzeViewProvider);
+
             return true;
         });
     }

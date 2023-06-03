@@ -7,11 +7,11 @@ regressTestFromCLI() {
     echo "\nTesting $1..."
     cd $1
     npm i --no-package-lock
-    time ../../../cli/l10n.js --regression push --provider grandfather,repetition,default
-    time ../../../cli/l10n.js --regression pull
-    time ../../../cli/l10n.js --regression translate
-    time ../../../cli/l10n.js --regression status --output status.json
-    time ../../../cli/l10n.js --regression tmexport tm job
+    time ../../../cli/out/l10n.cjs --regression push --provider grandfather,repetition,default
+    time ../../../cli/out/l10n.cjs --regression pull
+    time ../../../cli/out/l10n.cjs --regression translate
+    time ../../../cli/out/l10n.cjs --regression status --output status.json
+    time ../../../cli/out/l10n.cjs --regression tmexport tm job
     cd ..
 }
 
@@ -40,8 +40,8 @@ done
 cd ..
 wait
 echo "\nDiffing working dir vs. expected..."
-# rm -rf wd/*/.l10nmonster
-# rm -rf wd/*/node_modules
-# rm wd/*/package.json
-# rm wd/*/l10nmonster.cjs
+rm -rf wd/*/.l10nmonster
+rm -rf wd/*/node_modules
+rm wd/*/package.json
+rm wd/*/l10nmonster.cjs
 diff -qr wd expected

@@ -16,25 +16,25 @@ export function withMonsterManager(configPath, cb) {
     let prj = l10nmonsterCfg.get('prj');
     prj.length === 0 && (prj = undefined);
     const arg = l10nmonsterCfg.get('arg') || undefined;
-    try {
-        return (async () => {
+    return (async () => {
+        let result;
+        try {
             const mm = await createMonsterManager({
                 configPath,
                 options: { prj, arg },
                 logger,
                 env,
             });
-            let result;
             if (mm) {
                 result = await cb(mm);
                 await mm.shutdown();
             }
-            return result;
-        })();
-    } catch (e) {
-        console.log(`Unable to initialize l10n monster: ${e}`);
-    }
-    return false;
+        } catch (e) {
+            logger.error(`Unable to initialize l10n monster: ${e}`);
+            return false;
+        }
+        return result;
+    })();
 }
 
 const escapeKey = key => key.replaceAll('.', '_');
@@ -74,7 +74,7 @@ export class L10nMonsterViewTreeDataProvider {
         this.dataFetcher = dataFetcher;
     }
 
-    getChildren(key) {
+    async getChildren(key) {
         if (!key) { // root
             if (!this.cachedStatus) {
                 return withMonsterManager(this.configPath, async mm => {
@@ -86,6 +86,9 @@ export class L10nMonsterViewTreeDataProvider {
             return Promise.resolve(enumerateKeys(this.cachedStatus));
         }
         const element = getElementByKey(this.cachedStatus, key.split('.'));
+        if (element.lazyChildren) { // lazily fetched children
+            element.children = await vscode.commands.executeCommand(element.lazyChildren.command, ...element.lazyChildren.arguments);
+        }
         if (element.children) { // inner collapsable
             return Promise.resolve(enumerateKeys(element.children, element.fqKey));
         } else {
@@ -96,7 +99,7 @@ export class L10nMonsterViewTreeDataProvider {
 
     getTreeItem(key) {
         const element = getElementByKey(this.cachedStatus, key.split('.'));
-        const item = new vscode.TreeItem(element.label, element.children ? vscode.TreeItemCollapsibleState.Collapsed : vscode.TreeItemCollapsibleState.None);
+        const item = new vscode.TreeItem(element.label, (element.children || element.lazyChildren) ? vscode.TreeItemCollapsibleState.Collapsed : vscode.TreeItemCollapsibleState.None);
         element.command && (item.command = element.command);
         element.description && (item.description = element.description);
         element.tooltip && (item.tooltip = element.tooltip);

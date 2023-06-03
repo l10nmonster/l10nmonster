@@ -12417,13 +12417,13 @@ var require_xml2js = __commonJS({
   }
 });
 
-// extension.js
-var extension_exports = {};
-__export(extension_exports, {
+// src/index.js
+var src_exports = {};
+__export(src_exports, {
   activate: () => activate,
   deactivate: () => deactivate
 });
-module.exports = __toCommonJS(extension_exports);
+module.exports = __toCommonJS(src_exports);
 var import_vscode4 = __toESM(require("vscode"), 1);
 var path9 = __toESM(require("path"), 1);
 var import_fs10 = require("fs");
@@ -13455,10 +13455,8 @@ var Task = class {
               this.opsMgr.logger.info(`Executing opId: ${op.opId} opName: ${op.opName}...`);
               const response = await boundFunc(op.args, inputs) ?? null;
               const responseJSON = JSON.stringify(response, null, "	");
-              console.log(`len: ${responseJSON.length} dir:${this.opsMgr.opsDir}`);
               if (responseJSON.length > MAX_INLINE_OUTPUT && this.opsMgr.opsDir) {
                 const fullPath = path5.join(this.opsMgr.opsDir, `${this.taskName}-out${op.opId}.json`);
-                console.log(`fullPath ${fullPath}`);
                 fs3.writeFileSync(fullPath, responseJSON, "utf8");
                 op.output = true;
               } else {
@@ -14542,12 +14540,13 @@ var path8 = __toESM(require("path"), 1);
 var import_fs9 = require("fs");
 async function createMonsterManager({ configPath, options, logger: logger2, env }) {
   if (!configPath) {
-    throw "missing configuration";
+    throw "Cannot create l10n monster: missing configuration";
   }
   const baseDir = path8.dirname(configPath);
-  const Config = await import(configPath);
-  if (typeof Config?.default !== "function") {
-    throw "Invalid Config. Need to export a class constructor as a default export";
+  logger2.verbose(`Requiring config: ${configPath}`);
+  const Config = require(configPath);
+  if (typeof Config !== "function") {
+    throw "Invalid Config. Need to export a class constructor as a CJS module.exports";
   }
   const configSeal = (0, import_fs9.statSync)(configPath).mtime.toISOString();
   const regression = options.regression;
@@ -14571,80 +14570,22 @@ async function createMonsterManager({ configPath, options, logger: logger2, env 
       filters: { SnapFilter },
       translators: { Grandfather, Repetition, Visicode }
     };
-    logger2.verbose("Initializing config with:");
-    logger2.verbose(configParams);
-    const monsterConfig = new Config.default(configParams);
-    logger2.verbose("Successfully got config instance:");
-    logger2.verbose(monsterConfig, { depth: 5 });
+    const monsterConfig = new Config(configParams);
     const monsterDir = path8.join(baseDir, monsterConfig.monsterDir ?? ".l10nmonster");
-    logger2.info(`Monster dir: ${monsterDir}`);
+    logger2.verbose(`Monster cache dir: ${monsterDir}`);
     if (!(0, import_fs9.existsSync)(monsterDir)) {
       (0, import_fs9.mkdirSync)(monsterDir, { recursive: true });
     }
     const mm = new MonsterManager({ monsterDir, monsterConfig, configSeal, defaultAnalyzers });
     helpers.sharedCtx().mm = mm;
-    logger2.info(`L10n Monster initialized!`);
+    logger2.verbose(`L10n Monster factory-initialized!`);
     return mm;
   } catch (e) {
     throw `l10nmonster.cjs failed to construct: ${e.stack || e}`;
   }
 }
 
-// statusPanel.js
-function computeTotals(totals, partial) {
-  for (const [k, v] of Object.entries(partial)) {
-    if (typeof v === "object") {
-      totals[k] ?? (totals[k] = {});
-      computeTotals(totals[k], v);
-    } else {
-      totals[k] ?? (totals[k] = 0);
-      totals[k] += v;
-    }
-  }
-}
-async function fetchStatusPanel(mm) {
-  const stats = await mm.source.getResourceStats();
-  const sourcesStatus = {
-    key: "sources",
-    label: `Sources (${stats.length.toLocaleString()})`,
-    children: stats.map((s) => ({
-      key: s.id,
-      label: s.id,
-      tooltip: `modified: ${s.modified}
- languages: ${s.targetLangs.join(", ")}`
-    }))
-  };
-  const translationStatus = {
-    key: "translationStatus",
-    label: "Translation Status",
-    children: []
-  };
-  const status = await statusCmd(mm, {});
-  for (const [lang, langStatus] of Object.entries(status.lang)) {
-    const totals = {};
-    const prjDetail = [];
-    const prjLeverage = Object.entries(langStatus.leverage.prjLeverage).sort((a, b) => a[0] > b[0] ? 1 : -1);
-    for (const [prj, leverage] of prjLeverage) {
-      computeTotals(totals, leverage);
-      prjDetail.push({
-        key: prj,
-        label: `${prj}: ${leverage.untranslatedWords.toLocaleString()} words ${leverage.untranslated.toLocaleString()} strings`
-      });
-    }
-    translationStatus.children.push({
-      key: lang,
-      label: `Language ${lang} (words: ${totals.untranslatedWords.toLocaleString()})`,
-      // (TM=${langStatus.leverage.tmSize.toLocaleString()})
-      children: prjDetail
-    });
-  }
-  return [sourcesStatus, translationStatus];
-}
-
-// jobsPanel.js
-var import_vscode2 = __toESM(require("vscode"), 1);
-
-// monsterUtils.js
+// src/monsterUtils.js
 var import_vscode = __toESM(require("vscode"), 1);
 var monsterOutput = import_vscode.default.window.createOutputChannel("L10n Monster", { log: true });
 var logger = {
@@ -14659,25 +14600,25 @@ function withMonsterManager(configPath, cb) {
   let prj = l10nmonsterCfg.get("prj");
   prj.length === 0 && (prj = void 0);
   const arg = l10nmonsterCfg.get("arg") || void 0;
-  try {
-    return (async () => {
+  return (async () => {
+    let result;
+    try {
       const mm = await createMonsterManager({
         configPath,
         options: { prj, arg },
         logger,
         env
       });
-      let result;
       if (mm) {
         result = await cb(mm);
         await mm.shutdown();
       }
-      return result;
-    })();
-  } catch (e) {
-    console.log(`Unable to initialize l10n monster: ${e}`);
-  }
-  return false;
+    } catch (e) {
+      logger.error(`Unable to initialize l10n monster: ${e}`);
+      return false;
+    }
+    return result;
+  })();
 }
 var escapeKey = (key) => key.replaceAll(".", "_");
 function enumerateKeys(siblings, parentKey) {
@@ -14712,7 +14653,7 @@ var L10nMonsterViewTreeDataProvider = class {
     this.configPath = configPath;
     this.dataFetcher = dataFetcher;
   }
-  getChildren(key) {
+  async getChildren(key) {
     if (!key) {
       if (!this.cachedStatus) {
         return withMonsterManager(this.configPath, async (mm) => {
@@ -14724,6 +14665,9 @@ var L10nMonsterViewTreeDataProvider = class {
       return Promise.resolve(enumerateKeys(this.cachedStatus));
     }
     const element = getElementByKey(this.cachedStatus, key.split("."));
+    if (element.lazyChildren) {
+      element.children = await import_vscode.default.commands.executeCommand(element.lazyChildren.command, ...element.lazyChildren.arguments);
+    }
     if (element.children) {
       return Promise.resolve(enumerateKeys(element.children, element.fqKey));
     } else {
@@ -14733,7 +14677,7 @@ var L10nMonsterViewTreeDataProvider = class {
   }
   getTreeItem(key) {
     const element = getElementByKey(this.cachedStatus, key.split("."));
-    const item = new import_vscode.default.TreeItem(element.label, element.children ? import_vscode.default.TreeItemCollapsibleState.Collapsed : import_vscode.default.TreeItemCollapsibleState.None);
+    const item = new import_vscode.default.TreeItem(element.label, element.children || element.lazyChildren ? import_vscode.default.TreeItemCollapsibleState.Collapsed : import_vscode.default.TreeItemCollapsibleState.None);
     element.command && (item.command = element.command);
     element.description && (item.description = element.description);
     element.tooltip && (item.tooltip = element.tooltip);
@@ -14778,7 +14722,69 @@ function getMonsterPage(title, body) {
     </html>`;
 }
 
-// jobsPanel.js
+// src/statusPanel.js
+function computeTotals(totals, partial) {
+  for (const [k, v] of Object.entries(partial)) {
+    if (typeof v === "object") {
+      totals[k] ?? (totals[k] = {});
+      computeTotals(totals[k], v);
+    } else {
+      totals[k] ?? (totals[k] = 0);
+      totals[k] += v;
+    }
+  }
+}
+async function fetchStatusPanel(mm) {
+  const stats = await mm.source.getResourceStats();
+  const sourcesStatus = {
+    key: "sources",
+    label: `Sources (${stats.length.toLocaleString()})`,
+    children: stats.map((s) => ({
+      key: s.id,
+      label: s.id,
+      tooltip: `modified: ${s.modified}
+ languages: ${s.targetLangs.join(", ")}`
+    }))
+  };
+  const targetLangs = await mm.getTargetLangs(false, true);
+  const translationStatus = {
+    key: "translationStatus",
+    label: "Translation Status",
+    children: targetLangs.map((lang) => ({
+      key: lang,
+      label: `Language ${lang}`,
+      lazyChildren: {
+        command: "l10nmonster.fetchStatusByLanguage",
+        arguments: [lang]
+      }
+    }))
+  };
+  return [sourcesStatus, translationStatus];
+}
+async function fetchStatusByLanguage(lang) {
+  return withMonsterManager(this.configPath, async (mm) => {
+    const status = await statusCmd(mm, { lang });
+    const langStatus = status.lang[lang];
+    const totals = {};
+    const prjDetail = [];
+    const prjLeverage = Object.entries(langStatus.leverage.prjLeverage).sort((a, b) => a[0] > b[0] ? 1 : -1);
+    for (const [prj, leverage] of prjLeverage) {
+      computeTotals(totals, leverage);
+      prjDetail.push({
+        key: prj,
+        label: `${prj}: ${leverage.untranslatedWords.toLocaleString()} words ${leverage.untranslated.toLocaleString()} strings`
+      });
+    }
+    prjDetail.push({
+      key: "totals",
+      label: `Total: ${totals.untranslatedWords.toLocaleString()} words ${totals.untranslated.toLocaleString()} strings`
+    });
+    return prjDetail;
+  });
+}
+
+// src/jobsPanel.js
+var import_vscode2 = __toESM(require("vscode"), 1);
 async function fetchJobsPanel(mm) {
   const jobsPanel = [];
   const targetLangs = await mm.getTargetLangs();
@@ -14856,7 +14862,7 @@ async function viewJob(jobGuid, hasRes) {
   });
 }
 
-// analyzePanel.js
+// src/analyzePanel.js
 var import_vscode3 = __toESM(require("vscode"), 1);
 async function fetchAnalyzePanel(mm) {
   const analyzePanel = Object.entries(mm.analyzers).map(([name, analyzer]) => ({
@@ -14895,7 +14901,7 @@ async function runAnalyzer(name, helpParams) {
   });
 }
 
-// extension.js
+// src/index.js
 async function initL10nMonster(context) {
   const configPath = import_vscode4.default.workspace.workspaceFolders?.length > 0 && path9.resolve(import_vscode4.default.workspace.workspaceFolders[0].uri.fsPath, "l10nmonster.cjs");
   if (configPath && (0, import_fs10.existsSync)(configPath)) {
@@ -14905,7 +14911,9 @@ async function initL10nMonster(context) {
       logger.info(`L10n Monster initialized. Supported commands: ${printCapabilities(mm.capabilities)}`);
       await import_vscode4.default.commands.executeCommand("setContext", "l10nMonsterEnabled", true);
       const statusViewProvider = new L10nMonsterViewTreeDataProvider(configPath, fetchStatusPanel);
+      context.subscriptions.push(import_vscode4.default.commands.registerCommand("l10nmonster.fetchStatusByLanguage", (lang) => statusViewProvider.fetchStatusByLanguage(lang)));
       import_vscode4.default.window.registerTreeDataProvider("statusView", statusViewProvider);
+      statusViewProvider.fetchStatusByLanguage = fetchStatusByLanguage;
       const jobsViewProvider = new L10nMonsterViewTreeDataProvider(configPath, fetchJobsPanel);
       jobsViewProvider.viewJob = viewJob;
       context.subscriptions.push(import_vscode4.default.commands.registerCommand("l10nmonster.viewJob", (jobGuid, hasRes) => jobsViewProvider.viewJob(jobGuid, hasRes)));

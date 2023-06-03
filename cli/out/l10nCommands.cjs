@@ -26834,7 +26834,7 @@ var Task = class {
   }
   getOutputByOpId(opId) {
     const out = this.opList[opId].output;
-    if (out === null) {
+    if (typeof out === "boolean") {
       const fullPath = path5.join(this.opsMgr.opsDir, `${this.taskName}-out${opId}.json`);
       const outJSON = fs3.readFileSync(fullPath, "utf8");
       return JSON.parse(outJSON);
@@ -26869,7 +26869,7 @@ var Task = class {
               if (responseJSON.length > MAX_INLINE_OUTPUT && this.opsMgr.opsDir) {
                 const fullPath = path5.join(this.opsMgr.opsDir, `${this.taskName}-out${op.opId}.json`);
                 fs3.writeFileSync(fullPath, responseJSON, "utf8");
-                op.output = null;
+                op.output = true;
               } else {
                 op.output = response;
               }
@@ -28414,12 +28414,13 @@ var path8 = __toESM(require("path"), 1);
 var import_fs9 = require("fs");
 async function createMonsterManager({ configPath, options, logger, env }) {
   if (!configPath) {
-    throw "missing configuration";
+    throw "Cannot create l10n monster: missing configuration";
   }
   const baseDir = path8.dirname(configPath);
-  const Config = await import(configPath);
-  if (typeof Config?.default !== "function") {
-    throw "Invalid Config. Need to export a class constructor as a default export";
+  logger.verbose(`Requiring config: ${configPath}`);
+  const Config = require(configPath);
+  if (typeof Config !== "function") {
+    throw "Invalid Config. Need to export a class constructor as a CJS module.exports";
   }
   const configSeal = (0, import_fs9.statSync)(configPath).mtime.toISOString();
   const regression = options.regression;
@@ -28443,19 +28444,15 @@ async function createMonsterManager({ configPath, options, logger, env }) {
       filters: { SnapFilter },
       translators: { Grandfather, Repetition, Visicode }
     };
-    logger.verbose("Initializing config with:");
-    logger.verbose(configParams);
-    const monsterConfig = new Config.default(configParams);
-    logger.verbose("Successfully got config instance:");
-    logger.verbose(monsterConfig, { depth: 5 });
+    const monsterConfig = new Config(configParams);
     const monsterDir = path8.join(baseDir, monsterConfig.monsterDir ?? ".l10nmonster");
-    logger.info(`Monster dir: ${monsterDir}`);
+    logger.verbose(`Monster cache dir: ${monsterDir}`);
     if (!(0, import_fs9.existsSync)(monsterDir)) {
       (0, import_fs9.mkdirSync)(monsterDir, { recursive: true });
     }
     const mm = new MonsterManager({ monsterDir, monsterConfig, configSeal, defaultAnalyzers });
     helpers.sharedCtx().mm = mm;
-    logger.info(`L10n Monster initialized!`);
+    logger.verbose(`L10n Monster factory-initialized!`);
     return mm;
   } catch (e) {
     throw `l10nmonster.cjs failed to construct: ${e.stack || e}`;

@@ -1,9 +1,11 @@
 {
     "name": "l10nmanager",
     "displayName": "L10n Monster Manager",
+    "author": "Diego Lagunas",
+    "license": "MIT",
     "publisher": "l10nmonster",
     "description": "UI for L10n Monster",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "engines": {
         "vscode": "^1.78.0"
     },
@@ -32,8 +34,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Environment variables.",
-                    "scope": "resource"
+                    "description": "Environment variables."
                 },
                 "l10nmonster.prj": {
                     "order": 2,
@@ -43,14 +44,12 @@
                         "type": "string"
                     },
                     "uniqueItems": true,
-                    "description": "Project names to restrict operations to.",
-                    "scope": "resource"
+                    "description": "Project names to restrict operations to."
                 },
                 "l10nmonster.arg": {
                     "order": 3,
                     "type": "string",
-                    "description": "Freeform argument to pass to configuration code.",
-                    "scope": "resource"
+                    "description": "Freeform argument to pass to configuration code."
                 }
             }
         },
@@ -110,7 +109,7 @@
         "test": "node ./test/runTest.js",
         "test-compile": "tsc -p ./",
         "vscode:prepublish": "npm run esbuild-base -- --minify",
-        "esbuild-base": "esbuild ./extension.js --bundle --outfile=out/main.cjs --external:vscode --format=cjs --platform=node",
+        "esbuild-base": "esbuild ./src/index.js --bundle --outfile=out/main.cjs --external:vscode --format=cjs --platform=node",
         "esbuild": "npm run esbuild-base -- --sourcemap",
         "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
         "package": "npm run esbuild-base -- --minify && vsce package"
@@ -128,6 +127,7 @@
         "typescript": "^5.0.4"
     },
     "dependencies": {
-        "@l10nmonster/core": "../core"
+        "@l10nmonster/core": "../core",
+        "@l10nmonster/helpers": "../helpers"
     }
 }

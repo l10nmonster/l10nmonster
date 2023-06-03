@@ -19,6 +19,7 @@ export async function fetchAnalyzePanel(mm) {
     return analyzePanel;
 }
 
+// note: this will run as a method of the provider class, so `this` will point to that instance
 export async function runAnalyzer(name, helpParams) {
     return withMonsterManager(this.configPath, async mm => {
         const Analyzer = mm.analyzers[name];

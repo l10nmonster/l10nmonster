@@ -17,12 +17,13 @@ import {
 
 export async function createMonsterManager({ configPath, options, logger, env }) {
     if (!configPath) {
-        throw 'missing configuration';
+        throw 'Cannot create l10n monster: missing configuration';
     }
     const baseDir = path.dirname(configPath);
-    const Config = await import(configPath);
-    if (typeof Config?.default !== 'function') {
-        throw 'Invalid Config. Need to export a class constructor as a default export';
+    logger.verbose(`Requiring config: ${configPath}`);
+    const Config = require(configPath); // VS Code chokes on import() so we use require() until it grows up
+    if (typeof Config !== 'function') {
+        throw 'Invalid Config. Need to export a class constructor as a CJS module.exports';
     }
     const configSeal = statSync(configPath).mtime.toISOString();
     const regression = options.regression;
@@ -47,19 +48,15 @@ export async function createMonsterManager({ configPath, options, logger, env })
             filters: { SnapFilter },
             translators: { Grandfather, Repetition, Visicode },
         };
-        logger.verbose('Initializing config with:');
-        logger.verbose(configParams);
-        const monsterConfig = new Config.default(configParams);
-        logger.verbose('Successfully got config instance:');
-        logger.verbose(monsterConfig, { depth: 5 });
+        const monsterConfig = new Config(configParams);
         const monsterDir = path.join(baseDir, monsterConfig.monsterDir ?? '.l10nmonster');
-        logger.info(`Monster dir: ${monsterDir}`);
+        logger.verbose(`Monster cache dir: ${monsterDir}`);
         if (!existsSync(monsterDir)) {
             mkdirSync(monsterDir, {recursive: true});
         }
         const mm = new MonsterManager({ monsterDir, monsterConfig, configSeal, defaultAnalyzers });
         helpers.sharedCtx().mm = mm;
-        logger.info(`L10n Monster initialized!`);
+        logger.verbose(`L10n Monster factory-initialized!`);
         return mm;
     } catch(e) {
         throw `l10nmonster.cjs failed to construct: ${e.stack || e}`;

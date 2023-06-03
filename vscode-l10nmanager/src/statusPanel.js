@@ -1,4 +1,6 @@
+/* eslint-disable no-invalid-this */
 import { statusCmd } from '@l10nmonster/core';
+import { withMonsterManager } from './monsterUtils.js';
 
 function computeTotals(totals, partial) {
     for (const [ k, v ] of Object.entries(partial)) {
@@ -23,13 +25,27 @@ export async function fetchStatusPanel(mm) {
             tooltip: `modified: ${s.modified}\n languages: ${s.targetLangs.join(', ')}`,
         })),
     };
+    const targetLangs = await mm.getTargetLangs(false, true);
     const translationStatus = {
         key: 'translationStatus',
         label: 'Translation Status',
-        children: []
+        children: targetLangs.map(lang => ({
+            key: lang,
+            label: `Language ${lang}`,
+            lazyChildren: {
+                command: 'l10nmonster.fetchStatusByLanguage',
+                arguments: [ lang ]
+            }
+        })),
     };
-    const status = await statusCmd(mm, {});
-    for (const [lang, langStatus] of Object.entries(status.lang)) {
+    return [ sourcesStatus, translationStatus ];
+}
+
+// note: this will run as a method of the provider class, so `this` will point to that instance
+export async function fetchStatusByLanguage(lang) {
+    return withMonsterManager(this.configPath, async mm => {
+        const status = await statusCmd(mm, {lang});
+        const langStatus = status.lang[lang];
         const totals = {};
         const prjDetail = [];
         const prjLeverage = Object.entries(langStatus.leverage.prjLeverage).sort((a, b) => (a[0] > b[0] ? 1 : -1));
@@ -40,12 +56,10 @@ export async function fetchStatusPanel(mm) {
                 label: `${prj}: ${leverage.untranslatedWords.toLocaleString()} words ${leverage.untranslated.toLocaleString()} strings`,
             });
         }
-        // const totalStrings = totals.translated + totals.pending + totals.untranslated + totals.internalRepetitions;
-        translationStatus.children.push({
-            key: lang,
-            label: `Language ${lang} (words: ${totals.untranslatedWords.toLocaleString()})`, // (TM=${langStatus.leverage.tmSize.toLocaleString()})
-            children: prjDetail
+        prjDetail.push({
+            key: 'totals',
+            label: `Total: ${totals.untranslatedWords.toLocaleString()} words ${totals.untranslated.toLocaleString()} strings`,
         });
-    }
-    return [ sourcesStatus, translationStatus ];
+        return prjDetail;
+    });
 }
