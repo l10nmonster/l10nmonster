@@ -2,7 +2,7 @@
 
 Do you want to set up continuous localization for your project but don't have a whole team to look after it? Do you know how `git` works? Have you set up a build like `webpack` before? You've come to the right place and you'll feel right at home!
 
-L10n Monster is the first headless and serverless TMS in the industry!
+L10n Monster is the first headless and server-less TMS in the industry!
 
 Why have the whole translation UI and capabilities when you don’t have any translators to manage yourself? Why maintain a system for your vendor to log in when they already have one they’re familiar with?
 L10n Monster is also a solution to manage translation vendors, not translators. It pushes source content out to translation vendors and pulls translations back in. No more no less. It doesn't try to tell you how to consume content or deliver it to production. It doesn't deal with formatting and other internationalization concerns.
@@ -17,7 +17,7 @@ To help manage dependencies and allow the variety of integrations required by th
 4. Helpers: common utilities and configuration components with minimal or no dependencies. Written as CJS.
 5. Helpers-*: optional specific configuration components with additional dependencies. Written as CJS.
 
-See the overall [System Design (OUTDATED)](architecture.md#system-design) to get a better idea.
+See the overall [System Design (OUTDATED)](architecture.md#system-design) to get a better idea. Also, a deep dive of the various [pipelines](pipelines.md).
 
 # Testing
 
@@ -100,7 +100,7 @@ Targets are *adapters* used to interface with a content store. They may or may n
 
 ## Translation Providers
 
-Translation providers are used to interface with the translation process. There are 2 kinds of providers and 2 modes of operation. Synchronous providers return translations right away. Typically these are machine translation engines that respond in real-time. Jobs submitted to syncronous providers will go from `req` state to `done` state upon a push. Asynchronous providers will take longer to return translations (e.g. days for human translation). Jobs submitted to asyncronous providers will go from `req` state to `pending` to `done` state upon a push.
+Translation providers are used to interface with the translation process. There are 2 kinds of providers and 2 modes of operation. Synchronous providers return translations right away. Typically these are machine translation engines that respond in real-time. Jobs submitted to synchronous providers will go from `req` state to `done` state upon a push. Asynchronous providers will take longer to return translations (e.g. days for human translation). Jobs submitted to asynchronous providers will go from `req` state to `pending` to `done` state upon a push.
 Providers can also support a `translation` push as opposed to a `refresh` push. The former meant for new submissions and the latter to pick up changes from previous submissions (e.g. translation bug fixes). A refresh push is always synchronous and generates a `done` job only if it produces differences (if all translations are unchanged then the job is cancelled).
 
 |Module|Export|Async|Sync|Translation|Refresh|Description|
@@ -124,3 +124,7 @@ Providers can also support a `translation` push as opposed to a `refresh` push. 
 |`helpers`|`mergeProps(props)`|Merge props into shared context.|
 |`helpers`|`setCtx(ctx)`|Replace context from one module into the context of another module.|
 |`helpers`|`utils.*`|Internal utilities. No stable interface. Use at your own risk.|
+
+### Dependencies
+
+Typically, all helpers depend on a shared context for things like access to a logger. Because the helpers bundled in the core distribution (e.g. as part of the CLI utility or VSCode extension) and the helpers used in user-provided configuration live in different node_modules search paths, they are duplicated. In order to unify them, the core helpers are passed in to the user configuration so that local helpers' context can be reset with `helpers.setCtx(ctx)`.

@@ -579,26 +579,138 @@ var require_xml = __commonJS({
   }
 });
 
+// ../helpers/fileBasedSnapStore.js
+var require_fileBasedSnapStore = __commonJS({
+  "../helpers/fileBasedSnapStore.js"(exports, module2) {
+    module2.exports = class FileBasedSnapStore {
+      constructor(delegate) {
+        if (!delegate) {
+          throw "A delegate is required to instantiate a FileBasedSnapStore";
+        }
+        this.delegate = delegate;
+      }
+      #saveTOC(TOC) {
+        this.TOC = TOC;
+        this.ridLookup = {};
+        Object.entries(TOC).forEach(([filename, resObj]) => Object.keys(resObj).forEach((rid) => this.ridLookup[rid] = filename));
+      }
+      async #getTOC() {
+        if (this.TOC) {
+          return this.TOC;
+        } else {
+          try {
+            this.#saveTOC(JSON.parse(await this.delegate.readFile("TOC.json")));
+          } catch (e) {
+            this.TOC = {};
+            this.ridLookup = {};
+          }
+        }
+      }
+      async startSnapshot() {
+        const filenames = await this.delegate.getExistingFileNames();
+        this.filesToNuke = Object.fromEntries(filenames.map((e) => [e, true]));
+        this.newTOC = {};
+      }
+      async commitResources(prj, chunk, resources) {
+        const filename = `${prj}-${chunk}.json`;
+        await this.delegate.saveFile(filename, JSON.stringify(resources, null, "	"));
+        this.filesToNuke[filename] = false;
+        this.newTOC[filename] = Object.fromEntries(Object.values(resources).map((res) => {
+          const { segments, ...manifest } = res;
+          return [res.id, manifest];
+        }));
+      }
+      async endSnapshot() {
+        await this.delegate.saveFile("TOC.json", JSON.stringify(this.newTOC, null, "	"));
+        this.filesToNuke["TOC.json"] = false;
+        await this.delegate.deleteFiles(Object.entries(this.filesToNuke).filter((e) => e[1]).map((e) => e[0]));
+        this.#saveTOC(this.newTOC);
+      }
+      async getResourceStats() {
+        const TOC = await this.#getTOC();
+        return Object.values(TOC).map((obj) => Object.values(obj)).flat(1);
+      }
+      async getResource(rs) {
+        const resources = JSON.parse(await this.delegate.getFile(this.ridLookup[rs.id]));
+        return resources[rs.id];
+      }
+      async *getAllResources() {
+        const TOC = await this.#getTOC();
+        for (const filename of Object.keys(TOC)) {
+          const resources = JSON.parse(await this.delegate.getFile(filename));
+          for (const res of Object.values(resources)) {
+            yield res;
+          }
+        }
+      }
+    };
+  }
+});
+
+// ../helpers/fsSnapStore.js
+var require_fsSnapStore = __commonJS({
+  "../helpers/fsSnapStore.js"(exports, module2) {
+    var path8 = require("path");
+    var {
+      mkdir,
+      readdir,
+      readFile,
+      writeFile: writeFile2,
+      unlink
+    } = require("node:fs/promises");
+    var FsSnapStoreDelegate = class {
+      constructor(snapDir) {
+        this.snapDir = snapDir;
+      }
+      async getExistingFileNames() {
+        await mkdir(this.snapDir, { recursive: true });
+        const dirContents = await readdir(this.snapDir, { withFileTypes: true });
+        return dirContents.filter((e) => e.isFile()).map((e) => e.name);
+      }
+      async getFile(filename) {
+        return readFile(path8.join(this.snapDir, filename));
+      }
+      async saveFile(filename, contents) {
+        return writeFile2(path8.join(this.snapDir, filename), contents, "utf8");
+      }
+      async deleteFiles(filenames) {
+        for (const filename of filenames) {
+          await unlink(path8.join(this.snapDir, filename));
+        }
+      }
+    };
+    var { sharedCtx: sharedCtx13 } = require_helpers();
+    var FileBasedSnapStore = require_fileBasedSnapStore();
+    module2.exports = class FsSnapStore extends FileBasedSnapStore {
+      constructor({ snapDir } = {}) {
+        super(new FsSnapStoreDelegate(path8.join(sharedCtx13().baseDir, snapDir ?? "snap")));
+      }
+    };
+  }
+});
+
 // ../helpers/index.js
 var require_helpers = __commonJS({
   "../helpers/index.js"(exports) {
-    var sharedCtx14 = {
+    var sharedCtx13 = {
       version: 1
     };
-    exports.sharedCtx = () => sharedCtx14;
+    exports.sharedCtx = () => sharedCtx13;
     exports.mergeProps = (props) => {
-      Object.assign(sharedCtx14, props);
+      Object.assign(sharedCtx13, props);
     };
     exports.setCtx = (ctx) => {
-      if (sharedCtx14.version !== ctx.version) {
-        throw `Incompatible shared contexts assigning version ${ctx.version} to version ${sharedCtx14.version}`;
+      if (sharedCtx13.version !== ctx.version) {
+        throw `Incompatible shared contexts assigning version ${ctx.version} to version ${sharedCtx13.version}`;
       }
-      sharedCtx14 = ctx;
+      sharedCtx13 = ctx;
     };
     exports.utils = require_utils();
     exports.regex = require_regex();
     exports.normalizers = require_normalizers();
     exports.xml = require_xml();
+    exports.FileBasedSnapStore = require_fileBasedSnapStore();
+    exports.FsSnapStore = require_fsSnapStore();
   }
 });
 
@@ -792,7 +904,7 @@ var require_path = __commonJS({
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.removeLeadingDotSegment = exports.escape = exports.makeAbsolute = exports.unixify = void 0;
-    var path9 = require("path");
+    var path8 = require("path");
     var LEADING_DOT_SEGMENT_CHARACTERS_COUNT = 2;
     var UNESCAPED_GLOB_SYMBOLS_RE = /(\\?)([()*?[\]{|}]|^!|[!+@](?=\())/g;
     function unixify(filepath) {
@@ -800,7 +912,7 @@ var require_path = __commonJS({
     }
     exports.unixify = unixify;
     function makeAbsolute(cwd, filepath) {
-      return path9.resolve(cwd, filepath);
+      return path8.resolve(cwd, filepath);
     }
     exports.makeAbsolute = makeAbsolute;
     function escape(pattern) {
@@ -2107,7 +2219,7 @@ var require_braces = __commonJS({
 var require_constants2 = __commonJS({
   "node_modules/picomatch/lib/constants.js"(exports, module2) {
     "use strict";
-    var path9 = require("path");
+    var path8 = require("path");
     var WIN_SLASH = "\\\\/";
     var WIN_NO_SLASH = `[^${WIN_SLASH}]`;
     var DOT_LITERAL = "\\.";
@@ -2277,7 +2389,7 @@ var require_constants2 = __commonJS({
       /* | */
       CHAR_ZERO_WIDTH_NOBREAK_SPACE: 65279,
       /* \uFEFF */
-      SEP: path9.sep,
+      SEP: path8.sep,
       /**
        * Create EXTGLOB_CHARS
        */
@@ -2304,7 +2416,7 @@ var require_constants2 = __commonJS({
 var require_utils3 = __commonJS({
   "node_modules/picomatch/lib/utils.js"(exports) {
     "use strict";
-    var path9 = require("path");
+    var path8 = require("path");
     var win32 = process.platform === "win32";
     var {
       REGEX_BACKSLASH,
@@ -2333,7 +2445,7 @@ var require_utils3 = __commonJS({
       if (options && typeof options.windows === "boolean") {
         return options.windows;
       }
-      return win32 === true || path9.sep === "\\";
+      return win32 === true || path8.sep === "\\";
     };
     exports.escapeLast = (input, char, lastIdx) => {
       const idx = input.lastIndexOf(char, lastIdx);
@@ -3481,7 +3593,7 @@ var require_parse2 = __commonJS({
 var require_picomatch = __commonJS({
   "node_modules/picomatch/lib/picomatch.js"(exports, module2) {
     "use strict";
-    var path9 = require("path");
+    var path8 = require("path");
     var scan = require_scan();
     var parse = require_parse2();
     var utils11 = require_utils3();
@@ -3567,7 +3679,7 @@ var require_picomatch = __commonJS({
     };
     picomatch.matchBase = (input, glob, options, posix = utils11.isWindows(options)) => {
       const regex = glob instanceof RegExp ? glob : picomatch.makeRe(glob, options);
-      return regex.test(path9.basename(input));
+      return regex.test(path8.basename(input));
     };
     picomatch.isMatch = (str, patterns, options) => picomatch(patterns, options)(str);
     picomatch.parse = (pattern, options) => {
@@ -3797,7 +3909,7 @@ var require_pattern = __commonJS({
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.matchAny = exports.convertPatternsToRe = exports.makeRe = exports.getPatternParts = exports.expandBraceExpansion = exports.expandPatternsWithBraceExpansion = exports.isAffectDepthOfReadingPattern = exports.endsWithSlashGlobStar = exports.hasGlobStar = exports.getBaseDirectory = exports.isPatternRelatedToParentDirectory = exports.getPatternsOutsideCurrentDirectory = exports.getPatternsInsideCurrentDirectory = exports.getPositivePatterns = exports.getNegativePatterns = exports.isPositivePattern = exports.isNegativePattern = exports.convertToNegativePattern = exports.convertToPositivePattern = exports.isDynamicPattern = exports.isStaticPattern = void 0;
-    var path9 = require("path");
+    var path8 = require("path");
     var globParent = require_glob_parent();
     var micromatch = require_micromatch();
     var GLOBSTAR = "**";
@@ -3891,7 +4003,7 @@ var require_pattern = __commonJS({
     }
     exports.endsWithSlashGlobStar = endsWithSlashGlobStar;
     function isAffectDepthOfReadingPattern(pattern) {
-      const basename = path9.basename(pattern);
+      const basename = path8.basename(pattern);
       return endsWithSlashGlobStar(pattern) || isStaticPattern(basename);
     }
     exports.isAffectDepthOfReadingPattern = isAffectDepthOfReadingPattern;
@@ -3987,8 +4099,8 @@ var require_utils4 = __commonJS({
     exports.errno = errno;
     var fs5 = require_fs();
     exports.fs = fs5;
-    var path9 = require_path();
-    exports.path = path9;
+    var path8 = require_path();
+    exports.path = path8;
     var pattern = require_pattern();
     exports.pattern = pattern;
     var stream = require_stream();
@@ -4106,8 +4218,8 @@ var require_async = __commonJS({
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.read = void 0;
-    function read(path9, settings, callback) {
-      settings.fs.lstat(path9, (lstatError, lstat) => {
+    function read(path8, settings, callback) {
+      settings.fs.lstat(path8, (lstatError, lstat) => {
         if (lstatError !== null) {
           callFailureCallback(callback, lstatError);
           return;
@@ -4116,7 +4228,7 @@ var require_async = __commonJS({
           callSuccessCallback(callback, lstat);
           return;
         }
-        settings.fs.stat(path9, (statError, stat) => {
+        settings.fs.stat(path8, (statError, stat) => {
           if (statError !== null) {
             if (settings.throwErrorOnBrokenSymbolicLink) {
               callFailureCallback(callback, statError);
@@ -4148,13 +4260,13 @@ var require_sync = __commonJS({
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.read = void 0;
-    function read(path9, settings) {
-      const lstat = settings.fs.lstatSync(path9);
+    function read(path8, settings) {
+      const lstat = settings.fs.lstatSync(path8);
       if (!lstat.isSymbolicLink() || !settings.followSymbolicLink) {
         return lstat;
       }
       try {
-        const stat = settings.fs.statSync(path9);
+        const stat = settings.fs.statSync(path8);
         if (settings.markSymbolicLink) {
           stat.isSymbolicLink = () => true;
         }
@@ -4225,17 +4337,17 @@ var require_out = __commonJS({
     var sync = require_sync();
     var settings_1 = require_settings();
     exports.Settings = settings_1.default;
-    function stat(path9, optionsOrSettingsOrCallback, callback) {
+    function stat(path8, optionsOrSettingsOrCallback, callback) {
       if (typeof optionsOrSettingsOrCallback === "function") {
-        async.read(path9, getSettings(), optionsOrSettingsOrCallback);
+        async.read(path8, getSettings(), optionsOrSettingsOrCallback);
         return;
       }
-      async.read(path9, getSettings(optionsOrSettingsOrCallback), callback);
+      async.read(path8, getSettings(optionsOrSettingsOrCallback), callback);
     }
     exports.stat = stat;
-    function statSync3(path9, optionsOrSettings) {
+    function statSync3(path8, optionsOrSettings) {
       const settings = getSettings(optionsOrSettings);
-      return sync.read(path9, settings);
+      return sync.read(path8, settings);
     }
     exports.statSync = statSync3;
     function getSettings(settingsOrOptions = {}) {
@@ -4454,16 +4566,16 @@ var require_async2 = __commonJS({
           return;
         }
         const tasks = names.map((name) => {
-          const path9 = common.joinPathSegments(directory, name, settings.pathSegmentSeparator);
+          const path8 = common.joinPathSegments(directory, name, settings.pathSegmentSeparator);
           return (done) => {
-            fsStat.stat(path9, settings.fsStatSettings, (error, stats) => {
+            fsStat.stat(path8, settings.fsStatSettings, (error, stats) => {
               if (error !== null) {
                 done(error);
                 return;
               }
               const entry = {
                 name,
-                path: path9,
+                path: path8,
                 dirent: utils11.fs.createDirentFromStats(name, stats)
               };
               if (settings.stats) {
@@ -4581,7 +4693,7 @@ var require_settings2 = __commonJS({
   "node_modules/@nodelib/fs.scandir/out/settings.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var path9 = require("path");
+    var path8 = require("path");
     var fsStat = require_out();
     var fs5 = require_fs4();
     var Settings = class {
@@ -4589,7 +4701,7 @@ var require_settings2 = __commonJS({
         this._options = _options;
         this.followSymbolicLinks = this._getValue(this._options.followSymbolicLinks, false);
         this.fs = fs5.createFileSystemAdapter(this._options.fs);
-        this.pathSegmentSeparator = this._getValue(this._options.pathSegmentSeparator, path9.sep);
+        this.pathSegmentSeparator = this._getValue(this._options.pathSegmentSeparator, path8.sep);
         this.stats = this._getValue(this._options.stats, false);
         this.throwErrorOnBrokenSymbolicLink = this._getValue(this._options.throwErrorOnBrokenSymbolicLink, true);
         this.fsStatSettings = new fsStat.Settings({
@@ -4616,17 +4728,17 @@ var require_out2 = __commonJS({
     var sync = require_sync2();
     var settings_1 = require_settings2();
     exports.Settings = settings_1.default;
-    function scandir(path9, optionsOrSettingsOrCallback, callback) {
+    function scandir(path8, optionsOrSettingsOrCallback, callback) {
       if (typeof optionsOrSettingsOrCallback === "function") {
-        async.read(path9, getSettings(), optionsOrSettingsOrCallback);
+        async.read(path8, getSettings(), optionsOrSettingsOrCallback);
         return;
       }
-      async.read(path9, getSettings(optionsOrSettingsOrCallback), callback);
+      async.read(path8, getSettings(optionsOrSettingsOrCallback), callback);
     }
     exports.scandir = scandir;
-    function scandirSync(path9, optionsOrSettings) {
+    function scandirSync(path8, optionsOrSettings) {
       const settings = getSettings(optionsOrSettings);
-      return sync.read(path9, settings);
+      return sync.read(path8, settings);
     }
     exports.scandirSync = scandirSync;
     function getSettings(settingsOrOptions = {}) {
@@ -5230,7 +5342,7 @@ var require_settings3 = __commonJS({
   "node_modules/@nodelib/fs.walk/out/settings.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var path9 = require("path");
+    var path8 = require("path");
     var fsScandir = require_out2();
     var Settings = class {
       constructor(_options = {}) {
@@ -5240,7 +5352,7 @@ var require_settings3 = __commonJS({
         this.deepFilter = this._getValue(this._options.deepFilter, null);
         this.entryFilter = this._getValue(this._options.entryFilter, null);
         this.errorFilter = this._getValue(this._options.errorFilter, null);
-        this.pathSegmentSeparator = this._getValue(this._options.pathSegmentSeparator, path9.sep);
+        this.pathSegmentSeparator = this._getValue(this._options.pathSegmentSeparator, path8.sep);
         this.fsScandirSettings = new fsScandir.Settings({
           followSymbolicLinks: this._options.followSymbolicLinks,
           fs: this._options.fs,
@@ -5302,7 +5414,7 @@ var require_reader2 = __commonJS({
   "node_modules/fast-glob/out/readers/reader.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var path9 = require("path");
+    var path8 = require("path");
     var fsStat = require_out();
     var utils11 = require_utils4();
     var Reader = class {
@@ -5315,7 +5427,7 @@ var require_reader2 = __commonJS({
         });
       }
       _getFullEntryPath(filepath) {
-        return path9.resolve(this._settings.cwd, filepath);
+        return path8.resolve(this._settings.cwd, filepath);
       }
       _makeEntry(stats, pattern) {
         const entry = {
@@ -5711,7 +5823,7 @@ var require_provider = __commonJS({
   "node_modules/fast-glob/out/providers/provider.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var path9 = require("path");
+    var path8 = require("path");
     var deep_1 = require_deep();
     var entry_1 = require_entry();
     var error_1 = require_error();
@@ -5725,7 +5837,7 @@ var require_provider = __commonJS({
         this.entryTransformer = new entry_2.default(this._settings);
       }
       _getRootDirectory(task) {
-        return path9.resolve(this._settings.cwd, task.base);
+        return path8.resolve(this._settings.cwd, task.base);
       }
       _getReaderOptions(task) {
         const basePath = task.base === "." ? "" : task.base;
@@ -6072,15 +6184,15 @@ var require_path_type = __commonJS({
 var require_dir_glob = __commonJS({
   "node_modules/dir-glob/index.js"(exports, module2) {
     "use strict";
-    var path9 = require("path");
+    var path8 = require("path");
     var pathType = require_path_type();
     var getExtensions = (extensions) => extensions.length > 1 ? `{${extensions.join(",")}}` : extensions[0];
     var getPath = (filepath, cwd) => {
       const pth = filepath[0] === "!" ? filepath.slice(1) : filepath;
-      return path9.isAbsolute(pth) ? pth : path9.join(cwd, pth);
+      return path8.isAbsolute(pth) ? pth : path8.join(cwd, pth);
     };
     var addExtensions = (file, extensions) => {
-      if (path9.extname(file)) {
+      if (path8.extname(file)) {
         return `**/${file}`;
       }
       return `**/${file}.${getExtensions(extensions)}`;
@@ -6093,15 +6205,15 @@ var require_dir_glob = __commonJS({
         throw new TypeError(`Expected \`extensions\` to be of type \`Array\` but received type \`${typeof options.extensions}\``);
       }
       if (options.files && options.extensions) {
-        return options.files.map((x) => path9.posix.join(directory, addExtensions(x, options.extensions)));
+        return options.files.map((x) => path8.posix.join(directory, addExtensions(x, options.extensions)));
       }
       if (options.files) {
-        return options.files.map((x) => path9.posix.join(directory, `**/${x}`));
+        return options.files.map((x) => path8.posix.join(directory, `**/${x}`));
       }
       if (options.extensions) {
-        return [path9.posix.join(directory, `**/*.${getExtensions(options.extensions)}`)];
+        return [path8.posix.join(directory, `**/*.${getExtensions(options.extensions)}`)];
       }
-      return [path9.posix.join(directory, "**")];
+      return [path8.posix.join(directory, "**")];
     };
     module2.exports = async (input, options) => {
       options = {
@@ -6347,17 +6459,17 @@ var require_ignore = __commonJS({
     var throwError = (message, Ctor) => {
       throw new Ctor(message);
     };
-    var checkPath = (path9, originalPath, doThrow) => {
-      if (!isString(path9)) {
+    var checkPath = (path8, originalPath, doThrow) => {
+      if (!isString(path8)) {
         return doThrow(
           `path must be a string, but got \`${originalPath}\``,
           TypeError
         );
       }
-      if (!path9) {
+      if (!path8) {
         return doThrow(`path must not be empty`, TypeError);
       }
-      if (checkPath.isNotRelative(path9)) {
+      if (checkPath.isNotRelative(path8)) {
         const r = "`path.relative()`d";
         return doThrow(
           `path should be a ${r} string, but got "${originalPath}"`,
@@ -6366,7 +6478,7 @@ var require_ignore = __commonJS({
       }
       return true;
     };
-    var isNotRelative = (path9) => REGEX_TEST_INVALID_PATH.test(path9);
+    var isNotRelative = (path8) => REGEX_TEST_INVALID_PATH.test(path8);
     checkPath.isNotRelative = isNotRelative;
     checkPath.convert = (p) => p;
     var Ignore = class {
@@ -6425,7 +6537,7 @@ var require_ignore = __commonJS({
       //   setting `checkUnignored` to `false` could reduce additional
       //   path matching.
       // @returns {TestResult} true if a file is ignored
-      _testOne(path9, checkUnignored) {
+      _testOne(path8, checkUnignored) {
         let ignored = false;
         let unignored = false;
         this._rules.forEach((rule) => {
@@ -6433,7 +6545,7 @@ var require_ignore = __commonJS({
           if (unignored === negative && ignored !== unignored || negative && !ignored && !unignored && !checkUnignored) {
             return;
           }
-          const matched = rule.regex.test(path9);
+          const matched = rule.regex.test(path8);
           if (matched) {
             ignored = !negative;
             unignored = negative;
@@ -6446,24 +6558,24 @@ var require_ignore = __commonJS({
       }
       // @returns {TestResult}
       _test(originalPath, cache, checkUnignored, slices) {
-        const path9 = originalPath && checkPath.convert(originalPath);
+        const path8 = originalPath && checkPath.convert(originalPath);
         checkPath(
-          path9,
+          path8,
           originalPath,
           this._allowRelativePaths ? RETURN_FALSE : throwError
         );
-        return this._t(path9, cache, checkUnignored, slices);
+        return this._t(path8, cache, checkUnignored, slices);
       }
-      _t(path9, cache, checkUnignored, slices) {
-        if (path9 in cache) {
-          return cache[path9];
+      _t(path8, cache, checkUnignored, slices) {
+        if (path8 in cache) {
+          return cache[path8];
         }
         if (!slices) {
-          slices = path9.split(SLASH);
+          slices = path8.split(SLASH);
         }
         slices.pop();
         if (!slices.length) {
-          return cache[path9] = this._testOne(path9, checkUnignored);
+          return cache[path8] = this._testOne(path8, checkUnignored);
         }
         const parent = this._t(
           slices.join(SLASH) + SLASH,
@@ -6471,24 +6583,24 @@ var require_ignore = __commonJS({
           checkUnignored,
           slices
         );
-        return cache[path9] = parent.ignored ? parent : this._testOne(path9, checkUnignored);
+        return cache[path8] = parent.ignored ? parent : this._testOne(path8, checkUnignored);
       }
-      ignores(path9) {
-        return this._test(path9, this._ignoreCache, false).ignored;
+      ignores(path8) {
+        return this._test(path8, this._ignoreCache, false).ignored;
       }
       createFilter() {
-        return (path9) => !this.ignores(path9);
+        return (path8) => !this.ignores(path8);
       }
       filter(paths) {
         return makeArray(paths).filter(this.createFilter());
       }
       // @returns {TestResult}
-      test(path9) {
-        return this._test(path9, this._testCache, true);
+      test(path8) {
+        return this._test(path8, this._testCache, true);
       }
     };
     var factory = (options) => new Ignore(options);
-    var isPathValid = (path9) => checkPath(path9 && checkPath.convert(path9), path9, RETURN_FALSE);
+    var isPathValid = (path8) => checkPath(path8 && checkPath.convert(path8), path8, RETURN_FALSE);
     factory.isPathValid = isPathValid;
     factory.default = factory;
     module2.exports = factory;
@@ -6499,7 +6611,7 @@ var require_ignore = __commonJS({
       const makePosix = (str) => /^\\\\\?\\/.test(str) || /["<>|\u0000-\u001F]+/u.test(str) ? str : str.replace(/\\/g, "/");
       checkPath.convert = makePosix;
       const REGIX_IS_WINDOWS_PATH_ABSOLUTE = /^[a-z]:\//i;
-      checkPath.isNotRelative = (path9) => REGIX_IS_WINDOWS_PATH_ABSOLUTE.test(path9) || isNotRelative(path9);
+      checkPath.isNotRelative = (path8) => REGIX_IS_WINDOWS_PATH_ABSOLUTE.test(path8) || isNotRelative(path8);
     }
   }
 });
@@ -12420,7 +12532,6 @@ var require_xml2js = __commonJS({
 // src/index.js
 var src_exports = {};
 __export(src_exports, {
-  FsSnapStore: () => FsSnapStore,
   FsSource: () => FsSource,
   FsTarget: () => FsTarget,
   Grandfather: () => Grandfather,
@@ -12787,13 +12898,13 @@ var import_fast_glob = __toESM(require_out4(), 1);
 var import_ignore = __toESM(require_ignore(), 1);
 
 // node_modules/slash/index.js
-function slash(path9) {
-  const isExtendedLengthPath = /^\\\\\?\\/.test(path9);
-  const hasNonAscii = /[^\u0000-\u0080]+/.test(path9);
+function slash(path8) {
+  const isExtendedLengthPath = /^\\\\\?\\/.test(path8);
+  const hasNonAscii = /[^\u0000-\u0080]+/.test(path8);
   if (isExtendedLengthPath || hasNonAscii) {
-    return path9;
+    return path8;
   }
-  return path9.replace(/\\/g, "/");
+  return path8.replace(/\\/g, "/");
 }
 
 // node_modules/globby/utilities.js
@@ -12933,9 +13044,9 @@ var getFilterSync = (options) => {
 var createFilterFunction = (isIgnored) => {
   const seen = /* @__PURE__ */ new Set();
   return (fastGlobResult) => {
-    const path9 = fastGlobResult.path || fastGlobResult;
-    const pathKey = import_node_path2.default.normalize(path9);
-    const seenOrIgnored = seen.has(pathKey) || isIgnored && isIgnored(path9);
+    const path8 = fastGlobResult.path || fastGlobResult;
+    const pathKey = import_node_path2.default.normalize(path8);
+    const seenOrIgnored = seen.has(pathKey) || isIgnored && isIgnored(path8);
     seen.add(pathKey);
     return !seenOrIgnored;
   };
@@ -14188,10 +14299,10 @@ function buildValues(diff2, components, newString, oldString, useLongestToken) {
   }
   return components;
 }
-function clonePath(path9) {
+function clonePath(path8) {
   return {
-    newPos: path9.newPos,
-    components: path9.components.slice(0)
+    newPos: path8.newPos,
+    components: path8.components.slice(0)
   };
 }
 var characterDiff = new Diff();
@@ -14407,67 +14518,10 @@ async function translateCmd(mm, { limitToLang, dryRun }) {
   return status;
 }
 
-// src/stores/fsSnapStore.js
+// src/adapters/fs.js
 var path6 = __toESM(require("path"), 1);
 var import_fs5 = require("fs");
 var import_helpers11 = __toESM(require_helpers(), 1);
-var FsSnapStore = class {
-  constructor({ snapDir } = {}) {
-    this.snapDir = path6.join((0, import_helpers11.sharedCtx)().baseDir, snapDir ?? "snap");
-    try {
-      this.TOC = JSON.parse((0, import_fs5.readFileSync)(path6.join(this.snapDir, "TOC.json")));
-      this.#generateRidLookup();
-    } catch (e) {
-      this.TOC = {};
-      this.ridLookup = {};
-    }
-  }
-  #generateRidLookup() {
-    this.ridLookup = {};
-    Object.entries(this.TOC).forEach(([filename, resObj]) => Object.keys(resObj).forEach((rid) => this.ridLookup[rid] = filename));
-  }
-  async startSnapshot() {
-    !(0, import_fs5.existsSync)(this.snapDir) && (0, import_fs5.mkdirSync)(this.snapDir, { recursive: true });
-    this.filesToNuke = Object.fromEntries((0, import_fs5.readdirSync)(this.snapDir, { withFileTypes: true }).filter((e) => e.isFile()).map((e) => [e.name, true]));
-    this.newTOC = {};
-  }
-  async commitResources(prj, chunk, resources) {
-    const filename = `${prj}-${chunk}.json`;
-    (0, import_fs5.writeFileSync)(path6.join(this.snapDir, filename), JSON.stringify(resources, null, "	"), "utf8");
-    this.filesToNuke[filename] = false;
-    this.newTOC[filename] = Object.fromEntries(Object.values(resources).map((res) => {
-      const { segments, ...manifest } = res;
-      return [res.id, manifest];
-    }));
-  }
-  async endSnapshot() {
-    (0, import_fs5.writeFileSync)(path6.join(this.snapDir, "TOC.json"), JSON.stringify(this.newTOC, null, "	"), "utf8");
-    this.filesToNuke["TOC.json"] = false;
-    Object.entries(this.filesToNuke).filter((e) => e[1]).forEach((e) => (0, import_fs5.unlinkSync)(path6.join(this.snapDir, e[0])));
-    this.TOC = this.newTOC;
-    this.#generateRidLookup();
-  }
-  async getResourceStats() {
-    return Object.values(this.TOC).map((obj) => Object.values(obj)).flat(1);
-  }
-  async getResource(rs) {
-    const resources = JSON.parse((0, import_fs5.readFileSync)(path6.join(this.snapDir, this.ridLookup[rs.id])));
-    return resources[rs.id];
-  }
-  async *getAllResources() {
-    for (const filename of Object.keys(this.TOC)) {
-      const resources = JSON.parse((0, import_fs5.readFileSync)(path6.join(this.snapDir, filename)));
-      for (const res of Object.values(resources)) {
-        yield res;
-      }
-    }
-  }
-};
-
-// src/adapters/fs.js
-var path7 = __toESM(require("path"), 1);
-var import_fs6 = require("fs");
-var import_helpers12 = __toESM(require_helpers(), 1);
 var FsSource = class {
   constructor({ baseDir, globs, filter, targetLangs, prj, resDecorator, idFromPath, pathFromId }) {
     if (globs === void 0) {
@@ -14480,23 +14534,23 @@ var FsSource = class {
       this.resDecorator = resDecorator;
       this.idFromPath = idFromPath;
       this.pathFromId = pathFromId;
-      this.baseDir = baseDir ? path7.join((0, import_helpers12.sharedCtx)().baseDir, baseDir) : (0, import_helpers12.sharedCtx)().baseDir;
+      this.baseDir = baseDir ? path6.join((0, import_helpers11.sharedCtx)().baseDir, baseDir) : (0, import_helpers11.sharedCtx)().baseDir;
     }
   }
   async fetchResourceStats() {
     const resources = [];
-    const expandedFileNames = globbySync(this.globs.map((g) => path7.join(this.baseDir, g)));
-    (0, import_helpers12.sharedCtx)().logger.info(`Fetched fs globs: ${this.globs}`);
+    const expandedFileNames = globbySync(this.globs.map((g) => path6.join(this.baseDir, g)));
+    (0, import_helpers11.sharedCtx)().logger.info(`Fetched fs globs: ${this.globs}`);
     for (const fileName of expandedFileNames) {
-      let id = path7.relative(this.baseDir, fileName);
+      let id = path6.relative(this.baseDir, fileName);
       if (typeof this.idFromPath === "function") {
         id = this.idFromPath(id);
       }
       if (!this.filter || this.filter(id)) {
-        const stats = (0, import_fs6.statSync)(fileName);
+        const stats = (0, import_fs5.statSync)(fileName);
         let resMeta = {
           id,
-          modified: (0, import_helpers12.sharedCtx)().regression ? 1 : stats.mtime.toISOString()
+          modified: (0, import_helpers11.sharedCtx)().regression ? 1 : stats.mtime.toISOString()
         };
         this.targetLangs && (resMeta.targetLangs = this.targetLangs);
         this.prj && (resMeta.prj = this.prj);
@@ -14512,28 +14566,28 @@ var FsSource = class {
     if (typeof this.pathFromId === "function") {
       resourceId = this.pathFromId(resourceId);
     }
-    return (0, import_fs6.readFileSync)(path7.resolve(this.baseDir, resourceId), "utf8");
+    return (0, import_fs5.readFileSync)(path6.resolve(this.baseDir, resourceId), "utf8");
   }
 };
 var FsTarget = class {
   constructor({ baseDir, targetPath, deleteEmpty }) {
     this.targetPath = targetPath;
     this.deleteEmpty = deleteEmpty;
-    this.baseDir = baseDir ? path7.join((0, import_helpers12.sharedCtx)().baseDir, baseDir) : (0, import_helpers12.sharedCtx)().baseDir;
+    this.baseDir = baseDir ? path6.join((0, import_helpers11.sharedCtx)().baseDir, baseDir) : (0, import_helpers11.sharedCtx)().baseDir;
   }
   translatedResourceId(lang, resourceId) {
-    return path7.resolve(this.baseDir, this.targetPath(lang, resourceId));
+    return path6.resolve(this.baseDir, this.targetPath(lang, resourceId));
   }
   async fetchTranslatedResource(lang, resourceId) {
-    return (0, import_fs6.readFileSync)(this.translatedResourceId(lang, resourceId), "utf8");
+    return (0, import_fs5.readFileSync)(this.translatedResourceId(lang, resourceId), "utf8");
   }
   async commitTranslatedResource(lang, resourceId, translatedRes) {
-    const translatedPath = path7.resolve(this.baseDir, this.targetPath(lang, resourceId));
+    const translatedPath = path6.resolve(this.baseDir, this.targetPath(lang, resourceId));
     if (translatedRes === null) {
-      this.deleteEmpty && (0, import_fs6.existsSync)(translatedPath) && (0, import_fs6.unlinkSync)(translatedPath);
+      this.deleteEmpty && (0, import_fs5.existsSync)(translatedPath) && (0, import_fs5.unlinkSync)(translatedPath);
     } else {
-      await (0, import_fs6.mkdirSync)(path7.dirname(translatedPath), { recursive: true });
-      (0, import_fs6.writeFileSync)(translatedPath, translatedRes, "utf8");
+      await (0, import_fs5.mkdirSync)(path6.dirname(translatedPath), { recursive: true });
+      (0, import_fs5.writeFileSync)(translatedPath, translatedRes, "utf8");
     }
   }
 };
@@ -14560,7 +14614,7 @@ var SnapFilter = class {
 };
 
 // src/translators/grandfather.js
-var import_helpers13 = __toESM(require_helpers(), 1);
+var import_helpers12 = __toESM(require_helpers(), 1);
 var Grandfather = class {
   constructor({ quality }) {
     if (quality === void 0) {
@@ -14572,26 +14626,26 @@ var Grandfather = class {
     const { tus, ...jobResponse } = jobRequest;
     jobResponse.tus = [];
     const txCache = {};
-    const resourceStats = Object.fromEntries((await (0, import_helpers13.sharedCtx)().mm.source.getResourceStats()).map((r) => [r.id, r]));
+    const resourceStats = Object.fromEntries((await (0, import_helpers12.sharedCtx)().mm.source.getResourceStats()).map((r) => [r.id, r]));
     for (const tu of tus) {
       if (!txCache[tu.rid]) {
         const resMeta = resourceStats[tu.rid];
-        const pipeline = (0, import_helpers13.sharedCtx)().mm.contentTypes[resMeta.contentType];
+        const pipeline = (0, import_helpers12.sharedCtx)().mm.contentTypes[resMeta.contentType];
         const lookup = {};
         try {
           const resource = await pipeline.target.fetchTranslatedResource(jobRequest.targetLang, tu.rid);
           const parsedResource = await pipeline.resourceFilter.parseResource({ resource, isSource: false });
           for (const seg of parsedResource.segments) {
             if (pipeline.decoders) {
-              const normalizedStr = import_helpers13.utils.getNormalizedString(seg.str, pipeline.decoders);
+              const normalizedStr = import_helpers12.utils.getNormalizedString(seg.str, pipeline.decoders);
               if (normalizedStr[0] !== seg.str) {
                 seg.nstr = normalizedStr;
               }
             }
-            lookup[seg.sid] = import_helpers13.utils.makeTU(resMeta, seg);
+            lookup[seg.sid] = import_helpers12.utils.makeTU(resMeta, seg);
           }
         } catch (e) {
-          (0, import_helpers13.sharedCtx)().logger.info(`Couldn't fetch translated resource: ${e}`);
+          (0, import_helpers12.sharedCtx)().logger.info(`Couldn't fetch translated resource: ${e}`);
         }
         txCache[tu.rid] = lookup;
       }
@@ -14604,20 +14658,20 @@ var Grandfather = class {
         !tu.nsrc && (translation.src = tu.src);
         tu.nsrc && (translation.nsrc = tu.nsrc);
         if (previousTranslation.nsrc) {
-          const [flattenSrc, phMap] = import_helpers13.utils.flattenNormalizedSourceV1(previousTranslation.nsrc);
-          translation.ntgt = import_helpers13.utils.extractNormalizedPartsV1(flattenSrc, phMap);
+          const [flattenSrc, phMap] = import_helpers12.utils.flattenNormalizedSourceV1(previousTranslation.nsrc);
+          translation.ntgt = import_helpers12.utils.extractNormalizedPartsV1(flattenSrc, phMap);
         } else {
           translation.tgt = previousTranslation.src;
         }
         previousTranslation.ts && (translation.ts = previousTranslation.ts);
-        const isCompatible = import_helpers13.utils.sourceAndTargetAreCompatible(tu?.nsrc ?? tu?.src, translation?.ntgt ?? translation?.tgt);
+        const isCompatible = import_helpers12.utils.sourceAndTargetAreCompatible(tu?.nsrc ?? tu?.src, translation?.ntgt ?? translation?.tgt);
         if (isCompatible) {
           jobResponse.tus.push(translation);
         }
       }
     }
     jobResponse.status = "done";
-    (0, import_helpers13.sharedCtx)().logger.info(`Grandfathering ${jobRequest.targetLang}... found ${tus.length} missing translations, of which ${jobResponse.tus.length} can be grandfathered`);
+    (0, import_helpers12.sharedCtx)().logger.info(`Grandfathering ${jobRequest.targetLang}... found ${tus.length} missing translations, of which ${jobResponse.tus.length} can be grandfathered`);
     return jobResponse;
   }
   // sync api only
@@ -14629,13 +14683,13 @@ var Grandfather = class {
     const reqTuMap = jobRequest.tus.reduce((p, c) => (p[c.guid] = c, p), {});
     return {
       ...fullResponse,
-      tus: fullResponse.tus.filter((tu) => !import_helpers13.utils.normalizedStringsAreEqual(reqTuMap[tu.guid].ntgt ?? reqTuMap[tu.guid].tgt, tu.ntgt ?? tu.tgt))
+      tus: fullResponse.tus.filter((tu) => !import_helpers12.utils.normalizedStringsAreEqual(reqTuMap[tu.guid].ntgt ?? reqTuMap[tu.guid].tgt, tu.ntgt ?? tu.tgt))
     };
   }
 };
 
 // src/translators/repetition.js
-var import_helpers14 = __toESM(require_helpers(), 1);
+var import_helpers13 = __toESM(require_helpers(), 1);
 var Repetition = class {
   constructor({ qualifiedPenalty, unqualifiedPenalty }) {
     if ((qualifiedPenalty && unqualifiedPenalty) === void 0) {
@@ -14648,14 +14702,14 @@ var Repetition = class {
   async requestTranslations(jobRequest) {
     const { tus, ...jobResponse } = jobRequest;
     jobResponse.tus = [];
-    const tm = await (0, import_helpers14.sharedCtx)().mm.tmm.getTM((0, import_helpers14.sharedCtx)().mm.sourceLang, jobRequest.targetLang);
+    const tm = await (0, import_helpers13.sharedCtx)().mm.tmm.getTM((0, import_helpers13.sharedCtx)().mm.sourceLang, jobRequest.targetLang);
     for (const tu of tus) {
       const tuCandidates = tm.getAllEntriesBySrc(tu.nsrc ?? tu.src);
       if (tuCandidates.length > 0) {
         let bestCandidate = { q: 0, ts: 0 };
         let foundCandidate = false;
         for (const candidate of tuCandidates) {
-          const isCompatible = import_helpers14.utils.sourceAndTargetAreCompatible(tu?.nsrc ?? tu?.src, candidate?.ntgt ?? candidate?.tgt);
+          const isCompatible = import_helpers13.utils.sourceAndTargetAreCompatible(tu?.nsrc ?? tu?.src, candidate?.ntgt ?? candidate?.tgt);
           const adjustedQuality = Math.max(0, candidate.q - (tu.sid === candidate.sid ? this.qualifiedPenalty : this.unqualifiedPenalty), 0);
           const isSameQualityButNewer = adjustedQuality === bestCandidate.q && candidate.ts > bestCandidate.ts;
           const isBetterCandidate = adjustedQuality > bestCandidate.q || isSameQualityButNewer;
@@ -14674,18 +14728,18 @@ var Repetition = class {
           !bestCandidate.ntgt && (leveragedTU.tgt = bestCandidate.tgt);
           bestCandidate.ntgt && (leveragedTU.ntgt = bestCandidate.ntgt);
           const existingTU = tm.getEntryByGuid(tu.guid);
-          if (existingTU && import_helpers14.utils.normalizedStringsAreEqual(existingTU.ntgt ?? existingTU.ntgt, leveragedTU.ntgt ?? leveragedTU.ntgt)) {
-            (0, import_helpers14.sharedCtx)().logger.verbose(`Did not leverage ${bestCandidate.guid} for ${tu.guid} because TM already has an identical entry (maybe of quality < minimum quality)`);
+          if (existingTU && import_helpers13.utils.normalizedStringsAreEqual(existingTU.ntgt ?? existingTU.ntgt, leveragedTU.ntgt ?? leveragedTU.ntgt)) {
+            (0, import_helpers13.sharedCtx)().logger.verbose(`Did not leverage ${bestCandidate.guid} for ${tu.guid} because TM already has an identical entry (maybe of quality < minimum quality)`);
           } else {
-            leveragedTU.ts = (0, import_helpers14.sharedCtx)().regression ? (existingTU?.ts ?? 0) + 1 : (/* @__PURE__ */ new Date()).getTime();
+            leveragedTU.ts = (0, import_helpers13.sharedCtx)().regression ? (existingTU?.ts ?? 0) + 1 : (/* @__PURE__ */ new Date()).getTime();
             jobResponse.tus.push(leveragedTU);
-            (0, import_helpers14.sharedCtx)().logger.verbose(`Leveraged ${bestCandidate.guid} for ${tu.guid}`);
+            (0, import_helpers13.sharedCtx)().logger.verbose(`Leveraged ${bestCandidate.guid} for ${tu.guid}`);
           }
         }
       }
     }
     jobResponse.status = "done";
-    (0, import_helpers14.sharedCtx)().logger.info(`Leveraging ${jobRequest.targetLang}... found ${tus.length} missing translations, of which ${jobResponse.tus.length} can be leveraged`);
+    (0, import_helpers13.sharedCtx)().logger.info(`Leveraging ${jobRequest.targetLang}... found ${tus.length} missing translations, of which ${jobResponse.tus.length} can be leveraged`);
     return jobResponse;
   }
   // sync api only
@@ -14697,13 +14751,13 @@ var Repetition = class {
     const reqTuMap = jobRequest.tus.reduce((p, c) => (p[c.guid] = c, p), {});
     return {
       ...fullResponse,
-      tus: fullResponse.tus.filter((tu) => !import_helpers14.utils.normalizedStringsAreEqual(reqTuMap[tu.guid].ntgt ?? reqTuMap[tu.guid].tgt, tu.ntgt ?? tu.tgt))
+      tus: fullResponse.tus.filter((tu) => !import_helpers13.utils.normalizedStringsAreEqual(reqTuMap[tu.guid].ntgt ?? reqTuMap[tu.guid].tgt, tu.ntgt ?? tu.tgt))
     };
   }
 };
 
 // src/translators/visicode.js
-var import_helpers15 = __toESM(require_helpers(), 1);
+var import_helpers14 = __toESM(require_helpers(), 1);
 function underlineString(str, runningLength) {
   const newStr = [];
   for (const c of str) {
@@ -14723,10 +14777,10 @@ var Visicode = class {
   }
   async requestTranslations(jobRequest) {
     const { tus, ...jobResponse } = jobRequest;
-    const ts = (0, import_helpers15.sharedCtx)().regression ? 1 : (/* @__PURE__ */ new Date()).getTime();
+    const ts = (0, import_helpers14.sharedCtx)().regression ? 1 : (/* @__PURE__ */ new Date()).getTime();
     jobResponse.tus = jobRequest.tus.map((tu) => {
       const translation = { guid: tu.guid, ts };
-      const prolog = `\u21E5${tu.seq ? `${import_helpers15.utils.integerToLabel(tu.seq)}:` : ""}`;
+      const prolog = `\u21E5${tu.seq ? `${import_helpers14.utils.integerToLabel(tu.seq)}:` : ""}`;
       if (tu.nsrc) {
         const parts = [];
         let runningLength = 0;
@@ -14855,7 +14909,7 @@ var TextExpansionSummary = class {
 __publicField(TextExpansionSummary, "help", "compute average lengths, growth, and standard deviation based on TM contents");
 
 // src/analyzers/findByExpansion.js
-var import_fs7 = require("fs");
+var import_fs6 = require("fs");
 var makeCSVCompatibleString = (nstr) => Array.isArray(nstr) ? nstr.map((e) => typeof e === "string" ? e : "").join("").replaceAll(",", "").replaceAll("\n", " ") : (nstr ?? "").replaceAll(",", "").replaceAll("\n", " ");
 var FindByExpansion = class {
   constructor(average, minDelta) {
@@ -14864,7 +14918,7 @@ var FindByExpansion = class {
     this.minDelta = Number(minDelta);
     if (this.minDelta > 0) {
       if (isNaN(this.average)) {
-        const teSummary = (0, import_fs7.readFileSync)(average, "utf8").split("\n").slice(1);
+        const teSummary = (0, import_fs6.readFileSync)(average, "utf8").split("\n").slice(1);
         this.stats = Object.fromEntries(teSummary.map((line) => {
           const row = line.split(",");
           return [row[0], [row[3], row[4]]];
@@ -15019,23 +15073,23 @@ var defaultAnalyzers = {
 };
 
 // src/monsterFactory.js
-var path8 = __toESM(require("path"), 1);
-var import_fs9 = require("fs");
+var path7 = __toESM(require("path"), 1);
+var import_fs8 = require("fs");
 async function createMonsterManager({ configPath, options, logger, env }) {
   if (!configPath) {
     throw "Cannot create l10n monster: missing configuration";
   }
-  const baseDir = path8.dirname(configPath);
+  const baseDir = path7.dirname(configPath);
   logger.verbose(`Requiring config: ${configPath}`);
   const Config = require(configPath);
   if (typeof Config !== "function") {
     throw "Invalid Config. Need to export a class constructor as a CJS module.exports";
   }
-  const configSeal = (0, import_fs9.statSync)(configPath).mtime.toISOString();
+  const configSeal = (0, import_fs8.statSync)(configPath).mtime.toISOString();
   const regression = options.regression;
   let prj = options.prj;
   prj && (prj = prj.split(","));
-  const opsMgr = Config.opsDir ? new OpsMgr({ opsDir: path8.join(baseDir, Config.opsDir), logger }) : new OpsMgr({ logger });
+  const opsMgr = Config.opsDir ? new OpsMgr({ opsDir: path7.join(baseDir, Config.opsDir), logger }) : new OpsMgr({ logger });
   helpers.mergeProps({
     baseDir,
     opsMgr,
@@ -15048,16 +15102,16 @@ async function createMonsterManager({ configPath, options, logger, env }) {
   try {
     const configParams = {
       helpers,
-      stores: { JsonJobStore, FsSnapStore },
+      stores: { JsonJobStore },
       adapters: { FsSource, FsTarget },
       filters: { SnapFilter },
       translators: { Grandfather, Repetition, Visicode }
     };
     const monsterConfig = new Config(configParams);
-    const monsterDir = path8.join(baseDir, monsterConfig.monsterDir ?? ".l10nmonster");
+    const monsterDir = path7.join(baseDir, monsterConfig.monsterDir ?? ".l10nmonster");
     logger.verbose(`Monster cache dir: ${monsterDir}`);
-    if (!(0, import_fs9.existsSync)(monsterDir)) {
-      (0, import_fs9.mkdirSync)(monsterDir, { recursive: true });
+    if (!(0, import_fs8.existsSync)(monsterDir)) {
+      (0, import_fs8.mkdirSync)(monsterDir, { recursive: true });
     }
     const mm = new MonsterManager({ monsterDir, monsterConfig, configSeal, defaultAnalyzers });
     helpers.sharedCtx().mm = mm;
@@ -15069,7 +15123,6 @@ async function createMonsterManager({ configPath, options, logger, env }) {
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  FsSnapStore,
   FsSource,
   FsTarget,
   Grandfather,

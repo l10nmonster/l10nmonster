@@ -9,7 +9,7 @@ import {
     MonsterManager,
     helpers,
     OpsMgr,
-    JsonJobStore, FsSnapStore, FsSource, FsTarget,
+    JsonJobStore, FsSource, FsTarget,
     SnapFilter,
     Grandfather, Repetition, Visicode,
     defaultAnalyzers,
@@ -43,7 +43,7 @@ export async function createMonsterManager({ configPath, options, logger, env })
     try {
         const configParams = {
             helpers,
-            stores: { JsonJobStore, FsSnapStore },
+            stores: { JsonJobStore },
             adapters: { FsSource, FsTarget },
             filters: { SnapFilter },
             translators: { Grandfather, Repetition, Visicode },

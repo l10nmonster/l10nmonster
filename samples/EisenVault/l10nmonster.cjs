@@ -1,4 +1,4 @@
-const { setCtx, normalizers, xml } = require('@l10nmonster/helpers');
+const { setCtx, FsSnapStore, normalizers, xml } = require('@l10nmonster/helpers');
 
 module.exports = class EisenVaultConfig2 {
     sourceLang = 'en';
@@ -12,7 +12,7 @@ module.exports = class EisenVaultConfig2 {
             targetLangs: [ 'it', 'ja', 'pt-BR' ],
             resDecorator: resMeta => ({ ...resMeta, prj: resMeta.id.split('/')[1].split('.')[0].split('-')[0]}),
         });
-        this.snapStore = new stores.FsSnapStore();
+        this.snapStore = new FsSnapStore();
         this.resourceFilter = new java.PropertiesFilter();
         this.decoders = [ normalizers.bracePHDecoder, xml.tagDecoder, java.escapesDecoder ];
         this.target = new adapters.FsTarget({

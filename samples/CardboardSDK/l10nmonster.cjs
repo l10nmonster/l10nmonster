@@ -1,4 +1,4 @@
-const { setCtx, sharedCtx } = require('@l10nmonster/helpers');
+const { setCtx, sharedCtx, FsSnapStore } = require('@l10nmonster/helpers');
 
 module.exports = class CardboardConfig2 {
     sourceLang = 'en';
@@ -13,7 +13,7 @@ module.exports = class CardboardConfig2 {
             globs: [ '**/en.lproj/*.strings' ],
             targetLangs: [ 'ar', 'it', 'ja' ],
         });
-        this.snapStore = new stores.FsSnapStore({
+        this.snapStore = new FsSnapStore({
             snapDir: 'snap',
         });
         this.resourceFilter = new ios.StringsFilter();

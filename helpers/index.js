@@ -16,3 +16,5 @@ exports.utils = require('./utils');
 exports.regex = require('./regex');
 exports.normalizers = require('./normalizers');
 exports.xml = require('./xml');
+exports.FileBasedSnapStore = require('./fileBasedSnapStore');
+exports.FsSnapStore = require('./fsSnapStore');

@@ -45,7 +45,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                 let translatedRes;
                 // give priority to generators over translators (for performance)
                 if (pipeline.resourceFilter.generateResource) {
-                    const resource = await mm.source.getResource(res);
+                    const resource = await mm.source.getResource(res); // note that this is the source manager, not the source adapter
                     translatedRes = await pipeline.resourceFilter.generateResource({ resource, translator });
                 } else {
                     const resource = await pipeline.source.fetchResource(res.id);
