@@ -33,16 +33,16 @@ export class JobsViewProvider extends AbstractViewTreeDataProvider {
         return withMonsterManager(this.configPath, async mm => {
             const languagePanel = [];
             const tm = await mm.tmm.getTM(sourceLang, targetLang);
-            const jobsMetaEntries = Object.entries(tm.getJobsMeta());
-            jobsMetaEntries.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+            const jobsMetaEntries = Object.entries(tm.getJobsMeta())
+                .sort((a, b) => new Date(b[1].updatedAt) - new Date(a[1].updatedAt));
             const jobsSection = [[],[]];
+            const dateFormatter = new Intl.DateTimeFormat(undefined, { dateStyle: 'medium', timeStyle: 'short'});
             for (const [jobGuid, meta] of jobsMetaEntries) {
                 const sectionIdx = meta.status === 'done' ? 1 : 0;
-                const updatedAt = new Date(meta.updatedAt);
                 jobsSection[sectionIdx].push({
                     key: jobGuid,
                     iconPath: vscode.ThemeIcon.File,
-                    label: `${updatedAt.toLocaleString()} (${meta.units} ${meta.status})`,
+                    label: `${dateFormatter.format(new Date(meta.updatedAt))} (${meta.units} ${meta.status})`,
                     description: meta.translationProvider,
                     tooltip: jobGuid,
                     command: {

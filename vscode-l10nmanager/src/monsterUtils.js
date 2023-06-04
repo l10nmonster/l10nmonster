@@ -114,7 +114,7 @@ export const escapeHtml = str => (str ? str.replaceAll('&', '&amp;').replaceAll(
 export function renderString(plain, structured, inflight) {
     if (structured) {
         return structured
-            .map(part => (typeof part === 'string' ? escapeHtml(part) : `<b><code>${escapeHtml(part.v)}</code></b>`))
+            .map(part => (typeof part === 'string' ? escapeHtml(part) : `<code><b>${escapeHtml(part.v)}</b></code>`))
             .join('');
     }
     if (plain) {
