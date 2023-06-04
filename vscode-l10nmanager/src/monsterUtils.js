@@ -68,10 +68,10 @@ function getElementByKey(siblings, keyparts) {
     return undefined;
 }
 
-export class L10nMonsterViewTreeDataProvider {
-    constructor(configPath, dataFetcher) {
+// Must provide a `dataFetcher` method
+export class AbstractViewTreeDataProvider {
+    constructor(configPath) {
         this.configPath = configPath;
-        this.dataFetcher = dataFetcher;
     }
 
     async getChildren(key) {

@@ -12573,7 +12573,10 @@ var TM = class {
         }
       }
     }
-    this.tm.jobStatus[jobGuid] = { status, updatedAt };
+    this.tm.jobStatus[jobGuid] = { status, updatedAt, translationProvider, units: tus?.length ?? inflight?.length ?? 0 };
+  }
+  getJobsMeta() {
+    return this.tm.jobStatus;
   }
 };
 var TMManager = class {
