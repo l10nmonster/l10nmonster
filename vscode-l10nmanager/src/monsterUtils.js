@@ -10,10 +10,10 @@ export const logger = {
     error: (msg) => monsterOutput.error(msg),
 };
 
-export function withMonsterManager(configPath, cb) {
+export function withMonsterManager(configPath, cb, limitToPrj) {
     const l10nmonsterCfg = vscode.workspace.getConfiguration('l10nmonster');
     const env = l10nmonsterCfg.get('env');
-    let prj = l10nmonsterCfg.get('prj');
+    let prj = limitToPrj ?? l10nmonsterCfg.get('prj');
     prj.length === 0 && (prj = undefined);
     const arg = l10nmonsterCfg.get('arg') || undefined;
     return (async () => {
@@ -104,8 +104,23 @@ export class L10nMonsterViewTreeDataProvider {
         element.description && (item.description = element.description);
         element.tooltip && (item.tooltip = element.tooltip);
         element.iconPath && (item.iconPath = element.iconPath);
+        element.icon && (item.icon = element.icon);
         return item;
     }
+}
+
+export const escapeHtml = str => (str ? str.replaceAll('&', '&amp;').replaceAll('<', '&lt;') : '');
+
+export function renderString(plain, structured, inflight) {
+    if (structured) {
+        return structured
+            .map(part => (typeof part === 'string' ? escapeHtml(part) : `<b><code>${escapeHtml(part.v)}</code></b>`))
+            .join('');
+    }
+    if (plain) {
+        return escapeHtml(plain);
+    }
+    return inflight ? '🚀' : '❌';
 }
 
 export function getMonsterPage(title, body) {

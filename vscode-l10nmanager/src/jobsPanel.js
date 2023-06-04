@@ -1,6 +1,6 @@
 /* eslint-disable no-invalid-this */
 import vscode from 'vscode';
-import { withMonsterManager, getMonsterPage } from './monsterUtils.js';
+import { withMonsterManager, getMonsterPage, renderString } from './monsterUtils.js';
 
 export async function fetchJobsPanel(mm) {
     const jobsPanel = [];
@@ -14,7 +14,7 @@ export async function fetchJobsPanel(mm) {
                 jobsSection[sectionIdx].push({
                     key: jobGuid,
                     iconPath: vscode.ThemeIcon.File,
-                    label: `${stats.status}: ${jobGuid}`,
+                    label: `${jobGuid} (${stats.status})`,
                     command: {
                         command: 'l10nmonster.viewJob',
                         title: '',
@@ -43,19 +43,6 @@ export async function fetchJobsPanel(mm) {
     return jobsPanel;
 }
 
-function getPrintable(plain, structured, inflight) {
-    const clean = str => str.replaceAll('&', '&amp;').replaceAll('<', '&lt;');
-    if (structured) {
-        return structured
-            .map(part => (typeof part === 'string' ? clean(part) : `<b>${clean(part.v)}</b>`))
-            .join('');
-    }
-    if (plain) {
-        return clean(plain);
-}
-    return inflight ? '🚀' : '❌';
-}
-
 // note: this will run as a method of the provider class, so `this` will point to that instance
 export async function viewJob(jobGuid, hasRes) {
     return withMonsterManager(this.configPath, async mm => {
@@ -77,8 +64,8 @@ export async function viewJob(jobGuid, hasRes) {
                 <tr><th>Id</th><th>Source (${req.sourceLang})</th><th>Translation (${req.targetLang})</th></th>
                 ${req.tus.map(tu => `<tr>
                     <td>${tu.sid}</td>
-                    <td>${getPrintable(tu?.src, tu?.nsrc)}</td>
-                    <td>${getPrintable(translations[tu.guid]?.tgt, translations[tu.guid]?.ntgt, inflight[tu.guid])}</td>
+                    <td>${renderString(tu?.src, tu?.nsrc)}</td>
+                    <td>${renderString(translations[tu.guid]?.tgt, translations[tu.guid]?.ntgt, inflight[tu.guid])}</td>
                 </tr>`).join('\n')}
             </table>
         `);
