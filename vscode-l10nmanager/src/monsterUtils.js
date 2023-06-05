@@ -30,7 +30,7 @@ export function withMonsterManager(configPath, cb, limitToPrj) {
                 await mm.shutdown();
             }
         } catch (e) {
-            logger.error(`Unable to initialize l10n monster: ${e}`);
+            logger.error(`Unable to initialize l10n monster: ${e.stack ?? e}`);
             return false;
         }
         return result;

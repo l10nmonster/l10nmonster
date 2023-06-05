@@ -27668,7 +27668,7 @@ async function translateCmd(mm, { limitToLang, dryRun }) {
           try {
             return import_helpers9.utils.translateWithEntry(src, nsrc, entry, flags, encodePart);
           } catch (e) {
-            (0, import_helpers9.sharedCtx)().logger.verbose(`Problem translating ${resourceId}+${sid}+${src} to ${targetLang}: ${e}`);
+            (0, import_helpers9.sharedCtx)().logger.verbose(`Problem translating ${resourceId}+${sid}+${src} to ${targetLang}: ${e.stack ?? e}`);
             return void 0;
           }
         };
@@ -27686,7 +27686,7 @@ async function translateCmd(mm, { limitToLang, dryRun }) {
           try {
             currentRaw = await pipeline.target.fetchTranslatedResource(targetLang, resourceId);
           } catch (e) {
-            (0, import_helpers9.sharedCtx)().logger.info(`${targetLang}: Couldn't fetch translated resource ${translatedResourceId}`);
+            (0, import_helpers9.sharedCtx)().logger.info(`${targetLang}: Couldn't fetch translated resource ${translatedResourceId}: ${e.stack ?? e}`);
           }
           if (currentRaw) {
             const currentParsed = await pipeline.resourceFilter.parseResource({ resource: currentRaw, isSource: false });
@@ -28105,7 +28105,7 @@ var Grandfather = class {
             lookup[seg.sid] = import_helpers11.utils.makeTU(resMeta, seg);
           }
         } catch (e) {
-          (0, import_helpers11.sharedCtx)().logger.info(`Couldn't fetch translated resource: ${e}`);
+          (0, import_helpers11.sharedCtx)().logger.info(`Couldn't fetch translated resource: ${e.stack ?? e}`);
         }
         txCache[tu.rid] = lookup;
       }
@@ -28837,7 +28837,7 @@ async function job(monsterManager, options) {
       const pushResponse = await jobPushCmd(monsterManager, jobGuid);
       console.log(`${pushResponse.num.toLocaleString()} translations units requested -> status: ${pushResponse.status}`);
     } catch (e) {
-      console.error(`Failed to push job: ${e}`);
+      console.error(`Failed to push job: ${e.stack ?? e}`);
     }
   } else if (op === "delete") {
     console.log(`Deleting job ${jobGuid}...`);
@@ -28849,7 +28849,7 @@ async function job(monsterManager, options) {
         await monsterManager.jobStore.deleteJobRequest(jobGuid);
       }
     } catch (e) {
-      console.error(`Failed to push job: ${e}`);
+      console.error(`Failed to push job: ${e.stack ?? e}`);
     }
   } else {
     console.error(`Invalid operation: ${op}`);

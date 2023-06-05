@@ -38,7 +38,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                     try {
                         return utils.translateWithEntry(src, nsrc, entry, flags, encodePart);
                     } catch(e) {
-                        sharedCtx().logger.verbose(`Problem translating ${resourceId}+${sid}+${src} to ${targetLang}: ${e}`);
+                        sharedCtx().logger.verbose(`Problem translating ${resourceId}+${sid}+${src} to ${targetLang}: ${e.stack ?? e}`);
                         return undefined;
                     }
                 };
@@ -57,7 +57,7 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                     try {
                         currentRaw = await pipeline.target.fetchTranslatedResource(targetLang, resourceId);
                     } catch (e) {
-                        sharedCtx().logger.info(`${targetLang}: Couldn't fetch translated resource ${translatedResourceId}`);
+                        sharedCtx().logger.info(`${targetLang}: Couldn't fetch translated resource ${translatedResourceId}: ${e.stack ?? e}`);
                     }
                     if (currentRaw) {
                         const currentParsed = await pipeline.resourceFilter.parseResource({ resource: currentRaw, isSource: false });

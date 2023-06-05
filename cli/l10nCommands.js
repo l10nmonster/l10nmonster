@@ -293,7 +293,7 @@ export async function job(monsterManager, options) {
             const pushResponse = await jobPushCmd(monsterManager, jobGuid);
             console.log(`${pushResponse.num.toLocaleString()} translations units requested -> status: ${pushResponse.status}`);
         } catch (e) {
-            console.error(`Failed to push job: ${e}`);
+            console.error(`Failed to push job: ${e.stack ?? e}`);
         }
     } else if (op === 'delete') {
         console.log(`Deleting job ${jobGuid}...`);
@@ -305,7 +305,7 @@ export async function job(monsterManager, options) {
                 await monsterManager.jobStore.deleteJobRequest(jobGuid);
             }
         } catch (e) {
-            console.error(`Failed to push job: ${e}`);
+            console.error(`Failed to push job: ${e.stack ?? e}`);
         }
     } else {
         console.error(`Invalid operation: ${op}`);

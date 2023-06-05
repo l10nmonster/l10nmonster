@@ -33,7 +33,7 @@ export class Grandfather {
                         lookup[seg.sid] = utils.makeTU(resMeta, seg);
                     }
             } catch (e) {
-                    sharedCtx().logger.info(`Couldn't fetch translated resource: ${e}`);
+                    sharedCtx().logger.info(`Couldn't fetch translated resource: ${e.stack ?? e}`);
                 }
                 txCache[tu.rid] = lookup;
             }
