@@ -10,7 +10,6 @@ export { jobsCmd } from './commands/jobs.js';
 export { tmExportCmd } from './commands/tmExport.js';
 export { translateCmd } from './commands/translate.js';
 
-export { JsonJobStore } from './stores/jsonJobStore.js';
 export { FsSource, FsTarget } from './adapters/fs.js';
 export { SnapFilter } from './filters/snap.js';
 export { Grandfather } from './translators/grandfather.js';

@@ -4,16 +4,16 @@ import {
     statSync,
     mkdirSync,
 } from 'fs';
-
 import {
     MonsterManager,
     helpers,
     OpsMgr,
-    JsonJobStore, FsSource, FsTarget,
+    FsSource, FsTarget,
     SnapFilter,
     Grandfather, Repetition, Visicode,
     defaultAnalyzers,
 } from './core.js';
+import { JsonJobStore } from '@l10nmonster/helpers';
 
 export async function createMonsterManager({ configPath, options, logger, env }) {
     if (!configPath) {

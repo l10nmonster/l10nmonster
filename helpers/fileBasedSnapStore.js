@@ -1,3 +1,5 @@
+const { sharedCtx } = require('.');
+
 module.exports = class FileBasedSnapStore {
     constructor(delegate) {
         if (!delegate) {
@@ -6,27 +8,28 @@ module.exports = class FileBasedSnapStore {
         this.delegate = delegate;
     }
 
-    #saveTOC(TOC) {
+    #updateTOC(TOC) {
         this.TOC = TOC;
         this.ridLookup = {};
         Object.entries(TOC).forEach(([ filename, resObj ]) => Object.keys(resObj).forEach(rid => this.ridLookup[rid] = filename));
     }
 
     async #getTOC() {
-        if (this.TOC) {
-            return this.TOC;
-        } else {
+        if (!this.TOC) {
             try {
-                this.#saveTOC(JSON.parse(await this.delegate.readFile('TOC.json')));
+                this.#updateTOC(JSON.parse(await this.delegate.getFile('TOC.json')));
             } catch (e) {
                 this.TOC = {};
                 this.ridLookup = {};
+                sharedCtx().logger.warn(`Couldn't read TOC.json: ${e.stack ?? e}`);
             }
         }
+        return this.TOC;
     }
 
     async startSnapshot() {
-        const filenames = await this.delegate.getExistingFileNames();
+        await this.delegate.ensureBaseDirExists();
+        const filenames = await this.delegate.listAllFiles();
         this.filesToNuke = Object.fromEntries(filenames.map(e => [e, true]));
         this.newTOC = {};
     }
@@ -46,7 +49,7 @@ module.exports = class FileBasedSnapStore {
         await this.delegate.saveFile('TOC.json', JSON.stringify(this.newTOC, null, '\t'));
         this.filesToNuke['TOC.json'] = false;
         await this.delegate.deleteFiles(Object.entries(this.filesToNuke).filter(e => e[1]).map(e => e[0]));
-        this.#saveTOC(this.newTOC);
+        this.#updateTOC(this.newTOC);
     }
 
     async getResourceStats() {

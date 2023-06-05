@@ -1,14 +1,17 @@
 {
-  "name": "@l10nmonster/helpers",
-  "version": "1.0.0",
-  "description": "Basic L10n Monster helpers and shared utils",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "MIT",
-  "devDependencies": {
-    "eslint": "^8"
+    "name": "@l10nmonster/helpers",
+    "version": "1.0.0",
+    "description": "Basic L10n Monster helpers and shared utils",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "nanoid": "^3.3.6"
+    },
+    "devDependencies": {
+        "eslint": "^8"
     }
 }

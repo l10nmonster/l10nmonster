@@ -30,7 +30,6 @@
         "@l10nmonster/tmexchange": "^3",
         "diff": "^5.0.0",
         "globby": "^13.1.1",
-        "nanoid": "^4.0",
         "words-count": "^2.0.2"
     },
     "devDependencies": {

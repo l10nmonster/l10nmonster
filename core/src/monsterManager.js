@@ -3,8 +3,7 @@ import wordsCountModule from 'words-count';
 
 import TMManager from './tmManager.js';
 import SourceManager from './sourceManager.js';
-import { JsonJobStore } from './stores/jsonJobStore.js';
-import { sharedCtx, utils } from '@l10nmonster/helpers';
+import { sharedCtx, utils, JsonJobStore } from '@l10nmonster/helpers';
 
 export class MonsterManager {
     constructor({ monsterDir, monsterConfig, configSeal, defaultAnalyzers = {} }) {
@@ -14,9 +13,7 @@ export class MonsterManager {
         } else {
             this.monsterDir = monsterDir;
             this.configSeal = configSeal;
-            this.jobStore = monsterConfig.jobStore ?? new JsonJobStore({
-                jobsDir: 'l10njobs',
-            });
+            this.jobStore = monsterConfig.jobStore ?? new JsonJobStore();
             this.debug = monsterConfig.debug ?? {};
             this.sourceLang = monsterConfig.sourceLang;
             this.minimumQuality = monsterConfig.minimumQuality;
