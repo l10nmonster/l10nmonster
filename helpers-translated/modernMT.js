@@ -1,5 +1,5 @@
 /* eslint-disable no-invalid-this */
-const { utils, normalizers, sharedCtx } = require('@l10nmonster/helpers');
+const { utils, normalizers } = require('@l10nmonster/helpers');
 const { ModernMT } = require('modernmt');
 
 const MAX_CHAR_LENGTH = 9900;
@@ -42,7 +42,7 @@ async function mmtTranslateChunkOp({ q, batchOptions }) {
 }
 
 async function mmtMergeSubmittedChunksOp(args, chunks) {
-    chunks.forEach((response, idx) => this.opsMgr.logger.verbose(`MMT Chunk ${idx} enqueued=${response.enqueued}`));
+    chunks.forEach((response, idx) => l10nmonster.logger.verbose(`MMT Chunk ${idx} enqueued=${response.enqueued}`));
 }
 
 async function mmtMergeTranslatedChunksOp({ jobRequest, tuMeta, quality, ts, chunkSizes }, chunks) {
@@ -92,7 +92,7 @@ module.exports = class ModernMT {
             this.mmtConstructor = [ apiKey, 'l10n.monster/MMT', '1.0' ];
             this.webhook = webhook;
             this.chunkFetcher = chunkFetcher;
-            chunkFetcher && sharedCtx().opsMgr.registerOp(chunkFetcher, { idempotent: true });
+            chunkFetcher && l10nmonster.opsMgr.registerOp(chunkFetcher, { idempotent: true });
             this.hints = hints;
             this.multiline = multiline ?? true;
             this.quality = quality;
@@ -103,9 +103,9 @@ module.exports = class ModernMT {
                 this.glossaryDecoder = [ glossaryDecoder ];
                 this.glossaryEncoder = glossaryEncoder;
             }
-            sharedCtx().opsMgr.registerOp(mmtTranslateChunkOp, { idempotent: false });
-            sharedCtx().opsMgr.registerOp(mmtMergeSubmittedChunksOp, { idempotent: true });
-            sharedCtx().opsMgr.registerOp(mmtMergeTranslatedChunksOp, { idempotent: true });
+            l10nmonster.opsMgr.registerOp(mmtTranslateChunkOp, { idempotent: false });
+            l10nmonster.opsMgr.registerOp(mmtMergeSubmittedChunksOp, { idempotent: true });
+            l10nmonster.opsMgr.registerOp(mmtMergeTranslatedChunksOp, { idempotent: true });
         }
     }
 
@@ -134,7 +134,7 @@ module.exports = class ModernMT {
                 webhook: this.webhook,
             }
         };
-        const requestTranslationsTask = sharedCtx().opsMgr.createTask();
+        const requestTranslationsTask = l10nmonster.opsMgr.createTask();
         requestTranslationsTask.setContext(context);
         const chunkOps = [];
         const chunkSizes = [];
@@ -149,7 +149,7 @@ module.exports = class ModernMT {
             if (q.length === 0) {
                 throw `String at index ${currentIdx} exceeds ${this.maxCharLength} max char length`;
             }
-            sharedCtx().logger.info(`Preparing MMT translate: chunk strings: ${q.length} chunk char length: ${currentTotalLength}`);
+            l10nmonster.logger.info(`Preparing MMT translate: chunk strings: ${q.length} chunk char length: ${currentTotalLength}`);
             const req = { q };
             if (this.webhook) {
                 req.batchOptions = {
@@ -171,18 +171,18 @@ module.exports = class ModernMT {
                 jobResponse.inflight = tus.map(tu => tu.guid);
                 jobResponse.envelope = { chunkSizes, tuMeta };
                 jobResponse.status = 'pending';
-                jobResponse.taskName = sharedCtx().regression ? 'x' : requestTranslationsTask.taskName;
+                jobResponse.taskName = l10nmonster.regression ? 'x' : requestTranslationsTask.taskName;
                 return jobResponse;
             } else {
                 requestTranslationsTask.commit(mmtMergeTranslatedChunksOp, {
                     jobRequest,
                     tuMeta,
                     quality: this.quality,
-                    ts: sharedCtx().regression ? 1 : new Date().getTime(),
+                    ts: l10nmonster.regression ? 1 : new Date().getTime(),
                     chunkSizes,
                 }, chunkOps);
                 const jobResponse = await requestTranslationsTask.execute();
-                jobResponse.taskName = sharedCtx().regression ? 'x' : requestTranslationsTask.taskName;
+                jobResponse.taskName = l10nmonster.regression ? 'x' : requestTranslationsTask.taskName;
                 applyGlossary(this.glossaryEncoder, jobResponse);
                 return jobResponse;
             }
@@ -194,10 +194,10 @@ module.exports = class ModernMT {
     async fetchTranslations(pendingJob, jobRequest) {
         try {
             // eslint-disable-next-line no-unused-vars
-            const requestTranslationsTask = sharedCtx().opsMgr.createTask();
+            const requestTranslationsTask = l10nmonster.opsMgr.createTask();
             const chunkOps = [];
             pendingJob.envelope.chunkSizes.forEach(async (chunkSize, chunk) => {
-                sharedCtx().logger.info(`Enqueue chunk fetcher for job: ${jobRequest.jobGuid} chunk:${chunk} chunkSize:${chunkSize}`);
+                l10nmonster.logger.info(`Enqueue chunk fetcher for job: ${jobRequest.jobGuid} chunk:${chunk} chunkSize:${chunkSize}`);
                 chunkOps.push(requestTranslationsTask.enqueue(this.chunkFetcher, {
                     jobGuid: jobRequest.jobGuid,
                     chunk,
@@ -208,11 +208,11 @@ module.exports = class ModernMT {
                 jobRequest,
                 tuMeta: pendingJob.envelope.tuMeta,
                 quality: this.quality,
-                ts: sharedCtx().regression ? 1 : new Date().getTime(),
+                ts: l10nmonster.regression ? 1 : new Date().getTime(),
                 chunkSizes: pendingJob.envelope.chunkSizes,
             }, chunkOps);
             const jobResponse = await requestTranslationsTask.execute();
-            jobResponse.taskName = sharedCtx().regression ? 'x' : requestTranslationsTask.taskName;
+            jobResponse.taskName = l10nmonster.regression ? 'x' : requestTranslationsTask.taskName;
             applyGlossary(this.glossaryEncoder, jobResponse);
             return jobResponse;
         } catch (error) {

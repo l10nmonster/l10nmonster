@@ -1,9 +1,9 @@
-const regex = require('./regex');
+import { decoderMaker, encoderMaker } from './regex.js';
 
 // Decoders
 
 // Generic wrapper to rename a decoder
-exports.namedDecoder = function named(name, decoder) {
+export function namedDecoder(name, decoder) {
     const fn = function namedDecoder(parts) {
         return decoder(parts).map(p => (p.flag === decoder.name ? { ...p, flag: name } : p));
     }
@@ -11,7 +11,7 @@ exports.namedDecoder = function named(name, decoder) {
     return fn;
 }
 
-exports.doublePercentDecoder = regex.decoderMaker(
+export const doublePercentDecoder = decoderMaker(
     'doublePercentDecoder',
     /(?<percent>%%)/g,
     () => '%'
@@ -20,7 +20,7 @@ exports.doublePercentDecoder = regex.decoderMaker(
 // Encoders
 
 // Generic flag-based encoder execution
-exports.gatedEncoder = function gated(encoder, ...flagNames) {
+export function gatedEncoder(encoder, ...flagNames) {
     const fn = function gatedEncoder(str, flags = {}) {
         const run = flagNames.reduce((run, flag) => run || (flag.charAt(0) === '!' ? !flags[flag.substring(1)] : flags[flag]), false);
         return run ? encoder(str, flags) : str;
@@ -29,25 +29,25 @@ exports.gatedEncoder = function gated(encoder, ...flagNames) {
     return fn;
 }
 
-exports.doublePercentEncoder = (str) => str.replaceAll('%', '%%');
+export const doublePercentEncoder = (str) => str.replaceAll('%', '%%');
 
 // Placeholders
 
 // {param} style placeholders
-exports.bracePHDecoder = regex.decoderMaker(
+export const bracePHDecoder = decoderMaker(
     'bracePHDecoder',
     /(?<x>{[^}]+})/g,
     (groups) => ({ t: 'x', v: groups.x })
 );
 
-exports.keywordTranslatorMaker = function keywordTranslatorMaker(name, keywordToTranslationMap) {
+export function keywordTranslatorMaker(name, keywordToTranslationMap) {
     if (keywordToTranslationMap && Object.keys(keywordToTranslationMap).length > 0) {
-        const decoder = regex.decoderMaker(
+        const decoder = decoderMaker(
             name,
             new RegExp(`(?<kw>${Object.keys(keywordToTranslationMap).join("|")})`, 'g'),
             (groups) => ({ t: 'x', v: `${name}:${groups.kw}`, s: groups.kw })
         );
-        const encoder = regex.encoderMaker(
+        const encoder = encoderMaker(
             name,
             new RegExp(`^(?:${name}:(?<kw>.+))$`, 'g'),
             (match, flags, kw) => {

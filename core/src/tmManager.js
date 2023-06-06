@@ -4,7 +4,7 @@ import {
     readFileSync,
     writeFileSync,
 } from 'fs';
-import { sharedCtx, utils } from '@l10nmonster/helpers';
+import { utils } from '@l10nmonster/helpers';
 import { targetTUWhitelist } from './schemas.js';
 
 class TM {
@@ -24,7 +24,7 @@ class TM {
             // nuke the cache if config seal is broken or jobs were removed
             if (!(this.tm?.configSeal === configSeal) || extraJobs.length > 0) {
                 this.tm = EMPTY_TM;
-                sharedCtx().logger.info(`Nuking existing TM ${tmPathName}`);
+                l10nmonster.logger.info(`Nuking existing TM ${tmPathName}`);
             }
         } else {
             this.tm = EMPTY_TM;
@@ -69,7 +69,7 @@ class TM {
     }
 
     async commit() {
-        sharedCtx().logger.info(`Updating ${this.tmPathName}...`);
+        l10nmonster.logger.info(`Updating ${this.tmPathName}...`);
         writeFileSync(this.tmPathName, JSON.stringify(this.tm, null, '\t'), 'utf8');
     }
 
@@ -133,7 +133,7 @@ export default class TMManager {
             if (handle.status === 'pending' || jobInTM?.status !== handle.status) {
                 const jobResponse = await this.jobStore.getJobByHandle(handle[handle.status]);
                 if (jobResponse.updatedAt !== jobInTM?.updatedAt) {
-                    sharedCtx().logger.info(`Applying job ${jobGuid} to the ${sourceLang} -> ${targetLang} TM...`);
+                    l10nmonster.logger.info(`Applying job ${jobGuid} to the ${sourceLang} -> ${targetLang} TM...`);
                     const jobRequest = await this.jobStore.getJobRequestByHandle(handle.req);
                     tm.processJob(jobResponse, jobRequest);
                 }

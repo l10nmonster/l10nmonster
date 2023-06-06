@@ -1,3 +1,4 @@
+global.l10nmonster ??= {};
 const { utils, normalizers, xml } = require('@l10nmonster/helpers');
 const ios = require('@l10nmonster/helpers-ios');
 const java = require('@l10nmonster/helpers-java');

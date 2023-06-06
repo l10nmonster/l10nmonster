@@ -1,9 +1,7 @@
-const { sharedCtx } = require('@l10nmonster/helpers');
 const path = require('path');
 const { existsSync } = require('fs');
 const fs = require('fs/promises');
 const { createxliff12, xliff12ToJs } = require('xliff');
-sharedCtx().xliff=true;
 
 exports.BridgeTranslator = class XliffBridge {
     constructor({ requestPath, completePath, quality }) {
@@ -35,7 +33,7 @@ exports.BridgeTranslator = class XliffBridge {
             notes,
         );
         if (xliff) {
-            const prjPath = path.join(sharedCtx().baseDir, this.requestPath(jobRequest.targetLang, jobRequest.jobGuid));
+            const prjPath = path.join(l10nmonster.baseDir, this.requestPath(jobRequest.targetLang, jobRequest.jobGuid));
             await fs.mkdir(path.dirname(prjPath), {recursive: true});
             await fs.writeFile(prjPath, xliff, 'utf8');
             jobManifest.inflight = Object.values(jobRequest.tus).map(tu => tu.guid);
@@ -48,7 +46,7 @@ exports.BridgeTranslator = class XliffBridge {
 
     async fetchTranslations(pendingJob, jobRequest) {
         const { inflight, ...jobResponse } = pendingJob;
-        const completePath = path.join(sharedCtx().baseDir, this.completePath(jobResponse.targetLang, jobResponse.jobGuid));
+        const completePath = path.join(l10nmonster.baseDir, this.completePath(jobResponse.targetLang, jobResponse.jobGuid));
         const tuMap = jobRequest.tus.reduce((p,c) => (p[c.guid] = c, p), {});
         if (existsSync(completePath)) {
             const translatedRes = await fs.readFile(completePath, 'utf8');

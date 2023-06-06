@@ -1,3 +1,79 @@
+const { adapters, translators } = require('@l10nmonster/helpers');
+const translated = require('@l10nmonster/helpers-translated');
+const { i18next } = require('@l10nmonster/helpers-json');
+const demo = require('@l10nmonster/helpers-demo');
+
+module.exports = class MTConfig2 {
+    sourceLang = 'en';
+    minimumQuality = 50;
+
+    constructor() {
+        const glossary = {
+            'Payments Testing': {
+                'it': '**Payment Testing**'
+            },
+            'testing scenarios': {},
+            'Giant': {},
+        };
+        this.contentTypes = {
+            local: {
+                source: new adapters.FsSource({
+                    globs: [ 'en/*.json' ],
+                    targetLangs: [ 'it' ]
+                }),
+                resourceFilter: new i18next.Filter(),
+                target: new adapters.FsTarget({
+                    targetPath: (lang, resourceId) => resourceId.replace('en/', `${lang}/`),
+                }),
+            }
+        };
+        this.translationProviders = {
+            Piggy: {
+                translator: new demo.PigLatinizer({ quality: 1 }),
+                pairs: { en: [ 'it' ]},
+            },
+            ModernMT: {
+                translator: new translated.ModernMT({
+                    apiKey: l10nmonster.env.mmt_api_key,
+                    quality: 40,
+                    maxCharLength: 1000,
+                    glossary,
+                }),
+            },
+            ModernMTBatch: {
+                translator: new translated.ModernMT({
+                    apiKey: l10nmonster.env.mmt_batch_api_key,
+                    webhook: l10nmonster.env.mmt_batch_webhook,
+                    chunkFetcher: dummyChunkFetcher,
+                    quality: 40,
+                    maxCharLength: 1000,
+                    glossary,
+                }),
+            },
+            // DeepL: {
+            //     translator: new translators.DeepL({
+            //         apiKey: l10nmonster.env.deepl_api_key,
+            //         quality: 40,
+            //     }),
+            //     quota: 0,
+            // },
+            Repetition: {
+                translator: new translators.Repetition({
+                    qualifiedPenalty: 1,
+                    unqualifiedPenalty: 9,
+                }),
+            },
+            Grandfather: {
+                translator: new translators.Grandfather({
+                    quality: 70,
+                }),
+            },
+        };
+    }
+}
+
+module.exports.opsDir = 'l10nOps';
+
 async function dummyChunkFetcher({ jobGuid, chunk }) {
     return [
         {
@@ -32,84 +108,6 @@ async function dummyChunkFetcher({ jobGuid, chunk }) {
         }
     ];
 }
-
-const { setCtx } = require('@l10nmonster/helpers');
-
-module.exports = class MTConfig2 {
-    sourceLang = 'en';
-    minimumQuality = 50;
-
-    constructor({ helpers, adapters, translators }) {
-        setCtx(helpers.sharedCtx());
-        const ctx = helpers.sharedCtx();
-        const translated = require('@l10nmonster/helpers-translated');
-        const { i18next } = require('@l10nmonster/helpers-json');
-        const demo = require('@l10nmonster/helpers-demo');
-        const glossary = {
-            'Payments Testing': {
-                'it': '**Payment Testing**'
-            },
-            'testing scenarios': {},
-            'Giant': {},
-        };
-        this.contentTypes = {
-            local: {
-                source: new adapters.FsSource({
-                    globs: [ 'en/*.json' ],
-                    targetLangs: [ 'it' ]
-                }),
-                resourceFilter: new i18next.Filter(),
-                target: new adapters.FsTarget({
-                    targetPath: (lang, resourceId) => resourceId.replace('en/', `${lang}/`),
-                }),
-            }
-        };
-        this.translationProviders = {
-            Piggy: {
-                translator: new demo.PigLatinizer({ quality: 1 }),
-                pairs: { en: [ 'it' ]},
-            },
-            ModernMT: {
-                translator: new translated.ModernMT({
-                    apiKey: ctx.env.mmt_api_key,
-                    quality: 40,
-                    maxCharLength: 1000,
-                    glossary,
-                }),
-            },
-            ModernMTBatch: {
-                translator: new translated.ModernMT({
-                    apiKey: ctx.env.mmt_batch_api_key,
-                    webhook: ctx.env.mmt_batch_webhook,
-                    chunkFetcher: dummyChunkFetcher,
-                    quality: 40,
-                    maxCharLength: 1000,
-                    glossary,
-                }),
-            },
-            // DeepL: {
-            //     translator: new translators.DeepL({
-            //         apiKey: ctx.env.deepl_api_key,
-            //         quality: 40,
-            //     }),
-            //     quota: 0,
-            // },
-            Repetition: {
-                translator: new translators.Repetition({
-                    qualifiedPenalty: 1,
-                    unqualifiedPenalty: 9,
-                }),
-            },
-            Grandfather: {
-                translator: new translators.Grandfather({
-                    quality: 70,
-                }),
-            },
-        };
-    }
-}
-
-module.exports.opsDir = 'l10nOps';
 
 /*
 The MMT webhook needs to be implemented based on the available infrastructure.

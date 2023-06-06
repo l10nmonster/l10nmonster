@@ -1,4 +1,4 @@
-const regex = require('./regex');
+import { decoderMaker, encoderMaker } from './regex.js';
 
 const namedEntities = {
     '&nbsp;': '\u00a0',
@@ -8,7 +8,7 @@ const namedEntities = {
     '&lt;'  : '<',
     '&gt;'  : '>'
 };
-exports.entityDecoder = regex.decoderMaker(
+export const entityDecoder = decoderMaker(
     'xmlEntityDecoder',
     /(?<node>&#x(?<hexEntity>[0-9a-fA-F]+);|(?<namedEntity>&[^#;]+;)|&#(?<numericEntity>\d+);)/g,
     // eslint-disable-next-line no-nested-ternary
@@ -21,13 +21,13 @@ exports.entityDecoder = regex.decoderMaker(
 );
 
 // TODO: this is conflating generic XML CDATA with Android-specific quotes, so it's really an android-only thing
-exports.CDataDecoder = regex.decoderMaker(
+export const CDataDecoder = decoderMaker(
     'xmlCDataDecoder',
     /(?:<!\[CDATA\[(?<cdata>.*?)\]\]>|(?:(?<firstChar>[^\\])"|^")(?<quoted>.*?)(?<lastChar>[^\\])")/gs,
     groups => groups.cdata ?? ((groups.firstChar || '') + groups.quoted + (groups.lastChar ?? ''))
 );
 
-exports.entityEncoder = regex.encoderMaker(
+export const entityEncoder = encoderMaker(
     'xmlEntityEncoder',
     // eslint-disable-next-line prefer-named-capture-group
     /(&)|(<)|(\u00a0)/g,
@@ -41,7 +41,7 @@ exports.entityEncoder = regex.encoderMaker(
 // Placeholders
 
 // Works for both XML and HTML
-exports.tagDecoder = regex.decoderMaker(
+export const tagDecoder = decoderMaker(
     'xmlDecoder',
     /(?<tag>(?<x><[^>]+\/>)|(?<bx><[^/!][^>]*>)|(?<ex><\/[^>]+>))/g,
     // eslint-disable-next-line no-nested-ternary

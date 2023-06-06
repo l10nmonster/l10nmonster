@@ -1,6 +1,5 @@
 const PigLatin = require('pig-latinizer');
 const pigLatin = new PigLatin.default();
-const { sharedCtx } = require('@l10nmonster/helpers');
 
 module.exports = class PigLatinizer {
     constructor({ quality } = {}) {
@@ -14,7 +13,7 @@ module.exports = class PigLatinizer {
     async requestTranslations(jobRequest) {
         // eslint-disable-next-line no-unused-vars
         const { tus, ...jobResponse } = jobRequest;
-        const ts = sharedCtx().regression ? 1 : new Date().getTime();
+        const ts = l10nmonster.regression ? 1 : new Date().getTime();
         jobResponse.tus = jobRequest.tus.map(tu => {
             const translation = { guid: tu.guid, ts };
             if (tu.nsrc) {

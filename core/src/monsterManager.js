@@ -3,17 +3,17 @@ import wordsCountModule from 'words-count';
 
 import TMManager from './tmManager.js';
 import SourceManager from './sourceManager.js';
-import { sharedCtx, utils, JsonJobStore } from '@l10nmonster/helpers';
+import { utils, stores } from '@l10nmonster/helpers';
 
 export class MonsterManager {
-    constructor({ monsterDir, monsterConfig, configSeal, defaultAnalyzers = {} }) {
+    constructor({ monsterDir, monsterConfig, configSeal }) {
         if (monsterDir && monsterConfig && monsterConfig.sourceLang &&
                 (monsterConfig.contentTypes || monsterConfig.source || monsterConfig.snapStore) === undefined) {
             throw 'You must specify sourceLang and contentTypes / source / snapStore in your config';
         } else {
             this.monsterDir = monsterDir;
             this.configSeal = configSeal;
-            this.jobStore = monsterConfig.jobStore ?? new JsonJobStore();
+            this.jobStore = monsterConfig.jobStore ?? new stores.JsonJobStore();
             this.debug = monsterConfig.debug ?? {};
             this.sourceLang = monsterConfig.sourceLang;
             this.minimumQuality = monsterConfig.minimumQuality;
@@ -78,7 +78,7 @@ export class MonsterManager {
                 });
             }
             this.tuFilters = monsterConfig.tuFilters;
-            const seqMapPath = monsterConfig.seqMap && path.join(sharedCtx().baseDir, monsterConfig.seqMap);
+            const seqMapPath = monsterConfig.seqMap && path.join(l10nmonster.baseDir, monsterConfig.seqMap);
             this.source = new SourceManager({
                 configSeal,
                 contentTypes: this.contentTypes,
@@ -88,10 +88,7 @@ export class MonsterManager {
             });
             this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, configSeal });
             this.snapStore = monsterConfig.snapStore;
-            this.analyzers = {
-                ...defaultAnalyzers,
-                ...(monsterConfig.analyzers ?? {}),
-            };
+            this.analyzers = monsterConfig.analyzers ?? {};
             this.capabilitiesByType = Object.fromEntries(Object.entries(this.contentTypes).map(([type, pipeline]) => [ type, {
                 snap: Boolean(pipeline.source && this.snapStore),
                 status: Boolean(pipeline.source),
@@ -166,7 +163,7 @@ export class MonsterManager {
             jobRequest.status = 'cancelled';
             return;
         }
-        const updatedAt = (sharedCtx().regression ? new Date('2022-05-29T00:00:00.000Z') : new Date()).toISOString();
+        const updatedAt = (l10nmonster.regression ? new Date('2022-05-29T00:00:00.000Z') : new Date()).toISOString();
         if (jobRequest) {
             jobRequest.updatedAt = updatedAt;
             await this.jobStore.writeJob(jobRequest);
@@ -271,7 +268,7 @@ export class MonsterManager {
             const translatedTU = tm.getEntryByGuid(guid) ?? {};
             return { ...sourceTU, ...translatedTU }; // this is a superset of source and target properties so that filters have more to work with
         });
-        sharedCtx().prj !== undefined && (tus = tus.filter(tu => sharedCtx().prj.includes(tu.prj)));
+        l10nmonster.prj !== undefined && (tus = tus.filter(tu => l10nmonster.prj.includes(tu.prj)));
         return {
             sourceLang: this.sourceLang,
             targetLang,

@@ -2,15 +2,14 @@ const path = require('path');
 const fs = require('fs');
 const translated = require('@l10nmonster/helpers-translated');
 const { OpsMgr } = require('@l10nmonster/core');
-const { sharedCtx, mergeProps } = require('@l10nmonster/helpers');
 
 const getArtifact = filename => JSON.parse(fs.readFileSync(path.join('translators', 'artifacts', filename)));
-const logger = { info: () => true, verbose: () => true };
-mergeProps({
-    logger,
-    opsMgr: new OpsMgr({ logger }),
-    regression: true,
-});
+
+global.l10nmonster ??= {};
+l10nmonster.logger = { info: () => true, verbose: () => true };
+l10nmonster.opsMgr = new OpsMgr();
+l10nmonster.regression = true;
+
 const glossary = {
     'Payments Testing': {
         'it': '**Payment Testing**'
@@ -32,7 +31,7 @@ describe('Modern MT translator', () => {
         quality: 40,
         glossary,
     });
-    sharedCtx().opsMgr.registry.mmtTranslateChunkOp.callback = async function mockTranslateChunkOp() {
+    l10nmonster.opsMgr.registry.mmtTranslateChunkOp.callback = async function mockTranslateChunkOp() {
         // eslint-disable-next-line no-invalid-this
         return this.opList[1].opName === 'mmtMergeTranslatedChunksOp' ?
             getArtifact('MMT-realtime-op0.json') :

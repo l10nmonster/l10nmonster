@@ -1,13 +1,12 @@
-const { setCtx } = require('@l10nmonster/helpers');
+const { adapters, translators } = require('@l10nmonster/helpers');
+const po = require('@l10nmonster/helpers-po');
+const demo = require('@l10nmonster/helpers-demo');
 
 module.exports = class GrampsConfig2 {
     sourceLang = 'en';
 
-    constructor({ helpers, adapters, translators }) {
-        setCtx(helpers.sharedCtx());
-        const po = require('./node_modules/@l10nmonster/helpers-po');
-        const demo = require('./node_modules/@l10nmonster/helpers-demo');
-        this.minimumQuality = helpers.sharedCtx().build === 'prod' ? 95 : 0; // only push production builds
+    constructor() {
+        this.minimumQuality = l10nmonster.arg === 'prod' ? 95 : 0; // only push production builds
         this.source = new adapters.FsSource({
             globs: [
                 'artifacts/*.pot',

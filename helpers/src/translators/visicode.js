@@ -1,4 +1,4 @@
-import { sharedCtx, utils } from '@l10nmonster/helpers';
+import { utils } from '@l10nmonster/helpers';
 
 function underlineString(str, runningLength) {
     const newStr = [];
@@ -33,7 +33,7 @@ export class Visicode {
     async requestTranslations(jobRequest) {
         // eslint-disable-next-line no-unused-vars
         const { tus, ...jobResponse } = jobRequest;
-        const ts = sharedCtx().regression ? 1 : new Date().getTime();
+        const ts = l10nmonster.regression ? 1 : new Date().getTime();
         jobResponse.tus = jobRequest.tus.map(tu => {
             const translation = { guid: tu.guid, ts };
             const prolog = `\u21e5${tu.seq ? `${utils.integerToLabel(tu.seq)}:` : ''}`;

@@ -1,4 +1,3 @@
-import { sharedCtx } from '@l10nmonster/helpers';
 
 export async function pullCmd(mm, { limitToLang, partial }) {
     const stats = { numPendingJobs: 0, translatedStrings: 0, doneJobs: 0, newPendingJobs: 0 };
@@ -12,7 +11,7 @@ export async function pullCmd(mm, { limitToLang, partial }) {
             const jobRequest = await mm.jobStore.getJobRequest(jobGuid);
             const pendingJob = await mm.jobStore.getJob(jobGuid);
             if (pendingJob.status === 'pending') {
-                sharedCtx().logger.info(`Pulling job ${jobGuid}...`);
+                l10nmonster.logger.info(`Pulling job ${jobGuid}...`);
                 const translationProvider = mm.getTranslationProvider(pendingJob);
                 const jobResponse = await translationProvider.translator.fetchTranslations(pendingJob, jobRequest);
                 if (jobResponse?.status === 'done') {
@@ -20,7 +19,7 @@ export async function pullCmd(mm, { limitToLang, partial }) {
                     stats.translatedStrings += jobResponse.tus.length;
                     stats.doneJobs++;
                 } else if (jobResponse?.status === 'pending') {
-                    sharedCtx().logger.info(`Got ${jobResponse.tus.length} translations for job ${jobRequest.jobGuid} but there are still ${jobResponse.inflight.length} translations in flight`);
+                    l10nmonster.logger.info(`Got ${jobResponse.tus.length} translations for job ${jobRequest.jobGuid} but there are still ${jobResponse.inflight.length} translations in flight`);
                     if (partial) {
                         const { inflight, ...doneResponse } = jobResponse;
                         doneResponse.status = 'done';

@@ -10,8 +10,5 @@
   "license": "MIT",
   "dependencies": {
     "pig-latinizer": "^1.0.6"
-  },
-  "peerDependencies": {
-    "@l10nmonster/helpers": "../helpers"
   }
 }

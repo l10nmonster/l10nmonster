@@ -131,13 +131,10 @@ export async function runMonsterCLI(monsterConfigPath, extensionsPath) {
             async cli => {
                 const options = cli.opts();
                 const configPath = (options.cfg && path.resolve('.', options.cfg)) ?? monsterConfigPath;
-                const logger = l10n.createLogger(options.verbose);
-                const mm = await createMonsterManager({
-                    configPath,
-                    options,
-                    logger,
-                    env: process.env,
-                });
+                global.l10nmonster ??= {};
+                l10nmonster.logger = l10n.createLogger(options.verbose);
+                l10nmonster.env = process.env;
+                const mm = await createMonsterManager(configPath, options);
                 cliCtx.monsterManager = mm;
             }
         ).parseAsync();

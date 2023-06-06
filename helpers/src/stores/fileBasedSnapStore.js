@@ -1,6 +1,5 @@
-const { sharedCtx } = require('.');
 
-module.exports = class FileBasedSnapStore {
+export class FileBasedSnapStore {
     constructor(delegate) {
         if (!delegate) {
             throw 'A delegate is required to instantiate a FileBasedSnapStore';
@@ -21,7 +20,7 @@ module.exports = class FileBasedSnapStore {
             } catch (e) {
                 this.TOC = {};
                 this.ridLookup = {};
-                sharedCtx().logger.warn(`Couldn't read TOC.json: ${e.stack ?? e}`);
+                l10nmonster.logger.warn(`Couldn't read TOC.json: ${e.stack ?? e}`);
             }
         }
         return this.TOC;
@@ -67,7 +66,7 @@ module.exports = class FileBasedSnapStore {
         for (const filename of Object.keys(TOC)) {
             const resources = JSON.parse(await this.delegate.getFile(filename));
             for (const res of Object.values(resources)) {
-                if (sharedCtx().prj === undefined || sharedCtx().prj.includes(res.prj)) {
+                if (l10nmonster.prj === undefined || l10nmonster.prj.includes(res.prj)) {
                     yield res;
                 }
             }

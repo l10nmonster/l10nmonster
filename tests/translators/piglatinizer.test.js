@@ -1,3 +1,4 @@
+global.l10nmonster ??= {};
 const { PigLatinizer } = require('@l10nmonster/helpers-demo');
 
 describe ('pig latinizer translator tests', () =>{

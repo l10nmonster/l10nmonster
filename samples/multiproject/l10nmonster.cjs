@@ -1,19 +1,18 @@
+const { adapters } = require('@l10nmonster/helpers');
+const ios = require('@l10nmonster/helpers-ios');
+const android = require('@l10nmonster/helpers-android');
+
 const androidLangMapping = {
     'pt-BR': 'pr-rBR',
     'zh-Hans': 'zh-rCN',
     'zh-Hant': 'zh-rTW',
 };
 
-const { setCtx, sharedCtx } = require('@l10nmonster/helpers');
-
 module.exports = class MultiProjectConfig2 {
     sourceLang = 'en';
     minimumQuality = 50;
 
-    constructor({ helpers, adapters }) {
-        setCtx(helpers.sharedCtx());
-        const ios = require('@l10nmonster/helpers-ios');
-        const android = require('@l10nmonster/helpers-android');
+    constructor() {
         this.contentTypes = {
             ios: {
                 source: new adapters.FsSource({

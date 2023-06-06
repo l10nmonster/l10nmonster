@@ -1,15 +1,14 @@
-const { setCtx, sharedCtx } = require('@l10nmonster/helpers');
+const { adapters, translators } = require('@l10nmonster/helpers');
+const http = require('@l10nmonster/helpers-http');
+const html = require('@l10nmonster/helpers-html');
+const demo = require('@l10nmonster/helpers-demo');
+const translated = require('@l10nmonster/helpers-translated');
 
 module.exports = class HtmlConfig2 {
     sourceLang = 'en';
     minimumQuality = 50;
 
-    constructor({ adapters, helpers, translators }) {
-        setCtx(helpers.sharedCtx());
-        const http = require('@l10nmonster/helpers-http');
-        const html = require('@l10nmonster/helpers-html');
-        const demo = require('@l10nmonster/helpers-demo');
-        const translated = require('@l10nmonster/helpers-translated');
+    constructor() {
         this.contentTypes = {
             local: {
                 source: new adapters.FsSource({
@@ -47,14 +46,14 @@ module.exports = class HtmlConfig2 {
             },
             ModernMT: {
                 translator: new translated.ModernMT({
-                    apiKey: sharedCtx().env.mmt_api_key,
+                    apiKey: l10nmonster.env.mmt_api_key,
                     quality: 40,
                     maxCharLength: 1000,
                 }),
             },
             // DeepL: {
             //     translator: new translators.DeepL({
-            //         apiKey: sharedCtx().env.deepl_api_key,
+            //         apiKey: l10nmonster.env.deepl_api_key,
             //         quality: 40,
             //     }),
             //     quota: 0,

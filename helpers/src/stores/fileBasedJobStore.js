@@ -1,10 +1,9 @@
-const { nanoid } = require('nanoid');
-const { sharedCtx } = require('.');
+import { nanoid } from 'nanoid';
 
 const statusPriority = { done: 0, pending: 1, req: 2 };
 const jobFilenameRegex = /(?<provider>[^_]+)_(?<sourceLang>[^_]+)_(?<targetLang>[^_]+)_job_(?<guid>[0-9A-Za-z_-]+)-(?<status>req|pending|done)\.json$/;
 
-module.exports = class FileBasedJobStore {
+export class FileBasedJobStore {
     constructor(delegate) {
         if (!delegate) {
             throw 'A delegate is required to instantiate a FileBasedJobStore';
@@ -47,7 +46,7 @@ module.exports = class FileBasedJobStore {
 
     async createJobManifest() {
         return {
-            jobGuid: sharedCtx().regression ? `xxx${(await this.#findGlob('*job_*-req.json')).length}xxx` : nanoid(),
+            jobGuid: l10nmonster.regression ? `xxx${(await this.#findGlob('*job_*-req.json')).length}xxx` : nanoid(),
             status: 'created',
         };
     }

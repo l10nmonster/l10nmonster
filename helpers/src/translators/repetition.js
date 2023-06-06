@@ -1,4 +1,4 @@
-import { sharedCtx, utils } from '@l10nmonster/helpers';
+import { utils } from '@l10nmonster/helpers';
 
 // this provider reuses translations of identical strings with same id in different files (qualified)
 // or identical strings with different id (unqualified)
@@ -12,11 +12,15 @@ export class Repetition {
         this.unqualifiedPenalty = unqualifiedPenalty;
     }
 
+    async init(mm) {
+        this.mm = mm;
+    }
+
     // eslint-disable-next-line complexity
     async requestTranslations(jobRequest) {
         const { tus, ...jobResponse } = jobRequest;
         jobResponse.tus = [];
-        const tm = await sharedCtx().mm.tmm.getTM(sharedCtx().mm.sourceLang, jobRequest.targetLang);
+        const tm = await this.mm.tmm.getTM(this.mm.sourceLang, jobRequest.targetLang);
         for (const tu of tus) {
             const tuCandidates = tm.getAllEntriesBySrc(tu.nsrc ?? tu.src);
             if (tuCandidates.length > 0) {
@@ -43,17 +47,17 @@ export class Repetition {
                     bestCandidate.ntgt && (leveragedTU.ntgt = bestCandidate.ntgt);
                     const existingTU = tm.getEntryByGuid(tu.guid);
                     if (existingTU && utils.normalizedStringsAreEqual(existingTU.ntgt ?? existingTU.ntgt, leveragedTU.ntgt ?? leveragedTU.ntgt)) {
-                        sharedCtx().logger.verbose(`Did not leverage ${bestCandidate.guid} for ${tu.guid} because TM already has an identical entry (maybe of quality < minimum quality)`);
+                        l10nmonster.logger.verbose(`Did not leverage ${bestCandidate.guid} for ${tu.guid} because TM already has an identical entry (maybe of quality < minimum quality)`);
                     } else {
-                        leveragedTU.ts = sharedCtx().regression ? (existingTU?.ts ?? 0) + 1 : new Date().getTime(); // if there's an entry already we want to make sure we're more recent
+                        leveragedTU.ts = l10nmonster.regression ? (existingTU?.ts ?? 0) + 1 : new Date().getTime(); // if there's an entry already we want to make sure we're more recent
                         jobResponse.tus.push(leveragedTU);
-                        sharedCtx().logger.verbose(`Leveraged ${bestCandidate.guid} for ${tu.guid}`);
+                        l10nmonster.logger.verbose(`Leveraged ${bestCandidate.guid} for ${tu.guid}`);
                     }
                 }
             }
         }
         jobResponse.status = 'done';
-        sharedCtx().logger.info(`Leveraging ${jobRequest.targetLang}... found ${tus.length} missing translations, of which ${jobResponse.tus.length} can be leveraged`);
+        l10nmonster.logger.info(`Leveraging ${jobRequest.targetLang}... found ${tus.length} missing translations, of which ${jobResponse.tus.length} can be leveraged`);
         return jobResponse;
     }
 

@@ -1,4 +1,3 @@
-import { sharedCtx } from '@l10nmonster/helpers';
 
 export async function statusCmd(mm, { limitToLang }) {
     const status = {
@@ -11,7 +10,7 @@ export async function statusCmd(mm, { limitToLang }) {
             leverage,
         };
         status.numSources = leverage.numSources;
-        sharedCtx().logger.info(`Calculated status of ${targetLang}`);
+        l10nmonster.logger.info(`Calculated status of ${targetLang}`);
     }
     return status;
 }

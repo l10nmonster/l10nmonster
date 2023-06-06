@@ -1,12 +1,12 @@
 // Note: in general, decoders are more complicated than encoders because there are usually multiple ways
 //   to specify the same thing in input, but we choose a single way to produce in output (e.g. CDATA vs. escapes)
 //   Don't be surprised if you see we don't express the full semantics of the source, because our goals here
-//   is to protect placeholders = require(getting corrupted, so we may have to merge different rule sets together
+//   is to protect placeholders getting corrupted, so we may have to merge different rule sets together
 //   (e.g. MessageFormat variables and HTML markup). There are also edge cases like a Java service returning
 //   an Android message format string, where we may need to overlay both Java and Android rules together.
 
 // Generic pluggable decoder
-exports.decoderMaker = function regexDecoderMaker(flag, regex, partDecoder) {
+export const decoderMaker = function regexDecoderMaker(flag, regex, partDecoder) {
     const fn = function decoder(parts) {
         const decodedParts = parts.map(p => {
             if (p.t === 's') {
@@ -49,7 +49,7 @@ exports.decoderMaker = function regexDecoderMaker(flag, regex, partDecoder) {
 }
 
 // Generic pluggable encoder based on a regex and a mapping table or function
-exports.encoderMaker = function regexEncoderMaker(name, regex, matchMap) {
+export const encoderMaker = function regexEncoderMaker(name, regex, matchMap) {
     const fn = function encoder(str, flags = {}) {
         return str.replaceAll(regex, (match, ...capture) => {
             const matchToReplace = capture.reduce((p,c) => p ?? c);

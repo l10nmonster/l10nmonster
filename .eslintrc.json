@@ -4,6 +4,9 @@
         "node": true
     },
     "extends": "eslint:recommended",
+    "globals": {
+        "l10nmonster": "writable"
+    },
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module"

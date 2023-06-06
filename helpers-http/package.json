@@ -7,8 +7,5 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Diego Lagunas",
-  "license": "MIT",
-  "peerDependencies": {
-    "@l10nmonster/helpers": "../helpers"
-  }
+  "license": "MIT"
 }

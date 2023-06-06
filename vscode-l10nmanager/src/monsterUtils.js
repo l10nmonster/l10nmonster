@@ -3,7 +3,8 @@ import { createMonsterManager } from '@l10nmonster/core';
 
 const monsterOutput = vscode.window.createOutputChannel('L10n Monster', { log: true });
 
-export const logger = {
+global.l10nmonster ??= {};
+l10nmonster.logger = {
     verbose: (msg) => monsterOutput.debug(msg),
     info: (msg) => monsterOutput.info(msg),
     warn: (msg) => monsterOutput.warn(msg),
@@ -12,25 +13,20 @@ export const logger = {
 
 export function withMonsterManager(configPath, cb, limitToPrj) {
     const l10nmonsterCfg = vscode.workspace.getConfiguration('l10nmonster');
-    const env = l10nmonsterCfg.get('env');
+    l10nmonster.env = l10nmonsterCfg.get('env');
     let prj = limitToPrj ?? l10nmonsterCfg.get('prj');
     prj.length === 0 && (prj = undefined);
     const arg = l10nmonsterCfg.get('arg') || undefined;
     return (async () => {
         let result;
         try {
-            const mm = await createMonsterManager({
-                configPath,
-                options: { prj, arg },
-                logger,
-                env,
-            });
+            const mm = await createMonsterManager(configPath, { prj, arg });
             if (mm) {
                 result = await cb(mm);
                 await mm.shutdown();
             }
         } catch (e) {
-            logger.error(`Unable to initialize l10n monster: ${e.stack ?? e}`);
+            l10nmonster.logger.error(`Unable to initialize l10n monster: ${e.stack ?? e}`);
             return false;
         }
         return result;
@@ -64,7 +60,7 @@ function getElementByKey(siblings, keyparts) {
             return element;
         }
     }
-    logger.error(`Could not find ${baseKey} among siblings`);
+    l10nmonster.logger.error(`Could not find ${baseKey} among siblings`);
     return undefined;
 }
 
@@ -82,7 +78,7 @@ export class AbstractViewTreeDataProvider {
                     return enumerateKeys(this.cachedStatus);
                 });
             }
-            logger.warn('Somehow root was fetched again')
+            l10nmonster.logger.warn('Somehow root was fetched again')
             return Promise.resolve(enumerateKeys(this.cachedStatus));
         }
         const element = getElementByKey(this.cachedStatus, key.split('.'));
@@ -92,7 +88,7 @@ export class AbstractViewTreeDataProvider {
         if (element.children) { // inner collapsable
             return Promise.resolve(enumerateKeys(element.children, element.fqKey));
         } else {
-            logger.error(`Somehow a leaf was collapsed at key: ${key}`);
+            l10nmonster.logger.error(`Somehow a leaf was collapsed at key: ${key}`);
             return Promise.resolve([]);
         }
     }

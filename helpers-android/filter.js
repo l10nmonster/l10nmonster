@@ -5,7 +5,6 @@
 
 const { XMLParser, XMLBuilder } = require('fast-xml-parser');
 const xmlFormatter = require('xml-formatter');
-const { sharedCtx } = require('@l10nmonster/helpers');
 
 function collapseTextNodes(node) {
     return node.map(e => e['#text']).join('').trim();
@@ -66,9 +65,9 @@ module.exports = class AndroidFilter {
                             segments.push(seg);
                         }
                         lastComment = null;
-                    } else if (sharedCtx().verbose) {
-                        sharedCtx().logger.log(`Unexpected child node in resources`);
-                        sharedCtx().logger.dir(resNode);
+                    } else {
+                        l10nmonster.logger.verbose(`Unexpected child node in resources`);
+                        l10nmonster.logger.verbose(JSON.stringify(resNode));
                     }
                 }
             }

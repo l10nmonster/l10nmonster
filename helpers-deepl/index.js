@@ -1,4 +1,4 @@
-const { sharedCtx, utils } = require('@l10nmonster/helpers');
+const { utils } = require('@l10nmonster/helpers');
 
 const MAX_CHUNK_SIZE = 50;
 
@@ -58,8 +58,8 @@ exports.DeepL = class DeepL {
             this.formalityMap = formalityMap ?? {},
             this.quality = quality;
             this.languageMapper = languageMapper;
-            sharedCtx().opsMgr.registerOp(deeplTranslateChunkOp, { idempotent: false });
-            sharedCtx().opsMgr.registerOp(deeplMergeTranslatedChunksOp, { idempotent: true });
+            l10nmonster.opsMgr.registerOp(deeplTranslateChunkOp, { idempotent: false });
+            l10nmonster.opsMgr.registerOp(deeplMergeTranslatedChunksOp, { idempotent: true });
         }
     }
 
@@ -73,7 +73,7 @@ exports.DeepL = class DeepL {
             return xmlSrc;
         });
 
-        const requestTranslationsTask = sharedCtx().opsMgr.createTask();
+        const requestTranslationsTask = l10nmonster.opsMgr.createTask();
         try {
             const chunkOps = [];
             for (let currentIdx = 0; currentIdx < deeplPayload.length;) {
@@ -83,7 +83,7 @@ exports.DeepL = class DeepL {
                     q.push(deeplPayload[currentIdx]);
                     currentIdx++;
                 }
-                sharedCtx().logger.info(`Preparing DeepL translate, offset: ${offset} chunk strings: ${q.length}`);
+                l10nmonster.logger.info(`Preparing DeepL translate, offset: ${offset} chunk strings: ${q.length}`);
                 const sourceLang = (this.languageMapper && this.languageMapper(jobRequest.sourceLang)) ?? jobRequest.sourceLang;
                 const targetLang = (this.languageMapper && this.languageMapper(jobRequest.targetLang)) ?? jobRequest.targetLang;
                 const baseParams = {
@@ -113,7 +113,7 @@ exports.DeepL = class DeepL {
                 jobRequest,
                 tuMeta,
                 quality: this.quality,
-                ts: sharedCtx().regression ? 1 : new Date().getTime(),
+                ts: l10nmonster.regression ? 1 : new Date().getTime(),
             }, chunkOps);
             const jobResponse = await requestTranslationsTask.execute();
             jobResponse.taskName = requestTranslationsTask.taskName;

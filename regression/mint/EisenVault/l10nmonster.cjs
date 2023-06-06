@@ -1,13 +1,12 @@
-const { setCtx } = require('@l10nmonster/helpers');
+const { adapters, translators } = require('@l10nmonster/helpers');
+const java = require('@l10nmonster/helpers-java');
+const demo = require('@l10nmonster/helpers-demo');
 
 module.exports = class EisenVaultConfig2 {
     sourceLang = 'en';
     minimumQuality = 50;
 
-    constructor({ helpers, adapters, translators }) {
-        setCtx(helpers.sharedCtx());
-        const java = require('./node_modules/@l10nmonster/helpers-java');
-        const demo = require('./node_modules/@l10nmonster/helpers-demo');
+    constructor() {
         this.source = new adapters.FsSource({
             globs: [ '**/*_en.properties' ],
             targetLangs: [ 'it' ],

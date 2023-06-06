@@ -1,6 +1,6 @@
 import * as fs from 'fs/promises';
 import {js2tmx} from '@l10nmonster/tmexchange';
-import { sharedCtx, utils } from '@l10nmonster/helpers';
+import { utils } from '@l10nmonster/helpers';
 import { sourceTUWhitelist, targetTUWhitelist } from '../schemas.js';
 
 async function exportTMX(content, emitMissingTranslations) {
@@ -24,7 +24,7 @@ async function exportTMX(content, emitMissingTranslations) {
                 Boolean(mangledTgt) && (tmx.resources[group][pair.sourceTU.guid][content.targetLang] = mangledTgt);
             }
         } else {
-            sharedCtx().logger.info(`Couldn't retrieve source for guid: ${pair.sourceTU.guid}`);
+            l10nmonster.logger.info(`Couldn't retrieve source for guid: ${pair.sourceTU.guid}`);
         }
     }
     return tmx;
@@ -35,7 +35,7 @@ async function exportAsJob(content, jobGuid) {
         sourceLang: content.sourceLang,
         targetLang: content.targetLang,
         jobGuid,
-        updatedAt: (sharedCtx().regression ? new Date('2022-05-30T00:00:00.000Z') : new Date()).toISOString(),
+        updatedAt: (l10nmonster.regression ? new Date('2022-05-30T00:00:00.000Z') : new Date()).toISOString(),
         status: 'created',
         tus: [],
     };
@@ -51,12 +51,12 @@ async function exportAsJob(content, jobGuid) {
         if (useAsSourceTU.src || useAsSourceTU.nsrc) {
             jobReq.tus.push(utils.cleanupTU(useAsSourceTU, sourceTUWhitelist));
         } else {
-            sharedCtx().logger.info(`Couldn't retrieve source for guid: ${useAsSourceTU.guid}`);
+            l10nmonster.logger.info(`Couldn't retrieve source for guid: ${useAsSourceTU.guid}`);
         }
         // we want to include source in target in case it's missing
         const useAsTargetTU = { ...pair.sourceTU, ...pair.translatedTU };
         if (useAsTargetTU.inflight) {
-            sharedCtx().logger.info(`Warning: in-flight translation unit ${useAsTargetTU.guid} can't be exported`);
+            l10nmonster.logger.info(`Warning: in-flight translation unit ${useAsTargetTU.guid} can't be exported`);
         } else {
             const cleanTU = utils.cleanupTU(useAsTargetTU, targetTUWhitelist);
             cleanTU.ts = cleanTU.ts || new Date().getTime();
@@ -75,7 +75,7 @@ export async function tmExportCmd(mm, { limitToLang, mode, format, prjsplit }) {
         const guidList = mode === 'tm' ? tm.guids : Object.keys(sourceLookup);
         const guidsByPrj = {};
         guidList.forEach(guid => {
-            if (!prjsplit || !sharedCtx().prj || sharedCtx().prj.includes(mode === 'tm' ? tm.getEntryByGuid(guid).prj : sourceLookup[guid].prj)) { // either export everything or only content in the specified project
+            if (!prjsplit || !l10nmonster.prj || l10nmonster.prj.includes(mode === 'tm' ? tm.getEntryByGuid(guid).prj : sourceLookup[guid].prj)) { // either export everything or only content in the specified project
                 const prj = (prjsplit && sourceLookup[guid]?.prj) || 'default';
                 guidsByPrj[prj] ??= [];
                 guidsByPrj[prj].push(guid);

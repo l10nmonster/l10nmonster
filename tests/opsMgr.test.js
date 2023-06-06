@@ -1,3 +1,6 @@
+global.l10nmonster ??= {};
+l10nmonster.logger = { info: () => true };
+
 const { OpsMgr } = require('@l10nmonster/core');
 
 async function foo(x) {
@@ -19,7 +22,7 @@ async function additiveOp() {
 describe ('OpsMgr tests', () =>{
 
   test('task with 3 ops', async () => {
-    const om = new OpsMgr({ logger: { info: () => true } });
+    const om = new OpsMgr();
     om.registerOp(foo);
     om.registerOp(bar);
     const t = om.createTask();
@@ -30,7 +33,7 @@ describe ('OpsMgr tests', () =>{
   });
 
   test('Add an op on the fly', async () => {
-    const om = new OpsMgr({ logger: { info: () => true } });
+    const om = new OpsMgr();
     om.registerOp(additiveOp);
     om.registerOp(foo);
     om.registerOp(bar);

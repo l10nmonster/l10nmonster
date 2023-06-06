@@ -1,5 +1,5 @@
 const { TranslationServiceClient } = require('@google-cloud/translate');
-const { sharedCtx, utils } = require('@l10nmonster/helpers');
+const { utils } = require('@l10nmonster/helpers');
 
 const MAX_CHUNK_SIZE = 1000;
 const RECOMMENDED_LENGTH = 30000;
@@ -46,8 +46,8 @@ module.exports = class GoogleCloudTranslateV3 {
             this.parent = `projects/${projectId}/locations/${location ?? 'global'}`
             this.quality = quality;
             this.languageMapper = languageMapper;
-            sharedCtx().opsMgr.registerOp(gctTranslateChunkOp, { idempotent: false });
-            sharedCtx().opsMgr.registerOp(gctMergeTranslatedChunksOp, { idempotent: true });
+            l10nmonster.opsMgr.registerOp(gctTranslateChunkOp, { idempotent: false });
+            l10nmonster.opsMgr.registerOp(gctMergeTranslatedChunksOp, { idempotent: true });
         }
     }
 
@@ -63,7 +63,7 @@ module.exports = class GoogleCloudTranslateV3 {
             return xmlSrc;
         });
 
-        const requestTranslationsTask = sharedCtx().opsMgr.createTask();
+        const requestTranslationsTask = l10nmonster.opsMgr.createTask();
         try {
             const chunkOps = [];
             for (let currentIdx = 0; currentIdx < gctPayload.length;) {
@@ -75,7 +75,7 @@ module.exports = class GoogleCloudTranslateV3 {
                     contents.push(gctPayload[currentIdx]);
                     currentIdx++;
                 }
-                sharedCtx().logger.info(`Preparing GCT translate, offset: ${offset} chunk strings: ${contents.length} chunk char length: ${currentTotalLength}`);
+                l10nmonster.logger.info(`Preparing GCT translate, offset: ${offset} chunk strings: ${contents.length} chunk char length: ${currentTotalLength}`);
                 const translateOp = requestTranslationsTask.enqueue(
                     gctTranslateChunkOp,
                     {
@@ -98,7 +98,7 @@ module.exports = class GoogleCloudTranslateV3 {
                     jobRequest,
                     tuMeta,
                     quality: this.quality,
-                    ts: sharedCtx().regression ? 1 : new Date().getTime(),
+                    ts: l10nmonster.regression ? 1 : new Date().getTime(),
                 },
                 chunkOps
             );

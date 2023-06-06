@@ -1,13 +1,12 @@
-const { setCtx } = require('@l10nmonster/helpers');
+const { adapters } = require('@l10nmonster/helpers');
+const po = require('@l10nmonster/helpers-po');
+const demo = require('@l10nmonster/helpers-demo');
 
 module.exports = class GrampsConfig2 {
     sourceLang = 'en';
     minimumQuality = 50;
 
-    constructor({ helpers, adapters }) {
-        setCtx(helpers.sharedCtx());
-        const po = require('@l10nmonster/helpers-po');
-        const demo = require('@l10nmonster/helpers-demo');
+    constructor() {
         this.source = new adapters.FsSource({
             // TODO: we could have a decorating function that given the resource id provides the custom target lang (e.g. based on a naming convention). Potentially even at the TU level
             globs: [

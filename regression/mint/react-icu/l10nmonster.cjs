@@ -1,4 +1,5 @@
-const { setCtx } = require('@l10nmonster/helpers');
+const { i18next } = require('@l10nmonster/helpers-json');
+const { xml,  stores, adapters, translators } = require('@l10nmonster/helpers');
 
 module.exports = class ReactConfig2 {
     sourceLang = 'en';
@@ -6,9 +7,7 @@ module.exports = class ReactConfig2 {
     seqMap = 'seqMap.json';
     seqThreshold = 100;
 
-    constructor({ helpers,  stores, adapters, translators }) {
-        setCtx(helpers.sharedCtx());
-        const { i18next } = require('./node_modules/@l10nmonster/helpers-json');
+    constructor() {
         this.source = new adapters.FsSource({
             globs: [ '**/en/*.json' ],
             targetLangs: [ 'de', 'ru' ],
@@ -48,7 +47,7 @@ module.exports = class ReactConfig2 {
                     enablePluralSuffixes : true,
                     emitArbAnnotations : true,
                 }),
-                decoders: [ helpers.xml.tagDecoder, helpers.xml.entityDecoder, i18next.phDecoder ],
+                decoders: [ xml.tagDecoder, xml.entityDecoder, i18next.phDecoder ],
                 target: new adapters.FsTarget({
                     targetPath: (lang, resourceId) => resourceId.replace('en/', `${lang}/`),
                 }),

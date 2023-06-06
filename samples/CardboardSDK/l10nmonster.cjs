@@ -1,29 +1,27 @@
-const { setCtx, sharedCtx, FsSnapStore } = require('@l10nmonster/helpers');
+const { stores, adapters, translators } = require('@l10nmonster/helpers');
 
 module.exports = class CardboardConfig2 {
     sourceLang = 'en';
     minimumQuality = 50;
 
-    constructor({ helpers, stores, adapters, translators }) {
-        setCtx(helpers.sharedCtx());
-        const ctx = sharedCtx();
+    constructor() {
         const ios = require('@l10nmonster/helpers-ios');
         const translated = require('@l10nmonster/helpers-translated');
         this.source = new adapters.FsSource({
             globs: [ '**/en.lproj/*.strings' ],
             targetLangs: [ 'ar', 'it', 'ja' ],
         });
-        this.snapStore = new FsSnapStore({
+        this.snapStore = new stores.FsSnapStore({
             snapDir: 'snap',
         });
         this.resourceFilter = new ios.StringsFilter();
         this.decoders = [ ios.phDecoder, ios.escapesDecoder ];
         this.tuFilters = {
-            initial: tu => tu.sid.indexOf(ctx.arg) === 0,
+            initial: tu => tu.sid.indexOf(l10nmonster.arg) === 0,
         };
         const defaultTOSConfig = {
             baseURL: 'https://api-sandbox.translated.com/v2',
-            apiKey: ctx.env.translated_api_key_sandbox,
+            apiKey: l10nmonster.env.translated_api_key_sandbox,
             serviceType: 'premium',
             quality: 90,
         };
@@ -37,22 +35,22 @@ module.exports = class CardboardConfig2 {
             },
             // ModernMT: {
             //     translator: new translated.ModernMT({
-            //         apiKey: ctx.env.mmt_api_key,
+            //         apiKey: l10nmonster.env.mmt_api_key,
             //         quality: 40,
             //         maxCharLength: 1000,
             //     }),
             // },
             // DeepL: {
             //     translator: new translators.DeepL({
-            //         apiKey: ctx.env.deepl_api_key,
+            //         apiKey: l10nmonster.env.deepl_api_key,
             //         quality: 40,
             //     }),
             //     quota: 0,
             // },
             // GCT: {
             //     translator: new translators.GoogleCloudTranslateV3({
-            //         keyFilename: ctx.env.gct_credentials,
-            //         projectId: ctx.env.gct_project,
+            //         keyFilename: l10nmonster.env.gct_credentials,
+            //         projectId: l10nmonster.env.gct_project,
             //         quality: 40,
             //     }),
             // },

@@ -1,4 +1,7 @@
-const { setCtx } = require('@l10nmonster/helpers');
+const { xml, stores, adapters, translators } = require('@l10nmonster/helpers');
+const android = require('@l10nmonster/helpers-android');
+const xliff = require('@l10nmonster/helpers-xliff');
+const demo = require('@l10nmonster/helpers-demo');
 
 const androidLangMapping = {
     'zh-Hans': 'zh-rCN',
@@ -8,12 +11,7 @@ const androidLangMapping = {
 module.exports = class TachiyomiConfig2 {
     sourceLang = 'en';
 
-    constructor({ helpers,  stores, adapters, translators }) {
-        setCtx(helpers.sharedCtx());
-        const android = require('@l10nmonster/helpers-android');
-        const xliff = require('@l10nmonster/helpers-xliff');
-        const demo = require('@l10nmonster/helpers-demo');
-        // console.dir(Object.keys(sharedCtx()))
+    constructor() {
         this.source = new adapters.FsSource({
             globs: [ '**/values/strings.xml' ],
             targetLangs: [ 'zh-Hans', 'zh-Hant', 'piggy' ],
@@ -21,8 +19,8 @@ module.exports = class TachiyomiConfig2 {
         this.resourceFilter = new android.Filter({
             comment: 'pre',
         });
-        this.decoders = [ helpers.xml.entityDecoder, helpers.xml.CDataDecoder, android.spaceCollapser, android.escapesDecoder, android.phDecoder ];
-        this.textEncoders = [ android.escapesEncoder, helpers.xml.entityEncoder ];
+        this.decoders = [ xml.entityDecoder, xml.CDataDecoder, android.spaceCollapser, android.escapesDecoder, android.phDecoder ];
+        this.textEncoders = [ android.escapesEncoder, xml.entityEncoder ];
         this.target = new adapters.FsTarget({
             targetPath: (lang, resourceId) => resourceId.replace('values', `values-${androidLangMapping[lang] || lang}`),
         });

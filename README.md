@@ -35,7 +35,7 @@ Sources are *adapters* used to interface with a source of content. They only dea
 
 |Module|Export|Description|
 |---|---|---|
-|*(built-in)*|`adapters.FsSource`|Read from file-system-like sources.
+|`helpers`|`adapters.FsSource`|Read from file-system-like sources.
 |`helpers-http`|`Source`|Read from url sources.
 
 ## Resource Filters
@@ -44,7 +44,7 @@ Filters are used to convert raw strings returned by sources into segments that a
 
 |Module|Export|Description|
 |---|---|---|
-|*(built-in)*|`filters.SnapFilter`|Filter for normalized resources in snap store.
+|`helpers`|`filters.SnapFilter`|Filter for normalized resources in snap store.
 |`helpers-android`|`Filter`|Filter for Android xml files.|
 |`helpers-html`|`Filter`|Filter for HTML files.|
 |`helpers-ios`|`StringsFilter`|Filter for .strings files.|
@@ -96,7 +96,7 @@ Targets are *adapters* used to interface with a content store. They may or may n
 
 |Module|Export|Description|
 |---|---|---|
-|*(built-in)*|`adapters.FsTarget`|Write to file-system-like sources.
+|`helpers`|`adapters.FsTarget`|Write to file-system-like sources.
 
 ## Translation Providers
 
@@ -105,9 +105,9 @@ Providers can also support a `translation` push as opposed to a `refresh` push. 
 
 |Module|Export|Async|Sync|Translation|Refresh|Description|
 |---|---|:---:|:---:|:---:|:---:|---|
-|*(built-in)*|`translators.Grandfather`|❌|✅|✅|✅|Create translations based on existing translated resources.
-|*(built-in)*|`translators.Repetitions`|❌|✅|✅|✅|Create translations based on leverage of 100% text matches.
-|*(built-in)*|`translators.Visicode`|❌|✅|✅|✅|Pseudo-localization with visual identification of string id's.
+|`helpers`|`translators.Grandfather`|❌|✅|✅|✅|Create translations based on existing translated resources.
+|`helpers`|`translators.Repetitions`|❌|✅|✅|✅|Create translations based on leverage of 100% text matches.
+|`helpers`|`translators.Visicode`|❌|✅|✅|✅|Pseudo-localization with visual identification of string id's.
 |`helpers-deepl`|`DeepL`|✅|❌|✅|💰|DeepL translation [API](https://www.deepl.com/docs-api).
 |`helpers-demo`|`PigLatinizer`|✅|❌|✅|✅|Translator into pig latin for demo and pseudo-localization.
 |`helpers-googlecloud`|`GoogleCloudTranslateV3`|✅|❌|✅|💰|Google Translate V3 [API](https://cloud.google.com/translate/docs).
@@ -117,14 +117,16 @@ Providers can also support a `translation` push as opposed to a `refresh` push. 
 
 ## Other
 
-
 |Module|Export|Description|
 |------|---|---|
-|`helpers`|`sharedCtx()`|Shared context object. Used to carry state across modules.|
-|`helpers`|`mergeProps(props)`|Merge props into shared context.|
-|`helpers`|`setCtx(ctx)`|Replace context from one module into the context of another module.|
 |`helpers`|`utils.*`|Internal utilities. No stable interface. Use at your own risk.|
+|`helpers`|`analyzers.*`|Miscellaneous analyzers.|
+|`helpers`|`stores.JsonJobStore`|Job store based on JSON files in the filesystem.|
+|`helpers`|`stores.FileBasedJobStore`|Abstract job store based on JSON files in a blob store.|
+|`helpers`|`stores.FsSnapStore`|Snap store based on JSON files in the filesystem.|
+|`helpers`|`stores.FileBasedSnapStore`|Abstract snap store based on JSON files in a blob store.|
+|`helpers`|`stores.FsStoreDelegate`|Delegate helper for `FileBasedJobStore` and `FileBasedSnapStore` to use the filesystem.|
 
 ### Dependencies
 
-Typically, all helpers depend on a shared context for things like access to a logger. Because the helpers bundled in the core distribution (e.g. as part of the CLI utility or VSCode extension) and the helpers used in user-provided configuration live in different node_modules search paths, they are duplicated. In order to unify them, the core helpers are passed in to the user configuration so that local helpers' context can be reset with `helpers.setCtx(ctx)`.
+Typically, all helpers depend on a shared context for things like access to a logger. This is provided via a global `l10nmonster` object.

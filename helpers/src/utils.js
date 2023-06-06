@@ -1,17 +1,16 @@
-const { createHash } = require('crypto');
+import { createHash } from 'crypto';
 
-function generateGuid(str) {
+export function generateGuid(str) {
     const sidContentHash = createHash('sha256');
     sidContentHash.update(str, 'utf8');
     return sidContentHash.digest().toString('base64').substring(0, 43).replaceAll('+', '-').replaceAll('/', '_');
 }
-exports.generateGuid = generateGuid;
 
-exports.generateFullyQualifiedGuid = function generateFullyQualifiedGuid(rid, sid, str) {
+export function generateFullyQualifiedGuid(rid, sid, str) {
     return generateGuid(`${rid}|${sid}|${str}`);
 }
 
-function consolidateDecodedParts(parts, flags, convertToString) {
+export function consolidateDecodedParts(parts, flags, convertToString) {
     const consolidatedParts = [];
     let accumulatedString = '';
     for (const part of parts) {
@@ -31,9 +30,8 @@ function consolidateDecodedParts(parts, flags, convertToString) {
     }
     return consolidatedParts;
 }
-exports.consolidateDecodedParts = consolidateDecodedParts;
 
-function decodeNormalizedString(nstr, decoderList, flags = {}) {
+export function decodeNormalizedString(nstr, decoderList, flags = {}) {
     if (decoderList) {
         for (const decoder of decoderList) {
             nstr = consolidateDecodedParts(decoder(nstr), flags);
@@ -41,13 +39,12 @@ function decodeNormalizedString(nstr, decoderList, flags = {}) {
     }
     return consolidateDecodedParts(nstr, flags, true);
 }
-exports.decodeNormalizedString = decodeNormalizedString;
 
-exports.getNormalizedString = function getNormalizedString(str, decoderList, flags = {}) {
+export function getNormalizedString(str, decoderList, flags = {}) {
     return decodeNormalizedString([ { t: 's', v: str } ], decoderList, flags);
 }
 
-exports.partEncoderMaker = function partEncoderMaker(textEncoders, codeEncoders) {
+export function partEncoderMaker(textEncoders, codeEncoders) {
     return function encodePart(part, flags) {
         const encoders = typeof part === 'string' ? textEncoders : codeEncoders;
         const str = typeof part === 'string' ? part : part.v;
@@ -59,18 +56,18 @@ exports.partEncoderMaker = function partEncoderMaker(textEncoders, codeEncoders)
     };
 }
 
-exports.flattenNormalizedSourceToOrdinal = function flattenNormalizedSourceToOrdinal(nsrc) {
+export function flattenNormalizedSourceToOrdinal(nsrc) {
     return nsrc.map(e => (typeof e === 'string' ? e : `{{${e.t}}}`)).join('');
 }
 
 // takes a normalized source and converts it to a flat string using the "v1" algorithm
 // v1 encodes placeholders in a `{{${mangledPh}}}` format where mangledPh has 3
 // components separated by "_":
-//   1. an index = require("a" to "zX" (where X is an integer)
+//   1. an index "a" to "zX" (where X is an integer)
 //   2. the placeholder type (bx=beginning tag, ex=end tag, x=value)
 //   3. a human-readable contraction of the original raw placeholder name
 // it returns the flattened string and corresponding map to convert back to normalized array
-function flattenNormalizedSourceV1(nsrc) {
+export function flattenNormalizedSourceV1(nsrc) {
     const normalizedStr = [],
         phMap = {};
     let phIdx = 0;
@@ -90,13 +87,12 @@ function flattenNormalizedSourceV1(nsrc) {
     }
     return [ normalizedStr.join(''), phMap ];
 }
-exports.flattenNormalizedSourceV1 = flattenNormalizedSourceV1;
 
 // takes a flat string using the "v1" algorithm (usually a translation) and a ph map
 // and converts it to a normalized string
 // placeholders in the resulting normalized string contain an extra "v1" property that
 // allows to better validate and determine compatibility with textual matches (repetitions)
-exports.extractNormalizedPartsV1 = function extractNormalizedPartsV1(str, phMap) {
+export function extractNormalizedPartsV1(str, phMap) {
     const normalizedParts = [];
     let pos = 0;
     for (const match of str.matchAll(/{{(?<ph>(?<phIdx>[a-y]|z\d+)_(?<t>x|bx|ex)_(?<phName>[0-9A-Za-z_]*))}}/g)) {
@@ -117,7 +113,7 @@ exports.extractNormalizedPartsV1 = function extractNormalizedPartsV1(str, phMap)
 }
 
 // analogous to flattenNormalizedSourceV1 but using xml-compatible placeholders
-exports.flattenNormalizedSourceToXmlV1 = function flattenNormalizedSourceToXmlV1(nsrc) {
+export function flattenNormalizedSourceToXmlV1(nsrc) {
     const normalizedStr = [],
         phMap = {};
     let phIdx = 0,
@@ -165,7 +161,7 @@ const cleanXMLEntities = str => str.replaceAll('&lt;', '<')
     .replaceAll('&amp;', '&'); // make sure to replace &amp; last to avoid double unescaping
 
 // analogous to extractNormalizedPartsV1 but using xml-compatible placeholders
-exports.extractNormalizedPartsFromXmlV1 = function extractNormalizedPartsFromXmlV1(str, phMap) {
+export function extractNormalizedPartsFromXmlV1(str, phMap) {
     const normalizedParts = [];
     let pos = 0;
     for (const match of str.matchAll(/<(?<x>x\d+) \/>|<(?<bx>x\d+)>|<\/(?<ex>x\d+)>/g)) {
@@ -198,7 +194,7 @@ const minifyV1PH = v1ph => v1ph && v1ph.split('_').slice(0, -1).join('_');
 
 // returns a functions that given a placeholder in a translation it tells if matches a placeholder
 // in the given source using either v1-based compatibility or straight literal match
-function phMatcherMaker(nsrc) {
+export function phMatcherMaker(nsrc) {
     const phMap = flattenNormalizedSourceV1(nsrc)[1];
     const v1PhMap = Object.fromEntries(Object.entries(phMap).map(([k, v]) => [minifyV1PH(k), v]));
     const valueMap = Object.fromEntries(Object.values(v1PhMap).map(e => [ e.v, true ]));
@@ -206,10 +202,9 @@ function phMatcherMaker(nsrc) {
         return v1PhMap[minifyV1PH(part.v1)] ?? (valueMap[part.v] && part);
     }
 }
-exports.phMatcherMaker = phMatcherMaker;
 
 // compares compatibility of placeholders in source and target and returns a boolean
-function sourceAndTargetAreCompatible(nsrc, ntgt) {
+export function sourceAndTargetAreCompatible(nsrc, ntgt) {
     if (Boolean(nsrc) && Boolean(ntgt)) {
         !Array.isArray(nsrc) && (nsrc = [ nsrc ]);
         !Array.isArray(ntgt) && (ntgt = [ ntgt ]);
@@ -229,9 +224,8 @@ function sourceAndTargetAreCompatible(nsrc, ntgt) {
     }
     return false;
 }
-exports.sourceAndTargetAreCompatible = sourceAndTargetAreCompatible;
 
-exports.translateWithEntry = function translateWithEntry(src, nsrc, entry, flags, encodePart) {
+export function translateWithEntry(src, nsrc, entry, flags, encodePart) {
     if (entry && !entry.inflight) {
         if (sourceAndTargetAreCompatible(nsrc ?? src, entry.ntgt ?? entry.tgt)) {
             if (entry.ntgt) {
@@ -270,13 +264,13 @@ function flattenNormalizedSourceToMiniV1(nsrc) {
 }
 
 // compares normalized strings assuming placeholders are equal if they are compatible
-exports.normalizedStringsAreEqual = function normalizedStringsAreEqual(s1, s2) {
+export function normalizedStringsAreEqual(s1, s2) {
     const f1 = Array.isArray(s1) ? flattenNormalizedSourceToMiniV1(s1) : s1;
     const f2 = Array.isArray(s2) ? flattenNormalizedSourceToMiniV1(s2) : s2;
     return f1 === f2;
 }
 
-exports.getTUMaps = function getTUMaps(tus) {
+export function getTUMaps(tus) {
     const contentMap = {};
     const tuMeta = {};
     const phNotes = {};
@@ -318,7 +312,7 @@ function nstrHasV1Missing(nstr) {
     return false;
 }
 
-exports.makeTU = function makeTU(res, segment) {
+export function makeTU(res, segment) {
     const { str, nstr, ...seg } = segment;
     const tu = {
         ...seg,
@@ -336,7 +330,7 @@ exports.makeTU = function makeTU(res, segment) {
 }
 
 // takes a tu-like object and creates a new object only with properties listed in the whitelist object
-exports.cleanupTU = function cleanupTU(tu, whitelist) {
+export function cleanupTU(tu, whitelist) {
     const cleanTU = Object.fromEntries(Object.entries(tu).filter(e => whitelist.has(e[0])));
     // if we have the normalized source, and the target doesn't have v1 placeholders, we can try to build them
     // TODO: remove (for performance reasons) when v1 are strongly enforced
@@ -355,7 +349,7 @@ exports.cleanupTU = function cleanupTU(tu, whitelist) {
 }
 
 const notesAnnotationRegex = /(?:PH\((?<phName>(?:[^()|]+|[^(|]*\([^()|]*\)[^()|]*))(?:\|(?<phSample>[^)|]+))(?:\|(?<phDesc>[^)|]+))?\)|MAXWIDTH\((?<maxWidth>\d+)\)|SCREENSHOT\((?<screenshot>[^)]+)\)|TAG\((?<tags>[^)]+)\))/g;
-exports.extractStructuredNotes = function extractStructuredNotes(notes) {
+export function extractStructuredNotes(notes) {
     const sNotes = {};
     const cleanDesc = notes.replaceAll(notesAnnotationRegex, (match, phName, phSample, phDesc, maxWidth, screenshot, tags) => {
             if (maxWidth !== undefined) {
@@ -381,7 +375,7 @@ exports.extractStructuredNotes = function extractStructuredNotes(notes) {
 // this encoding tries to minimize confusion especially when rendered small in devices without copy&paste (e.g. mobile apps)
 // 01OI removed because they can be mistaken and lowercase also removed as if this is indexed it may be case-insensitive
 const base32Chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-exports.integerToLabel = function integerToLabel(int) {
+export function integerToLabel(int) {
     const label = [];
     while (int > 0) {
         label.push(base32Chars.charAt(int % 32));
@@ -391,7 +385,7 @@ exports.integerToLabel = function integerToLabel(int) {
 }
 
 // https://stackoverflow.com/questions/12484386/access-javascript-property-case-insensitively
-exports.fixCaseInsensitiveKey = function fixCaseInsensitiveKey(object, key) {
+export function fixCaseInsensitiveKey(object, key) {
     const asLowercase = key.toLowerCase();
     return Object.keys(object).find(k => k.toLowerCase() === asLowercase);
 }

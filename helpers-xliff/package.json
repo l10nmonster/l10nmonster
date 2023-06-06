@@ -10,8 +10,5 @@
   "license": "MIT",
   "dependencies": {
     "xliff": "^6.0.1"
-  },
-  "peerDependencies": {
-    "@l10nmonster/helpers": "../helpers"
   }
 }

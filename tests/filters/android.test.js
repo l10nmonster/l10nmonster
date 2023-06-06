@@ -1,4 +1,5 @@
 /* eslint-disable no-useless-escape */
+global.l10nmonster ??= {};
 const android = require('@l10nmonster/helpers-android');
 const { utils, normalizers, xml } = require('@l10nmonster/helpers');
 const fs = require('fs');

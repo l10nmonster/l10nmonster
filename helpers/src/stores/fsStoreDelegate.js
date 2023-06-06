@@ -1,13 +1,13 @@
-const path = require('path');
-const {
+import path from 'path';
+import {
     mkdir,
     readdir,
     readFile,
     writeFile,
     unlink,
-} = require('node:fs/promises');
+} from 'node:fs/promises';
 
-module.exports = class FsStoreDelegate {
+export class FsStoreDelegate {
     constructor(baseDir) {
         this.baseDir = baseDir;
     }

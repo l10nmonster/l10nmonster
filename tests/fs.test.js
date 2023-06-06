@@ -1,14 +1,14 @@
 const path = require('path');
-const { FsSource, FsTarget, helpers } = require('@l10nmonster/core');
+const { adapters } = require('@l10nmonster/helpers');
 
-helpers.mergeProps({
-    baseDir: path.resolve('.'),
-    logger: { info: () => true },
-});
+global.l10nmonster ??= {};
+l10nmonster.baseDir = path.resolve('.');
+l10nmonster.logger = { info: () => true };
+
 const RESOURCE_ID = "files/values/strings.xml";
 
 describe ('FsSource tests', () =>{
-  var source = new FsSource({
+  var source = new adapters.FsSource({
       globs: [ 'files/values/strings.xml' ],
       targetLangs: [ 'fil' ]
   });
@@ -35,7 +35,7 @@ describe ('FsSource tests', () =>{
 });
 
 describe ('FsTarget tests', () =>{
-  var target = new FsTarget({
+  var target = new adapters.FsTarget({
       targetPath: (lang, resourceId) => resourceId.replace('values', `values-${lang}`),
   });
   test('fetchTranslatedResource returns a file', async () => {

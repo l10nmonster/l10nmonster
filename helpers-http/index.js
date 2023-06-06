@@ -1,5 +1,3 @@
-const { sharedCtx } = require('@l10nmonster/helpers');
-
 exports.Source = class HttpSource {
     constructor({ urlMap, targetLangs, prj, filter, resDecorator }) {
         if (urlMap === undefined || (targetLangs || resDecorator) === undefined) {
@@ -20,7 +18,7 @@ exports.Source = class HttpSource {
             if (!this.filter || this.filter(id)) {
                 let resMeta = {
                     id,
-                    modified: sharedCtx().regression ? 1 : new Date().toISOString(),
+                    modified: l10nmonster.regression ? 1 : new Date().toISOString(),
                     targetLangs: this.targetLangs,
                 };
                 this.prj && (resMeta.prj = this.prj);
@@ -35,7 +33,7 @@ exports.Source = class HttpSource {
 
     async fetchResource(resourceId) {
         const url = this.urlMap[resourceId];
-        sharedCtx().logger.verbose(`Fetching ${url}`);
+        l10nmonster.logger.verbose(`Fetching ${url}`);
         const response = await fetch(url);
         if (response.ok) {
             return response.text();

@@ -1,19 +1,18 @@
+const { stores, adapters, translators } = require('@l10nmonster/helpers');
+const translated = require('@l10nmonster/helpers-translated');
+const android = require('@l10nmonster/helpers-android');
+
 const androidLangMapping = {
     'pt-BR': 'pr-rBR',
     'zh-Hans': 'zh-rCN',
     'zh-Hant': 'zh-rTW',
 };
 
-const { setCtx } = require('@l10nmonster/helpers');
-
 module.exports = class TachiyomiConfig2 {
     sourceLang = 'en';
     seqMap = 'seqMap.json';
 
-    constructor({ helpers, stores, adapters, translators }) {
-        setCtx(helpers.sharedCtx());
-        const translated = require('@l10nmonster/helpers-translated');
-        const android = require('@l10nmonster/helpers-android');
+    constructor() {
         this.source = new adapters.FsSource({
             globs: [ '**/values/strings.xml' ],
             targetLangs: [ 'ja', 'it' ],
@@ -68,7 +67,7 @@ module.exports = class TachiyomiConfig2 {
             TranslationOS: {
                 translator: new translated.TranslationOS({
                     baseURL: 'https://api-sandbox.translated.com/v2',
-                    apiKey: helpers.sharedCtx().env.translated_api_key_sandbox,
+                    apiKey: l10nmonster.env.translated_api_key_sandbox,
                     serviceType: 'premium',
                     quality: 90,
                 }),

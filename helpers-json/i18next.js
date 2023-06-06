@@ -1,6 +1,6 @@
 // i18next v4 json format defined at https://www.i18next.com/misc/json-format
 const flat = require('flat');
-const { sharedCtx, regex } = require('@l10nmonster/helpers');
+const { regex } = require('@l10nmonster/helpers');
 
 const isArbAnnotations = e => e[0].split('.').slice(-2)[0].startsWith('@');
 const validArbAnnotations = new Set(['description', 'type', 'context', 'placeholders', 'screenshot', 'video', 'source_text']);
@@ -16,8 +16,8 @@ function parseResourceAnnotations(resource, enableArbAnnotations) {
             const sid = `${arbGroups.prefix ?? ''}${arbGroups.key}`;
             if (validArbAnnotations.has(arbGroups.attribute)) {
                 notes[sid] = `${notes[sid] ? `${notes[sid]}\n` : ''}${arbGroups.attribute === 'description' ? '' : `${arbGroups.attribute}: `}${arbGroups.attribute === 'placeholders' ? JSON.stringify(value) : value}`;
-            } else if (sharedCtx().verbose) {
-                sharedCtx().logger.error(`Unexpected ${arbGroups.attribute} annotation for SID ${sid}`);
+            } else {
+                l10nmonster.logger.verbose(`Unexpected ${arbGroups.attribute} annotation for SID ${sid}`);
             }
         }
     }

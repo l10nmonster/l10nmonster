@@ -66,7 +66,7 @@ class Task {
         this.rootOpId = this.enqueue(opName, args, inputs);
         this.taskName = `Task-${this.opList[this.rootOpId].opName}-${new Date().getTime()}`;
         this.saveState();
-        this.opsMgr.logger.info(`${this.taskName} committed`);
+        l10nmonster.logger.info(`${this.taskName} committed`);
     }
 
     addInputDependency(opId, input) {
@@ -110,7 +110,7 @@ class Task {
                             const inputs = op.inputs.map(this.getOutputByOpId.bind(this));
                             const boundFunc = func.bind(this);
                             op.lastRanAt = new Date().toISOString();
-                            this.opsMgr.logger.info(`Executing opId: ${op.opId} opName: ${op.opName}...`);
+                            l10nmonster.logger.info(`Executing opId: ${op.opId} opName: ${op.opName}...`);
                             const response = (await boundFunc(op.args, inputs)) ?? null; // TODO: do we want to pass op instead of op.args so that we have access to our opId in case we need to chain our output to something else?
                             const responseJSON = JSON.stringify(response, null, '\t');
                             if (responseJSON.length > MAX_INLINE_OUTPUT && this.opsMgr.opsDir) {
@@ -154,15 +154,14 @@ class Task {
 }
 
 export class OpsMgr {
-    constructor(params) {
-        if (params?.opsDir) {
-            this.opsDir = params.opsDir;
-            if (!existsSync(this.opsDir)) {
-                mkdirSync(this.opsDir, {recursive: true});
+    constructor(opsDir) {
+        if (opsDir) {
+            this.opsDir = opsDir;
+            if (!existsSync(opsDir)) {
+                mkdirSync(opsDir, {recursive: true});
             }
         }
         this.registry = {};
-        this.logger = params.logger;
     }
 
     registerOp(func, options = {}) {
@@ -180,8 +179,6 @@ export class OpsMgr {
     }
 
     createTask() {
-        const task = new Task(this);
-        task.logger = this.logger;
-        return task;
+        return new Task(this);
     }
 }

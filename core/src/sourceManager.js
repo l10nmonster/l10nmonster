@@ -3,7 +3,7 @@ import {
     readFileSync,
     writeFileSync,
 } from 'fs';
-import { sharedCtx, utils } from '@l10nmonster/helpers';
+import { utils } from '@l10nmonster/helpers';
 
 export default class SourceManager {
     constructor({ configSeal, contentTypes, snapStore, seqMapPath, seqThreshold }) {
@@ -32,16 +32,16 @@ export default class SourceManager {
     }
 
     async getResourceStatsFromAllSources() {
-        sharedCtx().logger.info(`Getting resource stats from all sources...`);
+        l10nmonster.logger.info(`Getting resource stats from all sources...`);
         const combinedStats = [];
         for (const [ contentType, pipeline ] of Object.entries(this.contentTypes)) {
             const stats = await pipeline.source.fetchResourceStats();
-            sharedCtx().logger.verbose(`Fetched resource stats for content type ${contentType}`);
+            l10nmonster.logger.verbose(`Fetched resource stats for content type ${contentType}`);
             combinedStats.push(stats.map(res => ({ ...res, contentType })));
         }
         return combinedStats
             .flat(1)
-            .filter(e => (sharedCtx().prj === undefined || sharedCtx().prj.includes(e.prj)));
+            .filter(e => (l10nmonster.prj === undefined || l10nmonster.prj.includes(e.prj)));
     }
 
     async getResourceStats() {
@@ -96,7 +96,7 @@ export default class SourceManager {
     }
 
     async getResourceFromSource(resourceStat) {
-        sharedCtx().logger.verbose(`Getting resource ${resourceStat.id}...`);
+        l10nmonster.logger.verbose(`Getting resource ${resourceStat.id}...`);
         const pipeline = this.contentTypes[resourceStat.contentType];
         const rawResource = await pipeline.source.fetchResource(resourceStat.id);
         return this.#getParsedResource(pipeline, resourceStat, rawResource);
@@ -107,16 +107,16 @@ export default class SourceManager {
     }
 
     async *getAllResourcesFromSources() {
-        sharedCtx().logger.info(`Getting all resource...`);
+        l10nmonster.logger.info(`Getting all resource...`);
         for (const [ contentType, pipeline ] of Object.entries(this.contentTypes)) {
             if (pipeline.source.fetchAllResources) {
-                for await (const [resourceStat, rawResource] of pipeline.source.fetchAllResources(sharedCtx().prj)) {
+                for await (const [resourceStat, rawResource] of pipeline.source.fetchAllResources(l10nmonster.prj)) {
                     yield await this.#getParsedResource(pipeline, { ...resourceStat, contentType }, rawResource);
                 }
             } else {
                 const stats = await pipeline.source.fetchResourceStats();
                 for (const rs of stats) {
-                    if (sharedCtx().prj === undefined || sharedCtx().prj.includes(rs.prj)) {
+                    if (l10nmonster.prj === undefined || l10nmonster.prj.includes(rs.prj)) {
                         yield await this.#getParsedResource(
                             pipeline,
                             { ...rs, contentType },

@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-const { sharedCtx, utils } = require('@l10nmonster/helpers');
+const { utils } = require('@l10nmonster/helpers');
 
 function createTUFromTOSTranslation({ tosUnit, content, tuMeta, quality, refreshMode }) {
     const guid = tosUnit.id_content;
@@ -19,7 +19,7 @@ function createTUFromTOSTranslation({ tosUnit, content, tuMeta, quality, refresh
         tuMeta[guid].nsrc && (tu.nsrc = tuMeta[guid].nsrc);
         tu.ntgt = utils.extractNormalizedPartsV1(content, tuMeta[guid].phMap);
         if (tu.ntgt.filter(e => e === undefined).length > 0) {
-            sharedCtx().logger.warn(`Unable to extract normalized parts of TU: ${JSON.stringify(tu)}`);
+            l10nmonster.logger.warn(`Unable to extract normalized parts of TU: ${JSON.stringify(tu)}`);
             return null;
         }
     } else {
@@ -38,7 +38,7 @@ async function tosRequestTranslationOfChunkOp({ request }) {
         const committedGuids = response.map(contentStatus => contentStatus.id_content);
         const missingTus = submittedGuids.filter(submittedGuid => !committedGuids.includes(submittedGuid));
         if (submittedGuids.length !== committedGuids.length || missingTus.length > 0) {
-            sharedCtx().logger.error(`sent ${submittedGuids.length} got ${committedGuids.length} missing tus: ${missingTus.map(tu => tu.id_content).join(', ')}`);
+            l10nmonster.logger.error(`sent ${submittedGuids.length} got ${committedGuids.length} missing tus: ${missingTus.map(tu => tu.id_content).join(', ')}`);
             throw `TOS: inconsistent behavior. submitted ${submittedGuids.length}, committed ${committedGuids.length}, missing ${missingTus.length}`;
         }
         return committedGuids;
@@ -58,7 +58,7 @@ async function tosFetchContentByGuidOp({ refreshMode, tuMap, tuMeta, request, qu
         let tosContent = await (await fetch(url, options)).json();
         tosContent = tosContent.filter(tosUnit => tosUnit.translated_content_url);
         // eslint-disable-next-line no-invalid-this
-        sharedCtx().logger.info(`Retrieved ${tosContent.length} translations from TOS`);
+        l10nmonster.logger.info(`Retrieved ${tosContent.length} translations from TOS`);
         refreshMode && (tosContent = tosContent.filter(tosUnit => !(tuMap[tosUnit.id_content].th === tosUnit.translated_content_hash))); // need to consider th being undefined/null for some entries
         // sanitize bad responses
         const fetchedTus = [];
@@ -69,7 +69,7 @@ async function tosFetchContentByGuidOp({ refreshMode, tuMap, tuMeta, request, qu
             const fetchedContent = await Promise.all(fetchedRaw);
             (await Promise.all(chunk.map(tosUnit => fetch(tosUnit.translated_content_url)))).map(async r => await r.text());
             // eslint-disable-next-line no-invalid-this
-            sharedCtx().logger.info(`Fetched ${chunk.length} pieces of content from AWS`);
+            l10nmonster.logger.info(`Fetched ${chunk.length} pieces of content from AWS`);
             chunk.forEach((tosUnit, idx) => {
                 if (seenGuids[tosUnit.id_content]) {
                     throw `TOS: Duplicate translations found for guid: ${tosUnit.id_content}`;
@@ -82,7 +82,7 @@ async function tosFetchContentByGuidOp({ refreshMode, tuMap, tuMeta, request, qu
                     fetchedTus.push(newTU);
                 } else {
                     // eslint-disable-next-line no-invalid-this
-                    sharedCtx().logger.info(`TOS: for guid ${tosUnit.id_content} retrieved untranslated content ${fetchedContent[idx]}`);
+                    l10nmonster.logger.info(`TOS: for guid ${tosUnit.id_content} retrieved untranslated content ${fetchedContent[idx]}`);
                 }
             });
         }
@@ -114,10 +114,10 @@ module.exports = class TranslationOS {
             this.maxFetchSize = maxFetchSize || 512;
             this.parallelism = parallelism || 128;
             this.requestOnly = requestOnly;
-            sharedCtx().opsMgr.registerOp(tosRequestTranslationOfChunkOp, { idempotent: false });
-            sharedCtx().opsMgr.registerOp(tosCombineTranslationChunksOp, { idempotent: true });
-            sharedCtx().opsMgr.registerOp(tosFetchContentByGuidOp, { idempotent: true });
-            sharedCtx().opsMgr.registerOp(tosCombineFetchedTusOp, { idempotent: true });
+            l10nmonster.opsMgr.registerOp(tosRequestTranslationOfChunkOp, { idempotent: false });
+            l10nmonster.opsMgr.registerOp(tosCombineTranslationChunksOp, { idempotent: true });
+            l10nmonster.opsMgr.registerOp(tosFetchContentByGuidOp, { idempotent: true });
+            l10nmonster.opsMgr.registerOp(tosCombineFetchedTusOp, { idempotent: true });
         }
     }
 
@@ -155,14 +155,14 @@ module.exports = class TranslationOS {
             return tosTU;
         });
 
-        const requestTranslationsTask = sharedCtx().opsMgr.createTask();
+        const requestTranslationsTask = l10nmonster.opsMgr.createTask();
         try {
             let chunkNumber = 0;
             const chunkOps = [];
             while (tosPayload.length > 0) {
                 const json = tosPayload.splice(0, this.maxTranslationRequestSize);
                 chunkNumber++;
-                sharedCtx().logger.info(`Enqueueing TOS translation job ${jobResponse.jobGuid} chunk size: ${json.length}`);
+                l10nmonster.logger.info(`Enqueueing TOS translation job ${jobResponse.jobGuid} chunk size: ${json.length}`);
                 chunkOps.push(requestTranslationsTask.enqueue(tosRequestTranslationOfChunkOp, {
                     request: {
                         url: `${this.baseURL}/translate`,
@@ -197,7 +197,7 @@ module.exports = class TranslationOS {
 
     async #fetchTranslatedTus({ jobGuid, targetLang, reqTus, refreshMode }) {
         const guids = reqTus.filter(tu => tu.src ?? tu.nsrc).map(tu => tu.guid);
-        const refreshTranslationsTask = sharedCtx().opsMgr.createTask();
+        const refreshTranslationsTask = l10nmonster.opsMgr.createTask();
         let chunkNumber = 0;
         const refreshOps = [];
         while (guids.length > 0) {
@@ -206,7 +206,7 @@ module.exports = class TranslationOS {
             const tusInChunk = reqTus.filter(tu => guidsInChunk.includes(tu.guid));
             const tuMap = tusInChunk.reduce((p,c) => (p[c.guid] = c, p), {});
             const { tuMeta } = utils.getTUMaps(tusInChunk);
-            sharedCtx().logger.verbose(`Enqueueing refresh of TOS chunk ${chunkNumber} (${guidsInChunk.length} units)...`);
+            l10nmonster.logger.verbose(`Enqueueing refresh of TOS chunk ${chunkNumber} (${guidsInChunk.length} units)...`);
             const json = {
                 id_content: guidsInChunk,
                 target_language: targetLang,

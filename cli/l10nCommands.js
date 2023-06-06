@@ -430,12 +430,10 @@ export function createLogger(verboseOption) {
 
 export async function runL10nMonster(relativePath, globalOptions, cb) {
     const configPath = path.resolve('.', relativePath);
-    const mm = await createMonsterManager({
-        configPath,
-        options: globalOptions,
-        logger: createLogger(globalOptions.verbose),
-        env: process.env,
-    });
+    global.l10nmonster ??= {};
+    l10nmonster.logger = createLogger(globalOptions.verbose);
+    l10nmonster.env = process.env;
+    const mm = await createMonsterManager(configPath, globalOptions);
     try {
         await cb({
             status: opts => status(mm, { ...globalOptions, ...opts}),

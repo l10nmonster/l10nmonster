@@ -1,4 +1,4 @@
-import { sharedCtx, utils } from '@l10nmonster/helpers';
+import { utils } from '@l10nmonster/helpers';
 
 // existing translations in resources but not in TM are assumed to be in sync
 // with source and are const ed into the TM at the configured quality level
@@ -10,15 +10,19 @@ export class Grandfather {
         this.quality = quality;
     }
 
+    async init(mm) {
+        this.mm = mm;
+    }
+
     async requestTranslations(jobRequest) {
         const { tus, ...jobResponse } = jobRequest;
         jobResponse.tus = [];
         const txCache = {};
-        const resourceStats = Object.fromEntries((await sharedCtx().mm.source.getResourceStats()).map(r => [r.id, r]));
+        const resourceStats = Object.fromEntries((await this.mm.source.getResourceStats()).map(r => [r.id, r]));
         for (const tu of tus) {
             if (!txCache[tu.rid]) {
                 const resMeta = resourceStats[tu.rid];
-                const pipeline = sharedCtx().mm.contentTypes[resMeta.contentType];
+                const pipeline = this.mm.contentTypes[resMeta.contentType];
                 const lookup = {};
                 try {
                     const resource = await pipeline.target.fetchTranslatedResource(jobRequest.targetLang, tu.rid);
@@ -33,7 +37,7 @@ export class Grandfather {
                         lookup[seg.sid] = utils.makeTU(resMeta, seg);
                     }
             } catch (e) {
-                    sharedCtx().logger.info(`Couldn't fetch translated resource: ${e.stack ?? e}`);
+                    l10nmonster.logger.info(`Couldn't fetch translated resource: ${e.stack ?? e}`);
                 }
                 txCache[tu.rid] = lookup;
             }
@@ -59,7 +63,7 @@ export class Grandfather {
             }
         }
         jobResponse.status = 'done';
-        sharedCtx().logger.info(`Grandfathering ${jobRequest.targetLang}... found ${tus.length} missing translations, of which ${jobResponse.tus.length} can be grandfathered`);
+        l10nmonster.logger.info(`Grandfathering ${jobRequest.targetLang}... found ${tus.length} missing translations, of which ${jobResponse.tus.length} can be grandfathered`);
         return jobResponse;
     }
 

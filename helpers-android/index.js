@@ -1,5 +1,5 @@
-const { sharedCtx, regex } = require('@l10nmonster/helpers');
-sharedCtx().android=true;
+const { regex } = require('@l10nmonster/helpers');
+l10nmonster.android=true;
 
 exports.Filter = require('./filter');
 

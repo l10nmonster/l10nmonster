@@ -1,19 +1,18 @@
-const { setCtx } = require('@l10nmonster/helpers');
+const html = require('@l10nmonster/helpers-html');
+const demo = require('@l10nmonster/helpers-demo');
+const { xml, adapters, translators } = require('@l10nmonster/helpers');
 
 module.exports = class CardboardConfig {
     sourceLang = 'en';
     minimumQuality = 50;
 
-    constructor({ helpers,  adapters, translators }) {
-        setCtx(helpers.sharedCtx());
-        const html = require('./node_modules/@l10nmonster/helpers-html');
-        const demo = require('./node_modules/@l10nmonster/helpers-demo');
+    constructor() {
         this.source = new adapters.FsSource({
             globs: [ 'en/*.html' ],
             targetLangs: [ 'it' ],
         });
         this.resourceFilter = new html.Filter();
-        this.decoders = [ helpers.xml.tagDecoder, helpers.xml.entityDecoder ];
+        this.decoders = [ xml.tagDecoder, xml.entityDecoder ];
         this.translationProviders = {
             Piggy: {
                 translator: new demo.PigLatinizer({ quality: 1 }),

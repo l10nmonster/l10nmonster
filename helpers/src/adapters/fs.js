@@ -8,7 +8,6 @@ import {
     writeFileSync,
 } from 'fs';
 import { globbySync } from 'globby';
-import { sharedCtx } from '@l10nmonster/helpers';
 
 export class FsSource {
     constructor({ baseDir, globs, filter, targetLangs, prj, resDecorator, idFromPath, pathFromId }) {
@@ -22,14 +21,14 @@ export class FsSource {
             this.resDecorator = resDecorator;
             this.idFromPath = idFromPath;
             this.pathFromId = pathFromId;
-            this.baseDir = baseDir ? path.join(sharedCtx().baseDir, baseDir) : sharedCtx().baseDir;
+            this.baseDir = baseDir ? path.join(l10nmonster.baseDir, baseDir) : l10nmonster.baseDir;
         }
     }
 
     async fetchResourceStats() {
         const resources = [];
         const expandedFileNames = globbySync(this.globs.map(g => path.join(this.baseDir, g)));
-        sharedCtx().logger.info(`Fetched fs globs: ${this.globs}`);
+        l10nmonster.logger.info(`Fetched fs globs: ${this.globs}`);
         for (const fileName of expandedFileNames) {
             let id = path.relative(this.baseDir, fileName);
             if (typeof this.idFromPath === 'function') {
@@ -39,7 +38,7 @@ export class FsSource {
                 const stats = statSync(fileName);
                 let resMeta = {
                     id,
-                    modified: sharedCtx().regression ? 1 : stats.mtime.toISOString(),
+                    modified: l10nmonster.regression ? 1 : stats.mtime.toISOString(),
                 };
                 this.targetLangs && (resMeta.targetLangs = this.targetLangs);
                 this.prj && (resMeta.prj = this.prj);
@@ -64,7 +63,7 @@ export class FsTarget {
     constructor({ baseDir, targetPath, deleteEmpty }) {
         this.targetPath = targetPath;
         this.deleteEmpty = deleteEmpty;
-        this.baseDir = baseDir ? path.join(sharedCtx().baseDir, baseDir) : sharedCtx().baseDir;
+        this.baseDir = baseDir ? path.join(l10nmonster.baseDir, baseDir) : l10nmonster.baseDir;
     }
 
     translatedResourceId(lang, resourceId) {
