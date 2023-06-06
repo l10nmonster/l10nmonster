@@ -67,7 +67,9 @@ module.exports = class FileBasedSnapStore {
         for (const filename of Object.keys(TOC)) {
             const resources = JSON.parse(await this.delegate.getFile(filename));
             for (const res of Object.values(resources)) {
-                yield res;
+                if (sharedCtx().prj === undefined || sharedCtx().prj.includes(res.prj)) {
+                    yield res;
+                }
             }
         }
     }

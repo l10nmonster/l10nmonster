@@ -82,6 +82,13 @@ export class StatusViewProvider extends AbstractViewTreeDataProvider {
             prjDetail.length > 1 && prjDetail.push({
                 key: 'totals',
                 label: `Total: ${totals.untranslatedWords.toLocaleString()} words ${totals.untranslated.toLocaleString()} strings`,
+                command: totals.untranslatedWords ?
+                    {
+                        command: 'l10nmonster.showUntranslated',
+                        title: '',
+                        arguments: [ lang ] // leave prj undefined to get all projects
+                    } :
+                    undefined
             });
             return prjDetail;
         });
@@ -90,7 +97,8 @@ export class StatusViewProvider extends AbstractViewTreeDataProvider {
     async showUntranslated(lang, prj) {
         return withMonsterManager(this.configPath, async mm => {
             const jobBody = await mm.prepareTranslationJob({ targetLang: lang });
-            const tabName = `${prj} (${lang})`;
+            const prjLabel = prj ?? 'All projects';
+            const tabName = `${prjLabel} (${lang})`;
             const panel = vscode.window.createWebviewPanel(
                 'showUntranslatedView',
                 tabName,
@@ -98,7 +106,7 @@ export class StatusViewProvider extends AbstractViewTreeDataProvider {
                 { enableFindWidget: true }
             );
             panel.webview.html = getMonsterPage(tabName, `
-                <h2>Untranslated content for project ${prj}, language: ${lang}</h2>
+                <h2>Untranslated content for project ${prjLabel}, language: ${lang}</h2>
                 ${jobBody.tus.length > 0 ?
                     `<table>
                         <tr><th>rid / sid</th><th>Source</th><th>Notes</th></tr>

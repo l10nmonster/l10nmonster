@@ -3470,7 +3470,9 @@ var require_fileBasedSnapStore = __commonJS({
         for (const filename of Object.keys(TOC)) {
           const resources = JSON.parse(await this.delegate.getFile(filename));
           for (const res of Object.values(resources)) {
-            yield res;
+            if (sharedCtx12().prj === void 0 || sharedCtx12().prj.includes(res.prj)) {
+              yield res;
+            }
           }
         }
       }
