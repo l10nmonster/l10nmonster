@@ -1,4 +1,4 @@
-const { stores, adapters, translators } = require('@l10nmonster/helpers');
+const { stores, adapters, translators, analyzers } = require('@l10nmonster/helpers');
 
 module.exports = class CardboardConfig2 {
     sourceLang = 'en';
@@ -26,13 +26,13 @@ module.exports = class CardboardConfig2 {
             quality: 90,
         };
         this.translationProviders = {
-            TranslationOS: {
-                translator: new translated.TranslationOS(defaultTOSConfig),
-                pairs: { 'en': [ 'ar', 'it', 'ja' ] },
-            },
-            TOSLQA: { // fake sample of a "push and forget" configuration
-                translator: new translated.TranslationOS({ ...defaultTOSConfig, serviceType: 'bugfix', requestOnly: true }),
-            },
+            // TranslationOS: {
+            //     translator: new translated.TranslationOS(defaultTOSConfig),
+            //     pairs: { 'en': [ 'ar', 'it', 'ja' ] },
+            // },
+            // TOSLQA: { // fake sample of a "push and forget" configuration
+            //     translator: new translated.TranslationOS({ ...defaultTOSConfig, serviceType: 'bugfix', requestOnly: true }),
+            // },
             // ModernMT: {
             //     translator: new translated.ModernMT({
             //         apiKey: l10nmonster.env.mmt_api_key,
@@ -67,6 +67,7 @@ module.exports = class CardboardConfig2 {
         this.jobStore = new stores.JsonJobStore({
             jobsDir: 'translationJobs',
         });
+        this.analyzers = analyzers;
     }
 };
 module.exports.l10nops = 'l10nOps';

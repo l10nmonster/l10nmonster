@@ -3,4 +3,4 @@ export { default as SmellySource } from './smellySource.js';
 export { default as TextExpansionSummary } from './textExpansionSummary.js';
 export { default as FindByExpansion } from './findByExpansion.js';
 export { default as MismatchedTags } from './mismatchedTags.js';
-export * as contentExporters from './contentExport.js';
+export * from './contentExport.js';

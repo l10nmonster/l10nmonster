@@ -6305,11 +6305,12 @@ var FsTarget = class {
 var analyzers_exports = {};
 __export(analyzers_exports, {
   DuplicateSource: () => DuplicateSource,
+  ExportTranslationGrid: () => ExportTranslationGrid,
   FindByExpansion: () => FindByExpansion,
+  FindInTarget: () => FindInTarget,
   MismatchedTags: () => MismatchedTags,
   SmellySource: () => SmellySource,
-  TextExpansionSummary: () => TextExpansionSummary,
-  contentExporters: () => contentExport_exports
+  TextExpansionSummary: () => TextExpansionSummary
 });
 
 // src/analyzers/duplicateSource.js
@@ -6499,11 +6500,6 @@ var MismatchedTags = class {
 __publicField(MismatchedTags, "help", "find mismatched open/close placeholders in translations");
 
 // src/analyzers/contentExport.js
-var contentExport_exports = {};
-__export(contentExport_exports, {
-  ExportTranslationGrid: () => ExportTranslationGrid,
-  FindInTarget: () => FindInTarget
-});
 function makeCSVCompatibleString3(nstr) {
   return nstr.map((e) => typeof e === "string" ? e : `{${e?.t}}`).join("").replaceAll(",", "").replaceAll("\n", " ");
 }
