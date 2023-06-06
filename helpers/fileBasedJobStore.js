@@ -31,16 +31,18 @@ module.exports = class FileBasedJobStore {
 
     async getJobStatusByLangPair(sourceLang, targetLang) {
         const files = await this.#findGlob(`*${sourceLang}_${targetLang}_job_*.json`);
-        const statusMap = {};
+        const handleMap = {};
         for (const file of files) {
             const entry = file.match(jobFilenameRegex)?.groups;
             if (entry) {
-                if (!statusMap[entry.guid] || statusPriority[entry.status] < statusPriority[statusMap[entry.guid].status]) {
-                    statusMap[entry.guid] = { status: entry.status };
-                }
+                const handle = handleMap[entry.guid] ?? {};
+                const currentPriority = statusPriority[handle.status] ?? 100;
+                statusPriority[entry.status] < currentPriority && (handle.status = entry.status);
+                handle[entry.status] = file;
+                handleMap[entry.guid] = handle;
             }
         }
-        return Object.entries(statusMap);
+        return Object.entries(handleMap);
     }
 
     async createJobManifest() {
@@ -58,22 +60,26 @@ module.exports = class FileBasedJobStore {
         await this.delegate.saveFile(jobPath, JSON.stringify(job, null, '\t'), 'utf8');
     }
 
+    async getJobByHandle(jobFilename) {
+        const jobFile = await this.delegate.getFile(jobFilename);
+        const parsedJob = JSON.parse(jobFile);
+        return parsedJob;
+    }
+
     async getJob(jobGuid) {
         const pending = (await this.#findGlob(`*job_${jobGuid}-pending.json`))[0];
         const done = (await this.#findGlob(`*job_${jobGuid}-done.json`))[0];
         const jobFilename = done ?? pending;
-        if (jobFilename) {
-            const jobFile = await this.delegate.getFile(jobFilename);
-            const parsedJob = JSON.parse(jobFile);
-            return parsedJob;
-        }
-        console.log(`no job ${jobGuid} ${pending} ${done}`)
-        return null;
+        return jobFilename ? this.getJobByHandle(jobFilename) : null;
+    }
+
+    async getJobRequestByHandle(jobFilename) {
+        return jobFilename ? JSON.parse(await this.delegate.getFile(jobFilename, 'utf8')) : null;
     }
 
     async getJobRequest(jobGuid) {
         const reqFilename = (await this.#findGlob(`*job_${jobGuid}-req.json`))[0];
-        return reqFilename ? JSON.parse(await this.delegate.getFile(reqFilename, 'utf8')) : null;
+        return reqFilename ? this.getJobRequestByHandle(reqFilename) : null;
     }
 
     async deleteJobRequest(jobGuid) {

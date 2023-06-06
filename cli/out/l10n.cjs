@@ -3583,16 +3583,18 @@ var require_fileBasedJobStore = __commonJS({
       }
       async getJobStatusByLangPair(sourceLang, targetLang) {
         const files = await this.#findGlob(`*${sourceLang}_${targetLang}_job_*.json`);
-        const statusMap = {};
+        const handleMap = {};
         for (const file of files) {
           const entry = file.match(jobFilenameRegex)?.groups;
           if (entry) {
-            if (!statusMap[entry.guid] || statusPriority[entry.status] < statusPriority[statusMap[entry.guid].status]) {
-              statusMap[entry.guid] = { status: entry.status };
-            }
+            const handle = handleMap[entry.guid] ?? {};
+            const currentPriority = statusPriority[handle.status] ?? 100;
+            statusPriority[entry.status] < currentPriority && (handle.status = entry.status);
+            handle[entry.status] = file;
+            handleMap[entry.guid] = handle;
           }
         }
-        return Object.entries(statusMap);
+        return Object.entries(handleMap);
       }
       async createJobManifest() {
         return {
@@ -3606,21 +3608,23 @@ var require_fileBasedJobStore = __commonJS({
         const jobPath = [`${job2.sourceLang}_${job2.targetLang}`, filename];
         await this.delegate.saveFile(jobPath, JSON.stringify(job2, null, "	"), "utf8");
       }
+      async getJobByHandle(jobFilename) {
+        const jobFile = await this.delegate.getFile(jobFilename);
+        const parsedJob = JSON.parse(jobFile);
+        return parsedJob;
+      }
       async getJob(jobGuid) {
         const pending = (await this.#findGlob(`*job_${jobGuid}-pending.json`))[0];
         const done = (await this.#findGlob(`*job_${jobGuid}-done.json`))[0];
         const jobFilename = done ?? pending;
-        if (jobFilename) {
-          const jobFile = await this.delegate.getFile(jobFilename);
-          const parsedJob = JSON.parse(jobFile);
-          return parsedJob;
-        }
-        console.log(`no job ${jobGuid} ${pending} ${done}`);
-        return null;
+        return jobFilename ? this.getJobByHandle(jobFilename) : null;
+      }
+      async getJobRequestByHandle(jobFilename) {
+        return jobFilename ? JSON.parse(await this.delegate.getFile(jobFilename, "utf8")) : null;
       }
       async getJobRequest(jobGuid) {
         const reqFilename = (await this.#findGlob(`*job_${jobGuid}-req.json`))[0];
-        return reqFilename ? JSON.parse(await this.delegate.getFile(reqFilename, "utf8")) : null;
+        return reqFilename ? this.getJobRequestByHandle(reqFilename) : null;
       }
       async deleteJobRequest(jobGuid) {
         const reqFilename = (await this.#findGlob(`*job_${jobGuid}-req.json`))[0];
@@ -28935,13 +28939,13 @@ var TMManager = class {
       tm = new TM(sourceLang, targetLang, path.join(this.monsterDir, tmFileName), this.configSeal, jobs2);
       this.tmCache.set(tmFileName, tm);
     }
-    for (const [jobGuid, jobStat] of jobs2) {
+    for (const [jobGuid, handle] of jobs2) {
       const jobInTM = tm.getJobStatus(jobGuid);
-      if (jobStat.status === "pending" || jobInTM?.status !== jobStat.status) {
-        const jobResponse = await this.jobStore.getJob(jobGuid);
+      if (handle.status === "pending" || jobInTM?.status !== handle.status) {
+        const jobResponse = await this.jobStore.getJobByHandle(handle[handle.status]);
         if (jobResponse.updatedAt !== jobInTM?.updatedAt) {
           (0, import_helpers.sharedCtx)().logger.info(`Applying job ${jobGuid} to the ${sourceLang} -> ${targetLang} TM...`);
-          const jobRequest = await this.jobStore.getJobRequest(jobGuid);
+          const jobRequest = await this.jobStore.getJobRequestByHandle(handle.req);
           tm.processJob(jobResponse, jobRequest);
         }
       }
@@ -29740,8 +29744,8 @@ async function jobsCmd(mm, { limitToLang }) {
   for (const targetLang of targetLangs) {
     const pendingJobs = (await mm.jobStore.getJobStatusByLangPair(mm.sourceLang, targetLang)).filter((e) => e[1].status !== "done");
     unfinishedJobs[targetLang] = [];
-    for (const [jobGuid, stats] of pendingJobs) {
-      unfinishedJobs[targetLang].push(await (stats.status === "pending" ? mm.jobStore.getJob(jobGuid) : mm.jobStore.getJobRequest(jobGuid)));
+    for (const [jobGuid, handle] of pendingJobs) {
+      unfinishedJobs[targetLang].push(await (handle.status === "pending" ? mm.jobStore.getJob(jobGuid) : mm.jobStore.getJobRequest(jobGuid)));
     }
   }
   return unfinishedJobs;

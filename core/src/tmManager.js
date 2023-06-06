@@ -127,14 +127,14 @@ export default class TMManager {
             tm = new TM(sourceLang, targetLang, path.join(this.monsterDir, tmFileName), this.configSeal, jobs);
             this.tmCache.set(tmFileName, tm);
         }
-        for (const [jobGuid, jobStat] of jobs) {
+        for (const [jobGuid, handle] of jobs) {
             const jobInTM = tm.getJobStatus(jobGuid);
             // always try to update pending jobs (because mutable) or if status has changed
-            if (jobStat.status === 'pending' || jobInTM?.status !== jobStat.status) {
-                const jobResponse = await this.jobStore.getJob(jobGuid);
+            if (handle.status === 'pending' || jobInTM?.status !== handle.status) {
+                const jobResponse = await this.jobStore.getJobByHandle(handle[handle.status]);
                 if (jobResponse.updatedAt !== jobInTM?.updatedAt) {
                     sharedCtx().logger.info(`Applying job ${jobGuid} to the ${sourceLang} -> ${targetLang} TM...`);
-                    const jobRequest = await this.jobStore.getJobRequest(jobGuid);
+                    const jobRequest = await this.jobStore.getJobRequestByHandle(handle.req);
                     tm.processJob(jobResponse, jobRequest);
                 }
             }
