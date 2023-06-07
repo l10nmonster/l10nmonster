@@ -160,7 +160,7 @@ export default class TMManager {
                     return { jobResponse: meta.jobResponse, jobRequest };
                 })());
                 for (const { jobResponse, jobRequest } of await Promise.all(jobPromises)) {
-                    l10nmonster.logger.info(`Applying job ${jobRequest.jobGuid} to the ${sourceLang} -> ${targetLang} TM...`);
+                    l10nmonster.logger.info(`Applying job ${jobResponse?.jobGuid} to the ${sourceLang} -> ${targetLang} TM...`);
                     tm.processJob(jobResponse, jobRequest);
                 }
             }
