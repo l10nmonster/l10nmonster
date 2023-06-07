@@ -107,7 +107,7 @@ export default class SourceManager {
     }
 
     async *getAllResourcesFromSources() {
-        l10nmonster.logger.info(`Getting all resource...`);
+        l10nmonster.logger.info(`Getting all resources...`);
         for (const [ contentType, pipeline ] of Object.entries(this.contentTypes)) {
             if (pipeline.source.fetchAllResources) {
                 for await (const [resourceStat, rawResource] of pipeline.source.fetchAllResources(l10nmonster.prj)) {

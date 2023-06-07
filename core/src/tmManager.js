@@ -110,12 +110,13 @@ class TM {
 }
 
 export default class TMManager {
-    constructor({ monsterDir, jobStore, configSeal }) {
+    constructor({ monsterDir, jobStore, configSeal, parallelism }) {
         this.monsterDir = monsterDir;
         this.jobStore = jobStore;
         this.configSeal = configSeal;
         this.tmCache = new Map();
         this.generation = new Date().getTime();
+        this.parallelism = parallelism ?? 8;
     }
 
     async getTM(sourceLang, targetLang) {
@@ -127,14 +128,39 @@ export default class TMManager {
             tm = new TM(sourceLang, targetLang, path.join(this.monsterDir, tmFileName), this.configSeal, jobs);
             this.tmCache.set(tmFileName, tm);
         }
+        const jobsToFetch = [];
         for (const [jobGuid, handle] of jobs) {
             const jobInTM = tm.getJobStatus(jobGuid);
             // always try to update pending jobs (because mutable) or if status has changed
             if (handle.status === 'pending' || jobInTM?.status !== handle.status) {
-                const jobResponse = await this.jobStore.getJobByHandle(handle[handle.status]);
-                if (jobResponse.updatedAt !== jobInTM?.updatedAt) {
-                    l10nmonster.logger.info(`Applying job ${jobGuid} to the ${sourceLang} -> ${targetLang} TM...`);
-                    const jobRequest = await this.jobStore.getJobRequestByHandle(handle.req);
+                jobsToFetch.push({
+                    jobHandle: handle[handle.status],
+                    jobRequestHandle: handle.req,
+                    tmUpdatedAt: jobInTM?.updatedAt,
+                })
+            }
+        }
+        while (jobsToFetch.length > 0) {
+            const jobPromises = jobsToFetch.splice(0, this.parallelism).map(meta => (async () => {
+                const body = await this.jobStore.getJobByHandle(meta.jobHandle);
+                return { meta, body };
+            })());
+            const jobsRequestsToFetch = [];
+            for (const job of await Promise.all(jobPromises)) {
+                if (job.body.updatedAt !== job.meta.tmUpdatedAt) {
+                    jobsRequestsToFetch.push({
+                        jobRequestHandle: job.meta.jobRequestHandle,
+                        jobResponse: job.body
+                    });
+                }
+            }
+            if (jobsRequestsToFetch.length > 0) {
+                const jobPromises = jobsRequestsToFetch.map(meta => (async () => {
+                    const jobRequest = await this.jobStore.getJobRequestByHandle(meta.jobRequestHandle);
+                    return { jobResponse: meta.jobResponse, jobRequest };
+                })());
+                for (const { jobResponse, jobRequest } of await Promise.all(jobPromises)) {
+                    l10nmonster.logger.info(`Applying job ${jobRequest.jobGuid} to the ${sourceLang} -> ${targetLang} TM...`);
                     tm.processJob(jobResponse, jobRequest);
                 }
             }
