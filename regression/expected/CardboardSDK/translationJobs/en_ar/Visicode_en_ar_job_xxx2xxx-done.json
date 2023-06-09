@@ -22,7 +22,11 @@
 		{
 			"guid": "snWaUNjXnKuXlItO8jUPfKITKfuqshl6xCXxUgiP4jI",
 			"ts": 1,
-			"tgt": "⇥YAB:F̲u̲l̲l̲s̲̟c̲r̲e̲e̲n̲̟ ̲m̲o̲d̲e̲̟⇤",
+			"ntgt": [
+				"⇥YAB:",
+				"F̲u̲l̲l̲s̲̟c̲r̲e̲e̲n̲̟ ̲m̲o̲d̲e̲̟",
+				"⇤"
+			],
 			"q": 2
 		},
 		{

@@ -26,7 +26,7 @@ exports.BridgeTranslator = class XliffBridge {
         const xliff = await createxliff12(
             jobRequest.sourceLang,
             jobRequest.targetLang,
-            Object.fromEntries(jobRequest.tus.map(tu => [ tu.guid, tu.src ])), // TODO: need to deal with nsrc
+            Object.fromEntries(jobRequest.tus.map(tu => [ tu.guid, tu.nsrc[0] ])), // TODO: need to deal with nsrc properly
             null,
             'XliffBridge',
             null,
@@ -59,7 +59,7 @@ exports.BridgeTranslator = class XliffBridge {
                         sid: tuMap[guid].sid,
                         ts: tuMap[guid].ts,
                         src: xt.source,
-                        tgt: xt.target, // TODO: need to deal with ntgt
+                        ntgt: [xt.target], // TODO: need to deal with ntgt properly
                         q: this.quality,
                     });
                 }

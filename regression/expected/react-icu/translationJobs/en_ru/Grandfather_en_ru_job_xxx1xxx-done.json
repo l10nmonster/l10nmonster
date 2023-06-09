@@ -7,14 +7,17 @@
 	"tus": [
 		{
 			"guid": "wUtgDUDVeLsT_x9VEGH_peG9Ujs3DvX1H3cvHtxgcjw",
-			"q": 70,
-			"src": "Welcome to react using react-i18next",
-			"tgt": "Добро пожаловать в React и react-i18next",
-			"ts": 1
+			"nsrc": [
+				"Welcome to react using react-i18next"
+			],
+			"ntgt": [
+				"Добро пожаловать в React и react-i18next"
+			],
+			"ts": 1,
+			"q": 70
 		},
 		{
 			"guid": "cghma_NsjtZInytTsem0CwlHb1dS2hT2uQGVfDLNkaI",
-			"q": 70,
 			"nsrc": [
 				"To get started, edit ",
 				{
@@ -32,29 +35,31 @@
 				"Что би начать, отредактируйте ",
 				{
 					"t": "bx",
-					"v": "<a>",
-					"v1": "a_bx_a"
+					"v": "<a>"
 				},
 				"src/App.js",
 				{
 					"t": "ex",
-					"v": "</a>",
-					"v1": "b_ex_a"
+					"v": "</a>"
 				},
 				" и сохраните, что бы обновилось."
 			],
-			"ts": 1
+			"ts": 1,
+			"q": 70
 		},
 		{
 			"guid": "B2tOpN7eXoM6vDTFJdnZEO-5fTC49LtcVxOOxviW7z8",
-			"q": 70,
-			"src": "Switch language between english and german using buttons above.",
-			"tgt": "Переключайте языки между английским, немецким и русским чуть выше.",
-			"ts": 1
+			"nsrc": [
+				"Switch language between english and german using buttons above."
+			],
+			"ntgt": [
+				"Переключайте языки между английским, немецким и русским чуть выше."
+			],
+			"ts": 1,
+			"q": 70
 		},
 		{
 			"guid": "mVpp2sfDV8h1yTpK3YpunsGCCyrOtgRsoijdn0rbpfo",
-			"q": 70,
 			"nsrc": [
 				"Welcome, ",
 				{
@@ -67,16 +72,15 @@
 				"Добро пожаловать, ",
 				{
 					"t": "x",
-					"v": "{{name}}",
-					"v1": "a_x_name"
+					"v": "{{name}}"
 				},
 				"!"
 			],
-			"ts": 1
+			"ts": 1,
+			"q": 70
 		},
 		{
 			"guid": "RLKDBvHhlr-qK3r-qduFToaGzxrPq1lCG1NlVq7u80s",
-			"q": 70,
 			"nsrc": [
 				"Welcome, ",
 				{
@@ -97,22 +101,20 @@
 				"Добро пожаловать, ",
 				{
 					"t": "bx",
-					"v": "<a>",
-					"v1": "a_bx_a"
+					"v": "<a>"
 				},
 				{
 					"t": "x",
-					"v": "{{name}}",
-					"v1": "b_x_name"
+					"v": "{{name}}"
 				},
 				{
 					"t": "ex",
-					"v": "</a>",
-					"v1": "c_ex_a"
+					"v": "</a>"
 				},
 				"!"
 			],
-			"ts": 1
+			"ts": 1,
+			"q": 70
 		}
 	],
 	"updatedAt": "2022-05-29T00:00:00.000Z"

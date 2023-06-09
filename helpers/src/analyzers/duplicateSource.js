@@ -7,25 +7,25 @@ export default class DuplicateSource {
     }
 
     processSegment({ rid, prj, seg }) {
-        const str = seg.gstr || seg.str;
-                this.unqualifiedMatches[str] ??= [];
-                this.unqualifiedMatches[str].push({ rid, prj, sid: seg.sid, str });
-                const qStr = `${seg.sid}|${str}`;
-                this.qualifiedMatches[qStr] ??= [];
-                this.qualifiedMatches[qStr].push({ rid, prj, sid: seg.sid, str });
+        const gstr = seg.gstr;
+        this.unqualifiedMatches[gstr] ??= [];
+        this.unqualifiedMatches[gstr].push({ rid, prj, sid: seg.sid, gstr });
+        const qStr = `${seg.sid}|${gstr}`;
+        this.qualifiedMatches[qStr] ??= [];
+        this.qualifiedMatches[qStr].push({ rid, prj, sid: seg.sid, gstr });
     }
 
     getAnalysis() {
         const analysis = {
-            head: ['str', 'prj', 'rid', 'sid'],
-            groupBy: ['str'],
+            head: ['source', 'prj', 'rid', 'sid'],
+            groupBy: ['source'],
             body: [],
         };
         const qualifiedRepetitions = Object.values(this.qualifiedMatches).filter(e => e.length > 1);
         const unqualifiedRepetitions = Object.values(this.unqualifiedMatches).filter(e => e.length > 1);
         for (const rep of [...qualifiedRepetitions, ...unqualifiedRepetitions]) {
             for (const r of rep) {
-                analysis.body.push([rep[0].str, r.prj, r.rid, r.sid]);
+                analysis.body.push([rep[0].gstr, r.prj, r.rid, r.sid]);
             }
         }
         return analysis;

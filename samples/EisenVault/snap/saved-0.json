@@ -12,40 +12,45 @@
 		"segments": [
 			{
 				"sid": "header.title",
-				"str": "Saved Search",
 				"location": {
 					"startLine": 1,
 					"endLine": 1
 				},
+				"nstr": [
+					"Saved Search"
+				],
+				"gstr": "Saved Search",
 				"guid": "vOu-eNJHDEBQChRKqLed8BwIg3TYqS4vXtfiyYVOock"
 			},
 			{
 				"sid": "no.result",
-				"str": "No results found.",
 				"location": {
 					"startLine": 2,
 					"endLine": 2
 				},
+				"nstr": [
+					"No results found."
+				],
+				"gstr": "No results found.",
 				"guid": "6N6CvXFOJN5MW5CDAOCRUtAKv52ovL-gvXdY_uFAsuI"
 			},
 			{
 				"sid": "message.insite",
-				"str": "in site",
 				"location": {
 					"startLine": 3,
 					"endLine": 3
 				},
+				"nstr": [
+					"in site"
+				],
+				"gstr": "in site",
 				"guid": "2qDllQZkvpfUJXE0R5eq---oiS-52r1TJEFY9jaK0UM"
 			},
 			{
 				"sid": "dashlet.help",
-				"str": "<p>Use this dashlet to set up a search and view the results.</p><p>Configure the dashlet to save the search and set the title text of the dashlet.</p><p>Only a Site Manager can configure the search and title - this dashlet is ideal for generating report views in a site.</p>",
 				"location": {
 					"startLine": 6,
 					"endLine": 8
-				},
-				"notes": {
-					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 				},
 				"nstr": [
 					{
@@ -78,7 +83,10 @@
 				],
 				"gstr": "{{bx}}Use this dashlet to set up a search and view the results.{{ex}}{{bx}}Configure the dashlet to save the search and set the title text of the dashlet.{{ex}}{{bx}}Only a Site Manager can configure the search and title - this dashlet is ideal for generating report views in a site.{{ex}}",
 				"guid": "9ZZmsgCdj4VOoUo-5nhEuqaBDfZBHGfiK_v5nkOMIrQ",
-				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				}
 			}
 		]
 	}

@@ -16,15 +16,11 @@ module.exports = class PigLatinizer {
         const ts = l10nmonster.regression ? 1 : new Date().getTime();
         jobResponse.tus = jobRequest.tus.map(tu => {
             const translation = { guid: tu.guid, ts };
-            if (tu.nsrc) {
-                translation.ntgt = [
-                    '[',
-                    ...tu.nsrc.map(n => (typeof n === 'string' ? pigLatin.translate(n) : { ...n })),
-                    `-${jobRequest.targetLang}]`
-                ];
-            } else {
-                translation.tgt = `[${pigLatin.translate(tu.src)}-${jobRequest.targetLang}]`;
-            }
+            translation.ntgt = [
+                '[',
+                ...tu.nsrc.map(n => (typeof n === 'string' ? pigLatin.translate(n) : { ...n })),
+                `-${jobRequest.targetLang}]`
+            ];
             translation.q = this.quality;
             return translation;
         });

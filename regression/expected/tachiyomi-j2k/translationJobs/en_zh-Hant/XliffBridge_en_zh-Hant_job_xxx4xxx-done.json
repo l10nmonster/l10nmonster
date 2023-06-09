@@ -11,7 +11,9 @@
 			"sid": "all_files_permission_required",
 			"ts": 1,
 			"src": "File permissions required",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -19,7 +21,9 @@
 			"sid": "chapter_x_of_y",
 			"ts": 1,
 			"src": "Chapter %1$d of %2$d",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -27,7 +31,9 @@
 			"sid": "no_chapters_to_delete",
 			"ts": 1,
 			"src": "No chapters to delete",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -35,7 +41,9 @@
 			"sid": "scanlators",
 			"ts": 1,
 			"src": "Scanlators",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -43,7 +51,9 @@
 			"sid": "remove_n_chapters_one",
 			"ts": 1,
 			"src": "Remove %1$d downloaded chapter?",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -51,7 +61,9 @@
 			"sid": "remove_n_chapters_other",
 			"ts": 1,
 			"src": "Remove %1$d downloaded chapters?",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -59,7 +71,9 @@
 			"sid": "chapters_plural_one",
 			"ts": 1,
 			"src": "%1$d chapter",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -67,7 +81,9 @@
 			"sid": "chapters_plural_other",
 			"ts": 1,
 			"src": "%1$d chapters",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -75,7 +91,9 @@
 			"sid": "pages_left_one",
 			"ts": 1,
 			"src": "%1$d page left",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -83,7 +101,9 @@
 			"sid": "pages_left_other",
 			"ts": 1,
 			"src": "%1$d pages left",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -91,7 +111,9 @@
 			"sid": "category",
 			"ts": 1,
 			"src": "Category",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -99,7 +121,9 @@
 			"sid": "create_new_category",
 			"ts": 1,
 			"src": "Create new category",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -107,7 +131,9 @@
 			"sid": "new_category",
 			"ts": 1,
 			"src": "New category",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -115,7 +141,9 @@
 			"sid": "category_is_empty",
 			"ts": 1,
 			"src": "Category is empty",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -123,7 +151,9 @@
 			"sid": "show_categories_while_filtering",
 			"ts": 1,
 			"src": "Show empty categories while filtering",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -131,7 +161,9 @@
 			"sid": "no_matches_for_filters_short",
 			"ts": 1,
 			"src": "No matches for your filters",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -139,7 +171,9 @@
 			"sid": "top_category",
 			"ts": 1,
 			"src": "Top category (%1$s)",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -147,7 +181,9 @@
 			"sid": "first_category",
 			"ts": 1,
 			"src": "First category",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -155,7 +191,9 @@
 			"sid": "categories_on_manual",
 			"ts": 1,
 			"src": "Categories to update when manually refreshing",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -163,7 +201,9 @@
 			"sid": "categories_in_global_update",
 			"ts": 1,
 			"src": "All categories in global update",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -171,7 +211,9 @@
 			"sid": "confirm_category_deletion_message",
 			"ts": 1,
 			"src": "Manga in this category will moved into the\n        default category.",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -179,7 +221,9 @@
 			"sid": "already_in_category",
 			"ts": 1,
 			"src": "Manga already in category",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -187,7 +231,9 @@
 			"sid": "add_edit_categories",
 			"ts": 1,
 			"src": "Add/Edit categories",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -195,7 +241,9 @@
 			"sid": "manage_category",
 			"ts": 1,
 			"src": "Manage category",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -203,7 +251,9 @@
 			"sid": "category_plural_one",
 			"ts": 1,
 			"src": "%d category",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -211,7 +261,9 @@
 			"sid": "category_plural_other",
 			"ts": 1,
 			"src": "%d categories",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -219,7 +271,9 @@
 			"sid": "category_cannot_be_blank",
 			"ts": 1,
 			"src": "Category name cannot be blank",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -227,7 +281,9 @@
 			"sid": "category_deleted",
 			"ts": 1,
 			"src": "Category deleted",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -235,7 +291,9 @@
 			"sid": "long_press_category",
 			"ts": 1,
 			"src": "Press and hold to edit a category",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -243,7 +301,9 @@
 			"sid": "jump_to_category",
 			"ts": 1,
 			"src": "Jump to category",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -251,7 +311,9 @@
 			"sid": "what_should_update",
 			"ts": 1,
 			"src": "What should update?",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -259,7 +321,9 @@
 			"sid": "updating_",
 			"ts": 1,
 			"src": "Updating %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -267,7 +331,9 @@
 			"sid": "release_page",
 			"ts": 1,
 			"src": "Release page",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -275,7 +341,9 @@
 			"sid": "your_library",
 			"ts": 1,
 			"src": "Your library",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -283,7 +351,9 @@
 			"sid": "no_matches_for_filters",
 			"ts": 1,
 			"src": "No matches found for your current filters",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -291,7 +361,9 @@
 			"sid": "show_all_categories",
 			"ts": 1,
 			"src": "Show all categories",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -299,7 +371,9 @@
 			"sid": "move_dynamic_to_bottom",
 			"ts": 1,
 			"src": "Move collapsed dynamic categories to bottom",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -307,7 +381,9 @@
 			"sid": "show_number_of_items",
 			"ts": 1,
 			"src": "Show number of items",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -315,7 +391,9 @@
 			"sid": "when_grouping_by_sources_tags",
 			"ts": 1,
 			"src": "When grouping library by sources, status, etc.",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -323,7 +401,9 @@
 			"sid": "always_show_current_category",
 			"ts": 1,
 			"src": "Always show current category",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -331,7 +411,9 @@
 			"sid": "category_hopper_long_press",
 			"ts": 1,
 			"src": "Category hopper long-press action",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -339,7 +421,9 @@
 			"sid": "expand_collapse_all_categories",
 			"ts": 1,
 			"src": "Expand/collapse all categories",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -347,7 +431,9 @@
 			"sid": "open_random_series",
 			"ts": 1,
 			"src": "Open a random series",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -355,7 +441,9 @@
 			"sid": "expand_all_categories",
 			"ts": 1,
 			"src": "Expand all categories",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -363,7 +451,9 @@
 			"sid": "collapse_all_categories",
 			"ts": 1,
 			"src": "Collapse all categories",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -371,7 +461,9 @@
 			"sid": "reorder_filters",
 			"ts": 1,
 			"src": "Reorder filters",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -379,7 +471,9 @@
 			"sid": "search_globally",
 			"ts": 1,
 			"src": "Search \\\"%1$s\\\" globally",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -387,7 +481,9 @@
 			"sid": "read_progress",
 			"ts": 1,
 			"src": "Read progress",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -395,7 +491,9 @@
 			"sid": "series_type",
 			"ts": 1,
 			"src": "Series type",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -403,7 +501,9 @@
 			"sid": "series",
 			"ts": 1,
 			"src": "Series",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -411,7 +511,9 @@
 			"sid": "group_library_by",
 			"ts": 1,
 			"src": "Group library by…",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -419,7 +521,9 @@
 			"sid": "tracking_status",
 			"ts": 1,
 			"src": "Tracking status",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -427,7 +531,9 @@
 			"sid": "ungrouped",
 			"ts": 1,
 			"src": "Ungrouped",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -435,7 +541,9 @@
 			"sid": "sort_by",
 			"ts": 1,
 			"src": "Sort by",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -443,7 +551,9 @@
 			"sid": "date_fetched",
 			"ts": 1,
 			"src": "Date fetched",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -451,7 +561,9 @@
 			"sid": "can_be_found_in_library_filters",
 			"ts": 1,
 			"src": "Can also be found by expanding library filters",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -459,7 +571,9 @@
 			"sid": "hide_start_reading_button",
 			"ts": 1,
 			"src": "Hide start reading button",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -467,7 +581,9 @@
 			"sid": "uniform_grid_covers",
 			"ts": 1,
 			"src": "Uniform grid covers",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -475,7 +591,9 @@
 			"sid": "show_outline_around_covers",
 			"ts": 1,
 			"src": "Show outline around covers",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -483,7 +601,9 @@
 			"sid": "grid_size",
 			"ts": 1,
 			"src": "Grid size",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -491,7 +611,9 @@
 			"sid": "_per_row",
 			"ts": 1,
 			"src": "%d per row",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -499,7 +621,9 @@
 			"sid": "display_as",
 			"ts": 1,
 			"src": "Display as",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -507,7 +631,9 @@
 			"sid": "hide_category_hopper",
 			"ts": 1,
 			"src": "Hide category hopper",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -515,7 +641,9 @@
 			"sid": "shift_one_page_over",
 			"ts": 1,
 			"src": "Shift one page over",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -523,7 +651,9 @@
 			"sid": "shift_double_pages",
 			"ts": 1,
 			"src": "Shift double pages",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -531,7 +661,9 @@
 			"sid": "notification_size_warning",
 			"ts": 1,
 			"src": "Large updates may lead to increased battery usage and sources becoming slower",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -539,7 +671,9 @@
 			"sid": "for_n_titles_one",
 			"ts": 1,
 			"src": "For %d title",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -547,7 +681,9 @@
 			"sid": "for_n_titles_other",
 			"ts": 1,
 			"src": "For %d titles",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -555,7 +691,9 @@
 			"sid": "notification_and_n_more_one",
 			"ts": 1,
 			"src": "and %1$d more chapter",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -563,7 +701,9 @@
 			"sid": "notification_and_n_more_other",
 			"ts": 1,
 			"src": "and %1$d more chapters",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -571,7 +711,9 @@
 			"sid": "notification_update_failed_one",
 			"ts": 1,
 			"src": "1 update failed",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -579,7 +721,9 @@
 			"sid": "channel_errors",
 			"ts": 1,
 			"src": "Errors",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -587,7 +731,9 @@
 			"sid": "restrictions_",
 			"ts": 1,
 			"src": "Restrictions: %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -595,7 +741,9 @@
 			"sid": "sort_by_ignoring_articles",
 			"ts": 1,
 			"src": "Sort by ignoring articles",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -603,7 +751,9 @@
 			"sid": "when_sorting_ignore_articles",
 			"ts": 1,
 			"src": "When sorting alphabetically, sort ignoring\n        articles (a, an, the) at the start of manga titles",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -611,7 +761,9 @@
 			"sid": "include_in_global_update",
 			"ts": 1,
 			"src": "Include in global update",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -619,7 +771,9 @@
 			"sid": "auto_refresh_covers_summary",
 			"ts": 1,
 			"src": "Refresh covers in library as well\n        when updating library",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -627,7 +781,9 @@
 			"sid": "global_updates",
 			"ts": 1,
 			"src": "Global updates",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -635,7 +791,9 @@
 			"sid": "display_buttons_bottom_reader",
 			"ts": 1,
 			"src": "Buttons at bottom of reader",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -643,7 +801,9 @@
 			"sid": "certain_buttons_can_be_found",
 			"ts": 1,
 			"src": "Certain buttons can be found in other places if disabled here",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -651,7 +811,9 @@
 			"sid": "search_suggestions",
 			"ts": 1,
 			"src": "Search suggestions",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -659,7 +821,9 @@
 			"sid": "search_tips_show_periodically",
 			"ts": 1,
 			"src": "Search tips will show up periodically. Long press the suggestion to search it.",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -667,7 +831,9 @@
 			"sid": "recents",
 			"ts": 1,
 			"src": "Recents",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -675,7 +841,9 @@
 			"sid": "updates_and_history",
 			"ts": 1,
 			"src": "Updates & history",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -683,7 +851,9 @@
 			"sid": "newly_added",
 			"ts": 1,
 			"src": "Newly added",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -691,7 +861,9 @@
 			"sid": "reset_chapter_history",
 			"ts": 1,
 			"src": "Reset chapter history",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -699,7 +871,9 @@
 			"sid": "this_will_remove_the_read_date_for_x_question",
 			"ts": 1,
 			"src": "This will remove the read date of\n        \\\"%1$s\\\". Are you sure?",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -707,7 +881,9 @@
 			"sid": "reset_all_chapters_for_this_",
 			"ts": 1,
 			"src": "Reset all chapters for this %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -715,7 +891,9 @@
 			"sid": "last_read_",
 			"ts": 1,
 			"src": "Last read %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -723,7 +901,9 @@
 			"sid": "read_",
 			"ts": 1,
 			"src": "Read %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -731,7 +911,9 @@
 			"sid": "updated_",
 			"ts": 1,
 			"src": "Updated %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -739,7 +921,9 @@
 			"sid": "added_",
 			"ts": 1,
 			"src": "Added %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -747,7 +931,9 @@
 			"sid": "fetched_",
 			"ts": 1,
 			"src": "Fetched %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -755,7 +941,9 @@
 			"sid": "view_history",
 			"ts": 1,
 			"src": "View history",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -763,7 +951,9 @@
 			"sid": "view_all_updates",
 			"ts": 1,
 			"src": "View all updates",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -771,7 +961,9 @@
 			"sid": "search_recents",
 			"ts": 1,
 			"src": "Search recents…",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -779,7 +971,9 @@
 			"sid": "no_recent_read_updated_manga",
 			"ts": 1,
 			"src": "No recently read or updated manga",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -787,7 +981,9 @@
 			"sid": "grouped",
 			"ts": 1,
 			"src": "Grouped",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -795,7 +991,9 @@
 			"sid": "reset_chapter_question",
 			"ts": 1,
 			"src": "Reset chapter?",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -803,7 +1001,9 @@
 			"sid": "press_and_hold_to_also_reset",
 			"ts": 1,
 			"src": "Press and hold can also reset chapter history",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -811,7 +1011,9 @@
 			"sid": "show_download_button",
 			"ts": 1,
 			"src": "Show download button",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -819,7 +1021,9 @@
 			"sid": "only_unread",
 			"ts": 1,
 			"src": "Only unread",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -827,7 +1031,9 @@
 			"sid": "only_downloaded",
 			"ts": 1,
 			"src": "Only downloaded",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -835,7 +1041,9 @@
 			"sid": "unread_or_downloaded",
 			"ts": 1,
 			"src": "Unread or downloaded",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -843,7 +1051,9 @@
 			"sid": "show_reset_history_button",
 			"ts": 1,
 			"src": "Show reset history button",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -851,7 +1061,9 @@
 			"sid": "show_read_chapters_all",
 			"ts": 1,
 			"src": "Show read chapters in Grouped and All",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -859,7 +1071,9 @@
 			"sid": "show_title_first",
 			"ts": 1,
 			"src": "Show title first",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -867,7 +1081,9 @@
 			"sid": "a_while_ago",
 			"ts": 1,
 			"src": "A while ago",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -875,7 +1091,9 @@
 			"sid": "show_updated_time",
 			"ts": 1,
 			"src": "Show updated time",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -883,7 +1101,9 @@
 			"sid": "group_chapters_together",
 			"ts": 1,
 			"src": "Group chapters together",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -891,7 +1111,9 @@
 			"sid": "uniform_covers",
 			"ts": 1,
 			"src": "Uniform covers",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -899,7 +1121,9 @@
 			"sid": "affects_library_grid",
 			"ts": 1,
 			"src": "Affects library grid covers",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -907,7 +1131,9 @@
 			"sid": "search_extensions",
 			"ts": 1,
 			"src": "Search extensions…",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -915,7 +1141,9 @@
 			"sid": "all_sources",
 			"ts": 1,
 			"src": "All sources",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -923,7 +1151,9 @@
 			"sid": "source_hidden",
 			"ts": 1,
 			"src": "Source hidden",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -931,7 +1161,9 @@
 			"sid": "extension_updates",
 			"ts": 1,
 			"src": "Extension updates",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -939,7 +1171,9 @@
 			"sid": "extension_updates_pending",
 			"ts": 1,
 			"src": "Extension updates pending",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -947,7 +1181,9 @@
 			"sid": "filter_languages",
 			"ts": 1,
 			"src": "Filter Languages",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -955,7 +1191,9 @@
 			"sid": "installed_",
 			"ts": 1,
 			"src": "Installed %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -963,7 +1201,9 @@
 			"sid": "extensions_miui_warning",
 			"ts": 1,
 			"src": "MIUI Optimization must be disabled to install extensions.",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -971,7 +1211,9 @@
 			"sid": "app_info",
 			"ts": 1,
 			"src": "App info",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -979,7 +1221,9 @@
 			"sid": "_must_be_enabled_first",
 			"ts": 1,
 			"src": "%1$s must be enabled first",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -987,7 +1231,9 @@
 			"sid": "could_not_install_extension",
 			"ts": 1,
 			"src": "Could not install extension",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -995,7 +1241,9 @@
 			"sid": "update_all",
 			"ts": 1,
 			"src": "Update all",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1003,7 +1251,9 @@
 			"sid": "some_extensions_may_prompt",
 			"ts": 1,
 			"src": "Some extensions may still prompt to be installed first.",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1011,7 +1261,9 @@
 			"sid": "updating_extensions",
 			"ts": 1,
 			"src": "Updating extensions",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1019,7 +1271,9 @@
 			"sid": "_updates_pending_one",
 			"ts": 1,
 			"src": "%d update pending",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1027,7 +1281,9 @@
 			"sid": "_updates_pending_other",
 			"ts": 1,
 			"src": "%d updates pending",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1035,7 +1291,9 @@
 			"sid": "extensions_updated",
 			"ts": 1,
 			"src": "Extensions updated",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1043,7 +1301,9 @@
 			"sid": "extensions_updated_plural_one",
 			"ts": 1,
 			"src": "Extension updated",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1051,7 +1311,9 @@
 			"sid": "extensions_updated_plural_other",
 			"ts": 1,
 			"src": "%d extensions updated",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1059,7 +1321,9 @@
 			"sid": "extension_updates_available_one",
 			"ts": 1,
 			"src": "Extension update available",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1067,7 +1331,9 @@
 			"sid": "reader_settings",
 			"ts": 1,
 			"src": "Reader settings",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1075,7 +1341,9 @@
 			"sid": "set_as_default_for_all",
 			"ts": 1,
 			"src": "Set as default for all",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1083,7 +1351,9 @@
 			"sid": "pages_",
 			"ts": 1,
 			"src": "Pages %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1091,7 +1361,9 @@
 			"sid": "reading_mode",
 			"ts": 1,
 			"src": "Reading mode",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1099,7 +1371,9 @@
 			"sid": "changing_will_reset_reading_mode",
 			"ts": 1,
 			"src": "Changing this will reset the reading mode for this series",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1107,7 +1381,9 @@
 			"sid": "reading_",
 			"ts": 1,
 			"src": "Reading %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1115,7 +1391,9 @@
 			"sid": "webtoon_style",
 			"ts": 1,
 			"src": "webtoon style",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1123,7 +1401,9 @@
 			"sid": "set_first_page_as_cover",
 			"ts": 1,
 			"src": "Set first page as cover",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1131,7 +1411,9 @@
 			"sid": "share_first_page",
 			"ts": 1,
 			"src": "Share first page",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1139,7 +1421,9 @@
 			"sid": "save_first_page",
 			"ts": 1,
 			"src": "Save first page",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1147,7 +1431,9 @@
 			"sid": "set_second_page_as_cover",
 			"ts": 1,
 			"src": "Set second page as cover",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1155,7 +1441,9 @@
 			"sid": "share_second_page",
 			"ts": 1,
 			"src": "Share second page",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1163,7 +1451,9 @@
 			"sid": "save_second_page",
 			"ts": 1,
 			"src": "Save second page",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1171,7 +1461,9 @@
 			"sid": "share_combined_pages",
 			"ts": 1,
 			"src": "Share combined pages",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1179,7 +1471,9 @@
 			"sid": "save_combined_pages",
 			"ts": 1,
 			"src": "Save combined pages",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1187,7 +1481,9 @@
 			"sid": "enable_zoom_out",
 			"ts": 1,
 			"src": "Enable zoom out",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1195,7 +1491,9 @@
 			"sid": "page_preload_amount",
 			"ts": 1,
 			"src": "Page preload amount",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1203,7 +1501,9 @@
 			"sid": "amount_of_pages_to_preload",
 			"ts": 1,
 			"src": "The amount of pages to preload when reading. Higher values will result in a smoother reading experience, at the cost of higher cache and network usage.",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1211,7 +1511,9 @@
 			"sid": "invert_double_pages",
 			"ts": 1,
 			"src": "Invert double pages",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1219,7 +1521,9 @@
 			"sid": "split_double_pages_portrait",
 			"ts": 1,
 			"src": "Split double pages in portrait",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1227,7 +1531,9 @@
 			"sid": "crop_borders_paged",
 			"ts": 1,
 			"src": "Crop borders (Paged)",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1235,7 +1541,9 @@
 			"sid": "crop_borders_webtoon",
 			"ts": 1,
 			"src": "Crop borders (Webtoon)",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1243,7 +1551,9 @@
 			"sid": "remove_crop",
 			"ts": 1,
 			"src": "Remove crop",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1251,7 +1561,9 @@
 			"sid": "smart_by_page",
 			"ts": 1,
 			"src": "Smart (by page)",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1259,7 +1571,9 @@
 			"sid": "smart_by_theme",
 			"ts": 1,
 			"src": "Smart (by theme)",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1267,7 +1581,9 @@
 			"sid": "split_double_pages",
 			"ts": 1,
 			"src": "Split double pages",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1275,7 +1591,9 @@
 			"sid": "double_pages",
 			"ts": 1,
 			"src": "Double pages",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1283,7 +1601,9 @@
 			"sid": "single_page",
 			"ts": 1,
 			"src": "Single page",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1291,7 +1611,9 @@
 			"sid": "switch_to_double",
 			"ts": 1,
 			"src": "Switch to double pages",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1299,7 +1621,9 @@
 			"sid": "switch_to_single",
 			"ts": 1,
 			"src": "Switch to single page",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1307,7 +1631,9 @@
 			"sid": "locked_portrait",
 			"ts": 1,
 			"src": "Locked portrait",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1315,7 +1641,9 @@
 			"sid": "locked_landscape",
 			"ts": 1,
 			"src": "Locked landscape",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1323,7 +1651,9 @@
 			"sid": "smart_based_on_page",
 			"ts": 1,
 			"src": "Smart (based on page)",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1331,7 +1661,9 @@
 			"sid": "smart_based_on_page_and_theme",
 			"ts": 1,
 			"src": "Smart (based on page and theme)",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1339,7 +1671,9 @@
 			"sid": "if_disabled_transition_will_skip",
 			"ts": 1,
 			"src": "If disabled, the transition page will be\n        skipped if the next chapter is loaded",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1347,7 +1681,9 @@
 			"sid": "horizontally",
 			"ts": 1,
 			"src": "Horizontally",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1355,7 +1691,9 @@
 			"sid": "vertically",
 			"ts": 1,
 			"src": "Vertically",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1363,7 +1701,9 @@
 			"sid": "both_axes",
 			"ts": 1,
 			"src": "Both Axes",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1371,7 +1711,9 @@
 			"sid": "cutout_area_behavior",
 			"ts": 1,
 			"src": "Cutout area behavior",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1379,7 +1721,9 @@
 			"sid": "pad_cutout_areas",
 			"ts": 1,
 			"src": "Pad cutout areas",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1387,7 +1731,9 @@
 			"sid": "start_past_cutout",
 			"ts": 1,
 			"src": "Start past cutout",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1395,7 +1741,9 @@
 			"sid": "ignore_cutout_areas",
 			"ts": 1,
 			"src": "Ignore cutout areas",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1403,7 +1751,9 @@
 			"sid": "cutout_behavior_only_applies",
 			"ts": 1,
 			"src": "Cutout area behavior only applies in portrait mode with certain scale types",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1411,7 +1761,9 @@
 			"sid": "page_layout",
 			"ts": 1,
 			"src": "Page layout",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1419,7 +1771,9 @@
 			"sid": "automatic_can_still_switch",
 			"ts": 1,
 			"src": "While using automatic page layout, you can still switch between layouts while reading without overriding this setting",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1427,7 +1781,9 @@
 			"sid": "automatic_orientation",
 			"ts": 1,
 			"src": "Automatic (based on orientation)",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1435,7 +1791,9 @@
 			"sid": "webtoon_cannot_change",
 			"ts": 1,
 			"src": "Cannot change reading mode from webtoon. Edit the series type first to change.",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1443,7 +1801,9 @@
 			"sid": "actions",
 			"ts": 1,
 			"src": "Actions",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1451,7 +1811,9 @@
 			"sid": "show_on_long_press",
 			"ts": 1,
 			"src": "Show on long press",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1459,7 +1821,9 @@
 			"sid": "save_pages_separately",
 			"ts": 1,
 			"src": "Save pages in separate folders",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1467,7 +1831,9 @@
 			"sid": "create_folders_by_manga_title",
 			"ts": 1,
 			"src": "Creates folders according to manga title",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1475,7 +1841,9 @@
 			"sid": "pages_plural_one",
 			"ts": 1,
 			"src": "%1$d page",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1483,7 +1851,9 @@
 			"sid": "pages_plural_other",
 			"ts": 1,
 			"src": "%1$d pages",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1491,7 +1861,9 @@
 			"sid": "missing_chapters_warning_one",
 			"ts": 1,
 			"src": "Skipping 1 chapter, either the source is missing it or it has been filtered out",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1499,7 +1871,9 @@
 			"sid": "about_this_",
 			"ts": 1,
 			"src": "About this %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1507,7 +1881,9 @@
 			"sid": "volume_",
 			"ts": 1,
 			"src": "Volume %1$d",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1515,7 +1891,9 @@
 			"sid": "season_",
 			"ts": 1,
 			"src": "Season %1$d",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1523,7 +1901,9 @@
 			"sid": "no_description",
 			"ts": 1,
 			"src": "No description",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1531,7 +1911,9 @@
 			"sid": "add_x_to_library",
 			"ts": 1,
 			"src": "Add %1$s to library?",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1539,7 +1921,9 @@
 			"sid": "show_all",
 			"ts": 1,
 			"src": "Show All",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1547,7 +1931,9 @@
 			"sid": "add_tag",
 			"ts": 1,
 			"src": "Add tag",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1555,7 +1941,9 @@
 			"sid": "clear_tags",
 			"ts": 1,
 			"src": "Clear tags",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1563,7 +1951,9 @@
 			"sid": "reset_tags",
 			"ts": 1,
 			"src": "Reset tags",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1571,7 +1961,9 @@
 			"sid": "reset_cover",
 			"ts": 1,
 			"src": "Reset cover",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1579,7 +1971,9 @@
 			"sid": "remember_this_choice",
 			"ts": 1,
 			"src": "Remember this choice",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1587,7 +1981,9 @@
 			"sid": "source_not_installed",
 			"ts": 1,
 			"src": "Source not installed",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1595,7 +1991,9 @@
 			"sid": "filter_groups",
 			"ts": 1,
 			"src": "Filter scanlator groups",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1603,7 +2001,9 @@
 			"sid": "deleted_chapters_one",
 			"ts": 1,
 			"src": "A chapter has been removed from the source:\\n%2$s\\nDelete\n            its download?",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1611,7 +2011,9 @@
 			"sid": "deleted_chapters_other",
 			"ts": 1,
 			"src": "%1$s chapters have been removed from the source:\\n%2$s\\n\\nDelete\n            their downloads?",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1619,7 +2021,9 @@
 			"sid": "not_tracked",
 			"ts": 1,
 			"src": "Not tracked",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1627,7 +2031,9 @@
 			"sid": "track_when_adding_to_library",
 			"ts": 1,
 			"src": "Track when adding to library",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1635,7 +2041,9 @@
 			"sid": "only_applies_silent_trackers",
 			"ts": 1,
 			"src": "Only applies to silent trackers, such as Komga",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1643,7 +2051,9 @@
 			"sid": "select_an_entry",
 			"ts": 1,
 			"src": "Select an entry",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1651,7 +2061,9 @@
 			"sid": "no_match_found",
 			"ts": 1,
 			"src": "No match found",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1659,7 +2071,9 @@
 			"sid": "remove_tracking",
 			"ts": 1,
 			"src": "Remove tracking from app",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1667,7 +2081,9 @@
 			"sid": "cannot_remove_tracking_while_offline",
 			"ts": 1,
 			"src": "Tracker cannot be removed from %1$s while offline",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1675,7 +2091,9 @@
 			"sid": "remove_tracking_from_",
 			"ts": 1,
 			"src": "Also remove from %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1683,7 +2101,9 @@
 			"sid": "remove_previous_tracker",
 			"ts": 1,
 			"src": "Remove previous tracker?",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1691,7 +2111,9 @@
 			"sid": "remove_x_from_service_and_add_y",
 			"ts": 1,
 			"src": "Remove %1$s from %2$s and add %3$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1699,7 +2121,9 @@
 			"sid": "keep_both_on_service",
 			"ts": 1,
 			"src": "Keep both on %1$s and only replace locally",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1707,7 +2131,9 @@
 			"sid": "use_suggested_date",
 			"ts": 1,
 			"src": "Use suggested date",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1715,7 +2141,9 @@
 			"sid": "migration",
 			"ts": 1,
 			"src": "Migration",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1723,7 +2151,9 @@
 			"sid": "skip_pre_migration",
 			"ts": 1,
 			"src": "Skip pre-migration",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1731,7 +2161,9 @@
 			"sid": "select_a_source_then_item_to_migrate",
 			"ts": 1,
 			"src": "Select a source, then select an item to\n        migrate",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1739,7 +2171,9 @@
 			"sid": "data_to_include_in_migration",
 			"ts": 1,
 			"src": "Data to include in migration",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1747,7 +2181,9 @@
 			"sid": "search_parameter_eg",
 			"ts": 1,
 			"src": "Search parameter (e.g. language:english)",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1755,7 +2191,9 @@
 			"sid": "include_extra_search_parameter",
 			"ts": 1,
 			"src": "Include extra search parameter when searching",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1763,7 +2201,9 @@
 			"sid": "use_most_chapters",
 			"ts": 1,
 			"src": "Use source with the most chapters (slower)",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1771,7 +2211,9 @@
 			"sid": "use_first_source",
 			"ts": 1,
 			"src": "Use first source with alternative",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1779,7 +2221,9 @@
 			"sid": "skip_this_step_next_time",
 			"ts": 1,
 			"src": "Skip this step next time",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1787,7 +2231,9 @@
 			"sid": "to_show_again_setting_sources",
 			"ts": 1,
 			"src": "To show this screen again, go to Settings ->\n        Sources.",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1795,7 +2241,9 @@
 			"sid": "latest_",
 			"ts": 1,
 			"src": "Latest: %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1803,7 +2251,9 @@
 			"sid": "migrating_to",
 			"ts": 1,
 			"src": "migrating to",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1811,7 +2261,9 @@
 			"sid": "dont_migrate",
 			"ts": 1,
 			"src": "Don\\'t migrate",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1819,7 +2271,9 @@
 			"sid": "search_manually",
 			"ts": 1,
 			"src": "Search manually",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1827,7 +2281,9 @@
 			"sid": "migrate_now",
 			"ts": 1,
 			"src": "Migrate now",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1835,7 +2291,9 @@
 			"sid": "copy_now",
 			"ts": 1,
 			"src": "Copy now",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1843,7 +2301,9 @@
 			"sid": "migrate_",
 			"ts": 1,
 			"src": "Migrate %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1851,7 +2311,9 @@
 			"sid": "no_chapters_found_for_migration",
 			"ts": 1,
 			"src": "No chapters found, this manga cannot be used for\n        migration",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1859,7 +2321,9 @@
 			"sid": "no_alternatives_found",
 			"ts": 1,
 			"src": "No Alternatives Found",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1867,7 +2331,9 @@
 			"sid": "stop_migrating",
 			"ts": 1,
 			"src": "Stop migrating?",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1875,7 +2341,9 @@
 			"sid": "migrate_manga_one",
 			"ts": 1,
 			"src": "Migrate %1$d%2$s manga?",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1883,7 +2351,9 @@
 			"sid": "migrate_manga_other",
 			"ts": 1,
 			"src": "Migrate %1$d%2$s manga?",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1891,7 +2361,9 @@
 			"sid": "copy_manga_one",
 			"ts": 1,
 			"src": "Copy %1$d%2$s manga?",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1899,7 +2371,9 @@
 			"sid": "copy_manga_other",
 			"ts": 1,
 			"src": "Copy %1$d%2$s manga?",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1907,7 +2381,9 @@
 			"sid": "skipping_",
 			"ts": 1,
 			"src": "(skipping %1$d)",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1915,7 +2391,9 @@
 			"sid": "manga_migrated_one",
 			"ts": 1,
 			"src": "%d manga migrated",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1923,7 +2401,9 @@
 			"sid": "manga_migrated_other",
 			"ts": 1,
 			"src": "%d manga migrated",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1931,7 +2411,9 @@
 			"sid": "appearance",
 			"ts": 1,
 			"src": "Appearance",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1939,7 +2421,9 @@
 			"sid": "turn_on_",
 			"ts": 1,
 			"src": "Turn on %s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1947,7 +2431,9 @@
 			"sid": "turn_off_",
 			"ts": 1,
 			"src": "Turn off %s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1955,7 +2441,9 @@
 			"sid": "incognito_mode",
 			"ts": 1,
 			"src": "Incognito mode",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1963,7 +2451,9 @@
 			"sid": "pauses_reading_history",
 			"ts": 1,
 			"src": "Pauses reading history",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1971,7 +2461,9 @@
 			"sid": "light_theme",
 			"ts": 1,
 			"src": "Light theme",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1979,7 +2471,9 @@
 			"sid": "dark_theme",
 			"ts": 1,
 			"src": "Dark theme",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1987,7 +2481,9 @@
 			"sid": "midnight_dusk",
 			"ts": 1,
 			"src": "Midnight Dusk",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -1995,7 +2491,9 @@
 			"sid": "spring_blossom",
 			"ts": 1,
 			"src": "Spring Blossom",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2003,7 +2501,9 @@
 			"sid": "strawberry_daiquiri",
 			"ts": 1,
 			"src": "Strawberry Daiquiri",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2011,7 +2511,9 @@
 			"sid": "a_brighter_you",
 			"ts": 1,
 			"src": "A Brighter You (Dynamic)",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2019,7 +2521,9 @@
 			"sid": "a_calmer_you",
 			"ts": 1,
 			"src": "A Calmer You (Dynamic)",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2027,7 +2531,9 @@
 			"sid": "yotsuba",
 			"ts": 1,
 			"src": "Yotsuba",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2035,7 +2541,9 @@
 			"sid": "tako",
 			"ts": 1,
 			"src": "Tako",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2043,7 +2551,9 @@
 			"sid": "yin",
 			"ts": 1,
 			"src": "Yin",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2051,7 +2561,9 @@
 			"sid": "yang",
 			"ts": 1,
 			"src": "Yang",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2059,7 +2571,9 @@
 			"sid": "chocolate_strawberries",
 			"ts": 1,
 			"src": "Chocolate Strawberries",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2067,7 +2581,9 @@
 			"sid": "teal_ocean",
 			"ts": 1,
 			"src": "Teal Ocean",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2075,7 +2591,9 @@
 			"sid": "sapphire_dusk",
 			"ts": 1,
 			"src": "Sapphire Dusk",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2083,7 +2601,9 @@
 			"sid": "hot_pink",
 			"ts": 1,
 			"src": "Hot Pink",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2091,7 +2611,9 @@
 			"sid": "flat_lime",
 			"ts": 1,
 			"src": "Flat Lime",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2099,7 +2621,9 @@
 			"sid": "white_theme",
 			"ts": 1,
 			"src": "Pure White",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2107,7 +2631,9 @@
 			"sid": "last_used_library_recents",
 			"ts": 1,
 			"src": "Last used (Library or Recents)",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2115,7 +2641,9 @@
 			"sid": "hide_bottom_nav",
 			"ts": 1,
 			"src": "Auto-hide bottom navigation",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2123,7 +2651,9 @@
 			"sid": "side_nav_icon_alignment",
 			"ts": 1,
 			"src": "Side navigation icon alignment",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2131,7 +2661,9 @@
 			"sid": "use_side_navigation",
 			"ts": 1,
 			"src": "Use side navigation",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2139,7 +2671,9 @@
 			"sid": "default_behavior",
 			"ts": 1,
 			"src": "Default behavior",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2147,7 +2681,9 @@
 			"sid": "by_default_side_nav_info",
 			"ts": 1,
 			"src": "By default, side navigation is used for certain phones and small tablets when in landscape, and always shows on larger tablets",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2155,7 +2691,9 @@
 			"sid": "follow_system_theme",
 			"ts": 1,
 			"src": "Follow system theme",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2163,7 +2701,9 @@
 			"sid": "pure_black_dark_mode",
 			"ts": 1,
 			"src": "Pure black dark mode",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2171,7 +2711,9 @@
 			"sid": "details_page",
 			"ts": 1,
 			"src": "Details page",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2179,7 +2721,9 @@
 			"sid": "theme_buttons_based_on_cover",
 			"ts": 1,
 			"src": "Theme buttons based on cover",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2187,7 +2731,9 @@
 			"sid": "hides_on_scroll",
 			"ts": 1,
 			"src": "Hides when scrolling",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2195,7 +2741,9 @@
 			"sid": "starting_screen",
 			"ts": 1,
 			"src": "Starting screen",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2203,7 +2751,9 @@
 			"sid": "back_to_start",
 			"ts": 1,
 			"src": "Back to start",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2211,7 +2761,9 @@
 			"sid": "pressing_back_to_start",
 			"ts": 1,
 			"src": "Pressing back to starting screen",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2219,7 +2771,9 @@
 			"sid": "auto_updates",
 			"ts": 1,
 			"src": "Auto-updates",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2227,7 +2781,9 @@
 			"sid": "auto_update_app",
 			"ts": 1,
 			"src": "Auto-update app",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2235,7 +2791,9 @@
 			"sid": "over_wifi_only",
 			"ts": 1,
 			"src": "Over Wi-Fi only",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2243,7 +2801,9 @@
 			"sid": "over_any_network",
 			"ts": 1,
 			"src": "Over any network",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2251,7 +2811,9 @@
 			"sid": "dont_auto_update",
 			"ts": 1,
 			"src": "Don\\'t auto-update",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2259,7 +2821,9 @@
 			"sid": "app_shortcuts",
 			"ts": 1,
 			"src": "App shortcuts",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2267,7 +2831,9 @@
 			"sid": "show_recent_sources",
 			"ts": 1,
 			"src": "Show recently used sources",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2275,7 +2841,9 @@
 			"sid": "show_recent_series",
 			"ts": 1,
 			"src": "Show recent series",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2283,7 +2851,9 @@
 			"sid": "includes_recently_read_updated_added",
 			"ts": 1,
 			"src": "Includes recently read, updated, and added series",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2291,7 +2861,9 @@
 			"sid": "series_opens_new_chapters",
 			"ts": 1,
 			"src": "Series shortcuts opens new chapters",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2299,7 +2871,9 @@
 			"sid": "no_new_chapters_open_details",
 			"ts": 1,
 			"src": "When there\\'s no new chapters, the series\\' details will open instead",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2307,7 +2881,9 @@
 			"sid": "restore_error",
 			"ts": 1,
 			"src": "Failed to restore backup",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2315,7 +2891,9 @@
 			"sid": "restore_content_full",
 			"ts": 1,
 			"src": "Data from the backup file will be restored.\\n\\nYou will need to install any missing extensions and log in to tracking services afterwards to use them.",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2323,7 +2901,9 @@
 			"sid": "restore_miui_warning",
 			"ts": 1,
 			"src": "Backup/restore may not function properly if MIUI Optimization is disabled.",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2331,7 +2911,9 @@
 			"sid": "restore_completed_message_one",
 			"ts": 1,
 			"src": "Done in %1$s with %2$s error",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2339,7 +2921,9 @@
 			"sid": "not_logged_into_",
 			"ts": 1,
 			"src": "Not logged into %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2347,7 +2931,9 @@
 			"sid": "force_download_cache_refresh",
 			"ts": 1,
 			"src": "Refresh the download cache",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2355,7 +2941,9 @@
 			"sid": "force_download_cache_refresh_summary",
 			"ts": 1,
 			"src": "This will force the download cache to recalculate. Useful if you modified downloads outside of this app and want the app to pick them up",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2363,7 +2951,9 @@
 			"sid": "data_management",
 			"ts": 1,
 			"src": "Data Management",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2371,7 +2961,9 @@
 			"sid": "disabled",
 			"ts": 1,
 			"src": "Disabled",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2379,7 +2971,9 @@
 			"sid": "cache_cleared_one",
 			"ts": 1,
 			"src": "Cache cleared. %d file has been deleted",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2387,7 +2981,9 @@
 			"sid": "cache_cleared_other",
 			"ts": 1,
 			"src": "Cache cleared. %d files have been deleted",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2395,7 +2991,9 @@
 			"sid": "clean_up_downloaded_chapters",
 			"ts": 1,
 			"src": "Clean up downloaded chapters",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2403,7 +3001,9 @@
 			"sid": "delete_unused_chapters",
 			"ts": 1,
 			"src": "Delete non-existent, partially downloaded,\n            and read chapter folders",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2411,7 +3011,9 @@
 			"sid": "clean_orphaned_downloads",
 			"ts": 1,
 			"src": "Clean orphaned",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2419,7 +3021,9 @@
 			"sid": "clean_read_downloads",
 			"ts": 1,
 			"src": "Clean read",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2427,7 +3031,9 @@
 			"sid": "clean_read_manga_not_in_library",
 			"ts": 1,
 			"src": "Clean manga not in library",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2435,7 +3041,9 @@
 			"sid": "starting_cleanup",
 			"ts": 1,
 			"src": "Starting cleanup",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2443,7 +3051,9 @@
 			"sid": "no_folders_to_cleanup",
 			"ts": 1,
 			"src": "No folders to cleanup",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2451,7 +3061,9 @@
 			"sid": "disable_if_issues_with_updating",
 			"ts": 1,
 			"src": "Disable this if you are experiencing issues\n        with updating or restoring your library",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2459,7 +3071,9 @@
 			"sid": "cleanup_done_one",
 			"ts": 1,
 			"src": "Cleanup done. Removed %d folder",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2467,7 +3081,9 @@
 			"sid": "cleanup_done_other",
 			"ts": 1,
 			"src": "Cleanup done. Removed %d folders",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2475,7 +3091,9 @@
 			"sid": "clean_up_cached_covers",
 			"ts": 1,
 			"src": "Clean up cached covers",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2483,7 +3101,9 @@
 			"sid": "delete_old_covers_in_library_used_",
 			"ts": 1,
 			"src": "Delete old and unused cached covers of\n        manga in your library that has been updated.\\nCurrently using: %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2491,7 +3111,9 @@
 			"sid": "clear_cached_covers_non_library",
 			"ts": 1,
 			"src": "Clear cached covers not in library",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2499,7 +3121,9 @@
 			"sid": "delete_all_covers__not_in_library_used_",
 			"ts": 1,
 			"src": "Delete all covers cached that are\n        not in your library \\nCurrently using: %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2507,7 +3131,9 @@
 			"sid": "auto_update_extensions",
 			"ts": 1,
 			"src": "Auto-update extensions",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2515,7 +3141,9 @@
 			"sid": "notify_extension_updated",
 			"ts": 1,
 			"src": "Notify extension has been updated",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2523,7 +3151,9 @@
 			"sid": "some_extensions_may_not_update",
 			"ts": 1,
 			"src": "Some extensions may not be auto-updated if they were installed outside this app",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2531,7 +3161,9 @@
 			"sid": "only_search_pinned_when",
 			"ts": 1,
 			"src": "Only search pinned sources",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2539,7 +3171,9 @@
 			"sid": "match_pinned_sources",
 			"ts": 1,
 			"src": "Match pinned sources",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2547,7 +3181,9 @@
 			"sid": "match_enabled_sources",
 			"ts": 1,
 			"src": "Match enabled sources",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2555,7 +3191,9 @@
 			"sid": "only_enable_pinned_for_migration",
 			"ts": 1,
 			"src": "Only enable your pinned sources for\n        migration",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2563,7 +3201,9 @@
 			"sid": "only_enable_enabled_for_migration",
 			"ts": 1,
 			"src": "Only enable your currently enabled sources for\n        migration",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2571,7 +3211,9 @@
 			"sid": "use_last_saved_migration_preferences",
 			"ts": 1,
 			"src": "Use last saved pre-migration preferences\n    and sources to mass migrate",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2579,7 +3221,9 @@
 			"sid": "migration_sources_changed",
 			"ts": 1,
 			"src": "Migration sources changed",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2587,7 +3231,9 @@
 			"sid": "you_can_migrate_in_library",
 			"ts": 1,
 			"src": "You can also migrate by selecting manga in your\n        library",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2595,7 +3241,9 @@
 			"sid": "show_in_sources_and_extensions",
 			"ts": 1,
 			"src": "Show in sources and extensions lists",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2603,7 +3251,9 @@
 			"sid": "whats_new_this_release",
 			"ts": 1,
 			"src": "What\\'s new in this release",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2611,7 +3261,9 @@
 			"sid": "helpful_translation_links",
 			"ts": 1,
 			"src": "Helpful translation links",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2619,7 +3271,9 @@
 			"sid": "log_in",
 			"ts": 1,
 			"src": "Log in",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2627,7 +3281,9 @@
 			"sid": "log_out",
 			"ts": 1,
 			"src": "Log out",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2635,7 +3291,9 @@
 			"sid": "log_out_from_",
 			"ts": 1,
 			"src": "Log out from %1$s?",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2643,7 +3301,9 @@
 			"sid": "username_must_not_be_blank",
 			"ts": 1,
 			"src": "Username or password cannot be blank",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2651,7 +3311,9 @@
 			"sid": "downloading_",
 			"ts": 1,
 			"src": "Downloading: %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2659,7 +3321,9 @@
 			"sid": "not_downloaded",
 			"ts": 1,
 			"src": "Not downloaded",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2667,7 +3331,9 @@
 			"sid": "start_downloading_now",
 			"ts": 1,
 			"src": "Start downloading now",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2675,7 +3341,9 @@
 			"sid": "remove_download",
 			"ts": 1,
 			"src": "Remove download",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2683,7 +3351,9 @@
 			"sid": "remove_downloads",
 			"ts": 1,
 			"src": "Remove downloads",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2691,7 +3361,9 @@
 			"sid": "nothing_is_downloading",
 			"ts": 1,
 			"src": "Nothing is currently downloading",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2699,7 +3371,9 @@
 			"sid": "manage_whats_downloading",
 			"ts": 1,
 			"src": "Manage what\\'s downloading",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2707,7 +3381,9 @@
 			"sid": "visit_recents_for_download_queue",
 			"ts": 1,
 			"src": "Visit the recents tab to access the download\n        queue. You can also double tap or press and hold for quicker access",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2715,7 +3391,9 @@
 			"sid": "couldnt_download_low_space",
 			"ts": 1,
 			"src": "Couldn\\'t download chapters due to low disk space",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2723,7 +3401,9 @@
 			"sid": "delete_removed_chapters",
 			"ts": 1,
 			"src": "Delete removed chapters",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2731,7 +3411,9 @@
 			"sid": "delete_downloaded_if_removed_online",
 			"ts": 1,
 			"src": "Delete downloaded chapters if the source\n        has removed the chapter online",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2739,7 +3421,9 @@
 			"sid": "ask_on_chapters_page",
 			"ts": 1,
 			"src": "Delete during global updates, ask on chapters page",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2747,7 +3431,9 @@
 			"sid": "always_keep",
 			"ts": 1,
 			"src": "Always keep",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2755,7 +3441,9 @@
 			"sid": "always_delete",
 			"ts": 1,
 			"src": "Always delete",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2763,7 +3451,9 @@
 			"sid": "automatic_removal",
 			"ts": 1,
 			"src": "Automatic removal",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2771,7 +3461,9 @@
 			"sid": "after_minutes_one",
 			"ts": 1,
 			"src": "After %1$s minute",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2779,7 +3471,9 @@
 			"sid": "after_minutes_other",
 			"ts": 1,
 			"src": "After %1$s minutes",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2787,7 +3481,9 @@
 			"sid": "webview_is_required",
 			"ts": 1,
 			"src": "WebView is required for Tachiyomi",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2795,7 +3491,9 @@
 			"sid": "add_to_",
 			"ts": 1,
 			"src": "Add to %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2803,7 +3501,9 @@
 			"sid": "added_to_",
 			"ts": 1,
 			"src": "Added to %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2811,7 +3511,9 @@
 			"sid": "beta",
 			"ts": 1,
 			"src": "BETA",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2819,7 +3521,9 @@
 			"sid": "bottom",
 			"ts": 1,
 			"src": "Bottom",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2827,7 +3531,9 @@
 			"sid": "change",
 			"ts": 1,
 			"src": "Change",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2835,7 +3541,9 @@
 			"sid": "clear_filters",
 			"ts": 1,
 			"src": "Clear filters",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2843,7 +3551,9 @@
 			"sid": "deleted_",
 			"ts": 1,
 			"src": "Deleted: %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2851,7 +3561,9 @@
 			"sid": "download_unread",
 			"ts": 1,
 			"src": "Download unread",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2859,7 +3571,9 @@
 			"sid": "drag_handle",
 			"ts": 1,
 			"src": "Drag handle",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2867,7 +3581,9 @@
 			"sid": "enable",
 			"ts": 1,
 			"src": "Enable",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2875,7 +3591,9 @@
 			"sid": "enabled",
 			"ts": 1,
 			"src": "Enabled",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2883,7 +3601,9 @@
 			"sid": "exclude_",
 			"ts": 1,
 			"src": "Exclude: %s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2891,7 +3611,9 @@
 			"sid": "hide",
 			"ts": 1,
 			"src": "Hide",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2899,7 +3621,9 @@
 			"sid": "include_",
 			"ts": 1,
 			"src": "Include: %s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2907,7 +3631,9 @@
 			"sid": "keep",
 			"ts": 1,
 			"src": "Keep",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2915,7 +3641,9 @@
 			"sid": "keep_in_",
 			"ts": 1,
 			"src": "Keep in %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2923,7 +3651,9 @@
 			"sid": "mark_all_as_read",
 			"ts": 1,
 			"src": "Mark all as read",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2931,7 +3661,9 @@
 			"sid": "mark_all_as_unread",
 			"ts": 1,
 			"src": "Mark all as unread",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2939,7 +3671,9 @@
 			"sid": "mark_range_as_read",
 			"ts": 1,
 			"src": "Mark a range of chapters as read",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2947,7 +3681,9 @@
 			"sid": "mark_range_as_unread",
 			"ts": 1,
 			"src": "Mark a range of chapters as unread",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2955,7 +3691,9 @@
 			"sid": "mark_previous_as_unread",
 			"ts": 1,
 			"src": "Mark previous chapters as unread",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2963,7 +3701,9 @@
 			"sid": "menu",
 			"ts": 1,
 			"src": "menu",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2971,7 +3711,9 @@
 			"sid": "move_to_",
 			"ts": 1,
 			"src": "Move to %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2979,7 +3721,9 @@
 			"sid": "moved_to_",
 			"ts": 1,
 			"src": "Moved to %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2987,7 +3731,9 @@
 			"sid": "name",
 			"ts": 1,
 			"src": "Name",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -2995,7 +3741,9 @@
 			"sid": "recently_updated",
 			"ts": 1,
 			"src": "Recently updated",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -3003,7 +3751,9 @@
 			"sid": "recently_installed",
 			"ts": 1,
 			"src": "Recently installed",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -3011,7 +3761,9 @@
 			"sid": "next",
 			"ts": 1,
 			"src": "Next",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -3019,7 +3771,9 @@
 			"sid": "preview",
 			"ts": 1,
 			"src": "Preview",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -3027,7 +3781,9 @@
 			"sid": "previous",
 			"ts": 1,
 			"src": "Previous",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -3035,7 +3791,9 @@
 			"sid": "remove_from_",
 			"ts": 1,
 			"src": "Remove from %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -3043,7 +3801,9 @@
 			"sid": "default_orientation",
 			"ts": 1,
 			"src": "Default orientation",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -3051,7 +3811,9 @@
 			"sid": "orientation",
 			"ts": 1,
 			"src": "Orientation",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -3059,7 +3821,9 @@
 			"sid": "search_",
 			"ts": 1,
 			"src": "Search %1$s",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -3067,7 +3831,9 @@
 			"sid": "select_none",
 			"ts": 1,
 			"src": "Select none",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -3075,7 +3841,9 @@
 			"sid": "selection",
 			"ts": 1,
 			"src": "Selection",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -3083,7 +3851,9 @@
 			"sid": "sort_and_filter",
 			"ts": 1,
 			"src": "Sort & Filter",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -3091,7 +3861,9 @@
 			"sid": "tag",
 			"ts": 1,
 			"src": "Tag",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -3099,7 +3871,9 @@
 			"sid": "top",
 			"ts": 1,
 			"src": "Top",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -3107,7 +3881,9 @@
 			"sid": "use_default",
 			"ts": 1,
 			"src": "Use default",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -3115,7 +3891,9 @@
 			"sid": "view_all_errors",
 			"ts": 1,
 			"src": "View all errors",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		},
 		{
@@ -3123,7 +3901,9 @@
 			"sid": "warning",
 			"ts": 1,
 			"src": "Warning",
-			"tgt": "XYZ123",
+			"ntgt": [
+				"XYZ123"
+			],
 			"q": 80
 		}
 	]

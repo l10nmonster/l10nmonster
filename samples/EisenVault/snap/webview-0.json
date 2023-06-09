@@ -12,11 +12,14 @@
 		"segments": [
 			{
 				"sid": "label.defaultText",
-				"str": "Please use the Configure link to enter the URL of the web page you wish to display",
 				"location": {
 					"startLine": 1,
 					"endLine": 1
 				},
+				"nstr": [
+					"Please use the Configure link to enter the URL of the web page you wish to display"
+				],
+				"gstr": "Please use the Configure link to enter the URL of the web page you wish to display",
 				"guid": "aEl7teKlCV7HKIC-OPv_prNQPwpaRzw60o4hAdE15GA"
 			}
 		]
@@ -34,58 +37,69 @@
 		"segments": [
 			{
 				"sid": "label.header",
-				"str": "Web View",
 				"location": {
 					"startLine": 1,
 					"endLine": 1
 				},
+				"nstr": [
+					"Web View"
+				],
+				"gstr": "Web View",
 				"guid": "KDBdUg-NyvIug1C7Rz4pKcBurbMKwVTWuh_9fF-84E4"
 			},
 			{
 				"sid": "label.noWebPage",
-				"str": "No web page to display.",
 				"location": {
 					"startLine": 2,
 					"endLine": 2
 				},
+				"nstr": [
+					"No web page to display."
+				],
+				"gstr": "No web page to display.",
 				"guid": "Tno6fdToJWn893cGorCoah96RqkheH8C4KN9ItLLcaE"
 			},
 			{
 				"sid": "label.notSecureHeader",
-				"str": "Web View",
 				"location": {
 					"startLine": 3,
 					"endLine": 3
 				},
+				"nstr": [
+					"Web View"
+				],
+				"gstr": "Web View",
 				"guid": "qEmg83eG4VzuormYT5QzxsU8gVIOBWSxN-d3erkcNL8"
 			},
 			{
 				"sid": "label.notSecurePage",
-				"str": "The domain of the page to display is not listed as a trusted domain inside your server's IFramePolicy config.",
 				"location": {
 					"startLine": 4,
 					"endLine": 4
 				},
+				"nstr": [
+					"The domain of the page to display is not listed as a trusted domain inside your server's IFramePolicy config."
+				],
+				"gstr": "The domain of the page to display is not listed as a trusted domain inside your server's IFramePolicy config.",
 				"guid": "vnTi9G3JfmxMw4TI_DbSAMrv0zvUXjl7xMZlaZqNC_0"
 			},
 			{
 				"sid": "form.url.validation.failure",
-				"str": "The domain of the url is not listed as a trusted domain inside your server's IFramePolicy config.",
 				"location": {
 					"startLine": 5,
 					"endLine": 5
 				},
+				"nstr": [
+					"The domain of the url is not listed as a trusted domain inside your server's IFramePolicy config."
+				],
+				"gstr": "The domain of the url is not listed as a trusted domain inside your server's IFramePolicy config.",
 				"guid": "PW3HC0pFONNYOo4XrRLAjPfzrPhU7ql3Vcb-RLr5q3I"
 			},
 			{
 				"sid": "dashlet.help",
-				"str": "<p>This dashlet shows the website of your choice. Click the edit icon on the dashlet to change the web address.</p><p>Clicking the dashlet title opens the website in a separate window.</p>",
 				"location": {
 					"startLine": 8,
 					"endLine": 9
-				},
-				"notes": {
-					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 				},
 				"nstr": [
 					{
@@ -109,7 +123,10 @@
 				],
 				"gstr": "{{bx}}This dashlet shows the website of your choice. Click the edit icon on the dashlet to change the web address.{{ex}}{{bx}}Clicking the dashlet title opens the website in a separate window.{{ex}}",
 				"guid": "2qtigSYsaPbxFxLIPrzVUQ4OvX_Er6wq1nvCsmIXh4I",
-				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				}
 			}
 		]
 	}

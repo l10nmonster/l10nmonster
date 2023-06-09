@@ -42,26 +42,33 @@ class TM {
     }
 
     setEntryByGuid(guid, entry) {
+        // be backwards compatible with legacy jobs that may contain src and tgt
+        entry.nsrc === undefined && entry.src !== undefined && (entry.nsrc = [ entry.src ]);
+        entry.src !== undefined && delete entry.src;
+        entry.ntgt === undefined && entry.tgt !== undefined && (entry.ntgt = [ entry.tgt ]);
+        entry.tgt !== undefined && delete entry.tgt;
+        if (!entry.guid || !Number.isInteger(entry.q) || ((!Number.isInteger(entry.ts) || !Array.isArray(entry.ntgt)) && !entry.inflight)) {
+            throw `cannot set TM entry missing mandatory field: ${JSON.stringify(entry)}`;
+        }
+
         // const getSpurious = (tu, whitelist) => Object.entries(tu)
         //     .filter(e => !whitelist.has(e[0]))
         //     .map(e => e[0])
         //     .join(', ');
         // const spurious = getSpurious(entry, targetTUWhitelist);
         // spurious && console.error(spurious);
-        if (!entry.guid || !Number.isInteger(entry.q) || ((!Number.isInteger(entry.ts) || !(typeof entry.tgt === 'string' || entry.ntgt)) && !entry.inflight)) {
-            throw `cannot set TM entry missing mandatory field: ${JSON.stringify(entry)}`;
-        }
+
         const cleanedTU = utils.cleanupTU(entry, targetTUWhitelist);
         Object.freeze(cleanedTU);
         this.tm.tus[guid] = cleanedTU;
-        const flattenSrc = cleanedTU.nsrc ? utils.flattenNormalizedSourceToOrdinal(cleanedTU.nsrc) : cleanedTU.src;
+        const flattenSrc = utils.flattenNormalizedSourceToOrdinal(cleanedTU.nsrc);
         this.lookUpByFlattenSrc[flattenSrc] ??= [];
         !this.lookUpByFlattenSrc[flattenSrc].includes(cleanedTU) && this.lookUpByFlattenSrc[flattenSrc].push(cleanedTU);
     }
 
     getAllEntriesBySrc(src) {
-        const flattenSrc = Array.isArray(src) ? utils.flattenNormalizedSourceToOrdinal(src) : src;
-        return this.lookUpByFlattenSrc[flattenSrc] || [];
+        const flattenedSrc = utils.flattenNormalizedSourceToOrdinal(src);
+        return this.lookUpByFlattenSrc[flattenedSrc] || [];
     }
 
     getJobStatus(jobGuid) {
@@ -145,8 +152,10 @@ export default class TMManager {
                 const body = await this.jobStore.getJobByHandle(meta.jobHandle);
                 return { meta, body };
             })());
+            const fetchedJobs = await Promise.all(jobPromises);
+            l10nmonster.logger.verbose(`Fetched chunk of ${jobsToFetch.length} jobs`);
             const jobsRequestsToFetch = [];
-            for (const job of await Promise.all(jobPromises)) {
+            for (const job of fetchedJobs) {
                 if (job.body.updatedAt !== job.meta.tmUpdatedAt) {
                     jobsRequestsToFetch.push({
                         jobRequestHandle: job.meta.jobRequestHandle,

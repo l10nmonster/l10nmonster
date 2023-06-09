@@ -22,12 +22,12 @@ export class Repetition {
         jobResponse.tus = [];
         const tm = await this.mm.tmm.getTM(this.mm.sourceLang, jobRequest.targetLang);
         for (const tu of tus) {
-            const tuCandidates = tm.getAllEntriesBySrc(tu.nsrc ?? tu.src);
+            const tuCandidates = tm.getAllEntriesBySrc(tu.nsrc);
             if (tuCandidates.length > 0) {
                 let bestCandidate = { q: 0, ts: 0 };
                 let foundCandidate = false;
                 for (const candidate of tuCandidates) {
-                    const isCompatible = utils.sourceAndTargetAreCompatible(tu?.nsrc ?? tu?.src, candidate?.ntgt ?? candidate?.tgt);
+                    const isCompatible = utils.sourceAndTargetAreCompatible(tu?.nsrc, candidate?.ntgt);
                     const adjustedQuality = Math.max(0, candidate.q - (tu.sid === candidate.sid ? this.qualifiedPenalty : this.unqualifiedPenalty), 0);
                     const isSameQualityButNewer = adjustedQuality === bestCandidate.q && candidate.ts > bestCandidate.ts;
                     const isBetterCandidate = adjustedQuality > bestCandidate.q || isSameQualityButNewer;
@@ -41,10 +41,8 @@ export class Repetition {
                         guid: tu.guid,
                         q: bestCandidate.q,
                     };
-                    !bestCandidate.nsrc && (leveragedTU.src = bestCandidate.src);
-                    bestCandidate.nsrc && (leveragedTU.nsrc = bestCandidate.nsrc);
-                    !bestCandidate.ntgt && (leveragedTU.tgt = bestCandidate.tgt);
-                    bestCandidate.ntgt && (leveragedTU.ntgt = bestCandidate.ntgt);
+                    leveragedTU.nsrc = bestCandidate.nsrc;
+                    leveragedTU.ntgt = bestCandidate.ntgt;
                     const existingTU = tm.getEntryByGuid(tu.guid);
                     if (existingTU && utils.normalizedStringsAreEqual(existingTU.ntgt ?? existingTU.ntgt, leveragedTU.ntgt ?? leveragedTU.ntgt)) {
                         l10nmonster.logger.verbose(`Did not leverage ${bestCandidate.guid} for ${tu.guid} because TM already has an identical entry (maybe of quality < minimum quality)`);
@@ -71,7 +69,7 @@ export class Repetition {
         const reqTuMap = jobRequest.tus.reduce((p,c) => (p[c.guid] = c, p), {});
         return {
             ...fullResponse,
-            tus: fullResponse.tus.filter(tu => !utils.normalizedStringsAreEqual(reqTuMap[tu.guid].ntgt ?? reqTuMap[tu.guid].tgt, tu.ntgt ?? tu.tgt)),
+            tus: fullResponse.tus.filter(tu => !utils.normalizedStringsAreEqual(reqTuMap[tu.guid].ntgt, tu.ntgt)),
         };
     }
 }

@@ -1,8 +1,9 @@
 import { readFileSync } from 'fs';
 
-const makeCSVCompatibleString = nstr => (Array.isArray(nstr) ?
-    nstr.map(e => (typeof e === 'string' ? e : '')).join('').replaceAll(',', '').replaceAll('\n', ' ') :
-    (nstr ?? '').replaceAll(',', '').replaceAll('\n', ' '));
+const makeCSVCompatibleString = nstr => nstr.map(e => (typeof e === 'string' ? e : ''))
+    .join('')
+    .replaceAll(',', '')
+    .replaceAll('\n', ' ');
 
 export default class FindByExpansion {
     static helpParams = '<average|csvFile> <minDelta|sigmas>';
@@ -26,17 +27,17 @@ export default class FindByExpansion {
     }
 
     processTU({ targetLang, tu }) {
-        const src = makeCSVCompatibleString(tu.nsrc ?? tu.src);
-        const tgt = makeCSVCompatibleString(tu.ntgt ?? tu.tgt);
+        const source = makeCSVCompatibleString(tu.nsrc);
+        const target = makeCSVCompatibleString(tu.ntgt);
         const avg = this.stats ? this.stats[targetLang][0] : this.average;
         const delta = this.stats ? this.stats[targetLang][1] * this.minDelta : this.minDelta;
-        if (src && tgt && src.length > 0 && tgt.length > 0) {
-            const growth = tgt.length >= src.length ? tgt.length / src.length - 1 : -src.length / tgt.length + 1;
+        if (source && target && source.length > 0 && target.length > 0) {
+            const growth = target.length >= source.length ? target.length / source.length - 1 : -source.length / target.length + 1;
             Math.abs(growth - avg) >= delta && this.foundTus.push([
                 targetLang,
                 tu.guid,
-                src,
-                tgt,
+                source,
+                target,
                 growth.toFixed(2),
             ]);
         }
@@ -44,7 +45,7 @@ export default class FindByExpansion {
 
     getAnalysis() {
         return {
-            head: ['lang', 'guid', 'src', 'tgt', 'delta'],
+            head: ['lang', 'guid', 'source', 'target', 'delta'],
             groupBy: ['lang'],
             body: this.foundTus,
         };

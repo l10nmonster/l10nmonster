@@ -37,25 +37,21 @@ export class Visicode {
         jobResponse.tus = jobRequest.tus.map(tu => {
             const translation = { guid: tu.guid, ts };
             const prolog = `\u21e5${tu.seq ? `${utils.integerToLabel(tu.seq)}:` : ''}`;
-            if (tu.nsrc) {
-                const parts = [];
-                let runningLength = 0;
-                for (const part of tu.nsrc) {
-                    if (typeof part === 'string') {
-                        parts.push(underlineString(part, runningLength));
-                        runningLength += part.length;
-                    } else {
-                        parts.push({ ...part});
-                    }
+            const parts = [];
+            let runningLength = 0;
+            for (const part of tu.nsrc) {
+                if (typeof part === 'string') {
+                    parts.push(underlineString(part, runningLength));
+                    runningLength += part.length;
+                } else {
+                    parts.push({ ...part});
                 }
-                translation.ntgt = [
-                    prolog,
-                    ...parts,
-                    `\u21e4`
-                ];
-            } else {
-                translation.tgt = `${prolog}${underlineString(tu.src, 0)}\u21e4`;
             }
+            translation.ntgt = [
+                prolog,
+                ...parts,
+                `\u21e4`
+            ];
             translation.q = this.quality;
             return translation;
         });

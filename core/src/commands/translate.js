@@ -1,6 +1,18 @@
 import { diffJson } from 'diff';
 import { utils } from '@l10nmonster/helpers';
 
+function shouldDNT(decorators, seg) {
+    if (decorators) {
+        for (const decorator of decorators) {
+            seg = decorator(seg);
+            if (seg === undefined) { // this basically means DNT (or more like "pretend this doesn't exist")
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 export async function translateCmd(mm, { limitToLang, dryRun }) {
     const status = { generatedResources: {}, deleteResources: {}, diff: {} };
     const resourceStats = await mm.source.getResourceStats();
@@ -17,28 +29,20 @@ export async function translateCmd(mm, { limitToLang, dryRun }) {
                 const pipeline = mm.contentTypes[res.contentType];
                 const encodePart = utils.partEncoderMaker(pipeline.textEncoders, pipeline.codeEncoders);
                 // eslint-disable-next-line complexity
-                const translator = async function translate(sid, src) {
-                    const seg = { sid, str: src };
-                    let nsrc;
+                const translator = async function translate(sid, str) {
                     const flags = { sourceLang, targetLang, prj: res.prj };
-                    if (pipeline.decoders) {
-                        const normalizedStr = utils.getNormalizedString(src, pipeline.decoders, flags);
-                        if (normalizedStr[0] !== src) {
-                            nsrc = normalizedStr;
-                            seg.nstr = normalizedStr;
-                        }
-                    }
-                    if (pipeline.segmentDecorator && pipeline.segmentDecorator([ seg ], targetLang).length === 0) {
-                        l10nmonster.logger.info(`Dropping ${sid} in ${resourceId} as decided by segment decorator`);
+                    const seg = { sid, nstr: utils.getNormalizedString(str, pipeline.decoders, flags) };
+                    if (shouldDNT(pipeline.segmentDecorator, seg)) {
+                        l10nmonster.logger.verbose(`Dropping ${sid} in ${resourceId} as decided by segment decorator`);
                         return undefined;
                     }
-                    const flattenSrc = nsrc ? utils.flattenNormalizedSourceToOrdinal(nsrc) : src;
+                    const flattenSrc = utils.flattenNormalizedSourceToOrdinal(seg.nstr);
                     const guid = utils.generateFullyQualifiedGuid(resourceId, sid, flattenSrc);
                     const entry = tm.getEntryByGuid(guid);
                     try {
-                        return utils.translateWithEntry(src, nsrc, entry, flags, encodePart);
+                        return utils.translateWithEntry(seg.nstr, entry, flags, encodePart);
                     } catch(e) {
-                        l10nmonster.logger.verbose(`Problem translating ${resourceId}+${sid}+${src} to ${targetLang}: ${e.stack ?? e}`);
+                        l10nmonster.logger.verbose(`Problem translating ${resourceId}+${sid}+${str} to ${targetLang}: ${e.stack ?? e}`);
                         return undefined;
                     }
                 };

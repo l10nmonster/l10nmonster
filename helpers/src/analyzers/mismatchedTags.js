@@ -32,15 +32,15 @@ export default class MismatchedTags {
             this.foundTus.push([
                 targetLang,
                 tu.guid,
-                makeCSVCompatibleString(tu.nsrc ?? tu.src),
-                makeCSVCompatibleString(tu.ntgt ?? tu.tgt),
+                makeCSVCompatibleString(tu.nsrc),
+                makeCSVCompatibleString(tu.ntgt),
             ]);
         }
     }
 
     getAnalysis() {
         return {
-            head: ['lang', 'guid', 'src', 'tgt'],
+            head: ['lang', 'guid', 'source', 'target'],
             groupBy: ['lang'],
             body: this.foundTus,
         };

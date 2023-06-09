@@ -25,11 +25,7 @@ async function gctMergeTranslatedChunksOp({ jobRequest, tuMeta, quality, ts }, c
         const translation = { guid: tu.guid, ts };
         const gctTx = translations[idx] || {};
         const ntgt = utils.extractNormalizedPartsFromXmlV1(gctTx, tuMeta[idx] || {});
-        if (tu.nsrc) {
-            translation.ntgt = ntgt;
-        } else {
-            translation.tgt = ntgt[0];
-        }
+        translation.ntgt = ntgt;
         translation.q = quality;
         return translation;
     });
@@ -56,7 +52,7 @@ module.exports = class GoogleCloudTranslateV3 {
         const targetLanguageCode = (this.languageMapper && this.languageMapper(jobRequest.targetLang)) ?? jobRequest.targetLang;
         const tuMeta = {};
         const gctPayload = jobRequest.tus.map((tu, idx) => {
-            const [xmlSrc, phMap ] = utils.flattenNormalizedSourceToXmlV1(tu.nsrc || [ tu.src ]);
+            const [xmlSrc, phMap ] = utils.flattenNormalizedSourceToXmlV1(tu.nsrc);
             if (Object.keys(phMap).length > 0) {
                 tuMeta[idx] = phMap;
             }
@@ -120,7 +116,7 @@ module.exports = class GoogleCloudTranslateV3 {
         const reqTuMap = jobRequest.tus.reduce((p,c) => (p[c.guid] = c, p), {});
         return {
             ...fullResponse,
-            tus: fullResponse.tus.filter(tu => !utils.normalizedStringsAreEqual(reqTuMap[tu.guid].ntgt ?? reqTuMap[tu.guid].tgt, tu.ntgt ?? tu.tgt)),
+            tus: fullResponse.tus.filter(tu => !utils.normalizedStringsAreEqual(reqTuMap[tu.guid].ntgt, tu.ntgt)),
         };
     }
 }

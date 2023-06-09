@@ -21,20 +21,14 @@ export class Grandfather {
         const resourceStats = Object.fromEntries((await this.mm.source.getResourceStats()).map(r => [r.id, r]));
         for (const tu of tus) {
             if (!txCache[tu.rid]) {
-                const resMeta = resourceStats[tu.rid];
-                const pipeline = this.mm.contentTypes[resMeta.contentType];
+                const pipeline = this.mm.contentTypes[resourceStats[tu.rid].contentType];
                 const lookup = {};
                 try {
                     const resource = await pipeline.target.fetchTranslatedResource(jobRequest.targetLang, tu.rid);
                     const parsedResource = await pipeline.resourceFilter.parseResource({ resource, isSource: false });
                     for (const seg of parsedResource.segments) {
-                        if (pipeline.decoders) {
-                            const normalizedStr = utils.getNormalizedString(seg.str, pipeline.decoders);
-                            if (normalizedStr[0] !== seg.str) {
-                                seg.nstr = normalizedStr;
-                            }
-                        }
-                        lookup[seg.sid] = utils.makeTU(resMeta, seg);
+                        seg.nstr = utils.getNormalizedString(seg.str, pipeline.decoders);
+                        lookup[seg.sid] = seg;
                     }
             } catch (e) {
                     l10nmonster.logger.info(`Couldn't fetch translated resource: ${e.stack ?? e}`);
@@ -43,22 +37,17 @@ export class Grandfather {
             }
             const previousTranslation = txCache[tu.rid][tu.sid];
             if (previousTranslation !== undefined) {
-                const translation = {
-                    guid: tu.guid,
-                    q: this.quality,
-                };
-                !tu.nsrc && (translation.src = tu.src);
-                tu.nsrc && (translation.nsrc = tu.nsrc);
-                if (previousTranslation.nsrc) {
-                    const [ flattenSrc, phMap ] = utils.flattenNormalizedSourceV1(previousTranslation.nsrc);
-                    translation.ntgt = utils.extractNormalizedPartsV1(flattenSrc, phMap);
+                const previousTU = utils.makeTU(resourceStats[tu.rid], previousTranslation);
+                if (utils.sourceAndTargetAreCompatible(tu.nsrc, previousTU.nsrc)) {
+                    jobResponse.tus.push({
+                        guid: tu.guid,
+                        nsrc: tu.nsrc,
+                        ntgt: previousTU.nsrc,
+                        ts: previousTU.ts,
+                        q: this.quality,
+                    });
                 } else {
-                    translation.tgt = previousTranslation.src;
-                }
-                previousTranslation.ts && (translation.ts = previousTranslation.ts);
-                const isCompatible = utils.sourceAndTargetAreCompatible(tu?.nsrc ?? tu?.src, translation?.ntgt ?? translation?.tgt);
-                if (isCompatible) {
-                    jobResponse.tus.push(translation);
+                    l10nmonster.logger.verbose(`Grandfather: could not reuse previous ${jobRequest.targetLang} translation ${tu.rid} - ${tu.sid} as it's incompatible`);
                 }
             }
         }
@@ -77,7 +66,7 @@ export class Grandfather {
         const reqTuMap = jobRequest.tus.reduce((p,c) => (p[c.guid] = c, p), {});
         return {
             ...fullResponse,
-            tus: fullResponse.tus.filter(tu => !utils.normalizedStringsAreEqual(reqTuMap[tu.guid].ntgt ?? reqTuMap[tu.guid].tgt, tu.ntgt ?? tu.tgt)),
+            tus: fullResponse.tus.filter(tu => !utils.normalizedStringsAreEqual(reqTuMap[tu.guid].ntgt, tu.ntgt)),
         };
     }
 }

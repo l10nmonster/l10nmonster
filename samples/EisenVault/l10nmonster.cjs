@@ -17,5 +17,8 @@ module.exports = class EisenVaultConfig2 {
         this.target = new adapters.FsTarget({
             targetPath: (lang, resourceId) => resourceId.replace('_en.properties', `_${lang.replace('-', '_')}.properties`),
         });
+        this.jobStore = new stores.JsonJobStore({
+            jobsDir: 'l10njobs',
+        });
     }
 }

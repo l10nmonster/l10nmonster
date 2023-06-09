@@ -4,8 +4,8 @@ import { utils } from '@l10nmonster/helpers';
 import { sourceTUWhitelist, targetTUWhitelist } from '../schemas.js';
 
 async function exportTMX(content, emitMissingTranslations) {
-    const getMangledSrc = tu => (tu.nsrc ? utils.flattenNormalizedSourceV1(tu.nsrc)[0] : tu.src);
-    const getMangledTgt = tu => (tu.ntgt ? utils.flattenNormalizedSourceV1(tu.ntgt)[0] : tu.tgt);
+    const getMangledSrc = tu => utils.flattenNormalizedSourceV1(tu.nsrc)[0];
+    const getMangledTgt = tu => utils.flattenNormalizedSourceV1(tu.ntgt)[0];
     const tmx = {
         sourceLanguage: content.sourceLang,
         resources: {},
@@ -13,7 +13,7 @@ async function exportTMX(content, emitMissingTranslations) {
     for (const pair of content.pairs) {
         const mangledTgt = pair.translatedTU !== undefined && getMangledTgt(pair.translatedTU);
         // sometimes we lose the source and we can't recreate the pair anymore
-        if (pair.sourceTU || (pair.translatedTU.src || pair.translatedTU.nsrc)) {
+        if (pair.sourceTU || pair.translatedTU.nsrc) {
             const useAsSourceTU = pair.sourceTU || pair.translatedTU;
             // if guid is source-based we emit the entry even if translation is missing
             if (emitMissingTranslations || Boolean(mangledTgt)) {
@@ -48,7 +48,7 @@ async function exportAsJob(content, jobGuid) {
     for (const pair of content.pairs) {
         // sometimes we lose the source so we merge source and target hoping the target TU has a copy of the source
         const useAsSourceTU = { ...pair.translatedTU, ...pair.sourceTU };
-        if (useAsSourceTU.src || useAsSourceTU.nsrc) {
+        if (useAsSourceTU.nsrc) {
             jobReq.tus.push(utils.cleanupTU(useAsSourceTU, sourceTUWhitelist));
         } else {
             l10nmonster.logger.info(`Couldn't retrieve source for guid: ${useAsSourceTU.guid}`);
@@ -70,7 +70,7 @@ export async function tmExportCmd(mm, { limitToLang, mode, format, prjsplit }) {
     const targetLangs = await mm.getTargetLangs(limitToLang);
     const status = { files: [] };
     for (const targetLang of targetLangs) {
-        const sourceLookup = await mm.getSourceAsTus(targetLang);
+        const sourceLookup = await mm.getSourceAsTus(targetLang); // TODO: convert this to an iterator
         const tm = await mm.tmm.getTM(mm.sourceLang, targetLang);
         const guidList = mode === 'tm' ? tm.guids : Object.keys(sourceLookup);
         const guidsByPrj = {};

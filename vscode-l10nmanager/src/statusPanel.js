@@ -110,7 +110,7 @@ export class StatusViewProvider extends AbstractViewTreeDataProvider {
                 ${jobBody.tus.length > 0 ?
                     `<table>
                         <tr><th>rid / sid</th><th>Source</th><th>Notes</th></tr>
-                        ${jobBody.tus.map(tu => `<tr><td><i>${tu.rid}</i><br /><b>${tu.sid}</b></td><td>${renderString(tu.src, tu.nsrc)}</td><td>${escapeHtml(tu?.notes?.desc) ?? ''}</td>`).join('\n')}
+                        ${jobBody.tus.map(tu => `<tr><td><i>${tu.rid}</i><br /><b>${tu.sid}</b></td><td>${renderString(tu.nsrc)}</td><td>${escapeHtml(tu?.notes?.desc) ?? ''}</td>`).join('\n')}
                     </table>` :
                     '<h4>Nothing found!</h4>'
                 }

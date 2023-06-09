@@ -10,7 +10,6 @@ const androidLangMapping = {
 
 module.exports = class TachiyomiConfig2 {
     sourceLang = 'en';
-    seqMap = 'seqMap.json';
 
     constructor() {
         this.source = new adapters.FsSource({

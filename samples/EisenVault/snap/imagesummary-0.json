@@ -12,25 +12,30 @@
 		"segments": [
 			{
 				"sid": "header.title",
-				"str": "Image Preview",
 				"location": {
 					"startLine": 1,
 					"endLine": 1
 				},
+				"nstr": [
+					"Image Preview"
+				],
+				"gstr": "Image Preview",
 				"guid": "fOzFYWf5p9zLAoul1h5_L8PRFB9JVo_HcIXCbFZ22FY"
 			},
 			{
 				"sid": "label.noitems",
-				"str": "No items to display",
 				"location": {
 					"startLine": 2,
 					"endLine": 2
 				},
+				"nstr": [
+					"No items to display"
+				],
+				"gstr": "No items to display",
 				"guid": "0-GrFX12d4kQcyxamhrCI4tuDTExyjLmiUZ8exmZxDo"
 			},
 			{
 				"sid": "text.modified-by",
-				"str": "Modified by {0}",
 				"location": {
 					"startLine": 3,
 					"endLine": 3
@@ -47,7 +52,6 @@
 			},
 			{
 				"sid": "text.selectfolder",
-				"str": "Select Image Folder in {0}...",
 				"location": {
 					"startLine": 4,
 					"endLine": 4
@@ -65,11 +69,14 @@
 			},
 			{
 				"sid": "dashlet.help",
-				"str": "This dashlet shows a thumbnail of each image in the document library. Clicking a thumbnail opens the image in the current window.",
 				"location": {
 					"startLine": 6,
 					"endLine": 6
 				},
+				"nstr": [
+					"This dashlet shows a thumbnail of each image in the document library. Clicking a thumbnail opens the image in the current window."
+				],
+				"gstr": "This dashlet shows a thumbnail of each image in the document library. Clicking a thumbnail opens the image in the current window.",
 				"guid": "Ly4fkat27mxTxU9l3TSeFaUihGmSkMhBS1OmC1dHGfY"
 			}
 		]

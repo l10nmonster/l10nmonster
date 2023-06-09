@@ -51,19 +51,31 @@
 		{
 			"guid": "AGkOSI-2cbdKB0hwucpDtAhetdvAytGYurYD7hvcezM",
 			"ts": 1,
-			"tgt": "⇥79:B̲o̲o̲k̲ ̲̟t̲h̲e̲ ̲t̲̟r̲i̲p̲ ̲y̲̟o̲u̲'̲v̲e̲̟ ̲b̲e̲e̲n̲̟ ̲w̲a̲i̲t̲̟i̲n̲g̲ ̲f̲̟o̲r̲.̲⇤",
+			"ntgt": [
+				"⇥79:",
+				"B̲o̲o̲k̲ ̲̟t̲h̲e̲ ̲t̲̟r̲i̲p̲ ̲y̲̟o̲u̲'̲v̲e̲̟ ̲b̲e̲e̲n̲̟ ̲w̲a̲i̲t̲̟i̲n̲g̲ ̲f̲̟o̲r̲.̲",
+				"⇤"
+			],
 			"q": 2
 		},
 		{
 			"guid": "YpoIEBkIfKjKzReUIQX2mqEn2bLQ8YPiTSt1FDHIkI4",
 			"ts": 1,
-			"tgt": "⇥69:T̲r̲a̲v̲e̲̟l̲e̲r̲⇤",
+			"ntgt": [
+				"⇥69:",
+				"T̲r̲a̲v̲e̲̟l̲e̲r̲",
+				"⇤"
+			],
 			"q": 2
 		},
 		{
 			"guid": "sTGxO3wYiDt-d_Nrg22Dm5CCdRJYPprzgXAZ9M2S81w",
 			"ts": 1,
-			"tgt": "⇥59:T̲r̲a̲v̲e̲̟l̲e̲r̲s̲⇤",
+			"ntgt": [
+				"⇥59:",
+				"T̲r̲a̲v̲e̲̟l̲e̲r̲s̲",
+				"⇤"
+			],
 			"q": 2
 		},
 		{

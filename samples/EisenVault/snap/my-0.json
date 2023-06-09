@@ -12,196 +12,249 @@
 		"segments": [
 			{
 				"sid": "header",
-				"str": "My Activities",
 				"location": {
 					"startLine": 1,
 					"endLine": 1
 				},
+				"nstr": [
+					"My Activities"
+				],
+				"gstr": "My Activities",
 				"guid": "AkOVY2nm-Cf2dwDHuUTJpT98X3WA0NPXYZE9jhCcjX0"
 			},
 			{
 				"sid": "label.load-failed",
-				"str": "Could not load activities list",
 				"location": {
 					"startLine": 2,
 					"endLine": 2
 				},
+				"nstr": [
+					"Could not load activities list"
+				],
+				"gstr": "Could not load activities list",
 				"guid": "airW-7rNpHg3ZedTeodPgXLO5o3tuBdYT4bSg8PkIo4"
 			},
 			{
 				"sid": "label.filter",
-				"str": "Show",
 				"location": {
 					"startLine": 3,
 					"endLine": 3
 				},
+				"nstr": [
+					"Show"
+				],
+				"gstr": "Show",
 				"guid": "q8fd6Vngp46xiXf7YfGIUPWkBjlfIFgzAe7MhW5Tfps"
 			},
 			{
 				"sid": "label.older-activities",
-				"str": "Older Activities",
 				"location": {
 					"startLine": 4,
 					"endLine": 4
 				},
+				"nstr": [
+					"Older Activities"
+				],
+				"gstr": "Older Activities",
 				"guid": "jsg7kitbc9wGCKFRKSV3j_NZN21QhAg7AwR2Nf_KfpE"
 			},
 			{
 				"sid": "filter.mine",
-				"str": "My activities",
 				"location": {
 					"startLine": 10,
 					"endLine": 10
 				},
+				"nstr": [
+					"My activities"
+				],
+				"gstr": "My activities",
+				"guid": "lYYzgCGkzccr-pT7UZ4i4kg7sG6k6f3jFdc6n8EN4N8",
+				"rawNotes": "## Note to translators: The User Interface renders Filters 1, 2, 3 next to each other. The English translation gives these the appearance of a sentence, for example: \"My activities, status updates, in the last 14 days\".\n## This is entirely optional. If the language doesn't allow for this structure, please capitalise the messages in Filter 2+3 so they appear disconnected.\n# Filter 1",
 				"notes": {
 					"desc": "## Note to translators: The User Interface renders Filters 1, 2, 3 next to each other. The English translation gives these the appearance of a sentence, for example: \"My activities, status updates, in the last 14 days\".\n## This is entirely optional. If the language doesn't allow for this structure, please capitalise the messages in Filter 2+3 so they appear disconnected.\n# Filter 1"
-				},
-				"guid": "lYYzgCGkzccr-pT7UZ4i4kg7sG6k6f3jFdc6n8EN4N8",
-				"rawNotes": "## Note to translators: The User Interface renders Filters 1, 2, 3 next to each other. The English translation gives these the appearance of a sentence, for example: \"My activities, status updates, in the last 14 days\".\n## This is entirely optional. If the language doesn't allow for this structure, please capitalise the messages in Filter 2+3 so they appear disconnected.\n# Filter 1"
+				}
 			},
 			{
 				"sid": "filter.others",
-				"str": "Everyone else's activities",
 				"location": {
 					"startLine": 11,
 					"endLine": 11
 				},
+				"nstr": [
+					"Everyone else's activities"
+				],
+				"gstr": "Everyone else's activities",
 				"guid": "s4SvMdwfKMU6ccV6QqV3hxXIE-EzYdNfDOpAa_qen1o"
 			},
 			{
 				"sid": "filter.all",
-				"str": "Everyone's activities",
 				"location": {
 					"startLine": 12,
 					"endLine": 12
 				},
+				"nstr": [
+					"Everyone's activities"
+				],
+				"gstr": "Everyone's activities",
 				"guid": "WzSe9I99A25oVVk5smwr-UVIa9nedcgn5MHlq4_ycoE"
 			},
 			{
 				"sid": "filter.following",
-				"str": "I'm following",
 				"location": {
 					"startLine": 13,
 					"endLine": 13
 				},
+				"nstr": [
+					"I'm following"
+				],
+				"gstr": "I'm following",
 				"guid": "vxTDpMP5KNPD326mYrmygx-sSyHTLyKyg_J88cfgfYQ"
 			},
 			{
 				"sid": "filter.allItems",
-				"str": "all items",
 				"location": {
 					"startLine": 15,
 					"endLine": 15
 				},
+				"nstr": [
+					"all items"
+				],
+				"gstr": "all items",
+				"guid": "VuYFBmp8W917yvy6FDEnusaF740C6phWH-JIUrTYwc0",
+				"rawNotes": "# Filter 2",
 				"notes": {
 					"desc": "# Filter 2"
-				},
-				"guid": "VuYFBmp8W917yvy6FDEnusaF740C6phWH-JIUrTYwc0",
-				"rawNotes": "# Filter 2"
+				}
 			},
 			{
 				"sid": "filter.statusItems",
-				"str": "status updates",
 				"location": {
 					"startLine": 16,
 					"endLine": 16
 				},
+				"nstr": [
+					"status updates"
+				],
+				"gstr": "status updates",
 				"guid": "9pCIQFQxRalDew1kFulGYgME6nG1b-H580ALZ6kf4rQ"
 			},
 			{
 				"sid": "filter.commentItems",
-				"str": "comments",
 				"location": {
 					"startLine": 17,
 					"endLine": 17
 				},
+				"nstr": [
+					"comments"
+				],
+				"gstr": "comments",
 				"guid": "mgUol9Z645in6zK0RM990o_78khH6p8NMdzX1Mp4b6k"
 			},
 			{
 				"sid": "filter.contentItems",
-				"str": "content",
 				"location": {
 					"startLine": 18,
 					"endLine": 18
 				},
+				"nstr": [
+					"content"
+				],
+				"gstr": "content",
 				"guid": "ruuQ9F125RY3PUE1KBUvz5XETYN3uQQxUGlrf4uihw0"
 			},
 			{
 				"sid": "filter.membershipItems",
-				"str": "memberships",
 				"location": {
 					"startLine": 19,
 					"endLine": 19
 				},
+				"nstr": [
+					"memberships"
+				],
+				"gstr": "memberships",
 				"guid": "MwlTDK7YJbk4KimjzvBTNWO7mzIyQWs8aqhDMdwaTLs"
 			},
 			{
 				"sid": "filter.today",
-				"str": "today",
 				"location": {
 					"startLine": 21,
 					"endLine": 21
 				},
+				"nstr": [
+					"today"
+				],
+				"gstr": "today",
+				"guid": "ew1Cta4NZUO58z_VftSCMsMI7As-GxknGadESOGGxtI",
+				"rawNotes": "# Filter 3",
 				"notes": {
 					"desc": "# Filter 3"
-				},
-				"guid": "ew1Cta4NZUO58z_VftSCMsMI7As-GxknGadESOGGxtI",
-				"rawNotes": "# Filter 3"
+				}
 			},
 			{
 				"sid": "filter.7days",
-				"str": "in the last 7 days",
 				"location": {
 					"startLine": 22,
 					"endLine": 22
 				},
+				"nstr": [
+					"in the last 7 days"
+				],
+				"gstr": "in the last 7 days",
 				"guid": "G-kVvVlHI0aJBqvYbTHfRbAsDfGIlqcB2LRkmSYzV1A"
 			},
 			{
 				"sid": "filter.14days",
-				"str": "in the last 14 days",
 				"location": {
 					"startLine": 23,
 					"endLine": 23
 				},
+				"nstr": [
+					"in the last 14 days"
+				],
+				"gstr": "in the last 14 days",
 				"guid": "lJ4UhR4FcJ2ZfGcZm8WmI1zucHBKt458WX9cx5HsHG0"
 			},
 			{
 				"sid": "filter.28days",
-				"str": "in the last 28 days",
 				"location": {
 					"startLine": 24,
 					"endLine": 24
 				},
+				"nstr": [
+					"in the last 28 days"
+				],
+				"gstr": "in the last 28 days",
 				"guid": "82JTNLI_g7fqBtaJ-Cu1hMnp7jXHvGd7tX7gLNwDTsM"
 			},
 			{
 				"sid": "empty.title",
-				"str": "Follow what's going on in your sites",
 				"location": {
 					"startLine": 26,
 					"endLine": 26
 				},
+				"nstr": [
+					"Follow what's going on in your sites"
+				],
+				"gstr": "Follow what's going on in your sites",
 				"guid": "_gINTlZvl1A81Hu1S4xQyj3N2YmM-e-Ej9sbKZ-45tQ"
 			},
 			{
 				"sid": "empty.description",
-				"str": "The activities in this list let you follow the changes in the sites you belong to. You'll see things such as content updates and likes. You can also see who is joining and leaving your sites.",
 				"location": {
 					"startLine": 27,
 					"endLine": 27
 				},
+				"nstr": [
+					"The activities in this list let you follow the changes in the sites you belong to. You'll see things such as content updates and likes. You can also see who is joining and leaving your sites."
+				],
+				"gstr": "The activities in this list let you follow the changes in the sites you belong to. You'll see things such as content updates and likes. You can also see who is joining and leaving your sites.",
 				"guid": "P_2n50nItJIiq3IMSYSe0EmV3qw4ECxzGDtp5B8ViNc"
 			},
 			{
 				"sid": "dashlet.help",
-				"str": "<p>Following what goes on in your sites is easy with this dashlet. It shows the activities in all the sites you belong to, such as content that's been added, deleted, and edited. You can also see who is joining and leaving your sites.</p><p>Filters let you view activities by time period and ownership.</p>",
 				"location": {
 					"startLine": 30,
 					"endLine": 31
-				},
-				"notes": {
-					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 				},
 				"nstr": [
 					{
@@ -225,7 +278,10 @@
 				],
 				"gstr": "{{bx}}Following what goes on in your sites is easy with this dashlet. It shows the activities in all the sites you belong to, such as content that's been added, deleted, and edited. You can also see who is joining and leaving your sites.{{ex}}{{bx}}Filters let you view activities by time period and ownership.{{ex}}",
 				"guid": "gyzuA8K0OaZnihjH2ZONepwEMPxTtE_NosFIbn_AM8E",
-				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				}
 			}
 		]
 	},
@@ -242,34 +298,42 @@
 		"segments": [
 			{
 				"sid": "header",
-				"str": "Content I'm Editing",
 				"location": {
 					"startLine": 1,
 					"endLine": 1
 				},
+				"nstr": [
+					"Content I'm Editing"
+				],
+				"gstr": "Content I'm Editing",
 				"guid": "kVq7Hxzh1nxrGyUwKNHYSW6FQgPe1o3oLXMXZ9m6KvE"
 			},
 			{
 				"sid": "label.noItems",
-				"str": "No items to display",
 				"location": {
 					"startLine": 2,
 					"endLine": 2
 				},
+				"nstr": [
+					"No items to display"
+				],
+				"gstr": "No items to display",
 				"guid": "VaDhmkZ2ZWWHWdcH144kDe7K5E5gOW5DO9nPN-5fxNU"
 			},
 			{
 				"sid": "label.error",
-				"str": "Could not load data",
 				"location": {
 					"startLine": 3,
 					"endLine": 3
 				},
+				"nstr": [
+					"Could not load data"
+				],
+				"gstr": "Could not load data",
 				"guid": "Dm0Z706m2IOjE27Dnqz0iNRrbESVyE9L3njuiI_AGbc"
 			},
 			{
 				"sid": "text.edited-on",
-				"str": "Edited {0} in {1}",
 				"location": {
 					"startLine": 4,
 					"endLine": 4
@@ -291,47 +355,62 @@
 			},
 			{
 				"sid": "text.blogposts",
-				"str": "Blog posts",
 				"location": {
 					"startLine": 5,
 					"endLine": 5
 				},
+				"nstr": [
+					"Blog posts"
+				],
+				"gstr": "Blog posts",
 				"guid": "-lMS7-u6z9glHmbrX3w1Ta0CO_w20cZOEVdEgy7KAWo"
 			},
 			{
 				"sid": "text.forumposts",
-				"str": "Forum posts",
 				"location": {
 					"startLine": 6,
 					"endLine": 6
 				},
+				"nstr": [
+					"Forum posts"
+				],
+				"gstr": "Forum posts",
 				"guid": "kht1hnZxYg5z2oDabqluhIpdRLnLQiK48GRI9uRQ0dY"
 			},
 			{
 				"sid": "text.wikipages",
-				"str": "Wiki pages",
 				"location": {
 					"startLine": 7,
 					"endLine": 7
 				},
+				"nstr": [
+					"Wiki pages"
+				],
+				"gstr": "Wiki pages",
 				"guid": "vaP3NW7ujyij8Ah5awtcl-VTn-TgXotOTo3xh-0d5Sg"
 			},
 			{
 				"sid": "text.documents",
-				"str": "Documents",
 				"location": {
 					"startLine": 8,
 					"endLine": 8
 				},
+				"nstr": [
+					"Documents"
+				],
+				"gstr": "Documents",
 				"guid": "mma7KIJnCz1r0BNPr7a8fDOCcCHL402bw0whYy0wTZU"
 			},
 			{
 				"sid": "dashlet.help",
-				"str": "Check this dashlet to quickly see the items you are working on.",
 				"location": {
 					"startLine": 10,
 					"endLine": 10
 				},
+				"nstr": [
+					"Check this dashlet to quickly see the items you are working on."
+				],
+				"gstr": "Check this dashlet to quickly see the items you are working on.",
 				"guid": "vkvoNwRn2JIB_pYL7kCudI2BBrl0Uw4yhYNWHloHAT8"
 			}
 		]
@@ -349,89 +428,109 @@
 		"segments": [
 			{
 				"sid": "header",
-				"str": "My Documents",
 				"location": {
 					"startLine": 1,
 					"endLine": 1
 				},
+				"nstr": [
+					"My Documents"
+				],
+				"gstr": "My Documents",
 				"guid": "Zr8WyWG3RhlGY6Ni69YgvBIDRjGacfuKAxPi1HvCmWQ"
 			},
 			{
 				"sid": "filter.favourites",
-				"str": "My Favorites",
 				"location": {
 					"startLine": 4,
 					"endLine": 4
 				},
+				"nstr": [
+					"My Favorites"
+				],
+				"gstr": "My Favorites",
+				"guid": "16dwhpoku0nRZdnDK3zN4gY9CzQrNxTrbsgwSm6DGfk",
+				"rawNotes": "## Filters",
 				"notes": {
 					"desc": "## Filters"
-				},
-				"guid": "16dwhpoku0nRZdnDK3zN4gY9CzQrNxTrbsgwSm6DGfk",
-				"rawNotes": "## Filters"
+				}
 			},
 			{
 				"sid": "filter.editingMe",
-				"str": "I'm Editing",
 				"location": {
 					"startLine": 5,
 					"endLine": 5
 				},
+				"nstr": [
+					"I'm Editing"
+				],
+				"gstr": "I'm Editing",
 				"guid": "T45JY1JPTF8w3-9djuQrQqNt1qo8go5BrnY-0gq_XiM"
 			},
 			{
 				"sid": "filter.recentlyModifiedByMe",
-				"str": "I've Recently Modified",
 				"location": {
 					"startLine": 6,
 					"endLine": 6
 				},
+				"nstr": [
+					"I've Recently Modified"
+				],
+				"gstr": "I've Recently Modified",
 				"guid": "69OAs0aOL6ZqIcXL4Fizzt7ocJPdHMPqRnxI7gdwxXY"
 			},
 			{
 				"sid": "filter.synced",
-				"str": "Synced content",
 				"location": {
 					"startLine": 7,
 					"endLine": 7
 				},
+				"nstr": [
+					"Synced content"
+				],
+				"gstr": "Synced content",
 				"guid": "CIwEJyo5_StommBSbdzYai9bLZOnMhok9di6JIE7bgc"
 			},
 			{
 				"sid": "filter.syncedErrors",
-				"str": "Synced with Errors",
 				"location": {
 					"startLine": 8,
 					"endLine": 8
 				},
+				"nstr": [
+					"Synced with Errors"
+				],
+				"gstr": "Synced with Errors",
 				"guid": "yV-PN0fv77TSTS-mNgk_pcjMnf-LdfCFBcsfNb-eAJA"
 			},
 			{
 				"sid": "empty.title",
-				"str": "Keep track of your own content",
 				"location": {
 					"startLine": 10,
 					"endLine": 10
 				},
+				"nstr": [
+					"Keep track of your own content"
+				],
+				"gstr": "Keep track of your own content",
 				"guid": "8XoIyfOkoCz_nXAZEuq2rAkrOzDIktohodTvmnKDPos"
 			},
 			{
 				"sid": "empty.description",
-				"str": "This dashlet lists all of the content that's important to you, no matter which site it is in. Use the filters to easily find what you're looking for.",
 				"location": {
 					"startLine": 11,
 					"endLine": 11
 				},
+				"nstr": [
+					"This dashlet lists all of the content that's important to you, no matter which site it is in. Use the filters to easily find what you're looking for."
+				],
+				"gstr": "This dashlet lists all of the content that's important to you, no matter which site it is in. Use the filters to easily find what you're looking for.",
 				"guid": "ll8G2DYvYEBCintesx4VmEGESLsVncMkqwdXMUxqKcQ"
 			},
 			{
 				"sid": "dashlet.help",
-				"str": "<p>This dashlet makes it easy to keep track of your own content, no matter which site it is in. Use the filter to easily find what you're looking for.</p><p>There are two views for this dashlet. The detailed view lets you:<ul><li>Mark an item as a favorite so it appears in Favorites lists for easy access</li><li>Like (and unlike) an item</li><li>Jump to the item details page to leave a comment</li></ul></p>",
 				"location": {
 					"startLine": 14,
 					"endLine": 18
-				},
-				"notes": {
-					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 				},
 				"nstr": [
 					{
@@ -490,7 +589,10 @@
 				],
 				"gstr": "{{bx}}This dashlet makes it easy to keep track of your own content, no matter which site it is in. Use the filter to easily find what you're looking for.{{ex}}{{bx}}There are two views for this dashlet. The detailed view lets you:{{bx}}{{bx}}Mark an item as a favorite so it appears in Favorites lists for easy access{{ex}}{{bx}}Like (and unlike) an item{{ex}}{{bx}}Jump to the item details page to leave a comment{{ex}}{{ex}}{{ex}}",
 				"guid": "AVJwgn96gVZOTR9gxVVWAIYybHIrSmQXlxVblGOA_-M",
-				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				}
 			}
 		]
 	},
@@ -507,67 +609,81 @@
 		"segments": [
 			{
 				"sid": "header.myMeetingWorkspaces",
-				"str": "My Meeting Workspaces",
 				"location": {
 					"startLine": 1,
 					"endLine": 1
 				},
+				"nstr": [
+					"My Meeting Workspaces"
+				],
+				"gstr": "My Meeting Workspaces",
 				"guid": "xdSxt3fOBafJlhTuB-UYZBP6Yuaa3zikmNIKnn_3b80"
 			},
 			{
 				"sid": "link.deleteMeetingWorkspace",
-				"str": "Delete",
 				"location": {
 					"startLine": 2,
 					"endLine": 2
 				},
+				"nstr": [
+					"Delete"
+				],
+				"gstr": "Delete",
 				"guid": "95wufLScOHKhQTSbDmm0fY-sgDbl3CzFbTrf7EIcaco"
 			},
 			{
 				"sid": "label.noMeetingWorkspaces",
-				"str": "No meeting workspaces to display",
 				"location": {
 					"startLine": 3,
 					"endLine": 3
 				},
+				"nstr": [
+					"No meeting workspaces to display"
+				],
+				"gstr": "No meeting workspaces to display",
 				"guid": "hEx8GA1O-_qTlP-B6JO83QStuzstF54FrJg9scNduiE"
 			},
 			{
 				"sid": "message.meetingWorkspaceFavourite.failure",
-				"str": "The favorite setting for the meeting workspace could not be saved",
 				"location": {
 					"startLine": 4,
 					"endLine": 4
 				},
+				"nstr": [
+					"The favorite setting for the meeting workspace could not be saved"
+				],
+				"gstr": "The favorite setting for the meeting workspace could not be saved",
 				"guid": "86X3guH-QznpXsT3DHHEw9PPgKLlRXKsKpTX0_GetnE"
 			},
 			{
 				"sid": "link.favouriteMeetingWorkspace",
-				"str": "Mark or unmark meeting workspace as favorite",
 				"location": {
 					"startLine": 5,
 					"endLine": 5
 				},
+				"nstr": [
+					"Mark or unmark meeting workspace as favorite"
+				],
+				"gstr": "Mark or unmark meeting workspace as favorite",
 				"guid": "chVcIGwRxOqTMMJSOVBci-X9dwfTrQqqbM_B4f5Hr8I"
 			},
 			{
 				"sid": "link.imap_favouriteMeetingWorkspace",
-				"str": "Mark or unmark meeting workspace as IMAP favorite",
 				"location": {
 					"startLine": 6,
 					"endLine": 6
 				},
+				"nstr": [
+					"Mark or unmark meeting workspace as IMAP favorite"
+				],
+				"gstr": "Mark or unmark meeting workspace as IMAP favorite",
 				"guid": "0mXtDKcqSsQ2f-bn_WNhCJPjWuOImGuV2N4MzXFcGm4"
 			},
 			{
 				"sid": "dashlet.help",
-				"str": "<p>A Meeting Workspace is a type of site that is created outside of Alfresco. This dashlet lists all of your Meeting Workspace sites.</p><p>From here you can navigate to a Meeting Workspace site. You can also delete a site, if you have the correct permissions.</p>",
 				"location": {
 					"startLine": 9,
 					"endLine": 10
-				},
-				"notes": {
-					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 				},
 				"nstr": [
 					{
@@ -591,7 +707,10 @@
 				],
 				"gstr": "{{bx}}A Meeting Workspace is a type of site that is created outside of Alfresco. This dashlet lists all of your Meeting Workspace sites.{{ex}}{{bx}}From here you can navigate to a Meeting Workspace site. You can also delete a site, if you have the correct permissions.{{ex}}",
 				"guid": "KwRk8xsR7NqNEUmQq062j5EhNOvcXlAZjD3-gRDpuTQ",
-				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				}
 			}
 		]
 	},
@@ -608,29 +727,38 @@
 		"segments": [
 			{
 				"sid": "header.myLimitedProfile",
-				"str": "My Profile",
 				"location": {
 					"startLine": 1,
 					"endLine": 1
 				},
+				"nstr": [
+					"My Profile"
+				],
+				"gstr": "My Profile",
 				"guid": "8bQlFmPjhRmQhEl_D3zucOoRAJwuTt-y982jqcFNmQg"
 			},
 			{
 				"sid": "link.viewFullProfile",
-				"str": "View Full Profile",
 				"location": {
 					"startLine": 2,
 					"endLine": 2
 				},
+				"nstr": [
+					"View Full Profile"
+				],
+				"gstr": "View Full Profile",
 				"guid": "gwYKzILRTzurUCmf_I5JFHSzbAYK-qnKKqTk2OEqx58"
 			},
 			{
 				"sid": "dashlet.help",
-				"str": "This dashlet shows a summary of your personal details. From here you can access your full user profile.",
 				"location": {
 					"startLine": 4,
 					"endLine": 4
 				},
+				"nstr": [
+					"This dashlet shows a summary of your personal details. From here you can access your full user profile."
+				],
+				"gstr": "This dashlet shows a summary of your personal details. From here you can access your full user profile.",
 				"guid": "zYMbzhPI5FMRos67sdXQfWhFklnMLVEOoBQnWWEBlAk"
 			}
 		]
@@ -648,94 +776,117 @@
 		"segments": [
 			{
 				"sid": "header",
-				"str": "My Sites",
 				"location": {
 					"startLine": 1,
 					"endLine": 1
 				},
+				"nstr": [
+					"My Sites"
+				],
+				"gstr": "My Sites",
 				"guid": "UlZQ7MSqJC0zqQY0D4YOldD5F93cOpqhfne5pP2FWXc"
 			},
 			{
 				"sid": "link.createSite",
-				"str": "Create Site",
 				"location": {
 					"startLine": 3,
 					"endLine": 3
 				},
+				"nstr": [
+					"Create Site"
+				],
+				"gstr": "Create Site",
 				"guid": "CNYZHwdG54uOPssvos2FeIoUucBpQgemdb5f3ZS3NOY"
 			},
 			{
 				"sid": "link.deleteSite",
-				"str": "Delete",
 				"location": {
 					"startLine": 4,
 					"endLine": 4
 				},
+				"nstr": [
+					"Delete"
+				],
+				"gstr": "Delete",
 				"guid": "pVbMCPTUkdxbzFMpurxmq3lfQYnXGvga70FOMpLWja0"
 			},
 			{
 				"sid": "filter.all",
-				"str": "All",
 				"location": {
 					"startLine": 6,
 					"endLine": 6
 				},
+				"nstr": [
+					"All"
+				],
+				"gstr": "All",
 				"guid": "sym--UQ1RTuzq-6wohlntwmHh5bgnIyTlCFl8qdxFcQ"
 			},
 			{
 				"sid": "filter.favSites",
-				"str": "My Favorites",
 				"location": {
 					"startLine": 7,
 					"endLine": 7
 				},
+				"nstr": [
+					"My Favorites"
+				],
+				"gstr": "My Favorites",
 				"guid": "i3ag0zcuvGFcbpZBiM8Pa-uiyQSUsnVUP3Rw86jIk9U"
 			},
 			{
 				"sid": "filter.recentSites",
-				"str": "Recent",
 				"location": {
 					"startLine": 8,
 					"endLine": 8
 				},
+				"nstr": [
+					"Recent"
+				],
+				"gstr": "Recent",
 				"guid": "hbAeApluyJZr9vgdIibjX3E5CWn2gLKZDz-Q2edB6WE"
 			},
 			{
 				"sid": "empty.title",
-				"str": "Quickly access your sites",
 				"location": {
 					"startLine": 10,
 					"endLine": 10
 				},
+				"nstr": [
+					"Quickly access your sites"
+				],
+				"gstr": "Quickly access your sites",
 				"guid": "tI5VvhguKK2Np_Ymu6r2Ej0RIHbejD58RIz6_m2jxnA"
 			},
 			{
 				"sid": "empty.description",
-				"str": "A site is a project area where you can share and discuss content with other site members.",
 				"location": {
 					"startLine": 11,
 					"endLine": 11
 				},
+				"nstr": [
+					"A site is a project area where you can share and discuss content with other site members."
+				],
+				"gstr": "A site is a project area where you can share and discuss content with other site members.",
 				"guid": "pORmuIaIpyiwAr733qjgG40a_bzACims7cH11c7xlsA"
 			},
 			{
 				"sid": "empty.description.sample-site",
-				"str": "We've included a sample site for you. Use this to explore the features in Alfresco.",
 				"location": {
 					"startLine": 12,
 					"endLine": 12
 				},
+				"nstr": [
+					"We've included a sample site for you. Use this to explore the features in Alfresco."
+				],
+				"gstr": "We've included a sample site for you. Use this to explore the features in Alfresco.",
 				"guid": "DxEjNf9NRyr2lYuojO109PzRdfZbhlOasKBZeCFkxsM"
 			},
 			{
 				"sid": "dashlet.help",
-				"str": "<p>Sites are project areas where you collaborate with others, sharing content and working on it together. This dashlet lists the sites you belong to. You can filter this list to show only your favorite sites.</p><p>From here you can:<ul><li>Navigate to a site</li><li>Create a new site</li><li>Delete a site if you are the site manager</li><li>Mark a site as a favorite so that it shows in the Sites menu for easy access</li></ul></p>",
 				"location": {
 					"startLine": 15,
 					"endLine": 20
-				},
-				"notes": {
-					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 				},
 				"nstr": [
 					{
@@ -803,7 +954,10 @@
 				],
 				"gstr": "{{bx}}Sites are project areas where you collaborate with others, sharing content and working on it together. This dashlet lists the sites you belong to. You can filter this list to show only your favorite sites.{{ex}}{{bx}}From here you can:{{bx}}{{bx}}Navigate to a site{{ex}}{{bx}}Create a new site{{ex}}{{bx}}Delete a site if you are the site manager{{ex}}{{bx}}Mark a site as a favorite so that it shows in the Sites menu for easy access{{ex}}{{ex}}{{ex}}",
 				"guid": "bSLC8teKK1MEOmFgrXsZZjcAatcZwSLvnMITBrJEYhg",
-				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				}
 			}
 		]
 	},
@@ -820,70 +974,90 @@
 		"segments": [
 			{
 				"sid": "header",
-				"str": "My Tasks",
 				"location": {
 					"startLine": 1,
 					"endLine": 1
 				},
+				"nstr": [
+					"My Tasks"
+				],
+				"gstr": "My Tasks",
 				"guid": "epKRcIosvdiNUQNTCllZBTpcyfk6yJLi37bwHg7nm_4"
 			},
 			{
 				"sid": "link.startWorkflow",
-				"str": "Start Workflow",
 				"location": {
 					"startLine": 2,
 					"endLine": 2
 				},
+				"nstr": [
+					"Start Workflow"
+				],
+				"gstr": "Start Workflow",
 				"guid": "vPu9Gy2eFkiPNaDAoIlmc9whCRzTvQ984kOHZANKJ0w"
 			},
 			{
 				"sid": "link.activeTasks",
-				"str": "Active Tasks",
 				"location": {
 					"startLine": 3,
 					"endLine": 3
 				},
+				"nstr": [
+					"Active Tasks"
+				],
+				"gstr": "Active Tasks",
 				"guid": "Nlkm4Se8KVfvio8MJgmKKuvD49w9k4sJ5AJWs28somg"
 			},
 			{
 				"sid": "link.completedTasks",
-				"str": "Completed Tasks",
 				"location": {
 					"startLine": 4,
 					"endLine": 4
 				},
+				"nstr": [
+					"Completed Tasks"
+				],
+				"gstr": "Completed Tasks",
 				"guid": "Q4u2myLfcHsknqOi0r4uKtFBLaoJuJ0iiQ31G31sUJc"
 			},
 			{
 				"sid": "title.viewTask",
-				"str": "View Task",
 				"location": {
 					"startLine": 5,
 					"endLine": 5
 				},
+				"nstr": [
+					"View Task"
+				],
+				"gstr": "View Task",
 				"guid": "xK24KgsSyM1av2EI_uMsC3k54yBUL2cNf3a6bMsygxs"
 			},
 			{
 				"sid": "title.editTask",
-				"str": "Edit Task",
 				"location": {
 					"startLine": 6,
 					"endLine": 6
 				},
+				"nstr": [
+					"Edit Task"
+				],
+				"gstr": "Edit Task",
 				"guid": "a75DwZSR97TRCv7Tu9buoQvS62zyWJSTBBIe0T_Sd9o"
 			},
 			{
 				"sid": "label.pooledTask",
-				"str": "Pooled task",
 				"location": {
 					"startLine": 7,
 					"endLine": 7
 				},
+				"nstr": [
+					"Pooled task"
+				],
+				"gstr": "Pooled task",
 				"guid": "firH6Wg83voQWGdKTeEaKvZFM2MSNnut6mwVBLZDrMg"
 			},
 			{
 				"sid": "label.taskSummary",
-				"str": "{0}, {1}",
 				"location": {
 					"startLine": 8,
 					"endLine": 8
@@ -904,16 +1078,18 @@
 			},
 			{
 				"sid": "label.unassignedTask",
-				"str": "Unassigned",
 				"location": {
 					"startLine": 9,
 					"endLine": 9
 				},
+				"nstr": [
+					"Unassigned"
+				],
+				"gstr": "Unassigned",
 				"guid": "I5Kr0TjUoHgmE5HZ6Hkqw0kUIr0QjFzbFvz2YAG0Q0I"
 			},
 			{
 				"sid": "title.dueOn",
-				"str": "Due on: {0}",
 				"location": {
 					"startLine": 10,
 					"endLine": 10
@@ -930,16 +1106,18 @@
 			},
 			{
 				"sid": "message.noTasks",
-				"str": "No tasks",
 				"location": {
 					"startLine": 11,
 					"endLine": 11
 				},
+				"nstr": [
+					"No tasks"
+				],
+				"gstr": "No tasks",
 				"guid": "8AuA3JdZzJKOkRh8OQvnVJRzVHUPMIUiOjfrX86Bibo"
 			},
 			{
 				"sid": "title.taskSummary",
-				"str": "Type: {0}, Status: {1}",
 				"location": {
 					"startLine": 12,
 					"endLine": 12
@@ -961,76 +1139,93 @@
 			},
 			{
 				"sid": "filter.activeTasks",
-				"str": "Active Tasks",
 				"location": {
 					"startLine": 14,
 					"endLine": 14
 				},
+				"nstr": [
+					"Active Tasks"
+				],
+				"gstr": "Active Tasks",
 				"guid": "3tkVM3WAlZnqn435TugK4MhJQgzntlZ-FuPgfHZ3hUM"
 			},
 			{
 				"sid": "filter.completedTasks",
-				"str": "Completed Tasks",
 				"location": {
 					"startLine": 15,
 					"endLine": 15
 				},
+				"nstr": [
+					"Completed Tasks"
+				],
+				"gstr": "Completed Tasks",
 				"guid": "Qhtg8zhuobjkBNy9a9u6G9KpckRWn6ekNkSOWHYwutM"
 			},
 			{
 				"sid": "filter.highPriorityTasks",
-				"str": "High Priority Tasks",
 				"location": {
 					"startLine": 16,
 					"endLine": 16
 				},
+				"nstr": [
+					"High Priority Tasks"
+				],
+				"gstr": "High Priority Tasks",
 				"guid": "K47iNY3XGCsnPWrz6ZcWoO9giYn2dV69Va9Gdq3B-eo"
 			},
 			{
 				"sid": "filter.tasksDueToday",
-				"str": "Tasks Due Today",
 				"location": {
 					"startLine": 17,
 					"endLine": 17
 				},
+				"nstr": [
+					"Tasks Due Today"
+				],
+				"gstr": "Tasks Due Today",
 				"guid": "BF4C3yrZszaNM52DTm4r3KQP78KDvTz-dY01BhVkF40"
 			},
 			{
 				"sid": "filter.tasksAssignedToMe",
-				"str": "Tasks Assigned to Me",
 				"location": {
 					"startLine": 18,
 					"endLine": 18
 				},
+				"nstr": [
+					"Tasks Assigned to Me"
+				],
+				"gstr": "Tasks Assigned to Me",
 				"guid": "zS4uKDkVTrVts6ULIO2JJ_lfqs6so9Un-GRoLkYGxBA"
 			},
 			{
 				"sid": "filter.unassignedPooledTasks",
-				"str": "Unassigned (Pooled Tasks)",
 				"location": {
 					"startLine": 19,
 					"endLine": 19
 				},
+				"nstr": [
+					"Unassigned (Pooled Tasks)"
+				],
+				"gstr": "Unassigned (Pooled Tasks)",
 				"guid": "R09PDx_fzdUUGKSC__kqAXYqL0VbKfaRfunC2Enkszs"
 			},
 			{
 				"sid": "filter.overdueTasks",
-				"str": "Overdue Tasks",
 				"location": {
 					"startLine": 20,
 					"endLine": 20
 				},
+				"nstr": [
+					"Overdue Tasks"
+				],
+				"gstr": "Overdue Tasks",
 				"guid": "xpJxcWOzyfOz6JiicCx8wipfHxU-XMnfeSwlvTCYc-U"
 			},
 			{
 				"sid": "pagination.template",
-				"str": "{CurrentPageReport}",
 				"location": {
 					"startLine": 23,
 					"endLine": 23
-				},
-				"notes": {
-					"desc": "## Override pagination templates with a minified version"
 				},
 				"nstr": [
 					{
@@ -1040,11 +1235,13 @@
 				],
 				"gstr": "{{x}}",
 				"guid": "_eSMhA7GvQyFwpD3TteCK07HiJy_tNJvu6Z6RlD1Yqw",
-				"rawNotes": "## Override pagination templates with a minified version"
+				"rawNotes": "## Override pagination templates with a minified version",
+				"notes": {
+					"desc": "## Override pagination templates with a minified version"
+				}
 			},
 			{
 				"sid": "pagination.template.page-report",
-				"str": "{startRecord} - {endRecord} of {totalRecords}",
 				"location": {
 					"startLine": 24,
 					"endLine": 24
@@ -1070,31 +1267,33 @@
 			},
 			{
 				"sid": "empty.title",
-				"str": "Review the tasks assigned to you",
 				"location": {
 					"startLine": 26,
 					"endLine": 26
 				},
+				"nstr": [
+					"Review the tasks assigned to you"
+				],
+				"gstr": "Review the tasks assigned to you",
 				"guid": "N0x4ZqYxFgSph2esNLhC1q4h8K7ebU4JR-Cynw1Tpew"
 			},
 			{
 				"sid": "empty.description",
-				"str": "Different types of tasks can appear in this task list and you need to address each one. This could involve reviewing a document or simply accepting an invitation to a site.",
 				"location": {
 					"startLine": 27,
 					"endLine": 27
 				},
+				"nstr": [
+					"Different types of tasks can appear in this task list and you need to address each one. This could involve reviewing a document or simply accepting an invitation to a site."
+				],
+				"gstr": "Different types of tasks can appear in this task list and you need to address each one. This could involve reviewing a document or simply accepting an invitation to a site.",
 				"guid": "pFJZM7Jmnr--w3m9nPZhK-2c0arLCxHQQMMiLc8O7jg"
 			},
 			{
 				"sid": "dashlet.help",
-				"str": "<p>This dashlet lists the tasks assigned to you, including invitations to join sites. You can filter the list to view different types of tasks.</p><p>From here you can:<ul><li>Edit a task to manage it</li><li>View a single task</li><li>Open the My Tasks page to manage all of your tasks</li><li>Start a workflow to create tasks for others or yourself</li></ul></p>",
 				"location": {
 					"startLine": 30,
 					"endLine": 35
-				},
-				"notes": {
-					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 				},
 				"nstr": [
 					{
@@ -1162,7 +1361,10 @@
 				],
 				"gstr": "{{bx}}This dashlet lists the tasks assigned to you, including invitations to join sites. You can filter the list to view different types of tasks.{{ex}}{{bx}}From here you can:{{bx}}{{bx}}Edit a task to manage it{{ex}}{{bx}}View a single task{{ex}}{{bx}}Open the My Tasks page to manage all of your tasks{{ex}}{{bx}}Start a workflow to create tasks for others or yourself{{ex}}{{ex}}{{ex}}",
 				"guid": "Pgq9rxA8-EktqqbL9yOcNuncrLEDjhwr6gLGv4XzYuo",
-				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				}
 			}
 		]
 	},
@@ -1179,67 +1381,81 @@
 		"segments": [
 			{
 				"sid": "header.myWorkspaces",
-				"str": "My Document Workspaces",
 				"location": {
 					"startLine": 1,
 					"endLine": 1
 				},
+				"nstr": [
+					"My Document Workspaces"
+				],
+				"gstr": "My Document Workspaces",
 				"guid": "_uhE3KrGLJQO9NYX40QzZhCOAiGm53PUnKCKMHuIJHU"
 			},
 			{
 				"sid": "link.deleteWorkspace",
-				"str": "Delete",
 				"location": {
 					"startLine": 2,
 					"endLine": 2
 				},
+				"nstr": [
+					"Delete"
+				],
+				"gstr": "Delete",
 				"guid": "o7jl6L3FLIXgeTEJ6_ChHV1ZOAQnp31thchwcDIpNPc"
 			},
 			{
 				"sid": "label.noWorkspaces",
-				"str": "No document workspaces to display",
 				"location": {
 					"startLine": 3,
 					"endLine": 3
 				},
+				"nstr": [
+					"No document workspaces to display"
+				],
+				"gstr": "No document workspaces to display",
 				"guid": "WYzhdU3b8DtgLJUXn7Tn7zat4OE1EFCkAVcIOUV8oUs"
 			},
 			{
 				"sid": "message.workspaceFavourite.failure",
-				"str": "The favorite setting for the document workspace could not be saved",
 				"location": {
 					"startLine": 4,
 					"endLine": 4
 				},
+				"nstr": [
+					"The favorite setting for the document workspace could not be saved"
+				],
+				"gstr": "The favorite setting for the document workspace could not be saved",
 				"guid": "aGx4T_7P8p5whU4-Swu-yuVqZzjb0OhOhPh8OyzV42U"
 			},
 			{
 				"sid": "link.favouriteWorkspace",
-				"str": "Mark or unmark document workspace as favorite",
 				"location": {
 					"startLine": 5,
 					"endLine": 5
 				},
+				"nstr": [
+					"Mark or unmark document workspace as favorite"
+				],
+				"gstr": "Mark or unmark document workspace as favorite",
 				"guid": "01beH-pALpRN0Q9lIKbOgEguRhml7Wj6yTj27zLVyAo"
 			},
 			{
 				"sid": "link.imap_favouriteWorkspace",
-				"str": "Mark or unmark document workspace as IMAP favorite",
 				"location": {
 					"startLine": 6,
 					"endLine": 6
 				},
+				"nstr": [
+					"Mark or unmark document workspace as IMAP favorite"
+				],
+				"gstr": "Mark or unmark document workspace as IMAP favorite",
 				"guid": "pYmD4nSAgI0AAp5sU_y8dj-SgmRPtsi_gEBYVwsL4C8"
 			},
 			{
 				"sid": "dashlet.help",
-				"str": "<p>A Document Workspace is a type of site that is created outside of Alfresco. This dashlet lists all of your Document Workspace sites.</p><p>From here you can navigate to a Document Workspace site. You can also delete a site, if you have the correct permissions.</p>",
 				"location": {
 					"startLine": 9,
 					"endLine": 10
-				},
-				"notes": {
-					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 				},
 				"nstr": [
 					{
@@ -1263,7 +1479,10 @@
 				],
 				"gstr": "{{bx}}A Document Workspace is a type of site that is created outside of Alfresco. This dashlet lists all of your Document Workspace sites.{{ex}}{{bx}}From here you can navigate to a Document Workspace site. You can also delete a site, if you have the correct permissions.{{ex}}",
 				"guid": "QbstBkZNdzkfITuXaZAuGgvTliwWQC8mHM_3rV_7Sk4",
-				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				}
 			}
 		]
 	}

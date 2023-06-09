@@ -1,4 +1,4 @@
-const { adapters, translators } = require('@l10nmonster/helpers');
+const { adapters, normalizers, xml, translators, stores } = require('@l10nmonster/helpers');
 const java = require('@l10nmonster/helpers-java');
 const demo = require('@l10nmonster/helpers-demo');
 
@@ -12,12 +12,15 @@ module.exports = class EisenVaultConfig2 {
             targetLangs: [ 'it' ],
         });
         this.resourceFilter = new java.PropertiesFilter();
-        this.segmentDecorator = segments => segments.map(seg => {
-            if (seg.sid.indexOf('org.alfresco.blog.post-') === 0) {
-                return { ...seg, notes: 'PH({0}|Hello World|Item title / page link)' };
+        this.decoders = [ normalizers.bracePHDecoder, xml.tagDecoder, java.escapesDecoder ];
+        this.segmentDecorators = [
+            seg => {
+                if (seg.sid.indexOf('org.alfresco.blog.post-') === 0) {
+                    return { ...seg, notes: 'PH({0}|Hello World|Item title / page link)' };
+                }
+                return seg;
             }
-            return seg;
-        });
+        ];
         this.target = new adapters.FsTarget({
             targetPath: (lang, resourceId) => resourceId.replace('_en.properties', `_${lang.replace('-', '_')}.properties`),
         });
@@ -39,5 +42,8 @@ module.exports = class EisenVaultConfig2 {
                 }),
             },
         };
+        this.jobStore = new stores.JsonJobStore({
+            jobsDir: 'l10njobs',
+        });
     }
 }

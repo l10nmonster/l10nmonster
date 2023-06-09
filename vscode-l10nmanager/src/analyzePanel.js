@@ -46,7 +46,7 @@ export class AnalyzeViewProvider extends AbstractViewTreeDataProvider {
                         analysis.body.length > 0 ?
                             `<table>
                             <tr>${analysis.head.map(col => `<th>${col}</th>`).join('\n')}</tr>
-                            ${analysis.body.map(row => `<tr>${row.map(col => `<td>${col}</td>`).join('')}</tr>`).join('\n')}
+                            ${analysis.body.map(row => `<tr>${row.map(col => `<td>${col === undefined ? '' : col}</td>`).join('')}</tr>`).join('\n')}
                             </table>` :
                             '<h4>Nothing found!</h4>' :
                         `<pre>${analysis.body}</pre>`

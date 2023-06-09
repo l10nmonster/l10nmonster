@@ -81,13 +81,8 @@ const nsrc1 = [
 
 describe ('translateCmd tests', () =>{
 
-  test('simple text translation', async () => {
-    expect(utils.translateWithEntry('foo', undefined, { tgt: 'bar' }, {}, dummyEncodeString))
-    .toBe('bar');
-  });
-
   test('complex translation', async () => {
-    expect(utils.translateWithEntry(undefined, nsrc1, entry1, {}, dummyEncodeString))
+    expect(utils.translateWithEntry(nsrc1, entry1, {}, dummyEncodeString))
     .toBe('<strike>%1$s</strike> • <color name="green"> %3$s 1%2$s泊分</color>');
   });
 

@@ -53,13 +53,13 @@ function printRequest(req) {
         const prj = tu.prj || 'default';
         untranslatedContent[prj] ??= {};
         untranslatedContent[prj][tu.rid] ??= {};
-        const text = tu.nsrc ? tu.nsrc.map(e => (typeof e === 'string' ? e : '')).join('') : tu.src;
+        const text = tu.nsrc.map(e => (typeof e === 'string' ? e : '')).join('');
         // const heuristics = Object.fromEntries(lngDetector.detect(text, 1));
         const heuristics = Object.fromEntries(tinyld.detectAll(text).map(x => [ x.lang, x.accuracy ]));
         const confidence = heuristics[srcLang] ?? 0;
         untranslatedContent[prj][tu.rid][tu.sid] = {
             confidence,
-            txt: tu.nsrc ? utils.flattenNormalizedSourceV1(tu.nsrc)[0] : tu.src,
+            txt: utils.flattenNormalizedSourceV1(tu.nsrc)[0],
             // eslint-disable-next-line no-nested-ternary
             color: confidence <= 0.1 ? consoleColor.red : (confidence <= 0.2 ? consoleColor.yellow : consoleColor.green),
         }
@@ -68,7 +68,7 @@ function printRequest(req) {
 }
 
 function printResponse(req, res, showPair) {
-    const translations = res.tus.reduce((p,c) => (p[c.guid] = c.ntgt ?? c.tgt, p), {});
+    const translations = res.tus.reduce((p,c) => (p[c.guid] = c.ntgt, p), {});
     let matchedTranslations = 0;
     const translatedContent = {};
     for (const tu of req.tus) {
@@ -77,9 +77,9 @@ function printResponse(req, res, showPair) {
         translatedContent[prj][tu.rid] ??= {};
         if (translations[tu.guid]) {
             // eslint-disable-next-line no-nested-ternary
-            const key = showPair ? (tu.nsrc ? utils.flattenNormalizedSourceV1(tu.nsrc)[0] : tu.src) : tu.sid;
+            const key = showPair ? utils.flattenNormalizedSourceV1(tu.nsrc)[0] : tu.sid;
             translatedContent[prj][tu.rid][key] = {
-                txt: Array.isArray(translations[tu.guid]) ? utils.flattenNormalizedSourceV1(translations[tu.guid])[0] : translations[tu.guid],
+                txt: utils.flattenNormalizedSourceV1(translations[tu.guid])[0],
                 color: consoleColor.green,
             };
             matchedTranslations++;

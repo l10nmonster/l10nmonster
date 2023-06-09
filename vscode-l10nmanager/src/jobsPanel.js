@@ -86,8 +86,8 @@ export class JobsViewProvider extends AbstractViewTreeDataProvider {
                     <tr><th>Id</th><th>Source (${req.sourceLang})</th><th>Translation (${req.targetLang})</th></th>
                     ${req.tus.map(tu => `<tr>
                         <td>${tu.sid}</td>
-                        <td>${renderString(tu?.src, tu?.nsrc)}</td>
-                        <td>${renderString(translations[tu.guid]?.tgt, translations[tu.guid]?.ntgt, inflight[tu.guid])}</td>
+                        <td>${renderString(tu?.nsrc)}</td>
+                        <td>${renderString(translations[tu.guid]?.ntgt, inflight[tu.guid])}</td>
                     </tr>`).join('\n')}
                 </table>
             `);

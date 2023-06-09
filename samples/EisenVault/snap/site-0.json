@@ -12,196 +12,249 @@
 		"segments": [
 			{
 				"sid": "header",
-				"str": "Site Activities",
 				"location": {
 					"startLine": 1,
 					"endLine": 1
 				},
+				"nstr": [
+					"Site Activities"
+				],
+				"gstr": "Site Activities",
 				"guid": "9RU0-MtMA3IQ_HZWDTRlbtGICfYhmwwukPBoTOUNm84"
 			},
 			{
 				"sid": "label.load-failed",
-				"str": "Could not load activities list",
 				"location": {
 					"startLine": 2,
 					"endLine": 2
 				},
+				"nstr": [
+					"Could not load activities list"
+				],
+				"gstr": "Could not load activities list",
 				"guid": "dXT2U75dxHuNIUPU-t03LIHyx2Xot9nfTYzt0wC7mX4"
 			},
 			{
 				"sid": "label.filter",
-				"str": "Show",
 				"location": {
 					"startLine": 3,
 					"endLine": 3
 				},
+				"nstr": [
+					"Show"
+				],
+				"gstr": "Show",
 				"guid": "5lPhH3wyUosnjY8D20zaDr3pvcSu5-4SHVcyxzNNyy8"
 			},
 			{
 				"sid": "label.older-activities",
-				"str": "Older Activities",
 				"location": {
 					"startLine": 4,
 					"endLine": 4
 				},
+				"nstr": [
+					"Older Activities"
+				],
+				"gstr": "Older Activities",
 				"guid": "X7hfuKglEIfBzyBP8hjkNyTVWbzADzO5qZeZrNwktVc"
 			},
 			{
 				"sid": "filter.mine",
-				"str": "My activities",
 				"location": {
 					"startLine": 10,
 					"endLine": 10
 				},
+				"nstr": [
+					"My activities"
+				],
+				"gstr": "My activities",
+				"guid": "Udt6eFrWTD8LIPEn855TExZ8hKbdZ-XnDwZViiOfKjI",
+				"rawNotes": "## Note to translators: The User Interface renders Filters 1, 2, 3 next to each other. The English translation gives these the appearance of a sentence, for example: \"My activities, status updates, in the last 14 days\".\n## This is entirely optional. If the language doesn't allow for this structure, please capitalise the messages in Filter 2+3 so they appear disconnected.\n# Filter 1",
 				"notes": {
 					"desc": "## Note to translators: The User Interface renders Filters 1, 2, 3 next to each other. The English translation gives these the appearance of a sentence, for example: \"My activities, status updates, in the last 14 days\".\n## This is entirely optional. If the language doesn't allow for this structure, please capitalise the messages in Filter 2+3 so they appear disconnected.\n# Filter 1"
-				},
-				"guid": "Udt6eFrWTD8LIPEn855TExZ8hKbdZ-XnDwZViiOfKjI",
-				"rawNotes": "## Note to translators: The User Interface renders Filters 1, 2, 3 next to each other. The English translation gives these the appearance of a sentence, for example: \"My activities, status updates, in the last 14 days\".\n## This is entirely optional. If the language doesn't allow for this structure, please capitalise the messages in Filter 2+3 so they appear disconnected.\n# Filter 1"
+				}
 			},
 			{
 				"sid": "filter.others",
-				"str": "Everyone else's activities",
 				"location": {
 					"startLine": 11,
 					"endLine": 11
 				},
+				"nstr": [
+					"Everyone else's activities"
+				],
+				"gstr": "Everyone else's activities",
 				"guid": "tf1yRhKe3Pz7u0eLwnf0vL6GRU-JEiOcDEEVohFUgBU"
 			},
 			{
 				"sid": "filter.all",
-				"str": "Everyone's activities",
 				"location": {
 					"startLine": 12,
 					"endLine": 12
 				},
+				"nstr": [
+					"Everyone's activities"
+				],
+				"gstr": "Everyone's activities",
 				"guid": "KGMwBkZzgvkB79vKnn9KTUdjpDd06urpF6Dm4CI65hk"
 			},
 			{
 				"sid": "filter.following",
-				"str": "I'm following",
 				"location": {
 					"startLine": 13,
 					"endLine": 13
 				},
+				"nstr": [
+					"I'm following"
+				],
+				"gstr": "I'm following",
 				"guid": "6VXScrtHrW6_RXucbYRhLaIIxk-PcKWCpucU-DXYuto"
 			},
 			{
 				"sid": "filter.allItems",
-				"str": "all items",
 				"location": {
 					"startLine": 15,
 					"endLine": 15
 				},
+				"nstr": [
+					"all items"
+				],
+				"gstr": "all items",
+				"guid": "vRZ8-bFg84NQr-JCGfCiYSgCFpyIVfkRsbewPxPUKWE",
+				"rawNotes": "# Filter 2",
 				"notes": {
 					"desc": "# Filter 2"
-				},
-				"guid": "vRZ8-bFg84NQr-JCGfCiYSgCFpyIVfkRsbewPxPUKWE",
-				"rawNotes": "# Filter 2"
+				}
 			},
 			{
 				"sid": "filter.statusItems",
-				"str": "status updates",
 				"location": {
 					"startLine": 16,
 					"endLine": 16
 				},
+				"nstr": [
+					"status updates"
+				],
+				"gstr": "status updates",
 				"guid": "JyI-4jM5rBXorGP3KgW17ipL1vKGfX-vFdiQC3hJSxo"
 			},
 			{
 				"sid": "filter.commentItems",
-				"str": "comments",
 				"location": {
 					"startLine": 17,
 					"endLine": 17
 				},
+				"nstr": [
+					"comments"
+				],
+				"gstr": "comments",
 				"guid": "p6ZwVEZOg2J8KszdlWUcLhmNYYhXgvGJAWrDtDpJq2U"
 			},
 			{
 				"sid": "filter.contentItems",
-				"str": "content",
 				"location": {
 					"startLine": 18,
 					"endLine": 18
 				},
+				"nstr": [
+					"content"
+				],
+				"gstr": "content",
 				"guid": "dIVUO_Ot8QvPYU5zjVyiWNQ9N4mnQMqs-HfBlrPGGC4"
 			},
 			{
 				"sid": "filter.membershipItems",
-				"str": "memberships",
 				"location": {
 					"startLine": 19,
 					"endLine": 19
 				},
+				"nstr": [
+					"memberships"
+				],
+				"gstr": "memberships",
 				"guid": "h0ht26CvHSGS_Uww8ADVUAHxjrBN3SSfAbkQqsswkcc"
 			},
 			{
 				"sid": "filter.today",
-				"str": "today",
 				"location": {
 					"startLine": 21,
 					"endLine": 21
 				},
+				"nstr": [
+					"today"
+				],
+				"gstr": "today",
+				"guid": "3TQRV9f1141RY8JHLgGCs9MqJXCfUHGCPKoH346i8Ns",
+				"rawNotes": "# Filter 3",
 				"notes": {
 					"desc": "# Filter 3"
-				},
-				"guid": "3TQRV9f1141RY8JHLgGCs9MqJXCfUHGCPKoH346i8Ns",
-				"rawNotes": "# Filter 3"
+				}
 			},
 			{
 				"sid": "filter.7days",
-				"str": "in the last 7 days",
 				"location": {
 					"startLine": 22,
 					"endLine": 22
 				},
+				"nstr": [
+					"in the last 7 days"
+				],
+				"gstr": "in the last 7 days",
 				"guid": "lZ1vxUkINGFrKtKYt4sXEWFtpRIR__IShFVOehBUyi0"
 			},
 			{
 				"sid": "filter.14days",
-				"str": "in the last 14 days",
 				"location": {
 					"startLine": 23,
 					"endLine": 23
 				},
+				"nstr": [
+					"in the last 14 days"
+				],
+				"gstr": "in the last 14 days",
 				"guid": "Vqe7ORCDAj0-3slbq6Y5GRiOE5OkVwpQLLkK0AnV7Ec"
 			},
 			{
 				"sid": "filter.28days",
-				"str": "in the last 28 days",
 				"location": {
 					"startLine": 24,
 					"endLine": 24
 				},
+				"nstr": [
+					"in the last 28 days"
+				],
+				"gstr": "in the last 28 days",
 				"guid": "es1WhpDaK4xTyYraeum4hgyUSD9UgerNfV9BGbPcy8I"
 			},
 			{
 				"sid": "empty.title",
-				"str": "Follow what's going on in this site",
 				"location": {
 					"startLine": 26,
 					"endLine": 26
 				},
+				"nstr": [
+					"Follow what's going on in this site"
+				],
+				"gstr": "Follow what's going on in this site",
 				"guid": "D5uLM2Y7lh5HKdwbw8Oh9zS4NvyemL-ifgDD6NROlug"
 			},
 			{
 				"sid": "empty.description",
-				"str": "Watch this list to keep up on the recent site changes. You'll see activities such as content updates and likes. You can also track the site membership by seeing who is joining and leaving.",
 				"location": {
 					"startLine": 27,
 					"endLine": 27
 				},
+				"nstr": [
+					"Watch this list to keep up on the recent site changes. You'll see activities such as content updates and likes. You can also track the site membership by seeing who is joining and leaving."
+				],
+				"gstr": "Watch this list to keep up on the recent site changes. You'll see activities such as content updates and likes. You can also track the site membership by seeing who is joining and leaving.",
 				"guid": "RLaiyI_cVexQQDovlu1wqNhAlA03prM3H8xpI72wVj8"
 			},
 			{
 				"sid": "dashlet.help",
-				"str": "<p>Following what goes on in the site is easy with this dashlet. It shows all activities, such as content that's been added, edited, and deleted. You can also see who is joining and leaving the site.</p><p>Filters let you view activities by time period and ownership.</p>",
 				"location": {
 					"startLine": 30,
 					"endLine": 31
-				},
-				"notes": {
-					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 				},
 				"nstr": [
 					{
@@ -225,7 +278,10 @@
 				],
 				"gstr": "{{bx}}Following what goes on in the site is easy with this dashlet. It shows all activities, such as content that's been added, edited, and deleted. You can also see who is joining and leaving the site.{{ex}}{{bx}}Filters let you view activities by time period and ownership.{{ex}}",
 				"guid": "jELqCyiqm8dxzBgOPcgJUmQozbaajsr2JF0Sld2lA50",
-				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				}
 			}
 		]
 	},
@@ -242,38 +298,50 @@
 		"segments": [
 			{
 				"sid": "header.datalists",
-				"str": "Site Data Lists",
 				"location": {
 					"startLine": 1,
 					"endLine": 1
 				},
+				"nstr": [
+					"Site Data Lists"
+				],
+				"gstr": "Site Data Lists",
 				"guid": "dMY8CN6sydoqUsRlFLrrNXGTDjgS3A4bFt7nv1DroMI"
 			},
 			{
 				"sid": "label.noLists",
-				"str": "No lists to display",
 				"location": {
 					"startLine": 2,
 					"endLine": 2
 				},
+				"nstr": [
+					"No lists to display"
+				],
+				"gstr": "No lists to display",
 				"guid": "UEdkz_oEge0EOVJV3nqTxzXuNnOFrX9tjMCPElAgRIU"
 			},
 			{
 				"sid": "list.createLink",
-				"str": "Create Data List",
 				"location": {
 					"startLine": 3,
 					"endLine": 3
 				},
+				"nstr": [
+					"Create Data List"
+				],
+				"gstr": "Create Data List",
 				"guid": "s4s9nIqDYizLbFsc8sUeKYUtewrvGVq7HCuzzJMAyoM"
 			},
 			{
 				"sid": "dashlet.help",
-				"str": "This dashlet shows lists relevant to the site. Clicking a list opens it.",
 				"location": {
 					"startLine": 5,
 					"endLine": 5
 				},
+				"nstr": [
+					"This dashlet shows lists relevant to the site. Clicking a list opens it."
+				],
+				"gstr": "This dashlet shows lists relevant to the site. Clicking a list opens it.",
 				"guid": "e0V7MJ88IW05x2ffT3zZKd7c2VGh38qlGaphUkWnFps"
 			}
 		]
@@ -291,56 +359,74 @@
 		"segments": [
 			{
 				"sid": "header.links",
-				"str": "Site Links",
 				"location": {
 					"startLine": 1,
 					"endLine": 1
 				},
+				"nstr": [
+					"Site Links"
+				],
+				"gstr": "Site Links",
 				"guid": "uBR0WvZq-dGOy09nZgCpNCSo9RZNSCZT2Du7IZG4Bsk"
 			},
 			{
 				"sid": "link.createLink",
-				"str": "Create Link",
 				"location": {
 					"startLine": 2,
 					"endLine": 2
 				},
+				"nstr": [
+					"Create Link"
+				],
+				"gstr": "Create Link",
 				"guid": "_zCDNnMNZ1euI5GwWkU25cGMkUpXOZ-KbEs8dQr5VQw"
 			},
 			{
 				"sid": "link.details",
-				"str": "Link's details",
 				"location": {
 					"startLine": 3,
 					"endLine": 3
 				},
+				"nstr": [
+					"Link's details"
+				],
+				"gstr": "Link's details",
 				"guid": "8HjmVxKr0DkRi6RE5Mzx8Mytqr7ZTMgSLOga8bp7Gss"
 			},
 			{
 				"sid": "label.noLinks",
-				"str": "No links to display",
 				"location": {
 					"startLine": 4,
 					"endLine": 4
 				},
+				"nstr": [
+					"No links to display"
+				],
+				"gstr": "No links to display",
 				"guid": "x6nxGD5yw60z5CfGz8xuv5PBEK3ms-y_5Coe_UG_7Ds"
 			},
 			{
 				"sid": "dashlet.help",
-				"str": "This dashlet shows links relevant to this site. The list is compiled by site members. Clicking a link opens it in a new window.",
 				"location": {
 					"startLine": 6,
 					"endLine": 6
 				},
+				"nstr": [
+					"This dashlet shows links relevant to this site. The list is compiled by site members. Clicking a link opens it in a new window."
+				],
+				"gstr": "This dashlet shows links relevant to this site. The list is compiled by site members. Clicking a link opens it in a new window.",
 				"guid": "xMaXXd9iLQTkboNcA5CI6YjOzza6t5fIYKN4nVTLvA0"
 			},
 			{
 				"sid": "link.noUrl",
-				"str": "URL not specified",
 				"location": {
 					"startLine": 7,
 					"endLine": 7
 				},
+				"nstr": [
+					"URL not specified"
+				],
+				"gstr": "URL not specified",
 				"guid": "qpNzDxIKznWjF3VhKBN4jSc4frLkqQGGBn7JqtJa8vE"
 			}
 		]
@@ -358,38 +444,50 @@
 		"segments": [
 			{
 				"sid": "notice.defaultTitle",
-				"str": "Site Notice",
 				"location": {
 					"startLine": 1,
 					"endLine": 1
 				},
+				"nstr": [
+					"Site Notice"
+				],
+				"gstr": "Site Notice",
 				"guid": "nxBPgM21nUdzaHwzKDAUOpPecwgSIOm6hqYTcX9bfwE"
 			},
 			{
 				"sid": "notice.defaultText",
-				"str": "No text has been configured",
 				"location": {
 					"startLine": 2,
 					"endLine": 2
 				},
+				"nstr": [
+					"No text has been configured"
+				],
+				"gstr": "No text has been configured",
 				"guid": "yj4g5ndRJ2pR2YT6I5HJFiWAQwVkHxyWyuDH43euBnc"
 			},
 			{
 				"sid": "link.configure",
-				"str": "Configure",
 				"location": {
 					"startLine": 3,
 					"endLine": 3
 				},
+				"nstr": [
+					"Configure"
+				],
+				"gstr": "Configure",
 				"guid": "dI6k9BSigj6gEI0usWMTDR1B9zsFO8ws9atTiah-8Y4"
 			},
 			{
 				"sid": "dashlet.help",
-				"str": "This dashlet displays a custom message on the dashboard, specified by the site manager",
 				"location": {
 					"startLine": 4,
 					"endLine": 4
 				},
+				"nstr": [
+					"This dashlet displays a custom message on the dashboard, specified by the site manager"
+				],
+				"gstr": "This dashlet displays a custom message on the dashboard, specified by the site manager",
 				"guid": "mJhAoE9OxVj0OEm8MJe4izRbFC6F9eoyGp58nxDpzys"
 			}
 		]
@@ -407,16 +505,18 @@
 		"segments": [
 			{
 				"sid": "header.siteProfile",
-				"str": "Site Profile",
 				"location": {
 					"startLine": 1,
 					"endLine": 1
 				},
+				"nstr": [
+					"Site Profile"
+				],
+				"gstr": "Site Profile",
 				"guid": "khf1feCavm6ibe8MqlZGGmPoAkxw1Fg-9CiardufKSE"
 			},
 			{
 				"sid": "text.welcome",
-				"str": "Welcome to {0}",
 				"location": {
 					"startLine": 2,
 					"endLine": 2
@@ -433,65 +533,86 @@
 			},
 			{
 				"sid": "label.siteAdmin",
-				"str": "Site Manager(s):",
 				"location": {
 					"startLine": 3,
 					"endLine": 3
 				},
+				"nstr": [
+					"Site Manager(s):"
+				],
+				"gstr": "Site Manager(s):",
 				"guid": "HD5X-d2HoQZXAQO4dA6XVjmwyDzxx7atfjumP0wXc8o"
 			},
 			{
 				"sid": "label.visibility",
-				"str": "Visibility:",
 				"location": {
 					"startLine": 4,
 					"endLine": 4
 				},
+				"nstr": [
+					"Visibility:"
+				],
+				"gstr": "Visibility:",
 				"guid": "sc0C0MkFSy_nMBTS8jU14d-HZ-yMGxWuHP3wcTt9yHA"
 			},
 			{
 				"sid": "text.public",
-				"str": "Public",
 				"location": {
 					"startLine": 5,
 					"endLine": 5
 				},
+				"nstr": [
+					"Public"
+				],
+				"gstr": "Public",
 				"guid": "IM1fWv6-HAAWG9JWOwHN2PwqGFm84BL77kEkg73DENw"
 			},
 			{
 				"sid": "text.moderated",
-				"str": "Moderated",
 				"location": {
 					"startLine": 6,
 					"endLine": 6
 				},
+				"nstr": [
+					"Moderated"
+				],
+				"gstr": "Moderated",
 				"guid": "sLsiWSXiT6OMWxIzGzVDhw3JQPzfKBdbII82UggAw90"
 			},
 			{
 				"sid": "text.private",
-				"str": "Private",
 				"location": {
 					"startLine": 7,
 					"endLine": 7
 				},
+				"nstr": [
+					"Private"
+				],
+				"gstr": "Private",
 				"guid": "BaIEq8aWhiGESKvrIdPctiXxiYBDVYWJJbPRg-brYNY"
 			},
 			{
 				"sid": "text.unknown",
-				"str": "Unknown",
 				"location": {
 					"startLine": 8,
 					"endLine": 8
 				},
+				"nstr": [
+					"Unknown"
+				],
+				"gstr": "Unknown",
 				"guid": "nzBKPR27tGvdJTHt81bRETluPFYJ2Gg-H2gE9IUXAJs"
 			},
 			{
 				"sid": "dashlet.help",
-				"str": "This dashlet displays the site details. Only the site manager can change this information.",
 				"location": {
 					"startLine": 10,
 					"endLine": 10
 				},
+				"nstr": [
+					"This dashlet displays the site details. Only the site manager can change this information."
+				],
+				"gstr": "This dashlet displays the site details. Only the site manager can change this information.",
 				"guid": "N1IcZ5QfrSM8ZDsOz5i0tr8gggb063aQJ0iUZgEs5To"
 			}
 		]
@@ -509,49 +630,57 @@
 		"segments": [
 			{
 				"sid": "header.title",
-				"str": "Site Search",
 				"location": {
 					"startLine": 1,
 					"endLine": 1
 				},
+				"nstr": [
+					"Site Search"
+				],
+				"gstr": "Site Search",
 				"guid": "7VTnCLwh2yhUtrL1y6RF5Dwfn2XQbLUztctjl78G2YU"
 			},
 			{
 				"sid": "searchButton.text",
-				"str": "Search",
 				"location": {
 					"startLine": 2,
 					"endLine": 2
 				},
+				"nstr": [
+					"Search"
+				],
+				"gstr": "Search",
 				"guid": "P9gayAUj9HlSgxvLBDwgnL6DpANGiR9nVrMe0FytAtU"
 			},
 			{
 				"sid": "no.result",
-				"str": "No results found.",
 				"location": {
 					"startLine": 3,
 					"endLine": 3
 				},
+				"nstr": [
+					"No results found."
+				],
+				"gstr": "No results found.",
 				"guid": "gNmjQRRdC_hcOykrH-oV68pAvGcA-dAJC5fkJL8rxrw"
 			},
 			{
 				"sid": "message.insite",
-				"str": "in site",
 				"location": {
 					"startLine": 4,
 					"endLine": 4
 				},
+				"nstr": [
+					"in site"
+				],
+				"gstr": "in site",
 				"guid": "pp4AQNiSgKNV1PqmRFEsBGUVJiBdUd_0qK0wm3u6fBY"
 			},
 			{
 				"sid": "dashlet.help",
-				"str": "<p>Use this dashlet to perform a site search and view the results.</p><p>Clicking the item name takes you to the details page so you can preview or work with the item.</p>",
 				"location": {
 					"startLine": 7,
 					"endLine": 8
-				},
-				"notes": {
-					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 				},
 				"nstr": [
 					{
@@ -575,7 +704,10 @@
 				],
 				"gstr": "{{bx}}Use this dashlet to perform a site search and view the results.{{ex}}{{bx}}Clicking the item name takes you to the details page so you can preview or work with the item.{{ex}}",
 				"guid": "uxRPvaEIZZh5Hj1s8oWFsdzucSUdwfQ1M2mzyBMjr7A",
-				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				}
 			}
 		]
 	}

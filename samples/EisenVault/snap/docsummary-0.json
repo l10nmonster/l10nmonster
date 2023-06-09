@@ -12,89 +12,109 @@
 		"segments": [
 			{
 				"sid": "header",
-				"str": "Site Content",
 				"location": {
 					"startLine": 1,
 					"endLine": 1
 				},
+				"nstr": [
+					"Site Content"
+				],
+				"gstr": "Site Content",
 				"guid": "-jkZ8mNn1-5gY57cN8Iwf4TRvNgsswnWDCYc9YU1-DI"
 			},
 			{
 				"sid": "filter.favourites",
-				"str": "My Favorites",
 				"location": {
 					"startLine": 4,
 					"endLine": 4
 				},
+				"nstr": [
+					"My Favorites"
+				],
+				"gstr": "My Favorites",
+				"guid": "Eq6kdX8FRZrnHXZ8tj-1WkbVn79SRm10JD2L8-8Sy8w",
+				"rawNotes": "## Filters",
 				"notes": {
 					"desc": "## Filters"
-				},
-				"guid": "Eq6kdX8FRZrnHXZ8tj-1WkbVn79SRm10JD2L8-8Sy8w",
-				"rawNotes": "## Filters"
+				}
 			},
 			{
 				"sid": "filter.editingMe",
-				"str": "I'm Editing",
 				"location": {
 					"startLine": 5,
 					"endLine": 5
 				},
+				"nstr": [
+					"I'm Editing"
+				],
+				"gstr": "I'm Editing",
 				"guid": "97cVTH-GAwwPwiPkLIvfcpnA5adMWSAGoEbc3MRek1o"
 			},
 			{
 				"sid": "filter.recentlyModifiedByMe",
-				"str": "I've Recently Modified",
 				"location": {
 					"startLine": 6,
 					"endLine": 6
 				},
+				"nstr": [
+					"I've Recently Modified"
+				],
+				"gstr": "I've Recently Modified",
 				"guid": "hf7blJXAg22Fri6NHgJ7s70yxHa6yBhqcqADR_1yjVw"
 			},
 			{
 				"sid": "filter.synced",
-				"str": "Synced content",
 				"location": {
 					"startLine": 7,
 					"endLine": 7
 				},
+				"nstr": [
+					"Synced content"
+				],
+				"gstr": "Synced content",
 				"guid": "qbkzWNAbC_TxskmbnRMPTAFC_Qivo452sE-eKom4sEk"
 			},
 			{
 				"sid": "filter.syncedErrors",
-				"str": "Synced with Errors",
 				"location": {
 					"startLine": 8,
 					"endLine": 8
 				},
+				"nstr": [
+					"Synced with Errors"
+				],
+				"gstr": "Synced with Errors",
 				"guid": "r39Zh1WRDhk2ssx_nqreCADYUoE4NLCBoirF7Hyz0pc"
 			},
 			{
 				"sid": "empty.title",
-				"str": "Keep track of content changes",
 				"location": {
 					"startLine": 10,
 					"endLine": 10
 				},
+				"nstr": [
+					"Keep track of content changes"
+				],
+				"gstr": "Keep track of content changes",
 				"guid": "JRcN8pfbtc9OtGAhnn5foEsq1M7RTW7U_xk4GzVE5lc"
 			},
 			{
 				"sid": "empty.description",
-				"str": "Easily see which document library items site members have been working on. In the detailed view you can like an item and mark it as a favorite. You can also jump to the details page to leave a comment.",
 				"location": {
 					"startLine": 11,
 					"endLine": 11
 				},
+				"nstr": [
+					"Easily see which document library items site members have been working on. In the detailed view you can like an item and mark it as a favorite. You can also jump to the details page to leave a comment."
+				],
+				"gstr": "Easily see which document library items site members have been working on. In the detailed view you can like an item and mark it as a favorite. You can also jump to the details page to leave a comment.",
 				"guid": "AoGMEuVT8eQgM6akvguJJHpfNLiR5zK9PCNZ6dZJ89s"
 			},
 			{
 				"sid": "dashlet.help",
-				"str": "<p>This dashlet makes it easy to keep track of your recent changes to library content in this site. Clicking the item name or thumbnail takes you to the details page so you can preview or work with the item.</p><p>There are two views for this dashlet. The detailed view lets you:<ul><li>Mark an item as a favorite so it appears in Favorites lists for easy access</li><li>Like (and unlike) an item</li><li>Jump to the item details page to leave a comment</li></ul></p>",
 				"location": {
 					"startLine": 14,
 					"endLine": 18
-				},
-				"notes": {
-					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 				},
 				"nstr": [
 					{
@@ -153,7 +173,10 @@
 				],
 				"gstr": "{{bx}}This dashlet makes it easy to keep track of your recent changes to library content in this site. Clicking the item name or thumbnail takes you to the details page so you can preview or work with the item.{{ex}}{{bx}}There are two views for this dashlet. The detailed view lets you:{{bx}}{{bx}}Mark an item as a favorite so it appears in Favorites lists for easy access{{ex}}{{bx}}Like (and unlike) an item{{ex}}{{bx}}Jump to the item details page to leave a comment{{ex}}{{ex}}{{ex}}",
 				"guid": "LiZ1Us13QP3ByVIcMm62HGr4E_GM48xSJKMED2MBqn4",
-				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				}
 			}
 		]
 	}

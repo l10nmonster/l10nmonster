@@ -8,8 +8,12 @@
 		{
 			"guid": "d13hqt62wEq5drSC-g7auJUOAlQL-N3VrEyi1mCjMH0",
 			"q": 61,
-			"src": "Help",
-			"tgt": "مساعدة",
+			"nsrc": [
+				"Help"
+			],
+			"ntgt": [
+				"مساعدة"
+			],
 			"ts": 1
 		}
 	],

@@ -41,7 +41,7 @@ export function decodeNormalizedString(nstr, decoderList, flags = {}) {
 }
 
 export function getNormalizedString(str, decoderList, flags = {}) {
-    return decodeNormalizedString([ { t: 's', v: str } ], decoderList, flags);
+    return decoderList ? decodeNormalizedString([ { t: 's', v: str } ], decoderList, flags) : [ str ];
 }
 
 export function partEncoderMaker(textEncoders, codeEncoders) {
@@ -205,9 +205,7 @@ export function phMatcherMaker(nsrc) {
 
 // compares compatibility of placeholders in source and target and returns a boolean
 export function sourceAndTargetAreCompatible(nsrc, ntgt) {
-    if (Boolean(nsrc) && Boolean(ntgt)) {
-        !Array.isArray(nsrc) && (nsrc = [ nsrc ]);
-        !Array.isArray(ntgt) && (ntgt = [ ntgt ]);
+    if (Array.isArray(nsrc) && Array.isArray(ntgt)) {
         const phMatcher = phMatcherMaker(nsrc);
         if (!phMatcher) {
             return false;
@@ -225,30 +223,26 @@ export function sourceAndTargetAreCompatible(nsrc, ntgt) {
     return false;
 }
 
-export function translateWithEntry(src, nsrc, entry, flags, encodePart) {
+export function translateWithEntry(nsrc, entry, flags, encodePart) {
     if (entry && !entry.inflight) {
-        if (sourceAndTargetAreCompatible(nsrc ?? src, entry.ntgt ?? entry.tgt)) {
-            if (entry.ntgt) {
-                const phMatcher = phMatcherMaker(nsrc ?? [ src ]);
-                const ntgtEntries = entry.ntgt.entries();
-                const tgt = [];
-                for (const [idx, part] of ntgtEntries) {
-                    const partFlags = { ...flags, isFirst: idx === 0, isLast: idx === ntgtEntries.length - 1 };
-                    if (typeof part === 'string') {
-                        tgt.push(encodePart(part, partFlags));
+        if (sourceAndTargetAreCompatible(nsrc, entry.ntgt)) {
+            const phMatcher = phMatcherMaker(nsrc);
+            const ntgtEntries = entry.ntgt.entries();
+            const tgt = [];
+            for (const [idx, part] of ntgtEntries) {
+                const partFlags = { ...flags, isFirst: idx === 0, isLast: idx === ntgtEntries.length - 1 };
+                if (typeof part === 'string') {
+                    tgt.push(encodePart(part, partFlags));
+                } else {
+                    const ph = phMatcher(part);
+                    if (ph) {
+                        tgt.push(encodePart(ph, partFlags));
                     } else {
-                        const ph = phMatcher(part);
-                        if (ph) {
-                            tgt.push(encodePart(ph, partFlags));
-                        } else {
-                            throw `unknown placeholder found: ${JSON.stringify(part)}`;
-                        }
+                        throw `unknown placeholder found: ${JSON.stringify(part)}`;
                     }
                 }
-                return tgt.join('');
-            } else {
-                return encodePart(entry.tgt, { ...flags, isFirst: true, isLast: true });
             }
+            return tgt.join('');
         } else {
             throw `source and target are incompatible`;
         }
@@ -265,9 +259,7 @@ function flattenNormalizedSourceToMiniV1(nsrc) {
 
 // compares normalized strings assuming placeholders are equal if they are compatible
 export function normalizedStringsAreEqual(s1, s2) {
-    const f1 = Array.isArray(s1) ? flattenNormalizedSourceToMiniV1(s1) : s1;
-    const f2 = Array.isArray(s2) ? flattenNormalizedSourceToMiniV1(s2) : s2;
-    return f1 === f2;
+    return flattenNormalizedSourceToMiniV1(s1) === flattenNormalizedSourceToMiniV1(s2);
 }
 
 export function getTUMaps(tus) {
@@ -276,28 +268,20 @@ export function getTUMaps(tus) {
     const phNotes = {};
     for (const tu of tus) {
         const guid = tu.guid;
-        if (tu.nsrc) {
-            const [normalizedStr, phMap ] = flattenNormalizedSourceV1(tu.nsrc);
-            contentMap[guid] = normalizedStr;
-            if (Object.keys(phMap).length > 0) {
-                tuMeta[guid] = { phMap, nsrc: tu.nsrc };
-                const sourcePhNotes = tu?.notes?.ph ?? {};
-                phNotes[guid] = Object.entries(phMap)
-                    .reduce((p, c, i) => `${p}\n  ${String.fromCodePoint(9312 + i)}  ${c[0]} → ${c[1].v}${c[1].s === undefined ? '' : ` → ${c[1].s}`}${sourcePhNotes[c[1].v]?.sample ? ` → ${sourcePhNotes[c[1].v]?.sample}` : ''}${sourcePhNotes[c[1].v]?.desc ? `   (${sourcePhNotes[c[1].v].desc})` : ''}`, '\n ph:')
-                    .replaceAll('<', 'ᐸ')
-                    .replaceAll('>', 'ᐳ'); // hack until they stop stripping html
-            }
-            if (tu.ntgt) {
-                // eslint-disable-next-line no-unused-vars
-                const [normalizedStr, phMap ] = flattenNormalizedSourceV1(tu.ntgt);
-                phNotes[guid] += `\n current translation: ${normalizedStr}`;
-            }
-        } else {
-            contentMap[guid] = tu.src;
-            tuMeta[guid] = { src: tu.src };
-            if (tu.tgt) {
-                phNotes[guid] = `\n current translation: ${tu.tgt}`;
-            }
+        const [normalizedStr, phMap ] = flattenNormalizedSourceV1(tu.nsrc);
+        contentMap[guid] = normalizedStr;
+        if (Object.keys(phMap).length > 0) {
+            tuMeta[guid] = { phMap, nsrc: tu.nsrc };
+            const sourcePhNotes = tu?.notes?.ph ?? {};
+            phNotes[guid] = Object.entries(phMap)
+                .reduce((p, c, i) => `${p}\n  ${String.fromCodePoint(9312 + i)}  ${c[0]} → ${c[1].v}${c[1].s === undefined ? '' : ` → ${c[1].s}`}${sourcePhNotes[c[1].v]?.sample ? ` → ${sourcePhNotes[c[1].v]?.sample}` : ''}${sourcePhNotes[c[1].v]?.desc ? `   (${sourcePhNotes[c[1].v].desc})` : ''}`, '\n ph:')
+                .replaceAll('<', 'ᐸ')
+                .replaceAll('>', 'ᐳ'); // hack until they stop stripping html
+        }
+        if (tu.ntgt) {
+            // eslint-disable-next-line no-unused-vars
+            const [normalizedStr, phMap ] = flattenNormalizedSourceV1(tu.ntgt);
+            phNotes[guid] += `\n current translation: ${normalizedStr}`;
         }
     }
     return { contentMap, tuMeta, phNotes };
@@ -313,16 +297,13 @@ function nstrHasV1Missing(nstr) {
 }
 
 export function makeTU(res, segment) {
-    const { str, nstr, ...seg } = segment;
+    const { nstr, ...seg } = segment;
     const tu = {
         ...seg,
-        src: str,
+        nsrc: nstr,
         rid: res.id,
         ts: new Date(res.modified).getTime(),
     };
-    if (nstr !== undefined) {
-        tu.nsrc = nstr;
-    }
     if (res.prj !== undefined) {
         tu.prj = res.prj;
     }

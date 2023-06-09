@@ -33,6 +33,7 @@ export async function createMonsterManager(configPath, options) {
         for (const tp of Object.values(mm.translationProviders)) {
             typeof tp.translator.init === 'function' && await tp.translator.init(mm);
         }
+        typeof monsterConfig.init === 'function' && await monsterConfig.init(mm);
         l10nmonster.logger.verbose(`L10n Monster factory-initialized!`);
         return mm;
     } catch(e) {

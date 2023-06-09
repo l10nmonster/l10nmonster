@@ -15,7 +15,7 @@ function createTUFromTOSTranslation({ tosUnit, content, tuMeta, quality, refresh
         tu.rev = [ tosUnit.revised_words, tosUnit.error_points ?? 0];
     }
     if (tuMeta[guid]) {
-        tuMeta[guid].src && (tu.src = tuMeta[guid].src);
+        tuMeta[guid].src && (tu.src = tuMeta[guid].src); // TODO: remove this
         tuMeta[guid].nsrc && (tu.nsrc = tuMeta[guid].nsrc);
         tu.ntgt = utils.extractNormalizedPartsV1(content, tuMeta[guid].phMap);
         if (tu.ntgt.filter(e => e === undefined).length > 0) {
@@ -23,7 +23,8 @@ function createTUFromTOSTranslation({ tosUnit, content, tuMeta, quality, refresh
             return null;
         }
     } else {
-        tu.tgt = content;
+        // simple content doesn't have meta
+        tu.ntgt = [ content ];
     }
     return tu;
 }
@@ -144,7 +145,7 @@ module.exports = class TranslationOS {
             jobRequest.instructions && (tosTU.context.instructions = jobRequest.instructions);
             tu.seq && tosTU.dashboard_query_labels.push(`id_${utils.integerToLabel(tu.seq)}`);
             tu.rid && tosTU.dashboard_query_labels.push(tu.rid.slice(-50));
-            (tu.sid !== tu.src) && tosTU.dashboard_query_labels.push(tu.sid.replaceAll('\n', '').slice(-50));
+            tosTU.dashboard_query_labels.push(tu.sid.replaceAll('\n', '').slice(-50));
             if (tu.prj !== undefined) {
                 // eslint-disable-next-line camelcase
                 tosTU.id_order_group = tu.prj;
@@ -196,7 +197,7 @@ module.exports = class TranslationOS {
     }
 
     async #fetchTranslatedTus({ jobGuid, targetLang, reqTus, refreshMode }) {
-        const guids = reqTus.filter(tu => tu.src ?? tu.nsrc).map(tu => tu.guid);
+        const guids = reqTus.filter(tu => tu.src ?? tu.nsrc).map(tu => tu.guid); // TODO: remove .src
         const refreshTranslationsTask = l10nmonster.opsMgr.createTask();
         let chunkNumber = 0;
         const refreshOps = [];

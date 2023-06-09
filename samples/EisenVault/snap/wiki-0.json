@@ -12,49 +12,57 @@
 		"segments": [
 			{
 				"sid": "label.header",
-				"str": "Wiki",
 				"location": {
 					"startLine": 1,
 					"endLine": 1
 				},
+				"nstr": [
+					"Wiki"
+				],
+				"gstr": "Wiki",
 				"guid": "tsUhoDa8t8CFonVR8KHvel4WKS9SQ9FXHzCcsTkt3bs"
 			},
 			{
 				"sid": "label.header-prefix",
-				"str": "Wiki",
 				"location": {
 					"startLine": 2,
 					"endLine": 2
 				},
+				"nstr": [
+					"Wiki"
+				],
+				"gstr": "Wiki",
 				"guid": "gksc8DHW-8RthR-g1Dm982LeG5shOJQG1_FUXaGG8RA"
 			},
 			{
 				"sid": "label.configure",
-				"str": "Configure",
 				"location": {
 					"startLine": 3,
 					"endLine": 3
 				},
+				"nstr": [
+					"Configure"
+				],
+				"gstr": "Configure",
 				"guid": "iVQEaDYs1oi356F_6MZiUW905O8LQl1bKRWNJg4DGqk"
 			},
 			{
 				"sid": "label.noConfig",
-				"str": "No page is configured",
 				"location": {
 					"startLine": 4,
 					"endLine": 4
 				},
+				"nstr": [
+					"No page is configured"
+				],
+				"gstr": "No page is configured",
 				"guid": "WbL_w7F4YtPHfi2CGZuO_iHD42Gsfv9JFL3uE8B3hmY"
 			},
 			{
 				"sid": "dashlet.help",
-				"str": "<p>This dashlet shows a page selected from the site's wiki.</p><p>Navigate to the wiki to see all related content.</p>",
 				"location": {
 					"startLine": 7,
 					"endLine": 8
-				},
-				"notes": {
-					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 				},
 				"nstr": [
 					{
@@ -78,7 +86,10 @@
 				],
 				"gstr": "{{bx}}This dashlet shows a page selected from the site's wiki.{{ex}}{{bx}}Navigate to the wiki to see all related content.{{ex}}",
 				"guid": "vhg8jKxMyyqUEyhnwsgqh8K2eG9SPJY2FXylniirXmA",
-				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				}
 			}
 		]
 	}

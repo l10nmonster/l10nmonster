@@ -12,101 +12,134 @@
 		"segments": [
 			{
 				"sid": "label.header",
-				"str": "Alfresco Add-ons RSS Feed",
 				"location": {
 					"startLine": 1,
 					"endLine": 1
 				},
+				"nstr": [
+					"Alfresco Add-ons RSS Feed"
+				],
+				"gstr": "Alfresco Add-ons RSS Feed",
 				"guid": "mpN5e7DwX3x1lq6tGeCw3pN5XojDAp0yBMSeOOyuCpc"
 			},
 			{
 				"sid": "label.configure",
-				"str": "Configure",
 				"location": {
 					"startLine": 2,
 					"endLine": 2
 				},
+				"nstr": [
+					"Configure"
+				],
+				"gstr": "Configure",
 				"guid": "Syq3DJy_QDcM0m1nqYZXpqFjMMuR87HPZXL4tQ8hfGk"
 			},
 			{
 				"sid": "label.noItems",
-				"str": "No news items",
 				"location": {
 					"startLine": 3,
 					"endLine": 3
 				},
+				"nstr": [
+					"No news items"
+				],
+				"gstr": "No news items",
 				"guid": "94dyHElU-pvxBH_xvcPNYroCw8bbsYZVi9PRkhsVtfk"
 			},
 			{
 				"sid": "label.loading",
-				"str": "Loading items - please wait...",
 				"location": {
 					"startLine": 4,
 					"endLine": 4
 				},
+				"nstr": [
+					"Loading items - please wait..."
+				],
+				"gstr": "Loading items - please wait...",
 				"guid": "P5GRExSyOI9DJatrN4HtEGB0YnefpGW6JB2Nm1SM5_E"
 			},
 			{
 				"sid": "title.error.bad_data",
-				"str": "RSS feed can't be read",
 				"location": {
 					"startLine": 5,
 					"endLine": 5
 				},
+				"nstr": [
+					"RSS feed can't be read"
+				],
+				"gstr": "RSS feed can't be read",
 				"guid": "JYRC8Zfqy9a0-fUUB2YNIS8zc6WQL5RMh8o0ZqD0bcc"
 			},
 			{
 				"sid": "title.error.unavailable",
-				"str": "RSS feed is not available",
 				"location": {
 					"startLine": 6,
 					"endLine": 6
 				},
+				"nstr": [
+					"RSS feed is not available"
+				],
+				"gstr": "RSS feed is not available",
 				"guid": "bmGBoEsRYHhWkiRPZzQvvaQVk96lAyjLazEIevIvhbE"
 			},
 			{
 				"sid": "title.error.unsupported",
-				"str": "RSS feed format is not supported",
 				"location": {
 					"startLine": 7,
 					"endLine": 7
 				},
+				"nstr": [
+					"RSS feed format is not supported"
+				],
+				"gstr": "RSS feed format is not supported",
 				"guid": "jXh3uF9cDUKZtHxEG2JBn2BrdG_ZLsJ31Ej8xwl1E_Y"
 			},
 			{
 				"sid": "dashlet.help",
-				"str": "This dashlet shows the latest news from Alfresco Add-ons. Click the edit icon on the dashlet to configure the feed.",
 				"location": {
 					"startLine": 9,
 					"endLine": 9
 				},
+				"nstr": [
+					"This dashlet shows the latest news from Alfresco Add-ons. Click the edit icon on the dashlet to configure the feed."
+				],
+				"gstr": "This dashlet shows the latest news from Alfresco Add-ons. Click the edit icon on the dashlet to configure the feed.",
 				"guid": "WvR4sh0AUEY-PZKx-eo1nNvJQW5CWA-gp6u2BTfT9D0"
 			},
 			{
 				"sid": "label.body",
-				"str": "Find, rate, and contribute Alfresco add-ons and extensions.",
 				"location": {
 					"startLine": 11,
 					"endLine": 11
 				},
+				"nstr": [
+					"Find, rate, and contribute Alfresco add-ons and extensions."
+				],
+				"gstr": "Find, rate, and contribute Alfresco add-ons and extensions.",
 				"guid": "rHlW0n89eNdd459GykI6D4NBZtJGidWSP86B5BG0kQg"
 			},
 			{
 				"sid": "label.addonsLink",
-				"str": "http://addons.alfresco.com",
 				"location": {
 					"startLine": 12,
 					"endLine": 12
 				},
+				"nstr": [
+					"http://addons.alfresco.com"
+				],
+				"gstr": "http://addons.alfresco.com",
 				"guid": "LDHWLHERVQjJ1o-kvogktdzBFC_6nhgsVuTzxoHbhWI"
 			},
 			{
 				"sid": "label.addonsText",
-				"str": "Visit the Alfresco Add-ons Home Page",
 				"location": {
 					"startLine": 13,
 					"endLine": 13
 				},
+				"nstr": [
+					"Visit the Alfresco Add-ons Home Page"
+				],
+				"gstr": "Visit the Alfresco Add-ons Home Page",
 				"guid": "m70JMPI9T9GiVlanb29OGMpQQrneQXCFFecW1wlENPs"
 			}
 		]

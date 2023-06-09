@@ -107,16 +107,16 @@ export class AbstractViewTreeDataProvider {
 
 export const escapeHtml = str => (str ? str.replaceAll('&', '&amp;').replaceAll('<', '&lt;') : '');
 
-export function renderString(plain, structured, inflight) {
-    if (structured) {
-        return structured
+export function renderString(str, inflight) {
+    if (Array.isArray(str)) {
+        return str
             .map(part => (typeof part === 'string' ? escapeHtml(part) : `<code><b>${escapeHtml(part.v)}</b></code>`))
             .join('');
+    } else if (str === undefined) {
+        return inflight ? '🚀' : '❌';
+    } else {
+        return escapeHtml(str);
     }
-    if (plain) {
-        return escapeHtml(plain);
-    }
-    return inflight ? '🚀' : '❌';
 }
 
 export function getMonsterPage(title, body) {

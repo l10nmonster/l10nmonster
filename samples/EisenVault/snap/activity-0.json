@@ -12,22 +12,21 @@
 		"segments": [
 			{
 				"sid": "title.generic",
-				"str": "New Activity",
 				"location": {
 					"startLine": 1,
 					"endLine": 1
 				},
+				"nstr": [
+					"New Activity"
+				],
+				"gstr": "New Activity",
 				"guid": "7Yg93c458EbHxMIJHNXXG77jF5ZnrMzxv8ScSU0oCyQ"
 			},
 			{
 				"sid": "more.activities",
-				"str": "{0} more",
 				"location": {
 					"startLine": 4,
 					"endLine": 4
-				},
-				"notes": {
-					"desc": "## Rollup"
 				},
 				"nstr": [
 					{
@@ -38,17 +37,16 @@
 				],
 				"gstr": "{{x}} more",
 				"guid": "iFr1XEoi3u89bv1K36QYJ8mOO-8yj4RdSWXpMtkowNo",
-				"rawNotes": "## Rollup"
+				"rawNotes": "## Rollup",
+				"notes": {
+					"desc": "## Rollup"
+				}
 			},
 			{
 				"sid": "atom.title.site",
-				"str": "Alfresco Activities Site Feed for {0}",
 				"location": {
 					"startLine": 7,
 					"endLine": 7
-				},
-				"notes": {
-					"desc": "## ATOM feed messages"
 				},
 				"nstr": [
 					"Alfresco Activities Site Feed for ",
@@ -59,11 +57,13 @@
 				],
 				"gstr": "Alfresco Activities Site Feed for {{x}}",
 				"guid": "DQ_hE0YU3Dc1i-RCzydiH221mS2bCTGrix7yN0NVYjs",
-				"rawNotes": "## ATOM feed messages"
+				"rawNotes": "## ATOM feed messages",
+				"notes": {
+					"desc": "## ATOM feed messages"
+				}
 			},
 			{
 				"sid": "atom.title.user",
-				"str": "Alfresco Activities User Feed for {0}",
 				"location": {
 					"startLine": 8,
 					"endLine": 8
@@ -80,13 +80,9 @@
 			},
 			{
 				"sid": "in.site",
-				"str": "{0} in {1}",
 				"location": {
 					"startLine": 11,
 					"endLine": 11
-				},
-				"notes": {
-					"desc": "## Optional Site link"
 				},
 				"nstr": [
 					{
@@ -101,17 +97,16 @@
 				],
 				"gstr": "{{x}} in {{x}}",
 				"guid": "BpkBpKi4k1zbxxMBjLweUIMIakji86zWvO-jLYTfbc8",
-				"rawNotes": "## Optional Site link"
+				"rawNotes": "## Optional Site link",
+				"notes": {
+					"desc": "## Optional Site link"
+				}
 			},
 			{
 				"sid": "org.alfresco.blog.post-created",
-				"str": "{1} created blog post {0}",
 				"location": {
 					"startLine": 14,
 					"endLine": 14
-				},
-				"notes": {
-					"desc": "## 0 = Item title / page link, 1 = User profile link, 2 = custom0, 3 = custom1, 4 = Site link, 5 = second user profile link"
 				},
 				"nstr": [
 					{
@@ -126,11 +121,13 @@
 				],
 				"gstr": "{{x}} created blog post {{x}}",
 				"guid": "3rblxtRQl_XxzcIRIcuXD1YiqWoZZGm2OK6VT_3AvEE",
-				"rawNotes": "## 0 = Item title / page link, 1 = User profile link, 2 = custom0, 3 = custom1, 4 = Site link, 5 = second user profile link"
+				"rawNotes": "## 0 = Item title / page link, 1 = User profile link, 2 = custom0, 3 = custom1, 4 = Site link, 5 = second user profile link",
+				"notes": {
+					"desc": "## 0 = Item title / page link, 1 = User profile link, 2 = custom0, 3 = custom1, 4 = Site link, 5 = second user profile link"
+				}
 			},
 			{
 				"sid": "org.alfresco.blog.post-updated",
-				"str": "{1} updated blog post {0}",
 				"location": {
 					"startLine": 15,
 					"endLine": 15
@@ -151,7 +148,6 @@
 			},
 			{
 				"sid": "org.alfresco.blog.post-deleted",
-				"str": "{1} deleted blog post {0}",
 				"location": {
 					"startLine": 16,
 					"endLine": 16
@@ -172,7 +168,6 @@
 			},
 			{
 				"sid": "org.alfresco.comments.comment-created",
-				"str": "{1} commented on {0}",
 				"location": {
 					"startLine": 17,
 					"endLine": 17
@@ -193,7 +188,6 @@
 			},
 			{
 				"sid": "org.alfresco.comments.comment-updated",
-				"str": "{1} updated comment on {0}",
 				"location": {
 					"startLine": 18,
 					"endLine": 18
@@ -214,7 +208,6 @@
 			},
 			{
 				"sid": "org.alfresco.comments.comment-deleted",
-				"str": "{1} deleted a comment from {0}",
 				"location": {
 					"startLine": 19,
 					"endLine": 19
@@ -235,7 +228,6 @@
 			},
 			{
 				"sid": "org.alfresco.discussions.post-created",
-				"str": "{1} started discussion {0}",
 				"location": {
 					"startLine": 20,
 					"endLine": 20
@@ -256,7 +248,6 @@
 			},
 			{
 				"sid": "org.alfresco.discussions.post-updated",
-				"str": "{1} updated discussion {0}",
 				"location": {
 					"startLine": 21,
 					"endLine": 21
@@ -277,7 +268,6 @@
 			},
 			{
 				"sid": "org.alfresco.discussions.post-deleted",
-				"str": "{1} deleted discussion {0}",
 				"location": {
 					"startLine": 22,
 					"endLine": 22
@@ -298,7 +288,6 @@
 			},
 			{
 				"sid": "org.alfresco.discussions.reply-created",
-				"str": "{1} replied to the discussion {0}",
 				"location": {
 					"startLine": 23,
 					"endLine": 23
@@ -319,7 +308,6 @@
 			},
 			{
 				"sid": "org.alfresco.discussions.reply-updated",
-				"str": "{1} updated a reply to {0}",
 				"location": {
 					"startLine": 24,
 					"endLine": 24
@@ -340,7 +328,6 @@
 			},
 			{
 				"sid": "org.alfresco.calendar.event-created",
-				"str": "{1} created calendar event {0}",
 				"location": {
 					"startLine": 25,
 					"endLine": 25
@@ -361,7 +348,6 @@
 			},
 			{
 				"sid": "org.alfresco.calendar.event-updated",
-				"str": "{1} updated calendar event {0}",
 				"location": {
 					"startLine": 26,
 					"endLine": 26
@@ -382,7 +368,6 @@
 			},
 			{
 				"sid": "org.alfresco.calendar.event-deleted",
-				"str": "{1} deleted calendar event {0}",
 				"location": {
 					"startLine": 27,
 					"endLine": 27
@@ -403,7 +388,6 @@
 			},
 			{
 				"sid": "org.alfresco.documentlibrary.file-added",
-				"str": "{1} added document {0}",
 				"location": {
 					"startLine": 28,
 					"endLine": 28
@@ -424,7 +408,6 @@
 			},
 			{
 				"sid": "org.alfresco.documentlibrary.files-added",
-				"str": "{1} added {0} documents",
 				"location": {
 					"startLine": 29,
 					"endLine": 29
@@ -446,7 +429,6 @@
 			},
 			{
 				"sid": "org.alfresco.documentlibrary.file-created",
-				"str": "{1} created document {0}",
 				"location": {
 					"startLine": 30,
 					"endLine": 30
@@ -467,7 +449,6 @@
 			},
 			{
 				"sid": "org.alfresco.documentlibrary.file-deleted",
-				"str": "{1} deleted document {0}",
 				"location": {
 					"startLine": 31,
 					"endLine": 31
@@ -488,7 +469,6 @@
 			},
 			{
 				"sid": "org.alfresco.documentlibrary.files-deleted",
-				"str": "{1} deleted {0} documents",
 				"location": {
 					"startLine": 32,
 					"endLine": 32
@@ -510,7 +490,6 @@
 			},
 			{
 				"sid": "org.alfresco.documentlibrary.file-updated",
-				"str": "{1} updated document {0}",
 				"location": {
 					"startLine": 33,
 					"endLine": 33
@@ -531,7 +510,6 @@
 			},
 			{
 				"sid": "org.alfresco.documentlibrary.files-updated",
-				"str": "{1} updated {0} documents",
 				"location": {
 					"startLine": 34,
 					"endLine": 34
@@ -553,7 +531,6 @@
 			},
 			{
 				"sid": "org.alfresco.documentlibrary.folder-added",
-				"str": "{1} added folder {0}",
 				"location": {
 					"startLine": 35,
 					"endLine": 35
@@ -574,7 +551,6 @@
 			},
 			{
 				"sid": "org.alfresco.documentlibrary.folder-deleted",
-				"str": "{1} deleted folder {0}",
 				"location": {
 					"startLine": 36,
 					"endLine": 36
@@ -595,7 +571,6 @@
 			},
 			{
 				"sid": "org.alfresco.documentlibrary.folders-added",
-				"str": "{1} added {0} folders",
 				"location": {
 					"startLine": 37,
 					"endLine": 37
@@ -617,7 +592,6 @@
 			},
 			{
 				"sid": "org.alfresco.documentlibrary.folders-deleted",
-				"str": "{1} deleted {0} folders",
 				"location": {
 					"startLine": 38,
 					"endLine": 38
@@ -639,7 +613,6 @@
 			},
 			{
 				"sid": "org.alfresco.documentlibrary.inline-edit",
-				"str": "{1} edited document {0}",
 				"location": {
 					"startLine": 39,
 					"endLine": 39
@@ -660,7 +633,6 @@
 			},
 			{
 				"sid": "org.alfresco.documentlibrary.file-previewed",
-				"str": "{1} previewed document {0}",
 				"location": {
 					"startLine": 40,
 					"endLine": 40
@@ -681,7 +653,6 @@
 			},
 			{
 				"sid": "org.alfresco.documentlibrary.file-downloaded",
-				"str": "{1} downloaded document {0}",
 				"location": {
 					"startLine": 41,
 					"endLine": 41
@@ -702,7 +673,6 @@
 			},
 			{
 				"sid": "org.alfresco.documentlibrary.file-liked",
-				"str": "{1} liked document {0}",
 				"location": {
 					"startLine": 42,
 					"endLine": 42
@@ -723,7 +693,6 @@
 			},
 			{
 				"sid": "org.alfresco.documentlibrary.folder-liked",
-				"str": "{1} liked folder {0}",
 				"location": {
 					"startLine": 43,
 					"endLine": 43
@@ -744,7 +713,6 @@
 			},
 			{
 				"sid": "org.alfresco.wiki.page-created",
-				"str": "{1} created wiki page {0}",
 				"location": {
 					"startLine": 44,
 					"endLine": 44
@@ -765,7 +733,6 @@
 			},
 			{
 				"sid": "org.alfresco.wiki.page-edited",
-				"str": "{1} updated wiki page {0}",
 				"location": {
 					"startLine": 45,
 					"endLine": 45
@@ -786,7 +753,6 @@
 			},
 			{
 				"sid": "org.alfresco.wiki.page-renamed",
-				"str": "{1} renamed wiki page from {2} to {0}",
 				"location": {
 					"startLine": 46,
 					"endLine": 46
@@ -812,7 +778,6 @@
 			},
 			{
 				"sid": "org.alfresco.wiki.page-deleted",
-				"str": "{1} deleted wiki page {0}",
 				"location": {
 					"startLine": 47,
 					"endLine": 47
@@ -833,7 +798,6 @@
 			},
 			{
 				"sid": "org.alfresco.site.group-added",
-				"str": "{1} group added to site {4} with role {2}",
 				"location": {
 					"startLine": 48,
 					"endLine": 48
@@ -859,7 +823,6 @@
 			},
 			{
 				"sid": "org.alfresco.site.group-removed",
-				"str": "{1} group removed from site {4}",
 				"location": {
 					"startLine": 49,
 					"endLine": 49
@@ -880,7 +843,6 @@
 			},
 			{
 				"sid": "org.alfresco.site.group-role-changed",
-				"str": "{1} group role changed to {2}",
 				"location": {
 					"startLine": 50,
 					"endLine": 50
@@ -901,7 +863,6 @@
 			},
 			{
 				"sid": "org.alfresco.site.user-joined",
-				"str": "{1} joined site {4} with role {2}",
 				"location": {
 					"startLine": 51,
 					"endLine": 51
@@ -927,7 +888,6 @@
 			},
 			{
 				"sid": "org.alfresco.site.user-left",
-				"str": "{1} left site {4}",
 				"location": {
 					"startLine": 52,
 					"endLine": 52
@@ -948,7 +908,6 @@
 			},
 			{
 				"sid": "org.alfresco.site.user-role-changed",
-				"str": "{1} role changed to {2}",
 				"location": {
 					"startLine": 53,
 					"endLine": 53
@@ -969,7 +928,6 @@
 			},
 			{
 				"sid": "org.alfresco.site.liked",
-				"str": "{1} liked site {0}",
 				"location": {
 					"startLine": 54,
 					"endLine": 54
@@ -990,7 +948,6 @@
 			},
 			{
 				"sid": "org.alfresco.links.link-created",
-				"str": "{1} created link {0}",
 				"location": {
 					"startLine": 55,
 					"endLine": 55
@@ -1011,7 +968,6 @@
 			},
 			{
 				"sid": "org.alfresco.links.link-updated",
-				"str": "{1} updated link {0}",
 				"location": {
 					"startLine": 56,
 					"endLine": 56
@@ -1032,7 +988,6 @@
 			},
 			{
 				"sid": "org.alfresco.links.link-deleted",
-				"str": "{1} deleted link {0}",
 				"location": {
 					"startLine": 57,
 					"endLine": 57
@@ -1053,7 +1008,6 @@
 			},
 			{
 				"sid": "org.alfresco.datalists.list-created",
-				"str": "{1} created data list {0}",
 				"location": {
 					"startLine": 58,
 					"endLine": 58
@@ -1074,7 +1028,6 @@
 			},
 			{
 				"sid": "org.alfresco.datalists.list-updated",
-				"str": "{1} updated data list {0}",
 				"location": {
 					"startLine": 59,
 					"endLine": 59
@@ -1095,7 +1048,6 @@
 			},
 			{
 				"sid": "org.alfresco.datalists.list-deleted",
-				"str": "{1} deleted data list {0}",
 				"location": {
 					"startLine": 60,
 					"endLine": 60
@@ -1116,7 +1068,6 @@
 			},
 			{
 				"sid": "org.alfresco.subscriptions.followed",
-				"str": "{1} is now following {5}",
 				"location": {
 					"startLine": 61,
 					"endLine": 61
@@ -1137,7 +1088,6 @@
 			},
 			{
 				"sid": "org.alfresco.subscriptions.subscribed",
-				"str": "{1} has subscribed to {2}",
 				"location": {
 					"startLine": 62,
 					"endLine": 62
@@ -1158,7 +1108,6 @@
 			},
 			{
 				"sid": "org.alfresco.profile.status-changed",
-				"str": "{1}: {2}",
 				"location": {
 					"startLine": 63,
 					"endLine": 63

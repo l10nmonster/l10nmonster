@@ -12,74 +12,98 @@
 		"segments": [
 			{
 				"sid": "label.header",
-				"str": "RSS Feed",
 				"location": {
 					"startLine": 1,
 					"endLine": 1
 				},
+				"nstr": [
+					"RSS Feed"
+				],
+				"gstr": "RSS Feed",
 				"guid": "i6iRLGJMzgct3Ed5dX6quhzt5quYzAu4Zly3wVhMBeA"
 			},
 			{
 				"sid": "label.configure",
-				"str": "Configure",
 				"location": {
 					"startLine": 2,
 					"endLine": 2
 				},
+				"nstr": [
+					"Configure"
+				],
+				"gstr": "Configure",
 				"guid": "kJ9JAWQxUUCxiX4I0UKRyc8prgKz7vhCbHyRcFfSVbo"
 			},
 			{
 				"sid": "label.noItems",
-				"str": "No news items",
 				"location": {
 					"startLine": 3,
 					"endLine": 3
 				},
+				"nstr": [
+					"No news items"
+				],
+				"gstr": "No news items",
 				"guid": "bl2r_NUdz3LRYApviS0mdZovycfmxK_1NX5e_dV3WGY"
 			},
 			{
 				"sid": "label.loading",
-				"str": "Loading items - please wait...",
 				"location": {
 					"startLine": 4,
 					"endLine": 4
 				},
+				"nstr": [
+					"Loading items - please wait..."
+				],
+				"gstr": "Loading items - please wait...",
 				"guid": "TO0t9t7HB8sVD0LpC1mK9cydH5rfK18pVvjp1ukpvsU"
 			},
 			{
 				"sid": "title.error.bad_data",
-				"str": "RSS feed can't be read",
 				"location": {
 					"startLine": 5,
 					"endLine": 5
 				},
+				"nstr": [
+					"RSS feed can't be read"
+				],
+				"gstr": "RSS feed can't be read",
 				"guid": "DXyZQwGvjI-wMwixtVE508JdQMvcior88KIFVTxvf7E"
 			},
 			{
 				"sid": "title.error.unavailable",
-				"str": "RSS feed is not available",
 				"location": {
 					"startLine": 6,
 					"endLine": 6
 				},
+				"nstr": [
+					"RSS feed is not available"
+				],
+				"gstr": "RSS feed is not available",
 				"guid": "wC9kcHAKpkTzWB31xwa9EMVYQwJXfj2pPAlxNYyyigs"
 			},
 			{
 				"sid": "title.error.unsupported",
-				"str": "RSS feed format is not supported",
 				"location": {
 					"startLine": 7,
 					"endLine": 7
 				},
+				"nstr": [
+					"RSS feed format is not supported"
+				],
+				"gstr": "RSS feed format is not supported",
 				"guid": "uWxJ2W5ssGnSAno1hIPCnJYbqmbLejphqst_gp1jfcc"
 			},
 			{
 				"sid": "dashlet.help",
-				"str": "This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed.",
 				"location": {
 					"startLine": 9,
 					"endLine": 9
 				},
+				"nstr": [
+					"This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed."
+				],
+				"gstr": "This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed.",
 				"guid": "c-6fDjw00nB1UJtukMnmj1d18-MHF12J24XzB-fT4xg"
 			}
 		]

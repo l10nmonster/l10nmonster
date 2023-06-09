@@ -28,7 +28,7 @@ export class FindInTarget {
 
     getAnalysis() {
         return {
-            head: ['lang', 'guid', 'tgt'],
+            head: ['lang', 'guid', 'target'],
             groupBy: ['lang'],
             body: this.foundTus,
         };
@@ -45,17 +45,17 @@ export class ExportTranslationGrid {
 
     processTU({ targetLang, tu }) {
         this.langs[targetLang] = true;
-        this.grid[tu.guid] ??= { src: makeCSVCompatibleString(tu.nsrc || [ tu.src ]) };
-        this.grid[tu.guid][targetLang] = makeCSVCompatibleString(tu.ntgt || [ tu.tgt ]);
+        this.grid[tu.guid] ??= { source: makeCSVCompatibleString(tu.nsrc) };
+        this.grid[tu.guid][targetLang] = makeCSVCompatibleString(tu.ntgt);
     }
 
     getAggregateAnalysis() {
         return {
-            head: [ 'guid', 'src', ...Object.keys(this.langs)],
+            head: [ 'guid', 'source', ...Object.keys(this.langs)],
             groupBy: ['lang'],
             body: Object.entries(this.grid).map(([guid, tx]) => [
                 guid,
-                tx.src,
+                tx.source,
                 ...Object.keys(this.langs).map(lang => tx[lang] || '')
             ]),
         };

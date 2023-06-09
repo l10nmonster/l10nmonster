@@ -15,14 +15,14 @@ export default class TextExpansionSummary {
     }
 
     processTU({ targetLang, tu }) {
-        const src = tu.nsrc ? tu.nsrc.map(e => (typeof e === 'string' ? e : '')).join('') : tu.src;
-        const tgt = tu.ntgt ? tu.ntgt.map(e => (typeof e === 'string' ? e : '')).join('') : tu.tgt;
-        if (src && tgt && src.length > 0 && tgt.length > 0) {
+        const source = tu.nsrc.map(e => (typeof e === 'string' ? e : '')).join('');
+        const target = tu.ntgt.map(e => (typeof e === 'string' ? e : '')).join('');
+        if (source && target && source.length > 0 && target.length > 0) {
             this.langStats[targetLang] ??= [];
             this.langStats[targetLang].push([
-                src.length,
-                tgt.length,
-                tgt.length >= src.length ? tgt.length / src.length - 1 : -src.length / tgt.length + 1,
+                source.length,
+                target.length,
+                target.length >= source.length ? target.length / source.length - 1 : -source.length / target.length + 1,
             ]);
         }
     }

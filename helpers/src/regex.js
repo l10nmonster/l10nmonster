@@ -9,10 +9,11 @@
 export const decoderMaker = function regexDecoderMaker(flag, regex, partDecoder) {
     const fn = function decoder(parts) {
         const decodedParts = parts.map(p => {
-            if (p.t === 's') {
+            if (p.t === 's' || typeof p === 'string') {
+                const textValue = typeof p === 'string' ? p : p.v;
                 const expandedPart = [];
                 let pos = 0;
-                for (const match of p.v.matchAll(regex)) {
+                for (const match of textValue.matchAll(regex)) {
                     if (match.index > pos) {
                         expandedPart.push({
                             t: 's',
@@ -31,10 +32,10 @@ export const decoderMaker = function regexDecoderMaker(flag, regex, partDecoder)
                     }
                     pos = match.index + match[0].length;
                 }
-                if (pos < p.v.length) {
+                if (pos < textValue.length) {
                     expandedPart.push({
                         t: 's',
-                        v: p.v.substring(pos, p.v.length),
+                        v: textValue.substring(pos, textValue.length),
                     });
                 }
                 return expandedPart;

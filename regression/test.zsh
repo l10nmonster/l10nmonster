@@ -44,4 +44,6 @@ rm -rf wd/*/.l10nmonster
 rm -rf wd/*/node_modules
 rm wd/*/package.json
 rm wd/*/l10nmonster.cjs
+find wd -name '.DS_Store' -type f -delete
+find expected -name '.DS_Store' -type f -delete
 diff -qr wd expected

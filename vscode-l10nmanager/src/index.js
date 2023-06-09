@@ -6,12 +6,22 @@ import { JobsViewProvider } from './jobsPanel.js';
 import { AnalyzeViewProvider } from './analyzePanel.js';
 import { withMonsterManager } from './monsterUtils.js';
 
+const printCapabilities = cap => Object.entries(cap).filter(e => e[1]).map(e => e[0]).join(', ');
+
+function getL10nmanagerCommand(configPath) {
+    return async function l10nmanagerCommand() {
+        const capabilities = await withMonsterManager(configPath, async mm => printCapabilities(mm.capabilities));
+        vscode.window.showInformationMessage(capabilities ? `Supported commands: ${capabilities}` : 'Problems initializing L10n Monster');
+        capabilities && await vscode.commands.executeCommand('statusView.focus');
+    }
+}
+
 async function initL10nMonster(context) {
     const configPath = vscode.workspace.workspaceFolders?.length > 0 && path.resolve(vscode.workspace.workspaceFolders[0].uri.fsPath, 'l10nmonster.cjs');
     if (configPath && existsSync(configPath)) {
         l10nmonster.logger.info(`L10n Monster config found at: ${configPath}`);
+        context.subscriptions.push(vscode.commands.registerCommand('l10nmonster.l10nmanager', getL10nmanagerCommand(configPath)));
         return withMonsterManager(configPath, async mm => {
-            const printCapabilities = cap => Object.entries(cap).filter(e => e[1]).map(e => e[0]).join(', ');
             l10nmonster.logger.info(`L10n Monster initialized. Supported commands: ${printCapabilities(mm.capabilities)}`);
             await vscode.commands.executeCommand('setContext', 'l10nMonsterEnabled', true);
 
@@ -32,19 +42,12 @@ async function initL10nMonster(context) {
     return false;
 }
 
-async function l10nmanagerCommand(context) {
-    const status = await initL10nMonster(context);
-    vscode.window.showInformationMessage(status ? 'L10n Monster re-initialized' : 'Problems initializing L10n Monster');
-    status && await vscode.commands.executeCommand('statusView.focus');
-}
-
 /**
  * @param {vscode.ExtensionContext} context
  */
 export async function activate(context) {
     l10nmonster.logger.info(`L10n Monster Manager is now active!`);
     // await vscode.commands.executeCommand('setContext', 'l10nMonsterEnabled', false);
-    context.subscriptions.push(vscode.commands.registerCommand('l10nmonster.l10nmanager', l10nmanagerCommand));
     await initL10nMonster(context);
 }
 

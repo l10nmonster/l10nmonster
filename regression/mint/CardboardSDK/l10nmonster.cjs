@@ -1,10 +1,9 @@
 const ios = require('@l10nmonster/helpers-ios');
-const { xml, stores, adapters, translators } = require('@l10nmonster/helpers');
+const { xml, stores, adapters, translators, decorators } = require('@l10nmonster/helpers');
 
 module.exports = class CardboardConfig2 {
     sourceLang = 'en';
     minimumQuality = 50;
-    seqMap = 'seqMap.json';
 
     constructor() {
         this.source = new adapters.FsSource({
@@ -12,12 +11,14 @@ module.exports = class CardboardConfig2 {
             targetLangs: [ 'ar' ],
         });
         this.resourceFilter = new ios.StringsFilter();
+        this.sg = new decorators.SequenceGenerator('seqMap.json');
+        this.segmentDecorators = [ this.sg.getDecorator() ];
         this.decoders = [ ios.phDecoder, ios.escapesDecoder ];
         this.textEncoders = [ xml.entityEncoder, ios.escapesEncoder ];
         this.translationProviders = {
             Visicode: {
                 translator: new translators.Visicode({
-                    quality: 2
+                    quality: 2,
                 }),
             },
             Repetition: {
@@ -38,5 +39,9 @@ module.exports = class CardboardConfig2 {
         this.jobStore = new stores.JsonJobStore({
             jobsDir: 'translationJobs',
         });
+    }
+
+    async init(mm) {
+        return this.sg.init(mm);
     }
 };

@@ -1,4 +1,4 @@
-const { adapters, translators } = require('@l10nmonster/helpers');
+const { adapters, translators, stores } = require('@l10nmonster/helpers');
 const po = require('@l10nmonster/helpers-po');
 const demo = require('@l10nmonster/helpers-demo');
 
@@ -35,6 +35,9 @@ module.exports = class GrampsConfig2 {
         };
         this.target = new adapters.FsTarget({
             targetPath: (lang) => `artifacts/${lang}.po`,
+        });
+        this.jobStore = new stores.JsonJobStore({
+            jobsDir: 'l10njobs',
         });
     }
 }

@@ -7,9 +7,6 @@
 			"isSuffixPluralized": true,
 			"gstr": "Remove {{x}} downloaded chapter?",
 			"guid": "t4VWxI0XBS7jJwzcIpjyWz95PtQe0nM2xUjvN4A1U_4",
-			"src": "Remove %1$d downloaded chapter?",
-			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1,
 			"nsrc": [
 				"Remove ",
 				{
@@ -17,64 +14,60 @@
 					"v": "%1$d"
 				},
 				" downloaded chapter?"
-			]
+			],
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
 		},
 		{
 			"sid": "chapters_plural_one",
 			"isSuffixPluralized": true,
 			"gstr": "{{x}} chapter",
 			"guid": "1d7HtgdwLMLoxTTiv83rLZkKjkpfAmsehateH09g4gc",
-			"src": "%1$d chapter",
-			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
 					"v": "%1$d"
 				},
 				" chapter"
-			]
+			],
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
 		},
 		{
 			"sid": "pages_left_one",
 			"isSuffixPluralized": true,
 			"gstr": "{{x}} page left",
 			"guid": "2udl0hvWKKtR3kYZ1ZxvWfGf6Sq6I_AP1i91nZoJRuU",
-			"src": "%1$d page left",
-			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
 					"v": "%1$d"
 				},
 				" page left"
-			]
+			],
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
 		},
 		{
 			"sid": "category_plural_one",
 			"isSuffixPluralized": true,
 			"gstr": "{{x}} category",
 			"guid": "PR-mra8oJXYjh-iGJbPWRJ93cqMsnv3I9kI-KHWftDI",
-			"src": "%d category",
-			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
 					"v": "%d"
 				},
 				" category"
-			]
+			],
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
 		},
 		{
 			"sid": "for_n_titles_one",
 			"isSuffixPluralized": true,
 			"gstr": "For {{x}} title",
 			"guid": "nn9ifCxTi0t0nXPKjjqANSd9RsYNb7nXBbc0e-L1MBY",
-			"src": "For %d title",
-			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1,
 			"nsrc": [
 				"For ",
 				{
@@ -82,16 +75,15 @@
 					"v": "%d"
 				},
 				" title"
-			]
+			],
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
 		},
 		{
 			"sid": "notification_and_n_more_one",
 			"isSuffixPluralized": true,
 			"gstr": "and {{x}} more chapter",
 			"guid": "i6ms_Au63GlXHZGXAcuj1OlRcD9GhIwb0mR2FlStmOo",
-			"src": "and %1$d more chapter",
-			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1,
 			"nsrc": [
 				"and ",
 				{
@@ -99,13 +91,18 @@
 					"v": "%1$d"
 				},
 				" more chapter"
-			]
+			],
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
 		},
 		{
 			"sid": "notification_update_failed_one",
 			"isSuffixPluralized": true,
+			"gstr": "1 update failed",
 			"guid": "n-9x0mdfrc5EllF9g4lxFwLkppPeEQND2uhVP0ERBFU",
-			"src": "1 update failed",
+			"nsrc": [
+				"1 update failed"
+			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -114,30 +111,35 @@
 			"isSuffixPluralized": true,
 			"gstr": "{{x}} update pending",
 			"guid": "-BgwQxYmz_OcJgZCUZeNEhbIn71aeYWQLfqDzIdO5-A",
-			"src": "%d update pending",
-			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
 					"v": "%d"
 				},
 				" update pending"
-			]
+			],
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
 		},
 		{
 			"sid": "extensions_updated_plural_one",
 			"isSuffixPluralized": true,
+			"gstr": "Extension updated",
 			"guid": "PDKvwcIWbKlbrMMuqEa00drfTM71kt4AE5hfbznTe_o",
-			"src": "Extension updated",
+			"nsrc": [
+				"Extension updated"
+			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
 		{
 			"sid": "extension_updates_available_one",
 			"isSuffixPluralized": true,
+			"gstr": "Extension update available",
 			"guid": "ZNcGVkm_LvhJlULW759Z140eW5Es4GSIXDFWwYiq7Lo",
-			"src": "Extension update available",
+			"nsrc": [
+				"Extension update available"
+			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -146,22 +148,24 @@
 			"isSuffixPluralized": true,
 			"gstr": "{{x}} page",
 			"guid": "ftTBQ9mT8jzVQTlzVQThq84qga7aRnm1A_EmQPZ62tE",
-			"src": "%1$d page",
-			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
 					"v": "%1$d"
 				},
 				" page"
-			]
+			],
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
 		},
 		{
 			"sid": "missing_chapters_warning_one",
 			"isSuffixPluralized": true,
+			"gstr": "Skipping 1 chapter, either the source is missing it or it has been filtered out",
 			"guid": "TyE4yyopQMXi9xPAwddqixG0FiRUr7u1yXsHaK5cFNg",
-			"src": "Skipping 1 chapter, either the source is missing it or it has been filtered out",
+			"nsrc": [
+				"Skipping 1 chapter, either the source is missing it or it has been filtered out"
+			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1
 		},
@@ -170,9 +174,6 @@
 			"isSuffixPluralized": true,
 			"gstr": "A chapter has been removed from the source:\n{{x}}\nDelete its download?",
 			"guid": "SSZERtfZuYpDYos6-_VXWBeWY2P0LQQBQ5wwygKih98",
-			"src": "A chapter has been removed from the source:\\n%2$s\\nDelete\n            its download?",
-			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1,
 			"nsrc": [
 				"A chapter has been removed from the source:\n",
 				{
@@ -180,16 +181,15 @@
 					"v": "%2$s"
 				},
 				"\nDelete its download?"
-			]
+			],
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
 		},
 		{
 			"sid": "restore_completed_message_one",
 			"isSuffixPluralized": true,
 			"gstr": "Done in {{x}} with {{x}} error",
 			"guid": "dUY5CemIa3xpPTEoUKN5hZLIYyFYKU1bhYQvPyUJvk0",
-			"src": "Done in %1$s with %2$s error",
-			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1,
 			"nsrc": [
 				"Done in ",
 				{
@@ -202,16 +202,15 @@
 					"v": "%2$s"
 				},
 				" error"
-			]
+			],
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
 		},
 		{
 			"sid": "cache_cleared_one",
 			"isSuffixPluralized": true,
 			"gstr": "Cache cleared. {{x}} file has been deleted",
 			"guid": "5eZfQwyisFt-eAr3zUOKugP__L-uALc_ylWptAYKJQI",
-			"src": "Cache cleared. %d file has been deleted",
-			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1,
 			"nsrc": [
 				"Cache cleared. ",
 				{
@@ -219,16 +218,15 @@
 					"v": "%d"
 				},
 				" file has been deleted"
-			]
+			],
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
 		},
 		{
 			"sid": "cleanup_done_one",
 			"isSuffixPluralized": true,
 			"gstr": "Cleanup done. Removed {{x}} folder",
 			"guid": "rh1h0cJO-5V2S5q15JDf5bxw2kDqyrXKS4r_wy5PUwU",
-			"src": "Cleanup done. Removed %d folder",
-			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1,
 			"nsrc": [
 				"Cleanup done. Removed ",
 				{
@@ -236,16 +234,15 @@
 					"v": "%d"
 				},
 				" folder"
-			]
+			],
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
 		},
 		{
 			"sid": "after_minutes_one",
 			"isSuffixPluralized": true,
 			"gstr": "After {{x}} minute",
 			"guid": "C0PQbeoPQFB8cyWahP6wddbk0QOh4f-mmiHyTcQUny4",
-			"src": "After %1$s minute",
-			"rid": "app/src/main/res/values/strings.xml",
-			"ts": 1,
 			"nsrc": [
 				"After ",
 				{
@@ -253,7 +250,9 @@
 					"v": "%1$s"
 				},
 				" minute"
-			]
+			],
+			"rid": "app/src/main/res/values/strings.xml",
+			"ts": 1
 		}
 	],
 	"translationProvider": "XliffBridge",

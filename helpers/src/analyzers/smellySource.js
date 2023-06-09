@@ -8,9 +8,8 @@ export default class SmellySource {
     }
 
     processSegment({ rid, prj, seg }) {
-        const content = seg?.nstr?.map(e => (typeof e === 'string' ? e : ''))?.join('') || seg.str;
-        if (this.smellyRegex.test(content)) {
-            this.smelly.push([prj, rid, seg.sid, content]);
+        if (this.smellyRegex.test(seg.gstr)) {
+            this.smelly.push([prj, rid, seg.sid, seg.gstr]);
         }
     }
 

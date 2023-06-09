@@ -1,6 +1,6 @@
 const html = require('@l10nmonster/helpers-html');
 const demo = require('@l10nmonster/helpers-demo');
-const { xml, adapters, translators } = require('@l10nmonster/helpers');
+const { xml, adapters, translators, stores } = require('@l10nmonster/helpers');
 
 module.exports = class CardboardConfig {
     sourceLang = 'en';
@@ -32,6 +32,9 @@ module.exports = class CardboardConfig {
         };
         this.target = new adapters.FsTarget({
             targetPath: (lang, resourceId) => resourceId.replace('en/', `${lang}/`),
+        });
+        this.jobStore = new stores.JsonJobStore({
+            jobsDir: 'l10njobs',
         });
     }
 }

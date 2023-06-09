@@ -12,43 +12,54 @@
 		"segments": [
 			{
 				"sid": "label.header",
-				"str": "My Calendar",
 				"location": {
 					"startLine": 1,
 					"endLine": 1
 				},
+				"nstr": [
+					"My Calendar"
+				],
+				"gstr": "My Calendar",
 				"guid": "SPKdfv3dFWX7-7XFoRAq7On20IfLoU6TqTWJEw5jloU"
 			},
 			{
 				"sid": "label.noEvents",
-				"str": "No upcoming events",
 				"location": {
 					"startLine": 2,
 					"endLine": 2
 				},
+				"nstr": [
+					"No upcoming events"
+				],
+				"gstr": "No upcoming events",
 				"guid": "qwOsbKeQ6XPLwXDcsYMNfNxnZkyoyMpXxz6_LSsWlzQ"
 			},
 			{
 				"sid": "label.error",
-				"str": "Could not load calendar data",
 				"location": {
 					"startLine": 3,
 					"endLine": 3
 				},
+				"nstr": [
+					"Could not load calendar data"
+				],
+				"gstr": "Could not load calendar data",
 				"guid": "ZtTwkAcJjMlS2vtVGe9GQ2o5rFvpkyLIOLYQa-a3I9g"
 			},
 			{
 				"sid": "label.allday",
-				"str": "All Day",
 				"location": {
 					"startLine": 4,
 					"endLine": 4
 				},
+				"nstr": [
+					"All Day"
+				],
+				"gstr": "All Day",
 				"guid": "IGy5p0jghtEk0sW4dXZLtM3lEa2gpWZ_FqWyBaew8do"
 			},
 			{
 				"sid": "label.in-site",
-				"str": "in {0}",
 				"location": {
 					"startLine": 5,
 					"endLine": 5
@@ -65,11 +76,14 @@
 			},
 			{
 				"sid": "dashlet.help",
-				"str": "This dashlet shows the upcoming events in sites you belong to. ",
 				"location": {
 					"startLine": 7,
 					"endLine": 7
 				},
+				"nstr": [
+					"This dashlet shows the upcoming events in sites you belong to. "
+				],
+				"gstr": "This dashlet shows the upcoming events in sites you belong to. ",
 				"guid": "yhoc5qivuex4c_K-BMYUFbP9nKbkdCrqEfDm1BnOX-8"
 			}
 		]

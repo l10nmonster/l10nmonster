@@ -1,34 +1,10 @@
-import {
-    existsSync,
-    readFileSync,
-    writeFileSync,
-} from 'fs';
 import { utils } from '@l10nmonster/helpers';
 
 export default class SourceManager {
-    constructor({ configSeal, contentTypes, snapStore, seqMapPath, seqThreshold }) {
+    constructor({ configSeal, contentTypes, snapStore }) {
         this.configSeal = configSeal;
         this.contentTypes = contentTypes;
         this.snapStore = snapStore;
-        if (seqMapPath) {
-            this.seqMapPath = seqMapPath;
-            this.seqThreshold = seqThreshold ?? 7;
-            if (existsSync(seqMapPath)) {
-                this.seqMap = JSON.parse(readFileSync(seqMapPath, 'utf8'));
-                let max = 0,
-                    min = Number.MAX_SAFE_INTEGER;
-                Object.values(this.seqMap).forEach(s => {
-                    s > max && (max = s);
-                    s < min && (min = s);
-                });
-                this.maxSeq = max;
-                this.minSeq = min;
-            } else {
-                this.seqMap = {};
-                this.maxSeq = 32 * 32 - 1;
-                this.minSeq = 32 * 32;
-            }
-        }
     }
 
     async getResourceStatsFromAllSources() {
@@ -48,48 +24,44 @@ export default class SourceManager {
         return this.snapStore ? this.snapStore.getResourceStats() : this.getResourceStatsFromAllSources();
     }
 
-    // produce at least a 2-char label and try to assign shorter numbers to shorter strings
-    #generateSequence(seg) {
-        const seq = this.seqMap[seg.guid];
-        if (seq) {
-            return seq;
-        } else {
-            // eslint-disable-next-line no-nested-ternary
-            const sl = (seg.nstr?.map(e => (typeof e === 'string' ? e : (e.t === 'x' ? '1234567' : '')))?.join('') ?? seg.str).length;
-            const newSeq = sl <= this.seqThreshold && this.minSeq > 32 ? --this.minSeq : ++this.maxSeq;
-            this.seqMap[seg.guid] = newSeq;
-            return newSeq;
-        }
-    }
-
     async #getParsedResource(pipeline, resourceStat, resource) {
         let parsedRes = await pipeline.resourceFilter.parseResource({resource, isSource: true});
-        const res = { ...resourceStat, segments: parsedRes.segments };
-        parsedRes.targetLangs && (res.targetLangs = parsedRes.targetLangs);
-        for (const seg of res.segments) {
-            if (pipeline.decoders) {
-                const normalizedStr = utils.getNormalizedString(seg.str, pipeline.decoders);
-                if (normalizedStr[0] !== seg.str) {
-                    seg.nstr = normalizedStr;
-                }
-            }
-            const flattenStr = seg.nstr ? utils.flattenNormalizedSourceToOrdinal(seg.nstr) : seg.str;
-            flattenStr !== seg.str && (seg.gstr = flattenStr);
-            seg.guid = utils.generateFullyQualifiedGuid(res.id, seg.sid, flattenStr);
-            this.seqMapPath && (seg.seq = this.#generateSequence(seg));
-            if (typeof seg.notes === 'string') {
-                seg.rawNotes = seg.notes;
-                seg.notes = utils.extractStructuredNotes(seg.notes);
+        const { segments, ...resourceHead } = parsedRes;
+        const res = { ...resourceStat, ...resourceHead };
+        res.segments = [];
+        for (const rawSegment of segments) {
+            const { str, notes, ...normalizedSeg } = rawSegment;
+            normalizedSeg.nstr = utils.getNormalizedString(str, pipeline.decoders);
+            normalizedSeg.gstr = utils.flattenNormalizedSourceToOrdinal(normalizedSeg.nstr);
+            normalizedSeg.guid = utils.generateFullyQualifiedGuid(res.id, normalizedSeg.sid, normalizedSeg.gstr);
+            if (typeof notes === 'string') {
+                normalizedSeg.rawNotes = notes;
+                normalizedSeg.notes = utils.extractStructuredNotes(notes);
             }
             // populate ph samples from comments
-            if (seg?.notes?.ph && seg.nstr) {
-                for (const part of seg.nstr) {
-                    if (part.t === 'x' && seg.notes.ph[part.v]?.sample !== undefined && part.s === undefined) {
-                        part.s = seg.notes.ph[part.v].sample;
+            if (normalizedSeg.notes?.ph) {
+                for (const part of normalizedSeg.nstr) {
+                    if (part.t === 'x' && normalizedSeg.notes.ph[part.v]?.sample !== undefined && part.s === undefined) {
+                        part.s = normalizedSeg.notes.ph[part.v].sample;
                     }
                 }
             }
-            Object.freeze(seg);
+            if (pipeline.segmentDecorators) {
+                let decoratedSeg = normalizedSeg;
+                for (const decorator of pipeline.segmentDecorators) {
+                    decoratedSeg = decorator(decoratedSeg);
+                    if (decoratedSeg === undefined) { // this basically means DNT (or more like "pretend this doesn't exist")
+                        break;
+                    }
+                }
+                if (decoratedSeg !== undefined) {
+                    Object.freeze(decoratedSeg);
+                    res.segments.push(decoratedSeg);
+                }
+            } else {
+                Object.freeze(normalizedSeg);
+                res.segments.push(normalizedSeg);
+            }
         }
         Object.freeze(res);
         return res;
@@ -133,8 +105,5 @@ export default class SourceManager {
     }
 
     async shutdown() {
-        if (this.seqMapPath) {
-            this.seqMapPath && writeFileSync(this.seqMapPath, JSON.stringify(this.seqMap, null, '\t'), 'utf8');
-        }
     }
 }

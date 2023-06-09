@@ -4,6 +4,9 @@
         "node": true
     },
     "extends": "eslint:recommended",
+    "ignorePatterns": [
+        "**/out/**"
+    ],
     "globals": {
         "l10nmonster": "writable"
     },
