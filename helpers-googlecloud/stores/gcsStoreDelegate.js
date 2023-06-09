@@ -11,19 +11,18 @@ const {
 module.exports = class GCSStoreDelegate {
     constructor(bucketName, bucketPrefix) {
         this.bucketName = bucketName;
-        this.bucketPrefix = bucketPrefix || 'jobs';
+        this.bucketPrefix = bucketPrefix;
+        this.storage = new Storage();
     }
 
     async listAllFiles() {
         try {
-            // console.time('gcs');
-            const storage = new Storage();
-            // console.timeLog('gcs');
-            this.bucket = await storage.bucket(this.bucketName);
-            // console.timeLog('gcs');
-            const [files] = await this.bucket.getFiles({ prefix: this.bucketPrefix });
-            // console.timeEnd('gcs');
-            const filenames = files.map(f=>f.name);
+            this.bucket || (this.bucket = await this.storage.bucket(this.bucketName));
+            if (!this.files){
+                const [files] = await this.bucket.getFiles({ prefix: this.bucketPrefix });
+                this.files = files;    
+            }
+            const filenames = this.files.map(f=>f.name);
             return filenames;
         } catch(e) {
             l10nmonster.logger.error(e.stack ?? e);
@@ -36,6 +35,7 @@ module.exports = class GCSStoreDelegate {
 
     async getFile(filename) {      
         try {
+            this.bucket || (this.bucket = await this.storage.bucket(this.bucketName));
             const gcsContents = await this.bucket.file(filename).download();
             return gcsContents.toString();
         } catch(e) {
@@ -44,8 +44,24 @@ module.exports = class GCSStoreDelegate {
     }
 
     async saveFile(filename, contents) {
+        try {
+            this.bucket || (this.bucket = await this.storage.bucket(this.bucketName));
+            const file = this.bucket.file(filename);
+            return file.save(contents);
+        } catch(e) {
+            l10nmonster.logger.error(e.stack ?? e);
+        }
     }
 
     async deleteFiles(filenames) {
+        try {
+            this.bucket || (this.bucket = await this.storage.bucket(this.bucketName));
+            for (const filename of filenames) {
+                const file = this.bucket.file(filename);
+                await file.delete();  
+            }  
+        } catch(e) {
+            l10nmonster.logger.error(e.stack ?? e);
+        }
     }
 }
