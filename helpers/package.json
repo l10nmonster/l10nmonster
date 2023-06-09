@@ -16,6 +16,7 @@
     "author": "",
     "license": "MIT",
     "dependencies": {
+        "@google-cloud/storage": "^6",
         "globby": "^13.1.1",
         "nanoid": "^4"
     },
