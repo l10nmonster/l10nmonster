@@ -1,12 +1,4 @@
 const { Storage } = require('@google-cloud/storage');
-const path = require('path');
-const {
-    mkdir,
-    readdir,
-    readFile,
-    writeFile,
-    unlink,
-} = require('node:fs/promises');
 
 module.exports = class GCSStoreDelegate {
     constructor(bucketName, bucketPrefix) {
