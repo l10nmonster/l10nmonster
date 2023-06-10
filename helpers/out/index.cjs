@@ -6727,7 +6727,7 @@ function gatedEncoder(encoder, ...flagNames) {
   Object.defineProperty(fn, "name", { value: `gatedEncoder_${flagNames.join("_")}` });
   return fn;
 }
-var doublePercentEncoder = (str) => str.replaceAll("%", "%%");
+var doublePercentEncoder = encoderMaker("doublePercentEncoder", /%/g, { "%": "%%" });
 var bracePHDecoder = decoderMaker(
   "bracePHDecoder",
   /(?<x>{[^}]+})/g,

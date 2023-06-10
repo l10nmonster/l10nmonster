@@ -12255,6 +12255,7 @@ var doublePercentDecoder = decoderMaker(
   /(?<percent>%%)/g,
   () => "%"
 );
+var doublePercentEncoder = encoderMaker("doublePercentEncoder", /%/g, { "%": "%%" });
 var bracePHDecoder = decoderMaker(
   "bracePHDecoder",
   /(?<x>{[^}]+})/g,
