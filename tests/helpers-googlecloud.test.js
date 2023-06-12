@@ -1,12 +1,12 @@
 const path = require('path');
-const { stores } = require('@l10nmonster/helpers-googlecloud');
+const { stores } = require('../helpers-googlecloud');
 const { GCSStoreDelegate } = require('../helpers-googlecloud/stores');
 global.l10nmonster ??= {};
 l10nmonster.baseDir = `${path.resolve('.')}/translators`;
 l10nmonster.logger = { info: () => true, error: () => false };
 
 const jobGuid = "Tck5-ng7SdYfpEPe5FKEn";
-const jobFilename = "jobs/ModernMT_en_it_job_Tck5-ng7SdYfpEPe5FKEn-req.json";
+const jobFilename = "ModernMT_en_it_job_Tck5-ng7SdYfpEPe5FKEn-req.json";
 const jobOutput = {"jobGuid": "Tck5-ng7SdYfpEPe5FKEn", "sourceLang": "en", "status": "created", "targetLang": "it", "translationProvider": "ModernMT", "tus": [{"guid": "Q6atGCxMzEiusRkN4mXARrkpqaaKAVq6CVlz7pIJ0DU", "rid": "en/guide.json", "sid": "title", "src": "Payments Testing Guide: Ensure Flawless Checkouts", "ts": 1668113179406}, {"guid": "ECdT6RLLNyRxTb7Xha6PIzytq2ZkS5g0asqUOYLcOHA", "rid": "en/guide.json", "sid": "p1", "src": "Payment gateways are the vital financial link between customer and business. You risk a lost sale if a customer encounters even a minor issue during checkout.", "ts": 1668113179406}, {"guid": "xBXWwysXeVHO7_OgWxL44qTu30PxrCkG_jkzAFp3JI4", "rid": "en/guide.json", "sid": "p2", "src": "Payment gateway testing mimics each step of the payment process to verify that connections, transactions, and paths for communications are working. Testers uncover issues that impact a seamless transaction and user experience.", "ts": 1668113179406}, {"guid": "SODQAQuKsgIFGvOgzCoAi85KGeIwHcvim4U59juXXnA", "rid": "en/guide.json", "sid": "p3", "src": "This guide provides a full overview of payments testing, from definitions to use cases to actionable testing scenarios.", "ts": 1668113179406}, {"guid": "Zu8-DRKyPbW3MHG62Mou1orfoGMLbhxvGviCSrnX4iU", "rid": "en/guide.json", "sid": "brand", "src": "Giant's guarantee", "ts": 1668113179406}], "updatedAt": "2023-05-20T15:26:03.522Z"};
 
 describe.skip ('gcsJobStore tests', () => {
@@ -15,17 +15,17 @@ describe.skip ('gcsJobStore tests', () => {
           "xrmVYwMMnXRzUR7s1-Pdk",
           {
             "status": "done",
-            "done": "jobs/ModernMTBatch_en_it_job_xrmVYwMMnXRzUR7s1-Pdk-done.json",
-            "pending": "jobs/ModernMTBatch_en_it_job_xrmVYwMMnXRzUR7s1-Pdk-pending.json",
-            "req": "jobs/ModernMTBatch_en_it_job_xrmVYwMMnXRzUR7s1-Pdk-req.json"
+            "done": "ModernMTBatch_en_it_job_xrmVYwMMnXRzUR7s1-Pdk-done.json",
+            "pending": "ModernMTBatch_en_it_job_xrmVYwMMnXRzUR7s1-Pdk-pending.json",
+            "req": "ModernMTBatch_en_it_job_xrmVYwMMnXRzUR7s1-Pdk-req.json"
           }
         ],
         [
           "Tck5-ng7SdYfpEPe5FKEn",
           {
             "status": "done",
-            "done": "jobs/ModernMT_en_it_job_Tck5-ng7SdYfpEPe5FKEn-done.json",
-            "req": "jobs/ModernMT_en_it_job_Tck5-ng7SdYfpEPe5FKEn-req.json"
+            "done": "ModernMT_en_it_job_Tck5-ng7SdYfpEPe5FKEn-done.json",
+            "req": "ModernMT_en_it_job_Tck5-ng7SdYfpEPe5FKEn-req.json"
           }
         ]
     ];
