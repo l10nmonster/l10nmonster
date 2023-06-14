@@ -9,7 +9,8 @@
   "author": "Diego Lagunas",
   "license": "MIT",
   "dependencies": {
-    "@google-cloud/translate": "^7.0.0",
+    "@google-cloud/storage": "^6",
+    "@google-cloud/translate": "^7.0.0"
   },
   "peerDependencies": {
     "@l10nmonster/helpers": "../helpers"
