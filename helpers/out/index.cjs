@@ -6292,7 +6292,7 @@ var FsTarget = class {
     return (0, import_fs.readFileSync)(this.translatedResourceId(lang, resourceId), "utf8");
   }
   async commitTranslatedResource(lang, resourceId, translatedRes) {
-    const translatedPath = path2.resolve(this.baseDir, this.targetPath(lang, resourceId));
+    const translatedPath = this.translatedResourceId(lang, resourceId);
     if (translatedRes === null) {
       this.deleteEmpty && (0, import_fs.existsSync)(translatedPath) && (0, import_fs.unlinkSync)(translatedPath);
     } else {
@@ -6625,14 +6625,8 @@ var SnapFilter = class {
     return this.generateResource({ resource: JSON.parse(resource), translator });
   }
   // takes a normalized resource
-  async generateResource({ resource, translator }) {
-    const { id, segments } = resource;
-    const translatedSegments = [];
-    for (const seg of segments) {
-      const translation = await translator(seg.sid, seg.str);
-      translation !== void 0 && translatedSegments.push({ ...seg, str: translation });
-    }
-    return JSON.stringify({ id, segments: translatedSegments }, null, "	");
+  async generateResource(resourceTranslation) {
+    return JSON.stringify(resourceTranslation, null, "	");
   }
 };
 
@@ -6935,9 +6929,7 @@ var FileBasedSnapStore = class {
       try {
         this.#updateTOC(JSON.parse(await this.delegate.getFile("TOC.json")));
       } catch (e) {
-        this.TOC = {};
-        this.ridLookup = {};
-        l10nmonster.logger.warn(`Couldn't read TOC.json: ${e.stack ?? e}`);
+        throw `Snap Store is empty`;
       }
     }
     return this.TOC;
@@ -7015,26 +7007,23 @@ var Grandfather = class {
     const { tus, ...jobResponse } = jobRequest;
     jobResponse.tus = [];
     const txCache = {};
-    const resourceStats = Object.fromEntries((await this.mm.source.getResourceStats()).map((r) => [r.id, r]));
+    const resourceHandles = Object.fromEntries((await this.mm.rm.getResourceHandles()).map((r) => [r.id, r]));
     for (const tu of tus) {
       if (!txCache[tu.rid]) {
-        const pipeline = this.mm.contentTypes[resourceStats[tu.rid].contentType];
-        const lookup = {};
-        try {
-          const resource = await pipeline.target.fetchTranslatedResource(jobRequest.targetLang, tu.rid);
-          const parsedResource = await pipeline.resourceFilter.parseResource({ resource, isSource: false });
-          for (const seg of parsedResource.segments) {
-            seg.nstr = utils_exports.getNormalizedString(seg.str, pipeline.decoders);
-            lookup[seg.sid] = seg;
+        const handle = resourceHandles[tu.rid];
+        if (handle) {
+          try {
+            const resourceToGrandfather = await this.mm.rm.getChannel(handle.channel).getExistingTranslatedResource(handle, jobRequest.targetLang);
+            txCache[tu.rid] = Object.fromEntries(resourceToGrandfather.segments.map((seg) => [seg.sid, seg]));
+          } catch (e) {
+            l10nmonster.logger.info(`Couldn't fetch translated resource: ${e.stack ?? e}`);
+            txCache[tu.rid] = {};
           }
-        } catch (e) {
-          l10nmonster.logger.info(`Couldn't fetch translated resource: ${e.stack ?? e}`);
         }
-        txCache[tu.rid] = lookup;
       }
       const previousTranslation = txCache[tu.rid][tu.sid];
       if (previousTranslation !== void 0) {
-        const previousTU = utils_exports.makeTU(resourceStats[tu.rid], previousTranslation);
+        const previousTU = utils_exports.makeTU(resourceHandles[tu.rid], previousTranslation);
         if (utils_exports.sourceAndTargetAreCompatible(tu.nsrc, previousTU.nsrc)) {
           jobResponse.tus.push({
             guid: tu.guid,
@@ -7204,10 +7193,8 @@ __export(utils_exports, {
   integerToLabel: () => integerToLabel,
   makeTU: () => makeTU,
   normalizedStringsAreEqual: () => normalizedStringsAreEqual,
-  partEncoderMaker: () => partEncoderMaker,
   phMatcherMaker: () => phMatcherMaker,
-  sourceAndTargetAreCompatible: () => sourceAndTargetAreCompatible,
-  translateWithEntry: () => translateWithEntry
+  sourceAndTargetAreCompatible: () => sourceAndTargetAreCompatible
 });
 var import_crypto2 = require("crypto");
 function generateGuid(str) {
@@ -7248,17 +7235,6 @@ function decodeNormalizedString(nstr, decoderList, flags = {}) {
 }
 function getNormalizedString(str, decoderList, flags = {}) {
   return decoderList ? decodeNormalizedString([{ t: "s", v: str }], decoderList, flags) : [str];
-}
-function partEncoderMaker(textEncoders, codeEncoders) {
-  return function encodePart(part, flags) {
-    const encoders = typeof part === "string" ? textEncoders : codeEncoders;
-    const str = typeof part === "string" ? part : part.v;
-    if (encoders) {
-      return encoders.reduce((s, encoder) => encoder(s, flags), str);
-    } else {
-      return str;
-    }
-  };
 }
 function flattenNormalizedSourceToOrdinal(nsrc) {
   return nsrc.map((e) => typeof e === "string" ? e : `{{${e.t}}}`).join("");
@@ -7385,33 +7361,6 @@ function sourceAndTargetAreCompatible(nsrc, ntgt) {
     return Object.keys(nsrc.filter((e) => typeof e === "object")).length === Object.keys(ntgt.filter((e) => typeof e === "object")).length;
   }
   return false;
-}
-function translateWithEntry(nsrc, entry, flags, encodePart) {
-  if (entry && !entry.inflight) {
-    if (sourceAndTargetAreCompatible(nsrc, entry.ntgt)) {
-      const phMatcher = phMatcherMaker(nsrc);
-      const ntgtEntries = entry.ntgt.entries();
-      const tgt = [];
-      for (const [idx, part] of ntgtEntries) {
-        const partFlags = { ...flags, isFirst: idx === 0, isLast: idx === ntgtEntries.length - 1 };
-        if (typeof part === "string") {
-          tgt.push(encodePart(part, partFlags));
-        } else {
-          const ph = phMatcher(part);
-          if (ph) {
-            tgt.push(encodePart(ph, partFlags));
-          } else {
-            throw `unknown placeholder found: ${JSON.stringify(part)}`;
-          }
-        }
-      }
-      return tgt.join("");
-    } else {
-      throw `source and target are incompatible`;
-    }
-  } else {
-    throw `TM entry missing or in flight`;
-  }
 }
 function flattenNormalizedSourceToMiniV1(nsrc) {
   return nsrc.map((e) => typeof e === "string" ? e : `{{${e.v1 ? minifyV1PH(e.v1) : e.v}}}`).join("");

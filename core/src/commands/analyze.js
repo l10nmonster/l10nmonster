@@ -11,7 +11,7 @@ export async function analyzeCmd(mm, Analyzer, params, limitToLang, tuFilter) {
     }
     if (typeof Analyzer.prototype.processSegment === 'function') { // this analyzer needs a source driver
         const analyzer = new Analyzer(...params);
-        for await (const res of mm.source.getAllResources()) {
+        for await (const res of mm.rm.getAllResources()) {
             for (const seg of res.segments) {
                 (!tuFilterFunction || tuFilterFunction(utils.makeTU(res, seg))) && analyzer.processSegment({ rid: res.id, prj: res.prj, seg });
             }

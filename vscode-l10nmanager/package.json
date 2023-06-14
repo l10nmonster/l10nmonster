@@ -5,7 +5,7 @@
     "license": "MIT",
     "publisher": "l10nmonster",
     "description": "UI for L10n Monster",
-    "version": "0.1.12",
+    "version": "0.1.13",
     "engines": {
         "vscode": "^1.78.0"
     },
@@ -115,14 +115,13 @@
         "package": "npm run esbuild-base -- --minify && vsce package"
     },
     "devDependencies": {
-        "@types/glob": "^8.1.0",
         "@types/mocha": "^10.0.1",
         "@types/node": "16.x",
-        "@types/vscode": "^1.78.0",
+        "@types/vscode": "1.78.x",
         "@vscode/test-electron": "^2.3.0",
         "esbuild": "^0.17.18",
         "eslint": "^8.39.0",
-        "glob": "^8.1.0",
+        "glob": "^10",
         "mocha": "^10.2.0",
         "typescript": "^5.0.4"
     },

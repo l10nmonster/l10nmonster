@@ -1,16 +1,19 @@
 {
 	"en.lproj/CardboardSDK.strings": {
 		"id": "en.lproj/CardboardSDK.strings",
+		"channel": "default",
 		"modified": "2022-02-10T01:19:22.492Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
 		"targetLangs": [
 			"ar",
 			"it",
 			"ja"
 		],
-		"contentType": "default",
 		"segments": [
 			{
 				"sid": "BackButtonLabel",
+				"mf": "default",
 				"nstr": [
 					"Back"
 				],
@@ -23,6 +26,7 @@
 			},
 			{
 				"sid": "NavTitleLabel",
+				"mf": "default",
 				"nstr": [
 					"QR Scan"
 				],
@@ -35,6 +39,7 @@
 			},
 			{
 				"sid": "LoadingMessage",
+				"mf": "default",
 				"nstr": [
 					"Parsing configuration data"
 				],
@@ -47,6 +52,7 @@
 			},
 			{
 				"sid": "InvalidQRCode",
+				"mf": "default",
 				"nstr": [
 					"The QR code is invalid"
 				],
@@ -59,6 +65,7 @@
 			},
 			{
 				"sid": "ParsingFailed",
+				"mf": "default",
 				"nstr": [
 					"Problem in parsing the Url"
 				],
@@ -71,6 +78,7 @@
 			},
 			{
 				"sid": "DataSynced",
+				"mf": "default",
 				"nstr": [
 					{
 						"t": "x",
@@ -87,6 +95,7 @@
 			},
 			{
 				"sid": "FindSymbolOnViewer",
+				"mf": "default",
 				"nstr": [
 					"Find this symbol on your viewer"
 				],
@@ -99,6 +108,7 @@
 			},
 			{
 				"sid": "CanNotFindSymbol",
+				"mf": "default",
 				"nstr": [
 					"Can't find this symbol?"
 				],
@@ -111,6 +121,7 @@
 			},
 			{
 				"sid": "TroubleShootingTips",
+				"mf": "default",
 				"nstr": [
 					"Troubleshooting Tips"
 				],
@@ -123,6 +134,7 @@
 			},
 			{
 				"sid": "SkipButtonLabel",
+				"mf": "default",
 				"nstr": [
 					"SKIP"
 				],
@@ -135,6 +147,7 @@
 			},
 			{
 				"sid": "OnboardingIntroLine1",
+				"mf": "default",
 				"nstr": [
 					"Let's get you set up"
 				],
@@ -147,6 +160,7 @@
 			},
 			{
 				"sid": "OnboardingIntroLine2",
+				"mf": "default",
 				"nstr": [
 					"Pair your phone with your viewer for the best experience."
 				],
@@ -159,6 +173,7 @@
 			},
 			{
 				"sid": "OnboardingNoViewerPrompt",
+				"mf": "default",
 				"nstr": [
 					"No cardboard viewer?"
 				],
@@ -171,6 +186,7 @@
 			},
 			{
 				"sid": "OnboardingGetCardboardButton",
+				"mf": "default",
 				"nstr": [
 					"Get One"
 				],
@@ -183,6 +199,7 @@
 			},
 			{
 				"sid": "PlaceYourPhoneInCardboard",
+				"mf": "default",
 				"nstr": [
 					"Place your phone into your Cardboard viewer."
 				],
@@ -195,6 +212,7 @@
 			},
 			{
 				"sid": "PlaceYourPhoneInViewerFormat",
+				"mf": "default",
 				"nstr": [
 					"Place your phone into your ",
 					{
@@ -212,6 +230,7 @@
 			},
 			{
 				"sid": "SettingsNavTitleLabel",
+				"mf": "default",
 				"nstr": [
 					"Settings"
 				],
@@ -224,6 +243,7 @@
 			},
 			{
 				"sid": "SettingsSyncLabel",
+				"mf": "default",
 				"nstr": [
 					"Sync with Google Cardboard"
 				],
@@ -236,6 +256,7 @@
 			},
 			{
 				"sid": "SettingsCurrentViewerLabelFormat",
+				"mf": "default",
 				"nstr": [
 					"Current viewer: ",
 					{
@@ -252,6 +273,7 @@
 			},
 			{
 				"sid": "DefaultViewerName",
+				"mf": "default",
 				"nstr": [
 					"Default"
 				],
@@ -264,6 +286,7 @@
 			},
 			{
 				"sid": "DifferentViewerQuestion",
+				"mf": "default",
 				"nstr": [
 					"Using a different viewer?"
 				],
@@ -276,6 +299,7 @@
 			},
 			{
 				"sid": "SwitchViewer",
+				"mf": "default",
 				"nstr": [
 					"SWITCH"
 				],
@@ -288,6 +312,7 @@
 			},
 			{
 				"sid": "SwitchViewerActivityMenuTitle",
+				"mf": "default",
 				"nstr": [
 					"Switch viewer: ",
 					{
@@ -304,6 +329,7 @@
 			},
 			{
 				"sid": "HelpActivityMenuTitle",
+				"mf": "default",
 				"nstr": [
 					"Help"
 				],
@@ -316,6 +342,7 @@
 			},
 			{
 				"sid": "SuccessfullyPaired",
+				"mf": "default",
 				"nstr": [
 					"Successfully Paired!"
 				],
@@ -328,6 +355,7 @@
 			},
 			{
 				"sid": "ViewerConfigured",
+				"mf": "default",
 				"nstr": [
 					"Your phone is now configured for your ",
 					{
@@ -345,6 +373,7 @@
 			},
 			{
 				"sid": "OK",
+				"mf": "default",
 				"nstr": [
 					"OK"
 				],
@@ -357,6 +386,7 @@
 			},
 			{
 				"sid": "AccessibilitySettingsButton",
+				"mf": "default",
 				"nstr": [
 					"Settings"
 				],
@@ -369,6 +399,7 @@
 			},
 			{
 				"sid": "AccessibilityBackButton",
+				"mf": "default",
 				"nstr": [
 					"Back to previous screen"
 				],
@@ -381,6 +412,7 @@
 			},
 			{
 				"sid": "AccessibilityCardboardButton",
+				"mf": "default",
 				"nstr": [
 					"Cardboard mode"
 				],
@@ -393,6 +425,7 @@
 			},
 			{
 				"sid": "AccessibilityFullscreenButton",
+				"mf": "default",
 				"nstr": [
 					"Fullscreen mode"
 				],
@@ -405,6 +438,7 @@
 			},
 			{
 				"sid": "AccessibilityHelpButton",
+				"mf": "default",
 				"nstr": [
 					"Help"
 				],

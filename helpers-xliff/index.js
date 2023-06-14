@@ -58,7 +58,7 @@ exports.BridgeTranslator = class XliffBridge {
                         guid,
                         sid: tuMap[guid].sid,
                         ts: tuMap[guid].ts,
-                        src: xt.source,
+                        nsrc: [xt.source], // TODO: need to deal with nsrc properly
                         ntgt: [xt.target], // TODO: need to deal with ntgt properly
                         q: this.quality,
                     });

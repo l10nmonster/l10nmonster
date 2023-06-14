@@ -18,9 +18,7 @@ export class FileBasedSnapStore {
             try {
                 this.#updateTOC(JSON.parse(await this.delegate.getFile('TOC.json')));
             } catch (e) {
-                this.TOC = {};
-                this.ridLookup = {};
-                l10nmonster.logger.warn(`Couldn't read TOC.json: ${e.stack ?? e}`);
+                throw `Snap Store is empty`;
             }
         }
         return this.TOC;
@@ -62,6 +60,7 @@ export class FileBasedSnapStore {
     }
 
     async *getAllResources() {
+        // ignoring options passed as parameters as we don't store raw in snaps. TODO: should we?
         const TOC = await this.#getTOC();
         for (const filename of Object.keys(TOC)) {
             const resources = JSON.parse(await this.delegate.getFile(filename));
@@ -72,4 +71,4 @@ export class FileBasedSnapStore {
             }
         }
     }
-};
+}

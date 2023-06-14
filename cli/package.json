@@ -12,9 +12,9 @@
     "main": "out/l10nCommands.cjs",
     "type": "module",
     "scripts": {
-        "esbuild-cmd": "esbuild l10n.js --bundle --sourcemap --outfile=out/l10n.cjs --platform=node --target=node18",
-        "package": "pkg -t node18-macos-x64 --out-path bin out/l10n.cjs",
-        "esbuild-lib": "esbuild l10nCommands.js --bundle --sourcemap --outfile=out/l10nCommands.cjs --platform=node --target=node18"
+        "esbuild": "esbuild l10nCommands.js --bundle --sourcemap --outfile=out/l10nCommands.cjs --platform=node --target=node18 --sourcemap",
+        "esbuild-watch": "npm run esbuild -- --watch",
+        "package": "pkg -t node18-macos-x64 --out-path bin out/l10n.cjs"
     },
     "repository": {
         "type": "git",

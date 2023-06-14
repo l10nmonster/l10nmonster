@@ -1,14 +1,16 @@
 {
 	"dashlets/docsummary.get_en.properties": {
 		"id": "dashlets/docsummary.get_en.properties",
+		"channel": "default",
 		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
 		"targetLangs": [
 			"it",
 			"ja",
 			"pt-BR"
 		],
 		"prj": "docsummary",
-		"contentType": "default",
 		"segments": [
 			{
 				"sid": "header",
@@ -16,6 +18,7 @@
 					"startLine": 1,
 					"endLine": 1
 				},
+				"mf": "default",
 				"nstr": [
 					"Site Content"
 				],
@@ -28,6 +31,7 @@
 					"startLine": 4,
 					"endLine": 4
 				},
+				"mf": "default",
 				"nstr": [
 					"My Favorites"
 				],
@@ -44,6 +48,7 @@
 					"startLine": 5,
 					"endLine": 5
 				},
+				"mf": "default",
 				"nstr": [
 					"I'm Editing"
 				],
@@ -56,6 +61,7 @@
 					"startLine": 6,
 					"endLine": 6
 				},
+				"mf": "default",
 				"nstr": [
 					"I've Recently Modified"
 				],
@@ -68,6 +74,7 @@
 					"startLine": 7,
 					"endLine": 7
 				},
+				"mf": "default",
 				"nstr": [
 					"Synced content"
 				],
@@ -80,6 +87,7 @@
 					"startLine": 8,
 					"endLine": 8
 				},
+				"mf": "default",
 				"nstr": [
 					"Synced with Errors"
 				],
@@ -92,6 +100,7 @@
 					"startLine": 10,
 					"endLine": 10
 				},
+				"mf": "default",
 				"nstr": [
 					"Keep track of content changes"
 				],
@@ -104,6 +113,7 @@
 					"startLine": 11,
 					"endLine": 11
 				},
+				"mf": "default",
 				"nstr": [
 					"Easily see which document library items site members have been working on. In the detailed view you can like an item and mark it as a favorite. You can also jump to the details page to leave a comment."
 				],
@@ -116,6 +126,7 @@
 					"startLine": 14,
 					"endLine": 18
 				},
+				"mf": "default",
 				"nstr": [
 					{
 						"t": "bx",

@@ -1,14 +1,16 @@
 {
 	"dashlets/site-activities.get_en.properties": {
 		"id": "dashlets/site-activities.get_en.properties",
+		"channel": "default",
 		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
 		"targetLangs": [
 			"it",
 			"ja",
 			"pt-BR"
 		],
 		"prj": "site",
-		"contentType": "default",
 		"segments": [
 			{
 				"sid": "header",
@@ -16,6 +18,7 @@
 					"startLine": 1,
 					"endLine": 1
 				},
+				"mf": "default",
 				"nstr": [
 					"Site Activities"
 				],
@@ -28,6 +31,7 @@
 					"startLine": 2,
 					"endLine": 2
 				},
+				"mf": "default",
 				"nstr": [
 					"Could not load activities list"
 				],
@@ -40,6 +44,7 @@
 					"startLine": 3,
 					"endLine": 3
 				},
+				"mf": "default",
 				"nstr": [
 					"Show"
 				],
@@ -52,6 +57,7 @@
 					"startLine": 4,
 					"endLine": 4
 				},
+				"mf": "default",
 				"nstr": [
 					"Older Activities"
 				],
@@ -64,6 +70,7 @@
 					"startLine": 10,
 					"endLine": 10
 				},
+				"mf": "default",
 				"nstr": [
 					"My activities"
 				],
@@ -80,6 +87,7 @@
 					"startLine": 11,
 					"endLine": 11
 				},
+				"mf": "default",
 				"nstr": [
 					"Everyone else's activities"
 				],
@@ -92,6 +100,7 @@
 					"startLine": 12,
 					"endLine": 12
 				},
+				"mf": "default",
 				"nstr": [
 					"Everyone's activities"
 				],
@@ -104,6 +113,7 @@
 					"startLine": 13,
 					"endLine": 13
 				},
+				"mf": "default",
 				"nstr": [
 					"I'm following"
 				],
@@ -116,6 +126,7 @@
 					"startLine": 15,
 					"endLine": 15
 				},
+				"mf": "default",
 				"nstr": [
 					"all items"
 				],
@@ -132,6 +143,7 @@
 					"startLine": 16,
 					"endLine": 16
 				},
+				"mf": "default",
 				"nstr": [
 					"status updates"
 				],
@@ -144,6 +156,7 @@
 					"startLine": 17,
 					"endLine": 17
 				},
+				"mf": "default",
 				"nstr": [
 					"comments"
 				],
@@ -156,6 +169,7 @@
 					"startLine": 18,
 					"endLine": 18
 				},
+				"mf": "default",
 				"nstr": [
 					"content"
 				],
@@ -168,6 +182,7 @@
 					"startLine": 19,
 					"endLine": 19
 				},
+				"mf": "default",
 				"nstr": [
 					"memberships"
 				],
@@ -180,6 +195,7 @@
 					"startLine": 21,
 					"endLine": 21
 				},
+				"mf": "default",
 				"nstr": [
 					"today"
 				],
@@ -196,6 +212,7 @@
 					"startLine": 22,
 					"endLine": 22
 				},
+				"mf": "default",
 				"nstr": [
 					"in the last 7 days"
 				],
@@ -208,6 +225,7 @@
 					"startLine": 23,
 					"endLine": 23
 				},
+				"mf": "default",
 				"nstr": [
 					"in the last 14 days"
 				],
@@ -220,6 +238,7 @@
 					"startLine": 24,
 					"endLine": 24
 				},
+				"mf": "default",
 				"nstr": [
 					"in the last 28 days"
 				],
@@ -232,6 +251,7 @@
 					"startLine": 26,
 					"endLine": 26
 				},
+				"mf": "default",
 				"nstr": [
 					"Follow what's going on in this site"
 				],
@@ -244,6 +264,7 @@
 					"startLine": 27,
 					"endLine": 27
 				},
+				"mf": "default",
 				"nstr": [
 					"Watch this list to keep up on the recent site changes. You'll see activities such as content updates and likes. You can also track the site membership by seeing who is joining and leaving."
 				],
@@ -256,6 +277,7 @@
 					"startLine": 30,
 					"endLine": 31
 				},
+				"mf": "default",
 				"nstr": [
 					{
 						"t": "bx",
@@ -287,14 +309,16 @@
 	},
 	"dashlets/site-data-lists.get_en.properties": {
 		"id": "dashlets/site-data-lists.get_en.properties",
+		"channel": "default",
 		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
 		"targetLangs": [
 			"it",
 			"ja",
 			"pt-BR"
 		],
 		"prj": "site",
-		"contentType": "default",
 		"segments": [
 			{
 				"sid": "header.datalists",
@@ -302,6 +326,7 @@
 					"startLine": 1,
 					"endLine": 1
 				},
+				"mf": "default",
 				"nstr": [
 					"Site Data Lists"
 				],
@@ -314,6 +339,7 @@
 					"startLine": 2,
 					"endLine": 2
 				},
+				"mf": "default",
 				"nstr": [
 					"No lists to display"
 				],
@@ -326,6 +352,7 @@
 					"startLine": 3,
 					"endLine": 3
 				},
+				"mf": "default",
 				"nstr": [
 					"Create Data List"
 				],
@@ -338,6 +365,7 @@
 					"startLine": 5,
 					"endLine": 5
 				},
+				"mf": "default",
 				"nstr": [
 					"This dashlet shows lists relevant to the site. Clicking a list opens it."
 				],
@@ -348,14 +376,16 @@
 	},
 	"dashlets/site-links.get_en.properties": {
 		"id": "dashlets/site-links.get_en.properties",
+		"channel": "default",
 		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
 		"targetLangs": [
 			"it",
 			"ja",
 			"pt-BR"
 		],
 		"prj": "site",
-		"contentType": "default",
 		"segments": [
 			{
 				"sid": "header.links",
@@ -363,6 +393,7 @@
 					"startLine": 1,
 					"endLine": 1
 				},
+				"mf": "default",
 				"nstr": [
 					"Site Links"
 				],
@@ -375,6 +406,7 @@
 					"startLine": 2,
 					"endLine": 2
 				},
+				"mf": "default",
 				"nstr": [
 					"Create Link"
 				],
@@ -387,6 +419,7 @@
 					"startLine": 3,
 					"endLine": 3
 				},
+				"mf": "default",
 				"nstr": [
 					"Link's details"
 				],
@@ -399,6 +432,7 @@
 					"startLine": 4,
 					"endLine": 4
 				},
+				"mf": "default",
 				"nstr": [
 					"No links to display"
 				],
@@ -411,6 +445,7 @@
 					"startLine": 6,
 					"endLine": 6
 				},
+				"mf": "default",
 				"nstr": [
 					"This dashlet shows links relevant to this site. The list is compiled by site members. Clicking a link opens it in a new window."
 				],
@@ -423,6 +458,7 @@
 					"startLine": 7,
 					"endLine": 7
 				},
+				"mf": "default",
 				"nstr": [
 					"URL not specified"
 				],
@@ -433,14 +469,16 @@
 	},
 	"dashlets/site-notice.get_en.properties": {
 		"id": "dashlets/site-notice.get_en.properties",
+		"channel": "default",
 		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
 		"targetLangs": [
 			"it",
 			"ja",
 			"pt-BR"
 		],
 		"prj": "site",
-		"contentType": "default",
 		"segments": [
 			{
 				"sid": "notice.defaultTitle",
@@ -448,6 +486,7 @@
 					"startLine": 1,
 					"endLine": 1
 				},
+				"mf": "default",
 				"nstr": [
 					"Site Notice"
 				],
@@ -460,6 +499,7 @@
 					"startLine": 2,
 					"endLine": 2
 				},
+				"mf": "default",
 				"nstr": [
 					"No text has been configured"
 				],
@@ -472,6 +512,7 @@
 					"startLine": 3,
 					"endLine": 3
 				},
+				"mf": "default",
 				"nstr": [
 					"Configure"
 				],
@@ -484,6 +525,7 @@
 					"startLine": 4,
 					"endLine": 4
 				},
+				"mf": "default",
 				"nstr": [
 					"This dashlet displays a custom message on the dashboard, specified by the site manager"
 				],
@@ -494,14 +536,16 @@
 	},
 	"dashlets/site-profile.get_en.properties": {
 		"id": "dashlets/site-profile.get_en.properties",
+		"channel": "default",
 		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
 		"targetLangs": [
 			"it",
 			"ja",
 			"pt-BR"
 		],
 		"prj": "site",
-		"contentType": "default",
 		"segments": [
 			{
 				"sid": "header.siteProfile",
@@ -509,6 +553,7 @@
 					"startLine": 1,
 					"endLine": 1
 				},
+				"mf": "default",
 				"nstr": [
 					"Site Profile"
 				],
@@ -521,6 +566,7 @@
 					"startLine": 2,
 					"endLine": 2
 				},
+				"mf": "default",
 				"nstr": [
 					"Welcome to ",
 					{
@@ -537,6 +583,7 @@
 					"startLine": 3,
 					"endLine": 3
 				},
+				"mf": "default",
 				"nstr": [
 					"Site Manager(s):"
 				],
@@ -549,6 +596,7 @@
 					"startLine": 4,
 					"endLine": 4
 				},
+				"mf": "default",
 				"nstr": [
 					"Visibility:"
 				],
@@ -561,6 +609,7 @@
 					"startLine": 5,
 					"endLine": 5
 				},
+				"mf": "default",
 				"nstr": [
 					"Public"
 				],
@@ -573,6 +622,7 @@
 					"startLine": 6,
 					"endLine": 6
 				},
+				"mf": "default",
 				"nstr": [
 					"Moderated"
 				],
@@ -585,6 +635,7 @@
 					"startLine": 7,
 					"endLine": 7
 				},
+				"mf": "default",
 				"nstr": [
 					"Private"
 				],
@@ -597,6 +648,7 @@
 					"startLine": 8,
 					"endLine": 8
 				},
+				"mf": "default",
 				"nstr": [
 					"Unknown"
 				],
@@ -609,6 +661,7 @@
 					"startLine": 10,
 					"endLine": 10
 				},
+				"mf": "default",
 				"nstr": [
 					"This dashlet displays the site details. Only the site manager can change this information."
 				],
@@ -619,14 +672,16 @@
 	},
 	"dashlets/site-search.get_en.properties": {
 		"id": "dashlets/site-search.get_en.properties",
+		"channel": "default",
 		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
 		"targetLangs": [
 			"it",
 			"ja",
 			"pt-BR"
 		],
 		"prj": "site",
-		"contentType": "default",
 		"segments": [
 			{
 				"sid": "header.title",
@@ -634,6 +689,7 @@
 					"startLine": 1,
 					"endLine": 1
 				},
+				"mf": "default",
 				"nstr": [
 					"Site Search"
 				],
@@ -646,6 +702,7 @@
 					"startLine": 2,
 					"endLine": 2
 				},
+				"mf": "default",
 				"nstr": [
 					"Search"
 				],
@@ -658,6 +715,7 @@
 					"startLine": 3,
 					"endLine": 3
 				},
+				"mf": "default",
 				"nstr": [
 					"No results found."
 				],
@@ -670,6 +728,7 @@
 					"startLine": 4,
 					"endLine": 4
 				},
+				"mf": "default",
 				"nstr": [
 					"in site"
 				],
@@ -682,6 +741,7 @@
 					"startLine": 7,
 					"endLine": 8
 				},
+				"mf": "default",
 				"nstr": [
 					{
 						"t": "bx",

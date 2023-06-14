@@ -1,14 +1,16 @@
 {
 	"dashlets/dynamic-welcome.get_en.properties": {
 		"id": "dashlets/dynamic-welcome.get_en.properties",
+		"channel": "default",
 		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
 		"targetLangs": [
 			"it",
 			"ja",
 			"pt-BR"
 		],
 		"prj": "dynamic",
-		"contentType": "default",
 		"segments": [
 			{
 				"sid": "welcome.user",
@@ -16,6 +18,7 @@
 					"startLine": 1,
 					"endLine": 1
 				},
+				"mf": "default",
 				"nstr": [
 					"Welcome to your dashboard, ",
 					{
@@ -32,6 +35,7 @@
 					"startLine": 2,
 					"endLine": 2
 				},
+				"mf": "default",
 				"nstr": [
 					"Welcome to ",
 					{
@@ -53,6 +57,7 @@
 					"startLine": 4,
 					"endLine": 4
 				},
+				"mf": "default",
 				"nstr": [
 					"The personal dashboard shows you what's going on in the sites you belong to."
 				],
@@ -65,6 +70,7 @@
 					"startLine": 5,
 					"endLine": 5
 				},
+				"mf": "default",
 				"nstr": [
 					"The site dashboard lets you know what's been happening in this particular site."
 				],
@@ -77,6 +83,7 @@
 					"startLine": 6,
 					"endLine": 6
 				},
+				"mf": "default",
 				"nstr": [
 					"Let's get you started..."
 				],
@@ -89,6 +96,7 @@
 					"startLine": 8,
 					"endLine": 8
 				},
+				"mf": "default",
 				"nstr": [
 					"Confirm Removal"
 				],
@@ -101,6 +109,7 @@
 					"startLine": 9,
 					"endLine": 9
 				},
+				"mf": "default",
 				"nstr": [
 					"Are you sure you want to permanently remove the assistance panel from this dashboard?"
 				],
@@ -113,6 +122,7 @@
 					"startLine": 10,
 					"endLine": 10
 				},
+				"mf": "default",
 				"nstr": [
 					"Unable to remove dashlet."
 				],
@@ -125,6 +135,7 @@
 					"startLine": 12,
 					"endLine": 12
 				},
+				"mf": "default",
 				"nstr": [
 					"Remove"
 				],
@@ -137,6 +148,7 @@
 					"startLine": 14,
 					"endLine": 14
 				},
+				"mf": "default",
 				"nstr": [
 					"Learning"
 				],
@@ -149,6 +161,7 @@
 					"startLine": 15,
 					"endLine": 15
 				},
+				"mf": "default",
 				"nstr": [
 					"See what you can do with Alfresco by watching a video tutorial."
 				],
@@ -161,6 +174,7 @@
 					"startLine": 16,
 					"endLine": 16
 				},
+				"mf": "default",
 				"nstr": [
 					"View the tutorials"
 				],
@@ -173,6 +187,7 @@
 					"startLine": 18,
 					"endLine": 18
 				},
+				"mf": "default",
 				"nstr": [
 					"Sharing"
 				],
@@ -185,6 +200,7 @@
 					"startLine": 19,
 					"endLine": 19
 				},
+				"mf": "default",
 				"nstr": [
 					"Create a site to share content with other site members."
 				],
@@ -197,6 +213,7 @@
 					"startLine": 20,
 					"endLine": 20
 				},
+				"mf": "default",
 				"nstr": [
 					"Create a site"
 				],
@@ -209,6 +226,7 @@
 					"startLine": 22,
 					"endLine": 22
 				},
+				"mf": "default",
 				"nstr": [
 					"Personalizing"
 				],
@@ -221,6 +239,7 @@
 					"startLine": 23,
 					"endLine": 23
 				},
+				"mf": "default",
 				"nstr": [
 					"Update your personal and business information so others can get to know you."
 				],
@@ -233,6 +252,7 @@
 					"startLine": 24,
 					"endLine": 24
 				},
+				"mf": "default",
 				"nstr": [
 					"Edit your profile"
 				],
@@ -245,6 +265,7 @@
 					"startLine": 26,
 					"endLine": 26
 				},
+				"mf": "default",
 				"nstr": [
 					"Customizing"
 				],
@@ -257,6 +278,7 @@
 					"startLine": 27,
 					"endLine": 27
 				},
+				"mf": "default",
 				"nstr": [
 					"Set up your dashboard to show the information you want to see."
 				],
@@ -269,6 +291,7 @@
 					"startLine": 28,
 					"endLine": 28
 				},
+				"mf": "default",
 				"nstr": [
 					"Customize your dashboard"
 				],
@@ -281,6 +304,7 @@
 					"startLine": 30,
 					"endLine": 30
 				},
+				"mf": "default",
 				"nstr": [
 					"Exploring"
 				],
@@ -293,6 +317,7 @@
 					"startLine": 31,
 					"endLine": 31
 				},
+				"mf": "default",
 				"nstr": [
 					"Have a look at the sites already in Alfresco. You can visit public sites and join them straightaway."
 				],
@@ -305,6 +330,7 @@
 					"startLine": 32,
 					"endLine": 32
 				},
+				"mf": "default",
 				"nstr": [
 					"View all sites"
 				],
@@ -317,6 +343,7 @@
 					"startLine": 34,
 					"endLine": 34
 				},
+				"mf": "default",
 				"nstr": [
 					"Customizing"
 				],
@@ -329,6 +356,7 @@
 					"startLine": 35,
 					"endLine": 35
 				},
+				"mf": "default",
 				"nstr": [
 					"Set up this dashboard to show information you want others to see."
 				],
@@ -341,6 +369,7 @@
 					"startLine": 36,
 					"endLine": 36
 				},
+				"mf": "default",
 				"nstr": [
 					"Customize the site dashboard"
 				],
@@ -353,6 +382,7 @@
 					"startLine": 38,
 					"endLine": 38
 				},
+				"mf": "default",
 				"nstr": [
 					"Joining"
 				],
@@ -365,6 +395,7 @@
 					"startLine": 39,
 					"endLine": 39
 				},
+				"mf": "default",
 				"nstr": [
 					"This site's membership is moderated. You can request to join and a site manager will be notified."
 				],
@@ -377,6 +408,7 @@
 					"startLine": 40,
 					"endLine": 40
 				},
+				"mf": "default",
 				"nstr": [
 					"Request to join"
 				],
@@ -389,6 +421,7 @@
 					"startLine": 42,
 					"endLine": 42
 				},
+				"mf": "default",
 				"nstr": [
 					"Collaborating"
 				],
@@ -401,6 +434,7 @@
 					"startLine": 43,
 					"endLine": 43
 				},
+				"mf": "default",
 				"nstr": [
 					"Upload content to the document library to start collaborating with others."
 				],
@@ -413,6 +447,7 @@
 					"startLine": 44,
 					"endLine": 44
 				},
+				"mf": "default",
 				"nstr": [
 					"Upload content"
 				],
@@ -425,6 +460,7 @@
 					"startLine": 46,
 					"endLine": 46
 				},
+				"mf": "default",
 				"nstr": [
 					"Inviting"
 				],
@@ -437,6 +473,7 @@
 					"startLine": 47,
 					"endLine": 47
 				},
+				"mf": "default",
 				"nstr": [
 					"Start inviting others to join your site."
 				],
@@ -449,6 +486,7 @@
 					"startLine": 48,
 					"endLine": 48
 				},
+				"mf": "default",
 				"nstr": [
 					"Invite people"
 				],
@@ -461,6 +499,7 @@
 					"startLine": 50,
 					"endLine": 50
 				},
+				"mf": "default",
 				"nstr": [
 					"Socializing"
 				],
@@ -473,6 +512,7 @@
 					"startLine": 51,
 					"endLine": 51
 				},
+				"mf": "default",
 				"nstr": [
 					"Find out who belongs to this site. From the member list you can view user profiles to get to know others."
 				],
@@ -485,6 +525,7 @@
 					"startLine": 52,
 					"endLine": 52
 				},
+				"mf": "default",
 				"nstr": [
 					"View site members"
 				],
@@ -497,6 +538,7 @@
 					"startLine": 54,
 					"endLine": 54
 				},
+				"mf": "default",
 				"nstr": [
 					"Exploring"
 				],
@@ -509,6 +551,7 @@
 					"startLine": 55,
 					"endLine": 55
 				},
+				"mf": "default",
 				"nstr": [
 					"Find out what content has been added to the site by browsing the document library."
 				],
@@ -521,6 +564,7 @@
 					"startLine": 56,
 					"endLine": 56
 				},
+				"mf": "default",
 				"nstr": [
 					"Go to document library"
 				],
@@ -533,6 +577,7 @@
 					"startLine": 58,
 					"endLine": 58
 				},
+				"mf": "default",
 				"nstr": [
 					"Cloud"
 				],
@@ -545,6 +590,7 @@
 					"startLine": 59,
 					"endLine": 59
 				},
+				"mf": "default",
 				"nstr": [
 					"Sign up today to claim your free network in the cloud."
 				],
@@ -557,6 +603,7 @@
 					"startLine": 60,
 					"endLine": 60
 				},
+				"mf": "default",
 				"nstr": [
 					"Sign up"
 				],
@@ -569,6 +616,7 @@
 					"startLine": 62,
 					"endLine": 62
 				},
+				"mf": "default",
 				"nstr": [
 					"Requesting to add user ",
 					{
@@ -591,6 +639,7 @@
 					"startLine": 63,
 					"endLine": 63
 				},
+				"mf": "default",
 				"nstr": [
 					"Request to join site ",
 					{
@@ -608,6 +657,7 @@
 					"startLine": 64,
 					"endLine": 64
 				},
+				"mf": "default",
 				"nstr": [
 					"Could not make the request to add user ",
 					{

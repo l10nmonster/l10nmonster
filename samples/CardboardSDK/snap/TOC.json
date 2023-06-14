@@ -2,13 +2,15 @@
 	"default-0.json": {
 		"en.lproj/CardboardSDK.strings": {
 			"id": "en.lproj/CardboardSDK.strings",
+			"channel": "default",
 			"modified": "2022-02-10T01:19:22.492Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"ar",
 				"it",
 				"ja"
-			],
-			"contentType": "default"
+			]
 		}
 	}
 }

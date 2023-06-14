@@ -2,7 +2,6 @@
 	"lang": {
 		"it": {
 			"leverage": {
-				"tmSize": 335,
 				"minimumQuality": 50,
 				"prjLeverage": {
 					"default": {

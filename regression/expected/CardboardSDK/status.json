@@ -2,7 +2,6 @@
 	"lang": {
 		"ar": {
 			"leverage": {
-				"tmSize": 33,
 				"minimumQuality": 50,
 				"prjLeverage": {
 					"default": {

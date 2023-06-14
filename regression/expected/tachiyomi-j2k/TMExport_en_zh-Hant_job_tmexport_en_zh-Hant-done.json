@@ -7541,16 +7541,7 @@
 			"sid": "chapter_x_of_y",
 			"guid": "sz5VG6XU2cIa2wlQX17vYlxhFFkUQP4SNc4Tuf0XWoM",
 			"nsrc": [
-				"Chapter ",
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				" of ",
-				{
-					"t": "x",
-					"v": "%2$d"
-				}
+				"Chapter %1$d of %2$d"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -7596,12 +7587,7 @@
 			"isSuffixPluralized": true,
 			"guid": "t4VWxI0XBS7jJwzcIpjyWz95PtQe0nM2xUjvN4A1U_4",
 			"nsrc": [
-				"Remove ",
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				" downloaded chapter?"
+				"Remove %1$d downloaded chapter?"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -7617,12 +7603,7 @@
 			"isSuffixPluralized": true,
 			"guid": "p7jJcpu_ZOzMod7iebzwKDCR2JYb4Qef0D1lq2MQLKg",
 			"nsrc": [
-				"Remove ",
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				" downloaded chapters?"
+				"Remove %1$d downloaded chapters?"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -7638,11 +7619,7 @@
 			"isSuffixPluralized": true,
 			"guid": "1d7HtgdwLMLoxTTiv83rLZkKjkpfAmsehateH09g4gc",
 			"nsrc": [
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				" chapter"
+				"%1$d chapter"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -7658,11 +7635,7 @@
 			"isSuffixPluralized": true,
 			"guid": "qwYhEI77stoakCdt86oc0Z9IcmbpLN19jqquS_d2WL0",
 			"nsrc": [
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				" chapters"
+				"%1$d chapters"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -7678,11 +7651,7 @@
 			"isSuffixPluralized": true,
 			"guid": "2udl0hvWKKtR3kYZ1ZxvWfGf6Sq6I_AP1i91nZoJRuU",
 			"nsrc": [
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				" page left"
+				"%1$d page left"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -7698,11 +7667,7 @@
 			"isSuffixPluralized": true,
 			"guid": "cwofMrt4vcR72muKJgdj3ynRXfS-8kRankY4lw_Cmm4",
 			"nsrc": [
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				" pages left"
+				"%1$d pages left"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -7807,12 +7772,7 @@
 			"sid": "top_category",
 			"guid": "4GXpmlw4Taq7yKQyTwSQUIm6gXsdKi8xT5lg0BskTbM",
 			"nsrc": [
-				"Top category (",
-				{
-					"t": "x",
-					"v": "%1$s"
-				},
-				")"
+				"Top category (%1$s)"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -7872,7 +7832,7 @@
 			"sid": "confirm_category_deletion_message",
 			"guid": "Z5R54ptkf0KSzqHSXbTpgusMBDC0AnVs5HlxwFuBn_g",
 			"nsrc": [
-				"Manga in this category will moved into the default category."
+				"Manga in this category will moved into the\n        default category."
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -7933,11 +7893,7 @@
 			"isSuffixPluralized": true,
 			"guid": "PR-mra8oJXYjh-iGJbPWRJ93cqMsnv3I9kI-KHWftDI",
 			"nsrc": [
-				{
-					"t": "x",
-					"v": "%d"
-				},
-				" category"
+				"%d category"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -7953,11 +7909,7 @@
 			"isSuffixPluralized": true,
 			"guid": "xIQ8JakD15UWHPlTjfDfsR_DppXZXRKrIBcVjpnIUH0",
 			"nsrc": [
-				{
-					"t": "x",
-					"v": "%d"
-				},
-				" categories"
+				"%d categories"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -8047,11 +7999,7 @@
 			"sid": "updating_",
 			"guid": "R9Wl42FJ2T6ZFFSSaMoGXjPle4BfCSiAk7BqsNC94lM",
 			"nsrc": [
-				"Updating ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Updating %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -8276,12 +8224,7 @@
 			"sid": "search_globally",
 			"guid": "0Q0F8OAUKt9tljw33vEGxWOZgWoYsdvzbYGYyhonqbk",
 			"nsrc": [
-				"Search \"",
-				{
-					"t": "x",
-					"v": "%1$s"
-				},
-				"\" globally"
+				"Search \\\"%1$s\\\" globally"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -8491,11 +8434,7 @@
 			"sid": "_per_row",
 			"guid": "6hn5KZLsLGETvPcxkQGVslKsEirgO05tR8I6LUoruAc",
 			"nsrc": [
-				{
-					"t": "x",
-					"v": "%d"
-				},
-				" per row"
+				"%d per row"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -8586,12 +8525,7 @@
 			"isSuffixPluralized": true,
 			"guid": "nn9ifCxTi0t0nXPKjjqANSd9RsYNb7nXBbc0e-L1MBY",
 			"nsrc": [
-				"For ",
-				{
-					"t": "x",
-					"v": "%d"
-				},
-				" title"
+				"For %d title"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -8607,12 +8541,7 @@
 			"isSuffixPluralized": true,
 			"guid": "9xj-HFVJXt2nNpthtY1LQ-fzWVcARPZvaiL2c39B23w",
 			"nsrc": [
-				"For ",
-				{
-					"t": "x",
-					"v": "%d"
-				},
-				" titles"
+				"For %d titles"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -8628,12 +8557,7 @@
 			"isSuffixPluralized": true,
 			"guid": "i6ms_Au63GlXHZGXAcuj1OlRcD9GhIwb0mR2FlStmOo",
 			"nsrc": [
-				"and ",
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				" more chapter"
+				"and %1$d more chapter"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -8649,12 +8573,7 @@
 			"isSuffixPluralized": true,
 			"guid": "67xZqBzSLejsIoJhJeoe41TLoKsEqXHdzFIIP8ysYJs",
 			"nsrc": [
-				"and ",
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				" more chapters"
+				"and %1$d more chapters"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -8700,11 +8619,7 @@
 			"sid": "restrictions_",
 			"guid": "QlC_YuVsWOmivCrLSW068P3410uxlebLMQI6Y2APaqA",
 			"nsrc": [
-				"Restrictions: ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Restrictions: %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -8734,7 +8649,7 @@
 			"sid": "when_sorting_ignore_articles",
 			"guid": "gX2qXw9h04nSkWqum0JX_lrXBPrnakCiXfhaqiVV8OM",
 			"nsrc": [
-				"When sorting alphabetically, sort ignoring articles (a, an, the) at the start of manga titles"
+				"When sorting alphabetically, sort ignoring\n        articles (a, an, the) at the start of manga titles"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -8764,7 +8679,7 @@
 			"sid": "auto_refresh_covers_summary",
 			"guid": "VCIW6HRhoeMhpQUhRuDv4rLKq9LG90yl1F5zV-xbvQU",
 			"nsrc": [
-				"Refresh covers in library as well when updating library"
+				"Refresh covers in library as well\n        when updating library"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -8914,12 +8829,7 @@
 			"sid": "this_will_remove_the_read_date_for_x_question",
 			"guid": "XmyxBrSHE9usAFFCG2vPzxT10mP3VHeH1CsWjzkIpZg",
 			"nsrc": [
-				"This will remove the read date of \"",
-				{
-					"t": "x",
-					"v": "%1$s"
-				},
-				"\". Are you sure?"
+				"This will remove the read date of\n        \\\"%1$s\\\". Are you sure?"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -8934,11 +8844,7 @@
 			"sid": "reset_all_chapters_for_this_",
 			"guid": "fC_356xy32C7odgnD6x_BAF1M8BL09LYq_AYDWMJoww",
 			"nsrc": [
-				"Reset all chapters for this ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Reset all chapters for this %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -8953,11 +8859,7 @@
 			"sid": "last_read_",
 			"guid": "-bYJgDGQXbmL4g_0gpKbwEHkH7eWo0cl7zRzYyn4r0M",
 			"nsrc": [
-				"Last read ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Last read %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -8972,11 +8874,7 @@
 			"sid": "read_",
 			"guid": "LB5CD-tAbq-svs9PEjaUwWSgEMffx0GiHN8cf1-_fbU",
 			"nsrc": [
-				"Read ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Read %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -8991,11 +8889,7 @@
 			"sid": "updated_",
 			"guid": "J07LWB4b1QilfozxRx51_cUQrthjI3HIuxbhfFEhCU4",
 			"nsrc": [
-				"Updated ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Updated %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -9010,11 +8904,7 @@
 			"sid": "added_",
 			"guid": "_SAZorPrF5hhU5oP3l6AMfgbnFj502nP0cEMTzM6Zjw",
 			"nsrc": [
-				"Added ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Added %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -9029,11 +8919,7 @@
 			"sid": "fetched_",
 			"guid": "18cGsSZgW56fk4r4-oUR8Z-wVtXtQjs1knIQhisPyQE",
 			"nsrc": [
-				"Fetched ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Fetched %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -9423,11 +9309,7 @@
 			"sid": "installed_",
 			"guid": "s7vmRSqvrrdDCP2CC42Mu4top-dqct55ZDXfFJ0lTWw",
 			"nsrc": [
-				"Installed ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Installed %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -9472,11 +9354,7 @@
 			"sid": "_must_be_enabled_first",
 			"guid": "j5g8prmlQCN59zCYtiyibcH_8MTrHOmsI8htpM1CPVY",
 			"nsrc": [
-				{
-					"t": "x",
-					"v": "%1$s"
-				},
-				" must be enabled first"
+				"%1$s must be enabled first"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -9552,11 +9430,7 @@
 			"isSuffixPluralized": true,
 			"guid": "-BgwQxYmz_OcJgZCUZeNEhbIn71aeYWQLfqDzIdO5-A",
 			"nsrc": [
-				{
-					"t": "x",
-					"v": "%d"
-				},
-				" update pending"
+				"%d update pending"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -9572,11 +9446,7 @@
 			"isSuffixPluralized": true,
 			"guid": "DZ_sc6S4EfGY49WXOACTA14IzN7IGl__L84uf8WbSwc",
 			"nsrc": [
-				{
-					"t": "x",
-					"v": "%d"
-				},
-				" updates pending"
+				"%d updates pending"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -9623,11 +9493,7 @@
 			"isSuffixPluralized": true,
 			"guid": "E7eIPBUFNkUQCaPZAqanJVmi_cYO9S0JCeKB3Trm0S4",
 			"nsrc": [
-				{
-					"t": "x",
-					"v": "%d"
-				},
-				" extensions updated"
+				"%d extensions updated"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -9688,11 +9554,7 @@
 			"sid": "pages_",
 			"guid": "UKK9CJGLt82KF7IqPt9NB-bHsvmne8m6JVAO-LC2Ntg",
 			"nsrc": [
-				"Pages ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Pages %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -9737,11 +9599,7 @@
 			"sid": "reading_",
 			"guid": "wKFZJn57ACjX_t201lY5WbxY6xfsfi11ssSbwb6nfUs",
 			"nsrc": [
-				"Reading ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Reading %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -10176,7 +10034,7 @@
 			"sid": "if_disabled_transition_will_skip",
 			"guid": "W8IL7FndWDq-7-mwh7RdfpnZ-3SJj5ffNGNhAZG8S1s",
 			"nsrc": [
-				"If disabled, the transition page will be skipped if the next chapter is loaded"
+				"If disabled, the transition page will be\n        skipped if the next chapter is loaded"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -10432,11 +10290,7 @@
 			"isSuffixPluralized": true,
 			"guid": "ftTBQ9mT8jzVQTlzVQThq84qga7aRnm1A_EmQPZ62tE",
 			"nsrc": [
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				" page"
+				"%1$d page"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -10452,11 +10306,7 @@
 			"isSuffixPluralized": true,
 			"guid": "oXUmwOmJSilJYNINjFscNXUcar5msRG4KX7zU-4zQ5A",
 			"nsrc": [
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				" pages"
+				"%1$d pages"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -10487,11 +10337,7 @@
 			"sid": "about_this_",
 			"guid": "rXnFisSe-TCQMWVdPr043XAD3SjPf9t7nr3_A3JFQ4Q",
 			"nsrc": [
-				"About this ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"About this %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -10506,11 +10352,7 @@
 			"sid": "volume_",
 			"guid": "4vSXPlqV-jor93w4akoHBtcFnxQkH294qUAPtwQzaXw",
 			"nsrc": [
-				"Volume ",
-				{
-					"t": "x",
-					"v": "%1$d"
-				}
+				"Volume %1$d"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -10525,11 +10367,7 @@
 			"sid": "season_",
 			"guid": "AkTWm10nlkUtHs0SpqUi4J_fWfhHrtuPiIap8FfKdNY",
 			"nsrc": [
-				"Season ",
-				{
-					"t": "x",
-					"v": "%1$d"
-				}
+				"Season %1$d"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -10559,12 +10397,7 @@
 			"sid": "add_x_to_library",
 			"guid": "lP7I0GvSzdCUMNPu5MZnqO1hE9KRTmW295hArhuKyq4",
 			"nsrc": [
-				"Add ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				},
-				" to library?"
+				"Add %1$s to library?"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -10700,12 +10533,7 @@
 			"isSuffixPluralized": true,
 			"guid": "SSZERtfZuYpDYos6-_VXWBeWY2P0LQQBQ5wwygKih98",
 			"nsrc": [
-				"A chapter has been removed from the source:\n",
-				{
-					"t": "x",
-					"v": "%2$s"
-				},
-				"\nDelete its download?"
+				"A chapter has been removed from the source:\\n%2$s\\nDelete\n            its download?"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -10721,16 +10549,7 @@
 			"isSuffixPluralized": true,
 			"guid": "SMy5CDGGN0GtdJzMKHTWbjT3VqLYuEtNpEvWA5bRmLc",
 			"nsrc": [
-				{
-					"t": "x",
-					"v": "%1$s"
-				},
-				" chapters have been removed from the source:\n",
-				{
-					"t": "x",
-					"v": "%2$s"
-				},
-				"\n\nDelete their downloads?"
+				"%1$s chapters have been removed from the source:\\n%2$s\\n\\nDelete\n            their downloads?"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -10835,12 +10654,7 @@
 			"sid": "cannot_remove_tracking_while_offline",
 			"guid": "EtHBbOLybHYJNZnry87GJ1zgXtr-0SCWf3ClP7wf8sY",
 			"nsrc": [
-				"Tracker cannot be removed from ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				},
-				" while offline"
+				"Tracker cannot be removed from %1$s while offline"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -10855,11 +10669,7 @@
 			"sid": "remove_tracking_from_",
 			"guid": "p-XaUHnNCFyXbPogKtoVZVRDqAjoRntnmJt5JR4R1rU",
 			"nsrc": [
-				"Also remove from ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Also remove from %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -10889,21 +10699,7 @@
 			"sid": "remove_x_from_service_and_add_y",
 			"guid": "ehA-L9pQnrjTwKw9o5o3yPjzB8yjhIGNuOhTX96g7xo",
 			"nsrc": [
-				"Remove ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				},
-				" from ",
-				{
-					"t": "x",
-					"v": "%2$s"
-				},
-				" and add ",
-				{
-					"t": "x",
-					"v": "%3$s"
-				}
+				"Remove %1$s from %2$s and add %3$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -10918,12 +10714,7 @@
 			"sid": "keep_both_on_service",
 			"guid": "PBNBqvQp-lTb7U8FVYhn02_a9p0-R2znZFx5j9sUbpI",
 			"nsrc": [
-				"Keep both on ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				},
-				" and only replace locally"
+				"Keep both on %1$s and only replace locally"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -10983,7 +10774,7 @@
 			"sid": "select_a_source_then_item_to_migrate",
 			"guid": "ZaFVe22GBI64JdVFR6uX-ObRD-cRk0zIKevux5wEwW4",
 			"nsrc": [
-				"Select a source, then select an item to migrate"
+				"Select a source, then select an item to\n        migrate"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -11088,7 +10879,7 @@
 			"sid": "to_show_again_setting_sources",
 			"guid": "40nodRaLIGy39DOdLno37o-CdP-LndXWJmmD06atmsg",
 			"nsrc": [
-				"To show this screen again, go to Settings -> Sources."
+				"To show this screen again, go to Settings ->\n        Sources."
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -11103,11 +10894,7 @@
 			"sid": "latest_",
 			"guid": "XbpaTzrbCpE1Jod-1pTJUcUejGCs65etNfCLyrjOPCI",
 			"nsrc": [
-				"Latest: ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Latest: %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -11137,7 +10924,7 @@
 			"sid": "dont_migrate",
 			"guid": "xJFqLVqZOdDwGYAjfbgscpPcA6oGzcIavM_-Mgu3XOg",
 			"nsrc": [
-				"Don't migrate"
+				"Don\\'t migrate"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -11197,11 +10984,7 @@
 			"sid": "migrate_",
 			"guid": "8UBMozzQQaFAFnGCJ2oCBqqTVxAjdbeLXYrZ5jUkQoQ",
 			"nsrc": [
-				"Migrate ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Migrate %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -11216,7 +10999,7 @@
 			"sid": "no_chapters_found_for_migration",
 			"guid": "dQVWYkXPeFOjGC7dZFl4-qpzZxpKrykPe1si6ZXM47U",
 			"nsrc": [
-				"No chapters found, this manga cannot be used for migration"
+				"No chapters found, this manga cannot be used for\n        migration"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -11262,16 +11045,7 @@
 			"isSuffixPluralized": true,
 			"guid": "5otAlRi18WJHdTNddhXrbauyBBuNmozvj5T1U3LdNio",
 			"nsrc": [
-				"Migrate ",
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				{
-					"t": "x",
-					"v": "%2$s"
-				},
-				" manga?"
+				"Migrate %1$d%2$s manga?"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -11287,16 +11061,7 @@
 			"isSuffixPluralized": true,
 			"guid": "NbSotC-esLltIb4qX2tNcSjKPSlGcoWI-D8v8pewC08",
 			"nsrc": [
-				"Migrate ",
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				{
-					"t": "x",
-					"v": "%2$s"
-				},
-				" manga?"
+				"Migrate %1$d%2$s manga?"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -11312,16 +11077,7 @@
 			"isSuffixPluralized": true,
 			"guid": "V7Ipy8tVMS_hgViqxAA2GVdKnK2eiylBmpYsz6R23AM",
 			"nsrc": [
-				"Copy ",
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				{
-					"t": "x",
-					"v": "%2$s"
-				},
-				" manga?"
+				"Copy %1$d%2$s manga?"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -11337,16 +11093,7 @@
 			"isSuffixPluralized": true,
 			"guid": "8QzHRFQRgUcTAprTZeAm2ftfggD-_EULwyTccQDeOTA",
 			"nsrc": [
-				"Copy ",
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				{
-					"t": "x",
-					"v": "%2$s"
-				},
-				" manga?"
+				"Copy %1$d%2$s manga?"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -11361,12 +11108,7 @@
 			"sid": "skipping_",
 			"guid": "PT1Q-KeWPfn_xxc-bX4Y7GEGvvA-Y19t7vD-todWShg",
 			"nsrc": [
-				"(skipping ",
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				")"
+				"(skipping %1$d)"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -11382,11 +11124,7 @@
 			"isSuffixPluralized": true,
 			"guid": "26atAzC3mwZ3kvEaRGvJjuffpG2YiWvLb_0uDvsLPtE",
 			"nsrc": [
-				{
-					"t": "x",
-					"v": "%d"
-				},
-				" manga migrated"
+				"%d manga migrated"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -11402,11 +11140,7 @@
 			"isSuffixPluralized": true,
 			"guid": "NR_8aJYvx44XUvYFNO1tkp7aEhaPGsIEjxtjvkMyPyc",
 			"nsrc": [
-				{
-					"t": "x",
-					"v": "%d"
-				},
-				" manga migrated"
+				"%d manga migrated"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -11436,11 +11170,7 @@
 			"sid": "turn_on_",
 			"guid": "uFVbUHrXOitHB2S6JDZOrs8aV5rxp7WYKecvc56IP6E",
 			"nsrc": [
-				"Turn on ",
-				{
-					"t": "x",
-					"v": "%s"
-				}
+				"Turn on %s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -11455,11 +11185,7 @@
 			"sid": "turn_off_",
 			"guid": "ho4L5e9G-ndHwuIF6Cmr5geXwERUZCd_jY_yTm6agc8",
 			"nsrc": [
-				"Turn off ",
-				{
-					"t": "x",
-					"v": "%s"
-				}
+				"Turn off %s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -12029,7 +11755,7 @@
 			"sid": "dont_auto_update",
 			"guid": "zXLKLNmS6xruqwTnlAbShfEJGiuuMK3ztU-MUk76zWE",
 			"nsrc": [
-				"Don't auto-update"
+				"Don\\'t auto-update"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -12119,7 +11845,7 @@
 			"sid": "no_new_chapters_open_details",
 			"guid": "Fm6Vq1l2shHVMSBG3SScRIRVIIllb62PT55gQ8pn6jU",
 			"nsrc": [
-				"When there's no new chapters, the series' details will open instead"
+				"When there\\'s no new chapters, the series\\' details will open instead"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -12149,7 +11875,7 @@
 			"sid": "restore_content_full",
 			"guid": "zjRnVqvBaWL0WEb1kpUnpHu5WxQ6QlzFONOTIKfEIWQ",
 			"nsrc": [
-				"Data from the backup file will be restored.\n\nYou will need to install any missing extensions and log in to tracking services afterwards to use them."
+				"Data from the backup file will be restored.\\n\\nYou will need to install any missing extensions and log in to tracking services afterwards to use them."
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -12180,17 +11906,7 @@
 			"isSuffixPluralized": true,
 			"guid": "dUY5CemIa3xpPTEoUKN5hZLIYyFYKU1bhYQvPyUJvk0",
 			"nsrc": [
-				"Done in ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				},
-				" with ",
-				{
-					"t": "x",
-					"v": "%2$s"
-				},
-				" error"
+				"Done in %1$s with %2$s error"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -12205,11 +11921,7 @@
 			"sid": "not_logged_into_",
 			"guid": "2uYPHtC1kQJwVaCe1QnpczVkqD-zdpHEtbJTGyYzpSU",
 			"nsrc": [
-				"Not logged into ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Not logged into %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -12285,12 +11997,7 @@
 			"isSuffixPluralized": true,
 			"guid": "5eZfQwyisFt-eAr3zUOKugP__L-uALc_ylWptAYKJQI",
 			"nsrc": [
-				"Cache cleared. ",
-				{
-					"t": "x",
-					"v": "%d"
-				},
-				" file has been deleted"
+				"Cache cleared. %d file has been deleted"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -12306,12 +12013,7 @@
 			"isSuffixPluralized": true,
 			"guid": "0MGHojsg991bW2BX_cczB7XrP0mfW2DJ6OMvNsJaj48",
 			"nsrc": [
-				"Cache cleared. ",
-				{
-					"t": "x",
-					"v": "%d"
-				},
-				" files have been deleted"
+				"Cache cleared. %d files have been deleted"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -12341,7 +12043,7 @@
 			"sid": "delete_unused_chapters",
 			"guid": "dwmP8JsQhLHngvqw56EBpRIwjbjeCHjFNccFSEUvGvI",
 			"nsrc": [
-				"Delete non-existent, partially downloaded, and read chapter folders"
+				"Delete non-existent, partially downloaded,\n            and read chapter folders"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -12431,7 +12133,7 @@
 			"sid": "disable_if_issues_with_updating",
 			"guid": "-wkXZ-U6feYoBLD03zOySY9bCJ2q3iJdBWNGiVyzb-w",
 			"nsrc": [
-				"Disable this if you are experiencing issues with updating or restoring your library"
+				"Disable this if you are experiencing issues\n        with updating or restoring your library"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -12447,12 +12149,7 @@
 			"isSuffixPluralized": true,
 			"guid": "rh1h0cJO-5V2S5q15JDf5bxw2kDqyrXKS4r_wy5PUwU",
 			"nsrc": [
-				"Cleanup done. Removed ",
-				{
-					"t": "x",
-					"v": "%d"
-				},
-				" folder"
+				"Cleanup done. Removed %d folder"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -12468,12 +12165,7 @@
 			"isSuffixPluralized": true,
 			"guid": "FICdN6ZTFGYJmB81aL4akRY846OS0LMXjqPMDZFDuqQ",
 			"nsrc": [
-				"Cleanup done. Removed ",
-				{
-					"t": "x",
-					"v": "%d"
-				},
-				" folders"
+				"Cleanup done. Removed %d folders"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -12503,11 +12195,7 @@
 			"sid": "delete_old_covers_in_library_used_",
 			"guid": "lSA7apVW1cOhxizHua1Cozi3U_fNiABPf20SPV5qWtg",
 			"nsrc": [
-				"Delete old and unused cached covers of manga in your library that has been updated.\nCurrently using: ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Delete old and unused cached covers of\n        manga in your library that has been updated.\\nCurrently using: %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -12537,11 +12225,7 @@
 			"sid": "delete_all_covers__not_in_library_used_",
 			"guid": "MAJoOU3XbW2pm0bnts6394MkGigK3TCnzQ-_iRfyg8g",
 			"nsrc": [
-				"Delete all covers cached that are not in your library \nCurrently using: ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Delete all covers cached that are\n        not in your library \\nCurrently using: %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -12646,7 +12330,7 @@
 			"sid": "only_enable_pinned_for_migration",
 			"guid": "dhcccCE8fLfXWvszAEfDTWr7hNNe_3qT5IUdFeDqgoI",
 			"nsrc": [
-				"Only enable your pinned sources for migration"
+				"Only enable your pinned sources for\n        migration"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -12661,7 +12345,7 @@
 			"sid": "only_enable_enabled_for_migration",
 			"guid": "ecCXfY4HMfF9J918_KY7aN7GY0YzLi4DQvg6ltvASZs",
 			"nsrc": [
-				"Only enable your currently enabled sources for migration"
+				"Only enable your currently enabled sources for\n        migration"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -12676,7 +12360,7 @@
 			"sid": "use_last_saved_migration_preferences",
 			"guid": "SVlZlyNR7LfMJwSoD3PuIxOKThbqF1NzlAMB2Ol9ARE",
 			"nsrc": [
-				"Use last saved pre-migration preferences and sources to mass migrate"
+				"Use last saved pre-migration preferences\n    and sources to mass migrate"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -12706,7 +12390,7 @@
 			"sid": "you_can_migrate_in_library",
 			"guid": "pX3b7nl_8Y58oXPbghIIx7_0aGmWWLPeP-D5LNDblcU",
 			"nsrc": [
-				"You can also migrate by selecting manga in your library"
+				"You can also migrate by selecting manga in your\n        library"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -12736,7 +12420,7 @@
 			"sid": "whats_new_this_release",
 			"guid": "ODnxRXqbNkf0WZwNMNBRVzvTowiRVdu0tktSDF2ET3k",
 			"nsrc": [
-				"What's new in this release"
+				"What\\'s new in this release"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -12796,12 +12480,7 @@
 			"sid": "log_out_from_",
 			"guid": "bAkWLyFZwmeqXY5p5StiL_Ove18eBwQkFXS9_1Xkoe8",
 			"nsrc": [
-				"Log out from ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				},
-				"?"
+				"Log out from %1$s?"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -12831,11 +12510,7 @@
 			"sid": "downloading_",
 			"guid": "hPBLtewVJ0mhjgOKNagsyLfPqlTA2s4KFgxhNP5G52Q",
 			"nsrc": [
-				"Downloading: ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Downloading: %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -12925,7 +12600,7 @@
 			"sid": "manage_whats_downloading",
 			"guid": "eXRc26yvod4Obg8UmsDbwm7gkrsGGdpMy4TpcYAWsxk",
 			"nsrc": [
-				"Manage what's downloading"
+				"Manage what\\'s downloading"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -12940,7 +12615,7 @@
 			"sid": "visit_recents_for_download_queue",
 			"guid": "6tgFpq1s7Bmdw6Wj4ju2N96GgPe7p9Y7cGiyfxSF-9E",
 			"nsrc": [
-				"Visit the recents tab to access the download queue. You can also double tap or press and hold for quicker access"
+				"Visit the recents tab to access the download\n        queue. You can also double tap or press and hold for quicker access"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -12955,7 +12630,7 @@
 			"sid": "couldnt_download_low_space",
 			"guid": "Vj8DOxw8uO9KY77TuWRdJxY8sMxVtwq_IyHh6_8Srro",
 			"nsrc": [
-				"Couldn't download chapters due to low disk space"
+				"Couldn\\'t download chapters due to low disk space"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -12985,7 +12660,7 @@
 			"sid": "delete_downloaded_if_removed_online",
 			"guid": "QblYKrpV4TYMwNLE5d6OuLP5-YvTFicfnEWa5-51OcY",
 			"nsrc": [
-				"Delete downloaded chapters if the source has removed the chapter online"
+				"Delete downloaded chapters if the source\n        has removed the chapter online"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -13061,12 +12736,7 @@
 			"isSuffixPluralized": true,
 			"guid": "C0PQbeoPQFB8cyWahP6wddbk0QOh4f-mmiHyTcQUny4",
 			"nsrc": [
-				"After ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				},
-				" minute"
+				"After %1$s minute"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -13082,12 +12752,7 @@
 			"isSuffixPluralized": true,
 			"guid": "y51rnyKxtYjssSeHCmtKvJwyTUp_J-6z11PC9kxAmM4",
 			"nsrc": [
-				"After ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				},
-				" minutes"
+				"After %1$s minutes"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -13117,11 +12782,7 @@
 			"sid": "add_to_",
 			"guid": "a93fWBww9BfwOqe-ajdWFS7EBpRjHt0DvSebYl5bo7o",
 			"nsrc": [
-				"Add to ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Add to %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -13136,11 +12797,7 @@
 			"sid": "added_to_",
 			"guid": "OVv0BMULqSdXUWi0L_ebUyZcG4kz8EVFIeXdTQdp1U4",
 			"nsrc": [
-				"Added to ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Added to %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -13215,11 +12872,7 @@
 			"sid": "deleted_",
 			"guid": "EDPSs_fIwR6Tv2TVPaqASTdVdgCzMH0HrN1w8SaUvAc",
 			"nsrc": [
-				"Deleted: ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Deleted: %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -13294,11 +12947,7 @@
 			"sid": "exclude_",
 			"guid": "6xC7pebM5-ZxaKv6i64GbRkfsTR-nzcZ73GOATo0YLQ",
 			"nsrc": [
-				"Exclude: ",
-				{
-					"t": "x",
-					"v": "%s"
-				}
+				"Exclude: %s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -13328,11 +12977,7 @@
 			"sid": "include_",
 			"guid": "kV1JMfcYxSPaA33pPszcbnisV0t0Sfxe2ZQBKdjy2aU",
 			"nsrc": [
-				"Include: ",
-				{
-					"t": "x",
-					"v": "%s"
-				}
+				"Include: %s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -13362,11 +13007,7 @@
 			"sid": "keep_in_",
 			"guid": "RfY1RTihyotw-07YpitFAyH3J5FraoAhNTcLYlVc6vk",
 			"nsrc": [
-				"Keep in ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Keep in %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -13471,11 +13112,7 @@
 			"sid": "move_to_",
 			"guid": "I40yqqfSXEqxcRJEebAkoMGQoQuYuLNOa2Ud6BkMcsU",
 			"nsrc": [
-				"Move to ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Move to %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -13490,11 +13127,7 @@
 			"sid": "moved_to_",
 			"guid": "XSREc7X2ZGv7-we3bdC1-Yfm_4RaFy8JjHhPFjrm_7E",
 			"nsrc": [
-				"Moved to ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Moved to %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -13599,11 +13232,7 @@
 			"sid": "remove_from_",
 			"guid": "zo4UIzRgDLhp4lYJvdg12RD0fTpiXjbcbuWC3ClIlgw",
 			"nsrc": [
-				"Remove from ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Remove from %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,
@@ -13648,11 +13277,7 @@
 			"sid": "search_",
 			"guid": "dEfOMw-ElOf-gh4JNy5OhAGW36mhN-kQrhkYgsYBZVQ",
 			"nsrc": [
-				"Search ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
+				"Search %1$s"
 			],
 			"rid": "app/src/main/res/values/strings.xml",
 			"ts": 1,

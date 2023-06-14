@@ -7,11 +7,11 @@ regressTestFromCLI() {
     echo "\nTesting $1..."
     cd $1
     npm i --no-package-lock
-    time ../../../cli/out/l10n.cjs --regression push --provider grandfather,repetition,default
-    time ../../../cli/out/l10n.cjs --regression pull
-    time ../../../cli/out/l10n.cjs --regression translate
-    time ../../../cli/out/l10n.cjs --regression status --output status.json
-    time ../../../cli/out/l10n.cjs --regression tmexport tm job
+    time ../../../cli/l10n.cjs --regression push --provider grandfather,repetition,default
+    time ../../../cli/l10n.cjs --regression pull
+    time ../../../cli/l10n.cjs --regression translate
+    time ../../../cli/l10n.cjs --regression status --output status.json
+    time ../../../cli/l10n.cjs --regression tmexport tm job
     cd ..
 }
 

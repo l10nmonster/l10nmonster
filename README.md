@@ -11,10 +11,10 @@ L10n Monster is also a solution to manage translation vendors, not translators. 
 
 To help manage dependencies and allow the variety of integrations required by the localization industry, the are a lot of packages to choose from and it's very easy to create your own extensions.
 
-1. Core: the foundational classes where most of the functionality lives. Written as ESM and compiled into VJS.
-2. CLI: the main command-line utility to invoke from the shell or from Node.js scripts. Suitable for batch jobs. Written as ESM, potentially compiled to a binary.
-3. VS Code L10n Manager: a VS Code extension to provide a more intuitive UI than the CLI. Written as CJS.
-4. Helpers: common utilities and configuration components with minimal or no dependencies. Written as CJS.
+1. Core: the foundational classes where most of the functionality lives. Written as ESM and built into CJS.
+2. CLI: the main command-line utility to invoke from the shell or from Node.js scripts. Suitable for batch jobs. Written as ESM, built into CJS, and potentially compiled to a binary.
+3. VS Code L10n Manager: a VS Code extension to provide a more intuitive UI than the CLI. Written as ESM and built into CJS.
+4. Helpers: common utilities and configuration components with minimal or no dependencies. Written as ESM and built into CJS.
 5. Helpers-*: optional specific configuration components with additional dependencies. Written as CJS.
 
 See the overall [System Design (OUTDATED)](architecture.md#system-design) to get a better idea. Also, a deep dive of the various [pipelines](pipelines.md).

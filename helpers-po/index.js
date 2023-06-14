@@ -24,14 +24,14 @@ exports.Filter = class PoFilter {
                     if (s.msgid_plural) {
                         const baseSid = seg.sid;
                         seg.isSuffixPluralized = true;
-                        (isSource || sef.str.length > 0) && segments.push({
+                        (isSource || seg.str.length > 0) && segments.push({
                             ...seg,
                             sid: `${baseSid}_one`,
                         });
                         seg.sid = `${baseSid}_other`;
                         seg.str = s.msgid_plural; // TODO: this is wrong if isSource === true, should get s.msgstr array and create corresponding segments
                     }
-                    (isSource || sef.str.length > 0) && segments.push(seg);
+                    (isSource || seg.str.length > 0) && segments.push(seg);
                 }
             }
         }

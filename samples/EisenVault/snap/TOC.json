@@ -2,363 +2,423 @@
 	"activity-0.json": {
 		"dashlets/activity-list.get_en.properties": {
 			"id": "dashlets/activity-list.get_en.properties",
+			"channel": "default",
 			"modified": "2022-07-21T23:56:25.171Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "activity",
-			"contentType": "default"
+			"prj": "activity"
 		}
 	},
 	"addons-0.json": {
 		"dashlets/addons.get_en.properties": {
 			"id": "dashlets/addons.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "addons",
-			"contentType": "default"
+			"prj": "addons"
 		}
 	},
 	"async-0.json": {
 		"dashlets/async-rssfeed.get_en.properties": {
 			"id": "dashlets/async-rssfeed.get_en.properties",
+			"channel": "default",
 			"modified": "2022-06-14T22:09:41.224Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "async",
-			"contentType": "default"
+			"prj": "async"
 		},
 		"dashlets/async-rssfeed.post_en.properties": {
 			"id": "dashlets/async-rssfeed.post_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "async",
-			"contentType": "default"
+			"prj": "async"
 		}
 	},
 	"calendar-0.json": {
 		"dashlets/calendar.get_en.properties": {
 			"id": "dashlets/calendar.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "calendar",
-			"contentType": "default"
+			"prj": "calendar"
 		}
 	},
 	"colleagues-0.json": {
 		"dashlets/colleagues.get_en.properties": {
 			"id": "dashlets/colleagues.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "colleagues",
-			"contentType": "default"
+			"prj": "colleagues"
 		}
 	},
 	"docsummary-0.json": {
 		"dashlets/docsummary.get_en.properties": {
 			"id": "dashlets/docsummary.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "docsummary",
-			"contentType": "default"
+			"prj": "docsummary"
 		}
 	},
 	"dynamic-0.json": {
 		"dashlets/dynamic-welcome.get_en.properties": {
 			"id": "dashlets/dynamic-welcome.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "dynamic",
-			"contentType": "default"
+			"prj": "dynamic"
 		}
 	},
 	"forum-0.json": {
 		"dashlets/forum-summary.get_en.properties": {
 			"id": "dashlets/forum-summary.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "forum",
-			"contentType": "default"
+			"prj": "forum"
 		}
 	},
 	"imagesummary-0.json": {
 		"dashlets/imagesummary.get_en.properties": {
 			"id": "dashlets/imagesummary.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "imagesummary",
-			"contentType": "default"
+			"prj": "imagesummary"
 		}
 	},
 	"my-0.json": {
 		"dashlets/my-activities.get_en.properties": {
 			"id": "dashlets/my-activities.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "my",
-			"contentType": "default"
+			"prj": "my"
 		},
 		"dashlets/my-docs-editing.get_en.properties": {
 			"id": "dashlets/my-docs-editing.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "my",
-			"contentType": "default"
+			"prj": "my"
 		},
 		"dashlets/my-documents.get_en.properties": {
 			"id": "dashlets/my-documents.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "my",
-			"contentType": "default"
+			"prj": "my"
 		},
 		"dashlets/my-meeting-workspaces.get_en.properties": {
 			"id": "dashlets/my-meeting-workspaces.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "my",
-			"contentType": "default"
+			"prj": "my"
 		},
 		"dashlets/my-profile.get_en.properties": {
 			"id": "dashlets/my-profile.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "my",
-			"contentType": "default"
+			"prj": "my"
 		},
 		"dashlets/my-sites.get_en.properties": {
 			"id": "dashlets/my-sites.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "my",
-			"contentType": "default"
+			"prj": "my"
 		},
 		"dashlets/my-tasks.get_en.properties": {
 			"id": "dashlets/my-tasks.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "my",
-			"contentType": "default"
+			"prj": "my"
 		},
 		"dashlets/my-workspaces.get_en.properties": {
 			"id": "dashlets/my-workspaces.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "my",
-			"contentType": "default"
+			"prj": "my"
 		}
 	},
 	"rssfeed-0.json": {
 		"dashlets/rssfeed.get_en.properties": {
 			"id": "dashlets/rssfeed.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "rssfeed",
-			"contentType": "default"
+			"prj": "rssfeed"
 		}
 	},
 	"saved-0.json": {
 		"dashlets/saved-search.get_en.properties": {
 			"id": "dashlets/saved-search.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "saved",
-			"contentType": "default"
+			"prj": "saved"
 		}
 	},
 	"site-0.json": {
 		"dashlets/site-activities.get_en.properties": {
 			"id": "dashlets/site-activities.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "site",
-			"contentType": "default"
+			"prj": "site"
 		},
 		"dashlets/site-data-lists.get_en.properties": {
 			"id": "dashlets/site-data-lists.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "site",
-			"contentType": "default"
+			"prj": "site"
 		},
 		"dashlets/site-links.get_en.properties": {
 			"id": "dashlets/site-links.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "site",
-			"contentType": "default"
+			"prj": "site"
 		},
 		"dashlets/site-notice.get_en.properties": {
 			"id": "dashlets/site-notice.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "site",
-			"contentType": "default"
+			"prj": "site"
 		},
 		"dashlets/site-profile.get_en.properties": {
 			"id": "dashlets/site-profile.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "site",
-			"contentType": "default"
+			"prj": "site"
 		},
 		"dashlets/site-search.get_en.properties": {
 			"id": "dashlets/site-search.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "site",
-			"contentType": "default"
+			"prj": "site"
 		}
 	},
 	"user-0.json": {
 		"dashlets/user-calendar.get_en.properties": {
 			"id": "dashlets/user-calendar.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "user",
-			"contentType": "default"
+			"prj": "user"
 		}
 	},
 	"webview-0.json": {
 		"dashlets/webview-default.get_en.properties": {
 			"id": "dashlets/webview-default.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "webview",
-			"contentType": "default"
+			"prj": "webview"
 		},
 		"dashlets/webview.get_en.properties": {
 			"id": "dashlets/webview.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "webview",
-			"contentType": "default"
+			"prj": "webview"
 		}
 	},
 	"wiki-0.json": {
 		"dashlets/wiki.get_en.properties": {
 			"id": "dashlets/wiki.get_en.properties",
+			"channel": "default",
 			"modified": "2015-03-30T12:25:10.000Z",
+			"resourceFormat": "default",
+			"sourceLang": "en",
 			"targetLangs": [
 				"it",
 				"ja",
 				"pt-BR"
 			],
-			"prj": "wiki",
-			"contentType": "default"
+			"prj": "wiki"
 		}
 	}
 }

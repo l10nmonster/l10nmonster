@@ -1,14 +1,16 @@
 {
 	"dashlets/webview-default.get_en.properties": {
 		"id": "dashlets/webview-default.get_en.properties",
+		"channel": "default",
 		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
 		"targetLangs": [
 			"it",
 			"ja",
 			"pt-BR"
 		],
 		"prj": "webview",
-		"contentType": "default",
 		"segments": [
 			{
 				"sid": "label.defaultText",
@@ -16,6 +18,7 @@
 					"startLine": 1,
 					"endLine": 1
 				},
+				"mf": "default",
 				"nstr": [
 					"Please use the Configure link to enter the URL of the web page you wish to display"
 				],
@@ -26,14 +29,16 @@
 	},
 	"dashlets/webview.get_en.properties": {
 		"id": "dashlets/webview.get_en.properties",
+		"channel": "default",
 		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
 		"targetLangs": [
 			"it",
 			"ja",
 			"pt-BR"
 		],
 		"prj": "webview",
-		"contentType": "default",
 		"segments": [
 			{
 				"sid": "label.header",
@@ -41,6 +46,7 @@
 					"startLine": 1,
 					"endLine": 1
 				},
+				"mf": "default",
 				"nstr": [
 					"Web View"
 				],
@@ -53,6 +59,7 @@
 					"startLine": 2,
 					"endLine": 2
 				},
+				"mf": "default",
 				"nstr": [
 					"No web page to display."
 				],
@@ -65,6 +72,7 @@
 					"startLine": 3,
 					"endLine": 3
 				},
+				"mf": "default",
 				"nstr": [
 					"Web View"
 				],
@@ -77,6 +85,7 @@
 					"startLine": 4,
 					"endLine": 4
 				},
+				"mf": "default",
 				"nstr": [
 					"The domain of the page to display is not listed as a trusted domain inside your server's IFramePolicy config."
 				],
@@ -89,6 +98,7 @@
 					"startLine": 5,
 					"endLine": 5
 				},
+				"mf": "default",
 				"nstr": [
 					"The domain of the url is not listed as a trusted domain inside your server's IFramePolicy config."
 				],
@@ -101,6 +111,7 @@
 					"startLine": 8,
 					"endLine": 9
 				},
+				"mf": "default",
 				"nstr": [
 					{
 						"t": "bx",

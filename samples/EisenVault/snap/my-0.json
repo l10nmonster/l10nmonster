@@ -1,14 +1,16 @@
 {
 	"dashlets/my-activities.get_en.properties": {
 		"id": "dashlets/my-activities.get_en.properties",
+		"channel": "default",
 		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
 		"targetLangs": [
 			"it",
 			"ja",
 			"pt-BR"
 		],
 		"prj": "my",
-		"contentType": "default",
 		"segments": [
 			{
 				"sid": "header",
@@ -16,6 +18,7 @@
 					"startLine": 1,
 					"endLine": 1
 				},
+				"mf": "default",
 				"nstr": [
 					"My Activities"
 				],
@@ -28,6 +31,7 @@
 					"startLine": 2,
 					"endLine": 2
 				},
+				"mf": "default",
 				"nstr": [
 					"Could not load activities list"
 				],
@@ -40,6 +44,7 @@
 					"startLine": 3,
 					"endLine": 3
 				},
+				"mf": "default",
 				"nstr": [
 					"Show"
 				],
@@ -52,6 +57,7 @@
 					"startLine": 4,
 					"endLine": 4
 				},
+				"mf": "default",
 				"nstr": [
 					"Older Activities"
 				],
@@ -64,6 +70,7 @@
 					"startLine": 10,
 					"endLine": 10
 				},
+				"mf": "default",
 				"nstr": [
 					"My activities"
 				],
@@ -80,6 +87,7 @@
 					"startLine": 11,
 					"endLine": 11
 				},
+				"mf": "default",
 				"nstr": [
 					"Everyone else's activities"
 				],
@@ -92,6 +100,7 @@
 					"startLine": 12,
 					"endLine": 12
 				},
+				"mf": "default",
 				"nstr": [
 					"Everyone's activities"
 				],
@@ -104,6 +113,7 @@
 					"startLine": 13,
 					"endLine": 13
 				},
+				"mf": "default",
 				"nstr": [
 					"I'm following"
 				],
@@ -116,6 +126,7 @@
 					"startLine": 15,
 					"endLine": 15
 				},
+				"mf": "default",
 				"nstr": [
 					"all items"
 				],
@@ -132,6 +143,7 @@
 					"startLine": 16,
 					"endLine": 16
 				},
+				"mf": "default",
 				"nstr": [
 					"status updates"
 				],
@@ -144,6 +156,7 @@
 					"startLine": 17,
 					"endLine": 17
 				},
+				"mf": "default",
 				"nstr": [
 					"comments"
 				],
@@ -156,6 +169,7 @@
 					"startLine": 18,
 					"endLine": 18
 				},
+				"mf": "default",
 				"nstr": [
 					"content"
 				],
@@ -168,6 +182,7 @@
 					"startLine": 19,
 					"endLine": 19
 				},
+				"mf": "default",
 				"nstr": [
 					"memberships"
 				],
@@ -180,6 +195,7 @@
 					"startLine": 21,
 					"endLine": 21
 				},
+				"mf": "default",
 				"nstr": [
 					"today"
 				],
@@ -196,6 +212,7 @@
 					"startLine": 22,
 					"endLine": 22
 				},
+				"mf": "default",
 				"nstr": [
 					"in the last 7 days"
 				],
@@ -208,6 +225,7 @@
 					"startLine": 23,
 					"endLine": 23
 				},
+				"mf": "default",
 				"nstr": [
 					"in the last 14 days"
 				],
@@ -220,6 +238,7 @@
 					"startLine": 24,
 					"endLine": 24
 				},
+				"mf": "default",
 				"nstr": [
 					"in the last 28 days"
 				],
@@ -232,6 +251,7 @@
 					"startLine": 26,
 					"endLine": 26
 				},
+				"mf": "default",
 				"nstr": [
 					"Follow what's going on in your sites"
 				],
@@ -244,6 +264,7 @@
 					"startLine": 27,
 					"endLine": 27
 				},
+				"mf": "default",
 				"nstr": [
 					"The activities in this list let you follow the changes in the sites you belong to. You'll see things such as content updates and likes. You can also see who is joining and leaving your sites."
 				],
@@ -256,6 +277,7 @@
 					"startLine": 30,
 					"endLine": 31
 				},
+				"mf": "default",
 				"nstr": [
 					{
 						"t": "bx",
@@ -287,14 +309,16 @@
 	},
 	"dashlets/my-docs-editing.get_en.properties": {
 		"id": "dashlets/my-docs-editing.get_en.properties",
+		"channel": "default",
 		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
 		"targetLangs": [
 			"it",
 			"ja",
 			"pt-BR"
 		],
 		"prj": "my",
-		"contentType": "default",
 		"segments": [
 			{
 				"sid": "header",
@@ -302,6 +326,7 @@
 					"startLine": 1,
 					"endLine": 1
 				},
+				"mf": "default",
 				"nstr": [
 					"Content I'm Editing"
 				],
@@ -314,6 +339,7 @@
 					"startLine": 2,
 					"endLine": 2
 				},
+				"mf": "default",
 				"nstr": [
 					"No items to display"
 				],
@@ -326,6 +352,7 @@
 					"startLine": 3,
 					"endLine": 3
 				},
+				"mf": "default",
 				"nstr": [
 					"Could not load data"
 				],
@@ -338,6 +365,7 @@
 					"startLine": 4,
 					"endLine": 4
 				},
+				"mf": "default",
 				"nstr": [
 					"Edited ",
 					{
@@ -359,6 +387,7 @@
 					"startLine": 5,
 					"endLine": 5
 				},
+				"mf": "default",
 				"nstr": [
 					"Blog posts"
 				],
@@ -371,6 +400,7 @@
 					"startLine": 6,
 					"endLine": 6
 				},
+				"mf": "default",
 				"nstr": [
 					"Forum posts"
 				],
@@ -383,6 +413,7 @@
 					"startLine": 7,
 					"endLine": 7
 				},
+				"mf": "default",
 				"nstr": [
 					"Wiki pages"
 				],
@@ -395,6 +426,7 @@
 					"startLine": 8,
 					"endLine": 8
 				},
+				"mf": "default",
 				"nstr": [
 					"Documents"
 				],
@@ -407,6 +439,7 @@
 					"startLine": 10,
 					"endLine": 10
 				},
+				"mf": "default",
 				"nstr": [
 					"Check this dashlet to quickly see the items you are working on."
 				],
@@ -417,14 +450,16 @@
 	},
 	"dashlets/my-documents.get_en.properties": {
 		"id": "dashlets/my-documents.get_en.properties",
+		"channel": "default",
 		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
 		"targetLangs": [
 			"it",
 			"ja",
 			"pt-BR"
 		],
 		"prj": "my",
-		"contentType": "default",
 		"segments": [
 			{
 				"sid": "header",
@@ -432,6 +467,7 @@
 					"startLine": 1,
 					"endLine": 1
 				},
+				"mf": "default",
 				"nstr": [
 					"My Documents"
 				],
@@ -444,6 +480,7 @@
 					"startLine": 4,
 					"endLine": 4
 				},
+				"mf": "default",
 				"nstr": [
 					"My Favorites"
 				],
@@ -460,6 +497,7 @@
 					"startLine": 5,
 					"endLine": 5
 				},
+				"mf": "default",
 				"nstr": [
 					"I'm Editing"
 				],
@@ -472,6 +510,7 @@
 					"startLine": 6,
 					"endLine": 6
 				},
+				"mf": "default",
 				"nstr": [
 					"I've Recently Modified"
 				],
@@ -484,6 +523,7 @@
 					"startLine": 7,
 					"endLine": 7
 				},
+				"mf": "default",
 				"nstr": [
 					"Synced content"
 				],
@@ -496,6 +536,7 @@
 					"startLine": 8,
 					"endLine": 8
 				},
+				"mf": "default",
 				"nstr": [
 					"Synced with Errors"
 				],
@@ -508,6 +549,7 @@
 					"startLine": 10,
 					"endLine": 10
 				},
+				"mf": "default",
 				"nstr": [
 					"Keep track of your own content"
 				],
@@ -520,6 +562,7 @@
 					"startLine": 11,
 					"endLine": 11
 				},
+				"mf": "default",
 				"nstr": [
 					"This dashlet lists all of the content that's important to you, no matter which site it is in. Use the filters to easily find what you're looking for."
 				],
@@ -532,6 +575,7 @@
 					"startLine": 14,
 					"endLine": 18
 				},
+				"mf": "default",
 				"nstr": [
 					{
 						"t": "bx",
@@ -598,14 +642,16 @@
 	},
 	"dashlets/my-meeting-workspaces.get_en.properties": {
 		"id": "dashlets/my-meeting-workspaces.get_en.properties",
+		"channel": "default",
 		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
 		"targetLangs": [
 			"it",
 			"ja",
 			"pt-BR"
 		],
 		"prj": "my",
-		"contentType": "default",
 		"segments": [
 			{
 				"sid": "header.myMeetingWorkspaces",
@@ -613,6 +659,7 @@
 					"startLine": 1,
 					"endLine": 1
 				},
+				"mf": "default",
 				"nstr": [
 					"My Meeting Workspaces"
 				],
@@ -625,6 +672,7 @@
 					"startLine": 2,
 					"endLine": 2
 				},
+				"mf": "default",
 				"nstr": [
 					"Delete"
 				],
@@ -637,6 +685,7 @@
 					"startLine": 3,
 					"endLine": 3
 				},
+				"mf": "default",
 				"nstr": [
 					"No meeting workspaces to display"
 				],
@@ -649,6 +698,7 @@
 					"startLine": 4,
 					"endLine": 4
 				},
+				"mf": "default",
 				"nstr": [
 					"The favorite setting for the meeting workspace could not be saved"
 				],
@@ -661,6 +711,7 @@
 					"startLine": 5,
 					"endLine": 5
 				},
+				"mf": "default",
 				"nstr": [
 					"Mark or unmark meeting workspace as favorite"
 				],
@@ -673,6 +724,7 @@
 					"startLine": 6,
 					"endLine": 6
 				},
+				"mf": "default",
 				"nstr": [
 					"Mark or unmark meeting workspace as IMAP favorite"
 				],
@@ -685,6 +737,7 @@
 					"startLine": 9,
 					"endLine": 10
 				},
+				"mf": "default",
 				"nstr": [
 					{
 						"t": "bx",
@@ -716,14 +769,16 @@
 	},
 	"dashlets/my-profile.get_en.properties": {
 		"id": "dashlets/my-profile.get_en.properties",
+		"channel": "default",
 		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
 		"targetLangs": [
 			"it",
 			"ja",
 			"pt-BR"
 		],
 		"prj": "my",
-		"contentType": "default",
 		"segments": [
 			{
 				"sid": "header.myLimitedProfile",
@@ -731,6 +786,7 @@
 					"startLine": 1,
 					"endLine": 1
 				},
+				"mf": "default",
 				"nstr": [
 					"My Profile"
 				],
@@ -743,6 +799,7 @@
 					"startLine": 2,
 					"endLine": 2
 				},
+				"mf": "default",
 				"nstr": [
 					"View Full Profile"
 				],
@@ -755,6 +812,7 @@
 					"startLine": 4,
 					"endLine": 4
 				},
+				"mf": "default",
 				"nstr": [
 					"This dashlet shows a summary of your personal details. From here you can access your full user profile."
 				],
@@ -765,14 +823,16 @@
 	},
 	"dashlets/my-sites.get_en.properties": {
 		"id": "dashlets/my-sites.get_en.properties",
+		"channel": "default",
 		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
 		"targetLangs": [
 			"it",
 			"ja",
 			"pt-BR"
 		],
 		"prj": "my",
-		"contentType": "default",
 		"segments": [
 			{
 				"sid": "header",
@@ -780,6 +840,7 @@
 					"startLine": 1,
 					"endLine": 1
 				},
+				"mf": "default",
 				"nstr": [
 					"My Sites"
 				],
@@ -792,6 +853,7 @@
 					"startLine": 3,
 					"endLine": 3
 				},
+				"mf": "default",
 				"nstr": [
 					"Create Site"
 				],
@@ -804,6 +866,7 @@
 					"startLine": 4,
 					"endLine": 4
 				},
+				"mf": "default",
 				"nstr": [
 					"Delete"
 				],
@@ -816,6 +879,7 @@
 					"startLine": 6,
 					"endLine": 6
 				},
+				"mf": "default",
 				"nstr": [
 					"All"
 				],
@@ -828,6 +892,7 @@
 					"startLine": 7,
 					"endLine": 7
 				},
+				"mf": "default",
 				"nstr": [
 					"My Favorites"
 				],
@@ -840,6 +905,7 @@
 					"startLine": 8,
 					"endLine": 8
 				},
+				"mf": "default",
 				"nstr": [
 					"Recent"
 				],
@@ -852,6 +918,7 @@
 					"startLine": 10,
 					"endLine": 10
 				},
+				"mf": "default",
 				"nstr": [
 					"Quickly access your sites"
 				],
@@ -864,6 +931,7 @@
 					"startLine": 11,
 					"endLine": 11
 				},
+				"mf": "default",
 				"nstr": [
 					"A site is a project area where you can share and discuss content with other site members."
 				],
@@ -876,6 +944,7 @@
 					"startLine": 12,
 					"endLine": 12
 				},
+				"mf": "default",
 				"nstr": [
 					"We've included a sample site for you. Use this to explore the features in Alfresco."
 				],
@@ -888,6 +957,7 @@
 					"startLine": 15,
 					"endLine": 20
 				},
+				"mf": "default",
 				"nstr": [
 					{
 						"t": "bx",
@@ -963,14 +1033,16 @@
 	},
 	"dashlets/my-tasks.get_en.properties": {
 		"id": "dashlets/my-tasks.get_en.properties",
+		"channel": "default",
 		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
 		"targetLangs": [
 			"it",
 			"ja",
 			"pt-BR"
 		],
 		"prj": "my",
-		"contentType": "default",
 		"segments": [
 			{
 				"sid": "header",
@@ -978,6 +1050,7 @@
 					"startLine": 1,
 					"endLine": 1
 				},
+				"mf": "default",
 				"nstr": [
 					"My Tasks"
 				],
@@ -990,6 +1063,7 @@
 					"startLine": 2,
 					"endLine": 2
 				},
+				"mf": "default",
 				"nstr": [
 					"Start Workflow"
 				],
@@ -1002,6 +1076,7 @@
 					"startLine": 3,
 					"endLine": 3
 				},
+				"mf": "default",
 				"nstr": [
 					"Active Tasks"
 				],
@@ -1014,6 +1089,7 @@
 					"startLine": 4,
 					"endLine": 4
 				},
+				"mf": "default",
 				"nstr": [
 					"Completed Tasks"
 				],
@@ -1026,6 +1102,7 @@
 					"startLine": 5,
 					"endLine": 5
 				},
+				"mf": "default",
 				"nstr": [
 					"View Task"
 				],
@@ -1038,6 +1115,7 @@
 					"startLine": 6,
 					"endLine": 6
 				},
+				"mf": "default",
 				"nstr": [
 					"Edit Task"
 				],
@@ -1050,6 +1128,7 @@
 					"startLine": 7,
 					"endLine": 7
 				},
+				"mf": "default",
 				"nstr": [
 					"Pooled task"
 				],
@@ -1062,6 +1141,7 @@
 					"startLine": 8,
 					"endLine": 8
 				},
+				"mf": "default",
 				"nstr": [
 					{
 						"t": "x",
@@ -1082,6 +1162,7 @@
 					"startLine": 9,
 					"endLine": 9
 				},
+				"mf": "default",
 				"nstr": [
 					"Unassigned"
 				],
@@ -1094,6 +1175,7 @@
 					"startLine": 10,
 					"endLine": 10
 				},
+				"mf": "default",
 				"nstr": [
 					"Due on: ",
 					{
@@ -1110,6 +1192,7 @@
 					"startLine": 11,
 					"endLine": 11
 				},
+				"mf": "default",
 				"nstr": [
 					"No tasks"
 				],
@@ -1122,6 +1205,7 @@
 					"startLine": 12,
 					"endLine": 12
 				},
+				"mf": "default",
 				"nstr": [
 					"Type: ",
 					{
@@ -1143,6 +1227,7 @@
 					"startLine": 14,
 					"endLine": 14
 				},
+				"mf": "default",
 				"nstr": [
 					"Active Tasks"
 				],
@@ -1155,6 +1240,7 @@
 					"startLine": 15,
 					"endLine": 15
 				},
+				"mf": "default",
 				"nstr": [
 					"Completed Tasks"
 				],
@@ -1167,6 +1253,7 @@
 					"startLine": 16,
 					"endLine": 16
 				},
+				"mf": "default",
 				"nstr": [
 					"High Priority Tasks"
 				],
@@ -1179,6 +1266,7 @@
 					"startLine": 17,
 					"endLine": 17
 				},
+				"mf": "default",
 				"nstr": [
 					"Tasks Due Today"
 				],
@@ -1191,6 +1279,7 @@
 					"startLine": 18,
 					"endLine": 18
 				},
+				"mf": "default",
 				"nstr": [
 					"Tasks Assigned to Me"
 				],
@@ -1203,6 +1292,7 @@
 					"startLine": 19,
 					"endLine": 19
 				},
+				"mf": "default",
 				"nstr": [
 					"Unassigned (Pooled Tasks)"
 				],
@@ -1215,6 +1305,7 @@
 					"startLine": 20,
 					"endLine": 20
 				},
+				"mf": "default",
 				"nstr": [
 					"Overdue Tasks"
 				],
@@ -1227,6 +1318,7 @@
 					"startLine": 23,
 					"endLine": 23
 				},
+				"mf": "default",
 				"nstr": [
 					{
 						"t": "x",
@@ -1246,6 +1338,7 @@
 					"startLine": 24,
 					"endLine": 24
 				},
+				"mf": "default",
 				"nstr": [
 					{
 						"t": "x",
@@ -1271,6 +1364,7 @@
 					"startLine": 26,
 					"endLine": 26
 				},
+				"mf": "default",
 				"nstr": [
 					"Review the tasks assigned to you"
 				],
@@ -1283,6 +1377,7 @@
 					"startLine": 27,
 					"endLine": 27
 				},
+				"mf": "default",
 				"nstr": [
 					"Different types of tasks can appear in this task list and you need to address each one. This could involve reviewing a document or simply accepting an invitation to a site."
 				],
@@ -1295,6 +1390,7 @@
 					"startLine": 30,
 					"endLine": 35
 				},
+				"mf": "default",
 				"nstr": [
 					{
 						"t": "bx",
@@ -1370,14 +1466,16 @@
 	},
 	"dashlets/my-workspaces.get_en.properties": {
 		"id": "dashlets/my-workspaces.get_en.properties",
+		"channel": "default",
 		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
 		"targetLangs": [
 			"it",
 			"ja",
 			"pt-BR"
 		],
 		"prj": "my",
-		"contentType": "default",
 		"segments": [
 			{
 				"sid": "header.myWorkspaces",
@@ -1385,6 +1483,7 @@
 					"startLine": 1,
 					"endLine": 1
 				},
+				"mf": "default",
 				"nstr": [
 					"My Document Workspaces"
 				],
@@ -1397,6 +1496,7 @@
 					"startLine": 2,
 					"endLine": 2
 				},
+				"mf": "default",
 				"nstr": [
 					"Delete"
 				],
@@ -1409,6 +1509,7 @@
 					"startLine": 3,
 					"endLine": 3
 				},
+				"mf": "default",
 				"nstr": [
 					"No document workspaces to display"
 				],
@@ -1421,6 +1522,7 @@
 					"startLine": 4,
 					"endLine": 4
 				},
+				"mf": "default",
 				"nstr": [
 					"The favorite setting for the document workspace could not be saved"
 				],
@@ -1433,6 +1535,7 @@
 					"startLine": 5,
 					"endLine": 5
 				},
+				"mf": "default",
 				"nstr": [
 					"Mark or unmark document workspace as favorite"
 				],
@@ -1445,6 +1548,7 @@
 					"startLine": 6,
 					"endLine": 6
 				},
+				"mf": "default",
 				"nstr": [
 					"Mark or unmark document workspace as IMAP favorite"
 				],
@@ -1457,6 +1561,7 @@
 					"startLine": 9,
 					"endLine": 10
 				},
+				"mf": "default",
 				"nstr": [
 					{
 						"t": "bx",

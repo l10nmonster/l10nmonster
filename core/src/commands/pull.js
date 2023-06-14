@@ -26,14 +26,15 @@ export async function pullCmd(mm, { limitToLang, partial }) {
                         await mm.processJob(doneResponse);
                         stats.translatedStrings += jobResponse.tus.length;
 
-                        const newRequest = await mm.jobStore.getJobRequest(jobResponse.jobGuid);
+                        const newRequest = await mm.jobStore.getJobRequest(jobResponse.jobGuid); // TODO: can we just use jobRequest?
                         const newManifest = await mm.jobStore.createJobManifest();
-                        newRequest.originalJobGuid = jobResponse.jobGuid;
+                        const originalJobGuid = jobResponse.originalJobGuid ?? jobResponse.jobGuid;
+                        newRequest.originalJobGuid = originalJobGuid;
                         newRequest.jobGuid = newManifest.jobGuid;
                         newRequest.tus = newRequest.tus.filter(tu => inflight.includes(tu.guid));
                         // eslint-disable-next-line no-unused-vars
                         const { tus, ...newResponse } = doneResponse;
-                        newResponse.originalJobGuid = jobResponse.jobGuid;
+                        newResponse.originalJobGuid = originalJobGuid;
                         newResponse.jobGuid = newManifest.jobGuid;
                         newResponse.inflight = inflight;
                         newResponse.status = 'pending';

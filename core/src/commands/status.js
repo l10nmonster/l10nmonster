@@ -2,6 +2,7 @@
 export async function statusCmd(mm, { limitToLang }) {
     const status = {
         lang: {},
+        numSources: 0,
     };
     const targetLangs = await mm.getTargetLangs(limitToLang);
     for (const targetLang of targetLangs) {

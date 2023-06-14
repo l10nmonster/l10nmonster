@@ -1,14 +1,16 @@
 {
 	"dashlets/async-rssfeed.get_en.properties": {
 		"id": "dashlets/async-rssfeed.get_en.properties",
+		"channel": "default",
 		"modified": "2022-06-14T22:09:41.224Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
 		"targetLangs": [
 			"it",
 			"ja",
 			"pt-BR"
 		],
 		"prj": "async",
-		"contentType": "default",
 		"segments": [
 			{
 				"sid": "label.header",
@@ -16,6 +18,7 @@
 					"startLine": 1,
 					"endLine": 1
 				},
+				"mf": "default",
 				"nstr": [
 					"RSS Feed"
 				],
@@ -28,6 +31,7 @@
 					"startLine": 2,
 					"endLine": 2
 				},
+				"mf": "default",
 				"nstr": [
 					"Configure"
 				],
@@ -40,6 +44,7 @@
 					"startLine": 3,
 					"endLine": 3
 				},
+				"mf": "default",
 				"nstr": [
 					"No news items"
 				],
@@ -52,6 +57,7 @@
 					"startLine": 4,
 					"endLine": 4
 				},
+				"mf": "default",
 				"nstr": [
 					"RSS feed can't be read"
 				],
@@ -64,6 +70,7 @@
 					"startLine": 5,
 					"endLine": 5
 				},
+				"mf": "default",
 				"nstr": [
 					"RSS feed is not available"
 				],
@@ -76,6 +83,7 @@
 					"startLine": 6,
 					"endLine": 6
 				},
+				"mf": "default",
 				"nstr": [
 					"RSS feed format is not supported"
 				],
@@ -88,6 +96,7 @@
 					"startLine": 8,
 					"endLine": 8
 				},
+				"mf": "default",
 				"nstr": [
 					"This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed."
 				],
@@ -98,14 +107,16 @@
 	},
 	"dashlets/async-rssfeed.post_en.properties": {
 		"id": "dashlets/async-rssfeed.post_en.properties",
+		"channel": "default",
 		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
 		"targetLangs": [
 			"it",
 			"ja",
 			"pt-BR"
 		],
 		"prj": "async",
-		"contentType": "default",
 		"segments": [
 			{
 				"sid": "label.header",
@@ -113,6 +124,7 @@
 					"startLine": 1,
 					"endLine": 1
 				},
+				"mf": "default",
 				"nstr": [
 					"RSS Feed"
 				],
@@ -125,6 +137,7 @@
 					"startLine": 2,
 					"endLine": 2
 				},
+				"mf": "default",
 				"nstr": [
 					"Configure"
 				],
@@ -137,6 +150,7 @@
 					"startLine": 3,
 					"endLine": 3
 				},
+				"mf": "default",
 				"nstr": [
 					"No news items"
 				],
@@ -149,6 +163,7 @@
 					"startLine": 4,
 					"endLine": 4
 				},
+				"mf": "default",
 				"nstr": [
 					"RSS feed can't be read"
 				],
@@ -161,6 +176,7 @@
 					"startLine": 5,
 					"endLine": 5
 				},
+				"mf": "default",
 				"nstr": [
 					"RSS feed is not available"
 				],
@@ -173,6 +189,7 @@
 					"startLine": 6,
 					"endLine": 6
 				},
+				"mf": "default",
 				"nstr": [
 					"RSS feed format is not supported"
 				],
@@ -185,6 +202,7 @@
 					"startLine": 8,
 					"endLine": 8
 				},
+				"mf": "default",
 				"nstr": [
 					"This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed."
 				],

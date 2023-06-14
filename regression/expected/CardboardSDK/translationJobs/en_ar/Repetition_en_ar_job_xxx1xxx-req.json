@@ -4,6 +4,7 @@
 	"tus": [
 		{
 			"sid": "AccessibilityCardboardButton",
+			"mf": "default",
 			"gstr": "Cardboard mode: {{x}}",
 			"guid": "p72nj2yZPB-RfJOZa2iZg2pt16HznCGr_kdYQziGHxs",
 			"rawNotes": "Accessibility label for the cardboard button to go into cardboard mode (read out loud)",
@@ -23,6 +24,7 @@
 		},
 		{
 			"sid": "AccessibilityFullscreenButton",
+			"mf": "default",
 			"gstr": "Fullscreen mode",
 			"guid": "snWaUNjXnKuXlItO8jUPfKITKfuqshl6xCXxUgiP4jI",
 			"rawNotes": "Accessibility label for the fullscreen button to go into fullscreen mode (read out loud)",
@@ -38,6 +40,7 @@
 		},
 		{
 			"sid": "AccessibilityHelpButton",
+			"mf": "default",
 			"gstr": "Help",
 			"guid": "d13hqt62wEq5drSC-g7auJUOAlQL-N3VrEyi1mCjMH0",
 			"rawNotes": "Accessibility label for the information button to go to help page (read out loud)",
@@ -53,6 +56,7 @@
 		},
 		{
 			"sid": "HelpHack",
+			"mf": "default",
 			"gstr": "Help 'encoding' is \"hard\"!\\\n",
 			"guid": "kjYD6n4DIB9kQKYRd0QStGsZfU2yOhcUG091zj53Skw",
 			"rawNotes": "Test encoding and decoding",

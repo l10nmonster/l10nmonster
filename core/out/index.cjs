@@ -806,9 +806,9 @@ var require_to_regex_range = __commonJS({
       if (!tok.isPadded) {
         return value;
       }
-      let diff2 = Math.abs(tok.maxLen - String(value).length);
+      let diff = Math.abs(tok.maxLen - String(value).length);
       let relax = options.relaxZeros !== false;
-      switch (diff2) {
+      switch (diff) {
         case 0:
           return "";
         case 1:
@@ -816,7 +816,7 @@ var require_to_regex_range = __commonJS({
         case 2:
           return relax ? "0{0,2}" : "00";
         default: {
-          return relax ? `0{0,${diff2}}` : `0{${diff2}}`;
+          return relax ? `0{0,${diff}}` : `0{${diff}}`;
         }
       }
     }
@@ -12282,10 +12282,8 @@ __export(utils_exports, {
   integerToLabel: () => integerToLabel,
   makeTU: () => makeTU,
   normalizedStringsAreEqual: () => normalizedStringsAreEqual,
-  partEncoderMaker: () => partEncoderMaker,
   phMatcherMaker: () => phMatcherMaker,
-  sourceAndTargetAreCompatible: () => sourceAndTargetAreCompatible,
-  translateWithEntry: () => translateWithEntry
+  sourceAndTargetAreCompatible: () => sourceAndTargetAreCompatible
 });
 var import_crypto = require("crypto");
 function generateGuid(str) {
@@ -12326,17 +12324,6 @@ function decodeNormalizedString(nstr, decoderList, flags = {}) {
 }
 function getNormalizedString(str, decoderList, flags = {}) {
   return decoderList ? decodeNormalizedString([{ t: "s", v: str }], decoderList, flags) : [str];
-}
-function partEncoderMaker(textEncoders, codeEncoders) {
-  return function encodePart(part, flags) {
-    const encoders = typeof part === "string" ? textEncoders : codeEncoders;
-    const str = typeof part === "string" ? part : part.v;
-    if (encoders) {
-      return encoders.reduce((s, encoder) => encoder(s, flags), str);
-    } else {
-      return str;
-    }
-  };
 }
 function flattenNormalizedSourceToOrdinal(nsrc) {
   return nsrc.map((e) => typeof e === "string" ? e : `{{${e.t}}}`).join("");
@@ -12463,33 +12450,6 @@ function sourceAndTargetAreCompatible(nsrc, ntgt) {
     return Object.keys(nsrc.filter((e) => typeof e === "object")).length === Object.keys(ntgt.filter((e) => typeof e === "object")).length;
   }
   return false;
-}
-function translateWithEntry(nsrc, entry, flags, encodePart) {
-  if (entry && !entry.inflight) {
-    if (sourceAndTargetAreCompatible(nsrc, entry.ntgt)) {
-      const phMatcher = phMatcherMaker(nsrc);
-      const ntgtEntries = entry.ntgt.entries();
-      const tgt = [];
-      for (const [idx, part] of ntgtEntries) {
-        const partFlags = { ...flags, isFirst: idx === 0, isLast: idx === ntgtEntries.length - 1 };
-        if (typeof part === "string") {
-          tgt.push(encodePart(part, partFlags));
-        } else {
-          const ph = phMatcher(part);
-          if (ph) {
-            tgt.push(encodePart(ph, partFlags));
-          } else {
-            throw `unknown placeholder found: ${JSON.stringify(part)}`;
-          }
-        }
-      }
-      return tgt.join("");
-    } else {
-      throw `source and target are incompatible`;
-    }
-  } else {
-    throw `TM entry missing or in flight`;
-  }
 }
 function flattenNormalizedSourceToMiniV1(nsrc) {
   return nsrc.map((e) => typeof e === "string" ? e : `{{${e.v1 ? minifyV1PH(e.v1) : e.v}}}`).join("");
@@ -12669,34 +12629,38 @@ var targetTUWhitelist = /* @__PURE__ */ new Set([
 
 // src/tmManager.js
 var TM = class {
+  #tmPathName;
+  #lookUpByFlattenSrc = {};
+  #jobStatus;
+  #tus;
+  #isDirty = false;
   constructor(sourceLang, targetLang, tmPathName, configSeal, jobs) {
-    const EMPTY_TM = {
-      sourceLang,
-      targetLang,
-      configSeal,
-      jobStatus: {},
-      tus: {}
-    };
-    this.tmPathName = tmPathName;
+    this.#tmPathName = tmPathName;
+    this.sourceLang = sourceLang;
+    this.targetLang = targetLang;
+    this.configSeal = configSeal;
+    this.#jobStatus = {};
+    this.#tus = {};
     if ((0, import_fs2.existsSync)(tmPathName)) {
-      this.tm = JSON.parse((0, import_fs2.readFileSync)(tmPathName, "utf8"));
+      const tmData = JSON.parse((0, import_fs2.readFileSync)(tmPathName, "utf8"));
       const jobMap = Object.fromEntries(jobs);
-      const extraJobs = Object.keys(this.tm?.jobStatus ?? {}).filter((jobGuid) => !jobMap[jobGuid]);
-      if (!(this.tm?.configSeal === configSeal) || extraJobs.length > 0) {
-        this.tm = EMPTY_TM;
+      const extraJobs = Object.keys(tmData?.jobStatus ?? {}).filter((jobGuid) => !jobMap[jobGuid]);
+      if (!(tmData?.configSeal === configSeal) || extraJobs.length > 0) {
+        this.#jobStatus = {};
+        this.#tus = {};
         l10nmonster.logger.info(`Nuking existing TM ${tmPathName}`);
+      } else {
+        this.#jobStatus = tmData.jobStatus;
+        this.#tus = tmData.tus;
       }
-    } else {
-      this.tm = EMPTY_TM;
     }
-    this.lookUpByFlattenSrc = {};
-    Object.values(this.tm.tus).forEach((tu) => this.setEntryByGuid(tu.guid, tu));
+    Object.values(this.#tus).forEach((tu) => this.setEntryByGuid(tu.guid, tu));
   }
   get guids() {
-    return Object.keys(this.tm.tus);
+    return Object.keys(this.#tus);
   }
   getEntryByGuid(guid) {
-    return this.tm.tus[guid];
+    return this.#tus[guid];
   }
   setEntryByGuid(guid, entry) {
     entry.nsrc === void 0 && entry.src !== void 0 && (entry.nsrc = [entry.src]);
@@ -12708,24 +12672,29 @@ var TM = class {
     }
     const cleanedTU = utils_exports.cleanupTU(entry, targetTUWhitelist);
     Object.freeze(cleanedTU);
-    this.tm.tus[guid] = cleanedTU;
+    this.#tus[guid] = cleanedTU;
     const flattenSrc = utils_exports.flattenNormalizedSourceToOrdinal(cleanedTU.nsrc);
-    this.lookUpByFlattenSrc[flattenSrc] ??= [];
-    !this.lookUpByFlattenSrc[flattenSrc].includes(cleanedTU) && this.lookUpByFlattenSrc[flattenSrc].push(cleanedTU);
+    this.#lookUpByFlattenSrc[flattenSrc] ??= [];
+    !this.#lookUpByFlattenSrc[flattenSrc].includes(cleanedTU) && this.#lookUpByFlattenSrc[flattenSrc].push(cleanedTU);
   }
   getAllEntriesBySrc(src) {
     const flattenedSrc = utils_exports.flattenNormalizedSourceToOrdinal(src);
-    return this.lookUpByFlattenSrc[flattenedSrc] || [];
+    return this.#lookUpByFlattenSrc[flattenedSrc] || [];
   }
+  // get status of job in the TM (if it exists)
   getJobStatus(jobGuid) {
-    return this.tm.jobStatus[jobGuid];
+    const jobMeta = this.#jobStatus[jobGuid];
+    return [jobMeta?.status, jobMeta?.updatedAt];
   }
   async commit() {
-    l10nmonster.logger.info(`Updating ${this.tmPathName}...`);
-    (0, import_fs2.writeFileSync)(this.tmPathName, JSON.stringify(this.tm, null, "	"), "utf8");
+    if (this.#isDirty) {
+      l10nmonster.logger.info(`Updating ${this.#tmPathName}...`);
+      const tmData = { ...this, jobStatus: this.#jobStatus, tus: this.#tus };
+      (0, import_fs2.writeFileSync)(this.#tmPathName, JSON.stringify(tmData, null, "	"), "utf8");
+    }
   }
-  processJob(jobResponse, jobRequest) {
-    this.dirty = true;
+  async processJob(jobResponse, jobRequest) {
+    this.#isDirty = true;
     const requestedUnits = {};
     jobRequest?.tus && jobRequest.tus.forEach((tu) => requestedUnits[tu.guid] = tu);
     const { jobGuid, status, inflight, tus, updatedAt, translationProvider } = jobResponse;
@@ -12748,10 +12717,10 @@ var TM = class {
         }
       }
     }
-    this.tm.jobStatus[jobGuid] = { status, updatedAt, translationProvider, units: tus?.length ?? inflight?.length ?? 0 };
+    this.#jobStatus[jobGuid] = { status, updatedAt, translationProvider, units: tus?.length ?? inflight?.length ?? 0 };
   }
   getJobsMeta() {
-    return this.tm.jobStatus;
+    return this.#jobStatus;
   }
 };
 var TMManager = class {
@@ -12764,21 +12733,24 @@ var TMManager = class {
     this.parallelism = parallelism ?? 8;
   }
   async getTM(sourceLang, targetLang) {
-    const jobs = (await this.jobStore.getJobStatusByLangPair(sourceLang, targetLang)).filter((e) => ["pending", "done"].includes(e[1].status));
     const tmFileName = `tmCache_${sourceLang}_${targetLang}.json`;
     let tm = this.tmCache.get(tmFileName);
+    if (tm) {
+      return tm;
+    }
+    const jobs = (await this.jobStore.getJobStatusByLangPair(sourceLang, targetLang)).filter((e) => ["pending", "done"].includes(e[1].status));
     if (!tm) {
       tm = new TM(sourceLang, targetLang, path2.join(this.monsterDir, tmFileName), this.configSeal, jobs);
       this.tmCache.set(tmFileName, tm);
     }
     const jobsToFetch = [];
     for (const [jobGuid, handle] of jobs) {
-      const jobInTM = tm.getJobStatus(jobGuid);
-      if (handle.status === "pending" || jobInTM?.status !== handle.status) {
+      const [status, updatedAt] = tm.getJobStatus(jobGuid);
+      if (status !== handle.status) {
         jobsToFetch.push({
           jobHandle: handle[handle.status],
           jobRequestHandle: handle.req,
-          tmUpdatedAt: jobInTM?.updatedAt
+          tmUpdatedAt: updatedAt
         });
       }
     }
@@ -12805,7 +12777,7 @@ var TMManager = class {
         })());
         for (const { jobResponse, jobRequest } of await Promise.all(jobPromises2)) {
           l10nmonster.logger.info(`Applying job ${jobResponse?.jobGuid} to the ${sourceLang} -> ${targetLang} TM...`);
-          tm.processJob(jobResponse, jobRequest);
+          await tm.processJob(jobResponse, jobRequest);
         }
       }
     }
@@ -12813,41 +12785,191 @@ var TMManager = class {
   }
   async shutdown() {
     for (const tm of this.tmCache.values()) {
-      tm.dirty && await tm.commit();
+      await tm.commit();
     }
   }
 };
 
-// src/sourceManager.js
-var SourceManager = class {
-  constructor({ configSeal, contentTypes, snapStore }) {
-    this.configSeal = configSeal;
-    this.contentTypes = contentTypes;
-    this.snapStore = snapStore;
-  }
-  async getResourceStatsFromAllSources() {
-    l10nmonster.logger.info(`Getting resource stats from all sources...`);
-    const combinedStats = [];
-    for (const [contentType, pipeline] of Object.entries(this.contentTypes)) {
-      const stats = await pipeline.source.fetchResourceStats();
-      l10nmonster.logger.verbose(`Fetched resource stats for content type ${contentType}`);
-      combinedStats.push(stats.map((res) => ({ ...res, contentType })));
+// src/entities/resourceHandle.js
+var ResourceHandle = class {
+  #filter;
+  constructor({ id, channel, modified, resourceFormat, filter, sourceLang, targetLangs, prj, ...other }) {
+    this.id = id;
+    this.channel = channel;
+    this.modified = modified;
+    this.resourceFormat = resourceFormat;
+    this.#filter = filter;
+    this.sourceLang = sourceLang;
+    this.targetLangs = targetLangs;
+    this.prj = prj;
+    if (Object.keys(other).length > 1) {
+      l10nmonster.logger.verbose(`Unknown properties in resource handle: ${Object.keys(other).join(", ")}`);
     }
-    return combinedStats.flat(1).filter((e) => l10nmonster.prj === void 0 || l10nmonster.prj.includes(e.prj));
   }
-  async getResourceStats() {
-    return this.snapStore ? this.snapStore.getResourceStats() : this.getResourceStatsFromAllSources();
+  loadFromNormalizedResource(normalizedResource) {
+    const { segments } = normalizedResource;
+    this.segments = segments;
+    return this;
   }
-  async #getParsedResource(pipeline, resourceStat, resource) {
-    let parsedRes = await pipeline.resourceFilter.parseResource({ resource, isSource: true });
-    const { segments, ...resourceHead } = parsedRes;
-    const res = { ...resourceStat, ...resourceHead };
-    res.segments = [];
-    for (const rawSegment of segments) {
-      const { str, notes, ...normalizedSeg } = rawSegment;
-      normalizedSeg.nstr = utils_exports.getNormalizedString(str, pipeline.decoders);
-      normalizedSeg.gstr = utils_exports.flattenNormalizedSourceToOrdinal(normalizedSeg.nstr);
-      normalizedSeg.guid = utils_exports.generateFullyQualifiedGuid(res.id, normalizedSeg.sid, normalizedSeg.gstr);
+  async loadResourceFromRaw(rawResource, { isSource, keepRaw } = {}) {
+    const normalizedResource = await this.#filter.getNormalizedResource(this.id, rawResource, isSource);
+    keepRaw && (this.raw = rawResource);
+    return this.loadFromNormalizedResource(normalizedResource);
+  }
+  async generateTranslatedRawResource(tm) {
+    return this.#filter.generateTranslatedResource(this, tm);
+  }
+};
+
+// src/entities/channel.js
+var Channel = class {
+  #id;
+  #source;
+  #filters;
+  #defaultResourceFormat;
+  #defaultSourceLang;
+  #target;
+  constructor({ id, source, filters, defaultResourceFormat, defaultSourceLang, target }) {
+    this.#id = id;
+    this.#source = source;
+    this.#filters = filters;
+    this.#defaultResourceFormat = defaultResourceFormat;
+    this.#defaultSourceLang = defaultSourceLang;
+    this.#target = target;
+  }
+  makeResourceHandleFromObject(obj) {
+    const resourceFormat = obj.resourceFormat ?? this.#defaultResourceFormat;
+    const filter = this.#filters[resourceFormat];
+    return new ResourceHandle({
+      channel: this.#id,
+      resourceFormat: this.#defaultResourceFormat,
+      filter,
+      sourceLang: this.#defaultSourceLang,
+      // can be overriden but here's the default
+      ...obj
+    });
+  }
+  async getResourceHandles() {
+    const resStats = await this.#source.fetchResourceStats();
+    l10nmonster.logger.verbose(`Fetched resource handles for channel ${this.#id}`);
+    return resStats.map((rs) => this.makeResourceHandleFromObject(rs));
+  }
+  async *getAllNormalizedResources({ keepRaw } = {}) {
+    if (this.#source.fetchAllResources) {
+      for await (const [resourceStat, rawResource] of this.#source.fetchAllResources(l10nmonster.prj)) {
+        const handle = this.makeResourceHandleFromObject(resourceStat);
+        yield handle.loadResourceFromRaw(rawResource, { isSource: true, keepRaw });
+      }
+    } else {
+      const resourceStats = await this.#source.fetchResourceStats();
+      for (const resourceStat of resourceStats) {
+        if (l10nmonster.prj === void 0 || l10nmonster.prj.includes(resourceStat.prj)) {
+          const handle = this.makeResourceHandleFromObject(resourceStat);
+          const rawResource = await this.#source.fetchResource(resourceStat.id);
+          yield handle.loadResourceFromRaw(rawResource, { isSource: true, keepRaw });
+        }
+      }
+    }
+  }
+  async loadResource(resourceHandle, { keepRaw } = {}) {
+    const rawResource = await this.#source.fetchResource(resourceHandle.id);
+    return resourceHandle.loadResourceFromRaw(rawResource, { isSource: true, keepRaw });
+  }
+  async getExistingTranslatedResource(resourceHandle, targetLang, { keepRaw } = {}) {
+    const rawResource = await this.#target.fetchTranslatedResource(targetLang, resourceHandle.id);
+    const translatedResource = this.makeResourceHandleFromObject(resourceHandle);
+    return translatedResource.loadResourceFromRaw(rawResource, { isSource: false, keepRaw });
+  }
+  async commitTranslatedResource(targetLang, resourceId, rawResource) {
+    const translatedResourceId = this.#target.translatedResourceId(targetLang, resourceId);
+    await this.#target.commitTranslatedResource(targetLang, resourceId, rawResource);
+    return translatedResourceId;
+  }
+};
+
+// src/entities/normalizer.js
+var Normalizer = class {
+  #decoders;
+  #textEncoders;
+  #codeEncoders;
+  constructor({ decoders, textEncoders, codeEncoders }) {
+    this.#decoders = decoders;
+    this.#textEncoders = textEncoders;
+    this.#codeEncoders = codeEncoders;
+  }
+  decode(str, flags = {}) {
+    return utils_exports.getNormalizedString(str, this.#decoders, flags);
+  }
+  encodePart(part, flags) {
+    const encoders = typeof part === "string" ? this.#textEncoders : this.#codeEncoders;
+    const str = typeof part === "string" ? part : part.v;
+    if (encoders) {
+      return encoders.reduce((s, encoder) => encoder(s, flags), str);
+    } else {
+      return str;
+    }
+  }
+};
+
+// src/entities/resourceFilter.js
+var ResourceFilter = class {
+  #resourceFilter;
+  #normalizers;
+  #defaultMessageFormat;
+  #segmentDecorators;
+  constructor({ resourceFilter, normalizers, defaultMessageFormat, segmentDecorators }) {
+    this.#resourceFilter = resourceFilter;
+    this.#normalizers = normalizers;
+    this.#defaultMessageFormat = defaultMessageFormat;
+    this.#segmentDecorators = segmentDecorators;
+  }
+  #populateGuid(rid, str, mf, base, flags = {}) {
+    base.mf = mf;
+    const normalizer = this.#normalizers[base.mf];
+    base.nstr = normalizer.decode(str, flags);
+    base.gstr = utils_exports.flattenNormalizedSourceToOrdinal(base.nstr);
+    base.guid = utils_exports.generateFullyQualifiedGuid(rid, base.sid, base.gstr);
+    return base;
+  }
+  #translateWithTMEntry(nsrc, entry) {
+    if (entry && !entry.inflight) {
+      if (utils_exports.sourceAndTargetAreCompatible(nsrc, entry.ntgt)) {
+        const phMatcher = utils_exports.phMatcherMaker(nsrc);
+        return entry.ntgt.map((part) => {
+          if (typeof part === "string") {
+            return part;
+          } else {
+            const ph = phMatcher(part);
+            if (ph) {
+              return ph;
+            } else {
+              throw `unknown placeholder found: ${JSON.stringify(part)}`;
+            }
+          }
+        });
+      } else {
+        throw `source and target are incompatible
+${JSON.stringify(nsrc)}
+${JSON.stringify(entry.ntgt)}`;
+      }
+    } else {
+      throw `TM entry missing or in flight`;
+    }
+  }
+  #encodeTranslatedSegment(ntgt, mf, flags) {
+    const normalizer = this.#normalizers[mf];
+    return ntgt.map((part, idx) => normalizer.encodePart(part, {
+      ...flags,
+      isFirst: idx === 0,
+      isLast: idx === ntgt.length - 1
+    })).join("");
+  }
+  async getNormalizedResource(rid, resource, isSource) {
+    let parsedRes = await this.#resourceFilter.parseResource({ resource, isSource });
+    const segments = [];
+    for (const rawSegment of parsedRes.segments) {
+      const { str, notes, mf, ...normalizedSeg } = rawSegment;
+      this.#populateGuid(rid, str, mf ?? this.#defaultMessageFormat, normalizedSeg);
       if (typeof notes === "string") {
         normalizedSeg.rawNotes = notes;
         normalizedSeg.notes = utils_exports.extractStructuredNotes(notes);
@@ -12859,9 +12981,9 @@ var SourceManager = class {
           }
         }
       }
-      if (pipeline.segmentDecorators) {
+      if (this.#segmentDecorators) {
         let decoratedSeg = normalizedSeg;
-        for (const decorator of pipeline.segmentDecorators) {
+        for (const decorator of this.#segmentDecorators) {
           decoratedSeg = decorator(decoratedSeg);
           if (decoratedSeg === void 0) {
             break;
@@ -12869,48 +12991,188 @@ var SourceManager = class {
         }
         if (decoratedSeg !== void 0) {
           Object.freeze(decoratedSeg);
-          res.segments.push(decoratedSeg);
+          segments.push(decoratedSeg);
         }
       } else {
         Object.freeze(normalizedSeg);
-        res.segments.push(normalizedSeg);
+        segments.push(normalizedSeg);
       }
     }
-    Object.freeze(res);
-    return res;
+    Object.freeze(segments);
+    return { segments };
   }
-  async getResourceFromSource(resourceStat) {
-    l10nmonster.logger.verbose(`Getting resource ${resourceStat.id}...`);
-    const pipeline = this.contentTypes[resourceStat.contentType];
-    const rawResource = await pipeline.source.fetchResource(resourceStat.id);
-    return this.#getParsedResource(pipeline, resourceStat, rawResource);
-  }
-  async getResource(resourceStat) {
-    return this.snapStore ? this.snapStore.getResource(resourceStat) : this.getResourceFromSource(resourceStat);
-  }
-  async *getAllResourcesFromSources() {
-    l10nmonster.logger.info(`Getting all resources...`);
-    for (const [contentType, pipeline] of Object.entries(this.contentTypes)) {
-      if (pipeline.source.fetchAllResources) {
-        for await (const [resourceStat, rawResource] of pipeline.source.fetchAllResources(l10nmonster.prj)) {
-          yield await this.#getParsedResource(pipeline, { ...resourceStat, contentType }, rawResource);
+  async generateTranslatedResource(resHandle, tm) {
+    if (this.#resourceFilter.generateResource) {
+      const translations = [];
+      for (const seg of resHandle.segments) {
+        const entry = tm.getEntryByGuid(seg.guid);
+        try {
+          const translation = this.#translateWithTMEntry(seg.nstr, entry);
+          translation !== void 0 && translations.push(translation);
+        } catch (e) {
+          l10nmonster.logger.verbose(`Problem translating guid ${seg.guid} to ${tm.targetLang}: ${e.stack ?? e}`);
+        }
+      }
+      return this.#resourceFilter.generateResource({ ...resHandle, translations });
+    }
+    const sourceLookup = Object.fromEntries(resHandle.segments.map((seg) => [seg.sid, seg]));
+    const flags = { sourceLang: resHandle.sourceLang, targetLang: tm.targetLang, prj: resHandle.prj };
+    const translator = async (sid, str) => {
+      const normalizedSource = sourceLookup[sid];
+      if (normalizedSource) {
+        const segToTranslate = this.#populateGuid(resHandle.id, str, normalizedSource.mf, { sid }, flags);
+        if (normalizedSource.guid !== segToTranslate.guid) {
+          l10nmonster.logger.verbose(`Normalized source outdated: ${normalizedSource.gstr}
+${segToTranslate.gstr}`);
+          return void 0;
+        }
+        const entry = tm.getEntryByGuid(segToTranslate.guid);
+        if (!entry) {
+          l10nmonster.logger.verbose(`${tm.targetLang} translation not found for ${resHandle.id}, ${sid}, ${str}`);
+          return void 0;
+        }
+        try {
+          const normalizedTranslation = this.#translateWithTMEntry(normalizedSource.nstr, entry);
+          return this.#encodeTranslatedSegment(normalizedTranslation, normalizedSource.mf, flags);
+        } catch (e) {
+          l10nmonster.logger.verbose(`Problem translating ${resHandle.id}, ${sid}, ${str} to ${tm.targetLang}: ${e.stack ?? e}`);
+          return void 0;
         }
       } else {
-        const stats = await pipeline.source.fetchResourceStats();
-        for (const rs of stats) {
-          if (l10nmonster.prj === void 0 || l10nmonster.prj.includes(rs.prj)) {
-            yield await this.#getParsedResource(
-              pipeline,
-              { ...rs, contentType },
-              await pipeline.source.fetchResource(rs.id)
-            );
-          }
+        l10nmonster.logger.verbose(`Dropping ${sid} in ${resHandle.id} as it's missing from normalized source`);
+        return void 0;
+      }
+    };
+    return this.#resourceFilter.translateResource({ resource: resHandle.raw, translator });
+  }
+};
+
+// src/resourceManager.js
+function validate(context, obj = {}) {
+  const validators = {
+    objectProperty: (...props) => {
+      props.forEach((propName) => {
+        if (obj[propName] !== void 0 && typeof obj[propName] !== "object") {
+          throw `Property ${propName} of ${context} must be an object`;
         }
+      });
+      return validators;
+    },
+    arrayOfFunctions: (...props) => {
+      props.forEach((propName) => {
+        if (obj[propName] !== void 0) {
+          if (!Array.isArray(obj[propName])) {
+            throw `Property ${propName} of ${context} must be an array`;
+          }
+          obj[propName].forEach((coder, idx) => {
+            if (typeof coder !== "function") {
+              throw `Item at index ${idx} in property ${propName} of ${context} must be a function`;
+            }
+          });
+        }
+      });
+      return validators;
+    }
+  };
+  return validators;
+}
+var ResourceManager = class {
+  // #configSeal;
+  #channels = {};
+  constructor({ channels, formats, snapStore, defaultSourceLang }) {
+    const filters = {};
+    for (const [format, formatCfg] of Object.entries(formats)) {
+      validate(`format ${format}`, formatCfg).objectProperty("resourceFilter", "normalizers").arrayOfFunctions("segmentDecorators");
+      const normalizers = {};
+      for (const [normalizer, normalizerCfg] of Object.entries(formatCfg.normalizers)) {
+        validate(`normalizer ${normalizer}`, normalizerCfg).arrayOfFunctions("decoders", "textEncoders", "codeEncoders");
+        normalizers[normalizer] = new Normalizer({
+          decoders: normalizerCfg.decoders,
+          textEncoders: normalizerCfg.textEncoders,
+          codeEncoders: normalizerCfg.codeEncoders
+        });
+      }
+      filters[format] = new ResourceFilter({
+        resourceFilter: formatCfg.resourceFilter,
+        normalizers,
+        defaultMessageFormat: formatCfg.defaultMessageFormat ?? format,
+        segmentDecorators: formatCfg.segmentDecorators
+      });
+    }
+    for (const [channelId, channelCfg] of Object.entries(channels)) {
+      validate(`channel ${channelId}`, channelCfg).objectProperty("source", "target");
+      this.#channels[channelId] = new Channel({
+        id: channelId,
+        source: channelCfg.source,
+        filters,
+        defaultResourceFormat: channelCfg.defaultResourceFormat ?? channelId,
+        defaultSourceLang,
+        target: channelCfg.target
+      });
+    }
+    this.snapStore = snapStore;
+  }
+  /**
+   * Returns a channel given its id.
+   *
+   * @param {string} channelId String identifier of the channel.
+   * @return {Channel} A channel object.
+   */
+  getChannel(channelId) {
+    const channel = this.#channels[channelId];
+    if (!channel) {
+      throw `Invalid channel reference: ${channelId}`;
+    }
+    return channel;
+  }
+  //
+  // Snap store internal helpers
+  //
+  async #getResourceHandlesFromSnapStore() {
+    const stats = await this.snapStore.getResourceStats();
+    return stats.map((rs) => this.getChannel(rs.channel).makeResourceHandleFromObject(rs));
+  }
+  async *#getAllResourcesFromSnapStore(options) {
+    l10nmonster.logger.info(`Getting all resources from snap store...`);
+    const allResources = await this.snapStore.getAllResources(options);
+    for await (const normalizedResource of allResources) {
+      const handle = this.getChannel(normalizedResource.channel).makeResourceHandleFromObject(normalizedResource);
+      yield handle.loadFromNormalizedResource(normalizedResource);
+    }
+  }
+  //
+  // Channel internal helpers
+  //
+  async #getResourceHandlesFromAllChannels() {
+    l10nmonster.logger.info(`Getting resource stats from all sources...`);
+    const combinedHandles = [];
+    for (const channel of Object.values(this.#channels)) {
+      const handles = await channel.getResourceHandles();
+      combinedHandles.push(handles);
+    }
+    return combinedHandles.flat(1).filter((e) => l10nmonster.prj === void 0 || l10nmonster.prj.includes(e.prj));
+  }
+  async *#getAllResourcesFromSources(options) {
+    l10nmonster.logger.info(`Getting all resources directly from sources...`);
+    for (const channel of Object.values(this.#channels)) {
+      const channelResources = await channel.getAllNormalizedResources(options);
+      for await (const normalizedResource of channelResources) {
+        yield normalizedResource;
       }
     }
   }
-  async *getAllResources() {
-    return this.snapStore ? yield* this.snapStore.getAllResources() : yield* this.getAllResourcesFromSources();
+  //
+  // Public API
+  //
+  async getResourceHandles() {
+    return this.snapStore ? this.#getResourceHandlesFromSnapStore() : this.#getResourceHandlesFromAllChannels();
+  }
+  async *getAllResources(options = {}) {
+    const ignoreSnapStore = options.ignoreSnapStore || options.keepRaw;
+    return this.snapStore && !ignoreSnapStore ? yield* this.#getAllResourcesFromSnapStore(options) : yield* this.#getAllResourcesFromSources(options);
+  }
+  async getResource(resourceHandle, options = {}) {
+    return this.snapStore ? resourceHandle.loadFromNormalizedResource(await this.snapStore.getResource(resourceHandle)) : this.getChannel(resourceHandle.channel).loadResource(resourceHandle, options);
   }
   async shutdown() {
   }
@@ -12918,6 +13180,7 @@ var SourceManager = class {
 
 // src/monsterManager.js
 var MonsterManager = class {
+  #functionsForShutdown;
   constructor({ monsterDir, monsterConfig, configSeal }) {
     if (monsterDir && monsterConfig && monsterConfig.sourceLang && (monsterConfig.contentTypes || monsterConfig.source || monsterConfig.snapStore) === void 0) {
       throw "You must specify sourceLang and contentTypes / source / snapStore in your config";
@@ -12925,19 +13188,19 @@ var MonsterManager = class {
     this.monsterDir = monsterDir;
     this.configSeal = configSeal;
     this.jobStore = monsterConfig.jobStore;
-    this.debug = monsterConfig.debug ?? {};
     this.sourceLang = monsterConfig.sourceLang;
     this.minimumQuality = monsterConfig.minimumQuality;
-    this.functionsForShutdown = [];
-    if (monsterConfig.contentTypes) {
-      this.contentTypes = monsterConfig.contentTypes;
+    this.#functionsForShutdown = [];
+    let contentTypes;
+    if (monsterConfig.contentTypes || monsterConfig.channels || monsterConfig.formats) {
+      contentTypes = monsterConfig.contentTypes;
       ["source", "resourceFilter", "segmentDecorators", "decoders", "textEncoders", "codeEncoders", "target"].forEach((propName) => {
         if (monsterConfig[propName] !== void 0) {
-          throw `You can't specify ${propName} if you use contentType`;
+          throw `You can't specify ${propName} at the top level if you also use advance configurations`;
         }
       });
     } else {
-      this.contentTypes = {
+      contentTypes = {
         default: {
           source: monsterConfig.source,
           resourceFilter: monsterConfig.resourceFilter,
@@ -12949,28 +13212,43 @@ var MonsterManager = class {
         }
       };
     }
-    for (const [type, pipeline] of Object.entries(this.contentTypes)) {
-      if (!pipeline.resourceFilter) {
-        throw `You must specify a resourceFilter in content type ${type}`;
+    let channels, formats;
+    if (contentTypes) {
+      if (monsterConfig.channels || monsterConfig.formats) {
+        throw `You can't specify channels/formats if you also use contentTypes`;
       }
-      ["source", "resourceFilter", "target"].forEach((propName) => {
-        if (pipeline[propName] !== void 0 && typeof pipeline[propName] !== "object") {
-          throw `Property ${propName} in contentType ${type} must be an object`;
-        }
-      });
-      ["decoders", "segmentDecorators", "textEncoders", "codeEncoders"].forEach((propName) => {
-        if (pipeline[propName] !== void 0) {
-          if (!Array.isArray(pipeline[propName])) {
-            throw `Property ${propName} in contentType ${type} must be an array`;
-          }
-          pipeline[propName].forEach((coder, idx) => {
-            if (typeof coder !== "function") {
-              throw `Coder at index ${idx} in property ${propName} in contentType ${type} must be a function`;
-            }
-          });
-        }
-      });
+      channels = {};
+      formats = {};
+      for (const [type, config] of Object.entries(contentTypes)) {
+        channels[type] = {
+          source: config.source,
+          target: config.target,
+          defaultResourceFormat: type
+        };
+        const normalizers = {};
+        normalizers[type] = {
+          decoders: config.decoders,
+          textEncoders: config.textEncoders,
+          codeEncoders: config.codeEncoders
+        };
+        formats[type] = {
+          resourceFilter: config.resourceFilter,
+          normalizers,
+          defaultMessageFormat: type,
+          segmentDecorators: config.segmentDecorators
+        };
+      }
+    } else {
+      channels = monsterConfig.channels;
+      formats = monsterConfig.formats;
     }
+    this.rm = new ResourceManager({
+      configSeal,
+      channels,
+      formats,
+      snapStore: monsterConfig.snapStore,
+      defaultSourceLang: this.sourceLang
+    });
     if (monsterConfig.translationProviders) {
       this.translationProviders = monsterConfig.translationProviders;
     } else {
@@ -12980,48 +13258,42 @@ var MonsterManager = class {
       });
     }
     this.tuFilters = monsterConfig.tuFilters;
-    this.source = new SourceManager({
-      configSeal,
-      contentTypes: this.contentTypes,
-      snapStore: monsterConfig.snapStore
-    });
     this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, configSeal });
-    this.snapStore = monsterConfig.snapStore;
     this.analyzers = monsterConfig.analyzers ?? {};
-    this.capabilitiesByType = Object.fromEntries(Object.entries(this.contentTypes).map(([type, pipeline]) => [type, {
-      snap: Boolean(pipeline.source && this.snapStore),
-      status: Boolean(pipeline.source),
-      push: Boolean(pipeline.source && Object.keys(this.translationProviders).length > 0),
+    this.capabilitiesByChannel = Object.fromEntries(Object.entries(channels).map(([type, channel]) => [type, {
+      snap: Boolean(channel.source && monsterConfig.snapStore),
+      status: Boolean(channel.source),
+      push: Boolean(channel.source && Object.keys(this.translationProviders).length > 0),
       pull: Boolean(Object.keys(this.translationProviders).length > 0),
-      translate: Boolean(pipeline.source && pipeline.target)
+      translate: Boolean(channel.source && channel.target)
     }]));
-    this.capabilities = Object.values(this.capabilitiesByType).reduce((p, c) => Object.fromEntries(Object.entries(c).map(([k, v]) => [k, (p[k] === void 0 ? true : p[k]) && v])), {});
+    this.capabilities = Object.values(this.capabilitiesByChannel).reduce((p, c) => Object.fromEntries(Object.entries(c).map(([k, v]) => [k, (p[k] === void 0 ? true : p[k]) && v])), {});
   }
   // register an async function to be called during shutdown
   scheduleForShutdown(func) {
-    this.functionsForShutdown.push(func);
+    this.#functionsForShutdown.push(func);
   }
   // get all possible target languages from sources and from TMs
   async getTargetLangs(limitToLang, includeAll) {
-    let srcTargetLangs = /* @__PURE__ */ new Set();
-    const resourceStats = await this.source.getResourceStats();
-    resourceStats.forEach((res) => res.targetLangs.forEach((targetLang) => srcTargetLangs.add(targetLang)));
-    const allTargetLangs = new Set(srcTargetLangs);
-    Object.values(await this.jobStore.getAvailableLangPairs()).forEach((pair) => allTargetLangs.add(pair[1]));
     if (limitToLang) {
       const langsToLimit = limitToLang.split(",");
-      const invalidLangs = langsToLimit.filter((limitedLang) => !allTargetLangs.has(limitedLang));
-      if (invalidLangs.length > 0) {
-        throw `Invalid languages: ${invalidLangs.join(",")}`;
-      }
       return langsToLimit;
     }
-    return includeAll ? [...allTargetLangs] : [...srcTargetLangs];
+    let srcTargetLangs = /* @__PURE__ */ new Set();
+    const resourceHandles = await this.rm.getResourceHandles();
+    resourceHandles.forEach((res) => res.targetLangs.forEach((targetLang) => srcTargetLangs.add(targetLang)));
+    if (includeAll) {
+      const allTargetLangs = new Set(srcTargetLangs);
+      Object.values(await this.jobStore.getAvailableLangPairs()).forEach((pair) => allTargetLangs.add(pair[1]));
+      return [...allTargetLangs];
+    } else {
+      return [...srcTargetLangs];
+    }
   }
   // get source and convert it to tu format -- TODO: maybe we don't need this?
   async getSourceAsTus() {
     const sourceLookup = {};
-    for await (const res of this.source.getAllResources()) {
+    for await (const res of this.rm.getAllResources()) {
       for (const seg of res.segments) {
         sourceLookup[seg.guid] = utils_exports.makeTU(res, seg);
       }
@@ -13052,6 +13324,7 @@ var MonsterManager = class {
       jobRequest.status = "cancelled";
       return;
     }
+    const tm = await this.tmm.getTM(jobResponse.sourceLang, jobResponse.targetLang);
     const updatedAt = (l10nmonster.regression ? /* @__PURE__ */ new Date("2022-05-29T00:00:00.000Z") : /* @__PURE__ */ new Date()).toISOString();
     if (jobRequest) {
       jobRequest.updatedAt = updatedAt;
@@ -13061,6 +13334,7 @@ var MonsterManager = class {
       jobResponse.updatedAt = updatedAt;
       await this.jobStore.writeJob(jobResponse);
     }
+    await tm.processJob(jobResponse, jobRequest);
   }
   // eslint-disable-next-line complexity
   async #internalPrepareTranslationJob({ targetLang, minimumQuality, leverage }) {
@@ -13070,13 +13344,12 @@ var MonsterManager = class {
       tus: []
     };
     minimumQuality ??= this.getMinimumQuality(job);
-    const tm = await this.tmm.getTM(this.sourceLang, targetLang);
     const prjLeverage = {};
     const repetitionMap = {};
     let resourceCount = 0;
-    for await (const res of this.source.getAllResources()) {
+    for await (const resHandle of this.rm.getAllResources()) {
       resourceCount++;
-      const prj = res.prj || "default";
+      const prj = resHandle.prj || "default";
       prjLeverage[prj] ??= {
         translated: 0,
         translatedWords: 0,
@@ -13090,10 +13363,11 @@ var MonsterManager = class {
         internalRepetitionWords: 0
       };
       const leverageDetails = prjLeverage[prj];
-      if (res.targetLangs.includes(targetLang) && targetLang !== this.sourceLang) {
-        for (const seg of res.segments) {
+      if (resHandle.targetLangs.includes(targetLang) && targetLang !== this.sourceLang) {
+        const tm = await this.tmm.getTM(resHandle.sourceLang, targetLang);
+        for (const seg of resHandle.segments) {
           const tmEntry = tm.getEntryByGuid(seg.guid);
-          const tu = utils_exports.makeTU(res, seg);
+          const tu = utils_exports.makeTU(resHandle, seg);
           const plainText = tu.nsrc.map((e) => typeof e === "string" ? e : "").join("");
           const words = import_words_count.default.wordsCount(plainText);
           const isCompatible = utils_exports.sourceAndTargetAreCompatible(tu?.nsrc, tmEntry?.ntgt);
@@ -13125,7 +13399,7 @@ var MonsterManager = class {
         }
       }
     }
-    return [job, { tmSize: tm.guids.length, minimumQuality, prjLeverage, numSources: resourceCount }];
+    return [job, { minimumQuality, prjLeverage, numSources: resourceCount }];
   }
   async prepareTranslationJob({ targetLang, minimumQuality, leverage }) {
     return (await this.#internalPrepareTranslationJob({ targetLang, minimumQuality, leverage }))[0];
@@ -13170,9 +13444,9 @@ var MonsterManager = class {
   }
   async shutdown() {
     this.jobStore.shutdown && await this.jobStore.shutdown();
-    await this.source.shutdown();
+    await this.rm.shutdown();
     await this.tmm.shutdown();
-    for (const func of this.functionsForShutdown) {
+    for (const func of this.#functionsForShutdown) {
       await func();
     }
   }
@@ -13337,7 +13611,7 @@ async function analyzeCmd(mm, Analyzer, params, limitToLang, tuFilter) {
   }
   if (typeof Analyzer.prototype.processSegment === "function") {
     const analyzer = new Analyzer(...params);
-    for await (const res of mm.source.getAllResources()) {
+    for await (const res of mm.rm.getAllResources()) {
       for (const seg of res.segments) {
         (!tuFilterFunction || tuFilterFunction(utils_exports.makeTU(res, seg))) && analyzer.processSegment({ rid: res.id, prj: res.prj, seg });
       }
@@ -13391,11 +13665,12 @@ async function pullCmd(mm, { limitToLang, partial }) {
             stats.translatedStrings += jobResponse.tus.length;
             const newRequest = await mm.jobStore.getJobRequest(jobResponse.jobGuid);
             const newManifest = await mm.jobStore.createJobManifest();
-            newRequest.originalJobGuid = jobResponse.jobGuid;
+            const originalJobGuid = jobResponse.originalJobGuid ?? jobResponse.jobGuid;
+            newRequest.originalJobGuid = originalJobGuid;
             newRequest.jobGuid = newManifest.jobGuid;
             newRequest.tus = newRequest.tus.filter((tu) => inflight.includes(tu.guid));
             const { tus, ...newResponse } = doneResponse;
-            newResponse.originalJobGuid = jobResponse.jobGuid;
+            newResponse.originalJobGuid = originalJobGuid;
             newResponse.jobGuid = newManifest.jobGuid;
             newResponse.inflight = inflight;
             newResponse.status = "pending";
@@ -13411,20 +13686,20 @@ async function pullCmd(mm, { limitToLang, partial }) {
 
 // src/commands/snap.js
 async function snapCmd(mm, { maxSegments } = {}) {
-  if (mm.snapStore) {
+  if (mm.rm.snapStore) {
     maxSegments ??= 1e3;
     let resourceCount = 0;
-    await mm.snapStore.startSnapshot();
+    await mm.rm.snapStore.startSnapshot();
     const chunkNumber = {};
     let accumulatedSegments = 0;
     let accumulatedPrj;
     let accumulatedResources = {};
-    for await (const res of mm.source.getAllResourcesFromSources()) {
+    for await (const res of mm.rm.getAllResources({ ignoreSnapStore: true })) {
       const currentPrj = res.prj ?? "default";
       chunkNumber[currentPrj] ??= 0;
       if (accumulatedPrj !== currentPrj || accumulatedSegments >= maxSegments) {
         if (Object.keys(accumulatedResources).length > 0) {
-          await mm.snapStore.commitResources(accumulatedPrj, chunkNumber[accumulatedPrj], accumulatedResources);
+          await mm.rm.snapStore.commitResources(accumulatedPrj, chunkNumber[accumulatedPrj], accumulatedResources);
           chunkNumber[accumulatedPrj]++;
           accumulatedResources = {};
           accumulatedSegments = 0;
@@ -13436,9 +13711,9 @@ async function snapCmd(mm, { maxSegments } = {}) {
       resourceCount++;
     }
     if (Object.keys(accumulatedResources).length > 0) {
-      await mm.snapStore.commitResources(accumulatedPrj, chunkNumber[accumulatedPrj], accumulatedResources);
+      await mm.rm.snapStore.commitResources(accumulatedPrj, chunkNumber[accumulatedPrj], accumulatedResources);
     }
-    await mm.snapStore.endSnapshot();
+    await mm.rm.snapStore.endSnapshot();
     return resourceCount;
   } else {
     throw `Snap store not configured`;
@@ -13538,7 +13813,8 @@ async function jobPushCmd(mm, pushJobGuid) {
 // src/commands/status.js
 async function statusCmd(mm, { limitToLang }) {
   const status = {
-    lang: {}
+    lang: {},
+    numSources: 0
   };
   const targetLangs = await mm.getTargetLangs(limitToLang);
   for (const targetLang of targetLangs) {
@@ -13779,405 +14055,21 @@ async function tmExportCmd(mm, { limitToLang, mode, format, prjsplit }) {
   return status;
 }
 
-// node_modules/diff/lib/index.mjs
-function Diff() {
-}
-Diff.prototype = {
-  diff: function diff(oldString, newString) {
-    var options = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {};
-    var callback = options.callback;
-    if (typeof options === "function") {
-      callback = options;
-      options = {};
-    }
-    this.options = options;
-    var self = this;
-    function done(value) {
-      if (callback) {
-        setTimeout(function() {
-          callback(void 0, value);
-        }, 0);
-        return true;
-      } else {
-        return value;
-      }
-    }
-    oldString = this.castInput(oldString);
-    newString = this.castInput(newString);
-    oldString = this.removeEmpty(this.tokenize(oldString));
-    newString = this.removeEmpty(this.tokenize(newString));
-    var newLen = newString.length, oldLen = oldString.length;
-    var editLength = 1;
-    var maxEditLength = newLen + oldLen;
-    if (options.maxEditLength) {
-      maxEditLength = Math.min(maxEditLength, options.maxEditLength);
-    }
-    var bestPath = [{
-      newPos: -1,
-      components: []
-    }];
-    var oldPos = this.extractCommon(bestPath[0], newString, oldString, 0);
-    if (bestPath[0].newPos + 1 >= newLen && oldPos + 1 >= oldLen) {
-      return done([{
-        value: this.join(newString),
-        count: newString.length
-      }]);
-    }
-    function execEditLength() {
-      for (var diagonalPath = -1 * editLength; diagonalPath <= editLength; diagonalPath += 2) {
-        var basePath = void 0;
-        var addPath = bestPath[diagonalPath - 1], removePath = bestPath[diagonalPath + 1], _oldPos = (removePath ? removePath.newPos : 0) - diagonalPath;
-        if (addPath) {
-          bestPath[diagonalPath - 1] = void 0;
-        }
-        var canAdd = addPath && addPath.newPos + 1 < newLen, canRemove = removePath && 0 <= _oldPos && _oldPos < oldLen;
-        if (!canAdd && !canRemove) {
-          bestPath[diagonalPath] = void 0;
-          continue;
-        }
-        if (!canAdd || canRemove && addPath.newPos < removePath.newPos) {
-          basePath = clonePath(removePath);
-          self.pushComponent(basePath.components, void 0, true);
-        } else {
-          basePath = addPath;
-          basePath.newPos++;
-          self.pushComponent(basePath.components, true, void 0);
-        }
-        _oldPos = self.extractCommon(basePath, newString, oldString, diagonalPath);
-        if (basePath.newPos + 1 >= newLen && _oldPos + 1 >= oldLen) {
-          return done(buildValues(self, basePath.components, newString, oldString, self.useLongestToken));
-        } else {
-          bestPath[diagonalPath] = basePath;
-        }
-      }
-      editLength++;
-    }
-    if (callback) {
-      (function exec() {
-        setTimeout(function() {
-          if (editLength > maxEditLength) {
-            return callback();
-          }
-          if (!execEditLength()) {
-            exec();
-          }
-        }, 0);
-      })();
-    } else {
-      while (editLength <= maxEditLength) {
-        var ret = execEditLength();
-        if (ret) {
-          return ret;
-        }
-      }
-    }
-  },
-  pushComponent: function pushComponent(components, added, removed) {
-    var last = components[components.length - 1];
-    if (last && last.added === added && last.removed === removed) {
-      components[components.length - 1] = {
-        count: last.count + 1,
-        added,
-        removed
-      };
-    } else {
-      components.push({
-        count: 1,
-        added,
-        removed
-      });
-    }
-  },
-  extractCommon: function extractCommon(basePath, newString, oldString, diagonalPath) {
-    var newLen = newString.length, oldLen = oldString.length, newPos = basePath.newPos, oldPos = newPos - diagonalPath, commonCount = 0;
-    while (newPos + 1 < newLen && oldPos + 1 < oldLen && this.equals(newString[newPos + 1], oldString[oldPos + 1])) {
-      newPos++;
-      oldPos++;
-      commonCount++;
-    }
-    if (commonCount) {
-      basePath.components.push({
-        count: commonCount
-      });
-    }
-    basePath.newPos = newPos;
-    return oldPos;
-  },
-  equals: function equals(left, right) {
-    if (this.options.comparator) {
-      return this.options.comparator(left, right);
-    } else {
-      return left === right || this.options.ignoreCase && left.toLowerCase() === right.toLowerCase();
-    }
-  },
-  removeEmpty: function removeEmpty(array) {
-    var ret = [];
-    for (var i = 0; i < array.length; i++) {
-      if (array[i]) {
-        ret.push(array[i]);
-      }
-    }
-    return ret;
-  },
-  castInput: function castInput(value) {
-    return value;
-  },
-  tokenize: function tokenize(value) {
-    return value.split("");
-  },
-  join: function join3(chars) {
-    return chars.join("");
-  }
-};
-function buildValues(diff2, components, newString, oldString, useLongestToken) {
-  var componentPos = 0, componentLen = components.length, newPos = 0, oldPos = 0;
-  for (; componentPos < componentLen; componentPos++) {
-    var component = components[componentPos];
-    if (!component.removed) {
-      if (!component.added && useLongestToken) {
-        var value = newString.slice(newPos, newPos + component.count);
-        value = value.map(function(value2, i) {
-          var oldValue = oldString[oldPos + i];
-          return oldValue.length > value2.length ? oldValue : value2;
-        });
-        component.value = diff2.join(value);
-      } else {
-        component.value = diff2.join(newString.slice(newPos, newPos + component.count));
-      }
-      newPos += component.count;
-      if (!component.added) {
-        oldPos += component.count;
-      }
-    } else {
-      component.value = diff2.join(oldString.slice(oldPos, oldPos + component.count));
-      oldPos += component.count;
-      if (componentPos && components[componentPos - 1].added) {
-        var tmp = components[componentPos - 1];
-        components[componentPos - 1] = components[componentPos];
-        components[componentPos] = tmp;
-      }
-    }
-  }
-  var lastComponent = components[componentLen - 1];
-  if (componentLen > 1 && typeof lastComponent.value === "string" && (lastComponent.added || lastComponent.removed) && diff2.equals("", lastComponent.value)) {
-    components[componentLen - 2].value += lastComponent.value;
-    components.pop();
-  }
-  return components;
-}
-function clonePath(path5) {
-  return {
-    newPos: path5.newPos,
-    components: path5.components.slice(0)
-  };
-}
-var characterDiff = new Diff();
-var extendedWordChars = /^[A-Za-z\xC0-\u02C6\u02C8-\u02D7\u02DE-\u02FF\u1E00-\u1EFF]+$/;
-var reWhitespace = /\S/;
-var wordDiff = new Diff();
-wordDiff.equals = function(left, right) {
-  if (this.options.ignoreCase) {
-    left = left.toLowerCase();
-    right = right.toLowerCase();
-  }
-  return left === right || this.options.ignoreWhitespace && !reWhitespace.test(left) && !reWhitespace.test(right);
-};
-wordDiff.tokenize = function(value) {
-  var tokens = value.split(/([^\S\r\n]+|[()[\]{}'"\r\n]|\b)/);
-  for (var i = 0; i < tokens.length - 1; i++) {
-    if (!tokens[i + 1] && tokens[i + 2] && extendedWordChars.test(tokens[i]) && extendedWordChars.test(tokens[i + 2])) {
-      tokens[i] += tokens[i + 2];
-      tokens.splice(i + 1, 2);
-      i--;
-    }
-  }
-  return tokens;
-};
-var lineDiff = new Diff();
-lineDiff.tokenize = function(value) {
-  var retLines = [], linesAndNewlines = value.split(/(\n|\r\n)/);
-  if (!linesAndNewlines[linesAndNewlines.length - 1]) {
-    linesAndNewlines.pop();
-  }
-  for (var i = 0; i < linesAndNewlines.length; i++) {
-    var line = linesAndNewlines[i];
-    if (i % 2 && !this.options.newlineIsToken) {
-      retLines[retLines.length - 1] += line;
-    } else {
-      if (this.options.ignoreWhitespace) {
-        line = line.trim();
-      }
-      retLines.push(line);
-    }
-  }
-  return retLines;
-};
-var sentenceDiff = new Diff();
-sentenceDiff.tokenize = function(value) {
-  return value.split(/(\S.+?[.!?])(?=\s+|$)/);
-};
-var cssDiff = new Diff();
-cssDiff.tokenize = function(value) {
-  return value.split(/([{}:;,]|\s+)/);
-};
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function(obj2) {
-      return typeof obj2;
-    };
-  } else {
-    _typeof = function(obj2) {
-      return obj2 && typeof Symbol === "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-    };
-  }
-  return _typeof(obj);
-}
-var objectPrototypeToString = Object.prototype.toString;
-var jsonDiff = new Diff();
-jsonDiff.useLongestToken = true;
-jsonDiff.tokenize = lineDiff.tokenize;
-jsonDiff.castInput = function(value) {
-  var _this$options = this.options, undefinedReplacement = _this$options.undefinedReplacement, _this$options$stringi = _this$options.stringifyReplacer, stringifyReplacer = _this$options$stringi === void 0 ? function(k, v) {
-    return typeof v === "undefined" ? undefinedReplacement : v;
-  } : _this$options$stringi;
-  return typeof value === "string" ? value : JSON.stringify(canonicalize(value, null, null, stringifyReplacer), stringifyReplacer, "  ");
-};
-jsonDiff.equals = function(left, right) {
-  return Diff.prototype.equals.call(jsonDiff, left.replace(/,([\r\n])/g, "$1"), right.replace(/,([\r\n])/g, "$1"));
-};
-function diffJson(oldObj, newObj, options) {
-  return jsonDiff.diff(oldObj, newObj, options);
-}
-function canonicalize(obj, stack, replacementStack, replacer, key) {
-  stack = stack || [];
-  replacementStack = replacementStack || [];
-  if (replacer) {
-    obj = replacer(key, obj);
-  }
-  var i;
-  for (i = 0; i < stack.length; i += 1) {
-    if (stack[i] === obj) {
-      return replacementStack[i];
-    }
-  }
-  var canonicalizedObj;
-  if ("[object Array]" === objectPrototypeToString.call(obj)) {
-    stack.push(obj);
-    canonicalizedObj = new Array(obj.length);
-    replacementStack.push(canonicalizedObj);
-    for (i = 0; i < obj.length; i += 1) {
-      canonicalizedObj[i] = canonicalize(obj[i], stack, replacementStack, replacer, key);
-    }
-    stack.pop();
-    replacementStack.pop();
-    return canonicalizedObj;
-  }
-  if (obj && obj.toJSON) {
-    obj = obj.toJSON();
-  }
-  if (_typeof(obj) === "object" && obj !== null) {
-    stack.push(obj);
-    canonicalizedObj = {};
-    replacementStack.push(canonicalizedObj);
-    var sortedKeys = [], _key;
-    for (_key in obj) {
-      if (obj.hasOwnProperty(_key)) {
-        sortedKeys.push(_key);
-      }
-    }
-    sortedKeys.sort();
-    for (i = 0; i < sortedKeys.length; i += 1) {
-      _key = sortedKeys[i];
-      canonicalizedObj[_key] = canonicalize(obj[_key], stack, replacementStack, replacer, _key);
-    }
-    stack.pop();
-    replacementStack.pop();
-  } else {
-    canonicalizedObj = obj;
-  }
-  return canonicalizedObj;
-}
-var arrayDiff = new Diff();
-arrayDiff.tokenize = function(value) {
-  return value.slice();
-};
-arrayDiff.join = arrayDiff.removeEmpty = function(value) {
-  return value;
-};
-
 // src/commands/translate.js
-function shouldDNT(decorators, seg) {
-  if (decorators) {
-    for (const decorator of decorators) {
-      seg = decorator(seg);
-      if (seg === void 0) {
-        return true;
-      }
-    }
-  }
-  return false;
-}
 async function translateCmd(mm, { limitToLang, dryRun }) {
-  const status = { generatedResources: {}, deleteResources: {}, diff: {} };
-  const resourceStats = await mm.source.getResourceStats();
+  const status = { generatedResources: {}, deleteResources: {} };
   const targetLangs = await mm.getTargetLangs(limitToLang);
-  for (const targetLang of targetLangs) {
-    const sourceLang = mm.sourceLang;
-    const tm = await mm.tmm.getTM(sourceLang, targetLang);
-    status.generatedResources[targetLang] = [];
-    status.deleteResources[targetLang] = [];
-    status.diff[targetLang] = {};
-    for (const res of resourceStats) {
-      if (res.targetLangs.includes(targetLang) && (l10nmonster.prj === void 0 || l10nmonster.prj.includes(res.prj))) {
-        const resourceId = res.id;
-        const pipeline = mm.contentTypes[res.contentType];
-        const encodePart = utils_exports.partEncoderMaker(pipeline.textEncoders, pipeline.codeEncoders);
-        const translator = async function translate(sid, str) {
-          const flags = { sourceLang, targetLang, prj: res.prj };
-          const seg = { sid, nstr: utils_exports.getNormalizedString(str, pipeline.decoders, flags) };
-          if (shouldDNT(pipeline.segmentDecorator, seg)) {
-            l10nmonster.logger.verbose(`Dropping ${sid} in ${resourceId} as decided by segment decorator`);
-            return void 0;
-          }
-          const flattenSrc = utils_exports.flattenNormalizedSourceToOrdinal(seg.nstr);
-          const guid = utils_exports.generateFullyQualifiedGuid(resourceId, sid, flattenSrc);
-          const entry = tm.getEntryByGuid(guid);
-          try {
-            return utils_exports.translateWithEntry(seg.nstr, entry, flags, encodePart);
-          } catch (e) {
-            l10nmonster.logger.verbose(`Problem translating ${resourceId}+${sid}+${str} to ${targetLang}: ${e.stack ?? e}`);
-            return void 0;
-          }
-        };
-        let translatedRes;
-        if (pipeline.resourceFilter.generateResource) {
-          const resource = await mm.source.getResource(res);
-          translatedRes = await pipeline.resourceFilter.generateResource({ resource, translator });
-        } else {
-          const resource = await pipeline.source.fetchResource(res.id);
-          translatedRes = await pipeline.resourceFilter.translateResource({ resource, translator });
-        }
-        const translatedResourceId = pipeline.target.translatedResourceId(targetLang, resourceId);
+  const allResources = await mm.rm.getAllResources({ keepRaw: true });
+  for await (const resHandle of allResources) {
+    for (const targetLang of targetLangs) {
+      if (resHandle.targetLangs.includes(targetLang) && (l10nmonster.prj === void 0 || l10nmonster.prj.includes(resHandle.prj))) {
+        const tm = await mm.tmm.getTM(resHandle.sourceLang, targetLang);
+        const translatedRes = await resHandle.generateTranslatedRawResource(tm);
         if (dryRun) {
-          let currentRaw;
-          try {
-            currentRaw = await pipeline.target.fetchTranslatedResource(targetLang, resourceId);
-          } catch (e) {
-            l10nmonster.logger.info(`${targetLang}: Couldn't fetch translated resource ${translatedResourceId}: ${e.stack ?? e}`);
-          }
-          if (currentRaw) {
-            const currentParsed = await pipeline.resourceFilter.parseResource({ resource: currentRaw, isSource: false });
-            const currentFlattened = {};
-            currentParsed.segments.forEach((x) => currentFlattened[x.sid] = x.str);
-            const newParsed = translatedRes ? await pipeline.resourceFilter.parseResource({ resource: translatedRes, isSource: false }) : { segments: [] };
-            const newFlattened = {};
-            newParsed.segments.forEach((x) => newFlattened[x.sid] = x.str);
-            const diff2 = diffJson(currentFlattened, newFlattened).filter((x) => x.added ?? x.removed).map((x) => [Boolean(x.added), x.value]);
-            diff2 && (status.diff[targetLang][translatedResourceId] = diff2);
-          }
         } else {
-          await pipeline.target.commitTranslatedResource(targetLang, resourceId, translatedRes);
+          status.generatedResources[targetLang] ??= [];
+          status.deleteResources[targetLang] ??= [];
+          const translatedResourceId = await mm.rm.getChannel(resHandle.channel).commitTranslatedResource(targetLang, resHandle.id, translatedRes);
           (translatedRes === null ? status.deleteResources : status.generatedResources)[targetLang].push(translatedResourceId);
         }
       }

@@ -5,7 +5,9 @@
     },
     "extends": "eslint:recommended",
     "ignorePatterns": [
-        "**/out/**"
+        "core/out/*",
+        "cli/out/*",
+        "helpers/out/*"
     ],
     "globals": {
         "l10nmonster": "writable"

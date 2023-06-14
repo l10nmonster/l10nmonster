@@ -9,9 +9,8 @@
     "main": "out/index.cjs",
     "type": "module",
     "scripts": {
-        "esbuild-base": "esbuild src/index.js --bundle --outfile=out/index.cjs --format=cjs --platform=node",
-        "esbuild": "npm run esbuild-base -- --sourcemap",
-        "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch"
+        "esbuild": "esbuild src/index.js --bundle --outfile=out/index.cjs --format=cjs --platform=node --sourcemap",
+        "esbuild-watch": "npm run esbuild -- --watch"
     },
     "repository": {
         "type": "git",
@@ -28,7 +27,6 @@
     },
     "dependencies": {
         "@l10nmonster/tmexchange": "^3",
-        "diff": "^5.0.0",
         "words-count": "^2.0.2"
     },
     "devDependencies": {

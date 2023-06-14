@@ -124,7 +124,7 @@ export async function status(monsterManager, options) {
     } else {
         console.log(`${consoleColor.reset}${status.numSources.toLocaleString()} translatable resources`);
         for (const [lang, langStatus] of Object.entries(status.lang)) {
-            console.log(`\n${consoleColor.bright}Language ${lang}${consoleColor.reset} (minimum quality ${langStatus.leverage.minimumQuality}, TM size:${langStatus.leverage.tmSize.toLocaleString()}):`);
+            console.log(`\n${consoleColor.bright}Language ${lang}${consoleColor.reset} (minimum quality: ${langStatus.leverage.minimumQuality})`);
             const totals = {};
             const prjLeverage = Object.entries(langStatus.leverage.prjLeverage).sort((a, b) => (a[0] > b[0] ? 1 : -1));
             for (const [prj, leverage] of prjLeverage) {
@@ -235,22 +235,22 @@ export async function push(monsterManager, options) {
                 printRequest(langStatus);
             }
         } else {
-            let status = [];
-            for (const provider of (options.provider ?? 'default').split(',')) {
+            const providerList = (options.provider ?? 'default').split(',');
+            for (const provider of providerList) {
                 const translationProviderName = provider.toLowerCase() === 'default' ? undefined : provider;
-                status.push(await pushCmd(monsterManager, { limitToLang, tuFilter, driver, refresh, translationProviderName, leverage, dryRun, instructions }));
-            }
-            status = status.flat(1);
+                const status = await pushCmd(monsterManager, { limitToLang, tuFilter, driver, refresh, translationProviderName, leverage, dryRun, instructions });
                 if (status.length > 0) {
-                for (const ls of status) {
-                    if (ls.minimumJobSize !== undefined) {
-                        console.log(`${ls.num.toLocaleString()} translations units for language ${ls.targetLang} not sent to provider ${consoleColor.bright}${ls.provider}${consoleColor.reset} because you need at least ${ls.minimumJobSize}`);
-                    } else {
-                        console.log(`job ${ls.jobGuid} with ${ls.num.toLocaleString()} translations received for language ${consoleColor.bright}${ls.targetLang}${consoleColor.reset} from provider ${consoleColor.bright}${ls.provider}${consoleColor.reset} -> status: ${consoleColor.bright}${ls.status}${consoleColor.reset}`);
+                    for (const ls of status) {
+                        if (ls.minimumJobSize !== undefined) {
+                            console.log(`${ls.num.toLocaleString()} translations units for language ${ls.targetLang} not sent to provider ${consoleColor.bright}${ls.provider}${consoleColor.reset} because you need at least ${ls.minimumJobSize}`);
+                        } else {
+                            console.log(`job ${ls.jobGuid} with ${ls.num.toLocaleString()} translations received for language ${consoleColor.bright}${ls.targetLang}${consoleColor.reset} from provider ${consoleColor.bright}${ls.provider}${consoleColor.reset} -> status: ${consoleColor.bright}${ls.status}${consoleColor.reset}`);
+                        }
                     }
+                } else {
+                    console.log('Nothing to push!');
+                    break;
                 }
-            } else {
-                console.log('Nothing to push!');
             }
         }
     } catch (e) {
@@ -388,9 +388,9 @@ __.-'            \\  \\   .   / \\_.  \\ -|_/\\/ \`--.|_
                \\uU \\UU/     |  /   :F_P:
 `);
     console.time('Initialization time');
-    const resourceStats = await monsterManager.source.getResourceStats();
+    const resourceHandles = await monsterManager.rm.getResourceHandles();
     const targetLangs = await monsterManager.getTargetLangs(false, true);
-    console.log(`Resources: ${resourceStats.length}`);
+    console.log(`Resources: ${resourceHandles.length}`);
     console.log(`Possible languages: ${targetLangs.join(', ')}`);
     console.log('Translation Memories:')
     const availableLangPairs = (await monsterManager.jobStore.getAvailableLangPairs()).sort();
@@ -401,8 +401,8 @@ __.-'            \\  \\   .   / \\_.  \\ -|_/\\/ \`--.|_
     console.timeEnd('Initialization time');
     const printCapabilities = cap => `${Object.entries(cap).map(([cmd, available]) => `${available ? consoleColor.green : consoleColor.red}${cmd}`).join(' ')}${consoleColor.reset}`;
     console.log(`\nYour config allows the following commands: ${printCapabilities(monsterManager.capabilities)}`);
-    if (Object.keys(monsterManager.capabilitiesByType).length > 1) {
-        Object.entries(monsterManager.capabilitiesByType).forEach(([type, cap]) => console.log(`  - ${type}: ${printCapabilities(cap)}`));
+    if (Object.keys(monsterManager.capabilitiesByChannel).length > 1) {
+        Object.entries(monsterManager.capabilitiesByChannel).forEach(([channel, cap]) => console.log(`  - ${channel}: ${printCapabilities(cap)}`));
     }
 }
 
@@ -446,6 +446,7 @@ export async function runL10nMonster(relativePath, globalOptions, cb) {
             translate: opts => translate(mm, { ...globalOptions, ...opts}),
             tmexport: opts => tmexport(mm, { ...globalOptions, ...opts}),
             monster: opts => monster(mm, { ...globalOptions, ...opts}),
+            withMonsterManager: (cb) => cb(mm),
         });
     } catch(e) {
         console.error(`Unable to run: ${e.stack || e}`);

@@ -44,18 +44,6 @@ export function getNormalizedString(str, decoderList, flags = {}) {
     return decoderList ? decodeNormalizedString([ { t: 's', v: str } ], decoderList, flags) : [ str ];
 }
 
-export function partEncoderMaker(textEncoders, codeEncoders) {
-    return function encodePart(part, flags) {
-        const encoders = typeof part === 'string' ? textEncoders : codeEncoders;
-        const str = typeof part === 'string' ? part : part.v;
-        if (encoders) {
-            return encoders.reduce((s, encoder) => encoder(s, flags), str);
-        } else {
-            return str;
-        }
-    };
-}
-
 export function flattenNormalizedSourceToOrdinal(nsrc) {
     return nsrc.map(e => (typeof e === 'string' ? e : `{{${e.t}}}`)).join('');
 }
@@ -221,34 +209,6 @@ export function sourceAndTargetAreCompatible(nsrc, ntgt) {
         return Object.keys(nsrc.filter(e => typeof e === 'object')).length === Object.keys(ntgt.filter(e => typeof e === 'object')).length;
     }
     return false;
-}
-
-export function translateWithEntry(nsrc, entry, flags, encodePart) {
-    if (entry && !entry.inflight) {
-        if (sourceAndTargetAreCompatible(nsrc, entry.ntgt)) {
-            const phMatcher = phMatcherMaker(nsrc);
-            const ntgtEntries = entry.ntgt.entries();
-            const tgt = [];
-            for (const [idx, part] of ntgtEntries) {
-                const partFlags = { ...flags, isFirst: idx === 0, isLast: idx === ntgtEntries.length - 1 };
-                if (typeof part === 'string') {
-                    tgt.push(encodePart(part, partFlags));
-                } else {
-                    const ph = phMatcher(part);
-                    if (ph) {
-                        tgt.push(encodePart(ph, partFlags));
-                    } else {
-                        throw `unknown placeholder found: ${JSON.stringify(part)}`;
-                    }
-                }
-            }
-            return tgt.join('');
-        } else {
-            throw `source and target are incompatible`;
-        }
-    } else {
-        throw `TM entry missing or in flight`;
-    }
 }
 
 // converts a normalized source to another normalized source but stripping detailed ph information

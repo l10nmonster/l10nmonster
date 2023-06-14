@@ -1,14 +1,16 @@
 {
 	"dashlets/wiki.get_en.properties": {
 		"id": "dashlets/wiki.get_en.properties",
+		"channel": "default",
 		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
 		"targetLangs": [
 			"it",
 			"ja",
 			"pt-BR"
 		],
 		"prj": "wiki",
-		"contentType": "default",
 		"segments": [
 			{
 				"sid": "label.header",
@@ -16,6 +18,7 @@
 					"startLine": 1,
 					"endLine": 1
 				},
+				"mf": "default",
 				"nstr": [
 					"Wiki"
 				],
@@ -28,6 +31,7 @@
 					"startLine": 2,
 					"endLine": 2
 				},
+				"mf": "default",
 				"nstr": [
 					"Wiki"
 				],
@@ -40,6 +44,7 @@
 					"startLine": 3,
 					"endLine": 3
 				},
+				"mf": "default",
 				"nstr": [
 					"Configure"
 				],
@@ -52,6 +57,7 @@
 					"startLine": 4,
 					"endLine": 4
 				},
+				"mf": "default",
 				"nstr": [
 					"No page is configured"
 				],
@@ -64,6 +70,7 @@
 					"startLine": 7,
 					"endLine": 8
 				},
+				"mf": "default",
 				"nstr": [
 					{
 						"t": "bx",

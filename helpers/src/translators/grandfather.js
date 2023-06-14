@@ -18,26 +18,23 @@ export class Grandfather {
         const { tus, ...jobResponse } = jobRequest;
         jobResponse.tus = [];
         const txCache = {};
-        const resourceStats = Object.fromEntries((await this.mm.source.getResourceStats()).map(r => [r.id, r]));
+        const resourceHandles = Object.fromEntries((await this.mm.rm.getResourceHandles()).map(r => [r.id, r]));
         for (const tu of tus) {
             if (!txCache[tu.rid]) {
-                const pipeline = this.mm.contentTypes[resourceStats[tu.rid].contentType];
-                const lookup = {};
-                try {
-                    const resource = await pipeline.target.fetchTranslatedResource(jobRequest.targetLang, tu.rid);
-                    const parsedResource = await pipeline.resourceFilter.parseResource({ resource, isSource: false });
-                    for (const seg of parsedResource.segments) {
-                        seg.nstr = utils.getNormalizedString(seg.str, pipeline.decoders);
-                        lookup[seg.sid] = seg;
+                const handle = resourceHandles[tu.rid];
+                if (handle) {
+                    try {
+                        const resourceToGrandfather = await this.mm.rm.getChannel(handle.channel).getExistingTranslatedResource(handle, jobRequest.targetLang);
+                        txCache[tu.rid] = Object.fromEntries(resourceToGrandfather.segments.map(seg => [ seg.sid, seg ]));
+                    } catch (e) {
+                        l10nmonster.logger.info(`Couldn't fetch translated resource: ${e.stack ?? e}`);
+                        txCache[tu.rid] = {};
                     }
-            } catch (e) {
-                    l10nmonster.logger.info(`Couldn't fetch translated resource: ${e.stack ?? e}`);
                 }
-                txCache[tu.rid] = lookup;
             }
             const previousTranslation = txCache[tu.rid][tu.sid];
             if (previousTranslation !== undefined) {
-                const previousTU = utils.makeTU(resourceStats[tu.rid], previousTranslation);
+                const previousTU = utils.makeTU(resourceHandles[tu.rid], previousTranslation);
                 if (utils.sourceAndTargetAreCompatible(tu.nsrc, previousTU.nsrc)) {
                     jobResponse.tus.push({
                         guid: tu.guid,

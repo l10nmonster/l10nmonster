@@ -75,7 +75,7 @@ export class FsTarget {
     }
 
     async commitTranslatedResource(lang, resourceId, translatedRes) {
-        const translatedPath = path.resolve(this.baseDir, this.targetPath(lang, resourceId));
+        const translatedPath = this.translatedResourceId(lang, resourceId);
         if (translatedRes === null) {
             this.deleteEmpty && existsSync(translatedPath) && unlinkSync(translatedPath);
         } else {

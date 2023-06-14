@@ -1,7 +1,9 @@
-import * as path from 'path';
-import { Command, Argument, InvalidArgumentError } from 'commander';
-import { createMonsterManager } from '@l10nmonster/core';
-import * as l10n from './l10nCommands.js';
+#!/usr/bin/env node
+
+const path = require('path');
+const { existsSync } = require('fs');
+const { Command, Argument, InvalidArgumentError } = require('commander');
+const { runL10nMonster } = require('./out/l10nCommands.cjs');
 
 /* eslint-disable no-invalid-this */
 /* eslint-disable prefer-arrow-callback */
@@ -15,7 +17,7 @@ function intOptionParser(value, _dummyPrevious) {
     return parsedValue;
   }
 
-function createMonsterCLI(cliCtx, preAction) {
+function createMonsterCLI(actionHandler) {
     const monsterCLI = new Command();
     monsterCLI
         .name('l10n')
@@ -26,21 +28,16 @@ function createMonsterCLI(cliCtx, preAction) {
         .option('--arg <string>', 'optional config constructor argument')
         .option('--cfg <filename.cjs>', 'specify the configuration file to use')
         .option('--regression', 'keep variables constant during regression testing');
-    preAction && monsterCLI.hook('preAction', preAction);
     monsterCLI.command('status')
         .description('translation status of content.')
         .option('-l, --lang <language>', 'only get status of target language')
         .option('-a, --all', 'show information for all projects, not just untranslated ones')
         .option('--output <filename>', 'write status to the specified file')
-        .action(async function status() {
-            await l10n.status(cliCtx.monsterManager, this.optsWithGlobals());
-        });
+        .action(actionHandler);
     monsterCLI.command('jobs')
         .description('unfinished jobs status.')
         .option('-l, --lang <language>', 'only get jobs for the target language')
-        .action(async function jobs() {
-            await l10n.jobs(cliCtx.monsterManager, this.optsWithGlobals());
-        });
+        .action(actionHandler);
     monsterCLI.command('analyze')
         .description('content reports and validation.')
         .argument('[analyzer]', 'name of the analyzer to run')
@@ -48,9 +45,7 @@ function createMonsterCLI(cliCtx, preAction) {
         .option('-l, --lang <language>', 'target language to analyze (if TM analyzer)')
         .option('--filter <filter>', 'use the specified tu filter')
         .option('--output <filename>', 'filename to write the analysis to)')
-        .action(async function analyze(analyzer, params) {
-            await l10n.analyze(cliCtx.monsterManager, { ...this.optsWithGlobals(), analyzer, params });
-        });
+        .action(actionHandler);
     monsterCLI.command('push')
         .description('push source content upstream (send to translation).')
         .option('-l, --lang <language>', 'target language to push')
@@ -61,87 +56,101 @@ function createMonsterCLI(cliCtx, preAction) {
         .option('--provider <name,...>', 'use the specified translation providers')
         .option('--instructions <instructions>', 'send the specified translation instructions')
         .option('--dryrun', 'simulate translating and compare with existing translations')
-        .action(async function push() {
-            await l10n.push(cliCtx.monsterManager, this.optsWithGlobals());
-        });
+        .action(actionHandler);
     monsterCLI.command('job')
         .description('show request/response/pairs of a job or push/delete jobs.')
         .addArgument(new Argument('<operation>', 'operation to perform on job').choices(['req', 'res', 'pairs', 'push', 'delete']))
         .requiredOption('-g, --jobGuid <guid>', 'guid of job')
-        .action(async function job(operation) {
-            await l10n.job(cliCtx.monsterManager, { ...this.optsWithGlobals(), operation });
-        });
+        .action(actionHandler);
     monsterCLI.command('pull')
         .description('receive outstanding translation jobs.')
         .option('--partial', 'commit partial deliveries')
         .option('-l, --lang <language>', 'only get jobs for the target language')
-        .action(async function pull() {
-            await l10n.pull(cliCtx.monsterManager, this.optsWithGlobals());
-        });
+        .action(actionHandler);
     monsterCLI.command('snap')
         .description('commits a snapshot of sources in normalized format.')
         .option('--maxSegments <number>', 'threshold to break up snapshots into chunks')
-        .action(async function snap() {
-            await l10n.snap(cliCtx.monsterManager, this.optsWithGlobals());
-        });
+        .action(actionHandler);
     monsterCLI.command('translate')
         .description('generate translated resources based on latest source and translations.')
         .option('-l, --lang <language>', 'target language to translate')
         .option('-d, --dryrun', 'simulate translating and compare with existing translations')
-        .action(async function translate() {
-            await l10n.translate(cliCtx.monsterManager, this.optsWithGlobals());
-        });
+        .action(actionHandler);
     monsterCLI.command('tmexport')
         .description('export translation memory in various formats.')
         .addArgument(new Argument('<mode>', 'export source (including untranslated) or tm entries (including missing in source)').choices(['source', 'tm']))
         .addArgument(new Argument('<format>', 'exported file format').choices(['tmx', 'json', 'job']))
         .option('-l, --lang <language>', 'target language to export')
         .option('--prjsplit', 'split target files by project')
-        .action(async function tmexport(mode, format) {
-            await l10n.tmexport(cliCtx.monsterManager, { ...this.optsWithGlobals(), mode, format });
-        });
+        .action(actionHandler);
     monsterCLI.command('monster')
         .description('just because...')
-        .action(async function monster() {
-            await l10n.monster(cliCtx.monsterManager, this.optsWithGlobals());
-        });
-    cliCtx.setupExtensions && cliCtx.setupExtensions(monsterCLI, cliCtx);
+        .action(actionHandler);
     return monsterCLI;
 }
 
-export async function runMonsterCLI(monsterConfigPath, extensionsPath) {
-    const cliCtx = {};
-    const cliExtensions = extensionsPath || (process.env.l10nmonster_cliextensions && path.resolve('.', process.env.l10nmonster_cliextensions));
-    if (cliExtensions) {
-        try {
-            const extensionsModule = await import(cliExtensions);
-            if (extensionsModule.setupExtensions) {
-                cliCtx.setupExtensions = extensionsModule.setupExtensions;
-            } else {
-                console.log('Found extensions but no setupExtensions export found');
-            }
-        } catch(e) {
-            console.log(`Couldn't load extensions from ${cliExtensions}: ${e.stack || e}`);
-        }
-    }
-
+async function runMonsterCLI(monsterConfigPath, extensionsPath) {
     try {
-        await createMonsterCLI(
-            cliCtx,
-            async cli => {
-                const options = cli.opts();
-                const configPath = (options.cfg && path.resolve('.', options.cfg)) ?? monsterConfigPath;
-                global.l10nmonster ??= {};
-                l10nmonster.logger = l10n.createLogger(options.verbose);
-                l10nmonster.env = process.env;
-                const mm = await createMonsterManager(configPath, options);
-                cliCtx.monsterManager = mm;
+        let crutch = {};
+        const monsterCLI = createMonsterCLI(async function actionHandler() {
+            const options = this.opts();
+            // Need to hack into the guts of commander as it doesn't seem to expose argument names
+            // TODO: fix variadic arguments
+            // eslint-disable-next-line no-underscore-dangle
+            const args = Object.fromEntries(this._args.map((arg, idx) => [ arg._name, this.args[idx]]));
+            const configPath = (options.cfg && path.resolve('.', options.cfg)) ?? monsterConfigPath;
+            await runL10nMonster(configPath, crutch.globalOptions, async l10n => {
+                await l10n[this.name()]({ ...options, ...args });
+            });
+
+        });
+        crutch.globalOptions = monsterCLI.opts();
+        const cliExtensions = extensionsPath ?? process.env.l10nmonster_cliextensions;
+        if (cliExtensions) {
+            try {
+                const extensionsModule = await import(cliExtensions);
+                if (extensionsModule.setupExtensions) {
+                    const cliCtx = {};
+                    const extensionCmd = monsterCLI.command('extensions')
+                        .description('Extension commands')
+                        .hook('preAction', async cmd => {
+                            const options = cmd.optsWithGlobals();
+                            const configPath = (options.cfg && path.resolve('.', options.cfg)) ?? monsterConfigPath;
+                            await runL10nMonster(configPath, {}, async l10n => {
+                                cliCtx.l10n = l10n;
+                            });
+                        });
+                    extensionsModule.setupExtensions(extensionCmd, cliCtx);
+                } else {
+                    throw('Found extensions but no setupExtensions export found');
+                }
+            } catch(e) {
+                throw(`Couldn't load extensions from ${cliExtensions}: ${e.stack || e}`);
             }
-        ).parseAsync();
+        }
+        await monsterCLI.parseAsync();
     } catch(e) {
         console.error(`Unable to run: ${e.stack || e}`);
         process.exit(1);
-    } finally {
-        cliCtx.monsterManager && (await cliCtx.monsterManager.shutdown());
     }
 }
+
+function findConfig() {
+    let baseDir = path.resolve('.'),
+        previousDir = null;
+    while (baseDir !== previousDir) {
+        const configPath = path.join(baseDir, 'l10nmonster.cjs');
+        if (existsSync(configPath)) {
+            const cliExtensions = path.join(baseDir, 'l10nmonster-cli.cjs');
+            return [ configPath, existsSync(cliExtensions) && cliExtensions ];
+        }
+        previousDir = baseDir;
+        baseDir = path.resolve(baseDir, '..');
+    }
+    return [];
+}
+
+const [ monsterConfigPath, extensionsPath ] = findConfig();
+(async () => {
+    await runMonsterCLI(monsterConfigPath, extensionsPath);
+})();

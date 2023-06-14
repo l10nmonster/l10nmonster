@@ -4,6 +4,7 @@
 	"tus": [
 		{
 			"sid": "BackButtonLabel",
+			"mf": "default",
 			"gstr": "Back",
 			"guid": "Sch-OXL3KPaFNWvKiWNmafNmqHZo8oNtcaB-9jYE1sk",
 			"rawNotes": "Back button label used to go back to the previous screen. (15 chars)",
@@ -19,6 +20,7 @@
 		},
 		{
 			"sid": "NavTitleLabel",
+			"mf": "default",
 			"gstr": "QR Scan",
 			"guid": "S5zXEp9KGe9nqhqgtH8vMM106HfoiBTZzDQ8qyPdB5A",
 			"rawNotes": "Label of the app title bar when on the QR code scanner screen. (45 chars)",
@@ -34,6 +36,7 @@
 		},
 		{
 			"sid": "LoadingMessage",
+			"mf": "default",
 			"gstr": "Parsing configuration data",
 			"guid": "PV7WBP4aNfZzq1Hre1_bkECpoSmhPedg7xfh7UKYkyw",
 			"rawNotes": "Message shown to the user while waiting to process the QR code. (60 chars)",
@@ -49,6 +52,7 @@
 		},
 		{
 			"sid": "InvalidQRCode",
+			"mf": "default",
 			"gstr": "The QR code is invalid",
 			"guid": "jkJekuVBcsiufoG2zmxszlbnMGkREPRBAeb2QTDfUaI",
 			"rawNotes": "Error message shown to the user if the QR code is invalid. (60 chars)",
@@ -64,6 +68,7 @@
 		},
 		{
 			"sid": "ParsingFailed",
+			"mf": "default",
 			"gstr": "Problem in parsing the Url",
 			"guid": "2n8bq0sVYs9Xil3nEw7OEVuhOSGvpaoInQAZ89RnD7c",
 			"rawNotes": "Error message shown to the user if the QR code is not a valid device profile. (60 chars)",
@@ -79,6 +84,7 @@
 		},
 		{
 			"sid": "DataSynced",
+			"mf": "default",
 			"gstr": "{{x}} detected",
 			"guid": "XY8o8xA5C_HlR4v8LDc4L98Y0mR-4gHyLjDxwvNhDrM",
 			"rawNotes": "Format string used as a temporary message shown after a successful device profile is set.\n* (60 chars)",
@@ -98,6 +104,7 @@
 		},
 		{
 			"sid": "FindSymbolOnViewer",
+			"mf": "default",
 			"gstr": "Find this symbol on your viewer",
 			"guid": "MmBuoyCIE3eiz_wlkLAZMeoIhXX52LOiAHNCnl3o4Fc",
 			"rawNotes": "Label shown next to example QR code. (40 chars)",
@@ -113,6 +120,7 @@
 		},
 		{
 			"sid": "CanNotFindSymbol",
+			"mf": "default",
 			"gstr": "Can't find this symbol?",
 			"guid": "QaV08RUEuxPOCugEXCnQ7tnShKARCrrKeZxYO7kxLSc",
 			"rawNotes": "Label shown next to skip button that allows the user to skip the QR code step. (40 chars)",
@@ -128,6 +136,7 @@
 		},
 		{
 			"sid": "TroubleShootingTips",
+			"mf": "default",
 			"gstr": "Troubleshooting Tips",
 			"guid": "c6aK6IBRyaNfMidf7na8JYOmhVI2r4vsn3O6B-pr-xc",
 			"rawNotes": "Label shown next to skip button that allows the user to go to troubleshooting tips. (40 chars)",
@@ -143,6 +152,7 @@
 		},
 		{
 			"sid": "SkipButtonLabel",
+			"mf": "default",
 			"gstr": "SKIP",
 			"guid": "ZYAxQNY0zLKx4RB3CGTDXujQrbLQclR9EH5EQ7Fzbok",
 			"rawNotes": "Button label for the control that allows the user to skip the QR code step. (40 chars)",
@@ -158,6 +168,7 @@
 		},
 		{
 			"sid": "OnboardingIntroLine1",
+			"mf": "default",
 			"gstr": "Let's get you set up",
 			"guid": "Kj45w0Rgr1SHV55MeVawhgff4UYIfb-XuWWnyf9_dks",
 			"rawNotes": "First line of the onboarding introduction. (40 chars)",
@@ -173,6 +184,7 @@
 		},
 		{
 			"sid": "OnboardingIntroLine2",
+			"mf": "default",
 			"gstr": "Pair your phone with your viewer for the best experience.",
 			"guid": "8_cqAMCRj_4YGH6-e5xWNNAupQF-OHn20AQoeGp75h4",
 			"rawNotes": "Second line of the onboarding introduction. (80 chars)",
@@ -188,6 +200,7 @@
 		},
 		{
 			"sid": "OnboardingNoViewerPrompt",
+			"mf": "default",
 			"gstr": "No cardboard viewer?",
 			"guid": "yiK0MVBkcMRpl-7tMMPVMmlUvDJvqVxRbLLDHOchAko",
 			"rawNotes": "Label shown below the onboarding intro line to ask if they have a cardboard viewer. (40 chars)",
@@ -203,6 +216,7 @@
 		},
 		{
 			"sid": "OnboardingGetCardboardButton",
+			"mf": "default",
 			"gstr": "Get One",
 			"guid": "L3Um-sKnXUAP1liD4dLFvMGh7c2p80P5DRx1ZFPYpqM",
 			"rawNotes": "Button title shown next to the \"no cardboard viewer\" prompt to go get one. (15 chars)",
@@ -218,6 +232,7 @@
 		},
 		{
 			"sid": "PlaceYourPhoneInCardboard",
+			"mf": "default",
 			"gstr": "Place your phone into your Cardboard viewer.",
 			"guid": "6nFW5iZToYQ3LtLDeb9Adlfu-EQWDAuFyMsAlRw4cf4",
 			"rawNotes": "Instruction for the user that they should now put their phone in Cardboard. This is a generic\n* instruction when the view type is not known. (50 chars)",
@@ -233,6 +248,7 @@
 		},
 		{
 			"sid": "PlaceYourPhoneInViewerFormat",
+			"mf": "default",
 			"gstr": "Place your phone into your {{x}} viewer.",
 			"guid": "4jxuTPXhhsLGShj5wDGlsktW8NV1GAYrGDxHaZV_6C4",
 			"rawNotes": "Instruction for the user that they should now put their phone in Cardboard. This is used as a\n* format string where the parameter is the view name. (50 chars)",
@@ -253,6 +269,7 @@
 		},
 		{
 			"sid": "SettingsNavTitleLabel",
+			"mf": "default",
 			"gstr": "Settings",
 			"guid": "6hNFreOOSaLtvtpZeirvd7YWah19RxogxrXPw89jle8",
 			"rawNotes": "Title of settings view. (20 chars)",
@@ -268,6 +285,7 @@
 		},
 		{
 			"sid": "SettingsSyncLabel",
+			"mf": "default",
 			"gstr": "Sync with Google Cardboard",
 			"guid": "JdemGm2zCUjeubRLZsgXcHubo03AMla3GDG3EQOcRaA",
 			"rawNotes": "Button label for enabling Cardboard viewer configurating sharing via the Cardboard app.\n* (40 chars)",
@@ -283,6 +301,7 @@
 		},
 		{
 			"sid": "SettingsCurrentViewerLabelFormat",
+			"mf": "default",
 			"gstr": "Current viewer: {{x}}",
 			"guid": "slgigM0NfUFIqYMNDpipEAV2LaSg4PIejxEgH37p4Pw",
 			"rawNotes": "Format string for label that display the viewer currently configured. (30 chars)",
@@ -302,6 +321,7 @@
 		},
 		{
 			"sid": "DefaultViewerName",
+			"mf": "default",
 			"gstr": "Default",
 			"guid": "wqrXrCWCECaeOiuDSJiLjeSfPaVlrgpeDFJp8NK39WU",
 			"rawNotes": "Reported name of Cardboard viewer when no viewer configured. (40 chars)",
@@ -317,6 +337,7 @@
 		},
 		{
 			"sid": "DifferentViewerQuestion",
+			"mf": "default",
 			"gstr": "Using a different viewer?",
 			"guid": "kNNZEkHiye4nzgXH33tGPIpo_dN9p9dtDvtyQLknghg",
 			"rawNotes": "Question shown to the user if they would like to switch their Cardboard\nviewer. (40 chars)",
@@ -332,6 +353,7 @@
 		},
 		{
 			"sid": "SwitchViewer",
+			"mf": "default",
 			"gstr": "SWITCH",
 			"guid": "qTP4qKQCnREcyJAH2Kaph3DNOicsXMZGYTlqeVzrb2c",
 			"rawNotes": "Button text shown with the DifferentViewerQuestion that takes the user to the\nscreen to pair with a different Cardboard viewer. (15 chars)",
@@ -347,6 +369,7 @@
 		},
 		{
 			"sid": "SwitchViewerActivityMenuTitle",
+			"mf": "default",
 			"gstr": "Switch viewer: {{x}}",
 			"guid": "Ko1R6hKlnw0dJtnGrwHdjhq0igmaxHWUuci1ZrEiYvg",
 			"rawNotes": "Popup activity view menu text that shows the name of the currently paired viewer but also takes\nthe user to the QRScan view controller when tapped. (30 chars)",
@@ -366,6 +389,7 @@
 		},
 		{
 			"sid": "HelpActivityMenuTitle",
+			"mf": "default",
 			"gstr": "Help",
 			"guid": "_AhOCAPiMyasIto9QG_S4I0SlAYd_aMe7FWWEAduL38",
 			"rawNotes": "Popup activity view menu text for launching an external web browser to get help. (15 chars)",
@@ -381,6 +405,7 @@
 		},
 		{
 			"sid": "SuccessfullyPaired",
+			"mf": "default",
 			"gstr": "Successfully Paired!",
 			"guid": "CBwqRfe5Ye7rqvX0p6oInX-rrmYU3pvl1Sb7GOjEY2k",
 			"rawNotes": "Dialog title shown to confirm that view pairing is successful. (40 chars)",
@@ -396,6 +421,7 @@
 		},
 		{
 			"sid": "ViewerConfigured",
+			"mf": "default",
 			"gstr": "Your phone is now configured for your {{x}} viewer.",
 			"guid": "xX2wjf_JnaqCdoe4AvzrpR0w__P7h12WCoMygm6ru8U",
 			"rawNotes": "Dialog text shown to show user what the paired viewer is. (80 chars)",
@@ -416,6 +442,7 @@
 		},
 		{
 			"sid": "OK",
+			"mf": "default",
 			"gstr": "OK",
 			"guid": "QBJSpbVgw6NtOonlImeo7N4Ys6aMk-tIHP-Jha6jjwk",
 			"rawNotes": "Button label for user to confirm that they know the viewer is paired. (20 chars)",
@@ -431,6 +458,7 @@
 		},
 		{
 			"sid": "AccessibilitySettingsButton",
+			"mf": "default",
 			"gstr": "Settings",
 			"guid": "ngT5pq_BhXgX71IJFDYZQRJX80bl9J1XPD2oBb-VEAE",
 			"rawNotes": "Accessibility label for the gear icon to bring up settings (read out loud)",
@@ -446,6 +474,7 @@
 		},
 		{
 			"sid": "AccessibilityBackButton",
+			"mf": "default",
 			"gstr": "Back to previous screen",
 			"guid": "Ln6QELVxYXr2EgOv6P2-EYewhB5H6jLOJ1W5jilT_nc",
 			"rawNotes": "Accessibility label for the back button to take us out of 3D mode (read out loud)",
@@ -461,6 +490,7 @@
 		},
 		{
 			"sid": "AccessibilityCardboardButton",
+			"mf": "default",
 			"gstr": "Cardboard mode: {{x}}",
 			"guid": "p72nj2yZPB-RfJOZa2iZg2pt16HznCGr_kdYQziGHxs",
 			"rawNotes": "Accessibility label for the cardboard button to go into cardboard mode (read out loud)",
@@ -480,6 +510,7 @@
 		},
 		{
 			"sid": "AccessibilityFullscreenButton",
+			"mf": "default",
 			"gstr": "Fullscreen mode",
 			"guid": "snWaUNjXnKuXlItO8jUPfKITKfuqshl6xCXxUgiP4jI",
 			"rawNotes": "Accessibility label for the fullscreen button to go into fullscreen mode (read out loud)",
@@ -495,6 +526,7 @@
 		},
 		{
 			"sid": "AccessibilityHelpButton",
+			"mf": "default",
 			"gstr": "Help",
 			"guid": "d13hqt62wEq5drSC-g7auJUOAlQL-N3VrEyi1mCjMH0",
 			"rawNotes": "Accessibility label for the information button to go to help page (read out loud)",
@@ -510,6 +542,7 @@
 		},
 		{
 			"sid": "HelpHack",
+			"mf": "default",
 			"gstr": "Help 'encoding' is \"hard\"!\\\n",
 			"guid": "kjYD6n4DIB9kQKYRd0QStGsZfU2yOhcUG091zj53Skw",
 			"rawNotes": "Test encoding and decoding",

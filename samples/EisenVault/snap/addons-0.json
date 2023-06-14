@@ -1,14 +1,16 @@
 {
 	"dashlets/addons.get_en.properties": {
 		"id": "dashlets/addons.get_en.properties",
+		"channel": "default",
 		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
 		"targetLangs": [
 			"it",
 			"ja",
 			"pt-BR"
 		],
 		"prj": "addons",
-		"contentType": "default",
 		"segments": [
 			{
 				"sid": "label.header",
@@ -16,6 +18,7 @@
 					"startLine": 1,
 					"endLine": 1
 				},
+				"mf": "default",
 				"nstr": [
 					"Alfresco Add-ons RSS Feed"
 				],
@@ -28,6 +31,7 @@
 					"startLine": 2,
 					"endLine": 2
 				},
+				"mf": "default",
 				"nstr": [
 					"Configure"
 				],
@@ -40,6 +44,7 @@
 					"startLine": 3,
 					"endLine": 3
 				},
+				"mf": "default",
 				"nstr": [
 					"No news items"
 				],
@@ -52,6 +57,7 @@
 					"startLine": 4,
 					"endLine": 4
 				},
+				"mf": "default",
 				"nstr": [
 					"Loading items - please wait..."
 				],
@@ -64,6 +70,7 @@
 					"startLine": 5,
 					"endLine": 5
 				},
+				"mf": "default",
 				"nstr": [
 					"RSS feed can't be read"
 				],
@@ -76,6 +83,7 @@
 					"startLine": 6,
 					"endLine": 6
 				},
+				"mf": "default",
 				"nstr": [
 					"RSS feed is not available"
 				],
@@ -88,6 +96,7 @@
 					"startLine": 7,
 					"endLine": 7
 				},
+				"mf": "default",
 				"nstr": [
 					"RSS feed format is not supported"
 				],
@@ -100,6 +109,7 @@
 					"startLine": 9,
 					"endLine": 9
 				},
+				"mf": "default",
 				"nstr": [
 					"This dashlet shows the latest news from Alfresco Add-ons. Click the edit icon on the dashlet to configure the feed."
 				],
@@ -112,6 +122,7 @@
 					"startLine": 11,
 					"endLine": 11
 				},
+				"mf": "default",
 				"nstr": [
 					"Find, rate, and contribute Alfresco add-ons and extensions."
 				],
@@ -124,6 +135,7 @@
 					"startLine": 12,
 					"endLine": 12
 				},
+				"mf": "default",
 				"nstr": [
 					"http://addons.alfresco.com"
 				],
@@ -136,6 +148,7 @@
 					"startLine": 13,
 					"endLine": 13
 				},
+				"mf": "default",
 				"nstr": [
 					"Visit the Alfresco Add-ons Home Page"
 				],

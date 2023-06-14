@@ -25,11 +25,11 @@ export class StatusViewProvider extends AbstractViewTreeDataProvider {
     }
 
     async dataFetcher(mm) {
-        const stats = await mm.source.getResourceStats();
+        const handles = await mm.rm.getResourceHandles();
         const sourcesStatus = {
             key: 'sources',
-            label: `Sources (${stats.length.toLocaleString()})`,
-            children: stats.map(s => ({
+            label: `Sources (${handles.length.toLocaleString()})`,
+            children: handles.map(s => ({
                 key: s.id,
                 label: s.id,
                 tooltip: `modified: ${s.modified}\n languages: ${s.targetLangs.join(', ')}`,

@@ -10,13 +10,7 @@ export class SnapFilter {
     }
 
     // takes a normalized resource
-    async generateResource({ resource, translator }) {
-        const { id, segments } = resource;
-        const translatedSegments = [];
-        for (const seg of segments) {
-            const translation = await translator(seg.sid, seg.str);
-            translation !== undefined && translatedSegments.push({ ...seg, str: translation});
-        }
-        return JSON.stringify({ id, segments: translatedSegments }, null, '\t');
+    async generateResource(resourceTranslation) {
+        return JSON.stringify(resourceTranslation, null, '\t');
     }
 }

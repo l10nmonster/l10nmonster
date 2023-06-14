@@ -1,10 +1,12 @@
 import wordsCountModule from 'words-count';
 
 import TMManager from './tmManager.js';
-import SourceManager from './sourceManager.js';
+import ResourceManager from './resourceManager.js';
 import { utils } from '@l10nmonster/helpers';
 
 export class MonsterManager {
+    #functionsForShutdown;
+
     constructor({ monsterDir, monsterConfig, configSeal }) {
         if (monsterDir && monsterConfig && monsterConfig.sourceLang &&
                 (monsterConfig.contentTypes || monsterConfig.source || monsterConfig.snapStore) === undefined) {
@@ -13,20 +15,20 @@ export class MonsterManager {
         this.monsterDir = monsterDir;
         this.configSeal = configSeal;
         this.jobStore = monsterConfig.jobStore;
-        this.debug = monsterConfig.debug ?? {};
         this.sourceLang = monsterConfig.sourceLang;
         this.minimumQuality = monsterConfig.minimumQuality;
-        this.functionsForShutdown = [];
-        if (monsterConfig.contentTypes) {
-            this.contentTypes = monsterConfig.contentTypes;
+        this.#functionsForShutdown = [];
+        let contentTypes;
+        if (monsterConfig.contentTypes || monsterConfig.channels || monsterConfig.formats) {
+            contentTypes = monsterConfig.contentTypes;
             ['source', 'resourceFilter', 'segmentDecorators', 'decoders', 'textEncoders', 'codeEncoders', 'target']
                 .forEach(propName => {
                     if (monsterConfig[propName] !== undefined) {
-                        throw `You can't specify ${propName} if you use contentType`;
+                        throw `You can't specify ${propName} at the top level if you also use advance configurations`;
                     }
                 });
         } else {
-            this.contentTypes = {
+            contentTypes = {
                 default: {
                     source: monsterConfig.source,
                     resourceFilter: monsterConfig.resourceFilter,
@@ -38,30 +40,43 @@ export class MonsterManager {
                 }
             };
         }
-        for (const [type, pipeline] of Object.entries(this.contentTypes)) {
-            if (!pipeline.resourceFilter) {
-                throw `You must specify a resourceFilter in content type ${type}`;
+        let channels, formats;
+        if (contentTypes) {
+            if (monsterConfig.channels || monsterConfig.formats) {
+                throw `You can't specify channels/formats if you also use contentTypes`;
             }
-            ['source', 'resourceFilter', 'target']
-                .forEach(propName => {
-                    if (pipeline[propName] !== undefined && typeof pipeline[propName] !== 'object') {
-                        throw `Property ${propName} in contentType ${type} must be an object`;
-                    }
-                });
-            ['decoders', 'segmentDecorators', 'textEncoders', 'codeEncoders']
-                .forEach(propName => {
-                    if (pipeline[propName] !== undefined) {
-                        if (!Array.isArray(pipeline[propName])) {
-                            throw `Property ${propName} in contentType ${type} must be an array`;
-                        }
-                        pipeline[propName].forEach((coder, idx) => {
-                            if (typeof coder !== 'function') {
-                                throw `Coder at index ${idx} in property ${propName} in contentType ${type} must be a function`;
-                            }
-                        });
-                    }
-                });
+            channels = {};
+            formats = {};
+            for (const [ type, config ] of Object.entries(contentTypes)) {
+                channels[type] = {
+                    source: config.source,
+                    target: config.target,
+                    defaultResourceFormat: type,
+                };
+                const normalizers = {};
+                normalizers[type] = {
+                    decoders: config.decoders,
+                    textEncoders: config.textEncoders,
+                    codeEncoders: config.codeEncoders,
+                };
+                formats[type] = {
+                    resourceFilter: config.resourceFilter,
+                    normalizers,
+                    defaultMessageFormat: type,
+                    segmentDecorators: config.segmentDecorators,
+                };
+            }
+        } else {
+            channels = monsterConfig.channels;
+            formats = monsterConfig.formats;
         }
+        this.rm = new ResourceManager({
+            configSeal,
+            channels,
+            formats,
+            snapStore: monsterConfig.snapStore,
+            defaultSourceLang: this.sourceLang,
+        });
         if (monsterConfig.translationProviders) {
             this.translationProviders = monsterConfig.translationProviders;
             // spell it out to use additional options like pairs: { sourceLang: [ targetLang1 ]}
@@ -72,53 +87,51 @@ export class MonsterManager {
             });
         }
         this.tuFilters = monsterConfig.tuFilters;
-        this.source = new SourceManager({
-            configSeal,
-            contentTypes: this.contentTypes,
-            snapStore: monsterConfig.snapStore,
-        });
         this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, configSeal });
-        this.snapStore = monsterConfig.snapStore;
         this.analyzers = monsterConfig.analyzers ?? {};
-        this.capabilitiesByType = Object.fromEntries(Object.entries(this.contentTypes).map(([type, pipeline]) => [ type, {
-            snap: Boolean(pipeline.source && this.snapStore),
-            status: Boolean(pipeline.source),
-            push: Boolean(pipeline.source && Object.keys(this.translationProviders).length > 0),
+        this.capabilitiesByChannel = Object.fromEntries(Object.entries(channels).map(([type, channel]) => [ type, {
+            snap: Boolean(channel.source && monsterConfig.snapStore),
+            status: Boolean(channel.source),
+            push: Boolean(channel.source && Object.keys(this.translationProviders).length > 0),
             pull: Boolean(Object.keys(this.translationProviders).length > 0),
-            translate: Boolean(pipeline.source && pipeline.target),
+            translate: Boolean(channel.source && channel.target),
         }]));
-        this.capabilities = Object.values(this.capabilitiesByType).reduce((p, c) => Object.fromEntries(Object.entries(c).map(([k, v]) => [ k, (p[k] === undefined ? true : p[k]) && v ])), {});
+        this.capabilities = Object.values(this.capabilitiesByChannel).reduce((p, c) => Object.fromEntries(Object.entries(c).map(([k, v]) => [ k, (p[k] === undefined ? true : p[k]) && v ])), {});
     }
 
     // register an async function to be called during shutdown
     scheduleForShutdown(func) {
-        this.functionsForShutdown.push(func);
+        this.#functionsForShutdown.push(func);
     }
 
     // get all possible target languages from sources and from TMs
     async getTargetLangs(limitToLang, includeAll) {
-        let srcTargetLangs = new Set();
-        // eslint-disable-next-line no-unused-vars
-        const resourceStats = await this.source.getResourceStats();
-        resourceStats.forEach(res => res.targetLangs.forEach(targetLang => srcTargetLangs.add(targetLang)));
-        const allTargetLangs = new Set(srcTargetLangs);
-        Object.values(await this.jobStore.getAvailableLangPairs())
-            .forEach(pair => allTargetLangs.add(pair[1]));
         if (limitToLang) {
             const langsToLimit = limitToLang.split(',');
-            const invalidLangs = langsToLimit.filter(limitedLang => !allTargetLangs.has(limitedLang));
-            if (invalidLangs.length > 0) {
-                throw `Invalid languages: ${invalidLangs.join(',')}`;
-            }
+            // TODO: add validation back when it's performant
+            // const invalidLangs = langsToLimit.filter(limitedLang => !allTargetLangs.has(limitedLang));
+            // if (invalidLangs.length > 0) {
+            //     throw `Invalid languages: ${invalidLangs.join(',')}`;
+            // }
             return langsToLimit;
         }
-        return includeAll ? [...allTargetLangs] : [...srcTargetLangs];
+        let srcTargetLangs = new Set();
+        const resourceHandles = await this.rm.getResourceHandles();
+        resourceHandles.forEach(res => res.targetLangs.forEach(targetLang => srcTargetLangs.add(targetLang)));
+        if (includeAll) {
+            const allTargetLangs = new Set(srcTargetLangs);
+            Object.values(await this.jobStore.getAvailableLangPairs())
+                .forEach(pair => allTargetLangs.add(pair[1]));
+            return [...allTargetLangs];
+        } else {
+            return [...srcTargetLangs];
+        }
     }
 
     // get source and convert it to tu format -- TODO: maybe we don't need this?
     async getSourceAsTus() {
         const sourceLookup = {};
-        for await (const res of this.source.getAllResources()) {
+        for await (const res of this.rm.getAllResources()) {
             for (const seg of res.segments) {
                 sourceLookup[seg.guid] = utils.makeTU(res, seg);
             }
@@ -151,6 +164,8 @@ export class MonsterManager {
             jobRequest.status = 'cancelled';
             return;
         }
+        // we get the TM before writing jobs so that we don't process the same job twice
+        const tm = await this.tmm.getTM(jobResponse.sourceLang, jobResponse.targetLang);
         const updatedAt = (l10nmonster.regression ? new Date('2022-05-29T00:00:00.000Z') : new Date()).toISOString();
         if (jobRequest) {
             jobRequest.updatedAt = updatedAt;
@@ -160,6 +175,8 @@ export class MonsterManager {
             jobResponse.updatedAt = updatedAt;
             await this.jobStore.writeJob(jobResponse);
         }
+        // we update the TM in memory so that it can be reused before shutdown
+        await tm.processJob(jobResponse, jobRequest);
     }
 
     // eslint-disable-next-line complexity
@@ -170,13 +187,12 @@ export class MonsterManager {
             tus: [],
         };
         minimumQuality ??= this.getMinimumQuality(job);
-        const tm = await this.tmm.getTM(this.sourceLang, targetLang); // TODO: source language may vary by resource or unit, if supported
         const prjLeverage = {};
         const repetitionMap = {};
         let resourceCount = 0;
-        for await (const res of this.source.getAllResources()) {
+        for await (const resHandle of this.rm.getAllResources()) {
             resourceCount++;
-            const prj = res.prj || 'default';
+            const prj = resHandle.prj || 'default';
             prjLeverage[prj] ??= {
                 translated: 0,
                 translatedWords: 0,
@@ -190,11 +206,12 @@ export class MonsterManager {
                 internalRepetitionWords: 0,
             };
             const leverageDetails = prjLeverage[prj];
-            if (res.targetLangs.includes(targetLang) && targetLang !== this.sourceLang) {
-                for (const seg of res.segments) {
+            if (resHandle.targetLangs.includes(targetLang) && targetLang !== this.sourceLang) {
+                const tm = await this.tmm.getTM(resHandle.sourceLang, targetLang);
+                for (const seg of resHandle.segments) {
                     // TODO: if segment is pluralized we need to generate/suppress the relevant number of variants for the targetLang
                     const tmEntry = tm.getEntryByGuid(seg.guid);
-                    const tu = utils.makeTU(res, seg);
+                    const tu = utils.makeTU(resHandle, seg);
                     const plainText = tu.nsrc.map(e => (typeof e === 'string' ? e : '')).join('');
                     const words = wordsCountModule.wordsCount(plainText);
                     // TODO: compatibility is actually stricter than GUID, this leads to extra translations that can't be stored
@@ -229,7 +246,7 @@ export class MonsterManager {
             }
         }
         // TODO: job should actually be a list of jobs to be able to handle multiple source languages and pipelines
-        return [ job, { tmSize: tm.guids.length, minimumQuality, prjLeverage, numSources: resourceCount } ];
+        return [ job, { minimumQuality, prjLeverage, numSources: resourceCount } ];
     }
 
     async prepareTranslationJob({ targetLang, minimumQuality, leverage }) {
@@ -279,9 +296,9 @@ export class MonsterManager {
 
     async shutdown() {
         this.jobStore.shutdown && await this.jobStore.shutdown();
-        await this.source.shutdown();
+        await this.rm.shutdown();
         await this.tmm.shutdown();
-        for (const func of this.functionsForShutdown) {
+        for (const func of this.#functionsForShutdown) {
             await func();
         }
     }

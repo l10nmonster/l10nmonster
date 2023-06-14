@@ -2,7 +2,6 @@
 	"lang": {
 		"de": {
 			"leverage": {
-				"tmSize": 18,
 				"minimumQuality": 50,
 				"prjLeverage": {
 					"default": {
@@ -25,7 +24,6 @@
 		},
 		"ru": {
 			"leverage": {
-				"tmSize": 18,
 				"minimumQuality": 50,
 				"prjLeverage": {
 					"default": {
