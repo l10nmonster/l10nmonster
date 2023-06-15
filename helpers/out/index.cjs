@@ -7176,7 +7176,6 @@ var Visicode = class {
 // src/utils.js
 var utils_exports = {};
 __export(utils_exports, {
-  cleanupTU: () => cleanupTU,
   consolidateDecodedParts: () => consolidateDecodedParts,
   decodeNormalizedString: () => decodeNormalizedString,
   extractNormalizedPartsFromXmlV1: () => extractNormalizedPartsFromXmlV1,
@@ -7390,14 +7389,6 @@ function getTUMaps(tus) {
   }
   return { contentMap, tuMeta, phNotes };
 }
-function nstrHasV1Missing(nstr) {
-  for (const part of nstr) {
-    if (typeof part === "object" && !part.v1) {
-      return true;
-    }
-  }
-  return false;
-}
 function makeTU(res, segment) {
   const { nstr, ...seg } = segment;
   const tu = {
@@ -7410,20 +7401,6 @@ function makeTU(res, segment) {
     tu.prj = res.prj;
   }
   return tu;
-}
-function cleanupTU(tu, whitelist) {
-  const cleanTU = Object.fromEntries(Object.entries(tu).filter((e) => whitelist.has(e[0])));
-  if (cleanTU.nsrc && cleanTU.ntgt && nstrHasV1Missing(cleanTU.ntgt)) {
-    const lookup = {};
-    const sourcePhMap = flattenNormalizedSourceV1(cleanTU.nsrc)[1];
-    Object.values(sourcePhMap).forEach((part) => (lookup[part.v] ??= []).push(part.v1));
-    for (const part of cleanTU.ntgt) {
-      if (typeof part === "object") {
-        part.v1 = lookup[part.v].shift();
-      }
-    }
-  }
-  return cleanTU;
 }
 var notesAnnotationRegex = /(?:PH\((?<phName>(?:[^()|]+|[^(|]*\([^()|]*\)[^()|]*))(?:\|(?<phSample>[^)|]+))(?:\|(?<phDesc>[^)|]+))?\)|MAXWIDTH\((?<maxWidth>\d+)\)|SCREENSHOT\((?<screenshot>[^)]+)\)|TAG\((?<tags>[^)]+)\))/g;
 function extractStructuredNotes(notes) {

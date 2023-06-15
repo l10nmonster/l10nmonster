@@ -128,17 +128,6 @@ export class MonsterManager {
         }
     }
 
-    // get source and convert it to tu format -- TODO: maybe we don't need this?
-    async getSourceAsTus() {
-        const sourceLookup = {};
-        for await (const res of this.rm.getAllResources()) {
-            for (const seg of res.segments) {
-                sourceLookup[seg.guid] = utils.makeTU(res, seg);
-            }
-        }
-        return sourceLookup;
-    }
-
     getMinimumQuality(jobManifest) {
         let minimumQuality = this.minimumQuality;
         if (typeof minimumQuality === 'function') {
@@ -259,7 +248,12 @@ export class MonsterManager {
 
     async prepareFilterBasedJob({ targetLang, tmBased, guidList }) {
         const tm = await this.tmm.getTM(this.sourceLang, targetLang);
-        const sourceLookup = await this.getSourceAsTus(targetLang); // TODO: convert this to an iterator
+        const sourceLookup = {};
+        for await (const res of this.rm.getAllResources()) {
+            for (const seg of res.segments) {
+                sourceLookup[seg.guid] = utils.makeTU(res, seg);
+            }
+        }
         if (!guidList) {
             if (tmBased) {
                 guidList = tm.guids;

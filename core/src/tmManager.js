@@ -5,7 +5,7 @@ import {
     writeFileSync,
 } from 'fs';
 import { utils } from '@l10nmonster/helpers';
-import { targetTUWhitelist } from './schemas.js';
+import { TU } from './entities/tu.js';
 
 class TM {
     #tmPathName;
@@ -48,28 +48,16 @@ class TM {
     }
 
     setEntryByGuid(guid, entry) {
-        // be backwards compatible with legacy jobs that may contain src and tgt
-        entry.nsrc === undefined && entry.src !== undefined && (entry.nsrc = [ entry.src ]);
-        entry.src !== undefined && delete entry.src;
-        entry.ntgt === undefined && entry.tgt !== undefined && (entry.ntgt = [ entry.tgt ]);
-        entry.tgt !== undefined && delete entry.tgt;
-        if (!entry.guid || !Number.isInteger(entry.q) || ((!Number.isInteger(entry.ts) || !Array.isArray(entry.ntgt)) && !entry.inflight)) {
-            throw `cannot set TM entry missing mandatory field: ${JSON.stringify(entry)}`;
+        try {
+            const cleanedTU = TU.asPair(entry);
+            Object.freeze(cleanedTU);
+            this.#tus[guid] = cleanedTU;
+            const flattenSrc = utils.flattenNormalizedSourceToOrdinal(cleanedTU.nsrc);
+            this.#lookUpByFlattenSrc[flattenSrc] ??= [];
+            !this.#lookUpByFlattenSrc[flattenSrc].includes(cleanedTU) && this.#lookUpByFlattenSrc[flattenSrc].push(cleanedTU);
+        } catch (e) {
+            l10nmonster.logger.verbose(`Not setting TM entry: ${e}`);
         }
-
-        // const getSpurious = (tu, whitelist) => Object.entries(tu)
-        //     .filter(e => !whitelist.has(e[0]))
-        //     .map(e => e[0])
-        //     .join(', ');
-        // const spurious = getSpurious(entry, targetTUWhitelist);
-        // spurious && console.error(spurious);
-
-        const cleanedTU = utils.cleanupTU(entry, targetTUWhitelist);
-        Object.freeze(cleanedTU);
-        this.#tus[guid] = cleanedTU;
-        const flattenSrc = utils.flattenNormalizedSourceToOrdinal(cleanedTU.nsrc);
-        this.#lookUpByFlattenSrc[flattenSrc] ??= [];
-        !this.#lookUpByFlattenSrc[flattenSrc].includes(cleanedTU) && this.#lookUpByFlattenSrc[flattenSrc].push(cleanedTU);
     }
 
     getAllEntriesBySrc(src) {

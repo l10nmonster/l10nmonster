@@ -1,7 +1,7 @@
 import * as fs from 'fs/promises';
 import {js2tmx} from '@l10nmonster/tmexchange';
 import { utils } from '@l10nmonster/helpers';
-import { sourceTUWhitelist, targetTUWhitelist } from '../schemas.js';
+import { TU } from '../entities/tu.js';
 
 async function exportTMX(content, emitMissingTranslations) {
     const getMangledSrc = tu => utils.flattenNormalizedSourceV1(tu.nsrc)[0];
@@ -47,20 +47,20 @@ async function exportAsJob(content, jobGuid) {
     };
     for (const pair of content.pairs) {
         // sometimes we lose the source so we merge source and target hoping the target TU has a copy of the source
-        const useAsSourceTU = { ...pair.translatedTU, ...pair.sourceTU };
-        if (useAsSourceTU.nsrc) {
-            jobReq.tus.push(utils.cleanupTU(useAsSourceTU, sourceTUWhitelist));
-        } else {
-            l10nmonster.logger.info(`Couldn't retrieve source for guid: ${useAsSourceTU.guid}`);
+        try {
+            jobReq.tus.push(TU.asSource({ ...pair.translatedTU, ...pair.sourceTU }));
+        } catch (e) {
+            l10nmonster.logger.info(e.stack ?? e);
         }
         // we want to include source in target in case it's missing
-        const useAsTargetTU = { ...pair.sourceTU, ...pair.translatedTU };
-        if (useAsTargetTU.inflight) {
-            l10nmonster.logger.info(`Warning: in-flight translation unit ${useAsTargetTU.guid} can't be exported`);
+        if (pair.translatedTU.inflight) {
+            l10nmonster.logger.info(`Warning: in-flight translation unit ${pair.translatedTU.guid} can't be exported`);
         } else {
-            const cleanTU = utils.cleanupTU(useAsTargetTU, targetTUWhitelist);
-            cleanTU.ts = cleanTU.ts || new Date().getTime();
-            jobRes.tus.push(cleanTU);
+            try {
+                jobRes.tus.push(TU.asPair({ ...pair.sourceTU, ...pair.translatedTU }));
+            } catch (e) {
+                l10nmonster.logger.info(e.stack ?? e);
+            }
         }
     }
     return [ jobReq, jobRes ];
@@ -69,8 +69,13 @@ async function exportAsJob(content, jobGuid) {
 export async function tmExportCmd(mm, { limitToLang, mode, format, prjsplit }) {
     const targetLangs = await mm.getTargetLangs(limitToLang);
     const status = { files: [] };
+    const sourceLookup = {};
+    for await (const res of mm.rm.getAllResources()) {
+        for (const seg of res.segments) {
+            sourceLookup[seg.guid] = utils.makeTU(res, seg);
+        }
+    }
     for (const targetLang of targetLangs) {
-        const sourceLookup = await mm.getSourceAsTus(targetLang); // TODO: convert this to an iterator
         const tm = await mm.tmm.getTM(mm.sourceLang, targetLang);
         const guidList = mode === 'tm' ? tm.guids : Object.keys(sourceLookup);
         const guidsByPrj = {};

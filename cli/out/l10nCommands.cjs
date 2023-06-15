@@ -25669,7 +25669,6 @@ var bracePHDecoder = decoderMaker(
 // ../helpers/src/utils.js
 var utils_exports = {};
 __export(utils_exports, {
-  cleanupTU: () => cleanupTU,
   consolidateDecodedParts: () => consolidateDecodedParts,
   decodeNormalizedString: () => decodeNormalizedString,
   extractNormalizedPartsFromXmlV1: () => extractNormalizedPartsFromXmlV1,
@@ -25883,14 +25882,6 @@ function getTUMaps(tus) {
   }
   return { contentMap, tuMeta, phNotes };
 }
-function nstrHasV1Missing(nstr) {
-  for (const part of nstr) {
-    if (typeof part === "object" && !part.v1) {
-      return true;
-    }
-  }
-  return false;
-}
 function makeTU(res, segment) {
   const { nstr, ...seg } = segment;
   const tu = {
@@ -25903,20 +25894,6 @@ function makeTU(res, segment) {
     tu.prj = res.prj;
   }
   return tu;
-}
-function cleanupTU(tu, whitelist) {
-  const cleanTU = Object.fromEntries(Object.entries(tu).filter((e) => whitelist.has(e[0])));
-  if (cleanTU.nsrc && cleanTU.ntgt && nstrHasV1Missing(cleanTU.ntgt)) {
-    const lookup = {};
-    const sourcePhMap = flattenNormalizedSourceV1(cleanTU.nsrc)[1];
-    Object.values(sourcePhMap).forEach((part) => (lookup[part.v] ??= []).push(part.v1));
-    for (const part of cleanTU.ntgt) {
-      if (typeof part === "object") {
-        part.v1 = lookup[part.v].shift();
-      }
-    }
-  }
-  return cleanTU;
 }
 var notesAnnotationRegex = /(?:PH\((?<phName>(?:[^()|]+|[^(|]*\([^()|]*\)[^()|]*))(?:\|(?<phSample>[^)|]+))(?:\|(?<phDesc>[^)|]+))?\)|MAXWIDTH\((?<maxWidth>\d+)\)|SCREENSHOT\((?<screenshot>[^)]+)\)|TAG\((?<tags>[^)]+)\))/g;
 function extractStructuredNotes(notes) {
@@ -25992,7 +25969,7 @@ var tagDecoder = decoderMaker(
   (groups) => ({ t: groups.bx ? "bx" : groups.ex ? "ex" : "x", v: groups.tag })
 );
 
-// ../core/src/schemas.js
+// ../core/src/entities/tu.js
 var coreTUprops = [
   "guid",
   "nid",
@@ -26030,6 +26007,56 @@ var targetTUWhitelist = /* @__PURE__ */ new Set([
   "rev"
   // this is used by TOS to capture reviewed words and errors found
 ]);
+function nstrHasV1Missing(nstr) {
+  for (const part of nstr) {
+    if (typeof part === "object" && !part.v1) {
+      return true;
+    }
+  }
+  return false;
+}
+function cleanupTU(entry) {
+  const { src, tgt, ...cleanTU } = entry;
+  cleanTU.nsrc === void 0 && src !== void 0 && (cleanTU.nsrc = [src]);
+  cleanTU.ntgt === void 0 && tgt !== void 0 && (cleanTU.ntgt = [tgt]);
+  if (cleanTU.nsrc && cleanTU.ntgt && nstrHasV1Missing(cleanTU.ntgt)) {
+    const lookup = {};
+    const sourcePhMap = utils_exports.flattenNormalizedSourceV1(cleanTU.nsrc)[1];
+    Object.values(sourcePhMap).forEach((part) => (lookup[part.v] ??= []).push(part.v1));
+    for (const part of cleanTU.ntgt) {
+      if (typeof part === "object") {
+        part.v1 = lookup[part.v].shift();
+      }
+    }
+  }
+  return cleanTU;
+}
+var TU = class {
+  constructor(entry, isPartial) {
+    if (!entry.guid || !entry.rid || !entry.sid || !Array.isArray(entry.nsrc) || !Number.isInteger(entry.ts)) {
+      throw `Rejecting TU with missing mandatory fields: ${JSON.stringify(entry)}`;
+    }
+    if (!isPartial && (!Number.isInteger(entry.q) || !Array.isArray(entry.ntgt) && !entry.inflight)) {
+      throw `Rejecting complete TU with missing mandatory fields: ${JSON.stringify(entry)}`;
+    }
+    const spuriousProps = [];
+    const whitelist = isPartial ? sourceTUWhitelist : targetTUWhitelist;
+    for (const [k2, v2] of Object.entries(entry)) {
+      if (whitelist.has(k2)) {
+        this[k2] = v2;
+      } else {
+        spuriousProps.push(k2);
+      }
+    }
+    spuriousProps.length > 0 && l10nmonster.logger.verbose(`Spurious properties in tu ${entry.guid}: ${spuriousProps.join(", ")}`);
+  }
+  static asSource(obj) {
+    return new TU(cleanupTU(obj), true);
+  }
+  static asPair(obj) {
+    return new TU(cleanupTU(obj), false);
+  }
+};
 
 // ../core/src/tmManager.js
 var TM = class {
@@ -26067,19 +26094,16 @@ var TM = class {
     return this.#tus[guid];
   }
   setEntryByGuid(guid, entry) {
-    entry.nsrc === void 0 && entry.src !== void 0 && (entry.nsrc = [entry.src]);
-    entry.src !== void 0 && delete entry.src;
-    entry.ntgt === void 0 && entry.tgt !== void 0 && (entry.ntgt = [entry.tgt]);
-    entry.tgt !== void 0 && delete entry.tgt;
-    if (!entry.guid || !Number.isInteger(entry.q) || (!Number.isInteger(entry.ts) || !Array.isArray(entry.ntgt)) && !entry.inflight) {
-      throw `cannot set TM entry missing mandatory field: ${JSON.stringify(entry)}`;
+    try {
+      const cleanedTU = TU.asPair(entry);
+      Object.freeze(cleanedTU);
+      this.#tus[guid] = cleanedTU;
+      const flattenSrc = utils_exports.flattenNormalizedSourceToOrdinal(cleanedTU.nsrc);
+      this.#lookUpByFlattenSrc[flattenSrc] ??= [];
+      !this.#lookUpByFlattenSrc[flattenSrc].includes(cleanedTU) && this.#lookUpByFlattenSrc[flattenSrc].push(cleanedTU);
+    } catch (e) {
+      l10nmonster.logger.verbose(`Not setting TM entry: ${e}`);
     }
-    const cleanedTU = utils_exports.cleanupTU(entry, targetTUWhitelist);
-    Object.freeze(cleanedTU);
-    this.#tus[guid] = cleanedTU;
-    const flattenSrc = utils_exports.flattenNormalizedSourceToOrdinal(cleanedTU.nsrc);
-    this.#lookUpByFlattenSrc[flattenSrc] ??= [];
-    !this.#lookUpByFlattenSrc[flattenSrc].includes(cleanedTU) && this.#lookUpByFlattenSrc[flattenSrc].push(cleanedTU);
   }
   getAllEntriesBySrc(src) {
     const flattenedSrc = utils_exports.flattenNormalizedSourceToOrdinal(src);
@@ -26694,16 +26718,6 @@ var MonsterManager = class {
       return [...srcTargetLangs];
     }
   }
-  // get source and convert it to tu format -- TODO: maybe we don't need this?
-  async getSourceAsTus() {
-    const sourceLookup = {};
-    for await (const res of this.rm.getAllResources()) {
-      for (const seg of res.segments) {
-        sourceLookup[seg.guid] = utils_exports.makeTU(res, seg);
-      }
-    }
-    return sourceLookup;
-  }
   getMinimumQuality(jobManifest) {
     let minimumQuality = this.minimumQuality;
     if (typeof minimumQuality === "function") {
@@ -26813,7 +26827,12 @@ var MonsterManager = class {
   }
   async prepareFilterBasedJob({ targetLang, tmBased, guidList }) {
     const tm = await this.tmm.getTM(this.sourceLang, targetLang);
-    const sourceLookup = await this.getSourceAsTus(targetLang);
+    const sourceLookup = {};
+    for await (const res of this.rm.getAllResources()) {
+      for (const seg of res.segments) {
+        sourceLookup[seg.guid] = utils_exports.makeTU(res, seg);
+      }
+    }
     if (!guidList) {
       if (tmBased) {
         guidList = tm.guids;
@@ -27017,7 +27036,7 @@ async function analyzeCmd(mm, Analyzer, params, limitToLang, tuFilter) {
     const analyzer = new Analyzer(...params);
     for await (const res of mm.rm.getAllResources()) {
       for (const seg of res.segments) {
-        (!tuFilterFunction || tuFilterFunction(utils_exports.makeTU(res, seg))) && analyzer.processSegment({ rid: res.id, prj: res.prj, seg });
+        (!tuFilterFunction || tuFilterFunction(TU.fromSegment(res, seg))) && analyzer.processSegment({ rid: res.id, prj: res.prj, seg });
       }
     }
     return analyzer.getAnalysis();
@@ -27396,19 +27415,19 @@ async function exportAsJob(content, jobGuid) {
     tus: []
   };
   for (const pair of content.pairs) {
-    const useAsSourceTU = { ...pair.translatedTU, ...pair.sourceTU };
-    if (useAsSourceTU.nsrc) {
-      jobReq.tus.push(utils_exports.cleanupTU(useAsSourceTU, sourceTUWhitelist));
-    } else {
-      l10nmonster.logger.info(`Couldn't retrieve source for guid: ${useAsSourceTU.guid}`);
+    try {
+      jobReq.tus.push(TU.asSource({ ...pair.translatedTU, ...pair.sourceTU }));
+    } catch (e) {
+      l10nmonster.logger.info(e.stack ?? e);
     }
-    const useAsTargetTU = { ...pair.sourceTU, ...pair.translatedTU };
-    if (useAsTargetTU.inflight) {
-      l10nmonster.logger.info(`Warning: in-flight translation unit ${useAsTargetTU.guid} can't be exported`);
+    if (pair.translatedTU.inflight) {
+      l10nmonster.logger.info(`Warning: in-flight translation unit ${pair.translatedTU.guid} can't be exported`);
     } else {
-      const cleanTU = utils_exports.cleanupTU(useAsTargetTU, targetTUWhitelist);
-      cleanTU.ts = cleanTU.ts || (/* @__PURE__ */ new Date()).getTime();
-      jobRes.tus.push(cleanTU);
+      try {
+        jobRes.tus.push(TU.asPair({ ...pair.sourceTU, ...pair.translatedTU }));
+      } catch (e) {
+        l10nmonster.logger.info(e.stack ?? e);
+      }
     }
   }
   return [jobReq, jobRes];
@@ -27416,8 +27435,13 @@ async function exportAsJob(content, jobGuid) {
 async function tmExportCmd(mm, { limitToLang, mode, format: format2, prjsplit }) {
   const targetLangs = await mm.getTargetLangs(limitToLang);
   const status2 = { files: [] };
+  const sourceLookup = {};
+  for await (const res of mm.rm.getAllResources()) {
+    for (const seg of res.segments) {
+      sourceLookup[seg.guid] = utils_exports.makeTU(res, seg);
+    }
+  }
   for (const targetLang of targetLangs) {
-    const sourceLookup = await mm.getSourceAsTus(targetLang);
     const tm = await mm.tmm.getTM(mm.sourceLang, targetLang);
     const guidList = mode === "tm" ? tm.guids : Object.keys(sourceLookup);
     const guidsByPrj = {};

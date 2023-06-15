@@ -247,15 +247,6 @@ export function getTUMaps(tus) {
     return { contentMap, tuMeta, phNotes };
 }
 
-function nstrHasV1Missing(nstr) {
-    for (const part of nstr) {
-        if (typeof part === 'object' && !part.v1) {
-            return true;
-        }
-    }
-    return false;
-}
-
 export function makeTU(res, segment) {
     const { nstr, ...seg } = segment;
     const tu = {
@@ -268,25 +259,6 @@ export function makeTU(res, segment) {
         tu.prj = res.prj;
     }
     return tu;
-}
-
-// takes a tu-like object and creates a new object only with properties listed in the whitelist object
-export function cleanupTU(tu, whitelist) {
-    const cleanTU = Object.fromEntries(Object.entries(tu).filter(e => whitelist.has(e[0])));
-    // if we have the normalized source, and the target doesn't have v1 placeholders, we can try to build them
-    // TODO: remove (for performance reasons) when v1 are strongly enforced
-    if (cleanTU.nsrc && cleanTU.ntgt && nstrHasV1Missing(cleanTU.ntgt)) {
-        const lookup = {};
-        const sourcePhMap = flattenNormalizedSourceV1(cleanTU.nsrc)[1];
-        Object.values(sourcePhMap).forEach(part => (lookup[part.v] ??= []).push(part.v1));
-        for (const part of cleanTU.ntgt) {
-            if (typeof part === 'object') {
-                // any kind of mismatch should be fatal because src/tgt should be in sync
-                part.v1 = lookup[part.v].shift(); // there's no guarantee we pick the right one, so we go FIFO
-            }
-        }
-    }
-    return cleanTU;
 }
 
 const notesAnnotationRegex = /(?:PH\((?<phName>(?:[^()|]+|[^(|]*\([^()|]*\)[^()|]*))(?:\|(?<phSample>[^)|]+))(?:\|(?<phDesc>[^)|]+))?\)|MAXWIDTH\((?<maxWidth>\d+)\)|SCREENSHOT\((?<screenshot>[^)]+)\)|TAG\((?<tags>[^)]+)\))/g;
