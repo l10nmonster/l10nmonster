@@ -24,24 +24,23 @@ export class AnalyzeViewProvider extends AbstractViewTreeDataProvider {
         return analyzePanel;
     }
 
-    async runAnalyzer(name, helpParams) {
+    async runAnalyzer(analyzer, helpParams) {
         return withMonsterManager(this.configPath, async mm => {
-            const Analyzer = mm.analyzers[name];
             let params;
             if ((helpParams && (params = await vscode.window.showInputBox({ placeHolder: helpParams }))) || !helpParams) {
                 // TODO: don't split by space, call input box for each param
                 // TODO: support picking a tu filter (maybe have a separate panel or tree item with a radio button?)
-                const analysis = await analyzeCmd(mm, Analyzer, params?.split(' ') || []);
+                const analysis = await analyzeCmd(mm, analyzer, params?.split(' ') || []);
                 // TODO: implement groupBy
                 // TODO: if tu analyzer, group by language automatically
                 const panel = vscode.window.createWebviewPanel(
                     'analyzerView',
-                    `${name} ${params ?? ''}`,
+                    `${analyzer} ${params ?? ''}`,
                     vscode.ViewColumn.One,
                     { enableFindWidget: true }
                 );
-                panel.webview.html = getMonsterPage(name, `
-                    <h2>Analyzer: ${name} ${helpParams ? params : ''}</h2>
+                panel.webview.html = getMonsterPage(analyzer, `
+                    <h2>Analyzer: ${analyzer} ${helpParams ? params : ''}</h2>
                     ${analysis.head ?
                         analysis.body.length > 0 ?
                             `<table>

@@ -161,12 +161,7 @@ export async function jobs(monsterManager, options) {
 export async function analyze(monsterManager, options) {
     try {
         if (options.analyzer) {
-            const analyzer = utils.fixCaseInsensitiveKey(monsterManager.analyzers, options.analyzer);
-            const Analyzer = monsterManager.analyzers[analyzer];
-            if (!Analyzer) {
-                throw `couldn't find a ${analyzer} analyzer`;
-            }
-            const analysis = await analyzeCmd(monsterManager, Analyzer, options.params, options.lang, options.filter);
+            const analysis = await analyzeCmd(monsterManager, options.analyzer, options.params, options.lang, options.filter);
             const header = analysis.head;
             if (options.output) {
                 const rows = header ? [ header, ...analysis.body].map(row => row.join(',')) : analysis.body;

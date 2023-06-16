@@ -3,28 +3,28 @@ import { ResourceHandle } from './resourceHandle.js';
 export class Channel {
     #id;
     #source;
-    #filters;
+    #formatHandlers;
     #defaultResourceFormat;
     #defaultSourceLang;
     #target;
 
-    constructor({ id, source, filters, defaultResourceFormat, defaultSourceLang, target }) {
+    constructor({ id, source, formatHandlers, defaultResourceFormat, defaultSourceLang, target }) {
         this.#id = id;
         this.#source = source;
-        this.#filters = filters;
+        this.#formatHandlers = formatHandlers;
         this.#defaultResourceFormat = defaultResourceFormat;
         this.#defaultSourceLang = defaultSourceLang;
         this.#target = target;
     }
 
     makeResourceHandleFromObject(obj) {
-         // sources can provide resources of different types but we have a default
+         // sources can provide resources of different formats but we have a default
         const resourceFormat = obj.resourceFormat ?? this.#defaultResourceFormat;
-        const filter = this.#filters[resourceFormat];
+        const formatHandler = this.#formatHandlers[resourceFormat];
         return new ResourceHandle({
             channel: this.#id,
             resourceFormat: this.#defaultResourceFormat,
-            filter,
+            formatHandler,
             sourceLang: this.#defaultSourceLang, // can be overriden but here's the default
             ...obj,
         });

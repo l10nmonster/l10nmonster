@@ -1,6 +1,6 @@
 import { Channel } from './entities/channel.js';
 import { Normalizer } from './entities/normalizer.js';
-import { ResourceFilter } from './entities/resourceFilter.js';
+import { FormatHandler } from './entities/formatHandler.js';
 
 function validate(context, obj = {}) {
     const validators = {
@@ -37,7 +37,7 @@ export default class ResourceManager {
 
     constructor({ channels, formats, snapStore, defaultSourceLang }) {
         // this.#configSeal = configSeal;
-        const filters = {};
+        const formatHandlers = {};
         for (const [format, formatCfg] of Object.entries(formats)) {
             validate(`format ${format}`, formatCfg)
                 .objectProperty('resourceFilter', 'normalizers')
@@ -51,7 +51,7 @@ export default class ResourceManager {
                     codeEncoders: normalizerCfg.codeEncoders,
                 });
             }
-            filters[format] = new ResourceFilter({
+            formatHandlers[format] = new FormatHandler({
                 resourceFilter: formatCfg.resourceFilter,
                 normalizers,
                 defaultMessageFormat: formatCfg.defaultMessageFormat ?? format,
@@ -63,7 +63,7 @@ export default class ResourceManager {
             this.#channels[channelId] = new Channel({
                 id: channelId,
                 source: channelCfg.source,
-                filters,
+                formatHandlers,
                 defaultResourceFormat: channelCfg.defaultResourceFormat ?? channelId,
                 defaultSourceLang,
                 target: channelCfg.target,

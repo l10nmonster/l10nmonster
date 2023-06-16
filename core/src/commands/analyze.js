@@ -1,7 +1,11 @@
 import { utils } from '@l10nmonster/helpers';
 import { TU } from '../entities/tu.js';
 
-export async function analyzeCmd(mm, Analyzer, params, limitToLang, tuFilter) {
+export async function analyzeCmd(mm, analyzer, params, limitToLang, tuFilter) {
+    const Analyzer = mm.analyzers[utils.fixCaseInsensitiveKey(mm.analyzers, analyzer)];
+    if (!Analyzer) {
+        throw `couldn't find a ${analyzer} analyzer`;
+    }
     let tuFilterFunction;
     if (tuFilter) {
         tuFilter = utils.fixCaseInsensitiveKey(mm.tuFilters, tuFilter);

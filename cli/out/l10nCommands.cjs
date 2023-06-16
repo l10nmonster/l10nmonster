@@ -26220,13 +26220,13 @@ var TMManager = class {
 
 // ../core/src/entities/resourceHandle.js
 var ResourceHandle = class {
-  #filter;
-  constructor({ id, channel, modified, resourceFormat, filter, sourceLang, targetLangs, prj, ...other }) {
+  #formatHandler;
+  constructor({ id, channel, modified, resourceFormat, formatHandler, sourceLang, targetLangs, prj, ...other }) {
     this.id = id;
     this.channel = channel;
     this.modified = modified;
     this.resourceFormat = resourceFormat;
-    this.#filter = filter;
+    this.#formatHandler = formatHandler;
     this.sourceLang = sourceLang;
     this.targetLangs = targetLangs;
     this.prj = prj;
@@ -26240,12 +26240,12 @@ var ResourceHandle = class {
     return this;
   }
   async loadResourceFromRaw(rawResource, { isSource, keepRaw } = {}) {
-    const normalizedResource = await this.#filter.getNormalizedResource(this.id, rawResource, isSource);
+    const normalizedResource = await this.#formatHandler.getNormalizedResource(this.id, rawResource, isSource);
     keepRaw && (this.raw = rawResource);
     return this.loadFromNormalizedResource(normalizedResource);
   }
   async generateTranslatedRawResource(tm) {
-    return this.#filter.generateTranslatedResource(this, tm);
+    return this.#formatHandler.generateTranslatedResource(this, tm);
   }
 };
 
@@ -26253,25 +26253,25 @@ var ResourceHandle = class {
 var Channel = class {
   #id;
   #source;
-  #filters;
+  #formatHandlers;
   #defaultResourceFormat;
   #defaultSourceLang;
   #target;
-  constructor({ id, source, filters, defaultResourceFormat, defaultSourceLang, target }) {
+  constructor({ id, source, formatHandlers, defaultResourceFormat, defaultSourceLang, target }) {
     this.#id = id;
     this.#source = source;
-    this.#filters = filters;
+    this.#formatHandlers = formatHandlers;
     this.#defaultResourceFormat = defaultResourceFormat;
     this.#defaultSourceLang = defaultSourceLang;
     this.#target = target;
   }
   makeResourceHandleFromObject(obj) {
     const resourceFormat = obj.resourceFormat ?? this.#defaultResourceFormat;
-    const filter = this.#filters[resourceFormat];
+    const formatHandler = this.#formatHandlers[resourceFormat];
     return new ResourceHandle({
       channel: this.#id,
       resourceFormat: this.#defaultResourceFormat,
-      filter,
+      formatHandler,
       sourceLang: this.#defaultSourceLang,
       // can be overriden but here's the default
       ...obj
@@ -26339,8 +26339,8 @@ var Normalizer = class {
   }
 };
 
-// ../core/src/entities/resourceFilter.js
-var ResourceFilter = class {
+// ../core/src/entities/formatHandler.js
+var FormatHandler = class {
   #resourceFilter;
   #normalizers;
   #defaultMessageFormat;
@@ -26386,11 +26386,12 @@ ${JSON.stringify(entry.ntgt)}`;
   }
   #encodeTranslatedSegment(ntgt, mf, flags) {
     const normalizer = this.#normalizers[mf];
-    return ntgt.map((part, idx) => normalizer.encodePart(part, {
+    const encodedParts = ntgt.map((part, idx) => normalizer.encodePart(part, {
       ...flags,
       isFirst: idx === 0,
       isLast: idx === ntgt.length - 1
-    })).join("");
+    }));
+    return encodedParts.join("");
   }
   async getNormalizedResource(rid, resource, isSource) {
     let parsedRes = await this.#resourceFilter.parseResource({ resource, isSource });
@@ -26430,13 +26431,17 @@ ${JSON.stringify(entry.ntgt)}`;
     return { segments };
   }
   async generateTranslatedResource(resHandle, tm) {
+    const flags = { sourceLang: resHandle.sourceLang, targetLang: tm.targetLang, prj: resHandle.prj };
     if (this.#resourceFilter.generateResource) {
-      const translations = [];
+      const translations = {};
       for (const seg of resHandle.segments) {
         const entry = tm.getEntryByGuid(seg.guid);
         try {
-          const translation = this.#translateWithTMEntry(seg.nstr, entry);
-          translation !== void 0 && translations.push(translation);
+          const nstr = this.#translateWithTMEntry(seg.nstr, entry);
+          if (nstr !== void 0) {
+            const str = this.#encodeTranslatedSegment(nstr, seg.mf, flags);
+            translations[seg.guid] = { nstr, str };
+          }
         } catch (e) {
           l10nmonster.logger.verbose(`Problem translating guid ${seg.guid} to ${tm.targetLang}: ${e.stack ?? e}`);
         }
@@ -26444,7 +26449,6 @@ ${JSON.stringify(entry.ntgt)}`;
       return this.#resourceFilter.generateResource({ ...resHandle, translations });
     }
     const sourceLookup = Object.fromEntries(resHandle.segments.map((seg) => [seg.sid, seg]));
-    const flags = { sourceLang: resHandle.sourceLang, targetLang: tm.targetLang, prj: resHandle.prj };
     const translator = async (sid, str) => {
       const normalizedSource = sourceLookup[sid];
       if (normalizedSource) {
@@ -26508,7 +26512,7 @@ var ResourceManager = class {
   // #configSeal;
   #channels = {};
   constructor({ channels, formats, snapStore, defaultSourceLang }) {
-    const filters = {};
+    const formatHandlers = {};
     for (const [format2, formatCfg] of Object.entries(formats)) {
       validate(`format ${format2}`, formatCfg).objectProperty("resourceFilter", "normalizers").arrayOfFunctions("segmentDecorators");
       const normalizers = {};
@@ -26520,7 +26524,7 @@ var ResourceManager = class {
           codeEncoders: normalizerCfg.codeEncoders
         });
       }
-      filters[format2] = new ResourceFilter({
+      formatHandlers[format2] = new FormatHandler({
         resourceFilter: formatCfg.resourceFilter,
         normalizers,
         defaultMessageFormat: formatCfg.defaultMessageFormat ?? format2,
@@ -26532,7 +26536,7 @@ var ResourceManager = class {
       this.#channels[channelId] = new Channel({
         id: channelId,
         source: channelCfg.source,
-        filters,
+        formatHandlers,
         defaultResourceFormat: channelCfg.defaultResourceFormat ?? channelId,
         defaultSourceLang,
         target: channelCfg.target
@@ -27023,7 +27027,11 @@ var OpsMgr = class {
 };
 
 // ../core/src/commands/analyze.js
-async function analyzeCmd(mm, Analyzer, params, limitToLang, tuFilter) {
+async function analyzeCmd(mm, analyzer, params, limitToLang, tuFilter) {
+  const Analyzer = mm.analyzers[utils_exports.fixCaseInsensitiveKey(mm.analyzers, analyzer)];
+  if (!Analyzer) {
+    throw `couldn't find a ${analyzer} analyzer`;
+  }
   let tuFilterFunction;
   if (tuFilter) {
     tuFilter = utils_exports.fixCaseInsensitiveKey(mm.tuFilters, tuFilter);
@@ -27033,29 +27041,29 @@ async function analyzeCmd(mm, Analyzer, params, limitToLang, tuFilter) {
     }
   }
   if (typeof Analyzer.prototype.processSegment === "function") {
-    const analyzer = new Analyzer(...params);
+    const analyzer2 = new Analyzer(...params);
     for await (const res of mm.rm.getAllResources()) {
       for (const seg of res.segments) {
-        (!tuFilterFunction || tuFilterFunction(TU.fromSegment(res, seg))) && analyzer.processSegment({ rid: res.id, prj: res.prj, seg });
+        (!tuFilterFunction || tuFilterFunction(TU.fromSegment(res, seg))) && analyzer2.processSegment({ rid: res.id, prj: res.prj, seg });
       }
     }
-    return analyzer.getAnalysis();
+    return analyzer2.getAnalysis();
   } else if (typeof Analyzer.prototype.processTU === "function") {
     const targetLangs = (await mm.getTargetLangs(limitToLang)).sort();
     const bodies = [];
     let lastAnalysis;
     const hasAggregateAnalysis = typeof Analyzer.prototype.getAggregateAnalysis === "function";
-    let analyzer;
+    let analyzer2;
     for (const targetLang of targetLangs) {
-      (!hasAggregateAnalysis || !analyzer) && (analyzer = new Analyzer(...params));
+      (!hasAggregateAnalysis || !analyzer2) && (analyzer2 = new Analyzer(...params));
       const tm = await mm.tmm.getTM(mm.sourceLang, targetLang);
       const tus = tm.guids.map((guid) => tm.getEntryByGuid(guid));
       for (const tu of tus) {
-        (!tuFilterFunction || tuFilterFunction(tu)) && analyzer.processTU({ targetLang, tu });
+        (!tuFilterFunction || tuFilterFunction(tu)) && analyzer2.processTU({ targetLang, tu });
       }
-      !hasAggregateAnalysis && bodies.push((lastAnalysis = analyzer.getAnalysis()).body);
+      !hasAggregateAnalysis && bodies.push((lastAnalysis = analyzer2.getAnalysis()).body);
     }
-    return hasAggregateAnalysis ? analyzer.getAggregateAnalysis() : { ...lastAnalysis, body: bodies.flat(1) };
+    return hasAggregateAnalysis ? analyzer2.getAggregateAnalysis() : { ...lastAnalysis, body: bodies.flat(1) };
   } else {
     throw `could not find processSegment or processTU function in analyzer`;
   }
@@ -27493,8 +27501,7 @@ async function translateCmd(mm, { limitToLang, dryRun }) {
       if (resHandle.targetLangs.includes(targetLang) && (l10nmonster.prj === void 0 || l10nmonster.prj.includes(resHandle.prj))) {
         const tm = await mm.tmm.getTM(resHandle.sourceLang, targetLang);
         const translatedRes = await resHandle.generateTranslatedRawResource(tm);
-        if (dryRun) {
-        } else {
+        if (!dryRun) {
           status2.generatedResources[targetLang] ??= [];
           status2.deleteResources[targetLang] ??= [];
           const translatedResourceId = await mm.rm.getChannel(resHandle.channel).commitTranslatedResource(targetLang, resHandle.id, translatedRes);
@@ -27675,12 +27682,7 @@ async function jobs(monsterManager, options) {
 async function analyze(monsterManager, options) {
   try {
     if (options.analyzer) {
-      const analyzer = utils_exports.fixCaseInsensitiveKey(monsterManager.analyzers, options.analyzer);
-      const Analyzer = monsterManager.analyzers[analyzer];
-      if (!Analyzer) {
-        throw `couldn't find a ${analyzer} analyzer`;
-      }
-      const analysis = await analyzeCmd(monsterManager, Analyzer, options.params, options.lang, options.filter);
+      const analysis = await analyzeCmd(monsterManager, options.analyzer, options.params, options.lang, options.filter);
       const header = analysis.head;
       if (options.output) {
         const rows = header ? [header, ...analysis.body].map((row) => row.join(",")) : analysis.body;

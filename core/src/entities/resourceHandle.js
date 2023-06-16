@@ -1,12 +1,12 @@
 export class ResourceHandle {
-    #filter;
+    #formatHandler;
 
-    constructor({ id, channel, modified, resourceFormat, filter, sourceLang, targetLangs, prj, ...other }) {
+    constructor({ id, channel, modified, resourceFormat, formatHandler, sourceLang, targetLangs, prj, ...other }) {
         this.id = id;
         this.channel = channel;
         this.modified = modified;
         this.resourceFormat = resourceFormat;
-        this.#filter = filter;
+        this.#formatHandler = formatHandler;
         this.sourceLang = sourceLang;
         this.targetLangs = targetLangs;
         this.prj = prj;
@@ -22,12 +22,12 @@ export class ResourceHandle {
     }
 
     async loadResourceFromRaw(rawResource, { isSource, keepRaw } = {}) {
-        const normalizedResource = await this.#filter.getNormalizedResource(this.id, rawResource, isSource);
+        const normalizedResource = await this.#formatHandler.getNormalizedResource(this.id, rawResource, isSource);
         keepRaw && (this.raw = rawResource);
         return this.loadFromNormalizedResource(normalizedResource);
     }
 
     async generateTranslatedRawResource(tm) {
-        return this.#filter.generateTranslatedResource(this, tm);
+        return this.#formatHandler.generateTranslatedResource(this, tm);
     }
 }

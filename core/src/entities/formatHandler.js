@@ -1,6 +1,6 @@
 import { utils } from '@l10nmonster/helpers';
 
-export class ResourceFilter {
+export class FormatHandler {
     #resourceFilter;
     #normalizers;
     #defaultMessageFormat;
@@ -48,11 +48,12 @@ export class ResourceFilter {
 
     #encodeTranslatedSegment(ntgt, mf, flags) {
         const normalizer = this.#normalizers[mf];
-        return ntgt.map((part, idx) => normalizer.encodePart(part, {
+        const encodedParts = ntgt.map((part, idx) => normalizer.encodePart(part, {
             ...flags,
             isFirst: idx === 0,
             isLast: idx === ntgt.length - 1
-        })).join('');
+        }));
+        return encodedParts.join('');
     }
 
     async getNormalizedResource(rid, resource, isSource) {
@@ -95,22 +96,28 @@ export class ResourceFilter {
     }
 
     async generateTranslatedResource(resHandle, tm) {
+        const flags = { sourceLang: resHandle.sourceLang, targetLang: tm.targetLang, prj: resHandle.prj };
+
         // give priority to generators over translators (for performance), if available
         if (this.#resourceFilter.generateResource) {
-            const translations = [];
+            const translations = {};
             for (const seg of resHandle.segments) {
                 const entry = tm.getEntryByGuid(seg.guid);
                 try {
-                    const translation = this.#translateWithTMEntry(seg.nstr, entry);
-                    translation !== undefined && translations.push(translation);
+                    const nstr = this.#translateWithTMEntry(seg.nstr, entry);
+                    if (nstr !== undefined) {
+                        const str =this.#encodeTranslatedSegment(nstr, seg.mf, flags);
+                        translations[seg.guid] = { nstr, str };
+                    }
                 } catch(e) {
                     l10nmonster.logger.verbose(`Problem translating guid ${seg.guid} to ${tm.targetLang}: ${e.stack ?? e}`);
                 }
             }
             return this.#resourceFilter.generateResource({ ...resHandle, translations });
         }
+
+        // if generator is not available, use translator-based resource transformation
         const sourceLookup = Object.fromEntries(resHandle.segments.map(seg => [ seg.sid, seg ]));
-        const flags = { sourceLang: resHandle.sourceLang, targetLang: tm.targetLang, prj: resHandle.prj };
         const translator = async (sid, str) => {
             const normalizedSource = sourceLookup[sid];
             if (normalizedSource) {
