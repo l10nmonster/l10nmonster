@@ -49,6 +49,7 @@ export default class ResourceManager {
                     decoders: normalizerCfg.decoders,
                     textEncoders: normalizerCfg.textEncoders,
                     codeEncoders: normalizerCfg.codeEncoders,
+                    joiner: normalizerCfg.joiner,
                 });
             }
             formatHandlers[format] = new FormatHandler({

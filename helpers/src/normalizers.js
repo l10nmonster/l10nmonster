@@ -60,3 +60,7 @@ export function keywordTranslatorMaker(name, keywordToTranslationMap) {
         throw 'You have to specify a keyword map to keywordTranslatorMaker';
     }
 }
+
+export function defaultCodeEncoder(part) {
+    return part.v;
+}

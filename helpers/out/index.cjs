@@ -6612,28 +6612,40 @@ var SequenceGenerator = class {
 // src/filters/index.js
 var filters_exports = {};
 __export(filters_exports, {
-  SnapFilter: () => SnapFilter
+  MNFv1: () => MNFv1
 });
 
-// src/filters/snap.js
-var SnapFilter = class {
+// src/filters/MNFv1.js
+var MNFv1 = class {
   async parseResource({ resource }) {
     return JSON.parse(resource);
   }
-  // takes a raw resource
-  async translateResource({ resource, translator }) {
-    return this.generateResource({ resource: JSON.parse(resource), translator });
-  }
-  // takes a normalized resource
-  async generateResource(resourceTranslation) {
-    return JSON.stringify(resourceTranslation, null, "	");
+  // convert a normalized resource in the source language and make it raw in the target language
+  // eslint-disable-next-line no-unused-vars
+  async generateResource({ translations, segments, raw, ...resHandle }) {
+    const translatedRawSegments = [];
+    segments.forEach((seg) => {
+      const translatedStr = translations[seg.guid];
+      const { nstr, gstr, ...rawSegment } = seg;
+      translatedStr && translatedRawSegments.push({
+        ...rawSegment,
+        str: translatedStr.str
+      });
+    });
+    return JSON.stringify({ ...resHandle, segments: translatedRawSegments }, null, "	");
   }
 };
+__publicField(MNFv1, "normalizer", {
+  decoders: [(nstr) => JSON.parse(nstr[0].v)],
+  codeEncoders: [(part) => part],
+  joiner: (parts) => JSON.stringify(parts)
+});
 
 // src/normalizers.js
 var normalizers_exports = {};
 __export(normalizers_exports, {
   bracePHDecoder: () => bracePHDecoder,
+  defaultCodeEncoder: () => defaultCodeEncoder,
   doublePercentDecoder: () => doublePercentDecoder,
   doublePercentEncoder: () => doublePercentEncoder,
   gatedEncoder: () => gatedEncoder,
@@ -6746,6 +6758,9 @@ function keywordTranslatorMaker(name, keywordToTranslationMap) {
   } else {
     throw "You have to specify a keyword map to keywordTranslatorMaker";
   }
+}
+function defaultCodeEncoder(part) {
+  return part.v;
 }
 
 // src/stores/index.js

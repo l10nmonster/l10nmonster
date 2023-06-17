@@ -1,0 +1,30 @@
+{
+	"id": "mixedResource",
+	"channel": "channel1",
+	"modified": "2022-02-10T01:19:22.492Z",
+	"resourceFormat": "MNFv1",
+	"sourceLang": "en",
+	"targetLangs": [
+		"oink"
+	],
+	"segments": [
+		{
+			"sid": "str1",
+			"mf": "iosMF",
+			"guid": "-yKjLDPMOHJ6iDY9Tqvj8wtGY583aGu2xjXQoadlll0",
+			"str": "[Ellohay %1$@!-oink]"
+		},
+		{
+			"sid": "str2",
+			"mf": "androidMF",
+			"guid": "v8g9RMA1Iau-IHlwU0UmISKDhm-ECh_-eerVcB36dAM",
+			"str": "[Itsyay evernay easyay %1$s!-oink]"
+		},
+		{
+			"sid": "str3",
+			"mf": "nstrMF",
+			"guid": "SeIBAEhlbgvA99fw8RYWepuNHq0pFCcts_idF5qKQ4c",
+			"str": "[\"[\",\"Aceplay ouryay onephay intoyay ouryay \",{\"t\":\"x\",\"v\":\"%1$@\",\"v1\":\"a_x_1\"},\" iewervay.\",\"-oink]\"]"
+		}
+	]
+}

@@ -12195,6 +12195,18 @@ var isDynamicPattern = normalizeArgumentsSync(
 var generateGlobTasks = normalizeArguments(generateTasks);
 var generateGlobTasksSync = normalizeArgumentsSync(generateTasksSync);
 
+// ../helpers/src/normalizers.js
+var normalizers_exports = {};
+__export(normalizers_exports, {
+  bracePHDecoder: () => bracePHDecoder,
+  defaultCodeEncoder: () => defaultCodeEncoder,
+  doublePercentDecoder: () => doublePercentDecoder,
+  doublePercentEncoder: () => doublePercentEncoder,
+  gatedEncoder: () => gatedEncoder,
+  keywordTranslatorMaker: () => keywordTranslatorMaker,
+  namedDecoder: () => namedDecoder
+});
+
 // ../helpers/src/regex.js
 var decoderMaker = function regexDecoderMaker(flag, regex, partDecoder) {
   const fn = function decoder(parts) {
@@ -12250,17 +12262,55 @@ var encoderMaker = function regexEncoderMaker(name, regex, matchMap) {
 };
 
 // ../helpers/src/normalizers.js
+function namedDecoder(name, decoder) {
+  const fn = function namedDecoder2(parts) {
+    return decoder(parts).map((p) => p.flag === decoder.name ? { ...p, flag: name } : p);
+  };
+  Object.defineProperty(fn, "name", { value: name });
+  return fn;
+}
 var doublePercentDecoder = decoderMaker(
   "doublePercentDecoder",
   /(?<percent>%%)/g,
   () => "%"
 );
+function gatedEncoder(encoder, ...flagNames) {
+  const fn = function gatedEncoder2(str, flags = {}) {
+    const run = flagNames.reduce((run2, flag) => run2 || (flag.charAt(0) === "!" ? !flags[flag.substring(1)] : flags[flag]), false);
+    return run ? encoder(str, flags) : str;
+  };
+  Object.defineProperty(fn, "name", { value: `gatedEncoder_${flagNames.join("_")}` });
+  return fn;
+}
 var doublePercentEncoder = encoderMaker("doublePercentEncoder", /%/g, { "%": "%%" });
 var bracePHDecoder = decoderMaker(
   "bracePHDecoder",
   /(?<x>{[^}]+})/g,
   (groups) => ({ t: "x", v: groups.x })
 );
+function keywordTranslatorMaker(name, keywordToTranslationMap) {
+  if (keywordToTranslationMap && Object.keys(keywordToTranslationMap).length > 0) {
+    const decoder = decoderMaker(
+      name,
+      new RegExp(`(?<kw>${Object.keys(keywordToTranslationMap).join("|")})`, "g"),
+      (groups) => ({ t: "x", v: `${name}:${groups.kw}`, s: groups.kw })
+    );
+    const encoder = encoderMaker(
+      name,
+      new RegExp(`^(?:${name}:(?<kw>.+))$`, "g"),
+      (match, flags, kw) => {
+        const tx = keywordToTranslationMap[kw];
+        return tx && typeof tx === "object" ? tx[flags.targetLang] ?? tx[flags.prj] ?? kw : kw;
+      }
+    );
+    return [decoder, encoder];
+  } else {
+    throw "You have to specify a keyword map to keywordTranslatorMaker";
+  }
+}
+function defaultCodeEncoder(part) {
+  return part.v;
+}
 
 // ../helpers/src/utils.js
 var utils_exports = {};
@@ -12916,21 +12966,21 @@ var Normalizer = class {
   #decoders;
   #textEncoders;
   #codeEncoders;
-  constructor({ decoders, textEncoders, codeEncoders }) {
+  constructor({ decoders, textEncoders, codeEncoders, joiner }) {
     this.#decoders = decoders;
     this.#textEncoders = textEncoders;
-    this.#codeEncoders = codeEncoders;
+    this.#codeEncoders = codeEncoders ?? [normalizers_exports.defaultCodeEncoder];
+    this.join = joiner ?? ((parts) => parts.join(""));
   }
   decode(str, flags = {}) {
     return utils_exports.getNormalizedString(str, this.#decoders, flags);
   }
   encodePart(part, flags) {
     const encoders = typeof part === "string" ? this.#textEncoders : this.#codeEncoders;
-    const str = typeof part === "string" ? part : part.v;
     if (encoders) {
-      return encoders.reduce((s, encoder) => encoder(s, flags), str);
+      return encoders.reduce((s, encoder) => encoder(s, flags), part);
     } else {
-      return str;
+      return part;
     }
   }
 };
@@ -12987,7 +13037,7 @@ ${JSON.stringify(entry.ntgt)}`;
       isFirst: idx === 0,
       isLast: idx === ntgt.length - 1
     }));
-    return encodedParts.join("");
+    return normalizer.join(encodedParts);
   }
   async getNormalizedResource(rid, resource, isSource) {
     let parsedRes = await this.#resourceFilter.parseResource({ resource, isSource });
@@ -13006,21 +13056,18 @@ ${JSON.stringify(entry.ntgt)}`;
           }
         }
       }
+      let decoratedSeg = normalizedSeg;
       if (this.#segmentDecorators) {
-        let decoratedSeg = normalizedSeg;
         for (const decorator of this.#segmentDecorators) {
           decoratedSeg = decorator(decoratedSeg);
           if (decoratedSeg === void 0) {
             break;
           }
         }
-        if (decoratedSeg !== void 0) {
-          Object.freeze(decoratedSeg);
-          segments.push(decoratedSeg);
-        }
-      } else {
-        Object.freeze(normalizedSeg);
-        segments.push(normalizedSeg);
+      }
+      if (decoratedSeg !== void 0) {
+        Object.freeze(decoratedSeg);
+        segments.push(decoratedSeg);
       }
     }
     Object.freeze(segments);
@@ -13117,7 +13164,8 @@ var ResourceManager = class {
         normalizers[normalizer] = new Normalizer({
           decoders: normalizerCfg.decoders,
           textEncoders: normalizerCfg.textEncoders,
-          codeEncoders: normalizerCfg.codeEncoders
+          codeEncoders: normalizerCfg.codeEncoders,
+          joiner: normalizerCfg.joiner
         });
       }
       formatHandlers[format] = new FormatHandler({
@@ -13210,8 +13258,11 @@ var ResourceManager = class {
 var MonsterManager = class {
   #functionsForShutdown;
   constructor({ monsterDir, monsterConfig, configSeal }) {
-    if (monsterDir && monsterConfig && monsterConfig.sourceLang && (monsterConfig.contentTypes || monsterConfig.source || monsterConfig.snapStore) === void 0) {
-      throw "You must specify sourceLang and contentTypes / source / snapStore in your config";
+    if (!monsterConfig?.sourceLang) {
+      throw "You must specify sourceLang in your config";
+    }
+    if (!(monsterConfig?.jobStore ?? monsterConfig?.snapStore)) {
+      throw "You must specify at least a jobStore or a snapStore in your config";
     }
     this.monsterDir = monsterDir;
     this.configSeal = configSeal;
@@ -13222,7 +13273,7 @@ var MonsterManager = class {
     let contentTypes;
     if (monsterConfig.contentTypes || monsterConfig.channels || monsterConfig.formats) {
       contentTypes = monsterConfig.contentTypes;
-      ["source", "resourceFilter", "segmentDecorators", "decoders", "textEncoders", "codeEncoders", "target"].forEach((propName) => {
+      ["source", "resourceFilter", "segmentDecorators", "decoders", "textEncoders", "codeEncoders", "joiner", "target"].forEach((propName) => {
         if (monsterConfig[propName] !== void 0) {
           throw `You can't specify ${propName} at the top level if you also use advance configurations`;
         }
@@ -13236,6 +13287,7 @@ var MonsterManager = class {
           decoders: monsterConfig.decoders,
           textEncoders: monsterConfig.textEncoders,
           codeEncoders: monsterConfig.codeEncoders,
+          joiner: monsterConfig.joiner,
           target: monsterConfig.target
         }
       };
@@ -13257,7 +13309,8 @@ var MonsterManager = class {
         normalizers[type] = {
           decoders: config.decoders,
           textEncoders: config.textEncoders,
-          codeEncoders: config.codeEncoders
+          codeEncoders: config.codeEncoders,
+          joiner: config.joiner
         };
         formats[type] = {
           resourceFilter: config.resourceFilter,

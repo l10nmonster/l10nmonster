@@ -53,7 +53,7 @@ export class FormatHandler {
             isFirst: idx === 0,
             isLast: idx === ntgt.length - 1
         }));
-        return encodedParts.join('');
+        return normalizer.join(encodedParts);
     }
 
     async getNormalizedResource(rid, resource, isSource) {
@@ -74,21 +74,18 @@ export class FormatHandler {
                     }
                 }
             }
+            let decoratedSeg = normalizedSeg;
             if (this.#segmentDecorators) {
-                let decoratedSeg = normalizedSeg;
                 for (const decorator of this.#segmentDecorators) {
                     decoratedSeg = decorator(decoratedSeg);
                     if (decoratedSeg === undefined) { // this basically means DNT (or more like "pretend this doesn't exist")
                         break;
                     }
                 }
-                if (decoratedSeg !== undefined) {
-                    Object.freeze(decoratedSeg);
-                    segments.push(decoratedSeg);
-                }
-            } else {
-                Object.freeze(normalizedSeg);
-                segments.push(normalizedSeg);
+            }
+            if (decoratedSeg !== undefined) {
+                Object.freeze(decoratedSeg);
+                segments.push(decoratedSeg);
             }
         }
         Object.freeze(segments);

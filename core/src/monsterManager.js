@@ -8,9 +8,11 @@ export class MonsterManager {
     #functionsForShutdown;
 
     constructor({ monsterDir, monsterConfig, configSeal }) {
-        if (monsterDir && monsterConfig && monsterConfig.sourceLang &&
-                (monsterConfig.contentTypes || monsterConfig.source || monsterConfig.snapStore) === undefined) {
-            throw 'You must specify sourceLang and contentTypes / source / snapStore in your config';
+        if (!monsterConfig?.sourceLang) {
+            throw 'You must specify sourceLang in your config';
+        }
+        if (!(monsterConfig?.jobStore ?? monsterConfig?.snapStore)) {
+            throw 'You must specify at least a jobStore or a snapStore in your config';
         }
         this.monsterDir = monsterDir;
         this.configSeal = configSeal;
@@ -21,7 +23,7 @@ export class MonsterManager {
         let contentTypes;
         if (monsterConfig.contentTypes || monsterConfig.channels || monsterConfig.formats) {
             contentTypes = monsterConfig.contentTypes;
-            ['source', 'resourceFilter', 'segmentDecorators', 'decoders', 'textEncoders', 'codeEncoders', 'target']
+            ['source', 'resourceFilter', 'segmentDecorators', 'decoders', 'textEncoders', 'codeEncoders', 'joiner', 'target']
                 .forEach(propName => {
                     if (monsterConfig[propName] !== undefined) {
                         throw `You can't specify ${propName} at the top level if you also use advance configurations`;
@@ -36,6 +38,7 @@ export class MonsterManager {
                     decoders: monsterConfig.decoders,
                     textEncoders: monsterConfig.textEncoders,
                     codeEncoders: monsterConfig.codeEncoders,
+                    joiner: monsterConfig.joiner,
                     target: monsterConfig.target,
                 }
             };
@@ -58,6 +61,7 @@ export class MonsterManager {
                     decoders: config.decoders,
                     textEncoders: config.textEncoders,
                     codeEncoders: config.codeEncoders,
+                    joiner: config.joiner,
                 };
                 formats[type] = {
                     resourceFilter: config.resourceFilter,

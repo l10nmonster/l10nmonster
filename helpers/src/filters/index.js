@@ -1,1 +1,1 @@
-export { SnapFilter } from './snap.js';
+export { MNFv1 } from './MNFv1.js';

@@ -1,0 +1,25 @@
+[
+    {
+        "id": "mixedResource",
+        "resourceFormat": "MNFv1",
+		"modified": "2022-02-10T01:19:22.492Z",
+        "targetLangs": [ "oink" ],
+        "segments": [
+            {
+                "sid": "str1",
+                "mf": "iosMF",
+                "str": "Hello\\U0020%1$@!"
+            },
+            {
+                "sid": "str2",
+                "mf": "androidMF",
+                "str": "It\\'s never easy %1$s!"
+            },
+            {
+                "sid": "str3",
+                "mf": "nstrMF",
+                "str": "[\"Place your phone into your \",{\"t\":\"x\",\"v\":\"%1$@\"},\" viewer.\"]"
+            }
+        ]
+    }
+]

@@ -1,14 +1,15 @@
-import { utils } from '@l10nmonster/helpers';
+import { utils, normalizers } from '@l10nmonster/helpers';
 
 export class Normalizer {
     #decoders;
     #textEncoders;
     #codeEncoders;
 
-    constructor({ decoders, textEncoders, codeEncoders }) {
+    constructor({ decoders, textEncoders, codeEncoders, joiner }) {
         this.#decoders = decoders;
         this.#textEncoders = textEncoders;
-        this.#codeEncoders = codeEncoders;
+        this.#codeEncoders = codeEncoders ?? [ normalizers.defaultCodeEncoder ];
+        this.join = joiner ?? (parts => parts.join(''));
     }
 
     decode(str, flags = {}) {
@@ -17,11 +18,10 @@ export class Normalizer {
 
     encodePart(part, flags) {
         const encoders = typeof part === 'string' ? this.#textEncoders : this.#codeEncoders;
-        const str = typeof part === 'string' ? part : part.v;
         if (encoders) {
-            return encoders.reduce((s, encoder) => encoder(s, flags), str);
+            return encoders.reduce((s, encoder) => encoder(s, flags), part);
         } else {
-            return str;
+            return part;
         }
     }
 }
