@@ -46,6 +46,7 @@ export default class ResourceManager {
             for (const [normalizer, normalizerCfg] of Object.entries(formatCfg.normalizers)) {
                 validate(`normalizer ${normalizer}`, normalizerCfg).arrayOfFunctions('decoders', 'textEncoders', 'codeEncoders');
                 normalizers[normalizer] = new Normalizer({
+                    id: normalizer,
                     decoders: normalizerCfg.decoders,
                     textEncoders: normalizerCfg.textEncoders,
                     codeEncoders: normalizerCfg.codeEncoders,
@@ -53,10 +54,12 @@ export default class ResourceManager {
                 });
             }
             formatHandlers[format] = new FormatHandler({
+                id: format,
                 resourceFilter: formatCfg.resourceFilter,
                 normalizers,
                 defaultMessageFormat: formatCfg.defaultMessageFormat ?? format,
                 segmentDecorators: formatCfg.segmentDecorators,
+                formatHandlers, // passed in for sub-resources
             });
         }
         for (const [channelId, channelCfg] of Object.entries(channels)) {

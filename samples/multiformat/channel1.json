@@ -20,6 +20,13 @@
                 "mf": "nstrMF",
                 "str": "[\"Place your phone into your \",{\"t\":\"x\",\"v\":\"%1$@\"},\" viewer.\"]"
             }
+        ],
+        "subresources": [
+            {
+                "id": "help",
+                "resourceFormat": "html",
+                "raw": "<div><div>First do this</div><div>Then do that</div></div>"
+            }
         ]
     }
 ]

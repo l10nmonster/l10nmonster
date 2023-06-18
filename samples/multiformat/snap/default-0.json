@@ -1,0 +1,85 @@
+{
+	"mixedResource": {
+		"id": "mixedResource",
+		"channel": "channel1",
+		"modified": "2022-02-10T01:19:22.492Z",
+		"resourceFormat": "MNFv1",
+		"sourceLang": "en",
+		"targetLangs": [
+			"oink"
+		],
+		"segments": [
+			{
+				"sid": "str1",
+				"mf": "iosMF",
+				"nstr": [
+					"Hello ",
+					{
+						"t": "x",
+						"v": "%1$@"
+					},
+					"!"
+				],
+				"gstr": "Hello {{x}}!",
+				"guid": "-yKjLDPMOHJ6iDY9Tqvj8wtGY583aGu2xjXQoadlll0"
+			},
+			{
+				"sid": "str2",
+				"mf": "androidMF",
+				"nstr": [
+					"It's never easy ",
+					{
+						"t": "x",
+						"v": "%1$s"
+					},
+					"!"
+				],
+				"gstr": "It's never easy {{x}}!",
+				"guid": "v8g9RMA1Iau-IHlwU0UmISKDhm-ECh_-eerVcB36dAM"
+			},
+			{
+				"sid": "str3",
+				"mf": "nstrMF",
+				"nstr": [
+					"Place your phone into your ",
+					{
+						"t": "x",
+						"v": "%1$@"
+					},
+					" viewer."
+				],
+				"gstr": "Place your phone into your {{x}} viewer.",
+				"guid": "SeIBAEhlbgvA99fw8RYWepuNHq0pFCcts_idF5qKQ4c"
+			},
+			{
+				"sid": "Gewpvl-yAgEvXtVOFxz3coIkJy77jbx75RylnUExnTI",
+				"mf": "html",
+				"nstr": [
+					"First do this"
+				],
+				"gstr": "First do this",
+				"guid": "3LsarYa-OleFAfY3Ot9InBvwSMQMOsPA6vw211GySIw"
+			},
+			{
+				"sid": "mjkOVE4T4yjZpDmKAz6X7Dp4V6Ro1FD_fMvOEWFMgTg",
+				"mf": "html",
+				"nstr": [
+					"Then do that"
+				],
+				"gstr": "Then do that",
+				"guid": "4UjUnahIjane1RbseSl7HSSoX3LCsVq_IfmCLE4Ktas"
+			}
+		],
+		"subresources": [
+			{
+				"id": "help",
+				"resourceFormat": "html",
+				"raw": "<div><div>First do this</div><div>Then do that</div></div>",
+				"guids": [
+					"3LsarYa-OleFAfY3Ot9InBvwSMQMOsPA6vw211GySIw",
+					"4UjUnahIjane1RbseSl7HSSoX3LCsVq_IfmCLE4Ktas"
+				]
+			}
+		]
+	}
+}

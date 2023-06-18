@@ -1,21 +1,31 @@
 import { utils } from '@l10nmonster/helpers';
 
 export class FormatHandler {
+    #id;
     #resourceFilter;
     #normalizers;
     #defaultMessageFormat;
     #segmentDecorators;
+    #formatHandlers;
 
-    constructor({ resourceFilter, normalizers, defaultMessageFormat, segmentDecorators }) {
+    constructor({ id, resourceFilter, normalizers, defaultMessageFormat, segmentDecorators, formatHandlers }) {
+        if (!resourceFilter) {
+            throw `Missing resource filter for format ${this.#id}`;
+        }
+        this.#id = id;
         this.#resourceFilter = resourceFilter;
         this.#normalizers = normalizers;
         this.#defaultMessageFormat = defaultMessageFormat;
         this.#segmentDecorators = segmentDecorators;
+        this.#formatHandlers = formatHandlers;
     }
 
     #populateGuid(rid, str, mf, base, flags = {}) {
         base.mf = mf;
         const normalizer = this.#normalizers[base.mf];
+        if (!normalizer) {
+            throw `Unknown message format ${mf} in format ${this.#id}`;
+        }
         base.nstr = normalizer.decode(str, flags);
         base.gstr = utils.flattenNormalizedSourceToOrdinal(base.nstr);
         base.guid = utils.generateFullyQualifiedGuid(rid, base.sid, base.gstr);
@@ -48,6 +58,9 @@ export class FormatHandler {
 
     #encodeTranslatedSegment(ntgt, mf, flags) {
         const normalizer = this.#normalizers[mf];
+        if (!normalizer) {
+            throw `Unknown message format ${mf} in format ${this.#id}`;
+        }
         const encodedParts = ntgt.map((part, idx) => normalizer.encodePart(part, {
             ...flags,
             isFirst: idx === 0,
@@ -58,8 +71,9 @@ export class FormatHandler {
 
     async getNormalizedResource(rid, resource, isSource) {
         let parsedRes = await this.#resourceFilter.parseResource({ resource, isSource });
-        const segments = [];
-        for (const rawSegment of parsedRes.segments) {
+        const normalizedSegments = []; // these have nstr
+        const rawSegments = parsedRes.segments ?? []; // these have str
+        for (const rawSegment of rawSegments.flat(1)) {
             const { str, notes, mf, ...normalizedSeg } = rawSegment;
             this.#populateGuid(rid, str, mf ?? this.#defaultMessageFormat, normalizedSeg);
             if (typeof notes === 'string') {
@@ -85,11 +99,25 @@ export class FormatHandler {
             }
             if (decoratedSeg !== undefined) {
                 Object.freeze(decoratedSeg);
-                segments.push(decoratedSeg);
+                normalizedSegments.push(decoratedSeg);
             }
         }
+        let subresources;
+        if (parsedRes.subresources) {
+            subresources = [];
+            for (const subres of parsedRes.subresources) {
+                const subFormat = this.#formatHandlers[subres.resourceFormat];
+                const parsedSubres = await subFormat.getNormalizedResource(rid, subres.raw, true);
+                if (parsedSubres.segments) {
+                    subres.guids = parsedSubres.segments.map(seg => seg.guid);
+                    normalizedSegments.push(parsedSubres.segments);
+                    subresources.push(subres);
+                }
+            }
+        }
+        const segments = normalizedSegments.flat(1);
         Object.freeze(segments);
-        return { segments };
+        return { segments, subresources };
     }
 
     async generateTranslatedResource(resHandle, tm) {
@@ -97,20 +125,49 @@ export class FormatHandler {
 
         // give priority to generators over translators (for performance), if available
         if (this.#resourceFilter.generateResource) {
-            const translations = {};
-            for (const seg of resHandle.segments) {
-                const entry = tm.getEntryByGuid(seg.guid);
-                try {
-                    const nstr = this.#translateWithTMEntry(seg.nstr, entry);
-                    if (nstr !== undefined) {
-                        const str =this.#encodeTranslatedSegment(nstr, seg.mf, flags);
-                        translations[seg.guid] = { nstr, str };
+            const guidsToSkip = [];
+            let subresources;
+            if (resHandle.subresources) {
+                subresources = [];
+                for (const subres of resHandle.subresources) {
+                    const subFormat = this.#formatHandlers[subres.resourceFormat];
+                    if (!subFormat) {
+                        throw `Unknown resource format ${subres.resourceFormat} for subresource of ${this.#id}`;
                     }
-                } catch(e) {
-                    l10nmonster.logger.verbose(`Problem translating guid ${seg.guid} to ${tm.targetLang}: ${e.stack ?? e}`);
+                    const { id, guids, ...subresHandle } = subres;
+                    guidsToSkip.push(guids);
+                    const subresGuids = new Set(guids);
+                    const subresSegments = resHandle.segments.filter(seg => subresGuids.has(seg.guid));
+                    const translatedSubres = await subFormat.generateTranslatedResource({
+                        ...resHandle,
+                        ...subresHandle,
+                        segment: subresSegments,
+                    }, tm);
+                    translatedSubres !== undefined && subresources.push({
+                        ...subresHandle,
+                        id,
+                        raw: translatedSubres,
+                    });
                 }
             }
-            return this.#resourceFilter.generateResource({ ...resHandle, translations });
+            const subresGuids = new Set(guidsToSkip.flat(1));
+            const translations = {};
+            for (const seg of resHandle.segments) {
+                // we need to skip subresource segments because we don't have their normalizers
+                if (!subresGuids.has(seg.guid)) {
+                    const entry = tm.getEntryByGuid(seg.guid);
+                    try {
+                        const nstr = this.#translateWithTMEntry(seg.nstr, entry);
+                        if (nstr !== undefined) {
+                            const str =this.#encodeTranslatedSegment(nstr, seg.mf, flags);
+                            translations[seg.guid] = { nstr, str };
+                        }
+                    } catch(e) {
+                        l10nmonster.logger.verbose(`Problem translating guid ${seg.guid} to ${tm.targetLang}: ${e.stack ?? e}`);
+                    }
+                }
+            }
+            return this.#resourceFilter.generateResource({ ...resHandle, translations, subresources });
         }
 
         // if generator is not available, use translator-based resource transformation

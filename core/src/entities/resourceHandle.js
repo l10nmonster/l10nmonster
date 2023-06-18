@@ -16,8 +16,9 @@ export class ResourceHandle {
     }
 
     loadFromNormalizedResource(normalizedResource) {
-        const { segments } = normalizedResource;
+        const { segments, subresources } = normalizedResource;
         this.segments = segments;
+        this.subresources = subresources;
         return this;
     }
 

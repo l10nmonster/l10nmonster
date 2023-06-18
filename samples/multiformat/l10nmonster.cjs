@@ -1,6 +1,7 @@
 const { adapters, filters, xml, normalizers, stores } = require('@l10nmonster/helpers');
 const ios = require('@l10nmonster/helpers-ios');
 const android = require('@l10nmonster/helpers-android');
+const html = require('@l10nmonster/helpers-html');
 const demo = require('@l10nmonster/helpers-demo');
 
 const StubbedSource = require('./stubbedSource.js');
@@ -17,7 +18,8 @@ module.exports = class MultiFormtConfig {
             source: new StubbedSource(channel1),
             target: new adapters.FsTarget({
                 targetPath: (lang, resourceId) => `${resourceId}-${lang}.json`,
-            })
+            }),
+            // defaultResourceFormat: ,
         },
     };
     formats = {
@@ -38,10 +40,23 @@ module.exports = class MultiFormtConfig {
             // defaultMessageFormat: ,
             // segmentDecorators: [],
 
+        },
+        html: {
+            resourceFilter: new html.Filter(),
+            normalizers: {
+                html: {
+                    decoders: [ xml.tagDecoder, xml.entityDecoder ],
+                    textEncoders: [ xml.entityEncoder ],
+                }
+            },
+            defaultMessageFormat: 'html',
         }
     };
     jobStore = new stores.JsonJobStore({
         jobsDir: 'translationJobs',
+    });
+    snapStore = new stores.FsSnapStore({
+        snapDir: 'snap',
     });
     translationProvider = new demo.PigLatinizer({
         quality: 2

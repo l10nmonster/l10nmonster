@@ -7,6 +7,13 @@
 	"targetLangs": [
 		"oink"
 	],
+	"subresources": [
+		{
+			"resourceFormat": "html",
+			"raw": "<div><div>[Irstfay oday isthay-oink]</div><div>[Enthay oday at-thay-oink]</div></div>",
+			"id": "help"
+		}
+	],
 	"segments": [
 		{
 			"sid": "str1",
