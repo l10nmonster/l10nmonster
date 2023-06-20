@@ -126,8 +126,11 @@ export class MonsterManager {
     // get all possible target languages from sources and from TMs
     getTargetLangs(limitToLang) {
         if (limitToLang) {
-            if (this.#targetLangSets[limitToLang]) {
-                return this.#targetLangSets[limitToLang];
+            const targetLangSet = utils.fixCaseInsensitiveKey(this.#targetLangSets, limitToLang);
+            if (targetLangSet) {
+                const langs = this.#targetLangSets[targetLangSet];
+                l10nmonster.logger.info(`Using language alias ${targetLangSet}: ${langs.join(', ')}`);
+                return langs;
             }
             const langsToLimit = limitToLang.split(',');
             const invalidLangs = langsToLimit.filter(limitedLang => !this.#targetLangs.has(limitedLang));

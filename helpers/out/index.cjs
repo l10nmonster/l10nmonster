@@ -7202,7 +7202,6 @@ __export(utils_exports, {
   flattenNormalizedSourceToOrdinal: () => flattenNormalizedSourceToOrdinal,
   flattenNormalizedSourceToXmlV1: () => flattenNormalizedSourceToXmlV1,
   flattenNormalizedSourceV1: () => flattenNormalizedSourceV1,
-  generateFullyQualifiedGuid: () => generateFullyQualifiedGuid,
   generateGuid: () => generateGuid,
   getNormalizedString: () => getNormalizedString,
   getTUMaps: () => getTUMaps,
@@ -7217,9 +7216,6 @@ function generateGuid(str) {
   const sidContentHash = (0, import_crypto2.createHash)("sha256");
   sidContentHash.update(str, "utf8");
   return sidContentHash.digest().toString("base64").substring(0, 43).replaceAll("+", "-").replaceAll("/", "_");
-}
-function generateFullyQualifiedGuid(rid, sid, str) {
-  return generateGuid(`${rid}|${sid}|${str}`);
 }
 function consolidateDecodedParts(parts, flags, convertToString) {
   const consolidatedParts = [];

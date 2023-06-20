@@ -25728,7 +25728,6 @@ __export(utils_exports, {
   flattenNormalizedSourceToOrdinal: () => flattenNormalizedSourceToOrdinal,
   flattenNormalizedSourceToXmlV1: () => flattenNormalizedSourceToXmlV1,
   flattenNormalizedSourceV1: () => flattenNormalizedSourceV1,
-  generateFullyQualifiedGuid: () => generateFullyQualifiedGuid,
   generateGuid: () => generateGuid,
   getNormalizedString: () => getNormalizedString,
   getTUMaps: () => getTUMaps,
@@ -25743,9 +25742,6 @@ function generateGuid(str) {
   const sidContentHash = (0, import_crypto.createHash)("sha256");
   sidContentHash.update(str, "utf8");
   return sidContentHash.digest().toString("base64").substring(0, 43).replaceAll("+", "-").replaceAll("/", "_");
-}
-function generateFullyQualifiedGuid(rid, sid, str) {
-  return generateGuid(`${rid}|${sid}|${str}`);
 }
 function consolidateDecodedParts(parts, flags, convertToString) {
   const consolidatedParts = [];
@@ -26421,7 +26417,7 @@ var FormatHandler = class {
     }
     base.nstr = normalizer.decode(str, flags);
     base.gstr = utils_exports.flattenNormalizedSourceToOrdinal(base.nstr);
-    base.guid = utils_exports.generateFullyQualifiedGuid(rid, base.sid, base.gstr);
+    base.guid = utils_exports.generateGuid(`${rid}|${base.sid}|${base.gstr}`);
     return base;
   }
   #translateWithTMEntry(nsrc, entry) {
@@ -26842,8 +26838,11 @@ var MonsterManager = class {
   // get all possible target languages from sources and from TMs
   getTargetLangs(limitToLang) {
     if (limitToLang) {
-      if (this.#targetLangSets[limitToLang]) {
-        return this.#targetLangSets[limitToLang];
+      const targetLangSet = utils_exports.fixCaseInsensitiveKey(this.#targetLangSets, limitToLang);
+      if (targetLangSet) {
+        const langs = this.#targetLangSets[targetLangSet];
+        l10nmonster.logger.info(`Using language alias ${targetLangSet}: ${langs.join(", ")}`);
+        return langs;
       }
       const langsToLimit = limitToLang.split(",");
       const invalidLangs = langsToLimit.filter((limitedLang) => !this.#targetLangs.has(limitedLang));

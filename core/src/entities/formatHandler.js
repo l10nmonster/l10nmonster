@@ -28,7 +28,7 @@ export class FormatHandler {
         }
         base.nstr = normalizer.decode(str, flags);
         base.gstr = utils.flattenNormalizedSourceToOrdinal(base.nstr);
-        base.guid = utils.generateFullyQualifiedGuid(rid, base.sid, base.gstr);
+        base.guid = utils.generateGuid(`${rid}|${base.sid}|${base.gstr}`);
         return base;
     }
 

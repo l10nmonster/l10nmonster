@@ -6,10 +6,6 @@ export function generateGuid(str) {
     return sidContentHash.digest().toString('base64').substring(0, 43).replaceAll('+', '-').replaceAll('/', '_');
 }
 
-export function generateFullyQualifiedGuid(rid, sid, str) {
-    return generateGuid(`${rid}|${sid}|${str}`);
-}
-
 export function consolidateDecodedParts(parts, flags, convertToString) {
     const consolidatedParts = [];
     let accumulatedString = '';
