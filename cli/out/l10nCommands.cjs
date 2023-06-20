@@ -26882,6 +26882,12 @@ var MonsterManager = class {
     const updatedAt = (l10nmonster.regression ? /* @__PURE__ */ new Date("2022-05-29T00:00:00.000Z") : /* @__PURE__ */ new Date()).toISOString();
     if (jobRequest) {
       jobRequest.updatedAt = updatedAt;
+      if (jobResponse) {
+        const guidsInFlight = jobResponse.inflight ?? [];
+        const translatedGuids = jobResponse?.tus?.map((tu) => tu.guid) ?? [];
+        const acceptedGuids = new Set(guidsInFlight.concat(translatedGuids));
+        jobRequest.tus = jobRequest.tus.filter((tu) => acceptedGuids.has(tu.guid));
+      }
       await this.jobStore.writeJob(jobRequest);
     }
     if (jobResponse) {

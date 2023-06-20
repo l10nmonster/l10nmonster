@@ -429,20 +429,6 @@
 			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
-			"sid": "remove_n_chapters_one",
-			"isSuffixPluralized": true,
-			"guid": "t4VWxI0XBS7jJwzcIpjyWz95PtQe0nM2xUjvN4A1U_4",
-			"nsrc": [
-				"Remove ",
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				" downloaded chapter?"
-			],
-			"rid": "app/src/main/res/values/strings.xml"
-		},
-		{
 			"sid": "remove_n_chapters_other",
 			"isSuffixPluralized": true,
 			"guid": "p7jJcpu_ZOzMod7iebzwKDCR2JYb4Qef0D1lq2MQLKg",
@@ -457,19 +443,6 @@
 			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
-			"sid": "chapters_plural_one",
-			"isSuffixPluralized": true,
-			"guid": "1d7HtgdwLMLoxTTiv83rLZkKjkpfAmsehateH09g4gc",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				" chapter"
-			],
-			"rid": "app/src/main/res/values/strings.xml"
-		},
-		{
 			"sid": "chapters_plural_other",
 			"isSuffixPluralized": true,
 			"guid": "qwYhEI77stoakCdt86oc0Z9IcmbpLN19jqquS_d2WL0",
@@ -479,19 +452,6 @@
 					"v": "%1$d"
 				},
 				" chapters"
-			],
-			"rid": "app/src/main/res/values/strings.xml"
-		},
-		{
-			"sid": "pages_left_one",
-			"isSuffixPluralized": true,
-			"guid": "2udl0hvWKKtR3kYZ1ZxvWfGf6Sq6I_AP1i91nZoJRuU",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				" page left"
 			],
 			"rid": "app/src/main/res/values/strings.xml"
 		},
@@ -698,19 +658,6 @@
 			"guid": "crKjl1Fgg3ZyTE2hAcUJ4rGdY1Fmkl14DbVZy3df79E",
 			"nsrc": [
 				"Move to categories"
-			],
-			"rid": "app/src/main/res/values/strings.xml"
-		},
-		{
-			"sid": "category_plural_one",
-			"isSuffixPluralized": true,
-			"guid": "PR-mra8oJXYjh-iGJbPWRJ93cqMsnv3I9kI-KHWftDI",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "%d"
-				},
-				" category"
 			],
 			"rid": "app/src/main/res/values/strings.xml"
 		},
@@ -1364,20 +1311,6 @@
 			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
-			"sid": "for_n_titles_one",
-			"isSuffixPluralized": true,
-			"guid": "nn9ifCxTi0t0nXPKjjqANSd9RsYNb7nXBbc0e-L1MBY",
-			"nsrc": [
-				"For ",
-				{
-					"t": "x",
-					"v": "%d"
-				},
-				" title"
-			],
-			"rid": "app/src/main/res/values/strings.xml"
-		},
-		{
 			"sid": "for_n_titles_other",
 			"isSuffixPluralized": true,
 			"guid": "9xj-HFVJXt2nNpthtY1LQ-fzWVcARPZvaiL2c39B23w",
@@ -1392,20 +1325,6 @@
 			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
-			"sid": "notification_and_n_more_one",
-			"isSuffixPluralized": true,
-			"guid": "i6ms_Au63GlXHZGXAcuj1OlRcD9GhIwb0mR2FlStmOo",
-			"nsrc": [
-				"and ",
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				" more chapter"
-			],
-			"rid": "app/src/main/res/values/strings.xml"
-		},
-		{
 			"sid": "notification_and_n_more_other",
 			"isSuffixPluralized": true,
 			"guid": "67xZqBzSLejsIoJhJeoe41TLoKsEqXHdzFIIP8ysYJs",
@@ -1416,15 +1335,6 @@
 					"v": "%1$d"
 				},
 				" more chapters"
-			],
-			"rid": "app/src/main/res/values/strings.xml"
-		},
-		{
-			"sid": "notification_update_failed_one",
-			"isSuffixPluralized": true,
-			"guid": "n-9x0mdfrc5EllF9g4lxFwLkppPeEQND2uhVP0ERBFU",
-			"nsrc": [
-				"1 update failed"
 			],
 			"rid": "app/src/main/res/values/strings.xml"
 		},
@@ -2306,19 +2216,6 @@
 			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
-			"sid": "_updates_pending_one",
-			"isSuffixPluralized": true,
-			"guid": "-BgwQxYmz_OcJgZCUZeNEhbIn71aeYWQLfqDzIdO5-A",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "%d"
-				},
-				" update pending"
-			],
-			"rid": "app/src/main/res/values/strings.xml"
-		},
-		{
 			"sid": "_updates_pending_other",
 			"isSuffixPluralized": true,
 			"guid": "DZ_sc6S4EfGY49WXOACTA14IzN7IGl__L84uf8WbSwc",
@@ -2340,15 +2237,6 @@
 			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
-			"sid": "extensions_updated_plural_one",
-			"isSuffixPluralized": true,
-			"guid": "PDKvwcIWbKlbrMMuqEa00drfTM71kt4AE5hfbznTe_o",
-			"nsrc": [
-				"Extension updated"
-			],
-			"rid": "app/src/main/res/values/strings.xml"
-		},
-		{
 			"sid": "extensions_updated_plural_other",
 			"isSuffixPluralized": true,
 			"guid": "E7eIPBUFNkUQCaPZAqanJVmi_cYO9S0JCeKB3Trm0S4",
@@ -2358,15 +2246,6 @@
 					"v": "%d"
 				},
 				" extensions updated"
-			],
-			"rid": "app/src/main/res/values/strings.xml"
-		},
-		{
-			"sid": "extension_updates_available_one",
-			"isSuffixPluralized": true,
-			"guid": "ZNcGVkm_LvhJlULW759Z140eW5Es4GSIXDFWwYiq7Lo",
-			"nsrc": [
-				"Extension update available"
 			],
 			"rid": "app/src/main/res/values/strings.xml"
 		},
@@ -3430,19 +3309,6 @@
 			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
-			"sid": "pages_plural_one",
-			"isSuffixPluralized": true,
-			"guid": "ftTBQ9mT8jzVQTlzVQThq84qga7aRnm1A_EmQPZ62tE",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				" page"
-			],
-			"rid": "app/src/main/res/values/strings.xml"
-		},
-		{
 			"sid": "pages_plural_other",
 			"isSuffixPluralized": true,
 			"guid": "oXUmwOmJSilJYNINjFscNXUcar5msRG4KX7zU-4zQ5A",
@@ -3452,15 +3318,6 @@
 					"v": "%1$d"
 				},
 				" pages"
-			],
-			"rid": "app/src/main/res/values/strings.xml"
-		},
-		{
-			"sid": "missing_chapters_warning_one",
-			"isSuffixPluralized": true,
-			"guid": "TyE4yyopQMXi9xPAwddqixG0FiRUr7u1yXsHaK5cFNg",
-			"nsrc": [
-				"Skipping 1 chapter, either the source is missing it or it has been filtered out"
 			],
 			"rid": "app/src/main/res/values/strings.xml"
 		},
@@ -3931,20 +3788,6 @@
 			"guid": "4VnsQVEawPmvgH-O45FKaXHWGWxMnjIWsFtFV5GlyFc",
 			"nsrc": [
 				"Filter scanlator groups"
-			],
-			"rid": "app/src/main/res/values/strings.xml"
-		},
-		{
-			"sid": "deleted_chapters_one",
-			"isSuffixPluralized": true,
-			"guid": "SSZERtfZuYpDYos6-_VXWBeWY2P0LQQBQ5wwygKih98",
-			"nsrc": [
-				"A chapter has been removed from the source:\n",
-				{
-					"t": "x",
-					"v": "%2$s"
-				},
-				"\nDelete its download?"
 			],
 			"rid": "app/src/main/res/values/strings.xml"
 		},
@@ -4481,47 +4324,11 @@
 			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
-			"sid": "migrate_manga_one",
-			"isSuffixPluralized": true,
-			"guid": "5otAlRi18WJHdTNddhXrbauyBBuNmozvj5T1U3LdNio",
-			"nsrc": [
-				"Migrate ",
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				{
-					"t": "x",
-					"v": "%2$s"
-				},
-				" manga?"
-			],
-			"rid": "app/src/main/res/values/strings.xml"
-		},
-		{
 			"sid": "migrate_manga_other",
 			"isSuffixPluralized": true,
 			"guid": "NbSotC-esLltIb4qX2tNcSjKPSlGcoWI-D8v8pewC08",
 			"nsrc": [
 				"Migrate ",
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				{
-					"t": "x",
-					"v": "%2$s"
-				},
-				" manga?"
-			],
-			"rid": "app/src/main/res/values/strings.xml"
-		},
-		{
-			"sid": "copy_manga_one",
-			"isSuffixPluralized": true,
-			"guid": "V7Ipy8tVMS_hgViqxAA2GVdKnK2eiylBmpYsz6R23AM",
-			"nsrc": [
-				"Copy ",
 				{
 					"t": "x",
 					"v": "%1$d"
@@ -4562,19 +4369,6 @@
 					"v": "%1$d"
 				},
 				")"
-			],
-			"rid": "app/src/main/res/values/strings.xml"
-		},
-		{
-			"sid": "manga_migrated_one",
-			"isSuffixPluralized": true,
-			"guid": "26atAzC3mwZ3kvEaRGvJjuffpG2YiWvLb_0uDvsLPtE",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "%d"
-				},
-				" manga migrated"
 			],
 			"rid": "app/src/main/res/values/strings.xml"
 		},
@@ -5427,25 +5221,6 @@
 			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
-			"sid": "restore_completed_message_one",
-			"isSuffixPluralized": true,
-			"guid": "dUY5CemIa3xpPTEoUKN5hZLIYyFYKU1bhYQvPyUJvk0",
-			"nsrc": [
-				"Done in ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				},
-				" with ",
-				{
-					"t": "x",
-					"v": "%2$s"
-				},
-				" error"
-			],
-			"rid": "app/src/main/res/values/strings.xml"
-		},
-		{
 			"sid": "restore_completed_message_other",
 			"isSuffixPluralized": true,
 			"guid": "tkc4zq_ATauIxzXI7kJs_cduBFCQDVR4_VODU-l2Eg8",
@@ -5592,20 +5367,6 @@
 					"t": "x",
 					"v": "%1$s"
 				}
-			],
-			"rid": "app/src/main/res/values/strings.xml"
-		},
-		{
-			"sid": "cache_cleared_one",
-			"isSuffixPluralized": true,
-			"guid": "5eZfQwyisFt-eAr3zUOKugP__L-uALc_ylWptAYKJQI",
-			"nsrc": [
-				"Cache cleared. ",
-				{
-					"t": "x",
-					"v": "%d"
-				},
-				" file has been deleted"
 			],
 			"rid": "app/src/main/res/values/strings.xml"
 		},
@@ -5788,20 +5549,6 @@
 			"guid": "pWgteS6BQNpqcpyE5Y55fX1j9VDQI_E2t26klBLISIQ",
 			"nsrc": [
 				"Battery optimization is already disabled"
-			],
-			"rid": "app/src/main/res/values/strings.xml"
-		},
-		{
-			"sid": "cleanup_done_one",
-			"isSuffixPluralized": true,
-			"guid": "rh1h0cJO-5V2S5q15JDf5bxw2kDqyrXKS4r_wy5PUwU",
-			"nsrc": [
-				"Cleanup done. Removed ",
-				{
-					"t": "x",
-					"v": "%d"
-				},
-				" folder"
 			],
 			"rid": "app/src/main/res/values/strings.xml"
 		},
@@ -6604,20 +6351,6 @@
 			"guid": "HCmK5QTlCCxBY435vznXbmu8gshsoMuItS5zrNvg3uY",
 			"nsrc": [
 				"Weekly"
-			],
-			"rid": "app/src/main/res/values/strings.xml"
-		},
-		{
-			"sid": "after_minutes_one",
-			"isSuffixPluralized": true,
-			"guid": "C0PQbeoPQFB8cyWahP6wddbk0QOh4f-mmiHyTcQUny4",
-			"nsrc": [
-				"After ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				},
-				" minute"
 			],
 			"rid": "app/src/main/res/values/strings.xml"
 		},

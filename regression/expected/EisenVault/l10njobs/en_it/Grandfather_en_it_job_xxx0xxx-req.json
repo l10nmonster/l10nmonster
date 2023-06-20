@@ -3064,14 +3064,6 @@
 			"rid": "dashlets/rssfeed.get_en.properties"
 		},
 		{
-			"sid": "dashlet.help",
-			"guid": "c-6fDjw00nB1UJtukMnmj1d18-MHF12J24XzB-fT4xg",
-			"nsrc": [
-				"This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed."
-			],
-			"rid": "dashlets/rssfeed.get_en.properties"
-		},
-		{
 			"sid": "header.title",
 			"guid": "vOu-eNJHDEBQChRKqLed8BwIg3TYqS4vXtfiyYVOock",
 			"nsrc": [
@@ -3414,14 +3406,6 @@
 			"guid": "yj4g5ndRJ2pR2YT6I5HJFiWAQwVkHxyWyuDH43euBnc",
 			"nsrc": [
 				"No text has been configured"
-			],
-			"rid": "dashlets/site-notice.get_en.properties"
-		},
-		{
-			"sid": "link.configure",
-			"guid": "dI6k9BSigj6gEI0usWMTDR1B9zsFO8ws9atTiah-8Y4",
-			"nsrc": [
-				"Configure"
 			],
 			"rid": "dashlets/site-notice.get_en.properties"
 		},

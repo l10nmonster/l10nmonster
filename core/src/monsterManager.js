@@ -169,6 +169,12 @@ export class MonsterManager {
         const updatedAt = (l10nmonster.regression ? new Date('2022-05-29T00:00:00.000Z') : new Date()).toISOString();
         if (jobRequest) {
             jobRequest.updatedAt = updatedAt;
+            if (jobResponse) {
+                const guidsInFlight = jobResponse.inflight ?? [];
+                const translatedGuids = jobResponse?.tus?.map(tu => tu.guid) ?? [];
+                const acceptedGuids = new Set(guidsInFlight.concat(translatedGuids));
+                jobRequest.tus = jobRequest.tus.filter(tu => acceptedGuids.has(tu.guid));
+            }
             await this.jobStore.writeJob(jobRequest);
         }
         if (jobResponse) {
@@ -176,6 +182,8 @@ export class MonsterManager {
             await this.jobStore.writeJob(jobResponse);
         }
         // we update the TM in memory so that it can be reused before shutdown
+        // TODO: this is not great, we should have a hook so that the TM can
+        //       subscribe to mutation events.
         await tm.processJob(jobResponse, jobRequest);
     }
 
