@@ -2,7 +2,10 @@ const { stores, adapters, translators, analyzers } = require('@l10nmonster/helpe
 
 module.exports = class CardboardConfig2 {
     sourceLang = 'en';
-    targetLangs = [ 'ar', 'it', 'ja' ];
+    targetLangs = {
+        LTR: [ 'it', 'ja' ],
+        RTL: [ 'ar' ],
+    };
     minimumQuality = 50;
 
     constructor() {

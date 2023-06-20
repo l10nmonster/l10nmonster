@@ -13324,18 +13324,23 @@ var ResourceManager = class {
 // src/monsterManager.js
 var MonsterManager = class {
   #targetLangs;
+  #targetLangSets = {};
   #functionsForShutdown;
   constructor({ monsterDir, monsterConfig, configSeal }) {
     if (!monsterConfig?.sourceLang) {
       throw "You must specify sourceLang in your config";
     }
-    if (!Array.isArray(monsterConfig?.targetLangs)) {
-      throw "You must specify a targetLangs array in your config";
+    if (typeof monsterConfig?.targetLangs !== "object") {
+      throw "You must specify a targetLangs object or array in your config";
+    } else if (Array.isArray(monsterConfig.targetLangs)) {
+      this.#targetLangs = new Set(monsterConfig.targetLangs);
+    } else {
+      this.#targetLangs = new Set(Object.values(monsterConfig.targetLangs).flat(1));
+      this.#targetLangSets = monsterConfig.targetLangs;
     }
     if (!(monsterConfig?.jobStore ?? monsterConfig?.snapStore)) {
       throw "You must specify at least a jobStore or a snapStore in your config";
     }
-    this.#targetLangs = new Set(monsterConfig.targetLangs);
     this.monsterDir = monsterDir;
     this.configSeal = configSeal;
     this.jobStore = monsterConfig.jobStore;
@@ -13433,6 +13438,9 @@ var MonsterManager = class {
   // get all possible target languages from sources and from TMs
   getTargetLangs(limitToLang) {
     if (limitToLang) {
+      if (this.#targetLangSets[limitToLang]) {
+        return this.#targetLangSets[limitToLang];
+      }
       const langsToLimit = limitToLang.split(",");
       const invalidLangs = langsToLimit.filter((limitedLang) => !this.#targetLangs.has(limitedLang));
       if (invalidLangs.length > 0) {
