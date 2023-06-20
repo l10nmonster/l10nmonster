@@ -56,10 +56,7 @@ exports.BridgeTranslator = class XliffBridge {
                 if (xt?.target?.length > 0) {
                     tus.push({
                         guid,
-                        rid: tuMap[guid].rid,
-                        sid: tuMap[guid].sid,
-                        ts: tuMap[guid].ts,
-                        nsrc: [xt.source], // TODO: need to deal with nsrc properly
+                        ts: l10nmonster.regression ? 1 : new Date().getTime(),
                         ntgt: [xt.target], // TODO: need to deal with ntgt properly
                         q: this.quality,
                     });

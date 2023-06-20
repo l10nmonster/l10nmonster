@@ -93,6 +93,7 @@ export class FormatHandler {
                 for (const decorator of this.#segmentDecorators) {
                     decoratedSeg = decorator(decoratedSeg);
                     if (decoratedSeg === undefined) { // this basically means DNT (or more like "pretend this doesn't exist")
+                        l10nmonster.logger.verbose(`Decorator rejected segment ${normalizedSeg.sid} in resource ${rid}`);
                         break;
                     }
                 }

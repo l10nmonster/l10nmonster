@@ -12685,20 +12685,22 @@ var TU = class {
     if (!isPartial && (!Number.isInteger(entry.q) || !Array.isArray(entry.ntgt) && !entry.inflight)) {
       throw `Rejecting complete TU with missing mandatory fields: ${JSON.stringify(entry)}`;
     }
-    const spuriousProps = [];
     const whitelist = isPartial ? sourceTUWhitelist : targetTUWhitelist;
     for (const [k, v] of Object.entries(entry)) {
       if (whitelist.has(k)) {
         this[k] = v;
-      } else {
-        spuriousProps.push(k);
       }
     }
-    spuriousProps.length > 0 && l10nmonster.logger.verbose(`Spurious properties in tu ${entry.guid}: ${spuriousProps.join(", ")}`);
   }
+  // returns a TU with only the source string and target missing
   static asSource(obj) {
     return new TU(cleanupTU(obj), true);
   }
+  // converts a segments into a source TU
+  static fromSegment(res, seg) {
+    return TU.asSource(utils_exports.makeTU(res, seg));
+  }
+  // returns a TU with both source and target string
   static asPair(obj) {
     return new TU(cleanupTU(obj), false);
   }
@@ -12728,10 +12730,9 @@ var TM = class {
         l10nmonster.logger.info(`Nuking existing TM ${tmPathName}`);
       } else {
         this.#jobStatus = tmData.jobStatus;
-        this.#tus = tmData.tus;
+        Object.values(tmData.tus).forEach((tu) => this.setEntry(tu));
       }
     }
-    Object.values(this.#tus).forEach((tu) => this.setEntryByGuid(tu.guid, tu));
   }
   get guids() {
     return Object.keys(this.#tus);
@@ -12739,11 +12740,11 @@ var TM = class {
   getEntryByGuid(guid) {
     return this.#tus[guid];
   }
-  setEntryByGuid(guid, entry) {
+  setEntry(entry) {
     try {
       const cleanedTU = TU.asPair(entry);
       Object.freeze(cleanedTU);
-      this.#tus[guid] = cleanedTU;
+      this.#tus[entry.guid] = cleanedTU;
       const flattenSrc = utils_exports.flattenNormalizedSourceToOrdinal(cleanedTU.nsrc);
       this.#lookUpByFlattenSrc[flattenSrc] ??= [];
       !this.#lookUpByFlattenSrc[flattenSrc].includes(cleanedTU) && this.#lookUpByFlattenSrc[flattenSrc].push(cleanedTU);
@@ -12777,7 +12778,7 @@ var TM = class {
         const reqEntry = requestedUnits[guid] ?? {};
         const tmEntry = this.getEntryByGuid(guid);
         if (!tmEntry) {
-          this.setEntryByGuid(guid, { ...reqEntry, q: 0, jobGuid, inflight: true });
+          this.setEntry({ ...reqEntry, q: 0, jobGuid, inflight: true });
         }
       }
     }
@@ -12787,7 +12788,7 @@ var TM = class {
         const reqEntry = requestedUnits[tu.guid] ?? {};
         const rectifiedTU = { ...reqEntry, ...tu, jobGuid, translationProvider };
         if (!tmEntry || tmEntry.q < tu.q || tmEntry.q === tu.q && tmEntry.ts < rectifiedTU.ts) {
-          this.setEntryByGuid(tu.guid, rectifiedTU);
+          this.setEntry(rectifiedTU);
         }
       }
     }
@@ -12903,13 +12904,15 @@ var Channel = class {
   #formatHandlers;
   #defaultResourceFormat;
   #defaultSourceLang;
+  #defaultTargetLangs;
   #target;
-  constructor({ id, source, formatHandlers, defaultResourceFormat, defaultSourceLang, target }) {
+  constructor({ id, source, formatHandlers, defaultResourceFormat, defaultSourceLang, defaultTargetLangs, target }) {
     this.#id = id;
     this.#source = source;
     this.#formatHandlers = formatHandlers;
     this.#defaultResourceFormat = defaultResourceFormat;
     this.#defaultSourceLang = defaultSourceLang;
+    this.#defaultTargetLangs = defaultTargetLangs;
     this.#target = target;
   }
   makeResourceHandleFromObject(obj) {
@@ -12921,6 +12924,7 @@ var Channel = class {
       formatHandler,
       sourceLang: this.#defaultSourceLang,
       // can be overriden but here's the default
+      targetLangs: this.#defaultTargetLangs,
       ...obj
     });
   }
@@ -13076,6 +13080,7 @@ ${JSON.stringify(entry.ntgt)}`;
         for (const decorator of this.#segmentDecorators) {
           decoratedSeg = decorator(decoratedSeg);
           if (decoratedSeg === void 0) {
+            l10nmonster.logger.verbose(`Decorator rejected segment ${normalizedSeg.sid} in resource ${rid}`);
             break;
           }
         }
@@ -13211,7 +13216,7 @@ function validate(context, obj = {}) {
 var ResourceManager = class {
   // #configSeal;
   #channels = {};
-  constructor({ channels, formats, snapStore, defaultSourceLang }) {
+  constructor({ channels, formats, snapStore, defaultSourceLang, defaultTargetLangs }) {
     const formatHandlers = {};
     for (const [format, formatCfg] of Object.entries(formats)) {
       validate(`format ${format}`, formatCfg).objectProperty("resourceFilter", "normalizers").arrayOfFunctions("segmentDecorators");
@@ -13244,6 +13249,7 @@ var ResourceManager = class {
         formatHandlers,
         defaultResourceFormat: channelCfg.defaultResourceFormat ?? channelId,
         defaultSourceLang,
+        defaultTargetLangs,
         target: channelCfg.target
       });
     }
@@ -13317,17 +13323,23 @@ var ResourceManager = class {
 
 // src/monsterManager.js
 var MonsterManager = class {
+  #targetLangs;
   #functionsForShutdown;
   constructor({ monsterDir, monsterConfig, configSeal }) {
     if (!monsterConfig?.sourceLang) {
       throw "You must specify sourceLang in your config";
     }
+    if (!Array.isArray(monsterConfig?.targetLangs)) {
+      throw "You must specify a targetLangs array in your config";
+    }
     if (!(monsterConfig?.jobStore ?? monsterConfig?.snapStore)) {
       throw "You must specify at least a jobStore or a snapStore in your config";
     }
+    this.#targetLangs = new Set(monsterConfig.targetLangs);
     this.monsterDir = monsterDir;
     this.configSeal = configSeal;
     this.jobStore = monsterConfig.jobStore;
+    this.jobStore.shutdown && this.scheduleForShutdown(this.jobStore.shutdown.bind(this.jobStore));
     this.sourceLang = monsterConfig.sourceLang;
     this.minimumQuality = monsterConfig.minimumQuality;
     this.#functionsForShutdown = [];
@@ -13389,8 +13401,10 @@ var MonsterManager = class {
       channels,
       formats,
       snapStore: monsterConfig.snapStore,
-      defaultSourceLang: this.sourceLang
+      defaultSourceLang: monsterConfig.sourceLang,
+      defaultTargetLangs: [...this.#targetLangs].sort()
     });
+    this.scheduleForShutdown(this.rm.shutdown.bind(this.rm));
     if (monsterConfig.translationProviders) {
       this.translationProviders = monsterConfig.translationProviders;
     } else {
@@ -13401,6 +13415,7 @@ var MonsterManager = class {
     }
     this.tuFilters = monsterConfig.tuFilters;
     this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, configSeal });
+    this.scheduleForShutdown(this.tmm.shutdown.bind(this.tmm));
     this.analyzers = monsterConfig.analyzers ?? {};
     this.capabilitiesByChannel = Object.fromEntries(Object.entries(channels).map(([type, channel]) => [type, {
       snap: Boolean(channel.source && monsterConfig.snapStore),
@@ -13416,21 +13431,16 @@ var MonsterManager = class {
     this.#functionsForShutdown.push(func);
   }
   // get all possible target languages from sources and from TMs
-  async getTargetLangs(limitToLang, includeAll) {
+  getTargetLangs(limitToLang) {
     if (limitToLang) {
       const langsToLimit = limitToLang.split(",");
+      const invalidLangs = langsToLimit.filter((limitedLang) => !this.#targetLangs.has(limitedLang));
+      if (invalidLangs.length > 0) {
+        throw `Invalid languages: ${invalidLangs.join(",")}`;
+      }
       return langsToLimit;
     }
-    let srcTargetLangs = /* @__PURE__ */ new Set();
-    const resourceHandles = await this.rm.getResourceHandles();
-    resourceHandles.forEach((res) => res.targetLangs.forEach((targetLang) => srcTargetLangs.add(targetLang)));
-    if (includeAll) {
-      const allTargetLangs = new Set(srcTargetLangs);
-      Object.values(await this.jobStore.getAvailableLangPairs()).forEach((pair) => allTargetLangs.add(pair[1]));
-      return [...allTargetLangs];
-    } else {
-      return [...srcTargetLangs];
-    }
+    return [...this.#targetLangs];
   }
   getMinimumQuality(jobManifest) {
     let minimumQuality = this.minimumQuality;
@@ -13499,7 +13509,7 @@ var MonsterManager = class {
         const tm = await this.tmm.getTM(resHandle.sourceLang, targetLang);
         for (const seg of resHandle.segments) {
           const tmEntry = tm.getEntryByGuid(seg.guid);
-          const tu = utils_exports.makeTU(resHandle, seg);
+          const tu = TU.fromSegment(resHandle, seg);
           const plainText = tu.nsrc.map((e) => typeof e === "string" ? e : "").join("");
           const words = import_words_count.default.wordsCount(plainText);
           const isCompatible = utils_exports.sourceAndTargetAreCompatible(tu?.nsrc, tmEntry?.ntgt);
@@ -13544,7 +13554,7 @@ var MonsterManager = class {
     const sourceLookup = {};
     for await (const res of this.rm.getAllResources()) {
       for (const seg of res.segments) {
-        sourceLookup[seg.guid] = utils_exports.makeTU(res, seg);
+        sourceLookup[seg.guid] = TU.fromSegment(res, seg);
       }
     }
     if (!guidList) {
@@ -13580,9 +13590,6 @@ var MonsterManager = class {
     return this.translationProviders[jobManifest.translationProvider];
   }
   async shutdown() {
-    this.jobStore.shutdown && await this.jobStore.shutdown();
-    await this.rm.shutdown();
-    await this.tmm.shutdown();
     for (const func of this.#functionsForShutdown) {
       await func();
     }
@@ -13759,14 +13766,15 @@ async function analyzeCmd(mm, analyzer, params, limitToLang, tuFilter) {
     }
     return analyzer2.getAnalysis();
   } else if (typeof Analyzer.prototype.processTU === "function") {
-    const targetLangs = (await mm.getTargetLangs(limitToLang)).sort();
     const bodies = [];
     let lastAnalysis;
     const hasAggregateAnalysis = typeof Analyzer.prototype.getAggregateAnalysis === "function";
     let analyzer2;
-    for (const targetLang of targetLangs) {
+    const desiredTargetLangs = new Set(mm.getTargetLangs(limitToLang));
+    const availableLangPairs = (await mm.jobStore.getAvailableLangPairs()).filter((pair) => desiredTargetLangs.has(pair[1]));
+    for (const [sourceLang, targetLang] of availableLangPairs) {
       (!hasAggregateAnalysis || !analyzer2) && (analyzer2 = new Analyzer(...params));
-      const tm = await mm.tmm.getTM(mm.sourceLang, targetLang);
+      const tm = await mm.tmm.getTM(sourceLang, targetLang);
       const tus = tm.guids.map((guid) => tm.getEntryByGuid(guid));
       for (const tu of tus) {
         (!tuFilterFunction || tuFilterFunction(tu)) && analyzer2.processTU({ targetLang, tu });
@@ -13782,9 +13790,10 @@ async function analyzeCmd(mm, analyzer, params, limitToLang, tuFilter) {
 // src/commands/pull.js
 async function pullCmd(mm, { limitToLang, partial }) {
   const stats = { numPendingJobs: 0, translatedStrings: 0, doneJobs: 0, newPendingJobs: 0 };
-  const targetLangs = await mm.getTargetLangs(limitToLang);
-  for (const targetLang of targetLangs) {
-    const pendingJobs = (await mm.jobStore.getJobStatusByLangPair(mm.sourceLang, targetLang)).filter((e) => e[1].status === "pending").map((e) => e[0]);
+  const desiredTargetLangs = new Set(mm.getTargetLangs(limitToLang));
+  const availableLangPairs = (await mm.jobStore.getAvailableLangPairs()).filter((pair) => desiredTargetLangs.has(pair[1]));
+  for (const [sourceLang, targetLang] of availableLangPairs) {
+    const pendingJobs = (await mm.jobStore.getJobStatusByLangPair(sourceLang, targetLang)).filter((e) => e[1].status === "pending").map((e) => e[0]);
     stats.numPendingJobs += pendingJobs.length;
     for (const jobGuid of pendingJobs) {
       const jobRequest = await mm.jobStore.getJobRequest(jobGuid);
@@ -13794,7 +13803,7 @@ async function pullCmd(mm, { limitToLang, partial }) {
         const translationProvider = mm.getTranslationProvider(pendingJob);
         const jobResponse = await translationProvider.translator.fetchTranslations(pendingJob, jobRequest);
         if (jobResponse?.status === "done") {
-          await mm.processJob(jobResponse);
+          await mm.processJob(jobResponse, jobRequest);
           stats.translatedStrings += jobResponse.tus.length;
           stats.doneJobs++;
         } else if (jobResponse?.status === "pending") {
@@ -13802,7 +13811,7 @@ async function pullCmd(mm, { limitToLang, partial }) {
           if (partial) {
             const { inflight, ...doneResponse } = jobResponse;
             doneResponse.status = "done";
-            await mm.processJob(doneResponse);
+            await mm.processJob(doneResponse, jobRequest);
             stats.translatedStrings += jobResponse.tus.length;
             const newRequest = await mm.jobStore.getJobRequest(jobResponse.jobGuid);
             const newManifest = await mm.jobStore.createJobManifest();
@@ -13880,7 +13889,7 @@ async function pushCmd(mm, { limitToLang, tuFilter, driver, refresh, translation
     guidList = req.tus.map((tu) => tu.guid);
   }
   const status = [];
-  const targetLangs = await mm.getTargetLangs(limitToLang);
+  const targetLangs = mm.getTargetLangs(limitToLang);
   for (const targetLang of targetLangs) {
     const blockedJobs = (await mm.jobStore.getJobStatusByLangPair(mm.sourceLang, targetLang)).filter((e) => e[1].status === "req");
     if (blockedJobs.length === 0) {
@@ -13938,7 +13947,7 @@ async function jobPushCmd(mm, pushJobGuid) {
     const translationProvider = mm.getTranslationProvider(blockedRequest);
     if (translationProvider) {
       const jobResponse = await translationProvider.translator.requestTranslations(blockedRequest);
-      await mm.processJob(jobResponse);
+      await mm.processJob(jobResponse, blockedRequest);
       return {
         status: jobResponse.status,
         num: jobResponse.tus?.length ?? jobResponse.inflight?.length ?? 0
@@ -13957,7 +13966,7 @@ async function statusCmd(mm, { limitToLang }) {
     lang: {},
     numSources: 0
   };
-  const targetLangs = await mm.getTargetLangs(limitToLang);
+  const targetLangs = mm.getTargetLangs(limitToLang);
   for (const targetLang of targetLangs) {
     const leverage = await mm.estimateTranslationJob({ targetLang });
     status.lang[targetLang] = {
@@ -13972,9 +13981,10 @@ async function statusCmd(mm, { limitToLang }) {
 // src/commands/jobs.js
 async function jobsCmd(mm, { limitToLang }) {
   const unfinishedJobs = {};
-  const targetLangs = await mm.getTargetLangs(limitToLang);
-  for (const targetLang of targetLangs) {
-    const pendingJobs = (await mm.jobStore.getJobStatusByLangPair(mm.sourceLang, targetLang)).filter((e) => e[1].status !== "done");
+  const desiredTargetLangs = new Set(mm.getTargetLangs(limitToLang));
+  const availableLangPairs = (await mm.jobStore.getAvailableLangPairs()).filter((pair) => desiredTargetLangs.has(pair[1]));
+  for (const [sourceLang, targetLang] of availableLangPairs) {
+    const pendingJobs = (await mm.jobStore.getJobStatusByLangPair(sourceLang, targetLang)).filter((e) => e[1].status !== "done");
     unfinishedJobs[targetLang] = [];
     for (const [jobGuid, handle] of pendingJobs) {
       unfinishedJobs[targetLang].push(await (handle.status === "pending" ? mm.jobStore.getJob(jobGuid) : mm.jobStore.getJobRequest(jobGuid)));
@@ -14151,16 +14161,17 @@ async function exportAsJob(content, jobGuid) {
   return [jobReq, jobRes];
 }
 async function tmExportCmd(mm, { limitToLang, mode, format, prjsplit }) {
-  const targetLangs = await mm.getTargetLangs(limitToLang);
   const status = { files: [] };
   const sourceLookup = {};
   for await (const res of mm.rm.getAllResources()) {
     for (const seg of res.segments) {
-      sourceLookup[seg.guid] = utils_exports.makeTU(res, seg);
+      sourceLookup[seg.guid] = TU.fromSegment(res, seg);
     }
   }
-  for (const targetLang of targetLangs) {
-    const tm = await mm.tmm.getTM(mm.sourceLang, targetLang);
+  const desiredTargetLangs = new Set(mm.getTargetLangs(limitToLang));
+  const availableLangPairs = (await mm.jobStore.getAvailableLangPairs()).filter((pair) => desiredTargetLangs.has(pair[1]));
+  for (const [sourceLang, targetLang] of availableLangPairs) {
+    const tm = await mm.tmm.getTM(sourceLang, targetLang);
     const guidList = mode === "tm" ? tm.guids : Object.keys(sourceLookup);
     const guidsByPrj = {};
     guidList.forEach((guid) => {
@@ -14172,7 +14183,7 @@ async function tmExportCmd(mm, { limitToLang, mode, format, prjsplit }) {
     });
     for (const prj of Object.keys(guidsByPrj)) {
       const content = {
-        sourceLang: mm.sourceLang,
+        sourceLang,
         targetLang,
         pairs: guidsByPrj[prj].map((guid) => ({
           sourceTU: sourceLookup[guid],
@@ -14181,18 +14192,18 @@ async function tmExportCmd(mm, { limitToLang, mode, format, prjsplit }) {
       };
       let filename;
       if (format === "job") {
-        const jobGuid = `tmexport_${prjsplit ? `${prj}_` : ""}${mm.sourceLang}_${targetLang}`;
+        const jobGuid = `tmexport_${prjsplit ? `${prj}_` : ""}${sourceLang}_${targetLang}`;
         const [jobReq, jobRes] = await exportAsJob(content, jobGuid);
-        filename = `TMExport_${mm.sourceLang}_${targetLang}_job_${jobGuid}`;
+        filename = `TMExport_${sourceLang}_${targetLang}_job_${jobGuid}`;
         await fs4.writeFile(`${filename}-req.json`, JSON.stringify(jobReq, null, "	"), "utf8");
         await fs4.writeFile(`${filename}-done.json`, JSON.stringify(jobRes, null, "	"), "utf8");
       } else if (format === "json") {
         const json = await exportTMX(content, mode !== "tm");
-        filename = `${prjsplit ? `${prj}_` : ""}${mm.sourceLang}_${targetLang}.json`;
+        filename = `${prjsplit ? `${prj}_` : ""}${sourceLang}_${targetLang}.json`;
         await fs4.writeFile(`${filename}`, JSON.stringify(json, null, "	"), "utf8");
       } else {
         const json = await exportTMX(content, mode !== "tm");
-        filename = `${prjsplit ? `${prj}_` : ""}${mm.sourceLang}_${targetLang}.tmx`;
+        filename = `${prjsplit ? `${prj}_` : ""}${sourceLang}_${targetLang}.tmx`;
         await fs4.writeFile(`${filename}`, await js2tmx(json), "utf8");
       }
       status.files.push(filename);
@@ -14204,7 +14215,7 @@ async function tmExportCmd(mm, { limitToLang, mode, format, prjsplit }) {
 // src/commands/translate.js
 async function translateCmd(mm, { limitToLang, dryRun }) {
   const status = { generatedResources: {}, deleteResources: {} };
-  const targetLangs = await mm.getTargetLangs(limitToLang);
+  const targetLangs = mm.getTargetLangs(limitToLang);
   const allResources = await mm.rm.getAllResources({ keepRaw: true });
   for await (const resHandle of allResources) {
     for (const targetLang of targetLangs) {

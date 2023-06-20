@@ -4,7 +4,7 @@ export async function statusCmd(mm, { limitToLang }) {
         lang: {},
         numSources: 0,
     };
-    const targetLangs = await mm.getTargetLangs(limitToLang);
+    const targetLangs = mm.getTargetLangs(limitToLang);
     for (const targetLang of targetLangs) {
         const leverage = await mm.estimateTranslationJob({ targetLang });
         status.lang[targetLang] = {

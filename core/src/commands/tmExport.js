@@ -67,16 +67,18 @@ async function exportAsJob(content, jobGuid) {
 }
 
 export async function tmExportCmd(mm, { limitToLang, mode, format, prjsplit }) {
-    const targetLangs = await mm.getTargetLangs(limitToLang);
     const status = { files: [] };
     const sourceLookup = {};
     for await (const res of mm.rm.getAllResources()) {
         for (const seg of res.segments) {
-            sourceLookup[seg.guid] = utils.makeTU(res, seg);
+            sourceLookup[seg.guid] = TU.fromSegment(res, seg);
         }
     }
-    for (const targetLang of targetLangs) {
-        const tm = await mm.tmm.getTM(mm.sourceLang, targetLang);
+    const desiredTargetLangs = new Set(mm.getTargetLangs(limitToLang));
+    const availableLangPairs = (await mm.jobStore.getAvailableLangPairs())
+        .filter(pair => desiredTargetLangs.has(pair[1]));
+    for (const [sourceLang, targetLang] of availableLangPairs) {
+        const tm = await mm.tmm.getTM(sourceLang, targetLang);
         const guidList = mode === 'tm' ? tm.guids : Object.keys(sourceLookup);
         const guidsByPrj = {};
         guidList.forEach(guid => {
@@ -88,7 +90,7 @@ export async function tmExportCmd(mm, { limitToLang, mode, format, prjsplit }) {
         });
         for (const prj of Object.keys(guidsByPrj)) {
             const content = {
-                sourceLang: mm.sourceLang,
+                sourceLang: sourceLang,
                 targetLang,
                 pairs: guidsByPrj[prj].map(guid => ({
                     sourceTU: sourceLookup[guid],
@@ -97,18 +99,18 @@ export async function tmExportCmd(mm, { limitToLang, mode, format, prjsplit }) {
             };
             let filename;
             if (format === 'job') {
-                const jobGuid = `tmexport_${prjsplit ? `${prj}_` : ''}${mm.sourceLang}_${targetLang}`;
+                const jobGuid = `tmexport_${prjsplit ? `${prj}_` : ''}${sourceLang}_${targetLang}`;
                 const [ jobReq, jobRes ] = await exportAsJob(content, jobGuid);
-                filename = `TMExport_${mm.sourceLang}_${targetLang}_job_${jobGuid}`;
+                filename = `TMExport_${sourceLang}_${targetLang}_job_${jobGuid}`;
                 await fs.writeFile(`${filename}-req.json`, JSON.stringify(jobReq, null, '\t'), 'utf8');
                 await fs.writeFile(`${filename}-done.json`, JSON.stringify(jobRes, null, '\t'), 'utf8');
             } else if (format === 'json') {
                 const json = await exportTMX(content, mode !== 'tm');
-                filename = `${prjsplit ? `${prj}_` : ''}${mm.sourceLang}_${targetLang}.json`;
+                filename = `${prjsplit ? `${prj}_` : ''}${sourceLang}_${targetLang}.json`;
                 await fs.writeFile(`${filename}`, JSON.stringify(json, null, '\t'), 'utf8');
             } else {
                 const json = await exportTMX(content, mode !== 'tm');
-                filename = `${prjsplit ? `${prj}_` : ''}${mm.sourceLang}_${targetLang}.tmx`;
+                filename = `${prjsplit ? `${prj}_` : ''}${sourceLang}_${targetLang}.tmx`;
                 await fs.writeFile(`${filename}`, await js2tmx(json), 'utf8');
             }
             status.files.push(filename);

@@ -3,6 +3,7 @@ const { xml,  stores, adapters, translators, decorators } = require('@l10nmonste
 
 module.exports = class ReactConfig2 {
     sourceLang = 'en';
+    targetLangs = [ 'de', 'ru' ];
     minimumQuality = 50;
 
     constructor() {
@@ -31,7 +32,6 @@ module.exports = class ReactConfig2 {
         this.contentTypes = {
             node: {
                 source: new adapters.FsSource({
-                    targetLangs: [ 'de', 'ru' ],
                     globs: [ '**/en/*.json' ],
                 }),
                 resourceFilter: new i18next.Filter({

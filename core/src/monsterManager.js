@@ -3,20 +3,27 @@ import wordsCountModule from 'words-count';
 import TMManager from './tmManager.js';
 import ResourceManager from './resourceManager.js';
 import { utils } from '@l10nmonster/helpers';
+import { TU } from './entities/tu.js';
 
 export class MonsterManager {
+    #targetLangs;
     #functionsForShutdown;
 
     constructor({ monsterDir, monsterConfig, configSeal }) {
         if (!monsterConfig?.sourceLang) {
             throw 'You must specify sourceLang in your config';
         }
+        if (!Array.isArray(monsterConfig?.targetLangs)) {
+            throw 'You must specify a targetLangs array in your config';
+        }
         if (!(monsterConfig?.jobStore ?? monsterConfig?.snapStore)) {
             throw 'You must specify at least a jobStore or a snapStore in your config';
         }
+        this.#targetLangs = new Set(monsterConfig.targetLangs);
         this.monsterDir = monsterDir;
         this.configSeal = configSeal;
         this.jobStore = monsterConfig.jobStore;
+        this.jobStore.shutdown && this.scheduleForShutdown(this.jobStore.shutdown.bind(this.jobStore));
         this.sourceLang = monsterConfig.sourceLang;
         this.minimumQuality = monsterConfig.minimumQuality;
         this.#functionsForShutdown = [];
@@ -79,8 +86,10 @@ export class MonsterManager {
             channels,
             formats,
             snapStore: monsterConfig.snapStore,
-            defaultSourceLang: this.sourceLang,
+            defaultSourceLang: monsterConfig.sourceLang,
+            defaultTargetLangs: [ ...this.#targetLangs ].sort(),
         });
+        this.scheduleForShutdown(this.rm.shutdown.bind(this.rm));
         if (monsterConfig.translationProviders) {
             this.translationProviders = monsterConfig.translationProviders;
             // spell it out to use additional options like pairs: { sourceLang: [ targetLang1 ]}
@@ -92,6 +101,7 @@ export class MonsterManager {
         }
         this.tuFilters = monsterConfig.tuFilters;
         this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, configSeal });
+        this.scheduleForShutdown(this.tmm.shutdown.bind(this.tmm));
         this.analyzers = monsterConfig.analyzers ?? {};
         this.capabilitiesByChannel = Object.fromEntries(Object.entries(channels).map(([type, channel]) => [ type, {
             snap: Boolean(channel.source && monsterConfig.snapStore),
@@ -109,27 +119,16 @@ export class MonsterManager {
     }
 
     // get all possible target languages from sources and from TMs
-    async getTargetLangs(limitToLang, includeAll) {
+    getTargetLangs(limitToLang) {
         if (limitToLang) {
             const langsToLimit = limitToLang.split(',');
-            // TODO: add validation back when it's performant
-            // const invalidLangs = langsToLimit.filter(limitedLang => !allTargetLangs.has(limitedLang));
-            // if (invalidLangs.length > 0) {
-            //     throw `Invalid languages: ${invalidLangs.join(',')}`;
-            // }
+            const invalidLangs = langsToLimit.filter(limitedLang => !this.#targetLangs.has(limitedLang));
+            if (invalidLangs.length > 0) {
+                throw `Invalid languages: ${invalidLangs.join(',')}`;
+            }
             return langsToLimit;
         }
-        let srcTargetLangs = new Set();
-        const resourceHandles = await this.rm.getResourceHandles();
-        resourceHandles.forEach(res => res.targetLangs.forEach(targetLang => srcTargetLangs.add(targetLang)));
-        if (includeAll) {
-            const allTargetLangs = new Set(srcTargetLangs);
-            Object.values(await this.jobStore.getAvailableLangPairs())
-                .forEach(pair => allTargetLangs.add(pair[1]));
-            return [...allTargetLangs];
-        } else {
-            return [...srcTargetLangs];
-        }
+        return [ ...this.#targetLangs ];
     }
 
     getMinimumQuality(jobManifest) {
@@ -204,7 +203,7 @@ export class MonsterManager {
                 for (const seg of resHandle.segments) {
                     // TODO: if segment is pluralized we need to generate/suppress the relevant number of variants for the targetLang
                     const tmEntry = tm.getEntryByGuid(seg.guid);
-                    const tu = utils.makeTU(resHandle, seg);
+                    const tu = TU.fromSegment(resHandle, seg);
                     const plainText = tu.nsrc.map(e => (typeof e === 'string' ? e : '')).join('');
                     const words = wordsCountModule.wordsCount(plainText);
                     // TODO: compatibility is actually stricter than GUID, this leads to extra translations that can't be stored
@@ -255,7 +254,7 @@ export class MonsterManager {
         const sourceLookup = {};
         for await (const res of this.rm.getAllResources()) {
             for (const seg of res.segments) {
-                sourceLookup[seg.guid] = utils.makeTU(res, seg);
+                sourceLookup[seg.guid] = TU.fromSegment(res, seg);
             }
         }
         if (!guidList) {
@@ -293,9 +292,6 @@ export class MonsterManager {
     }
 
     async shutdown() {
-        this.jobStore.shutdown && await this.jobStore.shutdown();
-        await this.rm.shutdown();
-        await this.tmm.shutdown();
         for (const func of this.#functionsForShutdown) {
             await func();
         }

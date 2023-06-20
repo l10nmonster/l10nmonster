@@ -130,3 +130,8 @@ Providers can also support a `translation` push as opposed to a `refresh` push. 
 ### Dependencies
 
 Typically, all helpers depend on a shared context for things like access to a logger. This is provided via a global `l10nmonster` object.
+
+# Philosophy
+
+Localization is messy. Full of exceptions and bending backwards. As much as we want to provide an easy-to-use out-of-the-box solution by offering an opinionated implementation with reasonable defaults, the main goal should be to make solving of edge cases and advanced scenarios possible.
+To do this we try to componentize every aspect of localization with utilities, helpers, abstractions and then put them together into a simplified toolchain (e.g. the command-line interface). When more advanced toolchains are needed, just write your own with (hopefully) simple Node.js scripts that can be launched directly or a extensions of the CLI.

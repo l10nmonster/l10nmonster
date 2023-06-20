@@ -10,6 +10,7 @@ const androidLangMapping = {
 
 module.exports = class MultiProjectConfig2 {
     sourceLang = 'en';
+    targetLangs = [ 'ar', 'it', 'ja' ];
     minimumQuality = 50;
 
     constructor() {
@@ -17,7 +18,6 @@ module.exports = class MultiProjectConfig2 {
             ios: {
                 source: new adapters.FsSource({
                     globs: [ '../CardboardSDK/**/en.lproj/*.strings' ],
-                    targetLangs: [ 'ar', 'it', 'ja' ],
                     prj: 'CardboardSDK',
                 }),
                 resourceFilter: new ios.StringsFilter(),

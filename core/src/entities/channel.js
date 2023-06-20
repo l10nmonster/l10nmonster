@@ -6,14 +6,16 @@ export class Channel {
     #formatHandlers;
     #defaultResourceFormat;
     #defaultSourceLang;
+    #defaultTargetLangs;
     #target;
 
-    constructor({ id, source, formatHandlers, defaultResourceFormat, defaultSourceLang, target }) {
+    constructor({ id, source, formatHandlers, defaultResourceFormat, defaultSourceLang, defaultTargetLangs, target }) {
         this.#id = id;
         this.#source = source;
         this.#formatHandlers = formatHandlers;
         this.#defaultResourceFormat = defaultResourceFormat;
         this.#defaultSourceLang = defaultSourceLang;
+        this.#defaultTargetLangs = defaultTargetLangs;
         this.#target = target;
     }
 
@@ -26,6 +28,7 @@ export class Channel {
             resourceFormat: this.#defaultResourceFormat,
             formatHandler,
             sourceLang: this.#defaultSourceLang, // can be overriden but here's the default
+            targetLangs: this.#defaultTargetLangs,
             ...obj,
         });
     }

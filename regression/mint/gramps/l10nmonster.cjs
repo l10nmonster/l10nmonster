@@ -4,6 +4,7 @@ const demo = require('@l10nmonster/helpers-demo');
 
 module.exports = class GrampsConfig2 {
     sourceLang = 'en';
+    targetLangs = [ 'ja' ];
 
     constructor() {
         this.minimumQuality = l10nmonster.arg === 'prod' ? 95 : 0; // only push production builds
@@ -11,7 +12,6 @@ module.exports = class GrampsConfig2 {
             globs: [
                 'artifacts/*.pot',
             ],
-            targetLangs: [ 'ja' ],
         });
         this.resourceFilter = new po.Filter({
         });

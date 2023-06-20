@@ -27,7 +27,7 @@ rm -rf wd
 # rm **/.DS_Store
 mkdir wd
 cp -pr mint/* wd
-# cp -pr mint/tachiyomi-j2k wd
+# cp -pr mint/CardboardSDK wd
 cd wd
 for dir in *
 do

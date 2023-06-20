@@ -6,6 +6,7 @@ const translated = require('@l10nmonster/helpers-translated');
 
 module.exports = class HtmlConfig2 {
     sourceLang = 'en';
+    targetLangs = [ 'en', 'it' ];
     minimumQuality = 50;
 
     constructor() {
@@ -13,7 +14,7 @@ module.exports = class HtmlConfig2 {
             local: {
                 source: new adapters.FsSource({
                     globs: [ 'en/*.html' ],
-                    targetLangs: [ 'it' ],
+                    targetLangs: [ 'it' ], // override default
                     prj: 'local',
                 }),
                 resourceFilter: new html.Filter(),
@@ -28,7 +29,6 @@ module.exports = class HtmlConfig2 {
                     urlMap: {
                         'google': 'https://www.google.com/',
                     },
-                    targetLangs: [ 'en', 'it' ],
                     prj: 'remote',
                 }),
                 resourceFilter: new html.Filter(),

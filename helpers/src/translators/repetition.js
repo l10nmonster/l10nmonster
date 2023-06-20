@@ -4,6 +4,8 @@ import { utils } from '@l10nmonster/helpers';
 // or identical strings with different id (unqualified)
 // the assigned quality of the reused string is equal to the original one minus corresponding penalty
 export class Repetition {
+    #mm;
+
     constructor({ qualifiedPenalty, unqualifiedPenalty }) {
         if ((qualifiedPenalty && unqualifiedPenalty) === undefined) {
             throw 'You must specify qualifiedPenalty and unqualifiedPenalty properties for Repetition';
@@ -13,14 +15,14 @@ export class Repetition {
     }
 
     async init(mm) {
-        this.mm = mm;
+        this.#mm = mm;
     }
 
     // eslint-disable-next-line complexity
     async requestTranslations(jobRequest) {
         const { tus, ...jobResponse } = jobRequest;
         jobResponse.tus = [];
-        const tm = await this.mm.tmm.getTM(this.mm.sourceLang, jobRequest.targetLang);
+        const tm = await this.#mm.tmm.getTM(jobRequest.sourceLang, jobRequest.targetLang);
         for (const tu of tus) {
             const tuCandidates = tm.getAllEntriesBySrc(tu.nsrc);
             if (tuCandidates.length > 0) {

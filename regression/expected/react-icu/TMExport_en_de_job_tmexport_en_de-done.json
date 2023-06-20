@@ -13,10 +13,10 @@
 				"Welcome to react using react-i18next"
 			],
 			"rid": "public/locales/en/translations.json",
-			"ts": 1,
 			"ntgt": [
 				"Willkommen zu react und react-i18next"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -39,7 +39,6 @@
 				" and save to reload."
 			],
 			"rid": "public/locales/en/translations.json",
-			"ts": 1,
 			"ntgt": [
 				"Um loszulegen, ändere ",
 				{
@@ -55,6 +54,7 @@
 				},
 				" speicheren und neuladen."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -67,10 +67,10 @@
 				"Switch language between english and german using buttons above."
 			],
 			"rid": "public/locales/en/translations.json",
-			"ts": 1,
 			"ntgt": [
 				"Ändere die Sprachen zwischen deutsch und englisch mit Hilfe der beiden Schalter."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -88,7 +88,6 @@
 				"!"
 			],
 			"rid": "public/locales/en/translations.json",
-			"ts": 1,
 			"ntgt": [
 				"Willkommen, ",
 				{
@@ -98,6 +97,7 @@
 				},
 				"!"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -123,7 +123,6 @@
 				"!"
 			],
 			"rid": "public/locales/en/translations.json",
-			"ts": 1,
 			"ntgt": [
 				"Willkommen, ",
 				{
@@ -143,6 +142,7 @@
 				},
 				"!"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"

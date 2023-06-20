@@ -4,10 +4,7 @@
 	"tus": [
 		{
 			"sid": "AccessibilityCardboardButton",
-			"mf": "default",
-			"gstr": "Cardboard mode: {{x}}",
 			"guid": "p72nj2yZPB-RfJOZa2iZg2pt16HznCGr_kdYQziGHxs",
-			"rawNotes": "Accessibility label for the cardboard button to go into cardboard mode (read out loud)",
 			"notes": {
 				"desc": "Accessibility label for the cardboard button to go into cardboard mode (read out loud)"
 			},
@@ -19,15 +16,11 @@
 					"v": "%1$@"
 				}
 			],
-			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1
+			"rid": "en.lproj/CardboardSDK.strings"
 		},
 		{
 			"sid": "AccessibilityFullscreenButton",
-			"mf": "default",
-			"gstr": "Fullscreen mode",
 			"guid": "snWaUNjXnKuXlItO8jUPfKITKfuqshl6xCXxUgiP4jI",
-			"rawNotes": "Accessibility label for the fullscreen button to go into fullscreen mode (read out loud)",
 			"notes": {
 				"desc": "Accessibility label for the fullscreen button to go into fullscreen mode (read out loud)"
 			},
@@ -35,15 +28,11 @@
 			"nsrc": [
 				"Fullscreen mode"
 			],
-			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1
+			"rid": "en.lproj/CardboardSDK.strings"
 		},
 		{
 			"sid": "HelpHack",
-			"mf": "default",
-			"gstr": "Help 'encoding' is \"hard\"!\\\n",
 			"guid": "kjYD6n4DIB9kQKYRd0QStGsZfU2yOhcUG091zj53Skw",
-			"rawNotes": "Test encoding and decoding",
 			"notes": {
 				"desc": "Test encoding and decoding"
 			},
@@ -51,8 +40,7 @@
 			"nsrc": [
 				"Help 'encoding' is \"hard\"!\\\n"
 			],
-			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1
+			"rid": "en.lproj/CardboardSDK.strings"
 		}
 	],
 	"translationProvider": "Visicode",

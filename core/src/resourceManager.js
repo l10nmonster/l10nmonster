@@ -35,7 +35,7 @@ export default class ResourceManager {
     // #configSeal;
     #channels = {};
 
-    constructor({ channels, formats, snapStore, defaultSourceLang }) {
+    constructor({ channels, formats, snapStore, defaultSourceLang, defaultTargetLangs }) {
         // this.#configSeal = configSeal;
         const formatHandlers = {};
         for (const [format, formatCfg] of Object.entries(formats)) {
@@ -70,6 +70,7 @@ export default class ResourceManager {
                 formatHandlers,
                 defaultResourceFormat: channelCfg.defaultResourceFormat ?? channelId,
                 defaultSourceLang,
+                defaultTargetLangs,
                 target: channelCfg.target,
             });
         }

@@ -35,7 +35,7 @@ export class StatusViewProvider extends AbstractViewTreeDataProvider {
                 tooltip: `modified: ${s.modified}\n languages: ${s.targetLangs.join(', ')}`,
             })),
         };
-        const targetLangs = await mm.getTargetLangs(false, true);
+        const targetLangs = mm.getTargetLangs();
         const translationStatus = {
             key: 'translationStatus',
             label: 'Translation Status',

@@ -19,7 +19,7 @@ module.exports = class MTConfig2 {
             local: {
                 source: new adapters.FsSource({
                     globs: [ 'en/*.json' ],
-                    targetLangs: [ 'it' ]
+                    targetLangs = [ 'it' ]
                 }),
                 resourceFilter: new i18next.Filter(),
                 target: new adapters.FsTarget({

@@ -23,14 +23,16 @@ export async function analyzeCmd(mm, analyzer, params, limitToLang, tuFilter) {
         }
         return analyzer.getAnalysis();
     } else if (typeof Analyzer.prototype.processTU === 'function') { // this analyzer needs a tm driver
-        const targetLangs = (await mm.getTargetLangs(limitToLang)).sort();
         const bodies = [];
         let lastAnalysis;
         const hasAggregateAnalysis = typeof Analyzer.prototype.getAggregateAnalysis === 'function';
         let analyzer;
-        for (const targetLang of targetLangs) {
-            (!hasAggregateAnalysis || !analyzer) && (analyzer = new Analyzer(...params));
-            const tm = await mm.tmm.getTM(mm.sourceLang, targetLang);
+        const desiredTargetLangs = new Set(mm.getTargetLangs(limitToLang));
+        const availableLangPairs = (await mm.jobStore.getAvailableLangPairs())
+            .filter(pair => desiredTargetLangs.has(pair[1]));
+        for (const [sourceLang, targetLang] of availableLangPairs) {
+                (!hasAggregateAnalysis || !analyzer) && (analyzer = new Analyzer(...params));
+            const tm = await mm.tmm.getTM(sourceLang, targetLang);
             const tus = tm.guids.map(guid => tm.getEntryByGuid(guid));
             for (const tu of tus) {
                 (!tuFilterFunction || tuFilterFunction(tu)) && analyzer.processTU({ targetLang, tu });

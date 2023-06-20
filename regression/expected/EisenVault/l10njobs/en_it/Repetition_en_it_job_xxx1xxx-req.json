@@ -4,33 +4,19 @@
 	"tus": [
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 9,
-				"endLine": 9
-			},
-			"mf": "default",
-			"gstr": "This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed.",
 			"guid": "c-6fDjw00nB1UJtukMnmj1d18-MHF12J24XzB-fT4xg",
 			"nsrc": [
 				"This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed."
 			],
-			"rid": "dashlets/rssfeed.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/rssfeed.get_en.properties"
 		},
 		{
 			"sid": "link.configure",
-			"location": {
-				"startLine": 3,
-				"endLine": 3
-			},
-			"mf": "default",
-			"gstr": "Configure",
 			"guid": "dI6k9BSigj6gEI0usWMTDR1B9zsFO8ws9atTiah-8Y4",
 			"nsrc": [
 				"Configure"
 			],
-			"rid": "dashlets/site-notice.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-notice.get_en.properties"
 		}
 	],
 	"translationProvider": "Repetition",

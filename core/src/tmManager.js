@@ -33,10 +33,9 @@ class TM {
                 l10nmonster.logger.info(`Nuking existing TM ${tmPathName}`);
             } else {
                 this.#jobStatus = tmData.jobStatus;
-                this.#tus = tmData.tus;
+                Object.values(tmData.tus).forEach(tu => this.setEntry(tu));
             }
         }
-        Object.values(this.#tus).forEach(tu => this.setEntryByGuid(tu.guid, tu)); // this is to generate side-effects
     }
 
     get guids() {
@@ -47,11 +46,11 @@ class TM {
         return this.#tus[guid];
     }
 
-    setEntryByGuid(guid, entry) {
+    setEntry(entry) {
         try {
             const cleanedTU = TU.asPair(entry);
             Object.freeze(cleanedTU);
-            this.#tus[guid] = cleanedTU;
+            this.#tus[entry.guid] = cleanedTU;
             const flattenSrc = utils.flattenNormalizedSourceToOrdinal(cleanedTU.nsrc);
             this.#lookUpByFlattenSrc[flattenSrc] ??= [];
             !this.#lookUpByFlattenSrc[flattenSrc].includes(cleanedTU) && this.#lookUpByFlattenSrc[flattenSrc].push(cleanedTU);
@@ -89,7 +88,7 @@ class TM {
                 const reqEntry = requestedUnits[guid] ?? {};
                 const tmEntry = this.getEntryByGuid(guid);
                 if (!tmEntry) {
-                    this.setEntryByGuid(guid, { ...reqEntry, q: 0, jobGuid, inflight: true });
+                    this.setEntry({ ...reqEntry, q: 0, jobGuid, inflight: true });
                 }
             }
         }
@@ -103,7 +102,7 @@ class TM {
                 // const srcEntry = Object.fromEntries(Object.entries(this.sourceMgr.getSourceByGuid(tu.guid) ?? {}).filter(p => refreshedFromSource.has(p[0])));
                 const rectifiedTU = { ...reqEntry, ...tu, jobGuid, translationProvider };
                 if (!tmEntry || tmEntry.q < tu.q || (tmEntry.q === tu.q && tmEntry.ts < rectifiedTU.ts)) {
-                    this.setEntryByGuid(tu.guid, rectifiedTU);
+                    this.setEntry(rectifiedTU);
                 }
             }
         }

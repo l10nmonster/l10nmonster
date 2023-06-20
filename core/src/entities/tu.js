@@ -79,23 +79,30 @@ export class TU {
         if (!isPartial && (!Number.isInteger(entry.q) || (!Array.isArray(entry.ntgt) && !entry.inflight))) {
             throw `Rejecting complete TU with missing mandatory fields: ${JSON.stringify(entry)}`;
         }
-        const spuriousProps = [];
+        // const spuriousProps = [];
         const whitelist = isPartial ? sourceTUWhitelist : targetTUWhitelist;
         for (const [ k, v ] of Object.entries(entry)) {
             if (whitelist.has(k)) {
                 this[k] = v;
-            } else {
-                spuriousProps.push(k);
+            // } else {
+            //     spuriousProps.push(k);
             }
         }
-        spuriousProps.length > 0 && l10nmonster.logger.verbose(`Spurious properties in tu ${entry.guid}: ${spuriousProps.join(', ')}`);
+        // spuriousProps.length > 0 && l10nmonster.logger.verbose(`Spurious properties in tu ${entry.guid}: ${spuriousProps.join(', ')}`);
 
     }
 
+    // returns a TU with only the source string and target missing
     static asSource(obj) {
         return new TU(cleanupTU(obj), true);
     }
 
+    // converts a segments into a source TU
+    static fromSegment(res, seg) {
+        return TU.asSource(utils.makeTU(res, seg));
+    }
+
+    // returns a TU with both source and target string
     static asPair(obj) {
         return new TU(cleanupTU(obj), false);
     }

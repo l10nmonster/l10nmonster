@@ -4,7 +4,7 @@ export async function jobPushCmd(mm, pushJobGuid) {
         const translationProvider = mm.getTranslationProvider(blockedRequest);
         if (translationProvider) {
             const jobResponse = await translationProvider.translator.requestTranslations(blockedRequest);
-            await mm.processJob(jobResponse);
+            await mm.processJob(jobResponse, blockedRequest);
             return {
                 status: jobResponse.status,
                 num: jobResponse.tus?.length ?? jobResponse.inflight?.length ?? 0,

@@ -13,10 +13,10 @@
 				"Back"
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"رجوع"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -29,10 +29,10 @@
 				"QR Scan"
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"فحص الاستجابة السريعة."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -45,10 +45,10 @@
 				"Parsing configuration data"
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"تحليل بيانات التهيئة"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -61,10 +61,10 @@
 				"The QR code is invalid"
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"إن رمز الاستجابة السريعة غير صالح"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -77,10 +77,10 @@
 				"Problem in parsing the Url"
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"‏مشكلة في تحليل عنوان Url"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -97,7 +97,6 @@
 				" detected"
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"تم اكتشاف ",
 				{
@@ -106,6 +105,7 @@
 					"v1": "a_x_1"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -118,10 +118,10 @@
 				"Find this symbol on your viewer"
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"العثور على هذا الرمز على عارضك"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -134,10 +134,10 @@
 				"Can't find this symbol?"
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"ألا تستطيع العثور على هذا الرمز؟"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -150,10 +150,10 @@
 				"Troubleshooting Tips"
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"نصائح تحرّى الخلل وإصلاحه"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -166,10 +166,10 @@
 				"SKIP"
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"تخطٍ"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -182,10 +182,10 @@
 				"Let's get you set up"
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"لنبدأ الإعداد"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -198,10 +198,10 @@
 				"Pair your phone with your viewer for the best experience."
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"أقرن هاتفك مع العارض للتمتّع بأفضل تجربة"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -214,10 +214,10 @@
 				"No cardboard viewer?"
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"‏أليس لديك عارض Cardboard؟"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -230,10 +230,10 @@
 				"Get One"
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"الحصول على واحد"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -246,10 +246,10 @@
 				"Place your phone into your Cardboard viewer."
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"‏ضع هاتفك في عارض Cardboard."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -267,7 +267,6 @@
 				" viewer."
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"ضع هاتفك في عارض ",
 				{
@@ -277,6 +276,7 @@
 				},
 				"."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -289,10 +289,10 @@
 				"Settings"
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"الإعدادات"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -305,10 +305,10 @@
 				"Sync with Google Cardboard"
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"‏مزامنة مع Google Cardboard"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -325,7 +325,6 @@
 				}
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"العارض الحالي: ",
 				{
@@ -334,6 +333,7 @@
 					"v1": "a_x_1"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -346,10 +346,10 @@
 				"Default"
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"افتراضي"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -362,10 +362,10 @@
 				"Using a different viewer?"
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"هل تستخدم عارضًا مختلفًا؟"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -378,10 +378,10 @@
 				"SWITCH"
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"تبديل"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -398,7 +398,6 @@
 				}
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"تبديل العارض: ",
 				{
@@ -407,6 +406,7 @@
 					"v1": "a_x_1"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -419,10 +419,10 @@
 				"Help"
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"مساعدة"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -435,10 +435,10 @@
 				"Successfully Paired!"
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"تم الإقران بنجاح!"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -456,7 +456,6 @@
 				" viewer."
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"تمت تهيئة هاتفك لعارض ",
 				{
@@ -466,6 +465,7 @@
 				},
 				"."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -478,10 +478,10 @@
 				"OK"
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"موافق"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -494,10 +494,10 @@
 				"Settings"
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"الإعدادات"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -510,10 +510,10 @@
 				"Back to previous screen"
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"ntgt": [
 				"رجوع إلى الشاشة السابقة"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -526,11 +526,11 @@
 				"Help"
 			],
 			"rid": "en.lproj/CardboardSDK.strings",
-			"ts": 1,
 			"q": 61,
 			"ntgt": [
 				"مساعدة"
 			],
+			"ts": 1,
 			"jobGuid": "xxx1xxx",
 			"translationProvider": "Repetition"
 		},

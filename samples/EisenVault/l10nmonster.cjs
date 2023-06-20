@@ -3,12 +3,12 @@ const { xml, stores, adapters, normalizers } = require('@l10nmonster/helpers');
 
 module.exports = class EisenVaultConfig2 {
     sourceLang = 'en';
+    targetLangs = [ 'it', 'ja', 'pt-BR' ];
     minimumQuality = 50;
 
     constructor() {
         this.source = new adapters.FsSource({
             globs: [ '**/*_en.properties' ],
-            targetLangs: [ 'it', 'ja', 'pt-BR' ],
             resDecorator: resMeta => ({ ...resMeta, prj: resMeta.id.split('/')[1].split('.')[0].split('-')[0]}),
         });
         this.snapStore = new stores.FsSnapStore();

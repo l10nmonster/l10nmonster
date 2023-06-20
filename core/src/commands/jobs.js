@@ -1,8 +1,10 @@
 export async function jobsCmd(mm, { limitToLang }) {
     const unfinishedJobs = {};
-    const targetLangs = await mm.getTargetLangs(limitToLang);
-    for (const targetLang of targetLangs) {
-        const pendingJobs = (await mm.jobStore.getJobStatusByLangPair(mm.sourceLang, targetLang))
+    const desiredTargetLangs = new Set(mm.getTargetLangs(limitToLang));
+    const availableLangPairs = (await mm.jobStore.getAvailableLangPairs())
+        .filter(pair => desiredTargetLangs.has(pair[1]));
+    for (const [sourceLang, targetLang] of availableLangPairs) {
+        const pendingJobs = (await mm.jobStore.getJobStatusByLangPair(sourceLang, targetLang))
             .filter(e => e[1].status !== 'done');
         unfinishedJobs[targetLang] = [];
         for (const [ jobGuid, handle ] of pendingJobs) {

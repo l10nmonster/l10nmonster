@@ -384,7 +384,7 @@ __.-'            \\  \\   .   / \\_.  \\ -|_/\\/ \`--.|_
 `);
     console.time('Initialization time');
     const resourceHandles = await monsterManager.rm.getResourceHandles();
-    const targetLangs = await monsterManager.getTargetLangs(false, true);
+    const targetLangs = monsterManager.getTargetLangs();
     console.log(`Resources: ${resourceHandles.length}`);
     console.log(`Possible languages: ${targetLangs.join(', ')}`);
     console.log('Translation Memories:')

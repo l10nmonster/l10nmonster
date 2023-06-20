@@ -12,10 +12,10 @@
 				"New Activity"
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Nuova attività"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -31,7 +31,6 @@
 				" more"
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -40,6 +39,7 @@
 				},
 				" in più"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -55,7 +55,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Feed sito attività Alfresco per ",
 				{
@@ -64,6 +63,7 @@
 					"v1": "a_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -79,7 +79,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Feed utente attività Alfresco per ",
 				{
@@ -88,6 +87,7 @@
 					"v1": "a_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -107,7 +107,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -121,6 +120,7 @@
 					"v1": "b_x_1"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -140,7 +140,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -154,6 +153,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -173,7 +173,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -187,6 +186,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -206,7 +206,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -220,6 +219,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -239,7 +239,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -253,6 +252,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -272,7 +272,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -286,6 +285,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -305,7 +305,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -319,6 +318,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -338,7 +338,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -352,6 +351,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -371,7 +371,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -385,6 +384,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -404,7 +404,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -418,6 +417,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -437,7 +437,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -451,6 +450,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -470,7 +470,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -484,6 +483,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -503,7 +503,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -517,6 +516,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -536,7 +536,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -550,6 +549,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -569,7 +569,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -583,6 +582,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -602,7 +602,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -616,6 +615,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -636,7 +636,6 @@
 				" documents"
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -651,6 +650,7 @@
 				},
 				" documenti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -670,7 +670,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -684,6 +683,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -703,7 +703,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -717,6 +716,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -737,7 +737,6 @@
 				" documents"
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -752,6 +751,7 @@
 				},
 				" documenti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -771,7 +771,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -785,6 +784,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -805,7 +805,6 @@
 				" documents"
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -820,6 +819,7 @@
 				},
 				" documenti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -839,7 +839,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -853,6 +852,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -872,7 +872,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -886,6 +885,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -906,7 +906,6 @@
 				" folders"
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -921,6 +920,7 @@
 				},
 				" cartelle"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -941,7 +941,6 @@
 				" folders"
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -956,6 +955,7 @@
 				},
 				" cartelle"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -975,7 +975,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -989,6 +988,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1008,7 +1008,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -1022,6 +1021,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1041,7 +1041,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -1055,6 +1054,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1074,7 +1074,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -1088,6 +1087,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1107,7 +1107,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -1121,6 +1120,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1140,7 +1140,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -1154,6 +1153,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1173,7 +1173,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -1187,6 +1186,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1211,7 +1211,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -1231,6 +1230,7 @@
 					"v1": "c_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1250,7 +1250,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -1264,6 +1263,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1288,7 +1288,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Gruppo ",
 				{
@@ -1309,6 +1308,7 @@
 					"v1": "c_x_2"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1328,7 +1328,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Gruppo ",
 				{
@@ -1343,6 +1342,7 @@
 					"v1": "b_x_4"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1362,7 +1362,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Ruolo del gruppo ",
 				{
@@ -1377,6 +1376,7 @@
 					"v1": "b_x_2"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1401,7 +1401,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -1421,6 +1420,7 @@
 					"v1": "c_x_2"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1440,7 +1440,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -1454,6 +1453,7 @@
 					"v1": "b_x_4"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1473,7 +1473,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Ruolo ",
 				{
@@ -1488,6 +1487,7 @@
 					"v1": "b_x_2"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1507,7 +1507,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -1521,6 +1520,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1540,7 +1540,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -1554,6 +1553,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1573,7 +1573,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -1587,6 +1586,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1606,7 +1606,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -1620,6 +1619,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1639,7 +1639,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -1653,6 +1652,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1672,7 +1672,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -1686,6 +1685,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1705,7 +1705,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -1719,6 +1718,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1738,7 +1738,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -1752,6 +1751,7 @@
 					"v1": "b_x_5"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1771,7 +1771,6 @@
 				}
 			],
 			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -1785,6 +1784,7 @@
 					"v1": "b_x_2"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1796,10 +1796,10 @@
 				"Alfresco Add-ons RSS Feed"
 			],
 			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Alfresco Add-ons RSS Feed"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1811,10 +1811,10 @@
 				"Configure"
 			],
 			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Configura"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1826,10 +1826,10 @@
 				"No news items"
 			],
 			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Nessun elemento delle news"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1841,10 +1841,10 @@
 				"Loading items - please wait..."
 			],
 			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Caricamento elementi in corso, attendere..."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1856,10 +1856,10 @@
 				"RSS feed can't be read"
 			],
 			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Impossibile leggere il feed RSS"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1871,10 +1871,10 @@
 				"RSS feed is not available"
 			],
 			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Il feed RSS non è disponibile"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1886,10 +1886,10 @@
 				"RSS feed format is not supported"
 			],
 			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Il formato del feed RSS non è supportato"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1901,10 +1901,10 @@
 				"This dashlet shows the latest news from Alfresco Add-ons. Click the edit icon on the dashlet to configure the feed."
 			],
 			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Questa dashlet mostra le ultime news dall'Addon di Alfresco Fare clic sull'icona Modifica del dashlet per modificare il feed."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1916,10 +1916,10 @@
 				"Find, rate, and contribute Alfresco add-ons and extensions."
 			],
 			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Trova, valuta e contribuisci alle extension e addon di Alfresco"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1931,10 +1931,10 @@
 				"http://addons.alfresco.com"
 			],
 			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"http://addons.alfresco.com"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1946,10 +1946,10 @@
 				"Visit the Alfresco Add-ons Home Page"
 			],
 			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Visita la Home page degli  Add-ons di Alfresco"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1961,10 +1961,10 @@
 				"RSS Feed"
 			],
 			"rid": "dashlets/async-rssfeed.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Feed RSS"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1976,10 +1976,10 @@
 				"Configure"
 			],
 			"rid": "dashlets/async-rssfeed.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Configura"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -1991,10 +1991,10 @@
 				"No news items"
 			],
 			"rid": "dashlets/async-rssfeed.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Nessun elemento delle news"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2006,10 +2006,10 @@
 				"RSS feed can't be read"
 			],
 			"rid": "dashlets/async-rssfeed.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Impossibile leggere il feed RSS"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2021,10 +2021,10 @@
 				"RSS feed is not available"
 			],
 			"rid": "dashlets/async-rssfeed.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Il feed RSS non è disponibile"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2036,10 +2036,10 @@
 				"RSS feed format is not supported"
 			],
 			"rid": "dashlets/async-rssfeed.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Il formato del feed RSS non è supportato"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2051,10 +2051,10 @@
 				"This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed."
 			],
 			"rid": "dashlets/async-rssfeed.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Questo dashlet mostra il feed RSS selezionato. Fare clic sull'icona Modifica del dashlet per modificare il feed."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2066,10 +2066,10 @@
 				"RSS Feed"
 			],
 			"rid": "dashlets/async-rssfeed.post_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Feed RSS"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2081,10 +2081,10 @@
 				"Configure"
 			],
 			"rid": "dashlets/async-rssfeed.post_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Configura"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2096,10 +2096,10 @@
 				"No news items"
 			],
 			"rid": "dashlets/async-rssfeed.post_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Nessun elemento delle news"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2111,10 +2111,10 @@
 				"RSS feed can't be read"
 			],
 			"rid": "dashlets/async-rssfeed.post_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Impossibile leggere il feed RSS"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2126,10 +2126,10 @@
 				"RSS feed is not available"
 			],
 			"rid": "dashlets/async-rssfeed.post_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Il feed RSS non è disponibile"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2141,10 +2141,10 @@
 				"RSS feed format is not supported"
 			],
 			"rid": "dashlets/async-rssfeed.post_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Il formato del feed RSS non è supportato"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2156,10 +2156,10 @@
 				"This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed."
 			],
 			"rid": "dashlets/async-rssfeed.post_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Questo dashlet mostra il feed RSS selezionato. Fare clic sull'icona Modifica del dashlet per modificare il feed."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2171,10 +2171,10 @@
 				"Site Calendar"
 			],
 			"rid": "dashlets/calendar.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Calendario del sito"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2186,10 +2186,10 @@
 				"No upcoming events"
 			],
 			"rid": "dashlets/calendar.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Nessun evento imminente"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2201,10 +2201,10 @@
 				"until"
 			],
 			"rid": "dashlets/calendar.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"finché"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2216,10 +2216,10 @@
 				"This dashlet shows the upcoming events for this site."
 			],
 			"rid": "dashlets/calendar.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Questo dashlet mostra gli eventi imminenti per il sito."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2231,10 +2231,10 @@
 				"Site Members"
 			],
 			"rid": "dashlets/colleagues.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Membri del sito"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2246,10 +2246,10 @@
 				"Invite"
 			],
 			"rid": "dashlets/colleagues.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Invita"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2261,10 +2261,10 @@
 				"All Members"
 			],
 			"rid": "dashlets/colleagues.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Tutti i membri"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2289,7 +2289,6 @@
 				}
 			],
 			"rid": "dashlets/colleagues.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -2309,6 +2308,7 @@
 					"v1": "c_x_2"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2325,7 +2325,6 @@
 				" members"
 			],
 			"rid": "dashlets/colleagues.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Mostrati i primi ",
 				{
@@ -2335,6 +2334,7 @@
 				},
 				" membri"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2346,10 +2346,10 @@
 				"You are the only site member."
 			],
 			"rid": "dashlets/colleagues.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"L'utente è l'unico membro del sito."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2359,8 +2359,8 @@
 			"guid": "izQWYgYqKwqWjsdbFGDGR2vStXjgSKPkDzfkUNC_dZY",
 			"nsrc": [],
 			"rid": "dashlets/colleagues.get_en.properties",
-			"ts": 1,
 			"ntgt": [],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2389,7 +2389,6 @@
 				}
 			],
 			"rid": "dashlets/colleagues.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "bx",
@@ -2414,6 +2413,7 @@
 					"v1": "d_ex_p"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2425,10 +2425,10 @@
 				"Site Content"
 			],
 			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Contenuto del sito"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2440,10 +2440,10 @@
 				"My Favorites"
 			],
 			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"I miei preferiti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2455,10 +2455,10 @@
 				"I'm Editing"
 			],
 			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Che sto modificando"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2470,10 +2470,10 @@
 				"I've Recently Modified"
 			],
 			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Elementi modificati di recente"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2485,10 +2485,10 @@
 				"Synced content"
 			],
 			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Contenuto sincronizzato"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2500,10 +2500,10 @@
 				"Synced with Errors"
 			],
 			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Sincronizzato con errori"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2515,10 +2515,10 @@
 				"Keep track of content changes"
 			],
 			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Tieni traccia delle modifiche al contenuto"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2530,10 +2530,10 @@
 				"Easily see which document library items site members have been working on. In the detailed view you can like an item and mark it as a favorite. You can also jump to the details page to leave a comment."
 			],
 			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"È possibile visualizzare con facilità quali elementi della raccolta documenti sono stati modificati dai membri del sito. Nella vista dettagliata, è possibile esprimere l'apprezzamento per un elemento e contrassegnarlo come preferito. Inoltre, è possibile passare direttamente alla pagina dei dettagli per lasciare un commento."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2597,7 +2597,6 @@
 				}
 			],
 			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "bx",
@@ -2665,6 +2664,7 @@
 					"v1": "l_ex_p"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2680,7 +2680,6 @@
 				}
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Benvenuto nel pannello di controllo, ",
 				{
@@ -2689,6 +2688,7 @@
 					"v1": "a_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2709,7 +2709,6 @@
 				}
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Benvenuto in ",
 				{
@@ -2724,6 +2723,7 @@
 					"v1": "b_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2735,10 +2735,10 @@
 				"The personal dashboard shows you what's going on in the sites you belong to."
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Il pannello di controllo personale mostra una vista riepilogativa delle attività dei siti di cui si è membri."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2750,10 +2750,10 @@
 				"The site dashboard lets you know what's been happening in this particular site."
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Il pannello di controllo del sito consente di controllare le attività di quel particolare sito."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2765,10 +2765,10 @@
 				"Let's get you started..."
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Per iniziare..."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2780,10 +2780,10 @@
 				"Confirm Removal"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Conferma rimozione"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2795,10 +2795,10 @@
 				"Are you sure you want to permanently remove the assistance panel from this dashboard?"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Si desidera rimuovere in modo permanente il pannello di assistenza dal pannello di controllo?"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2810,10 +2810,10 @@
 				"Unable to remove dashlet."
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Impossibile rimuovere il dashlet."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2825,10 +2825,10 @@
 				"Remove"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Rimuovi"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2840,10 +2840,10 @@
 				"Learning"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Formazione"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2855,10 +2855,10 @@
 				"See what you can do with Alfresco by watching a video tutorial."
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Le esercitazioni video consentono di visualizzare le operazioni che si possono effettuare con Alfresco."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2870,10 +2870,10 @@
 				"View the tutorials"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Visualizza esercitazioni video"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2885,10 +2885,10 @@
 				"Sharing"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Condivisione"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2900,10 +2900,10 @@
 				"Create a site to share content with other site members."
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Creare un sito per condividere contenuti con gli altri membri."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2915,10 +2915,10 @@
 				"Create a site"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Crea sito"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2930,10 +2930,10 @@
 				"Personalizing"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Personalizzazione"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2945,10 +2945,10 @@
 				"Update your personal and business information so others can get to know you."
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Aggiornare le informazioni personali e aziendali in modo che altri utenti possano visualizzarle."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2960,10 +2960,10 @@
 				"Edit your profile"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Modifica profilo"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2975,10 +2975,10 @@
 				"Customizing"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Personalizzazione"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -2990,10 +2990,10 @@
 				"Set up your dashboard to show the information you want to see."
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Configurare il pannello di controllo in modo da mostrare le informazioni desiderate."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3005,10 +3005,10 @@
 				"Customize your dashboard"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Personalizza pannello di controllo"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3020,10 +3020,10 @@
 				"Exploring"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Esplorazione"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3035,10 +3035,10 @@
 				"Have a look at the sites already in Alfresco. You can visit public sites and join them straightaway."
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Una panoramica dei siti di Alfresco. È possibile visitare i siti pubblici e registrarsi immediatamente."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3050,10 +3050,10 @@
 				"View all sites"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Visualizza tutti i siti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3065,10 +3065,10 @@
 				"Customizing"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Personalizzazione"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3080,10 +3080,10 @@
 				"Set up this dashboard to show information you want others to see."
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Configurare il pannello di controllo con le informazioni che si desidera mostrare agli altri utenti."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3095,10 +3095,10 @@
 				"Customize the site dashboard"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Personalizza pannello di controllo del sito"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3110,10 +3110,10 @@
 				"Joining"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Partecipazione"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3125,10 +3125,10 @@
 				"This site's membership is moderated. You can request to join and a site manager will be notified."
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"La partecipazione al sito è sottoposta a moderazione. È possibile richiedere la partecipazione in modo che la richiesta venga notificata a un manager del sito."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3140,10 +3140,10 @@
 				"Request to join"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Richiedi partecipazione"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3155,10 +3155,10 @@
 				"Collaborating"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Collaborazione"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3170,10 +3170,10 @@
 				"Upload content to the document library to start collaborating with others."
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Caricare il contenuto nella raccolta documenti per avviare la collaborazione con altri utenti."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3185,10 +3185,10 @@
 				"Upload content"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Carica contenuto"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3200,10 +3200,10 @@
 				"Inviting"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Inviti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3215,10 +3215,10 @@
 				"Start inviting others to join your site."
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Invitare altri utenti ad unirsi al sito."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3230,10 +3230,10 @@
 				"Invite people"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Invita persone"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3245,10 +3245,10 @@
 				"Socializing"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Social network"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3260,10 +3260,10 @@
 				"Find out who belongs to this site. From the member list you can view user profiles to get to know others."
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Individuare i membri del sito. Nell'elenco, è possibile visualizzare i profili utente per conoscere gli altri membri."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3275,10 +3275,10 @@
 				"View site members"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Visualizza membri del sito"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3290,10 +3290,10 @@
 				"Exploring"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Esplorazione"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3305,10 +3305,10 @@
 				"Find out what content has been added to the site by browsing the document library."
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Individuare il contenuto aggiunto al sito effettuando una ricerca nella raccolta documenti."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3320,10 +3320,10 @@
 				"Go to document library"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Vai alla raccolta documenti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3335,10 +3335,10 @@
 				"Cloud"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Cloud"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3350,10 +3350,10 @@
 				"Sign up today to claim your free network in the cloud."
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Registrati oggi per richiedere la tua rete gratuita nel cloud."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3365,10 +3365,10 @@
 				"Sign up"
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Registrati"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3390,7 +3390,6 @@
 				"..."
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Richiesta di aggiungere l''utente ",
 				{
@@ -3406,6 +3405,7 @@
 				},
 				" in corso..."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3422,7 +3422,6 @@
 				" successfully sent. You will now be returned to your personal dashboard."
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Richiesta di partecipazione al sito ",
 				{
@@ -3432,6 +3431,7 @@
 				},
 				" inviata. Verrà visualizzato il pannello di controllo personale."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3453,7 +3453,6 @@
 				"."
 			],
 			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Impossibile inviare la richiesta di aggiungere l''utente ",
 				{
@@ -3469,6 +3468,7 @@
 				},
 				"."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3480,10 +3480,10 @@
 				"My Discussions"
 			],
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Le mie discussioni"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3495,10 +3495,10 @@
 				"New Topic"
 			],
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Nuovo argomento"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3510,10 +3510,10 @@
 				"There are no topics matching your filters."
 			],
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Nessun argomento corrispondente ai filtri."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3525,10 +3525,10 @@
 				"Updated"
 			],
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Aggiornato"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3550,7 +3550,6 @@
 				"."
 			],
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Creato da ",
 				{
@@ -3566,6 +3565,7 @@
 				},
 				"."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3577,10 +3577,10 @@
 				"There is 1 reply."
 			],
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"1 risposta."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3597,7 +3597,6 @@
 				" replies."
 			],
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -3606,6 +3605,7 @@
 				},
 				" risposte."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3627,7 +3627,6 @@
 				"."
 			],
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"L''ultima risposta è stata postata da ",
 				{
@@ -3643,6 +3642,7 @@
 				},
 				"."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3654,10 +3654,10 @@
 				"My Topics"
 			],
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"I miei argomenti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3669,10 +3669,10 @@
 				"All Topics"
 			],
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Tutti gli argomenti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3684,10 +3684,10 @@
 				"Topics updated in the last day"
 			],
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Argomenti aggiornati nelle ultime 24 ore"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3699,10 +3699,10 @@
 				"Topics updated in the last 7 days"
 			],
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Argomenti aggiornati negli ultimi 7 giorni"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3714,10 +3714,10 @@
 				"Topics updated in the last 14 days"
 			],
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Argomenti aggiornati negli ultimi 14 giorni"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3729,10 +3729,10 @@
 				"Topics updated in the last 28 days"
 			],
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Argomenti aggiornati negli ultimi 28 giorni"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3761,7 +3761,6 @@
 				}
 			],
 			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "bx",
@@ -3786,6 +3785,7 @@
 					"v1": "d_ex_p"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3797,10 +3797,10 @@
 				"Image Preview"
 			],
 			"rid": "dashlets/imagesummary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Anteprima immagine"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3812,10 +3812,10 @@
 				"No items to display"
 			],
 			"rid": "dashlets/imagesummary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Nessun elemento da visualizzare"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3831,7 +3831,6 @@
 				}
 			],
 			"rid": "dashlets/imagesummary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Modificato da ",
 				{
@@ -3840,6 +3839,7 @@
 					"v1": "a_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3856,7 +3856,6 @@
 				"..."
 			],
 			"rid": "dashlets/imagesummary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Seleziona la cartella Immagini in ",
 				{
@@ -3866,6 +3865,7 @@
 				},
 				"..."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3877,10 +3877,10 @@
 				"This dashlet shows a thumbnail of each image in the document library. Clicking a thumbnail opens the image in the current window."
 			],
 			"rid": "dashlets/imagesummary.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Questo dashlet mostra una miniatura di ciascuna immagine della raccolta documenti. Fare clic su una miniatura per aprire l'immagine nella finestra corrente."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3892,10 +3892,10 @@
 				"My Activities"
 			],
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Le mie attività"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3907,10 +3907,10 @@
 				"Could not load activities list"
 			],
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Impossibile caricare l'elenco attività"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3922,10 +3922,10 @@
 				"Show"
 			],
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Mostra"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3937,10 +3937,10 @@
 				"Older Activities"
 			],
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Attività precedenti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3952,10 +3952,10 @@
 				"My activities"
 			],
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Le mie attività"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3967,10 +3967,10 @@
 				"Everyone else's activities"
 			],
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Le attività di altri utenti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3982,10 +3982,10 @@
 				"Everyone's activities"
 			],
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Tutte le attività"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -3997,10 +3997,10 @@
 				"I'm following"
 			],
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Sto seguendo"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4012,10 +4012,10 @@
 				"all items"
 			],
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"tutti gli elementi"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4027,10 +4027,10 @@
 				"status updates"
 			],
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"aggiornamenti di stato"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4042,10 +4042,10 @@
 				"comments"
 			],
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"commenti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4057,10 +4057,10 @@
 				"content"
 			],
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"contenuto"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4072,10 +4072,10 @@
 				"memberships"
 			],
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"appartenenza"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4087,10 +4087,10 @@
 				"today"
 			],
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"oggi"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4102,10 +4102,10 @@
 				"in the last 7 days"
 			],
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"negli ultimi 7 giorni"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4117,10 +4117,10 @@
 				"in the last 14 days"
 			],
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"negli ultimi 14 giorni"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4132,10 +4132,10 @@
 				"in the last 28 days"
 			],
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"negli ultimi 28 giorni"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4147,10 +4147,10 @@
 				"Follow what's going on in your sites"
 			],
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Segui cosa accade nei siti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4162,10 +4162,10 @@
 				"The activities in this list let you follow the changes in the sites you belong to. You'll see things such as content updates and likes. You can also see who is joining and leaving your sites."
 			],
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Le attività di questo elenco consentono di tenere traccia delle modifiche apportate ai siti di cui si è membri. Sono visualizzate attività quali aggiornamenti dei contenuti e preferenze. È anche possibile visualizzare i nuovi membri o quelli che si rimuovono dai propri siti."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4194,7 +4194,6 @@
 				}
 			],
 			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "bx",
@@ -4219,6 +4218,7 @@
 					"v1": "d_ex_p"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4230,10 +4230,10 @@
 				"Content I'm Editing"
 			],
 			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Contenuto che sto modificando"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4245,10 +4245,10 @@
 				"No items to display"
 			],
 			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Nessun elemento da visualizzare"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4260,10 +4260,10 @@
 				"Could not load data"
 			],
 			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Impossibile caricare i dati"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4284,7 +4284,6 @@
 				}
 			],
 			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Modificato il ",
 				{
@@ -4299,6 +4298,7 @@
 					"v1": "b_x_1"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4310,10 +4310,10 @@
 				"Blog posts"
 			],
 			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Post del blog"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4325,10 +4325,10 @@
 				"Forum posts"
 			],
 			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Post del forum"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4340,10 +4340,10 @@
 				"Wiki pages"
 			],
 			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Pagine wiki"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4355,10 +4355,10 @@
 				"Documents"
 			],
 			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Documenti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4370,10 +4370,10 @@
 				"Check this dashlet to quickly see the items you are working on."
 			],
 			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Controllare la dashlet per visualizzare rapidamente gli elementi attualmente in uso."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4385,10 +4385,10 @@
 				"My Documents"
 			],
 			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"I miei documenti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4400,10 +4400,10 @@
 				"My Favorites"
 			],
 			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"I miei preferiti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4415,10 +4415,10 @@
 				"I'm Editing"
 			],
 			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Che sto modificando"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4430,10 +4430,10 @@
 				"I've Recently Modified"
 			],
 			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Elementi modificati di recente"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4445,10 +4445,10 @@
 				"Synced content"
 			],
 			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Contenuto sincronizzato"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4460,10 +4460,10 @@
 				"Synced with Errors"
 			],
 			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Sincronizzato con errori"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4475,10 +4475,10 @@
 				"Keep track of your own content"
 			],
 			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Tieni traccia dei contenuti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4490,10 +4490,10 @@
 				"This dashlet lists all of the content that's important to you, no matter which site it is in. Use the filters to easily find what you're looking for."
 			],
 			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Questo dashlet elenca tutti i contenuti importanti per l'utente, indipendente dal sito di provenienza. Utilizzare i filtri per modificare in modo semplice gli elementi desiderati."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4557,7 +4557,6 @@
 				}
 			],
 			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "bx",
@@ -4625,6 +4624,7 @@
 					"v1": "l_ex_p"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4636,10 +4636,10 @@
 				"My Meeting Workspaces"
 			],
 			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"I miei spazi di lavoro per riunioni"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4651,10 +4651,10 @@
 				"Delete"
 			],
 			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Elimina"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4666,10 +4666,10 @@
 				"No meeting workspaces to display"
 			],
 			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Nessuno spazio di lavoro per riunioni da visualizzare"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4681,10 +4681,10 @@
 				"The favorite setting for the meeting workspace could not be saved"
 			],
 			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Impossibile salvare l'impostazione come preferito per lo spazio di lavoro per riunioni"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4696,10 +4696,10 @@
 				"Mark or unmark meeting workspace as favorite"
 			],
 			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Seleziona o deseleziona lo spazio di lavoro per riunioni come preferito"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4711,10 +4711,10 @@
 				"Mark or unmark meeting workspace as IMAP favorite"
 			],
 			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Seleziona o deseleziona lo spazio di lavoro per riunioni come preferito IMAP"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4743,7 +4743,6 @@
 				}
 			],
 			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "bx",
@@ -4768,6 +4767,7 @@
 					"v1": "d_ex_p"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4779,10 +4779,10 @@
 				"My Profile"
 			],
 			"rid": "dashlets/my-profile.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Il mio profilo"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4794,10 +4794,10 @@
 				"View Full Profile"
 			],
 			"rid": "dashlets/my-profile.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Vedi profilo completo"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4809,10 +4809,10 @@
 				"This dashlet shows a summary of your personal details. From here you can access your full user profile."
 			],
 			"rid": "dashlets/my-profile.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Questo dashlet mostra un riepilogo dei dettagli personali dell'utente. Da qui, è possibile accedere al profilo utente completo."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4824,10 +4824,10 @@
 				"My Sites"
 			],
 			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"I miei siti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4839,10 +4839,10 @@
 				"Create Site"
 			],
 			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Crea sito"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4854,10 +4854,10 @@
 				"Delete"
 			],
 			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Elimina"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4869,10 +4869,10 @@
 				"All"
 			],
 			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Tutti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4884,10 +4884,10 @@
 				"My Favorites"
 			],
 			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"I miei preferiti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4899,10 +4899,10 @@
 				"Recent"
 			],
 			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Recenti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4914,10 +4914,10 @@
 				"Quickly access your sites"
 			],
 			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Accesso rapido ai siti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4929,10 +4929,10 @@
 				"A site is a project area where you can share and discuss content with other site members."
 			],
 			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Per sito si intende un'area di progetto in cui è possibile condividere e utilizzare contenuti con altri membri del sito."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -4944,10 +4944,10 @@
 				"We've included a sample site for you. Use this to explore the features in Alfresco."
 			],
 			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Viene riportato un sito di esempio per l'utente. Utilizzare questo sito per conoscere le funzionalità di Alfresco."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5020,7 +5020,6 @@
 				}
 			],
 			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "bx",
@@ -5099,6 +5098,7 @@
 					"v1": "n_ex_p"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5110,10 +5110,10 @@
 				"My Tasks"
 			],
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"I miei compiti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5125,10 +5125,10 @@
 				"Start Workflow"
 			],
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Avvia workflow"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5140,10 +5140,10 @@
 				"Active Tasks"
 			],
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Compiti attivi"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5155,10 +5155,10 @@
 				"Completed Tasks"
 			],
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Compiti completati"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5170,10 +5170,10 @@
 				"View Task"
 			],
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Vedi compito"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5185,10 +5185,10 @@
 				"Edit Task"
 			],
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Modifica compito"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5200,10 +5200,10 @@
 				"Pooled task"
 			],
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Compito assegnato al pool"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5223,7 +5223,6 @@
 				}
 			],
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -5237,6 +5236,7 @@
 					"v1": "b_x_1"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5248,10 +5248,10 @@
 				"Unassigned"
 			],
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Non assegnato"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5267,7 +5267,6 @@
 				}
 			],
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Scade il: ",
 				{
@@ -5276,6 +5275,7 @@
 					"v1": "a_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5287,10 +5287,10 @@
 				"No tasks"
 			],
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Nessun compito"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5311,7 +5311,6 @@
 				}
 			],
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Tipo: ",
 				{
@@ -5326,6 +5325,7 @@
 					"v1": "b_x_1"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5337,10 +5337,10 @@
 				"Active Tasks"
 			],
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Compiti attivi"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5352,10 +5352,10 @@
 				"Completed Tasks"
 			],
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Compiti completati"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5367,10 +5367,10 @@
 				"High Priority Tasks"
 			],
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Compiti con priorità alta"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5382,10 +5382,10 @@
 				"Tasks Due Today"
 			],
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Compiti in scadenza oggi"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5397,10 +5397,10 @@
 				"Tasks Assigned to Me"
 			],
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Compiti assegnati a me"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5412,10 +5412,10 @@
 				"Unassigned (Pooled Tasks)"
 			],
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Non assegnati (compiti assegnati al pool)"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5427,10 +5427,10 @@
 				"Overdue Tasks"
 			],
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Compiti scaduti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5445,7 +5445,6 @@
 				}
 			],
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -5453,6 +5452,7 @@
 					"v1": "a_x_CurrentPageReport"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5477,7 +5477,6 @@
 				}
 			],
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "x",
@@ -5497,6 +5496,7 @@
 					"v1": "c_x_totalRecords"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5508,10 +5508,10 @@
 				"Review the tasks assigned to you"
 			],
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Esamina compiti assegnati"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5523,10 +5523,10 @@
 				"Different types of tasks can appear in this task list and you need to address each one. This could involve reviewing a document or simply accepting an invitation to a site."
 			],
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Nell'elenco dei compiti possono essere visualizzati diversi tipi di compiti che è necessario gestire singolarmente. Un compito può riguardare la revisione di un documento o semplicemente l'accettazione di un invito a un sito."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5599,7 +5599,6 @@
 				}
 			],
 			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "bx",
@@ -5678,6 +5677,7 @@
 					"v1": "n_ex_p"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5689,10 +5689,10 @@
 				"My Document Workspaces"
 			],
 			"rid": "dashlets/my-workspaces.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"I miei spazi di lavoro per documenti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5704,10 +5704,10 @@
 				"Delete"
 			],
 			"rid": "dashlets/my-workspaces.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Elimina"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5719,10 +5719,10 @@
 				"No document workspaces to display"
 			],
 			"rid": "dashlets/my-workspaces.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Nessuno spazio di lavoro per documenti da visualizzare"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5734,10 +5734,10 @@
 				"The favorite setting for the document workspace could not be saved"
 			],
 			"rid": "dashlets/my-workspaces.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Impossibile salvare l'impostazione come preferito per lo spazio di lavoro per documenti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5749,10 +5749,10 @@
 				"Mark or unmark document workspace as favorite"
 			],
 			"rid": "dashlets/my-workspaces.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Seleziona o deseleziona lo spazio di lavoro per documenti come preferito"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5764,10 +5764,10 @@
 				"Mark or unmark document workspace as IMAP favorite"
 			],
 			"rid": "dashlets/my-workspaces.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Seleziona o deseleziona lo spazio di lavoro per documenti come preferito IMAP"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5796,7 +5796,6 @@
 				}
 			],
 			"rid": "dashlets/my-workspaces.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "bx",
@@ -5821,6 +5820,7 @@
 					"v1": "d_ex_p"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5832,10 +5832,10 @@
 				"RSS Feed"
 			],
 			"rid": "dashlets/rssfeed.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Feed RSS"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5847,10 +5847,10 @@
 				"Configure"
 			],
 			"rid": "dashlets/rssfeed.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Configura"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5862,10 +5862,10 @@
 				"No news items"
 			],
 			"rid": "dashlets/rssfeed.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Nessun elemento delle news"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5877,10 +5877,10 @@
 				"Loading items - please wait..."
 			],
 			"rid": "dashlets/rssfeed.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Caricamento elementi in corso, attendere..."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5892,10 +5892,10 @@
 				"RSS feed can't be read"
 			],
 			"rid": "dashlets/rssfeed.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Impossibile leggere il feed RSS"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5907,10 +5907,10 @@
 				"RSS feed is not available"
 			],
 			"rid": "dashlets/rssfeed.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Il feed RSS non è disponibile"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5922,10 +5922,10 @@
 				"RSS feed format is not supported"
 			],
 			"rid": "dashlets/rssfeed.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Il formato del feed RSS non è supportato"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5937,10 +5937,10 @@
 				"Saved Search"
 			],
 			"rid": "dashlets/saved-search.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Ricerca salvata"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5952,10 +5952,10 @@
 				"No results found."
 			],
 			"rid": "dashlets/saved-search.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Nessun risultato trovato."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -5967,10 +5967,10 @@
 				"in site"
 			],
 			"rid": "dashlets/saved-search.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"nel sito"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6008,7 +6008,6 @@
 				}
 			],
 			"rid": "dashlets/saved-search.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "bx",
@@ -6044,6 +6043,7 @@
 					"v1": "f_ex_p"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6055,10 +6055,10 @@
 				"Site Activities"
 			],
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Attività del sito"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6070,10 +6070,10 @@
 				"Could not load activities list"
 			],
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Impossibile caricare l'elenco attività"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6085,10 +6085,10 @@
 				"Show"
 			],
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Mostra"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6100,10 +6100,10 @@
 				"Older Activities"
 			],
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Attività precedenti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6115,10 +6115,10 @@
 				"My activities"
 			],
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Le mie attività"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6130,10 +6130,10 @@
 				"Everyone else's activities"
 			],
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Le attività di altri utenti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6145,10 +6145,10 @@
 				"Everyone's activities"
 			],
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Tutte le attività"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6160,10 +6160,10 @@
 				"I'm following"
 			],
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Sto seguendo"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6175,10 +6175,10 @@
 				"all items"
 			],
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"tutti gli elementi"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6190,10 +6190,10 @@
 				"status updates"
 			],
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"aggiornamenti di stato"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6205,10 +6205,10 @@
 				"comments"
 			],
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"commenti"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6220,10 +6220,10 @@
 				"content"
 			],
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"contenuto"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6235,10 +6235,10 @@
 				"memberships"
 			],
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"appartenenza"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6250,10 +6250,10 @@
 				"today"
 			],
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"oggi"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6265,10 +6265,10 @@
 				"in the last 7 days"
 			],
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"negli ultimi 7 giorni"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6280,10 +6280,10 @@
 				"in the last 14 days"
 			],
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"negli ultimi 14 giorni"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6295,10 +6295,10 @@
 				"in the last 28 days"
 			],
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"negli ultimi 28 giorni"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6310,10 +6310,10 @@
 				"Follow what's going on in this site"
 			],
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Segui cosa accade nel sito corrente"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6325,10 +6325,10 @@
 				"Watch this list to keep up on the recent site changes. You'll see activities such as content updates and likes. You can also track the site membership by seeing who is joining and leaving."
 			],
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Verificare questo elenco per tenersi aggiornati sulle modifiche recenti apportate al sito. Sono visualizzate attività quali aggiornamenti dei contenuti e preferenze. È anche possibile tenere traccia delle iscrizioni al sito controllando i nuovi membri e quelli che si rimuovono."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6357,7 +6357,6 @@
 				}
 			],
 			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "bx",
@@ -6382,6 +6381,7 @@
 					"v1": "d_ex_p"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6393,10 +6393,10 @@
 				"Site Data Lists"
 			],
 			"rid": "dashlets/site-data-lists.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Elenchi dati del sito"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6408,10 +6408,10 @@
 				"No lists to display"
 			],
 			"rid": "dashlets/site-data-lists.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Nessun elenco da visualizzare"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6423,10 +6423,10 @@
 				"Create Data List"
 			],
 			"rid": "dashlets/site-data-lists.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Crea elenco dati"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6438,10 +6438,10 @@
 				"This dashlet shows lists relevant to the site. Clicking a list opens it."
 			],
 			"rid": "dashlets/site-data-lists.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Questo dashlet mostra gli elenchi relativi al sito. Fare clic su un elenco per aprirlo."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6453,10 +6453,10 @@
 				"Site Links"
 			],
 			"rid": "dashlets/site-links.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Link del sito"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6468,10 +6468,10 @@
 				"Create Link"
 			],
 			"rid": "dashlets/site-links.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Crea link"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6483,10 +6483,10 @@
 				"Link's details"
 			],
 			"rid": "dashlets/site-links.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Dettagli link"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6498,10 +6498,10 @@
 				"No links to display"
 			],
 			"rid": "dashlets/site-links.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Nessun link da visualizzare"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6513,10 +6513,10 @@
 				"This dashlet shows links relevant to this site. The list is compiled by site members. Clicking a link opens it in a new window."
 			],
 			"rid": "dashlets/site-links.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Questo dashlet mostra i link relativi al sito corrente. L'elenco viene compilato dai membri del sito. Fare clic su un link per aprirlo in una nuova finestra."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6528,10 +6528,10 @@
 				"URL not specified"
 			],
 			"rid": "dashlets/site-links.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"URL non specificato"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6543,10 +6543,10 @@
 				"Site Notice"
 			],
 			"rid": "dashlets/site-notice.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Notifica sito"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6558,10 +6558,10 @@
 				"No text has been configured"
 			],
 			"rid": "dashlets/site-notice.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Non è stato configurato alcun testo"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6573,10 +6573,10 @@
 				"This dashlet displays a custom message on the dashboard, specified by the site manager"
 			],
 			"rid": "dashlets/site-notice.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Questo dashlet consente di visualizzare un messaggio personalizzato sul pannello di controllo, specificato dal manager del sito"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6588,10 +6588,10 @@
 				"Site Profile"
 			],
 			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Profilo del sito"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6607,7 +6607,6 @@
 				}
 			],
 			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Benvenuto in ",
 				{
@@ -6616,6 +6615,7 @@
 					"v1": "a_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6627,10 +6627,10 @@
 				"Site Manager(s):"
 			],
 			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Manager del sito:"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6642,10 +6642,10 @@
 				"Visibility:"
 			],
 			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Visibilità:"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6657,10 +6657,10 @@
 				"Public"
 			],
 			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Pubblico"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6672,10 +6672,10 @@
 				"Moderated"
 			],
 			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Moderato"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6687,10 +6687,10 @@
 				"Private"
 			],
 			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Privato"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6702,10 +6702,10 @@
 				"Unknown"
 			],
 			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Sconosciuto"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6717,10 +6717,10 @@
 				"This dashlet displays the site details. Only the site manager can change this information."
 			],
 			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"In questo dashlet vengono visualizzati i dettagli del sito. Solo il manager del sito può modificare queste informazioni."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6732,10 +6732,10 @@
 				"Site Search"
 			],
 			"rid": "dashlets/site-search.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Ricerca sito"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6747,10 +6747,10 @@
 				"Search"
 			],
 			"rid": "dashlets/site-search.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Cerca"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6762,10 +6762,10 @@
 				"No results found."
 			],
 			"rid": "dashlets/site-search.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Nessun risultato trovato."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6777,10 +6777,10 @@
 				"in site"
 			],
 			"rid": "dashlets/site-search.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"nel sito"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6809,7 +6809,6 @@
 				}
 			],
 			"rid": "dashlets/site-search.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "bx",
@@ -6834,6 +6833,7 @@
 					"v1": "d_ex_p"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6845,10 +6845,10 @@
 				"My Calendar"
 			],
 			"rid": "dashlets/user-calendar.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Il mio calendario"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6860,10 +6860,10 @@
 				"No upcoming events"
 			],
 			"rid": "dashlets/user-calendar.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Nessun evento imminente"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6875,10 +6875,10 @@
 				"Could not load calendar data"
 			],
 			"rid": "dashlets/user-calendar.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Impossibile caricare i dati del calendario"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6890,10 +6890,10 @@
 				"All Day"
 			],
 			"rid": "dashlets/user-calendar.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Giornata intera"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6909,7 +6909,6 @@
 				}
 			],
 			"rid": "dashlets/user-calendar.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"in ",
 				{
@@ -6918,6 +6917,7 @@
 					"v1": "a_x_0"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6929,10 +6929,10 @@
 				"This dashlet shows the upcoming events in sites you belong to. "
 			],
 			"rid": "dashlets/user-calendar.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"In questo dashlet vengono visualizzati gli eventi imminenti nei siti di cui si è membri. "
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6944,10 +6944,10 @@
 				"Please use the Configure link to enter the URL of the web page you wish to display"
 			],
 			"rid": "dashlets/webview-default.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Utilizzare il link Configura per immettere l'URL della pagina web da visualizzare"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6959,10 +6959,10 @@
 				"Web View"
 			],
 			"rid": "dashlets/webview.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Vista web"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6974,10 +6974,10 @@
 				"No web page to display."
 			],
 			"rid": "dashlets/webview.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Nessuna pagina web da visualizzare."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -6989,10 +6989,10 @@
 				"Web View"
 			],
 			"rid": "dashlets/webview.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Vista web"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -7004,10 +7004,10 @@
 				"The domain of the page to display is not listed as a trusted domain inside your server's IFramePolicy config."
 			],
 			"rid": "dashlets/webview.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Il dominio della pagina da visualizzare non è nella lista dei domini di fiducia all'interno della configurazione IFramePolicy del tuo server."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -7019,10 +7019,10 @@
 				"The domain of the url is not listed as a trusted domain inside your server's IFramePolicy config."
 			],
 			"rid": "dashlets/webview.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Il dominio dell'url non è nella lista dei domini di fiducia all'interno della configurazione IFramePolicy del tuo server."
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -7051,7 +7051,6 @@
 				}
 			],
 			"rid": "dashlets/webview.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "bx",
@@ -7076,6 +7075,7 @@
 					"v1": "d_ex_p"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -7087,10 +7087,10 @@
 				"Wiki"
 			],
 			"rid": "dashlets/wiki.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Wiki del sito"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -7102,10 +7102,10 @@
 				"Wiki"
 			],
 			"rid": "dashlets/wiki.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Wiki"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -7117,10 +7117,10 @@
 				"Configure"
 			],
 			"rid": "dashlets/wiki.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Configura"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -7132,10 +7132,10 @@
 				"No page is configured"
 			],
 			"rid": "dashlets/wiki.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				"Nessuna pagina configurata"
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -7164,7 +7164,6 @@
 				}
 			],
 			"rid": "dashlets/wiki.get_en.properties",
-			"ts": 1,
 			"ntgt": [
 				{
 					"t": "bx",
@@ -7189,6 +7188,7 @@
 					"v1": "d_ex_p"
 				}
 			],
+			"ts": 1,
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
@@ -7200,11 +7200,11 @@
 				"This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed."
 			],
 			"rid": "dashlets/rssfeed.get_en.properties",
-			"ts": 1,
 			"q": 69,
 			"ntgt": [
 				"Questo dashlet mostra il feed RSS selezionato. Fare clic sull'icona Modifica del dashlet per modificare il feed."
 			],
+			"ts": 1,
 			"jobGuid": "xxx1xxx",
 			"translationProvider": "Repetition"
 		},
@@ -7215,11 +7215,11 @@
 				"Configure"
 			],
 			"rid": "dashlets/site-notice.get_en.properties",
-			"ts": 1,
 			"q": 61,
 			"ntgt": [
 				"Configura"
 			],
+			"ts": 1,
 			"jobGuid": "xxx1xxx",
 			"translationProvider": "Repetition"
 		}

@@ -7009,6 +7009,7 @@ __export(translators_exports, {
 
 // src/translators/grandfather.js
 var Grandfather = class {
+  #mm;
   constructor({ quality }) {
     if (quality === void 0) {
       throw "You must specify a quality property for Grandfather";
@@ -7016,19 +7017,19 @@ var Grandfather = class {
     this.quality = quality;
   }
   async init(mm) {
-    this.mm = mm;
+    this.#mm = mm;
   }
   async requestTranslations(jobRequest) {
     const { tus, ...jobResponse } = jobRequest;
     jobResponse.tus = [];
     const txCache = {};
-    const resourceHandles = Object.fromEntries((await this.mm.rm.getResourceHandles()).map((r) => [r.id, r]));
+    const resourceHandles = Object.fromEntries((await this.#mm.rm.getResourceHandles()).map((r) => [r.id, r]));
     for (const tu of tus) {
       if (!txCache[tu.rid]) {
         const handle = resourceHandles[tu.rid];
         if (handle) {
           try {
-            const resourceToGrandfather = await this.mm.rm.getChannel(handle.channel).getExistingTranslatedResource(handle, jobRequest.targetLang);
+            const resourceToGrandfather = await this.#mm.rm.getChannel(handle.channel).getExistingTranslatedResource(handle, jobRequest.targetLang);
             txCache[tu.rid] = Object.fromEntries(resourceToGrandfather.segments.map((seg) => [seg.sid, seg]));
           } catch (e) {
             l10nmonster.logger.info(`Couldn't fetch translated resource: ${e.stack ?? e}`);
@@ -7072,6 +7073,7 @@ var Grandfather = class {
 
 // src/translators/repetition.js
 var Repetition = class {
+  #mm;
   constructor({ qualifiedPenalty, unqualifiedPenalty }) {
     if ((qualifiedPenalty && unqualifiedPenalty) === void 0) {
       throw "You must specify qualifiedPenalty and unqualifiedPenalty properties for Repetition";
@@ -7080,13 +7082,13 @@ var Repetition = class {
     this.unqualifiedPenalty = unqualifiedPenalty;
   }
   async init(mm) {
-    this.mm = mm;
+    this.#mm = mm;
   }
   // eslint-disable-next-line complexity
   async requestTranslations(jobRequest) {
     const { tus, ...jobResponse } = jobRequest;
     jobResponse.tus = [];
-    const tm = await this.mm.tmm.getTM(this.mm.sourceLang, jobRequest.targetLang);
+    const tm = await this.#mm.tmm.getTM(jobRequest.sourceLang, jobRequest.targetLang);
     for (const tu of tus) {
       const tuCandidates = tm.getAllEntriesBySrc(tu.nsrc);
       if (tuCandidates.length > 0) {

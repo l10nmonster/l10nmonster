@@ -4,12 +4,12 @@ const { xml, adapters, translators, stores } = require('@l10nmonster/helpers');
 
 module.exports = class CardboardConfig {
     sourceLang = 'en';
+    targetLangs = [ 'it' ];
     minimumQuality = 50;
 
     constructor() {
         this.source = new adapters.FsSource({
             globs: [ 'en/*.html' ],
-            targetLangs: [ 'it' ],
         });
         this.resourceFilter = new html.Filter();
         this.decoders = [ xml.tagDecoder, xml.entityDecoder ];

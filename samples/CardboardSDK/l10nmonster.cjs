@@ -2,6 +2,7 @@ const { stores, adapters, translators, analyzers } = require('@l10nmonster/helpe
 
 module.exports = class CardboardConfig2 {
     sourceLang = 'en';
+    targetLangs = [ 'ar', 'it', 'ja' ];
     minimumQuality = 50;
 
     constructor() {
@@ -9,7 +10,6 @@ module.exports = class CardboardConfig2 {
         const translated = require('@l10nmonster/helpers-translated');
         this.source = new adapters.FsSource({
             globs: [ '**/en.lproj/*.strings' ],
-            targetLangs: [ 'ar', 'it', 'ja' ],
         });
         this.snapStore = new stores.FsSnapStore({
             snapDir: 'snap',

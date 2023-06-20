@@ -4,12 +4,12 @@ const demo = require('@l10nmonster/helpers-demo');
 
 module.exports = class EisenVaultConfig2 {
     sourceLang = 'en';
+    targetLangs = [ 'it' ];
     minimumQuality = 50;
 
     constructor() {
         this.source = new adapters.FsSource({
             globs: [ '**/*_en.properties' ],
-            targetLangs: [ 'it' ],
         });
         this.resourceFilter = new java.PropertiesFilter();
         this.decoders = [ normalizers.bracePHDecoder, xml.tagDecoder, java.escapesDecoder ];

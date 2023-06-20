@@ -3,12 +3,12 @@ const { xml, stores, adapters, translators, decorators } = require('@l10nmonster
 
 module.exports = class CardboardConfig2 {
     sourceLang = 'en';
+    targetLangs = [ 'ar' ];
     minimumQuality = 50;
 
     constructor() {
         this.source = new adapters.FsSource({
             globs: [ '**/en.lproj/*.strings' ],
-            targetLangs: [ 'ar' ],
         });
         this.resourceFilter = new ios.StringsFilter();
         this.sg = new decorators.SequenceGenerator('seqMap.json');

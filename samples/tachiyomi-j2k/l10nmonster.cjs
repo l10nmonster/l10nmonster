@@ -10,31 +10,35 @@ const androidLangMapping = {
 
 module.exports = class TachiyomiConfig2 {
     sourceLang = 'en';
+    targetLangs = [ 'ja', 'it' ];
+    static opsDir = 'l10nOps';
 
     constructor() {
         this.source = new adapters.FsSource({
             globs: [ '**/values/strings.xml' ],
-            targetLangs: [ 'ja', 'it' ],
         });
         this.resourceFilter = new android.Filter({
             comment: 'pre',
         });
         // demo of how to programmatically update notes
-        this.segmentEnricher = (seg) => {
-            if (seg.sid === 'adding_category_to_queue') {
-                seg.notes = {
-                    desc: 'Command to add a category to a queue',
-                    maxWidth: 50,
-                    ph: {
-                        '%1$s': {
-                            sample: 'Manga',
-                            desc: 'Category name'
+        this.segmentDecorators = [
+            (seg) => {
+                if (seg.sid === 'adding_category_to_queue') {
+                    seg.notes = {
+                        desc: 'Command to add a category to a queue',
+                        maxWidth: 50,
+                        ph: {
+                            '%1$s': {
+                                sample: 'Manga',
+                                desc: 'Category name'
+                            },
                         },
-                    },
-                    screenshot: 'https://example.org',
+                        screenshot: 'https://example.org',
+                    }
                 }
+                return seg;
             }
-        };
+        ];
         this.decoders = [ android.phDecoder ];
         this.target = new adapters.FsTarget({
             targetPath: (lang, resourceId) => resourceId.replace('values', `values-${androidLangMapping[lang] || lang}`),
@@ -86,5 +90,3 @@ module.exports = class TachiyomiConfig2 {
         this.minimumQuality = 50;
     }
 }
-
-module.exports.opsDir = 'l10nOps';

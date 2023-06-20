@@ -1,6 +1,6 @@
 export async function translateCmd(mm, { limitToLang, dryRun }) {
     const status = { generatedResources: {}, deleteResources: {} };
-    const targetLangs = await mm.getTargetLangs(limitToLang);
+    const targetLangs = mm.getTargetLangs(limitToLang);
     const allResources = await mm.rm.getAllResources({ keepRaw: true });
     for await (const resHandle of allResources) {
         for (const targetLang of targetLangs) {

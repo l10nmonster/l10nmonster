@@ -11,11 +11,11 @@
 							"61": 3,
 							"70": 851
 						},
-						"untranslated": 0,
-						"untranslatedChars": 0,
-						"untranslatedWords": 0,
-						"pending": 17,
-						"pendingWords": 65,
+						"untranslated": 17,
+						"untranslatedChars": 402,
+						"untranslatedWords": 65,
+						"pending": 0,
+						"pendingWords": 0,
 						"internalRepetitions": 0,
 						"internalRepetitionWords": 0
 					}
@@ -34,13 +34,13 @@
 							"70": 481,
 							"80": 313
 						},
-						"untranslated": 74,
-						"untranslatedChars": 1337,
-						"untranslatedWords": 212,
+						"untranslated": 0,
+						"untranslatedChars": 0,
+						"untranslatedWords": 0,
 						"pending": 0,
 						"pendingWords": 0,
-						"internalRepetitions": 3,
-						"internalRepetitionWords": 6
+						"internalRepetitions": 77,
+						"internalRepetitionWords": 218
 					}
 				},
 				"numSources": 1

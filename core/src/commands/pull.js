@@ -1,9 +1,11 @@
 
 export async function pullCmd(mm, { limitToLang, partial }) {
     const stats = { numPendingJobs: 0, translatedStrings: 0, doneJobs: 0, newPendingJobs: 0 };
-    const targetLangs = await mm.getTargetLangs(limitToLang);
-    for (const targetLang of targetLangs) {
-        const pendingJobs = (await mm.jobStore.getJobStatusByLangPair(mm.sourceLang, targetLang))
+    const desiredTargetLangs = new Set(mm.getTargetLangs(limitToLang));
+    const availableLangPairs = (await mm.jobStore.getAvailableLangPairs())
+        .filter(pair => desiredTargetLangs.has(pair[1]));
+    for (const [sourceLang, targetLang] of availableLangPairs) {
+        const pendingJobs = (await mm.jobStore.getJobStatusByLangPair(sourceLang, targetLang))
             .filter(e => e[1].status === 'pending')
             .map(e => e[0]);
         stats.numPendingJobs += pendingJobs.length;
@@ -15,7 +17,7 @@ export async function pullCmd(mm, { limitToLang, partial }) {
                 const translationProvider = mm.getTranslationProvider(pendingJob);
                 const jobResponse = await translationProvider.translator.fetchTranslations(pendingJob, jobRequest);
                 if (jobResponse?.status === 'done') {
-                    await mm.processJob(jobResponse);
+                    await mm.processJob(jobResponse, jobRequest);
                     stats.translatedStrings += jobResponse.tus.length;
                     stats.doneJobs++;
                 } else if (jobResponse?.status === 'pending') {
@@ -23,7 +25,7 @@ export async function pullCmd(mm, { limitToLang, partial }) {
                     if (partial) {
                         const { inflight, ...doneResponse } = jobResponse;
                         doneResponse.status = 'done';
-                        await mm.processJob(doneResponse);
+                        await mm.processJob(doneResponse, jobRequest);
                         stats.translatedStrings += jobResponse.tus.length;
 
                         const newRequest = await mm.jobStore.getJobRequest(jobResponse.jobGuid); // TODO: can we just use jobRequest?

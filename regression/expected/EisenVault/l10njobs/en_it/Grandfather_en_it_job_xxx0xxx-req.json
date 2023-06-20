@@ -4,29 +4,15 @@
 	"tus": [
 		{
 			"sid": "title.generic",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "New Activity",
 			"guid": "7Yg93c458EbHxMIJHNXXG77jF5ZnrMzxv8ScSU0oCyQ",
 			"nsrc": [
 				"New Activity"
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "more.activities",
-			"location": {
-				"startLine": 4,
-				"endLine": 4
-			},
-			"mf": "default",
-			"gstr": "{{x}} more",
 			"guid": "iFr1XEoi3u89bv1K36QYJ8mOO-8yj4RdSWXpMtkowNo",
-			"rawNotes": "## Rollup",
 			"notes": {
 				"desc": "## Rollup"
 			},
@@ -37,19 +23,11 @@
 				},
 				" more"
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "atom.title.site",
-			"location": {
-				"startLine": 7,
-				"endLine": 7
-			},
-			"mf": "default",
-			"gstr": "Alfresco Activities Site Feed for {{x}}",
 			"guid": "DQ_hE0YU3Dc1i-RCzydiH221mS2bCTGrix7yN0NVYjs",
-			"rawNotes": "## ATOM feed messages",
 			"notes": {
 				"desc": "## ATOM feed messages"
 			},
@@ -60,17 +38,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "atom.title.user",
-			"location": {
-				"startLine": 8,
-				"endLine": 8
-			},
-			"mf": "default",
-			"gstr": "Alfresco Activities User Feed for {{x}}",
 			"guid": "QUNbFFCnev-5nePd6x-GLS_ECDiaiAilPFQsud2YAoE",
 			"nsrc": [
 				"Alfresco Activities User Feed for ",
@@ -79,19 +50,11 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "in.site",
-			"location": {
-				"startLine": 11,
-				"endLine": 11
-			},
-			"mf": "default",
-			"gstr": "{{x}} in {{x}}",
 			"guid": "BpkBpKi4k1zbxxMBjLweUIMIakji86zWvO-jLYTfbc8",
-			"rawNotes": "## Optional Site link",
 			"notes": {
 				"desc": "## Optional Site link"
 			},
@@ -106,19 +69,11 @@
 					"v": "{1}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.blog.post-created",
-			"location": {
-				"startLine": 14,
-				"endLine": 14
-			},
-			"mf": "default",
-			"gstr": "{{x}} created blog post {{x}}",
 			"guid": "3rblxtRQl_XxzcIRIcuXD1YiqWoZZGm2OK6VT_3AvEE",
-			"rawNotes": "## 0 = Item title / page link, 1 = User profile link, 2 = custom0, 3 = custom1, 4 = Site link, 5 = second user profile link",
 			"notes": "PH({0}|Hello World|Item title / page link)",
 			"nsrc": [
 				{
@@ -131,17 +86,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.blog.post-updated",
-			"location": {
-				"startLine": 15,
-				"endLine": 15
-			},
-			"mf": "default",
-			"gstr": "{{x}} updated blog post {{x}}",
 			"guid": "YWxB6wV9NKqyi_xBz9gfJXM9gVGUn8fmMLpstgYj4GQ",
 			"notes": "PH({0}|Hello World|Item title / page link)",
 			"nsrc": [
@@ -155,17 +103,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.blog.post-deleted",
-			"location": {
-				"startLine": 16,
-				"endLine": 16
-			},
-			"mf": "default",
-			"gstr": "{{x}} deleted blog post {{x}}",
 			"guid": "M9uKQf1rlQ2VvflkhXLRngLoR1dO97dbM0pgqzAYWBQ",
 			"notes": "PH({0}|Hello World|Item title / page link)",
 			"nsrc": [
@@ -179,17 +120,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.comments.comment-created",
-			"location": {
-				"startLine": 17,
-				"endLine": 17
-			},
-			"mf": "default",
-			"gstr": "{{x}} commented on {{x}}",
 			"guid": "Es__KuVLCYEEqbxJ7UH0OufVMIRx1P1XxjQorI3KvoM",
 			"nsrc": [
 				{
@@ -202,17 +136,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.comments.comment-updated",
-			"location": {
-				"startLine": 18,
-				"endLine": 18
-			},
-			"mf": "default",
-			"gstr": "{{x}} updated comment on {{x}}",
 			"guid": "SMBJeA-SZElxfZ3ogui9-bgmMdN-AW7Wn3K_RzxHgnM",
 			"nsrc": [
 				{
@@ -225,17 +152,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.comments.comment-deleted",
-			"location": {
-				"startLine": 19,
-				"endLine": 19
-			},
-			"mf": "default",
-			"gstr": "{{x}} deleted a comment from {{x}}",
 			"guid": "a8SuqJb6qftuXW9zPPZ6uOsN8HzkGBQTu1gkrLtn-y8",
 			"nsrc": [
 				{
@@ -248,17 +168,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.discussions.post-created",
-			"location": {
-				"startLine": 20,
-				"endLine": 20
-			},
-			"mf": "default",
-			"gstr": "{{x}} started discussion {{x}}",
 			"guid": "lL5Nz22Eel1_uruDJPcXXY6GRPfiFUNIkPHHnkwJjTA",
 			"nsrc": [
 				{
@@ -271,17 +184,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.discussions.post-updated",
-			"location": {
-				"startLine": 21,
-				"endLine": 21
-			},
-			"mf": "default",
-			"gstr": "{{x}} updated discussion {{x}}",
 			"guid": "yY_62owOshI5WedZZ56RMH0mAHZqkoQFzrl72QouUxM",
 			"nsrc": [
 				{
@@ -294,17 +200,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.discussions.post-deleted",
-			"location": {
-				"startLine": 22,
-				"endLine": 22
-			},
-			"mf": "default",
-			"gstr": "{{x}} deleted discussion {{x}}",
 			"guid": "FLMtjIXON6hrlKJM6PGLnITDdlaxsrB-TMZcUwfOucE",
 			"nsrc": [
 				{
@@ -317,17 +216,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.discussions.reply-created",
-			"location": {
-				"startLine": 23,
-				"endLine": 23
-			},
-			"mf": "default",
-			"gstr": "{{x}} replied to the discussion {{x}}",
 			"guid": "G7fyHbsNuus4ZSyQBBbgTKT8wGSRnTILfVHPH6wEH6A",
 			"nsrc": [
 				{
@@ -340,17 +232,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.discussions.reply-updated",
-			"location": {
-				"startLine": 24,
-				"endLine": 24
-			},
-			"mf": "default",
-			"gstr": "{{x}} updated a reply to {{x}}",
 			"guid": "4P3iwkdyW7FrOtYbhDH0Ubzp2SkQjh16-5cEasPP7Wg",
 			"nsrc": [
 				{
@@ -363,17 +248,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.calendar.event-created",
-			"location": {
-				"startLine": 25,
-				"endLine": 25
-			},
-			"mf": "default",
-			"gstr": "{{x}} created calendar event {{x}}",
 			"guid": "EpZriwYtslQ1Izp3rQ1x2B6n6gH-cWMAJvwjBI-vb3c",
 			"nsrc": [
 				{
@@ -386,17 +264,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.calendar.event-updated",
-			"location": {
-				"startLine": 26,
-				"endLine": 26
-			},
-			"mf": "default",
-			"gstr": "{{x}} updated calendar event {{x}}",
 			"guid": "a9CEM5Ua1GPhvul1Sd8EtIUHss9ao3oWUcRNTDvpcIU",
 			"nsrc": [
 				{
@@ -409,17 +280,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.calendar.event-deleted",
-			"location": {
-				"startLine": 27,
-				"endLine": 27
-			},
-			"mf": "default",
-			"gstr": "{{x}} deleted calendar event {{x}}",
 			"guid": "DIP9jIIiKl8ruyh8W69Wny6LPeVdb8fpRZaDsrBV86U",
 			"nsrc": [
 				{
@@ -432,17 +296,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.file-added",
-			"location": {
-				"startLine": 28,
-				"endLine": 28
-			},
-			"mf": "default",
-			"gstr": "{{x}} added document {{x}}",
 			"guid": "k5JI_WYPDUNRUh0sFZquifwJkCf4g1VKj1PKIM0A_JE",
 			"nsrc": [
 				{
@@ -455,17 +312,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.files-added",
-			"location": {
-				"startLine": 29,
-				"endLine": 29
-			},
-			"mf": "default",
-			"gstr": "{{x}} added {{x}} documents",
 			"guid": "FpjduiGSXQ5iah8xYImPZthEzoV0MzzT60prVEZhdEI",
 			"nsrc": [
 				{
@@ -479,17 +329,10 @@
 				},
 				" documents"
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.file-created",
-			"location": {
-				"startLine": 30,
-				"endLine": 30
-			},
-			"mf": "default",
-			"gstr": "{{x}} created document {{x}}",
 			"guid": "AN4ncvCCj7nzsY4-Ke7CzA6iVA--CMdk1mNrOJztpzw",
 			"nsrc": [
 				{
@@ -502,17 +345,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.file-deleted",
-			"location": {
-				"startLine": 31,
-				"endLine": 31
-			},
-			"mf": "default",
-			"gstr": "{{x}} deleted document {{x}}",
 			"guid": "P1ByqIYS2ma6bymP1W7DSf4FHxRbI-9KaQ2sdBE71T8",
 			"nsrc": [
 				{
@@ -525,17 +361,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.files-deleted",
-			"location": {
-				"startLine": 32,
-				"endLine": 32
-			},
-			"mf": "default",
-			"gstr": "{{x}} deleted {{x}} documents",
 			"guid": "K7TJHd23oMM3cpKocUkxiAaqxOji9bwR1Mg8t-BHMFI",
 			"nsrc": [
 				{
@@ -549,17 +378,10 @@
 				},
 				" documents"
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.file-updated",
-			"location": {
-				"startLine": 33,
-				"endLine": 33
-			},
-			"mf": "default",
-			"gstr": "{{x}} updated document {{x}}",
 			"guid": "k1cgnaImIwxlUrS497kcSNmvzuv5I68j0ioyzX7c8Ic",
 			"nsrc": [
 				{
@@ -572,17 +394,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.files-updated",
-			"location": {
-				"startLine": 34,
-				"endLine": 34
-			},
-			"mf": "default",
-			"gstr": "{{x}} updated {{x}} documents",
 			"guid": "MRW4EYDzbzarsY0z4zraAtLm1WKLPN1ghyiMvB1Hipo",
 			"nsrc": [
 				{
@@ -596,17 +411,10 @@
 				},
 				" documents"
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.folder-added",
-			"location": {
-				"startLine": 35,
-				"endLine": 35
-			},
-			"mf": "default",
-			"gstr": "{{x}} added folder {{x}}",
 			"guid": "-OYvZdJn7BfWeFGaR9ed039gXtmFY4HJFPio2jMWHaQ",
 			"nsrc": [
 				{
@@ -619,17 +427,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.folder-deleted",
-			"location": {
-				"startLine": 36,
-				"endLine": 36
-			},
-			"mf": "default",
-			"gstr": "{{x}} deleted folder {{x}}",
 			"guid": "ofzKoQpmR2mq6Plf9V5MSEd6Fz5Ltq13-U1tFAqrq0U",
 			"nsrc": [
 				{
@@ -642,17 +443,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.folders-added",
-			"location": {
-				"startLine": 37,
-				"endLine": 37
-			},
-			"mf": "default",
-			"gstr": "{{x}} added {{x}} folders",
 			"guid": "7dt9A3Z7_mUhwpEHH4bkovTsRMMtaKLj5y5U-wjXkkY",
 			"nsrc": [
 				{
@@ -666,17 +460,10 @@
 				},
 				" folders"
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.folders-deleted",
-			"location": {
-				"startLine": 38,
-				"endLine": 38
-			},
-			"mf": "default",
-			"gstr": "{{x}} deleted {{x}} folders",
 			"guid": "swTAfUTLMpla4apCLpqnjgXkZ3TcF5AsbRcqSddr8fI",
 			"nsrc": [
 				{
@@ -690,17 +477,10 @@
 				},
 				" folders"
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.inline-edit",
-			"location": {
-				"startLine": 39,
-				"endLine": 39
-			},
-			"mf": "default",
-			"gstr": "{{x}} edited document {{x}}",
 			"guid": "5XD_c2iyMf_fWIRXdm7xW8g44PE7UlsQeAjKlI8Pis8",
 			"nsrc": [
 				{
@@ -713,17 +493,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.file-previewed",
-			"location": {
-				"startLine": 40,
-				"endLine": 40
-			},
-			"mf": "default",
-			"gstr": "{{x}} previewed document {{x}}",
 			"guid": "XUhHCOGm5hUKfi2Bu7miIbFB-1Z2aH57be4DnySac54",
 			"nsrc": [
 				{
@@ -736,17 +509,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.file-downloaded",
-			"location": {
-				"startLine": 41,
-				"endLine": 41
-			},
-			"mf": "default",
-			"gstr": "{{x}} downloaded document {{x}}",
 			"guid": "yGyNdsHARZCGXEefYEHIvYF0x9iBeUQH6UjRtlN0zVM",
 			"nsrc": [
 				{
@@ -759,17 +525,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.file-liked",
-			"location": {
-				"startLine": 42,
-				"endLine": 42
-			},
-			"mf": "default",
-			"gstr": "{{x}} liked document {{x}}",
 			"guid": "sq53xWPD5py_YTmisWVdG6XPVrXq0zyPVuQVFy_ZMFI",
 			"nsrc": [
 				{
@@ -782,17 +541,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.documentlibrary.folder-liked",
-			"location": {
-				"startLine": 43,
-				"endLine": 43
-			},
-			"mf": "default",
-			"gstr": "{{x}} liked folder {{x}}",
 			"guid": "mEgaZISppd-nymvlS1qgCdLHUDUUK7eW54oV-cISyWU",
 			"nsrc": [
 				{
@@ -805,17 +557,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.wiki.page-created",
-			"location": {
-				"startLine": 44,
-				"endLine": 44
-			},
-			"mf": "default",
-			"gstr": "{{x}} created wiki page {{x}}",
 			"guid": "naHyoyk-BovSB4V50pMdNZPzjnAZ6r0ncF1VEa5JWHs",
 			"nsrc": [
 				{
@@ -828,17 +573,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.wiki.page-edited",
-			"location": {
-				"startLine": 45,
-				"endLine": 45
-			},
-			"mf": "default",
-			"gstr": "{{x}} updated wiki page {{x}}",
 			"guid": "YtQhKd3eEaTLfIaJrfYcuRyGunfwREShOn86r67mgYE",
 			"nsrc": [
 				{
@@ -851,17 +589,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.wiki.page-renamed",
-			"location": {
-				"startLine": 46,
-				"endLine": 46
-			},
-			"mf": "default",
-			"gstr": "{{x}} renamed wiki page from {{x}} to {{x}}",
 			"guid": "gNnHDtYlPLhKdm9AZdp9RSZRN28Lz5yhhXqCjSTtmoI",
 			"nsrc": [
 				{
@@ -879,17 +610,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.wiki.page-deleted",
-			"location": {
-				"startLine": 47,
-				"endLine": 47
-			},
-			"mf": "default",
-			"gstr": "{{x}} deleted wiki page {{x}}",
 			"guid": "l9ZP_Bfh4tHIGY9ZcxlxUXabgDhEw0f-wpMCcc-8NKU",
 			"nsrc": [
 				{
@@ -902,17 +626,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.site.group-added",
-			"location": {
-				"startLine": 48,
-				"endLine": 48
-			},
-			"mf": "default",
-			"gstr": "{{x}} group added to site {{x}} with role {{x}}",
 			"guid": "timdMkW30K9sQGhUufC1DXZfOpkDLerkyptYkocdi-U",
 			"nsrc": [
 				{
@@ -930,17 +647,10 @@
 					"v": "{2}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.site.group-removed",
-			"location": {
-				"startLine": 49,
-				"endLine": 49
-			},
-			"mf": "default",
-			"gstr": "{{x}} group removed from site {{x}}",
 			"guid": "MDvXxJekx5BhFE-YdFYqbKhnwbB11OtusxMefSw9Ovg",
 			"nsrc": [
 				{
@@ -953,17 +663,10 @@
 					"v": "{4}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.site.group-role-changed",
-			"location": {
-				"startLine": 50,
-				"endLine": 50
-			},
-			"mf": "default",
-			"gstr": "{{x}} group role changed to {{x}}",
 			"guid": "NMYuYdSO9wouYhDUSuSg37bFIkNCGZwfz76qM7WhIjc",
 			"nsrc": [
 				{
@@ -976,17 +679,10 @@
 					"v": "{2}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.site.user-joined",
-			"location": {
-				"startLine": 51,
-				"endLine": 51
-			},
-			"mf": "default",
-			"gstr": "{{x}} joined site {{x}} with role {{x}}",
 			"guid": "UrEORD8AVE8d6EZqdgDvuDphITHpJAbuffhHQBMVUl4",
 			"nsrc": [
 				{
@@ -1004,17 +700,10 @@
 					"v": "{2}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.site.user-left",
-			"location": {
-				"startLine": 52,
-				"endLine": 52
-			},
-			"mf": "default",
-			"gstr": "{{x}} left site {{x}}",
 			"guid": "27t2xPG0q5-I0c7i1uNxq8WBB20gzzoOd3BkbXj4udc",
 			"nsrc": [
 				{
@@ -1027,17 +716,10 @@
 					"v": "{4}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.site.user-role-changed",
-			"location": {
-				"startLine": 53,
-				"endLine": 53
-			},
-			"mf": "default",
-			"gstr": "{{x}} role changed to {{x}}",
 			"guid": "NpcPUf7fkYkWBbp6clR1ToMNmBieBCT3KEmIljcByzc",
 			"nsrc": [
 				{
@@ -1050,17 +732,10 @@
 					"v": "{2}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.site.liked",
-			"location": {
-				"startLine": 54,
-				"endLine": 54
-			},
-			"mf": "default",
-			"gstr": "{{x}} liked site {{x}}",
 			"guid": "cCf_rWAkkua88a1zzltV1eBivRh9kqs4fomioU9L98c",
 			"nsrc": [
 				{
@@ -1073,17 +748,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.links.link-created",
-			"location": {
-				"startLine": 55,
-				"endLine": 55
-			},
-			"mf": "default",
-			"gstr": "{{x}} created link {{x}}",
 			"guid": "t_HZsv3of9h80u81tC9VgLeo36DqS-rp_l_Px7giuGs",
 			"nsrc": [
 				{
@@ -1096,17 +764,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.links.link-updated",
-			"location": {
-				"startLine": 56,
-				"endLine": 56
-			},
-			"mf": "default",
-			"gstr": "{{x}} updated link {{x}}",
 			"guid": "VbtwoVbSa-yFaG_Ut_rPeJJ_8aQ5oP7H-mSlnos0xu0",
 			"nsrc": [
 				{
@@ -1119,17 +780,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.links.link-deleted",
-			"location": {
-				"startLine": 57,
-				"endLine": 57
-			},
-			"mf": "default",
-			"gstr": "{{x}} deleted link {{x}}",
 			"guid": "KHTUkize79M1wpypmG2Vxaa9BbHVNCRz4aN6ofMGZHY",
 			"nsrc": [
 				{
@@ -1142,17 +796,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.datalists.list-created",
-			"location": {
-				"startLine": 58,
-				"endLine": 58
-			},
-			"mf": "default",
-			"gstr": "{{x}} created data list {{x}}",
 			"guid": "BxA_N4Lc1M41EAZJXgG9aF_wt8HFVtjXD9qtcC636iA",
 			"nsrc": [
 				{
@@ -1165,17 +812,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.datalists.list-updated",
-			"location": {
-				"startLine": 59,
-				"endLine": 59
-			},
-			"mf": "default",
-			"gstr": "{{x}} updated data list {{x}}",
 			"guid": "ZZ07qmBXDMVo247WJgTyZ0gicloP70B_XJRnKI05HsI",
 			"nsrc": [
 				{
@@ -1188,17 +828,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.datalists.list-deleted",
-			"location": {
-				"startLine": 60,
-				"endLine": 60
-			},
-			"mf": "default",
-			"gstr": "{{x}} deleted data list {{x}}",
 			"guid": "OHO4FPrPe3sl47lzd7xNOprvy7sFJdjt7rAGV5-hv84",
 			"nsrc": [
 				{
@@ -1211,17 +844,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.subscriptions.followed",
-			"location": {
-				"startLine": 61,
-				"endLine": 61
-			},
-			"mf": "default",
-			"gstr": "{{x}} is now following {{x}}",
 			"guid": "ZzwTjI7FDa82Eow7Bt9ZUOER1m_KoaAwpegPsYgABJA",
 			"nsrc": [
 				{
@@ -1234,17 +860,10 @@
 					"v": "{5}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.subscriptions.subscribed",
-			"location": {
-				"startLine": 62,
-				"endLine": 62
-			},
-			"mf": "default",
-			"gstr": "{{x}} has subscribed to {{x}}",
 			"guid": "2AOJVDOcxcIal-UZ58LBGqUvETSCrFonNSdskqwn8zQ",
 			"nsrc": [
 				{
@@ -1257,499 +876,267 @@
 					"v": "{2}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "label.header",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "Alfresco Add-ons RSS Feed",
 			"guid": "mpN5e7DwX3x1lq6tGeCw3pN5XojDAp0yBMSeOOyuCpc",
 			"nsrc": [
 				"Alfresco Add-ons RSS Feed"
 			],
-			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/addons.get_en.properties"
 		},
 		{
 			"sid": "label.configure",
-			"location": {
-				"startLine": 2,
-				"endLine": 2
-			},
-			"mf": "default",
-			"gstr": "Configure",
 			"guid": "Syq3DJy_QDcM0m1nqYZXpqFjMMuR87HPZXL4tQ8hfGk",
 			"nsrc": [
 				"Configure"
 			],
-			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/addons.get_en.properties"
 		},
 		{
 			"sid": "label.noItems",
-			"location": {
-				"startLine": 3,
-				"endLine": 3
-			},
-			"mf": "default",
-			"gstr": "No news items",
 			"guid": "94dyHElU-pvxBH_xvcPNYroCw8bbsYZVi9PRkhsVtfk",
 			"nsrc": [
 				"No news items"
 			],
-			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/addons.get_en.properties"
 		},
 		{
 			"sid": "label.loading",
-			"location": {
-				"startLine": 4,
-				"endLine": 4
-			},
-			"mf": "default",
-			"gstr": "Loading items - please wait...",
 			"guid": "P5GRExSyOI9DJatrN4HtEGB0YnefpGW6JB2Nm1SM5_E",
 			"nsrc": [
 				"Loading items - please wait..."
 			],
-			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/addons.get_en.properties"
 		},
 		{
 			"sid": "title.error.bad_data",
-			"location": {
-				"startLine": 5,
-				"endLine": 5
-			},
-			"mf": "default",
-			"gstr": "RSS feed can't be read",
 			"guid": "JYRC8Zfqy9a0-fUUB2YNIS8zc6WQL5RMh8o0ZqD0bcc",
 			"nsrc": [
 				"RSS feed can't be read"
 			],
-			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/addons.get_en.properties"
 		},
 		{
 			"sid": "title.error.unavailable",
-			"location": {
-				"startLine": 6,
-				"endLine": 6
-			},
-			"mf": "default",
-			"gstr": "RSS feed is not available",
 			"guid": "bmGBoEsRYHhWkiRPZzQvvaQVk96lAyjLazEIevIvhbE",
 			"nsrc": [
 				"RSS feed is not available"
 			],
-			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/addons.get_en.properties"
 		},
 		{
 			"sid": "title.error.unsupported",
-			"location": {
-				"startLine": 7,
-				"endLine": 7
-			},
-			"mf": "default",
-			"gstr": "RSS feed format is not supported",
 			"guid": "jXh3uF9cDUKZtHxEG2JBn2BrdG_ZLsJ31Ej8xwl1E_Y",
 			"nsrc": [
 				"RSS feed format is not supported"
 			],
-			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/addons.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 9,
-				"endLine": 9
-			},
-			"mf": "default",
-			"gstr": "This dashlet shows the latest news from Alfresco Add-ons. Click the edit icon on the dashlet to configure the feed.",
 			"guid": "WvR4sh0AUEY-PZKx-eo1nNvJQW5CWA-gp6u2BTfT9D0",
 			"nsrc": [
 				"This dashlet shows the latest news from Alfresco Add-ons. Click the edit icon on the dashlet to configure the feed."
 			],
-			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/addons.get_en.properties"
 		},
 		{
 			"sid": "label.body",
-			"location": {
-				"startLine": 11,
-				"endLine": 11
-			},
-			"mf": "default",
-			"gstr": "Find, rate, and contribute Alfresco add-ons and extensions.",
 			"guid": "rHlW0n89eNdd459GykI6D4NBZtJGidWSP86B5BG0kQg",
 			"nsrc": [
 				"Find, rate, and contribute Alfresco add-ons and extensions."
 			],
-			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/addons.get_en.properties"
 		},
 		{
 			"sid": "label.addonsLink",
-			"location": {
-				"startLine": 12,
-				"endLine": 12
-			},
-			"mf": "default",
-			"gstr": "http://addons.alfresco.com",
 			"guid": "LDHWLHERVQjJ1o-kvogktdzBFC_6nhgsVuTzxoHbhWI",
 			"nsrc": [
 				"http://addons.alfresco.com"
 			],
-			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/addons.get_en.properties"
 		},
 		{
 			"sid": "label.addonsText",
-			"location": {
-				"startLine": 13,
-				"endLine": 13
-			},
-			"mf": "default",
-			"gstr": "Visit the Alfresco Add-ons Home Page",
 			"guid": "m70JMPI9T9GiVlanb29OGMpQQrneQXCFFecW1wlENPs",
 			"nsrc": [
 				"Visit the Alfresco Add-ons Home Page"
 			],
-			"rid": "dashlets/addons.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/addons.get_en.properties"
 		},
 		{
 			"sid": "label.header",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "RSS Feed",
 			"guid": "QX3X1g-Kh1UpJ-aEY4FOSO2WdKt5afp4FyUk8z00kOk",
 			"nsrc": [
 				"RSS Feed"
 			],
-			"rid": "dashlets/async-rssfeed.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/async-rssfeed.get_en.properties"
 		},
 		{
 			"sid": "label.configure",
-			"location": {
-				"startLine": 2,
-				"endLine": 2
-			},
-			"mf": "default",
-			"gstr": "Configure",
 			"guid": "vwrKccRIjjVNjVNl0CRZJsRMOUbmwQ_yWgR6XdOhD40",
 			"nsrc": [
 				"Configure"
 			],
-			"rid": "dashlets/async-rssfeed.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/async-rssfeed.get_en.properties"
 		},
 		{
 			"sid": "label.noItems",
-			"location": {
-				"startLine": 3,
-				"endLine": 3
-			},
-			"mf": "default",
-			"gstr": "No news items",
 			"guid": "_BTHCps8KAbIpS9udVg6HYpF7QWwxNp8-0ZWvEDr8bI",
 			"nsrc": [
 				"No news items"
 			],
-			"rid": "dashlets/async-rssfeed.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/async-rssfeed.get_en.properties"
 		},
 		{
 			"sid": "title.error.bad_data",
-			"location": {
-				"startLine": 4,
-				"endLine": 4
-			},
-			"mf": "default",
-			"gstr": "RSS feed can't be read",
 			"guid": "rKmLOWykQIl0HH0r_50MOd07oRk8KqT9Pk-4CnXceEY",
 			"nsrc": [
 				"RSS feed can't be read"
 			],
-			"rid": "dashlets/async-rssfeed.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/async-rssfeed.get_en.properties"
 		},
 		{
 			"sid": "title.error.unavailable",
-			"location": {
-				"startLine": 5,
-				"endLine": 5
-			},
-			"mf": "default",
-			"gstr": "RSS feed is not available",
 			"guid": "3Gxz8EmGRNOELmhuwipqf5luMeaD5qELsN7df_cxAno",
 			"nsrc": [
 				"RSS feed is not available"
 			],
-			"rid": "dashlets/async-rssfeed.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/async-rssfeed.get_en.properties"
 		},
 		{
 			"sid": "title.error.unsupported",
-			"location": {
-				"startLine": 6,
-				"endLine": 6
-			},
-			"mf": "default",
-			"gstr": "RSS feed format is not supported",
 			"guid": "5ZZj-jxDgUbAfyjrMe0cfeQcP0eFIZvFlDCSL84Nrqg",
 			"nsrc": [
 				"RSS feed format is not supported"
 			],
-			"rid": "dashlets/async-rssfeed.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/async-rssfeed.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 8,
-				"endLine": 8
-			},
-			"mf": "default",
-			"gstr": "This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed.",
 			"guid": "jzkfUdJohmFfMtS_GItKtYifp-ZgzcyJKVo8serpi7I",
 			"nsrc": [
 				"This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed."
 			],
-			"rid": "dashlets/async-rssfeed.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/async-rssfeed.get_en.properties"
 		},
 		{
 			"sid": "label.header",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "RSS Feed",
 			"guid": "EFn3t-e0JoDulp-WrmSoRotUUCXkYlE7Kv3biN7WDW0",
 			"nsrc": [
 				"RSS Feed"
 			],
-			"rid": "dashlets/async-rssfeed.post_en.properties",
-			"ts": 1
+			"rid": "dashlets/async-rssfeed.post_en.properties"
 		},
 		{
 			"sid": "label.configure",
-			"location": {
-				"startLine": 2,
-				"endLine": 2
-			},
-			"mf": "default",
-			"gstr": "Configure",
 			"guid": "rMLO-fUZZZq87EB3WIeu2F2GZOtTACGvobKcGojueyA",
 			"nsrc": [
 				"Configure"
 			],
-			"rid": "dashlets/async-rssfeed.post_en.properties",
-			"ts": 1
+			"rid": "dashlets/async-rssfeed.post_en.properties"
 		},
 		{
 			"sid": "label.noItems",
-			"location": {
-				"startLine": 3,
-				"endLine": 3
-			},
-			"mf": "default",
-			"gstr": "No news items",
 			"guid": "Y3VBfG0zC6kDtBZHDxZFCLZRLHwPC2obJTXEwJnkan8",
 			"nsrc": [
 				"No news items"
 			],
-			"rid": "dashlets/async-rssfeed.post_en.properties",
-			"ts": 1
+			"rid": "dashlets/async-rssfeed.post_en.properties"
 		},
 		{
 			"sid": "title.error.bad_data",
-			"location": {
-				"startLine": 4,
-				"endLine": 4
-			},
-			"mf": "default",
-			"gstr": "RSS feed can't be read",
 			"guid": "HCGGtFbvY0TT_hr0VH80CI-RpsEephuBsTnrXUnBZOU",
 			"nsrc": [
 				"RSS feed can't be read"
 			],
-			"rid": "dashlets/async-rssfeed.post_en.properties",
-			"ts": 1
+			"rid": "dashlets/async-rssfeed.post_en.properties"
 		},
 		{
 			"sid": "title.error.unavailable",
-			"location": {
-				"startLine": 5,
-				"endLine": 5
-			},
-			"mf": "default",
-			"gstr": "RSS feed is not available",
 			"guid": "Mryr53ZTSsgu5W2iuspPnNZPC0TxwXUNUtdn_fWrvz8",
 			"nsrc": [
 				"RSS feed is not available"
 			],
-			"rid": "dashlets/async-rssfeed.post_en.properties",
-			"ts": 1
+			"rid": "dashlets/async-rssfeed.post_en.properties"
 		},
 		{
 			"sid": "title.error.unsupported",
-			"location": {
-				"startLine": 6,
-				"endLine": 6
-			},
-			"mf": "default",
-			"gstr": "RSS feed format is not supported",
 			"guid": "WAt8kKCVxWOIxpe-RdYHi0lOvIQt3JBh5cOqlBAyY2s",
 			"nsrc": [
 				"RSS feed format is not supported"
 			],
-			"rid": "dashlets/async-rssfeed.post_en.properties",
-			"ts": 1
+			"rid": "dashlets/async-rssfeed.post_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 8,
-				"endLine": 8
-			},
-			"mf": "default",
-			"gstr": "This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed.",
 			"guid": "IfdF05CMkiWoN-Hems6QAju5Peau9w0OtBN8AvnMGcQ",
 			"nsrc": [
 				"This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed."
 			],
-			"rid": "dashlets/async-rssfeed.post_en.properties",
-			"ts": 1
+			"rid": "dashlets/async-rssfeed.post_en.properties"
 		},
 		{
 			"sid": "label.header",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "Site Calendar",
 			"guid": "MoJ9WnVlNIDG5uEqTEgK-SIijATplqSaRGJaxOx-CoM",
 			"nsrc": [
 				"Site Calendar"
 			],
-			"rid": "dashlets/calendar.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/calendar.get_en.properties"
 		},
 		{
 			"sid": "label.no-items",
-			"location": {
-				"startLine": 2,
-				"endLine": 2
-			},
-			"mf": "default",
-			"gstr": "No upcoming events",
 			"guid": "GOD7gmCgDoOkTDZrQvELAvKSHk2F8hfwz_JMe8JdCsY",
 			"nsrc": [
 				"No upcoming events"
 			],
-			"rid": "dashlets/calendar.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/calendar.get_en.properties"
 		},
 		{
 			"sid": "label.until",
-			"location": {
-				"startLine": 3,
-				"endLine": 3
-			},
-			"mf": "default",
-			"gstr": "until",
 			"guid": "nRPmwwxUzPSSMPswBuNBiozTKk-M3XWZAJv6BKAL0Os",
 			"nsrc": [
 				"until"
 			],
-			"rid": "dashlets/calendar.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/calendar.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 5,
-				"endLine": 5
-			},
-			"mf": "default",
-			"gstr": "This dashlet shows the upcoming events for this site.",
 			"guid": "pCbsFvMcdwJ4xUDch0i4cL0N-N8vVkvhqjYTWzg1P-U",
 			"nsrc": [
 				"This dashlet shows the upcoming events for this site."
 			],
-			"rid": "dashlets/calendar.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/calendar.get_en.properties"
 		},
 		{
 			"sid": "header",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "Site Members",
 			"guid": "UQLku8Jgbj4t7oXKzYbS-N1q016ts3c93ZU5sHSqm7M",
 			"nsrc": [
 				"Site Members"
 			],
-			"rid": "dashlets/colleagues.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/colleagues.get_en.properties"
 		},
 		{
 			"sid": "link.invite",
-			"location": {
-				"startLine": 3,
-				"endLine": 3
-			},
-			"mf": "default",
-			"gstr": "Invite",
 			"guid": "IMup8Q-qpnRDXDpvhrXgM6oMmHeceIZeswR9_BPg-UA",
 			"nsrc": [
 				"Invite"
 			],
-			"rid": "dashlets/colleagues.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/colleagues.get_en.properties"
 		},
 		{
 			"sid": "link.all-members",
-			"location": {
-				"startLine": 4,
-				"endLine": 4
-			},
-			"mf": "default",
-			"gstr": "All Members",
 			"guid": "I3DX1xbVZ6MDdYOsdpgUIKj0BsLDjNPcclfJTGbJyIg",
 			"nsrc": [
 				"All Members"
 			],
-			"rid": "dashlets/colleagues.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/colleagues.get_en.properties"
 		},
 		{
 			"sid": "pagination.template",
-			"location": {
-				"startLine": 7,
-				"endLine": 7
-			},
-			"mf": "default",
-			"gstr": "{{x}} - {{x}} of {{x}}",
 			"guid": "mLALtuF1QW-Bmat_BnqBWJoZuRPft920lMrphwmUgRE",
-			"rawNotes": "#{startRecord} - {endRecord} of {totalRecords}",
 			"notes": {
 				"desc": "#{startRecord} - {endRecord} of {totalRecords}"
 			},
@@ -1769,17 +1156,10 @@
 					"v": "{2}"
 				}
 			],
-			"rid": "dashlets/colleagues.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/colleagues.get_en.properties"
 		},
 		{
 			"sid": "pagination.template2",
-			"location": {
-				"startLine": 9,
-				"endLine": 9
-			},
-			"mf": "default",
-			"gstr": "Shown the first {{x}} members",
 			"guid": "ydV8IMtAfS3uFzlz0sR5iGjM8A3xaZxhv7DpcaEObv8",
 			"nsrc": [
 				"Shown the first ",
@@ -1789,47 +1169,25 @@
 				},
 				" members"
 			],
-			"rid": "dashlets/colleagues.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/colleagues.get_en.properties"
 		},
 		{
 			"sid": "empty.title",
-			"location": {
-				"startLine": 11,
-				"endLine": 11
-			},
-			"mf": "default",
-			"gstr": "You are the only site member.",
 			"guid": "Z7s4QyJAhYHCiMy_1QBsnWuFYjFGjeUweCymtEG5EI0",
 			"nsrc": [
 				"You are the only site member."
 			],
-			"rid": "dashlets/colleagues.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/colleagues.get_en.properties"
 		},
 		{
 			"sid": "empty.description",
-			"location": {
-				"startLine": 12,
-				"endLine": 12
-			},
-			"mf": "default",
-			"gstr": "",
 			"guid": "izQWYgYqKwqWjsdbFGDGR2vStXjgSKPkDzfkUNC_dZY",
 			"nsrc": [],
-			"rid": "dashlets/colleagues.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/colleagues.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 15,
-				"endLine": 16
-			},
-			"mf": "default",
-			"gstr": "{{bx}}Use this dashlet to see who belongs to this site. You can click their name to view their profile and get to know them.{{ex}}{{bx}}Clicking All Members lets you see everyone in this site. If you're a site manager, click Invite to send out some site invitations.{{ex}}",
 			"guid": "KTiNW5209TexcCzIt4JuDtEciEbxhHTDof1fPUXxPy8",
-			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"notes": {
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
@@ -1853,143 +1211,78 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/colleagues.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/colleagues.get_en.properties"
 		},
 		{
 			"sid": "header",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "Site Content",
 			"guid": "-jkZ8mNn1-5gY57cN8Iwf4TRvNgsswnWDCYc9YU1-DI",
 			"nsrc": [
 				"Site Content"
 			],
-			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/docsummary.get_en.properties"
 		},
 		{
 			"sid": "filter.favourites",
-			"location": {
-				"startLine": 4,
-				"endLine": 4
-			},
-			"mf": "default",
-			"gstr": "My Favorites",
 			"guid": "Eq6kdX8FRZrnHXZ8tj-1WkbVn79SRm10JD2L8-8Sy8w",
-			"rawNotes": "## Filters",
 			"notes": {
 				"desc": "## Filters"
 			},
 			"nsrc": [
 				"My Favorites"
 			],
-			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/docsummary.get_en.properties"
 		},
 		{
 			"sid": "filter.editingMe",
-			"location": {
-				"startLine": 5,
-				"endLine": 5
-			},
-			"mf": "default",
-			"gstr": "I'm Editing",
 			"guid": "97cVTH-GAwwPwiPkLIvfcpnA5adMWSAGoEbc3MRek1o",
 			"nsrc": [
 				"I'm Editing"
 			],
-			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/docsummary.get_en.properties"
 		},
 		{
 			"sid": "filter.recentlyModifiedByMe",
-			"location": {
-				"startLine": 6,
-				"endLine": 6
-			},
-			"mf": "default",
-			"gstr": "I've Recently Modified",
 			"guid": "hf7blJXAg22Fri6NHgJ7s70yxHa6yBhqcqADR_1yjVw",
 			"nsrc": [
 				"I've Recently Modified"
 			],
-			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/docsummary.get_en.properties"
 		},
 		{
 			"sid": "filter.synced",
-			"location": {
-				"startLine": 7,
-				"endLine": 7
-			},
-			"mf": "default",
-			"gstr": "Synced content",
 			"guid": "qbkzWNAbC_TxskmbnRMPTAFC_Qivo452sE-eKom4sEk",
 			"nsrc": [
 				"Synced content"
 			],
-			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/docsummary.get_en.properties"
 		},
 		{
 			"sid": "filter.syncedErrors",
-			"location": {
-				"startLine": 8,
-				"endLine": 8
-			},
-			"mf": "default",
-			"gstr": "Synced with Errors",
 			"guid": "r39Zh1WRDhk2ssx_nqreCADYUoE4NLCBoirF7Hyz0pc",
 			"nsrc": [
 				"Synced with Errors"
 			],
-			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/docsummary.get_en.properties"
 		},
 		{
 			"sid": "empty.title",
-			"location": {
-				"startLine": 10,
-				"endLine": 10
-			},
-			"mf": "default",
-			"gstr": "Keep track of content changes",
 			"guid": "JRcN8pfbtc9OtGAhnn5foEsq1M7RTW7U_xk4GzVE5lc",
 			"nsrc": [
 				"Keep track of content changes"
 			],
-			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/docsummary.get_en.properties"
 		},
 		{
 			"sid": "empty.description",
-			"location": {
-				"startLine": 11,
-				"endLine": 11
-			},
-			"mf": "default",
-			"gstr": "Easily see which document library items site members have been working on. In the detailed view you can like an item and mark it as a favorite. You can also jump to the details page to leave a comment.",
 			"guid": "AoGMEuVT8eQgM6akvguJJHpfNLiR5zK9PCNZ6dZJ89s",
 			"nsrc": [
 				"Easily see which document library items site members have been working on. In the detailed view you can like an item and mark it as a favorite. You can also jump to the details page to leave a comment."
 			],
-			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/docsummary.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 14,
-				"endLine": 18
-			},
-			"mf": "default",
-			"gstr": "{{bx}}This dashlet makes it easy to keep track of your recent changes to library content in this site. Clicking the item name or thumbnail takes you to the details page so you can preview or work with the item.{{ex}}{{bx}}There are two views for this dashlet. The detailed view lets you:{{bx}}{{bx}}Mark an item as a favorite so it appears in Favorites lists for easy access{{ex}}{{bx}}Like (and unlike) an item{{ex}}{{bx}}Jump to the item details page to leave a comment{{ex}}{{ex}}{{ex}}",
 			"guid": "LiZ1Us13QP3ByVIcMm62HGr4E_GM48xSJKMED2MBqn4",
-			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"notes": {
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
@@ -2048,17 +1341,10 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/docsummary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/docsummary.get_en.properties"
 		},
 		{
 			"sid": "welcome.user",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "Welcome to your dashboard, {{x}}",
 			"guid": "eXhVEg9o9noL3Qu7Pbbo7HSzaK70HRF4gHThovLijH0",
 			"nsrc": [
 				"Welcome to your dashboard, ",
@@ -2067,17 +1353,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.site",
-			"location": {
-				"startLine": 2,
-				"endLine": 2
-			},
-			"mf": "default",
-			"gstr": "Welcome to {{x}}, {{x}}",
 			"guid": "eOQ0ymwgcOgUMBykpFlcXll14QGH4_djMj-_x4bl9Zk",
 			"nsrc": [
 				"Welcome to ",
@@ -2091,662 +1370,354 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.user.description",
-			"location": {
-				"startLine": 4,
-				"endLine": 4
-			},
-			"mf": "default",
-			"gstr": "The personal dashboard shows you what's going on in the sites you belong to.",
 			"guid": "_XrOsbXsUwQ_8bszzlCDI2uJW88xOEBL0N8XglS9iJE",
 			"nsrc": [
 				"The personal dashboard shows you what's going on in the sites you belong to."
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.site.description",
-			"location": {
-				"startLine": 5,
-				"endLine": 5
-			},
-			"mf": "default",
-			"gstr": "The site dashboard lets you know what's been happening in this particular site.",
 			"guid": "LFDNhc3x4IOU2jEMEDAutCGuf0RLtaFpI9Npx5mEaHo",
 			"nsrc": [
 				"The site dashboard lets you know what's been happening in this particular site."
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "get.started.message",
-			"location": {
-				"startLine": 6,
-				"endLine": 6
-			},
-			"mf": "default",
-			"gstr": "Let's get you started...",
 			"guid": "Hl2jAekbOlU5b2UgbSDPKnsTR1-LeGI_x1vrWZmXIc4",
 			"nsrc": [
 				"Let's get you started..."
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "panel.delete.header",
-			"location": {
-				"startLine": 8,
-				"endLine": 8
-			},
-			"mf": "default",
-			"gstr": "Confirm Removal",
 			"guid": "0HBlSg4TQpBa_3gnTevKWAo91w1FXZmnFD20mezdFn0",
 			"nsrc": [
 				"Confirm Removal"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "panel.delete.msg",
-			"location": {
-				"startLine": 9,
-				"endLine": 9
-			},
-			"mf": "default",
-			"gstr": "Are you sure you want to permanently remove the assistance panel from this dashboard?",
 			"guid": "311BhkRDuAPx8E5vVnHKZLqTXbf6R7wDXiVjvJSYdbs",
 			"nsrc": [
 				"Are you sure you want to permanently remove the assistance panel from this dashboard?"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "panel.delete.fail",
-			"location": {
-				"startLine": 10,
-				"endLine": 10
-			},
-			"mf": "default",
-			"gstr": "Unable to remove dashlet.",
 			"guid": "NRkVbdTNHz_qlna4LgnOAPki1p82gd23HqBhboT0FCM",
 			"nsrc": [
 				"Unable to remove dashlet."
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.close",
-			"location": {
-				"startLine": 12,
-				"endLine": 12
-			},
-			"mf": "default",
-			"gstr": "Remove",
 			"guid": "EwYyoBOiJdg6oM-YE3IceFEdrI4YodM54PJ9lxi5coA",
 			"nsrc": [
 				"Remove"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.user.tutorial.title",
-			"location": {
-				"startLine": 14,
-				"endLine": 14
-			},
-			"mf": "default",
-			"gstr": "Learning",
 			"guid": "Dzd-t_8JGLQYnlP7l4_2CRVb4ogwRapR7Pv_eri26N0",
 			"nsrc": [
 				"Learning"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.user.tutorial.description",
-			"location": {
-				"startLine": 15,
-				"endLine": 15
-			},
-			"mf": "default",
-			"gstr": "See what you can do with Alfresco by watching a video tutorial.",
 			"guid": "cq7dB3PO5aldkcR0mnQAuz30CtWgT3tVz7pQTb0Fo8E",
 			"nsrc": [
 				"See what you can do with Alfresco by watching a video tutorial."
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.user.tutorial.link",
-			"location": {
-				"startLine": 16,
-				"endLine": 16
-			},
-			"mf": "default",
-			"gstr": "View the tutorials",
 			"guid": "Kd8IjUiDGWqwJ8_wCe9j8IPCULuggAu07-69RVwUGsE",
 			"nsrc": [
 				"View the tutorials"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.user.sites.title",
-			"location": {
-				"startLine": 18,
-				"endLine": 18
-			},
-			"mf": "default",
-			"gstr": "Sharing",
 			"guid": "yzKCcxaBfHVKgCT65Yqwp34_PqIAGgb63qGEv7X4JRo",
 			"nsrc": [
 				"Sharing"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.user.sites.description",
-			"location": {
-				"startLine": 19,
-				"endLine": 19
-			},
-			"mf": "default",
-			"gstr": "Create a site to share content with other site members.",
 			"guid": "sU0ERYq-NYM1suS9gBdoAY_rZ7GgozUoC2ODYyZo_68",
 			"nsrc": [
 				"Create a site to share content with other site members."
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.user.sites.link",
-			"location": {
-				"startLine": 20,
-				"endLine": 20
-			},
-			"mf": "default",
-			"gstr": "Create a site",
 			"guid": "jtWkUsCWeOhFAHH9cyWJg3pnZTO6EXkp-wS_VsFxMnE",
 			"nsrc": [
 				"Create a site"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.user.profile.title",
-			"location": {
-				"startLine": 22,
-				"endLine": 22
-			},
-			"mf": "default",
-			"gstr": "Personalizing",
 			"guid": "EvF0tZmcww2tlRFKWqnWSDHmN__vnbBi-RLjXQUqGlM",
 			"nsrc": [
 				"Personalizing"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.user.profile.description",
-			"location": {
-				"startLine": 23,
-				"endLine": 23
-			},
-			"mf": "default",
-			"gstr": "Update your personal and business information so others can get to know you.",
 			"guid": "Od4t7qwpOzcjCy82k9h-8jpdK3p5Feiy8qHkcBdbs8g",
 			"nsrc": [
 				"Update your personal and business information so others can get to know you."
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.user.profile.link",
-			"location": {
-				"startLine": 24,
-				"endLine": 24
-			},
-			"mf": "default",
-			"gstr": "Edit your profile",
 			"guid": "dGqwaQvTpU3JFzGx7FxOgalBei43MI1PoD4Um6snUR8",
 			"nsrc": [
 				"Edit your profile"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.user.dashboard.title",
-			"location": {
-				"startLine": 26,
-				"endLine": 26
-			},
-			"mf": "default",
-			"gstr": "Customizing",
 			"guid": "oaEMzNKQDA6D0ZxLsgWbK9Asm5vGm8mqaOrfV3ifMlE",
 			"nsrc": [
 				"Customizing"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.user.dashboard.description",
-			"location": {
-				"startLine": 27,
-				"endLine": 27
-			},
-			"mf": "default",
-			"gstr": "Set up your dashboard to show the information you want to see.",
 			"guid": "7hYl8_UBb4dBVjKwIs5Ss29v7cg1culTTUQNTK4aAw0",
 			"nsrc": [
 				"Set up your dashboard to show the information you want to see."
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.user.dashboard.link",
-			"location": {
-				"startLine": 28,
-				"endLine": 28
-			},
-			"mf": "default",
-			"gstr": "Customize your dashboard",
 			"guid": "IySJzAxorEnDt5PhB1lErXiAOn_qlIbmoNDT_77W2Ns",
 			"nsrc": [
 				"Customize your dashboard"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.user.explore.title",
-			"location": {
-				"startLine": 30,
-				"endLine": 30
-			},
-			"mf": "default",
-			"gstr": "Exploring",
 			"guid": "lNCvVsgpTSKpr39mRmojNPuHOr-txvsV8NzkcfIxUpE",
 			"nsrc": [
 				"Exploring"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.user.explore.description",
-			"location": {
-				"startLine": 31,
-				"endLine": 31
-			},
-			"mf": "default",
-			"gstr": "Have a look at the sites already in Alfresco. You can visit public sites and join them straightaway.",
 			"guid": "hA5l02jvfwLhJUrTJwk5shcVXoi5xjUO8TI2KfcTSSA",
 			"nsrc": [
 				"Have a look at the sites already in Alfresco. You can visit public sites and join them straightaway."
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.user.explore.link",
-			"location": {
-				"startLine": 32,
-				"endLine": 32
-			},
-			"mf": "default",
-			"gstr": "View all sites",
 			"guid": "FdjstiwWjJHZeBQyRFGvayIrBA1A1Q8A44EFiaRpgc4",
 			"nsrc": [
 				"View all sites"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.site.dashboard.title",
-			"location": {
-				"startLine": 34,
-				"endLine": 34
-			},
-			"mf": "default",
-			"gstr": "Customizing",
 			"guid": "C0xFmTN5j00pG2pEoc5qD9XwfMp5NnIHyyooJCwdcmI",
 			"nsrc": [
 				"Customizing"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.site.dashboard.description",
-			"location": {
-				"startLine": 35,
-				"endLine": 35
-			},
-			"mf": "default",
-			"gstr": "Set up this dashboard to show information you want others to see.",
 			"guid": "jSsDMOjgzLle4wBpQciLVaV7kIWOO15lLvWjFT2fsj8",
 			"nsrc": [
 				"Set up this dashboard to show information you want others to see."
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.site.dashboard.link",
-			"location": {
-				"startLine": 36,
-				"endLine": 36
-			},
-			"mf": "default",
-			"gstr": "Customize the site dashboard",
 			"guid": "k_sZf4xYFd3q_jShZ4KCg3pMyb7k30h_GJzCOhjXh2Q",
 			"nsrc": [
 				"Customize the site dashboard"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.site.moderated.title",
-			"location": {
-				"startLine": 38,
-				"endLine": 38
-			},
-			"mf": "default",
-			"gstr": "Joining",
 			"guid": "C3Bpk8ksl0oRqtnFh1rqmccVNArfSSLDaxQYufhd8Yg",
 			"nsrc": [
 				"Joining"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.site.moderated.description",
-			"location": {
-				"startLine": 39,
-				"endLine": 39
-			},
-			"mf": "default",
-			"gstr": "This site's membership is moderated. You can request to join and a site manager will be notified.",
 			"guid": "TDCRo5CmTHxib6eq6zDJVk_HZdONjyv7NWsdRc-olL4",
 			"nsrc": [
 				"This site's membership is moderated. You can request to join and a site manager will be notified."
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.site.moderated.link",
-			"location": {
-				"startLine": 40,
-				"endLine": 40
-			},
-			"mf": "default",
-			"gstr": "Request to join",
 			"guid": "z7pget80mARdHz2d5oVY8rQKjU718-IHuOfSPexFR64",
 			"nsrc": [
 				"Request to join"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.site.upload.title",
-			"location": {
-				"startLine": 42,
-				"endLine": 42
-			},
-			"mf": "default",
-			"gstr": "Collaborating",
 			"guid": "YjY9B7bbslXXS_BZu5t0flKRmJBYbvJXy7WtcMrnbAM",
 			"nsrc": [
 				"Collaborating"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.site.upload.description",
-			"location": {
-				"startLine": 43,
-				"endLine": 43
-			},
-			"mf": "default",
-			"gstr": "Upload content to the document library to start collaborating with others.",
 			"guid": "-mfz92vriJPFOruq0CrewWec5ztycvbhGR56ZCSKccw",
 			"nsrc": [
 				"Upload content to the document library to start collaborating with others."
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.site.upload.link",
-			"location": {
-				"startLine": 44,
-				"endLine": 44
-			},
-			"mf": "default",
-			"gstr": "Upload content",
 			"guid": "-PJoTPxUYJLIwWOLCu8zldxDGyaXYY9Hsex1AGb6w1I",
 			"nsrc": [
 				"Upload content"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.site.invite.title",
-			"location": {
-				"startLine": 46,
-				"endLine": 46
-			},
-			"mf": "default",
-			"gstr": "Inviting",
 			"guid": "6ogdr7A0_gwlw-ljmLYVDzrSJoigK6v7Bgp0Qpk6lmM",
 			"nsrc": [
 				"Inviting"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.site.invite.description",
-			"location": {
-				"startLine": 47,
-				"endLine": 47
-			},
-			"mf": "default",
-			"gstr": "Start inviting others to join your site.",
 			"guid": "fKl1u7uNfFUT5Jsq63a4keItOXxeOXevvCvOe8tgeBc",
 			"nsrc": [
 				"Start inviting others to join your site."
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.site.invite.link",
-			"location": {
-				"startLine": 48,
-				"endLine": 48
-			},
-			"mf": "default",
-			"gstr": "Invite people",
 			"guid": "AL3Ti9Vq1Q9-WfGSOlvyPjteL7dQ0Jg7KvwJGfGCv4Y",
 			"nsrc": [
 				"Invite people"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.site.members.title",
-			"location": {
-				"startLine": 50,
-				"endLine": 50
-			},
-			"mf": "default",
-			"gstr": "Socializing",
 			"guid": "5mqaDtT14XgYTRi-WVMX4xmdeQGEZcg4iWnhPx5qlfU",
 			"nsrc": [
 				"Socializing"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.site.members.description",
-			"location": {
-				"startLine": 51,
-				"endLine": 51
-			},
-			"mf": "default",
-			"gstr": "Find out who belongs to this site. From the member list you can view user profiles to get to know others.",
 			"guid": "OYyKEvCSU3nWDCB9fWmXj5h-JDfOqqBAkAWYwo9rhcY",
 			"nsrc": [
 				"Find out who belongs to this site. From the member list you can view user profiles to get to know others."
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.site.members.link",
-			"location": {
-				"startLine": 52,
-				"endLine": 52
-			},
-			"mf": "default",
-			"gstr": "View site members",
 			"guid": "P92KXznSg66CZcQdToPezgdFAcXpp0tei9RImF088tw",
 			"nsrc": [
 				"View site members"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.site.browse.title",
-			"location": {
-				"startLine": 54,
-				"endLine": 54
-			},
-			"mf": "default",
-			"gstr": "Exploring",
 			"guid": "2xEEnWSco7FwAlnHENjdj7z2tX9hcRurv-r_f7VdrI8",
 			"nsrc": [
 				"Exploring"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.site.browse.description",
-			"location": {
-				"startLine": 55,
-				"endLine": 55
-			},
-			"mf": "default",
-			"gstr": "Find out what content has been added to the site by browsing the document library.",
 			"guid": "kO8OlqPrZKO_KP88Z4QYR3PVYjUCg7oA_1dJbCgQnLM",
 			"nsrc": [
 				"Find out what content has been added to the site by browsing the document library."
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.site.browse.link",
-			"location": {
-				"startLine": 56,
-				"endLine": 56
-			},
-			"mf": "default",
-			"gstr": "Go to document library",
 			"guid": "I1t1cPUy3locFAZ3wfj1n4hgCbRzysFljfBLOvzpJLE",
 			"nsrc": [
 				"Go to document library"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.cloud.sign-up.title",
-			"location": {
-				"startLine": 58,
-				"endLine": 58
-			},
-			"mf": "default",
-			"gstr": "Cloud",
 			"guid": "-QwKxl5l4G0bSHzunF6PDxbtFAjOGaw1gbMAPvbPvdw",
 			"nsrc": [
 				"Cloud"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.cloud.sign-up.description",
-			"location": {
-				"startLine": 59,
-				"endLine": 59
-			},
-			"mf": "default",
-			"gstr": "Sign up today to claim your free network in the cloud.",
 			"guid": "Z8SdGcwUf6vyZv2DdWizfqlOPFLSidgQwHAdt8kRes4",
 			"nsrc": [
 				"Sign up today to claim your free network in the cloud."
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "welcome.cloud.sign-up.link",
-			"location": {
-				"startLine": 60,
-				"endLine": 60
-			},
-			"mf": "default",
-			"gstr": "Sign up",
 			"guid": "Uh32mWY8aps0Zd9KWVc47xITBfl4BUWL3y9F_B4oNWM",
 			"nsrc": [
 				"Sign up"
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "message.request-joining",
-			"location": {
-				"startLine": 62,
-				"endLine": 62
-			},
-			"mf": "default",
-			"gstr": "Requesting to add user {{x}} to site {{x}}...",
 			"guid": "IWi0-MUz7xZe3ZAf4X68WugB14jsOWuPXAI8W2PZVt8",
 			"nsrc": [
 				"Requesting to add user ",
@@ -2761,17 +1732,10 @@
 				},
 				"..."
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "message.request-join-success",
-			"location": {
-				"startLine": 63,
-				"endLine": 63
-			},
-			"mf": "default",
-			"gstr": "Request to join site {{x}} successfully sent. You will now be returned to your personal dashboard.",
 			"guid": "oe6sXNrVCpir8UgtWITsu94Yf0pUexLFiUko3Ta_dpc",
 			"nsrc": [
 				"Request to join site ",
@@ -2781,17 +1745,10 @@
 				},
 				" successfully sent. You will now be returned to your personal dashboard."
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "message.request-join-failure",
-			"location": {
-				"startLine": 64,
-				"endLine": 64
-			},
-			"mf": "default",
-			"gstr": "Could not make the request to add user {{x}} to site {{x}}.",
 			"guid": "9kYNZ3_ktVpcuJuuRdX__VHqhk2anewy39BA-ieCop8",
 			"nsrc": [
 				"Could not make the request to add user ",
@@ -2806,79 +1763,43 @@
 				},
 				"."
 			],
-			"rid": "dashlets/dynamic-welcome.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/dynamic-welcome.get_en.properties"
 		},
 		{
 			"sid": "header.title",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "My Discussions",
 			"guid": "-mF3ugEQpGdMiNj6mR92iwaVMBtHy4HL5ZIJThK6iZU",
 			"nsrc": [
 				"My Discussions"
 			],
-			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/forum-summary.get_en.properties"
 		},
 		{
 			"sid": "newTopic.button",
-			"location": {
-				"startLine": 2,
-				"endLine": 2
-			},
-			"mf": "default",
-			"gstr": "New Topic",
 			"guid": "AOIIEpiCu9WedMyqPeO1AyNZSHlySVzODmPV5o8kjUc",
 			"nsrc": [
 				"New Topic"
 			],
-			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/forum-summary.get_en.properties"
 		},
 		{
 			"sid": "no.result",
-			"location": {
-				"startLine": 3,
-				"endLine": 3
-			},
-			"mf": "default",
-			"gstr": "There are no topics matching your filters.",
 			"guid": "4Zbp5n5fAngZAKluzQ_hZqBwFptprKA-c5yHlUS0S98",
 			"nsrc": [
 				"There are no topics matching your filters."
 			],
-			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/forum-summary.get_en.properties"
 		},
 		{
 			"sid": "topicList.updated",
-			"location": {
-				"startLine": 5,
-				"endLine": 5
-			},
-			"mf": "default",
-			"gstr": "Updated",
 			"guid": "zfEXHMjig8Nq0hRvJFavv0YSYI687AAYRF7VDNBhedY",
 			"nsrc": [
 				"Updated"
 			],
-			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/forum-summary.get_en.properties"
 		},
 		{
 			"sid": "topicList.createdBy",
-			"location": {
-				"startLine": 7,
-				"endLine": 7
-			},
-			"mf": "default",
-			"gstr": "Created by {{x}} {{x}}.",
 			"guid": "dIbVwxFYE1hxYeNCVvrHssPzog8X8nJJPpXXyZSsaHk",
-			"rawNotes": "## In topicList.createdBy {0} is Author Name and {1} is relative date.",
 			"notes": {
 				"desc": "## In topicList.createdBy {0} is Author Name and {1} is relative date."
 			},
@@ -2895,32 +1816,18 @@
 				},
 				"."
 			],
-			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/forum-summary.get_en.properties"
 		},
 		{
 			"sid": "topicList.replies.single",
-			"location": {
-				"startLine": 8,
-				"endLine": 8
-			},
-			"mf": "default",
-			"gstr": "There is 1 reply.",
 			"guid": "xxSe_S0aI5ez8bvNdqKQb9ZwoYONnrfp0gcWTfaxo2c",
 			"nsrc": [
 				"There is 1 reply."
 			],
-			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/forum-summary.get_en.properties"
 		},
 		{
 			"sid": "topicList.replies.plural",
-			"location": {
-				"startLine": 9,
-				"endLine": 9
-			},
-			"mf": "default",
-			"gstr": "There are {{x}} replies.",
 			"guid": "BKLINPpUNByqgqo-yseHMuAwNi5ux1F490G2zkx43bY",
 			"nsrc": [
 				"There are ",
@@ -2930,19 +1837,11 @@
 				},
 				" replies."
 			],
-			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/forum-summary.get_en.properties"
 		},
 		{
 			"sid": "topicList.lastReplyBy",
-			"location": {
-				"startLine": 11,
-				"endLine": 11
-			},
-			"mf": "default",
-			"gstr": "The last reply was posted by {{x}} {{x}}.",
 			"guid": "3rxLae7mZjGkYb8BFHhRL2HRVinODjyavdUOs1PeKKc",
-			"rawNotes": "## In topicList.lastReplyBy {0} is Author Name and {1} is relative date.",
 			"notes": {
 				"desc": "## In topicList.lastReplyBy {0} is Author Name and {1} is relative date."
 			},
@@ -2959,117 +1858,65 @@
 				},
 				"."
 			],
-			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/forum-summary.get_en.properties"
 		},
 		{
 			"sid": "filter.topics.mine",
-			"location": {
-				"startLine": 14,
-				"endLine": 14
-			},
-			"mf": "default",
-			"gstr": "My Topics",
 			"guid": "SaF5jfhsK1yJhYCtKwNK14xZFItSKzIHbyfOX09s3j4",
-			"rawNotes": "# Filter 1",
 			"notes": {
 				"desc": "# Filter 1"
 			},
 			"nsrc": [
 				"My Topics"
 			],
-			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/forum-summary.get_en.properties"
 		},
 		{
 			"sid": "filter.topics.all",
-			"location": {
-				"startLine": 15,
-				"endLine": 15
-			},
-			"mf": "default",
-			"gstr": "All Topics",
 			"guid": "MSPfQF1UwlwAcvWVCifinQbfh_Awliii9Ah1cS-YNAA",
 			"nsrc": [
 				"All Topics"
 			],
-			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/forum-summary.get_en.properties"
 		},
 		{
 			"sid": "filter.history.1day",
-			"location": {
-				"startLine": 17,
-				"endLine": 17
-			},
-			"mf": "default",
-			"gstr": "Topics updated in the last day",
 			"guid": "1xmZmVo3sItH_a_W99LVgEsp-40jP-cffl9A0AyIIDk",
-			"rawNotes": "# Filter 2",
 			"notes": {
 				"desc": "# Filter 2"
 			},
 			"nsrc": [
 				"Topics updated in the last day"
 			],
-			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/forum-summary.get_en.properties"
 		},
 		{
 			"sid": "filter.history.7days",
-			"location": {
-				"startLine": 18,
-				"endLine": 18
-			},
-			"mf": "default",
-			"gstr": "Topics updated in the last 7 days",
 			"guid": "EvEWSxMZ0JyvlAQYQw7vxRTgVod348eqh3WUYn6EFIo",
 			"nsrc": [
 				"Topics updated in the last 7 days"
 			],
-			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/forum-summary.get_en.properties"
 		},
 		{
 			"sid": "filter.history.14days",
-			"location": {
-				"startLine": 19,
-				"endLine": 19
-			},
-			"mf": "default",
-			"gstr": "Topics updated in the last 14 days",
 			"guid": "dre_B9YD3fbTKFCI4LdUyv2UQ9BuyWEC1OKW3YJUW6Y",
 			"nsrc": [
 				"Topics updated in the last 14 days"
 			],
-			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/forum-summary.get_en.properties"
 		},
 		{
 			"sid": "filter.history.28days",
-			"location": {
-				"startLine": 20,
-				"endLine": 20
-			},
-			"mf": "default",
-			"gstr": "Topics updated in the last 28 days",
 			"guid": "mdEbnp88stSHwlqd2IFsRxHPOrXFWK1pt2g6GfJet3Y",
 			"nsrc": [
 				"Topics updated in the last 28 days"
 			],
-			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/forum-summary.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 23,
-				"endLine": 24
-			},
-			"mf": "default",
-			"gstr": "{{bx}}Discussion Forum dashlet.{{ex}}{{bx}}View your latest posts on the Discussion Forum.{{ex}}",
 			"guid": "oVOocmmwS1_ao_0kAZ16L3x5qJASG71Nw-hgbl22TnQ",
-			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"notes": {
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
@@ -3093,47 +1940,26 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/forum-summary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/forum-summary.get_en.properties"
 		},
 		{
 			"sid": "header.title",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "Image Preview",
 			"guid": "fOzFYWf5p9zLAoul1h5_L8PRFB9JVo_HcIXCbFZ22FY",
 			"nsrc": [
 				"Image Preview"
 			],
-			"rid": "dashlets/imagesummary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/imagesummary.get_en.properties"
 		},
 		{
 			"sid": "label.noitems",
-			"location": {
-				"startLine": 2,
-				"endLine": 2
-			},
-			"mf": "default",
-			"gstr": "No items to display",
 			"guid": "0-GrFX12d4kQcyxamhrCI4tuDTExyjLmiUZ8exmZxDo",
 			"nsrc": [
 				"No items to display"
 			],
-			"rid": "dashlets/imagesummary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/imagesummary.get_en.properties"
 		},
 		{
 			"sid": "text.modified-by",
-			"location": {
-				"startLine": 3,
-				"endLine": 3
-			},
-			"mf": "default",
-			"gstr": "Modified by {{x}}",
 			"guid": "7hvIhLuGVxH0OLkjSIpS2xfo-eU_VI1zH5GxHtGdhpM",
 			"nsrc": [
 				"Modified by ",
@@ -3142,17 +1968,10 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/imagesummary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/imagesummary.get_en.properties"
 		},
 		{
 			"sid": "text.selectfolder",
-			"location": {
-				"startLine": 4,
-				"endLine": 4
-			},
-			"mf": "default",
-			"gstr": "Select Image Folder in {{x}}...",
 			"guid": "XPbxA8FEoDrdItRlt4KXXtwCJRKixsE78JnRZ9vBRHY",
 			"nsrc": [
 				"Select Image Folder in ",
@@ -3162,331 +1981,180 @@
 				},
 				"..."
 			],
-			"rid": "dashlets/imagesummary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/imagesummary.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 6,
-				"endLine": 6
-			},
-			"mf": "default",
-			"gstr": "This dashlet shows a thumbnail of each image in the document library. Clicking a thumbnail opens the image in the current window.",
 			"guid": "Ly4fkat27mxTxU9l3TSeFaUihGmSkMhBS1OmC1dHGfY",
 			"nsrc": [
 				"This dashlet shows a thumbnail of each image in the document library. Clicking a thumbnail opens the image in the current window."
 			],
-			"rid": "dashlets/imagesummary.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/imagesummary.get_en.properties"
 		},
 		{
 			"sid": "header",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "My Activities",
 			"guid": "AkOVY2nm-Cf2dwDHuUTJpT98X3WA0NPXYZE9jhCcjX0",
 			"nsrc": [
 				"My Activities"
 			],
-			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-activities.get_en.properties"
 		},
 		{
 			"sid": "label.load-failed",
-			"location": {
-				"startLine": 2,
-				"endLine": 2
-			},
-			"mf": "default",
-			"gstr": "Could not load activities list",
 			"guid": "airW-7rNpHg3ZedTeodPgXLO5o3tuBdYT4bSg8PkIo4",
 			"nsrc": [
 				"Could not load activities list"
 			],
-			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-activities.get_en.properties"
 		},
 		{
 			"sid": "label.filter",
-			"location": {
-				"startLine": 3,
-				"endLine": 3
-			},
-			"mf": "default",
-			"gstr": "Show",
 			"guid": "q8fd6Vngp46xiXf7YfGIUPWkBjlfIFgzAe7MhW5Tfps",
 			"nsrc": [
 				"Show"
 			],
-			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-activities.get_en.properties"
 		},
 		{
 			"sid": "label.older-activities",
-			"location": {
-				"startLine": 4,
-				"endLine": 4
-			},
-			"mf": "default",
-			"gstr": "Older Activities",
 			"guid": "jsg7kitbc9wGCKFRKSV3j_NZN21QhAg7AwR2Nf_KfpE",
 			"nsrc": [
 				"Older Activities"
 			],
-			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.mine",
-			"location": {
-				"startLine": 10,
-				"endLine": 10
-			},
-			"mf": "default",
-			"gstr": "My activities",
 			"guid": "lYYzgCGkzccr-pT7UZ4i4kg7sG6k6f3jFdc6n8EN4N8",
-			"rawNotes": "## Note to translators: The User Interface renders Filters 1, 2, 3 next to each other. The English translation gives these the appearance of a sentence, for example: \"My activities, status updates, in the last 14 days\".\n## This is entirely optional. If the language doesn't allow for this structure, please capitalise the messages in Filter 2+3 so they appear disconnected.\n# Filter 1",
 			"notes": {
 				"desc": "## Note to translators: The User Interface renders Filters 1, 2, 3 next to each other. The English translation gives these the appearance of a sentence, for example: \"My activities, status updates, in the last 14 days\".\n## This is entirely optional. If the language doesn't allow for this structure, please capitalise the messages in Filter 2+3 so they appear disconnected.\n# Filter 1"
 			},
 			"nsrc": [
 				"My activities"
 			],
-			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.others",
-			"location": {
-				"startLine": 11,
-				"endLine": 11
-			},
-			"mf": "default",
-			"gstr": "Everyone else's activities",
 			"guid": "s4SvMdwfKMU6ccV6QqV3hxXIE-EzYdNfDOpAa_qen1o",
 			"nsrc": [
 				"Everyone else's activities"
 			],
-			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.all",
-			"location": {
-				"startLine": 12,
-				"endLine": 12
-			},
-			"mf": "default",
-			"gstr": "Everyone's activities",
 			"guid": "WzSe9I99A25oVVk5smwr-UVIa9nedcgn5MHlq4_ycoE",
 			"nsrc": [
 				"Everyone's activities"
 			],
-			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.following",
-			"location": {
-				"startLine": 13,
-				"endLine": 13
-			},
-			"mf": "default",
-			"gstr": "I'm following",
 			"guid": "vxTDpMP5KNPD326mYrmygx-sSyHTLyKyg_J88cfgfYQ",
 			"nsrc": [
 				"I'm following"
 			],
-			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.allItems",
-			"location": {
-				"startLine": 15,
-				"endLine": 15
-			},
-			"mf": "default",
-			"gstr": "all items",
 			"guid": "VuYFBmp8W917yvy6FDEnusaF740C6phWH-JIUrTYwc0",
-			"rawNotes": "# Filter 2",
 			"notes": {
 				"desc": "# Filter 2"
 			},
 			"nsrc": [
 				"all items"
 			],
-			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.statusItems",
-			"location": {
-				"startLine": 16,
-				"endLine": 16
-			},
-			"mf": "default",
-			"gstr": "status updates",
 			"guid": "9pCIQFQxRalDew1kFulGYgME6nG1b-H580ALZ6kf4rQ",
 			"nsrc": [
 				"status updates"
 			],
-			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.commentItems",
-			"location": {
-				"startLine": 17,
-				"endLine": 17
-			},
-			"mf": "default",
-			"gstr": "comments",
 			"guid": "mgUol9Z645in6zK0RM990o_78khH6p8NMdzX1Mp4b6k",
 			"nsrc": [
 				"comments"
 			],
-			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.contentItems",
-			"location": {
-				"startLine": 18,
-				"endLine": 18
-			},
-			"mf": "default",
-			"gstr": "content",
 			"guid": "ruuQ9F125RY3PUE1KBUvz5XETYN3uQQxUGlrf4uihw0",
 			"nsrc": [
 				"content"
 			],
-			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.membershipItems",
-			"location": {
-				"startLine": 19,
-				"endLine": 19
-			},
-			"mf": "default",
-			"gstr": "memberships",
 			"guid": "MwlTDK7YJbk4KimjzvBTNWO7mzIyQWs8aqhDMdwaTLs",
 			"nsrc": [
 				"memberships"
 			],
-			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.today",
-			"location": {
-				"startLine": 21,
-				"endLine": 21
-			},
-			"mf": "default",
-			"gstr": "today",
 			"guid": "ew1Cta4NZUO58z_VftSCMsMI7As-GxknGadESOGGxtI",
-			"rawNotes": "# Filter 3",
 			"notes": {
 				"desc": "# Filter 3"
 			},
 			"nsrc": [
 				"today"
 			],
-			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.7days",
-			"location": {
-				"startLine": 22,
-				"endLine": 22
-			},
-			"mf": "default",
-			"gstr": "in the last 7 days",
 			"guid": "G-kVvVlHI0aJBqvYbTHfRbAsDfGIlqcB2LRkmSYzV1A",
 			"nsrc": [
 				"in the last 7 days"
 			],
-			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.14days",
-			"location": {
-				"startLine": 23,
-				"endLine": 23
-			},
-			"mf": "default",
-			"gstr": "in the last 14 days",
 			"guid": "lJ4UhR4FcJ2ZfGcZm8WmI1zucHBKt458WX9cx5HsHG0",
 			"nsrc": [
 				"in the last 14 days"
 			],
-			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.28days",
-			"location": {
-				"startLine": 24,
-				"endLine": 24
-			},
-			"mf": "default",
-			"gstr": "in the last 28 days",
 			"guid": "82JTNLI_g7fqBtaJ-Cu1hMnp7jXHvGd7tX7gLNwDTsM",
 			"nsrc": [
 				"in the last 28 days"
 			],
-			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-activities.get_en.properties"
 		},
 		{
 			"sid": "empty.title",
-			"location": {
-				"startLine": 26,
-				"endLine": 26
-			},
-			"mf": "default",
-			"gstr": "Follow what's going on in your sites",
 			"guid": "_gINTlZvl1A81Hu1S4xQyj3N2YmM-e-Ej9sbKZ-45tQ",
 			"nsrc": [
 				"Follow what's going on in your sites"
 			],
-			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-activities.get_en.properties"
 		},
 		{
 			"sid": "empty.description",
-			"location": {
-				"startLine": 27,
-				"endLine": 27
-			},
-			"mf": "default",
-			"gstr": "The activities in this list let you follow the changes in the sites you belong to. You'll see things such as content updates and likes. You can also see who is joining and leaving your sites.",
 			"guid": "P_2n50nItJIiq3IMSYSe0EmV3qw4ECxzGDtp5B8ViNc",
 			"nsrc": [
 				"The activities in this list let you follow the changes in the sites you belong to. You'll see things such as content updates and likes. You can also see who is joining and leaving your sites."
 			],
-			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-activities.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 30,
-				"endLine": 31
-			},
-			"mf": "default",
-			"gstr": "{{bx}}Following what goes on in your sites is easy with this dashlet. It shows the activities in all the sites you belong to, such as content that's been added, deleted, and edited. You can also see who is joining and leaving your sites.{{ex}}{{bx}}Filters let you view activities by time period and ownership.{{ex}}",
 			"guid": "gyzuA8K0OaZnihjH2ZONepwEMPxTtE_NosFIbn_AM8E",
-			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"notes": {
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
@@ -3510,62 +2178,34 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/my-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-activities.get_en.properties"
 		},
 		{
 			"sid": "header",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "Content I'm Editing",
 			"guid": "kVq7Hxzh1nxrGyUwKNHYSW6FQgPe1o3oLXMXZ9m6KvE",
 			"nsrc": [
 				"Content I'm Editing"
 			],
-			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-docs-editing.get_en.properties"
 		},
 		{
 			"sid": "label.noItems",
-			"location": {
-				"startLine": 2,
-				"endLine": 2
-			},
-			"mf": "default",
-			"gstr": "No items to display",
 			"guid": "VaDhmkZ2ZWWHWdcH144kDe7K5E5gOW5DO9nPN-5fxNU",
 			"nsrc": [
 				"No items to display"
 			],
-			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-docs-editing.get_en.properties"
 		},
 		{
 			"sid": "label.error",
-			"location": {
-				"startLine": 3,
-				"endLine": 3
-			},
-			"mf": "default",
-			"gstr": "Could not load data",
 			"guid": "Dm0Z706m2IOjE27Dnqz0iNRrbESVyE9L3njuiI_AGbc",
 			"nsrc": [
 				"Could not load data"
 			],
-			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-docs-editing.get_en.properties"
 		},
 		{
 			"sid": "text.edited-on",
-			"location": {
-				"startLine": 4,
-				"endLine": 4
-			},
-			"mf": "default",
-			"gstr": "Edited {{x}} in {{x}}",
 			"guid": "B4HZwxXRlX_AFD_LgYIAXSdPKMLA9n7sdZx9F2wvXWA",
 			"nsrc": [
 				"Edited ",
@@ -3579,218 +2219,118 @@
 					"v": "{1}"
 				}
 			],
-			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-docs-editing.get_en.properties"
 		},
 		{
 			"sid": "text.blogposts",
-			"location": {
-				"startLine": 5,
-				"endLine": 5
-			},
-			"mf": "default",
-			"gstr": "Blog posts",
 			"guid": "-lMS7-u6z9glHmbrX3w1Ta0CO_w20cZOEVdEgy7KAWo",
 			"nsrc": [
 				"Blog posts"
 			],
-			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-docs-editing.get_en.properties"
 		},
 		{
 			"sid": "text.forumposts",
-			"location": {
-				"startLine": 6,
-				"endLine": 6
-			},
-			"mf": "default",
-			"gstr": "Forum posts",
 			"guid": "kht1hnZxYg5z2oDabqluhIpdRLnLQiK48GRI9uRQ0dY",
 			"nsrc": [
 				"Forum posts"
 			],
-			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-docs-editing.get_en.properties"
 		},
 		{
 			"sid": "text.wikipages",
-			"location": {
-				"startLine": 7,
-				"endLine": 7
-			},
-			"mf": "default",
-			"gstr": "Wiki pages",
 			"guid": "vaP3NW7ujyij8Ah5awtcl-VTn-TgXotOTo3xh-0d5Sg",
 			"nsrc": [
 				"Wiki pages"
 			],
-			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-docs-editing.get_en.properties"
 		},
 		{
 			"sid": "text.documents",
-			"location": {
-				"startLine": 8,
-				"endLine": 8
-			},
-			"mf": "default",
-			"gstr": "Documents",
 			"guid": "mma7KIJnCz1r0BNPr7a8fDOCcCHL402bw0whYy0wTZU",
 			"nsrc": [
 				"Documents"
 			],
-			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-docs-editing.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 10,
-				"endLine": 10
-			},
-			"mf": "default",
-			"gstr": "Check this dashlet to quickly see the items you are working on.",
 			"guid": "vkvoNwRn2JIB_pYL7kCudI2BBrl0Uw4yhYNWHloHAT8",
 			"nsrc": [
 				"Check this dashlet to quickly see the items you are working on."
 			],
-			"rid": "dashlets/my-docs-editing.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-docs-editing.get_en.properties"
 		},
 		{
 			"sid": "header",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "My Documents",
 			"guid": "Zr8WyWG3RhlGY6Ni69YgvBIDRjGacfuKAxPi1HvCmWQ",
 			"nsrc": [
 				"My Documents"
 			],
-			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-documents.get_en.properties"
 		},
 		{
 			"sid": "filter.favourites",
-			"location": {
-				"startLine": 4,
-				"endLine": 4
-			},
-			"mf": "default",
-			"gstr": "My Favorites",
 			"guid": "16dwhpoku0nRZdnDK3zN4gY9CzQrNxTrbsgwSm6DGfk",
-			"rawNotes": "## Filters",
 			"notes": {
 				"desc": "## Filters"
 			},
 			"nsrc": [
 				"My Favorites"
 			],
-			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-documents.get_en.properties"
 		},
 		{
 			"sid": "filter.editingMe",
-			"location": {
-				"startLine": 5,
-				"endLine": 5
-			},
-			"mf": "default",
-			"gstr": "I'm Editing",
 			"guid": "T45JY1JPTF8w3-9djuQrQqNt1qo8go5BrnY-0gq_XiM",
 			"nsrc": [
 				"I'm Editing"
 			],
-			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-documents.get_en.properties"
 		},
 		{
 			"sid": "filter.recentlyModifiedByMe",
-			"location": {
-				"startLine": 6,
-				"endLine": 6
-			},
-			"mf": "default",
-			"gstr": "I've Recently Modified",
 			"guid": "69OAs0aOL6ZqIcXL4Fizzt7ocJPdHMPqRnxI7gdwxXY",
 			"nsrc": [
 				"I've Recently Modified"
 			],
-			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-documents.get_en.properties"
 		},
 		{
 			"sid": "filter.synced",
-			"location": {
-				"startLine": 7,
-				"endLine": 7
-			},
-			"mf": "default",
-			"gstr": "Synced content",
 			"guid": "CIwEJyo5_StommBSbdzYai9bLZOnMhok9di6JIE7bgc",
 			"nsrc": [
 				"Synced content"
 			],
-			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-documents.get_en.properties"
 		},
 		{
 			"sid": "filter.syncedErrors",
-			"location": {
-				"startLine": 8,
-				"endLine": 8
-			},
-			"mf": "default",
-			"gstr": "Synced with Errors",
 			"guid": "yV-PN0fv77TSTS-mNgk_pcjMnf-LdfCFBcsfNb-eAJA",
 			"nsrc": [
 				"Synced with Errors"
 			],
-			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-documents.get_en.properties"
 		},
 		{
 			"sid": "empty.title",
-			"location": {
-				"startLine": 10,
-				"endLine": 10
-			},
-			"mf": "default",
-			"gstr": "Keep track of your own content",
 			"guid": "8XoIyfOkoCz_nXAZEuq2rAkrOzDIktohodTvmnKDPos",
 			"nsrc": [
 				"Keep track of your own content"
 			],
-			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-documents.get_en.properties"
 		},
 		{
 			"sid": "empty.description",
-			"location": {
-				"startLine": 11,
-				"endLine": 11
-			},
-			"mf": "default",
-			"gstr": "This dashlet lists all of the content that's important to you, no matter which site it is in. Use the filters to easily find what you're looking for.",
 			"guid": "ll8G2DYvYEBCintesx4VmEGESLsVncMkqwdXMUxqKcQ",
 			"nsrc": [
 				"This dashlet lists all of the content that's important to you, no matter which site it is in. Use the filters to easily find what you're looking for."
 			],
-			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-documents.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 14,
-				"endLine": 18
-			},
-			"mf": "default",
-			"gstr": "{{bx}}This dashlet makes it easy to keep track of your own content, no matter which site it is in. Use the filter to easily find what you're looking for.{{ex}}{{bx}}There are two views for this dashlet. The detailed view lets you:{{bx}}{{bx}}Mark an item as a favorite so it appears in Favorites lists for easy access{{ex}}{{bx}}Like (and unlike) an item{{ex}}{{bx}}Jump to the item details page to leave a comment{{ex}}{{ex}}{{ex}}",
 			"guid": "AVJwgn96gVZOTR9gxVVWAIYybHIrSmQXlxVblGOA_-M",
-			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"notes": {
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
@@ -3849,109 +2389,59 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/my-documents.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-documents.get_en.properties"
 		},
 		{
 			"sid": "header.myMeetingWorkspaces",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "My Meeting Workspaces",
 			"guid": "xdSxt3fOBafJlhTuB-UYZBP6Yuaa3zikmNIKnn_3b80",
 			"nsrc": [
 				"My Meeting Workspaces"
 			],
-			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-meeting-workspaces.get_en.properties"
 		},
 		{
 			"sid": "link.deleteMeetingWorkspace",
-			"location": {
-				"startLine": 2,
-				"endLine": 2
-			},
-			"mf": "default",
-			"gstr": "Delete",
 			"guid": "95wufLScOHKhQTSbDmm0fY-sgDbl3CzFbTrf7EIcaco",
 			"nsrc": [
 				"Delete"
 			],
-			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-meeting-workspaces.get_en.properties"
 		},
 		{
 			"sid": "label.noMeetingWorkspaces",
-			"location": {
-				"startLine": 3,
-				"endLine": 3
-			},
-			"mf": "default",
-			"gstr": "No meeting workspaces to display",
 			"guid": "hEx8GA1O-_qTlP-B6JO83QStuzstF54FrJg9scNduiE",
 			"nsrc": [
 				"No meeting workspaces to display"
 			],
-			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-meeting-workspaces.get_en.properties"
 		},
 		{
 			"sid": "message.meetingWorkspaceFavourite.failure",
-			"location": {
-				"startLine": 4,
-				"endLine": 4
-			},
-			"mf": "default",
-			"gstr": "The favorite setting for the meeting workspace could not be saved",
 			"guid": "86X3guH-QznpXsT3DHHEw9PPgKLlRXKsKpTX0_GetnE",
 			"nsrc": [
 				"The favorite setting for the meeting workspace could not be saved"
 			],
-			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-meeting-workspaces.get_en.properties"
 		},
 		{
 			"sid": "link.favouriteMeetingWorkspace",
-			"location": {
-				"startLine": 5,
-				"endLine": 5
-			},
-			"mf": "default",
-			"gstr": "Mark or unmark meeting workspace as favorite",
 			"guid": "chVcIGwRxOqTMMJSOVBci-X9dwfTrQqqbM_B4f5Hr8I",
 			"nsrc": [
 				"Mark or unmark meeting workspace as favorite"
 			],
-			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-meeting-workspaces.get_en.properties"
 		},
 		{
 			"sid": "link.imap_favouriteMeetingWorkspace",
-			"location": {
-				"startLine": 6,
-				"endLine": 6
-			},
-			"mf": "default",
-			"gstr": "Mark or unmark meeting workspace as IMAP favorite",
 			"guid": "0mXtDKcqSsQ2f-bn_WNhCJPjWuOImGuV2N4MzXFcGm4",
 			"nsrc": [
 				"Mark or unmark meeting workspace as IMAP favorite"
 			],
-			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-meeting-workspaces.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 9,
-				"endLine": 10
-			},
-			"mf": "default",
-			"gstr": "{{bx}}A Meeting Workspace is a type of site that is created outside of Alfresco. This dashlet lists all of your Meeting Workspace sites.{{ex}}{{bx}}From here you can navigate to a Meeting Workspace site. You can also delete a site, if you have the correct permissions.{{ex}}",
 			"guid": "KwRk8xsR7NqNEUmQq062j5EhNOvcXlAZjD3-gRDpuTQ",
-			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"notes": {
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
@@ -3975,199 +2465,107 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-meeting-workspaces.get_en.properties"
 		},
 		{
 			"sid": "header.myLimitedProfile",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "My Profile",
 			"guid": "8bQlFmPjhRmQhEl_D3zucOoRAJwuTt-y982jqcFNmQg",
 			"nsrc": [
 				"My Profile"
 			],
-			"rid": "dashlets/my-profile.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-profile.get_en.properties"
 		},
 		{
 			"sid": "link.viewFullProfile",
-			"location": {
-				"startLine": 2,
-				"endLine": 2
-			},
-			"mf": "default",
-			"gstr": "View Full Profile",
 			"guid": "gwYKzILRTzurUCmf_I5JFHSzbAYK-qnKKqTk2OEqx58",
 			"nsrc": [
 				"View Full Profile"
 			],
-			"rid": "dashlets/my-profile.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-profile.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 4,
-				"endLine": 4
-			},
-			"mf": "default",
-			"gstr": "This dashlet shows a summary of your personal details. From here you can access your full user profile.",
 			"guid": "zYMbzhPI5FMRos67sdXQfWhFklnMLVEOoBQnWWEBlAk",
 			"nsrc": [
 				"This dashlet shows a summary of your personal details. From here you can access your full user profile."
 			],
-			"rid": "dashlets/my-profile.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-profile.get_en.properties"
 		},
 		{
 			"sid": "header",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "My Sites",
 			"guid": "UlZQ7MSqJC0zqQY0D4YOldD5F93cOpqhfne5pP2FWXc",
 			"nsrc": [
 				"My Sites"
 			],
-			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-sites.get_en.properties"
 		},
 		{
 			"sid": "link.createSite",
-			"location": {
-				"startLine": 3,
-				"endLine": 3
-			},
-			"mf": "default",
-			"gstr": "Create Site",
 			"guid": "CNYZHwdG54uOPssvos2FeIoUucBpQgemdb5f3ZS3NOY",
 			"nsrc": [
 				"Create Site"
 			],
-			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-sites.get_en.properties"
 		},
 		{
 			"sid": "link.deleteSite",
-			"location": {
-				"startLine": 4,
-				"endLine": 4
-			},
-			"mf": "default",
-			"gstr": "Delete",
 			"guid": "pVbMCPTUkdxbzFMpurxmq3lfQYnXGvga70FOMpLWja0",
 			"nsrc": [
 				"Delete"
 			],
-			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-sites.get_en.properties"
 		},
 		{
 			"sid": "filter.all",
-			"location": {
-				"startLine": 6,
-				"endLine": 6
-			},
-			"mf": "default",
-			"gstr": "All",
 			"guid": "sym--UQ1RTuzq-6wohlntwmHh5bgnIyTlCFl8qdxFcQ",
 			"nsrc": [
 				"All"
 			],
-			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-sites.get_en.properties"
 		},
 		{
 			"sid": "filter.favSites",
-			"location": {
-				"startLine": 7,
-				"endLine": 7
-			},
-			"mf": "default",
-			"gstr": "My Favorites",
 			"guid": "i3ag0zcuvGFcbpZBiM8Pa-uiyQSUsnVUP3Rw86jIk9U",
 			"nsrc": [
 				"My Favorites"
 			],
-			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-sites.get_en.properties"
 		},
 		{
 			"sid": "filter.recentSites",
-			"location": {
-				"startLine": 8,
-				"endLine": 8
-			},
-			"mf": "default",
-			"gstr": "Recent",
 			"guid": "hbAeApluyJZr9vgdIibjX3E5CWn2gLKZDz-Q2edB6WE",
 			"nsrc": [
 				"Recent"
 			],
-			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-sites.get_en.properties"
 		},
 		{
 			"sid": "empty.title",
-			"location": {
-				"startLine": 10,
-				"endLine": 10
-			},
-			"mf": "default",
-			"gstr": "Quickly access your sites",
 			"guid": "tI5VvhguKK2Np_Ymu6r2Ej0RIHbejD58RIz6_m2jxnA",
 			"nsrc": [
 				"Quickly access your sites"
 			],
-			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-sites.get_en.properties"
 		},
 		{
 			"sid": "empty.description",
-			"location": {
-				"startLine": 11,
-				"endLine": 11
-			},
-			"mf": "default",
-			"gstr": "A site is a project area where you can share and discuss content with other site members.",
 			"guid": "pORmuIaIpyiwAr733qjgG40a_bzACims7cH11c7xlsA",
 			"nsrc": [
 				"A site is a project area where you can share and discuss content with other site members."
 			],
-			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-sites.get_en.properties"
 		},
 		{
 			"sid": "empty.description.sample-site",
-			"location": {
-				"startLine": 12,
-				"endLine": 12
-			},
-			"mf": "default",
-			"gstr": "We've included a sample site for you. Use this to explore the features in Alfresco.",
 			"guid": "DxEjNf9NRyr2lYuojO109PzRdfZbhlOasKBZeCFkxsM",
 			"nsrc": [
 				"We've included a sample site for you. Use this to explore the features in Alfresco."
 			],
-			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-sites.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 15,
-				"endLine": 20
-			},
-			"mf": "default",
-			"gstr": "{{bx}}Sites are project areas where you collaborate with others, sharing content and working on it together. This dashlet lists the sites you belong to. You can filter this list to show only your favorite sites.{{ex}}{{bx}}From here you can:{{bx}}{{bx}}Navigate to a site{{ex}}{{bx}}Create a new site{{ex}}{{bx}}Delete a site if you are the site manager{{ex}}{{bx}}Mark a site as a favorite so that it shows in the Sites menu for easy access{{ex}}{{ex}}{{ex}}",
 			"guid": "bSLC8teKK1MEOmFgrXsZZjcAatcZwSLvnMITBrJEYhg",
-			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"notes": {
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
@@ -4235,122 +2633,66 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/my-sites.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-sites.get_en.properties"
 		},
 		{
 			"sid": "header",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "My Tasks",
 			"guid": "epKRcIosvdiNUQNTCllZBTpcyfk6yJLi37bwHg7nm_4",
 			"nsrc": [
 				"My Tasks"
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "link.startWorkflow",
-			"location": {
-				"startLine": 2,
-				"endLine": 2
-			},
-			"mf": "default",
-			"gstr": "Start Workflow",
 			"guid": "vPu9Gy2eFkiPNaDAoIlmc9whCRzTvQ984kOHZANKJ0w",
 			"nsrc": [
 				"Start Workflow"
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "link.activeTasks",
-			"location": {
-				"startLine": 3,
-				"endLine": 3
-			},
-			"mf": "default",
-			"gstr": "Active Tasks",
 			"guid": "Nlkm4Se8KVfvio8MJgmKKuvD49w9k4sJ5AJWs28somg",
 			"nsrc": [
 				"Active Tasks"
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "link.completedTasks",
-			"location": {
-				"startLine": 4,
-				"endLine": 4
-			},
-			"mf": "default",
-			"gstr": "Completed Tasks",
 			"guid": "Q4u2myLfcHsknqOi0r4uKtFBLaoJuJ0iiQ31G31sUJc",
 			"nsrc": [
 				"Completed Tasks"
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "title.viewTask",
-			"location": {
-				"startLine": 5,
-				"endLine": 5
-			},
-			"mf": "default",
-			"gstr": "View Task",
 			"guid": "xK24KgsSyM1av2EI_uMsC3k54yBUL2cNf3a6bMsygxs",
 			"nsrc": [
 				"View Task"
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "title.editTask",
-			"location": {
-				"startLine": 6,
-				"endLine": 6
-			},
-			"mf": "default",
-			"gstr": "Edit Task",
 			"guid": "a75DwZSR97TRCv7Tu9buoQvS62zyWJSTBBIe0T_Sd9o",
 			"nsrc": [
 				"Edit Task"
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "label.pooledTask",
-			"location": {
-				"startLine": 7,
-				"endLine": 7
-			},
-			"mf": "default",
-			"gstr": "Pooled task",
 			"guid": "firH6Wg83voQWGdKTeEaKvZFM2MSNnut6mwVBLZDrMg",
 			"nsrc": [
 				"Pooled task"
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "label.taskSummary",
-			"location": {
-				"startLine": 8,
-				"endLine": 8
-			},
-			"mf": "default",
-			"gstr": "{{x}}, {{x}}",
 			"guid": "D2rH5S5SVG9kZHu8uClAV7K53S5ui9rsH7PcHD6s4vo",
 			"nsrc": [
 				{
@@ -4363,32 +2705,18 @@
 					"v": "{1}"
 				}
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "label.unassignedTask",
-			"location": {
-				"startLine": 9,
-				"endLine": 9
-			},
-			"mf": "default",
-			"gstr": "Unassigned",
 			"guid": "I5Kr0TjUoHgmE5HZ6Hkqw0kUIr0QjFzbFvz2YAG0Q0I",
 			"nsrc": [
 				"Unassigned"
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "title.dueOn",
-			"location": {
-				"startLine": 10,
-				"endLine": 10
-			},
-			"mf": "default",
-			"gstr": "Due on: {{x}}",
 			"guid": "aC3z5tMbWMuuupMZu2_1R-K25wJHI364qbTgePZVVtA",
 			"nsrc": [
 				"Due on: ",
@@ -4397,32 +2725,18 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "message.noTasks",
-			"location": {
-				"startLine": 11,
-				"endLine": 11
-			},
-			"mf": "default",
-			"gstr": "No tasks",
 			"guid": "8AuA3JdZzJKOkRh8OQvnVJRzVHUPMIUiOjfrX86Bibo",
 			"nsrc": [
 				"No tasks"
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "title.taskSummary",
-			"location": {
-				"startLine": 12,
-				"endLine": 12
-			},
-			"mf": "default",
-			"gstr": "Type: {{x}}, Status: {{x}}",
 			"guid": "6Kh_d7z5vDrSeZpdWqHEoCrGVNEd8GJ5uOXN-WfFD24",
 			"nsrc": [
 				"Type: ",
@@ -4436,124 +2750,67 @@
 					"v": "{1}"
 				}
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "filter.activeTasks",
-			"location": {
-				"startLine": 14,
-				"endLine": 14
-			},
-			"mf": "default",
-			"gstr": "Active Tasks",
 			"guid": "3tkVM3WAlZnqn435TugK4MhJQgzntlZ-FuPgfHZ3hUM",
 			"nsrc": [
 				"Active Tasks"
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "filter.completedTasks",
-			"location": {
-				"startLine": 15,
-				"endLine": 15
-			},
-			"mf": "default",
-			"gstr": "Completed Tasks",
 			"guid": "Qhtg8zhuobjkBNy9a9u6G9KpckRWn6ekNkSOWHYwutM",
 			"nsrc": [
 				"Completed Tasks"
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "filter.highPriorityTasks",
-			"location": {
-				"startLine": 16,
-				"endLine": 16
-			},
-			"mf": "default",
-			"gstr": "High Priority Tasks",
 			"guid": "K47iNY3XGCsnPWrz6ZcWoO9giYn2dV69Va9Gdq3B-eo",
 			"nsrc": [
 				"High Priority Tasks"
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "filter.tasksDueToday",
-			"location": {
-				"startLine": 17,
-				"endLine": 17
-			},
-			"mf": "default",
-			"gstr": "Tasks Due Today",
 			"guid": "BF4C3yrZszaNM52DTm4r3KQP78KDvTz-dY01BhVkF40",
 			"nsrc": [
 				"Tasks Due Today"
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "filter.tasksAssignedToMe",
-			"location": {
-				"startLine": 18,
-				"endLine": 18
-			},
-			"mf": "default",
-			"gstr": "Tasks Assigned to Me",
 			"guid": "zS4uKDkVTrVts6ULIO2JJ_lfqs6so9Un-GRoLkYGxBA",
 			"nsrc": [
 				"Tasks Assigned to Me"
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "filter.unassignedPooledTasks",
-			"location": {
-				"startLine": 19,
-				"endLine": 19
-			},
-			"mf": "default",
-			"gstr": "Unassigned (Pooled Tasks)",
 			"guid": "R09PDx_fzdUUGKSC__kqAXYqL0VbKfaRfunC2Enkszs",
 			"nsrc": [
 				"Unassigned (Pooled Tasks)"
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "filter.overdueTasks",
-			"location": {
-				"startLine": 20,
-				"endLine": 20
-			},
-			"mf": "default",
-			"gstr": "Overdue Tasks",
 			"guid": "xpJxcWOzyfOz6JiicCx8wipfHxU-XMnfeSwlvTCYc-U",
 			"nsrc": [
 				"Overdue Tasks"
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "pagination.template",
-			"location": {
-				"startLine": 23,
-				"endLine": 23
-			},
-			"mf": "default",
-			"gstr": "{{x}}",
 			"guid": "_eSMhA7GvQyFwpD3TteCK07HiJy_tNJvu6Z6RlD1Yqw",
-			"rawNotes": "## Override pagination templates with a minified version",
 			"notes": {
 				"desc": "## Override pagination templates with a minified version"
 			},
@@ -4563,17 +2820,10 @@
 					"v": "{CurrentPageReport}"
 				}
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "pagination.template.page-report",
-			"location": {
-				"startLine": 24,
-				"endLine": 24
-			},
-			"mf": "default",
-			"gstr": "{{x}} - {{x}} of {{x}}",
 			"guid": "wnsZ134YkmZDAvNeDs1ybrrJ3GD5gV1wAPGIHmHlGcI",
 			"nsrc": [
 				{
@@ -4591,49 +2841,27 @@
 					"v": "{totalRecords}"
 				}
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "empty.title",
-			"location": {
-				"startLine": 26,
-				"endLine": 26
-			},
-			"mf": "default",
-			"gstr": "Review the tasks assigned to you",
 			"guid": "N0x4ZqYxFgSph2esNLhC1q4h8K7ebU4JR-Cynw1Tpew",
 			"nsrc": [
 				"Review the tasks assigned to you"
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "empty.description",
-			"location": {
-				"startLine": 27,
-				"endLine": 27
-			},
-			"mf": "default",
-			"gstr": "Different types of tasks can appear in this task list and you need to address each one. This could involve reviewing a document or simply accepting an invitation to a site.",
 			"guid": "pFJZM7Jmnr--w3m9nPZhK-2c0arLCxHQQMMiLc8O7jg",
 			"nsrc": [
 				"Different types of tasks can appear in this task list and you need to address each one. This could involve reviewing a document or simply accepting an invitation to a site."
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 30,
-				"endLine": 35
-			},
-			"mf": "default",
-			"gstr": "{{bx}}This dashlet lists the tasks assigned to you, including invitations to join sites. You can filter the list to view different types of tasks.{{ex}}{{bx}}From here you can:{{bx}}{{bx}}Edit a task to manage it{{ex}}{{bx}}View a single task{{ex}}{{bx}}Open the My Tasks page to manage all of your tasks{{ex}}{{bx}}Start a workflow to create tasks for others or yourself{{ex}}{{ex}}{{ex}}",
 			"guid": "Pgq9rxA8-EktqqbL9yOcNuncrLEDjhwr6gLGv4XzYuo",
-			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"notes": {
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
@@ -4701,109 +2929,59 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "header.myWorkspaces",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "My Document Workspaces",
 			"guid": "_uhE3KrGLJQO9NYX40QzZhCOAiGm53PUnKCKMHuIJHU",
 			"nsrc": [
 				"My Document Workspaces"
 			],
-			"rid": "dashlets/my-workspaces.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-workspaces.get_en.properties"
 		},
 		{
 			"sid": "link.deleteWorkspace",
-			"location": {
-				"startLine": 2,
-				"endLine": 2
-			},
-			"mf": "default",
-			"gstr": "Delete",
 			"guid": "o7jl6L3FLIXgeTEJ6_ChHV1ZOAQnp31thchwcDIpNPc",
 			"nsrc": [
 				"Delete"
 			],
-			"rid": "dashlets/my-workspaces.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-workspaces.get_en.properties"
 		},
 		{
 			"sid": "label.noWorkspaces",
-			"location": {
-				"startLine": 3,
-				"endLine": 3
-			},
-			"mf": "default",
-			"gstr": "No document workspaces to display",
 			"guid": "WYzhdU3b8DtgLJUXn7Tn7zat4OE1EFCkAVcIOUV8oUs",
 			"nsrc": [
 				"No document workspaces to display"
 			],
-			"rid": "dashlets/my-workspaces.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-workspaces.get_en.properties"
 		},
 		{
 			"sid": "message.workspaceFavourite.failure",
-			"location": {
-				"startLine": 4,
-				"endLine": 4
-			},
-			"mf": "default",
-			"gstr": "The favorite setting for the document workspace could not be saved",
 			"guid": "aGx4T_7P8p5whU4-Swu-yuVqZzjb0OhOhPh8OyzV42U",
 			"nsrc": [
 				"The favorite setting for the document workspace could not be saved"
 			],
-			"rid": "dashlets/my-workspaces.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-workspaces.get_en.properties"
 		},
 		{
 			"sid": "link.favouriteWorkspace",
-			"location": {
-				"startLine": 5,
-				"endLine": 5
-			},
-			"mf": "default",
-			"gstr": "Mark or unmark document workspace as favorite",
 			"guid": "01beH-pALpRN0Q9lIKbOgEguRhml7Wj6yTj27zLVyAo",
 			"nsrc": [
 				"Mark or unmark document workspace as favorite"
 			],
-			"rid": "dashlets/my-workspaces.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-workspaces.get_en.properties"
 		},
 		{
 			"sid": "link.imap_favouriteWorkspace",
-			"location": {
-				"startLine": 6,
-				"endLine": 6
-			},
-			"mf": "default",
-			"gstr": "Mark or unmark document workspace as IMAP favorite",
 			"guid": "pYmD4nSAgI0AAp5sU_y8dj-SgmRPtsi_gEBYVwsL4C8",
 			"nsrc": [
 				"Mark or unmark document workspace as IMAP favorite"
 			],
-			"rid": "dashlets/my-workspaces.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-workspaces.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 9,
-				"endLine": 10
-			},
-			"mf": "default",
-			"gstr": "{{bx}}A Document Workspace is a type of site that is created outside of Alfresco. This dashlet lists all of your Document Workspace sites.{{ex}}{{bx}}From here you can navigate to a Document Workspace site. You can also delete a site, if you have the correct permissions.{{ex}}",
 			"guid": "QbstBkZNdzkfITuXaZAuGgvTliwWQC8mHM_3rV_7Sk4",
-			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"notes": {
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
@@ -4827,184 +3005,99 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/my-workspaces.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/my-workspaces.get_en.properties"
 		},
 		{
 			"sid": "label.header",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "RSS Feed",
 			"guid": "i6iRLGJMzgct3Ed5dX6quhzt5quYzAu4Zly3wVhMBeA",
 			"nsrc": [
 				"RSS Feed"
 			],
-			"rid": "dashlets/rssfeed.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/rssfeed.get_en.properties"
 		},
 		{
 			"sid": "label.configure",
-			"location": {
-				"startLine": 2,
-				"endLine": 2
-			},
-			"mf": "default",
-			"gstr": "Configure",
 			"guid": "kJ9JAWQxUUCxiX4I0UKRyc8prgKz7vhCbHyRcFfSVbo",
 			"nsrc": [
 				"Configure"
 			],
-			"rid": "dashlets/rssfeed.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/rssfeed.get_en.properties"
 		},
 		{
 			"sid": "label.noItems",
-			"location": {
-				"startLine": 3,
-				"endLine": 3
-			},
-			"mf": "default",
-			"gstr": "No news items",
 			"guid": "bl2r_NUdz3LRYApviS0mdZovycfmxK_1NX5e_dV3WGY",
 			"nsrc": [
 				"No news items"
 			],
-			"rid": "dashlets/rssfeed.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/rssfeed.get_en.properties"
 		},
 		{
 			"sid": "label.loading",
-			"location": {
-				"startLine": 4,
-				"endLine": 4
-			},
-			"mf": "default",
-			"gstr": "Loading items - please wait...",
 			"guid": "TO0t9t7HB8sVD0LpC1mK9cydH5rfK18pVvjp1ukpvsU",
 			"nsrc": [
 				"Loading items - please wait..."
 			],
-			"rid": "dashlets/rssfeed.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/rssfeed.get_en.properties"
 		},
 		{
 			"sid": "title.error.bad_data",
-			"location": {
-				"startLine": 5,
-				"endLine": 5
-			},
-			"mf": "default",
-			"gstr": "RSS feed can't be read",
 			"guid": "DXyZQwGvjI-wMwixtVE508JdQMvcior88KIFVTxvf7E",
 			"nsrc": [
 				"RSS feed can't be read"
 			],
-			"rid": "dashlets/rssfeed.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/rssfeed.get_en.properties"
 		},
 		{
 			"sid": "title.error.unavailable",
-			"location": {
-				"startLine": 6,
-				"endLine": 6
-			},
-			"mf": "default",
-			"gstr": "RSS feed is not available",
 			"guid": "wC9kcHAKpkTzWB31xwa9EMVYQwJXfj2pPAlxNYyyigs",
 			"nsrc": [
 				"RSS feed is not available"
 			],
-			"rid": "dashlets/rssfeed.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/rssfeed.get_en.properties"
 		},
 		{
 			"sid": "title.error.unsupported",
-			"location": {
-				"startLine": 7,
-				"endLine": 7
-			},
-			"mf": "default",
-			"gstr": "RSS feed format is not supported",
 			"guid": "uWxJ2W5ssGnSAno1hIPCnJYbqmbLejphqst_gp1jfcc",
 			"nsrc": [
 				"RSS feed format is not supported"
 			],
-			"rid": "dashlets/rssfeed.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/rssfeed.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 9,
-				"endLine": 9
-			},
-			"mf": "default",
-			"gstr": "This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed.",
 			"guid": "c-6fDjw00nB1UJtukMnmj1d18-MHF12J24XzB-fT4xg",
 			"nsrc": [
 				"This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed."
 			],
-			"rid": "dashlets/rssfeed.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/rssfeed.get_en.properties"
 		},
 		{
 			"sid": "header.title",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "Saved Search",
 			"guid": "vOu-eNJHDEBQChRKqLed8BwIg3TYqS4vXtfiyYVOock",
 			"nsrc": [
 				"Saved Search"
 			],
-			"rid": "dashlets/saved-search.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/saved-search.get_en.properties"
 		},
 		{
 			"sid": "no.result",
-			"location": {
-				"startLine": 2,
-				"endLine": 2
-			},
-			"mf": "default",
-			"gstr": "No results found.",
 			"guid": "6N6CvXFOJN5MW5CDAOCRUtAKv52ovL-gvXdY_uFAsuI",
 			"nsrc": [
 				"No results found."
 			],
-			"rid": "dashlets/saved-search.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/saved-search.get_en.properties"
 		},
 		{
 			"sid": "message.insite",
-			"location": {
-				"startLine": 3,
-				"endLine": 3
-			},
-			"mf": "default",
-			"gstr": "in site",
 			"guid": "2qDllQZkvpfUJXE0R5eq---oiS-52r1TJEFY9jaK0UM",
 			"nsrc": [
 				"in site"
 			],
-			"rid": "dashlets/saved-search.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/saved-search.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 6,
-				"endLine": 8
-			},
-			"mf": "default",
-			"gstr": "{{bx}}Use this dashlet to set up a search and view the results.{{ex}}{{bx}}Configure the dashlet to save the search and set the title text of the dashlet.{{ex}}{{bx}}Only a Site Manager can configure the search and title - this dashlet is ideal for generating report views in a site.{{ex}}",
 			"guid": "9ZZmsgCdj4VOoUo-5nhEuqaBDfZBHGfiK_v5nkOMIrQ",
-			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"notes": {
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
@@ -5037,316 +3130,172 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/saved-search.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/saved-search.get_en.properties"
 		},
 		{
 			"sid": "header",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "Site Activities",
 			"guid": "9RU0-MtMA3IQ_HZWDTRlbtGICfYhmwwukPBoTOUNm84",
 			"nsrc": [
 				"Site Activities"
 			],
-			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-activities.get_en.properties"
 		},
 		{
 			"sid": "label.load-failed",
-			"location": {
-				"startLine": 2,
-				"endLine": 2
-			},
-			"mf": "default",
-			"gstr": "Could not load activities list",
 			"guid": "dXT2U75dxHuNIUPU-t03LIHyx2Xot9nfTYzt0wC7mX4",
 			"nsrc": [
 				"Could not load activities list"
 			],
-			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-activities.get_en.properties"
 		},
 		{
 			"sid": "label.filter",
-			"location": {
-				"startLine": 3,
-				"endLine": 3
-			},
-			"mf": "default",
-			"gstr": "Show",
 			"guid": "5lPhH3wyUosnjY8D20zaDr3pvcSu5-4SHVcyxzNNyy8",
 			"nsrc": [
 				"Show"
 			],
-			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-activities.get_en.properties"
 		},
 		{
 			"sid": "label.older-activities",
-			"location": {
-				"startLine": 4,
-				"endLine": 4
-			},
-			"mf": "default",
-			"gstr": "Older Activities",
 			"guid": "X7hfuKglEIfBzyBP8hjkNyTVWbzADzO5qZeZrNwktVc",
 			"nsrc": [
 				"Older Activities"
 			],
-			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.mine",
-			"location": {
-				"startLine": 10,
-				"endLine": 10
-			},
-			"mf": "default",
-			"gstr": "My activities",
 			"guid": "Udt6eFrWTD8LIPEn855TExZ8hKbdZ-XnDwZViiOfKjI",
-			"rawNotes": "## Note to translators: The User Interface renders Filters 1, 2, 3 next to each other. The English translation gives these the appearance of a sentence, for example: \"My activities, status updates, in the last 14 days\".\n## This is entirely optional. If the language doesn't allow for this structure, please capitalise the messages in Filter 2+3 so they appear disconnected.\n# Filter 1",
 			"notes": {
 				"desc": "## Note to translators: The User Interface renders Filters 1, 2, 3 next to each other. The English translation gives these the appearance of a sentence, for example: \"My activities, status updates, in the last 14 days\".\n## This is entirely optional. If the language doesn't allow for this structure, please capitalise the messages in Filter 2+3 so they appear disconnected.\n# Filter 1"
 			},
 			"nsrc": [
 				"My activities"
 			],
-			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.others",
-			"location": {
-				"startLine": 11,
-				"endLine": 11
-			},
-			"mf": "default",
-			"gstr": "Everyone else's activities",
 			"guid": "tf1yRhKe3Pz7u0eLwnf0vL6GRU-JEiOcDEEVohFUgBU",
 			"nsrc": [
 				"Everyone else's activities"
 			],
-			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.all",
-			"location": {
-				"startLine": 12,
-				"endLine": 12
-			},
-			"mf": "default",
-			"gstr": "Everyone's activities",
 			"guid": "KGMwBkZzgvkB79vKnn9KTUdjpDd06urpF6Dm4CI65hk",
 			"nsrc": [
 				"Everyone's activities"
 			],
-			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.following",
-			"location": {
-				"startLine": 13,
-				"endLine": 13
-			},
-			"mf": "default",
-			"gstr": "I'm following",
 			"guid": "6VXScrtHrW6_RXucbYRhLaIIxk-PcKWCpucU-DXYuto",
 			"nsrc": [
 				"I'm following"
 			],
-			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.allItems",
-			"location": {
-				"startLine": 15,
-				"endLine": 15
-			},
-			"mf": "default",
-			"gstr": "all items",
 			"guid": "vRZ8-bFg84NQr-JCGfCiYSgCFpyIVfkRsbewPxPUKWE",
-			"rawNotes": "# Filter 2",
 			"notes": {
 				"desc": "# Filter 2"
 			},
 			"nsrc": [
 				"all items"
 			],
-			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.statusItems",
-			"location": {
-				"startLine": 16,
-				"endLine": 16
-			},
-			"mf": "default",
-			"gstr": "status updates",
 			"guid": "JyI-4jM5rBXorGP3KgW17ipL1vKGfX-vFdiQC3hJSxo",
 			"nsrc": [
 				"status updates"
 			],
-			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.commentItems",
-			"location": {
-				"startLine": 17,
-				"endLine": 17
-			},
-			"mf": "default",
-			"gstr": "comments",
 			"guid": "p6ZwVEZOg2J8KszdlWUcLhmNYYhXgvGJAWrDtDpJq2U",
 			"nsrc": [
 				"comments"
 			],
-			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.contentItems",
-			"location": {
-				"startLine": 18,
-				"endLine": 18
-			},
-			"mf": "default",
-			"gstr": "content",
 			"guid": "dIVUO_Ot8QvPYU5zjVyiWNQ9N4mnQMqs-HfBlrPGGC4",
 			"nsrc": [
 				"content"
 			],
-			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.membershipItems",
-			"location": {
-				"startLine": 19,
-				"endLine": 19
-			},
-			"mf": "default",
-			"gstr": "memberships",
 			"guid": "h0ht26CvHSGS_Uww8ADVUAHxjrBN3SSfAbkQqsswkcc",
 			"nsrc": [
 				"memberships"
 			],
-			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.today",
-			"location": {
-				"startLine": 21,
-				"endLine": 21
-			},
-			"mf": "default",
-			"gstr": "today",
 			"guid": "3TQRV9f1141RY8JHLgGCs9MqJXCfUHGCPKoH346i8Ns",
-			"rawNotes": "# Filter 3",
 			"notes": {
 				"desc": "# Filter 3"
 			},
 			"nsrc": [
 				"today"
 			],
-			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.7days",
-			"location": {
-				"startLine": 22,
-				"endLine": 22
-			},
-			"mf": "default",
-			"gstr": "in the last 7 days",
 			"guid": "lZ1vxUkINGFrKtKYt4sXEWFtpRIR__IShFVOehBUyi0",
 			"nsrc": [
 				"in the last 7 days"
 			],
-			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.14days",
-			"location": {
-				"startLine": 23,
-				"endLine": 23
-			},
-			"mf": "default",
-			"gstr": "in the last 14 days",
 			"guid": "Vqe7ORCDAj0-3slbq6Y5GRiOE5OkVwpQLLkK0AnV7Ec",
 			"nsrc": [
 				"in the last 14 days"
 			],
-			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.28days",
-			"location": {
-				"startLine": 24,
-				"endLine": 24
-			},
-			"mf": "default",
-			"gstr": "in the last 28 days",
 			"guid": "es1WhpDaK4xTyYraeum4hgyUSD9UgerNfV9BGbPcy8I",
 			"nsrc": [
 				"in the last 28 days"
 			],
-			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-activities.get_en.properties"
 		},
 		{
 			"sid": "empty.title",
-			"location": {
-				"startLine": 26,
-				"endLine": 26
-			},
-			"mf": "default",
-			"gstr": "Follow what's going on in this site",
 			"guid": "D5uLM2Y7lh5HKdwbw8Oh9zS4NvyemL-ifgDD6NROlug",
 			"nsrc": [
 				"Follow what's going on in this site"
 			],
-			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-activities.get_en.properties"
 		},
 		{
 			"sid": "empty.description",
-			"location": {
-				"startLine": 27,
-				"endLine": 27
-			},
-			"mf": "default",
-			"gstr": "Watch this list to keep up on the recent site changes. You'll see activities such as content updates and likes. You can also track the site membership by seeing who is joining and leaving.",
 			"guid": "RLaiyI_cVexQQDovlu1wqNhAlA03prM3H8xpI72wVj8",
 			"nsrc": [
 				"Watch this list to keep up on the recent site changes. You'll see activities such as content updates and likes. You can also track the site membership by seeing who is joining and leaving."
 			],
-			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-activities.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 30,
-				"endLine": 31
-			},
-			"mf": "default",
-			"gstr": "{{bx}}Following what goes on in the site is easy with this dashlet. It shows all activities, such as content that's been added, edited, and deleted. You can also see who is joining and leaving the site.{{ex}}{{bx}}Filters let you view activities by time period and ownership.{{ex}}",
 			"guid": "jELqCyiqm8dxzBgOPcgJUmQozbaajsr2JF0Sld2lA50",
-			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"notes": {
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
@@ -5370,242 +3319,130 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/site-activities.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-activities.get_en.properties"
 		},
 		{
 			"sid": "header.datalists",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "Site Data Lists",
 			"guid": "dMY8CN6sydoqUsRlFLrrNXGTDjgS3A4bFt7nv1DroMI",
 			"nsrc": [
 				"Site Data Lists"
 			],
-			"rid": "dashlets/site-data-lists.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-data-lists.get_en.properties"
 		},
 		{
 			"sid": "label.noLists",
-			"location": {
-				"startLine": 2,
-				"endLine": 2
-			},
-			"mf": "default",
-			"gstr": "No lists to display",
 			"guid": "UEdkz_oEge0EOVJV3nqTxzXuNnOFrX9tjMCPElAgRIU",
 			"nsrc": [
 				"No lists to display"
 			],
-			"rid": "dashlets/site-data-lists.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-data-lists.get_en.properties"
 		},
 		{
 			"sid": "list.createLink",
-			"location": {
-				"startLine": 3,
-				"endLine": 3
-			},
-			"mf": "default",
-			"gstr": "Create Data List",
 			"guid": "s4s9nIqDYizLbFsc8sUeKYUtewrvGVq7HCuzzJMAyoM",
 			"nsrc": [
 				"Create Data List"
 			],
-			"rid": "dashlets/site-data-lists.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-data-lists.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 5,
-				"endLine": 5
-			},
-			"mf": "default",
-			"gstr": "This dashlet shows lists relevant to the site. Clicking a list opens it.",
 			"guid": "e0V7MJ88IW05x2ffT3zZKd7c2VGh38qlGaphUkWnFps",
 			"nsrc": [
 				"This dashlet shows lists relevant to the site. Clicking a list opens it."
 			],
-			"rid": "dashlets/site-data-lists.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-data-lists.get_en.properties"
 		},
 		{
 			"sid": "header.links",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "Site Links",
 			"guid": "uBR0WvZq-dGOy09nZgCpNCSo9RZNSCZT2Du7IZG4Bsk",
 			"nsrc": [
 				"Site Links"
 			],
-			"rid": "dashlets/site-links.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-links.get_en.properties"
 		},
 		{
 			"sid": "link.createLink",
-			"location": {
-				"startLine": 2,
-				"endLine": 2
-			},
-			"mf": "default",
-			"gstr": "Create Link",
 			"guid": "_zCDNnMNZ1euI5GwWkU25cGMkUpXOZ-KbEs8dQr5VQw",
 			"nsrc": [
 				"Create Link"
 			],
-			"rid": "dashlets/site-links.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-links.get_en.properties"
 		},
 		{
 			"sid": "link.details",
-			"location": {
-				"startLine": 3,
-				"endLine": 3
-			},
-			"mf": "default",
-			"gstr": "Link's details",
 			"guid": "8HjmVxKr0DkRi6RE5Mzx8Mytqr7ZTMgSLOga8bp7Gss",
 			"nsrc": [
 				"Link's details"
 			],
-			"rid": "dashlets/site-links.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-links.get_en.properties"
 		},
 		{
 			"sid": "label.noLinks",
-			"location": {
-				"startLine": 4,
-				"endLine": 4
-			},
-			"mf": "default",
-			"gstr": "No links to display",
 			"guid": "x6nxGD5yw60z5CfGz8xuv5PBEK3ms-y_5Coe_UG_7Ds",
 			"nsrc": [
 				"No links to display"
 			],
-			"rid": "dashlets/site-links.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-links.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 6,
-				"endLine": 6
-			},
-			"mf": "default",
-			"gstr": "This dashlet shows links relevant to this site. The list is compiled by site members. Clicking a link opens it in a new window.",
 			"guid": "xMaXXd9iLQTkboNcA5CI6YjOzza6t5fIYKN4nVTLvA0",
 			"nsrc": [
 				"This dashlet shows links relevant to this site. The list is compiled by site members. Clicking a link opens it in a new window."
 			],
-			"rid": "dashlets/site-links.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-links.get_en.properties"
 		},
 		{
 			"sid": "link.noUrl",
-			"location": {
-				"startLine": 7,
-				"endLine": 7
-			},
-			"mf": "default",
-			"gstr": "URL not specified",
 			"guid": "qpNzDxIKznWjF3VhKBN4jSc4frLkqQGGBn7JqtJa8vE",
 			"nsrc": [
 				"URL not specified"
 			],
-			"rid": "dashlets/site-links.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-links.get_en.properties"
 		},
 		{
 			"sid": "notice.defaultTitle",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "Site Notice",
 			"guid": "nxBPgM21nUdzaHwzKDAUOpPecwgSIOm6hqYTcX9bfwE",
 			"nsrc": [
 				"Site Notice"
 			],
-			"rid": "dashlets/site-notice.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-notice.get_en.properties"
 		},
 		{
 			"sid": "notice.defaultText",
-			"location": {
-				"startLine": 2,
-				"endLine": 2
-			},
-			"mf": "default",
-			"gstr": "No text has been configured",
 			"guid": "yj4g5ndRJ2pR2YT6I5HJFiWAQwVkHxyWyuDH43euBnc",
 			"nsrc": [
 				"No text has been configured"
 			],
-			"rid": "dashlets/site-notice.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-notice.get_en.properties"
 		},
 		{
 			"sid": "link.configure",
-			"location": {
-				"startLine": 3,
-				"endLine": 3
-			},
-			"mf": "default",
-			"gstr": "Configure",
 			"guid": "dI6k9BSigj6gEI0usWMTDR1B9zsFO8ws9atTiah-8Y4",
 			"nsrc": [
 				"Configure"
 			],
-			"rid": "dashlets/site-notice.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-notice.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 4,
-				"endLine": 4
-			},
-			"mf": "default",
-			"gstr": "This dashlet displays a custom message on the dashboard, specified by the site manager",
 			"guid": "mJhAoE9OxVj0OEm8MJe4izRbFC6F9eoyGp58nxDpzys",
 			"nsrc": [
 				"This dashlet displays a custom message on the dashboard, specified by the site manager"
 			],
-			"rid": "dashlets/site-notice.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-notice.get_en.properties"
 		},
 		{
 			"sid": "header.siteProfile",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "Site Profile",
 			"guid": "khf1feCavm6ibe8MqlZGGmPoAkxw1Fg-9CiardufKSE",
 			"nsrc": [
 				"Site Profile"
 			],
-			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-profile.get_en.properties"
 		},
 		{
 			"sid": "text.welcome",
-			"location": {
-				"startLine": 2,
-				"endLine": 2
-			},
-			"mf": "default",
-			"gstr": "Welcome to {{x}}",
 			"guid": "lR_WBAOjwONxbc4Uj8-ALtsxQjAPSO6L_AynCWPxMYk",
 			"nsrc": [
 				"Welcome to ",
@@ -5614,184 +3451,99 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-profile.get_en.properties"
 		},
 		{
 			"sid": "label.siteAdmin",
-			"location": {
-				"startLine": 3,
-				"endLine": 3
-			},
-			"mf": "default",
-			"gstr": "Site Manager(s):",
 			"guid": "HD5X-d2HoQZXAQO4dA6XVjmwyDzxx7atfjumP0wXc8o",
 			"nsrc": [
 				"Site Manager(s):"
 			],
-			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-profile.get_en.properties"
 		},
 		{
 			"sid": "label.visibility",
-			"location": {
-				"startLine": 4,
-				"endLine": 4
-			},
-			"mf": "default",
-			"gstr": "Visibility:",
 			"guid": "sc0C0MkFSy_nMBTS8jU14d-HZ-yMGxWuHP3wcTt9yHA",
 			"nsrc": [
 				"Visibility:"
 			],
-			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-profile.get_en.properties"
 		},
 		{
 			"sid": "text.public",
-			"location": {
-				"startLine": 5,
-				"endLine": 5
-			},
-			"mf": "default",
-			"gstr": "Public",
 			"guid": "IM1fWv6-HAAWG9JWOwHN2PwqGFm84BL77kEkg73DENw",
 			"nsrc": [
 				"Public"
 			],
-			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-profile.get_en.properties"
 		},
 		{
 			"sid": "text.moderated",
-			"location": {
-				"startLine": 6,
-				"endLine": 6
-			},
-			"mf": "default",
-			"gstr": "Moderated",
 			"guid": "sLsiWSXiT6OMWxIzGzVDhw3JQPzfKBdbII82UggAw90",
 			"nsrc": [
 				"Moderated"
 			],
-			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-profile.get_en.properties"
 		},
 		{
 			"sid": "text.private",
-			"location": {
-				"startLine": 7,
-				"endLine": 7
-			},
-			"mf": "default",
-			"gstr": "Private",
 			"guid": "BaIEq8aWhiGESKvrIdPctiXxiYBDVYWJJbPRg-brYNY",
 			"nsrc": [
 				"Private"
 			],
-			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-profile.get_en.properties"
 		},
 		{
 			"sid": "text.unknown",
-			"location": {
-				"startLine": 8,
-				"endLine": 8
-			},
-			"mf": "default",
-			"gstr": "Unknown",
 			"guid": "nzBKPR27tGvdJTHt81bRETluPFYJ2Gg-H2gE9IUXAJs",
 			"nsrc": [
 				"Unknown"
 			],
-			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-profile.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 10,
-				"endLine": 10
-			},
-			"mf": "default",
-			"gstr": "This dashlet displays the site details. Only the site manager can change this information.",
 			"guid": "N1IcZ5QfrSM8ZDsOz5i0tr8gggb063aQJ0iUZgEs5To",
 			"nsrc": [
 				"This dashlet displays the site details. Only the site manager can change this information."
 			],
-			"rid": "dashlets/site-profile.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-profile.get_en.properties"
 		},
 		{
 			"sid": "header.title",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "Site Search",
 			"guid": "7VTnCLwh2yhUtrL1y6RF5Dwfn2XQbLUztctjl78G2YU",
 			"nsrc": [
 				"Site Search"
 			],
-			"rid": "dashlets/site-search.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-search.get_en.properties"
 		},
 		{
 			"sid": "searchButton.text",
-			"location": {
-				"startLine": 2,
-				"endLine": 2
-			},
-			"mf": "default",
-			"gstr": "Search",
 			"guid": "P9gayAUj9HlSgxvLBDwgnL6DpANGiR9nVrMe0FytAtU",
 			"nsrc": [
 				"Search"
 			],
-			"rid": "dashlets/site-search.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-search.get_en.properties"
 		},
 		{
 			"sid": "no.result",
-			"location": {
-				"startLine": 3,
-				"endLine": 3
-			},
-			"mf": "default",
-			"gstr": "No results found.",
 			"guid": "gNmjQRRdC_hcOykrH-oV68pAvGcA-dAJC5fkJL8rxrw",
 			"nsrc": [
 				"No results found."
 			],
-			"rid": "dashlets/site-search.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-search.get_en.properties"
 		},
 		{
 			"sid": "message.insite",
-			"location": {
-				"startLine": 4,
-				"endLine": 4
-			},
-			"mf": "default",
-			"gstr": "in site",
 			"guid": "pp4AQNiSgKNV1PqmRFEsBGUVJiBdUd_0qK0wm3u6fBY",
 			"nsrc": [
 				"in site"
 			],
-			"rid": "dashlets/site-search.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-search.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 7,
-				"endLine": 8
-			},
-			"mf": "default",
-			"gstr": "{{bx}}Use this dashlet to perform a site search and view the results.{{ex}}{{bx}}Clicking the item name takes you to the details page so you can preview or work with the item.{{ex}}",
 			"guid": "uxRPvaEIZZh5Hj1s8oWFsdzucSUdwfQ1M2mzyBMjr7A",
-			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"notes": {
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
@@ -5815,77 +3567,42 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/site-search.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/site-search.get_en.properties"
 		},
 		{
 			"sid": "label.header",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "My Calendar",
 			"guid": "SPKdfv3dFWX7-7XFoRAq7On20IfLoU6TqTWJEw5jloU",
 			"nsrc": [
 				"My Calendar"
 			],
-			"rid": "dashlets/user-calendar.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/user-calendar.get_en.properties"
 		},
 		{
 			"sid": "label.noEvents",
-			"location": {
-				"startLine": 2,
-				"endLine": 2
-			},
-			"mf": "default",
-			"gstr": "No upcoming events",
 			"guid": "qwOsbKeQ6XPLwXDcsYMNfNxnZkyoyMpXxz6_LSsWlzQ",
 			"nsrc": [
 				"No upcoming events"
 			],
-			"rid": "dashlets/user-calendar.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/user-calendar.get_en.properties"
 		},
 		{
 			"sid": "label.error",
-			"location": {
-				"startLine": 3,
-				"endLine": 3
-			},
-			"mf": "default",
-			"gstr": "Could not load calendar data",
 			"guid": "ZtTwkAcJjMlS2vtVGe9GQ2o5rFvpkyLIOLYQa-a3I9g",
 			"nsrc": [
 				"Could not load calendar data"
 			],
-			"rid": "dashlets/user-calendar.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/user-calendar.get_en.properties"
 		},
 		{
 			"sid": "label.allday",
-			"location": {
-				"startLine": 4,
-				"endLine": 4
-			},
-			"mf": "default",
-			"gstr": "All Day",
 			"guid": "IGy5p0jghtEk0sW4dXZLtM3lEa2gpWZ_FqWyBaew8do",
 			"nsrc": [
 				"All Day"
 			],
-			"rid": "dashlets/user-calendar.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/user-calendar.get_en.properties"
 		},
 		{
 			"sid": "label.in-site",
-			"location": {
-				"startLine": 5,
-				"endLine": 5
-			},
-			"mf": "default",
-			"gstr": "in {{x}}",
 			"guid": "0Gpn2OtT9mxsfFCmTdSgMSTQYzw10MRlH_jZZl0CRl8",
 			"nsrc": [
 				"in ",
@@ -5894,124 +3611,67 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/user-calendar.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/user-calendar.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 7,
-				"endLine": 7
-			},
-			"mf": "default",
-			"gstr": "This dashlet shows the upcoming events in sites you belong to. ",
 			"guid": "yhoc5qivuex4c_K-BMYUFbP9nKbkdCrqEfDm1BnOX-8",
 			"nsrc": [
 				"This dashlet shows the upcoming events in sites you belong to. "
 			],
-			"rid": "dashlets/user-calendar.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/user-calendar.get_en.properties"
 		},
 		{
 			"sid": "label.defaultText",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "Please use the Configure link to enter the URL of the web page you wish to display",
 			"guid": "aEl7teKlCV7HKIC-OPv_prNQPwpaRzw60o4hAdE15GA",
 			"nsrc": [
 				"Please use the Configure link to enter the URL of the web page you wish to display"
 			],
-			"rid": "dashlets/webview-default.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/webview-default.get_en.properties"
 		},
 		{
 			"sid": "label.header",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "Web View",
 			"guid": "KDBdUg-NyvIug1C7Rz4pKcBurbMKwVTWuh_9fF-84E4",
 			"nsrc": [
 				"Web View"
 			],
-			"rid": "dashlets/webview.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/webview.get_en.properties"
 		},
 		{
 			"sid": "label.noWebPage",
-			"location": {
-				"startLine": 2,
-				"endLine": 2
-			},
-			"mf": "default",
-			"gstr": "No web page to display.",
 			"guid": "Tno6fdToJWn893cGorCoah96RqkheH8C4KN9ItLLcaE",
 			"nsrc": [
 				"No web page to display."
 			],
-			"rid": "dashlets/webview.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/webview.get_en.properties"
 		},
 		{
 			"sid": "label.notSecureHeader",
-			"location": {
-				"startLine": 3,
-				"endLine": 3
-			},
-			"mf": "default",
-			"gstr": "Web View",
 			"guid": "qEmg83eG4VzuormYT5QzxsU8gVIOBWSxN-d3erkcNL8",
 			"nsrc": [
 				"Web View"
 			],
-			"rid": "dashlets/webview.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/webview.get_en.properties"
 		},
 		{
 			"sid": "label.notSecurePage",
-			"location": {
-				"startLine": 4,
-				"endLine": 4
-			},
-			"mf": "default",
-			"gstr": "The domain of the page to display is not listed as a trusted domain inside your server's IFramePolicy config.",
 			"guid": "vnTi9G3JfmxMw4TI_DbSAMrv0zvUXjl7xMZlaZqNC_0",
 			"nsrc": [
 				"The domain of the page to display is not listed as a trusted domain inside your server's IFramePolicy config."
 			],
-			"rid": "dashlets/webview.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/webview.get_en.properties"
 		},
 		{
 			"sid": "form.url.validation.failure",
-			"location": {
-				"startLine": 5,
-				"endLine": 5
-			},
-			"mf": "default",
-			"gstr": "The domain of the url is not listed as a trusted domain inside your server's IFramePolicy config.",
 			"guid": "PW3HC0pFONNYOo4XrRLAjPfzrPhU7ql3Vcb-RLr5q3I",
 			"nsrc": [
 				"The domain of the url is not listed as a trusted domain inside your server's IFramePolicy config."
 			],
-			"rid": "dashlets/webview.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/webview.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 8,
-				"endLine": 9
-			},
-			"mf": "default",
-			"gstr": "{{bx}}This dashlet shows the website of your choice. Click the edit icon on the dashlet to change the web address.{{ex}}{{bx}}Clicking the dashlet title opens the website in a separate window.{{ex}}",
 			"guid": "2qtigSYsaPbxFxLIPrzVUQ4OvX_Er6wq1nvCsmIXh4I",
-			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"notes": {
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
@@ -6035,79 +3695,43 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/webview.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/webview.get_en.properties"
 		},
 		{
 			"sid": "label.header",
-			"location": {
-				"startLine": 1,
-				"endLine": 1
-			},
-			"mf": "default",
-			"gstr": "Wiki",
 			"guid": "tsUhoDa8t8CFonVR8KHvel4WKS9SQ9FXHzCcsTkt3bs",
 			"nsrc": [
 				"Wiki"
 			],
-			"rid": "dashlets/wiki.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/wiki.get_en.properties"
 		},
 		{
 			"sid": "label.header-prefix",
-			"location": {
-				"startLine": 2,
-				"endLine": 2
-			},
-			"mf": "default",
-			"gstr": "Wiki",
 			"guid": "gksc8DHW-8RthR-g1Dm982LeG5shOJQG1_FUXaGG8RA",
 			"nsrc": [
 				"Wiki"
 			],
-			"rid": "dashlets/wiki.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/wiki.get_en.properties"
 		},
 		{
 			"sid": "label.configure",
-			"location": {
-				"startLine": 3,
-				"endLine": 3
-			},
-			"mf": "default",
-			"gstr": "Configure",
 			"guid": "iVQEaDYs1oi356F_6MZiUW905O8LQl1bKRWNJg4DGqk",
 			"nsrc": [
 				"Configure"
 			],
-			"rid": "dashlets/wiki.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/wiki.get_en.properties"
 		},
 		{
 			"sid": "label.noConfig",
-			"location": {
-				"startLine": 4,
-				"endLine": 4
-			},
-			"mf": "default",
-			"gstr": "No page is configured",
 			"guid": "WbL_w7F4YtPHfi2CGZuO_iHD42Gsfv9JFL3uE8B3hmY",
 			"nsrc": [
 				"No page is configured"
 			],
-			"rid": "dashlets/wiki.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/wiki.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",
-			"location": {
-				"startLine": 7,
-				"endLine": 8
-			},
-			"mf": "default",
-			"gstr": "{{bx}}This dashlet shows a page selected from the site's wiki.{{ex}}{{bx}}Navigate to the wiki to see all related content.{{ex}}",
 			"guid": "vhg8jKxMyyqUEyhnwsgqh8K2eG9SPJY2FXylniirXmA",
-			"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
 			"notes": {
 				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
 			},
@@ -6131,8 +3755,7 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/wiki.get_en.properties",
-			"ts": 1
+			"rid": "dashlets/wiki.get_en.properties"
 		}
 	],
 	"translationProvider": "Grandfather",
