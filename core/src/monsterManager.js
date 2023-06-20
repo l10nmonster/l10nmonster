@@ -116,6 +116,7 @@ export class MonsterManager {
             translate: Boolean(channel.source && channel.target),
         }]));
         this.capabilities = Object.values(this.capabilitiesByChannel).reduce((p, c) => Object.fromEntries(Object.entries(c).map(([k, v]) => [ k, (p[k] === undefined ? true : p[k]) && v ])), {});
+        this.extensionCmds = monsterConfig.constructor.extensionCmds;
     }
 
     // register an async function to be called during shutdown

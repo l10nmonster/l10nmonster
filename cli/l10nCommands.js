@@ -114,7 +114,7 @@ function computeTotals(totals, partial) {
     }
 }
 
-export async function status(monsterManager, options) {
+async function status(monsterManager, options) {
     const limitToLang = options.lang;
     const all = Boolean(options.all);
     const output = options.output;
@@ -143,7 +143,7 @@ export async function status(monsterManager, options) {
     }
 }
 
-export async function jobs(monsterManager, options) {
+async function jobs(monsterManager, options) {
     const limitToLang = options.lang;
     const jobs = await jobsCmd(monsterManager, { limitToLang });
     for (const [lang, jobManifests] of Object.entries(jobs)) {
@@ -158,7 +158,7 @@ export async function jobs(monsterManager, options) {
     }
 }
 
-export async function analyze(monsterManager, options) {
+async function analyze(monsterManager, options) {
     try {
         if (options.analyzer) {
             const analysis = await analyzeCmd(monsterManager, options.analyzer, options.params, options.lang, options.filter);
@@ -205,7 +205,7 @@ export async function analyze(monsterManager, options) {
     }
 }
 
-export async function push(monsterManager, options) {
+async function push(monsterManager, options) {
     const limitToLang = options.lang;
     const tuFilter = options.filter;
     const driverOption = options.driver ?? 'untranslated';
@@ -253,7 +253,7 @@ export async function push(monsterManager, options) {
     }
 }
 
-export async function job(monsterManager, options) {
+async function job(monsterManager, options) {
     const op = options.operation;
     const jobGuid = options.jobGuid;
     if (op === 'req') {
@@ -307,7 +307,7 @@ export async function job(monsterManager, options) {
     }
 }
 
-export async function pull(monsterManager, options) {
+async function pull(monsterManager, options) {
     const limitToLang = options.lang;
     const partial = options.partial;
     console.log(`Pulling pending translations...`);
@@ -315,13 +315,13 @@ export async function pull(monsterManager, options) {
     console.log(`Checked ${stats.numPendingJobs.toLocaleString()} pending jobs, ${stats.doneJobs.toLocaleString()} done jobs, ${stats.newPendingJobs.toLocaleString()} pending jobs created, ${stats.translatedStrings.toLocaleString()} translated strings found`);
 }
 
-export async function snap(monsterManager, options) {
+async function snap(monsterManager, options) {
     console.log(`Taking a snapshot of sources...`);
     const numSources = await snapCmd(monsterManager, options);
     console.log(`${numSources} sources committed`);
 }
 
-export async function translate(monsterManager, options) {
+async function translate(monsterManager, options) {
     const limitToLang = options.lang;
     const dryRun = options.dryrun;
     console.log(`Generating translated resources for ${limitToLang ? limitToLang : 'all languages'}...${dryRun ? ' (dry run)' : ''}`);
@@ -343,7 +343,7 @@ export async function translate(monsterManager, options) {
     }
 }
 
-export async function tmexport(monsterManager, options) {
+async function tmexport(monsterManager, options) {
     const format = options.format;
     const mode = options.mode;
     const limitToLang = options.lang;
@@ -365,7 +365,7 @@ export async function tmexport(monsterManager, options) {
 // all sources and all TM's, so it can be used as a no-op to test the
 // config/initialization process and debug
 // lifted from https://www.asciiart.eu/mythology/monsters
-export async function monster(monsterManager) {
+async function monster(monsterManager) {
     console.log(`
     _.------.                        .----.__
    /         \\_.       ._           /---.__  \\
@@ -401,7 +401,7 @@ __.-'            \\  \\   .   / \\_.  \\ -|_/\\/ \`--.|_
     }
 }
 
-export function createLogger(verboseOption) {
+function createLogger(verboseOption) {
     // eslint-disable-next-line no-nested-ternary
     const verboseLevel = (verboseOption === undefined || verboseOption === 0) ?
         'error' :
@@ -423,26 +423,25 @@ export function createLogger(verboseOption) {
     });
 }
 
+function createHandler(mm, globalOptions, action) {
+    return opts => action(mm, { ...globalOptions, ...opts});
+}
+
 export async function runL10nMonster(relativePath, globalOptions, cb) {
     const configPath = path.resolve('.', relativePath);
     global.l10nmonster ??= {};
     l10nmonster.logger = createLogger(globalOptions.verbose);
     l10nmonster.env = process.env;
     const mm = await createMonsterManager(configPath, globalOptions);
+    const l10n = {
+        withMonsterManager: (cb) => cb(mm),
+    };
+    const builtInCmds = [ status, jobs, analyze, push, job, pull, snap, translate, tmexport, monster ];
+    builtInCmds.forEach(cmd => l10n[cmd.name] = createHandler(mm, globalOptions, cmd));
+    const extensionCmds = mm.extensionCmds ?? [];
+    extensionCmds.forEach(extCmd => l10n[extCmd.name] = createHandler(mm, globalOptions, extCmd.action));
     try {
-        await cb({
-            status: opts => status(mm, { ...globalOptions, ...opts}),
-            jobs: opts => jobs(mm, { ...globalOptions, ...opts}),
-            analyze: opts => analyze(mm, { ...globalOptions, ...opts}),
-            push: opts => push(mm, { ...globalOptions, ...opts}),
-            job: opts => job(mm, { ...globalOptions, ...opts}),
-            pull: opts => pull(mm, { ...globalOptions, ...opts}),
-            snap: opts => snap(mm, { ...globalOptions, ...opts}),
-            translate: opts => translate(mm, { ...globalOptions, ...opts}),
-            tmexport: opts => tmexport(mm, { ...globalOptions, ...opts}),
-            monster: opts => monster(mm, { ...globalOptions, ...opts}),
-            withMonsterManager: (cb) => cb(mm),
-        });
+        await cb(l10n);
     } catch(e) {
         console.error(`Unable to run: ${e.stack || e}`);
     } finally {

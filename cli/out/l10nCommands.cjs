@@ -25179,19 +25179,8 @@ var require_xml2js = __commonJS({
 // l10nCommands.js
 var l10nCommands_exports = {};
 __export(l10nCommands_exports, {
-  analyze: () => analyze,
   consoleColor: () => consoleColor,
-  createLogger: () => createLogger2,
-  job: () => job,
-  jobs: () => jobs,
-  monster: () => monster,
-  pull: () => pull,
-  push: () => push,
-  runL10nMonster: () => runL10nMonster,
-  snap: () => snap,
-  status: () => status,
-  tmexport: () => tmexport,
-  translate: () => translate
+  runL10nMonster: () => runL10nMonster
 });
 module.exports = __toCommonJS(l10nCommands_exports);
 var import_fs5 = require("fs");
@@ -26830,6 +26819,7 @@ var MonsterManager = class {
       translate: Boolean(channel.source && channel.target)
     }]));
     this.capabilities = Object.values(this.capabilitiesByChannel).reduce((p2, c2) => Object.fromEntries(Object.entries(c2).map(([k2, v2]) => [k2, (p2[k2] === void 0 ? true : p2[k2]) && v2])), {});
+    this.extensionCmds = monsterConfig.constructor.extensionCmds;
   }
   // register an async function to be called during shutdown
   scheduleForShutdown(func) {
@@ -28062,26 +28052,24 @@ function createLogger2(verboseOption) {
     ]
   });
 }
+function createHandler(mm, globalOptions, action) {
+  return (opts) => action(mm, { ...globalOptions, ...opts });
+}
 async function runL10nMonster(relativePath, globalOptions, cb) {
   const configPath = path5.resolve(".", relativePath);
   global.l10nmonster ??= {};
   l10nmonster.logger = createLogger2(globalOptions.verbose);
   l10nmonster.env = process.env;
   const mm = await createMonsterManager(configPath, globalOptions);
+  const l10n = {
+    withMonsterManager: (cb2) => cb2(mm)
+  };
+  const builtInCmds = [status, jobs, analyze, push, job, pull, snap, translate, tmexport, monster];
+  builtInCmds.forEach((cmd) => l10n[cmd.name] = createHandler(mm, globalOptions, cmd));
+  const extensionCmds = mm.extensionCmds ?? [];
+  extensionCmds.forEach((extCmd) => l10n[extCmd.name] = createHandler(mm, globalOptions, extCmd.action));
   try {
-    await cb({
-      status: (opts) => status(mm, { ...globalOptions, ...opts }),
-      jobs: (opts) => jobs(mm, { ...globalOptions, ...opts }),
-      analyze: (opts) => analyze(mm, { ...globalOptions, ...opts }),
-      push: (opts) => push(mm, { ...globalOptions, ...opts }),
-      job: (opts) => job(mm, { ...globalOptions, ...opts }),
-      pull: (opts) => pull(mm, { ...globalOptions, ...opts }),
-      snap: (opts) => snap(mm, { ...globalOptions, ...opts }),
-      translate: (opts) => translate(mm, { ...globalOptions, ...opts }),
-      tmexport: (opts) => tmexport(mm, { ...globalOptions, ...opts }),
-      monster: (opts) => monster(mm, { ...globalOptions, ...opts }),
-      withMonsterManager: (cb2) => cb2(mm)
-    });
+    await cb(l10n);
   } catch (e) {
     console.error(`Unable to run: ${e.stack || e}`);
   } finally {
@@ -28090,19 +28078,8 @@ async function runL10nMonster(relativePath, globalOptions, cb) {
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  analyze,
   consoleColor,
-  createLogger,
-  job,
-  jobs,
-  monster,
-  pull,
-  push,
-  runL10nMonster,
-  snap,
-  status,
-  tmexport,
-  translate
+  runL10nMonster
 });
 /*! Bundled license information:
 

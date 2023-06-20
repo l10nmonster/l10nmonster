@@ -72,5 +72,25 @@ module.exports = class CardboardConfig2 {
         });
         this.analyzers = analyzers;
     }
+
+    static l10nops = 'l10nOps';
+    static extensionCmds = [
+        class mystats {
+            static help = {
+                description: 'just a demo of how to create your own commands',
+                options: [
+                    [ '-l, --lang <language>', 'restrict to language' ]
+                ],
+            };
+            static async action(mm, options) {
+                const targetLangs = mm.getTargetLangs(options.lang);
+                for (const targetLang of targetLangs) {
+                    const stats = {};
+                    const allJobs = await mm.jobStore.getJobStatusByLangPair(mm.sourceLang, targetLang);
+                    allJobs.forEach(entry => stats[entry[1].status] = (stats[entry[1].status] ?? 0) + 1);
+                    console.log(`Target language ${targetLang}: ${stats.done ?? 0} done ${stats.pending ?? 0} pending ${stats.req ?? 0} req`);
+                }
+            }
+        }
+    ];
 };
-module.exports.l10nops = 'l10nOps';

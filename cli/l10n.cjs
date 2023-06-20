@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable no-underscore-dangle */
 
 const path = require('path');
 const { existsSync } = require('fs');
@@ -26,7 +27,6 @@ function createMonsterCLI(actionHandler) {
         .option('-v, --verbose [level]', '0=error, 1=warning, 2=info, 3=verbose', intOptionParser)
         .option('-p, --prj <prj1,...>', 'limit source to specified projects')
         .option('--arg <string>', 'optional config constructor argument')
-        .option('--cfg <filename.cjs>', 'specify the configuration file to use')
         .option('--regression', 'keep variables constant during regression testing');
     monsterCLI.command('status')
         .description('translation status of content.')
@@ -89,44 +89,33 @@ function createMonsterCLI(actionHandler) {
     return monsterCLI;
 }
 
-async function runMonsterCLI(monsterConfigPath, extensionsPath) {
+async function runMonsterCLI(monsterConfigPath) {
     try {
         let crutch = {};
-        const monsterCLI = createMonsterCLI(async function actionHandler() {
+        const actionHandler = async function actionHandler() {
             const options = this.opts();
             // Need to hack into the guts of commander as it doesn't seem to expose argument names
-            // TODO: fix variadic arguments
-            // eslint-disable-next-line no-underscore-dangle
-            const args = Object.fromEntries(this._args.map((arg, idx) => [ arg._name, this.args[idx]]));
-            const configPath = (options.cfg && path.resolve('.', options.cfg)) ?? monsterConfigPath;
-            await runL10nMonster(configPath, crutch.globalOptions, async l10n => {
+            const args = Object.fromEntries(this._args.map((arg, idx) => [
+                arg._name,
+                arg.variadic ? this.args.slice(idx) : this.args[idx]
+            ]));
+            await runL10nMonster(monsterConfigPath, crutch.globalOptions, async l10n => {
                 await l10n[this.name()]({ ...options, ...args });
             });
-
-        });
+        };
+        const monsterCLI = createMonsterCLI(actionHandler);
         crutch.globalOptions = monsterCLI.opts();
-        const cliExtensions = extensionsPath ?? process.env.l10nmonster_cliextensions;
-        if (cliExtensions) {
-            try {
-                const extensionsModule = await import(cliExtensions);
-                if (extensionsModule.setupExtensions) {
-                    const cliCtx = {};
-                    const extensionCmd = monsterCLI.command('extensions')
-                        .description('Extension commands')
-                        .hook('preAction', async cmd => {
-                            const options = cmd.optsWithGlobals();
-                            const configPath = (options.cfg && path.resolve('.', options.cfg)) ?? monsterConfigPath;
-                            await runL10nMonster(configPath, {}, async l10n => {
-                                cliCtx.l10n = l10n;
-                            });
-                        });
-                    extensionsModule.setupExtensions(extensionCmd, cliCtx);
-                } else {
-                    throw('Found extensions but no setupExtensions export found');
-                }
-            } catch(e) {
-                throw(`Couldn't load extensions from ${cliExtensions}: ${e.stack || e}`);
-            }
+        const Config = require(monsterConfigPath);
+        if (Config.extensionCmds) {
+            Config.extensionCmds.forEach(extCmd => {
+                const help = extCmd.help;
+                let cmd = monsterCLI.command(extCmd.name)
+                    .description(help.description)
+                    .action(actionHandler);
+                    help.options && help.options.forEach(opt => cmd.option(...opt));
+                    help.requiredOptions && help.requiredOptions.forEach(opt => cmd.requiredOption(...opt));
+                    help.arguments && help.arguments.forEach(opt => cmd.argument(...opt));
+                })
         }
         await monsterCLI.parseAsync();
     } catch(e) {
@@ -141,8 +130,7 @@ function findConfig() {
     while (baseDir !== previousDir) {
         const configPath = path.join(baseDir, 'l10nmonster.cjs');
         if (existsSync(configPath)) {
-            const cliExtensions = path.join(baseDir, 'l10nmonster-cli.cjs');
-            return [ configPath, existsSync(cliExtensions) && cliExtensions ];
+            return configPath;
         }
         previousDir = baseDir;
         baseDir = path.resolve(baseDir, '..');
@@ -150,7 +138,6 @@ function findConfig() {
     return [];
 }
 
-const [ monsterConfigPath, extensionsPath ] = findConfig();
 (async () => {
-    await runMonsterCLI(monsterConfigPath, extensionsPath);
+    await runMonsterCLI(findConfig());
 })();
