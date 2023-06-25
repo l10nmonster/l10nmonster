@@ -33,10 +33,10 @@
  */
 
 /* Back button label used to go back to the previous screen. (15 chars) */
-"BackButtonLabel" = "Back";
+"BackButtonLabel" = "Back & not escaped as ios";
 
 /* Label of the app title bar when on the QR code scanner screen. (45 chars) */
-"NavTitleLabel" = "QR Scan";
+"NavTitleLabel" = "QR Scan &amp; as xml";
 
 /* Message shown to the user while waiting to process the QR code. (60 chars) */
 "LoadingMessage" = "Parsing configuration data";

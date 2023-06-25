@@ -2,7 +2,7 @@
 	"en.lproj/CardboardSDK.strings": {
 		"id": "en.lproj/CardboardSDK.strings",
 		"channel": "default",
-		"modified": "2023-06-25T21:44:04.448Z",
+		"modified": "2023-06-25T21:59:36.929Z",
 		"resourceFormat": "default",
 		"sourceLang": "en",
 		"targetLangs": [
@@ -15,10 +15,10 @@
 				"sid": "BackButtonLabel",
 				"mf": "default",
 				"nstr": [
-					"Back"
+					"Back & not escaped as ios"
 				],
-				"gstr": "Back",
-				"guid": "Sch-OXL3KPaFNWvKiWNmafNmqHZo8oNtcaB-9jYE1sk",
+				"gstr": "Back & not escaped as ios",
+				"guid": "S0-rKxC3Jf5-IaURvhMKN-Jm16uYAJNSbMYgAEAMM3w",
 				"rawNotes": "Back button label used to go back to the previous screen. (15 chars)",
 				"notes": {
 					"desc": "Back button label used to go back to the previous screen. (15 chars)"
@@ -28,10 +28,13 @@
 				"sid": "NavTitleLabel",
 				"mf": "default",
 				"nstr": [
-					"QR Scan"
+					"QR Scan & as xml"
 				],
-				"gstr": "QR Scan",
-				"guid": "S5zXEp9KGe9nqhqgtH8vMM106HfoiBTZzDQ8qyPdB5A",
+				"flags": [
+					"xmlEntityDecoder"
+				],
+				"gstr": "QR Scan & as xml",
+				"guid": "-U07czEmMZZm_ncjptVtcAdsmBUfWEEGivDSPbReVQM",
 				"rawNotes": "Label of the app title bar when on the QR code scanner screen. (45 chars)",
 				"notes": {
 					"desc": "Label of the app title bar when on the QR code scanner screen. (45 chars)"

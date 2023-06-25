@@ -162,7 +162,8 @@ export class FormatHandler {
                     try {
                         const nstr = this.#translateWithTMEntry(seg.nstr, entry);
                         if (nstr !== undefined) {
-                            const str =this.#encodeTranslatedSegment(nstr, seg.mf, { ...flags, ...seg.flags });
+                            const segmentFlags = Object.fromEntries((seg.flags ?? []).map(f => [ f, true ]));
+                            const str =this.#encodeTranslatedSegment(nstr, seg.mf, { ...flags, ...segmentFlags });
                             translations[seg.guid] = { nstr, str };
                         }
                     } catch(e) {

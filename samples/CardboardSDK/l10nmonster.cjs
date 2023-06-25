@@ -1,4 +1,6 @@
-const { stores, adapters, translators, analyzers } = require('@l10nmonster/helpers');
+const { normalizers, xml, stores, adapters, translators, analyzers } = require('@l10nmonster/helpers');
+const ios = require('@l10nmonster/helpers-ios');
+// const translated = require('@l10nmonster/helpers-translated');
 
 module.exports = class CardboardConfig2 {
     sourceLang = 'en';
@@ -9,8 +11,6 @@ module.exports = class CardboardConfig2 {
     minimumQuality = 50;
 
     constructor() {
-        const ios = require('@l10nmonster/helpers-ios');
-        const translated = require('@l10nmonster/helpers-translated');
         this.source = new adapters.FsSource({
             globs: [ '**/en.lproj/*.strings' ],
         });
@@ -18,7 +18,8 @@ module.exports = class CardboardConfig2 {
             snapDir: 'snap',
         });
         this.resourceFilter = new ios.StringsFilter();
-        this.decoders = [ ios.phDecoder, ios.escapesDecoder ];
+        this.decoders = [ ios.phDecoder, ios.escapesDecoder, xml.entityDecoder ],
+        this.textEncoders = [ normalizers.gatedEncoder(xml.entityEncoder, 'xmlEntityDecoder') ],
         this.tuFilters = {
             initial: tu => tu.sid.indexOf(l10nmonster.arg) === 0,
         };
@@ -57,6 +58,11 @@ module.exports = class CardboardConfig2 {
             //         quality: 40,
             //     }),
             // },
+            Visicode: {
+                translator: new translators.Visicode({
+                    quality: 2,
+                }),
+            },
             Repetition: {
                 translator: new translators.Repetition({
                     qualifiedPenalty: 1,
