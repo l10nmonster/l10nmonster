@@ -27,6 +27,8 @@ export class FormatHandler {
             throw `Unknown message format ${mf} in format ${this.#id}`;
         }
         base.nstr = normalizer.decode(str, flags);
+        const firedFlags = Object.entries(flags).filter(f => f[1]).map(f => f[0]);
+        firedFlags.length > 0 && (base.flags = firedFlags);
         base.gstr = utils.flattenNormalizedSourceToOrdinal(base.nstr);
         base.guid = utils.generateGuid(`${rid}|${base.sid}|${base.gstr}`);
         return base;
@@ -160,7 +162,7 @@ export class FormatHandler {
                     try {
                         const nstr = this.#translateWithTMEntry(seg.nstr, entry);
                         if (nstr !== undefined) {
-                            const str =this.#encodeTranslatedSegment(nstr, seg.mf, flags);
+                            const str =this.#encodeTranslatedSegment(nstr, seg.mf, { ...flags, ...seg.flags });
                             translations[seg.guid] = { nstr, str };
                         }
                     } catch(e) {

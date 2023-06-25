@@ -26405,6 +26405,8 @@ var FormatHandler = class {
       throw `Unknown message format ${mf} in format ${this.#id}`;
     }
     base.nstr = normalizer.decode(str, flags);
+    const firedFlags = Object.entries(flags).filter((f) => f[1]).map((f) => f[0]);
+    firedFlags.length > 0 && (base.flags = firedFlags);
     base.gstr = utils_exports.flattenNormalizedSourceToOrdinal(base.nstr);
     base.guid = utils_exports.generateGuid(`${rid}|${base.sid}|${base.gstr}`);
     return base;
@@ -26532,7 +26534,7 @@ ${JSON.stringify(entry.ntgt)}`;
           try {
             const nstr = this.#translateWithTMEntry(seg.nstr, entry);
             if (nstr !== void 0) {
-              const str = this.#encodeTranslatedSegment(nstr, seg.mf, flags);
+              const str = this.#encodeTranslatedSegment(nstr, seg.mf, { ...flags, ...seg.flags });
               translations[seg.guid] = { nstr, str };
             }
           } catch (e) {

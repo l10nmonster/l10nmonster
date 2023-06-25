@@ -49,7 +49,7 @@
 
 /* Format string used as a temporary message shown after a successful device profile is set.
  * (60 chars) */
-"DataSynced" = "%1$@ detected";
+"DataSynced" = "%1$@\U0020detected";
 
 /* Label shown next to example QR code. (40 chars) */
 "FindSymbolOnViewer" = "Find this symbol on your viewer";

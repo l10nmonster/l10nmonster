@@ -2,7 +2,7 @@
 	"en.lproj/CardboardSDK.strings": {
 		"id": "en.lproj/CardboardSDK.strings",
 		"channel": "default",
-		"modified": "2022-02-10T01:19:22.492Z",
+		"modified": "2023-06-25T21:44:04.448Z",
 		"resourceFormat": "default",
 		"sourceLang": "en",
 		"targetLangs": [
@@ -85,6 +85,9 @@
 						"v": "%1$@"
 					},
 					" detected"
+				],
+				"flags": [
+					"iosEscapesDecoder"
 				],
 				"gstr": "{{x}} detected",
 				"guid": "XY8o8xA5C_HlR4v8LDc4L98Y0mR-4gHyLjDxwvNhDrM",
