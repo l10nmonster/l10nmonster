@@ -1,0 +1,17 @@
+{
+  "name": "@l10nmonster/helpers-britishtranslator",
+  "version": "1.0.0",
+  "description": "Automatic translator of American English into British English",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Diego Lagunas",
+  "license": "MIT",
+  "peerDependencies": {
+    "@l10nmonster/helpers": "../helpers"
+  },
+  "dependencies": {
+    "translate-american-british-english": "^1.0.0"
+  }
+}

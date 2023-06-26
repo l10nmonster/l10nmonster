@@ -1,11 +1,12 @@
 const { normalizers, xml, stores, adapters, translators, analyzers } = require('@l10nmonster/helpers');
 const ios = require('@l10nmonster/helpers-ios');
+const { BritishTranslator } = require('@l10nmonster/helpers-britishtranslator');
 // const translated = require('@l10nmonster/helpers-translated');
 
 module.exports = class CardboardConfig2 {
     sourceLang = 'en';
     targetLangs = {
-        LTR: [ 'it', 'ja' ],
+        LTR: [ 'en-GB', 'it', 'ja' ],
         RTL: [ 'ar' ],
     };
     minimumQuality = 50;
@@ -30,6 +31,10 @@ module.exports = class CardboardConfig2 {
             quality: 90,
         };
         this.translationProviders = {
+            BritishTranslator: {
+                translator: new BritishTranslator({ quality: 70 }),
+                pairs: { 'en': [ 'en-GB' ] },
+            },
             // TranslationOS: {
             //     translator: new translated.TranslationOS(defaultTOSConfig),
             //     pairs: { 'en': [ 'ar', 'it', 'ja' ] },

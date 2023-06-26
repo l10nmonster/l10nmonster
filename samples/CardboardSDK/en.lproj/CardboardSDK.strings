@@ -55,7 +55,7 @@
 "FindSymbolOnViewer" = "Find this symbol on your viewer";
 
 /* Label shown next to skip button that allows the user to skip the QR code step. (40 chars) */
-"CanNotFindSymbol" = "Can't find this symbol?";
+"CanNotFindSymbol" = "Can't find this color?";
 
 /* Label shown next to skip button that allows the user to go to troubleshooting tips. (40 chars) */
 "TroubleShootingTips" = "Troubleshooting Tips";
