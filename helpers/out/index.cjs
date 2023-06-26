@@ -6927,6 +6927,7 @@ var JsonJobStore = class extends FileBasedJobStore {
 };
 
 // src/stores/fileBasedSnapStore.js
+var SNAPSTORE_SCHEME_VERSION = 1;
 var FileBasedSnapStore = class {
   constructor(delegate) {
     if (!delegate) {
@@ -6941,11 +6942,16 @@ var FileBasedSnapStore = class {
   }
   async #getTOC() {
     if (!this.TOC) {
+      let tocFile;
       try {
-        this.#updateTOC(JSON.parse(await this.delegate.getFile("TOC.json")));
+        tocFile = JSON.parse(await this.delegate.getFile("TOC.json"));
       } catch (e) {
-        throw `Snap Store is empty`;
+        throw `Unable to read Snap Store: ${e}`;
       }
+      if (tocFile.version !== SNAPSTORE_SCHEME_VERSION) {
+        throw `Snap Store is outdated`;
+      }
+      this.#updateTOC(tocFile.chunkMap);
     }
     return this.TOC;
   }
@@ -6965,7 +6971,10 @@ var FileBasedSnapStore = class {
     }));
   }
   async endSnapshot() {
-    await this.delegate.saveFile("TOC.json", JSON.stringify(this.newTOC, null, "	"));
+    await this.delegate.saveFile("TOC.json", JSON.stringify({
+      version: SNAPSTORE_SCHEME_VERSION,
+      chunkMap: this.newTOC
+    }, null, "	"));
     this.filesToNuke["TOC.json"] = false;
     await this.delegate.deleteFiles(Object.entries(this.filesToNuke).filter((e) => e[1]).map((e) => e[0]));
     this.#updateTOC(this.newTOC);
