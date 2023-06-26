@@ -29,7 +29,7 @@ export function gatedEncoder(encoder, ...flagNames) {
     return fn;
 }
 
-export const doublePercentEncoder = encoderMaker('doublePercentEncoder', /%/g, { "%": "%%" });
+export const doublePercentEncoder = encoderMaker('doublePercentEncoder', /(?:%)/g, { "%": "%%" });
 
 // Placeholders
 
