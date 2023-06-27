@@ -7273,6 +7273,14 @@ var VariantGenerator = class {
     l10nmonster.logger.verbose(`Replaced words for language variant ${jobRequest.targetLang}: ${[...this.#replacedWords].join(", ")}`);
     return jobResponse;
   }
+  async refreshTranslations(jobRequest) {
+    const fullResponse = await this.requestTranslations(jobRequest);
+    const reqTuMap = jobRequest.tus.reduce((p, c) => (p[c.guid] = c, p), {});
+    return {
+      ...fullResponse,
+      tus: fullResponse.tus.filter((tu) => !utils_exports.normalizedStringsAreEqual(reqTuMap[tu.guid].ntgt, tu.ntgt))
+    };
+  }
 };
 
 // src/utils.js

@@ -41,6 +41,7 @@ module.exports = class CardboardConfig2 {
                 translator: new translators.VariantGenerator({
                     dict: {
                         customise: 'tinkerise',
+                        find: 'finday',
                     },
                     baseLang: 'en-GB',
                     quality: 70,

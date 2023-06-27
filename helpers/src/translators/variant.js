@@ -1,4 +1,4 @@
-// parts loosely adapted from https://github.com/arumi-s/translate-american-british-english
+import { utils } from '@l10nmonster/helpers';
 
 const wordMatcher = /\p{L}+/gu;
 
@@ -78,5 +78,14 @@ export class VariantGenerator {
         jobResponse.status = 'done';
         l10nmonster.logger.verbose(`Replaced words for language variant ${jobRequest.targetLang}: ${[...this.#replacedWords].join(', ')}`);
         return jobResponse;
+    }
+
+    async refreshTranslations(jobRequest) {
+        const fullResponse = await this.requestTranslations(jobRequest);
+        const reqTuMap = jobRequest.tus.reduce((p,c) => (p[c.guid] = c, p), {});
+        return {
+            ...fullResponse,
+            tus: fullResponse.tus.filter(tu => !utils.normalizedStringsAreEqual(reqTuMap[tu.guid].ntgt, tu.ntgt)),
+        };
     }
 }
