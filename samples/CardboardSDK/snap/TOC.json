@@ -5,11 +5,12 @@
 			"en.lproj/CardboardSDK.strings": {
 				"id": "en.lproj/CardboardSDK.strings",
 				"channel": "default",
-				"modified": "2023-06-26T21:46:32.445Z",
+				"modified": "2023-06-27T00:56:54.413Z",
 				"resourceFormat": "default",
 				"sourceLang": "en",
 				"targetLangs": [
 					"ar",
+					"en-AU",
 					"en-GB",
 					"it",
 					"ja"

@@ -2,11 +2,12 @@
 	"en.lproj/CardboardSDK.strings": {
 		"id": "en.lproj/CardboardSDK.strings",
 		"channel": "default",
-		"modified": "2023-06-26T21:46:32.445Z",
+		"modified": "2023-06-27T00:56:54.413Z",
 		"resourceFormat": "default",
 		"sourceLang": "en",
 		"targetLangs": [
 			"ar",
+			"en-AU",
 			"en-GB",
 			"it",
 			"ja"
@@ -395,10 +396,10 @@
 				"sid": "AccessibilitySettingsButton",
 				"mf": "default",
 				"nstr": [
-					"Settings"
+					"Customize"
 				],
-				"gstr": "Settings",
-				"guid": "ngT5pq_BhXgX71IJFDYZQRJX80bl9J1XPD2oBb-VEAE",
+				"gstr": "Customize",
+				"guid": "x4LcLYE02aXdtjaJINheWH8EiIdi6KvCA4-J4mnkWR8",
 				"rawNotes": "Accessibility label for the gear icon to bring up settings (read out loud)",
 				"notes": {
 					"desc": "Accessibility label for the gear icon to bring up settings (read out loud)"

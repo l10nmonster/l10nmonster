@@ -1,12 +1,11 @@
 const { normalizers, xml, stores, adapters, translators, analyzers } = require('@l10nmonster/helpers');
 const ios = require('@l10nmonster/helpers-ios');
-const { BritishTranslator } = require('@l10nmonster/helpers-britishtranslator');
 // const translated = require('@l10nmonster/helpers-translated');
 
 module.exports = class CardboardConfig2 {
     sourceLang = 'en';
     targetLangs = {
-        LTR: [ 'en-GB', 'it', 'ja' ],
+        LTR: [ 'en-GB', 'en-AU', 'it', 'ja' ],
         RTL: [ 'ar' ],
     };
     minimumQuality = 50;
@@ -24,16 +23,29 @@ module.exports = class CardboardConfig2 {
         this.tuFilters = {
             initial: tu => tu.sid.indexOf(l10nmonster.arg) === 0,
         };
-        const defaultTOSConfig = {
-            baseURL: 'https://api-sandbox.translated.com/v2',
-            apiKey: l10nmonster.env.translated_api_key_sandbox,
-            serviceType: 'premium',
-            quality: 90,
-        };
+        // const defaultTOSConfig = {
+        //     baseURL: 'https://api-sandbox.translated.com/v2',
+        //     apiKey: l10nmonster.env.translated_api_key_sandbox,
+        //     serviceType: 'premium',
+        //     quality: 90,
+        // };
         this.translationProviders = {
             BritishTranslator: {
-                translator: new BritishTranslator({ quality: 70 }),
+                translator: new translators.VariantGenerator({
+                    dict: require('./dict.json'),
+                    quality: 70,
+                }),
                 pairs: { 'en': [ 'en-GB' ] },
+            },
+            AussieTranslator: {
+                translator: new translators.VariantGenerator({
+                    dict: {
+                        customise: 'tinkerise',
+                    },
+                    baseLang: 'en-GB',
+                    quality: 70,
+                }),
+                pairs: { 'en': [ 'en-AU' ] },
             },
             // TranslationOS: {
             //     translator: new translated.TranslationOS(defaultTOSConfig),
@@ -65,7 +77,7 @@ module.exports = class CardboardConfig2 {
             // },
             Visicode: {
                 translator: new translators.Visicode({
-                    quality: 2,
+                    quality: 50,
                 }),
             },
             Repetition: {
