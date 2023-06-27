@@ -37,6 +37,7 @@ module.exports = class GCSStoreDelegate {
 
     async saveFile(filename, contents) {
         try {
+            Array.isArray(filename) && (filename = filename.join('/'));
             this.bucket || (this.bucket = await this.storage.bucket(this.bucketName));
             const file = this.bucket.file(`${this.bucketPrefix}/${filename}`);
             return file.save(contents);
