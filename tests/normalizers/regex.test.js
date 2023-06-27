@@ -75,6 +75,10 @@ describe('Regex Encoder tests', () => {
           ]);
     });
 
+    test('normalizers.doublePercentEncoder', async () => {
+        expect(normalizers.doublePercentEncoder('10%')).toBe('10%%');
+    });
+
     test('normalizers.gatedEncoder', async () => {
         expect(normalizers.gatedEncoder(xml.entityEncoder, 'foo')('<b>')).toBe('<b>');
         expect(normalizers.gatedEncoder(xml.entityEncoder, 'foo')('<b>', { foo: true })).toBe('&lt;b>');
