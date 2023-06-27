@@ -25,8 +25,10 @@ export class VariantGenerator {
         let variant = this.dict[key];
         if (variant) {
             this.#replacedWords.add(variant);
-            // only deal with initial capitalization -- dict is assumed to be lowercase
-            if (str.charAt(0) !== key.charAt(0)) {
+            // dict is assumed to be lowercase
+            if (str === str.toUpperCase()) {
+                variant = variant.toUpperCase();
+            } else if (str.charAt(0) !== key.charAt(0)) { // deal with initial capitalization
                 variant = variant.substring(0, 1).toUpperCase() + variant.substring(1);
             }
             return variant;

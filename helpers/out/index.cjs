@@ -7222,7 +7222,9 @@ var VariantGenerator = class {
     let variant = this.dict[key];
     if (variant) {
       this.#replacedWords.add(variant);
-      if (str.charAt(0) !== key.charAt(0)) {
+      if (str === str.toUpperCase()) {
+        variant = variant.toUpperCase();
+      } else if (str.charAt(0) !== key.charAt(0)) {
         variant = variant.substring(0, 1).toUpperCase() + variant.substring(1);
       }
       return variant;

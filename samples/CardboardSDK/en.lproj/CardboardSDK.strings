@@ -102,7 +102,7 @@
 
 /* Button text shown with the DifferentViewerQuestion that takes the user to the
    screen to pair with a different Cardboard viewer. (15 chars) */
-"SwitchViewer" = "SWITCH";
+"SwitchViewer" = "CURB";
 
 /* Popup activity view menu text that shows the name of the currently paired viewer but also takes
    the user to the QRScan view controller when tapped. (30 chars) */

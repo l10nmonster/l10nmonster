@@ -2,7 +2,7 @@
 	"en.lproj/CardboardSDK.strings": {
 		"id": "en.lproj/CardboardSDK.strings",
 		"channel": "default",
-		"modified": "2023-06-27T00:56:54.413Z",
+		"modified": "2023-06-27T17:00:24.517Z",
 		"resourceFormat": "default",
 		"sourceLang": "en",
 		"targetLangs": [
@@ -309,10 +309,10 @@
 				"sid": "SwitchViewer",
 				"mf": "default",
 				"nstr": [
-					"SWITCH"
+					"CURB"
 				],
-				"gstr": "SWITCH",
-				"guid": "qTP4qKQCnREcyJAH2Kaph3DNOicsXMZGYTlqeVzrb2c",
+				"gstr": "CURB",
+				"guid": "EHCHp7KhPPmNTJkf94z-TMhvO62Lxvm40bLFiBMwyUM",
 				"rawNotes": "Button text shown with the DifferentViewerQuestion that takes the user to the\nscreen to pair with a different Cardboard viewer. (15 chars)",
 				"notes": {
 					"desc": "Button text shown with the DifferentViewerQuestion that takes the user to the\nscreen to pair with a different Cardboard viewer. (15 chars)"
