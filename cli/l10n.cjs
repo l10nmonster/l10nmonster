@@ -28,7 +28,6 @@ async function runMonsterCLI(monsterConfigPath) {
         .option('--arg <string>', 'optional config constructor argument')
         .option('--regression', 'keep variables constant during regression testing');
     try {
-        let crutch = {};
         const actionHandler = async function actionHandler() {
             const options = this.opts();
             // Need to hack into the guts of commander as it doesn't seem to expose argument names
@@ -40,7 +39,6 @@ async function runMonsterCLI(monsterConfigPath) {
                 await l10n[this.name()]({ ...options, ...args });
             });
         };
-        crutch.globalOptions = monsterCLI.opts();
         const Config = require(monsterConfigPath);
         [ ...builtInCmds, ...(Config.extensionCmds ?? []) ]
             .forEach(Cmd => {
