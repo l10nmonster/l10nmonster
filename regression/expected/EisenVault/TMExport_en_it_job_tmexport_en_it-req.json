@@ -16,6 +16,9 @@
 		{
 			"sid": "more.activities",
 			"guid": "iFr1XEoi3u89bv1K36QYJ8mOO-8yj4RdSWXpMtkowNo",
+			"notes": {
+				"desc": "## Rollup"
+			},
 			"nsrc": [
 				{
 					"t": "x",
@@ -23,14 +26,14 @@
 				},
 				" more"
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"notes": {
-				"desc": "## Rollup"
-			}
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "atom.title.site",
 			"guid": "DQ_hE0YU3Dc1i-RCzydiH221mS2bCTGrix7yN0NVYjs",
+			"notes": {
+				"desc": "## ATOM feed messages"
+			},
 			"nsrc": [
 				"Alfresco Activities Site Feed for ",
 				{
@@ -38,10 +41,7 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"notes": {
-				"desc": "## ATOM feed messages"
-			}
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "atom.title.user",
@@ -58,6 +58,9 @@
 		{
 			"sid": "in.site",
 			"guid": "BpkBpKi4k1zbxxMBjLweUIMIakji86zWvO-jLYTfbc8",
+			"notes": {
+				"desc": "## Optional Site link"
+			},
 			"nsrc": [
 				{
 					"t": "x",
@@ -69,14 +72,12 @@
 					"v": "{1}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"notes": {
-				"desc": "## Optional Site link"
-			}
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.blog.post-created",
 			"guid": "3rblxtRQl_XxzcIRIcuXD1YiqWoZZGm2OK6VT_3AvEE",
+			"notes": "PH({0}|Hello World|Item title / page link)",
 			"nsrc": [
 				{
 					"t": "x",
@@ -88,12 +89,12 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"notes": "PH({0}|Hello World|Item title / page link)"
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.blog.post-updated",
 			"guid": "YWxB6wV9NKqyi_xBz9gfJXM9gVGUn8fmMLpstgYj4GQ",
+			"notes": "PH({0}|Hello World|Item title / page link)",
 			"nsrc": [
 				{
 					"t": "x",
@@ -105,12 +106,12 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"notes": "PH({0}|Hello World|Item title / page link)"
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.blog.post-deleted",
 			"guid": "M9uKQf1rlQ2VvflkhXLRngLoR1dO97dbM0pgqzAYWBQ",
+			"notes": "PH({0}|Hello World|Item title / page link)",
 			"nsrc": [
 				{
 					"t": "x",
@@ -122,8 +123,7 @@
 					"v": "{0}"
 				}
 			],
-			"rid": "dashlets/activity-list.get_en.properties",
-			"notes": "PH({0}|Hello World|Item title / page link)"
+			"rid": "dashlets/activity-list.get_en.properties"
 		},
 		{
 			"sid": "org.alfresco.comments.comment-created",
@@ -1140,6 +1140,9 @@
 		{
 			"sid": "pagination.template",
 			"guid": "mLALtuF1QW-Bmat_BnqBWJoZuRPft920lMrphwmUgRE",
+			"notes": {
+				"desc": "#{startRecord} - {endRecord} of {totalRecords}"
+			},
 			"nsrc": [
 				{
 					"t": "x",
@@ -1156,10 +1159,7 @@
 					"v": "{2}"
 				}
 			],
-			"rid": "dashlets/colleagues.get_en.properties",
-			"notes": {
-				"desc": "#{startRecord} - {endRecord} of {totalRecords}"
-			}
+			"rid": "dashlets/colleagues.get_en.properties"
 		},
 		{
 			"sid": "pagination.template2",
@@ -1191,6 +1191,9 @@
 		{
 			"sid": "dashlet.help",
 			"guid": "KTiNW5209TexcCzIt4JuDtEciEbxhHTDof1fPUXxPy8",
+			"notes": {
+				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			},
 			"nsrc": [
 				{
 					"t": "bx",
@@ -1211,10 +1214,7 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/colleagues.get_en.properties",
-			"notes": {
-				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
-			}
+			"rid": "dashlets/colleagues.get_en.properties"
 		},
 		{
 			"sid": "header",
@@ -1227,13 +1227,13 @@
 		{
 			"sid": "filter.favourites",
 			"guid": "Eq6kdX8FRZrnHXZ8tj-1WkbVn79SRm10JD2L8-8Sy8w",
+			"notes": {
+				"desc": "## Filters"
+			},
 			"nsrc": [
 				"My Favorites"
 			],
-			"rid": "dashlets/docsummary.get_en.properties",
-			"notes": {
-				"desc": "## Filters"
-			}
+			"rid": "dashlets/docsummary.get_en.properties"
 		},
 		{
 			"sid": "filter.editingMe",
@@ -1286,6 +1286,9 @@
 		{
 			"sid": "dashlet.help",
 			"guid": "LiZ1Us13QP3ByVIcMm62HGr4E_GM48xSJKMED2MBqn4",
+			"notes": {
+				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			},
 			"nsrc": [
 				{
 					"t": "bx",
@@ -1341,10 +1344,7 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/docsummary.get_en.properties",
-			"notes": {
-				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
-			}
+			"rid": "dashlets/docsummary.get_en.properties"
 		},
 		{
 			"sid": "welcome.user",
@@ -1803,6 +1803,9 @@
 		{
 			"sid": "topicList.createdBy",
 			"guid": "dIbVwxFYE1hxYeNCVvrHssPzog8X8nJJPpXXyZSsaHk",
+			"notes": {
+				"desc": "## In topicList.createdBy {0} is Author Name and {1} is relative date."
+			},
 			"nsrc": [
 				"Created by ",
 				{
@@ -1816,10 +1819,7 @@
 				},
 				"."
 			],
-			"rid": "dashlets/forum-summary.get_en.properties",
-			"notes": {
-				"desc": "## In topicList.createdBy {0} is Author Name and {1} is relative date."
-			}
+			"rid": "dashlets/forum-summary.get_en.properties"
 		},
 		{
 			"sid": "topicList.replies.single",
@@ -1845,6 +1845,9 @@
 		{
 			"sid": "topicList.lastReplyBy",
 			"guid": "3rxLae7mZjGkYb8BFHhRL2HRVinODjyavdUOs1PeKKc",
+			"notes": {
+				"desc": "## In topicList.lastReplyBy {0} is Author Name and {1} is relative date."
+			},
 			"nsrc": [
 				"The last reply was posted by ",
 				{
@@ -1858,21 +1861,18 @@
 				},
 				"."
 			],
-			"rid": "dashlets/forum-summary.get_en.properties",
-			"notes": {
-				"desc": "## In topicList.lastReplyBy {0} is Author Name and {1} is relative date."
-			}
+			"rid": "dashlets/forum-summary.get_en.properties"
 		},
 		{
 			"sid": "filter.topics.mine",
 			"guid": "SaF5jfhsK1yJhYCtKwNK14xZFItSKzIHbyfOX09s3j4",
+			"notes": {
+				"desc": "# Filter 1"
+			},
 			"nsrc": [
 				"My Topics"
 			],
-			"rid": "dashlets/forum-summary.get_en.properties",
-			"notes": {
-				"desc": "# Filter 1"
-			}
+			"rid": "dashlets/forum-summary.get_en.properties"
 		},
 		{
 			"sid": "filter.topics.all",
@@ -1885,13 +1885,13 @@
 		{
 			"sid": "filter.history.1day",
 			"guid": "1xmZmVo3sItH_a_W99LVgEsp-40jP-cffl9A0AyIIDk",
+			"notes": {
+				"desc": "# Filter 2"
+			},
 			"nsrc": [
 				"Topics updated in the last day"
 			],
-			"rid": "dashlets/forum-summary.get_en.properties",
-			"notes": {
-				"desc": "# Filter 2"
-			}
+			"rid": "dashlets/forum-summary.get_en.properties"
 		},
 		{
 			"sid": "filter.history.7days",
@@ -1920,6 +1920,9 @@
 		{
 			"sid": "dashlet.help",
 			"guid": "oVOocmmwS1_ao_0kAZ16L3x5qJASG71Nw-hgbl22TnQ",
+			"notes": {
+				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			},
 			"nsrc": [
 				{
 					"t": "bx",
@@ -1940,10 +1943,7 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/forum-summary.get_en.properties",
-			"notes": {
-				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
-			}
+			"rid": "dashlets/forum-summary.get_en.properties"
 		},
 		{
 			"sid": "header.title",
@@ -2029,13 +2029,13 @@
 		{
 			"sid": "filter.mine",
 			"guid": "lYYzgCGkzccr-pT7UZ4i4kg7sG6k6f3jFdc6n8EN4N8",
+			"notes": {
+				"desc": "## Note to translators: The User Interface renders Filters 1, 2, 3 next to each other. The English translation gives these the appearance of a sentence, for example: \"My activities, status updates, in the last 14 days\".\n## This is entirely optional. If the language doesn't allow for this structure, please capitalise the messages in Filter 2+3 so they appear disconnected.\n# Filter 1"
+			},
 			"nsrc": [
 				"My activities"
 			],
-			"rid": "dashlets/my-activities.get_en.properties",
-			"notes": {
-				"desc": "## Note to translators: The User Interface renders Filters 1, 2, 3 next to each other. The English translation gives these the appearance of a sentence, for example: \"My activities, status updates, in the last 14 days\".\n## This is entirely optional. If the language doesn't allow for this structure, please capitalise the messages in Filter 2+3 so they appear disconnected.\n# Filter 1"
-			}
+			"rid": "dashlets/my-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.others",
@@ -2064,13 +2064,13 @@
 		{
 			"sid": "filter.allItems",
 			"guid": "VuYFBmp8W917yvy6FDEnusaF740C6phWH-JIUrTYwc0",
+			"notes": {
+				"desc": "# Filter 2"
+			},
 			"nsrc": [
 				"all items"
 			],
-			"rid": "dashlets/my-activities.get_en.properties",
-			"notes": {
-				"desc": "# Filter 2"
-			}
+			"rid": "dashlets/my-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.statusItems",
@@ -2107,13 +2107,13 @@
 		{
 			"sid": "filter.today",
 			"guid": "ew1Cta4NZUO58z_VftSCMsMI7As-GxknGadESOGGxtI",
+			"notes": {
+				"desc": "# Filter 3"
+			},
 			"nsrc": [
 				"today"
 			],
-			"rid": "dashlets/my-activities.get_en.properties",
-			"notes": {
-				"desc": "# Filter 3"
-			}
+			"rid": "dashlets/my-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.7days",
@@ -2158,6 +2158,9 @@
 		{
 			"sid": "dashlet.help",
 			"guid": "gyzuA8K0OaZnihjH2ZONepwEMPxTtE_NosFIbn_AM8E",
+			"notes": {
+				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			},
 			"nsrc": [
 				{
 					"t": "bx",
@@ -2178,10 +2181,7 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/my-activities.get_en.properties",
-			"notes": {
-				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
-			}
+			"rid": "dashlets/my-activities.get_en.properties"
 		},
 		{
 			"sid": "header",
@@ -2275,13 +2275,13 @@
 		{
 			"sid": "filter.favourites",
 			"guid": "16dwhpoku0nRZdnDK3zN4gY9CzQrNxTrbsgwSm6DGfk",
+			"notes": {
+				"desc": "## Filters"
+			},
 			"nsrc": [
 				"My Favorites"
 			],
-			"rid": "dashlets/my-documents.get_en.properties",
-			"notes": {
-				"desc": "## Filters"
-			}
+			"rid": "dashlets/my-documents.get_en.properties"
 		},
 		{
 			"sid": "filter.editingMe",
@@ -2334,6 +2334,9 @@
 		{
 			"sid": "dashlet.help",
 			"guid": "AVJwgn96gVZOTR9gxVVWAIYybHIrSmQXlxVblGOA_-M",
+			"notes": {
+				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			},
 			"nsrc": [
 				{
 					"t": "bx",
@@ -2389,10 +2392,7 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/my-documents.get_en.properties",
-			"notes": {
-				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
-			}
+			"rid": "dashlets/my-documents.get_en.properties"
 		},
 		{
 			"sid": "header.myMeetingWorkspaces",
@@ -2445,6 +2445,9 @@
 		{
 			"sid": "dashlet.help",
 			"guid": "KwRk8xsR7NqNEUmQq062j5EhNOvcXlAZjD3-gRDpuTQ",
+			"notes": {
+				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			},
 			"nsrc": [
 				{
 					"t": "bx",
@@ -2465,10 +2468,7 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/my-meeting-workspaces.get_en.properties",
-			"notes": {
-				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
-			}
+			"rid": "dashlets/my-meeting-workspaces.get_en.properties"
 		},
 		{
 			"sid": "header.myLimitedProfile",
@@ -2569,6 +2569,9 @@
 		{
 			"sid": "dashlet.help",
 			"guid": "bSLC8teKK1MEOmFgrXsZZjcAatcZwSLvnMITBrJEYhg",
+			"notes": {
+				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			},
 			"nsrc": [
 				{
 					"t": "bx",
@@ -2633,10 +2636,7 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/my-sites.get_en.properties",
-			"notes": {
-				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
-			}
+			"rid": "dashlets/my-sites.get_en.properties"
 		},
 		{
 			"sid": "header",
@@ -2814,16 +2814,16 @@
 		{
 			"sid": "pagination.template",
 			"guid": "_eSMhA7GvQyFwpD3TteCK07HiJy_tNJvu6Z6RlD1Yqw",
+			"notes": {
+				"desc": "## Override pagination templates with a minified version"
+			},
 			"nsrc": [
 				{
 					"t": "x",
 					"v": "{CurrentPageReport}"
 				}
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"notes": {
-				"desc": "## Override pagination templates with a minified version"
-			}
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "pagination.template.page-report",
@@ -2865,6 +2865,9 @@
 		{
 			"sid": "dashlet.help",
 			"guid": "Pgq9rxA8-EktqqbL9yOcNuncrLEDjhwr6gLGv4XzYuo",
+			"notes": {
+				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			},
 			"nsrc": [
 				{
 					"t": "bx",
@@ -2929,10 +2932,7 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/my-tasks.get_en.properties",
-			"notes": {
-				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
-			}
+			"rid": "dashlets/my-tasks.get_en.properties"
 		},
 		{
 			"sid": "header.myWorkspaces",
@@ -2985,6 +2985,9 @@
 		{
 			"sid": "dashlet.help",
 			"guid": "QbstBkZNdzkfITuXaZAuGgvTliwWQC8mHM_3rV_7Sk4",
+			"notes": {
+				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			},
 			"nsrc": [
 				{
 					"t": "bx",
@@ -3005,10 +3008,7 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/my-workspaces.get_en.properties",
-			"notes": {
-				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
-			}
+			"rid": "dashlets/my-workspaces.get_en.properties"
 		},
 		{
 			"sid": "label.header",
@@ -3093,6 +3093,9 @@
 		{
 			"sid": "dashlet.help",
 			"guid": "9ZZmsgCdj4VOoUo-5nhEuqaBDfZBHGfiK_v5nkOMIrQ",
+			"notes": {
+				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			},
 			"nsrc": [
 				{
 					"t": "bx",
@@ -3122,10 +3125,7 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/saved-search.get_en.properties",
-			"notes": {
-				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
-			}
+			"rid": "dashlets/saved-search.get_en.properties"
 		},
 		{
 			"sid": "header",
@@ -3162,13 +3162,13 @@
 		{
 			"sid": "filter.mine",
 			"guid": "Udt6eFrWTD8LIPEn855TExZ8hKbdZ-XnDwZViiOfKjI",
+			"notes": {
+				"desc": "## Note to translators: The User Interface renders Filters 1, 2, 3 next to each other. The English translation gives these the appearance of a sentence, for example: \"My activities, status updates, in the last 14 days\".\n## This is entirely optional. If the language doesn't allow for this structure, please capitalise the messages in Filter 2+3 so they appear disconnected.\n# Filter 1"
+			},
 			"nsrc": [
 				"My activities"
 			],
-			"rid": "dashlets/site-activities.get_en.properties",
-			"notes": {
-				"desc": "## Note to translators: The User Interface renders Filters 1, 2, 3 next to each other. The English translation gives these the appearance of a sentence, for example: \"My activities, status updates, in the last 14 days\".\n## This is entirely optional. If the language doesn't allow for this structure, please capitalise the messages in Filter 2+3 so they appear disconnected.\n# Filter 1"
-			}
+			"rid": "dashlets/site-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.others",
@@ -3197,13 +3197,13 @@
 		{
 			"sid": "filter.allItems",
 			"guid": "vRZ8-bFg84NQr-JCGfCiYSgCFpyIVfkRsbewPxPUKWE",
+			"notes": {
+				"desc": "# Filter 2"
+			},
 			"nsrc": [
 				"all items"
 			],
-			"rid": "dashlets/site-activities.get_en.properties",
-			"notes": {
-				"desc": "# Filter 2"
-			}
+			"rid": "dashlets/site-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.statusItems",
@@ -3240,13 +3240,13 @@
 		{
 			"sid": "filter.today",
 			"guid": "3TQRV9f1141RY8JHLgGCs9MqJXCfUHGCPKoH346i8Ns",
+			"notes": {
+				"desc": "# Filter 3"
+			},
 			"nsrc": [
 				"today"
 			],
-			"rid": "dashlets/site-activities.get_en.properties",
-			"notes": {
-				"desc": "# Filter 3"
-			}
+			"rid": "dashlets/site-activities.get_en.properties"
 		},
 		{
 			"sid": "filter.7days",
@@ -3291,6 +3291,9 @@
 		{
 			"sid": "dashlet.help",
 			"guid": "jELqCyiqm8dxzBgOPcgJUmQozbaajsr2JF0Sld2lA50",
+			"notes": {
+				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			},
 			"nsrc": [
 				{
 					"t": "bx",
@@ -3311,10 +3314,7 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/site-activities.get_en.properties",
-			"notes": {
-				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
-			}
+			"rid": "dashlets/site-activities.get_en.properties"
 		},
 		{
 			"sid": "header.datalists",
@@ -3531,6 +3531,9 @@
 		{
 			"sid": "dashlet.help",
 			"guid": "uxRPvaEIZZh5Hj1s8oWFsdzucSUdwfQ1M2mzyBMjr7A",
+			"notes": {
+				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			},
 			"nsrc": [
 				{
 					"t": "bx",
@@ -3551,10 +3554,7 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/site-search.get_en.properties",
-			"notes": {
-				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
-			}
+			"rid": "dashlets/site-search.get_en.properties"
 		},
 		{
 			"sid": "label.header",
@@ -3659,6 +3659,9 @@
 		{
 			"sid": "dashlet.help",
 			"guid": "2qtigSYsaPbxFxLIPrzVUQ4OvX_Er6wq1nvCsmIXh4I",
+			"notes": {
+				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			},
 			"nsrc": [
 				{
 					"t": "bx",
@@ -3679,10 +3682,7 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/webview.get_en.properties",
-			"notes": {
-				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
-			}
+			"rid": "dashlets/webview.get_en.properties"
 		},
 		{
 			"sid": "label.header",
@@ -3719,6 +3719,9 @@
 		{
 			"sid": "dashlet.help",
 			"guid": "vhg8jKxMyyqUEyhnwsgqh8K2eG9SPJY2FXylniirXmA",
+			"notes": {
+				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+			},
 			"nsrc": [
 				{
 					"t": "bx",
@@ -3739,10 +3742,7 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "dashlets/wiki.get_en.properties",
-			"notes": {
-				"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
-			}
+			"rid": "dashlets/wiki.get_en.properties"
 		},
 		{
 			"sid": "dashlet.help",

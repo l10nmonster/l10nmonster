@@ -5,5 +5,5 @@ const { runL10nMonster } = require('@l10nmonster/cli');
     await l10n.pull();
     await l10n.translate();
     await l10n.status({ output: 'status.json' });
-    await l10n.tmexport({ mode: 'tm', format: 'job' });
+    await l10n.tmexport();
 }))();

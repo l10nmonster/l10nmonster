@@ -81,6 +81,9 @@
 		{
 			"sid": "homeTitle",
 			"guid": "Yhu_PT_gxnNEP6i5cnfpdYCQ577w0kcHlKdPIp1rHWM",
+			"notes": {
+				"desc": "header - This is the welcome message on the home page"
+			},
 			"seq": 1023,
 			"nsrc": [
 				{
@@ -99,14 +102,14 @@
 				},
 				"."
 			],
-			"rid": "public/locales/en/app.json",
-			"notes": {
-				"desc": "header - This is the welcome message on the home page"
-			}
+			"rid": "public/locales/en/app.json"
 		},
 		{
 			"sid": "flightHome.title",
 			"guid": "8QAVB3VDxOUUy1YKjJmy1pgdVR0m497ZhCOVS16GBQM",
+			"notes": {
+				"desc": "header - welcome message of flight flow"
+			},
 			"seq": 1022,
 			"nsrc": [
 				{
@@ -120,22 +123,19 @@
 				},
 				" to travel."
 			],
-			"rid": "public/locales/en/app.json",
-			"notes": {
-				"desc": "header - welcome message of flight flow"
-			}
+			"rid": "public/locales/en/app.json"
 		},
 		{
 			"sid": "flightHome.subtitle",
 			"guid": "AGkOSI-2cbdKB0hwucpDtAhetdvAytGYurYD7hvcezM",
+			"notes": {
+				"desc": "subtitle - flight landing page subheading"
+			},
 			"seq": 1021,
 			"nsrc": [
 				"Book the trip you've been waiting for."
 			],
-			"rid": "public/locales/en/app.json",
-			"notes": {
-				"desc": "subtitle - flight landing page subheading"
-			}
+			"rid": "public/locales/en/app.json"
 		},
 		{
 			"sid": "pickerTraveler_one",
@@ -160,6 +160,9 @@
 		{
 			"sid": "warningMessage",
 			"guid": "KuM3WlVRMaBLFo6E0fg4vATKm955gBDBbAGTLdLITAk",
+			"notes": {
+				"desc": "copy - passenger count picker warning message"
+			},
 			"seq": 1018,
 			"nsrc": [
 				"You can search for up to ",
@@ -169,14 +172,14 @@
 				},
 				" travelers"
 			],
-			"rid": "public/locales/en/app.json",
-			"notes": {
-				"desc": "copy - passenger count picker warning message"
-			}
+			"rid": "public/locales/en/app.json"
 		},
 		{
 			"sid": "termsAndConditions",
 			"guid": "qJxPXXst0F8DLkzVVG63hebwXP80N7CFgJfuXtr8mM8",
+			"notes": {
+				"desc": "copy - price  terms and conditions copy"
+			},
 			"seq": 1024,
 			"nsrc": [
 				{
@@ -198,15 +201,15 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "public/locales/en/app.json",
-			"notes": {
-				"desc": "copy - price  terms and conditions copy"
-			}
+			"rid": "public/locales/en/app.json"
 		},
 		{
 			"sid": "timeCount.day_one",
 			"isSuffixPluralized": true,
 			"guid": "bws_LnxH_75t_Jdprc_zeTdGgUOWjzRFnDe6YfvjOYg",
+			"notes": {
+				"desc": "copy - time copy for day singular"
+			},
 			"seq": 1017,
 			"nsrc": [
 				{
@@ -215,15 +218,15 @@
 				},
 				" day"
 			],
-			"rid": "public/locales/en/app.json",
-			"notes": {
-				"desc": "copy - time copy for day singular"
-			}
+			"rid": "public/locales/en/app.json"
 		},
 		{
 			"sid": "timeCount.day_other",
 			"isSuffixPluralized": true,
 			"guid": "Jqw-OIo4U6fG5lyDl3mUsrBOVyxTbyNSBtYPAz3soPQ",
+			"notes": {
+				"desc": "copy - time copy for days plural"
+			},
 			"seq": 1016,
 			"nsrc": [
 				{
@@ -232,15 +235,15 @@
 				},
 				" days"
 			],
-			"rid": "public/locales/en/app.json",
-			"notes": {
-				"desc": "copy - time copy for days plural"
-			}
+			"rid": "public/locales/en/app.json"
 		},
 		{
 			"sid": "timeCount.hour_one",
 			"isSuffixPluralized": true,
 			"guid": "u-b8MhBsF9k7Q4SquD9h_vGYUIfEhi_gRzuA9i36PfY",
+			"notes": {
+				"desc": "copy - time copy for hour singular"
+			},
 			"seq": 1015,
 			"nsrc": [
 				{
@@ -249,15 +252,15 @@
 				},
 				" hour"
 			],
-			"rid": "public/locales/en/app.json",
-			"notes": {
-				"desc": "copy - time copy for hour singular"
-			}
+			"rid": "public/locales/en/app.json"
 		},
 		{
 			"sid": "timeCount.hour_other",
 			"isSuffixPluralized": true,
 			"guid": "haJeL1bazwQ1yTntetVJeSFWmn5a9hPwuTBVoh9ISjo",
+			"notes": {
+				"desc": "copy - time copy for hours plural"
+			},
 			"seq": 1014,
 			"nsrc": [
 				{
@@ -266,15 +269,15 @@
 				},
 				" hours"
 			],
-			"rid": "public/locales/en/app.json",
-			"notes": {
-				"desc": "copy - time copy for hours plural"
-			}
+			"rid": "public/locales/en/app.json"
 		},
 		{
 			"sid": "timeCount.second_one",
 			"isSuffixPluralized": true,
 			"guid": "YjPgqgOdTMkHKTRSeQTqRnPKYg-aPkWmF4PtExUoI6Q",
+			"notes": {
+				"desc": "copy - time copy for second singular"
+			},
 			"seq": 1013,
 			"nsrc": [
 				{
@@ -283,15 +286,15 @@
 				},
 				" second"
 			],
-			"rid": "public/locales/en/app.json",
-			"notes": {
-				"desc": "copy - time copy for second singular"
-			}
+			"rid": "public/locales/en/app.json"
 		},
 		{
 			"sid": "timeCount.second_other",
 			"isSuffixPluralized": true,
 			"guid": "x1xQynOoxM1xfd0g5iSmzZfrIWxwjHfV3x-1xaoiFJk",
+			"notes": {
+				"desc": "copy - time copy for seconds plural"
+			},
 			"seq": 1012,
 			"nsrc": [
 				{
@@ -300,10 +303,7 @@
 				},
 				" seconds"
 			],
-			"rid": "public/locales/en/app.json",
-			"notes": {
-				"desc": "copy - time copy for seconds plural"
-			}
+			"rid": "public/locales/en/app.json"
 		}
 	]
 }

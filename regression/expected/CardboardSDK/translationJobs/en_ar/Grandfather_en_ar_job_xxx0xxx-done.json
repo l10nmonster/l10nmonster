@@ -7,9 +7,6 @@
 	"tus": [
 		{
 			"guid": "Sch-OXL3KPaFNWvKiWNmafNmqHZo8oNtcaB-9jYE1sk",
-			"nsrc": [
-				"Back"
-			],
 			"ntgt": [
 				"رجوع"
 			],
@@ -18,9 +15,6 @@
 		},
 		{
 			"guid": "S5zXEp9KGe9nqhqgtH8vMM106HfoiBTZzDQ8qyPdB5A",
-			"nsrc": [
-				"QR Scan"
-			],
 			"ntgt": [
 				"فحص الاستجابة السريعة."
 			],
@@ -29,9 +23,6 @@
 		},
 		{
 			"guid": "PV7WBP4aNfZzq1Hre1_bkECpoSmhPedg7xfh7UKYkyw",
-			"nsrc": [
-				"Parsing configuration data"
-			],
 			"ntgt": [
 				"تحليل بيانات التهيئة"
 			],
@@ -40,9 +31,6 @@
 		},
 		{
 			"guid": "jkJekuVBcsiufoG2zmxszlbnMGkREPRBAeb2QTDfUaI",
-			"nsrc": [
-				"The QR code is invalid"
-			],
 			"ntgt": [
 				"إن رمز الاستجابة السريعة غير صالح"
 			],
@@ -51,9 +39,6 @@
 		},
 		{
 			"guid": "2n8bq0sVYs9Xil3nEw7OEVuhOSGvpaoInQAZ89RnD7c",
-			"nsrc": [
-				"Problem in parsing the Url"
-			],
 			"ntgt": [
 				"‏مشكلة في تحليل عنوان Url"
 			],
@@ -62,13 +47,6 @@
 		},
 		{
 			"guid": "XY8o8xA5C_HlR4v8LDc4L98Y0mR-4gHyLjDxwvNhDrM",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "%1$@"
-				},
-				" detected"
-			],
 			"ntgt": [
 				"تم اكتشاف ",
 				{
@@ -81,9 +59,6 @@
 		},
 		{
 			"guid": "MmBuoyCIE3eiz_wlkLAZMeoIhXX52LOiAHNCnl3o4Fc",
-			"nsrc": [
-				"Find this symbol on your viewer"
-			],
 			"ntgt": [
 				"العثور على هذا الرمز على عارضك"
 			],
@@ -92,9 +67,6 @@
 		},
 		{
 			"guid": "QaV08RUEuxPOCugEXCnQ7tnShKARCrrKeZxYO7kxLSc",
-			"nsrc": [
-				"Can't find this symbol?"
-			],
 			"ntgt": [
 				"ألا تستطيع العثور على هذا الرمز؟"
 			],
@@ -103,9 +75,6 @@
 		},
 		{
 			"guid": "c6aK6IBRyaNfMidf7na8JYOmhVI2r4vsn3O6B-pr-xc",
-			"nsrc": [
-				"Troubleshooting Tips"
-			],
 			"ntgt": [
 				"نصائح تحرّى الخلل وإصلاحه"
 			],
@@ -114,9 +83,6 @@
 		},
 		{
 			"guid": "ZYAxQNY0zLKx4RB3CGTDXujQrbLQclR9EH5EQ7Fzbok",
-			"nsrc": [
-				"SKIP"
-			],
 			"ntgt": [
 				"تخطٍ"
 			],
@@ -125,9 +91,6 @@
 		},
 		{
 			"guid": "Kj45w0Rgr1SHV55MeVawhgff4UYIfb-XuWWnyf9_dks",
-			"nsrc": [
-				"Let's get you set up"
-			],
 			"ntgt": [
 				"لنبدأ الإعداد"
 			],
@@ -136,9 +99,6 @@
 		},
 		{
 			"guid": "8_cqAMCRj_4YGH6-e5xWNNAupQF-OHn20AQoeGp75h4",
-			"nsrc": [
-				"Pair your phone with your viewer for the best experience."
-			],
 			"ntgt": [
 				"أقرن هاتفك مع العارض للتمتّع بأفضل تجربة"
 			],
@@ -147,9 +107,6 @@
 		},
 		{
 			"guid": "yiK0MVBkcMRpl-7tMMPVMmlUvDJvqVxRbLLDHOchAko",
-			"nsrc": [
-				"No cardboard viewer?"
-			],
 			"ntgt": [
 				"‏أليس لديك عارض Cardboard؟"
 			],
@@ -158,9 +115,6 @@
 		},
 		{
 			"guid": "L3Um-sKnXUAP1liD4dLFvMGh7c2p80P5DRx1ZFPYpqM",
-			"nsrc": [
-				"Get One"
-			],
 			"ntgt": [
 				"الحصول على واحد"
 			],
@@ -169,9 +123,6 @@
 		},
 		{
 			"guid": "6nFW5iZToYQ3LtLDeb9Adlfu-EQWDAuFyMsAlRw4cf4",
-			"nsrc": [
-				"Place your phone into your Cardboard viewer."
-			],
 			"ntgt": [
 				"‏ضع هاتفك في عارض Cardboard."
 			],
@@ -180,14 +131,6 @@
 		},
 		{
 			"guid": "4jxuTPXhhsLGShj5wDGlsktW8NV1GAYrGDxHaZV_6C4",
-			"nsrc": [
-				"Place your phone into your ",
-				{
-					"t": "x",
-					"v": "%1$@"
-				},
-				" viewer."
-			],
 			"ntgt": [
 				"ضع هاتفك في عارض ",
 				{
@@ -201,9 +144,6 @@
 		},
 		{
 			"guid": "6hNFreOOSaLtvtpZeirvd7YWah19RxogxrXPw89jle8",
-			"nsrc": [
-				"Settings"
-			],
 			"ntgt": [
 				"الإعدادات"
 			],
@@ -212,9 +152,6 @@
 		},
 		{
 			"guid": "JdemGm2zCUjeubRLZsgXcHubo03AMla3GDG3EQOcRaA",
-			"nsrc": [
-				"Sync with Google Cardboard"
-			],
 			"ntgt": [
 				"‏مزامنة مع Google Cardboard"
 			],
@@ -223,13 +160,6 @@
 		},
 		{
 			"guid": "slgigM0NfUFIqYMNDpipEAV2LaSg4PIejxEgH37p4Pw",
-			"nsrc": [
-				"Current viewer: ",
-				{
-					"t": "x",
-					"v": "%1$@"
-				}
-			],
 			"ntgt": [
 				"العارض الحالي: ",
 				{
@@ -242,9 +172,6 @@
 		},
 		{
 			"guid": "wqrXrCWCECaeOiuDSJiLjeSfPaVlrgpeDFJp8NK39WU",
-			"nsrc": [
-				"Default"
-			],
 			"ntgt": [
 				"افتراضي"
 			],
@@ -253,9 +180,6 @@
 		},
 		{
 			"guid": "kNNZEkHiye4nzgXH33tGPIpo_dN9p9dtDvtyQLknghg",
-			"nsrc": [
-				"Using a different viewer?"
-			],
 			"ntgt": [
 				"هل تستخدم عارضًا مختلفًا؟"
 			],
@@ -264,9 +188,6 @@
 		},
 		{
 			"guid": "qTP4qKQCnREcyJAH2Kaph3DNOicsXMZGYTlqeVzrb2c",
-			"nsrc": [
-				"SWITCH"
-			],
 			"ntgt": [
 				"تبديل"
 			],
@@ -275,13 +196,6 @@
 		},
 		{
 			"guid": "Ko1R6hKlnw0dJtnGrwHdjhq0igmaxHWUuci1ZrEiYvg",
-			"nsrc": [
-				"Switch viewer: ",
-				{
-					"t": "x",
-					"v": "%1$@"
-				}
-			],
 			"ntgt": [
 				"تبديل العارض: ",
 				{
@@ -294,9 +208,6 @@
 		},
 		{
 			"guid": "_AhOCAPiMyasIto9QG_S4I0SlAYd_aMe7FWWEAduL38",
-			"nsrc": [
-				"Help"
-			],
 			"ntgt": [
 				"مساعدة"
 			],
@@ -305,9 +216,6 @@
 		},
 		{
 			"guid": "CBwqRfe5Ye7rqvX0p6oInX-rrmYU3pvl1Sb7GOjEY2k",
-			"nsrc": [
-				"Successfully Paired!"
-			],
 			"ntgt": [
 				"تم الإقران بنجاح!"
 			],
@@ -316,14 +224,6 @@
 		},
 		{
 			"guid": "xX2wjf_JnaqCdoe4AvzrpR0w__P7h12WCoMygm6ru8U",
-			"nsrc": [
-				"Your phone is now configured for your ",
-				{
-					"t": "x",
-					"v": "%1$@"
-				},
-				" viewer."
-			],
 			"ntgt": [
 				"تمت تهيئة هاتفك لعارض ",
 				{
@@ -337,9 +237,6 @@
 		},
 		{
 			"guid": "QBJSpbVgw6NtOonlImeo7N4Ys6aMk-tIHP-Jha6jjwk",
-			"nsrc": [
-				"OK"
-			],
 			"ntgt": [
 				"موافق"
 			],
@@ -348,9 +245,6 @@
 		},
 		{
 			"guid": "ngT5pq_BhXgX71IJFDYZQRJX80bl9J1XPD2oBb-VEAE",
-			"nsrc": [
-				"Settings"
-			],
 			"ntgt": [
 				"الإعدادات"
 			],
@@ -359,9 +253,6 @@
 		},
 		{
 			"guid": "Ln6QELVxYXr2EgOv6P2-EYewhB5H6jLOJ1W5jilT_nc",
-			"nsrc": [
-				"Back to previous screen"
-			],
 			"ntgt": [
 				"رجوع إلى الشاشة السابقة"
 			],

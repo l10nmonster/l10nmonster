@@ -6,13 +6,7 @@
 	"status": "done",
 	"tus": [
 		{
-			"sid": "BackButtonLabel",
 			"guid": "Sch-OXL3KPaFNWvKiWNmafNmqHZo8oNtcaB-9jYE1sk",
-			"seq": 1023,
-			"nsrc": [
-				"Back"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"رجوع"
 			],
@@ -22,13 +16,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "NavTitleLabel",
 			"guid": "S5zXEp9KGe9nqhqgtH8vMM106HfoiBTZzDQ8qyPdB5A",
-			"seq": 1022,
-			"nsrc": [
-				"QR Scan"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"فحص الاستجابة السريعة."
 			],
@@ -38,13 +26,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "LoadingMessage",
 			"guid": "PV7WBP4aNfZzq1Hre1_bkECpoSmhPedg7xfh7UKYkyw",
-			"seq": 1024,
-			"nsrc": [
-				"Parsing configuration data"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"تحليل بيانات التهيئة"
 			],
@@ -54,13 +36,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "InvalidQRCode",
 			"guid": "jkJekuVBcsiufoG2zmxszlbnMGkREPRBAeb2QTDfUaI",
-			"seq": 1025,
-			"nsrc": [
-				"The QR code is invalid"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"إن رمز الاستجابة السريعة غير صالح"
 			],
@@ -70,13 +46,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "ParsingFailed",
 			"guid": "2n8bq0sVYs9Xil3nEw7OEVuhOSGvpaoInQAZ89RnD7c",
-			"seq": 1026,
-			"nsrc": [
-				"Problem in parsing the Url"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"‏مشكلة في تحليل عنوان Url"
 			],
@@ -86,17 +56,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "DataSynced",
 			"guid": "XY8o8xA5C_HlR4v8LDc4L98Y0mR-4gHyLjDxwvNhDrM",
-			"seq": 1027,
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "%1$@"
-				},
-				" detected"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"تم اكتشاف ",
 				{
@@ -111,13 +71,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "FindSymbolOnViewer",
 			"guid": "MmBuoyCIE3eiz_wlkLAZMeoIhXX52LOiAHNCnl3o4Fc",
-			"seq": 1028,
-			"nsrc": [
-				"Find this symbol on your viewer"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"العثور على هذا الرمز على عارضك"
 			],
@@ -127,13 +81,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "CanNotFindSymbol",
 			"guid": "QaV08RUEuxPOCugEXCnQ7tnShKARCrrKeZxYO7kxLSc",
-			"seq": 1029,
-			"nsrc": [
-				"Can't find this symbol?"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"ألا تستطيع العثور على هذا الرمز؟"
 			],
@@ -143,13 +91,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "TroubleShootingTips",
 			"guid": "c6aK6IBRyaNfMidf7na8JYOmhVI2r4vsn3O6B-pr-xc",
-			"seq": 1030,
-			"nsrc": [
-				"Troubleshooting Tips"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"نصائح تحرّى الخلل وإصلاحه"
 			],
@@ -159,13 +101,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "SkipButtonLabel",
 			"guid": "ZYAxQNY0zLKx4RB3CGTDXujQrbLQclR9EH5EQ7Fzbok",
-			"seq": 1021,
-			"nsrc": [
-				"SKIP"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"تخطٍ"
 			],
@@ -175,13 +111,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "OnboardingIntroLine1",
 			"guid": "Kj45w0Rgr1SHV55MeVawhgff4UYIfb-XuWWnyf9_dks",
-			"seq": 1031,
-			"nsrc": [
-				"Let's get you set up"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"لنبدأ الإعداد"
 			],
@@ -191,13 +121,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "OnboardingIntroLine2",
 			"guid": "8_cqAMCRj_4YGH6-e5xWNNAupQF-OHn20AQoeGp75h4",
-			"seq": 1032,
-			"nsrc": [
-				"Pair your phone with your viewer for the best experience."
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"أقرن هاتفك مع العارض للتمتّع بأفضل تجربة"
 			],
@@ -207,13 +131,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "OnboardingNoViewerPrompt",
 			"guid": "yiK0MVBkcMRpl-7tMMPVMmlUvDJvqVxRbLLDHOchAko",
-			"seq": 1033,
-			"nsrc": [
-				"No cardboard viewer?"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"‏أليس لديك عارض Cardboard؟"
 			],
@@ -223,13 +141,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "OnboardingGetCardboardButton",
 			"guid": "L3Um-sKnXUAP1liD4dLFvMGh7c2p80P5DRx1ZFPYpqM",
-			"seq": 1020,
-			"nsrc": [
-				"Get One"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"الحصول على واحد"
 			],
@@ -239,13 +151,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "PlaceYourPhoneInCardboard",
 			"guid": "6nFW5iZToYQ3LtLDeb9Adlfu-EQWDAuFyMsAlRw4cf4",
-			"seq": 1034,
-			"nsrc": [
-				"Place your phone into your Cardboard viewer."
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"‏ضع هاتفك في عارض Cardboard."
 			],
@@ -255,18 +161,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "PlaceYourPhoneInViewerFormat",
 			"guid": "4jxuTPXhhsLGShj5wDGlsktW8NV1GAYrGDxHaZV_6C4",
-			"seq": 1035,
-			"nsrc": [
-				"Place your phone into your ",
-				{
-					"t": "x",
-					"v": "%1$@"
-				},
-				" viewer."
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"ضع هاتفك في عارض ",
 				{
@@ -282,13 +177,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "SettingsNavTitleLabel",
 			"guid": "6hNFreOOSaLtvtpZeirvd7YWah19RxogxrXPw89jle8",
-			"seq": 1036,
-			"nsrc": [
-				"Settings"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"الإعدادات"
 			],
@@ -298,13 +187,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "SettingsSyncLabel",
 			"guid": "JdemGm2zCUjeubRLZsgXcHubo03AMla3GDG3EQOcRaA",
-			"seq": 1037,
-			"nsrc": [
-				"Sync with Google Cardboard"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"‏مزامنة مع Google Cardboard"
 			],
@@ -314,17 +197,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "SettingsCurrentViewerLabelFormat",
 			"guid": "slgigM0NfUFIqYMNDpipEAV2LaSg4PIejxEgH37p4Pw",
-			"seq": 1038,
-			"nsrc": [
-				"Current viewer: ",
-				{
-					"t": "x",
-					"v": "%1$@"
-				}
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"العارض الحالي: ",
 				{
@@ -339,13 +212,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "DefaultViewerName",
 			"guid": "wqrXrCWCECaeOiuDSJiLjeSfPaVlrgpeDFJp8NK39WU",
-			"seq": 1019,
-			"nsrc": [
-				"Default"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"افتراضي"
 			],
@@ -355,13 +222,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "DifferentViewerQuestion",
 			"guid": "kNNZEkHiye4nzgXH33tGPIpo_dN9p9dtDvtyQLknghg",
-			"seq": 1039,
-			"nsrc": [
-				"Using a different viewer?"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"هل تستخدم عارضًا مختلفًا؟"
 			],
@@ -371,13 +232,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "SwitchViewer",
 			"guid": "qTP4qKQCnREcyJAH2Kaph3DNOicsXMZGYTlqeVzrb2c",
-			"seq": 1018,
-			"nsrc": [
-				"SWITCH"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"تبديل"
 			],
@@ -387,17 +242,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "SwitchViewerActivityMenuTitle",
 			"guid": "Ko1R6hKlnw0dJtnGrwHdjhq0igmaxHWUuci1ZrEiYvg",
-			"seq": 1040,
-			"nsrc": [
-				"Switch viewer: ",
-				{
-					"t": "x",
-					"v": "%1$@"
-				}
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"تبديل العارض: ",
 				{
@@ -412,13 +257,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "HelpActivityMenuTitle",
 			"guid": "_AhOCAPiMyasIto9QG_S4I0SlAYd_aMe7FWWEAduL38",
-			"seq": 1017,
-			"nsrc": [
-				"Help"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"مساعدة"
 			],
@@ -428,13 +267,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "SuccessfullyPaired",
 			"guid": "CBwqRfe5Ye7rqvX0p6oInX-rrmYU3pvl1Sb7GOjEY2k",
-			"seq": 1041,
-			"nsrc": [
-				"Successfully Paired!"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"تم الإقران بنجاح!"
 			],
@@ -444,18 +277,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "ViewerConfigured",
 			"guid": "xX2wjf_JnaqCdoe4AvzrpR0w__P7h12WCoMygm6ru8U",
-			"seq": 1042,
-			"nsrc": [
-				"Your phone is now configured for your ",
-				{
-					"t": "x",
-					"v": "%1$@"
-				},
-				" viewer."
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"تمت تهيئة هاتفك لعارض ",
 				{
@@ -471,13 +293,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "OK",
 			"guid": "QBJSpbVgw6NtOonlImeo7N4Ys6aMk-tIHP-Jha6jjwk",
-			"seq": 1016,
-			"nsrc": [
-				"OK"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"موافق"
 			],
@@ -487,13 +303,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "AccessibilitySettingsButton",
 			"guid": "ngT5pq_BhXgX71IJFDYZQRJX80bl9J1XPD2oBb-VEAE",
-			"seq": 1043,
-			"nsrc": [
-				"Settings"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"الإعدادات"
 			],
@@ -503,13 +313,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "AccessibilityBackButton",
 			"guid": "Ln6QELVxYXr2EgOv6P2-EYewhB5H6jLOJ1W5jilT_nc",
-			"seq": 1044,
-			"nsrc": [
-				"Back to previous screen"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ntgt": [
 				"رجوع إلى الشاشة السابقة"
 			],
@@ -519,13 +323,7 @@
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "AccessibilityHelpButton",
 			"guid": "d13hqt62wEq5drSC-g7auJUOAlQL-N3VrEyi1mCjMH0",
-			"seq": 1015,
-			"nsrc": [
-				"Help"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"q": 61,
 			"ntgt": [
 				"مساعدة"
@@ -535,17 +333,7 @@
 			"translationProvider": "Repetition"
 		},
 		{
-			"sid": "AccessibilityCardboardButton",
 			"guid": "p72nj2yZPB-RfJOZa2iZg2pt16HznCGr_kdYQziGHxs",
-			"seq": 1045,
-			"nsrc": [
-				"Cardboard mode: ",
-				{
-					"t": "x",
-					"v": "%1$@"
-				}
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1,
 			"ntgt": [
 				"⇥XAB:",
@@ -562,13 +350,7 @@
 			"translationProvider": "Visicode"
 		},
 		{
-			"sid": "AccessibilityFullscreenButton",
 			"guid": "snWaUNjXnKuXlItO8jUPfKITKfuqshl6xCXxUgiP4jI",
-			"seq": 1046,
-			"nsrc": [
-				"Fullscreen mode"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1,
 			"ntgt": [
 				"⇥YAB:",
@@ -580,13 +362,7 @@
 			"translationProvider": "Visicode"
 		},
 		{
-			"sid": "HelpHack",
 			"guid": "kjYD6n4DIB9kQKYRd0QStGsZfU2yOhcUG091zj53Skw",
-			"seq": 1047,
-			"nsrc": [
-				"Help 'encoding' is \"hard\"!\\\n"
-			],
-			"rid": "en.lproj/CardboardSDK.strings",
 			"ts": 1,
 			"ntgt": [
 				"⇥ZAB:",

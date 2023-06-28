@@ -26,7 +26,6 @@
         "node": ">=18"
     },
     "dependencies": {
-        "@l10nmonster/tmexchange": "^3",
         "words-count": "^2.0.2"
     },
     "devDependencies": {

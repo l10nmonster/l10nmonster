@@ -6,12 +6,7 @@
 	"status": "done",
 	"tus": [
 		{
-			"sid": "EFIlSDNZ1_Lp3YLOZIoLxRgv0ZdYssL5VDhn9c8QTgs",
 			"guid": "7Zu7CxuYzs5ZR0W1CgMZ3Y60_TzEYEhb42mXanyeHXI",
-			"nsrc": [
-				"HTML Patterns"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -23,12 +18,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "ByOdvSoaHdeTvpBiogXra-iMNq8_5-TWQmrqRaolOBU",
 			"guid": "LjDrR5b5nHk64-qjOasBlp2I8RDRPnU7O2JQcZ_hoxY",
-			"nsrc": [
-				"HTML"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -40,12 +30,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "lGbCKT1vDLvoXjaL7KJVLSP20NkZQUSRUSeEp8NeoTc",
 			"guid": "LZ7oZfH9c9Th-bJLS_z3nFjp6JO4ZZZ-aOI0bcQAq5w",
-			"nsrc": [
-				"Site title"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -57,20 +42,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "u_GhZwkVDfEyuYbO_j8ipApCxlDtWQ67hmEhb7AOjwI",
 			"guid": "kSISVxd-A8cFnlN_ShhjPojxAm1zr7DWhuHP9Y-tWBA",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<a href=\"#\" title=\"Home\">"
-				},
-				"Home",
-				{
-					"t": "ex",
-					"v": "</a>"
-				}
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -92,20 +64,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "0KQ2IjpDx2RJPNEGPdpNDYD1rGw1yeL_Pq_tzVMeq08",
 			"guid": "Yap997wEEsIyvcjBXwkfDwV6OMNlFrDZQRma-EKlJis",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<a href=\"#\" title=\"About\">"
-				},
-				"About",
-				{
-					"t": "ex",
-					"v": "</a>"
-				}
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -127,20 +86,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "2p6QSlmbQoCpIeEOwEordHMWuHOyLOVKTdIIW4B0jYM",
 			"guid": "53EOx6hhx30ZfMcHlUlZqoagnkTSjJAMEfMXXnq0U7Q",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<a href=\"#\" title=\"Sign Up\">"
-				},
-				"Sign Up",
-				{
-					"t": "ex",
-					"v": "</a>"
-				}
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -162,20 +108,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "ps38699kHhuqke6lyBZ7Cy0uWxo_ZS2sxtNxoVYStRs",
 			"guid": "ACSOaEr33qAxlLjVOSqJXiTOvytg_yKJsU9RvLpA81w",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<a href=\"#\" title=\"Contact\">"
-				},
-				"Contact",
-				{
-					"t": "ex",
-					"v": "</a>"
-				}
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -197,20 +130,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "98Uc5lfKFoXpQSFEBlCrOPYuqoKfyMB5bBv3rZZaqKk",
 			"guid": "coxExN8zoB7YZooahTk8eeV3tmNziNZEMAd81rCYu8o",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<a href=\"#\" title=\"Careers\">"
-				},
-				"Careers",
-				{
-					"t": "ex",
-					"v": "</a>"
-				}
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -232,12 +152,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "ftM6b5uN6W5tVCH0RdBpCyxPjWPlLXYeObo--0--q0o",
 			"guid": "SOxT5faplVXI4GGokCOPqgIQ1ZUnf5ypouTCjSr14aM",
-			"nsrc": [
-				"Headings & Copy"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -249,12 +164,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "AIqhPt2LkP4YygqSBbpR9mAFxPubPw1l25gCwlih55E",
 			"guid": "SEQc8QE_rTYPGRu3nHP4sJCfYoYCvNX_KkI6_YOu3oo",
-			"nsrc": [
-				"First Header h1"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -266,12 +176,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "KbIMJTcJYKe0ijDMEw4_8hJ3WXD7npj6kiGqOWwrgvc",
 			"guid": "11yPtt1t4_DADcX9X7sPiyxemTUY-oMJPmGI18oaH6U",
-			"nsrc": [
-				"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis\n        praesentium voluptatum deleniti atque corrupti quos."
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -283,12 +188,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "coBtvdn_OQLwjwPR2yUat5e1gSACw4vz2W3WqM9-UeY",
 			"guid": "3wdLhbAMOn_6qB0SZZ6TjaIoqDHkGVCV3X5OPwdt_yo",
-			"nsrc": [
-				"Second header h2"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -300,12 +200,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "VY0O8Gbz3R5nXRzD-CWZH0o_TPa6TceXvXt8_1dCJ5E",
 			"guid": "Xqgi42f66G5S52MOye5A3MTaUoyNKJ3h_jgLQuyKwKA",
-			"nsrc": [
-				"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\n        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\n        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\n        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\n        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat\n        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -317,12 +212,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "xxjof4NsIsVHUQrE5qL_HaMXPowLeb-A6_wKJ4uvjhk",
 			"guid": "fpWY0mqxFUwyUXEGZSiJCpi2LK1_5bDgk1icXB2C_wY",
-			"nsrc": [
-				"Third header h3"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -334,12 +224,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "8xYIMn1SdAwXBcDDwOTSWhDBz2sOy02zQNYlRjW88Gk",
 			"guid": "6q2bDflGzN6uGFeDBVrUrKvaS9m2kspmKFqQXphCBwk",
-			"nsrc": [
-				"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis\n        praesentium voluptatum deleniti atque corrupti quos dolores et quas\n        molestias excepturi sint occaecati cupiditate non provident, similique sunt\n        in culpa qui officia deserunt mollitia animi, id est laborum et dolorum\n        fuga. Et harum quidem rerum facilis est et expedita distinctio."
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -351,12 +236,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "aEPG94RKEan4LD0oB4jKA5OFrsT_zIlAftKhRa-7owM",
 			"guid": "pX8gAVMEgJAZ_8wY7l3lzd-62aZLBxUbv_LqyjpskcE",
-			"nsrc": [
-				"Fourth header h4"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -368,12 +248,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "bVJF7GTUeO9F8Fv_ZdFmp8B2AiPgNRnpsKfchXkXgJ4",
 			"guid": "jtXnstFgLfEwP9X5yf3CJeRyasWfzu-JOYGC0uPHKCQ",
-			"nsrc": [
-				"Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,\n        consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt\n        ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima\n        veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi\n        ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit\n        qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum\n        qui dolorem eum fugiat quo voluptas nulla pariatur?\""
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -385,12 +260,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "d77Y1aowtGvxvVhhu0BIjzl7AFLbCkbW9K6c4ViSQmY",
 			"guid": "MQZrFKeco9Yk1m0URYB4veN1R6QGlokZgTmSpsEFMrA",
-			"nsrc": [
-				"Fifth header h5"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -402,12 +272,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "WBPuTzXvFEZk1ajOsxCidWOYX9if7FhwOqxC4cctYPA",
 			"guid": "428B6CFch7RxyhDzVVNF6RrmQkPy-mm7BzHQPkEDD4A",
-			"nsrc": [
-				"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium\n        doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore\n        veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim\n        ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia\n        consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -419,12 +284,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "v2wHUONNvea9VANIleHDWgqfgDC8G2VZm7gY9eG2cdQ",
 			"guid": "jFWYyTeNykq3mNWSARoBtSjXag7PO4EH5M62CfGE_bo",
-			"nsrc": [
-				"Sixth header h6"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -436,40 +296,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "tDYja9vzHh88EwnaKiBzlgiNy6LvogMTWMNXvIwRjZ4",
 			"guid": "c5CFcSj2SA3Zg8V0IKc-Smp1zg4pWo-ndDa10XFDilc",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<h1 class=\"other-class\">"
-				},
-				"Links",
-				{
-					"t": "ex",
-					"v": "</h1>"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<a href=\"#\">"
-				},
-				"Sample text link",
-				{
-					"t": "ex",
-					"v": "</a>"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<a href=\"#\">"
-				},
-				"Sample button link",
-				{
-					"t": "ex",
-					"v": "</a>"
-				}
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -515,12 +342,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "MI1aCQPyxXFOx3dICPyaZ7ksYCoBppsghLBb2y9q5pk",
 			"guid": "hLuOGX6OWOfGm6cL2KGzXiw0kAh3K3Y0GeW3BH0GuRc",
-			"nsrc": [
-				"Lists"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -532,12 +354,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "6-qUZ4PiP9Q3gor7lVFj9aKeCZiv-K7qc7B54x3MAvw",
 			"guid": "8VxambcNHJ8CWDumld2cKm4OLn-6ts7N1lBfT8ZDL2k",
-			"nsrc": [
-				"Unordered list"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -549,12 +366,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "eOd3G4tG4R3bNLpIiH4TMFJSFfltlHeJgNEYbm8J9rQ",
 			"guid": "JZ4vq8z-jT8n-LZuTqi7gsvASaejO9fBcTkR7bY2ozk",
-			"nsrc": [
-				"Orange"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -566,12 +378,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "8iP6qW8ikWKUkisXGiaW2Gj9H5EpMC60GkWyououu_0",
 			"guid": "AJBY9KKwCAkR8r_LtTEoVRJ39q4VzFHA-zatPHcJz4U",
-			"nsrc": [
-				"Apple"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -583,12 +390,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "8LYJp3YN-2pa6MYUAn6x8qcPsm_CLr450EmTMnOvhBY",
 			"guid": "VUhkykhQWwBRlKIrRfXD9eLJgnj79hp51lmZomqaLWU",
-			"nsrc": [
-				"Rhubarb"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -600,12 +402,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "7cb89KEqJTdB7z2FPDne_pbCG_Ac4FJ3nfVpgD6mZnw",
 			"guid": "6iq-hrBdZCbp6SOew9HL9PmB2Vzg_lfzgyCkzOuzsug",
-			"nsrc": [
-				"Rasberry"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -617,12 +414,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "0gJEFJV2DselKldh_Ku9BGqaufz6Ix0wT7QtliUk6wk",
 			"guid": "GFdgI2xn0rKvCZ3vrk2ZdC6FestuwwxWTNuZ2m7Uqbg",
-			"nsrc": [
-				"Blueberry"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -634,12 +426,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "q_YbErAmbo52tQL_DNvFWkO-3qmFMQZtb3hSscJ9Ji8",
 			"guid": "n1L9PmjKI-z_yRSe3TjLx3-aUa1iXtjIKgHXx-_XL40",
-			"nsrc": [
-				"Cherry"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -651,12 +438,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "LtOXRCQzmIr3PqKSRcknTZFukF8jL3L9pfvlEic3SIY",
 			"guid": "03lUO_w_mLEpBEOMOkvaW_X0W-Xl4lPLks11U90QIFo",
-			"nsrc": [
-				"Ordered list"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -668,12 +450,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "oVHOsXEarVKadwQkjwMzOZACLrv6B6fwTABNcMFnkZ8",
 			"guid": "A-ZEyBnJrNMi_tYDsrPLGG2NpWZCUMo6Lo8npYdjP7Q",
-			"nsrc": [
-				"First"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -685,12 +462,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "i4ioUIlWG3l4xOUsMVARKRISXz007Fm2_xRQ_BB5l5w",
 			"guid": "VF08A4ZiTDyAGTiiVjNWSiUCymd4iVBq0uNwtdwLHdg",
-			"nsrc": [
-				"Second"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -702,12 +474,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "XnQl1y8yxcgKX3oTFYVle4ByOuIuAf1pd2go_rGeO9U",
 			"guid": "joEdJrFdV2jqjJzV0vY3OaGRoliLuHdpGsndtLt72FI",
-			"nsrc": [
-				"Third"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -719,12 +486,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "xzfAsz6zCVnaR3SUudjyYiKzCkcyNu2IQyRlT1op_IQ",
 			"guid": "WN8aiYMlvpgeGA9ERepAgdpbjcYDkL8vmodm0gVVk-I",
-			"nsrc": [
-				"Fourth"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -736,12 +498,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "thKkARPqw3L3eUtgAIZlXctu9ubEUdnmsUDtbdUJfUc",
 			"guid": "ALInauWsE7G3R_-b2JAJIDomWjwx7p3sFkME5VuYx9Y",
-			"nsrc": [
-				"Fifth"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -753,12 +510,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "rE3vkR-CimMxlyL3wl8K9lAddh-xttgJuoDQ3ZyfIzE",
 			"guid": "sCV1ETyyU59UctfjWAkAnzEofhFpA0HIXB7jxCjW4uM",
-			"nsrc": [
-				"Sixth"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -770,12 +522,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "yBdDse06Tf7_lK0TN_PFo_2PimiKuY2BaYhgkLd6szk",
 			"guid": "bLd1kKl3LNFEFG1fJ-J2Ox2BfCcrWlL-6JfVDMtvFPI",
-			"nsrc": [
-				"Definition list"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -787,12 +534,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "N8o8-12FIsLhq-zVC8fkhMR6oojctLUbRmpoJklmsfk",
 			"guid": "C6oiHLzP_2K42tAcE22-zg2_to80wuL5LuBrXhaM9kk",
-			"nsrc": [
-				"Kick"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -804,12 +546,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "1yoR0mTnRkZO1F9z4ewFjjOtQCcMeTJL4XGTLYNNEfM",
 			"guid": "x8W6ncPvnTS2TsZYta0AAn8ya3b0pK1vM1HkjHJWL0Y",
-			"nsrc": [
-				"808"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -821,12 +558,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "I3SnzBF51-6-3dwrx1GjRZvTG7pC14HVuR3JLst1oVs",
 			"guid": "8xYN_3SHcK7LO3GBJu-hlPqvn74J9dKSaYFI9wcdLO0",
-			"nsrc": [
-				"Snare"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -838,12 +570,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "sSP5WlV4rC_7VxrbP9YLAj6SUSjR71v5F6c6j6PRNqQ",
 			"guid": "J02n8Zq-DmVENt-gBzE20MO-yV0B-pHI0N36vOe8u-c",
-			"nsrc": [
-				"909"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -855,12 +582,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "rn3vxdwapqa_E43M-PygPnEbniNnbglT7LYXjRnR14Y",
 			"guid": "Oc8teRwdM9kR3KqfPSkSsnNiGKOrJwOa7D8x2pCuxYM",
-			"nsrc": [
-				"Maine"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -872,12 +594,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "B0ifLbT-WudNjzRb3MaM8NwOeZ255IbWoKGQtJ4MXz8",
 			"guid": "JJTQsNYkBQvvA0Khfzb56P0mdnhquLLchhQBO7Xke-w",
-			"nsrc": [
-				"Augusta"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -889,12 +606,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "ytBTXezDiySLQOeu-aHP2RzjhvpcRvBepiJknn-vGPs",
 			"guid": "epcNCiu6b8J_C1odX2IyOFuvY5un_ezr_LiI0Dth_O8",
-			"nsrc": [
-				"California"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -906,12 +618,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "H4Li8FAwlIuiSl64aYa6QMJGndZn_N3pFDr7DudgE7k",
 			"guid": "ZG7e62U8UPK67YnvRadPlRy1nmJ5NuHSbuN3fRg-k2s",
-			"nsrc": [
-				"Sacremento"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -923,12 +630,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "mMtv4M6gQEHyd1xlTUFI3GNoFrigTZ1C49RGiUPrSuk",
 			"guid": "UFFyrjUYXcrkLp7fP0QdaXZFwFdv3r184W_l7YGIUvM",
-			"nsrc": [
-				"Oregon"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -940,12 +642,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "YyF9GFAiBm-Um1-81vXpw1Pt1eB147AzxjiwqNWEX60",
 			"guid": "SSaLXCmUKfovWc6hx-trZcFonvLDhmeM5096__B4YYo",
-			"nsrc": [
-				"Salem"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -957,12 +654,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "gV7Kl3x9dfcr0jvMyRvG-ZMaQvvwNFHrDX240qcE2U8",
 			"guid": "YQcHJP2ssjMzVggkDJWy7RHQpTVb62NbvhMdcs5WNa8",
-			"nsrc": [
-				"New York"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -974,12 +666,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "ZqE4XzXG9jaMZYqUnmCtak4aQ3Gv38pbNZncvF98VA4",
 			"guid": "y7XbnYFbsfinNkGdv4UPl6gCmXUY-whVJK00MZJL-yE",
-			"nsrc": [
-				"Albany"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -991,12 +678,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "xzqbL7xX6BupksHFa_FZFpjjbLzC3ws0BhUWPPvEy8g",
 			"guid": "Ah0x02bjt_rnbKh7Lti0KkiGFbnyKQtNlPRnxQDbDiQ",
-			"nsrc": [
-				"Ascender"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1008,12 +690,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "-s-qGYiUxIo4pzM9-GL0W-kRbsIqg9kTXYiCqVR8OeA",
 			"guid": "u2BF5lbdflKABPF0Q6cPefOCBhfJj58q0Xnm4p4b8po",
-			"nsrc": [
-				"The part of certain lowercase letters that extends above the x-height of a font."
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1025,12 +702,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "ZNCzrc0tvjNQD-m5bSvASGAbGfTcnbDTD4ZI4Va1g60",
 			"guid": "9xYRYfIKVIBfoVMh9Nx2yH8h7CGVbZ0CITnpQpad8B0",
-			"nsrc": [
-				"Font"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1042,12 +714,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "vwo5ZpI6ejYCIsf9fQ0dtY-OSbGWtu59bUlPE-JSsQo",
 			"guid": "xLj9X6yOgIjx_7CG4n7ZzBAFvDCtuX5LdMFKndSl1kI",
-			"nsrc": [
-				"Traditionally, a complete set of characters for one typeface at\n        one particular type size. Often used more loosely as a synonym for\n        \"typeface\"."
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1059,12 +726,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "AZH7HPYq8oLvSRhsgOTn5quut29f0Elb1cRA0yErXiU",
 			"guid": "nI1B2nZtk6AhJOsJ4RsyjlNu2BVM7bT80bnG2neLCwI",
-			"nsrc": [
-				"Golden Section"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1076,12 +738,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "pGjdlfWe33VBM1Kp-S36B3lTNLPLz3BMSWN1_1GmqCM",
 			"guid": "YHzt_o1hR4rm9Bgi63k-WklNjdTVWLQbwzsQ369Y21w",
-			"nsrc": [
-				"The ideal proportion according to the ancient Greeks. It is visualized as the\n        division of a line into two unequal segments in such a way that the ratio of the\n        smaller segment to the larger segment is equal to the ratio of the larger to the\n        whole. It is usually defined as 21:34, that is, 21/34 and 34/(21+34) both equal\n        approximately 0.618. A rectangle whose sides are of this proportion is called a\n        \"golden rectangle\". Golden rectangles can be found in the proportions of the\n        Parthenon and many medieval manuscripts."
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1093,12 +750,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "hYRRJjsbm0El_Z-5pA9ZWVQxYuBKFK7CcSpFiC8tblQ",
 			"guid": "WJDzJa090w_WEXs6l-p0ChOJ1DP3bAqq9OPXZIt1mCE",
-			"nsrc": [
-				"Forms"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1110,12 +762,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "vsyH31A0GvK3b5GXnfH176iJ31xewy1Bkp1tgi42lf0",
 			"guid": "fFY_d9LYcvovb5qSr2Y3xbddhLoe2z6pAlPrzHminkE",
-			"nsrc": [
-				"Legend Example"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1127,12 +774,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "n4LhCwY9A_BgXWrfOIXSZmUL6Uh4C6OYJWWqlLY3CCo",
 			"guid": "ZJMivmgpTnXv_R1kHwrSbiwms8zIu_bsdJ_mHO6eRIw",
-			"nsrc": [
-				"Text Input Label"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1144,12 +786,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "OrDitGVPfLO-8sgFyMigsMTOdLbGdDV2uPsI8gLD22o",
 			"guid": "TyCAPgwY_vAkgA6hgd5UqPUuknbU0YolPPtkXlMghhc",
-			"nsrc": [
-				"Helper text if necessary."
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1161,12 +798,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "588-9PF8OZmpTyxvYS6KiI5bECaHjk4ZOYsjvTjsIho",
 			"guid": "j7igpR2yGHn9Gzy4rqoX92tAXexl4X6gnSm_ELGxSsM",
-			"nsrc": [
-				"Password"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1178,12 +810,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "y0Nhj3HQ8kI5ivIzeiRVPzoKBYAWvWEMyOSxze83jjc",
 			"guid": "qg9aE_JGO2rPji4qun8Iw8ufCa5k7AkcynMA2fxi9_s",
-			"nsrc": [
-				"Error messages when appropriate."
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1195,12 +822,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "ls5uYZOgRyYPXDKqQW2ItuiVkRH0P5hFevnMAJoJB60",
 			"guid": "24kyFHKALg1_SGvfLhkk3KYkPc9BTaLT7cIe8e6mLrw",
-			"nsrc": [
-				"First Name"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1212,12 +834,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "9VVjs4ajncMJP_hkIftmXbA7Vxw28XV31kjaXSp8wkU",
 			"guid": "Q__56V-XhiKC6828IvJoA-PuhsDZL2xSWJG1S6K3uT4",
-			"nsrc": [
-				"Last Name"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1229,12 +846,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "lpzL089jAOzVyIBFnYGukCffdRdWMYShuLFSgtsjBiE",
 			"guid": "4C1KXolKOBN4CCdRnqzL3RISeulqLNweT9yoDNiQOrw",
-			"nsrc": [
-				"Email"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1246,12 +858,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "LITdjVna_XGvenl3vaeuXKXmNT5ddchTymHkqRRxeZk",
 			"guid": "LDXiJT2W9HC1OhfEERSqJJkSYMwLVGSvJnD86pohnsM",
-			"nsrc": [
-				"Dropdown"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1263,12 +870,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "-uLbCT4d0xBC6KuUJ-hnOnDEP0vFGSNdmiMu-tYHaao",
 			"guid": "yz29T5vrV1bE6lMyf9PkjglSajBL0qSxxwKduSzdlKU",
-			"nsrc": [
-				"Option 1"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1280,12 +882,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "IGsWdw8fem7qt0eGrTwDO-s6oODsSUPzmJD9UoxU5EU",
 			"guid": "UFIfzY8TYu_N5PV7XlFsafy49OgrItLIn2Ev-d8Jc9Q",
-			"nsrc": [
-				"Option 2"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1297,12 +894,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "VdY3gd4OzALEGIsuaJr5Yh9W04H5SUvYg0Oiv1DVuio",
 			"guid": "LOE5-K12dS88gurCavTFXEZC2x5evqNPhjWsnLLReLU",
-			"nsrc": [
-				"Option 3"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1314,12 +906,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "979QusxXCfHGjEMP5EP7jeXwH2zi691yCWWBv1W8wUY",
 			"guid": "M9GJbEOZ1olVy-4LBzSWpAQwSoevSt66ez1E0kuSK-8",
-			"nsrc": [
-				"Radio Buttons"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1331,16 +918,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "cx1v9QKt9b64DnZH0satNwEnjgTe_p9FsppbESurFpY",
 			"guid": "UZ0Cv13iUsbDNPt42CEZ4dTB_gcHM4f9hb0eSZtM_bk",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<input type=\"radio\">"
-				},
-				" Label 1"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1357,16 +935,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "DD_4Xe96L51H55lJhOoRV9PaZKPZc2Qizztbps7HryM",
 			"guid": "YFb1VKvETkcEnDQ9p6z28xiTQtzUMAJlfTUS2RdIKS0",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<input type=\"radio\">"
-				},
-				" Label 2"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1383,16 +952,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "rrjoOdL594cvUurFKMlExFQPtAHRE06P59wKbYvkIeg",
 			"guid": "2DkSPhAccctP9xbftX-ge5biCx7xeVzOM3_RDsJIx68",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<input type=\"radio\">"
-				},
-				" Label 3"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1409,12 +969,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "xME9_nQyEu8NX0AaGxH3EHINseGQkQBKVHN1opASvEQ",
 			"guid": "lybT978I26VJ1MripKeAaat7yqvvvU0-E_qDxfdAJIM",
-			"nsrc": [
-				"URL Input"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1426,12 +981,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "uqTqj83LjuzVAoIt05f87DNxTR3aoXTyZ_wLeO5mbcA",
 			"guid": "DLm2EvPN8Cn2oKloabN0uzZ4GVtWJilY_rEmPgeqHgI",
-			"nsrc": [
-				"Text area"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1443,16 +993,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "CVMJVJKpPQJVGtYO7QcHlpsssOcCGdsY9o_-zAANleg",
 			"guid": "_16Z6B36infrZ6WvKEMKj7CAbhE_7TGCmX7WFshJGEg",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<input type=\"checkbox\">"
-				},
-				" This is a checkbox."
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1469,12 +1010,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "1FJYOnTQ53Lbidj3g4MQmIaRSCIkJ3UL7ezEobUDgLU",
 			"guid": "ulIpbphdgeSugVpYCj_8mVaeZYMpOG8Aw68Fed0fzec",
-			"nsrc": [
-				"Buttons"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1486,12 +1022,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "aGi5LEzmuPnNbvtuIUqJ_4TZpTF25OiSHKflLIxnXSU",
 			"guid": "78S7cOM9Md65DwCCgcA6KOilobwxjG5JVhJc2ljvx8g",
-			"nsrc": [
-				"A button"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1503,12 +1034,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "mXyc4djNuZmPIDacPLpKRuIY6zB5mgLY7VQWGQIw8p8",
 			"guid": "Dwt7824hAFfcrBxrZRX20CSCmawIxKeyWEqR42E3KT0",
-			"nsrc": [
-				"A large button"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1520,12 +1046,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "iEN9srJZ8cLM8s2tIJgEYJCEtJZRgLBbChVKkXU0ChI",
 			"guid": "ZGhBTKl_RPeMpaokLMih0Qvndp0AtKRHxLSyKbDLVSI",
-			"nsrc": [
-				"An Example Article"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1537,12 +1058,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "fozSBW2nOn_vts2R9OXRmdCNkFjFF7miR2sbUgMk1nQ",
 			"guid": "1x8sWyFaug-pkJXVegXzdrw2FH2EXWITXtaNCa0OxWE",
-			"nsrc": [
-				"Title"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1554,32 +1070,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "MASPCM69TBwHH5pzMtMy4qnIb-ldaHmlZOiDy2IbQfY",
 			"guid": "uHGRiZz6oGySM1kG5GL07n-SFbXleQ7jKIkVP6jtOq4",
-			"nsrc": [
-				"Lorem ipsum dolor sit amet, ",
-				{
-					"t": "bx",
-					"v": "<b>"
-				},
-				"consectetur adipisicing elit",
-				{
-					"t": "ex",
-					"v": "</b>"
-				},
-				", sed do eiusmod\n          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\n          quis nostrud ",
-				{
-					"t": "bx",
-					"v": "<em>"
-				},
-				"exercitation ullamco laboris nisi ut aliquip ex ea commodo\n            consequat",
-				{
-					"t": "ex",
-					"v": "</em>"
-				},
-				". Duis aute irure dolor in reprehenderit in voluptate velit esse\n          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat\n          non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1615,30 +1106,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "0sPVnQ-a5Pvgktq2zbofWPQ0eNeRz1VcnV4uCr4vV_I",
 			"guid": "8WZvhVI6hiZDXI7qdAK9prYQPAu0Bq7WdNYk91RvtME",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<p class=\"test-class\">"
-				},
-				"\n            This is a GREAT pull quote.\n          ",
-				{
-					"t": "ex",
-					"v": "</p>"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<a href=\"#\">"
-				},
-				"- Author",
-				{
-					"t": "ex",
-					"v": "</a>"
-				}
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1672,12 +1140,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "9wpPGcMXI_7CppyXmc0xIQDSzXNbpQvM6Cc_G5nsvHo",
 			"guid": "FL_o286PoUpWhKK3P7ryA2F_KE_Li1RxEpy50bhWA6w",
-			"nsrc": [
-				"Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,\n          consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt\n          ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima\n          veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi\n          ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit\n          qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum\n          qui dolorem eum fugiat quo voluptas nulla pariatur?\""
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1689,12 +1152,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "XutdIZUvwf9yhAfLyn8Uvz7TNREL276I_ySDqgx-Re4",
 			"guid": "xtvaHaKUn_OcoemqVBlzjHvPknJPpefHhofk3eCxO1k",
-			"nsrc": [
-				"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis\n          praesentium voluptatum deleniti atque corrupti quos dolores et quas\n          molestias excepturi sint occaecati cupiditate non provident, similique sunt\n          in culpa qui officia deserunt mollitia animi, id est laborum et dolorum\n          fuga. Et harum quidem rerum facilis est et expedita distinctio."
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1706,12 +1164,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "epoLwucoixBGGDMNXzZr8RENz3_jt9Zi0dqkYDvfaSg",
 			"guid": "SGnCu2Z_JcpRCxXjRNrAONuzN62zB4jjBCQ5h5TyY2g",
-			"nsrc": [
-				"Code examples"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1723,12 +1176,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "Jsh7tR5peP45hzQMAFZTemlqhafUbIvzKR7RPEWzSVg",
 			"guid": "l-v6a7CcytVaRmmCv7SJWsUZLcFTKlTK62x0cbTCN_Q",
-			"nsrc": [
-				"Footer"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1740,22 +1188,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "6KeWWUKgfiD_NkFn05dUzwrwzH2uk537RxLiDdnd95o",
 			"guid": "cvTg-Sy-fO2hLL1qq777dn9QiwHRB0M11_xl6nTSKmc",
-			"nsrc": [
-				"Copyright 2013. Made with love by ",
-				{
-					"t": "bx",
-					"v": "<a href=\"http://mrmrs.cc/\" title=\"MRMRS - Designer\">"
-				},
-				"mrmrs",
-				{
-					"t": "ex",
-					"v": "</a>"
-				},
-				"."
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1779,20 +1212,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "KOE2YUmdRhDBDf3wn78e6OgVH_uJ4Hxx_LFgREoEF3Y",
 			"guid": "2m1mTIaFZdX1o7MXNgPodaFkM8AZ2b_jP2gBSmS1c-s",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<a href=\"#\">"
-				},
-				"Home",
-				{
-					"t": "ex",
-					"v": "</a>"
-				}
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1814,20 +1234,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "vQq4NFMBiCqINZaHLQpTFj_3e78Rx8baGKaomsc5igA",
 			"guid": "OaHG_iT3yWkdAfJNC6Ah8XUDb3MHz55_9RLmzaAvb7U",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<a href=\"#\">"
-				},
-				"Contact",
-				{
-					"t": "ex",
-					"v": "</a>"
-				}
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1849,20 +1256,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "j_YaRZjMhA0O47GgGAdzl_J8CYOOr_V2y0SMzC9TmhQ",
 			"guid": "70n89fM2fEkuQ93CJVT9I8y5No3mUUNPkZRy-5VRjNA",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<a href=\"#\">"
-				},
-				"Jobs",
-				{
-					"t": "ex",
-					"v": "</a>"
-				}
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1884,20 +1278,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "5dv7sERIvKVZcx7_PFOpCYmSLpXocSOsSRAVzzLC4cw",
 			"guid": "KcRd9dKPHDUmXwFe-JdS9TiGgHcI4PKBnPi8nhbxtBk",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<a href=\"http://twitter.com/\" title=\" on Twitter\">"
-				},
-				"Twitter",
-				{
-					"t": "ex",
-					"v": "</a>"
-				}
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1919,20 +1300,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "xIYZ0pQLQsuAzFwAqcbgqHC_XhDuGNwdGUypfBQNysk",
 			"guid": "B7lXiNqoY_d9qO3D4JU6qDJwr1zcV2Czb_UErLZjo_Y",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<a href=\"http://pinterest.com/\" title=\" on Pinterest\">"
-				},
-				"Pinterest",
-				{
-					"t": "ex",
-					"v": "</a>"
-				}
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1954,20 +1322,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "vKtly4mduFqkBviz7j3OsFnGshuoVk0iKKY8ZRTgl10",
 			"guid": "KFRXNyHUm1WHby9hQg320mnjK1kgNiSesQeNY0TRU00",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<a href=\"http://instagram.com/\" title=\" on Instagram\">"
-				},
-				"Instagram",
-				{
-					"t": "ex",
-					"v": "</a>"
-				}
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -1989,20 +1344,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "pY_d_aYhDE-cZKeqJ7t4btmQXr2th_ovkZWaiAsUXAk",
 			"guid": "n_y53axBvLkWYnaUdxb_7glhFWiEwRNxNPv7XJUB42s",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<a href=\"http://dribbbble.com/\" title=\" on Dribbble\">"
-				},
-				"Dribbble",
-				{
-					"t": "ex",
-					"v": "</a>"
-				}
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -2024,20 +1366,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "B8FcZ901csEML7uXmxUbChidTHcpzukTDv-sWgE3th8",
 			"guid": "O6SunN5KLprNJjUrlLVxmxpdm3_ByhtCm1bAiqNQjWQ",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<a href=\"http://github.com/\" title=\" on Github\">"
-				},
-				"Github",
-				{
-					"t": "ex",
-					"v": "</a>"
-				}
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -2059,50 +1388,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "_vVY18GSPmGp2u7j8t3EIQIYjy3Ljg007lUvmoOExfU",
 			"guid": "vnCT6R3Cu726ochkWdYlvNSSwossKVzU-V6MK_FvG24",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<h1 class=\"other-class\">"
-				},
-				"New hawtness",
-				{
-					"t": "ex",
-					"v": "</h1>"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<progress value=\"80\" max=\"100\">"
-				},
-				"80 %",
-				{
-					"t": "ex",
-					"v": "</progress>"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<p class=\"test-class\">"
-				},
-				"We are this close to the goal: ",
-				{
-					"t": "bx",
-					"v": "<meter min=\"0\" max=\"1000\" value=\"824\">"
-				},
-				"$824",
-				{
-					"t": "ex",
-					"v": "</meter>"
-				},
-				".",
-				{
-					"t": "ex",
-					"v": "</p>"
-				}
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -2160,243 +1446,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "QqhAxuRjcReoMi0Ht7p0Hr3lL7fpgrotlFZ2JrTU_VU",
 			"guid": "zbYRC-uinCQEq1h1v3Sasgj8RnKYCl2dBogNobosi7k",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<header>"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<h1 class=\"other-class\">"
-				},
-				"Random Stuff",
-				{
-					"t": "ex",
-					"v": "</h1>"
-				},
-				" ",
-				{
-					"t": "ex",
-					"v": "</header>"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<small>"
-				},
-				"This is for things like copyright info",
-				{
-					"t": "ex",
-					"v": "</small>"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<s>"
-				},
-				"Content that isn't accurate or relevant anymore.",
-				{
-					"t": "ex",
-					"v": "</s>"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<span>"
-				},
-				"Generic span wrapper",
-				{
-					"t": "ex",
-					"v": "</span>"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<abbr>"
-				},
-				"HTML How to meet ladies",
-				{
-					"t": "ex",
-					"v": "</abbr>"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<p class=\"test-class\">"
-				},
-				"This is inline text with ",
-				{
-					"t": "bx",
-					"v": "<sub>"
-				},
-				"subscript",
-				{
-					"t": "ex",
-					"v": "</sub>"
-				},
-				" and ",
-				{
-					"t": "bx",
-					"v": "<sup>"
-				},
-				"superscript",
-				{
-					"t": "ex",
-					"v": "</sup>"
-				},
-				" elements.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<p class=\"test-class\">"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<var>"
-				},
-				"f",
-				{
-					"t": "ex",
-					"v": "</var>"
-				},
-				"(",
-				{
-					"t": "bx",
-					"v": "<var>"
-				},
-				"x",
-				{
-					"t": "ex",
-					"v": "</var>"
-				},
-				") = ",
-				{
-					"t": "bx",
-					"v": "<var>"
-				},
-				"a",
-				{
-					"t": "ex",
-					"v": "</var>"
-				},
-				{
-					"t": "bx",
-					"v": "<sub>"
-				},
-				"0",
-				{
-					"t": "ex",
-					"v": "</sub>"
-				},
-				" + ",
-				{
-					"t": "bx",
-					"v": "<var>"
-				},
-				"a",
-				{
-					"t": "ex",
-					"v": "</var>"
-				},
-				{
-					"t": "bx",
-					"v": "<sub>"
-				},
-				"1",
-				{
-					"t": "ex",
-					"v": "</sub>"
-				},
-				{
-					"t": "bx",
-					"v": "<var>"
-				},
-				"x",
-				{
-					"t": "ex",
-					"v": "</var>"
-				},
-				" +\n      ",
-				{
-					"t": "bx",
-					"v": "<var>"
-				},
-				"a",
-				{
-					"t": "ex",
-					"v": "</var>"
-				},
-				{
-					"t": "bx",
-					"v": "<sub>"
-				},
-				"2",
-				{
-					"t": "ex",
-					"v": "</sub>"
-				},
-				{
-					"t": "bx",
-					"v": "<var>"
-				},
-				"x",
-				{
-					"t": "ex",
-					"v": "</var>"
-				},
-				{
-					"t": "bx",
-					"v": "<sup>"
-				},
-				"2",
-				{
-					"t": "ex",
-					"v": "</sup>"
-				},
-				", where ",
-				{
-					"t": "bx",
-					"v": "<var>"
-				},
-				"a",
-				{
-					"t": "ex",
-					"v": "</var>"
-				},
-				{
-					"t": "bx",
-					"v": "<sup>"
-				},
-				"2",
-				{
-					"t": "ex",
-					"v": "</sup>"
-				},
-				" ≠ 0\n    ",
-				{
-					"t": "ex",
-					"v": "</p>"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<time datetime=\"2013-09-07\" pubdate=\"\">"
-				},
-				"07 September 2013",
-				{
-					"t": "ex",
-					"v": "</time>"
-				}
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -2687,21 +1737,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "Wcz8Mu0nuCD1zu3rBUhd0iD5AOvS8BXqMmXyo9fSo64",
 			"guid": "ZYw_6GqbfiaPtyNLkYd8MIcADvP8plZ7fgz4lOiszAI",
-			"nsrc": [
-				"Photo of the sky at night. Original by ",
-				{
-					"t": "bx",
-					"v": "<a href=\"http://flickr.com/photos/heyitsadam/\">"
-				},
-				"@mrmrs",
-				{
-					"t": "ex",
-					"v": "</a>"
-				}
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -2724,12 +1760,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "4_4qP-UsnDWHRHjSIygoHr91Txs1dHFSwT5EGp7tkt8",
 			"guid": "_wSlN0GU0mr_xYdfgXWteqlWj2YsmEN5SdgkRsOIL2M",
-			"nsrc": [
-				"Tables"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -2741,12 +1772,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "sib1KXtMcr57CXlHPR1YhuogBi-xPMTQgI2pc3MZEzE",
 			"guid": "L2YVc39h1TmYezSbT2M-BCTnpdTvUGTQ1ljYJEAR8JA",
-			"nsrc": [
-				"This is a caption for a table"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -2758,12 +1784,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "OEOXHc_e5Qg-Yonhu9uwA-U4taimaPxDrk8Z1BWsGKI",
 			"guid": "Z2i4E-FJWXybsGmyhzoZDo6j1_UBS1BVbm4B_M3q-KE",
-			"nsrc": [
-				"ID"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -2775,12 +1796,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "3NHVIj9zs6llwH4_9dvuPu3P7bgGaGoFubOGiiw9bVA",
 			"guid": "E_7vArdYGI9xh_TRVyrz9OdghiMzAz87FA3kgcJOi6g",
-			"nsrc": [
-				"Name"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -2792,12 +1808,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "mcQKtAWSbLWtHe-c_0185iT4-Kv_9OhfZVNH_LlJ0I4",
 			"guid": "St0YB7UDCNTcEo32S-NSQ5yvX5NFvTGvIOn7t1BWXqI",
-			"nsrc": [
-				"Date"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -2809,12 +1820,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "Vu-PIJVfJWQj0yj2W2IQYAUlJVHbJdZgAxiH5CHLRoQ",
 			"guid": "4MhJhcc3RTl9rHY_oTZjz4U5MexWDbXX1Y9a0kye7rU",
-			"nsrc": [
-				"Address"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -2826,12 +1832,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "z3Jl7uKkodUTM5l7WI4mL9jUh3L2LtCD_fjj7GyY050",
 			"guid": "11x7A0O1pTL4izTsINb58lgAnu8Qmmz3DZz__DLNJvg",
-			"nsrc": [
-				"Table footer info"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -2843,12 +1844,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "07P09-4zQ5pDjz1RyAAYwHllkTvw0rL8eNiSZnwra58",
 			"guid": "bE06G5hwWAekdhVZao8w3-uUJsunuONSJ9zFv897_5k",
-			"nsrc": [
-				"#999-32ac"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -2860,12 +1856,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "Y8sYEWJAY7bhqbGS3xhwP3zvoWYkXh2maHATaL3twTw",
 			"guid": "eAtK2hjyDqES8SHJxyUx1I-9rfqyBWjHNlYslroZop0",
-			"nsrc": [
-				"13 May, 2013"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -2877,12 +1868,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "-MzLTpe9OoCvjknrV5lDfuFvELTOZJoQ4X9nF4F2WdQ",
 			"guid": "_sn4I6huH1Pj1KgV0qAK_DQNLVDtcsiCxlHDfbNASjk",
-			"nsrc": [
-				"999 Spruce Lane, Somewhere, CA 94101"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -2894,12 +1880,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "oFBA1xLmv-4H5dfeF74PXQX_GSO5c6IL8H0I2XFL-z4",
 			"guid": "lbd7LwfOwoepPJqG9ItV8TUT6CRfTbDWrSCfi59zOjQ",
-			"nsrc": [
-				"#888-32dd"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -2911,12 +1892,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "9PzGv02-GgL63RX0SQSsTBPip9gm0SW35uzpWrc-DFo",
 			"guid": "RuOBDqzq8Tks8n1cDVTRZtxARkXIxlpIu4GbX3Eng5k",
-			"nsrc": [
-				"Sample Name"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -2928,12 +1904,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "EU27vqKQ_hKJYDOBtbeCswGDsB50WJQqREDRa5CmkoM",
 			"guid": "x8XMaXJHOiphXzQFZoL24HxEXHCZNZNCfvDB6tR_5gE",
-			"nsrc": [
-				"17 May, 1984"
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -2945,30 +1916,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "JQl2ZpjOWb5DcpCEoWbhAsE3xjy8dSbW2dniMmtsKk0",
 			"guid": "5DV2smTYTOz2vV-bhvUx6RqiCbBlZn0-K9pEZoxwFHs",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<small>"
-				},
-				"© 2014 Some company name",
-				{
-					"t": "ex",
-					"v": "</small>"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<address>"
-				},
-				"email@email.com",
-				{
-					"t": "ex",
-					"v": "</address>"
-				}
-			],
-			"rid": "en/mrmrs.html",
 			"ts": 1,
 			"ntgt": [
 				"[",
@@ -3002,50 +1950,7 @@
 			"translationProvider": "Piggy"
 		},
 		{
-			"sid": "P9vq1R3XnX7Fy2UZ-nadhNNa5PiFG4DIxs5QvyT2wKA",
 			"guid": "vVc1_vsNL4nHHXr5LbrkF4sXNxiuqLYsqUvFuwxl_3g",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<h1>"
-				},
-				"Winter is 🎉",
-				{
-					"t": "ex",
-					"v": "</h1>"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<div>"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<div class=\"body-paragraph\">"
-				},
-				"coming",
-				{
-					"t": "ex",
-					"v": "</div>"
-				},
-				" ",
-				{
-					"t": "ex",
-					"v": "</div>"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<a href=\"#\" id=\"redeemButton\" class=\"button white w-button\">"
-				},
-				"Redeem Gift",
-				{
-					"t": "ex",
-					"v": "</a>"
-				}
-			],
-			"rid": "en/voucher.html",
 			"ts": 1,
 			"ntgt": [
 				"[",

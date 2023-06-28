@@ -7035,11 +7035,11 @@ var Grandfather = class {
     const txCache = {};
     const resourceHandles = Object.fromEntries((await this.#mm.rm.getResourceHandles()).map((r) => [r.id, r]));
     for (const tu of tus) {
+      const resHandle = resourceHandles[tu.rid];
       if (!txCache[tu.rid]) {
-        const handle = resourceHandles[tu.rid];
-        if (handle) {
+        if (resHandle) {
           try {
-            const resourceToGrandfather = await this.#mm.rm.getChannel(handle.channel).getExistingTranslatedResource(handle, jobRequest.targetLang);
+            const resourceToGrandfather = await this.#mm.rm.getChannel(resHandle.channel).getExistingTranslatedResource(resHandle, jobRequest.targetLang);
             txCache[tu.rid] = Object.fromEntries(resourceToGrandfather.segments.map((seg) => [seg.sid, seg]));
           } catch (e) {
             l10nmonster.logger.info(`Couldn't fetch translated resource: ${e.stack ?? e}`);
@@ -7049,15 +7049,14 @@ var Grandfather = class {
       }
       const previousTranslation = txCache[tu.rid][tu.sid];
       if (previousTranslation !== void 0) {
-        const previousTU = utils_exports.makeTU(resourceHandles[tu.rid], previousTranslation);
+        const previousTU = l10nmonster.TU.fromSegment(resHandle, previousTranslation);
         if (utils_exports.sourceAndTargetAreCompatible(tu.nsrc, previousTU.nsrc)) {
-          jobResponse.tus.push({
+          jobResponse.tus.push(l10nmonster.TU.asTarget({
             guid: tu.guid,
-            nsrc: tu.nsrc,
             ntgt: previousTU.nsrc,
-            ts: previousTU.ts,
+            ts: new Date(resHandle.modified).getTime(),
             q: this.quality
-          });
+          }));
         } else {
           l10nmonster.logger.verbose(`Grandfather: could not reuse previous ${jobRequest.targetLang} translation ${tu.rid} - ${tu.sid} as it's incompatible`);
         }
@@ -7301,7 +7300,6 @@ __export(utils_exports, {
   getNormalizedString: () => getNormalizedString,
   getTUMaps: () => getTUMaps,
   integerToLabel: () => integerToLabel,
-  makeTU: () => makeTU,
   normalizedStringsAreEqual: () => normalizedStringsAreEqual,
   phMatcherMaker: () => phMatcherMaker,
   sourceAndTargetAreCompatible: () => sourceAndTargetAreCompatible
@@ -7496,19 +7494,6 @@ function getTUMaps(tus) {
     }
   }
   return { contentMap, tuMeta, phNotes };
-}
-function makeTU(res, segment) {
-  const { nstr, ...seg } = segment;
-  const tu = {
-    ...seg,
-    nsrc: nstr,
-    rid: res.id,
-    ts: new Date(res.modified).getTime()
-  };
-  if (res.prj !== void 0) {
-    tu.prj = res.prj;
-  }
-  return tu;
 }
 var notesAnnotationRegex = /(?:PH\((?<phName>(?:[^()|]+|[^(|]*\([^()|]*\)[^()|]*))(?:\|(?<phSample>[^)|]+))(?:\|(?<phDesc>[^)|]+))?\)|MAXWIDTH\((?<maxWidth>\d+)\)|SCREENSHOT\((?<screenshot>[^)]+)\)|TAG\((?<tags>[^)]+)\))/g;
 function extractStructuredNotes(notes) {

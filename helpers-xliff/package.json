@@ -9,6 +9,7 @@
   "author": "Diego Lagunas",
   "license": "MIT",
   "dependencies": {
+    "@l10nmonster/tmexchange": "^3",
     "xliff": "^6.0.1"
   }
 }

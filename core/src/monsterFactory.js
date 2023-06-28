@@ -1,6 +1,7 @@
 import * as path from 'path';
 import { statSync, mkdirSync } from 'fs';
 import { MonsterManager, OpsMgr } from './core.js';
+import { TU } from './entities/tu.js';
 
 export async function createMonsterManager(configPath, options) {
     if (!configPath) {
@@ -17,6 +18,7 @@ export async function createMonsterManager(configPath, options) {
     l10nmonster.logger.verbose(`Requiring config: ${configPath}`);
     l10nmonster.prj = options.prj && options.prj.split(',');
     l10nmonster.arg = options.arg;
+    l10nmonster.TU = TU;
     const Config = require(configPath); // VS Code chokes on import() so we use require() until it grows up
     if (typeof Config !== 'function') {
         throw 'Invalid Config. Need to export a class constructor as a CJS module.exports';

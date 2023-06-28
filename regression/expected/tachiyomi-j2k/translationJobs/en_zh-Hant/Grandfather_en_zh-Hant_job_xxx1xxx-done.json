@@ -7,9 +7,6 @@
 	"tus": [
 		{
 			"guid": "ehbg6jluBWm1ZPyw00Prf4lbXtVyLJItrCrATkSEYGI",
-			"nsrc": [
-				"TachiyomiJ2K requires access to all files in Android 11 to download chapters, create automatic backups, and read local manga. \n\nOn the next screen, enable \"Allow access to manage all files.\""
-			],
 			"ntgt": [
 				"Tachiyomi 需要有在Android 11上的儲存空間存取權限才能下載漫畫，備份設定，開啟本機漫畫。 \n \n請在下一個畫面開啟\"允許存取儲存空間\""
 			],
@@ -18,9 +15,6 @@
 		},
 		{
 			"guid": "0TJzTyqgSESA9Z13x0gjdb2SSI0vFps-a1UhezJeIUA",
-			"nsrc": [
-				"TachiyomiJ2K requires access to all files to download chapters. Tap here, then enable \"Allow access to manage all files.\""
-			],
 			"ntgt": [
 				"Tachiyomi 需要有儲存空間存取權限才能下載漫畫。請允許\"管理儲存空間\""
 			],
@@ -29,9 +23,6 @@
 		},
 		{
 			"guid": "dyAFLf4GV8TYObR6G4ujZM0o2aXLVPScLSsRCprJogw",
-			"nsrc": [
-				"Manga"
-			],
 			"ntgt": [
 				"漫畫"
 			],
@@ -40,9 +31,6 @@
 		},
 		{
 			"guid": "95LEfJrqbk225lQKwSrZtJBO4DxL0qEzWfTqkFNqTDY",
-			"nsrc": [
-				"Manhwa"
-			],
 			"ntgt": [
 				"漫畫"
 			],
@@ -51,9 +39,6 @@
 		},
 		{
 			"guid": "LfniwtGKqeEEaGiV6jkduQg-O20r45Fq0wpcVpp41fo",
-			"nsrc": [
-				"Manhua"
-			],
 			"ntgt": [
 				"漫畫"
 			],
@@ -62,9 +47,6 @@
 		},
 		{
 			"guid": "2t_5JXeBK5PYdIR5fHw7ah2P2mS7bfphNSeLcu03TyA",
-			"nsrc": [
-				"Comic"
-			],
 			"ntgt": [
 				"漫畫"
 			],
@@ -73,9 +55,6 @@
 		},
 		{
 			"guid": "se-375MyQi6YUHDneN20q9lbQ6NTuEnMRrlZta_y6Ac",
-			"nsrc": [
-				"Webtoon"
-			],
 			"ntgt": [
 				"Webtoon 式"
 			],
@@ -84,9 +63,6 @@
 		},
 		{
 			"guid": "1p5rCpa-15kwWtEh3NEfT-U-L7hb0ldPev_wqVhXKOI",
-			"nsrc": [
-				"Not started"
-			],
 			"ntgt": [
 				"尚未開始"
 			],
@@ -95,9 +71,6 @@
 		},
 		{
 			"guid": "lUlOyYw9yd2TULBE1pTHHlKoV-I3jw8skqppn7HuIyY",
-			"nsrc": [
-				"In progress"
-			],
 			"ntgt": [
 				"進行中"
 			],
@@ -106,9 +79,6 @@
 		},
 		{
 			"guid": "GkU-6eHBvCKnGCF-CMFeaPfLeh7OoKVeKdvJwtwui8w",
-			"nsrc": [
-				"Read"
-			],
 			"ntgt": [
 				"已讀"
 			],
@@ -117,9 +87,6 @@
 		},
 		{
 			"guid": "0xqMKHTtnfgblNXpO9B-9LxbvDTZTWPLJhzSFs_xYAs",
-			"nsrc": [
-				"Title"
-			],
 			"ntgt": [
 				"標題"
 			],
@@ -128,9 +95,6 @@
 		},
 		{
 			"guid": "aW3YrcFSPuVdBZXYx8N5geyrHBeBjRhMcFL5kSLRBUo",
-			"nsrc": [
-				"Author"
-			],
 			"ntgt": [
 				"原作"
 			],
@@ -139,9 +103,6 @@
 		},
 		{
 			"guid": "Kp-AxX8Ck39UxT2_FYIgOzs3O564zOO76vNGcjuxH9A",
-			"nsrc": [
-				"Artist"
-			],
 			"ntgt": [
 				"作畫"
 			],
@@ -150,9 +111,6 @@
 		},
 		{
 			"guid": "VwqaBB3G-OoD6aUKGdwPG46AYtQWbne8sdRUeMDzAPk",
-			"nsrc": [
-				"Description"
-			],
 			"ntgt": [
 				"詳細資訊"
 			],
@@ -161,14 +119,6 @@
 		},
 		{
 			"guid": "qyy12nArwMG9YWSYvSYn6WvDU0oILdKhax33HGh2ZRI",
-			"nsrc": [
-				"Move ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				},
-				" to…"
-			],
 			"ntgt": [
 				"移動",
 				{
@@ -182,14 +132,6 @@
 		},
 		{
 			"guid": "bi_qIE1R6Oqc09vlq-RIHgB7SehgKWCfqyeEEwDLjuQ",
-			"nsrc": [
-				"Add ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				},
-				" to…"
-			],
 			"ntgt": [
 				"新增",
 				{
@@ -203,9 +145,6 @@
 		},
 		{
 			"guid": "YJHMFZmzMpH0kjwYHf0FfcpHgbud03xLRf_vpaS4iY0",
-			"nsrc": [
-				"Ongoing"
-			],
 			"ntgt": [
 				"連載中"
 			],
@@ -214,9 +153,6 @@
 		},
 		{
 			"guid": "lIiPjESKF36ux46Yl2BCb6xqKgPpplFKuzXv_M793_0",
-			"nsrc": [
-				"Unknown"
-			],
 			"ntgt": [
 				"不明"
 			],
@@ -225,9 +161,6 @@
 		},
 		{
 			"guid": "wa3hYFjBafWDLfwWcVAUIyR2PxRJVt2VRMJDgmUD-bg",
-			"nsrc": [
-				"Unknown Status"
-			],
 			"ntgt": [
 				"連載狀態不明"
 			],
@@ -236,9 +169,6 @@
 		},
 		{
 			"guid": "jeHAFbia7f3ADGwx8_DxCGjg6G8fpCbxfrgwg6NN6gQ",
-			"nsrc": [
-				"Licensed"
-			],
 			"ntgt": [
 				"已授權"
 			],
@@ -247,9 +177,6 @@
 		},
 		{
 			"guid": "GMn2b_t2ui22c6OmdsUepNRrY4ur4fchk-0UTNFI9J0",
-			"nsrc": [
-				"Completed"
-			],
 			"ntgt": [
 				"已完結"
 			],
@@ -258,9 +185,6 @@
 		},
 		{
 			"guid": "MIwZAqhf_yEYRQoIcrzIDyj7GPBqZifK4baxR5-cVvQ",
-			"nsrc": [
-				"Unlock to access Library"
-			],
 			"ntgt": [
 				"解鎖已存取書櫃"
 			],
@@ -269,9 +193,6 @@
 		},
 		{
 			"guid": "DQe5kFyjGy_DNQMR9gd3d5pydL1ne-X49-9JOScmaq8",
-			"nsrc": [
-				"Unlock"
-			],
 			"ntgt": [
 				"解鎖"
 			],
@@ -280,9 +201,6 @@
 		},
 		{
 			"guid": "w8BVXPDwDQJ0R_SUuwjru3U8GczA5_OjEEBamr4vyLY",
-			"nsrc": [
-				"Lock with biometrics"
-			],
 			"ntgt": [
 				"生物特徵辨識鎖定"
 			],
@@ -291,9 +209,6 @@
 		},
 		{
 			"guid": "-Ex3KmecKwMvqHMOuUz2YkLrFtoxL10XyzBusA6LCoU",
-			"nsrc": [
-				"Lock when idle"
-			],
 			"ntgt": [
 				"閒置時鎖定"
 			],
@@ -302,9 +217,6 @@
 		},
 		{
 			"guid": "wF-LDYkrxxFci3wYWoYmvhRbrns2bjxzjgD6HX-wNP8",
-			"nsrc": [
-				"Chapters"
-			],
 			"ntgt": [
 				"章節"
 			],
@@ -313,9 +225,6 @@
 		},
 		{
 			"guid": "BedwJO3i3EMs4wjzibEX9_Zz6vNrlvYs5p1rK8Muek8",
-			"nsrc": [
-				"New chapters"
-			],
 			"ntgt": [
 				"新章節"
 			],
@@ -324,9 +233,6 @@
 		},
 		{
 			"guid": "c1Q8vA8rLF44sVpBXm_WNX7hL38utqvkFH_tJsHIEfk",
-			"nsrc": [
-				"Unread"
-			],
 			"ntgt": [
 				"未讀"
 			],
@@ -335,13 +241,6 @@
 		},
 		{
 			"guid": "kZpwHijg068LeT08ANJVZ4v5n9kO6N4dWo9XMuADrms",
-			"nsrc": [
-				"Last read Chapter ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
-			],
 			"ntgt": [
 				"最後閱讀的章節",
 				{
@@ -354,13 +253,6 @@
 		},
 		{
 			"guid": "VNFJrEtasSsxhW7I_SASmWbqKbGm-DB6zGqeT1T3pFg",
-			"nsrc": [
-				"Chapter ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
-			],
 			"ntgt": [
 				"第 ",
 				{
@@ -374,9 +266,6 @@
 		},
 		{
 			"guid": "2o1v8EPRDg7n9szthMXwcIo3yyNkD2wF4cXDrRqBXYY",
-			"nsrc": [
-				"All chapters read"
-			],
 			"ntgt": [
 				"以下章節已讀"
 			],
@@ -385,9 +274,6 @@
 		},
 		{
 			"guid": "Ba1uIyfx0Ir8lFQpWbX2FwqG3a0YpXVdRa69dyajn-4",
-			"nsrc": [
-				"Bookmarked"
-			],
 			"ntgt": [
 				"已加入書籤"
 			],
@@ -396,9 +282,6 @@
 		},
 		{
 			"guid": "7-jb0lZiRNzOx-KD-gVAb6guAtSi9SElMIa5spNulek",
-			"nsrc": [
-				"Not bookmarked"
-			],
 			"ntgt": [
 				"未加入書籤"
 			],
@@ -407,9 +290,6 @@
 		},
 		{
 			"guid": "FO4YX66wvfqfMJIom2A6-3JuWl6tE39yLhQf6RI4v6U",
-			"nsrc": [
-				"Marked as read"
-			],
 			"ntgt": [
 				"標示為已讀"
 			],
@@ -418,9 +298,6 @@
 		},
 		{
 			"guid": "qS40FwIlQsZoskEfSKs6GZ-_S7uyIjUIXdgjsDrQXqg",
-			"nsrc": [
-				"Marked as unread"
-			],
 			"ntgt": [
 				"標示為未讀"
 			],
@@ -429,9 +306,6 @@
 		},
 		{
 			"guid": "ukvJyKpjXj7Rqo1SUKCfn9X-cMwAsUO1e5mwYi239HM",
-			"nsrc": [
-				"Removed bookmark"
-			],
 			"ntgt": [
 				"移除書籤"
 			],
@@ -440,9 +314,6 @@
 		},
 		{
 			"guid": "3n24FO3klocH-ZS5oOyyZVib-glRonteOU_4_88GusM",
-			"nsrc": [
-				"Chapters removed."
-			],
 			"ntgt": [
 				"章節已刪除。"
 			],
@@ -451,9 +322,6 @@
 		},
 		{
 			"guid": "JYa7_Jgw-SoQtnH6Yd-ztKPXwwiSZG8sx1g2z4-0Qv4",
-			"nsrc": [
-				"Chapter not found"
-			],
 			"ntgt": [
 				"未找到章節"
 			],
@@ -462,9 +330,6 @@
 		},
 		{
 			"guid": "fmSAuRjzSixvBE0aLDILWhduRHUBxBJYh3gNf-Ip510",
-			"nsrc": [
-				"No chapters found"
-			],
 			"ntgt": [
 				"沒有章節"
 			],
@@ -473,9 +338,6 @@
 		},
 		{
 			"guid": "P6boOGS8s30ZGI2qzLb1K8Q_NbGoGbeyhc4iL_9c-QY",
-			"nsrc": [
-				"No pages found"
-			],
 			"ntgt": [
 				"沒有找到頁面"
 			],
@@ -484,9 +346,6 @@
 		},
 		{
 			"guid": "1JbgVl3XE7SmeF4jiwITPDPKkwZysXqU8iIQL5aVuDY",
-			"nsrc": [
-				"Remove all downloads?"
-			],
 			"ntgt": [
 				"移除所有下載檔案?"
 			],
@@ -495,9 +354,6 @@
 		},
 		{
 			"guid": "a5ns947pdrJnqiF2ZooyCjrJFnqIZ4Jy5QqbF3st9QY",
-			"nsrc": [
-				"By source's order"
-			],
 			"ntgt": [
 				"依照來源排序"
 			],
@@ -506,9 +362,6 @@
 		},
 		{
 			"guid": "FQDqx9NU1PmHx6E4AblkzuQnyRvNVu3wiKemW4kTrTA",
-			"nsrc": [
-				"By chapter number"
-			],
 			"ntgt": [
 				"依照章節編號排序"
 			],
@@ -517,9 +370,6 @@
 		},
 		{
 			"guid": "UaOinmorDOPohtOevV2dux8o2cs0mzFRJzpaiN8T4Uc",
-			"nsrc": [
-				"By upload date"
-			],
 			"ntgt": [
 				"依照上傳時間排序"
 			],
@@ -528,9 +378,6 @@
 		},
 		{
 			"guid": "xgK_ck7xJn5JojkBvKF3PBTHL3d5VAyITpRxQo3cOU8",
-			"nsrc": [
-				"Categories"
-			],
 			"ntgt": [
 				"分類"
 			],
@@ -539,14 +386,6 @@
 		},
 		{
 			"guid": "dID_EzHEAL6z9VEJmNY3m-5v1JRiZ7kbArCUCG7zzEo",
-			"nsrc": [
-				"Adding ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				},
-				" to update queue"
-			],
 			"ntgt": [
 				"新增",
 				{
@@ -560,13 +399,6 @@
 		},
 		{
 			"guid": "-CI-B_fkcR7jeeS4cH4AWqOZ0ENh5TRKcwju6Ia0zAA",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "%1$s"
-				},
-				" is already in queue"
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -579,9 +411,6 @@
 		},
 		{
 			"guid": "sXEvR457Fl4so0Cv0WtTRtzPtYD_jfdREwMYK3O8nSA",
-			"nsrc": [
-				"Default category"
-			],
 			"ntgt": [
 				"預設分類"
 			],
@@ -590,9 +419,6 @@
 		},
 		{
 			"guid": "6V5oIJQAJOJBz78Jw0S1iS5pQi0-jcba-dzf3LwHDNI",
-			"nsrc": [
-				"Delete category?"
-			],
 			"ntgt": [
 				"確定要刪除分類？"
 			],
@@ -601,9 +427,6 @@
 		},
 		{
 			"guid": "Gr8lB80zlGIz_xKnnhk6X9XxnYKun1N1fxfIuAafjN0",
-			"nsrc": [
-				"Add categories"
-			],
 			"ntgt": [
 				"新增分類"
 			],
@@ -612,9 +435,6 @@
 		},
 		{
 			"guid": "w2MMFrsye0LRCrgCp4a3MO-XUfByQWvTxZl6k1U1bAQ",
-			"nsrc": [
-				"Edit categories"
-			],
 			"ntgt": [
 				"管理分類"
 			],
@@ -623,9 +443,6 @@
 		},
 		{
 			"guid": "crKjl1Fgg3ZyTE2hAcUJ4rGdY1Fmkl14DbVZy3df79E",
-			"nsrc": [
-				"Move to categories"
-			],
 			"ntgt": [
 				"移至分類"
 			],
@@ -634,9 +451,6 @@
 		},
 		{
 			"guid": "tY5i_VvkSRfJYfbnaRYs6LzMY7jz1AOwB34ehHn4_8E",
-			"nsrc": [
-				"A category with that name already exists!"
-			],
 			"ntgt": [
 				"已有名稱相同的分類！"
 			],
@@ -645,9 +459,6 @@
 		},
 		{
 			"guid": "1J9LO1I69PkBtCO-lcjrVfJ0hLDY2P9KkW2jnd9Iia0",
-			"nsrc": [
-				"Update"
-			],
 			"ntgt": [
 				"更新"
 			],
@@ -656,9 +467,6 @@
 		},
 		{
 			"guid": "9WVBqhFweXU_C1G812-heD1CVXaUVAENT2wDLvhfanI",
-			"nsrc": [
-				"Update available"
-			],
 			"ntgt": [
 				"可用的更新"
 			],
@@ -667,9 +475,6 @@
 		},
 		{
 			"guid": "CA2P2d3Ikapo3Lrx77PGhGyBqDqCfZhQQjn8y8-xkRc",
-			"nsrc": [
-				"New version available!"
-			],
 			"ntgt": [
 				"有可用的更新！"
 			],
@@ -678,9 +483,6 @@
 		},
 		{
 			"guid": "ZxwEcNS-acQZefGIv-tPQc_FiapNG62iJRnpIs2B-ew",
-			"nsrc": [
-				"No new updates available"
-			],
 			"ntgt": [
 				"沒有可用的更新"
 			],
@@ -689,9 +491,6 @@
 		},
 		{
 			"guid": "XNPfbAGyhvY7OEaUpmgfqvZJPfZ3Mdzvlu-6ABOcIr4",
-			"nsrc": [
-				"Searching for updates…"
-			],
 			"ntgt": [
 				"正在檢查更新…"
 			],
@@ -700,9 +499,6 @@
 		},
 		{
 			"guid": "TbkIkVi_X7f7CBO4u0f726BGsGtl_vvkV6T5BfF9P70",
-			"nsrc": [
-				"Could not install update"
-			],
 			"ntgt": [
 				"無法安裝更新"
 			],
@@ -711,9 +507,6 @@
 		},
 		{
 			"guid": "aMkjGx1AIigQIxs9K8Edp0YjaevyYcbOzTjWB68ffd8",
-			"nsrc": [
-				"Update completed"
-			],
 			"ntgt": [
 				"更新完成"
 			],
@@ -722,9 +515,6 @@
 		},
 		{
 			"guid": "qAcMTZXYvITCVVUsJnaeziMxq66YjeyIpN3-S0Rebyg",
-			"nsrc": [
-				"Library"
-			],
 			"ntgt": [
 				"書櫃"
 			],
@@ -733,9 +523,6 @@
 		},
 		{
 			"guid": "jVfElJakT5GKdz1ZuVRESC3HEVkoEOjXNC9PTIozFBU",
-			"nsrc": [
-				"Updating library"
-			],
 			"ntgt": [
 				"正在更新書櫃"
 			],
@@ -744,13 +531,6 @@
 		},
 		{
 			"guid": "YHsB_l4J3SLIHrDQP5mpuQvIaON0iySnr9D2qzz0TvA",
-			"nsrc": [
-				"Selected: ",
-				{
-					"t": "x",
-					"v": "%1$d"
-				}
-			],
 			"ntgt": [
 				"已選取：",
 				{
@@ -763,9 +543,6 @@
 		},
 		{
 			"guid": "bcBVjTkX0f2rWm2C9WdMUtQGgegLyYw1WDvndJ04ECE",
-			"nsrc": [
-				"Local"
-			],
 			"ntgt": [
 				"本機"
 			],
@@ -774,9 +551,6 @@
 		},
 		{
 			"guid": "Oh1h4BfvH9v36vvhr3RdIXN8fqA_K8AX8Ayev245P4U",
-			"nsrc": [
-				"Remove from library?"
-			],
 			"ntgt": [
 				"從書櫃移除?"
 			],
@@ -785,9 +559,6 @@
 		},
 		{
 			"guid": "HhMtwzf3Dq1TOtKyzHRimpmuuAzOd4Exn4F9r8xz-qs",
-			"nsrc": [
-				"Search title, tags, source"
-			],
 			"ntgt": [
 				"搜尋標題，標籤，來源"
 			],
@@ -796,9 +567,6 @@
 		},
 		{
 			"guid": "lquVLLePK40yidM6TxG2TmQzi_V53wQ9fGVOUNboTb4",
-			"nsrc": [
-				"Your library is empty, add series to your library from the browse tab."
-			],
 			"ntgt": [
 				"尚未收藏任何作品，探索來源以挖掘你的愛書。"
 			],
@@ -807,9 +575,6 @@
 		},
 		{
 			"guid": "DchxaDnPAnphKwQMynBpe4TkqbwUOD7MsQD-GEtfSho",
-			"nsrc": [
-				"Getting started guide"
-			],
 			"ntgt": [
 				"入門指南"
 			],
@@ -818,13 +583,6 @@
 		},
 		{
 			"guid": "UhTDYUwAeKJFGb0P_EcHv0CRAU_7r4nf4uO_eWO-6oI",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "%d"
-				},
-				" unread"
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -837,9 +595,6 @@
 		},
 		{
 			"guid": "zK6myoXPiHa_W_GRKdaxPE6uQzupwjSwkz1ITXqdtvQ",
-			"nsrc": [
-				"Total chapters"
-			],
 			"ntgt": [
 				"章節數"
 			],
@@ -848,9 +603,6 @@
 		},
 		{
 			"guid": "lQ3n6754wbp3bomwiAOq4EZN1gzxbbL4O_3U2s6oKH4",
-			"nsrc": [
-				"Date added"
-			],
 			"ntgt": [
 				"收藏日期"
 			],
@@ -859,9 +611,6 @@
 		},
 		{
 			"guid": "z5Ct7T4-sb7TiBjIIOJtkrCYWUq0AwxBpxJqU0EOOb4",
-			"nsrc": [
-				"Last read"
-			],
 			"ntgt": [
 				"最近閱讀"
 			],
@@ -870,9 +619,6 @@
 		},
 		{
 			"guid": "ymbcb0K-ZQ6Y95inlEU_x-vdap1HMxf8WUVFEmdVX0o",
-			"nsrc": [
-				"Last updated"
-			],
 			"ntgt": [
 				"最後更新"
 			],
@@ -881,9 +627,6 @@
 		},
 		{
 			"guid": "etwkm_tfBq0CEj2dA5b5feaYxz8YAJ8iil0f2x4TXbw",
-			"nsrc": [
-				"Latest chapter"
-			],
 			"ntgt": [
 				"最新章節"
 			],
@@ -892,9 +635,6 @@
 		},
 		{
 			"guid": "DMMCd9TlUjweJCvkzAet30izdq29jjibSAaLenVC_Ho",
-			"nsrc": [
-				"Drag & Drop"
-			],
 			"ntgt": [
 				"拖曳"
 			],
@@ -903,9 +643,6 @@
 		},
 		{
 			"guid": "uS-rKfQewapxCMQccDVdJcLHKtn2SaCeJ2YmB23cIuI",
-			"nsrc": [
-				"Display options"
-			],
 			"ntgt": [
 				"檢視選項"
 			],
@@ -914,9 +651,6 @@
 		},
 		{
 			"guid": "b5s0c7AJ312O74EJBqSMNQLzFjNb2bCHZ4S3J11jxxg",
-			"nsrc": [
-				"List"
-			],
 			"ntgt": [
 				"清單"
 			],
@@ -925,9 +659,6 @@
 		},
 		{
 			"guid": "W8lXl8ecgkmTxxNseApoWEjiwTVi5YjP9qyYm0BY1-o",
-			"nsrc": [
-				"Comfortable Grid"
-			],
 			"ntgt": [
 				"鬆散格狀"
 			],
@@ -936,9 +667,6 @@
 		},
 		{
 			"guid": "JolklOJhPzS3vF0WrEXaYAttHvQz7J0eVAYKuviUbDI",
-			"nsrc": [
-				"Compact Grid"
-			],
 			"ntgt": [
 				"密集格狀"
 			],
@@ -947,9 +675,6 @@
 		},
 		{
 			"guid": "UeOCcyUNrO7NK1wCS-ZaA-6Uvndo0dTo5eUFHUTp0Rw",
-			"nsrc": [
-				"Download badges"
-			],
 			"ntgt": [
 				"已下載標記"
 			],
@@ -958,9 +683,6 @@
 		},
 		{
 			"guid": "7iTceqCgayTrQXKNVybwTDhBnEdecaG1phJDAuvZBcE",
-			"nsrc": [
-				"Badges"
-			],
 			"ntgt": [
 				"標記"
 			],
@@ -969,9 +691,6 @@
 		},
 		{
 			"guid": "SEo_lkPgk4lCf7gjS3A9lFkdFLO2wv1ycaNkAw3hvBM",
-			"nsrc": [
-				"Hide unread badges"
-			],
 			"ntgt": [
 				"隱藏未讀章節"
 			],
@@ -980,9 +699,6 @@
 		},
 		{
 			"guid": "cP_Gz6ULSzF0DAeaDX05AQoSINybxcS6HZDh69si-Mw",
-			"nsrc": [
-				"Show unread badges"
-			],
 			"ntgt": [
 				"顯示未讀章節"
 			],
@@ -991,9 +707,6 @@
 		},
 		{
 			"guid": "Aw6cKyajej2kaJJDGwDiuoza3bLBcu5nDVXKBiKOGFc",
-			"nsrc": [
-				"Show unread count"
-			],
 			"ntgt": [
 				"顯示未讀數量"
 			],
@@ -1002,9 +715,6 @@
 		},
 		{
 			"guid": "IRauuXgqcQbSTMjV3Ys43xV6-n3dDJkuJifY81SJT_I",
-			"nsrc": [
-				"Tap the Library icon to show filters"
-			],
 			"ntgt": [
 				"輕觸「書櫃」圖示即可顯示篩選器"
 			],
@@ -1013,9 +723,6 @@
 		},
 		{
 			"guid": "gQWO4zfGidbyOhDA3UfrzspRYaN82LLyYDDSn2zKDKo",
-			"nsrc": [
-				"More library settings"
-			],
 			"ntgt": [
 				"詳細書櫃設定"
 			],
@@ -1024,9 +731,6 @@
 		},
 		{
 			"guid": "DP9tDhyqmkFyAizNsGXaByGA7_OZZsmcD1gUxkZdVAY",
-			"nsrc": [
-				"New chapters found"
-			],
 			"ntgt": [
 				"發現新章節"
 			],
@@ -1035,13 +739,6 @@
 		},
 		{
 			"guid": "RLiMnzoXrJq8vp-WZubFf2M9nJtwc2tP_d8VRdv1W8w",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				" updates failed"
-			],
 			"ntgt": [
 				"有 ",
 				{
@@ -1055,9 +752,6 @@
 		},
 		{
 			"guid": "NzuzANrc8hKnsNdj5RNNivveptBt1E-e1H-Ht-pXbEo",
-			"nsrc": [
-				"Library update frequency"
-			],
 			"ntgt": [
 				"書櫃更新頻率"
 			],
@@ -1066,9 +760,6 @@
 		},
 		{
 			"guid": "-QzO-ivc3CYbFK2bcTx1y09cUHWQAxXI_IwEWHWcdf4",
-			"nsrc": [
-				"Library update order"
-			],
 			"ntgt": [
 				"書櫃更新順序"
 			],
@@ -1077,9 +768,6 @@
 		},
 		{
 			"guid": "h6ihcf0PNhqYo_MeRGpM3608G2PlorwY5-vFKsjSuAA",
-			"nsrc": [
-				"Library update restrictions"
-			],
 			"ntgt": [
 				"書櫃更新限制"
 			],
@@ -1088,9 +776,6 @@
 		},
 		{
 			"guid": "ZOMhwECzQZpFt0DpjvLzNkEn3kCCtt0snYRw2gF1wd4",
-			"nsrc": [
-				"Update only when the conditions are met"
-			],
 			"ntgt": [
 				"僅在符合條件時更新"
 			],
@@ -1099,9 +784,6 @@
 		},
 		{
 			"guid": "0Yks1MGLmvTPfXrRbgF7_cpJj8jKUrSdoOpUQpMt1Lo",
-			"nsrc": [
-				"Only update ongoing manga"
-			],
 			"ntgt": [
 				"僅更新連載中的漫畫"
 			],
@@ -1110,9 +792,6 @@
 		},
 		{
 			"guid": "5Ug7lvfBUCu2wKLPhV0-c9jXxHz9DjEQ9EAzy6uuaiM",
-			"nsrc": [
-				"Categories to include in global update"
-			],
 			"ntgt": [
 				"自動更新的分類"
 			],
@@ -1121,9 +800,6 @@
 		},
 		{
 			"guid": "7zyAcA7JQ6aAczOccXAYPa-UDg3BvajDBkRkKBRNq-E",
-			"nsrc": [
-				"Automatically refresh covers"
-			],
 			"ntgt": [
 				"自動重新整理書封"
 			],
@@ -1132,9 +808,6 @@
 		},
 		{
 			"guid": "sBinvyL2W3qKfYVm5ARudrwttwxjOEAtbvq5bnrisG4",
-			"nsrc": [
-				"Updates"
-			],
 			"ntgt": [
 				"更新"
 			],
@@ -1143,9 +816,6 @@
 		},
 		{
 			"guid": "PM06aKufO6xe0d1WLbGbjSKaHG8MBKZaoLiU6LRnJiw",
-			"nsrc": [
-				"History"
-			],
 			"ntgt": [
 				"記錄"
 			],
@@ -1154,9 +824,6 @@
 		},
 		{
 			"guid": "S5GUgCz4-rmA9wjHXTfRr6OUY6HZtKT-ZoOr6rPHjvo",
-			"nsrc": [
-				"Recent updates"
-			],
 			"ntgt": [
 				"新書上架"
 			],
@@ -1165,9 +832,6 @@
 		},
 		{
 			"guid": "x3TEe4A97_mGw4nWI9E7Z9-WfUrxRSmYZR0IRK24l14",
-			"nsrc": [
-				"This will remove the read date of this chapter. Are you sure?"
-			],
 			"ntgt": [
 				"這將會清除此章節的閱讀日期，確定嗎？"
 			],
@@ -1176,9 +840,6 @@
 		},
 		{
 			"guid": "hL4I2ivi9LosbYyWwU5Dko_fz2EIvOmPn_caCWYZ1tI",
-			"nsrc": [
-				"No recent chapters"
-			],
 			"ntgt": [
 				"沒有新章節"
 			],
@@ -1187,9 +848,6 @@
 		},
 		{
 			"guid": "4VtJrOuIR9-EAjXsURnwo-iIbyhtFxsyrem9xCOA1Cc",
-			"nsrc": [
-				"No recently read manga"
-			],
 			"ntgt": [
 				"沒有近期閱讀"
 			],
@@ -1198,9 +856,6 @@
 		},
 		{
 			"guid": "2Pxr4-74Ois-SejkPEpOnmVQGKUZCPMo0deqiwQYbBI",
-			"nsrc": [
-				"Search filters"
-			],
 			"ntgt": [
 				"篩選器"
 			],
@@ -1209,9 +864,6 @@
 		},
 		{
 			"guid": "qD5t9_kUsR1Rciw2C9gSZ9UCq5smk6ZGRp4e97jt0oU",
-			"nsrc": [
-				"No more results"
-			],
 			"ntgt": [
 				"沒有更多結果"
 			],
@@ -1220,9 +872,6 @@
 		},
 		{
 			"guid": "nDWhRgwMhyySzkmB1mKyhXH4-HIkCqSzNszaabHd0Qk",
-			"nsrc": [
-				"No results found"
-			],
 			"ntgt": [
 				"找不到結果"
 			],
@@ -1231,9 +880,6 @@
 		},
 		{
 			"guid": "E5QVOfjAoLWc8J7M6lFj706Hi6GaLqr7-jlOMqThrX8",
-			"nsrc": [
-				"Local source"
-			],
 			"ntgt": [
 				"本機來源"
 			],
@@ -1242,9 +888,6 @@
 		},
 		{
 			"guid": "7bPpjSz1MY2CNSPHuORks9HUhwc9TlUOvSioRsXWYUE",
-			"nsrc": [
-				"Other"
-			],
 			"ntgt": [
 				"其他"
 			],
@@ -1253,9 +896,6 @@
 		},
 		{
 			"guid": "tRqUWr1CHQBGfXifeokyu2ciLA_1XxT-6Ynjo6ytbTg",
-			"nsrc": [
-				"Global search…"
-			],
 			"ntgt": [
 				"全域搜尋…"
 			],
@@ -1264,9 +904,6 @@
 		},
 		{
 			"guid": "OD82pAlue4FA_Kid9h2lSUE2XvZqGpekY8lHnw4FHBk",
-			"nsrc": [
-				"Global search"
-			],
 			"ntgt": [
 				"全域搜尋"
 			],
@@ -1275,9 +912,6 @@
 		},
 		{
 			"guid": "XqEe6ZH5D3OuGdp2s140bj26gJ7mFmJV-xBjYu8Tx48",
-			"nsrc": [
-				"Latest"
-			],
 			"ntgt": [
 				"新上架"
 			],
@@ -1286,9 +920,6 @@
 		},
 		{
 			"guid": "ZlQGjuZJmjYU7_qjO2oXa6eUZnp4YfnsbJignNiVaP0",
-			"nsrc": [
-				"Browse"
-			],
 			"ntgt": [
 				"探索"
 			],
@@ -1297,9 +928,6 @@
 		},
 		{
 			"guid": "i7nQsmaH5l-83nBShn-cYtN3if_SJbHzHGpEnqR56uk",
-			"nsrc": [
-				"In Library"
-			],
 			"ntgt": [
 				"在書櫃中"
 			],
@@ -1308,9 +936,6 @@
 		},
 		{
 			"guid": "ZrAWCoZpge3cKfOhzcCGkS4bvEF6Mt8RaqZw9DI_qB0",
-			"nsrc": [
-				"Sources"
-			],
 			"ntgt": [
 				"來源"
 			],
@@ -1319,9 +944,6 @@
 		},
 		{
 			"guid": "P0C-_pU8Q5i3NzJvF2IOkYGe6BnwPi1NFRRNTTmrGa8",
-			"nsrc": [
-				"Last used"
-			],
 			"ntgt": [
 				"最近使用"
 			],
@@ -1330,9 +952,6 @@
 		},
 		{
 			"guid": "CGemow4PGRoks7kffKieGnelfMRnWe8kFGbz-YhskEc",
-			"nsrc": [
-				"Local source guide"
-			],
 			"ntgt": [
 				"本機來源入門教學"
 			],
@@ -1341,9 +960,6 @@
 		},
 		{
 			"guid": "IMua_RtI1sMnJZ2zTViBErqOa9it8wk-yqx_u-rmjqM",
-			"nsrc": [
-				"Check website in WebView"
-			],
 			"ntgt": [
 				"在 WebView 中檢查網站"
 			],
@@ -1352,9 +968,6 @@
 		},
 		{
 			"guid": "aoUSYtsFoxzn0HRhrXdsX7blaRGrrGKbPPGYAHOGcYY",
-			"nsrc": [
-				"Extensions"
-			],
 			"ntgt": [
 				"擴充套件"
 			],
@@ -1363,9 +976,6 @@
 		},
 		{
 			"guid": "3VbPdABRbfvCf_GxLQ-haSSJISwum9GhTK-byjdMle0",
-			"nsrc": [
-				"Extension info"
-			],
 			"ntgt": [
 				"擴充套件資訊"
 			],
@@ -1374,9 +984,6 @@
 		},
 		{
 			"guid": "uYeBuOlQx0uHTjPFSCFDqvBE7ttkCteUepsgvF0p42Y",
-			"nsrc": [
-				"Obsolete"
-			],
 			"ntgt": [
 				"過舊"
 			],
@@ -1385,9 +992,6 @@
 		},
 		{
 			"guid": "-1oUOqtBTK56Cb3QyFI8OxxSMWVduV2fdFZCS2W1c1Q",
-			"nsrc": [
-				"Pending"
-			],
 			"ntgt": [
 				"等待中"
 			],
@@ -1396,9 +1000,6 @@
 		},
 		{
 			"guid": "Ycu33slHZdgJIOKGFgNFhnXFaXDml33-QI4kzYWaqv8",
-			"nsrc": [
-				"Installing"
-			],
 			"ntgt": [
 				"安裝中"
 			],
@@ -1407,9 +1008,6 @@
 		},
 		{
 			"guid": "JP4poQgz6xE5_MntWIYkQ3A1QwYutbXOPfMaUS2QNCY",
-			"nsrc": [
-				"Installed"
-			],
 			"ntgt": [
 				"已安裝"
 			],
@@ -1418,9 +1016,6 @@
 		},
 		{
 			"guid": "Kvi-OrJcWLi1AhkBcIcwc2_cva39mL8v4VPnpOa6xQg",
-			"nsrc": [
-				"Trust"
-			],
 			"ntgt": [
 				"信任"
 			],
@@ -1429,9 +1024,6 @@
 		},
 		{
 			"guid": "28-CSpvMLQCczDRCqfByQOPtpZeUpvFuIYBb2KXhxTU",
-			"nsrc": [
-				"Untrusted"
-			],
 			"ntgt": [
 				"不信任"
 			],
@@ -1440,9 +1032,6 @@
 		},
 		{
 			"guid": "NUM1S6DTLk8C51KWdOB6nkW0ehj3VGofXw6xMEKumpM",
-			"nsrc": [
-				"Uninstall"
-			],
 			"ntgt": [
 				"解除安裝"
 			],
@@ -1451,9 +1040,6 @@
 		},
 		{
 			"guid": "-xNAvTt_5TWhX_Qevo6dfy9YGxHdcM5jvEstbFpnuYk",
-			"nsrc": [
-				"Untrusted extension"
-			],
 			"ntgt": [
 				"不信任的擴充套件"
 			],
@@ -1462,9 +1048,6 @@
 		},
 		{
 			"guid": "5i1qeSgTv4eK9tMokbsNzyBFy4aeu_6h0nSNcgRxpEw",
-			"nsrc": [
-				"This extension was signed with an untrusted certificate and wasn't activated.\n\nA malicious extension could read any login credentials stored in Tachiyomi or execute arbitrary code.\n\nBy trusting this certificate you accept these risks."
-			],
 			"ntgt": [
 				"這個擴充套件的憑證並不可靠，且尚未被啟用。 \n \n惡意的擴充套件可能存取任何儲存於 Tachiyomi 中的登錄憑證，或執行任意的程式碼。 \n \n信任這個憑證，即表示你願意承擔上述風險。"
 			],
@@ -1473,9 +1056,6 @@
 		},
 		{
 			"guid": "Vv7zXhCz4opZuOiy2_Fq0tddSF-kvnokOd4mjT_QrPE",
-			"nsrc": [
-				"This extension is no longer available."
-			],
 			"ntgt": [
 				"這個擴充套件已無法使用。"
 			],
@@ -1484,9 +1064,6 @@
 		},
 		{
 			"guid": "no3EPHkkAPUVkK9WbV_fNi6DkZryBx6xfxglmjb4MUg",
-			"nsrc": [
-				"This extension is not from the official Tachiyomi extensions list."
-			],
 			"ntgt": [
 				"這個擴充套件不是由 Tachiyomi 所提供。"
 			],
@@ -1495,13 +1072,6 @@
 		},
 		{
 			"guid": "mvCSc-9yryS7Ofj0A_wL0bqca5JHjTYWlk8605Z-VQU",
-			"nsrc": [
-				"Version: ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
-			],
 			"ntgt": [
 				"版本：",
 				{
@@ -1514,13 +1084,6 @@
 		},
 		{
 			"guid": "TwrJr2RHXOSAMDZgpROxE8cXWkCRS3GToOTAkCoaaAc",
-			"nsrc": [
-				"Language: ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
-			],
 			"ntgt": [
 				"語言：",
 				{
@@ -1533,9 +1096,6 @@
 		},
 		{
 			"guid": "giDbI1awUgdbfMKkrkvn4JxnaIc35cm8z32hRszPoYU",
-			"nsrc": [
-				"18+"
-			],
 			"ntgt": [
 				"18+"
 			],
@@ -1544,9 +1104,6 @@
 		},
 		{
 			"guid": "f037H6fcf5TiITwnOq-9yJ2BdfESMLl1vXtx67OFvck",
-			"nsrc": [
-				"Unofficial"
-			],
 			"ntgt": [
 				"非官方"
 			],
@@ -1555,9 +1112,6 @@
 		},
 		{
 			"guid": "FB8H7p-eU89ZuoW8zOC-VBvj77CDPKgsWkLMvL5IM3w",
-			"nsrc": [
-				"May contain NSFW (18+) content"
-			],
 			"ntgt": [
 				"可能包含未滿十八歲之人不宜觀賞的內容"
 			],
@@ -1566,13 +1120,6 @@
 		},
 		{
 			"guid": "fFztA8BpN5ztR940iRrxRzG6kccQjtTmucxkNGh6npk",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "%d"
-				},
-				" extension updates available"
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -1585,9 +1132,6 @@
 		},
 		{
 			"guid": "Ib3Dl-HzwtbZ2Ml0jVectlWKgCLvYPZ6byoYri6f_Sk",
-			"nsrc": [
-				"Set as cover"
-			],
 			"ntgt": [
 				"設為書封"
 			],
@@ -1596,9 +1140,6 @@
 		},
 		{
 			"guid": "Q-v1w9GBUdWI6zxnbfiNesSObNnkYTo1nG1pdzKW4rc",
-			"nsrc": [
-				"Cover updated"
-			],
 			"ntgt": [
 				"已更新書封"
 			],
@@ -1607,13 +1148,6 @@
 		},
 		{
 			"guid": "EnR5B-t_Ampr-_FK6FCuwfxnUna0-VNGNQL73mm1j_Q",
-			"nsrc": [
-				"Page ",
-				{
-					"t": "x",
-					"v": "%1$d"
-				}
-			],
 			"ntgt": [
 				"第 ",
 				{
@@ -1627,9 +1161,6 @@
 		},
 		{
 			"guid": "Qc1ZV3Ny9VaRh6PE4IJFuKgtMzgbhfmKVWffUxkWjEQ",
-			"nsrc": [
-				"Next chapter not found"
-			],
 			"ntgt": [
 				"找不到下一章"
 			],
@@ -1638,9 +1169,6 @@
 		},
 		{
 			"guid": "HPwQLSKOlrYbHyjofNfikRimEekylevIiY_d0ksrTdw",
-			"nsrc": [
-				"The image could not be decoded"
-			],
 			"ntgt": [
 				"無法解碼該圖片"
 			],
@@ -1649,9 +1177,6 @@
 		},
 		{
 			"guid": "5kVJ5mq5XOSpOV0cRj20m4EjSERSHHjFb5D-B7eDKU4",
-			"nsrc": [
-				"Use this image as cover art?"
-			],
 			"ntgt": [
 				"要將該圖片設為書封嗎？"
 			],
@@ -1660,9 +1185,6 @@
 		},
 		{
 			"guid": "kNe03PPBX7947ArE1NcDm1bjk_f2BdRjXzmDiaMq22g",
-			"nsrc": [
-				"Finished:"
-			],
 			"ntgt": [
 				"已閱畢："
 			],
@@ -1671,9 +1193,6 @@
 		},
 		{
 			"guid": "xOCNiQ1-eZhVfxxb4HBtt-DTU7k3dep6EzHpl_YCf-s",
-			"nsrc": [
-				"Current:"
-			],
 			"ntgt": [
 				"當前章節:"
 			],
@@ -1682,9 +1201,6 @@
 		},
 		{
 			"guid": "Cu0tD99b95Y9bO_fmL3N4WkWWjhFRBnsCKEDSPMX7q4",
-			"nsrc": [
-				"Next:"
-			],
 			"ntgt": [
 				"接下來："
 			],
@@ -1693,9 +1209,6 @@
 		},
 		{
 			"guid": "7tIV3qzAV-hr0e12MF0i4ZPHqF_75NpVgYByiAkaHNQ",
-			"nsrc": [
-				"Previous:"
-			],
 			"ntgt": [
 				"上一章："
 			],
@@ -1704,9 +1217,6 @@
 		},
 		{
 			"guid": "6sT9eOh-YFpLlMtqSLgsuD_avu1ljtGpnl6rQ1BXgFE",
-			"nsrc": [
-				"There's no next chapter"
-			],
 			"ntgt": [
 				"以下空白"
 			],
@@ -1715,9 +1225,6 @@
 		},
 		{
 			"guid": "3_5VuY-h5PQRaBiH61VNzkCK5d2Ckp8mECsUPeMJER0",
-			"nsrc": [
-				"There's no previous chapter"
-			],
 			"ntgt": [
 				"已達盡頭"
 			],
@@ -1726,9 +1233,6 @@
 		},
 		{
 			"guid": "RwDrB8ReriDHnBT18vMtz9nt7kUIfq6If3j_0GnSfHU",
-			"nsrc": [
-				"Loading pages…"
-			],
 			"ntgt": [
 				"正在載入頁面…"
 			],
@@ -1737,13 +1241,6 @@
 		},
 		{
 			"guid": "UoUrj8RDjA-Dro_MlGIdIgAe1JtU1ux5tV_1JvQ9Aw8",
-			"nsrc": [
-				"Failed to load pages: ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
-			],
 			"ntgt": [
 				"第 ",
 				{
@@ -1757,9 +1254,6 @@
 		},
 		{
 			"guid": "fg2W1c2abzFBWZ3SzFWEwEmxeiqQT8Q0tPdnz-0ham8",
-			"nsrc": [
-				"Next page"
-			],
 			"ntgt": [
 				"下一頁"
 			],
@@ -1768,9 +1262,6 @@
 		},
 		{
 			"guid": "kbO5N_QHqkdnlKV2eS1VdZgAMbpL_RMDLTR4I1X39YY",
-			"nsrc": [
-				"Previous page"
-			],
 			"ntgt": [
 				"上一頁"
 			],
@@ -1779,9 +1270,6 @@
 		},
 		{
 			"guid": "a5-K12bzP7vKwNBq_JOnpnRtZUkMQ5Q3jYGJ2V71rqA",
-			"nsrc": [
-				"Next chapter"
-			],
 			"ntgt": [
 				"下一頁"
 			],
@@ -1790,9 +1278,6 @@
 		},
 		{
 			"guid": "Qgjb99vSOfspdYbFZRcg2LlM92KotKvXSnlpvUiTxrg",
-			"nsrc": [
-				"Previous chapter"
-			],
 			"ntgt": [
 				"上一頁"
 			],
@@ -1801,9 +1286,6 @@
 		},
 		{
 			"guid": "pUNw1jNdpBub4YvDOOVOnB9xp9b5HhtenI0mCjut3So",
-			"nsrc": [
-				"Fullscreen"
-			],
 			"ntgt": [
 				"全螢幕"
 			],
@@ -1812,9 +1294,6 @@
 		},
 		{
 			"guid": "VHhERbkrDJ_f0FYm2yd4HDXIg4Km7BRIw03XCWeE3I0",
-			"nsrc": [
-				"Animate page transitions"
-			],
 			"ntgt": [
 				"翻頁轉場動畫"
 			],
@@ -1823,9 +1302,6 @@
 		},
 		{
 			"guid": "QtV3gNtCZtvtzsOGDmDcjeE-Cv2HN1Do1Lha4HwpkSU",
-			"nsrc": [
-				"Double tap animation speed"
-			],
 			"ntgt": [
 				"輕觸兩下動畫速度"
 			],
@@ -1834,9 +1310,6 @@
 		},
 		{
 			"guid": "dR_2FWiEp_4r9VQkBrdc_yNcqvwD8l8Vn9_efc-QGVw",
-			"nsrc": [
-				"Show page number"
-			],
 			"ntgt": [
 				"顯示頁碼"
 			],
@@ -1845,9 +1318,6 @@
 		},
 		{
 			"guid": "by17fVJInY6ur0rEkp-1jdaqj6IdZtC4Rn_tfyF6Jc0",
-			"nsrc": [
-				"32-bit color"
-			],
 			"ntgt": [
 				"32 位元色彩"
 			],
@@ -1856,9 +1326,6 @@
 		},
 		{
 			"guid": "KhQBQDYldIJeYyASM34BR-9ILkPBggtCSCM73BnXGfc",
-			"nsrc": [
-				"Reduces banding, but impacts performance"
-			],
 			"ntgt": [
 				"減緩色調分離，但拖累效能"
 			],
@@ -1867,9 +1334,6 @@
 		},
 		{
 			"guid": "bZWNWOTR_a6vu5KHhFocNrmKcuf2Dm_ZHyLsrqkWPIo",
-			"nsrc": [
-				"Crop borders"
-			],
 			"ntgt": [
 				"邊緣裁剪"
 			],
@@ -1878,9 +1342,6 @@
 		},
 		{
 			"guid": "4tYTM3KKeVYFJYv6_5yzTRHyQ28cGuYDCTw3mxbsrqI",
-			"nsrc": [
-				"Use custom brightness"
-			],
 			"ntgt": [
 				"自訂亮度"
 			],
@@ -1889,9 +1350,6 @@
 		},
 		{
 			"guid": "1c85W3dFyXzu-2RzBeQIlV3MQEozuLec6TzQk5ZgkGI",
-			"nsrc": [
-				"Use custom color filter"
-			],
 			"ntgt": [
 				"色彩濾鏡"
 			],
@@ -1900,9 +1358,6 @@
 		},
 		{
 			"guid": "YvEPrA_hYuYjnFBjh7C_s87KrXHO0sq2Gkbv5lmRUWY",
-			"nsrc": [
-				"Color filter blend mode"
-			],
 			"ntgt": [
 				"濾鏡融合機制"
 			],
@@ -1911,9 +1366,6 @@
 		},
 		{
 			"guid": "2b65yx3R1E_JJ-7maL5mvJdNQr_wQ6IK7FCTVwSS0Uo",
-			"nsrc": [
-				"Overlay"
-			],
 			"ntgt": [
 				"覆蓋"
 			],
@@ -1922,9 +1374,6 @@
 		},
 		{
 			"guid": "B4K1BKpuoFvqmYL2wmhnt3VUpb77AWmfiG_hMzH-WlM",
-			"nsrc": [
-				"Multiply"
-			],
 			"ntgt": [
 				"色彩增值"
 			],
@@ -1933,9 +1382,6 @@
 		},
 		{
 			"guid": "mp6yzD2NNQpXEtLCjAs82oYFOTGnIRrFyDWyyXEcZ58",
-			"nsrc": [
-				"Screen"
-			],
 			"ntgt": [
 				"濾色"
 			],
@@ -1944,9 +1390,6 @@
 		},
 		{
 			"guid": "bJVQLX_e3mTmRx5ywvw2aXxJm-urN7kaylp6ikz-cmI",
-			"nsrc": [
-				"Dodge / Lighten"
-			],
 			"ntgt": [
 				"減淡 / 變亮"
 			],
@@ -1955,9 +1398,6 @@
 		},
 		{
 			"guid": "7GCR5o4olY4EW2sPlXgG2bu-jwgBbxn-bmHpAC5-O_U",
-			"nsrc": [
-				"Burn / Darken"
-			],
 			"ntgt": [
 				"加深 / 變暗"
 			],
@@ -1966,9 +1406,6 @@
 		},
 		{
 			"guid": "f9rLPt76BysQKtcUJkghsKsh3HkngCULoTOK27EWiuI",
-			"nsrc": [
-				"Keep screen on"
-			],
 			"ntgt": [
 				"保持螢幕恆亮"
 			],
@@ -1977,9 +1414,6 @@
 		},
 		{
 			"guid": "3_pv2EMITFCjiGuE8euV2WQNtAZAXjzdlz-59CZW618",
-			"nsrc": [
-				"Skip chapters marked read"
-			],
 			"ntgt": [
 				"略過已讀的章節"
 			],
@@ -1988,9 +1422,6 @@
 		},
 		{
 			"guid": "Iunr4RpoBhkijCa5-8syOpaBW0ldfPQF3ycjrsz5f6w",
-			"nsrc": [
-				"Skip filtered chapters"
-			],
 			"ntgt": [
 				"略過已篩選的章節"
 			],
@@ -1999,9 +1430,6 @@
 		},
 		{
 			"guid": "35PCdwbIevpxwavStJbMM6f99gNomxLOb4xk8lLZolo",
-			"nsrc": [
-				"Navigation"
-			],
 			"ntgt": [
 				"導覽"
 			],
@@ -2010,9 +1438,6 @@
 		},
 		{
 			"guid": "X_R6-EL4Tz6_cbe-mq22Eprfpb4Jlaf2zHaiwY5_HCc",
-			"nsrc": [
-				"Volume keys"
-			],
 			"ntgt": [
 				"音量按鈕"
 			],
@@ -2021,9 +1446,6 @@
 		},
 		{
 			"guid": "DsjlrDhzpILpbXZrVrDLarpvHJ9oVaydBkBanBlvBKY",
-			"nsrc": [
-				"Invert volume keys"
-			],
 			"ntgt": [
 				"反轉音量按鈕"
 			],
@@ -2032,9 +1454,6 @@
 		},
 		{
 			"guid": "tUw5PBcP3qzDlw7w1QeYtoTy2rA2_43KAXhBtc2GzGg",
-			"nsrc": [
-				"Tapping"
-			],
 			"ntgt": [
 				"輕觸翻頁"
 			],
@@ -2043,9 +1462,6 @@
 		},
 		{
 			"guid": "0pLU1V_ceLaHm46CjFnQCJqSVvmTy7iYKk0bABX7zJU",
-			"nsrc": [
-				"Background color"
-			],
 			"ntgt": [
 				"背景顏色"
 			],
@@ -2054,9 +1470,6 @@
 		},
 		{
 			"guid": "HAOMLIeWcepZpcjwJ7wpe-yK25A4vdnlPLt_aSYiocA",
-			"nsrc": [
-				"White"
-			],
 			"ntgt": [
 				"白色"
 			],
@@ -2065,9 +1478,6 @@
 		},
 		{
 			"guid": "NupXc9sOna4VUAdbNzmvqKoq7fjWoM3Gx4eDfEPSeik",
-			"nsrc": [
-				"Black"
-			],
 			"ntgt": [
 				"黑色"
 			],
@@ -2076,9 +1486,6 @@
 		},
 		{
 			"guid": "EOFLKmFTCe5Ae-Wtq_pK3peI_TRaQuvr3l2fmu3-Mw4",
-			"nsrc": [
-				"Default reading mode"
-			],
 			"ntgt": [
 				"預設閱讀模式"
 			],
@@ -2087,9 +1494,6 @@
 		},
 		{
 			"guid": "VPGsMk1yoj7-QyV8qOYZImyyGWfyiX3VuXs07HuPK7g",
-			"nsrc": [
-				"Left to right"
-			],
 			"ntgt": [
 				"由左至右"
 			],
@@ -2098,9 +1502,6 @@
 		},
 		{
 			"guid": "C7CqafLAhof20BH1oRqNSTwR7eAUzM9DVuI9j4uypfo",
-			"nsrc": [
-				"Right to left"
-			],
 			"ntgt": [
 				"由右至左"
 			],
@@ -2109,9 +1510,6 @@
 		},
 		{
 			"guid": "S76dgtuFdxKRtVLnNaVwrCpcVM8T-s1ZhTRcjLb5XUQ",
-			"nsrc": [
-				"Vertical"
-			],
 			"ntgt": [
 				"由上至下"
 			],
@@ -2120,9 +1518,6 @@
 		},
 		{
 			"guid": "zEeTg_OfAfDiKTNf2uLorQnzgfYkYf23B79ntzxEw2Y",
-			"nsrc": [
-				"Continuous vertical"
-			],
 			"ntgt": [
 				"垂直連貫"
 			],
@@ -2131,9 +1526,6 @@
 		},
 		{
 			"guid": "dJUyYY4LBbu52csjAPgjlHqv-ypUCQZp8f9httFZAQ4",
-			"nsrc": [
-				"Paged"
-			],
 			"ntgt": [
 				"單頁式"
 			],
@@ -2142,9 +1534,6 @@
 		},
 		{
 			"guid": "yd6gqulAttI-Zb-AH02TbAftNIA4Ow1vMwJCkmf4egw",
-			"nsrc": [
-				"Scale type"
-			],
 			"ntgt": [
 				"縮放模式"
 			],
@@ -2153,9 +1542,6 @@
 		},
 		{
 			"guid": "LzUubPrfRnlymnz-q_KqmEdajpP4jlZ67VTh-LkD03w",
-			"nsrc": [
-				"Navigation layout"
-			],
 			"ntgt": [
 				"輕觸翻頁模式"
 			],
@@ -2164,9 +1550,6 @@
 		},
 		{
 			"guid": "Iurgn3LlVy6Rb23zUCv-CriesFzy0yPB9V6oy3Rr81s",
-			"nsrc": [
-				"Fit screen"
-			],
 			"ntgt": [
 				"符合螢幕"
 			],
@@ -2175,9 +1558,6 @@
 		},
 		{
 			"guid": "MBOyB3XuLgKb1S3dOMXoHVZhewJ7t93S7YdmLqpRmxM",
-			"nsrc": [
-				"Stretch"
-			],
 			"ntgt": [
 				"延展"
 			],
@@ -2186,9 +1566,6 @@
 		},
 		{
 			"guid": "QbfP6ebA6apoM7yAZAbnWM93pw_AIFJ6pF5VUVJKoIA",
-			"nsrc": [
-				"Fit width"
-			],
 			"ntgt": [
 				"符合頁寬"
 			],
@@ -2197,9 +1574,6 @@
 		},
 		{
 			"guid": "GqhKG9Odi7eN2NzGu_821KOEk7vU3N1g1i6gNNVEnFM",
-			"nsrc": [
-				"Fit height"
-			],
 			"ntgt": [
 				"符合頁高"
 			],
@@ -2208,9 +1582,6 @@
 		},
 		{
 			"guid": "3bNgWTOqb8eT6U9sVKtFuPQ7qmql_D9sUgJIu9Q8XgY",
-			"nsrc": [
-				"Original size"
-			],
 			"ntgt": [
 				"原始大小"
 			],
@@ -2219,9 +1590,6 @@
 		},
 		{
 			"guid": "TTiu10VhVg6HKLHFrD9wDFmvshAZegRpRXnszaVNHsU",
-			"nsrc": [
-				"Smart fit"
-			],
 			"ntgt": [
 				"智慧型填充"
 			],
@@ -2230,9 +1598,6 @@
 		},
 		{
 			"guid": "nN-kGmXRFPb1rRmtDZTJu4nM6yxDeDvcblqrdveatSw",
-			"nsrc": [
-				"Zoom start position"
-			],
 			"ntgt": [
 				"縮放原點"
 			],
@@ -2241,9 +1606,6 @@
 		},
 		{
 			"guid": "6DfqvfeUOEL-0Me9CWZ5B1Os0o51R1XLp7CZysoW5mo",
-			"nsrc": [
-				"Portrait"
-			],
 			"ntgt": [
 				"直向"
 			],
@@ -2252,9 +1614,6 @@
 		},
 		{
 			"guid": "sb5glIdoajcge8U--UgSkN61vlf9ftAf1MHZdrXrjc0",
-			"nsrc": [
-				"Landscape"
-			],
 			"ntgt": [
 				"橫向"
 			],
@@ -2263,9 +1622,6 @@
 		},
 		{
 			"guid": "hsz8t-nRDeUVMxcYTRrpOcX1DtzbBTlblROo3BGgWPg",
-			"nsrc": [
-				"R"
-			],
 			"ntgt": [
 				"R"
 			],
@@ -2274,9 +1630,6 @@
 		},
 		{
 			"guid": "_GKKHIx-LMjL1bFqln8KRqL3KLbJOGtReVGgEvY3eng",
-			"nsrc": [
-				"G"
-			],
 			"ntgt": [
 				"G"
 			],
@@ -2285,9 +1638,6 @@
 		},
 		{
 			"guid": "SgldSUoKiKjsDjuGTmcVnvQvtuTUjLuHebuFTrbN4EU",
-			"nsrc": [
-				"B"
-			],
 			"ntgt": [
 				"B"
 			],
@@ -2296,9 +1646,6 @@
 		},
 		{
 			"guid": "ZvPS2igGNSNfJ4GtVXrcV4HMQMU9L6qItjmF7IkWfEY",
-			"nsrc": [
-				"A"
-			],
 			"ntgt": [
 				"A"
 			],
@@ -2307,9 +1654,6 @@
 		},
 		{
 			"guid": "1i1B73JpFdmi62bt30a5CTg9KpnLs1Zg0vFl5BGOsoA",
-			"nsrc": [
-				"Always show chapter transition"
-			],
 			"ntgt": [
 				"永遠顯示章節間的隔頁"
 			],
@@ -2318,9 +1662,6 @@
 		},
 		{
 			"guid": "DV6nS5VEc9pBa2beWxQnk1arQR62ZVgyZyDptEzXh0E",
-			"nsrc": [
-				"Side padding"
-			],
 			"ntgt": [
 				"頁緣留白"
 			],
@@ -2329,9 +1670,6 @@
 		},
 		{
 			"guid": "nr78np2ASS-G7E0zBw200Q60kDC0kJG6B9fmWpjSTrs",
-			"nsrc": [
-				"None"
-			],
 			"ntgt": [
 				"無"
 			],
@@ -2340,9 +1678,6 @@
 		},
 		{
 			"guid": "E-07uio8Bqr7bA-fh4G9CANGkla54FuFgi-AilSVaBs",
-			"nsrc": [
-				"10%"
-			],
 			"ntgt": [
 				"10%"
 			],
@@ -2351,9 +1686,6 @@
 		},
 		{
 			"guid": "woPpn8Wqo-SUAWwu8eUXeeAwGBcahY8gYVPmTVjobZs",
-			"nsrc": [
-				"15%"
-			],
 			"ntgt": [
 				"15%"
 			],
@@ -2362,9 +1694,6 @@
 		},
 		{
 			"guid": "IPJddNqFEFz6ppMrqj-4ZhC6BiPw24oPRFOYP4kCuU0",
-			"nsrc": [
-				"20%"
-			],
 			"ntgt": [
 				"20%"
 			],
@@ -2373,9 +1702,6 @@
 		},
 		{
 			"guid": "vNJLesjHxN8RVIpTAYKNO55ylnR7xAOppQAPNDjD0pw",
-			"nsrc": [
-				"25%"
-			],
 			"ntgt": [
 				"25%"
 			],
@@ -2384,9 +1710,6 @@
 		},
 		{
 			"guid": "Z3mFfFMdZspt3dzBYbf4Ya5q1hEP1B647zm1RFYgFUg",
-			"nsrc": [
-				"L shaped"
-			],
 			"ntgt": [
 				"L 式"
 			],
@@ -2395,9 +1718,6 @@
 		},
 		{
 			"guid": "d09gaLfQKHbqHKFGzRPW9Is4lOrCexlVd5irQEDFjN4",
-			"nsrc": [
-				"Kindle-ish"
-			],
 			"ntgt": [
 				"Kindle 式"
 			],
@@ -2406,9 +1726,6 @@
 		},
 		{
 			"guid": "VDS_8a6bh6aJVCen9m_nsjOcdSnzT7_Y2N6W1A2zx0w",
-			"nsrc": [
-				"Edge"
-			],
 			"ntgt": [
 				"邊緣式"
 			],
@@ -2417,9 +1734,6 @@
 		},
 		{
 			"guid": "AoVCIaf_xmO8IjzqRqDmLTXKnKIxVa2ZzWex5-otvx0",
-			"nsrc": [
-				"Right and Left"
-			],
 			"ntgt": [
 				"左右式"
 			],
@@ -2428,9 +1742,6 @@
 		},
 		{
 			"guid": "DdkUOyOMpzBEq8roZG_hrtvB4aUJRtEQtjni7B5f_BE",
-			"nsrc": [
-				"Invert tapping"
-			],
 			"ntgt": [
 				"反轉輕觸方向"
 			],
@@ -2439,9 +1750,6 @@
 		},
 		{
 			"guid": "E8KWrYjuV6rNYOBiHEUYJc01lcgVbWvPKCdbBU3hObk",
-			"nsrc": [
-				"None"
-			],
 			"ntgt": [
 				"無"
 			],
@@ -2450,14 +1758,6 @@
 		},
 		{
 			"guid": "Pc2BUXJyZZ3NM7dQk4gQW86gJoZmz9yFo__l8s4e9MY",
-			"nsrc": [
-				"Skipping ",
-				{
-					"t": "x",
-					"v": "%d"
-				},
-				" chapters, either the source is missing them or they have been filtered out"
-			],
 			"ntgt": [
 				"略過了 ",
 				{
@@ -2471,9 +1771,6 @@
 		},
 		{
 			"guid": "-5XFw8b0YYkp0SCPdD9jr-qHCGe62QMog7cZeWlROFU",
-			"nsrc": [
-				"Start reading"
-			],
 			"ntgt": [
 				"開始閱讀"
 			],
@@ -2482,13 +1779,6 @@
 		},
 		{
 			"guid": "dhYxjTjRurEmRtDpvPA7Dmqy-aolxGSAbtnMeV0t7_0",
-			"nsrc": [
-				"Start reading Chapter ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
-			],
 			"ntgt": [
 				"開始閱讀第",
 				{
@@ -2502,13 +1792,6 @@
 		},
 		{
 			"guid": "VSx02unAfVpZMZjM5Ch1lClXeTWa_hZl1DBlD9g4BHE",
-			"nsrc": [
-				"Continue reading Chapter ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
-			],
 			"ntgt": [
 				"繼續閱讀第",
 				{
@@ -2522,9 +1805,6 @@
 		},
 		{
 			"guid": "5nIU3KDWhHbJ9FJihG1SY6TwHm49uNfMfb32gEmyBjQ",
-			"nsrc": [
-				"Continue reading"
-			],
 			"ntgt": [
 				"繼續閱讀"
 			],
@@ -2533,13 +1813,6 @@
 		},
 		{
 			"guid": "F1RxS0BEDD6TIHPdzRKw9ICZjpNvfpJRu4cj-9lfGoc",
-			"nsrc": [
-				"Chapters ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
-			],
 			"ntgt": [
 				"第 ",
 				{
@@ -2553,9 +1826,6 @@
 		},
 		{
 			"guid": "VzfIwCvfT_SWF4N-PSl7tLjp34mDypzzNQ98lzA9grs",
-			"nsrc": [
-				"Added to library"
-			],
 			"ntgt": [
 				"已收藏至書櫃"
 			],
@@ -2564,9 +1834,6 @@
 		},
 		{
 			"guid": "-JntRMSaIHPSXHjygiupqQkbc6IuVZwdLa26WPCESm8",
-			"nsrc": [
-				"Add to Library"
-			],
 			"ntgt": [
 				"加入書櫃"
 			],
@@ -2575,9 +1842,6 @@
 		},
 		{
 			"guid": "35VYh_G4PHB9o0W7-hU6IjWIlgjgxhTRS0yEkmcb_3w",
-			"nsrc": [
-				"Removed from library"
-			],
 			"ntgt": [
 				"已從書櫃中移除"
 			],
@@ -2586,13 +1850,6 @@
 		},
 		{
 			"guid": "QSmAX5m679wB0QyJtbDO2kU8UNCbW8w4IL9BjyLisIU",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "%1$s"
-				},
-				" copied to clipboard"
-			],
 			"ntgt": [
 				"「",
 				{
@@ -2606,13 +1863,6 @@
 		},
 		{
 			"guid": "tWY-2CNXp4Bgu0ORF0YJvuSxU9JDAUqON9ZoFdrEirc",
-			"nsrc": [
-				"Source not installed: ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
-			],
 			"ntgt": [
 				"來源未安裝：",
 				{
@@ -2625,9 +1875,6 @@
 		},
 		{
 			"guid": "vb6M0a5p7nlhFaVF25AqUDe_RGdqcsxarx6UG_GsqDg",
-			"nsrc": [
-				"Mark all chapters as read?"
-			],
 			"ntgt": [
 				"標記全部章節為已讀?"
 			],
@@ -2636,9 +1883,6 @@
 		},
 		{
 			"guid": "fIe7OJGoVZirD43ou4RVwBOAP5yU7sh56qU22laqs70",
-			"nsrc": [
-				"Mark all chapters as unread?"
-			],
 			"ntgt": [
 				"標記全部章節為未讀?"
 			],
@@ -2647,9 +1891,6 @@
 		},
 		{
 			"guid": "vthb4GHYrwqJ25tkTSvcBTYugT9CgANmMhJr6DldzM0",
-			"nsrc": [
-				"Remove from library"
-			],
 			"ntgt": [
 				"移出書櫃"
 			],
@@ -2658,9 +1899,6 @@
 		},
 		{
 			"guid": "rTa-rfbkWhT1SOkZhUEkxuCsM4muY36dfZLIp-SjVyw",
-			"nsrc": [
-				"Select starting chapter"
-			],
 			"ntgt": [
 				"選擇開始章節"
 			],
@@ -2669,9 +1907,6 @@
 		},
 		{
 			"guid": "M4mHJaykq6HWj58nIQzsqHlKduoaGMLjR-IDnYa4Xk8",
-			"nsrc": [
-				"Select ending chapter"
-			],
 			"ntgt": [
 				"選擇結束章節"
 			],
@@ -2680,9 +1915,6 @@
 		},
 		{
 			"guid": "546dbT7ZGO5rIG5FYjj6sVANQDhUb8LgjW7cp0nC4OY",
-			"nsrc": [
-				"Search chapters"
-			],
 			"ntgt": [
 				"搜尋章節"
 			],
@@ -2691,9 +1923,6 @@
 		},
 		{
 			"guid": "e04nJSjVw91KEg0TgQUxdPV8cIkfF7VwvYKs1ZFUH0A",
-			"nsrc": [
-				"Next unread chapter"
-			],
 			"ntgt": [
 				"下一章未讀章節"
 			],
@@ -2702,9 +1931,6 @@
 		},
 		{
 			"guid": "Rjdo1_UmkY78kK8069pLRZ2hq3_Qpf_PjUxF8KQoxr8",
-			"nsrc": [
-				"Next 5 unread"
-			],
 			"ntgt": [
 				"下載後五章"
 			],
@@ -2713,9 +1939,6 @@
 		},
 		{
 			"guid": "TiQDmVcsTfL_uP9vYItHBvqMm4-QbEioiXRjeBE4P-w",
-			"nsrc": [
-				"Custom range"
-			],
 			"ntgt": [
 				"下載自訂範圍"
 			],
@@ -2724,9 +1947,6 @@
 		},
 		{
 			"guid": "xQ_fXPRobfNykpLvURDWEDqL6xjfce54bFHNUAlWLLg",
-			"nsrc": [
-				"All chapters"
-			],
 			"ntgt": [
 				"下載全部"
 			],
@@ -2735,9 +1955,6 @@
 		},
 		{
 			"guid": "cidU4cU_62qzpISOsMJr885GLmBqMvWC69iCQnZGyvA",
-			"nsrc": [
-				"All unread chapters"
-			],
 			"ntgt": [
 				"下載未讀"
 			],
@@ -2746,9 +1963,6 @@
 		},
 		{
 			"guid": "c-b_wOG1KoH3QdvemRbT425NOfJcSxqYmampEL2IrYQ",
-			"nsrc": [
-				"All read chapters"
-			],
 			"ntgt": [
 				"全部已讀"
 			],
@@ -2757,9 +1971,6 @@
 		},
 		{
 			"guid": "XXYiOQ6ywkRMuMGi66aeLnHCmcs_BMaNIILfWTeu8Oo",
-			"nsrc": [
-				"All but bookmarked chapters"
-			],
 			"ntgt": [
 				"全部已加入書籤章節"
 			],
@@ -2768,9 +1979,6 @@
 		},
 		{
 			"guid": "59ANLfGrC9sYWWJ7soKLOgvTTiB-X56ddjZv8_wpvvk",
-			"nsrc": [
-				"Show bookmarked chapters"
-			],
 			"ntgt": [
 				"顯示已加入書籤"
 			],
@@ -2779,9 +1987,6 @@
 		},
 		{
 			"guid": "RdhknvMYUXEeI5xGX57XnaOOt-3QNVOXVWmFzMdt-RY",
-			"nsrc": [
-				"Show downloaded chapters"
-			],
 			"ntgt": [
 				"顯示已下載"
 			],
@@ -2790,9 +1995,6 @@
 		},
 		{
 			"guid": "bEWBwQs9W7nT5Uod7_0VmZugV3GHYc344WnH3gWBBs8",
-			"nsrc": [
-				"Show unread chapters"
-			],
 			"ntgt": [
 				"顯示未讀章節"
 			],
@@ -2801,9 +2003,6 @@
 		},
 		{
 			"guid": "Vr1ax3wE48yESWD5OV2cIQaBr_uuVtbCfEX_kbp2J20",
-			"nsrc": [
-				"Show read chapters"
-			],
 			"ntgt": [
 				"顯示已讀章節"
 			],
@@ -2812,9 +2011,6 @@
 		},
 		{
 			"guid": "gfLT8d325ksfRKQ5Dj92YdLF1785jSmgjWimm1_nU9Q",
-			"nsrc": [
-				"Hide chapter titles"
-			],
 			"ntgt": [
 				"隱藏標題"
 			],
@@ -2823,9 +2019,6 @@
 		},
 		{
 			"guid": "LNfxBPO_lVWgBayQDFluUF42ycjQ1VaJXg0ytvQZmo0",
-			"nsrc": [
-				"Sort by source's order"
-			],
 			"ntgt": [
 				"依來源排序"
 			],
@@ -2834,9 +2027,6 @@
 		},
 		{
 			"guid": "8GH_VjvU5TN8RL1DJwYVByvb08G21u9LLU4jBF7FGyo",
-			"nsrc": [
-				"Sort by chapter number"
-			],
 			"ntgt": [
 				"依編號排序"
 			],
@@ -2845,9 +2035,6 @@
 		},
 		{
 			"guid": "MobJA0FZoPNP6s8GgyEGk5Z05eKcjZ7knk1Qr7fAKbc",
-			"nsrc": [
-				"Newest to oldest"
-			],
 			"ntgt": [
 				"最新到最舊"
 			],
@@ -2856,9 +2043,6 @@
 		},
 		{
 			"guid": "r0wEECvy6Uo5enPtRzDJKsLQp9_xK6W0cKlmirilMC0",
-			"nsrc": [
-				"Oldest to newest"
-			],
 			"ntgt": [
 				"最舊到最新"
 			],
@@ -2867,9 +2051,6 @@
 		},
 		{
 			"guid": "YQ9Pslar5DpY7LteD-YuSor3-Ohnncut5xA_womBg7c",
-			"nsrc": [
-				"Failed to update cover"
-			],
 			"ntgt": [
 				"書封更新失敗"
 			],
@@ -2878,9 +2059,6 @@
 		},
 		{
 			"guid": "re5C-dOrMmRYYatR4pDIEGir1t9sA6GrjI3uauuQ-Hs",
-			"nsrc": [
-				"Manga must be in your library to edit"
-			],
 			"ntgt": [
 				"請先將漫畫收藏至書櫃再進行更新"
 			],
@@ -2889,9 +2067,6 @@
 		},
 		{
 			"guid": "1YfuduRire5UcC4X8zgoDYQaCOhDqNRFDWwK_1CNNPo",
-			"nsrc": [
-				"Cover saved"
-			],
 			"ntgt": [
 				"已儲存封面"
 			],
@@ -2900,9 +2075,6 @@
 		},
 		{
 			"guid": "7b_tbC0vJokC6pbjnD5bInOL_7G0OdAXW356nPjaKKk",
-			"nsrc": [
-				"Error saving cover"
-			],
 			"ntgt": [
 				"儲存封面時發生錯誤"
 			],
@@ -2911,9 +2083,6 @@
 		},
 		{
 			"guid": "xQocGcan1uFSG-TezMrcv7i-cP0Pe76eIWbt4HagfMY",
-			"nsrc": [
-				"Error sharing cover"
-			],
 			"ntgt": [
 				"分享封面時發生錯誤"
 			],
@@ -2922,9 +2091,6 @@
 		},
 		{
 			"guid": "zqx57op51LrF8xEbhH3gB9ZAjf8hRcKRWgn3rKmO51c",
-			"nsrc": [
-				"Custom manga info"
-			],
 			"ntgt": [
 				"自訂漫畫資訊"
 			],
@@ -2933,9 +2099,6 @@
 		},
 		{
 			"guid": "086GVeyCI86-O4ZnovrYS29Vg0gzYkZbpU6Jr6y_Kis",
-			"nsrc": [
-				"Set as default"
-			],
 			"ntgt": [
 				"設定為預設"
 			],
@@ -2944,9 +2107,6 @@
 		},
 		{
 			"guid": "fZhmHvNVgb2WvnwMpxmxVtQMoZMaXORd2ibT-SZm1Ys",
-			"nsrc": [
-				"Tracking"
-			],
 			"ntgt": [
 				"歷程"
 			],
@@ -2955,9 +2115,6 @@
 		},
 		{
 			"guid": "ZlLL4fGdPSuS3w2p-kWAjb7vtIsJBhD1q9KOeJEpAJA",
-			"nsrc": [
-				"Tracked"
-			],
 			"ntgt": [
 				"已紀錄歷程"
 			],
@@ -2966,9 +2123,6 @@
 		},
 		{
 			"guid": "LVLfgmMnGnMA4lyB9tKtml9AFqMz8uSPYrAd_m_nvf0",
-			"nsrc": [
-				"Services"
-			],
 			"ntgt": [
 				"服務"
 			],
@@ -2977,9 +2131,6 @@
 		},
 		{
 			"guid": "dW-LPBUDZa9ZGOMBFDvMBEx7gtRRASof1dy20CCWbxQ",
-			"nsrc": [
-				"Sync chapters after reading"
-			],
 			"ntgt": [
 				"閱讀完後同步章節"
 			],
@@ -2988,9 +2139,6 @@
 		},
 		{
 			"guid": "BCDgHQUuX-glRXjK5RYzWLiKvfDZfAZbV5im3himAXg",
-			"nsrc": [
-				"Reading"
-			],
 			"ntgt": [
 				"閱讀中"
 			],
@@ -2999,9 +2147,6 @@
 		},
 		{
 			"guid": "cbSe_BNLwFsomZVEWi0GTNEJ6Mao82of7c6NS6eDVM4",
-			"nsrc": [
-				"Currently Reading"
-			],
 			"ntgt": [
 				"閱讀中"
 			],
@@ -3010,9 +2155,6 @@
 		},
 		{
 			"guid": "LYynjNIz72cF50SS1OXJbvPr7MAIjLxw9gVow_4Sz_c",
-			"nsrc": [
-				"Dropped"
-			],
 			"ntgt": [
 				"不看了"
 			],
@@ -3021,9 +2163,6 @@
 		},
 		{
 			"guid": "x8gsoYYeRGdYb0x6VRUjBIX8z4Vv_6B3coaf5CgwbLo",
-			"nsrc": [
-				"On hold"
-			],
 			"ntgt": [
 				"擱置中"
 			],
@@ -3032,9 +2171,6 @@
 		},
 		{
 			"guid": "EA9iZ6SE2GG97cnEhFB_R2N09qjw5QKImKEDwi1gSGU",
-			"nsrc": [
-				"Plan to read"
-			],
 			"ntgt": [
 				"準備讀"
 			],
@@ -3043,9 +2179,6 @@
 		},
 		{
 			"guid": "XtNPZKSNMlWIZLncN7R3g2WMvjXkyok6HD8P-aLD71s",
-			"nsrc": [
-				"Want to Read"
-			],
 			"ntgt": [
 				"想要看"
 			],
@@ -3054,9 +2187,6 @@
 		},
 		{
 			"guid": "l0UZpsXZnaycQm2s1a667I4AKRUiCDoh8faRBAoIwy8",
-			"nsrc": [
-				"Paused"
-			],
 			"ntgt": [
 				"擱置中"
 			],
@@ -3065,9 +2195,6 @@
 		},
 		{
 			"guid": "D8J75_kmWSq7IFTsNEViQj9LKmW5czbN2rvN6NhWFi0",
-			"nsrc": [
-				"Rereading"
-			],
 			"ntgt": [
 				"重溫中"
 			],
@@ -3076,9 +2203,6 @@
 		},
 		{
 			"guid": "bc1arDgNPnGeMzUyV9RBZCgCGTT-rS7QftpOUnt4xfU",
-			"nsrc": [
-				"Score"
-			],
 			"ntgt": [
 				"評分"
 			],
@@ -3087,9 +2211,6 @@
 		},
 		{
 			"guid": "BYUSJBCIrcTUzre5sOlDt_5DTKLFSCT3gCjuLbs26Uk",
-			"nsrc": [
-				"Status"
-			],
 			"ntgt": [
 				"狀態"
 			],
@@ -3098,9 +2219,6 @@
 		},
 		{
 			"guid": "Plz4DpsSw4n_xqGDSRumsnzp8uftskZiBkD-KIaPKfs",
-			"nsrc": [
-				"Started"
-			],
 			"ntgt": [
 				"創刊"
 			],
@@ -3109,9 +2227,6 @@
 		},
 		{
 			"guid": "sV7cmhJOzX58-qayIAQRRM-sfBi6y-cLcMVyqkiD-lE",
-			"nsrc": [
-				"Type"
-			],
 			"ntgt": [
 				"類型"
 			],
@@ -3120,9 +2235,6 @@
 		},
 		{
 			"guid": "61Apnoa_5m61OWybH8wwbXmDcq_rYqJk847c_Pj593I",
-			"nsrc": [
-				"Manga URL not set, please click title and select manga again"
-			],
 			"ntgt": [
 				"漫畫網址未設置，請點擊標題再選擇一次漫畫"
 			],
@@ -3131,9 +2243,6 @@
 		},
 		{
 			"guid": "BBmg1wcHCXd_7-M0GdKSVka6ytQL1IxV4ghzoo_8GvI",
-			"nsrc": [
-				"Refresh tracking"
-			],
 			"ntgt": [
 				"更新閱讀歷程"
 			],
@@ -3142,9 +2251,6 @@
 		},
 		{
 			"guid": "6wJlLh7DBrocgpvx47TL8hna9fKnth8bppMYBFrM-tM",
-			"nsrc": [
-				"Add tracking"
-			],
 			"ntgt": [
 				"新增閱讀歷程"
 			],
@@ -3153,9 +2259,6 @@
 		},
 		{
 			"guid": "gks4bWWDDbYU3WqFt4sCDQzKkk818PdlB7ib_dco-_U",
-			"nsrc": [
-				"Source is not supported"
-			],
 			"ntgt": [
 				"未支援的來源"
 			],
@@ -3164,9 +2267,6 @@
 		},
 		{
 			"guid": "IdKSaHZYLeKCreMhJvSr90in8riPYe3xZnx4rn1EEjs",
-			"nsrc": [
-				"Started reading date"
-			],
 			"ntgt": [
 				"開始閱讀日期"
 			],
@@ -3175,9 +2275,6 @@
 		},
 		{
 			"guid": "jkNC1t_pdP_Few1ZGvDlApIV5bi4RFhd7tdSlaPBm_U",
-			"nsrc": [
-				"Finished reading date"
-			],
 			"ntgt": [
 				"閱讀完畢日期"
 			],
@@ -3186,9 +2283,6 @@
 		},
 		{
 			"guid": "OH8biETAPZyxtx6m-XHb4BUqwPOgCWsRBnukgGV7niE",
-			"nsrc": [
-				"Please log in to MAL again"
-			],
 			"ntgt": [
 				"請重新登入 MAL"
 			],
@@ -3197,9 +2291,6 @@
 		},
 		{
 			"guid": "X0_pFoQrmtP7HRDl7tJJRY9v4aAvjI8hpck4OCcfqic",
-			"nsrc": [
-				"Select sources"
-			],
 			"ntgt": [
 				"選擇來源"
 			],
@@ -3208,9 +2299,6 @@
 		},
 		{
 			"guid": "Gm-hW1MyWTyz6S6nDLvIqHjT-gG1tYCMifCfrhoH7HA",
-			"nsrc": [
-				"Source migration"
-			],
 			"ntgt": [
 				"來源遷移"
 			],
@@ -3219,9 +2307,6 @@
 		},
 		{
 			"guid": "mtYe3HWlkJC02486UH-CxoJ2HFrYI4YFFBMUIXpeRkw",
-			"nsrc": [
-				"Migrate"
-			],
 			"ntgt": [
 				"遷移"
 			],
@@ -3230,9 +2315,6 @@
 		},
 		{
 			"guid": "JUjbLHtxbd3o_tATtMLJSXSM4DthXJI9BM3oDkUcWHw",
-			"nsrc": [
-				"Copy"
-			],
 			"ntgt": [
 				"副本"
 			],
@@ -3241,9 +2323,6 @@
 		},
 		{
 			"guid": "V1BNy458nW_4fby7kPg8YMQAXVoyE1I023tRCSMrLS8",
-			"nsrc": [
-				"Settings"
-			],
 			"ntgt": [
 				"設定"
 			],
@@ -3252,9 +2331,6 @@
 		},
 		{
 			"guid": "lLI59L5MxXwJ1LV5AxkbDuJSKWXCBvp6ClAXxPBGbPQ",
-			"nsrc": [
-				"General"
-			],
 			"ntgt": [
 				"一般"
 			],
@@ -3263,9 +2339,6 @@
 		},
 		{
 			"guid": "h48IwLQb_Kr4DzWI6wptPwL5q7m41cV5dTuAq2ZSm94",
-			"nsrc": [
-				"Reader"
-			],
 			"ntgt": [
 				"閱讀"
 			],
@@ -3274,9 +2347,6 @@
 		},
 		{
 			"guid": "MIYZSE9NSGP-yv7tdojgfdRQPPyMO1Tjle2C_C8urvk",
-			"nsrc": [
-				"Advanced"
-			],
 			"ntgt": [
 				"進階"
 			],
@@ -3285,9 +2355,6 @@
 		},
 		{
 			"guid": "7IrQE75wPt_a7eal5Qh--VZACMEgkVYlt3S7hHc2540",
-			"nsrc": [
-				"About"
-			],
 			"ntgt": [
 				"關於"
 			],
@@ -3296,9 +2363,6 @@
 		},
 		{
 			"guid": "18nSKxHYQvVD7z1fD6sgaxYNQoDcUpyPgWVOURJBw0A",
-			"nsrc": [
-				"Help"
-			],
 			"ntgt": [
 				"說明"
 			],
@@ -3307,9 +2371,6 @@
 		},
 		{
 			"guid": "VvV6N8NUb3jOkDNdLi95QMWeXD2P9Hx-CJVHw16WVLs",
-			"nsrc": [
-				"Search settings"
-			],
 			"ntgt": [
 				"搜尋設定"
 			],
@@ -3318,9 +2379,6 @@
 		},
 		{
 			"guid": "Ay5QX19Ktp0pIgU9HrqiMQolqdwoNnVJUowNH8REpFE",
-			"nsrc": [
-				"App theme"
-			],
 			"ntgt": [
 				"佈景主題"
 			],
@@ -3329,9 +2387,6 @@
 		},
 		{
 			"guid": "b6xVBsUaBzyMbN61SiJsn2l3sKSctT5RimaMMtTgYok",
-			"nsrc": [
-				"Light Blue"
-			],
 			"ntgt": [
 				"淺藍"
 			],
@@ -3340,9 +2395,6 @@
 		},
 		{
 			"guid": "yEll6ZALYuqOaIJT4ygenihlMWlJeO5A_2v2TEwdRR4",
-			"nsrc": [
-				"Dark"
-			],
 			"ntgt": [
 				"深色"
 			],
@@ -3351,9 +2403,6 @@
 		},
 		{
 			"guid": "xgVaJa4ZYUtko2-Zzaq9Y61dH5lC8R-P0bNcwrpfuSU",
-			"nsrc": [
-				"AMOLED Black"
-			],
 			"ntgt": [
 				"全黑"
 			],
@@ -3362,9 +2411,6 @@
 		},
 		{
 			"guid": "GdY9V5fVWPbmZrlWiTa3fXTFAclhAPih-Kw4lRdvam8",
-			"nsrc": [
-				"Dark Blue"
-			],
 			"ntgt": [
 				"深藍"
 			],
@@ -3373,9 +2419,6 @@
 		},
 		{
 			"guid": "j9Gr6KxUhIsBdS32rsTQA-xZRzco-e8d4y-jj-f79No",
-			"nsrc": [
-				"Locale"
-			],
 			"ntgt": [
 				"在地化"
 			],
@@ -3384,9 +2427,6 @@
 		},
 		{
 			"guid": "BNmjkp25hD7w3o4mKGO1yyH3veRFSMMv2JGywL44JAI",
-			"nsrc": [
-				"System default"
-			],
 			"ntgt": [
 				"系統預設"
 			],
@@ -3395,9 +2435,6 @@
 		},
 		{
 			"guid": "kFkm5As4gCEavY_SfLR_QvMW9mvZWynNaBgFuJHY0Co",
-			"nsrc": [
-				"Date format"
-			],
 			"ntgt": [
 				"日期格式"
 			],
@@ -3406,9 +2443,6 @@
 		},
 		{
 			"guid": "Rpp7U8KuM9F7vk5LENGa35eaArh5E23L4z8CoYvE3Bc",
-			"nsrc": [
-				"Check for updates"
-			],
 			"ntgt": [
 				"檢查更新"
 			],
@@ -3417,13 +2451,6 @@
 		},
 		{
 			"guid": "fqd4WajLYVT61enjx3OP0SiB4XZy8IYrd_n5a9Y_PDg",
-			"nsrc": [
-				"Updated to v",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
-			],
 			"ntgt": [
 				"已更新至 v",
 				{
@@ -3436,9 +2463,6 @@
 		},
 		{
 			"guid": "9DZZYSdVPlVroNYqXg4G-64KCbH4rjaCBQ09lf61FRw",
-			"nsrc": [
-				"Secure screen"
-			],
 			"ntgt": [
 				"防窺畫面"
 			],
@@ -3447,9 +2471,6 @@
 		},
 		{
 			"guid": "jKZKJcy5mxyLzr83aa1Ek05MdhK8faqBN_hZUYPxguo",
-			"nsrc": [
-				"Hide app contents when switching apps and block screenshots"
-			],
 			"ntgt": [
 				"在切換應用程式時隱藏預覽，並禁止擷取螢幕畫面"
 			],
@@ -3458,9 +2479,6 @@
 		},
 		{
 			"guid": "clfTjjrMOetAReVvFqYexxQGGcatR50X_lc6gRx-pUs",
-			"nsrc": [
-				"Hide notification content"
-			],
 			"ntgt": [
 				"隱藏通知內容"
 			],
@@ -3469,9 +2487,6 @@
 		},
 		{
 			"guid": "kRJcEKPmv8QlDov9_nSLedG9YgythdNQQMmUGCwUk_4",
-			"nsrc": [
-				"Security"
-			],
 			"ntgt": [
 				"隱私"
 			],
@@ -3480,9 +2495,6 @@
 		},
 		{
 			"guid": "eCebO0-Q_ffk8Sa7ZE0i-2lvwmOgHfwL2GkkvnnSFk4",
-			"nsrc": [
-				"Backup"
-			],
 			"ntgt": [
 				"備份"
 			],
@@ -3491,9 +2503,6 @@
 		},
 		{
 			"guid": "WauZWTAX0NfsnR76172TOgZg_C4mImMuM9-tqnwPcUo",
-			"nsrc": [
-				"Backup and restore"
-			],
 			"ntgt": [
 				"備份與還原"
 			],
@@ -3502,9 +2511,6 @@
 		},
 		{
 			"guid": "CGPtNaR_C_SRk4krWcb4Zf0rlXEPhPcpHnYlfTervxc",
-			"nsrc": [
-				"Create backup"
-			],
 			"ntgt": [
 				"建立備份"
 			],
@@ -3513,9 +2519,6 @@
 		},
 		{
 			"guid": "RK9xZ5md46Yq6KtbkWYRDIwKc7Ds88MK4qZa-3jeTyg",
-			"nsrc": [
-				"Can be used to restore current library"
-			],
 			"ntgt": [
 				"可用來保存目前書櫃內容"
 			],
@@ -3524,9 +2527,6 @@
 		},
 		{
 			"guid": "tzSOmiJwGmbpTXFRuJMYkTmU02AvEur5gzrr85WfFow",
-			"nsrc": [
-				"Restore backup"
-			],
 			"ntgt": [
 				"還原備份"
 			],
@@ -3535,9 +2535,6 @@
 		},
 		{
 			"guid": "rixHOjM17WNZx-jCTKrDJQ8NRBJflS0_9j8WPbzPWcQ",
-			"nsrc": [
-				"Restore library from backup file"
-			],
 			"ntgt": [
 				"由備份檔案還原書櫃內容"
 			],
@@ -3546,9 +2543,6 @@
 		},
 		{
 			"guid": "sDghU3PAgiMpGR91wOsueeHA8DCgE1wt3hEPB14lwxA",
-			"nsrc": [
-				"Restore already in progress"
-			],
 			"ntgt": [
 				"還原已在進行"
 			],
@@ -3557,9 +2551,6 @@
 		},
 		{
 			"guid": "NWO_3AVNVY7a6PAwhKXmiBdDRkRXgOEpEEWG6ZgEMoE",
-			"nsrc": [
-				"Backup already in progress"
-			],
 			"ntgt": [
 				"備份已在進行"
 			],
@@ -3568,9 +2559,6 @@
 		},
 		{
 			"guid": "Ioi2E-Ht8s3KaZIzHx8e8DmipmT4M9f5z_RUBwksCyg",
-			"nsrc": [
-				"Backup location"
-			],
 			"ntgt": [
 				"備份位置"
 			],
@@ -3579,9 +2567,6 @@
 		},
 		{
 			"guid": "XfQ4gUXHtnOb9Mpfxl8zti75_edqbzAJraWMOzXk0e8",
-			"nsrc": [
-				"Automatic backups"
-			],
 			"ntgt": [
 				"自動備份"
 			],
@@ -3590,9 +2575,6 @@
 		},
 		{
 			"guid": "ktPIwUSifhvZdqvcx1mg2ceKuJs2Tc1BDipEyamhAzM",
-			"nsrc": [
-				"Backup frequency"
-			],
 			"ntgt": [
 				"備份頻率"
 			],
@@ -3601,9 +2583,6 @@
 		},
 		{
 			"guid": "hnfZilcpx6HulROgOytk2gNYbW8t6ANVGp1a78gbGOg",
-			"nsrc": [
-				"Max automatic backups"
-			],
 			"ntgt": [
 				"最大備份保留數"
 			],
@@ -3612,9 +2591,6 @@
 		},
 		{
 			"guid": "3v0ln70LR3XL4EGA8XI1Yaz62H_Mf13PtISdSjFmupQ",
-			"nsrc": [
-				"Invalid backup file"
-			],
 			"ntgt": [
 				"無效的備份檔"
 			],
@@ -3623,14 +2599,6 @@
 		},
 		{
 			"guid": "etVdxDl96xsnSIZe67TBgvPDHvZi-8XCK1TiYeJI61o",
-			"nsrc": [
-				"Invalid backup file type: ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				},
-				"\nIt should end with .proto.gz or .json."
-			],
 			"ntgt": [
 				"無效的備份檔格式：",
 				{
@@ -3644,9 +2612,6 @@
 		},
 		{
 			"guid": "DDDw6iIMN9p2Ruoe92tfwaPZBQTqcNpk9ewPUYGJtGA",
-			"nsrc": [
-				"File is missing data."
-			],
 			"ntgt": [
 				"檔案遺失資料"
 			],
@@ -3655,9 +2620,6 @@
 		},
 		{
 			"guid": "osBbxnlybp-9yKwlhQO8OZjOrb1I-jr76y8mi7LmbV4",
-			"nsrc": [
-				"Backup does not contain any manga."
-			],
 			"ntgt": [
 				"備份檔並未包含任何漫畫"
 			],
@@ -3666,9 +2628,6 @@
 		},
 		{
 			"guid": "luxHl7frItbylNTq1f7BPUsSKRqlosIhqPIk1Hu1xD0",
-			"nsrc": [
-				"Backup failed"
-			],
 			"ntgt": [
 				"備份失敗"
 			],
@@ -3677,9 +2636,6 @@
 		},
 		{
 			"guid": "e8QSmig05hQT0LZ3dnf1AnzJxc89xaKOlPdEC2wmFh8",
-			"nsrc": [
-				"Backup created"
-			],
 			"ntgt": [
 				"已建立備份"
 			],
@@ -3688,9 +2644,6 @@
 		},
 		{
 			"guid": "GceD4atNGbpkR2QZGZEinU84V0bvXq6Zc8FJXqmvppE",
-			"nsrc": [
-				"Restore completed"
-			],
 			"ntgt": [
 				"還原成功"
 			],
@@ -3699,9 +2652,6 @@
 		},
 		{
 			"guid": "djxigi0SyciRAQl-OEOMoHuEEa8p9xuayG9KTbpCR28",
-			"nsrc": [
-				"Missing sources:"
-			],
 			"ntgt": [
 				"遺失來源："
 			],
@@ -3710,9 +2660,6 @@
 		},
 		{
 			"guid": "sa4MzeqmxQ3XFc7ctN6YzykxZC0pOVpUhPb8_DSxlB0",
-			"nsrc": [
-				"Trackers not logged into:"
-			],
 			"ntgt": [
 				"尚未登入至歷程平台："
 			],
@@ -3721,9 +2668,6 @@
 		},
 		{
 			"guid": "PhjBH-rKHup-EgEYqgYdtaGWiXltWX6_6ptAADdQ3kE",
-			"nsrc": [
-				"Restore uses sources to fetch data, carrier costs may apply.\n\nMake sure you have installed all necessary extensions and are logged in to sources and tracking services before restoring."
-			],
 			"ntgt": [
 				"還原時需連線至來源以取得資料，可能要支付數據傳輸費用。 \n \n在進行還原前，請確認你已安裝所需的擴充套件，並已登入至歷程平台及要求身分認證的來源。"
 			],
@@ -3732,9 +2676,6 @@
 		},
 		{
 			"guid": "OIaxORNUZfwVDzX01uwaJa5oR0PYWEOtOenrDBasOvE",
-			"nsrc": [
-				"Canceled restore"
-			],
 			"ntgt": [
 				"已取消還原"
 			],
@@ -3743,9 +2684,6 @@
 		},
 		{
 			"guid": "J9K5-pkb0cVrN5vUL6mzxzOmfv_2oCf40iN0t6kvo7I",
-			"nsrc": [
-				"Creating backup"
-			],
 			"ntgt": [
 				"正在建立備份"
 			],
@@ -3754,9 +2692,6 @@
 		},
 		{
 			"guid": "RZVzTRYcbBzNbAuEmJ-XtUhLMoGa4FvjFVEWVJtuZDI",
-			"nsrc": [
-				"What do you want to backup?"
-			],
 			"ntgt": [
 				"哪些項目需要備份？"
 			],
@@ -3765,9 +2700,6 @@
 		},
 		{
 			"guid": "EV7Yy2F1isCBR5L6yJKOO4BheyLn8Iq0hIs5TZZ0CHY",
-			"nsrc": [
-				"Restoring backup"
-			],
 			"ntgt": [
 				"正在還原"
 			],
@@ -3776,18 +2708,6 @@
 		},
 		{
 			"guid": "r317yk9kNUjZdZ66_dNR-H9_aSUYHkpIpFTdctXFHC4",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "%02d"
-				},
-				" min, ",
-				{
-					"t": "x",
-					"v": "%02d"
-				},
-				" sec"
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -3805,9 +2725,6 @@
 		},
 		{
 			"guid": "M0u5w8Tx0ZXR9dAohFW9Pt2r5giJ2G3qVNublAcig4k",
-			"nsrc": [
-				"Progress"
-			],
 			"ntgt": [
 				"進度"
 			],
@@ -3816,9 +2733,6 @@
 		},
 		{
 			"guid": "zH7Vwsre4K48D9Kx6IXqrnvZ24DGNogWd1ZwykkCy9U",
-			"nsrc": [
-				"Complete"
-			],
 			"ntgt": [
 				"作業完成"
 			],
@@ -3827,19 +2741,6 @@
 		},
 		{
 			"guid": "tkc4zq_ATauIxzXI7kJs_cduBFCQDVR4_VODU-l2Eg8",
-			"nsrc": [
-				"Done in ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				},
-				" with ",
-				{
-					"t": "x",
-					"v": "%2$s"
-				},
-				" errors"
-			],
 			"ntgt": [
 				"歷時 ",
 				{
@@ -3858,9 +2759,6 @@
 		},
 		{
 			"guid": "gPqVDlajP2hf4NQoL37UXVQjJnqN1QR-KGD6--7lYtE",
-			"nsrc": [
-				"Clear chapter cache"
-			],
 			"ntgt": [
 				"清除章節快取"
 			],
@@ -3869,9 +2767,6 @@
 		},
 		{
 			"guid": "lIXJcIs2OgdQnz8l1ScAB3uJBlr3eRxRbu2eOYaKSrU",
-			"nsrc": [
-				"Crash logs"
-			],
 			"ntgt": [
 				"當機記錄"
 			],
@@ -3880,9 +2775,6 @@
 		},
 		{
 			"guid": "x2ESLT5DKdxeN0Gej8LPA5qWG7iTo316O-4ovaSc4P0",
-			"nsrc": [
-				"Dump crash logs"
-			],
 			"ntgt": [
 				"傾印當機記錄"
 			],
@@ -3891,9 +2783,6 @@
 		},
 		{
 			"guid": "7j9C8QVF6eIpcKUJ6LGHnlcBd4nZDvc03H902rJx10U",
-			"nsrc": [
-				"Saves error logs to a file for sharing with the developers"
-			],
 			"ntgt": [
 				"產生錯誤記錄檔以便分享予開發人員"
 			],
@@ -3902,9 +2791,6 @@
 		},
 		{
 			"guid": "Js9xCgRWwBllPruft_FjppRnU_ck81Btaifs8bDjuGk",
-			"nsrc": [
-				"Some manufacturers have additional app restrictions that kill background services. This website has more info on how to fix it."
-			],
 			"ntgt": [
 				"部分裝置製造商設有額外的應用程式限制來終止背景服務。此網站提供了修復這項問題的詳細資訊。"
 			],
@@ -3913,9 +2799,6 @@
 		},
 		{
 			"guid": "VNDe5KyDmv9zBodAWEcOTblNRXVjuGIcMx9wpLxMHso",
-			"nsrc": [
-				"Crash logs saved"
-			],
 			"ntgt": [
 				"已產生當機記錄"
 			],
@@ -3924,9 +2807,6 @@
 		},
 		{
 			"guid": "7AsEn5zVY6GoazdYSrGd81H6NqEM73ogrxfv4aV49S4",
-			"nsrc": [
-				"Network"
-			],
 			"ntgt": [
 				"網路"
 			],
@@ -3935,9 +2815,6 @@
 		},
 		{
 			"guid": "5S5FDxrRvlAASxwWoPmSk7vN0XUUrPx_ifntVXAkxV4",
-			"nsrc": [
-				"DNS over HTTPS"
-			],
 			"ntgt": [
 				"DNS over HTTPS"
 			],
@@ -3946,9 +2823,6 @@
 		},
 		{
 			"guid": "B2yJyY-Ik9alEwuIovrIpaE88A4zkXXyTMl6S5eLCB0",
-			"nsrc": [
-				"Requires app restart to take effect"
-			],
 			"ntgt": [
 				"需要重新啟動應用程式以套用"
 			],
@@ -3957,13 +2831,6 @@
 		},
 		{
 			"guid": "AdFVH0FaghNvk6XBU4XoB2Fuk2i482XcsAUje9w5k9g",
-			"nsrc": [
-				"Used: ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
-			],
 			"ntgt": [
 				"已使用：",
 				{
@@ -3976,9 +2843,6 @@
 		},
 		{
 			"guid": "8RjflKYA-4aX6xL1kcvLIRkf1xbBklnryutVr2M1Bc0",
-			"nsrc": [
-				"An error occurred while clearing cache"
-			],
 			"ntgt": [
 				"清除快取時發生錯誤"
 			],
@@ -3987,9 +2851,6 @@
 		},
 		{
 			"guid": "dzx3G5Py0eW9oqePjZ2jEOsVZAdjDn183wt77mhykcQ",
-			"nsrc": [
-				"Clear cookies"
-			],
 			"ntgt": [
 				"清除 Cookies"
 			],
@@ -3998,9 +2859,6 @@
 		},
 		{
 			"guid": "H0anFcXApFwm8ev81zq9VxUfAl8ZQ0vz-ozBrP2M-yY",
-			"nsrc": [
-				"Cookies cleared"
-			],
 			"ntgt": [
 				"已清除 Cookies"
 			],
@@ -4009,9 +2867,6 @@
 		},
 		{
 			"guid": "TUlhHhCu6Wa0Ty0Hz2_QEBfUZpEdtpnGCjs7kxNdWHE",
-			"nsrc": [
-				"Clear database"
-			],
 			"ntgt": [
 				"清除資料庫"
 			],
@@ -4020,9 +2875,6 @@
 		},
 		{
 			"guid": "ZEC1H9NgSi7t1Imj1qFmGLrytxKGpLcszjGs2xK9L9E",
-			"nsrc": [
-				"Delete manga and chapters that are not in your library"
-			],
 			"ntgt": [
 				"將未收藏於書櫃中的漫畫的記錄刪除"
 			],
@@ -4031,9 +2883,6 @@
 		},
 		{
 			"guid": "q_ded1icFGvvG0m5eV1p8qGaiiVsbSyrKfqvKcjuQ5c",
-			"nsrc": [
-				"Are you sure? Read chapters and progress of non-library manga will be lost"
-			],
 			"ntgt": [
 				"不在書櫃中的漫畫閱讀進度將被清除，你確定嗎？"
 			],
@@ -4042,9 +2891,6 @@
 		},
 		{
 			"guid": "DCi_MG1zMHzi3rS4wc1P6jU-lTwPk0e13_e8nUSzUDU",
-			"nsrc": [
-				"Entries deleted"
-			],
 			"ntgt": [
 				"已刪除項目"
 			],
@@ -4053,9 +2899,6 @@
 		},
 		{
 			"guid": "R6-BryB-1IdS52xaKDk8-Nncu2IKi1NFAKpJ5wtPi_U",
-			"nsrc": [
-				"Refresh library metadata"
-			],
 			"ntgt": [
 				"重新整理書櫃資料"
 			],
@@ -4064,9 +2907,6 @@
 		},
 		{
 			"guid": "3PlB8cVhX0dPDXCpg8fxJKEuq8ZOMLUh7Bx2ZO7AK38",
-			"nsrc": [
-				"Updates covers, genres, description and manga status information"
-			],
 			"ntgt": [
 				"更新書封、類型、描述和連載狀態等漫畫簡介"
 			],
@@ -4075,9 +2915,6 @@
 		},
 		{
 			"guid": "X-yVD39TIZsdSgLenZ_BtX_yyXcYOdTLZ0-1LYO267I",
-			"nsrc": [
-				"Refresh tracking metadata"
-			],
 			"ntgt": [
 				"更新閱讀歷程"
 			],
@@ -4086,9 +2923,6 @@
 		},
 		{
 			"guid": "G-WK9_JktZetIRTFSUfRknukZGCuNaD4A0QXwSY4NAU",
-			"nsrc": [
-				"Updates status, score and last chapter read from the tracking services"
-			],
 			"ntgt": [
 				"與歷程平台同步處理閱讀狀態、評分以及進度"
 			],
@@ -4097,9 +2931,6 @@
 		},
 		{
 			"guid": "M8xom0r1nkKelngOGeJgflYmt8FO-yov7Jm1EpBFFbE",
-			"nsrc": [
-				"Disable battery optimization"
-			],
 			"ntgt": [
 				"停用電池效能最佳化"
 			],
@@ -4108,9 +2939,6 @@
 		},
 		{
 			"guid": "pWgteS6BQNpqcpyE5Y55fX1j9VDQI_E2t26klBLISIQ",
-			"nsrc": [
-				"Battery optimization is already disabled"
-			],
 			"ntgt": [
 				"已停用電池效能最佳化"
 			],
@@ -4119,9 +2947,6 @@
 		},
 		{
 			"guid": "jGTNihNi77LY5QuFDPIr4FnkGEV4PZtqxGw8mrBR2gQ",
-			"nsrc": [
-				"Global search"
-			],
 			"ntgt": [
 				"全域搜尋"
 			],
@@ -4130,9 +2955,6 @@
 		},
 		{
 			"guid": "GD3DpsrGAxDGF6AFR_0j22WvGo43tqniyxdw7Um42HA",
-			"nsrc": [
-				"Check for extension updates"
-			],
 			"ntgt": [
 				"自動檢查擴充套件更新"
 			],
@@ -4141,9 +2963,6 @@
 		},
 		{
 			"guid": "qhRTZYzxAUhGMhxN8LmWkStHXtKoxmCc2hdYZ1Gsa6M",
-			"nsrc": [
-				"Source migration guide"
-			],
 			"ntgt": [
 				"來源遷移說明"
 			],
@@ -4152,9 +2971,6 @@
 		},
 		{
 			"guid": "tZKAOsp0izb2s8Fp2rC3SG4uE72YV-nh0p9UqjVCtmw",
-			"nsrc": [
-				"NSFW (18+) sources"
-			],
 			"ntgt": [
 				"未滿十八歲之人不宜瀏覽的來源"
 			],
@@ -4163,9 +2979,6 @@
 		},
 		{
 			"guid": "g0sNGJBq3Ghkqfoqn6a6JmB0wymPgSvCExRqhcN2v4Y",
-			"nsrc": [
-				"This does not prevent unofficial or potentially incorrectly flagged extensions from surfacing NSFW (18+) content within the app."
-			],
 			"ntgt": [
 				"即使啟用監護限制，還是可能有漏網之魚。使用者仍可藉由非官方或未正確標幟的擴充套件在本應用程式中瀏覽未滿十八歲之人不宜觀賞的內容。"
 			],
@@ -4174,9 +2987,6 @@
 		},
 		{
 			"guid": "sb5XQe86ziaiqZLmsrnjcQOJ_Rt1PvwvgsU-7JTAvSo",
-			"nsrc": [
-				"Version"
-			],
 			"ntgt": [
 				"版本"
 			],
@@ -4185,9 +2995,6 @@
 		},
 		{
 			"guid": "XXnhMGyLbPDet3oqguEeXAzNNJj4upOP07q0xEG5iIE",
-			"nsrc": [
-				"Build time"
-			],
 			"ntgt": [
 				"組建時間"
 			],
@@ -4196,9 +3003,6 @@
 		},
 		{
 			"guid": "EB5eRVbDnd66TwpaE1R3-GbyHiiKgt-ec1gwYARDDeU",
-			"nsrc": [
-				"Send crash reports"
-			],
 			"ntgt": [
 				"傳送錯誤報告"
 			],
@@ -4207,9 +3011,6 @@
 		},
 		{
 			"guid": "G-ApZju-AZ1PLQ8H2-IbFMDHpgjCHi196C7-BRVo8ag",
-			"nsrc": [
-				"Helps fix any bugs. No sensitive data will be sent"
-			],
 			"ntgt": [
 				"協助我們修復錯誤，傳送的資料將不包含個人敏感訊息"
 			],
@@ -4218,9 +3019,6 @@
 		},
 		{
 			"guid": "xX86TIr3yCDJeN8pEfrANiXCn559dxHyBB4GnIbsQpo",
-			"nsrc": [
-				"What's new"
-			],
 			"ntgt": [
 				"更新日誌"
 			],
@@ -4229,9 +3027,6 @@
 		},
 		{
 			"guid": "1aPLaqjJR9LjyH8Zzwi-KIY7CSYsIXEC70FDiI6t6v8",
-			"nsrc": [
-				"Help translate"
-			],
 			"ntgt": [
 				"協助翻譯"
 			],
@@ -4240,9 +3035,6 @@
 		},
 		{
 			"guid": "w3CWJsUNFTyIdIS3m7fiFEYBm2PHano4H3rTSpilrv8",
-			"nsrc": [
-				"Website"
-			],
 			"ntgt": [
 				"網站"
 			],
@@ -4251,9 +3043,6 @@
 		},
 		{
 			"guid": "Chtgyv3I8rRJwxg7nvVfCWNa1sb2NMU4KmnPkwafU_k",
-			"nsrc": [
-				"Open source licenses"
-			],
 			"ntgt": [
 				"開放原始碼授權"
 			],
@@ -4262,13 +3051,6 @@
 		},
 		{
 			"guid": "InKnvnpmuD0xNHX-ckxjSVPTwTV71bgSR9slh4Di5TU",
-			"nsrc": [
-				"Log in to ",
-				{
-					"t": "x",
-					"v": "%1$s"
-				}
-			],
 			"ntgt": [
 				"登入 ",
 				{
@@ -4281,9 +3063,6 @@
 		},
 		{
 			"guid": "e8o3hAJieGa7jIX7FCMTJ2392WpbkdLsmaJtLFBd8rc",
-			"nsrc": [
-				"Username"
-			],
 			"ntgt": [
 				"使用者名稱"
 			],
@@ -4292,9 +3071,6 @@
 		},
 		{
 			"guid": "pXRrWXBoHlehUXj-PoLeEbst1P6QKZC8MONn1Ol8y98",
-			"nsrc": [
-				"Email address"
-			],
 			"ntgt": [
 				"電子郵件地址"
 			],
@@ -4303,9 +3079,6 @@
 		},
 		{
 			"guid": "CHD1bX4PMKkk1IdLDSzo1G7RTyYv3-iS17d7-uxVw74",
-			"nsrc": [
-				"Password"
-			],
 			"ntgt": [
 				"密碼"
 			],
@@ -4314,9 +3087,6 @@
 		},
 		{
 			"guid": "F6Yn7VLHOw-rQ4Lls3ORWAPSNda2-kStq6kPDlUXEhU",
-			"nsrc": [
-				"Successfully logged in"
-			],
 			"ntgt": [
 				"登入成功"
 			],
@@ -4325,9 +3095,6 @@
 		},
 		{
 			"guid": "p2dj3pTbNKm2JMx8QKGK_OCsgi_WVVCJvFDxF6yVIh8",
-			"nsrc": [
-				"You are now logged out"
-			],
 			"ntgt": [
 				"你已登出"
 			],
@@ -4336,9 +3103,6 @@
 		},
 		{
 			"guid": "01irCDYQ91DVaCsdMtWG-GvJl-r1RIzXqCSRsQ9BG9s",
-			"nsrc": [
-				"Downloads"
-			],
 			"ntgt": [
 				"下載"
 			],
@@ -4347,9 +3111,6 @@
 		},
 		{
 			"guid": "5s3kWqsrD7O2oTys1pm8TfT9Nf85hQ40JZmH1xHYl3c",
-			"nsrc": [
-				"Download queue"
-			],
 			"ntgt": [
 				"下載佇列"
 			],
@@ -4358,9 +3119,6 @@
 		},
 		{
 			"guid": "02096t4uRb_DClwj1RAxbx72BHNtiB5zWzLbQoVR3Q0",
-			"nsrc": [
-				"Cancel all"
-			],
 			"ntgt": [
 				"全部取消"
 			],
@@ -4369,9 +3127,6 @@
 		},
 		{
 			"guid": "lrfy3VCuwyx51QsTF2Amlv07tRCQSoK_sCJYvEufnSI",
-			"nsrc": [
-				"Cancel all for this series"
-			],
 			"ntgt": [
 				"取消此叢書"
 			],
@@ -4380,9 +3135,6 @@
 		},
 		{
 			"guid": "7Id5JKNLrjJDzGvf784Yb6hg_2wdXFcBCj6hEXYxp78",
-			"nsrc": [
-				"Downloaded"
-			],
 			"ntgt": [
 				"已下載"
 			],
@@ -4391,9 +3143,6 @@
 		},
 		{
 			"guid": "3oSI7SBlzkJ3OzmVXYSk5-EElcRhNrq8c6Siyar3fAw",
-			"nsrc": [
-				"Downloading"
-			],
 			"ntgt": [
 				"下載中"
 			],
@@ -4402,9 +3151,6 @@
 		},
 		{
 			"guid": "3T96bQW_C_WUxp0dvWrFYDVh393--CtzjEZjNvwlNKk",
-			"nsrc": [
-				"Download"
-			],
 			"ntgt": [
 				"下載"
 			],
@@ -4413,19 +3159,6 @@
 		},
 		{
 			"guid": "81uy_kW63TYj6zx-tvyIeg2e6pJ5ZjPmIn-L-ic7d0I",
-			"nsrc": [
-				"Downloading (",
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				"/",
-				{
-					"t": "x",
-					"v": "%2$d"
-				},
-				")"
-			],
 			"ntgt": [
 				"正在下載 (",
 				{
@@ -4444,9 +3177,6 @@
 		},
 		{
 			"guid": "MmXweZtdJCJJGY3H2n7vsRIaOSYcsnHkenMBnFbvx0w",
-			"nsrc": [
-				"Invalid download location"
-			],
 			"ntgt": [
 				"無效的下載位置"
 			],
@@ -4455,9 +3185,6 @@
 		},
 		{
 			"guid": "XPJMFgQaenD38tFc5nFJlrWs1xBcwCcHZXAMnv0IoYA",
-			"nsrc": [
-				"Download paused"
-			],
 			"ntgt": [
 				"下載已暫停"
 			],
@@ -4466,9 +3193,6 @@
 		},
 		{
 			"guid": "lLnmND1rbBVG0JnB2HF-SBDzZVQmUpkX5wJrzDg12Ro",
-			"nsrc": [
-				"Download complete"
-			],
 			"ntgt": [
 				"下載完成"
 			],
@@ -4477,9 +3201,6 @@
 		},
 		{
 			"guid": "BOmUGm-ZUKJIBiNMNZ_ZqORmFujeKQ4b9q4oQcLtI3s",
-			"nsrc": [
-				"Download error"
-			],
 			"ntgt": [
 				"下載失敗"
 			],
@@ -4488,9 +3209,6 @@
 		},
 		{
 			"guid": "Y8AsbiJF6S3sa0567L2JUCRVf9fYWKmar8LjHj-0c8Y",
-			"nsrc": [
-				"Could not download chapter due to unexpected error"
-			],
 			"ntgt": [
 				"下載時發生不可預期的錯誤"
 			],
@@ -4499,9 +3217,6 @@
 		},
 		{
 			"guid": "7cDGIJC5BIPgP9g-w3Kd7htH-TI2ZXqkSic0rRIEiQw",
-			"nsrc": [
-				"No Wi-Fi connection available"
-			],
 			"ntgt": [
 				"沒有可用的 Wi-Fi 連線"
 			],
@@ -4510,9 +3225,6 @@
 		},
 		{
 			"guid": "C6iZEg4tBP2EWnTvNhc_NJUMp3Y2Z1ogTC_geamgzzo",
-			"nsrc": [
-				"No network connection available"
-			],
 			"ntgt": [
 				"尚未連接至網路"
 			],
@@ -4521,9 +3233,6 @@
 		},
 		{
 			"guid": "odSG9pkfdNSGknVDYXMWKrX3Q6gsCTqxieewL4XkU7I",
-			"nsrc": [
-				"Download location"
-			],
 			"ntgt": [
 				"下載位置"
 			],
@@ -4532,9 +3241,6 @@
 		},
 		{
 			"guid": "wcYCrKmKLXwPwoWSjG0rMQg-kXrbXkQSVDetZ7IaB58",
-			"nsrc": [
-				"Only download over Wi-Fi"
-			],
 			"ntgt": [
 				"僅透過 Wi-Fi 下載"
 			],
@@ -4543,9 +3249,6 @@
 		},
 		{
 			"guid": "7gMOD9i_Ssa24Pmeay7aIft1s_yQdKMNoLUzmbZEGqw",
-			"nsrc": [
-				"Remove when marked as read"
-			],
 			"ntgt": [
 				"刪除標示為已讀的章節"
 			],
@@ -4554,9 +3257,6 @@
 		},
 		{
 			"guid": "H3kKPe3dY0_Pzoa1gMdWPo3ahBakZ3uHD8as1AVCqGg",
-			"nsrc": [
-				"Remove after read"
-			],
 			"ntgt": [
 				"閱畢後刪除"
 			],
@@ -4565,9 +3265,6 @@
 		},
 		{
 			"guid": "SF4SExryZvE7To-hrBNkLeVQWXrUY-ui8rB8w6p8HZU",
-			"nsrc": [
-				"Custom location"
-			],
 			"ntgt": [
 				"自訂位置"
 			],
@@ -4576,9 +3273,6 @@
 		},
 		{
 			"guid": "dTUVRro3zEsvDdoPnEiIRkMe9uqzpG68lBS6EO65oPw",
-			"nsrc": [
-				"Last read chapter"
-			],
 			"ntgt": [
 				"最後閱讀的章節"
 			],
@@ -4587,9 +3281,6 @@
 		},
 		{
 			"guid": "fvyCSzdA8bCkdypRpqaB3USqPPNZdM8R9qbIboFzvgE",
-			"nsrc": [
-				"Second to last chapter"
-			],
 			"ntgt": [
 				"倒數第二章"
 			],
@@ -4598,9 +3289,6 @@
 		},
 		{
 			"guid": "ceJa0rH8d15zkpGomRJHNmn5OeIiRCoc1DbwP1zouWo",
-			"nsrc": [
-				"Third to last chapter"
-			],
 			"ntgt": [
 				"倒數第三章"
 			],
@@ -4609,9 +3297,6 @@
 		},
 		{
 			"guid": "Hvxqjvakv1w-hZsdWy9YHO5FHubrtv3c9zH1EnyBFyc",
-			"nsrc": [
-				"Fourth to last chapter"
-			],
 			"ntgt": [
 				"倒數第四章"
 			],
@@ -4620,9 +3305,6 @@
 		},
 		{
 			"guid": "eIxha-9GFU51ImXa689hyyRM8BqbGHaRpGA2ecFo0W4",
-			"nsrc": [
-				"Fifth to last chapter"
-			],
 			"ntgt": [
 				"倒數第五章"
 			],
@@ -4631,9 +3313,6 @@
 		},
 		{
 			"guid": "WhM02YzRBlk4dkfpqUVttsAtFJw7g5MA6puGdYU7Dv0",
-			"nsrc": [
-				"Download new chapters"
-			],
 			"ntgt": [
 				"自動下載新章節"
 			],
@@ -4642,9 +3321,6 @@
 		},
 		{
 			"guid": "EyFamOuH--WG_ITDZh8Pc4m5J0xR0bXz-AFEsBHaXG4",
-			"nsrc": [
-				"Categories to include in download"
-			],
 			"ntgt": [
 				"欲啟用自動下載的分類"
 			],
@@ -4653,9 +3329,6 @@
 		},
 		{
 			"guid": "iArTjefVMKZ7WycdX6VmQEm2g4q4u4d9M3UCNZ87PjI",
-			"nsrc": [
-				"Manual"
-			],
 			"ntgt": [
 				"手動"
 			],
@@ -4664,9 +3337,6 @@
 		},
 		{
 			"guid": "PNEvrNLnY_HYeIBsyikFPkutyQKuS4km2afklDWLg8Q",
-			"nsrc": [
-				"Hourly"
-			],
 			"ntgt": [
 				"每小時"
 			],
@@ -4675,9 +3345,6 @@
 		},
 		{
 			"guid": "XzTsMVydGqkb4lq_j7XjCC3CH3TJm4pOj4HXRfn_kdw",
-			"nsrc": [
-				"Every 2 hours"
-			],
 			"ntgt": [
 				"每 2 小時"
 			],
@@ -4686,9 +3353,6 @@
 		},
 		{
 			"guid": "vuUfj-FpwjdPSuh65loj0OUkxnoLF2XM4jIYZXqPWWk",
-			"nsrc": [
-				"Every 3 hours"
-			],
 			"ntgt": [
 				"每 3 小時"
 			],
@@ -4697,9 +3361,6 @@
 		},
 		{
 			"guid": "QQuSpiNUnNc2fVsl_56IzkbR945KxEdLGO0w08vIgsU",
-			"nsrc": [
-				"Every 6 hours"
-			],
 			"ntgt": [
 				"每 6 小時"
 			],
@@ -4708,9 +3369,6 @@
 		},
 		{
 			"guid": "Kz5yw3Ej_ftssgM-QJRrpgCo93LIpFnFx_rFE61BYMo",
-			"nsrc": [
-				"Every 12 hours"
-			],
 			"ntgt": [
 				"每 12 小時"
 			],
@@ -4719,9 +3377,6 @@
 		},
 		{
 			"guid": "mqd0K3gpVnuzzZxJRW3yl4AtCqriOf9HMJFtgLqX9bg",
-			"nsrc": [
-				"Daily"
-			],
 			"ntgt": [
 				"每日"
 			],
@@ -4730,9 +3385,6 @@
 		},
 		{
 			"guid": "sAKvJ7Z-LPf9_l7LlabKylNC6vueyZNhSdOfL_M0Y7E",
-			"nsrc": [
-				"Every 2 days"
-			],
 			"ntgt": [
 				"每 2 日"
 			],
@@ -4741,9 +3393,6 @@
 		},
 		{
 			"guid": "HCmK5QTlCCxBY435vznXbmu8gshsoMuItS5zrNvg3uY",
-			"nsrc": [
-				"Weekly"
-			],
 			"ntgt": [
 				"每週"
 			],
@@ -4752,9 +3401,6 @@
 		},
 		{
 			"guid": "Te7pPZ65D4bQDzeyVNYM9_Z5yplFGchiPgl5JPY3wmA",
-			"nsrc": [
-				"Select cover image"
-			],
 			"ntgt": [
 				"選擇書封圖片"
 			],
@@ -4763,9 +3409,6 @@
 		},
 		{
 			"guid": "xpPXMV_2TSn4z7jY72sTDXe6DZYbFVC8HA5A72CX4P8",
-			"nsrc": [
-				"Select backup file"
-			],
 			"ntgt": [
 				"選擇備份檔案"
 			],
@@ -4774,9 +3417,6 @@
 		},
 		{
 			"guid": "FqGUk3hvbPcAOaeCc0znlssRYURdtfsV9u7GdqCu1Os",
-			"nsrc": [
-				"No file picker app found"
-			],
 			"ntgt": [
 				"找不到檔案選擇器"
 			],
@@ -4785,9 +3425,6 @@
 		},
 		{
 			"guid": "zWeCtEgPBsrg7KcpKPPISpUksK5U1-2bUhJNNsqQRpM",
-			"nsrc": [
-				"Failed to bypass Cloudflare"
-			],
 			"ntgt": [
 				"無法繞過 Cloudflare"
 			],
@@ -4796,9 +3433,6 @@
 		},
 		{
 			"guid": "8Zn7T-2vD2MLNKfen7FUH2MgPjU6jIlheCyE0aGZl9Y",
-			"nsrc": [
-				"Please update the WebView app for better compatibility"
-			],
 			"ntgt": [
 				"請更新 WebView 以獲得更佳的相容性"
 			],
@@ -4807,9 +3441,6 @@
 		},
 		{
 			"guid": "kaPFz8SHU7y4fCLvM2RPEFk5ZRUbqQlKtiU0Q-k0KvY",
-			"nsrc": [
-				"Add"
-			],
 			"ntgt": [
 				"新增"
 			],
@@ -4818,9 +3449,6 @@
 		},
 		{
 			"guid": "HaQhgr6Rs1gPxtUbM4nhClW85gvYkE3A-Ty3EdO70XA",
-			"nsrc": [
-				"All"
-			],
 			"ntgt": [
 				"全部"
 			],
@@ -4829,9 +3457,6 @@
 		},
 		{
 			"guid": "acyg9T7bdW7L3J7wKjC3VCzjVcvurkTB9csPlnFjzks",
-			"nsrc": [
-				"Alphabetically"
-			],
 			"ntgt": [
 				"名稱"
 			],
@@ -4840,9 +3465,6 @@
 		},
 		{
 			"guid": "BvfigdYO1jTo2MJIsH_V8EnDB3Jp_zGiYy4XF1z-1Lo",
-			"nsrc": [
-				"Always"
-			],
 			"ntgt": [
 				"立即"
 			],
@@ -4851,9 +3473,6 @@
 		},
 		{
 			"guid": "mE0y-N3-sjSPz8uM0Dqn-Nt--y27pa_Iq1zjCZp_jyc",
-			"nsrc": [
-				"Always ask"
-			],
 			"ntgt": [
 				"總是詢問"
 			],
@@ -4862,9 +3481,6 @@
 		},
 		{
 			"guid": "iL64BKW_rJLisxaanXFPxRlZA_ROn4cwi6uPEmFuzJg",
-			"nsrc": [
-				"Automatic"
-			],
 			"ntgt": [
 				"自動"
 			],
@@ -4873,9 +3489,6 @@
 		},
 		{
 			"guid": "vnF4_2Uf2iLFQlqAE4cFFEp_ExUy8GC0uKG7lwNWajM",
-			"nsrc": [
-				"Back"
-			],
 			"ntgt": [
 				"上一頁"
 			],
@@ -4884,9 +3497,6 @@
 		},
 		{
 			"guid": "-WLnDOl-nui71zWhGAz7AZovbmuaPT_9fc_uU_6hNns",
-			"nsrc": [
-				"Cancel"
-			],
 			"ntgt": [
 				"取消"
 			],
@@ -4895,9 +3505,6 @@
 		},
 		{
 			"guid": "b9jaqz1sakscWNdLZuH86pP8gYFA4TdEeJMVgCK_erA",
-			"nsrc": [
-				"Center"
-			],
 			"ntgt": [
 				"中間"
 			],
@@ -4906,9 +3513,6 @@
 		},
 		{
 			"guid": "u0s4dRB3FMJvZqL46-zg7vLvCA6MSzARnIwLTvqjN6E",
-			"nsrc": [
-				"Charging"
-			],
 			"ntgt": [
 				"充電時"
 			],
@@ -4917,9 +3521,6 @@
 		},
 		{
 			"guid": "H65DnsMBQ38MSdd-W8j4D0epcBzAhmcNNxhlu8G4niI",
-			"nsrc": [
-				"Clear"
-			],
 			"ntgt": [
 				"清除"
 			],
@@ -4928,9 +3529,6 @@
 		},
 		{
 			"guid": "FdBYxGp2ECy02J5ZVdOD91c6-bSN9V0CBL2lfM7wPNA",
-			"nsrc": [
-				"Close"
-			],
 			"ntgt": [
 				"關閉"
 			],
@@ -4939,9 +3537,6 @@
 		},
 		{
 			"guid": "XJZMsvE4EPaqLdyrXZ9Eop0NzTXPeA47k9BFBuCV3NI",
-			"nsrc": [
-				"Common"
-			],
 			"ntgt": [
 				"一般"
 			],
@@ -4950,9 +3545,6 @@
 		},
 		{
 			"guid": "fWE_U-8J9owOnGhB39dKx2lqB54OAyAcfycwMvo50mE",
-			"nsrc": [
-				"Cover of manga"
-			],
 			"ntgt": [
 				"漫畫封面"
 			],
@@ -4961,9 +3553,6 @@
 		},
 		{
 			"guid": "N4_USxNuuLZRIyGDOKun6_yj-5rCYuiADvrADSWnQ6E",
-			"nsrc": [
-				"Create"
-			],
 			"ntgt": [
 				"建立"
 			],
@@ -4972,9 +3561,6 @@
 		},
 		{
 			"guid": "z7tH7vHgbn8iPEugslpYi2vl1ZiF8VrPkVi1kt2TCqE",
-			"nsrc": [
-				"Default"
-			],
 			"ntgt": [
 				"預設"
 			],
@@ -4983,9 +3569,6 @@
 		},
 		{
 			"guid": "l56Tb9H8AEQyL6O6Wcup7_LNt01lKztPpOM9VVmawvQ",
-			"nsrc": [
-				"Delete"
-			],
 			"ntgt": [
 				"刪除"
 			],
@@ -4994,9 +3577,6 @@
 		},
 		{
 			"guid": "hSkwpxVE5Esf63mO_FARnvDTQPKoAbJS6bajB3Cmlf8",
-			"nsrc": [
-				"Display"
-			],
 			"ntgt": [
 				"檢視"
 			],
@@ -5005,9 +3585,6 @@
 		},
 		{
 			"guid": "Rv2cMmkuA3GBmfZzkGmLfudHVO0w9NUy-ePfQs22KUQ",
-			"nsrc": [
-				"Edit"
-			],
 			"ntgt": [
 				"編輯"
 			],
@@ -5016,9 +3593,6 @@
 		},
 		{
 			"guid": "XnhDdYKlMdJUtcyCWKgY0LWnGBo7IA5Ifh9TBo_biTo",
-			"nsrc": [
-				"Fast"
-			],
 			"ntgt": [
 				"快速"
 			],
@@ -5027,9 +3601,6 @@
 		},
 		{
 			"guid": "YuxFqrm5_hdUbaqZA3cNvsp8QTgnTGJg2fKvD8u2ank",
-			"nsrc": [
-				"Filter"
-			],
 			"ntgt": [
 				"篩選"
 			],
@@ -5038,9 +3609,6 @@
 		},
 		{
 			"guid": "-zbKwlSYt2qtgFCcSgk7d5QWTDMgkLPiRsOjmWrzJhA",
-			"nsrc": [
-				"Forward"
-			],
 			"ntgt": [
 				"下一頁"
 			],
@@ -5049,9 +3617,6 @@
 		},
 		{
 			"guid": "D2cdGpYGDdUIA8sRHM-rqWap2VaWw-zHpv8ksNupPRA",
-			"nsrc": [
-				"Free"
-			],
 			"ntgt": [
 				"自動"
 			],
@@ -5060,9 +3625,6 @@
 		},
 		{
 			"guid": "2TpxvpQhAajJXtTh0v0YJ_8oUue0AUiiEjdhoe4ZW0M",
-			"nsrc": [
-				"Ignore"
-			],
 			"ntgt": [
 				"忽略"
 			],
@@ -5071,9 +3633,6 @@
 		},
 		{
 			"guid": "qN_PWXwNzEkB1pKbj3DZxErBvSoXz7D-0YOIy44nfFI",
-			"nsrc": [
-				"Install"
-			],
 			"ntgt": [
 				"安裝"
 			],
@@ -5082,9 +3641,6 @@
 		},
 		{
 			"guid": "Dq_i0GnlAlnDhbhzPauW5NHOFRSkJCWrm-F6OeyYGpM",
-			"nsrc": [
-				"Left"
-			],
 			"ntgt": [
 				"左邊"
 			],
@@ -5093,9 +3649,6 @@
 		},
 		{
 			"guid": "AD5Smw9YTvttmnZFm0WBp6roAohdKU4J5de6KHWYhpY",
-			"nsrc": [
-				"Less"
-			],
 			"ntgt": [
 				"較少"
 			],
@@ -5104,9 +3657,6 @@
 		},
 		{
 			"guid": "qB0sTYELGfdSAXg8MWIO9dJkPMiJKMGbIpD-brXxlwA",
-			"nsrc": [
-				"Loading…"
-			],
 			"ntgt": [
 				"正在載入…"
 			],
@@ -5115,9 +3665,6 @@
 		},
 		{
 			"guid": "8dLGZ533nCgGLKl5ZyGKaqaRODy2t8CN17LB5TL0BxU",
-			"nsrc": [
-				"Lock"
-			],
 			"ntgt": [
 				"鎖定"
 			],
@@ -5126,9 +3673,6 @@
 		},
 		{
 			"guid": "22CVrtYyzOOBddTIN64URwTUz-9uGC7SIkXOK8QuI9k",
-			"nsrc": [
-				"Mark as read"
-			],
 			"ntgt": [
 				"標示為已讀"
 			],
@@ -5137,9 +3681,6 @@
 		},
 		{
 			"guid": "oZHWZ8wvBUkj97iUqNloTzvzJrtZYfzJfVW_gr78COw",
-			"nsrc": [
-				"Mark as unread"
-			],
 			"ntgt": [
 				"標示為未讀"
 			],
@@ -5148,9 +3689,6 @@
 		},
 		{
 			"guid": "IQEMUF1NLWkhIxg96Nt7j6SvDg70HxWAGFsP3UXRJiA",
-			"nsrc": [
-				"Mark previous chapters as read"
-			],
 			"ntgt": [
 				"標示過往章節為已讀"
 			],
@@ -5159,9 +3697,6 @@
 		},
 		{
 			"guid": "Z8glbymLPxVjwoHlE3yA2QJ6fUFpf-YSrwuKPOlddb0",
-			"nsrc": [
-				"More"
-			],
 			"ntgt": [
 				"其他"
 			],
@@ -5170,9 +3705,6 @@
 		},
 		{
 			"guid": "yGQeYKS5Bv2xAEqxJ6s3Z-7Gd98xnx6ZYCLJXzt2Iwc",
-			"nsrc": [
-				"Move to bottom"
-			],
 			"ntgt": [
 				"排至最後"
 			],
@@ -5181,9 +3713,6 @@
 		},
 		{
 			"guid": "kXACYJ_GEYd9r18ZZtcJQTaMNblMSSD9ZZYv4FySmXE",
-			"nsrc": [
-				"Move to top"
-			],
 			"ntgt": [
 				"排至最前"
 			],
@@ -5192,9 +3721,6 @@
 		},
 		{
 			"guid": "wHVvimYxCq_ptB1cQQc_VLrYhiz05An7qU61WmGt2gQ",
-			"nsrc": [
-				"Language"
-			],
 			"ntgt": [
 				"語言"
 			],
@@ -5203,9 +3729,6 @@
 		},
 		{
 			"guid": "G-kj181iakzKKEEJ6HB2eVBq_coqE7Ub3-WRoyWJA5A",
-			"nsrc": [
-				"Never"
-			],
 			"ntgt": [
 				"永不"
 			],
@@ -5214,9 +3737,6 @@
 		},
 		{
 			"guid": "D21t1nOCvPQz8ezejnuCG10XG5-rtv916QePqa1Tm9s",
-			"nsrc": [
-				"Newest"
-			],
 			"ntgt": [
 				"由新到舊"
 			],
@@ -5225,9 +3745,6 @@
 		},
 		{
 			"guid": "jUCLPfd2pt2EgOUsIGD_BtOJhSpHZRV7F1fbNn7dPSI",
-			"nsrc": [
-				"No animation"
-			],
 			"ntgt": [
 				"停用動畫"
 			],
@@ -5236,9 +3753,6 @@
 		},
 		{
 			"guid": "z2pPo6OyjBEg72bZUGs9ebiLmXauGjpNfTYQbgpWCzU",
-			"nsrc": [
-				"Normal"
-			],
 			"ntgt": [
 				"正常"
 			],
@@ -5247,9 +3761,6 @@
 		},
 		{
 			"guid": "pXwvpirtrULpntCUbwUbN6xNIeq0N1To6-5Rc-KdRR0",
-			"nsrc": [
-				"Oldest"
-			],
 			"ntgt": [
 				"由舊到新"
 			],
@@ -5258,9 +3769,6 @@
 		},
 		{
 			"guid": "jZQJfS6ZSY8KxQSMHPzL6kOUmYs2uSSRMboM8UytKps",
-			"nsrc": [
-				"Open in browser"
-			],
 			"ntgt": [
 				"在瀏覽器中開啟"
 			],
@@ -5269,9 +3777,6 @@
 		},
 		{
 			"guid": "3pVlPDm1tcLrMVYCMp7vNhulWHs15u3-9zs82x9IkM8",
-			"nsrc": [
-				"Open log"
-			],
 			"ntgt": [
 				"檢視記錄檔"
 			],
@@ -5280,9 +3785,6 @@
 		},
 		{
 			"guid": "01PCaCl5Aaf5yKYuNmTsg-jZJENhXLfFX29cUSg62E4",
-			"nsrc": [
-				"Open in WebView"
-			],
 			"ntgt": [
 				"在 WebView 中開啟"
 			],
@@ -5291,9 +3793,6 @@
 		},
 		{
 			"guid": "vbDWxoIbEXe9zt-rTW9uNrJ5BhJ2VdZ2G93F2PZe9Rc",
-			"nsrc": [
-				"Options"
-			],
 			"ntgt": [
 				"選項"
 			],
@@ -5302,9 +3801,6 @@
 		},
 		{
 			"guid": "07h1dhPItw0xqflwYmT76Hn_vZ0hE6usC4jadmy1rfI",
-			"nsrc": [
-				"Pause"
-			],
 			"ntgt": [
 				"暫停"
 			],
@@ -5313,9 +3809,6 @@
 		},
 		{
 			"guid": "LVOyc2DI1_tIv-Wh-U-xBVOqDPbzXX88OH9KomjJzS8",
-			"nsrc": [
-				"Picture saved"
-			],
 			"ntgt": [
 				"圖片已儲存"
 			],
@@ -5324,9 +3817,6 @@
 		},
 		{
 			"guid": "s-5E2wEISld-FfOmB993k92NOGb-4LNZ0F66yDUPZOs",
-			"nsrc": [
-				"Pin"
-			],
 			"ntgt": [
 				"釘選"
 			],
@@ -5335,9 +3825,6 @@
 		},
 		{
 			"guid": "CQz0j3d_KWW8TDyTjWFaMKS0aNpki_JTkuI380NhNYQ",
-			"nsrc": [
-				"Pinned"
-			],
 			"ntgt": [
 				"已釘選"
 			],
@@ -5346,9 +3833,6 @@
 		},
 		{
 			"guid": "2KbhXFK-2sKLM-PsKNO6DNg15kSoJy4c9b33gmpL6OQ",
-			"nsrc": [
-				"Remove"
-			],
 			"ntgt": [
 				"移除"
 			],
@@ -5357,9 +3841,6 @@
 		},
 		{
 			"guid": "08RvXmShyf-NM-YC6_wRkH93qxXMv8DNOn9OlKmgAdQ",
-			"nsrc": [
-				"Reorder"
-			],
 			"ntgt": [
 				"重新排序"
 			],
@@ -5368,9 +3849,6 @@
 		},
 		{
 			"guid": "0rtEzXkR8w2DP8mkxaP0DzaZIpD3-2wo5uY4f8L4M-g",
-			"nsrc": [
-				"Reset"
-			],
 			"ntgt": [
 				"重設"
 			],
@@ -5379,9 +3857,6 @@
 		},
 		{
 			"guid": "roEBh3ZbzoNg6WDjUe-rNtB7jOSm-0JWZebEjzWDnh0",
-			"nsrc": [
-				"Restore"
-			],
 			"ntgt": [
 				"還原"
 			],
@@ -5390,9 +3865,6 @@
 		},
 		{
 			"guid": "XZdAu-R9NcFoDpXCgDtXf8BRK9qLWMzzcrKNIO1NxKg",
-			"nsrc": [
-				"Resume"
-			],
 			"ntgt": [
 				"繼續閱讀"
 			],
@@ -5401,9 +3873,6 @@
 		},
 		{
 			"guid": "4xkktM2wu4OjIWaL01NuHoBTv0xn9-KlBpimONxfH4o",
-			"nsrc": [
-				"Retry"
-			],
 			"ntgt": [
 				"重試"
 			],
@@ -5412,9 +3881,6 @@
 		},
 		{
 			"guid": "L31ZyyF8NVcR-spPZHf2ifwxeoYLS_SE00CYdz8I8YQ",
-			"nsrc": [
-				"Right"
-			],
 			"ntgt": [
 				"右邊"
 			],
@@ -5423,9 +3889,6 @@
 		},
 		{
 			"guid": "ON5clTnvErryOihsvfP7AU5B0Ixpr9f82E8ERxfIG4A",
-			"nsrc": [
-				"Rotation"
-			],
 			"ntgt": [
 				"螢幕方向"
 			],
@@ -5434,9 +3897,6 @@
 		},
 		{
 			"guid": "3tX_483aH9UFwmvAJh93d72n9JQyihjdOq6xPfQyBSQ",
-			"nsrc": [
-				"Save"
-			],
 			"ntgt": [
 				"儲存"
 			],
@@ -5445,9 +3905,6 @@
 		},
 		{
 			"guid": "XifptHssXgtjDHmj5ltpAQl3FjABypzpTRFYIohV_mE",
-			"nsrc": [
-				"Search"
-			],
 			"ntgt": [
 				"搜尋"
 			],
@@ -5456,9 +3913,6 @@
 		},
 		{
 			"guid": "pPxhvx0b_LutbB7fcHN2NjPOq24i4m6O4X3Z9TbVgjM",
-			"nsrc": [
-				"Select all"
-			],
 			"ntgt": [
 				"全選"
 			],
@@ -5467,9 +3921,6 @@
 		},
 		{
 			"guid": "UqZtdEOUO3w2PBstWBFmuC3mGStUMFQ3UVKK99hBQLo",
-			"nsrc": [
-				"Share"
-			],
 			"ntgt": [
 				"分享"
 			],
@@ -5478,9 +3929,6 @@
 		},
 		{
 			"guid": "cUeSzBAxHb_c2IQnyYlA7bVygFPiHxSoBK9EbbPbhMI",
-			"nsrc": [
-				"Sort"
-			],
 			"ntgt": [
 				"排序"
 			],
@@ -5489,9 +3937,6 @@
 		},
 		{
 			"guid": "scJ9d4haERDN89PbJSC-EKL1J1Zbvjmd7KSFoL1bMSI",
-			"nsrc": [
-				"Start"
-			],
 			"ntgt": [
 				"開始"
 			],
@@ -5500,9 +3945,6 @@
 		},
 		{
 			"guid": "LfyYYMOVNKIgtNKQH0MttWyt2OaPJi1FcXlLtQei9ro",
-			"nsrc": [
-				"Stop"
-			],
 			"ntgt": [
 				"停止"
 			],
@@ -5511,9 +3953,6 @@
 		},
 		{
 			"guid": "8RlbaPOnEpLZVjZCafHf65rxbG2ghAC0E07ABarDA4w",
-			"nsrc": [
-				"Undo"
-			],
 			"ntgt": [
 				"復原"
 			],
@@ -5522,9 +3961,6 @@
 		},
 		{
 			"guid": "c3i5rexqP3K-3xXQ8UmZicdtD1LDoT5r-tCEwnKLRg8",
-			"nsrc": [
-				"Unknown error"
-			],
 			"ntgt": [
 				"不明的錯誤"
 			],
@@ -5533,9 +3969,6 @@
 		},
 		{
 			"guid": "_wRYzMse2B7r2ua6b9MgKFqHhMtFhturJ-JwkJ0UImI",
-			"nsrc": [
-				"Unpin"
-			],
 			"ntgt": [
 				"取消釘選"
 			],
@@ -5544,9 +3977,6 @@
 		},
 		{
 			"guid": "na9i-6I0FiG2wQ_1QGez33sgK5oWVx6WidW-BQo3Ync",
-			"nsrc": [
-				"View chapters"
-			],
 			"ntgt": [
 				"檢視章節"
 			],
@@ -5555,9 +3985,6 @@
 		},
 		{
 			"guid": "IJInAlEGMbEstVMqpcB1u5GRFSl0PTW8qyRRBIHjBN4",
-			"nsrc": [
-				"Wi-Fi"
-			],
 			"ntgt": [
 				"僅限 Wi-Fi"
 			],

@@ -1,33 +1,35 @@
 import { utils } from '@l10nmonster/helpers';
 
-const coreTUprops = [
+const sourceTUWhitelist = new Set([
+    // mandatory
     'guid',
-    'nid', // optional opaque native id of the segment (in the original storage format)
-    'seq', // optional sequence number to shorten guid
     'rid', // this is for adding context to translation (also in case of refresh job from TM)
     'sid', // we need sid in the target so that we can qualify repetitions
     'nsrc', // we need this to support repetition leveraging (based on matching the source)
+    // optional
     'prj', // this is primarily for filtering
-    'isSuffixPluralized', // TODO: change this from boolean to `pluralForm` enumeration (so it doesn't have to be a suffix)
-];
-
-const sourceTUWhitelist = new Set([
-    ...coreTUprops,
     'notes', // this is for bug fixes
+    'isSuffixPluralized', // TODO: change this from boolean to `pluralForm` enumeration (so it doesn't have to be a suffix)
+    'nid', // opaque native id of the segment (in the original storage format)
+    'seq', // sequence number to shorten guid
 ]);
 
 const targetTUWhitelist = new Set([
-    ...coreTUprops,
+    // mandatory
+    'guid',
+    'ntgt',
     'inflight',
     'q',
-    'ntgt',
+    'ts', // timestamp. used to pick a winner among candidate TUs
+    // optional
     'cost',
     'jobGuid',
     'translationProvider',
-    'ts', // timestamp. used to pick a winner among candidate TUs
     'th', // this is used by TOS for a translation hash to detect bug fixes vendor-side
     'rev', // this is used by TOS to capture reviewed words and errors found
 ]);
+
+const pairTUWhitelist = new Set([ ...sourceTUWhitelist, ...targetTUWhitelist ]);
 
 // TODO: do we really need to refresh these properties from source? when?
 // export const refreshedFromSource = new Set([
@@ -71,16 +73,17 @@ function cleanupTU(entry) {
 }
 
 export class TU {
-    constructor(entry, isPartial) {
+    constructor(entry, isSource, isTarget) {
         // { guid, rid, sid, nsrc, inflight, q, ntgt, ts, ...otherProps }
-        if (!entry.guid || !entry.rid || !entry.sid || !Array.isArray(entry.nsrc) || !Number.isInteger(entry.ts)) {
-            throw `Rejecting TU with missing mandatory fields: ${JSON.stringify(entry)}`;
+        if (isSource && (!entry.guid || !entry.rid || !entry.sid || !Array.isArray(entry.nsrc))) {
+            throw `Source TU must have guid, rid, sid, nsrc: ${JSON.stringify(entry)}`;
         }
-        if (!isPartial && (!Number.isInteger(entry.q) || (!Array.isArray(entry.ntgt) && !entry.inflight))) {
-            throw `Rejecting complete TU with missing mandatory fields: ${JSON.stringify(entry)}`;
+        if (isTarget && (!entry.guid || !Number.isInteger(entry.q) || (!Array.isArray(entry.ntgt) && !entry.inflight) || !Number.isInteger(entry.ts))) {
+            throw `Target TU must have guid, ntgt/inflight, q, ts: ${JSON.stringify(entry)}`;
         }
         // const spuriousProps = [];
-        const whitelist = isPartial ? sourceTUWhitelist : targetTUWhitelist;
+        // eslint-disable-next-line no-nested-ternary
+        const whitelist = isSource ? (isTarget ? pairTUWhitelist : sourceTUWhitelist) : targetTUWhitelist;
         for (const [ k, v ] of Object.entries(entry)) {
             if (whitelist.has(k)) {
                 this[k] = v;
@@ -94,16 +97,30 @@ export class TU {
 
     // returns a TU with only the source string and target missing
     static asSource(obj) {
-        return new TU(cleanupTU(obj), true);
+        return new TU(cleanupTU(obj), true, false);
     }
 
-    // converts a segments into a source TU
-    static fromSegment(res, seg) {
-        return TU.asSource(utils.makeTU(res, seg));
+    // returns a TU with both source and target string
+    static asTarget(obj) {
+        return new TU(cleanupTU(obj), false, true);
     }
 
     // returns a TU with both source and target string
     static asPair(obj) {
-        return new TU(cleanupTU(obj), false);
+        return new TU(cleanupTU(obj), true, true);
+    }
+
+    // converts a segments into a source TU
+    static fromSegment(res, segment) {
+        const { nstr, ...seg } = segment;
+        const tu = {
+            ...seg,
+            nsrc: nstr,
+            rid: res.id,
+        };
+        if (res.prj !== undefined) {
+            tu.prj = res.prj;
+        }
+        return TU.asSource(tu);
     }
 }

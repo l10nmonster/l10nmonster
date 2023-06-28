@@ -5,7 +5,6 @@ import {
     writeFileSync,
 } from 'fs';
 import { utils } from '@l10nmonster/helpers';
-import { TU } from './entities/tu.js';
 
 class TM {
     #tmPathName;
@@ -48,7 +47,7 @@ class TM {
 
     setEntry(entry) {
         try {
-            const cleanedTU = TU.asPair(entry);
+            const cleanedTU = l10nmonster.TU.asPair(entry);
             Object.freeze(cleanedTU);
             this.#tus[entry.guid] = cleanedTU;
             const flattenSrc = utils.flattenNormalizedSourceToOrdinal(cleanedTU.nsrc);

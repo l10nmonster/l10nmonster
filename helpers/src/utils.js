@@ -243,20 +243,6 @@ export function getTUMaps(tus) {
     return { contentMap, tuMeta, phNotes };
 }
 
-export function makeTU(res, segment) {
-    const { nstr, ...seg } = segment;
-    const tu = {
-        ...seg,
-        nsrc: nstr,
-        rid: res.id,
-        ts: new Date(res.modified).getTime(),
-    };
-    if (res.prj !== undefined) {
-        tu.prj = res.prj;
-    }
-    return tu;
-}
-
 const notesAnnotationRegex = /(?:PH\((?<phName>(?:[^()|]+|[^(|]*\([^()|]*\)[^()|]*))(?:\|(?<phSample>[^)|]+))(?:\|(?<phDesc>[^)|]+))?\)|MAXWIDTH\((?<maxWidth>\d+)\)|SCREENSHOT\((?<screenshot>[^)]+)\)|TAG\((?<tags>[^)]+)\))/g;
 export function extractStructuredNotes(notes) {
     const sNotes = {};

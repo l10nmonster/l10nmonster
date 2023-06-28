@@ -32,13 +32,13 @@
 		{
 			"sid": "manga",
 			"guid": "dyAFLf4GV8TYObR6G4ujZM0o2aXLVPScLSsRCprJogw",
+			"notes": {
+				"desc": "Manga Type"
+			},
 			"nsrc": [
 				"Manga"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Manga Type"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "manhwa",
@@ -75,13 +75,13 @@
 		{
 			"sid": "not_started",
 			"guid": "1p5rCpa-15kwWtEh3NEfT-U-L7hb0ldPev_wqVhXKOI",
+			"notes": {
+				"desc": "Manga"
+			},
 			"nsrc": [
 				"Not started"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Manga"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "in_progress",
@@ -160,13 +160,13 @@
 		{
 			"sid": "ongoing",
 			"guid": "YJHMFZmzMpH0kjwYHf0FfcpHgbud03xLRf_vpaS4iY0",
+			"notes": {
+				"desc": "Status"
+			},
 			"nsrc": [
 				"Ongoing"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Status"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "unknown",
@@ -203,13 +203,13 @@
 		{
 			"sid": "unlock_library",
 			"guid": "MIwZAqhf_yEYRQoIcrzIDyj7GPBqZifK4baxR5-cVvQ",
+			"notes": {
+				"desc": "Security"
+			},
 			"nsrc": [
 				"Unlock to access Library"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Security"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "unlock",
@@ -238,13 +238,13 @@
 		{
 			"sid": "chapters",
 			"guid": "wF-LDYkrxxFci3wYWoYmvhRbrns2bjxzjgD6HX-wNP8",
+			"notes": {
+				"desc": "Chapters"
+			},
 			"nsrc": [
 				"Chapters"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Chapters"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "new_chapters",
@@ -514,13 +514,13 @@
 		{
 			"sid": "category",
 			"guid": "WH5WLMC2qY2bMf5JBHSqSrkJVjNzv3YHD0V58wqZfV0",
+			"notes": {
+				"desc": "Category"
+			},
 			"nsrc": [
 				"Category"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Category"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "categories",
@@ -773,13 +773,13 @@
 		{
 			"sid": "update",
 			"guid": "1J9LO1I69PkBtCO-lcjrVfJ0hLDY2P9KkW2jnd9Iia0",
+			"notes": {
+				"desc": "Updates"
+			},
 			"nsrc": [
 				"Update"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Updates"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "what_should_update",
@@ -860,13 +860,13 @@
 		{
 			"sid": "library",
 			"guid": "qAcMTZXYvITCVVUsJnaeziMxq66YjeyIpN3-S0Rebyg",
+			"notes": {
+				"desc": "Library"
+			},
 			"nsrc": [
 				"Library"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Library"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "your_library",
@@ -1108,13 +1108,13 @@
 		{
 			"sid": "sort_by",
 			"guid": "c656MnA8GvsOTOxs4WY4nJd0SDx8-yR4m5_0O3dVg0U",
+			"notes": {
+				"desc": "Library Sort"
+			},
 			"nsrc": [
 				"Sort by"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Library Sort"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "total_chapters",
@@ -1175,13 +1175,13 @@
 		{
 			"sid": "display_options",
 			"guid": "uS-rKfQewapxCMQccDVdJcLHKtn2SaCeJ2YmB23cIuI",
+			"notes": {
+				"desc": "Library Display"
+			},
 			"nsrc": [
 				"Display options"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Library Display"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "can_be_found_in_library_filters",
@@ -1350,13 +1350,13 @@
 		{
 			"sid": "new_chapters_found",
 			"guid": "DP9tDhyqmkFyAizNsGXaByGA7_OZZsmcD1gUxkZdVAY",
+			"notes": {
+				"desc": "Library update service notifications"
+			},
 			"nsrc": [
 				"New chapters found"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Library update service notifications"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "notification_size_warning",
@@ -1455,13 +1455,13 @@
 		{
 			"sid": "library_update_frequency",
 			"guid": "NzuzANrc8hKnsNdj5RNNivveptBt1E-e1H-Ht-pXbEo",
+			"notes": {
+				"desc": "Library settings"
+			},
 			"nsrc": [
 				"Library update frequency"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Library settings"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "library_update_order",
@@ -1598,13 +1598,13 @@
 		{
 			"sid": "recents",
 			"guid": "9KQnpovYTTR8EqaPS_krSrI6i65OEvrlUpYUZ8fHDF0",
+			"notes": {
+				"desc": "Recents"
+			},
 			"nsrc": [
 				"Recents"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Recents"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "updates_and_history",
@@ -1854,13 +1854,13 @@
 		{
 			"sid": "show_reset_history_button",
 			"guid": "vc6RPi0nmbBiytfQeWbKySuwc6Tz427bDCSe__RrgOs",
+			"notes": {
+				"desc": "Recents Settings"
+			},
 			"nsrc": [
 				"Show reset history button"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Recents Settings"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "show_read_chapters_all",
@@ -1921,13 +1921,13 @@
 		{
 			"sid": "search_filters",
 			"guid": "2Pxr4-74Ois-SejkPEpOnmVQGKUZCPMo0deqiwQYbBI",
+			"notes": {
+				"desc": "Browse"
+			},
 			"nsrc": [
 				"Search filters"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Browse"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "no_more_results",
@@ -2060,13 +2060,13 @@
 		{
 			"sid": "extensions",
 			"guid": "aoUSYtsFoxzn0HRhrXdsX7blaRGrrGKbPPGYAHOGcYY",
+			"notes": {
+				"desc": "Extensions"
+			},
 			"nsrc": [
 				"Extensions"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Extensions"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "extension_updates",
@@ -2389,13 +2389,13 @@
 		{
 			"sid": "set_as_cover",
 			"guid": "Ib3Dl-HzwtbZ2Ml0jVectlWKgCLvYPZ6byoYri6f_Sk",
+			"notes": {
+				"desc": "Reader"
+			},
 			"nsrc": [
 				"Set as cover"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Reader"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "reader_settings",
@@ -2672,13 +2672,13 @@
 		{
 			"sid": "fullscreen",
 			"guid": "pUNw1jNdpBub4YvDOOVOnB9xp9b5HhtenI0mCjut3So",
+			"notes": {
+				"desc": "Reader settings"
+			},
 			"nsrc": [
 				"Fullscreen"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Reader settings"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "animate_page_transitions",
@@ -3484,6 +3484,9 @@
 		{
 			"sid": "about_this_",
 			"guid": "rXnFisSe-TCQMWVdPr043XAD3SjPf9t7nr3_A3JFQ4Q",
+			"notes": {
+				"desc": "Manga details"
+			},
 			"nsrc": [
 				"About this ",
 				{
@@ -3491,10 +3494,7 @@
 					"v": "%1$s"
 				}
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Manga details"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "start_reading",
@@ -3972,13 +3972,13 @@
 		{
 			"sid": "tracking",
 			"guid": "fZhmHvNVgb2WvnwMpxmxVtQMoZMaXORd2ibT-SZm1Ys",
+			"notes": {
+				"desc": "Tracking"
+			},
 			"nsrc": [
 				"Tracking"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Tracking"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "tracked",
@@ -4283,13 +4283,13 @@
 		{
 			"sid": "select_sources",
 			"guid": "X0_pFoQrmtP7HRDl7tJJRY9v4aAvjI8hpck4OCcfqic",
+			"notes": {
+				"desc": "Migration"
+			},
 			"nsrc": [
 				"Select sources"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Migration"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "source_migration",
@@ -4597,13 +4597,13 @@
 		{
 			"sid": "settings",
 			"guid": "V1BNy458nW_4fby7kPg8YMQAXVoyE1I023tRCSMrLS8",
+			"notes": {
+				"desc": "Settings"
+			},
 			"nsrc": [
 				"Settings"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Settings"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "general",
@@ -4704,13 +4704,13 @@
 		{
 			"sid": "app_theme",
 			"guid": "Ay5QX19Ktp0pIgU9HrqiMQolqdwoNnVJUowNH8REpFE",
+			"notes": {
+				"desc": "General settings"
+			},
 			"nsrc": [
 				"App theme"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "General settings"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "light_theme",
@@ -5159,13 +5159,13 @@
 		{
 			"sid": "backup",
 			"guid": "eCebO0-Q_ffk8Sa7ZE0i-2lvwmOgHfwL2GkkvnnSFk4",
+			"notes": {
+				"desc": "Backup"
+			},
 			"nsrc": [
 				"Backup"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Backup"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "backup_and_restore",
@@ -5482,13 +5482,13 @@
 		{
 			"sid": "clear_chapter_cache",
 			"guid": "gPqVDlajP2hf4NQoL37UXVQjJnqN1QR-KGD6--7lYtE",
+			"notes": {
+				"desc": "Advanced section"
+			},
 			"nsrc": [
 				"Clear chapter cache"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Advanced section"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "force_download_cache_refresh",
@@ -5865,13 +5865,13 @@
 		{
 			"sid": "pref_global_search",
 			"guid": "jGTNihNi77LY5QuFDPIr4FnkGEV4PZtqxGw8mrBR2gQ",
+			"notes": {
+				"desc": "Browse Settings"
+			},
 			"nsrc": [
 				"Global search"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Browse Settings"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "check_for_extension_updates",
@@ -6004,13 +6004,13 @@
 		{
 			"sid": "version",
 			"guid": "sb5XQe86ziaiqZLmsrnjcQOJ_Rt1PvwvgsU-7JTAvSo",
+			"notes": {
+				"desc": "About section"
+			},
 			"nsrc": [
 				"Version"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "About section"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "build_time",
@@ -6087,6 +6087,9 @@
 		{
 			"sid": "log_in_to_",
 			"guid": "InKnvnpmuD0xNHX-ckxjSVPTwTV71bgSR9slh4Di5TU",
+			"notes": {
+				"desc": "Login/Logout dialog"
+			},
 			"nsrc": [
 				"Log in to ",
 				{
@@ -6094,10 +6097,7 @@
 					"v": "%1$s"
 				}
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Login/Logout dialog"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "username",
@@ -6179,13 +6179,13 @@
 		{
 			"sid": "downloads",
 			"guid": "01irCDYQ91DVaCsdMtWG-GvJl-r1RIzXqCSRsQ9BG9s",
+			"notes": {
+				"desc": "Downloads"
+			},
 			"nsrc": [
 				"Downloads"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Downloads"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "download_queue",
@@ -6364,13 +6364,13 @@
 		{
 			"sid": "could_not_download_unexpected_error",
 			"guid": "Y8AsbiJF6S3sa0567L2JUCRVf9fYWKmar8LjHj-0c8Y",
+			"notes": {
+				"desc": "Download Notification"
+			},
 			"nsrc": [
 				"Could not download chapter due to unexpected error"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Download Notification"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "no_wifi_connection",
@@ -6391,13 +6391,13 @@
 		{
 			"sid": "download_location",
 			"guid": "odSG9pkfdNSGknVDYXMWKrX3Q6gsCTqxieewL4XkU7I",
+			"notes": {
+				"desc": "Downloads settings"
+			},
 			"nsrc": [
 				"Download location"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Downloads settings"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "only_download_over_wifi",
@@ -6538,13 +6538,13 @@
 		{
 			"sid": "manual",
 			"guid": "iArTjefVMKZ7WycdX6VmQEm2g4q4u4d9M3UCNZ87PjI",
+			"notes": {
+				"desc": "Time"
+			},
 			"nsrc": [
 				"Manual"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Time"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "hourly",
@@ -6641,13 +6641,13 @@
 		{
 			"sid": "select_cover_image",
 			"guid": "Te7pPZ65D4bQDzeyVNYM9_Z5yplFGchiPgl5JPY3wmA",
+			"notes": {
+				"desc": "File Picker Titles"
+			},
 			"nsrc": [
 				"Select cover image"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "File Picker Titles"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "select_backup_file",
@@ -6668,13 +6668,13 @@
 		{
 			"sid": "failed_to_bypass_cloudflare",
 			"guid": "zWeCtEgPBsrg7KcpKPPISpUksK5U1-2bUhJNNsqQRpM",
+			"notes": {
+				"desc": "Webview"
+			},
 			"nsrc": [
 				"Failed to bypass Cloudflare"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Webview"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "please_update_webview",
@@ -6687,24 +6687,24 @@
 		{
 			"sid": "webview_is_required",
 			"guid": "rZjFH0Z7z5HV8Tov2ZWD6ABIwLcX0rWeaY9SwkUqMjg",
+			"notes": {
+				"desc": "Do not translate \"WebView\""
+			},
 			"nsrc": [
 				"WebView is required for Tachiyomi"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Do not translate \"WebView\""
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "add",
 			"guid": "kaPFz8SHU7y4fCLvM2RPEFk5ZRUbqQlKtiU0Q-k0KvY",
+			"notes": {
+				"desc": "Miscellaneous"
+			},
 			"nsrc": [
 				"Add"
 			],
-			"rid": "app/src/main/res/values/strings.xml",
-			"notes": {
-				"desc": "Miscellaneous"
-			}
+			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
 			"sid": "add_to_",

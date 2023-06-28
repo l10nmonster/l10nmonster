@@ -7,9 +7,6 @@
 	"tus": [
 		{
 			"guid": "7Yg93c458EbHxMIJHNXXG77jF5ZnrMzxv8ScSU0oCyQ",
-			"nsrc": [
-				"New Activity"
-			],
 			"ntgt": [
 				"Nuova attività"
 			],
@@ -18,13 +15,6 @@
 		},
 		{
 			"guid": "iFr1XEoi3u89bv1K36QYJ8mOO-8yj4RdSWXpMtkowNo",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{0}"
-				},
-				" more"
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -37,13 +27,6 @@
 		},
 		{
 			"guid": "DQ_hE0YU3Dc1i-RCzydiH221mS2bCTGrix7yN0NVYjs",
-			"nsrc": [
-				"Alfresco Activities Site Feed for ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				"Feed sito attività Alfresco per ",
 				{
@@ -56,13 +39,6 @@
 		},
 		{
 			"guid": "QUNbFFCnev-5nePd6x-GLS_ECDiaiAilPFQsud2YAoE",
-			"nsrc": [
-				"Alfresco Activities User Feed for ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				"Feed utente attività Alfresco per ",
 				{
@@ -75,17 +51,6 @@
 		},
 		{
 			"guid": "BpkBpKi4k1zbxxMBjLweUIMIakji86zWvO-jLYTfbc8",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{0}"
-				},
-				" in ",
-				{
-					"t": "x",
-					"v": "{1}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -102,17 +67,6 @@
 		},
 		{
 			"guid": "3rblxtRQl_XxzcIRIcuXD1YiqWoZZGm2OK6VT_3AvEE",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" created blog post ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -129,17 +83,6 @@
 		},
 		{
 			"guid": "YWxB6wV9NKqyi_xBz9gfJXM9gVGUn8fmMLpstgYj4GQ",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" updated blog post ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -156,17 +99,6 @@
 		},
 		{
 			"guid": "M9uKQf1rlQ2VvflkhXLRngLoR1dO97dbM0pgqzAYWBQ",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" deleted blog post ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -183,17 +115,6 @@
 		},
 		{
 			"guid": "Es__KuVLCYEEqbxJ7UH0OufVMIRx1P1XxjQorI3KvoM",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" commented on ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -210,17 +131,6 @@
 		},
 		{
 			"guid": "SMBJeA-SZElxfZ3ogui9-bgmMdN-AW7Wn3K_RzxHgnM",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" updated comment on ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -237,17 +147,6 @@
 		},
 		{
 			"guid": "a8SuqJb6qftuXW9zPPZ6uOsN8HzkGBQTu1gkrLtn-y8",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" deleted a comment from ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -264,17 +163,6 @@
 		},
 		{
 			"guid": "lL5Nz22Eel1_uruDJPcXXY6GRPfiFUNIkPHHnkwJjTA",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" started discussion ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -291,17 +179,6 @@
 		},
 		{
 			"guid": "yY_62owOshI5WedZZ56RMH0mAHZqkoQFzrl72QouUxM",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" updated discussion ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -318,17 +195,6 @@
 		},
 		{
 			"guid": "FLMtjIXON6hrlKJM6PGLnITDdlaxsrB-TMZcUwfOucE",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" deleted discussion ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -345,17 +211,6 @@
 		},
 		{
 			"guid": "G7fyHbsNuus4ZSyQBBbgTKT8wGSRnTILfVHPH6wEH6A",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" replied to the discussion ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -372,17 +227,6 @@
 		},
 		{
 			"guid": "4P3iwkdyW7FrOtYbhDH0Ubzp2SkQjh16-5cEasPP7Wg",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" updated a reply to ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -399,17 +243,6 @@
 		},
 		{
 			"guid": "EpZriwYtslQ1Izp3rQ1x2B6n6gH-cWMAJvwjBI-vb3c",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" created calendar event ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -426,17 +259,6 @@
 		},
 		{
 			"guid": "a9CEM5Ua1GPhvul1Sd8EtIUHss9ao3oWUcRNTDvpcIU",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" updated calendar event ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -453,17 +275,6 @@
 		},
 		{
 			"guid": "DIP9jIIiKl8ruyh8W69Wny6LPeVdb8fpRZaDsrBV86U",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" deleted calendar event ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -480,17 +291,6 @@
 		},
 		{
 			"guid": "k5JI_WYPDUNRUh0sFZquifwJkCf4g1VKj1PKIM0A_JE",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" added document ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -507,18 +307,6 @@
 		},
 		{
 			"guid": "FpjduiGSXQ5iah8xYImPZthEzoV0MzzT60prVEZhdEI",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" added ",
-				{
-					"t": "x",
-					"v": "{0}"
-				},
-				" documents"
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -536,17 +324,6 @@
 		},
 		{
 			"guid": "AN4ncvCCj7nzsY4-Ke7CzA6iVA--CMdk1mNrOJztpzw",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" created document ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -563,17 +340,6 @@
 		},
 		{
 			"guid": "P1ByqIYS2ma6bymP1W7DSf4FHxRbI-9KaQ2sdBE71T8",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" deleted document ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -590,18 +356,6 @@
 		},
 		{
 			"guid": "K7TJHd23oMM3cpKocUkxiAaqxOji9bwR1Mg8t-BHMFI",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" deleted ",
-				{
-					"t": "x",
-					"v": "{0}"
-				},
-				" documents"
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -619,17 +373,6 @@
 		},
 		{
 			"guid": "k1cgnaImIwxlUrS497kcSNmvzuv5I68j0ioyzX7c8Ic",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" updated document ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -646,18 +389,6 @@
 		},
 		{
 			"guid": "MRW4EYDzbzarsY0z4zraAtLm1WKLPN1ghyiMvB1Hipo",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" updated ",
-				{
-					"t": "x",
-					"v": "{0}"
-				},
-				" documents"
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -675,17 +406,6 @@
 		},
 		{
 			"guid": "-OYvZdJn7BfWeFGaR9ed039gXtmFY4HJFPio2jMWHaQ",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" added folder ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -702,17 +422,6 @@
 		},
 		{
 			"guid": "ofzKoQpmR2mq6Plf9V5MSEd6Fz5Ltq13-U1tFAqrq0U",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" deleted folder ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -729,18 +438,6 @@
 		},
 		{
 			"guid": "7dt9A3Z7_mUhwpEHH4bkovTsRMMtaKLj5y5U-wjXkkY",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" added ",
-				{
-					"t": "x",
-					"v": "{0}"
-				},
-				" folders"
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -758,18 +455,6 @@
 		},
 		{
 			"guid": "swTAfUTLMpla4apCLpqnjgXkZ3TcF5AsbRcqSddr8fI",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" deleted ",
-				{
-					"t": "x",
-					"v": "{0}"
-				},
-				" folders"
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -787,17 +472,6 @@
 		},
 		{
 			"guid": "5XD_c2iyMf_fWIRXdm7xW8g44PE7UlsQeAjKlI8Pis8",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" edited document ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -814,17 +488,6 @@
 		},
 		{
 			"guid": "XUhHCOGm5hUKfi2Bu7miIbFB-1Z2aH57be4DnySac54",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" previewed document ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -841,17 +504,6 @@
 		},
 		{
 			"guid": "yGyNdsHARZCGXEefYEHIvYF0x9iBeUQH6UjRtlN0zVM",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" downloaded document ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -868,17 +520,6 @@
 		},
 		{
 			"guid": "sq53xWPD5py_YTmisWVdG6XPVrXq0zyPVuQVFy_ZMFI",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" liked document ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -895,17 +536,6 @@
 		},
 		{
 			"guid": "mEgaZISppd-nymvlS1qgCdLHUDUUK7eW54oV-cISyWU",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" liked folder ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -922,17 +552,6 @@
 		},
 		{
 			"guid": "naHyoyk-BovSB4V50pMdNZPzjnAZ6r0ncF1VEa5JWHs",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" created wiki page ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -949,17 +568,6 @@
 		},
 		{
 			"guid": "YtQhKd3eEaTLfIaJrfYcuRyGunfwREShOn86r67mgYE",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" updated wiki page ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -976,22 +584,6 @@
 		},
 		{
 			"guid": "gNnHDtYlPLhKdm9AZdp9RSZRN28Lz5yhhXqCjSTtmoI",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" renamed wiki page from ",
-				{
-					"t": "x",
-					"v": "{2}"
-				},
-				" to ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -1013,17 +605,6 @@
 		},
 		{
 			"guid": "l9ZP_Bfh4tHIGY9ZcxlxUXabgDhEw0f-wpMCcc-8NKU",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" deleted wiki page ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -1040,22 +621,6 @@
 		},
 		{
 			"guid": "timdMkW30K9sQGhUufC1DXZfOpkDLerkyptYkocdi-U",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" group added to site ",
-				{
-					"t": "x",
-					"v": "{4}"
-				},
-				" with role ",
-				{
-					"t": "x",
-					"v": "{2}"
-				}
-			],
 			"ntgt": [
 				"Gruppo ",
 				{
@@ -1078,17 +643,6 @@
 		},
 		{
 			"guid": "MDvXxJekx5BhFE-YdFYqbKhnwbB11OtusxMefSw9Ovg",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" group removed from site ",
-				{
-					"t": "x",
-					"v": "{4}"
-				}
-			],
 			"ntgt": [
 				"Gruppo ",
 				{
@@ -1106,17 +660,6 @@
 		},
 		{
 			"guid": "NMYuYdSO9wouYhDUSuSg37bFIkNCGZwfz76qM7WhIjc",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" group role changed to ",
-				{
-					"t": "x",
-					"v": "{2}"
-				}
-			],
 			"ntgt": [
 				"Ruolo del gruppo ",
 				{
@@ -1134,22 +677,6 @@
 		},
 		{
 			"guid": "UrEORD8AVE8d6EZqdgDvuDphITHpJAbuffhHQBMVUl4",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" joined site ",
-				{
-					"t": "x",
-					"v": "{4}"
-				},
-				" with role ",
-				{
-					"t": "x",
-					"v": "{2}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -1171,17 +698,6 @@
 		},
 		{
 			"guid": "27t2xPG0q5-I0c7i1uNxq8WBB20gzzoOd3BkbXj4udc",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" left site ",
-				{
-					"t": "x",
-					"v": "{4}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -1198,17 +714,6 @@
 		},
 		{
 			"guid": "NpcPUf7fkYkWBbp6clR1ToMNmBieBCT3KEmIljcByzc",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" role changed to ",
-				{
-					"t": "x",
-					"v": "{2}"
-				}
-			],
 			"ntgt": [
 				"Ruolo ",
 				{
@@ -1226,17 +731,6 @@
 		},
 		{
 			"guid": "cCf_rWAkkua88a1zzltV1eBivRh9kqs4fomioU9L98c",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" liked site ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -1253,17 +747,6 @@
 		},
 		{
 			"guid": "t_HZsv3of9h80u81tC9VgLeo36DqS-rp_l_Px7giuGs",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" created link ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -1280,17 +763,6 @@
 		},
 		{
 			"guid": "VbtwoVbSa-yFaG_Ut_rPeJJ_8aQ5oP7H-mSlnos0xu0",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" updated link ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -1307,17 +779,6 @@
 		},
 		{
 			"guid": "KHTUkize79M1wpypmG2Vxaa9BbHVNCRz4aN6ofMGZHY",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" deleted link ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -1334,17 +795,6 @@
 		},
 		{
 			"guid": "BxA_N4Lc1M41EAZJXgG9aF_wt8HFVtjXD9qtcC636iA",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" created data list ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -1361,17 +811,6 @@
 		},
 		{
 			"guid": "ZZ07qmBXDMVo247WJgTyZ0gicloP70B_XJRnKI05HsI",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" updated data list ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -1388,17 +827,6 @@
 		},
 		{
 			"guid": "OHO4FPrPe3sl47lzd7xNOprvy7sFJdjt7rAGV5-hv84",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" deleted data list ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -1415,17 +843,6 @@
 		},
 		{
 			"guid": "ZzwTjI7FDa82Eow7Bt9ZUOER1m_KoaAwpegPsYgABJA",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" is now following ",
-				{
-					"t": "x",
-					"v": "{5}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -1442,17 +859,6 @@
 		},
 		{
 			"guid": "2AOJVDOcxcIal-UZ58LBGqUvETSCrFonNSdskqwn8zQ",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" has subscribed to ",
-				{
-					"t": "x",
-					"v": "{2}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -1469,9 +875,6 @@
 		},
 		{
 			"guid": "mpN5e7DwX3x1lq6tGeCw3pN5XojDAp0yBMSeOOyuCpc",
-			"nsrc": [
-				"Alfresco Add-ons RSS Feed"
-			],
 			"ntgt": [
 				"Alfresco Add-ons RSS Feed"
 			],
@@ -1480,9 +883,6 @@
 		},
 		{
 			"guid": "Syq3DJy_QDcM0m1nqYZXpqFjMMuR87HPZXL4tQ8hfGk",
-			"nsrc": [
-				"Configure"
-			],
 			"ntgt": [
 				"Configura"
 			],
@@ -1491,9 +891,6 @@
 		},
 		{
 			"guid": "94dyHElU-pvxBH_xvcPNYroCw8bbsYZVi9PRkhsVtfk",
-			"nsrc": [
-				"No news items"
-			],
 			"ntgt": [
 				"Nessun elemento delle news"
 			],
@@ -1502,9 +899,6 @@
 		},
 		{
 			"guid": "P5GRExSyOI9DJatrN4HtEGB0YnefpGW6JB2Nm1SM5_E",
-			"nsrc": [
-				"Loading items - please wait..."
-			],
 			"ntgt": [
 				"Caricamento elementi in corso, attendere..."
 			],
@@ -1513,9 +907,6 @@
 		},
 		{
 			"guid": "JYRC8Zfqy9a0-fUUB2YNIS8zc6WQL5RMh8o0ZqD0bcc",
-			"nsrc": [
-				"RSS feed can't be read"
-			],
 			"ntgt": [
 				"Impossibile leggere il feed RSS"
 			],
@@ -1524,9 +915,6 @@
 		},
 		{
 			"guid": "bmGBoEsRYHhWkiRPZzQvvaQVk96lAyjLazEIevIvhbE",
-			"nsrc": [
-				"RSS feed is not available"
-			],
 			"ntgt": [
 				"Il feed RSS non è disponibile"
 			],
@@ -1535,9 +923,6 @@
 		},
 		{
 			"guid": "jXh3uF9cDUKZtHxEG2JBn2BrdG_ZLsJ31Ej8xwl1E_Y",
-			"nsrc": [
-				"RSS feed format is not supported"
-			],
 			"ntgt": [
 				"Il formato del feed RSS non è supportato"
 			],
@@ -1546,9 +931,6 @@
 		},
 		{
 			"guid": "WvR4sh0AUEY-PZKx-eo1nNvJQW5CWA-gp6u2BTfT9D0",
-			"nsrc": [
-				"This dashlet shows the latest news from Alfresco Add-ons. Click the edit icon on the dashlet to configure the feed."
-			],
 			"ntgt": [
 				"Questa dashlet mostra le ultime news dall'Addon di Alfresco Fare clic sull'icona Modifica del dashlet per modificare il feed."
 			],
@@ -1557,9 +939,6 @@
 		},
 		{
 			"guid": "rHlW0n89eNdd459GykI6D4NBZtJGidWSP86B5BG0kQg",
-			"nsrc": [
-				"Find, rate, and contribute Alfresco add-ons and extensions."
-			],
 			"ntgt": [
 				"Trova, valuta e contribuisci alle extension e addon di Alfresco"
 			],
@@ -1568,9 +947,6 @@
 		},
 		{
 			"guid": "LDHWLHERVQjJ1o-kvogktdzBFC_6nhgsVuTzxoHbhWI",
-			"nsrc": [
-				"http://addons.alfresco.com"
-			],
 			"ntgt": [
 				"http://addons.alfresco.com"
 			],
@@ -1579,9 +955,6 @@
 		},
 		{
 			"guid": "m70JMPI9T9GiVlanb29OGMpQQrneQXCFFecW1wlENPs",
-			"nsrc": [
-				"Visit the Alfresco Add-ons Home Page"
-			],
 			"ntgt": [
 				"Visita la Home page degli  Add-ons di Alfresco"
 			],
@@ -1590,9 +963,6 @@
 		},
 		{
 			"guid": "QX3X1g-Kh1UpJ-aEY4FOSO2WdKt5afp4FyUk8z00kOk",
-			"nsrc": [
-				"RSS Feed"
-			],
 			"ntgt": [
 				"Feed RSS"
 			],
@@ -1601,9 +971,6 @@
 		},
 		{
 			"guid": "vwrKccRIjjVNjVNl0CRZJsRMOUbmwQ_yWgR6XdOhD40",
-			"nsrc": [
-				"Configure"
-			],
 			"ntgt": [
 				"Configura"
 			],
@@ -1612,9 +979,6 @@
 		},
 		{
 			"guid": "_BTHCps8KAbIpS9udVg6HYpF7QWwxNp8-0ZWvEDr8bI",
-			"nsrc": [
-				"No news items"
-			],
 			"ntgt": [
 				"Nessun elemento delle news"
 			],
@@ -1623,9 +987,6 @@
 		},
 		{
 			"guid": "rKmLOWykQIl0HH0r_50MOd07oRk8KqT9Pk-4CnXceEY",
-			"nsrc": [
-				"RSS feed can't be read"
-			],
 			"ntgt": [
 				"Impossibile leggere il feed RSS"
 			],
@@ -1634,9 +995,6 @@
 		},
 		{
 			"guid": "3Gxz8EmGRNOELmhuwipqf5luMeaD5qELsN7df_cxAno",
-			"nsrc": [
-				"RSS feed is not available"
-			],
 			"ntgt": [
 				"Il feed RSS non è disponibile"
 			],
@@ -1645,9 +1003,6 @@
 		},
 		{
 			"guid": "5ZZj-jxDgUbAfyjrMe0cfeQcP0eFIZvFlDCSL84Nrqg",
-			"nsrc": [
-				"RSS feed format is not supported"
-			],
 			"ntgt": [
 				"Il formato del feed RSS non è supportato"
 			],
@@ -1656,9 +1011,6 @@
 		},
 		{
 			"guid": "jzkfUdJohmFfMtS_GItKtYifp-ZgzcyJKVo8serpi7I",
-			"nsrc": [
-				"This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed."
-			],
 			"ntgt": [
 				"Questo dashlet mostra il feed RSS selezionato. Fare clic sull'icona Modifica del dashlet per modificare il feed."
 			],
@@ -1667,9 +1019,6 @@
 		},
 		{
 			"guid": "EFn3t-e0JoDulp-WrmSoRotUUCXkYlE7Kv3biN7WDW0",
-			"nsrc": [
-				"RSS Feed"
-			],
 			"ntgt": [
 				"Feed RSS"
 			],
@@ -1678,9 +1027,6 @@
 		},
 		{
 			"guid": "rMLO-fUZZZq87EB3WIeu2F2GZOtTACGvobKcGojueyA",
-			"nsrc": [
-				"Configure"
-			],
 			"ntgt": [
 				"Configura"
 			],
@@ -1689,9 +1035,6 @@
 		},
 		{
 			"guid": "Y3VBfG0zC6kDtBZHDxZFCLZRLHwPC2obJTXEwJnkan8",
-			"nsrc": [
-				"No news items"
-			],
 			"ntgt": [
 				"Nessun elemento delle news"
 			],
@@ -1700,9 +1043,6 @@
 		},
 		{
 			"guid": "HCGGtFbvY0TT_hr0VH80CI-RpsEephuBsTnrXUnBZOU",
-			"nsrc": [
-				"RSS feed can't be read"
-			],
 			"ntgt": [
 				"Impossibile leggere il feed RSS"
 			],
@@ -1711,9 +1051,6 @@
 		},
 		{
 			"guid": "Mryr53ZTSsgu5W2iuspPnNZPC0TxwXUNUtdn_fWrvz8",
-			"nsrc": [
-				"RSS feed is not available"
-			],
 			"ntgt": [
 				"Il feed RSS non è disponibile"
 			],
@@ -1722,9 +1059,6 @@
 		},
 		{
 			"guid": "WAt8kKCVxWOIxpe-RdYHi0lOvIQt3JBh5cOqlBAyY2s",
-			"nsrc": [
-				"RSS feed format is not supported"
-			],
 			"ntgt": [
 				"Il formato del feed RSS non è supportato"
 			],
@@ -1733,9 +1067,6 @@
 		},
 		{
 			"guid": "IfdF05CMkiWoN-Hems6QAju5Peau9w0OtBN8AvnMGcQ",
-			"nsrc": [
-				"This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed."
-			],
 			"ntgt": [
 				"Questo dashlet mostra il feed RSS selezionato. Fare clic sull'icona Modifica del dashlet per modificare il feed."
 			],
@@ -1744,9 +1075,6 @@
 		},
 		{
 			"guid": "MoJ9WnVlNIDG5uEqTEgK-SIijATplqSaRGJaxOx-CoM",
-			"nsrc": [
-				"Site Calendar"
-			],
 			"ntgt": [
 				"Calendario del sito"
 			],
@@ -1755,9 +1083,6 @@
 		},
 		{
 			"guid": "GOD7gmCgDoOkTDZrQvELAvKSHk2F8hfwz_JMe8JdCsY",
-			"nsrc": [
-				"No upcoming events"
-			],
 			"ntgt": [
 				"Nessun evento imminente"
 			],
@@ -1766,9 +1091,6 @@
 		},
 		{
 			"guid": "nRPmwwxUzPSSMPswBuNBiozTKk-M3XWZAJv6BKAL0Os",
-			"nsrc": [
-				"until"
-			],
 			"ntgt": [
 				"finché"
 			],
@@ -1777,9 +1099,6 @@
 		},
 		{
 			"guid": "pCbsFvMcdwJ4xUDch0i4cL0N-N8vVkvhqjYTWzg1P-U",
-			"nsrc": [
-				"This dashlet shows the upcoming events for this site."
-			],
 			"ntgt": [
 				"Questo dashlet mostra gli eventi imminenti per il sito."
 			],
@@ -1788,9 +1107,6 @@
 		},
 		{
 			"guid": "UQLku8Jgbj4t7oXKzYbS-N1q016ts3c93ZU5sHSqm7M",
-			"nsrc": [
-				"Site Members"
-			],
 			"ntgt": [
 				"Membri del sito"
 			],
@@ -1799,9 +1115,6 @@
 		},
 		{
 			"guid": "IMup8Q-qpnRDXDpvhrXgM6oMmHeceIZeswR9_BPg-UA",
-			"nsrc": [
-				"Invite"
-			],
 			"ntgt": [
 				"Invita"
 			],
@@ -1810,9 +1123,6 @@
 		},
 		{
 			"guid": "I3DX1xbVZ6MDdYOsdpgUIKj0BsLDjNPcclfJTGbJyIg",
-			"nsrc": [
-				"All Members"
-			],
 			"ntgt": [
 				"Tutti i membri"
 			],
@@ -1821,22 +1131,6 @@
 		},
 		{
 			"guid": "mLALtuF1QW-Bmat_BnqBWJoZuRPft920lMrphwmUgRE",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{0}"
-				},
-				" - ",
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" of ",
-				{
-					"t": "x",
-					"v": "{2}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -1858,14 +1152,6 @@
 		},
 		{
 			"guid": "ydV8IMtAfS3uFzlz0sR5iGjM8A3xaZxhv7DpcaEObv8",
-			"nsrc": [
-				"Shown the first ",
-				{
-					"t": "x",
-					"v": "{0}"
-				},
-				" members"
-			],
 			"ntgt": [
 				"Mostrati i primi ",
 				{
@@ -1879,9 +1165,6 @@
 		},
 		{
 			"guid": "Z7s4QyJAhYHCiMy_1QBsnWuFYjFGjeUweCymtEG5EI0",
-			"nsrc": [
-				"You are the only site member."
-			],
 			"ntgt": [
 				"L'utente è l'unico membro del sito."
 			],
@@ -1890,33 +1173,12 @@
 		},
 		{
 			"guid": "izQWYgYqKwqWjsdbFGDGR2vStXjgSKPkDzfkUNC_dZY",
-			"nsrc": [],
 			"ntgt": [],
 			"ts": 1,
 			"q": 70
 		},
 		{
 			"guid": "KTiNW5209TexcCzIt4JuDtEciEbxhHTDof1fPUXxPy8",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"Use this dashlet to see who belongs to this site. You can click their name to view their profile and get to know them.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				},
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"Clicking All Members lets you see everyone in this site. If you're a site manager, click Invite to send out some site invitations.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "bx",
@@ -1942,9 +1204,6 @@
 		},
 		{
 			"guid": "-jkZ8mNn1-5gY57cN8Iwf4TRvNgsswnWDCYc9YU1-DI",
-			"nsrc": [
-				"Site Content"
-			],
 			"ntgt": [
 				"Contenuto del sito"
 			],
@@ -1953,9 +1212,6 @@
 		},
 		{
 			"guid": "Eq6kdX8FRZrnHXZ8tj-1WkbVn79SRm10JD2L8-8Sy8w",
-			"nsrc": [
-				"My Favorites"
-			],
 			"ntgt": [
 				"I miei preferiti"
 			],
@@ -1964,9 +1220,6 @@
 		},
 		{
 			"guid": "97cVTH-GAwwPwiPkLIvfcpnA5adMWSAGoEbc3MRek1o",
-			"nsrc": [
-				"I'm Editing"
-			],
 			"ntgt": [
 				"Che sto modificando"
 			],
@@ -1975,9 +1228,6 @@
 		},
 		{
 			"guid": "hf7blJXAg22Fri6NHgJ7s70yxHa6yBhqcqADR_1yjVw",
-			"nsrc": [
-				"I've Recently Modified"
-			],
 			"ntgt": [
 				"Elementi modificati di recente"
 			],
@@ -1986,9 +1236,6 @@
 		},
 		{
 			"guid": "qbkzWNAbC_TxskmbnRMPTAFC_Qivo452sE-eKom4sEk",
-			"nsrc": [
-				"Synced content"
-			],
 			"ntgt": [
 				"Contenuto sincronizzato"
 			],
@@ -1997,9 +1244,6 @@
 		},
 		{
 			"guid": "r39Zh1WRDhk2ssx_nqreCADYUoE4NLCBoirF7Hyz0pc",
-			"nsrc": [
-				"Synced with Errors"
-			],
 			"ntgt": [
 				"Sincronizzato con errori"
 			],
@@ -2008,9 +1252,6 @@
 		},
 		{
 			"guid": "JRcN8pfbtc9OtGAhnn5foEsq1M7RTW7U_xk4GzVE5lc",
-			"nsrc": [
-				"Keep track of content changes"
-			],
 			"ntgt": [
 				"Tieni traccia delle modifiche al contenuto"
 			],
@@ -2019,9 +1260,6 @@
 		},
 		{
 			"guid": "AoGMEuVT8eQgM6akvguJJHpfNLiR5zK9PCNZ6dZJ89s",
-			"nsrc": [
-				"Easily see which document library items site members have been working on. In the detailed view you can like an item and mark it as a favorite. You can also jump to the details page to leave a comment."
-			],
 			"ntgt": [
 				"È possibile visualizzare con facilità quali elementi della raccolta documenti sono stati modificati dai membri del sito. Nella vista dettagliata, è possibile esprimere l'apprezzamento per un elemento e contrassegnarlo come preferito. Inoltre, è possibile passare direttamente alla pagina dei dettagli per lasciare un commento."
 			],
@@ -2030,61 +1268,6 @@
 		},
 		{
 			"guid": "LiZ1Us13QP3ByVIcMm62HGr4E_GM48xSJKMED2MBqn4",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"This dashlet makes it easy to keep track of your recent changes to library content in this site. Clicking the item name or thumbnail takes you to the details page so you can preview or work with the item.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				},
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"There are two views for this dashlet. The detailed view lets you:",
-				{
-					"t": "bx",
-					"v": "<ul>"
-				},
-				{
-					"t": "bx",
-					"v": "<li>"
-				},
-				"Mark an item as a favorite so it appears in Favorites lists for easy access",
-				{
-					"t": "ex",
-					"v": "</li>"
-				},
-				{
-					"t": "bx",
-					"v": "<li>"
-				},
-				"Like (and unlike) an item",
-				{
-					"t": "ex",
-					"v": "</li>"
-				},
-				{
-					"t": "bx",
-					"v": "<li>"
-				},
-				"Jump to the item details page to leave a comment",
-				{
-					"t": "ex",
-					"v": "</li>"
-				},
-				{
-					"t": "ex",
-					"v": "</ul>"
-				},
-				{
-					"t": "ex",
-					"v": "</p>"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "bx",
@@ -2145,13 +1328,6 @@
 		},
 		{
 			"guid": "eXhVEg9o9noL3Qu7Pbbo7HSzaK70HRF4gHThovLijH0",
-			"nsrc": [
-				"Welcome to your dashboard, ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				"Benvenuto nel pannello di controllo, ",
 				{
@@ -2164,18 +1340,6 @@
 		},
 		{
 			"guid": "eOQ0ymwgcOgUMBykpFlcXll14QGH4_djMj-_x4bl9Zk",
-			"nsrc": [
-				"Welcome to ",
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				", ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				"Benvenuto in ",
 				{
@@ -2193,9 +1357,6 @@
 		},
 		{
 			"guid": "_XrOsbXsUwQ_8bszzlCDI2uJW88xOEBL0N8XglS9iJE",
-			"nsrc": [
-				"The personal dashboard shows you what's going on in the sites you belong to."
-			],
 			"ntgt": [
 				"Il pannello di controllo personale mostra una vista riepilogativa delle attività dei siti di cui si è membri."
 			],
@@ -2204,9 +1365,6 @@
 		},
 		{
 			"guid": "LFDNhc3x4IOU2jEMEDAutCGuf0RLtaFpI9Npx5mEaHo",
-			"nsrc": [
-				"The site dashboard lets you know what's been happening in this particular site."
-			],
 			"ntgt": [
 				"Il pannello di controllo del sito consente di controllare le attività di quel particolare sito."
 			],
@@ -2215,9 +1373,6 @@
 		},
 		{
 			"guid": "Hl2jAekbOlU5b2UgbSDPKnsTR1-LeGI_x1vrWZmXIc4",
-			"nsrc": [
-				"Let's get you started..."
-			],
 			"ntgt": [
 				"Per iniziare..."
 			],
@@ -2226,9 +1381,6 @@
 		},
 		{
 			"guid": "0HBlSg4TQpBa_3gnTevKWAo91w1FXZmnFD20mezdFn0",
-			"nsrc": [
-				"Confirm Removal"
-			],
 			"ntgt": [
 				"Conferma rimozione"
 			],
@@ -2237,9 +1389,6 @@
 		},
 		{
 			"guid": "311BhkRDuAPx8E5vVnHKZLqTXbf6R7wDXiVjvJSYdbs",
-			"nsrc": [
-				"Are you sure you want to permanently remove the assistance panel from this dashboard?"
-			],
 			"ntgt": [
 				"Si desidera rimuovere in modo permanente il pannello di assistenza dal pannello di controllo?"
 			],
@@ -2248,9 +1397,6 @@
 		},
 		{
 			"guid": "NRkVbdTNHz_qlna4LgnOAPki1p82gd23HqBhboT0FCM",
-			"nsrc": [
-				"Unable to remove dashlet."
-			],
 			"ntgt": [
 				"Impossibile rimuovere il dashlet."
 			],
@@ -2259,9 +1405,6 @@
 		},
 		{
 			"guid": "EwYyoBOiJdg6oM-YE3IceFEdrI4YodM54PJ9lxi5coA",
-			"nsrc": [
-				"Remove"
-			],
 			"ntgt": [
 				"Rimuovi"
 			],
@@ -2270,9 +1413,6 @@
 		},
 		{
 			"guid": "Dzd-t_8JGLQYnlP7l4_2CRVb4ogwRapR7Pv_eri26N0",
-			"nsrc": [
-				"Learning"
-			],
 			"ntgt": [
 				"Formazione"
 			],
@@ -2281,9 +1421,6 @@
 		},
 		{
 			"guid": "cq7dB3PO5aldkcR0mnQAuz30CtWgT3tVz7pQTb0Fo8E",
-			"nsrc": [
-				"See what you can do with Alfresco by watching a video tutorial."
-			],
 			"ntgt": [
 				"Le esercitazioni video consentono di visualizzare le operazioni che si possono effettuare con Alfresco."
 			],
@@ -2292,9 +1429,6 @@
 		},
 		{
 			"guid": "Kd8IjUiDGWqwJ8_wCe9j8IPCULuggAu07-69RVwUGsE",
-			"nsrc": [
-				"View the tutorials"
-			],
 			"ntgt": [
 				"Visualizza esercitazioni video"
 			],
@@ -2303,9 +1437,6 @@
 		},
 		{
 			"guid": "yzKCcxaBfHVKgCT65Yqwp34_PqIAGgb63qGEv7X4JRo",
-			"nsrc": [
-				"Sharing"
-			],
 			"ntgt": [
 				"Condivisione"
 			],
@@ -2314,9 +1445,6 @@
 		},
 		{
 			"guid": "sU0ERYq-NYM1suS9gBdoAY_rZ7GgozUoC2ODYyZo_68",
-			"nsrc": [
-				"Create a site to share content with other site members."
-			],
 			"ntgt": [
 				"Creare un sito per condividere contenuti con gli altri membri."
 			],
@@ -2325,9 +1453,6 @@
 		},
 		{
 			"guid": "jtWkUsCWeOhFAHH9cyWJg3pnZTO6EXkp-wS_VsFxMnE",
-			"nsrc": [
-				"Create a site"
-			],
 			"ntgt": [
 				"Crea sito"
 			],
@@ -2336,9 +1461,6 @@
 		},
 		{
 			"guid": "EvF0tZmcww2tlRFKWqnWSDHmN__vnbBi-RLjXQUqGlM",
-			"nsrc": [
-				"Personalizing"
-			],
 			"ntgt": [
 				"Personalizzazione"
 			],
@@ -2347,9 +1469,6 @@
 		},
 		{
 			"guid": "Od4t7qwpOzcjCy82k9h-8jpdK3p5Feiy8qHkcBdbs8g",
-			"nsrc": [
-				"Update your personal and business information so others can get to know you."
-			],
 			"ntgt": [
 				"Aggiornare le informazioni personali e aziendali in modo che altri utenti possano visualizzarle."
 			],
@@ -2358,9 +1477,6 @@
 		},
 		{
 			"guid": "dGqwaQvTpU3JFzGx7FxOgalBei43MI1PoD4Um6snUR8",
-			"nsrc": [
-				"Edit your profile"
-			],
 			"ntgt": [
 				"Modifica profilo"
 			],
@@ -2369,9 +1485,6 @@
 		},
 		{
 			"guid": "oaEMzNKQDA6D0ZxLsgWbK9Asm5vGm8mqaOrfV3ifMlE",
-			"nsrc": [
-				"Customizing"
-			],
 			"ntgt": [
 				"Personalizzazione"
 			],
@@ -2380,9 +1493,6 @@
 		},
 		{
 			"guid": "7hYl8_UBb4dBVjKwIs5Ss29v7cg1culTTUQNTK4aAw0",
-			"nsrc": [
-				"Set up your dashboard to show the information you want to see."
-			],
 			"ntgt": [
 				"Configurare il pannello di controllo in modo da mostrare le informazioni desiderate."
 			],
@@ -2391,9 +1501,6 @@
 		},
 		{
 			"guid": "IySJzAxorEnDt5PhB1lErXiAOn_qlIbmoNDT_77W2Ns",
-			"nsrc": [
-				"Customize your dashboard"
-			],
 			"ntgt": [
 				"Personalizza pannello di controllo"
 			],
@@ -2402,9 +1509,6 @@
 		},
 		{
 			"guid": "lNCvVsgpTSKpr39mRmojNPuHOr-txvsV8NzkcfIxUpE",
-			"nsrc": [
-				"Exploring"
-			],
 			"ntgt": [
 				"Esplorazione"
 			],
@@ -2413,9 +1517,6 @@
 		},
 		{
 			"guid": "hA5l02jvfwLhJUrTJwk5shcVXoi5xjUO8TI2KfcTSSA",
-			"nsrc": [
-				"Have a look at the sites already in Alfresco. You can visit public sites and join them straightaway."
-			],
 			"ntgt": [
 				"Una panoramica dei siti di Alfresco. È possibile visitare i siti pubblici e registrarsi immediatamente."
 			],
@@ -2424,9 +1525,6 @@
 		},
 		{
 			"guid": "FdjstiwWjJHZeBQyRFGvayIrBA1A1Q8A44EFiaRpgc4",
-			"nsrc": [
-				"View all sites"
-			],
 			"ntgt": [
 				"Visualizza tutti i siti"
 			],
@@ -2435,9 +1533,6 @@
 		},
 		{
 			"guid": "C0xFmTN5j00pG2pEoc5qD9XwfMp5NnIHyyooJCwdcmI",
-			"nsrc": [
-				"Customizing"
-			],
 			"ntgt": [
 				"Personalizzazione"
 			],
@@ -2446,9 +1541,6 @@
 		},
 		{
 			"guid": "jSsDMOjgzLle4wBpQciLVaV7kIWOO15lLvWjFT2fsj8",
-			"nsrc": [
-				"Set up this dashboard to show information you want others to see."
-			],
 			"ntgt": [
 				"Configurare il pannello di controllo con le informazioni che si desidera mostrare agli altri utenti."
 			],
@@ -2457,9 +1549,6 @@
 		},
 		{
 			"guid": "k_sZf4xYFd3q_jShZ4KCg3pMyb7k30h_GJzCOhjXh2Q",
-			"nsrc": [
-				"Customize the site dashboard"
-			],
 			"ntgt": [
 				"Personalizza pannello di controllo del sito"
 			],
@@ -2468,9 +1557,6 @@
 		},
 		{
 			"guid": "C3Bpk8ksl0oRqtnFh1rqmccVNArfSSLDaxQYufhd8Yg",
-			"nsrc": [
-				"Joining"
-			],
 			"ntgt": [
 				"Partecipazione"
 			],
@@ -2479,9 +1565,6 @@
 		},
 		{
 			"guid": "TDCRo5CmTHxib6eq6zDJVk_HZdONjyv7NWsdRc-olL4",
-			"nsrc": [
-				"This site's membership is moderated. You can request to join and a site manager will be notified."
-			],
 			"ntgt": [
 				"La partecipazione al sito è sottoposta a moderazione. È possibile richiedere la partecipazione in modo che la richiesta venga notificata a un manager del sito."
 			],
@@ -2490,9 +1573,6 @@
 		},
 		{
 			"guid": "z7pget80mARdHz2d5oVY8rQKjU718-IHuOfSPexFR64",
-			"nsrc": [
-				"Request to join"
-			],
 			"ntgt": [
 				"Richiedi partecipazione"
 			],
@@ -2501,9 +1581,6 @@
 		},
 		{
 			"guid": "YjY9B7bbslXXS_BZu5t0flKRmJBYbvJXy7WtcMrnbAM",
-			"nsrc": [
-				"Collaborating"
-			],
 			"ntgt": [
 				"Collaborazione"
 			],
@@ -2512,9 +1589,6 @@
 		},
 		{
 			"guid": "-mfz92vriJPFOruq0CrewWec5ztycvbhGR56ZCSKccw",
-			"nsrc": [
-				"Upload content to the document library to start collaborating with others."
-			],
 			"ntgt": [
 				"Caricare il contenuto nella raccolta documenti per avviare la collaborazione con altri utenti."
 			],
@@ -2523,9 +1597,6 @@
 		},
 		{
 			"guid": "-PJoTPxUYJLIwWOLCu8zldxDGyaXYY9Hsex1AGb6w1I",
-			"nsrc": [
-				"Upload content"
-			],
 			"ntgt": [
 				"Carica contenuto"
 			],
@@ -2534,9 +1605,6 @@
 		},
 		{
 			"guid": "6ogdr7A0_gwlw-ljmLYVDzrSJoigK6v7Bgp0Qpk6lmM",
-			"nsrc": [
-				"Inviting"
-			],
 			"ntgt": [
 				"Inviti"
 			],
@@ -2545,9 +1613,6 @@
 		},
 		{
 			"guid": "fKl1u7uNfFUT5Jsq63a4keItOXxeOXevvCvOe8tgeBc",
-			"nsrc": [
-				"Start inviting others to join your site."
-			],
 			"ntgt": [
 				"Invitare altri utenti ad unirsi al sito."
 			],
@@ -2556,9 +1621,6 @@
 		},
 		{
 			"guid": "AL3Ti9Vq1Q9-WfGSOlvyPjteL7dQ0Jg7KvwJGfGCv4Y",
-			"nsrc": [
-				"Invite people"
-			],
 			"ntgt": [
 				"Invita persone"
 			],
@@ -2567,9 +1629,6 @@
 		},
 		{
 			"guid": "5mqaDtT14XgYTRi-WVMX4xmdeQGEZcg4iWnhPx5qlfU",
-			"nsrc": [
-				"Socializing"
-			],
 			"ntgt": [
 				"Social network"
 			],
@@ -2578,9 +1637,6 @@
 		},
 		{
 			"guid": "OYyKEvCSU3nWDCB9fWmXj5h-JDfOqqBAkAWYwo9rhcY",
-			"nsrc": [
-				"Find out who belongs to this site. From the member list you can view user profiles to get to know others."
-			],
 			"ntgt": [
 				"Individuare i membri del sito. Nell'elenco, è possibile visualizzare i profili utente per conoscere gli altri membri."
 			],
@@ -2589,9 +1645,6 @@
 		},
 		{
 			"guid": "P92KXznSg66CZcQdToPezgdFAcXpp0tei9RImF088tw",
-			"nsrc": [
-				"View site members"
-			],
 			"ntgt": [
 				"Visualizza membri del sito"
 			],
@@ -2600,9 +1653,6 @@
 		},
 		{
 			"guid": "2xEEnWSco7FwAlnHENjdj7z2tX9hcRurv-r_f7VdrI8",
-			"nsrc": [
-				"Exploring"
-			],
 			"ntgt": [
 				"Esplorazione"
 			],
@@ -2611,9 +1661,6 @@
 		},
 		{
 			"guid": "kO8OlqPrZKO_KP88Z4QYR3PVYjUCg7oA_1dJbCgQnLM",
-			"nsrc": [
-				"Find out what content has been added to the site by browsing the document library."
-			],
 			"ntgt": [
 				"Individuare il contenuto aggiunto al sito effettuando una ricerca nella raccolta documenti."
 			],
@@ -2622,9 +1669,6 @@
 		},
 		{
 			"guid": "I1t1cPUy3locFAZ3wfj1n4hgCbRzysFljfBLOvzpJLE",
-			"nsrc": [
-				"Go to document library"
-			],
 			"ntgt": [
 				"Vai alla raccolta documenti"
 			],
@@ -2633,9 +1677,6 @@
 		},
 		{
 			"guid": "-QwKxl5l4G0bSHzunF6PDxbtFAjOGaw1gbMAPvbPvdw",
-			"nsrc": [
-				"Cloud"
-			],
 			"ntgt": [
 				"Cloud"
 			],
@@ -2644,9 +1685,6 @@
 		},
 		{
 			"guid": "Z8SdGcwUf6vyZv2DdWizfqlOPFLSidgQwHAdt8kRes4",
-			"nsrc": [
-				"Sign up today to claim your free network in the cloud."
-			],
 			"ntgt": [
 				"Registrati oggi per richiedere la tua rete gratuita nel cloud."
 			],
@@ -2655,9 +1693,6 @@
 		},
 		{
 			"guid": "Uh32mWY8aps0Zd9KWVc47xITBfl4BUWL3y9F_B4oNWM",
-			"nsrc": [
-				"Sign up"
-			],
 			"ntgt": [
 				"Registrati"
 			],
@@ -2666,19 +1701,6 @@
 		},
 		{
 			"guid": "IWi0-MUz7xZe3ZAf4X68WugB14jsOWuPXAI8W2PZVt8",
-			"nsrc": [
-				"Requesting to add user ",
-				{
-					"t": "x",
-					"v": "{0}"
-				},
-				" to site ",
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				"..."
-			],
 			"ntgt": [
 				"Richiesta di aggiungere l''utente ",
 				{
@@ -2697,14 +1719,6 @@
 		},
 		{
 			"guid": "oe6sXNrVCpir8UgtWITsu94Yf0pUexLFiUko3Ta_dpc",
-			"nsrc": [
-				"Request to join site ",
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				" successfully sent. You will now be returned to your personal dashboard."
-			],
 			"ntgt": [
 				"Richiesta di partecipazione al sito ",
 				{
@@ -2718,19 +1732,6 @@
 		},
 		{
 			"guid": "9kYNZ3_ktVpcuJuuRdX__VHqhk2anewy39BA-ieCop8",
-			"nsrc": [
-				"Could not make the request to add user ",
-				{
-					"t": "x",
-					"v": "{0}"
-				},
-				" to site ",
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				"."
-			],
 			"ntgt": [
 				"Impossibile inviare la richiesta di aggiungere l''utente ",
 				{
@@ -2749,9 +1750,6 @@
 		},
 		{
 			"guid": "-mF3ugEQpGdMiNj6mR92iwaVMBtHy4HL5ZIJThK6iZU",
-			"nsrc": [
-				"My Discussions"
-			],
 			"ntgt": [
 				"Le mie discussioni"
 			],
@@ -2760,9 +1758,6 @@
 		},
 		{
 			"guid": "AOIIEpiCu9WedMyqPeO1AyNZSHlySVzODmPV5o8kjUc",
-			"nsrc": [
-				"New Topic"
-			],
 			"ntgt": [
 				"Nuovo argomento"
 			],
@@ -2771,9 +1766,6 @@
 		},
 		{
 			"guid": "4Zbp5n5fAngZAKluzQ_hZqBwFptprKA-c5yHlUS0S98",
-			"nsrc": [
-				"There are no topics matching your filters."
-			],
 			"ntgt": [
 				"Nessun argomento corrispondente ai filtri."
 			],
@@ -2782,9 +1774,6 @@
 		},
 		{
 			"guid": "zfEXHMjig8Nq0hRvJFavv0YSYI687AAYRF7VDNBhedY",
-			"nsrc": [
-				"Updated"
-			],
 			"ntgt": [
 				"Aggiornato"
 			],
@@ -2793,19 +1782,6 @@
 		},
 		{
 			"guid": "dIbVwxFYE1hxYeNCVvrHssPzog8X8nJJPpXXyZSsaHk",
-			"nsrc": [
-				"Created by ",
-				{
-					"t": "x",
-					"v": "{0}"
-				},
-				" ",
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				"."
-			],
 			"ntgt": [
 				"Creato da ",
 				{
@@ -2824,9 +1800,6 @@
 		},
 		{
 			"guid": "xxSe_S0aI5ez8bvNdqKQb9ZwoYONnrfp0gcWTfaxo2c",
-			"nsrc": [
-				"There is 1 reply."
-			],
 			"ntgt": [
 				"1 risposta."
 			],
@@ -2835,14 +1808,6 @@
 		},
 		{
 			"guid": "BKLINPpUNByqgqo-yseHMuAwNi5ux1F490G2zkx43bY",
-			"nsrc": [
-				"There are ",
-				{
-					"t": "x",
-					"v": "{0}"
-				},
-				" replies."
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -2855,19 +1820,6 @@
 		},
 		{
 			"guid": "3rxLae7mZjGkYb8BFHhRL2HRVinODjyavdUOs1PeKKc",
-			"nsrc": [
-				"The last reply was posted by ",
-				{
-					"t": "x",
-					"v": "{0}"
-				},
-				" ",
-				{
-					"t": "x",
-					"v": "{1}"
-				},
-				"."
-			],
 			"ntgt": [
 				"L''ultima risposta è stata postata da ",
 				{
@@ -2886,9 +1838,6 @@
 		},
 		{
 			"guid": "SaF5jfhsK1yJhYCtKwNK14xZFItSKzIHbyfOX09s3j4",
-			"nsrc": [
-				"My Topics"
-			],
 			"ntgt": [
 				"I miei argomenti"
 			],
@@ -2897,9 +1846,6 @@
 		},
 		{
 			"guid": "MSPfQF1UwlwAcvWVCifinQbfh_Awliii9Ah1cS-YNAA",
-			"nsrc": [
-				"All Topics"
-			],
 			"ntgt": [
 				"Tutti gli argomenti"
 			],
@@ -2908,9 +1854,6 @@
 		},
 		{
 			"guid": "1xmZmVo3sItH_a_W99LVgEsp-40jP-cffl9A0AyIIDk",
-			"nsrc": [
-				"Topics updated in the last day"
-			],
 			"ntgt": [
 				"Argomenti aggiornati nelle ultime 24 ore"
 			],
@@ -2919,9 +1862,6 @@
 		},
 		{
 			"guid": "EvEWSxMZ0JyvlAQYQw7vxRTgVod348eqh3WUYn6EFIo",
-			"nsrc": [
-				"Topics updated in the last 7 days"
-			],
 			"ntgt": [
 				"Argomenti aggiornati negli ultimi 7 giorni"
 			],
@@ -2930,9 +1870,6 @@
 		},
 		{
 			"guid": "dre_B9YD3fbTKFCI4LdUyv2UQ9BuyWEC1OKW3YJUW6Y",
-			"nsrc": [
-				"Topics updated in the last 14 days"
-			],
 			"ntgt": [
 				"Argomenti aggiornati negli ultimi 14 giorni"
 			],
@@ -2941,9 +1878,6 @@
 		},
 		{
 			"guid": "mdEbnp88stSHwlqd2IFsRxHPOrXFWK1pt2g6GfJet3Y",
-			"nsrc": [
-				"Topics updated in the last 28 days"
-			],
 			"ntgt": [
 				"Argomenti aggiornati negli ultimi 28 giorni"
 			],
@@ -2952,26 +1886,6 @@
 		},
 		{
 			"guid": "oVOocmmwS1_ao_0kAZ16L3x5qJASG71Nw-hgbl22TnQ",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"Discussion Forum dashlet.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				},
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"View your latest posts on the Discussion Forum.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "bx",
@@ -2997,9 +1911,6 @@
 		},
 		{
 			"guid": "fOzFYWf5p9zLAoul1h5_L8PRFB9JVo_HcIXCbFZ22FY",
-			"nsrc": [
-				"Image Preview"
-			],
 			"ntgt": [
 				"Anteprima immagine"
 			],
@@ -3008,9 +1919,6 @@
 		},
 		{
 			"guid": "0-GrFX12d4kQcyxamhrCI4tuDTExyjLmiUZ8exmZxDo",
-			"nsrc": [
-				"No items to display"
-			],
 			"ntgt": [
 				"Nessun elemento da visualizzare"
 			],
@@ -3019,13 +1927,6 @@
 		},
 		{
 			"guid": "7hvIhLuGVxH0OLkjSIpS2xfo-eU_VI1zH5GxHtGdhpM",
-			"nsrc": [
-				"Modified by ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				"Modificato da ",
 				{
@@ -3038,14 +1939,6 @@
 		},
 		{
 			"guid": "XPbxA8FEoDrdItRlt4KXXtwCJRKixsE78JnRZ9vBRHY",
-			"nsrc": [
-				"Select Image Folder in ",
-				{
-					"t": "x",
-					"v": "{0}"
-				},
-				"..."
-			],
 			"ntgt": [
 				"Seleziona la cartella Immagini in ",
 				{
@@ -3059,9 +1952,6 @@
 		},
 		{
 			"guid": "Ly4fkat27mxTxU9l3TSeFaUihGmSkMhBS1OmC1dHGfY",
-			"nsrc": [
-				"This dashlet shows a thumbnail of each image in the document library. Clicking a thumbnail opens the image in the current window."
-			],
 			"ntgt": [
 				"Questo dashlet mostra una miniatura di ciascuna immagine della raccolta documenti. Fare clic su una miniatura per aprire l'immagine nella finestra corrente."
 			],
@@ -3070,9 +1960,6 @@
 		},
 		{
 			"guid": "AkOVY2nm-Cf2dwDHuUTJpT98X3WA0NPXYZE9jhCcjX0",
-			"nsrc": [
-				"My Activities"
-			],
 			"ntgt": [
 				"Le mie attività"
 			],
@@ -3081,9 +1968,6 @@
 		},
 		{
 			"guid": "airW-7rNpHg3ZedTeodPgXLO5o3tuBdYT4bSg8PkIo4",
-			"nsrc": [
-				"Could not load activities list"
-			],
 			"ntgt": [
 				"Impossibile caricare l'elenco attività"
 			],
@@ -3092,9 +1976,6 @@
 		},
 		{
 			"guid": "q8fd6Vngp46xiXf7YfGIUPWkBjlfIFgzAe7MhW5Tfps",
-			"nsrc": [
-				"Show"
-			],
 			"ntgt": [
 				"Mostra"
 			],
@@ -3103,9 +1984,6 @@
 		},
 		{
 			"guid": "jsg7kitbc9wGCKFRKSV3j_NZN21QhAg7AwR2Nf_KfpE",
-			"nsrc": [
-				"Older Activities"
-			],
 			"ntgt": [
 				"Attività precedenti"
 			],
@@ -3114,9 +1992,6 @@
 		},
 		{
 			"guid": "lYYzgCGkzccr-pT7UZ4i4kg7sG6k6f3jFdc6n8EN4N8",
-			"nsrc": [
-				"My activities"
-			],
 			"ntgt": [
 				"Le mie attività"
 			],
@@ -3125,9 +2000,6 @@
 		},
 		{
 			"guid": "s4SvMdwfKMU6ccV6QqV3hxXIE-EzYdNfDOpAa_qen1o",
-			"nsrc": [
-				"Everyone else's activities"
-			],
 			"ntgt": [
 				"Le attività di altri utenti"
 			],
@@ -3136,9 +2008,6 @@
 		},
 		{
 			"guid": "WzSe9I99A25oVVk5smwr-UVIa9nedcgn5MHlq4_ycoE",
-			"nsrc": [
-				"Everyone's activities"
-			],
 			"ntgt": [
 				"Tutte le attività"
 			],
@@ -3147,9 +2016,6 @@
 		},
 		{
 			"guid": "vxTDpMP5KNPD326mYrmygx-sSyHTLyKyg_J88cfgfYQ",
-			"nsrc": [
-				"I'm following"
-			],
 			"ntgt": [
 				"Sto seguendo"
 			],
@@ -3158,9 +2024,6 @@
 		},
 		{
 			"guid": "VuYFBmp8W917yvy6FDEnusaF740C6phWH-JIUrTYwc0",
-			"nsrc": [
-				"all items"
-			],
 			"ntgt": [
 				"tutti gli elementi"
 			],
@@ -3169,9 +2032,6 @@
 		},
 		{
 			"guid": "9pCIQFQxRalDew1kFulGYgME6nG1b-H580ALZ6kf4rQ",
-			"nsrc": [
-				"status updates"
-			],
 			"ntgt": [
 				"aggiornamenti di stato"
 			],
@@ -3180,9 +2040,6 @@
 		},
 		{
 			"guid": "mgUol9Z645in6zK0RM990o_78khH6p8NMdzX1Mp4b6k",
-			"nsrc": [
-				"comments"
-			],
 			"ntgt": [
 				"commenti"
 			],
@@ -3191,9 +2048,6 @@
 		},
 		{
 			"guid": "ruuQ9F125RY3PUE1KBUvz5XETYN3uQQxUGlrf4uihw0",
-			"nsrc": [
-				"content"
-			],
 			"ntgt": [
 				"contenuto"
 			],
@@ -3202,9 +2056,6 @@
 		},
 		{
 			"guid": "MwlTDK7YJbk4KimjzvBTNWO7mzIyQWs8aqhDMdwaTLs",
-			"nsrc": [
-				"memberships"
-			],
 			"ntgt": [
 				"appartenenza"
 			],
@@ -3213,9 +2064,6 @@
 		},
 		{
 			"guid": "ew1Cta4NZUO58z_VftSCMsMI7As-GxknGadESOGGxtI",
-			"nsrc": [
-				"today"
-			],
 			"ntgt": [
 				"oggi"
 			],
@@ -3224,9 +2072,6 @@
 		},
 		{
 			"guid": "G-kVvVlHI0aJBqvYbTHfRbAsDfGIlqcB2LRkmSYzV1A",
-			"nsrc": [
-				"in the last 7 days"
-			],
 			"ntgt": [
 				"negli ultimi 7 giorni"
 			],
@@ -3235,9 +2080,6 @@
 		},
 		{
 			"guid": "lJ4UhR4FcJ2ZfGcZm8WmI1zucHBKt458WX9cx5HsHG0",
-			"nsrc": [
-				"in the last 14 days"
-			],
 			"ntgt": [
 				"negli ultimi 14 giorni"
 			],
@@ -3246,9 +2088,6 @@
 		},
 		{
 			"guid": "82JTNLI_g7fqBtaJ-Cu1hMnp7jXHvGd7tX7gLNwDTsM",
-			"nsrc": [
-				"in the last 28 days"
-			],
 			"ntgt": [
 				"negli ultimi 28 giorni"
 			],
@@ -3257,9 +2096,6 @@
 		},
 		{
 			"guid": "_gINTlZvl1A81Hu1S4xQyj3N2YmM-e-Ej9sbKZ-45tQ",
-			"nsrc": [
-				"Follow what's going on in your sites"
-			],
 			"ntgt": [
 				"Segui cosa accade nei siti"
 			],
@@ -3268,9 +2104,6 @@
 		},
 		{
 			"guid": "P_2n50nItJIiq3IMSYSe0EmV3qw4ECxzGDtp5B8ViNc",
-			"nsrc": [
-				"The activities in this list let you follow the changes in the sites you belong to. You'll see things such as content updates and likes. You can also see who is joining and leaving your sites."
-			],
 			"ntgt": [
 				"Le attività di questo elenco consentono di tenere traccia delle modifiche apportate ai siti di cui si è membri. Sono visualizzate attività quali aggiornamenti dei contenuti e preferenze. È anche possibile visualizzare i nuovi membri o quelli che si rimuovono dai propri siti."
 			],
@@ -3279,26 +2112,6 @@
 		},
 		{
 			"guid": "gyzuA8K0OaZnihjH2ZONepwEMPxTtE_NosFIbn_AM8E",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"Following what goes on in your sites is easy with this dashlet. It shows the activities in all the sites you belong to, such as content that's been added, deleted, and edited. You can also see who is joining and leaving your sites.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				},
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"Filters let you view activities by time period and ownership.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "bx",
@@ -3324,9 +2137,6 @@
 		},
 		{
 			"guid": "kVq7Hxzh1nxrGyUwKNHYSW6FQgPe1o3oLXMXZ9m6KvE",
-			"nsrc": [
-				"Content I'm Editing"
-			],
 			"ntgt": [
 				"Contenuto che sto modificando"
 			],
@@ -3335,9 +2145,6 @@
 		},
 		{
 			"guid": "VaDhmkZ2ZWWHWdcH144kDe7K5E5gOW5DO9nPN-5fxNU",
-			"nsrc": [
-				"No items to display"
-			],
 			"ntgt": [
 				"Nessun elemento da visualizzare"
 			],
@@ -3346,9 +2153,6 @@
 		},
 		{
 			"guid": "Dm0Z706m2IOjE27Dnqz0iNRrbESVyE9L3njuiI_AGbc",
-			"nsrc": [
-				"Could not load data"
-			],
 			"ntgt": [
 				"Impossibile caricare i dati"
 			],
@@ -3357,18 +2161,6 @@
 		},
 		{
 			"guid": "B4HZwxXRlX_AFD_LgYIAXSdPKMLA9n7sdZx9F2wvXWA",
-			"nsrc": [
-				"Edited ",
-				{
-					"t": "x",
-					"v": "{0}"
-				},
-				" in ",
-				{
-					"t": "x",
-					"v": "{1}"
-				}
-			],
 			"ntgt": [
 				"Modificato il ",
 				{
@@ -3386,9 +2178,6 @@
 		},
 		{
 			"guid": "-lMS7-u6z9glHmbrX3w1Ta0CO_w20cZOEVdEgy7KAWo",
-			"nsrc": [
-				"Blog posts"
-			],
 			"ntgt": [
 				"Post del blog"
 			],
@@ -3397,9 +2186,6 @@
 		},
 		{
 			"guid": "kht1hnZxYg5z2oDabqluhIpdRLnLQiK48GRI9uRQ0dY",
-			"nsrc": [
-				"Forum posts"
-			],
 			"ntgt": [
 				"Post del forum"
 			],
@@ -3408,9 +2194,6 @@
 		},
 		{
 			"guid": "vaP3NW7ujyij8Ah5awtcl-VTn-TgXotOTo3xh-0d5Sg",
-			"nsrc": [
-				"Wiki pages"
-			],
 			"ntgt": [
 				"Pagine wiki"
 			],
@@ -3419,9 +2202,6 @@
 		},
 		{
 			"guid": "mma7KIJnCz1r0BNPr7a8fDOCcCHL402bw0whYy0wTZU",
-			"nsrc": [
-				"Documents"
-			],
 			"ntgt": [
 				"Documenti"
 			],
@@ -3430,9 +2210,6 @@
 		},
 		{
 			"guid": "vkvoNwRn2JIB_pYL7kCudI2BBrl0Uw4yhYNWHloHAT8",
-			"nsrc": [
-				"Check this dashlet to quickly see the items you are working on."
-			],
 			"ntgt": [
 				"Controllare la dashlet per visualizzare rapidamente gli elementi attualmente in uso."
 			],
@@ -3441,9 +2218,6 @@
 		},
 		{
 			"guid": "Zr8WyWG3RhlGY6Ni69YgvBIDRjGacfuKAxPi1HvCmWQ",
-			"nsrc": [
-				"My Documents"
-			],
 			"ntgt": [
 				"I miei documenti"
 			],
@@ -3452,9 +2226,6 @@
 		},
 		{
 			"guid": "16dwhpoku0nRZdnDK3zN4gY9CzQrNxTrbsgwSm6DGfk",
-			"nsrc": [
-				"My Favorites"
-			],
 			"ntgt": [
 				"I miei preferiti"
 			],
@@ -3463,9 +2234,6 @@
 		},
 		{
 			"guid": "T45JY1JPTF8w3-9djuQrQqNt1qo8go5BrnY-0gq_XiM",
-			"nsrc": [
-				"I'm Editing"
-			],
 			"ntgt": [
 				"Che sto modificando"
 			],
@@ -3474,9 +2242,6 @@
 		},
 		{
 			"guid": "69OAs0aOL6ZqIcXL4Fizzt7ocJPdHMPqRnxI7gdwxXY",
-			"nsrc": [
-				"I've Recently Modified"
-			],
 			"ntgt": [
 				"Elementi modificati di recente"
 			],
@@ -3485,9 +2250,6 @@
 		},
 		{
 			"guid": "CIwEJyo5_StommBSbdzYai9bLZOnMhok9di6JIE7bgc",
-			"nsrc": [
-				"Synced content"
-			],
 			"ntgt": [
 				"Contenuto sincronizzato"
 			],
@@ -3496,9 +2258,6 @@
 		},
 		{
 			"guid": "yV-PN0fv77TSTS-mNgk_pcjMnf-LdfCFBcsfNb-eAJA",
-			"nsrc": [
-				"Synced with Errors"
-			],
 			"ntgt": [
 				"Sincronizzato con errori"
 			],
@@ -3507,9 +2266,6 @@
 		},
 		{
 			"guid": "8XoIyfOkoCz_nXAZEuq2rAkrOzDIktohodTvmnKDPos",
-			"nsrc": [
-				"Keep track of your own content"
-			],
 			"ntgt": [
 				"Tieni traccia dei contenuti"
 			],
@@ -3518,9 +2274,6 @@
 		},
 		{
 			"guid": "ll8G2DYvYEBCintesx4VmEGESLsVncMkqwdXMUxqKcQ",
-			"nsrc": [
-				"This dashlet lists all of the content that's important to you, no matter which site it is in. Use the filters to easily find what you're looking for."
-			],
 			"ntgt": [
 				"Questo dashlet elenca tutti i contenuti importanti per l'utente, indipendente dal sito di provenienza. Utilizzare i filtri per modificare in modo semplice gli elementi desiderati."
 			],
@@ -3529,61 +2282,6 @@
 		},
 		{
 			"guid": "AVJwgn96gVZOTR9gxVVWAIYybHIrSmQXlxVblGOA_-M",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"This dashlet makes it easy to keep track of your own content, no matter which site it is in. Use the filter to easily find what you're looking for.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				},
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"There are two views for this dashlet. The detailed view lets you:",
-				{
-					"t": "bx",
-					"v": "<ul>"
-				},
-				{
-					"t": "bx",
-					"v": "<li>"
-				},
-				"Mark an item as a favorite so it appears in Favorites lists for easy access",
-				{
-					"t": "ex",
-					"v": "</li>"
-				},
-				{
-					"t": "bx",
-					"v": "<li>"
-				},
-				"Like (and unlike) an item",
-				{
-					"t": "ex",
-					"v": "</li>"
-				},
-				{
-					"t": "bx",
-					"v": "<li>"
-				},
-				"Jump to the item details page to leave a comment",
-				{
-					"t": "ex",
-					"v": "</li>"
-				},
-				{
-					"t": "ex",
-					"v": "</ul>"
-				},
-				{
-					"t": "ex",
-					"v": "</p>"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "bx",
@@ -3644,9 +2342,6 @@
 		},
 		{
 			"guid": "xdSxt3fOBafJlhTuB-UYZBP6Yuaa3zikmNIKnn_3b80",
-			"nsrc": [
-				"My Meeting Workspaces"
-			],
 			"ntgt": [
 				"I miei spazi di lavoro per riunioni"
 			],
@@ -3655,9 +2350,6 @@
 		},
 		{
 			"guid": "95wufLScOHKhQTSbDmm0fY-sgDbl3CzFbTrf7EIcaco",
-			"nsrc": [
-				"Delete"
-			],
 			"ntgt": [
 				"Elimina"
 			],
@@ -3666,9 +2358,6 @@
 		},
 		{
 			"guid": "hEx8GA1O-_qTlP-B6JO83QStuzstF54FrJg9scNduiE",
-			"nsrc": [
-				"No meeting workspaces to display"
-			],
 			"ntgt": [
 				"Nessuno spazio di lavoro per riunioni da visualizzare"
 			],
@@ -3677,9 +2366,6 @@
 		},
 		{
 			"guid": "86X3guH-QznpXsT3DHHEw9PPgKLlRXKsKpTX0_GetnE",
-			"nsrc": [
-				"The favorite setting for the meeting workspace could not be saved"
-			],
 			"ntgt": [
 				"Impossibile salvare l'impostazione come preferito per lo spazio di lavoro per riunioni"
 			],
@@ -3688,9 +2374,6 @@
 		},
 		{
 			"guid": "chVcIGwRxOqTMMJSOVBci-X9dwfTrQqqbM_B4f5Hr8I",
-			"nsrc": [
-				"Mark or unmark meeting workspace as favorite"
-			],
 			"ntgt": [
 				"Seleziona o deseleziona lo spazio di lavoro per riunioni come preferito"
 			],
@@ -3699,9 +2382,6 @@
 		},
 		{
 			"guid": "0mXtDKcqSsQ2f-bn_WNhCJPjWuOImGuV2N4MzXFcGm4",
-			"nsrc": [
-				"Mark or unmark meeting workspace as IMAP favorite"
-			],
 			"ntgt": [
 				"Seleziona o deseleziona lo spazio di lavoro per riunioni come preferito IMAP"
 			],
@@ -3710,26 +2390,6 @@
 		},
 		{
 			"guid": "KwRk8xsR7NqNEUmQq062j5EhNOvcXlAZjD3-gRDpuTQ",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"A Meeting Workspace is a type of site that is created outside of Alfresco. This dashlet lists all of your Meeting Workspace sites.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				},
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"From here you can navigate to a Meeting Workspace site. You can also delete a site, if you have the correct permissions.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "bx",
@@ -3755,9 +2415,6 @@
 		},
 		{
 			"guid": "8bQlFmPjhRmQhEl_D3zucOoRAJwuTt-y982jqcFNmQg",
-			"nsrc": [
-				"My Profile"
-			],
 			"ntgt": [
 				"Il mio profilo"
 			],
@@ -3766,9 +2423,6 @@
 		},
 		{
 			"guid": "gwYKzILRTzurUCmf_I5JFHSzbAYK-qnKKqTk2OEqx58",
-			"nsrc": [
-				"View Full Profile"
-			],
 			"ntgt": [
 				"Vedi profilo completo"
 			],
@@ -3777,9 +2431,6 @@
 		},
 		{
 			"guid": "zYMbzhPI5FMRos67sdXQfWhFklnMLVEOoBQnWWEBlAk",
-			"nsrc": [
-				"This dashlet shows a summary of your personal details. From here you can access your full user profile."
-			],
 			"ntgt": [
 				"Questo dashlet mostra un riepilogo dei dettagli personali dell'utente. Da qui, è possibile accedere al profilo utente completo."
 			],
@@ -3788,9 +2439,6 @@
 		},
 		{
 			"guid": "UlZQ7MSqJC0zqQY0D4YOldD5F93cOpqhfne5pP2FWXc",
-			"nsrc": [
-				"My Sites"
-			],
 			"ntgt": [
 				"I miei siti"
 			],
@@ -3799,9 +2447,6 @@
 		},
 		{
 			"guid": "CNYZHwdG54uOPssvos2FeIoUucBpQgemdb5f3ZS3NOY",
-			"nsrc": [
-				"Create Site"
-			],
 			"ntgt": [
 				"Crea sito"
 			],
@@ -3810,9 +2455,6 @@
 		},
 		{
 			"guid": "pVbMCPTUkdxbzFMpurxmq3lfQYnXGvga70FOMpLWja0",
-			"nsrc": [
-				"Delete"
-			],
 			"ntgt": [
 				"Elimina"
 			],
@@ -3821,9 +2463,6 @@
 		},
 		{
 			"guid": "sym--UQ1RTuzq-6wohlntwmHh5bgnIyTlCFl8qdxFcQ",
-			"nsrc": [
-				"All"
-			],
 			"ntgt": [
 				"Tutti"
 			],
@@ -3832,9 +2471,6 @@
 		},
 		{
 			"guid": "i3ag0zcuvGFcbpZBiM8Pa-uiyQSUsnVUP3Rw86jIk9U",
-			"nsrc": [
-				"My Favorites"
-			],
 			"ntgt": [
 				"I miei preferiti"
 			],
@@ -3843,9 +2479,6 @@
 		},
 		{
 			"guid": "hbAeApluyJZr9vgdIibjX3E5CWn2gLKZDz-Q2edB6WE",
-			"nsrc": [
-				"Recent"
-			],
 			"ntgt": [
 				"Recenti"
 			],
@@ -3854,9 +2487,6 @@
 		},
 		{
 			"guid": "tI5VvhguKK2Np_Ymu6r2Ej0RIHbejD58RIz6_m2jxnA",
-			"nsrc": [
-				"Quickly access your sites"
-			],
 			"ntgt": [
 				"Accesso rapido ai siti"
 			],
@@ -3865,9 +2495,6 @@
 		},
 		{
 			"guid": "pORmuIaIpyiwAr733qjgG40a_bzACims7cH11c7xlsA",
-			"nsrc": [
-				"A site is a project area where you can share and discuss content with other site members."
-			],
 			"ntgt": [
 				"Per sito si intende un'area di progetto in cui è possibile condividere e utilizzare contenuti con altri membri del sito."
 			],
@@ -3876,9 +2503,6 @@
 		},
 		{
 			"guid": "DxEjNf9NRyr2lYuojO109PzRdfZbhlOasKBZeCFkxsM",
-			"nsrc": [
-				"We've included a sample site for you. Use this to explore the features in Alfresco."
-			],
 			"ntgt": [
 				"Viene riportato un sito di esempio per l'utente. Utilizzare questo sito per conoscere le funzionalità di Alfresco."
 			],
@@ -3887,70 +2511,6 @@
 		},
 		{
 			"guid": "bSLC8teKK1MEOmFgrXsZZjcAatcZwSLvnMITBrJEYhg",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"Sites are project areas where you collaborate with others, sharing content and working on it together. This dashlet lists the sites you belong to. You can filter this list to show only your favorite sites.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				},
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"From here you can:",
-				{
-					"t": "bx",
-					"v": "<ul>"
-				},
-				{
-					"t": "bx",
-					"v": "<li>"
-				},
-				"Navigate to a site",
-				{
-					"t": "ex",
-					"v": "</li>"
-				},
-				{
-					"t": "bx",
-					"v": "<li>"
-				},
-				"Create a new site",
-				{
-					"t": "ex",
-					"v": "</li>"
-				},
-				{
-					"t": "bx",
-					"v": "<li>"
-				},
-				"Delete a site if you are the site manager",
-				{
-					"t": "ex",
-					"v": "</li>"
-				},
-				{
-					"t": "bx",
-					"v": "<li>"
-				},
-				"Mark a site as a favorite so that it shows in the Sites menu for easy access",
-				{
-					"t": "ex",
-					"v": "</li>"
-				},
-				{
-					"t": "ex",
-					"v": "</ul>"
-				},
-				{
-					"t": "ex",
-					"v": "</p>"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "bx",
@@ -4020,9 +2580,6 @@
 		},
 		{
 			"guid": "epKRcIosvdiNUQNTCllZBTpcyfk6yJLi37bwHg7nm_4",
-			"nsrc": [
-				"My Tasks"
-			],
 			"ntgt": [
 				"I miei compiti"
 			],
@@ -4031,9 +2588,6 @@
 		},
 		{
 			"guid": "vPu9Gy2eFkiPNaDAoIlmc9whCRzTvQ984kOHZANKJ0w",
-			"nsrc": [
-				"Start Workflow"
-			],
 			"ntgt": [
 				"Avvia workflow"
 			],
@@ -4042,9 +2596,6 @@
 		},
 		{
 			"guid": "Nlkm4Se8KVfvio8MJgmKKuvD49w9k4sJ5AJWs28somg",
-			"nsrc": [
-				"Active Tasks"
-			],
 			"ntgt": [
 				"Compiti attivi"
 			],
@@ -4053,9 +2604,6 @@
 		},
 		{
 			"guid": "Q4u2myLfcHsknqOi0r4uKtFBLaoJuJ0iiQ31G31sUJc",
-			"nsrc": [
-				"Completed Tasks"
-			],
 			"ntgt": [
 				"Compiti completati"
 			],
@@ -4064,9 +2612,6 @@
 		},
 		{
 			"guid": "xK24KgsSyM1av2EI_uMsC3k54yBUL2cNf3a6bMsygxs",
-			"nsrc": [
-				"View Task"
-			],
 			"ntgt": [
 				"Vedi compito"
 			],
@@ -4075,9 +2620,6 @@
 		},
 		{
 			"guid": "a75DwZSR97TRCv7Tu9buoQvS62zyWJSTBBIe0T_Sd9o",
-			"nsrc": [
-				"Edit Task"
-			],
 			"ntgt": [
 				"Modifica compito"
 			],
@@ -4086,9 +2628,6 @@
 		},
 		{
 			"guid": "firH6Wg83voQWGdKTeEaKvZFM2MSNnut6mwVBLZDrMg",
-			"nsrc": [
-				"Pooled task"
-			],
 			"ntgt": [
 				"Compito assegnato al pool"
 			],
@@ -4097,17 +2636,6 @@
 		},
 		{
 			"guid": "D2rH5S5SVG9kZHu8uClAV7K53S5ui9rsH7PcHD6s4vo",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{0}"
-				},
-				", ",
-				{
-					"t": "x",
-					"v": "{1}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -4124,9 +2652,6 @@
 		},
 		{
 			"guid": "I5Kr0TjUoHgmE5HZ6Hkqw0kUIr0QjFzbFvz2YAG0Q0I",
-			"nsrc": [
-				"Unassigned"
-			],
 			"ntgt": [
 				"Non assegnato"
 			],
@@ -4135,13 +2660,6 @@
 		},
 		{
 			"guid": "aC3z5tMbWMuuupMZu2_1R-K25wJHI364qbTgePZVVtA",
-			"nsrc": [
-				"Due on: ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				"Scade il: ",
 				{
@@ -4154,9 +2672,6 @@
 		},
 		{
 			"guid": "8AuA3JdZzJKOkRh8OQvnVJRzVHUPMIUiOjfrX86Bibo",
-			"nsrc": [
-				"No tasks"
-			],
 			"ntgt": [
 				"Nessun compito"
 			],
@@ -4165,18 +2680,6 @@
 		},
 		{
 			"guid": "6Kh_d7z5vDrSeZpdWqHEoCrGVNEd8GJ5uOXN-WfFD24",
-			"nsrc": [
-				"Type: ",
-				{
-					"t": "x",
-					"v": "{0}"
-				},
-				", Status: ",
-				{
-					"t": "x",
-					"v": "{1}"
-				}
-			],
 			"ntgt": [
 				"Tipo: ",
 				{
@@ -4194,9 +2697,6 @@
 		},
 		{
 			"guid": "3tkVM3WAlZnqn435TugK4MhJQgzntlZ-FuPgfHZ3hUM",
-			"nsrc": [
-				"Active Tasks"
-			],
 			"ntgt": [
 				"Compiti attivi"
 			],
@@ -4205,9 +2705,6 @@
 		},
 		{
 			"guid": "Qhtg8zhuobjkBNy9a9u6G9KpckRWn6ekNkSOWHYwutM",
-			"nsrc": [
-				"Completed Tasks"
-			],
 			"ntgt": [
 				"Compiti completati"
 			],
@@ -4216,9 +2713,6 @@
 		},
 		{
 			"guid": "K47iNY3XGCsnPWrz6ZcWoO9giYn2dV69Va9Gdq3B-eo",
-			"nsrc": [
-				"High Priority Tasks"
-			],
 			"ntgt": [
 				"Compiti con priorità alta"
 			],
@@ -4227,9 +2721,6 @@
 		},
 		{
 			"guid": "BF4C3yrZszaNM52DTm4r3KQP78KDvTz-dY01BhVkF40",
-			"nsrc": [
-				"Tasks Due Today"
-			],
 			"ntgt": [
 				"Compiti in scadenza oggi"
 			],
@@ -4238,9 +2729,6 @@
 		},
 		{
 			"guid": "zS4uKDkVTrVts6ULIO2JJ_lfqs6so9Un-GRoLkYGxBA",
-			"nsrc": [
-				"Tasks Assigned to Me"
-			],
 			"ntgt": [
 				"Compiti assegnati a me"
 			],
@@ -4249,9 +2737,6 @@
 		},
 		{
 			"guid": "R09PDx_fzdUUGKSC__kqAXYqL0VbKfaRfunC2Enkszs",
-			"nsrc": [
-				"Unassigned (Pooled Tasks)"
-			],
 			"ntgt": [
 				"Non assegnati (compiti assegnati al pool)"
 			],
@@ -4260,9 +2745,6 @@
 		},
 		{
 			"guid": "xpJxcWOzyfOz6JiicCx8wipfHxU-XMnfeSwlvTCYc-U",
-			"nsrc": [
-				"Overdue Tasks"
-			],
 			"ntgt": [
 				"Compiti scaduti"
 			],
@@ -4271,12 +2753,6 @@
 		},
 		{
 			"guid": "_eSMhA7GvQyFwpD3TteCK07HiJy_tNJvu6Z6RlD1Yqw",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{CurrentPageReport}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -4288,22 +2764,6 @@
 		},
 		{
 			"guid": "wnsZ134YkmZDAvNeDs1ybrrJ3GD5gV1wAPGIHmHlGcI",
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{startRecord}"
-				},
-				" - ",
-				{
-					"t": "x",
-					"v": "{endRecord}"
-				},
-				" of ",
-				{
-					"t": "x",
-					"v": "{totalRecords}"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "x",
@@ -4325,9 +2785,6 @@
 		},
 		{
 			"guid": "N0x4ZqYxFgSph2esNLhC1q4h8K7ebU4JR-Cynw1Tpew",
-			"nsrc": [
-				"Review the tasks assigned to you"
-			],
 			"ntgt": [
 				"Esamina compiti assegnati"
 			],
@@ -4336,9 +2793,6 @@
 		},
 		{
 			"guid": "pFJZM7Jmnr--w3m9nPZhK-2c0arLCxHQQMMiLc8O7jg",
-			"nsrc": [
-				"Different types of tasks can appear in this task list and you need to address each one. This could involve reviewing a document or simply accepting an invitation to a site."
-			],
 			"ntgt": [
 				"Nell'elenco dei compiti possono essere visualizzati diversi tipi di compiti che è necessario gestire singolarmente. Un compito può riguardare la revisione di un documento o semplicemente l'accettazione di un invito a un sito."
 			],
@@ -4347,70 +2801,6 @@
 		},
 		{
 			"guid": "Pgq9rxA8-EktqqbL9yOcNuncrLEDjhwr6gLGv4XzYuo",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"This dashlet lists the tasks assigned to you, including invitations to join sites. You can filter the list to view different types of tasks.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				},
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"From here you can:",
-				{
-					"t": "bx",
-					"v": "<ul>"
-				},
-				{
-					"t": "bx",
-					"v": "<li>"
-				},
-				"Edit a task to manage it",
-				{
-					"t": "ex",
-					"v": "</li>"
-				},
-				{
-					"t": "bx",
-					"v": "<li>"
-				},
-				"View a single task",
-				{
-					"t": "ex",
-					"v": "</li>"
-				},
-				{
-					"t": "bx",
-					"v": "<li>"
-				},
-				"Open the My Tasks page to manage all of your tasks",
-				{
-					"t": "ex",
-					"v": "</li>"
-				},
-				{
-					"t": "bx",
-					"v": "<li>"
-				},
-				"Start a workflow to create tasks for others or yourself",
-				{
-					"t": "ex",
-					"v": "</li>"
-				},
-				{
-					"t": "ex",
-					"v": "</ul>"
-				},
-				{
-					"t": "ex",
-					"v": "</p>"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "bx",
@@ -4480,9 +2870,6 @@
 		},
 		{
 			"guid": "_uhE3KrGLJQO9NYX40QzZhCOAiGm53PUnKCKMHuIJHU",
-			"nsrc": [
-				"My Document Workspaces"
-			],
 			"ntgt": [
 				"I miei spazi di lavoro per documenti"
 			],
@@ -4491,9 +2878,6 @@
 		},
 		{
 			"guid": "o7jl6L3FLIXgeTEJ6_ChHV1ZOAQnp31thchwcDIpNPc",
-			"nsrc": [
-				"Delete"
-			],
 			"ntgt": [
 				"Elimina"
 			],
@@ -4502,9 +2886,6 @@
 		},
 		{
 			"guid": "WYzhdU3b8DtgLJUXn7Tn7zat4OE1EFCkAVcIOUV8oUs",
-			"nsrc": [
-				"No document workspaces to display"
-			],
 			"ntgt": [
 				"Nessuno spazio di lavoro per documenti da visualizzare"
 			],
@@ -4513,9 +2894,6 @@
 		},
 		{
 			"guid": "aGx4T_7P8p5whU4-Swu-yuVqZzjb0OhOhPh8OyzV42U",
-			"nsrc": [
-				"The favorite setting for the document workspace could not be saved"
-			],
 			"ntgt": [
 				"Impossibile salvare l'impostazione come preferito per lo spazio di lavoro per documenti"
 			],
@@ -4524,9 +2902,6 @@
 		},
 		{
 			"guid": "01beH-pALpRN0Q9lIKbOgEguRhml7Wj6yTj27zLVyAo",
-			"nsrc": [
-				"Mark or unmark document workspace as favorite"
-			],
 			"ntgt": [
 				"Seleziona o deseleziona lo spazio di lavoro per documenti come preferito"
 			],
@@ -4535,9 +2910,6 @@
 		},
 		{
 			"guid": "pYmD4nSAgI0AAp5sU_y8dj-SgmRPtsi_gEBYVwsL4C8",
-			"nsrc": [
-				"Mark or unmark document workspace as IMAP favorite"
-			],
 			"ntgt": [
 				"Seleziona o deseleziona lo spazio di lavoro per documenti come preferito IMAP"
 			],
@@ -4546,26 +2918,6 @@
 		},
 		{
 			"guid": "QbstBkZNdzkfITuXaZAuGgvTliwWQC8mHM_3rV_7Sk4",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"A Document Workspace is a type of site that is created outside of Alfresco. This dashlet lists all of your Document Workspace sites.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				},
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"From here you can navigate to a Document Workspace site. You can also delete a site, if you have the correct permissions.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "bx",
@@ -4591,9 +2943,6 @@
 		},
 		{
 			"guid": "i6iRLGJMzgct3Ed5dX6quhzt5quYzAu4Zly3wVhMBeA",
-			"nsrc": [
-				"RSS Feed"
-			],
 			"ntgt": [
 				"Feed RSS"
 			],
@@ -4602,9 +2951,6 @@
 		},
 		{
 			"guid": "kJ9JAWQxUUCxiX4I0UKRyc8prgKz7vhCbHyRcFfSVbo",
-			"nsrc": [
-				"Configure"
-			],
 			"ntgt": [
 				"Configura"
 			],
@@ -4613,9 +2959,6 @@
 		},
 		{
 			"guid": "bl2r_NUdz3LRYApviS0mdZovycfmxK_1NX5e_dV3WGY",
-			"nsrc": [
-				"No news items"
-			],
 			"ntgt": [
 				"Nessun elemento delle news"
 			],
@@ -4624,9 +2967,6 @@
 		},
 		{
 			"guid": "TO0t9t7HB8sVD0LpC1mK9cydH5rfK18pVvjp1ukpvsU",
-			"nsrc": [
-				"Loading items - please wait..."
-			],
 			"ntgt": [
 				"Caricamento elementi in corso, attendere..."
 			],
@@ -4635,9 +2975,6 @@
 		},
 		{
 			"guid": "DXyZQwGvjI-wMwixtVE508JdQMvcior88KIFVTxvf7E",
-			"nsrc": [
-				"RSS feed can't be read"
-			],
 			"ntgt": [
 				"Impossibile leggere il feed RSS"
 			],
@@ -4646,9 +2983,6 @@
 		},
 		{
 			"guid": "wC9kcHAKpkTzWB31xwa9EMVYQwJXfj2pPAlxNYyyigs",
-			"nsrc": [
-				"RSS feed is not available"
-			],
 			"ntgt": [
 				"Il feed RSS non è disponibile"
 			],
@@ -4657,9 +2991,6 @@
 		},
 		{
 			"guid": "uWxJ2W5ssGnSAno1hIPCnJYbqmbLejphqst_gp1jfcc",
-			"nsrc": [
-				"RSS feed format is not supported"
-			],
 			"ntgt": [
 				"Il formato del feed RSS non è supportato"
 			],
@@ -4668,9 +2999,6 @@
 		},
 		{
 			"guid": "vOu-eNJHDEBQChRKqLed8BwIg3TYqS4vXtfiyYVOock",
-			"nsrc": [
-				"Saved Search"
-			],
 			"ntgt": [
 				"Ricerca salvata"
 			],
@@ -4679,9 +3007,6 @@
 		},
 		{
 			"guid": "6N6CvXFOJN5MW5CDAOCRUtAKv52ovL-gvXdY_uFAsuI",
-			"nsrc": [
-				"No results found."
-			],
 			"ntgt": [
 				"Nessun risultato trovato."
 			],
@@ -4690,9 +3015,6 @@
 		},
 		{
 			"guid": "2qDllQZkvpfUJXE0R5eq---oiS-52r1TJEFY9jaK0UM",
-			"nsrc": [
-				"in site"
-			],
 			"ntgt": [
 				"nel sito"
 			],
@@ -4701,35 +3023,6 @@
 		},
 		{
 			"guid": "9ZZmsgCdj4VOoUo-5nhEuqaBDfZBHGfiK_v5nkOMIrQ",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"Use this dashlet to set up a search and view the results.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				},
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"Configure the dashlet to save the search and set the title text of the dashlet.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				},
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"Only a Site Manager can configure the search and title - this dashlet is ideal for generating report views in a site.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "bx",
@@ -4764,9 +3057,6 @@
 		},
 		{
 			"guid": "9RU0-MtMA3IQ_HZWDTRlbtGICfYhmwwukPBoTOUNm84",
-			"nsrc": [
-				"Site Activities"
-			],
 			"ntgt": [
 				"Attività del sito"
 			],
@@ -4775,9 +3065,6 @@
 		},
 		{
 			"guid": "dXT2U75dxHuNIUPU-t03LIHyx2Xot9nfTYzt0wC7mX4",
-			"nsrc": [
-				"Could not load activities list"
-			],
 			"ntgt": [
 				"Impossibile caricare l'elenco attività"
 			],
@@ -4786,9 +3073,6 @@
 		},
 		{
 			"guid": "5lPhH3wyUosnjY8D20zaDr3pvcSu5-4SHVcyxzNNyy8",
-			"nsrc": [
-				"Show"
-			],
 			"ntgt": [
 				"Mostra"
 			],
@@ -4797,9 +3081,6 @@
 		},
 		{
 			"guid": "X7hfuKglEIfBzyBP8hjkNyTVWbzADzO5qZeZrNwktVc",
-			"nsrc": [
-				"Older Activities"
-			],
 			"ntgt": [
 				"Attività precedenti"
 			],
@@ -4808,9 +3089,6 @@
 		},
 		{
 			"guid": "Udt6eFrWTD8LIPEn855TExZ8hKbdZ-XnDwZViiOfKjI",
-			"nsrc": [
-				"My activities"
-			],
 			"ntgt": [
 				"Le mie attività"
 			],
@@ -4819,9 +3097,6 @@
 		},
 		{
 			"guid": "tf1yRhKe3Pz7u0eLwnf0vL6GRU-JEiOcDEEVohFUgBU",
-			"nsrc": [
-				"Everyone else's activities"
-			],
 			"ntgt": [
 				"Le attività di altri utenti"
 			],
@@ -4830,9 +3105,6 @@
 		},
 		{
 			"guid": "KGMwBkZzgvkB79vKnn9KTUdjpDd06urpF6Dm4CI65hk",
-			"nsrc": [
-				"Everyone's activities"
-			],
 			"ntgt": [
 				"Tutte le attività"
 			],
@@ -4841,9 +3113,6 @@
 		},
 		{
 			"guid": "6VXScrtHrW6_RXucbYRhLaIIxk-PcKWCpucU-DXYuto",
-			"nsrc": [
-				"I'm following"
-			],
 			"ntgt": [
 				"Sto seguendo"
 			],
@@ -4852,9 +3121,6 @@
 		},
 		{
 			"guid": "vRZ8-bFg84NQr-JCGfCiYSgCFpyIVfkRsbewPxPUKWE",
-			"nsrc": [
-				"all items"
-			],
 			"ntgt": [
 				"tutti gli elementi"
 			],
@@ -4863,9 +3129,6 @@
 		},
 		{
 			"guid": "JyI-4jM5rBXorGP3KgW17ipL1vKGfX-vFdiQC3hJSxo",
-			"nsrc": [
-				"status updates"
-			],
 			"ntgt": [
 				"aggiornamenti di stato"
 			],
@@ -4874,9 +3137,6 @@
 		},
 		{
 			"guid": "p6ZwVEZOg2J8KszdlWUcLhmNYYhXgvGJAWrDtDpJq2U",
-			"nsrc": [
-				"comments"
-			],
 			"ntgt": [
 				"commenti"
 			],
@@ -4885,9 +3145,6 @@
 		},
 		{
 			"guid": "dIVUO_Ot8QvPYU5zjVyiWNQ9N4mnQMqs-HfBlrPGGC4",
-			"nsrc": [
-				"content"
-			],
 			"ntgt": [
 				"contenuto"
 			],
@@ -4896,9 +3153,6 @@
 		},
 		{
 			"guid": "h0ht26CvHSGS_Uww8ADVUAHxjrBN3SSfAbkQqsswkcc",
-			"nsrc": [
-				"memberships"
-			],
 			"ntgt": [
 				"appartenenza"
 			],
@@ -4907,9 +3161,6 @@
 		},
 		{
 			"guid": "3TQRV9f1141RY8JHLgGCs9MqJXCfUHGCPKoH346i8Ns",
-			"nsrc": [
-				"today"
-			],
 			"ntgt": [
 				"oggi"
 			],
@@ -4918,9 +3169,6 @@
 		},
 		{
 			"guid": "lZ1vxUkINGFrKtKYt4sXEWFtpRIR__IShFVOehBUyi0",
-			"nsrc": [
-				"in the last 7 days"
-			],
 			"ntgt": [
 				"negli ultimi 7 giorni"
 			],
@@ -4929,9 +3177,6 @@
 		},
 		{
 			"guid": "Vqe7ORCDAj0-3slbq6Y5GRiOE5OkVwpQLLkK0AnV7Ec",
-			"nsrc": [
-				"in the last 14 days"
-			],
 			"ntgt": [
 				"negli ultimi 14 giorni"
 			],
@@ -4940,9 +3185,6 @@
 		},
 		{
 			"guid": "es1WhpDaK4xTyYraeum4hgyUSD9UgerNfV9BGbPcy8I",
-			"nsrc": [
-				"in the last 28 days"
-			],
 			"ntgt": [
 				"negli ultimi 28 giorni"
 			],
@@ -4951,9 +3193,6 @@
 		},
 		{
 			"guid": "D5uLM2Y7lh5HKdwbw8Oh9zS4NvyemL-ifgDD6NROlug",
-			"nsrc": [
-				"Follow what's going on in this site"
-			],
 			"ntgt": [
 				"Segui cosa accade nel sito corrente"
 			],
@@ -4962,9 +3201,6 @@
 		},
 		{
 			"guid": "RLaiyI_cVexQQDovlu1wqNhAlA03prM3H8xpI72wVj8",
-			"nsrc": [
-				"Watch this list to keep up on the recent site changes. You'll see activities such as content updates and likes. You can also track the site membership by seeing who is joining and leaving."
-			],
 			"ntgt": [
 				"Verificare questo elenco per tenersi aggiornati sulle modifiche recenti apportate al sito. Sono visualizzate attività quali aggiornamenti dei contenuti e preferenze. È anche possibile tenere traccia delle iscrizioni al sito controllando i nuovi membri e quelli che si rimuovono."
 			],
@@ -4973,26 +3209,6 @@
 		},
 		{
 			"guid": "jELqCyiqm8dxzBgOPcgJUmQozbaajsr2JF0Sld2lA50",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"Following what goes on in the site is easy with this dashlet. It shows all activities, such as content that's been added, edited, and deleted. You can also see who is joining and leaving the site.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				},
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"Filters let you view activities by time period and ownership.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "bx",
@@ -5018,9 +3234,6 @@
 		},
 		{
 			"guid": "dMY8CN6sydoqUsRlFLrrNXGTDjgS3A4bFt7nv1DroMI",
-			"nsrc": [
-				"Site Data Lists"
-			],
 			"ntgt": [
 				"Elenchi dati del sito"
 			],
@@ -5029,9 +3242,6 @@
 		},
 		{
 			"guid": "UEdkz_oEge0EOVJV3nqTxzXuNnOFrX9tjMCPElAgRIU",
-			"nsrc": [
-				"No lists to display"
-			],
 			"ntgt": [
 				"Nessun elenco da visualizzare"
 			],
@@ -5040,9 +3250,6 @@
 		},
 		{
 			"guid": "s4s9nIqDYizLbFsc8sUeKYUtewrvGVq7HCuzzJMAyoM",
-			"nsrc": [
-				"Create Data List"
-			],
 			"ntgt": [
 				"Crea elenco dati"
 			],
@@ -5051,9 +3258,6 @@
 		},
 		{
 			"guid": "e0V7MJ88IW05x2ffT3zZKd7c2VGh38qlGaphUkWnFps",
-			"nsrc": [
-				"This dashlet shows lists relevant to the site. Clicking a list opens it."
-			],
 			"ntgt": [
 				"Questo dashlet mostra gli elenchi relativi al sito. Fare clic su un elenco per aprirlo."
 			],
@@ -5062,9 +3266,6 @@
 		},
 		{
 			"guid": "uBR0WvZq-dGOy09nZgCpNCSo9RZNSCZT2Du7IZG4Bsk",
-			"nsrc": [
-				"Site Links"
-			],
 			"ntgt": [
 				"Link del sito"
 			],
@@ -5073,9 +3274,6 @@
 		},
 		{
 			"guid": "_zCDNnMNZ1euI5GwWkU25cGMkUpXOZ-KbEs8dQr5VQw",
-			"nsrc": [
-				"Create Link"
-			],
 			"ntgt": [
 				"Crea link"
 			],
@@ -5084,9 +3282,6 @@
 		},
 		{
 			"guid": "8HjmVxKr0DkRi6RE5Mzx8Mytqr7ZTMgSLOga8bp7Gss",
-			"nsrc": [
-				"Link's details"
-			],
 			"ntgt": [
 				"Dettagli link"
 			],
@@ -5095,9 +3290,6 @@
 		},
 		{
 			"guid": "x6nxGD5yw60z5CfGz8xuv5PBEK3ms-y_5Coe_UG_7Ds",
-			"nsrc": [
-				"No links to display"
-			],
 			"ntgt": [
 				"Nessun link da visualizzare"
 			],
@@ -5106,9 +3298,6 @@
 		},
 		{
 			"guid": "xMaXXd9iLQTkboNcA5CI6YjOzza6t5fIYKN4nVTLvA0",
-			"nsrc": [
-				"This dashlet shows links relevant to this site. The list is compiled by site members. Clicking a link opens it in a new window."
-			],
 			"ntgt": [
 				"Questo dashlet mostra i link relativi al sito corrente. L'elenco viene compilato dai membri del sito. Fare clic su un link per aprirlo in una nuova finestra."
 			],
@@ -5117,9 +3306,6 @@
 		},
 		{
 			"guid": "qpNzDxIKznWjF3VhKBN4jSc4frLkqQGGBn7JqtJa8vE",
-			"nsrc": [
-				"URL not specified"
-			],
 			"ntgt": [
 				"URL non specificato"
 			],
@@ -5128,9 +3314,6 @@
 		},
 		{
 			"guid": "nxBPgM21nUdzaHwzKDAUOpPecwgSIOm6hqYTcX9bfwE",
-			"nsrc": [
-				"Site Notice"
-			],
 			"ntgt": [
 				"Notifica sito"
 			],
@@ -5139,9 +3322,6 @@
 		},
 		{
 			"guid": "yj4g5ndRJ2pR2YT6I5HJFiWAQwVkHxyWyuDH43euBnc",
-			"nsrc": [
-				"No text has been configured"
-			],
 			"ntgt": [
 				"Non è stato configurato alcun testo"
 			],
@@ -5150,9 +3330,6 @@
 		},
 		{
 			"guid": "mJhAoE9OxVj0OEm8MJe4izRbFC6F9eoyGp58nxDpzys",
-			"nsrc": [
-				"This dashlet displays a custom message on the dashboard, specified by the site manager"
-			],
 			"ntgt": [
 				"Questo dashlet consente di visualizzare un messaggio personalizzato sul pannello di controllo, specificato dal manager del sito"
 			],
@@ -5161,9 +3338,6 @@
 		},
 		{
 			"guid": "khf1feCavm6ibe8MqlZGGmPoAkxw1Fg-9CiardufKSE",
-			"nsrc": [
-				"Site Profile"
-			],
 			"ntgt": [
 				"Profilo del sito"
 			],
@@ -5172,13 +3346,6 @@
 		},
 		{
 			"guid": "lR_WBAOjwONxbc4Uj8-ALtsxQjAPSO6L_AynCWPxMYk",
-			"nsrc": [
-				"Welcome to ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				"Benvenuto in ",
 				{
@@ -5191,9 +3358,6 @@
 		},
 		{
 			"guid": "HD5X-d2HoQZXAQO4dA6XVjmwyDzxx7atfjumP0wXc8o",
-			"nsrc": [
-				"Site Manager(s):"
-			],
 			"ntgt": [
 				"Manager del sito:"
 			],
@@ -5202,9 +3366,6 @@
 		},
 		{
 			"guid": "sc0C0MkFSy_nMBTS8jU14d-HZ-yMGxWuHP3wcTt9yHA",
-			"nsrc": [
-				"Visibility:"
-			],
 			"ntgt": [
 				"Visibilità:"
 			],
@@ -5213,9 +3374,6 @@
 		},
 		{
 			"guid": "IM1fWv6-HAAWG9JWOwHN2PwqGFm84BL77kEkg73DENw",
-			"nsrc": [
-				"Public"
-			],
 			"ntgt": [
 				"Pubblico"
 			],
@@ -5224,9 +3382,6 @@
 		},
 		{
 			"guid": "sLsiWSXiT6OMWxIzGzVDhw3JQPzfKBdbII82UggAw90",
-			"nsrc": [
-				"Moderated"
-			],
 			"ntgt": [
 				"Moderato"
 			],
@@ -5235,9 +3390,6 @@
 		},
 		{
 			"guid": "BaIEq8aWhiGESKvrIdPctiXxiYBDVYWJJbPRg-brYNY",
-			"nsrc": [
-				"Private"
-			],
 			"ntgt": [
 				"Privato"
 			],
@@ -5246,9 +3398,6 @@
 		},
 		{
 			"guid": "nzBKPR27tGvdJTHt81bRETluPFYJ2Gg-H2gE9IUXAJs",
-			"nsrc": [
-				"Unknown"
-			],
 			"ntgt": [
 				"Sconosciuto"
 			],
@@ -5257,9 +3406,6 @@
 		},
 		{
 			"guid": "N1IcZ5QfrSM8ZDsOz5i0tr8gggb063aQJ0iUZgEs5To",
-			"nsrc": [
-				"This dashlet displays the site details. Only the site manager can change this information."
-			],
 			"ntgt": [
 				"In questo dashlet vengono visualizzati i dettagli del sito. Solo il manager del sito può modificare queste informazioni."
 			],
@@ -5268,9 +3414,6 @@
 		},
 		{
 			"guid": "7VTnCLwh2yhUtrL1y6RF5Dwfn2XQbLUztctjl78G2YU",
-			"nsrc": [
-				"Site Search"
-			],
 			"ntgt": [
 				"Ricerca sito"
 			],
@@ -5279,9 +3422,6 @@
 		},
 		{
 			"guid": "P9gayAUj9HlSgxvLBDwgnL6DpANGiR9nVrMe0FytAtU",
-			"nsrc": [
-				"Search"
-			],
 			"ntgt": [
 				"Cerca"
 			],
@@ -5290,9 +3430,6 @@
 		},
 		{
 			"guid": "gNmjQRRdC_hcOykrH-oV68pAvGcA-dAJC5fkJL8rxrw",
-			"nsrc": [
-				"No results found."
-			],
 			"ntgt": [
 				"Nessun risultato trovato."
 			],
@@ -5301,9 +3438,6 @@
 		},
 		{
 			"guid": "pp4AQNiSgKNV1PqmRFEsBGUVJiBdUd_0qK0wm3u6fBY",
-			"nsrc": [
-				"in site"
-			],
 			"ntgt": [
 				"nel sito"
 			],
@@ -5312,26 +3446,6 @@
 		},
 		{
 			"guid": "uxRPvaEIZZh5Hj1s8oWFsdzucSUdwfQ1M2mzyBMjr7A",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"Use this dashlet to perform a site search and view the results.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				},
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"Clicking the item name takes you to the details page so you can preview or work with the item.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "bx",
@@ -5357,9 +3471,6 @@
 		},
 		{
 			"guid": "SPKdfv3dFWX7-7XFoRAq7On20IfLoU6TqTWJEw5jloU",
-			"nsrc": [
-				"My Calendar"
-			],
 			"ntgt": [
 				"Il mio calendario"
 			],
@@ -5368,9 +3479,6 @@
 		},
 		{
 			"guid": "qwOsbKeQ6XPLwXDcsYMNfNxnZkyoyMpXxz6_LSsWlzQ",
-			"nsrc": [
-				"No upcoming events"
-			],
 			"ntgt": [
 				"Nessun evento imminente"
 			],
@@ -5379,9 +3487,6 @@
 		},
 		{
 			"guid": "ZtTwkAcJjMlS2vtVGe9GQ2o5rFvpkyLIOLYQa-a3I9g",
-			"nsrc": [
-				"Could not load calendar data"
-			],
 			"ntgt": [
 				"Impossibile caricare i dati del calendario"
 			],
@@ -5390,9 +3495,6 @@
 		},
 		{
 			"guid": "IGy5p0jghtEk0sW4dXZLtM3lEa2gpWZ_FqWyBaew8do",
-			"nsrc": [
-				"All Day"
-			],
 			"ntgt": [
 				"Giornata intera"
 			],
@@ -5401,13 +3503,6 @@
 		},
 		{
 			"guid": "0Gpn2OtT9mxsfFCmTdSgMSTQYzw10MRlH_jZZl0CRl8",
-			"nsrc": [
-				"in ",
-				{
-					"t": "x",
-					"v": "{0}"
-				}
-			],
 			"ntgt": [
 				"in ",
 				{
@@ -5420,9 +3515,6 @@
 		},
 		{
 			"guid": "yhoc5qivuex4c_K-BMYUFbP9nKbkdCrqEfDm1BnOX-8",
-			"nsrc": [
-				"This dashlet shows the upcoming events in sites you belong to. "
-			],
 			"ntgt": [
 				"In questo dashlet vengono visualizzati gli eventi imminenti nei siti di cui si è membri. "
 			],
@@ -5431,9 +3523,6 @@
 		},
 		{
 			"guid": "aEl7teKlCV7HKIC-OPv_prNQPwpaRzw60o4hAdE15GA",
-			"nsrc": [
-				"Please use the Configure link to enter the URL of the web page you wish to display"
-			],
 			"ntgt": [
 				"Utilizzare il link Configura per immettere l'URL della pagina web da visualizzare"
 			],
@@ -5442,9 +3531,6 @@
 		},
 		{
 			"guid": "KDBdUg-NyvIug1C7Rz4pKcBurbMKwVTWuh_9fF-84E4",
-			"nsrc": [
-				"Web View"
-			],
 			"ntgt": [
 				"Vista web"
 			],
@@ -5453,9 +3539,6 @@
 		},
 		{
 			"guid": "Tno6fdToJWn893cGorCoah96RqkheH8C4KN9ItLLcaE",
-			"nsrc": [
-				"No web page to display."
-			],
 			"ntgt": [
 				"Nessuna pagina web da visualizzare."
 			],
@@ -5464,9 +3547,6 @@
 		},
 		{
 			"guid": "qEmg83eG4VzuormYT5QzxsU8gVIOBWSxN-d3erkcNL8",
-			"nsrc": [
-				"Web View"
-			],
 			"ntgt": [
 				"Vista web"
 			],
@@ -5475,9 +3555,6 @@
 		},
 		{
 			"guid": "vnTi9G3JfmxMw4TI_DbSAMrv0zvUXjl7xMZlaZqNC_0",
-			"nsrc": [
-				"The domain of the page to display is not listed as a trusted domain inside your server's IFramePolicy config."
-			],
 			"ntgt": [
 				"Il dominio della pagina da visualizzare non è nella lista dei domini di fiducia all'interno della configurazione IFramePolicy del tuo server."
 			],
@@ -5486,9 +3563,6 @@
 		},
 		{
 			"guid": "PW3HC0pFONNYOo4XrRLAjPfzrPhU7ql3Vcb-RLr5q3I",
-			"nsrc": [
-				"The domain of the url is not listed as a trusted domain inside your server's IFramePolicy config."
-			],
 			"ntgt": [
 				"Il dominio dell'url non è nella lista dei domini di fiducia all'interno della configurazione IFramePolicy del tuo server."
 			],
@@ -5497,26 +3571,6 @@
 		},
 		{
 			"guid": "2qtigSYsaPbxFxLIPrzVUQ4OvX_Er6wq1nvCsmIXh4I",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"This dashlet shows the website of your choice. Click the edit icon on the dashlet to change the web address.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				},
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"Clicking the dashlet title opens the website in a separate window.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "bx",
@@ -5542,9 +3596,6 @@
 		},
 		{
 			"guid": "tsUhoDa8t8CFonVR8KHvel4WKS9SQ9FXHzCcsTkt3bs",
-			"nsrc": [
-				"Wiki"
-			],
 			"ntgt": [
 				"Wiki del sito"
 			],
@@ -5553,9 +3604,6 @@
 		},
 		{
 			"guid": "gksc8DHW-8RthR-g1Dm982LeG5shOJQG1_FUXaGG8RA",
-			"nsrc": [
-				"Wiki"
-			],
 			"ntgt": [
 				"Wiki"
 			],
@@ -5564,9 +3612,6 @@
 		},
 		{
 			"guid": "iVQEaDYs1oi356F_6MZiUW905O8LQl1bKRWNJg4DGqk",
-			"nsrc": [
-				"Configure"
-			],
 			"ntgt": [
 				"Configura"
 			],
@@ -5575,9 +3620,6 @@
 		},
 		{
 			"guid": "WbL_w7F4YtPHfi2CGZuO_iHD42Gsfv9JFL3uE8B3hmY",
-			"nsrc": [
-				"No page is configured"
-			],
 			"ntgt": [
 				"Nessuna pagina configurata"
 			],
@@ -5586,26 +3628,6 @@
 		},
 		{
 			"guid": "vhg8jKxMyyqUEyhnwsgqh8K2eG9SPJY2FXylniirXmA",
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"This dashlet shows a page selected from the site's wiki.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				},
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				"Navigate to the wiki to see all related content.",
-				{
-					"t": "ex",
-					"v": "</p>"
-				}
-			],
 			"ntgt": [
 				{
 					"t": "bx",

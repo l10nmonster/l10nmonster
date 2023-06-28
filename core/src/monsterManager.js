@@ -3,7 +3,6 @@ import wordsCountModule from 'words-count';
 import TMManager from './tmManager.js';
 import ResourceManager from './resourceManager.js';
 import { utils } from '@l10nmonster/helpers';
-import { TU } from './entities/tu.js';
 
 export class MonsterManager {
     #targetLangs;
@@ -179,10 +178,12 @@ export class MonsterManager {
                 const acceptedGuids = new Set(guidsInFlight.concat(translatedGuids));
                 jobRequest.tus = jobRequest.tus.filter(tu => acceptedGuids.has(tu.guid));
             }
+            jobRequest.tus = jobRequest.tus.map(l10nmonster.TU.asSource);
             await this.jobStore.writeJob(jobRequest);
         }
         if (jobResponse) {
             jobResponse.updatedAt = updatedAt;
+            jobResponse.tus && (jobResponse.tus = jobResponse.tus.map(l10nmonster.TU.asTarget));
             await this.jobStore.writeJob(jobResponse);
         }
         // we update the TM in memory so that it can be reused before shutdown
@@ -223,7 +224,7 @@ export class MonsterManager {
                 for (const seg of resHandle.segments) {
                     // TODO: if segment is pluralized we need to generate/suppress the relevant number of variants for the targetLang
                     const tmEntry = tm.getEntryByGuid(seg.guid);
-                    const tu = TU.fromSegment(resHandle, seg);
+                    const tu = l10nmonster.TU.fromSegment(resHandle, seg);
                     const plainText = tu.nsrc.map(e => (typeof e === 'string' ? e : '')).join('');
                     const words = wordsCountModule.wordsCount(plainText);
                     // TODO: compatibility is actually stricter than GUID, this leads to extra translations that can't be stored
@@ -274,7 +275,7 @@ export class MonsterManager {
         const sourceLookup = {};
         for await (const res of this.rm.getAllResources()) {
             for (const seg of res.segments) {
-                sourceLookup[seg.guid] = TU.fromSegment(res, seg);
+                sourceLookup[seg.guid] = l10nmonster.TU.fromSegment(res, seg);
             }
         }
         if (!guidList) {

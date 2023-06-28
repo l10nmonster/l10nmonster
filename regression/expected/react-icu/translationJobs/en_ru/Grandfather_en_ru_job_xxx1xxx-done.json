@@ -7,9 +7,6 @@
 	"tus": [
 		{
 			"guid": "wUtgDUDVeLsT_x9VEGH_peG9Ujs3DvX1H3cvHtxgcjw",
-			"nsrc": [
-				"Welcome to react using react-i18next"
-			],
 			"ntgt": [
 				"Добро пожаловать в React и react-i18next"
 			],
@@ -18,19 +15,6 @@
 		},
 		{
 			"guid": "cghma_NsjtZInytTsem0CwlHb1dS2hT2uQGVfDLNkaI",
-			"nsrc": [
-				"To get started, edit ",
-				{
-					"t": "bx",
-					"v": "<a>"
-				},
-				"src/App.js",
-				{
-					"t": "ex",
-					"v": "</a>"
-				},
-				" and save to reload."
-			],
 			"ntgt": [
 				"Что би начать, отредактируйте ",
 				{
@@ -49,9 +33,6 @@
 		},
 		{
 			"guid": "B2tOpN7eXoM6vDTFJdnZEO-5fTC49LtcVxOOxviW7z8",
-			"nsrc": [
-				"Switch language between english and german using buttons above."
-			],
 			"ntgt": [
 				"Переключайте языки между английским, немецким и русским чуть выше."
 			],
@@ -60,14 +41,6 @@
 		},
 		{
 			"guid": "mVpp2sfDV8h1yTpK3YpunsGCCyrOtgRsoijdn0rbpfo",
-			"nsrc": [
-				"Welcome, ",
-				{
-					"t": "x",
-					"v": "{{name}}"
-				},
-				"!"
-			],
 			"ntgt": [
 				"Добро пожаловать, ",
 				{
@@ -81,22 +54,6 @@
 		},
 		{
 			"guid": "RLKDBvHhlr-qK3r-qduFToaGzxrPq1lCG1NlVq7u80s",
-			"nsrc": [
-				"Welcome, ",
-				{
-					"t": "bx",
-					"v": "<a>"
-				},
-				{
-					"t": "x",
-					"v": "{{name}}"
-				},
-				{
-					"t": "ex",
-					"v": "</a>"
-				},
-				"!"
-			],
 			"ntgt": [
 				"Добро пожаловать, ",
 				{

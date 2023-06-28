@@ -11,7 +11,7 @@ regressTestFromCLI() {
     time ../../../cli/l10n.cjs --regression pull
     time ../../../cli/l10n.cjs --regression translate
     time ../../../cli/l10n.cjs --regression status --output status.json
-    time ../../../cli/l10n.cjs --regression tmexport tm job
+    time ../../../cli/l10n.cjs --regression tmexport
     cd ..
 }
 
