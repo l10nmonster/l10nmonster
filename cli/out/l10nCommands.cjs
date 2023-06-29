@@ -20118,7 +20118,7 @@ var TMManager = class {
 // ../core/src/entities/resourceHandle.js
 var ResourceHandle = class {
   #formatHandler;
-  constructor({ id, channel, modified, resourceFormat, formatHandler, sourceLang, targetLangs, prj, ...other }) {
+  constructor({ id, channel, modified, resourceFormat, formatHandler, sourceLang, targetLangs, prj, raw, segments, subresources, ...other }) {
     this.id = id;
     this.channel = channel;
     this.modified = modified;
@@ -20127,6 +20127,9 @@ var ResourceHandle = class {
     this.sourceLang = sourceLang;
     this.targetLangs = targetLangs;
     this.prj = prj;
+    this.raw = raw;
+    this.segments = segments;
+    this.subresources = subresources;
     if (Object.keys(other).length > 1) {
       l10nmonster.logger.verbose(`Unknown properties in resource handle: ${Object.keys(other).join(", ")}`);
     }
@@ -20418,7 +20421,6 @@ ${segToTranslate.gstr}`);
         }
         const entry = tm.getEntryByGuid(segToTranslate.guid);
         if (!entry) {
-          l10nmonster.logger.verbose(`${tm.targetLang} translation not found for ${resHandle.id}, ${sid}, ${str}`);
           return void 0;
         }
         try {
@@ -21266,28 +21268,6 @@ async function jobsCmd(mm, { limitToLang }) {
   return unfinishedJobs;
 }
 
-// ../core/src/commands/translate.js
-async function translateCmd(mm, { limitToLang, dryRun }) {
-  const status2 = { generatedResources: {}, deleteResources: {} };
-  const targetLangs = mm.getTargetLangs(limitToLang);
-  const allResources = await mm.rm.getAllResources({ keepRaw: true });
-  for await (const resHandle of allResources) {
-    for (const targetLang of targetLangs) {
-      if (resHandle.targetLangs.includes(targetLang) && (l10nmonster.prj === void 0 || l10nmonster.prj.includes(resHandle.prj))) {
-        const tm = await mm.tmm.getTM(resHandle.sourceLang, targetLang);
-        const translatedRes = await resHandle.generateTranslatedRawResource(tm);
-        if (!dryRun) {
-          status2.generatedResources[targetLang] ??= [];
-          status2.deleteResources[targetLang] ??= [];
-          const translatedResourceId = await mm.rm.getChannel(resHandle.channel).commitTranslatedResource(targetLang, resHandle.id, translatedRes);
-          (translatedRes === null ? status2.deleteResources : status2.generatedResources)[targetLang].push(translatedResourceId);
-        }
-      }
-    }
-  }
-  return status2;
-}
-
 // ../core/src/monsterFactory.js
 var path4 = __toESM(require("path"), 1);
 var import_fs4 = require("fs");
@@ -22048,34 +22028,97 @@ __publicField(tmexport, "help", {
 });
 
 // translate.js
+function computeDelta(currentTranslations, newTranslations) {
+  const delta = [];
+  const newGstrMap = Object.fromEntries(newTranslations.segments.map((seg) => [seg.sid, seg.gstr]));
+  const seenIds = /* @__PURE__ */ new Set();
+  for (const seg of currentTranslations.segments) {
+    seenIds.add(seg.sid);
+    const newGstr = newGstrMap[seg.sid];
+    if (seg.gstr !== newGstr) {
+      delta.push({ id: seg.sid, l: seg.gstr, r: newGstr });
+    }
+  }
+  newTranslations.segments.filter((seg) => !seenIds.has(seg.sid)).forEach((seg) => delta.push({ id: seg.sid, r: seg.gstr }));
+  return delta;
+}
+async function compareToExisting(monsterManager, resHandle, targetLang, translatedRes) {
+  let currentTranslations;
+  let delta;
+  const channel = monsterManager.rm.getChannel(resHandle.channel);
+  try {
+    currentTranslations = await channel.getExistingTranslatedResource(resHandle, targetLang);
+    if (translatedRes) {
+      const newTranslations = await channel.makeResourceHandleFromObject(resHandle).loadResourceFromRaw(translatedRes, { isSource: false });
+      delta = computeDelta(currentTranslations, newTranslations);
+    }
+  } catch (e) {
+    l10nmonster.logger.verbose(`Couldn't fetch ${targetLang} resource for ${resHandle.channel}:${resHandle.id}: ${e.stack ?? e}`);
+  }
+  const bundleChanges = currentTranslations ? translatedRes ? delta.length > 0 ? "changed" : "unchanged" : "deleted" : translatedRes ? "new" : "void";
+  return [bundleChanges, delta];
+}
+function printChanges(resHandle, targetLang, bundleChanges, delta) {
+  if (bundleChanges === "changed") {
+    console.log(`
+${consoleColor.yellow}Changed translated bundle ${resHandle.channel}:${resHandle.id} for ${targetLang}${consoleColor.reset}`);
+    for (const change of delta) {
+      change.l !== void 0 && console.log(`${consoleColor.red}- ${change.id}: ${change.l}${consoleColor.reset}`);
+      change.r !== void 0 && console.log(`${consoleColor.green}+ ${change.id}: ${change.r}${consoleColor.reset}`);
+    }
+  } else if (bundleChanges === "new") {
+    console.log(`
+${consoleColor.green}New translated bundle ${resHandle.channel}:${resHandle.id} for ${targetLang}${consoleColor.reset}`);
+  } else if (bundleChanges === "deleted") {
+    console.log(`
+${consoleColor.green}Deleted translated bundle ${resHandle.channel}:${resHandle.id} for ${targetLang}${consoleColor.reset}`);
+  }
+}
 var translate = class {
   static async action(monsterManager, options) {
-    const limitToLang = options.lang;
-    const dryRun = options.dryrun;
-    console.log(`Generating translated resources for ${limitToLang ? limitToLang : "all languages"}...${dryRun ? " (dry run)" : ""}`);
-    const status2 = await translateCmd(monsterManager, { limitToLang, dryRun });
-    if (dryRun) {
-      for (const [lang, diff] of Object.entries(status2.diff)) {
-        for (const [fname, lines] of Object.entries(diff)) {
-          console.log(`${lang}: diffing ${fname}`);
-          lines.forEach(([added, change]) => console.log(`${added ? `${consoleColor.green}+` : `${consoleColor.red}-`} ${change}${consoleColor.reset}`));
+    const mode = (options.mode ?? "all").toLowerCase();
+    console.log(`Generating translated resources for ${consoleColor.bright}${options.lang ? options.lang : "all languages"}${consoleColor.reset}... (${mode} mode)`);
+    const status2 = { generatedResources: {}, deleteResources: {} };
+    const targetLangs = monsterManager.getTargetLangs(options.lang);
+    const allResources = await monsterManager.rm.getAllResources({ keepRaw: true });
+    for await (const resHandle of allResources) {
+      for (const targetLang of targetLangs) {
+        if (resHandle.targetLangs.includes(targetLang) && (l10nmonster.prj === void 0 || l10nmonster.prj.includes(resHandle.prj))) {
+          const tm = await monsterManager.tmm.getTM(resHandle.sourceLang, targetLang);
+          const translatedRes = await resHandle.generateTranslatedRawResource(tm);
+          let bundleChanges, delta;
+          if (mode === "delta" || mode === "dryrun") {
+            [bundleChanges, delta] = await compareToExisting(monsterManager, resHandle, targetLang, translatedRes);
+          }
+          if (mode === "dryrun") {
+            printChanges(resHandle, targetLang, bundleChanges, delta);
+          } else if (mode === "all" || bundleChanges === "changed" || bundleChanges === "new" || bundleChanges === "deleted") {
+            status2.generatedResources[targetLang] ??= [];
+            status2.deleteResources[targetLang] ??= [];
+            const translatedResourceId = await monsterManager.rm.getChannel(resHandle.channel).commitTranslatedResource(targetLang, resHandle.id, translatedRes);
+            (translatedRes === null ? status2.deleteResources : status2.generatedResources)[targetLang].push(translatedResourceId);
+            l10nmonster.logger.verbose(`Committed translated resource: ${translatedResourceId}`);
+          } else {
+            console.log(`Delta mode skipped translation of bundle ${resHandle.channel}:${resHandle.id} for ${targetLang}`);
+          }
         }
       }
-    } else {
+    }
+    if (mode !== "dryrun") {
+      console.log("Translation commit summary:");
       for (const [lang, files] of Object.entries(status2.generatedResources)) {
-        console.log(`  - ${lang}: ${files.length} resources generated`);
-      }
-      for (const [lang, files] of Object.entries(status2.deleteResources)) {
-        console.log(`  - ${lang}: ${files.length} resources deleted`);
+        console.log(`  - ${lang}: ${files.length} resources generated ${status2.deleteResources[lang].length} deleted`);
       }
     }
   }
 };
 __publicField(translate, "help", {
   description: "generate translated resources based on latest source and translations.",
+  arguments: [
+    ["[mode]", "commit all/changed/none of the translations", ["all", "delta", "dryrun"]]
+  ],
   options: [
-    ["-l, --lang <language>", "target language to translate"],
-    ["-d, --dryrun", "simulate translating and compare with existing translations"]
+    ["-l, --lang <language>", "target language to translate"]
   ]
 });
 

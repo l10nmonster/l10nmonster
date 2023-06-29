@@ -7,4 +7,3 @@ export { pushCmd } from './commands/push.js';
 export { jobPushCmd } from './commands/job.js';
 export { statusCmd } from './commands/status.js';
 export { jobsCmd } from './commands/jobs.js';
-export { translateCmd } from './commands/translate.js';

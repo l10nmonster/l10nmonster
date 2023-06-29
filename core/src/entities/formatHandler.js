@@ -186,7 +186,7 @@ export class FormatHandler {
                 }
                 const entry = tm.getEntryByGuid(segToTranslate.guid);
                 if (!entry) {
-                    l10nmonster.logger.verbose(`${tm.targetLang} translation not found for ${resHandle.id}, ${sid}, ${str}`);
+                    // l10nmonster.logger.verbose(`${tm.targetLang} translation not found for ${resHandle.id}, ${sid}, ${str}`);
                     return undefined;
                 }
                 try {

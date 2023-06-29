@@ -6001,8 +6001,7 @@ __export(src_exports, {
   pullCmd: () => pullCmd,
   pushCmd: () => pushCmd,
   snapCmd: () => snapCmd,
-  statusCmd: () => statusCmd,
-  translateCmd: () => translateCmd
+  statusCmd: () => statusCmd
 });
 module.exports = __toCommonJS(src_exports);
 
@@ -6845,7 +6844,7 @@ var TMManager = class {
 // src/entities/resourceHandle.js
 var ResourceHandle = class {
   #formatHandler;
-  constructor({ id, channel, modified, resourceFormat, formatHandler, sourceLang, targetLangs, prj, ...other }) {
+  constructor({ id, channel, modified, resourceFormat, formatHandler, sourceLang, targetLangs, prj, raw, segments, subresources, ...other }) {
     this.id = id;
     this.channel = channel;
     this.modified = modified;
@@ -6854,6 +6853,9 @@ var ResourceHandle = class {
     this.sourceLang = sourceLang;
     this.targetLangs = targetLangs;
     this.prj = prj;
+    this.raw = raw;
+    this.segments = segments;
+    this.subresources = subresources;
     if (Object.keys(other).length > 1) {
       l10nmonster.logger.verbose(`Unknown properties in resource handle: ${Object.keys(other).join(", ")}`);
     }
@@ -7145,7 +7147,6 @@ ${segToTranslate.gstr}`);
         }
         const entry = tm.getEntryByGuid(segToTranslate.guid);
         if (!entry) {
-          l10nmonster.logger.verbose(`${tm.targetLang} translation not found for ${resHandle.id}, ${sid}, ${str}`);
           return void 0;
         }
         try {
@@ -7993,28 +7994,6 @@ async function jobsCmd(mm, { limitToLang }) {
   return unfinishedJobs;
 }
 
-// src/commands/translate.js
-async function translateCmd(mm, { limitToLang, dryRun }) {
-  const status = { generatedResources: {}, deleteResources: {} };
-  const targetLangs = mm.getTargetLangs(limitToLang);
-  const allResources = await mm.rm.getAllResources({ keepRaw: true });
-  for await (const resHandle of allResources) {
-    for (const targetLang of targetLangs) {
-      if (resHandle.targetLangs.includes(targetLang) && (l10nmonster.prj === void 0 || l10nmonster.prj.includes(resHandle.prj))) {
-        const tm = await mm.tmm.getTM(resHandle.sourceLang, targetLang);
-        const translatedRes = await resHandle.generateTranslatedRawResource(tm);
-        if (!dryRun) {
-          status.generatedResources[targetLang] ??= [];
-          status.deleteResources[targetLang] ??= [];
-          const translatedResourceId = await mm.rm.getChannel(resHandle.channel).commitTranslatedResource(targetLang, resHandle.id, translatedRes);
-          (translatedRes === null ? status.deleteResources : status.generatedResources)[targetLang].push(translatedResourceId);
-        }
-      }
-    }
-  }
-  return status;
-}
-
 // src/monsterFactory.js
 var path4 = __toESM(require("path"), 1);
 var import_fs4 = require("fs");
@@ -8175,8 +8154,7 @@ async function createMonsterManager(configPath, options) {
   pullCmd,
   pushCmd,
   snapCmd,
-  statusCmd,
-  translateCmd
+  statusCmd
 });
 /*! Bundled license information:
 

@@ -9,7 +9,7 @@ regressTestFromCLI() {
     npm i --no-package-lock
     time ../../../cli/l10n.cjs --regression push --provider grandfather,repetition,default
     time ../../../cli/l10n.cjs --regression pull
-    time ../../../cli/l10n.cjs --regression translate
+    time ../../../cli/l10n.cjs --regression translate all
     time ../../../cli/l10n.cjs --regression status --output status.json
     time ../../../cli/l10n.cjs --regression tmexport
     cd ..
