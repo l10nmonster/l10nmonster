@@ -56,11 +56,16 @@ export async function runL10nMonster(relativePath, globalOptions, cb) {
     };
     [ ...builtInCmds, ...mm.extensionCmds ]
         .forEach(Cmd => l10n[Cmd.name] = createHandler(mm, globalOptions, Cmd.action));
+    let response;
     try {
-        await cb(l10n);
+        response = await cb(l10n);
     } catch(e) {
-        console.error(`Unable to run: ${e.stack || e}`);
+        response = { error: e.stack ?? e };
     } finally {
         mm && (await mm.shutdown());
     }
+    if (response?.error) {
+        throw response.error;
+    }
+    return response;
 }

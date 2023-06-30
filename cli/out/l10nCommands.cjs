@@ -22074,42 +22074,53 @@ ${consoleColor.green}New translated bundle ${resHandle.channel}:${resHandle.id} 
 ${consoleColor.green}Deleted translated bundle ${resHandle.channel}:${resHandle.id} for ${targetLang}${consoleColor.reset}`);
   }
 }
+function printSummary(response) {
+  console.log("Translation summary:");
+  for (const [lang, langStatus] of Object.entries(response.lang)) {
+    const summary = {};
+    for (const resourceStatus of langStatus.resourceStatus) {
+      summary[resourceStatus.status] = (summary[resourceStatus.status] ?? 0) + 1;
+    }
+    console.log(`  - ${lang}: ${Object.entries(summary).sort().map(([k2, v2]) => `${k2}(${v2})`).join(", ")}`);
+  }
+}
 var translate = class {
   static async action(monsterManager, options) {
     const mode = (options.mode ?? "all").toLowerCase();
     console.log(`Generating translated resources for ${consoleColor.bright}${options.lang ? options.lang : "all languages"}${consoleColor.reset}... (${mode} mode)`);
-    const status2 = { generatedResources: {}, deleteResources: {} };
+    const response = { lang: {} };
     const targetLangs = monsterManager.getTargetLangs(options.lang);
     const allResources = await monsterManager.rm.getAllResources({ keepRaw: true });
     for await (const resHandle of allResources) {
       for (const targetLang of targetLangs) {
         if (resHandle.targetLangs.includes(targetLang) && (l10nmonster.prj === void 0 || l10nmonster.prj.includes(resHandle.prj))) {
+          const resourceStatus = { id: resHandle.id };
           const tm = await monsterManager.tmm.getTM(resHandle.sourceLang, targetLang);
           const translatedRes = await resHandle.generateTranslatedRawResource(tm);
           let bundleChanges, delta;
           if (mode === "delta" || mode === "dryrun") {
             [bundleChanges, delta] = await compareToExisting(monsterManager, resHandle, targetLang, translatedRes);
+            resourceStatus.status = bundleChanges;
+            resourceStatus.delta = delta;
           }
           if (mode === "dryrun") {
             printChanges(resHandle, targetLang, bundleChanges, delta);
           } else if (mode === "all" || bundleChanges === "changed" || bundleChanges === "new" || bundleChanges === "deleted") {
-            status2.generatedResources[targetLang] ??= [];
-            status2.deleteResources[targetLang] ??= [];
             const translatedResourceId = await monsterManager.rm.getChannel(resHandle.channel).commitTranslatedResource(targetLang, resHandle.id, translatedRes);
-            (translatedRes === null ? status2.deleteResources : status2.generatedResources)[targetLang].push(translatedResourceId);
+            resourceStatus.status = translatedRes === null ? "deleted" : "generated";
+            resourceStatus.translatedId = translatedResourceId;
             l10nmonster.logger.verbose(`Committed translated resource: ${translatedResourceId}`);
           } else {
-            console.log(`Delta mode skipped translation of bundle ${resHandle.channel}:${resHandle.id} for ${targetLang}`);
+            l10nmonster.logger.verbose(`Delta mode skipped translation of bundle ${resHandle.channel}:${resHandle.id} for ${targetLang}`);
+            resourceStatus.status = "skipped";
           }
+          response.lang[targetLang] ??= { resourceStatus: [] };
+          response.lang[targetLang].resourceStatus.push(resourceStatus);
         }
       }
     }
-    if (mode !== "dryrun") {
-      console.log("Translation commit summary:");
-      for (const [lang, files] of Object.entries(status2.generatedResources)) {
-        console.log(`  - ${lang}: ${files.length} resources generated ${status2.deleteResources[lang].length} deleted`);
-      }
-    }
+    printSummary(response);
+    return response;
   }
 };
 __publicField(translate, "help", {
@@ -22155,13 +22166,18 @@ async function runL10nMonster(relativePath, globalOptions, cb) {
     withMonsterManager: (cb2) => cb2(mm)
   };
   [...builtInCmds, ...mm.extensionCmds].forEach((Cmd) => l10n[Cmd.name] = createHandler(mm, globalOptions, Cmd.action));
+  let response;
   try {
-    await cb(l10n);
+    response = await cb(l10n);
   } catch (e) {
-    console.error(`Unable to run: ${e.stack || e}`);
+    response = { error: e.stack ?? e };
   } finally {
     mm && await mm.shutdown();
   }
+  if (response?.error) {
+    throw response.error;
+  }
+  return response;
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
