@@ -126,18 +126,21 @@ export class MonsterManager {
     // get all possible target languages from sources and from TMs
     getTargetLangs(limitToLang) {
         if (limitToLang) {
-            const targetLangSet = utils.fixCaseInsensitiveKey(this.#targetLangSets, limitToLang);
-            if (targetLangSet) {
-                const langs = this.#targetLangSets[targetLangSet];
-                l10nmonster.logger.info(`Using language alias ${targetLangSet}: ${langs.join(', ')}`);
-                return langs;
+            const langsToLimit = Array.isArray(limitToLang) ? limitToLang : limitToLang.split(',');
+            const targetLangs = [];
+            for (const lang of langsToLimit) {
+                const targetLangSet = utils.fixCaseInsensitiveKey(this.#targetLangSets, lang);
+                if (targetLangSet) {
+                    this.#targetLangSets[targetLangSet].forEach(lang => targetLangs.push(lang));
+                } else {
+                    targetLangs.push(lang);
+                }
             }
-            const langsToLimit = limitToLang.split(',');
-            const invalidLangs = langsToLimit.filter(limitedLang => !this.#targetLangs.has(limitedLang));
+            const invalidLangs = targetLangs.filter(limitedLang => !this.#targetLangs.has(limitedLang));
             if (invalidLangs.length > 0) {
                 throw `Invalid languages: ${invalidLangs.join(',')}`;
             }
-            return langsToLimit;
+            return targetLangs;
         }
         return [ ...this.#targetLangs ];
     }
