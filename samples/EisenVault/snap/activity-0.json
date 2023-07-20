@@ -2,7 +2,7 @@
 	"dashlets/activity-list.get_en.properties": {
 		"id": "dashlets/activity-list.get_en.properties",
 		"channel": "default",
-		"modified": "2022-07-21T23:56:25.171Z",
+		"modified": "2023-07-20T17:22:09.102Z",
 		"resourceFormat": "default",
 		"sourceLang": "en",
 		"targetLangs": [
@@ -26,10 +26,27 @@
 				"guid": "7Yg93c458EbHxMIJHNXXG77jF5ZnrMzxv8ScSU0oCyQ"
 			},
 			{
-				"sid": "more.activities",
+				"sid": "title.generic",
 				"location": {
 					"startLine": 4,
 					"endLine": 4
+				},
+				"mf": "default",
+				"nstr": [
+					"New Activity"
+				],
+				"gstr": "New Activity",
+				"guid": "7Yg93c458EbHxMIJHNXXG77jF5ZnrMzxv8ScSU0oCyQ",
+				"rawNotes": "# duplicate key for testing the linter",
+				"notes": {
+					"desc": "# duplicate key for testing the linter"
+				}
+			},
+			{
+				"sid": "more.activities",
+				"location": {
+					"startLine": 7,
+					"endLine": 7
 				},
 				"mf": "default",
 				"nstr": [
@@ -49,8 +66,8 @@
 			{
 				"sid": "atom.title.site",
 				"location": {
-					"startLine": 7,
-					"endLine": 7
+					"startLine": 10,
+					"endLine": 10
 				},
 				"mf": "default",
 				"nstr": [
@@ -70,8 +87,8 @@
 			{
 				"sid": "atom.title.user",
 				"location": {
-					"startLine": 8,
-					"endLine": 8
+					"startLine": 11,
+					"endLine": 11
 				},
 				"mf": "default",
 				"nstr": [
@@ -87,8 +104,8 @@
 			{
 				"sid": "in.site",
 				"location": {
-					"startLine": 11,
-					"endLine": 11
+					"startLine": 14,
+					"endLine": 14
 				},
 				"mf": "default",
 				"nstr": [
@@ -112,8 +129,8 @@
 			{
 				"sid": "org.alfresco.blog.post-created",
 				"location": {
-					"startLine": 14,
-					"endLine": 14
+					"startLine": 17,
+					"endLine": 17
 				},
 				"mf": "default",
 				"nstr": [
@@ -137,8 +154,8 @@
 			{
 				"sid": "org.alfresco.blog.post-updated",
 				"location": {
-					"startLine": 15,
-					"endLine": 15
+					"startLine": 18,
+					"endLine": 18
 				},
 				"mf": "default",
 				"nstr": [
@@ -158,8 +175,8 @@
 			{
 				"sid": "org.alfresco.blog.post-deleted",
 				"location": {
-					"startLine": 16,
-					"endLine": 16
+					"startLine": 19,
+					"endLine": 19
 				},
 				"mf": "default",
 				"nstr": [
@@ -179,8 +196,8 @@
 			{
 				"sid": "org.alfresco.comments.comment-created",
 				"location": {
-					"startLine": 17,
-					"endLine": 17
+					"startLine": 20,
+					"endLine": 20
 				},
 				"mf": "default",
 				"nstr": [
@@ -200,8 +217,8 @@
 			{
 				"sid": "org.alfresco.comments.comment-updated",
 				"location": {
-					"startLine": 18,
-					"endLine": 18
+					"startLine": 21,
+					"endLine": 21
 				},
 				"mf": "default",
 				"nstr": [
@@ -221,8 +238,8 @@
 			{
 				"sid": "org.alfresco.comments.comment-deleted",
 				"location": {
-					"startLine": 19,
-					"endLine": 19
+					"startLine": 22,
+					"endLine": 22
 				},
 				"mf": "default",
 				"nstr": [
@@ -242,8 +259,8 @@
 			{
 				"sid": "org.alfresco.discussions.post-created",
 				"location": {
-					"startLine": 20,
-					"endLine": 20
+					"startLine": 23,
+					"endLine": 23
 				},
 				"mf": "default",
 				"nstr": [
@@ -263,8 +280,8 @@
 			{
 				"sid": "org.alfresco.discussions.post-updated",
 				"location": {
-					"startLine": 21,
-					"endLine": 21
+					"startLine": 24,
+					"endLine": 24
 				},
 				"mf": "default",
 				"nstr": [
@@ -284,8 +301,8 @@
 			{
 				"sid": "org.alfresco.discussions.post-deleted",
 				"location": {
-					"startLine": 22,
-					"endLine": 22
+					"startLine": 25,
+					"endLine": 25
 				},
 				"mf": "default",
 				"nstr": [
@@ -305,8 +322,8 @@
 			{
 				"sid": "org.alfresco.discussions.reply-created",
 				"location": {
-					"startLine": 23,
-					"endLine": 23
+					"startLine": 26,
+					"endLine": 26
 				},
 				"mf": "default",
 				"nstr": [
@@ -326,8 +343,8 @@
 			{
 				"sid": "org.alfresco.discussions.reply-updated",
 				"location": {
-					"startLine": 24,
-					"endLine": 24
+					"startLine": 27,
+					"endLine": 27
 				},
 				"mf": "default",
 				"nstr": [
@@ -347,8 +364,8 @@
 			{
 				"sid": "org.alfresco.calendar.event-created",
 				"location": {
-					"startLine": 25,
-					"endLine": 25
+					"startLine": 28,
+					"endLine": 28
 				},
 				"mf": "default",
 				"nstr": [
@@ -368,8 +385,8 @@
 			{
 				"sid": "org.alfresco.calendar.event-updated",
 				"location": {
-					"startLine": 26,
-					"endLine": 26
+					"startLine": 29,
+					"endLine": 29
 				},
 				"mf": "default",
 				"nstr": [
@@ -389,8 +406,8 @@
 			{
 				"sid": "org.alfresco.calendar.event-deleted",
 				"location": {
-					"startLine": 27,
-					"endLine": 27
+					"startLine": 30,
+					"endLine": 30
 				},
 				"mf": "default",
 				"nstr": [
@@ -410,8 +427,8 @@
 			{
 				"sid": "org.alfresco.documentlibrary.file-added",
 				"location": {
-					"startLine": 28,
-					"endLine": 28
+					"startLine": 31,
+					"endLine": 31
 				},
 				"mf": "default",
 				"nstr": [
@@ -431,8 +448,8 @@
 			{
 				"sid": "org.alfresco.documentlibrary.files-added",
 				"location": {
-					"startLine": 29,
-					"endLine": 29
+					"startLine": 32,
+					"endLine": 32
 				},
 				"mf": "default",
 				"nstr": [
@@ -453,8 +470,8 @@
 			{
 				"sid": "org.alfresco.documentlibrary.file-created",
 				"location": {
-					"startLine": 30,
-					"endLine": 30
+					"startLine": 33,
+					"endLine": 33
 				},
 				"mf": "default",
 				"nstr": [
@@ -474,8 +491,8 @@
 			{
 				"sid": "org.alfresco.documentlibrary.file-deleted",
 				"location": {
-					"startLine": 31,
-					"endLine": 31
+					"startLine": 34,
+					"endLine": 34
 				},
 				"mf": "default",
 				"nstr": [
@@ -495,8 +512,8 @@
 			{
 				"sid": "org.alfresco.documentlibrary.files-deleted",
 				"location": {
-					"startLine": 32,
-					"endLine": 32
+					"startLine": 35,
+					"endLine": 35
 				},
 				"mf": "default",
 				"nstr": [
@@ -517,8 +534,8 @@
 			{
 				"sid": "org.alfresco.documentlibrary.file-updated",
 				"location": {
-					"startLine": 33,
-					"endLine": 33
+					"startLine": 36,
+					"endLine": 36
 				},
 				"mf": "default",
 				"nstr": [
@@ -538,8 +555,8 @@
 			{
 				"sid": "org.alfresco.documentlibrary.files-updated",
 				"location": {
-					"startLine": 34,
-					"endLine": 34
+					"startLine": 37,
+					"endLine": 37
 				},
 				"mf": "default",
 				"nstr": [
@@ -560,8 +577,8 @@
 			{
 				"sid": "org.alfresco.documentlibrary.folder-added",
 				"location": {
-					"startLine": 35,
-					"endLine": 35
+					"startLine": 38,
+					"endLine": 38
 				},
 				"mf": "default",
 				"nstr": [
@@ -581,8 +598,8 @@
 			{
 				"sid": "org.alfresco.documentlibrary.folder-deleted",
 				"location": {
-					"startLine": 36,
-					"endLine": 36
+					"startLine": 39,
+					"endLine": 39
 				},
 				"mf": "default",
 				"nstr": [
@@ -602,8 +619,8 @@
 			{
 				"sid": "org.alfresco.documentlibrary.folders-added",
 				"location": {
-					"startLine": 37,
-					"endLine": 37
+					"startLine": 40,
+					"endLine": 40
 				},
 				"mf": "default",
 				"nstr": [
@@ -624,8 +641,8 @@
 			{
 				"sid": "org.alfresco.documentlibrary.folders-deleted",
 				"location": {
-					"startLine": 38,
-					"endLine": 38
+					"startLine": 41,
+					"endLine": 41
 				},
 				"mf": "default",
 				"nstr": [
@@ -646,8 +663,8 @@
 			{
 				"sid": "org.alfresco.documentlibrary.inline-edit",
 				"location": {
-					"startLine": 39,
-					"endLine": 39
+					"startLine": 42,
+					"endLine": 42
 				},
 				"mf": "default",
 				"nstr": [
@@ -667,8 +684,8 @@
 			{
 				"sid": "org.alfresco.documentlibrary.file-previewed",
 				"location": {
-					"startLine": 40,
-					"endLine": 40
+					"startLine": 43,
+					"endLine": 43
 				},
 				"mf": "default",
 				"nstr": [
@@ -688,8 +705,8 @@
 			{
 				"sid": "org.alfresco.documentlibrary.file-downloaded",
 				"location": {
-					"startLine": 41,
-					"endLine": 41
+					"startLine": 44,
+					"endLine": 44
 				},
 				"mf": "default",
 				"nstr": [
@@ -709,8 +726,8 @@
 			{
 				"sid": "org.alfresco.documentlibrary.file-liked",
 				"location": {
-					"startLine": 42,
-					"endLine": 42
+					"startLine": 45,
+					"endLine": 45
 				},
 				"mf": "default",
 				"nstr": [
@@ -730,8 +747,8 @@
 			{
 				"sid": "org.alfresco.documentlibrary.folder-liked",
 				"location": {
-					"startLine": 43,
-					"endLine": 43
+					"startLine": 46,
+					"endLine": 46
 				},
 				"mf": "default",
 				"nstr": [
@@ -751,8 +768,8 @@
 			{
 				"sid": "org.alfresco.wiki.page-created",
 				"location": {
-					"startLine": 44,
-					"endLine": 44
+					"startLine": 47,
+					"endLine": 47
 				},
 				"mf": "default",
 				"nstr": [
@@ -772,8 +789,8 @@
 			{
 				"sid": "org.alfresco.wiki.page-edited",
 				"location": {
-					"startLine": 45,
-					"endLine": 45
+					"startLine": 48,
+					"endLine": 48
 				},
 				"mf": "default",
 				"nstr": [
@@ -793,8 +810,8 @@
 			{
 				"sid": "org.alfresco.wiki.page-renamed",
 				"location": {
-					"startLine": 46,
-					"endLine": 46
+					"startLine": 49,
+					"endLine": 49
 				},
 				"mf": "default",
 				"nstr": [
@@ -819,8 +836,8 @@
 			{
 				"sid": "org.alfresco.wiki.page-deleted",
 				"location": {
-					"startLine": 47,
-					"endLine": 47
+					"startLine": 50,
+					"endLine": 50
 				},
 				"mf": "default",
 				"nstr": [
@@ -840,8 +857,8 @@
 			{
 				"sid": "org.alfresco.site.group-added",
 				"location": {
-					"startLine": 48,
-					"endLine": 48
+					"startLine": 51,
+					"endLine": 51
 				},
 				"mf": "default",
 				"nstr": [
@@ -866,8 +883,8 @@
 			{
 				"sid": "org.alfresco.site.group-removed",
 				"location": {
-					"startLine": 49,
-					"endLine": 49
+					"startLine": 52,
+					"endLine": 52
 				},
 				"mf": "default",
 				"nstr": [
@@ -887,8 +904,8 @@
 			{
 				"sid": "org.alfresco.site.group-role-changed",
 				"location": {
-					"startLine": 50,
-					"endLine": 50
+					"startLine": 53,
+					"endLine": 53
 				},
 				"mf": "default",
 				"nstr": [
@@ -908,8 +925,8 @@
 			{
 				"sid": "org.alfresco.site.user-joined",
 				"location": {
-					"startLine": 51,
-					"endLine": 51
+					"startLine": 54,
+					"endLine": 54
 				},
 				"mf": "default",
 				"nstr": [
@@ -934,8 +951,8 @@
 			{
 				"sid": "org.alfresco.site.user-left",
 				"location": {
-					"startLine": 52,
-					"endLine": 52
+					"startLine": 55,
+					"endLine": 55
 				},
 				"mf": "default",
 				"nstr": [
@@ -955,8 +972,8 @@
 			{
 				"sid": "org.alfresco.site.user-role-changed",
 				"location": {
-					"startLine": 53,
-					"endLine": 53
+					"startLine": 56,
+					"endLine": 56
 				},
 				"mf": "default",
 				"nstr": [
@@ -976,8 +993,8 @@
 			{
 				"sid": "org.alfresco.site.liked",
 				"location": {
-					"startLine": 54,
-					"endLine": 54
+					"startLine": 57,
+					"endLine": 57
 				},
 				"mf": "default",
 				"nstr": [
@@ -997,8 +1014,8 @@
 			{
 				"sid": "org.alfresco.links.link-created",
 				"location": {
-					"startLine": 55,
-					"endLine": 55
+					"startLine": 58,
+					"endLine": 58
 				},
 				"mf": "default",
 				"nstr": [
@@ -1018,8 +1035,8 @@
 			{
 				"sid": "org.alfresco.links.link-updated",
 				"location": {
-					"startLine": 56,
-					"endLine": 56
+					"startLine": 59,
+					"endLine": 59
 				},
 				"mf": "default",
 				"nstr": [
@@ -1039,8 +1056,8 @@
 			{
 				"sid": "org.alfresco.links.link-deleted",
 				"location": {
-					"startLine": 57,
-					"endLine": 57
+					"startLine": 60,
+					"endLine": 60
 				},
 				"mf": "default",
 				"nstr": [
@@ -1060,8 +1077,8 @@
 			{
 				"sid": "org.alfresco.datalists.list-created",
 				"location": {
-					"startLine": 58,
-					"endLine": 58
+					"startLine": 61,
+					"endLine": 61
 				},
 				"mf": "default",
 				"nstr": [
@@ -1081,8 +1098,8 @@
 			{
 				"sid": "org.alfresco.datalists.list-updated",
 				"location": {
-					"startLine": 59,
-					"endLine": 59
+					"startLine": 62,
+					"endLine": 62
 				},
 				"mf": "default",
 				"nstr": [
@@ -1102,8 +1119,8 @@
 			{
 				"sid": "org.alfresco.datalists.list-deleted",
 				"location": {
-					"startLine": 60,
-					"endLine": 60
+					"startLine": 63,
+					"endLine": 63
 				},
 				"mf": "default",
 				"nstr": [
@@ -1123,8 +1140,8 @@
 			{
 				"sid": "org.alfresco.subscriptions.followed",
 				"location": {
-					"startLine": 61,
-					"endLine": 61
+					"startLine": 64,
+					"endLine": 64
 				},
 				"mf": "default",
 				"nstr": [
@@ -1144,8 +1161,8 @@
 			{
 				"sid": "org.alfresco.subscriptions.subscribed",
 				"location": {
-					"startLine": 62,
-					"endLine": 62
+					"startLine": 65,
+					"endLine": 65
 				},
 				"mf": "default",
 				"nstr": [
@@ -1165,8 +1182,8 @@
 			{
 				"sid": "org.alfresco.profile.status-changed",
 				"location": {
-					"startLine": 63,
-					"endLine": 63
+					"startLine": 66,
+					"endLine": 66
 				},
 				"mf": "default",
 				"nstr": [
