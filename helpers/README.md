@@ -1,3 +1,7 @@
+# L10n Monster Basic Helpers
+
+## Sources
+
 ### FS Source Adapter
 
 ```js
@@ -16,6 +20,42 @@ An adapter that reads sources from the filesystem.
 * `targetLangs` is an array of languages to translate to
 * The optional `resDecorator` function can modify the resource metadata
 
+## Resource Filters
+
+Filters are used to convert raw strings returned by sources into segments that are suitable for translation (ideally not too small that they can't be translated, and not too long that prevent translation reuse). They can be configured in content types as a single `resourceFilter` property.
+
+|Module|Export|Description|
+|---|---|---|
+|`helpers`|`filters.SnapFilter`|Filter for normalized resources in snap store.
+
+## Decoders
+
+Decoders are used to convert strings with specific formats into either pure strings or placeholders. They can be configured in content types as a chain of decoders via the `decoders` property.
+
+|Module|Export|Description|
+|---|---|---|
+|`helpers`|`normalizers.namedDecoder`|Generic wrapper to rename a decoder.|
+|`helpers`|`normalizers.doublePercentDecoder`|Decoder for `%%` escaping.|
+|`helpers`|`normalizers.bracePHDecoder`|Decoder for `{param}` style placeholders.|
+|`helpers`|`normalizers.keywordTranslatorMaker`|Decoder/encoder pair to protect/replace keywords.|
+|`helpers`|`regex.decoderMaker(flag, regex, partDecoder)`|Internal utility to create decoders.|
+|`helpers`|`xml.entityDecoder`|Decoder for XML entities.|
+|`helpers`|`xml.CDataDecoder`|Decoder for XML CData.|
+|`helpers`|`xml.tagDecoder`|Decoder for XML tags.|
+
+## Encoders
+
+Encoders are used to convert pure strings and placeholders back to their original format. They can be configured in content types as a chain of encoders via the `textEncoders` and `codeEncoders` properties.
+
+|Module|Export|Description|
+|---|---|---|
+|`helpers`|`normalizers.gatedEncoder`|Generic flag-based encoder execution.|
+|`helpers`|`normalizers.doublePercentEncoder`|Encoder for `%%` escaping.|
+|`helpers`|`regex.encoderMaker(name, regex, matchMap)`|Internal utility to create encoders.|
+|`helpers`|`xml.entityEncoder`|Encoder for XML entities.|
+
+## Targets
+
 ### FS Target Adapter
 
 ```js
@@ -26,83 +66,24 @@ this.target = new adapters.FsTarget({
 
 An adapter that writes translated resources to the filesystem. It takes in the object constructor a `targetPath` function that given a language and the resource id of the source, it produces the target resource id.
 
+## Translation Providers
 
-###  Java Properties Filter
+Translation providers are used to interface with the translation process.
 
-```js
-this.resourceFilter = new filters.JavaPropertiesFilter();
-```
+|Module|Export|Async|Sync|Translation|Refresh|Description|
+|---|---|:---:|:---:|:---:|:---:|---|
+|`helpers`|`translators.Grandfather`|❌|✅|✅|✅|Create translations based on existing translated resources.
+|`helpers`|`translators.Repetitions`|❌|✅|✅|✅|Create translations based on leverage of 100% text matches.
+|`helpers`|`translators.Visicode`|❌|✅|✅|✅|Pseudo-localization with visual identification of string id's.
 
-A filter for properties files used as defined by the Java bundle specification.
+## Other
 
-* [TODO] it needs configuration to deal with message formats.
-* [TODO] it needs an option to make it stricter to deal with technically invalid files.
-
-### iOS Strings Filter
-
-```js
-this.resourceFilter = new filters.IosStringsFilter();
-```
-
-A filter for strings files used in iOS apps.
-
-* [TODO] it needs configuration to deal with message formats.
-* [LIMIT] it doesn't support files encoded in UTF-16.
-
-### Android XML Filter
-
-```js
-this.resourceFilter = new filters.AndroidFilter({
-    comment: 'pre',
-});
-```
-
-A filter for XML files used in Android apps. The `comment` property specifies whether developer notes are placed before, after, or on the same line (`pre`, `post`, `right` respectively).
-
-* [TODO] it needs configuration to deal with message formats.
-* [BUG] it doesn't honor the `translatable` attribute.
-
-### JSON Filter
-
-A filter for JSON files. It supports annotations as defined by the [ARB spec](https://github.com/google/app-resource-bundle/wiki/ApplicationResourceBundleSpecification). In addition it supports nested keys and plurals as defined by the [i18next JSON v4](https://www.i18next.com/misc/json-format) format.
-
-```js
-this.resourceFilter = new filters.JsonFilter({
-        enableArbAnnotations: true,
-        enablePluralSuffixes: true,
-        emitArbAnnotations: true
-});
-```
-
-### PO Filter
-
-```js
-this.resourceFilter = new filters.PoFilter();
-```
-
-A filter for PO files.
-
-* [TODO] it needs configuration to deal with message formats.
-
-### Pig Latinizer Translator
-
-```js
-this.translationProvider = new translators.PigLatinizer({
-    quality: 1
-});
-```
-
-This is a pseudo-localization helper that converts source into [Pig Latin](https://en.wikipedia.org/wiki/Pig_Latin) to provide visual testing of hard-coded strings, concatenation, and text expansion. By default, quality is set to `1` but it can be overwritten in the constructor by passing the `quality` property.
-
-### XLIFF Translator
-
-```js
-this.translationProvider = new translators.XliffBridge({
-    requestPath: (lang, prjId) => `xliff/outbox/prj${prjId)}-${lang}.xml`,
-    completePath: (lang, prjId) => `xliff/inbox/prj${(prjId)}-${lang}.xml`,
-    quality: 80,
-});
-```
-
-XLIFF is the industry standard for translation exchange. The adapter writes translation requests as XLIFF files that can be manually given to a translation vendor. Once translations are received, the corresponding translated files can be imported and saved.
-There are no standard naming conventions for xliff files, so any can be implemented by providing 2 functions in the `requestPath` and `completePath` properties. The functions are given the target language and the project id as parameters from which to form a naming convention. By default, quality is set to `50` but it should be specified by passing the `quality` property.
+|Module|Export|Description|
+|------|---|---|
+|`helpers`|`utils.*`|Internal utilities. No stable interface. Use at your own risk.|
+|`helpers`|`analyzers.*`|Miscellaneous analyzers.|
+|`helpers`|`stores.JsonJobStore`|Job store based on JSON files in the filesystem.|
+|`helpers`|`stores.FileBasedJobStore`|Abstract job store based on JSON files in a blob store.|
+|`helpers`|`stores.FsSnapStore`|Snap store based on JSON files in the filesystem.|
+|`helpers`|`stores.FileBasedSnapStore`|Abstract snap store based on JSON files in a blob store.|
+|`helpers`|`stores.FsStoreDelegate`|Delegate helper for `FileBasedJobStore` and `FileBasedSnapStore` to use the filesystem.|

@@ -9,7 +9,7 @@
     "main": "out/index.cjs",
     "type": "module",
     "scripts": {
-        "esbuild": "esbuild src/index.js --bundle --outfile=out/index.cjs --format=cjs --platform=node --sourcemap",
+        "esbuild": "esbuild src/index.js --bundle --external:@l10nmonster/helpers --external:@l10nmonster/words-count --outfile=out/index.cjs --format=cjs --platform=node --sourcemap",
         "esbuild-watch": "npm run esbuild -- --watch"
     },
     "repository": {

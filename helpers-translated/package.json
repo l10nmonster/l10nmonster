@@ -1,6 +1,6 @@
 {
   "name": "@l10nmonster/helpers-translated",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Translators integrating with Translated.com",
   "main": "index.js",
   "scripts": {

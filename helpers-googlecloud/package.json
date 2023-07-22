@@ -1,6 +1,6 @@
 {
   "name": "@l10nmonster/helpers-googlecloud",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Helpers to integrate with Google Cloud Platfrom",
   "main": "index.js",
   "scripts": {

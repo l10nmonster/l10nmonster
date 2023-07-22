@@ -34,9 +34,9 @@ var __publicField = (obj, key, value) => {
   return value;
 };
 
-// node_modules/merge2/index.js
+// ../node_modules/merge2/index.js
 var require_merge2 = __commonJS({
-  "node_modules/merge2/index.js"(exports, module2) {
+  "../node_modules/merge2/index.js"(exports, module2) {
     "use strict";
     var Stream = require("stream");
     var PassThrough = Stream.PassThrough;
@@ -153,9 +153,9 @@ var require_merge2 = __commonJS({
   }
 });
 
-// node_modules/fast-glob/out/utils/array.js
+// ../node_modules/fast-glob/out/utils/array.js
 var require_array = __commonJS({
-  "node_modules/fast-glob/out/utils/array.js"(exports) {
+  "../node_modules/fast-glob/out/utils/array.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.splitWhen = exports.flatten = void 0;
@@ -180,9 +180,9 @@ var require_array = __commonJS({
   }
 });
 
-// node_modules/fast-glob/out/utils/errno.js
+// ../node_modules/fast-glob/out/utils/errno.js
 var require_errno = __commonJS({
-  "node_modules/fast-glob/out/utils/errno.js"(exports) {
+  "../node_modules/fast-glob/out/utils/errno.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.isEnoentCodeError = void 0;
@@ -193,9 +193,9 @@ var require_errno = __commonJS({
   }
 });
 
-// node_modules/fast-glob/out/utils/fs.js
+// ../node_modules/fast-glob/out/utils/fs.js
 var require_fs = __commonJS({
-  "node_modules/fast-glob/out/utils/fs.js"(exports) {
+  "../node_modules/fast-glob/out/utils/fs.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.createDirentFromStats = void 0;
@@ -218,15 +218,20 @@ var require_fs = __commonJS({
   }
 });
 
-// node_modules/fast-glob/out/utils/path.js
+// ../node_modules/fast-glob/out/utils/path.js
 var require_path = __commonJS({
-  "node_modules/fast-glob/out/utils/path.js"(exports) {
+  "../node_modules/fast-glob/out/utils/path.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.removeLeadingDotSegment = exports.escape = exports.makeAbsolute = exports.unixify = void 0;
+    exports.convertPosixPathToPattern = exports.convertWindowsPathToPattern = exports.convertPathToPattern = exports.escapePosixPath = exports.escapeWindowsPath = exports.escape = exports.removeLeadingDotSegment = exports.makeAbsolute = exports.unixify = void 0;
+    var os = require("os");
     var path7 = require("path");
+    var IS_WINDOWS_PLATFORM = os.platform() === "win32";
     var LEADING_DOT_SEGMENT_CHARACTERS_COUNT = 2;
-    var UNESCAPED_GLOB_SYMBOLS_RE = /(\\?)([()*?[\]{|}]|^!|[!+@](?=\())/g;
+    var POSIX_UNESCAPED_GLOB_SYMBOLS_RE = /(\\?)([()*?[\]{|}]|^!|[!+@](?=\()|\\(?![!()*+?@[\]{|}]))/g;
+    var WINDOWS_UNESCAPED_GLOB_SYMBOLS_RE = /(\\?)([(){}]|^!|[!+@](?=\())/g;
+    var DOS_DEVICE_PATH_RE = /^\\\\([.?])/;
+    var WINDOWS_BACKSLASHES_RE = /\\(?![!()+@{}])/g;
     function unixify(filepath) {
       return filepath.replace(/\\/g, "/");
     }
@@ -235,10 +240,6 @@ var require_path = __commonJS({
       return path7.resolve(cwd, filepath);
     }
     exports.makeAbsolute = makeAbsolute;
-    function escape(pattern) {
-      return pattern.replace(UNESCAPED_GLOB_SYMBOLS_RE, "\\$2");
-    }
-    exports.escape = escape;
     function removeLeadingDotSegment(entry) {
       if (entry.charAt(0) === ".") {
         const secondCharactery = entry.charAt(1);
@@ -249,12 +250,30 @@ var require_path = __commonJS({
       return entry;
     }
     exports.removeLeadingDotSegment = removeLeadingDotSegment;
+    exports.escape = IS_WINDOWS_PLATFORM ? escapeWindowsPath : escapePosixPath;
+    function escapeWindowsPath(pattern) {
+      return pattern.replace(WINDOWS_UNESCAPED_GLOB_SYMBOLS_RE, "\\$2");
+    }
+    exports.escapeWindowsPath = escapeWindowsPath;
+    function escapePosixPath(pattern) {
+      return pattern.replace(POSIX_UNESCAPED_GLOB_SYMBOLS_RE, "\\$2");
+    }
+    exports.escapePosixPath = escapePosixPath;
+    exports.convertPathToPattern = IS_WINDOWS_PLATFORM ? convertWindowsPathToPattern : convertPosixPathToPattern;
+    function convertWindowsPathToPattern(filepath) {
+      return escapeWindowsPath(filepath).replace(DOS_DEVICE_PATH_RE, "//$1").replace(WINDOWS_BACKSLASHES_RE, "/");
+    }
+    exports.convertWindowsPathToPattern = convertWindowsPathToPattern;
+    function convertPosixPathToPattern(filepath) {
+      return escapePosixPath(filepath);
+    }
+    exports.convertPosixPathToPattern = convertPosixPathToPattern;
   }
 });
 
-// node_modules/is-extglob/index.js
+// ../node_modules/is-extglob/index.js
 var require_is_extglob = __commonJS({
-  "node_modules/is-extglob/index.js"(exports, module2) {
+  "../node_modules/is-extglob/index.js"(exports, module2) {
     module2.exports = function isExtglob(str) {
       if (typeof str !== "string" || str === "") {
         return false;
@@ -270,9 +289,9 @@ var require_is_extglob = __commonJS({
   }
 });
 
-// node_modules/is-glob/index.js
+// ../node_modules/is-glob/index.js
 var require_is_glob = __commonJS({
-  "node_modules/is-glob/index.js"(exports, module2) {
+  "../node_modules/is-glob/index.js"(exports, module2) {
     var isExtglob = require_is_extglob();
     var chars = { "{": "}", "(": ")", "[": "]" };
     var strictCheck = function(str) {
@@ -401,9 +420,9 @@ var require_is_glob = __commonJS({
   }
 });
 
-// node_modules/fast-glob/node_modules/glob-parent/index.js
+// ../node_modules/fast-glob/node_modules/glob-parent/index.js
 var require_glob_parent = __commonJS({
-  "node_modules/fast-glob/node_modules/glob-parent/index.js"(exports, module2) {
+  "../node_modules/fast-glob/node_modules/glob-parent/index.js"(exports, module2) {
     "use strict";
     var isGlob = require_is_glob();
     var pathPosixDirname = require("path").posix.dirname;
@@ -430,9 +449,9 @@ var require_glob_parent = __commonJS({
   }
 });
 
-// node_modules/braces/lib/utils.js
+// ../node_modules/braces/lib/utils.js
 var require_utils = __commonJS({
-  "node_modules/braces/lib/utils.js"(exports) {
+  "../node_modules/braces/lib/utils.js"(exports) {
     "use strict";
     exports.isInteger = (num) => {
       if (typeof num === "number") {
@@ -514,9 +533,9 @@ var require_utils = __commonJS({
   }
 });
 
-// node_modules/braces/lib/stringify.js
+// ../node_modules/braces/lib/stringify.js
 var require_stringify = __commonJS({
-  "node_modules/braces/lib/stringify.js"(exports, module2) {
+  "../node_modules/braces/lib/stringify.js"(exports, module2) {
     "use strict";
     var utils = require_utils();
     module2.exports = (ast, options = {}) => {
@@ -545,9 +564,9 @@ var require_stringify = __commonJS({
   }
 });
 
-// node_modules/is-number/index.js
+// ../node_modules/is-number/index.js
 var require_is_number = __commonJS({
-  "node_modules/is-number/index.js"(exports, module2) {
+  "../node_modules/is-number/index.js"(exports, module2) {
     "use strict";
     module2.exports = function(num) {
       if (typeof num === "number") {
@@ -561,9 +580,9 @@ var require_is_number = __commonJS({
   }
 });
 
-// node_modules/to-regex-range/index.js
+// ../node_modules/to-regex-range/index.js
 var require_to_regex_range = __commonJS({
-  "node_modules/to-regex-range/index.js"(exports, module2) {
+  "../node_modules/to-regex-range/index.js"(exports, module2) {
     "use strict";
     var isNumber = require_is_number();
     var toRegexRange = (min, max, options) => {
@@ -773,9 +792,9 @@ var require_to_regex_range = __commonJS({
   }
 });
 
-// node_modules/fill-range/index.js
+// ../node_modules/fill-range/index.js
 var require_fill_range = __commonJS({
-  "node_modules/fill-range/index.js"(exports, module2) {
+  "../node_modules/fill-range/index.js"(exports, module2) {
     "use strict";
     var util = require("util");
     var toRegexRange = require_to_regex_range();
@@ -979,9 +998,9 @@ var require_fill_range = __commonJS({
   }
 });
 
-// node_modules/braces/lib/compile.js
+// ../node_modules/braces/lib/compile.js
 var require_compile = __commonJS({
-  "node_modules/braces/lib/compile.js"(exports, module2) {
+  "../node_modules/braces/lib/compile.js"(exports, module2) {
     "use strict";
     var fill = require_fill_range();
     var utils = require_utils();
@@ -1030,9 +1049,9 @@ var require_compile = __commonJS({
   }
 });
 
-// node_modules/braces/lib/expand.js
+// ../node_modules/braces/lib/expand.js
 var require_expand = __commonJS({
-  "node_modules/braces/lib/expand.js"(exports, module2) {
+  "../node_modules/braces/lib/expand.js"(exports, module2) {
     "use strict";
     var fill = require_fill_range();
     var stringify = require_stringify();
@@ -1127,9 +1146,9 @@ var require_expand = __commonJS({
   }
 });
 
-// node_modules/braces/lib/constants.js
+// ../node_modules/braces/lib/constants.js
 var require_constants = __commonJS({
-  "node_modules/braces/lib/constants.js"(exports, module2) {
+  "../node_modules/braces/lib/constants.js"(exports, module2) {
     "use strict";
     module2.exports = {
       MAX_LENGTH: 1024 * 64,
@@ -1228,9 +1247,9 @@ var require_constants = __commonJS({
   }
 });
 
-// node_modules/braces/lib/parse.js
+// ../node_modules/braces/lib/parse.js
 var require_parse = __commonJS({
-  "node_modules/braces/lib/parse.js"(exports, module2) {
+  "../node_modules/braces/lib/parse.js"(exports, module2) {
     "use strict";
     var stringify = require_stringify();
     var {
@@ -1472,9 +1491,9 @@ var require_parse = __commonJS({
   }
 });
 
-// node_modules/braces/index.js
+// ../node_modules/braces/index.js
 var require_braces = __commonJS({
-  "node_modules/braces/index.js"(exports, module2) {
+  "../node_modules/braces/index.js"(exports, module2) {
     "use strict";
     var stringify = require_stringify();
     var compile = require_compile();
@@ -1535,9 +1554,9 @@ var require_braces = __commonJS({
   }
 });
 
-// node_modules/picomatch/lib/constants.js
+// ../node_modules/picomatch/lib/constants.js
 var require_constants2 = __commonJS({
-  "node_modules/picomatch/lib/constants.js"(exports, module2) {
+  "../node_modules/picomatch/lib/constants.js"(exports, module2) {
     "use strict";
     var path7 = require("path");
     var WIN_SLASH = "\\\\/";
@@ -1732,9 +1751,9 @@ var require_constants2 = __commonJS({
   }
 });
 
-// node_modules/picomatch/lib/utils.js
+// ../node_modules/picomatch/lib/utils.js
 var require_utils2 = __commonJS({
-  "node_modules/picomatch/lib/utils.js"(exports) {
+  "../node_modules/picomatch/lib/utils.js"(exports) {
     "use strict";
     var path7 = require("path");
     var win32 = process.platform === "win32";
@@ -1795,9 +1814,9 @@ var require_utils2 = __commonJS({
   }
 });
 
-// node_modules/picomatch/lib/scan.js
+// ../node_modules/picomatch/lib/scan.js
 var require_scan = __commonJS({
-  "node_modules/picomatch/lib/scan.js"(exports, module2) {
+  "../node_modules/picomatch/lib/scan.js"(exports, module2) {
     "use strict";
     var utils = require_utils2();
     var {
@@ -2128,9 +2147,9 @@ var require_scan = __commonJS({
   }
 });
 
-// node_modules/picomatch/lib/parse.js
+// ../node_modules/picomatch/lib/parse.js
 var require_parse2 = __commonJS({
-  "node_modules/picomatch/lib/parse.js"(exports, module2) {
+  "../node_modules/picomatch/lib/parse.js"(exports, module2) {
     "use strict";
     var constants = require_constants2();
     var utils = require_utils2();
@@ -2909,9 +2928,9 @@ var require_parse2 = __commonJS({
   }
 });
 
-// node_modules/picomatch/lib/picomatch.js
+// ../node_modules/picomatch/lib/picomatch.js
 var require_picomatch = __commonJS({
-  "node_modules/picomatch/lib/picomatch.js"(exports, module2) {
+  "../node_modules/picomatch/lib/picomatch.js"(exports, module2) {
     "use strict";
     var path7 = require("path");
     var scan = require_scan();
@@ -3053,17 +3072,17 @@ var require_picomatch = __commonJS({
   }
 });
 
-// node_modules/picomatch/index.js
+// ../node_modules/picomatch/index.js
 var require_picomatch2 = __commonJS({
-  "node_modules/picomatch/index.js"(exports, module2) {
+  "../node_modules/picomatch/index.js"(exports, module2) {
     "use strict";
     module2.exports = require_picomatch();
   }
 });
 
-// node_modules/micromatch/index.js
+// ../node_modules/micromatch/index.js
 var require_micromatch = __commonJS({
-  "node_modules/micromatch/index.js"(exports, module2) {
+  "../node_modules/micromatch/index.js"(exports, module2) {
     "use strict";
     var util = require("util");
     var braces = require_braces();
@@ -3223,12 +3242,12 @@ var require_micromatch = __commonJS({
   }
 });
 
-// node_modules/fast-glob/out/utils/pattern.js
+// ../node_modules/fast-glob/out/utils/pattern.js
 var require_pattern = __commonJS({
-  "node_modules/fast-glob/out/utils/pattern.js"(exports) {
+  "../node_modules/fast-glob/out/utils/pattern.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.matchAny = exports.convertPatternsToRe = exports.makeRe = exports.getPatternParts = exports.expandBraceExpansion = exports.expandPatternsWithBraceExpansion = exports.isAffectDepthOfReadingPattern = exports.endsWithSlashGlobStar = exports.hasGlobStar = exports.getBaseDirectory = exports.isPatternRelatedToParentDirectory = exports.getPatternsOutsideCurrentDirectory = exports.getPatternsInsideCurrentDirectory = exports.getPositivePatterns = exports.getNegativePatterns = exports.isPositivePattern = exports.isNegativePattern = exports.convertToNegativePattern = exports.convertToPositivePattern = exports.isDynamicPattern = exports.isStaticPattern = void 0;
+    exports.removeDuplicateSlashes = exports.matchAny = exports.convertPatternsToRe = exports.makeRe = exports.getPatternParts = exports.expandBraceExpansion = exports.expandPatternsWithBraceExpansion = exports.isAffectDepthOfReadingPattern = exports.endsWithSlashGlobStar = exports.hasGlobStar = exports.getBaseDirectory = exports.isPatternRelatedToParentDirectory = exports.getPatternsOutsideCurrentDirectory = exports.getPatternsInsideCurrentDirectory = exports.getPositivePatterns = exports.getNegativePatterns = exports.isPositivePattern = exports.isNegativePattern = exports.convertToNegativePattern = exports.convertToPositivePattern = exports.isDynamicPattern = exports.isStaticPattern = void 0;
     var path7 = require("path");
     var globParent = require_glob_parent();
     var micromatch = require_micromatch();
@@ -3239,6 +3258,7 @@ var require_pattern = __commonJS({
     var REGEX_GROUP_SYMBOLS_RE = /(?:^|[^!*+?@])\([^(]*\|[^|]*\)/;
     var GLOB_EXTENSION_SYMBOLS_RE = /[!*+?@]\([^(]*\)/;
     var BRACE_EXPANSION_SEPARATORS_RE = /,|\.\./;
+    var DOUBLE_SLASH_RE = /(?!^)\/{2,}/g;
     function isStaticPattern(pattern, options = {}) {
       return !isDynamicPattern2(pattern, options);
     }
@@ -3334,10 +3354,9 @@ var require_pattern = __commonJS({
     }
     exports.expandPatternsWithBraceExpansion = expandPatternsWithBraceExpansion;
     function expandBraceExpansion(pattern) {
-      return micromatch.braces(pattern, {
-        expand: true,
-        nodupes: true
-      });
+      const patterns = micromatch.braces(pattern, { expand: true, nodupes: true });
+      patterns.sort((a, b) => a.length - b.length);
+      return patterns.filter((pattern2) => pattern2 !== "");
     }
     exports.expandBraceExpansion = expandBraceExpansion;
     function getPatternParts(pattern, options) {
@@ -3364,12 +3383,16 @@ var require_pattern = __commonJS({
       return patternsRe.some((patternRe) => patternRe.test(entry));
     }
     exports.matchAny = matchAny;
+    function removeDuplicateSlashes(pattern) {
+      return pattern.replace(DOUBLE_SLASH_RE, "/");
+    }
+    exports.removeDuplicateSlashes = removeDuplicateSlashes;
   }
 });
 
-// node_modules/fast-glob/out/utils/stream.js
+// ../node_modules/fast-glob/out/utils/stream.js
 var require_stream = __commonJS({
-  "node_modules/fast-glob/out/utils/stream.js"(exports) {
+  "../node_modules/fast-glob/out/utils/stream.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.merge = void 0;
@@ -3390,9 +3413,9 @@ var require_stream = __commonJS({
   }
 });
 
-// node_modules/fast-glob/out/utils/string.js
+// ../node_modules/fast-glob/out/utils/string.js
 var require_string = __commonJS({
-  "node_modules/fast-glob/out/utils/string.js"(exports) {
+  "../node_modules/fast-glob/out/utils/string.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.isEmpty = exports.isString = void 0;
@@ -3407,9 +3430,9 @@ var require_string = __commonJS({
   }
 });
 
-// node_modules/fast-glob/out/utils/index.js
+// ../node_modules/fast-glob/out/utils/index.js
 var require_utils3 = __commonJS({
-  "node_modules/fast-glob/out/utils/index.js"(exports) {
+  "../node_modules/fast-glob/out/utils/index.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.string = exports.stream = exports.pattern = exports.path = exports.fs = exports.errno = exports.array = void 0;
@@ -3430,16 +3453,18 @@ var require_utils3 = __commonJS({
   }
 });
 
-// node_modules/fast-glob/out/managers/tasks.js
+// ../node_modules/fast-glob/out/managers/tasks.js
 var require_tasks = __commonJS({
-  "node_modules/fast-glob/out/managers/tasks.js"(exports) {
+  "../node_modules/fast-glob/out/managers/tasks.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.convertPatternGroupToTask = exports.convertPatternGroupsToTasks = exports.groupPatternsByBaseDirectory = exports.getNegativePatternsAsPositive = exports.getPositivePatterns = exports.convertPatternsToTasks = exports.generate = void 0;
     var utils = require_utils3();
-    function generate(patterns, settings) {
+    function generate(input, settings) {
+      const patterns = processPatterns(input, settings);
+      const ignore = processPatterns(settings.ignore, settings);
       const positivePatterns = getPositivePatterns(patterns);
-      const negativePatterns = getNegativePatternsAsPositive(patterns, settings.ignore);
+      const negativePatterns = getNegativePatternsAsPositive(patterns, ignore);
       const staticPatterns = positivePatterns.filter((pattern) => utils.pattern.isStaticPattern(pattern, settings));
       const dynamicPatterns = positivePatterns.filter((pattern) => utils.pattern.isDynamicPattern(pattern, settings));
       const staticTasks = convertPatternsToTasks(
@@ -3457,6 +3482,16 @@ var require_tasks = __commonJS({
       return staticTasks.concat(dynamicTasks);
     }
     exports.generate = generate;
+    function processPatterns(input, settings) {
+      let patterns = input;
+      if (settings.braceExpansion) {
+        patterns = utils.pattern.expandPatternsWithBraceExpansion(patterns);
+      }
+      if (settings.baseNameMatch) {
+        patterns = patterns.map((pattern) => pattern.includes("/") ? pattern : `**/${pattern}`);
+      }
+      return patterns.map((pattern) => utils.pattern.removeDuplicateSlashes(pattern));
+    }
     function convertPatternsToTasks(positive, negative, dynamic) {
       const tasks = [];
       const patternsOutsideCurrentDirectory = utils.pattern.getPatternsOutsideCurrentDirectory(positive);
@@ -3514,27 +3549,9 @@ var require_tasks = __commonJS({
   }
 });
 
-// node_modules/fast-glob/out/managers/patterns.js
-var require_patterns = __commonJS({
-  "node_modules/fast-glob/out/managers/patterns.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.removeDuplicateSlashes = exports.transform = void 0;
-    var DOUBLE_SLASH_RE = /(?!^)\/{2,}/g;
-    function transform(patterns) {
-      return patterns.map((pattern) => removeDuplicateSlashes(pattern));
-    }
-    exports.transform = transform;
-    function removeDuplicateSlashes(pattern) {
-      return pattern.replace(DOUBLE_SLASH_RE, "/");
-    }
-    exports.removeDuplicateSlashes = removeDuplicateSlashes;
-  }
-});
-
-// node_modules/@nodelib/fs.stat/out/providers/async.js
+// ../node_modules/@nodelib/fs.stat/out/providers/async.js
 var require_async = __commonJS({
-  "node_modules/@nodelib/fs.stat/out/providers/async.js"(exports) {
+  "../node_modules/@nodelib/fs.stat/out/providers/async.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.read = void 0;
@@ -3574,9 +3591,9 @@ var require_async = __commonJS({
   }
 });
 
-// node_modules/@nodelib/fs.stat/out/providers/sync.js
+// ../node_modules/@nodelib/fs.stat/out/providers/sync.js
 var require_sync = __commonJS({
-  "node_modules/@nodelib/fs.stat/out/providers/sync.js"(exports) {
+  "../node_modules/@nodelib/fs.stat/out/providers/sync.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.read = void 0;
@@ -3602,9 +3619,9 @@ var require_sync = __commonJS({
   }
 });
 
-// node_modules/@nodelib/fs.stat/out/adapters/fs.js
+// ../node_modules/@nodelib/fs.stat/out/adapters/fs.js
 var require_fs2 = __commonJS({
-  "node_modules/@nodelib/fs.stat/out/adapters/fs.js"(exports) {
+  "../node_modules/@nodelib/fs.stat/out/adapters/fs.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.createFileSystemAdapter = exports.FILE_SYSTEM_ADAPTER = void 0;
@@ -3625,9 +3642,9 @@ var require_fs2 = __commonJS({
   }
 });
 
-// node_modules/@nodelib/fs.stat/out/settings.js
+// ../node_modules/@nodelib/fs.stat/out/settings.js
 var require_settings = __commonJS({
-  "node_modules/@nodelib/fs.stat/out/settings.js"(exports) {
+  "../node_modules/@nodelib/fs.stat/out/settings.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var fs3 = require_fs2();
@@ -3647,9 +3664,9 @@ var require_settings = __commonJS({
   }
 });
 
-// node_modules/@nodelib/fs.stat/out/index.js
+// ../node_modules/@nodelib/fs.stat/out/index.js
 var require_out = __commonJS({
-  "node_modules/@nodelib/fs.stat/out/index.js"(exports) {
+  "../node_modules/@nodelib/fs.stat/out/index.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.statSync = exports.stat = exports.Settings = void 0;
@@ -3679,9 +3696,9 @@ var require_out = __commonJS({
   }
 });
 
-// node_modules/queue-microtask/index.js
+// ../node_modules/queue-microtask/index.js
 var require_queue_microtask = __commonJS({
-  "node_modules/queue-microtask/index.js"(exports, module2) {
+  "../node_modules/queue-microtask/index.js"(exports, module2) {
     var promise;
     module2.exports = typeof queueMicrotask === "function" ? queueMicrotask.bind(typeof window !== "undefined" ? window : global) : (cb) => (promise || (promise = Promise.resolve())).then(cb).catch((err) => setTimeout(() => {
       throw err;
@@ -3689,9 +3706,9 @@ var require_queue_microtask = __commonJS({
   }
 });
 
-// node_modules/run-parallel/index.js
+// ../node_modules/run-parallel/index.js
 var require_run_parallel = __commonJS({
-  "node_modules/run-parallel/index.js"(exports, module2) {
+  "../node_modules/run-parallel/index.js"(exports, module2) {
     module2.exports = runParallel;
     var queueMicrotask2 = require_queue_microtask();
     function runParallel(tasks, cb) {
@@ -3742,9 +3759,9 @@ var require_run_parallel = __commonJS({
   }
 });
 
-// node_modules/@nodelib/fs.scandir/out/constants.js
+// ../node_modules/@nodelib/fs.scandir/out/constants.js
 var require_constants3 = __commonJS({
-  "node_modules/@nodelib/fs.scandir/out/constants.js"(exports) {
+  "../node_modules/@nodelib/fs.scandir/out/constants.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.IS_SUPPORT_READDIR_WITH_FILE_TYPES = void 0;
@@ -3762,9 +3779,9 @@ var require_constants3 = __commonJS({
   }
 });
 
-// node_modules/@nodelib/fs.scandir/out/utils/fs.js
+// ../node_modules/@nodelib/fs.scandir/out/utils/fs.js
 var require_fs3 = __commonJS({
-  "node_modules/@nodelib/fs.scandir/out/utils/fs.js"(exports) {
+  "../node_modules/@nodelib/fs.scandir/out/utils/fs.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.createDirentFromStats = void 0;
@@ -3787,9 +3804,9 @@ var require_fs3 = __commonJS({
   }
 });
 
-// node_modules/@nodelib/fs.scandir/out/utils/index.js
+// ../node_modules/@nodelib/fs.scandir/out/utils/index.js
 var require_utils4 = __commonJS({
-  "node_modules/@nodelib/fs.scandir/out/utils/index.js"(exports) {
+  "../node_modules/@nodelib/fs.scandir/out/utils/index.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.fs = void 0;
@@ -3798,9 +3815,9 @@ var require_utils4 = __commonJS({
   }
 });
 
-// node_modules/@nodelib/fs.scandir/out/providers/common.js
+// ../node_modules/@nodelib/fs.scandir/out/providers/common.js
 var require_common = __commonJS({
-  "node_modules/@nodelib/fs.scandir/out/providers/common.js"(exports) {
+  "../node_modules/@nodelib/fs.scandir/out/providers/common.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.joinPathSegments = void 0;
@@ -3814,9 +3831,9 @@ var require_common = __commonJS({
   }
 });
 
-// node_modules/@nodelib/fs.scandir/out/providers/async.js
+// ../node_modules/@nodelib/fs.scandir/out/providers/async.js
 var require_async2 = __commonJS({
-  "node_modules/@nodelib/fs.scandir/out/providers/async.js"(exports) {
+  "../node_modules/@nodelib/fs.scandir/out/providers/async.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.readdir = exports.readdirWithFileTypes = exports.read = void 0;
@@ -3924,9 +3941,9 @@ var require_async2 = __commonJS({
   }
 });
 
-// node_modules/@nodelib/fs.scandir/out/providers/sync.js
+// ../node_modules/@nodelib/fs.scandir/out/providers/sync.js
 var require_sync2 = __commonJS({
-  "node_modules/@nodelib/fs.scandir/out/providers/sync.js"(exports) {
+  "../node_modules/@nodelib/fs.scandir/out/providers/sync.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.readdir = exports.readdirWithFileTypes = exports.read = void 0;
@@ -3983,9 +4000,9 @@ var require_sync2 = __commonJS({
   }
 });
 
-// node_modules/@nodelib/fs.scandir/out/adapters/fs.js
+// ../node_modules/@nodelib/fs.scandir/out/adapters/fs.js
 var require_fs4 = __commonJS({
-  "node_modules/@nodelib/fs.scandir/out/adapters/fs.js"(exports) {
+  "../node_modules/@nodelib/fs.scandir/out/adapters/fs.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.createFileSystemAdapter = exports.FILE_SYSTEM_ADAPTER = void 0;
@@ -4008,9 +4025,9 @@ var require_fs4 = __commonJS({
   }
 });
 
-// node_modules/@nodelib/fs.scandir/out/settings.js
+// ../node_modules/@nodelib/fs.scandir/out/settings.js
 var require_settings2 = __commonJS({
-  "node_modules/@nodelib/fs.scandir/out/settings.js"(exports) {
+  "../node_modules/@nodelib/fs.scandir/out/settings.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var path7 = require("path");
@@ -4038,9 +4055,9 @@ var require_settings2 = __commonJS({
   }
 });
 
-// node_modules/@nodelib/fs.scandir/out/index.js
+// ../node_modules/@nodelib/fs.scandir/out/index.js
 var require_out2 = __commonJS({
-  "node_modules/@nodelib/fs.scandir/out/index.js"(exports) {
+  "../node_modules/@nodelib/fs.scandir/out/index.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Settings = exports.scandirSync = exports.scandir = void 0;
@@ -4070,9 +4087,9 @@ var require_out2 = __commonJS({
   }
 });
 
-// node_modules/reusify/reusify.js
+// ../node_modules/reusify/reusify.js
 var require_reusify = __commonJS({
-  "node_modules/reusify/reusify.js"(exports, module2) {
+  "../node_modules/reusify/reusify.js"(exports, module2) {
     "use strict";
     function reusify(Constructor) {
       var head = new Constructor();
@@ -4101,9 +4118,9 @@ var require_reusify = __commonJS({
   }
 });
 
-// node_modules/fastq/queue.js
+// ../node_modules/fastq/queue.js
 var require_queue = __commonJS({
-  "node_modules/fastq/queue.js"(exports, module2) {
+  "../node_modules/fastq/queue.js"(exports, module2) {
     "use strict";
     var reusify = require_reusify();
     function fastqueue(context, worker, concurrency) {
@@ -4342,9 +4359,9 @@ var require_queue = __commonJS({
   }
 });
 
-// node_modules/@nodelib/fs.walk/out/readers/common.js
+// ../node_modules/@nodelib/fs.walk/out/readers/common.js
 var require_common2 = __commonJS({
-  "node_modules/@nodelib/fs.walk/out/readers/common.js"(exports) {
+  "../node_modules/@nodelib/fs.walk/out/readers/common.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.joinPathSegments = exports.replacePathSegmentSeparator = exports.isAppliedFilter = exports.isFatalError = void 0;
@@ -4376,9 +4393,9 @@ var require_common2 = __commonJS({
   }
 });
 
-// node_modules/@nodelib/fs.walk/out/readers/reader.js
+// ../node_modules/@nodelib/fs.walk/out/readers/reader.js
 var require_reader = __commonJS({
-  "node_modules/@nodelib/fs.walk/out/readers/reader.js"(exports) {
+  "../node_modules/@nodelib/fs.walk/out/readers/reader.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var common = require_common2();
@@ -4393,9 +4410,9 @@ var require_reader = __commonJS({
   }
 });
 
-// node_modules/@nodelib/fs.walk/out/readers/async.js
+// ../node_modules/@nodelib/fs.walk/out/readers/async.js
 var require_async3 = __commonJS({
-  "node_modules/@nodelib/fs.walk/out/readers/async.js"(exports) {
+  "../node_modules/@nodelib/fs.walk/out/readers/async.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var events_1 = require("events");
@@ -4496,9 +4513,9 @@ var require_async3 = __commonJS({
   }
 });
 
-// node_modules/@nodelib/fs.walk/out/providers/async.js
+// ../node_modules/@nodelib/fs.walk/out/providers/async.js
 var require_async4 = __commonJS({
-  "node_modules/@nodelib/fs.walk/out/providers/async.js"(exports) {
+  "../node_modules/@nodelib/fs.walk/out/providers/async.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var async_1 = require_async3();
@@ -4532,9 +4549,9 @@ var require_async4 = __commonJS({
   }
 });
 
-// node_modules/@nodelib/fs.walk/out/providers/stream.js
+// ../node_modules/@nodelib/fs.walk/out/providers/stream.js
 var require_stream2 = __commonJS({
-  "node_modules/@nodelib/fs.walk/out/providers/stream.js"(exports) {
+  "../node_modules/@nodelib/fs.walk/out/providers/stream.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var stream_1 = require("stream");
@@ -4573,9 +4590,9 @@ var require_stream2 = __commonJS({
   }
 });
 
-// node_modules/@nodelib/fs.walk/out/readers/sync.js
+// ../node_modules/@nodelib/fs.walk/out/readers/sync.js
 var require_sync3 = __commonJS({
-  "node_modules/@nodelib/fs.walk/out/readers/sync.js"(exports) {
+  "../node_modules/@nodelib/fs.walk/out/readers/sync.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var fsScandir = require_out2();
@@ -4637,9 +4654,9 @@ var require_sync3 = __commonJS({
   }
 });
 
-// node_modules/@nodelib/fs.walk/out/providers/sync.js
+// ../node_modules/@nodelib/fs.walk/out/providers/sync.js
 var require_sync4 = __commonJS({
-  "node_modules/@nodelib/fs.walk/out/providers/sync.js"(exports) {
+  "../node_modules/@nodelib/fs.walk/out/providers/sync.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var sync_1 = require_sync3();
@@ -4657,9 +4674,9 @@ var require_sync4 = __commonJS({
   }
 });
 
-// node_modules/@nodelib/fs.walk/out/settings.js
+// ../node_modules/@nodelib/fs.walk/out/settings.js
 var require_settings3 = __commonJS({
-  "node_modules/@nodelib/fs.walk/out/settings.js"(exports) {
+  "../node_modules/@nodelib/fs.walk/out/settings.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var path7 = require("path");
@@ -4689,9 +4706,9 @@ var require_settings3 = __commonJS({
   }
 });
 
-// node_modules/@nodelib/fs.walk/out/index.js
+// ../node_modules/@nodelib/fs.walk/out/index.js
 var require_out3 = __commonJS({
-  "node_modules/@nodelib/fs.walk/out/index.js"(exports) {
+  "../node_modules/@nodelib/fs.walk/out/index.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Settings = exports.walkStream = exports.walkSync = exports.walk = void 0;
@@ -4729,9 +4746,9 @@ var require_out3 = __commonJS({
   }
 });
 
-// node_modules/fast-glob/out/readers/reader.js
+// ../node_modules/fast-glob/out/readers/reader.js
 var require_reader2 = __commonJS({
-  "node_modules/fast-glob/out/readers/reader.js"(exports) {
+  "../node_modules/fast-glob/out/readers/reader.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var path7 = require("path");
@@ -4768,9 +4785,9 @@ var require_reader2 = __commonJS({
   }
 });
 
-// node_modules/fast-glob/out/readers/stream.js
+// ../node_modules/fast-glob/out/readers/stream.js
 var require_stream3 = __commonJS({
-  "node_modules/fast-glob/out/readers/stream.js"(exports) {
+  "../node_modules/fast-glob/out/readers/stream.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var stream_1 = require("stream");
@@ -4825,9 +4842,9 @@ var require_stream3 = __commonJS({
   }
 });
 
-// node_modules/fast-glob/out/readers/async.js
+// ../node_modules/fast-glob/out/readers/async.js
 var require_async5 = __commonJS({
-  "node_modules/fast-glob/out/readers/async.js"(exports) {
+  "../node_modules/fast-glob/out/readers/async.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var fsWalk = require_out3();
@@ -4864,9 +4881,9 @@ var require_async5 = __commonJS({
   }
 });
 
-// node_modules/fast-glob/out/providers/matchers/matcher.js
+// ../node_modules/fast-glob/out/providers/matchers/matcher.js
 var require_matcher = __commonJS({
-  "node_modules/fast-glob/out/providers/matchers/matcher.js"(exports) {
+  "../node_modules/fast-glob/out/providers/matchers/matcher.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var utils = require_utils3();
@@ -4879,8 +4896,7 @@ var require_matcher = __commonJS({
         this._fillStorage();
       }
       _fillStorage() {
-        const patterns = utils.pattern.expandPatternsWithBraceExpansion(this._patterns);
-        for (const pattern of patterns) {
+        for (const pattern of this._patterns) {
           const segments = this._getPatternSegments(pattern);
           const sections = this._splitSegmentsIntoSections(segments);
           this._storage.push({
@@ -4916,9 +4932,9 @@ var require_matcher = __commonJS({
   }
 });
 
-// node_modules/fast-glob/out/providers/matchers/partial.js
+// ../node_modules/fast-glob/out/providers/matchers/partial.js
 var require_partial = __commonJS({
-  "node_modules/fast-glob/out/providers/matchers/partial.js"(exports) {
+  "../node_modules/fast-glob/out/providers/matchers/partial.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var matcher_1 = require_matcher();
@@ -4953,9 +4969,9 @@ var require_partial = __commonJS({
   }
 });
 
-// node_modules/fast-glob/out/providers/filters/deep.js
+// ../node_modules/fast-glob/out/providers/filters/deep.js
 var require_deep = __commonJS({
-  "node_modules/fast-glob/out/providers/filters/deep.js"(exports) {
+  "../node_modules/fast-glob/out/providers/filters/deep.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var utils = require_utils3();
@@ -5018,9 +5034,9 @@ var require_deep = __commonJS({
   }
 });
 
-// node_modules/fast-glob/out/providers/filters/entry.js
+// ../node_modules/fast-glob/out/providers/filters/entry.js
 var require_entry = __commonJS({
-  "node_modules/fast-glob/out/providers/filters/entry.js"(exports) {
+  "../node_modules/fast-glob/out/providers/filters/entry.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var utils = require_utils3();
@@ -5032,32 +5048,32 @@ var require_entry = __commonJS({
       }
       getFilter(positive, negative) {
         const positiveRe = utils.pattern.convertPatternsToRe(positive, this._micromatchOptions);
-        const negativeRe = utils.pattern.convertPatternsToRe(negative, this._micromatchOptions);
+        const negativeRe = utils.pattern.convertPatternsToRe(negative, Object.assign(Object.assign({}, this._micromatchOptions), { dot: true }));
         return (entry) => this._filter(entry, positiveRe, negativeRe);
       }
       _filter(entry, positiveRe, negativeRe) {
-        if (this._settings.unique && this._isDuplicateEntry(entry)) {
+        const filepath = utils.path.removeLeadingDotSegment(entry.path);
+        if (this._settings.unique && this._isDuplicateEntry(filepath)) {
           return false;
         }
         if (this._onlyFileFilter(entry) || this._onlyDirectoryFilter(entry)) {
           return false;
         }
-        if (this._isSkippedByAbsoluteNegativePatterns(entry.path, negativeRe)) {
+        if (this._isSkippedByAbsoluteNegativePatterns(filepath, negativeRe)) {
           return false;
         }
-        const filepath = this._settings.baseNameMatch ? entry.name : entry.path;
         const isDirectory = entry.dirent.isDirectory();
-        const isMatched = this._isMatchToPatterns(filepath, positiveRe, isDirectory) && !this._isMatchToPatterns(entry.path, negativeRe, isDirectory);
+        const isMatched = this._isMatchToPatterns(filepath, positiveRe, isDirectory) && !this._isMatchToPatterns(filepath, negativeRe, isDirectory);
         if (this._settings.unique && isMatched) {
-          this._createIndexRecord(entry);
+          this._createIndexRecord(filepath);
         }
         return isMatched;
       }
-      _isDuplicateEntry(entry) {
-        return this.index.has(entry.path);
+      _isDuplicateEntry(filepath) {
+        return this.index.has(filepath);
       }
-      _createIndexRecord(entry) {
-        this.index.set(entry.path, void 0);
+      _createIndexRecord(filepath) {
+        this.index.set(filepath, void 0);
       }
       _onlyFileFilter(entry) {
         return this._settings.onlyFiles && !entry.dirent.isFile();
@@ -5072,8 +5088,7 @@ var require_entry = __commonJS({
         const fullpath = utils.path.makeAbsolute(this._settings.cwd, entryPath);
         return utils.pattern.matchAny(fullpath, patternsRe);
       }
-      _isMatchToPatterns(entryPath, patternsRe, isDirectory) {
-        const filepath = utils.path.removeLeadingDotSegment(entryPath);
+      _isMatchToPatterns(filepath, patternsRe, isDirectory) {
         const isMatched = utils.pattern.matchAny(filepath, patternsRe);
         if (!isMatched && isDirectory) {
           return utils.pattern.matchAny(filepath + "/", patternsRe);
@@ -5085,9 +5100,9 @@ var require_entry = __commonJS({
   }
 });
 
-// node_modules/fast-glob/out/providers/filters/error.js
+// ../node_modules/fast-glob/out/providers/filters/error.js
 var require_error = __commonJS({
-  "node_modules/fast-glob/out/providers/filters/error.js"(exports) {
+  "../node_modules/fast-glob/out/providers/filters/error.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var utils = require_utils3();
@@ -5106,9 +5121,9 @@ var require_error = __commonJS({
   }
 });
 
-// node_modules/fast-glob/out/providers/transformers/entry.js
+// ../node_modules/fast-glob/out/providers/transformers/entry.js
 var require_entry2 = __commonJS({
-  "node_modules/fast-glob/out/providers/transformers/entry.js"(exports) {
+  "../node_modules/fast-glob/out/providers/transformers/entry.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var utils = require_utils3();
@@ -5138,9 +5153,9 @@ var require_entry2 = __commonJS({
   }
 });
 
-// node_modules/fast-glob/out/providers/provider.js
+// ../node_modules/fast-glob/out/providers/provider.js
 var require_provider = __commonJS({
-  "node_modules/fast-glob/out/providers/provider.js"(exports) {
+  "../node_modules/fast-glob/out/providers/provider.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var path7 = require("path");
@@ -5192,9 +5207,9 @@ var require_provider = __commonJS({
   }
 });
 
-// node_modules/fast-glob/out/providers/async.js
+// ../node_modules/fast-glob/out/providers/async.js
 var require_async6 = __commonJS({
-  "node_modules/fast-glob/out/providers/async.js"(exports) {
+  "../node_modules/fast-glob/out/providers/async.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var async_1 = require_async5();
@@ -5221,9 +5236,9 @@ var require_async6 = __commonJS({
   }
 });
 
-// node_modules/fast-glob/out/providers/stream.js
+// ../node_modules/fast-glob/out/providers/stream.js
 var require_stream4 = __commonJS({
-  "node_modules/fast-glob/out/providers/stream.js"(exports) {
+  "../node_modules/fast-glob/out/providers/stream.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var stream_1 = require("stream");
@@ -5255,9 +5270,9 @@ var require_stream4 = __commonJS({
   }
 });
 
-// node_modules/fast-glob/out/readers/sync.js
+// ../node_modules/fast-glob/out/readers/sync.js
 var require_sync5 = __commonJS({
-  "node_modules/fast-glob/out/readers/sync.js"(exports) {
+  "../node_modules/fast-glob/out/readers/sync.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var fsStat = require_out();
@@ -5303,9 +5318,9 @@ var require_sync5 = __commonJS({
   }
 });
 
-// node_modules/fast-glob/out/providers/sync.js
+// ../node_modules/fast-glob/out/providers/sync.js
 var require_sync6 = __commonJS({
-  "node_modules/fast-glob/out/providers/sync.js"(exports) {
+  "../node_modules/fast-glob/out/providers/sync.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var sync_1 = require_sync5();
@@ -5332,9 +5347,9 @@ var require_sync6 = __commonJS({
   }
 });
 
-// node_modules/fast-glob/out/settings.js
+// ../node_modules/fast-glob/out/settings.js
 var require_settings4 = __commonJS({
-  "node_modules/fast-glob/out/settings.js"(exports) {
+  "../node_modules/fast-glob/out/settings.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DEFAULT_FILE_SYSTEM_ADAPTER = void 0;
@@ -5379,6 +5394,7 @@ var require_settings4 = __commonJS({
         if (this.stats) {
           this.objectMode = true;
         }
+        this.ignore = [].concat(this.ignore);
       }
       _getValue(option, value) {
         return option === void 0 ? value : option;
@@ -5391,12 +5407,11 @@ var require_settings4 = __commonJS({
   }
 });
 
-// node_modules/fast-glob/out/index.js
+// ../node_modules/fast-glob/out/index.js
 var require_out4 = __commonJS({
-  "node_modules/fast-glob/out/index.js"(exports, module2) {
+  "../node_modules/fast-glob/out/index.js"(exports, module2) {
     "use strict";
     var taskManager = require_tasks();
-    var patternManager = require_patterns();
     var async_1 = require_async6();
     var stream_1 = require_stream4();
     var sync_1 = require_sync6();
@@ -5409,6 +5424,10 @@ var require_out4 = __commonJS({
       return utils.array.flatten(result);
     }
     (function(FastGlob2) {
+      FastGlob2.glob = FastGlob2;
+      FastGlob2.globSync = sync;
+      FastGlob2.globStream = stream;
+      FastGlob2.async = FastGlob2;
       function sync(source, options) {
         assertPatternsInput2(source);
         const works = getWorks(source, sync_1.default, options);
@@ -5423,7 +5442,7 @@ var require_out4 = __commonJS({
       FastGlob2.stream = stream;
       function generateTasks2(source, options) {
         assertPatternsInput2(source);
-        const patterns = patternManager.transform([].concat(source));
+        const patterns = [].concat(source);
         const settings = new settings_1.default(options);
         return taskManager.generate(patterns, settings);
       }
@@ -5439,9 +5458,40 @@ var require_out4 = __commonJS({
         return utils.path.escape(source);
       }
       FastGlob2.escapePath = escapePath;
+      function convertPathToPattern(source) {
+        assertPatternsInput2(source);
+        return utils.path.convertPathToPattern(source);
+      }
+      FastGlob2.convertPathToPattern = convertPathToPattern;
+      let posix;
+      (function(posix2) {
+        function escapePath2(source) {
+          assertPatternsInput2(source);
+          return utils.path.escapePosixPath(source);
+        }
+        posix2.escapePath = escapePath2;
+        function convertPathToPattern2(source) {
+          assertPatternsInput2(source);
+          return utils.path.convertPosixPathToPattern(source);
+        }
+        posix2.convertPathToPattern = convertPathToPattern2;
+      })(posix = FastGlob2.posix || (FastGlob2.posix = {}));
+      let win32;
+      (function(win322) {
+        function escapePath2(source) {
+          assertPatternsInput2(source);
+          return utils.path.escapeWindowsPath(source);
+        }
+        win322.escapePath = escapePath2;
+        function convertPathToPattern2(source) {
+          assertPatternsInput2(source);
+          return utils.path.convertWindowsPathToPattern(source);
+        }
+        win322.convertPathToPattern = convertPathToPattern2;
+      })(win32 = FastGlob2.win32 || (FastGlob2.win32 = {}));
     })(FastGlob || (FastGlob = {}));
     function getWorks(source, _Provider, options) {
-      const patterns = patternManager.transform([].concat(source));
+      const patterns = [].concat(source);
       const settings = new settings_1.default(options);
       const tasks = taskManager.generate(patterns, settings);
       const provider = new _Provider(settings);
@@ -5458,9 +5508,9 @@ var require_out4 = __commonJS({
   }
 });
 
-// node_modules/path-type/index.js
+// ../node_modules/path-type/index.js
 var require_path_type = __commonJS({
-  "node_modules/path-type/index.js"(exports) {
+  "../node_modules/path-type/index.js"(exports) {
     "use strict";
     var { promisify } = require("util");
     var fs3 = require("fs");
@@ -5500,9 +5550,9 @@ var require_path_type = __commonJS({
   }
 });
 
-// node_modules/dir-glob/index.js
+// ../node_modules/dir-glob/index.js
 var require_dir_glob = __commonJS({
-  "node_modules/dir-glob/index.js"(exports, module2) {
+  "../node_modules/dir-glob/index.js"(exports, module2) {
     "use strict";
     var path7 = require("path");
     var pathType = require_path_type();
@@ -5563,9 +5613,9 @@ var require_dir_glob = __commonJS({
   }
 });
 
-// node_modules/ignore/index.js
+// ../node_modules/ignore/index.js
 var require_ignore = __commonJS({
-  "node_modules/ignore/index.js"(exports, module2) {
+  "../node_modules/ignore/index.js"(exports, module2) {
     function makeArray(subject) {
       return Array.isArray(subject) ? subject : [subject];
     }

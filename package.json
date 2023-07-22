@@ -1,0 +1,27 @@
+{
+    "devDependencies": {
+        "eslint": "^8",
+        "eslint-plugin-jest": "^27",
+        "jest": "^29"
+    },
+    "jest": {
+        "transform": {},
+        "moduleFileExtensions": [
+            "js"
+        ]
+    },
+    "workspaces": [
+        "core",
+        "cli",
+        "helpers",
+        "helpers-android",
+        "helpers-demo",
+        "helpers-html",
+        "helpers-ios",
+        "helpers-java",
+        "helpers-json",
+        "helpers-po",
+        "helpers-translated",
+        "helpers-xliff"
+    ]
+  }

@@ -1,6 +1,6 @@
 {
     "name": "l10nmonster-tests",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "description": "Integration test suite",
     "main": "index.js",
     "type": "module",

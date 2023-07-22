@@ -1,4 +1,4 @@
-import * as tinyld from 'tinyld';
+// import * as tinyld from 'tinyld';
 
 import { utils } from '@l10nmonster/helpers';
 
@@ -26,15 +26,16 @@ function printContent(contentPairs) {
 
 export function printRequest(req) {
     const untranslatedContent = {};
-    const srcLang = req.sourceLang.substring(0, 2);
+    // const srcLang = req.sourceLang.substring(0, 2);
     for (const tu of req.tus) {
         const prj = tu.prj || 'default';
         untranslatedContent[prj] ??= {};
         untranslatedContent[prj][tu.rid] ??= {};
-        const text = tu.nsrc.map(e => (typeof e === 'string' ? e : '')).join('');
+        // const text = tu.nsrc.map(e => (typeof e === 'string' ? e : '')).join('');
         // const heuristics = Object.fromEntries(lngDetector.detect(text, 1));
-        const heuristics = Object.fromEntries(tinyld.detectAll(text).map(x => [ x.lang, x.accuracy ]));
-        const confidence = heuristics[srcLang] ?? 0;
+        // const heuristics = Object.fromEntries(tinyld.detectAll(text).map(x => [ x.lang, x.accuracy ]));
+        // const confidence = heuristics[srcLang] ?? 0;
+        const confidence = 1;
         untranslatedContent[prj][tu.rid][tu.sid] = {
             confidence,
             txt: utils.flattenNormalizedSourceV1(tu.nsrc)[0],
