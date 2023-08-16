@@ -1,6 +1,7 @@
 const { adapters, stores } = require('@l10nmonster/helpers');
 const ios = require('@l10nmonster/helpers-ios');
 const android = require('@l10nmonster/helpers-android');
+const { runL10nMonster } = require('@l10nmonster/cli');
 
 const androidLangMapping = {
     'pt-BR': 'pr-rBR',
@@ -8,7 +9,7 @@ const androidLangMapping = {
     'zh-Hant': 'zh-rTW',
 };
 
-module.exports = class MultiProjectConfig2 {
+const config = class MultiProjectConfig2 {
     sourceLang = 'en';
     targetLangs = [ 'ar', 'it', 'ja' ];
     minimumQuality = 50;
@@ -45,4 +46,14 @@ module.exports = class MultiProjectConfig2 {
             },
         };
     }
-}
+};
+
+(async () => await runL10nMonster('./selfContained.js', { config, verbose: 3 }, async l10n => {
+    const status = await l10n.status();
+    for (const [lang, ls] of Object.entries(status.lang)) {
+        console.log(`Language ${lang}`);
+        for (const [prj, ps] of Object.entries(ls.leverage.prjLeverage)) {
+            console.log(`Project ${prj}: ${ps.untranslated} untranslated string`);
+        }
+    }
+}))();

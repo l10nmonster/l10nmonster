@@ -4,7 +4,6 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
@@ -26,10 +25,6 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var __publicField = (obj, key, value) => {
-  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-  return value;
-};
 
 // l10nCommands.js
 var l10nCommands_exports = {};
@@ -109,6 +104,18 @@ function printResponse(req, res, showPair) {
 
 // analyze.js
 var analyze = class {
+  static help = {
+    description: "content reports and validation.",
+    arguments: [
+      ["[analyzer]", "name of the analyzer to run"],
+      ["[params...]", "optional parameters to the analyzer"]
+    ],
+    options: [
+      ["-l, --lang <language>", "target language to analyze (if TM analyzer)"],
+      ["--filter <filter>", "use the specified tu filter"],
+      ["--output <filename>", "filename to write the analysis to)"]
+    ]
+  };
   static async action(monsterManager, options) {
     try {
       if (options.analyzer) {
@@ -150,22 +157,19 @@ var analyze = class {
     }
   }
 };
-__publicField(analyze, "help", {
-  description: "content reports and validation.",
-  arguments: [
-    ["[analyzer]", "name of the analyzer to run"],
-    ["[params...]", "optional parameters to the analyzer"]
-  ],
-  options: [
-    ["-l, --lang <language>", "target language to analyze (if TM analyzer)"],
-    ["--filter <filter>", "use the specified tu filter"],
-    ["--output <filename>", "filename to write the analysis to)"]
-  ]
-});
 
 // job.js
 var import_core2 = require("@l10nmonster/core");
 var job = class {
+  static help = {
+    description: "show request/response/pairs of a job or push/delete jobs.",
+    arguments: [
+      ["<operation>", "operation to perform on job", ["req", "res", "pairs", "push", "delete"]]
+    ],
+    requiredOptions: [
+      ["-g, --jobGuid <guid>", "guid of job"]
+    ]
+  };
   static async action(monsterManager, options) {
     const op = options.operation;
     const jobGuid = options.jobGuid;
@@ -220,19 +224,16 @@ var job = class {
     }
   }
 };
-__publicField(job, "help", {
-  description: "show request/response/pairs of a job or push/delete jobs.",
-  arguments: [
-    ["<operation>", "operation to perform on job", ["req", "res", "pairs", "push", "delete"]]
-  ],
-  requiredOptions: [
-    ["-g, --jobGuid <guid>", "guid of job"]
-  ]
-});
 
 // jobs.js
 var import_core3 = require("@l10nmonster/core");
 var jobs = class {
+  static help = {
+    description: "unfinished jobs status.",
+    options: [
+      ["-l, --lang <language>", "only get jobs for the target language"]
+    ]
+  };
   static async action(monsterManager, options) {
     const limitToLang = options.lang;
     const jobs2 = await (0, import_core3.jobsCmd)(monsterManager, { limitToLang });
@@ -248,15 +249,15 @@ var jobs = class {
     }
   }
 };
-__publicField(jobs, "help", {
-  description: "unfinished jobs status.",
-  options: [
-    ["-l, --lang <language>", "only get jobs for the target language"]
-  ]
-});
 
 // monster.js
 var monster = class {
+  static help = {
+    description: "test configuration and warm up caches",
+    options: [
+      ["-l, --lang <language>", "target languages to warm up"]
+    ]
+  };
   static async action(monsterManager, options) {
     console.log(
       "            _.------.                        .----.__\n           /         \\_.       ._           /---.__  \\\n          |  O    O   |\\\\___  //|          /       `\\ |\n          |  .vvvvv.  | )   `(/ |         | o     o  \\|\n          /  |     |  |/      \\ |  /|   ./| .vvvvv.  |\\\n         /   `^^^^^'  / _   _  `|_ ||  / /| |     |  | \\\n       ./  /|         | O)  O   ) \\|| //' | `^vvvv'  |/\\\\\n      /   / |         \\        /  | | ~   \\          |  \\\\\n      \\  /  |        / \\ Y   /'   | \\     |          |   ~\n       `'   |  _     |  `._/' |   |  \\     7        /\n         _.-'-' `-'-'|  |`-._/   /    \\ _ /    .    |\n    __.-'            \\  \\   .   / \\_.  \\ -|_/\\/ `--.|_\n --'                  \\  \\ |   /    |  |              `-\n                       \\uU \\UU/     |  /   :F_P:"
@@ -281,16 +282,17 @@ Your config allows the following commands: ${printCapabilities(monsterManager.ca
     }
   }
 };
-__publicField(monster, "help", {
-  description: "test configuration and warm up caches",
-  options: [
-    ["-l, --lang <language>", "target languages to warm up"]
-  ]
-});
 
 // pull.js
 var import_core4 = require("@l10nmonster/core");
 var pull = class {
+  static help = {
+    description: "receive outstanding translation jobs.",
+    options: [
+      ["--partial", "commit partial deliveries"],
+      ["-l, --lang <language>", "only get jobs for the target language"]
+    ]
+  };
   static async action(monsterManager, options) {
     const limitToLang = options.lang;
     const partial = options.partial;
@@ -299,17 +301,23 @@ var pull = class {
     console.log(`Checked ${stats.numPendingJobs.toLocaleString()} pending jobs, ${stats.doneJobs.toLocaleString()} done jobs, ${stats.newPendingJobs.toLocaleString()} pending jobs created, ${stats.translatedStrings.toLocaleString()} translated strings found`);
   }
 };
-__publicField(pull, "help", {
-  description: "receive outstanding translation jobs.",
-  options: [
-    ["--partial", "commit partial deliveries"],
-    ["-l, --lang <language>", "only get jobs for the target language"]
-  ]
-});
 
 // push.js
 var import_core5 = require("@l10nmonster/core");
 var push = class {
+  static help = {
+    description: "push source content upstream (send to translation).",
+    options: [
+      ["-l, --lang <language>", "target language to push"],
+      ["--filter <filter>", "use the specified tu filter"],
+      ["--driver <untranslated|source|tm|job:jobGuid>", "driver of translations need to be pushed (default: untranslated)"],
+      ["--leverage", "eliminate internal repetitions from untranslated driver"],
+      ["--refresh", "refresh existing translations without requesting new ones"],
+      ["--provider <name,...>", "use the specified translation providers"],
+      ["--instructions <instructions>", "send the specified translation instructions"],
+      ["--dryrun", "simulate translating and compare with existing translations"]
+    ]
+  };
   static async action(monsterManager, options) {
     const limitToLang = options.lang;
     const tuFilter = options.filter;
@@ -359,35 +367,22 @@ Dry run of ${langStatus.sourceLang} -> ${langStatus.targetLang} push:`);
     }
   }
 };
-__publicField(push, "help", {
-  description: "push source content upstream (send to translation).",
-  options: [
-    ["-l, --lang <language>", "target language to push"],
-    ["--filter <filter>", "use the specified tu filter"],
-    ["--driver <untranslated|source|tm|job:jobGuid>", "driver of translations need to be pushed (default: untranslated)"],
-    ["--leverage", "eliminate internal repetitions from untranslated driver"],
-    ["--refresh", "refresh existing translations without requesting new ones"],
-    ["--provider <name,...>", "use the specified translation providers"],
-    ["--instructions <instructions>", "send the specified translation instructions"],
-    ["--dryrun", "simulate translating and compare with existing translations"]
-  ]
-});
 
 // snap.js
 var import_core6 = require("@l10nmonster/core");
 var snap = class {
+  static help = {
+    description: "commits a snapshot of sources in normalized format.",
+    options: [
+      ["--maxSegments <number>", "threshold to break up snapshots into chunks"]
+    ]
+  };
   static async action(monsterManager, options) {
     console.log(`Taking a snapshot of sources...`);
     const numSources = await (0, import_core6.snapCmd)(monsterManager, options);
     console.log(`${numSources} sources committed`);
   }
 };
-__publicField(snap, "help", {
-  description: "commits a snapshot of sources in normalized format.",
-  options: [
-    ["--maxSegments <number>", "threshold to break up snapshots into chunks"]
-  ]
-});
 
 // status.js
 var import_fs2 = require("fs");
@@ -414,6 +409,14 @@ function printLeverage(leverage, detailed) {
   leverage.internalRepetitions && console.log(`    - untranslated repeated strings: ${leverage.internalRepetitions.toLocaleString()} (${leverage.internalRepetitionWords.toLocaleString()} words)`);
 }
 var status = class {
+  static help = {
+    description: "translation status of content.",
+    options: [
+      ["-l, --lang <language>", "only get status of target language"],
+      ["-a, --all", "show information for all projects, not just untranslated ones"],
+      ["--output <filename>", "write status to the specified file"]
+    ]
+  };
   static async action(monsterManager, options) {
     const limitToLang = options.lang;
     const all = Boolean(options.all);
@@ -442,21 +445,22 @@ ${consoleColor.bright}Language ${lang}${consoleColor.reset} (minimum quality: ${
         }
       }
     }
+    return status2;
   }
 };
-__publicField(status, "help", {
-  description: "translation status of content.",
-  options: [
-    ["-l, --lang <language>", "only get status of target language"],
-    ["-a, --all", "show information for all projects, not just untranslated ones"],
-    ["--output <filename>", "write status to the specified file"]
-  ]
-});
 
 // tmexport.js
 var fs = __toESM(require("fs/promises"), 1);
 var import_helpers2 = require("@l10nmonster/helpers");
 var tmexport = class {
+  static help = {
+    description: "export translation memory as a json job.",
+    options: [
+      ["-l, --lang <language>", "target language to export"],
+      ["--filter <filter>", "use the specified tu filter"],
+      ["--prjsplit", "split target files by project"]
+    ]
+  };
   static async action(monsterManager, options) {
     const prjsplit = options.prjsplit;
     console.log(`Exporting TM for ${consoleColor.bright}${options.lang ? options.lang : "all languages"}${consoleColor.reset}...`);
@@ -524,14 +528,6 @@ var tmexport = class {
     console.log(`Generated files: ${files.join(", ")}`);
   }
 };
-__publicField(tmexport, "help", {
-  description: "export translation memory as a json job.",
-  options: [
-    ["-l, --lang <language>", "target language to export"],
-    ["--filter <filter>", "use the specified tu filter"],
-    ["--prjsplit", "split target files by project"]
-  ]
-});
 
 // translate.js
 function computeDelta(currentTranslations, newTranslations) {
@@ -591,6 +587,15 @@ function printSummary(response) {
   }
 }
 var translate = class {
+  static help = {
+    description: "generate translated resources based on latest source and translations.",
+    arguments: [
+      ["[mode]", "commit all/changed/none of the translations", ["all", "delta", "dryrun"]]
+    ],
+    options: [
+      ["-l, --lang <language>", "target language to translate"]
+    ]
+  };
   static async action(monsterManager, options) {
     const mode = (options.mode ?? "all").toLowerCase();
     console.log(`Generating translated resources for ${consoleColor.bright}${options.lang ? options.lang : "all languages"}${consoleColor.reset}... (${mode} mode)`);
@@ -629,15 +634,6 @@ var translate = class {
     return response;
   }
 };
-__publicField(translate, "help", {
-  description: "generate translated resources based on latest source and translations.",
-  arguments: [
-    ["[mode]", "commit all/changed/none of the translations", ["all", "delta", "dryrun"]]
-  ],
-  options: [
-    ["-l, --lang <language>", "target language to translate"]
-  ]
-});
 
 // l10nCommands.js
 function createLogger2(verboseOption) {

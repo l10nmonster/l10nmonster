@@ -1553,11 +1553,17 @@ async function createMonsterManager(configPath, options) {
   }
   l10nmonster.baseDir = path3.dirname(configPath);
   l10nmonster.regression = options.regression;
-  l10nmonster.logger.verbose(`Requiring config: ${configPath}`);
   l10nmonster.prj = options.prj && options.prj.split(",");
   l10nmonster.arg = options.arg;
   l10nmonster.TU = TU;
-  const Config = require(configPath);
+  let Config;
+  if (options.config) {
+    Config = options.config;
+    l10nmonster.logger.verbose(`Using provided config constructor ${Config}`);
+  } else {
+    l10nmonster.logger.verbose(`Requiring config from: ${configPath}`);
+    Config = require(configPath);
+  }
   if (typeof Config !== "function") {
     throw "Invalid Config. Need to export a class constructor as a CJS module.exports";
   }

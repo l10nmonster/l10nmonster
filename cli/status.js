@@ -63,5 +63,6 @@ export class status {
                 }
             }
         }
+        return status;
     }
 }

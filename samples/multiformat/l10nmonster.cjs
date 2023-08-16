@@ -22,6 +22,7 @@ module.exports = class MultiFormtConfig {
             // defaultResourceFormat: ,
         },
     };
+
     formats = {
         MNFv1: {
             resourceFilter: new filters.MNFv1(),
@@ -52,12 +53,15 @@ module.exports = class MultiFormtConfig {
             defaultMessageFormat: 'html',
         }
     };
+
     jobStore = new stores.JsonJobStore({
         jobsDir: 'translationJobs',
     });
+
     snapStore = new stores.FsSnapStore({
         snapDir: 'snap',
     });
+
     translationProvider = new demo.PigLatinizer({
         quality: 2
     });
