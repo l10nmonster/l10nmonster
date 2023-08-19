@@ -1,7 +1,13 @@
 global.l10nmonster ??= {};
-const { utils, normalizers, xml } = require('@l10nmonster/helpers');
+const { utils, normalizers, xml, regex } = require('@l10nmonster/helpers');
 const ios = require('@l10nmonster/helpers-ios');
 const java = require('@l10nmonster/helpers-java');
+
+const locationsDecoder = regex.decoderMaker(
+    'locationsDecoder',
+    /(?<tag>.+)/g,
+    (groups) => ([{ t: 'x', v: '{0}', s: 'I live in ' }, groups.tag])
+);
 
 describe('Regex Encoder tests', () => {
 
@@ -73,6 +79,16 @@ describe('Regex Encoder tests', () => {
             { t: 'ex', v: '</color>' },
             ' when you use this credit to make a new booking.'
           ]);
+    });
+
+    test('locations decoder', async () => {
+        expect(utils.getNormalizedString(
+            `Venice`,
+            [ locationsDecoder ]
+        )).toMatchObject([
+            { s: 'I live in ', t: 'x', v: '{0}' },
+            "Venice"
+        ]);
     });
 
     test('normalizers.doublePercentEncoder', async () => {

@@ -6730,6 +6730,8 @@ var decoderMaker = function regexDecoderMaker(flag, regex, partDecoder) {
               v: decodedMatch,
               flag
             });
+          } else if (Array.isArray(decodedMatch)) {
+            expandedPart.push(...decodedMatch);
           } else {
             expandedPart.push(decodedMatch);
           }
