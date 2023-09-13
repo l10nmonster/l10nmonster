@@ -1,6 +1,9 @@
 {
 	"sourceLang": "en",
 	"targetLang": "zh-Hans",
+	"jobGuid": "tmexport_en_zh-Hans",
+	"updatedAt": "2022-05-30T00:00:00.000Z",
+	"status": "created",
 	"tus": [
 		{
 			"sid": "winter",
@@ -36,9 +39,5 @@
 			],
 			"rid": "app/src/main/res/values/strings.xml"
 		}
-	],
-	"translationProvider": "Grandfather",
-	"jobGuid": "xxx0xxx",
-	"status": "created",
-	"updatedAt": "2022-05-29T00:00:00.000Z"
+	]
 }

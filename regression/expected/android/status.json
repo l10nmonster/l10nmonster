@@ -1,0 +1,27 @@
+{
+	"lang": {
+		"zh-Hans": {
+			"leverage": {
+				"minimumQuality": 50,
+				"prjLeverage": {
+					"default": {
+						"translated": 2,
+						"translatedWords": 5,
+						"translatedByQ": {
+							"70": 2
+						},
+						"untranslated": 0,
+						"untranslatedChars": 0,
+						"untranslatedWords": 0,
+						"pending": 0,
+						"pendingWords": 0,
+						"internalRepetitions": 0,
+						"internalRepetitionWords": 0
+					}
+				},
+				"numSources": 1
+			}
+		}
+	},
+	"numSources": 1
+}

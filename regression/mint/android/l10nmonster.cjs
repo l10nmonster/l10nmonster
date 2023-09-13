@@ -20,7 +20,7 @@ module.exports = class TachiyomiConfig2 {
         });
         this.decoders = [ xml.entityDecoder, xml.CDataDecoder, android.spaceCollapser, android.escapesDecoder, xml.tagDecoder, android.phDecoder ];
         this.textEncoders = [ android.escapesEncoder, xml.entityEncoder ];
-        this.codeEncoders = [ normalizers.gatedEncoder(xml.entityEncoder, 'xmlCDataDecoder'), normalizers.defaultCodeEncoder  ];
+        this.codeEncoders = [ normalizers.gatedEncoder(xml.entityEncoder, 'xmlCDataDecoder') ];
         this.target = new adapters.FsTarget({
             targetPath: (lang, resourceId) => resourceId.replace('values', `values-${androidLangMapping[lang] || lang}`),
         });

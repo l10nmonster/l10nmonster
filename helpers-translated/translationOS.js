@@ -98,7 +98,7 @@ async function tosCombineFetchedTusOp(args, tuChunks) {
 }
 
 module.exports = class TranslationOS {
-    constructor({ baseURL, apiKey, serviceType, quality, tuDecorator, maxTranslationRequestSize, maxFetchSize, parallelism, requestOnly }) {
+    constructor({ baseURL, apiKey, costAttributionLabel, serviceType, quality, tuDecorator, maxTranslationRequestSize, maxFetchSize, parallelism, requestOnly }) {
         if ((apiKey && quality) === undefined) {
             throw 'You must specify apiKey, quality for TranslationOS';
         } else {
@@ -108,7 +108,8 @@ module.exports = class TranslationOS {
                 'user-agent': 'l10n.monster/TOS v0.1',
                 'Content-Type': 'application/json',
             }
-            this.serviceType = serviceType ?? 'premium',
+            this.serviceType = serviceType ?? 'premium';
+            this.costAttributionLabel = costAttributionLabel;
             this.quality = quality;
             this.tuDecorator = tuDecorator;
             this.maxTranslationRequestSize = maxTranslationRequestSize || 100;

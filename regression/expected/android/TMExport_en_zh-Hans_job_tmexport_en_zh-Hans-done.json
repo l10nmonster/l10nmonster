@@ -1,8 +1,8 @@
 {
 	"sourceLang": "en",
 	"targetLang": "zh-Hans",
-	"translationProvider": "Grandfather",
-	"jobGuid": "xxx0xxx",
+	"jobGuid": "tmexport_en_zh-Hans",
+	"updatedAt": "2022-05-30T00:00:00.000Z",
 	"status": "done",
 	"tus": [
 		{
@@ -11,16 +11,20 @@
 				"冬天就",
 				{
 					"t": "bx",
-					"v": "<b>"
+					"v": "<b>",
+					"v1": "a_bx_b"
 				},
 				"要来了",
 				{
 					"t": "ex",
-					"v": "</b>"
+					"v": "</b>",
+					"v1": "b_ex_b"
 				}
 			],
 			"ts": 1,
-			"q": 70
+			"q": 70,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		},
 		{
 			"guid": "Kexjq-2WakTgEVK2nZbiSlWPNJ_dQ1_Cll0vWPnNzVg",
@@ -28,17 +32,21 @@
 				"房子: ",
 				{
 					"t": "x",
-					"v": "%1$s"
+					"v": "%1$s",
+					"v1": "a_x_1"
 				},
 				" 座右铭: ",
 				{
 					"t": "x",
-					"v": "%2$s"
+					"v": "%2$s",
+					"v1": "b_x_2"
 				}
 			],
 			"ts": 1,
-			"q": 70
+			"q": 70,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		}
 	],
-	"updatedAt": "2022-05-29T00:00:00.000Z"
+	"translationProvider": "TMExport"
 }
