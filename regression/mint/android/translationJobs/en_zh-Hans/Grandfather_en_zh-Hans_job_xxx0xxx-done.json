@@ -1,0 +1,27 @@
+{
+	"sourceLang": "en",
+	"targetLang": "zh-Hans",
+	"translationProvider": "Grandfather",
+	"jobGuid": "xxx0xxx",
+	"status": "done",
+	"tus": [
+		{
+			"guid": "Mi8CGeTkNxfnO-OshrNPE4_FrkVbQajzADA09g5O2Zk",
+			"ntgt": [
+				"冬天就",
+				{
+					"t": "bx",
+					"v": "<b>"
+				},
+				"要来了",
+				{
+					"t": "ex",
+					"v": "</b>"
+				}
+			],
+			"ts": 1,
+			"q": 70
+		}
+	],
+	"updatedAt": "2022-05-29T00:00:00.000Z"
+}
