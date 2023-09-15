@@ -46,6 +46,51 @@
 			"q": 70,
 			"jobGuid": "xxx0xxx",
 			"translationProvider": "Grandfather"
+		},
+		{
+			"guid": "DZAA56iaQf0fJvMG8fv3FgBCiGkUGweBDBEJunOp5zw",
+			"ntgt": [
+				"I know 100%%"
+			],
+			"ts": 1,
+			"q": 70,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
+		},
+		{
+			"guid": "oRdDrqs0lf4rPJdRA5ut9PI_ix2KZmBaqiDiyAnT9XU",
+			"ntgt": [
+				"Translation-Frozen: ",
+				{
+					"t": "bx",
+					"v": "<strike>",
+					"v1": "a_bx_strike"
+				},
+				{
+					"t": "x",
+					"v": "%1$s",
+					"v1": "b_x_1"
+				},
+				{
+					"t": "ex",
+					"v": "</strike>",
+					"v1": "c_ex_strike"
+				}
+			],
+			"ts": 1,
+			"q": 70,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
+		},
+		{
+			"guid": "GxywI1j2v6A2Bq8oomjIkF6I2KphYzxSgKDNxWCHbJM",
+			"ntgt": [
+				"Translation-The translation has a nbsp, source doesn't"
+			],
+			"ts": 1,
+			"q": 70,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "Grandfather"
 		}
 	],
 	"translationProvider": "TMExport"

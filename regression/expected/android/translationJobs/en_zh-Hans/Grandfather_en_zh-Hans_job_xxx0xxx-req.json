@@ -35,6 +35,59 @@
 				}
 			],
 			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"sid": "nothing",
+			"guid": "DZAA56iaQf0fJvMG8fv3FgBCiGkUGweBDBEJunOp5zw",
+			"nsrc": [
+				"I know 100%%"
+			],
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"sid": "house",
+			"guid": "Kexjq-2WakTgEVK2nZbiSlWPNJ_dQ1_Cll0vWPnNzVg",
+			"nsrc": [
+				"house: ",
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				" motto: ",
+				{
+					"t": "x",
+					"v": "%2$s"
+				}
+			],
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"sid": "frozen",
+			"guid": "oRdDrqs0lf4rPJdRA5ut9PI_ix2KZmBaqiDiyAnT9XU",
+			"nsrc": [
+				"Frozen: ",
+				{
+					"t": "bx",
+					"v": "<strike>"
+				},
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				{
+					"t": "ex",
+					"v": "</strike>"
+				}
+			],
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"sid": "nbsp",
+			"guid": "GxywI1j2v6A2Bq8oomjIkF6I2KphYzxSgKDNxWCHbJM",
+			"nsrc": [
+				"The translation has a nbsp, source doesn't"
+			],
+			"rid": "app/src/main/res/values/strings.xml"
 		}
 	],
 	"translationProvider": "Grandfather",
