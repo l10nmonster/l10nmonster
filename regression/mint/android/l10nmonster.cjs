@@ -9,7 +9,7 @@ const androidLangMapping = {
 
 module.exports = class TachiyomiConfig2 {
     sourceLang = 'en';
-    targetLangs = [ 'zh-Hans' ];
+    targetLangs = [ 'piggy' ];
 
     constructor() {
         this.source = new adapters.FsSource({
@@ -28,6 +28,10 @@ module.exports = class TachiyomiConfig2 {
             jobsDir: 'translationJobs',
         });
         this.translationProviders = {
+            PigLatinizer: {
+                translator: new demo.PigLatinizer({ quality: 1 }),
+                pairs: { en: [ 'piggy' ]},
+            },
             Grandfather: {
                 translator: new translators.Grandfather({
                     quality: 70,

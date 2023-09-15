@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="base">Base: <strike>%1$s</strike></string>
     <string name="winter"><![CDATA[Winter is <b>coming</b>]]></string>
+    <string name="frozen">Frozen: <strike>%1$s</strike></string>
     <string name="house">house: %1$s motto: %2$s</string>
     <string name="nothing"><![CDATA[I know 100%%]]></string>
     <string name="everything"><![CDATA[I know<strong><font color="%1$s">%2$s</font>%%</strong>]]></string>
-    <string name="frozen">Frozen: <strike>%1$s</strike></string>
-    <string name="nbsp">The translation has a nbsp, source doesn't</string>
 </resources>

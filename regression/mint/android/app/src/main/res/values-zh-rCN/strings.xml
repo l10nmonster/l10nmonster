@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-	<string name="winter">冬天就&lt;b>要来了&lt;/b></string>
-	<string name="house">房子: %1$s 座右铭: %2$s</string>
-	<string name="nothing">I know 100%%</string>
-    <string name="everything">I know<strong><font color="%1$s">%2$s</font>%%</strong></string>
-    <string name="frozen">Translation-Frozen: <strike>%1$s</strike></string>
-	<string name="nbsp">Translation-The translation has a nbsp, source doesn't</string>
-</resources>

@@ -1,18 +1,18 @@
 {
 	"lang": {
-		"zh-Hans": {
+		"piggy": {
 			"leverage": {
-				"minimumQuality": 50,
+				"minimumQuality": 1,
 				"prjLeverage": {
 					"default": {
-						"translated": 5,
-						"translatedWords": 16,
+						"translated": 6,
+						"translatedWords": 12,
 						"translatedByQ": {
-							"70": 5
+							"1": 6
 						},
-						"untranslated": 1,
-						"untranslatedChars": 8,
-						"untranslatedWords": 2,
+						"untranslated": 0,
+						"untranslatedChars": 0,
+						"untranslatedWords": 0,
 						"pending": 0,
 						"pendingWords": 0,
 						"internalRepetitions": 0,

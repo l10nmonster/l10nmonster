@@ -1,10 +1,30 @@
 {
 	"sourceLang": "en",
-	"targetLang": "zh-Hans",
-	"jobGuid": "tmexport_en_zh-Hans",
+	"targetLang": "piggy",
+	"jobGuid": "tmexport_en_piggy",
 	"updatedAt": "2022-05-30T00:00:00.000Z",
 	"status": "created",
 	"tus": [
+		{
+			"sid": "base",
+			"guid": "w0UxEP41XoniWJO96xoPAV78tzMHe-mppZGKdvLInIU",
+			"nsrc": [
+				"Base: ",
+				{
+					"t": "bx",
+					"v": "<strike>"
+				},
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				{
+					"t": "ex",
+					"v": "</strike>"
+				}
+			],
+			"rid": "app/src/main/res/values/strings.xml"
+		},
 		{
 			"sid": "winter",
 			"guid": "Mi8CGeTkNxfnO-OshrNPE4_FrkVbQajzADA09g5O2Zk",
@@ -18,6 +38,26 @@
 				{
 					"t": "ex",
 					"v": "</b>"
+				}
+			],
+			"rid": "app/src/main/res/values/strings.xml"
+		},
+		{
+			"sid": "frozen",
+			"guid": "oRdDrqs0lf4rPJdRA5ut9PI_ix2KZmBaqiDiyAnT9XU",
+			"nsrc": [
+				"Frozen: ",
+				{
+					"t": "bx",
+					"v": "<strike>"
+				},
+				{
+					"t": "x",
+					"v": "%1$s"
+				},
+				{
+					"t": "ex",
+					"v": "</strike>"
 				}
 			],
 			"rid": "app/src/main/res/values/strings.xml"
@@ -48,30 +88,31 @@
 			"rid": "app/src/main/res/values/strings.xml"
 		},
 		{
-			"sid": "frozen",
-			"guid": "oRdDrqs0lf4rPJdRA5ut9PI_ix2KZmBaqiDiyAnT9XU",
+			"sid": "everything",
+			"guid": "I03QeYafhq_YEbZNosi-sFm13oZw6d1X0npVhcuEl8U",
 			"nsrc": [
-				"Frozen: ",
+				"I know",
 				{
 					"t": "bx",
-					"v": "<strike>"
+					"v": "<strong>"
+				},
+				{
+					"t": "bx",
+					"v": "<font color=\"%1$s\">"
 				},
 				{
 					"t": "x",
-					"v": "%1$s"
+					"v": "%2$s"
 				},
 				{
 					"t": "ex",
-					"v": "</strike>"
+					"v": "</font>"
+				},
+				"%%",
+				{
+					"t": "ex",
+					"v": "</strong>"
 				}
-			],
-			"rid": "app/src/main/res/values/strings.xml"
-		},
-		{
-			"sid": "nbsp",
-			"guid": "GxywI1j2v6A2Bq8oomjIkF6I2KphYzxSgKDNxWCHbJM",
-			"nsrc": [
-				"The translation has a nbsp, source doesn't"
 			],
 			"rid": "app/src/main/res/values/strings.xml"
 		}
