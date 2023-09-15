@@ -566,9 +566,10 @@ ${JSON.stringify(entry.ntgt)}`;
     }
     const sourceLookup = Object.fromEntries(resHandle.segments.map((seg) => [seg.sid, seg]));
     const translator = async (sid, str) => {
+      const segmentFlags = { ...flags };
       const normalizedSource = sourceLookup[sid];
       if (normalizedSource) {
-        const segToTranslate = this.#populateGuid(resHandle.id, str, normalizedSource.mf, { sid }, flags);
+        const segToTranslate = this.#populateGuid(resHandle.id, str, normalizedSource.mf, { sid }, segmentFlags);
         if (normalizedSource.guid !== segToTranslate.guid) {
           l10nmonster.logger.verbose(`Normalized source outdated: ${normalizedSource.gstr}
 ${segToTranslate.gstr}`);
@@ -580,7 +581,7 @@ ${segToTranslate.gstr}`);
         }
         try {
           const normalizedTranslation = this.#translateWithTMEntry(normalizedSource.nstr, entry);
-          return this.#encodeTranslatedSegment(normalizedTranslation, normalizedSource.mf, flags);
+          return this.#encodeTranslatedSegment(normalizedTranslation, normalizedSource.mf, segmentFlags);
         } catch (e) {
           l10nmonster.logger.verbose(`Problem translating ${resHandle.id}, ${sid}, ${str} to ${tm.targetLang}: ${e.stack ?? e}`);
           return void 0;

@@ -140,6 +140,7 @@ module.exports = class TranslationOS {
                 'target_languages': [ jobRequest.targetLang ],
                 // 'content_type': 'text/html',
                 'service_type': this.serviceType,
+                'cost_attribution_label': this.costAttributionLabel,
                 'dashboard_query_labels': [],
             };
             notes?.screenshot && (tosTU.context.screenshot = notes.screenshot);

@@ -23,7 +23,8 @@ export const doublePercentDecoder = decoderMaker(
 export function gatedEncoder(encoder, ...flagNames) {
     const fn = function gatedEncoder(str, flags = {}) {
         const run = flagNames.reduce((run, flag) => run || (flag.charAt(0) === '!' ? !flags[flag.substring(1)] : flags[flag]), false);
-        return run ? encoder(str, flags) : typeof str === 'string' ? str : str.v;
+        // eslint-disable-next-line no-nested-ternary
+        return run ? encoder(str, flags) : (typeof str === 'string' ? str : str.v);
     };
     Object.defineProperty(fn, 'name', { value: `gatedEncoder_${flagNames.join('_')}` });
     return fn;
