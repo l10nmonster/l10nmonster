@@ -54,6 +54,7 @@ export const decoderMaker = function regexDecoderMaker(flag, regex, partDecoder)
 // Generic pluggable encoder based on a regex and a mapping table or function
 export const encoderMaker = function regexEncoderMaker(name, regex, matchMap) {
     const fn = function encoder(str, flags = {}) {
+        str = typeof str === 'string' ? str : str.v;
         return str.replaceAll(regex, (match, ...capture) => {
             const matchToReplace = capture.reduce((p,c) => p ?? c);
             return typeof matchMap === 'function' ? matchMap(match, flags, ...capture) : match.replace(matchToReplace, matchMap[matchToReplace]);

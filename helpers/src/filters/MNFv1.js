@@ -21,7 +21,7 @@ export class MNFv1 {
             const { nstr, gstr, ...rawSegment } = seg;
             translatedStr && translatedRawSegments.push({
                 ...rawSegment,
-                str: translatedStr.str,
+                ...translatedStr,
             });
         });
         return JSON.stringify({ ...resHandle, segments: translatedRawSegments }, null, '\t');

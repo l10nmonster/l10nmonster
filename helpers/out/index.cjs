@@ -6679,7 +6679,7 @@ var MNFv1 = class {
       const { nstr, gstr, ...rawSegment } = seg;
       translatedStr && translatedRawSegments.push({
         ...rawSegment,
-        str: translatedStr.str
+        ...translatedStr
       });
     });
     return JSON.stringify({ ...resHandle, segments: translatedRawSegments }, null, "	");
@@ -6755,6 +6755,7 @@ var decoderMaker = function regexDecoderMaker(flag, regex, partDecoder) {
 };
 var encoderMaker = function regexEncoderMaker(name, regex, matchMap) {
   const fn = function encoder(str, flags = {}) {
+    str = typeof str === "string" ? str : str.v;
     return str.replaceAll(regex, (match, ...capture) => {
       const matchToReplace = capture.reduce((p, c) => p ?? c);
       return typeof matchMap === "function" ? matchMap(match, flags, ...capture) : match.replace(matchToReplace, matchMap[matchToReplace]);
@@ -6780,7 +6781,7 @@ var doublePercentDecoder = decoderMaker(
 function gatedEncoder(encoder, ...flagNames) {
   const fn = function gatedEncoder2(str, flags = {}) {
     const run = flagNames.reduce((run2, flag) => run2 || (flag.charAt(0) === "!" ? !flags[flag.substring(1)] : flags[flag]), false);
-    return run ? encoder(str, flags) : str;
+    return run ? encoder(str, flags) : typeof str === "string" ? str : str.v;
   };
   Object.defineProperty(fn, "name", { value: `gatedEncoder_${flagNames.join("_")}` });
   return fn;
@@ -7688,4 +7689,3 @@ queue-microtask/index.js:
 run-parallel/index.js:
   (*! run-parallel. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> *)
 */
-//# sourceMappingURL=index.cjs.map

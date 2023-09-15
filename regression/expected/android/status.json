@@ -1,0 +1,27 @@
+{
+	"lang": {
+		"piggy": {
+			"leverage": {
+				"minimumQuality": 1,
+				"prjLeverage": {
+					"default": {
+						"translated": 6,
+						"translatedWords": 12,
+						"translatedByQ": {
+							"1": 6
+						},
+						"untranslated": 0,
+						"untranslatedChars": 0,
+						"untranslatedWords": 0,
+						"pending": 0,
+						"pendingWords": 0,
+						"internalRepetitions": 0,
+						"internalRepetitionWords": 0
+					}
+				},
+				"numSources": 1
+			}
+		}
+	},
+	"numSources": 1
+}
