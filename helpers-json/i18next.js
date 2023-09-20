@@ -70,7 +70,7 @@ exports.Filter = class I18nextFilter {
                 }
             }
         }
-        return JSON.stringify(flat.unflatten(flatResource), null, 2);
+        return JSON.stringify(flat.unflatten(flatResource), null, 2) + '\n';
     }
 }
 
