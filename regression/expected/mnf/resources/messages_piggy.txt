@@ -1,4 +1,4 @@
-ticketCostCovered=[{0,number,integer}% icket-tay ostcay overedcay-piggy]
+ticketCostCovered=[{0,number,integer}%% icket-tay ostcay overedcay-piggy]
 ticketCostCovered=[{0,number,integer}% icket-tay ostcay overedcay-piggy]
 badge.mostPopular=[Ostmay Opularpay-piggy]
 badge.percentDiscount=[{0}% Offyay!-piggy]
