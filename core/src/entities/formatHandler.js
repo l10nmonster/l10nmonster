@@ -153,25 +153,20 @@ export class FormatHandler {
                     });
                 }
             }
-            const subresGuids = new Set(guidsToSkip.flat(1));
-            const translations = {};
-            for (const seg of resHandle.segments) {
-                // we need to skip subresource segments because we don't have their normalizers
-                if (!subresGuids.has(seg.guid)) {
-                    const entry = tm.getEntryByGuid(seg.guid);
-                    try {
-                        const nstr = this.#translateWithTMEntry(seg.nstr, entry);
-                        if (nstr !== undefined) {
-                            const segmentFlags = Object.fromEntries((seg.flags ?? []).map(f => [ f, true ]));
-                            const str =this.#encodeTranslatedSegment(nstr, seg.mf, { ...flags, ...segmentFlags });
-                            translations[seg.guid] = { nstr, str };
-                        }
-                    } catch(e) {
-                        l10nmonster.logger.verbose(`Problem translating guid ${seg.guid} to ${tm.targetLang}: ${e.stack ?? e}`);
+            const translator = async (seg) => {
+                const entry = tm.getEntryByGuid(seg.guid);
+                try {
+                    const nstr = this.#translateWithTMEntry(seg.nstr, entry);
+                    if (nstr !== undefined) {
+                        const segmentFlags = Object.fromEntries((seg.flags ?? []).map(f => [ f, true ]));
+                        const str =this.#encodeTranslatedSegment(nstr, seg.mf, { ...flags, ...segmentFlags });
+                        return { nstr, str };
                     }
+                } catch(e) {
+                    l10nmonster.logger.verbose(`Problem translating guid ${seg.guid} to ${tm.targetLang}: ${e.stack ?? e}`);
                 }
-            }
-            return this.#resourceFilter.generateResource({ ...resHandle, translations, subresources });
+            };
+            return this.#resourceFilter.generateResource({ ...resHandle, translator, subresources });
         }
 
         // if generator is not available, use translator-based resource transformation

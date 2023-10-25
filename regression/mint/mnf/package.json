@@ -1,8 +1,14 @@
 {
     "name": "mnf",
     "dependencies": {
+<<<<<<< HEAD
         "@l10nmonster/helpers": "../../../helpers",
         "@l10nmonster/helpers-demo": "../../../helpers-demo",
         "@l10nmonster/helpers-java": "../../../helpers-java"
+=======
+        "@l10nmonster/helpers": "^1",
+        "@l10nmonster/helpers-demo": "^1",
+        "@l10nmonster/helpers-java": "^1"
+>>>>>>> upstream/v2
     }
 }

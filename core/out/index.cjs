@@ -531,8 +531,8 @@ ${JSON.stringify(entry.ntgt)}`;
           }
           const { id, guids, ...subresHandle } = subres;
           guidsToSkip.push(guids);
-          const subresGuids2 = new Set(guids);
-          const subresSegments = resHandle.segments.filter((seg) => subresGuids2.has(seg.guid));
+          const subresGuids = new Set(guids);
+          const subresSegments = resHandle.segments.filter((seg) => subresGuids.has(seg.guid));
           const translatedSubres = await subFormat.generateTranslatedResource({
             ...resHandle,
             ...subresHandle,
@@ -545,24 +545,20 @@ ${JSON.stringify(entry.ntgt)}`;
           });
         }
       }
-      const subresGuids = new Set(guidsToSkip.flat(1));
-      const translations = {};
-      for (const seg of resHandle.segments) {
-        if (!subresGuids.has(seg.guid)) {
-          const entry = tm.getEntryByGuid(seg.guid);
-          try {
-            const nstr = this.#translateWithTMEntry(seg.nstr, entry);
-            if (nstr !== void 0) {
-              const segmentFlags = Object.fromEntries((seg.flags ?? []).map((f) => [f, true]));
-              const str = this.#encodeTranslatedSegment(nstr, seg.mf, { ...flags, ...segmentFlags });
-              translations[seg.guid] = { nstr, str };
-            }
-          } catch (e) {
-            l10nmonster.logger.verbose(`Problem translating guid ${seg.guid} to ${tm.targetLang}: ${e.stack ?? e}`);
+      const translator2 = async (seg) => {
+        const entry = tm.getEntryByGuid(seg.guid);
+        try {
+          const nstr = this.#translateWithTMEntry(seg.nstr, entry);
+          if (nstr !== void 0) {
+            const segmentFlags = Object.fromEntries((seg.flags ?? []).map((f) => [f, true]));
+            const str = this.#encodeTranslatedSegment(nstr, seg.mf, { ...flags, ...segmentFlags });
+            return { nstr, str };
           }
+        } catch (e) {
+          l10nmonster.logger.verbose(`Problem translating guid ${seg.guid} to ${tm.targetLang}: ${e.stack ?? e}`);
         }
-      }
-      return this.#resourceFilter.generateResource({ ...resHandle, translations, subresources });
+      };
+      return this.#resourceFilter.generateResource({ ...resHandle, translator: translator2, subresources });
     }
     const sourceLookup = Object.fromEntries(resHandle.segments.map((seg) => [seg.sid, seg]));
     const translator = async (sid, str) => {

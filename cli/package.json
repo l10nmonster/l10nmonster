@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/cli",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Continuous localization for the rest of us",
     "bin": {
         "l10n": "out/l10n.cjs"

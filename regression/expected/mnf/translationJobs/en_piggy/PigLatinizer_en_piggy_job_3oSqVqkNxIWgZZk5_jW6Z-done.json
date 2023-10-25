@@ -1,60 +1,48 @@
 {
 	"sourceLang": "en",
 	"targetLang": "piggy",
-	"jobGuid": "tmexport_en_piggy",
-	"updatedAt": "2022-05-30T00:00:00.000Z",
+	"translationProvider": "PigLatinizer",
+	"jobGuid": "3oSqVqkNxIWgZZk5_jW6Z",
 	"status": "done",
 	"tus": [
 		{
 			"guid": "fyTrJmEgw1PeD4zF1zl1jDP03u7HaPagrETEtI5X4Ks",
-<<<<<<< HEAD
-			"ts": 1,
-=======
 			"ts": 1698216807727,
->>>>>>> upstream/v2
 			"ntgt": [
 				"[",
 				{
 					"t": "x",
-					"v": "{0,number,integer}",
-					"v1": "a_x_0"
+					"v": "{0,number,integer}"
 				},
 				"% icket-tay ostcay overedcay",
 				"-piggy]"
 			],
-			"q": 1,
-			"jobGuid": "xxx0xxx",
-			"translationProvider": "PigLatinizer"
+			"q": 1
 		},
 		{
 			"guid": "4AB-hsdRgU55c_mtivWahRdht6IMp9UTxUP0gI0JMFA",
-			"ts": 1,
+			"ts": 1698216807727,
 			"ntgt": [
 				"[",
 				"Ostmay Opularpay",
 				"-piggy]"
 			],
-			"q": 1,
-			"jobGuid": "xxx0xxx",
-			"translationProvider": "PigLatinizer"
+			"q": 1
 		},
 		{
 			"guid": "q2gOhVROIqrDb6s1UEP8kmlEeKhctYT35JskRBB_Bm0",
-			"ts": 1,
+			"ts": 1698216807727,
 			"ntgt": [
 				"[",
 				{
 					"t": "x",
-					"v": "{0}",
-					"v1": "a_x_0"
+					"v": "{0}"
 				},
 				"% Offyay!",
 				"-piggy]"
 			],
-			"q": 1,
-			"jobGuid": "xxx0xxx",
-			"translationProvider": "PigLatinizer"
+			"q": 1
 		}
 	],
-	"translationProvider": "TMExport"
+	"updatedAt": "2023-10-25T06:53:27.727Z"
 }
