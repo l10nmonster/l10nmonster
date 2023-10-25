@@ -34,6 +34,9 @@ exports.Filter = class I18nextFilter {
 
     async parseResource({ resource }) {
         const segments = [];
+        if (!resource) {
+            return { segments };
+        }
         const [ parsedResource, notes ] = parseResourceAnnotations(JSON.parse(resource), this.enableArbAnnotations);
         for (const [key, value] of parsedResource) {
             let seg = { sid: key, str: value };
@@ -70,7 +73,7 @@ exports.Filter = class I18nextFilter {
                 }
             }
         }
-        return JSON.stringify(flat.unflatten(flatResource), null, 2);
+        return JSON.stringify(flat.unflatten(flatResource), null, 2) + '\n';
     }
 }
 
