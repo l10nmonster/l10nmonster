@@ -13,10 +13,10 @@ export class MNFv1 {
 
     // convert a normalized resource in the source language and make it raw in the target language
     // eslint-disable-next-line no-unused-vars
-    async generateResource({ translations, segments, raw, ...resHandle }) {
+    async generateResource({ translator, segments, raw, ...resHandle }) {
         const translatedRawSegments = [];
-        segments.forEach(seg => {
-            const translatedStr = translations[seg.guid];
+        await segments.forEach(async seg => {
+            const translatedStr = await translator(seg);
             // eslint-disable-next-line no-unused-vars
             const { nstr, gstr, ...rawSegment } = seg;
             translatedStr && translatedRawSegments.push({

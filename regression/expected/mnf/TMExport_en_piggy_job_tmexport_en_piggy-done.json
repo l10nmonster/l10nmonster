@@ -1,0 +1,56 @@
+{
+	"sourceLang": "en",
+	"targetLang": "piggy",
+	"jobGuid": "tmexport_en_piggy",
+	"updatedAt": "2022-05-30T00:00:00.000Z",
+	"status": "done",
+	"tus": [
+		{
+			"guid": "fyTrJmEgw1PeD4zF1zl1jDP03u7HaPagrETEtI5X4Ks",
+			"ts": 1698216807727,
+			"ntgt": [
+				"[",
+				{
+					"t": "x",
+					"v": "{0,number,integer}",
+					"v1": "a_x_0"
+				},
+				"% icket-tay ostcay overedcay",
+				"-piggy]"
+			],
+			"q": 1,
+			"jobGuid": "3oSqVqkNxIWgZZk5_jW6Z",
+			"translationProvider": "PigLatinizer"
+		},
+		{
+			"guid": "4AB-hsdRgU55c_mtivWahRdht6IMp9UTxUP0gI0JMFA",
+			"ts": 1698216807727,
+			"ntgt": [
+				"[",
+				"Ostmay Opularpay",
+				"-piggy]"
+			],
+			"q": 1,
+			"jobGuid": "3oSqVqkNxIWgZZk5_jW6Z",
+			"translationProvider": "PigLatinizer"
+		},
+		{
+			"guid": "q2gOhVROIqrDb6s1UEP8kmlEeKhctYT35JskRBB_Bm0",
+			"ts": 1698216807727,
+			"ntgt": [
+				"[",
+				{
+					"t": "x",
+					"v": "{0}",
+					"v1": "a_x_0"
+				},
+				"% Offyay!",
+				"-piggy]"
+			],
+			"q": 1,
+			"jobGuid": "3oSqVqkNxIWgZZk5_jW6Z",
+			"translationProvider": "PigLatinizer"
+		}
+	],
+	"translationProvider": "TMExport"
+}
