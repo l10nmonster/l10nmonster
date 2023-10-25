@@ -29,9 +29,9 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-// node_modules/words-count/dist/index.js
+// ../node_modules/words-count/dist/index.js
 var require_dist = __commonJS({
-  "node_modules/words-count/dist/index.js"(exports, module2) {
+  "../node_modules/words-count/dist/index.js"(exports, module2) {
     !function(e, t) {
       "object" == typeof exports && "object" == typeof module2 ? module2.exports = t() : "function" == typeof define && define.amd ? define("words-count", [], t) : "object" == typeof exports ? exports["words-count"] = t() : e["words-count"] = t();
     }(exports, function() {
@@ -1499,7 +1499,7 @@ function cleanupTU(entry) {
   }
   return cleanTU;
 }
-var TU = class {
+var TU = class _TU {
   constructor(entry, isSource, isTarget) {
     if (isSource && (!entry.guid || !entry.rid || !entry.sid || !Array.isArray(entry.nsrc))) {
       throw `Source TU must have guid, rid, sid, nsrc: ${JSON.stringify(entry)}`;
@@ -1516,15 +1516,15 @@ var TU = class {
   }
   // returns a TU with only the source string and target missing
   static asSource(obj) {
-    return new TU(cleanupTU(obj), true, false);
+    return new _TU(cleanupTU(obj), true, false);
   }
   // returns a TU with both source and target string
   static asTarget(obj) {
-    return new TU(cleanupTU(obj), false, true);
+    return new _TU(cleanupTU(obj), false, true);
   }
   // returns a TU with both source and target string
   static asPair(obj) {
-    return new TU(cleanupTU(obj), true, true);
+    return new _TU(cleanupTU(obj), true, true);
   }
   // converts a segments into a source TU
   static fromSegment(res, segment) {
@@ -1537,7 +1537,7 @@ var TU = class {
     if (res.prj !== void 0) {
       tu.prj = res.prj;
     }
-    return TU.asSource(tu);
+    return _TU.asSource(tu);
   }
 };
 

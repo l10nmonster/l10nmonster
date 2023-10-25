@@ -4,7 +4,6 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
@@ -29,10 +28,6 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var __publicField = (obj, key, value) => {
-  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-  return value;
-};
 
 // ../node_modules/merge2/index.js
 var require_merge2 = __commonJS({
@@ -6027,7 +6022,7 @@ var import_node_path = __toESM(require("node:path"), 1);
 var import_fast_glob = __toESM(require_out4(), 1);
 var import_ignore = __toESM(require_ignore(), 1);
 
-// node_modules/slash/index.js
+// ../node_modules/slash/index.js
 function slash(path7) {
   const isExtendedLengthPath = /^\\\\\?\\/.test(path7);
   const hasNonAscii = /[^\u0000-\u0080]+/.test(path7);
@@ -6091,11 +6086,12 @@ var getIsIgnoredPredicate = (files, cwd) => {
 };
 var normalizeOptions = (options = {}) => ({
   cwd: toPath(options.cwd) || import_node_process.default.cwd(),
-  suppressErrors: Boolean(options.suppressErrors)
+  suppressErrors: Boolean(options.suppressErrors),
+  deep: typeof options.deep === "number" ? options.deep : Number.POSITIVE_INFINITY
 });
 var isIgnoredByIgnoreFiles = async (patterns, options) => {
-  const { cwd, suppressErrors } = normalizeOptions(options);
-  const paths = await (0, import_fast_glob.default)(patterns, { cwd, suppressErrors, ...ignoreFilesGlobOptions });
+  const { cwd, suppressErrors, deep } = normalizeOptions(options);
+  const paths = await (0, import_fast_glob.default)(patterns, { cwd, suppressErrors, deep, ...ignoreFilesGlobOptions });
   const files = await Promise.all(
     paths.map(async (filePath) => ({
       filePath,
@@ -6105,8 +6101,8 @@ var isIgnoredByIgnoreFiles = async (patterns, options) => {
   return getIsIgnoredPredicate(files, cwd);
 };
 var isIgnoredByIgnoreFilesSync = (patterns, options) => {
-  const { cwd, suppressErrors } = normalizeOptions(options);
-  const paths = import_fast_glob.default.sync(patterns, { cwd, suppressErrors, ...ignoreFilesGlobOptions });
+  const { cwd, suppressErrors, deep } = normalizeOptions(options);
+  const paths = import_fast_glob.default.sync(patterns, { cwd, suppressErrors, deep, ...ignoreFilesGlobOptions });
   const files = paths.map((filePath) => ({
     filePath,
     content: import_node_fs.default.readFileSync(filePath, "utf8")
@@ -6141,9 +6137,9 @@ var checkCwdOption = (options) => {
 };
 var normalizeOptions2 = (options = {}) => {
   options = {
-    ignore: [],
-    expandDirectories: true,
     ...options,
+    ignore: options.ignore || [],
+    expandDirectories: options.expandDirectories === void 0 ? true : options.expandDirectories,
     cwd: toPath(options.cwd)
   };
   checkCwdOption(options);
@@ -6366,6 +6362,7 @@ __export(analyzers_exports, {
 
 // src/analyzers/duplicateSource.js
 var DuplicateSource = class {
+  static help = "find duplicate text in source that could be leveraged as qualified/unqualified";
   constructor() {
     this.qualifiedMatches = {};
     this.unqualifiedMatches = {};
@@ -6394,10 +6391,11 @@ var DuplicateSource = class {
     return analysis;
   }
 };
-__publicField(DuplicateSource, "help", "find duplicate text in source that could be leveraged as qualified/unqualified");
 
 // src/analyzers/smellySource.js
 var SmellySource = class {
+  static helpParams = "[smellyRegex]";
+  static help = "find all source segments that match the regular expression";
   constructor(smellyRegex) {
     this.smelly = [];
     this.smellyRegex = smellyRegex ? new RegExp(smellyRegex) : /[^a-zA-Z 0-9.,;:!()\-'?/+’“”]/;
@@ -6415,8 +6413,6 @@ var SmellySource = class {
     };
   }
 };
-__publicField(SmellySource, "helpParams", "[smellyRegex]");
-__publicField(SmellySource, "help", "find all source segments that match the regular expression");
 
 // src/analyzers/textExpansionSummary.js
 function mean(numArray, position) {
@@ -6427,6 +6423,7 @@ function stdDev(numArray, position) {
   return Math.sqrt(numArray.reduce((s, n) => s + (n[position] - meanValue) ** 2, 0) / (numArray.length - 1));
 }
 var TextExpansionSummary = class {
+  static help = "compute average lengths, growth, and standard deviation based on TM contents";
   constructor() {
     this.langStats = {};
   }
@@ -6455,12 +6452,13 @@ var TextExpansionSummary = class {
     };
   }
 };
-__publicField(TextExpansionSummary, "help", "compute average lengths, growth, and standard deviation based on TM contents");
 
 // src/analyzers/findByExpansion.js
 var import_fs3 = require("fs");
 var makeCSVCompatibleString = (nstr) => nstr.map((e) => typeof e === "string" ? e : "").join("").replaceAll(",", "").replaceAll("\n", " ");
 var FindByExpansion = class {
+  static helpParams = "<average|csvFile> <minDelta|sigmas>";
+  static help = "find in TM all translations that grew more than minDelta/sigma multiples of the average";
   constructor(average, minDelta) {
     this.foundTus = [];
     this.average = Number(average);
@@ -6501,8 +6499,6 @@ var FindByExpansion = class {
     };
   }
 };
-__publicField(FindByExpansion, "helpParams", "<average|csvFile> <minDelta|sigmas>");
-__publicField(FindByExpansion, "help", "find in TM all translations that grew more than minDelta/sigma multiples of the average");
 
 // src/analyzers/mismatchedTags.js
 function nestingIsValid(normalizedString) {
@@ -6526,6 +6522,7 @@ function makeCSVCompatibleString2(nstr) {
   return nstr.map((e) => typeof e === "string" ? e : `{${e.t}}`).join("").replaceAll(",", "").replaceAll("\n", " ");
 }
 var MismatchedTags = class {
+  static help = "find mismatched open/close placeholders in translations";
   constructor() {
     this.foundTus = [];
   }
@@ -6547,13 +6544,14 @@ var MismatchedTags = class {
     };
   }
 };
-__publicField(MismatchedTags, "help", "find mismatched open/close placeholders in translations");
 
 // src/analyzers/contentExport.js
 function makeCSVCompatibleString3(nstr) {
   return nstr.map((e) => typeof e === "string" ? e : `{${e?.t}}`).join("").replaceAll(",", "").replaceAll("\n", " ");
 }
 var FindInTarget = class {
+  static helpParams = "[regex]";
+  static help = "find a_bx_bold kind of text in translations or the desired regex";
   constructor(regex) {
     this.foundTus = [];
     this.regex = (regex && new RegExp(regex)) ?? /(?<ph>(?<phIdx>[a-y]|z\d+)_(?<t>x|bx|ex)_(?<phName>[0-9A-Za-z_]*))/;
@@ -6580,9 +6578,8 @@ var FindInTarget = class {
     };
   }
 };
-__publicField(FindInTarget, "helpParams", "[regex]");
-__publicField(FindInTarget, "help", "find a_bx_bold kind of text in translations or the desired regex");
 var ExportTranslationGrid = class {
+  static help = "export side by side translations";
   constructor() {
     this.langs = {};
     this.grid = {};
@@ -6604,7 +6601,6 @@ var ExportTranslationGrid = class {
     };
   }
 };
-__publicField(ExportTranslationGrid, "help", "export side by side translations");
 
 // src/decorators/index.js
 var decorators_exports = {};
@@ -6667,6 +6663,11 @@ __export(filters_exports, {
 
 // src/filters/MNFv1.js
 var MNFv1 = class {
+  static normalizer = {
+    decoders: [(nstr) => JSON.parse(nstr[0].v)],
+    codeEncoders: [(part) => part],
+    joiner: (parts) => JSON.stringify(parts)
+  };
   async parseResource({ resource }) {
     return JSON.parse(resource);
   }
@@ -6685,11 +6686,6 @@ var MNFv1 = class {
     return JSON.stringify({ ...resHandle, segments: translatedRawSegments }, null, "	");
   }
 };
-__publicField(MNFv1, "normalizer", {
-  decoders: [(nstr) => JSON.parse(nstr[0].v)],
-  codeEncoders: [(part) => part],
-  joiner: (parts) => JSON.stringify(parts)
-});
 
 // src/normalizers.js
 var normalizers_exports = {};
@@ -6866,13 +6862,13 @@ var FsStoreDelegate = class {
   }
 };
 
-// node_modules/nanoid/index.js
+// ../node_modules/nanoid/index.js
 var import_crypto = require("crypto");
 
-// node_modules/nanoid/url-alphabet/index.js
+// ../node_modules/nanoid/url-alphabet/index.js
 var urlAlphabet = "useandom-26T198340PX75pxJACKVERYMINDBUSHWOLF_GQZbfghjklqvwyzrict";
 
-// node_modules/nanoid/index.js
+// ../node_modules/nanoid/index.js
 var POOL_SIZE_MULTIPLIER = 128;
 var pool;
 var poolOffset;

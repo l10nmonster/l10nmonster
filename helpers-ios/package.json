@@ -1,6 +1,6 @@
 {
   "name": "@l10nmonster/helpers-ios",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Helpers to deal with iOS file formats",
   "main": "index.js",
   "scripts": {
@@ -12,6 +12,6 @@
     "@l10nmonster/i18n-strings-files": "^3.0.0"
   },
   "peerDependencies": {
-    "@l10nmonster/helpers": "../helpers"
+    "@l10nmonster/helpers": "^1"
   }
 }

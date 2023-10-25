@@ -1,6 +1,6 @@
 {
   "name": "@l10nmonster/helpers-googlecloud",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Helpers to integrate with Google Cloud Platfrom",
   "main": "index.js",
   "scripts": {
@@ -13,6 +13,6 @@
     "@google-cloud/translate": "^7.0.0"
   },
   "peerDependencies": {
-    "@l10nmonster/helpers": "../helpers"
+    "@l10nmonster/helpers": "^1"
   }
 }

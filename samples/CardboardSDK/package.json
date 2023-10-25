@@ -1,8 +1,8 @@
 {
     "name": "ios-demo",
     "dependencies": {
-        "@l10nmonster/helpers": "../../helpers",
-        "@l10nmonster/helpers-translated": "../../helpers-translated",
-        "@l10nmonster/helpers-ios": "../../helpers-ios"
+        "@l10nmonster/helpers": "^1",
+        "@l10nmonster/helpers-translated": "^1",
+        "@l10nmonster/helpers-ios": "^1"
     }
 }

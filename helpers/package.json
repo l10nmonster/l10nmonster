@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/helpers",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "description": "Basic L10n Monster helpers and shared utils",
     "exports": {
         "import": "./src/index.js",
@@ -20,7 +20,7 @@
         "nanoid": "^4"
     },
     "devDependencies": {
-        "esbuild": "^0.17.18",
+        "esbuild": "^0.19.5",
         "eslint": "^8"
     }
 }

@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/cli",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "description": "Continuous localization for the rest of us",
     "bin": {
         "l10n": "out/l10n.cjs"
@@ -37,12 +37,12 @@
         "node": ">=18"
     },
     "dependencies": {
-        "@l10nmonster/core": "../core",
+        "@l10nmonster/core": "^1",
         "commander": "^10",
         "winston": "^3.7.2"
     },
     "peerDependencies": {
-        "@l10nmonster/helpers": "../helpers"
+        "@l10nmonster/helpers": "^1"
     },
     "devDependencies": {
         "esbuild": "latest",

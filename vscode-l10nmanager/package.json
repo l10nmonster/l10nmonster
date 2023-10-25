@@ -119,14 +119,14 @@
         "@types/node": "16.x",
         "@types/vscode": "1.78.x",
         "@vscode/test-electron": "^2.3.0",
-        "esbuild": "^0.17.18",
+        "esbuild": "^0.19.5",
         "eslint": "^8.39.0",
         "glob": "^10",
         "mocha": "^10.2.0",
         "typescript": "^5.0.4"
     },
     "dependencies": {
-        "@l10nmonster/core": "../core",
-        "@l10nmonster/helpers": "../helpers"
+        "@l10nmonster/core": "^1",
+        "@l10nmonster/helpers": "^1"
     }
 }

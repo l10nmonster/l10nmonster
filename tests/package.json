@@ -1,6 +1,6 @@
 {
     "name": "l10nmonster-tests",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "description": "Integration test suite",
     "main": "index.js",
     "type": "module",
@@ -13,15 +13,15 @@
         "node": ">=18"
     },
     "dependencies": {
-        "@l10nmonster/helpers": "../helpers",
-        "@l10nmonster/helpers-android": "../helpers-android",
-        "@l10nmonster/helpers-demo": "../helpers-demo",
-        "@l10nmonster/helpers-html": "../helpers-html",
-        "@l10nmonster/helpers-ios": "../helpers-ios",
-        "@l10nmonster/helpers-java": "../helpers-java",
-        "@l10nmonster/helpers-json": "../helpers-json",
-        "@l10nmonster/helpers-translated": "../helpers-translated",
-        "@l10nmonster/core": "../core"
+        "@l10nmonster/helpers": "^1",
+        "@l10nmonster/helpers-android": "^1",
+        "@l10nmonster/helpers-demo": "^1",
+        "@l10nmonster/helpers-html": "^1",
+        "@l10nmonster/helpers-ios": "^1",
+        "@l10nmonster/helpers-java": "^1",
+        "@l10nmonster/helpers-json": "^1",
+        "@l10nmonster/helpers-translated": "^1",
+        "@l10nmonster/core": "^1"
     },
     "devDependencies": {
         "eslint": "^8",

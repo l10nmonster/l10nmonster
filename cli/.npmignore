@@ -1,0 +1,5 @@
+*
+!out/l10nCommands.cjs
+!package.json
+!package-lock.json
+!README.md

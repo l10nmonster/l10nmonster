@@ -1,8 +1,8 @@
 {
     "name": "po-demo",
     "dependencies": {
-        "@l10nmonster/helpers": "../../../helpers",
-        "@l10nmonster/helpers-po": "../../../helpers-po",
-        "@l10nmonster/helpers-demo": "../../../helpers-demo"
+        "@l10nmonster/helpers": "^1",
+        "@l10nmonster/helpers-po": "^1",
+        "@l10nmonster/helpers-demo": "^1"
     }
   }
