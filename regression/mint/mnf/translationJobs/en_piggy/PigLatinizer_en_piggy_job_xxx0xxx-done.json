@@ -1,0 +1,62 @@
+{
+	"sourceLang": "en",
+	"targetLang": "piggy",
+	"translationProvider": "PigLatinizer",
+	"jobGuid": "xxx0xxx",
+	"status": "done",
+	"tus": [
+		{
+			"guid": "fyTrJmEgw1PeD4zF1zl1jDP03u7HaPagrETEtI5X4Ks",
+			"ts": 1,
+			"ntgt": [
+				"[",
+				{
+					"t": "x",
+					"v": "{0,number,integer}"
+				},
+				"% icket-tay ostcay overedcay",
+				"-piggy]"
+			],
+			"q": 1
+		},
+		{
+			"guid": "fyTrJmEgw1PeD4zF1zl1jDP03u7HaPagrETEtI5X4Ks",
+			"ts": 1,
+			"ntgt": [
+				"[",
+				{
+					"t": "x",
+					"v": "{0,number,integer}"
+				},
+				"% icket-tay ostcay overedcay",
+				"-piggy]"
+			],
+			"q": 1
+		},
+		{
+			"guid": "4AB-hsdRgU55c_mtivWahRdht6IMp9UTxUP0gI0JMFA",
+			"ts": 1,
+			"ntgt": [
+				"[",
+				"Ostmay Opularpay",
+				"-piggy]"
+			],
+			"q": 1
+		},
+		{
+			"guid": "q2gOhVROIqrDb6s1UEP8kmlEeKhctYT35JskRBB_Bm0",
+			"ts": 1,
+			"ntgt": [
+				"[",
+				{
+					"t": "x",
+					"v": "{0}"
+				},
+				"% Offyay!",
+				"-piggy]"
+			],
+			"q": 1
+		}
+	],
+	"updatedAt": "2022-05-29T00:00:00.000Z"
+}

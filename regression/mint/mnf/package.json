@@ -3,7 +3,6 @@
     "dependencies": {
         "@l10nmonster/helpers": "../../../helpers",
         "@l10nmonster/helpers-demo": "../../../helpers-demo",
-        "@l10nmonster/helpers-java": "../../../helpers-java",
-        "fs": "^0.0.1-security"
+        "@l10nmonster/helpers-java": "../../../helpers-java"
     }
 }
