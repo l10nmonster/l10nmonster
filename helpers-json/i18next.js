@@ -52,6 +52,9 @@ exports.Filter = class I18nextFilter {
     }
 
     async translateResource({ resource, translator }) {
+        if (!resource) {
+            return '';
+        }
         let flatResource = flat.flatten(JSON.parse(resource));
         for (const entry of Object.entries(flatResource)) {
             if (!this.enableArbAnnotations || !isArbAnnotations(entry)) {
