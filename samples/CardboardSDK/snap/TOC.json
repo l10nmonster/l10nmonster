@@ -1,14 +1,21 @@
 {
-	"default-1.json": {
-		"en.lproj/CardboardSDK.strings": {
-			"id": "en.lproj/CardboardSDK.strings",
-			"modified": "2022-02-10T01:19:22.492Z",
-			"targetLangs": [
-				"ar",
-				"it",
-				"ja"
-			],
-			"contentType": "default"
+	"version": 1,
+	"chunkMap": {
+		"default-0.json": {
+			"en.lproj/CardboardSDK.strings": {
+				"id": "en.lproj/CardboardSDK.strings",
+				"channel": "default",
+				"modified": "2023-06-27T17:00:24.517Z",
+				"resourceFormat": "default",
+				"sourceLang": "en",
+				"targetLangs": [
+					"ar",
+					"en-AU",
+					"en-GB",
+					"it",
+					"ja"
+				]
+			}
 		}
 	}
 }

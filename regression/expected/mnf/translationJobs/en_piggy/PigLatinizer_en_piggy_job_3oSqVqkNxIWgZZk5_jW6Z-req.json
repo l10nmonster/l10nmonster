@@ -1,0 +1,45 @@
+{
+	"sourceLang": "en",
+	"targetLang": "piggy",
+	"tus": [
+		{
+			"sid": "ticketCostCovered",
+			"guid": "fyTrJmEgw1PeD4zF1zl1jDP03u7HaPagrETEtI5X4Ks",
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "{0,number,integer}"
+				},
+				"% ticket cost covered"
+			],
+			"rid": "messages_en.txt",
+			"prj": "messages_en.txt"
+		},
+		{
+			"sid": "badge.mostPopular",
+			"guid": "4AB-hsdRgU55c_mtivWahRdht6IMp9UTxUP0gI0JMFA",
+			"nsrc": [
+				"Most Popular"
+			],
+			"rid": "messages_en.txt",
+			"prj": "messages_en.txt"
+		},
+		{
+			"sid": "badge.percentDiscount",
+			"guid": "q2gOhVROIqrDb6s1UEP8kmlEeKhctYT35JskRBB_Bm0",
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "{0}"
+				},
+				"% Off!"
+			],
+			"rid": "messages_en.txt",
+			"prj": "messages_en.txt"
+		}
+	],
+	"translationProvider": "PigLatinizer",
+	"jobGuid": "3oSqVqkNxIWgZZk5_jW6Z",
+	"status": "created",
+	"updatedAt": "2023-10-25T06:53:27.727Z"
+}

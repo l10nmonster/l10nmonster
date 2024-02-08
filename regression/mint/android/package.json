@@ -1,0 +1,9 @@
+{
+    "name": "android-demo",
+    "dependencies": {
+        "@l10nmonster/helpers": "^1",
+        "@l10nmonster/helpers-android": "^1",
+        "@l10nmonster/helpers-xliff": "^1",
+        "@l10nmonster/helpers-demo": "^1"
+    }
+  }

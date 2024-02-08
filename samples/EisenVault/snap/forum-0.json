@@ -1,0 +1,274 @@
+{
+	"dashlets/forum-summary.get_en.properties": {
+		"id": "dashlets/forum-summary.get_en.properties",
+		"channel": "default",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"prj": "forum",
+		"segments": [
+			{
+				"sid": "header.title",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"mf": "default",
+				"nstr": [
+					"My Discussions"
+				],
+				"gstr": "My Discussions",
+				"guid": "-mF3ugEQpGdMiNj6mR92iwaVMBtHy4HL5ZIJThK6iZU"
+			},
+			{
+				"sid": "newTopic.button",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"mf": "default",
+				"nstr": [
+					"New Topic"
+				],
+				"gstr": "New Topic",
+				"guid": "AOIIEpiCu9WedMyqPeO1AyNZSHlySVzODmPV5o8kjUc"
+			},
+			{
+				"sid": "no.result",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"mf": "default",
+				"nstr": [
+					"There are no topics matching your filters."
+				],
+				"gstr": "There are no topics matching your filters.",
+				"guid": "4Zbp5n5fAngZAKluzQ_hZqBwFptprKA-c5yHlUS0S98"
+			},
+			{
+				"sid": "topicList.updated",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"mf": "default",
+				"nstr": [
+					"Updated"
+				],
+				"gstr": "Updated",
+				"guid": "zfEXHMjig8Nq0hRvJFavv0YSYI687AAYRF7VDNBhedY"
+			},
+			{
+				"sid": "topicList.createdBy",
+				"location": {
+					"startLine": 7,
+					"endLine": 7
+				},
+				"mf": "default",
+				"nstr": [
+					"Created by ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" ",
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					"."
+				],
+				"gstr": "Created by {{x}} {{x}}.",
+				"guid": "dIbVwxFYE1hxYeNCVvrHssPzog8X8nJJPpXXyZSsaHk",
+				"rawNotes": "## In topicList.createdBy {0} is Author Name and {1} is relative date.",
+				"notes": {
+					"desc": "## In topicList.createdBy {0} is Author Name and {1} is relative date."
+				}
+			},
+			{
+				"sid": "topicList.replies.single",
+				"location": {
+					"startLine": 8,
+					"endLine": 8
+				},
+				"mf": "default",
+				"nstr": [
+					"There is 1 reply."
+				],
+				"gstr": "There is 1 reply.",
+				"guid": "xxSe_S0aI5ez8bvNdqKQb9ZwoYONnrfp0gcWTfaxo2c"
+			},
+			{
+				"sid": "topicList.replies.plural",
+				"location": {
+					"startLine": 9,
+					"endLine": 9
+				},
+				"mf": "default",
+				"nstr": [
+					"There are ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" replies."
+				],
+				"gstr": "There are {{x}} replies.",
+				"guid": "BKLINPpUNByqgqo-yseHMuAwNi5ux1F490G2zkx43bY"
+			},
+			{
+				"sid": "topicList.lastReplyBy",
+				"location": {
+					"startLine": 11,
+					"endLine": 11
+				},
+				"mf": "default",
+				"nstr": [
+					"The last reply was posted by ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" ",
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					"."
+				],
+				"gstr": "The last reply was posted by {{x}} {{x}}.",
+				"guid": "3rxLae7mZjGkYb8BFHhRL2HRVinODjyavdUOs1PeKKc",
+				"rawNotes": "## In topicList.lastReplyBy {0} is Author Name and {1} is relative date.",
+				"notes": {
+					"desc": "## In topicList.lastReplyBy {0} is Author Name and {1} is relative date."
+				}
+			},
+			{
+				"sid": "filter.topics.mine",
+				"location": {
+					"startLine": 14,
+					"endLine": 14
+				},
+				"mf": "default",
+				"nstr": [
+					"My Topics"
+				],
+				"gstr": "My Topics",
+				"guid": "SaF5jfhsK1yJhYCtKwNK14xZFItSKzIHbyfOX09s3j4",
+				"rawNotes": "# Filter 1",
+				"notes": {
+					"desc": "# Filter 1"
+				}
+			},
+			{
+				"sid": "filter.topics.all",
+				"location": {
+					"startLine": 15,
+					"endLine": 15
+				},
+				"mf": "default",
+				"nstr": [
+					"All Topics"
+				],
+				"gstr": "All Topics",
+				"guid": "MSPfQF1UwlwAcvWVCifinQbfh_Awliii9Ah1cS-YNAA"
+			},
+			{
+				"sid": "filter.history.1day",
+				"location": {
+					"startLine": 17,
+					"endLine": 17
+				},
+				"mf": "default",
+				"nstr": [
+					"Topics updated in the last day"
+				],
+				"gstr": "Topics updated in the last day",
+				"guid": "1xmZmVo3sItH_a_W99LVgEsp-40jP-cffl9A0AyIIDk",
+				"rawNotes": "# Filter 2",
+				"notes": {
+					"desc": "# Filter 2"
+				}
+			},
+			{
+				"sid": "filter.history.7days",
+				"location": {
+					"startLine": 18,
+					"endLine": 18
+				},
+				"mf": "default",
+				"nstr": [
+					"Topics updated in the last 7 days"
+				],
+				"gstr": "Topics updated in the last 7 days",
+				"guid": "EvEWSxMZ0JyvlAQYQw7vxRTgVod348eqh3WUYn6EFIo"
+			},
+			{
+				"sid": "filter.history.14days",
+				"location": {
+					"startLine": 19,
+					"endLine": 19
+				},
+				"mf": "default",
+				"nstr": [
+					"Topics updated in the last 14 days"
+				],
+				"gstr": "Topics updated in the last 14 days",
+				"guid": "dre_B9YD3fbTKFCI4LdUyv2UQ9BuyWEC1OKW3YJUW6Y"
+			},
+			{
+				"sid": "filter.history.28days",
+				"location": {
+					"startLine": 20,
+					"endLine": 20
+				},
+				"mf": "default",
+				"nstr": [
+					"Topics updated in the last 28 days"
+				],
+				"gstr": "Topics updated in the last 28 days",
+				"guid": "mdEbnp88stSHwlqd2IFsRxHPOrXFWK1pt2g6GfJet3Y"
+			},
+			{
+				"sid": "dashlet.help",
+				"location": {
+					"startLine": 23,
+					"endLine": 24
+				},
+				"mf": "default",
+				"nstr": [
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"Discussion Forum dashlet.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					},
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"View your latest posts on the Discussion Forum.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					}
+				],
+				"gstr": "{{bx}}Discussion Forum dashlet.{{ex}}{{bx}}View your latest posts on the Discussion Forum.{{ex}}",
+				"guid": "oVOocmmwS1_ao_0kAZ16L3x5qJASG71Nw-hgbl22TnQ",
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				}
+			}
+		]
+	}
+}

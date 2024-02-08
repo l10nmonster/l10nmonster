@@ -2,18 +2,17 @@
 	"lang": {
 		"it": {
 			"leverage": {
-				"tmSize": 335,
 				"minimumQuality": 50,
 				"prjLeverage": {
 					"default": {
-						"translated": 334,
-						"translatedWords": 2273,
+						"translated": 335,
+						"translatedWords": 2135,
 						"translatedByQ": {
 							"61": 1,
 							"69": 1,
-							"70": 332
+							"70": 333
 						},
-						"untranslated": 1,
+						"untranslated": 0,
 						"untranslatedChars": 0,
 						"untranslatedWords": 0,
 						"pending": 0,

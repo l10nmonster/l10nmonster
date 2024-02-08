@@ -1,0 +1,99 @@
+{
+	"dashlets/user-calendar.get_en.properties": {
+		"id": "dashlets/user-calendar.get_en.properties",
+		"channel": "default",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"prj": "user",
+		"segments": [
+			{
+				"sid": "label.header",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"mf": "default",
+				"nstr": [
+					"My Calendar"
+				],
+				"gstr": "My Calendar",
+				"guid": "SPKdfv3dFWX7-7XFoRAq7On20IfLoU6TqTWJEw5jloU"
+			},
+			{
+				"sid": "label.noEvents",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"mf": "default",
+				"nstr": [
+					"No upcoming events"
+				],
+				"gstr": "No upcoming events",
+				"guid": "qwOsbKeQ6XPLwXDcsYMNfNxnZkyoyMpXxz6_LSsWlzQ"
+			},
+			{
+				"sid": "label.error",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"mf": "default",
+				"nstr": [
+					"Could not load calendar data"
+				],
+				"gstr": "Could not load calendar data",
+				"guid": "ZtTwkAcJjMlS2vtVGe9GQ2o5rFvpkyLIOLYQa-a3I9g"
+			},
+			{
+				"sid": "label.allday",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"mf": "default",
+				"nstr": [
+					"All Day"
+				],
+				"gstr": "All Day",
+				"guid": "IGy5p0jghtEk0sW4dXZLtM3lEa2gpWZ_FqWyBaew8do"
+			},
+			{
+				"sid": "label.in-site",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"mf": "default",
+				"nstr": [
+					"in ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "in {{x}}",
+				"guid": "0Gpn2OtT9mxsfFCmTdSgMSTQYzw10MRlH_jZZl0CRl8"
+			},
+			{
+				"sid": "dashlet.help",
+				"location": {
+					"startLine": 7,
+					"endLine": 7
+				},
+				"mf": "default",
+				"nstr": [
+					"This dashlet shows the upcoming events in sites you belong to. "
+				],
+				"gstr": "This dashlet shows the upcoming events in sites you belong to. ",
+				"guid": "yhoc5qivuex4c_K-BMYUFbP9nKbkdCrqEfDm1BnOX-8"
+			}
+		]
+	}
+}

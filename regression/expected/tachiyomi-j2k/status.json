@@ -2,7 +2,6 @@
 	"lang": {
 		"zh-Hans": {
 			"leverage": {
-				"tmSize": 871,
 				"minimumQuality": 50,
 				"prjLeverage": {
 					"default": {
@@ -12,11 +11,11 @@
 							"61": 3,
 							"70": 851
 						},
-						"untranslated": 0,
-						"untranslatedChars": 0,
-						"untranslatedWords": 0,
-						"pending": 17,
-						"pendingWords": 65,
+						"untranslated": 17,
+						"untranslatedChars": 402,
+						"untranslatedWords": 65,
+						"pending": 0,
+						"pendingWords": 0,
 						"internalRepetitions": 0,
 						"internalRepetitionWords": 0
 					}
@@ -26,7 +25,6 @@
 		},
 		"zh-Hant": {
 			"leverage": {
-				"tmSize": 871,
 				"minimumQuality": 50,
 				"prjLeverage": {
 					"default": {
@@ -50,7 +48,6 @@
 		},
 		"piggy": {
 			"leverage": {
-				"tmSize": 871,
 				"minimumQuality": 1,
 				"prjLeverage": {
 					"default": {

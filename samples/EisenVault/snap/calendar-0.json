@@ -1,0 +1,69 @@
+{
+	"dashlets/calendar.get_en.properties": {
+		"id": "dashlets/calendar.get_en.properties",
+		"channel": "default",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"prj": "calendar",
+		"segments": [
+			{
+				"sid": "label.header",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"mf": "default",
+				"nstr": [
+					"Site Calendar"
+				],
+				"gstr": "Site Calendar",
+				"guid": "MoJ9WnVlNIDG5uEqTEgK-SIijATplqSaRGJaxOx-CoM"
+			},
+			{
+				"sid": "label.no-items",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"mf": "default",
+				"nstr": [
+					"No upcoming events"
+				],
+				"gstr": "No upcoming events",
+				"guid": "GOD7gmCgDoOkTDZrQvELAvKSHk2F8hfwz_JMe8JdCsY"
+			},
+			{
+				"sid": "label.until",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"mf": "default",
+				"nstr": [
+					"until"
+				],
+				"gstr": "until",
+				"guid": "nRPmwwxUzPSSMPswBuNBiozTKk-M3XWZAJv6BKAL0Os"
+			},
+			{
+				"sid": "dashlet.help",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"mf": "default",
+				"nstr": [
+					"This dashlet shows the upcoming events for this site."
+				],
+				"gstr": "This dashlet shows the upcoming events for this site.",
+				"guid": "pCbsFvMcdwJ4xUDch0i4cL0N-N8vVkvhqjYTWzg1P-U"
+			}
+		]
+	}
+}

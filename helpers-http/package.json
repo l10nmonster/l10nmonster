@@ -1,0 +1,11 @@
+{
+  "name": "@l10nmonster/helpers-http",
+  "version": "1.0.0",
+  "description": "Adapter for http-based sources",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Diego Lagunas",
+  "license": "MIT"
+}

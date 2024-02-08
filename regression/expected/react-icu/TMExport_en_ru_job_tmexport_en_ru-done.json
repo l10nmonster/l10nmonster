@@ -6,38 +6,17 @@
 	"status": "done",
 	"tus": [
 		{
-			"sid": "title",
 			"guid": "wUtgDUDVeLsT_x9VEGH_peG9Ujs3DvX1H3cvHtxgcjw",
-			"seq": 1011,
-			"src": "Welcome to react using react-i18next",
-			"rid": "public/locales/en/translations.json",
+			"ntgt": [
+				"Добро пожаловать в React и react-i18next"
+			],
 			"ts": 1,
 			"q": 70,
-			"tgt": "Добро пожаловать в React и react-i18next",
 			"jobGuid": "xxx1xxx",
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "description.part1",
 			"guid": "cghma_NsjtZInytTsem0CwlHb1dS2hT2uQGVfDLNkaI",
-			"seq": 1010,
-			"src": "To get started, edit <a>src/App.js</a> and save to reload.",
-			"rid": "public/locales/en/translations.json",
-			"ts": 1,
-			"nsrc": [
-				"To get started, edit ",
-				{
-					"t": "bx",
-					"v": "<a>"
-				},
-				"src/App.js",
-				{
-					"t": "ex",
-					"v": "</a>"
-				},
-				" and save to reload."
-			],
-			"q": 70,
 			"ntgt": [
 				"Что би начать, отредактируйте ",
 				{
@@ -53,37 +32,23 @@
 				},
 				" и сохраните, что бы обновилось."
 			],
+			"ts": 1,
+			"q": 70,
 			"jobGuid": "xxx1xxx",
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "description.part2",
 			"guid": "B2tOpN7eXoM6vDTFJdnZEO-5fTC49LtcVxOOxviW7z8",
-			"seq": 1009,
-			"src": "Switch language between english and german using buttons above.",
-			"rid": "public/locales/en/translations.json",
+			"ntgt": [
+				"Переключайте языки между английским, немецким и русским чуть выше."
+			],
 			"ts": 1,
 			"q": 70,
-			"tgt": "Переключайте языки между английским, немецким и русским чуть выше.",
 			"jobGuid": "xxx1xxx",
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "welcome.name1",
 			"guid": "mVpp2sfDV8h1yTpK3YpunsGCCyrOtgRsoijdn0rbpfo",
-			"seq": 1008,
-			"src": "Welcome, {{name}}!",
-			"rid": "public/locales/en/translations.json",
-			"ts": 1,
-			"nsrc": [
-				"Welcome, ",
-				{
-					"t": "x",
-					"v": "{{name}}"
-				},
-				"!"
-			],
-			"q": 70,
 			"ntgt": [
 				"Добро пожаловать, ",
 				{
@@ -93,33 +58,13 @@
 				},
 				"!"
 			],
+			"ts": 1,
+			"q": 70,
 			"jobGuid": "xxx1xxx",
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "welcome.name2",
 			"guid": "RLKDBvHhlr-qK3r-qduFToaGzxrPq1lCG1NlVq7u80s",
-			"seq": 1007,
-			"src": "Welcome, <a>{{name}}</a>!",
-			"rid": "public/locales/en/translations.json",
-			"ts": 1,
-			"nsrc": [
-				"Welcome, ",
-				{
-					"t": "bx",
-					"v": "<a>"
-				},
-				{
-					"t": "x",
-					"v": "{{name}}"
-				},
-				{
-					"t": "ex",
-					"v": "</a>"
-				},
-				"!"
-			],
-			"q": 70,
 			"ntgt": [
 				"Добро пожаловать, ",
 				{
@@ -139,33 +84,14 @@
 				},
 				"!"
 			],
+			"ts": 1,
+			"q": 70,
 			"jobGuid": "xxx1xxx",
 			"translationProvider": "Grandfather"
 		},
 		{
-			"sid": "homeTitle",
 			"guid": "Yhu_PT_gxnNEP6i5cnfpdYCQ577w0kcHlKdPIp1rHWM",
-			"seq": 1023,
-			"src": "<b>Welcome</b> to $t(brand:portalName).",
-			"rid": "public/locales/en/app.json",
 			"ts": 1,
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<b>"
-				},
-				"Welcome",
-				{
-					"t": "ex",
-					"v": "</b>"
-				},
-				" to ",
-				{
-					"t": "x",
-					"v": "$t(brand:portalName)"
-				},
-				"."
-			],
 			"ntgt": [
 				"⇥99:",
 				{
@@ -193,24 +119,8 @@
 			"translationProvider": "Visicode"
 		},
 		{
-			"sid": "flightHome.title",
 			"guid": "8QAVB3VDxOUUy1YKjJmy1pgdVR0m497ZhCOVS16GBQM",
-			"seq": 1022,
-			"src": "<strong>Welcome back</strong> to travel.",
-			"rid": "public/locales/en/app.json",
 			"ts": 1,
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<strong>"
-				},
-				"Welcome back",
-				{
-					"t": "ex",
-					"v": "</strong>"
-				},
-				" to travel."
-			],
 			"ntgt": [
 				"⇥89:",
 				{
@@ -232,58 +142,44 @@
 			"translationProvider": "Visicode"
 		},
 		{
-			"sid": "flightHome.subtitle",
 			"guid": "AGkOSI-2cbdKB0hwucpDtAhetdvAytGYurYD7hvcezM",
-			"seq": 1021,
-			"src": "Book the trip you've been waiting for.",
-			"rid": "public/locales/en/app.json",
 			"ts": 1,
-			"tgt": "⇥79:B̲o̲o̲k̲ ̲̟t̲h̲e̲ ̲t̲̟r̲i̲p̲ ̲y̲̟o̲u̲'̲v̲e̲̟ ̲b̲e̲e̲n̲̟ ̲w̲a̲i̲t̲̟i̲n̲g̲ ̲f̲̟o̲r̲.̲⇤",
-			"q": 2,
-			"jobGuid": "xxx3xxx",
-			"translationProvider": "Visicode"
-		},
-		{
-			"sid": "pickerTraveler_one",
-			"isSuffixPluralized": true,
-			"guid": "YpoIEBkIfKjKzReUIQX2mqEn2bLQ8YPiTSt1FDHIkI4",
-			"seq": 1020,
-			"src": "Traveler",
-			"rid": "public/locales/en/app.json",
-			"ts": 1,
-			"tgt": "⇥69:T̲r̲a̲v̲e̲̟l̲e̲r̲⇤",
-			"q": 2,
-			"jobGuid": "xxx3xxx",
-			"translationProvider": "Visicode"
-		},
-		{
-			"sid": "pickerTraveler_other",
-			"isSuffixPluralized": true,
-			"guid": "sTGxO3wYiDt-d_Nrg22Dm5CCdRJYPprzgXAZ9M2S81w",
-			"seq": 1019,
-			"src": "Travelers",
-			"rid": "public/locales/en/app.json",
-			"ts": 1,
-			"tgt": "⇥59:T̲r̲a̲v̲e̲̟l̲e̲r̲s̲⇤",
-			"q": 2,
-			"jobGuid": "xxx3xxx",
-			"translationProvider": "Visicode"
-		},
-		{
-			"sid": "warningMessage",
-			"guid": "KuM3WlVRMaBLFo6E0fg4vATKm955gBDBbAGTLdLITAk",
-			"seq": 1018,
-			"src": "You can search for up to {{maximumCount}} travelers",
-			"rid": "public/locales/en/app.json",
-			"ts": 1,
-			"nsrc": [
-				"You can search for up to ",
-				{
-					"t": "x",
-					"v": "{{maximumCount}}"
-				},
-				" travelers"
+			"ntgt": [
+				"⇥79:",
+				"B̲o̲o̲k̲ ̲̟t̲h̲e̲ ̲t̲̟r̲i̲p̲ ̲y̲̟o̲u̲'̲v̲e̲̟ ̲b̲e̲e̲n̲̟ ̲w̲a̲i̲t̲̟i̲n̲g̲ ̲f̲̟o̲r̲.̲",
+				"⇤"
 			],
+			"q": 2,
+			"jobGuid": "xxx3xxx",
+			"translationProvider": "Visicode"
+		},
+		{
+			"guid": "YpoIEBkIfKjKzReUIQX2mqEn2bLQ8YPiTSt1FDHIkI4",
+			"ts": 1,
+			"ntgt": [
+				"⇥69:",
+				"T̲r̲a̲v̲e̲̟l̲e̲r̲",
+				"⇤"
+			],
+			"q": 2,
+			"jobGuid": "xxx3xxx",
+			"translationProvider": "Visicode"
+		},
+		{
+			"guid": "sTGxO3wYiDt-d_Nrg22Dm5CCdRJYPprzgXAZ9M2S81w",
+			"ts": 1,
+			"ntgt": [
+				"⇥59:",
+				"T̲r̲a̲v̲e̲̟l̲e̲r̲s̲",
+				"⇤"
+			],
+			"q": 2,
+			"jobGuid": "xxx3xxx",
+			"translationProvider": "Visicode"
+		},
+		{
+			"guid": "KuM3WlVRMaBLFo6E0fg4vATKm955gBDBbAGTLdLITAk",
+			"ts": 1,
 			"ntgt": [
 				"⇥49:",
 				"Y̲o̲u̲ ̲c̲̟a̲n̲ ̲s̲e̲̟a̲r̲c̲h̲ ̲̟f̲o̲r̲ ̲u̲̟p̲ ̲t̲o̲ ̲̟",
@@ -300,32 +196,8 @@
 			"translationProvider": "Visicode"
 		},
 		{
-			"sid": "termsAndConditions",
 			"guid": "qJxPXXst0F8DLkzVVG63hebwXP80N7CFgJfuXtr8mM8",
-			"seq": 1024,
-			"src": "<p>$t(brand:portalName) price services and notifications. $t(brand:clientName) work hard to ensure the accuracy of its predictions. </p>",
-			"rid": "public/locales/en/app.json",
 			"ts": 1,
-			"nsrc": [
-				{
-					"t": "bx",
-					"v": "<p>"
-				},
-				{
-					"t": "x",
-					"v": "$t(brand:portalName)"
-				},
-				" price services and notifications. ",
-				{
-					"t": "x",
-					"v": "$t(brand:clientName)"
-				},
-				" work hard to ensure the accuracy of its predictions. ",
-				{
-					"t": "ex",
-					"v": "</p>"
-				}
-			],
 			"ntgt": [
 				"⇥AAB:",
 				{
@@ -357,20 +229,8 @@
 			"translationProvider": "Visicode"
 		},
 		{
-			"sid": "timeCount.day_one",
-			"isSuffixPluralized": true,
 			"guid": "bws_LnxH_75t_Jdprc_zeTdGgUOWjzRFnDe6YfvjOYg",
-			"seq": 1017,
-			"src": "{{count}} day",
-			"rid": "public/locales/en/app.json",
 			"ts": 1,
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{{count}}"
-				},
-				" day"
-			],
 			"ntgt": [
 				"⇥39:",
 				{
@@ -386,20 +246,8 @@
 			"translationProvider": "Visicode"
 		},
 		{
-			"sid": "timeCount.day_other",
-			"isSuffixPluralized": true,
 			"guid": "Jqw-OIo4U6fG5lyDl3mUsrBOVyxTbyNSBtYPAz3soPQ",
-			"seq": 1016,
-			"src": "{{count}} days",
-			"rid": "public/locales/en/app.json",
 			"ts": 1,
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{{count}}"
-				},
-				" days"
-			],
 			"ntgt": [
 				"⇥29:",
 				{
@@ -415,20 +263,8 @@
 			"translationProvider": "Visicode"
 		},
 		{
-			"sid": "timeCount.hour_one",
-			"isSuffixPluralized": true,
 			"guid": "u-b8MhBsF9k7Q4SquD9h_vGYUIfEhi_gRzuA9i36PfY",
-			"seq": 1015,
-			"src": "{{count}} hour",
-			"rid": "public/locales/en/app.json",
 			"ts": 1,
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{{count}}"
-				},
-				" hour"
-			],
 			"ntgt": [
 				"⇥Z9:",
 				{
@@ -444,20 +280,8 @@
 			"translationProvider": "Visicode"
 		},
 		{
-			"sid": "timeCount.hour_other",
-			"isSuffixPluralized": true,
 			"guid": "haJeL1bazwQ1yTntetVJeSFWmn5a9hPwuTBVoh9ISjo",
-			"seq": 1014,
-			"src": "{{count}} hours",
-			"rid": "public/locales/en/app.json",
 			"ts": 1,
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{{count}}"
-				},
-				" hours"
-			],
 			"ntgt": [
 				"⇥Y9:",
 				{
@@ -473,20 +297,8 @@
 			"translationProvider": "Visicode"
 		},
 		{
-			"sid": "timeCount.second_one",
-			"isSuffixPluralized": true,
 			"guid": "YjPgqgOdTMkHKTRSeQTqRnPKYg-aPkWmF4PtExUoI6Q",
-			"seq": 1013,
-			"src": "{{count}} second",
-			"rid": "public/locales/en/app.json",
 			"ts": 1,
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{{count}}"
-				},
-				" second"
-			],
 			"ntgt": [
 				"⇥X9:",
 				{
@@ -502,20 +314,8 @@
 			"translationProvider": "Visicode"
 		},
 		{
-			"sid": "timeCount.second_other",
-			"isSuffixPluralized": true,
 			"guid": "x1xQynOoxM1xfd0g5iSmzZfrIWxwjHfV3x-1xaoiFJk",
-			"seq": 1012,
-			"src": "{{count}} seconds",
-			"rid": "public/locales/en/app.json",
 			"ts": 1,
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "{{count}}"
-				},
-				" seconds"
-			],
 			"ntgt": [
 				"⇥W9:",
 				{

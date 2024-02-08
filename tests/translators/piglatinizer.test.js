@@ -1,55 +1,55 @@
-import { PigLatinizer } from '../../src/translators/piglatinizer';
+global.l10nmonster ??= {};
+const { PigLatinizer } = require('@l10nmonster/helpers-demo');
 
 describe ('pig latinizer translator tests', () =>{
 
   const job = {
     "tus": [{
       "guid": "app_name",
-      "src": "TachiyomiJ2K"
+      "nsrc": [ "TachiyomiJ2K" ]
     }, {
       "guid": "app_short_name",
-      "src": "TachiJ2K"
+      "nsrc": [ "TachiJ2K" ]
     }, {
       "guid": "str1",
-      "src": "Winter is coming"
+      "nsrc": [ "Winter is coming" ]
     }, {
       "guid": "move_x_to",
-      "src": "Move %1$s to…"
+      "nsrc": [ "Move %1$s to…" ]
     }, {
       "guid": "chapter_x_of_y",
-      "src": "Chapter %1$d of %2$d"
+      "nsrc": [ "Chapter %1$d of %2$d" ]
     }, {
       "isSuffixPluralized": true,
       "guid": "chapters_plural_one",
-      "src": "%1$d chapter"
+      "nsrc": [ "%1$d chapter" ]
     }, {
       "isSuffixPluralized": true,
       "guid": "chapters_plural_other",
-      "src": "%1$d chapters"
+      "nsrc": [ "%1$d chapters" ]
     }]
   };
   const expectedOutput = {
       targetLang: 'fil',
       tus: [
-        { guid: 'app_name', tgt: '[TachiyomiJ2K-fil]', q: 80 },
-        { guid: 'app_short_name', tgt: '[TachiJ2K-fil]', q: 80 },
-        { guid: 'str1', tgt: '[Interway isyay omingcay-fil]', q: 80 },
-        { guid: 'move_x_to', tgt: '[Ovemay %1$s otay…-fil]', q: 80 },
+        { guid: 'app_name', ntgt: [ '[', 'TachiyomiJ2K', '-fil]' ], q: 80 },
+        { guid: 'app_short_name', ntgt: [ '[', 'TachiJ2K', '-fil]' ], q: 80 },
+        { guid: 'str1', ntgt: [ '[', 'Interway isyay omingcay', '-fil]' ], q: 80 },
+        { guid: 'move_x_to', ntgt: [ '[', 'Ovemay %1$s otay…', '-fil]' ], q: 80 },
         {
           guid: 'chapter_x_of_y',
-          tgt: '[Apterchay %1$d ofyay %2$d-fil]',
+          ntgt: [ '[', 'Apterchay %1$d ofyay %2$d', '-fil]' ],
           q: 80
         },
-        { guid: 'chapters_plural_one', tgt: '[%1$d apterchay-fil]', q: 80 },
+        { guid: 'chapters_plural_one', ntgt: [ '[', '%1$d apterchay', '-fil]' ], q: 80 },
         {
           guid: 'chapters_plural_other',
-          tgt: '[%1$d apterschay-fil]',
+          ntgt: [ '[', '%1$d apterschay', '-fil]' ],
           q: 80
         }
       ],
       status: 'done'
     }
-    PigLatinizer.prototype.ctx = { regression: false };
     var translator = new PigLatinizer({
         quality: 80
     });

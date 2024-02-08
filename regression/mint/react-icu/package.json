@@ -1,0 +1,7 @@
+{
+    "name": "i18next-demo",
+    "dependencies": {
+        "@l10nmonster/helpers": "^1",
+        "@l10nmonster/helpers-json": "^1"
+    }
+  }

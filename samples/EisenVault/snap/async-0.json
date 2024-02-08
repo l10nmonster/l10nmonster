@@ -1,0 +1,214 @@
+{
+	"dashlets/async-rssfeed.get_en.properties": {
+		"id": "dashlets/async-rssfeed.get_en.properties",
+		"channel": "default",
+		"modified": "2022-06-14T22:09:41.224Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"prj": "async",
+		"segments": [
+			{
+				"sid": "label.header",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"mf": "default",
+				"nstr": [
+					"RSS Feed"
+				],
+				"gstr": "RSS Feed",
+				"guid": "QX3X1g-Kh1UpJ-aEY4FOSO2WdKt5afp4FyUk8z00kOk"
+			},
+			{
+				"sid": "label.configure",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"mf": "default",
+				"nstr": [
+					"Configure"
+				],
+				"gstr": "Configure",
+				"guid": "vwrKccRIjjVNjVNl0CRZJsRMOUbmwQ_yWgR6XdOhD40"
+			},
+			{
+				"sid": "label.noItems",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"mf": "default",
+				"nstr": [
+					"No news items"
+				],
+				"gstr": "No news items",
+				"guid": "_BTHCps8KAbIpS9udVg6HYpF7QWwxNp8-0ZWvEDr8bI"
+			},
+			{
+				"sid": "title.error.bad_data",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"mf": "default",
+				"nstr": [
+					"RSS feed can't be read"
+				],
+				"gstr": "RSS feed can't be read",
+				"guid": "rKmLOWykQIl0HH0r_50MOd07oRk8KqT9Pk-4CnXceEY"
+			},
+			{
+				"sid": "title.error.unavailable",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"mf": "default",
+				"nstr": [
+					"RSS feed is not available"
+				],
+				"gstr": "RSS feed is not available",
+				"guid": "3Gxz8EmGRNOELmhuwipqf5luMeaD5qELsN7df_cxAno"
+			},
+			{
+				"sid": "title.error.unsupported",
+				"location": {
+					"startLine": 6,
+					"endLine": 6
+				},
+				"mf": "default",
+				"nstr": [
+					"RSS feed format is not supported"
+				],
+				"gstr": "RSS feed format is not supported",
+				"guid": "5ZZj-jxDgUbAfyjrMe0cfeQcP0eFIZvFlDCSL84Nrqg"
+			},
+			{
+				"sid": "dashlet.help",
+				"location": {
+					"startLine": 8,
+					"endLine": 8
+				},
+				"mf": "default",
+				"nstr": [
+					"This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed."
+				],
+				"gstr": "This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed.",
+				"guid": "jzkfUdJohmFfMtS_GItKtYifp-ZgzcyJKVo8serpi7I"
+			}
+		]
+	},
+	"dashlets/async-rssfeed.post_en.properties": {
+		"id": "dashlets/async-rssfeed.post_en.properties",
+		"channel": "default",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"prj": "async",
+		"segments": [
+			{
+				"sid": "label.header",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"mf": "default",
+				"nstr": [
+					"RSS Feed"
+				],
+				"gstr": "RSS Feed",
+				"guid": "EFn3t-e0JoDulp-WrmSoRotUUCXkYlE7Kv3biN7WDW0"
+			},
+			{
+				"sid": "label.configure",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"mf": "default",
+				"nstr": [
+					"Configure"
+				],
+				"gstr": "Configure",
+				"guid": "rMLO-fUZZZq87EB3WIeu2F2GZOtTACGvobKcGojueyA"
+			},
+			{
+				"sid": "label.noItems",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"mf": "default",
+				"nstr": [
+					"No news items"
+				],
+				"gstr": "No news items",
+				"guid": "Y3VBfG0zC6kDtBZHDxZFCLZRLHwPC2obJTXEwJnkan8"
+			},
+			{
+				"sid": "title.error.bad_data",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"mf": "default",
+				"nstr": [
+					"RSS feed can't be read"
+				],
+				"gstr": "RSS feed can't be read",
+				"guid": "HCGGtFbvY0TT_hr0VH80CI-RpsEephuBsTnrXUnBZOU"
+			},
+			{
+				"sid": "title.error.unavailable",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"mf": "default",
+				"nstr": [
+					"RSS feed is not available"
+				],
+				"gstr": "RSS feed is not available",
+				"guid": "Mryr53ZTSsgu5W2iuspPnNZPC0TxwXUNUtdn_fWrvz8"
+			},
+			{
+				"sid": "title.error.unsupported",
+				"location": {
+					"startLine": 6,
+					"endLine": 6
+				},
+				"mf": "default",
+				"nstr": [
+					"RSS feed format is not supported"
+				],
+				"gstr": "RSS feed format is not supported",
+				"guid": "WAt8kKCVxWOIxpe-RdYHi0lOvIQt3JBh5cOqlBAyY2s"
+			},
+			{
+				"sid": "dashlet.help",
+				"location": {
+					"startLine": 8,
+					"endLine": 8
+				},
+				"mf": "default",
+				"nstr": [
+					"This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed."
+				],
+				"gstr": "This dashlet shows the RSS feed of your choice. Click the edit icon on the dashlet to change the feed.",
+				"guid": "IfdF05CMkiWoN-Hems6QAju5Peau9w0OtBN8AvnMGcQ"
+			}
+		]
+	}
+}

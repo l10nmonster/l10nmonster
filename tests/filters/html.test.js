@@ -1,18 +1,17 @@
-import * as html from '../../src/filters/html';
-import { getNormalizedString } from '../../src/normalizers/util.js';
-import { xmlDecoder /* , xmlEntityDecoder */ } from '../../src/normalizers/regex.js';
-import { readFileSync } from 'fs';
+const html = require('@l10nmonster/helpers-html');
+const { utils, xml } = require('@l10nmonster/helpers');
+const fs = require('fs');
 
 const translator = async function translate(sid, str) {
   return `***${str}***`;
 }
 
 describe('html filter tests', () => {
-    const resourceFilter = new html.HTMLFilter();
-    const resourceId = 'tests/files/values/page.html';
+    const resourceFilter = new html.Filter();
+    const resourceId = 'files/values/page.html';
 
     test('html normalizers work as expected', async () => {
-        const page = readFileSync(resourceId, 'utf8');
+        const page = fs.readFileSync(resourceId, 'utf8');
         const pageRes = await resourceFilter.parseResource({resource: page});
         expect(pageRes)
             .toMatchObject({
@@ -24,7 +23,7 @@ describe('html filter tests', () => {
                     ]
             });
 
-            const out = getNormalizedString(pageRes.segments[0].str, [xmlDecoder]);
+            const out = utils.getNormalizedString(pageRes.segments[0].str, [xml.tagDecoder]);
             expect(out)
                 .toMatchObject ([
                     {"t": "bx", "v": "<h1>"},
@@ -46,14 +45,14 @@ describe('html filter tests', () => {
     });
 
     test('translateResource returns string', async () => {
-        const resource = readFileSync(resourceId, 'utf8');
+        const resource = fs.readFileSync(resourceId, 'utf8');
         const translatedRes = await resourceFilter.translateResource({ resource, translator });
         expect(translatedRes).toBe("<!DOCTYPE html><!-- Last Published: Tue Oct 04 2022 16:40:09 GMT+0000 (Coordinated Universal Time) --><html><head></head>\n    <body class=\"bodyvoucher\">\n        <div class=\"container-2\">***<h1>Winter is 🎉</h1>  <div> <div class=\"body-paragraph\">coming</div> </div> <a href=\"#\" id=\"redeemButton\" class=\"button white w-button\">Redeem Gift</a>***</div>\n    \n\n</body></html>");
     });
 });
 
 describe('html filter fragment tests', () => {
-    const resourceFilter = new html.HTMLFilter();
+    const resourceFilter = new html.Filter();
     test('translateResource for a text fragment returns string', async () => {
         const resource = 'Hello world';
         const expectedOutput = '***Hello world***';

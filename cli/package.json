@@ -1,0 +1,52 @@
+{
+    "name": "@l10nmonster/cli",
+    "version": "1.0.1",
+    "description": "Continuous localization for the rest of us",
+    "bin": {
+        "l10n": "out/l10n.cjs"
+    },
+    "exports": {
+        "import": "./l10nCommands.js",
+        "require": "./out/l10nCommands.cjs"
+    },
+    "main": "out/l10nCommands.cjs",
+    "type": "module",
+    "scripts": {
+        "esbuild": "esbuild l10nCommands.js --bundle --external:@l10nmonster/core --external:@l10nmonster/helpers --external:commander --external:winston --outfile=out/l10nCommands.cjs --format=cjs --platform=node --target=node18 --sourcemap",
+        "esbuild-watch": "npm run esbuild -- --watch",
+        "package": "pkg -t node18-macos-x64 --out-path bin out/l10n.cjs"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/l10nmonster/l10nmonster.git"
+    },
+    "keywords": [
+        "translation",
+        "localization",
+        "l10n",
+        "globalization",
+        "translation-files"
+    ],
+    "author": "Diego Lagunas",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/l10nmonster/l10nmonster/issues"
+    },
+    "homepage": "https://github.com/l10nmonster/l10nmonster#readme",
+    "engines": {
+        "node": ">=18"
+    },
+    "dependencies": {
+        "@l10nmonster/core": "^1",
+        "commander": "^10",
+        "winston": "^3.7.2"
+    },
+    "peerDependencies": {
+        "@l10nmonster/helpers": "^1"
+    },
+    "devDependencies": {
+        "esbuild": "latest",
+        "eslint": "^8",
+        "pkg": "^5.4.1"
+    }
+}

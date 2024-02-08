@@ -8,18 +8,6 @@
 		{
 			"guid": "5otAlRi18WJHdTNddhXrbauyBBuNmozvj5T1U3LdNio",
 			"q": 61,
-			"nsrc": [
-				"Migrate ",
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				{
-					"t": "x",
-					"v": "%2$s"
-				},
-				" manga?"
-			],
 			"ntgt": [
 				"迁移 ",
 				{
@@ -39,18 +27,6 @@
 		{
 			"guid": "V7Ipy8tVMS_hgViqxAA2GVdKnK2eiylBmpYsz6R23AM",
 			"q": 61,
-			"nsrc": [
-				"Copy ",
-				{
-					"t": "x",
-					"v": "%1$d"
-				},
-				{
-					"t": "x",
-					"v": "%2$s"
-				},
-				" manga?"
-			],
 			"ntgt": [
 				"复制 ",
 				{
@@ -70,13 +46,6 @@
 		{
 			"guid": "26atAzC3mwZ3kvEaRGvJjuffpG2YiWvLb_0uDvsLPtE",
 			"q": 61,
-			"nsrc": [
-				{
-					"t": "x",
-					"v": "%d"
-				},
-				" manga migrated"
-			],
 			"ntgt": [
 				{
 					"t": "x",

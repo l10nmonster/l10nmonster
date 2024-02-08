@@ -1,0 +1,679 @@
+{
+	"dashlets/dynamic-welcome.get_en.properties": {
+		"id": "dashlets/dynamic-welcome.get_en.properties",
+		"channel": "default",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"prj": "dynamic",
+		"segments": [
+			{
+				"sid": "welcome.user",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"mf": "default",
+				"nstr": [
+					"Welcome to your dashboard, ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "Welcome to your dashboard, {{x}}",
+				"guid": "eXhVEg9o9noL3Qu7Pbbo7HSzaK70HRF4gHThovLijH0"
+			},
+			{
+				"sid": "welcome.site",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"mf": "default",
+				"nstr": [
+					"Welcome to ",
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					", ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "Welcome to {{x}}, {{x}}",
+				"guid": "eOQ0ymwgcOgUMBykpFlcXll14QGH4_djMj-_x4bl9Zk"
+			},
+			{
+				"sid": "welcome.user.description",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"mf": "default",
+				"nstr": [
+					"The personal dashboard shows you what's going on in the sites you belong to."
+				],
+				"gstr": "The personal dashboard shows you what's going on in the sites you belong to.",
+				"guid": "_XrOsbXsUwQ_8bszzlCDI2uJW88xOEBL0N8XglS9iJE"
+			},
+			{
+				"sid": "welcome.site.description",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"mf": "default",
+				"nstr": [
+					"The site dashboard lets you know what's been happening in this particular site."
+				],
+				"gstr": "The site dashboard lets you know what's been happening in this particular site.",
+				"guid": "LFDNhc3x4IOU2jEMEDAutCGuf0RLtaFpI9Npx5mEaHo"
+			},
+			{
+				"sid": "get.started.message",
+				"location": {
+					"startLine": 6,
+					"endLine": 6
+				},
+				"mf": "default",
+				"nstr": [
+					"Let's get you started..."
+				],
+				"gstr": "Let's get you started...",
+				"guid": "Hl2jAekbOlU5b2UgbSDPKnsTR1-LeGI_x1vrWZmXIc4"
+			},
+			{
+				"sid": "panel.delete.header",
+				"location": {
+					"startLine": 8,
+					"endLine": 8
+				},
+				"mf": "default",
+				"nstr": [
+					"Confirm Removal"
+				],
+				"gstr": "Confirm Removal",
+				"guid": "0HBlSg4TQpBa_3gnTevKWAo91w1FXZmnFD20mezdFn0"
+			},
+			{
+				"sid": "panel.delete.msg",
+				"location": {
+					"startLine": 9,
+					"endLine": 9
+				},
+				"mf": "default",
+				"nstr": [
+					"Are you sure you want to permanently remove the assistance panel from this dashboard?"
+				],
+				"gstr": "Are you sure you want to permanently remove the assistance panel from this dashboard?",
+				"guid": "311BhkRDuAPx8E5vVnHKZLqTXbf6R7wDXiVjvJSYdbs"
+			},
+			{
+				"sid": "panel.delete.fail",
+				"location": {
+					"startLine": 10,
+					"endLine": 10
+				},
+				"mf": "default",
+				"nstr": [
+					"Unable to remove dashlet."
+				],
+				"gstr": "Unable to remove dashlet.",
+				"guid": "NRkVbdTNHz_qlna4LgnOAPki1p82gd23HqBhboT0FCM"
+			},
+			{
+				"sid": "welcome.close",
+				"location": {
+					"startLine": 12,
+					"endLine": 12
+				},
+				"mf": "default",
+				"nstr": [
+					"Remove"
+				],
+				"gstr": "Remove",
+				"guid": "EwYyoBOiJdg6oM-YE3IceFEdrI4YodM54PJ9lxi5coA"
+			},
+			{
+				"sid": "welcome.user.tutorial.title",
+				"location": {
+					"startLine": 14,
+					"endLine": 14
+				},
+				"mf": "default",
+				"nstr": [
+					"Learning"
+				],
+				"gstr": "Learning",
+				"guid": "Dzd-t_8JGLQYnlP7l4_2CRVb4ogwRapR7Pv_eri26N0"
+			},
+			{
+				"sid": "welcome.user.tutorial.description",
+				"location": {
+					"startLine": 15,
+					"endLine": 15
+				},
+				"mf": "default",
+				"nstr": [
+					"See what you can do with Alfresco by watching a video tutorial."
+				],
+				"gstr": "See what you can do with Alfresco by watching a video tutorial.",
+				"guid": "cq7dB3PO5aldkcR0mnQAuz30CtWgT3tVz7pQTb0Fo8E"
+			},
+			{
+				"sid": "welcome.user.tutorial.link",
+				"location": {
+					"startLine": 16,
+					"endLine": 16
+				},
+				"mf": "default",
+				"nstr": [
+					"View the tutorials"
+				],
+				"gstr": "View the tutorials",
+				"guid": "Kd8IjUiDGWqwJ8_wCe9j8IPCULuggAu07-69RVwUGsE"
+			},
+			{
+				"sid": "welcome.user.sites.title",
+				"location": {
+					"startLine": 18,
+					"endLine": 18
+				},
+				"mf": "default",
+				"nstr": [
+					"Sharing"
+				],
+				"gstr": "Sharing",
+				"guid": "yzKCcxaBfHVKgCT65Yqwp34_PqIAGgb63qGEv7X4JRo"
+			},
+			{
+				"sid": "welcome.user.sites.description",
+				"location": {
+					"startLine": 19,
+					"endLine": 19
+				},
+				"mf": "default",
+				"nstr": [
+					"Create a site to share content with other site members."
+				],
+				"gstr": "Create a site to share content with other site members.",
+				"guid": "sU0ERYq-NYM1suS9gBdoAY_rZ7GgozUoC2ODYyZo_68"
+			},
+			{
+				"sid": "welcome.user.sites.link",
+				"location": {
+					"startLine": 20,
+					"endLine": 20
+				},
+				"mf": "default",
+				"nstr": [
+					"Create a site"
+				],
+				"gstr": "Create a site",
+				"guid": "jtWkUsCWeOhFAHH9cyWJg3pnZTO6EXkp-wS_VsFxMnE"
+			},
+			{
+				"sid": "welcome.user.profile.title",
+				"location": {
+					"startLine": 22,
+					"endLine": 22
+				},
+				"mf": "default",
+				"nstr": [
+					"Personalizing"
+				],
+				"gstr": "Personalizing",
+				"guid": "EvF0tZmcww2tlRFKWqnWSDHmN__vnbBi-RLjXQUqGlM"
+			},
+			{
+				"sid": "welcome.user.profile.description",
+				"location": {
+					"startLine": 23,
+					"endLine": 23
+				},
+				"mf": "default",
+				"nstr": [
+					"Update your personal and business information so others can get to know you."
+				],
+				"gstr": "Update your personal and business information so others can get to know you.",
+				"guid": "Od4t7qwpOzcjCy82k9h-8jpdK3p5Feiy8qHkcBdbs8g"
+			},
+			{
+				"sid": "welcome.user.profile.link",
+				"location": {
+					"startLine": 24,
+					"endLine": 24
+				},
+				"mf": "default",
+				"nstr": [
+					"Edit your profile"
+				],
+				"gstr": "Edit your profile",
+				"guid": "dGqwaQvTpU3JFzGx7FxOgalBei43MI1PoD4Um6snUR8"
+			},
+			{
+				"sid": "welcome.user.dashboard.title",
+				"location": {
+					"startLine": 26,
+					"endLine": 26
+				},
+				"mf": "default",
+				"nstr": [
+					"Customizing"
+				],
+				"gstr": "Customizing",
+				"guid": "oaEMzNKQDA6D0ZxLsgWbK9Asm5vGm8mqaOrfV3ifMlE"
+			},
+			{
+				"sid": "welcome.user.dashboard.description",
+				"location": {
+					"startLine": 27,
+					"endLine": 27
+				},
+				"mf": "default",
+				"nstr": [
+					"Set up your dashboard to show the information you want to see."
+				],
+				"gstr": "Set up your dashboard to show the information you want to see.",
+				"guid": "7hYl8_UBb4dBVjKwIs5Ss29v7cg1culTTUQNTK4aAw0"
+			},
+			{
+				"sid": "welcome.user.dashboard.link",
+				"location": {
+					"startLine": 28,
+					"endLine": 28
+				},
+				"mf": "default",
+				"nstr": [
+					"Customize your dashboard"
+				],
+				"gstr": "Customize your dashboard",
+				"guid": "IySJzAxorEnDt5PhB1lErXiAOn_qlIbmoNDT_77W2Ns"
+			},
+			{
+				"sid": "welcome.user.explore.title",
+				"location": {
+					"startLine": 30,
+					"endLine": 30
+				},
+				"mf": "default",
+				"nstr": [
+					"Exploring"
+				],
+				"gstr": "Exploring",
+				"guid": "lNCvVsgpTSKpr39mRmojNPuHOr-txvsV8NzkcfIxUpE"
+			},
+			{
+				"sid": "welcome.user.explore.description",
+				"location": {
+					"startLine": 31,
+					"endLine": 31
+				},
+				"mf": "default",
+				"nstr": [
+					"Have a look at the sites already in Alfresco. You can visit public sites and join them straightaway."
+				],
+				"gstr": "Have a look at the sites already in Alfresco. You can visit public sites and join them straightaway.",
+				"guid": "hA5l02jvfwLhJUrTJwk5shcVXoi5xjUO8TI2KfcTSSA"
+			},
+			{
+				"sid": "welcome.user.explore.link",
+				"location": {
+					"startLine": 32,
+					"endLine": 32
+				},
+				"mf": "default",
+				"nstr": [
+					"View all sites"
+				],
+				"gstr": "View all sites",
+				"guid": "FdjstiwWjJHZeBQyRFGvayIrBA1A1Q8A44EFiaRpgc4"
+			},
+			{
+				"sid": "welcome.site.dashboard.title",
+				"location": {
+					"startLine": 34,
+					"endLine": 34
+				},
+				"mf": "default",
+				"nstr": [
+					"Customizing"
+				],
+				"gstr": "Customizing",
+				"guid": "C0xFmTN5j00pG2pEoc5qD9XwfMp5NnIHyyooJCwdcmI"
+			},
+			{
+				"sid": "welcome.site.dashboard.description",
+				"location": {
+					"startLine": 35,
+					"endLine": 35
+				},
+				"mf": "default",
+				"nstr": [
+					"Set up this dashboard to show information you want others to see."
+				],
+				"gstr": "Set up this dashboard to show information you want others to see.",
+				"guid": "jSsDMOjgzLle4wBpQciLVaV7kIWOO15lLvWjFT2fsj8"
+			},
+			{
+				"sid": "welcome.site.dashboard.link",
+				"location": {
+					"startLine": 36,
+					"endLine": 36
+				},
+				"mf": "default",
+				"nstr": [
+					"Customize the site dashboard"
+				],
+				"gstr": "Customize the site dashboard",
+				"guid": "k_sZf4xYFd3q_jShZ4KCg3pMyb7k30h_GJzCOhjXh2Q"
+			},
+			{
+				"sid": "welcome.site.moderated.title",
+				"location": {
+					"startLine": 38,
+					"endLine": 38
+				},
+				"mf": "default",
+				"nstr": [
+					"Joining"
+				],
+				"gstr": "Joining",
+				"guid": "C3Bpk8ksl0oRqtnFh1rqmccVNArfSSLDaxQYufhd8Yg"
+			},
+			{
+				"sid": "welcome.site.moderated.description",
+				"location": {
+					"startLine": 39,
+					"endLine": 39
+				},
+				"mf": "default",
+				"nstr": [
+					"This site's membership is moderated. You can request to join and a site manager will be notified."
+				],
+				"gstr": "This site's membership is moderated. You can request to join and a site manager will be notified.",
+				"guid": "TDCRo5CmTHxib6eq6zDJVk_HZdONjyv7NWsdRc-olL4"
+			},
+			{
+				"sid": "welcome.site.moderated.link",
+				"location": {
+					"startLine": 40,
+					"endLine": 40
+				},
+				"mf": "default",
+				"nstr": [
+					"Request to join"
+				],
+				"gstr": "Request to join",
+				"guid": "z7pget80mARdHz2d5oVY8rQKjU718-IHuOfSPexFR64"
+			},
+			{
+				"sid": "welcome.site.upload.title",
+				"location": {
+					"startLine": 42,
+					"endLine": 42
+				},
+				"mf": "default",
+				"nstr": [
+					"Collaborating"
+				],
+				"gstr": "Collaborating",
+				"guid": "YjY9B7bbslXXS_BZu5t0flKRmJBYbvJXy7WtcMrnbAM"
+			},
+			{
+				"sid": "welcome.site.upload.description",
+				"location": {
+					"startLine": 43,
+					"endLine": 43
+				},
+				"mf": "default",
+				"nstr": [
+					"Upload content to the document library to start collaborating with others."
+				],
+				"gstr": "Upload content to the document library to start collaborating with others.",
+				"guid": "-mfz92vriJPFOruq0CrewWec5ztycvbhGR56ZCSKccw"
+			},
+			{
+				"sid": "welcome.site.upload.link",
+				"location": {
+					"startLine": 44,
+					"endLine": 44
+				},
+				"mf": "default",
+				"nstr": [
+					"Upload content"
+				],
+				"gstr": "Upload content",
+				"guid": "-PJoTPxUYJLIwWOLCu8zldxDGyaXYY9Hsex1AGb6w1I"
+			},
+			{
+				"sid": "welcome.site.invite.title",
+				"location": {
+					"startLine": 46,
+					"endLine": 46
+				},
+				"mf": "default",
+				"nstr": [
+					"Inviting"
+				],
+				"gstr": "Inviting",
+				"guid": "6ogdr7A0_gwlw-ljmLYVDzrSJoigK6v7Bgp0Qpk6lmM"
+			},
+			{
+				"sid": "welcome.site.invite.description",
+				"location": {
+					"startLine": 47,
+					"endLine": 47
+				},
+				"mf": "default",
+				"nstr": [
+					"Start inviting others to join your site."
+				],
+				"gstr": "Start inviting others to join your site.",
+				"guid": "fKl1u7uNfFUT5Jsq63a4keItOXxeOXevvCvOe8tgeBc"
+			},
+			{
+				"sid": "welcome.site.invite.link",
+				"location": {
+					"startLine": 48,
+					"endLine": 48
+				},
+				"mf": "default",
+				"nstr": [
+					"Invite people"
+				],
+				"gstr": "Invite people",
+				"guid": "AL3Ti9Vq1Q9-WfGSOlvyPjteL7dQ0Jg7KvwJGfGCv4Y"
+			},
+			{
+				"sid": "welcome.site.members.title",
+				"location": {
+					"startLine": 50,
+					"endLine": 50
+				},
+				"mf": "default",
+				"nstr": [
+					"Socializing"
+				],
+				"gstr": "Socializing",
+				"guid": "5mqaDtT14XgYTRi-WVMX4xmdeQGEZcg4iWnhPx5qlfU"
+			},
+			{
+				"sid": "welcome.site.members.description",
+				"location": {
+					"startLine": 51,
+					"endLine": 51
+				},
+				"mf": "default",
+				"nstr": [
+					"Find out who belongs to this site. From the member list you can view user profiles to get to know others."
+				],
+				"gstr": "Find out who belongs to this site. From the member list you can view user profiles to get to know others.",
+				"guid": "OYyKEvCSU3nWDCB9fWmXj5h-JDfOqqBAkAWYwo9rhcY"
+			},
+			{
+				"sid": "welcome.site.members.link",
+				"location": {
+					"startLine": 52,
+					"endLine": 52
+				},
+				"mf": "default",
+				"nstr": [
+					"View site members"
+				],
+				"gstr": "View site members",
+				"guid": "P92KXznSg66CZcQdToPezgdFAcXpp0tei9RImF088tw"
+			},
+			{
+				"sid": "welcome.site.browse.title",
+				"location": {
+					"startLine": 54,
+					"endLine": 54
+				},
+				"mf": "default",
+				"nstr": [
+					"Exploring"
+				],
+				"gstr": "Exploring",
+				"guid": "2xEEnWSco7FwAlnHENjdj7z2tX9hcRurv-r_f7VdrI8"
+			},
+			{
+				"sid": "welcome.site.browse.description",
+				"location": {
+					"startLine": 55,
+					"endLine": 55
+				},
+				"mf": "default",
+				"nstr": [
+					"Find out what content has been added to the site by browsing the document library."
+				],
+				"gstr": "Find out what content has been added to the site by browsing the document library.",
+				"guid": "kO8OlqPrZKO_KP88Z4QYR3PVYjUCg7oA_1dJbCgQnLM"
+			},
+			{
+				"sid": "welcome.site.browse.link",
+				"location": {
+					"startLine": 56,
+					"endLine": 56
+				},
+				"mf": "default",
+				"nstr": [
+					"Go to document library"
+				],
+				"gstr": "Go to document library",
+				"guid": "I1t1cPUy3locFAZ3wfj1n4hgCbRzysFljfBLOvzpJLE"
+			},
+			{
+				"sid": "welcome.cloud.sign-up.title",
+				"location": {
+					"startLine": 58,
+					"endLine": 58
+				},
+				"mf": "default",
+				"nstr": [
+					"Cloud"
+				],
+				"gstr": "Cloud",
+				"guid": "-QwKxl5l4G0bSHzunF6PDxbtFAjOGaw1gbMAPvbPvdw"
+			},
+			{
+				"sid": "welcome.cloud.sign-up.description",
+				"location": {
+					"startLine": 59,
+					"endLine": 59
+				},
+				"mf": "default",
+				"nstr": [
+					"Sign up today to claim your free network in the cloud."
+				],
+				"gstr": "Sign up today to claim your free network in the cloud.",
+				"guid": "Z8SdGcwUf6vyZv2DdWizfqlOPFLSidgQwHAdt8kRes4"
+			},
+			{
+				"sid": "welcome.cloud.sign-up.link",
+				"location": {
+					"startLine": 60,
+					"endLine": 60
+				},
+				"mf": "default",
+				"nstr": [
+					"Sign up"
+				],
+				"gstr": "Sign up",
+				"guid": "Uh32mWY8aps0Zd9KWVc47xITBfl4BUWL3y9F_B4oNWM"
+			},
+			{
+				"sid": "message.request-joining",
+				"location": {
+					"startLine": 62,
+					"endLine": 62
+				},
+				"mf": "default",
+				"nstr": [
+					"Requesting to add user ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" to site ",
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					"..."
+				],
+				"gstr": "Requesting to add user {{x}} to site {{x}}...",
+				"guid": "IWi0-MUz7xZe3ZAf4X68WugB14jsOWuPXAI8W2PZVt8"
+			},
+			{
+				"sid": "message.request-join-success",
+				"location": {
+					"startLine": 63,
+					"endLine": 63
+				},
+				"mf": "default",
+				"nstr": [
+					"Request to join site ",
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" successfully sent. You will now be returned to your personal dashboard."
+				],
+				"gstr": "Request to join site {{x}} successfully sent. You will now be returned to your personal dashboard.",
+				"guid": "oe6sXNrVCpir8UgtWITsu94Yf0pUexLFiUko3Ta_dpc"
+			},
+			{
+				"sid": "message.request-join-failure",
+				"location": {
+					"startLine": 64,
+					"endLine": 64
+				},
+				"mf": "default",
+				"nstr": [
+					"Could not make the request to add user ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" to site ",
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					"."
+				],
+				"gstr": "Could not make the request to add user {{x}} to site {{x}}.",
+				"guid": "9kYNZ3_ktVpcuJuuRdX__VHqhk2anewy39BA-ieCop8"
+			}
+		]
+	}
+}

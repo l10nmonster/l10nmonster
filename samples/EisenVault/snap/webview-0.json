@@ -1,0 +1,144 @@
+{
+	"dashlets/webview-default.get_en.properties": {
+		"id": "dashlets/webview-default.get_en.properties",
+		"channel": "default",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"prj": "webview",
+		"segments": [
+			{
+				"sid": "label.defaultText",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"mf": "default",
+				"nstr": [
+					"Please use the Configure link to enter the URL of the web page you wish to display"
+				],
+				"gstr": "Please use the Configure link to enter the URL of the web page you wish to display",
+				"guid": "aEl7teKlCV7HKIC-OPv_prNQPwpaRzw60o4hAdE15GA"
+			}
+		]
+	},
+	"dashlets/webview.get_en.properties": {
+		"id": "dashlets/webview.get_en.properties",
+		"channel": "default",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"prj": "webview",
+		"segments": [
+			{
+				"sid": "label.header",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"mf": "default",
+				"nstr": [
+					"Web View"
+				],
+				"gstr": "Web View",
+				"guid": "KDBdUg-NyvIug1C7Rz4pKcBurbMKwVTWuh_9fF-84E4"
+			},
+			{
+				"sid": "label.noWebPage",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"mf": "default",
+				"nstr": [
+					"No web page to display."
+				],
+				"gstr": "No web page to display.",
+				"guid": "Tno6fdToJWn893cGorCoah96RqkheH8C4KN9ItLLcaE"
+			},
+			{
+				"sid": "label.notSecureHeader",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"mf": "default",
+				"nstr": [
+					"Web View"
+				],
+				"gstr": "Web View",
+				"guid": "qEmg83eG4VzuormYT5QzxsU8gVIOBWSxN-d3erkcNL8"
+			},
+			{
+				"sid": "label.notSecurePage",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"mf": "default",
+				"nstr": [
+					"The domain of the page to display is not listed as a trusted domain inside your server's IFramePolicy config."
+				],
+				"gstr": "The domain of the page to display is not listed as a trusted domain inside your server's IFramePolicy config.",
+				"guid": "vnTi9G3JfmxMw4TI_DbSAMrv0zvUXjl7xMZlaZqNC_0"
+			},
+			{
+				"sid": "form.url.validation.failure",
+				"location": {
+					"startLine": 5,
+					"endLine": 5
+				},
+				"mf": "default",
+				"nstr": [
+					"The domain of the url is not listed as a trusted domain inside your server's IFramePolicy config."
+				],
+				"gstr": "The domain of the url is not listed as a trusted domain inside your server's IFramePolicy config.",
+				"guid": "PW3HC0pFONNYOo4XrRLAjPfzrPhU7ql3Vcb-RLr5q3I"
+			},
+			{
+				"sid": "dashlet.help",
+				"location": {
+					"startLine": 8,
+					"endLine": 9
+				},
+				"mf": "default",
+				"nstr": [
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"This dashlet shows the website of your choice. Click the edit icon on the dashlet to change the web address.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					},
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"Clicking the dashlet title opens the website in a separate window.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					}
+				],
+				"gstr": "{{bx}}This dashlet shows the website of your choice. Click the edit icon on the dashlet to change the web address.{{ex}}{{bx}}Clicking the dashlet title opens the website in a separate window.{{ex}}",
+				"guid": "2qtigSYsaPbxFxLIPrzVUQ4OvX_Er6wq1nvCsmIXh4I",
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				}
+			}
+		]
+	}
+}

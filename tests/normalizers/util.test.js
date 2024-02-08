@@ -1,9 +1,10 @@
 /* eslint-disable camelcase */
-import {
+const { utils } = require('@l10nmonster/helpers');
+const {
     flattenNormalizedSourceV1, extractNormalizedPartsV1,
     flattenNormalizedSourceToXmlV1, extractNormalizedPartsFromXmlV1,
     extractStructuredNotes, getTUMaps,
- } from '../../src/normalizers/util.js';
+ } = utils;
 
 const nsrc1 = [
     { t: 'x', v: "<icon name='location'/>" },
@@ -76,11 +77,11 @@ const xmlPhMap1 = {
         v1: "e_ex_color",
     }
 };
-const tuWithPh = [ 
+const tuWithPh = [
     {
         "guid": "foo",
         "notes": {
-            "ph": { 
+            "ph": {
                 "{0}": { "sample": "12 May, 2023", "desc": "Departure date" },
                 "{1}": { "sample": "23 May, 2023", "desc": "Return date" },
                 "{2}": { "sample": "2", "desc": "Number of travellers" }
@@ -104,7 +105,7 @@ const tuWithPh = [
         ],
     },
 ];
-const tuWithPhMap =       {
+const tuWithPhMap = {
     "contentMap": {
       "foo": "Round Trip, {{a_x_0}} - {{b_x_1}} • {{c_x_2}}"
     },
@@ -209,5 +210,5 @@ describe('Normalizers Util tests', () => {
     test('getTUMaps', async () => {
         expect(getTUMaps(tuWithPh))
             .toMatchObject(tuWithPhMap);
-    });    
+    });
 });

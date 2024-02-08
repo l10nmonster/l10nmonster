@@ -1,0 +1,8 @@
+{
+  "name": "multiproject-demo",
+  "dependencies": {
+    "@l10nmonster/helpers": "^1",
+    "@l10nmonster/helpers-ios": "^1",
+    "@l10nmonster/helpers-android": "^1"
+  }
+}

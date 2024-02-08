@@ -1,0 +1,91 @@
+{
+	"dashlets/imagesummary.get_en.properties": {
+		"id": "dashlets/imagesummary.get_en.properties",
+		"channel": "default",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"prj": "imagesummary",
+		"segments": [
+			{
+				"sid": "header.title",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"mf": "default",
+				"nstr": [
+					"Image Preview"
+				],
+				"gstr": "Image Preview",
+				"guid": "fOzFYWf5p9zLAoul1h5_L8PRFB9JVo_HcIXCbFZ22FY"
+			},
+			{
+				"sid": "label.noitems",
+				"location": {
+					"startLine": 2,
+					"endLine": 2
+				},
+				"mf": "default",
+				"nstr": [
+					"No items to display"
+				],
+				"gstr": "No items to display",
+				"guid": "0-GrFX12d4kQcyxamhrCI4tuDTExyjLmiUZ8exmZxDo"
+			},
+			{
+				"sid": "text.modified-by",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"mf": "default",
+				"nstr": [
+					"Modified by ",
+					{
+						"t": "x",
+						"v": "{0}"
+					}
+				],
+				"gstr": "Modified by {{x}}",
+				"guid": "7hvIhLuGVxH0OLkjSIpS2xfo-eU_VI1zH5GxHtGdhpM"
+			},
+			{
+				"sid": "text.selectfolder",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"mf": "default",
+				"nstr": [
+					"Select Image Folder in ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					"..."
+				],
+				"gstr": "Select Image Folder in {{x}}...",
+				"guid": "XPbxA8FEoDrdItRlt4KXXtwCJRKixsE78JnRZ9vBRHY"
+			},
+			{
+				"sid": "dashlet.help",
+				"location": {
+					"startLine": 6,
+					"endLine": 6
+				},
+				"mf": "default",
+				"nstr": [
+					"This dashlet shows a thumbnail of each image in the document library. Clicking a thumbnail opens the image in the current window."
+				],
+				"gstr": "This dashlet shows a thumbnail of each image in the document library. Clicking a thumbnail opens the image in the current window.",
+				"guid": "Ly4fkat27mxTxU9l3TSeFaUihGmSkMhBS1OmC1dHGfY"
+			}
+		]
+	}
+}

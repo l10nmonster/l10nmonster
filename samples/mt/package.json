@@ -1,0 +1,9 @@
+{
+    "name": "mt-demo",
+    "dependencies": {
+        "@l10nmonster/helpers": "^1",
+        "@l10nmonster/helpers-translated": "^1",
+        "@l10nmonster/helpers-json": "^1",
+        "@l10nmonster/helpers-demo": "^1"
+    }
+  }

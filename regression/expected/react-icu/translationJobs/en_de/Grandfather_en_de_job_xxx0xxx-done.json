@@ -7,78 +7,55 @@
 	"tus": [
 		{
 			"guid": "wUtgDUDVeLsT_x9VEGH_peG9Ujs3DvX1H3cvHtxgcjw",
-			"q": 70,
-			"src": "Welcome to react using react-i18next",
-			"tgt": "Willkommen zu react und react-i18next",
-			"ts": 1
+			"ntgt": [
+				"Willkommen zu react und react-i18next"
+			],
+			"ts": 1,
+			"q": 70
 		},
 		{
 			"guid": "cghma_NsjtZInytTsem0CwlHb1dS2hT2uQGVfDLNkaI",
-			"q": 70,
-			"nsrc": [
-				"To get started, edit ",
-				{
-					"t": "bx",
-					"v": "<a>"
-				},
-				"src/App.js",
-				{
-					"t": "ex",
-					"v": "</a>"
-				},
-				" and save to reload."
-			],
 			"ntgt": [
 				"Um loszulegen, ändere ",
 				{
 					"t": "bx",
-					"v": "<a>",
-					"v1": "a_bx_a"
+					"v": "<a>"
 				},
 				"src/App.js",
 				{
 					"t": "ex",
-					"v": "</a>",
-					"v1": "b_ex_a"
+					"v": "</a>"
 				},
 				" speicheren und neuladen."
 			],
-			"ts": 1
+			"ts": 1,
+			"q": 70
 		},
 		{
 			"guid": "B2tOpN7eXoM6vDTFJdnZEO-5fTC49LtcVxOOxviW7z8",
-			"q": 70,
-			"src": "Switch language between english and german using buttons above.",
-			"tgt": "Ändere die Sprachen zwischen deutsch und englisch mit Hilfe der beiden Schalter.",
-			"ts": 1
+			"ntgt": [
+				"Ändere die Sprachen zwischen deutsch und englisch mit Hilfe der beiden Schalter."
+			],
+			"ts": 1,
+			"q": 70
 		},
 		{
 			"guid": "mVpp2sfDV8h1yTpK3YpunsGCCyrOtgRsoijdn0rbpfo",
-			"q": 70,
-			"nsrc": [
-				"Welcome, ",
+			"ntgt": [
+				"Willkommen, ",
 				{
 					"t": "x",
 					"v": "{{name}}"
 				},
 				"!"
 			],
-			"ntgt": [
-				"Willkommen, ",
-				{
-					"t": "x",
-					"v": "{{name}}",
-					"v1": "a_x_name"
-				},
-				"!"
-			],
-			"ts": 1
+			"ts": 1,
+			"q": 70
 		},
 		{
 			"guid": "RLKDBvHhlr-qK3r-qduFToaGzxrPq1lCG1NlVq7u80s",
-			"q": 70,
-			"nsrc": [
-				"Welcome, ",
+			"ntgt": [
+				"Willkommen, ",
 				{
 					"t": "bx",
 					"v": "<a>"
@@ -93,26 +70,8 @@
 				},
 				"!"
 			],
-			"ntgt": [
-				"Willkommen, ",
-				{
-					"t": "bx",
-					"v": "<a>",
-					"v1": "a_bx_a"
-				},
-				{
-					"t": "x",
-					"v": "{{name}}",
-					"v1": "b_x_name"
-				},
-				{
-					"t": "ex",
-					"v": "</a>",
-					"v1": "c_ex_a"
-				},
-				"!"
-			],
-			"ts": 1
+			"ts": 1,
+			"q": 70
 		}
 	],
 	"updatedAt": "2022-05-29T00:00:00.000Z"

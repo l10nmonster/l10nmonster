@@ -1,0 +1,162 @@
+{
+	"dashlets/colleagues.get_en.properties": {
+		"id": "dashlets/colleagues.get_en.properties",
+		"channel": "default",
+		"modified": "2015-03-30T12:25:10.000Z",
+		"resourceFormat": "default",
+		"sourceLang": "en",
+		"targetLangs": [
+			"it",
+			"ja",
+			"pt-BR"
+		],
+		"prj": "colleagues",
+		"segments": [
+			{
+				"sid": "header",
+				"location": {
+					"startLine": 1,
+					"endLine": 1
+				},
+				"mf": "default",
+				"nstr": [
+					"Site Members"
+				],
+				"gstr": "Site Members",
+				"guid": "UQLku8Jgbj4t7oXKzYbS-N1q016ts3c93ZU5sHSqm7M"
+			},
+			{
+				"sid": "link.invite",
+				"location": {
+					"startLine": 3,
+					"endLine": 3
+				},
+				"mf": "default",
+				"nstr": [
+					"Invite"
+				],
+				"gstr": "Invite",
+				"guid": "IMup8Q-qpnRDXDpvhrXgM6oMmHeceIZeswR9_BPg-UA"
+			},
+			{
+				"sid": "link.all-members",
+				"location": {
+					"startLine": 4,
+					"endLine": 4
+				},
+				"mf": "default",
+				"nstr": [
+					"All Members"
+				],
+				"gstr": "All Members",
+				"guid": "I3DX1xbVZ6MDdYOsdpgUIKj0BsLDjNPcclfJTGbJyIg"
+			},
+			{
+				"sid": "pagination.template",
+				"location": {
+					"startLine": 7,
+					"endLine": 7
+				},
+				"mf": "default",
+				"nstr": [
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" - ",
+					{
+						"t": "x",
+						"v": "{1}"
+					},
+					" of ",
+					{
+						"t": "x",
+						"v": "{2}"
+					}
+				],
+				"gstr": "{{x}} - {{x}} of {{x}}",
+				"guid": "mLALtuF1QW-Bmat_BnqBWJoZuRPft920lMrphwmUgRE",
+				"rawNotes": "#{startRecord} - {endRecord} of {totalRecords}",
+				"notes": {
+					"desc": "#{startRecord} - {endRecord} of {totalRecords}"
+				}
+			},
+			{
+				"sid": "pagination.template2",
+				"location": {
+					"startLine": 9,
+					"endLine": 9
+				},
+				"mf": "default",
+				"nstr": [
+					"Shown the first ",
+					{
+						"t": "x",
+						"v": "{0}"
+					},
+					" members"
+				],
+				"gstr": "Shown the first {{x}} members",
+				"guid": "ydV8IMtAfS3uFzlz0sR5iGjM8A3xaZxhv7DpcaEObv8"
+			},
+			{
+				"sid": "empty.title",
+				"location": {
+					"startLine": 11,
+					"endLine": 11
+				},
+				"mf": "default",
+				"nstr": [
+					"You are the only site member."
+				],
+				"gstr": "You are the only site member.",
+				"guid": "Z7s4QyJAhYHCiMy_1QBsnWuFYjFGjeUweCymtEG5EI0"
+			},
+			{
+				"sid": "empty.description",
+				"location": {
+					"startLine": 12,
+					"endLine": 12
+				},
+				"mf": "default",
+				"nstr": [],
+				"gstr": "",
+				"guid": "izQWYgYqKwqWjsdbFGDGR2vStXjgSKPkDzfkUNC_dZY"
+			},
+			{
+				"sid": "dashlet.help",
+				"location": {
+					"startLine": 15,
+					"endLine": 16
+				},
+				"mf": "default",
+				"nstr": [
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"Use this dashlet to see who belongs to this site. You can click their name to view their profile and get to know them.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					},
+					{
+						"t": "bx",
+						"v": "<p>"
+					},
+					"Clicking All Members lets you see everyone in this site. If you're a site manager, click Invite to send out some site invitations.",
+					{
+						"t": "ex",
+						"v": "</p>"
+					}
+				],
+				"gstr": "{{bx}}Use this dashlet to see who belongs to this site. You can click their name to view their profile and get to know them.{{ex}}{{bx}}Clicking All Members lets you see everyone in this site. If you're a site manager, click Invite to send out some site invitations.{{ex}}",
+				"guid": "KTiNW5209TexcCzIt4JuDtEciEbxhHTDof1fPUXxPy8",
+				"rawNotes": "## Note to translators: Please retain the HTML tags in the dashlet.help message.",
+				"notes": {
+					"desc": "## Note to translators: Please retain the HTML tags in the dashlet.help message."
+				}
+			}
+		]
+	}
+}

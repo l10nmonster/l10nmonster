@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="base">[Asebay: <strike>%1$s</strike>-piggy]</string>
+	<string name="winter">[Interway isyay &lt;b>omingcay&lt;/b>-piggy]</string>
+	<string name="frozen">[Ozenfray: &lt;strike>%1$s&lt;/strike>-piggy]</string>
+	<string name="house">[ousehay: %1$s ottomay: %2$s-piggy]</string>
+	<string name="nothing">[Iyay owknay 100%%-piggy]</string>
+	<string name="everything">[Iyay owknay&lt;strong>&lt;font color="%1$s">%2$s&lt;/font>%%&lt;/strong>-piggy]</string>
+</resources>

@@ -1,0 +1,8 @@
+{
+    "name": "java-demo",
+    "dependencies": {
+        "@l10nmonster/helpers": "^1",
+        "@l10nmonster/helpers-java": "^1",
+        "@l10nmonster/helpers-demo": "^1"
+    }
+  }

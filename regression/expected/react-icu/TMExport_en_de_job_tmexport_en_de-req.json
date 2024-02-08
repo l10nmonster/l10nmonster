@@ -9,17 +9,15 @@
 			"sid": "title",
 			"guid": "wUtgDUDVeLsT_x9VEGH_peG9Ujs3DvX1H3cvHtxgcjw",
 			"seq": 1011,
-			"src": "Welcome to react using react-i18next",
-			"rid": "public/locales/en/translations.json",
-			"ts": 1
+			"nsrc": [
+				"Welcome to react using react-i18next"
+			],
+			"rid": "public/locales/en/translations.json"
 		},
 		{
 			"sid": "description.part1",
 			"guid": "cghma_NsjtZInytTsem0CwlHb1dS2hT2uQGVfDLNkaI",
 			"seq": 1010,
-			"src": "To get started, edit <a>src/App.js</a> and save to reload.",
-			"rid": "public/locales/en/translations.json",
-			"ts": 1,
 			"nsrc": [
 				"To get started, edit ",
 				{
@@ -32,23 +30,22 @@
 					"v": "</a>"
 				},
 				" and save to reload."
-			]
+			],
+			"rid": "public/locales/en/translations.json"
 		},
 		{
 			"sid": "description.part2",
 			"guid": "B2tOpN7eXoM6vDTFJdnZEO-5fTC49LtcVxOOxviW7z8",
 			"seq": 1009,
-			"src": "Switch language between english and german using buttons above.",
-			"rid": "public/locales/en/translations.json",
-			"ts": 1
+			"nsrc": [
+				"Switch language between english and german using buttons above."
+			],
+			"rid": "public/locales/en/translations.json"
 		},
 		{
 			"sid": "welcome.name1",
 			"guid": "mVpp2sfDV8h1yTpK3YpunsGCCyrOtgRsoijdn0rbpfo",
 			"seq": 1008,
-			"src": "Welcome, {{name}}!",
-			"rid": "public/locales/en/translations.json",
-			"ts": 1,
 			"nsrc": [
 				"Welcome, ",
 				{
@@ -56,15 +53,13 @@
 					"v": "{{name}}"
 				},
 				"!"
-			]
+			],
+			"rid": "public/locales/en/translations.json"
 		},
 		{
 			"sid": "welcome.name2",
 			"guid": "RLKDBvHhlr-qK3r-qduFToaGzxrPq1lCG1NlVq7u80s",
 			"seq": 1007,
-			"src": "Welcome, <a>{{name}}</a>!",
-			"rid": "public/locales/en/translations.json",
-			"ts": 1,
 			"nsrc": [
 				"Welcome, ",
 				{
@@ -80,15 +75,16 @@
 					"v": "</a>"
 				},
 				"!"
-			]
+			],
+			"rid": "public/locales/en/translations.json"
 		},
 		{
 			"sid": "homeTitle",
 			"guid": "Yhu_PT_gxnNEP6i5cnfpdYCQ577w0kcHlKdPIp1rHWM",
+			"notes": {
+				"desc": "header - This is the welcome message on the home page"
+			},
 			"seq": 1023,
-			"src": "<b>Welcome</b> to $t(brand:portalName).",
-			"rid": "public/locales/en/app.json",
-			"ts": 1,
 			"nsrc": [
 				{
 					"t": "bx",
@@ -106,17 +102,15 @@
 				},
 				"."
 			],
-			"notes": {
-				"desc": "header - This is the welcome message on the home page"
-			}
+			"rid": "public/locales/en/app.json"
 		},
 		{
 			"sid": "flightHome.title",
 			"guid": "8QAVB3VDxOUUy1YKjJmy1pgdVR0m497ZhCOVS16GBQM",
+			"notes": {
+				"desc": "header - welcome message of flight flow"
+			},
 			"seq": 1022,
-			"src": "<strong>Welcome back</strong> to travel.",
-			"rid": "public/locales/en/app.json",
-			"ts": 1,
 			"nsrc": [
 				{
 					"t": "bx",
@@ -129,46 +123,47 @@
 				},
 				" to travel."
 			],
-			"notes": {
-				"desc": "header - welcome message of flight flow"
-			}
+			"rid": "public/locales/en/app.json"
 		},
 		{
 			"sid": "flightHome.subtitle",
 			"guid": "AGkOSI-2cbdKB0hwucpDtAhetdvAytGYurYD7hvcezM",
-			"seq": 1021,
-			"src": "Book the trip you've been waiting for.",
-			"rid": "public/locales/en/app.json",
-			"ts": 1,
 			"notes": {
 				"desc": "subtitle - flight landing page subheading"
-			}
+			},
+			"seq": 1021,
+			"nsrc": [
+				"Book the trip you've been waiting for."
+			],
+			"rid": "public/locales/en/app.json"
 		},
 		{
 			"sid": "pickerTraveler_one",
 			"isSuffixPluralized": true,
 			"guid": "YpoIEBkIfKjKzReUIQX2mqEn2bLQ8YPiTSt1FDHIkI4",
 			"seq": 1020,
-			"src": "Traveler",
-			"rid": "public/locales/en/app.json",
-			"ts": 1
+			"nsrc": [
+				"Traveler"
+			],
+			"rid": "public/locales/en/app.json"
 		},
 		{
 			"sid": "pickerTraveler_other",
 			"isSuffixPluralized": true,
 			"guid": "sTGxO3wYiDt-d_Nrg22Dm5CCdRJYPprzgXAZ9M2S81w",
 			"seq": 1019,
-			"src": "Travelers",
-			"rid": "public/locales/en/app.json",
-			"ts": 1
+			"nsrc": [
+				"Travelers"
+			],
+			"rid": "public/locales/en/app.json"
 		},
 		{
 			"sid": "warningMessage",
 			"guid": "KuM3WlVRMaBLFo6E0fg4vATKm955gBDBbAGTLdLITAk",
+			"notes": {
+				"desc": "copy - passenger count picker warning message"
+			},
 			"seq": 1018,
-			"src": "You can search for up to {{maximumCount}} travelers",
-			"rid": "public/locales/en/app.json",
-			"ts": 1,
 			"nsrc": [
 				"You can search for up to ",
 				{
@@ -177,17 +172,15 @@
 				},
 				" travelers"
 			],
-			"notes": {
-				"desc": "copy - passenger count picker warning message"
-			}
+			"rid": "public/locales/en/app.json"
 		},
 		{
 			"sid": "termsAndConditions",
 			"guid": "qJxPXXst0F8DLkzVVG63hebwXP80N7CFgJfuXtr8mM8",
+			"notes": {
+				"desc": "copy - price  terms and conditions copy"
+			},
 			"seq": 1024,
-			"src": "<p>$t(brand:portalName) price services and notifications. $t(brand:clientName) work hard to ensure the accuracy of its predictions. </p>",
-			"rid": "public/locales/en/app.json",
-			"ts": 1,
 			"nsrc": [
 				{
 					"t": "bx",
@@ -208,18 +201,16 @@
 					"v": "</p>"
 				}
 			],
-			"notes": {
-				"desc": "copy - price  terms and conditions copy"
-			}
+			"rid": "public/locales/en/app.json"
 		},
 		{
 			"sid": "timeCount.day_one",
 			"isSuffixPluralized": true,
 			"guid": "bws_LnxH_75t_Jdprc_zeTdGgUOWjzRFnDe6YfvjOYg",
+			"notes": {
+				"desc": "copy - time copy for day singular"
+			},
 			"seq": 1017,
-			"src": "{{count}} day",
-			"rid": "public/locales/en/app.json",
-			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -227,18 +218,16 @@
 				},
 				" day"
 			],
-			"notes": {
-				"desc": "copy - time copy for day singular"
-			}
+			"rid": "public/locales/en/app.json"
 		},
 		{
 			"sid": "timeCount.day_other",
 			"isSuffixPluralized": true,
 			"guid": "Jqw-OIo4U6fG5lyDl3mUsrBOVyxTbyNSBtYPAz3soPQ",
+			"notes": {
+				"desc": "copy - time copy for days plural"
+			},
 			"seq": 1016,
-			"src": "{{count}} days",
-			"rid": "public/locales/en/app.json",
-			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -246,18 +235,16 @@
 				},
 				" days"
 			],
-			"notes": {
-				"desc": "copy - time copy for days plural"
-			}
+			"rid": "public/locales/en/app.json"
 		},
 		{
 			"sid": "timeCount.hour_one",
 			"isSuffixPluralized": true,
 			"guid": "u-b8MhBsF9k7Q4SquD9h_vGYUIfEhi_gRzuA9i36PfY",
+			"notes": {
+				"desc": "copy - time copy for hour singular"
+			},
 			"seq": 1015,
-			"src": "{{count}} hour",
-			"rid": "public/locales/en/app.json",
-			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -265,18 +252,16 @@
 				},
 				" hour"
 			],
-			"notes": {
-				"desc": "copy - time copy for hour singular"
-			}
+			"rid": "public/locales/en/app.json"
 		},
 		{
 			"sid": "timeCount.hour_other",
 			"isSuffixPluralized": true,
 			"guid": "haJeL1bazwQ1yTntetVJeSFWmn5a9hPwuTBVoh9ISjo",
+			"notes": {
+				"desc": "copy - time copy for hours plural"
+			},
 			"seq": 1014,
-			"src": "{{count}} hours",
-			"rid": "public/locales/en/app.json",
-			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -284,18 +269,16 @@
 				},
 				" hours"
 			],
-			"notes": {
-				"desc": "copy - time copy for hours plural"
-			}
+			"rid": "public/locales/en/app.json"
 		},
 		{
 			"sid": "timeCount.second_one",
 			"isSuffixPluralized": true,
 			"guid": "YjPgqgOdTMkHKTRSeQTqRnPKYg-aPkWmF4PtExUoI6Q",
+			"notes": {
+				"desc": "copy - time copy for second singular"
+			},
 			"seq": 1013,
-			"src": "{{count}} second",
-			"rid": "public/locales/en/app.json",
-			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -303,18 +286,16 @@
 				},
 				" second"
 			],
-			"notes": {
-				"desc": "copy - time copy for second singular"
-			}
+			"rid": "public/locales/en/app.json"
 		},
 		{
 			"sid": "timeCount.second_other",
 			"isSuffixPluralized": true,
 			"guid": "x1xQynOoxM1xfd0g5iSmzZfrIWxwjHfV3x-1xaoiFJk",
+			"notes": {
+				"desc": "copy - time copy for seconds plural"
+			},
 			"seq": 1012,
-			"src": "{{count}} seconds",
-			"rid": "public/locales/en/app.json",
-			"ts": 1,
 			"nsrc": [
 				{
 					"t": "x",
@@ -322,9 +303,7 @@
 				},
 				" seconds"
 			],
-			"notes": {
-				"desc": "copy - time copy for seconds plural"
-			}
+			"rid": "public/locales/en/app.json"
 		}
 	]
 }

@@ -1,0 +1,7 @@
+{
+    "name": "java-sample",
+    "dependencies": {
+        "@l10nmonster/helpers": "^1",
+        "@l10nmonster/helpers-java": "^1"
+    }
+  }

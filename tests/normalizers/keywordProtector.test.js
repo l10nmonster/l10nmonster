@@ -1,9 +1,9 @@
 
-import { keywordTranslatorMaker } from '../../src/normalizers/keywordTranslatorMaker';
+const { normalizers } = require('@l10nmonster/helpers');
 
 describe('Keyword Translator tests - targetLang', () => {
 
-    const [ decoder, encoder ] = keywordTranslatorMaker('kw', {Targaryen: {ja: 'ホッペー', ko: '홉 따는 사람'}, 'Price Slash': {}});
+    const [ decoder, encoder ] = normalizers.keywordTranslatorMaker('kw', {Targaryen: {ja: 'ホッペー', ko: '홉 따는 사람'}, 'Price Slash': {}});
 
     test('Keyword with mapped values', async() => {
 
@@ -38,7 +38,7 @@ describe('Keyword Translator tests - targetLang', () => {
 
 describe('Keyword Translator tests - prj', () => {
 
-    const [ decoder, encoder ] = keywordTranslatorMaker('kw', {Targaryen: {'l10n-adhoc-requests': 'product1', 'other-repo': 'product2'}, 'Price Slash': {}});
+    const [ decoder, encoder ] = normalizers.keywordTranslatorMaker('kw', {Targaryen: {'l10n-adhoc-requests': 'product1', 'other-repo': 'product2'}, 'Price Slash': {}});
 
     test('keyword with mapped values', async() => {
 
@@ -73,7 +73,7 @@ describe('Keyword Translator tests - prj', () => {
 describe('Keyword Translator tests - conflicting kw', () => {
 
     // eslint-disable-next-line no-unused-vars
-    const [ decoder, encoder ] = keywordTranslatorMaker('kw', {Targaryen: {}, 'House Targaryen': {}, House: {}});
+    const [ decoder, encoder ] = normalizers.keywordTranslatorMaker('kw', {Targaryen: {}, 'House Targaryen': {}, House: {}});
 
     test('keyword without mapped values', async() => {
 
@@ -91,14 +91,14 @@ describe('Keyword Translator tests', () => {
 
     test('No key map', async() => {
         expect(() => {
-            keywordTranslatorMaker();
-        }).toThrowError('You have to specify a keyword map to keywordTranslatorMaker');
+            normalizers.keywordTranslatorMaker();
+        }).toThrow('You have to specify a keyword map to keywordTranslatorMaker');
     });
 
     test('Empty key map', async() => {
         expect(() => {
-            keywordTranslatorMaker('foo', {});
-        }).toThrowError('You have to specify a keyword map to keywordTranslatorMaker');
+            normalizers.keywordTranslatorMaker('foo', {});
+        }).toThrow('You have to specify a keyword map to keywordTranslatorMaker');
     });
 
 });

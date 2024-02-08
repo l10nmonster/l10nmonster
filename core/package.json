@@ -1,0 +1,38 @@
+{
+    "name": "@l10nmonster/core",
+    "version": "1.0.1",
+    "description": "L10n Monster Core Module",
+    "exports": {
+        "import": "./src/index.js",
+        "require": "./out/index.cjs"
+    },
+    "main": "out/index.cjs",
+    "type": "module",
+    "scripts": {
+        "esbuild": "esbuild src/index.js --bundle --external:@l10nmonster/helpers --external:@l10nmonster/words-count --outfile=out/index.cjs --format=cjs --platform=node --sourcemap",
+        "esbuild-watch": "npm run esbuild -- --watch"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/l10nmonster/l10nmonster.git"
+    },
+    "author": "Diego Lagunas",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/l10nmonster/l10nmonster/issues"
+    },
+    "homepage": "https://github.com/l10nmonster/l10nmonster#readme",
+    "engines": {
+        "node": ">=18"
+    },
+    "dependencies": {
+        "words-count": "^2.0.2"
+    },
+    "devDependencies": {
+        "esbuild": "^0.19.5",
+        "eslint": "^8"
+    },
+    "peerDependencies": {
+        "@l10nmonster/helpers": "^1"
+    }
+}

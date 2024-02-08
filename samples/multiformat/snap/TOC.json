@@ -1,0 +1,25 @@
+{
+	"default-0.json": {
+		"mixedResource": {
+			"id": "mixedResource",
+			"channel": "channel1",
+			"modified": "2022-02-10T01:19:22.492Z",
+			"resourceFormat": "MNFv1",
+			"sourceLang": "en",
+			"targetLangs": [
+				"oink"
+			],
+			"subresources": [
+				{
+					"id": "help",
+					"resourceFormat": "html",
+					"raw": "<div><div>First do this</div><div>Then do that</div></div>",
+					"guids": [
+						"3LsarYa-OleFAfY3Ot9InBvwSMQMOsPA6vw211GySIw",
+						"4UjUnahIjane1RbseSl7HSSoX3LCsVq_IfmCLE4Ktas"
+					]
+				}
+			]
+		}
+	}
+}

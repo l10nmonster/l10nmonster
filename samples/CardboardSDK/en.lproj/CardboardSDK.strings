@@ -33,10 +33,10 @@
  */
 
 /* Back button label used to go back to the previous screen. (15 chars) */
-"BackButtonLabel" = "Back";
+"BackButtonLabel" = "Back & not escaped as ios";
 
 /* Label of the app title bar when on the QR code scanner screen. (45 chars) */
-"NavTitleLabel" = "QR Scan";
+"NavTitleLabel" = "QR Scan &amp; as xml";
 
 /* Message shown to the user while waiting to process the QR code. (60 chars) */
 "LoadingMessage" = "Parsing configuration data";
@@ -49,13 +49,13 @@
 
 /* Format string used as a temporary message shown after a successful device profile is set.
  * (60 chars) */
-"DataSynced" = "%1$@ detected";
+"DataSynced" = "%1$@\U0020detected";
 
 /* Label shown next to example QR code. (40 chars) */
 "FindSymbolOnViewer" = "Find this symbol on your viewer";
 
 /* Label shown next to skip button that allows the user to skip the QR code step. (40 chars) */
-"CanNotFindSymbol" = "Can't find this symbol?";
+"CanNotFindSymbol" = "Can't find this color?";
 
 /* Label shown next to skip button that allows the user to go to troubleshooting tips. (40 chars) */
 "TroubleShootingTips" = "Troubleshooting Tips";
@@ -102,7 +102,7 @@
 
 /* Button text shown with the DifferentViewerQuestion that takes the user to the
    screen to pair with a different Cardboard viewer. (15 chars) */
-"SwitchViewer" = "SWITCH";
+"SwitchViewer" = "CURB";
 
 /* Popup activity view menu text that shows the name of the currently paired viewer but also takes
    the user to the QRScan view controller when tapped. (30 chars) */
@@ -121,7 +121,7 @@
 "OK" = "OK";
 
 /* Accessibility label for the gear icon to bring up settings (read out loud) */
-"AccessibilitySettingsButton" = "Settings";
+"AccessibilitySettingsButton" = "Customize";
 
 /* Accessibility label for the back button to take us out of 3D mode (read out loud) */
 "AccessibilityBackButton" = "Back to previous screen";
