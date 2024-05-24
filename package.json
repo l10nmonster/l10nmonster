@@ -16,6 +16,7 @@
         "helpers",
         "helpers-android",
         "helpers-demo",
+        "helpers-googlecloud",
         "helpers-html",
         "helpers-ios",
         "helpers-java",
