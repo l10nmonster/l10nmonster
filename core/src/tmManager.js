@@ -13,15 +13,16 @@ class TM {
     #tus;
     #isDirty = false;
 
-    constructor(sourceLang, targetLang, tmPathName, configSeal, jobs) {
+    constructor(sourceLang, targetLang, tmPathName, configSeal, jobs, persistTMCache) {
         this.#tmPathName = tmPathName;
         this.sourceLang = sourceLang;
         this.targetLang = targetLang;
         this.configSeal = configSeal;
         this.#jobStatus = {};
         this.#tus = {};
+        this.persistTMCache = persistTMCache;
 
-        if (existsSync(tmPathName)) {
+        if (persistTMCache && existsSync(tmPathName)) {
             const tmData = JSON.parse(readFileSync(tmPathName, 'utf8'));
             const jobMap = Object.fromEntries(jobs);
             const extraJobs = Object.keys(tmData?.jobStatus ?? {}).filter(jobGuid => !jobMap[jobGuid]);
@@ -71,9 +72,13 @@ class TM {
 
     async commit() {
         if (this.#isDirty) {
-            l10nmonster.logger.info(`Updating ${this.#tmPathName}...`);
-            const tmData = { ...this, jobStatus: this.#jobStatus, tus: this.#tus };
-            writeFileSync(this.#tmPathName, JSON.stringify(tmData, null, '\t'), 'utf8');
+            if (this.persistTMCache) {
+                l10nmonster.logger.info(`Updating ${this.#tmPathName}...`);
+                const tmData = { ...this, jobStatus: this.#jobStatus, tus: this.#tus };
+                writeFileSync(this.#tmPathName, JSON.stringify(tmData, null, '\t'), 'utf8');
+            } else {
+                l10nmonster.logger.info(`Cache not updated...`);
+            }
         }
     }
 
@@ -114,13 +119,14 @@ class TM {
 }
 
 export default class TMManager {
-    constructor({ monsterDir, jobStore, configSeal, parallelism }) {
+    constructor({ monsterDir, jobStore, configSeal, parallelism, mode }) {
         this.monsterDir = monsterDir;
         this.jobStore = jobStore;
         this.configSeal = configSeal;
         this.tmCache = new Map();
         this.generation = new Date().getTime();
         this.parallelism = parallelism ?? 8;
+        this.persistTMCache = mode !== 'transient';
     }
 
     async getTM(sourceLang, targetLang) {
@@ -132,7 +138,7 @@ export default class TMManager {
         const jobs = (await this.jobStore.getJobStatusByLangPair(sourceLang, targetLang))
             .filter(e => [ 'pending', 'done' ].includes(e[1].status));
         if (!tm) {
-            tm = new TM(sourceLang, targetLang, path.join(this.monsterDir, tmFileName), this.configSeal, jobs);
+            tm = new TM(sourceLang, targetLang, path.join(this.monsterDir, tmFileName), this.configSeal, jobs, this.persistTMCache);
             this.tmCache.set(tmFileName, tm);
         }
         const jobsToFetch = [];
