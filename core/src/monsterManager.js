@@ -104,7 +104,7 @@ export class MonsterManager {
             });
         }
         this.tuFilters = monsterConfig.tuFilters;
-        this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, configSeal });
+        this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, configSeal, mode: monsterConfig.tmm });
         this.scheduleForShutdown(this.tmm.shutdown.bind(this.tmm));
         this.analyzers = monsterConfig.analyzers ?? {};
         this.capabilitiesByChannel = Object.fromEntries(Object.entries(channels).map(([type, channel]) => [ type, {

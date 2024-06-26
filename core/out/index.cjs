@@ -116,14 +116,15 @@ var TM = class {
   #jobStatus;
   #tus;
   #isDirty = false;
-  constructor(sourceLang, targetLang, tmPathName, configSeal, jobs) {
+  constructor(sourceLang, targetLang, tmPathName, configSeal, jobs, persistTMCache) {
     this.#tmPathName = tmPathName;
     this.sourceLang = sourceLang;
     this.targetLang = targetLang;
     this.configSeal = configSeal;
     this.#jobStatus = {};
     this.#tus = {};
-    if ((0, import_fs.existsSync)(tmPathName)) {
+    this.persistTMCache = persistTMCache;
+    if (persistTMCache && (0, import_fs.existsSync)(tmPathName)) {
       const tmData = JSON.parse((0, import_fs.readFileSync)(tmPathName, "utf8"));
       const jobMap = Object.fromEntries(jobs);
       const extraJobs = Object.keys(tmData?.jobStatus ?? {}).filter((jobGuid) => !jobMap[jobGuid]);
@@ -166,9 +167,13 @@ var TM = class {
   }
   async commit() {
     if (this.#isDirty) {
-      l10nmonster.logger.info(`Updating ${this.#tmPathName}...`);
-      const tmData = { ...this, jobStatus: this.#jobStatus, tus: this.#tus };
-      (0, import_fs.writeFileSync)(this.#tmPathName, JSON.stringify(tmData, null, "	"), "utf8");
+      if (this.persistTMCache) {
+        l10nmonster.logger.info(`Updating ${this.#tmPathName}...`);
+        const tmData = { ...this, jobStatus: this.#jobStatus, tus: this.#tus };
+        (0, import_fs.writeFileSync)(this.#tmPathName, JSON.stringify(tmData, null, "	"), "utf8");
+      } else {
+        l10nmonster.logger.info(`Cache not updated...`);
+      }
     }
   }
   async processJob(jobResponse, jobRequest) {
@@ -202,13 +207,14 @@ var TM = class {
   }
 };
 var TMManager = class {
-  constructor({ monsterDir, jobStore, configSeal, parallelism }) {
+  constructor({ monsterDir, jobStore, configSeal, parallelism, mode }) {
     this.monsterDir = monsterDir;
     this.jobStore = jobStore;
     this.configSeal = configSeal;
     this.tmCache = /* @__PURE__ */ new Map();
     this.generation = (/* @__PURE__ */ new Date()).getTime();
     this.parallelism = parallelism ?? 8;
+    this.persistTMCache = mode !== "transient";
   }
   async getTM(sourceLang, targetLang) {
     const tmFileName = `tmCache_${sourceLang}_${targetLang}.json`;
@@ -218,7 +224,7 @@ var TMManager = class {
     }
     const jobs = (await this.jobStore.getJobStatusByLangPair(sourceLang, targetLang)).filter((e) => ["pending", "done"].includes(e[1].status));
     if (!tm) {
-      tm = new TM(sourceLang, targetLang, path.join(this.monsterDir, tmFileName), this.configSeal, jobs);
+      tm = new TM(sourceLang, targetLang, path.join(this.monsterDir, tmFileName), this.configSeal, jobs, this.persistTMCache);
       this.tmCache.set(tmFileName, tm);
     }
     const jobsToFetch = [];
@@ -827,7 +833,7 @@ var MonsterManager = class {
       });
     }
     this.tuFilters = monsterConfig.tuFilters;
-    this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, configSeal });
+    this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, configSeal, mode: monsterConfig.tmm });
     this.scheduleForShutdown(this.tmm.shutdown.bind(this.tmm));
     this.analyzers = monsterConfig.analyzers ?? {};
     this.capabilitiesByChannel = Object.fromEntries(Object.entries(channels).map(([type, channel]) => [type, {

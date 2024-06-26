@@ -23,7 +23,7 @@ See the overall [System Design (OUTDATED)](architecture.md#system-design) to get
 
 Unit testing is performed centrally rather than module by module. Run `npm test` from /tests.
 
-Regression testing is a suite of tests from the command line (both from zsh and node). Run `zsh tesh.zsh` from /regression. By default it tests using a node script. By passing an argument it tests the shell version.
+Regression testing is a suite of tests from the command line (both from zsh and node). Run `zsh test.zsh` from /regression. By default it tests using a node script. By passing an argument it tests the shell version.
 
 # Helpers
 
