@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/core",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "L10n Monster Core Module",
     "exports": {
         "import": "./src/index.js",

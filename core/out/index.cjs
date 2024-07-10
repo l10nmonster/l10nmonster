@@ -31,10 +31,10 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 
 // ../node_modules/words-count/dist/index.js
 var require_dist = __commonJS({
-  "../node_modules/words-count/dist/index.js"(exports, module2) {
+  "../node_modules/words-count/dist/index.js"(exports2, module2) {
     !function(e, t) {
-      "object" == typeof exports && "object" == typeof module2 ? module2.exports = t() : "function" == typeof define && define.amd ? define("words-count", [], t) : "object" == typeof exports ? exports["words-count"] = t() : e["words-count"] = t();
-    }(exports, function() {
+      "object" == typeof exports2 && "object" == typeof module2 ? module2.exports = t() : "function" == typeof define && define.amd ? define("words-count", [], t) : "object" == typeof exports2 ? exports2["words-count"] = t() : e["words-count"] = t();
+    }(exports2, function() {
       return (() => {
         "use strict";
         var e = { 314: (e2, t2, r2) => {
