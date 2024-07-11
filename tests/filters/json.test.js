@@ -539,3 +539,72 @@ describe("json translateResource - if no translation, delete annotations", () =>
         expect(JSON.parse(output)).toMatchObject(expectedOutput);
     });
 });
+
+describe("json translateResource - enableArrays", () => {
+    const translator = async function translate(sid, str) {
+        return `${sid} ${str} - **Translation**`;
+    };
+
+    const resource = {
+        test: { 0: 'zero', 1: 'one' }
+    };
+
+    test("translateResource with array enabled", async () => {
+        const resourceFilter = new i18next.Filter({
+            enableArbAnnotations: true,
+            enablePluralSuffixes: true,
+            emitArbAnnotations: true,
+            enableArrays: true
+        });
+        const expectedOutput = {
+            "test": [
+                "test.0 zero - **Translation**",
+                "test.1 one - **Translation**"
+            ]           
+        };
+        const output = await resourceFilter.translateResource({
+            resource: JSON.stringify(resource),
+            translator,
+        });
+        expect(JSON.parse(output)).toEqual(expectedOutput);
+    });
+
+    test("translateResource with array not enabled", async () => {
+        const resourceFilter = new i18next.Filter({
+            enableArbAnnotations: true,
+            enablePluralSuffixes: true,
+            emitArbAnnotations: true,
+            enableArrays: false
+        });
+        const expectedOutput = {
+            "test": {
+                "0": "test.0 zero - **Translation**",
+                "1": "test.1 one - **Translation**"
+              }            
+        };
+        const output = await resourceFilter.translateResource({
+            resource: JSON.stringify(resource),
+            translator,
+        });
+        expect(JSON.parse(output)).toEqual(expectedOutput);
+    });
+
+    test("translateResource with enableArrays default", async () => {
+        const resourceFilter = new i18next.Filter({
+            enableArbAnnotations: true,
+            enablePluralSuffixes: true,
+            emitArbAnnotations: true
+        });
+        const expectedOutput = {
+            "test": {
+                "0": "test.0 zero - **Translation**",
+                "1": "test.1 one - **Translation**"
+              }            
+        };
+        const output = await resourceFilter.translateResource({
+            resource: JSON.stringify(resource),
+            translator,
+        });
+        expect(JSON.parse(output)).toEqual(expectedOutput);
+    });
+});
