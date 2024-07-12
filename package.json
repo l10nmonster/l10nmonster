@@ -10,6 +10,9 @@
             "js"
         ]
     },
+    "scripts": {
+        "test": "cd tests; node node_modules/jest/bin/jest.js"
+    },
     "workspaces": [
         "core",
         "cli",
