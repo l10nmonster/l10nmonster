@@ -12,6 +12,9 @@ describe('android filter tests', () => {
   test('parseResource returns raw parsed resource', async () => {
     const expectedOutput = {
         "segments": [{
+             "sid": "app_short_name",
+             "str": "",
+            }, {
             "sid": "str1",
             "str": "Winter is coming"
         }, {
