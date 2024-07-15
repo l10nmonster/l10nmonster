@@ -11,7 +11,7 @@
         ]
     },
     "scripts": {
-        "test": "cd tests; npm i; node node_modules/jest/bin/jest.js"
+        "test": "cd tests; npm i; node node_modules/jest/bin/jest.js; cd ../regression; zsh test.zsh"
     },
     "workspaces": [
         "core",
