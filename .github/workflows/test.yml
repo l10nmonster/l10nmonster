@@ -9,6 +9,7 @@ jobs:
         with:
           node-version: '18.x'
       - run: npm ci
+      - run: sudo apt-get install zsh
       - run: npm run test
       # For some reason zsh installed here does not have "setopt monitor" and fails.
       #  > test.zsh:setopt:4: can't change option: MONITOR
