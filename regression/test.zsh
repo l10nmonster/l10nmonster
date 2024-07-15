@@ -1,7 +1,7 @@
 #!/usr/bin/zsh
 
 setopt ERR_EXIT
-setopt MONITOR
+#setopt MONITOR
 
 regressTestFromCLI() {
     echo "\nTesting $1..."
