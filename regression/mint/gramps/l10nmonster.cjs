@@ -37,7 +37,7 @@ module.exports = class GrampsConfig2 {
             targetPath: (lang) => `artifacts/${lang}.po`,
         });
         this.jobStore = new stores.JsonJobStore({
-            jobsDir: 'l10njobs',
+            jobsDir: 'translationJobs',
         });
     }
 }

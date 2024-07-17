@@ -1,0 +1,94 @@
+{
+	"sourceLang": "en",
+	"targetLang": "ja",
+	"tus": [
+		{
+			"sid": ":MRijUCArXU0i27ODg6K2NDjy4qE=_one",
+			"isSuffixPluralized": true,
+			"guid": "nnUcZB3NMYeQu04CqdJWJaxze3cCUHY2RHwIeCDBYU8",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/drawreport/calendarreport.py:365\",\"flag\":\"python-brace-format\"}"
+			},
+			"nsrc": [
+				"{person}, {age}"
+			],
+			"rid": "artifacts/gramps.pot"
+		},
+		{
+			"sid": ":plTWcM4c5cjJ1ZELQ1knETZrjss=_one",
+			"isSuffixPluralized": true,
+			"guid": "Ei7S2Ia-IxjeCp-mNy5j4D0KnxJfWSS1DHk184qUqSg",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/drawreport/calendarreport.py:427\",\"flag\":\"python-brace-format\"}"
+			},
+			"nsrc": [
+				"{spouse} and\n {person}, {nyears}"
+			],
+			"rid": "artifacts/gramps.pot"
+		},
+		{
+			"sid": ":NOm4MITy9dnNl2AKX9iwsu2/Bzk=_one",
+			"isSuffixPluralized": true,
+			"guid": "ad1b9XoMaielvgUYK_7v1NC56jkMjE9fAm2BHCGHT8Q",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/gramplet/pedigreegramplet.py:272\",\"flag\":\"python-brace-format\"}"
+			},
+			"nsrc": [
+				" has {count_person} of {max_count_person} individuals ({percent} complete)\n"
+			],
+			"rid": "artifacts/gramps.pot"
+		},
+		{
+			"sid": ":Et17iDo9mfTAk6Zi7oklKt0h8fE=_one",
+			"isSuffixPluralized": true,
+			"guid": "sWfpgfWs3K2HeiQEUgyUeIK-10cgWbvKfAy2qdbJ6aI",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/textreport/birthdayreport.py:338\",\"flag\":\"python-brace-format\"}"
+			},
+			"nsrc": [
+				"* {year}{person}{dead}, {age}{relation}"
+			],
+			"rid": "artifacts/gramps.pot"
+		},
+		{
+			"sid": ":1RNxpnv5+/b54aeds3c4O7HCeL8=_one",
+			"isSuffixPluralized": true,
+			"guid": "d-mEi47s7THHdu-8SNKMasEDsHi5FF8HcpI1P1_pGHU",
+			"notes": {
+				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/textreport/birthdayreport.py:407\",\"flag\":\"python-brace-format\"}"
+			},
+			"nsrc": [
+				"⚭ {year}{spouse}{deadtxt2} and\n {person}{deadtxt1}, {nyears}"
+			],
+			"rid": "artifacts/gramps.pot"
+		},
+		{
+			"sid": ":m0d7dJNAlakXfACdnFhrS5YwaPs=_one",
+			"isSuffixPluralized": true,
+			"guid": "r_UW-S3ezIoEuqiLcKkHvQiOID0tfqEx9y0naFzn8xc",
+			"notes": {
+				"desc": "{\"reference\":\"../gramps/plugins/textreport/birthdayreport.py:444\",\"flag\":\"python-brace-format\"}"
+			},
+			"nsrc": [
+				"✝ {year}{person}, {age}{relation}"
+			],
+			"rid": "artifacts/gramps.pot"
+		},
+		{
+			"sid": ":F4GKadKTtyPj7NwI851PUwVpx7o=_one",
+			"isSuffixPluralized": true,
+			"guid": "QQNs3-C2rMsGTOpX7Fn9hMhXL_Kh6EISiL3Ud4_woRY",
+			"notes": {
+				"desc": "{\"reference\":\"../gramps/plugins/webreport/webcal.py:2220\",\"flag\":\"python-brace-format\"}"
+			},
+			"nsrc": [
+				"{couple}, {years} year anniversary"
+			],
+			"rid": "artifacts/gramps.pot"
+		}
+	],
+	"translationProvider": "Repetition",
+	"jobGuid": "xxx1xxx",
+	"status": "created",
+	"updatedAt": "2022-05-29T00:00:00.000Z"
+}

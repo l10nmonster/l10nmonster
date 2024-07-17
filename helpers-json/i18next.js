@@ -29,6 +29,7 @@ exports.Filter = class I18nextFilter {
     constructor(params) {
         this.enableArbAnnotations = params?.enableArbAnnotations || false;
         this.enablePluralSuffixes = params?.enablePluralSuffixes || false;
+        this.enableArrays = params?.enableArrays || false;
         this.emitArbAnnotations = params?.emitArbAnnotations || false;
     }
 
@@ -73,7 +74,7 @@ exports.Filter = class I18nextFilter {
                 }
             }
         }
-        return JSON.stringify(flat.unflatten(flatResource), null, 2) + '\n';
+        return JSON.stringify(flat.unflatten(flatResource, { object: !this.enableArrays }), null, 2) + '\n';
     }
 }
 
