@@ -2,10 +2,10 @@
 const flat = require('flat');
 const { regex } = require('@l10nmonster/helpers');
 
-const isArbAnnotations = e => e[0].split('.').slice(-2)[0].startsWith('@');
+const isArbAnnotations = e => e[0].split('.').slice(0, -1).pop()?.startsWith('@') ?? false;
 const validArbAnnotations = new Set(['description', 'type', 'context', 'placeholders', 'screenshot', 'video', 'source_text']);
 const validPluralSuffixes = new Set(['one', 'other', 'zero', 'two', 'few', 'many']);
-const extractArbGroupsRegex = /(?<prefix>.+?\.)?@(?<key>\S+)\.(?<attribute>\S+)/;
+const extractArbGroupsRegex = /(?<prefix>[^\.]+?\.)?@(?<key>[^\.]+)(?:\.(?<attribute>\S+))?/;
 
 function parseResourceAnnotations(resource, enableArbAnnotations) {
     let parsedResource = Object.entries(flat.flatten(resource));
