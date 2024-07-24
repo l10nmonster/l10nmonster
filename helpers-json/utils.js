@@ -60,15 +60,21 @@ const FLATTEN_SEPARATOR = ".";
  */
 function flattenAndSplitResources(keys, obj) {
     return Object.entries(obj).reduce((acc, [key, value]) => {
-        if (key.startsWith(ARB_ANNOTATION_MARKER)) {
+        if (typeof value === "object" && key.startsWith(ARB_ANNOTATION_MARKER)) {
+            // If the key is `@key` and the value is an object, it is likely an ARB annotation.
+            // Put it in the `notes` object.
             const k = keys.slice().concat(key.slice(1))
             acc.notes[k.join(FLATTEN_SEPARATOR)] = value
         } else if (typeof value === "object") {
+            // If the key is _not_ `@key` and the value is an object, it is a namespace.
+            // Recursively flatten and split the value.
             const { res, notes } = flattenAndSplitResources([...keys, key], value)
             Object.assign(acc.res, res)
             Object.assign(acc.notes, notes)
         } else {
-            const k = keys.slice().concat(key)
+            // If the value is _not_ an object, it is a key-value pair of resources.
+            // Put it in the `res` object.
+            const k = keys.concat(key)
             acc.res[k.join(FLATTEN_SEPARATOR)] = value
         }
         return acc

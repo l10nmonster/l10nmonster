@@ -689,3 +689,43 @@ describe("placeholders tests", () => {
 
     })
 })
+
+describe("Parse illegally structured ARB", () => {
+    const resourceFilter = new i18next.Filter({
+        enableArbAnnotations: true,
+    });
+
+    global.l10nmonster = {
+        logger: {
+            verbose: console.log
+        }
+    }
+    test("parses root ARB key that is illegally structured", async () => {
+        // value for the "@key" should be an object,
+        // but it should not crash even if it doesn't either
+        const resource = {
+            key: "value",
+            "@key": "comment",
+            ns: {
+                key: "value",
+                "@key": "comment",
+                child: {
+                    key: "value",
+                    "@key": "comment",
+                }
+            }
+        }
+        const expectedOutput = {
+            segments: [
+                { sid: "key", str: "value" },
+                { sid: "@key", str: "comment" },
+                { sid: "ns.key", str: "value" },
+                { sid: "ns.@key", str: "comment" },
+                { sid: "ns.child.key", str: "value" },
+                { sid: "ns.child.@key", str: "comment" },
+            ]
+        }
+        const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
+        expect(output).toMatchObject(expectedOutput);
+    })
+})
