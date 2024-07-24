@@ -1,28 +1,42 @@
 // i18next v4 json format defined at https://www.i18next.com/misc/json-format
 const flat = require('flat');
 const { regex } = require('@l10nmonster/helpers');
+const { flattenAndSplitResources, ARB_ANNOTATION_MARKER } = require('./utils');
 
-const isArbAnnotations = e => e[0].split('.').slice(-2)[0].startsWith('@');
+const isArbAnnotations = e => e[0].split('.').slice(-2)[0].startsWith(ARB_ANNOTATION_MARKER);
 const validArbAnnotations = new Set(['description', 'type', 'context', 'placeholders', 'screenshot', 'video', 'source_text']);
 const validPluralSuffixes = new Set(['one', 'other', 'zero', 'two', 'few', 'many']);
 const extractArbGroupsRegex = /(?<prefix>.+?\.)?@(?<key>\S+)\.(?<attribute>\S+)/;
 
 function parseResourceAnnotations(resource, enableArbAnnotations) {
-    let parsedResource = Object.entries(flat.flatten(resource));
-    const notes = {};
-    if (enableArbAnnotations) {
-        for (const [key, value] of parsedResource.filter(isArbAnnotations)) {
-            const arbGroups = extractArbGroupsRegex.exec(key).groups;
-            const sid = `${arbGroups.prefix ?? ''}${arbGroups.key}`;
-            if (validArbAnnotations.has(arbGroups.attribute)) {
-                notes[sid] = `${notes[sid] ? `${notes[sid]}\n` : ''}${arbGroups.attribute === 'description' ? '' : `${arbGroups.attribute}: `}${arbGroups.attribute === 'placeholders' ? JSON.stringify(value) : value}`;
-            } else {
-                l10nmonster.logger.verbose(`Unexpected ${arbGroups.attribute} annotation for SID ${sid}`);
+    if (!enableArbAnnotations) {
+        return [ Object.entries(flat.flatten(resource)), {} ]
+    }
+
+    const { res, notes } = flattenAndSplitResources([], resource)
+    const parsedNotes = {}
+    for (const [key, arbAnnotations] of Object.entries(notes)) {
+        if (typeof arbAnnotations === "object") {
+            const notes = []
+            for (const [annotation, data] of Object.entries(arbAnnotations)) {
+                // Intentionally uses `== null` to handle undefined and null
+                // eslint-disable-next-line no-eq-null, eqeqeq
+                if (validArbAnnotations.has(annotation) && data != null) {
+                    if (annotation === "description") {
+                        notes.push(data)
+                    } else if (annotation === "placeholders") {
+                        notes.push(`placeholders: ${JSON.stringify(data)}`)
+                    } else {
+                        notes.push(`${annotation}: ${data}`)
+                    }
+                }
             }
+            parsedNotes[key] = notes.join("\n")
+        } else {
+            parsedNotes[key] = arbAnnotations
         }
     }
-    enableArbAnnotations && (parsedResource = parsedResource.filter(e => !isArbAnnotations(e)));
-    return [ parsedResource, notes ];
+    return [ Object.entries(res), parsedNotes ];
 }
 
 exports.Filter = class I18nextFilter {
