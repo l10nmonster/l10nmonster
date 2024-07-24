@@ -329,6 +329,23 @@
 			"q": 2,
 			"jobGuid": "xxx3xxx",
 			"translationProvider": "Visicode"
+		},
+		{
+			"guid": "6DAv7B6YywviZSG0LkH6iEmPaGfotuTy4Ljqm6eumfk",
+			"ts": 1,
+			"ntgt": [
+				"⇥Q9:",
+				"E̲n̲t̲e̲r̲̟ ̲y̲o̲u̲r̲̟ ̲",
+				{
+					"t": "x",
+					"v": "{{id}}",
+					"v1": "a_x_id"
+				},
+				"⇤"
+			],
+			"q": 2,
+			"jobGuid": "xxx3xxx",
+			"translationProvider": "Visicode"
 		}
 	],
 	"translationProvider": "TMExport"
