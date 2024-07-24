@@ -1,14 +1,21 @@
+// Intentionally uses `== null` to handle undefined and null
+/* eslint-disable no-eq-null, eqeqeq */
+
 // i18next v4 json format defined at https://www.i18next.com/misc/json-format
 const flat = require('flat');
 const { regex } = require('@l10nmonster/helpers');
 const { flattenAndSplitResources, ARB_ANNOTATION_MARKER } = require('./utils');
 
 const isArbAnnotations = e => e[0].split('.').slice(-2)[0].startsWith(ARB_ANNOTATION_MARKER);
-const validArbAnnotations = new Set(['description', 'type', 'context', 'placeholders', 'screenshot', 'video', 'source_text']);
 const validPluralSuffixes = new Set(['one', 'other', 'zero', 'two', 'few', 'many']);
 const extractArbGroupsRegex = /(?<prefix>.+?\.)?@(?<key>\S+)\.(?<attribute>\S+)/;
+const defaultArbAnnotationHandlers = {
+    description: (_, data) => (data == null ? undefined : data),
+    placeholders: (name, data) => (data == null ? undefined : `${name}: ${JSON.stringify(data)}`),
+    DEFAULT: (name, data) => (data == null ? undefined : `${name}: ${data}`),
+}
 
-function parseResourceAnnotations(resource, enableArbAnnotations) {
+function parseResourceAnnotations(resource, enableArbAnnotations, arbAnnotationHandlers) {
     if (!enableArbAnnotations) {
         return [ Object.entries(flat.flatten(resource)), {} ]
     }
@@ -19,15 +26,11 @@ function parseResourceAnnotations(resource, enableArbAnnotations) {
         if (typeof arbAnnotations === "object") {
             const notes = []
             for (const [annotation, data] of Object.entries(arbAnnotations)) {
-                // Intentionally uses `== null` to handle undefined and null
-                // eslint-disable-next-line no-eq-null, eqeqeq
-                if (validArbAnnotations.has(annotation) && data != null) {
-                    if (annotation === "description") {
-                        notes.push(data)
-                    } else if (annotation === "placeholders") {
-                        notes.push(`placeholders: ${JSON.stringify(data)}`)
-                    } else {
-                        notes.push(`${annotation}: ${data}`)
+                const handler = arbAnnotationHandlers[annotation] ?? arbAnnotationHandlers.DEFAULT
+                if (handler != null) {
+                    const val = handler(annotation, data)
+                    if (val !== undefined) {
+                        notes.push(val)
                     }
                 }
             }
@@ -45,6 +48,10 @@ exports.Filter = class I18nextFilter {
         this.enablePluralSuffixes = params?.enablePluralSuffixes || false;
         this.enableArrays = params?.enableArrays || false;
         this.emitArbAnnotations = params?.emitArbAnnotations || false;
+        this.arbAnnotationHandlers = {
+            ...defaultArbAnnotationHandlers,
+            ...(params?.arbAnnotationHandlers ?? {})
+        }
     }
 
     async parseResource({ resource }) {
@@ -52,7 +59,11 @@ exports.Filter = class I18nextFilter {
         if (!resource) {
             return { segments };
         }
-        const [ parsedResource, notes ] = parseResourceAnnotations(JSON.parse(resource), this.enableArbAnnotations);
+        const [ parsedResource, notes ] = parseResourceAnnotations(
+            JSON.parse(resource),
+            this.enableArbAnnotations,
+            this.arbAnnotationHandlers,
+        );
         for (const [key, value] of parsedResource) {
             let seg = { sid: key, str: value };
             notes[key] && (seg.notes = notes[key]);
