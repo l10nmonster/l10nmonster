@@ -694,12 +694,6 @@ describe("Parse illegally structured ARB", () => {
     const resourceFilter = new i18next.Filter({
         enableArbAnnotations: true,
     });
-
-    global.l10nmonster = {
-        logger: {
-            verbose: console.log
-        }
-    }
     test("parses root ARB key that is illegally structured", async () => {
         // value for the "@key" should be an object,
         // but it should not crash even if it doesn't either
