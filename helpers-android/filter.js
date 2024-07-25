@@ -56,13 +56,17 @@ module.exports = class AndroidFilter {
                         }
                     } else if ('plurals' in resNode) { // TODO: support string-array
                         for (const itemNode of resNode.plurals) {
-                            const seg = {
-                                sid: `${resNode[':@'].name}_${itemNode[':@'].quantity}`,
-                                isSuffixPluralized: true,
-                                str: collapseTextNodes(itemNode.item)
-                            };
-                            lastComment && (seg.notes = lastComment);
-                            segments.push(seg);
+                            if ('#comment' in itemNode) {
+                                lastComment = itemNode['#comment'].map(e => e['#text']).join('').trim();
+                            } else if ('item' in itemNode) {
+                                const seg = {
+                                    sid: `${resNode[':@'].name}_${itemNode[':@'].quantity}`,
+                                    isSuffixPluralized: true,
+                                    str: collapseTextNodes(itemNode.item)
+                                };
+                                lastComment && (seg.notes = lastComment);
+                                segments.push(seg);
+                            }
                         }
                         lastComment = null;
                     } else {
@@ -113,7 +117,13 @@ module.exports = class AndroidFilter {
                         }
                     } else if ('plurals' in resNode) { // TODO: deal with plurals of the target language, not the source
                         let dropPlural = false;
+                        const itemNodesToDelete = []
                         for (const itemNode of resNode.plurals) {
+                            if ('#comment' in itemNode) {
+                                itemNodesToDelete.push(itemNode)
+                                // eslint-disable-next-line no-continue
+                                continue;
+                            }
                             const translation = await translator(`${resNode[':@'].name}_${itemNode[':@'].quantity}`, collapseTextNodes(itemNode.item));
                             if (translation === undefined) {
                                 dropPlural = true;
@@ -121,6 +131,7 @@ module.exports = class AndroidFilter {
                                 itemNode.item = [ { '#text': translation } ];
                             }
                         }
+                        resNode.plurals = resNode.plurals.filter(n => !itemNodesToDelete.includes(n))
                         if (dropPlural) {
                             nodesToDelete.push(resNode);
                         } else {
