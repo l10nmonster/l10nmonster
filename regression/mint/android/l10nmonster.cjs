@@ -13,7 +13,7 @@ module.exports = class TachiyomiConfig2 {
 
     constructor() {
         this.source = new adapters.FsSource({
-            globs: [ '**/values/strings.xml' ],
+            globs: [ '**/values/strings*.xml' ],
         });
         this.resourceFilter = new android.Filter({
             comment: 'pre',

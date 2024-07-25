@@ -1,0 +1,14 @@
+<resources>
+  <!-- PH(%s|$50|Amount from wallet to be applied on hotel booking) -->
+  <string name="included_wallet_balance">Includes %s from Wallet</string>
+    <!-- PH(%1$s|$300|Coverage cap for the price freeze) -->
+  <string name="price_freeze_header_subtitle">If prices go down, you pay the lower price. If prices increase, Hopper covers up to %1$s.</string>
+  <!-- PH(%1$s|$300|Coverage cap for the price freeze) -->
+  <string name="price_freeze_header_subtitle_compliance">You can save up to %1$s when you come back to book. If the price drops, you pay the lower price.</string>
+  <plurals name="rooms_count_with_suffix">
+    <!-- PH(%1$d|1|The number of rooms desired for a hotel search) PH(%2$s|2 Adults|A suffix, in this case the number of adult and children passengers) -->
+    <item quantity="one">%1$d room • %2$s</item>
+    <!-- PH(%1$d|1|The number of rooms desired for a hotel search) PH(%2$s|2 Adults|A suffix, in this case the number of adult and children passengers) -->
+    <item quantity="other">%1$d rooms • %2$s</item>
+  </plurals>
+</resources>
