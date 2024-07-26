@@ -7,5 +7,15 @@
   "welcome": {
       "name1": "Welcome, {{name}}!",
       "name2": "Welcome, <a>{{name}}</a>!"
+  },
+  "nationalIdPlaceholder": "Enter your {{id}}",
+  "@nationalIdPlaceholder": {
+    "description": "copy - national ID input placeholder on passenger form",
+    "placeholders": {
+      "id": {
+        "example": "CPF",
+        "description": "Name of a national ID"
+      }
+    }
   }
 }

@@ -1,4 +1,5 @@
 const { i18next } = require('@l10nmonster/helpers-json');
+const { flattenAndSplitResources } = require('@l10nmonster/helpers-json/utils');
 
 describe("json parseResource - description", () => {
     const resourceFilter = new i18next.Filter({
@@ -608,3 +609,117 @@ describe("json translateResource - enableArrays", () => {
         expect(JSON.parse(output)).toEqual(expectedOutput);
     });
 });
+
+describe("flattenAndSplitResources tests", () => {
+    test("flattenAndSplitResources happy case", () => {
+        const obj = {
+            str: "string",
+            "@str": {
+                description: "string",
+            },
+            ns1: {
+                str: "string, {{foo}}",
+                "@str": {
+                    description: "string",
+                    placeholders: { foo: { example: "foo example", description: "foo description" } }
+                },
+                ns2: {
+                    str: "string",
+                    "@str": {
+                        description: "string",
+                    },
+                }
+            }
+        }
+        const {res, notes} = flattenAndSplitResources([], obj)
+        expect(res).toMatchObject({
+            str: 'string',
+            'ns1.str': 'string, {{foo}}',
+            'ns1.ns2.str': 'string'
+        })
+        expect(notes).toMatchObject({
+            str: {
+                description: 'string'
+            },
+            'ns1.str': {
+                description: 'string',
+                placeholders: {
+                    foo: {
+                        example: "foo example",
+                        description: "foo description"
+                    }
+                }
+            },
+            'ns1.ns2.str': {
+                description: 'string'
+            }
+        })
+    })
+})
+
+describe("placeholders tests", () => {
+    const resourceFilter = new i18next.Filter({
+        enableArbAnnotations: true,
+    });
+
+    test("placeholders are in the notes after parsing", async () => {
+        const resource = {
+            nationalIdPlaceholder: "Enter your {{id}}",
+            "@nationalIdPlaceholder": {
+                description: "copy - national ID input placeholder on passenger form",
+                placeholders: {
+                    id: {
+                        example: "CPF",
+                        description: "Name of a national ID"
+                    }
+                }
+            }
+        };
+        const expectedOutput = {
+            segments: [
+                {
+                    sid: "nationalIdPlaceholder",
+                    str: "Enter your {{id}}",
+                    notes: `copy - national ID input placeholder on passenger form\nplaceholders: {"id":{"example":"CPF","description":"Name of a national ID"}}`
+                },
+            ],
+        };
+        const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
+        expect(output).toMatchObject(expectedOutput);
+
+    })
+})
+
+describe("Parse illegally structured ARB", () => {
+    const resourceFilter = new i18next.Filter({
+        enableArbAnnotations: true,
+    });
+    test("parses root ARB key that is illegally structured", async () => {
+        // value for the "@key" should be an object,
+        // but it should not crash even if it doesn't either
+        const resource = {
+            key: "value",
+            "@key": "comment",
+            ns: {
+                key: "value",
+                "@key": "comment",
+                child: {
+                    key: "value",
+                    "@key": "comment",
+                }
+            }
+        }
+        const expectedOutput = {
+            segments: [
+                { sid: "key", str: "value" },
+                { sid: "@key", str: "comment" },
+                { sid: "ns.key", str: "value" },
+                { sid: "ns.@key", str: "comment" },
+                { sid: "ns.child.key", str: "value" },
+                { sid: "ns.child.@key", str: "comment" },
+            ]
+        }
+        const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
+        expect(output).toMatchObject(expectedOutput);
+    })
+})
