@@ -4,14 +4,14 @@
 // i18next v4 json format defined at https://www.i18next.com/misc/json-format
 const flat = require('flat');
 const { regex } = require('@l10nmonster/helpers');
-const { flattenAndSplitResources, ARB_ANNOTATION_MARKER } = require('./utils');
+const { flattenAndSplitResources, ARB_ANNOTATION_MARKER, arbPlaceholderHandler } = require('./utils');
 
 const isArbAnnotations = e => e[0].split('.').slice(-2)[0].startsWith(ARB_ANNOTATION_MARKER);
 const validPluralSuffixes = new Set(['one', 'other', 'zero', 'two', 'few', 'many']);
 const extractArbGroupsRegex = /(?<prefix>.+?\.)?@(?<key>\S+)\.(?<attribute>\S+)/;
 const defaultArbAnnotationHandlers = {
     description: (_, data) => (data == null ? undefined : data),
-    placeholders: (name, data) => (data == null ? undefined : `${name}: ${JSON.stringify(data)}`),
+    placeholders: (_, data) => (data == null ? undefined : arbPlaceholderHandler(data)),
     DEFAULT: (name, data) => (data == null ? undefined : `${name}: ${data}`),
 }
 

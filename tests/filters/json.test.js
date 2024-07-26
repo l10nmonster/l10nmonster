@@ -680,7 +680,7 @@ describe("placeholders tests", () => {
                 {
                     sid: "nationalIdPlaceholder",
                     str: "Enter your {{id}}",
-                    notes: `copy - national ID input placeholder on passenger form\nplaceholders: {"id":{"example":"CPF","description":"Name of a national ID"}}`
+                    notes: `copy - national ID input placeholder on passenger form\nPH({{id}}|CPF|Name of a national ID)`
                 },
             ],
         };
@@ -754,15 +754,6 @@ describe("annotation handler tests", () => {
     test("placeholders handler works", async () => {
         const resourceFilter = new i18next.Filter({
             enableArbAnnotations: true,
-            arbAnnotationHandlers: {
-                placeholders: (_, data) => {
-                    const phs = []
-                    for (const [key, val] of Object.entries(data)) {
-                        phs.push(`PH(${key}|${val.example}|${val.description})`)
-                    }
-                    return phs.join("\n")
-                },
-            }
         });
         const resource = {
             nationalIdPlaceholder: "Enter your {{id}}",
@@ -781,7 +772,7 @@ describe("annotation handler tests", () => {
                 {
                     sid: "nationalIdPlaceholder",
                     str: "Enter your {{id}}",
-                    notes: `copy - national ID input placeholder on passenger form\nPH(id|CPF|Name of a national ID)`
+                    notes: `copy - national ID input placeholder on passenger form\nPH({{id}}|CPF|Name of a national ID)`
                 },
             ],
         };
