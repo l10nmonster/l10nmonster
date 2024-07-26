@@ -119,3 +119,41 @@ describe('android filter tests', () => {
             .toBe("one % two % escaped %");
         });
 });
+
+describe("android filter plurals tests", () => {
+    const resourceFilter = new android.Filter({comment: "test"});
+    const resourceId = "files/values/plurals.xml";
+    const translator = async function translate(sid, str) {
+        return sid === "str1" ? undefined : `${resourceId} ${sid} ${str} - **Translation**`;
+    }
+
+    test("android filter parses plurals with comments", async () => {
+        const resource = fs.readFileSync(resourceId, "utf8");
+        const output = await resourceFilter.parseResource({resource, isSource: true});
+        const expected = {
+            segments: [
+                {
+                    "isSuffixPluralized": true,
+                    "notes": "PH(%1$d|1|The number of rooms desired for a hotel search) PH(%2$s|2 Adults|A suffix, in this case the number of adult and children passengers)",
+                    "sid": "rooms_count_with_suffix_one",
+                    "str": "%1$d room • %2$s",
+                },
+                {
+                    "isSuffixPluralized": true,
+                    "notes": "PH(%1$d|1|The number of rooms desired for a hotel search) PH(%2$s|2 Adults|A suffix, in this case the number of adult and children passengers)",
+                    "sid": "rooms_count_with_suffix_other",
+                    "str": "%1$d rooms • %2$s",
+                },
+            ]
+        }
+       expect(output).toMatchObject(expected);
+    })
+
+    test('android filter translates plurals with comments', async () => {
+        const expectedOutput = fs.readFileSync("files/values/plurals_t9n.xml", "utf8");
+        const resource = fs.readFileSync(resourceId, "utf8");
+        const lang = "fil";
+        const translatedRes = await resourceFilter.translateResource({ resourceId, resource, lang, translator });
+        expect(translatedRes).toBe(expectedOutput);
+    });
+})

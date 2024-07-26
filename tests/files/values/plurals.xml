@@ -1,0 +1,8 @@
+<resources>
+  <plurals name="rooms_count_with_suffix">
+    <!-- PH(%1$d|1|The number of rooms desired for a hotel search) PH(%2$s|2 Adults|A suffix, in this case the number of adult and children passengers) -->
+    <item quantity="one">%1$d room • %2$s</item>
+    <!-- PH(%1$d|1|The number of rooms desired for a hotel search) PH(%2$s|2 Adults|A suffix, in this case the number of adult and children passengers) -->
+    <item quantity="other">%1$d rooms • %2$s</item>
+  </plurals>
+</resources>
