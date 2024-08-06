@@ -92,7 +92,7 @@ function flattenAndSplitResources(keys, obj) {
  *   }
  * }
  * const ph = arbPlaceholderHandler(placeholders)
- * assert(ph === "PH(count|1|number of tickets")
+ * assert(ph === "PH({{count}}|1|number of tickets")
  * ```
  *
  * @param {{ [key: string]: value }} ARB placeholders
