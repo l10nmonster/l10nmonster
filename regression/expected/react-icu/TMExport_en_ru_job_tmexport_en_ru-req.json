@@ -309,14 +309,21 @@
 			"sid": "nationalIdPlaceholder",
 			"guid": "6DAv7B6YywviZSG0LkH6iEmPaGfotuTy4Ljqm6eumfk",
 			"notes": {
-				"desc": "copy - national ID input placeholder on passenger form\nplaceholders: {\"id\":{\"example\":\"CPF\",\"description\":\"Name of a national ID\"}}"
+				"ph": {
+					"{{id}}": {
+						"sample": "CPF",
+						"desc": "Name of a national ID"
+					}
+				},
+				"desc": "copy - national ID input placeholder on passenger form\n"
 			},
 			"seq": 1006,
 			"nsrc": [
 				"Enter your ",
 				{
 					"t": "x",
-					"v": "{{id}}"
+					"v": "{{id}}",
+					"s": "CPF"
 				}
 			],
 			"rid": "public/locales/en/translations.json"

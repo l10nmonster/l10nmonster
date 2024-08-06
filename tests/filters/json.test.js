@@ -680,7 +680,7 @@ describe("placeholders tests", () => {
                 {
                     sid: "nationalIdPlaceholder",
                     str: "Enter your {{id}}",
-                    notes: `copy - national ID input placeholder on passenger form\nplaceholders: {"id":{"example":"CPF","description":"Name of a national ID"}}`
+                    notes: `copy - national ID input placeholder on passenger form\nPH({{id}}|CPF|Name of a national ID)`
                 },
             ],
         };
@@ -719,6 +719,63 @@ describe("Parse illegally structured ARB", () => {
                 { sid: "ns.child.@key", str: "comment" },
             ]
         }
+        const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
+        expect(output).toMatchObject(expectedOutput);
+    })
+})
+
+describe("annotation handler tests", () => {
+    test("description handler works", async () => {
+        const resourceFilter = new i18next.Filter({
+            enableArbAnnotations: true,
+            arbAnnotationHandlers: {
+                description: () => "forced description",
+            }
+        });
+        const resource = {
+            hello: "Hello",
+            "@hello": {
+                description: "",
+            }
+        };
+        const expectedOutput = {
+            segments: [
+                {
+                    sid: "hello",
+                    str: "Hello",
+                    notes: "forced description"
+                },
+            ],
+        };
+        const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
+        expect(output).toMatchObject(expectedOutput);
+    })
+
+    test("placeholders handler works", async () => {
+        const resourceFilter = new i18next.Filter({
+            enableArbAnnotations: true,
+        });
+        const resource = {
+            nationalIdPlaceholder: "Enter your {{id}}",
+            "@nationalIdPlaceholder": {
+                description: "copy - national ID input placeholder on passenger form",
+                placeholders: {
+                    id: {
+                        example: "CPF",
+                        description: "Name of a national ID"
+                    }
+                }
+            }
+        };
+        const expectedOutput = {
+            segments: [
+                {
+                    sid: "nationalIdPlaceholder",
+                    str: "Enter your {{id}}",
+                    notes: `copy - national ID input placeholder on passenger form\nPH({{id}}|CPF|Name of a national ID)`
+                },
+            ],
+        };
         const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
         expect(output).toMatchObject(expectedOutput);
     })
