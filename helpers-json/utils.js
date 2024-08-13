@@ -81,8 +81,34 @@ function flattenAndSplitResources(keys, obj) {
   }, { res: {}, notes: {} })
 }
 
+/**
+ * Accepts ARB placeholders and returns them in PH() format
+ *
+ * ```
+ * const placeholders = {
+ *   count: {
+ *     example: "1",
+ *     description: "number of tickets"
+ *   }
+ * }
+ * const ph = arbPlaceholderHandler(placeholders)
+ * assert(ph === "PH({{count}}|1|number of tickets)")
+ * ```
+ *
+ * @param {{ [key: string]: value }} ARB placeholders
+ * @returns {string} placeholders formatted in PH() and separated by "\n"
+ */
+function arbPlaceholderHandler(placeholders) {
+    const phs = []
+    for (const [key, val] of Object.entries(placeholders)) {
+        phs.push(`PH({{${key}}}|${val.example}|${val.description})`)
+    }
+    return phs.join("\n")
+}
+
 module.exports = {
     ARB_ANNOTATION_MARKER,
     FLATTEN_SEPARATOR,
-    flattenAndSplitResources
+    flattenAndSplitResources,
+    arbPlaceholderHandler,
 }
