@@ -1,9 +1,9 @@
 {
     "name": "@l10nmonster/cli",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Continuous localization for the rest of us",
     "bin": {
-        "l10n": "out/l10n.cjs"
+        "l10n": "l10n.cjs"
     },
     "exports": {
         "import": "./l10nCommands.js",
@@ -13,8 +13,7 @@
     "type": "module",
     "scripts": {
         "esbuild": "esbuild l10nCommands.js --bundle --external:@l10nmonster/core --external:@l10nmonster/helpers --external:commander --external:winston --outfile=out/l10nCommands.cjs --format=cjs --platform=node --target=node18 --sourcemap",
-        "esbuild-watch": "npm run esbuild -- --watch",
-        "package": "pkg -t node18-macos-x64 --out-path bin out/l10n.cjs"
+        "esbuild-watch": "npm run esbuild -- --watch"
     },
     "repository": {
         "type": "git",
@@ -38,7 +37,7 @@
     },
     "dependencies": {
         "@l10nmonster/core": "^1",
-        "commander": "^10",
+        "commander": "^12",
         "winston": "^3.7.2"
     },
     "peerDependencies": {
@@ -46,7 +45,6 @@
     },
     "devDependencies": {
         "esbuild": "latest",
-        "eslint": "^8",
-        "pkg": "^5.4.1"
+        "eslint": "latest"
     }
 }

@@ -29,9 +29,9 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-// ../node_modules/words-count/dist/index.js
+// node_modules/words-count/dist/index.js
 var require_dist = __commonJS({
-  "../node_modules/words-count/dist/index.js"(exports2, module2) {
+  "node_modules/words-count/dist/index.js"(exports2, module2) {
     !function(e, t) {
       "object" == typeof exports2 && "object" == typeof module2 ? module2.exports = t() : "function" == typeof define && define.amd ? define("words-count", [], t) : "object" == typeof exports2 ? exports2["words-count"] = t() : e["words-count"] = t();
     }(exports2, function() {
@@ -41,11 +41,9 @@ var require_dist = __commonJS({
           r2.r(t2), r2.d(t2, { default: () => a, wordsCount: () => c, wordsSplit: () => i, wordsDetect: () => u });
           var o = [",", "\uFF0C", ".", "\u3002", ":", "\uFF1A", ";", "\uFF1B", "[", "]", "\u3010", "]", "\u3011", "{", "\uFF5B", "}", "\uFF5D", "(", "\uFF08", ")", "\uFF09", "<", "\u300A", ">", "\u300B", "$", "\uFFE5", "!", "\uFF01", "?", "\uFF1F", "~", "\uFF5E", "'", "\u2019", '"', "\u201C", "\u201D", "*", "/", "\\", "&", "%", "@", "#", "^", "\u3001", "\u3001", "\u3001", "\u3001"], n = { words: [], count: 0 }, u = function(e3) {
             var t3 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {};
-            if (!e3)
-              return n;
+            if (!e3) return n;
             var r3 = String(e3);
-            if ("" === r3.trim())
-              return n;
+            if ("" === r3.trim()) return n;
             var u2 = t3.punctuationAsBreaker ? " " : "", c2 = t3.disableDefaultPunctuation ? [] : o, i2 = t3.punctuation || [], a2 = c2.concat(i2);
             a2.forEach(function(e4) {
               var t4 = new RegExp("\\" + e4, "g");
@@ -71,14 +69,12 @@ var require_dist = __commonJS({
           const a = c;
         } }, t = {};
         function r(o) {
-          if (t[o])
-            return t[o].exports;
+          if (t[o]) return t[o].exports;
           var n = t[o] = { exports: {} };
           return e[o](n, n.exports, r), n.exports;
         }
         return r.d = (e2, t2) => {
-          for (var o in t2)
-            r.o(t2, o) && !r.o(e2, o) && Object.defineProperty(e2, o, { enumerable: true, get: t2[o] });
+          for (var o in t2) r.o(t2, o) && !r.o(e2, o) && Object.defineProperty(e2, o, { enumerable: true, get: t2[o] });
         }, r.o = (e2, t2) => Object.prototype.hasOwnProperty.call(e2, t2), r.r = (e2) => {
           "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e2, Symbol.toStringTag, { value: "Module" }), Object.defineProperty(e2, "__esModule", { value: true });
         }, r(314);

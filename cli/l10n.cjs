@@ -74,9 +74,15 @@ function findConfig() {
         previousDir = baseDir;
         baseDir = path.resolve(baseDir, '..');
     }
-    return [];
+    return '';
 }
 
 (async () => {
-    await runMonsterCLI(findConfig());
+    const cfg = findConfig();
+    if (cfg) {
+        await runMonsterCLI(cfg);
+    } else {
+        console.error(`Unable to run: couldn't find an l10nmonster.cjs file!`);
+        process.exit(1);
+    }
 })();

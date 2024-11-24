@@ -1,4 +1,5 @@
 *
+!l10n.cjs
 !out/l10nCommands.cjs
 !package.json
 !package-lock.json

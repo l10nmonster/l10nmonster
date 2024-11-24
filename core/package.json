@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/core",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "L10n Monster Core Module",
     "exports": {
         "import": "./src/index.js",
@@ -29,8 +29,8 @@
         "words-count": "^2.0.2"
     },
     "devDependencies": {
-        "esbuild": "^0.19.5",
-        "eslint": "^8"
+        "esbuild": "latest",
+        "eslint": "latest"
     },
     "peerDependencies": {
         "@l10nmonster/helpers": "^1"
