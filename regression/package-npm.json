@@ -1,0 +1,16 @@
+{
+    "name": "npm-regression",
+    "dependencies": {
+        "@l10nmonster/cli": "^1",
+        "@l10nmonster/helpers": "^1",
+        "@l10nmonster/helpers-android": "^1",
+        "@l10nmonster/helpers-demo": "^1",
+        "@l10nmonster/helpers-html": "^1",
+        "@l10nmonster/helpers-ios": "^1",
+        "@l10nmonster/helpers-java": "^1",
+        "@l10nmonster/helpers-json": "^1",
+        "@l10nmonster/helpers-po": "^1",
+        "@l10nmonster/helpers-xliff": "^1"
+    }
+  }
+

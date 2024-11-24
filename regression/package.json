@@ -1,7 +1,0 @@
-{
-    "name": "regression-test",
-    "dependencies": {
-        "@l10nmonster/cli": "^1"
-    }
-}
-

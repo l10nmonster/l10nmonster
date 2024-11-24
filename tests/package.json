@@ -24,9 +24,9 @@
         "@l10nmonster/core": "^1"
     },
     "devDependencies": {
-        "eslint": "^8",
-        "eslint-plugin-jest": "^27",
-        "jest": "^29"
+        "eslint": "latest",
+        "eslint-plugin-jest": "latest",
+        "jest": "latest"
     },
     "jest": {
         "transform": {},
