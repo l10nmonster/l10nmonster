@@ -12,7 +12,7 @@ module.exports = class GrampsConfig2 {
             globs: [
                 'artifacts/*.pot',
             ],
-            targetLangs = [ 'ja', 'it' ],
+            targetLangs: [ 'ja', 'it' ],
         });
         // TODO: add hooks to allow to manipulate content before/after processing (see https://serge.io/docs/modular-architecture/)
         this.resourceFilter = new po.Filter({

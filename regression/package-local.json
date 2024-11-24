@@ -1,6 +1,7 @@
 {
     "name": "npm-local",
     "dependencies": {
+        "@l10nmonster/core": "../../core",
         "@l10nmonster/cli": "../../cli",
         "@l10nmonster/helpers": "../../helpers",
         "@l10nmonster/helpers-android": "../../helpers-android",

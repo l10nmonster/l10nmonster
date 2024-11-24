@@ -147,9 +147,9 @@ var require_path = __commonJS({
   }
 });
 
-// node_modules/is-extglob/index.js
+// ../node_modules/is-extglob/index.js
 var require_is_extglob = __commonJS({
-  "node_modules/is-extglob/index.js"(exports2, module2) {
+  "../node_modules/is-extglob/index.js"(exports2, module2) {
     module2.exports = function isExtglob(str) {
       if (typeof str !== "string" || str === "") {
         return false;
@@ -164,9 +164,9 @@ var require_is_extglob = __commonJS({
   }
 });
 
-// node_modules/is-glob/index.js
+// ../node_modules/is-glob/index.js
 var require_is_glob = __commonJS({
-  "node_modules/is-glob/index.js"(exports2, module2) {
+  "../node_modules/is-glob/index.js"(exports2, module2) {
     var isExtglob = require_is_extglob();
     var chars = { "{": "}", "(": ")", "[": "]" };
     var strictCheck = function(str) {
@@ -5477,9 +5477,9 @@ var require_out4 = __commonJS({
   }
 });
 
-// node_modules/ignore/index.js
+// ../node_modules/ignore/index.js
 var require_ignore = __commonJS({
-  "node_modules/ignore/index.js"(exports2, module2) {
+  "../node_modules/ignore/index.js"(exports2, module2) {
     function makeArray(subject) {
       return Array.isArray(subject) ? subject : [subject];
     }

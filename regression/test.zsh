@@ -12,7 +12,7 @@ rm -rf wd
 # rm **/.DS_Store
 mkdir wd
 cp -pr mint/* wd
-# cp -pr mint/CardboardSDK wd
+# cp -pr mint/gramps wd
 cp regressionScript.cjs wd
 
 
@@ -33,11 +33,11 @@ do
         echo "\nTesting $dir..."
         cd $dir
         if [[ "$1" == "cli" ]]; then
-            time ../node_modules/@l10nmonster/cli/l10n.cjs --regression push --provider grandfather,repetition,default
-            time ../node_modules/@l10nmonster/cli/l10n.cjs --regression pull
-            time ../node_modules/@l10nmonster/cli/l10n.cjs --regression translate all
-            time ../node_modules/@l10nmonster/cli/l10n.cjs --regression status --output status.json
-            time ../node_modules/@l10nmonster/cli/l10n.cjs --regression tmexport
+            time ../node_modules/@l10nmonster/cli/l10n.cjs --regression -v2 push --provider grandfather,repetition,default
+            time ../node_modules/@l10nmonster/cli/l10n.cjs --regression -v2 pull
+            time ../node_modules/@l10nmonster/cli/l10n.cjs --regression -v2 translate all
+            time ../node_modules/@l10nmonster/cli/l10n.cjs --regression -v2 status --output status.json
+            time ../node_modules/@l10nmonster/cli/l10n.cjs --regression -v2 tmexport
         else
             time node ../regressionScript.cjs
         fi

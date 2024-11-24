@@ -6,31 +6,30 @@ import {
 } from 'fs';
 import { utils } from '@l10nmonster/helpers';
 
-class TM {
+class InMemoryTMDelegate {
+    #configSeal;
     #tmPathName;
+    #persistTMCache;
+    #tus;
     #lookUpByFlattenSrc = {};
     #jobStatus;
-    #tus;
-    #isDirty = false;
 
-    constructor(sourceLang, targetLang, tmPathName, configSeal, jobs, persistTMCache) {
-        this.#tmPathName = tmPathName;
-        this.sourceLang = sourceLang;
-        this.targetLang = targetLang;
-        this.configSeal = configSeal;
-        this.#jobStatus = {};
+    constructor(tmBasePathName, persistTMCache, configSeal, jobs) {
+        this.#configSeal = configSeal;
+        this.#tmPathName = `${tmBasePathName}.json`;
+        this.#persistTMCache = persistTMCache;
         this.#tus = {};
-        this.persistTMCache = persistTMCache;
+        this.#jobStatus = {};
 
-        if (persistTMCache && existsSync(tmPathName)) {
-            const tmData = JSON.parse(readFileSync(tmPathName, 'utf8'));
+        if (persistTMCache && existsSync(this.#tmPathName)) {
+            const tmData = JSON.parse(readFileSync(this.#tmPathName, 'utf8'));
             const jobMap = Object.fromEntries(jobs);
             const extraJobs = Object.keys(tmData?.jobStatus ?? {}).filter(jobGuid => !jobMap[jobGuid]);
             // nuke the cache if config seal is broken or jobs were removed
             if (!(tmData?.configSeal === configSeal) || extraJobs.length > 0) {
                 this.#jobStatus = {};
                 this.#tus = {};
-                l10nmonster.logger.info(`Nuking existing TM ${tmPathName}`);
+                l10nmonster.logger.info(`Nuking existing TM ${this.#tmPathName}`);
             } else {
                 this.#jobStatus = tmData.jobStatus;
                 Object.values(tmData.tus).forEach(tu => this.setEntry(tu));
@@ -38,7 +37,7 @@ class TM {
         }
     }
 
-    get guids() {
+    guids() {
         return Object.keys(this.#tus);
     }
 
@@ -47,42 +46,86 @@ class TM {
     }
 
     setEntry(entry) {
-        try {
-            const cleanedTU = l10nmonster.TU.asPair(entry);
-            Object.freeze(cleanedTU);
-            this.#tus[entry.guid] = cleanedTU;
-            const flattenSrc = utils.flattenNormalizedSourceToOrdinal(cleanedTU.nsrc);
-            this.#lookUpByFlattenSrc[flattenSrc] ??= [];
-            !this.#lookUpByFlattenSrc[flattenSrc].includes(cleanedTU) && this.#lookUpByFlattenSrc[flattenSrc].push(cleanedTU);
-        } catch (e) {
-            l10nmonster.logger.verbose(`Not setting TM entry: ${e}`);
-        }
+        this.#tus[entry.guid] = entry;
+        const flattenSrc = utils.flattenNormalizedSourceToOrdinal(entry.nsrc);
+        this.#lookUpByFlattenSrc[flattenSrc] ??= [];
+        !this.#lookUpByFlattenSrc[flattenSrc].includes(entry) && this.#lookUpByFlattenSrc[flattenSrc].push(entry);
     }
 
     getAllEntriesBySrc(src) {
-        const flattenedSrc = utils.flattenNormalizedSourceToOrdinal(src);
-        return this.#lookUpByFlattenSrc[flattenedSrc] || [];
+        return this.#lookUpByFlattenSrc[src] || [];
     }
 
-    // get status of job in the TM (if it exists)
+    getJobsMeta() {
+        return this.#jobStatus;
+    }
+
     getJobStatus(jobGuid) {
         const jobMeta = this.#jobStatus[jobGuid];
         return [ jobMeta?.status, jobMeta?.updatedAt ];
     }
 
-    async commit() {
-        if (this.#isDirty) {
-            if (this.persistTMCache) {
-                l10nmonster.logger.info(`Updating ${this.#tmPathName}...`);
-                const tmData = { ...this, jobStatus: this.#jobStatus, tus: this.#tus };
-                writeFileSync(this.#tmPathName, JSON.stringify(tmData, null, '\t'), 'utf8');
-            } else {
-                l10nmonster.logger.info(`Cache not updated...`);
-            }
+    updateJobStatus(jobGuid, status, updatedAt, translationProvider, units) {
+        this.#jobStatus[jobGuid] = { status, updatedAt, translationProvider, units };
+    }
+
+    commit() {
+        if (this.#persistTMCache) {
+            l10nmonster.logger.info(`Updating ${this.#tmPathName}...`);
+            const tmData = {
+                configSeal:this.#configSeal,
+                jobStatus: this.#jobStatus,
+                tus: this.#tus,
+            };
+            writeFileSync(this.#tmPathName, JSON.stringify(tmData, null, '\t'), 'utf8');
+        } else {
+            l10nmonster.logger.info(`Cache not persisted...`);
+        }
+    }
+}
+
+class TM {
+    #isDirty = false;
+
+    constructor(tmBasePathName, configSeal, jobs, mode) {
+        this.delegate = new InMemoryTMDelegate(tmBasePathName, mode !== 'transient', configSeal, jobs);
+    }
+
+    get guids() {
+        return this.delegate.guids();
+    }
+
+    getEntryByGuid(guid) {
+        return this.delegate.getEntryByGuid(guid);
+    }
+
+    setEntry(entry) {
+        try {
+            const cleanedTU = l10nmonster.TU.asPair(entry);
+            Object.freeze(cleanedTU);
+            this.delegate.setEntry(cleanedTU);
+        } catch (e) {
+            l10nmonster.logger.verbose(`Not setting TM entry (guid=${entry.guid}): ${e}`);
         }
     }
 
-    async processJob(jobResponse, jobRequest) {
+    getAllEntriesBySrc(src) {
+        const flattenedSrc = utils.flattenNormalizedSourceToOrdinal(src);
+        return this.delegate.getAllEntriesBySrc(flattenedSrc);
+    }
+
+    // get status of job in the TM (if it exists)
+    getJobStatus(jobGuid) {
+        return this.delegate.getJobStatus(jobGuid);
+    }
+
+    commit() {
+        if (this.#isDirty) {
+            this.delegate.commit();
+        }
+    }
+
+    processJob(jobResponse, jobRequest) {
         this.#isDirty = true;
         const requestedUnits = {};
         jobRequest?.tus && jobRequest.tus.forEach(tu => requestedUnits[tu.guid] = tu);
@@ -110,11 +153,11 @@ class TM {
                 }
             }
         }
-        this.#jobStatus[jobGuid] = { status, updatedAt, translationProvider, units: tus?.length ?? inflight?.length ?? 0 };
+        this.delegate.updateJobStatus(jobGuid, status, updatedAt, translationProvider, tus?.length ?? inflight?.length ?? 0);
     }
 
     getJobsMeta() {
-        return this.#jobStatus;
+        return this.delegate.getJobsMeta();
     }
 }
 
@@ -124,23 +167,20 @@ export default class TMManager {
         this.jobStore = jobStore;
         this.configSeal = configSeal;
         this.tmCache = new Map();
-        this.generation = new Date().getTime();
         this.parallelism = parallelism ?? 8;
-        this.persistTMCache = mode !== 'transient';
+        this.mode = mode;
     }
 
     async getTM(sourceLang, targetLang) {
-        const tmFileName = `tmCache_${sourceLang}_${targetLang}.json`;
-        let tm = this.tmCache.get(tmFileName);
+        const tmName = `tmCache_${sourceLang}_${targetLang}`;
+        let tm = this.tmCache.get(tmName);
         if (tm) {
             return tm;
         }
         const jobs = (await this.jobStore.getJobStatusByLangPair(sourceLang, targetLang))
             .filter(e => [ 'pending', 'done' ].includes(e[1].status));
-        if (!tm) {
-            tm = new TM(sourceLang, targetLang, path.join(this.monsterDir, tmFileName), this.configSeal, jobs, this.persistTMCache);
-            this.tmCache.set(tmFileName, tm);
-        }
+        tm = new TM(path.join(this.monsterDir, tmName), this.configSeal, jobs, this.mode);
+        this.tmCache.set(tmName, tm);
         const jobsToFetch = [];
         for (const [jobGuid, handle] of jobs) {
             const [ status, updatedAt ] = tm.getJobStatus(jobGuid);
@@ -176,7 +216,7 @@ export default class TMManager {
                 })());
                 for (const { jobResponse, jobRequest } of await Promise.all(jobPromises)) {
                     l10nmonster.logger.info(`Applying job ${jobResponse?.jobGuid} to the ${sourceLang} -> ${targetLang} TM...`);
-                    await tm.processJob(jobResponse, jobRequest);
+                    tm.processJob(jobResponse, jobRequest);
                 }
             }
         }
@@ -185,7 +225,7 @@ export default class TMManager {
 
     async shutdown() {
         for (const tm of this.tmCache.values()) {
-            await tm.commit();
+            tm.commit();
         }
     }
 }

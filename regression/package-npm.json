@@ -1,6 +1,7 @@
 {
     "name": "npm-regression",
     "dependencies": {
+        "@l10nmonster/core": "^1",
         "@l10nmonster/cli": "^1",
         "@l10nmonster/helpers": "^1",
         "@l10nmonster/helpers-android": "^1",

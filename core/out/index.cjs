@@ -106,73 +106,106 @@ var import_words_count = __toESM(require_dist(), 1);
 var path = __toESM(require("path"), 1);
 var import_fs = require("fs");
 var import_helpers = require("@l10nmonster/helpers");
-var TM = class {
+var InMemoryTMDelegate = class {
+  #configSeal;
   #tmPathName;
+  #persistTMCache;
+  #tus;
   #lookUpByFlattenSrc = {};
   #jobStatus;
-  #tus;
-  #isDirty = false;
-  constructor(sourceLang, targetLang, tmPathName, configSeal, jobs, persistTMCache) {
-    this.#tmPathName = tmPathName;
-    this.sourceLang = sourceLang;
-    this.targetLang = targetLang;
-    this.configSeal = configSeal;
-    this.#jobStatus = {};
+  constructor(tmBasePathName, persistTMCache, configSeal, jobs) {
+    this.#configSeal = configSeal;
+    this.#tmPathName = `${tmBasePathName}.json`;
+    this.#persistTMCache = persistTMCache;
     this.#tus = {};
-    this.persistTMCache = persistTMCache;
-    if (persistTMCache && (0, import_fs.existsSync)(tmPathName)) {
-      const tmData = JSON.parse((0, import_fs.readFileSync)(tmPathName, "utf8"));
+    this.#jobStatus = {};
+    if (persistTMCache && (0, import_fs.existsSync)(this.#tmPathName)) {
+      const tmData = JSON.parse((0, import_fs.readFileSync)(this.#tmPathName, "utf8"));
       const jobMap = Object.fromEntries(jobs);
       const extraJobs = Object.keys(tmData?.jobStatus ?? {}).filter((jobGuid) => !jobMap[jobGuid]);
       if (!(tmData?.configSeal === configSeal) || extraJobs.length > 0) {
         this.#jobStatus = {};
         this.#tus = {};
-        l10nmonster.logger.info(`Nuking existing TM ${tmPathName}`);
+        l10nmonster.logger.info(`Nuking existing TM ${this.#tmPathName}`);
       } else {
         this.#jobStatus = tmData.jobStatus;
         Object.values(tmData.tus).forEach((tu) => this.setEntry(tu));
       }
     }
   }
-  get guids() {
+  guids() {
     return Object.keys(this.#tus);
   }
   getEntryByGuid(guid) {
     return this.#tus[guid];
   }
   setEntry(entry) {
-    try {
-      const cleanedTU = l10nmonster.TU.asPair(entry);
-      Object.freeze(cleanedTU);
-      this.#tus[entry.guid] = cleanedTU;
-      const flattenSrc = import_helpers.utils.flattenNormalizedSourceToOrdinal(cleanedTU.nsrc);
-      this.#lookUpByFlattenSrc[flattenSrc] ??= [];
-      !this.#lookUpByFlattenSrc[flattenSrc].includes(cleanedTU) && this.#lookUpByFlattenSrc[flattenSrc].push(cleanedTU);
-    } catch (e) {
-      l10nmonster.logger.verbose(`Not setting TM entry: ${e}`);
-    }
+    this.#tus[entry.guid] = entry;
+    const flattenSrc = import_helpers.utils.flattenNormalizedSourceToOrdinal(entry.nsrc);
+    this.#lookUpByFlattenSrc[flattenSrc] ??= [];
+    !this.#lookUpByFlattenSrc[flattenSrc].includes(entry) && this.#lookUpByFlattenSrc[flattenSrc].push(entry);
   }
   getAllEntriesBySrc(src) {
-    const flattenedSrc = import_helpers.utils.flattenNormalizedSourceToOrdinal(src);
-    return this.#lookUpByFlattenSrc[flattenedSrc] || [];
+    return this.#lookUpByFlattenSrc[src] || [];
   }
-  // get status of job in the TM (if it exists)
+  getJobsMeta() {
+    return this.#jobStatus;
+  }
   getJobStatus(jobGuid) {
     const jobMeta = this.#jobStatus[jobGuid];
     return [jobMeta?.status, jobMeta?.updatedAt];
   }
-  async commit() {
-    if (this.#isDirty) {
-      if (this.persistTMCache) {
-        l10nmonster.logger.info(`Updating ${this.#tmPathName}...`);
-        const tmData = { ...this, jobStatus: this.#jobStatus, tus: this.#tus };
-        (0, import_fs.writeFileSync)(this.#tmPathName, JSON.stringify(tmData, null, "	"), "utf8");
-      } else {
-        l10nmonster.logger.info(`Cache not updated...`);
-      }
+  updateJobStatus(jobGuid, status, updatedAt, translationProvider, units) {
+    this.#jobStatus[jobGuid] = { status, updatedAt, translationProvider, units };
+  }
+  commit() {
+    if (this.#persistTMCache) {
+      l10nmonster.logger.info(`Updating ${this.#tmPathName}...`);
+      const tmData = {
+        configSeal: this.#configSeal,
+        jobStatus: this.#jobStatus,
+        tus: this.#tus
+      };
+      (0, import_fs.writeFileSync)(this.#tmPathName, JSON.stringify(tmData, null, "	"), "utf8");
+    } else {
+      l10nmonster.logger.info(`Cache not persisted...`);
     }
   }
-  async processJob(jobResponse, jobRequest) {
+};
+var TM = class {
+  #isDirty = false;
+  constructor(tmBasePathName, configSeal, jobs, mode) {
+    this.delegate = new InMemoryTMDelegate(tmBasePathName, mode !== "transient", configSeal, jobs);
+  }
+  get guids() {
+    return this.delegate.guids();
+  }
+  getEntryByGuid(guid) {
+    return this.delegate.getEntryByGuid(guid);
+  }
+  setEntry(entry) {
+    try {
+      const cleanedTU = l10nmonster.TU.asPair(entry);
+      Object.freeze(cleanedTU);
+      this.delegate.setEntry(cleanedTU);
+    } catch (e) {
+      l10nmonster.logger.verbose(`Not setting TM entry (guid=${entry.guid}): ${e}`);
+    }
+  }
+  getAllEntriesBySrc(src) {
+    const flattenedSrc = import_helpers.utils.flattenNormalizedSourceToOrdinal(src);
+    return this.delegate.getAllEntriesBySrc(flattenedSrc);
+  }
+  // get status of job in the TM (if it exists)
+  getJobStatus(jobGuid) {
+    return this.delegate.getJobStatus(jobGuid);
+  }
+  commit() {
+    if (this.#isDirty) {
+      this.delegate.commit();
+    }
+  }
+  processJob(jobResponse, jobRequest) {
     this.#isDirty = true;
     const requestedUnits = {};
     jobRequest?.tus && jobRequest.tus.forEach((tu) => requestedUnits[tu.guid] = tu);
@@ -196,10 +229,10 @@ var TM = class {
         }
       }
     }
-    this.#jobStatus[jobGuid] = { status, updatedAt, translationProvider, units: tus?.length ?? inflight?.length ?? 0 };
+    this.delegate.updateJobStatus(jobGuid, status, updatedAt, translationProvider, tus?.length ?? inflight?.length ?? 0);
   }
   getJobsMeta() {
-    return this.#jobStatus;
+    return this.delegate.getJobsMeta();
   }
 };
 var TMManager = class {
@@ -208,21 +241,18 @@ var TMManager = class {
     this.jobStore = jobStore;
     this.configSeal = configSeal;
     this.tmCache = /* @__PURE__ */ new Map();
-    this.generation = (/* @__PURE__ */ new Date()).getTime();
     this.parallelism = parallelism ?? 8;
-    this.persistTMCache = mode !== "transient";
+    this.mode = mode;
   }
   async getTM(sourceLang, targetLang) {
-    const tmFileName = `tmCache_${sourceLang}_${targetLang}.json`;
-    let tm = this.tmCache.get(tmFileName);
+    const tmName = `tmCache_${sourceLang}_${targetLang}`;
+    let tm = this.tmCache.get(tmName);
     if (tm) {
       return tm;
     }
     const jobs = (await this.jobStore.getJobStatusByLangPair(sourceLang, targetLang)).filter((e) => ["pending", "done"].includes(e[1].status));
-    if (!tm) {
-      tm = new TM(sourceLang, targetLang, path.join(this.monsterDir, tmFileName), this.configSeal, jobs, this.persistTMCache);
-      this.tmCache.set(tmFileName, tm);
-    }
+    tm = new TM(path.join(this.monsterDir, tmName), this.configSeal, jobs, this.mode);
+    this.tmCache.set(tmName, tm);
     const jobsToFetch = [];
     for (const [jobGuid, handle] of jobs) {
       const [status, updatedAt] = tm.getJobStatus(jobGuid);
@@ -257,7 +287,7 @@ var TMManager = class {
         })());
         for (const { jobResponse, jobRequest } of await Promise.all(jobPromises2)) {
           l10nmonster.logger.info(`Applying job ${jobResponse?.jobGuid} to the ${sourceLang} -> ${targetLang} TM...`);
-          await tm.processJob(jobResponse, jobRequest);
+          tm.processJob(jobResponse, jobRequest);
         }
       }
     }
@@ -265,7 +295,7 @@ var TMManager = class {
   }
   async shutdown() {
     for (const tm of this.tmCache.values()) {
-      await tm.commit();
+      tm.commit();
     }
   }
 };

@@ -1,0 +1,17 @@
+{
+    "workspaces": [
+        "core",
+        "cli",
+        "helpers",
+        "helpers-android",
+        "helpers-demo",
+        "helpers-googlecloud",
+        "helpers-html",
+        "helpers-ios",
+        "helpers-java",
+        "helpers-json",
+        "helpers-po",
+        "helpers-translated",
+        "helpers-xliff"
+    ]
+}
