@@ -6,6 +6,7 @@ module.exports = class EisenVaultConfig2 {
     sourceLang = 'en';
     targetLangs = [ 'it' ];
     minimumQuality = 50;
+    tmm = 'transient';
 
     constructor() {
         this.source = new adapters.FsSource({

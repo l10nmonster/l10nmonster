@@ -36,8 +36,7 @@ export async function createMonsterManager(configPath, options) {
         const monsterDir = path.join(l10nmonster.baseDir, monsterConfig.monsterDir ?? '.l10nmonster');
         l10nmonster.logger.verbose(`Monster cache dir: ${monsterDir}`);
         mkdirSync(monsterDir, {recursive: true});
-        const configSeal = statSync(configPath).mtime.toISOString();
-        const mm = new MonsterManager({ monsterDir, monsterConfig, configSeal });
+        const mm = new MonsterManager({ monsterDir, monsterConfig });
         for (const tp of Object.values(mm.translationProviders)) {
             typeof tp.translator.init === 'function' && await tp.translator.init(mm);
         }

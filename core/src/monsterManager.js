@@ -9,7 +9,7 @@ export class MonsterManager {
     #targetLangSets = {};
     #functionsForShutdown;
 
-    constructor({ monsterDir, monsterConfig, configSeal }) {
+    constructor({ monsterDir, monsterConfig }) {
         if (!monsterConfig?.sourceLang) {
             throw 'You must specify sourceLang in your config';
         }
@@ -25,7 +25,6 @@ export class MonsterManager {
             throw 'You must specify at least a jobStore or a snapStore in your config';
         }
         this.monsterDir = monsterDir;
-        this.configSeal = configSeal;
         this.jobStore = monsterConfig.jobStore;
         this.jobStore.shutdown && this.scheduleForShutdown(this.jobStore.shutdown.bind(this.jobStore));
         this.sourceLang = monsterConfig.sourceLang;
@@ -86,7 +85,6 @@ export class MonsterManager {
             formats = monsterConfig.formats;
         }
         this.rm = new ResourceManager({
-            configSeal,
             channels,
             formats,
             snapStore: monsterConfig.snapStore,
@@ -104,7 +102,7 @@ export class MonsterManager {
             });
         }
         this.tuFilters = monsterConfig.tuFilters;
-        this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, configSeal, mode: monsterConfig.tmm });
+        this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, mode: monsterConfig.tmm });
         this.scheduleForShutdown(this.tmm.shutdown.bind(this.tmm));
         this.analyzers = monsterConfig.analyzers ?? {};
         this.capabilitiesByChannel = Object.fromEntries(Object.entries(channels).map(([type, channel]) => [ type, {

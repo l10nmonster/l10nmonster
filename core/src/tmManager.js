@@ -1,98 +1,22 @@
 import * as path from 'path';
-import {
-    existsSync,
-    readFileSync,
-    writeFileSync,
-} from 'fs';
-import { utils } from '@l10nmonster/helpers';
-
-class InMemoryTMDelegate {
-    #configSeal;
-    #tmPathName;
-    #persistTMCache;
-    #tus;
-    #lookUpByFlattenSrc = {};
-    #jobStatus;
-
-    constructor(tmBasePathName, persistTMCache, configSeal, jobs) {
-        this.#configSeal = configSeal;
-        this.#tmPathName = `${tmBasePathName}.json`;
-        this.#persistTMCache = persistTMCache;
-        this.#tus = {};
-        this.#jobStatus = {};
-
-        if (persistTMCache && existsSync(this.#tmPathName)) {
-            const tmData = JSON.parse(readFileSync(this.#tmPathName, 'utf8'));
-            const jobMap = Object.fromEntries(jobs);
-            const extraJobs = Object.keys(tmData?.jobStatus ?? {}).filter(jobGuid => !jobMap[jobGuid]);
-            // nuke the cache if config seal is broken or jobs were removed
-            if (!(tmData?.configSeal === configSeal) || extraJobs.length > 0) {
-                this.#jobStatus = {};
-                this.#tus = {};
-                l10nmonster.logger.info(`Nuking existing TM ${this.#tmPathName}`);
-            } else {
-                this.#jobStatus = tmData.jobStatus;
-                Object.values(tmData.tus).forEach(tu => this.setEntry(tu));
-            }
-        }
-    }
-
-    guids() {
-        return Object.keys(this.#tus);
-    }
-
-    getEntryByGuid(guid) {
-        return this.#tus[guid];
-    }
-
-    setEntry(entry) {
-        this.#tus[entry.guid] = entry;
-        const flattenSrc = utils.flattenNormalizedSourceToOrdinal(entry.nsrc);
-        this.#lookUpByFlattenSrc[flattenSrc] ??= [];
-        !this.#lookUpByFlattenSrc[flattenSrc].includes(entry) && this.#lookUpByFlattenSrc[flattenSrc].push(entry);
-    }
-
-    getAllEntriesBySrc(src) {
-        return this.#lookUpByFlattenSrc[src] || [];
-    }
-
-    getJobsMeta() {
-        return this.#jobStatus;
-    }
-
-    getJobStatus(jobGuid) {
-        const jobMeta = this.#jobStatus[jobGuid];
-        return [ jobMeta?.status, jobMeta?.updatedAt ];
-    }
-
-    updateJobStatus(jobGuid, status, updatedAt, translationProvider, units) {
-        this.#jobStatus[jobGuid] = { status, updatedAt, translationProvider, units };
-    }
-
-    commit() {
-        if (this.#persistTMCache) {
-            l10nmonster.logger.info(`Updating ${this.#tmPathName}...`);
-            const tmData = {
-                configSeal:this.#configSeal,
-                jobStatus: this.#jobStatus,
-                tus: this.#tus,
-            };
-            writeFileSync(this.#tmPathName, JSON.stringify(tmData, null, '\t'), 'utf8');
-        } else {
-            l10nmonster.logger.info(`Cache not persisted...`);
-        }
-    }
-}
+import { InMemoryTMDelegate } from './inMemoryTMDelegate.js';
+import { SQLTMDelegate } from './sqliteTMDelegate.js';
 
 class TM {
     #isDirty = false;
 
-    constructor(tmBasePathName, configSeal, jobs, mode) {
-        this.delegate = new InMemoryTMDelegate(tmBasePathName, mode !== 'transient', configSeal, jobs);
+    constructor(tmBasePathName, jobs, mode) {
+        if (mode === undefined || mode === 'json' || mode === 'transient') {
+            this.delegate = new InMemoryTMDelegate(tmBasePathName, mode !== 'transient', jobs);
+        } else if (mode === 'sql') {
+            this.delegate = new SQLTMDelegate(tmBasePathName, jobs);
+        } else {
+            throw `Unknown TM Manager mode: ${mode}`;
+        }
     }
 
     get guids() {
-        return this.delegate.guids();
+        return this.delegate.getGuids();
     }
 
     getEntryByGuid(guid) {
@@ -110,8 +34,7 @@ class TM {
     }
 
     getAllEntriesBySrc(src) {
-        const flattenedSrc = utils.flattenNormalizedSourceToOrdinal(src);
-        return this.delegate.getAllEntriesBySrc(flattenedSrc);
+        return this.delegate.getAllEntriesBySrc(src);
     }
 
     // get status of job in the TM (if it exists)
@@ -143,10 +66,6 @@ class TM {
             for (const tu of tus) {
                 const tmEntry = this.getEntryByGuid(tu.guid);
                 const reqEntry = requestedUnits[tu.guid] ?? {};
-                // the problem trying to refresh from source is that it's going to be stale anyway
-                // and it requires all sources to be in memory. removing this since it seems to be
-                // just a legacy from when we didn't capture the request
-                // const srcEntry = Object.fromEntries(Object.entries(this.sourceMgr.getSourceByGuid(tu.guid) ?? {}).filter(p => refreshedFromSource.has(p[0])));
                 const rectifiedTU = { ...reqEntry, ...tu, jobGuid, translationProvider };
                 if (!tmEntry || tmEntry.q < tu.q || (tmEntry.q === tu.q && tmEntry.ts < rectifiedTU.ts)) {
                     this.setEntry(rectifiedTU);
@@ -162,10 +81,9 @@ class TM {
 }
 
 export default class TMManager {
-    constructor({ monsterDir, jobStore, configSeal, parallelism, mode }) {
+    constructor({ monsterDir, jobStore, parallelism, mode }) {
         this.monsterDir = monsterDir;
         this.jobStore = jobStore;
-        this.configSeal = configSeal;
         this.tmCache = new Map();
         this.parallelism = parallelism ?? 8;
         this.mode = mode;
@@ -179,7 +97,7 @@ export default class TMManager {
         }
         const jobs = (await this.jobStore.getJobStatusByLangPair(sourceLang, targetLang))
             .filter(e => [ 'pending', 'done' ].includes(e[1].status));
-        tm = new TM(path.join(this.monsterDir, tmName), this.configSeal, jobs, this.mode);
+        tm = new TM(path.join(this.monsterDir, tmName), jobs, this.mode);
         this.tmCache.set(tmName, tm);
         const jobsToFetch = [];
         for (const [jobGuid, handle] of jobs) {

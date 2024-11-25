@@ -29,9 +29,9 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-// node_modules/words-count/dist/index.js
+// ../node_modules/words-count/dist/index.js
 var require_dist = __commonJS({
-  "node_modules/words-count/dist/index.js"(exports2, module2) {
+  "../node_modules/words-count/dist/index.js"(exports2, module2) {
     !function(e, t) {
       "object" == typeof exports2 && "object" == typeof module2 ? module2.exports = t() : "function" == typeof define && define.amd ? define("words-count", [], t) : "object" == typeof exports2 ? exports2["words-count"] = t() : e["words-count"] = t();
     }(exports2, function() {
@@ -104,17 +104,17 @@ var import_words_count = __toESM(require_dist(), 1);
 
 // src/tmManager.js
 var path = __toESM(require("path"), 1);
+
+// src/inMemoryTMDelegate.js
 var import_fs = require("fs");
 var import_helpers = require("@l10nmonster/helpers");
 var InMemoryTMDelegate = class {
-  #configSeal;
   #tmPathName;
   #persistTMCache;
   #tus;
-  #lookUpByFlattenSrc = {};
+  #lookUpByFlatSrc = {};
   #jobStatus;
-  constructor(tmBasePathName, persistTMCache, configSeal, jobs) {
-    this.#configSeal = configSeal;
+  constructor(tmBasePathName, persistTMCache, jobs) {
     this.#tmPathName = `${tmBasePathName}.json`;
     this.#persistTMCache = persistTMCache;
     this.#tus = {};
@@ -123,7 +123,7 @@ var InMemoryTMDelegate = class {
       const tmData = JSON.parse((0, import_fs.readFileSync)(this.#tmPathName, "utf8"));
       const jobMap = Object.fromEntries(jobs);
       const extraJobs = Object.keys(tmData?.jobStatus ?? {}).filter((jobGuid) => !jobMap[jobGuid]);
-      if (!(tmData?.configSeal === configSeal) || extraJobs.length > 0) {
+      if (extraJobs.length > 0) {
         this.#jobStatus = {};
         this.#tus = {};
         l10nmonster.logger.info(`Nuking existing TM ${this.#tmPathName}`);
@@ -133,7 +133,7 @@ var InMemoryTMDelegate = class {
       }
     }
   }
-  guids() {
+  getGuids() {
     return Object.keys(this.#tus);
   }
   getEntryByGuid(guid) {
@@ -141,12 +141,13 @@ var InMemoryTMDelegate = class {
   }
   setEntry(entry) {
     this.#tus[entry.guid] = entry;
-    const flattenSrc = import_helpers.utils.flattenNormalizedSourceToOrdinal(entry.nsrc);
-    this.#lookUpByFlattenSrc[flattenSrc] ??= [];
-    !this.#lookUpByFlattenSrc[flattenSrc].includes(entry) && this.#lookUpByFlattenSrc[flattenSrc].push(entry);
+    const flatSrc = import_helpers.utils.flattenNormalizedSourceToOrdinal(entry.nsrc);
+    this.#lookUpByFlatSrc[flatSrc] ??= [];
+    !this.#lookUpByFlatSrc[flatSrc].includes(entry) && this.#lookUpByFlatSrc[flatSrc].push(entry);
   }
   getAllEntriesBySrc(src) {
-    return this.#lookUpByFlattenSrc[src] || [];
+    const flatSrc = import_helpers.utils.flattenNormalizedSourceToOrdinal(src);
+    return this.#lookUpByFlatSrc[flatSrc] || [];
   }
   getJobsMeta() {
     return this.#jobStatus;
@@ -162,7 +163,6 @@ var InMemoryTMDelegate = class {
     if (this.#persistTMCache) {
       l10nmonster.logger.info(`Updating ${this.#tmPathName}...`);
       const tmData = {
-        configSeal: this.#configSeal,
         jobStatus: this.#jobStatus,
         tus: this.#tus
       };
@@ -172,13 +172,103 @@ var InMemoryTMDelegate = class {
     }
   }
 };
+
+// src/sqliteTMDelegate.js
+var import_fs2 = require("fs");
+var import_better_sqlite3 = __toESM(require("better-sqlite3"), 1);
+var import_helpers2 = require("@l10nmonster/helpers");
+var SQLTMDelegate = class {
+  #db;
+  #getGuids;
+  #getEntry;
+  #setEntry;
+  #getEntryByFlatSrc;
+  #getJobs;
+  #getJob;
+  #setJob;
+  constructor(tmBasePathName, jobs) {
+    const dbPathName = `${tmBasePathName}.sqlite`;
+    let createDB = false;
+    if ((0, import_fs2.existsSync)(dbPathName)) {
+      const jobMap = Object.fromEntries(jobs);
+      this.#db = new import_better_sqlite3.default(dbPathName);
+      const getJobGuids = this.#db.prepare("SELECT jobGuid FROM jobs;");
+      const rows = getJobGuids.all();
+      const extraJobs = rows.filter((row) => !jobMap[row.jobGuid]);
+      if (extraJobs.length > 0) {
+        l10nmonster.logger.info(`Nuking existing TM ${dbPathName}`);
+        this.#db.close();
+        (0, import_fs2.unlinkSync)(dbPathName);
+        createDB = true;
+      }
+    } else {
+      createDB = true;
+    }
+    if (createDB) {
+      this.#db = new import_better_sqlite3.default(dbPathName);
+      this.#db.exec("CREATE TABLE tus(guid TEXT NOT NULL PRIMARY KEY, entry TEXT, flatSrc TEXT);                CREATE TABLE jobs(jobGuid TEXT NOT NULL PRIMARY KEY, status TEXT, updatedAt TEXT, translationProvider TEXT, units NUMBER);");
+    }
+    this.#getGuids = this.#db.prepare("SELECT guid FROM tus ORDER BY ROWID");
+    this.#getEntry = this.#db.prepare("SELECT entry FROM tus WHERE guid = ?");
+    this.#setEntry = this.#db.prepare("INSERT INTO tus (guid, entry, flatSrc) VALUES (@guid, @entry, @flatSrc)            ON CONFLICT (guid)                DO UPDATE SET entry = excluded.entry, flatSrc = excluded.flatSrc            WHERE excluded.guid = tus.guid;");
+    this.#getEntryByFlatSrc = this.#db.prepare("SELECT entry FROM tus WHERE flatSrc = ?");
+    this.#getJobs = this.#db.prepare("SELECT * FROM jobs ORDER BY ROWID");
+    this.#getJob = this.#db.prepare("SELECT * FROM jobs WHERE jobGuid = ?");
+    this.#setJob = this.#db.prepare("INSERT INTO jobs (jobGuid, status, updatedAt, translationProvider, units) VALUES (@jobGuid, @status, @updatedAt, @translationProvider, @units)            ON CONFLICT (jobGuid)                DO UPDATE SET status = excluded.status, updatedAt = excluded.updatedAt, translationProvider = excluded.translationProvider, units = excluded.units            WHERE excluded.jobGuid = jobs.jobGuid;");
+  }
+  getGuids() {
+    return this.#getGuids.all().map((row) => row.guid);
+  }
+  getEntryByGuid(guid) {
+    const rawEntry = this.#getEntry.get(guid)?.entry;
+    return rawEntry && JSON.parse(rawEntry);
+  }
+  setEntry(entry) {
+    const result = this.#setEntry.run({
+      guid: entry.guid,
+      entry: JSON.stringify(entry),
+      flatSrc: import_helpers2.utils.flattenNormalizedSourceToOrdinal(entry.nsrc)
+    });
+    result.changes !== 1 && console.dir(result);
+  }
+  getAllEntriesBySrc(src) {
+    const flattenedSrc = import_helpers2.utils.flattenNormalizedSourceToOrdinal(src);
+    return this.#getEntryByFlatSrc.all(flattenedSrc).map((row) => JSON.parse(row.entry));
+  }
+  getJobsMeta() {
+    const rows = this.#getJobs.all();
+    return Object.fromEntries(rows.map((row) => {
+      const { jobGuid, ...status } = row;
+      return [jobGuid, status];
+    }));
+  }
+  getJobStatus(jobGuid) {
+    const jobMeta = this.#getJob.get(jobGuid);
+    return [jobMeta?.status, jobMeta?.updatedAt];
+  }
+  updateJobStatus(jobGuid, status, updatedAt, translationProvider, units) {
+    const result = this.#setJob.run({ jobGuid, status, updatedAt, translationProvider, units });
+    result.changes !== 1 && console.dir(result);
+  }
+  commit() {
+    this.#db.close();
+  }
+};
+
+// src/tmManager.js
 var TM = class {
   #isDirty = false;
-  constructor(tmBasePathName, configSeal, jobs, mode) {
-    this.delegate = new InMemoryTMDelegate(tmBasePathName, mode !== "transient", configSeal, jobs);
+  constructor(tmBasePathName, jobs, mode) {
+    if (mode === void 0 || mode === "json" || mode === "transient") {
+      this.delegate = new InMemoryTMDelegate(tmBasePathName, mode !== "transient", jobs);
+    } else if (mode === "sql") {
+      this.delegate = new SQLTMDelegate(tmBasePathName, jobs);
+    } else {
+      throw `Unknown TM Manager mode: ${mode}`;
+    }
   }
   get guids() {
-    return this.delegate.guids();
+    return this.delegate.getGuids();
   }
   getEntryByGuid(guid) {
     return this.delegate.getEntryByGuid(guid);
@@ -193,8 +283,7 @@ var TM = class {
     }
   }
   getAllEntriesBySrc(src) {
-    const flattenedSrc = import_helpers.utils.flattenNormalizedSourceToOrdinal(src);
-    return this.delegate.getAllEntriesBySrc(flattenedSrc);
+    return this.delegate.getAllEntriesBySrc(src);
   }
   // get status of job in the TM (if it exists)
   getJobStatus(jobGuid) {
@@ -236,10 +325,9 @@ var TM = class {
   }
 };
 var TMManager = class {
-  constructor({ monsterDir, jobStore, configSeal, parallelism, mode }) {
+  constructor({ monsterDir, jobStore, parallelism, mode }) {
     this.monsterDir = monsterDir;
     this.jobStore = jobStore;
-    this.configSeal = configSeal;
     this.tmCache = /* @__PURE__ */ new Map();
     this.parallelism = parallelism ?? 8;
     this.mode = mode;
@@ -251,7 +339,7 @@ var TMManager = class {
       return tm;
     }
     const jobs = (await this.jobStore.getJobStatusByLangPair(sourceLang, targetLang)).filter((e) => ["pending", "done"].includes(e[1].status));
-    tm = new TM(path.join(this.monsterDir, tmName), this.configSeal, jobs, this.mode);
+    tm = new TM(path.join(this.monsterDir, tmName), jobs, this.mode);
     this.tmCache.set(tmName, tm);
     const jobsToFetch = [];
     for (const [jobGuid, handle] of jobs) {
@@ -405,7 +493,7 @@ var Channel = class {
 };
 
 // src/entities/normalizer.js
-var import_helpers2 = require("@l10nmonster/helpers");
+var import_helpers3 = require("@l10nmonster/helpers");
 var Normalizer = class {
   #decoders;
   #textEncoders;
@@ -413,11 +501,11 @@ var Normalizer = class {
   constructor({ decoders, textEncoders, codeEncoders, joiner }) {
     this.#decoders = decoders;
     this.#textEncoders = textEncoders;
-    this.#codeEncoders = codeEncoders ?? [import_helpers2.normalizers.defaultCodeEncoder];
+    this.#codeEncoders = codeEncoders ?? [import_helpers3.normalizers.defaultCodeEncoder];
     this.join = joiner ?? ((parts) => parts.join(""));
   }
   decode(str, flags = {}) {
-    return import_helpers2.utils.getNormalizedString(str, this.#decoders, flags);
+    return import_helpers3.utils.getNormalizedString(str, this.#decoders, flags);
   }
   encodePart(part, flags) {
     const encoders = typeof part === "string" ? this.#textEncoders : this.#codeEncoders;
@@ -430,7 +518,7 @@ var Normalizer = class {
 };
 
 // src/entities/formatHandler.js
-var import_helpers3 = require("@l10nmonster/helpers");
+var import_helpers4 = require("@l10nmonster/helpers");
 var FormatHandler = class {
   #id;
   #resourceFilter;
@@ -458,14 +546,14 @@ var FormatHandler = class {
     base.nstr = normalizer.decode(str, flags);
     const firedFlags = Object.entries(flags).filter((f) => f[1]).map((f) => f[0]);
     firedFlags.length > 0 && (base.flags = firedFlags);
-    base.gstr = import_helpers3.utils.flattenNormalizedSourceToOrdinal(base.nstr);
-    base.guid = import_helpers3.utils.generateGuid(`${rid}|${base.sid}|${base.gstr}`);
+    base.gstr = import_helpers4.utils.flattenNormalizedSourceToOrdinal(base.nstr);
+    base.guid = import_helpers4.utils.generateGuid(`${rid}|${base.sid}|${base.gstr}`);
     return base;
   }
   #translateWithTMEntry(nsrc, entry) {
     if (entry && !entry.inflight) {
-      if (import_helpers3.utils.sourceAndTargetAreCompatible(nsrc, entry.ntgt)) {
-        const phMatcher = import_helpers3.utils.phMatcherMaker(nsrc);
+      if (import_helpers4.utils.sourceAndTargetAreCompatible(nsrc, entry.ntgt)) {
+        const phMatcher = import_helpers4.utils.phMatcherMaker(nsrc);
         return entry.ntgt.map((part) => {
           if (typeof part === "string") {
             return part;
@@ -508,7 +596,7 @@ ${JSON.stringify(entry.ntgt)}`;
       this.#populateGuid(rid, str, mf ?? this.#defaultMessageFormat, normalizedSeg);
       if (typeof notes === "string") {
         normalizedSeg.rawNotes = notes;
-        normalizedSeg.notes = import_helpers3.utils.extractStructuredNotes(notes);
+        normalizedSeg.notes = import_helpers4.utils.extractStructuredNotes(notes);
       }
       if (normalizedSeg.notes?.ph) {
         for (const part of normalizedSeg.nstr) {
@@ -653,7 +741,6 @@ function validate(context, obj = {}) {
   return validators;
 }
 var ResourceManager = class {
-  // #configSeal;
   #channels = {};
   constructor({ channels, formats, snapStore, defaultSourceLang, defaultTargetLangs }) {
     const formatHandlers = {};
@@ -761,12 +848,12 @@ var ResourceManager = class {
 };
 
 // src/monsterManager.js
-var import_helpers4 = require("@l10nmonster/helpers");
+var import_helpers5 = require("@l10nmonster/helpers");
 var MonsterManager = class {
   #targetLangs;
   #targetLangSets = {};
   #functionsForShutdown;
-  constructor({ monsterDir, monsterConfig, configSeal }) {
+  constructor({ monsterDir, monsterConfig }) {
     if (!monsterConfig?.sourceLang) {
       throw "You must specify sourceLang in your config";
     }
@@ -782,7 +869,6 @@ var MonsterManager = class {
       throw "You must specify at least a jobStore or a snapStore in your config";
     }
     this.monsterDir = monsterDir;
-    this.configSeal = configSeal;
     this.jobStore = monsterConfig.jobStore;
     this.jobStore.shutdown && this.scheduleForShutdown(this.jobStore.shutdown.bind(this.jobStore));
     this.sourceLang = monsterConfig.sourceLang;
@@ -842,7 +928,6 @@ var MonsterManager = class {
       formats = monsterConfig.formats;
     }
     this.rm = new ResourceManager({
-      configSeal,
       channels,
       formats,
       snapStore: monsterConfig.snapStore,
@@ -859,7 +944,7 @@ var MonsterManager = class {
       });
     }
     this.tuFilters = monsterConfig.tuFilters;
-    this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, configSeal, mode: monsterConfig.tmm });
+    this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, mode: monsterConfig.tmm });
     this.scheduleForShutdown(this.tmm.shutdown.bind(this.tmm));
     this.analyzers = monsterConfig.analyzers ?? {};
     this.capabilitiesByChannel = Object.fromEntries(Object.entries(channels).map(([type, channel]) => [type, {
@@ -882,7 +967,7 @@ var MonsterManager = class {
       const langsToLimit = Array.isArray(limitToLang) ? limitToLang : limitToLang.split(",");
       const targetLangs = [];
       for (const lang of langsToLimit) {
-        const targetLangSet = import_helpers4.utils.fixCaseInsensitiveKey(this.#targetLangSets, lang);
+        const targetLangSet = import_helpers5.utils.fixCaseInsensitiveKey(this.#targetLangSets, lang);
         if (targetLangSet) {
           this.#targetLangSets[targetLangSet].forEach((lang2) => targetLangs.push(lang2));
         } else {
@@ -975,7 +1060,7 @@ var MonsterManager = class {
           const tu = l10nmonster.TU.fromSegment(resHandle, seg);
           const plainText = tu.nsrc.map((e) => typeof e === "string" ? e : "").join("");
           const words = import_words_count.default.wordsCount(plainText);
-          const isCompatible = import_helpers4.utils.sourceAndTargetAreCompatible(tu?.nsrc, tmEntry?.ntgt);
+          const isCompatible = import_helpers5.utils.sourceAndTargetAreCompatible(tu?.nsrc, tmEntry?.ntgt);
           if (!tmEntry || !tmEntry.inflight && (!isCompatible || tmEntry.q < minimumQuality)) {
             tm.getAllEntriesBySrc(tu.nsrc).filter((tu2) => tu2.q >= minimumQuality).length > 0 && (repetitionMap[seg.gstr] = true);
             if (repetitionMap[seg.gstr]) {
@@ -1041,7 +1126,7 @@ var MonsterManager = class {
   }
   getTranslationProvider(jobManifest) {
     if (jobManifest.translationProvider) {
-      jobManifest.translationProvider = import_helpers4.utils.fixCaseInsensitiveKey(this.translationProviders, jobManifest.translationProvider);
+      jobManifest.translationProvider = import_helpers5.utils.fixCaseInsensitiveKey(this.translationProviders, jobManifest.translationProvider);
     } else {
       for (const [name, providerCfg] of Object.entries(this.translationProviders)) {
         if (!providerCfg.pairs || providerCfg.pairs[jobManifest.sourceLang] && providerCfg.pairs[jobManifest.sourceLang].includes(jobManifest.targetLang)) {
@@ -1061,7 +1146,7 @@ var MonsterManager = class {
 
 // src/opsMgr.js
 var path2 = __toESM(require("path"), 1);
-var import_fs2 = require("fs");
+var import_fs3 = require("fs");
 var fs = __toESM(require("fs"), 1);
 var MAX_INLINE_OUTPUT = 16383;
 var Task = class {
@@ -1183,8 +1268,8 @@ var OpsMgr = class {
   constructor(opsDir) {
     if (opsDir) {
       this.opsDir = opsDir;
-      if (!(0, import_fs2.existsSync)(opsDir)) {
-        (0, import_fs2.mkdirSync)(opsDir, { recursive: true });
+      if (!(0, import_fs3.existsSync)(opsDir)) {
+        (0, import_fs3.mkdirSync)(opsDir, { recursive: true });
       }
     }
     this.registry = {};
@@ -1207,15 +1292,15 @@ var OpsMgr = class {
 };
 
 // src/commands/analyze.js
-var import_helpers5 = require("@l10nmonster/helpers");
+var import_helpers6 = require("@l10nmonster/helpers");
 async function analyzeCmd(mm, analyzer, params, limitToLang, tuFilter) {
-  const Analyzer = mm.analyzers[import_helpers5.utils.fixCaseInsensitiveKey(mm.analyzers, analyzer)];
+  const Analyzer = mm.analyzers[import_helpers6.utils.fixCaseInsensitiveKey(mm.analyzers, analyzer)];
   if (!Analyzer) {
     throw `couldn't find a ${analyzer} analyzer`;
   }
   let tuFilterFunction;
   if (tuFilter) {
-    tuFilter = import_helpers5.utils.fixCaseInsensitiveKey(mm.tuFilters, tuFilter);
+    tuFilter = import_helpers6.utils.fixCaseInsensitiveKey(mm.tuFilters, tuFilter);
     tuFilterFunction = mm.tuFilters[tuFilter];
     if (!tuFilterFunction) {
       throw `Couldn't find ${tuFilter} tu filter`;
@@ -1335,11 +1420,11 @@ async function snapCmd(mm, { maxSegments } = {}) {
 }
 
 // src/commands/push.js
-var import_helpers6 = require("@l10nmonster/helpers");
+var import_helpers7 = require("@l10nmonster/helpers");
 async function pushCmd(mm, { limitToLang, tuFilter, driver, refresh, translationProviderName, leverage, dryRun, instructions }) {
   let tuFilterFunction;
   if (tuFilter) {
-    tuFilter = import_helpers6.utils.fixCaseInsensitiveKey(mm.tuFilters, tuFilter);
+    tuFilter = import_helpers7.utils.fixCaseInsensitiveKey(mm.tuFilters, tuFilter);
     tuFilterFunction = mm.tuFilters[tuFilter];
     if (!tuFilterFunction) {
       throw `Couldn't find ${tuFilter} tu filter`;
@@ -1460,10 +1545,10 @@ async function jobsCmd(mm, { limitToLang }) {
 
 // src/monsterFactory.js
 var path3 = __toESM(require("path"), 1);
-var import_fs3 = require("fs");
+var import_fs4 = require("fs");
 
 // src/entities/tu.js
-var import_helpers7 = require("@l10nmonster/helpers");
+var import_helpers8 = require("@l10nmonster/helpers");
 var sourceTUWhitelist = /* @__PURE__ */ new Set([
   // mandatory
   "guid",
@@ -1517,7 +1602,7 @@ function cleanupTU(entry) {
   cleanTU.ntgt === void 0 && tgt !== void 0 && (cleanTU.ntgt = [tgt]);
   if (cleanTU.nsrc && cleanTU.ntgt && nstrHasV1Missing(cleanTU.ntgt)) {
     const lookup = {};
-    const sourcePhMap = import_helpers7.utils.flattenNormalizedSourceV1(cleanTU.nsrc)[1];
+    const sourcePhMap = import_helpers8.utils.flattenNormalizedSourceV1(cleanTU.nsrc)[1];
     Object.values(sourcePhMap).forEach((part) => (lookup[part.v] ??= []).push(part.v1));
     for (const part of cleanTU.ntgt) {
       if (typeof part === "object") {
@@ -1601,9 +1686,8 @@ async function createMonsterManager(configPath, options) {
     const monsterConfig = new Config();
     const monsterDir = path3.join(l10nmonster.baseDir, monsterConfig.monsterDir ?? ".l10nmonster");
     l10nmonster.logger.verbose(`Monster cache dir: ${monsterDir}`);
-    (0, import_fs3.mkdirSync)(monsterDir, { recursive: true });
-    const configSeal = (0, import_fs3.statSync)(configPath).mtime.toISOString();
-    const mm = new MonsterManager({ monsterDir, monsterConfig, configSeal });
+    (0, import_fs4.mkdirSync)(monsterDir, { recursive: true });
+    const mm = new MonsterManager({ monsterDir, monsterConfig });
     for (const tp of Object.values(mm.translationProviders)) {
       typeof tp.translator.init === "function" && await tp.translator.init(mm);
     }

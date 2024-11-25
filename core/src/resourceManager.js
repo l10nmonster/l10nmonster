@@ -32,11 +32,9 @@ function validate(context, obj = {}) {
 }
 
 export default class ResourceManager {
-    // #configSeal;
     #channels = {};
 
     constructor({ channels, formats, snapStore, defaultSourceLang, defaultTargetLangs }) {
-        // this.#configSeal = configSeal;
         const formatHandlers = {};
         for (const [format, formatCfg] of Object.entries(formats)) {
             validate(`format ${format}`, formatCfg)
