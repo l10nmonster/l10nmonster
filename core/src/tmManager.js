@@ -58,7 +58,7 @@ class TM {
                 const reqEntry = requestedUnits[guid] ?? {};
                 const tmEntry = this.getEntryByGuid(guid);
                 if (!tmEntry) {
-                    this.setEntry({ ...reqEntry, q: 0, jobGuid, inflight: true });
+                    this.setEntry({ ...reqEntry, q: 0, jobGuid, inflight: true, ts: 0 });
                 }
             }
         }
@@ -117,7 +117,7 @@ export default class TMManager {
                 return { meta, body };
             })());
             const fetchedJobs = await Promise.all(jobPromises);
-            l10nmonster.logger.verbose(`Fetched chunk of ${jobsToFetch.length} jobs`);
+            l10nmonster.logger.verbose(`Fetched chunk of ${jobPromises.length} jobs`);
             const jobsRequestsToFetch = [];
             for (const job of fetchedJobs) {
                 if (job.body.updatedAt !== job.meta.tmUpdatedAt) {

@@ -38,6 +38,7 @@ export class SQLTMDelegate {
         if (createDB) {
             this.#db = new Database(dbPathName);
             this.#db.exec('CREATE TABLE tus(guid TEXT NOT NULL PRIMARY KEY, entry TEXT, flatSrc TEXT);\
+                CREATE INDEX idx_tus_flatSrc ON tus(flatSrc);\
                 CREATE TABLE jobs(jobGuid TEXT NOT NULL PRIMARY KEY, status TEXT, updatedAt TEXT, translationProvider TEXT, units NUMBER);');
         }
         this.#getGuids = this.#db.prepare('SELECT guid FROM tus ORDER BY ROWID');
@@ -70,7 +71,7 @@ export class SQLTMDelegate {
             entry: JSON.stringify(entry),
             flatSrc: utils.flattenNormalizedSourceToOrdinal(entry.nsrc),
         });
-        result.changes !== 1 && console.dir(result)
+        result.changes !== 1 && l10nmonster.logger.info(`Expecting to change a row but got: ${result}`);
     }
 
     getAllEntriesBySrc(src) {
@@ -93,7 +94,7 @@ export class SQLTMDelegate {
 
     updateJobStatus(jobGuid, status, updatedAt, translationProvider, units) {
         const result = this.#setJob.run({ jobGuid, status, updatedAt, translationProvider, units });
-        result.changes !== 1 && console.dir(result)
+        result.changes !== 1 && l10nmonster.logger.info(`Expecting to change a row but got: ${result}`);
     }
 
     commit() {

@@ -11,11 +11,11 @@
 							"61": 3,
 							"70": 851
 						},
-						"untranslated": 17,
-						"untranslatedChars": 402,
-						"untranslatedWords": 65,
-						"pending": 0,
-						"pendingWords": 0,
+						"untranslated": 0,
+						"untranslatedChars": 0,
+						"untranslatedWords": 0,
+						"pending": 17,
+						"pendingWords": 65,
 						"internalRepetitions": 0,
 						"internalRepetitionWords": 0
 					}

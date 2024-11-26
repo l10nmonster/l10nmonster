@@ -206,7 +206,7 @@ var SQLTMDelegate = class {
     }
     if (createDB) {
       this.#db = new import_better_sqlite3.default(dbPathName);
-      this.#db.exec("CREATE TABLE tus(guid TEXT NOT NULL PRIMARY KEY, entry TEXT, flatSrc TEXT);                CREATE TABLE jobs(jobGuid TEXT NOT NULL PRIMARY KEY, status TEXT, updatedAt TEXT, translationProvider TEXT, units NUMBER);");
+      this.#db.exec("CREATE TABLE tus(guid TEXT NOT NULL PRIMARY KEY, entry TEXT, flatSrc TEXT);                CREATE INDEX idx_tus_flatSrc ON tus(flatSrc);                CREATE TABLE jobs(jobGuid TEXT NOT NULL PRIMARY KEY, status TEXT, updatedAt TEXT, translationProvider TEXT, units NUMBER);");
     }
     this.#getGuids = this.#db.prepare("SELECT guid FROM tus ORDER BY ROWID");
     this.#getEntry = this.#db.prepare("SELECT entry FROM tus WHERE guid = ?");
@@ -229,7 +229,7 @@ var SQLTMDelegate = class {
       entry: JSON.stringify(entry),
       flatSrc: import_helpers2.utils.flattenNormalizedSourceToOrdinal(entry.nsrc)
     });
-    result.changes !== 1 && console.dir(result);
+    result.changes !== 1 && l10nmonster.logger.info(`Expecting to change a row but got: ${result}`);
   }
   getAllEntriesBySrc(src) {
     const flattenedSrc = import_helpers2.utils.flattenNormalizedSourceToOrdinal(src);
@@ -248,7 +248,7 @@ var SQLTMDelegate = class {
   }
   updateJobStatus(jobGuid, status, updatedAt, translationProvider, units) {
     const result = this.#setJob.run({ jobGuid, status, updatedAt, translationProvider, units });
-    result.changes !== 1 && console.dir(result);
+    result.changes !== 1 && l10nmonster.logger.info(`Expecting to change a row but got: ${result}`);
   }
   commit() {
     this.#db.close();
@@ -304,7 +304,7 @@ var TM = class {
         const reqEntry = requestedUnits[guid] ?? {};
         const tmEntry = this.getEntryByGuid(guid);
         if (!tmEntry) {
-          this.setEntry({ ...reqEntry, q: 0, jobGuid, inflight: true });
+          this.setEntry({ ...reqEntry, q: 0, jobGuid, inflight: true, ts: 0 });
         }
       }
     }
@@ -358,7 +358,7 @@ var TMManager = class {
         return { meta, body };
       })());
       const fetchedJobs = await Promise.all(jobPromises);
-      l10nmonster.logger.verbose(`Fetched chunk of ${jobsToFetch.length} jobs`);
+      l10nmonster.logger.verbose(`Fetched chunk of ${jobPromises.length} jobs`);
       const jobsRequestsToFetch = [];
       for (const job of fetchedJobs) {
         if (job.body.updatedAt !== job.meta.tmUpdatedAt) {
@@ -1388,6 +1388,7 @@ async function snapCmd(mm, { maxSegments } = {}) {
   if (mm.rm.snapStore) {
     maxSegments ??= 1e3;
     let resourceCount = 0;
+    l10nmonster.logger.info(`Starting snapshot of all resources chunking at max ${maxSegments} segments...`);
     await mm.rm.snapStore.startSnapshot();
     const chunkNumber = {};
     let accumulatedSegments = 0;
@@ -1399,6 +1400,7 @@ async function snapCmd(mm, { maxSegments } = {}) {
       if (accumulatedPrj !== currentPrj || accumulatedSegments >= maxSegments) {
         if (Object.keys(accumulatedResources).length > 0) {
           await mm.rm.snapStore.commitResources(accumulatedPrj, chunkNumber[accumulatedPrj], accumulatedResources);
+          l10nmonster.logger.verbose(`Committed chunk ${chunkNumber[accumulatedPrj]} of project ${accumulatedPrj}`);
           chunkNumber[accumulatedPrj]++;
           accumulatedResources = {};
           accumulatedSegments = 0;
@@ -1411,8 +1413,10 @@ async function snapCmd(mm, { maxSegments } = {}) {
     }
     if (Object.keys(accumulatedResources).length > 0) {
       await mm.rm.snapStore.commitResources(accumulatedPrj, chunkNumber[accumulatedPrj], accumulatedResources);
+      l10nmonster.logger.verbose(`Committed chunk ${chunkNumber[accumulatedPrj]} of project ${accumulatedPrj}`);
     }
     await mm.rm.snapStore.endSnapshot();
+    l10nmonster.logger.info(`End of snapshot of ${resourceCount} resources in ${Object.keys(chunkNumber).length} projects`);
     return resourceCount;
   } else {
     throw `Snap store not configured`;
