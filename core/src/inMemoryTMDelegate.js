@@ -6,6 +6,7 @@ import {
 import { utils } from '@l10nmonster/helpers';
 
 export class InMemoryTMDelegate {
+    #isDirty = false;
     #tmPathName;
     #persistTMCache;
     #tus;
@@ -29,12 +30,12 @@ export class InMemoryTMDelegate {
                 l10nmonster.logger.info(`Nuking existing TM ${this.#tmPathName}`);
             } else {
                 this.#jobStatus = tmData.jobStatus;
-                Object.values(tmData.tus).forEach(tu => this.setEntry(tu));
+                Object.values(tmData.tus).forEach(tu => this.#setEntry(tu));
             }
         }
     }
 
-    getGuids() {
+    get guids() {
         return Object.keys(this.#tus);
     }
 
@@ -42,11 +43,16 @@ export class InMemoryTMDelegate {
         return this.#tus[guid];
     }
 
-    setEntry(entry) {
-        this.#tus[entry.guid] = entry;
-        const flatSrc = utils.flattenNormalizedSourceToOrdinal(entry.nsrc);
-        this.#lookUpByFlatSrc[flatSrc] ??= [];
-        !this.#lookUpByFlatSrc[flatSrc].includes(entry) && this.#lookUpByFlatSrc[flatSrc].push(entry);
+    #setEntry(entry) {
+        try {
+            const cleanedTU = l10nmonster.TU.asPair(entry);
+            this.#tus[cleanedTU.guid] = cleanedTU;
+            const flatSrc = utils.flattenNormalizedSourceToOrdinal(cleanedTU.nsrc);
+            this.#lookUpByFlatSrc[flatSrc] ??= [];
+            !this.#lookUpByFlatSrc[flatSrc].includes(cleanedTU) && this.#lookUpByFlatSrc[flatSrc].push(cleanedTU);
+        } catch (e) {
+            l10nmonster.logger.verbose(`Not setting TM entry (guid=${entry.guid}): ${e}`);
+        }
     }
 
     getAllEntriesBySrc(src) {
@@ -63,20 +69,41 @@ export class InMemoryTMDelegate {
         return [ jobMeta?.status, jobMeta?.updatedAt ];
     }
 
-    updateJobStatus(jobGuid, status, updatedAt, translationProvider, units) {
-        this.#jobStatus[jobGuid] = { status, updatedAt, translationProvider, units };
+    async processJob(jobResponse, jobRequest) {
+        this.#isDirty = true;
+        const requestedUnits = {};
+        jobRequest?.tus && jobRequest.tus.forEach(tu => requestedUnits[tu.guid] = tu);
+        const { jobGuid, status, inflight, tus, updatedAt, translationProvider } = jobResponse;
+        if (inflight) {
+            for (const guid of inflight) {
+                const reqEntry = requestedUnits[guid] ?? {};
+                const tmEntry = this.getEntryByGuid(guid);
+                if (!tmEntry) {
+                    this.#setEntry({ ...reqEntry, q: 0, jobGuid, inflight: true, ts: 0 });
+                }
+            }
+        }
+        if (tus) {
+            for (const tu of tus) {
+                const tmEntry = this.getEntryByGuid(tu.guid);
+                const reqEntry = requestedUnits[tu.guid] ?? {};
+                const rectifiedTU = { ...reqEntry, ...tu, jobGuid, translationProvider };
+                if (!tmEntry || tmEntry.q < tu.q || (tmEntry.q === tu.q && tmEntry.ts < rectifiedTU.ts)) {
+                    this.#setEntry(rectifiedTU);
+                }
+            }
+        }
+        this.#jobStatus[jobGuid] = { status, updatedAt, translationProvider, units: tus?.length ?? inflight?.length ?? 0 };
     }
 
     commit() {
-        if (this.#persistTMCache) {
+        if (this.#isDirty && this.#persistTMCache) {
             l10nmonster.logger.info(`Updating ${this.#tmPathName}...`);
             const tmData = {
                 jobStatus: this.#jobStatus,
                 tus: this.#tus,
             };
             writeFileSync(this.#tmPathName, JSON.stringify(tmData, null, '\t'), 'utf8');
-        } else {
-            l10nmonster.logger.info(`Cache not persisted...`);
         }
     }
 }

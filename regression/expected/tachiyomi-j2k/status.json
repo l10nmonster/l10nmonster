@@ -6,7 +6,7 @@
 				"prjLeverage": {
 					"default": {
 						"translated": 854,
-						"translatedWords": 2773,
+						"translatedWords": 2828,
 						"translatedByQ": {
 							"61": 3,
 							"70": 851
@@ -15,7 +15,7 @@
 						"untranslatedChars": 0,
 						"untranslatedWords": 0,
 						"pending": 17,
-						"pendingWords": 65,
+						"pendingWords": 70,
 						"internalRepetitions": 0,
 						"internalRepetitionWords": 0
 					}
@@ -29,7 +29,7 @@
 				"prjLeverage": {
 					"default": {
 						"translated": 794,
-						"translatedWords": 2620,
+						"translatedWords": 2624,
 						"translatedByQ": {
 							"70": 481,
 							"80": 313
@@ -40,7 +40,7 @@
 						"pending": 0,
 						"pendingWords": 0,
 						"internalRepetitions": 77,
-						"internalRepetitionWords": 218
+						"internalRepetitionWords": 274
 					}
 				},
 				"numSources": 1
@@ -52,7 +52,7 @@
 				"prjLeverage": {
 					"default": {
 						"translated": 871,
-						"translatedWords": 2838,
+						"translatedWords": 2898,
 						"translatedByQ": {
 							"1": 871
 						},

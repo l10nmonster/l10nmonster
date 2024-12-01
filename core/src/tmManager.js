@@ -2,82 +2,15 @@ import * as path from 'path';
 import { InMemoryTMDelegate } from './inMemoryTMDelegate.js';
 import { SQLTMDelegate } from './sqliteTMDelegate.js';
 
-class TM {
-    #isDirty = false;
-
-    constructor(tmBasePathName, jobs, mode) {
-        if (mode === undefined || mode === 'json' || mode === 'transient') {
-            this.delegate = new InMemoryTMDelegate(tmBasePathName, mode !== 'transient', jobs);
-        } else if (mode === 'sql') {
-            this.delegate = new SQLTMDelegate(tmBasePathName, jobs);
-        } else {
-            throw `Unknown TM Manager mode: ${mode}`;
-        }
+function tmFactory(tmBasePathName, jobs, mode) {
+    if (mode === undefined || mode === 'json' || mode === 'transient') {
+        l10nmonster.logger.verbose(`Instantiating InMemoryTMDelegate ${tmBasePathName} mode ${mode}`);
+        return new InMemoryTMDelegate(tmBasePathName, mode !== 'transient', jobs);
+    } else if (mode === 'sql') {
+        l10nmonster.logger.verbose(`Instantiating SQLTMDelegate ${tmBasePathName}`);
+        return new SQLTMDelegate(tmBasePathName, jobs);
     }
-
-    get guids() {
-        return this.delegate.getGuids();
-    }
-
-    getEntryByGuid(guid) {
-        return this.delegate.getEntryByGuid(guid);
-    }
-
-    setEntry(entry) {
-        try {
-            const cleanedTU = l10nmonster.TU.asPair(entry);
-            Object.freeze(cleanedTU);
-            this.delegate.setEntry(cleanedTU);
-        } catch (e) {
-            l10nmonster.logger.verbose(`Not setting TM entry (guid=${entry.guid}): ${e}`);
-        }
-    }
-
-    getAllEntriesBySrc(src) {
-        return this.delegate.getAllEntriesBySrc(src);
-    }
-
-    // get status of job in the TM (if it exists)
-    getJobStatus(jobGuid) {
-        return this.delegate.getJobStatus(jobGuid);
-    }
-
-    commit() {
-        if (this.#isDirty) {
-            this.delegate.commit();
-        }
-    }
-
-    processJob(jobResponse, jobRequest) {
-        this.#isDirty = true;
-        const requestedUnits = {};
-        jobRequest?.tus && jobRequest.tus.forEach(tu => requestedUnits[tu.guid] = tu);
-        const { jobGuid, status, inflight, tus, updatedAt, translationProvider } = jobResponse;
-        if (inflight) {
-            for (const guid of inflight) {
-                const reqEntry = requestedUnits[guid] ?? {};
-                const tmEntry = this.getEntryByGuid(guid);
-                if (!tmEntry) {
-                    this.setEntry({ ...reqEntry, q: 0, jobGuid, inflight: true, ts: 0 });
-                }
-            }
-        }
-        if (tus) {
-            for (const tu of tus) {
-                const tmEntry = this.getEntryByGuid(tu.guid);
-                const reqEntry = requestedUnits[tu.guid] ?? {};
-                const rectifiedTU = { ...reqEntry, ...tu, jobGuid, translationProvider };
-                if (!tmEntry || tmEntry.q < tu.q || (tmEntry.q === tu.q && tmEntry.ts < rectifiedTU.ts)) {
-                    this.setEntry(rectifiedTU);
-                }
-            }
-        }
-        this.delegate.updateJobStatus(jobGuid, status, updatedAt, translationProvider, tus?.length ?? inflight?.length ?? 0);
-    }
-
-    getJobsMeta() {
-        return this.delegate.getJobsMeta();
-    }
+    throw `Unknown TM Manager mode: ${mode}`;
 }
 
 export default class TMManager {
@@ -97,12 +30,13 @@ export default class TMManager {
         }
         const jobs = (await this.jobStore.getJobStatusByLangPair(sourceLang, targetLang))
             .filter(e => [ 'pending', 'done' ].includes(e[1].status));
-        tm = new TM(path.join(this.monsterDir, tmName), jobs, this.mode);
+        tm = tmFactory(path.join(this.monsterDir, tmName), jobs, this.mode);
         this.tmCache.set(tmName, tm);
+
+        // update jobs if status has changed or new (otherwise not needed because jobs are immutable)
         const jobsToFetch = [];
         for (const [jobGuid, handle] of jobs) {
             const [ status, updatedAt ] = tm.getJobStatus(jobGuid);
-            // update jobs if status has changed (otherwise not needed because immutable)
             if (status !== handle.status) {
                 jobsToFetch.push({
                     jobHandle: handle[handle.status],

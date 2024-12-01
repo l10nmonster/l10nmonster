@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/core",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "L10n Monster Core Module",
     "exports": {
         "import": "./src/index.js",
@@ -26,8 +26,7 @@
         "node": ">=18"
     },
     "dependencies": {
-        "better-sqlite3": "^11.5.0",
-        "words-count": "^2.0.2"
+        "better-sqlite3": "^11.5.0"
     },
     "devDependencies": {
         "esbuild": "latest",

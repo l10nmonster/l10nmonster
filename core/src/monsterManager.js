@@ -1,9 +1,8 @@
-import wordsCountModule from 'words-count';
-
 import TMManager from './tmManager.js';
 import ResourceManager from './resourceManager.js';
 import { utils } from '@l10nmonster/helpers';
 
+const spaceRegex = /\s+/g;
 export class MonsterManager {
     #targetLangs;
     #targetLangSets = {};
@@ -168,7 +167,7 @@ export class MonsterManager {
             jobRequest.status = 'cancelled';
             return;
         }
-        // we get the TM before writing jobs so that we don't process the same job twice
+        // we warm up the TM first so that we don't process the same job twice in case the tm cache is cold
         const tm = await this.tmm.getTM(jobResponse.sourceLang, jobResponse.targetLang);
         const updatedAt = (l10nmonster.regression ? new Date('2022-05-29T00:00:00.000Z') : new Date()).toISOString();
         if (jobRequest) {
@@ -187,9 +186,8 @@ export class MonsterManager {
             jobResponse.tus && (jobResponse.tus = jobResponse.tus.map(l10nmonster.TU.asTarget));
             await this.jobStore.writeJob(jobResponse);
         }
-        // we update the TM in memory so that it can be reused before shutdown
-        // TODO: this is not great, we should have a hook so that the TM can
-        //       subscribe to mutation events.
+        // we update the TM in memory so that it can be reused before shutdown (e.g. when using JS API)
+        // TODO: this is not great, we should have a hook so that the TM can subscribe to mutation events.
         await tm.processJob(jobResponse, jobRequest);
     }
 
@@ -227,7 +225,7 @@ export class MonsterManager {
                     const tmEntry = tm.getEntryByGuid(seg.guid);
                     const tu = l10nmonster.TU.fromSegment(resHandle, seg);
                     const plainText = tu.nsrc.map(e => (typeof e === 'string' ? e : '')).join('');
-                    const words = wordsCountModule.wordsCount(plainText);
+                    const words = (plainText.match(spaceRegex)?.length || 0) + 1;
                     // TODO: compatibility is actually stricter than GUID, this leads to extra translations that can't be stored
                     const isCompatible = utils.sourceAndTargetAreCompatible(tu?.nsrc, tmEntry?.ntgt);
                     if (!tmEntry || (!tmEntry.inflight && (!isCompatible || tmEntry.q < minimumQuality))) {
