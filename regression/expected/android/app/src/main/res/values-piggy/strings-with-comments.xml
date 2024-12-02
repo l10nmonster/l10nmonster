@@ -1,0 +1,9 @@
+<resources>
+	<string name="included_wallet_balance">[Includesyay %s omfray Alletway-piggy]</string>
+	<string name="price_freeze_header_subtitle">[Ifyay icespray ogay ownday, ouyay aypay ethay owerlay icepray. Ifyay icespray increaseyay, Opperhay overscay upyay otay %1$s.-piggy]</string>
+	<string name="price_freeze_header_subtitle_compliance">[Ouyay ancay avesay upyay otay %1$s enwhay ouyay omecay ackbay otay ookbay. Ifyay ethay icepray opsdray, ouyay aypay ethay owerlay icepray.-piggy]</string>
+	<plurals name="rooms_count_with_suffix">
+		<item quantity="one">[%1$d oomray • %2$s-piggy]</item>
+		<item quantity="other">[%1$d oomsray • %2$s-piggy]</item>
+	</plurals>
+</resources>

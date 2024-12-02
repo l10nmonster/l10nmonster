@@ -5,14 +5,14 @@
 				"minimumQuality": 1,
 				"prjLeverage": {
 					"default": {
-						"translated": 6,
-						"translatedWords": 15,
+						"translated": 11,
+						"translatedWords": 63,
 						"translatedByQ": {
-							"1": 6
+							"1": 11
 						},
-						"untranslated": 5,
-						"untranslatedChars": 215,
-						"untranslatedWords": 48,
+						"untranslated": 0,
+						"untranslatedChars": 0,
+						"untranslatedWords": 0,
 						"pending": 0,
 						"pendingWords": 0,
 						"internalRepetitions": 0,
