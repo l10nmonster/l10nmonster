@@ -12,17 +12,6 @@
     "engines": {
         "node": ">=18"
     },
-    "dependencies": {
-        "@l10nmonster/helpers": "^1",
-        "@l10nmonster/helpers-android": "^1",
-        "@l10nmonster/helpers-demo": "^1",
-        "@l10nmonster/helpers-html": "^1",
-        "@l10nmonster/helpers-ios": "^1",
-        "@l10nmonster/helpers-java": "^1",
-        "@l10nmonster/helpers-json": "^1",
-        "@l10nmonster/helpers-translated": "^1",
-        "@l10nmonster/core": "^1"
-    },
     "devDependencies": {
         "eslint": "latest",
         "eslint-plugin-jest": "latest",

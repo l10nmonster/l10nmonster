@@ -55,26 +55,28 @@ exports.Filter = class I18nextFilter {
     }
 
     async parseResource({ resource }) {
-        const segments = [];
-        if (!resource) {
-            return { segments };
+        const response = {
+            segments: []
         }
-        const [ parsedResource, notes ] = parseResourceAnnotations(
-            JSON.parse(resource),
-            this.enableArbAnnotations,
-            this.arbAnnotationHandlers,
-        );
-        for (const [key, value] of parsedResource) {
-            let seg = { sid: key, str: value };
-            notes[key] && (seg.notes = notes[key]);
-            if (this.enablePluralSuffixes && key.indexOf('_') !== -1 && validPluralSuffixes.has(key.split('_').slice(-1)[0])) {
-                seg.isSuffixPluralized = true;
+        if (resource) {
+            const unParsedResource = JSON.parse(resource);
+            const targetLangs = unParsedResource['@@targetLocales'];
+            Array.isArray(targetLangs) && (response.targetLangs = targetLangs);
+            const [ parsedResource, notes ] = parseResourceAnnotations(
+                unParsedResource,
+                this.enableArbAnnotations,
+                this.arbAnnotationHandlers,
+            );
+            for (const [key, value] of parsedResource) {
+                let seg = { sid: key, str: value };
+                notes[key] && (seg.notes = notes[key]);
+                if (this.enablePluralSuffixes && key.indexOf('_') !== -1 && validPluralSuffixes.has(key.split('_').slice(-1)[0])) {
+                    seg.isSuffixPluralized = true;
+                }
+                response.segments.push(seg);
             }
-            segments.push(seg);
         }
-        return {
-            segments,
-        };
+        return response;
     }
 
     async translateResource({ resource, translator }) {

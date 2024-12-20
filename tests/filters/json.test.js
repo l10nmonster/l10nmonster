@@ -8,10 +8,12 @@ describe("json parseResource - description", () => {
 
     test("parseResource returns raw parsed resource for simple string no description", async () => {
         const resource = {
+            "@@targetLocales": ["en", "de"],
             homeSubtitle: "Book the trip you've been waiting for.",
             "home@Subtitle": "@ Book the trip you've been waiting for.",
         };
         const expectedOutput = {
+            targetLangs: ["en", "de"],
             segments: [
                 {
                     sid: "homeSubtitle",
@@ -561,7 +563,7 @@ describe("json translateResource - enableArrays", () => {
             "test": [
                 "test.0 zero - **Translation**",
                 "test.1 one - **Translation**"
-            ]           
+            ]
         };
         const output = await resourceFilter.translateResource({
             resource: JSON.stringify(resource),
@@ -581,7 +583,7 @@ describe("json translateResource - enableArrays", () => {
             "test": {
                 "0": "test.0 zero - **Translation**",
                 "1": "test.1 one - **Translation**"
-              }            
+              }
         };
         const output = await resourceFilter.translateResource({
             resource: JSON.stringify(resource),
@@ -600,7 +602,7 @@ describe("json translateResource - enableArrays", () => {
             "test": {
                 "0": "test.0 zero - **Translation**",
                 "1": "test.1 one - **Translation**"
-              }            
+              }
         };
         const output = await resourceFilter.translateResource({
             resource: JSON.stringify(resource),
