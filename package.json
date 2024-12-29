@@ -2,7 +2,6 @@
     "workspaces": [
         "core",
         "cli",
-        "helpers",
         "helpers-android",
         "helpers-demo",
         "helpers-googlecloud",
@@ -13,5 +12,15 @@
         "helpers-po",
         "helpers-translated",
         "helpers-xliff"
-    ]
+    ],
+    "scripts": {
+        "eslint": "eslint core/src/**/*.js cli/*.js",
+        "eslint:files": "npm run eslint | grep -e '^/.*js$'",
+        "eslint:files:open": "code $(npm run --silent eslint:files)"
+    },
+    "devDependencies": {
+        "@eslint/eslintrc": "^3.2.0",
+        "@eslint/js": "^9.17.0",
+        "globals": "^15.14.0"
+    }
 }

@@ -1,4 +1,4 @@
-const { regex } = require('@l10nmonster/helpers');
+const { regex } = require('@l10nmonster/core');
 
 exports.Filter = require('./filter');
 
