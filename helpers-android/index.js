@@ -1,12 +1,11 @@
-const { regex } = require('@l10nmonster/core');
-
-exports.Filter = require('./filter');
+import { regex } from '@l10nmonster/core';
+import Filter from './filter';
 
 const androidControlCharsToDecode = {
     n: '\n',
     t: '\t',
 };
-exports.escapesDecoder = regex.decoderMaker(
+export const escapesDecoder = regex.decoderMaker(
     'androidEscapesDecoder',
     /(?<node>\\(?<escapedChar>[@?\\'"])|\\(?<escapedControl>[nt])|\\u(?<codePoint>[0-9A-Za-z]{4}))/g,
     (groups) => (groups.escapedChar ??
@@ -18,7 +17,7 @@ exports.escapesDecoder = regex.decoderMaker(
 );
 
 // Android lint doesn't accept % but accepts %%.  % should be replaced with '\u0025' but %% shouldn't
-exports.escapesEncoder = (str, flags = {}) => {
+export const escapesEncoder = (str, flags = {}) => {
     let escapedStr = str.replaceAll(/[@\\'"]/g, '\\$&').replaceAll('\t', '\\t').replaceAll('\n', '\\n').replaceAll(/(?<!%)%(?!%)/g, '\\u0025');
     // eslint-disable-next-line prefer-template
     flags.isFirst && escapedStr[0] === ' ' && (escapedStr = '\\u0020' + escapedStr.substring(1));
@@ -27,10 +26,10 @@ exports.escapesEncoder = (str, flags = {}) => {
     return escapedStr;
 };
 
-exports.spaceCollapser = (parts) => parts.map(p => (p.t === 's' ? { ...p, v: p.v.replaceAll(/[ \f\n\r\t\v\u2028\u2029]+/g, ' ')} : p));
+export const spaceCollapser = (parts) => parts.map(p => (p.t === 's' ? { ...p, v: p.v.replaceAll(/[ \f\n\r\t\v\u2028\u2029]+/g, ' ')} : p));
 
 // C-style placeholders (based on the ios one)
-exports.phDecoder = regex.decoderMaker(
+export const phDecoder = regex.decoderMaker(
     'iosPHDecoder',
     /(?<tag>%(?:\d\$)?[0#+-]?[0-9*]*\.?\d*[hl]{0,2}[jztL]?[diuoxXeEfgGaAcpsSn])/g,
     (groups) => ({ t: 'x', v: groups.tag })
