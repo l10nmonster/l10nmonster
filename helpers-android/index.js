@@ -1,5 +1,5 @@
 import { regex } from '@l10nmonster/core';
-import Filter from './filter';
+export { Filter };
 
 const androidControlCharsToDecode = {
     n: '\n',
