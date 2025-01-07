@@ -1,6 +1,6 @@
 // const fs = require('fs/promises');
 // const { js2tmx } = require('@l10nmonster/tmexchange');
-// const { utils } = require('@l10nmonster/helpers');
+// const { TU, utils } = require('@l10nmonster/core');
 
 
 // async function exportTMX(content, emitMissingTranslations) {
@@ -24,7 +24,7 @@
 //                 Boolean(mangledTgt) && (tmx.resources[group][pair.sourceTU.guid][content.targetLang] = mangledTgt);
 //             }
 //         } else {
-//             l10nmonster.logger.info(`Couldn't retrieve source for guid: ${pair.sourceTU.guid}`);
+//             L10nContext.logger.info(`Couldn't retrieve source for guid: ${pair.sourceTU.guid}`);
 //         }
 //     }
 //     return tmx;
@@ -35,7 +35,7 @@
 //     const sourceLookup = {};
 //     for await (const res of mm.rm.getAllResources()) {
 //         for (const seg of res.segments) {
-//             sourceLookup[seg.guid] = l10nmonster.TU.fromSegment(res, seg);
+//             sourceLookup[seg.guid] = TU.fromSegment(res, seg);
 //         }
 //     }
 //     const desiredTargetLangs = new Set(mm.getTargetLangs(limitToLang));
@@ -46,7 +46,7 @@
 //         const guidList = mode === 'tm' ? tm.guids : Object.keys(sourceLookup);
 //         const guidsByPrj = {};
 //         guidList.forEach(guid => {
-//             if (!prjsplit || !l10nmonster.prj || l10nmonster.prj.includes(mode === 'tm' ? tm.getEntryByGuid(guid).prj : sourceLookup[guid].prj)) { // either export everything or only content in the specified project
+//             if (!prjsplit || !L10nContext.prj || L10nContext.prj.includes(mode === 'tm' ? tm.getEntryByGuid(guid).prj : sourceLookup[guid].prj)) { // either export everything or only content in the specified project
 //                 const prj = (prjsplit && sourceLookup[guid]?.prj) || 'default';
 //                 guidsByPrj[prj] ??= [];
 //                 guidsByPrj[prj].push(guid);

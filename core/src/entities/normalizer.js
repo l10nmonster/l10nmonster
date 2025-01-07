@@ -1,4 +1,4 @@
-import { utils, normalizers } from '@l10nmonster/helpers';
+import { utils, normalizers } from '@l10nmonster/core';
 
 export class Normalizer {
     #decoders;

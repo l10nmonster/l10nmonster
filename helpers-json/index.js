@@ -1,1 +1,1 @@
-exports.i18next = { ...require('./i18next') };
+export * as i18next from './i18next.js';

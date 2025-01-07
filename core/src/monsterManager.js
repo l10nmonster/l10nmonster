@@ -1,110 +1,60 @@
+import * as path from 'path';
+import { L10nContext, TU, utils, analyzers } from '@l10nmonster/core';
 import TMManager from './tmManager.js';
 import ResourceManager from './resourceManager.js';
-import { utils } from '@l10nmonster/helpers';
 
 const spaceRegex = /\s+/g;
+
 export class MonsterManager {
     #targetLangs;
     #targetLangSets = {};
-    #functionsForShutdown;
+    #functionsForShutdown = [];
 
-    constructor({ monsterDir, monsterConfig }) {
-        if (!monsterConfig?.sourceLang) {
+    constructor(monsterConfig) {
+        this.monsterConfig = monsterConfig;
+
+        // basic properties
+        if (!monsterConfig.sourceLang) {
             throw 'You must specify sourceLang in your config';
         }
-        if (typeof monsterConfig?.targetLangs !== 'object') {
-            throw 'You must specify a targetLangs object or array in your config';
-        } else if (Array.isArray(monsterConfig.targetLangs)) {
-            this.#targetLangs = new Set(monsterConfig.targetLangs);
-        } else {
-            this.#targetLangs = new Set(Object.values(monsterConfig.targetLangs).flat(1));
-            this.#targetLangSets = monsterConfig.targetLangs;
-        }
-        if (!(monsterConfig?.jobStore ?? monsterConfig?.snapStore)) {
-            throw 'You must specify at least a jobStore or a snapStore in your config';
-        }
-        this.monsterDir = monsterDir;
-        this.jobStore = monsterConfig.jobStore;
-        this.jobStore.shutdown && this.scheduleForShutdown(this.jobStore.shutdown.bind(this.jobStore));
         this.sourceLang = monsterConfig.sourceLang;
-        this.minimumQuality = monsterConfig.minimumQuality;
-        this.#functionsForShutdown = [];
-        let contentTypes;
-        if (monsterConfig.contentTypes || monsterConfig.channels || monsterConfig.formats) {
-            contentTypes = monsterConfig.contentTypes;
-            ['source', 'resourceFilter', 'segmentDecorators', 'decoders', 'textEncoders', 'codeEncoders', 'joiner', 'target']
-                .forEach(propName => {
-                    if (monsterConfig[propName] !== undefined) {
-                        throw `You can't specify ${propName} at the top level if you also use advance configurations`;
-                    }
-                });
+        if (typeof monsterConfig.targetLangSets === 'object') {
+            this.#targetLangs = new Set(Object.values(monsterConfig.targetLangSets).flat(1));
+            this.#targetLangSets = monsterConfig.targetLangSets;
         } else {
-            contentTypes = {
-                default: {
-                    source: monsterConfig.source,
-                    resourceFilter: monsterConfig.resourceFilter,
-                    segmentDecorators: monsterConfig.segmentDecorators,
-                    decoders: monsterConfig.decoders,
-                    textEncoders: monsterConfig.textEncoders,
-                    codeEncoders: monsterConfig.codeEncoders,
-                    joiner: monsterConfig.joiner,
-                    target: monsterConfig.target,
-                }
-            };
+            throw 'You must specify a targetLangSets object in your config';
         }
-        let channels, formats;
-        if (contentTypes) {
-            if (monsterConfig.channels || monsterConfig.formats) {
-                throw `You can't specify channels/formats if you also use contentTypes`;
-            }
-            channels = {};
-            formats = {};
-            for (const [ type, config ] of Object.entries(contentTypes)) {
-                channels[type] = {
-                    source: config.source,
-                    target: config.target,
-                    defaultResourceFormat: type,
-                };
-                const normalizers = {};
-                normalizers[type] = {
-                    decoders: config.decoders,
-                    textEncoders: config.textEncoders,
-                    codeEncoders: config.codeEncoders,
-                    joiner: config.joiner,
-                };
-                formats[type] = {
-                    resourceFilter: config.resourceFilter,
-                    normalizers,
-                    defaultMessageFormat: type,
-                    segmentDecorators: config.segmentDecorators,
-                };
-            }
-        } else {
-            channels = monsterConfig.channels;
-            formats = monsterConfig.formats;
+        this.minimumQuality = monsterConfig.minimumQuality;
+
+        // content types
+        if (!monsterConfig.channels || !monsterConfig.formats) {
+            throw `You must specify channels and formats`;
         }
         this.rm = new ResourceManager({
-            channels,
-            formats,
+            channels: monsterConfig.channels,
+            formats: monsterConfig.formats,
             snapStore: monsterConfig.snapStore,
             defaultSourceLang: monsterConfig.sourceLang,
             defaultTargetLangs: [ ...this.#targetLangs ].sort(),
         });
         this.scheduleForShutdown(this.rm.shutdown.bind(this.rm));
-        if (monsterConfig.translationProviders) {
-            this.translationProviders = monsterConfig.translationProviders;
-            // spell it out to use additional options like pairs: { sourceLang: [ targetLang1 ]}
-        } else {
-            this.translationProviders = { };
-            monsterConfig.translationProvider && (this.translationProviders[monsterConfig.translationProvider.constructor.name] = {
-                translator: monsterConfig.translationProvider,
-            });
+
+        this.translationProviders = monsterConfig.translationProviders;
+
+        if (!(monsterConfig.jobStore ?? monsterConfig.snapStore)) {
+            throw 'You must specify at least a jobStore or a snapStore in your config';
         }
-        this.tuFilters = monsterConfig.tuFilters;
-        this.tmm = new TMManager({ monsterDir, jobStore: this.jobStore, mode: monsterConfig.tmm });
+        monsterConfig.opsDir && L10nContext.opsMgr.setOpsDir(path.join(L10nContext.baseDir, monsterConfig.opsDir));
+        this.jobStore = monsterConfig.jobStore;
+        this.jobStore.shutdown && this.scheduleForShutdown(this.jobStore.shutdown.bind(this.jobStore));
+        this.tmm = new TMManager({ jobStore: this.jobStore, mode: monsterConfig.tmm, parallelism: monsterConfig.parallelism });
         this.scheduleForShutdown(this.tmm.shutdown.bind(this.tmm));
-        this.analyzers = monsterConfig.analyzers ?? {};
-        this.capabilitiesByChannel = Object.fromEntries(Object.entries(channels).map(([type, channel]) => [ type, {
+
+        this.tuFilters = monsterConfig.tuFilters;
+        this.analyzers = { ...analyzers, ...monsterConfig.analyzers };
+
+        // generated info
+        this.capabilitiesByChannel = Object.fromEntries(Object.entries(monsterConfig.channels).map(([type, channel]) => [ type, {
             snap: Boolean(channel.source && monsterConfig.snapStore),
             status: Boolean(channel.source),
             push: Boolean(channel.source && Object.keys(this.translationProviders).length > 0),
@@ -112,7 +62,14 @@ export class MonsterManager {
             translate: Boolean(channel.source && channel.target),
         }]));
         this.capabilities = Object.values(this.capabilitiesByChannel).reduce((p, c) => Object.fromEntries(Object.entries(c).map(([k, v]) => [ k, (p[k] === undefined ? true : p[k]) && v ])), {});
-        this.extensionCmds = monsterConfig.constructor.extensionCmds ?? [];
+    }
+
+    async init() {
+        for (const tp of Object.values(this.translationProviders)) {
+            typeof tp.translator.init === 'function' && await tp.translator.init(this);
+        }
+        typeof this.monsterConfig.init === 'function' && await this.monsterConfig.init(this);
+
     }
 
     // register an async function to be called during shutdown
@@ -169,7 +126,7 @@ export class MonsterManager {
         }
         // we warm up the TM first so that we don't process the same job twice in case the tm cache is cold
         const tm = await this.tmm.getTM(jobResponse.sourceLang, jobResponse.targetLang);
-        const updatedAt = (l10nmonster.regression ? new Date('2022-05-29T00:00:00.000Z') : new Date()).toISOString();
+        const updatedAt = (L10nContext.regression ? new Date('2022-05-29T00:00:00.000Z') : new Date()).toISOString();
         if (jobRequest) {
             jobRequest.updatedAt = updatedAt;
             if (jobResponse) {
@@ -178,12 +135,12 @@ export class MonsterManager {
                 const acceptedGuids = new Set(guidsInFlight.concat(translatedGuids));
                 jobRequest.tus = jobRequest.tus.filter(tu => acceptedGuids.has(tu.guid));
             }
-            jobRequest.tus = jobRequest.tus.map(l10nmonster.TU.asSource);
+            jobRequest.tus = jobRequest.tus.map(TU.asSource);
             await this.jobStore.writeJob(jobRequest);
         }
         if (jobResponse) {
             jobResponse.updatedAt = updatedAt;
-            jobResponse.tus && (jobResponse.tus = jobResponse.tus.map(l10nmonster.TU.asTarget));
+            jobResponse.tus && (jobResponse.tus = jobResponse.tus.map(TU.asTarget));
             await this.jobStore.writeJob(jobResponse);
         }
         // we update the TM in memory so that it can be reused before shutdown (e.g. when using JS API)
@@ -223,7 +180,7 @@ export class MonsterManager {
                 for (const seg of resHandle.segments) {
                     // TODO: if segment is pluralized we need to generate/suppress the relevant number of variants for the targetLang
                     const tmEntry = tm.getEntryByGuid(seg.guid);
-                    const tu = l10nmonster.TU.fromSegment(resHandle, seg);
+                    const tu = TU.fromSegment(resHandle, seg);
                     const plainText = tu.nsrc.map(e => (typeof e === 'string' ? e : '')).join('');
                     const words = (plainText.match(spaceRegex)?.length || 0) + 1;
                     // TODO: compatibility is actually stricter than GUID, this leads to extra translations that can't be stored
@@ -266,7 +223,7 @@ export class MonsterManager {
     }
 
     async estimateTranslationJob({ targetLang }) {
-        return (await this.#internalPrepareTranslationJob({ targetLang }))[1];
+        return (await this.#internalPrepareTranslationJob({ targetLang, minimumQuality: undefined, leverage: undefined }))[1];
     }
 
     async prepareFilterBasedJob({ targetLang, tmBased, guidList }) {
@@ -274,7 +231,7 @@ export class MonsterManager {
         const sourceLookup = {};
         for await (const res of this.rm.getAllResources()) {
             for (const seg of res.segments) {
-                sourceLookup[seg.guid] = l10nmonster.TU.fromSegment(res, seg);
+                sourceLookup[seg.guid] = TU.fromSegment(res, seg);
             }
         }
         if (!guidList) {
@@ -289,7 +246,7 @@ export class MonsterManager {
             const translatedTU = tm.getEntryByGuid(guid) ?? {};
             return { ...sourceTU, ...translatedTU }; // this is a superset of source and target properties so that filters have more to work with
         });
-        l10nmonster.prj !== undefined && (tus = tus.filter(tu => l10nmonster.prj.includes(tu.prj)));
+        L10nContext.prj !== undefined && (tus = tus.filter(tu => L10nContext.prj.includes(tu.prj)));
         return {
             sourceLang: this.sourceLang,
             targetLang,

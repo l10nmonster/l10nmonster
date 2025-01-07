@@ -1,0 +1,11 @@
+{
+    "name": "ios-demo",
+    "scripts": {
+        "status": "l10n status"
+    },
+    "dependencies": {
+        "@l10nmonster/cli": "../../../cli",
+        "@l10nmonster/helpers-translated": "../../../helpers-translated",
+        "@l10nmonster/helpers-ios": "../../../helpers-ios"
+    }
+}

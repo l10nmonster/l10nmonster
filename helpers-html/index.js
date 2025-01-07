@@ -1,5 +1,5 @@
-const { parse, parseFragment, serialize } = require('parse5');
-const { utils } = require('@l10nmonster/helpers');
+import { parse, parseFragment, serialize } from 'parse5';
+import { utils } from '@l10nmonster/core';
 
 // from https://developer.mozilla.org/en-US/docs/Web/HTML/Inline_elements
 // the following were removed from inline: label, button
@@ -78,7 +78,7 @@ async function replaceTranslatableStrings(root, cb) {
 function parseResource(resource) {
     return resource.match(/<html/i) ? parse(resource) : parseFragment(resource);
 }
-exports.Filter = class HTMLFilter {
+export class HTMLFilter {
     async parseResource({ resource }) {
         const htmlAST = parseResource(resource);
         const segments = {}; // we use an object with numbers as keys so that we can keep them in document order

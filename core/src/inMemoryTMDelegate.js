@@ -3,7 +3,7 @@ import {
     readFileSync,
     writeFileSync,
 } from 'fs';
-import { utils } from '@l10nmonster/helpers';
+import { L10nContext, TU, utils } from '@l10nmonster/core';
 
 export class InMemoryTMDelegate {
     #isDirty = false;
@@ -27,7 +27,7 @@ export class InMemoryTMDelegate {
             if (extraJobs.length > 0) {
                 this.#jobStatus = {};
                 this.#tus = {};
-                l10nmonster.logger.info(`Nuking existing TM ${this.#tmPathName}`);
+                L10nContext.logger.info(`Nuking existing TM ${this.#tmPathName}`);
             } else {
                 this.#jobStatus = tmData.jobStatus;
                 Object.values(tmData.tus).forEach(tu => this.#setEntry(tu));
@@ -45,13 +45,13 @@ export class InMemoryTMDelegate {
 
     #setEntry(entry) {
         try {
-            const cleanedTU = l10nmonster.TU.asPair(entry);
+            const cleanedTU = TU.asPair(entry);
             this.#tus[cleanedTU.guid] = cleanedTU;
             const flatSrc = utils.flattenNormalizedSourceToOrdinal(cleanedTU.nsrc);
             this.#lookUpByFlatSrc[flatSrc] ??= [];
             !this.#lookUpByFlatSrc[flatSrc].includes(cleanedTU) && this.#lookUpByFlatSrc[flatSrc].push(cleanedTU);
         } catch (e) {
-            l10nmonster.logger.verbose(`Not setting TM entry (guid=${entry.guid}): ${e}`);
+            L10nContext.logger.verbose(`Not setting TM entry (guid=${entry.guid}): ${e}`);
         }
     }
 
@@ -98,7 +98,7 @@ export class InMemoryTMDelegate {
 
     commit() {
         if (this.#isDirty && this.#persistTMCache) {
-            l10nmonster.logger.info(`Updating ${this.#tmPathName}...`);
+            L10nContext.logger.info(`Updating ${this.#tmPathName}...`);
             const tmData = {
                 jobStatus: this.#jobStatus,
                 tus: this.#tus,

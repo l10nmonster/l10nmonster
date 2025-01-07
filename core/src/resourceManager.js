@@ -1,3 +1,4 @@
+import { L10nContext } from '@l10nmonster/core';
 import { Channel } from './entities/channel.js';
 import { Normalizer } from './entities/normalizer.js';
 import { FormatHandler } from './entities/formatHandler.js';
@@ -99,7 +100,7 @@ export default class ResourceManager {
     }
 
     async *#getAllResourcesFromSnapStore(options) {
-        l10nmonster.logger.info(`Getting all resources from snap store...`);
+        L10nContext.logger.info(`Getting all resources from snap store...`);
         const allResources = await this.snapStore.getAllResources(options);
         for await (const normalizedResource of allResources) {
             const handle = this.getChannel(normalizedResource.channel).makeResourceHandleFromObject(normalizedResource);
@@ -112,7 +113,7 @@ export default class ResourceManager {
     //
 
     async #getResourceHandlesFromAllChannels() {
-        l10nmonster.logger.info(`Getting resource stats from all sources...`);
+        L10nContext.logger.info(`Getting resource stats from all sources...`);
         const combinedHandles = [];
         for (const channel of Object.values(this.#channels)) {
             const handles = await channel.getResourceHandles();
@@ -120,11 +121,11 @@ export default class ResourceManager {
         }
         return combinedHandles
             .flat(1)
-            .filter(e => (l10nmonster.prj === undefined || l10nmonster.prj.includes(e.prj)));
+            .filter(e => (L10nContext.prj === undefined || L10nContext.prj.includes(e.prj)));
     }
 
     async *#getAllResourcesFromSources(options) {
-        l10nmonster.logger.info(`Getting all resources directly from sources...`);
+        L10nContext.logger.info(`Getting all resources directly from sources...`);
         for (const channel of Object.values(this.#channels)) {
             const channelResources = await channel.getAllNormalizedResources(options);
             for await (const normalizedResource of channelResources) {

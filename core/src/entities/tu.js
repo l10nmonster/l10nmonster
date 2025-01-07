@@ -1,4 +1,4 @@
-import { utils } from '@l10nmonster/helpers';
+import { utils } from '@l10nmonster/core';
 
 const sourceTUWhitelist = new Set([
     // mandatory
@@ -91,7 +91,7 @@ export class TU {
             //     spuriousProps.push(k);
             }
         }
-        // spuriousProps.length > 0 && l10nmonster.logger.verbose(`Spurious properties in tu ${entry.guid}: ${spuriousProps.join(', ')}`);
+        // spuriousProps.length > 0 && L10nContext.logger.verbose(`Spurious properties in tu ${entry.guid}: ${spuriousProps.join(', ')}`);
 
     }
 

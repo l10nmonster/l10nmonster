@@ -1,4 +1,4 @@
-import { utils } from '@l10nmonster/helpers';
+import { utils } from '@l10nmonster/core';
 
 // eslint-disable-next-line complexity
 export async function pushCmd(mm, { limitToLang, tuFilter, driver, refresh, translationProviderName, leverage, dryRun, instructions }) {

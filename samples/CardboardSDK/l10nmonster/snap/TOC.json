@@ -1,0 +1,21 @@
+{
+	"version": 1,
+	"chunkMap": {
+		"default-0.json": {
+			"../en.lproj/CardboardSDK.strings": {
+				"id": "../en.lproj/CardboardSDK.strings",
+				"channel": "default",
+				"modified": "2024-02-08T12:09:59.568Z",
+				"resourceFormat": "default",
+				"sourceLang": "en",
+				"targetLangs": [
+					"ar",
+					"en-AU",
+					"en-GB",
+					"it",
+					"ja"
+				]
+			}
+		}
+	}
+}

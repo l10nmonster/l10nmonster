@@ -1,9 +1,8 @@
+import { L10nContext, TU, utils } from '@l10nmonster/core';
 import {
     existsSync,
-    unlinkSync,
 } from 'fs';
 import Database from 'better-sqlite3';
-import { utils } from '@l10nmonster/helpers';
 
 export class SQLTMDelegate {
     #db;
@@ -26,32 +25,32 @@ export class SQLTMDelegate {
             const nukeJob = this.#db.prepare('DELETE FROM jobs WHERE jobGuid = ?');
             const nukeTus = this.#db.prepare('DELETE FROM tus WHERE jobGuid = ?');
             for (const jobGuid of extraJobs) {
-                l10nmonster.logger.info(`Nuking extraneous job: ${jobGuid}`);
+                L10nContext.logger.info(`Nuking extraneous job: ${jobGuid}`);
                 nukeJob.run(jobGuid);
                 nukeTus.run(jobGuid);
             }
         } else {
-            this.#db.exec('CREATE TABLE tus(jobGuid TEXT NOT NULL, guid TEXT NOT NULL, entry TEXT, flatSrc TEXT, q INTEGER, ts INTEGER, PRIMARY KEY (guid, jobGuid));\
-                CREATE TABLE jobs(jobGuid TEXT NOT NULL PRIMARY KEY, status TEXT, updatedAt TEXT, translationProvider TEXT);');
+            this.#db.exec(`CREATE TABLE tus(jobGuid TEXT NOT NULL, guid TEXT NOT NULL, entry TEXT, flatSrc TEXT, q INTEGER, ts INTEGER, PRIMARY KEY (guid, jobGuid));
+                CREATE TABLE jobs(jobGuid TEXT NOT NULL PRIMARY KEY, status TEXT, updatedAt TEXT, translationProvider TEXT);`);
         }
 
         // prepared statements
         this.#stmt = {
             getGuids: this.#db.prepare('SELECT guid FROM tus ORDER BY ROWID').pluck(),
             getEntry: this.#db.prepare('SELECT entry FROM tus WHERE guid = ? ORDER BY q DESC, ts DESC LIMIT 1').pluck(),
-            setEntry: this.#db.prepare('INSERT INTO tus (jobGuid, guid, entry, flatSrc, q, ts) VALUES (@jobGuid, @guid, @entry, @flatSrc, @q, @ts)\
-                ON CONFLICT (jobGuid, guid)\
-                    DO UPDATE SET entry = excluded.entry, flatSrc = excluded.flatSrc, q = excluded.q, ts = excluded.ts\
-                WHERE excluded.jobGuid = tus.jobGuid AND excluded.guid = tus.guid'),
+            setEntry: this.#db.prepare(`INSERT INTO tus (jobGuid, guid, entry, flatSrc, q, ts) VALUES (@jobGuid, @guid, @entry, @flatSrc, @q, @ts)
+                ON CONFLICT (jobGuid, guid)
+                    DO UPDATE SET entry = excluded.entry, flatSrc = excluded.flatSrc, q = excluded.q, ts = excluded.ts
+                WHERE excluded.jobGuid = tus.jobGuid AND excluded.guid = tus.guid`),
             getEntryByFlatSrc: this.#db.prepare('SELECT entry FROM tus WHERE flatSrc = ?').pluck(),
 
-            getJobsMeta: this.#db.prepare('SELECT jobGuid, status, updatedAt, translationProvider, count(guid) units FROM jobs LEFT JOIN tus USING(jobGuid)\
-                GROUP BY 1, 2, 3, 4 ORDER BY jobs.ROWID'),
+            getJobsMeta: this.#db.prepare(`SELECT jobGuid, status, updatedAt, translationProvider, count(guid) units FROM jobs LEFT JOIN tus USING(jobGuid)
+                GROUP BY 1, 2, 3, 4 ORDER BY jobs.ROWID`),
             getJob: this.#db.prepare('SELECT status, updatedAt FROM jobs WHERE jobGuid = ?'),
-            setJob: this.#db.prepare('INSERT INTO jobs (jobGuid, status, updatedAt, translationProvider) VALUES (@jobGuid, @status, @updatedAt, @translationProvider)\
-                ON CONFLICT (jobGuid)\
-                    DO UPDATE SET status = excluded.status, updatedAt = excluded.updatedAt, translationProvider = excluded.translationProvider\
-                WHERE excluded.jobGuid = jobs.jobGuid'),
+            setJob: this.#db.prepare(`INSERT INTO jobs (jobGuid, status, updatedAt, translationProvider) VALUES (@jobGuid, @status, @updatedAt, @translationProvider)
+                ON CONFLICT (jobGuid)
+                    DO UPDATE SET status = excluded.status, updatedAt = excluded.updatedAt, translationProvider = excluded.translationProvider
+                WHERE excluded.jobGuid = jobs.jobGuid`),
             createFlatSrcIdx: this.#db.prepare('CREATE INDEX IF NOT EXISTS idx_tus_flatSrc ON tus (flatSrc)'),
         };
     }
@@ -67,7 +66,7 @@ export class SQLTMDelegate {
 
     #setEntry(jobGuid, entry) {
         try {
-            const cleanedTU = l10nmonster.TU.asPair(entry);
+            const cleanedTU = TU.asPair(entry);
             const result = this.#stmt.setEntry.run({
                 jobGuid,
                 guid: cleanedTU.guid,
@@ -76,15 +75,15 @@ export class SQLTMDelegate {
                 q: cleanedTU.q,
                 ts: cleanedTU.ts,
             });
-            result.changes !== 1 && l10nmonster.logger.info(`Expecting to change a row but got: ${result}`);
+            result.changes !== 1 && L10nContext.logger.info(`Expecting to change a row but got: ${result}`);
         } catch (e) {
-            l10nmonster.logger.verbose(`Not setting TM entry (guid=${entry.guid}): ${e}`);
+            L10nContext.logger.verbose(`Not setting TM entry (guid=${entry.guid}): ${e}`);
         }
     }
 
     getAllEntriesBySrc(src) {
         if (this.#lazyFlatSrcIdx) {
-            l10nmonster.logger.verbose(`Creating FlatSrcIdx...`);
+            L10nContext.logger.verbose(`Creating FlatSrcIdx...`);
             this.#stmt.createFlatSrcIdx.run();
             this.#lazyFlatSrcIdx = false;
         }
@@ -124,7 +123,7 @@ export class SQLTMDelegate {
                 }
             }
             const result = this.#stmt.setJob.run({ jobGuid, status, updatedAt, translationProvider });
-            result.changes !== 1 && l10nmonster.logger.info(`Expecting to change a row but got: ${result}`);
+            result.changes !== 1 && L10nContext.logger.info(`Expecting to change a row but got: ${result}`);
         });
         writeJob(inflight, tus);
     }

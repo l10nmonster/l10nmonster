@@ -1,4 +1,4 @@
-import { utils } from '@l10nmonster/helpers';
+import { L10nContext, utils } from '@l10nmonster/core';
 
 export class FormatHandler {
     #id;
@@ -95,7 +95,7 @@ export class FormatHandler {
                 for (const decorator of this.#segmentDecorators) {
                     decoratedSeg = decorator(decoratedSeg);
                     if (decoratedSeg === undefined) { // this basically means DNT (or more like "pretend this doesn't exist")
-                        l10nmonster.logger.verbose(`Decorator rejected segment ${normalizedSeg.sid} in resource ${rid}`);
+                        L10nContext.logger.verbose(`Decorator rejected segment ${normalizedSeg.sid} in resource ${rid}`);
                         break;
                     }
                 }
@@ -163,7 +163,7 @@ export class FormatHandler {
                         return { nstr, str };
                     }
                 } catch(e) {
-                    l10nmonster.logger.verbose(`Problem translating guid ${seg.guid} to ${tm.targetLang}: ${e.stack ?? e}`);
+                    L10nContext.logger.verbose(`Problem translating guid ${seg.guid} to ${tm.targetLang}: ${e.stack ?? e}`);
                 }
             };
             return this.#resourceFilter.generateResource({ ...resHandle, translator, subresources });
@@ -177,23 +177,23 @@ export class FormatHandler {
             if (normalizedSource) {
                 const segToTranslate = this.#populateGuid(resHandle.id, str, normalizedSource.mf, { sid }, segmentFlags);
                 if (normalizedSource.guid !== segToTranslate.guid) {
-                    l10nmonster.logger.verbose(`Normalized source outdated: ${normalizedSource.gstr}\n${segToTranslate.gstr}`);
+                    L10nContext.logger.verbose(`Normalized source outdated: ${normalizedSource.gstr}\n${segToTranslate.gstr}`);
                     return undefined;
                 }
                 const entry = tm.getEntryByGuid(segToTranslate.guid);
                 if (!entry) {
-                    // l10nmonster.logger.verbose(`${tm.targetLang} translation not found for ${resHandle.id}, ${sid}, ${str}`);
+                    // L10nContext.logger.verbose(`${tm.targetLang} translation not found for ${resHandle.id}, ${sid}, ${str}`);
                     return undefined;
                 }
                 try {
                     const normalizedTranslation = this.#translateWithTMEntry(normalizedSource.nstr, entry);
                     return this.#encodeTranslatedSegment(normalizedTranslation, normalizedSource.mf, segmentFlags);
                 } catch(e) {
-                    l10nmonster.logger.verbose(`Problem translating ${resHandle.id}, ${sid}, ${str} to ${tm.targetLang}: ${e.stack ?? e}`);
+                    L10nContext.logger.verbose(`Problem translating ${resHandle.id}, ${sid}, ${str} to ${tm.targetLang}: ${e.stack ?? e}`);
                     return undefined;
                 }
             } else {
-                l10nmonster.logger.verbose(`Dropping ${sid} in ${resHandle.id} as it's missing from normalized source`);
+                L10nContext.logger.verbose(`Dropping ${sid} in ${resHandle.id} as it's missing from normalized source`);
                 return undefined;
             }
         };

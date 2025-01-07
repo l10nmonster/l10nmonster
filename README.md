@@ -1,46 +1,69 @@
 # L10n Monster
 
-Do you want to set up continuous localization for your project but don't have a whole team to look after it? Do you know how `git` works? Have you set up a build like `webpack` before? You've come to the right place and you'll feel right at home!
+Do you want to set up continuous localization for your project but don't have a whole team to look after it? Do you know how `git` works? Have you set up a build like `esbuild` before? You've come to the right place and you'll feel right at home!
 
-L10n Monster is the first headless and server-less TMS in the industry!
+L10n Monster is the first headless and server-less TMS in the industry! It's born in a world of continuous integration and deployment. It is a solution to manage translation vendors, not translators. It pushes source content out to translation vendors and pulls translations back in. No more no less. It doesn't try to tell you how to consume content or deliver it to production. It doesn't deal with formatting and other internationalization concerns. There are plenty of i18n libraries to deal with that.
 
-Why have the whole translation UI and capabilities when you don’t have any translators to manage yourself? Why maintain a system for your vendor to log in when they already have one they’re familiar with?
-L10n Monster is also a solution to manage translation vendors, not translators. It pushes source content out to translation vendors and pulls translations back in. No more no less. It doesn't try to tell you how to consume content or deliver it to production. It doesn't deal with formatting and other internationalization concerns.
+# Philosophy
+
+Localization is messy. Full of exceptions and bending backwards. As much as we want to provide an easy-to-use out-of-the-box solution by offering an opinionated implementation with reasonable defaults, the main goal should be to make solving of edge cases and advanced scenarios possible. To do this we try to componentize every aspect of localization with utilities, helpers, abstractions and then put them together into a simplified toolchain (e.g. the command-line interface). When more advanced tools are needed, just write your own with (hopefully) simple Node.js scripts built on top of the framework.
+
+While L10n Monster is written in JS and it's more naturally extended and scripted in JS, it's built to process a variety of file formats and infrastructure scenarios that span from a single-app indie developer to enterprises with hundreds of services and million of strings to translate.
 
 # Components
 
-To help manage dependencies and allow the variety of integrations required by the localization industry, the are a lot of packages to choose from and it's very easy to create your own extensions.
+To help manage dependencies and allow the variety of integrations required by the localization industry, there are a lot of packages to choose from and it's very easy to create your own extensions.
 
-1. Core: the foundational classes where most of the functionality lives. Written as ESM and built into CJS.
-2. CLI: the main command-line utility to invoke from the shell or from Node.js scripts. Suitable for batch jobs. Written as ESM, built into CJS, and potentially compiled to a binary.
-3. VS Code L10n Manager: a VS Code extension to provide a more intuitive UI than the CLI. Written as ESM and built into CJS.
-4. Helpers: common utilities and configuration components with minimal or no dependencies. Written as ESM and built into CJS.
-5. Helpers-*: optional specific configuration components with additional dependencies. Written as CJS.
+1. `@l10nmonster/core`: the foundational classes where most of the functionality lives.
+2. `@l10nmonster/cli`: a thin wrapper to invoke functions from the shell. Suitable for batch jobs.
+3. `@l10nmonster/vscode-l10nmanager`: a VS Code extension to provide a more intuitive UI than the CLI.
+4. `@l10nmonster/helpers-*`: optional configuration components with additional dependencies to deal with different formats and platforms.
 
 See the overall [System Design (OUTDATED)](architecture.md#system-design) to get a better idea. Also, a deep dive of the various [pipelines](pipelines.md).
 
-# Testing
+## Channels
 
-Unit testing is performed centrally rather than module by module. Run `npm test` from /tests.
+A channel represents a logical connection from where source content comes from and translations need to go to. It is configured and implemented respectively with source and target adapters.
 
-Regression testing is a suite of tests from the command line (both from zsh and node). Run `zsh test.zsh` from /regression. By default it tests using a node script. By passing an argument it tests the shell version.
+### Source Adapters
 
-# Helpers
+Sources are *adapters* used to interface with a source of content. They only deal with transport concerns and not format. They return a raw string with the content of resources and metadata associated to them. Extracted resource can declare their *format* sot that they can be parsed correctly.
 
-Translation pipelines are highly customizable, so all stages are componentized and configured separately.
-
-## Sources
-
-Sources are *adapters* used to interface with a source of content. They only deal with transport concerns and not format. They return a raw string with the content of resources and metadata associated to them. They can be configured in content types as a single `source` property.
+<details>
+<summary>List of provided sources:</summary>
 
 |Module|Export|Description|
 |---|---|---|
 |`helpers`|`adapters.FsSource`|Read from file-system-like sources.
-|`helpers-http`|`Source`|Read from url sources.
+|`helpers`|`adapters.HttpSource`|Read from url sources.
 
-## Resource Filters
+</details>
+
+### Target Adapters
+
+Targets are *adapters* used to interface with a content store. They may or may not go hand-in-hand with their source counterpart. Typically you want to read and write into the same store and structure, but you could also read from one structure and write into a different one in more sophisticated setups. They take a raw string with the content of translated resources in the correct format already and commit it to storage.
+
+<details>
+<summary>List of provided targets:</summary>
+
+|Module|Export|Description|
+|---|---|---|
+|`helpers`|`adapters.FsTarget`|Write to file-system-like sources.
+
+</details>
+
+## Formats
+
+To deal with the multitude of variations of how content is captured, encoding and decoding of translatable resources is split into 2 parts:
+1. Parsing resource files into array of messages and back is handled by `Resource Filters`.
+2. Parsing message strings including their placeholders and escaping rules into a normalized message format and back is handled by `Normalizers`. Normalizers can be composed from `decoders` and `encoders`.
+
+### Resource Filters
 
 Filters are used to convert raw strings returned by sources into segments that are suitable for translation (ideally not too small that they can't be translated, and not too long that prevent translation reuse). They can be configured in content types as a single `resourceFilter` property.
+
+<details>
+<summary>List of provided filters:</summary>
 
 |Module|Export|Description|
 |---|---|---|
@@ -52,9 +75,14 @@ Filters are used to convert raw strings returned by sources into segments that a
 |`helpers-json`|`i18next.Filter`|Filter for ARB-like JSON files used by [i18next v4](https://www.i18next.com/misc/json-format).|
 |`helpers-po`|`Filter`|Filter for PO files.|
 
-## Decoders
+</details>
+
+### Decoders
 
 Decoders are used to convert strings with specific formats into either pure strings or placeholders. They can be configured in content types as a chain of decoders via the `decoders` property.
+
+<details>
+<summary>List of provided decoders:</summary>
 
 |Module|Export|Description|
 |---|---|---|
@@ -75,9 +103,14 @@ Decoders are used to convert strings with specific formats into either pure stri
 |`helpers-java`|`MFQuotesDecoder`|Decoder for dealing with quotes in MessageFormat strings.|
 |`helpers-json`|`i18next.phDecoder`|Decoder for `{{param}}` and `$t(key)` style placeholders.|
 
-## Encoders
+</details>
+
+### Encoders
 
 Encoders are used to convert pure strings and placeholders back to their original format. They can be configured in content types as a chain of encoders via the `textEncoders` and `codeEncoders` properties.
+
+<details>
+<summary>List of provided encoders:</summary>
 
 |Module|Export|Description|
 |---|---|---|
@@ -90,18 +123,16 @@ Encoders are used to convert pure strings and placeholders back to their origina
 |`helpers-java`|`escapesEncoder`|Encoder for escaped chars like `\n`.|
 |`helpers-java`|`MFQuotesEncoder`|Encoder for dealing with quotes in MessageFormat strings.|
 
-## Targets
-
-Targets are *adapters* used to interface with a content store. They may or may not go hand-in-hand with their source counterpart. Typically you want to read and write into the same store and structure, but you could also read from one structure and write into a different one in more sophisticated setups. They take a raw string with the content of translated resources and commit it to storage.
-
-|Module|Export|Description|
-|---|---|---|
-|`helpers`|`adapters.FsTarget`|Write to file-system-like sources.
+</details>
 
 ## Translation Providers
 
-Translation providers are used to interface with the translation process. There are 2 kinds of providers and 2 modes of operation. Synchronous providers return translations right away. Typically these are machine translation engines that respond in real-time. Jobs submitted to synchronous providers will go from `req` state to `done` state upon a push. Asynchronous providers will take longer to return translations (e.g. days for human translation). Jobs submitted to asynchronous providers will go from `req` state to `pending` to `done` state upon a push.
+Translation providers are used to interface with the translation process. There are 2 kinds of providers and 2 modes of operation. Synchronous providers return translations right away. Typically these are machine translation engines that respond in real-time.
+Jobs submitted to synchronous providers will go from `req` state to `done` state upon a push. Asynchronous providers will take longer to return translations (e.g. days for human translation). Jobs submitted to asynchronous providers will go from `req` state to `pending` to `done` state upon a push.
 Providers can also support a `translation` push as opposed to a `refresh` push. The former meant for new submissions and the latter to pick up changes from previous submissions (e.g. translation bug fixes). A refresh push is always synchronous and generates a `done` job only if it produces differences (if all translations are unchanged then the job is cancelled).
+
+<details>
+<summary>List of provided translators:</summary>
 
 |Module|Export|Async|Sync|Translation|Refresh|Description|
 |---|---|:---:|:---:|:---:|:---:|---|
@@ -115,23 +146,33 @@ Providers can also support a `translation` push as opposed to a `refresh` push. 
 |`helpers-translated`|`TranslationOS`|✅|❌|✅|✅|TOS human translation [API](https://api.translated.com/v2).
 |`helpers-xliff`|`BridgeTranslator`|✅|❌|✅|❌|Translator via XLIFF files in filesystem.
 
-## Other
+</details>
+
+## Operations
+
+Running localization operations requires additional tools to support processes. The following additional components can be used:
+1. **Job Stores**: provide persistence of past translation jobs (so that they can be reused in the future).
+2. **Snap Stores**: provide persistence of normalized source content (in case accessing sources is expensive or impractical).
+3. **Analyzers**: generate report over source content and translations. Some are provided ouf of the box and custom ones can be added.
+4. **Actions**: effectively pieces of the localization process. Some are provided ouf of the box and custom ones can be added.
+
+<details>
+<summary>List of provided stores:</summary>
 
 |Module|Export|Description|
 |------|---|---|
-|`helpers`|`utils.*`|Internal utilities. No stable interface. Use at your own risk.|
-|`helpers`|`analyzers.*`|Miscellaneous analyzers.|
 |`helpers`|`stores.JsonJobStore`|Job store based on JSON files in the filesystem.|
 |`helpers`|`stores.FileBasedJobStore`|Abstract job store based on JSON files in a blob store.|
 |`helpers`|`stores.FsSnapStore`|Snap store based on JSON files in the filesystem.|
 |`helpers`|`stores.FileBasedSnapStore`|Abstract snap store based on JSON files in a blob store.|
-|`helpers`|`stores.FsStoreDelegate`|Delegate helper for `FileBasedJobStore` and `FileBasedSnapStore` to use the filesystem.|
+|`helpers-googlecloud`|`stores.GCSJobStore`|Job store based on JSON files in GCS.|
+|`helpers-googlecloud`|`stores.GCSSnapStore`|Snap store based on JSON files in GCS.|
 
-### Dependencies
+</details>
 
-Typically, all helpers depend on a shared context for things like access to a logger. This is provided via a global `l10nmonster` object.
 
-# Philosophy
+# Testing
 
-Localization is messy. Full of exceptions and bending backwards. As much as we want to provide an easy-to-use out-of-the-box solution by offering an opinionated implementation with reasonable defaults, the main goal should be to make solving of edge cases and advanced scenarios possible.
-To do this we try to componentize every aspect of localization with utilities, helpers, abstractions and then put them together into a simplified toolchain (e.g. the command-line interface). When more advanced toolchains are needed, just write your own with (hopefully) simple Node.js scripts that can be launched directly or as extensions of the CLI.
+Unit testing is performed centrally rather than module by module. Run `npm test` from /tests.
+
+Regression testing is a suite of tests from the command line (both from zsh and node). Run `zsh test.zsh` from /regression.

@@ -1,7 +1,5 @@
 *
-!l10n.cjs
-!out/l10nCommands.cjs
+!l10n.mjs
 !package.json
-!package-lock.json
 !README.md
 !.js

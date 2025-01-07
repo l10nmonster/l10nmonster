@@ -1,1 +1,1 @@
-exports.PigLatinizer = require('./piglatinizer');
+export { default as PigLatinizer } from './piglatinizer.js';

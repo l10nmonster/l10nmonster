@@ -1,0 +1,48 @@
+{
+	"jobStatus": {
+		"ykI3rb90d1NBkElVnKVoA": {
+			"status": "done",
+			"updatedAt": "2024-12-29T16:49:59.891Z",
+			"translationProvider": "AussieTranslator",
+			"units": 2
+		}
+	},
+	"tus": {
+		"9lLMIv1DGz1eHFFnqhJ_w8Lzgb74PbON9gJ969E-YTI": {
+			"sid": "CanNotFindSymbol",
+			"guid": "9lLMIv1DGz1eHFFnqhJ_w8Lzgb74PbON9gJ969E-YTI",
+			"notes": {
+				"desc": "Label shown next to skip button that allows the user to skip the QR code step. (40 chars)"
+			},
+			"nsrc": [
+				"Can't find this color?"
+			],
+			"rid": "../en.lproj/CardboardSDK.strings",
+			"ntgt": [
+				"Can't finday this colour?"
+			],
+			"q": 70,
+			"ts": 1735490999890,
+			"jobGuid": "ykI3rb90d1NBkElVnKVoA",
+			"translationProvider": "AussieTranslator"
+		},
+		"WiGNGwgf5JUHN-7vFSpeFNORX2mrVJWMfjmlbeMrvCs": {
+			"sid": "AccessibilitySettingsButton",
+			"guid": "WiGNGwgf5JUHN-7vFSpeFNORX2mrVJWMfjmlbeMrvCs",
+			"notes": {
+				"desc": "Accessibility label for the gear icon to bring up settings (read out loud)"
+			},
+			"nsrc": [
+				"Customize"
+			],
+			"rid": "../en.lproj/CardboardSDK.strings",
+			"ntgt": [
+				"Tinkerise"
+			],
+			"q": 70,
+			"ts": 1735490999890,
+			"jobGuid": "ykI3rb90d1NBkElVnKVoA",
+			"translationProvider": "AussieTranslator"
+		}
+	}
+}

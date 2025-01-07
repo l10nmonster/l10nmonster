@@ -1,21 +1,21 @@
 import * as path from 'path';
+import { L10nContext } from '@l10nmonster/core';
 import { InMemoryTMDelegate } from './inMemoryTMDelegate.js';
 import { SQLTMDelegate } from './sqliteTMDelegate.js';
 
 function tmFactory(tmBasePathName, jobs, mode) {
     if (mode === undefined || mode === 'json' || mode === 'transient') {
-        l10nmonster.logger.verbose(`Instantiating InMemoryTMDelegate ${tmBasePathName} mode ${mode}`);
+        L10nContext.logger.verbose(`Instantiating InMemoryTMDelegate ${tmBasePathName} mode ${mode}`);
         return new InMemoryTMDelegate(tmBasePathName, mode !== 'transient', jobs);
     } else if (mode === 'sql') {
-        l10nmonster.logger.verbose(`Instantiating SQLTMDelegate ${tmBasePathName}`);
+        L10nContext.logger.verbose(`Instantiating SQLTMDelegate ${tmBasePathName}`);
         return new SQLTMDelegate(tmBasePathName, jobs);
     }
     throw `Unknown TM Manager mode: ${mode}`;
 }
 
 export default class TMManager {
-    constructor({ monsterDir, jobStore, parallelism, mode }) {
-        this.monsterDir = monsterDir;
+    constructor({ jobStore, parallelism, mode }) {
         this.jobStore = jobStore;
         this.tmCache = new Map();
         this.parallelism = parallelism ?? 8;
@@ -30,7 +30,7 @@ export default class TMManager {
         }
         const jobs = (await this.jobStore.getJobStatusByLangPair(sourceLang, targetLang))
             .filter(e => [ 'pending', 'done' ].includes(e[1].status));
-        tm = tmFactory(path.join(this.monsterDir, tmName), jobs, this.mode);
+        tm = tmFactory(path.join(L10nContext.baseDir, tmName), jobs, this.mode);
         this.tmCache.set(tmName, tm);
 
         // update jobs if status has changed or new (otherwise not needed because jobs are immutable)
@@ -51,7 +51,7 @@ export default class TMManager {
                 return { meta, body };
             })());
             const fetchedJobs = await Promise.all(jobPromises);
-            l10nmonster.logger.verbose(`Fetched chunk of ${jobPromises.length} jobs`);
+            L10nContext.logger.verbose(`Fetched chunk of ${jobPromises.length} jobs`);
             const jobsRequestsToFetch = [];
             for (const job of fetchedJobs) {
                 if (job.body.updatedAt !== job.meta.tmUpdatedAt) {
@@ -67,7 +67,7 @@ export default class TMManager {
                     return { jobResponse: meta.jobResponse, jobRequest };
                 })());
                 for (const { jobResponse, jobRequest } of await Promise.all(jobPromises)) {
-                    l10nmonster.logger.info(`Applying job ${jobResponse?.jobGuid} to the ${sourceLang} -> ${targetLang} TM...`);
+                    L10nContext.logger.info(`Applying job ${jobResponse?.jobGuid} to the ${sourceLang} -> ${targetLang} TM...`);
                     tm.processJob(jobResponse, jobRequest);
                 }
             }

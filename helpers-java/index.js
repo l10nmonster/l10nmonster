@@ -1,6 +1,6 @@
-const { regex } = require('@l10nmonster/helpers');
+import { regex } from '@l10nmonster/core';
 
-exports.PropertiesFilter = require('./filter');
+export { default as PropertiesFilter } from './filter.js';
 
 const javaControlCharsToDecode = {
     t: '\t',
@@ -9,7 +9,7 @@ const javaControlCharsToDecode = {
     r: '\r',
     f: '\f',
 };
-exports.escapesDecoder = regex.decoderMaker(
+export const escapesDecoder = regex.decoderMaker(
     'javaEscapesDecoder',
     /(?<node>\\(?<escapedChar>['"\\])|\\(?<escapedControl>[tbnrf])|\\u(?<codePoint>[0-9A-Za-z]{4}))/g,
     (groups) => (groups.escapedChar ??
@@ -21,7 +21,7 @@ exports.escapesDecoder = regex.decoderMaker(
 );
 
 // TODO: do we need to escape also those escapedChar that we decoded?
-exports.escapesEncoder = regex.encoderMaker(
+export const escapesEncoder = regex.encoderMaker(
     'javaEscapesEncoder',
     // eslint-disable-next-line prefer-named-capture-group
     /(\t)|(\n)|(\r)|(\f)|(\u00a0)/g,
@@ -34,14 +34,14 @@ exports.escapesEncoder = regex.encoderMaker(
     }
 );
 
-exports.MFQuotesDecoder = regex.decoderMaker(
+export const MFQuotesDecoder = regex.decoderMaker(
     'javaMFQuotesDecoder',
     /(?:(?<quote>')'|(?:'(?<quoted>[^']+)'))/g,
     groups => groups.quote ?? groups.quoted
 );
 
 // need to be smart about detecting whether MessageFormat was used or not based on presence of {vars}
-exports.MFQuotesEncoder = regex.encoderMaker(
+export const MFQuotesEncoder = regex.encoderMaker(
     'javaMFQuotesEncoder',
     // eslint-disable-next-line prefer-named-capture-group
     /(')/g,

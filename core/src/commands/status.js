@@ -1,3 +1,4 @@
+import { L10nContext } from '@l10nmonster/core';
 
 export async function statusCmd(mm, { limitToLang }) {
     const status = {
@@ -11,7 +12,7 @@ export async function statusCmd(mm, { limitToLang }) {
             leverage,
         };
         status.numSources = leverage.numSources;
-        l10nmonster.logger.info(`Calculated status of ${targetLang}`);
+        L10nContext.logger.info(`Calculated status of ${targetLang}`);
     }
     return status;
 }

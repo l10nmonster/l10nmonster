@@ -5,48 +5,55 @@ if [ "$#" -ne 3 ]; then
     exit 1
 fi
 
-setopt ERR_EXIT
+script_type=$1
+monster_location=$2
+cases=$3
 
-find expected -name '.DS_Store' -type f -delete
-rm -rf wd
-mkdir -p wd/cases
-
-if [[ "$3" == "all" ]]; then
-    cp -pr mint/* wd/cases
-else
-    cp -pr mint/$3 wd/cases
-fi
-
-if [[ "$2" == "npm" ]]; then
-    cp package-npm.json wd/package.json
-else
-    cp package-local.json wd/package.json
-fi
-
-cd wd
-echo "Installing npm dependencies..."
-npm i --no-package-lock
-npm ls
-
-cd cases
-for dir in *
-do
-    echo "\nTesting $dir..."
-    cd $dir
-    if [[ "$1" == "cli" ]]; then
+run_regression() {
+    script_type=$1
+    monster_location=$2
+    case=$3
+    echo "\nTesting $case..."
+    cd ../wd
+    cp -pr ../mint/$case .
+    cd $case/l10nmonster
+    if [[ $monster_location == "npm" ]]; then
+        cp ../../../package-npm.json ./package.json
+    else
+        cp ../../../package-local.json ./package.json
+    fi
+    echo "Installing npm dependencies..."
+    npm i --no-package-lock
+    npm ls
+    if [[ $script_type == "cli" ]]; then
         time zsh regressionScript.zsh
     else
-        time node regressionScript.cjs
+        time node regressionScript.mjs
     fi
 
     echo "\nDiffing working dir vs. expected..."
-    rm -rf .l10nmonster
-    rm regressionScript.cjs
-    rm regressionScript.zsh
-    rm l10nmonster.cjs
-    cd ..
-    find $dir -name '.DS_Store' -type f -delete
-    diff -qr $dir ../../expected/$dir
-done
+    rm l10nmonster.config.mjs
+    rm -rf node_modules
+    rm package.json
+    rm regressionScript.*
+    rm tmCache_*
+    cd ../..
+    find $case -name '.DS_Store' -type f -delete
+    diff -qr $case ../expected/$case
+}
+
+setopt ERR_EXIT
+find expected -name '.DS_Store' -type f -delete
+rm -rf wd
+mkdir wd
+
+cd mint
+if [[ $cases == "all" ]]; then
+    for case in *; do
+        run_regression $script_type $monster_location $case
+    done
+else
+    run_regression $script_type $monster_location $cases
+fi
 
 echo "Regression test completed successfully (error code $?)"

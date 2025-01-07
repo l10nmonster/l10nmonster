@@ -1,4 +1,4 @@
-import { utils } from '@l10nmonster/helpers';
+import { TU, utils } from '@l10nmonster/core';
 
 export async function analyzeCmd(mm, analyzer, params, limitToLang, tuFilter) {
     const Analyzer = mm.analyzers[utils.fixCaseInsensitiveKey(mm.analyzers, analyzer)];
@@ -17,7 +17,7 @@ export async function analyzeCmd(mm, analyzer, params, limitToLang, tuFilter) {
         const analyzer = new Analyzer(...params);
         for await (const res of mm.rm.getAllResources()) {
             for (const seg of res.segments) {
-                (!tuFilterFunction || tuFilterFunction(l10nmonster.TU.fromSegment(res, seg))) && analyzer.processSegment({ rid: res.id, prj: res.prj, seg });
+                (!tuFilterFunction || tuFilterFunction(TU.fromSegment(res, seg))) && analyzer.processSegment({ rid: res.id, prj: res.prj, seg });
             }
         }
         return analyzer.getAnalysis();

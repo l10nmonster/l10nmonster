@@ -3,8 +3,9 @@
 // and preserve the source but the downside is that we miss automatic CDATA handling, whitespace trimming, entity management.
 // TODO: double quotes are meant to preserve newlines but we treat double quotes like CDATA (which doesn't)
 
-const { XMLParser, XMLBuilder } = require('fast-xml-parser');
-const xmlFormatter = require('xml-formatter');
+import { XMLParser, XMLBuilder } from 'fast-xml-parser';
+import { default as formatXml } from 'xml-formatter';
+import { L10nContext } from '@l10nmonster/core';
 
 function collapseTextNodes(node) {
     return node.map(e => e['#text']).join('').trim();
@@ -16,11 +17,26 @@ function isTranslatableNode(resNode, str) {
     return resNode[':@'].translatable !== 'false' && !resNode[':@']['/'] && !resourceReferenceRegex.test(str);
 }
 
-module.exports = class AndroidFilter {
-    constructor({ indentation }) {
+/**
+ * Class representing an AndroidFilter for parsing and translating Android resource files.
+ */
+export class AndroidXMLFilter {
+
+    /**
+     * Create an AndroidXMLFilter.
+     * @param {Object} [options] - Configuration options for the filter.
+     * @param {string} [options.indentation='\t'] - The indentation character(s) to use in the output XML.
+     */
+    constructor({ indentation } = {}) {
         this.indentation = indentation || '\t';
     }
 
+    /**
+     * Parse an Android resource file and extract translatable segments.
+     * @param {Object} params - Parameters for parsing the resource.
+     * @param {string} params.resource - The XML content of the Android resource file.
+     * @returns {Promise<Object>} An object containing the extracted segments.
+     */
     async parseResource({ resource }) {
         const segments = [];
         const parsingOptions = {
@@ -70,8 +86,8 @@ module.exports = class AndroidFilter {
                         }
                         lastComment = null;
                     } else {
-                        l10nmonster.logger.verbose(`Unexpected child node in resources`);
-                        l10nmonster.logger.verbose(JSON.stringify(resNode));
+                        L10nContext.logger.verbose(`Unexpected child node in resources`);
+                        L10nContext.logger.verbose(JSON.stringify(resNode));
                     }
                 }
             }
@@ -81,6 +97,13 @@ module.exports = class AndroidFilter {
         };
     }
 
+    /**
+     * Translate an Android resource file using the provided translator function.
+     * @param {Object} params - Parameters for translating the resource.
+     * @param {string} params.resource - The XML content of the Android resource file.
+     * @param {Function} params.translator - A function that translates a string given its ID and source text.
+     * @returns {Promise<string|null>} The translated XML content, or null if no translations were made.
+     */
     async translateResource({ resource, translator }) {
         const parsingOptions = {
             ignoreAttributes: false,
@@ -150,6 +173,6 @@ module.exports = class AndroidFilter {
         const builder = new XMLBuilder(parsingOptions);
         const roughXML = builder.build(parsedResource);
         // eslint-disable-next-line prefer-template
-        return xmlFormatter(roughXML, { collapseContent: true, indentation: this.indentation, lineSeparator: '\n' }) + '\n';
+        return formatXml(roughXML, { collapseContent: true, indentation: this.indentation, lineSeparator: '\n' }) + '\n';
     }
 }

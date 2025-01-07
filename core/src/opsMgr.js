@@ -26,6 +26,7 @@ import {
     mkdirSync,
 } from 'fs';
 import * as fs from 'fs';
+import { L10nContext } from '@l10nmonster/core';
 
 const MAX_INLINE_OUTPUT = 16383; // above this length it will dump the output to a file
 
@@ -66,7 +67,7 @@ class Task {
         this.rootOpId = this.enqueue(opName, args, inputs);
         this.taskName = `Task-${this.opList[this.rootOpId].opName}-${new Date().getTime()}`;
         this.saveState();
-        l10nmonster.logger.info(`${this.taskName} committed`);
+        L10nContext.logger.info(`${this.taskName} committed`);
     }
 
     addInputDependency(opId, input) {
@@ -110,7 +111,7 @@ class Task {
                             const inputs = op.inputs.map(this.getOutputByOpId.bind(this));
                             const boundFunc = func.bind(this);
                             op.lastRanAt = new Date().toISOString();
-                            l10nmonster.logger.info(`Executing opId: ${op.opId} opName: ${op.opName}...`);
+                            L10nContext.logger.info(`Executing opId: ${op.opId} opName: ${op.opName}...`);
                             const response = (await boundFunc(op.args, inputs)) ?? null; // TODO: do we want to pass op instead of op.args so that we have access to our opId in case we need to chain our output to something else?
                             const responseJSON = JSON.stringify(response, null, '\t');
                             if (responseJSON.length > MAX_INLINE_OUTPUT && this.opsMgr.opsDir) {
@@ -142,7 +143,7 @@ class Task {
     hydrate(filename) {
         if (this.opsMgr.opsDir) {
             const fullPath = path.join(this.opsMgr.opsDir, filename);
-            const state = JSON.parse(fs.readFileSync(fullPath));
+            const state = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
             this.taskName = state.taskName;
             this.rootOpId = state.rootOpId;
             this.context = state.context;
@@ -154,14 +155,13 @@ class Task {
 }
 
 export class OpsMgr {
-    constructor(opsDir) {
-        if (opsDir) {
-            this.opsDir = opsDir;
-            if (!existsSync(opsDir)) {
-                mkdirSync(opsDir, {recursive: true});
-            }
+    registry = {};
+
+    setOpsDir(opsDir) {
+        this.opsDir = opsDir;
+        if (!existsSync(opsDir)) {
+            mkdirSync(opsDir, {recursive: true});
         }
-        this.registry = {};
     }
 
     registerOp(func, options = {}) {

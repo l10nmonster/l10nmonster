@@ -2,9 +2,9 @@
 /* eslint-disable no-eq-null, eqeqeq */
 
 // i18next v4 json format defined at https://www.i18next.com/misc/json-format
-const flat = require('flat');
-const { regex } = require('@l10nmonster/helpers');
-const { flattenAndSplitResources, ARB_ANNOTATION_MARKER, arbPlaceholderHandler } = require('./utils');
+import { flatten, unflatten } from 'flat';
+import { regex } from '@l10nmonster/core';
+import { flattenAndSplitResources, ARB_ANNOTATION_MARKER, arbPlaceholderHandler } from './utils.js';
 
 const isArbAnnotations = e => e[0].split('.').slice(-2)[0].startsWith(ARB_ANNOTATION_MARKER);
 const validPluralSuffixes = new Set(['one', 'other', 'zero', 'two', 'few', 'many']);
@@ -15,9 +15,42 @@ const defaultArbAnnotationHandlers = {
     DEFAULT: (name, data) => (data == null ? undefined : `${name}: ${data}`),
 }
 
+/**
+ * @function parseResourceAnnotations
+ *
+ * @description
+ * Parse resource annotations according to the given configuration.
+ *
+ * @param {object} resource - The resource to parse.
+ * @param {boolean} enableArbAnnotations - Whether to enable annotations
+ * @param {object} arbAnnotationHandlers - An object mapping annotation names to a function which takes an annotation name and its value and returns a string.
+ *
+ * @returns {array} An array with two elements. The first element is an array of key-value pairs for the translatable segments. The second element is an object with the parsed annotations.
+ *
+ * @example
+ * const resource = {
+ *   "key": "value",
+ *   "@key": {
+ *     "description": "description for key",
+ *     "placeholders": {
+ *       "placeholder": {
+ *         "example": "example for placeholder",
+ *         "description": "description for placeholder",
+ *       }
+ *     }
+ *   }
+ * };
+ * const [segments, notes] = parseResourceAnnotations(resource, true, {
+ *   description: (_, data) => (data == null ? undefined : data),
+ *   placeholders: (_, data) => (data == null ? undefined : arbPlaceholderHandler(data)),
+ *   DEFAULT: (name, data) => (data == null ? undefined : `${name}: ${data}`),
+ * });
+ * // segments is [["key", "value"]]
+ * // notes is { "key": "description for key\nplaceholder: example for placeholder - description for placeholder" }
+ */
 function parseResourceAnnotations(resource, enableArbAnnotations, arbAnnotationHandlers) {
     if (!enableArbAnnotations) {
-        return [ Object.entries(flat.flatten(resource)), {} ]
+        return [ Object.entries(flatten(resource)), {} ]
     }
 
     const { res, notes } = flattenAndSplitResources([], resource)
@@ -42,7 +75,7 @@ function parseResourceAnnotations(resource, enableArbAnnotations, arbAnnotationH
     return [ Object.entries(res), parsedNotes ];
 }
 
-exports.Filter = class I18nextFilter {
+export class I18nextFilter {
     constructor(params) {
         this.enableArbAnnotations = params?.enableArbAnnotations || false;
         this.enablePluralSuffixes = params?.enablePluralSuffixes || false;
@@ -80,7 +113,7 @@ exports.Filter = class I18nextFilter {
     }
 
     async translateResource({ resource, translator }) {
-        let flatResource = flat.flatten(JSON.parse(resource));
+        let flatResource = flatten(JSON.parse(resource));
         for (const entry of Object.entries(flatResource)) {
             if (!this.enableArbAnnotations || !isArbAnnotations(entry)) {
                 const translation = await translator(...entry);
@@ -101,7 +134,7 @@ exports.Filter = class I18nextFilter {
                 }
             }
         }
-        return JSON.stringify(flat.unflatten(flatResource, { object: !this.enableArrays }), null, 2) + '\n';
+        return `${JSON.stringify(unflatten(flatResource, { object: !this.enableArrays }), null, 2)}\n`;
     }
 }
 
@@ -109,7 +142,7 @@ exports.Filter = class I18nextFilter {
 // - "keyNesting": "reuse $t(keyDeep.inner)", or
 // - "keyInterpolate": "replace this {{value}}"
 // See: https://www.i18next.com/misc/json-format#i18next-json-v4
-exports.phDecoder = regex.decoderMaker(
+export const phDecoder = regex.decoderMaker(
     'i18nextKey',
     /(?<nestingPh>\$t\([\w:.]+\))|(?<doubleBracePh>{{[^}]+}})/g,
     (groups) => ({ t: 'x', v: groups.nestingPh ?? groups.doubleBracePh })

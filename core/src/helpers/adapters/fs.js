@@ -1,0 +1,144 @@
+import * as path from 'path';
+import {
+    existsSync,
+    unlinkSync,
+    statSync,
+    readFileSync,
+    mkdirSync,
+    writeFileSync,
+} from 'fs';
+import { globbySync } from 'globby';
+import { L10nContext } from '@l10nmonster/core';
+
+/**
+ * A file system source adapter for fetching resources.
+ */
+export class FsSource {
+
+    /**
+     * Creates a new FsSource instance.
+     * @param {Object} options - Configuration options for the source.
+     * @param {string} [options.baseDir] - Base directory for resource files.
+     * @param {string[]} options.globs - Array of glob patterns to match resource files.
+     * @param {Function} [options.filter] - Function to filter resources based on their IDs.
+     * @param {string[]} [options.targetLangs] - Array of target languages for the resources.
+     * @param {string} [options.prj] - Project identifier for the resources.
+     * @param {Function} [options.resDecorator] - Function to decorate resource metadata.
+     * @param {Function} [options.idFromPath] - Function to derive resource ID from file path.
+     * @param {Function} [options.pathFromId] - Function to derive file path from resource ID.
+     * @throws {string} Throws an error if `globs` is not provided.
+     */
+    constructor({ baseDir, globs, filter, targetLangs, prj, resDecorator, idFromPath, pathFromId }) {
+        if (globs === undefined) {
+            throw 'a globs property is required in FsSource';
+        } else {
+            this.globs = globs;
+            this.filter = filter;
+            this.targetLangs = targetLangs;
+            this.prj = prj;
+            this.resDecorator = resDecorator;
+            this.idFromPath = idFromPath;
+            this.pathFromId = pathFromId;
+            this.baseDir = baseDir ? path.resolve(L10nContext.baseDir, baseDir) : L10nContext.baseDir;
+        }
+    }
+
+    /**
+     * Fetches metadata for all resources matching the glob patterns.
+     * @returns {Promise<Object[]>} Array of resource metadata objects.
+     */
+    async fetchResourceStats() {
+        const resources = [];
+        const expandedFileNames = globbySync(this.globs.map(g => path.join(this.baseDir, g)));
+        L10nContext.logger.info(`Fetched fs globs: ${this.globs}`);
+        for (const fileName of expandedFileNames) {
+            let id = path.relative(this.baseDir, fileName);
+            if (typeof this.idFromPath === 'function') {
+                id = this.idFromPath(id);
+            }
+        if (!this.filter || this.filter(id)) {
+                const stats = statSync(fileName);
+                let resMeta = {
+                    id,
+                    modified: L10nContext.regression ? 1 : stats.mtime.toISOString(),
+                };
+                this.targetLangs && (resMeta.targetLangs = this.targetLangs);
+                this.prj && (resMeta.prj = this.prj);
+                if (typeof this.resDecorator === 'function') {
+                    resMeta = this.resDecorator(resMeta);
+                }
+                resources.push(resMeta);
+            }
+        }
+        return resources;
+    }
+
+    /**
+     * Fetches the content of a specific resource.
+     * @param {string} resourceId - The ID of the resource to fetch.
+     * @returns {Promise<string>} The content of the resource.
+     */
+    async fetchResource(resourceId) {
+        if (typeof this.pathFromId === 'function') {
+            resourceId = this.pathFromId(resourceId);
+        }
+        return readFileSync(path.resolve(this.baseDir, resourceId), 'utf8');
+    }
+}
+
+/**
+ * Represents a file system target for storing translated resources.
+ */
+export class FsTarget {
+
+    /**
+     * Creates a new FsTarget instance.
+     * @param {Object} options - Configuration options for the target.
+     * @param {string} [options.baseDir] - Base directory for translated files.
+     * @param {Function} options.targetPath - Function to determine target path.
+     * @param {boolean} [options.deleteEmpty] - Whether to delete empty files.
+     */
+    constructor({ baseDir, targetPath, deleteEmpty }) {
+        this.targetPath = targetPath;
+        this.deleteEmpty = deleteEmpty;
+        this.baseDir = baseDir ? path.resolve(L10nContext.baseDir, baseDir) : L10nContext.baseDir;
+    }
+
+    /**
+     * Generates the path for a translated resource.
+     * @param {string} lang - The target language.
+     * @param {string} resourceId - The ID of the resource.
+     * @returns {string} The full path to the translated resource.
+     */
+    translatedResourceId(lang, resourceId) {
+        return path.resolve(this.baseDir, this.targetPath(lang, resourceId));
+    }
+
+    /**
+     * Fetches a translated resource from the file system.
+     * @param {string} lang - The target language.
+     * @param {string} resourceId - The ID of the resource.
+     * @returns {Promise<string>} The content of the translated resource.
+     */
+    async fetchTranslatedResource(lang, resourceId) {
+        return readFileSync(this.translatedResourceId(lang, resourceId), 'utf8');
+    }
+
+    /**
+     * Saves or deletes a translated resource in the file system.
+     * @param {string} lang - The target language of the translated resource.
+     * @param {string} resourceId - The ID of the resource.
+     * @param {string|null} translatedRes - The translated content
+     * If null, the file is deleted instead of written.
+     * @return {Promise<void>}
+     */
+    async commitTranslatedResource(lang, resourceId, translatedRes) {
+        const translatedPath = this.translatedResourceId(lang, resourceId);
+        if (translatedRes === null) {
+            this.deleteEmpty && existsSync(translatedPath) && unlinkSync(translatedPath);
+        } else {
+            mkdirSync(path.dirname(translatedPath), {recursive: true});
+            writeFileSync(translatedPath, translatedRes, 'utf8');
+        }
+    }
+}

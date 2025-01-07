@@ -1,17 +1,18 @@
 {
-  "name": "@l10nmonster/helpers-json",
-  "version": "1.0.4",
-  "description": "Helpers to deal with JSON file formats",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Diego Lagunas",
-  "license": "MIT",
-  "dependencies": {
-    "flat": "^5.0.2"
-  },
-  "peerDependencies": {
-    "@l10nmonster/helpers": "^1"
-  }
+    "name": "@l10nmonster/helpers-json",
+    "version": "2.0.0",
+    "description": "Helpers to deal with JSON file formats",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Diego Lagunas",
+    "license": "MIT",
+    "dependencies": {
+        "flat": "^6"
+    },
+    "peerDependencies": {
+        "@l10nmonster/core": "^2"
+    }
 }

@@ -1,3 +1,5 @@
+import { L10nContext } from '@l10nmonster/core';
+
 export class ResourceHandle {
     #formatHandler;
 
@@ -14,7 +16,7 @@ export class ResourceHandle {
         this.segments = segments;
         this.subresources = subresources;
         if (Object.keys(other).length > 1) {
-            l10nmonster.logger.verbose(`Unknown properties in resource handle: ${Object.keys(other).join(', ')}`);
+            L10nContext.logger.verbose(`Unknown properties in resource handle: ${Object.keys(other).join(', ')}`);
         }
     }
 

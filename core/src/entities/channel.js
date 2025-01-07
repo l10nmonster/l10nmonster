@@ -1,3 +1,4 @@
+import { L10nContext } from '@l10nmonster/core';
 import { ResourceHandle } from './resourceHandle.js';
 
 export class Channel {
@@ -35,20 +36,20 @@ export class Channel {
 
     async getResourceHandles() {
         const resStats = await this.#source.fetchResourceStats();
-        l10nmonster.logger.verbose(`Fetched resource handles for channel ${this.#id}`);
+        L10nContext.logger.verbose(`Fetched resource handles for channel ${this.#id}`);
         return resStats.map(rs => this.makeResourceHandleFromObject(rs));
     }
 
     async *getAllNormalizedResources({ keepRaw } = {}) {
         if (this.#source.fetchAllResources) {
-            for await (const [resourceStat, rawResource] of this.#source.fetchAllResources(l10nmonster.prj)) {
+            for await (const [resourceStat, rawResource] of this.#source.fetchAllResources(L10nContext.prj)) {
                 const handle = this.makeResourceHandleFromObject(resourceStat);
                 yield handle.loadResourceFromRaw(rawResource, { isSource: true, keepRaw });
             }
         } else {
             const resourceStats = await this.#source.fetchResourceStats();
             for (const resourceStat of resourceStats) {
-                if (l10nmonster.prj === undefined || l10nmonster.prj.includes(resourceStat.prj)) {
+                if (L10nContext.prj === undefined || L10nContext.prj.includes(resourceStat.prj)) {
                     const handle = this.makeResourceHandleFromObject(resourceStat);
                     const rawResource = await this.#source.fetchResource(resourceStat.id);
                     yield handle.loadResourceFromRaw(rawResource, { isSource: true, keepRaw });
