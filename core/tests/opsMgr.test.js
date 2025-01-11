@@ -1,7 +1,7 @@
-global.l10nmonster ??= {};
-l10nmonster.logger = { info: () => true };
+import { suite, test } from 'node:test';
+import assert from 'node:assert/strict';
 
-const { OpsMgr } = require('@l10nmonster/core');
+import { OpsMgr } from '../index.js';
 
 async function foo(x) {
     return x + 1;
@@ -19,7 +19,7 @@ async function additiveOp() {
     return 1;
 }
 
-describe ('OpsMgr tests', () =>{
+suite('OpsMgr tests', () =>{
 
   test('task with 3 ops', async () => {
     const om = new OpsMgr();
@@ -29,7 +29,7 @@ describe ('OpsMgr tests', () =>{
     const o1 = t.enqueue(foo, 1);
     const o2 = t.enqueue(foo, 10);
     t.commit(bar, null, [ o1, o2 ]);
-    expect(await t.execute()).toMatchObject([ 2, 11 ]);
+    assert.deepEqual(await t.execute(), [ 2, 11 ]);
   });
 
   test('Add an op on the fly', async () => {
@@ -40,7 +40,7 @@ describe ('OpsMgr tests', () =>{
     const t = om.createTask();
     const o1 = t.enqueue(additiveOp, 1);
     t.commit(bar, null, [ o1 ]);
-    expect(await t.execute()).toMatchObject([ 1, 2 ]);
+    assert.deepEqual(await t.execute(), [ 1, 2 ]);
   });
 
 });

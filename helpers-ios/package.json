@@ -5,7 +5,7 @@
     "type": "module",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "exit 0"
     },
     "author": "Diego Lagunas",
     "license": "MIT",
@@ -13,6 +13,6 @@
         "@l10nmonster/i18n-strings-files": "^3.0.0"
     },
     "peerDependencies": {
-        "@l10nmonster/helpers": "^1"
+        "@l10nmonster/core": "^2"
     }
 }

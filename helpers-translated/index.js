@@ -1,2 +1,2 @@
-exports.TranslationOS = require('./translationOS');
-exports.ModernMT = require('./modernMT');
+export { TranslationOS } from './translationOS.js';
+export { ModernMT } from './modernMT.js';

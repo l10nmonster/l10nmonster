@@ -1,6 +1,6 @@
-// const fs = require('fs/promises');
-// const { js2tmx } = require('@l10nmonster/tmexchange');
-// const { TU, utils } = require('@l10nmonster/core');
+// const fs from 'fs/promises');
+// const { js2tmx } from '@l10nmonster/tmexchange');
+// const { TU, utils } from '@l10nmonster/core');
 
 
 // async function exportTMX(content, emitMissingTranslations) {

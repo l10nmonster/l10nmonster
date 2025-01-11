@@ -173,6 +173,6 @@ Running localization operations requires additional tools to support processes. 
 
 # Testing
 
-Unit testing is performed centrally rather than module by module. Run `npm test` from /tests.
+Unit testing can be launched with `npm test` either centrally from the root directory, or module by module.
 
-Regression testing is a suite of tests from the command line (both from zsh and node). Run `zsh test.zsh` from /regression.
+Regression testing is a suite of tests from the command line (both from zsh and node). Run `zsh test.zsh` from /regression and pass the desired parameters.

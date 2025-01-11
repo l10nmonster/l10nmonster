@@ -4,6 +4,9 @@
     "description": "L10n Monster Core Module",
     "type": "module",
     "main": "index.js",
+    "scripts": {
+        "test": "node --test"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/l10nmonster/l10nmonster.git"

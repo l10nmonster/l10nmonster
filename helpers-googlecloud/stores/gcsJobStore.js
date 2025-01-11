@@ -1,7 +1,7 @@
-const GCSStoreDelegate = require('./gcsStoreDelegate.js');
-const { stores } = require('@l10nmonster/helpers');
+import { GCSStoreDelegate } from './gcsStoreDelegate.js';
+import { stores } from '@l10nmonster/core';
 
-module.exports = class GCSJobStore extends stores.FileBasedJobStore {
+export class GCSJobStore extends stores.FileBasedJobStore {
     constructor({ bucketName, bucketPrefix } = {}) {
         super(new GCSStoreDelegate(bucketName, bucketPrefix));
     }

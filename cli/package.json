@@ -18,6 +18,9 @@
         "globalization",
         "translation-files"
     ],
+    "scripts": {
+        "test": "exit 0"
+    },
     "author": "Diego Lagunas",
     "license": "MIT",
     "bugs": {

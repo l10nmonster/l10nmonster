@@ -1,7 +1,7 @@
-const GCSStoreDelegate = require('./gcsStoreDelegate.js');
-const { stores } = require('@l10nmonster/helpers');
+import { GCSStoreDelegate } from './gcsStoreDelegate.js';
+import { stores } from '@l10nmonster/core';
 
-module.exports = class GCSSnapStore extends stores.FileBasedSnapStore {
+export class GCSSnapStore extends stores.FileBasedSnapStore {
     constructor({ bucketName, bucketPrefix } = {}) {
         super(new GCSStoreDelegate(bucketName, bucketPrefix));
     }

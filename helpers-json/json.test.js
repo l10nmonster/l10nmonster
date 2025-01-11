@@ -1,8 +1,12 @@
-const { i18next } = require('@l10nmonster/helpers-json');
-const { flattenAndSplitResources } = require('@l10nmonster/helpers-json/utils');
+/* eslint-disable camelcase */
+import { suite, test } from 'node:test';
+import assert from 'node:assert/strict';
 
-describe("json parseResource - description", () => {
-    const resourceFilter = new i18next.Filter({
+import { i18next } from '@l10nmonster/helpers-json';
+import { flattenAndSplitResources } from './utils.js';
+
+suite("json parseResource - description", () => {
+    const resourceFilter = new i18next.I18nextFilter({
         enableArbAnnotations: true,
     });
 
@@ -26,7 +30,7 @@ describe("json parseResource - description", () => {
             ],
         };
         const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
-        expect(output).toMatchObject(expectedOutput);
+        assert.deepEqual(output, expectedOutput);
     });
 
     test("parseResource returns raw parsed resource for simple string", async () => {
@@ -67,7 +71,7 @@ describe("json parseResource - description", () => {
             ],
         };
         const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
-        expect(output).toMatchObject(expectedOutput);
+        assert.deepEqual(output, expectedOutput);
     });
 
     test("parseResource returns raw parsed resource for nested strings", async () => {
@@ -99,7 +103,7 @@ describe("json parseResource - description", () => {
             ],
         };
         const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
-        expect(output).toMatchObject(expectedOutput);
+        assert.deepEqual(output, expectedOutput);
     });
 
     test("parseResource returns raw parsed resource for multiple arb attributes", async () => {
@@ -133,11 +137,11 @@ describe("json parseResource - description", () => {
             ],
         };
         const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
-        expect(output).toMatchObject(expectedOutput);
+        assert.deepEqual(output, expectedOutput);
     });
 });
-describe("json parseResource - no options", () => {
-    const resourceFilter = new i18next.Filter();
+suite("json parseResource - no options", () => {
+    const resourceFilter = new i18next.I18nextFilter();
     test("parseResource returns raw parsed resource for simple string", async () => {
         const resource = {
             homeSubtitle: "Book the trip you've been waiting for.",
@@ -159,7 +163,7 @@ describe("json parseResource - no options", () => {
             ],
         };
         const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
-        expect(output).toMatchObject(expectedOutput);
+        assert.deepEqual(output, expectedOutput);
     });
 
     test("parseResource returns raw parsed resource for simple string description after property", async () => {
@@ -183,7 +187,7 @@ describe("json parseResource - no options", () => {
             ],
         };
         const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
-        expect(output).toMatchObject(expectedOutput);
+        assert.deepEqual(output, expectedOutput);
     });
 
     test("parseResource returns raw parsed resource for nested strings", async () => {
@@ -221,12 +225,12 @@ describe("json parseResource - no options", () => {
             ],
         };
         const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
-        expect(output).toMatchObject(expectedOutput);
+        assert.deepEqual(output, expectedOutput);
     });
 });
 
-describe("json parseResource -  plurals", () => {
-    const resourceFilter = new i18next.Filter({
+suite("json parseResource -  plurals", () => {
+    const resourceFilter = new i18next.I18nextFilter({
         enableArbAnnotations: true,
         enablePluralSuffixes: true,
     });
@@ -322,12 +326,12 @@ describe("json parseResource -  plurals", () => {
             ],
         };
         const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
-        expect(output).toMatchObject(expectedOutput);
+        assert.deepEqual(output, expectedOutput);
     });
 });
 
-describe("json translateResource - emit annotations", () => {
-    const resourceFilter = new i18next.Filter({
+suite("json translateResource - emit annotations", () => {
+    const resourceFilter = new i18next.I18nextFilter({
         enableArbAnnotations: true,
         enablePluralSuffixes: true,
         emitArbAnnotations: true,
@@ -370,7 +374,7 @@ describe("json translateResource - emit annotations", () => {
             resource: JSON.stringify(resource),
             translator,
         });
-        expect(JSON.parse(output)).toMatchObject(expectedOutput);
+        assert.deepEqual(JSON.parse(output), expectedOutput);
     });
 
     test("translateResource with plurals", async () => {
@@ -457,12 +461,12 @@ describe("json translateResource - emit annotations", () => {
             resource: JSON.stringify(resource),
             translator,
         });
-        expect(JSON.parse(output)).toMatchObject(expectedOutput);
+        assert.deepEqual(JSON.parse(output), expectedOutput);
     });
 });
 
-describe("json translateResource - don't emit annotations", () => {
-    const resourceFilter = new i18next.Filter({
+suite("json translateResource - don't emit annotations", () => {
+    const resourceFilter = new i18next.I18nextFilter({
         enableArbAnnotations: true,
         enablePluralSuffixes: true,
     });
@@ -495,12 +499,12 @@ describe("json translateResource - don't emit annotations", () => {
             resource: JSON.stringify(resource),
             translator,
         });
-        expect(JSON.parse(output)).toMatchObject(expectedOutput);
+        assert.deepEqual(JSON.parse(output), expectedOutput);
     });
 });
 
-describe("json translateResource - if no translation, delete annotations", () => {
-    const resourceFilter = new i18next.Filter({
+suite("json translateResource - if no translation, delete annotations", () => {
+    const resourceFilter = new i18next.I18nextFilter({
         enableArbAnnotations: true,
         enablePluralSuffixes: true,
         emitArbAnnotations: true,
@@ -527,6 +531,7 @@ describe("json translateResource - if no translation, delete annotations", () =>
             },
         };
         const expectedOutput = {
+            homeSubtitle: null,
             title: "title <strong>Welcome back</strong> to travel. - **Translation**",
             "@title": {
                 description: "header - welcome message of flight flow",
@@ -539,11 +544,11 @@ describe("json translateResource - if no translation, delete annotations", () =>
             resource: JSON.stringify(resource),
             translator,
         });
-        expect(JSON.parse(output)).toMatchObject(expectedOutput);
+        assert.deepEqual(JSON.parse(output), expectedOutput);
     });
 });
 
-describe("json translateResource - enableArrays", () => {
+suite("json translateResource - enableArrays", () => {
     const translator = async function translate(sid, str) {
         return `${sid} ${str} - **Translation**`;
     };
@@ -553,7 +558,7 @@ describe("json translateResource - enableArrays", () => {
     };
 
     test("translateResource with array enabled", async () => {
-        const resourceFilter = new i18next.Filter({
+        const resourceFilter = new i18next.I18nextFilter({
             enableArbAnnotations: true,
             enablePluralSuffixes: true,
             emitArbAnnotations: true,
@@ -569,11 +574,11 @@ describe("json translateResource - enableArrays", () => {
             resource: JSON.stringify(resource),
             translator,
         });
-        expect(JSON.parse(output)).toEqual(expectedOutput);
+        assert.deepEqual(JSON.parse(output), expectedOutput);
     });
 
     test("translateResource with array not enabled", async () => {
-        const resourceFilter = new i18next.Filter({
+        const resourceFilter = new i18next.I18nextFilter({
             enableArbAnnotations: true,
             enablePluralSuffixes: true,
             emitArbAnnotations: true,
@@ -589,11 +594,11 @@ describe("json translateResource - enableArrays", () => {
             resource: JSON.stringify(resource),
             translator,
         });
-        expect(JSON.parse(output)).toEqual(expectedOutput);
+        assert.deepEqual(JSON.parse(output), expectedOutput);
     });
 
     test("translateResource with enableArrays default", async () => {
-        const resourceFilter = new i18next.Filter({
+        const resourceFilter = new i18next.I18nextFilter({
             enableArbAnnotations: true,
             enablePluralSuffixes: true,
             emitArbAnnotations: true
@@ -608,11 +613,11 @@ describe("json translateResource - enableArrays", () => {
             resource: JSON.stringify(resource),
             translator,
         });
-        expect(JSON.parse(output)).toEqual(expectedOutput);
+        assert.deepEqual(JSON.parse(output), expectedOutput);
     });
 });
 
-describe("flattenAndSplitResources tests", () => {
+suite("flattenAndSplitResources tests", () => {
     test("flattenAndSplitResources happy case", () => {
         const obj = {
             str: "string",
@@ -634,12 +639,12 @@ describe("flattenAndSplitResources tests", () => {
             }
         }
         const {res, notes} = flattenAndSplitResources([], obj)
-        expect(res).toMatchObject({
+        assert.deepEqual(res, {
             str: 'string',
             'ns1.str': 'string, {{foo}}',
             'ns1.ns2.str': 'string'
         })
-        expect(notes).toMatchObject({
+        assert.deepEqual(notes, {
             str: {
                 description: 'string'
             },
@@ -659,8 +664,8 @@ describe("flattenAndSplitResources tests", () => {
     })
 })
 
-describe("placeholders tests", () => {
-    const resourceFilter = new i18next.Filter({
+suite("placeholders tests", () => {
+    const resourceFilter = new i18next.I18nextFilter({
         enableArbAnnotations: true,
     });
 
@@ -687,13 +692,13 @@ describe("placeholders tests", () => {
             ],
         };
         const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
-        expect(output).toMatchObject(expectedOutput);
+        assert.deepEqual(output, expectedOutput);
 
     })
 })
 
-describe("Parse illegally structured ARB", () => {
-    const resourceFilter = new i18next.Filter({
+suite("Parse illegally structured ARB", () => {
+    const resourceFilter = new i18next.I18nextFilter({
         enableArbAnnotations: true,
     });
     test("parses root ARB key that is illegally structured", async () => {
@@ -722,13 +727,13 @@ describe("Parse illegally structured ARB", () => {
             ]
         }
         const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
-        expect(output).toMatchObject(expectedOutput);
+        assert.deepEqual(output, expectedOutput);
     })
 })
 
-describe("annotation handler tests", () => {
+suite("annotation handler tests", () => {
     test("description handler works", async () => {
-        const resourceFilter = new i18next.Filter({
+        const resourceFilter = new i18next.I18nextFilter({
             enableArbAnnotations: true,
             arbAnnotationHandlers: {
                 description: () => "forced description",
@@ -750,11 +755,11 @@ describe("annotation handler tests", () => {
             ],
         };
         const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
-        expect(output).toMatchObject(expectedOutput);
+        assert.deepEqual(output, expectedOutput);
     })
 
     test("placeholders handler works", async () => {
-        const resourceFilter = new i18next.Filter({
+        const resourceFilter = new i18next.I18nextFilter({
             enableArbAnnotations: true,
         });
         const resource = {
@@ -779,6 +784,6 @@ describe("annotation handler tests", () => {
             ],
         };
         const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
-        expect(output).toMatchObject(expectedOutput);
+        assert.deepEqual(output, expectedOutput);
     })
 })

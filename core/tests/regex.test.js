@@ -1,7 +1,9 @@
-global.l10nmonster ??= {};
-const { utils, normalizers, xml, regex } = require('@l10nmonster/helpers');
-const ios = require('@l10nmonster/helpers-ios');
-const java = require('@l10nmonster/helpers-java');
+import { suite, test } from 'node:test';
+import assert from 'node:assert/strict';
+
+import * as ios from '../../helpers-ios/index.js';
+import * as java from '../../helpers-java/index.js';
+import { utils, normalizers, xml, regex } from '../index.js';
 
 const locationsDecoder = regex.decoderMaker(
     'locationsDecoder',
@@ -9,13 +11,13 @@ const locationsDecoder = regex.decoderMaker(
     (groups) => ([{ t: 'x', v: '{0}', s: 'I live in ' }, groups.tag])
 );
 
-describe('Regex Encoder tests', () => {
+suite('Regex Encoder tests', () => {
 
     test('html plus braces', async () => {
-        expect(utils.getNormalizedString(
+        assert.deepEqual(utils.getNormalizedString(
             `<icon name='location'/>Price&amp;&#65;:\\n\\'{0,number,integer}\\"\\u0020&#xa0;<color name='green'>{1}</color>`,
             [ xml.tagDecoder, normalizers.bracePHDecoder, xml.entityDecoder, java.escapesDecoder ]
-        )).toMatchObject([
+        ), [
             { t: 'x', v: "<icon name='location'/>" },
             "Price&A:\n'",
             { t: 'x', v: '{0,number,integer}' },
@@ -27,20 +29,20 @@ describe('Regex Encoder tests', () => {
     });
 
     test('1 ios string', async () => {
-        expect(utils.getNormalizedString(
+        assert.deepEqual(utils.getNormalizedString(
             `Current viewer: %@`,
             [ ios.phDecoder, java.escapesDecoder ]
-        )).toMatchObject([
+        ), [
             "Current viewer: ",
             { t: 'x', v: '%@' }
         ]);
     });
 
     test('2 ios strings', async () => {
-        expect(utils.getNormalizedString(
+        assert.deepEqual(utils.getNormalizedString(
             `First viewer: %1$@\\n%2$@ is the second one`,
             [ java.escapesDecoder, ios.phDecoder ]
-        )).toMatchObject([
+        ), [
             "First viewer: ",
             { t: 'x', v: '%1$@' },
             "\n",
@@ -50,10 +52,10 @@ describe('Regex Encoder tests', () => {
     });
 
     test('3 ios.phDecoder', async () => {
-        expect(utils.getNormalizedString(
+        assert.deepEqual(utils.getNormalizedString(
             `Some nasty phs: %1$ld %02d %3$zd`,
             [ ios.phDecoder ]
-        )).toMatchObject([
+        ), [
             "Some nasty phs: ",
             { t: 'x', v: '%1$ld' },
             " ",
@@ -64,10 +66,10 @@ describe('Regex Encoder tests', () => {
     });
 
     test('ios with html', async () => {
-        expect(utils.getNormalizedString(
+        assert.deepEqual(utils.getNormalizedString(
             "you are eligible for a future travel credit with %1$@. we will charge a rebooking fee of <color name='yellow'><b>%2$@ per passenger</b></color> when you use this credit to make a new booking.",
             [ ios.phDecoder, xml.tagDecoder, java.escapesDecoder ]
-        )).toMatchObject([
+        ), [
             'you are eligible for a future travel credit with ',
             { t: 'x', v: '%1$@' },
             '. we will charge a rebooking fee of ',
@@ -82,31 +84,36 @@ describe('Regex Encoder tests', () => {
     });
 
     test('locations decoder', async () => {
-        expect(utils.getNormalizedString(
+        assert.deepEqual(utils.getNormalizedString(
             `Venice`,
             [ locationsDecoder ]
-        )).toMatchObject([
+        ), [
             { s: 'I live in ', t: 'x', v: '{0}' },
             "Venice"
         ]);
     });
 
     test('normalizers.doublePercentEncoder', async () => {
-        expect(normalizers.doublePercentEncoder('10%')).toBe('10%%');
+        assert.equal(normalizers.doublePercentEncoder('10%'), '10%%');
     });
 
     test('normalizers.gatedEncoder', async () => {
-        expect(normalizers.gatedEncoder(xml.entityEncoder, 'foo')('<b>')).toBe('<b>');
-        expect(normalizers.gatedEncoder(xml.entityEncoder, 'foo')('<b>', { foo: true })).toBe('&lt;b>');
+        assert.equal(normalizers.gatedEncoder(xml.entityEncoder, 'foo')('<b>'), '<b>');
+        assert.equal(normalizers.gatedEncoder(xml.entityEncoder, 'foo')('<b>', { foo: true }), '&lt;b>');
     });
 
     test('java variable with single quote', async () => {
-        expect(utils.getNormalizedString("For {0}. This is a great deal, but this price won''t last.",[ java.MFQuotesDecoder, java.escapesDecoder, normalizers.bracePHDecoder, xml.entityDecoder ]))
-        .toMatchObject([
-            "For ",
-            {"t": "x", "v": "{0}"},
-            ". This is a great deal, but this price won't last."
-        ]);
+        assert.deepEqual(
+            utils.getNormalizedString(
+                "For {0}. This is a great deal, but this price won''t last.",
+                [ java.MFQuotesDecoder, java.escapesDecoder, normalizers.bracePHDecoder, xml.entityDecoder ]
+            ),
+            [
+                "For ",
+                {"t": "x", "v": "{0}"},
+                ". This is a great deal, but this price won't last."
+            ]
+        );
     });
 
 });

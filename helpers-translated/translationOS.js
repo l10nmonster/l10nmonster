@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-const { utils } = require('@l10nmonster/helpers');
+import { L10nContext, utils } from '@l10nmonster/core';
 
 function createTUFromTOSTranslation({ tosUnit, content, tuMeta, quality, refreshMode }) {
     const guid = tosUnit.id_content;
@@ -19,7 +19,7 @@ function createTUFromTOSTranslation({ tosUnit, content, tuMeta, quality, refresh
         tuMeta[guid].nsrc && (tu.nsrc = tuMeta[guid].nsrc);
         tu.ntgt = utils.extractNormalizedPartsV1(content, tuMeta[guid].phMap);
         if (tu.ntgt.filter(e => e === undefined).length > 0) {
-            l10nmonster.logger.warn(`Unable to extract normalized parts of TU: ${JSON.stringify(tu)}`);
+            L10nContext.logger.warn(`Unable to extract normalized parts of TU: ${JSON.stringify(tu)}`);
             return null;
         }
     } else {
@@ -39,7 +39,7 @@ async function tosRequestTranslationOfChunkOp({ request }) {
         const committedGuids = response.map(contentStatus => contentStatus.id_content);
         const missingTus = submittedGuids.filter(submittedGuid => !committedGuids.includes(submittedGuid));
         if (submittedGuids.length !== committedGuids.length || missingTus.length > 0) {
-            l10nmonster.logger.error(`sent ${submittedGuids.length} got ${committedGuids.length} missing tus: ${missingTus.map(tu => tu.id_content).join(', ')}`);
+            L10nContext.logger.error(`sent ${submittedGuids.length} got ${committedGuids.length} missing tus: ${missingTus.map(tu => tu.id_content).join(', ')}`);
             throw `TOS: inconsistent behavior. submitted ${submittedGuids.length}, committed ${committedGuids.length}, missing ${missingTus.length}`;
         }
         return committedGuids;
@@ -58,8 +58,7 @@ async function tosFetchContentByGuidOp({ refreshMode, tuMap, tuMeta, request, qu
     try {
         let tosContent = await (await fetch(url, options)).json();
         tosContent = tosContent.filter(tosUnit => tosUnit.translated_content_url);
-        // eslint-disable-next-line no-invalid-this
-        l10nmonster.logger.info(`Retrieved ${tosContent.length} translations from TOS`);
+        L10nContext.logger.info(`Retrieved ${tosContent.length} translations from TOS`);
         refreshMode && (tosContent = tosContent.filter(tosUnit => !(tuMap[tosUnit.id_content].th === tosUnit.translated_content_hash))); // need to consider th being undefined/null for some entries
         // sanitize bad responses
         const fetchedTus = [];
@@ -69,8 +68,7 @@ async function tosFetchContentByGuidOp({ refreshMode, tuMap, tuMeta, request, qu
             const fetchedRaw = (await Promise.all(chunk.map(tosUnit => fetch(tosUnit.translated_content_url)))).map(async r => await r.text());
             const fetchedContent = await Promise.all(fetchedRaw);
             (await Promise.all(chunk.map(tosUnit => fetch(tosUnit.translated_content_url)))).map(async r => await r.text());
-            // eslint-disable-next-line no-invalid-this
-            l10nmonster.logger.info(`Fetched ${chunk.length} pieces of content from AWS`);
+            L10nContext.logger.info(`Fetched ${chunk.length} pieces of content from AWS`);
             chunk.forEach((tosUnit, idx) => {
                 if (seenGuids[tosUnit.id_content]) {
                     throw `TOS: Duplicate translations found for guid: ${tosUnit.id_content}`;
@@ -78,12 +76,10 @@ async function tosFetchContentByGuidOp({ refreshMode, tuMap, tuMeta, request, qu
                     seenGuids[tosUnit.id_content] = true;
                 }
                 if (fetchedContent[idx] !== null && fetchedContent[idx].indexOf('|||UNTRANSLATED_CONTENT_START|||') === -1) {
-                    // eslint-disable-next-line no-invalid-this
                     const newTU = createTUFromTOSTranslation({ tosUnit, content: fetchedContent[idx], tuMeta, quality, refreshMode });
                     fetchedTus.push(newTU);
                 } else {
-                    // eslint-disable-next-line no-invalid-this
-                    l10nmonster.logger.info(`TOS: for guid ${tosUnit.id_content} retrieved untranslated content ${fetchedContent[idx]}`);
+                    L10nContext.logger.info(`TOS: for guid ${tosUnit.id_content} retrieved untranslated content ${fetchedContent[idx]}`);
                 }
             });
         }
@@ -97,7 +93,7 @@ async function tosCombineFetchedTusOp(args, tuChunks) {
     return tuChunks.flat(1).filter(tu => Boolean(tu));
 }
 
-module.exports = class TranslationOS {
+export class TranslationOS {
     constructor({ baseURL, apiKey, costAttributionLabel, serviceType, quality, tuDecorator, maxTranslationRequestSize, maxFetchSize, parallelism, requestOnly }) {
         if ((apiKey && quality) === undefined) {
             throw 'You must specify apiKey, quality for TranslationOS';
@@ -116,10 +112,10 @@ module.exports = class TranslationOS {
             this.maxFetchSize = maxFetchSize || 512;
             this.parallelism = parallelism || 128;
             this.requestOnly = requestOnly;
-            l10nmonster.opsMgr.registerOp(tosRequestTranslationOfChunkOp, { idempotent: false });
-            l10nmonster.opsMgr.registerOp(tosCombineTranslationChunksOp, { idempotent: true });
-            l10nmonster.opsMgr.registerOp(tosFetchContentByGuidOp, { idempotent: true });
-            l10nmonster.opsMgr.registerOp(tosCombineFetchedTusOp, { idempotent: true });
+            L10nContext.opsMgr.registerOp(tosRequestTranslationOfChunkOp, { idempotent: false });
+            L10nContext.opsMgr.registerOp(tosCombineTranslationChunksOp, { idempotent: true });
+            L10nContext.opsMgr.registerOp(tosFetchContentByGuidOp, { idempotent: true });
+            L10nContext.opsMgr.registerOp(tosCombineFetchedTusOp, { idempotent: true });
         }
     }
 
@@ -149,7 +145,6 @@ module.exports = class TranslationOS {
             tu.rid && tosTU.dashboard_query_labels.push(tu.rid.slice(-50));
             tosTU.dashboard_query_labels.push(tu.sid.replaceAll('\n', '').slice(-50));
             if (tu.prj !== undefined) {
-                // eslint-disable-next-line camelcase
                 tosTU.id_order_group = tu.prj;
             }
             if (typeof this.tuDecorator === 'function') {
@@ -158,14 +153,14 @@ module.exports = class TranslationOS {
             return tosTU;
         });
 
-        const requestTranslationsTask = l10nmonster.opsMgr.createTask();
+        const requestTranslationsTask = L10nContext.opsMgr.createTask();
         try {
             let chunkNumber = 0;
             const chunkOps = [];
             while (tosPayload.length > 0) {
                 const json = tosPayload.splice(0, this.maxTranslationRequestSize);
                 chunkNumber++;
-                l10nmonster.logger.info(`Enqueueing TOS translation job ${jobResponse.jobGuid} chunk size: ${json.length}`);
+                L10nContext.logger.info(`Enqueueing TOS translation job ${jobResponse.jobGuid} chunk size: ${json.length}`);
                 chunkOps.push(requestTranslationsTask.enqueue(tosRequestTranslationOfChunkOp, {
                     request: {
                         url: `${this.baseURL}/translate`,
@@ -200,7 +195,7 @@ module.exports = class TranslationOS {
 
     async #fetchTranslatedTus({ jobGuid, targetLang, reqTus, refreshMode }) {
         const guids = reqTus.filter(tu => tu.src ?? tu.nsrc).map(tu => tu.guid); // TODO: remove .src
-        const refreshTranslationsTask = l10nmonster.opsMgr.createTask();
+        const refreshTranslationsTask = L10nContext.opsMgr.createTask();
         let chunkNumber = 0;
         const refreshOps = [];
         while (guids.length > 0) {
@@ -209,7 +204,7 @@ module.exports = class TranslationOS {
             const tusInChunk = reqTus.filter(tu => guidsInChunk.includes(tu.guid));
             const tuMap = tusInChunk.reduce((p,c) => (p[c.guid] = c, p), {});
             const { tuMeta } = utils.getTUMaps(tusInChunk);
-            l10nmonster.logger.verbose(`Enqueueing refresh of TOS chunk ${chunkNumber} (${guidsInChunk.length} units)...`);
+            L10nContext.logger.verbose(`Enqueueing refresh of TOS chunk ${chunkNumber} (${guidsInChunk.length} units)...`);
             const json = {
                 id_content: guidsInChunk,
                 target_language: targetLang,
@@ -263,7 +258,7 @@ module.exports = class TranslationOS {
     async refreshTranslations(jobRequest) {
         return {
             ...jobRequest,
-            tus: await this.#fetchTranslatedTus({ targetLang: jobRequest.originalJobGuid ?? jobRequest.targetLang, reqTus: jobRequest.tus, refreshMode: true }),
+            tus: await this.#fetchTranslatedTus({ jobGuid: jobRequest.originalJobGuid, targetLang: jobRequest.originalJobGuid ?? jobRequest.targetLang, reqTus: jobRequest.tus, refreshMode: true }),
             status: 'done',
         };
     }

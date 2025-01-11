@@ -1,16 +1,18 @@
-const java = require('@l10nmonster/helpers-java');
-const fs = require('fs');
+import { suite, test } from 'node:test';
+import assert from 'node:assert/strict';
 
-describe("java parseResource", () => {
-    const resourceFilter = new java.PropertiesFilter();
-    const resourceId = 'files/values/messages.properties';
+import { PropertiesFilter } from '../index.js';
+import fs from 'fs';
+
+suite("java parseResource", () => {
+    const resourceFilter = new PropertiesFilter();
+    const resourceId = 'tests/artifacts/messages.properties';
     const resource = fs.readFileSync(resourceId, 'utf8');
 
 
     test('basic parsing logic', async () => {
         const messages = await resourceFilter.parseResource({resource});
-        expect(messages)
-            .toMatchObject({
+        assert.deepEqual(messages, {
               segments: [
                 {
                   "sid": "test.hello",

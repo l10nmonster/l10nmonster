@@ -14,6 +14,7 @@
         "helpers-xliff"
     ],
     "scripts": {
+        "test": "npm test --workspaces",
         "eslint": "eslint core/src/**/*.js cli/*.js",
         "eslint:files": "npm run eslint | grep -e '^/.*js$'",
         "eslint:files:open": "code $(npm run --silent eslint:files)"

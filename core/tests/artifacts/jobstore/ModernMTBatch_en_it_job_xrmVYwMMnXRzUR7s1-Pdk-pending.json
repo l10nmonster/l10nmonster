@@ -1,0 +1,46 @@
+{
+	"sourceLang": "en",
+	"targetLang": "it",
+	"translationProvider": "ModernMTBatch",
+	"jobGuid": "xrmVYwMMnXRzUR7s1-Pdk",
+	"status": "pending",
+	"inflight": [
+		"Q6atGCxMzEiusRkN4mXARrkpqaaKAVq6CVlz7pIJ0DU",
+		"ECdT6RLLNyRxTb7Xha6PIzytq2ZkS5g0asqUOYLcOHA",
+		"xBXWwysXeVHO7_OgWxL44qTu30PxrCkG_jkzAFp3JI4",
+		"SODQAQuKsgIFGvOgzCoAi85KGeIwHcvim4U59juXXnA",
+		"Zu8-DRKyPbW3MHG62Mou1orfoGMLbhxvGviCSrnX4iU"
+	],
+	"envelope": {
+		"chunkSizes": [
+			5
+		],
+		"tuMeta": {
+			"0": {
+				"x1": {
+					"t": "x",
+					"v": "glossary:Payments Testing",
+					"s": "Payments Testing",
+					"v1": "a_x_glossary"
+				}
+			},
+			"3": {
+				"x1": {
+					"t": "x",
+					"v": "glossary:testing scenarios",
+					"s": "testing scenarios",
+					"v1": "a_x_glossary"
+				}
+			},
+			"4": {
+				"x1": {
+					"t": "x",
+					"v": "glossary:Giant",
+					"s": "Giant",
+					"v1": "a_x_glossary"
+				}
+			}
+		}
+	},
+	"taskName": "x"
+}

@@ -1,17 +1,17 @@
-const { utils } = require('@l10nmonster/helpers');
+import { L10nContext, utils } from '@l10nmonster/core';
 
 const MAX_CHUNK_SIZE = 50;
 
 async function deeplTranslateChunkOp({ baseURL, headers, searchParams, offset}) {
     try {
-        const response = await fetch({
+        const response = (await fetch({
             url: `${baseURL}/v2/translate`,
             searchParams: new URLSearchParams(searchParams),
             headers,
             timeout: {
                 request: 60000,
             },
-        }).json();
+        })).json();
         const translations = {};
         if (response.message) {
             throw `DeepL returned status ${response.message}`;
@@ -54,8 +54,8 @@ exports.DeepL = class DeepL {
             this.formalityMap = formalityMap ?? {},
             this.quality = quality;
             this.languageMapper = languageMapper;
-            l10nmonster.opsMgr.registerOp(deeplTranslateChunkOp, { idempotent: false });
-            l10nmonster.opsMgr.registerOp(deeplMergeTranslatedChunksOp, { idempotent: true });
+            L10nContext.opsMgr.registerOp(deeplTranslateChunkOp, { idempotent: false });
+            L10nContext.opsMgr.registerOp(deeplMergeTranslatedChunksOp, { idempotent: true });
         }
     }
 
@@ -69,7 +69,7 @@ exports.DeepL = class DeepL {
             return xmlSrc;
         });
 
-        const requestTranslationsTask = l10nmonster.opsMgr.createTask();
+        const requestTranslationsTask = L10nContext.opsMgr.createTask();
         try {
             const chunkOps = [];
             for (let currentIdx = 0; currentIdx < deeplPayload.length;) {
@@ -79,7 +79,7 @@ exports.DeepL = class DeepL {
                     q.push(deeplPayload[currentIdx]);
                     currentIdx++;
                 }
-                l10nmonster.logger.info(`Preparing DeepL translate, offset: ${offset} chunk strings: ${q.length}`);
+                L10nContext.logger.info(`Preparing DeepL translate, offset: ${offset} chunk strings: ${q.length}`);
                 const sourceLang = (this.languageMapper && this.languageMapper(jobRequest.sourceLang)) ?? jobRequest.sourceLang;
                 const targetLang = (this.languageMapper && this.languageMapper(jobRequest.targetLang)) ?? jobRequest.targetLang;
                 const baseParams = {
@@ -109,7 +109,7 @@ exports.DeepL = class DeepL {
                 jobRequest,
                 tuMeta,
                 quality: this.quality,
-                ts: l10nmonster.regression ? 1 : new Date().getTime(),
+                ts: L10nContext.regression ? 1 : new Date().getTime(),
             }, chunkOps);
             const jobResponse = await requestTranslationsTask.execute();
             jobResponse.taskName = requestTranslationsTask.taskName;

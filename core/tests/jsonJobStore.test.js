@@ -1,13 +1,14 @@
-const path = require('path');
-const { stores } = require('@l10nmonster/helpers');
-const { readFileSync, read } = require('fs');
-global.l10nmonster ??= {};
-l10nmonster.baseDir = `${path.resolve('.')}/translators`;
-l10nmonster.logger = { info: () => true };
+// eslint-disable-next-line no-unused-vars
+import { L10nContext } from '../src/l10nContext.js'; // this is only needed for internal initialization
+import { suite, test } from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'fs';
+
+import { stores } from '../index.js';
 
 const jobGuid = "Tck5-ng7SdYfpEPe5FKEn";
 const jobFilename = "ModernMT_en_it_job_Tck5-ng7SdYfpEPe5FKEn-req.json";
-const reqJobOutput = JSON.parse(readFileSync(`./translators/artifacts/${jobFilename}`, 'utf-8'));
+const reqJobOutput = JSON.parse(readFileSync(`tests/artifacts/jobstore/${jobFilename}`, 'utf-8'));
 const expectedLangPairOutput = [
     [
       "xrmVYwMMnXRzUR7s1-Pdk",
@@ -27,32 +28,32 @@ const expectedLangPairOutput = [
       }
     ]
 ];
-describe ('jsonJobStore tests', () => {
-    const jsonJobStore = new stores.JsonJobStore({ jobsDir: 'artifacts' });
+
+suite('jsonJobStore tests', () => {
+    const jsonJobStore = new stores.JsonJobStore({ jobsDir: 'tests/artifacts/jobstore' });
     test('getAvailableLangPairs', async () => {
         const out = await jsonJobStore.getAvailableLangPairs();
-        expect(out).toMatchObject([["en", "it"]]);
-    });    
+        assert.deepEqual(out, [["en", "it"]]);
+    });
     test('getJobStatusByLangPair', async () => {
         const out = await jsonJobStore.getJobStatusByLangPair("en", "it");
-        expect(out).toMatchObject(expectedLangPairOutput);
-    });    
+        assert.deepEqual(out, expectedLangPairOutput);
+    });
     test('getJobByHandle', async () => {
         const out = await jsonJobStore.getJobByHandle(jobFilename);
-        expect(out).toMatchObject(reqJobOutput);
-    });    
+        assert.deepEqual(out, reqJobOutput);
+    });
     test('getJob', async () => {
         const out = await jsonJobStore.getJob(jobGuid);
-        const expectedOutput = JSON.parse(readFileSync(`./translators/artifacts/${jobFilename.replace("-req", "-done")}`, "utf-8"));
-        expect(out).toMatchObject(expectedOutput);
-    });    
+        const expectedOutput = JSON.parse(readFileSync(`tests/artifacts/jobstore/${jobFilename.replace("-req", "-done")}`, "utf-8"));
+        assert.deepEqual(out, expectedOutput);
+    });
     test('getJobRequestByHandle', async () => {
         const out = await jsonJobStore.getJobRequestByHandle(jobFilename);
-        expect(out).toMatchObject(reqJobOutput);
-    });    
+        assert.deepEqual(out, reqJobOutput);
+    });
     test('getJobRequest', async () => {
         const out = await jsonJobStore.getJobRequest(jobGuid);
-        expect(out).toMatchObject(reqJobOutput);
-    });    
+        assert.deepEqual(out, reqJobOutput);
+    });
 });
-

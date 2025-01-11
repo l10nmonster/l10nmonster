@@ -37,7 +37,7 @@ export class L10nContext {
     static opsMgr = new OpsMgr();
 
     // these are set per "request" even though they are shared
-    static baseDir;
+    static baseDir = '.';
     static prj;
     static arg;
     static regression = false;

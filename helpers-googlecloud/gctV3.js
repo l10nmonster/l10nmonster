@@ -1,5 +1,5 @@
-const { TranslationServiceClient } = require('@google-cloud/translate');
-const { utils } = require('@l10nmonster/helpers');
+import { TranslationServiceClient } from '@google-cloud/translate';
+import { L10nContext, utils } from '@l10nmonster/core';
 
 const MAX_CHUNK_SIZE = 1000;
 const RECOMMENDED_LENGTH = 30000;
@@ -33,7 +33,7 @@ async function gctMergeTranslatedChunksOp({ jobRequest, tuMeta, quality, ts }, c
     return jobResponse;
 }
 
-module.exports = class GoogleCloudTranslateV3 {
+export class GoogleCloudTranslateV3 {
     constructor({ keyFilename, projectId, location, quality, languageMapper }) {
         if ((keyFilename && projectId && quality) === undefined) {
             throw 'You must specify keyFilename, projectId, quality for GoogleCloudTranslateV3';
@@ -42,8 +42,8 @@ module.exports = class GoogleCloudTranslateV3 {
             this.parent = `projects/${projectId}/locations/${location ?? 'global'}`
             this.quality = quality;
             this.languageMapper = languageMapper;
-            l10nmonster.opsMgr.registerOp(gctTranslateChunkOp, { idempotent: false });
-            l10nmonster.opsMgr.registerOp(gctMergeTranslatedChunksOp, { idempotent: true });
+            L10nContext.opsMgr.registerOp(gctTranslateChunkOp, { idempotent: false });
+            L10nContext.opsMgr.registerOp(gctMergeTranslatedChunksOp, { idempotent: true });
         }
     }
 
@@ -59,7 +59,7 @@ module.exports = class GoogleCloudTranslateV3 {
             return xmlSrc;
         });
 
-        const requestTranslationsTask = l10nmonster.opsMgr.createTask();
+        const requestTranslationsTask = L10nContext.opsMgr.createTask();
         try {
             const chunkOps = [];
             for (let currentIdx = 0; currentIdx < gctPayload.length;) {
@@ -71,7 +71,7 @@ module.exports = class GoogleCloudTranslateV3 {
                     contents.push(gctPayload[currentIdx]);
                     currentIdx++;
                 }
-                l10nmonster.logger.info(`Preparing GCT translate, offset: ${offset} chunk strings: ${contents.length} chunk char length: ${currentTotalLength}`);
+                L10nContext.logger.info(`Preparing GCT translate, offset: ${offset} chunk strings: ${contents.length} chunk char length: ${currentTotalLength}`);
                 const translateOp = requestTranslationsTask.enqueue(
                     gctTranslateChunkOp,
                     {
@@ -94,7 +94,7 @@ module.exports = class GoogleCloudTranslateV3 {
                     jobRequest,
                     tuMeta,
                     quality: this.quality,
-                    ts: l10nmonster.regression ? 1 : new Date().getTime(),
+                    ts: L10nContext.regression ? 1 : new Date().getTime(),
                 },
                 chunkOps
             );

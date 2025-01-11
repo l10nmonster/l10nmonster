@@ -1,5 +1,9 @@
 /* eslint-disable camelcase */
-const { utils } = require('@l10nmonster/helpers');
+import { suite, test } from 'node:test';
+import assert from 'node:assert/strict';
+
+import { utils } from '../index.js';
+
 const {
     flattenNormalizedSourceV1, extractNormalizedPartsV1,
     flattenNormalizedSourceToXmlV1, extractNormalizedPartsFromXmlV1,
@@ -14,6 +18,16 @@ const nsrc1 = [
     { t: 'bx', v: "<color name='green'>" },
     { t: 'x', v: '{1}' },
     { t: 'ex', v: '</color>' }
+];
+
+const nsrc2 = [
+    { t: 'x', v: "<icon name='location'/>", v1:"a_x_icon" },
+    "Price&A:\n'",
+    { t: 'x', v: '{0,number,integer}', s: '$10', v1:"b_x_0" },
+    '" \u00a0',
+    { t: 'bx', v: "<color name='green'>", v1:"c_bx_color" },
+    { t: 'x', v: '{1}', v1:"d_x_1" },
+    { t: 'ex', v: '</color>', v1:"e_ex_color" }
 ];
 
 const phMap1 = {
@@ -143,44 +157,39 @@ const tuWithPhMap = {
     }
   };
 
-describe('Normalizers Util tests', () => {
+suite('Normalizers Util tests', () => {
 
-    test('flattenNormalizedSourceV1', async () => {
-        const xml = flattenNormalizedSourceV1(nsrc1);
-        expect(xml).toEqual([ v1String1, phMap1 ]);
+    test('flattenNormalizedSourceV1', () => {
+        const flatArray = flattenNormalizedSourceV1(nsrc1);
+        assert.deepEqual(flatArray, [ v1String1, phMap1 ]);
     });
 
-    test('extractNormalizedPartsV1', async () => {
-        expect(extractNormalizedPartsV1(v1String1, phMap1))
-            .toMatchObject(nsrc1);
+    test('extractNormalizedPartsV1', () => {
+        assert.deepEqual(extractNormalizedPartsV1(v1String1, phMap1), nsrc2);
     });
 
-    test('flattenNormalizedSourceToXmlV1', async () => {
+    test('flattenNormalizedSourceToXmlV1', () => {
         const xml = flattenNormalizedSourceToXmlV1(nsrc1);
-        expect(xml).toEqual([ xml1, xmlPhMap1 ]);
+        assert.deepEqual(xml, [ xml1, xmlPhMap1 ]);
     });
 
-    test('extractNormalizedPartsFromXmlV1', async () => {
-        expect(extractNormalizedPartsFromXmlV1(xml1, xmlPhMap1))
-            .toMatchObject(nsrc1);
+    test('extractNormalizedPartsFromXmlV1', () => {
+        assert.deepEqual(extractNormalizedPartsFromXmlV1(xml1, xmlPhMap1), nsrc2);
     });
 
-    test('xmlRoundtripNoMarkup', async () => {
+    test('xmlRoundtripNoMarkup', () => {
         const [ xml, phMap ] = flattenNormalizedSourceToXmlV1([ 'foo&bar <8' ]);
-        expect(extractNormalizedPartsFromXmlV1(xml, phMap))
-            .toMatchObject([ 'foo&bar <8' ]);
+        assert.deepEqual(extractNormalizedPartsFromXmlV1(xml, phMap), [ 'foo&bar <8' ]);
     });
 
-    test('extractStructuredNotes no annotations', async () => {
-        expect(extractStructuredNotes('foo'))
-            .toMatchObject({
+    test('extractStructuredNotes no annotations', () => {
+        assert.deepEqual(extractStructuredNotes('foo'), {
                 desc: 'foo',
             });
     });
 
-    test('simple extractStructuredNotes', async () => {
-        expect(extractStructuredNotes('fooPH(0 | SF | city)MAXWIDTH(42)SCREENSHOT(http://sample.org)TAG(a, b)'))
-            .toMatchObject({
+    test('simple extractStructuredNotes', () => {
+        assert.deepEqual(extractStructuredNotes('fooPH(0 | SF | city)MAXWIDTH(42)SCREENSHOT(http://sample.org)TAG(a, b)'), {
                 desc: 'foo',
                 ph: {
                     0: {
@@ -194,9 +203,8 @@ describe('Normalizers Util tests', () => {
             });
     });
 
-    test('nested extractStructuredNotes', async () => {
-        expect(extractStructuredNotes('fooPH(duh(0)|SF|city)'))
-            .toMatchObject({
+    test('nested extractStructuredNotes', () => {
+        assert.deepEqual(extractStructuredNotes('fooPH(duh(0)|SF|city)'), {
                 desc: 'foo',
                 ph: {
                     'duh(0)': {
@@ -207,8 +215,7 @@ describe('Normalizers Util tests', () => {
             });
     });
 
-    test('getTUMaps', async () => {
-        expect(getTUMaps(tuWithPh))
-            .toMatchObject(tuWithPhMap);
+    test('getTUMaps', () => {
+        assert.deepEqual(getTUMaps(tuWithPh), tuWithPhMap);
     });
 });
