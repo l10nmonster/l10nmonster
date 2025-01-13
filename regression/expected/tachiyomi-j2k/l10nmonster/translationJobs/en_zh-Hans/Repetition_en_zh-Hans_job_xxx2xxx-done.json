@@ -7,7 +7,6 @@
 	"tus": [
 		{
 			"guid": "5otAlRi18WJHdTNddhXrbauyBBuNmozvj5T1U3LdNio",
-			"q": 61,
 			"ntgt": [
 				"迁移 ",
 				{
@@ -22,11 +21,11 @@
 				},
 				" 漫画？"
 			],
-			"ts": 1
+			"ts": 1,
+			"q": 61
 		},
 		{
 			"guid": "V7Ipy8tVMS_hgViqxAA2GVdKnK2eiylBmpYsz6R23AM",
-			"q": 61,
 			"ntgt": [
 				"复制 ",
 				{
@@ -41,11 +40,11 @@
 				},
 				" 漫画？"
 			],
-			"ts": 1
+			"ts": 1,
+			"q": 61
 		},
 		{
 			"guid": "26atAzC3mwZ3kvEaRGvJjuffpG2YiWvLb_0uDvsLPtE",
-			"q": 61,
 			"ntgt": [
 				{
 					"t": "x",
@@ -54,7 +53,8 @@
 				},
 				" 漫画已迁移"
 			],
-			"ts": 1
+			"ts": 1,
+			"q": 61
 		}
 	],
 	"updatedAt": "2022-05-29T00:00:00.000Z"

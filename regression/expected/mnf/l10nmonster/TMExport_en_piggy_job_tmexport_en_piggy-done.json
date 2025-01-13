@@ -7,7 +7,6 @@
 	"tus": [
 		{
 			"guid": "fyTrJmEgw1PeD4zF1zl1jDP03u7HaPagrETEtI5X4Ks",
-			"ts": 1698216807727,
 			"ntgt": [
 				"[",
 				{
@@ -18,25 +17,25 @@
 				"% icket-tay ostcay overedcay",
 				"-piggy]"
 			],
+			"ts": 1698216807727,
 			"q": 1,
 			"jobGuid": "3oSqVqkNxIWgZZk5_jW6Z",
 			"translationProvider": "PigLatinizer"
 		},
 		{
 			"guid": "4AB-hsdRgU55c_mtivWahRdht6IMp9UTxUP0gI0JMFA",
-			"ts": 1698216807727,
 			"ntgt": [
 				"[",
 				"Ostmay Opularpay",
 				"-piggy]"
 			],
+			"ts": 1698216807727,
 			"q": 1,
 			"jobGuid": "3oSqVqkNxIWgZZk5_jW6Z",
 			"translationProvider": "PigLatinizer"
 		},
 		{
 			"guid": "q2gOhVROIqrDb6s1UEP8kmlEeKhctYT35JskRBB_Bm0",
-			"ts": 1698216807727,
 			"ntgt": [
 				"[",
 				{
@@ -47,6 +46,7 @@
 				"% Offyay!",
 				"-piggy]"
 			],
+			"ts": 1698216807727,
 			"q": 1,
 			"jobGuid": "3oSqVqkNxIWgZZk5_jW6Z",
 			"translationProvider": "PigLatinizer"

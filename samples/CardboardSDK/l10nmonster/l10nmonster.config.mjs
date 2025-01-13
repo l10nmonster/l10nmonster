@@ -13,7 +13,7 @@ import * as ios from '@l10nmonster/helpers-ios';
 export default new L10nMonsterConfig(import.meta.dirname)
     .basicProperties({
         sourceLang: 'en',
-        targetLangs: {
+        targetLangSets: {
             LTR: [ 'en-GB', 'en-AU', 'it', 'ja' ],
             RTL: [ 'ar' ],
         },
@@ -113,7 +113,7 @@ export default new L10nMonsterConfig(import.meta.dirname)
                 const targetLangs = mm.getTargetLangs(options.lang);
                 for (const targetLang of targetLangs) {
                     const stats = {};
-                    const allJobs = await mm.jobStore.getJobStatusByLangPair(mm.sourceLang, targetLang);
+                    const allJobs = await mm.tmm.getJobStatusByLangPair(mm.sourceLang, targetLang);
                     allJobs.forEach(entry => stats[entry[1].status] = (stats[entry[1].status] ?? 0) + 1);
                     console.log(`Target language ${targetLang}: ${stats.done ?? 0} done ${stats.pending ?? 0} pending ${stats.req ?? 0} req`);
                 }

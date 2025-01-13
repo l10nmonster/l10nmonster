@@ -6,8 +6,8 @@
 	"status": "created",
 	"tus": [
 		{
+			"rid": "messages_en.txt",
 			"sid": "ticketCostCovered",
-			"guid": "fyTrJmEgw1PeD4zF1zl1jDP03u7HaPagrETEtI5X4Ks",
 			"nsrc": [
 				{
 					"t": "x",
@@ -15,21 +15,21 @@
 				},
 				"% ticket cost covered"
 			],
-			"rid": "messages_en.txt",
+			"guid": "fyTrJmEgw1PeD4zF1zl1jDP03u7HaPagrETEtI5X4Ks",
 			"prj": "messages_en.txt"
 		},
 		{
+			"rid": "messages_en.txt",
 			"sid": "badge.mostPopular",
-			"guid": "4AB-hsdRgU55c_mtivWahRdht6IMp9UTxUP0gI0JMFA",
 			"nsrc": [
 				"Most Popular"
 			],
-			"rid": "messages_en.txt",
+			"guid": "4AB-hsdRgU55c_mtivWahRdht6IMp9UTxUP0gI0JMFA",
 			"prj": "messages_en.txt"
 		},
 		{
+			"rid": "messages_en.txt",
 			"sid": "badge.percentDiscount",
-			"guid": "q2gOhVROIqrDb6s1UEP8kmlEeKhctYT35JskRBB_Bm0",
 			"nsrc": [
 				{
 					"t": "x",
@@ -37,7 +37,7 @@
 				},
 				"% Off!"
 			],
-			"rid": "messages_en.txt",
+			"guid": "q2gOhVROIqrDb6s1UEP8kmlEeKhctYT35JskRBB_Bm0",
 			"prj": "messages_en.txt"
 		}
 	]

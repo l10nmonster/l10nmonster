@@ -25,7 +25,7 @@ export class tmexport {
         }
         const files = [];
         const desiredTargetLangs = new Set(monsterManager.getTargetLangs(options.lang));
-        const availableLangPairs = (await monsterManager.jobStore.getAvailableLangPairs())
+        const availableLangPairs = (await monsterManager.tmm.getAvailableLangPairs())
             .filter(pair => desiredTargetLangs.has(pair[1]));
         for (const [sourceLang, targetLang] of availableLangPairs) {
             const tusByPrj = {};

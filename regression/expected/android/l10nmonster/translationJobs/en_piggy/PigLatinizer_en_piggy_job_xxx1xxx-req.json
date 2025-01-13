@@ -3,17 +3,8 @@
 	"targetLang": "piggy",
 	"tus": [
 		{
+			"rid": "app/src/main/res/values/strings-with-comments.xml",
 			"sid": "included_wallet_balance",
-			"guid": "HwgvL0cEhi63k9J4qJl1XI5jV8qU_tvfP1JOe6Q2nCw",
-			"notes": {
-				"ph": {
-					"%s": {
-						"sample": "$50",
-						"desc": "Amount from wallet to be applied on hotel booking"
-					}
-				},
-				"desc": ""
-			},
 			"nsrc": [
 				"Includes ",
 				{
@@ -23,20 +14,20 @@
 				},
 				" from Wallet"
 			],
-			"rid": "app/src/main/res/values/strings-with-comments.xml"
-		},
-		{
-			"sid": "price_freeze_header_subtitle",
-			"guid": "Ew2fYzyDfQwjtnekNw-fMGCxB0JGKMq2C19H9E50Mm0",
+			"guid": "HwgvL0cEhi63k9J4qJl1XI5jV8qU_tvfP1JOe6Q2nCw",
 			"notes": {
 				"ph": {
-					"%1$s": {
-						"sample": "$300",
-						"desc": "Coverage cap for the price freeze"
+					"%s": {
+						"sample": "$50",
+						"desc": "Amount from wallet to be applied on hotel booking"
 					}
 				},
 				"desc": ""
-			},
+			}
+		},
+		{
+			"rid": "app/src/main/res/values/strings-with-comments.xml",
+			"sid": "price_freeze_header_subtitle",
 			"nsrc": [
 				"If prices go down, you pay the lower price. If prices increase, Hopper covers up to ",
 				{
@@ -46,11 +37,7 @@
 				},
 				"."
 			],
-			"rid": "app/src/main/res/values/strings-with-comments.xml"
-		},
-		{
-			"sid": "price_freeze_header_subtitle_compliance",
-			"guid": "dOknHLDILZNhXxHYaG0eYVnVV1S-E76-Oda3vQm8F9g",
+			"guid": "Ew2fYzyDfQwjtnekNw-fMGCxB0JGKMq2C19H9E50Mm0",
 			"notes": {
 				"ph": {
 					"%1$s": {
@@ -59,7 +46,11 @@
 					}
 				},
 				"desc": ""
-			},
+			}
+		},
+		{
+			"rid": "app/src/main/res/values/strings-with-comments.xml",
+			"sid": "price_freeze_header_subtitle_compliance",
 			"nsrc": [
 				"You can save up to ",
 				{
@@ -69,25 +60,20 @@
 				},
 				" when you come back to book. If the price drops, you pay the lower price."
 			],
-			"rid": "app/src/main/res/values/strings-with-comments.xml"
-		},
-		{
-			"sid": "rooms_count_with_suffix_one",
-			"isSuffixPluralized": true,
-			"guid": "TBomaX-yNmx1U6mUgi-uPb6uzM5GI_z5LSFna60WCfA",
+			"guid": "dOknHLDILZNhXxHYaG0eYVnVV1S-E76-Oda3vQm8F9g",
 			"notes": {
 				"ph": {
-					"%1$d": {
-						"sample": "1",
-						"desc": "The number of rooms desired for a hotel search"
-					},
-					"%2$s": {
-						"sample": "2 Adults",
-						"desc": "A suffix, in this case the number of adult and children passengers"
+					"%1$s": {
+						"sample": "$300",
+						"desc": "Coverage cap for the price freeze"
 					}
 				},
-				"desc": " "
-			},
+				"desc": ""
+			}
+		},
+		{
+			"rid": "app/src/main/res/values/strings-with-comments.xml",
+			"sid": "rooms_count_with_suffix_one",
 			"nsrc": [
 				{
 					"t": "x",
@@ -101,12 +87,8 @@
 					"s": "2 Adults"
 				}
 			],
-			"rid": "app/src/main/res/values/strings-with-comments.xml"
-		},
-		{
-			"sid": "rooms_count_with_suffix_other",
+			"guid": "TBomaX-yNmx1U6mUgi-uPb6uzM5GI_z5LSFna60WCfA",
 			"isSuffixPluralized": true,
-			"guid": "_nIZEEilZbiPz1PGL9hJgNBmpEy7oySaeyy2Y08PWNA",
 			"notes": {
 				"ph": {
 					"%1$d": {
@@ -119,7 +101,11 @@
 					}
 				},
 				"desc": " "
-			},
+			}
+		},
+		{
+			"rid": "app/src/main/res/values/strings-with-comments.xml",
+			"sid": "rooms_count_with_suffix_other",
 			"nsrc": [
 				{
 					"t": "x",
@@ -133,7 +119,21 @@
 					"s": "2 Adults"
 				}
 			],
-			"rid": "app/src/main/res/values/strings-with-comments.xml"
+			"guid": "_nIZEEilZbiPz1PGL9hJgNBmpEy7oySaeyy2Y08PWNA",
+			"isSuffixPluralized": true,
+			"notes": {
+				"ph": {
+					"%1$d": {
+						"sample": "1",
+						"desc": "The number of rooms desired for a hotel search"
+					},
+					"%2$s": {
+						"sample": "2 Adults",
+						"desc": "A suffix, in this case the number of adult and children passengers"
+					}
+				},
+				"desc": " "
+			}
 		}
 	],
 	"translationProvider": "PigLatinizer",

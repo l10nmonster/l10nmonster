@@ -60,7 +60,7 @@ export class L10nMonsterConfig {
      * Sets basic properties for the localization process.
      * @param {Object} config - Configuration object containing basic properties.
      * @param {string} config.sourceLang - The source language for localization.
-     * @param {Array | Object} config.targetLangs - The target languages for localization.
+     * @param {Array | Object} [config.targetLangs] - The target languages for localization.
      * @param {Object} [config.targetLangSets] - Sets of target languages for localization.
      * @param {number | Function} config.minimumQuality - The minimum quality threshold for translations.
      * @returns {L10nMonsterConfig} Returns the instance for method chaining.
@@ -72,6 +72,9 @@ export class L10nMonsterConfig {
         minimumQuality,
     }) {
         this.sourceLang = sourceLang;
+        if (targetLangs !== undefined && !Array.isArray(targetLangs)) {
+            throw 'Invalid config: targetLangs must be an array';
+        }
         this.targetLangSets = targetLangSets ? targetLangSets : { default: targetLangs };
         this.minimumQuality = minimumQuality;
         return this;
@@ -175,7 +178,6 @@ export class L10nMonsterConfig {
      * @param {Object} config - The operations configuration object.
      * @param {Object} [config.snapStore] - Configuration for the snapshot store.
      * @param {Object} [config.jobStore] - Configuration for the job store.
-     * @param {Object} [config.tmm] - Configuration for the translation memory manager.
      * @param {Object} [config.tuFilters] - Configuration for translation unit filters.
      * @param {Array} [config.analyzers] - Configuration for analyzers.
      * @param {string} [config.opsDir] - Directory for operations.
@@ -184,14 +186,12 @@ export class L10nMonsterConfig {
     operations({
         snapStore,
         jobStore,
-        tmm,
         tuFilters,
         analyzers,
         opsDir,
     }) {
         this.snapStore = snapStore;
         this.jobStore = jobStore;
-        this.tmm = tmm;
         this.tuFilters = tuFilters;
         this.analyzers = analyzers;
         this.opsDir = opsDir;

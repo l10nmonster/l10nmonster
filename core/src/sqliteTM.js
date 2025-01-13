@@ -4,7 +4,7 @@ import {
 } from 'fs';
 import Database from 'better-sqlite3';
 
-export class SQLTMDelegate {
+export class TM {
     #db;
     #stmt;
     #lazyFlatSrcIdx = true; // used to add the index as late as possible
@@ -64,20 +64,19 @@ export class SQLTMDelegate {
         return rawEntry && JSON.parse(rawEntry);
     }
 
-    #setEntry(jobGuid, entry) {
+    #setEntry(tu) {
         try {
-            const cleanedTU = TU.asPair(entry);
             const result = this.#stmt.setEntry.run({
-                jobGuid,
-                guid: cleanedTU.guid,
-                entry: JSON.stringify(cleanedTU),
-                flatSrc: utils.flattenNormalizedSourceToOrdinal(cleanedTU.nsrc),
-                q: cleanedTU.q,
-                ts: cleanedTU.ts,
+                jobGuid: tu.jobGuid,
+                guid: tu.guid,
+                entry: JSON.stringify(tu),
+                flatSrc: utils.flattenNormalizedSourceToOrdinal(tu.nsrc),
+                q: tu.q,
+                ts: tu.ts,
             });
-            result.changes !== 1 && L10nContext.logger.info(`Expecting to change a row but got: ${result}`);
+            result.changes !== 1 && L10nContext.logger.info(`Expecting to change a row but changed: ${result}`);
         } catch (e) {
-            L10nContext.logger.verbose(`Not setting TM entry (guid=${entry.guid}): ${e}`);
+            L10nContext.logger.verbose(`Not setting TM entry (guid=${tu.guid}): ${e}`);
         }
     }
 
@@ -112,14 +111,20 @@ export class SQLTMDelegate {
             if (inflight) {
                 for (const guid of inflight) {
                     const reqEntry = requestedUnits[guid] ?? {};
-                    this.#setEntry(jobGuid, { ...reqEntry, q: 0, jobGuid, inflight: true, ts: 0 });
+                    try {
+                        this.#setEntry(TU.asPair({ ...reqEntry, q: 0, jobGuid, inflight: true, ts: 0 }));
+                    } catch (e) {
+                        L10nContext.logger.verbose(`Problems converting in-flight entry to TU: ${e}`);
+                    }
                 }
             }
             if (tus) {
                 for (const tu of tus) {
-                    const reqEntry = requestedUnits[tu.guid] ?? {};
-                    const mergedTU = { ...reqEntry, ...tu, jobGuid, translationProvider };
-                    this.#setEntry(jobGuid, mergedTU);
+                    try {
+                        this.#setEntry(TU.fromRequestResponse(requestedUnits[tu.guid], tu, { jobGuid, translationProvider }));
+                    } catch (e) {
+                        L10nContext.logger.verbose(`Problems converting entry to TU: ${e}`);
+                    }
                 }
             }
             const result = this.#stmt.setJob.run({ jobGuid, status, updatedAt, translationProvider });

@@ -72,45 +72,83 @@ function cleanupTU(entry) {
     return cleanTU;
 }
 
+/**
+ * Represents a Translation Unit (TU).
+ */
 export class TU {
+    rid;
+    sid;
+    nsrc;
+    guid;
+    inflight;
+    ntgt;
+    ts;
+    q;
+
+    /**
+     * @property {string} rid - Resource ID the TU belongs to.
+     * @property {string} sid - Segment ID the TU belongs to.
+     * @property {string[]} nsrc - Normalized source strings for the TU.
+     * @property {string} guid - Unique identifier for the TU.
+     * @property {boolean} inflight - Indicates if the TU is in-flight (submitted and pending translation).
+     * @property {string[]} ntgt - Normalized target strings for the TU.
+     * @property {number} ts - Timestamp for the TU.
+     * @property {number} q - Quality score for the TU.
+     *
+     * @param {Object} entry - A TU-like objecty with properties like guid, rid, sid, nsrc, etc.
+     * @param {boolean} isSource - Indicates if the TU is a source.
+     * @param {boolean} isTarget - Indicates if the TU is a target.
+     * @throws Will throw an error if the required properties are missing based on the TU type.
+     */
     constructor(entry, isSource, isTarget) {
-        // { guid, rid, sid, nsrc, inflight, q, ntgt, ts, ...otherProps }
         if (isSource && (!entry.guid || !entry.rid || !entry.sid || !Array.isArray(entry.nsrc))) {
             throw `Source TU must have guid, rid, sid, nsrc: ${JSON.stringify(entry)}`;
         }
         if (isTarget && (!entry.guid || !Number.isInteger(entry.q) || (!Array.isArray(entry.ntgt) && !entry.inflight) || !Number.isInteger(entry.ts))) {
             throw `Target TU must have guid, ntgt/inflight, q, ts: ${JSON.stringify(entry)}`;
         }
-        // const spuriousProps = [];
         // eslint-disable-next-line no-nested-ternary
         const whitelist = isSource ? (isTarget ? pairTUWhitelist : sourceTUWhitelist) : targetTUWhitelist;
-        for (const [ k, v ] of Object.entries(entry)) {
+        for (const [k, v] of Object.entries(entry)) {
             if (whitelist.has(k)) {
                 this[k] = v;
-            // } else {
-            //     spuriousProps.push(k);
             }
         }
-        // spuriousProps.length > 0 && L10nContext.logger.verbose(`Spurious properties in tu ${entry.guid}: ${spuriousProps.join(', ')}`);
-
     }
 
-    // returns a TU with only the source string and target missing
+    /**
+     * Creates a TU instance with only the source string.
+     * @param {Object} obj - The object to convert to a source TU.
+     * @returns {TU} The created source TU.
+     */
     static asSource(obj) {
         return new TU(cleanupTU(obj), true, false);
     }
 
-    // returns a TU with both source and target string
+    /**
+     * Creates a TU instance with both source and target strings.
+     * @param {Object} obj - The object to convert to a target TU.
+     * @returns {TU} The created target TU.
+     */
     static asTarget(obj) {
         return new TU(cleanupTU(obj), false, true);
     }
 
-    // returns a TU with both source and target string
+    /**
+     * Creates a TU instance with both source and target strings.
+     * @param {Object} obj - The object to convert to a pair TU.
+     * @returns {TU} The created pair TU.
+     */
     static asPair(obj) {
         return new TU(cleanupTU(obj), true, true);
     }
 
-    // converts a segments into a source TU
+    /**
+     * Converts a segment into a source TU.
+     * @param {Object} res - The resource object containing the segment.
+     * @param {Object} segment - The segment to convert.
+     * @returns {TU} The created source TU.
+     */
     static fromSegment(res, segment) {
         const { nstr, ...seg } = segment;
         const tu = {
@@ -122,5 +160,10 @@ export class TU {
             tu.prj = res.prj;
         }
         return TU.asSource(tu);
+    }
+
+    static fromRequestResponse(req = {}, res = {}, additionalProps = {}) {
+        const coalescedEntry = Object.fromEntries(Object.keys({...req, ...res}).map(k => [k, res[k] === undefined ? req[k] : res[k]]));
+        return new TU(cleanupTU({ ...coalescedEntry, ...additionalProps}), true, true);
     }
 }

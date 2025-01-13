@@ -3,9 +3,8 @@
 	"targetLang": "zh-Hans",
 	"tus": [
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "migrate_manga_one",
-			"isSuffixPluralized": true,
-			"guid": "5otAlRi18WJHdTNddhXrbauyBBuNmozvj5T1U3LdNio",
 			"nsrc": [
 				"Migrate ",
 				{
@@ -18,12 +17,12 @@
 				},
 				" manga?"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "5otAlRi18WJHdTNddhXrbauyBBuNmozvj5T1U3LdNio",
+			"isSuffixPluralized": true
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "copy_manga_one",
-			"isSuffixPluralized": true,
-			"guid": "V7Ipy8tVMS_hgViqxAA2GVdKnK2eiylBmpYsz6R23AM",
 			"nsrc": [
 				"Copy ",
 				{
@@ -36,12 +35,12 @@
 				},
 				" manga?"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "V7Ipy8tVMS_hgViqxAA2GVdKnK2eiylBmpYsz6R23AM",
+			"isSuffixPluralized": true
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "manga_migrated_one",
-			"isSuffixPluralized": true,
-			"guid": "26atAzC3mwZ3kvEaRGvJjuffpG2YiWvLb_0uDvsLPtE",
 			"nsrc": [
 				{
 					"t": "x",
@@ -49,7 +48,8 @@
 				},
 				" manga migrated"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "26atAzC3mwZ3kvEaRGvJjuffpG2YiWvLb_0uDvsLPtE",
+			"isSuffixPluralized": true
 		}
 	],
 	"translationProvider": "Repetition",

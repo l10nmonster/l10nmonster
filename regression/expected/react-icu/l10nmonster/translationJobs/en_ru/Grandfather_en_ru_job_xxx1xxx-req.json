@@ -3,18 +3,17 @@
 	"targetLang": "ru",
 	"tus": [
 		{
+			"rid": "public/locales/en/translations.json",
 			"sid": "title",
-			"guid": "wUtgDUDVeLsT_x9VEGH_peG9Ujs3DvX1H3cvHtxgcjw",
-			"seq": 1011,
 			"nsrc": [
 				"Welcome to react using react-i18next"
 			],
-			"rid": "public/locales/en/translations.json"
+			"guid": "wUtgDUDVeLsT_x9VEGH_peG9Ujs3DvX1H3cvHtxgcjw",
+			"seq": 1011
 		},
 		{
+			"rid": "public/locales/en/translations.json",
 			"sid": "description.part1",
-			"guid": "cghma_NsjtZInytTsem0CwlHb1dS2hT2uQGVfDLNkaI",
-			"seq": 1010,
 			"nsrc": [
 				"To get started, edit ",
 				{
@@ -28,21 +27,21 @@
 				},
 				" and save to reload."
 			],
-			"rid": "public/locales/en/translations.json"
+			"guid": "cghma_NsjtZInytTsem0CwlHb1dS2hT2uQGVfDLNkaI",
+			"seq": 1010
 		},
 		{
+			"rid": "public/locales/en/translations.json",
 			"sid": "description.part2",
-			"guid": "B2tOpN7eXoM6vDTFJdnZEO-5fTC49LtcVxOOxviW7z8",
-			"seq": 1009,
 			"nsrc": [
 				"Switch language between english and german using buttons above."
 			],
-			"rid": "public/locales/en/translations.json"
+			"guid": "B2tOpN7eXoM6vDTFJdnZEO-5fTC49LtcVxOOxviW7z8",
+			"seq": 1009
 		},
 		{
+			"rid": "public/locales/en/translations.json",
 			"sid": "welcome.name1",
-			"guid": "mVpp2sfDV8h1yTpK3YpunsGCCyrOtgRsoijdn0rbpfo",
-			"seq": 1008,
 			"nsrc": [
 				"Welcome, ",
 				{
@@ -51,12 +50,12 @@
 				},
 				"!"
 			],
-			"rid": "public/locales/en/translations.json"
+			"guid": "mVpp2sfDV8h1yTpK3YpunsGCCyrOtgRsoijdn0rbpfo",
+			"seq": 1008
 		},
 		{
+			"rid": "public/locales/en/translations.json",
 			"sid": "welcome.name2",
-			"guid": "RLKDBvHhlr-qK3r-qduFToaGzxrPq1lCG1NlVq7u80s",
-			"seq": 1007,
 			"nsrc": [
 				"Welcome, ",
 				{
@@ -73,7 +72,8 @@
 				},
 				"!"
 			],
-			"rid": "public/locales/en/translations.json"
+			"guid": "RLKDBvHhlr-qK3r-qduFToaGzxrPq1lCG1NlVq7u80s",
+			"seq": 1007
 		}
 	],
 	"translationProvider": "Grandfather",

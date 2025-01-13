@@ -45,9 +45,8 @@ export class MonsterManager {
             throw 'You must specify at least a jobStore or a snapStore in your config';
         }
         monsterConfig.opsDir && L10nContext.opsMgr.setOpsDir(path.join(L10nContext.baseDir, monsterConfig.opsDir));
-        this.jobStore = monsterConfig.jobStore;
-        this.jobStore.shutdown && this.scheduleForShutdown(this.jobStore.shutdown.bind(this.jobStore));
-        this.tmm = new TMManager({ jobStore: this.jobStore, mode: monsterConfig.tmm, parallelism: monsterConfig.parallelism });
+        monsterConfig.jobStore?.shutdown && this.scheduleForShutdown(monsterConfig.jobStore?.shutdown.bind(monsterConfig.jobStore));
+        this.tmm = new TMManager({ jobStore: monsterConfig.jobStore, parallelism: monsterConfig.parallelism });
         this.scheduleForShutdown(this.tmm.shutdown.bind(this.tmm));
 
         this.tuFilters = monsterConfig.tuFilters;
@@ -109,43 +108,6 @@ export class MonsterManager {
         } else {
             return minimumQuality;
         }
-    }
-
-    // use cases:
-    //   1 - both are passed as both are created at the same time -> may cancel if response is empty
-    //   2 - only jobRequest is passed because it's blocked -> write if "blocked", cancel if "created"
-    //   3 - only jobResponse is passed because it's pulled -> must write even if empty or it will show as blocked/pending
-    async processJob(jobResponse, jobRequest) {
-        if (jobRequest && jobResponse && !(jobResponse.tus?.length > 0 || jobResponse.inflight?.length > 0)) {
-            jobResponse.status = 'cancelled';
-            return;
-        }
-        if (jobRequest && !jobResponse && jobRequest.status === 'created') {
-            jobRequest.status = 'cancelled';
-            return;
-        }
-        // we warm up the TM first so that we don't process the same job twice in case the tm cache is cold
-        const tm = await this.tmm.getTM(jobResponse.sourceLang, jobResponse.targetLang);
-        const updatedAt = (L10nContext.regression ? new Date('2022-05-29T00:00:00.000Z') : new Date()).toISOString();
-        if (jobRequest) {
-            jobRequest.updatedAt = updatedAt;
-            if (jobResponse) {
-                const guidsInFlight = jobResponse.inflight ?? [];
-                const translatedGuids = jobResponse?.tus?.map(tu => tu.guid) ?? [];
-                const acceptedGuids = new Set(guidsInFlight.concat(translatedGuids));
-                jobRequest.tus = jobRequest.tus.filter(tu => acceptedGuids.has(tu.guid));
-            }
-            jobRequest.tus = jobRequest.tus.map(TU.asSource);
-            await this.jobStore.writeJob(jobRequest);
-        }
-        if (jobResponse) {
-            jobResponse.updatedAt = updatedAt;
-            jobResponse.tus && (jobResponse.tus = jobResponse.tus.map(TU.asTarget));
-            await this.jobStore.writeJob(jobResponse);
-        }
-        // we update the TM in memory so that it can be reused before shutdown (e.g. when using JS API)
-        // TODO: this is not great, we should have a hook so that the TM can subscribe to mutation events.
-        await tm.processJob(jobResponse, jobRequest);
     }
 
     // eslint-disable-next-line complexity

@@ -1,7 +1,7 @@
-const { adapters, stores } = require('../../core');
-const ios = require('@l10nmonster/helpers-ios');
-const android = require('@l10nmonster/helpers-android');
-const { runL10nMonster } = require('@l10nmonster/cli');
+import { adapters, stores } from '../../core';
+import ios from '@l10nmonster/helpers-ios';
+import android from '@l10nmonster/helpers-android';
+import { runL10nMonster } from '@l10nmonster/cli';
 
 const androidLangMapping = {
     'pt-BR': 'pr-rBR',

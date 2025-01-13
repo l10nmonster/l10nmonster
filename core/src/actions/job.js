@@ -16,7 +16,7 @@ export class job {
         const op = options.operation;
         const jobGuid = options.jobGuid;
         if (op === 'req') {
-            const req = await monsterManager.jobStore.getJobRequest(jobGuid);
+            const req = await monsterManager.tmm.getJobRequest(jobGuid);
             if (req) {
                 console.log(`Showing request of job ${jobGuid} ${req.sourceLang} -> ${req.targetLang}`);
                 printRequest(req);
@@ -24,8 +24,8 @@ export class job {
                 console.error('Could not fetch the specified job');
             }
         } else if (op === 'res') {
-            const req = await monsterManager.jobStore.getJobRequest(jobGuid);
-            const res = await monsterManager.jobStore.getJob(jobGuid);
+            const req = await monsterManager.tmm.getJobRequest(jobGuid);
+            const res = await monsterManager.tmm.getJob(jobGuid);
             if (req && res) {
                 console.log(`Showing response of job ${jobGuid} ${req.sourceLang} -> ${req.targetLang} (${res.translationProvider}) ${res.status}`);
                 printResponse(req, res);
@@ -33,8 +33,8 @@ export class job {
                 console.error('Could not fetch the specified job');
             }
         } else if (op === 'pairs') {
-            const req = await monsterManager.jobStore.getJobRequest(jobGuid);
-            const res = await monsterManager.jobStore.getJob(jobGuid);
+            const req = await monsterManager.tmm.getJobRequest(jobGuid);
+            const res = await monsterManager.tmm.getJob(jobGuid);
             if (req && res) {
                 console.log(`Showing source-target pairs of job ${jobGuid} ${req.sourceLang} -> ${req.targetLang} (${res.translationProvider}) ${res.status}`);
                 printResponse(req, res, true);
@@ -52,11 +52,11 @@ export class job {
         } else if (op === 'delete') {
             console.log(`Deleting job ${jobGuid}...`);
             try {
-                const res = await monsterManager.jobStore.getJob(jobGuid);
+                const res = await monsterManager.tmm.getJob(jobGuid);
                 if (res) {
                     console.error(`Can only delete blocked/failed jobs. This job has status: ${res.status}`);
                 } else {
-                    await monsterManager.jobStore.deleteJobRequest(jobGuid);
+                    await monsterManager.tmm.deleteJobRequest(jobGuid);
                 }
             } catch (e) {
                 console.error(`Failed to push job: ${e.stack ?? e}`);

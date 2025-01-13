@@ -3,126 +3,126 @@
 	"targetLang": "zh-Hant",
 	"tus": [
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "external_storage_permission_notice",
-			"guid": "ehbg6jluBWm1ZPyw00Prf4lbXtVyLJItrCrATkSEYGI",
 			"nsrc": [
 				"TachiyomiJ2K requires access to all files in Android 11 to download chapters, create automatic backups, and read local manga. \n\nOn the next screen, enable \"Allow access to manage all files.\""
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "ehbg6jluBWm1ZPyw00Prf4lbXtVyLJItrCrATkSEYGI"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "external_storage_download_notice",
-			"guid": "0TJzTyqgSESA9Z13x0gjdb2SSI0vFps-a1UhezJeIUA",
 			"nsrc": [
 				"TachiyomiJ2K requires access to all files to download chapters. Tap here, then enable \"Allow access to manage all files.\""
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "0TJzTyqgSESA9Z13x0gjdb2SSI0vFps-a1UhezJeIUA"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "manga",
-			"guid": "dyAFLf4GV8TYObR6G4ujZM0o2aXLVPScLSsRCprJogw",
-			"notes": {
-				"desc": "Manga Type"
-			},
 			"nsrc": [
 				"Manga"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "dyAFLf4GV8TYObR6G4ujZM0o2aXLVPScLSsRCprJogw",
+			"notes": {
+				"desc": "Manga Type"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "manhwa",
-			"guid": "95LEfJrqbk225lQKwSrZtJBO4DxL0qEzWfTqkFNqTDY",
 			"nsrc": [
 				"Manhwa"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "95LEfJrqbk225lQKwSrZtJBO4DxL0qEzWfTqkFNqTDY"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "manhua",
-			"guid": "LfniwtGKqeEEaGiV6jkduQg-O20r45Fq0wpcVpp41fo",
 			"nsrc": [
 				"Manhua"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "LfniwtGKqeEEaGiV6jkduQg-O20r45Fq0wpcVpp41fo"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "comic",
-			"guid": "2t_5JXeBK5PYdIR5fHw7ah2P2mS7bfphNSeLcu03TyA",
 			"nsrc": [
 				"Comic"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "2t_5JXeBK5PYdIR5fHw7ah2P2mS7bfphNSeLcu03TyA"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "webtoon",
-			"guid": "se-375MyQi6YUHDneN20q9lbQ6NTuEnMRrlZta_y6Ac",
 			"nsrc": [
 				"Webtoon"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "se-375MyQi6YUHDneN20q9lbQ6NTuEnMRrlZta_y6Ac"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "not_started",
-			"guid": "1p5rCpa-15kwWtEh3NEfT-U-L7hb0ldPev_wqVhXKOI",
-			"notes": {
-				"desc": "Manga"
-			},
 			"nsrc": [
 				"Not started"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "1p5rCpa-15kwWtEh3NEfT-U-L7hb0ldPev_wqVhXKOI",
+			"notes": {
+				"desc": "Manga"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "in_progress",
-			"guid": "lUlOyYw9yd2TULBE1pTHHlKoV-I3jw8skqppn7HuIyY",
 			"nsrc": [
 				"In progress"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "lUlOyYw9yd2TULBE1pTHHlKoV-I3jw8skqppn7HuIyY"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "read",
-			"guid": "GkU-6eHBvCKnGCF-CMFeaPfLeh7OoKVeKdvJwtwui8w",
 			"nsrc": [
 				"Read"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "GkU-6eHBvCKnGCF-CMFeaPfLeh7OoKVeKdvJwtwui8w"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "title",
-			"guid": "0xqMKHTtnfgblNXpO9B-9LxbvDTZTWPLJhzSFs_xYAs",
 			"nsrc": [
 				"Title"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "0xqMKHTtnfgblNXpO9B-9LxbvDTZTWPLJhzSFs_xYAs"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "author",
-			"guid": "aW3YrcFSPuVdBZXYx8N5geyrHBeBjRhMcFL5kSLRBUo",
 			"nsrc": [
 				"Author"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "aW3YrcFSPuVdBZXYx8N5geyrHBeBjRhMcFL5kSLRBUo"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "artist",
-			"guid": "Kp-AxX8Ck39UxT2_FYIgOzs3O564zOO76vNGcjuxH9A",
 			"nsrc": [
 				"Artist"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Kp-AxX8Ck39UxT2_FYIgOzs3O564zOO76vNGcjuxH9A"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "description",
-			"guid": "VwqaBB3G-OoD6aUKGdwPG46AYtQWbne8sdRUeMDzAPk",
 			"nsrc": [
 				"Description"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "VwqaBB3G-OoD6aUKGdwPG46AYtQWbne8sdRUeMDzAPk"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "move_x_to",
-			"guid": "qyy12nArwMG9YWSYvSYn6WvDU0oILdKhax33HGh2ZRI",
 			"nsrc": [
 				"Move ",
 				{
@@ -131,11 +131,11 @@
 				},
 				" to…"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "qyy12nArwMG9YWSYvSYn6WvDU0oILdKhax33HGh2ZRI"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "add_x_to",
-			"guid": "bi_qIE1R6Oqc09vlq-RIHgB7SehgKWCfqyeEEwDLjuQ",
 			"nsrc": [
 				"Add ",
 				{
@@ -144,116 +144,116 @@
 				},
 				" to…"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "bi_qIE1R6Oqc09vlq-RIHgB7SehgKWCfqyeEEwDLjuQ"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "ongoing",
-			"guid": "YJHMFZmzMpH0kjwYHf0FfcpHgbud03xLRf_vpaS4iY0",
-			"notes": {
-				"desc": "Status"
-			},
 			"nsrc": [
 				"Ongoing"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "YJHMFZmzMpH0kjwYHf0FfcpHgbud03xLRf_vpaS4iY0",
+			"notes": {
+				"desc": "Status"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "unknown",
-			"guid": "lIiPjESKF36ux46Yl2BCb6xqKgPpplFKuzXv_M793_0",
 			"nsrc": [
 				"Unknown"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "lIiPjESKF36ux46Yl2BCb6xqKgPpplFKuzXv_M793_0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "unknown_status",
-			"guid": "wa3hYFjBafWDLfwWcVAUIyR2PxRJVt2VRMJDgmUD-bg",
 			"nsrc": [
 				"Unknown Status"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "wa3hYFjBafWDLfwWcVAUIyR2PxRJVt2VRMJDgmUD-bg"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "licensed",
-			"guid": "jeHAFbia7f3ADGwx8_DxCGjg6G8fpCbxfrgwg6NN6gQ",
 			"nsrc": [
 				"Licensed"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "jeHAFbia7f3ADGwx8_DxCGjg6G8fpCbxfrgwg6NN6gQ"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "completed",
-			"guid": "GMn2b_t2ui22c6OmdsUepNRrY4ur4fchk-0UTNFI9J0",
 			"nsrc": [
 				"Completed"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "GMn2b_t2ui22c6OmdsUepNRrY4ur4fchk-0UTNFI9J0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "unlock_library",
-			"guid": "MIwZAqhf_yEYRQoIcrzIDyj7GPBqZifK4baxR5-cVvQ",
-			"notes": {
-				"desc": "Security"
-			},
 			"nsrc": [
 				"Unlock to access Library"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "MIwZAqhf_yEYRQoIcrzIDyj7GPBqZifK4baxR5-cVvQ",
+			"notes": {
+				"desc": "Security"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "unlock",
-			"guid": "DQe5kFyjGy_DNQMR9gd3d5pydL1ne-X49-9JOScmaq8",
 			"nsrc": [
 				"Unlock"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "DQe5kFyjGy_DNQMR9gd3d5pydL1ne-X49-9JOScmaq8"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "lock_with_biometrics",
-			"guid": "w8BVXPDwDQJ0R_SUuwjru3U8GczA5_OjEEBamr4vyLY",
 			"nsrc": [
 				"Lock with biometrics"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "w8BVXPDwDQJ0R_SUuwjru3U8GczA5_OjEEBamr4vyLY"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "lock_when_idle",
-			"guid": "-Ex3KmecKwMvqHMOuUz2YkLrFtoxL10XyzBusA6LCoU",
 			"nsrc": [
 				"Lock when idle"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "-Ex3KmecKwMvqHMOuUz2YkLrFtoxL10XyzBusA6LCoU"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "chapters",
-			"guid": "wF-LDYkrxxFci3wYWoYmvhRbrns2bjxzjgD6HX-wNP8",
-			"notes": {
-				"desc": "Chapters"
-			},
 			"nsrc": [
 				"Chapters"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "wF-LDYkrxxFci3wYWoYmvhRbrns2bjxzjgD6HX-wNP8",
+			"notes": {
+				"desc": "Chapters"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "new_chapters",
-			"guid": "BedwJO3i3EMs4wjzibEX9_Zz6vNrlvYs5p1rK8Muek8",
 			"nsrc": [
 				"New chapters"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "BedwJO3i3EMs4wjzibEX9_Zz6vNrlvYs5p1rK8Muek8"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "unread",
-			"guid": "c1Q8vA8rLF44sVpBXm_WNX7hL38utqvkFH_tJsHIEfk",
 			"nsrc": [
 				"Unread"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "c1Q8vA8rLF44sVpBXm_WNX7hL38utqvkFH_tJsHIEfk"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "last_read_chapter_",
-			"guid": "kZpwHijg068LeT08ANJVZ4v5n9kO6N4dWo9XMuADrms",
 			"nsrc": [
 				"Last read Chapter ",
 				{
@@ -261,11 +261,11 @@
 					"v": "%1$s"
 				}
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "kZpwHijg068LeT08ANJVZ4v5n9kO6N4dWo9XMuADrms"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "chapter_",
-			"guid": "VNFJrEtasSsxhW7I_SASmWbqKbGm-DB6zGqeT1T3pFg",
 			"nsrc": [
 				"Chapter ",
 				{
@@ -273,131 +273,131 @@
 					"v": "%1$s"
 				}
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "VNFJrEtasSsxhW7I_SASmWbqKbGm-DB6zGqeT1T3pFg"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "all_chapters_read",
-			"guid": "2o1v8EPRDg7n9szthMXwcIo3yyNkD2wF4cXDrRqBXYY",
 			"nsrc": [
 				"All chapters read"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "2o1v8EPRDg7n9szthMXwcIo3yyNkD2wF4cXDrRqBXYY"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "bookmarked",
-			"guid": "Ba1uIyfx0Ir8lFQpWbX2FwqG3a0YpXVdRa69dyajn-4",
 			"nsrc": [
 				"Bookmarked"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Ba1uIyfx0Ir8lFQpWbX2FwqG3a0YpXVdRa69dyajn-4"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "not_bookmarked",
-			"guid": "7-jb0lZiRNzOx-KD-gVAb6guAtSi9SElMIa5spNulek",
 			"nsrc": [
 				"Not bookmarked"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "7-jb0lZiRNzOx-KD-gVAb6guAtSi9SElMIa5spNulek"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "marked_as_read",
-			"guid": "FO4YX66wvfqfMJIom2A6-3JuWl6tE39yLhQf6RI4v6U",
 			"nsrc": [
 				"Marked as read"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "FO4YX66wvfqfMJIom2A6-3JuWl6tE39yLhQf6RI4v6U"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "marked_as_unread",
-			"guid": "qS40FwIlQsZoskEfSKs6GZ-_S7uyIjUIXdgjsDrQXqg",
 			"nsrc": [
 				"Marked as unread"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "qS40FwIlQsZoskEfSKs6GZ-_S7uyIjUIXdgjsDrQXqg"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "removed_bookmark",
-			"guid": "ukvJyKpjXj7Rqo1SUKCfn9X-cMwAsUO1e5mwYi239HM",
 			"nsrc": [
 				"Removed bookmark"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "ukvJyKpjXj7Rqo1SUKCfn9X-cMwAsUO1e5mwYi239HM"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "chapters_removed",
-			"guid": "3n24FO3klocH-ZS5oOyyZVib-glRonteOU_4_88GusM",
 			"nsrc": [
 				"Chapters removed."
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "3n24FO3klocH-ZS5oOyyZVib-glRonteOU_4_88GusM"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "chapter_not_found",
-			"guid": "JYa7_Jgw-SoQtnH6Yd-ztKPXwwiSZG8sx1g2z4-0Qv4",
 			"nsrc": [
 				"Chapter not found"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "JYa7_Jgw-SoQtnH6Yd-ztKPXwwiSZG8sx1g2z4-0Qv4"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "no_chapters_error",
-			"guid": "fmSAuRjzSixvBE0aLDILWhduRHUBxBJYh3gNf-Ip510",
 			"nsrc": [
 				"No chapters found"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "fmSAuRjzSixvBE0aLDILWhduRHUBxBJYh3gNf-Ip510"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "no_pages_found",
-			"guid": "P6boOGS8s30ZGI2qzLb1K8Q_NbGoGbeyhc4iL_9c-QY",
 			"nsrc": [
 				"No pages found"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "P6boOGS8s30ZGI2qzLb1K8Q_NbGoGbeyhc4iL_9c-QY"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "remove_all_downloads",
-			"guid": "1JbgVl3XE7SmeF4jiwITPDPKkwZysXqU8iIQL5aVuDY",
 			"nsrc": [
 				"Remove all downloads?"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "1JbgVl3XE7SmeF4jiwITPDPKkwZysXqU8iIQL5aVuDY"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "by_source_order",
-			"guid": "a5ns947pdrJnqiF2ZooyCjrJFnqIZ4Jy5QqbF3st9QY",
 			"nsrc": [
 				"By source's order"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "a5ns947pdrJnqiF2ZooyCjrJFnqIZ4Jy5QqbF3st9QY"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "by_chapter_number",
-			"guid": "FQDqx9NU1PmHx6E4AblkzuQnyRvNVu3wiKemW4kTrTA",
 			"nsrc": [
 				"By chapter number"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "FQDqx9NU1PmHx6E4AblkzuQnyRvNVu3wiKemW4kTrTA"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "by_update_date",
-			"guid": "UaOinmorDOPohtOevV2dux8o2cs0mzFRJzpaiN8T4Uc",
 			"nsrc": [
 				"By upload date"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "UaOinmorDOPohtOevV2dux8o2cs0mzFRJzpaiN8T4Uc"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "categories",
-			"guid": "xgK_ck7xJn5JojkBvKF3PBTHL3d5VAyITpRxQo3cOU8",
 			"nsrc": [
 				"Categories"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "xgK_ck7xJn5JojkBvKF3PBTHL3d5VAyITpRxQo3cOU8"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "adding_category_to_queue",
-			"guid": "dID_EzHEAL6z9VEJmNY3m-5v1JRiZ7kbArCUCG7zzEo",
 			"nsrc": [
 				"Adding ",
 				{
@@ -406,11 +406,11 @@
 				},
 				" to update queue"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "dID_EzHEAL6z9VEJmNY3m-5v1JRiZ7kbArCUCG7zzEo"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "_already_in_queue",
-			"guid": "-CI-B_fkcR7jeeS4cH4AWqOZ0ENh5TRKcwju6Ia0zAA",
 			"nsrc": [
 				{
 					"t": "x",
@@ -418,137 +418,137 @@
 				},
 				" is already in queue"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "-CI-B_fkcR7jeeS4cH4AWqOZ0ENh5TRKcwju6Ia0zAA"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "default_category",
-			"guid": "sXEvR457Fl4so0Cv0WtTRtzPtYD_jfdREwMYK3O8nSA",
 			"nsrc": [
 				"Default category"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "sXEvR457Fl4so0Cv0WtTRtzPtYD_jfdREwMYK3O8nSA"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "confirm_category_deletion",
-			"guid": "6V5oIJQAJOJBz78Jw0S1iS5pQi0-jcba-dzf3LwHDNI",
 			"nsrc": [
 				"Delete category?"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "6V5oIJQAJOJBz78Jw0S1iS5pQi0-jcba-dzf3LwHDNI"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "add_categories",
-			"guid": "Gr8lB80zlGIz_xKnnhk6X9XxnYKun1N1fxfIuAafjN0",
 			"nsrc": [
 				"Add categories"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Gr8lB80zlGIz_xKnnhk6X9XxnYKun1N1fxfIuAafjN0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "edit_categories",
-			"guid": "w2MMFrsye0LRCrgCp4a3MO-XUfByQWvTxZl6k1U1bAQ",
 			"nsrc": [
 				"Edit categories"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "w2MMFrsye0LRCrgCp4a3MO-XUfByQWvTxZl6k1U1bAQ"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "move_to_categories",
-			"guid": "crKjl1Fgg3ZyTE2hAcUJ4rGdY1Fmkl14DbVZy3df79E",
 			"nsrc": [
 				"Move to categories"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "crKjl1Fgg3ZyTE2hAcUJ4rGdY1Fmkl14DbVZy3df79E"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "category_with_name_exists",
-			"guid": "tY5i_VvkSRfJYfbnaRYs6LzMY7jz1AOwB34ehHn4_8E",
 			"nsrc": [
 				"A category with that name already exists!"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "tY5i_VvkSRfJYfbnaRYs6LzMY7jz1AOwB34ehHn4_8E"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "update",
-			"guid": "1J9LO1I69PkBtCO-lcjrVfJ0hLDY2P9KkW2jnd9Iia0",
-			"notes": {
-				"desc": "Updates"
-			},
 			"nsrc": [
 				"Update"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "1J9LO1I69PkBtCO-lcjrVfJ0hLDY2P9KkW2jnd9Iia0",
+			"notes": {
+				"desc": "Updates"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "update_available",
-			"guid": "9WVBqhFweXU_C1G812-heD1CVXaUVAENT2wDLvhfanI",
 			"nsrc": [
 				"Update available"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "9WVBqhFweXU_C1G812-heD1CVXaUVAENT2wDLvhfanI"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "new_version_available",
-			"guid": "CA2P2d3Ikapo3Lrx77PGhGyBqDqCfZhQQjn8y8-xkRc",
 			"nsrc": [
 				"New version available!"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "CA2P2d3Ikapo3Lrx77PGhGyBqDqCfZhQQjn8y8-xkRc"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "no_new_updates_available",
-			"guid": "ZxwEcNS-acQZefGIv-tPQc_FiapNG62iJRnpIs2B-ew",
 			"nsrc": [
 				"No new updates available"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "ZxwEcNS-acQZefGIv-tPQc_FiapNG62iJRnpIs2B-ew"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "searching_for_updates",
-			"guid": "XNPfbAGyhvY7OEaUpmgfqvZJPfZ3Mdzvlu-6ABOcIr4",
 			"nsrc": [
 				"Searching for updates…"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "XNPfbAGyhvY7OEaUpmgfqvZJPfZ3Mdzvlu-6ABOcIr4"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "could_not_install_update",
-			"guid": "TbkIkVi_X7f7CBO4u0f726BGsGtl_vvkV6T5BfF9P70",
 			"nsrc": [
 				"Could not install update"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "TbkIkVi_X7f7CBO4u0f726BGsGtl_vvkV6T5BfF9P70"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "update_completed",
-			"guid": "aMkjGx1AIigQIxs9K8Edp0YjaevyYcbOzTjWB68ffd8",
 			"nsrc": [
 				"Update completed"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "aMkjGx1AIigQIxs9K8Edp0YjaevyYcbOzTjWB68ffd8"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "library",
-			"guid": "qAcMTZXYvITCVVUsJnaeziMxq66YjeyIpN3-S0Rebyg",
-			"notes": {
-				"desc": "Library"
-			},
 			"nsrc": [
 				"Library"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "qAcMTZXYvITCVVUsJnaeziMxq66YjeyIpN3-S0Rebyg",
+			"notes": {
+				"desc": "Library"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "updating_library",
-			"guid": "jVfElJakT5GKdz1ZuVRESC3HEVkoEOjXNC9PTIozFBU",
 			"nsrc": [
 				"Updating library"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "jVfElJakT5GKdz1ZuVRESC3HEVkoEOjXNC9PTIozFBU"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "selected_",
-			"guid": "YHsB_l4J3SLIHrDQP5mpuQvIaON0iySnr9D2qzz0TvA",
 			"nsrc": [
 				"Selected: ",
 				{
@@ -556,51 +556,51 @@
 					"v": "%1$d"
 				}
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "YHsB_l4J3SLIHrDQP5mpuQvIaON0iySnr9D2qzz0TvA"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "local",
-			"guid": "bcBVjTkX0f2rWm2C9WdMUtQGgegLyYw1WDvndJ04ECE",
 			"nsrc": [
 				"Local"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "bcBVjTkX0f2rWm2C9WdMUtQGgegLyYw1WDvndJ04ECE"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "remove_from_library_question",
-			"guid": "Oh1h4BfvH9v36vvhr3RdIXN8fqA_K8AX8Ayev245P4U",
 			"nsrc": [
 				"Remove from library?"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Oh1h4BfvH9v36vvhr3RdIXN8fqA_K8AX8Ayev245P4U"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "library_search_hint",
-			"guid": "HhMtwzf3Dq1TOtKyzHRimpmuuAzOd4Exn4F9r8xz-qs",
 			"nsrc": [
 				"Search title, tags, source"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "HhMtwzf3Dq1TOtKyzHRimpmuuAzOd4Exn4F9r8xz-qs"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "library_is_empty_add_from_browse",
-			"guid": "lquVLLePK40yidM6TxG2TmQzi_V53wQ9fGVOUNboTb4",
 			"nsrc": [
 				"Your library is empty, add series to your library from the browse tab."
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "lquVLLePK40yidM6TxG2TmQzi_V53wQ9fGVOUNboTb4"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "getting_started_guide",
-			"guid": "DchxaDnPAnphKwQMynBpe4TkqbwUOD7MsQD-GEtfSho",
 			"nsrc": [
 				"Getting started guide"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "DchxaDnPAnphKwQMynBpe4TkqbwUOD7MsQD-GEtfSho"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "_unread",
-			"guid": "UhTDYUwAeKJFGb0P_EcHv0CRAU_7r4nf4uO_eWO-6oI",
 			"nsrc": [
 				{
 					"t": "x",
@@ -608,162 +608,161 @@
 				},
 				" unread"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "UhTDYUwAeKJFGb0P_EcHv0CRAU_7r4nf4uO_eWO-6oI"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "total_chapters",
-			"guid": "zK6myoXPiHa_W_GRKdaxPE6uQzupwjSwkz1ITXqdtvQ",
 			"nsrc": [
 				"Total chapters"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "zK6myoXPiHa_W_GRKdaxPE6uQzupwjSwkz1ITXqdtvQ"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "date_added",
-			"guid": "lQ3n6754wbp3bomwiAOq4EZN1gzxbbL4O_3U2s6oKH4",
 			"nsrc": [
 				"Date added"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "lQ3n6754wbp3bomwiAOq4EZN1gzxbbL4O_3U2s6oKH4"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "last_read",
-			"guid": "z5Ct7T4-sb7TiBjIIOJtkrCYWUq0AwxBpxJqU0EOOb4",
 			"nsrc": [
 				"Last read"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "z5Ct7T4-sb7TiBjIIOJtkrCYWUq0AwxBpxJqU0EOOb4"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "last_updated",
-			"guid": "ymbcb0K-ZQ6Y95inlEU_x-vdap1HMxf8WUVFEmdVX0o",
 			"nsrc": [
 				"Last updated"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "ymbcb0K-ZQ6Y95inlEU_x-vdap1HMxf8WUVFEmdVX0o"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "latest_chapter",
-			"guid": "etwkm_tfBq0CEj2dA5b5feaYxz8YAJ8iil0f2x4TXbw",
 			"nsrc": [
 				"Latest chapter"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "etwkm_tfBq0CEj2dA5b5feaYxz8YAJ8iil0f2x4TXbw"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "drag_and_drop",
-			"guid": "DMMCd9TlUjweJCvkzAet30izdq29jjibSAaLenVC_Ho",
 			"nsrc": [
 				"Drag & Drop"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "DMMCd9TlUjweJCvkzAet30izdq29jjibSAaLenVC_Ho"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "display_options",
-			"guid": "uS-rKfQewapxCMQccDVdJcLHKtn2SaCeJ2YmB23cIuI",
-			"notes": {
-				"desc": "Library Display"
-			},
 			"nsrc": [
 				"Display options"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "uS-rKfQewapxCMQccDVdJcLHKtn2SaCeJ2YmB23cIuI",
+			"notes": {
+				"desc": "Library Display"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "list",
-			"guid": "b5s0c7AJ312O74EJBqSMNQLzFjNb2bCHZ4S3J11jxxg",
 			"nsrc": [
 				"List"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "b5s0c7AJ312O74EJBqSMNQLzFjNb2bCHZ4S3J11jxxg"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "comfortable_grid",
-			"guid": "W8lXl8ecgkmTxxNseApoWEjiwTVi5YjP9qyYm0BY1-o",
 			"nsrc": [
 				"Comfortable Grid"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "W8lXl8ecgkmTxxNseApoWEjiwTVi5YjP9qyYm0BY1-o"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "compact_grid",
-			"guid": "JolklOJhPzS3vF0WrEXaYAttHvQz7J0eVAYKuviUbDI",
 			"nsrc": [
 				"Compact Grid"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "JolklOJhPzS3vF0WrEXaYAttHvQz7J0eVAYKuviUbDI"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "download_badge",
-			"guid": "UeOCcyUNrO7NK1wCS-ZaA-6Uvndo0dTo5eUFHUTp0Rw",
 			"nsrc": [
 				"Download badges"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "UeOCcyUNrO7NK1wCS-ZaA-6Uvndo0dTo5eUFHUTp0Rw"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "badges",
-			"guid": "7iTceqCgayTrQXKNVybwTDhBnEdecaG1phJDAuvZBcE",
 			"nsrc": [
 				"Badges"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "7iTceqCgayTrQXKNVybwTDhBnEdecaG1phJDAuvZBcE"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "hide_unread_badges",
-			"guid": "SEo_lkPgk4lCf7gjS3A9lFkdFLO2wv1ycaNkAw3hvBM",
 			"nsrc": [
 				"Hide unread badges"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "SEo_lkPgk4lCf7gjS3A9lFkdFLO2wv1ycaNkAw3hvBM"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "show_unread_badges",
-			"guid": "cP_Gz6ULSzF0DAeaDX05AQoSINybxcS6HZDh69si-Mw",
 			"nsrc": [
 				"Show unread badges"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "cP_Gz6ULSzF0DAeaDX05AQoSINybxcS6HZDh69si-Mw"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "show_unread_count",
-			"guid": "Aw6cKyajej2kaJJDGwDiuoza3bLBcu5nDVXKBiKOGFc",
 			"nsrc": [
 				"Show unread count"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Aw6cKyajej2kaJJDGwDiuoza3bLBcu5nDVXKBiKOGFc"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "tap_library_to_show_filters",
-			"guid": "IRauuXgqcQbSTMjV3Ys43xV6-n3dDJkuJifY81SJT_I",
 			"nsrc": [
 				"Tap the Library icon to show filters"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "IRauuXgqcQbSTMjV3Ys43xV6-n3dDJkuJifY81SJT_I"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "more_library_settings",
-			"guid": "gQWO4zfGidbyOhDA3UfrzspRYaN82LLyYDDSn2zKDKo",
 			"nsrc": [
 				"More library settings"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "gQWO4zfGidbyOhDA3UfrzspRYaN82LLyYDDSn2zKDKo"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "new_chapters_found",
-			"guid": "DP9tDhyqmkFyAizNsGXaByGA7_OZZsmcD1gUxkZdVAY",
-			"notes": {
-				"desc": "Library update service notifications"
-			},
 			"nsrc": [
 				"New chapters found"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "DP9tDhyqmkFyAizNsGXaByGA7_OZZsmcD1gUxkZdVAY",
+			"notes": {
+				"desc": "Library update service notifications"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "notification_update_failed_other",
-			"isSuffixPluralized": true,
-			"guid": "RLiMnzoXrJq8vp-WZubFf2M9nJtwc2tP_d8VRdv1W8w",
 			"nsrc": [
 				{
 					"t": "x",
@@ -771,340 +770,341 @@
 				},
 				" updates failed"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "RLiMnzoXrJq8vp-WZubFf2M9nJtwc2tP_d8VRdv1W8w",
+			"isSuffixPluralized": true
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "library_update_frequency",
-			"guid": "NzuzANrc8hKnsNdj5RNNivveptBt1E-e1H-Ht-pXbEo",
-			"notes": {
-				"desc": "Library settings"
-			},
 			"nsrc": [
 				"Library update frequency"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "NzuzANrc8hKnsNdj5RNNivveptBt1E-e1H-Ht-pXbEo",
+			"notes": {
+				"desc": "Library settings"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "library_update_order",
-			"guid": "-QzO-ivc3CYbFK2bcTx1y09cUHWQAxXI_IwEWHWcdf4",
 			"nsrc": [
 				"Library update order"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "-QzO-ivc3CYbFK2bcTx1y09cUHWQAxXI_IwEWHWcdf4"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "library_update_restriction",
-			"guid": "h6ihcf0PNhqYo_MeRGpM3608G2PlorwY5-vFKsjSuAA",
 			"nsrc": [
 				"Library update restrictions"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "h6ihcf0PNhqYo_MeRGpM3608G2PlorwY5-vFKsjSuAA"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "library_update_restriction_summary",
-			"guid": "ZOMhwECzQZpFt0DpjvLzNkEn3kCCtt0snYRw2gF1wd4",
 			"nsrc": [
 				"Update only when the conditions are met"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "ZOMhwECzQZpFt0DpjvLzNkEn3kCCtt0snYRw2gF1wd4"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "only_update_ongoing",
-			"guid": "0Yks1MGLmvTPfXrRbgF7_cpJj8jKUrSdoOpUQpMt1Lo",
 			"nsrc": [
 				"Only update ongoing manga"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "0Yks1MGLmvTPfXrRbgF7_cpJj8jKUrSdoOpUQpMt1Lo"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "categories_to_include_in_global_update",
-			"guid": "5Ug7lvfBUCu2wKLPhV0-c9jXxHz9DjEQ9EAzy6uuaiM",
 			"nsrc": [
 				"Categories to include in global update"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "5Ug7lvfBUCu2wKLPhV0-c9jXxHz9DjEQ9EAzy6uuaiM"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "auto_refresh_covers",
-			"guid": "7zyAcA7JQ6aAczOccXAYPa-UDg3BvajDBkRkKBRNq-E",
 			"nsrc": [
 				"Automatically refresh covers"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "7zyAcA7JQ6aAczOccXAYPa-UDg3BvajDBkRkKBRNq-E"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "updates",
-			"guid": "sBinvyL2W3qKfYVm5ARudrwttwxjOEAtbvq5bnrisG4",
 			"nsrc": [
 				"Updates"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "sBinvyL2W3qKfYVm5ARudrwttwxjOEAtbvq5bnrisG4"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "history",
-			"guid": "PM06aKufO6xe0d1WLbGbjSKaHG8MBKZaoLiU6LRnJiw",
 			"nsrc": [
 				"History"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "PM06aKufO6xe0d1WLbGbjSKaHG8MBKZaoLiU6LRnJiw"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "recent_updates",
-			"guid": "S5GUgCz4-rmA9wjHXTfRr6OUY6HZtKT-ZoOr6rPHjvo",
 			"nsrc": [
 				"Recent updates"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "S5GUgCz4-rmA9wjHXTfRr6OUY6HZtKT-ZoOr6rPHjvo"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "this_will_remove_the_read_date_question",
-			"guid": "x3TEe4A97_mGw4nWI9E7Z9-WfUrxRSmYZR0IRK24l14",
 			"nsrc": [
 				"This will remove the read date of this chapter. Are you sure?"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "x3TEe4A97_mGw4nWI9E7Z9-WfUrxRSmYZR0IRK24l14"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "no_recent_chapters",
-			"guid": "hL4I2ivi9LosbYyWwU5Dko_fz2EIvOmPn_caCWYZ1tI",
 			"nsrc": [
 				"No recent chapters"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "hL4I2ivi9LosbYyWwU5Dko_fz2EIvOmPn_caCWYZ1tI"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "no_recently_read_manga",
-			"guid": "4VtJrOuIR9-EAjXsURnwo-iIbyhtFxsyrem9xCOA1Cc",
 			"nsrc": [
 				"No recently read manga"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "4VtJrOuIR9-EAjXsURnwo-iIbyhtFxsyrem9xCOA1Cc"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "search_filters",
-			"guid": "2Pxr4-74Ois-SejkPEpOnmVQGKUZCPMo0deqiwQYbBI",
-			"notes": {
-				"desc": "Browse"
-			},
 			"nsrc": [
 				"Search filters"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "2Pxr4-74Ois-SejkPEpOnmVQGKUZCPMo0deqiwQYbBI",
+			"notes": {
+				"desc": "Browse"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "no_more_results",
-			"guid": "qD5t9_kUsR1Rciw2C9gSZ9UCq5smk6ZGRp4e97jt0oU",
 			"nsrc": [
 				"No more results"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "qD5t9_kUsR1Rciw2C9gSZ9UCq5smk6ZGRp4e97jt0oU"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "no_results_found",
-			"guid": "nDWhRgwMhyySzkmB1mKyhXH4-HIkCqSzNszaabHd0Qk",
 			"nsrc": [
 				"No results found"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "nDWhRgwMhyySzkmB1mKyhXH4-HIkCqSzNszaabHd0Qk"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "local_source",
-			"guid": "E5QVOfjAoLWc8J7M6lFj706Hi6GaLqr7-jlOMqThrX8",
 			"nsrc": [
 				"Local source"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "E5QVOfjAoLWc8J7M6lFj706Hi6GaLqr7-jlOMqThrX8"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "other",
-			"guid": "7bPpjSz1MY2CNSPHuORks9HUhwc9TlUOvSioRsXWYUE",
 			"nsrc": [
 				"Other"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "7bPpjSz1MY2CNSPHuORks9HUhwc9TlUOvSioRsXWYUE"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "global_search",
-			"guid": "tRqUWr1CHQBGfXifeokyu2ciLA_1XxT-6Ynjo6ytbTg",
 			"nsrc": [
 				"Global search…"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "tRqUWr1CHQBGfXifeokyu2ciLA_1XxT-6Ynjo6ytbTg"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "label_global_search",
-			"guid": "OD82pAlue4FA_Kid9h2lSUE2XvZqGpekY8lHnw4FHBk",
 			"nsrc": [
 				"Global search"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "OD82pAlue4FA_Kid9h2lSUE2XvZqGpekY8lHnw4FHBk"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "latest",
-			"guid": "XqEe6ZH5D3OuGdp2s140bj26gJ7mFmJV-xBjYu8Tx48",
 			"nsrc": [
 				"Latest"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "XqEe6ZH5D3OuGdp2s140bj26gJ7mFmJV-xBjYu8Tx48"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "browse",
-			"guid": "ZlQGjuZJmjYU7_qjO2oXa6eUZnp4YfnsbJignNiVaP0",
 			"nsrc": [
 				"Browse"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "ZlQGjuZJmjYU7_qjO2oXa6eUZnp4YfnsbJignNiVaP0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "in_library",
-			"guid": "i7nQsmaH5l-83nBShn-cYtN3if_SJbHzHGpEnqR56uk",
 			"nsrc": [
 				"In Library"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "i7nQsmaH5l-83nBShn-cYtN3if_SJbHzHGpEnqR56uk"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "sources",
-			"guid": "ZrAWCoZpge3cKfOhzcCGkS4bvEF6Mt8RaqZw9DI_qB0",
 			"nsrc": [
 				"Sources"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "ZrAWCoZpge3cKfOhzcCGkS4bvEF6Mt8RaqZw9DI_qB0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "last_used",
-			"guid": "P0C-_pU8Q5i3NzJvF2IOkYGe6BnwPi1NFRRNTTmrGa8",
 			"nsrc": [
 				"Last used"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "P0C-_pU8Q5i3NzJvF2IOkYGe6BnwPi1NFRRNTTmrGa8"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "local_source_help_guide",
-			"guid": "CGemow4PGRoks7kffKieGnelfMRnWe8kFGbz-YhskEc",
 			"nsrc": [
 				"Local source guide"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "CGemow4PGRoks7kffKieGnelfMRnWe8kFGbz-YhskEc"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "check_site_in_web",
-			"guid": "IMua_RtI1sMnJZ2zTViBErqOa9it8wk-yqx_u-rmjqM",
 			"nsrc": [
 				"Check website in WebView"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "IMua_RtI1sMnJZ2zTViBErqOa9it8wk-yqx_u-rmjqM"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "extensions",
-			"guid": "aoUSYtsFoxzn0HRhrXdsX7blaRGrrGKbPPGYAHOGcYY",
-			"notes": {
-				"desc": "Extensions"
-			},
 			"nsrc": [
 				"Extensions"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "aoUSYtsFoxzn0HRhrXdsX7blaRGrrGKbPPGYAHOGcYY",
+			"notes": {
+				"desc": "Extensions"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "extension_info",
-			"guid": "3VbPdABRbfvCf_GxLQ-haSSJISwum9GhTK-byjdMle0",
 			"nsrc": [
 				"Extension info"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "3VbPdABRbfvCf_GxLQ-haSSJISwum9GhTK-byjdMle0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "obsolete",
-			"guid": "uYeBuOlQx0uHTjPFSCFDqvBE7ttkCteUepsgvF0p42Y",
 			"nsrc": [
 				"Obsolete"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "uYeBuOlQx0uHTjPFSCFDqvBE7ttkCteUepsgvF0p42Y"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "pending",
-			"guid": "-1oUOqtBTK56Cb3QyFI8OxxSMWVduV2fdFZCS2W1c1Q",
 			"nsrc": [
 				"Pending"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "-1oUOqtBTK56Cb3QyFI8OxxSMWVduV2fdFZCS2W1c1Q"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "installing",
-			"guid": "Ycu33slHZdgJIOKGFgNFhnXFaXDml33-QI4kzYWaqv8",
 			"nsrc": [
 				"Installing"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Ycu33slHZdgJIOKGFgNFhnXFaXDml33-QI4kzYWaqv8"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "installed",
-			"guid": "JP4poQgz6xE5_MntWIYkQ3A1QwYutbXOPfMaUS2QNCY",
 			"nsrc": [
 				"Installed"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "JP4poQgz6xE5_MntWIYkQ3A1QwYutbXOPfMaUS2QNCY"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "trust",
-			"guid": "Kvi-OrJcWLi1AhkBcIcwc2_cva39mL8v4VPnpOa6xQg",
 			"nsrc": [
 				"Trust"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Kvi-OrJcWLi1AhkBcIcwc2_cva39mL8v4VPnpOa6xQg"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "untrusted",
-			"guid": "28-CSpvMLQCczDRCqfByQOPtpZeUpvFuIYBb2KXhxTU",
 			"nsrc": [
 				"Untrusted"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "28-CSpvMLQCczDRCqfByQOPtpZeUpvFuIYBb2KXhxTU"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "uninstall",
-			"guid": "NUM1S6DTLk8C51KWdOB6nkW0ehj3VGofXw6xMEKumpM",
 			"nsrc": [
 				"Uninstall"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "NUM1S6DTLk8C51KWdOB6nkW0ehj3VGofXw6xMEKumpM"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "untrusted_extension",
-			"guid": "-xNAvTt_5TWhX_Qevo6dfy9YGxHdcM5jvEstbFpnuYk",
 			"nsrc": [
 				"Untrusted extension"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "-xNAvTt_5TWhX_Qevo6dfy9YGxHdcM5jvEstbFpnuYk"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "untrusted_extension_message",
-			"guid": "5i1qeSgTv4eK9tMokbsNzyBFy4aeu_6h0nSNcgRxpEw",
 			"nsrc": [
 				"This extension was signed with an untrusted certificate and wasn't activated.\n\nA malicious extension could read any login credentials stored in Tachiyomi or execute arbitrary code.\n\nBy trusting this certificate you accept these risks."
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "5i1qeSgTv4eK9tMokbsNzyBFy4aeu_6h0nSNcgRxpEw"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "obsolete_extension_message",
-			"guid": "Vv7zXhCz4opZuOiy2_Fq0tddSF-kvnokOd4mjT_QrPE",
 			"nsrc": [
 				"This extension is no longer available."
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Vv7zXhCz4opZuOiy2_Fq0tddSF-kvnokOd4mjT_QrPE"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "unofficial_extension_message",
-			"guid": "no3EPHkkAPUVkK9WbV_fNi6DkZryBx6xfxglmjb4MUg",
 			"nsrc": [
 				"This extension is not from the official Tachiyomi extensions list."
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "no3EPHkkAPUVkK9WbV_fNi6DkZryBx6xfxglmjb4MUg"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "version_",
-			"guid": "mvCSc-9yryS7Ofj0A_wL0bqca5JHjTYWlk8605Z-VQU",
 			"nsrc": [
 				"Version: ",
 				{
@@ -1112,11 +1112,11 @@
 					"v": "%1$s"
 				}
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "mvCSc-9yryS7Ofj0A_wL0bqca5JHjTYWlk8605Z-VQU"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "language_",
-			"guid": "TwrJr2RHXOSAMDZgpROxE8cXWkCRS3GToOTAkCoaaAc",
 			"nsrc": [
 				"Language: ",
 				{
@@ -1124,36 +1124,35 @@
 					"v": "%1$s"
 				}
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "TwrJr2RHXOSAMDZgpROxE8cXWkCRS3GToOTAkCoaaAc"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "nsfw_short",
-			"guid": "giDbI1awUgdbfMKkrkvn4JxnaIc35cm8z32hRszPoYU",
 			"nsrc": [
 				"18+"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "giDbI1awUgdbfMKkrkvn4JxnaIc35cm8z32hRszPoYU"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "unofficial",
-			"guid": "f037H6fcf5TiITwnOq-9yJ2BdfESMLl1vXtx67OFvck",
 			"nsrc": [
 				"Unofficial"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "f037H6fcf5TiITwnOq-9yJ2BdfESMLl1vXtx67OFvck"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "may_contain_nsfw",
-			"guid": "FB8H7p-eU89ZuoW8zOC-VBvj77CDPKgsWkLMvL5IM3w",
 			"nsrc": [
 				"May contain NSFW (18+) content"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "FB8H7p-eU89ZuoW8zOC-VBvj77CDPKgsWkLMvL5IM3w"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "extension_updates_available_other",
-			"isSuffixPluralized": true,
-			"guid": "fFztA8BpN5ztR940iRrxRzG6kccQjtTmucxkNGh6npk",
 			"nsrc": [
 				{
 					"t": "x",
@@ -1161,30 +1160,31 @@
 				},
 				" extension updates available"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "fFztA8BpN5ztR940iRrxRzG6kccQjtTmucxkNGh6npk",
+			"isSuffixPluralized": true
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "set_as_cover",
-			"guid": "Ib3Dl-HzwtbZ2Ml0jVectlWKgCLvYPZ6byoYri6f_Sk",
-			"notes": {
-				"desc": "Reader"
-			},
 			"nsrc": [
 				"Set as cover"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Ib3Dl-HzwtbZ2Ml0jVectlWKgCLvYPZ6byoYri6f_Sk",
+			"notes": {
+				"desc": "Reader"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "cover_updated",
-			"guid": "Q-v1w9GBUdWI6zxnbfiNesSObNnkYTo1nG1pdzKW4rc",
 			"nsrc": [
 				"Cover updated"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Q-v1w9GBUdWI6zxnbfiNesSObNnkYTo1nG1pdzKW4rc"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "page_",
-			"guid": "EnR5B-t_Ampr-_FK6FCuwfxnUna0-VNGNQL73mm1j_Q",
 			"nsrc": [
 				"Page ",
 				{
@@ -1192,91 +1192,91 @@
 					"v": "%1$d"
 				}
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "EnR5B-t_Ampr-_FK6FCuwfxnUna0-VNGNQL73mm1j_Q"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "next_chapter_not_found",
-			"guid": "Qc1ZV3Ny9VaRh6PE4IJFuKgtMzgbhfmKVWffUxkWjEQ",
 			"nsrc": [
 				"Next chapter not found"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Qc1ZV3Ny9VaRh6PE4IJFuKgtMzgbhfmKVWffUxkWjEQ"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "decode_image_error",
-			"guid": "HPwQLSKOlrYbHyjofNfikRimEekylevIiY_d0ksrTdw",
 			"nsrc": [
 				"The image could not be decoded"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "HPwQLSKOlrYbHyjofNfikRimEekylevIiY_d0ksrTdw"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "use_image_as_cover",
-			"guid": "5kVJ5mq5XOSpOV0cRj20m4EjSERSHHjFb5D-B7eDKU4",
 			"nsrc": [
 				"Use this image as cover art?"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "5kVJ5mq5XOSpOV0cRj20m4EjSERSHHjFb5D-B7eDKU4"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "finished_chapter",
-			"guid": "kNe03PPBX7947ArE1NcDm1bjk_f2BdRjXzmDiaMq22g",
 			"nsrc": [
 				"Finished:"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "kNe03PPBX7947ArE1NcDm1bjk_f2BdRjXzmDiaMq22g"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "current_chapter",
-			"guid": "xOCNiQ1-eZhVfxxb4HBtt-DTU7k3dep6EzHpl_YCf-s",
 			"nsrc": [
 				"Current:"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "xOCNiQ1-eZhVfxxb4HBtt-DTU7k3dep6EzHpl_YCf-s"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "next_title",
-			"guid": "Cu0tD99b95Y9bO_fmL3N4WkWWjhFRBnsCKEDSPMX7q4",
 			"nsrc": [
 				"Next:"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Cu0tD99b95Y9bO_fmL3N4WkWWjhFRBnsCKEDSPMX7q4"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "previous_title",
-			"guid": "7tIV3qzAV-hr0e12MF0i4ZPHqF_75NpVgYByiAkaHNQ",
 			"nsrc": [
 				"Previous:"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "7tIV3qzAV-hr0e12MF0i4ZPHqF_75NpVgYByiAkaHNQ"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "theres_no_next_chapter",
-			"guid": "6sT9eOh-YFpLlMtqSLgsuD_avu1ljtGpnl6rQ1BXgFE",
 			"nsrc": [
 				"There's no next chapter"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "6sT9eOh-YFpLlMtqSLgsuD_avu1ljtGpnl6rQ1BXgFE"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "theres_no_previous_chapter",
-			"guid": "3_5VuY-h5PQRaBiH61VNzkCK5d2Ckp8mECsUPeMJER0",
 			"nsrc": [
 				"There's no previous chapter"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "3_5VuY-h5PQRaBiH61VNzkCK5d2Ckp8mECsUPeMJER0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "loading_pages",
-			"guid": "RwDrB8ReriDHnBT18vMtz9nt7kUIfq6If3j_0GnSfHU",
 			"nsrc": [
 				"Loading pages…"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "RwDrB8ReriDHnBT18vMtz9nt7kUIfq6If3j_0GnSfHU"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "failed_to_load_pages_",
-			"guid": "UoUrj8RDjA-Dro_MlGIdIgAe1JtU1ux5tV_1JvQ9Aw8",
 			"nsrc": [
 				"Failed to load pages: ",
 				{
@@ -1284,519 +1284,518 @@
 					"v": "%1$s"
 				}
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "UoUrj8RDjA-Dro_MlGIdIgAe1JtU1ux5tV_1JvQ9Aw8"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "next_page",
-			"guid": "fg2W1c2abzFBWZ3SzFWEwEmxeiqQT8Q0tPdnz-0ham8",
 			"nsrc": [
 				"Next page"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "fg2W1c2abzFBWZ3SzFWEwEmxeiqQT8Q0tPdnz-0ham8"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "previous_page",
-			"guid": "kbO5N_QHqkdnlKV2eS1VdZgAMbpL_RMDLTR4I1X39YY",
 			"nsrc": [
 				"Previous page"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "kbO5N_QHqkdnlKV2eS1VdZgAMbpL_RMDLTR4I1X39YY"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "next_chapter",
-			"guid": "a5-K12bzP7vKwNBq_JOnpnRtZUkMQ5Q3jYGJ2V71rqA",
 			"nsrc": [
 				"Next chapter"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "a5-K12bzP7vKwNBq_JOnpnRtZUkMQ5Q3jYGJ2V71rqA"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "previous_chapter",
-			"guid": "Qgjb99vSOfspdYbFZRcg2LlM92KotKvXSnlpvUiTxrg",
 			"nsrc": [
 				"Previous chapter"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Qgjb99vSOfspdYbFZRcg2LlM92KotKvXSnlpvUiTxrg"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "fullscreen",
-			"guid": "pUNw1jNdpBub4YvDOOVOnB9xp9b5HhtenI0mCjut3So",
-			"notes": {
-				"desc": "Reader settings"
-			},
 			"nsrc": [
 				"Fullscreen"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "pUNw1jNdpBub4YvDOOVOnB9xp9b5HhtenI0mCjut3So",
+			"notes": {
+				"desc": "Reader settings"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "animate_page_transitions",
-			"guid": "VHhERbkrDJ_f0FYm2yd4HDXIg4Km7BRIw03XCWeE3I0",
 			"nsrc": [
 				"Animate page transitions"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "VHhERbkrDJ_f0FYm2yd4HDXIg4Km7BRIw03XCWeE3I0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "double_tap_anim_speed",
-			"guid": "QtV3gNtCZtvtzsOGDmDcjeE-Cv2HN1Do1Lha4HwpkSU",
 			"nsrc": [
 				"Double tap animation speed"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "QtV3gNtCZtvtzsOGDmDcjeE-Cv2HN1Do1Lha4HwpkSU"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "show_page_number",
-			"guid": "dR_2FWiEp_4r9VQkBrdc_yNcqvwD8l8Vn9_efc-QGVw",
 			"nsrc": [
 				"Show page number"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "dR_2FWiEp_4r9VQkBrdc_yNcqvwD8l8Vn9_efc-QGVw"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "true_32bit_color",
-			"guid": "by17fVJInY6ur0rEkp-1jdaqj6IdZtC4Rn_tfyF6Jc0",
 			"nsrc": [
 				"32-bit color"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "by17fVJInY6ur0rEkp-1jdaqj6IdZtC4Rn_tfyF6Jc0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "reduces_banding_impacts_performance",
-			"guid": "KhQBQDYldIJeYyASM34BR-9ILkPBggtCSCM73BnXGfc",
 			"nsrc": [
 				"Reduces banding, but impacts performance"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "KhQBQDYldIJeYyASM34BR-9ILkPBggtCSCM73BnXGfc"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "crop_borders",
-			"guid": "bZWNWOTR_a6vu5KHhFocNrmKcuf2Dm_ZHyLsrqkWPIo",
 			"nsrc": [
 				"Crop borders"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "bZWNWOTR_a6vu5KHhFocNrmKcuf2Dm_ZHyLsrqkWPIo"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "use_custom_brightness",
-			"guid": "4tYTM3KKeVYFJYv6_5yzTRHyQ28cGuYDCTw3mxbsrqI",
 			"nsrc": [
 				"Use custom brightness"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "4tYTM3KKeVYFJYv6_5yzTRHyQ28cGuYDCTw3mxbsrqI"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "use_custom_color_filter",
-			"guid": "1c85W3dFyXzu-2RzBeQIlV3MQEozuLec6TzQk5ZgkGI",
 			"nsrc": [
 				"Use custom color filter"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "1c85W3dFyXzu-2RzBeQIlV3MQEozuLec6TzQk5ZgkGI"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "color_filter_blend_mode",
-			"guid": "YvEPrA_hYuYjnFBjh7C_s87KrXHO0sq2Gkbv5lmRUWY",
 			"nsrc": [
 				"Color filter blend mode"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "YvEPrA_hYuYjnFBjh7C_s87KrXHO0sq2Gkbv5lmRUWY"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "overlay",
-			"guid": "2b65yx3R1E_JJ-7maL5mvJdNQr_wQ6IK7FCTVwSS0Uo",
 			"nsrc": [
 				"Overlay"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "2b65yx3R1E_JJ-7maL5mvJdNQr_wQ6IK7FCTVwSS0Uo"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "multiply",
-			"guid": "B4K1BKpuoFvqmYL2wmhnt3VUpb77AWmfiG_hMzH-WlM",
 			"nsrc": [
 				"Multiply"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "B4K1BKpuoFvqmYL2wmhnt3VUpb77AWmfiG_hMzH-WlM"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "screen",
-			"guid": "mp6yzD2NNQpXEtLCjAs82oYFOTGnIRrFyDWyyXEcZ58",
 			"nsrc": [
 				"Screen"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "mp6yzD2NNQpXEtLCjAs82oYFOTGnIRrFyDWyyXEcZ58"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "dodge_lighten",
-			"guid": "bJVQLX_e3mTmRx5ywvw2aXxJm-urN7kaylp6ikz-cmI",
 			"nsrc": [
 				"Dodge / Lighten"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "bJVQLX_e3mTmRx5ywvw2aXxJm-urN7kaylp6ikz-cmI"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "burn_darken",
-			"guid": "7GCR5o4olY4EW2sPlXgG2bu-jwgBbxn-bmHpAC5-O_U",
 			"nsrc": [
 				"Burn / Darken"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "7GCR5o4olY4EW2sPlXgG2bu-jwgBbxn-bmHpAC5-O_U"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "keep_screen_on",
-			"guid": "f9rLPt76BysQKtcUJkghsKsh3HkngCULoTOK27EWiuI",
 			"nsrc": [
 				"Keep screen on"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "f9rLPt76BysQKtcUJkghsKsh3HkngCULoTOK27EWiuI"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "skip_read_chapters",
-			"guid": "3_pv2EMITFCjiGuE8euV2WQNtAZAXjzdlz-59CZW618",
 			"nsrc": [
 				"Skip chapters marked read"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "3_pv2EMITFCjiGuE8euV2WQNtAZAXjzdlz-59CZW618"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "skip_filtered_chapters",
-			"guid": "Iunr4RpoBhkijCa5-8syOpaBW0ldfPQF3ycjrsz5f6w",
 			"nsrc": [
 				"Skip filtered chapters"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Iunr4RpoBhkijCa5-8syOpaBW0ldfPQF3ycjrsz5f6w"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "navigation",
-			"guid": "35PCdwbIevpxwavStJbMM6f99gNomxLOb4xk8lLZolo",
 			"nsrc": [
 				"Navigation"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "35PCdwbIevpxwavStJbMM6f99gNomxLOb4xk8lLZolo"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "volume_keys",
-			"guid": "X_R6-EL4Tz6_cbe-mq22Eprfpb4Jlaf2zHaiwY5_HCc",
 			"nsrc": [
 				"Volume keys"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "X_R6-EL4Tz6_cbe-mq22Eprfpb4Jlaf2zHaiwY5_HCc"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "invert_volume_keys",
-			"guid": "DsjlrDhzpILpbXZrVrDLarpvHJ9oVaydBkBanBlvBKY",
 			"nsrc": [
 				"Invert volume keys"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "DsjlrDhzpILpbXZrVrDLarpvHJ9oVaydBkBanBlvBKY"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "tapping",
-			"guid": "tUw5PBcP3qzDlw7w1QeYtoTy2rA2_43KAXhBtc2GzGg",
 			"nsrc": [
 				"Tapping"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "tUw5PBcP3qzDlw7w1QeYtoTy2rA2_43KAXhBtc2GzGg"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "background_color",
-			"guid": "0pLU1V_ceLaHm46CjFnQCJqSVvmTy7iYKk0bABX7zJU",
 			"nsrc": [
 				"Background color"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "0pLU1V_ceLaHm46CjFnQCJqSVvmTy7iYKk0bABX7zJU"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "white",
-			"guid": "HAOMLIeWcepZpcjwJ7wpe-yK25A4vdnlPLt_aSYiocA",
 			"nsrc": [
 				"White"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "HAOMLIeWcepZpcjwJ7wpe-yK25A4vdnlPLt_aSYiocA"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "black",
-			"guid": "NupXc9sOna4VUAdbNzmvqKoq7fjWoM3Gx4eDfEPSeik",
 			"nsrc": [
 				"Black"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "NupXc9sOna4VUAdbNzmvqKoq7fjWoM3Gx4eDfEPSeik"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "default_reading_mode",
-			"guid": "EOFLKmFTCe5Ae-Wtq_pK3peI_TRaQuvr3l2fmu3-Mw4",
 			"nsrc": [
 				"Default reading mode"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "EOFLKmFTCe5Ae-Wtq_pK3peI_TRaQuvr3l2fmu3-Mw4"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "left_to_right_viewer",
-			"guid": "VPGsMk1yoj7-QyV8qOYZImyyGWfyiX3VuXs07HuPK7g",
 			"nsrc": [
 				"Left to right"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "VPGsMk1yoj7-QyV8qOYZImyyGWfyiX3VuXs07HuPK7g"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "right_to_left_viewer",
-			"guid": "C7CqafLAhof20BH1oRqNSTwR7eAUzM9DVuI9j4uypfo",
 			"nsrc": [
 				"Right to left"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "C7CqafLAhof20BH1oRqNSTwR7eAUzM9DVuI9j4uypfo"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "vertical_viewer",
-			"guid": "S76dgtuFdxKRtVLnNaVwrCpcVM8T-s1ZhTRcjLb5XUQ",
 			"nsrc": [
 				"Vertical"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "S76dgtuFdxKRtVLnNaVwrCpcVM8T-s1ZhTRcjLb5XUQ"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "continuous_vertical",
-			"guid": "zEeTg_OfAfDiKTNf2uLorQnzgfYkYf23B79ntzxEw2Y",
 			"nsrc": [
 				"Continuous vertical"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "zEeTg_OfAfDiKTNf2uLorQnzgfYkYf23B79ntzxEw2Y"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "paged",
-			"guid": "dJUyYY4LBbu52csjAPgjlHqv-ypUCQZp8f9httFZAQ4",
 			"nsrc": [
 				"Paged"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "dJUyYY4LBbu52csjAPgjlHqv-ypUCQZp8f9httFZAQ4"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "scale_type",
-			"guid": "yd6gqulAttI-Zb-AH02TbAftNIA4Ow1vMwJCkmf4egw",
 			"nsrc": [
 				"Scale type"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "yd6gqulAttI-Zb-AH02TbAftNIA4Ow1vMwJCkmf4egw"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "nav_layout",
-			"guid": "LzUubPrfRnlymnz-q_KqmEdajpP4jlZ67VTh-LkD03w",
 			"nsrc": [
 				"Navigation layout"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "LzUubPrfRnlymnz-q_KqmEdajpP4jlZ67VTh-LkD03w"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "fit_screen",
-			"guid": "Iurgn3LlVy6Rb23zUCv-CriesFzy0yPB9V6oy3Rr81s",
 			"nsrc": [
 				"Fit screen"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Iurgn3LlVy6Rb23zUCv-CriesFzy0yPB9V6oy3Rr81s"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "stretch",
-			"guid": "MBOyB3XuLgKb1S3dOMXoHVZhewJ7t93S7YdmLqpRmxM",
 			"nsrc": [
 				"Stretch"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "MBOyB3XuLgKb1S3dOMXoHVZhewJ7t93S7YdmLqpRmxM"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "fit_width",
-			"guid": "QbfP6ebA6apoM7yAZAbnWM93pw_AIFJ6pF5VUVJKoIA",
 			"nsrc": [
 				"Fit width"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "QbfP6ebA6apoM7yAZAbnWM93pw_AIFJ6pF5VUVJKoIA"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "fit_height",
-			"guid": "GqhKG9Odi7eN2NzGu_821KOEk7vU3N1g1i6gNNVEnFM",
 			"nsrc": [
 				"Fit height"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "GqhKG9Odi7eN2NzGu_821KOEk7vU3N1g1i6gNNVEnFM"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "original_size",
-			"guid": "3bNgWTOqb8eT6U9sVKtFuPQ7qmql_D9sUgJIu9Q8XgY",
 			"nsrc": [
 				"Original size"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "3bNgWTOqb8eT6U9sVKtFuPQ7qmql_D9sUgJIu9Q8XgY"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "smart_fit",
-			"guid": "TTiu10VhVg6HKLHFrD9wDFmvshAZegRpRXnszaVNHsU",
 			"nsrc": [
 				"Smart fit"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "TTiu10VhVg6HKLHFrD9wDFmvshAZegRpRXnszaVNHsU"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "zoom_start_position",
-			"guid": "nN-kGmXRFPb1rRmtDZTJu4nM6yxDeDvcblqrdveatSw",
 			"nsrc": [
 				"Zoom start position"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "nN-kGmXRFPb1rRmtDZTJu4nM6yxDeDvcblqrdveatSw"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "portrait",
-			"guid": "6DfqvfeUOEL-0Me9CWZ5B1Os0o51R1XLp7CZysoW5mo",
 			"nsrc": [
 				"Portrait"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "6DfqvfeUOEL-0Me9CWZ5B1Os0o51R1XLp7CZysoW5mo"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "landscape",
-			"guid": "sb5glIdoajcge8U--UgSkN61vlf9ftAf1MHZdrXrjc0",
 			"nsrc": [
 				"Landscape"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "sb5glIdoajcge8U--UgSkN61vlf9ftAf1MHZdrXrjc0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "red_initial",
-			"guid": "hsz8t-nRDeUVMxcYTRrpOcX1DtzbBTlblROo3BGgWPg",
 			"nsrc": [
 				"R"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "hsz8t-nRDeUVMxcYTRrpOcX1DtzbBTlblROo3BGgWPg"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "green_initial",
-			"guid": "_GKKHIx-LMjL1bFqln8KRqL3KLbJOGtReVGgEvY3eng",
 			"nsrc": [
 				"G"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "_GKKHIx-LMjL1bFqln8KRqL3KLbJOGtReVGgEvY3eng"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "blue_initial",
-			"guid": "SgldSUoKiKjsDjuGTmcVnvQvtuTUjLuHebuFTrbN4EU",
 			"nsrc": [
 				"B"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "SgldSUoKiKjsDjuGTmcVnvQvtuTUjLuHebuFTrbN4EU"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "alpha_initial",
-			"guid": "ZvPS2igGNSNfJ4GtVXrcV4HMQMU9L6qItjmF7IkWfEY",
 			"nsrc": [
 				"A"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "ZvPS2igGNSNfJ4GtVXrcV4HMQMU9L6qItjmF7IkWfEY"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "always_show_chapter_transition",
-			"guid": "1i1B73JpFdmi62bt30a5CTg9KpnLs1Zg0vFl5BGOsoA",
 			"nsrc": [
 				"Always show chapter transition"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "1i1B73JpFdmi62bt30a5CTg9KpnLs1Zg0vFl5BGOsoA"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "pref_webtoon_side_padding",
-			"guid": "DV6nS5VEc9pBa2beWxQnk1arQR62ZVgyZyDptEzXh0E",
 			"nsrc": [
 				"Side padding"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "DV6nS5VEc9pBa2beWxQnk1arQR62ZVgyZyDptEzXh0E"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "webtoon_side_padding_0",
-			"guid": "nr78np2ASS-G7E0zBw200Q60kDC0kJG6B9fmWpjSTrs",
 			"nsrc": [
 				"None"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "nr78np2ASS-G7E0zBw200Q60kDC0kJG6B9fmWpjSTrs"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "webtoon_side_padding_10",
-			"guid": "E-07uio8Bqr7bA-fh4G9CANGkla54FuFgi-AilSVaBs",
 			"nsrc": [
 				"10%"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "E-07uio8Bqr7bA-fh4G9CANGkla54FuFgi-AilSVaBs"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "webtoon_side_padding_15",
-			"guid": "woPpn8Wqo-SUAWwu8eUXeeAwGBcahY8gYVPmTVjobZs",
 			"nsrc": [
 				"15%"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "woPpn8Wqo-SUAWwu8eUXeeAwGBcahY8gYVPmTVjobZs"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "webtoon_side_padding_20",
-			"guid": "IPJddNqFEFz6ppMrqj-4ZhC6BiPw24oPRFOYP4kCuU0",
 			"nsrc": [
 				"20%"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "IPJddNqFEFz6ppMrqj-4ZhC6BiPw24oPRFOYP4kCuU0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "webtoon_side_padding_25",
-			"guid": "vNJLesjHxN8RVIpTAYKNO55ylnR7xAOppQAPNDjD0pw",
 			"nsrc": [
 				"25%"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "vNJLesjHxN8RVIpTAYKNO55ylnR7xAOppQAPNDjD0pw"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "l_nav",
-			"guid": "Z3mFfFMdZspt3dzBYbf4Ya5q1hEP1B647zm1RFYgFUg",
 			"nsrc": [
 				"L shaped"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Z3mFfFMdZspt3dzBYbf4Ya5q1hEP1B647zm1RFYgFUg"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "kindlish_nav",
-			"guid": "d09gaLfQKHbqHKFGzRPW9Is4lOrCexlVd5irQEDFjN4",
 			"nsrc": [
 				"Kindle-ish"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "d09gaLfQKHbqHKFGzRPW9Is4lOrCexlVd5irQEDFjN4"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "edge_nav",
-			"guid": "VDS_8a6bh6aJVCen9m_nsjOcdSnzT7_Y2N6W1A2zx0w",
 			"nsrc": [
 				"Edge"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "VDS_8a6bh6aJVCen9m_nsjOcdSnzT7_Y2N6W1A2zx0w"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "right_and_left_nav",
-			"guid": "AoVCIaf_xmO8IjzqRqDmLTXKnKIxVa2ZzWex5-otvx0",
 			"nsrc": [
 				"Right and Left"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "AoVCIaf_xmO8IjzqRqDmLTXKnKIxVa2ZzWex5-otvx0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "invert_tapping",
-			"guid": "DdkUOyOMpzBEq8roZG_hrtvB4aUJRtEQtjni7B5f_BE",
 			"nsrc": [
 				"Invert tapping"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "DdkUOyOMpzBEq8roZG_hrtvB4aUJRtEQtjni7B5f_BE"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "none",
-			"guid": "E8KWrYjuV6rNYOBiHEUYJc01lcgVbWvPKCdbBU3hObk",
 			"nsrc": [
 				"None"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "E8KWrYjuV6rNYOBiHEUYJc01lcgVbWvPKCdbBU3hObk"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "missing_chapters_warning_other",
-			"isSuffixPluralized": true,
-			"guid": "Pc2BUXJyZZ3NM7dQk4gQW86gJoZmz9yFo__l8s4e9MY",
 			"nsrc": [
 				"Skipping ",
 				{
@@ -1805,19 +1804,20 @@
 				},
 				" chapters, either the source is missing them or they have been filtered out"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Pc2BUXJyZZ3NM7dQk4gQW86gJoZmz9yFo__l8s4e9MY",
+			"isSuffixPluralized": true
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "start_reading",
-			"guid": "-5XFw8b0YYkp0SCPdD9jr-qHCGe62QMog7cZeWlROFU",
 			"nsrc": [
 				"Start reading"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "-5XFw8b0YYkp0SCPdD9jr-qHCGe62QMog7cZeWlROFU"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "start_reading_chapter_",
-			"guid": "dhYxjTjRurEmRtDpvPA7Dmqy-aolxGSAbtnMeV0t7_0",
 			"nsrc": [
 				"Start reading Chapter ",
 				{
@@ -1825,11 +1825,11 @@
 					"v": "%1$s"
 				}
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "dhYxjTjRurEmRtDpvPA7Dmqy-aolxGSAbtnMeV0t7_0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "continue_reading_chapter_",
-			"guid": "VSx02unAfVpZMZjM5Ch1lClXeTWa_hZl1DBlD9g4BHE",
 			"nsrc": [
 				"Continue reading Chapter ",
 				{
@@ -1837,19 +1837,19 @@
 					"v": "%1$s"
 				}
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "VSx02unAfVpZMZjM5Ch1lClXeTWa_hZl1DBlD9g4BHE"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "continue_reading",
-			"guid": "5nIU3KDWhHbJ9FJihG1SY6TwHm49uNfMfb32gEmyBjQ",
 			"nsrc": [
 				"Continue reading"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "5nIU3KDWhHbJ9FJihG1SY6TwHm49uNfMfb32gEmyBjQ"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "chapters_",
-			"guid": "F1RxS0BEDD6TIHPdzRKw9ICZjpNvfpJRu4cj-9lfGoc",
 			"nsrc": [
 				"Chapters ",
 				{
@@ -1857,35 +1857,35 @@
 					"v": "%1$s"
 				}
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "F1RxS0BEDD6TIHPdzRKw9ICZjpNvfpJRu4cj-9lfGoc"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "added_to_library",
-			"guid": "VzfIwCvfT_SWF4N-PSl7tLjp34mDypzzNQ98lzA9grs",
 			"nsrc": [
 				"Added to library"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "VzfIwCvfT_SWF4N-PSl7tLjp34mDypzzNQ98lzA9grs"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "add_to_library",
-			"guid": "-JntRMSaIHPSXHjygiupqQkbc6IuVZwdLa26WPCESm8",
 			"nsrc": [
 				"Add to Library"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "-JntRMSaIHPSXHjygiupqQkbc6IuVZwdLa26WPCESm8"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "removed_from_library",
-			"guid": "35VYh_G4PHB9o0W7-hU6IjWIlgjgxhTRS0yEkmcb_3w",
 			"nsrc": [
 				"Removed from library"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "35VYh_G4PHB9o0W7-hU6IjWIlgjgxhTRS0yEkmcb_3w"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "_copied_to_clipboard",
-			"guid": "QSmAX5m679wB0QyJtbDO2kU8UNCbW8w4IL9BjyLisIU",
 			"nsrc": [
 				{
 					"t": "x",
@@ -1893,11 +1893,11 @@
 				},
 				" copied to clipboard"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "QSmAX5m679wB0QyJtbDO2kU8UNCbW8w4IL9BjyLisIU"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "source_not_installed_",
-			"guid": "tWY-2CNXp4Bgu0ORF0YJvuSxU9JDAUqON9ZoFdrEirc",
 			"nsrc": [
 				"Source not installed: ",
 				{
@@ -1905,599 +1905,599 @@
 					"v": "%1$s"
 				}
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "tWY-2CNXp4Bgu0ORF0YJvuSxU9JDAUqON9ZoFdrEirc"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "mark_all_chapters_as_read",
-			"guid": "vb6M0a5p7nlhFaVF25AqUDe_RGdqcsxarx6UG_GsqDg",
 			"nsrc": [
 				"Mark all chapters as read?"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "vb6M0a5p7nlhFaVF25AqUDe_RGdqcsxarx6UG_GsqDg"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "mark_all_chapters_as_unread",
-			"guid": "fIe7OJGoVZirD43ou4RVwBOAP5yU7sh56qU22laqs70",
 			"nsrc": [
 				"Mark all chapters as unread?"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "fIe7OJGoVZirD43ou4RVwBOAP5yU7sh56qU22laqs70"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "remove_from_library",
-			"guid": "vthb4GHYrwqJ25tkTSvcBTYugT9CgANmMhJr6DldzM0",
 			"nsrc": [
 				"Remove from library"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "vthb4GHYrwqJ25tkTSvcBTYugT9CgANmMhJr6DldzM0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "select_starting_chapter",
-			"guid": "rTa-rfbkWhT1SOkZhUEkxuCsM4muY36dfZLIp-SjVyw",
 			"nsrc": [
 				"Select starting chapter"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "rTa-rfbkWhT1SOkZhUEkxuCsM4muY36dfZLIp-SjVyw"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "select_ending_chapter",
-			"guid": "M4mHJaykq6HWj58nIQzsqHlKduoaGMLjR-IDnYa4Xk8",
 			"nsrc": [
 				"Select ending chapter"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "M4mHJaykq6HWj58nIQzsqHlKduoaGMLjR-IDnYa4Xk8"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "search_chapters",
-			"guid": "546dbT7ZGO5rIG5FYjj6sVANQDhUb8LgjW7cp0nC4OY",
 			"nsrc": [
 				"Search chapters"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "546dbT7ZGO5rIG5FYjj6sVANQDhUb8LgjW7cp0nC4OY"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "next_unread_chapter",
-			"guid": "e04nJSjVw91KEg0TgQUxdPV8cIkfF7VwvYKs1ZFUH0A",
 			"nsrc": [
 				"Next unread chapter"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "e04nJSjVw91KEg0TgQUxdPV8cIkfF7VwvYKs1ZFUH0A"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "next_5_unread",
-			"guid": "Rjdo1_UmkY78kK8069pLRZ2hq3_Qpf_PjUxF8KQoxr8",
 			"nsrc": [
 				"Next 5 unread"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Rjdo1_UmkY78kK8069pLRZ2hq3_Qpf_PjUxF8KQoxr8"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "custom_range",
-			"guid": "TiQDmVcsTfL_uP9vYItHBvqMm4-QbEioiXRjeBE4P-w",
 			"nsrc": [
 				"Custom range"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "TiQDmVcsTfL_uP9vYItHBvqMm4-QbEioiXRjeBE4P-w"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "all_chapters",
-			"guid": "xQ_fXPRobfNykpLvURDWEDqL6xjfce54bFHNUAlWLLg",
 			"nsrc": [
 				"All chapters"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "xQ_fXPRobfNykpLvURDWEDqL6xjfce54bFHNUAlWLLg"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "all_unread_chapters",
-			"guid": "cidU4cU_62qzpISOsMJr885GLmBqMvWC69iCQnZGyvA",
 			"nsrc": [
 				"All unread chapters"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "cidU4cU_62qzpISOsMJr885GLmBqMvWC69iCQnZGyvA"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "all_read_chapters",
-			"guid": "c-b_wOG1KoH3QdvemRbT425NOfJcSxqYmampEL2IrYQ",
 			"nsrc": [
 				"All read chapters"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "c-b_wOG1KoH3QdvemRbT425NOfJcSxqYmampEL2IrYQ"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "all_but_bookmarked_chapters",
-			"guid": "XXYiOQ6ywkRMuMGi66aeLnHCmcs_BMaNIILfWTeu8Oo",
 			"nsrc": [
 				"All but bookmarked chapters"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "XXYiOQ6ywkRMuMGi66aeLnHCmcs_BMaNIILfWTeu8Oo"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "show_bookmarked_chapters",
-			"guid": "59ANLfGrC9sYWWJ7soKLOgvTTiB-X56ddjZv8_wpvvk",
 			"nsrc": [
 				"Show bookmarked chapters"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "59ANLfGrC9sYWWJ7soKLOgvTTiB-X56ddjZv8_wpvvk"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "show_downloaded_chapters",
-			"guid": "RdhknvMYUXEeI5xGX57XnaOOt-3QNVOXVWmFzMdt-RY",
 			"nsrc": [
 				"Show downloaded chapters"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "RdhknvMYUXEeI5xGX57XnaOOt-3QNVOXVWmFzMdt-RY"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "show_unread_chapters",
-			"guid": "bEWBwQs9W7nT5Uod7_0VmZugV3GHYc344WnH3gWBBs8",
 			"nsrc": [
 				"Show unread chapters"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "bEWBwQs9W7nT5Uod7_0VmZugV3GHYc344WnH3gWBBs8"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "show_read_chapters",
-			"guid": "Vr1ax3wE48yESWD5OV2cIQaBr_uuVtbCfEX_kbp2J20",
 			"nsrc": [
 				"Show read chapters"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Vr1ax3wE48yESWD5OV2cIQaBr_uuVtbCfEX_kbp2J20"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "hide_chapter_titles",
-			"guid": "gfLT8d325ksfRKQ5Dj92YdLF1785jSmgjWimm1_nU9Q",
 			"nsrc": [
 				"Hide chapter titles"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "gfLT8d325ksfRKQ5Dj92YdLF1785jSmgjWimm1_nU9Q"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "sort_by_source_s_order",
-			"guid": "LNfxBPO_lVWgBayQDFluUF42ycjQ1VaJXg0ytvQZmo0",
 			"nsrc": [
 				"Sort by source's order"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "LNfxBPO_lVWgBayQDFluUF42ycjQ1VaJXg0ytvQZmo0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "sort_by_chapter_number",
-			"guid": "8GH_VjvU5TN8RL1DJwYVByvb08G21u9LLU4jBF7FGyo",
 			"nsrc": [
 				"Sort by chapter number"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "8GH_VjvU5TN8RL1DJwYVByvb08G21u9LLU4jBF7FGyo"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "newest_first",
-			"guid": "MobJA0FZoPNP6s8GgyEGk5Z05eKcjZ7knk1Qr7fAKbc",
 			"nsrc": [
 				"Newest to oldest"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "MobJA0FZoPNP6s8GgyEGk5Z05eKcjZ7knk1Qr7fAKbc"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "oldest_first",
-			"guid": "r0wEECvy6Uo5enPtRzDJKsLQp9_xK6W0cKlmirilMC0",
 			"nsrc": [
 				"Oldest to newest"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "r0wEECvy6Uo5enPtRzDJKsLQp9_xK6W0cKlmirilMC0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "failed_to_update_cover",
-			"guid": "YQ9Pslar5DpY7LteD-YuSor3-Ohnncut5xA_womBg7c",
 			"nsrc": [
 				"Failed to update cover"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "YQ9Pslar5DpY7LteD-YuSor3-Ohnncut5xA_womBg7c"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "must_be_in_library_to_edit",
-			"guid": "re5C-dOrMmRYYatR4pDIEGir1t9sA6GrjI3uauuQ-Hs",
 			"nsrc": [
 				"Manga must be in your library to edit"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "re5C-dOrMmRYYatR4pDIEGir1t9sA6GrjI3uauuQ-Hs"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "cover_saved",
-			"guid": "1YfuduRire5UcC4X8zgoDYQaCOhDqNRFDWwK_1CNNPo",
 			"nsrc": [
 				"Cover saved"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "1YfuduRire5UcC4X8zgoDYQaCOhDqNRFDWwK_1CNNPo"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "error_saving_cover",
-			"guid": "7b_tbC0vJokC6pbjnD5bInOL_7G0OdAXW356nPjaKKk",
 			"nsrc": [
 				"Error saving cover"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "7b_tbC0vJokC6pbjnD5bInOL_7G0OdAXW356nPjaKKk"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "error_sharing_cover",
-			"guid": "xQocGcan1uFSG-TezMrcv7i-cP0Pe76eIWbt4HagfMY",
 			"nsrc": [
 				"Error sharing cover"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "xQocGcan1uFSG-TezMrcv7i-cP0Pe76eIWbt4HagfMY"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "custom_manga_info",
-			"guid": "zqx57op51LrF8xEbhH3gB9ZAjf8hRcKRWgn3rKmO51c",
 			"nsrc": [
 				"Custom manga info"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "zqx57op51LrF8xEbhH3gB9ZAjf8hRcKRWgn3rKmO51c"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "set_as_default",
-			"guid": "086GVeyCI86-O4ZnovrYS29Vg0gzYkZbpU6Jr6y_Kis",
 			"nsrc": [
 				"Set as default"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "086GVeyCI86-O4ZnovrYS29Vg0gzYkZbpU6Jr6y_Kis"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "tracking",
-			"guid": "fZhmHvNVgb2WvnwMpxmxVtQMoZMaXORd2ibT-SZm1Ys",
-			"notes": {
-				"desc": "Tracking"
-			},
 			"nsrc": [
 				"Tracking"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "fZhmHvNVgb2WvnwMpxmxVtQMoZMaXORd2ibT-SZm1Ys",
+			"notes": {
+				"desc": "Tracking"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "tracked",
-			"guid": "ZlLL4fGdPSuS3w2p-kWAjb7vtIsJBhD1q9KOeJEpAJA",
 			"nsrc": [
 				"Tracked"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "ZlLL4fGdPSuS3w2p-kWAjb7vtIsJBhD1q9KOeJEpAJA"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "services",
-			"guid": "LVLfgmMnGnMA4lyB9tKtml9AFqMz8uSPYrAd_m_nvf0",
 			"nsrc": [
 				"Services"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "LVLfgmMnGnMA4lyB9tKtml9AFqMz8uSPYrAd_m_nvf0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "sync_chapters_after_reading",
-			"guid": "dW-LPBUDZa9ZGOMBFDvMBEx7gtRRASof1dy20CCWbxQ",
 			"nsrc": [
 				"Sync chapters after reading"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "dW-LPBUDZa9ZGOMBFDvMBEx7gtRRASof1dy20CCWbxQ"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "reading",
-			"guid": "BCDgHQUuX-glRXjK5RYzWLiKvfDZfAZbV5im3himAXg",
 			"nsrc": [
 				"Reading"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "BCDgHQUuX-glRXjK5RYzWLiKvfDZfAZbV5im3himAXg"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "currently_reading",
-			"guid": "cbSe_BNLwFsomZVEWi0GTNEJ6Mao82of7c6NS6eDVM4",
 			"nsrc": [
 				"Currently Reading"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "cbSe_BNLwFsomZVEWi0GTNEJ6Mao82of7c6NS6eDVM4"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "dropped",
-			"guid": "LYynjNIz72cF50SS1OXJbvPr7MAIjLxw9gVow_4Sz_c",
 			"nsrc": [
 				"Dropped"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "LYynjNIz72cF50SS1OXJbvPr7MAIjLxw9gVow_4Sz_c"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "on_hold",
-			"guid": "x8gsoYYeRGdYb0x6VRUjBIX8z4Vv_6B3coaf5CgwbLo",
 			"nsrc": [
 				"On hold"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "x8gsoYYeRGdYb0x6VRUjBIX8z4Vv_6B3coaf5CgwbLo"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "plan_to_read",
-			"guid": "EA9iZ6SE2GG97cnEhFB_R2N09qjw5QKImKEDwi1gSGU",
 			"nsrc": [
 				"Plan to read"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "EA9iZ6SE2GG97cnEhFB_R2N09qjw5QKImKEDwi1gSGU"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "want_to_read",
-			"guid": "XtNPZKSNMlWIZLncN7R3g2WMvjXkyok6HD8P-aLD71s",
 			"nsrc": [
 				"Want to Read"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "XtNPZKSNMlWIZLncN7R3g2WMvjXkyok6HD8P-aLD71s"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "paused",
-			"guid": "l0UZpsXZnaycQm2s1a667I4AKRUiCDoh8faRBAoIwy8",
 			"nsrc": [
 				"Paused"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "l0UZpsXZnaycQm2s1a667I4AKRUiCDoh8faRBAoIwy8"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "rereading",
-			"guid": "D8J75_kmWSq7IFTsNEViQj9LKmW5czbN2rvN6NhWFi0",
 			"nsrc": [
 				"Rereading"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "D8J75_kmWSq7IFTsNEViQj9LKmW5czbN2rvN6NhWFi0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "score",
-			"guid": "bc1arDgNPnGeMzUyV9RBZCgCGTT-rS7QftpOUnt4xfU",
 			"nsrc": [
 				"Score"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "bc1arDgNPnGeMzUyV9RBZCgCGTT-rS7QftpOUnt4xfU"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "status",
-			"guid": "BYUSJBCIrcTUzre5sOlDt_5DTKLFSCT3gCjuLbs26Uk",
 			"nsrc": [
 				"Status"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "BYUSJBCIrcTUzre5sOlDt_5DTKLFSCT3gCjuLbs26Uk"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "started",
-			"guid": "Plz4DpsSw4n_xqGDSRumsnzp8uftskZiBkD-KIaPKfs",
 			"nsrc": [
 				"Started"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Plz4DpsSw4n_xqGDSRumsnzp8uftskZiBkD-KIaPKfs"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "type",
-			"guid": "sV7cmhJOzX58-qayIAQRRM-sfBi6y-cLcMVyqkiD-lE",
 			"nsrc": [
 				"Type"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "sV7cmhJOzX58-qayIAQRRM-sfBi6y-cLcMVyqkiD-lE"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "url_not_set_click_again",
-			"guid": "61Apnoa_5m61OWybH8wwbXmDcq_rYqJk847c_Pj593I",
 			"nsrc": [
 				"Manga URL not set, please click title and select manga again"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "61Apnoa_5m61OWybH8wwbXmDcq_rYqJk847c_Pj593I"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "refresh_tracking",
-			"guid": "BBmg1wcHCXd_7-M0GdKSVka6ytQL1IxV4ghzoo_8GvI",
 			"nsrc": [
 				"Refresh tracking"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "BBmg1wcHCXd_7-M0GdKSVka6ytQL1IxV4ghzoo_8GvI"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "add_tracking",
-			"guid": "6wJlLh7DBrocgpvx47TL8hna9fKnth8bppMYBFrM-tM",
 			"nsrc": [
 				"Add tracking"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "6wJlLh7DBrocgpvx47TL8hna9fKnth8bppMYBFrM-tM"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "source_unsupported",
-			"guid": "gks4bWWDDbYU3WqFt4sCDQzKkk818PdlB7ib_dco-_U",
 			"nsrc": [
 				"Source is not supported"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "gks4bWWDDbYU3WqFt4sCDQzKkk818PdlB7ib_dco-_U"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "started_reading_date",
-			"guid": "IdKSaHZYLeKCreMhJvSr90in8riPYe3xZnx4rn1EEjs",
 			"nsrc": [
 				"Started reading date"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "IdKSaHZYLeKCreMhJvSr90in8riPYe3xZnx4rn1EEjs"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "finished_reading_date",
-			"guid": "jkNC1t_pdP_Few1ZGvDlApIV5bi4RFhd7tdSlaPBm_U",
 			"nsrc": [
 				"Finished reading date"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "jkNC1t_pdP_Few1ZGvDlApIV5bi4RFhd7tdSlaPBm_U"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "myanimelist_relogin",
-			"guid": "OH8biETAPZyxtx6m-XHb4BUqwPOgCWsRBnukgGV7niE",
 			"nsrc": [
 				"Please log in to MAL again"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "OH8biETAPZyxtx6m-XHb4BUqwPOgCWsRBnukgGV7niE"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "select_sources",
-			"guid": "X0_pFoQrmtP7HRDl7tJJRY9v4aAvjI8hpck4OCcfqic",
-			"notes": {
-				"desc": "Migration"
-			},
 			"nsrc": [
 				"Select sources"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "X0_pFoQrmtP7HRDl7tJJRY9v4aAvjI8hpck4OCcfqic",
+			"notes": {
+				"desc": "Migration"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "source_migration",
-			"guid": "Gm-hW1MyWTyz6S6nDLvIqHjT-gG1tYCMifCfrhoH7HA",
 			"nsrc": [
 				"Source migration"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Gm-hW1MyWTyz6S6nDLvIqHjT-gG1tYCMifCfrhoH7HA"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "migrate",
-			"guid": "mtYe3HWlkJC02486UH-CxoJ2HFrYI4YFFBMUIXpeRkw",
 			"nsrc": [
 				"Migrate"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "mtYe3HWlkJC02486UH-CxoJ2HFrYI4YFFBMUIXpeRkw"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "copy_value",
-			"guid": "JUjbLHtxbd3o_tATtMLJSXSM4DthXJI9BM3oDkUcWHw",
 			"nsrc": [
 				"Copy"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "JUjbLHtxbd3o_tATtMLJSXSM4DthXJI9BM3oDkUcWHw"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "settings",
-			"guid": "V1BNy458nW_4fby7kPg8YMQAXVoyE1I023tRCSMrLS8",
-			"notes": {
-				"desc": "Settings"
-			},
 			"nsrc": [
 				"Settings"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "V1BNy458nW_4fby7kPg8YMQAXVoyE1I023tRCSMrLS8",
+			"notes": {
+				"desc": "Settings"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "general",
-			"guid": "lLI59L5MxXwJ1LV5AxkbDuJSKWXCBvp6ClAXxPBGbPQ",
 			"nsrc": [
 				"General"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "lLI59L5MxXwJ1LV5AxkbDuJSKWXCBvp6ClAXxPBGbPQ"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "reader",
-			"guid": "h48IwLQb_Kr4DzWI6wptPwL5q7m41cV5dTuAq2ZSm94",
 			"nsrc": [
 				"Reader"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "h48IwLQb_Kr4DzWI6wptPwL5q7m41cV5dTuAq2ZSm94"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "advanced",
-			"guid": "MIYZSE9NSGP-yv7tdojgfdRQPPyMO1Tjle2C_C8urvk",
 			"nsrc": [
 				"Advanced"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "MIYZSE9NSGP-yv7tdojgfdRQPPyMO1Tjle2C_C8urvk"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "about",
-			"guid": "7IrQE75wPt_a7eal5Qh--VZACMEgkVYlt3S7hHc2540",
 			"nsrc": [
 				"About"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "7IrQE75wPt_a7eal5Qh--VZACMEgkVYlt3S7hHc2540"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "help",
-			"guid": "18nSKxHYQvVD7z1fD6sgaxYNQoDcUpyPgWVOURJBw0A",
 			"nsrc": [
 				"Help"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "18nSKxHYQvVD7z1fD6sgaxYNQoDcUpyPgWVOURJBw0A"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "search_settings",
-			"guid": "VvV6N8NUb3jOkDNdLi95QMWeXD2P9Hx-CJVHw16WVLs",
 			"nsrc": [
 				"Search settings"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "VvV6N8NUb3jOkDNdLi95QMWeXD2P9Hx-CJVHw16WVLs"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "app_theme",
-			"guid": "Ay5QX19Ktp0pIgU9HrqiMQolqdwoNnVJUowNH8REpFE",
-			"notes": {
-				"desc": "General settings"
-			},
 			"nsrc": [
 				"App theme"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Ay5QX19Ktp0pIgU9HrqiMQolqdwoNnVJUowNH8REpFE",
+			"notes": {
+				"desc": "General settings"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "light_blue",
-			"guid": "b6xVBsUaBzyMbN61SiJsn2l3sKSctT5RimaMMtTgYok",
 			"nsrc": [
 				"Light Blue"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "b6xVBsUaBzyMbN61SiJsn2l3sKSctT5RimaMMtTgYok"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "dark",
-			"guid": "yEll6ZALYuqOaIJT4ygenihlMWlJeO5A_2v2TEwdRR4",
 			"nsrc": [
 				"Dark"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "yEll6ZALYuqOaIJT4ygenihlMWlJeO5A_2v2TEwdRR4"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "amoled_black",
-			"guid": "xgVaJa4ZYUtko2-Zzaq9Y61dH5lC8R-P0bNcwrpfuSU",
 			"nsrc": [
 				"AMOLED Black"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "xgVaJa4ZYUtko2-Zzaq9Y61dH5lC8R-P0bNcwrpfuSU"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "dark_blue",
-			"guid": "GdY9V5fVWPbmZrlWiTa3fXTFAclhAPih-Kw4lRdvam8",
 			"nsrc": [
 				"Dark Blue"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "GdY9V5fVWPbmZrlWiTa3fXTFAclhAPih-Kw4lRdvam8"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "locale",
-			"guid": "j9Gr6KxUhIsBdS32rsTQA-xZRzco-e8d4y-jj-f79No",
 			"nsrc": [
 				"Locale"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "j9Gr6KxUhIsBdS32rsTQA-xZRzco-e8d4y-jj-f79No"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "system_default",
-			"guid": "BNmjkp25hD7w3o4mKGO1yyH3veRFSMMv2JGywL44JAI",
 			"nsrc": [
 				"System default"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "BNmjkp25hD7w3o4mKGO1yyH3veRFSMMv2JGywL44JAI"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "date_format",
-			"guid": "kFkm5As4gCEavY_SfLR_QvMW9mvZWynNaBgFuJHY0Co",
 			"nsrc": [
 				"Date format"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "kFkm5As4gCEavY_SfLR_QvMW9mvZWynNaBgFuJHY0Co"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "check_for_updates",
-			"guid": "Rpp7U8KuM9F7vk5LENGa35eaArh5E23L4z8CoYvE3Bc",
 			"nsrc": [
 				"Check for updates"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Rpp7U8KuM9F7vk5LENGa35eaArh5E23L4z8CoYvE3Bc"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "updated_to_",
-			"guid": "fqd4WajLYVT61enjx3OP0SiB4XZy8IYrd_n5a9Y_PDg",
 			"nsrc": [
 				"Updated to v",
 				{
@@ -2505,150 +2505,150 @@
 					"v": "%1$s"
 				}
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "fqd4WajLYVT61enjx3OP0SiB4XZy8IYrd_n5a9Y_PDg"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "secure_screen",
-			"guid": "9DZZYSdVPlVroNYqXg4G-64KCbH4rjaCBQ09lf61FRw",
 			"nsrc": [
 				"Secure screen"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "9DZZYSdVPlVroNYqXg4G-64KCbH4rjaCBQ09lf61FRw"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "hide_app_block_screenshots",
-			"guid": "jKZKJcy5mxyLzr83aa1Ek05MdhK8faqBN_hZUYPxguo",
 			"nsrc": [
 				"Hide app contents when switching apps and block screenshots"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "jKZKJcy5mxyLzr83aa1Ek05MdhK8faqBN_hZUYPxguo"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "hide_notification_content",
-			"guid": "clfTjjrMOetAReVvFqYexxQGGcatR50X_lc6gRx-pUs",
 			"nsrc": [
 				"Hide notification content"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "clfTjjrMOetAReVvFqYexxQGGcatR50X_lc6gRx-pUs"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "security",
-			"guid": "kRJcEKPmv8QlDov9_nSLedG9YgythdNQQMmUGCwUk_4",
 			"nsrc": [
 				"Security"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "kRJcEKPmv8QlDov9_nSLedG9YgythdNQQMmUGCwUk_4"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "backup",
-			"guid": "eCebO0-Q_ffk8Sa7ZE0i-2lvwmOgHfwL2GkkvnnSFk4",
-			"notes": {
-				"desc": "Backup"
-			},
 			"nsrc": [
 				"Backup"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "eCebO0-Q_ffk8Sa7ZE0i-2lvwmOgHfwL2GkkvnnSFk4",
+			"notes": {
+				"desc": "Backup"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "backup_and_restore",
-			"guid": "WauZWTAX0NfsnR76172TOgZg_C4mImMuM9-tqnwPcUo",
 			"nsrc": [
 				"Backup and restore"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "WauZWTAX0NfsnR76172TOgZg_C4mImMuM9-tqnwPcUo"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "create_backup",
-			"guid": "CGPtNaR_C_SRk4krWcb4Zf0rlXEPhPcpHnYlfTervxc",
 			"nsrc": [
 				"Create backup"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "CGPtNaR_C_SRk4krWcb4Zf0rlXEPhPcpHnYlfTervxc"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "can_be_used_to_restore",
-			"guid": "RK9xZ5md46Yq6KtbkWYRDIwKc7Ds88MK4qZa-3jeTyg",
 			"nsrc": [
 				"Can be used to restore current library"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "RK9xZ5md46Yq6KtbkWYRDIwKc7Ds88MK4qZa-3jeTyg"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "restore_backup",
-			"guid": "tzSOmiJwGmbpTXFRuJMYkTmU02AvEur5gzrr85WfFow",
 			"nsrc": [
 				"Restore backup"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "tzSOmiJwGmbpTXFRuJMYkTmU02AvEur5gzrr85WfFow"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "restore_from_backup_file",
-			"guid": "rixHOjM17WNZx-jCTKrDJQ8NRBJflS0_9j8WPbzPWcQ",
 			"nsrc": [
 				"Restore library from backup file"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "rixHOjM17WNZx-jCTKrDJQ8NRBJflS0_9j8WPbzPWcQ"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "restore_in_progress",
-			"guid": "sDghU3PAgiMpGR91wOsueeHA8DCgE1wt3hEPB14lwxA",
 			"nsrc": [
 				"Restore already in progress"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "sDghU3PAgiMpGR91wOsueeHA8DCgE1wt3hEPB14lwxA"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "backup_in_progress",
-			"guid": "NWO_3AVNVY7a6PAwhKXmiBdDRkRXgOEpEEWG6ZgEMoE",
 			"nsrc": [
 				"Backup already in progress"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "NWO_3AVNVY7a6PAwhKXmiBdDRkRXgOEpEEWG6ZgEMoE"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "backup_location",
-			"guid": "Ioi2E-Ht8s3KaZIzHx8e8DmipmT4M9f5z_RUBwksCyg",
 			"nsrc": [
 				"Backup location"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Ioi2E-Ht8s3KaZIzHx8e8DmipmT4M9f5z_RUBwksCyg"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "automatic_backups",
-			"guid": "XfQ4gUXHtnOb9Mpfxl8zti75_edqbzAJraWMOzXk0e8",
 			"nsrc": [
 				"Automatic backups"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "XfQ4gUXHtnOb9Mpfxl8zti75_edqbzAJraWMOzXk0e8"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "backup_frequency",
-			"guid": "ktPIwUSifhvZdqvcx1mg2ceKuJs2Tc1BDipEyamhAzM",
 			"nsrc": [
 				"Backup frequency"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "ktPIwUSifhvZdqvcx1mg2ceKuJs2Tc1BDipEyamhAzM"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "max_auto_backups",
-			"guid": "hnfZilcpx6HulROgOytk2gNYbW8t6ANVGp1a78gbGOg",
 			"nsrc": [
 				"Max automatic backups"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "hnfZilcpx6HulROgOytk2gNYbW8t6ANVGp1a78gbGOg"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "invalid_backup_file",
-			"guid": "3v0ln70LR3XL4EGA8XI1Yaz62H_Mf13PtISdSjFmupQ",
 			"nsrc": [
 				"Invalid backup file"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "3v0ln70LR3XL4EGA8XI1Yaz62H_Mf13PtISdSjFmupQ"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "invalid_backup_file_type",
-			"guid": "etVdxDl96xsnSIZe67TBgvPDHvZi-8XCK1TiYeJI61o",
 			"nsrc": [
 				"Invalid backup file type: ",
 				{
@@ -2657,107 +2657,107 @@
 				},
 				"\nIt should end with .proto.gz or .json."
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "etVdxDl96xsnSIZe67TBgvPDHvZi-8XCK1TiYeJI61o"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "file_is_missing_data",
-			"guid": "DDDw6iIMN9p2Ruoe92tfwaPZBQTqcNpk9ewPUYGJtGA",
 			"nsrc": [
 				"File is missing data."
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "DDDw6iIMN9p2Ruoe92tfwaPZBQTqcNpk9ewPUYGJtGA"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "backup_has_no_manga",
-			"guid": "osBbxnlybp-9yKwlhQO8OZjOrb1I-jr76y8mi7LmbV4",
 			"nsrc": [
 				"Backup does not contain any manga."
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "osBbxnlybp-9yKwlhQO8OZjOrb1I-jr76y8mi7LmbV4"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "backup_failed",
-			"guid": "luxHl7frItbylNTq1f7BPUsSKRqlosIhqPIk1Hu1xD0",
 			"nsrc": [
 				"Backup failed"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "luxHl7frItbylNTq1f7BPUsSKRqlosIhqPIk1Hu1xD0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "backup_created",
-			"guid": "e8QSmig05hQT0LZ3dnf1AnzJxc89xaKOlPdEC2wmFh8",
 			"nsrc": [
 				"Backup created"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "e8QSmig05hQT0LZ3dnf1AnzJxc89xaKOlPdEC2wmFh8"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "restore_completed",
-			"guid": "GceD4atNGbpkR2QZGZEinU84V0bvXq6Zc8FJXqmvppE",
 			"nsrc": [
 				"Restore completed"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "GceD4atNGbpkR2QZGZEinU84V0bvXq6Zc8FJXqmvppE"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "restore_missing_sources",
-			"guid": "djxigi0SyciRAQl-OEOMoHuEEa8p9xuayG9KTbpCR28",
 			"nsrc": [
 				"Missing sources:"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "djxigi0SyciRAQl-OEOMoHuEEa8p9xuayG9KTbpCR28"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "restore_missing_trackers",
-			"guid": "sa4MzeqmxQ3XFc7ctN6YzykxZC0pOVpUhPb8_DSxlB0",
 			"nsrc": [
 				"Trackers not logged into:"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "sa4MzeqmxQ3XFc7ctN6YzykxZC0pOVpUhPb8_DSxlB0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "restore_content",
-			"guid": "PhjBH-rKHup-EgEYqgYdtaGWiXltWX6_6ptAADdQ3kE",
 			"nsrc": [
 				"Restore uses sources to fetch data, carrier costs may apply.\n\nMake sure you have installed all necessary extensions and are logged in to sources and tracking services before restoring."
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "PhjBH-rKHup-EgEYqgYdtaGWiXltWX6_6ptAADdQ3kE"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "restoring_backup_canceled",
-			"guid": "OIaxORNUZfwVDzX01uwaJa5oR0PYWEOtOenrDBasOvE",
 			"nsrc": [
 				"Canceled restore"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "OIaxORNUZfwVDzX01uwaJa5oR0PYWEOtOenrDBasOvE"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "creating_backup",
-			"guid": "J9K5-pkb0cVrN5vUL6mzxzOmfv_2oCf40iN0t6kvo7I",
 			"nsrc": [
 				"Creating backup"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "J9K5-pkb0cVrN5vUL6mzxzOmfv_2oCf40iN0t6kvo7I"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "what_should_backup",
-			"guid": "RZVzTRYcbBzNbAuEmJ-XtUhLMoGa4FvjFVEWVJtuZDI",
 			"nsrc": [
 				"What do you want to backup?"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "RZVzTRYcbBzNbAuEmJ-XtUhLMoGa4FvjFVEWVJtuZDI"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "restoring_backup",
-			"guid": "EV7Yy2F1isCBR5L6yJKOO4BheyLn8Iq0hIs5TZZ0CHY",
 			"nsrc": [
 				"Restoring backup"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "EV7Yy2F1isCBR5L6yJKOO4BheyLn8Iq0hIs5TZZ0CHY"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "restore_duration",
-			"guid": "r317yk9kNUjZdZ66_dNR-H9_aSUYHkpIpFTdctXFHC4",
 			"nsrc": [
 				{
 					"t": "x",
@@ -2770,28 +2770,27 @@
 				},
 				" sec"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "r317yk9kNUjZdZ66_dNR-H9_aSUYHkpIpFTdctXFHC4"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "progress",
-			"guid": "M0u5w8Tx0ZXR9dAohFW9Pt2r5giJ2G3qVNublAcig4k",
 			"nsrc": [
 				"Progress"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "M0u5w8Tx0ZXR9dAohFW9Pt2r5giJ2G3qVNublAcig4k"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "complete",
-			"guid": "zH7Vwsre4K48D9Kx6IXqrnvZ24DGNogWd1ZwykkCy9U",
 			"nsrc": [
 				"Complete"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "zH7Vwsre4K48D9Kx6IXqrnvZ24DGNogWd1ZwykkCy9U"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "restore_completed_message_other",
-			"isSuffixPluralized": true,
-			"guid": "tkc4zq_ATauIxzXI7kJs_cduBFCQDVR4_VODU-l2Eg8",
 			"nsrc": [
 				"Done in ",
 				{
@@ -2805,86 +2804,87 @@
 				},
 				" errors"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "tkc4zq_ATauIxzXI7kJs_cduBFCQDVR4_VODU-l2Eg8",
+			"isSuffixPluralized": true
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "clear_chapter_cache",
-			"guid": "gPqVDlajP2hf4NQoL37UXVQjJnqN1QR-KGD6--7lYtE",
-			"notes": {
-				"desc": "Advanced section"
-			},
 			"nsrc": [
 				"Clear chapter cache"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "gPqVDlajP2hf4NQoL37UXVQjJnqN1QR-KGD6--7lYtE",
+			"notes": {
+				"desc": "Advanced section"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "crash_logs",
-			"guid": "lIXJcIs2OgdQnz8l1ScAB3uJBlr3eRxRbu2eOYaKSrU",
 			"nsrc": [
 				"Crash logs"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "lIXJcIs2OgdQnz8l1ScAB3uJBlr3eRxRbu2eOYaKSrU"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "dump_crash_logs",
-			"guid": "x2ESLT5DKdxeN0Gej8LPA5qWG7iTo316O-4ovaSc4P0",
 			"nsrc": [
 				"Dump crash logs"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "x2ESLT5DKdxeN0Gej8LPA5qWG7iTo316O-4ovaSc4P0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "saves_error_logs",
-			"guid": "7j9C8QVF6eIpcKUJ6LGHnlcBd4nZDvc03H902rJx10U",
 			"nsrc": [
 				"Saves error logs to a file for sharing with the developers"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "7j9C8QVF6eIpcKUJ6LGHnlcBd4nZDvc03H902rJx10U"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "about_dont_kill_my_app",
-			"guid": "Js9xCgRWwBllPruft_FjppRnU_ck81Btaifs8bDjuGk",
 			"nsrc": [
 				"Some manufacturers have additional app restrictions that kill background services. This website has more info on how to fix it."
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Js9xCgRWwBllPruft_FjppRnU_ck81Btaifs8bDjuGk"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "crash_log_saved",
-			"guid": "VNDe5KyDmv9zBodAWEcOTblNRXVjuGIcMx9wpLxMHso",
 			"nsrc": [
 				"Crash logs saved"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "VNDe5KyDmv9zBodAWEcOTblNRXVjuGIcMx9wpLxMHso"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "network",
-			"guid": "7AsEn5zVY6GoazdYSrGd81H6NqEM73ogrxfv4aV49S4",
 			"nsrc": [
 				"Network"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "7AsEn5zVY6GoazdYSrGd81H6NqEM73ogrxfv4aV49S4"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "doh",
-			"guid": "5S5FDxrRvlAASxwWoPmSk7vN0XUUrPx_ifntVXAkxV4",
 			"nsrc": [
 				"DNS over HTTPS"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "5S5FDxrRvlAASxwWoPmSk7vN0XUUrPx_ifntVXAkxV4"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "requires_app_restart",
-			"guid": "B2yJyY-Ik9alEwuIovrIpaE88A4zkXXyTMl6S5eLCB0",
 			"nsrc": [
 				"Requires app restart to take effect"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "B2yJyY-Ik9alEwuIovrIpaE88A4zkXXyTMl6S5eLCB0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "used_",
-			"guid": "AdFVH0FaghNvk6XBU4XoB2Fuk2i482XcsAUje9w5k9g",
 			"nsrc": [
 				"Used: ",
 				{
@@ -2892,228 +2892,225 @@
 					"v": "%1$s"
 				}
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "AdFVH0FaghNvk6XBU4XoB2Fuk2i482XcsAUje9w5k9g"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "cache_delete_error",
-			"guid": "8RjflKYA-4aX6xL1kcvLIRkf1xbBklnryutVr2M1Bc0",
 			"nsrc": [
 				"An error occurred while clearing cache"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "8RjflKYA-4aX6xL1kcvLIRkf1xbBklnryutVr2M1Bc0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "clear_cookies",
-			"guid": "dzx3G5Py0eW9oqePjZ2jEOsVZAdjDn183wt77mhykcQ",
 			"nsrc": [
 				"Clear cookies"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "dzx3G5Py0eW9oqePjZ2jEOsVZAdjDn183wt77mhykcQ"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "cookies_cleared",
-			"guid": "H0anFcXApFwm8ev81zq9VxUfAl8ZQ0vz-ozBrP2M-yY",
 			"nsrc": [
 				"Cookies cleared"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "H0anFcXApFwm8ev81zq9VxUfAl8ZQ0vz-ozBrP2M-yY"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "clear_database",
-			"guid": "TUlhHhCu6Wa0Ty0Hz2_QEBfUZpEdtpnGCjs7kxNdWHE",
 			"nsrc": [
 				"Clear database"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "TUlhHhCu6Wa0Ty0Hz2_QEBfUZpEdtpnGCjs7kxNdWHE"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "clear_database_summary",
-			"guid": "ZEC1H9NgSi7t1Imj1qFmGLrytxKGpLcszjGs2xK9L9E",
 			"nsrc": [
 				"Delete manga and chapters that are not in your library"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "ZEC1H9NgSi7t1Imj1qFmGLrytxKGpLcszjGs2xK9L9E"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "clear_database_confirmation",
-			"guid": "q_ded1icFGvvG0m5eV1p8qGaiiVsbSyrKfqvKcjuQ5c",
 			"nsrc": [
 				"Are you sure? Read chapters and progress of non-library manga will be lost"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "q_ded1icFGvvG0m5eV1p8qGaiiVsbSyrKfqvKcjuQ5c"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "clear_database_completed",
-			"guid": "DCi_MG1zMHzi3rS4wc1P6jU-lTwPk0e13_e8nUSzUDU",
 			"nsrc": [
 				"Entries deleted"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "DCi_MG1zMHzi3rS4wc1P6jU-lTwPk0e13_e8nUSzUDU"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "refresh_library_metadata",
-			"guid": "R6-BryB-1IdS52xaKDk8-Nncu2IKi1NFAKpJ5wtPi_U",
 			"nsrc": [
 				"Refresh library metadata"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "R6-BryB-1IdS52xaKDk8-Nncu2IKi1NFAKpJ5wtPi_U"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "updates_covers_genres_desc",
-			"guid": "3PlB8cVhX0dPDXCpg8fxJKEuq8ZOMLUh7Bx2ZO7AK38",
 			"nsrc": [
 				"Updates covers, genres, description and manga status information"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "3PlB8cVhX0dPDXCpg8fxJKEuq8ZOMLUh7Bx2ZO7AK38"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "refresh_tracking_metadata",
-			"guid": "X-yVD39TIZsdSgLenZ_BtX_yyXcYOdTLZ0-1LYO267I",
 			"nsrc": [
 				"Refresh tracking metadata"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "X-yVD39TIZsdSgLenZ_BtX_yyXcYOdTLZ0-1LYO267I"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "updates_tracking_details",
-			"guid": "G-WK9_JktZetIRTFSUfRknukZGCuNaD4A0QXwSY4NAU",
 			"nsrc": [
 				"Updates status, score and last chapter read from the tracking services"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "G-WK9_JktZetIRTFSUfRknukZGCuNaD4A0QXwSY4NAU"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "disable_battery_optimization",
-			"guid": "M8xom0r1nkKelngOGeJgflYmt8FO-yov7Jm1EpBFFbE",
 			"nsrc": [
 				"Disable battery optimization"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "M8xom0r1nkKelngOGeJgflYmt8FO-yov7Jm1EpBFFbE"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "battery_optimization_disabled",
-			"guid": "pWgteS6BQNpqcpyE5Y55fX1j9VDQI_E2t26klBLISIQ",
 			"nsrc": [
 				"Battery optimization is already disabled"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "pWgteS6BQNpqcpyE5Y55fX1j9VDQI_E2t26klBLISIQ"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "pref_global_search",
-			"guid": "jGTNihNi77LY5QuFDPIr4FnkGEV4PZtqxGw8mrBR2gQ",
-			"notes": {
-				"desc": "Browse Settings"
-			},
 			"nsrc": [
 				"Global search"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "jGTNihNi77LY5QuFDPIr4FnkGEV4PZtqxGw8mrBR2gQ",
+			"notes": {
+				"desc": "Browse Settings"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "check_for_extension_updates",
-			"guid": "GD3DpsrGAxDGF6AFR_0j22WvGo43tqniyxdw7Um42HA",
 			"nsrc": [
 				"Check for extension updates"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "GD3DpsrGAxDGF6AFR_0j22WvGo43tqniyxdw7Um42HA"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "source_migration_guide",
-			"guid": "qhRTZYzxAUhGMhxN8LmWkStHXtKoxmCc2hdYZ1Gsa6M",
 			"nsrc": [
 				"Source migration guide"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "qhRTZYzxAUhGMhxN8LmWkStHXtKoxmCc2hdYZ1Gsa6M"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "nsfw_sources",
-			"guid": "tZKAOsp0izb2s8Fp2rC3SG4uE72YV-nh0p9UqjVCtmw",
 			"nsrc": [
 				"NSFW (18+) sources"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "tZKAOsp0izb2s8Fp2rC3SG4uE72YV-nh0p9UqjVCtmw"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "does_not_prevent_unofficial_nsfw",
-			"guid": "g0sNGJBq3Ghkqfoqn6a6JmB0wymPgSvCExRqhcN2v4Y",
 			"nsrc": [
 				"This does not prevent unofficial or potentially incorrectly flagged extensions from surfacing NSFW (18+) content within the app."
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "g0sNGJBq3Ghkqfoqn6a6JmB0wymPgSvCExRqhcN2v4Y"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "version",
-			"guid": "sb5XQe86ziaiqZLmsrnjcQOJ_Rt1PvwvgsU-7JTAvSo",
-			"notes": {
-				"desc": "About section"
-			},
 			"nsrc": [
 				"Version"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "sb5XQe86ziaiqZLmsrnjcQOJ_Rt1PvwvgsU-7JTAvSo",
+			"notes": {
+				"desc": "About section"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "build_time",
-			"guid": "XXnhMGyLbPDet3oqguEeXAzNNJj4upOP07q0xEG5iIE",
 			"nsrc": [
 				"Build time"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "XXnhMGyLbPDet3oqguEeXAzNNJj4upOP07q0xEG5iIE"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "send_crash_report",
-			"guid": "EB5eRVbDnd66TwpaE1R3-GbyHiiKgt-ec1gwYARDDeU",
 			"nsrc": [
 				"Send crash reports"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "EB5eRVbDnd66TwpaE1R3-GbyHiiKgt-ec1gwYARDDeU"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "helps_fix_bugs",
-			"guid": "G-ApZju-AZ1PLQ8H2-IbFMDHpgjCHi196C7-BRVo8ag",
 			"nsrc": [
 				"Helps fix any bugs. No sensitive data will be sent"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "G-ApZju-AZ1PLQ8H2-IbFMDHpgjCHi196C7-BRVo8ag"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "whats_new",
-			"guid": "xX86TIr3yCDJeN8pEfrANiXCn559dxHyBB4GnIbsQpo",
 			"nsrc": [
 				"What's new"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "xX86TIr3yCDJeN8pEfrANiXCn559dxHyBB4GnIbsQpo"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "help_translate",
-			"guid": "1aPLaqjJR9LjyH8Zzwi-KIY7CSYsIXEC70FDiI6t6v8",
 			"nsrc": [
 				"Help translate"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "1aPLaqjJR9LjyH8Zzwi-KIY7CSYsIXEC70FDiI6t6v8"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "website",
-			"guid": "w3CWJsUNFTyIdIS3m7fiFEYBm2PHano4H3rTSpilrv8",
 			"nsrc": [
 				"Website"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "w3CWJsUNFTyIdIS3m7fiFEYBm2PHano4H3rTSpilrv8"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "open_source_licenses",
-			"guid": "Chtgyv3I8rRJwxg7nvVfCWNa1sb2NMU4KmnPkwafU_k",
 			"nsrc": [
 				"Open source licenses"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Chtgyv3I8rRJwxg7nvVfCWNa1sb2NMU4KmnPkwafU_k"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "log_in_to_",
-			"guid": "InKnvnpmuD0xNHX-ckxjSVPTwTV71bgSR9slh4Di5TU",
-			"notes": {
-				"desc": "Login/Logout dialog"
-			},
 			"nsrc": [
 				"Log in to ",
 				{
@@ -3121,110 +3118,113 @@
 					"v": "%1$s"
 				}
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "InKnvnpmuD0xNHX-ckxjSVPTwTV71bgSR9slh4Di5TU",
+			"notes": {
+				"desc": "Login/Logout dialog"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "username",
-			"guid": "e8o3hAJieGa7jIX7FCMTJ2392WpbkdLsmaJtLFBd8rc",
 			"nsrc": [
 				"Username"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "e8o3hAJieGa7jIX7FCMTJ2392WpbkdLsmaJtLFBd8rc"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "email",
-			"guid": "pXRrWXBoHlehUXj-PoLeEbst1P6QKZC8MONn1Ol8y98",
 			"nsrc": [
 				"Email address"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "pXRrWXBoHlehUXj-PoLeEbst1P6QKZC8MONn1Ol8y98"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "password",
-			"guid": "CHD1bX4PMKkk1IdLDSzo1G7RTyYv3-iS17d7-uxVw74",
 			"nsrc": [
 				"Password"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "CHD1bX4PMKkk1IdLDSzo1G7RTyYv3-iS17d7-uxVw74"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "successfully_logged_in",
-			"guid": "F6Yn7VLHOw-rQ4Lls3ORWAPSNda2-kStq6kPDlUXEhU",
 			"nsrc": [
 				"Successfully logged in"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "F6Yn7VLHOw-rQ4Lls3ORWAPSNda2-kStq6kPDlUXEhU"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "successfully_logged_out",
-			"guid": "p2dj3pTbNKm2JMx8QKGK_OCsgi_WVVCJvFDxF6yVIh8",
 			"nsrc": [
 				"You are now logged out"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "p2dj3pTbNKm2JMx8QKGK_OCsgi_WVVCJvFDxF6yVIh8"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "downloads",
-			"guid": "01irCDYQ91DVaCsdMtWG-GvJl-r1RIzXqCSRsQ9BG9s",
-			"notes": {
-				"desc": "Downloads"
-			},
 			"nsrc": [
 				"Downloads"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "01irCDYQ91DVaCsdMtWG-GvJl-r1RIzXqCSRsQ9BG9s",
+			"notes": {
+				"desc": "Downloads"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "download_queue",
-			"guid": "5s3kWqsrD7O2oTys1pm8TfT9Nf85hQ40JZmH1xHYl3c",
 			"nsrc": [
 				"Download queue"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "5s3kWqsrD7O2oTys1pm8TfT9Nf85hQ40JZmH1xHYl3c"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "cancel_all",
-			"guid": "02096t4uRb_DClwj1RAxbx72BHNtiB5zWzLbQoVR3Q0",
 			"nsrc": [
 				"Cancel all"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "02096t4uRb_DClwj1RAxbx72BHNtiB5zWzLbQoVR3Q0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "cancel_all_for_series",
-			"guid": "lrfy3VCuwyx51QsTF2Amlv07tRCQSoK_sCJYvEufnSI",
 			"nsrc": [
 				"Cancel all for this series"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "lrfy3VCuwyx51QsTF2Amlv07tRCQSoK_sCJYvEufnSI"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "downloaded",
-			"guid": "7Id5JKNLrjJDzGvf784Yb6hg_2wdXFcBCj6hEXYxp78",
 			"nsrc": [
 				"Downloaded"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "7Id5JKNLrjJDzGvf784Yb6hg_2wdXFcBCj6hEXYxp78"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "downloading",
-			"guid": "3oSI7SBlzkJ3OzmVXYSk5-EElcRhNrq8c6Siyar3fAw",
 			"nsrc": [
 				"Downloading"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "3oSI7SBlzkJ3OzmVXYSk5-EElcRhNrq8c6Siyar3fAw"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "download",
-			"guid": "3T96bQW_C_WUxp0dvWrFYDVh393--CtzjEZjNvwlNKk",
 			"nsrc": [
 				"Download"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "3T96bQW_C_WUxp0dvWrFYDVh393--CtzjEZjNvwlNKk"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "downloading_progress",
-			"guid": "81uy_kW63TYj6zx-tvyIeg2e6pJ5ZjPmIn-L-ic7d0I",
 			"nsrc": [
 				"Downloading (",
 				{
@@ -3238,841 +3238,841 @@
 				},
 				")"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "81uy_kW63TYj6zx-tvyIeg2e6pJ5ZjPmIn-L-ic7d0I"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "invalid_download_location",
-			"guid": "MmXweZtdJCJJGY3H2n7vsRIaOSYcsnHkenMBnFbvx0w",
 			"nsrc": [
 				"Invalid download location"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "MmXweZtdJCJJGY3H2n7vsRIaOSYcsnHkenMBnFbvx0w"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "download_paused",
-			"guid": "XPJMFgQaenD38tFc5nFJlrWs1xBcwCcHZXAMnv0IoYA",
 			"nsrc": [
 				"Download paused"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "XPJMFgQaenD38tFc5nFJlrWs1xBcwCcHZXAMnv0IoYA"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "download_complete",
-			"guid": "lLnmND1rbBVG0JnB2HF-SBDzZVQmUpkX5wJrzDg12Ro",
 			"nsrc": [
 				"Download complete"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "lLnmND1rbBVG0JnB2HF-SBDzZVQmUpkX5wJrzDg12Ro"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "download_error",
-			"guid": "BOmUGm-ZUKJIBiNMNZ_ZqORmFujeKQ4b9q4oQcLtI3s",
 			"nsrc": [
 				"Download error"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "BOmUGm-ZUKJIBiNMNZ_ZqORmFujeKQ4b9q4oQcLtI3s"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "could_not_download_unexpected_error",
-			"guid": "Y8AsbiJF6S3sa0567L2JUCRVf9fYWKmar8LjHj-0c8Y",
-			"notes": {
-				"desc": "Download Notification"
-			},
 			"nsrc": [
 				"Could not download chapter due to unexpected error"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Y8AsbiJF6S3sa0567L2JUCRVf9fYWKmar8LjHj-0c8Y",
+			"notes": {
+				"desc": "Download Notification"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "no_wifi_connection",
-			"guid": "7cDGIJC5BIPgP9g-w3Kd7htH-TI2ZXqkSic0rRIEiQw",
 			"nsrc": [
 				"No Wi-Fi connection available"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "7cDGIJC5BIPgP9g-w3Kd7htH-TI2ZXqkSic0rRIEiQw"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "no_network_connection",
-			"guid": "C6iZEg4tBP2EWnTvNhc_NJUMp3Y2Z1ogTC_geamgzzo",
 			"nsrc": [
 				"No network connection available"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "C6iZEg4tBP2EWnTvNhc_NJUMp3Y2Z1ogTC_geamgzzo"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "download_location",
-			"guid": "odSG9pkfdNSGknVDYXMWKrX3Q6gsCTqxieewL4XkU7I",
-			"notes": {
-				"desc": "Downloads settings"
-			},
 			"nsrc": [
 				"Download location"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "odSG9pkfdNSGknVDYXMWKrX3Q6gsCTqxieewL4XkU7I",
+			"notes": {
+				"desc": "Downloads settings"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "only_download_over_wifi",
-			"guid": "wcYCrKmKLXwPwoWSjG0rMQg-kXrbXkQSVDetZ7IaB58",
 			"nsrc": [
 				"Only download over Wi-Fi"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "wcYCrKmKLXwPwoWSjG0rMQg-kXrbXkQSVDetZ7IaB58"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "remove_when_marked_as_read",
-			"guid": "7gMOD9i_Ssa24Pmeay7aIft1s_yQdKMNoLUzmbZEGqw",
 			"nsrc": [
 				"Remove when marked as read"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "7gMOD9i_Ssa24Pmeay7aIft1s_yQdKMNoLUzmbZEGqw"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "remove_after_read",
-			"guid": "H3kKPe3dY0_Pzoa1gMdWPo3ahBakZ3uHD8as1AVCqGg",
 			"nsrc": [
 				"Remove after read"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "H3kKPe3dY0_Pzoa1gMdWPo3ahBakZ3uHD8as1AVCqGg"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "custom_location",
-			"guid": "SF4SExryZvE7To-hrBNkLeVQWXrUY-ui8rB8w6p8HZU",
 			"nsrc": [
 				"Custom location"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "SF4SExryZvE7To-hrBNkLeVQWXrUY-ui8rB8w6p8HZU"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "last_read_chapter",
-			"guid": "dTUVRro3zEsvDdoPnEiIRkMe9uqzpG68lBS6EO65oPw",
 			"nsrc": [
 				"Last read chapter"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "dTUVRro3zEsvDdoPnEiIRkMe9uqzpG68lBS6EO65oPw"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "second_to_last",
-			"guid": "fvyCSzdA8bCkdypRpqaB3USqPPNZdM8R9qbIboFzvgE",
 			"nsrc": [
 				"Second to last chapter"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "fvyCSzdA8bCkdypRpqaB3USqPPNZdM8R9qbIboFzvgE"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "third_to_last",
-			"guid": "ceJa0rH8d15zkpGomRJHNmn5OeIiRCoc1DbwP1zouWo",
 			"nsrc": [
 				"Third to last chapter"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "ceJa0rH8d15zkpGomRJHNmn5OeIiRCoc1DbwP1zouWo"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "fourth_to_last",
-			"guid": "Hvxqjvakv1w-hZsdWy9YHO5FHubrtv3c9zH1EnyBFyc",
 			"nsrc": [
 				"Fourth to last chapter"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Hvxqjvakv1w-hZsdWy9YHO5FHubrtv3c9zH1EnyBFyc"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "fifth_to_last",
-			"guid": "eIxha-9GFU51ImXa689hyyRM8BqbGHaRpGA2ecFo0W4",
 			"nsrc": [
 				"Fifth to last chapter"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "eIxha-9GFU51ImXa689hyyRM8BqbGHaRpGA2ecFo0W4"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "download_new_chapters",
-			"guid": "WhM02YzRBlk4dkfpqUVttsAtFJw7g5MA6puGdYU7Dv0",
 			"nsrc": [
 				"Download new chapters"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "WhM02YzRBlk4dkfpqUVttsAtFJw7g5MA6puGdYU7Dv0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "categories_to_include_in_download",
-			"guid": "EyFamOuH--WG_ITDZh8Pc4m5J0xR0bXz-AFEsBHaXG4",
 			"nsrc": [
 				"Categories to include in download"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "EyFamOuH--WG_ITDZh8Pc4m5J0xR0bXz-AFEsBHaXG4"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "manual",
-			"guid": "iArTjefVMKZ7WycdX6VmQEm2g4q4u4d9M3UCNZ87PjI",
-			"notes": {
-				"desc": "Time"
-			},
 			"nsrc": [
 				"Manual"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "iArTjefVMKZ7WycdX6VmQEm2g4q4u4d9M3UCNZ87PjI",
+			"notes": {
+				"desc": "Time"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "hourly",
-			"guid": "PNEvrNLnY_HYeIBsyikFPkutyQKuS4km2afklDWLg8Q",
 			"nsrc": [
 				"Hourly"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "PNEvrNLnY_HYeIBsyikFPkutyQKuS4km2afklDWLg8Q"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "every_2_hours",
-			"guid": "XzTsMVydGqkb4lq_j7XjCC3CH3TJm4pOj4HXRfn_kdw",
 			"nsrc": [
 				"Every 2 hours"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "XzTsMVydGqkb4lq_j7XjCC3CH3TJm4pOj4HXRfn_kdw"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "every_3_hours",
-			"guid": "vuUfj-FpwjdPSuh65loj0OUkxnoLF2XM4jIYZXqPWWk",
 			"nsrc": [
 				"Every 3 hours"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "vuUfj-FpwjdPSuh65loj0OUkxnoLF2XM4jIYZXqPWWk"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "every_6_hours",
-			"guid": "QQuSpiNUnNc2fVsl_56IzkbR945KxEdLGO0w08vIgsU",
 			"nsrc": [
 				"Every 6 hours"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "QQuSpiNUnNc2fVsl_56IzkbR945KxEdLGO0w08vIgsU"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "every_12_hours",
-			"guid": "Kz5yw3Ej_ftssgM-QJRrpgCo93LIpFnFx_rFE61BYMo",
 			"nsrc": [
 				"Every 12 hours"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Kz5yw3Ej_ftssgM-QJRrpgCo93LIpFnFx_rFE61BYMo"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "daily",
-			"guid": "mqd0K3gpVnuzzZxJRW3yl4AtCqriOf9HMJFtgLqX9bg",
 			"nsrc": [
 				"Daily"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "mqd0K3gpVnuzzZxJRW3yl4AtCqriOf9HMJFtgLqX9bg"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "every_2_days",
-			"guid": "sAKvJ7Z-LPf9_l7LlabKylNC6vueyZNhSdOfL_M0Y7E",
 			"nsrc": [
 				"Every 2 days"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "sAKvJ7Z-LPf9_l7LlabKylNC6vueyZNhSdOfL_M0Y7E"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "weekly",
-			"guid": "HCmK5QTlCCxBY435vznXbmu8gshsoMuItS5zrNvg3uY",
 			"nsrc": [
 				"Weekly"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "HCmK5QTlCCxBY435vznXbmu8gshsoMuItS5zrNvg3uY"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "select_cover_image",
-			"guid": "Te7pPZ65D4bQDzeyVNYM9_Z5yplFGchiPgl5JPY3wmA",
-			"notes": {
-				"desc": "File Picker Titles"
-			},
 			"nsrc": [
 				"Select cover image"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Te7pPZ65D4bQDzeyVNYM9_Z5yplFGchiPgl5JPY3wmA",
+			"notes": {
+				"desc": "File Picker Titles"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "select_backup_file",
-			"guid": "xpPXMV_2TSn4z7jY72sTDXe6DZYbFVC8HA5A72CX4P8",
 			"nsrc": [
 				"Select backup file"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "xpPXMV_2TSn4z7jY72sTDXe6DZYbFVC8HA5A72CX4P8"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "file_picker_error",
-			"guid": "FqGUk3hvbPcAOaeCc0znlssRYURdtfsV9u7GdqCu1Os",
 			"nsrc": [
 				"No file picker app found"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "FqGUk3hvbPcAOaeCc0znlssRYURdtfsV9u7GdqCu1Os"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "failed_to_bypass_cloudflare",
-			"guid": "zWeCtEgPBsrg7KcpKPPISpUksK5U1-2bUhJNNsqQRpM",
-			"notes": {
-				"desc": "Webview"
-			},
 			"nsrc": [
 				"Failed to bypass Cloudflare"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "zWeCtEgPBsrg7KcpKPPISpUksK5U1-2bUhJNNsqQRpM",
+			"notes": {
+				"desc": "Webview"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "please_update_webview",
-			"guid": "8Zn7T-2vD2MLNKfen7FUH2MgPjU6jIlheCyE0aGZl9Y",
 			"nsrc": [
 				"Please update the WebView app for better compatibility"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "8Zn7T-2vD2MLNKfen7FUH2MgPjU6jIlheCyE0aGZl9Y"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "add",
-			"guid": "kaPFz8SHU7y4fCLvM2RPEFk5ZRUbqQlKtiU0Q-k0KvY",
-			"notes": {
-				"desc": "Miscellaneous"
-			},
 			"nsrc": [
 				"Add"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "kaPFz8SHU7y4fCLvM2RPEFk5ZRUbqQlKtiU0Q-k0KvY",
+			"notes": {
+				"desc": "Miscellaneous"
+			}
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "all",
-			"guid": "HaQhgr6Rs1gPxtUbM4nhClW85gvYkE3A-Ty3EdO70XA",
 			"nsrc": [
 				"All"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "HaQhgr6Rs1gPxtUbM4nhClW85gvYkE3A-Ty3EdO70XA"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "alphabetically",
-			"guid": "acyg9T7bdW7L3J7wKjC3VCzjVcvurkTB9csPlnFjzks",
 			"nsrc": [
 				"Alphabetically"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "acyg9T7bdW7L3J7wKjC3VCzjVcvurkTB9csPlnFjzks"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "always",
-			"guid": "BvfigdYO1jTo2MJIsH_V8EnDB3Jp_zGiYy4XF1z-1Lo",
 			"nsrc": [
 				"Always"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "BvfigdYO1jTo2MJIsH_V8EnDB3Jp_zGiYy4XF1z-1Lo"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "always_ask",
-			"guid": "mE0y-N3-sjSPz8uM0Dqn-Nt--y27pa_Iq1zjCZp_jyc",
 			"nsrc": [
 				"Always ask"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "mE0y-N3-sjSPz8uM0Dqn-Nt--y27pa_Iq1zjCZp_jyc"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "automatic",
-			"guid": "iL64BKW_rJLisxaanXFPxRlZA_ROn4cwi6uPEmFuzJg",
 			"nsrc": [
 				"Automatic"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "iL64BKW_rJLisxaanXFPxRlZA_ROn4cwi6uPEmFuzJg"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "back",
-			"guid": "vnF4_2Uf2iLFQlqAE4cFFEp_ExUy8GC0uKG7lwNWajM",
 			"nsrc": [
 				"Back"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "vnF4_2Uf2iLFQlqAE4cFFEp_ExUy8GC0uKG7lwNWajM"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "cancel",
-			"guid": "-WLnDOl-nui71zWhGAz7AZovbmuaPT_9fc_uU_6hNns",
 			"nsrc": [
 				"Cancel"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "-WLnDOl-nui71zWhGAz7AZovbmuaPT_9fc_uU_6hNns"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "center",
-			"guid": "b9jaqz1sakscWNdLZuH86pP8gYFA4TdEeJMVgCK_erA",
 			"nsrc": [
 				"Center"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "b9jaqz1sakscWNdLZuH86pP8gYFA4TdEeJMVgCK_erA"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "charging",
-			"guid": "u0s4dRB3FMJvZqL46-zg7vLvCA6MSzARnIwLTvqjN6E",
 			"nsrc": [
 				"Charging"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "u0s4dRB3FMJvZqL46-zg7vLvCA6MSzARnIwLTvqjN6E"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "clear",
-			"guid": "H65DnsMBQ38MSdd-W8j4D0epcBzAhmcNNxhlu8G4niI",
 			"nsrc": [
 				"Clear"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "H65DnsMBQ38MSdd-W8j4D0epcBzAhmcNNxhlu8G4niI"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "close",
-			"guid": "FdBYxGp2ECy02J5ZVdOD91c6-bSN9V0CBL2lfM7wPNA",
 			"nsrc": [
 				"Close"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "FdBYxGp2ECy02J5ZVdOD91c6-bSN9V0CBL2lfM7wPNA"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "common",
-			"guid": "XJZMsvE4EPaqLdyrXZ9Eop0NzTXPeA47k9BFBuCV3NI",
 			"nsrc": [
 				"Common"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "XJZMsvE4EPaqLdyrXZ9Eop0NzTXPeA47k9BFBuCV3NI"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "cover_of_image",
-			"guid": "fWE_U-8J9owOnGhB39dKx2lqB54OAyAcfycwMvo50mE",
 			"nsrc": [
 				"Cover of manga"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "fWE_U-8J9owOnGhB39dKx2lqB54OAyAcfycwMvo50mE"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "create",
-			"guid": "N4_USxNuuLZRIyGDOKun6_yj-5rCYuiADvrADSWnQ6E",
 			"nsrc": [
 				"Create"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "N4_USxNuuLZRIyGDOKun6_yj-5rCYuiADvrADSWnQ6E"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "default_value",
-			"guid": "z7tH7vHgbn8iPEugslpYi2vl1ZiF8VrPkVi1kt2TCqE",
 			"nsrc": [
 				"Default"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "z7tH7vHgbn8iPEugslpYi2vl1ZiF8VrPkVi1kt2TCqE"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "delete",
-			"guid": "l56Tb9H8AEQyL6O6Wcup7_LNt01lKztPpOM9VVmawvQ",
 			"nsrc": [
 				"Delete"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "l56Tb9H8AEQyL6O6Wcup7_LNt01lKztPpOM9VVmawvQ"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "display",
-			"guid": "hSkwpxVE5Esf63mO_FARnvDTQPKoAbJS6bajB3Cmlf8",
 			"nsrc": [
 				"Display"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "hSkwpxVE5Esf63mO_FARnvDTQPKoAbJS6bajB3Cmlf8"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "edit",
-			"guid": "Rv2cMmkuA3GBmfZzkGmLfudHVO0w9NUy-ePfQs22KUQ",
 			"nsrc": [
 				"Edit"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Rv2cMmkuA3GBmfZzkGmLfudHVO0w9NUy-ePfQs22KUQ"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "fast",
-			"guid": "XnhDdYKlMdJUtcyCWKgY0LWnGBo7IA5Ifh9TBo_biTo",
 			"nsrc": [
 				"Fast"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "XnhDdYKlMdJUtcyCWKgY0LWnGBo7IA5Ifh9TBo_biTo"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "filter",
-			"guid": "YuxFqrm5_hdUbaqZA3cNvsp8QTgnTGJg2fKvD8u2ank",
 			"nsrc": [
 				"Filter"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "YuxFqrm5_hdUbaqZA3cNvsp8QTgnTGJg2fKvD8u2ank"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "forward",
-			"guid": "-zbKwlSYt2qtgFCcSgk7d5QWTDMgkLPiRsOjmWrzJhA",
 			"nsrc": [
 				"Forward"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "-zbKwlSYt2qtgFCcSgk7d5QWTDMgkLPiRsOjmWrzJhA"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "free",
-			"guid": "D2cdGpYGDdUIA8sRHM-rqWap2VaWw-zHpv8ksNupPRA",
 			"nsrc": [
 				"Free"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "D2cdGpYGDdUIA8sRHM-rqWap2VaWw-zHpv8ksNupPRA"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "ignore",
-			"guid": "2TpxvpQhAajJXtTh0v0YJ_8oUue0AUiiEjdhoe4ZW0M",
 			"nsrc": [
 				"Ignore"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "2TpxvpQhAajJXtTh0v0YJ_8oUue0AUiiEjdhoe4ZW0M"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "install",
-			"guid": "qN_PWXwNzEkB1pKbj3DZxErBvSoXz7D-0YOIy44nfFI",
 			"nsrc": [
 				"Install"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "qN_PWXwNzEkB1pKbj3DZxErBvSoXz7D-0YOIy44nfFI"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "left",
-			"guid": "Dq_i0GnlAlnDhbhzPauW5NHOFRSkJCWrm-F6OeyYGpM",
 			"nsrc": [
 				"Left"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Dq_i0GnlAlnDhbhzPauW5NHOFRSkJCWrm-F6OeyYGpM"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "less",
-			"guid": "AD5Smw9YTvttmnZFm0WBp6roAohdKU4J5de6KHWYhpY",
 			"nsrc": [
 				"Less"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "AD5Smw9YTvttmnZFm0WBp6roAohdKU4J5de6KHWYhpY"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "loading",
-			"guid": "qB0sTYELGfdSAXg8MWIO9dJkPMiJKMGbIpD-brXxlwA",
 			"nsrc": [
 				"Loading…"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "qB0sTYELGfdSAXg8MWIO9dJkPMiJKMGbIpD-brXxlwA"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "lock",
-			"guid": "8dLGZ533nCgGLKl5ZyGKaqaRODy2t8CN17LB5TL0BxU",
 			"nsrc": [
 				"Lock"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "8dLGZ533nCgGLKl5ZyGKaqaRODy2t8CN17LB5TL0BxU"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "mark_as_read",
-			"guid": "22CVrtYyzOOBddTIN64URwTUz-9uGC7SIkXOK8QuI9k",
 			"nsrc": [
 				"Mark as read"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "22CVrtYyzOOBddTIN64URwTUz-9uGC7SIkXOK8QuI9k"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "mark_as_unread",
-			"guid": "oZHWZ8wvBUkj97iUqNloTzvzJrtZYfzJfVW_gr78COw",
 			"nsrc": [
 				"Mark as unread"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "oZHWZ8wvBUkj97iUqNloTzvzJrtZYfzJfVW_gr78COw"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "mark_previous_as_read",
-			"guid": "IQEMUF1NLWkhIxg96Nt7j6SvDg70HxWAGFsP3UXRJiA",
 			"nsrc": [
 				"Mark previous chapters as read"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "IQEMUF1NLWkhIxg96Nt7j6SvDg70HxWAGFsP3UXRJiA"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "more",
-			"guid": "Z8glbymLPxVjwoHlE3yA2QJ6fUFpf-YSrwuKPOlddb0",
 			"nsrc": [
 				"More"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "Z8glbymLPxVjwoHlE3yA2QJ6fUFpf-YSrwuKPOlddb0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "move_to_bottom",
-			"guid": "yGQeYKS5Bv2xAEqxJ6s3Z-7Gd98xnx6ZYCLJXzt2Iwc",
 			"nsrc": [
 				"Move to bottom"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "yGQeYKS5Bv2xAEqxJ6s3Z-7Gd98xnx6ZYCLJXzt2Iwc"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "move_to_top",
-			"guid": "kXACYJ_GEYd9r18ZZtcJQTaMNblMSSD9ZZYv4FySmXE",
 			"nsrc": [
 				"Move to top"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "kXACYJ_GEYd9r18ZZtcJQTaMNblMSSD9ZZYv4FySmXE"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "language",
-			"guid": "wHVvimYxCq_ptB1cQQc_VLrYhiz05An7qU61WmGt2gQ",
 			"nsrc": [
 				"Language"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "wHVvimYxCq_ptB1cQQc_VLrYhiz05An7qU61WmGt2gQ"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "never",
-			"guid": "G-kj181iakzKKEEJ6HB2eVBq_coqE7Ub3-WRoyWJA5A",
 			"nsrc": [
 				"Never"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "G-kj181iakzKKEEJ6HB2eVBq_coqE7Ub3-WRoyWJA5A"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "newest",
-			"guid": "D21t1nOCvPQz8ezejnuCG10XG5-rtv916QePqa1Tm9s",
 			"nsrc": [
 				"Newest"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "D21t1nOCvPQz8ezejnuCG10XG5-rtv916QePqa1Tm9s"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "no_animation",
-			"guid": "jUCLPfd2pt2EgOUsIGD_BtOJhSpHZRV7F1fbNn7dPSI",
 			"nsrc": [
 				"No animation"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "jUCLPfd2pt2EgOUsIGD_BtOJhSpHZRV7F1fbNn7dPSI"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "normal",
-			"guid": "z2pPo6OyjBEg72bZUGs9ebiLmXauGjpNfTYQbgpWCzU",
 			"nsrc": [
 				"Normal"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "z2pPo6OyjBEg72bZUGs9ebiLmXauGjpNfTYQbgpWCzU"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "oldest",
-			"guid": "pXwvpirtrULpntCUbwUbN6xNIeq0N1To6-5Rc-KdRR0",
 			"nsrc": [
 				"Oldest"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "pXwvpirtrULpntCUbwUbN6xNIeq0N1To6-5Rc-KdRR0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "open_in_browser",
-			"guid": "jZQJfS6ZSY8KxQSMHPzL6kOUmYs2uSSRMboM8UytKps",
 			"nsrc": [
 				"Open in browser"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "jZQJfS6ZSY8KxQSMHPzL6kOUmYs2uSSRMboM8UytKps"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "open_log",
-			"guid": "3pVlPDm1tcLrMVYCMp7vNhulWHs15u3-9zs82x9IkM8",
 			"nsrc": [
 				"Open log"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "3pVlPDm1tcLrMVYCMp7vNhulWHs15u3-9zs82x9IkM8"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "open_in_webview",
-			"guid": "01PCaCl5Aaf5yKYuNmTsg-jZJENhXLfFX29cUSg62E4",
 			"nsrc": [
 				"Open in WebView"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "01PCaCl5Aaf5yKYuNmTsg-jZJENhXLfFX29cUSg62E4"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "options",
-			"guid": "vbDWxoIbEXe9zt-rTW9uNrJ5BhJ2VdZ2G93F2PZe9Rc",
 			"nsrc": [
 				"Options"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "vbDWxoIbEXe9zt-rTW9uNrJ5BhJ2VdZ2G93F2PZe9Rc"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "pause",
-			"guid": "07h1dhPItw0xqflwYmT76Hn_vZ0hE6usC4jadmy1rfI",
 			"nsrc": [
 				"Pause"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "07h1dhPItw0xqflwYmT76Hn_vZ0hE6usC4jadmy1rfI"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "picture_saved",
-			"guid": "LVOyc2DI1_tIv-Wh-U-xBVOqDPbzXX88OH9KomjJzS8",
 			"nsrc": [
 				"Picture saved"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "LVOyc2DI1_tIv-Wh-U-xBVOqDPbzXX88OH9KomjJzS8"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "pin",
-			"guid": "s-5E2wEISld-FfOmB993k92NOGb-4LNZ0F66yDUPZOs",
 			"nsrc": [
 				"Pin"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "s-5E2wEISld-FfOmB993k92NOGb-4LNZ0F66yDUPZOs"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "pinned",
-			"guid": "CQz0j3d_KWW8TDyTjWFaMKS0aNpki_JTkuI380NhNYQ",
 			"nsrc": [
 				"Pinned"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "CQz0j3d_KWW8TDyTjWFaMKS0aNpki_JTkuI380NhNYQ"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "remove",
-			"guid": "2KbhXFK-2sKLM-PsKNO6DNg15kSoJy4c9b33gmpL6OQ",
 			"nsrc": [
 				"Remove"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "2KbhXFK-2sKLM-PsKNO6DNg15kSoJy4c9b33gmpL6OQ"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "reorder",
-			"guid": "08RvXmShyf-NM-YC6_wRkH93qxXMv8DNOn9OlKmgAdQ",
 			"nsrc": [
 				"Reorder"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "08RvXmShyf-NM-YC6_wRkH93qxXMv8DNOn9OlKmgAdQ"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "reset",
-			"guid": "0rtEzXkR8w2DP8mkxaP0DzaZIpD3-2wo5uY4f8L4M-g",
 			"nsrc": [
 				"Reset"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "0rtEzXkR8w2DP8mkxaP0DzaZIpD3-2wo5uY4f8L4M-g"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "restore",
-			"guid": "roEBh3ZbzoNg6WDjUe-rNtB7jOSm-0JWZebEjzWDnh0",
 			"nsrc": [
 				"Restore"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "roEBh3ZbzoNg6WDjUe-rNtB7jOSm-0JWZebEjzWDnh0"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "resume",
-			"guid": "XZdAu-R9NcFoDpXCgDtXf8BRK9qLWMzzcrKNIO1NxKg",
 			"nsrc": [
 				"Resume"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "XZdAu-R9NcFoDpXCgDtXf8BRK9qLWMzzcrKNIO1NxKg"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "retry",
-			"guid": "4xkktM2wu4OjIWaL01NuHoBTv0xn9-KlBpimONxfH4o",
 			"nsrc": [
 				"Retry"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "4xkktM2wu4OjIWaL01NuHoBTv0xn9-KlBpimONxfH4o"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "right",
-			"guid": "L31ZyyF8NVcR-spPZHf2ifwxeoYLS_SE00CYdz8I8YQ",
 			"nsrc": [
 				"Right"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "L31ZyyF8NVcR-spPZHf2ifwxeoYLS_SE00CYdz8I8YQ"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "rotation",
-			"guid": "ON5clTnvErryOihsvfP7AU5B0Ixpr9f82E8ERxfIG4A",
 			"nsrc": [
 				"Rotation"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "ON5clTnvErryOihsvfP7AU5B0Ixpr9f82E8ERxfIG4A"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "save",
-			"guid": "3tX_483aH9UFwmvAJh93d72n9JQyihjdOq6xPfQyBSQ",
 			"nsrc": [
 				"Save"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "3tX_483aH9UFwmvAJh93d72n9JQyihjdOq6xPfQyBSQ"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "search",
-			"guid": "XifptHssXgtjDHmj5ltpAQl3FjABypzpTRFYIohV_mE",
 			"nsrc": [
 				"Search"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "XifptHssXgtjDHmj5ltpAQl3FjABypzpTRFYIohV_mE"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "select_all",
-			"guid": "pPxhvx0b_LutbB7fcHN2NjPOq24i4m6O4X3Z9TbVgjM",
 			"nsrc": [
 				"Select all"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "pPxhvx0b_LutbB7fcHN2NjPOq24i4m6O4X3Z9TbVgjM"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "share",
-			"guid": "UqZtdEOUO3w2PBstWBFmuC3mGStUMFQ3UVKK99hBQLo",
 			"nsrc": [
 				"Share"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "UqZtdEOUO3w2PBstWBFmuC3mGStUMFQ3UVKK99hBQLo"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "sort",
-			"guid": "cUeSzBAxHb_c2IQnyYlA7bVygFPiHxSoBK9EbbPbhMI",
 			"nsrc": [
 				"Sort"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "cUeSzBAxHb_c2IQnyYlA7bVygFPiHxSoBK9EbbPbhMI"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "start",
-			"guid": "scJ9d4haERDN89PbJSC-EKL1J1Zbvjmd7KSFoL1bMSI",
 			"nsrc": [
 				"Start"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "scJ9d4haERDN89PbJSC-EKL1J1Zbvjmd7KSFoL1bMSI"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "stop",
-			"guid": "LfyYYMOVNKIgtNKQH0MttWyt2OaPJi1FcXlLtQei9ro",
 			"nsrc": [
 				"Stop"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "LfyYYMOVNKIgtNKQH0MttWyt2OaPJi1FcXlLtQei9ro"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "undo",
-			"guid": "8RlbaPOnEpLZVjZCafHf65rxbG2ghAC0E07ABarDA4w",
 			"nsrc": [
 				"Undo"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "8RlbaPOnEpLZVjZCafHf65rxbG2ghAC0E07ABarDA4w"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "unknown_error",
-			"guid": "c3i5rexqP3K-3xXQ8UmZicdtD1LDoT5r-tCEwnKLRg8",
 			"nsrc": [
 				"Unknown error"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "c3i5rexqP3K-3xXQ8UmZicdtD1LDoT5r-tCEwnKLRg8"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "unpin",
-			"guid": "_wRYzMse2B7r2ua6b9MgKFqHhMtFhturJ-JwkJ0UImI",
 			"nsrc": [
 				"Unpin"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "_wRYzMse2B7r2ua6b9MgKFqHhMtFhturJ-JwkJ0UImI"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "view_chapters",
-			"guid": "na9i-6I0FiG2wQ_1QGez33sgK5oWVx6WidW-BQo3Ync",
 			"nsrc": [
 				"View chapters"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "na9i-6I0FiG2wQ_1QGez33sgK5oWVx6WidW-BQo3Ync"
 		},
 		{
+			"rid": "app/src/main/res/values/strings.xml",
 			"sid": "wifi",
-			"guid": "IJInAlEGMbEstVMqpcB1u5GRFSl0PTW8qyRRBIHjBN4",
 			"nsrc": [
 				"Wi-Fi"
 			],
-			"rid": "app/src/main/res/values/strings.xml"
+			"guid": "IJInAlEGMbEstVMqpcB1u5GRFSl0PTW8qyRRBIHjBN4"
 		}
 	],
 	"translationProvider": "Grandfather",

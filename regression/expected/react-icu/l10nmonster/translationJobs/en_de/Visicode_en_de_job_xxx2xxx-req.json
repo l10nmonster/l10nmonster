@@ -3,12 +3,8 @@
 	"targetLang": "de",
 	"tus": [
 		{
+			"rid": "public/locales/en/app.json",
 			"sid": "homeTitle",
-			"guid": "Yhu_PT_gxnNEP6i5cnfpdYCQ577w0kcHlKdPIp1rHWM",
-			"notes": {
-				"desc": "header - This is the welcome message on the home page"
-			},
-			"seq": 1023,
 			"nsrc": [
 				{
 					"t": "bx",
@@ -26,15 +22,15 @@
 				},
 				"."
 			],
-			"rid": "public/locales/en/app.json"
+			"guid": "Yhu_PT_gxnNEP6i5cnfpdYCQ577w0kcHlKdPIp1rHWM",
+			"notes": {
+				"desc": "header - This is the welcome message on the home page"
+			},
+			"seq": 1023
 		},
 		{
+			"rid": "public/locales/en/app.json",
 			"sid": "flightHome.title",
-			"guid": "8QAVB3VDxOUUy1YKjJmy1pgdVR0m497ZhCOVS16GBQM",
-			"notes": {
-				"desc": "header - welcome message of flight flow"
-			},
-			"seq": 1022,
 			"nsrc": [
 				{
 					"t": "bx",
@@ -47,47 +43,47 @@
 				},
 				" to travel."
 			],
-			"rid": "public/locales/en/app.json"
+			"guid": "8QAVB3VDxOUUy1YKjJmy1pgdVR0m497ZhCOVS16GBQM",
+			"notes": {
+				"desc": "header - welcome message of flight flow"
+			},
+			"seq": 1022
 		},
 		{
+			"rid": "public/locales/en/app.json",
 			"sid": "flightHome.subtitle",
+			"nsrc": [
+				"Book the trip you've been waiting for."
+			],
 			"guid": "AGkOSI-2cbdKB0hwucpDtAhetdvAytGYurYD7hvcezM",
 			"notes": {
 				"desc": "subtitle - flight landing page subheading"
 			},
-			"seq": 1021,
-			"nsrc": [
-				"Book the trip you've been waiting for."
-			],
-			"rid": "public/locales/en/app.json"
+			"seq": 1021
 		},
 		{
+			"rid": "public/locales/en/app.json",
 			"sid": "pickerTraveler_one",
-			"isSuffixPluralized": true,
-			"guid": "YpoIEBkIfKjKzReUIQX2mqEn2bLQ8YPiTSt1FDHIkI4",
-			"seq": 1020,
 			"nsrc": [
 				"Traveler"
 			],
-			"rid": "public/locales/en/app.json"
+			"guid": "YpoIEBkIfKjKzReUIQX2mqEn2bLQ8YPiTSt1FDHIkI4",
+			"isSuffixPluralized": true,
+			"seq": 1020
 		},
 		{
+			"rid": "public/locales/en/app.json",
 			"sid": "pickerTraveler_other",
-			"isSuffixPluralized": true,
-			"guid": "sTGxO3wYiDt-d_Nrg22Dm5CCdRJYPprzgXAZ9M2S81w",
-			"seq": 1019,
 			"nsrc": [
 				"Travelers"
 			],
-			"rid": "public/locales/en/app.json"
+			"guid": "sTGxO3wYiDt-d_Nrg22Dm5CCdRJYPprzgXAZ9M2S81w",
+			"isSuffixPluralized": true,
+			"seq": 1019
 		},
 		{
+			"rid": "public/locales/en/app.json",
 			"sid": "warningMessage",
-			"guid": "KuM3WlVRMaBLFo6E0fg4vATKm955gBDBbAGTLdLITAk",
-			"notes": {
-				"desc": "copy - passenger count picker warning message"
-			},
-			"seq": 1018,
 			"nsrc": [
 				"You can search for up to ",
 				{
@@ -96,15 +92,15 @@
 				},
 				" travelers"
 			],
-			"rid": "public/locales/en/app.json"
+			"guid": "KuM3WlVRMaBLFo6E0fg4vATKm955gBDBbAGTLdLITAk",
+			"notes": {
+				"desc": "copy - passenger count picker warning message"
+			},
+			"seq": 1018
 		},
 		{
+			"rid": "public/locales/en/app.json",
 			"sid": "termsAndConditions",
-			"guid": "qJxPXXst0F8DLkzVVG63hebwXP80N7CFgJfuXtr8mM8",
-			"notes": {
-				"desc": "copy - price  terms and conditions copy"
-			},
-			"seq": 1024,
 			"nsrc": [
 				{
 					"t": "bx",
@@ -125,16 +121,15 @@
 					"v": "</p>"
 				}
 			],
-			"rid": "public/locales/en/app.json"
+			"guid": "qJxPXXst0F8DLkzVVG63hebwXP80N7CFgJfuXtr8mM8",
+			"notes": {
+				"desc": "copy - price  terms and conditions copy"
+			},
+			"seq": 1024
 		},
 		{
+			"rid": "public/locales/en/app.json",
 			"sid": "timeCount.day_one",
-			"isSuffixPluralized": true,
-			"guid": "bws_LnxH_75t_Jdprc_zeTdGgUOWjzRFnDe6YfvjOYg",
-			"notes": {
-				"desc": "copy - time copy for day singular"
-			},
-			"seq": 1017,
 			"nsrc": [
 				{
 					"t": "x",
@@ -142,16 +137,16 @@
 				},
 				" day"
 			],
-			"rid": "public/locales/en/app.json"
+			"guid": "bws_LnxH_75t_Jdprc_zeTdGgUOWjzRFnDe6YfvjOYg",
+			"isSuffixPluralized": true,
+			"notes": {
+				"desc": "copy - time copy for day singular"
+			},
+			"seq": 1017
 		},
 		{
+			"rid": "public/locales/en/app.json",
 			"sid": "timeCount.day_other",
-			"isSuffixPluralized": true,
-			"guid": "Jqw-OIo4U6fG5lyDl3mUsrBOVyxTbyNSBtYPAz3soPQ",
-			"notes": {
-				"desc": "copy - time copy for days plural"
-			},
-			"seq": 1016,
 			"nsrc": [
 				{
 					"t": "x",
@@ -159,16 +154,16 @@
 				},
 				" days"
 			],
-			"rid": "public/locales/en/app.json"
+			"guid": "Jqw-OIo4U6fG5lyDl3mUsrBOVyxTbyNSBtYPAz3soPQ",
+			"isSuffixPluralized": true,
+			"notes": {
+				"desc": "copy - time copy for days plural"
+			},
+			"seq": 1016
 		},
 		{
+			"rid": "public/locales/en/app.json",
 			"sid": "timeCount.hour_one",
-			"isSuffixPluralized": true,
-			"guid": "u-b8MhBsF9k7Q4SquD9h_vGYUIfEhi_gRzuA9i36PfY",
-			"notes": {
-				"desc": "copy - time copy for hour singular"
-			},
-			"seq": 1015,
 			"nsrc": [
 				{
 					"t": "x",
@@ -176,16 +171,16 @@
 				},
 				" hour"
 			],
-			"rid": "public/locales/en/app.json"
+			"guid": "u-b8MhBsF9k7Q4SquD9h_vGYUIfEhi_gRzuA9i36PfY",
+			"isSuffixPluralized": true,
+			"notes": {
+				"desc": "copy - time copy for hour singular"
+			},
+			"seq": 1015
 		},
 		{
+			"rid": "public/locales/en/app.json",
 			"sid": "timeCount.hour_other",
-			"isSuffixPluralized": true,
-			"guid": "haJeL1bazwQ1yTntetVJeSFWmn5a9hPwuTBVoh9ISjo",
-			"notes": {
-				"desc": "copy - time copy for hours plural"
-			},
-			"seq": 1014,
 			"nsrc": [
 				{
 					"t": "x",
@@ -193,16 +188,16 @@
 				},
 				" hours"
 			],
-			"rid": "public/locales/en/app.json"
+			"guid": "haJeL1bazwQ1yTntetVJeSFWmn5a9hPwuTBVoh9ISjo",
+			"isSuffixPluralized": true,
+			"notes": {
+				"desc": "copy - time copy for hours plural"
+			},
+			"seq": 1014
 		},
 		{
+			"rid": "public/locales/en/app.json",
 			"sid": "timeCount.second_one",
-			"isSuffixPluralized": true,
-			"guid": "YjPgqgOdTMkHKTRSeQTqRnPKYg-aPkWmF4PtExUoI6Q",
-			"notes": {
-				"desc": "copy - time copy for second singular"
-			},
-			"seq": 1013,
 			"nsrc": [
 				{
 					"t": "x",
@@ -210,16 +205,16 @@
 				},
 				" second"
 			],
-			"rid": "public/locales/en/app.json"
+			"guid": "YjPgqgOdTMkHKTRSeQTqRnPKYg-aPkWmF4PtExUoI6Q",
+			"isSuffixPluralized": true,
+			"notes": {
+				"desc": "copy - time copy for second singular"
+			},
+			"seq": 1013
 		},
 		{
+			"rid": "public/locales/en/app.json",
 			"sid": "timeCount.second_other",
-			"isSuffixPluralized": true,
-			"guid": "x1xQynOoxM1xfd0g5iSmzZfrIWxwjHfV3x-1xaoiFJk",
-			"notes": {
-				"desc": "copy - time copy for seconds plural"
-			},
-			"seq": 1012,
 			"nsrc": [
 				{
 					"t": "x",
@@ -227,10 +222,24 @@
 				},
 				" seconds"
 			],
-			"rid": "public/locales/en/app.json"
+			"guid": "x1xQynOoxM1xfd0g5iSmzZfrIWxwjHfV3x-1xaoiFJk",
+			"isSuffixPluralized": true,
+			"notes": {
+				"desc": "copy - time copy for seconds plural"
+			},
+			"seq": 1012
 		},
 		{
+			"rid": "public/locales/en/translations.json",
 			"sid": "nationalIdPlaceholder",
+			"nsrc": [
+				"Enter your ",
+				{
+					"t": "x",
+					"v": "{{id}}",
+					"s": "CPF"
+				}
+			],
 			"guid": "6DAv7B6YywviZSG0LkH6iEmPaGfotuTy4Ljqm6eumfk",
 			"notes": {
 				"ph": {
@@ -241,16 +250,7 @@
 				},
 				"desc": "copy - national ID input placeholder on passenger form\n"
 			},
-			"seq": 1006,
-			"nsrc": [
-				"Enter your ",
-				{
-					"t": "x",
-					"v": "{{id}}",
-					"s": "CPF"
-				}
-			],
-			"rid": "public/locales/en/translations.json"
+			"seq": 1006
 		}
 	],
 	"translationProvider": "Visicode",

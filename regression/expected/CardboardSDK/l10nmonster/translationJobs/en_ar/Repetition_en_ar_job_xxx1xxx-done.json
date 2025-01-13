@@ -7,11 +7,11 @@
 	"tus": [
 		{
 			"guid": "d13hqt62wEq5drSC-g7auJUOAlQL-N3VrEyi1mCjMH0",
-			"q": 61,
 			"ntgt": [
 				"مساعدة"
 			],
-			"ts": 1
+			"ts": 1,
+			"q": 61
 		}
 	],
 	"updatedAt": "2022-05-29T00:00:00.000Z"

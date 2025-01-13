@@ -3,16 +3,16 @@
 	"targetLang": "ar",
 	"tus": [
 		{
+			"rid": "en.lproj/CardboardSDK.strings",
 			"sid": "AccessibilityHelpButton",
+			"nsrc": [
+				"Help"
+			],
 			"guid": "d13hqt62wEq5drSC-g7auJUOAlQL-N3VrEyi1mCjMH0",
 			"notes": {
 				"desc": "Accessibility label for the information button to go to help page (read out loud)"
 			},
-			"seq": 1015,
-			"nsrc": [
-				"Help"
-			],
-			"rid": "en.lproj/CardboardSDK.strings"
+			"seq": 1015
 		}
 	],
 	"translationProvider": "Repetition",

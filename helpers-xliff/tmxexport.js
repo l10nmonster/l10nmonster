@@ -39,7 +39,7 @@
 //         }
 //     }
 //     const desiredTargetLangs = new Set(mm.getTargetLangs(limitToLang));
-//     const availableLangPairs = (await mm.jobStore.getAvailableLangPairs())
+//     const availableLangPairs = (await mm.tmm.getAvailableLangPairs())
 //         .filter(pair => desiredTargetLangs.has(pair[1]));
 //     for (const [sourceLang, targetLang] of availableLangPairs) {
 //         const tm = await mm.tmm.getTM(sourceLang, targetLang);

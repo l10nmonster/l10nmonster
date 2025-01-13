@@ -12,7 +12,7 @@ export async function pushCmd(mm, { limitToLang, tuFilter, driver, refresh, tran
     }
     let guidList;
     if (driver.jobGuid) {
-        const req = await mm.jobStore.getJobRequest(driver.jobGuid);
+        const req = await mm.tmm.getJobRequest(driver.jobGuid);
         if (!req) {
             throw `jobGuid ${driver.jobGuid} not found`;
         }
@@ -21,7 +21,7 @@ export async function pushCmd(mm, { limitToLang, tuFilter, driver, refresh, tran
     const status = [];
     const targetLangs = mm.getTargetLangs(limitToLang);
     for (const targetLang of targetLangs) {
-        const blockedJobs = (await mm.jobStore.getJobStatusByLangPair(mm.sourceLang, targetLang))
+        const blockedJobs = (await mm.tmm.getJobStatusByLangPair(mm.sourceLang, targetLang))
             .filter(e => e[1].status === 'req');
         if (blockedJobs.length === 0) {
             const jobBody = await (driver.untranslated ? mm.prepareTranslationJob({ targetLang, leverage }) : mm.prepareFilterBasedJob({ targetLang, tmBased: driver.tm, guidList }));
@@ -37,7 +37,7 @@ export async function pushCmd(mm, { limitToLang, tuFilter, driver, refresh, tran
                     if (translationProvider) {
                         const minimumJobSize = translationProvider.minimumJobSize ?? 0;
                         if (jobBody.tus.length >= minimumJobSize || refresh) {
-                            const manifest = await mm.jobStore.createJobManifest();
+                            const manifest = await mm.tmm.createJobManifest();
                             langStatus.jobGuid = manifest.jobGuid;
                             const jobRequest = {
                                 ...jobBody,
@@ -51,7 +51,7 @@ export async function pushCmd(mm, { limitToLang, tuFilter, driver, refresh, tran
                             } else {
                                 jobRequest.status = 'blocked';
                             }
-                            await mm.processJob(jobResponse, jobRequest);
+                            await mm.tmm.processJob(jobResponse, jobRequest);
                             langStatus.status = jobResponse?.status ?? jobRequest.status;
                             langStatus.num = jobResponse?.tus?.length ?? jobResponse?.inflight?.length ?? jobRequest?.tus?.length ?? 0;
                         } else {

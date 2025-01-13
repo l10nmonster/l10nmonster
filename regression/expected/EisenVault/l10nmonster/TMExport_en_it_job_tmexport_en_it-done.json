@@ -4551,21 +4551,21 @@
 		},
 		{
 			"guid": "c-6fDjw00nB1UJtukMnmj1d18-MHF12J24XzB-fT4xg",
-			"q": 69,
 			"ntgt": [
 				"Questo dashlet mostra il feed RSS selezionato. Fare clic sull'icona Modifica del dashlet per modificare il feed."
 			],
 			"ts": 1,
+			"q": 69,
 			"jobGuid": "xxx1xxx",
 			"translationProvider": "Repetition"
 		},
 		{
 			"guid": "dI6k9BSigj6gEI0usWMTDR1B9zsFO8ws9atTiah-8Y4",
-			"q": 61,
 			"ntgt": [
 				"Configura"
 			],
 			"ts": 1,
+			"q": 61,
 			"jobGuid": "xxx1xxx",
 			"translationProvider": "Repetition"
 		}

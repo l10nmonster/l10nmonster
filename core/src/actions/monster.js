@@ -32,7 +32,7 @@ export class monster {
         console.log(`Resources: ${resourceHandles.length}`);
         console.log(`Possible languages: ${targetLangs.join(', ')}`);
         console.log('Translation Memories:')
-        const availableLangPairs = (await monsterManager.jobStore.getAvailableLangPairs()).sort();
+        const availableLangPairs = (await monsterManager.tmm.getAvailableLangPairs()).sort();
         for (const [sourceLang, targetLang] of availableLangPairs) {
             const tm = await monsterManager.tmm.getTM(sourceLang, targetLang);
             console.log(`  - ${sourceLang} / ${targetLang} (${tm.guids.length} entries)`);

@@ -324,17 +324,16 @@
 		},
 		{
 			"guid": "d13hqt62wEq5drSC-g7auJUOAlQL-N3VrEyi1mCjMH0",
-			"q": 61,
 			"ntgt": [
 				"مساعدة"
 			],
 			"ts": 1,
+			"q": 61,
 			"jobGuid": "xxx1xxx",
 			"translationProvider": "Repetition"
 		},
 		{
 			"guid": "p72nj2yZPB-RfJOZa2iZg2pt16HznCGr_kdYQziGHxs",
-			"ts": 1,
 			"ntgt": [
 				"⇥XAB:",
 				"C̲a̲r̲d̲b̲̟o̲a̲r̲d̲ ̲̟m̲o̲d̲e̲:̲̟ ̲",
@@ -345,30 +344,31 @@
 				},
 				"⇤"
 			],
+			"ts": 1,
 			"q": 2,
 			"jobGuid": "xxx2xxx",
 			"translationProvider": "Visicode"
 		},
 		{
 			"guid": "snWaUNjXnKuXlItO8jUPfKITKfuqshl6xCXxUgiP4jI",
-			"ts": 1,
 			"ntgt": [
 				"⇥YAB:",
 				"F̲u̲l̲l̲s̲̟c̲r̲e̲e̲n̲̟ ̲m̲o̲d̲e̲̟",
 				"⇤"
 			],
+			"ts": 1,
 			"q": 2,
 			"jobGuid": "xxx2xxx",
 			"translationProvider": "Visicode"
 		},
 		{
 			"guid": "kjYD6n4DIB9kQKYRd0QStGsZfU2yOhcUG091zj53Skw",
-			"ts": 1,
 			"ntgt": [
 				"⇥ZAB:",
 				"H̲e̲l̲p̲ ̲̟'̲e̲n̲c̲o̲̟d̲i̲n̲g̲'̲̟ ̲i̲s̲ ̲\"̲̟h̲a̲r̲d̲\"̲̟!̲\\̲\n̲",
 				"⇤"
 			],
+			"ts": 1,
 			"q": 2,
 			"jobGuid": "xxx2xxx",
 			"translationProvider": "Visicode"
