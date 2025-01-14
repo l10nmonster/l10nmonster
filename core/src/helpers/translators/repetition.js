@@ -23,16 +23,14 @@ export class Repetition {
         jobResponse.tus = [];
         const tm = await this.#mm.tmm.getTM(jobRequest.sourceLang, jobRequest.targetLang);
         for (const tu of tus) {
-            const tuCandidates = tm.getAllEntriesBySrc(tu.nsrc);
+            const tuCandidates = tm.getExactMatches(tu.nsrc);
             if (tuCandidates.length > 0) {
                 let bestCandidate = { q: 0, ts: 0 };
                 let foundCandidate = false;
                 for (const candidate of tuCandidates) {
-                    const isCompatible = utils.sourceAndTargetAreCompatible(tu?.nsrc, candidate?.ntgt);
                     const adjustedQuality = Math.max(0, candidate.q - (tu.sid === candidate.sid ? this.qualifiedPenalty : this.unqualifiedPenalty), 0);
                     const isSameQualityButNewer = adjustedQuality === bestCandidate.q && candidate.ts > bestCandidate.ts;
-                    const isBetterCandidate = adjustedQuality > bestCandidate.q || isSameQualityButNewer;
-                    if (isCompatible && isBetterCandidate) {
+                    if (adjustedQuality > bestCandidate.q || isSameQualityButNewer) {
                         bestCandidate = { ...candidate, q: adjustedQuality };
                         foundCandidate = true;
                     }

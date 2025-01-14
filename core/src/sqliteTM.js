@@ -80,15 +80,16 @@ export class TM {
         }
     }
 
-    getAllEntriesBySrc(src) {
+    getExactMatches(nsrc) {
         if (this.#lazyFlatSrcIdx) {
             L10nContext.logger.verbose(`Creating FlatSrcIdx...`);
             this.#stmt.createFlatSrcIdx.run();
             this.#lazyFlatSrcIdx = false;
         }
-        const flattenedSrc = utils.flattenNormalizedSourceToOrdinal(src);
+        const flattenedSrc = utils.flattenNormalizedSourceToOrdinal(nsrc);
         const entries = this.#stmt.getEntryByFlatSrc.all(flattenedSrc);
-        return entries.map(JSON.parse);
+        const tuCandidates = entries.map(str => JSON.parse(str));
+        return tuCandidates.filter(tu => utils.sourceAndTargetAreCompatible(nsrc, tu.ntgt));
     }
 
     getJobsMeta() {

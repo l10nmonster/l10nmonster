@@ -149,7 +149,7 @@ export class MonsterManager {
                     const isCompatible = utils.sourceAndTargetAreCompatible(tu?.nsrc, tmEntry?.ntgt);
                     if (!tmEntry || (!tmEntry.inflight && (!isCompatible || tmEntry.q < minimumQuality))) {
                         // if the same src is in flight already, mark it as an internal repetition
-                        tm.getAllEntriesBySrc(tu.nsrc).filter(tu => tu.q >= minimumQuality).length > 0 && (repetitionMap[seg.gstr] = true);
+                        tm.getExactMatches(tu.nsrc).filter(tu => tu.q >= minimumQuality).length > 0 && (repetitionMap[seg.gstr] = true);
                         if (repetitionMap[seg.gstr]) {
                             leverageDetails.internalRepetitions++;
                             leverageDetails.internalRepetitionWords += words;
