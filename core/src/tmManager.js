@@ -1,65 +1,98 @@
 import * as path from 'path';
+import Database from 'better-sqlite3';
+
 import { L10nContext, TU } from '@l10nmonster/core';
-import { TM } from './sqliteTM.js';
+import { TM } from './tm.js';
+import { JobsDAL } from './jobsDAL.js';
 
 export default class TMManager {
+    #db;
+    #jobsDAL;
+    #jobStore;
+    #parallelism;
+
+    #writeJob(tm, jobResponse, jobRequest) {
+        const writeJob = this.#db.transaction(() => {
+            tm.ingestJob(jobResponse, jobRequest);
+            const result = this.#jobsDAL.setJob(jobResponse);
+            result.changes !== 1 && L10nContext.logger.info(`Expecting to change a row but got: ${result}`);
+        });
+        writeJob();
+    }
+
     constructor({ jobStore, parallelism }) {
-        this.jobStore = jobStore;
-        this.tmCache = new Map();
-        this.parallelism = parallelism ?? 8;
+        this.#db = new Database(path.join(L10nContext.baseDir, 'l10nmonsterTM.db'));
+        this.#jobsDAL = new JobsDAL(this.#db);
+        this.#parallelism = parallelism ?? 8;
+        this.#jobStore = jobStore;
+    }
+
+    // eslint-disable-next-line no-unused-vars
+    async init(mm) {
+        await this.syncDown();
     }
 
     async getTM(sourceLang, targetLang) {
-        const tmName = `tmCache_${sourceLang}_${targetLang}`;
-        let tm = this.tmCache.get(tmName);
-        if (tm) {
-            return tm;
-        }
-        const jobs = (await this.getJobStatusByLangPair(sourceLang, targetLang))
-            .filter(e => [ 'pending', 'done' ].includes(e[1].status));
-        tm = new TM(path.join(L10nContext.baseDir, tmName), jobs);
-        this.tmCache.set(tmName, tm);
+        return new TM(this.#db, sourceLang, targetLang);
+    }
 
-        // update jobs if status has changed or new (otherwise not needed because jobs are immutable)
-        const jobsToFetch = [];
-        for (const [jobGuid, handle] of jobs) {
-            const [ status, updatedAt ] = tm.getJobStatus(jobGuid);
-            if (status !== handle.status) {
-                jobsToFetch.push({
-                    jobHandle: handle[handle.status],
-                    jobRequestHandle: handle.req,
-                    tmUpdatedAt: updatedAt,
-                })
+    async syncDown() {
+        const availableLangPairs = await this.#jobStore.getAvailableLangPairs();
+        for (const [sourceLang, targetLang] of availableLangPairs) {
+            const tm = await this.getTM(sourceLang, targetLang);
+            const jobs = (await this.getJobStatusByLangPair(sourceLang, targetLang))
+                .filter(e => [ 'pending', 'done' ].includes(e[1].status));
+
+            // invalidate possible removed jobs from the job store
+            // (which shouldn't happen because of immutability but life gives you lemons sometimes...)
+            const jobMap = Object.fromEntries(jobs);
+            const extraJobs = this.#jobsDAL.getJobGuids(sourceLang, targetLang).filter(jobGuid => !jobMap[jobGuid]);
+            for (const jobGuid of extraJobs) {
+                L10nContext.logger.info(`Nuking extraneous job: ${jobGuid}`);
+                this.#jobsDAL.deleteJob(jobGuid);
+                tm.deleteEntriesByJobGuid(jobGuid);
             }
-        }
-        while (jobsToFetch.length > 0) {
-            const jobPromises = jobsToFetch.splice(0, this.parallelism).map(meta => (async () => {
-                const body = await this.getJobByHandle(meta.jobHandle);
-                return { meta, body };
-            })());
-            const fetchedJobs = await Promise.all(jobPromises);
-            L10nContext.logger.verbose(`Fetched chunk of ${jobPromises.length} jobs`);
-            const jobsRequestsToFetch = [];
-            for (const job of fetchedJobs) {
-                if (job.body.updatedAt !== job.meta.tmUpdatedAt) {
-                    jobsRequestsToFetch.push({
-                        jobRequestHandle: job.meta.jobRequestHandle,
-                        jobResponse: job.body
-                    });
+
+            // update jobs if status has changed or new (otherwise not needed because jobs are immutable)
+            const jobsToFetch = [];
+            for (const [jobGuid, handle] of jobs) {
+                const [ status, updatedAt ] = this.#jobsDAL.getJobStatus(jobGuid);
+                if (status !== handle.status) {
+                    jobsToFetch.push({
+                        jobHandle: handle[handle.status],
+                        jobRequestHandle: handle.req,
+                        tmUpdatedAt: updatedAt,
+                    })
                 }
             }
-            if (jobsRequestsToFetch.length > 0) {
-                const jobPromises = jobsRequestsToFetch.map(meta => (async () => {
-                    const jobRequest = await this.getJobRequestByHandle(meta.jobRequestHandle);
-                    return { jobResponse: meta.jobResponse, jobRequest };
+            while (jobsToFetch.length > 0) {
+                const jobPromises = jobsToFetch.splice(0, this.#parallelism).map(meta => (async () => {
+                    const body = await this.getJobByHandle(meta.jobHandle);
+                    return { meta, body };
                 })());
-                for (const { jobResponse, jobRequest } of await Promise.all(jobPromises)) {
-                    L10nContext.logger.info(`Applying job ${jobResponse?.jobGuid} to the ${sourceLang} -> ${targetLang} TM...`);
-                    tm.processJob(jobResponse, jobRequest);
+                const fetchedJobs = await Promise.all(jobPromises);
+                L10nContext.logger.verbose(`Fetched chunk of ${jobPromises.length} jobs`);
+                const jobsRequestsToFetch = [];
+                for (const job of fetchedJobs) {
+                    if (job.body.updatedAt !== job.meta.tmUpdatedAt) {
+                        jobsRequestsToFetch.push({
+                            jobRequestHandle: job.meta.jobRequestHandle,
+                            jobResponse: job.body
+                        });
+                    }
+                }
+                if (jobsRequestsToFetch.length > 0) {
+                    const jobPromises = jobsRequestsToFetch.map(meta => (async () => {
+                        const jobRequest = await this.getJobRequestByHandle(meta.jobRequestHandle);
+                        return { jobResponse: meta.jobResponse, jobRequest };
+                    })());
+                    for (const { jobResponse, jobRequest } of await Promise.all(jobPromises)) {
+                        L10nContext.logger.info(`Applying job ${jobResponse?.jobGuid} to the ${sourceLang} -> ${targetLang} TM...`);
+                        this.#writeJob(tm, jobResponse, jobRequest);
+                    }
                 }
             }
         }
-        return tm;
     }
 
     // use cases:
@@ -87,57 +120,53 @@ export default class TMManager {
                 jobRequest.tus = jobRequest.tus.filter(tu => acceptedGuids.has(tu.guid));
             }
             jobRequest.tus = jobRequest.tus.map(TU.asSource);
-            await this.jobStore.writeJob(jobRequest);
+            await this.#jobStore.writeJob(jobRequest);
         }
         if (jobResponse) {
             jobResponse.updatedAt = updatedAt;
             jobResponse.tus && (jobResponse.tus = jobResponse.tus.map(TU.asTarget));
-            await this.jobStore.writeJob(jobResponse);
+            await this.#jobStore.writeJob(jobResponse);
         }
-        // we update the TM in memory so that it can be reused before shutdown (e.g. when using JS API)
-        // TODO: this is not great, we should have a hook so that the TM can subscribe to mutation events.
-        await tm.processJob(jobResponse, jobRequest);
+        this.#writeJob(tm, jobResponse, jobRequest);
     }
 
     async getAvailableLangPairs() {
-        return this.jobStore.getAvailableLangPairs();
+        return this.#jobStore.getAvailableLangPairs();
     }
 
     async getJobStatusByLangPair(sourceLang, targetLang) {
-        return this.jobStore.getJobStatusByLangPair(sourceLang, targetLang);
+        return this.#jobStore.getJobStatusByLangPair(sourceLang, targetLang);
     }
 
     async createJobManifest() {
-        return this.jobStore.createJobManifest();
+        return this.#jobStore.createJobManifest();
     }
 
     async writeJob(job) {
-        return this.jobStore.writeJob(job);
+        return this.#jobStore.writeJob(job);
     }
 
     async getJobByHandle(jobFilename) {
-        return this.jobStore.getJobByHandle(jobFilename);
+        return this.#jobStore.getJobByHandle(jobFilename);
     }
 
     async getJob(jobGuid) {
-        return this.jobStore.getJob(jobGuid);
+        return this.#jobStore.getJob(jobGuid);
     }
 
     async getJobRequestByHandle(jobFilename) {
-        return this.jobStore.getJobRequestByHandle(jobFilename);
+        return this.#jobStore.getJobRequestByHandle(jobFilename);
     }
 
     async getJobRequest(jobGuid) {
-        return this.jobStore.getJobRequest(jobGuid);
+        return this.#jobStore.getJobRequest(jobGuid);
     }
 
     async deleteJobRequest(jobGuid) {
-        return this.jobStore.deleteJobRequest(jobGuid);
+        return this.#jobStore.deleteJobRequest(jobGuid);
     }
 
     async shutdown() {
-        for (const tm of this.tmCache.values()) {
-            tm.commit();
-        }
+        this.#db.close();
     }
 }

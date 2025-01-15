@@ -32,11 +32,8 @@ run_regression() {
     fi
 
     echo "\nDiffing working dir vs. expected..."
-    rm l10nmonster.config.mjs
     rm -rf node_modules
-    rm package.json
-    rm regressionScript.*
-    rm tmCache_*
+    rm l10nmonster* package.json regressionScript.*
     cd ../..
     find $case -name '.DS_Store' -type f -delete
     diff -qr $case ../expected/$case

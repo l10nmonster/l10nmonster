@@ -67,8 +67,8 @@ export class MonsterManager {
         for (const tp of Object.values(this.translationProviders)) {
             typeof tp.translator.init === 'function' && await tp.translator.init(this);
         }
+        typeof this.tmm.init === 'function' && await this.tmm.init(this);
         typeof this.monsterConfig.init === 'function' && await this.monsterConfig.init(this);
-
     }
 
     // register an async function to be called during shutdown
