@@ -47,7 +47,7 @@ export class InvisicodeGenerator {
             this.lowQ = lowQ;
             this.highQ = highQ;
             this.baseLang = baseLang;
-            this.fallback = fallback;
+            this.fallback = Boolean(fallback);
         }
     }
 
@@ -72,17 +72,24 @@ export class InvisicodeGenerator {
         const { tus, ...jobResponse } = jobRequest;
         const ts = L10nContext.regression ? 1 : new Date().getTime();
         jobResponse.tus = [];
-        tus.forEach(tu => {
-            let baseTranslation = this.baseLang ? tm.getEntryByGuid(tu.guid)?.ntgt : tu.nsrc;
-            (this.fallback && !baseTranslation) && (baseTranslation = tu.nsrc);
+        tus.forEach(requestTU => {
+            let baseTranslation, q;
+            if (this.baseLang) {
+                const tu = tm.getEntryByGuid(requestTU.guid);
+                baseTranslation = tu?.ntgt || (this.fallback && requestTU?.nsrc);
+                // eslint-disable-next-line no-nested-ternary
+                q = (tu?.q <= this.lowQ || tu?.q === undefined) ? 0 : (tu?.q >= this.highQ ? 2 : 1);
+            } else {
+                baseTranslation = requestTU.nsrc;
+                q = 0;
+            }
             if (baseTranslation) {
                 const meta = {
-                    g: tu.guid,
-                    // eslint-disable-next-line no-nested-ternary
-                    q: (tu.q <= this.lowQ || tu.q === undefined) ? 0 : (tu.q >= this.highQ ? 2 : 1),
+                    g: requestTU.guid,
+                    q,
                 }
                 jobResponse.tus.push({
-                    guid: tu.guid,
+                    guid: requestTU.guid,
                     ntgt: [ `\u200B${utf8ToFE00Range(JSON.stringify(meta))}`, ...baseTranslation, '\u200B' ],
                     q: this.quality,
                     ts,

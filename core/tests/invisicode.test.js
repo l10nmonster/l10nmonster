@@ -83,7 +83,6 @@ test('InvisicodeGenerator - init', async (t) => {
         {
           guid: '123',
           nsrc: ['Hello'],
-          q: 80,
         },
       ],
     };
@@ -121,7 +120,6 @@ test('InvisicodeGenerator - requestTranslations', async (t) => {
         {
           guid: '123',
           nsrc: ['Hello'],
-          q: 80,
         },
       ],
     };
@@ -161,7 +159,6 @@ test('InvisicodeGenerator - requestTranslations', async (t) => {
         {
           guid: '456',
           nsrc: ['World'],
-          q: 50,
         },
       ],
     };
@@ -195,7 +192,6 @@ test('InvisicodeGenerator - requestTranslations', async (t) => {
         {
           guid: '789',
           nsrc: ['Test'],
-          q: 50,
         },
       ],
     };
@@ -228,17 +224,14 @@ test('InvisicodeGenerator - requestTranslations', async (t) => {
         {
           guid: '321',
           nsrc: ['Good morning'],
-          q: 20, // Below lowQ
         },
         {
           guid: '322',
           nsrc: ['Good evening'],
-          q: 50, // Between lowQ and highQ
         },
         {
           guid: '323',
           nsrc: ['Good night'],
-          q: 90, // Above highQ
         },
       ],
     };
@@ -340,7 +333,7 @@ test('InvisicodeGenerator - utf8ToFE00Range', async (t) => {
     const monsterManager = new MonsterManager();
 
     // Add a translation entry
-    monsterManager.translationMemory.setEntry('555', { ntgt: ['Prueba'] });
+    monsterManager.translationMemory.setEntry('555', { ntgt: ['Prueba'], q: 80 });
 
     await generator.init(monsterManager);
 
@@ -350,14 +343,13 @@ test('InvisicodeGenerator - utf8ToFE00Range', async (t) => {
         {
           guid: '555',
           nsrc: ['Test UTF-8'],
-          q: 80,
         },
       ],
     };
 
     const response = await generator.requestTranslations(jobRequest);
 
-    assert.strictEqual(response.tus.length, 1);
+    assert.equal(response.tus.length, 1);
     const translatedTu = response.tus[0];
 
     // Check that ntgt starts and ends with ZERO WIDTH SPACE
@@ -375,10 +367,9 @@ test('InvisicodeGenerator - utf8ToFE00Range', async (t) => {
     console.log(decodedMetadata);
     const metadata = JSON.parse(decodedMetadata);
 
-    assert.strictEqual(metadata.g, '555');
-    // Depending on q value, set accordingly
+    assert.equal(metadata.g, '555');
     // q = 80 >= highQ (70) => 2
-    assert.strictEqual(metadata.q, 2);
+    assert.equal(metadata.q, 2);
 
     // Ensure the rest of the string includes the translation
     assert.ok(translatedTu.ntgt.includes('Prueba'));
