@@ -16,6 +16,7 @@ export default new L10nMonsterConfig(import.meta.dirname)
         targetLangSets: {
             LTR: [ 'en-GB', 'en-AU', 'it', 'ja' ],
             RTL: [ 'ar' ],
+            debug: [ 'en-ZZ' ],
         },
         minimumQuality: 50,
     })
@@ -77,6 +78,14 @@ export default new L10nMonsterConfig(import.meta.dirname)
         //         quality: 40,
         //     }),
         // },
+        Invisicode: {
+            translator: new translators.InvisicodeGenerator({
+                quality: 50,
+                lowQ: 50,
+                highQ: 70,
+            }),
+            pairs: { 'en': [ 'en-ZZ' ] },
+        },
         Visicode: {
             translator: new translators.Visicode({
                 quality: 50,

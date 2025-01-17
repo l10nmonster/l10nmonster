@@ -25,21 +25,21 @@ function utf8ToFE00Range(input) {
  * @class InvisicodeGenerator
  * @extends {import('@l10nmonster/core').Translator}
  * @description Translator that wraps content in Invisicode
- * @param {{quality: number, lowQ: number, highQ: number, baseLang?: string}} options
  * @property {number} quality - quality for the generated translations
  * @property {number} lowQ - quality threshold below which the translation is considered low quality
  * @property {number} highQ - quality threshold above which the translation is considered high quality
  * @property {string} [baseLang] - language code for the base language (source if not specified)
+ * @property {boolean} [fallback] - if true, fall back to source if translation is missing
  * @property {import('@l10nmonster/core').TranslationMemory} #mm - TranslationMemory instance
  */
 export class InvisicodeGenerator {
     #mm;
 
     /**
-     * @param {{quality: number, lowQ: number, highQ: number, baseLang?: string}} options
+     * @param {{quality: number, lowQ: number, highQ: number, baseLang?: string, fallback?: boolean}} options
      * @throws {Error} if quality, lowQ or highQ are not specified
      */
-    constructor({ quality, lowQ, highQ, baseLang }) {
+    constructor({ quality, lowQ, highQ, baseLang, fallback }) {
         if (quality === undefined || lowQ === undefined || highQ === undefined) {
             throw 'You must specify quality, lowQ and highQ for InvisicodeGenerator';
         } else {
@@ -47,6 +47,7 @@ export class InvisicodeGenerator {
             this.lowQ = lowQ;
             this.highQ = highQ;
             this.baseLang = baseLang;
+            this.fallback = fallback;
         }
     }
 
@@ -72,12 +73,13 @@ export class InvisicodeGenerator {
         const ts = L10nContext.regression ? 1 : new Date().getTime();
         jobResponse.tus = [];
         tus.forEach(tu => {
-            const baseTranslation = this.baseLang ? tm.getEntryByGuid(tu.guid)?.ntgt : tu.nsrc;
+            let baseTranslation = this.baseLang ? tm.getEntryByGuid(tu.guid)?.ntgt : tu.nsrc;
+            (this.fallback && !baseTranslation) && (baseTranslation = tu.nsrc);
             if (baseTranslation) {
                 const meta = {
                     g: tu.guid,
                     // eslint-disable-next-line no-nested-ternary
-                    q: tu.q <= this.lowQ ? 0 : (tu.q >= this.highQ ? 2 : 1),
+                    q: (tu.q <= this.lowQ || tu.q === undefined) ? 0 : (tu.q >= this.highQ ? 2 : 1),
                 }
                 jobResponse.tus.push({
                     guid: tu.guid,

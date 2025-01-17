@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /* eslint-disable prefer-named-capture-group */
 /* eslint-disable no-bitwise */
 import { readFileSync } from 'fs';
