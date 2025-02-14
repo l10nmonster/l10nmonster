@@ -49,9 +49,15 @@ export default new L10nMonsterConfig(import.meta.dirname)
             }),
         },
     })
+    .tmStore(new stores.FsLegacyJsonTmStore({
+        name: 'legacy',
+        jobsDir: 'translationJobs',
+    }))
+    .tmStore(new stores.FsJsonlTmStore({
+        name: 'default',
+        partitioning: 'language',
+        jobsDir: 'tmStore',
+    }))
     .operations({
         snapStore: new stores.FsSnapStore({ snapDir: 'snaps' }),
-        jobStore: new stores.JsonJobStore({
-            jobsDir: 'translationJobs',
-        }),
     });

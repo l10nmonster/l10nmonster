@@ -17,10 +17,10 @@ function computeDelta(currentTranslations, newTranslations) {
     return delta;
 }
 
-async function compareToExisting(monsterManager, resHandle, targetLang, translatedRes) {
+async function compareToExisting(mm, resHandle, targetLang, translatedRes) {
     let currentTranslations;
     let delta;
-        const channel = monsterManager.rm.getChannel(resHandle.channel);
+        const channel = mm.rm.getChannel(resHandle.channel);
     try {
         currentTranslations = await channel.getExistingTranslatedResource(resHandle, targetLang);
         if (translatedRes) {
@@ -73,21 +73,21 @@ export class translate {
         ]
     };
 
-    static async action(monsterManager, options) {
+    static async action(mm, options) {
         const mode = (options.mode ?? 'all').toLowerCase();
         console.log(`Generating translated resources for ${consoleColor.bright}${options.lang ? options.lang : 'all languages'}${consoleColor.reset}... (${mode} mode)`);
         const response = { lang: {} };
-        const targetLangs = monsterManager.getTargetLangs(options.lang);
-        const allResources = await monsterManager.rm.getAllResources({ keepRaw: true });
+        const targetLangs = mm.getTargetLangs(options.lang);
+        const allResources = await mm.rm.getAllResources({ keepRaw: true });
         for await (const resHandle of allResources) {
             for (const targetLang of targetLangs) {
                 if (resHandle.targetLangs.includes(targetLang) && (L10nContext.prj === undefined || L10nContext.prj.includes(resHandle.prj))) {
                     const resourceStatus = { id: resHandle.id };
-                    const tm = await monsterManager.tmm.getTM(resHandle.sourceLang, targetLang);
+                    const tm = mm.tmm.getTM(resHandle.sourceLang, targetLang);
                     const translatedRes = await resHandle.generateTranslatedRawResource(tm);
                     let bundleChanges, delta;
                     if (mode === 'delta' || mode === 'dryrun') {
-                        [ bundleChanges, delta ] = await compareToExisting(monsterManager, resHandle, targetLang, translatedRes);
+                        [ bundleChanges, delta ] = await compareToExisting(mm, resHandle, targetLang, translatedRes);
                         resourceStatus.status = bundleChanges;
                         resourceStatus.delta = delta;
                     }
@@ -95,7 +95,7 @@ export class translate {
                         printChanges(resHandle, targetLang, bundleChanges, delta);
                     // delta mode commits translations if segments have changed, or translations are new or deleted
                     } else if (mode === 'all' || bundleChanges === 'changed' || bundleChanges === 'new' || bundleChanges === 'deleted') {
-                        const translatedResourceId = await monsterManager.rm.getChannel(resHandle.channel)
+                        const translatedResourceId = await mm.rm.getChannel(resHandle.channel)
                             .commitTranslatedResource(targetLang, resHandle.id, translatedRes);
                         resourceStatus.status = translatedRes === null ? 'deleted' : 'generated';
                         resourceStatus.translatedId = translatedResourceId;

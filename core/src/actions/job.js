@@ -16,28 +16,26 @@ export class job {
         const op = options.operation;
         const jobGuid = options.jobGuid;
         if (op === 'req') {
-            const req = await monsterManager.tmm.getJobRequest(jobGuid);
-            if (req) {
-                console.log(`Showing request of job ${jobGuid} ${req.sourceLang} -> ${req.targetLang}`);
-                printRequest(req);
+            const job = await monsterManager.tmm.getJob(jobGuid);
+            if (job) {
+                console.log(`Showing request of job ${jobGuid} ${job.sourceLang} -> ${job.targetLang}`);
+                printRequest(job);
             } else {
                 console.error('Could not fetch the specified job');
             }
         } else if (op === 'res') {
-            const req = await monsterManager.tmm.getJobRequest(jobGuid);
-            const res = await monsterManager.tmm.getJob(jobGuid);
-            if (req && res) {
-                console.log(`Showing response of job ${jobGuid} ${req.sourceLang} -> ${req.targetLang} (${res.translationProvider}) ${res.status}`);
-                printResponse(req, res);
+            const job = await monsterManager.tmm.getJob(jobGuid);
+            if (job) {
+                console.log(`Showing response of job ${jobGuid} ${job.sourceLang} -> ${job.targetLang} (${job.translationProvider}) ${job.status}`);
+                printResponse(job);
             } else {
                 console.error('Could not fetch the specified job');
             }
         } else if (op === 'pairs') {
-            const req = await monsterManager.tmm.getJobRequest(jobGuid);
-            const res = await monsterManager.tmm.getJob(jobGuid);
-            if (req && res) {
-                console.log(`Showing source-target pairs of job ${jobGuid} ${req.sourceLang} -> ${req.targetLang} (${res.translationProvider}) ${res.status}`);
-                printResponse(req, res, true);
+            const job = await monsterManager.tmm.getJob(jobGuid);
+            if (job) {
+                console.log(`Showing source-target pairs of job ${jobGuid} ${job.sourceLang} -> ${job.targetLang} (${job.translationProvider}) ${job.status}`);
+                printResponse(job, true);
             } else {
                 console.error('Could not fetch the specified job');
             }
@@ -52,14 +50,9 @@ export class job {
         } else if (op === 'delete') {
             console.log(`Deleting job ${jobGuid}...`);
             try {
-                const res = await monsterManager.tmm.getJob(jobGuid);
-                if (res) {
-                    console.error(`Can only delete blocked/failed jobs. This job has status: ${res.status}`);
-                } else {
-                    await monsterManager.tmm.deleteJobRequest(jobGuid);
-                }
+                await monsterManager.tmm.deleteJobRequest(jobGuid);
             } catch (e) {
-                console.error(`Failed to push job: ${e.stack ?? e}`);
+                console.error(`Failed to delete job: ${e.stack ?? e}`);
             }
         } else {
             console.error(`Invalid operation: ${op}`);

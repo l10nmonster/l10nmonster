@@ -1,4 +1,4 @@
-import { L10nMonsterConfig, xml, adapters, translators, stores } from '@l10nmonster/core';
+import { L10nMonsterConfig, xml, adapters, translators } from '@l10nmonster/core';
 import { HTMLFilter } from '@l10nmonster/helpers-html';
 import * as demo from '@l10nmonster/helpers-demo';
 
@@ -36,9 +36,4 @@ export default new L10nMonsterConfig(import.meta.dirname)
                 quality: 70,
             }),
         },
-    })
-    .operations({
-        jobStore: new stores.JsonJobStore({
-            jobsDir: 'translationJobs',
-        }),
     });

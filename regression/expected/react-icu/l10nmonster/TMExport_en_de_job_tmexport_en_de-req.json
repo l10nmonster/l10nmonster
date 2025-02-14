@@ -214,10 +214,10 @@
 				" day"
 			],
 			"guid": "bws_LnxH_75t_Jdprc_zeTdGgUOWjzRFnDe6YfvjOYg",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "copy - time copy for day singular"
 			},
+			"isSuffixPluralized": true,
 			"seq": 1017
 		},
 		{
@@ -231,10 +231,10 @@
 				" days"
 			],
 			"guid": "Jqw-OIo4U6fG5lyDl3mUsrBOVyxTbyNSBtYPAz3soPQ",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "copy - time copy for days plural"
 			},
+			"isSuffixPluralized": true,
 			"seq": 1016
 		},
 		{
@@ -248,10 +248,10 @@
 				" hour"
 			],
 			"guid": "u-b8MhBsF9k7Q4SquD9h_vGYUIfEhi_gRzuA9i36PfY",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "copy - time copy for hour singular"
 			},
+			"isSuffixPluralized": true,
 			"seq": 1015
 		},
 		{
@@ -265,10 +265,10 @@
 				" hours"
 			],
 			"guid": "haJeL1bazwQ1yTntetVJeSFWmn5a9hPwuTBVoh9ISjo",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "copy - time copy for hours plural"
 			},
+			"isSuffixPluralized": true,
 			"seq": 1014
 		},
 		{
@@ -282,10 +282,10 @@
 				" second"
 			],
 			"guid": "YjPgqgOdTMkHKTRSeQTqRnPKYg-aPkWmF4PtExUoI6Q",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "copy - time copy for second singular"
 			},
+			"isSuffixPluralized": true,
 			"seq": 1013
 		},
 		{
@@ -299,10 +299,10 @@
 				" seconds"
 			],
 			"guid": "x1xQynOoxM1xfd0g5iSmzZfrIWxwjHfV3x-1xaoiFJk",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "copy - time copy for seconds plural"
 			},
+			"isSuffixPluralized": true,
 			"seq": 1012
 		},
 		{

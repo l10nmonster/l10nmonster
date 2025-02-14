@@ -7,29 +7,28 @@ export async function pullCmd(mm, { limitToLang, partial }) {
         .filter(pair => desiredTargetLangs.has(pair[1]));
     for (const [sourceLang, targetLang] of availableLangPairs) {
         const pendingJobs = (await mm.tmm.getJobStatusByLangPair(sourceLang, targetLang))
-            .filter(e => e[1].status === 'pending')
+            .filter(e => e[1] === 'pending')
             .map(e => e[0]);
         stats.numPendingJobs += pendingJobs.length;
         for (const jobGuid of pendingJobs) {
-            const jobRequest = await mm.tmm.getJobRequest(jobGuid);
             const pendingJob = await mm.tmm.getJob(jobGuid);
             if (pendingJob.status === 'pending') {
                 L10nContext.logger.info(`Pulling job ${jobGuid}...`);
                 const translationProvider = mm.getTranslationProvider(pendingJob);
-                const jobResponse = await translationProvider.translator.fetchTranslations(pendingJob, jobRequest);
+                const jobResponse = await translationProvider.translator.fetchTranslations(pendingJob);
                 if (jobResponse?.status === 'done') {
-                    await mm.tmm.processJob(jobResponse, jobRequest);
+                    await mm.tmm.processJob(jobResponse, pendingJob);
                     stats.translatedStrings += jobResponse.tus.length;
                     stats.doneJobs++;
                 } else if (jobResponse?.status === 'pending') {
-                    L10nContext.logger.info(`Got ${jobResponse.tus.length} translations for job ${jobRequest.jobGuid} but there are still ${jobResponse.inflight.length} translations in flight`);
+                    L10nContext.logger.info(`Got ${jobResponse.tus.length} translations for job ${pendingJob.jobGuid} but there are still ${jobResponse.inflight.length} translations in flight`);
                     if (partial) {
                         const { inflight, ...doneResponse } = jobResponse;
                         doneResponse.status = 'done';
-                        await mm.tmm.processJob(doneResponse, jobRequest);
+                        await mm.tmm.processJob(doneResponse, pendingJob);
                         stats.translatedStrings += jobResponse.tus.length;
 
-                        const newRequest = await mm.tmm.getJobRequest(jobResponse.jobGuid); // TODO: can we just use jobRequest?
+                        const newRequest = { ...pendingJob };
                         const newManifest = await mm.tmm.createJobManifest();
                         const originalJobGuid = jobResponse.originalJobGuid ?? jobResponse.jobGuid;
                         newRequest.originalJobGuid = originalJobGuid;

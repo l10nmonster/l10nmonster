@@ -202,7 +202,6 @@
 				}
 			],
 			"guid": "TBomaX-yNmx1U6mUgi-uPb6uzM5GI_z5LSFna60WCfA",
-			"isSuffixPluralized": true,
 			"notes": {
 				"ph": {
 					"%1$d": {
@@ -215,7 +214,8 @@
 					}
 				},
 				"desc": " "
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "app/src/main/res/values/strings-with-comments.xml",
@@ -234,7 +234,6 @@
 				}
 			],
 			"guid": "_nIZEEilZbiPz1PGL9hJgNBmpEy7oySaeyy2Y08PWNA",
-			"isSuffixPluralized": true,
 			"notes": {
 				"ph": {
 					"%1$d": {
@@ -247,7 +246,8 @@
 					}
 				},
 				"desc": " "
-			}
+			},
+			"isSuffixPluralized": true
 		}
 	]
 }

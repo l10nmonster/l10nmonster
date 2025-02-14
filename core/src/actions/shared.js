@@ -24,10 +24,10 @@ function printContent(contentPairs) {
     }
 }
 
-export function printRequest(req) {
+export function printRequest(job) {
     const untranslatedContent = {};
-    // const srcLang = req.sourceLang.substring(0, 2);
-    for (const tu of req.tus) {
+    // const srcLang = job.sourceLang.substring(0, 2);
+    for (const tu of job.tus) {
         const prj = tu.prj || 'default';
         untranslatedContent[prj] ??= {};
         untranslatedContent[prj][tu.rid] ??= {};
@@ -46,16 +46,16 @@ export function printRequest(req) {
     printContent(untranslatedContent);
 }
 
-export function printResponse(req, res, showPair) {
-    const translations = res.tus.reduce((p,c) => (p[c.guid] = c.ntgt, p), {});
+export function printResponse(job, showPairs) {
+    const translations = job.tus.reduce((p,c) => (p[c.guid] = c.ntgt, p), {});
     let matchedTranslations = 0;
     const translatedContent = {};
-    for (const tu of req.tus) {
+    for (const tu of job.tus) {
         const prj = tu.prj || 'default';
         translatedContent[prj] ??= {};
         translatedContent[prj][tu.rid] ??= {};
         if (translations[tu.guid]) {
-            const key = showPair ? utils.flattenNormalizedSourceV1(tu.nsrc)[0] : tu.sid;
+            const key = showPairs ? utils.flattenNormalizedSourceV1(tu.nsrc)[0] : tu.sid;
             translatedContent[prj][tu.rid][key] = {
                 txt: utils.flattenNormalizedSourceV1(translations[tu.guid])[0],
                 color: consoleColor.green,
@@ -63,8 +63,8 @@ export function printResponse(req, res, showPair) {
             matchedTranslations++;
         }
     }
-    if (req.tus.length !== res.tus.length || req.tus.length !== matchedTranslations) {
-        console.log(`${consoleColor.red}${req.tus.length} TU in request, ${res.tus.length} TU in response, ${matchedTranslations} matching translations${consoleColor.reset}`);
+    if (job.tus.length !== matchedTranslations) {
+        console.log(`${consoleColor.red}${job.tus.length} TU in request, ${job.tus.length} TU in response, ${matchedTranslations} matching translations${consoleColor.reset}`);
     }
     printContent(translatedContent);
 }

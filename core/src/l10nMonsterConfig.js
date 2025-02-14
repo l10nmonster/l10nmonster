@@ -35,8 +35,8 @@ export class L10nMonsterConfig {
     /** @type {Object} Configuration for the snapshot store. */
     snapStore;
 
-    /** @type {Object} Configuration for the job store. */
-    jobStore;
+    /** @type {Object} Configuration for the tm stores. */
+    tmStores;
 
     /** @type {string} Directory for operation logs. */
     opsDir;
@@ -177,7 +177,6 @@ export class L10nMonsterConfig {
      * Configures operations for the localization process.
      * @param {Object} config - The operations configuration object.
      * @param {Object} [config.snapStore] - Configuration for the snapshot store.
-     * @param {Object} [config.jobStore] - Configuration for the job store.
      * @param {Object} [config.tuFilters] - Configuration for translation unit filters.
      * @param {Array} [config.analyzers] - Configuration for analyzers.
      * @param {string} [config.opsDir] - Directory for operations.
@@ -185,17 +184,32 @@ export class L10nMonsterConfig {
      */
     operations({
         snapStore,
-        jobStore,
         tuFilters,
         analyzers,
         opsDir,
     }) {
         this.snapStore = snapStore;
-        this.jobStore = jobStore;
         this.tuFilters = tuFilters;
         this.analyzers = analyzers;
         this.opsDir = opsDir;
         return this;
+    }
+
+    /**
+     * Adds a TM store to the set of available TM Stores.
+     * @param {Object} storeInstance - The TM Store instance.
+     * @param {string} storeInstance.name - The logical name of this store instance.
+     * @param {string} storeInstance.access - The store access permissions (readwrite/readonly/writeonly).
+     * @param {string} storeInstance.partitioning - The partitioning strategy of the store.
+     * @returns {L10nMonsterConfig} Returns the instance for method chaining.
+     */
+    tmStore(storeInstance) {
+        if (storeInstance.name && storeInstance.access && storeInstance.partitioning) {
+            this.tmStores ??= {};
+            this.tmStores[storeInstance.name] = storeInstance;
+            return this;
+        }
+        throw new Error('A name, access, and partitioning are required to instantiate a TM Store');
     }
 
     /**
@@ -235,7 +249,16 @@ export class L10nMonsterConfig {
             const mm = new MonsterManager(this);
             await mm.init();
             L10nContext.logger.verbose(`L10n Monster factory-initialized!`);
-            const l10n = Object.fromEntries(this.actions.map(Cmd => [ Cmd.name, createHandler(mm, globalOptions, Cmd.action) ]));
+            const flattenedActions = [];
+            for (const action of this.actions) {
+                if (action.subActions) {
+                    action.subActions.forEach(subAction => flattenedActions.push([ subAction.name, createHandler(mm, globalOptions, subAction.action) ]));
+                } else {
+                    flattenedActions.push([ action.name, createHandler(mm, globalOptions, action.action) ]);
+                }
+            }
+            L10nContext.logger.verbose(`L10n Monster actions: ${flattenedActions.map(e => e[0]).join(', ')}`);
+            const l10n = Object.fromEntries(flattenedActions);
             let response;
             try {
                 response = await cb(l10n, mm);

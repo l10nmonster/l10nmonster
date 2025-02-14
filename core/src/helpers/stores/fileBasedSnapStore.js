@@ -35,7 +35,7 @@ export class FileBasedSnapStore {
     async startSnapshot() {
         await this.delegate.ensureBaseDirExists();
         const filenames = await this.delegate.listAllFiles();
-        this.filesToNuke = Object.fromEntries(filenames.map(e => [e, true]));
+        this.filesToNuke = Object.fromEntries(filenames.map(e => [e[0], true]));
         this.newTOC = {};
     }
 

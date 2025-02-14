@@ -1,5 +1,5 @@
 export async function jobPushCmd(mm, pushJobGuid) {
-    const blockedRequest = await mm.tmm.getJobRequest(pushJobGuid);
+    const blockedRequest = await mm.tmm.getJob(pushJobGuid);
     if (blockedRequest.status === 'blocked') {
         const translationProvider = mm.getTranslationProvider(blockedRequest);
         if (translationProvider) {

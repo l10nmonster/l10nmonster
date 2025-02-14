@@ -358,13 +358,9 @@ test('InvisicodeGenerator - utf8ToFE00Range', async (t) => {
 
     // Extract the Invisicode part
     const invisicodePart = translatedTu.ntgt[0].match(invisicodePrologueRegex)[1];
-    // console.dir(invisicodePart[]);
 
     // Convert FE00 range to UTF-8 string for verification
     const decodedMetadata = fe00RangeToUtf8(invisicodePart);
-
-    console.log('nvisicodePart');
-    console.log(decodedMetadata);
     const metadata = JSON.parse(decodedMetadata);
 
     assert.equal(metadata.g, '555');

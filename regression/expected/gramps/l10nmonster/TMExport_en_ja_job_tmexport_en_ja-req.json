@@ -10759,10 +10759,10 @@
 				"{number_of} years"
 			],
 			"guid": "IXSYO5S5d9Tmx1KuGBdmCtHAgPa9PXubVvkGupGrE2U",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/gen/lib/date.py:427 ../gramps/gen/lib/date.py:434\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -10771,10 +10771,10 @@
 				"{number_of} months"
 			],
 			"guid": "qnt3etiINljtkEdDm-Jm-m2a4VFL9YuQnJ1kLLjkBvc",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/gen/lib/date.py:443\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -10783,10 +10783,10 @@
 				"{number_of} days"
 			],
 			"guid": "RpNGIlqgXFvxD3WIHAafDxI3CGIy3wlJIcF1bypCDiM",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/gen/lib/date.py:454\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -31739,10 +31739,10 @@
 				"{number_of} addons were installed."
 			],
 			"guid": "7t_JUzZmRY_v7hw6PHYklkq7ypg096Zlvy5QxY7fEAg",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/gui/plug/_windows.py:1224\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -32004,10 +32004,10 @@
 				"{number_of} People"
 			],
 			"guid": "w6ZRPQfYKSxOaXXKjBIUdVeTQdnCEGv82_hyOV6KtR8",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/gui/plug/export/_exportoptions.py:167\\n../gramps/gui/plug/export/_exportoptions.py:274\\n../gramps/gui/plug/export/_exportoptions.py:582\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -36449,10 +36449,10 @@
 				"{person}, {age}"
 			],
 			"guid": "KSnThanMbloJd401_9Y0NJBKv-8xd9TX-0-Cni4-b1c",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/drawreport/calendarreport.py:365\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -36472,10 +36472,10 @@
 				"{spouse} and\n {person}, {nyears}"
 			],
 			"guid": "UpBgXdt3FMSJcJtX5gZM6IlFBF50L8GkChdsEyNEqIw",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/drawreport/calendarreport.py:427\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -42072,10 +42072,10 @@
 				" has {count_person} of {max_count_person} individuals ({percent} complete)\n"
 			],
 			"guid": "bhN5qAxfOIGRi1U040XRhoTTpsv1wxIu8431AYvlfiU",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/gramplet/pedigreegramplet.py:272\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -42106,10 +42106,10 @@
 				" have {number_of} individuals\n"
 			],
 			"guid": "NLaI2vyJCagqMB2LDAdRmYr5woZRKVHHdzTEiFCRE4w",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/gramplet/pedigreegramplet.py:283\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -43801,10 +43801,10 @@
 				"{number_of} children"
 			],
 			"guid": "TtWzRYVCDf31soTFwkRe53Dlo3nbC5uq33-vI_WwAv0",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/graph/gvfamilylines.py:982\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -45309,10 +45309,10 @@
 				"Import Complete: {number_of} seconds"
 			],
 			"guid": "FOBS0XUV913gCnV05o_wdwv76jy3RnWvtSPnJcQsBHU",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/importer/importcsv.py:374\\n../gramps/plugins/importer/importgeneweb.py:274\\n../gramps/plugins/importer/importvcard.py:249\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -56365,10 +56365,10 @@
 				"Filter matched {number_of} records."
 			],
 			"guid": "lIlBtT7NiRbAl1N7bL_KAhKfRalD844qsler6eAhnDk",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/quickview/filterbyname.py:420\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -57103,10 +57103,10 @@
 				"There are {number_of} people with a matching name, or alternate name.\n"
 			],
 			"guid": "hBdobfw4oQAY8lLGMd7hBcvZA8GulfcWMY6XA3QYSM0",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/quickview/samesurnames.py:135\\n../gramps/plugins/quickview/samesurnames.py:180\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -57643,10 +57643,10 @@
 				"* {year}{person}{dead}, {age}{relation}"
 			],
 			"guid": "vBd-J4m7UgY8-XDxM6YvjVuRYVybyffyNCDppfFFRVs",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/textreport/birthdayreport.py:338\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -57666,10 +57666,10 @@
 				"⚭ {year}{spouse}{deadtxt2} and\n {person}{deadtxt1}, {nyears}"
 			],
 			"guid": "pARnJpQo_HlFvSEQNCcGFj9rgHinPzb70nTpy5BtJGo",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/textreport/birthdayreport.py:407\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -57689,10 +57689,10 @@
 				"✝ {year}{person}, {age}{relation}"
 			],
 			"guid": "NtGDckUXt1YaPnqR2ChE4H1OitXHSIv_9KMdc3HRsrk",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"reference\":\"../gramps/plugins/textreport/birthdayreport.py:444\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -59824,10 +59824,10 @@
 				"Generation {number} has {count} individuals. {percent}"
 			],
 			"guid": "0ORmVy4THswYsOofLxLoGUmcJ8bXT08kgvhnY_MIpYQ",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"reference\":\"../gramps/plugins/textreport/numberofancestorsreport.py:125\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -60947,10 +60947,10 @@
 				"{number_of} event records were modified."
 			],
 			"guid": "mf96VsaNBEqzkfMr4otxJAVna_yDVwSMvGL3_1fcJQ0",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/changetypes.py:137\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -61465,10 +61465,10 @@
 				"{quantity} broken child/family links were fixed\n"
 			],
 			"guid": "1S7dvbi9YVe7feouhGudDkBC1euPFDKjCJDpn6UYVYA",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2462\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -61499,10 +61499,10 @@
 				"{quantity} broken spouse/family links were fixed\n"
 			],
 			"guid": "bCO_IMl_JTKv4VX3Uj-zK3TOAW98daS9txOnLfCYXUo",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2488\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -61533,10 +61533,10 @@
 				"{quantity} duplicate spouse/family links were found\n"
 			],
 			"guid": "cjVkEeP6trURhrEB3XPRBqFyeIqJ7XqIe9UOYyN90XY",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2514\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -61545,10 +61545,10 @@
 				"{quantity} families with no parents or children found, removed.\n"
 			],
 			"guid": "NpNYFExD3S0l2B3oCS7YWew2_747v7zPxfPkebeuzQs",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2542\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -61557,10 +61557,10 @@
 				"{quantity} corrupted family relationships fixed\n"
 			],
 			"guid": "AKtAgOjUWp2jEhH4eZMB0HIhJQDeLTcemsIYxu8N8gs",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2554\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -61569,10 +61569,10 @@
 				"{quantity} place alternate names fixed\n"
 			],
 			"guid": "xpfD-GqaYsh8C0C5u_M9tbzDCLdxEiryiQ25rbfJ7c0",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2562\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -61581,10 +61581,10 @@
 				"{quantity} persons were referenced, but not found\n"
 			],
 			"guid": "YJ-havGBjdDS3L1707_yOLg5bqNWh9mWW4vNZ63pO0Q",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"reference\":\"../gramps/plugins/tool/check.py:2571\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -61593,10 +61593,10 @@
 				"{quantity} families were referenced, but not found\n"
 			],
 			"guid": "0NgggwjPJRwJTg9O1QcHzDDj1SoAEYOJqZwalOL5LaM",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2579\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -61605,10 +61605,10 @@
 				"{quantity} dates were corrected\n"
 			],
 			"guid": "zAvTY7N_p-Nz7WrtmNdoQplvUcM0LJ2oxD0_tgwp75A",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2589\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -61617,10 +61617,10 @@
 				"{quantity} repositories were referenced, but not found\n"
 			],
 			"guid": "gSR-OUK8SRa8fVCJoaTu9Ihwt1wYAQKl6m2S7MxcRFU",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"reference\":\"../gramps/plugins/tool/check.py:2598\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -61629,10 +61629,10 @@
 				"{quantity} media objects were referenced, but not found\n"
 			],
 			"guid": "5CycNk5buyjgwjkSAlFtJYaoSdxtTKyvnRAfGiPdwxY",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2608 ../gramps/plugins/tool/check.py:2695\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -61641,10 +61641,10 @@
 				"References to {quantity} missing media objects were kept\n"
 			],
 			"guid": "qFf7-ueToGOEbUmkRKi7hUmOOvtetM06ta2y_nu9tuw",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"reference\":\"../gramps/plugins/tool/check.py:2619\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -61653,10 +61653,10 @@
 				"{quantity} missing media objects were replaced\n"
 			],
 			"guid": "M-QF2ZpFtr-SHcU4OUWr7iVYJncktWQmCZLERXUGgOA",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2627\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -61665,10 +61665,10 @@
 				"{quantity} missing media objects were removed\n"
 			],
 			"guid": "WICw67LxwwHIPlOEZ4uwMkXxQcz8rmkNtA0n5WBaEjk",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2635\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -61677,10 +61677,10 @@
 				"{quantity} events were referenced, but not found\n"
 			],
 			"guid": "d3qZzW26xK31mWjbQ2wJ4X9THC-PGRRJRxg5XacEG-Y",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2643\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -61689,10 +61689,10 @@
 				"{quantity} invalid birth event names were fixed\n"
 			],
 			"guid": "ZnGnd0xZRaBBFMvIksjKUKX_36Ee9veuTSLeATFOF00",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2651\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -61701,10 +61701,10 @@
 				"{quantity} invalid death event names were fixed\n"
 			],
 			"guid": "zGo2c_TtvKYnqsAIGNohJFww2wmi2gAgSEh83ChP0lU",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2659\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -61713,10 +61713,10 @@
 				"{quantity} places were referenced, but not found\n"
 			],
 			"guid": "1UglRXEURSboWgxSE0thw8VvmHtRs84vaiFAShAeBKw",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2667\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -61725,10 +61725,10 @@
 				"{quantity} citations were referenced, but not found\n"
 			],
 			"guid": "AQrDzoUi9DlE3Pse0-03r_4OqgMeao2g2ucluRHHfrA",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"reference\":\"../gramps/plugins/tool/check.py:2676\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -61737,10 +61737,10 @@
 				"{quantity} sources were referenced, but not found\n"
 			],
 			"guid": "yvebGm6vSsdGfwQFwprSMeJy-bcAHzYvV3_zAPKJWgM",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"reference\":\"../gramps/plugins/tool/check.py:2686\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -61749,10 +61749,10 @@
 				"{quantity} note objects were referenced, but not found\n"
 			],
 			"guid": "zU4p9WKCeOLVXaodmH9ws_A6O5hL-7KlDeEfQ8U51gY",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2704\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -61761,10 +61761,10 @@
 				"{quantity} tag objects were referenced, but not found\n"
 			],
 			"guid": "cVCZOGlH7HdBoOlhtCHr6dwkMW526xkHJBCDiMPYXQo",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2714 ../gramps/plugins/tool/check.py:2724\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -61773,10 +61773,10 @@
 				"{quantity} invalid name format references were removed\n"
 			],
 			"guid": "JlSiIzL--ZZVxv5wYMk0Wx5l01eRro-jttfcU5zsA2Y",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2734\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -61785,10 +61785,10 @@
 				"{quantity} invalid source citations were fixed\n"
 			],
 			"guid": "kbOcu_i_S099yIqdyfWi4kUvXR3NDJL9SiGo6gPEiUY",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"reference\":\"../gramps/plugins/tool/check.py:2745\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -61797,10 +61797,10 @@
 				"{quantity} Duplicated Gramps IDs fixed\n"
 			],
 			"guid": "JDu7KYxXOFBJUFK66wwCDarHX2CfRIm6R-3wxfkKK8c",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2754\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -62161,10 +62161,10 @@
 				"{quantity} event descriptions have been added"
 			],
 			"guid": "MHORGwD89qhQP55cRjV3tvGG4bHldomlyaCkJI707hU",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/eventnames.py:120\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -62811,10 +62811,10 @@
 				"{number_of} citations merged"
 			],
 			"guid": "Ro2xroyPvdTaFVO-SNOoCQwHewz6vkzsYViUJeNWtMA",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/mergecitations.py:235\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -62867,10 +62867,10 @@
 				"Setting tag for {number_of} people"
 			],
 			"guid": "DJkVEsjaIy0y5SU5zimJ07N6Dpb-AfMhxC4_E3LPTwc",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\\nTRANS: no singular form needed, as rows is always > 1\",\"reference\":\"../gramps/plugins/tool/notrelated.py:262\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -62879,10 +62879,10 @@
 				"Finding relationships between {number_of} people"
 			],
 			"guid": "DocbqopB5TqCcsiKk599k9wSiye4H8ThoidQpV4CFYc",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\\nTRANS: No singular form is needed.\",\"reference\":\"../gramps/plugins/tool/notrelated.py:305\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -62891,10 +62891,10 @@
 				"Looking for {number_of} people"
 			],
 			"guid": "maqFs23vklg023L7hZlMULEEAsRUyvxKxTjMyaASAeY",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/notrelated.py:385\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -62903,10 +62903,10 @@
 				"Looking up the names of {number_of} people"
 			],
 			"guid": "JtnAoYm7SoFdoWs4dy6QjITrEMwHXzF52ZN7EACJA4c",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/notrelated.py:413\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -67601,10 +67601,10 @@
 				" ({number_of} siblings)"
 			],
 			"guid": "J_-2-TXDeAdux6mSRxDGtZvvMMoE4Uh1it-hVdVq6L4",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/view/relview.py:1044\\n../gramps/plugins/view/relview.py:1099\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -67767,10 +67767,10 @@
 				" ({number_of} children)"
 			],
 			"guid": "1P7Ppwazv7srf8SQd8NQdTfi43Qtc4TzxxqodPH7ep8",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/view/relview.py:1564\\n../gramps/plugins/view/relview.py:1610\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -71926,10 +71926,10 @@
 				"{couple}, {years} year anniversary"
 			],
 			"guid": "1cwaD8BTailQh7uyRihn0KBUuK7FoE0G1Moa4_6j888",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"reference\":\"../gramps/plugins/webreport/webcal.py:2220\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76019,10 +76019,10 @@
 				"{person}, {age}"
 			],
 			"guid": "nnUcZB3NMYeQu04CqdJWJaxze3cCUHY2RHwIeCDBYU8",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/drawreport/calendarreport.py:365\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76031,10 +76031,10 @@
 				"{spouse} and\n {person}, {nyears}"
 			],
 			"guid": "Ei7S2Ia-IxjeCp-mNy5j4D0KnxJfWSS1DHk184qUqSg",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/drawreport/calendarreport.py:427\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76043,10 +76043,10 @@
 				" has {count_person} of {max_count_person} individuals ({percent} complete)\n"
 			],
 			"guid": "ad1b9XoMaielvgUYK_7v1NC56jkMjE9fAm2BHCGHT8Q",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/gramplet/pedigreegramplet.py:272\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76055,10 +76055,10 @@
 				"* {year}{person}{dead}, {age}{relation}"
 			],
 			"guid": "sWfpgfWs3K2HeiQEUgyUeIK-10cgWbvKfAy2qdbJ6aI",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/textreport/birthdayreport.py:338\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76067,10 +76067,10 @@
 				"⚭ {year}{spouse}{deadtxt2} and\n {person}{deadtxt1}, {nyears}"
 			],
 			"guid": "d-mEi47s7THHdu-8SNKMasEDsHi5FF8HcpI1P1_pGHU",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/textreport/birthdayreport.py:407\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76079,10 +76079,10 @@
 				"✝ {year}{person}, {age}{relation}"
 			],
 			"guid": "r_UW-S3ezIoEuqiLcKkHvQiOID0tfqEx9y0naFzn8xc",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"reference\":\"../gramps/plugins/textreport/birthdayreport.py:444\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76091,10 +76091,10 @@
 				"{couple}, {years} year anniversary"
 			],
 			"guid": "QQNs3-C2rMsGTOpX7Fn9hMhXL_Kh6EISiL3Ud4_woRY",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"reference\":\"../gramps/plugins/webreport/webcal.py:2220\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76103,10 +76103,10 @@
 				"{number_of} year"
 			],
 			"guid": "tWpG6kvtcp4w1JHvJBozB5DYm72_cxXTa7-sS-Jp73Y",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/gen/lib/date.py:427 ../gramps/gen/lib/date.py:434\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76115,10 +76115,10 @@
 				"{number_of} month"
 			],
 			"guid": "_87wA9D4M9voQ_w6H91oJK1WuLi8xHepJByZ2p7bsh0",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/gen/lib/date.py:443\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76127,10 +76127,10 @@
 				"{number_of} day"
 			],
 			"guid": "VQ0t9COydoCCVczwd3Ms0ct2P6q3zU6nxN7hk3uCn5w",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/gen/lib/date.py:454\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76139,10 +76139,10 @@
 				"{number_of} addon was installed."
 			],
 			"guid": "C4LDQvKjaSL96clj2716BwTWyxRSN87lKbNKcuJejBc",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/gui/plug/_windows.py:1224\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76151,10 +76151,10 @@
 				"{number_of} Person"
 			],
 			"guid": "52fFK7YU_ccWFhAc7GAd1CJzcLvSPpGc5qONECGFd7g",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/gui/plug/export/_exportoptions.py:167\\n../gramps/gui/plug/export/_exportoptions.py:274\\n../gramps/gui/plug/export/_exportoptions.py:582\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76163,10 +76163,10 @@
 				" have {number_of} individual\n"
 			],
 			"guid": "IQx4S7xr_W2d5tkGFC-scMYKpme8JI-HxTSVZJWrHx8",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/gramplet/pedigreegramplet.py:283\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76175,10 +76175,10 @@
 				"{number_of} child"
 			],
 			"guid": "KHaT7qGoTJDVr1FkNoF15mGIzP9EIUs1ahhuL555Nbg",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/graph/gvfamilylines.py:982\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76187,10 +76187,10 @@
 				"Import Complete: {number_of} second"
 			],
 			"guid": "wY1iViRNNjA6R_qnS5q8ngddu_kmWlmZgKKe1wKPmLE",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/importer/importcsv.py:374\\n../gramps/plugins/importer/importgeneweb.py:274\\n../gramps/plugins/importer/importvcard.py:249\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76199,10 +76199,10 @@
 				"Filter matched {number_of} record."
 			],
 			"guid": "ZksxR_L4za64gfjPrHGtdWfdPNy_WBuikTmlEqZ-avQ",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/quickview/filterbyname.py:420\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76211,10 +76211,10 @@
 				"There is {number_of} person with a matching name, or alternate name.\n"
 			],
 			"guid": "u6DC_V9_6MNGf_xspU8EaafQ_5gI9qEAnCri64HmWF0",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/quickview/samesurnames.py:135\\n../gramps/plugins/quickview/samesurnames.py:180\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76223,10 +76223,10 @@
 				"Generation {number} has {count} individual. {percent}"
 			],
 			"guid": "8i_dOcQL1DV-dX7ptnc2RJIokU3nmEMcbnbo-IiJ7Y4",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"reference\":\"../gramps/plugins/textreport/numberofancestorsreport.py:125\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76235,10 +76235,10 @@
 				"{number_of} event record was modified."
 			],
 			"guid": "fIvlt3kRinJeXX3e71ECtuffOQLgT4SHqvs6TgGdc5o",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/changetypes.py:137\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76247,10 +76247,10 @@
 				"{quantity} broken child/family link was fixed\n"
 			],
 			"guid": "13cPQ9HKDCx9_sVjbkxFBSPc_gcK3uANYzWAqwYUm-Y",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2462\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76259,10 +76259,10 @@
 				"{quantity} broken spouse/family link was fixed\n"
 			],
 			"guid": "Kz1YyxhVGwxg-KND6z-rqSX8pzdJJh96u1gMT0NAXL0",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2488\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76271,10 +76271,10 @@
 				"{quantity} duplicate spouse/family link was found\n"
 			],
 			"guid": "WCwhpoEDpGuOPjy3TrIrBScZRd6h3GT0b4WKNuO2S_U",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2514\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76283,10 +76283,10 @@
 				"{quantity} family with no parents or children found, removed.\n"
 			],
 			"guid": "vQHMfY8837RwrIIqU7HLK9famo_lvmbtJtf8hBTQ4ow",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2542\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76295,10 +76295,10 @@
 				"{quantity} corrupted family relationship fixed\n"
 			],
 			"guid": "IcF_YX8GICNbs_CRG13ZoKlMVxPekudOh-VfTd1tDeI",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2554\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76307,10 +76307,10 @@
 				"{quantity} place alternate name fixed\n"
 			],
 			"guid": "-bKKv1HHXjwXHedUwHZ-6-5xGaOqN4IqqqPcxLYVv0s",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2562\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76319,10 +76319,10 @@
 				"{quantity} person was referenced but not found\n"
 			],
 			"guid": "6fdUWHnhrslGjPNPsPpFC1HDmmfONhDdpdHHS2slKIA",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"reference\":\"../gramps/plugins/tool/check.py:2571\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76331,10 +76331,10 @@
 				"{quantity} family was referenced but not found\n"
 			],
 			"guid": "Uu0xlJw2siyEBlvKDWLIey-Zm6PEaPsdEL406IZLdf8",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2579\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76343,10 +76343,10 @@
 				"{quantity} date was corrected\n"
 			],
 			"guid": "eNTIFTR817KsHIKsm0_mRPoMGDXN6ZBnxgj_5Ej9XY0",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2589\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76355,10 +76355,10 @@
 				"{quantity} repository was referenced but not found\n"
 			],
 			"guid": "Qxae29sBRzdXTQzEt9bvXrAjXXvKWRegnI3N4wR9t_A",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"reference\":\"../gramps/plugins/tool/check.py:2598\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76367,10 +76367,10 @@
 				"{quantity} media object was referenced but not found\n"
 			],
 			"guid": "CoIcte-ThOwZANev_gMxQQGQ9nTH9VTs7ep1w2ZIsms",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2608 ../gramps/plugins/tool/check.py:2695\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76379,10 +76379,10 @@
 				"Reference to {quantity} missing media object was kept\n"
 			],
 			"guid": "rkeaxIJ77tXnsb7pEnNpP8UOLPRRVo8sU9-3PvB9FlQ",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"reference\":\"../gramps/plugins/tool/check.py:2619\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76391,10 +76391,10 @@
 				"{quantity} missing media object was replaced\n"
 			],
 			"guid": "KlmjbWDERFIdVDq0YITG5pwIREQMbQFdQlB8i4ce6rE",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2627\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76403,10 +76403,10 @@
 				"{quantity} missing media object was removed\n"
 			],
 			"guid": "uJxVQoreavCWv7YwEkAfizWJPNB9UW2--q3NxZKmr6I",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2635\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76415,10 +76415,10 @@
 				"{quantity} event was referenced but not found\n"
 			],
 			"guid": "WABUyeFf5_gZX9g6kEHHwKIJuIY0aJlWEY9oxMjB5g4",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2643\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76427,10 +76427,10 @@
 				"{quantity} invalid birth event name was fixed\n"
 			],
 			"guid": "xmcD_zdEdnlOYEdPbAoozHjM0OMM88dHnZBOGNvo-m8",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2651\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76439,10 +76439,10 @@
 				"{quantity} invalid death event name was fixed\n"
 			],
 			"guid": "NRjk9Z71qglGAPy2lhyzfny96uFDgmS51ngiJ_mp_cs",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2659\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76451,10 +76451,10 @@
 				"{quantity} place was referenced but not found\n"
 			],
 			"guid": "S8Zi6fXQvDrnKeEYsRQKdA_MLPQ82hSOw7g_oyobnPI",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2667\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76463,10 +76463,10 @@
 				"{quantity} citation was referenced but not found\n"
 			],
 			"guid": "8ngYiHrWV4UQKNkO8WS3uX-QsmCc2i7Oi_yMr3yv_rg",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"reference\":\"../gramps/plugins/tool/check.py:2676\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76475,10 +76475,10 @@
 				"{quantity} source was referenced but not found\n"
 			],
 			"guid": "i8m8qHVOGFQrDT91VH7m4sAwtAIinwpk7DIWvgt9dl4",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"reference\":\"../gramps/plugins/tool/check.py:2686\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76487,10 +76487,10 @@
 				"{quantity} note object was referenced but not found\n"
 			],
 			"guid": "jst3bGm_Z9HUagXQYevz_uFQ0VDRS6yGRFNIkYYmA88",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2704\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76499,10 +76499,10 @@
 				"{quantity} tag object was referenced but not found\n"
 			],
 			"guid": "Z-hOuDQ3askVPas8q7WwTq1XqW2D5w1nL1Ib0MZOrbE",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2714 ../gramps/plugins/tool/check.py:2724\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76511,10 +76511,10 @@
 				"{quantity} invalid name format reference was removed\n"
 			],
 			"guid": "JAiW9CRI-mkvwnbofDSgpu2mG7p11fNEhRepDtB2kXs",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2734\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76523,10 +76523,10 @@
 				"{quantity} invalid source citation was fixed\n"
 			],
 			"guid": "6aulFZQckxb1kvfVwWweov3NbB7jB-oB9q3LqwA_h0M",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"reference\":\"../gramps/plugins/tool/check.py:2745\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76535,10 +76535,10 @@
 				"{quantity} Duplicated Gramps ID fixed\n"
 			],
 			"guid": "-3aSl-XTGqrROk1fnWpKyJpunLpmmtBDx4-kBalwarU",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/check.py:2754\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76547,10 +76547,10 @@
 				"{quantity} event description has been added"
 			],
 			"guid": "HSb9E851zTTxoEE0gGxMMlPdDH9zgpLdSxfWX199YgY",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/eventnames.py:120\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76559,10 +76559,10 @@
 				"{number_of} citation merged"
 			],
 			"guid": "Co0uUzcdiZ8xXy6rZT4N0WMXkBrjZlf0mRhNkoPURds",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/mergecitations.py:235\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76571,10 +76571,10 @@
 				"Setting tag for {number_of} person"
 			],
 			"guid": "d_Du-v_WdHY38q6UDVVUOa_25zmpu-VrL7B_Xe0lEQQ",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\\nTRANS: no singular form needed, as rows is always > 1\",\"reference\":\"../gramps/plugins/tool/notrelated.py:262\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76583,10 +76583,10 @@
 				"Finding relationships between {number_of} person"
 			],
 			"guid": "0VC7WXtzQ4PsqMGx9ynCCLdKVxG04b8mMOjHQmPsSf0",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\\nTRANS: No singular form is needed.\",\"reference\":\"../gramps/plugins/tool/notrelated.py:305\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76595,10 +76595,10 @@
 				"Looking for {number_of} person"
 			],
 			"guid": "f-r6d6lsd9voAUl2yjbQkJLu0Tj-ngCo_guw5ofXDg0",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/notrelated.py:385\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76607,10 +76607,10 @@
 				"Looking up the name of {number_of} person"
 			],
 			"guid": "XVnkkNbUDm8Zgw92U8DHAs8gctXaVUJ-7mrbxrR9DN4",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/tool/notrelated.py:413\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76619,10 +76619,10 @@
 				" ({number_of} sibling)"
 			],
 			"guid": "WsftiLYR-5jScGSFuKczAqMwNGL-PoRAxVeXv_w2OmQ",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/view/relview.py:1044\\n../gramps/plugins/view/relview.py:1099\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		},
 		{
 			"rid": "artifacts/gramps.pot",
@@ -76631,10 +76631,10 @@
 				" ({number_of} child)"
 			],
 			"guid": "SFE1HaDG_fhuJQLVzSg_AxTYXvDGU2GMi7Mk35e3XqU",
-			"isSuffixPluralized": true,
 			"notes": {
 				"desc": "{\"extracted\":\"Translators: leave all/any {...} untranslated\",\"reference\":\"../gramps/plugins/view/relview.py:1564\\n../gramps/plugins/view/relview.py:1610\",\"flag\":\"python-brace-format\"}"
-			}
+			},
+			"isSuffixPluralized": true
 		}
 	]
 }

@@ -1,6 +1,6 @@
-// const fs from 'fs/promises');
-// const { js2tmx } from '@l10nmonster/tmexchange');
-// const { TU, utils } from '@l10nmonster/core');
+// const fs = require('fs/promises');
+// const { js2tmx } = require('@l10nmonster/tmexchange');
+// const { TU, utils } = require('@l10nmonster/core');
 
 
 // async function exportTMX(content, emitMissingTranslations) {
@@ -39,7 +39,7 @@
 //         }
 //     }
 //     const desiredTargetLangs = new Set(mm.getTargetLangs(limitToLang));
-//     const availableLangPairs = (await mm.tmm.getAvailableLangPairs())
+//     const availableLangPairs = (await mm.jobStore.getAvailableLangPairs())
 //         .filter(pair => desiredTargetLangs.has(pair[1]));
 //     for (const [sourceLang, targetLang] of availableLangPairs) {
 //         const tm = await mm.tmm.getTM(sourceLang, targetLang);

@@ -1,4 +1,4 @@
-import { L10nMonsterConfig, decorators, xml, stores, adapters, translators } from '@l10nmonster/core';
+import { L10nMonsterConfig, decorators, xml, adapters, translators } from '@l10nmonster/core';
 import { i18next } from '@l10nmonster/helpers-json';
 
 class ReactConfig extends L10nMonsterConfig {
@@ -46,11 +46,6 @@ class ReactConfig extends L10nMonsterConfig {
                     quality: 70,
                 }),
             },
-        })
-        .operations({
-            jobStore: new stores.JsonJobStore({
-                jobsDir: 'translationJobs',
-            }),
         });
     }
 

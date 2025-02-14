@@ -37,8 +37,8 @@ export default new L10nMonsterConfig(import.meta.dirname)
             }),
         },
     })
-    .operations({
-        jobStore: new stores.JsonJobStore({
-            jobsDir: 'translationJobs',
-        }),
-    });
+    .tmStore(new stores.FsLegacyJsonTmStore({
+        name: 'default',
+        jobsDir: 'translationJobs',
+    }))
+    ;

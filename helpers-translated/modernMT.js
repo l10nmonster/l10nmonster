@@ -192,20 +192,20 @@ export class ModernMT {
         }
     }
 
-    async fetchTranslations(pendingJob, jobRequest) {
+    async fetchTranslations(pendingJob) {
         try {
             const requestTranslationsTask = L10nContext.opsMgr.createTask();
             const chunkOps = [];
             pendingJob.envelope.chunkSizes.forEach(async (chunkSize, chunk) => {
-                L10nContext.logger.info(`Enqueue chunk fetcher for job: ${jobRequest.jobGuid} chunk:${chunk} chunkSize:${chunkSize}`);
+                L10nContext.logger.info(`Enqueue chunk fetcher for job: ${pendingJob.jobGuid} chunk:${chunk} chunkSize:${chunkSize}`);
                 chunkOps.push(requestTranslationsTask.enqueue(this.chunkFetcher, {
-                    jobGuid: jobRequest.jobGuid,
+                    jobGuid: pendingJob.jobGuid,
                     chunk,
                     chunkSize,
                 }));
             });
             requestTranslationsTask.commit(mmtMergeTranslatedChunksOp, {
-                jobRequest,
+                pendingJob,
                 tuMeta: pendingJob.envelope.tuMeta,
                 quality: this.quality,
                 ts: L10nContext.regression ? 1 : new Date().getTime(),

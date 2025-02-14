@@ -1,6 +1,6 @@
 import * as path from 'path';
 import { L10nContext, TU, utils, analyzers } from '@l10nmonster/core';
-import TMManager from './tmManager.js';
+import TMManager from './tmManager/index.js';
 import ResourceManager from './resourceManager.js';
 
 const spaceRegex = /\s+/g;
@@ -8,6 +8,7 @@ const spaceRegex = /\s+/g;
 export class MonsterManager {
     #targetLangs;
     #targetLangSets = {};
+    #tmStores = {};
     #functionsForShutdown = [];
 
     constructor(monsterConfig) {
@@ -37,17 +38,12 @@ export class MonsterManager {
             defaultSourceLang: monsterConfig.sourceLang,
             defaultTargetLangs: [ ...this.#targetLangs ].sort(),
         });
-        this.scheduleForShutdown(this.rm.shutdown.bind(this.rm));
 
         this.translationProviders = monsterConfig.translationProviders;
+        monsterConfig.tmStores && (this.#tmStores = monsterConfig.tmStores);
 
-        if (!(monsterConfig.jobStore ?? monsterConfig.snapStore)) {
-            throw 'You must specify at least a jobStore or a snapStore in your config';
-        }
         monsterConfig.opsDir && L10nContext.opsMgr.setOpsDir(path.join(L10nContext.baseDir, monsterConfig.opsDir));
-        monsterConfig.jobStore?.shutdown && this.scheduleForShutdown(monsterConfig.jobStore?.shutdown.bind(monsterConfig.jobStore));
-        this.tmm = new TMManager({ jobStore: monsterConfig.jobStore, parallelism: monsterConfig.parallelism });
-        this.scheduleForShutdown(this.tmm.shutdown.bind(this.tmm));
+        this.tmm = new TMManager();
 
         this.tuFilters = monsterConfig.tuFilters;
         this.analyzers = { ...analyzers, ...monsterConfig.analyzers };
@@ -64,9 +60,13 @@ export class MonsterManager {
     }
 
     async init() {
+        for (const tmStore of Object.values(this.#tmStores)) {
+            typeof tmStore.init === 'function' && await tmStore.init(this);
+        }
         for (const tp of Object.values(this.translationProviders)) {
             typeof tp.translator.init === 'function' && await tp.translator.init(this);
         }
+        typeof this.rm.init === 'function' && await this.rm.init(this);
         typeof this.tmm.init === 'function' && await this.tmm.init(this);
         typeof this.monsterConfig.init === 'function' && await this.monsterConfig.init(this);
     }
@@ -96,6 +96,19 @@ export class MonsterManager {
             return targetLangs;
         }
         return [ ...this.#targetLangs ];
+    }
+
+    getTmStore(name) {
+        const fixedName = utils.fixCaseInsensitiveKey(this.#tmStores, name);
+        if (fixedName) {
+            return this.#tmStores[fixedName];
+        } else {
+            throw new Error(`Unknown tm store: ${name}`);
+        }
+    }
+
+    getTmStoreNames() {
+        return Object.keys(this.#tmStores);
     }
 
     getMinimumQuality(jobManifest) {
@@ -138,7 +151,10 @@ export class MonsterManager {
             };
             const leverageDetails = prjLeverage[prj];
             if (resHandle.targetLangs.includes(targetLang) && targetLang !== this.sourceLang) {
-                const tm = await this.tmm.getTM(resHandle.sourceLang, targetLang);
+                const tm = this.tmm.getTM(resHandle.sourceLang, targetLang);
+                // potential tm.getMatches(segments) and tm.untranslated(segments)
+                // returns either only matches or only non-ice [[ guid, { match: ice/qualified/unqualified/internal, q, } ]]
+                // words and stats calculations can be done by status command
                 for (const seg of resHandle.segments) {
                     // TODO: if segment is pluralized we need to generate/suppress the relevant number of variants for the targetLang
                     const tmEntry = tm.getEntryByGuid(seg.guid);
@@ -189,7 +205,7 @@ export class MonsterManager {
     }
 
     async prepareFilterBasedJob({ targetLang, tmBased, guidList }) {
-        const tm = await this.tmm.getTM(this.sourceLang, targetLang);
+        const tm = this.tmm.getTM(this.sourceLang, targetLang);
         const sourceLookup = {};
         for await (const res of this.rm.getAllResources()) {
             for (const seg of res.segments) {

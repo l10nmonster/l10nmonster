@@ -25,12 +25,12 @@ const consoleTransport = new winston.transports.Console({
 // This is a shared context across all components
 export class L10nContext {
     static logger = winston.createLogger({
-        level: 'verbose',
+        level: 'info',
         transports: [ consoleTransport ],
     });
 
     static setVerbosity = (level) => {
-        consoleTransport.level = logLevels[level] ?? 'verbose';
+        consoleTransport.level = logLevels[level] ?? 'info';
     };
 
     static env = process.env;

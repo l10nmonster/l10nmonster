@@ -1,4 +1,4 @@
-import { L10nMonsterConfig, L10nContext, stores, adapters, translators } from '@l10nmonster/core';
+import { L10nMonsterConfig, L10nContext, adapters, translators } from '@l10nmonster/core';
 import { PoFilter } from '@l10nmonster/helpers-po';
 import * as demo from '@l10nmonster/helpers-demo';
 
@@ -38,10 +38,4 @@ export default new L10nMonsterConfig(import.meta.dirname)
                 quality: 70,
             }),
         },
-})
-    .operations({
-        tmm: 'sql',
-        jobStore: new stores.JsonJobStore({
-            jobsDir: 'translationJobs',
-        }),
     });

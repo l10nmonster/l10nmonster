@@ -1,47 +1,69 @@
 import path from 'path';
-import {
-    mkdir,
-    readdir,
-    readFile,
-    writeFile,
-    unlink,
-} from 'node:fs/promises';
+import { mkdirSync, readdirSync, statSync, readFileSync, writeFileSync, unlinkSync, createReadStream, createWriteStream } from 'node:fs';
+import { pipeline } from 'node:stream/promises';
+import { Readable } from 'node:stream';
+import { L10nContext } from '@l10nmonster/core';
 
 export class FsStoreDelegate {
     constructor(baseDir) {
         this.baseDir = baseDir;
     }
 
-    async listAllFiles(dir) {
-        dir ??= '';
-        const fileNames = [];
-        const dirContents = await readdir(path.join(this.baseDir, dir), { withFileTypes:true });
-        fileNames.push(dirContents.filter(e => e.isFile()).map(e => path.join(dir, e.name)));
-        const subdirs = dirContents.filter(e => e.isDirectory()).map(subdir => subdir.name);
-        for (const subdir of subdirs) {
-            fileNames.push(await this.listAllFiles(path.join(dir, subdir)));
-        }
-        return fileNames.flat(1);
+    async listAllFiles() {
+        const dirContents = readdirSync(this.baseDir, { recursive: true });
+        return dirContents.map(filename => {
+                const stats = statSync(path.join(this.baseDir, filename));
+                return stats.isFile() ? [ filename, `TS${stats.mtimeMs}` ] : undefined;
+            })
+            .filter(f => f !== undefined);
     }
 
     async ensureBaseDirExists() {
-        return mkdir(this.baseDir, { recursive: true });
+        return mkdirSync(this.baseDir, { recursive: true });
     }
 
     async getFile(filename) {
-        return readFile(path.join(this.baseDir, filename), 'utf8');
+        return readFileSync(path.join(this.baseDir, filename), 'utf8');
+    }
+
+    getStream(filename) {
+        const pathName = path.join(this.baseDir, filename);
+        const readable = createReadStream(pathName);
+        return readable;
     }
 
     async saveFile(filename, contents) {
         Array.isArray(filename) && (filename = path.join(...filename));
         const dir = path.dirname(path.join(this.baseDir, filename));
-        await mkdir(dir, { recursive: true });
-        return writeFile(path.join(this.baseDir, filename), contents, 'utf8');
+        mkdirSync(dir, { recursive: true });
+        const pathName = path.join(this.baseDir, filename);
+        writeFileSync(pathName, contents, 'utf8');
+        const stats = statSync(pathName);
+        return L10nContext.regression ? 'TS1' : `TS${stats.mtimeMs}`;
+    }
+
+    async saveStream(filename, generator) {
+        Array.isArray(filename) && (filename = path.join(...filename));
+        const dir = path.dirname(path.join(this.baseDir, filename));
+        mkdirSync(dir, { recursive: true });
+        const pathName = path.join(this.baseDir, filename);
+
+        const readable = Readable.from(generator());
+        const writable = createWriteStream(pathName);
+        await pipeline(readable, writable);
+
+        const stats = statSync(pathName);
+        return L10nContext.regression ? 'TS1' : `TS${stats.mtimeMs}`;
     }
 
     async deleteFiles(filenames) {
         for (const filename of filenames) {
-            await unlink(path.join(this.baseDir, filename));
+            try {
+                unlinkSync(path.join(this.baseDir, filename));
+            // eslint-disable-next-line no-unused-vars
+            } catch(e) {
+                // L10nContext.logger.info(e.message ?? e);
+            }
         }
     }
 }

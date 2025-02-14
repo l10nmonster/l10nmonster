@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 export { analyze } from './analyze.js';
 export { job } from './job.js';
 export { jobs } from './jobs.js';
@@ -6,5 +7,6 @@ export { pull } from './pull.js';
 export { push } from './push.js';
 export { snap } from './snap.js';
 export { status } from './status.js';
+export { tm } from './tm.js';
 export { tmexport } from './tmexport.js';
 export { translate } from './translate.js';

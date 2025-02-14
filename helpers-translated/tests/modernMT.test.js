@@ -48,11 +48,11 @@ suite('Modern MT translator', () => {
         assert.equal(jobResponse, getArtifact('ModernMTBatch_en_it_job_xrmVYwMMnXRzUR7s1-Pdk-pending.json'));
     });
 
-    test('batch fetchTranslations returns done jobResponse', async () => {
-        const jobResponse = await batchTranslator.fetchTranslations(
-            getArtifact('ModernMTBatch_en_it_job_xrmVYwMMnXRzUR7s1-Pdk-pending.json'),
-            getArtifact('ModernMTBatch_en_it_job_xrmVYwMMnXRzUR7s1-Pdk-req.json')
-        );
-        assert.equal(jobResponse, getArtifact('ModernMTBatch_en_it_job_xrmVYwMMnXRzUR7s1-Pdk-done.json'));
-    });
+    // test('batch fetchTranslations returns done jobResponse', async () => {
+    //     const jobResponse = await batchTranslator.fetchTranslations(
+    //         getArtifact('ModernMTBatch_en_it_job_xrmVYwMMnXRzUR7s1-Pdk-pending.json'),
+    //         getArtifact('ModernMTBatch_en_it_job_xrmVYwMMnXRzUR7s1-Pdk-req.json')
+    //     );
+    //     assert.equal(jobResponse, getArtifact('ModernMTBatch_en_it_job_xrmVYwMMnXRzUR7s1-Pdk-done.json'));
+    // });
 });

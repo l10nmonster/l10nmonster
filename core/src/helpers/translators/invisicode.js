@@ -67,7 +67,7 @@ export class InvisicodeGenerator {
     async requestTranslations(jobRequest) {
         let tm;
         if (this.baseLang) {
-            tm = await this.#mm.tmm.getTM(jobRequest.sourceLang, this.baseLang);
+            tm = this.#mm.tmm.getTM(jobRequest.sourceLang, this.baseLang);
         }
         const { tus, ...jobResponse } = jobRequest;
         const ts = L10nContext.regression ? 1 : new Date().getTime();

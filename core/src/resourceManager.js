@@ -76,6 +76,10 @@ export default class ResourceManager {
         this.snapStore = snapStore;
     }
 
+    async init(mm) {
+        mm.scheduleForShutdown(this.shutdown.bind(this));
+    }
+
     /**
      * Returns a channel given its id.
      *

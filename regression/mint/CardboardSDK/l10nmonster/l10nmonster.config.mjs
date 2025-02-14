@@ -1,4 +1,4 @@
-import { L10nMonsterConfig, decorators, xml, stores, adapters, translators } from '@l10nmonster/core';
+import { L10nMonsterConfig, decorators, xml, adapters, translators } from '@l10nmonster/core';
 import * as ios from '@l10nmonster/helpers-ios';
 
 class CardboardConfig extends L10nMonsterConfig {
@@ -43,11 +43,6 @@ class CardboardConfig extends L10nMonsterConfig {
                     quality: 70,
                 }),
             },
-        })
-        .operations({
-            jobStore: new stores.JsonJobStore({
-                jobsDir: 'translationJobs',
-            }),
         });
     }
 

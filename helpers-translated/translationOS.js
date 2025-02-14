@@ -237,10 +237,10 @@ export class TranslationOS {
         return jobResponse;
     }
 
-    async fetchTranslations(pendingJob, jobRequest) {
+    async fetchTranslations(pendingJob) {
         const { inflight, ...jobResponse } = pendingJob;
-        const reqTus = jobRequest.tus.filter(tu => inflight.includes(tu.guid));
-        const tus = await this.#fetchTranslatedTus({ jobGuid: pendingJob.originalJobGuid ?? jobRequest.originalJobGuid ?? jobRequest.jobGuid, targetLang: jobRequest.targetLang, reqTus, refreshMode: false });
+        const reqTus = pendingJob.tus.filter(tu => inflight.includes(tu.guid));
+        const tus = await this.#fetchTranslatedTus({ jobGuid: pendingJob.originalJobGuid ?? pendingJob.originalJobGuid ?? pendingJob.jobGuid, targetLang: pendingJob.targetLang, reqTus, refreshMode: false });
         const tuMap = tus.reduce((p,c) => (p[c.guid] = c, p), {});
         const nowInflight = inflight.filter(guid => !tuMap[guid]);
         if (tus.length > 0) {

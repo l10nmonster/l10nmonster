@@ -21,7 +21,7 @@ export class Repetition {
     async requestTranslations(jobRequest) {
         const { tus, ...jobResponse } = jobRequest;
         jobResponse.tus = [];
-        const tm = await this.#mm.tmm.getTM(jobRequest.sourceLang, jobRequest.targetLang);
+        const tm = this.#mm.tmm.getTM(jobRequest.sourceLang, jobRequest.targetLang);
         for (const tu of tus) {
             const tuCandidates = tm.getExactMatches(tu.nsrc);
             if (tuCandidates.length > 0) {

@@ -12,6 +12,7 @@ const sourceTUWhitelist = new Set([
     'isSuffixPluralized', // TODO: change this from boolean to `pluralForm` enumeration (so it doesn't have to be a suffix)
     'nid', // opaque native id of the segment (in the original storage format)
     'seq', // sequence number to shorten guid
+    'jobProps', // this is for job specific properties
 ]);
 
 const targetTUWhitelist = new Set([
@@ -164,6 +165,6 @@ export class TU {
 
     static fromRequestResponse(req = {}, res = {}, additionalProps = {}) {
         const coalescedEntry = Object.fromEntries(Object.keys({...req, ...res}).map(k => [k, res[k] === undefined ? req[k] : res[k]]));
-        return new TU(cleanupTU({ ...coalescedEntry, ...additionalProps}), true, true);
+        return new TU(cleanupTU({ ...additionalProps, ...coalescedEntry }), true, true);
     }
 }

@@ -1,4 +1,5 @@
 import { createHash } from 'crypto';
+import { L10nContext, TU } from '@l10nmonster/core';
 
 export function generateGuid(str) {
     const sidContentHash = createHash('sha256');
@@ -283,4 +284,37 @@ export function integerToLabel(int) {
 export function fixCaseInsensitiveKey(object, key) {
     const asLowercase = key.toLowerCase();
     return Object.keys(object).find(k => k.toLowerCase() === asLowercase);
+}
+
+export function *getIteratorFromJobPair(jobRequest, jobResponse) {
+    const requestedUnits = jobRequest?.tus ? Object.fromEntries(jobRequest.tus.map(tu => [ tu.guid, tu])) : {};
+    const { inflight, tus, ...jobProps } = jobResponse;
+    if (inflight) {
+        for (const guid of inflight) {
+            const reqEntry = requestedUnits[guid] ?? {};
+            const { jobGuid, translationProvider, ...tuProps } = reqEntry;
+            const overriddenJobProps = { ...jobProps };
+            overriddenJobProps.jobGuid ??= jobGuid;
+            overriddenJobProps.translationProvider ??= translationProvider;
+            try {
+                // TODO: should q be 0? if we set the real value it would automatically prevent duplicates in flight
+                yield TU.asPair({ ...tuProps, q: 0, inflight: true, ts: 0, jobProps: overriddenJobProps });
+            } catch (e) {
+                L10nContext.logger.verbose(`Problems converting in-flight entry to TU: ${e}`);
+            }
+        }
+    }
+    if (tus) {
+        for (const tu of tus) {
+            const { jobGuid, translationProvider, ...tuProps } = tu;
+            const overriddenJobProps = { ...jobProps };
+            overriddenJobProps.jobGuid ??= jobGuid;
+            overriddenJobProps.translationProvider ??= translationProvider;
+            try {
+                yield TU.fromRequestResponse(requestedUnits[tu.guid], tuProps, { jobProps: overriddenJobProps });
+            } catch (e) {
+                L10nContext.logger.verbose(`Problems converting entry to TU: ${e}`);
+            }
+        }
+    }
 }

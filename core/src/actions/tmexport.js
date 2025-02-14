@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import * as fs from 'fs/promises';
 
 import { L10nContext, TU, utils } from '@l10nmonster/core';
@@ -13,25 +14,28 @@ export class tmexport {
         ]
     };
 
-    static async action(monsterManager, options) {
+    static async action(mm, options) {
         const prjsplit = options.prjsplit;
         console.log(`Exporting TM for ${consoleColor.bright}${options.lang ? options.lang : 'all languages'}${consoleColor.reset}...`);
         let tuFilterFunction;
         if (options.filter) {
-            tuFilterFunction = monsterManager.tuFilters[utils.fixCaseInsensitiveKey(monsterManager.tuFilters, options.filter)];
+            tuFilterFunction = mm.tuFilters[utils.fixCaseInsensitiveKey(mm.tuFilters, options.filter)];
             if (!tuFilterFunction) {
                 throw `Couldn't find ${options.filter} tu filter`;
             }
         }
         const files = [];
-        const desiredTargetLangs = new Set(monsterManager.getTargetLangs(options.lang));
-        const availableLangPairs = (await monsterManager.tmm.getAvailableLangPairs())
-            .filter(pair => desiredTargetLangs.has(pair[1]));
-        for (const [sourceLang, targetLang] of availableLangPairs) {
+        const desiredTargetLangs = new Set(mm.getTargetLangs(options.lang));
+        const availableLangPairs = await mm.tmm.getAvailableLangPairs();
+        const desiredLangPairs = availableLangPairs.filter(pair => desiredTargetLangs.has(pair[1]));
+        for (const [sourceLang, targetLang] of desiredLangPairs) {
             const tusByPrj = {};
-            const tm = await monsterManager.tmm.getTM(sourceLang, targetLang);
-            tm.guids.forEach(guid => {
-                const tu = tm.getEntryByGuid(guid);
+            const tm = mm.tmm.getTM(sourceLang, targetLang);
+            let translationProvider;
+            for (const completeEntry of tm.getAllCompleteEntries()) {
+                const { jobProps, ...tu } = completeEntry;
+                jobProps?.translationProvider && (translationProvider = jobProps.translationProvider);
+                tu.translationProvider = translationProvider;
                 if (!tuFilterFunction || tuFilterFunction(tu)) {
                     // either export everything or only content in the specified project
                     if (!prjsplit || !L10nContext.prj || L10nContext.prj.includes(tu.prj)) {
@@ -40,7 +44,7 @@ export class tmexport {
                         tusByPrj[prj].push(tu);
                     }
                 }
-            });
+            }
             for (const [ prj, tus ] of Object.entries(tusByPrj)) {
                 const jobGuid = `tmexport_${prjsplit ? `${prj}_` : ''}${sourceLang}_${targetLang}`;
                 const jobReq = {

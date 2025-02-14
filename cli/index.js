@@ -9,7 +9,37 @@ function intOptionParser(value, _dummyPrevious) {
       throw new InvalidArgumentError('Not an integer');
     }
     return parsedValue;
-  }
+}
+
+function configureCommand(cmd, Action, l10nRunner) {
+
+    /** @this Command */
+    const actionHandler = async function actionHandler() {
+        const options = this.opts();
+        // Need to hack into the guts of commander as it doesn't seem to expose argument names
+        // @ts-ignore
+        const args = Object.fromEntries(this._args.map((arg, idx) => [
+            arg._name,
+            arg.variadic ? this.args.slice(idx) : this.args[idx]
+        ]));
+        await l10nRunner(async l10n => {
+            await l10n[Action.name]({ ...options, ...args })
+        });
+    };
+    const help = Action.help;
+    cmd.description(help.description).action(actionHandler);
+    // @ts-ignore
+    help.options && help.options.forEach(opt => cmd.option(...opt));
+    // @ts-ignore
+    help.requiredOptions && help.requiredOptions.forEach(opt => cmd.requiredOption(...opt));
+    help.arguments && help.arguments.forEach(([ arg, desc, choices]) => {
+        if (choices) {
+            cmd.addArgument(new Argument(arg, desc).choices(choices));
+        } else {
+            cmd.argument(arg, desc);
+        }
+    });
+}
 
 export default async function runMonsterCLI(monsterConfig, cliCommand) {
     const monsterCLI = new Command();
@@ -22,33 +52,19 @@ export default async function runMonsterCLI(monsterConfig, cliCommand) {
         .option('--arg <string>', 'optional config constructor argument')
         .option('--regression', 'keep variables constant during regression testing');
     try {
-
-        /** @this Command */
-        const actionHandler = async function actionHandler() {
-            const options = this.opts();
-            // Need to hack into the guts of commander as it doesn't seem to expose argument names
-            const args = Object.fromEntries(this._args.map((arg, idx) => [
-                arg._name,
-                arg.variadic ? this.args.slice(idx) : this.args[idx]
-            ]));
-            await monsterConfig.run(monsterCLI.opts(), async l10n => {
-                await l10n[this.name()]({ ...options, ...args });
-            });
-        };
+        const l10nRunner = async (cb) => await monsterConfig.run(monsterCLI.opts(), async l10n => await cb(l10n));
         monsterConfig.actions.forEach(Action => {
-            const help = Action.help;
-            const cmd = monsterCLI.command(Action.name)
-                .description(help.description)
-                .action(actionHandler);
-            help.options && help.options.forEach(opt => cmd.option(...opt));
-            help.requiredOptions && help.requiredOptions.forEach(opt => cmd.requiredOption(...opt));
-            help.arguments && help.arguments.forEach(([ arg, desc, choices]) => {
-                if (choices) {
-                    cmd.addArgument(new Argument(arg, desc).choices(choices));
-                } else {
-                    cmd.argument(arg, desc);
-                }
-            });
+            const cmd = monsterCLI.command(Action.name);
+            if (Action.subActions) {
+                cmd.description(Action.help.description)
+                Action.subActions.forEach(subAction => {
+                    const subName = subAction.name.split('_')[1];
+                    const subCmd = cmd.command(subName);
+                    configureCommand(subCmd, subAction, l10nRunner)
+                });
+            } else {
+                configureCommand(cmd, Action, l10nRunner);
+            }
             });
         const argv = typeof cliCommand === 'string' ? cliCommand.split(' ') : cliCommand;
         await monsterCLI.parseAsync(argv);

@@ -45,10 +45,10 @@ export class XliffBridge {
         return jobManifest;
     }
 
-    async fetchTranslations(pendingJob, jobRequest) {
+    async fetchTranslations(pendingJob) {
         const { inflight, ...jobResponse } = pendingJob;
         const completePath = path.join(L10nContext.baseDir, this.completePath(jobResponse.targetLang, jobResponse.jobGuid));
-        const tuMap = jobRequest.tus.reduce((p,c) => (p[c.guid] = c, p), {});
+        // const tuMap = pendingJob.tus.reduce((p,c) => (p[c.guid] = c, p), {});
         if (existsSync(completePath)) {
             const translatedRes = await fs.readFile(completePath, 'utf8');
             const translations = await xliff12ToJs(translatedRes);

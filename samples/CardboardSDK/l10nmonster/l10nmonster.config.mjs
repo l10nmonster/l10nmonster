@@ -105,11 +105,13 @@ export default new L10nMonsterConfig(import.meta.dirname)
         tuFilters: {
             initial: tu => tu.sid.indexOf(L10nContext.arg) === 0,
         },
-        jobStore: new stores.JsonJobStore({
-            jobsDir: 'translationJobs',
-        }),
         opsDir: 'l10nOps',
     })
+    .tmStore(new stores.FsJsonlTmStore({
+        name: 'primary',
+        jobsDir: 'translationJobs',
+        partitioning: 'language',
+    }))
     .action(class mystats {
             static help = {
                 description: 'just a demo of how to create your own commands',
@@ -123,7 +125,7 @@ export default new L10nMonsterConfig(import.meta.dirname)
                 for (const targetLang of targetLangs) {
                     const stats = {};
                     const allJobs = await mm.tmm.getJobStatusByLangPair(mm.sourceLang, targetLang);
-                    allJobs.forEach(entry => stats[entry[1].status] = (stats[entry[1].status] ?? 0) + 1);
+                    allJobs.forEach(entry => stats[entry[1]] = (stats[entry[1].status] ?? 0) + 1);
                     console.log(`Target language ${targetLang}: ${stats.done ?? 0} done ${stats.pending ?? 0} pending ${stats.req ?? 0} req`);
                 }
             }

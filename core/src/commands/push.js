@@ -12,7 +12,7 @@ export async function pushCmd(mm, { limitToLang, tuFilter, driver, refresh, tran
     }
     let guidList;
     if (driver.jobGuid) {
-        const req = await mm.tmm.getJobRequest(driver.jobGuid);
+        const req = await mm.tmm.getJob(driver.jobGuid);
         if (!req) {
             throw `jobGuid ${driver.jobGuid} not found`;
         }
@@ -22,7 +22,7 @@ export async function pushCmd(mm, { limitToLang, tuFilter, driver, refresh, tran
     const targetLangs = mm.getTargetLangs(limitToLang);
     for (const targetLang of targetLangs) {
         const blockedJobs = (await mm.tmm.getJobStatusByLangPair(mm.sourceLang, targetLang))
-            .filter(e => e[1].status === 'req');
+            .filter(e => e[1] === 'req');
         if (blockedJobs.length === 0) {
             const jobBody = await (driver.untranslated ? mm.prepareTranslationJob({ targetLang, leverage }) : mm.prepareFilterBasedJob({ targetLang, tmBased: driver.tm, guidList }));
             tuFilterFunction && (jobBody.tus = jobBody.tus.filter(tu => tuFilterFunction(tu)));

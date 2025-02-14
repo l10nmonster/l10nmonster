@@ -42,19 +42,6 @@
  * @property {function(): {}} getAllResources - Retrieves all resources.
  */
 
-/**
- * @interface JobStore
- * @property {function(): Promise<any[]>} getAvailableLangPairs - Retrieves available language pairs.
- * @property {function(sourceLang: any, targetLang: any): Promise<[string, any][]>} getJobStatusByLangPair - Retrieves job status by language pair.
- * @property {function(): Promise<{ jobGuid: string; status: string }>} createJobManifest - Creates a job manifest.
- * @property {function(job: any): Promise<void>} writeJob - Writes a job.
- * @property {function(jobFilename: string): Promise<any>} getJobByHandle - Retrieves a job by its handle.
- * @property {function(jobGuid: string): Promise<any>} getJob - Retrieves a job by its GUID.
- * @property {function(jobFilename: any): Promise<any>} getJobRequestByHandle - Retrieves a job request by its handle.
- * @property {function(jobGuid: string): Promise<any>} getJobRequest - Retrieves a job request by its GUID.
- * @property {function(jobGuid: string): Promise<any>} deleteJobRequest - Deletes a job request.
- */
-
 export { L10nContext } from './src/l10nContext.js';
 export { TU } from './src/entities/tu.js';
 export { L10nMonsterConfig } from './src/l10nMonsterConfig.js';
