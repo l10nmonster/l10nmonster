@@ -1,6 +1,5 @@
 import { writeFileSync } from 'fs';
 
-import { statusCmd } from '../commands/status.js';
 import { consoleColor } from './shared.js';
 
 function computeTotals(totals, partial) {
@@ -40,7 +39,7 @@ export class status {
         const limitToLang = options.lang;
         const all = Boolean(options.all);
         const output = options.output;
-        const status = await statusCmd(monsterManager, { limitToLang });
+        const status = await monsterManager.status({ limitToLang });
         if (output) {
             writeFileSync(output, JSON.stringify(status, null, '\t'), 'utf8');
         } else {

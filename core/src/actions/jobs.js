@@ -1,4 +1,3 @@
-import { jobsCmd } from '../commands/jobs.js';
 import { consoleColor } from './shared.js';
 
 export class jobs {
@@ -11,7 +10,7 @@ export class jobs {
 
     static async action(monsterManager, options) {
         const limitToLang = options.lang;
-        const jobs = await jobsCmd(monsterManager, { limitToLang });
+        const jobs = await monsterManager.jobs({ limitToLang });
         for (const [lang, jobManifests] of Object.entries(jobs)) {
             if (jobManifests.length > 0) {
                 console.log(`Target language ${consoleColor.bright}${lang}${consoleColor.reset}:`);

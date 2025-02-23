@@ -45,9 +45,8 @@
 export { L10nContext } from './src/l10nContext.js';
 export { TU } from './src/entities/tu.js';
 export { L10nMonsterConfig } from './src/l10nMonsterConfig.js';
-export { MonsterManager } from './src/monsterManager.js';
+export { MonsterManager } from './src/monsterManager/index.js';
 export { OpsMgr } from './src/opsMgr.js';
 
 export * from './src/helpers/index.js';
-export * as commands from './src/commands/index.js';
 export * as actions from './src/actions/index.js';

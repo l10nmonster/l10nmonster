@@ -1,4 +1,3 @@
-import { jobPushCmd } from '../commands/job.js';
 import { printRequest, printResponse } from './shared.js';
 
 export class job {
@@ -42,7 +41,7 @@ export class job {
         } else if (op === 'push') {
             console.log(`Pushing job ${jobGuid}...`);
             try {
-                const pushResponse = await jobPushCmd(monsterManager, jobGuid);
+                const pushResponse = await monsterManager.jobPush(jobGuid);
                 console.log(`${pushResponse.num.toLocaleString()} translations units requested -> status: ${pushResponse.status}`);
             } catch (e) {
                 console.error(`Failed to push job: ${e.stack ?? e}`);

@@ -1,6 +1,5 @@
 import { writeFileSync } from 'fs';
 
-import { analyzeCmd } from '../commands/analyze.js';
 import { consoleColor } from '../actions/shared.js';
 
 export class analyze {
@@ -20,7 +19,7 @@ export class analyze {
     static async action(monsterManager, options) {
         try {
             if (options.analyzer) {
-                const analysis = await analyzeCmd(monsterManager, options.analyzer, options.params, options.lang, options.filter);
+                const analysis = await monsterManager.analyze(options.analyzer, options.params, options.lang, options.filter);
                 const header = analysis.head;
                 if (options.output) {
                     const rows = header ? [ header, ...analysis.body].map(row => row.join(',')) : analysis.body;

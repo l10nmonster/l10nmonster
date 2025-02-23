@@ -1,5 +1,3 @@
-import { snapCmd } from '../commands/snap.js';
-
 export class snap {
     static help = {
         description: 'commits a snapshot of sources in normalized format.',
@@ -10,7 +8,7 @@ export class snap {
 
     static async action(monsterManager, options) {
         console.log(`Taking a snapshot of sources...`);
-        const numSources = await snapCmd(monsterManager, options);
+        const numSources = await monsterManager.snap(options);
         console.log(`${numSources} sources committed`);
     }
 }

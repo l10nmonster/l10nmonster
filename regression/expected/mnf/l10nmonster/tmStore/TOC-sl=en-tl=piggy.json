@@ -1,0 +1,17 @@
+{
+	"v": 1,
+	"sourceLang": "en",
+	"targetLang": "piggy",
+	"blocks": {
+		"xxx1xxx": {
+			"blockName": "blocks/sl=en/tl=piggy/block_xxx1xxx.jsonl",
+			"modified": "TS1",
+			"jobs": [
+				[
+					"3oSqVqkNxIWgZZk5_jW6Z",
+					"2023-10-25T06:53:27.727Z"
+				]
+			]
+		}
+	}
+}

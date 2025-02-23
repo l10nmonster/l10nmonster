@@ -1,7 +1,14 @@
 import * as path from 'path';
 import { L10nContext, TU, utils, analyzers } from '@l10nmonster/core';
-import TMManager from './tmManager/index.js';
-import ResourceManager from './resourceManager.js';
+import TMManager from '../tmManager/index.js';
+import ResourceManager from '../resourceManager.js';
+import { snapCmd } from './snap.js';
+import { statusCmd } from './status.js';
+import { pushCmd } from './push.js';
+import { jobsCmd } from './jobs.js';
+import { jobPushCmd } from './job.js';
+import { pullCmd } from './pull.js';
+import { analyzeCmd } from './analyze.js';
 
 const spaceRegex = /\s+/g;
 
@@ -74,6 +81,39 @@ export class MonsterManager {
     // register an async function to be called during shutdown
     scheduleForShutdown(func) {
         this.#functionsForShutdown.push(func);
+    }
+
+     // expose L10nContext
+    get l10nContext() {
+        return L10nContext;
+    }
+
+    async snap(options) {
+        return await snapCmd(this, options);
+    }
+
+    async status(options) {
+        return await statusCmd(this, options);
+    }
+
+    async push(options) {
+        return await pushCmd(this, options);
+    }
+
+    async jobPush(jobGuid) {
+        return await jobPushCmd(this, jobGuid);
+    }
+
+    async jobs(options) {
+        return await jobsCmd(this, options);
+    }
+
+    async pull(options) {
+        return await pullCmd(this, options);
+    }
+
+    async analyze(analyzer, params, limitToLang, tuFilter) {
+        return await analyzeCmd(this, analyzer, params, limitToLang, tuFilter);
     }
 
     // get all possible target languages from sources and from TMs

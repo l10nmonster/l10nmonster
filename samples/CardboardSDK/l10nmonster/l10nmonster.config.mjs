@@ -1,6 +1,7 @@
 import fs from 'fs';
 import { L10nMonsterConfig, L10nContext, normalizers, xml, stores, adapters, translators } from '@l10nmonster/core';
 import * as ios from '@l10nmonster/helpers-ios';
+import path from 'path';
 // import translated from '@l10nmonster/helpers-translated';
 
 // const defaultTOSConfig = {
@@ -22,6 +23,7 @@ export default new L10nMonsterConfig(import.meta.dirname)
     })
     .contentType({
         source: new adapters.FsSource({
+            baseDir: '..',
             globs: [ '../**/en.lproj/*.strings' ],
         }),
         resourceFilter: new ios.StringsFilter(),
@@ -34,7 +36,7 @@ export default new L10nMonsterConfig(import.meta.dirname)
     .translators({
         BritishTranslator: {
             translator: new translators.VariantGenerator({
-                dict: JSON.parse(fs.readFileSync('./dict.json', 'utf-8')),
+                dict: JSON.parse(fs.readFileSync(path.join(import.meta.dirname, 'dict.json'), 'utf-8')),
                 quality: 70,
             }),
             pairs: { 'en': [ 'en-GB' ] },

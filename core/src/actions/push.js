@@ -1,4 +1,3 @@
-import { pushCmd } from '../commands/push.js';
 import { consoleColor, printRequest } from './shared.js';
 
 export class push {
@@ -35,7 +34,7 @@ export class push {
         console.log(`Pushing content upstream...${dryRun ? ' (dry run)' : ''}`);
         try {
             if (dryRun) {
-                const status = await pushCmd(monsterManager, { limitToLang, tuFilter, driver, refresh, leverage, dryRun, instructions });
+                const status = await monsterManager.push({ limitToLang, tuFilter, driver, refresh, leverage, dryRun, instructions });
                 for (const langStatus of status) {
                     console.log(`\nDry run of ${langStatus.sourceLang} -> ${langStatus.targetLang} push:`);
                     printRequest(langStatus);
@@ -44,7 +43,7 @@ export class push {
                 const providerList = (options.provider ?? 'default').split(',');
                 for (const provider of providerList) {
                     const translationProviderName = provider.toLowerCase() === 'default' ? undefined : provider;
-                    const status = await pushCmd(monsterManager, { limitToLang, tuFilter, driver, refresh, translationProviderName, leverage, dryRun, instructions });
+                    const status = await monsterManager.push({ limitToLang, tuFilter, driver, refresh, translationProviderName, leverage, dryRun, instructions });
                     if (status.length > 0) {
                         for (const ls of status) {
                             if (ls.minimumJobSize === undefined) {

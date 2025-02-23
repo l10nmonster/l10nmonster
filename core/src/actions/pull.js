@@ -1,5 +1,3 @@
-import { pullCmd } from '../commands/pull.js';
-
 export class pull {
     static help = {
         description: 'receive outstanding translation jobs.',
@@ -13,7 +11,7 @@ export class pull {
         const limitToLang = options.lang;
         const partial = options.partial;
         console.log(`Pulling pending translations...`);
-        const stats = await pullCmd(monsterManager, { limitToLang, partial });
+        const stats = await monsterManager.pull({ limitToLang, partial });
         console.log(`Checked ${stats.numPendingJobs.toLocaleString()} pending jobs, ${stats.doneJobs.toLocaleString()} done jobs, ${stats.newPendingJobs.toLocaleString()} pending jobs created, ${stats.translatedStrings.toLocaleString()} translated strings found`);
     }
 }
