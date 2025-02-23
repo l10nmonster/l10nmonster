@@ -5,9 +5,9 @@
     "license": "MIT",
     "publisher": "l10nmonster",
     "description": "UI for L10n Monster",
-    "version": "0.1.13",
+    "version": "0.2.0",
     "engines": {
-        "vscode": "^1.78.0"
+        "vscode": "^1.97.0"
     },
     "categories": [
         "Other"
@@ -15,12 +15,12 @@
     "icon": "globe.png",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/l10nmonster/vscode-l10nmonster.git"
+        "url": "git+https://github.com/l10nmonster/l10nmonster.git"
     },
     "type": "module",
     "main": "./out/main.cjs",
     "activationEvents": [
-        "workspaceContains:/l10nmonster.cjs"
+        "workspaceContains:/l10nmonster.config.mjs"
     ],
     "contributes": {
         "configuration": {
@@ -115,18 +115,16 @@
         "package": "npm run esbuild-base -- --minify && vsce package"
     },
     "devDependencies": {
+        "@electron/rebuild": "^3.7.1",
         "@types/mocha": "^10.0.1",
-        "@types/node": "16.x",
-        "@types/vscode": "1.78.x",
+        "@types/node": "20.x",
+        "@types/vscode": "^1.97.0",
         "@vscode/test-electron": "^2.3.0",
-        "esbuild": "^0.19.5",
-        "eslint": "^8.39.0",
-        "glob": "^10",
-        "mocha": "^10.2.0",
+        "@vscode/vsce": "^3.2.2",
+        "esbuild": "^0.25.0",
+        "eslint": "^9.21.0",
+        "glob": "^11",
+        "mocha": "^11",
         "typescript": "^5.0.4"
-    },
-    "dependencies": {
-        "@l10nmonster/core": "^1",
-        "@l10nmonster/helpers": "^1"
     }
 }

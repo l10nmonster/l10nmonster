@@ -1,5 +1,4 @@
 import vscode from 'vscode';
-import { statusCmd } from '@l10nmonster/core';
 import { AbstractViewTreeDataProvider, withMonsterManager, getMonsterPage, escapeHtml, renderString } from './monsterUtils.js';
 
 function computeTotals(totals, partial) {
@@ -53,7 +52,7 @@ export class StatusViewProvider extends AbstractViewTreeDataProvider {
 
     async fetchStatusByLanguage(lang) {
         return withMonsterManager(this.configPath, async mm => {
-            const status = await statusCmd(mm, { limitToLang: lang });
+            const status = await mm.status({ limitToLang: lang });
             const langStatus = status.lang[lang];
             const totals = {};
             const prjDetail = [];

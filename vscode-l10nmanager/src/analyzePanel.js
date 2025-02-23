@@ -1,7 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import vscode from 'vscode';
 import { AbstractViewTreeDataProvider, withMonsterManager, getMonsterPage } from './monsterUtils.js';
-import { analyzeCmd } from '@l10nmonster/core';
 
 export class AnalyzeViewProvider extends AbstractViewTreeDataProvider {
     constructor(configPath, context) {
@@ -30,7 +29,7 @@ export class AnalyzeViewProvider extends AbstractViewTreeDataProvider {
             if ((helpParams && (params = await vscode.window.showInputBox({ placeHolder: helpParams }))) || !helpParams) {
                 // TODO: don't split by space, call input box for each param
                 // TODO: support picking a tu filter (maybe have a separate panel or tree item with a radio button?)
-                const analysis = await analyzeCmd(mm, analyzer, params?.split(' ') || []);
+                const analysis = await mm.analyze(analyzer, params?.split(' ') || []);
                 // TODO: implement groupBy
                 // TODO: if tu analyzer, group by language automatically
                 const panel = vscode.window.createWebviewPanel(

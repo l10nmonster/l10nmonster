@@ -1,36 +1,32 @@
 import vscode from 'vscode';
-import { createMonsterManager } from '@l10nmonster/core';
 
 const monsterOutput = vscode.window.createOutputChannel('L10n Monster', { log: true });
 
-global.l10nmonster ??= {};
-l10nmonster.logger = {
+export const logger = {
     verbose: (msg) => monsterOutput.debug(msg),
     info: (msg) => monsterOutput.info(msg),
     warn: (msg) => monsterOutput.warn(msg),
     error: (msg) => monsterOutput.error(msg),
 };
 
-export function withMonsterManager(configPath, cb, limitToPrj) {
+export async function withMonsterManager(configPath, cb, limitToPrj) {
     const l10nmonsterCfg = vscode.workspace.getConfiguration('l10nmonster');
-    l10nmonster.env = l10nmonsterCfg.get('env');
     let prj = limitToPrj ?? l10nmonsterCfg.get('prj');
     prj.length === 0 && (prj = undefined);
     const arg = l10nmonsterCfg.get('arg') || undefined;
-    return (async () => {
+    try {
+        const monsterConfig = (await import(configPath)).default;
         let result;
-        try {
-            const mm = await createMonsterManager(configPath, { prj, arg });
-            if (mm) {
-                result = await cb(mm);
-                await mm.shutdown();
-            }
-        } catch (e) {
-            l10nmonster.logger.error(`Unable to initialize l10n monster: ${e.stack ?? e}`);
-            return false;
-        }
+        await monsterConfig.run({ prj, arg }, async (l10n, mm) => {
+            mm.l10nContext.env = l10nmonsterCfg.get('env');
+            mm.l10nContext.logger = logger;
+            result = await cb(mm);
+        });
         return result;
-    })();
+    } catch (e) {
+        logger.error(`Unable to initialize l10n monster: ${e.stack ?? e}`);
+        return false;
+    }
 }
 
 const escapeKey = key => key.replaceAll('.', '_');
@@ -60,7 +56,7 @@ function getElementByKey(siblings, keyparts) {
             return element;
         }
     }
-    l10nmonster.logger.error(`Could not find ${baseKey} among siblings`);
+    logger.error(`Could not find ${baseKey} among siblings`);
     return undefined;
 }
 
@@ -74,11 +70,13 @@ export class AbstractViewTreeDataProvider {
         if (!key) { // root
             if (!this.cachedStatus) {
                 return withMonsterManager(this.configPath, async mm => {
+                    // dataFetcher is defined in the subclass
+                    // @ts-ignore
                     this.cachedStatus = await this.dataFetcher(mm);
                     return enumerateKeys(this.cachedStatus);
                 });
             }
-            l10nmonster.logger.warn('Somehow root was fetched again')
+            logger.warn('Somehow root was fetched again')
             return Promise.resolve(enumerateKeys(this.cachedStatus));
         }
         const element = getElementByKey(this.cachedStatus, key.split('.'));
@@ -88,7 +86,7 @@ export class AbstractViewTreeDataProvider {
         if (element.children) { // inner collapsable
             return Promise.resolve(enumerateKeys(element.children, element.fqKey));
         } else {
-            l10nmonster.logger.error(`Somehow a leaf was collapsed at key: ${key}`);
+            logger.error(`Somehow a leaf was collapsed at key: ${key}`);
             return Promise.resolve([]);
         }
     }
