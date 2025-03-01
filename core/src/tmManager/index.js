@@ -26,7 +26,7 @@ export default class TMManager {
         let tuOrder = 0;
         let tm;
         for await (const tu of tmBlockIterator) {
-            const { jobProps, ...tuProps } = tu;
+            const { jobProps, ...otherProps } = tu;
             if (jobProps && lastJobGuid !== jobProps.jobGuid) { // allow jobProps to be defined just in the first row
                 this.#jobDAL.setJob(jobProps);
                 jobs.push(jobProps);
@@ -37,7 +37,7 @@ export default class TMManager {
             }
             tuOrder++;
             tm.setEntry({
-                ...tuProps,
+                ...otherProps,
                 jobGuid: lastJobGuid,
                 tuOrder,
             });

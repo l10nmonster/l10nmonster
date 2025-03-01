@@ -111,7 +111,7 @@ export default new L10nMonsterConfig(import.meta.dirname)
     })
     .tmStore(new stores.FsJsonlTmStore({
         name: 'primary',
-        jobsDir: 'translationJobs',
+        jobsDir: 'tmStore',
         partitioning: 'language',
     }))
     .action(class mystats {

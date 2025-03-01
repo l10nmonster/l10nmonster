@@ -1,0 +1,17 @@
+{
+	"v": 1,
+	"sourceLang": "en",
+	"targetLang": "ja",
+	"blocks": {
+		"JD_ubudQANXux01iHQVyF": {
+			"blockName": "blocks/sl=en/tl=ja/block_JD_ubudQANXux01iHQVyF.jsonl",
+			"modified": "TS1740872188866.423",
+			"jobs": [
+				[
+					"CZLybjYq-2hg4y6qy9Zrd",
+					"2025-03-01T23:36:21.637Z"
+				]
+			]
+		}
+	}
+}

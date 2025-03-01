@@ -95,7 +95,14 @@ export class BaseJsonlTmStore {
                     terminal: false,
                 });
                 for await (const line of rl) {
-                    yield JSON.parse(line);
+                    const row = JSON.parse(line);
+                    const { nsrc, ntgt, notes, tuProps, jobProps, ...otherProps } = row;
+                    nsrc && (otherProps.nsrc = JSON.parse(nsrc));
+                    ntgt && (otherProps.ntgt = JSON.parse(ntgt));
+                    notes && (otherProps.notes = JSON.parse(notes));
+                    jobProps && (otherProps.jobProps = JSON.parse(jobProps));
+                    const expandedTuProps = tuProps ? JSON.parse(tuProps) : {};
+                    yield { ...otherProps, ...expandedTuProps };
                 }
             } else {
                 L10nContext.logger.info(`Block not found: ${blockId}`);
@@ -153,12 +160,19 @@ export class BaseJsonlTmStore {
             if (tmBlockIterator) {
                 const generator = async function *jsonlGenerator () {
                     for await (const tu of tmBlockIterator) {
-                        if (tu.jobProps?.jobGuid && tu.jobProps.jobGuid !== lastJobGuid) {
-                            jobs.push([ tu.jobProps.jobGuid, tu.jobProps.updatedAt ]);
-                            lastJobGuid = tu.jobProps.jobGuid;
+                        const { guid, jobGuid, rid, sid, nsrc, ntgt, notes, q, ts, tuOrder, jobProps, ...tuProps } = tu;
+                        if (jobProps?.jobGuid && jobProps.jobGuid !== lastJobGuid) {
+                            jobs.push([ jobProps.jobGuid, jobProps.updatedAt ]);
+                            lastJobGuid = jobProps.jobGuid;
                         }
+                        const row = { guid, jobGuid, rid, sid, q, ts, tuOrder };
+                        nsrc && (row.nsrc = JSON.stringify(nsrc));
+                        ntgt && (row.ntgt = JSON.stringify(ntgt));
+                        notes && (row.notes = JSON.stringify(notes));
+                        tuProps && (row.tuProps = JSON.stringify(tuProps));
+                        jobProps && (row.jobProps = JSON.stringify(jobProps));
                         // eslint-disable-next-line prefer-template
-                        yield JSON.stringify(tu) + '\n';
+                        yield JSON.stringify(row) + '\n';
                     }
                 };
                 const blockName = this.#getTmBlockName({ sourceLang, targetLang, translationProvider, blockId });
