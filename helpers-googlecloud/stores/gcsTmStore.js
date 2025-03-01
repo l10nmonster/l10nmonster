@@ -7,7 +7,7 @@ export class GCSLegacyJsonTmStore extends stores.LegacyFileBasedTmStore {
     }
 }
 
-export class GCSJsonlTmStore extends stores.LegacyFileBasedTmStore {
+export class GCSJsonlTmStore extends stores.BaseJsonlTmStore {
     constructor(options) {
         const { bucketName, bucketPrefix, ...tmStoreOptions } = options;
         super(new GCSStoreDelegate(bucketName, bucketPrefix), tmStoreOptions);
