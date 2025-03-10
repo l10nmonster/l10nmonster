@@ -10,7 +10,7 @@ export class TuDAL {
         this.#db = db;
         this.#tusTable = tusTable;
         db.exec(`
-CREATE TABLE IF NOT EXISTS ${tusTable}(
+CREATE TABLE IF NOT EXISTS ${tusTable} (
     guid TEXT NOT NULL,
     jobGuid TEXT NOT NULL,
     rid TEXT,
@@ -23,7 +23,10 @@ CREATE TABLE IF NOT EXISTS ${tusTable}(
     ts INTEGER,
     tuOrder INTEGER,
     PRIMARY KEY (guid, jobGuid)
-);`);
+);
+CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_jobGuid
+ON ${this.#tusTable} (jobGuid);
+`);
         db.function(
             'flattenNormalizedSourceToOrdinal',
             { deterministic: true },
@@ -37,7 +40,7 @@ CREATE TABLE IF NOT EXISTS ${tusTable}(
     }
 
     getEntry(guid) {
-        this.#stmt.getEntry ??= this.#db.prepare(`SELECT * FROM ${this.#tusTable} WHERE guid = ? ORDER BY q DESC, ts DESC LIMIT 1`);
+        this.#stmt.getEntry ??= this.#db.prepare(`SELECT jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuProps FROM ${this.#tusTable} WHERE guid = ? ORDER BY q DESC, ts DESC LIMIT 1`);
         const tuRow = this.#stmt.getEntry.get(guid);
         if (tuRow) {
             // need to extract and parse all JSON props
@@ -53,7 +56,7 @@ CREATE TABLE IF NOT EXISTS ${tusTable}(
     }
 
     getEntriesByJobGuid(jobGuid) {
-        this.#stmt.getEntriesByJobGuid ??= this.#db.prepare(`SELECT * FROM ${this.#tusTable} WHERE jobGuid = ? ORDER BY tuOrder`);
+        this.#stmt.getEntriesByJobGuid ??= this.#db.prepare(`SELECT jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuProps FROM ${this.#tusTable} WHERE jobGuid = ? ORDER BY tuOrder`);
         const tuRows = this.#stmt.getEntriesByJobGuid.all(jobGuid);
         return tuRows.map(({ nsrc, ntgt, notes, tuProps, ...otherProps }) => ({
             nsrc: nsrc ? JSON.parse(nsrc) : undefined,
@@ -107,7 +110,7 @@ CREATE TABLE IF NOT EXISTS ${tusTable}(
 CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_flatSrc
 ON ${this.#tusTable} (flattenNormalizedSourceToOrdinal(nsrc));`);
         this.#stmt.getEntriesByFlatSrc ??= this.#db.prepare(`
-SELECT * FROM ${this.#tusTable}
+SELECT jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuProps FROM ${this.#tusTable}
 WHERE flattenNormalizedSourceToOrdinal(nsrc) = ?`);
         // try to delay creating the index until it is actually needed
         if (this.#lazyFlatSrcIdx) {
