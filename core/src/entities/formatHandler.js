@@ -17,7 +17,7 @@ export class FormatHandler {
         this.#normalizers = normalizers;
         this.#defaultMessageFormat = defaultMessageFormat;
         this.#segmentDecorators = segmentDecorators;
-        this.#formatHandlers = formatHandlers;
+        this.#formatHandlers = formatHandlers; // this is needed to process sub-resources
     }
 
     #populateGuid(rid, str, mf, base, flags = {}) {

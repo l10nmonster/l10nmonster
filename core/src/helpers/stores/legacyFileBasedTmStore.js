@@ -14,7 +14,7 @@ const legacyJobFilenameRegex = /(?<jobNameStub>[^/]+(?<translationProvider>[^_]+
  * const store = new LegacyFileBasedTmStore(fileDelegate, 'job');
  */
 export class LegacyFileBasedTmStore {
-    name;
+    id;
 
     get access() {
         return 'readonly';
@@ -29,12 +29,12 @@ export class LegacyFileBasedTmStore {
      * @param {Object} delegate - Required file store delegate implementing file operations
      * @throws {Error} If no delegate or name is provided
      */
-    constructor(delegate, name) {
-        if (!delegate || !name) {
-            throw new Error('A delegate and a name are required to instantiate a LegacyFileBasedTmStore');
+    constructor(delegate, id) {
+        if (!delegate || !id) {
+            throw new Error('A delegate and a id are required to instantiate a LegacyFileBasedTmStore');
         }
         this.delegate = delegate;
-        this.name = name;
+        this.id = id;
     }
 
     async getAvailableLangPairs() {
@@ -49,7 +49,7 @@ export class LegacyFileBasedTmStore {
         return Object.values(pairs);
     }
 
-    async #listAllTmBlocks(sourceLang, targetLang) {
+    async #listAllTmBlocksExtended(sourceLang, targetLang) {
         await this.delegate.ensureBaseDirExists();
         const files = await this.delegate.listAllFiles();
         const handleMap = {};
@@ -68,27 +68,35 @@ export class LegacyFileBasedTmStore {
         return Object.entries(handleMap).map(([ jobNameStub, handle ]) => [ jobNameStub, handle.jobGuid, handle.modifiedAt ]);
     }
 
+    async listAllTmBlocks(sourceLang, targetLang) {
+        // eslint-disable-next-line no-unused-vars
+        return (await this.#listAllTmBlocksExtended(sourceLang, targetLang)).map(([ blockName, jobGuid, modified ]) => [ blockName, modified ]);
+    }
+
     async *#getTmBlock(blockName) {
-        let jobRequest, jobResponse;
-        try {
-            jobRequest = await this.delegate.getFile(`${blockName}-req.json`);
-        // eslint-disable-next-line no-unused-vars
-        } catch (e) {
-            L10nContext.logger.verbose(`No job request found for job: ${blockName}`);
-        }
-        try {
-            jobResponse = await this.delegate.getFile(`${blockName}-done.json`);
-        // eslint-disable-next-line no-unused-vars
-        } catch (e) {
-            try {
-                jobResponse = await this.delegate.getFile(`${blockName}-pending.json`);
-            // eslint-disable-next-line no-unused-vars
-            } catch (e) {
-                L10nContext.logger.verbose(`No job response found for job: ${blockName}`);
-            }
-        }
-        jobRequest = jobRequest ? JSON.parse(jobRequest) : null;
-        jobResponse = jobResponse ? JSON.parse(jobResponse) : null;
+        const [ jobRequest, jobResponse ] = await Promise.all([
+            (async () => {
+                try {
+                    return JSON.parse(await this.delegate.getFile(`${blockName}-req.json`));
+                // eslint-disable-next-line no-unused-vars
+                } catch (e) {
+                    L10nContext.logger.verbose(`No job request found for job: ${blockName}`);
+                }
+            }),
+            (async () => {
+                try {
+                    return JSON.parse(await this.delegate.getFile(`${blockName}-done.json`));
+                // eslint-disable-next-line no-unused-vars
+                } catch (e) {
+                    try {
+                        return JSON.parse(await this.delegate.getFile(`${blockName}-pending.json`));
+                    // eslint-disable-next-line no-unused-vars
+                    } catch (e) {
+                        L10nContext.logger.verbose(`No job response found for job: ${blockName}`);
+                    }
+                }
+            }),
+        ]);
         yield* utils.getIteratorFromJobPair(jobRequest, jobResponse);
     }
 
@@ -106,7 +114,7 @@ export class LegacyFileBasedTmStore {
 
     async getTOC(sourceLang, targetLang) {
         const toc = { v: 1, sourceLang, targetLang, blocks: {} };
-        for (const [ blockName, jobGuid, modified ] of await this.#listAllTmBlocks(sourceLang, targetLang)) {
+        for (const [ blockName, jobGuid, modified ] of await this.#listAllTmBlocksExtended(sourceLang, targetLang)) {
             // we don't have the job.updatedAt timestamp, so we leave it undefined
             // the consquence is that we can't sync-down the store but can only import the whole thing
             toc.blocks[jobGuid] = { blockName, modified, jobs: [ [ jobGuid ] ] };
@@ -115,6 +123,6 @@ export class LegacyFileBasedTmStore {
     }
 
     async getWriter() {
-        throw new Error(`Cannot write to readonly TM Store: ${this.name}`);
+        throw new Error(`Cannot write to readonly TM Store: ${this.id}`);
     }
 }

@@ -10,10 +10,31 @@ import {
 import { globbySync } from 'globby';
 import { L10nContext } from '@l10nmonster/core';
 
+class AbstractFsAdapter {
+    #relativeBaseDir;
+    baseDir;
+
+    constructor(baseDir) {
+        this.#relativeBaseDir = baseDir;
+        this.baseDir = baseDir ? path.resolve(L10nContext.baseDir, baseDir) : L10nContext.baseDir;
+    }
+
+    setChannelOptions(options) {
+        options.baseDir && this.#relativeBaseDir && (this.baseDir = path.resolve(options.baseDir, this.#relativeBaseDir));
+    }
+}
+
 /**
  * A file system source adapter for fetching resources.
  */
-export class FsSource {
+export class FsSource extends AbstractFsAdapter {
+    globs;
+    filter;
+    targetLangs;
+    prj;
+    resDecorator;
+    idFromPath;
+    pathFromId;
 
     /**
      * Creates a new FsSource instance.
@@ -29,6 +50,7 @@ export class FsSource {
      * @throws {string} Throws an error if `globs` is not provided.
      */
     constructor({ baseDir, globs, filter, targetLangs, prj, resDecorator, idFromPath, pathFromId }) {
+        super(baseDir);
         if (globs === undefined) {
             throw 'a globs property is required in FsSource';
         } else {
@@ -39,7 +61,6 @@ export class FsSource {
             this.resDecorator = resDecorator;
             this.idFromPath = idFromPath;
             this.pathFromId = pathFromId;
-            this.baseDir = baseDir ? path.resolve(L10nContext.baseDir, baseDir) : L10nContext.baseDir;
         }
     }
 
@@ -89,7 +110,9 @@ export class FsSource {
 /**
  * Represents a file system target for storing translated resources.
  */
-export class FsTarget {
+export class FsTarget extends AbstractFsAdapter {
+    targetPath;
+    deleteEmpty;
 
     /**
      * Creates a new FsTarget instance.
@@ -99,10 +122,10 @@ export class FsTarget {
      * @param {boolean} [options.deleteEmpty] - Whether to delete empty files.
      */
     constructor({ baseDir, targetPath, deleteEmpty }) {
+        super(baseDir);
         this.targetPath = targetPath;
         this.deleteEmpty = deleteEmpty;
-        this.baseDir = baseDir ? path.resolve(L10nContext.baseDir, baseDir) : L10nContext.baseDir;
-    }
+}
 
     /**
      * Generates the path for a translated resource.

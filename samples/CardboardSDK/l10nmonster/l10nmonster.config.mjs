@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { L10nMonsterConfig, L10nContext, normalizers, xml, stores, adapters, translators } from '@l10nmonster/core';
+import { L10nMonsterConfig, ChannelConfig, L10nContext, normalizers, xml, stores, adapters, translators } from '@l10nmonster/core';
 import * as ios from '@l10nmonster/helpers-ios';
 import path from 'path';
 // import translated from '@l10nmonster/helpers-translated';
@@ -11,6 +11,18 @@ import path from 'path';
 //     quality: 90,
 // };
 
+export const iosChannel = new ChannelConfig('ios', import.meta.dirname)
+    .source(new adapters.FsSource({
+        baseDir: '..',
+        globs: [ '../**/en.lproj/*.strings' ],
+        }))
+    .resourceFilter(new ios.StringsFilter())
+    .decoders([ ios.phDecoder, ios.escapesDecoder, xml.entityDecoder ])
+    .textEncoders([ normalizers.gatedEncoder(xml.entityEncoder, 'xmlEntityDecoder') ])
+    .target(new adapters.FsTarget({
+        targetPath: (lang, resourceId) => resourceId.replace('en.lproj/', `${lang}.lproj/`),
+}));
+
 export default new L10nMonsterConfig(import.meta.dirname)
     .basicProperties({
         sourceLang: 'en',
@@ -21,18 +33,7 @@ export default new L10nMonsterConfig(import.meta.dirname)
         },
         minimumQuality: 50,
     })
-    .contentType({
-        source: new adapters.FsSource({
-            baseDir: '..',
-            globs: [ '../**/en.lproj/*.strings' ],
-        }),
-        resourceFilter: new ios.StringsFilter(),
-        decoders: [ ios.phDecoder, ios.escapesDecoder, xml.entityDecoder ],
-        textEncoders: [ normalizers.gatedEncoder(xml.entityEncoder, 'xmlEntityDecoder') ],
-        target: new adapters.FsTarget({
-            targetPath: (lang, resourceId) => resourceId.replace('en.lproj/', `${lang}.lproj/`),
-        }),
-    })
+    .channel(iosChannel)
     .translators({
         BritishTranslator: {
             translator: new translators.VariantGenerator({
@@ -110,7 +111,7 @@ export default new L10nMonsterConfig(import.meta.dirname)
         opsDir: 'l10nOps',
     })
     .tmStore(new stores.FsJsonlTmStore({
-        name: 'primary',
+        id: 'primary',
         jobsDir: 'tmStore',
         partitioning: 'language',
     }))

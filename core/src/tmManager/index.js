@@ -89,7 +89,7 @@ export default class TMManager {
 
     async prepareSyncDown(tmStore, sourceLang, targetLang) {
         if (tmStore.access === 'writeonly') {
-            throw new Error(`Cannot sync down ${tmStore.name} store because it is write-only!`);
+            throw new Error(`Cannot sync down ${tmStore.id} store because it is write-only!`);
         }
         const toc = await tmStore.getTOC(sourceLang, targetLang);
         const deltas = this.#jobDAL.getJobDeltas(toc.sourceLang, toc.targetLang, toc);
@@ -105,11 +105,11 @@ export default class TMManager {
 
     async syncDown(tmStore, { sourceLang, targetLang, blocksToStore, jobsToDelete }) {
         if (blocksToStore.length === 0 && jobsToDelete.length === 0) {
-            L10nContext.logger.info(`Nothing to sync up with store ${tmStore.name}`);
+            L10nContext.logger.info(`Nothing to sync up with store ${tmStore.id}`);
             return;
         }
         if (blocksToStore.length > 0) {
-            L10nContext.logger.info(`Storing ${blocksToStore.length} blocks from ${tmStore.name}`);
+            L10nContext.logger.info(`Storing ${blocksToStore.length} blocks from ${tmStore.id}`);
             await this.#saveTmBlock(tmStore.getTmBlocks(sourceLang, targetLang, blocksToStore));
         }
         if (jobsToDelete.length > 0) {
@@ -139,23 +139,23 @@ export default class TMManager {
 
     async syncUp(tmStore, { sourceLang, targetLang, blocksToUpdate, jobsToUpdate }) {
         if (tmStore.access === 'readonly') {
-            throw new Error(`Cannot sync up ${tmStore.name} store because it is readonly!`);
+            throw new Error(`Cannot sync up ${tmStore.id} store because it is readonly!`);
         }
         if (blocksToUpdate.length === 0 && jobsToUpdate.length === 0) {
-            L10nContext.logger.info(`Nothing to sync up with store ${tmStore.name}`);
+            L10nContext.logger.info(`Nothing to sync up with store ${tmStore.id}`);
             return;
         }
 
         const tm = this.getTM(sourceLang, targetLang);
         await tmStore.getWriter(sourceLang, targetLang, async writeTmBlock => {
             if (blocksToUpdate.length > 0) {
-                L10nContext.logger.info(`Updating ${blocksToUpdate.length} blocks in ${tmStore.name}`);
+                L10nContext.logger.info(`Updating ${blocksToUpdate.length} blocks in ${tmStore.id}`);
                 for (const [ blockId, jobs ] of blocksToUpdate) {
                     await writeTmBlock({ blockId }, tm.getCompleteEntriesByJobGuids(jobs));
                 }
             }
             if (jobsToUpdate.length > 0) {
-                L10nContext.logger.info(`Syncing ${jobsToUpdate.length} jobs to ${tmStore.name}`);
+                L10nContext.logger.info(`Syncing ${jobsToUpdate.length} jobs to ${tmStore.id}`);
                 if (tmStore.partitioning === 'job') {
                     for (const jobGuid of jobsToUpdate) {
                         const job = this.#jobDAL.getJob(jobGuid);

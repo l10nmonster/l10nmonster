@@ -1,4 +1,4 @@
-import { L10nMonsterConfig, normalizers, xml, stores, adapters, translators } from '@l10nmonster/core';
+import { L10nMonsterConfig, ChannelConfig, normalizers, xml, stores, adapters, translators } from '@l10nmonster/core';
 import * as android from '@l10nmonster/helpers-android';
 import * as demo from '@l10nmonster/helpers-demo';
 
@@ -12,20 +12,19 @@ export default new L10nMonsterConfig(import.meta.dirname)
         targetLangs: [ 'piggy' ],
         minimumQuality: (job) => (job.targetLang === 'piggy' ? 1 : 50),
     })
-    .contentType({
-        source: new adapters.FsSource({
+    .channel(new ChannelConfig('android')
+        .source(new adapters.FsSource({
             baseDir: '..',
             globs: [ '**/values/strings*.xml' ],
-        }),
-        resourceFilter: new android.AndroidXMLFilter(),
-        decoders: [ xml.entityDecoder, xml.CDataDecoder, android.spaceCollapser, android.escapesDecoder, xml.tagDecoder, android.phDecoder ],
-        textEncoders: [ android.escapesEncoder, xml.entityEncoder ],
-        codeEncoders: [ normalizers.gatedEncoder(xml.entityEncoder, 'xmlCDataDecoder') ],
-        target: new adapters.FsTarget({
+        }))
+        .resourceFilter(new android.AndroidXMLFilter())
+        .decoders([ xml.entityDecoder, xml.CDataDecoder, android.spaceCollapser, android.escapesDecoder, xml.tagDecoder, android.phDecoder ])
+        .textEncoders([ android.escapesEncoder, xml.entityEncoder ])
+        .codeEncoders([ normalizers.gatedEncoder(xml.entityEncoder, 'xmlCDataDecoder') ])
+        .target(new adapters.FsTarget({
             baseDir: '..',
             targetPath: (lang, resourceId) => resourceId.replace('values', `values-${androidLangMapping[lang] || lang}`),
-        }),
-    })
+        })))
     .translators({
         PigLatinizer: {
             translator: new demo.PigLatinizer({ quality: 1 }),
@@ -38,7 +37,7 @@ export default new L10nMonsterConfig(import.meta.dirname)
         },
     })
     .tmStore(new stores.FsLegacyJsonTmStore({
-        name: 'default',
+        id: 'default',
         jobsDir: 'translationJobs',
     }))
     ;

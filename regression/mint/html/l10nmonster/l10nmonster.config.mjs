@@ -1,4 +1,4 @@
-import { L10nMonsterConfig, xml, adapters, translators } from '@l10nmonster/core';
+import { L10nMonsterConfig, ChannelConfig, xml, adapters, translators } from '@l10nmonster/core';
 import { HTMLFilter } from '@l10nmonster/helpers-html';
 import * as demo from '@l10nmonster/helpers-demo';
 
@@ -8,18 +8,17 @@ export default new L10nMonsterConfig(import.meta.dirname)
         targetLangs: [ 'it' ],
         minimumQuality: 50,
     })
-    .contentType({
-        source: new adapters.FsSource({
+    .channel(new ChannelConfig('html')
+        .source(new adapters.FsSource({
             baseDir: '..',
             globs: [ 'en/*.html' ],
-        }),
-        resourceFilter: new HTMLFilter(),
-        decoders: [ xml.tagDecoder, xml.entityDecoder ],
-        target: new adapters.FsTarget({
+        }))
+        .resourceFilter(new HTMLFilter())
+        .decoders([ xml.tagDecoder, xml.entityDecoder ])
+        .target(new adapters.FsTarget({
             baseDir: '..',
             targetPath: (lang, resourceId) => resourceId.replace('en/', `${lang}/`),
-        }),
-    })
+        })))
     .translators({
         Piggy: {
             translator: new demo.PigLatinizer({ quality: 1 }),

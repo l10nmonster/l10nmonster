@@ -3,7 +3,7 @@ export class tm_syncup {
     static help = {
         description: 'pushes local TM to TM Stores.',
         arguments: [
-            [ '<tmStore>', 'name of the TM Store' ],
+            [ '<tmStore>', 'id of the TM Store' ],
         ],
         options: [
             [ '--dryrun', 'only preview changes that are needed' ],
@@ -19,10 +19,10 @@ export class tm_syncup {
                 newerOnly: Boolean(options.neweronly),
             });
             if (syncUpStats.blocksToUpdate.length === 0 && syncUpStats.jobsToUpdate.length === 0) {
-                console.log(`Nothing to sync up with ${tmStore.name} store for ${srcLang} -> ${tgtLang}`);
+                console.log(`Nothing to sync up with ${tmStore.id} store for ${srcLang} -> ${tgtLang}`);
                 return;
             } else {
-                console.log(`Syncing up ${srcLang} -> ${tgtLang} to ${tmStore.name} store...`);
+                console.log(`Syncing up ${srcLang} -> ${tgtLang} to ${tmStore.id} store...`);
             }
             if (syncUpStats.blocksToUpdate.length > 0) {
                 console.log(`${syncUpStats.blocksToUpdate.length} blocks to update:`);

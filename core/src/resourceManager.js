@@ -1,90 +1,23 @@
 import { L10nContext } from '@l10nmonster/core';
-import { Channel } from './entities/channel.js';
-import { Normalizer } from './entities/normalizer.js';
-import { FormatHandler } from './entities/formatHandler.js';
-
-function validate(context, obj = {}) {
-    const validators = {
-        objectProperty: (...props) => {
-            props.forEach(propName => {
-                if (obj[propName] !== undefined && typeof obj[propName] !== 'object') {
-                    throw `Property ${propName} of ${context} must be an object`;
-                }
-            });
-            return validators;
-        },
-        arrayOfFunctions: (...props) => {
-            props.forEach(propName => {
-                if (obj[propName] !== undefined) {
-                    if (!Array.isArray(obj[propName])) {
-                        throw `Property ${propName} of ${context} must be an array`;
-                    }
-                    obj[propName].forEach((coder, idx) => {
-                        if (typeof coder !== 'function') {
-                            throw `Item at index ${idx} in property ${propName} of ${context} must be a function`;
-                        }
-                    });
-                }
-            });
-            return validators;
-        },
-    }
-    return validators;
-}
 
 export default class ResourceManager {
-    #channels = {};
+    #channels;
 
-    constructor({ channels, formats, snapStore, defaultSourceLang, defaultTargetLangs }) {
-        const formatHandlers = {};
-        for (const [format, formatCfg] of Object.entries(formats)) {
-            validate(`format ${format}`, formatCfg)
-                .objectProperty('resourceFilter', 'normalizers')
-                .arrayOfFunctions('segmentDecorators');
-            const normalizers = {};
-            for (const [normalizer, normalizerCfg] of Object.entries(formatCfg.normalizers)) {
-                validate(`normalizer ${normalizer}`, normalizerCfg).arrayOfFunctions('decoders', 'textEncoders', 'codeEncoders');
-                normalizers[normalizer] = new Normalizer({
-                    id: normalizer,
-                    decoders: normalizerCfg.decoders,
-                    textEncoders: normalizerCfg.textEncoders,
-                    codeEncoders: normalizerCfg.codeEncoders,
-                    joiner: normalizerCfg.joiner,
-                });
-            }
-            formatHandlers[format] = new FormatHandler({
-                id: format,
-                resourceFilter: formatCfg.resourceFilter,
-                normalizers,
-                defaultMessageFormat: formatCfg.defaultMessageFormat ?? format,
-                segmentDecorators: formatCfg.segmentDecorators,
-                formatHandlers, // passed in for sub-resources
-            });
-        }
-        for (const [channelId, channelCfg] of Object.entries(channels)) {
-            validate(`channel ${channelId}`, channelCfg).objectProperty('source', 'target')
-            this.#channels[channelId] = new Channel({
-                id: channelId,
-                source: channelCfg.source,
-                formatHandlers,
-                defaultResourceFormat: channelCfg.defaultResourceFormat ?? channelId,
-                defaultSourceLang,
-                defaultTargetLangs,
-                target: channelCfg.target,
-            });
-        }
+    constructor({ channels, snapStore }) {
+        this.#channels = channels;
         this.snapStore = snapStore;
     }
 
     async init(mm) {
         mm.scheduleForShutdown(this.shutdown.bind(this));
+        Object.values(this.#channels).forEach(ch => ch.init(mm));
     }
 
     /**
      * Returns a channel given its id.
      *
      * @param {string} channelId String identifier of the channel.
-     * @return {Channel} A channel object.
+     * @return {Object} A channel object.
      */
     getChannel(channelId) {
         const channel = this.#channels[channelId];

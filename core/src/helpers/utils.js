@@ -318,3 +318,32 @@ export function *getIteratorFromJobPair(jobRequest, jobResponse) {
         }
     }
 }
+
+export function validate(context, obj = {}) {
+    const validators = {
+        objectProperty: (...props) => {
+            props.forEach(propName => {
+                if (obj[propName] !== undefined && typeof obj[propName] !== 'object') {
+                    throw `Property ${propName} of ${context} must be an object`;
+                }
+            });
+            return validators;
+        },
+        arrayOfFunctions: (...props) => {
+            props.forEach(propName => {
+                if (obj[propName] !== undefined) {
+                    if (!Array.isArray(obj[propName])) {
+                        throw `Property ${propName} of ${context} must be an array`;
+                    }
+                    obj[propName].forEach((coder, idx) => {
+                        if (typeof coder !== 'function') {
+                            throw `Item at index ${idx} in property ${propName} of ${context} must be a function`;
+                        }
+                    });
+                }
+            });
+            return validators;
+        },
+    }
+    return validators;
+}

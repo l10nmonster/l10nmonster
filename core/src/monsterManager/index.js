@@ -34,16 +34,13 @@ export class MonsterManager {
         }
         this.minimumQuality = monsterConfig.minimumQuality;
 
-        // content types
-        if (!monsterConfig.channels || !monsterConfig.formats) {
-            throw `You must specify channels and formats`;
+        let channels;
+        if (typeof monsterConfig.channels === 'object') {
+            channels = Object.fromEntries(Object.entries(monsterConfig.channels).map(([id, channel]) => [ id, channel.createChannel() ]));
         }
         this.rm = new ResourceManager({
-            channels: monsterConfig.channels,
-            formats: monsterConfig.formats,
+            channels,
             snapStore: monsterConfig.snapStore,
-            defaultSourceLang: monsterConfig.sourceLang,
-            defaultTargetLangs: [ ...this.#targetLangs ].sort(),
         });
 
         this.translationProviders = monsterConfig.translationProviders;
@@ -138,16 +135,16 @@ export class MonsterManager {
         return [ ...this.#targetLangs ];
     }
 
-    getTmStore(name) {
-        const fixedName = utils.fixCaseInsensitiveKey(this.#tmStores, name);
-        if (fixedName) {
-            return this.#tmStores[fixedName];
+    getTmStore(id) {
+        const fixedId = utils.fixCaseInsensitiveKey(this.#tmStores, id);
+        if (fixedId) {
+            return this.#tmStores[fixedId];
         } else {
-            throw new Error(`Unknown tm store: ${name}`);
+            throw new Error(`Unknown tm store: ${id}`);
         }
     }
 
-    getTmStoreNames() {
+    getTmStoreIds() {
         return Object.keys(this.#tmStores);
     }
 

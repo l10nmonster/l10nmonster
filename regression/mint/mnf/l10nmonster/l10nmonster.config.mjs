@@ -1,14 +1,8 @@
-import { L10nMonsterConfig, xml, normalizers, translators, filters, stores } from '@l10nmonster/core';
+import { L10nMonsterConfig, ChannelConfig, ResourceFormatConfig, MessageFormatConfig, xml, normalizers, translators, filters, stores } from '@l10nmonster/core';
 import * as java from '@l10nmonster/helpers-java';
 import * as demo from '@l10nmonster/helpers-demo';
 
 import { MySource, MyTarget } from './myAdapter.mjs';
-
-const javaFormatters = {
-    // decoders: [ java.escapesDecoder, xml.tagDecoder, normalizers.bracePHDecoder, xml.entityDecoder ],
-    decoders: [ java.escapesDecoder, xml.tagDecoder, normalizers.bracePHDecoder, xml.entityDecoder, normalizers.doublePercentDecoder ],
-    textEncoders: [ normalizers.gatedEncoder(xml.entityEncoder, 'xmlDecoder', 'xmlEntityDecoder'), normalizers.gatedEncoder(normalizers.doublePercentEncoder, 'doublePercentDecoder') ],
-};
 
 export default new L10nMonsterConfig(import.meta.dirname)
     .basicProperties({
@@ -16,22 +10,19 @@ export default new L10nMonsterConfig(import.meta.dirname)
         targetLangs: [ 'piggy' ],
         minimumQuality: (job) => (job.targetLang === 'piggy' ? 1 : 50),
     })
-    .channel('java', {
-        source: new MySource({
+    .channel(new ChannelConfig('java')
+        .source(new MySource({
             baseDir: 'resources',
             globs: [ '*_en.txt' ],
             resourceFormat: 'MNFv1',
-        }),
-        target: new MyTarget({
+        }))
+        .target(new MyTarget({
             targetPath: (lang, resourceId) => `resources/${resourceId.replace('_en.txt', `_${lang.replace('-', '_')}.txt`)}`,
-        }),
-    })
-    .format('MNFv1', {
-        resourceFilter: new filters.MNFv1Filter(),
-        normalizers: {
-            java: javaFormatters,
-        },
-    })
+        }))
+        .resourceFormat(new ResourceFormatConfig('MNFv1').resourceFilter(new filters.MNFv1Filter()))
+        .messageFormat(new MessageFormatConfig('java')
+            .decoders([ java.escapesDecoder, xml.tagDecoder, normalizers.bracePHDecoder, xml.entityDecoder, normalizers.doublePercentDecoder ])
+            .textEncoders([ normalizers.gatedEncoder(xml.entityEncoder, 'xmlDecoder', 'xmlEntityDecoder'), normalizers.gatedEncoder(normalizers.doublePercentEncoder, 'doublePercentDecoder') ])))
     .translators({
         PigLatinizer: {
             translator: new demo.PigLatinizer({ quality: 1 }),
@@ -50,11 +41,11 @@ export default new L10nMonsterConfig(import.meta.dirname)
         },
     })
     .tmStore(new stores.FsLegacyJsonTmStore({
-        name: 'legacy',
+        id: 'legacy',
         jobsDir: 'translationJobs',
     }))
     .tmStore(new stores.FsJsonlTmStore({
-        name: 'default',
+        id: 'default',
         partitioning: 'language',
         jobsDir: 'tmStore',
     }))

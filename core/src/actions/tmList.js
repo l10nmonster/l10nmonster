@@ -3,7 +3,7 @@ export class tm_list {
     static help = {
         description: 'show information about local TM and TM Stores.',
         // arguments: [
-        //     [ '[tmStore]', 'name of the TM Store to deep dive into' ],
+        //     [ '[tmStore]', 'id of the TM Store to deep dive into' ],
         // ],
     };
 
@@ -19,11 +19,11 @@ export class tm_list {
                 console.log(`      * ${stats.translationProvider}(${stats.status}): ${stats.jobCount.toLocaleString()} jobs, ${stats.tuCount.toLocaleString()} tus, ${stats.distinctGuids.toLocaleString()} guids`);
             }
         }
-        const tmStoreNames = monsterManager.getTmStoreNames();
+        const tmStoreIds = monsterManager.getTmStoreIds();
         console.log(`TM Stores:`);
-        for (const tmStoreName of tmStoreNames) {
-            const tmStore = await monsterManager.getTmStore(tmStoreName);
-            console.log(`  ${tmStoreName}: ${tmStore.constructor.name} access: ${tmStore.access} partitioning: ${tmStore.partitioning}`);
+        for (const tmStoreId of tmStoreIds) {
+            const tmStore = await monsterManager.getTmStore(tmStoreId);
+            console.log(`  ${tmStoreId}: ${tmStore.constructor.id} access: ${tmStore.access} partitioning: ${tmStore.partitioning}`);
             const pairs = await monsterManager.tmm.getAvailableLangPairs(tmStore);
             for (const [ srcLang, tgtLang ] of pairs) {
                 const toc = await tmStore.getTOC(srcLang, tgtLang);

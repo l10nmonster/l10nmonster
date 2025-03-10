@@ -10,14 +10,17 @@ export class Channel {
     #defaultTargetLangs;
     #target;
 
-    constructor({ id, source, formatHandlers, defaultResourceFormat, defaultSourceLang, defaultTargetLangs, target }) {
+    constructor({ id, source, formatHandlers, defaultResourceFormat, target }) {
         this.#id = id;
         this.#source = source;
         this.#formatHandlers = formatHandlers;
         this.#defaultResourceFormat = defaultResourceFormat;
-        this.#defaultSourceLang = defaultSourceLang;
-        this.#defaultTargetLangs = defaultTargetLangs;
         this.#target = target;
+    }
+
+    async init(mm) {
+        this.#defaultSourceLang = mm.sourceLang;
+        this.#defaultTargetLangs = mm.getTargetLangs().sort();
     }
 
     makeResourceHandleFromObject(obj) {
@@ -40,11 +43,11 @@ export class Channel {
         return resStats.map(rs => this.makeResourceHandleFromObject(rs));
     }
 
-    async *getAllNormalizedResources({ keepRaw } = {}) {
+    async *getAllNormalizedResources(options) {
         if (this.#source.fetchAllResources) {
             for await (const [resourceStat, rawResource] of this.#source.fetchAllResources(L10nContext.prj)) {
                 const handle = this.makeResourceHandleFromObject(resourceStat);
-                yield handle.loadResourceFromRaw(rawResource, { isSource: true, keepRaw });
+                yield handle.loadResourceFromRaw(rawResource, { isSource: true, keepRaw: options?.keepRaw });
             }
         } else {
             const resourceStats = await this.#source.fetchResourceStats();
@@ -52,21 +55,21 @@ export class Channel {
                 if (L10nContext.prj === undefined || L10nContext.prj.includes(resourceStat.prj)) {
                     const handle = this.makeResourceHandleFromObject(resourceStat);
                     const rawResource = await this.#source.fetchResource(resourceStat.id);
-                    yield handle.loadResourceFromRaw(rawResource, { isSource: true, keepRaw });
+                    yield handle.loadResourceFromRaw(rawResource, { isSource: true, keepRaw: options?.keepRaw });
                 }
             }
         }
     }
 
-    async loadResource(resourceHandle, { keepRaw } = {}) {
+    async loadResource(resourceHandle, options) {
         const rawResource = await this.#source.fetchResource(resourceHandle.id);
-        return resourceHandle.loadResourceFromRaw(rawResource, { isSource: true, keepRaw });
+        return resourceHandle.loadResourceFromRaw(rawResource, { isSource: true, keepRaw: options?.keepRaw });
     }
 
-    async getExistingTranslatedResource(resourceHandle, targetLang, { keepRaw } = {}) {
+    async getExistingTranslatedResource(resourceHandle, targetLang, options) {
         const rawResource = await this.#target.fetchTranslatedResource(targetLang, resourceHandle.id);
         const translatedResource = this.makeResourceHandleFromObject(resourceHandle);
-        return translatedResource.loadResourceFromRaw(rawResource, { isSource: false, keepRaw });
+        return translatedResource.loadResourceFromRaw(rawResource, { isSource: false, keepRaw: options?.keepRaw });
     }
 
     async commitTranslatedResource(targetLang, resourceId, rawResource) {

@@ -8,8 +8,7 @@
 		{
 			"guid": "w0UxEP41XoniWJO96xoPAV78tzMHe-mppZGKdvLInIU",
 			"ntgt": [
-				"[",
-				"Asebay: ",
+				"[Asebay: ",
 				{
 					"t": "bx",
 					"v": "<strike>",
@@ -28,15 +27,14 @@
 				"-piggy]"
 			],
 			"ts": 1,
-			"q": 1,
+			"q": 70,
 			"jobGuid": "xxx0xxx",
-			"translationProvider": "PigLatinizer"
+			"translationProvider": "Grandfather"
 		},
 		{
 			"guid": "Mi8CGeTkNxfnO-OshrNPE4_FrkVbQajzADA09g5O2Zk",
 			"ntgt": [
-				"[",
-				"Interway isyay ",
+				"[Interway isyay ",
 				{
 					"t": "bx",
 					"v": "<b>",
@@ -51,15 +49,14 @@
 				"-piggy]"
 			],
 			"ts": 1,
-			"q": 1,
+			"q": 70,
 			"jobGuid": "xxx0xxx",
-			"translationProvider": "PigLatinizer"
+			"translationProvider": "Grandfather"
 		},
 		{
 			"guid": "oRdDrqs0lf4rPJdRA5ut9PI_ix2KZmBaqiDiyAnT9XU",
 			"ntgt": [
-				"[",
-				"Ozenfray: ",
+				"[Ozenfray: ",
 				{
 					"t": "bx",
 					"v": "<strike>",
@@ -78,15 +75,14 @@
 				"-piggy]"
 			],
 			"ts": 1,
-			"q": 1,
+			"q": 70,
 			"jobGuid": "xxx0xxx",
-			"translationProvider": "PigLatinizer"
+			"translationProvider": "Grandfather"
 		},
 		{
 			"guid": "Kexjq-2WakTgEVK2nZbiSlWPNJ_dQ1_Cll0vWPnNzVg",
 			"ntgt": [
-				"[",
-				"ousehay: ",
+				"[ousehay: ",
 				{
 					"t": "x",
 					"v": "%1$s",
@@ -101,59 +97,9 @@
 				"-piggy]"
 			],
 			"ts": 1,
-			"q": 1,
+			"q": 70,
 			"jobGuid": "xxx0xxx",
-			"translationProvider": "PigLatinizer"
-		},
-		{
-			"guid": "DZAA56iaQf0fJvMG8fv3FgBCiGkUGweBDBEJunOp5zw",
-			"ntgt": [
-				"[",
-				"Iyay owknay 100%%",
-				"-piggy]"
-			],
-			"ts": 1,
-			"q": 1,
-			"jobGuid": "xxx0xxx",
-			"translationProvider": "PigLatinizer"
-		},
-		{
-			"guid": "I03QeYafhq_YEbZNosi-sFm13oZw6d1X0npVhcuEl8U",
-			"ntgt": [
-				"[",
-				"Iyay owknay",
-				{
-					"t": "bx",
-					"v": "<strong>",
-					"v1": "a_bx_strong"
-				},
-				{
-					"t": "bx",
-					"v": "<font color=\"%1$s\">",
-					"v1": "b_bx_font"
-				},
-				{
-					"t": "x",
-					"v": "%2$s",
-					"v1": "c_x_2"
-				},
-				{
-					"t": "ex",
-					"v": "</font>",
-					"v1": "d_ex_font"
-				},
-				"%%",
-				{
-					"t": "ex",
-					"v": "</strong>",
-					"v1": "e_ex_strong"
-				},
-				"-piggy]"
-			],
-			"ts": 1,
-			"q": 1,
-			"jobGuid": "xxx0xxx",
-			"translationProvider": "PigLatinizer"
+			"translationProvider": "Grandfather"
 		},
 		{
 			"guid": "HwgvL0cEhi63k9J4qJl1XI5jV8qU_tvfP1JOe6Q2nCw",
@@ -252,6 +198,56 @@
 					"v": "%2$s",
 					"s": "2 Adults",
 					"v1": "b_x_2"
+				},
+				"-piggy]"
+			],
+			"ts": 1,
+			"q": 1,
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "PigLatinizer"
+		},
+		{
+			"guid": "DZAA56iaQf0fJvMG8fv3FgBCiGkUGweBDBEJunOp5zw",
+			"ntgt": [
+				"[",
+				"Iyay owknay 100%%",
+				"-piggy]"
+			],
+			"ts": 1,
+			"q": 1,
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "PigLatinizer"
+		},
+		{
+			"guid": "I03QeYafhq_YEbZNosi-sFm13oZw6d1X0npVhcuEl8U",
+			"ntgt": [
+				"[",
+				"Iyay owknay",
+				{
+					"t": "bx",
+					"v": "<strong>",
+					"v1": "a_bx_strong"
+				},
+				{
+					"t": "bx",
+					"v": "<font color=\"%1$s\">",
+					"v1": "b_bx_font"
+				},
+				{
+					"t": "x",
+					"v": "%2$s",
+					"v1": "c_x_2"
+				},
+				{
+					"t": "ex",
+					"v": "</font>",
+					"v1": "d_ex_font"
+				},
+				"%%",
+				{
+					"t": "ex",
+					"v": "</strong>",
+					"v1": "e_ex_strong"
 				},
 				"-piggy]"
 			],

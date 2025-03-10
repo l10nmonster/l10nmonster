@@ -80,43 +80,6 @@
 			"guid": "Kexjq-2WakTgEVK2nZbiSlWPNJ_dQ1_Cll0vWPnNzVg"
 		},
 		{
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "nothing",
-			"nsrc": [
-				"I know 100%%"
-			],
-			"guid": "DZAA56iaQf0fJvMG8fv3FgBCiGkUGweBDBEJunOp5zw"
-		},
-		{
-			"rid": "app/src/main/res/values/strings.xml",
-			"sid": "everything",
-			"nsrc": [
-				"I know",
-				{
-					"t": "bx",
-					"v": "<strong>"
-				},
-				{
-					"t": "bx",
-					"v": "<font color=\"%1$s\">"
-				},
-				{
-					"t": "x",
-					"v": "%2$s"
-				},
-				{
-					"t": "ex",
-					"v": "</font>"
-				},
-				"%%",
-				{
-					"t": "ex",
-					"v": "</strong>"
-				}
-			],
-			"guid": "I03QeYafhq_YEbZNosi-sFm13oZw6d1X0npVhcuEl8U"
-		},
-		{
 			"rid": "app/src/main/res/values/strings-with-comments.xml",
 			"sid": "included_wallet_balance",
 			"nsrc": [
@@ -248,6 +211,43 @@
 				"desc": " "
 			},
 			"isSuffixPluralized": true
+		},
+		{
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "nothing",
+			"nsrc": [
+				"I know 100%%"
+			],
+			"guid": "DZAA56iaQf0fJvMG8fv3FgBCiGkUGweBDBEJunOp5zw"
+		},
+		{
+			"rid": "app/src/main/res/values/strings.xml",
+			"sid": "everything",
+			"nsrc": [
+				"I know",
+				{
+					"t": "bx",
+					"v": "<strong>"
+				},
+				{
+					"t": "bx",
+					"v": "<font color=\"%1$s\">"
+				},
+				{
+					"t": "x",
+					"v": "%2$s"
+				},
+				{
+					"t": "ex",
+					"v": "</font>"
+				},
+				"%%",
+				{
+					"t": "ex",
+					"v": "</strong>"
+				}
+			],
+			"guid": "I03QeYafhq_YEbZNosi-sFm13oZw6d1X0npVhcuEl8U"
 		}
 	]
 }

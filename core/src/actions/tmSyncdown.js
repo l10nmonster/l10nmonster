@@ -3,7 +3,7 @@ export class tm_syncdown {
     static help = {
         description: 'pulls remote TM store to local TM cache.',
         arguments: [
-            [ '<tmStore>', 'name of the TM Store' ],
+            [ '<tmStore>', 'id of the TM Store' ],
         ],
         options: [
             [ '--dryrun', 'only preview changes that are needed' ],
@@ -18,10 +18,10 @@ export class tm_syncdown {
             const syncDownStats = await monsterManager.tmm.prepareSyncDown(tmStore, srcLang, tgtLang);
             !options.delete && (syncDownStats.jobsToDelete = []);
             if (syncDownStats.blocksToStore.length === 0 && syncDownStats.jobsToDelete.length === 0) {
-                console.log(`Nothing to sync down from ${tmStore.name} store for ${srcLang} -> ${tgtLang}`);
+                console.log(`Nothing to sync down from ${tmStore.id} store for ${srcLang} -> ${tgtLang}`);
                 return;
             } else {
-                console.log(`Syncing down ${srcLang} -> ${tgtLang} from ${tmStore.name} store...`);
+                console.log(`Syncing down ${srcLang} -> ${tgtLang} from ${tmStore.id} store...`);
             }
             if (syncDownStats.blocksToStore.length > 0) {
                 console.log(`${syncDownStats.blocksToStore.length} blocks to store: ${syncDownStats.blocksToStore.join(', ')}`);

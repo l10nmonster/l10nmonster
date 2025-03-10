@@ -13,7 +13,7 @@ const languageFilenameRegex = /blocks\/sl=(?<sourceLang>[^/]+)\/tl=(?<targetLang
  *
  */
 export class BaseJsonlTmStore {
-    name;
+    id;
     access = 'readwrite';
     partitioning = 'job';
 
@@ -21,17 +21,17 @@ export class BaseJsonlTmStore {
      * Creates a BaseJsonlTmStore instance
      * @param {Object} delegate - Required file store delegate implementing file operations
      * @param {Object} options - Required file store delegate implementing file operations
-     * @param {string} options.name - The logical name of the instance
+     * @param {string} options.id - The logical id of the instance
      * @param {string} options.access? - The store access permissions (readwrite/readonly/writeonly)
      * @param {string} options.partitioning? - Partitioning strategy for TM Blocks
      * @throws {Error} If no delegate is provided or invalid partitioning is specified
      */
-    constructor(delegate, { name, partitioning, access }) {
-        if (!delegate || !name) {
-            throw new Error('A delegate and a name are required to instantiate a LegacyFileBasedTmStore');
+    constructor(delegate, { id, partitioning, access }) {
+        if (!delegate || !id) {
+            throw new Error('A delegate and a id are required to instantiate a LegacyFileBasedTmStore');
         }
         this.delegate = delegate;
-        this.name = name;
+        this.id = id;
         if (partitioning) {
             if (['job', 'provider', 'language'].indexOf(partitioning) === -1) {
                 throw new Error(`Unknown partitioning type: ${partitioning}`);
@@ -151,7 +151,7 @@ export class BaseJsonlTmStore {
 
     async getWriter(sourceLang, targetLang, cb) {
         if (this.access === 'readonly') {
-            throw new Error(`Cannot write to readonly TM Store: ${this.name}`);
+            throw new Error(`Cannot write to readonly TM Store: ${this.id}`);
         }
         const toc = await this.getTOC(sourceLang, targetLang);
         await cb(async ({ translationProvider, blockId }, tmBlockIterator) => {
@@ -160,12 +160,12 @@ export class BaseJsonlTmStore {
             if (tmBlockIterator) {
                 const generator = async function *jsonlGenerator () {
                     for await (const tu of tmBlockIterator) {
-                        const { guid, jobGuid, rid, sid, nsrc, ntgt, notes, q, ts, tuOrder, jobProps, ...tuProps } = tu;
+                        const { guid, jobGuid, rid, sid, nsrc, ntgt, notes, q, ts, jobProps, ...tuProps } = tu;
                         if (jobProps?.jobGuid && jobProps.jobGuid !== lastJobGuid) {
                             jobs.push([ jobProps.jobGuid, jobProps.updatedAt ]);
                             lastJobGuid = jobProps.jobGuid;
                         }
-                        const row = { guid, jobGuid, rid, sid, q, ts, tuOrder };
+                        const row = { guid, jobGuid, rid, sid, q, ts };
                         nsrc && (row.nsrc = JSON.stringify(nsrc));
                         ntgt && (row.ntgt = JSON.stringify(ntgt));
                         notes && (row.notes = JSON.stringify(notes));

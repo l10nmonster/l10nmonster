@@ -1,4 +1,4 @@
-import { L10nMonsterConfig, decorators, xml, adapters, translators } from '@l10nmonster/core';
+import { L10nMonsterConfig, ChannelConfig, decorators, xml, adapters, translators } from '@l10nmonster/core';
 import { i18next } from '@l10nmonster/helpers-json';
 
 class ReactConfig extends L10nMonsterConfig {
@@ -12,23 +12,22 @@ class ReactConfig extends L10nMonsterConfig {
             targetLangs: [ 'de', 'ru' ],
             minimumQuality: 50,
         })
-        .contentType({
-            source: new adapters.FsSource({
+        .channel(new ChannelConfig('react')
+            .source(new adapters.FsSource({
                 baseDir: '..',
                 globs: [ '**/en/*.json' ],
-            }),
-            resourceFilter: new i18next.I18nextFilter({
+            }))
+            .resourceFilter(new i18next.I18nextFilter({
                 enableArbAnnotations : true,
                 enablePluralSuffixes : true,
                 emitArbAnnotations : true,
-            }),
-            segmentDecorators: [ this.#sg.getDecorator() ],
-            decoders: [ xml.tagDecoder, xml.entityDecoder, i18next.phDecoder ],
-            target: new adapters.FsTarget({
+            }))
+            .segmentDecorators([ this.#sg.getDecorator() ])
+            .decoders([ xml.tagDecoder, xml.entityDecoder, i18next.phDecoder ])
+            .target(new adapters.FsTarget({
                 baseDir: '..',
                 targetPath: (lang, resourceId) => resourceId.replace('en/', `${lang}/`),
-            }),
-        })
+            })))
         .translators({
             Visicode: {
                 translator: new translators.Visicode({
