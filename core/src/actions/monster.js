@@ -35,7 +35,11 @@ export class monster {
         const availableLangPairs = (await mm.tmm.getAvailableLangPairs()).sort();
         for (const [sourceLang, targetLang] of availableLangPairs) {
             const tm = mm.tmm.getTM(sourceLang, targetLang);
-            console.log(`  - ${sourceLang} / ${targetLang} (${tm.guids.length} entries)`);
+            console.log(`  - ${sourceLang} / ${targetLang}`);
+            const tmStats = tm.getStats();
+            for (const stats of tmStats) {
+                console.log(`      * ${stats.translationProvider}(${stats.status}): ${stats.jobCount.toLocaleString()} jobs, ${stats.tuCount.toLocaleString()} tus, ${stats.distinctGuids.toLocaleString()} guids`);
+            }
         }
         console.timeEnd('Initialization time');
         const printCapabilities = cap => `${Object.entries(cap).map(([cmd, available]) => `${available ? consoleColor.green : consoleColor.red}${cmd}`).join(' ')}${consoleColor.reset}`;

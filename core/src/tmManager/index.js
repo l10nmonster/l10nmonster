@@ -159,7 +159,7 @@ export default class TMManager {
                 if (tmStore.partitioning === 'job') {
                     for (const jobGuid of jobsToUpdate) {
                         const job = this.#jobDAL.getJob(jobGuid);
-                        await writeTmBlock({ translationProvider: job.translationProvider, blockId: jobGuid}, tm.getCompleteEntriesByJobGuid(jobGuid));
+                        await writeTmBlock({ translationProvider: job.translationProvider, blockId: jobGuid}, [ tm.getCompleteEntriesByJobGuid(jobGuid) ]);
                     }
                 } else if (tmStore.partitioning === 'provider') {
                     const jobsByProvider = {};
@@ -228,7 +228,7 @@ export default class TMManager {
         const jobRow = this.#jobDAL.getJob(jobGuid);
         if (jobRow) {
             const tm = this.getTM(jobRow.sourceLang, jobRow.targetLang);
-            const tus = [ ...tm.getEntriesByJobGuid(jobGuid) ];
+            const tus = tm.getEntriesByJobGuid(jobGuid);
             const inflight = tus.filter(tu => tu.inflight).map(tu => tu.guid);
             return { ...jobRow, tus, inflight };
         }

@@ -32,9 +32,10 @@ export async function analyzeCmd(mm, analyzer, params, limitToLang, tuFilter) {
         for (const [sourceLang, targetLang] of availableLangPairs) {
                 (!hasAggregateAnalysis || !analyzer) && (analyzer = new Analyzer(...params));
             const tm = mm.tmm.getTM(sourceLang, targetLang);
-            const tus = tm.guids.map(guid => tm.getEntryByGuid(guid));
-            for (const tu of tus) {
-                (!tuFilterFunction || tuFilterFunction(tu)) && analyzer.processTU({ targetLang, tu });
+            for (const chunk of tm.getAllCompleteEntries()) {
+                for (const tu of chunk) {
+                    (!tuFilterFunction || tuFilterFunction(tu)) && analyzer.processTU({ targetLang, tu });
+                }
             }
             !hasAggregateAnalysis && bodies.push((lastAnalysis = analyzer.getAnalysis()).body);
         }

@@ -20,35 +20,26 @@ export class TM {
         return this.#tuDal.getEntry(guid);
     }
 
-    *getEntriesByJobGuid(jobGuid) {
-        const entries = this.#tuDal.getEntriesByJobGuid(jobGuid);
-        for (const entry of entries) {
-            yield entry;
-        }
+    getEntriesByJobGuid(jobGuid) {
+        return this.#tuDal.getEntriesByJobGuid(jobGuid);
     }
 
-    *getCompleteEntriesByJobGuid(jobGuid) {
+    getCompleteEntriesByJobGuid(jobGuid) {
         const entries = this.#tuDal.getEntriesByJobGuid(jobGuid);
-        for (let idx = 0; idx < entries.length; idx++) {
-            if (idx === 0) {
-                const jobProps = this.#jobDAL.getJob(jobGuid);
-                yield { ...entries[idx], jobProps };
-            } else {
-                yield entries[idx];
-            }
-        }
+        entries[0] && (entries[0].jobProps = this.#jobDAL.getJob(jobGuid));
+        return entries;
     }
 
     *getCompleteEntriesByJobGuids(jobGuids) {
         for (const jobGuid of jobGuids) {
-            yield* this.getCompleteEntriesByJobGuid(jobGuid);
+            yield this.getCompleteEntriesByJobGuid(jobGuid);
         }
     }
 
     *getAllCompleteEntries() {
         const allJobs = this.#jobDAL.getJobStatusByLangPair(this.sourceLang, this.targetLang).map(e => e[0]);
         for (const jobGuid of allJobs) {
-            yield* this.getCompleteEntriesByJobGuid(jobGuid);
+            yield this.getCompleteEntriesByJobGuid(jobGuid);
         }
     }
 
