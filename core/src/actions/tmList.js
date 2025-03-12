@@ -23,8 +23,8 @@ export class tm_list {
         console.log(`TM Stores:`);
         for (const tmStoreId of tmStoreIds) {
             const tmStore = await monsterManager.getTmStore(tmStoreId);
-            console.log(`  ${tmStoreId}: ${tmStore.constructor.id} access: ${tmStore.access} partitioning: ${tmStore.partitioning}`);
-            const pairs = await monsterManager.tmm.getAvailableLangPairs(tmStore);
+            console.log(`  ${tmStoreId}: ${tmStore.constructor.name} access: ${tmStore.access} partitioning: ${tmStore.partitioning}`);
+            const pairs = await tmStore.getAvailableLangPairs(tmStore);
             for (const [ srcLang, tgtLang ] of pairs) {
                 const toc = await tmStore.getTOC(srcLang, tgtLang);
                 const blocks = Object.values(toc.blocks);
