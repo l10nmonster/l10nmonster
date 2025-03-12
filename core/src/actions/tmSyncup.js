@@ -1,3 +1,5 @@
+import { consoleLog } from '@l10nmonster/core';
+
 // eslint-disable-next-line camelcase
 export class tm_syncup {
     static help = {
@@ -19,18 +21,18 @@ export class tm_syncup {
                 newerOnly: Boolean(options.neweronly),
             });
             if (syncUpStats.blocksToUpdate.length === 0 && syncUpStats.jobsToUpdate.length === 0) {
-                console.log(`Nothing to sync up with ${tmStore.id} store for ${srcLang} -> ${tgtLang}`);
+                consoleLog`Nothing to sync up with ${tmStore.id} store for ${srcLang} -> ${tgtLang}`;
                 return;
             } else {
-                console.log(`Syncing up ${srcLang} -> ${tgtLang} to ${tmStore.id} store...`);
+                consoleLog`Syncing up ${srcLang} -> ${tgtLang} to ${tmStore.id} store...`;
             }
             if (syncUpStats.blocksToUpdate.length > 0) {
-                console.log(`${syncUpStats.blocksToUpdate.length} blocks to update:`);
-                syncUpStats.blocksToUpdate.forEach(([ block, modifiedStore, modifiedCache ]) => console.log(`  ${block} (modified: ${modifiedStore} vs ${modifiedCache})`));
+                consoleLog`${syncUpStats.blocksToUpdate.length} blocks to update:`;
+                syncUpStats.blocksToUpdate.forEach(([ block, modifiedStore, modifiedCache ]) => consoleLog`  ${block} (modified: ${modifiedStore} vs ${modifiedCache})`);
             }
             if (syncUpStats.jobsToUpdate.length > 0) {
-                console.log(`${syncUpStats.jobsToUpdate.length} jobs to store:`);
-                console.log(`  ${syncUpStats.jobsToUpdate.join(', ')}`);
+                consoleLog`${syncUpStats.jobsToUpdate.length} jobs to store:`;
+                consoleLog`  ${syncUpStats.jobsToUpdate.join(', ')}`;
             }
             if (!options.dryrun) {
                 await monsterManager.tmm.syncUp(tmStore, syncUpStats);
@@ -46,7 +48,7 @@ export class tm_syncup {
             }
         }
         if (options.dryrun) {
-            console.log(`This was just a dryrun, no changes were made!`);
+            consoleLog`This was just a dryrun, no changes were made!`;
         }
 }
 }

@@ -1,4 +1,4 @@
-import { consoleColor } from './shared.js';
+import { consoleLog } from '@l10nmonster/core';
 
 export class jobs {
     static help = {
@@ -13,11 +13,11 @@ export class jobs {
         const jobs = await monsterManager.jobs({ limitToLang });
         for (const [lang, jobManifests] of Object.entries(jobs)) {
             if (jobManifests.length > 0) {
-                console.log(`Target language ${consoleColor.bright}${lang}${consoleColor.reset}:`);
+                consoleLog`Target language ${lang}$:`;
                 for (const mf of jobManifests) {
                     const numUnits = mf.inflight?.length ?? mf.tus?.length ?? 0;
                     const lastModified = new Date(mf.updatedAt);
-                    console.log(`  Job ${mf.jobGuid}: status ${consoleColor.bright}${mf.status}${consoleColor.reset} ${numUnits.toLocaleString()} ${mf.sourceLang} units with ${mf.translationProvider} - ${lastModified.toDateString()} ${lastModified.toLocaleTimeString()}`);
+                    consoleLog`  Job ${mf.jobGuid}: status ${mf.status}$ ${numUnits.toLocaleString()} ${mf.sourceLang} units with ${mf.translationProvider} - ${lastModified.toDateString()} ${lastModified.toLocaleTimeString()}`;
                 }
             }
         }

@@ -1,3 +1,5 @@
+import { consoleLog } from '@l10nmonster/core';
+
 // eslint-disable-next-line camelcase
 export class tm_syncdown {
     static help = {
@@ -18,16 +20,16 @@ export class tm_syncdown {
             const syncDownStats = await monsterManager.tmm.prepareSyncDown(tmStore, srcLang, tgtLang);
             !options.delete && (syncDownStats.jobsToDelete = []);
             if (syncDownStats.blocksToStore.length === 0 && syncDownStats.jobsToDelete.length === 0) {
-                console.log(`Nothing to sync down from ${tmStore.id} store for ${srcLang} -> ${tgtLang}`);
+                consoleLog`Nothing to sync down from ${tmStore.id} store for ${srcLang} -> ${tgtLang}`;
                 return;
             } else {
-                console.log(`Syncing down ${srcLang} -> ${tgtLang} from ${tmStore.id} store...`);
+                consoleLog`Syncing down ${srcLang} -> ${tgtLang} from ${tmStore.id} store...`;
             }
             if (syncDownStats.blocksToStore.length > 0) {
-                console.log(`${syncDownStats.blocksToStore.length} blocks to store: ${syncDownStats.blocksToStore.join(', ')}`);
+                consoleLog`${syncDownStats.blocksToStore.length} blocks to store: ${syncDownStats.blocksToStore.join(', ')}`;
             }
             if (syncDownStats.jobsToDelete.length > 0) {
-                console.log(`${syncDownStats.jobsToDelete.length} local jobs to delete: ${syncDownStats.jobsToDelete.join(', ')}`);
+                consoleLog`${syncDownStats.jobsToDelete.length} local jobs to delete: ${syncDownStats.jobsToDelete.join(', ')}`;
             }
             if (!options.dryrun) {
                 await monsterManager.tmm.syncDown(tmStore, syncDownStats);
@@ -43,7 +45,7 @@ export class tm_syncdown {
             }
         }
         if (options.dryrun) {
-            console.log(`This was just a dryrun, no changes were made!`);
+            consoleLog`This was just a dryrun, no changes were made!`;
         }
     }
 }

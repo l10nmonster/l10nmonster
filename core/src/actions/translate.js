@@ -1,6 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import { L10nContext } from '@l10nmonster/core';
-import { consoleColor } from './shared.js';
+import { L10nContext, consoleLog } from '@l10nmonster/core';
 
 function computeDelta(currentTranslations, newTranslations) {
     const delta = [];
@@ -39,26 +38,26 @@ async function compareToExisting(mm, resHandle, targetLang, translatedRes) {
 
 function printChanges(resHandle, targetLang, bundleChanges, delta) {
     if (bundleChanges === 'changed') {
-        console.log(`\n${consoleColor.yellow}Changed translated bundle ${resHandle.channel}:${resHandle.id} for ${targetLang}${consoleColor.reset}`);
+        consoleLog`\nChanged translated bundle ${resHandle.channel}:${resHandle.id} for ${targetLang}`;
         for (const change of delta) {
-            change.l !== undefined && console.log(`${consoleColor.red}- ${change.id}: ${change.l}${consoleColor.reset}`);
-            change.r !== undefined && console.log(`${consoleColor.green}+ ${change.id}: ${change.r}${consoleColor.reset}`);
+            change.l !== undefined && consoleLog`- ${change.id}: ${change.l}`;
+            change.r !== undefined && consoleLog`+ ${change.id}: ${change.r}`;
         }
     } else if (bundleChanges === 'new') {
-        console.log(`\n${consoleColor.green}New translated bundle ${resHandle.channel}:${resHandle.id} for ${targetLang}${consoleColor.reset}`);
+        consoleLog`\nNew translated bundle ${resHandle.channel}:${resHandle.id} for ${targetLang}`;
     } else if (bundleChanges === 'deleted') {
-        console.log(`\n${consoleColor.green}Deleted translated bundle ${resHandle.channel}:${resHandle.id} for ${targetLang}${consoleColor.reset}`);
+        consoleLog`\nDeleted translated bundle ${resHandle.channel}:${resHandle.id} for ${targetLang}`;
     }
 }
 
 function printSummary(response) {
-    console.log('Translation summary:');
+    consoleLog`Translation summary:`;
     for (const [lang, langStatus] of Object.entries(response.lang)) {
         const summary = {};
         for (const resourceStatus of langStatus.resourceStatus) {
             summary[resourceStatus.status] = (summary[resourceStatus.status] ?? 0) + 1;
         }
-        console.log(`  - ${lang}: ${Object.entries(summary).sort().map(([k,v]) => `${k}(${v})`).join(', ')}`);
+        consoleLog`  - ${lang}: ${Object.entries(summary).sort().map(([k,v]) => `${k}(${v})`).join(', ')}`;
     }
 }
 
@@ -75,7 +74,7 @@ export class translate {
 
     static async action(mm, options) {
         const mode = (options.mode ?? 'all').toLowerCase();
-        console.log(`Generating translated resources for ${consoleColor.bright}${options.lang ? options.lang : 'all languages'}${consoleColor.reset}... (${mode} mode)`);
+        consoleLog`Generating translated resources for ${options.lang ? options.lang : 'all languages'}... (${mode} mode)`;
         const response = { lang: {} };
         const targetLangs = mm.getTargetLangs(options.lang);
         const allResources = await mm.rm.getAllResources({ keepRaw: true });

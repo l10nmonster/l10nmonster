@@ -1,3 +1,4 @@
+import { consoleLog } from '@l10nmonster/core';
 import { consoleColor, printRequest } from './shared.js';
 
 export class push {
@@ -31,12 +32,12 @@ export class push {
         const leverage = options.leverage;
         const dryRun = options.dryrun;
         const instructions = options.instructions;
-        console.log(`Pushing content upstream...${dryRun ? ' (dry run)' : ''}`);
+        consoleLog`Pushing content upstream...${dryRun ? ' (dry run)' : ''}`;
         try {
             if (dryRun) {
                 const status = await monsterManager.push({ limitToLang, tuFilter, driver, refresh, leverage, dryRun, instructions });
                 for (const langStatus of status) {
-                    console.log(`\nDry run of ${langStatus.sourceLang} -> ${langStatus.targetLang} push:`);
+                    consoleLog`\nDry run of ${langStatus.sourceLang} -> ${langStatus.targetLang} push:`;
                     printRequest(langStatus);
                 }
             } else {
@@ -47,13 +48,13 @@ export class push {
                     if (status.length > 0) {
                         for (const ls of status) {
                             if (ls.minimumJobSize === undefined) {
-                                console.log(`job ${ls.jobGuid} with ${ls.num.toLocaleString()} translations received for language ${consoleColor.bright}${ls.targetLang}${consoleColor.reset} from provider ${consoleColor.bright}${ls.provider}${consoleColor.reset} -> status: ${consoleColor.bright}${ls.status}${consoleColor.reset}`);
+                                consoleLog`job ${ls.jobGuid} with ${ls.num.toLocaleString()} translations received for language ${consoleColor.bright}${ls.targetLang}${consoleColor.reset} from provider ${consoleColor.bright}${ls.provider}${consoleColor.reset} -> status: ${consoleColor.bright}${ls.status}${consoleColor.reset}`;
                             } else {
-                                console.log(`${ls.num.toLocaleString()} translations units for language ${ls.targetLang} not sent to provider ${consoleColor.bright}${ls.provider}${consoleColor.reset} because you need at least ${ls.minimumJobSize}`);
+                                consoleLog`${ls.num.toLocaleString()} translations units for language ${ls.targetLang} not sent to provider ${consoleColor.bright}${ls.provider}${consoleColor.reset} because you need at least ${ls.minimumJobSize}`;
                             }
                         }
                     } else {
-                        console.log('Nothing to push!');
+                        consoleLog`Nothing to push!`;
                         break;
                     }
                 }

@@ -1,6 +1,6 @@
 // import * as tinyld from 'tinyld';
 
-import { utils } from '@l10nmonster/core';
+import { utils, consoleLog } from '@l10nmonster/core';
 
 // https://stackoverflow.com/questions/9781218/how-to-change-node-jss-console-font-color
 export const consoleColor = {
@@ -14,11 +14,11 @@ export const consoleColor = {
 
 function printContent(contentPairs) {
     for (const [prj, uc] of Object.entries(contentPairs)) {
-        console.log(`Project: ${prj}`);
+        consoleLog`Project: ${prj}`;
         for (const [rid, content] of Object.entries(uc)) {
-            console.log(`  ‣ ${rid}`);
+            consoleLog`  ‣ ${rid}`;
             for (const [sid, str] of Object.entries(content)) {
-                console.log(`    ∙ ${consoleColor.dim}${sid}:${consoleColor.reset} ${str.color}${str.confidence ? `[${str.confidence.toFixed(2)}] ` : ''}${sid === str.txt ? '≣' : str.txt}${consoleColor.reset}`);
+                consoleLog`    ∙ ${consoleColor.dim}${sid}:${consoleColor.reset} ${str.color}${str.confidence ? `[${str.confidence.toFixed(2)}] ` : ''}${sid === str.txt ? '≣' : str.txt}${consoleColor.reset}`;
             }
         }
     }
@@ -64,7 +64,7 @@ export function printResponse(job, showPairs) {
         }
     }
     if (job.tus.length !== matchedTranslations) {
-        console.log(`${consoleColor.red}${job.tus.length} TU in request, ${job.tus.length} TU in response, ${matchedTranslations} matching translations${consoleColor.reset}`);
+        consoleLog`${consoleColor.red}${job.tus.length} TU in request, ${job.tus.length} TU in response, ${matchedTranslations} matching translations${consoleColor.reset}`;
     }
     printContent(translatedContent);
 }

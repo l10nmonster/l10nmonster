@@ -1,8 +1,7 @@
 /* eslint-disable complexity */
 import * as fs from 'fs/promises';
 
-import { L10nContext, TU, utils } from '@l10nmonster/core';
-import { consoleColor } from './shared.js';
+import { L10nContext, TU, utils, consoleLog } from '@l10nmonster/core';
 
 export class tmexport {
     static help = {
@@ -16,7 +15,7 @@ export class tmexport {
 
     static async action(mm, options) {
         const prjsplit = options.prjsplit;
-        console.log(`Exporting TM for ${consoleColor.bright}${options.lang ? options.lang : 'all languages'}${consoleColor.reset}...`);
+        consoleLog`Exporting TM for ${options.lang ? options.lang : 'all languages'}...`;
         let tuFilterFunction;
         if (options.filter) {
             tuFilterFunction = mm.tuFilters[utils.fixCaseInsensitiveKey(mm.tuFilters, options.filter)];
@@ -85,6 +84,6 @@ export class tmexport {
                 files.push(filename);
             }
         }
-        console.log(`Generated files: ${files.join(', ')}`);
+        consoleLog`Generated files: ${files.join(', ')}`;
     }
 }

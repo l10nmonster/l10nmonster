@@ -1,6 +1,5 @@
 import { writeFileSync } from 'fs';
-
-import { consoleColor } from './shared.js';
+import { consoleLog } from '@l10nmonster/core';
 
 function computeTotals(totals, partial) {
     for (const [ k, v ] of Object.entries(partial)) {
@@ -16,13 +15,13 @@ function computeTotals(totals, partial) {
 
 function printLeverage(leverage, detailed) {
     const totalStrings = leverage.translated + leverage.pending + leverage.untranslated + leverage.internalRepetitions;
-    detailed && console.log(`    - total strings for target language: ${totalStrings.toLocaleString()} (${leverage.translatedWords.toLocaleString()} translated words)`);
+    detailed && consoleLog`    - total strings for target language: ${totalStrings.toLocaleString()} (${leverage.translatedWords.toLocaleString()} translated words)`;
     for (const [q, num] of Object.entries(leverage.translatedByQ).sort((a,b) => b[1] - a[1])) {
-        detailed && console.log(`    - translated strings @ quality ${q}: ${num.toLocaleString()}`);
+        detailed && consoleLog`    - translated strings @ quality ${q}: ${num.toLocaleString()}`;
     }
-    leverage.pending && console.log(`    - strings pending translation: ${leverage.pending.toLocaleString()} (${leverage.pendingWords.toLocaleString()} words)`);
-    leverage.untranslated && console.log(`    - untranslated unique strings: ${leverage.untranslated.toLocaleString()} (${leverage.untranslatedChars.toLocaleString()} chars - ${leverage.untranslatedWords.toLocaleString()} words - $${(leverage.untranslatedWords * .2).toFixed(2)})`);
-    leverage.internalRepetitions && console.log(`    - untranslated repeated strings: ${leverage.internalRepetitions.toLocaleString()} (${leverage.internalRepetitionWords.toLocaleString()} words)`);
+    leverage.pending && consoleLog`    - strings pending translation: ${leverage.pending.toLocaleString()} (${leverage.pendingWords.toLocaleString()} words)`;
+    leverage.untranslated && consoleLog`    - untranslated unique strings: ${leverage.untranslated.toLocaleString()} (${leverage.untranslatedChars.toLocaleString()} chars - ${leverage.untranslatedWords.toLocaleString()} words - $${(leverage.untranslatedWords * .2).toFixed(2)})`;
+    leverage.internalRepetitions && consoleLog`    - untranslated repeated strings: ${leverage.internalRepetitions.toLocaleString()} (${leverage.internalRepetitionWords.toLocaleString()} words)`;
 }
 
 export class status {
@@ -43,21 +42,21 @@ export class status {
         if (output) {
             writeFileSync(output, JSON.stringify(status, null, '\t'), 'utf8');
         } else {
-            console.log(`${consoleColor.reset}${status.numSources.toLocaleString()} translatable resources`);
+            consoleLog`${status.numSources.toLocaleString()} translatable resources`;
             for (const [lang, langStatus] of Object.entries(status.lang)) {
-                console.log(`\n${consoleColor.bright}Language ${lang}${consoleColor.reset} (minimum quality: ${langStatus.leverage.minimumQuality})`);
+                consoleLog`\nLanguage ${lang} (minimum quality: ${langStatus.leverage.minimumQuality})`;
                 const totals = {};
                 const prjLeverage = Object.entries(langStatus.leverage.prjLeverage).sort((a, b) => (a[0] > b[0] ? 1 : -1));
                 for (const [prj, leverage] of prjLeverage) {
                     computeTotals(totals, leverage);
                     const untranslated = leverage.pending + leverage.untranslated + leverage.internalRepetitions;
                     if (leverage.translated + untranslated > 0) {
-                        (all || untranslated > 0) && console.log(`  Project: ${consoleColor.bright}${prj}${consoleColor.reset}`);
+                        (all || untranslated > 0) && consoleLog`  Project: ${prj}`;
                         printLeverage(leverage, all);
                     }
                 }
                 if (prjLeverage.length > 1) {
-                    console.log(`  Total:`);
+                    consoleLog`  Total:`;
                     printLeverage(totals, true);
                 }
             }

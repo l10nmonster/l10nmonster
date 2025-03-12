@@ -1,3 +1,4 @@
+import { consoleLog } from '@l10nmonster/core';
 import { printRequest, printResponse } from './shared.js';
 
 export class job {
@@ -17,7 +18,7 @@ export class job {
         if (op === 'req') {
             const job = await monsterManager.tmm.getJob(jobGuid);
             if (job) {
-                console.log(`Showing request of job ${jobGuid} ${job.sourceLang} -> ${job.targetLang}`);
+                consoleLog`Showing request of job ${jobGuid} ${job.sourceLang} -> ${job.targetLang}`;
                 printRequest(job);
             } else {
                 console.error('Could not fetch the specified job');
@@ -25,7 +26,7 @@ export class job {
         } else if (op === 'res') {
             const job = await monsterManager.tmm.getJob(jobGuid);
             if (job) {
-                console.log(`Showing response of job ${jobGuid} ${job.sourceLang} -> ${job.targetLang} (${job.translationProvider}) ${job.status}`);
+                consoleLog`Showing response of job ${jobGuid} ${job.sourceLang} -> ${job.targetLang} (${job.translationProvider}) ${job.status}`;
                 printResponse(job);
             } else {
                 console.error('Could not fetch the specified job');
@@ -33,21 +34,21 @@ export class job {
         } else if (op === 'pairs') {
             const job = await monsterManager.tmm.getJob(jobGuid);
             if (job) {
-                console.log(`Showing source-target pairs of job ${jobGuid} ${job.sourceLang} -> ${job.targetLang} (${job.translationProvider}) ${job.status}`);
+                consoleLog`Showing source-target pairs of job ${jobGuid} ${job.sourceLang} -> ${job.targetLang} (${job.translationProvider}) ${job.status}`;
                 printResponse(job, true);
             } else {
                 console.error('Could not fetch the specified job');
             }
         } else if (op === 'push') {
-            console.log(`Pushing job ${jobGuid}...`);
+            consoleLog`Pushing job ${jobGuid}...`;
             try {
                 const pushResponse = await monsterManager.jobPush(jobGuid);
-                console.log(`${pushResponse.num.toLocaleString()} translations units requested -> status: ${pushResponse.status}`);
+                consoleLog`${pushResponse.num.toLocaleString()} translations units requested -> status: ${pushResponse.status}`;
             } catch (e) {
                 console.error(`Failed to push job: ${e.stack ?? e}`);
             }
         } else if (op === 'delete') {
-            console.log(`Deleting job ${jobGuid}...`);
+            consoleLog`Deleting job ${jobGuid}...`;
             try {
                 await monsterManager.tmm.deleteJobRequest(jobGuid);
             } catch (e) {

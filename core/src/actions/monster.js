@@ -1,4 +1,4 @@
-import { consoleColor } from './shared.js';
+import { consoleLog } from '@l10nmonster/core';
 
 export class monster {
     static help = {
@@ -29,23 +29,24 @@ export class monster {
         console.time('Initialization time');
         const resourceHandles = await mm.rm.getResourceHandles();
         const targetLangs = mm.getTargetLangs(options.lang);
-        console.log(`Resources: ${resourceHandles.length}`);
-        console.log(`Possible languages: ${targetLangs.join(', ')}`);
-        console.log('Translation Memories:')
+        consoleLog`Resources: ${resourceHandles.length}`;
+        consoleLog`Possible languages: ${targetLangs.join(', ')}`;
+        consoleLog`Translation Memories:`;
         const availableLangPairs = (await mm.tmm.getAvailableLangPairs()).sort();
         for (const [sourceLang, targetLang] of availableLangPairs) {
             const tm = mm.tmm.getTM(sourceLang, targetLang);
-            console.log(`  - ${sourceLang} / ${targetLang}`);
+            consoleLog`  - ${sourceLang} / ${targetLang}`;
             const tmStats = tm.getStats();
             for (const stats of tmStats) {
-                console.log(`      * ${stats.translationProvider}(${stats.status}): ${stats.jobCount.toLocaleString()} jobs, ${stats.tuCount.toLocaleString()} tus, ${stats.distinctGuids.toLocaleString()} guids`);
+                consoleLog`      * ${stats.translationProvider}(${stats.status}): ${stats.jobCount.toLocaleString()} jobs, ${stats.tuCount.toLocaleString()} tus, ${stats.distinctGuids.toLocaleString()} guids`;
             }
         }
         console.timeEnd('Initialization time');
-        const printCapabilities = cap => `${Object.entries(cap).map(([cmd, available]) => `${available ? consoleColor.green : consoleColor.red}${cmd}`).join(' ')}${consoleColor.reset}`;
-        console.log(`\nYour config allows the following commands: ${printCapabilities(mm.capabilities)}`);
+        // eslint-disable-next-line no-unused-vars
+        const printCapabilities = cap => Object.entries(cap).filter(([cmd, available]) => available).map(([cmd]) => cmd).join(' ');
+        consoleLog`\nYour config allows the following commands: ${printCapabilities(mm.capabilities)}`;
         if (Object.keys(mm.capabilitiesByChannel).length > 1) {
-            Object.entries(mm.capabilitiesByChannel).forEach(([channel, cap]) => console.log(`  - ${channel}: ${printCapabilities(cap)}`));
+            Object.entries(mm.capabilitiesByChannel).forEach(([channel, cap]) => consoleLog`  - ${channel}: ${printCapabilities(cap)}`);
         }
     }
 }
