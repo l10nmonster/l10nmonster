@@ -289,6 +289,8 @@ export function fixCaseInsensitiveKey(object, key) {
 export function *getIteratorFromJobPair(jobRequest, jobResponse) {
     const requestedUnits = jobRequest?.tus ? Object.fromEntries(jobRequest.tus.map(tu => [ tu.guid, tu])) : {};
     const { inflight, tus, ...jobProps } = jobResponse;
+    // because of tm exports we need to split by jobGuid and yield each group.
+    const splitJobs = {};
     if (inflight) {
         for (const guid of inflight) {
             const reqEntry = requestedUnits[guid] ?? {};
@@ -298,7 +300,9 @@ export function *getIteratorFromJobPair(jobRequest, jobResponse) {
             overriddenJobProps.translationProvider ??= translationProvider;
             try {
                 // TODO: should q be 0? if we set the real value it would automatically prevent duplicates in flight
-                yield TU.asPair({ ...tuProps, q: 0, inflight: true, ts: 0, jobProps: overriddenJobProps });
+                const properTU = TU.asPair({ ...tuProps, q: 0, inflight: true, ts: 0 });
+                splitJobs[overriddenJobProps.jobGuid] ??= { jobProps: overriddenJobProps, tus: [] };
+                splitJobs[overriddenJobProps.jobGuid].tus.push(properTU);
             } catch (e) {
                 L10nContext.logger.verbose(`Problems converting in-flight entry to TU: ${e}`);
             }
@@ -311,11 +315,16 @@ export function *getIteratorFromJobPair(jobRequest, jobResponse) {
             overriddenJobProps.jobGuid ??= jobGuid;
             overriddenJobProps.translationProvider ??= translationProvider;
             try {
-                yield TU.fromRequestResponse(requestedUnits[tu.guid], tuProps, { jobProps: overriddenJobProps });
+                const properTU = TU.fromRequestResponse(requestedUnits[tu.guid], tuProps);
+                splitJobs[overriddenJobProps.jobGuid] ??= { jobProps: overriddenJobProps, tus: [] };
+                splitJobs[overriddenJobProps.jobGuid].tus.push(properTU);
             } catch (e) {
                 L10nContext.logger.verbose(`Problems converting entry to TU: ${e}`);
             }
         }
+    }
+    for (const splitJob of Object.values(splitJobs)) {
+        yield splitJob;
     }
 }
 

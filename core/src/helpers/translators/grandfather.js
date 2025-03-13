@@ -50,7 +50,7 @@ export class Grandfather {
             }
         }
         jobResponse.status = 'done';
-        L10nContext.logger.info(`Grandfathering ${jobRequest.targetLang}... found ${tus.length} missing translations, of which ${jobResponse.tus.length} can be grandfathered`);
+        L10nContext.logger.info(`Grandfathering ${jobRequest.targetLang}... found ${tus.length} missing ${[tus.length, 'translation', 'translations']}, of which ${jobResponse.tus.length} can be grandfathered`);
         return jobResponse;
     }
 

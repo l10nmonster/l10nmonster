@@ -5,7 +5,7 @@ import { L10nContext, TU, utils, consoleLog } from '@l10nmonster/core';
 
 export class tmexport {
     static help = {
-        description: 'export translation memory as a json job.',
+        description: 'DEPRECATED -- export translation memory as a json job.',
         options: [
             [ '-l, --lang <language>', 'target language to export' ],
             [ '--filter <filter>', 'use the specified tu filter' ],
@@ -15,6 +15,7 @@ export class tmexport {
 
     static async action(mm, options) {
         const prjsplit = options.prjsplit;
+        consoleLog`THIS COMMAND IS NOW DEPRECATED -- USE ${'tm syncup'} INSTEAD`;
         consoleLog`Exporting TM for ${options.lang ? options.lang : 'all languages'}...`;
         let tuFilterFunction;
         if (options.filter) {
@@ -31,9 +32,9 @@ export class tmexport {
             const tusByPrj = {};
             const tm = mm.tmm.getTM(sourceLang, targetLang);
             let translationProvider;
-            for (const chunk of tm.getAllCompleteEntries()) {
-                for (const completeEntry of chunk) {
-                    const { jobProps, ...tu } = completeEntry;
+            for (const job of tm.getAllJobs()) {
+                const { jobProps, tus } = job;
+                for (const tu of tus) {
                     jobProps?.translationProvider && (translationProvider = jobProps.translationProvider);
                     tu.translationProvider = translationProvider;
                     if (!tuFilterFunction || tuFilterFunction(tu)) {

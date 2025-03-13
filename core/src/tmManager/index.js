@@ -22,25 +22,20 @@ export default class TMManager {
 
     async #saveTmBlock(tmBlockIterator) {
         const jobs = [];
-        let lastJobGuid;
-        let tuOrder = 0;
-        let tm;
-        for await (const tu of tmBlockIterator) {
-            const { jobProps, ...otherProps } = tu;
-            if (jobProps && lastJobGuid !== jobProps.jobGuid) { // allow jobProps to be defined just in the first row
-                this.#jobDAL.setJob(jobProps);
-                jobs.push(jobProps);
-                lastJobGuid = jobProps.jobGuid;
-                tuOrder = 0;
-                tm = this.getTM(jobProps.sourceLang, jobProps.targetLang);
-                tm.deleteEntriesByJobGuid(lastJobGuid);
-            }
-            tuOrder++;
-            tm.setEntry({
-                ...otherProps,
-                jobGuid: lastJobGuid,
+        const insertJob = this.#db.transaction(job => {
+            const { jobProps, tus } = job;
+            this.#jobDAL.setJob(jobProps);
+            jobs.push(jobProps);
+            const tm = this.getTM(jobProps.sourceLang, jobProps.targetLang);
+            tm.deleteEntriesByJobGuid(jobProps.jobGuid);
+            tus.forEach((tu, tuOrder) => tm.setEntry({
+                ...tu,
+                jobGuid: jobProps.jobGuid,
                 tuOrder,
-            });
+            }));
+        });
+        for await (const job of tmBlockIterator) {
+            insertJob(job);
         }
         return jobs;
     }
@@ -54,7 +49,7 @@ export default class TMManager {
 
     constructor() {
         this.#db = new Database(path.join(L10nContext.baseDir, 'l10nmonsterTM.db'));
-        this.#db.pragma('journal_mode = WAL');
+        // this.#db.pragma('journal_mode = WAL');
         const version = this.#db.prepare('select sqlite_version();').pluck().get();
         L10nContext.logger.verbose(`Initialized sqlite version: ${version}`);
         this.#jobDAL = new JobDAL(this.#db);
@@ -109,11 +104,11 @@ export default class TMManager {
             return;
         }
         if (blocksToStore.length > 0) {
-            L10nContext.logger.info(`Storing ${blocksToStore.length} blocks from ${tmStore.id}`);
+            L10nContext.logger.info(`Storing ${blocksToStore.length} ${[blocksToStore.length, 'block', 'blocks']} from ${tmStore.id}`);
             await this.#saveTmBlock(tmStore.getTmBlocks(sourceLang, targetLang, blocksToStore));
         }
         if (jobsToDelete.length > 0) {
-            L10nContext.logger.info(`Deleting ${jobsToDelete.length} jobs`);
+            L10nContext.logger.info(`Deleting ${jobsToDelete.length} ${[jobsToDelete.length, 'job', 'jobs']}`);
             for (const jobGuid of jobsToDelete) {
                 await this.#deleteJobContents(jobGuid);
             }
@@ -149,17 +144,17 @@ export default class TMManager {
         const tm = this.getTM(sourceLang, targetLang);
         await tmStore.getWriter(sourceLang, targetLang, async writeTmBlock => {
             if (blocksToUpdate.length > 0) {
-                L10nContext.logger.info(`Updating ${blocksToUpdate.length} blocks in ${tmStore.id}`);
+                L10nContext.logger.info(`Updating ${blocksToUpdate.length} ${[blocksToUpdate.length, 'block', 'blocks']} in ${tmStore.id}`);
                 for (const [ blockId, jobs ] of blocksToUpdate) {
-                    await writeTmBlock({ blockId }, tm.getCompleteEntriesByJobGuids(jobs));
+                    await writeTmBlock({ blockId }, tm.getJobsByGuids(jobs));
                 }
             }
             if (jobsToUpdate.length > 0) {
-                L10nContext.logger.info(`Syncing ${jobsToUpdate.length} jobs to ${tmStore.id}`);
+                L10nContext.logger.info(`Syncing ${jobsToUpdate.length} ${[jobsToUpdate.length, 'job', 'jobs']} to ${tmStore.id}`);
                 if (tmStore.partitioning === 'job') {
                     for (const jobGuid of jobsToUpdate) {
                         const job = this.#jobDAL.getJob(jobGuid);
-                        await writeTmBlock({ translationProvider: job.translationProvider, blockId: jobGuid}, [ tm.getCompleteEntriesByJobGuid(jobGuid) ]);
+                        await writeTmBlock({ translationProvider: job.translationProvider, blockId: jobGuid}, [ tm.getJobByGuid(jobGuid) ]);
                     }
                 } else if (tmStore.partitioning === 'provider') {
                     const jobsByProvider = {};
@@ -169,10 +164,10 @@ export default class TMManager {
                         jobsByProvider[job.translationProvider].push(job.jobGuid);
                     }
                     for (const jobs of Object.values(jobsByProvider)) {
-                        await writeTmBlock({ translationProvider: jobs[0].translationProvider, blockId: this.#generateGuid() }, tm.getCompleteEntriesByJobGuids(jobs));
+                        await writeTmBlock({ translationProvider: jobs[0].translationProvider, blockId: this.#generateGuid() }, tm.getJobsByGuids(jobs));
                     }
                 } else if (tmStore.partitioning === 'language') {
-                    await writeTmBlock({ blockId: this.#generateGuid() }, tm.getCompleteEntriesByJobGuids(jobsToUpdate));
+                    await writeTmBlock({ blockId: this.#generateGuid() }, tm.getJobsByGuids(jobsToUpdate));
                 }
             }
         });
@@ -234,7 +229,7 @@ export default class TMManager {
         }
     }
 
-    async deleteJobRequest(jobGuid) {
+    async deleteJob(jobGuid) {
         await this.#deleteJobContents(jobGuid);
     }
 

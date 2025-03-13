@@ -32,8 +32,8 @@ export async function analyzeCmd(mm, analyzer, params, limitToLang, tuFilter) {
         for (const [sourceLang, targetLang] of availableLangPairs) {
                 (!hasAggregateAnalysis || !analyzer) && (analyzer = new Analyzer(...params));
             const tm = mm.tmm.getTM(sourceLang, targetLang);
-            for (const chunk of tm.getAllCompleteEntries()) {
-                for (const tu of chunk) {
+            for (const job of tm.getAllJobs()) {
+                for (const tu of job.tus) {
                     (!tuFilterFunction || tuFilterFunction(tu)) && analyzer.processTU({ targetLang, tu });
                 }
             }

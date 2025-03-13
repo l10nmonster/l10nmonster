@@ -50,7 +50,7 @@ export class job {
         } else if (op === 'delete') {
             consoleLog`Deleting job ${jobGuid}...`;
             try {
-                await monsterManager.tmm.deleteJobRequest(jobGuid);
+                await monsterManager.tmm.deleteJob(jobGuid);
             } catch (e) {
                 console.error(`Failed to delete job: ${e.stack ?? e}`);
             }

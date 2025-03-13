@@ -10,6 +10,14 @@ const levelColors = {
     verbose: ['gray', 'dim', 'italic'],
 }
 
+function dealWithPlurals(x, styled = false) {
+    if (Array.isArray(x)) {
+        const formToUse = x[0] === 1 ? x[1] : x[2];
+        return styled ? (styleText('green', formToUse)) : formToUse;
+    }
+    return styled ? styleText('red', String(x)) : String(x);
+}
+
 const consoleTransport = new winston.transports.Console({
     format: winston.format.combine(
         winston.format.ms(),
@@ -18,7 +26,7 @@ const consoleTransport = new winston.transports.Console({
             const time = String(timestamp).substring(11, 23);
             const rss = Math.round(process.memoryUsage().rss / 1024 / 1024);
             const heap = Math.round(process.memoryUsage().heapUsed / 1024 / 1024);
-            return styleText(levelColors[level] ?? 'magenta', `${time} (${ms}) [${rss}MB/${heap}MB] ${level}: ${typeof message === 'string' ? message : inspect(message)}`);
+            return styleText(levelColors[level] ?? 'magenta', `${time} (${ms}) [${rss}MB/${heap}MB] ${level}: ${typeof message === 'string' ? dealWithPlurals(message) : inspect(message)}`);
         }),
     ),
 });
@@ -45,18 +53,11 @@ export class L10nContext {
 }
 // logInfo`this is the error: ${message}`
 
-function dealWithPlurals(x) {
-    if (Array.isArray(x)) {
-        return styleText('green', x[0] === 1 ? x[1] : x[2]);
-    }
-    return styleText('red', String(x));
-}
-
 export const consoleLog = (strings, ...values) => {
     const out = [];
     strings.forEach(str => {
         out.push(styleText('green', str));
-        values.length > 0 && out.push(dealWithPlurals(values.shift()));
+        values.length > 0 && out.push(dealWithPlurals(values.shift(), true));
     });
     console.log(out.join(''));
 };

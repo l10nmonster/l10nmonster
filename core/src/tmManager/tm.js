@@ -24,22 +24,23 @@ export class TM {
         return this.#tuDal.getEntriesByJobGuid(jobGuid);
     }
 
-    getCompleteEntriesByJobGuid(jobGuid) {
-        const entries = this.#tuDal.getEntriesByJobGuid(jobGuid);
-        entries[0] && (entries[0].jobProps = this.#jobDAL.getJob(jobGuid));
-        return entries;
+    getJobByGuid(jobGuid) {
+        return {
+            jobProps: this.#jobDAL.getJob(jobGuid),
+            tus: this.#tuDal.getEntriesByJobGuid(jobGuid),
+        };
     }
 
-    *getCompleteEntriesByJobGuids(jobGuids) {
+    *getJobsByGuids(jobGuids) {
         for (const jobGuid of jobGuids) {
-            yield this.getCompleteEntriesByJobGuid(jobGuid);
+            yield this.getJobByGuid(jobGuid);
         }
     }
 
-    *getAllCompleteEntries() {
+    *getAllJobs() {
         const allJobs = this.#jobDAL.getJobStatusByLangPair(this.sourceLang, this.targetLang).map(e => e[0]);
         for (const jobGuid of allJobs) {
-            yield this.getCompleteEntriesByJobGuid(jobGuid);
+            yield this.getJobByGuid(jobGuid);
         }
     }
 

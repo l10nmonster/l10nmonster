@@ -94,16 +94,25 @@ export class BaseJsonlTmStore {
                     crlfDelay: Infinity,
                     terminal: false,
                 });
+
+                let currentJob;
                 for await (const line of rl) {
                     const row = JSON.parse(line);
                     const { nsrc, ntgt, notes, tuProps, jobProps, ...otherProps } = row;
+                    if (jobProps) {
+                        if (currentJob) {
+                            yield currentJob;
+                        }
+                        currentJob = { jobProps: JSON.parse(jobProps), tus: [] };
+                    }
                     nsrc && (otherProps.nsrc = JSON.parse(nsrc));
                     ntgt && (otherProps.ntgt = JSON.parse(ntgt));
                     notes && (otherProps.notes = JSON.parse(notes));
-                    jobProps && (otherProps.jobProps = JSON.parse(jobProps));
                     const expandedTuProps = tuProps ? JSON.parse(tuProps) : {};
-                    yield { ...otherProps, ...expandedTuProps };
+                    currentJob.tus.push({ ...otherProps, ...expandedTuProps });
                 }
+                yield currentJob;
+                rl.close();
             } else {
                 L10nContext.logger.info(`Block not found: ${blockId}`);
             }
@@ -156,17 +165,14 @@ export class BaseJsonlTmStore {
         const toc = await this.getTOC(sourceLang, targetLang);
         await cb(async ({ translationProvider, blockId }, tmBlockIterator) => {
             const jobs = [];
-            let lastJobGuid;
             if (tmBlockIterator) {
                 const generator = async function *jsonlGenerator () {
-                    for await (const chunk of tmBlockIterator) {
+                    for await (const job of tmBlockIterator) {
+                        const { jobProps, tus } = job;
+                        jobs.push([ jobProps.jobGuid, jobProps.updatedAt ]);
                         const out = [];
-                        for (const tu of chunk) {
-                            const { guid, jobGuid, rid, sid, nsrc, ntgt, notes, q, ts, jobProps, ...tuProps } = tu;
-                            if (jobProps?.jobGuid && jobProps.jobGuid !== lastJobGuid) {
-                                jobs.push([ jobProps.jobGuid, jobProps.updatedAt ]);
-                                lastJobGuid = jobProps.jobGuid;
-                            }
+                        for (const tu of tus) {
+                            const { guid, jobGuid, rid, sid, nsrc, ntgt, notes, q, ts, ...tuProps } = tu;
                             const row = { guid, jobGuid, rid, sid, q, ts };
                             nsrc && (row.nsrc = JSON.stringify(nsrc));
                             ntgt && (row.ntgt = JSON.stringify(ntgt));

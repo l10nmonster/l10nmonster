@@ -3,26 +3,6 @@
 	"targetLang": "piggy",
 	"tus": [
 		{
-			"sid": "base",
-			"guid": "w0UxEP41XoniWJO96xoPAV78tzMHe-mppZGKdvLInIU",
-			"nsrc": [
-				"Base: ",
-				{
-					"t": "bx",
-					"v": "<strike>"
-				},
-				{
-					"t": "x",
-					"v": "%1$s"
-				},
-				{
-					"t": "ex",
-					"v": "</strike>"
-				}
-			],
-			"rid": "app/src/main/res/values/strings.xml"
-		},
-		{
 			"sid": "winter",
 			"guid": "Mi8CGeTkNxfnO-OshrNPE4_FrkVbQajzADA09g5O2Zk",
 			"nsrc": [
