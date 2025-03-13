@@ -43,7 +43,7 @@ export class job {
             consoleLog`Pushing job ${jobGuid}...`;
             try {
                 const pushResponse = await monsterManager.jobPush(jobGuid);
-                consoleLog`${pushResponse.num.toLocaleString()} translations units requested -> status: ${pushResponse.status}`;
+                consoleLog`${pushResponse.num.toLocaleString()} translation ${[pushResponse.num, 'unit', 'units']} requested -> status: ${pushResponse.status}`;
             } catch (e) {
                 console.error(`Failed to push job: ${e.stack ?? e}`);
             }

@@ -38,7 +38,7 @@ export class monster {
             consoleLog`  - ${sourceLang} / ${targetLang}`;
             const tmStats = tm.getStats();
             for (const stats of tmStats) {
-                consoleLog`      * ${stats.translationProvider}(${stats.status}): ${stats.jobCount.toLocaleString()} jobs, ${stats.tuCount.toLocaleString()} tus, ${stats.distinctGuids.toLocaleString()} guids`;
+                consoleLog`      * ${stats.translationProvider}(${stats.status}): ${stats.jobCount.toLocaleString()} ${[stats.jobCount, 'job', 'jobs']}, ${stats.tuCount.toLocaleString()} ${[stats.tuCount, 'tu', 'tus']}, ${stats.distinctGuids.toLocaleString()} ${[stats.distinctGuids, 'guid', 'guids']}`;
             }
         }
         console.timeEnd('Initialization time');

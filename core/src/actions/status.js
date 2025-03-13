@@ -42,7 +42,8 @@ export class status {
         if (output) {
             writeFileSync(output, JSON.stringify(status, null, '\t'), 'utf8');
         } else {
-            consoleLog`${status.numSources.toLocaleString()} translatable resources`;
+            const numLangs = Object.keys(status.lang).length;
+            consoleLog`${status.numSources.toLocaleString()} translatable ${[status.numSources, 'resource', 'resources']} in ${numLangs} ${[numLangs, 'language', 'languages']}`;
             for (const [lang, langStatus] of Object.entries(status.lang)) {
                 consoleLog`\nLanguage ${lang} (minimum quality: ${langStatus.leverage.minimumQuality})`;
                 const totals = {};

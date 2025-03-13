@@ -45,11 +45,18 @@ export class L10nContext {
 }
 // logInfo`this is the error: ${message}`
 
+function dealWithPlurals(x) {
+    if (Array.isArray(x)) {
+        return styleText('green', x[0] === 1 ? x[1] : x[2]);
+    }
+    return styleText('red', String(x));
+}
+
 export const consoleLog = (strings, ...values) => {
     const out = [];
     strings.forEach(str => {
         out.push(styleText('green', str));
-        values.length > 0 && out.push(styleText('red', String(values.shift())));
+        values.length > 0 && out.push(dealWithPlurals(values.shift()));
     });
     console.log(out.join(''));
 };
