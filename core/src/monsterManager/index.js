@@ -73,6 +73,7 @@ export class MonsterManager {
         typeof this.rm.init === 'function' && await this.rm.init(this);
         typeof this.tmm.init === 'function' && await this.tmm.init(this);
         typeof this.monsterConfig.init === 'function' && await this.monsterConfig.init(this);
+        L10nContext.logger.verbose(`MonsterManager initialized!`);
     }
 
     // register an async function to be called during shutdown

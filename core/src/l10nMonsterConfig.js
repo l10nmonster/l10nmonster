@@ -408,7 +408,6 @@ export class L10nMonsterConfig {
         try {
             const mm = new MonsterManager(this);
             await mm.init();
-            L10nContext.logger.verbose(`L10n Monster factory-initialized!`);
             const createHandler = action => (opts => action(mm, { ...globalOptions, ...opts}));
             const flattenedActions = [];
             for (const action of this.actions) {
@@ -418,7 +417,7 @@ export class L10nMonsterConfig {
                     flattenedActions.push([ action.name, createHandler(action.action) ]);
                 }
             }
-            L10nContext.logger.verbose(`L10n Monster actions: ${flattenedActions.map(e => e[0]).join(', ')}`);
+            L10nContext.logger.verbose(`Registered actions: ${flattenedActions.map(e => e[0]).join(', ')}`);
             const l10n = Object.fromEntries(flattenedActions);
             let response;
             try {

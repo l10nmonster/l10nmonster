@@ -82,7 +82,7 @@ export class LegacyFileBasedTmStore {
                 } catch (e) {
                     L10nContext.logger.verbose(`No job request found for job: ${blockName}`);
                 }
-            }),
+            })(),
             (async () => {
                 try {
                     return JSON.parse(await this.delegate.getFile(`${blockName}-done.json`));
@@ -95,7 +95,7 @@ export class LegacyFileBasedTmStore {
                         L10nContext.logger.verbose(`No job response found for job: ${blockName}`);
                     }
                 }
-            }),
+            })(),
         ]);
         yield* utils.getIteratorFromJobPair(jobRequest, jobResponse);
     }
