@@ -3,12 +3,23 @@ import * as winston from 'winston';
 import { OpsMgr } from './opsMgr.js';
 
 const logLevels = ['error', 'warn', 'info', 'verbose'];
+const levelColors = {
+    error: 'red',
+    warn: 'yellow',
+    info: ['gray', 'bold', 'italic'],
+    verbose: ['gray', 'dim', 'italic'],
+}
 
 const consoleTransport = new winston.transports.Console({
     format: winston.format.combine(
         winston.format.ms(),
         winston.format.timestamp(),
-        winston.format.printf(({ level, message, timestamp, ms }) => styleText(['reset', 'dim'], `${String(timestamp).substring(11, 23)} (${ms}) [${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB] ${level}: ${typeof message === 'string' ? message : inspect(message)}`))
+        winston.format.printf(({ level, message, timestamp, ms }) => {
+            const time = String(timestamp).substring(11, 23);
+            const rss = Math.round(process.memoryUsage().rss / 1024 / 1024);
+            const heap = Math.round(process.memoryUsage().heapUsed / 1024 / 1024);
+            return styleText(levelColors[level] ?? 'magenta', `${time} (${ms}) [${rss}MB/${heap}MB] ${level}: ${typeof message === 'string' ? message : inspect(message)}`);
+        }),
     ),
 });
 
@@ -37,8 +48,8 @@ export class L10nContext {
 export const consoleLog = (strings, ...values) => {
     const out = [];
     strings.forEach(str => {
-        out.push(styleText('magenta', str));
-        values.length > 0 && out.push(styleText('magentaBright', String(values.shift())));
+        out.push(styleText('green', str));
+        values.length > 0 && out.push(styleText('red', String(values.shift())));
     });
     console.log(out.join(''));
 };
