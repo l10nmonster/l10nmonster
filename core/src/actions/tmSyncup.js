@@ -15,6 +15,7 @@ export class tm_syncup {
     };
 
     static async action(monsterManager, options) {
+        consoleLog`Figuring out what needs to be synced up...`;
         const tmStore = await monsterManager.getTmStore(options.tmStore);
         const syncUpPair = async (srcLang, tgtLang) => {
             const syncUpStats = await monsterManager.tmm.prepareSyncUp(tmStore, srcLang, tgtLang, {
@@ -27,11 +28,11 @@ export class tm_syncup {
                 consoleLog`Syncing up ${srcLang} -> ${tgtLang} to ${tmStore.id} store...`;
             }
             if (syncUpStats.blocksToUpdate.length > 0) {
-                consoleLog`${syncUpStats.blocksToUpdate.length} blocks to update:`;
+                consoleLog`${syncUpStats.blocksToUpdate.length} ${[syncUpStats.blocksToUpdate.length, 'block', 'blocks']} to update:`;
                 syncUpStats.blocksToUpdate.forEach(([ block, modifiedStore, modifiedCache ]) => consoleLog`  ${block} (modified: ${modifiedStore} vs ${modifiedCache})`);
             }
             if (syncUpStats.jobsToUpdate.length > 0) {
-                consoleLog`${syncUpStats.jobsToUpdate.length} jobs to store:`;
+                consoleLog`${syncUpStats.jobsToUpdate.length} ${[syncUpStats.jobsToUpdate.length, 'job', 'jobs']} to store:`;
                 consoleLog`  ${syncUpStats.jobsToUpdate.join(', ')}`;
             }
             if (!options.dryrun) {

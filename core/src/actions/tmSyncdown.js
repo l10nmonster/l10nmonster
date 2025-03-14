@@ -15,6 +15,7 @@ export class tm_syncdown {
     };
 
     static async action(monsterManager, options) {
+        consoleLog`Figuring out what needs to be synced down...`;
         const tmStore = await monsterManager.getTmStore(options.tmStore);
         const syncDownPair = async (srcLang, tgtLang) => {
             const syncDownStats = await monsterManager.tmm.prepareSyncDown(tmStore, srcLang, tgtLang);
@@ -25,13 +26,13 @@ export class tm_syncdown {
                 consoleLog`Syncing down ${srcLang} -> ${tgtLang} from ${tmStore.id} store...`;
             }
             if (syncDownStats.blocksToStore.length > 0) {
-                consoleLog`${syncDownStats.blocksToStore.length} blocks to store: ${syncDownStats.blocksToStore.join(', ')}`;
+                consoleLog`${syncDownStats.blocksToStore.length} ${[syncDownStats.blocksToStore.length, 'block', 'blocks']} to store: ${syncDownStats.blocksToStore.join(', ')}`;
             }
             if (syncDownStats.jobsToDelete.length > 0) {
                 if (options.delete) {
-                    consoleLog`${syncDownStats.jobsToDelete.length} local jobs to delete: ${syncDownStats.jobsToDelete.join(', ')}`;
+                    consoleLog`${syncDownStats.jobsToDelete.length} local ${[syncDownStats.jobsToDelete.length, 'job', 'jobs']} to delete: ${syncDownStats.jobsToDelete.join(', ')}`;
                 } else {
-                    consoleLog`${syncDownStats.jobsToDelete.length} local jobs do not exist in the remote TM Store. Use --delete option to delete them.`;
+                    consoleLog`${syncDownStats.jobsToDelete.length} local ${[syncDownStats.jobsToDelete.length, 'job', 'jobs']} do not exist in the remote TM Store. Use --delete option to delete them.`;
                     syncDownStats.jobsToDelete = [];
                 }
             }

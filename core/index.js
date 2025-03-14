@@ -42,7 +42,7 @@
  * @property {function(): {}} getAllResources - Retrieves all resources.
  */
 
-export { L10nContext, consoleLog } from './src/l10nContext.js';
+export { L10nContext, consoleLog, logError, logWarn, logInfo, logVerbose } from './src/l10nContext.js';
 export { TU } from './src/entities/tu.js';
 export { L10nMonsterConfig, ChannelConfig, ResourceFormatConfig, MessageFormatConfig } from './src/l10nMonsterConfig.js';
 export { MonsterManager } from './src/monsterManager/index.js';

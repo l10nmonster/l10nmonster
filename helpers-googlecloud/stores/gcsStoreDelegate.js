@@ -1,5 +1,4 @@
 import { pipeline } from 'node:stream/promises';
-import { Readable } from 'node:stream';
 import { Storage } from '@google-cloud/storage';
 import { L10nContext } from '@l10nmonster/core';
 
@@ -39,10 +38,9 @@ export class GCSStoreDelegate {
         await file.save(contents);
     }
 
-    async saveStream(filename, generator) {
+    async saveStream(filename, readable) {
         Array.isArray(filename) && (filename = filename.join('/'));
         this.bucket || (this.bucket = await this.storage.bucket(this.bucketName));
-        const readable = Readable.from(generator());
         const file = this.bucket.file(`${this.bucketPrefix}/${filename}`);
         await pipeline(readable, file.createWriteStream());
         return L10nContext.regression ? 'TS1' : filename.generation;

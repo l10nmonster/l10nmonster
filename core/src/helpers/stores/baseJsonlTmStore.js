@@ -1,9 +1,11 @@
 import readline from 'node:readline/promises';
+import { Readable } from 'node:stream';
+import zlib from 'node:zlib';
 
 import { L10nContext } from '@l10nmonster/core';
 
-const providerFilenameRegex = /blocks\/sl=(?<sourceLang>[^/]+)\/tl=(?<targetLang>[^/]+)\/tp=(?<translationProvider>[^/]+)\/block_(?<blockId>[0-9A-Za-z_-]+)\.jsonl$/;
-const languageFilenameRegex = /blocks\/sl=(?<sourceLang>[^/]+)\/tl=(?<targetLang>[^/]+)\/block_(?<blockId>[0-9A-Za-z_-]+)\.jsonl$/;
+const providerFilenameRegex = /blocks\/sl=(?<sourceLang>[^/]+)\/tl=(?<targetLang>[^/]+)\/tp=(?<translationProvider>[^/]+)\/block_(?<blockId>[0-9A-Za-z_-]+)\.jsonl/;
+const languageFilenameRegex = /blocks\/sl=(?<sourceLang>[^/]+)\/tl=(?<targetLang>[^/]+)\/block_(?<blockId>[0-9A-Za-z_-]+)\.jsonl/;
 
 /**
  * New TM Store using a single job file, streaming read/writes and JSONL format.
@@ -16,6 +18,8 @@ export class BaseJsonlTmStore {
     id;
     access = 'readwrite';
     partitioning = 'job';
+    #compressStreams = false;
+    #compressionSuffix = '';
 
     /**
      * Creates a BaseJsonlTmStore instance
@@ -24,9 +28,10 @@ export class BaseJsonlTmStore {
      * @param {string} options.id - The logical id of the instance
      * @param {string} options.access? - The store access permissions (readwrite/readonly/writeonly)
      * @param {string} options.partitioning? - Partitioning strategy for TM Blocks
+     * @param {boolean} options.compressStreams? - Use Brotli compression
      * @throws {Error} If no delegate is provided or invalid partitioning is specified
      */
-    constructor(delegate, { id, partitioning, access }) {
+    constructor(delegate, { id, partitioning, access, compressStreams }) {
         if (!delegate || !id) {
             throw new Error('A delegate and a id are required to instantiate a LegacyFileBasedTmStore');
         }
@@ -46,13 +51,17 @@ export class BaseJsonlTmStore {
                 this.access = access;
             }
         }
+        if (compressStreams) {
+            this.#compressStreams = compressStreams;
+            this.#compressionSuffix = '.br';
+        }
     }
 
     #getTmBlockName(blockProperties) {
         if (this.partitioning === 'language') {
-            return `blocks/sl=${blockProperties.sourceLang}/tl=${blockProperties.targetLang}/block_${blockProperties.blockId}.jsonl`;
+            return `blocks/sl=${blockProperties.sourceLang}/tl=${blockProperties.targetLang}/block_${blockProperties.blockId}.jsonl${this.#compressionSuffix}`;
         }
-        return `blocks/sl=${blockProperties.sourceLang}/tl=${blockProperties.targetLang}/tp=${blockProperties.translationProvider}/block_${blockProperties.blockId}.jsonl`;
+        return `blocks/sl=${blockProperties.sourceLang}/tl=${blockProperties.targetLang}/tp=${blockProperties.translationProvider}/block_${blockProperties.blockId}.jsonl${this.#compressionSuffix}`;
     }
 
     #getGroups(fileName) {
@@ -88,7 +97,10 @@ export class BaseJsonlTmStore {
         for (const blockId of blockIds) {
             const blockName = toc.blocks[blockId]?.blockName;
             if (blockName) {
-                const reader = await this.delegate.getStream(blockName);
+                let reader = await this.delegate.getStream(blockName);
+                if (this.#compressStreams) {
+                    reader = reader.pipe(zlib.createBrotliDecompress());
+                }
                 const rl = readline.createInterface({
                     input: reader,
                     crlfDelay: Infinity,
@@ -186,7 +198,18 @@ export class BaseJsonlTmStore {
                     }
                 };
                 const blockName = this.#getTmBlockName({ sourceLang, targetLang, translationProvider, blockId });
-                const modified = await this.delegate.saveStream(blockName, generator);
+                let readable = Readable.from(generator());
+
+                if (this.#compressStreams) {
+                    const brotli = zlib.createBrotliCompress({
+                        params: {
+                            [zlib.constants.BROTLI_PARAM_QUALITY]: 11, // Quality level: 0 (fastest) to 11 (best compression)
+                            [zlib.constants.BROTLI_PARAM_MODE]: zlib.constants.BROTLI_MODE_TEXT // Compression mode (text or binary)
+                        }
+                    });
+                    readable = readable.pipe(brotli);
+                }
+                const modified = await this.delegate.saveStream(blockName, readable);
                 toc.blocks[blockId] = { blockName, modified, jobs };
             } else {
                 const blockName = toc.blocks[blockId]?.blockName;

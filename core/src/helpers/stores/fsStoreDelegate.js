@@ -1,7 +1,6 @@
 import path from 'path';
 import { mkdirSync, readdirSync, statSync, readFileSync, writeFileSync, unlinkSync, createReadStream, createWriteStream } from 'node:fs';
 import { pipeline } from 'node:stream/promises';
-import { Readable } from 'node:stream';
 import { L10nContext } from '@l10nmonster/core';
 
 export class FsStoreDelegate {
@@ -42,16 +41,14 @@ export class FsStoreDelegate {
         return L10nContext.regression ? 'TS1' : `TS${stats.mtimeMs}`;
     }
 
-    async saveStream(filename, generator) {
+    async saveStream(filename, readable) {
         Array.isArray(filename) && (filename = path.join(...filename));
         const dir = path.dirname(path.join(this.baseDir, filename));
         mkdirSync(dir, { recursive: true });
         const pathName = path.join(this.baseDir, filename);
 
-        const readable = Readable.from(generator());
         const writable = createWriteStream(pathName);
         await pipeline(readable, writable);
-
         const stats = statSync(pathName);
         return L10nContext.regression ? 'TS1' : `TS${stats.mtimeMs}`;
     }
