@@ -7,7 +7,7 @@ export class MySource {
     }
 
     #mapSegments(rows) {
-        return rows.map(entry => {
+        return rows.filter(str => str.includes('=')).map(entry => {
             const e = entry.split('=');
             return {
                 sid: e[0],

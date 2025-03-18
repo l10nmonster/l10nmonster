@@ -21,7 +21,7 @@ export const iosChannel = new ChannelConfig('ios', import.meta.dirname)
     .textEncoders([ normalizers.gatedEncoder(xml.entityEncoder, 'xmlEntityDecoder') ])
     .target(new adapters.FsTarget({
         targetPath: (lang, resourceId) => resourceId.replace('en.lproj/', `${lang}.lproj/`),
-}));
+    }));
 
 export default new L10nMonsterConfig(import.meta.dirname)
     .basicProperties({
@@ -35,6 +35,11 @@ export default new L10nMonsterConfig(import.meta.dirname)
     })
     .channel(iosChannel)
     .translators({
+        Grandfather: {
+            translator: new translators.Grandfather({
+                quality: 70,
+            }),
+        },
         BritishTranslator: {
             translator: new translators.VariantGenerator({
                 dict: JSON.parse(fs.readFileSync(path.join(import.meta.dirname, 'dict.json'), 'utf-8')),
@@ -102,9 +107,6 @@ export default new L10nMonsterConfig(import.meta.dirname)
         },
     })
     .operations({
-        snapStore: new stores.FsSnapStore({
-            snapDir: 'snap',
-        }),
         tuFilters: {
             initial: tu => tu.sid.indexOf(L10nContext.arg) === 0,
         },
@@ -114,22 +116,23 @@ export default new L10nMonsterConfig(import.meta.dirname)
         id: 'primary',
         jobsDir: 'tmStore',
         partitioning: 'language',
+        compressStreams: true,
     }))
     .action(class mystats {
-            static help = {
-                description: 'just a demo of how to create your own commands',
-                options: [
-                    [ '-l, --lang <language>', 'restrict to language' ]
-                ],
-            };
+        static help = {
+            description: 'just a demo of how to create your own commands',
+            options: [
+                [ '-l, --lang <language>', 'restrict to language' ]
+            ],
+        };
 
-            static async action(mm, options) {
-                const targetLangs = mm.getTargetLangs(options.lang);
-                for (const targetLang of targetLangs) {
-                    const stats = {};
-                    const allJobs = await mm.tmm.getJobStatusByLangPair(mm.sourceLang, targetLang);
-                    allJobs.forEach(entry => stats[entry[1]] = (stats[entry[1].status] ?? 0) + 1);
-                    console.log(`Target language ${targetLang}: ${stats.done ?? 0} done ${stats.pending ?? 0} pending ${stats.req ?? 0} req`);
-                }
+        static async action(mm, options) {
+            const targetLangs = mm.getTargetLangs(options.lang);
+            for (const targetLang of targetLangs) {
+                const stats = {};
+                const allJobs = await mm.tmm.getJobStatusByLangPair(mm.sourceLang, targetLang);
+                allJobs.forEach(entry => stats[entry[1]] = (stats[entry[1].status] ?? 0) + 1);
+                console.log(`Target language ${targetLang}: ${stats.done ?? 0} done ${stats.pending ?? 0} pending ${stats.req ?? 0} req`);
             }
-        });
+        }
+    });

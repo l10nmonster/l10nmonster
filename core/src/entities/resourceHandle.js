@@ -29,7 +29,7 @@ export class ResourceHandle {
 
     async loadResourceFromRaw(rawResource, options) {
         const normalizedResource = await this.#formatHandler.getNormalizedResource(this.id, rawResource, options.isSource);
-        options.keepRaw && (this.raw = rawResource);
+        this.raw = rawResource;
         return this.loadFromNormalizedResource(normalizedResource);
     }
 

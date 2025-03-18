@@ -1,0 +1,265 @@
+import { L10nContext, utils } from '@l10nmonster/core';
+
+export class SourceDAL {
+    #db;
+    #stmt = {}; // prepared statements
+    #flatSrcIdxInitialized = false;
+
+    constructor(db) {
+        this.#db = db;
+        db.exec(`
+CREATE TABLE IF NOT EXISTS resources (
+    channel TEXT NOT NULL,
+    rid TEXT NOT NULL,
+    sourceLang TEXT,
+    targetLangs TEXT,
+    prj TEXT,
+    segments TEXT,
+    subresources TEXT,
+    resourceFormat TEXT,
+    resProps TEXT,
+    raw TEXT,
+    createdAt TEXT,
+    modifiedAt TEXT,
+    active BOOLEAN,
+    PRIMARY KEY (channel, rid)
+);
+CREATE INDEX IF NOT EXISTS idx_resources_rid ON resources (rid);
+CREATE INDEX IF NOT EXISTS idx_resources_active ON resources (active);
+CREATE INDEX IF NOT EXISTS idx_resources_modifiedAt ON resources (modifiedAt);
+CREATE TABLE IF NOT EXISTS segments (
+    guid TEXT NOT NULL,
+    rid TEXT,
+    sid TEXT,
+    nstr TEXT,
+    notes TEXT,
+    mf TEXT,
+    props TEXT,
+    createdAt TEXT,
+    modifiedAt TEXT,
+    PRIMARY KEY (guid)
+);
+`);
+        db.function(
+            'flattenNormalizedSourceToOrdinal',
+            { deterministic: true },
+            nstr => utils.flattenNormalizedSourceToOrdinal(JSON.parse(nstr))
+        );
+    }
+
+    markResourcesAsInactive(channel) {
+        let result;
+        if (channel) {
+            this.#stmt.markResourcesAsInactiveByChannel ??= this.#db.prepare(`UPDATE resources SET active = false WHERE channel = ? AND active = true;`);
+            result = this.#stmt.markResourcesAsInactiveByChannel.run(channel);
+        } else {
+            this.#stmt.markAllResourcesAsInactive ??= this.#db.prepare(`UPDATE resources SET active = false WHERE active = true;`);
+            result = this.#stmt.markAllResourcesAsInactive.run();
+        }
+        return result.changes;
+    }
+
+    saveResource(res) {
+        // all fields are mutable, active is set to true automatically
+        // createdAt is only written on insert
+        // ignore modifiedAt changes if nothing changed
+        this.#stmt.upsertResource ??= this.#db.prepare(`
+INSERT INTO resources (channel, rid, sourceLang, targetLangs, prj, segments, subresources, resourceFormat, resProps, raw, createdAt, modifiedAt)
+VALUES (@channel, @rid, @sourceLang, @targetLangs, @prj, @segments, @subresources, @resourceFormat, @resProps, @raw, @modifiedAt, @modifiedAt)
+ON CONFLICT (channel, rid)
+DO UPDATE SET
+    channel = excluded.channel,
+    rid = excluded.rid,
+    sourceLang = excluded.sourceLang,
+    targetLangs = excluded.targetLangs,
+    prj = excluded.prj,
+    segments = excluded.segments,
+    subresources = excluded.subresources,
+    resourceFormat = excluded.resourceFormat,
+    resProps = excluded.resProps,
+    raw = excluded.raw,
+    modifiedAt = excluded.modifiedAt
+WHERE excluded.sourceLang != resources.sourceLang OR excluded.targetLangs != resources.targetLangs OR excluded.prj != resources.prj
+    OR excluded.segments != resources.segments OR excluded.subresources != resources.subresources
+    OR excluded.resourceFormat != resources.resourceFormat OR excluded.resProps != resources.resProps OR excluded.raw != resources.raw
+`);
+        this.#stmt.markResourceAsActive ??= this.#db.prepare(`UPDATE resources SET active = true WHERE channel = ? AND rid = ?;`);
+        // only notes and mf are mutable
+        // gstr is ignores as it's derived from nstr
+        this.#stmt.upsertSegment ??= this.#db.prepare(`
+INSERT INTO segments (guid, rid, sid, nstr, notes, mf, props, createdAt, modifiedAt)
+VALUES (@guid, @rid, @sid, @nstr, @notes, @mf, @props, @modified, @modified)
+ON CONFLICT (guid)
+DO UPDATE SET
+    notes = excluded.notes,
+    mf = excluded.mf,
+    props = excluded.props,
+    modifiedAt = excluded.modifiedAt
+WHERE excluded.notes != segments.notes OR excluded.mf != segments.mf OR excluded.props != segments.props
+`);
+        const save = this.#db.transaction((res) => {
+            const { channel, id, sourceLang, targetLangs, prj, segments, subresources, resourceFormat, raw, modified, ...resProps } = res;
+            this.#stmt.upsertResource.run({
+                channel,
+                rid: id,
+                sourceLang,
+                targetLangs: targetLangs && JSON.stringify(targetLangs),
+                prj,
+                segments: JSON.stringify(segments.map(s => s.guid)),
+                subresources: subresources && JSON.stringify(subresources),
+                resourceFormat,
+                resProps: resProps && JSON.stringify(resProps),
+                raw,
+                modifiedAt: modified,
+            });
+            this.#stmt.markResourceAsActive.run(channel, id);
+            let changedSegments = 0;
+            for (const segment of segments) {
+                // eslint-disable-next-line no-unused-vars
+                const { guid, sid, nstr, gstr, notes, mf, ...props } = segment;
+                const segmentResult = this.#stmt.upsertSegment.run({
+                    guid,
+                    rid: id,
+                    sid,
+                    nstr: JSON.stringify(nstr),
+                    notes: notes && JSON.stringify(notes),
+                    mf: mf,
+                    props: props && JSON.stringify(props),
+                    modified: modified,
+                });
+                changedSegments += segmentResult.changes;
+            }
+            return changedSegments;
+        });
+        return save(res);
+    }
+
+    getTOC() {
+        this.#stmt.getTOC ??= this.#db.prepare(`
+SELECT
+    channel,
+    rid,
+    sourceLang,
+    targetLangs,
+    prj,
+    subresources,
+    resourceFormat,
+    resProps,
+    modifiedAt
+FROM resources
+WHERE active = true
+ORDER BY channel, rid;
+`);
+        return this.#stmt.getTOC.all().map(res => {
+            const { channel, rid, sourceLang, targetLangs, prj, subresources, resourceFormat, resProps, modifiedAt } = res;
+            const otherProps = resProps ? JSON.parse(resProps) : {};
+            return {
+                channel,
+                id: rid,
+                sourceLang,
+                targetLangs: targetLangs === null ? undefined : JSON.parse(targetLangs),
+                prj: prj === null ? undefined : prj,
+                subresources: subresources === null ? undefined : JSON.parse(subresources),
+                resourceFormat,
+                ...otherProps,
+                modified: modifiedAt,
+            };
+        });
+    }
+
+    *getAllResources(options) {
+        const keepRaw = Boolean(options?.keepRaw);
+        const getResourcesStmt = `getAllResources${keepRaw ? 'WithRaw' : ''}`;
+        this.#stmt[getResourcesStmt] ??= this.#db.prepare(`
+SELECT
+    channel,
+    rid,
+    sourceLang,
+    targetLangs,
+    prj,
+    segments,
+    subresources,
+    resourceFormat,
+    resProps,
+    ${keepRaw ? 'raw,' : ''}
+    modifiedAt
+FROM resources WHERE active = true ORDER BY channel, rid;
+`);
+
+        this.#stmt.getSegmentsFromArray ??= this.#db.prepare(`
+SELECT
+    guid,
+    sid,
+    nstr,
+    notes,
+    mf,
+    props
+FROM JSON_EACH(?) INNER JOIN segments ON value = guid
+ORDER BY key
+;`);
+        for (const resourceRow of this.#stmt[getResourcesStmt].iterate()) {
+            const { channel, rid, sourceLang, targetLangs, prj, segments, subresources, resourceFormat, resProps, raw, modifiedAt } = resourceRow;
+            const otherProps = resProps ? JSON.parse(resProps) : {};
+            const expandedSegments = this.#stmt.getSegmentsFromArray.all(segments).map(segment => {
+                const { guid, sid, nstr, notes, mf, props } = segment;
+                const otherProps = props ? JSON.parse(props) : {};
+                const parsedStr = JSON.parse(nstr);
+                const gstr = utils.flattenNormalizedSourceToOrdinal(parsedStr);
+                return {
+                    guid,
+                    rid,
+                    sid,
+                    nstr: parsedStr,
+                    gstr,
+                    notes: notes === null ? undefined : JSON.parse(notes),
+                    mf,
+                    ...otherProps,
+                };
+             });
+            yield {
+                channel,
+                id: rid,
+                sourceLang,
+                targetLangs: targetLangs === null ? undefined : JSON.parse(targetLangs),
+                prj: prj === null ? undefined : prj,
+                segments: expandedSegments,
+                subresources: subresources === null ? undefined : JSON.parse(subresources),
+                resourceFormat,
+                ...otherProps,
+                raw,
+                modified: modifiedAt,
+            };
+        }
+    }
+
+    searchString(str) {
+        this.#stmt.createFlatSrcIdx ??= this.#db.prepare(`CREATE INDEX IF NOT EXISTS idx_segments_flatSrc ON segments (flattenNormalizedSourceToOrdinal(nstr));`);
+        this.#stmt.searchString ??= this.#db.prepare(`SELECT guid, nstr FROM segments WHERE flattenNormalizedSourceToOrdinal(nstr) like '%?%';`);
+        // try to delay creating the index until it is actually needed
+        if (!this.#flatSrcIdxInitialized) {
+            L10nContext.logger.verbose(`Creating FlatSrcIdx for source segments...`);
+            this.#stmt.createFlatSrcIdx.run();
+            this.#flatSrcIdxInitialized = true;
+        }
+        const flattenedString = utils.flattenNormalizedSourceToOrdinal(str);
+        const tuRows = this.#stmt.searchString.all(flattenedString);
+        return tuRows.map(({ nstr, ...otherProps }) => ({
+            nstr: nstr ? JSON.parse(nstr) : undefined,
+            ...otherProps,
+        }));
+    }
+
+    getStats() {
+        this.#stmt.getStats ??= this.#db.prepare(`
+SELECT
+    channel,
+    prj,
+    resourceFormat,
+    COUNT(*) AS resCount
+FROM resources
+GROUP BY 1, 2, 3
+ORDER BY 4 DESC;
+`);
+        return this.#stmt.getStats.all();
+    }
+}

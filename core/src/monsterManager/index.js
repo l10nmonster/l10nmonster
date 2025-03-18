@@ -1,8 +1,8 @@
 import * as path from 'path';
 import { L10nContext, TU, utils, analyzers } from '@l10nmonster/core';
+import DALManager from '../DAL/index.js';
 import TMManager from '../tmManager/index.js';
-import ResourceManager from '../resourceManager.js';
-import { snapCmd } from './snap.js';
+import ResourceManager from '../resourceManager/index.js';
 import { statusCmd } from './status.js';
 import { pushCmd } from './push.js';
 import { jobsCmd } from './jobs.js';
@@ -15,6 +15,7 @@ const spaceRegex = /\s+/g;
 export class MonsterManager {
     #targetLangs;
     #targetLangSets = {};
+    #dalManager;
     #tmStores = {};
     #functionsForShutdown = [];
 
@@ -34,27 +35,26 @@ export class MonsterManager {
         }
         this.minimumQuality = monsterConfig.minimumQuality;
 
+        this.#dalManager = new DALManager();
+
         let channels;
         if (typeof monsterConfig.channels === 'object') {
             channels = Object.fromEntries(Object.entries(monsterConfig.channels).map(([id, channel]) => [ id, channel.createChannel() ]));
         }
-        this.rm = new ResourceManager({
-            channels,
-            snapStore: monsterConfig.snapStore,
-        });
+        this.rm = new ResourceManager(this.#dalManager, { channels, autoSnap: monsterConfig.autoSnap });
 
         this.translationProviders = monsterConfig.translationProviders;
         monsterConfig.tmStores && (this.#tmStores = monsterConfig.tmStores);
 
         monsterConfig.opsDir && L10nContext.opsMgr.setOpsDir(path.join(L10nContext.baseDir, monsterConfig.opsDir));
-        this.tmm = new TMManager();
+        this.tmm = new TMManager(this.#dalManager);
 
         this.tuFilters = monsterConfig.tuFilters;
         this.analyzers = { ...analyzers, ...monsterConfig.analyzers };
 
         // generated info
         this.capabilitiesByChannel = Object.fromEntries(Object.entries(monsterConfig.channels).map(([type, channel]) => [ type, {
-            snap: Boolean(channel.source && monsterConfig.snapStore),
+            snap: Boolean(channel.source),
             status: Boolean(channel.source),
             push: Boolean(channel.source && Object.keys(this.translationProviders).length > 0),
             pull: Boolean(Object.keys(this.translationProviders).length > 0),
@@ -64,14 +64,15 @@ export class MonsterManager {
     }
 
     async init() {
+        await this.#dalManager.init(this);
         for (const tmStore of Object.values(this.#tmStores)) {
             typeof tmStore.init === 'function' && await tmStore.init(this);
         }
         for (const tp of Object.values(this.translationProviders)) {
             typeof tp.translator.init === 'function' && await tp.translator.init(this);
         }
-        typeof this.rm.init === 'function' && await this.rm.init(this);
-        typeof this.tmm.init === 'function' && await this.tmm.init(this);
+        await this.tmm.init(this);
+        await this.rm.init(this);
         typeof this.monsterConfig.init === 'function' && await this.monsterConfig.init(this);
         L10nContext.logger.verbose(`MonsterManager initialized!`);
     }
@@ -84,10 +85,6 @@ export class MonsterManager {
      // expose L10nContext
     get l10nContext() {
         return L10nContext;
-    }
-
-    async snap(options) {
-        return await snapCmd(this, options);
     }
 
     async status(options) {
@@ -203,7 +200,9 @@ export class MonsterManager {
                     const isCompatible = utils.sourceAndTargetAreCompatible(tu?.nsrc, tmEntry?.ntgt);
                     if (!tmEntry || (!tmEntry.inflight && (!isCompatible || tmEntry.q < minimumQuality))) {
                         // if the same src is in flight already, mark it as an internal repetition
-                        tm.getExactMatches(tu.nsrc).filter(tu => tu.q >= minimumQuality).length > 0 && (repetitionMap[seg.gstr] = true);
+                        if (tm.getExactMatches(tu.nsrc).some(tu => tu.q >= minimumQuality || tu.inflight)) {
+                            repetitionMap[seg.gstr] = true;
+                        }
                         if (repetitionMap[seg.gstr]) {
                             leverageDetails.internalRepetitions++;
                             leverageDetails.internalRepetitionWords += words;

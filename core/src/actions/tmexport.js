@@ -15,7 +15,7 @@ export class tmexport {
 
     static async action(mm, options) {
         const prjsplit = options.prjsplit;
-        consoleLog`THIS COMMAND IS NOW DEPRECATED -- USE ${'tm syncup'} INSTEAD`;
+        consoleLog`TMEXPORT IS NOW DEPRECATED -- USE ${'tm syncup'} INSTEAD`;
         consoleLog`Exporting TM for ${options.lang ? options.lang : 'all languages'}...`;
         let tuFilterFunction;
         if (options.filter) {

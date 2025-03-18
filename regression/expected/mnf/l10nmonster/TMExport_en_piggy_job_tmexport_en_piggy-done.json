@@ -18,7 +18,7 @@
 				"-piggy]"
 			],
 			"ts": 1698216807727,
-			"q": 1,
+			"q": 10,
 			"jobGuid": "3oSqVqkNxIWgZZk5_jW6Z",
 			"translationProvider": "PigLatinizer"
 		},
@@ -30,7 +30,7 @@
 				"-piggy]"
 			],
 			"ts": 1698216807727,
-			"q": 1,
+			"q": 10,
 			"jobGuid": "3oSqVqkNxIWgZZk5_jW6Z",
 			"translationProvider": "PigLatinizer"
 		},
@@ -47,9 +47,43 @@
 				"-piggy]"
 			],
 			"ts": 1698216807727,
-			"q": 1,
+			"q": 10,
 			"jobGuid": "3oSqVqkNxIWgZZk5_jW6Z",
 			"translationProvider": "PigLatinizer"
+		},
+		{
+			"guid": "GNIrRAm_t83PO9z1zuuus7CjEcXmYYqoh2Nkx6HGKPw",
+			"ntgt": [
+				"[",
+				{
+					"t": "x",
+					"v": "{0,number,integer}",
+					"v1": "a_x_0"
+				},
+				"% icket-tay ostcay overedcay",
+				"-piggy]"
+			],
+			"ts": 1,
+			"q": 1,
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Repetition"
+		},
+		{
+			"guid": "WU7zgyycqjakkWUgPYEYe2yLGO4IOByv2AfC-oODYJc",
+			"ntgt": [
+				"[",
+				{
+					"t": "x",
+					"v": "{0,number,integer}",
+					"v1": "a_x_0"
+				},
+				"% icket-tay ostcay overedcay",
+				"-piggy]"
+			],
+			"ts": 1,
+			"q": 1,
+			"jobGuid": "xxx1xxx",
+			"translationProvider": "Repetition"
 		}
 	],
 	"translationProvider": "TMExport"

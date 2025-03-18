@@ -1,4 +1,4 @@
-ticketCostCovered={0,number,integer}%% ticket cost covered
-ticketCostCovered={0,number,integer}% ticket cost covered
+ticketCostCovered1={0,number,integer}%% ticket cost covered
+ticketCostCovered2={0,number,integer}% ticket cost covered
 badge.mostPopular=Most Popular
 badge.percentDiscount={0}% Off!

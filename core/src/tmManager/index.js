@@ -1,19 +1,16 @@
-import * as path from 'path';
-import Database from 'better-sqlite3';
 import { nanoid } from 'nanoid';
 
-import { L10nContext, TU, utils } from '@l10nmonster/core';
+import { L10nContext, logInfo, TU, utils } from '@l10nmonster/core';
 import { TM } from './tm.js';
-import { JobDAL } from './jobDAL.js';
+
 
 export default class TMManager {
-    #db;
-    #jobDAL;
+    #DAL;
     #tmCache = new Map();
 
     #generateGuid() {
         if (L10nContext.regression) {
-            const jobCount = this.#jobDAL.getJobCount();
+            const jobCount = this.#DAL.job.getJobCount();
             return `xxx${jobCount}xxx`;
         } else {
             return nanoid();
@@ -22,9 +19,9 @@ export default class TMManager {
 
     async #saveTmBlock(tmBlockIterator) {
         const jobs = [];
-        const insertJob = this.#db.transaction(job => {
+        const insertJob = this.#DAL.tmTransaction(job => {
             const { jobProps, tus } = job;
-            this.#jobDAL.setJob(jobProps);
+            this.#DAL.job.setJob(jobProps);
             jobs.push(jobProps);
             const tm = this.getTM(jobProps.sourceLang, jobProps.targetLang);
             tm.deleteEntriesByJobGuid(jobProps.jobGuid);
@@ -41,22 +38,19 @@ export default class TMManager {
     }
 
     async #deleteJobContents(jobGuid) {
-        const job = this.#jobDAL.getJob(jobGuid);
+        const job = this.#DAL.job.getJob(jobGuid);
         const tm = this.getTM(job.sourceLang, job.targetLang);
         tm.deleteEntriesByJobGuid(jobGuid);
-        this.#jobDAL.deleteJob(jobGuid);
+        this.#DAL.job.deleteJob(jobGuid);
     }
 
-    constructor() {
-        this.#db = new Database(path.join(L10nContext.baseDir, 'l10nmonsterTM.db'));
-        // this.#db.pragma('journal_mode = WAL');
-        const version = this.#db.prepare('select sqlite_version();').pluck().get();
-        L10nContext.logger.verbose(`Initialized sqlite version: ${version}`);
-        this.#jobDAL = new JobDAL(this.#db);
+    constructor(dal) {
+        this.#DAL = dal;
     }
 
+    // eslint-disable-next-line no-unused-vars
     async init(mm) {
-        mm.scheduleForShutdown(this.shutdown.bind(this));
+        logInfo`TMManager initialized`;
     }
 
     getTM(sourceLang, targetLang) {
@@ -64,7 +58,7 @@ export default class TMManager {
         if (this.#tmCache.has(key)) {
             return this.#tmCache.get(key);
         } else {
-            const tm = new TM(sourceLang, targetLang, this.#db, this.#jobDAL);
+            const tm = new TM(sourceLang, targetLang, this.#DAL);
             this.#tmCache.set(key, tm);
             return tm;
         }
@@ -87,7 +81,7 @@ export default class TMManager {
             throw new Error(`Cannot sync down ${tmStore.id} store because it is write-only!`);
         }
         const toc = await tmStore.getTOC(sourceLang, targetLang);
-        const deltas = this.#jobDAL.getJobDeltas(toc.sourceLang, toc.targetLang, toc);
+        const deltas = this.#DAL.job.getJobDeltas(toc.sourceLang, toc.targetLang, toc);
         const blocksToStore = Array.from(new Set(deltas.filter(e => e.remoteJobGuid).map(e => e.blockId))); // either because they changed or because some jobs don't exist locally
         let jobsToDelete = deltas.filter(e => e.localJobGuid && !e.remoteJobGuid).map(e => e.localJobGuid);
         return {
@@ -100,15 +94,15 @@ export default class TMManager {
 
     async syncDown(tmStore, { sourceLang, targetLang, blocksToStore, jobsToDelete }) {
         if (blocksToStore.length === 0 && jobsToDelete.length === 0) {
-            L10nContext.logger.info(`Nothing to sync up with store ${tmStore.id}`);
+            logInfo`Nothing to sync up with store ${tmStore.id}`;
             return;
         }
         if (blocksToStore.length > 0) {
-            L10nContext.logger.info(`Storing ${blocksToStore.length} ${[blocksToStore.length, 'block', 'blocks']} from ${tmStore.id}`);
+            logInfo`Storing ${blocksToStore.length} ${[blocksToStore.length, 'block', 'blocks']} from ${tmStore.id}`;
             await this.#saveTmBlock(tmStore.getTmBlocks(sourceLang, targetLang, blocksToStore));
         }
         if (jobsToDelete.length > 0) {
-            L10nContext.logger.info(`Deleting ${jobsToDelete.length} ${[jobsToDelete.length, 'job', 'jobs']}`);
+            logInfo`Deleting ${jobsToDelete.length} ${[jobsToDelete.length, 'job', 'jobs']}`;
             for (const jobGuid of jobsToDelete) {
                 await this.#deleteJobContents(jobGuid);
             }
@@ -117,7 +111,7 @@ export default class TMManager {
 
     async prepareSyncUp(tmStore, sourceLang, targetLang, options) {
         const toc = await tmStore.getTOC(sourceLang, targetLang);
-        const deltas = this.#jobDAL.getJobDeltas(toc.sourceLang, toc.targetLang, toc);
+        const deltas = this.#DAL.job.getJobDeltas(toc.sourceLang, toc.targetLang, toc);
         const blockIdsToUpdate = new Set(deltas.filter(e => e.remoteJobGuid).map(e => e.blockId)); // either because they changed or because some jobs don't exist locally and need to be deleted remotely
         let jobsToUpdate = deltas.filter(e => e.localJobGuid).map(e => [ e.localJobGuid, e.localUpdatedAt ]); // this will catch changed jobs and jobs that don't exist remotely
         if (jobsToUpdate.length > 0 && options?.newerOnly) {
@@ -127,7 +121,7 @@ export default class TMManager {
         return {
             sourceLang,
             targetLang,
-            blocksToUpdate: Array.from(blockIdsToUpdate).map(blockId => [ blockId, this.#jobDAL.getValidJobIds(toc.sourceLang, toc.targetLang, toc, blockId) ]),
+            blocksToUpdate: Array.from(blockIdsToUpdate).map(blockId => [ blockId, this.#DAL.job.getValidJobIds(toc.sourceLang, toc.targetLang, toc, blockId) ]),
             jobsToUpdate: jobsToUpdate.map(e => e[0]),
         };
     }
@@ -137,29 +131,29 @@ export default class TMManager {
             throw new Error(`Cannot sync up ${tmStore.id} store because it is readonly!`);
         }
         if (blocksToUpdate.length === 0 && jobsToUpdate.length === 0) {
-            L10nContext.logger.info(`Nothing to sync up with store ${tmStore.id}`);
+            logInfo`Nothing to sync up with store ${tmStore.id}`;
             return;
         }
 
         const tm = this.getTM(sourceLang, targetLang);
         await tmStore.getWriter(sourceLang, targetLang, async writeTmBlock => {
             if (blocksToUpdate.length > 0) {
-                L10nContext.logger.info(`Updating ${blocksToUpdate.length} ${[blocksToUpdate.length, 'block', 'blocks']} in ${tmStore.id}`);
+                logInfo`Updating ${blocksToUpdate.length} ${[blocksToUpdate.length, 'block', 'blocks']} in ${tmStore.id}`;
                 for (const [ blockId, jobs ] of blocksToUpdate) {
                     await writeTmBlock({ blockId }, tm.getJobsByGuids(jobs));
                 }
             }
             if (jobsToUpdate.length > 0) {
-                L10nContext.logger.info(`Syncing ${jobsToUpdate.length} ${[jobsToUpdate.length, 'job', 'jobs']} to ${tmStore.id}`);
+                logInfo`Syncing ${jobsToUpdate.length} ${[jobsToUpdate.length, 'job', 'jobs']} to ${tmStore.id}`;
                 if (tmStore.partitioning === 'job') {
                     for (const jobGuid of jobsToUpdate) {
-                        const job = this.#jobDAL.getJob(jobGuid);
+                        const job = this.#DAL.job.getJob(jobGuid);
                         await writeTmBlock({ translationProvider: job.translationProvider, blockId: jobGuid}, [ tm.getJobByGuid(jobGuid) ]);
                     }
                 } else if (tmStore.partitioning === 'provider') {
                     const jobsByProvider = {};
                     for (const jobGuid of jobsToUpdate) {
-                        const job = this.#jobDAL.getJob(jobGuid);
+                        const job = this.#DAL.job.getJob(jobGuid);
                         jobsByProvider[job.translationProvider] ??= [];
                         jobsByProvider[job.translationProvider].push(job.jobGuid);
                     }
@@ -205,11 +199,11 @@ export default class TMManager {
     }
 
     async getAvailableLangPairs() {
-        return this.#jobDAL.getAvailableLangPairs();
+        return this.#DAL.job.getAvailableLangPairs();
     }
 
     async getJobStatusByLangPair(sourceLang, targetLang) {
-        return this.#jobDAL.getJobStatusByLangPair(sourceLang, targetLang);
+        return this.#DAL.job.getJobStatusByLangPair(sourceLang, targetLang);
     }
 
     async createJobManifest() {
@@ -220,7 +214,7 @@ export default class TMManager {
     }
 
     async getJob(jobGuid) {
-        const jobRow = this.#jobDAL.getJob(jobGuid);
+        const jobRow = this.#DAL.job.getJob(jobGuid);
         if (jobRow) {
             const tm = this.getTM(jobRow.sourceLang, jobRow.targetLang);
             const tus = tm.getEntriesByJobGuid(jobGuid);
@@ -231,9 +225,5 @@ export default class TMManager {
 
     async deleteJob(jobGuid) {
         await this.#deleteJobContents(jobGuid);
-    }
-
-    async shutdown() {
-        this.#db.close();
     }
 }

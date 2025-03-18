@@ -38,10 +38,12 @@ export class Grandfather {
             if (previousTranslation !== undefined) {
                 const previousTU = TU.fromSegment(resHandle, previousTranslation);
                 if (utils.sourceAndTargetAreCompatible(tu.nsrc, previousTU.nsrc)) {
+                    const modified = new Date(resHandle.modified).getTime();
+                    const ts = isNaN(modified) ? 1 : modified; // regression mode may cause date to be NaN
                     jobResponse.tus.push(TU.asTarget({
                         guid: tu.guid,
                         ntgt: previousTU.nsrc,
-                        ts: new Date(resHandle.modified).getTime(),
+                        ts,
                         q: this.quality,
                     }));
                 } else {

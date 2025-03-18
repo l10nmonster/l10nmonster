@@ -39,6 +39,32 @@
 			],
 			"guid": "q2gOhVROIqrDb6s1UEP8kmlEeKhctYT35JskRBB_Bm0",
 			"prj": "messages_en.txt"
+		},
+		{
+			"rid": "messages_en.txt",
+			"sid": "ticketCostCovered1",
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "{0,number,integer}"
+				},
+				"% ticket cost covered"
+			],
+			"guid": "GNIrRAm_t83PO9z1zuuus7CjEcXmYYqoh2Nkx6HGKPw",
+			"prj": "messages_en.txt"
+		},
+		{
+			"rid": "messages_en.txt",
+			"sid": "ticketCostCovered2",
+			"nsrc": [
+				{
+					"t": "x",
+					"v": "{0,number,integer}"
+				},
+				"% ticket cost covered"
+			],
+			"guid": "WU7zgyycqjakkWUgPYEYe2yLGO4IOByv2AfC-oODYJc",
+			"prj": "messages_en.txt"
 		}
 	]
 }

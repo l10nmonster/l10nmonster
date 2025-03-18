@@ -49,6 +49,7 @@ export default new L10nMonsterConfig(import.meta.dirname)
         partitioning: 'language',
         jobsDir: 'tmStore',
     }))
-    .operations({
-        snapStore: new stores.FsSnapStore({ snapDir: 'snaps' }),
-    });
+    // .operations({
+    //     snapStore: new stores.FsSnapStore({ snapDir: 'snaps' }),
+    // })
+    ;

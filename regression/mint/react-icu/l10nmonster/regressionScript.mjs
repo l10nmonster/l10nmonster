@@ -1,4 +1,4 @@
-import { default as config } from './l10nmonster.config.mjs';
+import config from './l10nmonster.config.mjs';
 
 await config.run({ regression: true, verbose: 3 }, async l10n => {
     await l10n.push({ provider: 'grandfather,repetition,default' });

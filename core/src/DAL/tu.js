@@ -4,7 +4,7 @@ export class TuDAL {
     #db;
     #tusTable;
     #stmt = {}; // prepared statements
-    #lazyFlatSrcIdx = true; // used to add the index as late as possible
+    #flatSrcIdxInitialized = false; // used to add the index as late as possible
 
     constructor(db, tusTable) {
         this.#db = db;
@@ -113,10 +113,10 @@ ON ${this.#tusTable} (flattenNormalizedSourceToOrdinal(nsrc));`);
 SELECT jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuProps FROM ${this.#tusTable}
 WHERE flattenNormalizedSourceToOrdinal(nsrc) = ?`);
         // try to delay creating the index until it is actually needed
-        if (this.#lazyFlatSrcIdx) {
+        if (!this.#flatSrcIdxInitialized) {
             L10nContext.logger.verbose(`Creating FlatSrcIdx for table ${this.#tusTable}...`);
             this.#stmt.createFlatSrcIdx.run();
-            this.#lazyFlatSrcIdx = false;
+            this.#flatSrcIdxInitialized = true;
         }
         const flattenedSrc = utils.flattenNormalizedSourceToOrdinal(nsrc);
         const tuRows = this.#stmt.getEntriesByFlatSrc.all(flattenedSrc);

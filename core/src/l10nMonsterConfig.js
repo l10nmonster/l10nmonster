@@ -252,8 +252,8 @@ export class L10nMonsterConfig {
     /** @type {Object} Translation providers for the localization process. */
     translationProviders = {};
 
-    /** @type {Object} Configuration for the snapshot store. */
-    snapStore;
+    /** @type {boolean} Whether to automatically create snapshots at each run. */
+    autoSnap = true;
 
     /** @type {Object} Configuration for the tm stores. */
     tmStores;
@@ -336,19 +336,19 @@ export class L10nMonsterConfig {
     /**
      * Configures operations for the localization process.
      * @param {Object} config - The operations configuration object.
-     * @param {Object} [config.snapStore] - Configuration for the snapshot store.
+     * @param {boolean} [config.autoSnap] - Configuration for the snapshot store.
      * @param {Object} [config.tuFilters] - Configuration for translation unit filters.
      * @param {Array} [config.analyzers] - Configuration for analyzers.
      * @param {string} [config.opsDir] - Directory for operations.
      * @returns {L10nMonsterConfig} Returns the instance for method chaining.
      */
     operations({
-        snapStore,
+        autoSnap,
         tuFilters,
         analyzers,
         opsDir,
     }) {
-        this.snapStore = snapStore;
+        autoSnap && (this.autoSnap = autoSnap);
         this.tuFilters = tuFilters;
         this.analyzers = analyzers;
         this.opsDir = opsDir;
