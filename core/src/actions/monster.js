@@ -27,15 +27,23 @@ export class monster {
             " --'                  \\  \\ |   /    |  |              `-\n" +
             '                       \\uU \\UU/     |  /   :F_P:');
         console.time('Initialization time');
-        consoleLog`Resource Channels:`;
+
+        // eslint-disable-next-line no-unused-vars
+        const printCapabilities = cap => Object.entries(cap).filter(([cmd, available]) => available).map(([cmd]) => cmd).join(' ');
+        consoleLog`Resource Channels and available commands:`;
         for (const channelId of Object.keys(mm.rm.channels)) {
-            consoleLog`  - ${channelId}:`;
             const channelStats = mm.rm.getChannelStats(channelId);
-            channelStats.forEach(({ prj, segmentCount, resCount }) => consoleLog`      * ${prj ?? 'default'}: ${segmentCount.toLocaleString()} ${[segmentCount, 'segment', 'segments']} in ${resCount.toLocaleString()} ${[resCount, 'resource', 'resources']}`);
+            consoleLog`  - ${channelId}: ${printCapabilities(mm.capabilitiesByChannel[channelId])}`;
+            if (channelStats.length === 0) {
+                consoleLog`      * No resources in this channel!`;
+            } else {
+                channelStats.forEach(({ prj, segmentCount, resCount }) => consoleLog`      * Project ${prj ?? 'default'}: ${segmentCount.toLocaleString()} ${[segmentCount, 'segment', 'segments']} in ${resCount.toLocaleString()} ${[resCount, 'resource', 'resources']}`);
+            }
         }
+
         const targetLangs = mm.getTargetLangs(options.lang);
-        consoleLog`Possible languages: ${targetLangs.join(', ')}`;
-        consoleLog`Translation Memories:`;
+        consoleLog`\nPossible languages: ${targetLangs.join(', ')}`;
+        consoleLog`\nTranslation Memories:`;
         const availableLangPairs = (await mm.tmm.getAvailableLangPairs()).sort();
         for (const [sourceLang, targetLang] of availableLangPairs) {
             const tm = mm.tmm.getTM(sourceLang, targetLang);
@@ -44,12 +52,6 @@ export class monster {
             for (const stats of tmStats) {
                 consoleLog`      * ${stats.translationProvider}(${stats.status}): ${stats.jobCount.toLocaleString()} ${[stats.jobCount, 'job', 'jobs']}, ${stats.tuCount.toLocaleString()} ${[stats.tuCount, 'tu', 'tus']}, ${stats.distinctGuids.toLocaleString()} ${[stats.distinctGuids, 'guid', 'guids']}`;
             }
-        }
-        // eslint-disable-next-line no-unused-vars
-        const printCapabilities = cap => Object.entries(cap).filter(([cmd, available]) => available).map(([cmd]) => cmd).join(' ');
-        consoleLog`\nYour config allows the following commands: ${printCapabilities(mm.capabilities)}`;
-        if (Object.keys(mm.capabilitiesByChannel).length > 1) {
-            Object.entries(mm.capabilitiesByChannel).forEach(([channel, cap]) => consoleLog`  - ${channel}: ${printCapabilities(cap)}`);
         }
         console.timeEnd('Initialization time');
     }

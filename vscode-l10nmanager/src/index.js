@@ -6,13 +6,11 @@ import { JobsViewProvider } from './jobsPanel.js';
 import { AnalyzeViewProvider } from './analyzePanel.js';
 import { logger, withMonsterManager } from './monsterUtils.js';
 
-const printCapabilities = cap => Object.entries(cap).filter(e => e[1]).map(e => e[0]).join(', ');
-
 function getL10nmanagerCommand(configPath) {
     return async function l10nmanagerCommand() {
-        const capabilities = await withMonsterManager(configPath, async mm => printCapabilities(mm.capabilities));
-        vscode.window.showInformationMessage(capabilities ? `Supported commands: ${capabilities}` : 'Problems initializing L10n Monster');
-        capabilities && await vscode.commands.executeCommand('statusView.focus');
+        const initialized = await withMonsterManager(configPath, async (mm) => true);
+        vscode.window.showInformationMessage(initialized ? `L10n Monster initialized.` : 'Problems initializing L10n Monster');
+        initialized && await vscode.commands.executeCommand('statusView.focus');
     }
 }
 
@@ -22,7 +20,7 @@ async function initL10nMonster(context) {
         logger.info(`L10n Monster config found at: ${configPath}`);
         context.subscriptions.push(vscode.commands.registerCommand('l10nmonster.l10nmanager', getL10nmanagerCommand(configPath)));
         return withMonsterManager(configPath, async mm => {
-            logger.info(`L10n Monster initialized. Supported commands: ${printCapabilities(mm.capabilities)}`);
+            logger.info(`L10n Monster initialized.`);
             await vscode.commands.executeCommand('setContext', 'l10nMonsterEnabled', true);
 
             const statusViewProvider = new StatusViewProvider(configPath, context);

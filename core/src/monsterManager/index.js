@@ -60,7 +60,6 @@ export class MonsterManager {
             pull: Boolean(Object.keys(this.translationProviders).length > 0),
             translate: Boolean(channel.source && channel.target),
         }]));
-        this.capabilities = Object.values(this.capabilitiesByChannel).reduce((p, c) => Object.fromEntries(Object.entries(c).map(([k, v]) => [ k, (p[k] === undefined ? true : p[k]) && v ])), {});
     }
 
     async init() {
