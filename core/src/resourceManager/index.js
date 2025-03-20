@@ -84,8 +84,9 @@ export default class ResourceManager {
     //
 
     async getResourceHandles() {
-        this.#snapIfNecessary();
+        await this.#snapIfNecessary();
         const toc = await this.#DAL.source.getTOC();
+        logInfo`Got a TOC with ${toc.length.toLocaleString()} ${[toc.length, 'entry', 'entries']}`;
         return toc.map(rs => this.getChannel(rs.channel).makeResourceHandleFromObject(rs));
     }
 

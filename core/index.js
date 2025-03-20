@@ -32,6 +32,13 @@
  * @property {function(string): Promise<any>} fetchResource - Fetches a specific resource.
  */
 
+/**
+ * @typedef {Object} TMStore
+ * @property {string} id - The logical id of this store instance.
+ * @property {string} access - The store access permissions (readwrite/readonly/writeonly).
+ * @property {string} partitioning - The partitioning strategy of the store.
+ */
+
 export { L10nContext, consoleLog, logError, logWarn, logInfo, logVerbose } from './src/l10nContext.js';
 export { TU } from './src/entities/tu.js';
 export { L10nMonsterConfig, ChannelConfig, ResourceFormatConfig, MessageFormatConfig } from './src/l10nMonsterConfig.js';

@@ -28,7 +28,7 @@ export class BaseJsonlTmStore {
      * @param {string} options.id - The logical id of the instance
      * @param {string} options.access? - The store access permissions (readwrite/readonly/writeonly)
      * @param {string} options.partitioning? - Partitioning strategy for TM Blocks
-     * @param {boolean} options.compressStreams? - Use Brotli compression
+     * @param {boolean} options.compressStreams? - Use Gzip compression
      * @throws {Error} If no delegate is provided or invalid partitioning is specified
      */
     constructor(delegate, { id, partitioning, access, compressStreams }) {
@@ -53,7 +53,7 @@ export class BaseJsonlTmStore {
         }
         if (compressStreams) {
             this.#compressStreams = compressStreams;
-            this.#compressionSuffix = '.br';
+            this.#compressionSuffix = '.gz';
         }
     }
 
@@ -99,7 +99,7 @@ export class BaseJsonlTmStore {
             if (blockName) {
                 let reader = await this.delegate.getStream(blockName);
                 if (this.#compressStreams) {
-                    reader = reader.pipe(zlib.createBrotliDecompress());
+                    reader = reader.pipe(zlib.createGunzip());
                 }
                 const rl = readline.createInterface({
                     input: reader,
@@ -201,13 +201,7 @@ export class BaseJsonlTmStore {
                 let readable = Readable.from(generator());
 
                 if (this.#compressStreams) {
-                    const brotli = zlib.createBrotliCompress({
-                        params: {
-                            [zlib.constants.BROTLI_PARAM_QUALITY]: 11, // Quality level: 0 (fastest) to 11 (best compression)
-                            [zlib.constants.BROTLI_PARAM_MODE]: zlib.constants.BROTLI_MODE_TEXT // Compression mode (text or binary)
-                        }
-                    });
-                    readable = readable.pipe(brotli);
+                    readable = readable.pipe(zlib.createGzip());
                 }
                 const modified = await this.delegate.saveStream(blockName, readable);
                 toc.blocks[blockId] = { blockName, modified, jobs };

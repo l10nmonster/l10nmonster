@@ -302,10 +302,17 @@ export class L10nMonsterConfig {
 
     /**
      * Configures a channel.
-     * @param {ChannelConfig} config - The configuration object for the channel.
+     * @param {ChannelConfig | Array<ChannelConfig>} config - The configuration object for the channel.
      * @returns {L10nMonsterConfig} Returns the instance for method chaining.
      */
     channel(config) {
+        if (Array.isArray(config)) {
+            config.forEach((c) => this.channel(c));
+            return this;
+        }
+        if (this.channels[config.id]) {
+            throw `Channel with id ${config.id} already exists`;
+        }
         this.channels[config.id] = config;
         return this;
     }
@@ -318,19 +325,6 @@ export class L10nMonsterConfig {
     translators(translationProviders) {
         this.translationProviders = translationProviders;
         return this;
-    }
-
-    /**
-     * Configures a single translation provider for the localization process.
-     * @param {Object} translationProvider - The translation provider configuration object.
-     * @returns {L10nMonsterConfig} Returns the instance for method chaining.
-     */
-    singleTranslator(translationProvider) {
-        const translationProviders = { };
-        translationProviders[translationProvider.constructor.name] = {
-            translator: translationProvider,
-        };
-        return this.translators(translationProviders);
     }
 
     /**
@@ -348,7 +342,7 @@ export class L10nMonsterConfig {
         analyzers,
         opsDir,
     }) {
-        autoSnap && (this.autoSnap = autoSnap);
+        autoSnap !== undefined && (this.autoSnap = Boolean(autoSnap));
         this.tuFilters = tuFilters;
         this.analyzers = analyzers;
         this.opsDir = opsDir;
@@ -357,15 +351,19 @@ export class L10nMonsterConfig {
 
     /**
      * Adds a TM store to the set of available TM Stores.
-     * @param {Object} storeInstance - The TM Store instance.
-     * @param {string} storeInstance.id - The logical id of this store instance.
-     * @param {string} storeInstance.access - The store access permissions (readwrite/readonly/writeonly).
-     * @param {string} storeInstance.partitioning - The partitioning strategy of the store.
-     * @returns {L10nMonsterConfig} Returns the instance for method chaining.
+     * @param {import('@l10nmonster/core').TMStore | Array<import('@l10nmonster/core').TMStore>} storeInstance - The TM Store instance or array of instances.
+     * @returns {L10nMonsterConfig} Returns the config for method chaining.
      */
     tmStore(storeInstance) {
+        if (Array.isArray(storeInstance)) {
+            storeInstance.forEach((s) => this.tmStore(s));
+            return this;
+        }
         if (storeInstance.id && storeInstance.access && storeInstance.partitioning) {
             this.tmStores ??= {};
+            if (this.tmStores[storeInstance.id]) {
+                throw new Error(`TM Store with id ${storeInstance.id} already exists`);
+            }
             this.tmStores[storeInstance.id] = storeInstance;
             return this;
         }
