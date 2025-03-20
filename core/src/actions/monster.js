@@ -27,9 +27,13 @@ export class monster {
             " --'                  \\  \\ |   /    |  |              `-\n" +
             '                       \\uU \\UU/     |  /   :F_P:');
         console.time('Initialization time');
-        const resourceHandles = await mm.rm.getResourceHandles();
+        consoleLog`Resource Channels:`;
+        for (const channelId of Object.keys(mm.rm.channels)) {
+            consoleLog`  - ${channelId}:`;
+            const channelStats = mm.rm.getChannelStats(channelId);
+            channelStats.forEach(({ prj, segmentCount, resCount }) => consoleLog`      * ${prj ?? 'default'}: ${segmentCount.toLocaleString()} ${[segmentCount, 'segment', 'segments']} in ${resCount.toLocaleString()} ${[resCount, 'resource', 'resources']}`);
+        }
         const targetLangs = mm.getTargetLangs(options.lang);
-        consoleLog`Resources: ${resourceHandles.length}`;
         consoleLog`Possible languages: ${targetLangs.join(', ')}`;
         consoleLog`Translation Memories:`;
         const availableLangPairs = (await mm.tmm.getAvailableLangPairs()).sort();
@@ -41,12 +45,12 @@ export class monster {
                 consoleLog`      * ${stats.translationProvider}(${stats.status}): ${stats.jobCount.toLocaleString()} ${[stats.jobCount, 'job', 'jobs']}, ${stats.tuCount.toLocaleString()} ${[stats.tuCount, 'tu', 'tus']}, ${stats.distinctGuids.toLocaleString()} ${[stats.distinctGuids, 'guid', 'guids']}`;
             }
         }
-        console.timeEnd('Initialization time');
         // eslint-disable-next-line no-unused-vars
         const printCapabilities = cap => Object.entries(cap).filter(([cmd, available]) => available).map(([cmd]) => cmd).join(' ');
         consoleLog`\nYour config allows the following commands: ${printCapabilities(mm.capabilities)}`;
         if (Object.keys(mm.capabilitiesByChannel).length > 1) {
             Object.entries(mm.capabilitiesByChannel).forEach(([channel, cap]) => consoleLog`  - ${channel}: ${printCapabilities(cap)}`);
         }
+        console.timeEnd('Initialization time');
     }
 }

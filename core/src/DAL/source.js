@@ -249,17 +249,17 @@ ORDER BY key
         }));
     }
 
-    getStats() {
+    getStats(channelId) {
         this.#stmt.getStats ??= this.#db.prepare(`
 SELECT
-    channel,
     prj,
-    resourceFormat,
+    SUM(JSON_ARRAY_LENGTH(segments)) AS segmentCount,
     COUNT(*) AS resCount
 FROM resources
-GROUP BY 1, 2, 3
-ORDER BY 4 DESC;
+WHERE channel = ? AND active = true
+GROUP BY 1
+ORDER BY 2 DESC, 3 DESC;
 `);
-        return this.#stmt.getStats.all();
+        return this.#stmt.getStats.all(channelId);
     }
 }

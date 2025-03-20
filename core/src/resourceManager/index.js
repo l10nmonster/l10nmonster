@@ -2,19 +2,19 @@
 import { logInfo } from '@l10nmonster/core';
 
 export default class ResourceManager {
-    #channels;
+    channels;
     #DAL;
     #autoSnap;
 
     constructor(dal, { channels, autoSnap }) {
         this.#DAL = dal;
-        this.#channels = channels;
+        this.channels = channels;
         this.#autoSnap = autoSnap;
     }
 
     async init(mm) {
         mm.scheduleForShutdown(this.shutdown.bind(this));
-        Object.values(this.#channels).forEach(ch => ch.init(mm));
+        Object.values(this.channels).forEach(ch => ch.init(mm));
     }
 
     async #snapIfNecessary() {
@@ -31,11 +31,18 @@ export default class ResourceManager {
      * @return {Object} A channel object.
      */
     getChannel(channelId) {
-        const channel = this.#channels[channelId];
+        const channel = this.channels[channelId];
         if (!channel) {
             throw `Invalid channel reference: ${channelId}`;
         }
         return channel;
+    }
+
+    getChannelStats(channelId) {
+        if (!this.channels[channelId]) {
+            throw `Invalid channel reference: ${channelId}`;
+        }
+        return this.#DAL.source.getStats(channelId);
     }
 
     //
@@ -59,7 +66,7 @@ export default class ResourceManager {
     // async #getResourceHandlesFromAllChannels() {
     //     logInfo`Getting resource stats from all sources...`;
     //     const combinedHandles = [];
-    //     for (const channel of Object.values(this.#channels)) {
+    //     for (const channel of Object.values(this.channels)) {
     //         const handles = await channel.getResourceHandles();
     //         combinedHandles.push(handles);
     //     }
@@ -70,7 +77,7 @@ export default class ResourceManager {
 
     async *#getAllResourcesFromSources(options = { channel: undefined }) {
         logInfo`Getting all resources directly from sources...`;
-        const channels = options.channel ? [ this.getChannel(options.channel) ] : Object.values(this.#channels);
+        const channels = options.channel ? [ this.getChannel(options.channel) ] : Object.values(this.channels);
         for (const channel of Object.values(channels)) {
             const channelResources = await channel.getAllNormalizedResources();
             for await (const normalizedResource of channelResources) {
