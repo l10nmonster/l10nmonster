@@ -1,8 +1,8 @@
-import { L10nContext } from '@l10nmonster/core';
+import { logWarn, logInfo, logVerbose } from '@l10nmonster/core';
 
 export async function pullCmd(mm, { limitToLang, partial }) {
     const stats = { numPendingJobs: 0, translatedStrings: 0, doneJobs: 0, newPendingJobs: 0 };
-    const desiredTargetLangs = new Set(mm.getTargetLangs(limitToLang));
+    const desiredTargetLangs = new Set(await mm.getTargetLangs(limitToLang));
     const availableLangPairs = (await mm.tmm.getAvailableLangPairs())
         .filter(pair => desiredTargetLangs.has(pair[1]));
     for (const [sourceLang, targetLang] of availableLangPairs) {
@@ -13,15 +13,17 @@ export async function pullCmd(mm, { limitToLang, partial }) {
         for (const jobGuid of pendingJobs) {
             const pendingJob = await mm.tmm.getJob(jobGuid);
             if (pendingJob.status === 'pending') {
-                L10nContext.logger.info(`Pulling job ${jobGuid}...`);
+                logInfo`Pulling job ${jobGuid}...`;
                 const translationProvider = mm.getTranslationProvider(pendingJob);
                 const jobResponse = await translationProvider.translator.fetchTranslations(pendingJob);
+                jobResponse && logVerbose`Got status ${jobResponse.status} with ${jobResponse.tus.length} ${[jobResponse.tus, 'tu', 'tus']} segments for job ${jobGuid} and ${jobResponse.inflight?.length ?? 0} ${[jobResponse.inflight?.length ?? 0, 'tu', 'tus']} in flight`;
+                !jobResponse && logWarn`Got no response for job ${jobGuid}`;
                 if (jobResponse?.status === 'done') {
                     await mm.tmm.processJob(jobResponse, pendingJob);
                     stats.translatedStrings += jobResponse.tus.length;
                     stats.doneJobs++;
                 } else if (jobResponse?.status === 'pending') {
-                    L10nContext.logger.info(`Got ${jobResponse.tus.length} translations for job ${pendingJob.jobGuid} but there are still ${jobResponse.inflight.length} translations in flight`);
+                    logInfo`Got ${jobResponse.tus.length} translations for job ${pendingJob.jobGuid} but there are still ${jobResponse.inflight.length} translations in flight`;
                     if (partial) {
                         const { inflight, ...doneResponse } = jobResponse;
                         doneResponse.status = 'done';

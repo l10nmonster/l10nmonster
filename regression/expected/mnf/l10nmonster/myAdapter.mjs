@@ -1,8 +1,9 @@
 import { adapters } from '@l10nmonster/core';
 
 export class MySource {
-    constructor({ baseDir, globs, resourceFormat }) {
+    constructor({ baseDir, globs, targetLangs, resourceFormat }) {
         this.resourceFormat = resourceFormat;
+        this.targetLangs = targetLangs;
         this.FsSource = new adapters.FsSource({ baseDir, globs });
     }
 
@@ -30,6 +31,7 @@ export class MySource {
             id: row.id,
             modified: row.modifiedAt,
             prj: row.id,
+            targetLangs: this.targetLangs,
             resourceFormat: this.resourceFormat
         };
     }

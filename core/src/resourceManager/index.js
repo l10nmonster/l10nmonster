@@ -2,14 +2,14 @@
 import { logInfo } from '@l10nmonster/core';
 
 export default class ResourceManager {
+    autoSnap;
     channels;
     #DAL;
-    #autoSnap;
 
     constructor(dal, { channels, autoSnap }) {
         this.#DAL = dal;
         this.channels = channels;
-        this.#autoSnap = autoSnap;
+        this.autoSnap = autoSnap;
     }
 
     async init(mm) {
@@ -18,9 +18,9 @@ export default class ResourceManager {
     }
 
     async #snapIfNecessary() {
-        if (this.#autoSnap) {
+        if (this.autoSnap) {
             await this.snap();
-            this.#autoSnap = false; // for now it's just a boolean but it could be a maxAge
+            this.autoSnap = false; // for now it's just a boolean but it could be a maxAge
         }
     }
 
@@ -38,10 +38,16 @@ export default class ResourceManager {
         return channel;
     }
 
-    getChannelStats(channelId) {
+    async getAvailableLangPairs() {
+        await this.#snapIfNecessary();
+        return this.#DAL.source.getAvailableLangPairs();
+    }
+
+    async getChannelStats(channelId) {
         if (!this.channels[channelId]) {
             throw `Invalid channel reference: ${channelId}`;
         }
+        await this.#snapIfNecessary();
         return this.#DAL.source.getStats(channelId);
     }
 

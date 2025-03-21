@@ -5,21 +5,21 @@ import * as demo from '@l10nmonster/helpers-demo';
 export default new L10nMonsterConfig(import.meta.dirname)
     .basicProperties({
         sourceLang: 'en',
-        targetLangs: [ 'ja' ],
         minimumQuality: L10nContext.arg === 'prod' ? 95 : 0, // only push production builds
         })
-        .channel(new ChannelConfig('po')
-            .source(new adapters.FsSource({
-                baseDir: '..',
-                globs: [
-                    'artifacts/*.pot',
-                ],
-            }))
-            .resourceFilter(new PoFilter())
-            .target(new adapters.FsTarget({
-                baseDir: '..',
-                targetPath: (lang) => `artifacts/${lang}.po`,
-            })))
+    .channel(new ChannelConfig('po')
+        .source(new adapters.FsSource({
+            baseDir: '..',
+            globs: [
+                'artifacts/*.pot',
+            ],
+            targetLangs: [ 'ja' ],
+        }))
+        .resourceFilter(new PoFilter())
+        .target(new adapters.FsTarget({
+            baseDir: '..',
+            targetPath: (lang) => `artifacts/${lang}.po`,
+        })))
     .translators({
         PigLatinizer: {
             translator: new demo.PigLatinizer({

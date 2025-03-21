@@ -7,7 +7,6 @@ export class Channel {
     #formatHandlers;
     #defaultResourceFormat;
     #defaultSourceLang;
-    #defaultTargetLangs;
     #target;
 
     constructor({ id, source, formatHandlers, defaultResourceFormat, target }) {
@@ -20,7 +19,6 @@ export class Channel {
 
     async init(mm) {
         this.#defaultSourceLang = mm.sourceLang;
-        this.#defaultTargetLangs = mm.getTargetLangs().sort();
     }
 
     makeResourceHandleFromObject(obj) {
@@ -32,7 +30,7 @@ export class Channel {
             resourceFormat: this.#defaultResourceFormat,
             formatHandler,
             sourceLang: this.#defaultSourceLang, // can be overriden but here's the default
-            targetLangs: this.#defaultTargetLangs,
+            targetLangs: [],
             ...obj,
         });
     }

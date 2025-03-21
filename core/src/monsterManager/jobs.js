@@ -1,6 +1,6 @@
 export async function jobsCmd(mm, { limitToLang }) {
     const unfinishedJobs = {};
-    const desiredTargetLangs = new Set(mm.getTargetLangs(limitToLang));
+    const desiredTargetLangs = new Set(await mm.getTargetLangs(limitToLang));
     const availableLangPairs = (await mm.tmm.getAvailableLangPairs())
         .filter(pair => desiredTargetLangs.has(pair[1]));
     for (const [sourceLang, targetLang] of availableLangPairs) {

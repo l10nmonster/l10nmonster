@@ -9,13 +9,13 @@ const androidLangMapping = {
 export default new L10nMonsterConfig(import.meta.dirname)
     .basicProperties({
         sourceLang: 'en',
-        targetLangs: [ 'piggy' ],
         minimumQuality: (job) => (job.targetLang === 'piggy' ? 1 : 50),
     })
     .channel(new ChannelConfig('android')
         .source(new adapters.FsSource({
             baseDir: '..',
             globs: [ '**/values/strings*.xml' ],
+            targetLangs: [ 'piggy' ],
         }))
         .resourceFilter(new android.AndroidXMLFilter())
         .decoders([ xml.entityDecoder, xml.CDataDecoder, android.spaceCollapser, android.escapesDecoder, xml.tagDecoder, android.phDecoder ])

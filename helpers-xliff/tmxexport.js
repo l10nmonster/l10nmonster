@@ -38,7 +38,7 @@
 //             sourceLookup[seg.guid] = TU.fromSegment(res, seg);
 //         }
 //     }
-//     const desiredTargetLangs = new Set(mm.getTargetLangs(limitToLang));
+//     const desiredTargetLangs = new Set(await mm.getTargetLangs(limitToLang));
 //     const availableLangPairs = (await mm.jobStore.getAvailableLangPairs())
 //         .filter(pair => desiredTargetLangs.has(pair[1]));
 //     for (const [sourceLang, targetLang] of availableLangPairs) {

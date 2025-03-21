@@ -249,6 +249,17 @@ ORDER BY key
         }));
     }
 
+    getAvailableLangPairs() {
+        this.#stmt.getAvailableLangPairs ??= this.#db.prepare(`
+SELECT sourceLang, value as targetLang
+FROM resources, JSON_EACH(targetLangs)
+WHERE active = true
+GROUP BY 1, 2
+ORDER BY 1, 2
+;`);
+        return this.#stmt.getAvailableLangPairs.raw().all();
+    }
+
     getStats(channelId) {
         this.#stmt.getStats ??= this.#db.prepare(`
 SELECT

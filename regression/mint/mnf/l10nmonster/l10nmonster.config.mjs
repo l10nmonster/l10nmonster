@@ -7,13 +7,13 @@ import { MySource, MyTarget } from './myAdapter.mjs';
 export default new L10nMonsterConfig(import.meta.dirname)
     .basicProperties({
         sourceLang: 'en',
-        targetLangs: [ 'piggy' ],
         minimumQuality: (job) => (job.targetLang === 'piggy' ? 1 : 50),
     })
     .channel(new ChannelConfig('java')
         .source(new MySource({
             baseDir: 'resources',
             globs: [ '*_en.txt' ],
+            targetLangs: [ 'piggy' ],
             resourceFormat: 'MNFv1',
         }))
         .target(new MyTarget({

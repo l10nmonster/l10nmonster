@@ -5,13 +5,13 @@ import * as demo from '@l10nmonster/helpers-demo';
 export default new L10nMonsterConfig(import.meta.dirname)
     .basicProperties({
         sourceLang: 'en',
-        targetLangs: [ 'it' ],
         minimumQuality: 50,
     })
     .channel(new ChannelConfig('html')
         .source(new adapters.FsSource({
             baseDir: '..',
             globs: [ 'en/*.html' ],
+            targetLangs: [ 'it' ],
         }))
         .resourceFilter(new HTMLFilter())
         .decoders([ xml.tagDecoder, xml.entityDecoder ])

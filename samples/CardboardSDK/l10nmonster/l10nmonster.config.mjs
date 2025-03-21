@@ -15,6 +15,7 @@ export const iosChannel = new ChannelConfig('ios', import.meta.dirname)
     .source(new adapters.FsSource({
         baseDir: '..',
         globs: [ '../**/en.lproj/*.strings' ],
+        targetLangs: [ 'ar', 'en-ZZ', 'ja' ],
         }))
     .resourceFilter(new ios.StringsFilter())
     .decoders([ ios.phDecoder, ios.escapesDecoder, xml.entityDecoder ])
@@ -26,11 +27,6 @@ export const iosChannel = new ChannelConfig('ios', import.meta.dirname)
 export default new L10nMonsterConfig(import.meta.dirname)
     .basicProperties({
         sourceLang: 'en',
-        targetLangSets: {
-            LTR: [ 'en-GB', 'en-AU', 'it', 'ja' ],
-            RTL: [ 'ar' ],
-            debug: [ 'en-ZZ' ],
-        },
         minimumQuality: 50,
     })
     .channel(iosChannel)

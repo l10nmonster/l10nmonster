@@ -13,8 +13,6 @@ import { analyzeCmd } from './analyze.js';
 const spaceRegex = /\s+/g;
 
 export class MonsterManager {
-    #targetLangs;
-    #targetLangSets = {};
     #dalManager;
     #tmStores = {};
     #functionsForShutdown = [];
@@ -27,12 +25,6 @@ export class MonsterManager {
             throw 'You must specify sourceLang in your config';
         }
         this.sourceLang = monsterConfig.sourceLang;
-        if (typeof monsterConfig.targetLangSets === 'object') {
-            this.#targetLangs = new Set(Object.values(monsterConfig.targetLangSets).flat(1));
-            this.#targetLangSets = monsterConfig.targetLangSets;
-        } else {
-            throw 'You must specify a targetLangSets object in your config';
-        }
         this.minimumQuality = monsterConfig.minimumQuality;
 
         this.#dalManager = new DALManager();
@@ -110,26 +102,18 @@ export class MonsterManager {
         return await analyzeCmd(this, analyzer, params, limitToLang, tuFilter);
     }
 
-    // get all possible target languages from sources and from TMs
-    getTargetLangs(limitToLang) {
-        if (limitToLang) {
-            const langsToLimit = Array.isArray(limitToLang) ? limitToLang : limitToLang.split(',');
-            const targetLangs = [];
-            for (const lang of langsToLimit) {
-                const targetLangSet = utils.fixCaseInsensitiveKey(this.#targetLangSets, lang);
-                if (targetLangSet) {
-                    this.#targetLangSets[targetLangSet].forEach(lang => targetLangs.push(lang));
-                } else {
-                    targetLangs.push(lang);
-                }
+    /**
+     * @param {Array | string} limitToLang Language or list of languages to limit to
+     */
+    async getTargetLangs(limitToLang = []) {
+        const desiredTargetLangs = new Set((await this.rm.getAvailableLangPairs()).map(pair => pair[1]));
+        const langsToLimit = Array.isArray(limitToLang) ? limitToLang : limitToLang.split(',');
+        langsToLimit.forEach(limitedLang => {
+            if (!desiredTargetLangs.has(limitedLang)) {
+                throw new Error(`Invalid language: ${limitedLang}`);
             }
-            const invalidLangs = targetLangs.filter(limitedLang => !this.#targetLangs.has(limitedLang));
-            if (invalidLangs.length > 0) {
-                throw `Invalid languages: ${invalidLangs.join(',')}`;
-            }
-            return targetLangs;
-        }
-        return [ ...this.#targetLangs ];
+        });
+        return [ ...desiredTargetLangs ].filter(lang => limitToLang.length === 0 || langsToLimit.includes(lang)).sort();
     }
 
     getTmStore(id) {

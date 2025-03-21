@@ -9,13 +9,13 @@ class CardboardConfig extends L10nMonsterConfig {
         this.#sg = new decorators.SequenceGenerator('seqMap.json');
         this.basicProperties({
             sourceLang: 'en',
-            targetLangs: [ 'ar' ],
             minimumQuality: 50,
         })
         .channel(new ChannelConfig('ios')
             .source(new adapters.FsSource({
                 baseDir: '..',
                 globs: [ '**/en.lproj/*.strings' ],
+                targetLangs: [ 'ar' ],
             }))
             .resourceFilter(new ios.StringsFilter())
             .segmentDecorators([ this.#sg.getDecorator() ])

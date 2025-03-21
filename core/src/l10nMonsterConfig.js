@@ -233,9 +233,6 @@ export class L10nMonsterConfig {
     /** @type {string} The source language for localization. */
     sourceLang;
 
-    /** @type {Object} Sets of target languages for localization. */
-    targetLangSets;
-
     /**
      * @type {number | Function}
      * Either a number constant or a function that given a job it returns a number.
@@ -280,22 +277,14 @@ export class L10nMonsterConfig {
      * Sets basic properties for the localization process.
      * @param {Object} config - Configuration object containing basic properties.
      * @param {string} config.sourceLang - The source language for localization.
-     * @param {Array | Object} [config.targetLangs] - The target languages for localization.
-     * @param {Object} [config.targetLangSets] - Sets of target languages for localization.
      * @param {number | Function} config.minimumQuality - The minimum quality threshold for translations.
      * @returns {L10nMonsterConfig} Returns the instance for method chaining.
      */
     basicProperties({
         sourceLang,
-        targetLangs,
-        targetLangSets,
         minimumQuality,
     }) {
         this.sourceLang = sourceLang;
-        if (targetLangs !== undefined && !Array.isArray(targetLangs)) {
-            throw 'Invalid config: targetLangs must be an array';
-        }
-        this.targetLangSets = targetLangSets ? targetLangSets : { default: targetLangs };
         this.minimumQuality = minimumQuality;
         return this;
     }

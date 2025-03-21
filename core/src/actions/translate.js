@@ -76,7 +76,7 @@ export class translate {
         const mode = (options.mode ?? 'all').toLowerCase();
         consoleLog`Generating translated resources for ${options.lang ? options.lang : 'all languages'}... (${mode} mode)`;
         const response = { lang: {} };
-        const targetLangs = mm.getTargetLangs(options.lang);
+        const targetLangs = await mm.getTargetLangs(options.lang);
         const allResources = await mm.rm.getAllResources({ keepRaw: true });
         for await (const resHandle of allResources) {
             for (const targetLang of targetLangs) {

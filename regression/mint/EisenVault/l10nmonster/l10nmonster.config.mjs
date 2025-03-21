@@ -5,13 +5,13 @@ import * as demo from '@l10nmonster/helpers-demo';
 export default new L10nMonsterConfig(import.meta.dirname)
     .basicProperties({
         sourceLang: 'en',
-        targetLangs: [ 'it' ],
         minimumQuality: 50,
     })
     .channel(new ChannelConfig('java')
         .source(new adapters.FsSource({
             baseDir: '..',
             globs: [ '**/*_en.properties' ],
+            targetLangs: [ 'it' ],
         }))
         .resourceFilter(new java.PropertiesFilter())
         .decoders([ normalizers.bracePHDecoder, xml.tagDecoder, java.escapesDecoder ])

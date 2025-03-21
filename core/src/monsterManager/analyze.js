@@ -26,7 +26,7 @@ export async function analyzeCmd(mm, analyzer, params, limitToLang, tuFilter) {
         let lastAnalysis;
         const hasAggregateAnalysis = typeof Analyzer.prototype.getAggregateAnalysis === 'function';
         let analyzer;
-        const desiredTargetLangs = new Set(mm.getTargetLangs(limitToLang));
+        const desiredTargetLangs = new Set(await mm.getTargetLangs(limitToLang));
         const availableLangPairs = (await mm.tmm.getAvailableLangPairs())
             .filter(pair => desiredTargetLangs.has(pair[1]));
         for (const [sourceLang, targetLang] of availableLangPairs) {

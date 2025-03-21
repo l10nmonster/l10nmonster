@@ -25,7 +25,7 @@ export class tmexport {
             }
         }
         const files = [];
-        const desiredTargetLangs = new Set(mm.getTargetLangs(options.lang));
+        const desiredTargetLangs = new Set(await mm.getTargetLangs(options.lang));
         const availableLangPairs = await mm.tmm.getAvailableLangPairs();
         const desiredLangPairs = availableLangPairs.filter(pair => desiredTargetLangs.has(pair[1]));
         for (const [sourceLang, targetLang] of desiredLangPairs) {

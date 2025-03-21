@@ -9,13 +9,13 @@ class ReactConfig extends L10nMonsterConfig {
         this.#sg = new decorators.SequenceGenerator('seqMap.json', 100);
         this.basicProperties({
             sourceLang: 'en',
-            targetLangs: [ 'de', 'ru' ],
             minimumQuality: 50,
         })
         .channel(new ChannelConfig('react')
             .source(new adapters.FsSource({
                 baseDir: '..',
                 globs: [ '**/en/*.json' ],
+                targetLangs: [ 'de', 'ru' ],
             }))
             .resourceFilter(new i18next.I18nextFilter({
                 enableArbAnnotations : true,
