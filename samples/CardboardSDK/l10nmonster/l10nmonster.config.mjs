@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { L10nMonsterConfig, ChannelConfig, L10nContext, normalizers, xml, stores, adapters, translators } from '@l10nmonster/core';
+import { config, L10nContext, normalizers, xml, stores, adapters, translators } from '@l10nmonster/core';
 import * as ios from '@l10nmonster/helpers-ios';
 import path from 'path';
 // import translated from '@l10nmonster/helpers-translated';
@@ -11,7 +11,7 @@ import path from 'path';
 //     quality: 90,
 // };
 
-export const iosChannel = new ChannelConfig('ios', import.meta.dirname)
+export const iosChannel = config.channel('ios', import.meta.dirname)
     .source(new adapters.FsSource({
         baseDir: '..',
         globs: [ '../**/en.lproj/*.strings' ],
@@ -24,7 +24,7 @@ export const iosChannel = new ChannelConfig('ios', import.meta.dirname)
         targetPath: (lang, resourceId) => resourceId.replace('en.lproj/', `${lang}.lproj/`),
     }));
 
-export default new L10nMonsterConfig(import.meta.dirname)
+export default config.l10nMonster(import.meta.dirname)
     .basicProperties({
         sourceLang: 'en',
         minimumQuality: 50,
@@ -123,7 +123,7 @@ export default new L10nMonsterConfig(import.meta.dirname)
         };
 
         static async action(mm, options) {
-            const targetLangs = mm.getTargetLangs(options.lang);
+            const targetLangs = await mm.getTargetLangs(options.lang);
             for (const targetLang of targetLangs) {
                 const stats = {};
                 const allJobs = await mm.tmm.getJobStatusByLangPair(mm.sourceLang, targetLang);

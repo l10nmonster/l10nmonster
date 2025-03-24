@@ -1,15 +1,15 @@
-import { L10nMonsterConfig, ChannelConfig, ResourceFormatConfig, MessageFormatConfig, xml, normalizers, translators, filters, stores } from '@l10nmonster/core';
+import { config, xml, normalizers, translators, filters, stores } from '@l10nmonster/core';
 import * as java from '@l10nmonster/helpers-java';
 import * as demo from '@l10nmonster/helpers-demo';
 
 import { MySource, MyTarget } from './myAdapter.mjs';
 
-export default new L10nMonsterConfig(import.meta.dirname)
+export default config.l10nMonster(import.meta.dirname)
     .basicProperties({
         sourceLang: 'en',
         minimumQuality: (job) => (job.targetLang === 'piggy' ? 1 : 50),
     })
-    .channel(new ChannelConfig('java')
+    .channel(config.channel('java')
         .source(new MySource({
             baseDir: 'resources',
             globs: [ '*_en.txt' ],
@@ -19,10 +19,11 @@ export default new L10nMonsterConfig(import.meta.dirname)
         .target(new MyTarget({
             targetPath: (lang, resourceId) => `resources/${resourceId.replace('_en.txt', `_${lang.replace('-', '_')}.txt`)}`,
         }))
-        .resourceFormat(new ResourceFormatConfig('MNFv1').resourceFilter(new filters.MNFv1Filter()))
-        .messageFormat(new MessageFormatConfig('java')
-            .decoders([ java.escapesDecoder, xml.tagDecoder, normalizers.bracePHDecoder, xml.entityDecoder, normalizers.doublePercentDecoder ])
-            .textEncoders([ normalizers.gatedEncoder(xml.entityEncoder, 'xmlDecoder', 'xmlEntityDecoder'), normalizers.gatedEncoder(normalizers.doublePercentEncoder, 'doublePercentDecoder') ])))
+        .resourceFormat(config.resourceFormat('MNFv1')
+            .resourceFilter(new filters.MNFv1Filter()))
+            .messageFormat(config.messageFormat('java')
+                .decoders([ java.escapesDecoder, xml.tagDecoder, normalizers.bracePHDecoder, xml.entityDecoder, normalizers.doublePercentDecoder ])
+                .textEncoders([ normalizers.gatedEncoder(xml.entityEncoder, 'xmlDecoder', 'xmlEntityDecoder'), normalizers.gatedEncoder(normalizers.doublePercentEncoder, 'doublePercentDecoder') ])))
     .translators({
         PigLatinizer: {
             translator: new demo.PigLatinizer({ quality: 1 }),

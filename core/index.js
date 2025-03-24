@@ -41,7 +41,7 @@
 
 export { L10nContext, consoleLog, logError, logWarn, logInfo, logVerbose } from './src/l10nContext.js';
 export { TU } from './src/entities/tu.js';
-export { L10nMonsterConfig, ChannelConfig, ResourceFormatConfig, MessageFormatConfig } from './src/l10nMonsterConfig.js';
+export { L10nMonsterConfig, ChannelConfig, ResourceFormatConfig, MessageFormatConfig, config } from './src/l10nMonsterConfig.js';
 export { MonsterManager } from './src/monsterManager/index.js';
 export { OpsMgr } from './src/opsMgr.js';
 

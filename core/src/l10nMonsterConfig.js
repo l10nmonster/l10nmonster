@@ -423,3 +423,10 @@ export class L10nMonsterConfig {
         }
     }
 }
+
+export const config = {
+    l10nMonster: baseDir => new L10nMonsterConfig(baseDir),
+    channel: (id, baseDir) => new ChannelConfig(id, baseDir),
+    resourceFormat: id => new ResourceFormatConfig(id),
+    messageFormat: id => new MessageFormatConfig(id),
+};
