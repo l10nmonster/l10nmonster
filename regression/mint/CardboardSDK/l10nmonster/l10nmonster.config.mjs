@@ -1,4 +1,4 @@
-import { L10nMonsterConfig, ChannelConfig, decorators, xml, adapters, translators } from '@l10nmonster/core';
+import { L10nMonsterConfig, ChannelConfig, policies, decorators, xml, adapters, translators } from '@l10nmonster/core';
 import * as ios from '@l10nmonster/helpers-ios';
 
 class CardboardConfig extends L10nMonsterConfig {
@@ -13,14 +13,15 @@ class CardboardConfig extends L10nMonsterConfig {
         })
         .channel(new ChannelConfig('ios')
             .source(new adapters.FsSource({
+                sourceLang: 'en',
                 baseDir: '..',
                 globs: [ '**/en.lproj/*.strings' ],
-                targetLangs: [ 'ar' ],
             }))
             .resourceFilter(new ios.StringsFilter())
-            .segmentDecorators([ this.#sg.getDecorator() ])
-            .decoders([ ios.phDecoder, ios.escapesDecoder ])
-            .textEncoders([ xml.entityEncoder, ios.escapesEncoder ])
+                .segmentDecorators([ this.#sg.getDecorator() ])
+                .decoders([ ios.phDecoder, ios.escapesDecoder ])
+                .textEncoders([ xml.entityEncoder, ios.escapesEncoder ])
+            .policy(policies.fixedTargets('ar', 50))
             .target(new adapters.FsTarget({
                 baseDir: '..',
                 targetPath: (lang, resourceId) => resourceId.replace('en.lproj/', `${lang}.lproj/`)

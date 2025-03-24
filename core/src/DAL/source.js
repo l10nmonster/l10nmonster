@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS resources (
     rid TEXT NOT NULL,
     sourceLang TEXT,
     targetLangs TEXT,
+    plan TEXT,
     prj TEXT,
     segments TEXT,
     subresources TEXT,
@@ -34,6 +35,7 @@ CREATE TABLE IF NOT EXISTS segments (
     nstr TEXT,
     notes TEXT,
     mf TEXT,
+    plan TEXT,
     props TEXT,
     createdAt TEXT,
     modifiedAt TEXT,
@@ -64,14 +66,15 @@ CREATE TABLE IF NOT EXISTS segments (
         // createdAt is only written on insert
         // ignore modifiedAt changes if nothing changed
         this.#stmt.upsertResource ??= this.#db.prepare(`
-INSERT INTO resources (channel, rid, sourceLang, targetLangs, prj, segments, subresources, resourceFormat, resProps, raw, createdAt, modifiedAt)
-VALUES (@channel, @rid, @sourceLang, @targetLangs, @prj, @segments, @subresources, @resourceFormat, @resProps, @raw, @modifiedAt, @modifiedAt)
+INSERT INTO resources (channel, rid, sourceLang, targetLangs, plan, prj, segments, subresources, resourceFormat, resProps, raw, createdAt, modifiedAt)
+VALUES (@channel, @rid, @sourceLang, @targetLangs, @plan, @prj, @segments, @subresources, @resourceFormat, @resProps, @raw, @modifiedAt, @modifiedAt)
 ON CONFLICT (channel, rid)
 DO UPDATE SET
     channel = excluded.channel,
     rid = excluded.rid,
     sourceLang = excluded.sourceLang,
     targetLangs = excluded.targetLangs,
+    plan = excluded.plan,
     prj = excluded.prj,
     segments = excluded.segments,
     subresources = excluded.subresources,
@@ -79,31 +82,33 @@ DO UPDATE SET
     resProps = excluded.resProps,
     raw = excluded.raw,
     modifiedAt = excluded.modifiedAt
-WHERE excluded.sourceLang != resources.sourceLang OR excluded.targetLangs != resources.targetLangs OR excluded.prj != resources.prj
-    OR excluded.segments != resources.segments OR excluded.subresources != resources.subresources
+WHERE excluded.sourceLang != resources.sourceLang OR excluded.targetLangs != resources.targetLangs OR excluded.plan != resources.plan
+    OR excluded.prj != resources.prj OR excluded.segments != resources.segments OR excluded.subresources != resources.subresources
     OR excluded.resourceFormat != resources.resourceFormat OR excluded.resProps != resources.resProps OR excluded.raw != resources.raw
 `);
         this.#stmt.markResourceAsActive ??= this.#db.prepare(`UPDATE resources SET active = true WHERE channel = ? AND rid = ?;`);
         // only notes and mf are mutable
         // gstr is ignores as it's derived from nstr
         this.#stmt.upsertSegment ??= this.#db.prepare(`
-INSERT INTO segments (guid, rid, sid, nstr, notes, mf, props, createdAt, modifiedAt)
-VALUES (@guid, @rid, @sid, @nstr, @notes, @mf, @props, @modified, @modified)
+INSERT INTO segments (guid, rid, sid, nstr, notes, mf, plan, props, createdAt, modifiedAt)
+VALUES (@guid, @rid, @sid, @nstr, @notes, @mf, @plan, @props, @modified, @modified)
 ON CONFLICT (guid)
 DO UPDATE SET
     notes = excluded.notes,
     mf = excluded.mf,
+    plan = excluded.plan,
     props = excluded.props,
     modifiedAt = excluded.modifiedAt
-WHERE excluded.notes != segments.notes OR excluded.mf != segments.mf OR excluded.props != segments.props
+WHERE excluded.notes != segments.notes OR excluded.mf != segments.mf OR excluded.plan != segments.plan OR excluded.props != segments.props
 `);
         const save = this.#db.transaction((res) => {
-            const { channel, id, sourceLang, targetLangs, prj, segments, subresources, resourceFormat, raw, modified, ...resProps } = res;
+            const { channel, id, sourceLang, targetLangs, plan, prj, segments, subresources, resourceFormat, raw, modified, ...resProps } = res;
             this.#stmt.upsertResource.run({
                 channel,
                 rid: id,
                 sourceLang,
                 targetLangs: targetLangs && JSON.stringify(targetLangs),
+                plan: plan && JSON.stringify(plan),
                 prj,
                 segments: JSON.stringify(segments.map(s => s.guid)),
                 subresources: subresources && JSON.stringify(subresources),
@@ -116,7 +121,7 @@ WHERE excluded.notes != segments.notes OR excluded.mf != segments.mf OR excluded
             let changedSegments = 0;
             for (const segment of segments) {
                 // eslint-disable-next-line no-unused-vars
-                const { guid, sid, nstr, gstr, notes, mf, ...props } = segment;
+                const { guid, sid, nstr, gstr, notes, mf, plan, ...props } = segment;
                 const segmentResult = this.#stmt.upsertSegment.run({
                     guid,
                     rid: id,
@@ -124,6 +129,7 @@ WHERE excluded.notes != segments.notes OR excluded.mf != segments.mf OR excluded
                     nstr: JSON.stringify(nstr),
                     notes: notes && JSON.stringify(notes),
                     mf: mf,
+                    plan: plan && JSON.stringify(plan),
                     props: props && JSON.stringify(props),
                     modified: modified,
                 });
@@ -134,37 +140,99 @@ WHERE excluded.notes != segments.notes OR excluded.mf != segments.mf OR excluded
         return save(res);
     }
 
-    getTOC() {
-        this.#stmt.getTOC ??= this.#db.prepare(`
+//     getTOC() {
+//         this.#stmt.getTOC ??= this.#db.prepare(`
+// SELECT
+//     channel,
+//     rid,
+//     sourceLang,
+//     targetLangs,
+//     prj,
+//     subresources,
+//     resourceFormat,
+//     resProps,
+//     modifiedAt
+// FROM resources
+// WHERE active = true
+// ORDER BY channel, rid;
+// `);
+//         return this.#stmt.getTOC.all().map(res => {
+//             const { channel, rid, sourceLang, targetLangs, prj, subresources, resourceFormat, resProps, modifiedAt } = res;
+//             const otherProps = resProps ? JSON.parse(resProps) : {};
+//             return {
+//                 channel,
+//                 id: rid,
+//                 sourceLang,
+//                 targetLangs: targetLangs === null ? undefined : JSON.parse(targetLangs),
+//                 prj: prj === null ? undefined : prj,
+//                 subresources: subresources === null ? undefined : JSON.parse(subresources),
+//                 resourceFormat,
+//                 ...otherProps,
+//                 modified: modifiedAt,
+//             };
+//         });
+//     }
+
+    #buildResource(resourceRow) {
+        const { channel, rid, sourceLang, targetLangs, plan, prj, segments, subresources, resourceFormat, resProps, raw, modifiedAt } = resourceRow;
+        const otherProps = resProps ? JSON.parse(resProps) : {};
+        const expandedSegments = this.#stmt.getSegmentsFromArray.all(segments).map(segment => {
+            const { guid, sid, nstr, notes, mf, props } = segment;
+            const otherProps = props ? JSON.parse(props) : {};
+            const parsedStr = JSON.parse(nstr);
+            const gstr = utils.flattenNormalizedSourceToOrdinal(parsedStr);
+            return {
+                guid,
+                rid,
+                sid,
+                nstr: parsedStr,
+                gstr,
+                notes: notes === null ? undefined : JSON.parse(notes),
+                mf,
+                ...otherProps,
+            };
+         });
+        return {
+            channel,
+            id: rid,
+            sourceLang,
+            targetLangs: targetLangs === null ? undefined : JSON.parse(targetLangs),
+            plan: plan === null ? undefined : JSON.parse(plan),
+            prj: prj === null ? undefined : prj,
+            segments: expandedSegments,
+            subresources: subresources === null ? undefined : JSON.parse(subresources),
+            resourceFormat,
+            ...otherProps,
+            raw,
+            modified: modifiedAt,
+        };
+    }
+
+    getResource(rid, options) {
+        const headerOnly = Boolean(options?.headerOnly);
+        const getResourceStmt = `getResource${headerOnly ? 'HeaderOnly' : ''}`;
+        this.#stmt[getResourceStmt] ??= this.#db.prepare(`
 SELECT
     channel,
     rid,
     sourceLang,
     targetLangs,
+    plan,
     prj,
-    subresources,
+    ${headerOnly ? 'segments,' : ''}
+    ${headerOnly ? 'subresources,' : ''}
     resourceFormat,
     resProps,
+    ${headerOnly ? 'raw,' : ''}
     modifiedAt
-FROM resources
-WHERE active = true
-ORDER BY channel, rid;
+FROM resources WHERE active = true AND rid = ?;
 `);
-        return this.#stmt.getTOC.all().map(res => {
-            const { channel, rid, sourceLang, targetLangs, prj, subresources, resourceFormat, resProps, modifiedAt } = res;
-            const otherProps = resProps ? JSON.parse(resProps) : {};
-            return {
-                channel,
-                id: rid,
-                sourceLang,
-                targetLangs: targetLangs === null ? undefined : JSON.parse(targetLangs),
-                prj: prj === null ? undefined : prj,
-                subresources: subresources === null ? undefined : JSON.parse(subresources),
-                resourceFormat,
-                ...otherProps,
-                modified: modifiedAt,
-            };
-        });
+
+        const resourceRow = this.#stmt[getResourceStmt].get(rid);
+        if (!resourceRow) {
+            throw new Error(`Resource not found: ${rid}`);
+        }
+        return this.#buildResource(resourceRow);
     }
 
     *getAllResources(options) {
@@ -176,6 +244,7 @@ SELECT
     rid,
     sourceLang,
     targetLangs,
+    plan,
     prj,
     segments,
     subresources,
@@ -198,37 +267,7 @@ FROM JSON_EACH(?) INNER JOIN segments ON value = guid
 ORDER BY key
 ;`);
         for (const resourceRow of this.#stmt[getResourcesStmt].iterate()) {
-            const { channel, rid, sourceLang, targetLangs, prj, segments, subresources, resourceFormat, resProps, raw, modifiedAt } = resourceRow;
-            const otherProps = resProps ? JSON.parse(resProps) : {};
-            const expandedSegments = this.#stmt.getSegmentsFromArray.all(segments).map(segment => {
-                const { guid, sid, nstr, notes, mf, props } = segment;
-                const otherProps = props ? JSON.parse(props) : {};
-                const parsedStr = JSON.parse(nstr);
-                const gstr = utils.flattenNormalizedSourceToOrdinal(parsedStr);
-                return {
-                    guid,
-                    rid,
-                    sid,
-                    nstr: parsedStr,
-                    gstr,
-                    notes: notes === null ? undefined : JSON.parse(notes),
-                    mf,
-                    ...otherProps,
-                };
-             });
-            yield {
-                channel,
-                id: rid,
-                sourceLang,
-                targetLangs: targetLangs === null ? undefined : JSON.parse(targetLangs),
-                prj: prj === null ? undefined : prj,
-                segments: expandedSegments,
-                subresources: subresources === null ? undefined : JSON.parse(subresources),
-                resourceFormat,
-                ...otherProps,
-                raw,
-                modified: modifiedAt,
-            };
+            yield this.#buildResource(resourceRow);
         }
     }
 

@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { config, L10nContext, normalizers, xml, stores, adapters, translators } from '@l10nmonster/core';
+import { config, policies, L10nContext, normalizers, xml, stores, adapters, translators } from '@l10nmonster/core';
 import * as ios from '@l10nmonster/helpers-ios';
 import path from 'path';
 // import translated from '@l10nmonster/helpers-translated';
@@ -14,12 +14,14 @@ import path from 'path';
 export const iosChannel = config.channel('ios', import.meta.dirname)
     .source(new adapters.FsSource({
         baseDir: '..',
-        globs: [ '../**/en.lproj/*.strings' ],
-        targetLangs: [ 'ar', 'en-ZZ', 'ja' ],
+        globs: 'en.lproj/*.strings',
+        sourceLang: 'en',
         }))
     .resourceFilter(new ios.StringsFilter())
     .decoders([ ios.phDecoder, ios.escapesDecoder, xml.entityDecoder ])
     .textEncoders([ normalizers.gatedEncoder(xml.entityEncoder, 'xmlEntityDecoder') ])
+    .policy(policies.fixedTargets(['ar', 'ja'], 70))
+    .policy(policies.fixedTargets('en-ZZ', 50))
     .target(new adapters.FsTarget({
         targetPath: (lang, resourceId) => resourceId.replace('en.lproj/', `${lang}.lproj/`),
     }));
@@ -112,7 +114,7 @@ export default config.l10nMonster(import.meta.dirname)
         id: 'primary',
         jobsDir: 'tmStore',
         partitioning: 'language',
-        compressStreams: true,
+        compressBlocks: true,
     }))
     .action(class mystats {
         static help = {

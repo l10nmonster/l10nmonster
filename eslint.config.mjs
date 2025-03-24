@@ -4,15 +4,16 @@ import { fileURLToPath } from "node:url";
 import js from "@eslint/js";
 import { FlatCompat } from "@eslint/eslintrc";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 const compat = new FlatCompat({
-    baseDirectory: __dirname,
+    baseDirectory: path.dirname(fileURLToPath(import.meta.url)),
+    // @ts-ignore
     recommendedConfig: js.configs.recommended,
     allConfig: js.configs.all
 });
 
-export default [...compat.extends("eslint:recommended"), {
+export default [
+    ...compat.extends("eslint:recommended"),
+    {
     languageOptions: {
         globals: {
             ...globals.node,
@@ -21,7 +22,6 @@ export default [...compat.extends("eslint:recommended"), {
         ecmaVersion: "latest",
         sourceType: "module",
     },
-
     rules: {
         "accessor-pairs": "error",
         "array-bracket-newline": "off",
@@ -115,6 +115,7 @@ export default [...compat.extends("eslint:recommended"), {
         "no-extra-label": "error",
         "no-extra-parens": "off",
         "no-floating-decimal": "off",
+        "no-floating-promises": "error",
         "no-implicit-coercion": "error",
         "no-implicit-globals": "error",
         "no-implied-eval": "error",
@@ -127,6 +128,7 @@ export default [...compat.extends("eslint:recommended"), {
         "no-lonely-if": "off",
         "no-loop-func": "off",
         "no-magic-numbers": "off",
+        "no-misused-promises": "error",
         "no-mixed-operators": "off",
         "no-multi-assign": "error",
 

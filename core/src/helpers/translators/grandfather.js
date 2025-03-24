@@ -20,8 +20,9 @@ export class Grandfather {
         const { tus, ...jobResponse } = jobRequest;
         jobResponse.tus = [];
         const txCache = {};
-        const resourceHandles = Object.fromEntries((await this.#mm.rm.getResourceHandles()).map(r => [r.id, r]));
+        const resourceHandles = [];
         for (const tu of tus) {
+            resourceHandles[tu.rid] ??= await this.#mm.rm.getResourceHandle(tu.rid);
             const resHandle = resourceHandles[tu.rid];
             if (!txCache[tu.rid]) {
                 if (resHandle) {

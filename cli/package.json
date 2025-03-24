@@ -31,6 +31,6 @@
         "node": ">=20"
     },
     "dependencies": {
-        "commander": "^12"
+        "commander": "^13"
     }
 }

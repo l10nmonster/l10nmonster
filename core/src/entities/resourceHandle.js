@@ -3,7 +3,7 @@ import { L10nContext } from '@l10nmonster/core';
 export class ResourceHandle {
     #formatHandler;
 
-    constructor({ id, channel, modified, resourceFormat, formatHandler, sourceLang, targetLangs, prj, raw, segments, subresources, ...other }) {
+    constructor({ id, channel, modified, resourceFormat, formatHandler, sourceLang, targetLangs, plan, prj, raw, segments, subresources, ...other }) {
         this.id = id;
         this.channel = channel;
         this.modified = modified;
@@ -11,6 +11,7 @@ export class ResourceHandle {
         this.#formatHandler = formatHandler;
         this.sourceLang = sourceLang;
         this.targetLangs = targetLangs;
+        this.plan = plan;
         this.prj = prj;
         this.raw = raw;
         this.segments = segments;

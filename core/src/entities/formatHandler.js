@@ -101,7 +101,7 @@ export class FormatHandler {
                 }
             }
             if (decoratedSeg !== undefined) {
-                Object.freeze(decoratedSeg);
+                // Object.freeze(decoratedSeg);
                 normalizedSegments.push(decoratedSeg);
             }
         }
@@ -119,7 +119,7 @@ export class FormatHandler {
             }
         }
         const segments = normalizedSegments.flat(1);
-        Object.freeze(segments);
+        // Object.freeze(segments);
         return { segments, subresources };
     }
 

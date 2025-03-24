@@ -6,55 +6,79 @@ export class Channel {
     #source;
     #formatHandlers;
     #defaultResourceFormat;
-    #defaultSourceLang;
     #target;
+    #translationPolicyPipeline;
 
-    constructor({ id, source, formatHandlers, defaultResourceFormat, target }) {
+    constructor({ id, source, formatHandlers, defaultResourceFormat, target, translationPolicyPipeline }) {
         this.#id = id;
         this.#source = source;
         this.#formatHandlers = formatHandlers;
         this.#defaultResourceFormat = defaultResourceFormat;
         this.#target = target;
+        this.#translationPolicyPipeline = translationPolicyPipeline;
     }
 
-    async init(mm) {
-        this.#defaultSourceLang = mm.sourceLang;
-    }
-
-    makeResourceHandleFromObject(obj) {
+    makeResourceHandleFromHeader(resourceHeader) {
          // sources can provide resources of different formats but we have a default
-        const resourceFormat = obj.resourceFormat ?? this.#defaultResourceFormat;
+        const resourceFormat = resourceHeader.resourceFormat ?? this.#defaultResourceFormat;
         const formatHandler = this.#formatHandlers[resourceFormat];
+        if (!resourceHeader.sourceLang) {
+            throw `Missing sourceLang in resource handle: ${JSON.stringify(resourceHeader)}`;
+        }
         return new ResourceHandle({
             channel: this.#id,
             resourceFormat: this.#defaultResourceFormat,
             formatHandler,
-            sourceLang: this.#defaultSourceLang, // can be overriden but here's the default
-            targetLangs: [],
-            ...obj,
+            ...resourceHeader,
         });
     }
 
-    async getResourceHandles() {
-        const resStats = await this.#source.fetchResourceStats();
-        L10nContext.logger.verbose(`Fetched resource handles for channel ${this.#id}`);
-        return resStats.map(rs => this.makeResourceHandleFromObject(rs));
+    async #makeFullResourceWithPolicyApplied(resourceHeader, rawResource) {
+        const handle = this.makeResourceHandleFromHeader(resourceHeader);
+        await handle.loadResourceFromRaw(rawResource, { isSource: true });
+        const targetLangs = new Set();
+        const stats = {};
+        const getStatsKey = translationPlan => Object.entries(translationPlan).map(([targetLang, q]) => `${targetLang}:${q}`).sort().join(',');
+        for (const segment of handle.segments) {
+            const policyContext = [ {}, segment, handle ];
+            this.#translationPolicyPipeline.forEach(policy => policy(policyContext))
+            const translationPlan = policyContext[0];
+            segment.plan = translationPlan;
+            Object.keys(translationPlan).forEach(targetLang => targetLangs.add(targetLang));
+            const statsKey = getStatsKey(translationPlan);
+            stats[statsKey] ??= 0;
+            stats[statsKey]++;
+        }
+        const defaultPlanKey = Object.entries(stats).sort((a, b) => b[1] - a[1])[0][0];
+        let plan = {};
+        for (const segment of handle.segments) {
+            const statsKey = getStatsKey(segment.plan);
+            if (statsKey === defaultPlanKey) {
+                plan = segment.plan;
+                delete segment.plan;
+            }
+        }
+        handle.plan = plan;
+        handle.targetLangs = Array.from(targetLangs).sort();
+        return handle;
     }
 
+    // async getResourceHandles() {
+    //     const resStats = await this.#source.fetchResourceStats();
+    //     L10nContext.logger.verbose(`Fetched resource handles for channel ${this.#id}`);
+    //     return resStats.map(rs => this.makeResourceHandleFromHeader(rs));
+    // }
+
     async *getAllNormalizedResources() {
-        if (this.#source.fetchAllResources) {
-            for await (const [resourceStat, rawResource] of this.#source.fetchAllResources(L10nContext.prj)) {
-                const handle = this.makeResourceHandleFromObject(resourceStat);
-                yield handle.loadResourceFromRaw(rawResource, { isSource: true });
+        if (this.#source.fetchAllResources) { // some sources support batching
+            for await (const [resourceHeader, rawResource] of this.#source.fetchAllResources(L10nContext.prj)) {
+                yield this.#makeFullResourceWithPolicyApplied(resourceHeader, rawResource);
             }
         } else {
-            const resourceStats = await this.#source.fetchResourceStats();
-            for (const resourceStat of resourceStats) {
-                if (L10nContext.prj === undefined || L10nContext.prj.includes(resourceStat.prj)) {
-                    const handle = this.makeResourceHandleFromObject(resourceStat);
-                    const rawResource = await this.#source.fetchResource(resourceStat.id);
-                    yield handle.loadResourceFromRaw(rawResource, { isSource: true });
-                }
+            const resourceHeaders = await this.#source.fetchResourceStats();
+            for (const resourceHeader of resourceHeaders) {
+                const rawResource = await this.#source.fetchResource(resourceHeader.id);
+                yield this.#makeFullResourceWithPolicyApplied(resourceHeader, rawResource);
             }
         }
     }
@@ -66,7 +90,7 @@ export class Channel {
 
     async getExistingTranslatedResource(resourceHandle, targetLang) {
         const rawResource = await this.#target.fetchTranslatedResource(targetLang, resourceHandle.id);
-        const translatedResource = this.makeResourceHandleFromObject(resourceHandle);
+        const translatedResource = this.makeResourceHandleFromHeader(resourceHandle);
         return translatedResource.loadResourceFromRaw(rawResource, { isSource: false });
     }
 

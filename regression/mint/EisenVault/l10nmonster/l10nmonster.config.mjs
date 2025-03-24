@@ -1,4 +1,4 @@
-import { L10nMonsterConfig, ChannelConfig, normalizers, xml, adapters, translators } from '@l10nmonster/core';
+import { L10nMonsterConfig, ChannelConfig, policies, normalizers, xml, adapters, translators } from '@l10nmonster/core';
 import * as java from '@l10nmonster/helpers-java';
 import * as demo from '@l10nmonster/helpers-demo';
 
@@ -9,9 +9,9 @@ export default new L10nMonsterConfig(import.meta.dirname)
     })
     .channel(new ChannelConfig('java')
         .source(new adapters.FsSource({
+            sourceLang: 'en',
             baseDir: '..',
             globs: [ '**/*_en.properties' ],
-            targetLangs: [ 'it' ],
         }))
         .resourceFilter(new java.PropertiesFilter())
         .decoders([ normalizers.bracePHDecoder, xml.tagDecoder, java.escapesDecoder ])
@@ -23,6 +23,7 @@ export default new L10nMonsterConfig(import.meta.dirname)
                 return seg;
             }
         ])
+        .policy(policies.fixedTargets('it', 50))
         .target(new adapters.FsTarget({
             baseDir: '..',
             targetPath: (lang, resourceId) => resourceId.replace('_en.properties', `_${lang.replace('-', '_')}.properties`),

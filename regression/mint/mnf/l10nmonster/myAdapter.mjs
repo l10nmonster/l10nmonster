@@ -1,10 +1,9 @@
 import { adapters } from '@l10nmonster/core';
 
 export class MySource {
-    constructor({ baseDir, globs, targetLangs, resourceFormat }) {
+    constructor({ baseDir, globs, sourceLang, resourceFormat }) {
         this.resourceFormat = resourceFormat;
-        this.targetLangs = targetLangs;
-        this.FsSource = new adapters.FsSource({ baseDir, globs });
+        this.FsSource = new adapters.FsSource({ sourceLang, baseDir, globs });
     }
 
     #mapSegments(rows) {
@@ -29,9 +28,9 @@ export class MySource {
     #makeStats(row) {
         return {
             id: row.id,
+            sourceLang: row.sourceLang,
             modified: row.modifiedAt,
             prj: row.id,
-            targetLangs: this.targetLangs,
             resourceFormat: this.resourceFormat
         };
     }

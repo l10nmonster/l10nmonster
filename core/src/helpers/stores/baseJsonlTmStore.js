@@ -18,7 +18,7 @@ export class BaseJsonlTmStore {
     id;
     access = 'readwrite';
     partitioning = 'job';
-    #compressStreams = false;
+    #compressBlocks = false;
     #compressionSuffix = '';
 
     /**
@@ -28,10 +28,10 @@ export class BaseJsonlTmStore {
      * @param {string} options.id - The logical id of the instance
      * @param {string} options.access? - The store access permissions (readwrite/readonly/writeonly)
      * @param {string} options.partitioning? - Partitioning strategy for TM Blocks
-     * @param {boolean} options.compressStreams? - Use Gzip compression
+     * @param {boolean} options.compressBlocks? - Use Gzip compression
      * @throws {Error} If no delegate is provided or invalid partitioning is specified
      */
-    constructor(delegate, { id, partitioning, access, compressStreams }) {
+    constructor(delegate, { id, partitioning, access, compressBlocks }) {
         if (!delegate || !id) {
             throw new Error('A delegate and a id are required to instantiate a LegacyFileBasedTmStore');
         }
@@ -51,8 +51,8 @@ export class BaseJsonlTmStore {
                 this.access = access;
             }
         }
-        if (compressStreams) {
-            this.#compressStreams = compressStreams;
+        if (compressBlocks) {
+            this.#compressBlocks = compressBlocks;
             this.#compressionSuffix = '.gz';
         }
     }
@@ -98,7 +98,7 @@ export class BaseJsonlTmStore {
             const blockName = toc.blocks[blockId]?.blockName;
             if (blockName) {
                 let reader = await this.delegate.getStream(blockName);
-                if (this.#compressStreams) {
+                if (this.#compressBlocks) {
                     reader = reader.pipe(zlib.createGunzip());
                 }
                 const rl = readline.createInterface({
@@ -200,7 +200,7 @@ export class BaseJsonlTmStore {
                 const blockName = this.#getTmBlockName({ sourceLang, targetLang, translationProvider, blockId });
                 let readable = Readable.from(generator());
 
-                if (this.#compressStreams) {
+                if (this.#compressBlocks) {
                     readable = readable.pipe(zlib.createGzip());
                 }
                 const modified = await this.delegate.saveStream(blockName, readable);

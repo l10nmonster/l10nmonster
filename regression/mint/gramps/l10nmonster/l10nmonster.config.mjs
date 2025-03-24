@@ -1,4 +1,4 @@
-import { L10nMonsterConfig, ChannelConfig, L10nContext, adapters, translators } from '@l10nmonster/core';
+import { L10nMonsterConfig, ChannelConfig, policies, L10nContext, adapters, translators } from '@l10nmonster/core';
 import { PoFilter } from '@l10nmonster/helpers-po';
 import * as demo from '@l10nmonster/helpers-demo';
 
@@ -9,13 +9,14 @@ export default new L10nMonsterConfig(import.meta.dirname)
         })
     .channel(new ChannelConfig('po')
         .source(new adapters.FsSource({
+            sourceLang: 'en',
             baseDir: '..',
             globs: [
                 'artifacts/*.pot',
             ],
-            targetLangs: [ 'ja' ],
         }))
         .resourceFilter(new PoFilter())
+        .policy(policies.fixedTargets([ 'ja' ], 0))
         .target(new adapters.FsTarget({
             baseDir: '..',
             targetPath: (lang) => `artifacts/${lang}.po`,

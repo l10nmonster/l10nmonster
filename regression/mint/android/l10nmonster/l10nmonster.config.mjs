@@ -1,4 +1,4 @@
-import { L10nMonsterConfig, ChannelConfig, normalizers, xml, stores, adapters, translators } from '@l10nmonster/core';
+import { L10nMonsterConfig, ChannelConfig, policies, normalizers, xml, stores, adapters, translators } from '@l10nmonster/core';
 import * as android from '@l10nmonster/helpers-android';
 import * as demo from '@l10nmonster/helpers-demo';
 
@@ -13,14 +13,15 @@ export default new L10nMonsterConfig(import.meta.dirname)
     })
     .channel(new ChannelConfig('android')
         .source(new adapters.FsSource({
+            sourceLang: 'en',
             baseDir: '..',
             globs: [ '**/values/strings*.xml' ],
-            targetLangs: [ 'piggy' ],
         }))
         .resourceFilter(new android.AndroidXMLFilter())
         .decoders([ xml.entityDecoder, xml.CDataDecoder, android.spaceCollapser, android.escapesDecoder, xml.tagDecoder, android.phDecoder ])
         .textEncoders([ android.escapesEncoder, xml.entityEncoder ])
         .codeEncoders([ normalizers.gatedEncoder(xml.entityEncoder, 'xmlCDataDecoder') ])
+        .policy(policies.fixedTargets('piggy', 1))
         .target(new adapters.FsTarget({
             baseDir: '..',
             targetPath: (lang, resourceId) => resourceId.replace('values', `values-${androidLangMapping[lang] || lang}`),

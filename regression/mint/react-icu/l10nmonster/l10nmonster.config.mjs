@@ -1,4 +1,4 @@
-import { L10nMonsterConfig, ChannelConfig, decorators, xml, adapters, translators } from '@l10nmonster/core';
+import { L10nMonsterConfig, ChannelConfig, policies, decorators, xml, adapters, translators } from '@l10nmonster/core';
 import { i18next } from '@l10nmonster/helpers-json';
 
 class ReactConfig extends L10nMonsterConfig {
@@ -13,17 +13,18 @@ class ReactConfig extends L10nMonsterConfig {
         })
         .channel(new ChannelConfig('react')
             .source(new adapters.FsSource({
+                sourceLang: 'en',
                 baseDir: '..',
                 globs: [ '**/en/*.json' ],
-                targetLangs: [ 'de', 'ru' ],
             }))
             .resourceFilter(new i18next.I18nextFilter({
                 enableArbAnnotations : true,
                 enablePluralSuffixes : true,
                 emitArbAnnotations : true,
             }))
-            .segmentDecorators([ this.#sg.getDecorator() ])
-            .decoders([ xml.tagDecoder, xml.entityDecoder, i18next.phDecoder ])
+                .segmentDecorators([ this.#sg.getDecorator() ])
+                .decoders([ xml.tagDecoder, xml.entityDecoder, i18next.phDecoder ])
+            .policy(policies.fixedTargets([ 'de', 'ru' ], 50))
             .target(new adapters.FsTarget({
                 baseDir: '..',
                 targetPath: (lang, resourceId) => resourceId.replace('en/', `${lang}/`),

@@ -19,11 +19,11 @@ function computeDelta(currentTranslations, newTranslations) {
 async function compareToExisting(mm, resHandle, targetLang, translatedRes) {
     let currentTranslations;
     let delta;
-        const channel = mm.rm.getChannel(resHandle.channel);
+    const channel = mm.rm.getChannel(resHandle.channel);
     try {
         currentTranslations = await channel.getExistingTranslatedResource(resHandle, targetLang);
         if (translatedRes) {
-            const newTranslations = await channel.makeResourceHandleFromObject(resHandle)
+            const newTranslations = await channel.makeResourceHandleFromHeader(resHandle)
                 .loadResourceFromRaw(translatedRes, { isSource: false });
             delta = computeDelta(currentTranslations, newTranslations);
         }

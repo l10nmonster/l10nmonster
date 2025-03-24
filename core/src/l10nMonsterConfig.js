@@ -122,6 +122,7 @@ export class ChannelConfig {
     #config = {};
     #resourceFormats = {};
     #messageFormats = {};
+    #translationPolicyPipeline = [];
     #currentResourceFormat;
     #currentMessageFormat;
 
@@ -151,6 +152,7 @@ export class ChannelConfig {
         });
         return new Channel({
             ...this.#config,
+            translationPolicyPipeline: this.#translationPolicyPipeline,
             formatHandlers,
         });
     }
@@ -162,6 +164,18 @@ export class ChannelConfig {
 
     target(target) {
         this.#config.target = target;
+        return this;
+    }
+
+    policy(policy) {
+        if (Array.isArray(policy)) {
+            policy.forEach(p => this.policy(p));
+            return this;
+        }
+        if (typeof policy !== 'function') {
+            throw new Error(`Translation policies must be of type function: ${policy}`);
+        }
+        this.#translationPolicyPipeline.push(policy);
         return this;
     }
 
@@ -268,7 +282,7 @@ export class L10nMonsterConfig {
      */
     constructor(baseDir) {
         if (!baseDir) {
-            throw 'Cannot initialize without a base directory (hint: pass import.meta.dirname)';
+            throw new Error('Cannot initialize without a base directory (hint: pass import.meta.dirname)');
         }
         L10nContext.baseDir = baseDir;
     }
@@ -296,11 +310,11 @@ export class L10nMonsterConfig {
      */
     channel(config) {
         if (Array.isArray(config)) {
-            config.forEach((c) => this.channel(c));
+            config.forEach(c => this.channel(c));
             return this;
         }
         if (this.channels[config.id]) {
-            throw `Channel with id ${config.id} already exists`;
+            throw new Error(`Channel with id ${config.id} already exists`);
         }
         this.channels[config.id] = config;
         return this;
@@ -419,7 +433,7 @@ export class L10nMonsterConfig {
             }
             return response;
         } catch(e) {
-            throw `Unable to run L10n Monster: ${e.stack || e}`;
+            throw new Error(`Unable to run L10n Monster: ${e.stack || e}`);
         }
     }
 }

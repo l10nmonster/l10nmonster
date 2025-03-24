@@ -11,7 +11,7 @@
     "license": "MIT",
     "dependencies": {
         "@google-cloud/storage": "^7",
-        "@google-cloud/translate": "^8"
+        "@google-cloud/translate": "^9"
     },
     "peerDependencies": {
         "@l10nmonster/core": "^2"

@@ -30,7 +30,7 @@ class AbstractFsAdapter {
 export class FsSource extends AbstractFsAdapter {
     globs;
     filter;
-    targetLangs;
+    sourceLang;
     prj;
     resDecorator;
     idFromPath;
@@ -40,23 +40,23 @@ export class FsSource extends AbstractFsAdapter {
      * Creates a new FsSource instance.
      * @param {Object} options - Configuration options for the source.
      * @param {string} [options.baseDir] - Base directory for resource files.
-     * @param {string[]} options.globs - Array of glob patterns to match resource files.
+     * @param {string} options.sourceLang - The source language of the resources.
+     * @param {string | string[]} options.globs - glob or array of glob patterns to match resource files.
      * @param {Function} [options.filter] - Function to filter resources based on their IDs.
-     * @param {string[]} [options.targetLangs] - Array of target languages for the resources.
      * @param {string} [options.prj] - Project identifier for the resources.
      * @param {Function} [options.resDecorator] - Function to decorate resource metadata.
      * @param {Function} [options.idFromPath] - Function to derive resource ID from file path.
      * @param {Function} [options.pathFromId] - Function to derive file path from resource ID.
      * @throws {string} Throws an error if `globs` is not provided.
      */
-    constructor({ baseDir, globs, filter, targetLangs, prj, resDecorator, idFromPath, pathFromId }) {
+    constructor({ baseDir, globs, filter, sourceLang, prj, resDecorator, idFromPath, pathFromId }) {
         super(baseDir);
-        if (globs === undefined) {
-            throw 'a globs property is required in FsSource';
+        if (globs === undefined || sourceLang === undefined) {
+            throw 'globs and sourceLang properties are required in FsSource';
         } else {
-            this.globs = globs;
+            this.globs = Array.isArray(globs) ? globs : [ globs ];
             this.filter = filter;
-            this.targetLangs = targetLangs;
+            this.sourceLang = sourceLang;
             this.prj = prj;
             this.resDecorator = resDecorator;
             this.idFromPath = idFromPath;
@@ -83,7 +83,7 @@ export class FsSource extends AbstractFsAdapter {
                     id,
                     modified: L10nContext.regression ? 1 : stats.mtime.toISOString(),
                 };
-                this.targetLangs && (resMeta.targetLangs = this.targetLangs);
+                resMeta.sourceLang = this.sourceLang;
                 this.prj && (resMeta.prj = this.prj);
                 if (typeof this.resDecorator === 'function') {
                     resMeta = this.resDecorator(resMeta);

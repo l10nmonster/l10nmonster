@@ -12,18 +12,18 @@ export class HttpSource {
      * @constructor
      * @param {Object} params - The parameters for initializing the HttpSource.
      * @param {Object} params.urlMap - A map of resource IDs to their corresponding URLs.
-     * @param {Array<string>} [params.targetLangs] - The target languages for the resources.
+     * @param {string} params.sourceLang - The source languages for the resources.
      * @param {string} [params.prj] - The project identifier associated with the resources.
      * @param {Function} [params.filter] - A function to filter resources based on their IDs.
      * @param {Function} [params.resDecorator] - A function to decorate resource metadata.
-     * @throws {string} Throws an error if `urlMap` or `targetLangs` (directly or via `resDecorator`) is not provided.
+     * @throws {string} Throws an error if `urlMap` or `sourceLang` (directly or via `resDecorator`) is not provided.
      */
-    constructor({ urlMap, targetLangs, prj, filter, resDecorator }) {
-        if (urlMap === undefined || (targetLangs || resDecorator) === undefined) {
-            throw 'You must specify urlMap, targetLangs (directly or via resDecorator) in HttpSource';
+    constructor({ urlMap, sourceLang, prj, filter, resDecorator }) {
+        if (urlMap === undefined || sourceLang === undefined) {
+            throw 'You must specify urlMap and sourceLang in HttpSource';
         } else {
             this.urlMap = urlMap;
-            this.targetLangs = targetLangs;
+            this.sourceLang = sourceLang;
             this.prj = prj;
             this.filter = filter;
             this.resDecorator = resDecorator;
@@ -37,8 +37,8 @@ export class HttpSource {
             if (!this.filter || this.filter(id)) {
                 let resMeta = {
                     id,
+                    sourceLang: this.sourceLang,
                     modified: L10nContext.regression ? 1 : new Date().toISOString(),
-                    targetLangs: this.targetLangs,
                 };
                 this.prj && (resMeta.prj = this.prj);
                 if (typeof this.resDecorator === 'function') {
