@@ -29,7 +29,7 @@ export default class DALManager {
         if (!this.#lazyTmDB) {
             this.#lazyTmDB = new Database(path.join(L10nContext.baseDir, 'l10nmonsterTM.db'));
             // this.#lazyTmDB.pragma('journal_mode = WAL');
-            const version = this.#lazyTmDB.prepare('select sqlite_version();').pluck().get();
+            const version = this.#lazyTmDB.prepare('ATTACH ? as source;').run(this.#sourceDB.name);
             L10nContext.logger.verbose(`Initialized TM DB with sqlite version ${version}`);
         }
         return this.#lazyTmDB;

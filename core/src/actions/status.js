@@ -30,15 +30,46 @@ export class status {
         options: [
             [ '-l, --lang <language>', 'only get status of target language' ],
             [ '-a, --all', 'show information for all projects, not just untranslated ones' ],
+            [ '-n, --new', 'show new stats' ],
             [ '--output <filename>', 'write status to the specified file' ],
         ]
     };
 
-    static async action(monsterManager, options) {
+    static async action(mm, options) {
+        if (options.new) {
+            const status = await mm.status();
+            // console.dir(status, { depth: null });
+            for (const [targetLang, langStatus] of Object.entries(status)) {
+                let previousSourceLang, previousMinQ;
+                for (const [sourceLang, pairStats] of Object.entries(langStatus)) {
+                    for (const chStatus of pairStats) {
+                        if (previousSourceLang !== sourceLang || previousMinQ !== chStatus.minQ) {
+                            consoleLog`\n  ‣ Translation pair ${sourceLang} → ${targetLang}(${chStatus.minQ})`;
+                            previousSourceLang = sourceLang;
+                            previousMinQ = chStatus.minQ;
+                        }
+                        const tuType = chStatus.q === null ? 'untranslated' : (chStatus.q === 0 ? 'in-flight' : `translated(${chStatus.q})`);
+                        consoleLog`      • ch: ${chStatus.channel} prj: ${chStatus.prj ?? 'default'} ${tuType} ${chStatus.res.toLocaleString()} ${[chStatus.res, 'resource', 'resources']} with ${chStatus.seg.toLocaleString()} ${[chStatus.seg, 'segment', 'segments']} ${chStatus.words.toLocaleString()} ${[chStatus.words, 'word', 'words']} ${chStatus.chars.toLocaleString()} ${[chStatus.chars, 'char', 'chars']}`;
+                    }
+                }
+            }
+            return;
+        }
         const limitToLang = options.lang;
         const all = Boolean(options.all);
         const output = options.output;
-        const status = await monsterManager.status({ limitToLang });
+        const status = {
+            lang: {},
+            numSources: 0,
+        };
+        const targetLangs = await mm.getTargetLangs(limitToLang);
+        for (const targetLang of targetLangs) {
+            const leverage = await mm.estimateTranslationJob({ targetLang });
+            status.lang[targetLang] = {
+                leverage,
+            };
+            status.numSources = leverage.numSources;
+        }
         if (output) {
             writeFileSync(output, JSON.stringify(status, null, '\t'), 'utf8');
         } else {

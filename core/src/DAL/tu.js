@@ -149,4 +149,32 @@ WHERE flattenNormalizedSourceToOrdinal(nsrc) = ?`);
             ;`);
         return this.#stmt.getStats.all();
     }
+
+    getActiveContentTranslationStatus(sourceLang, targetLang) {
+        this.#stmt.getActiveContentTranslationStatus ??= this.#db.prepare(`
+WITH tus AS (SELECT guid, MAX(q) q FROM ${this.#tusTable} GROUP BY 1)
+SELECT
+    channel,
+    prj,
+    p.value minQ,
+    q,
+    COUNT(distinct r.rid) res,
+    COUNT(s.value) seg,
+    SUM(words) words,
+    SUM(chars) chars
+FROM
+    resources r,
+    JSON_EACH(segments) s
+    JOIN segments seg ON s.value = seg.guid,
+    JSON_EACH(COALESCE(seg.plan, r.plan)) p
+    LEFT JOIN tus t ON s.value = t.guid
+WHERE
+    sourceLang = ?
+    AND p.key = ?
+    AND active = true
+GROUP BY 1, 2, 3, 4
+ORDER BY 1, 2, 3 DESC, 4 DESC
+;`);
+        return this.#stmt.getActiveContentTranslationStatus.all(sourceLang, targetLang);
+    }
 }

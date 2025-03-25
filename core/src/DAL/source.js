@@ -1,5 +1,7 @@
 import { L10nContext, utils } from '@l10nmonster/core';
 
+const spaceRegex = /\s+/g;
+
 export class SourceDAL {
     #db;
     #stmt = {}; // prepared statements
@@ -37,6 +39,8 @@ CREATE TABLE IF NOT EXISTS segments (
     mf TEXT,
     plan TEXT,
     props TEXT,
+    chars INTEGER,
+    words INTEGER,
     createdAt TEXT,
     modifiedAt TEXT,
     PRIMARY KEY (guid)
@@ -90,16 +94,20 @@ WHERE excluded.sourceLang != resources.sourceLang OR excluded.targetLangs != res
         // only notes and mf are mutable
         // gstr is ignores as it's derived from nstr
         this.#stmt.upsertSegment ??= this.#db.prepare(`
-INSERT INTO segments (guid, rid, sid, nstr, notes, mf, plan, props, createdAt, modifiedAt)
-VALUES (@guid, @rid, @sid, @nstr, @notes, @mf, @plan, @props, @modified, @modified)
+INSERT INTO segments (guid, rid, sid, nstr, notes, mf, plan, props, chars, words, createdAt, modifiedAt)
+VALUES (@guid, @rid, @sid, @nstr, @notes, @mf, @plan, @props, @chars, @words, @modified, @modified)
 ON CONFLICT (guid)
 DO UPDATE SET
     notes = excluded.notes,
     mf = excluded.mf,
     plan = excluded.plan,
     props = excluded.props,
+    chars = excluded.chars,
+    words = excluded.words,
     modifiedAt = excluded.modifiedAt
-WHERE excluded.notes != segments.notes OR excluded.mf != segments.mf OR excluded.plan != segments.plan OR excluded.props != segments.props
+WHERE
+    excluded.notes != segments.notes OR excluded.mf != segments.mf OR excluded.plan != segments.plan
+    OR excluded.props != segments.props OR excluded.chars != segments.chars OR excluded.words != segments.words
 `);
         const save = this.#db.transaction((res) => {
             const { channel, id, sourceLang, targetLangs, plan, prj, segments, subresources, resourceFormat, raw, modified, ...resProps } = res;
@@ -122,6 +130,7 @@ WHERE excluded.notes != segments.notes OR excluded.mf != segments.mf OR excluded
             for (const segment of segments) {
                 // eslint-disable-next-line no-unused-vars
                 const { guid, sid, nstr, gstr, notes, mf, plan, ...props } = segment;
+                const plainText = nstr.map(e => (typeof e === 'string' ? e : '')).join('');
                 const segmentResult = this.#stmt.upsertSegment.run({
                     guid,
                     rid: id,
@@ -131,6 +140,8 @@ WHERE excluded.notes != segments.notes OR excluded.mf != segments.mf OR excluded
                     mf: mf,
                     plan: plan && JSON.stringify(plan),
                     props: props && JSON.stringify(props),
+                    chars: plainText.length,
+                    words: (plainText.match(spaceRegex)?.length || 0) + 1,
                     modified: modified,
                 });
                 changedSegments += segmentResult.changes;

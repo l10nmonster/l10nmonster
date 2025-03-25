@@ -63,4 +63,8 @@ export class TM {
     getStats() {
         return this.#tuDAL.getStats();
     }
+
+    getActiveContentTranslationStatus() {
+        return this.#tuDAL.getActiveContentTranslationStatus(this.sourceLang, this.targetLang);
+    }
 }

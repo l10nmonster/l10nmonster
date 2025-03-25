@@ -1,18 +1,10 @@
-import { L10nContext } from '@l10nmonster/core';
-
-export async function statusCmd(mm, { limitToLang }) {
-    const status = {
-        lang: {},
-        numSources: 0,
-    };
-    const targetLangs = await mm.getTargetLangs(limitToLang);
-    for (const targetLang of targetLangs) {
-        const leverage = await mm.estimateTranslationJob({ targetLang });
-        status.lang[targetLang] = {
-            leverage,
-        };
-        status.numSources = leverage.numSources;
-        L10nContext.logger.info(`Calculated status of ${targetLang}`);
+export async function statusCmd(mm) {
+    const status = {};
+    const langPairs = await mm.rm.getAvailableLangPairs();
+    for (const [ sourceLang, targetLang ] of langPairs) {
+        const tm = mm.tmm.getTM(sourceLang, targetLang);
+        status[targetLang] ??= {};
+        status[targetLang][sourceLang] = tm.getActiveContentTranslationStatus();
     }
     return status;
 }
