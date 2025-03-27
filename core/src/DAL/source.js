@@ -1,5 +1,7 @@
 import { L10nContext, utils } from '@l10nmonster/core';
+import { createSQLObjectTransformer } from './index.js';
 
+const sqlTransformer = createSQLObjectTransformer(['targetLangs', 'plan', 'segments', 'subresources', 'resProps', 'nstr', 'notes', 'segProps'], ['resProps', 'segProps']);
 const spaceRegex = /\s+/g;
 
 export class SourceDAL {
@@ -38,7 +40,7 @@ CREATE TABLE IF NOT EXISTS segments (
     notes TEXT,
     mf TEXT,
     plan TEXT,
-    props TEXT,
+    segProps TEXT,
     chars INTEGER,
     words INTEGER,
     createdAt TEXT,
@@ -94,56 +96,49 @@ WHERE excluded.sourceLang != resources.sourceLang OR excluded.targetLangs != res
         // only notes and mf are mutable
         // gstr is ignores as it's derived from nstr
         this.#stmt.upsertSegment ??= this.#db.prepare(`
-INSERT INTO segments (guid, rid, sid, nstr, notes, mf, plan, props, chars, words, createdAt, modifiedAt)
-VALUES (@guid, @rid, @sid, @nstr, @notes, @mf, @plan, @props, @chars, @words, @modified, @modified)
+INSERT INTO segments (guid, rid, sid, nstr, notes, mf, plan, segProps, chars, words, createdAt, modifiedAt)
+VALUES (@guid, @rid, @sid, @nstr, @notes, @mf, @plan, @segProps, @chars, @words, @modified, @modified)
 ON CONFLICT (guid)
 DO UPDATE SET
     notes = excluded.notes,
     mf = excluded.mf,
     plan = excluded.plan,
-    props = excluded.props,
+    segProps = excluded.segProps,
     chars = excluded.chars,
     words = excluded.words,
     modifiedAt = excluded.modifiedAt
 WHERE
     excluded.notes != segments.notes OR excluded.mf != segments.mf OR excluded.plan != segments.plan
-    OR excluded.props != segments.props OR excluded.chars != segments.chars OR excluded.words != segments.words
+    OR excluded.segProps != segments.segProps OR excluded.chars != segments.chars OR excluded.words != segments.words
 `);
         const save = this.#db.transaction((res) => {
             const { channel, id, sourceLang, targetLangs, plan, prj, segments, subresources, resourceFormat, raw, modified, ...resProps } = res;
-            this.#stmt.upsertResource.run({
+            this.#stmt.upsertResource.run(sqlTransformer.encode({
                 channel,
                 rid: id,
                 sourceLang,
-                targetLangs: targetLangs && JSON.stringify(targetLangs),
-                plan: plan && JSON.stringify(plan),
+                targetLangs,
+                plan,
                 prj,
-                segments: JSON.stringify(segments.map(s => s.guid)),
-                subresources: subresources && JSON.stringify(subresources),
+                segments: segments.map(s => s.guid),
+                subresources,
                 resourceFormat,
-                resProps: resProps && JSON.stringify(resProps),
+                resProps,
                 raw,
                 modifiedAt: modified,
-            });
+            }));
             this.#stmt.markResourceAsActive.run(channel, id);
             let changedSegments = 0;
             for (const segment of segments) {
                 // eslint-disable-next-line no-unused-vars
-                const { guid, sid, nstr, gstr, notes, mf, plan, ...props } = segment;
+                const { guid, sid, nstr, gstr, notes, mf, plan, ...segProps } = segment;
                 const plainText = nstr.map(e => (typeof e === 'string' ? e : '')).join('');
-                const segmentResult = this.#stmt.upsertSegment.run({
-                    guid,
-                    rid: id,
-                    sid,
-                    nstr: JSON.stringify(nstr),
-                    notes: notes && JSON.stringify(notes),
-                    mf: mf,
-                    plan: plan && JSON.stringify(plan),
-                    props: props && JSON.stringify(props),
+                const segmentResult = this.#stmt.upsertSegment.run(sqlTransformer.encode({
+                    guid, rid: id, sid, nstr, notes, mf, plan, segProps,
                     chars: plainText.length,
                     words: (plainText.match(spaceRegex)?.length || 0) + 1,
-                    modified: modified,
-                });
+                    modified,
+                }));
                 changedSegments += segmentResult.changes;
             }
             return changedSegments;
@@ -185,38 +180,26 @@ WHERE
 //     }
 
     #buildResource(resourceRow) {
-        const { channel, rid, sourceLang, targetLangs, plan, prj, segments, subresources, resourceFormat, resProps, raw, modifiedAt } = resourceRow;
-        const otherProps = resProps ? JSON.parse(resProps) : {};
-        const expandedSegments = this.#stmt.getSegmentsFromArray.all(segments).map(segment => {
-            const { guid, sid, nstr, notes, mf, props } = segment;
-            const otherProps = props ? JSON.parse(props) : {};
-            const parsedStr = JSON.parse(nstr);
-            const gstr = utils.flattenNormalizedSourceToOrdinal(parsedStr);
-            return {
-                guid,
-                rid,
-                sid,
-                nstr: parsedStr,
-                gstr,
-                notes: notes === null ? undefined : JSON.parse(notes),
-                mf,
-                ...otherProps,
-            };
+        this.#stmt.getSegmentsFromArray ??= this.#db.prepare(`
+SELECT
+    guid,
+    sid,
+    nstr,
+    notes,
+    mf,
+    segProps
+FROM JSON_EACH(?) INNER JOIN segments ON value = guid
+ORDER BY key
+;`);
+        const { rid, segments, ...rawResource } = resourceRow;
+        const expandedSegments = segments && this.#stmt.getSegmentsFromArray.all(segments).map(segment => {
+            const decodedSeg = sqlTransformer.decode(segment);
+            decodedSeg.rid = rid;
+            decodedSeg.gstr = utils.flattenNormalizedSourceToOrdinal(decodedSeg.nstr);
+            return decodedSeg;
          });
-        return {
-            channel,
-            id: rid,
-            sourceLang,
-            targetLangs: targetLangs === null ? undefined : JSON.parse(targetLangs),
-            plan: plan === null ? undefined : JSON.parse(plan),
-            prj: prj === null ? undefined : prj,
-            segments: expandedSegments,
-            subresources: subresources === null ? undefined : JSON.parse(subresources),
-            resourceFormat,
-            ...otherProps,
-            raw,
-            modified: modifiedAt,
-        };
+        const decodedRes = sqlTransformer.decode(rawResource);
+        return { id: rid, segments: expandedSegments, ...decodedRes };
     }
 
     getResource(rid, options) {
@@ -265,18 +248,6 @@ SELECT
     modifiedAt
 FROM resources WHERE active = true ORDER BY channel, rid;
 `);
-
-        this.#stmt.getSegmentsFromArray ??= this.#db.prepare(`
-SELECT
-    guid,
-    sid,
-    nstr,
-    notes,
-    mf,
-    props
-FROM JSON_EACH(?) INNER JOIN segments ON value = guid
-ORDER BY key
-;`);
         for (const resourceRow of this.#stmt[getResourcesStmt].iterate()) {
             yield this.#buildResource(resourceRow);
         }
@@ -293,10 +264,7 @@ ORDER BY key
         }
         const flattenedString = utils.flattenNormalizedSourceToOrdinal(str);
         const tuRows = this.#stmt.searchString.all(flattenedString);
-        return tuRows.map(({ nstr, ...otherProps }) => ({
-            nstr: nstr ? JSON.parse(nstr) : undefined,
-            ...otherProps,
-        }));
+        return tuRows.map(sqlTransformer.decode);
     }
 
     getAvailableLangPairs() {

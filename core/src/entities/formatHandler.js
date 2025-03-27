@@ -1,5 +1,24 @@
 import { L10nContext, utils } from '@l10nmonster/core';
 
+function processNotes(normalizedSeg) {
+    if (typeof normalizedSeg.notes === 'string') {
+        normalizedSeg.rawNotes = normalizedSeg.notes;
+        normalizedSeg.notes = utils.extractStructuredNotes(normalizedSeg.notes);
+    }
+    if (normalizedSeg.notes !== null && typeof normalizedSeg.notes === 'object') { // unfortunately null is an object
+        // populate ph samples from comments
+        if (normalizedSeg.notes.ph) {
+            for (const part of normalizedSeg.nstr) {
+                if (part.t === 'x' && normalizedSeg.notes.ph[part.v]?.sample !== undefined && part.s === undefined) {
+                    part.s = normalizedSeg.notes.ph[part.v].sample;
+                }
+            }
+        }
+    } else {
+        delete normalizedSeg.notes;
+    }
+}
+
 export class FormatHandler {
     #id;
     #resourceFilter;
@@ -76,20 +95,9 @@ export class FormatHandler {
         const normalizedSegments = []; // these have nstr
         const rawSegments = parsedRes.segments ?? []; // these have str
         for (const rawSegment of rawSegments.flat(1)) {
-            const { str, notes, mf, ...normalizedSeg } = rawSegment;
+            const { str, mf, ...normalizedSeg } = rawSegment;
             this.#populateGuid(rid, str, mf ?? this.#defaultMessageFormat, normalizedSeg);
-            if (typeof notes === 'string') {
-                normalizedSeg.rawNotes = notes;
-                normalizedSeg.notes = utils.extractStructuredNotes(notes);
-            }
-            // populate ph samples from comments
-            if (normalizedSeg.notes?.ph) {
-                for (const part of normalizedSeg.nstr) {
-                    if (part.t === 'x' && normalizedSeg.notes.ph[part.v]?.sample !== undefined && part.s === undefined) {
-                        part.s = normalizedSeg.notes.ph[part.v].sample;
-                    }
-                }
-            }
+            processNotes(normalizedSeg);
             let decoratedSeg = normalizedSeg;
             if (this.#segmentDecorators) {
                 for (const decorator of this.#segmentDecorators) {
@@ -99,6 +107,7 @@ export class FormatHandler {
                         break;
                     }
                 }
+                processNotes(decoratedSeg); // we may need to process notes again as they may have changed in the decorator
             }
             if (decoratedSeg !== undefined) {
                 // Object.freeze(decoratedSeg);

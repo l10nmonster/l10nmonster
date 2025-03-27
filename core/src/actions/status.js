@@ -24,24 +24,38 @@ function printLeverage(leverage, detailed) {
     leverage.internalRepetitions && consoleLog`    - untranslated repeated strings: ${leverage.internalRepetitions.toLocaleString()} (${leverage.internalRepetitionWords.toLocaleString()} words)`;
 }
 
+async function getStatusForAllPairs(mm, method) {
+    const status = {};
+    const langPairs = await mm.rm.getAvailableLangPairs();
+    for (const [ sourceLang, targetLang ] of langPairs) {
+        const tm = mm.tmm.getTM(sourceLang, targetLang);
+        status[targetLang] ??= {};
+        status[targetLang][sourceLang] = tm[method]();
+    }
+    return status;
+}
+
 export class status {
     static help = {
         description: 'translation status of content.',
+        arguments: [
+            [ '[focus]', 'area of focus', ['summary', 'untranslated'] ],
+        ],
         options: [
             [ '-l, --lang <language>', 'only get status of target language' ],
             [ '-a, --all', 'show information for all projects, not just untranslated ones' ],
-            [ '-n, --new', 'show new stats' ],
             [ '--output <filename>', 'write status to the specified file' ],
         ]
     };
 
     static async action(mm, options) {
-        if (options.new) {
-            const status = await mm.status();
+        if (options.focus === 'summary') {
+            consoleLog`Active Content Translation Status`;
+            const status = await getStatusForAllPairs(mm, 'getActiveContentTranslationStatus');
             // console.dir(status, { depth: null });
-            for (const [targetLang, langStatus] of Object.entries(status)) {
+            for (const [targetLang, targetLangStatus] of Object.entries(status)) {
                 let previousSourceLang, previousMinQ;
-                for (const [sourceLang, pairStats] of Object.entries(langStatus)) {
+                for (const [sourceLang, pairStats] of Object.entries(targetLangStatus)) {
                     for (const chStatus of pairStats) {
                         if (previousSourceLang !== sourceLang || previousMinQ !== chStatus.minQ) {
                             consoleLog`\n  ‣ Translation pair ${sourceLang} → ${targetLang}(${chStatus.minQ})`;
@@ -55,44 +69,73 @@ export class status {
             }
             return;
         }
-        const limitToLang = options.lang;
-        const all = Boolean(options.all);
-        const output = options.output;
-        const status = {
-            lang: {},
-            numSources: 0,
-        };
-        const targetLangs = await mm.getTargetLangs(limitToLang);
-        for (const targetLang of targetLangs) {
-            const leverage = await mm.estimateTranslationJob({ targetLang });
-            status.lang[targetLang] = {
-                leverage,
-            };
-            status.numSources = leverage.numSources;
-        }
-        if (output) {
-            writeFileSync(output, JSON.stringify(status, null, '\t'), 'utf8');
-        } else {
-            const numLangs = Object.keys(status.lang).length;
-            consoleLog`${status.numSources.toLocaleString()} translatable ${[status.numSources, 'resource', 'resources']} in ${numLangs} ${[numLangs, 'language', 'languages']} -- showing status of ${all ? 'all' : 'untranslated'} projects`;
-            for (const [lang, langStatus] of Object.entries(status.lang)) {
-                consoleLog`\nLanguage ${lang} (minimum quality: ${langStatus.leverage.minimumQuality})`;
-                const totals = {};
-                const prjLeverage = Object.entries(langStatus.leverage.prjLeverage).sort((a, b) => (a[0] > b[0] ? 1 : -1));
-                for (const [prj, leverage] of prjLeverage) {
-                    computeTotals(totals, leverage);
-                    const untranslated = leverage.pending + leverage.untranslated + leverage.internalRepetitions;
-                    if (leverage.translated + untranslated > 0) {
-                        (all || untranslated > 0) && consoleLog`  Project: ${prj}`;
-                        printLeverage(leverage, all);
+        if (options.focus === 'untranslated') {
+            consoleLog`Untranslated Content Status`;
+            const status = await getStatusForAllPairs(mm, 'getUntranslatedContentStatus');
+            // console.dir(status, { depth: null });
+            for (const [targetLang, targetLangStatus] of Object.entries(status)) {
+                let previousSourceLang, previousMinQ;
+                for (const [sourceLang, pairSegments] of Object.entries(targetLangStatus)) {
+                    consoleLog`\n  ‣ Translation pair ${sourceLang} → ${targetLang}`;
+                    if (pairSegments.length > 0) {
+                        const pairStats = {};
+                        for (const seg of pairSegments) {
+                            const stats = pairStats[`${seg.channel}|${seg.prj}`] ??= { channel: seg.channel, prj: seg.prj, res: new Set(), segs: 0, words: 0, chars: 0 };
+                            stats.res.add(seg.rid);
+                            stats.segs++;
+                            stats.words += seg.words;
+                            stats.chars += seg.chars;
+                        }
+                        for (const stats of Object.values(pairStats)) {
+                            consoleLog`      • ch: ${stats.channel} prj: ${stats.prj ?? 'default'} ${stats.res.size.toLocaleString()} ${[stats.res.size, 'resource', 'resources']} with ${stats.segs.toLocaleString()} ${[stats.segs, 'segment', 'segments']} ${stats.words.toLocaleString()} ${[stats.words, 'word', 'words']} ${stats.chars.toLocaleString()} ${[stats.chars, 'char', 'chars']}`;
+                        }
+                    } else {
+                        consoleLog`      • fully translated`;
                     }
                 }
-                if (prjLeverage.length > 1) {
-                    consoleLog`  Total:`;
-                    printLeverage(totals, true);
+            }
+            return;
+        }
+        if (!options.focus) {
+            const limitToLang = options.lang;
+            const all = Boolean(options.all);
+            const output = options.output;
+            const status = {
+                lang: {},
+                numSources: 0,
+            };
+            const targetLangs = await mm.getTargetLangs(limitToLang);
+            for (const targetLang of targetLangs) {
+                const leverage = await mm.estimateTranslationJob({ targetLang });
+                status.lang[targetLang] = {
+                    leverage,
+                };
+                status.numSources = leverage.numSources;
+            }
+            if (output) {
+                writeFileSync(output, JSON.stringify(status, null, '\t'), 'utf8');
+            } else {
+                const numLangs = Object.keys(status.lang).length;
+                consoleLog`${status.numSources.toLocaleString()} translatable ${[status.numSources, 'resource', 'resources']} in ${numLangs} ${[numLangs, 'language', 'languages']} -- showing status of ${all ? 'all' : 'untranslated'} projects`;
+                for (const [lang, targetLangStatus] of Object.entries(status.lang)) {
+                    consoleLog`\nLanguage ${lang} (minimum quality: ${targetLangStatus.leverage.minimumQuality})`;
+                    const totals = {};
+                    const prjLeverage = Object.entries(targetLangStatus.leverage.prjLeverage).sort((a, b) => (a[0] > b[0] ? 1 : -1));
+                    for (const [prj, leverage] of prjLeverage) {
+                        computeTotals(totals, leverage);
+                        const untranslated = leverage.pending + leverage.untranslated + leverage.internalRepetitions;
+                        if (leverage.translated + untranslated > 0) {
+                            (all || untranslated > 0) && consoleLog`  Project: ${prj}`;
+                            printLeverage(leverage, all);
+                        }
+                    }
+                    if (prjLeverage.length > 1) {
+                        consoleLog`  Total:`;
+                        printLeverage(totals, true);
+                    }
                 }
             }
+            return status;
         }
-        return status;
     }
 }

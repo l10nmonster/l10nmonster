@@ -85,11 +85,20 @@
 				" created blog post ",
 				{
 					"t": "x",
-					"v": "{0}"
+					"v": "{0}",
+					"s": "Hello World"
 				}
 			],
 			"guid": "3rblxtRQl_XxzcIRIcuXD1YiqWoZZGm2OK6VT_3AvEE",
-			"notes": "PH({0}|Hello World|Item title / page link)"
+			"notes": {
+				"ph": {
+					"{0}": {
+						"sample": "Hello World",
+						"desc": "Item title / page link"
+					}
+				},
+				"desc": ""
+			}
 		},
 		{
 			"rid": "dashlets/activity-list.get_en.properties",
@@ -102,11 +111,20 @@
 				" updated blog post ",
 				{
 					"t": "x",
-					"v": "{0}"
+					"v": "{0}",
+					"s": "Hello World"
 				}
 			],
 			"guid": "YWxB6wV9NKqyi_xBz9gfJXM9gVGUn8fmMLpstgYj4GQ",
-			"notes": "PH({0}|Hello World|Item title / page link)"
+			"notes": {
+				"ph": {
+					"{0}": {
+						"sample": "Hello World",
+						"desc": "Item title / page link"
+					}
+				},
+				"desc": ""
+			}
 		},
 		{
 			"rid": "dashlets/activity-list.get_en.properties",
@@ -119,11 +137,20 @@
 				" deleted blog post ",
 				{
 					"t": "x",
-					"v": "{0}"
+					"v": "{0}",
+					"s": "Hello World"
 				}
 			],
 			"guid": "M9uKQf1rlQ2VvflkhXLRngLoR1dO97dbM0pgqzAYWBQ",
-			"notes": "PH({0}|Hello World|Item title / page link)"
+			"notes": {
+				"ph": {
+					"{0}": {
+						"sample": "Hello World",
+						"desc": "Item title / page link"
+					}
+				},
+				"desc": ""
+			}
 		},
 		{
 			"rid": "dashlets/activity-list.get_en.properties",

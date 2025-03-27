@@ -1,4 +1,7 @@
 import { L10nContext, utils } from '@l10nmonster/core';
+import { createSQLObjectTransformer } from './index.js';
+
+const sqlTransformer = createSQLObjectTransformer(['nstr', 'nsrc', 'ntgt', 'notes', 'tuProps'], ['tuProps']);
 
 export class TuDAL {
     #db;
@@ -42,29 +45,13 @@ ON ${this.#tusTable} (jobGuid);
     getEntry(guid) {
         this.#stmt.getEntry ??= this.#db.prepare(`SELECT jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuProps FROM ${this.#tusTable} WHERE guid = ? ORDER BY q DESC, ts DESC LIMIT 1`);
         const tuRow = this.#stmt.getEntry.get(guid);
-        if (tuRow) {
-            // need to extract and parse all JSON props
-            const { nsrc, ntgt, notes, tuProps, ...otherProps } = tuRow;
-            return {
-                nsrc: nsrc ? JSON.parse(nsrc) : undefined,
-                ntgt: ntgt ? JSON.parse(ntgt) : undefined,
-                notes: notes ? JSON.parse(notes) : undefined,
-                ...otherProps,
-                ...tuProps && JSON.parse(tuProps),
-            };
-        }
+        return tuRow ? sqlTransformer.decode(tuRow) : undefined;
     }
 
     getEntriesByJobGuid(jobGuid) {
         this.#stmt.getEntriesByJobGuid ??= this.#db.prepare(`SELECT jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuProps FROM ${this.#tusTable} WHERE jobGuid = ? ORDER BY tuOrder`);
         const tuRows = this.#stmt.getEntriesByJobGuid.all(jobGuid);
-        return tuRows.map(({ nsrc, ntgt, notes, tuProps, ...otherProps }) => ({
-            nsrc: nsrc ? JSON.parse(nsrc) : undefined,
-            ntgt: ntgt ? JSON.parse(ntgt) : undefined,
-            notes: notes ? JSON.parse(notes) : undefined,
-            ...otherProps,
-            ...tuProps && JSON.parse(tuProps),
-        }));
+        return tuRows.map(sqlTransformer.decode);
     }
 
     setEntry(tu) {
@@ -86,20 +73,9 @@ ON ${this.#tusTable} (jobGuid);
             ;`);
         // select properties are extracted so that they can be queried
         const { jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuOrder, ...tuProps } = tu;
-        const result = this.#stmt.setEntry.run({
-            jobGuid,
-            guid,
-            rid,
-            sid,
-            nsrc: JSON.stringify(nsrc),
-            ntgt: JSON.stringify(ntgt),
-            notes: JSON.stringify(notes),
-            q,
-            ts,
-            tuOrder,
-            tuProps: JSON.stringify(tuProps),
-            // TODO: populate inflight?
-        });
+        const result = this.#stmt.setEntry.run(sqlTransformer.encode({
+            jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuOrder, tuProps // TODO: populate inflight?
+        }));
         if (result.changes !== 1) {
             throw new Error(`Expecting to change a row but changed: ${result.changes}`);
         }
@@ -120,13 +96,7 @@ WHERE flattenNormalizedSourceToOrdinal(nsrc) = ?`);
         }
         const flattenedSrc = utils.flattenNormalizedSourceToOrdinal(nsrc);
         const tuRows = this.#stmt.getEntriesByFlatSrc.all(flattenedSrc);
-        return tuRows.map(({ nsrc, ntgt, notes, tuProps, ...otherProps }) => ({
-            nsrc: nsrc ? JSON.parse(nsrc) : undefined,
-            ntgt: ntgt ? JSON.parse(ntgt) : undefined,
-            notes: notes ? JSON.parse(notes) : undefined,
-            ...otherProps,
-            ...tuProps && JSON.parse(tuProps),
-        }));
+        return tuRows.map(sqlTransformer.decode);
     }
 
     deleteEntriesByJobGuid(jobGuid) {
@@ -176,5 +146,37 @@ GROUP BY 1, 2, 3, 4
 ORDER BY 1, 2, 3 DESC, 4 DESC
 ;`);
         return this.#stmt.getActiveContentTranslationStatus.all(sourceLang, targetLang);
+    }
+
+    // TODO: add a maximum segment parameter to limit giant jobs
+    getUntranslatedContentStatus(sourceLang, targetLang) {
+        this.#stmt.getUntranslatedContentStatus ??= this.#db.prepare(`
+WITH tus AS (SELECT guid, MAX(q) q FROM ${this.#tusTable} GROUP BY 1)
+SELECT
+    channel,
+    prj,
+    r.rid rid,
+    seg.sid,
+    seg.guid guid,
+    nstr,
+    notes,
+    p.value minQ,
+    words,
+    chars
+FROM
+    resources r,
+    JSON_EACH(segments) s
+    JOIN segments seg ON s.value = seg.guid,
+    JSON_EACH(COALESCE(seg.plan, r.plan)) p
+    LEFT JOIN tus t ON s.value = t.guid
+WHERE
+    sourceLang = ?
+    AND p.key = ?
+    AND active = true
+    AND (q IS NULL OR (q != 0 AND q < p.value))
+GROUP BY 1, 2, 3, 4
+ORDER BY 1, 2, 3 DESC, 4 DESC
+;`);
+        return this.#stmt.getUntranslatedContentStatus.all(sourceLang, targetLang).map(sqlTransformer.decode);
     }
 }

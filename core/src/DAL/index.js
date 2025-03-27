@@ -80,3 +80,38 @@ export default class DALManager {
         }
     }
 }
+
+export function createSQLObjectTransformer(jsonProps, spreadingProps = []) {
+    return {
+        encode(obj) {
+            for (const key of jsonProps) {
+                if (obj.hasOwnProperty(key) && typeof obj[key] === 'object' && obj[key] !== null) {
+                    obj[key] = JSON.stringify(obj[key]);
+                }
+            }
+            return obj;
+        },
+        decode(obj) {
+            Object.entries(obj).forEach(([ key, value]) => {
+                if (value === null) {
+                    delete obj[key];
+                } else {
+                    if (jsonProps.includes(key)) {
+                        try {
+                            const parsed = JSON.parse(value);
+                            if (spreadingProps.includes(key) && typeof parsed === 'object') {
+                                delete obj[key];
+                                Object.assign(obj, parsed);
+                            } else {
+                                obj[key] = parsed;
+                            }
+                        } catch (e) {
+                            throw new Error(`Failed to parse JSON for key ${key}: ${obj[key]}`);
+                        }
+                    }
+                }
+            });
+            return obj;
+        }
+    };
+}
