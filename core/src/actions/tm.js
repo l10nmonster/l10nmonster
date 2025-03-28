@@ -5,7 +5,7 @@ import { tm_list } from './tmList.js';
 
 export class tm {
     static help = {
-        description: 'various operations on local TM Cache and TM Stores.',
+        description: 'various operations on translation memories.',
     };
 
     static subActions = [ tm_syncup, tm_syncdown, tm_list ];

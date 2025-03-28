@@ -5,7 +5,7 @@ export { jobs } from './jobs.js';
 export { monster } from './monster.js';
 export { pull } from './pull.js';
 export { push } from './push.js';
-export { snap } from './snap.js';
+export { source } from './source.js';
 export { status } from './status.js';
 export { tm } from './tm.js';
 export { tmexport } from './tmexport.js';

@@ -1,6 +1,6 @@
 import { consoleLog } from '@l10nmonster/core';
 
-export class snap {
+export class source_snap {
     static help = {
         description: 'commits a snapshot of sources in the local cache.',
         options: [
