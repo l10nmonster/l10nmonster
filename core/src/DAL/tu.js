@@ -149,8 +149,8 @@ ORDER BY 1, 2, 3 DESC, 4 DESC
     }
 
     // TODO: add a maximum segment parameter to limit giant jobs
-    getUntranslatedContentStatus(sourceLang, targetLang) {
-        this.#stmt.getUntranslatedContentStatus ??= this.#db.prepare(`
+    getUntranslatedContent(sourceLang, targetLang) {
+        this.#stmt.getUntranslatedContent ??= this.#db.prepare(`
 WITH tus AS (SELECT guid, MAX(q) q FROM ${this.#tusTable} GROUP BY 1)
 SELECT
     channel,
@@ -177,6 +177,6 @@ WHERE
 GROUP BY 1, 2, 3, 4
 ORDER BY 1, 2, 3 DESC, 4 DESC
 ;`);
-        return this.#stmt.getUntranslatedContentStatus.all(sourceLang, targetLang).map(sqlTransformer.decode);
+        return this.#stmt.getUntranslatedContent.all(sourceLang, targetLang).map(sqlTransformer.decode);
     }
 }

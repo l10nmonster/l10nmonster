@@ -1,5 +1,5 @@
 import { writeFileSync } from 'fs';
-import { consoleLog } from '@l10nmonster/core';
+import { consoleLog, utils } from '@l10nmonster/core';
 
 function computeTotals(totals, partial) {
     for (const [ k, v ] of Object.entries(partial)) {
@@ -70,24 +70,42 @@ export class status {
             return;
         }
         if (options.focus === 'untranslated') {
-            consoleLog`Untranslated Content Status`;
-            const status = await getStatusForAllPairs(mm, 'getUntranslatedContentStatus');
+            consoleLog`Untranslated Content Status (total untranslated/internal leverage/tm leverage)`;
+            const status = await getStatusForAllPairs(mm, 'getUntranslatedContent');
             // console.dir(status, { depth: null });
             for (const [targetLang, targetLangStatus] of Object.entries(status)) {
-                let previousSourceLang, previousMinQ;
                 for (const [sourceLang, pairSegments] of Object.entries(targetLangStatus)) {
                     consoleLog`\n  ‣ Translation pair ${sourceLang} → ${targetLang}`;
                     if (pairSegments.length > 0) {
+                        const tm = mm.tmm.getTM(sourceLang, targetLang);
+                        const repetitionMap = {};
                         const pairStats = {};
                         for (const seg of pairSegments) {
-                            const stats = pairStats[`${seg.channel}|${seg.prj}`] ??= { channel: seg.channel, prj: seg.prj, res: new Set(), segs: 0, words: 0, chars: 0 };
+                            const stats = pairStats[`${seg.channel}|${seg.prj}`] ??= { channel: seg.channel, prj: seg.prj, res: new Set(), segs: 0, words: 0, chars: 0, repSegs: 0, repWords: 0, repChars: 0, intSegs: 0, intWords: 0, intChars: 0 };
+                            const gstr = utils.flattenNormalizedSourceToOrdinal(seg.nstr);
+                            if (repetitionMap[gstr]) {
+                                    stats.intSegs++;
+                                    stats.intWords += seg.words;
+                                    stats.intChars += seg.chars;
+                                } else {
+                                if (tm.getExactMatches(seg.nstr).some(tu => tu.q >= seg.minQ || tu.inflight)) {
+                                    stats.repSegs++;
+                                    stats.repWords += seg.words;
+                                    stats.repChars += seg.chars;
+                                }
+                                repetitionMap[gstr] = true;
+                            }
                             stats.res.add(seg.rid);
                             stats.segs++;
                             stats.words += seg.words;
                             stats.chars += seg.chars;
                         }
                         for (const stats of Object.values(pairStats)) {
-                            consoleLog`      • ch: ${stats.channel} prj: ${stats.prj ?? 'default'} ${stats.res.size.toLocaleString()} ${[stats.res.size, 'resource', 'resources']} with ${stats.segs.toLocaleString()} ${[stats.segs, 'segment', 'segments']} ${stats.words.toLocaleString()} ${[stats.words, 'word', 'words']} ${stats.chars.toLocaleString()} ${[stats.chars, 'char', 'chars']}`;
+consoleLog`      • ch: ${stats.channel} prj: ${stats.prj ?? 'default'} \
+resources: ${stats.res.size.toLocaleString()} \
+segments: ${stats.segs.toLocaleString()}/${stats.intSegs.toLocaleString()}/${stats.repSegs.toLocaleString()} \
+words: ${stats.words.toLocaleString()}/${stats.intWords.toLocaleString()}/${stats.repWords.toLocaleString()} \
+chars: ${stats.chars.toLocaleString()}/${stats.intChars.toLocaleString()}/${stats.repChars.toLocaleString()}`;
                         }
                     } else {
                         consoleLog`      • fully translated`;

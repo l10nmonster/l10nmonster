@@ -3,7 +3,6 @@ import { L10nContext, TU, utils, analyzers } from '@l10nmonster/core';
 import DALManager from '../DAL/index.js';
 import TMManager from '../tmManager/index.js';
 import ResourceManager from '../resourceManager/index.js';
-import { statusCmd } from './status.js';
 import { pushCmd } from './push.js';
 import { jobsCmd } from './jobs.js';
 import { jobPushCmd } from './job.js';
@@ -76,10 +75,6 @@ export class MonsterManager {
      // expose L10nContext
     get l10nContext() {
         return L10nContext;
-    }
-
-    async status(options) {
-        return await statusCmd(this, options);
     }
 
     async push(options) {

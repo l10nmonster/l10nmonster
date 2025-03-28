@@ -68,7 +68,7 @@ export class TM {
         return this.#tuDAL.getActiveContentTranslationStatus(this.sourceLang, this.targetLang);
     }
 
-    getUntranslatedContentStatus() {
-        return this.#tuDAL.getUntranslatedContentStatus(this.sourceLang, this.targetLang);
+    getUntranslatedContent() {
+        return this.#tuDAL.getUntranslatedContent(this.sourceLang, this.targetLang);
     }
 }
