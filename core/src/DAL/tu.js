@@ -120,12 +120,10 @@ WHERE flattenNormalizedSourceToOrdinal(nsrc) = ?`);
         return this.#stmt.getStats.all();
     }
 
-    getActiveContentTranslationStatus(sourceLang, targetLang) {
+    getActiveContentTranslationStatus(sourceLang, targetLang, channelId, prj) {
         this.#stmt.getActiveContentTranslationStatus ??= this.#db.prepare(`
 WITH tus AS (SELECT guid, MAX(q) q FROM ${this.#tusTable} GROUP BY 1)
 SELECT
-    channel,
-    prj,
     p.value minQ,
     q,
     COUNT(distinct r.rid) res,
@@ -141,14 +139,16 @@ FROM
 WHERE
     sourceLang = ?
     AND p.key = ?
+    AND channel = ?
+    AND (prj = ? OR prj IS NULL)
     AND active = true
-GROUP BY 1, 2, 3, 4
-ORDER BY 1, 2, 3 DESC, 4 DESC
+GROUP BY 1, 2
+ORDER BY 1 DESC, 2 DESC
 ;`);
-        return this.#stmt.getActiveContentTranslationStatus.all(sourceLang, targetLang);
+        return this.#stmt.getActiveContentTranslationStatus.all(sourceLang, targetLang, channelId, prj);
     }
 
-    // TODO: add a maximum segment parameter to limit giant jobs
+    // TODO: parametrize a maximum segment parameter to limit giant jobs
     getUntranslatedContent(sourceLang, targetLang) {
         this.#stmt.getUntranslatedContent ??= this.#db.prepare(`
 WITH tus AS (SELECT guid, MAX(q) q FROM ${this.#tusTable} GROUP BY 1)
@@ -156,11 +156,11 @@ SELECT
     channel,
     prj,
     r.rid rid,
-    seg.sid,
+    seg.sid sid,
     seg.guid guid,
-    nstr,
+    nstr nsrc,
     notes,
-    p.value minQ,
+    p.value q,
     words,
     chars
 FROM
@@ -175,7 +175,7 @@ WHERE
     AND active = true
     AND (q IS NULL OR (q != 0 AND q < p.value))
 GROUP BY 1, 2, 3, 4
-ORDER BY 1, 2, 3 DESC, 4 DESC
+ORDER BY 1, 2, 3 DESC, 4 DESC LIMIT 5000
 ;`);
         return this.#stmt.getUntranslatedContent.all(sourceLang, targetLang).map(sqlTransformer.decode);
     }

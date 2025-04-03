@@ -19,7 +19,7 @@ export async function pullCmd(mm, { limitToLang, partial }) {
                 jobResponse && logVerbose`Got status ${jobResponse.status} with ${jobResponse.tus.length} ${[jobResponse.tus, 'tu', 'tus']} segments for job ${jobGuid} and ${jobResponse.inflight?.length ?? 0} ${[jobResponse.inflight?.length ?? 0, 'tu', 'tus']} in flight`;
                 !jobResponse && logWarn`Got no response for job ${jobGuid}`;
                 if (jobResponse?.status === 'done') {
-                    await mm.tmm.processJob(jobResponse, pendingJob);
+                    await mm.dispatcher.processJob(jobResponse, pendingJob);
                     stats.translatedStrings += jobResponse.tus.length;
                     stats.doneJobs++;
                 } else if (jobResponse?.status === 'pending') {
@@ -27,7 +27,7 @@ export async function pullCmd(mm, { limitToLang, partial }) {
                     if (partial) {
                         const { inflight, ...doneResponse } = jobResponse;
                         doneResponse.status = 'done';
-                        await mm.tmm.processJob(doneResponse, pendingJob);
+                        await mm.dispatcher.processJob(doneResponse, pendingJob);
                         stats.translatedStrings += jobResponse.tus.length;
 
                         const newRequest = { ...pendingJob };
@@ -42,7 +42,7 @@ export async function pullCmd(mm, { limitToLang, partial }) {
                         newResponse.jobGuid = newManifest.jobGuid;
                         newResponse.inflight = inflight;
                         newResponse.status = 'pending';
-                        await mm.tmm.processJob(newResponse, newRequest);
+                        await mm.dispatcher.processJob(newResponse, newRequest);
                         stats.newPendingJobs++;
                     }
                 }

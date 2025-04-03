@@ -263,6 +263,8 @@ export class L10nMonsterConfig {
     /** @type {Object} Translation providers for the localization process. */
     translationProviders = {};
 
+    providers = [];
+
     /** @type {boolean} Whether to automatically create snapshots at each run. */
     autoSnap = true;
 
@@ -292,14 +294,17 @@ export class L10nMonsterConfig {
      * @param {Object} config - Configuration object containing basic properties.
      * @param {string} config.sourceLang - The source language for localization.
      * @param {number | Function} config.minimumQuality - The minimum quality threshold for translations.
+     * @param {Intl.NumberFormat} [config.currencyFormatter] - A currency formatter for estimated costs.
      * @returns {L10nMonsterConfig} Returns the instance for method chaining.
      */
     basicProperties({
         sourceLang,
         minimumQuality,
+        currencyFormatter,
     }) {
         this.sourceLang = sourceLang;
         this.minimumQuality = minimumQuality;
+        currencyFormatter && (this.currencyFormatter = currencyFormatter);
         return this;
     }
 
@@ -327,6 +332,21 @@ export class L10nMonsterConfig {
      */
     translators(translationProviders) {
         this.translationProviders = translationProviders;
+        return this;
+    }
+
+    provider(provider) {
+        if (Array.isArray(provider)) {
+            provider.forEach(p => this.provider(p));
+            return this;
+        }
+        if (this.providers.find(p => p.id === provider.id)) {
+            throw new Error(`Provider with id ${provider.id} already exists`);
+        }
+        if (!provider.id || typeof provider.create !== 'function' || typeof provider.start !== 'function' || typeof provider.continue !== 'function') {
+            throw new Error('Providers must have an id and the following methods: create, start, continue');
+        }
+        this.providers.push(provider);
         return this;
     }
 

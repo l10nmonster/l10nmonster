@@ -8,7 +8,16 @@ export default class TMManager {
     #DAL;
     #tmCache = new Map();
 
-    #generateGuid() {
+    constructor(dal) {
+        this.#DAL = dal;
+    }
+
+    // eslint-disable-next-line no-unused-vars
+    async init(mm) {
+        logInfo`TMManager initialized`;
+    }
+
+    generateJobGuid() {
         if (L10nContext.regression) {
             const jobCount = this.#DAL.job.getJobCount();
             return `xxx${jobCount}xxx`;
@@ -17,7 +26,7 @@ export default class TMManager {
         }
     }
 
-    async #saveTmBlock(tmBlockIterator) {
+    async saveTmBlock(tmBlockIterator) {
         const jobs = [];
         const insertJob = this.#DAL.tmTransaction(job => {
             const { jobProps, tus } = job;
@@ -42,15 +51,6 @@ export default class TMManager {
         const tm = this.getTM(job.sourceLang, job.targetLang);
         tm.deleteEntriesByJobGuid(jobGuid);
         this.#DAL.job.deleteJob(jobGuid);
-    }
-
-    constructor(dal) {
-        this.#DAL = dal;
-    }
-
-    // eslint-disable-next-line no-unused-vars
-    async init(mm) {
-        logInfo`TMManager initialized`;
     }
 
     getTM(sourceLang, targetLang) {
@@ -99,7 +99,7 @@ export default class TMManager {
         }
         if (blocksToStore.length > 0) {
             logInfo`Storing ${blocksToStore.length} ${[blocksToStore.length, 'block', 'blocks']} from ${tmStore.id}`;
-            await this.#saveTmBlock(tmStore.getTmBlocks(sourceLang, targetLang, blocksToStore));
+            await this.saveTmBlock(tmStore.getTmBlocks(sourceLang, targetLang, blocksToStore));
         }
         if (jobsToDelete.length > 0) {
             logInfo`Deleting ${jobsToDelete.length} ${[jobsToDelete.length, 'job', 'jobs']}`;
@@ -158,44 +158,13 @@ export default class TMManager {
                         jobsByProvider[job.translationProvider].push(job.jobGuid);
                     }
                     for (const jobs of Object.values(jobsByProvider)) {
-                        await writeTmBlock({ translationProvider: jobs[0].translationProvider, blockId: this.#generateGuid() }, tm.getJobsByGuids(jobs));
+                        await writeTmBlock({ translationProvider: jobs[0].translationProvider, blockId: this.generateJobGuid() }, tm.getJobsByGuids(jobs));
                     }
                 } else if (tmStore.partitioning === 'language') {
-                    await writeTmBlock({ blockId: this.#generateGuid() }, tm.getJobsByGuids(jobsToUpdate));
+                    await writeTmBlock({ blockId: this.generateJobGuid() }, tm.getJobsByGuids(jobsToUpdate));
                 }
             }
         });
-    }
-
-    // use cases:
-    //   1 - both are passed as both are created at the same time -> may cancel if response is empty
-    //   2 - only jobRequest is passed because it's blocked -> write if "blocked", cancel if "created"
-    //   3 - only jobResponse is passed because it's pulled -> must write even if empty or it will show as blocked/pending
-    async processJob(jobResponse, jobRequest) {
-        if (jobRequest && jobResponse && !(jobResponse.tus?.length > 0 || jobResponse.inflight?.length > 0)) {
-            jobResponse.status = 'cancelled';
-            return;
-        }
-        if (jobRequest && !jobResponse && jobRequest.status === 'created') {
-            jobRequest.status = 'cancelled';
-            return;
-        }
-        const updatedAt = (L10nContext.regression ? new Date('2022-05-29T00:00:00.000Z') : new Date()).toISOString();
-        if (jobRequest) {
-            jobRequest.updatedAt = updatedAt;
-            if (jobResponse) {
-                const guidsInFlight = jobResponse.inflight ?? [];
-                const translatedGuids = jobResponse?.tus?.map(tu => tu.guid) ?? [];
-                const acceptedGuids = new Set(guidsInFlight.concat(translatedGuids));
-                jobRequest.tus = jobRequest.tus.filter(tu => acceptedGuids.has(tu.guid));
-            }
-            jobRequest.tus = jobRequest.tus.map(TU.asSource);
-        }
-        if (jobResponse) {
-            jobResponse.updatedAt = updatedAt;
-            jobResponse.tus && (jobResponse.tus = jobResponse.tus.map(TU.asTarget));
-        }
-        await this.#saveTmBlock(utils.getIteratorFromJobPair(jobRequest, jobResponse));
     }
 
     async getAvailableLangPairs() {
@@ -208,7 +177,7 @@ export default class TMManager {
 
     async createJobManifest() {
         return {
-            jobGuid: this.#generateGuid(),
+            jobGuid: this.generateJobGuid(),
             status: 'created',
         };
     }

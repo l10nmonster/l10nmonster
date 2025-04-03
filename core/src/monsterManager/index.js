@@ -3,6 +3,7 @@ import { L10nContext, TU, utils, analyzers } from '@l10nmonster/core';
 import DALManager from '../DAL/index.js';
 import TMManager from '../tmManager/index.js';
 import ResourceManager from '../resourceManager/index.js';
+import Dispatcher from './dispatcher.js';
 import { pushCmd } from './push.js';
 import { jobsCmd } from './jobs.js';
 import { jobPushCmd } from './job.js';
@@ -34,14 +35,17 @@ export class MonsterManager {
         }
         this.rm = new ResourceManager(this.#dalManager, { channels, autoSnap: monsterConfig.autoSnap });
 
-        this.translationProviders = monsterConfig.translationProviders;
         monsterConfig.tmStores && (this.#tmStores = monsterConfig.tmStores);
 
         monsterConfig.opsDir && L10nContext.opsMgr.setOpsDir(path.join(L10nContext.baseDir, monsterConfig.opsDir));
         this.tmm = new TMManager(this.#dalManager);
 
+        this.translationProviders = monsterConfig.translationProviders;
+        this.dispatcher = new Dispatcher(monsterConfig.providers);
+
         this.tuFilters = monsterConfig.tuFilters;
         this.analyzers = { ...analyzers, ...monsterConfig.analyzers };
+        this.currencyFormatter = monsterConfig.currencyFormatter || new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
 
         // generated info
         this.capabilitiesByChannel = Object.fromEntries(Object.entries(monsterConfig.channels).map(([type, channel]) => [ type, {
@@ -62,6 +66,7 @@ export class MonsterManager {
             typeof tp.translator.init === 'function' && await tp.translator.init(this);
         }
         await this.tmm.init(this);
+        await this.dispatcher.init(this);
         await this.rm.init(this);
         typeof this.monsterConfig.init === 'function' && await this.monsterConfig.init(this);
         L10nContext.logger.verbose(`MonsterManager initialized!`);

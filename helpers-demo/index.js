@@ -1,1 +1,1 @@
-export { default as PigLatinizer } from './piglatinizer.js';
+export { PigLatinizerProvider, PigLatinizer } from './piglatinizer.js';

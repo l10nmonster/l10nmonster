@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { config, policies, L10nContext, normalizers, xml, stores, adapters, translators } from '@l10nmonster/core';
+import { config, policies, L10nContext, normalizers, xml, stores, adapters, translators, providers } from '@l10nmonster/core';
 import * as ios from '@l10nmonster/helpers-ios';
 import path from 'path';
 // import translated from '@l10nmonster/helpers-translated';
@@ -20,8 +20,8 @@ export const iosChannel = config.channel('ios', import.meta.dirname)
     .resourceFilter(new ios.StringsFilter())
     .decoders([ ios.phDecoder, ios.escapesDecoder, xml.entityDecoder ])
     .textEncoders([ normalizers.gatedEncoder(xml.entityEncoder, 'xmlEntityDecoder') ])
-    .policy(policies.fixedTargets(['ar', 'ja'], 70))
-    .policy(policies.fixedTargets('en-ZZ', 50))
+    .policy(policies.fixedTargets(['ar', 'ja'], 50))
+    .policy(policies.fixedTargets('en-ZZ', 20))
     .target(new adapters.FsTarget({
         targetPath: (lang, resourceId) => resourceId.replace('en.lproj/', `${lang}.lproj/`),
     }));
@@ -110,6 +110,8 @@ export default config.l10nMonster(import.meta.dirname)
         },
         opsDir: 'l10nOps',
     })
+    .provider(new providers.Repetition({ qualifiedPenalty: 1, unqualifiedPenalty: 9, notesMismatchPenalty: 1 }))
+    .provider(new providers.Grandfather({ quality: 70 }))
     .tmStore(new stores.FsJsonlTmStore({
         id: 'primary',
         jobsDir: 'tmStore',
