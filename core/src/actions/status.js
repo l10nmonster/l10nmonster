@@ -1,5 +1,5 @@
 import { writeFileSync } from 'fs';
-import { consoleLog, utils } from '@l10nmonster/core';
+import { consoleLog } from '@l10nmonster/core';
 
 function computeTotals(totals, partial) {
     for (const [ k, v ] of Object.entries(partial)) {

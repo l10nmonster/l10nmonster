@@ -1,6 +1,7 @@
 import fs from 'fs';
 import { config, policies, L10nContext, normalizers, xml, stores, adapters, translators, providers } from '@l10nmonster/core';
 import * as ios from '@l10nmonster/helpers-ios';
+import * as xliff from '@l10nmonster/helpers-xliff';
 import path from 'path';
 // import translated from '@l10nmonster/helpers-translated';
 
@@ -112,6 +113,11 @@ export default config.l10nMonster(import.meta.dirname)
     })
     .provider(new providers.Repetition({ qualifiedPenalty: 1, unqualifiedPenalty: 9, notesMismatchPenalty: 1 }))
     .provider(new providers.Grandfather({ quality: 70 }))
+    .provider(new xliff.providers.XliffBridge({
+        requestPath: (lang, jobId) => `outbox/job${jobId}-${lang}.xml`,
+        completePath: (lang, jobId) => `inbox/job${jobId}-${lang}.xml`,
+        quality: 80,
+    }))
     .tmStore(new stores.FsJsonlTmStore({
         id: 'primary',
         jobsDir: 'tmStore',

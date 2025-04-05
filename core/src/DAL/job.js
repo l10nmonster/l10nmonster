@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS jobs(
 
         this.getJobStatusByLangPair = (sourceLang, targetLang) => this.#stmt.getJobStatusByLangPair.all(sourceLang, targetLang)
             .map(({ jobGuid, status }) => [ jobGuid, status ]);
-        this.#stmt.getJobStatusByLangPair = db.prepare('SELECT jobGuid, status FROM jobs WHERE sourceLang = ? AND targetLang = ?');
+        this.#stmt.getJobStatusByLangPair = db.prepare('SELECT jobGuid, status FROM jobs WHERE sourceLang = ? AND targetLang = ?;');
 
 
         // this.getJobStatus = (jobGuid) => {

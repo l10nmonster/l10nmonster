@@ -94,7 +94,7 @@ WHERE excluded.sourceLang != resources.sourceLang OR excluded.targetLangs != res
 `);
         this.#stmt.markResourceAsActive ??= this.#db.prepare(`UPDATE resources SET active = true WHERE channel = ? AND rid = ?;`);
         // only notes and mf are mutable
-        // gstr is ignores as it's derived from nstr
+        // gstr is ignored as it's derived from nstr
         this.#stmt.upsertSegment ??= this.#db.prepare(`
 INSERT INTO segments (guid, rid, sid, nstr, notes, mf, plan, segProps, chars, words, createdAt, modifiedAt)
 VALUES (@guid, @rid, @sid, @nstr, @notes, @mf, @plan, @segProps, @chars, @words, @modified, @modified)

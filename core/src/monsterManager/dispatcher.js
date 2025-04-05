@@ -1,4 +1,4 @@
-import { TU, utils, L10nContext } from '@l10nmonster/core';
+import { TU, utils, L10nContext, logVerbose, logInfo, logWarn } from '@l10nmonster/core';
 
 export default class Dispatcher {
     #providerPipeline;
@@ -7,7 +7,7 @@ export default class Dispatcher {
 
     constructor(providers) {
         this.#providerPipeline = providers;
-        this.#providerMap = new Map(providers.map(provider => [provider.id, provider]));
+        this.#providerMap = new Map(providers.map(provider => [provider.id.toLowerCase(), provider]));
     }
 
     async init(mm) {
@@ -17,11 +17,20 @@ export default class Dispatcher {
         }
     }
 
-    async createJobs(job) {
+    getProvider(id) {
+        const provider = this.#providerMap.get(id.toLowerCase());
+        if (!provider) {
+            throw new Error(`Provider with id ${id} not found`);
+        }
+        return provider;
+    }
+
+    async createJobs({ providerList, ...job }) {
         const jobs = [];
+        const pipeline = providerList ? providerList.map(id => this.getProvider(id)) : this.#providerPipeline;
         let providerIdx = 0;
-        while (job.tus.length > 0 && providerIdx < this.#providerPipeline.length) {
-            const provider = this.#providerPipeline[providerIdx];
+        while (job.tus.length > 0 && providerIdx < pipeline.length) {
+            const provider = pipeline[providerIdx];
             const createdJob = await provider.create(job);
             if (createdJob.tus.length > 0) {
                 jobs.push({ ...createdJob, translationProvider: provider.id });
@@ -38,12 +47,51 @@ export default class Dispatcher {
         const startedJobs = [];
         for (const job of jobs) {
             job.jobGuid = this.#tmm.generateJobGuid();
-            const jobResponse = { ...await this.#providerMap.get(job.translationProvider).start(job) };
+            const provider = this.getProvider(job.translationProvider);
+            const jobResponse = { ...await provider.start(job) };
             await this.processJob(jobResponse, job);
             const { sourceLang, targetLang, jobGuid, status } = jobResponse;
             startedJobs.push({ sourceLang, targetLang, jobGuid, status });
         }
         return startedJobs;
+    }
+
+    async updateJob(jobGuid, options) {
+        const pendingJob = await this.#tmm.getJob(jobGuid);
+        if (pendingJob.status === 'pending') {
+            logInfo`Updating job ${jobGuid}...`;
+            const provider = this.getProvider(pendingJob.translationProvider);
+            const jobResponse = await provider.continue(pendingJob);
+            if (jobResponse) {
+                await this.processJob(jobResponse, pendingJob);
+                logVerbose`Got status ${jobResponse.status} with ${jobResponse.tus.length} ${[jobResponse.tus, 'tu', 'tus']} segments for job ${jobGuid} and ${jobResponse.inflight?.length ?? 0} ${[jobResponse.inflight?.length ?? 0, 'tu', 'tus']} in flight`;
+                if (jobResponse?.status === 'pending') {
+                    logInfo`Got ${jobResponse.tus.length} translations for job ${pendingJob.jobGuid} but there are still ${jobResponse.inflight?.length} translations in flight`;
+                    // if (options.partial) {
+                    //     const { inflight, ...doneResponse } = jobResponse;
+                    //     doneResponse.status = 'done';
+                    //     await this.processJob(doneResponse, pendingJob);
+                    //     const newRequest = { ...pendingJob };
+                    //     const newManifest = await mm.tmm.createJobManifest();
+                    //     const originalJobGuid = jobResponse.originalJobGuid ?? jobResponse.jobGuid;
+                    //     newRequest.originalJobGuid = originalJobGuid;
+                    //     newRequest.jobGuid = newManifest.jobGuid;
+                    //     newRequest.tus = newRequest.tus.filter(tu => inflight.includes(tu.guid));
+                    //     // eslint-disable-next-line no-unused-vars
+                    //     const { tus, ...newResponse } = doneResponse;
+                    //     newResponse.originalJobGuid = originalJobGuid;
+                    //     newResponse.jobGuid = newManifest.jobGuid;
+                    //     newResponse.inflight = inflight;
+                    //     newResponse.status = 'pending';
+                    //     await this.processJob(newResponse, newRequest);
+                    // }
+                }
+            } else {
+                logWarn`Got no response for job ${jobGuid}`;
+            }
+            return jobResponse;
+        }
+        throw new Error(`Can't update job ${jobGuid} because it is not pending`);
     }
 
     // use cases:

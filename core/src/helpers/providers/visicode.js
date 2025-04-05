@@ -24,11 +24,11 @@ function underlineString(str, runningLength) {
 
 export class Visicode extends BaseTranslationProvider {
     /**
-     * Initializes a new instance of the Repetition class.
+     * Initializes a new instance of the Visicode class.
      * @param {Object} options - The parameters for the constructor.
      * @param {string} [options.id] - Global identifier for the provider.
      * @param {Object} [options.supportedPairs] - Supported pairs for the provider.
-     * @param {number} options.quality - The quality to assign grandfathered translations.
+     * @param {number} options.quality - The quality to assign translations.
      */
     constructor(options) {
         if (!options.quality) {

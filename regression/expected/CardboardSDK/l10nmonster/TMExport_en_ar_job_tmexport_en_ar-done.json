@@ -345,7 +345,7 @@
 				"⇤"
 			],
 			"ts": 1,
-			"q": 2,
+			"q": 60,
 			"jobGuid": "xxx2xxx",
 			"translationProvider": "Visicode"
 		},
@@ -357,7 +357,7 @@
 				"⇤"
 			],
 			"ts": 1,
-			"q": 2,
+			"q": 60,
 			"jobGuid": "xxx2xxx",
 			"translationProvider": "Visicode"
 		},
@@ -369,7 +369,7 @@
 				"⇤"
 			],
 			"ts": 1,
-			"q": 2,
+			"q": 60,
 			"jobGuid": "xxx2xxx",
 			"translationProvider": "Visicode"
 		}

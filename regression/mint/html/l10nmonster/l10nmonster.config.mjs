@@ -15,25 +15,10 @@ export default new L10nMonsterConfig(import.meta.dirname)
         }))
         .resourceFilter(new HTMLFilter())
             .decoders([ xml.tagDecoder, xml.entityDecoder ])
-        .policy(policies.fixedTargets([ 'it' ], 50))
+        .policy(policies.fixedTargets([ 'it' ], 1))
         .target(new adapters.FsTarget({
             baseDir: '..',
             targetPath: (lang, resourceId) => resourceId.replace('en/', `${lang}/`),
         })))
-    .translators({
-        Piggy: {
-            translator: new demo.PigLatinizer({ quality: 1 }),
-            pairs: { en: [ 'it' ]},
-        },
-        Repetition: {
-            translator: new translators.Repetition({
-                qualifiedPenalty: 1,
-                unqualifiedPenalty: 9,
-            }),
-        },
-        Grandfather: {
-            translator: new translators.Grandfather({
-                quality: 70,
-            }),
-        },
-    });
+    .provider(new demo.providers.PigLatinizer({ id: 'Piggy', quality: 1 }))
+    ;

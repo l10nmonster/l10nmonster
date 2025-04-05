@@ -28,7 +28,6 @@ export class source_list {
                 const status = await getStatusForAllPairs(mm, channelId, prj);
                 for (const [targetLang, targetLangStatus] of Object.entries(status)) {
                     for (const [sourceLang, pairStats] of Object.entries(targetLangStatus)) {
-                        // console.dir(pairStats, { depth: null });
                         const pairSummary = { untranslated: 0, "in flight": 0, translated: 0, "low quality": 0 };
                         const translatedDetails = [];
                         let totalSegments = 0;

@@ -1,7 +1,7 @@
 import { L10nContext, utils } from '@l10nmonster/core';
 import { createSQLObjectTransformer } from './index.js';
 
-const sqlTransformer = createSQLObjectTransformer(['nstr', 'nsrc', 'ntgt', 'notes', 'tuProps'], ['tuProps']);
+const sqlTransformer = createSQLObjectTransformer(['nstr', 'nsrc', 'ntgt', 'notes', 'tuProps', 'segProps'], ['tuProps', 'segProps']);
 
 export class TuDAL {
     #db;
@@ -160,6 +160,8 @@ SELECT
     seg.guid guid,
     nstr nsrc,
     notes,
+    mf,
+    segProps,
     p.value q,
     words,
     chars
@@ -175,8 +177,11 @@ WHERE
     AND active = true
     AND (q IS NULL OR (q != 0 AND q < p.value))
 GROUP BY 1, 2, 3, 4
-ORDER BY 1, 2, 3 DESC, 4 DESC LIMIT 5000
+ORDER BY channel, rid, s.key
+LIMIT 10000
 ;`);
-        return this.#stmt.getUntranslatedContent.all(sourceLang, targetLang).map(sqlTransformer.decode);
+        const tus = this.#stmt.getUntranslatedContent.all(sourceLang, targetLang).map(sqlTransformer.decode);
+        tus.forEach(tu => tu.gstr = utils.flattenNormalizedSourceToOrdinal(tu.nsrc));
+        return tus;
     }
 }

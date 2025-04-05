@@ -1,4 +1,4 @@
-import { config, policies, xml, normalizers, translators, filters, stores } from '@l10nmonster/core';
+import { config, policies, xml, normalizers, translators, providers, filters, stores } from '@l10nmonster/core';
 import * as java from '@l10nmonster/helpers-java';
 import * as demo from '@l10nmonster/helpers-demo';
 
@@ -25,23 +25,8 @@ export default config.l10nMonster(import.meta.dirname)
             .messageFormat(config.messageFormat('java')
                 .decoders([ java.escapesDecoder, xml.tagDecoder, normalizers.bracePHDecoder, xml.entityDecoder, normalizers.doublePercentDecoder ])
                 .textEncoders([ normalizers.gatedEncoder(xml.entityEncoder, 'xmlDecoder', 'xmlEntityDecoder'), normalizers.gatedEncoder(normalizers.doublePercentEncoder, 'doublePercentDecoder') ])))
-    .translators({
-        PigLatinizer: {
-            translator: new demo.PigLatinizer({ quality: 1 }),
-            pairs: { en: [ 'piggy' ]},
-        },
-        Repetition: {
-            translator: new translators.Repetition({
-                qualifiedPenalty: 1,
-                unqualifiedPenalty: 9,
-            }),
-        },
-        Grandfather: {
-            translator: new translators.Grandfather({
-                quality: 70,
-            }),
-        },
-    })
+    .provider(new providers.Repetition({ qualifiedPenalty: 1, unqualifiedPenalty: 9 }))
+    .provider(new demo.providers.PigLatinizer({ quality: 1 }))
     .tmStore(new stores.FsLegacyJsonTmStore({
         id: 'legacy',
         jobsDir: 'translationJobs',

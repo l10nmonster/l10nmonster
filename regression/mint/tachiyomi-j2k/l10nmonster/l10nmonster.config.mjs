@@ -1,4 +1,4 @@
-import { config, policies, normalizers, xml, adapters, translators } from '@l10nmonster/core';
+import { config, policies, normalizers, xml, adapters, translators, providers } from '@l10nmonster/core';
 import * as android from '@l10nmonster/helpers-android';
 import * as xliff from '@l10nmonster/helpers-xliff';
 import * as demo from '@l10nmonster/helpers-demo';
@@ -29,27 +29,11 @@ export default config.l10nMonster(import.meta.dirname)
             baseDir: '..',
             targetPath: (lang, resourceId) => resourceId.replace('values', `values-${androidLangMapping[lang] || lang}`),
         })))
-    .translators({
-        PigLatinizer: {
-            translator: new demo.PigLatinizer({ quality: 1 }),
-            pairs: { en: [ 'piggy' ]},
-        },
-        XliffBridge: {
-            translator: new xliff.XliffBridge({
-                requestPath: (lang, prjId) => `xliff/outbox/prj${prjId}-${lang}.xml`,
-                completePath: (lang, prjId) => `xliff/inbox/prj${prjId}-${lang}.xml`,
-                quality: 80,
-            }),
-        },
-        Repetition: {
-            translator: new translators.Repetition({
-                qualifiedPenalty: 1,
-                unqualifiedPenalty: 9,
-            }),
-        },
-        Grandfather: {
-            translator: new translators.Grandfather({
-                quality: 70,
-            }),
-        },
-    });
+    .provider(new demo.providers.PigLatinizer({ quality: 1, supportedPairs: { en: [ 'piggy' ]} }))
+    .provider(new xliff.providers.XliffBridge({
+        requestPath: (lang, prjId) => `xliff/outbox/prj${prjId}-${lang}.xml`,
+        completePath: (lang, prjId) => `xliff/inbox/prj${prjId}-${lang}.xml`,
+        quality: 80,
+    }))
+    .provider(new providers.Grandfather({ quality: 70 }))
+    .provider(new providers.Repetition({ qualifiedPenalty: 1, unqualifiedPenalty: 9 }));

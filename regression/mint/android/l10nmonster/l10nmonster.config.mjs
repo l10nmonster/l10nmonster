@@ -1,4 +1,4 @@
-import { L10nMonsterConfig, ChannelConfig, policies, normalizers, xml, stores, adapters, translators, providers } from '@l10nmonster/core';
+import { L10nMonsterConfig, ChannelConfig, policies, normalizers, xml, stores, adapters, providers } from '@l10nmonster/core';
 import * as android from '@l10nmonster/helpers-android';
 import * as demo from '@l10nmonster/helpers-demo';
 
@@ -26,19 +26,8 @@ export default new L10nMonsterConfig(import.meta.dirname)
             baseDir: '..',
             targetPath: (lang, resourceId) => resourceId.replace('values', `values-${androidLangMapping[lang] || lang}`),
         })))
-    .translators({
-        PigLatinizer: {
-            translator: new demo.PigLatinizer({ quality: 1 }),
-            pairs: { en: [ 'piggy' ]},
-        },
-        Grandfather: {
-            translator: new translators.Grandfather({
-                quality: 70,
-            }),
-        },
-    })
     .provider(new providers.Grandfather({ quality: 70 }))
-    .provider(new demo.PigLatinizerProvider({ id: 'PigLatinizer', quality: 1, supportedPairs: { en: [ 'piggy' ] } }))
+    .provider(new demo.providers.PigLatinizer({ quality: 1, supportedPairs: { en: [ 'piggy' ] } }))
     .tmStore(new stores.FsLegacyJsonTmStore({
         id: 'default',
         jobsDir: 'translationJobs',

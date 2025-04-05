@@ -5,7 +5,6 @@ import TMManager from '../tmManager/index.js';
 import ResourceManager from '../resourceManager/index.js';
 import Dispatcher from './dispatcher.js';
 import { pushCmd } from './push.js';
-import { jobsCmd } from './jobs.js';
 import { jobPushCmd } from './job.js';
 import { pullCmd } from './pull.js';
 import { analyzeCmd } from './analyze.js';
@@ -88,10 +87,6 @@ export class MonsterManager {
 
     async jobPush(jobGuid) {
         return await jobPushCmd(this, jobGuid);
-    }
-
-    async jobs(options) {
-        return await jobsCmd(this, options);
     }
 
     async pull(options) {

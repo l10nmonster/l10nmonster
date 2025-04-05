@@ -66,6 +66,7 @@ export class BaseTranslationProvider {
         if (!statusProperties || !statusProperties.actions.includes('continue')) {
             throw new Error(`Cannot continue jobs that are in the "${job.status}" state`);
         }
+        return job;
     }
 
     describe(job) {

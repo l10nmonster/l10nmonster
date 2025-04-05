@@ -8,7 +8,7 @@ import { BaseTranslationProvider } from './baseTranslationProvider.js';
  */
 export class Grandfather extends BaseTranslationProvider {
     /**
-     * Initializes a new instance of the Repetition class.
+     * Initializes a new instance of the Grandfather class.
      * @param {Object} options - The parameters for the constructor.
      * @param {string} [options.id] - Global identifier for the provider.
      * @param {Object} [options.supportedPairs] - Supported pairs for the provider.

@@ -1,4 +1,4 @@
-import { L10nMonsterConfig, ChannelConfig, policies, decorators, xml, adapters, translators } from '@l10nmonster/core';
+import { L10nMonsterConfig, ChannelConfig, policies, decorators, xml, adapters, translators, providers } from '@l10nmonster/core';
 import { i18next } from '@l10nmonster/helpers-json';
 
 class ReactConfig extends L10nMonsterConfig {
@@ -10,8 +10,8 @@ class ReactConfig extends L10nMonsterConfig {
         this.basicProperties({
             sourceLang: 'en',
             minimumQuality: 50,
-        })
-        .channel(new ChannelConfig('react')
+        });
+        this.channel(new ChannelConfig('react')
             .source(new adapters.FsSource({
                 sourceLang: 'en',
                 baseDir: '..',
@@ -24,29 +24,14 @@ class ReactConfig extends L10nMonsterConfig {
             }))
                 .segmentDecorators([ this.#sg.getDecorator() ])
                 .decoders([ xml.tagDecoder, xml.entityDecoder, i18next.phDecoder ])
-            .policy(policies.fixedTargets([ 'de', 'ru' ], 50))
+            .policy(policies.fixedTargets([ 'de', 'ru' ], 1))
             .target(new adapters.FsTarget({
                 baseDir: '..',
                 targetPath: (lang, resourceId) => resourceId.replace('en/', `${lang}/`),
-            })))
-        .translators({
-            Visicode: {
-                translator: new translators.Visicode({
-                    quality: 2,
-                }),
-            },
-            Repetition: {
-                translator: new translators.Repetition({
-                    qualifiedPenalty: 1,
-                    unqualifiedPenalty: 9,
-                }),
-            },
-            Grandfather: {
-                translator: new translators.Grandfather({
-                    quality: 70,
-                }),
-            },
-        });
+            })));
+        this.provider(new providers.Grandfather({ quality: 70 }))
+            .provider(new providers.Repetition({ qualifiedPenalty: 1, unqualifiedPenalty: 9 }))
+            .provider(new providers.Visicode({ quality: 2 }));
     }
 
     async init(mm) {

@@ -1,4 +1,4 @@
-import { L10nMonsterConfig, ChannelConfig, policies, L10nContext, adapters, translators } from '@l10nmonster/core';
+import { L10nMonsterConfig, ChannelConfig, policies, L10nContext, adapters, translators, providers } from '@l10nmonster/core';
 import { PoFilter } from '@l10nmonster/helpers-po';
 import * as demo from '@l10nmonster/helpers-demo';
 
@@ -21,21 +21,7 @@ export default new L10nMonsterConfig(import.meta.dirname)
             baseDir: '..',
             targetPath: (lang) => `artifacts/${lang}.po`,
         })))
-    .translators({
-        PigLatinizer: {
-            translator: new demo.PigLatinizer({
-                quality: 2
-            }),
-        },
-        Repetition: {
-            translator: new translators.Repetition({
-                qualifiedPenalty: 1,
-                unqualifiedPenalty: 9,
-            }),
-        },
-        Grandfather: {
-            translator: new translators.Grandfather({
-                quality: 70,
-            }),
-        },
-    });
+    .provider(new providers.Grandfather({ quality: 70 }))
+    .provider(new providers.Repetition({ qualifiedPenalty: 1, unqualifiedPenalty: 9 }))
+    .provider(new demo.providers.PigLatinizer({ quality: 2 }))
+    ;
