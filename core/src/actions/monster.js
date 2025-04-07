@@ -50,6 +50,19 @@ export class monster {
         for (const [sourceLang, targetLangs] of Object.entries(desiredPairs)) {
             consoleLog`  ‣ ${sourceLang} → ${targetLangs.join(', ')}`;
         }
+
+        consoleLog`\nProviders:`;
+        if (mm.dispatcher.providers.length === 0) {
+            consoleLog`  ‣ No providers configured`;
+        } else {
+            for (const provider of mm.dispatcher.providers) {
+                const info = await provider.info();
+                consoleLog`  ‣ id:${info.id} type: ${info.type} q: ${info.quality ?? 'dynamic' } cost/word: ${info.costPerWord ?? 0} cost/MB: ${info.costPerMChar ?? 0}`;
+                consoleLog`      • Supported pairs: ${JSON.stringify(info.supportedPairs) ?? 'any'}`;
+                info.description.forEach(line => consoleLog`      • ${line}`);
+                consoleLog``;
+            }
+        }
         consoleLog`\nTranslation Memories:`;
         const availableLangPairs = (await mm.tmm.getAvailableLangPairs()).sort();
         for (const [sourceLang, targetLang] of availableLangPairs) {

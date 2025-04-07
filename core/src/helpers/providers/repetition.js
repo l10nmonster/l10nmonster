@@ -70,4 +70,9 @@ export class Repetition extends BaseTranslationProvider {
         }
         return job; // probably job was cancelled because of translation pair not being supported
     }
+    async info() {
+        const info = await super.info();
+        info.description.push(`Quality penalties: qualified: ${this.qualifiedPenalty ?? 0}, unqualified: ${this.unqualifiedPenalty ?? 0}, notes mismatch: ${this.notesMismatchPenalty ?? 0}`);
+        return info;
+    }
 }

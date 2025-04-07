@@ -1,0 +1,19 @@
+{
+    "name": "@l10nmonster/helpers-openai",
+    "version": "3.0.0",
+    "description": "Helpers to integrate with the OpenAI REST API",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "test": "node --test"
+    },
+    "author": "Diego Lagunas",
+    "license": "MIT",
+    "dependencies": {
+        "openai": "^4.92",
+        "zod": "^3.24"
+    },
+    "peerDependencies": {
+        "@l10nmonster/core": "^2"
+    }
+}

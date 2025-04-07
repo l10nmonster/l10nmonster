@@ -9,6 +9,7 @@
         "helpers-ios",
         "helpers-java",
         "helpers-json",
+        "helpers-openai",
         "helpers-po",
         "helpers-translated",
         "helpers-xliff"

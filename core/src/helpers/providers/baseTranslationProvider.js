@@ -85,6 +85,18 @@ export class BaseTranslationProvider {
         return statusProperties;
     }
 
+    async info() {
+        return {
+            id: this.id,
+            type: this.constructor.name,
+            quality: this.quality,
+            supportedPairs: this.supportedPairs,
+            costPerWord: this.#costPerWord,
+            costPerMChar: this.#costPerMChar,
+            description: [],
+        };
+    }
+
     async init(mm) {
         this.mm = mm;
     }

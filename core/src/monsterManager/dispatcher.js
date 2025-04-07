@@ -17,6 +17,10 @@ export default class Dispatcher {
         }
     }
 
+    get providers() {
+        return this.#providerPipeline;
+    }
+
     getProvider(id) {
         const provider = this.#providerMap.get(id.toLowerCase());
         if (!provider) {

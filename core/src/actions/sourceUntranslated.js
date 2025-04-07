@@ -40,6 +40,7 @@ export class source_untranslated {
             writeFileSync(options.statusFile, JSON.stringify(status, null, '\t'), 'utf8');
         }
         if (options.push) {
+            consoleLog`\nPushing content to providers...`;
             const jobStatus = await mm.dispatcher.startJobs(jobs, { instructions: options.instructions });
             consoleLog`Pushed ${jobStatus.length} jobs:`;
             for (const { sourceLang, targetLang, jobGuid, status } of jobStatus) {

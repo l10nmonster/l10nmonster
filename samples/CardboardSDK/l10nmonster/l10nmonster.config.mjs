@@ -4,6 +4,7 @@ import * as ios from '@l10nmonster/helpers-ios';
 import * as xliff from '@l10nmonster/helpers-xliff';
 import path from 'path';
 import * as translated from '@l10nmonster/helpers-translated';
+import { GPTAgent } from '@l10nmonster/helpers-openai';
 
 // const defaultTOSConfig = {
 //     baseURL: 'https://api-sandbox.translated.com/v2',
@@ -21,7 +22,7 @@ export const iosChannel = config.channel('ios', import.meta.dirname)
     .resourceFilter(new ios.StringsFilter())
     .decoders([ ios.phDecoder, ios.escapesDecoder, xml.entityDecoder ])
     .textEncoders([ normalizers.gatedEncoder(xml.entityEncoder, 'xmlEntityDecoder') ])
-    .policy(policies.fixedTargets(['ar', 'ja'], 30))
+    .policy(policies.fixedTargets(['ar', 'it'], 47))
     .policy(policies.fixedTargets('en-ZZ', 20))
     .target(new adapters.FsTarget({
         targetPath: (lang, resourceId) => resourceId.replace('en.lproj/', `${lang}.lproj/`),
@@ -113,24 +114,37 @@ export default config.l10nMonster(import.meta.dirname)
     })
     .provider(new providers.Repetition({ qualifiedPenalty: 1, unqualifiedPenalty: 9, notesMismatchPenalty: 1 }))
     .provider(new providers.Grandfather({ quality: 70 }))
-    .provider(new providers.GPTProvider({
-        id: 'Llama33',
-        quality: 40,
-        baseURL: 'http://127.0.0.1:11434',
+    .provider(new GPTAgent({
+        id: 'Ollama-LL',
+        quality: 45,
+        baseURL: 'http://127.0.0.1:11434/v1',
+        // model: 'gemma3:27b',
         model: 'llama3.3:latest',
-        supportedPairs: { 'en': [ 'ja' ] },
+        // model: 'deepseek-r1:70b',
+        // model: 'command-a:latest',
+        // model: 'qwen2.5:72b',
+        supportedPairs: { 'en': [ 'it' ] },
     }))
-    .provider(new translated.MMTProvider({
-        quality: 40,
-        apiKey: process.env.mmt_api_key,
-        supportedPairs: { 'en': [ 'ja' ] },
-        costPerMChar: 15,
+    .provider(new GPTAgent({
+        id: 'gemini',
+        quality: 47,
+        baseURL: 'https://generativelanguage.googleapis.com/v1beta/openai/',
+        apiKey: process.env.gemini_api_key,
+        model: 'gemini-2.0-flash',
+        preamble: 'You are translating strings from resource files of a mobile app.\nUse the following glossary: viewer=visore, Cardboard=Cardone',
+        supportedPairs: { 'en': [ 'it' ] },
     }))
-    .provider(new xliff.providers.XliffBridge({
-        requestPath: (lang, jobId) => `outbox/job${jobId}-${lang}.xml`,
-        completePath: (lang, jobId) => `inbox/job${jobId}-${lang}.xml`,
-        quality: 80,
-    }))
+    // .provider(new translated.MMTProvider({
+    //     quality: 40,
+    //     apiKey: process.env.mmt_api_key,
+    //     supportedPairs: { 'en': [ 'ja' ] },
+    //     costPerMChar: 15,
+    // }))
+    // .provider(new xliff.providers.XliffBridge({
+    //     requestPath: (lang, jobId) => `outbox/job${jobId}-${lang}.xml`,
+    //     completePath: (lang, jobId) => `inbox/job${jobId}-${lang}.xml`,
+    //     quality: 80,
+    // }))
     .tmStore(new stores.FsJsonlTmStore({
         id: 'primary',
         jobsDir: 'tmStore',

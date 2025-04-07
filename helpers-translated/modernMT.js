@@ -136,7 +136,7 @@ export class ModernMT {
             }
         };
         const requestTranslationsTask = L10nContext.opsMgr.createTask();
-        requestTranslationsTask.setContext(context);
+        // requestTranslationsTask.setContext(context);
         const chunkOps = [];
         const chunkSizes = [];
         for (let currentIdx = 0; currentIdx < mmtPayload.length;) {

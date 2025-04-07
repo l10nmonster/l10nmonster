@@ -48,30 +48,33 @@ export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationP
         const targetLang = this.#languageMapper ? this.#languageMapper(job.targetLang) : job.targetLang;
         const tuMeta = {};
         const payload = tus.map((tu, idx) => {
-            const [xmlSrc, phMap ] = utils.flattenNormalizedSourceToXmlV1(tu.nsrc);
+            const [source, phMap ] = utils.flattenNormalizedSourceToXmlV1(tu.nsrc);
             if (Object.keys(phMap).length > 0) {
                 tuMeta[idx] = phMap;
             }
-            return xmlSrc;
+            const xmlTu = {};
+            tu.notes?.desc && (xmlTu.notes = tu.notes.desc);
+            xmlTu.source = source; // adding source second so that LLMs see notes first
+            return xmlTu;
         });
         const requestTranslationsTask = L10nContext.opsMgr.createTask();
         const chunkOps = [];
         const chunkSizes = [];
         for (let currentIdx = 0; currentIdx < payload.length;) {
-            const src = [];
+            const xmlTus = [];
             let currentTotalLength = 0;
-            while (currentIdx < payload.length && src.length < this.maxChunkSize && payload[currentIdx].length + currentTotalLength < this.maxCharLength) {
-                currentTotalLength += payload[currentIdx].length;
-                src.push(payload[currentIdx]);
+            while (currentIdx < payload.length && xmlTus.length < this.maxChunkSize && payload[currentIdx].source.length + currentTotalLength < this.maxCharLength) {
+                currentTotalLength += payload[currentIdx].source.length;
+                xmlTus.push(payload[currentIdx]);
                 currentIdx++;
             }
-            if (src.length === 0) {
+            if (xmlTus.length === 0) {
                 throw new Error(`String at index ${currentIdx} exceeds ${this.maxCharLength} max char length`);
             }
-            logInfo`Preparing chunked translation with ${src.length} ${[src.length, 'string', 'strings']}, total char length: ${currentTotalLength}`;
-            chunkSizes.push(src.length);
+            logInfo`Preparing chunked translation with ${xmlTus.length} ${[xmlTus.length, 'string', 'strings']}, total char length: ${currentTotalLength}`;
+            chunkSizes.push(xmlTus.length);
             chunkOps.push(requestTranslationsTask.enqueue(this.synchProvider ? this.#opNames.synchTranslateChunk : this.#opNames.asynchTranslateChunk,
-                { sourceLang, targetLang, src, jobGuid: job.jobGuid, instructions: job.instructions, chunk: chunkOps.length }));
+                { sourceLang, targetLang, xmlTus, jobGuid: job.jobGuid, instructions: job.instructions, chunk: chunkOps.length }));
         }
         requestTranslationsTask.commit(this.synchProvider ? this.#opNames.mergeTranslatedChunks : this.#opNames.asynchWaitSubmissions, {
             guids: tus.map(tu => tu.guid),

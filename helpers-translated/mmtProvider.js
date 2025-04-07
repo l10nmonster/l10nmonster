@@ -1,5 +1,5 @@
 /* eslint-disable no-invalid-this */
-import { providers } from '@l10nmonster/core';
+import { logWarn, providers } from '@l10nmonster/core';
 import { ModernMT as MMTClient } from 'modernmt';
 
 export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
@@ -20,8 +20,9 @@ export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
      * @param {number} [options.maxChunkSize] - The maximum number of segments in a chunk.
      * @param {function(string): string} [options.languageMapper] - A function to convert language codes for the provider.
      */
-    constructor({ apiKey, webhook, chunkFetcher, hints, multiline = true, ...options }) {
-        super(options);
+    constructor({ id, apiKey, webhook, chunkFetcher, hints, multiline = true, ...options }) {
+        id ??= webhook ? 'MMTBatch' : 'MMTRealtime';
+        super({ id, ...options });
         if (webhook) {
             if (chunkFetcher) {
                 this.chunkFetcher = chunkFetcher;
@@ -48,14 +49,14 @@ export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
         return super.start(job);
     }
 
-    async synchTranslateChunk({ sourceLang, targetLang, src }) {
+    async synchTranslateChunk({ sourceLang, targetLang, xmlTus }) {
         const [ apiKey, platform, platformVersion ] = this.baseRequest.mmtConstructor;
         try {
             const mmt = new MMTClient(apiKey, platform, platformVersion);
             return await mmt.translate(
                 sourceLang,
                 targetLang,
-                src,
+                xmlTus.map(xmlTu => xmlTu.source),
                 this.baseRequest.hints,
                 undefined,
                 this.baseRequest.options
@@ -72,7 +73,7 @@ export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
         }));
     }
 
-    async asynchTranslateChunk({ sourceLang, targetLang, src, jobGuid, chunk }) {
+    async asynchTranslateChunk({ sourceLang, targetLang, xmlTus, jobGuid, chunk }) {
         const batchOptions = {
             ...this.baseRequest.options,
             idempotencyKey: `jobGuid:${jobGuid} chunk:${chunk}`,
@@ -85,7 +86,7 @@ export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
                     this.baseRequest.webhook,
                     sourceLang,
                     targetLang,
-                    src,
+                    xmlTus.map(xmlTu => xmlTu.source),
                     this.baseRequest.hints,
                     undefined,
                     batchOptions
@@ -98,5 +99,21 @@ export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
 
     async asynchFetchChunk({ job, chunk, chunkSize }) {
         return await this.chunkFetcher({ job, chunk, chunkSize });
+    }
+
+    async info() {
+        const info = await super.info();
+        try {
+            const response = await fetch('https://api.modernmt.com/translate/languages');
+            if (response.ok) {
+                const supportedProviderLanguages = (await response.json()).data.sort();
+                info.description.push(`Vendor supported languages: ${supportedProviderLanguages?.join(', ') ?? 'unknown'}`);
+            } else {
+                logWarn`HTTP error: status ${response.status} ${response.statusText}`
+            }
+        } catch (error) {
+            logWarn`Error fetching languages: ${error.message}`
+        }
+        return info;
     }
 }
