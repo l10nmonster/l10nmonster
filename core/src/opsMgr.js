@@ -34,7 +34,6 @@ class Task {
     constructor(opsMgr) {
         this.opsMgr = opsMgr;
         this.opList = [];
-        this.context = {};
     }
 
     saveState() {
@@ -42,17 +41,11 @@ class Task {
             const state = {
                 taskName: this.taskName,
                 rootOpId: this.rootOpId,
-                context: this.context,
                 opList: this.opList,
             };
             const fullPath = path.join(this.opsMgr.opsDir, `${this.taskName}-plan.json`);
             return fs.writeFileSync(fullPath, JSON.stringify(state, null, '\t'), 'utf8');
         }
-    }
-
-    setContext(context) {
-        Object.freeze(context);
-        this.context = context;
     }
 
     enqueue(opName, args, inputs) {
@@ -109,10 +102,10 @@ class Task {
                                 throw `Op ${op.opName} not found in registry`;
                             }
                             const inputs = op.inputs.map(this.getOutputByOpId.bind(this));
-                            const boundFunc = func.bind(this);
+                            // const boundFunc = func.bind(this);
                             op.lastRanAt = new Date().toISOString();
                             L10nContext.logger.info(`Executing opId: ${op.opId} opName: ${op.opName}...`);
-                            const response = (await boundFunc(op.args, inputs)) ?? null; // TODO: do we want to pass op instead of op.args so that we have access to our opId in case we need to chain our output to something else?
+                            const response = (await func(op.args, inputs)) ?? null; // TODO: do we want to pass op instead of op.args so that we have access to our opId in case we need to chain our output to something else?
                             const responseJSON = JSON.stringify(response, null, '\t');
                             if (responseJSON.length > MAX_INLINE_OUTPUT && this.opsMgr.opsDir) {
                                 const fullPath = path.join(this.opsMgr.opsDir, `${this.taskName}-out${op.opId}.json`);
@@ -146,7 +139,6 @@ class Task {
             const state = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
             this.taskName = state.taskName;
             this.rootOpId = state.rootOpId;
-            this.context = state.context;
             this.opList = state.opList;
         } else {
             throw "Can't hydrate if opsDir is not configured";

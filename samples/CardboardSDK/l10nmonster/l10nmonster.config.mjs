@@ -3,7 +3,7 @@ import { config, policies, L10nContext, normalizers, xml, stores, adapters, tran
 import * as ios from '@l10nmonster/helpers-ios';
 import * as xliff from '@l10nmonster/helpers-xliff';
 import path from 'path';
-// import translated from '@l10nmonster/helpers-translated';
+import * as translated from '@l10nmonster/helpers-translated';
 
 // const defaultTOSConfig = {
 //     baseURL: 'https://api-sandbox.translated.com/v2',
@@ -21,7 +21,7 @@ export const iosChannel = config.channel('ios', import.meta.dirname)
     .resourceFilter(new ios.StringsFilter())
     .decoders([ ios.phDecoder, ios.escapesDecoder, xml.entityDecoder ])
     .textEncoders([ normalizers.gatedEncoder(xml.entityEncoder, 'xmlEntityDecoder') ])
-    .policy(policies.fixedTargets(['ar', 'ja'], 50))
+    .policy(policies.fixedTargets(['ar', 'ja'], 30))
     .policy(policies.fixedTargets('en-ZZ', 20))
     .target(new adapters.FsTarget({
         targetPath: (lang, resourceId) => resourceId.replace('en.lproj/', `${lang}.lproj/`),
@@ -113,6 +113,19 @@ export default config.l10nMonster(import.meta.dirname)
     })
     .provider(new providers.Repetition({ qualifiedPenalty: 1, unqualifiedPenalty: 9, notesMismatchPenalty: 1 }))
     .provider(new providers.Grandfather({ quality: 70 }))
+    .provider(new providers.GPTProvider({
+        id: 'Llama33',
+        quality: 40,
+        baseURL: 'http://127.0.0.1:11434',
+        model: 'llama3.3:latest',
+        supportedPairs: { 'en': [ 'ja' ] },
+    }))
+    .provider(new translated.MMTProvider({
+        quality: 40,
+        apiKey: process.env.mmt_api_key,
+        supportedPairs: { 'en': [ 'ja' ] },
+        costPerMChar: 15,
+    }))
     .provider(new xliff.providers.XliffBridge({
         requestPath: (lang, jobId) => `outbox/job${jobId}-${lang}.xml`,
         completePath: (lang, jobId) => `inbox/job${jobId}-${lang}.xml`,

@@ -6,7 +6,7 @@ import { L10nContext, providers, logVerbose, logInfo } from '@l10nmonster/core';
 
 export class XliffBridge extends providers.BaseTranslationProvider {
     /**
-     * Initializes a new instance of the Repetition class.
+     * Initializes a new instance of the XliffBridge class.
      * @param {Object} options - The parameters for the constructor.
      * @param {string} [options.id] - Global identifier for the provider.
      * @param {Object} [options.supportedPairs] - Supported pairs for the provider.

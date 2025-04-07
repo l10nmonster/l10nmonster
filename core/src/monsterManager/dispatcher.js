@@ -43,10 +43,11 @@ export default class Dispatcher {
         return jobs;
     }
 
-    async startJobs(jobs) {
+    async startJobs(jobs, options) {
         const startedJobs = [];
         for (const job of jobs) {
             job.jobGuid = this.#tmm.generateJobGuid();
+            options.instructions && (job.instructions = options.instructions);
             const provider = this.getProvider(job.translationProvider);
             const jobResponse = { ...await provider.start(job) };
             await this.processJob(jobResponse, job);
