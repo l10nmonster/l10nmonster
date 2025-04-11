@@ -28,6 +28,7 @@ function configureCommand(cmd, Action, l10nRunner) {
     };
     const help = Action.help;
     cmd.description(help.description).action(actionHandler);
+    help.summary && cmd.summary(help.summary);
     // @ts-ignore
     help.options && help.options.forEach(opt => cmd.option(...opt));
     // @ts-ignore
@@ -56,11 +57,11 @@ export default async function runMonsterCLI(monsterConfig, cliCommand) {
         monsterConfig.actions.forEach(Action => {
             const cmd = monsterCLI.command(Action.name);
             if (Action.subActions) {
-                cmd.description(Action.help.description)
+                Action.help.description && cmd.description(Action.help.description);
                 Action.subActions.forEach(subAction => {
                     const subName = subAction.name.split('_')[1];
                     const subCmd = cmd.command(subName);
-                    configureCommand(subCmd, subAction, l10nRunner)
+                    configureCommand(subCmd, subAction, l10nRunner);
                 });
             } else {
                 configureCommand(cmd, Action, l10nRunner);
@@ -69,7 +70,7 @@ export default async function runMonsterCLI(monsterConfig, cliCommand) {
         const argv = typeof cliCommand === 'string' ? cliCommand.split(' ') : cliCommand;
         await monsterCLI.parseAsync(argv);
     } catch(e) {
-        console.error(`Unable to run: ${e.stack || e}`);
+        console.error(`Unable to CLI: ${e}`);
         process.exit(1);
     }
 }

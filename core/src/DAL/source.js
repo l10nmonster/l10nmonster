@@ -11,7 +11,7 @@ export class SourceDAL {
 
     constructor(db) {
         this.#db = db;
-        db.exec(`
+        db.exec(/* sql */`
 CREATE TABLE IF NOT EXISTS resources (
     channel TEXT NOT NULL,
     rid TEXT NOT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS segments (
         // all fields are mutable, active is set to true automatically
         // createdAt is only written on insert
         // ignore modifiedAt changes if nothing changed
-        this.#stmt.upsertResource ??= this.#db.prepare(`
+        this.#stmt.upsertResource ??= this.#db.prepare(/* sql */`
 INSERT INTO resources (channel, rid, sourceLang, targetLangs, plan, prj, segments, subresources, resourceFormat, resProps, raw, createdAt, modifiedAt)
 VALUES (@channel, @rid, @sourceLang, @targetLangs, @plan, @prj, @segments, @subresources, @resourceFormat, @resProps, @raw, @modifiedAt, @modifiedAt)
 ON CONFLICT (channel, rid)
@@ -92,10 +92,10 @@ WHERE excluded.sourceLang != resources.sourceLang OR excluded.targetLangs != res
     OR excluded.prj != resources.prj OR excluded.segments != resources.segments OR excluded.subresources != resources.subresources
     OR excluded.resourceFormat != resources.resourceFormat OR excluded.resProps != resources.resProps OR excluded.raw != resources.raw
 `);
-        this.#stmt.markResourceAsActive ??= this.#db.prepare(`UPDATE resources SET active = true WHERE channel = ? AND rid = ?;`);
+        this.#stmt.markResourceAsActive ??= this.#db.prepare(/* sql */`UPDATE resources SET active = true WHERE channel = ? AND rid = ?;`);
         // only notes and mf are mutable
         // gstr is ignored as it's derived from nstr
-        this.#stmt.upsertSegment ??= this.#db.prepare(`
+        this.#stmt.upsertSegment ??= this.#db.prepare(/* sql */`
 INSERT INTO segments (guid, rid, sid, nstr, notes, mf, plan, segProps, chars, words, createdAt, modifiedAt)
 VALUES (@guid, @rid, @sid, @nstr, @notes, @mf, @plan, @segProps, @chars, @words, @modified, @modified)
 ON CONFLICT (guid)
@@ -180,7 +180,7 @@ WHERE
 //     }
 
     #buildResource(resourceRow) {
-        this.#stmt.getSegmentsFromArray ??= this.#db.prepare(`
+        this.#stmt.getSegmentsFromArray ??= this.#db.prepare(/* sql */`
 SELECT
     guid,
     sid,
@@ -205,7 +205,7 @@ ORDER BY key
     getResource(rid, options) {
         const headerOnly = Boolean(options?.headerOnly);
         const getResourceStmt = `getResource${headerOnly ? 'HeaderOnly' : ''}`;
-        this.#stmt[getResourceStmt] ??= this.#db.prepare(`
+        this.#stmt[getResourceStmt] ??= this.#db.prepare(/* sql */`
 SELECT
     channel,
     rid,
@@ -232,7 +232,7 @@ FROM resources WHERE active = true AND rid = ?;
     *getAllResources(options) {
         const keepRaw = Boolean(options?.keepRaw);
         const getResourcesStmt = `getAllResources${keepRaw ? 'WithRaw' : ''}`;
-        this.#stmt[getResourcesStmt] ??= this.#db.prepare(`
+        this.#stmt[getResourcesStmt] ??= this.#db.prepare(/* sql */`
 SELECT
     channel,
     rid,
@@ -254,8 +254,8 @@ FROM resources WHERE active = true ORDER BY channel, rid;
     }
 
     searchString(str) {
-        this.#stmt.createFlatSrcIdx ??= this.#db.prepare(`CREATE INDEX IF NOT EXISTS idx_segments_flatSrc ON segments (flattenNormalizedSourceToOrdinal(nstr));`);
-        this.#stmt.searchString ??= this.#db.prepare(`SELECT guid, nstr FROM segments WHERE flattenNormalizedSourceToOrdinal(nstr) like '%?%';`);
+        this.#stmt.createFlatSrcIdx ??= this.#db.prepare(/* sql */`CREATE INDEX IF NOT EXISTS idx_segments_flatSrc ON segments (flattenNormalizedSourceToOrdinal(nstr));`);
+        this.#stmt.searchString ??= this.#db.prepare(/* sql */`SELECT guid, nstr FROM segments WHERE flattenNormalizedSourceToOrdinal(nstr) like '%?%';`);
         // try to delay creating the index until it is actually needed
         if (!this.#flatSrcIdxInitialized) {
             L10nContext.logger.verbose(`Creating FlatSrcIdx for source segments...`);
@@ -268,7 +268,7 @@ FROM resources WHERE active = true ORDER BY channel, rid;
     }
 
     getAvailableLangPairs() {
-        this.#stmt.getAvailableLangPairs ??= this.#db.prepare(`
+        this.#stmt.getAvailableLangPairs ??= this.#db.prepare(/* sql */`
 SELECT sourceLang, value as targetLang
 FROM resources, JSON_EACH(targetLangs)
 WHERE active = true
@@ -279,7 +279,7 @@ ORDER BY 1, 2
     }
 
     getStats(channelId) {
-        this.#stmt.getStats ??= this.#db.prepare(`
+        this.#stmt.getStats ??= this.#db.prepare(/* sql */`
 SELECT
     prj,
     SUM(JSON_ARRAY_LENGTH(segments)) AS segmentCount,

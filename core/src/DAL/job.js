@@ -5,7 +5,7 @@ export class JobDAL {
 
     constructor(db) {
         this.#db = db;
-        db.exec(`
+        db.exec(/* sql */ `
 CREATE TABLE IF NOT EXISTS jobs(
     jobGuid TEXT NOT NULL,
     sourceLang TEXT NOT NULL,
@@ -34,18 +34,17 @@ CREATE TABLE IF NOT EXISTS jobs(
 
         this.getAvailableLangPairs = () => this.#stmt.getAvailableLangPairs.all()
             .map(({ sourceLang, targetLang }) => [ sourceLang, targetLang ]);
-        this.#stmt.getAvailableLangPairs = db.prepare('SELECT DISTINCT sourceLang, targetLang FROM jobs ORDER BY 1, 2;');
+        this.#stmt.getAvailableLangPairs = db.prepare(/* sql */ 'SELECT DISTINCT sourceLang, targetLang FROM jobs ORDER BY 1, 2;');
 
         this.getJobStatusByLangPair = (sourceLang, targetLang) => this.#stmt.getJobStatusByLangPair.all(sourceLang, targetLang)
             .map(({ jobGuid, status }) => [ jobGuid, status ]);
-        this.#stmt.getJobStatusByLangPair = db.prepare('SELECT jobGuid, status FROM jobs WHERE sourceLang = ? AND targetLang = ?;');
-
+        this.#stmt.getJobStatusByLangPair = db.prepare(/* sql */ 'SELECT jobGuid, status FROM jobs WHERE sourceLang = ? AND targetLang = ?;');
 
         // this.getJobStatus = (jobGuid) => {
         //     const jobMeta = this.#stmt.getJobMeta.get(jobGuid);
         //     return [jobMeta?.status, jobMeta?.updatedAt];
         // };
-        // this.#stmt.getJobMeta = db.prepare('SELECT status, updatedAt FROM jobs WHERE jobGuid = ?');
+        // this.#stmt.getJobMeta = db.prepare(/* sql */ 'SELECT status, updatedAt FROM jobs WHERE jobGuid = ?');
 
         /**
          * Sets or updates a job in the database.
@@ -64,7 +63,7 @@ CREATE TABLE IF NOT EXISTS jobs(
                 throw new Error(`Expecting to change a row but changed ${result}`);
             }
         };
-        this.#stmt.setJob = db.prepare(`
+        this.#stmt.setJob = db.prepare(/* sql */ `
 INSERT INTO jobs (sourceLang, targetLang, jobGuid, status, updatedAt, translationProvider, jobProps)
     VALUES (@sourceLang, @targetLang, @jobGuid, @status, @updatedAt, @translationProvider, @jobProps)
 ON CONFLICT (jobGuid) DO UPDATE SET
@@ -81,17 +80,17 @@ WHERE excluded.jobGuid = jobs.jobGuid`);
             const { jobProps, ...basicProps } = jobRow;
             return { ...basicProps, ...JSON.parse(jobProps) };
         };
-        this.#stmt.getJob = db.prepare('SELECT * FROM jobs WHERE jobGuid = ?;');
+        this.#stmt.getJob = db.prepare(/* sql */ 'SELECT * FROM jobs WHERE jobGuid = ?;');
 
         this.getJobCount = () => this.#stmt.getJobCount.get();
-        this.#stmt.getJobCount = db.prepare('SELECT count(*) FROM jobs;').pluck();
+        this.#stmt.getJobCount = db.prepare(/* sql */ 'SELECT count(*) FROM jobs;').pluck();
 
         this.deleteJob = (jobGuid) => this.#stmt.deleteJob.run(jobGuid);
-        this.#stmt.deleteJob = db.prepare('DELETE FROM jobs WHERE jobGuid = ?');
+        this.#stmt.deleteJob = db.prepare(/* sql */ 'DELETE FROM jobs WHERE jobGuid = ?');
     }
 
     getJobDeltas(sourceLang, targetLang, toc) {
-        this.#stmt.getJobDeltas ??= this.#db.prepare(`
+        this.#stmt.getJobDeltas ??= this.#db.prepare(/* sql */ `
 SELECT j.jobGuid localJobGuid, blockId, lt.jobGuid remoteJobGuid, j.updatedAt localUpdatedAt, lt.updatedAt remoteUpdatedAt
 FROM (SELECT jobGuid, updatedAt FROM jobs WHERE sourceLang = ? AND targetLang = ?) j
 FULL JOIN last_toc lt USING (jobGuid)
@@ -102,7 +101,7 @@ WHERE j.updatedAt != lt.updatedAt OR j.updatedAt IS NULL OR lt.updatedAt IS NULL
     }
 
     getValidJobIds(sourceLang, targetLang, toc, blockId) {
-        this.#stmt.getValidJobIds ??= this.#db.prepare(`
+        this.#stmt.getValidJobIds ??= this.#db.prepare(/* sql */ `
 SELECT jobs.jobGuid
 FROM jobs JOIN last_toc USING (jobGuid)
 WHERE sourceLang = ? AND targetLang = ? AND blockId = ?
@@ -110,5 +109,4 @@ WHERE sourceLang = ? AND targetLang = ? AND blockId = ?
         this.#lastTOC = toc;
         return this.#stmt.getValidJobIds.all(sourceLang, targetLang, blockId);
     }
-
 }

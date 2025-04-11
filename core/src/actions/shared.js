@@ -1,5 +1,3 @@
-// import * as tinyld from 'tinyld';
-
 import { utils, consoleLog } from '@l10nmonster/core';
 
 // https://stackoverflow.com/questions/9781218/how-to-change-node-jss-console-font-color
@@ -18,7 +16,7 @@ function printContent(contentPairs) {
         for (const [rid, content] of Object.entries(uc)) {
             consoleLog`  ‣ ${rid}`;
             for (const [sid, str] of Object.entries(content)) {
-                consoleLog`    ∙ ${consoleColor.dim}${sid}:${consoleColor.reset} ${str.color}${str.confidence ? `[${str.confidence.toFixed(2)}] ` : ''}${sid === str.txt ? '≣' : str.txt}${consoleColor.reset}`;
+                console.log(`    ∙ ${consoleColor.dim}${sid}:${consoleColor.reset} ${str.color}${sid === str.txt ? '≣' : str.txt}${consoleColor.reset}`);
             }
         }
     }
@@ -31,16 +29,10 @@ export function printRequest(job) {
         const prj = tu.prj || 'default';
         untranslatedContent[prj] ??= {};
         untranslatedContent[prj][tu.rid] ??= {};
-        // const text = tu.nsrc.map(e => (typeof e === 'string' ? e : '')).join('');
-        // const heuristics = Object.fromEntries(lngDetector.detect(text, 1));
-        // const heuristics = Object.fromEntries(tinyld.detectAll(text).map(x => [ x.lang, x.accuracy ]));
-        // const confidence = heuristics[srcLang] ?? 0;
-        const confidence = 1;
         untranslatedContent[prj][tu.rid][tu.sid] = {
-            confidence,
             txt: utils.flattenNormalizedSourceV1(tu.nsrc)[0],
             // eslint-disable-next-line no-nested-ternary
-            color: confidence <= 0.1 ? consoleColor.red : (confidence <= 0.2 ? consoleColor.yellow : consoleColor.green),
+            color: consoleColor.green,
         }
     }
     printContent(untranslatedContent);

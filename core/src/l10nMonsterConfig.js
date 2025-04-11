@@ -453,7 +453,7 @@ export class L10nMonsterConfig {
             }
             return response;
         } catch(e) {
-            throw new Error(`Unable to run L10n Monster: ${e.stack || e}`);
+            throw new Error(`Unable to run L10nMonsterConfig: ${e.message ?? e}`);
         }
     }
 }

@@ -12,7 +12,7 @@ export class TuDAL {
     constructor(db, tusTable) {
         this.#db = db;
         this.#tusTable = tusTable;
-        db.exec(`
+        db.exec(/* sql */`
 CREATE TABLE IF NOT EXISTS ${tusTable} (
     guid TEXT NOT NULL,
     jobGuid TEXT NOT NULL,
@@ -38,24 +38,33 @@ ON ${this.#tusTable} (jobGuid);
     }
 
     getGuids() {
-        this.#stmt.getGuids ??= this.#db.prepare(`SELECT DISTINCT guid FROM ${this.#tusTable} ORDER BY ROWID`).pluck();
+        this.#stmt.getGuids ??= this.#db.prepare(/* sql */`SELECT DISTINCT guid FROM ${this.#tusTable} ORDER BY ROWID`).pluck();
         return this.#stmt.getGuids.all();
     }
 
     getEntry(guid) {
-        this.#stmt.getEntry ??= this.#db.prepare(`SELECT jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuProps FROM ${this.#tusTable} WHERE guid = ? ORDER BY q DESC, ts DESC LIMIT 1`);
+        this.#stmt.getEntry ??= this.#db.prepare(/* sql */`
+SELECT jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuProps
+FROM ${this.#tusTable}
+WHERE guid = ?
+ORDER BY q DESC, ts DESC
+LIMIT 1`);
         const tuRow = this.#stmt.getEntry.get(guid);
         return tuRow ? sqlTransformer.decode(tuRow) : undefined;
     }
 
     getEntriesByJobGuid(jobGuid) {
-        this.#stmt.getEntriesByJobGuid ??= this.#db.prepare(`SELECT jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuProps FROM ${this.#tusTable} WHERE jobGuid = ? ORDER BY tuOrder`);
+        this.#stmt.getEntriesByJobGuid ??= this.#db.prepare(/* sql */`
+SELECT jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuProps
+FROM ${this.#tusTable}
+WHERE jobGuid = ?
+ORDER BY tuOrder`);
         const tuRows = this.#stmt.getEntriesByJobGuid.all(jobGuid);
         return tuRows.map(sqlTransformer.decode);
     }
 
     setEntry(tu) {
-        this.#stmt.setEntry ??= this.#db.prepare(`
+        this.#stmt.setEntry ??= this.#db.prepare(/* sql */`
             INSERT INTO ${this.#tusTable} (jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuOrder, tuProps)
             VALUES (@jobGuid, @guid, @rid, @sid, @nsrc, @ntgt, @notes, @q, @ts, @tuOrder, @tuProps)
             ON CONFLICT (jobGuid, guid)
@@ -82,10 +91,10 @@ ON ${this.#tusTable} (jobGuid);
     }
 
     getExactMatches(nsrc) {
-        this.#stmt.createFlatSrcIdx ??= this.#db.prepare(`
+        this.#stmt.createFlatSrcIdx ??= this.#db.prepare(/* sql */`
 CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_flatSrc
 ON ${this.#tusTable} (flattenNormalizedSourceToOrdinal(nsrc));`);
-        this.#stmt.getEntriesByFlatSrc ??= this.#db.prepare(`
+        this.#stmt.getEntriesByFlatSrc ??= this.#db.prepare(/* sql */`
 SELECT jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuProps FROM ${this.#tusTable}
 WHERE flattenNormalizedSourceToOrdinal(nsrc) = ?`);
         // try to delay creating the index until it is actually needed
@@ -105,7 +114,7 @@ WHERE flattenNormalizedSourceToOrdinal(nsrc) = ?`);
     }
 
     getStats() {
-        this.#stmt.getStats ??= this.#db.prepare(`
+        this.#stmt.getStats ??= this.#db.prepare(/* sql */`
             SELECT
                 translationProvider,
                 status,
@@ -121,7 +130,7 @@ WHERE flattenNormalizedSourceToOrdinal(nsrc) = ?`);
     }
 
     getActiveContentTranslationStatus(sourceLang, targetLang, channelId, prj) {
-        this.#stmt.getActiveContentTranslationStatus ??= this.#db.prepare(`
+        this.#stmt.getActiveContentTranslationStatus ??= this.#db.prepare(/* sql */`
 WITH tus AS (SELECT guid, MAX(q) q FROM ${this.#tusTable} GROUP BY 1)
 SELECT
     p.value minQ,
@@ -150,7 +159,7 @@ ORDER BY 1 DESC, 2 DESC
 
     // TODO: parametrize a maximum segment parameter to limit giant jobs
     getUntranslatedContent(sourceLang, targetLang) {
-        this.#stmt.getUntranslatedContent ??= this.#db.prepare(`
+        this.#stmt.getUntranslatedContent ??= this.#db.prepare(/* sql */`
 WITH tus AS (SELECT guid, MAX(q) q FROM ${this.#tusTable} GROUP BY 1)
 SELECT
     channel,
@@ -183,5 +192,48 @@ LIMIT 10000
         const tus = this.#stmt.getUntranslatedContent.all(sourceLang, targetLang).map(sqlTransformer.decode);
         tus.forEach(tu => tu.gstr = utils.flattenNormalizedSourceToOrdinal(tu.nsrc));
         return tus;
+    }
+
+    querySource(sourceLang, targetLang, whereCondition) {
+        const stmt = this.#db.prepare(/* sql */`
+WITH activeTranslations AS (
+    SELECT guid, ntgt, q
+    FROM (SELECT guid, ntgt, q,
+        ROW_NUMBER() OVER (PARTITION BY guid ORDER BY q DESC, ts DESC) as rank
+        FROM ${this.#tusTable})
+    WHERE rank = 1)
+SELECT
+channel,
+prj,
+r.rid rid,
+seg.sid sid,
+seg.guid guid,
+nstr nsrc,
+p.value minQ,
+ntgt,
+q,
+notes,
+mf,
+segProps,
+words,
+chars
+FROM
+resources r,
+JSON_EACH(segments) s
+JOIN segments seg ON s.value = seg.guid,
+JSON_EACH(COALESCE(seg.plan, r.plan)) p
+LEFT JOIN activeTranslations t ON s.value = t.guid
+WHERE
+sourceLang = ?
+AND p.key = ?
+AND active = true
+AND ${whereCondition.replaceAll(';', '')}
+GROUP BY 1, 2, 3, 4
+ORDER BY channel, rid, s.key
+LIMIT 10000
+;`);
+    const tus = stmt.all(sourceLang, targetLang).map(sqlTransformer.decode);
+    tus.forEach(tu => tu.gstr = utils.flattenNormalizedSourceToOrdinal(tu.nsrc));
+    return tus;
     }
 }

@@ -22,10 +22,10 @@ export class tm_syncup {
                 newerOnly: Boolean(options.neweronly),
             });
             if (syncUpStats.blocksToUpdate.length === 0 && syncUpStats.jobsToUpdate.length === 0) {
-                consoleLog`Nothing to sync up with ${tmStore.id} store for ${srcLang} -> ${tgtLang}`;
+                consoleLog`Nothing to sync up with ${tmStore.id} store for ${srcLang} → ${tgtLang}`;
                 return;
             } else {
-                consoleLog`Syncing up ${srcLang} -> ${tgtLang} to ${tmStore.id} store...`;
+                consoleLog`Syncing up ${srcLang} → ${tgtLang} to ${tmStore.id} store...`;
             }
             if (syncUpStats.blocksToUpdate.length > 0) {
                 consoleLog`${syncUpStats.blocksToUpdate.length} ${[syncUpStats.blocksToUpdate.length, 'block', 'blocks']} to update:`;

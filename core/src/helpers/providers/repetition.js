@@ -1,4 +1,4 @@
-import { L10nContext, logVerbose } from '@l10nmonster/core';
+import { L10nContext, logVerbose, utils } from '@l10nmonster/core';
 import { BaseTranslationProvider } from './baseTranslationProvider.js';
 
 /**
@@ -56,13 +56,16 @@ export class Repetition extends BaseTranslationProvider {
                 if (tuCandidates.length > 0) {
                     const bestCandidate = this.#pickBestCandidate(tu, tuCandidates);
                     if (tu.q <= bestCandidate.q) {
-                        matchedTus.push({
-                            ...tu,
-                            ntgt: bestCandidate.ntgt,
-                            q: bestCandidate.q,
-                            ts: L10nContext.regression ? 1 : new Date().getTime(),
-                            parentGuid: bestCandidate.guid,
-                        });
+                        // if tu contains ntgt it means it's a refresh so we save translations only if they are different
+                        if (!tu.ntgt || !utils.normalizedStringsAreEqual(bestCandidate.ntgt, tu.ntgt)) {
+                            matchedTus.push({
+                                ...tu,
+                                ntgt: bestCandidate.ntgt,
+                                q: bestCandidate.q,
+                                ts: L10nContext.regression ? 1 : new Date().getTime(),
+                                parentGuid: bestCandidate.guid,
+                            });
+                        }
                     }
                 }
             }

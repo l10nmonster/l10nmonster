@@ -20,10 +20,10 @@ export class tm_syncdown {
         const syncDownPair = async (srcLang, tgtLang) => {
             const syncDownStats = await monsterManager.tmm.prepareSyncDown(tmStore, srcLang, tgtLang);
             if (syncDownStats.blocksToStore.length === 0 && syncDownStats.jobsToDelete.length === 0) {
-                consoleLog`Nothing to sync down from ${tmStore.id} store for ${srcLang} -> ${tgtLang}`;
+                consoleLog`Nothing to sync down from ${tmStore.id} store for ${srcLang} → ${tgtLang}`;
                 return;
             } else {
-                consoleLog`Syncing down ${srcLang} -> ${tgtLang} from ${tmStore.id} store...`;
+                consoleLog`Syncing down ${srcLang} → ${tgtLang} from ${tmStore.id} store...`;
             }
             if (syncDownStats.blocksToStore.length > 0) {
                 consoleLog`${syncDownStats.blocksToStore.length} ${[syncDownStats.blocksToStore.length, 'block', 'blocks']} to store: ${syncDownStats.blocksToStore.join(', ')}`;

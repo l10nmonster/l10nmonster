@@ -71,4 +71,8 @@ export class TM {
     getUntranslatedContent() {
         return this.#tuDAL.getUntranslatedContent(this.sourceLang, this.targetLang);
     }
+
+    querySource(whereCondition) {
+        return this.#tuDAL.querySource(this.sourceLang, this.targetLang, whereCondition);
+    }
 }
