@@ -98,9 +98,13 @@ ${JSON.stringify(xmlTus, null, 2)}`;
 
     async info() {
         const info = await super.info();
-        const modelList = await this.#openai.models.list();
-        const modelNames = modelList.data.map(m => m.id).sort().join(', ');
-        info.description.push(`Supported models: ${modelNames}`);
+        try {
+            const modelList = await this.#openai.models.list();
+            const modelNames = modelList.data.map(m => m.id).sort().join(', ');
+            info.description.push(`Supported models: ${modelNames}`);
+        } catch (e) {
+            info.description.push(`Unable to connect to OpenAI server: ${e.message}`);
+        }
         return info;
     }
 }
