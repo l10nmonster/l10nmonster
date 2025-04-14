@@ -44,6 +44,7 @@ export { TU } from './src/entities/tu.js';
 export { L10nMonsterConfig, ChannelConfig, ResourceFormatConfig, MessageFormatConfig, config } from './src/l10nMonsterConfig.js';
 export { MonsterManager } from './src/monsterManager/index.js';
 export { OpsMgr } from './src/opsMgr.js';
+export { ConfigMancer, BaseConfigMancerType } from './src/configMancer.js';
 
 export * from './src/helpers/index.js';
 export * as actions from './src/actions/index.js';
