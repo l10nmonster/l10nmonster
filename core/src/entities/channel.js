@@ -40,12 +40,11 @@ export class Channel {
         const stats = {};
         const getStatsKey = translationPlan => Object.entries(translationPlan).map(([targetLang, q]) => `${targetLang}:${q}`).sort().join(',');
         for (const segment of handle.segments) {
-            const policyContext = [ {}, segment, handle ];
-            this.#translationPolicyPipeline.forEach(policy => policy(policyContext))
-            const translationPlan = policyContext[0];
-            segment.plan = translationPlan;
-            Object.keys(translationPlan).forEach(targetLang => targetLangs.add(targetLang));
-            const statsKey = getStatsKey(translationPlan);
+            const policyContext = { plan: {}, seg: segment, res: handle };
+            this.#translationPolicyPipeline.forEach(policy => policyContext.plan = policy(policyContext))
+            segment.plan = policyContext.plan;
+            Object.keys(policyContext.plan).forEach(targetLang => targetLangs.add(targetLang));
+            const statsKey = getStatsKey(policyContext.plan);
             stats[statsKey] ??= 0;
             stats[statsKey]++;
         }
