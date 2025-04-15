@@ -16,6 +16,7 @@ export class GPTAgent extends providers.ChunkedRemoteTranslationProvider {
     #model;
     #temperature;
     #systemPrompt;
+    #customSchema;
 
     /**
      * Initializes a new instance of the GPTAgent class.
@@ -34,8 +35,9 @@ export class GPTAgent extends providers.ChunkedRemoteTranslationProvider {
      * @param {string} [options.apiKey] - The LLM provder API key (if needed).
      * @param {string} [options.persona] - An override to the default persona for the translator.
      * @param {string} [options.preamble] - Additional instructions to give context valid for all translations.
+     * @param {import('zod').ZodTypeAny} [options.customSchema] - A prescribed schema to structure translations into.
      */
-    constructor({ baseURL, apiKey, model, temperature, persona, preamble, ...options }) {
+    constructor({ baseURL, apiKey, model, temperature, persona, preamble, customSchema, ...options }) {
         if (!options.quality || !model) {
             throw new Error('You must specify quality and model for GPTAgent');
         }
@@ -46,6 +48,7 @@ export class GPTAgent extends providers.ChunkedRemoteTranslationProvider {
         });
         this.#model = model;
         this.#temperature = temperature ?? 0.1;
+        this.#customSchema = customSchema;
         logInfo`GPTAgent ${this.id} initialized with url: ${baseURL} model: ${model}`;
         persona = persona ??
 `You are one of the best professional translators in the world.
@@ -58,7 +61,7 @@ ${preamble ?? ''}
 - Each string may contain HTML or XML tags. Preserve ALL markup (HTML/XML tags, entities, placeholders)
 - Maintain proper escaping of special characters
 - Translate only text nodes. Do not alter tag structure
-- Provide a confidence score between 0 and 100 that indicates how confident you are in your translation
+${customSchema ? '' : '- Provide a confidence score between 0 and 100 that indicates how confident you are in your translation'}
 - Your input is provided in JSON format. It contains the source content and notes about each string that helps you understand the context
 - Return your answer as a JSON array with the exact same number of items and in the same order as the input`;
     }
@@ -79,7 +82,7 @@ ${JSON.stringify(xmlTus, null, 2)}`;
                   { role: 'system', content: this.#systemPrompt },
                   { role: 'user', content: userPrompt },
                 ],
-                response_format: zodResponseFormat(z.array(TranslatorAnnotation), 'translations'),
+                response_format: zodResponseFormat(z.array(this.#customSchema ?? TranslatorAnnotation), 'translations'),
               });
             // console.dir(completion, { depth: null });
             return {
