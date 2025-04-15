@@ -64,7 +64,16 @@ export class LaraProvider extends providers.ChunkedRemoteTranslationProvider {
             const credentials = new Credentials(this.#keyId, this.#keySecret);
             const lara = new Translator(credentials);
             const languages = (await lara.getLanguages()).sort();
-                info.description.push(`Vendor supported languages: ${languages?.join(', ') ?? 'unknown'}`);
+            info.description.push(`Vendor supported languages: ${languages?.join(', ') ?? 'unknown'}`);
+            // const memory = await lara.memories.create('Memory 1');
+            const memories = await lara.memories.list();
+            if (memories.length > 0) {
+                memories.forEach(m =>
+                    info.description.push(`Vendor TM "${m.name}": id: ${m.id} owner: ${m.ownerId} collaborators: ${m.collaboratorsCount} created: ${m.createdAt} updated: ${m.updatedAt}`)
+                );
+            } else {
+                info.description.push(`No TMs configured.`);
+            }
         } catch (error) {
             logWarn`Error fetching languages: ${error.message}`
         }
