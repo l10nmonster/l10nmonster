@@ -27,14 +27,14 @@ export class BaseTranslationProvider {
 
     /**
      * Initializes a new instance of the BaseTranslationProvider class.
-     * @param {Object} options - The parameters for the constructor.
+     * @param {Object} [options] - The parameters for the constructor.
      * @param {string} [options.id] - Global identifier for the provider.
      * @param {number} [options.quality] - The quality of translations provided by the provider.
      * @param {Object} [options.supportedPairs] - Supported pairs for the provider.
      * @param {number} [options.costPerWord] - The estimated cost per word for the provider.
      * @param {number} [options.costPerMChar] - The estimated cost per million characters for the provider.
      */
-    constructor({ id, quality, supportedPairs, costPerWord, costPerMChar }) {
+    constructor({ id, quality, supportedPairs, costPerWord, costPerMChar } = {}) {
         this.#id = id;
         this.quality = quality;
         this.supportedPairs = supportedPairs;

@@ -2,7 +2,8 @@ export function fixedTargets(targetLangs, minimumQuality) {
     if (!Array.isArray(targetLangs)) {
         targetLangs = [ targetLangs ];
     }
-    return () => Object.fromEntries(targetLangs.map(targetLang => [ targetLang, minimumQuality ]));
+    const planToApply = Object.fromEntries(targetLangs.map(targetLang => [ targetLang, minimumQuality ]));
+    return ({ plan }) => Object.assign(plan, planToApply);
 };
 
 export function byProject(prjToPipelineMap) {

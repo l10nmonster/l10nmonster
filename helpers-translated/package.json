@@ -13,6 +13,7 @@
         "@l10nmonster/core": "^2"
     },
     "dependencies": {
+        "@translated/lara": "^1.4.0",
         "modernmt": "^1.2.3"
     }
 }

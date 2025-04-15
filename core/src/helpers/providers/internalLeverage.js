@@ -7,11 +7,11 @@ import { BaseTranslationProvider } from './baseTranslationProvider.js';
 export class InternalLeverageHoldout extends BaseTranslationProvider {
     /**
      * Initializes a new instance of the Repetition class.
-     * @param {Object} options - The parameters for the constructor.
+     * @param {Object} [options] - The parameters for the constructor.
      * @param {string} [options.id] - Global identifier for the provider.
      * @param {Object} [options.supportedPairs] - Supported pairs for the provider.
      */
-    constructor(options) {
+    constructor(options = {}) {
         // @ts-ignore
         if (options.quality) {
             throw new Error('Fixed quality is not supported for InternalLeverageHoldout');

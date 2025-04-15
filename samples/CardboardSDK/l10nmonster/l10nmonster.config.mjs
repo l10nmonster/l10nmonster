@@ -3,7 +3,7 @@ import { config, policies, L10nContext, normalizers, xml, stores, adapters, tran
 import * as ios from '@l10nmonster/helpers-ios';
 import * as xliff from '@l10nmonster/helpers-xliff';
 import path from 'path';
-import * as translated from '@l10nmonster/helpers-translated';
+import { LaraProvider } from '@l10nmonster/helpers-translated';
 import { GPTAgent } from '@l10nmonster/helpers-openai';
 
 // const defaultTOSConfig = {
@@ -112,8 +112,17 @@ export default config.l10nMonster(import.meta.dirname)
         },
         opsDir: 'l10nOps',
     })
+    .provider(new providers.InternalLeverageHoldout())
     .provider(new providers.Repetition({ qualifiedPenalty: 1, unqualifiedPenalty: 9, notesMismatchPenalty: 1 }))
     .provider(new providers.Grandfather({ quality: 70 }))
+    .provider(new LaraProvider({
+        id: 'Lara',
+        keyId: process.env.lara_key_id,
+        keySecret: process.env.lara_key_secret,
+        quality: 48,
+        maxChunkSize: 3,
+        supportedPairs: { 'en': [ 'it' ] },
+    }))
     .provider(new GPTAgent({
         id: 'Ollama-LL',
         quality: 45,
