@@ -30,7 +30,7 @@ export class Grandfather {
                         const resourceToGrandfather = await this.#mm.rm.getChannel(resHandle.channel).getExistingTranslatedResource(resHandle, jobRequest.targetLang);
                         txCache[tu.rid] = Object.fromEntries(resourceToGrandfather.segments.map(seg => [ seg.sid, seg ]));
                     } catch (e) {
-                        L10nContext.logger.verbose(`Couldn't fetch translated resource: ${e.stack ?? e}`);
+                        L10nContext.logger.verbose(`Couldn't fetch translated resource: ${e.message ?? e}`);
                         txCache[tu.rid] = {};
                     }
                 }

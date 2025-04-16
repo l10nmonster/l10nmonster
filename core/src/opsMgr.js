@@ -116,7 +116,7 @@ class Task {
                             }
                             op.state = 'done';
                         } catch (error) {
-                            errorMessage = error.stack ?? error;
+                            errorMessage = error.message ?? error;
                             op.state = 'error';
                             op.output = errorMessage;
                         }

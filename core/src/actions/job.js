@@ -45,14 +45,14 @@ export class job {
                 const pushResponse = await monsterManager.jobPush(jobGuid);
                 consoleLog`${pushResponse.num.toLocaleString()} translation ${[pushResponse.num, 'unit', 'units']} requested -> status: ${pushResponse.status}`;
             } catch (e) {
-                console.error(`Failed to push job: ${e.stack ?? e}`);
+                console.error(`Failed to push job: ${e.message ?? e}`);
             }
         } else if (op === 'delete') {
             consoleLog`Deleting job ${jobGuid}...`;
             try {
                 await monsterManager.tmm.deleteJob(jobGuid);
             } catch (e) {
-                console.error(`Failed to delete job: ${e.stack ?? e}`);
+                console.error(`Failed to delete job: ${e.message ?? e}`);
             }
         } else {
             console.error(`Invalid operation: ${op}`);

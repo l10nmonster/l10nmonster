@@ -107,9 +107,6 @@ export default config.l10nMonster(import.meta.dirname)
         },
     })
     .operations({
-        tuFilters: {
-            initial: tu => tu.sid.indexOf(L10nContext.arg) === 0,
-        },
         opsDir: 'l10nOps',
     })
     .provider(new providers.InternalLeverageHoldout())

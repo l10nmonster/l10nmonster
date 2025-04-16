@@ -424,7 +424,6 @@ export class L10nMonsterConfig {
         L10nContext.setVerbosity(globalOptions.verbose);
         L10nContext.regression = Boolean(globalOptions.regression);
         L10nContext.prj = globalOptions.prj ? globalOptions.prj.split(',') : undefined;
-        L10nContext.arg = globalOptions.arg;
 
         try {
             const mm = new MonsterManager(this);
@@ -444,7 +443,7 @@ export class L10nMonsterConfig {
             try {
                 response = await cb(l10n, mm);
             } catch(e) {
-                response = { error: e.stack ?? e };
+                response = { error: e.message ?? e };
             } finally {
                 mm && (await mm.shutdown());
             }

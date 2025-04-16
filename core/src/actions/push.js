@@ -60,7 +60,7 @@ export class push {
                 }
             }
         } catch (e) {
-            console.error(`Failed to push: ${e.stack || e}`);
+            console.error(`Failed to push: ${e.message || e}`);
         }
     }
 }

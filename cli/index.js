@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 
 import { Command, Argument, InvalidArgumentError } from 'commander';
+import { L10nContext } from '@l10nmonster/core';
 
 // eslint-disable-next-line no-unused-vars
 function intOptionParser(value, _dummyPrevious) {
@@ -50,7 +51,6 @@ export default async function runMonsterCLI(monsterConfig, cliCommand) {
         .description('Continuous localization for the rest of us.')
         .option('-v, --verbose [level]', '0=error, 1=warning, 2=info, 3=verbose', intOptionParser)
         .option('-p, --prj <prj1,...>', 'limit source to specified projects')
-        .option('--arg <string>', 'optional config constructor argument')
         .option('--regression', 'keep variables constant during regression testing');
     try {
         const l10nRunner = async (cb) => await monsterConfig.run(monsterCLI.opts(), async l10n => await cb(l10n));
@@ -70,7 +70,7 @@ export default async function runMonsterCLI(monsterConfig, cliCommand) {
         const argv = typeof cliCommand === 'string' ? cliCommand.split(' ') : cliCommand;
         await monsterCLI.parseAsync(argv);
     } catch(e) {
-        console.error(`Unable to CLI: ${e}`);
+        console.error(`Unable to run CLI: ${(L10nContext.verbosity > 1 ? e.stack : e.message) || e}`);
         process.exit(1);
     }
 }

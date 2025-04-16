@@ -195,7 +195,9 @@ LIMIT 10000
     }
 
     querySource(sourceLang, targetLang, whereCondition) {
-        const stmt = this.#db.prepare(/* sql */`
+        let stmt;
+        try {
+            stmt = this.#db.prepare(/* sql */`
 WITH activeTranslations AS (
     SELECT guid, ntgt, q
     FROM (SELECT guid, ntgt, q,
@@ -231,8 +233,11 @@ GROUP BY 1, 2, 3, 4
 ORDER BY channel, rid, s.key
 LIMIT 10000
 ;`);
-    const tus = stmt.all(sourceLang, targetLang).map(sqlTransformer.decode);
-    tus.forEach(tu => tu.gstr = utils.flattenNormalizedSourceToOrdinal(tu.nsrc));
-    return tus;
+        } catch (error) {
+            throw new Error(`${error.code}: ${error.message}`);
+        }
+        const tus = stmt.all(sourceLang, targetLang).map(sqlTransformer.decode);
+        tus.forEach(tu => tu.gstr = utils.flattenNormalizedSourceToOrdinal(tu.nsrc));
+        return tus;
     }
 }

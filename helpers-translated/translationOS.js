@@ -85,7 +85,7 @@ async function tosFetchContentByGuidOp({ refreshMode, tuMap, tuMeta, request, qu
         }
         return fetchedTus;
     } catch(error) {
-        throw `${error.toString()}: ${error.response?.body ?? error.stack}`;
+        throw `${error.toString()}: ${error.response?.body ?? error.message}`;
     }
 }
 

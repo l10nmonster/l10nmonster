@@ -59,7 +59,7 @@ export class analyze {
                 }
             }
         } catch (e) {
-            console.error(`Failed to analyze: ${e.stack || e}`);
+            console.error(`Failed to analyze: ${e.message || e}`);
         }
     }
 }

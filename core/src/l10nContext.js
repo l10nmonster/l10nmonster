@@ -24,27 +24,35 @@ const consoleTransport = new winston.transports.Console({
     ),
 });
 
-// This is a shared context across all components
-export class L10nContext {
-    static logger = winston.createLogger({
-        level: 'warn',
-        transports: [ consoleTransport ],
-    });
-
-    static setVerbosity = (level) => {
-        consoleTransport.level = logLevels[level] ?? 'warn';
-    };
-
-    static env = process.env;
-    static opsMgr = new OpsMgr();
+class GlobalContext {
+    logger;
+    verbosity;
+    env;
+    opsMgr;
 
     // these are set per "request" even though they are shared
-    static baseDir = '.';
-    static prj;
-    static arg;
-    static regression = false;
+    baseDir = '.';
+    prj;
+    regression = false;
+
+    constructor() {
+        this.verbosity = 1;
+        this.logger = winston.createLogger({
+            level: 'warn',
+            transports: [ consoleTransport ],
+        });
+        this.env = process.env;
+        this.opsMgr = new OpsMgr();
+    }
+
+    setVerbosity(level) {
+        this.verbosity = level ?? 1;
+        consoleTransport.level = logLevels[level] ?? 'warn';
+    }
 }
-// logInfo`this is the error: ${message}`
+
+// This is a shared context across all components
+export const L10nContext = new GlobalContext();
 
 function renderTaggedString(strings, values, styled = false) {
     const out = [];

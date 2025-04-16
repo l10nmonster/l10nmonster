@@ -28,7 +28,7 @@ async function compareToExisting(mm, resHandle, targetLang, translatedRes) {
             delta = computeDelta(currentTranslations, newTranslations);
         }
     } catch (e) {
-        L10nContext.logger.verbose(`Couldn't fetch ${targetLang} resource for ${resHandle.channel}:${resHandle.id}: ${e.stack ?? e}`);
+        L10nContext.logger.verbose(`Couldn't fetch ${targetLang} resource for ${resHandle.channel}:${resHandle.id}: ${e.message ?? e}`);
     }
     const bundleChanges = currentTranslations ?
         (translatedRes ? (delta.length > 0 ? 'changed' : 'unchanged') : 'deleted') :
