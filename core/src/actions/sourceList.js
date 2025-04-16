@@ -5,8 +5,12 @@ async function getStatusForAllPairs(mm, channelId, prj) {
     const langPairs = await mm.rm.getAvailableLangPairs();
     for (const [ sourceLang, targetLang ] of langPairs) {
         const tm = mm.tmm.getTM(sourceLang, targetLang);
-        status[targetLang] ??= {};
-        status[targetLang][sourceLang] = tm.getActiveContentTranslationStatus(channelId, prj);
+        const pairStatus = tm.getActiveContentTranslationStatus(channelId, prj);
+        if (pairStatus.length > 0) {
+            status[targetLang] ??= {};
+            status[targetLang][sourceLang] = pairStatus;
+        }
+
     }
     return status;
 }

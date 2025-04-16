@@ -1,8 +1,8 @@
 export function fixedTargets(targetLangs, minimumQuality) {
-    if (!Array.isArray(targetLangs)) {
+    if (targetLangs && !Array.isArray(targetLangs)) {
         targetLangs = [ targetLangs ];
     }
-    const planToApply = Object.fromEntries(targetLangs.map(targetLang => [ targetLang, minimumQuality ]));
+    const planToApply = targetLangs ? Object.fromEntries(targetLangs.map(targetLang => [ targetLang, minimumQuality ])) : {};
     return ({ plan }) => Object.assign(plan, planToApply);
 };
 
