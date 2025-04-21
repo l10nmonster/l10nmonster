@@ -16,6 +16,8 @@ const legacyJobFilenameRegex = /(?<jobNameStub>[^/]+(?<translationProvider>[^_]+
 export class LegacyFileBasedTmStore {
     id;
 
+    #files;
+
     get access() {
         return 'readonly';
     }
@@ -37,10 +39,17 @@ export class LegacyFileBasedTmStore {
         this.id = id;
     }
 
+    async #getAllFiles() {
+        if (!this.#files) { // TODO: add a TTL logic in case this runs on a server
+            this.#files = await this.delegate.listAllFiles();
+        }
+        return this.#files;
+    }
+
     async getAvailableLangPairs() {
         const pairs = {};
         await this.delegate.ensureBaseDirExists();
-        for (const [ fileName ] of await this.delegate.listAllFiles()) {
+        for (const [ fileName ] of await this.#getAllFiles()) {
             const jobFilenameParts = fileName.match(legacyJobFilenameRegex)?.groups;
             if (jobFilenameParts) {
                 pairs[`${jobFilenameParts.sourceLang}#${jobFilenameParts.targetLang}`] ??= [ jobFilenameParts.sourceLang, jobFilenameParts.targetLang ];
@@ -51,7 +60,7 @@ export class LegacyFileBasedTmStore {
 
     async #listAllTmBlocksExtended(sourceLang, targetLang) {
         await this.delegate.ensureBaseDirExists();
-        const files = await this.delegate.listAllFiles();
+        const files = await this.#getAllFiles();
         const handleMap = {};
         for (const [ fileName, modifiedAt ] of files) {
             const jobFilenameParts = fileName.match(legacyJobFilenameRegex)?.groups;
