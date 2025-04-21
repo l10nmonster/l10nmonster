@@ -67,7 +67,7 @@ export class tmexport {
                     try {
                         jobReq.tus.push(TU.asSource(tu));
                     } catch (e) {
-                        L10nContext.logger.info(e.stack ?? e);
+                        L10nContext.logger.info(e.message ?? e);
                     }
                     if (tu.inflight) {
                         L10nContext.logger.info(`Warning: in-flight translation unit ${tu.guid} can't be exported`);
@@ -75,7 +75,7 @@ export class tmexport {
                         try {
                             jobRes.tus.push(TU.asTarget(tu));
                         } catch (e) {
-                            L10nContext.logger.info(e.stack ?? e);
+                            L10nContext.logger.info(e.message ?? e);
                         }
                     }
                 }

@@ -14,7 +14,6 @@ function decodeSqlResponse(segmentOrSubresource) {
 
 export class BQSource {
     #query;
-    #queryConstants;
     #location;
     #resourceFormat;
     #bundleDecorator;
@@ -46,14 +45,13 @@ export class BQSource {
         logInfo`\nFetching resources from BQ...`;
         const bigquery = new BigQuery();
         const query = this.#query({ since });
-        logVerbose`Query:${query}`;
         const [ job ] = await bigquery.createQueryJob({ query, location: this.#location });
         logInfo`BQ Job ${job.id} started (principal: ${job.metadata.principal_subject}) -- ${job.metadata?.status?.state}`;
 
         let bundleCount = 0;
         for await (let bundle of job.getQueryResultsStream()) {
             bundleCount++;
-            bundleCount % 100 === 1 && logVerbose`bundle #${bundleCount} fetched`;
+            bundleCount % 500 === 1 && logVerbose`bundle #${bundleCount} fetched`;
             this.#bundleDecorator && (bundle = this.#bundleDecorator(bundle));
             const { segments, subresources, ...header } = bundle;
             segments && segments.forEach(decodeSqlResponse);

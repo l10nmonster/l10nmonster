@@ -172,7 +172,7 @@ export class FormatHandler {
                         return { nstr, str };
                     }
                 } catch(e) {
-                    L10nContext.logger.verbose(`Problem translating guid ${seg.guid} to ${tm.targetLang}: ${e.stack ?? e}`);
+                    L10nContext.logger.verbose(`Problem translating guid ${seg.guid} to ${tm.targetLang}: ${e.message ?? e}`);
                 }
             };
             return this.#resourceFilter.generateResource({ ...resHandle, translator, subresources });
@@ -198,7 +198,7 @@ export class FormatHandler {
                     const normalizedTranslation = this.#translateWithTMEntry(normalizedSource.nstr, entry);
                     return this.#encodeTranslatedSegment(normalizedTranslation, normalizedSource.mf, segmentFlags);
                 } catch(e) {
-                    L10nContext.logger.verbose(`Problem translating ${resHandle.id}, ${sid}, ${str} to ${tm.targetLang}: ${e.stack ?? e}`);
+                    L10nContext.logger.verbose(`Problem translating ${resHandle.id}, ${sid}, ${str} to ${tm.targetLang}: ${e.message ?? e}`);
                     return undefined;
                 }
             } else {

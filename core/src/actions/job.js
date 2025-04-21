@@ -47,7 +47,7 @@ export class job {
             try {
                 await monsterManager.tmm.deleteJob(jobGuid);
             } catch (e) {
-                console.error(`Failed to delete job: ${e.stack ?? e}`);
+                console.error(`Failed to delete job: ${e.message ?? e}`);
             }
         } else {
             console.error(`Invalid operation: ${op}`);
