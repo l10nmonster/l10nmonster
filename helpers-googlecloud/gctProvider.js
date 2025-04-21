@@ -9,6 +9,7 @@ export class GCTProvider extends providers.ChunkedRemoteTranslationProvider {
     #projectId;
     #location;
     #model;
+    #initialized;
 
     /**
      * Initializes a new instance of the GCTProvider class.
@@ -33,7 +34,10 @@ export class GCTProvider extends providers.ChunkedRemoteTranslationProvider {
         this.#model = model;
     }
 
-    async start(job) {
+    async #lazyInit() {
+        if (this.#initialized) {
+            return;
+        }
         if (!this.#projectId) {
             try {
             const auth = new GoogleAuth({});
@@ -42,8 +46,21 @@ export class GCTProvider extends providers.ChunkedRemoteTranslationProvider {
                 throw new Error(`Couldn't get credentials, did you run 'gcloud auth login'? ${e.message}`);
             }
         }
-        this.#parentPath = `projects/${this.#projectId}/locations/${location ?? 'global'}`;
+        this.#parentPath = `projects/${this.#projectId}/locations/${this.#location ?? 'global'}`;
         this.#modelPath = `${this.#parentPath}/models/${this.#model === 'llm' ? 'general/translation-llm' : 'general/nmt' }`;
+        const translationClient = new TranslationServiceClient();
+        const [ response ] = await translationClient.getSupportedLanguages({ parent: this.#parentPath });
+        this.supportedSourceLangs = response.languages.filter(l => l.supportSource).map(l => l.languageCode);
+        this.supportedTargetLangs = response.languages.filter(l => l.supportTarget).map(l => l.languageCode);
+        if (!this.languageMapper) {
+            const supportedLangs = new Set([ ...this.supportedSourceLangs, ...this.supportedTargetLangs ]);
+            this.languageMapper = lang => supportedLangs.has(lang) ? lang : lang.split('-')[0];
+        }
+        this.#initialized = true;
+    }
+
+    async start(job) {
+        await this.#lazyInit();
         return super.start(job);
     }
 
@@ -71,10 +88,9 @@ export class GCTProvider extends providers.ChunkedRemoteTranslationProvider {
     async info() {
         const info = await super.info();
         try {
-            const translationClient = new TranslationServiceClient();
-            const [ response ] = await translationClient.getSupportedLanguages({ parent: this.#parentPath });
-            info.description.push(`Source languages: ${response.languages.filter(l => l.supportSource).map(l => l.languageCode).join(', ')}`);
-            info.description.push(`Target languages: ${response.languages.filter(l => l.supportTarget).map(l => l.languageCode).join(', ')}`);
+            await this.#lazyInit();
+            info.description.push(`Source languages: ${this.supportedSourceLangs.sort().join(', ')}`);
+            info.description.push(`Target languages: ${this.supportedTargetLangs.sort().join(', ')}`);
         } catch (e) {
             info.description.push(`Unable to connect to GCP server: ${e.message}`);
         }

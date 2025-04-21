@@ -6,7 +6,7 @@ const MAX_CHUNK_SIZE = 125;
 export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationProvider {
     synchProvider = true;
 
-    #languageMapper;
+    languageMapper;
     #opNames = {};
 
     /**
@@ -28,7 +28,7 @@ export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationP
         super(options);
         this.maxCharLength = maxCharLength ?? MAX_CHAR_LENGTH;
         this.maxChunkSize = maxChunkSize ?? MAX_CHUNK_SIZE;
-        this.#languageMapper = languageMapper;
+        this.languageMapper = languageMapper;
         this.#opNames.synchTranslateChunk = `${this.id}.synchTranslateChunk`;
         this.#opNames.mergeTranslatedChunks = `${this.id}.mergeTranslatedChunks`;
         this.#opNames.asynchTranslateChunk = `${this.id}.asynchTranslateChunk`;
@@ -44,8 +44,8 @@ export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationP
     async start(job) {
         logVerbose`ChunkedRemoteTranslationProvider provider starting job ${job.jobGuid}`;
         const { tus, ...jobResponse } = await super.start(job);
-        const sourceLang = this.#languageMapper ? this.#languageMapper(job.sourceLang) : job.sourceLang;
-        const targetLang = this.#languageMapper ? this.#languageMapper(job.targetLang) : job.targetLang;
+        const sourceLang = this.languageMapper ? this.languageMapper(job.sourceLang) : job.sourceLang;
+        const targetLang = this.languageMapper ? this.languageMapper(job.targetLang) : job.targetLang;
         const tuMeta = {};
         const payload = tus.map((tu, idx) => {
             const [source, phMap ] = utils.flattenNormalizedSourceToXmlV1(tu.nsrc);

@@ -53,7 +53,7 @@ export class BQSource {
         let bundleCount = 0;
         for await (let bundle of job.getQueryResultsStream()) {
             bundleCount++;
-            bundleCount % 10 === 0 && logVerbose`bundle #${bundleCount} fetched`;
+            bundleCount % 100 === 1 && logVerbose`bundle #${bundleCount} fetched`;
             this.#bundleDecorator && (bundle = this.#bundleDecorator(bundle));
             const { segments, subresources, ...header } = bundle;
             segments && segments.forEach(decodeSqlResponse);

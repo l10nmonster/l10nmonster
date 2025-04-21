@@ -286,7 +286,7 @@ export function fixCaseInsensitiveKey(object, key) {
     return Object.keys(object).find(k => k.toLowerCase() === asLowercase);
 }
 
-export function *getIteratorFromJobPair(jobRequest, jobResponse) {
+export function *getIteratorFromJobPair(jobRequest, jobResponse = {}) {
     const requestedUnits = jobRequest?.tus ? Object.fromEntries(jobRequest.tus.map(tu => [ tu.guid, tu])) : {};
     const { inflight, tus, ...jobProps } = jobResponse;
     // because of tm exports we need to split by jobGuid and yield each group.

@@ -5,7 +5,7 @@ export class job {
     static help = {
         description: 'show request/response/pairs of a job or push/delete jobs.',
         arguments: [
-            [ '<operation>', 'operation to perform on job', ['req', 'res', 'pairs', 'push', 'delete'] ],
+            [ '<operation>', 'operation to perform on job', ['req', 'res', 'pairs', 'json', 'delete'] ],
         ],
         requiredOptions: [
             [ '-g, --jobGuid <guid>', 'guid of job' ],
@@ -39,14 +39,9 @@ export class job {
             } else {
                 console.error('Could not fetch the specified job');
             }
-        } else if (op === 'push') {
-            consoleLog`Pushing job ${jobGuid}...`;
-            try {
-                const pushResponse = await monsterManager.jobPush(jobGuid);
-                consoleLog`${pushResponse.num.toLocaleString()} translation ${[pushResponse.num, 'unit', 'units']} requested -> status: ${pushResponse.status}`;
-            } catch (e) {
-                console.error(`Failed to push job: ${e.stack ?? e}`);
-            }
+        } else if (op === 'json') {
+            const job = await monsterManager.tmm.getJob(jobGuid);
+            console.log(JSON.stringify(job, null, '\t'));
         } else if (op === 'delete') {
             consoleLog`Deleting job ${jobGuid}...`;
             try {

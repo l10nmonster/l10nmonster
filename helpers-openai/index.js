@@ -58,12 +58,13 @@ Handle numerical/date formats appropriately`;
         this.#systemPrompt =
 `${persona}
 ${preamble ?? ''}
-- Each string may contain HTML or XML tags. Preserve ALL markup (HTML/XML tags, entities, placeholders)
+${customSchema ? '' : 
+`- Each string may contain HTML or XML tags. Preserve ALL markup (HTML/XML tags, entities, placeholders)
 - Maintain proper escaping of special characters
 - Translate only text nodes. Do not alter tag structure
-${customSchema ? '' : '- Provide a confidence score between 0 and 100 that indicates how confident you are in your translation'}
+- Provide a confidence score between 0 and 100 that indicates how confident you are in your translation'}
 - Your input is provided in JSON format. It contains the source content and notes about each string that helps you understand the context
-- Return your answer as a JSON array with the exact same number of items and in the same order as the input`;
+- Return your answer as a JSON array with the exact same number of items and in the same order as the input`}`;
     }
 
     async synchTranslateChunk({ sourceLang, targetLang, xmlTus, instructions }) {
@@ -96,7 +97,10 @@ ${JSON.stringify(xmlTus, null, 2)}`;
 
     convertTranslationResponse(chunk) {
         const cost = [ chunk.usage.total_tokens / chunk.translations.length ];
-        return chunk.translations.map(({ translation }) => ({ tgt: translation, cost }));
+        return chunk.translations.map(obj => ({
+            tgt: this.#customSchema ? JSON.stringify(obj) : obj.translation,
+            cost,
+        }));
     }
 
     async info() {
