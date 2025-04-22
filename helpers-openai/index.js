@@ -110,7 +110,7 @@ ${JSON.stringify(xmlTus, null, 2)}`;
             const modelNames = modelList.data.map(m => m.id).sort().join(', ');
             info.description.push(`Supported models: ${modelNames}`);
         } catch (e) {
-            info.description.push(`Unable to connect to OpenAI server: ${e.message}`);
+            info.description.push(`Unable to connect to OpenAI server: ${e.cause?.message ?? e.message}`);
         }
         return info;
     }
