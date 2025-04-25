@@ -49,7 +49,8 @@ export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
         return super.start(job);
     }
 
-    async synchTranslateChunk({ sourceLang, targetLang, xmlTus }) {
+    async synchTranslateChunk(op) {
+        const { sourceLang, targetLang, xmlTus } = op.args;
         const [ apiKey, platform, platformVersion ] = this.baseRequest.mmtConstructor;
         try {
             const mmt = new MMTClient(apiKey, platform, platformVersion);
@@ -73,7 +74,8 @@ export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
         }));
     }
 
-    async asynchTranslateChunk({ sourceLang, targetLang, xmlTus, jobGuid, chunk }) {
+    async asynchTranslateChunk(op) {
+        const { sourceLang, targetLang, xmlTus, jobGuid, chunk } = op.args;
         const batchOptions = {
             ...this.baseRequest.options,
             idempotencyKey: `jobGuid:${jobGuid} chunk:${chunk}`,
@@ -97,8 +99,8 @@ export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
         }
     }
 
-    async asynchFetchChunk({ job, chunk, chunkSize }) {
-        return await this.chunkFetcher({ job, chunk, chunkSize });
+    async asynchFetchChunk(op) {
+        return await this.chunkFetcher(op.args);
     }
 
     async info() {

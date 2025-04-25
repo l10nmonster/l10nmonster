@@ -1,28 +1,35 @@
 {
-	"lang": {
-		"piggy": {
-			"leverage": {
-				"minimumQuality": 1,
-				"prjLeverage": {
-					"messages_en.txt": {
-						"translated": 4,
-						"translatedWords": 12,
-						"translatedByQ": {
-							"1": 2,
-							"10": 2
+	"java": {
+		"channelStats": [
+			{
+				"prj": "messages_en.txt",
+				"segmentCount": 4,
+				"resCount": 1
+			}
+		],
+		"prjPairStatus": {
+			"messages_en.txt": {
+				"piggy": {
+					"en": [
+						{
+							"minQ": 1,
+							"q": 10,
+							"res": 1,
+							"seg": 2,
+							"words": 4,
+							"chars": 18
 						},
-						"untranslated": 0,
-						"untranslatedChars": 0,
-						"untranslatedWords": 0,
-						"pending": 0,
-						"pendingWords": 0,
-						"internalRepetitions": 0,
-						"internalRepetitionWords": 0
-					}
-				},
-				"numSources": 1
+						{
+							"minQ": 1,
+							"q": 1,
+							"res": 1,
+							"seg": 2,
+							"words": 8,
+							"chars": 42
+						}
+					]
+				}
 			}
 		}
-	},
-	"numSources": 1
+	}
 }

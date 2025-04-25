@@ -58,7 +58,7 @@ Handle numerical/date formats appropriately`;
         this.#systemPrompt =
 `${persona}
 ${preamble ?? ''}
-${customSchema ? '' : 
+${customSchema ? '' :
 `- Each string may contain HTML or XML tags. Preserve ALL markup (HTML/XML tags, entities, placeholders)
 - Maintain proper escaping of special characters
 - Translate only text nodes. Do not alter tag structure
@@ -67,7 +67,8 @@ ${customSchema ? '' :
 - Return your answer as a JSON array with the exact same number of items and in the same order as the input`}`;
     }
 
-    async synchTranslateChunk({ sourceLang, targetLang, xmlTus, instructions }) {
+    async synchTranslateChunk(op) {
+        const { sourceLang, targetLang, xmlTus, instructions } = op.args;
         const jobInstructions = instructions ? `Consider also the following instructions: ${instructions}` : '';
         const userPrompt =
 `${jobInstructions}

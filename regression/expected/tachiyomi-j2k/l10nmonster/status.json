@@ -1,73 +1,75 @@
 {
-	"lang": {
-		"piggy": {
-			"leverage": {
-				"minimumQuality": 1,
-				"prjLeverage": {
-					"default": {
-						"translated": 871,
-						"translatedWords": 2898,
-						"translatedByQ": {
-							"1": 871
-						},
-						"untranslated": 0,
-						"untranslatedChars": 0,
-						"untranslatedWords": 0,
-						"pending": 0,
-						"pendingWords": 0,
-						"internalRepetitions": 0,
-						"internalRepetitionWords": 0
-					}
-				},
-				"numSources": 1
+	"xliff": {
+		"channelStats": [
+			{
+				"prj": null,
+				"segmentCount": 871,
+				"resCount": 1
 			}
-		},
-		"zh-Hans": {
-			"leverage": {
-				"minimumQuality": 50,
-				"prjLeverage": {
-					"default": {
-						"translated": 854,
-						"translatedWords": 2828,
-						"translatedByQ": {
-							"61": 3,
-							"70": 851
-						},
-						"untranslated": 0,
-						"untranslatedChars": 0,
-						"untranslatedWords": 0,
-						"pending": 17,
-						"pendingWords": 70,
-						"internalRepetitions": 0,
-						"internalRepetitionWords": 0
-					}
+		],
+		"prjPairStatus": {
+			"default": {
+				"piggy": {
+					"en": [
+						{
+							"minQ": 1,
+							"q": 1,
+							"res": 1,
+							"seg": 871,
+							"words": 2898,
+							"chars": 17439
+						}
+					]
 				},
-				"numSources": 1
-			}
-		},
-		"zh-Hant": {
-			"leverage": {
-				"minimumQuality": 50,
-				"prjLeverage": {
-					"default": {
-						"translated": 794,
-						"translatedWords": 2624,
-						"translatedByQ": {
-							"70": 481,
-							"80": 313
+				"zh-Hans": {
+					"en": [
+						{
+							"minQ": 50,
+							"q": 70,
+							"res": 1,
+							"seg": 851,
+							"words": 2821,
+							"chars": 16995
 						},
-						"untranslated": 74,
-						"untranslatedChars": 1337,
-						"untranslatedWords": 267,
-						"pending": 0,
-						"pendingWords": 0,
-						"internalRepetitions": 3,
-						"internalRepetitionWords": 7
-					}
+						{
+							"minQ": 50,
+							"q": 61,
+							"res": 1,
+							"seg": 3,
+							"words": 7,
+							"chars": 42
+						},
+						{
+							"minQ": 50,
+							"q": 0,
+							"res": 1,
+							"seg": 17,
+							"words": 70,
+							"chars": 402
+						}
+					]
 				},
-				"numSources": 1
+				"zh-Hant": {
+					"en": [
+						{
+							"minQ": 50,
+							"q": 80,
+							"res": 1,
+							"seg": 390,
+							"words": 1532,
+							"chars": 9152
+						},
+						{
+							"minQ": 50,
+							"q": 70,
+							"res": 1,
+							"seg": 481,
+							"words": 1366,
+							"chars": 8287
+						}
+					]
+				}
 			}
 		}
-	},
-	"numSources": 1
+	}
 }

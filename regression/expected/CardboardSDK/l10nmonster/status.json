@@ -1,29 +1,43 @@
 {
-	"lang": {
-		"ar": {
-			"leverage": {
-				"minimumQuality": 50,
-				"prjLeverage": {
-					"default": {
-						"translated": 33,
-						"translatedWords": 109,
-						"translatedByQ": {
-							"60": 3,
-							"61": 1,
-							"70": 29
+	"ios": {
+		"channelStats": [
+			{
+				"prj": null,
+				"segmentCount": 33,
+				"resCount": 1
+			}
+		],
+		"prjPairStatus": {
+			"default": {
+				"ar": {
+					"en": [
+						{
+							"minQ": 50,
+							"q": 70,
+							"res": 1,
+							"seg": 29,
+							"words": 98,
+							"chars": 561
 						},
-						"untranslated": 0,
-						"untranslatedChars": 0,
-						"untranslatedWords": 0,
-						"pending": 0,
-						"pendingWords": 0,
-						"internalRepetitions": 0,
-						"internalRepetitionWords": 0
-					}
-				},
-				"numSources": 1
+						{
+							"minQ": 50,
+							"q": 61,
+							"res": 1,
+							"seg": 1,
+							"words": 1,
+							"chars": 4
+						},
+						{
+							"minQ": 50,
+							"q": 60,
+							"res": 1,
+							"seg": 3,
+							"words": 10,
+							"chars": 59
+						}
+					]
+				}
 			}
 		}
-	},
-	"numSources": 1
+	}
 }

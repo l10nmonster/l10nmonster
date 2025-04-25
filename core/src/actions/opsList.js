@@ -1,6 +1,6 @@
 import { consoleLog } from '@l10nmonster/core';
 
-export class jobs_list {
+export class ops_list {
     static help = {
         description: 'list unfinished translation jobs.',
     };
@@ -10,7 +10,7 @@ export class jobs_list {
         if (pairs.length === 0) {
             consoleLog`There are no jobs in the local TM Cache`;
         } else {
-            consoleLog`Unfinished translation jobs:`;
+            consoleLog`Unfinished translation jobs for each language pair:`;
             for (const [ sourceLang, targetLang ] of pairs) {
                 consoleLog`  ‣ ${sourceLang} → ${targetLang}`;
                 const allJobs = await mm.tmm.getJobStatusByLangPair(sourceLang, targetLang);

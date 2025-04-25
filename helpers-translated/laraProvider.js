@@ -5,6 +5,7 @@ import {Credentials, Translator} from '@translated/lara';
 export class LaraProvider extends providers.ChunkedRemoteTranslationProvider {
     #keyId;
     #keySecret;
+    #adaptTo;
     #lara;
     #translateOptions;
 
@@ -18,14 +19,16 @@ export class LaraProvider extends providers.ChunkedRemoteTranslationProvider {
      * @param {number} options.quality - The quality to assign translations.
      * @param {string} options.keyId - The Lara API key id.
      * @param {string} [options.keySecret] - The Lara API key secret.
+     * @param {string|Array<string>} [options.adaptTo] - A list of translation memory IDs to adapt translations to.
      * @param {number} [options.maxCharLength] - The maximum character length of a segment.
      * @param {number} [options.maxChunkSize] - The maximum number of segments in a chunk.
      * @param {function(string): string} [options.languageMapper] - A function to convert language codes for the provider.
      */
-    constructor({ keyId, keySecret, ...options }) {
+    constructor({ keyId, keySecret, adaptTo, ...options }) {
         super(options);
         this.#keyId = keyId;
         this.#keySecret = keySecret;
+        this.#adaptTo = adaptTo && (Array.isArray(adaptTo) ? adaptTo : adaptTo.split(','));
     }
 
     start(job) {
@@ -34,11 +37,13 @@ export class LaraProvider extends providers.ChunkedRemoteTranslationProvider {
         this.#translateOptions = {
             contentType: 'text/plain',
         };
+        this.#adaptTo && (this.#translateOptions.adaptTo = this.#adaptTo);
         job.instructions && (this.#translateOptions.instructions = job.instructions);
         return super.start(job);
     }
 
-    async synchTranslateChunk({ sourceLang, targetLang, xmlTus }) {
+    async synchTranslateChunk(op) {
+        const { sourceLang, targetLang, xmlTus } = op.args;
         const payload = xmlTus.map(xmlTu => {
             const textBlock = [];
             xmlTu.notes && textBlock.push({ text: xmlTu.notes, translatable: false });

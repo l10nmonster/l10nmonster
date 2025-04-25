@@ -8,22 +8,12 @@ export class tmexport {
         description: 'DEPRECATED -- export translation memory as a json job.',
         options: [
             [ '-l, --lang <language>', 'target language to export' ],
-            [ '--filter <filter>', 'use the specified tu filter' ],
-            [ '--prjsplit', 'split target files by project' ],
         ]
     };
 
     static async action(mm, options) {
-        const prjsplit = options.prjsplit;
         consoleLog`TMEXPORT IS NOW DEPRECATED -- USE ${'tm syncup'} INSTEAD`;
         consoleLog`Exporting TM for ${options.lang ? options.lang : 'all languages'}...`;
-        let tuFilterFunction;
-        if (options.filter) {
-            tuFilterFunction = mm.tuFilters[utils.fixCaseInsensitiveKey(mm.tuFilters, options.filter)];
-            if (!tuFilterFunction) {
-                throw `Couldn't find ${options.filter} tu filter`;
-            }
-        }
         const files = [];
         const desiredTargetLangs = new Set(await mm.getTargetLangs(options.lang));
         const availableLangPairs = await mm.tmm.getAvailableLangPairs();
@@ -37,18 +27,13 @@ export class tmexport {
                 for (const tu of tus) {
                     jobProps?.translationProvider && (translationProvider = jobProps.translationProvider);
                     tu.translationProvider = translationProvider;
-                    if (!tuFilterFunction || tuFilterFunction(tu)) {
-                        // either export everything or only content in the specified project
-                        if (!prjsplit || !L10nContext.prj || L10nContext.prj.includes(tu.prj)) {
-                            const prj = (prjsplit && tu?.prj) || 'default';
-                            tusByPrj[prj] ??= [];
-                            tusByPrj[prj].push(tu);
-                        }
-                    }
+                    const prj = 'default';
+                    tusByPrj[prj] ??= [];
+                    tusByPrj[prj].push(tu);
                 }
             }
             for (const [ prj, tus ] of Object.entries(tusByPrj)) {
-                const jobGuid = `tmexport_${prjsplit ? `${prj}_` : ''}${sourceLang}_${targetLang}`;
+                const jobGuid = `tmexport_${sourceLang}_${targetLang}`;
                 const jobReq = {
                     sourceLang: sourceLang,
                     targetLang: targetLang,

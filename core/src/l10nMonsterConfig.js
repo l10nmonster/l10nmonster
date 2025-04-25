@@ -247,22 +247,13 @@ export class L10nMonsterConfig {
     /** @type {string} The source language for localization. */
     sourceLang;
 
-    /**
-     * @type {number | Function}
-     * Either a number constant or a function that given a job it returns a number.
-     * Existing translations below the given quality will be ignored and sent to translation.
-     */
-    minimumQuality;
-
     /** @type {Object} Configuration for different channels. */
     channels = {};
 
     /** @type {Object} Configuration for different formats. */
     formats = {};
 
-    /** @type {Object} Translation providers for the localization process. */
-    translationProviders = {};
-
+    /** @type {Object} Providers for the localization process. */
     providers = [];
 
     /** @type {boolean} Whether to automatically create snapshots at each run. */
@@ -290,25 +281,6 @@ export class L10nMonsterConfig {
     }
 
     /**
-     * Sets basic properties for the localization process.
-     * @param {Object} config - Configuration object containing basic properties.
-     * @param {string} config.sourceLang - The source language for localization.
-     * @param {number | Function} config.minimumQuality - The minimum quality threshold for translations.
-     * @param {Intl.NumberFormat} [config.currencyFormatter] - A currency formatter for estimated costs.
-     * @returns {L10nMonsterConfig} Returns the instance for method chaining.
-     */
-    basicProperties({
-        sourceLang,
-        minimumQuality,
-        currencyFormatter,
-    }) {
-        this.sourceLang = sourceLang;
-        this.minimumQuality = minimumQuality;
-        currencyFormatter && (this.currencyFormatter = currencyFormatter);
-        return this;
-    }
-
-    /**
      * Configures a channel.
      * @param {ChannelConfig | Array<ChannelConfig>} config - The configuration object for the channel.
      * @returns {L10nMonsterConfig} Returns the instance for method chaining.
@@ -322,16 +294,6 @@ export class L10nMonsterConfig {
             throw new Error(`Channel with id ${config.id} already exists`);
         }
         this.channels[config.id] = config;
-        return this;
-    }
-
-    /**
-     * Configures translation providers for the localization process.
-     * @param {Object} translationProviders - The translation providers configuration object.
-     * @returns {L10nMonsterConfig} Returns the instance for method chaining.
-     */
-    translators(translationProviders) {
-        this.translationProviders = translationProviders;
         return this;
     }
 
@@ -354,21 +316,21 @@ export class L10nMonsterConfig {
      * Configures operations for the localization process.
      * @param {Object} config - The operations configuration object.
      * @param {boolean} [config.autoSnap] - Configuration for the snapshot store.
-     * @param {Object} [config.tuFilters] - Configuration for translation unit filters.
      * @param {Array} [config.analyzers] - Configuration for analyzers.
      * @param {string} [config.opsDir] - Directory for operations.
+     * @param {Intl.NumberFormat} [config.currencyFormatter] - A currency formatter for estimated costs.
      * @returns {L10nMonsterConfig} Returns the instance for method chaining.
      */
     operations({
         autoSnap,
-        tuFilters,
         analyzers,
         opsDir,
+        currencyFormatter,
     }) {
         autoSnap !== undefined && (this.autoSnap = Boolean(autoSnap));
-        this.tuFilters = tuFilters;
         this.analyzers = analyzers;
         this.opsDir = opsDir;
+        currencyFormatter && (this.currencyFormatter = currencyFormatter);
         return this;
     }
 
@@ -423,7 +385,6 @@ export class L10nMonsterConfig {
     async run(globalOptions, cb) {
         L10nContext.setVerbosity(globalOptions.verbose);
         L10nContext.regression = Boolean(globalOptions.regression);
-        L10nContext.prj = globalOptions.prj ? globalOptions.prj.split(',') : undefined;
 
         try {
             const mm = new MonsterManager(this);

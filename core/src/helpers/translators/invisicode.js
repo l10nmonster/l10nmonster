@@ -23,7 +23,7 @@ function utf8ToFE00Range(input) {
 
 /**
  * @class InvisicodeGenerator
- * @extends {import('@l10nmonster/core').Translator}
+ * @extends import('@l10nmonster/core').Translator
  * @description Translator that wraps content in Invisicode
  * @property {number} quality - quality for the generated translations
  * @property {number} lowQ - quality threshold below which the translation is considered low quality
@@ -61,8 +61,6 @@ export class InvisicodeGenerator {
 
     /**
      * Generates translations for the given job request
-     * @param {import('@l10nmonster/core').JobRequest} jobRequest
-     * @returns {Promise<import('@l10nmonster/core').JobResponse>}
      */
     async requestTranslations(jobRequest) {
         let tm;
@@ -102,8 +100,6 @@ export class InvisicodeGenerator {
 
     /**
      * Refreshes the translations for the given job request
-     * @param {import('@l10nmonster/core').JobRequest} jobRequest
-     * @returns {Promise<import('@l10nmonster/core').JobResponse>}
      */
     async refreshTranslations(jobRequest) {
         const fullResponse = await this.requestTranslations(jobRequest);

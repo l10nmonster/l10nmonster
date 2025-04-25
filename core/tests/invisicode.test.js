@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { L10nContext, utils, MonsterManager } from './mocks/@l10nmonster/core/index.js';
+import { MonsterManager } from './mocks/@l10nmonster/core/index.js';
 import { InvisicodeGenerator } from '../src/helpers/translators/invisicode.js';
 
 const base = 0xFE00;
@@ -29,12 +29,15 @@ const invisicodePrologueRegex = /\u200B([\uFE00-\uFE0F]+)/;
 test('InvisicodeGenerator - Constructor', async (t) => {
   await t.test('should throw an error if quality, lowQ, or highQ are not specified', () => {
     assert.throws(
+      // @ts-ignore
       () => new InvisicodeGenerator({ lowQ: 20, highQ: 60 }));
 
     assert.throws(
+      // @ts-ignore
       () => new InvisicodeGenerator({ quality: 80, highQ: 60 }));
 
     assert.throws(
+      // @ts-ignore
       () => new InvisicodeGenerator({ quality: 80, lowQ: 20 }));
   });
 
@@ -70,7 +73,9 @@ test('InvisicodeGenerator - init', async (t) => {
     const generator = new InvisicodeGenerator(options);
     const monsterManager = new MonsterManager();
 
-    await generator.init(monsterManager);
+      // @ts-ignore
+    // @ts-ignore
+      await generator.init(monsterManager);
 
     // Assuming #mm is a private field, we can't access it directly.
     // Instead, we can check behavior in subsequent methods.
@@ -112,6 +117,7 @@ test('InvisicodeGenerator - requestTranslations', async (t) => {
     // Add a translation entry
     monsterManager.translationMemory.setEntry('123', { ntgt: ['Hola'] });
 
+    // @ts-ignore
     await generator.init(monsterManager);
 
     const jobRequest = {
@@ -151,6 +157,7 @@ test('InvisicodeGenerator - requestTranslations', async (t) => {
 
     // No translation entry added for '456'
 
+    // @ts-ignore
     await generator.init(monsterManager);
 
     const jobRequest = {
@@ -184,6 +191,7 @@ test('InvisicodeGenerator - requestTranslations', async (t) => {
 
     // No translation entry added for '789'
 
+    // @ts-ignore
     await generator.init(monsterManager);
 
     const jobRequest = {
@@ -216,6 +224,7 @@ test('InvisicodeGenerator - requestTranslations', async (t) => {
     // Add a translation entry
     monsterManager.translationMemory.setEntry('321', { ntgt: ['Bonjour'] });
 
+    // @ts-ignore
     await generator.init(monsterManager);
 
     const jobRequest = {
@@ -279,6 +288,7 @@ test('InvisicodeGenerator - requestTranslations', async (t) => {
 //     monsterManager.translationMemory.setEntry('101', { ntgt: ['Actualizar'] });
 //     monsterManager.translationMemory.setEntry('102', { ntgt: ['\u200B{"g":"102","q":2}No Change\u200B'] }); // this is wrong, it's supposed to be encoded
 
+    // @ts-ignore
 //     await generator.init(monsterManager);
 
 //     const jobRequest = {
@@ -335,6 +345,7 @@ test('InvisicodeGenerator - utf8ToFE00Range', async (t) => {
     // Add a translation entry
     monsterManager.translationMemory.setEntry('555', { ntgt: ['Prueba'], q: 80 });
 
+    // @ts-ignore
     await generator.init(monsterManager);
 
     const jobRequest = {

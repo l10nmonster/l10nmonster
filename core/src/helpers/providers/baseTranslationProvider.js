@@ -1,3 +1,5 @@
+import { logVerbose } from "../../l10nContext.js";
+
 export class BaseTranslationProvider {
     supportedPairs;
     quality;
@@ -54,6 +56,9 @@ export class BaseTranslationProvider {
         let acceptedTus = [];
         if (!this.supportedPairs || this.supportedPairs[job.sourceLang]?.includes(job.targetLang)) {
             acceptedTus = this.quality ? job.tus.filter(tu => tu.q <= this.quality) : job.tus;
+        }
+        if (job.tus.length !== acceptedTus.length) {
+            logVerbose`Provider ${this.id} rejected ${job.tus.length - acceptedTus.length} out of ${job.tus.length} TUs because of minimum quality or language mismatch`;
         }
         const estimatedCost = acceptedTus.reduce((total, tu) => total + (tu.words ?? 0) * this.#costPerWord + ((tu.chars ?? 0) / 1000000) * this.#costPerMChar, 0);
         return { ...job, status: acceptedTus.length > 0 ? 'created' : 'cancelled', tus: acceptedTus, estimatedCost };

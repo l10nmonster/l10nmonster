@@ -77,7 +77,7 @@ export class Channel {
 
     async *getAllNormalizedResources() {
         if (this.#source.fetchAllResources) { // some sources support batching
-            for await (const [resourceHeader, rawResource] of this.#source.fetchAllResources(L10nContext.prj)) {
+            for await (const [resourceHeader, rawResource] of this.#source.fetchAllResources()) {
                 yield this.#makeFullResourceWithPolicyApplied(resourceHeader, rawResource);
             }
         } else {

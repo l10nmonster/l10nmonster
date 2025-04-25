@@ -1,14 +1,10 @@
-import { config, policies, xml, normalizers, translators, providers, filters, stores } from '@l10nmonster/core';
+import { config, policies, xml, normalizers, providers, filters, stores } from '@l10nmonster/core';
 import * as java from '@l10nmonster/helpers-java';
 import * as demo from '@l10nmonster/helpers-demo';
 
 import { MySource, MyTarget } from './myAdapter.mjs';
 
 export default config.l10nMonster(import.meta.dirname)
-    .basicProperties({
-        sourceLang: 'en',
-        minimumQuality: (job) => (job.targetLang === 'piggy' ? 1 : 50),
-    })
     .channel(config.channel('java')
         .source(new MySource({
             sourceLang: 'en',

@@ -164,6 +164,7 @@ test('FsSource: fetchResourceStats retrieves metadata', async () => {
 
     const fsSource = new FsSource({
         baseDir: TEST_BASE_DIR,
+        sourceLang: 'en',
         globs: ['**/*.json'],
         idFromPath: (id) => id.replace(/\\/g, '/'),
     });
@@ -182,6 +183,7 @@ test('FsSource: fetchResource retrieves file content', async () => {
 
     const fsSource = new FsSource({
         baseDir: TEST_BASE_DIR,
+        sourceLang: 'en',
         globs: ['**/*.json'],
     });
 

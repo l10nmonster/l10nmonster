@@ -1,23 +1,15 @@
 import { TU, utils } from '@l10nmonster/core';
 
-export async function analyzeCmd(mm, analyzer, params, limitToLang, tuFilter) {
+export async function analyzeCmd(mm, analyzer, params, limitToLang) {
     const Analyzer = mm.analyzers[utils.fixCaseInsensitiveKey(mm.analyzers, analyzer)];
     if (!Analyzer) {
         throw `couldn't find a ${analyzer} analyzer`;
-    }
-    let tuFilterFunction;
-    if (tuFilter) {
-        tuFilter = utils.fixCaseInsensitiveKey(mm.tuFilters, tuFilter);
-        tuFilterFunction = mm.tuFilters[tuFilter];
-        if (!tuFilterFunction) {
-            throw `Couldn't find ${tuFilter} tu filter`;
-        }
     }
     if (typeof Analyzer.prototype.processSegment === 'function') { // this analyzer needs a source driver
         const analyzer = new Analyzer(...params);
         for await (const res of mm.rm.getAllResources()) {
             for (const seg of res.segments) {
-                (!tuFilterFunction || tuFilterFunction(TU.fromSegment(res, seg))) && analyzer.processSegment({ rid: res.id, prj: res.prj, seg });
+                analyzer.processSegment({ rid: res.id, prj: res.prj, seg });
             }
         }
         return analyzer.getAnalysis();
@@ -34,7 +26,7 @@ export async function analyzeCmd(mm, analyzer, params, limitToLang, tuFilter) {
             const tm = mm.tmm.getTM(sourceLang, targetLang);
             for (const job of tm.getAllJobs()) {
                 for (const tu of job.tus) {
-                    (!tuFilterFunction || tuFilterFunction(tu)) && analyzer.processTU({ targetLang, tu });
+                    analyzer.processTU({ targetLang, tu });
                 }
             }
             !hasAggregateAnalysis && bodies.push((lastAnalysis = analyzer.getAnalysis()).body);

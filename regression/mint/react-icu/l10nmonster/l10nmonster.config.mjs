@@ -1,4 +1,4 @@
-import { L10nMonsterConfig, ChannelConfig, policies, decorators, xml, adapters, translators, providers } from '@l10nmonster/core';
+import { L10nMonsterConfig, ChannelConfig, policies, decorators, xml, adapters, providers } from '@l10nmonster/core';
 import { i18next } from '@l10nmonster/helpers-json';
 
 class ReactConfig extends L10nMonsterConfig {
@@ -7,10 +7,6 @@ class ReactConfig extends L10nMonsterConfig {
     constructor() {
         super(import.meta.dirname);
         this.#sg = new decorators.SequenceGenerator('seqMap.json', 100);
-        this.basicProperties({
-            sourceLang: 'en',
-            minimumQuality: 50,
-        });
         this.channel(new ChannelConfig('react')
             .source(new adapters.FsSource({
                 sourceLang: 'en',

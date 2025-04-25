@@ -28,7 +28,7 @@ export class TranslationMemory {
 export class MonsterManager {
   constructor() {
     this.tmm = {
-      getTM: async (sourceLang, baseLang) => {
+      getTM: (sourceLang, baseLang) => {
         return this.translationMemory;
       },
     };

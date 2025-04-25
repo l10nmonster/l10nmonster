@@ -3,7 +3,7 @@ import { consoleLog } from '@l10nmonster/core';
 // eslint-disable-next-line camelcase
 export class tm_syncdown {
     static help = {
-        description: 'pulls remote TM store to local TM cache.',
+        description: 'synchronizes remote TM store to local TM cache.',
         arguments: [
             [ '<tmStore>', 'id of the TM Store' ],
         ],
@@ -51,6 +51,8 @@ export class tm_syncdown {
         }
         if (options.dryrun) {
             consoleLog`This was just a dryrun, no changes were made!`;
+        } else {
+            consoleLog`Done!`;
         }
     }
 }

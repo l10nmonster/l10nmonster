@@ -50,6 +50,8 @@ export class tm_syncup {
         }
         if (options.dryrun) {
             consoleLog`This was just a dryrun, no changes were made!`;
+        } else {
+            consoleLog`Done!`;
         }
 }
 }

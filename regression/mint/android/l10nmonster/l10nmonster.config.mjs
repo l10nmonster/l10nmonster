@@ -7,10 +7,6 @@ const androidLangMapping = {
 };
 
 export default new L10nMonsterConfig(import.meta.dirname)
-    .basicProperties({
-        sourceLang: 'en',
-        minimumQuality: (job) => (job.targetLang === 'piggy' ? 1 : 50),
-    })
     .channel(new ChannelConfig('android')
         .source(new adapters.FsSource({
             sourceLang: 'en',

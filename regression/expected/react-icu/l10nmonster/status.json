@@ -1,49 +1,55 @@
 {
-	"lang": {
-		"de": {
-			"leverage": {
-				"minimumQuality": 50,
-				"prjLeverage": {
-					"default": {
-						"translated": 5,
-						"translatedWords": 27,
-						"translatedByQ": {
-							"70": 5
-						},
-						"untranslated": 14,
-						"untranslatedChars": 260,
-						"untranslatedWords": 53,
-						"pending": 0,
-						"pendingWords": 0,
-						"internalRepetitions": 0,
-						"internalRepetitionWords": 0
-					}
-				},
-				"numSources": 2
+	"react": {
+		"channelStats": [
+			{
+				"prj": null,
+				"segmentCount": 19,
+				"resCount": 2
 			}
-		},
-		"ru": {
-			"leverage": {
-				"minimumQuality": 50,
-				"prjLeverage": {
-					"default": {
-						"translated": 5,
-						"translatedWords": 27,
-						"translatedByQ": {
-							"70": 5
+		],
+		"prjPairStatus": {
+			"default": {
+				"de": {
+					"en": [
+						{
+							"minQ": 1,
+							"q": 70,
+							"res": 1,
+							"seg": 5,
+							"words": 27,
+							"chars": 170
 						},
-						"untranslated": 14,
-						"untranslatedChars": 260,
-						"untranslatedWords": 53,
-						"pending": 0,
-						"pendingWords": 0,
-						"internalRepetitions": 0,
-						"internalRepetitionWords": 0
-					}
+						{
+							"minQ": 1,
+							"q": 2,
+							"res": 2,
+							"seg": 14,
+							"words": 53,
+							"chars": 260
+						}
+					]
 				},
-				"numSources": 2
+				"ru": {
+					"en": [
+						{
+							"minQ": 1,
+							"q": 70,
+							"res": 1,
+							"seg": 5,
+							"words": 27,
+							"chars": 170
+						},
+						{
+							"minQ": 1,
+							"q": 2,
+							"res": 2,
+							"seg": 14,
+							"words": 53,
+							"chars": 260
+						}
+					]
+				}
 			}
 		}
-	},
-	"numSources": 2
+	}
 }

@@ -7,6 +7,5 @@ export * as policies from './translationPolicies.js';
 export * as providers from './providers/index.js';
 export * as regex from './regex.js';
 export * as stores from './stores/index.js';
-export * as translators from './translators/index.js';
 export * as utils from './utils.js';
 export * as xml from './xml.js';

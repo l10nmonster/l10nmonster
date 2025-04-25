@@ -48,9 +48,15 @@ export default class TMManager {
 
     async #deleteJobContents(jobGuid) {
         const job = this.#DAL.job.getJob(jobGuid);
+        if (!job) {
+            throw new Error(`Job ${jobGuid} does not exist`);
+        }
         const tm = this.getTM(job.sourceLang, job.targetLang);
-        tm.deleteEntriesByJobGuid(jobGuid);
-        this.#DAL.job.deleteJob(jobGuid);
+        const deleteJob = this.#DAL.tmTransaction(jobGuid => {
+            tm.deleteEntriesByJobGuid(jobGuid);
+            this.#DAL.job.deleteJob(jobGuid);
+        });
+        deleteJob(jobGuid);
     }
 
     getTM(sourceLang, targetLang) {

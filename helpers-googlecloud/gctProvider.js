@@ -64,7 +64,8 @@ export class GCTProvider extends providers.ChunkedRemoteTranslationProvider {
         return super.start(job);
     }
 
-    async synchTranslateChunk({ sourceLang, targetLang, xmlTus }) {
+    async synchTranslateChunk(op) {
+        const { sourceLang, targetLang, xmlTus } = op.args;
         try {
             const translationClient = new TranslationServiceClient();
             const [response] = await translationClient.translateText({

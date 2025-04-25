@@ -77,8 +77,10 @@ WHERE excluded.jobGuid = jobs.jobGuid`);
 
         this.getJob = (jobGuid) => {
             const jobRow = this.#stmt.getJob.get(jobGuid);
-            const { jobProps, ...basicProps } = jobRow;
-            return { ...basicProps, ...JSON.parse(jobProps) };
+            if (jobRow) {
+                const { jobProps, ...basicProps } = jobRow;
+                return { ...basicProps, ...JSON.parse(jobProps) };
+            }
         };
         this.#stmt.getJob = db.prepare(/* sql */ 'SELECT * FROM jobs WHERE jobGuid = ?;');
 

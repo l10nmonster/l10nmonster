@@ -1,4 +1,4 @@
-import { L10nContext, providers, logVerbose, logInfo, utils } from '@l10nmonster/core';
+import { L10nContext, providers, logVerbose, logInfo, utils, OpsManager } from '@l10nmonster/core';
 
 const MAX_CHAR_LENGTH = 9900;
 const MAX_CHUNK_SIZE = 125;
@@ -34,11 +34,11 @@ export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationP
         this.#opNames.asynchTranslateChunk = `${this.id}.asynchTranslateChunk`;
         this.#opNames.asynchWaitSubmissions = `${this.id}.asynchWaitSubmissions`;
         this.#opNames.asynchFetchChunk = `${this.id}.asynchFetchChunk`;
-        L10nContext.opsMgr.registerOp(this.synchTranslateChunk.bind(this), { opName: this.#opNames.synchTranslateChunk, idempotent: false });
-        L10nContext.opsMgr.registerOp(this.mergeTranslatedChunks.bind(this), { opName: this.#opNames.mergeTranslatedChunks, idempotent: true });
-        L10nContext.opsMgr.registerOp(this.asynchTranslateChunk.bind(this), { opName: this.#opNames.asynchTranslateChunk, idempotent: false });
-        L10nContext.opsMgr.registerOp(this.asynchWaitSubmissions.bind(this), { opName: this.#opNames.asynchWaitSubmissions, idempotent: true });
-        L10nContext.opsMgr.registerOp(this.asynchFetchChunk.bind(this), { opName: this.#opNames.asynchFetchChunk, idempotent: true });
+        OpsManager.registerOp(this.synchTranslateChunk.bind(this), { opName: this.#opNames.synchTranslateChunk, idempotent: false });
+        OpsManager.registerOp(this.mergeTranslatedChunks.bind(this), { opName: this.#opNames.mergeTranslatedChunks, idempotent: true });
+        OpsManager.registerOp(this.asynchTranslateChunk.bind(this), { opName: this.#opNames.asynchTranslateChunk, idempotent: false });
+        OpsManager.registerOp(this.asynchWaitSubmissions.bind(this), { opName: this.#opNames.asynchWaitSubmissions, idempotent: true });
+        OpsManager.registerOp(this.asynchFetchChunk.bind(this), { opName: this.#opNames.asynchFetchChunk, idempotent: true });
     }
 
     async start(job) {
@@ -57,7 +57,7 @@ export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationP
             xmlTu.source = source; // adding source second so that LLMs see notes first
             return xmlTu;
         });
-        const requestTranslationsTask = L10nContext.opsMgr.createTask();
+        const requestTranslationsTask = OpsManager.createTask(this.id);
         const chunkOps = [];
         const chunkSizes = [];
         for (let currentIdx = 0; currentIdx < payload.length;) {
@@ -76,14 +76,13 @@ export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationP
             chunkOps.push(requestTranslationsTask.enqueue(this.synchProvider ? this.#opNames.synchTranslateChunk : this.#opNames.asynchTranslateChunk,
                 { sourceLang, targetLang, xmlTus, jobGuid: job.jobGuid, instructions: job.instructions, chunk: chunkOps.length }));
         }
-        requestTranslationsTask.commit(this.synchProvider ? this.#opNames.mergeTranslatedChunks : this.#opNames.asynchWaitSubmissions, {
+        const receivedTus = await requestTranslationsTask.execute(this.synchProvider ? this.#opNames.mergeTranslatedChunks : this.#opNames.asynchWaitSubmissions, {
             guids: tus.map(tu => tu.guid),
             tuMeta,
             quality: this.quality,
             ts: L10nContext.regression ? 1 : new Date().getTime(),
             chunkSizes,
         }, chunkOps);
-        const receivedTus = await requestTranslationsTask.execute();
         jobResponse.taskName = L10nContext.regression ? 'x' : requestTranslationsTask.taskName;
         if (this.synchProvider) {
             jobResponse.tus = receivedTus;
@@ -95,15 +94,16 @@ export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationP
         return jobResponse;
     }
 
-    synchTranslateChunk() {
+    synchTranslateChunk(op) {
         throw new Error(`synchTranslateChunk not implemented in ${this.constructor.name}`);
     }
 
-    async mergeTranslatedChunks({ guids, tuMeta, quality, ts, chunkSizes }, chunks) {
-        const convertedChuncks = chunks.map(chunk => this.convertTranslationResponse(chunk));
+    async mergeTranslatedChunks(op) {
+        const { guids, tuMeta, quality, ts, chunkSizes } = op.args;
+        const convertedChuncks = op.inputs.map(input => this.convertTranslationResponse(input));
         convertedChuncks.forEach((convertedChunk, idx) => {
             if (convertedChunk.length !== chunkSizes[idx]) {
-                throw `Expected chunk ${idx} to have ${chunkSizes[idx]} translations but got ${convertedChunk.length}`;
+                throw new Error(`Expected chunk ${idx} to have ${chunkSizes[idx]} translations but got ${convertedChunk.length}`);
             }
         });
         const translations = convertedChuncks.flat(1);
@@ -125,7 +125,7 @@ export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationP
         logVerbose`ChunkedRemoteTranslationProvider provider updating job ${job.jobGuid}`;
         const { inflight, ...jobResponse } = await super.continue(job);
         try {
-            const requestTranslationsTask = L10nContext.opsMgr.createTask();
+            const requestTranslationsTask = OpsManager.createTask();
             const chunkOps = [];
             job.envelope.chunkSizes.forEach(async (chunkSize, chunk) => {
                 L10nContext.logger.info(`Enqueue chunk fetcher for job: ${job.jobGuid} chunk:${chunk} chunkSize:${chunkSize}`);
@@ -135,14 +135,13 @@ export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationP
                     chunkSize,
                 }));
             });
-            requestTranslationsTask.commit(this.#opNames.mergeTranslatedChunks, {
+            const receivedTus = await requestTranslationsTask.execute(this.#opNames.mergeTranslatedChunks, {
                 guids: inflight,
                 tuMeta: job.envelope.tuMeta,
                 quality: this.quality,
                 ts: L10nContext.regression ? 1 : new Date().getTime(),
                 chunkSizes: job.envelope.chunkSizes,
             }, chunkOps);
-            const receivedTus = await requestTranslationsTask.execute();
             jobResponse.tus = receivedTus;
             jobResponse.taskName = L10nContext.regression ? 'x' : requestTranslationsTask.taskName;
             return jobResponse;
@@ -152,15 +151,15 @@ export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationP
         }
     }
 
-    asynchTranslateChunk() {
+    asynchTranslateChunk(op) {
         throw new Error(`asynchTranslateChunk not implemented in ${this.constructor.name}`);
     }
 
-    async asynchWaitSubmissions(args, chunks) {
-        chunks.forEach((response, idx) => L10nContext.logger.verbose(`Chunk ${idx} enqueued: ${response}`));
+    async asynchWaitSubmissions(op) {
+        op.inputs.forEach((response, idx) => L10nContext.logger.verbose(`Chunk ${idx} enqueued: ${response}`));
     }
 
-    asynchFetchChunk() {
+    asynchFetchChunk(op) {
         throw new Error(`asynchFetchChunk not implemented in ${this.constructor.name}`);
     }
 }

@@ -1,29 +1,43 @@
 {
-	"lang": {
-		"it": {
-			"leverage": {
-				"minimumQuality": 50,
-				"prjLeverage": {
-					"default": {
-						"translated": 335,
-						"translatedWords": 2253,
-						"translatedByQ": {
-							"61": 1,
-							"69": 1,
-							"70": 333
+	"java": {
+		"channelStats": [
+			{
+				"prj": null,
+				"segmentCount": 335,
+				"resCount": 30
+			}
+		],
+		"prjPairStatus": {
+			"default": {
+				"it": {
+					"en": [
+						{
+							"minQ": 50,
+							"q": 70,
+							"res": 30,
+							"seg": 333,
+							"words": 2232,
+							"chars": 12037
 						},
-						"untranslated": 0,
-						"untranslatedChars": 0,
-						"untranslatedWords": 0,
-						"pending": 0,
-						"pendingWords": 0,
-						"internalRepetitions": 0,
-						"internalRepetitionWords": 0
-					}
-				},
-				"numSources": 30
+						{
+							"minQ": 50,
+							"q": 69,
+							"res": 1,
+							"seg": 1,
+							"words": 20,
+							"chars": 102
+						},
+						{
+							"minQ": 50,
+							"q": 61,
+							"res": 1,
+							"seg": 1,
+							"words": 1,
+							"chars": 9
+						}
+					]
+				}
 			}
 		}
-	},
-	"numSources": 30
+	}
 }

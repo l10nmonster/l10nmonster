@@ -1,12 +1,8 @@
-import { L10nMonsterConfig, ChannelConfig, policies, normalizers, xml, adapters, translators, providers } from '@l10nmonster/core';
+import { L10nMonsterConfig, ChannelConfig, policies, normalizers, xml, adapters, providers } from '@l10nmonster/core';
 import * as java from '@l10nmonster/helpers-java';
 import * as demo from '@l10nmonster/helpers-demo';
 
 export default new L10nMonsterConfig(import.meta.dirname)
-    .basicProperties({
-        sourceLang: 'en',
-        minimumQuality: 50,
-    })
     .channel(new ChannelConfig('java')
         .source(new adapters.FsSource({
             sourceLang: 'en',

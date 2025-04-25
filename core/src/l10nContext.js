@@ -1,6 +1,5 @@
 import { inspect, styleText } from 'node:util';
 import * as winston from 'winston';
-import { OpsMgr } from './opsMgr.js';
 
 const logLevels = ['error', 'warn', 'info', 'verbose'];
 const levelColors = {
@@ -27,12 +26,9 @@ const consoleTransport = new winston.transports.Console({
 class GlobalContext {
     logger;
     verbosity;
-    env;
-    opsMgr;
 
     // these are set per "request" even though they are shared
     baseDir = '.';
-    prj;
     regression = false;
 
     constructor() {
@@ -41,8 +37,6 @@ class GlobalContext {
             level: 'warn',
             transports: [ consoleTransport ],
         });
-        this.env = process.env;
-        this.opsMgr = new OpsMgr();
     }
 
     setVerbosity(level) {

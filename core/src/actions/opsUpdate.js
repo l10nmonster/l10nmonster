@@ -1,6 +1,6 @@
 import { consoleLog } from '@l10nmonster/core';
 
-export class jobs_update {
+export class ops_update {
     static help = {
         description: 'update pending translation jobs.',
     };

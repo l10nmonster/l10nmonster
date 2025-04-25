@@ -1,4 +1,4 @@
-import { config, policies, normalizers, xml, adapters, translators, providers } from '@l10nmonster/core';
+import { config, policies, normalizers, xml, adapters, providers } from '@l10nmonster/core';
 import * as android from '@l10nmonster/helpers-android';
 import * as xliff from '@l10nmonster/helpers-xliff';
 import * as demo from '@l10nmonster/helpers-demo';
@@ -9,10 +9,6 @@ const androidLangMapping = {
 };
 
 export default config.l10nMonster(import.meta.dirname)
-    .basicProperties({
-        sourceLang: 'en',
-        minimumQuality: (job) => (job.targetLang === 'piggy' ? 1 : 50),
-    })
     .channel(config.channel('xliff')
         .source(new adapters.FsSource({
             sourceLang: 'en',
