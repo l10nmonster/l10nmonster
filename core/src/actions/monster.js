@@ -53,16 +53,9 @@ export class monster {
 
         consoleLog`\nProviders:`;
         if (mm.dispatcher.providers.length === 0) {
-            consoleLog`  ‣ No providers configured`;
-        } else {
-            for (const provider of mm.dispatcher.providers) {
-                const info = await provider.info();
-                consoleLog`  ‣ id:${info.id} type: ${info.type} q: ${info.quality ?? 'dynamic' } cost/word: ${info.costPerWord ?? 0} cost/MB: ${info.costPerMChar ?? 0}`;
-                consoleLog`      • Supported pairs: ${JSON.stringify(info.supportedPairs) ?? 'any'}`;
-                info.description.forEach(line => consoleLog`      • ${line}`);
-                consoleLog``;
-            }
+            consoleLog`  ‣ ${mm.dispatcher.providers.length || 'No'} providers configured (use "l10n ops providers" for more info)`;
         }
+
         consoleLog`\nTranslation Memories:`;
         const availableLangPairs = (await mm.tmm.getAvailableLangPairs()).sort();
         for (const [sourceLang, targetLang] of availableLangPairs) {

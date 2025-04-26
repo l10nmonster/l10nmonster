@@ -55,7 +55,7 @@ export class BaseTranslationProvider {
         // by default take any job in the supported pairs and mark it as free
         let acceptedTus = [];
         if (!this.supportedPairs || this.supportedPairs[job.sourceLang]?.includes(job.targetLang)) {
-            acceptedTus = this.quality ? job.tus.filter(tu => tu.q <= this.quality) : job.tus;
+            acceptedTus = this.quality ? job.tus.filter(tu => tu.minQ <= this.quality) : job.tus;
         }
         if (job.tus.length !== acceptedTus.length) {
             logVerbose`Provider ${this.id} rejected ${job.tus.length - acceptedTus.length} out of ${job.tus.length} TUs because of minimum quality or language mismatch`;

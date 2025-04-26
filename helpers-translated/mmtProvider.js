@@ -1,5 +1,5 @@
 /* eslint-disable no-invalid-this */
-import { logWarn, providers } from '@l10nmonster/core';
+import { logWarn, providers, styleString } from '@l10nmonster/core';
 import { ModernMT as MMTClient } from 'modernmt';
 
 export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
@@ -109,7 +109,7 @@ export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
             const response = await fetch('https://api.modernmt.com/translate/languages');
             if (response.ok) {
                 const supportedProviderLanguages = (await response.json()).data.sort();
-                info.description.push(`Vendor supported languages: ${supportedProviderLanguages?.join(', ') ?? 'unknown'}`);
+                info.description.push(styleString`Vendor supported languages: ${supportedProviderLanguages?.join(', ') ?? 'unknown'}`);
             } else {
                 logWarn`HTTP error: status ${response.status} ${response.statusText}`
             }

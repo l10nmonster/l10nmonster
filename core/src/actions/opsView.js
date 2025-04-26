@@ -15,7 +15,7 @@ export class ops_view {
     };
 
     static async action(monsterManager, options) {
-        const mode = options.mode ?? 'pairs';
+        const mode = options.mode ?? 'req';
         const jobGuid = options.jobGuid;
         const job = await monsterManager.tmm.getJob(jobGuid);
         if (job) {

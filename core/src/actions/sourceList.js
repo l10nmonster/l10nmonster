@@ -46,6 +46,7 @@ export class source_list {
                             totalSegments += leverage.seg;
                             translatedDetails.push({
                                 tuType,
+                                minQ: leverage.minQ,
                                 q: leverage.q,
                                 res: leverage.res,
                                 seg: leverage.seg,
@@ -55,11 +56,10 @@ export class source_list {
                         }
                         const pctTranslated = `(${((pairSummary.translated ?? 0) / totalSegments * 100).toPrecision(3)}%)`;
                         const translatedSummary = Object.entries(pairSummary).filter(([tuType, count]) => count > 0).map(([tuType, count]) => `${count.toLocaleString()} ${tuType}`).join(', ');
-                        // TODO: have options to show details
                         if (options.detailed) {
                             consoleLog`      ⁃ ${sourceLang} → ${targetLang} ${pctTranslated}`;
-                            for (const leverage of translatedDetails) {
-                                consoleLog`        • ${leverage.tuType} ${leverage.res.toLocaleString()} ${[leverage.res, 'resource', 'resources']} with ${leverage.seg.toLocaleString()} ${[leverage.seg, 'segment', 'segments']} ${leverage.words.toLocaleString()} ${[leverage.words, 'word', 'words']} ${leverage.chars.toLocaleString()} ${[leverage.chars, 'char', 'chars']}`;
+                            for (const details of translatedDetails) {
+                                consoleLog`        • ${details.tuType} (q=${details.q ?? details.minQ}) ${details.res.toLocaleString()} ${[details.res, 'resource', 'resources']} with ${details.seg.toLocaleString()} ${[details.seg, 'segment', 'segments']} ${details.words.toLocaleString()} ${[details.words, 'word', 'words']} ${details.chars.toLocaleString()} ${[details.chars, 'char', 'chars']}`;
                             }
                         } else {
                             consoleLog`      ⁃ ${sourceLang} → ${targetLang} ${pctTranslated} segments: ${translatedSummary}`;

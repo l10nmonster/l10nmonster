@@ -59,7 +59,8 @@ export class analyze {
                 }
             }
         } catch (e) {
-            console.error(`Failed to analyze: ${e.message || e}`);
+            e.message && (e.message = `Failed to analyze: ${e.message}`);
+            throw e;
         }
     }
 }

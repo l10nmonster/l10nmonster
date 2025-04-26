@@ -39,7 +39,7 @@
  * @property {string} partitioning - The partitioning strategy of the store.
  */
 
-export { L10nContext, consoleLog, logError, logWarn, logInfo, logVerbose } from './src/l10nContext.js';
+export { L10nContext, consoleLog, logError, logWarn, logInfo, logVerbose, styleString } from './src/l10nContext.js';
 export { TU } from './src/entities/tu.js';
 export { L10nMonsterConfig, ChannelConfig, ResourceFormatConfig, MessageFormatConfig, config } from './src/l10nMonsterConfig.js';
 export { MonsterManager } from './src/monsterManager/index.js';

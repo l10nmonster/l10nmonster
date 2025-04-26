@@ -1,6 +1,6 @@
 import { TranslationServiceClient } from '@google-cloud/translate';
 import { GoogleAuth } from 'google-auth-library';
-import { logInfo, providers } from '@l10nmonster/core';
+import { providers, styleString } from '@l10nmonster/core';
 
 export class GCTProvider extends providers.ChunkedRemoteTranslationProvider {
     #parentPath;
@@ -19,6 +19,8 @@ export class GCTProvider extends providers.ChunkedRemoteTranslationProvider {
      * @param {number} [options.costPerWord] - The estimated cost per word for the provider.
      * @param {number} [options.costPerMChar] - The estimated cost per million characters for the provider.
      * @param {number} options.quality - The quality to assign translations.
+     * @param {number} [options.maxCharLength] - The maximum character length of a segment.
+     * @param {number} [options.maxChunkSize] - The maximum number of segments in a chunk.
      * @param {function(string): string} [options.languageMapper] - A function to convert language codes for the provider.
      * @param {string} [options.projectId] - The maximum character length of a segment.
      * @param {string} [options.location] - GCP datacenter location (global by default).
@@ -90,10 +92,10 @@ export class GCTProvider extends providers.ChunkedRemoteTranslationProvider {
         const info = await super.info();
         try {
             await this.#lazyInit();
-            info.description.push(`Source languages: ${this.supportedSourceLangs.sort().join(', ')}`);
-            info.description.push(`Target languages: ${this.supportedTargetLangs.sort().join(', ')}`);
+            info.description.push(styleString`Source languages: ${this.supportedSourceLangs.sort().join(', ')}`);
+            info.description.push(styleString`Target languages: ${this.supportedTargetLangs.sort().join(', ')}`);
         } catch (e) {
-            info.description.push(`Unable to connect to GCP server: ${e.message}`);
+            info.description.push(styleString`Unable to connect to GCP server: ${e.message}`);
         }
         return info;
     }

@@ -177,8 +177,8 @@ export default class TMManager {
         return this.#DAL.job.getAvailableLangPairs();
     }
 
-    async getJobStatusByLangPair(sourceLang, targetLang) {
-        return this.#DAL.job.getJobStatusByLangPair(sourceLang, targetLang);
+    async getJobTOCByLangPair(sourceLang, targetLang) {
+        return this.#DAL.job.getJobTOCByLangPair(sourceLang, targetLang);
     }
 
     async createJobManifest() {

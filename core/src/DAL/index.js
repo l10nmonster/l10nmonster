@@ -106,7 +106,7 @@ export function createSQLObjectTransformer(jsonProps, spreadingProps = []) {
                                 obj[key] = parsed;
                             }
                         } catch (e) {
-                            throw new Error(`Failed to parse JSON for key ${key}: ${obj[key]}`);
+                            throw new Error(`Failed to parse JSON for key ${key}: ${obj[key]} -- ${e.message}`);
                         }
                     }
                 }

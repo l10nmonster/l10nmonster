@@ -51,14 +51,15 @@ export const L10nContext = new GlobalContext();
 function renderTaggedString(strings, values, styled = false) {
     const out = [];
     strings.forEach(str => {
-        out.push(styled ? styleText('green', str) : str);
+        const styleFragment = styled && str[0] !== '\x1B';
+        out.push(styleFragment ? styleText('green', str) : str);
         if (values.length > 0) {
             const value = values.shift();
             if (Array.isArray(value)) {
                 const formToUse = value[0] === 1 ? value[1] : value[2];
-                out.push(styled ? styleText('green', formToUse) : formToUse);
+                out.push(styleFragment ? styleText('green', String(formToUse)) : String(formToUse));
             } else {
-                out.push(styled ? styleText('red', String(value)) : String(value));
+                out.push(styleFragment ? styleText('red', String(value)) : String(value));
             }
         }
     });
@@ -83,4 +84,8 @@ export const logVerbose = (strings, ...values) => {
 
 export const consoleLog = (strings, ...values) => {
     console.log(renderTaggedString(strings, values, true));
+};
+
+export const styleString = (strings, ...values) => {
+    return renderTaggedString(strings, values, true);
 };

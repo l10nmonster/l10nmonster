@@ -13,8 +13,8 @@ export class ops_update {
             consoleLog`Updating pending translation jobs:`;
             for (const [ sourceLang, targetLang ] of pairs) {
                 consoleLog`  ‣ ${sourceLang} → ${targetLang}`;
-                const allJobs = await mm.tmm.getJobStatusByLangPair(sourceLang, targetLang);
-                const pendingJobs = allJobs.filter(entry => entry[1] === 'pending').map(entry => entry[0]);
+                const allJobs = await mm.tmm.getJobTOCByLangPair(sourceLang, targetLang);
+                const pendingJobs = allJobs.filter(({ status }) => status === 'pending').map(({ jobGuid }) => jobGuid);
                 if (pendingJobs.length === 0) {
                     consoleLog`      • No pending jobs`;
                 } else {

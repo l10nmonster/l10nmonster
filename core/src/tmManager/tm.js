@@ -37,7 +37,7 @@ export class TM {
     }
 
     *getAllJobs() {
-        const allJobs = this.#jobDAL.getJobStatusByLangPair(this.sourceLang, this.targetLang).map(e => e[0]);
+        const allJobs = this.#jobDAL.getJobTOCByLangPair(this.sourceLang, this.targetLang).map(e => e.jobGuid);
         for (const jobGuid of allJobs) {
             yield this.getJobByGuid(jobGuid);
         }

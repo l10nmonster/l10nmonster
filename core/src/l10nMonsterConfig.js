@@ -400,20 +400,21 @@ export class L10nMonsterConfig {
             }
             L10nContext.logger.verbose(`Registered actions: ${flattenedActions.map(e => e[0]).join(', ')}`);
             const l10n = Object.fromEntries(flattenedActions);
-            let response;
+            let response, error;
             try {
                 response = await cb(l10n, mm);
             } catch(e) {
-                response = { error: e.message ?? e };
+                error = e;
             } finally {
                 mm && (await mm.shutdown());
             }
-            if (response?.error) {
-                throw response.error;
+            if (error) {
+                throw error;
             }
             return response;
         } catch(e) {
-            throw new Error(`Unable to run L10nMonsterConfig: ${e.message ?? e}`);
+            e.message && (e.message = `Unable to run L10nMonsterConfig: ${e.message}`);
+            throw e;
         }
     }
 }

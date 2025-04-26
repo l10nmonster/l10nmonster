@@ -12,12 +12,17 @@ export class tm_list {
             consoleLog`\nNothing in the local TM Cache`;
         } else {
             consoleLog`\nLocal TM Cache:`;
+            const pctFormatter = new Intl.NumberFormat('en-US', {
+                style: 'percent',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+            });
             for (const [ srcLang, tgtLang ] of pairs) {
                 consoleLog`  ‣ ${srcLang} → ${tgtLang}`;
                 const tm = await monsterManager.tmm.getTM(srcLang, tgtLang);
                 const tmStats = tm.getStats();
                 for (const stats of tmStats) {
-                    consoleLog`      • ${stats.translationProvider}(${stats.status}): ${stats.jobCount.toLocaleString()} jobs, ${stats.tuCount.toLocaleString()} tus, ${stats.distinctGuids.toLocaleString()} guids`;
+                    consoleLog`      • ${stats.translationProvider}(${stats.status}): ${stats.jobCount.toLocaleString()} ${[stats.jobCount, 'job', 'jobs']}, ${stats.tuCount.toLocaleString()} ${[stats.tuCount, 'tu', 'tus']}, ${stats.distinctGuids.toLocaleString()} ${[stats.distinctGuids, 'guid', 'guids']} ${pctFormatter.format(stats.tuCount / stats.distinctGuids - 1)} redundancy`;
                 }
             }
         }
@@ -34,7 +39,7 @@ export class tm_list {
                     const toc = await tmStore.getTOC(srcLang, tgtLang);
                     const blocks = Object.values(toc.blocks);
                     const jobs = blocks.reduce((acc, block) => acc + block.jobs.length, 0);
-                    consoleLog`      • ${srcLang} → ${tgtLang}: ${blocks.length.toLocaleString()} blocks ${jobs.toLocaleString()} jobs`;
+                    consoleLog`      • ${srcLang} → ${tgtLang}: ${blocks.length.toLocaleString()} ${[blocks.length, 'block', 'blocks']} ${jobs.toLocaleString()} ${[jobs, 'job', 'jobs']}`;
                 }
             }
         }

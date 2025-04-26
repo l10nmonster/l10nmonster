@@ -3,7 +3,7 @@ import OpenAI from 'openai';
 import { zodResponseFormat } from "openai/helpers/zod";
 import { z } from "zod";
 
-import { logInfo, providers } from '@l10nmonster/core';
+import { logInfo, providers, styleString } from '@l10nmonster/core';
 
 const TranslatorAnnotation = z.object({
     translation: z.string(),
@@ -109,9 +109,9 @@ ${JSON.stringify(xmlTus, null, 2)}`;
         try {
             const modelList = await this.#openai.models.list();
             const modelNames = modelList.data.map(m => m.id).sort().join(', ');
-            info.description.push(`Supported models: ${modelNames}`);
+            info.description.push(styleString`Supported models: ${modelNames}`);
         } catch (e) {
-            info.description.push(`Unable to connect to OpenAI server: ${e.cause?.message ?? e.message}`);
+            info.description.push(styleString`Unable to connect to OpenAI server: ${e.cause?.message ?? e.message}`);
         }
         return info;
     }

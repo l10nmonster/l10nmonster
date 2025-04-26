@@ -36,9 +36,8 @@ CREATE TABLE IF NOT EXISTS jobs(
             .map(({ sourceLang, targetLang }) => [ sourceLang, targetLang ]);
         this.#stmt.getAvailableLangPairs = db.prepare(/* sql */ 'SELECT DISTINCT sourceLang, targetLang FROM jobs ORDER BY 1, 2;');
 
-        this.getJobStatusByLangPair = (sourceLang, targetLang) => this.#stmt.getJobStatusByLangPair.all(sourceLang, targetLang)
-            .map(({ jobGuid, status }) => [ jobGuid, status ]);
-        this.#stmt.getJobStatusByLangPair = db.prepare(/* sql */ 'SELECT jobGuid, status FROM jobs WHERE sourceLang = ? AND targetLang = ?;');
+        this.getJobTOCByLangPair = (sourceLang, targetLang) => this.#stmt.getJobTOCByLangPair.all(sourceLang, targetLang);
+        this.#stmt.getJobTOCByLangPair = db.prepare(/* sql */ 'SELECT jobGuid, status, translationProvider, updatedAt FROM jobs WHERE sourceLang = ? AND targetLang = ? ORDER BY updatedAt DESC;');
 
         // this.getJobStatus = (jobGuid) => {
         //     const jobMeta = this.#stmt.getJobMeta.get(jobGuid);

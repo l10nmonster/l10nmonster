@@ -171,7 +171,7 @@ SELECT
     notes,
     mf,
     segProps,
-    p.value q,
+    p.value minQ,
     words,
     chars
 FROM
@@ -186,7 +186,7 @@ WHERE
     AND active = true
     AND (q IS NULL OR (q != 0 AND q < p.value))
 GROUP BY 1, 2, 3, 4
-ORDER BY channel, rid, s.key
+ORDER BY channel, prj, rid, s.key
 LIMIT 10000
 ;`);
         const tus = this.#stmt.getUntranslatedContent.all(sourceLang, targetLang).map(sqlTransformer.decode);
@@ -212,7 +212,8 @@ seg.sid sid,
 seg.guid guid,
 nstr nsrc,
 ntgt,
-COALESCE(q, p.value) q,
+q,
+p.value minQ,
 notes,
 mf,
 segProps,
@@ -229,7 +230,7 @@ sourceLang = ?
 AND p.key = ?
 AND active = true
 AND ${whereCondition.replaceAll(';', '')}
-GROUP BY 1, 2, 3, 4
+GROUP BY 1, 2, 3, 4, 5
 ORDER BY channel, rid, s.key
 LIMIT 10000
 ;`);
