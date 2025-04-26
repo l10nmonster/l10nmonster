@@ -1,28 +1,21 @@
 import { readFileSync } from 'fs';
 
+function createDoubleProngedObject(data, behavior) {
+    return new Proxy(data, {
+        get: function(obj, key) {
+            return key in obj ? obj[key] : behavior[key];
+        }
+    });
+}
+
 export class BaseConfigMancerType {
-    static configMancerSample = {}
-
-    #configMancer = { fallback: {} };
-
     constructor(obj) {
-        const proxiedThis = ((target, base) => new Proxy(target, {
-            get: function(obj, key) {
-                if (key === 'setConfigMancerFallback') {
-                    return function setConfigMancerFallback(newFallback) {
-                        base.fallback = newFallback;
-                    }
-                } else {
-                    return key in obj ? obj[key] : base.fallback[key];
-                }
-            }
-        }))(this, this.#configMancer);
-        for (const [key, value] of Object.entries(obj)) {
-            this[key] = value;
+        const proxiedThis = createDoubleProngedObject(obj, this.constructor.prototype);
+        for (const value of Object.values(obj)) {
             if (Array.isArray(value)) {
-                value.forEach(item => item instanceof BaseConfigMancerType && (item.setConfigMancerFallback(proxiedThis)));
+                value.forEach(item => typeof item === 'object' && Object.setPrototypeOf(item, proxiedThis));
             } else {
-                value instanceof BaseConfigMancerType && (value.setConfigMancerFallback(proxiedThis));
+                typeof value === 'object' && Object.setPrototypeOf(value, proxiedThis);
             }
         }
         return proxiedThis;
