@@ -1,9 +1,9 @@
 import fs from 'fs';
-import { config, policies, L10nContext, normalizers, xml, stores, adapters, translators, providers } from '@l10nmonster/core';
+import { config, policies, L10nContext, normalizers, xml, stores, adapters, providers } from '@l10nmonster/core';
 import * as ios from '@l10nmonster/helpers-ios';
 import * as xliff from '@l10nmonster/helpers-xliff';
 import path from 'path';
-import { LaraProvider } from '@l10nmonster/helpers-translated';
+import { LaraProvider, MMTProvider } from '@l10nmonster/helpers-translated';
 import { GPTAgent } from '@l10nmonster/helpers-openai';
 
 // const defaultTOSConfig = {
@@ -22,55 +22,38 @@ export const iosChannel = config.channel('ios', import.meta.dirname)
     .resourceFilter(new ios.StringsFilter())
     .decoders([ ios.phDecoder, ios.escapesDecoder, xml.entityDecoder ])
     .textEncoders([ normalizers.gatedEncoder(xml.entityEncoder, 'xmlEntityDecoder') ])
-    .policy(policies.fixedTargets(['ar', 'it'], 47))
+    .policy(policies.fixedTargets(['ar', 'it'], 30))
     .policy(policies.fixedTargets('en-ZZ', 20))
     .target(new adapters.FsTarget({
         targetPath: (lang, resourceId) => resourceId.replace('en.lproj/', `${lang}.lproj/`),
     }));
 
 export default config.l10nMonster(import.meta.dirname)
-    .basicProperties({
-        sourceLang: 'en',
-        minimumQuality: 50,
-    })
     .channel(iosChannel)
-    .translators({
-        Grandfather: {
-            translator: new translators.Grandfather({
-                quality: 70,
-            }),
-        },
-        BritishTranslator: {
-            translator: new translators.VariantGenerator({
-                dict: JSON.parse(fs.readFileSync(path.join(import.meta.dirname, 'dict.json'), 'utf-8')),
-                quality: 70,
-            }),
-            pairs: { 'en': [ 'en-GB' ] },
-        },
-        AussieTranslator: {
-            translator: new translators.VariantGenerator({
-                dict: {
-                    customise: 'tinkerise',
-                    find: 'finday',
-                },
-                baseLang: 'en-GB',
-                quality: 70,
-            }),
-            pairs: { 'en': [ 'en-AU' ] },
-        },
+        // BritishTranslator: {
+        //     translator: new translators.VariantGenerator({
+        //         dict: JSON.parse(fs.readFileSync(path.join(import.meta.dirname, 'dict.json'), 'utf-8')),
+        //         quality: 70,
+        //     }),
+        //     pairs: { 'en': [ 'en-GB' ] },
+        // },
+        // AussieTranslator: {
+        //     translator: new translators.VariantGenerator({
+        //         dict: {
+        //             customise: 'tinkerise',
+        //             find: 'finday',
+        //         },
+        //         baseLang: 'en-GB',
+        //         quality: 70,
+        //     }),
+        //     pairs: { 'en': [ 'en-AU' ] },
+        // },
         // TranslationOS: {
         //     translator: new translated.TranslationOS(defaultTOSConfig),
         //     pairs: { 'en': [ 'ar', 'it', 'ja' ] },
         // },
         // TOSLQA: { // fake sample of a "push and forget" configuration
         //     translator: new translated.TranslationOS({ ...defaultTOSConfig, serviceType: 'bugfix', requestOnly: true }),
-        // },
-        // ModernMT: {
-        //     translator: new translated.ModernMT({
-        //         apiKey: l10nmonster.env.mmt_api_key,
-        //         quality: 40,
-        //         maxCharLength: 1000,
-        //     }),
         // },
         // DeepL: {
         //     translator: new translators.DeepL({
@@ -79,33 +62,19 @@ export default config.l10nMonster(import.meta.dirname)
         //     }),
         //     quota: 0,
         // },
-        // GCT: {
-        //     translator: new translators.GoogleCloudTranslateV3({
-        //         keyFilename: l10nmonster.env.gct_credentials,
-        //         projectId: l10nmonster.env.gct_project,
-        //         quality: 40,
+        // Invisicode: {
+        //     translator: new translators.InvisicodeGenerator({
+        //         quality: 50,
+        //         lowQ: 50,
+        //         highQ: 70,
+        //     }),
+        //     pairs: { 'en': [ 'en-ZZ' ] },
+        // },
+        // Visicode: {
+        //     translator: new translators.Visicode({
+        //         quality: 50,
         //     }),
         // },
-        Invisicode: {
-            translator: new translators.InvisicodeGenerator({
-                quality: 50,
-                lowQ: 50,
-                highQ: 70,
-            }),
-            pairs: { 'en': [ 'en-ZZ' ] },
-        },
-        Visicode: {
-            translator: new translators.Visicode({
-                quality: 50,
-            }),
-        },
-        Repetition: {
-            translator: new translators.Repetition({
-                qualifiedPenalty: 1,
-                unqualifiedPenalty: 9,
-            }),
-        },
-    })
     .operations({
         opsDir: 'l10nOps',
     })
@@ -129,7 +98,7 @@ export default config.l10nMonster(import.meta.dirname)
         // model: 'deepseek-r1:70b',
         // model: 'command-a:latest',
         // model: 'qwen2.5:72b',
-        supportedPairs: { 'en': [ 'it' ] },
+        // supportedPairs: { 'en': [ 'it' ] },
     }))
     .provider(new GPTAgent({
         id: 'gemini',
@@ -138,14 +107,14 @@ export default config.l10nMonster(import.meta.dirname)
         apiKey: process.env.gemini_api_key,
         model: 'gemini-2.0-flash',
         preamble: 'You are translating strings from resource files of a mobile app.\nUse the following glossary: viewer=visore, Cardboard=Cardone',
-        supportedPairs: { 'en': [ 'it' ] },
+        // supportedPairs: { 'en': [ 'it' ] },
     }))
-    // .provider(new translated.MMTProvider({
-    //     quality: 40,
-    //     apiKey: process.env.mmt_api_key,
-    //     supportedPairs: { 'en': [ 'ja' ] },
-    //     costPerMChar: 15,
-    // }))
+    .provider(new MMTProvider({
+        quality: 40,
+        apiKey: process.env.mmt_api_key,
+        // supportedPairs: { 'en': [ 'ja' ] },
+        costPerMChar: 15,
+    }))
     // .provider(new xliff.providers.XliffBridge({
     //     requestPath: (lang, jobId) => `outbox/job${jobId}-${lang}.xml`,
     //     completePath: (lang, jobId) => `inbox/job${jobId}-${lang}.xml`,

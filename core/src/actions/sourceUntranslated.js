@@ -54,10 +54,12 @@ export class source_untranslated {
                 throw new Error(`\nYou must specify providers to write a status file!`);
             } else {
                 writeFileSync(options.statusFile, JSON.stringify(status, null, '\t'), 'utf8');
+                consoleLog`\nStatus file written to ${options.statusFile}`;
             }
         }
         if (options.outFile) {
             writeFileSync(options.outFile, JSON.stringify(jobs, null, '\t'), 'utf8');
+            consoleLog`\nJobs written to ${options.outFile}`;
         }
         if (options.push) {
             if (!provider) {

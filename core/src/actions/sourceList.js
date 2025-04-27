@@ -54,6 +54,7 @@ export class source_list {
         }
         if (options.statusFile) {
             writeFileSync(options.statusFile, JSON.stringify(translationStatus, null, '\t'), 'utf8');
+            consoleLog`\nStatus file written to ${options.statusFile}`;
         }
     }
 }

@@ -12,7 +12,6 @@ const androidLangMapping = {
 const config = class MultiProjectConfig2 {
     sourceLang = 'en';
     targetLangs = [ 'ar', 'it', 'ja' ];
-    minimumQuality = 50;
     jobStore = new stores.JsonJobStore({
         jobsDir: 'translationJobs',
     });

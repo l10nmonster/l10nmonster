@@ -51,10 +51,7 @@ export class monster {
             consoleLog`  ‣ ${sourceLang} → ${targetLangs.join(', ')}`;
         }
 
-        consoleLog`\nProviders:`;
-        if (mm.dispatcher.providers.length === 0) {
-            consoleLog`  ‣ ${mm.dispatcher.providers.length || 'No'} providers configured (use "l10n ops providers" for more info)`;
-        }
+        consoleLog`\n${mm.dispatcher.providers.length || 'No'} providers configured: ${mm.dispatcher.providers.map(provider => provider.id).join(', ')}`;
 
         consoleLog`\nTranslation Memories:`;
         const availableLangPairs = (await mm.tmm.getAvailableLangPairs()).sort();

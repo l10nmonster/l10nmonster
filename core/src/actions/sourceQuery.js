@@ -61,7 +61,7 @@ You can write your own where conditions against the following columns:
         }
         if (options.outFile) {
             writeFileSync(options.outFile, JSON.stringify(jobs, null, '\t'), 'utf8');
-            consoleLog`Jobs written to ${options.outFile}`;
+            consoleLog`\nJobs written to ${options.outFile}`;
         }
         if (options.push) {
             consoleLog`\nPushing content to providers...`;

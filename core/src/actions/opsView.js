@@ -21,7 +21,7 @@ export class ops_view {
         if (job) {
             if (options.outFile) {
                 writeFileSync(options.outFile, JSON.stringify(job, null, '\t'), 'utf8');
-                consoleLog`Jobs written to ${options.outFile}`;
+                consoleLog`\nJobs written to ${options.outFile}`;
             } else {
                 if (mode === 'req') {
                     consoleLog`Showing request of job ${jobGuid} ${job.sourceLang} → ${job.targetLang}`;
