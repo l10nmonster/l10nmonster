@@ -3,7 +3,10 @@
 import { Command, Argument, Option, InvalidArgumentError } from 'commander';
 import { L10nContext } from '@l10nmonster/core';
 
-// eslint-disable-next-line no-unused-vars
+import path from 'path';
+import { readFileSync } from 'fs';
+const cliVersion = JSON.parse(readFileSync(path.join(import.meta.dirname, 'package.json'), 'utf-8')).version;
+
 function intOptionParser(value, _dummyPrevious) {
     const parsedValue = parseInt(value, 10);
     if (isNaN(parsedValue)) {
@@ -51,7 +54,7 @@ export default async function runMonsterCLI(monsterConfig, cliCommand) {
     const monsterCLI = new Command();
     monsterCLI
         .name('l10n')
-        .version('3.0.0', '--version', 'output the current version number')
+        .version(cliVersion, '--version', 'output the current version number')
         .description('Continuous localization for the rest of us.')
         .option('-v, --verbose [level]', '0=error, 1=warning, 2=info, 3=verbose', intOptionParser)
         .option('--regression', 'keep variables constant during regression testing');

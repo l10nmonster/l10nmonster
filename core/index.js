@@ -48,3 +48,7 @@ export { ConfigMancer, BaseConfigMancerType } from './src/configMancer.js';
 
 export * from './src/helpers/index.js';
 export * as actions from './src/actions/index.js';
+
+import path from 'path';
+import { readFileSync } from 'fs';
+export const coreVersion = JSON.parse(readFileSync(path.join(import.meta.dirname, 'package.json'), 'utf-8')).version;

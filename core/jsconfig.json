@@ -1,8 +1,0 @@
-{
-    "compilerOptions": {
-        "target": "es2022",
-        "module": "commonjs",
-        "checkJs": true
-    },
-    "exclude": ["node_modules"]
-}
