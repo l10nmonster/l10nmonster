@@ -1,16 +1,11 @@
 {
 	"android": {
-		"channelStats": [
-			{
-				"prj": null,
-				"segmentCount": 11,
-				"resCount": 2
-			}
-		],
-		"prjPairStatus": {
-			"default": {
+		"default": {
+			"en": {
 				"piggy": {
-					"en": [
+					"resCount": 2,
+					"segmentCount": 11,
+					"translationStatus": [
 						{
 							"minQ": 1,
 							"q": 70,

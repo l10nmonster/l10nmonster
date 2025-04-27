@@ -1,16 +1,11 @@
 {
 	"ios": {
-		"channelStats": [
-			{
-				"prj": null,
-				"segmentCount": 33,
-				"resCount": 1
-			}
-		],
-		"prjPairStatus": {
-			"default": {
+		"default": {
+			"en": {
 				"ar": {
-					"en": [
+					"resCount": 1,
+					"segmentCount": 33,
+					"translationStatus": [
 						{
 							"minQ": 50,
 							"q": 70,

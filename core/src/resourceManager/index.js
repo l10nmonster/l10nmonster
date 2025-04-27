@@ -43,12 +43,20 @@ export default class ResourceManager {
         return this.#DAL.source.getAvailableLangPairs();
     }
 
-    async getChannelStats(channelId) {
+    async getActiveContentStats(channelId) {
         if (!this.channels[channelId]) {
             throw `Invalid channel reference: ${channelId}`;
         }
         await this.#snapIfNecessary();
-        return this.#DAL.source.getStats(channelId);
+        return this.#DAL.source.getActiveContentStats(channelId);
+    }
+
+    async getTargetedContentStats(channelId) {
+        if (!this.channels[channelId]) {
+            throw `Invalid channel reference: ${channelId}`;
+        }
+        await this.#snapIfNecessary();
+        return this.#DAL.source.getTargetedContentStats(channelId);
     }
 
     async *#getAllResourcesFromSources(options = { channel: undefined }) {

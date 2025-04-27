@@ -32,12 +32,12 @@ export class monster {
         const printCapabilities = cap => Object.entries(cap).filter(([cmd, available]) => available).map(([cmd]) => cmd).join(' ');
         consoleLog`\nResource Channels and available commands: [autoSnap ${mm.rm.autoSnap ? 'on' : 'off'}]`;
         for (const channelId of Object.keys(mm.rm.channels)) {
-            const channelStats = await mm.rm.getChannelStats(channelId);
+            const channelStats = await mm.rm.getActiveContentStats(channelId);
             consoleLog`  ‣ ${channelId}: ${printCapabilities(mm.capabilitiesByChannel[channelId])}`;
             if (channelStats.length === 0) {
                 consoleLog`      • No resources in this channel!`;
             } else {
-                channelStats.forEach(({ prj, segmentCount, resCount }) => consoleLog`      • Project ${prj ?? 'default'}: ${segmentCount.toLocaleString()} ${[segmentCount, 'segment', 'segments']} in ${resCount.toLocaleString()} ${[resCount, 'resource', 'resources']}`);
+                channelStats.forEach(({ prj, sourceLang, segmentCount, resCount }) => consoleLog`      • Project ${prj ?? 'default'} (source ${sourceLang}): ${segmentCount.toLocaleString()} ${[segmentCount, 'segment', 'segments']} in ${resCount.toLocaleString()} ${[resCount, 'resource', 'resources']}`);
             }
         }
 

@@ -1,16 +1,11 @@
 {
 	"java": {
-		"channelStats": [
-			{
-				"prj": null,
-				"segmentCount": 335,
-				"resCount": 30
-			}
-		],
-		"prjPairStatus": {
-			"default": {
+		"default": {
+			"en": {
 				"it": {
-					"en": [
+					"resCount": 30,
+					"segmentCount": 335,
+					"translationStatus": [
 						{
 							"minQ": 50,
 							"q": 70,

@@ -1,16 +1,11 @@
 {
 	"java": {
-		"channelStats": [
-			{
-				"prj": "messages_en.txt",
-				"segmentCount": 4,
-				"resCount": 1
-			}
-		],
-		"prjPairStatus": {
-			"messages_en.txt": {
+		"messages_en.txt": {
+			"en": {
 				"piggy": {
-					"en": [
+					"resCount": 1,
+					"segmentCount": 4,
+					"translationStatus": [
 						{
 							"minQ": 1,
 							"q": 10,

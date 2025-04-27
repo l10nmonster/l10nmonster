@@ -77,6 +77,23 @@ export class MonsterManager {
         return [ ...desiredTargetLangs ].filter(lang => limitToLang.length === 0 || langsToLimit.includes(lang)).sort();
     }
 
+    async getTranslationStatus() {
+        const status = {};
+        for (const channelId of Object.keys(this.rm.channels)) {
+            const channelStats = await this.rm.getTargetedContentStats(channelId);
+            status[channelId] = {};
+            for (const { prj, sourceLang, targetLang, resCount, segmentCount } of channelStats) {
+                const prjLabel = prj ?? 'default';
+                const tm = this.tmm.getTM(sourceLang, targetLang);
+                const translationStatus = tm.getActiveContentTranslationStatus(channelId, prj);
+                status[channelId][prjLabel] ??= {};
+                status[channelId][prjLabel][sourceLang] ??= {};
+                status[channelId][prjLabel][sourceLang][targetLang] = { resCount, segmentCount, translationStatus };
+            }
+        }
+        return status;
+    }
+
     getTmStore(id) {
         const fixedId = utils.fixCaseInsensitiveKey(this.#tmStores, id);
         if (fixedId) {

@@ -1,16 +1,11 @@
 {
 	"xliff": {
-		"channelStats": [
-			{
-				"prj": null,
-				"segmentCount": 871,
-				"resCount": 1
-			}
-		],
-		"prjPairStatus": {
-			"default": {
+		"default": {
+			"en": {
 				"piggy": {
-					"en": [
+					"resCount": 1,
+					"segmentCount": 871,
+					"translationStatus": [
 						{
 							"minQ": 1,
 							"q": 1,
@@ -22,7 +17,9 @@
 					]
 				},
 				"zh-Hans": {
-					"en": [
+					"resCount": 1,
+					"segmentCount": 871,
+					"translationStatus": [
 						{
 							"minQ": 50,
 							"q": 70,
@@ -50,7 +47,9 @@
 					]
 				},
 				"zh-Hant": {
-					"en": [
+					"resCount": 1,
+					"segmentCount": 871,
+					"translationStatus": [
 						{
 							"minQ": 50,
 							"q": 80,

@@ -1,16 +1,11 @@
 {
 	"react": {
-		"channelStats": [
-			{
-				"prj": null,
-				"segmentCount": 19,
-				"resCount": 2
-			}
-		],
-		"prjPairStatus": {
-			"default": {
+		"default": {
+			"en": {
 				"de": {
-					"en": [
+					"resCount": 2,
+					"segmentCount": 19,
+					"translationStatus": [
 						{
 							"minQ": 1,
 							"q": 70,
@@ -30,7 +25,9 @@
 					]
 				},
 				"ru": {
-					"en": [
+					"resCount": 2,
+					"segmentCount": 19,
+					"translationStatus": [
 						{
 							"minQ": 1,
 							"q": 70,
