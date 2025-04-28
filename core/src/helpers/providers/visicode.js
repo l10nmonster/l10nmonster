@@ -1,4 +1,4 @@
-import { L10nContext, utils, logVerbose } from '@l10nmonster/core';
+import { L10nContext, utils } from '@l10nmonster/core';
 import { BaseTranslationProvider } from './baseTranslationProvider.js';
 
 function underlineString(str, runningLength) {
@@ -37,11 +37,9 @@ export class Visicode extends BaseTranslationProvider {
         super(options);
     }
 
-    async start(job) {
-        logVerbose`Visicode provider starting job ${job.jobGuid}`;
-        job = await super.start(job);
+    getTranslatedTus(job) {
         const ts = L10nContext.regression ? 1 : new Date().getTime();
-        job.tus = job.tus.map(tu => {
+        return job.tus.map(tu => {
             const translation = { guid: tu.guid, ts };
             const prolog = `\u21e5${tu.seq ? `${utils.integerToLabel(tu.seq)}:` : ''}`;
             const parts = [];
@@ -62,6 +60,5 @@ export class Visicode extends BaseTranslationProvider {
             translation.q = this.quality;
             return translation;
         });
-        return job;
     }
 }

@@ -86,7 +86,7 @@ export default config.l10nMonster(import.meta.dirname)
         keyId: process.env.lara_key_id,
         keySecret: process.env.lara_key_secret,
         quality: 48,
-        maxChunkSize: 3,
+        maxChunkSize: 50,
         supportedPairs: { 'en': [ 'it' ] },
     }))
     .provider(new GPTAgent({

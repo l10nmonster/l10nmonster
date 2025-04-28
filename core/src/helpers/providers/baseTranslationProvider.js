@@ -1,4 +1,4 @@
-import { logVerbose } from "../../l10nContext.js";
+import { logVerbose, utils } from '@l10nmonster/core';
 
 export class BaseTranslationProvider {
     supportedPairs;
@@ -60,6 +60,12 @@ export class BaseTranslationProvider {
         if (job.tus.length !== acceptedTus.length) {
             logVerbose`Provider ${this.id} rejected ${job.tus.length - acceptedTus.length} out of ${job.tus.length} TUs because of minimum quality or language mismatch`;
         }
+        // @ts-ignore
+        if (acceptedTus.length > 0 && this.getAcceptedTus) {
+            logVerbose`${this.id} provider creating job using getAcceptedTus() method`;
+            // @ts-ignore
+            acceptedTus = await this.getAcceptedTus({ ...job, tus: acceptedTus });
+        }
         const estimatedCost = acceptedTus.reduce((total, tu) => total + (tu.words ?? 0) * this.#costPerWord + ((tu.chars ?? 0) / 1000000) * this.#costPerMChar, 0);
         return { ...job, status: acceptedTus.length > 0 ? 'created' : 'cancelled', tus: acceptedTus, estimatedCost };
     }
@@ -70,7 +76,31 @@ export class BaseTranslationProvider {
         if (!statusProperties || !statusProperties.actions.includes('start')) {
             throw new Error(`Cannot start jobs that are in the "${job.status}" state`);
         }
-        return { ...job, status: 'done' }; // return a shallow copy to be used as a response
+        let jobResponse = { ...job, status: 'done' }; // return a shallow copy to be used as a response
+        // @ts-ignore
+        if (this.getTranslatedTus) {
+            logVerbose`${this.id} provider translating job ${job.jobGuid} using getTranslatedTus() method`;
+            // @ts-ignore
+            jobResponse.tus = this.getTranslatedTus(job);
+            // @ts-ignore
+        } else if (this.createTask) {
+            // @ts-ignore
+            const task = this.createTask(jobResponse);
+            logVerbose`${this.id} provider translating job ${job.jobGuid} using task ${task.taskName}`;
+            jobResponse = await task.execute();
+        }
+        // remove translations identical to latest TM entry
+        const tm = this.mm.tmm.getTM(job.sourceLang, job.targetLang);
+        const dedupedTus = [];
+        for (const sourceTu of jobResponse.tus) {
+            const existingEntry = tm.getEntryByGuid(sourceTu.guid);
+            if (!existingEntry || !utils.normalizedStringsAreEqual(existingEntry.ntgt, sourceTu.ntgt)) {
+                dedupedTus.push(sourceTu);
+            }
+        }
+        jobResponse.tus = dedupedTus;
+        jobResponse.tus.length === 0 && (jobResponse.status = 'cancelled');
+        return jobResponse;
     }
 
     // some providers are asynchronous and require a continuation -- just enforce status transitions in the super

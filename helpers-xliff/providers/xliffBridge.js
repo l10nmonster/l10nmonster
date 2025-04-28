@@ -23,6 +23,7 @@ export class XliffBridge extends providers.BaseTranslationProvider {
         this.completePath = completePath;
     }
 
+    // TODO: convert to createTask
     async start(job) {
         logVerbose`XliffBridge provider starting job ${job.jobGuid}`;
         const { tus, ...jobResponse } = await super.start(job);

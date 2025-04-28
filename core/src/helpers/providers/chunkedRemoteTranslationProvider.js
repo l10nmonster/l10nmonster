@@ -41,9 +41,9 @@ export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationP
         opsManager.registerOp(this.asynchFetchChunk.bind(this), { opName: this.#opNames.asynchFetchChunk, idempotent: true });
     }
 
-    async start(job) {
-        logVerbose`ChunkedRemoteTranslationProvider provider starting job ${job.jobGuid}`;
-        const { tus, ...jobResponse } = await super.start(job);
+    createTask(job) {
+        logVerbose`ChunkedRemoteTranslationProvider creating task for job ${job.jobGuid}`;
+        const { tus, ...jobResponse } = job;
         const sourceLang = this.languageMapper ? this.languageMapper(job.sourceLang) : job.sourceLang;
         const targetLang = this.languageMapper ? this.languageMapper(job.targetLang) : job.targetLang;
         const tuMeta = {};
@@ -58,6 +58,7 @@ export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationP
             return xmlTu;
         });
         const requestTranslationsTask = opsManager.createTask(this.id, this.synchProvider ? this.#opNames.mergeTranslatedChunks : this.#opNames.asynchWaitSubmissions);
+        jobResponse.taskName = L10nContext.regression ? 'x' : requestTranslationsTask.taskName;
         const chunkSizes = [];
         for (let currentIdx = 0; currentIdx < payload.length;) {
             const xmlTus = [];
@@ -81,17 +82,9 @@ export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationP
             quality: this.quality,
             ts: L10nContext.regression ? 1 : new Date().getTime(),
             chunkSizes,
+            jobResponse,
         };
-        const receivedTus = await requestTranslationsTask.execute();
-        jobResponse.taskName = L10nContext.regression ? 'x' : requestTranslationsTask.taskName;
-        if (this.synchProvider) {
-            jobResponse.tus = receivedTus;
-        } else {
-            jobResponse.inflight = tus.map(tu => tu.guid);
-            jobResponse.envelope = { chunkSizes, tuMeta };
-            jobResponse.status = 'pending';
-        }
-        return jobResponse;
+        return requestTranslationsTask;
     }
 
     synchTranslateChunk(op) {
@@ -99,7 +92,7 @@ export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationP
     }
 
     async mergeTranslatedChunks(op) {
-        const { guids, tuMeta, quality, ts, chunkSizes } = op.args;
+        const { guids, tuMeta, quality, ts, chunkSizes, jobResponse } = op.args;
         const convertedChuncks = op.inputs.map(input => this.convertTranslationResponse(input));
         convertedChuncks.forEach((convertedChunk, idx) => {
             if (convertedChunk.length !== chunkSizes[idx]) {
@@ -107,7 +100,7 @@ export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationP
             }
         });
         const translations = convertedChuncks.flat(1);
-        return guids.map((guid, idx) => {
+        jobResponse.tus = guids.map((guid, idx) => {
             const { tgt, ...tu } = translations[idx] || {};
             tu.guid = guid
             tu.ts = ts;
@@ -115,6 +108,7 @@ export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationP
             tu.ntgt = utils.extractNormalizedPartsFromXmlV1(tgt, tuMeta[idx] || {});
             return tu;
         });
+        return jobResponse;
     }
 
     convertTranslationResponse(chunk) {
@@ -156,7 +150,12 @@ export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationP
     }
 
     async asynchWaitSubmissions(op) {
-        op.inputs.forEach((response, idx) => L10nContext.logger.verbose(`Chunk ${idx} enqueued: ${response}`));
+        const { guids, tuMeta, chunkSizes, jobResponse } = op.args;
+        logVerbose`ChunkedRemoteTranslationProvider submitted ${op.inputs.length} chunks with ${guids.length} guids`;
+        jobResponse.inflight = guids;
+        jobResponse.envelope = { chunkSizes, tuMeta };
+        jobResponse.status = 'pending';
+        return jobResponse;
     }
 
     asynchFetchChunk(op) {

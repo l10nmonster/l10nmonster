@@ -1,4 +1,4 @@
-import { L10nContext, logVerbose, utils, styleString } from '@l10nmonster/core';
+import { L10nContext, logVerbose, styleString } from '@l10nmonster/core';
 import { BaseTranslationProvider } from './baseTranslationProvider.js';
 
 /**
@@ -45,33 +45,25 @@ export class Repetition extends BaseTranslationProvider {
         return bestCandidate;
     }
 
-    async create(job) {
-        logVerbose`Repetition provider creating job`;
-        job = await super.create(job);
-        if (job.status === 'created' && job.tus.length > 0) {
-            const matchedTus = [];
-            const tm = this.mm.tmm.getTM(job.sourceLang, job.targetLang);
-            for (const sourceTu of job.tus) {
-                const tuCandidates = tm.getExactMatches(sourceTu.nsrc);
-                if (tuCandidates.length > 0) {
-                    const bestCandidate = this.#pickBestCandidate(sourceTu, tuCandidates);
-                    if (sourceTu.minQ <= bestCandidate.q) {
-                        // if tu contains ntgt it means it's a refresh so we save translations only if they are different
-                        if (!sourceTu.ntgt || !utils.normalizedStringsAreEqual(bestCandidate.ntgt, sourceTu.ntgt)) {
-                            matchedTus.push({
-                                ...sourceTu,
-                                ntgt: bestCandidate.ntgt,
-                                q: bestCandidate.q,
-                                ts: L10nContext.regression ? 1 : new Date().getTime(),
-                                parentGuid: bestCandidate.guid,
-                            });
-                        }
-                    }
+    async getAcceptedTus(job) {
+        const matchedTus = [];
+        const tm = this.mm.tmm.getTM(job.sourceLang, job.targetLang);
+        for (const sourceTu of job.tus) {
+            const tuCandidates = tm.getExactMatches(sourceTu.nsrc);
+            if (tuCandidates.length > 0) {
+                const bestCandidate = this.#pickBestCandidate(sourceTu, tuCandidates);
+                if (sourceTu.minQ <= bestCandidate.q) {
+                    matchedTus.push({
+                        ...sourceTu,
+                        ntgt: bestCandidate.ntgt,
+                        q: bestCandidate.q,
+                        ts: L10nContext.regression ? 1 : new Date().getTime(),
+                        parentGuid: bestCandidate.guid,
+                    });
                 }
             }
-            return { ...job, status: matchedTus.length > 0 ? 'created' : 'cancelled', tus: matchedTus };
         }
-        return job; // probably job was cancelled because of translation pair not being supported
+        return matchedTus;
     }
     async info() {
         const info = await super.info();
