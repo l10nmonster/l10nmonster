@@ -4,7 +4,7 @@ import readline from 'node:readline/promises';
 import { Readable } from 'node:stream';
 import { pipeline } from 'node:stream/promises';
 
-export class FsPersistence {
+export class FsOpsStore {
     #opsDir;
 
     constructor(opsDir) {

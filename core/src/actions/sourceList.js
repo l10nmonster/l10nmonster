@@ -1,5 +1,5 @@
 import { writeFileSync } from 'fs';
-import { consoleLog } from '@l10nmonster/core';
+import { consoleLog, styleString } from '@l10nmonster/core';
 
 export class source_list {
     static help = {
@@ -40,8 +40,8 @@ export class source_list {
                             pairSummary.chars += chars;
                         }
                         const pctTranslated = pctFormatter.format(pairSummary.translated / segmentCount);
-                        const otherTranslations = `${pairSummary['in flight'] ? `pairSummary['in flight'] in flight` : ''} ${pairSummary['low quality'] ? `pairSummary['low quality'] low quality` : ''}`;
-                        consoleLog`    • Project ${prj} (${sourceLang} → ${targetLang}): ${resCount.toLocaleString()} ${[resCount, 'resource', 'resources']} with ${segmentCount.toLocaleString()} ${[segmentCount, 'segment', 'segments']} ${pairSummary.words.toLocaleString()} ${[pairSummary.words, 'word', 'words']} ${pairSummary.chars.toLocaleString()} ${[pairSummary.chars, 'char', 'chars']} (${pctTranslated} translated) ${otherTranslations}`;
+                        const otherTranslations = `${pairSummary['in flight'] ? styleString`${pairSummary['in flight']} in flight ` : ''} ${pairSummary['low quality'] ? styleString`${pairSummary['low quality']} low quality ` : ''}`;
+                        consoleLog`    • Project ${prj} (${sourceLang} → ${targetLang}): ${resCount.toLocaleString()} ${[resCount, 'resource', 'resources']} with ${segmentCount.toLocaleString()} ${[segmentCount, 'segment', 'segments']} ${otherTranslations}${pairSummary.words.toLocaleString()} ${[pairSummary.words, 'word', 'words']} ${pairSummary.chars.toLocaleString()} ${[pairSummary.chars, 'char', 'chars']} (${pctTranslated} translated)`;
                         if (options.detailed) {
                             for (const { minQ, q, res, seg, words, chars } of translationStatus) {
                                 const tuType = q === null ? 'untranslated' : (q === 0 ? 'in flight' : (q >= minQ ? 'translated' : 'low quality'));

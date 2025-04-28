@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { L10nContext, utils, analyzers, OpsManager } from '@l10nmonster/core';
+import { L10nContext, utils, analyzers, opsManager } from '@l10nmonster/core';
 import DALManager from '../DAL/index.js';
 import TMManager from '../tmManager/index.js';
 import ResourceManager from '../resourceManager/index.js';
@@ -24,7 +24,7 @@ export class MonsterManager {
 
         monsterConfig.tmStores && (this.#tmStores = monsterConfig.tmStores);
 
-        monsterConfig.opsDir && OpsManager.setOpsDir(path.join(L10nContext.baseDir, monsterConfig.opsDir));
+        monsterConfig.opsStore && opsManager.setOpsStore(monsterConfig.opsStore);
         this.tmm = new TMManager(this.#dalManager);
 
         this.dispatcher = new Dispatcher(monsterConfig.providers);

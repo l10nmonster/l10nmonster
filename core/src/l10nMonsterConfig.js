@@ -262,8 +262,8 @@ export class L10nMonsterConfig {
     /** @type {Object} Configuration for the tm stores. */
     tmStores;
 
-    /** @type {string} Directory for operation logs. */
-    opsDir;
+    /** @type {string} Operation logs store. */
+    opsStore;
 
     /** @type {Array} List of actions available for the localization process. */
     actions = Object.values(actions);
@@ -317,19 +317,19 @@ export class L10nMonsterConfig {
      * @param {Object} config - The operations configuration object.
      * @param {boolean} [config.autoSnap] - Configuration for the snapshot store.
      * @param {Array} [config.analyzers] - Configuration for analyzers.
-     * @param {string} [config.opsDir] - Directory for operations.
+     * @param {Object} [config.opsStore] - Directory for operations.
      * @param {Intl.NumberFormat} [config.currencyFormatter] - A currency formatter for estimated costs.
      * @returns {L10nMonsterConfig} Returns the instance for method chaining.
      */
     operations({
         autoSnap,
         analyzers,
-        opsDir,
+        opsStore,
         currencyFormatter,
     }) {
         autoSnap !== undefined && (this.autoSnap = Boolean(autoSnap));
         this.analyzers = analyzers;
-        this.opsDir = opsDir;
+        this.opsStore = opsStore;
         currencyFormatter && (this.currencyFormatter = currencyFormatter);
         return this;
     }

@@ -1,81 +1,89 @@
 import { logInfo } from '@l10nmonster/core';
-import { OpsManager } from './index.js';
+import { createOp } from './index.js';
 
 export default class Task {
-    #persistence;
-    #opList = [];
+    #opsStore;
+    #opList;
 
     taskName;
 
-    constructor(taskName) {
+    constructor(taskName, rootOp) {
+        if (!rootOp) {
+            throw new Error(`OpsManager: Task must have a rootOp`);
+        }
         this.taskName = taskName;
+        rootOp.opId = 0;
+        rootOp.setParentTask(this);
+        this.#opList = [rootOp];
     }
 
-    setPersistence(persistence) {
-        this.#persistence = persistence;
+    setOpsStore(store) {
+        this.#opsStore = store;
     }
 
     get rootOp() {
         return this.#opList[0];
     }
 
-    #createOp(opId, opName, args, inputOps) {
-        const op = OpsManager.getOp(opName);
+    addOp(op) {
+        const opId = this.#opList.length;
         op.opId = opId;
-        op.args = args;
-        inputOps && inputOps.forEach(inputOp => op.addInputDependency(inputOp));
         op.setParentTask(this);
         this.#opList[opId] = op;
         return op;
     }
 
+    serialize() {
+        return this.#opList.map(op => ({
+            opName: op.opName,
+            opId: op.opId,
+            args: op.args,
+            inputOpIds: op.inputOpIds,
+            state: op.state,
+            output: op.output,
+            lastRanAt: op.lastRanAt
+        }));
+    }
+
     async save() {
-        if (this.#persistence) {
-            const serializedOpList = this.#opList.map(op => ({
-                opName: op.opName,
-                opId: op.opId,
-                args: op.args,
-                inputOpIds: op.inputOpIds,
-                state: op.state,
-                output: op.output,
-                lastRanAt: op.lastRanAt
-            }))
-            await this.#persistence.saveOps(this.taskName, serializedOpList);
+        if (this.#opsStore) {
+            const serializedOpList = this.serialize();
+            this.taskName = `${this.taskName}-${this.rootOp.state}`;
+            await this.#opsStore.saveOps(this.taskName, serializedOpList);
         } else {
-            throw new Error(`OpsManager: Can't save Task if no persistence configured (hint: set opsDir)`);
+            throw new Error(`OpsManager: Can't save Task if no persistence configured (hint: configure a opsStore)`);
         }
     }
 
-    async hydrate() {
-        if (this.#persistence) {
-            const inputs = [];
-            for await (const serializedOp of this.#persistence.getTask(this.taskName)) {
-                const { opName, opId, args, inputOpIds, state, output, lastRanAt } = serializedOp;
-                const op = this.#createOp(opId, opName, args);
-                op.state = [ 'pending', 'done', 'error' ].includes(state) ? state : 'pending';
-                op.output = output;
-                op.lastRanAt = lastRanAt;
-                op.setParentTask(this);
-                inputOpIds && (inputs[opId] = inputOpIds);
-            }
-            inputs.forEach((inputOpIds, opId) => inputOpIds.forEach(inputOpId => this.#opList[opId].addInputDependency(this.#opList[inputOpId])));
-        } else {
-            throw new Error(`OpsManager: Can't hydrate Task if no persistence configured (hint: set opsDir)`);
+    static deserialize(taskName, serializedOpList) {
+        const ops = [];
+        const inputs = [];
+        for (const serializedOp of serializedOpList) {
+            const { opName, opId, args, inputOpIds, state, output, lastRanAt } = serializedOp;
+            const op = createOp(opName, args);
+            op.opId = opId;
+            op.state = [ 'pending', 'done', 'error' ].includes(state) ? state : 'pending';
+            op.output = output;
+            op.lastRanAt = lastRanAt;
+            inputOpIds && (inputs[opId] = inputOpIds);
+            ops[opId] = op;
         }
+        const task = new Task(taskName, ops[0]);
+        task.#opList = ops;
+        ops.forEach(op => op.setParentTask(task));
+        inputs.forEach((inputOpIds, opId) => inputOpIds.forEach(inputOpId => ops[opId].addInputDependency(ops[inputOpId])));
+        return task;
     }
 
-    enqueue(opName, args, inputOps) {
-        const opId = this.#opList.length || 1; // start dependencies at 1 if empty
-        const op = this.#createOp(opId, opName, args, inputOps);
-        return op;
+    static async hydrateFromStore(opsStore, taskName) {
+        const serializedOps = [];
+        for await (const serializedOp of opsStore.getTask(taskName)) {
+            serializedOps[serializedOp.opId] = serializedOp;
+        }
+        return Task.deserialize(taskName, serializedOps);
     }
 
-    async execute(opName, args, inputOps) {
-        this.#createOp(0, opName, args, inputOps);
-        return this.continue();
-    }
-
-    async continue() {
+    async execute() {
         /*
             create an execution plan.
             start with root op and then enqueue dependencies whose status is not done.
@@ -94,7 +102,7 @@ export default class Task {
                 }
             }
         }
-        this.#persistence && await this.save();
+        this.#opsStore && await this.save();
         logInfo`${this.taskName} committed`;
         if (this.rootOp.state === 'done') {
             return this.rootOp.output;

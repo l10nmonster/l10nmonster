@@ -55,8 +55,8 @@ export default class Dispatcher {
             const provider = this.getProvider(job.translationProvider);
             const jobResponse = { ...await provider.start(job) };
             await this.processJob(jobResponse, job);
-            const { sourceLang, targetLang, jobGuid, status } = jobResponse;
-            startedJobs.push({ sourceLang, targetLang, jobGuid, status });
+            const { sourceLang, targetLang, jobGuid, translationProvider, status } = jobResponse;
+            startedJobs.push({ sourceLang, targetLang, jobGuid, translationProvider, status });
         }
         return startedJobs;
     }

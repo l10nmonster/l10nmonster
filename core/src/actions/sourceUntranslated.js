@@ -68,8 +68,8 @@ export class source_untranslated {
                 consoleLog`\nPushing content to providers...`;
                 const jobStatus = await mm.dispatcher.startJobs(jobs, { instructions: options.instructions });
                 consoleLog`Pushed ${jobStatus.length} jobs:`;
-                for (const { sourceLang, targetLang, jobGuid, status } of jobStatus) {
-                    consoleLog`  ${sourceLang} → ${targetLang}: ${jobGuid} (${status})`;
+                for (const { sourceLang, targetLang, jobGuid, translationProvider, status } of jobStatus) {
+                    consoleLog`  ${sourceLang} → ${targetLang}: ${translationProvider}(${jobGuid}) → ${status}`;
                 }
             }
         }

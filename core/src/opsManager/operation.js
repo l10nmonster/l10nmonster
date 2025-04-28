@@ -1,4 +1,5 @@
 import { logInfo } from '@l10nmonster/core';
+import { createOp } from './index.js';
 
 export default class Op {
     opId;
@@ -38,6 +39,14 @@ export default class Op {
             this.#inputs.push(inputOp);
             this.state = 'pending';
         }
+        return inputOp;
+    }
+
+    enqueue(inputOpName, inputOpArgs) {
+        const inputOp = createOp(inputOpName, inputOpArgs);
+        this.#parentTask.addOp(inputOp);
+        this.addInputDependency(inputOp);
+        return inputOp;
     }
 
     isReadyToExecute() {
@@ -49,8 +58,8 @@ export default class Op {
         logInfo`Executing opId: ${this.opId} opName: ${this.opName}...`;
         if (!this.isReadyToExecute()) {
             this.state = 'error';
-            this.output = 'Some input dependency not done';
-            return;
+            this.output = 'Some input dependency not met';
+            return this;
         }
         try {
             this.state = 'done';
@@ -59,5 +68,6 @@ export default class Op {
             this.state = 'error';
             this.output = error.message ?? error;
         }
+        return this;
     }
 }
