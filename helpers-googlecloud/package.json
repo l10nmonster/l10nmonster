@@ -16,6 +16,6 @@
         "google-auth-library": "^9"
     },
     "peerDependencies": {
-        "@l10nmonster/core": "^2"
+        "@l10nmonster/core": "^3"
     }
 }

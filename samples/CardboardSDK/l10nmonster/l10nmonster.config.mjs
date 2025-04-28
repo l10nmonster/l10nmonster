@@ -1,5 +1,6 @@
 import fs from 'fs';
 import { config, policies, L10nContext, normalizers, xml, stores, adapters, providers } from '@l10nmonster/core';
+import serve from '@l10nmonster/server';
 import * as ios from '@l10nmonster/helpers-ios';
 import * as xliff from '@l10nmonster/helpers-xliff';
 import path from 'path';
@@ -126,6 +127,7 @@ export default config.l10nMonster(import.meta.dirname)
         partitioning: 'language',
         compressBlocks: true,
     }))
+    .action(serve)
     .action(class mystats {
         static help = {
             description: 'just a demo of how to create your own commands',

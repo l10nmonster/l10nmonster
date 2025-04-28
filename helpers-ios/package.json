@@ -13,6 +13,6 @@
         "@l10nmonster/i18n-strings-files": "^3.0.0"
     },
     "peerDependencies": {
-        "@l10nmonster/core": "^2"
+        "@l10nmonster/core": "^3"
     }
 }

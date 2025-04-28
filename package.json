@@ -11,6 +11,7 @@
         "helpers-json",
         "helpers-openai",
         "helpers-po",
+        "helpers-server",
         "helpers-translated",
         "helpers-xliff"
     ],
