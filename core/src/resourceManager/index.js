@@ -52,14 +52,6 @@ export default class ResourceManager {
             .map(stats => ({ ...stats, targetLangs: stats.targetLangs ? stats.targetLangs.split(',') : [] }));
     }
 
-    async getTargetedContentStats(channelId) {
-        if (!this.channels[channelId]) {
-            throw `Invalid channel reference: ${channelId}`;
-        }
-        await this.#snapIfNecessary();
-        return this.#DAL.source.getTargetedContentStats(channelId);
-    }
-
     async *#getAllResourcesFromSources(options = { channel: undefined }) {
         logInfo`Getting all resources directly from sources...`;
         const channels = options.channel ? [ this.getChannel(options.channel) ] : Object.values(this.channels);

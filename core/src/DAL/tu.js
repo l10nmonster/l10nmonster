@@ -151,7 +151,7 @@ WHERE
     sourceLang = ?
     AND p.key = ?
     AND active = true
-GROUP BY 1, 2
+GROUP BY 1, 2, 3, 4
 ORDER BY 3 DESC, 4 DESC
 ;`);
         return this.#stmt.getActiveContentTranslationStatus.all(sourceLang, targetLang);

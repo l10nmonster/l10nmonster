@@ -1,21 +1,17 @@
 {
-	"html": {
-		"default": {
-			"en": {
-				"it": {
-					"resCount": 2,
-					"segmentCount": 113,
-					"translationStatus": [
-						{
-							"minQ": 1,
-							"q": 1,
-							"res": 2,
-							"seg": 113,
-							"words": 862,
-							"chars": 5682
-						}
-					]
-				}
+	"en": {
+		"it": {
+			"html": {
+				"null": [
+					{
+						"minQ": 1,
+						"q": 1,
+						"res": 2,
+						"seg": 113,
+						"words": 862,
+						"chars": 5682
+					}
+				]
 			}
 		}
 	}

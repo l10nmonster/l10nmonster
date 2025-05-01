@@ -15,7 +15,7 @@ export class source_list {
     };
 
     static async action(mm, options) {
-        const withStatus = options.status || options.srcLang || options.tgtLang || options.detailed;
+        const withStatus = options.status || options.srcLang || options.tgtLang || options.detailed || options.statusFile;
         const pctFormatter = new Intl.NumberFormat('en-US', {
             style: 'percent',
             minimumFractionDigits: 0,
@@ -25,32 +25,33 @@ export class source_list {
         if (withStatus) {
             consoleLog`Active Content Channels with Translation Status`;
             translationStatus = await mm.getTranslationStatus();
-            for (const [ channelId, channelStatus ] of Object.entries(translationStatus)) {
-                consoleLog`\n  ‣ Channel ${channelId}`;
-                for (const [ prj, projectStatus ] of Object.entries(channelStatus)) {
-                    for (const [ sourceLang, statusBySourceLang ] of Object.entries(projectStatus)) {
-                        if (options.srcLang && sourceLang !== options.srcLang) {
-                            continue;
-                        }
-                        for (const [ targetLang, projectDetails ] of Object.entries(statusBySourceLang)) {
-                            if (options.tgtLang && targetLang !== options.tgtLang) {
-                                continue;
-                            }
-                            const { resCount, segmentCount, translationStatus } = projectDetails
-                            const pairSummary = { untranslated: 0, "in flight": 0, translated: 0, "low quality": 0, words: 0, chars: 0 };
+            for (const [ sourceLang, sourceStatus ] of Object.entries(translationStatus)) {
+                if (options.srcLang && sourceLang !== options.srcLang) {
+                    continue;
+                }
+                for (const [ targetLang, channelStatus ] of Object.entries(sourceStatus)) {
+                    if (options.tgtLang && targetLang !== options.tgtLang) {
+                        continue;
+                    }
+                    consoleLog`${sourceLang} → ${targetLang}`;
+                    for (const [ channelId, projectStatus ] of Object.entries(channelStatus)) {
+                        consoleLog`  ‣ Channel ${channelId}`;
+                        for (const [ prj, translationStatus ] of Object.entries(projectStatus)) {
+                            const pairSummary = { segs: 0, words: 0, chars: 0 };
+                            const pairSummaryByStatus = { translated: 0, 'low quality': 0, 'in flight': 0, 'untranslated': 0 };
                             for (const { minQ, q, seg, words, chars } of translationStatus) {
-                                const tuType = q === null ? 'untranslated' : (q === 0 ? 'in flight' : (q >= minQ ? 'translated' : 'low quality'));
-                                pairSummary[tuType] += seg;
+                                pairSummary.segs += seg;
+                                pairSummaryByStatus[q === null ? 'untranslated' : (q === 0 ? 'in flight' : (q >= minQ ? 'translated' : 'low quality'))] += seg;
                                 pairSummary.words += words;
                                 pairSummary.chars += chars;
                             }
-                            const pctTranslated = pctFormatter.format(pairSummary.translated / segmentCount);
-                            const otherTranslations = `${pairSummary['in flight'] ? styleString`${pairSummary['in flight']} in flight ` : ''} ${pairSummary['low quality'] ? styleString`${pairSummary['low quality']} low quality ` : ''}`;
-                            consoleLog`    • Project ${prj} (${sourceLang} → ${targetLang}): ${resCount.toLocaleString()} ${[resCount, 'resource', 'resources']} with ${segmentCount.toLocaleString()} ${[segmentCount, 'segment', 'segments']} ${otherTranslations}${pairSummary.words.toLocaleString()} ${[pairSummary.words, 'word', 'words']} ${pairSummary.chars.toLocaleString()} ${[pairSummary.chars, 'char', 'chars']} (${pctTranslated} translated)`;
+                            const pctTranslated = pctFormatter.format(pairSummaryByStatus.translated / pairSummary.segs);
+                            const segStatus = Object.entries(pairSummaryByStatus).filter(e => e[1]).map(([status, segs]) => styleString`${status}: ${segs}`).join(', ');
+                            consoleLog`    • Project ${prj}: ${pairSummary.segs.toLocaleString()} ${[pairSummary.segs, 'segment', 'segments']} (${segStatus}) ${pairSummary.words.toLocaleString()} ${[pairSummary.words, 'word', 'words']} ${pairSummary.chars.toLocaleString()} ${[pairSummary.chars, 'char', 'chars']} (${pctTranslated} translated)`;
                             if (options.detailed) {
                                 for (const { minQ, q, res, seg, words, chars } of translationStatus) {
-                                    const tuType = q === null ? 'untranslated' : (q === 0 ? 'in flight' : (q >= minQ ? 'translated' : 'low quality'));
-                                    consoleLog`      ⁃ ${tuType} (q=${q ?? minQ}) ${res.toLocaleString()} ${[res, 'resource', 'resources']} with ${seg.toLocaleString()} ${[seg, 'segment', 'segments']} ${words.toLocaleString()} ${[words, 'word', 'words']} ${chars.toLocaleString()} ${[chars, 'char', 'chars']}`;
+                                    const status = q === null ? 'untranslated' : (q === 0 ? 'in flight' : (q >= minQ ? 'translated' : 'low quality'));
+                                    consoleLog`      ⁃ ${status} (minQ=${minQ}, q=${q || 'none'}) ${res.toLocaleString()} ${[res, 'resource', 'resources']} with ${seg.toLocaleString()} ${[seg, 'segment', 'segments']} ${words.toLocaleString()} ${[words, 'word', 'words']} ${chars.toLocaleString()} ${[chars, 'char', 'chars']}`;
                                 }
                             }
                         }
@@ -66,9 +67,6 @@ export class source_list {
             }
         }
         if (options.statusFile) {
-            if (!translationStatus) {
-                throw new Error(`Can't save translation status without specifying an option with translation status.`);
-            }
             writeFileSync(options.statusFile, JSON.stringify(translationStatus, null, '\t'), 'utf8');
             consoleLog`\nStatus file written to ${options.statusFile}`;
         }

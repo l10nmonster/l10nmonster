@@ -78,26 +78,15 @@ export class MonsterManager {
     }
 
     async getTranslationStatus() {
-        const status = {};
         const translationStatusByPair = {};
-        for (const channelId of Object.keys(this.rm.channels)) {
-            const channelStats = await this.rm.getTargetedContentStats(channelId);
-            logVerbose`Got targeted content stats for channel ${channelId}`;
-            status[channelId] = {};
-            for (const { prj, sourceLang, targetLang, resCount, segmentCount } of channelStats) {
-                const prjLabel = prj ?? 'default';
-                translationStatusByPair[sourceLang] ??= {};
-                if (!translationStatusByPair[sourceLang][targetLang]) {
-                    const tm = this.tmm.getTM(sourceLang, targetLang);
-                    translationStatusByPair[sourceLang][targetLang] = tm.getActiveContentTranslationStatus(channelId, prj);
-                    logVerbose`Got active content translation status for ${sourceLang} → ${targetLang}`;
-                }
-                status[channelId][prjLabel] ??= {};
-                status[channelId][prjLabel][sourceLang] ??= {};
-                status[channelId][prjLabel][sourceLang][targetLang] = { resCount, segmentCount, translationStatus: translationStatusByPair[sourceLang][targetLang][channelId][prjLabel] };
-            }
-        }
-        return status;
+        const langPairs = await this.rm.getAvailableLangPairs();
+        for (const [ sourceLang, targetLang ] of langPairs) {
+            translationStatusByPair[sourceLang] ??= {};
+            const tm = this.tmm.getTM(sourceLang, targetLang);
+            translationStatusByPair[sourceLang][targetLang] = tm.getActiveContentTranslationStatus();
+            logVerbose`Got active content translation status for ${sourceLang} → ${targetLang}`;
+        }    
+        return translationStatusByPair;
     }
 
     getTmStore(id) {

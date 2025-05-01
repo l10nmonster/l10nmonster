@@ -1,73 +1,69 @@
 {
-	"xliff": {
-		"default": {
-			"en": {
-				"piggy": {
-					"resCount": 1,
-					"segmentCount": 871,
-					"translationStatus": [
-						{
-							"minQ": 1,
-							"q": 1,
-							"res": 1,
-							"seg": 871,
-							"words": 2898,
-							"chars": 17439
-						}
-					]
-				},
-				"zh-Hans": {
-					"resCount": 1,
-					"segmentCount": 871,
-					"translationStatus": [
-						{
-							"minQ": 50,
-							"q": 70,
-							"res": 1,
-							"seg": 851,
-							"words": 2821,
-							"chars": 16995
-						},
-						{
-							"minQ": 50,
-							"q": 61,
-							"res": 1,
-							"seg": 3,
-							"words": 7,
-							"chars": 42
-						},
-						{
-							"minQ": 50,
-							"q": 0,
-							"res": 1,
-							"seg": 17,
-							"words": 70,
-							"chars": 402
-						}
-					]
-				},
-				"zh-Hant": {
-					"resCount": 1,
-					"segmentCount": 871,
-					"translationStatus": [
-						{
-							"minQ": 50,
-							"q": 80,
-							"res": 1,
-							"seg": 390,
-							"words": 1532,
-							"chars": 9152
-						},
-						{
-							"minQ": 50,
-							"q": 70,
-							"res": 1,
-							"seg": 481,
-							"words": 1366,
-							"chars": 8287
-						}
-					]
-				}
+	"en": {
+		"piggy": {
+			"xliff": {
+				"null": [
+					{
+						"minQ": 1,
+						"q": 1,
+						"res": 1,
+						"seg": 871,
+						"words": 2898,
+						"chars": 17439
+					}
+				]
+			}
+		},
+		"zh-Hans": {
+			"xliff": {
+				"null": [
+					{
+						"minQ": 50,
+						"q": 70,
+						"res": 1,
+						"seg": 851,
+						"words": 2821,
+						"chars": 16995
+					},
+					{
+						"minQ": 50,
+						"q": 61,
+						"res": 1,
+						"seg": 3,
+						"words": 7,
+						"chars": 42
+					},
+					{
+						"minQ": 50,
+						"q": 0,
+						"res": 1,
+						"seg": 17,
+						"words": 70,
+						"chars": 402
+					}
+				]
+			}
+		},
+		"zh-Hant": {
+			"xliff": {
+				"null": [
+					{
+						"minQ": 50,
+						"q": 80,
+						"res": 1,
+						"seg": 390,
+						"words": 1532,
+						"chars": 9152
+					},
+					{
+						"minQ": 50,
+						"q": 70,
+						"res": 1,
+						"seg": 481,
+						"words": 1366,
+						"chars": 8287
+					}
+				]
 			}
 		}
 	}

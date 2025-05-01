@@ -1,37 +1,33 @@
 {
-	"android": {
-		"default": {
-			"en": {
-				"piggy": {
-					"resCount": 2,
-					"segmentCount": 11,
-					"translationStatus": [
-						{
-							"minQ": 1,
-							"q": 70,
-							"res": 1,
-							"seg": 1,
-							"words": 2,
-							"chars": 6
-						},
-						{
-							"minQ": 1,
-							"q": 2,
-							"res": 1,
-							"seg": 5,
-							"words": 13,
-							"chars": 59
-						},
-						{
-							"minQ": 1,
-							"q": 1,
-							"res": 1,
-							"seg": 5,
-							"words": 48,
-							"chars": 215
-						}
-					]
-				}
+	"en": {
+		"piggy": {
+			"android": {
+				"null": [
+					{
+						"minQ": 1,
+						"q": 70,
+						"res": 1,
+						"seg": 1,
+						"words": 2,
+						"chars": 6
+					},
+					{
+						"minQ": 1,
+						"q": 2,
+						"res": 1,
+						"seg": 5,
+						"words": 13,
+						"chars": 59
+					},
+					{
+						"minQ": 1,
+						"q": 1,
+						"res": 1,
+						"seg": 5,
+						"words": 48,
+						"chars": 215
+					}
+				]
 			}
 		}
 	}

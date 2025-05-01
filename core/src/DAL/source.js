@@ -293,20 +293,4 @@ ORDER BY 3 DESC, 4 DESC;
 `);
         return this.#stmt.getActiveContentStats.all(channelId);
     }
-
-    getTargetedContentStats(channelId) {
-        this.#stmt.getTargetedContentStats ??= this.#db.prepare(/* sql */`
-SELECT
-    prj,
-    sourceLang,
-    t.value targetLang,
-    SUM(JSON_ARRAY_LENGTH(segments)) AS segmentCount,
-    COUNT(*) AS resCount
-FROM resources, JSON_EACH(targetLangs) t
-WHERE channel = ? AND active = true
-GROUP BY 1, 2, 3
-ORDER BY 4 DESC, 5 DESC;
-`);
-        return this.#stmt.getTargetedContentStats.all(channelId);
-    }
 }

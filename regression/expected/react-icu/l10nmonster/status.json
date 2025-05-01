@@ -1,51 +1,47 @@
 {
-	"react": {
-		"default": {
-			"en": {
-				"de": {
-					"resCount": 2,
-					"segmentCount": 19,
-					"translationStatus": [
-						{
-							"minQ": 1,
-							"q": 70,
-							"res": 1,
-							"seg": 5,
-							"words": 27,
-							"chars": 170
-						},
-						{
-							"minQ": 1,
-							"q": 2,
-							"res": 2,
-							"seg": 14,
-							"words": 53,
-							"chars": 260
-						}
-					]
-				},
-				"ru": {
-					"resCount": 2,
-					"segmentCount": 19,
-					"translationStatus": [
-						{
-							"minQ": 1,
-							"q": 70,
-							"res": 1,
-							"seg": 5,
-							"words": 27,
-							"chars": 170
-						},
-						{
-							"minQ": 1,
-							"q": 2,
-							"res": 2,
-							"seg": 14,
-							"words": 53,
-							"chars": 260
-						}
-					]
-				}
+	"en": {
+		"de": {
+			"react": {
+				"null": [
+					{
+						"minQ": 1,
+						"q": 70,
+						"res": 1,
+						"seg": 5,
+						"words": 27,
+						"chars": 170
+					},
+					{
+						"minQ": 1,
+						"q": 2,
+						"res": 2,
+						"seg": 14,
+						"words": 53,
+						"chars": 260
+					}
+				]
+			}
+		},
+		"ru": {
+			"react": {
+				"null": [
+					{
+						"minQ": 1,
+						"q": 70,
+						"res": 1,
+						"seg": 5,
+						"words": 27,
+						"chars": 170
+					},
+					{
+						"minQ": 1,
+						"q": 2,
+						"res": 2,
+						"seg": 14,
+						"words": 53,
+						"chars": 260
+					}
+				]
 			}
 		}
 	}
