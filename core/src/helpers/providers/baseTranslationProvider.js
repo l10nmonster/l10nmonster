@@ -94,16 +94,16 @@ export class BaseTranslationProvider {
         }
         // remove translations identical to latest TM entry
         const tm = this.mm.tmm.getTM(job.sourceLang, job.targetLang);
-        const dedupedTus = this.#saveIdenticalEntries ? [] : jobResponse.tus;
         if (!this.#saveIdenticalEntries) {
-            for (const sourceTu of jobResponse.tus) {
+            const tusToDedupe = jobResponse.tus;
+            jobResponse.tus = [];
+            for (const sourceTu of tusToDedupe) {
                 const existingEntry = tm.getEntryByGuid(sourceTu.guid);
                 if (!existingEntry || (!existingEntry.inflight && !utils.normalizedStringsAreEqual(existingEntry.ntgt, sourceTu.ntgt))) {
-                    dedupedTus.push(sourceTu);
+                    jobResponse.tus.push(sourceTu);
                 }
             }
         }
-        jobResponse.tus = dedupedTus;
         jobResponse.tus.length === 0 && (jobResponse.status = 'cancelled');
         return jobResponse;
     }

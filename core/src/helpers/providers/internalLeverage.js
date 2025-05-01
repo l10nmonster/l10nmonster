@@ -44,7 +44,7 @@ export class InternalLeverageHoldout extends BaseTranslationProvider {
         return holdout;
     }
 
-    translateTus() {
+    getTranslatedTus() {
         return []; // release held tus
     }
 }

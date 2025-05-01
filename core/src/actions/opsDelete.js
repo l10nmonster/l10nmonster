@@ -9,13 +9,15 @@ export class ops_delete {
     };
 
     static async action(monsterManager, options) {
-        const jobGuid = options.jobGuid;
-        consoleLog`Deleting job ${jobGuid}...`;
-        try {
-            await monsterManager.tmm.deleteJob(jobGuid);
-        } catch (e) {
-            e.message && (e.message = `Failed to delete job: ${e.message}`);
-            throw e;
-        }
+        const jobGuidList = options.jobGuid.split(',');
+        jobGuidList.forEach(async jobGuid => {
+            try {
+                consoleLog`Deleting job ${jobGuid}...`;
+                await monsterManager.tmm.deleteJob(jobGuid);
+            } catch (e) {
+                e.message && (e.message = `Failed to delete job: ${e.message}`);
+                throw e;
+            }
+        });
     }
 }
