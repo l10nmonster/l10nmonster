@@ -26,6 +26,7 @@ export class BaseTranslationProvider {
     #id;
     #costPerWord;
     #costPerMChar;
+    #saveIdenticalEntries;
 
     /**
      * Initializes a new instance of the BaseTranslationProvider class.
@@ -35,13 +36,15 @@ export class BaseTranslationProvider {
      * @param {Object} [options.supportedPairs] - Supported pairs for the provider.
      * @param {number} [options.costPerWord] - The estimated cost per word for the provider.
      * @param {number} [options.costPerMChar] - The estimated cost per million characters for the provider.
+     * @param {Boolean} [options.saveIdenticalEntries] - Save translations even if identical to TM.
      */
-    constructor({ id, quality, supportedPairs, costPerWord, costPerMChar } = {}) {
+    constructor({ id, quality, supportedPairs, costPerWord, costPerMChar, saveIdenticalEntries } = {}) {
         this.#id = id;
         this.quality = quality;
         this.supportedPairs = supportedPairs;
         this.#costPerWord = costPerWord ?? 0;
         this.#costPerMChar = costPerMChar ?? 0;
+        this.#saveIdenticalEntries = saveIdenticalEntries;
     }
 
     get id() {
@@ -91,11 +94,13 @@ export class BaseTranslationProvider {
         }
         // remove translations identical to latest TM entry
         const tm = this.mm.tmm.getTM(job.sourceLang, job.targetLang);
-        const dedupedTus = [];
-        for (const sourceTu of jobResponse.tus) {
-            const existingEntry = tm.getEntryByGuid(sourceTu.guid);
-            if (!existingEntry || !utils.normalizedStringsAreEqual(existingEntry.ntgt, sourceTu.ntgt)) {
-                dedupedTus.push(sourceTu);
+        const dedupedTus = this.#saveIdenticalEntries ? [] : jobResponse.tus;
+        if (!this.#saveIdenticalEntries) {
+            for (const sourceTu of jobResponse.tus) {
+                const existingEntry = tm.getEntryByGuid(sourceTu.guid);
+                if (!existingEntry || (!existingEntry.inflight && !utils.normalizedStringsAreEqual(existingEntry.ntgt, sourceTu.ntgt))) {
+                    dedupedTus.push(sourceTu);
+                }
             }
         }
         jobResponse.tus = dedupedTus;
