@@ -1,4 +1,5 @@
 import { L10nContext, utils } from '@l10nmonster/core';
+import { groupObjectsByNestedProps } from '../sharedFunctions.js';
 
 export class TM {
     #tuDAL;
@@ -64,8 +65,8 @@ export class TM {
         return this.#tuDAL.getStats();
     }
 
-    getActiveContentTranslationStatus(channelId, prj) {
-        return this.#tuDAL.getActiveContentTranslationStatus(this.sourceLang, this.targetLang, channelId, prj);
+    getActiveContentTranslationStatus() {
+        return groupObjectsByNestedProps(this.#tuDAL.getActiveContentTranslationStatus(this.sourceLang, this.targetLang), [ 'channel', 'prj' ]);
     }
 
     getUntranslatedContent() {

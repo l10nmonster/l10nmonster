@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { L10nContext, utils, analyzers, opsManager } from '@l10nmonster/core';
+import { L10nContext, utils, analyzers, opsManager, logVerbose } from '@l10nmonster/core';
 import DALManager from '../DAL/index.js';
 import TMManager from '../tmManager/index.js';
 import ResourceManager from '../resourceManager/index.js';
@@ -79,16 +79,22 @@ export class MonsterManager {
 
     async getTranslationStatus() {
         const status = {};
+        const translationStatusByPair = {};
         for (const channelId of Object.keys(this.rm.channels)) {
             const channelStats = await this.rm.getTargetedContentStats(channelId);
+            logVerbose`Got targeted content stats for channel ${channelId}`;
             status[channelId] = {};
             for (const { prj, sourceLang, targetLang, resCount, segmentCount } of channelStats) {
                 const prjLabel = prj ?? 'default';
-                const tm = this.tmm.getTM(sourceLang, targetLang);
-                const translationStatus = tm.getActiveContentTranslationStatus(channelId, prj);
+                translationStatusByPair[sourceLang] ??= {};
+                if (!translationStatusByPair[sourceLang][targetLang]) {
+                    const tm = this.tmm.getTM(sourceLang, targetLang);
+                    translationStatusByPair[sourceLang][targetLang] = tm.getActiveContentTranslationStatus(channelId, prj);
+                    logVerbose`Got active content translation status for ${sourceLang} → ${targetLang}`;
+                }
                 status[channelId][prjLabel] ??= {};
                 status[channelId][prjLabel][sourceLang] ??= {};
-                status[channelId][prjLabel][sourceLang][targetLang] = { resCount, segmentCount, translationStatus };
+                status[channelId][prjLabel][sourceLang][targetLang] = { resCount, segmentCount, translationStatus: translationStatusByPair[sourceLang][targetLang][channelId][prjLabel] };
             }
         }
         return status;

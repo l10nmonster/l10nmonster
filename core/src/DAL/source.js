@@ -1,6 +1,5 @@
 import { L10nContext, utils } from '@l10nmonster/core';
 import { createSQLObjectTransformer } from './index.js';
-import { source } from '../actions/source.js';
 
 const sqlTransformer = createSQLObjectTransformer(['targetLangs', 'plan', 'segments', 'subresources', 'resProps', 'nstr', 'notes', 'segProps'], ['resProps', 'segProps']);
 const spaceRegex = /\s+/g;
@@ -284,9 +283,10 @@ ORDER BY 1, 2
 SELECT
     prj,
     sourceLang,
+    GROUP_CONCAT(DISTINCT value) targetLangs,
     SUM(JSON_ARRAY_LENGTH(segments)) AS segmentCount,
     COUNT(*) AS resCount
-FROM resources
+FROM resources LEFT JOIN JSON_EACH(targetLangs)
 WHERE channel = ? AND active = true
 GROUP BY 1, 2
 ORDER BY 3 DESC, 4 DESC;

@@ -48,7 +48,8 @@ export default class ResourceManager {
             throw `Invalid channel reference: ${channelId}`;
         }
         await this.#snapIfNecessary();
-        return this.#DAL.source.getActiveContentStats(channelId);
+        return this.#DAL.source.getActiveContentStats(channelId)
+            .map(stats => ({ ...stats, targetLangs: stats.targetLangs ? stats.targetLangs.split(',') : [] }));
     }
 
     async getTargetedContentStats(channelId) {

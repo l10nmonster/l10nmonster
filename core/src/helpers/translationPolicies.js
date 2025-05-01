@@ -3,13 +3,21 @@ export function fixedTargets(targetLangs, minimumQuality) {
         targetLangs = [ targetLangs ];
     }
     const planToApply = targetLangs ? Object.fromEntries(targetLangs.map(targetLang => [ targetLang, minimumQuality ])) : {};
-    return ({ plan }) => Object.assign(plan, planToApply);
+    return ({ plan }) => ({ plan: { ...plan, ...planToApply } });
 };
 
 export function byProject(prjToPipelineMap) {
     return (policyContext) => {
         const pipeline = prjToPipelineMap[policyContext.res.prj] ?? [];
-        pipeline.forEach(policy => policyContext.plan = policy(policyContext));
-        return policyContext.plan;
+        pipeline.forEach(policy => {
+            const returnedContext = policy(policyContext);
+            if (returnedContext) {
+                const { res, seg, ...segmentProps } = returnedContext; // preserve res and seg in policyContext
+                Object.assign(policyContext, segmentProps);
+            } else {
+                throw new Error(`got nothing from policy ${policy} in project ${policyContext.res.prj}`);
+            }
+        });
+        return policyContext;
     };
 };

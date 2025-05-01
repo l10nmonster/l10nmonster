@@ -129,12 +129,14 @@ WHERE flattenNormalizedSourceToOrdinal(nsrc) = ?`);
         return this.#stmt.getStats.all();
     }
 
-    getActiveContentTranslationStatus(sourceLang, targetLang, channelId, prj) {
+    getActiveContentTranslationStatus(sourceLang, targetLang) {
         this.#stmt.getActiveContentTranslationStatus ??= this.#db.prepare(/* sql */`
 WITH tus AS (SELECT guid, MAX(q) q FROM ${this.#tusTable} GROUP BY 1)
 SELECT
+    channel,
+    prj,
     p.value minQ,
-    q,
+    t.q q,
     COUNT(distinct r.rid) res,
     COUNT(s.value) seg,
     SUM(words) words,
@@ -148,13 +150,11 @@ FROM
 WHERE
     sourceLang = ?
     AND p.key = ?
-    AND channel = ?
-    AND (prj = ? OR prj IS NULL)
     AND active = true
 GROUP BY 1, 2
-ORDER BY 1 DESC, 2 DESC
+ORDER BY 3 DESC, 4 DESC
 ;`);
-        return this.#stmt.getActiveContentTranslationStatus.all(sourceLang, targetLang, channelId, prj);
+        return this.#stmt.getActiveContentTranslationStatus.all(sourceLang, targetLang);
     }
 
     // TODO: parametrize a maximum segment parameter to limit giant jobs
