@@ -1,7 +1,19 @@
 /* eslint-disable no-invalid-this */
 import { logWarn, providers, styleString } from '@l10nmonster/core';
-import {Credentials, Translator} from '@translated/lara';
+import { Credentials, Translator } from '@translated/lara';
 
+/**
+ * @typedef {object} LaraProviderOptions
+ * @extends ChunkedRemoteTranslationProviderOptions
+ * @property {string} keyId - The Lara API key id. This is required.
+ * @property {string} [keySecret] - The Lara API key secret. Optional, but often needed for authentication.
+ * @property {string|Array<string>} [adaptTo] - An optional single translation memory ID or an array of IDs to adapt translations to.
+ * @property {number} [maxChunkSize=60] - Maximum number of text segments (strings) allowed in a single API request chunk. Defaults to 60 if not provided.
+ */
+
+/**
+ * Provider for Translated Lara MT.
+ */
 export class LaraProvider extends providers.ChunkedRemoteTranslationProvider {
     #keyId;
     #keySecret;
@@ -11,21 +23,10 @@ export class LaraProvider extends providers.ChunkedRemoteTranslationProvider {
 
     /**
      * Initializes a new instance of the LaraProvider class.
-     * @param {Object} options - The parameters for the constructor.
-     * @param {string} [options.id] - Global identifier for the provider.
-     * @param {Object} [options.supportedPairs] - Supported pairs for the provider.
-     * @param {number} [options.costPerWord] - The estimated cost per word for the provider.
-     * @param {number} [options.costPerMChar] - The estimated cost per million characters for the provider.
-     * @param {number} options.quality - The quality to assign translations.
-     * @param {string} options.keyId - The Lara API key id.
-     * @param {string} [options.keySecret] - The Lara API key secret.
-     * @param {string|Array<string>} [options.adaptTo] - A list of translation memory IDs to adapt translations to.
-     * @param {number} [options.maxCharLength] - The maximum character length of a segment.
-     * @param {number} [options.maxChunkSize] - The maximum number of segments in a chunk.
-     * @param {function(string): string} [options.languageMapper] - A function to convert language codes for the provider.
+     * @param {LaraProviderOptions} options - Configuration options for the provider.
      */
     constructor({ keyId, keySecret, adaptTo, ...options }) {
-        super(options);
+        super({ chunkSize: 60, ...options }); // maximum number of strings sent to Lara is 128 including notes
         this.#keyId = keyId;
         this.#keySecret = keySecret;
         this.#adaptTo = adaptTo && (Array.isArray(adaptTo) ? adaptTo : adaptTo.split(','));
@@ -75,7 +76,6 @@ export class LaraProvider extends providers.ChunkedRemoteTranslationProvider {
             const lara = new Translator(credentials);
             const languages = (await lara.getLanguages()).sort();
             info.description.push(styleString`Vendor supported languages: ${languages?.join(', ') ?? 'unknown'}`);
-            // const memory = await lara.memories.create('Memory 1');
             const memories = await lara.memories.list();
             if (memories.length > 0) {
                 memories.forEach(m =>

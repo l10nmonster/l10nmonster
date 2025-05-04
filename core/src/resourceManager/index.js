@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { logInfo } from '@l10nmonster/core';
 
 export default class ResourceManager {

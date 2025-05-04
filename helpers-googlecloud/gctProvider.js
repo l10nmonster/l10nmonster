@@ -2,6 +2,17 @@ import { TranslationServiceClient } from '@google-cloud/translate';
 import { GoogleAuth } from 'google-auth-library';
 import { providers, styleString } from '@l10nmonster/core';
 
+/**
+ * @typedef {object} GCTProviderOptions
+ * @extends ChunkedRemoteTranslationProviderOptions
+ * @property {string} [projectId] - The GCP Project ID.
+ * @property {string} [location] - GCP datacenter location (global by default).
+ * @property {string} [model] - The model to use for translation ("nmt" by default or "llm")
+ */
+
+/**
+ * Provider for Google Cloud Translate MT.
+ */
 export class GCTProvider extends providers.ChunkedRemoteTranslationProvider {
     #parentPath;
     #modelPath;
@@ -13,18 +24,7 @@ export class GCTProvider extends providers.ChunkedRemoteTranslationProvider {
 
     /**
      * Initializes a new instance of the GCTProvider class.
-     * @param {Object} options - The parameters for the constructor.
-     * @param {string} [options.id] - Global identifier for the provider.
-     * @param {Object} [options.supportedPairs] - Supported pairs for the provider.
-     * @param {number} [options.costPerWord] - The estimated cost per word for the provider.
-     * @param {number} [options.costPerMChar] - The estimated cost per million characters for the provider.
-     * @param {number} options.quality - The quality to assign translations.
-     * @param {number} [options.maxCharLength] - The maximum character length of a segment.
-     * @param {number} [options.maxChunkSize] - The maximum number of segments in a chunk.
-     * @param {function(string): string} [options.languageMapper] - A function to convert language codes for the provider.
-     * @param {string} [options.projectId] - The maximum character length of a segment.
-     * @param {string} [options.location] - GCP datacenter location (global by default).
-     * @param {string} [options.model] - The model to use for translation ("nmt" by default or "llm")
+     * @param {GCTProviderOptions} options - Configuration options for the provider.
      */
     constructor({ projectId, location, model, ...options }) {
         if (!options.quality) {

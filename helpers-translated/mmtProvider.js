@@ -2,23 +2,24 @@
 import { logWarn, providers, styleString } from '@l10nmonster/core';
 import { ModernMT as MMTClient } from 'modernmt';
 
+/**
+ * @typedef {object} MMTProviderOptions
+ * @extends ChunkedRemoteTranslationProviderOptions
+ * @property {string} [id] - Global identifier (by default 'MMTBatch' or 'MMTRealtime')
+ * @property {string} apiKey - The ModernMT API key.
+ * @property {string} [webhook] - The webhook URL for batch translation.
+ * @property {function(any): any} [chunkFetcher] - The chunk fetcher operation name.
+ * @property {(string | number)[]} [hints] - Hints to include in the MMT request.
+ * @property {boolean} [multiline] - Whether to use multiline mode.
+ */
+
+/**
+ * Provider for Translated Modern MT.
+ */
 export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
     /**
      * Initializes a new instance of the MMTProvider class.
-     * @param {Object} options - The parameters for the constructor.
-     * @param {string} [options.id] - Global identifier for the provider.
-     * @param {Object} [options.supportedPairs] - Supported pairs for the provider.
-     * @param {number} [options.costPerWord] - The estimated cost per word for the provider.
-     * @param {number} [options.costPerMChar] - The estimated cost per million characters for the provider.
-     * @param {number} options.quality - The quality to assign translations.
-     * @param {string} options.apiKey - The ModernMT API key.
-     * @param {string} [options.webhook] - The webhook URL for batch translation.
-     * @param {function(any): any} [options.chunkFetcher] - The chunk fetcher operation name.
-     * @param {(string | number)[]} [options.hints] - Hints to include in the MMT request.
-     * @param {boolean} [options.multiline] - Whether to use multiline mode.
-     * @param {number} [options.maxCharLength] - The maximum character length of a segment.
-     * @param {number} [options.maxChunkSize] - The maximum number of segments in a chunk.
-     * @param {function(string): string} [options.languageMapper] - A function to convert language codes for the provider.
+     * @param {MMTProviderOptions} options - Configuration options for the provider.
      */
     constructor({ id, apiKey, webhook, chunkFetcher, hints, multiline = true, ...options }) {
         id ??= webhook ? 'MMTBatch' : 'MMTRealtime';

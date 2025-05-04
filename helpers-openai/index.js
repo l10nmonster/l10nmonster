@@ -11,6 +11,21 @@ const TranslatorAnnotation = z.object({
     confidence: z.number(),
   });
 
+  /**
+ * @typedef {object} GPTAgentOptions
+ * @extends ChunkedRemoteTranslationProviderOptions
+ * @property {string} [baseURL] - The base URL (https://api.openai.com by default)
+ * @property {string} [model] - The LLM model to use (gpt-4o by default)
+ * @property {number} [temperature] - The temperature to use (0.1 by default)
+ * @property {string} [apiKey] - The LLM provder API key (if needed).
+ * @property {string} [persona] - An override to the default persona for the translator.
+ * @property {string} [preamble] - Additional instructions to give context valid for all translations.
+ * @property {import('zod').ZodTypeAny} [customSchema] - A prescribed schema to structure translations into.
+ */
+
+/**
+ * Provider for OpenAI GPT-compatible LLMs.
+ */
 export class GPTAgent extends providers.ChunkedRemoteTranslationProvider {
     #openai;
     #model;
@@ -20,22 +35,7 @@ export class GPTAgent extends providers.ChunkedRemoteTranslationProvider {
 
     /**
      * Initializes a new instance of the GPTAgent class.
-     * @param {Object} options - The parameters for the constructor.
-     * @param {string} [options.id] - Global identifier for the provider.
-     * @param {Object} [options.supportedPairs] - Supported pairs for the provider.
-     * @param {number} [options.costPerWord] - The estimated cost per word for the provider.
-     * @param {number} [options.costPerMChar] - The estimated cost per million characters for the provider.
-     * @param {number} options.quality - The quality to assign translations.
-     * @param {number} [options.maxCharLength] - The maximum character length of a segment.
-     * @param {number} [options.maxChunkSize] - The maximum number of segments in a chunk.
-     * @param {function(string): string} [options.languageMapper] - A function to convert language codes for the provider.
-     * @param {string} [options.baseURL] - The base URL (https://api.openai.com by default)
-     * @param {string} [options.model] - The LLM model to use (gpt-4o by default)
-     * @param {number} [options.temperature] - The temperature to use (0.1 by default)
-     * @param {string} [options.apiKey] - The LLM provder API key (if needed).
-     * @param {string} [options.persona] - An override to the default persona for the translator.
-     * @param {string} [options.preamble] - Additional instructions to give context valid for all translations.
-     * @param {import('zod').ZodTypeAny} [options.customSchema] - A prescribed schema to structure translations into.
+     * @param {GPTAgentOptions} options - Configuration options for the provider.
      */
     constructor({ baseURL, apiKey, model, temperature, persona, preamble, customSchema, ...options }) {
         if (!options.quality || !model) {

@@ -18,11 +18,9 @@ export class PigLatinizer extends providers.BaseTranslationProvider {
         super(options);
     }
 
-    async start(job) {
-        logVerbose`PigLatinizer provider starting job ${job.jobGuid}`;
-        job = await super.start(job);
+    getTranslatedTus(job) {
         const ts = L10nContext.regression ? 1 : new Date().getTime();
-        job.tus = job.tus.map(tu => {
+        return job.tus.map(tu => {
             const translation = { guid: tu.guid, ts };
             translation.ntgt = [
                 '[',
@@ -32,7 +30,5 @@ export class PigLatinizer extends providers.BaseTranslationProvider {
             translation.q = this.quality;
             return translation;
         });
-        job.status = 'done';
-        return job;
     }
 }

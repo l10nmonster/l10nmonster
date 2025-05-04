@@ -1,7 +1,20 @@
 import { logVerbose, utils } from '@l10nmonster/core';
 
+/**
+ * Configuration options for initializing a BaseTranslationProvider.
+ * @typedef {Object} BaseTranslationProviderOptions
+ * @property {string} [id] - Global identifier for the provider. Optional.
+ * @property {number} [quality] - The quality of translations provided by the provider. Optional.
+ * @property {Object} [supportedPairs] - Supported pairs for the provider. Optional. (e.g., { "en-US": ["de-DE", "es-ES"] })
+ * @property {number} [costPerWord] - The estimated cost per word for the provider. Optional.
+ * @property {number} [costPerMChar] - The estimated cost per million characters for the provider. Optional.
+ * @property {boolean} [saveIdenticalEntries] - Save translations even if identical to TM. Optional.
+ */
+
+/**
+ * Base class for all providers providing baseline functionality.
+ */
 export class BaseTranslationProvider {
-    supportedPairs;
     quality;
     statusProperties = {
         'created': {
@@ -27,21 +40,16 @@ export class BaseTranslationProvider {
     #costPerWord;
     #costPerMChar;
     #saveIdenticalEntries;
+    #supportedPairs;
 
     /**
      * Initializes a new instance of the BaseTranslationProvider class.
-     * @param {Object} [options] - The parameters for the constructor.
-     * @param {string} [options.id] - Global identifier for the provider.
-     * @param {number} [options.quality] - The quality of translations provided by the provider.
-     * @param {Object} [options.supportedPairs] - Supported pairs for the provider.
-     * @param {number} [options.costPerWord] - The estimated cost per word for the provider.
-     * @param {number} [options.costPerMChar] - The estimated cost per million characters for the provider.
-     * @param {Boolean} [options.saveIdenticalEntries] - Save translations even if identical to TM.
+     * @param {BaseTranslationProviderOptions} [options] - Configuration options for the provider.
      */
     constructor({ id, quality, supportedPairs, costPerWord, costPerMChar, saveIdenticalEntries } = {}) {
         this.#id = id;
         this.quality = quality;
-        this.supportedPairs = supportedPairs;
+        this.#supportedPairs = supportedPairs;
         this.#costPerWord = costPerWord ?? 0;
         this.#costPerMChar = costPerMChar ?? 0;
         this.#saveIdenticalEntries = saveIdenticalEntries;
@@ -57,16 +65,14 @@ export class BaseTranslationProvider {
         }
         // by default take any job in the supported pairs and mark it as free
         let acceptedTus = [];
-        if (!this.supportedPairs || this.supportedPairs[job.sourceLang]?.includes(job.targetLang)) {
+        if (!this.#supportedPairs || this.#supportedPairs[job.sourceLang]?.includes(job.targetLang)) {
             acceptedTus = this.quality ? job.tus.filter(tu => tu.minQ <= this.quality) : job.tus;
         }
         if (job.tus.length !== acceptedTus.length) {
             logVerbose`Provider ${this.id} rejected ${job.tus.length - acceptedTus.length} out of ${job.tus.length} TUs because of minimum quality or language mismatch`;
         }
-        // @ts-ignore
-        if (acceptedTus.length > 0 && this.getAcceptedTus) {
+        if (acceptedTus.length > 0 && this.getAcceptedTus !== BaseTranslationProvider.prototype.getAcceptedTus) {
             logVerbose`${this.id} provider creating job using getAcceptedTus() method`;
-            // @ts-ignore
             acceptedTus = await this.getAcceptedTus({ ...job, tus: acceptedTus });
         }
         const estimatedCost = acceptedTus.reduce((total, tu) => total + (tu.words ?? 0) * this.#costPerWord + ((tu.chars ?? 0) / 1000000) * this.#costPerMChar, 0);
@@ -80,14 +86,10 @@ export class BaseTranslationProvider {
             throw new Error(`Cannot start jobs that are in the "${job.status}" state`);
         }
         let jobResponse = { ...job, status: 'done' }; // return a shallow copy to be used as a response
-        // @ts-ignore
-        if (this.getTranslatedTus) {
+        if (this.getTranslatedTus !== BaseTranslationProvider.prototype.getTranslatedTus) {
             logVerbose`${this.id} provider translating job ${job.jobGuid} using getTranslatedTus() method`;
-            // @ts-ignore
             jobResponse.tus = this.getTranslatedTus(job);
-            // @ts-ignore
-        } else if (this.createTask) {
-            // @ts-ignore
+        } else if (this.createTask !== BaseTranslationProvider.prototype.createTask) {
             const task = this.createTask(jobResponse);
             logVerbose`${this.id} provider translating job ${job.jobGuid} using task ${task.taskName}`;
             jobResponse = await task.execute();
@@ -130,7 +132,7 @@ export class BaseTranslationProvider {
             id: this.id,
             type: this.constructor.name,
             quality: this.quality,
-            supportedPairs: this.supportedPairs,
+            supportedPairs: this.#supportedPairs,
             costPerWord: this.#costPerWord,
             costPerMChar: this.#costPerMChar,
             description: [],
@@ -139,5 +141,37 @@ export class BaseTranslationProvider {
 
     async init(mm) {
         this.mm = mm;
+    }
+
+    // The following methods are meant to be overridden (if applicable)
+
+    /**
+     * Get the list of tus accepted by the provider.
+     *
+     * @param {Object} job - The job request.
+     * @returns {Promise<any[]>} A promise resolving to an array of accepted TUs.
+     */
+    async getAcceptedTus(job) {
+        throw new Error('Not implemented');
+    }
+
+    /**
+     * Get the translated TUs.
+     *
+     * @param {Object} job - The job request.
+     * @returns {any[]} The array of translated TUs.
+     */
+    getTranslatedTus(job) {
+        throw new Error('Not implemented');
+    }
+
+    /**
+     * Creates a task than when executed will return the job response.
+     *
+     * @param {Object} job - The job request.
+     * @returns {Object} The task to execute.
+     */
+    createTask(job) {
+        throw new Error('Not implemented');
     }
 }
