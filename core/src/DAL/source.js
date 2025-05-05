@@ -55,11 +55,11 @@ CREATE TABLE IF NOT EXISTS segments (
         );
     }
 
-    markResourcesAsInactive(channel) {
+    markResourcesAsInactive(channelId) {
         let result;
-        if (channel) {
+        if (channelId) {
             this.#stmt.markResourcesAsInactiveByChannel ??= this.#db.prepare(`UPDATE resources SET active = false WHERE channel = ? AND active = true;`);
-            result = this.#stmt.markResourcesAsInactiveByChannel.run(channel);
+            result = this.#stmt.markResourcesAsInactiveByChannel.run(channelId);
         } else {
             this.#stmt.markAllResourcesAsInactive ??= this.#db.prepare(`UPDATE resources SET active = false WHERE active = true;`);
             result = this.#stmt.markAllResourcesAsInactive.run();

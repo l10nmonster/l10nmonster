@@ -1,26 +1,30 @@
 import { logInfo } from '@l10nmonster/core';
 
 export default class ResourceManager {
-    autoSnap;
-    channels;
+    #autoSnap;
+    #channels;
     #DAL;
 
     constructor(dal, { channels, autoSnap }) {
         this.#DAL = dal;
-        this.channels = channels;
-        this.autoSnap = autoSnap;
+        this.#channels = channels;
+        this.#autoSnap = autoSnap;
     }
 
     async init(mm) {
         mm.scheduleForShutdown(this.shutdown.bind(this));
-        // Object.values(this.channels).forEach(ch => ch.init(mm));
+        // Object.values(this.#channels).forEach(ch => ch.init(mm));
     }
 
     async #snapIfNecessary() {
-        if (this.autoSnap) {
+        if (this.#autoSnap) {
             await this.snap();
-            this.autoSnap = false; // for now it's just a boolean but it could be a maxAge
+            this.#autoSnap = false; // for now it's just a boolean but it could be a maxAge
         }
+    }
+
+    get channels() {
+        return this.#channels;
     }
 
     /**
@@ -30,7 +34,7 @@ export default class ResourceManager {
      * @return {Object} A channel object.
      */
     getChannel(channelId) {
-        const channel = this.channels[channelId];
+        const channel = this.#channels[channelId];
         if (!channel) {
             throw `Invalid channel reference: ${channelId}`;
         }
@@ -43,7 +47,7 @@ export default class ResourceManager {
     }
 
     async getActiveContentStats(channelId) {
-        if (!this.channels[channelId]) {
+        if (!this.#channels[channelId]) {
             throw `Invalid channel reference: ${channelId}`;
         }
         await this.#snapIfNecessary();
@@ -51,9 +55,9 @@ export default class ResourceManager {
             .map(stats => ({ ...stats, targetLangs: stats.targetLangs ? stats.targetLangs.split(',') : [] }));
     }
 
-    async *#getAllResourcesFromSources(options = { channel: undefined }) {
+    async *#getAllResourcesFromSources(options = { channelId: undefined }) {
         logInfo`Getting all resources directly from sources...`;
-        const channels = options.channel ? [ this.getChannel(options.channel) ] : Object.values(this.channels);
+        const channels = options.channelId ? [ this.getChannel(options.channelId) ] : Object.values(this.#channels);
         for (const channel of Object.values(channels)) {
             const channelResources = await channel.getAllNormalizedResources();
             for await (const normalizedResource of channelResources) {
@@ -96,11 +100,11 @@ export default class ResourceManager {
     //         this.getChannel(resourceHandle.channel).loadResource(resourceHandle);
     // }
 
-    async snap() {
+    async snap(options = { channelId: undefined }) {
         const stats = {};
         logInfo`Starting snapshot of all resources...`;
-        this.#DAL.source.markResourcesAsInactive();
-        for await (const res of this.#getAllResourcesFromSources()) {
+        this.#DAL.source.markResourcesAsInactive(options.channelId);
+        for await (const res of this.#getAllResourcesFromSources({ channelId: options.channelId })) {
             const changes = this.#DAL.source.saveResource(res);
             const currentPrj = res.prj ?? 'default';
             stats[currentPrj] ??= { resources: 0, segments: 0, changes: 0 };
