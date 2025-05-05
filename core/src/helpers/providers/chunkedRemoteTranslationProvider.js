@@ -19,6 +19,7 @@ const MAX_CHUNK_SIZE = 125;
 
 /**
  * Base class for providers that need to enforce chunking of input strings and asynchronous translation.
+ * @class ChunkedRemoteTranslationProvider
  * @extends providers.BaseTranslationProvider
  * @property {Boolean} synchProvider - Whether the provider is synchronous (i.e. completes after start() is called) or asynchronous.
  */
@@ -63,7 +64,7 @@ export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationP
             if (Object.keys(phMap).length > 0) {
                 tuMeta[idx] = phMap;
             }
-            const xmlTu = {};
+            const xmlTu = { bundle: tu.rid, key: tu.sid };
             tu.notes?.desc && (xmlTu.notes = tu.notes.desc);
             xmlTu.source = source; // adding source second so that LLMs see notes first
             return xmlTu;

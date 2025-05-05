@@ -2,7 +2,7 @@
 	"en": {
 		"it": {
 			"java": {
-				"null": [
+				"default": [
 					{
 						"minQ": 50,
 						"q": 70,

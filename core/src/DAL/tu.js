@@ -134,7 +134,7 @@ WHERE flattenNormalizedSourceToOrdinal(nsrc) = ?`);
 WITH tus AS (SELECT guid, MAX(q) q FROM ${this.#tusTable} GROUP BY 1)
 SELECT
     channel,
-    prj,
+    COALESCE(prj, 'default') prj,
     p.value minQ,
     t.q q,
     COUNT(distinct r.rid) res,

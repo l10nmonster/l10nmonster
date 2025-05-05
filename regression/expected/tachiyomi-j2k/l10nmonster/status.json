@@ -2,7 +2,7 @@
 	"en": {
 		"piggy": {
 			"xliff": {
-				"null": [
+				"default": [
 					{
 						"minQ": 1,
 						"q": 1,
@@ -16,7 +16,7 @@
 		},
 		"zh-Hans": {
 			"xliff": {
-				"null": [
+				"default": [
 					{
 						"minQ": 50,
 						"q": 70,
@@ -46,7 +46,7 @@
 		},
 		"zh-Hant": {
 			"xliff": {
-				"null": [
+				"default": [
 					{
 						"minQ": 50,
 						"q": 80,

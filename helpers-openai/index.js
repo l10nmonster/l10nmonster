@@ -19,7 +19,6 @@ const TranslatorAnnotation = z.object({
  * @property {number} [temperature] - The temperature to use (0.1 by default)
  * @property {string} [apiKey] - The LLM provder API key (if needed).
  * @property {string} [persona] - An override to the default persona for the translator.
- * @property {string} [preamble] - Additional instructions to give context valid for all translations.
  * @property {import('zod').ZodTypeAny} [customSchema] - A prescribed schema to structure translations into.
  */
 
@@ -37,7 +36,7 @@ export class GPTAgent extends providers.ChunkedRemoteTranslationProvider {
      * Initializes a new instance of the GPTAgent class.
      * @param {GPTAgentOptions} options - Configuration options for the provider.
      */
-    constructor({ baseURL, apiKey, model, temperature, persona, preamble, customSchema, ...options }) {
+    constructor({ baseURL, apiKey, model, temperature, persona, customSchema, ...options }) {
         if (!options.quality || !model) {
             throw new Error('You must specify quality and model for GPTAgent');
         }
@@ -57,7 +56,7 @@ Maintain the exact meaning and tone of the original text
 Handle numerical/date formats appropriately`;
         this.#systemPrompt =
 `${persona}
-${preamble ?? ''}
+${this.defaultInstructions ?? ''}
 ${customSchema ? '' :
 `- Each string may contain HTML or XML tags. Preserve ALL markup (HTML/XML tags, entities, placeholders)
 - Maintain proper escaping of special characters

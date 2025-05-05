@@ -2,7 +2,7 @@
 	"en": {
 		"de": {
 			"react": {
-				"null": [
+				"default": [
 					{
 						"minQ": 1,
 						"q": 70,
@@ -24,7 +24,7 @@
 		},
 		"ru": {
 			"react": {
-				"null": [
+				"default": [
 					{
 						"minQ": 1,
 						"q": 70,

@@ -36,6 +36,8 @@ export class GCTProvider extends providers.ChunkedRemoteTranslationProvider {
         this.#model = model;
     }
 
+    // we initialize on first use so that constructor is fast and doesn't fail if auth is missing
+    // also, we need this to be async so that we can await for projectId if it's not provided
     async #lazyInit() {
         if (this.#initialized) {
             return;

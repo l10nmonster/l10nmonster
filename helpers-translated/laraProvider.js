@@ -30,33 +30,31 @@ export class LaraProvider extends providers.ChunkedRemoteTranslationProvider {
         this.#keyId = keyId;
         this.#keySecret = keySecret;
         this.#adaptTo = adaptTo && (Array.isArray(adaptTo) ? adaptTo : adaptTo.split(','));
-    }
-
-    start(job) {
         const credentials = new Credentials(this.#keyId, this.#keySecret);
         this.#lara = new Translator(credentials);
         this.#translateOptions = {
             contentType: 'text/plain',
+            instructions: [],
         };
         this.#adaptTo && (this.#translateOptions.adaptTo = this.#adaptTo);
-        job.instructions && (this.#translateOptions.instructions = [ job.instructions ]);
-        return super.start(job);
+        this.defaultInstructions && this.#translateOptions.instructions.push(this.defaultInstructions);
     }
 
     async synchTranslateChunk(op) {
-        const { sourceLang, targetLang, xmlTus } = op.args;
+        const { sourceLang, targetLang, xmlTus, instructions } = op.args;
         const payload = xmlTus.map(xmlTu => {
             const textBlock = [];
-            xmlTu.notes && textBlock.push({ text: xmlTu.notes, translatable: false });
+            textBlock.push({ text: `bundle: ${xmlTu.bundle} key: ${xmlTu.key} notes: ${xmlTu.notes ?? ''}`, translatable: false });
             textBlock.push({ text: xmlTu.source, translatable: true });
             return textBlock;
         }).flat(1);
+        const translateOptions = instructions ? { ...this.#translateOptions, instructions: [...this.#translateOptions.instructions, instructions] } : this.#translateOptions;
         try {
             return await this.#lara.translate(
                 payload,
                 sourceLang,
                 targetLang,
-                this.#translateOptions,
+                translateOptions,
             );
         } catch (e) {
             throw new Error(`Lara API error ${e.statusCode}: ${e.type}: ${e.message}`);
