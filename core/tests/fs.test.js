@@ -1,141 +1,3 @@
-// import { suite, test } from 'node:test';
-// import assert from 'node:assert/strict';
-
-// import * as path from 'path';
-// import { L10nContext, adapters } from '../index.js';
-
-// L10nContext.baseDir = path.resolve('.');
-
-// const RESOURCE_ID = "artifacts/messages.properties";
-
-// suite('FsSource tests', () => {
-//   const source = new adapters.FsSource({
-//       globs: [ RESOURCE_ID ],
-//       targetLangs: [ 'fil' ]
-//   });
-
-
-//   test('fetchResourceStats returns resource object', async () => {
-//     const resources = await source.fetchResourceStats();
-//     // assert.equal(resources, RESOURCE_ID);
-//     assert.equal(resources[0].id, RESOURCE_ID);
-//   });
-
-//   test('fetchResource returns string', async () => {
-//     const output = await source.fetchResource(RESOURCE_ID);
-//     assert.equal(output.length, 207);
-//   });
-
-// //   test('fetchAllResources returns stats and resource object', async () => {
-// //     for await (const [resourceStat, rawResource] of source.fetchAllResources()) {
-// //         assert.equal(resourceStat.id, RESOURCE_ID);
-// //         assert.equal(rawResource.length, 558);
-// //     }
-// //   });
-
-// });
-
-// suite('FsTarget tests', () => {
-//   const target = new adapters.FsTarget({
-//       targetPath: (lang, resourceId) => resourceId.replace('values', `values-${lang}`),
-//   });
-//   test('fetchTranslatedResource returns a file', async () => {
-//     const resources = await target.fetchTranslatedResource("fil", RESOURCE_ID);
-//     assert.equal(resources.length, 207);
-//   });
-
-// // TODO: test('commitTranslatedResource writes a file', async () => {
-// //   });
-
-// });
-
-// DeepSeek
-// import { describe, it, before, after } from 'node:test';
-// import assert from 'node:assert';
-// import * as path from 'path';
-// import { mkdirSync, writeFileSync, unlinkSync, rmSync, readFileSync } from 'fs';
-// import { FsSource, FsTarget } from '../src/helpers/adapters/fs.js';
-
-// describe('FsSource', () => {
-//     const baseDir = path.resolve('./test-fs-source');
-//     const testFile = path.join(baseDir, 'test.txt');
-//     const testContent = 'Hello, World!';
-
-//     before(() => {
-//         mkdirSync(baseDir, { recursive: true });
-//         writeFileSync(testFile, testContent, 'utf8');
-//     });
-
-//     after(() => {
-//         unlinkSync(testFile);
-//         rmSync(baseDir, { recursive: true, force: true });
-//     });
-
-//     it('should fetch resource stats', async () => {
-//         const fsSource = new FsSource({
-//             baseDir,
-//             globs: ['**/*.txt'],
-//         });
-
-//         const resources = await fsSource.fetchResourceStats();
-//         assert.strictEqual(resources.length, 1);
-//         assert.strictEqual(resources[0].id, 'test.txt');
-//         assert.ok(resources[0].modified);
-//     });
-
-//     it('should fetch resource content', async () => {
-//         const fsSource = new FsSource({
-//             baseDir,
-//             globs: ['**/*.txt'],
-//         });
-
-//         const content = await fsSource.fetchResource('test.txt');
-//         assert.strictEqual(content, testContent);
-//     });
-// });
-
-// describe('FsTarget', () => {
-//     const baseDir = path.resolve('./test-fs-target');
-//     const lang = 'en';
-//     const resourceId = 'test.txt';
-//     const translatedContent = 'Translated Content';
-
-//     before(() => {
-//         mkdirSync(baseDir, { recursive: true });
-//     });
-
-//     after(() => {
-//         rmSync(baseDir, { recursive: true, force: true });
-//     });
-
-//     it('should save translated resource', async () => {
-//         const fsTarget = new FsTarget({
-//             baseDir,
-//             targetPath: (lang, resourceId) => path.join(lang, resourceId),
-//         });
-
-//         await fsTarget.commitTranslatedResource(lang, resourceId, translatedContent);
-//         const translatedPath = fsTarget.translatedResourceId(lang, resourceId);
-//         const content = readFileSync(translatedPath, 'utf8');
-//         assert.strictEqual(content, translatedContent);
-//     });
-
-//     it('should delete translated resource if content is null', async () => {
-//         const fsTarget = new FsTarget({
-//             baseDir,
-//             targetPath: (lang, resourceId) => path.join(lang, resourceId),
-//             deleteEmpty: true,
-//         });
-
-//         const translatedPath = fsTarget.translatedResourceId(lang, resourceId);
-//         writeFileSync(translatedPath, translatedContent, 'utf8');
-
-//         await fsTarget.commitTranslatedResource(lang, resourceId, null);
-//         assert.throws(() => readFileSync(translatedPath, 'utf8'), /ENOENT/);
-//     });
-// });
-
-// GPT-4o
 import { strict as assert } from 'assert';
 import { test, beforeEach, afterEach } from 'node:test';
 import { FsSource, FsTarget } from '../src/helpers/adapters/fs.js';
@@ -158,7 +20,7 @@ afterEach(() => {
     }
 });
 
-test('FsSource: fetchResourceStats retrieves metadata', async () => {
+test('FsSource: fetchAllResources retrieves metadata', async () => {
     const testFilePath = path.join(TEST_BASE_DIR, 'testFile.json');
     writeFileSync(testFilePath, '{"key": "value"}');
 
@@ -166,17 +28,20 @@ test('FsSource: fetchResourceStats retrieves metadata', async () => {
         baseDir: TEST_BASE_DIR,
         sourceLang: 'en',
         globs: ['**/*.json'],
-        idFromPath: (id) => id.replace(/\\/g, '/'),
+        idFromPath: (id) => id.replace(/\\/g, '/'), // Normalize path for consistent ID
     });
 
-    const resourceStats = await fsSource.fetchResourceStats();
-
-    assert.equal(resourceStats.length, 1, 'It should find one resource metadata');
-    assert.equal(resourceStats[0].id, 'testFile.json');
-    assert.ok(resourceStats[0].modified, 'Resource metadata should include modified date');
+    let count = 0;
+    for await (const [resourceStat, _rawResource] of fsSource.fetchAllResources()) {
+        assert.equal(resourceStat.id, 'testFile.json', 'Resource ID should match');
+        assert.ok(resourceStat.modified, 'Resource metadata should include modified date');
+        assert.equal(resourceStat.sourceLang, 'en', 'Resource sourceLang should match');
+        count++;
+    }
+    assert.equal(count, 1, 'It should find one resource');
 });
 
-test('FsSource: fetchResource retrieves file content', async () => {
+test('FsSource: fetchAllResources retrieves file content', async () => {
     const testFilePath = path.join(TEST_BASE_DIR, 'testFile.json');
     const fileContent = '{"key": "value"}';
     writeFileSync(testFilePath, fileContent);
@@ -185,10 +50,55 @@ test('FsSource: fetchResource retrieves file content', async () => {
         baseDir: TEST_BASE_DIR,
         sourceLang: 'en',
         globs: ['**/*.json'],
+        idFromPath: (id) => id.replace(/\\/g, '/'), // Normalize path for consistent ID
     });
 
-    const content = await fsSource.fetchResource('testFile.json');
-    assert.equal(content, fileContent, 'The retrieved content should match the file content');
+    let count = 0;
+    for await (const [_resourceStat, rawResource] of fsSource.fetchAllResources()) {
+        assert.equal(rawResource, fileContent, 'The retrieved content should match the file content');
+        count++;
+    }
+    assert.equal(count, 1, 'It should find one resource');
+});
+
+test('FsSource: fetchAllResources yields complete resource data for multiple files', async () => {
+    const file1Path = path.join(TEST_BASE_DIR, 'file1.txt');
+    const file1Content = 'Content of file1';
+    writeFileSync(file1Path, file1Content);
+
+    const subDir = path.join(TEST_BASE_DIR, 'subdir');
+    mkdirSync(subDir, { recursive: true });
+    const file2Path = path.join(subDir, 'file2.md');
+    const file2Content = '# Content of file2';
+    writeFileSync(file2Path, file2Content);
+
+    const fsSource = new FsSource({
+        baseDir: TEST_BASE_DIR,
+        sourceLang: 'en',
+        globs: ['**/*.txt', '**/*.md'],
+        idFromPath: (id) => id.replace(/\\/g, '/'), // Normalize path for consistent ID
+    });
+
+    const results = [];
+    for await (const resourcePair of fsSource.fetchAllResources()) {
+        results.push(resourcePair);
+    }
+
+    assert.equal(results.length, 2, 'Should find two resources');
+
+    const file1Data = results.find(r => r[0].id === 'file1.txt');
+    assert.ok(file1Data, 'file1.txt should be found');
+    assert.equal(file1Data[0].id, 'file1.txt');
+    assert.ok(file1Data[0].modified);
+    assert.equal(file1Data[0].sourceLang, 'en');
+    assert.equal(file1Data[1], file1Content);
+
+    const file2Data = results.find(r => r[0].id === 'subdir/file2.md');
+    assert.ok(file2Data, 'subdir/file2.md should be found');
+    assert.equal(file2Data[0].id, 'subdir/file2.md');
+    assert.ok(file2Data[0].modified);
+    assert.equal(file2Data[0].sourceLang, 'en');
+    assert.equal(file2Data[1], file2Content);
 });
 
 test('FsTarget: commitTranslatedResource writes or deletes files', async () => {

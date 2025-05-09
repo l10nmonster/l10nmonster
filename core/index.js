@@ -14,8 +14,7 @@
 
 /**
  * @typedef {Object}  SourceAdapter
- * @property {function(): Promise<{ id: string; modified: string }[]>} fetchResourceStats - Fetches resource statistics.
- * @property {function(string): Promise<any>} fetchResource - Fetches a specific resource.
+ * @property {function(): AsyncGenerator<[Object, string]>} fetchAllResources - Fetches all resources.
  */
 
 /**
@@ -23,13 +22,6 @@
  * @property {function(string, string): any} translatedResourceId - Retrieves the translated resource ID.
  * @property {function(string, string): Promise<any>} fetchTranslatedResource - Fetches a translated resource.
  * @property {function(string, string, string): Promise<void>} commitTranslatedResource - Commits a translated resource.
- */
-
-/**
- * @typedef {Object} ResourceFilter
- *
- * @property {function(): Promise<{ id: string; modified: string }[]>} fetchResourceStats - Fetches resource statistics.
- * @property {function(string): Promise<any>} fetchResource - Fetches a specific resource.
  */
 
 /**

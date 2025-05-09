@@ -17,34 +17,31 @@ export class MySource {
         });
     }
 
-    async #makeResource(row) {
-        const bundle = await this.FsSource.fetchResource(row.id);
+    async #makeResource(bundleContent) {
         const response = JSON.stringify({
-            segments : this.#mapSegments(bundle.split('\n')),
+            segments : this.#mapSegments(bundleContent.split('\n')),
         });
         return response;
     }
 
-    #makeStats(row) {
+    #makeStats(fsStat) {
         return {
-            id: row.id,
-            sourceLang: row.sourceLang,
-            modified: row.modifiedAt,
-            prj: row.id,
+            id: fsStat.id,
+            sourceLang: fsStat.sourceLang, // Assuming fsStat has sourceLang
+            modified: fsStat.modified, // Assuming fsStat has modified
+            prj: fsStat.id, // Or fsStat.prj if available and preferred
             resourceFormat: this.resourceFormat
         };
     }
 
-    async fetchResourceStats() {
-        const rows = await this.FsSource.fetchResourceStats();
-        return rows.map(row=> this.#makeStats(row));
-    }
-
-    async *fetchAllResources(resourceId) {
-        console.log(`Fetching all resources for ${resourceId||'all'}`);
-        const rows = await this.FsSource.fetchResourceStats();
-        for (const row of rows) {
-            yield [this.#makeStats(row), await this.#makeResource(row)];
+    async *fetchAllResources() {
+        console.log(`Fetching all resources for all`);
+        for await (const [fsStat, fsContent] of this.FsSource.fetchAllResources()) {
+            // fsStat is the metadata object from the underlying FsSource
+            // fsContent is the raw string content from the underlying FsSource
+            const customStats = this.#makeStats(fsStat);
+            const customResource = await this.#makeResource(fsContent);
+            yield [customStats, customResource];
         }
     }
 }

@@ -77,30 +77,11 @@ export class Channel {
         return handle;
     }
 
-    // async getResourceHandles() {
-    //     const resStats = await this.#source.fetchResourceStats();
-    //     L10nContext.logger.verbose(`Fetched resource handles for channel ${this.#id}`);
-    //     return resStats.map(rs => this.makeResourceHandleFromHeader(rs));
-    // }
-
     async *getAllNormalizedResources() {
-        if (this.#source.fetchAllResources) { // some sources support batching
-            for await (const [resourceHeader, rawResource] of this.#source.fetchAllResources()) {
-                yield this.#makeFullResourceWithPolicyApplied(resourceHeader, rawResource);
-            }
-        } else {
-            const resourceHeaders = await this.#source.fetchResourceStats();
-            for (const resourceHeader of resourceHeaders) {
-                const rawResource = await this.#source.fetchResource(resourceHeader.id);
-                yield this.#makeFullResourceWithPolicyApplied(resourceHeader, rawResource);
-            }
+        for await (const [resourceHeader, rawResource] of this.#source.fetchAllResources()) {
+            yield this.#makeFullResourceWithPolicyApplied(resourceHeader, rawResource);
         }
     }
-
-    // async loadResource(resourceHandle) {
-    //     const rawResource = await this.#source.fetchResource(resourceHandle.id);
-    //     return resourceHandle.loadResourceFromRaw(rawResource, { isSource: true });
-    // }
 
     async getExistingTranslatedResource(resourceHandle, targetLang) {
         const rawResource = await this.#target.fetchTranslatedResource(targetLang, resourceHandle.id);

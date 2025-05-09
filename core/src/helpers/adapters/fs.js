@@ -2,12 +2,12 @@ import * as path from 'path';
 import {
     existsSync,
     unlinkSync,
-    statSync,
-    readFileSync,
+    // statSync, // No longer needed directly here
+    readFileSync, // Restored for FsTarget
     mkdirSync,
     writeFileSync,
 } from 'fs';
-import { globbySync } from 'globby';
+import * as fsPromises from 'fs/promises';
 import { L10nContext } from '@l10nmonster/core';
 
 class AbstractFsAdapter {
@@ -34,7 +34,6 @@ export class FsSource extends AbstractFsAdapter {
     prj;
     resDecorator;
     idFromPath;
-    pathFromId;
 
     /**
      * Creates a new FsSource instance.
@@ -46,10 +45,9 @@ export class FsSource extends AbstractFsAdapter {
      * @param {string} [options.prj] - Project identifier for the resources.
      * @param {Function} [options.resDecorator] - Function to decorate resource metadata.
      * @param {Function} [options.idFromPath] - Function to derive resource ID from file path.
-     * @param {Function} [options.pathFromId] - Function to derive file path from resource ID.
      * @throws {string} Throws an error if `globs` is not provided.
      */
-    constructor({ baseDir, globs, filter, sourceLang, prj, resDecorator, idFromPath, pathFromId }) {
+    constructor({ baseDir, globs, filter, sourceLang, prj, resDecorator, idFromPath }) {
         super(baseDir);
         if (globs === undefined || sourceLang === undefined) {
             throw 'globs and sourceLang properties are required in FsSource';
@@ -60,50 +58,67 @@ export class FsSource extends AbstractFsAdapter {
             this.prj = prj;
             this.resDecorator = resDecorator;
             this.idFromPath = idFromPath;
-            this.pathFromId = pathFromId;
         }
     }
 
     /**
-     * Fetches metadata for all resources matching the glob patterns.
-     * @returns {Promise<Object[]>} Array of resource metadata objects.
+     * Fetches all resources matching the glob patterns.
+     * Yields an array for each resource: [resourceMeta, resourceContent].
+     * @returns {AsyncGenerator<[Object, string]>} An async generator yielding resource stat-like metadata and content.
      */
-    async fetchResourceStats() {
-        const resources = [];
-        const expandedFileNames = globbySync(this.globs.map(g => path.join(this.baseDir, g)));
-        L10nContext.logger.info(`Fetched fs globs: ${this.globs}`);
-        for (const fileName of expandedFileNames) {
-            let id = path.relative(this.baseDir, fileName);
-            if (typeof this.idFromPath === 'function') {
-                id = this.idFromPath(id);
-            }
-        if (!this.filter || this.filter(id)) {
-                const stats = statSync(fileName);
-                let resMeta = {
-                    id,
-                    modified: L10nContext.regression ? 1 : stats.mtime.toISOString(),
-                };
-                resMeta.sourceLang = this.sourceLang;
-                this.prj && (resMeta.prj = this.prj);
-                if (typeof this.resDecorator === 'function') {
-                    resMeta = this.resDecorator(resMeta);
+    async* fetchAllResources() {
+        L10nContext.logger.info(`FsSource: Fetching all resources with globs: ${this.globs.join(', ')} in baseDir: ${this.baseDir}`);
+        // fsPromises.glob returns paths relative to cwd by default.
+        // We need to make them relative to this.baseDir for id generation,
+        // or provide an absolute path to glob and then make them relative.
+        // Using `cwd: this.baseDir` makes the paths returned by glob relative to baseDir.
+        const globOptions = {
+            cwd: this.baseDir,
+            nodir: true, // we only want files
+        };
+
+        for (const globPattern of this.globs) {
+            L10nContext.logger.verbose(`FsSource: Processing glob pattern: ${globPattern} in ${this.baseDir}`);
+            try {
+                for await (const relativePathFromGlob of fsPromises.glob(globPattern, globOptions)) {
+                    // relativePathFromGlob is already relative to this.baseDir due to cwd option
+                    const fullPath = path.join(this.baseDir, relativePathFromGlob);
+                    let id = relativePathFromGlob; // Use the path returned by glob as the base for ID
+
+                    if (typeof this.idFromPath === 'function') {
+                        id = this.idFromPath(id);
+                    }
+
+                    if (this.filter && !this.filter(id)) {
+                        L10nContext.logger.verbose(`FsSource: Filtered out resource ${id} (path: ${relativePathFromGlob}) due to filter function.`);
+                        continue;
+                    }
+
+                    try {
+                        const stats = await fsPromises.stat(fullPath);
+                        let resMeta = {
+                            id,
+                            modified: L10nContext.regression ? 1 : stats.mtime.toISOString(),
+                        };
+                        resMeta.sourceLang = this.sourceLang;
+                        this.prj && (resMeta.prj = this.prj);
+                        if (typeof this.resDecorator === 'function') {
+                            resMeta = this.resDecorator(resMeta);
+                        }
+
+                        const content = await fsPromises.readFile(fullPath, 'utf8');
+                        yield [resMeta, content];
+                        L10nContext.logger.debug(`FsSource: Yielded resource ${id} from ${fullPath}`);
+                    } catch (error) {
+                        L10nContext.logger.error(`FsSource: Error processing file ${fullPath} (id: ${id}): ${error.message}`);
+                        // Decide if we should skip, rethrow, or yield an error. Logging and skipping for now.
+                    }
                 }
-                resources.push(resMeta);
+            } catch (globError) {
+                L10nContext.logger.error(`FsSource: Error during glob pattern processing "${globPattern}": ${globError.message}`);
             }
         }
-        return resources;
-    }
-
-    /**
-     * Fetches the content of a specific resource.
-     * @param {string} resourceId - The ID of the resource to fetch.
-     * @returns {Promise<string>} The content of the resource.
-     */
-    async fetchResource(resourceId) {
-        if (typeof this.pathFromId === 'function') {
-            resourceId = this.pathFromId(resourceId);
-        }
-        return readFileSync(path.resolve(this.baseDir, resourceId), 'utf8');
+        L10nContext.logger.info(`FsSource: Finished fetching all resources from ${this.baseDir}.`);
     }
 }
 

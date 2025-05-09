@@ -1,23 +1,16 @@
 module.exports = class StubbedSource {
     #stubbedResources;
 
-    constructor(stubbedResources, enableFetchAll) {
+    constructor(stubbedResources) {
         this.#stubbedResources = stubbedResources;
-        enableFetchAll && (this.fetchAllResources = async function *() {
-            for (res of stubbedResources) {
-                yield [ res, JSON.stringify(res)];
-            }
-        });
     }
 
-    async fetchResourceStats() {
-        return this.#stubbedResources.map(res => {
-            const { segments, ...stats } = res;
-            return stats;
-        });
-    }
-
-    async fetchResource(resourceId) {
-        return JSON.stringify(this.#stubbedResources.find(res => res.id === resourceId));
+    async* fetchAllResources() {
+        for (const resource of this.#stubbedResources) {
+            // eslint-disable-next-line no-unused-vars
+            const { segments, ...stats } = resource; // Extract stats similar to old fetchResourceStats
+            // The second element is the stringified full resource, similar to old fetchResource
+            yield [ stats, JSON.stringify(resource) ];
+        }
     }
 }
