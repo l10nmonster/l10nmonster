@@ -19,6 +19,13 @@ function processNotes(normalizedSeg) {
     }
 }
 
+/**
+ * @class FormatHandler
+ * @classdesc Handles the parsing, normalization, and translation of resources
+ * for a specific file format. It uses resource filters to parse raw resource
+ * content, normalizers to convert messages into a canonical representation,
+ * and segment decorators to modify segments before translation.
+ */
 export class FormatHandler {
     #id;
     #resourceFilter;

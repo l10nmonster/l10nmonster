@@ -1,6 +1,12 @@
 import { L10nContext } from '@l10nmonster/core';
 import { ResourceHandle } from './resourceHandle.js';
 
+/**
+ * @class Channel
+ * @classdesc Represents a channel for managing localization resources,
+ * including fetching source content, applying translation policies,
+ * and committing translated resources.
+ */
 export class Channel {
     #id;
     #source;

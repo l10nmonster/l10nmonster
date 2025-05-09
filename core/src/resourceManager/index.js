@@ -31,7 +31,7 @@ export default class ResourceManager {
      * Returns a channel given its id.
      *
      * @param {string} channelId String identifier of the channel.
-     * @return {Object} A channel object.
+     * @return {import('@l10nmonster/core').Channel} A channel object.
      */
     getChannel(channelId) {
         const channel = this.#channels[channelId];

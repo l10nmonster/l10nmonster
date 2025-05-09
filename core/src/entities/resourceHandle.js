@@ -1,5 +1,13 @@
 import { L10nContext } from '@l10nmonster/core';
 
+/**
+ * @class ResourceHandle
+ * @classdesc Represents a handle to a localization resource.
+ * It contains metadata about the resource, such as its ID, channel, format,
+ * source and target languages, and the raw content or parsed segments.
+ * It uses a format handler to load and normalize raw resource content and
+ * to generate translated raw resources.
+ */
 export class ResourceHandle {
     #formatHandler;
 
