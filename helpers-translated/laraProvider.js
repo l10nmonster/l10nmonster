@@ -1,4 +1,3 @@
-/* eslint-disable no-invalid-this */
 import { logWarn, providers, styleString } from '@l10nmonster/core';
 import { Credentials, Translator } from '@translated/lara';
 
@@ -40,8 +39,7 @@ export class LaraProvider extends providers.ChunkedRemoteTranslationProvider {
         this.defaultInstructions && this.#translateOptions.instructions.push(this.defaultInstructions);
     }
 
-    async synchTranslateChunk(op) {
-        const { sourceLang, targetLang, xmlTus, instructions } = op.args;
+    prepareTranslateChunkArgs({ sourceLang, targetLang, xmlTus, instructions }) {
         const payload = xmlTus.map(xmlTu => {
             const textBlock = [];
             textBlock.push({ text: `bundle: ${xmlTu.bundle} key: ${xmlTu.key} notes: ${xmlTu.notes ?? ''}`, translatable: false });
@@ -49,13 +47,13 @@ export class LaraProvider extends providers.ChunkedRemoteTranslationProvider {
             return textBlock;
         }).flat(1);
         const translateOptions = instructions ? { ...this.#translateOptions, instructions: [...this.#translateOptions.instructions, instructions] } : this.#translateOptions;
+        return { payload, sourceLang, targetLang, translateOptions };
+    }
+
+    async synchTranslateChunk(op) {
+        const { payload, sourceLang, targetLang, translateOptions } = op.args;
         try {
-            return await this.#lara.translate(
-                payload,
-                sourceLang,
-                targetLang,
-                translateOptions,
-            );
+            return await this.#lara.translate(payload, sourceLang, targetLang, translateOptions);
         } catch (e) {
             throw new Error(`Lara API error ${e.statusCode}: ${e.type}: ${e.message}`);
         }
@@ -73,7 +71,7 @@ export class LaraProvider extends providers.ChunkedRemoteTranslationProvider {
             const credentials = new Credentials(this.#keyId, this.#keySecret);
             const lara = new Translator(credentials);
             const languages = (await lara.getLanguages()).sort();
-            info.description.push(styleString`Vendor supported languages: ${languages?.join(', ') ?? 'unknown'}`);
+            info.description.push(styleString`Vendor-supported languages: ${languages?.join(', ') ?? 'unknown'}`);
             const memories = await lara.memories.list();
             if (memories.length > 0) {
                 memories.forEach(m =>
@@ -83,7 +81,7 @@ export class LaraProvider extends providers.ChunkedRemoteTranslationProvider {
                 info.description.push(styleString`No TMs configured.`);
             }
         } catch (error) {
-            logWarn`Error fetching languages: ${error.message}`
+            info.description.push(styleString`Unable to connect to Lara server: ${error.message}`);
         }
         return info;
     }

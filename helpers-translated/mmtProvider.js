@@ -1,4 +1,3 @@
-/* eslint-disable no-invalid-this */
 import { logWarn, providers, styleString } from '@l10nmonster/core';
 import { ModernMT as MMTClient } from 'modernmt';
 
@@ -50,19 +49,29 @@ export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
         return super.start(job);
     }
 
+    prepareTranslateChunkArgs({ sourceLang, targetLang, xmlTus, jobGuid, chunk }) {
+        return {
+            sourceLang,
+            targetLang,
+            q: xmlTus.map(xmlTu => xmlTu.source),
+            hints:this.baseRequest.hints,
+            contextVector: undefined,
+            options: this.baseRequest.options,
+            webhook: this.baseRequest.webhook,
+            batchOptions: {
+                ...this.baseRequest.options,
+                idempotencyKey: `jobGuid:${jobGuid} chunk:${chunk}`,
+                metadata: { jobGuid, chunk },
+            },
+        };
+    }
+
     async synchTranslateChunk(op) {
-        const { sourceLang, targetLang, xmlTus } = op.args;
+        const { sourceLang, targetLang, q, hints, contextVector, options } = op.args;
         const [ apiKey, platform, platformVersion ] = this.baseRequest.mmtConstructor;
         try {
             const mmt = new MMTClient(apiKey, platform, platformVersion);
-            return await mmt.translate(
-                sourceLang,
-                targetLang,
-                xmlTus.map(xmlTu => xmlTu.source),
-                this.baseRequest.hints,
-                undefined,
-                this.baseRequest.options
-            );
+            return await mmt.translate(sourceLang, targetLang, q, hints, contextVector, options);
         } catch(error) {
             throw new Error(`${error.toString()}: ${error.response?.body}`);
         }
@@ -76,25 +85,12 @@ export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
     }
 
     async asynchTranslateChunk(op) {
-        const { sourceLang, targetLang, xmlTus, jobGuid, chunk } = op.args;
-        const batchOptions = {
-            ...this.baseRequest.options,
-            idempotencyKey: `jobGuid:${jobGuid} chunk:${chunk}`,
-            metadata: { jobGuid, chunk },
-        };
+        const { sourceLang, targetLang, q, hints, contextVector, webhook, batchOptions } = op.args;
         const [ apiKey, platform, platformVersion ] = this.baseRequest.mmtConstructor;
         try {
             const mmt = new MMTClient(apiKey, platform, platformVersion);
-                const response = await mmt.batchTranslate(
-                    this.baseRequest.webhook,
-                    sourceLang,
-                    targetLang,
-                    xmlTus.map(xmlTu => xmlTu.source),
-                    this.baseRequest.hints,
-                    undefined,
-                    batchOptions
-                );
-                return { enqueued: response };
+            const response = await mmt.batchTranslate(webhook, sourceLang, targetLang, q, hints, contextVector, batchOptions);
+            return { enqueued: response };
         } catch(error) {
             throw new Error(`${error.toString()}: ${error.response?.body}`);
         }
@@ -110,12 +106,12 @@ export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
             const response = await fetch('https://api.modernmt.com/translate/languages');
             if (response.ok) {
                 const supportedProviderLanguages = (await response.json()).data.sort();
-                info.description.push(styleString`Vendor supported languages: ${supportedProviderLanguages?.join(', ') ?? 'unknown'}`);
+                info.description.push(styleString`Vendor-supported languages: ${supportedProviderLanguages?.join(', ') ?? 'unknown'}`);
             } else {
                 logWarn`HTTP error: status ${response.status} ${response.statusText}`
             }
         } catch (error) {
-            logWarn`Error fetching languages: ${error.message}`
+            info.description.push(styleString`Unable to connect to MMT server: ${error.message}`);
         }
         return info;
     }

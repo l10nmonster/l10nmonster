@@ -1,4 +1,4 @@
-import { L10nContext, logVerbose, styleString } from '@l10nmonster/core';
+import { L10nContext, styleString } from '@l10nmonster/core';
 import { BaseTranslationProvider } from './baseTranslationProvider.js';
 
 /**

@@ -4,6 +4,7 @@
         "cli",
         "helpers-android",
         "helpers-demo",
+        "helpers-deepl",
         "helpers-googlecloud",
         "helpers-html",
         "helpers-ios",

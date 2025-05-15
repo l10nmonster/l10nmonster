@@ -68,22 +68,21 @@ export class GCTProvider extends providers.ChunkedRemoteTranslationProvider {
         return super.start(job);
     }
 
+    prepareTranslateChunkArgs({ sourceLang, targetLang, xmlTus }) {
+        return {
+            parent: this.#parentPath,
+            contents: xmlTus.map(xmlTu => xmlTu.source),
+            mimeType: 'text/html',
+            sourceLanguageCode: sourceLang,
+            targetLanguageCode: targetLang,
+            model: this.#modelPath,
+        };
+    }
+
     async synchTranslateChunk(op) {
-        const { sourceLang, targetLang, xmlTus } = op.args;
-        try {
-            const translationClient = new TranslationServiceClient();
-            const [response] = await translationClient.translateText({
-                parent: this.#parentPath,
-                contents: xmlTus.map(xmlTu => xmlTu.source),
-                mimeType: 'text/html',
-                sourceLanguageCode: sourceLang,
-                targetLanguageCode: targetLang,
-                model: this.#modelPath,
-            });
-            return response;
-        } catch (error) {
-            throw new Error(`Translation failed: ${error.message}`);
-        }
+        const translationClient = new TranslationServiceClient();
+        const [response] = await translationClient.translateText(op.args);
+        return response;
     }
 
     convertTranslationResponse(chunk) {

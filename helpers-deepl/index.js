@@ -1,136 +1,74 @@
-// import { L10nContext, utils } from '@l10nmonster/core';
+import { logWarn, providers, styleString } from '@l10nmonster/core';
+import { DeepLClient } from 'deepl-node';
 
-// const MAX_CHUNK_SIZE = 50;
+/**
+ * @typedef {object} DeepLProviderOptions
+ * @extends ChunkedRemoteTranslationProviderOptions
+ * @property {string} authKey - The DeepL API key. This is required.
+ * @property {object} [formalityMap] - Optional map from language to desired formality (less, more, default, prefer_less, prefer_more).
+ * @property {string} [modelType] - Specifies the type of translation model to use (quality_optimized, prefer_quality_optimized, latency_optimized).
+ */
 
-// async function deeplTranslateChunkOp({ baseURL, headers, searchParams, offset}) {
-//     try {
-//         const response = (await fetch({
-//             url: `${baseURL}/v2/translate`,
-//             searchParams: new URLSearchParams(searchParams),
-//             headers,
-//             timeout: {
-//                 request: 60000,
-//             },
-//         })).json();
-//         const translations = {};
-//         if (response.message) {
-//             throw `DeepL returned status ${response.message}`;
-//         } else {
-//             response.translations.forEach((tx, idx) => {
-//                 translations[idx + offset] = tx.text;
-//             });
-//         }
-//         return translations;
-//     } catch(error) {
-//         throw `${error.toString()}: ${error.response?.body}`;
-//     }
-// }
+/**
+ * Provider for DeepL MT.
+ */
+export class DeepLProvider extends providers.ChunkedRemoteTranslationProvider {
+    #authKey;
+    #formalityMap;
+    #modelType;
 
-// async function deeplMergeTranslatedChunksOp({ jobRequest, tuMeta, quality, ts }, chunks) {
-//     const { tus, ...jobResponse } = jobRequest;
-//     const translations = Object.assign({}, ...chunks);
-//     jobResponse.tus = tus.map((tu, idx) => {
-//         const translation = { guid: tu.guid, ts };
-//         const ntgt = utils.extractNormalizedPartsFromXmlV1(translations[idx] || {}, tuMeta[idx] || {});
-//         translation.ntgt = ntgt;
-//         translation.q = quality;
-//         return translation;
-//     });
-//     jobResponse.status = 'done';
-//     return jobResponse;
-// }
+    /**
+     * Initializes a new instance of the DeepLProvider class.
+     * @param {DeepLProviderOptions} options - Configuration options for the provider.
+     */
+    constructor({ authKey, formalityMap, modelType, ...options }) {
+        super(options);
+        this.#authKey = authKey;
+        this.#formalityMap = formalityMap;
+        this.#modelType = modelType;
+    }
 
-// exports.DeepL = class DeepL {
-//     constructor({ baseURL, apiKey, splitSentences, preserveFormatting, formalityMap, quality, languageMapper }) {
-//         if ((apiKey && quality) === undefined) {
-//             throw 'You must specify apiKey, quality for DeepL';
-//         } else {
-//             this.baseURL = baseURL ?? 'https://api-free.deepl.com';
-//             this.stdHeaders = {
-//                 'Authorization': `DeepL-Auth-Key ${apiKey}`,
-//             };
-//             this.splitSentences = splitSentences ?? '0',
-//             this.preserveFormatting = preserveFormatting ?? '0',
-//             this.formalityMap = formalityMap ?? {},
-//             this.quality = quality;
-//             this.languageMapper = languageMapper;
-//             L10nContext.opsMgr.registerOp(deeplTranslateChunkOp, { idempotent: false });
-//             L10nContext.opsMgr.registerOp(deeplMergeTranslatedChunksOp, { idempotent: true });
-//         }
-//     }
+    prepareTranslateChunkArgs({ sourceLang, targetLang, xmlTus, instructions }) {
+        const payload = xmlTus.map(xmlTu => xmlTu.source);
+        const options = {
+            tagHandling: 'xml',
+        };
+        this.#formalityMap && this.#formalityMap[targetLang] && (options.formality = this.#formalityMap[targetLang]);
+        this.#modelType && (options.modelType = this.#modelType);
+        if (this.defaultInstructions || instructions) {
+            options.context = `${this.defaultInstructions ?? ''}\n${instructions}`;
+        }
+        return { payload, sourceLang, targetLang, options };
+    }
 
-//     async requestTranslations(jobRequest) {
-//         const tuMeta = {};
-//         const deeplPayload = jobRequest.tus.map((tu, idx) => {
-//             const [xmlSrc, phMap ] = utils.flattenNormalizedSourceToXmlV1(tu.nsrc);
-//             if (Object.keys(phMap).length > 0) {
-//                 tuMeta[idx] = phMap;
-//             }
-//             return xmlSrc;
-//         });
+    async synchTranslateChunk(op) {
+        const { payload, sourceLang, targetLang, options } = op.args;
+        const deeplClient = new DeepLClient(this.#authKey);
+        return await deeplClient.translateText(payload, sourceLang, targetLang, options);
+    }
 
-//         const requestTranslationsTask = L10nContext.opsMgr.createTask();
-//         try {
-//             const chunkOps = [];
-//             for (let currentIdx = 0; currentIdx < deeplPayload.length;) {
-//                 const offset = currentIdx;
-//                 const q = [];
-//                 while (currentIdx < deeplPayload.length && q.length < MAX_CHUNK_SIZE) {
-//                     q.push(deeplPayload[currentIdx]);
-//                     currentIdx++;
-//                 }
-//                 L10nContext.logger.info(`Preparing DeepL translate, offset: ${offset} chunk strings: ${q.length}`);
-//                 const sourceLang = (this.languageMapper && this.languageMapper(jobRequest.sourceLang)) ?? jobRequest.sourceLang;
-//                 const targetLang = (this.languageMapper && this.languageMapper(jobRequest.targetLang)) ?? jobRequest.targetLang;
-//                 const baseParams = {
-//                     'source_lang': sourceLang,
-//                     'target_lang': targetLang,
-//                     'split_sentences': this.splitSentences,
-//                     'preserve_formatting': this.preserveFormatting,
-//                     'tag_handling': 'xml',
-//                 };
-//                 this.formalityMap && this.formalityMap[targetLang] && (baseParams.formality = this.formalityMap[targetLang]);
-//                 const searchParams = [
-//                     ...Object.entries(baseParams),
-//                     ...q.map(s => [ 'text', s]),
-//                 ];
-//                 const translateOp = requestTranslationsTask.enqueue(
-//                     deeplTranslateChunkOp,
-//                     {
-//                         baseURL: this.baseURL,
-//                         headers: this.stdHeaders,
-//                         searchParams,
-//                         offset,
-//                     }
-//                 );
-//                 chunkOps.push(translateOp);
-//             }
-//             requestTranslationsTask.commit(deeplMergeTranslatedChunksOp, {
-//                 jobRequest,
-//                 tuMeta,
-//                 quality: this.quality,
-//                 ts: L10nContext.regression ? 1 : new Date().getTime(),
-//             }, chunkOps);
-//             const jobResponse = await requestTranslationsTask.execute();
-//             jobResponse.taskName = requestTranslationsTask.taskName;
-//             return jobResponse;
-//         } catch (error) {
-//             throw `DeepL call failed - ${error}`;
-//         }
-//     }
+    convertTranslationResponse(chunk) {
+        return chunk.map(translation => ({
+            tgt: translation.text,
+            cost: [ translation.billedCharacters ],
+        }));
+    }
 
-//     // sync api only for now
-//     async fetchTranslations() {
-//         throw 'DeepL is a synchronous-only provider';
-//     }
-
-
-//     async refreshTranslations(jobRequest) {
-//         const fullResponse = await this.requestTranslations(jobRequest);
-//         const reqTuMap = jobRequest.tus.reduce((p,c) => (p[c.guid] = c, p), {});
-//         return {
-//             ...fullResponse,
-//             tus: fullResponse.tus.filter(tu => !utils.normalizedStringsAreEqual(reqTuMap[tu.guid].ntgt, tu.ntgt)),
-//         };
-//     }
-// }
+    async info() {
+        const info = await super.info();
+        try {
+            const deeplClient = new DeepLClient(this.#authKey);
+            const usage = await deeplClient.getUsage();
+            usage.anyLimitReached() && info.description.push('Translation limit exceeded.');
+            usage.character && info.description.push(styleString`Characters: ${usage.character.count} of ${usage.character.limit}`);
+            usage.document && info.description.push(styleString`Documents: ${usage.document.count} of ${usage.document.limit}`);
+            const sourceLanguages = (await deeplClient.getSourceLanguages()).map(l => l.code).sort();
+            info.description.push(styleString`Vendor-supported source languages: ${sourceLanguages?.join(', ') ?? 'unknown'}`);
+            const targetLanguages = (await deeplClient.getTargetLanguages()).map(l => `${l.code}${l.supportsFormality ? '*' : ''}`).sort();
+            info.description.push(styleString`Vendor-supported target languages (* = formality support): ${targetLanguages?.join(', ') ?? 'unknown'}`);
+        } catch (error) {
+            info.description.push(styleString`Unable to connect to DeepL server: ${error.message}`);
+        }
+        return info;
+    }
+}

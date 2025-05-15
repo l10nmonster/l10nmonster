@@ -1,4 +1,3 @@
-/* eslint-disable no-invalid-this */
 import OpenAI from 'openai';
 import { zodResponseFormat } from "openai/helpers/zod";
 import { z } from "zod";
@@ -27,6 +26,7 @@ const TranslatorAnnotation = z.object({
  */
 export class GPTAgent extends providers.ChunkedRemoteTranslationProvider {
     #openai;
+    #baseURL;
     #model;
     #temperature;
     #systemPrompt;
@@ -41,6 +41,7 @@ export class GPTAgent extends providers.ChunkedRemoteTranslationProvider {
             throw new Error('You must specify quality and model for GPTAgent');
         }
         super(options);
+        this.#baseURL = baseURL;
         this.#openai = new OpenAI({
             apiKey: apiKey ?? '',
             baseURL,
@@ -66,38 +67,32 @@ ${customSchema ? '' :
 - Return your answer as a JSON array with the exact same number of items and in the same order as the input`}`;
     }
 
-    async synchTranslateChunk(op) {
-        const { sourceLang, targetLang, xmlTus, instructions } = op.args;
+    prepareTranslateChunkArgs({ sourceLang, targetLang, xmlTus, instructions }) {
         const jobInstructions = instructions ? `Consider also the following instructions: ${instructions}` : '';
         const userPrompt =
 `${jobInstructions}
 Translate these ${xmlTus.length} strings from ${sourceLang} to ${targetLang}:
 
 ${JSON.stringify(xmlTus, null, 2)}`;
+        return {
+            model: this.#model,
+            temperature: this.#temperature,
+            messages: [
+              { role: 'system', content: this.#systemPrompt },
+              { role: 'user', content: userPrompt },
+            ],
+            response_format: zodResponseFormat(z.array(this.#customSchema ?? TranslatorAnnotation), 'translations'),
+          };
+    }
 
-        try {
-            const completion = await await this.#openai.beta.chat.completions.parse({
-                model: this.#model,
-                temperature: this.#temperature,
-                messages: [
-                  { role: 'system', content: this.#systemPrompt },
-                  { role: 'user', content: userPrompt },
-                ],
-                response_format: zodResponseFormat(z.array(this.#customSchema ?? TranslatorAnnotation), 'translations'),
-              });
-            // console.dir(completion, { depth: null });
-            return {
-                translations: completion.choices[0].message.parsed,
-                usage: completion.usage,
-            };
-        } catch (error) {
-            throw new Error(`Translation failed: ${error.message}`);
-        }
+    async synchTranslateChunk(op) {
+        return this.#openai.beta.chat.completions.parse(op.args);
     }
 
     convertTranslationResponse(chunk) {
-        const cost = [ chunk.usage.total_tokens / chunk.translations.length ];
-        return chunk.translations.map(obj => ({
+        const translations = chunk.choices[0].message.parsed;
+        const cost = [ chunk.usage.total_tokens / translations.length ];
+        return translations.map(obj => ({
             tgt: this.#customSchema ? JSON.stringify(obj) : obj.translation,
             cost,
         }));
@@ -105,6 +100,7 @@ ${JSON.stringify(xmlTus, null, 2)}`;
 
     async info() {
         const info = await super.info();
+        info.description.push(styleString`Model: ${this.#model} Base URL: ${this.#baseURL}`);
         try {
             const modelList = await this.#openai.models.list();
             const modelNames = modelList.data.map(m => m.id).sort().join(', ');

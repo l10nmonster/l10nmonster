@@ -3,6 +3,7 @@ import serve from '@l10nmonster/server';
 import * as ios from '@l10nmonster/helpers-ios';
 import * as xliff from '@l10nmonster/helpers-xliff';
 import path from 'path';
+import { DeepLProvider } from '@l10nmonster/helpers-deepl';
 import { LaraProvider, MMTProvider } from '@l10nmonster/helpers-translated';
 import { GPTAgent } from '@l10nmonster/helpers-openai';
 
@@ -81,6 +82,16 @@ export default config.l10nMonster(import.meta.dirname)
     .provider(new providers.InternalLeverageHoldout())
     .provider(new providers.Repetition({ qualifiedPenalty: 1, unqualifiedPenalty: 9, notesMismatchPenalty: 1 }))
     .provider(new providers.Grandfather({ quality: 70 }))
+    .provider(new DeepLProvider({
+        id: 'DeepL',
+        authKey: process.env.deepl_auth_key,
+        formalityMap: {
+            'it': 'more',
+        },
+        // modelType: 'quality_optimized', // this is disabled for free users
+        quality: 50,
+        supportedPairs: { 'en': [ 'it' ] },
+    }))
     .provider(new LaraProvider({
         id: 'Lara',
         keyId: process.env.lara_key_id,
@@ -112,7 +123,7 @@ export default config.l10nMonster(import.meta.dirname)
     .provider(new MMTProvider({
         quality: 40,
         apiKey: process.env.mmt_api_key,
-        // supportedPairs: { 'en': [ 'ja' ] },
+        supportedPairs: { 'en': [ 'it' ] },
         costPerMChar: 15,
     }))
     // .provider(new xliff.providers.XliffBridge({

@@ -84,10 +84,10 @@ export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationP
                 throw new Error(`String at index ${currentIdx} exceeds ${this.maxCharLength} max char length`);
             }
             logInfo`Preparing chunked translation with ${xmlTus.length} ${[xmlTus.length, 'string', 'strings']}, total char length: ${currentTotalLength}`;
-            requestTranslationsTask.rootOp.enqueue(this.synchProvider ? this.#opNames.synchTranslateChunk : this.#opNames.asynchTranslateChunk,
-                { sourceLang, targetLang, xmlTus, jobGuid: job.jobGuid, instructions: job.instructions, chunk: chunkSizes.length });
+            const args = this.prepareTranslateChunkArgs({ sourceLang, targetLang, xmlTus, jobGuid: job.jobGuid, instructions: job.instructions, chunk: chunkSizes.length });
+            requestTranslationsTask.rootOp.enqueue(this.synchProvider ? this.#opNames.synchTranslateChunk : this.#opNames.asynchTranslateChunk, args);
             chunkSizes.push(xmlTus.length);
-            }
+        }
         requestTranslationsTask.rootOp.args = {
             guids: tus.map(tu => tu.guid),
             tuMeta,
@@ -97,6 +97,10 @@ export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationP
             jobResponse,
         };
         return requestTranslationsTask;
+    }
+
+    prepareTranslateChunkArgs(chunk) {
+        return chunk;
     }
 
     synchTranslateChunk(op) {
