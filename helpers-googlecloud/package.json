@@ -10,9 +10,10 @@
     "author": "Diego Lagunas",
     "license": "MIT",
     "dependencies": {
-        "@google-cloud/bigquery": "^7",
+        "@google-cloud/bigquery": "^8",
         "@google-cloud/storage": "^7",
         "@google-cloud/translate": "^9",
+        "@google/genai": "^1.0.1",
         "google-auth-library": "^9"
     },
     "peerDependencies": {

@@ -26,6 +26,8 @@ const targetTUWhitelist = new Set([
     'cost',
     'jobGuid',
     'translationProvider',
+    'tconf',
+    'tnotes',
     'th', // this is used by TOS for a translation hash to detect bug fixes vendor-side
     'rev', // this is used by TOS to capture reviewed words and errors found
 ]);

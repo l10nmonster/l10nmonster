@@ -3,6 +3,7 @@ import serve from '@l10nmonster/server';
 import * as ios from '@l10nmonster/helpers-ios';
 import * as xliff from '@l10nmonster/helpers-xliff';
 import path from 'path';
+import { GenAIAgent } from '@l10nmonster/helpers-googlecloud';
 import { DeepLProvider } from '@l10nmonster/helpers-deepl';
 import { LaraProvider, MMTProvider } from '@l10nmonster/helpers-translated';
 import { GPTAgent } from '@l10nmonster/helpers-openai';
@@ -112,12 +113,21 @@ export default config.l10nMonster(import.meta.dirname)
         // supportedPairs: { 'en': [ 'it' ] },
     }))
     .provider(new GPTAgent({
-        id: 'gemini',
+        id: 'gemini-openai',
         quality: 47,
         baseURL: 'https://generativelanguage.googleapis.com/v1beta/openai/',
         apiKey: process.env.gemini_api_key,
         model: 'gemini-2.0-flash',
-        preamble: 'You are translating strings from resource files of a mobile app.\nUse the following glossary: viewer=visore, Cardboard=Cardone',
+        defaultInstructions: 'You are translating strings from resource files of a mobile app.\nUse the following glossary: viewer=visore, Cardboard=Cardone',
+        // supportedPairs: { 'en': [ 'it' ] },
+    }))
+    .provider(new GenAIAgent({
+        id: 'gemini-native',
+        quality: 48,
+        apiKey: process.env.gemini_api_key,
+        model: 'gemini-2.5-pro-preview-05-06',
+        thinkingBudget: 0,
+        temperature: 1,
         // supportedPairs: { 'en': [ 'it' ] },
     }))
     .provider(new MMTProvider({
