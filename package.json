@@ -12,9 +12,9 @@
         "helpers-json",
         "helpers-openai",
         "helpers-po",
-        "helpers-server",
         "helpers-translated",
-        "helpers-xliff"
+        "helpers-xliff",
+        "server"
     ],
     "scripts": {
         "test": "npm test --workspaces",

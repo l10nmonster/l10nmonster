@@ -27,7 +27,7 @@ export class BaseJsonlTmStore {
      * @param {Object} options - Required file store delegate implementing file operations
      * @param {string} options.id - The logical id of the instance
      * @param {string} options.access? - The store access permissions (readwrite/readonly/writeonly)
-     * @param {string} options.partitioning? - Partitioning strategy for TM Blocks
+     * @param {string} options.partitioning? - Partitioning strategy for TM Blocks (job/provider/language)
      * @param {boolean} options.compressBlocks? - Use Gzip compression
      * @throws {Error} If no delegate is provided or invalid partitioning is specified
      */

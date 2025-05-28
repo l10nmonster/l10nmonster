@@ -163,8 +163,8 @@ export default class TMManager {
                         jobsByProvider[job.translationProvider] ??= [];
                         jobsByProvider[job.translationProvider].push(job.jobGuid);
                     }
-                    for (const jobs of Object.values(jobsByProvider)) {
-                        await writeTmBlock({ translationProvider: jobs[0].translationProvider, blockId: this.generateJobGuid() }, tm.getJobsByGuids(jobs));
+                    for (const [ translationProvider, jobs ] of Object.entries(jobsByProvider)) {
+                        await writeTmBlock({ translationProvider, blockId: this.generateJobGuid() }, tm.getJobsByGuids(jobs));
                     }
                 } else if (tmStore.partitioning === 'language') {
                     await writeTmBlock({ blockId: this.generateJobGuid() }, tm.getJobsByGuids(jobsToUpdate));

@@ -1,4 +1,4 @@
-import { config, policies, normalizers, xml, adapters, providers } from '@l10nmonster/core';
+import { config, policies, normalizers, xml, adapters, providers, stores } from '@l10nmonster/core';
 import * as android from '@l10nmonster/helpers-android';
 import * as xliff from '@l10nmonster/helpers-xliff';
 import * as demo from '@l10nmonster/helpers-demo';
@@ -32,4 +32,20 @@ export default config.l10nMonster(import.meta.dirname)
         quality: 80,
     }))
     .provider(new providers.Grandfather({ quality: 70 }))
-    .provider(new providers.Repetition({ qualifiedPenalty: 1, unqualifiedPenalty: 9 }));
+    .provider(new providers.Repetition({ qualifiedPenalty: 1, unqualifiedPenalty: 9 }))
+    .tmStore(new stores.FsJsonlTmStore({
+        id: 'job',
+        jobsDir: 'job',
+        partitioning: 'job'
+    }))
+    .tmStore(new stores.FsJsonlTmStore({
+        id: 'provider',
+        jobsDir: 'provider',
+        partitioning: 'provider'
+    }))
+    .tmStore(new stores.FsJsonlTmStore({
+        id: 'language',
+        jobsDir: 'language',
+        partitioning: 'language'
+    }))
+;
