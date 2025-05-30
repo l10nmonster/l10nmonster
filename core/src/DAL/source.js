@@ -285,7 +285,8 @@ SELECT
     sourceLang,
     GROUP_CONCAT(DISTINCT value) targetLangs,
     SUM(JSON_ARRAY_LENGTH(segments)) AS segmentCount,
-    COUNT(*) AS resCount
+    COUNT(*) AS resCount,
+    MAX(modifiedAt) AS lastModified
 FROM resources LEFT JOIN JSON_EACH(targetLangs)
 WHERE channel = ? AND active = true
 GROUP BY 1, 2

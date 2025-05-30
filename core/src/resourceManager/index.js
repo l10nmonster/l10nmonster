@@ -55,11 +55,11 @@ export default class ResourceManager {
             .map(stats => ({ ...stats, targetLangs: stats.targetLangs ? stats.targetLangs.split(',') : [] }));
     }
 
-    async *#getAllResourcesFromSources(options = { channelId: undefined }) {
+    async *#getAllResourcesFromSources(options = { channelId: undefined, since: undefined }) {
         logInfo`Getting all resources directly from sources...`;
         const channels = options.channelId ? [ this.getChannel(options.channelId) ] : Object.values(this.#channels);
         for (const channel of Object.values(channels)) {
-            const channelResources = await channel.getAllNormalizedResources();
+            const channelResources = await channel.getAllNormalizedResources({ since: options.since });
             for await (const normalizedResource of channelResources) {
                 yield normalizedResource;
             }
@@ -100,11 +100,11 @@ export default class ResourceManager {
     //         this.getChannel(resourceHandle.channel).loadResource(resourceHandle);
     // }
 
-    async snap(options = { channelId: undefined }) {
+    async snap(options = { channelId: undefined, since: undefined }) {
         const stats = {};
         logInfo`Starting snapshot of all resources...`;
-        this.#DAL.source.markResourcesAsInactive(options.channelId);
-        for await (const res of this.#getAllResourcesFromSources({ channelId: options.channelId })) {
+        !options.since && this.#DAL.source.markResourcesAsInactive(options.channelId);
+        for await (const res of this.#getAllResourcesFromSources(options)) {
             const changes = this.#DAL.source.saveResource(res);
             const currentPrj = res.prj ?? 'default';
             stats[currentPrj] ??= { resources: 0, segments: 0, changes: 0 };

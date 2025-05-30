@@ -61,9 +61,10 @@ export class source_list {
         } else {
             consoleLog`Active Content Channels`;
             for (const channelId of Object.keys(mm.rm.channels)) {
-                consoleLog`\n  ‣ Channel ${channelId}`;
                 const channelStats = await mm.rm.getActiveContentStats(channelId);
-                channelStats.forEach(({ prj, sourceLang, targetLangs, segmentCount, resCount }) => consoleLog`      • Project ${prj ?? 'default'} (${sourceLang} → ${targetLangs.length === 0 ? '∅' : targetLangs.join(', ')}): ${segmentCount.toLocaleString()} ${[segmentCount, 'segment', 'segments']} in ${resCount.toLocaleString()} ${[resCount, 'resource', 'resources']}`);
+                const lastModified = channelStats.length > 0 ? new Date(Math.max(...channelStats.map(({ lastModified }) => new Date(lastModified)))) : null;
+                consoleLog`\n  ‣ Channel ${channelId} ${lastModified ? styleString`- last modified ${lastModified}` : ''}`;
+                channelStats.forEach(({ prj, sourceLang, targetLangs, segmentCount, resCount, lastModified }) => consoleLog`      • Project ${prj ?? 'default'} (${sourceLang} → ${targetLangs.length === 0 ? '∅' : targetLangs.join(', ')}): ${segmentCount.toLocaleString()} ${[segmentCount, 'segment', 'segments']} in ${resCount.toLocaleString()} ${[resCount, 'resource', 'resources']} - last modified ${new Date(lastModified)}`);
             }
         }
         if (options.statusFile) {

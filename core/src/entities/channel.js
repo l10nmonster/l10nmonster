@@ -77,8 +77,8 @@ export class Channel {
         return handle;
     }
 
-    async *getAllNormalizedResources() {
-        for await (const [resourceHeader, rawResource] of this.#source.fetchAllResources()) {
+    async *getAllNormalizedResources(options) {
+        for await (const [resourceHeader, rawResource] of this.#source.fetchAllResources(options)) {
             yield this.#makeFullResourceWithPolicyApplied(resourceHeader, rawResource);
         }
     }
