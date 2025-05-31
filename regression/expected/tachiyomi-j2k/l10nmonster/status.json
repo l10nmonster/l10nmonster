@@ -1,5 +1,27 @@
 {
 	"en": {
+		"en-GB": {
+			"xliff": {
+				"default": [
+					{
+						"minQ": 50,
+						"q": 50,
+						"res": 1,
+						"seg": 20,
+						"words": 81,
+						"chars": 562
+					},
+					{
+						"minQ": 50,
+						"q": null,
+						"res": 1,
+						"seg": 851,
+						"words": 2817,
+						"chars": 16877
+					}
+				]
+			}
+		},
 		"piggy": {
 			"xliff": {
 				"default": [

@@ -1,5 +1,5 @@
-/* eslint-disable no-bitwise */
-import { L10nContext, utils } from '@l10nmonster/core';
+import { L10nContext } from '@l10nmonster/core';
+import { BaseTranslationProvider } from './baseTranslationProvider.js';
 
 const base = 0xFE00;
 const encoder = new TextEncoder();
@@ -22,55 +22,45 @@ function utf8ToFE00Range(input) {
 }
 
 /**
- * @class InvisicodeGenerator
- * @extends import('@l10nmonster/core').Translator
- * @description Translator that wraps content in Invisicode
- * @property {number} quality - quality for the generated translations
+ * Configuration options for initializing a InvisicodeProvider.
+ * @typedef {Object} InvisicodeProviderOptions
+ * @extends BaseTranslationProviderOptions
  * @property {number} lowQ - quality threshold below which the translation is considered low quality
  * @property {number} highQ - quality threshold above which the translation is considered high quality
  * @property {string} [baseLang] - language code for the base language (source if not specified)
  * @property {boolean} [fallback] - if true, fall back to source if translation is missing
- * @property {import('@l10nmonster/core').TranslationMemory} #mm - TranslationMemory instance
  */
-export class InvisicodeGenerator {
+
+/**
+ * @class InvisicodeProvider
+ * @extends BaseTranslationProvider
+ * @description Translator that wraps content in Invisicode
+ */
+export class InvisicodeProvider extends BaseTranslationProvider {
     #mm;
 
     /**
-     * @param {{quality: number, lowQ: number, highQ: number, baseLang?: string, fallback?: boolean}} options
+     * @param {InvisicodeProviderOptions} options - The parameters for the constructor.
      * @throws {Error} if quality, lowQ or highQ are not specified
      */
-    constructor({ quality, lowQ, highQ, baseLang, fallback }) {
-        if (quality === undefined || lowQ === undefined || highQ === undefined) {
-            throw 'You must specify quality, lowQ and highQ for InvisicodeGenerator';
-        } else {
-            this.quality = quality;
-            this.lowQ = lowQ;
-            this.highQ = highQ;
-            this.baseLang = baseLang;
-            this.fallback = Boolean(fallback);
+    constructor({ lowQ, highQ, baseLang, fallback, ...options }) {
+        if (options.quality === undefined || lowQ === undefined || highQ === undefined) {
+            throw 'You must specify quality, lowQ and highQ for InvisicodeProvider';
         }
+        super(options);
+        this.lowQ = lowQ;
+        this.highQ = highQ;
+        this.baseLang = baseLang;
+        this.fallback = Boolean(fallback);
     }
 
-    /**
-     * Initializes the InvisicodeGenerator by storing the MonsterManager instance
-     * @param {import('@l10nmonster/core').MonsterManager} mm
-     */
-    async init(mm) {
-        this.#mm = mm;
-    }
-
-    /**
-     * Generates translations for the given job request
-     */
-    async requestTranslations(jobRequest) {
+    getTranslatedTus(job) {
         let tm;
         if (this.baseLang) {
-            tm = this.#mm.tmm.getTM(jobRequest.sourceLang, this.baseLang);
+            tm = this.#mm.tmm.getTM(job.sourceLang, this.baseLang);
         }
-        const { tus, ...jobResponse } = jobRequest;
         const ts = L10nContext.regression ? 1 : new Date().getTime();
-        jobResponse.tus = [];
-        tus.forEach(requestTU => {
+        return job.tus.map(requestTU => {
             let baseTranslation, q;
             if (this.baseLang) {
                 const tu = tm.getEntryByGuid(requestTU.guid);
@@ -86,27 +76,13 @@ export class InvisicodeGenerator {
                     g: requestTU.guid,
                     q,
                 }
-                jobResponse.tus.push({
+                return {
                     guid: requestTU.guid,
                     ntgt: [ `\u200B${utf8ToFE00Range(JSON.stringify(meta))}`, ...baseTranslation, '\u200B' ],
                     q: this.quality,
                     ts,
-                });
+                };
             }
-        });
-        jobResponse.status = 'done';
-        return jobResponse;
-    }
-
-    /**
-     * Refreshes the translations for the given job request
-     */
-    async refreshTranslations(jobRequest) {
-        const fullResponse = await this.requestTranslations(jobRequest);
-        const reqTuMap = jobRequest.tus.reduce((p,c) => (p[c.guid] = c, p), {});
-        return {
-            ...fullResponse,
-            tus: fullResponse.tus.filter(tu => !utils.normalizedStringsAreEqual(reqTuMap[tu.guid].ntgt, tu.ntgt)),
-        };
+        }).filter(Boolean);
     }
 }

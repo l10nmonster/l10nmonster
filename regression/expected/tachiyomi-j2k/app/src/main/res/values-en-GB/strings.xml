@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="licensed">Licenced</string>
+	<string name="check_site_in_web">Cheque website in WebView</string>
+	<string name="extensions_miui_warning">MIUI Optimisation must be disabled to install extensions.</string>
+	<string name="true_32bit_color">32-bit colour</string>
+	<string name="use_custom_color_filter">Use custom colour filter</string>
+	<string name="color_filter_blend_mode">Colour filter blend mode</string>
+	<string name="background_color">Background colour</string>
+	<string name="cutout_area_behavior">Cutout area behaviour</string>
+	<string name="cutout_behavior_only_applies">Cutout area behaviour only applies in portrait mode with certain scale types</string>
+	<string name="check_for_updates">Cheque for updates</string>
+	<string name="default_behavior">Default behaviour</string>
+	<string name="restoring_backup_canceled">Cancelled restore</string>
+	<string name="restore_miui_warning">Backup/restore may not function properly if MIUI Optimisation is disabled.</string>
+	<string name="disable_battery_optimization">Disable battery optimisation</string>
+	<string name="battery_optimization_disabled">Battery optimisation is already disabled</string>
+	<string name="check_for_extension_updates">Cheque for extension updates</string>
+	<string name="open_source_licenses">Open source licences</string>
+	<string name="no_wifi_connection">No Wi-Fi connexion available</string>
+	<string name="no_network_connection">No network connexion available</string>
+	<string name="center">Centre</string>
+</resources>

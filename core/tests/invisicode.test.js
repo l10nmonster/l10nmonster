@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { MonsterManager } from './mocks/@l10nmonster/core/index.js';
-import { InvisicodeGenerator } from '../src/helpers/translators/invisicode.js';
+import { InvisicodeProvider } from '../src/helpers/providers/invisicode.js';
 
 const base = 0xFE00;
 const decoder = new TextDecoder();
@@ -26,55 +26,47 @@ function fe00RangeToUtf8(encoded) {
 }
 const invisicodePrologueRegex = /\u200B([\uFE00-\uFE0F]+)/;
 
-test('InvisicodeGenerator - Constructor', async (t) => {
-  await t.test('should throw an error if quality, lowQ, or highQ are not specified', () => {
+test('InvisicodeProvider - Constructor', async (t) => {
+  await t.test('should throw an error if quality is not specified in options', () => {
     assert.throws(
       // @ts-ignore
-      () => new InvisicodeGenerator({ lowQ: 20, highQ: 60 }));
-
-    assert.throws(
-      // @ts-ignore
-      () => new InvisicodeGenerator({ quality: 80, highQ: 60 }));
-
-    assert.throws(
-      // @ts-ignore
-      () => new InvisicodeGenerator({ quality: 80, lowQ: 20 }));
+      () => new InvisicodeProvider({ baseLang: 'en', fallback: false, includeQ: false }), // quality is missing from options
+      /You must specify quality for InvisicodeProvider/
+    );
   });
 
-  await t.test('should set properties correctly when all options are provided', () => {
-    const options = {
-      quality: 80,
-      lowQ: 30,
-      highQ: 70,
+  await t.test('should not throw if quality is specified', () => {
+    assert.doesNotThrow(
+      () => new InvisicodeProvider({ baseLang: 'en', fallback: false, includeQ: false, quality: 80 })
+    );
+  });
+
+  await t.test('should set quality property correctly when provided', () => {
+    const qualityValue = 90;
+    const generator = new InvisicodeProvider({
+      quality: qualityValue,
       baseLang: 'en',
       fallback: true,
-    };
+      includeQ: true,
+    });
 
-    const generator = new InvisicodeGenerator(options);
-
-    assert.strictEqual(generator.quality, options.quality);
-    assert.strictEqual(generator.lowQ, options.lowQ);
-    assert.strictEqual(generator.highQ, options.highQ);
-    assert.strictEqual(generator.baseLang, options.baseLang);
-    assert.strictEqual(generator.fallback, options.fallback);
+    assert.strictEqual(generator.quality, qualityValue);
+    // Private fields #baseLang, #fallback, #includeQ are not directly testable by property access.
+    // Their correct initialization and effect are tested via requestTranslations behavior.
   });
 });
 
-test('InvisicodeGenerator - init', async (t) => {
+test('InvisicodeProvider - init', async (t) => {
   await t.test('should initialize with MonsterManager', async () => {
-    const options = {
-      quality: 80,
-      lowQ: 30,
-      highQ: 70,
+    const qualityValue = 80;
+    const generator = new InvisicodeProvider({
+      quality: qualityValue,
       baseLang: 'en',
       fallback: true,
-    };
-
-    const generator = new InvisicodeGenerator(options);
+      includeQ: false, // Default or explicit false for this test
+    });
     const monsterManager = new MonsterManager();
 
-      // @ts-ignore
-    // @ts-ignore
       await generator.init(monsterManager);
 
     // Assuming #mm is a private field, we can't access it directly.
@@ -92,32 +84,28 @@ test('InvisicodeGenerator - init', async (t) => {
       ],
     };
 
-    const response = await generator.requestTranslations(jobRequest);
+    const tus = generator.getTranslatedTus(jobRequest); // Renamed and not async
 
-    assert.strictEqual(response.status, 'done');
-    assert.strictEqual(response.tus.length, 1);
-    assert.strictEqual(response.tus[0].guid, '123');
-    assert.strictEqual(response.tus[0].ntgt.includes('Hola'), true);
+    assert.strictEqual(tus.length, 1);
+    assert.strictEqual(tus[0].guid, '123');
+    assert.ok(tus[0].ntgt.includes('Hola')); // ntgt is an array
   });
 });
 
-test('InvisicodeGenerator - requestTranslations', async (t) => {
+test('InvisicodeProvider - getTranslatedTus', async (t) => { // Renamed test suite
   await t.test('should generate translations correctly', async () => {
-    const options = {
-      quality: 80,
-      lowQ: 30,
-      highQ: 70,
+    const qualityValue = 80;
+    const generator = new InvisicodeProvider({
+      quality: qualityValue,
       baseLang: 'en',
       fallback: true,
-    };
-
-    const generator = new InvisicodeGenerator(options);
+      includeQ: false, // Test with includeQ false
+    });
     const monsterManager = new MonsterManager();
 
     // Add a translation entry
     monsterManager.translationMemory.setEntry('123', { ntgt: ['Hola'] });
 
-    // @ts-ignore
     await generator.init(monsterManager);
 
     const jobRequest = {
@@ -130,34 +118,36 @@ test('InvisicodeGenerator - requestTranslations', async (t) => {
       ],
     };
 
-    const response = await generator.requestTranslations(jobRequest);
+    const tus = generator.getTranslatedTus(jobRequest); // Renamed and not async
 
-    assert.strictEqual(response.status, 'done');
-    assert.strictEqual(response.tus.length, 1);
+    assert.strictEqual(tus.length, 1);
 
-    const translatedTu = response.tus[0];
+    const translatedTu = tus[0];
     assert.strictEqual(translatedTu.guid, '123');
-    assert.strictEqual(translatedTu.q, options.quality);
+    assert.strictEqual(translatedTu.q, qualityValue);
     assert.equal(translatedTu.ntgt[0].charAt(0), '\u200B');
     assert.equal(translatedTu.ntgt[translatedTu.ntgt.length - 1].charAt(0), '\u200B');
     assert.ok(translatedTu.ntgt.includes('Hola'));
+
+    // Check metadata does NOT contain 'q' when includeQ is false
+    const meta_encoded = translatedTu.ntgt[0].match(invisicodePrologueRegex)[1];
+    const meta_decoded = JSON.parse(fe00RangeToUtf8(meta_encoded));
+    assert.strictEqual(meta_decoded.g, '123');
+    assert.strictEqual(meta_decoded.q, undefined);
   });
 
   await t.test('should fallback to source if translation is missing and fallback is true', async () => {
-    const options = {
-      quality: 80,
-      lowQ: 30,
-      highQ: 70,
+    const qualityValue = 80;
+    const generator = new InvisicodeProvider({
+      quality: qualityValue,
       baseLang: 'en',
       fallback: true,
-    };
-
-    const generator = new InvisicodeGenerator(options);
+      includeQ: false,
+    });
     const monsterManager = new MonsterManager();
 
     // No translation entry added for '456'
 
-    // @ts-ignore
     await generator.init(monsterManager);
 
     const jobRequest = {
@@ -170,28 +160,25 @@ test('InvisicodeGenerator - requestTranslations', async (t) => {
       ],
     };
 
-    const response = await generator.requestTranslations(jobRequest);
+    const tus = generator.getTranslatedTus(jobRequest); // Renamed and not async
 
-    assert.strictEqual(response.tus.length, 1);
-    const translatedTu = response.tus[0];
+    assert.strictEqual(tus.length, 1);
+    const translatedTu = tus[0];
     assert.strictEqual(translatedTu.ntgt.includes('World'), true);
   });
 
   await t.test('should not fallback if translation is missing and fallback is false', async () => {
-    const options = {
-      quality: 80,
-      lowQ: 30,
-      highQ: 70,
+    const qualityValue = 80;
+    const generator = new InvisicodeProvider({
+      quality: qualityValue,
       baseLang: 'en',
       fallback: false,
-    };
-
-    const generator = new InvisicodeGenerator(options);
+      includeQ: false,
+    });
     const monsterManager = new MonsterManager();
 
     // No translation entry added for '789'
 
-    // @ts-ignore
     await generator.init(monsterManager);
 
     const jobRequest = {
@@ -204,74 +191,97 @@ test('InvisicodeGenerator - requestTranslations', async (t) => {
       ],
     };
 
-    const response = await generator.requestTranslations(jobRequest);
+    const tus = generator.getTranslatedTus(jobRequest); // Renamed and not async
 
-    assert.strictEqual(response.tus.length, 0); // No translation added
+    assert.strictEqual(tus.length, 0); // No translation added
   });
 
-  await t.test('should set quality levels correctly', async () => {
-    const options = {
-      quality: 80,
-      lowQ: 30,
-      highQ: 70,
+  await t.test('should set TU quality and encode TM quality in metadata when includeQ is true', async () => {
+    const jobQuality = 80;
+    const generator = new InvisicodeProvider({
+      quality: jobQuality,
       baseLang: 'en',
       fallback: true,
-    };
+      includeQ: true, // Enable quality in metadata
+    });
 
-    const generator = new InvisicodeGenerator(options);
     const monsterManager = new MonsterManager();
 
-    // Add a translation entry
-    monsterManager.translationMemory.setEntry('321', { ntgt: ['Bonjour'] });
+    monsterManager.translationMemory.setEntry('321', { ntgt: ['Bonjour'], q: 75 });
+    monsterManager.translationMemory.setEntry('322', { ntgt: ['Bonsoir'], q: 50 });
+    monsterManager.translationMemory.setEntry('323', { ntgt: ['Bonne nuit'] }); // TM q will default to 0
 
-    // @ts-ignore
     await generator.init(monsterManager);
 
     const jobRequest = {
       sourceLang: 'en',
       tus: [
-        {
-          guid: '321',
-          nsrc: ['Good morning'],
-        },
-        {
-          guid: '322',
-          nsrc: ['Good evening'],
-        },
-        {
-          guid: '323',
-          nsrc: ['Good night'],
-        },
+        { guid: '321', nsrc: ['Good morning'] },
+        { guid: '322', nsrc: ['Good evening'] },
+        { guid: '323', nsrc: ['Good night'] },
       ],
     };
 
-    // Add corresponding translation entries
-    monsterManager.translationMemory.setEntry('322', { ntgt: ['Bonsoir'] });
-    monsterManager.translationMemory.setEntry('323', { ntgt: ['Bonne nuit'] });
+    const tus = generator.getTranslatedTus(jobRequest); // Renamed and not async
 
-    const response = await generator.requestTranslations(jobRequest);
+    assert.strictEqual(tus.length, 3);
 
-    assert.strictEqual(response.tus.length, 3);
+    const tu1 = tus.find(tu => tu.guid === '321');
+    const tu2 = tus.find(tu => tu.guid === '322');
+    const tu3 = tus.find(tu => tu.guid === '323');
 
-    const tu1 = response.tus.find(tu => tu.guid === '321');
-    const tu2 = response.tus.find(tu => tu.guid === '322');
-    const tu3 = response.tus.find(tu => tu.guid === '323');
+    assert.strictEqual(tu1.q, jobQuality);
+    assert.strictEqual(tu2.q, jobQuality);
+    assert.strictEqual(tu3.q, jobQuality);
 
-    // Quality levels
-    assert.strictEqual(tu1.q, options.quality);
-    assert.strictEqual(tu2.q, options.quality);
-    assert.strictEqual(tu3.q, options.quality);
+    const meta1_encoded = tu1.ntgt[0].match(invisicodePrologueRegex)[1];
+    const meta1_decoded = JSON.parse(fe00RangeToUtf8(meta1_encoded));
+    assert.strictEqual(meta1_decoded.g, '321');
+    assert.strictEqual(meta1_decoded.q, 75);
 
-    // Here, you might want to check the 'q' value inside the Invisicode metadata
-    // However, since it's embedded in the ntgt string, it's complex to parse.
-    // Instead, ensure that the 'ntgt' field contains the correct Invisicode metadata.
-    // For simplicity, we'll just check that 'ntgt' includes the translation
+    const meta2_encoded = tu2.ntgt[0].match(invisicodePrologueRegex)[1];
+    const meta2_decoded = JSON.parse(fe00RangeToUtf8(meta2_encoded));
+    assert.strictEqual(meta2_decoded.g, '322');
+    assert.strictEqual(meta2_decoded.q, 50);
+
+    const meta3_encoded = tu3.ntgt[0].match(invisicodePrologueRegex)[1];
+    const meta3_decoded = JSON.parse(fe00RangeToUtf8(meta3_encoded));
+    assert.strictEqual(meta3_decoded.g, '323');
+    assert.strictEqual(meta3_decoded.q, 0);
+
     assert.ok(tu1.ntgt.includes('Bonjour'));
-    // Adjust as per actual mappings
+    assert.ok(tu2.ntgt.includes('Bonsoir'));
+    assert.ok(tu3.ntgt.includes('Bonne nuit'));
+  });
+
+  await t.test('should not include TM quality in metadata when includeQ is false', async () => {
+    const jobQuality = 90;
+    const generator = new InvisicodeProvider({
+      quality: jobQuality,
+      baseLang: 'en',
+      fallback: true,
+      includeQ: false, // Explicitly false
+    });
+    const monsterManager = new MonsterManager();
+    monsterManager.translationMemory.setEntry('777', { ntgt: ['Servus'], q: 65 });
+    await generator.init(monsterManager);
+    const jobRequest = {
+      sourceLang: 'en',
+      tus: [ { guid: '777', nsrc: ['Hallo'] } ],
+    };
+    const tus = generator.getTranslatedTus(jobRequest); // Renamed and not async
+    assert.strictEqual(tus.length, 1);
+    const translatedTu = tus[0];
+    assert.strictEqual(translatedTu.q, jobQuality);
+    const meta_encoded = translatedTu.ntgt[0].match(invisicodePrologueRegex)[1];
+    const meta_decoded = JSON.parse(fe00RangeToUtf8(meta_encoded));
+    assert.strictEqual(meta_decoded.g, '777');
+    assert.strictEqual(meta_decoded.q, undefined, "Metadata quality should be undefined when includeQ is false");
+    assert.ok(translatedTu.ntgt.includes('Servus'));
   });
 });
 
-// test('InvisicodeGenerator - refreshTranslations', async (t) => {
+// test('InvisicodeProvider - refreshTranslations', async (t) => {
 //   await t.test('should return tus that have changed', async () => {
 //     const options = {
 //       quality: 80,
@@ -281,7 +291,7 @@ test('InvisicodeGenerator - requestTranslations', async (t) => {
 //       fallback: true,
 //     };
 
-//     const generator = new InvisicodeGenerator(options);
+//     const generator = new InvisicodeProvider(options);
 //     const monsterManager = new MonsterManager();
 
 //     // Add translation entries
@@ -329,23 +339,19 @@ test('InvisicodeGenerator - requestTranslations', async (t) => {
 //   });
 // });
 
-test('InvisicodeGenerator - utf8ToFE00Range', async (t) => {
-  await t.test('should convert UTF-8 to FE00 range correctly', async () => {
-    const options = {
-      quality: 80,
-      lowQ: 30,
-      highQ: 70,
+test('InvisicodeProvider - getTranslatedTus metadata encoding', async (t) => { // Renamed test suite
+  await t.test('should correctly encode guid and TM quality in metadata when includeQ is true', async () => {
+    const jobQuality = 80;
+    const generator = new InvisicodeProvider({
+      quality: jobQuality,
       baseLang: 'en',
       fallback: true,
-    };
-
-    const generator = new InvisicodeGenerator(options);
+      includeQ: true, // Ensure metadata quality is included
+    });
     const monsterManager = new MonsterManager();
 
     // Add a translation entry
-    monsterManager.translationMemory.setEntry('555', { ntgt: ['Prueba'], q: 80 });
-
-    // @ts-ignore
+    monsterManager.translationMemory.setEntry('555', { ntgt: ['Prueba'], q: 85 }); // TM quality is 85
     await generator.init(monsterManager);
 
     const jobRequest = {
@@ -358,10 +364,10 @@ test('InvisicodeGenerator - utf8ToFE00Range', async (t) => {
       ],
     };
 
-    const response = await generator.requestTranslations(jobRequest);
+    const tus = generator.getTranslatedTus(jobRequest); // Renamed and not async
 
-    assert.equal(response.tus.length, 1);
-    const translatedTu = response.tus[0];
+    assert.equal(tus.length, 1);
+    const translatedTu = tus[0];
 
     // Check that ntgt starts and ends with ZERO WIDTH SPACE
     assert.equal(translatedTu.ntgt[0].charAt(0), '\u200B');
@@ -375,10 +381,33 @@ test('InvisicodeGenerator - utf8ToFE00Range', async (t) => {
     const metadata = JSON.parse(decodedMetadata);
 
     assert.equal(metadata.g, '555');
-    // q = 80 >= highQ (70) => 2
-    assert.equal(metadata.q, 2);
-
-    // Ensure the rest of the string includes the translation
+    assert.equal(metadata.q, 85); // Should be the quality from the TM entry (85)
     assert.ok(translatedTu.ntgt.includes('Prueba'));
+  });
+
+  await t.test('should correctly encode guid and omit TM quality in metadata when includeQ is false', async () => {
+    const jobQuality = 70;
+    const generator = new InvisicodeProvider({
+        quality: jobQuality,
+        baseLang: 'en',
+        fallback: true,
+        includeQ: false, // Ensure metadata quality is NOT included
+    });
+    const monsterManager = new MonsterManager();
+    monsterManager.translationMemory.setEntry('666', { ntgt: ['Testomit'], q: 95 }); // TM quality is 95
+    await generator.init(monsterManager);
+    const jobRequest = {
+        sourceLang: 'en',
+        tus: [ { guid: '666', nsrc: ['Test UTF-8 Omit'] } ],
+    };
+    const tus = generator.getTranslatedTus(jobRequest); // Renamed and not async
+    assert.equal(tus.length, 1);
+    const translatedTu = tus[0];
+    const invisicodePart = translatedTu.ntgt[0].match(invisicodePrologueRegex)[1];
+    const decodedMetadata = fe00RangeToUtf8(invisicodePart);
+    const metadata = JSON.parse(decodedMetadata);
+    assert.equal(metadata.g, '666');
+    assert.strictEqual(metadata.q, undefined); // Quality should not be in metadata
+    assert.ok(translatedTu.ntgt.includes('Testomit'));
   });
 });

@@ -1,14 +1,14 @@
 {
 	"v": 1,
 	"sourceLang": "en",
-	"targetLang": "zh-Hant",
+	"targetLang": "en-GB",
 	"blocks": {
 		"xxx7xxx": {
-			"blockName": "blocks/sl=en/tl=zh-Hant/tp=XliffBridge/block_xxx7xxx.jsonl",
+			"blockName": "blocks/sl=en/tl=en-GB/block_xxx7xxx.jsonl",
 			"modified": "TS1",
 			"jobs": [
 				[
-					"xxx6xxx",
+					"xxx3xxx",
 					"2022-05-29T00:00:00.000Z"
 				]
 			]
