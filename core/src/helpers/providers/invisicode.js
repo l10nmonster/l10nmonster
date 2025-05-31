@@ -25,10 +25,9 @@ function utf8ToFE00Range(input) {
  * Configuration options for initializing a InvisicodeProvider.
  * @typedef {Object} InvisicodeProviderOptions
  * @extends BaseTranslationProviderOptions
- * @property {number} lowQ - quality threshold below which the translation is considered low quality
- * @property {number} highQ - quality threshold above which the translation is considered high quality
  * @property {string} [baseLang] - language code for the base language (source if not specified)
  * @property {boolean} [fallback] - if true, fall back to source if translation is missing
+ * @property {boolean} [includeQ] - if true, include quality score in the output
  */
 
 /**
@@ -37,45 +36,45 @@ function utf8ToFE00Range(input) {
  * @description Translator that wraps content in Invisicode
  */
 export class InvisicodeProvider extends BaseTranslationProvider {
-    #mm;
+    #baseLang;
+    #fallback;
+    #includeQ;
+
 
     /**
      * @param {InvisicodeProviderOptions} options - The parameters for the constructor.
      * @throws {Error} if quality, lowQ or highQ are not specified
      */
-    constructor({ lowQ, highQ, baseLang, fallback, ...options }) {
-        if (options.quality === undefined || lowQ === undefined || highQ === undefined) {
-            throw 'You must specify quality, lowQ and highQ for InvisicodeProvider';
+    constructor({ baseLang, fallback, includeQ, ...options }) {
+        if (options.quality === undefined) {
+            throw 'You must specify quality for InvisicodeProvider';
         }
         super(options);
-        this.lowQ = lowQ;
-        this.highQ = highQ;
-        this.baseLang = baseLang;
-        this.fallback = Boolean(fallback);
+        this.#baseLang = baseLang;
+        this.#fallback = Boolean(fallback);
+        this.#includeQ = Boolean(includeQ);
     }
 
     getTranslatedTus(job) {
         let tm;
-        if (this.baseLang) {
-            tm = this.#mm.tmm.getTM(job.sourceLang, this.baseLang);
+        if (this.#baseLang) {
+            tm = this.mm.tmm.getTM(job.sourceLang, this.#baseLang);
         }
         const ts = L10nContext.regression ? 1 : new Date().getTime();
         return job.tus.map(requestTU => {
             let baseTranslation, q;
-            if (this.baseLang) {
+            if (this.#baseLang) {
                 const tu = tm.getEntryByGuid(requestTU.guid);
-                baseTranslation = tu?.ntgt || (this.fallback && requestTU?.nsrc);
+                baseTranslation = tu?.ntgt || (this.#fallback && requestTU?.nsrc);
                 // eslint-disable-next-line no-nested-ternary
-                q = (tu?.q <= this.lowQ || tu?.q === undefined) ? 0 : (tu?.q >= this.highQ ? 2 : 1);
+                q = tu?.q ?? 0;
             } else {
                 baseTranslation = requestTU.nsrc;
                 q = 0;
             }
             if (baseTranslation) {
-                const meta = {
-                    g: requestTU.guid,
-                    q,
-                }
+                const meta = { g: requestTU.guid };
+                this.#includeQ && (meta.q = q);
                 return {
                     guid: requestTU.guid,
                     ntgt: [ `\u200B${utf8ToFE00Range(JSON.stringify(meta))}`, ...baseTranslation, '\u200B' ],

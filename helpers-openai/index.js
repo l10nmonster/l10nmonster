@@ -10,7 +10,7 @@ const TranslatorAnnotation = z.object({
     confidence: z.number(),
   });
 
-  /**
+/**
  * @typedef {object} GPTAgentOptions
  * @extends ChunkedRemoteTranslationProviderOptions
  * @property {string} [baseURL] - The base URL (https://api.openai.com by default)
@@ -86,7 +86,7 @@ ${JSON.stringify(xmlTus, null, 2)}`;
     }
 
     async synchTranslateChunk(op) {
-        return this.#openai.beta.chat.completions.parse(op.args);
+        return this.#openai.chat.completions.parse(op.args);
     }
 
     convertTranslationResponse(chunk) {

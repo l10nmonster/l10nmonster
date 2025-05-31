@@ -1,0 +1,14 @@
+{
+  "name": "lqaboss-cli",
+  "version": "1.0.0",
+  "description": "CLI for LQA Boss flow capture",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "jszip": "^3.10.1",
+    "puppeteer": "^24"
+  }
+}

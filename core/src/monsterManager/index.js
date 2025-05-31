@@ -14,7 +14,7 @@ export class MonsterManager {
     constructor(monsterConfig) {
         this.monsterConfig = monsterConfig;
 
-        this.#dalManager = new DALManager();
+        this.#dalManager = new DALManager(monsterConfig.sourceDB, monsterConfig.tmDB);
 
         let channels;
         if (typeof monsterConfig.channels === 'object') {
@@ -85,7 +85,7 @@ export class MonsterManager {
             const tm = this.tmm.getTM(sourceLang, targetLang);
             translationStatusByPair[sourceLang][targetLang] = tm.getActiveContentTranslationStatus();
             logVerbose`Got active content translation status for ${sourceLang} → ${targetLang}`;
-        }    
+        }
         return translationStatusByPair;
     }
 

@@ -140,8 +140,6 @@ ${JSON.stringify(xmlTus, null, 2)}`;
             (res.usageMetadata.toolUsePromptTokenCount ?? 0) / trans.length,
             (res.usageMetadata.totalTokenCount ?? 0) / trans.length,
         ];
-        logVerbose`Confidence: ${trans.map(obj => obj.confidence).join(', ')}`;
-        logVerbose`Notes: ${trans.map(obj => obj.notes).join(', ')}`;
         return trans.map(obj => {
             const baseTu = {
                 tgt: this.#customSchema ? JSON.stringify(obj) : obj.translation,
@@ -158,6 +156,14 @@ ${JSON.stringify(xmlTus, null, 2)}`;
         try {
             await this.#lazyInit();
             info.description.push(styleString`Model: ${this.#model} Using: ${this.#ai.vertex ? 'Vertex AI platform' : 'Gemini Developer platform'}`);
+            // const counts = await this.#ai.models.countTokens({
+            //     model: this.#model,
+            //     contents: '',
+            //     config: {
+            //         systemInstruction: this.#systemPrompt,
+            //     }
+            // });
+            // info.description.push(styleString`Cached Content Tokens: ${counts.cachedContentTokenCount}, total: ${counts.totalTokens}`);
             const cachedContents = await this.#ai.caches.list({config: { pageSize: 2 }});
             for await (const cachedContent of cachedContents) {
                 info.description.push(styleString`Cached content: ${cachedContent}`);

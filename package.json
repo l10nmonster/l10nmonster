@@ -14,17 +14,16 @@
         "helpers-po",
         "helpers-translated",
         "helpers-xliff",
-        "server"
+        "server",
+        "lqaboss-cli"
     ],
     "scripts": {
         "test": "npm test --workspaces",
         "eslint": "eslint core/src/**/*.js cli/*.js",
         "eslint:files": "npm run eslint | grep -e '^/.*js$'",
-        "eslint:files:open": "code $(npm run --silent eslint:files)",
-        "rebuild:sqlite": "npx electron-rebuild -v 32.2.7 -m node_modules/better-sqlite3"
+        "eslint:files:open": "code $(npm run --silent eslint:files)"
     },
     "devDependencies": {
-        "@electron/rebuild": "^3.7.1",
         "@eslint/eslintrc": "^3.2.0",
         "@eslint/js": "^9.17.0",
         "globals": "^16"

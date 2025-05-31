@@ -319,6 +319,8 @@ export class L10nMonsterConfig {
      * @param {Array} [config.analyzers] - Configuration for analyzers.
      * @param {Object} [config.opsStore] - Directory for operations.
      * @param {Intl.NumberFormat} [config.currencyFormatter] - A currency formatter for estimated costs.
+     * @param {string|boolean} [config.sourceDB] - Source database filename or false to disable writing DB files.
+     * @param {string|boolean} [config.tmDB] - TM database filename or false to disable writing DB files.
      * @returns {L10nMonsterConfig} Returns the instance for method chaining.
      */
     operations({
@@ -326,11 +328,15 @@ export class L10nMonsterConfig {
         analyzers,
         opsStore,
         currencyFormatter,
+        sourceDB,
+        tmDB,
     }) {
         autoSnap !== undefined && (this.autoSnap = Boolean(autoSnap));
         this.analyzers = analyzers;
         this.opsStore = opsStore;
         currencyFormatter && (this.currencyFormatter = currencyFormatter);
+        this.sourceDB = sourceDB;
+        this.tmDB = tmDB;
         return this;
     }
 

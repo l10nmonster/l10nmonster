@@ -1,11 +1,11 @@
-import { logWarn, providers, styleString } from '@l10nmonster/core';
+import { providers, styleString } from '@l10nmonster/core';
 import { DeepLClient } from 'deepl-node';
 
 /**
  * @typedef {object} DeepLProviderOptions
  * @extends ChunkedRemoteTranslationProviderOptions
  * @property {string} authKey - The DeepL API key. This is required.
- * @property {object} [formalityMap] - Optional map from language to desired formality (less, more, default, prefer_less, prefer_more).
+ * @property {Record<string, string[]>} [formalityMap] - Optional map from language to desired formality (less, more, default, prefer_less, prefer_more).
  * @property {string} [modelType] - Specifies the type of translation model to use (quality_optimized, prefer_quality_optimized, latency_optimized).
  */
 
