@@ -1,4 +1,4 @@
-import { L10nContext, providers, logVerbose, logInfo, utils, opsManager } from '@l10nmonster/core';
+import { L10nContext, providers, logVerbose, logInfo, styleString, utils, opsManager } from '@l10nmonster/core';
 
 const MAX_CHAR_LENGTH = 9900;
 const MAX_CHUNK_SIZE = 125;
@@ -176,5 +176,11 @@ export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationP
 
     asynchFetchChunk(op) {
         throw new Error(`asynchFetchChunk not implemented in ${this.constructor.name}`);
+    }
+
+    async info() {
+        const info = await super.info();
+        info.description.push(styleString`Max chunk size: ${this.maxChunkSize.toLocaleString()}, max char length: ${this.maxCharLength.toLocaleString()}`);
+        return info;
     }
 }

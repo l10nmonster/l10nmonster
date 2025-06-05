@@ -25,7 +25,7 @@ export class LaraProvider extends providers.ChunkedRemoteTranslationProvider {
      * @param {LaraProviderOptions} options - Configuration options for the provider.
      */
     constructor({ keyId, keySecret, adaptTo, ...options }) {
-        super({ chunkSize: 60, ...options }); // maximum number of strings sent to Lara is 128 including notes
+        super({ maxChunkSize: 60, ...options }); // maximum number of strings sent to Lara is 128 including notes
         this.#keyId = keyId;
         this.#keySecret = keySecret;
         this.#adaptTo = adaptTo && (Array.isArray(adaptTo) ? adaptTo : adaptTo.split(','));
@@ -67,6 +67,10 @@ export class LaraProvider extends providers.ChunkedRemoteTranslationProvider {
 
     async info() {
         const info = await super.info();
+        if (!this.#keyId || !this.#keySecret) {
+            info.description.push(styleString`Lara API key is missing. Please add the keyId and keySecret to the provider configuration.`);
+            return info;
+        }
         try {
             const credentials = new Credentials(this.#keyId, this.#keySecret);
             const lara = new Translator(credentials);
