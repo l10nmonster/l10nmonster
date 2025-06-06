@@ -69,20 +69,22 @@ export class translate {
         ],
         options: [
             [ '-l, --lang <language>', 'target language to translate' ],
+            [ '-c, --channel <channel1,...>', 'limit translations to specified channels' ],
             [ '-p, --prj <prj1,...>', 'limit translations to specified projects' ],
         ]
     };
 
     static async action(mm, options) {
         const mode = (options.mode ?? 'all').toLowerCase();
+        const channel = options.channel ? (Array.isArray(options.channel) ? options.channel : options.channel.split(',')) : undefined;
         const prj = options.prj ? (Array.isArray(options.prj) ? options.prj : options.prj.split(',')) : undefined;
         consoleLog`Generating translated resources for ${options.lang ? options.lang : 'all languages'}... (${mode} mode)`;
         const response = { lang: {} };
         const targetLangs = await mm.getTargetLangs(options.lang);
-        const allResources = await mm.rm.getAllResources({ keepRaw: true });
+        const allResources = await mm.rm.getAllResources({ keepRaw: true, channel, prj });
         for await (const resHandle of allResources) {
             for (const targetLang of targetLangs) {
-                if (resHandle.targetLangs.includes(targetLang) && (prj === undefined || prj.includes(resHandle.prj))) {
+                if (resHandle.targetLangs.includes(targetLang)) {
                     const resourceStatus = { id: resHandle.id };
                     const tm = mm.tmm.getTM(resHandle.sourceLang, targetLang);
                     const translatedRes = await resHandle.generateTranslatedRawResource(tm);

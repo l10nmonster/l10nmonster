@@ -229,10 +229,21 @@ FROM resources WHERE active = true AND rid = ?;
         return this.#buildResource(resourceRow);
     }
 
-    *getAllResources(options) {
-        const keepRaw = Boolean(options?.keepRaw);
-        const getResourcesStmt = `getAllResources${keepRaw ? 'WithRaw' : ''}`;
-        this.#stmt[getResourcesStmt] ??= this.#db.prepare(/* sql */`
+    *getAllResources(options = {}) {
+        const { keepRaw, prj, channel } = options;
+        
+        // Prepare parameters for SQL IN clauses
+        const channelArray = channel ? (Array.isArray(channel) ? channel : [channel]) : [];
+        const prjArray = prj ? (Array.isArray(prj) ? prj : [prj]) : [];
+        
+        // Create placeholders for IN clauses
+        const channelPlaceholders = channelArray.length > 0 ? channelArray.map(() => '?').join(',') : '?';
+        const prjPlaceholders = prjArray.length > 0 ? prjArray.map(() => '?').join(',') : '?';
+        
+        // Create statement key based on parameter counts only (not keepRaw)
+        const stmtKey = `getAllResources_ch${channelArray.length}_prj${prjArray.length}`;
+        
+        this.#stmt[stmtKey] ??= this.#db.prepare(/* sql */`
 SELECT
     channel,
     rid,
@@ -244,11 +255,19 @@ SELECT
     subresources,
     resourceFormat,
     resProps,
-    ${keepRaw ? 'raw,' : ''}
+    CASE WHEN ? = 1 THEN raw ELSE NULL END as raw,
     modifiedAt
-FROM resources WHERE active = true ORDER BY channel, rid;
+FROM resources 
+WHERE active = true 
+    AND (${channelArray.length === 0 ? '1=1' : `channel IN (${channelPlaceholders})`})
+    AND (${prjArray.length === 0 ? '1=1' : `prj IN (${prjPlaceholders})`})
+ORDER BY channel, rid;
 `);
-        for (const resourceRow of this.#stmt[getResourcesStmt].iterate()) {
+
+        // Build parameters array - keepRaw first, then filter values
+        const params = [keepRaw ? 1 : 0, ...channelArray, ...prjArray];
+
+        for (const resourceRow of this.#stmt[stmtKey].iterate(...params)) {
             yield this.#buildResource(resourceRow);
         }
     }
