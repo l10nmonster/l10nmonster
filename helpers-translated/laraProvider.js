@@ -50,8 +50,8 @@ export class LaraProvider extends providers.ChunkedRemoteTranslationProvider {
         return { payload, sourceLang, targetLang, translateOptions };
     }
 
-    async synchTranslateChunk(op) {
-        const { payload, sourceLang, targetLang, translateOptions } = op.args;
+    async startTranslateChunk(args) {
+        const { payload, sourceLang, targetLang, translateOptions } = args;
         try {
             return await this.#lara.translate(payload, sourceLang, targetLang, translateOptions);
         } catch (e) {

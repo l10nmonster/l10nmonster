@@ -126,7 +126,7 @@ export default config.l10nMonster(import.meta.dirname)
         quality: 48,
         apiKey: process.env.gemini_api_key,
         model: 'gemini-2.5-pro-preview-05-06',
-        thinkingBudget: 0,
+        // thinkingBudget: 0,
         temperature: 1,
         // supportedPairs: { 'en': [ 'it' ] },
     }))

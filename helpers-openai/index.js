@@ -5,10 +5,10 @@ import { z } from "zod";
 import { logInfo, providers, styleString } from '@l10nmonster/core';
 
 const TranslatorAnnotation = z.object({
-    translation: z.string(),
-    // notes: z.string().optional(),
-    confidence: z.number(),
-  });
+    translation: z.string().describe('the translated string'),
+    confidence: z.number().describe('a confidence score between 0 and 100 that indicates whether the translation is possibly ambiguous'),
+    notes: z.string().describe('any additional notes about the translation'),
+});
 
 /**
  * @typedef {object} GPTAgentOptions
@@ -50,20 +50,17 @@ export class GPTAgent extends providers.ChunkedRemoteTranslationProvider {
         this.#temperature = temperature ?? 0.1;
         this.#customSchema = customSchema;
         logInfo`GPTAgent ${this.id} initialized with url: ${baseURL} model: ${model}`;
-        persona = persona ??
-`You are one of the best professional translators in the world.
-When a situation is ambiguous you stop to consider your options and provide the best answer you can.
-Maintain the exact meaning and tone of the original text
-Handle numerical/date formats appropriately`;
+        persona = persona ?? 'You are one of the best professional translators in the world.';
         this.#systemPrompt =
 `${persona}
 ${this.defaultInstructions ?? ''}
 ${customSchema ? '' :
-`- Each string may contain HTML or XML tags. Preserve ALL markup (HTML/XML tags, entities, placeholders)
-- Maintain proper escaping of special characters
-- Translate only text nodes. Do not alter tag structure
-- Provide a confidence score between 0 and 100 that indicates how confident you are in your translation'}
-- Your input is provided in JSON format. It contains the source content and notes about each string that helps you understand the context
+`- Each string may contain HTML tags. Preserve ALL markup and don't close unclosed tags. Translate only text nodes. Do not alter tag structure
+- Provide a confidence score between 0 and 100 that indicates how likely the translation doesn't need adjustments due to context.
+- Your input is provided in JSON format. It contains the source content and notes about each string that helps you understand the context.
+- When a situation is ambiguous stop to consider your options, use additional context provided (notes, bundle, key), but always provide the best answer you can.
+- Provide a confidence score between 0 and 100 that indicates correctness. Anything below 60 is an ambiguous translation that should be reviewed by a human.
+- If a translation can be ambiguous, or you have questions about it, lower the confidence score and explain why in the notes field, including any clarifying questions.
 - Return your answer as a JSON array with the exact same number of items and in the same order as the input`}`;
     }
 
@@ -85,8 +82,8 @@ ${JSON.stringify(xmlTus, null, 2)}`;
           };
     }
 
-    async synchTranslateChunk(op) {
-        return this.#openai.chat.completions.parse(op.args);
+    async startTranslateChunk(args) {
+        return this.#openai.chat.completions.parse(args);
     }
 
     convertTranslationResponse(chunk) {

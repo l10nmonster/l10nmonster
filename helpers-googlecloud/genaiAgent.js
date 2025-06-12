@@ -1,7 +1,11 @@
 import { GoogleGenAI, Type } from '@google/genai';
 import { GoogleAuth } from 'google-auth-library';
 
-import { logInfo, logVerbose, providers, styleString } from '@l10nmonster/core';
+import { logInfo, logVerbose, logWarn, providers, styleString } from '@l10nmonster/core';
+
+function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 const TRANSLATOR_SCHEMA = {
     type: Type.OBJECT,
@@ -14,9 +18,9 @@ const TRANSLATOR_SCHEMA = {
 };
 
 const defaultSchemaInstructions =
-`- Your input is provided in JSON format. It contains the source content and notes about each string that help you understand the context.
-- Each string may contain HTML or XML tags. Preserve ALL markup (HTML/XML tags, entities, placeholders).
-- Translate only text nodes. Do not alter tag structure.
+`- Each string may contain HTML tags. Preserve ALL markup and don't close unclosed tags. Translate only text nodes. Do not alter tag structure
+- Provide a confidence score between 0 and 100 that indicates how likely the translation doesn't need adjustments due to context.
+- Your input is provided in JSON format. It contains the source content and notes about each string that helps you understand the context.
 - When a situation is ambiguous stop to consider your options, use additional context provided (notes, bundle, key), but always provide the best answer you can.
 - Provide a confidence score between 0 and 100 that indicates correctness. Anything below 60 is an ambiguous translation that should be reviewed by a human.
 - If a translation can be ambiguous, or you have questions about it, lower the confidence score and explain why in the notes field, including any clarifying questions.
@@ -85,7 +89,7 @@ export class GenAIAgent extends providers.ChunkedRemoteTranslationProvider {
                     const auth = new GoogleAuth({});
                     this.#vertexProject = await auth.getProjectId();
                 } catch (e) {
-                    throw new Error(`Couldn't get credentials, did you run 'gcloud auth login'? ${e.message}`);
+                    throw new Error(`Couldn't get credentials, did you run 'gcloud auth login'?\n${e.message}`);
                 }
             }
             this.#ai = new GoogleGenAI({
@@ -123,39 +127,58 @@ ${JSON.stringify(xmlTus, null, 2)}`;
         };
     }
 
-    async synchTranslateChunk(op) {
+    async startTranslateChunk(args) {
         await this.#lazyInit();
-        return this.#ai.models.generateContent(op.args);
+        for (let retry = 1; retry <= 2; retry++) {
+            try {
+                return await this.#ai.models.generateContent(args);
+            } catch (e) {
+                logWarn`Unexpected generateContent error: ${e.message}`;
+            }
+            logInfo`Sleeping ${3 * retry * retry} seconds before retrying...`;
+            await sleep(3000 * retry * retry);
+        }
     }
 
     convertTranslationResponse(res) {
-        res.promptFeedback && logVerbose`Prompt feedback: ${res.promptFeedback.blockReasonMessage}`;
-        res.candidates && res.candidates.length > 1 && logVerbose`Actually had ${res.candidates.length} candidates to choose from`;
-        const trans = JSON.parse(res.text);
-        const cost = [
-            (res.usageMetadata.cachedContentTokenCount ?? 0) / trans.length,
-            (res.usageMetadata.promptTokenCount ?? 0) / trans.length,
-            (res.usageMetadata.thoughtsTokenCount ?? 0) / trans.length,
-            (res.usageMetadata.candidatesTokenCount ?? 0) / trans.length,
-            (res.usageMetadata.toolUsePromptTokenCount ?? 0) / trans.length,
-            (res.usageMetadata.totalTokenCount ?? 0) / trans.length,
-        ];
-        return trans.map(obj => {
-            const baseTu = {
-                tgt: this.#customSchema ? JSON.stringify(obj) : obj.translation,
-                cost,
-                tconf: obj.confidence,
-            };
-            obj.notes && obj.notes.length > 0 && (baseTu.tnotes = obj.notes);
-            return baseTu;
-        });
+        try {
+            res.promptFeedback && logVerbose`Prompt feedback: ${res.promptFeedback.blockReasonMessage}`;
+            if (res.candidates) {
+                res.candidates.length > 1 && logWarn`Actually had ${res.candidates.length} candidates to choose from`;
+                if (res.candidates[0].finishReason !== 'STOP') {
+                    throw new Error(`Unexpected finish reason: ${res.candidates[0].finishReason} ${res.candidates[0].finishMessage}`);
+                }
+            }
+            const trans = JSON.parse(res.text);
+            const cost = [
+                (res.usageMetadata.cachedContentTokenCount ?? 0) / trans.length,
+                (res.usageMetadata.promptTokenCount ?? 0) / trans.length,
+                (res.usageMetadata.thoughtsTokenCount ?? 0) / trans.length,
+                (res.usageMetadata.candidatesTokenCount ?? 0) / trans.length,
+                (res.usageMetadata.toolUsePromptTokenCount ?? 0) / trans.length,
+                (res.usageMetadata.totalTokenCount ?? 0) / trans.length,
+            ];
+            return trans.map(obj => {
+                const baseTu = {
+                    tgt: this.#customSchema ? JSON.stringify(obj) : obj.translation,
+                    cost,
+                    tconf: obj.confidence,
+                    tnotes: obj.tnotes,
+                };
+                obj.notes && obj.notes.length > 0 && (baseTu.tnotes = obj.notes);
+                    return baseTu;
+            });
+        } catch (e) {
+            logWarn`Unexpected convertTranslationResponse error: ${e.message}`;
+            return [];
+        }
     }
 
     async info() {
         const info = await super.info();
         try {
             await this.#lazyInit();
-            info.description.push(styleString`Model: ${this.#model} Using: ${this.#ai.vertex ? 'Vertex AI platform' : 'Gemini Developer platform'}`);
+            info.description.push(styleString`Model: ${this.#model} Using: ${this.#ai.vertexai ? `Vertex AI platform (${this.#ai.location}/${this.#ai.project})` : 'Gemini Developer platform'}`);
             // const counts = await this.#ai.models.countTokens({
             //     model: this.#model,
             //     contents: '',
@@ -170,7 +193,9 @@ ${JSON.stringify(xmlTus, null, 2)}`;
             }
             const modelList = await this.#ai.models.list();
             for await (const model of modelList) {
-                model.supportedActions.find(action => action === 'generateContent') && info.description.push(styleString`Supported model: ${model.name} - ${model.displayName} ${model.description ?? ''} (input=${model.inputTokenLimit}, output=${model.outputTokenLimit})`);
+                if (!model.supportedActions || model.supportedActions.find(action => action === 'generateContent')) {
+                    info.description.push(styleString`Supported model: ${model.name} - ${model.displayName ?? ''} ${model.description ?? ''} (input=${model.inputTokenLimit ?? '?'}, output=${model.outputTokenLimit ?? '?'})`);
+                }
             }
         } catch (e) {
             info.description.push(styleString`Unable to connect to Google GenAI server: ${e.cause?.message ?? e.message}`);

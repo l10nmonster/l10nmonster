@@ -26,7 +26,6 @@ export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
         if (webhook) {
             if (chunkFetcher) {
                 this.chunkFetcher = chunkFetcher;
-                this.synchProvider = false;
             } else {
                 throw new Error('If you specify a webhook you must also specify a chunkFetcher');
             }
@@ -49,7 +48,7 @@ export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
         return super.start(job);
     }
 
-    prepareTranslateChunkArgs({ sourceLang, targetLang, xmlTus, jobGuid, chunk }) {
+    prepareTranslateChunkArgs({ sourceLang, targetLang, xmlTus, jobGuid, chunkNumber }) {
         return {
             sourceLang,
             targetLang,
@@ -60,17 +59,21 @@ export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
             webhook: this.baseRequest.webhook,
             batchOptions: {
                 ...this.baseRequest.options,
-                idempotencyKey: `jobGuid:${jobGuid} chunk:${chunk}`,
-                metadata: { jobGuid, chunk },
+                idempotencyKey: `jobGuid:${jobGuid} chunk:${chunkNumber}`,
+                metadata: { jobGuid, chunk: chunkNumber },
             },
         };
     }
 
-    async synchTranslateChunk(op) {
-        const { sourceLang, targetLang, q, hints, contextVector, options } = op.args;
+    async startTranslateChunk(args) {
+        const { sourceLang, targetLang, q, hints, contextVector, options, webhook, batchOptions } = args;
         const [ apiKey, platform, platformVersion ] = this.baseRequest.mmtConstructor;
         try {
             const mmt = new MMTClient(apiKey, platform, platformVersion);
+            if (webhook) {
+                const response = await mmt.batchTranslate(webhook, sourceLang, targetLang, q, hints, contextVector, batchOptions);
+                return { enqueued: response };
+            }
             return await mmt.translate(sourceLang, targetLang, q, hints, contextVector, options);
         } catch(error) {
             throw new Error(`${error.toString()}: ${error.response?.body}`);
@@ -78,25 +81,16 @@ export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
     }
 
     convertTranslationResponse(chunk) {
+        if (chunk.enqueued) {
+            return null;
+        }
         return chunk.map(mmtTx => ({
             tgt: mmtTx.translation,
             cost: [ mmtTx.billedCharacters, mmtTx.billed, mmtTx.characters ],
         }));
     }
 
-    async asynchTranslateChunk(op) {
-        const { sourceLang, targetLang, q, hints, contextVector, webhook, batchOptions } = op.args;
-        const [ apiKey, platform, platformVersion ] = this.baseRequest.mmtConstructor;
-        try {
-            const mmt = new MMTClient(apiKey, platform, platformVersion);
-            const response = await mmt.batchTranslate(webhook, sourceLang, targetLang, q, hints, contextVector, batchOptions);
-            return { enqueued: response };
-        } catch(error) {
-            throw new Error(`${error.toString()}: ${error.response?.body}`);
-        }
-    }
-
-    async asynchFetchChunk(op) {
+    async continueTranslateChunk(op) {
         return await this.chunkFetcher(op.args);
     }
 

@@ -158,11 +158,14 @@ export function extractNormalizedPartsFromXmlV1(str, phMap) {
                 normalizedParts.push(cleanXMLEntities(match.input.substring(pos, match.index)));
             }
         }
-        !phMap[match.groups.bx] && // if we have a ph sample, skip the open tag
-            normalizedParts.push(phSample ??
-                phMap[match.groups.x] ??
-                phMap[match.groups.bx && `b${match.groups.bx}`] ??
-                phMap[match.groups.ex && `e${match.groups.ex}`]);
+        const ph = phSample ??
+            phMap[match.groups.x] ??
+            phMap[match.groups.bx && `b${match.groups.bx}`] ??
+            phMap[match.groups.ex && `e${match.groups.ex}`];
+        if (ph === undefined) {
+            throw new Error(`Placeholder ${match[0]} not found in phMap`);
+        }
+        normalizedParts.push(ph);
         // if we have a ph sample preserve the trailing space if there
         match.index > pos && phSample && match.input.charAt(match.index - 1) === ' ' && normalizedParts.push(' ');
         pos = match.index + match[0].length;

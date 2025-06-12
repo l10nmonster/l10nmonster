@@ -41,8 +41,8 @@ export class DeepLProvider extends providers.ChunkedRemoteTranslationProvider {
         return { payload, sourceLang, targetLang, options };
     }
 
-    async synchTranslateChunk(op) {
-        const { payload, sourceLang, targetLang, options } = op.args;
+    async startTranslateChunk(args) {
+        const { payload, sourceLang, targetLang, options } = args;
         const deeplClient = new DeepLClient(this.#authKey);
         return await deeplClient.translateText(payload, sourceLang, targetLang, options);
     }
