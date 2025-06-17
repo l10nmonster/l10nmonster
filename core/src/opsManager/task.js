@@ -48,7 +48,6 @@ export default class Task {
     async save() {
         if (this.#opsStore) {
             const serializedOpList = this.serialize();
-            this.taskName = `${this.taskName}-${this.rootOp.state}`;
             await this.#opsStore.saveOps(this.taskName, serializedOpList);
         } else {
             throw new Error(`OpsManager: Can't save Task if no persistence configured (hint: configure a opsStore)`);
@@ -62,7 +61,7 @@ export default class Task {
             const { opName, opId, args, inputOpIds, state, output, lastRanAt } = serializedOp;
             const op = createOp(opName, args);
             op.opId = opId;
-            op.state = [ 'pending', 'done', 'error' ].includes(state) ? state : 'pending';
+            op.state = state === 'error' ? 'pending' : state;
             op.output = output;
             op.lastRanAt = lastRanAt;
             inputOpIds && (inputs[opId] = inputOpIds);
@@ -99,6 +98,10 @@ export default class Task {
             } else {
                 for (const op of executableOps) {
                     await op.execute();
+                    if (op.state === 'error') {
+                        workToDo = false;
+                        break;
+                    }
                 }
             }
         }

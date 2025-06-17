@@ -1,4 +1,4 @@
-import { logVerbose, utils } from '@l10nmonster/core';
+import { logVerbose, utils, opsManager, logWarn, L10nContext } from '@l10nmonster/core';
 
 /**
  * Configuration options for initializing a BaseTranslationProvider.
@@ -124,12 +124,25 @@ export class BaseTranslationProvider {
             jobResponse.tus = this.getTranslatedTus(job);
         } else if (this.createTask !== BaseTranslationProvider.prototype.createTask) {
             const task = this.createTask(jobResponse);
+            jobResponse.taskName = L10nContext.regression ? 'x' : task.taskName;
             logVerbose`${this.id} provider translating job ${job.jobGuid} using task ${task.taskName}`;
-            jobResponse = await task.execute();
+            try {
+                jobResponse = await task.execute();
+            } catch (e) {
+                if (this.mm.saveFailedJobs) {
+                    logWarn`Unable to start job ${job.jobGuid}: ${e.message}`;
+                    jobResponse.inflight = jobResponse.tus.map(tu => tu.guid);
+                    jobResponse.tus = undefined;
+                    jobResponse.status = 'pending';
+                } else {
+                    throw e;
+                }
+            }
         }
+
         // remove translations identical to latest TM entry
-        const tm = this.mm.tmm.getTM(job.sourceLang, job.targetLang);
-        if (!this.#saveIdenticalEntries) {
+        const tm = this.mm.tmm.getTM(jobResponse.sourceLang, jobResponse.targetLang);
+        if (!this.#saveIdenticalEntries && jobResponse.tus) {
             const tusToDedupe = jobResponse.tus;
             jobResponse.tus = [];
             for (const sourceTu of tusToDedupe) {
@@ -139,7 +152,7 @@ export class BaseTranslationProvider {
                 }
             }
         }
-        jobResponse.tus.length === 0 && (jobResponse.status = 'cancelled');
+        jobResponse.tus?.length === 0 && (jobResponse.status = 'cancelled');
         return jobResponse;
     }
 
@@ -148,6 +161,20 @@ export class BaseTranslationProvider {
         const statusProperties = this.statusProperties[job.status];
         if (!statusProperties || !statusProperties.actions.includes('continue')) {
             throw new Error(`Cannot continue jobs that are in the "${job.status}" state`);
+        }
+        if (job.taskName) {
+            const task = await opsManager.hydrateTaskFromStore(job.taskName);
+            if (!task) {
+                throw new Error(`Task ${job.taskName} not found`);
+            }
+            if (task.rootOp.state === 'done') {
+                throw new Error(`Task ${job.taskName} is already done!`);
+            }
+            try {
+                return await task.execute(); // TODO: de we want to dedupe here? (but latest TM entry might be the same pending one in the job response)
+            } catch (e) {
+                logWarn`Unable to continue job ${job.jobGuid}: ${e.message}`;
+            }
         }
         return job;
     }

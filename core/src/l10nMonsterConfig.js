@@ -259,6 +259,9 @@ export class L10nMonsterConfig {
     /** @type {boolean} Whether to automatically create snapshots at each run. */
     autoSnap = true;
 
+    /** @type {boolean} Whether to save failed jobs as pending. */
+    saveFailedJobs = false;
+
     /** @type {Object} Configuration for the tm stores. */
     tmStores;
 
@@ -316,6 +319,7 @@ export class L10nMonsterConfig {
      * Configures operations for the localization process.
      * @param {Object} config - The operations configuration object.
      * @param {boolean} [config.autoSnap] - Configuration for the snapshot store.
+     * @param {boolean} [config.saveFailedJobs] - Whether to save failed jobs as pending.
      * @param {Array} [config.analyzers] - Configuration for analyzers.
      * @param {Object} [config.opsStore] - Directory for operations.
      * @param {Intl.NumberFormat} [config.currencyFormatter] - A currency formatter for estimated costs.
@@ -325,6 +329,7 @@ export class L10nMonsterConfig {
      */
     operations({
         autoSnap,
+        saveFailedJobs,
         analyzers,
         opsStore,
         currencyFormatter,
@@ -332,6 +337,7 @@ export class L10nMonsterConfig {
         tmDB,
     }) {
         autoSnap !== undefined && (this.autoSnap = Boolean(autoSnap));
+        this.saveFailedJobs = Boolean(saveFailedJobs);
         this.analyzers = analyzers;
         this.opsStore = opsStore;
         currencyFormatter && (this.currencyFormatter = currencyFormatter);

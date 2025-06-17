@@ -65,7 +65,6 @@ export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationP
 
         // create task to merge translated chunks
         const requestTranslationsTask = opsManager.createTask(this.id, this.#opNames.mergeTranslatedChunksOp);
-        jobResponse.taskName = L10nContext.regression ? 'x' : requestTranslationsTask.taskName;
 
         // create chunks and associated ops as inputs to mergeTranslatedChunksOp
         let chunkNumber = 0;
@@ -104,7 +103,8 @@ export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationP
         const raw = await this.startTranslateChunk(args);
         const flattenedRes = this.convertTranslationResponse(raw);
         if (tuMeta.length !== flattenedRes.length) {
-            throw new Error(`Expected chunk to have ${tuMeta.length} translations but got ${flattenedRes.length}`);
+            logError`Expected chunk to have ${tuMeta.length} translations but got ${flattenedRes.length}`;
+            return { raw, res: [] }; // discard the chunk because we can't pair up the translations with the guids
         }
         const normalizedRes = tuMeta.map(({ guid, phMap }, idx) => {
             try {
@@ -155,8 +155,8 @@ export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationP
         return jobResponse;
     }
 
-    async continue(job) {
-        throw new Error(`continue not implemented in ${this.constructor.name}`);
+    // async continue(job) {
+        // throw new Error(`continue not implemented in ${this.constructor.name}`);
         // TODO: implement it by hydrating the old task and continuing the pending ops (that need to be added)
         // logVerbose`ChunkedRemoteTranslationProvider provider updating job ${job.jobGuid}`;
         // const { inflight, ...jobResponse } = await super.continue(job);
@@ -185,7 +185,7 @@ export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationP
         // } catch (error) {
         //     return job; // getting errors is expected, just leave the job pending
         // }
-    }
+    // }
 
     /**
      * Fetches a translated chunk from the remote provider.

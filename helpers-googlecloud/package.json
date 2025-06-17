@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/helpers-googlecloud",
-    "version": "2.0.0",
+    "version": "3.0.0",
     "description": "Helpers to integrate with Google Cloud Platfrom",
     "main": "index.js",
     "type": "module",
@@ -14,7 +14,7 @@
         "@google-cloud/storage": "^7",
         "@google-cloud/translate": "^9",
         "@google/genai": "^1.0.1",
-        "google-auth-library": "^9"
+        "google-auth-library": "^10"
     },
     "peerDependencies": {
         "@l10nmonster/core": "^3"

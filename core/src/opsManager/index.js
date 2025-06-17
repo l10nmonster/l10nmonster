@@ -48,5 +48,7 @@ export function deserializeTask(taskName, serializedOpList) {
 }
 
 export async function hydrateTaskFromStore(taskName) {
-    return await Task.hydrateFromStore(opsStore, taskName);
+    const task = await Task.hydrateFromStore(opsStore, taskName);
+    opsStore && task.setOpsStore(opsStore);
+    return task;
 }

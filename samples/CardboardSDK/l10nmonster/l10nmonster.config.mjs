@@ -4,6 +4,7 @@ import * as ios from '@l10nmonster/helpers-ios';
 import * as xliff from '@l10nmonster/helpers-xliff';
 import path from 'path';
 import { GenAIAgent } from '@l10nmonster/helpers-googlecloud';
+import { AnthropicAgent } from '@l10nmonster/helpers-anthropic';
 import { DeepLProvider } from '@l10nmonster/helpers-deepl';
 import { LaraProvider, MMTProvider } from '@l10nmonster/helpers-translated';
 import { GPTAgent } from '@l10nmonster/helpers-openai';
@@ -79,63 +80,76 @@ export default config.l10nMonster(import.meta.dirname)
         // },
     .operations({
         opsStore: new stores.FsOpsStore(path.join(import.meta.dirname, 'l10nOps')),
+        saveFailedJobs: true,
     })
     .provider(new providers.InternalLeverageHoldout())
     .provider(new providers.Repetition({ qualifiedPenalty: 1, unqualifiedPenalty: 9, notesMismatchPenalty: 1 }))
     .provider(new providers.Grandfather({ quality: 70 }))
-    .provider(new DeepLProvider({
-        id: 'DeepL',
-        authKey: process.env.deepl_auth_key,
-        formalityMap: {
-            'it': 'more',
-        },
-        // modelType: 'quality_optimized', // this is disabled for free users
-        quality: 50,
-        supportedPairs: { 'en': [ 'it' ] },
-    }))
-    .provider(new LaraProvider({
-        id: 'Lara',
-        keyId: process.env.lara_key_id,
-        keySecret: process.env.lara_key_secret,
+    // .provider(new DeepLProvider({
+    //     id: 'DeepL',
+    //     authKey: process.env.deepl_auth_key,
+    //     formalityMap: {
+    //         'it': 'more',
+    //     },
+    //     // modelType: 'quality_optimized', // this is disabled for free users
+    //     quality: 50,
+    //     supportedPairs: { 'en': [ 'it' ] },
+    // }))
+    // .provider(new LaraProvider({
+    //     id: 'Lara',
+    //     keyId: process.env.lara_key_id,
+    //     keySecret: process.env.lara_key_secret,
+    //     quality: 48,
+    //     maxChunkSize: 50,
+    //     supportedPairs: { 'en': [ 'it' ] },
+    // }))
+    // .provider(new GPTAgent({
+    //     id: 'Ollama-LL',
+    //     quality: 45,
+    //     baseURL: 'http://127.0.0.1:11434/v1',
+    //     // model: 'gemma3:27b',
+    //     model: 'llama3.3:latest',
+    //     // model: 'deepseek-r1:70b',
+    //     // model: 'command-a:latest',
+    //     // model: 'qwen2.5:72b',
+    //     // supportedPairs: { 'en': [ 'it' ] },
+    // }))
+    // .provider(new GPTAgent({
+    //     id: 'gemini-openai',
+    //     quality: 47,
+    //     baseURL: 'https://generativelanguage.googleapis.com/v1beta/openai/',
+    //     apiKey: process.env.gemini_api_key,
+    //     model: 'gemini-2.0-flash',
+    //     defaultInstructions: 'You are translating strings from resource files of a mobile app.\nUse the following glossary: viewer=visore, Cardboard=Cardone',
+    //     // supportedPairs: { 'en': [ 'it' ] },
+    // }))
+    // .provider(new GenAIAgent({
+    //     id: 'gemini-2.5-genai',
+    //     quality: 48,
+    //     apiKey: process.env.gemini_api_key,
+    //     model: 'gemini-2.5-pro-preview-06-05',
+    //     // thinkingBudget: 0,
+    //     // supportedPairs: { 'en': [ 'it' ] },
+    // }))
+    // .provider(new GenAIAgent({
+    //     id: 'gemini-2.5-vertex',
+    //     quality: 48,
+    //     model: 'gemini-2.5-pro-preview-05-06',
+    //     // supportedPairs: { 'en': [ 'it' ] },
+    // }))
+    .provider(new AnthropicAgent({
+        id: 'claude-sonnet-4-vertex',
         quality: 48,
-        maxChunkSize: 50,
-        supportedPairs: { 'en': [ 'it' ] },
-    }))
-    .provider(new GPTAgent({
-        id: 'Ollama-LL',
-        quality: 45,
-        baseURL: 'http://127.0.0.1:11434/v1',
-        // model: 'gemma3:27b',
-        model: 'llama3.3:latest',
-        // model: 'deepseek-r1:70b',
-        // model: 'command-a:latest',
-        // model: 'qwen2.5:72b',
+        // model: 'claude-opus-4@20250514',
+        model: 'claude-sonnet-4@20250514',
         // supportedPairs: { 'en': [ 'it' ] },
     }))
-    .provider(new GPTAgent({
-        id: 'gemini-openai',
-        quality: 47,
-        baseURL: 'https://generativelanguage.googleapis.com/v1beta/openai/',
-        apiKey: process.env.gemini_api_key,
-        model: 'gemini-2.0-flash',
-        defaultInstructions: 'You are translating strings from resource files of a mobile app.\nUse the following glossary: viewer=visore, Cardboard=Cardone',
-        // supportedPairs: { 'en': [ 'it' ] },
-    }))
-    .provider(new GenAIAgent({
-        id: 'gemini-native',
-        quality: 48,
-        apiKey: process.env.gemini_api_key,
-        model: 'gemini-2.5-pro-preview-05-06',
-        // thinkingBudget: 0,
-        temperature: 1,
-        // supportedPairs: { 'en': [ 'it' ] },
-    }))
-    .provider(new MMTProvider({
-        quality: 40,
-        apiKey: process.env.mmt_api_key,
-        supportedPairs: { 'en': [ 'it' ] },
-        costPerMChar: 15,
-    }))
+    // .provider(new MMTProvider({
+    //     quality: 40,
+    //     apiKey: process.env.mmt_api_key,
+    //     supportedPairs: { 'en': [ 'it' ] },
+    //     costPerMChar: 15,
+    // }))
     // .provider(new xliff.providers.XliffBridge({
     //     requestPath: (lang, jobId) => `outbox/job${jobId}-${lang}.xml`,
     //     completePath: (lang, jobId) => `inbox/job${jobId}-${lang}.xml`,

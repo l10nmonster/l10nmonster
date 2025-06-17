@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { L10nContext, utils, analyzers, opsManager, logVerbose } from '@l10nmonster/core';
+import { L10nContext, utils, analyzers, opsManager, logVerbose, logWarn } from '@l10nmonster/core';
 import DALManager from '../DAL/index.js';
 import TMManager from '../tmManager/index.js';
 import ResourceManager from '../resourceManager/index.js';
@@ -10,6 +10,7 @@ export class MonsterManager {
     #dalManager;
     #tmStores = {};
     #functionsForShutdown = [];
+    saveFailedJobs = false;
 
     constructor(monsterConfig) {
         this.monsterConfig = monsterConfig;
@@ -24,7 +25,13 @@ export class MonsterManager {
 
         monsterConfig.tmStores && (this.#tmStores = monsterConfig.tmStores);
 
-        monsterConfig.opsStore && opsManager.setOpsStore(monsterConfig.opsStore);
+        if (monsterConfig.opsStore) {
+            opsManager.setOpsStore(monsterConfig.opsStore);
+            this.saveFailedJobs = monsterConfig.saveFailedJobs;
+        } else {
+            monsterConfig.saveFailedJobs && logWarn`saveFailedJobs is set but no opsStore is configured -- ignoring`;
+        }
+
         this.tmm = new TMManager(this.#dalManager);
 
         this.dispatcher = new Dispatcher(monsterConfig.providers);

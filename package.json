@@ -3,6 +3,7 @@
         "core",
         "cli",
         "helpers-android",
+        "helpers-anthropic",
         "helpers-demo",
         "helpers-deepl",
         "helpers-googlecloud",

@@ -1,0 +1,22 @@
+{
+  "name": "@l10nmonster/helpers-anthropic",
+  "version": "3.0.0",
+  "description": "Anthropic Claude LLM provider for l10nmonster using Vertex AI",
+  "type": "module",
+  "main": "anthropicAgent.js",
+  "scripts": {
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@anthropic-ai/vertex-sdk": "^0.11.4",
+    "@anthropic-ai/sdk": "^0.54.0",
+    "google-auth-library": "^10"
+  },
+  "peerDependencies": {
+    "@l10nmonster/core": "^3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "MIT"
+}
