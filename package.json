@@ -16,7 +16,7 @@
         "helpers-translated",
         "helpers-xliff",
         "server",
-        "lqaboss-cli"
+        "helpers-lqaboss"
     ],
     "scripts": {
         "test": "npm test --workspaces",

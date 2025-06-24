@@ -5,6 +5,6 @@
     },
     "dependencies": {
         "@l10nmonster/cli": "../../cli",
-        "@l10nmonster/lqaboss-cli": "../../lqaboss-cli"
+        "@l10nmonster/helpers-lqaboss": "../../helpers-lqaboss"
     }
 }

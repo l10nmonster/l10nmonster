@@ -1,12 +1,12 @@
 import { L10nMonsterConfig, ChannelConfig, policies, xml, adapters, providers } from '@l10nmonster/core';
 import { HTMLFilter } from '@l10nmonster/helpers-html';
-import { lqaboss } from '@l10nmonster/lqaboss-cli';
+import { actions } from '@l10nmonster/helpers-lqaboss';
 
 export default new L10nMonsterConfig(import.meta.dirname)
     .channel(new ChannelConfig('html')
         .source(new adapters.HttpSource({
             urlMap: {
-                'mojibake': 'https://simple.wikipedia.org/wiki/Mojibake',
+                'www': 'https://info.cern.ch/hypertext/WWW/TheProject.html',
             },
             sourceLang: 'en',
         }))
@@ -22,5 +22,5 @@ export default new L10nMonsterConfig(import.meta.dirname)
         quality: 2,
         supportedPairs: { 'en': [ 'en-ZZ' ] },
     }))
-    .action(lqaboss)
+    .action(actions.lqaboss)
 ;
