@@ -186,7 +186,7 @@ export class FlowSnapshotter {
         return capturedData;
     }
 
-    async endFlow() {
+    async endFlow(tm) {
         if (this.browser) {
             await this.browser.close();
             logVerbose`Browser closed.`;
@@ -203,6 +203,7 @@ export class FlowSnapshotter {
             createdAt: new Date().toISOString(),
             pages: []
         };
+        const guids = new Set();
         this.capturedPagesData.forEach((pData, index) => {
             const imageName = `page_${index + 1}_${pData.id}.png`;
             zip.file(imageName, pData.screenshotBuffer);
@@ -213,8 +214,24 @@ export class FlowSnapshotter {
                 imageFile: imageName,
                 segments: pData.text_content
             });
+            pData.text_content.forEach(segment => segment.g && guids.add(segment.g));
         });
         zip.file('flow_metadata.json', JSON.stringify(flowMetadata, null, 2));
+        if (tm) {
+            const job = {
+                sourceLang: tm.sourceLang,
+                targetLang: tm.targetLang,
+                tus: [],
+            };
+            guids.forEach(guid => {
+                const tu = tm.getEntryByGuid(guid);
+                tu && job.tus.push(tu);
+            });
+            if (job.tus.length > 0) {
+                zip.file('job.json', JSON.stringify(job, null, 2));
+            }
+            logVerbose`${guids.size} guids captured in flow, ${job.tus.length} found in TM`;
+        }
         const buffer = await zip.generateAsync({ type: 'nodebuffer', compression: 'DEFLATE', compressionOptions: { level: 6 } });
         return buffer;
     }

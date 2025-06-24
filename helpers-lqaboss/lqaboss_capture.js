@@ -10,15 +10,23 @@ export class lqaboss_capture {
             ['<url>', 'the url of the page to capture'],
             ['<flowName>', 'the name of the flow'],
         ],
+        options: [
+            [ '--lang <srcLang,tgtLang>', 'source and target language pair' ],
+        ],
     };
 
     static async action(mm, options) {
         if (!options.url || !options.flowName) {
             throw new Error('You must specify a url and a flowName');
         }
-
+        const langPairs = options.lang ? (Array.isArray(options.lang) ? options.lang : options.lang.split(',')) : null;
+        let tm;
+        if (langPairs) {
+            const [ sourceLang, targetLang ] = langPairs;
+            tm = mm.tmm.getTM(sourceLang, targetLang);
+        }
         // Run the capture flow
-        const lqaBossBuffer = await runCapture(options.url, options.flowName);
+        const lqaBossBuffer = await runCapture(options.url, options.flowName, tm);
         if (lqaBossBuffer) {
             const filename = `${options.flowName.replace(/[^a-z0-9_.-]/gi, '_')}.lqaboss`;
             await fs.promises.writeFile(filename, lqaBossBuffer);
@@ -29,7 +37,7 @@ export class lqaboss_capture {
     }
 }
 
-async function runCapture(startUrl, flowNameBase) {
+async function runCapture(startUrl, flowNameBase, tm) {
     const snapShotter = new FlowSnapshotter(startUrl, flowNameBase);
     try {
         consoleLog`Navigating to ${startUrl}...`;
@@ -85,5 +93,5 @@ async function runCapture(startUrl, flowNameBase) {
         console.error("An error occurred:", error);
         return null;
     }
-    return await snapShotter.endFlow();
+    return await snapShotter.endFlow(tm);
 }
