@@ -24,7 +24,7 @@ export class BaseJsonlTmStore {
     /**
      * Creates a BaseJsonlTmStore instance
      * @param {Object} delegate - Required file store delegate implementing file operations
-     * @param {Object} options - Required file store delegate implementing file operations
+     * @param {Object} options - Base store options
      * @param {string} options.id - The logical id of the instance
      * @param {string} options.access? - The store access permissions (readwrite/readonly/writeonly)
      * @param {string} options.partitioning? - Partitioning strategy for TM Blocks (job/provider/language)

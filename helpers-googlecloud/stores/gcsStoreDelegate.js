@@ -9,6 +9,10 @@ export class GCSStoreDelegate {
         this.storage = new Storage();
     }
 
+    toString() {
+        return `GCSStoreDelegate(bucketName=${this.bucketName}, bucketPrefix=${this.bucketPrefix})`;
+    }
+
     async listAllFiles() {
         this.bucket || (this.bucket = await this.storage.bucket(this.bucketName));
         const [ files ] = await this.bucket.getFiles({ prefix: this.bucketPrefix });

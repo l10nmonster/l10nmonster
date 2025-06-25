@@ -8,6 +8,10 @@ export class FsStoreDelegate {
         this.baseDir = baseDir;
     }
 
+    toString() {
+        return `FsStoreDelegate(baseDir=${this.baseDir})`;
+    }
+
     async listAllFiles() {
         const dirContents = readdirSync(this.baseDir, { recursive: true });
         return dirContents.map(filename => {

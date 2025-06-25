@@ -3,11 +3,12 @@ import serve from '@l10nmonster/server';
 import * as ios from '@l10nmonster/helpers-ios';
 import * as xliff from '@l10nmonster/helpers-xliff';
 import path from 'path';
-import { GenAIAgent } from '@l10nmonster/helpers-googlecloud';
+import { GenAIAgent, GCSStoreDelegate, GDriveStoreDelegate } from '@l10nmonster/helpers-googlecloud';
 import { AnthropicAgent } from '@l10nmonster/helpers-anthropic';
 import { DeepLProvider } from '@l10nmonster/helpers-deepl';
 import { LaraProvider, MMTProvider } from '@l10nmonster/helpers-translated';
 import { GPTAgent } from '@l10nmonster/helpers-openai';
+import { LQABossProvider } from '@l10nmonster/helpers-lqaboss';
 
 // const defaultTOSConfig = {
 //     baseURL: 'https://api-sandbox.translated.com/v2',
@@ -137,13 +138,13 @@ export default config.l10nMonster(import.meta.dirname)
     //     model: 'gemini-2.5-pro-preview-05-06',
     //     // supportedPairs: { 'en': [ 'it' ] },
     // }))
-    .provider(new AnthropicAgent({
-        id: 'claude-sonnet-4-vertex',
-        quality: 48,
-        // model: 'claude-opus-4@20250514',
-        model: 'claude-sonnet-4@20250514',
-        // supportedPairs: { 'en': [ 'it' ] },
-    }))
+    // .provider(new AnthropicAgent({
+    //     id: 'claude-sonnet-4-vertex',
+    //     quality: 48,
+    //     // model: 'claude-opus-4@20250514',
+    //     model: 'claude-sonnet-4@20250514',
+    //     // supportedPairs: { 'en': [ 'it' ] },
+    // }))
     // .provider(new MMTProvider({
     //     quality: 40,
     //     apiKey: process.env.mmt_api_key,
@@ -155,6 +156,13 @@ export default config.l10nMonster(import.meta.dirname)
     //     completePath: (lang, jobId) => `inbox/job${jobId}-${lang}.xml`,
     //     quality: 80,
     // }))
+    .provider(new LQABossProvider({
+        id: 'LQABoss',
+        // delegate: new stores.FsStoreDelegate('lqaBoss'),
+        delegate: new GCSStoreDelegate('foobucket', 'lqaboss1'),
+        // delegate: new GDriveStoreDelegate('1mZekxxxxxxxxxxxxxxxxxxxx'),
+        quality: 80,
+    }))
     .tmStore(new stores.FsJsonlTmStore({
         id: 'primary',
         jobsDir: 'tmStore',

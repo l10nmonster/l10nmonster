@@ -23,11 +23,31 @@
 		},
 		{
 			"rid": "en/mrmrs.html",
-			"sid": "lGbCKT1vDLvoXjaL7KJVLSP20NkZQUSRUSeEp8NeoTc",
+			"sid": "8Cs4ZcPH-8gPvI015UF-64jPQi5tVhyF5mRr5A6zpXI",
 			"nsrc": [
-				"Site title"
+				{
+					"t": "bx",
+					"v": "<a href=\"\" title=\"Site title\">",
+					"v1": "a_bx_a"
+				},
+				{
+					"t": "bx",
+					"v": "<h1 class=\"other-class\">",
+					"v1": "b_bx_h1"
+				},
+				"Site title",
+				{
+					"t": "ex",
+					"v": "</h1>",
+					"v1": "c_ex_h1"
+				},
+				{
+					"t": "ex",
+					"v": "</a>",
+					"v1": "d_ex_a"
+				}
 			],
-			"guid": "LZ7oZfH9c9Th-bJLS_z3nFjp6JO4ZZZ-aOI0bcQAq5w"
+			"guid": "N99Bk35NC8Ib_3AnS14oggmCulE7aSC8REwKojBZIHM"
 		},
 		{
 			"rid": "en/mrmrs.html",
@@ -121,11 +141,11 @@
 		},
 		{
 			"rid": "en/mrmrs.html",
-			"sid": "ftM6b5uN6W5tVCH0RdBpCyxPjWPlLXYeObo--0--q0o",
+			"sid": "BuIU7ob432UO65pIWjLC6YLcXw-Y80mHc-LEC1mMd6s",
 			"nsrc": [
 				"Headings & Copy"
 			],
-			"guid": "SOxT5faplVXI4GGokCOPqgIQ1ZUnf5ypouTCjSr14aM"
+			"guid": "vS2ctS854SM95mTgkvB2mq8BIfmxWeJbSdy83kesY-I"
 		},
 		{
 			"rid": "en/mrmrs.html",
@@ -137,11 +157,11 @@
 		},
 		{
 			"rid": "en/mrmrs.html",
-			"sid": "KbIMJTcJYKe0ijDMEw4_8hJ3WXD7npj6kiGqOWwrgvc",
+			"sid": "_IsJNyGtXKlVk4bi7Ql6Cuq5iwlBM7oTcQGzf03J47o",
 			"nsrc": [
-				"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis\n        praesentium voluptatum deleniti atque corrupti quos."
+				"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos."
 			],
-			"guid": "11yPtt1t4_DADcX9X7sPiyxemTUY-oMJPmGI18oaH6U"
+			"guid": "ZztSv5GJrQjUNbb3QavvseR0Hdt89_F4qzpXDBTV9IY"
 		},
 		{
 			"rid": "en/mrmrs.html",
@@ -153,11 +173,11 @@
 		},
 		{
 			"rid": "en/mrmrs.html",
-			"sid": "VY0O8Gbz3R5nXRzD-CWZH0o_TPa6TceXvXt8_1dCJ5E",
+			"sid": "LHw9XyRPGkAGmjIiQhXgz5tCSFyZ2A81fXbwBjWcehg",
 			"nsrc": [
-				"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\n        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\n        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\n        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\n        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat\n        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+				"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 			],
-			"guid": "Xqgi42f66G5S52MOye5A3MTaUoyNKJ3h_jgLQuyKwKA"
+			"guid": "6goYrM_5RWkkZ7FoVVj6-h3H_frJytzmYlqs-jOn4_4"
 		},
 		{
 			"rid": "en/mrmrs.html",
@@ -169,11 +189,11 @@
 		},
 		{
 			"rid": "en/mrmrs.html",
-			"sid": "8xYIMn1SdAwXBcDDwOTSWhDBz2sOy02zQNYlRjW88Gk",
+			"sid": "PyCNAbKSANOnCF-M9ed2zhA4ezel7lpSU5LV53iHiM8",
 			"nsrc": [
-				"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis\n        praesentium voluptatum deleniti atque corrupti quos dolores et quas\n        molestias excepturi sint occaecati cupiditate non provident, similique sunt\n        in culpa qui officia deserunt mollitia animi, id est laborum et dolorum\n        fuga. Et harum quidem rerum facilis est et expedita distinctio."
+				"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio."
 			],
-			"guid": "6q2bDflGzN6uGFeDBVrUrKvaS9m2kspmKFqQXphCBwk"
+			"guid": "lEDmVFSHC0fzSLpxQfkWO4th1RTF6ynOKSlUTrn468E"
 		},
 		{
 			"rid": "en/mrmrs.html",
@@ -185,11 +205,11 @@
 		},
 		{
 			"rid": "en/mrmrs.html",
-			"sid": "bVJF7GTUeO9F8Fv_ZdFmp8B2AiPgNRnpsKfchXkXgJ4",
+			"sid": "O5OfJqK8t2RQ8M32S1f24kVFAgl2Lq77Q41s8l7gxKo",
 			"nsrc": [
-				"Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,\n        consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt\n        ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima\n        veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi\n        ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit\n        qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum\n        qui dolorem eum fugiat quo voluptas nulla pariatur?\""
+				"Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\""
 			],
-			"guid": "jtXnstFgLfEwP9X5yf3CJeRyasWfzu-JOYGC0uPHKCQ"
+			"guid": "CTiZGZYtRQ9BHS-s4xVar0f_TZdiPEa2gXSE8sxh8E4"
 		},
 		{
 			"rid": "en/mrmrs.html",
@@ -201,11 +221,11 @@
 		},
 		{
 			"rid": "en/mrmrs.html",
-			"sid": "WBPuTzXvFEZk1ajOsxCidWOYX9if7FhwOqxC4cctYPA",
+			"sid": "fO2Q8pL4ohOHd5MGfgLv9MRSQosOSwKaBMSUb7ubD6w",
 			"nsrc": [
-				"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium\n        doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore\n        veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim\n        ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia\n        consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
+				"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
 			],
-			"guid": "428B6CFch7RxyhDzVVNF6RrmQkPy-mm7BzHQPkEDD4A"
+			"guid": "un6Q6QhLVX8PemOV8otEwz_5g2FdK8Ek5nw1EU0MwY4"
 		},
 		{
 			"rid": "en/mrmrs.html",
@@ -217,45 +237,47 @@
 		},
 		{
 			"rid": "en/mrmrs.html",
-			"sid": "tDYja9vzHh88EwnaKiBzlgiNy6LvogMTWMNXvIwRjZ4",
+			"sid": "kCTBl9hJQOR_9qpjG3cRxMv_Tn-y_hpXSjWStmKYOg0",
+			"nsrc": [
+				"Links"
+			],
+			"guid": "cqQKeBLXjTE5LB4ttFf8Hun8TmU1Tktt8Nxe_lTC5Go"
+		},
+		{
+			"rid": "en/mrmrs.html",
+			"sid": "R_A6PcSw9bVLm92znVVQYAZvOrqjxffggnaNaRRKZFU",
 			"nsrc": [
 				{
 					"t": "bx",
-					"v": "<h1 class=\"other-class\">",
-					"v1": "a_bx_h1"
-				},
-				"Links",
-				{
-					"t": "ex",
-					"v": "</h1>",
-					"v1": "b_ex_h1"
-				},
-				" ",
-				{
-					"t": "bx",
 					"v": "<a href=\"#\">",
-					"v1": "c_bx_a"
+					"v1": "a_bx_a"
 				},
 				"Sample text link",
 				{
 					"t": "ex",
 					"v": "</a>",
-					"v1": "d_ex_a"
-				},
-				" ",
+					"v1": "b_ex_a"
+				}
+			],
+			"guid": "DKgdIY0ktL6dKc8RX70LkSshf4GpZGyWgkFuioToEXk"
+		},
+		{
+			"rid": "en/mrmrs.html",
+			"sid": "_69drmBM1dESB4g9MS26rdQ4KzpkJ1YEPk5WOFBD1Sc",
+			"nsrc": [
 				{
 					"t": "bx",
 					"v": "<a href=\"#\">",
-					"v1": "e_bx_a"
+					"v1": "a_bx_a"
 				},
 				"Sample button link",
 				{
 					"t": "ex",
 					"v": "</a>",
-					"v1": "f_ex_a"
+					"v1": "b_ex_a"
 				}
 			],
-			"guid": "c5CFcSj2SA3Zg8V0IKc-Smp1zg4pWo-ndDa10XFDilc"
+			"guid": "pyNuWesMBq8KmthXtAjcLwys1PrDxjk1Z1TjTkCreHw"
 		},
 		{
 			"rid": "en/mrmrs.html",
@@ -507,11 +529,11 @@
 		},
 		{
 			"rid": "en/mrmrs.html",
-			"sid": "vwo5ZpI6ejYCIsf9fQ0dtY-OSbGWtu59bUlPE-JSsQo",
+			"sid": "azMnSTJ0qRYcCFTpFU2QbDlfUtcaNn7k2MR6RTklDgI",
 			"nsrc": [
-				"Traditionally, a complete set of characters for one typeface at\n        one particular type size. Often used more loosely as a synonym for\n        \"typeface\"."
+				"Traditionally, a complete set of characters for one typeface at one particular type size. Often used more loosely as a synonym for \"typeface\"."
 			],
-			"guid": "xLj9X6yOgIjx_7CG4n7ZzBAFvDCtuX5LdMFKndSl1kI"
+			"guid": "DHdZz7gqToPMYcK_vHw_8S6OpTfLiRJo6N3mBrEpM2M"
 		},
 		{
 			"rid": "en/mrmrs.html",
@@ -523,11 +545,11 @@
 		},
 		{
 			"rid": "en/mrmrs.html",
-			"sid": "pGjdlfWe33VBM1Kp-S36B3lTNLPLz3BMSWN1_1GmqCM",
+			"sid": "uTZXWgi-07dtVo_o6k6IQA9IQ7ZY0yq8EMvGYTNZP_M",
 			"nsrc": [
-				"The ideal proportion according to the ancient Greeks. It is visualized as the\n        division of a line into two unequal segments in such a way that the ratio of the\n        smaller segment to the larger segment is equal to the ratio of the larger to the\n        whole. It is usually defined as 21:34, that is, 21/34 and 34/(21+34) both equal\n        approximately 0.618. A rectangle whose sides are of this proportion is called a\n        \"golden rectangle\". Golden rectangles can be found in the proportions of the\n        Parthenon and many medieval manuscripts."
+				"The ideal proportion according to the ancient Greeks. It is visualized as the division of a line into two unequal segments in such a way that the ratio of the smaller segment to the larger segment is equal to the ratio of the larger to the whole. It is usually defined as 21:34, that is, 21/34 and 34/(21+34) both equal approximately 0.618. A rectangle whose sides are of this proportion is called a \"golden rectangle\". Golden rectangles can be found in the proportions of the Parthenon and many medieval manuscripts."
 			],
-			"guid": "YHzt_o1hR4rm9Bgi63k-WklNjdTVWLQbwzsQ369Y21w"
+			"guid": "u8Rvu3QRvKSNxTPTCV8ED-l0JQfSu80jI6nezMZyDIg"
 		},
 		{
 			"rid": "en/mrmrs.html",
@@ -555,6 +577,18 @@
 		},
 		{
 			"rid": "en/mrmrs.html",
+			"sid": "8NGrBE72vRPu7muYLiQMffwOBxNA2_aDig6lZbSvdss",
+			"nsrc": [
+				{
+					"t": "bx",
+					"v": "<input type=\"text\">",
+					"v1": "a_bx_input"
+				}
+			],
+			"guid": "TVELRxwpriqtTFIO6flE9AA5uMlneiI2bv1JEgqYDIw"
+		},
+		{
+			"rid": "en/mrmrs.html",
 			"sid": "OrDitGVPfLO-8sgFyMigsMTOdLbGdDV2uPsI8gLD22o",
 			"nsrc": [
 				"Helper text if necessary."
@@ -568,6 +602,18 @@
 				"Password"
 			],
 			"guid": "j7igpR2yGHn9Gzy4rqoX92tAXexl4X6gnSm_ELGxSsM"
+		},
+		{
+			"rid": "en/mrmrs.html",
+			"sid": "MKAuOEnPeQeKvNO0Phh0j1OvE9CuZLaPyUesGYouKKE",
+			"nsrc": [
+				{
+					"t": "bx",
+					"v": "<input type=\"password\">",
+					"v1": "a_bx_input"
+				}
+			],
+			"guid": "U7ae9OEDypu-iHAYJF5DMKD2TLLiOn5EB6ENtzY5nrg"
 		},
 		{
 			"rid": "en/mrmrs.html",
@@ -587,6 +633,18 @@
 		},
 		{
 			"rid": "en/mrmrs.html",
+			"sid": "ENudYV_c-V7bBEVNEMA1memABBt8mXlyMfdoP26YuwA",
+			"nsrc": [
+				{
+					"t": "bx",
+					"v": "<input type=\"text\" id=\"first-name\">",
+					"v1": "a_bx_input"
+				}
+			],
+			"guid": "4xWeLtp3fHEn2MM3LKuo1ZCsdo3G1nugGesgdZR0KcE"
+		},
+		{
+			"rid": "en/mrmrs.html",
 			"sid": "9VVjs4ajncMJP_hkIftmXbA7Vxw28XV31kjaXSp8wkU",
 			"nsrc": [
 				"Last Name"
@@ -595,11 +653,35 @@
 		},
 		{
 			"rid": "en/mrmrs.html",
+			"sid": "CO6eXN93shr2ygFAHInhB0VUau7bpkpUwqHwN7mqljM",
+			"nsrc": [
+				{
+					"t": "bx",
+					"v": "<input type=\"text\" id=\"last-name\">",
+					"v1": "a_bx_input"
+				}
+			],
+			"guid": "_hfdsd9xijQXvjpmq92jEh8WNQXyyJvT06JAVgdoE_U"
+		},
+		{
+			"rid": "en/mrmrs.html",
 			"sid": "lpzL089jAOzVyIBFnYGukCffdRdWMYShuLFSgtsjBiE",
 			"nsrc": [
 				"Email"
 			],
 			"guid": "4C1KXolKOBN4CCdRnqzL3RISeulqLNweT9yoDNiQOrw"
+		},
+		{
+			"rid": "en/mrmrs.html",
+			"sid": "6cMNrrez0usIkVAqHgXEXxWxozcTcmotoMmgTLnqAbs",
+			"nsrc": [
+				{
+					"t": "bx",
+					"v": "<input type=\"email\" id=\"email\">",
+					"v1": "a_bx_input"
+				}
+			],
+			"guid": "KqennRBa4-uCPqxm6M9NrkvJ2zx86f1WvD0ShZX6W2c"
 		},
 		{
 			"rid": "en/mrmrs.html",
@@ -690,6 +772,18 @@
 		},
 		{
 			"rid": "en/mrmrs.html",
+			"sid": "50ylS3DkaaG3LWwCWtLRRH_XckmlXDNdKE5nvLqZZZM",
+			"nsrc": [
+				{
+					"t": "bx",
+					"v": "<input type=\"url\" placeholder=\"http://mrmrs.cc\">",
+					"v1": "a_bx_input"
+				}
+			],
+			"guid": "CmUwdVKNFn5RGH8CBFnoVkNKI4y722HSi_gDpvRRkww"
+		},
+		{
+			"rid": "en/mrmrs.html",
 			"sid": "uqTqj83LjuzVAoIt05f87DNxTR3aoXTyZ_wLeO5mbcA",
 			"nsrc": [
 				"Text area"
@@ -708,6 +802,18 @@
 				" This is a checkbox."
 			],
 			"guid": "_16Z6B36infrZ6WvKEMKj7CAbhE_7TGCmX7WFshJGEg"
+		},
+		{
+			"rid": "en/mrmrs.html",
+			"sid": "cSuBHJ64OwAuZ2s8IHCk75iv9Hg7kZU7TiH4nRo3y_I",
+			"nsrc": [
+				{
+					"t": "bx",
+					"v": "<input type=\"submit\" value=\"Submit\">",
+					"v1": "a_bx_input"
+				}
+			],
+			"guid": "gUuIxZw4ovBn0pRxV0fqzd7CwrrtcJjFBBScNCC4bp0"
 		},
 		{
 			"rid": "en/mrmrs.html",
@@ -751,7 +857,7 @@
 		},
 		{
 			"rid": "en/mrmrs.html",
-			"sid": "MASPCM69TBwHH5pzMtMy4qnIb-ldaHmlZOiDy2IbQfY",
+			"sid": "0X4K38pDfPJbRnFnLJZCKEmbNdW6BozM7Yp9e16ymfM",
 			"nsrc": [
 				"Lorem ipsum dolor sit amet, ",
 				{
@@ -765,75 +871,47 @@
 					"v": "</b>",
 					"v1": "b_ex_b"
 				},
-				", sed do eiusmod\n          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\n          quis nostrud ",
+				", sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud ",
 				{
 					"t": "bx",
 					"v": "<em>",
 					"v1": "c_bx_em"
 				},
-				"exercitation ullamco laboris nisi ut aliquip ex ea commodo\n            consequat",
+				"exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
 				{
 					"t": "ex",
 					"v": "</em>",
 					"v1": "d_ex_em"
 				},
-				". Duis aute irure dolor in reprehenderit in voluptate velit esse\n          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat\n          non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+				". Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 			],
-			"guid": "uHGRiZz6oGySM1kG5GL07n-SFbXleQ7jKIkVP6jtOq4"
+			"guid": "Ir9PyUTSwiKs6Ornug3y-OJaNpQV60MFb2K0kIgTnOk"
 		},
 		{
 			"rid": "en/mrmrs.html",
-			"sid": "0sPVnQ-a5Pvgktq2zbofWPQ0eNeRz1VcnV4uCr4vV_I",
+			"sid": "FDW5N04GWdeUKyt5x5GRw-0R8qi8AY4Ok_YKHLVQzDg",
+			"nsrc": [
+				"This is a GREAT pull quote."
+			],
+			"guid": "KUDK_AaGM2pY_5BDqBaSZL6fIPb6gm1wmPvjTvHwQYQ"
+		},
+		{
+			"rid": "en/mrmrs.html",
+			"sid": "ttq1D-9oyq8NPpppOhmysd4M5IoJeD0hKWXxhIFzR1s",
 			"nsrc": [
 				{
 					"t": "bx",
-					"v": "<p class=\"test-class\">",
-					"v1": "a_bx_p"
-				},
-				"\n            This is a GREAT pull quote.\n          ",
-				{
-					"t": "ex",
-					"v": "</p>",
-					"v1": "b_ex_p"
-				},
-				" ",
-				{
-					"t": "bx",
 					"v": "<a href=\"#\">",
-					"v1": "c_bx_a"
+					"v1": "a_bx_a"
 				},
 				"- Author",
 				{
 					"t": "ex",
 					"v": "</a>",
-					"v1": "d_ex_a"
+					"v1": "b_ex_a"
 				}
 			],
-			"guid": "8WZvhVI6hiZDXI7qdAK9prYQPAu0Bq7WdNYk91RvtME"
-		},
-		{
-			"rid": "en/mrmrs.html",
-			"sid": "9wpPGcMXI_7CppyXmc0xIQDSzXNbpQvM6Cc_G5nsvHo",
-			"nsrc": [
-				"Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,\n          consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt\n          ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima\n          veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi\n          ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit\n          qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum\n          qui dolorem eum fugiat quo voluptas nulla pariatur?\""
-			],
-			"guid": "FL_o286PoUpWhKK3P7ryA2F_KE_Li1RxEpy50bhWA6w"
-		},
-		{
-			"rid": "en/mrmrs.html",
-			"sid": "XutdIZUvwf9yhAfLyn8Uvz7TNREL276I_ySDqgx-Re4",
-			"nsrc": [
-				"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis\n          praesentium voluptatum deleniti atque corrupti quos dolores et quas\n          molestias excepturi sint occaecati cupiditate non provident, similique sunt\n          in culpa qui officia deserunt mollitia animi, id est laborum et dolorum\n          fuga. Et harum quidem rerum facilis est et expedita distinctio."
-			],
-			"guid": "xtvaHaKUn_OcoemqVBlzjHvPknJPpefHhofk3eCxO1k"
-		},
-		{
-			"rid": "en/mrmrs.html",
-			"sid": "epoLwucoixBGGDMNXzZr8RENz3_jt9Zi0dqkYDvfaSg",
-			"nsrc": [
-				"Code examples"
-			],
-			"guid": "SGnCu2Z_JcpRCxXjRNrAONuzN62zB4jjBCQ5h5TyY2g"
+			"guid": "-LhEJrcZMO-1TY10xVY9B842Ky9aOGjvZ34QoxFODig"
 		},
 		{
 			"rid": "en/mrmrs.html",
@@ -1009,344 +1087,347 @@
 		},
 		{
 			"rid": "en/mrmrs.html",
-			"sid": "_vVY18GSPmGp2u7j8t3EIQIYjy3Ljg007lUvmoOExfU",
+			"sid": "Jaby56tTOu4NkXVmIem39eHGdd5Umptdb7rMae1Pjgc",
+			"nsrc": [
+				"New hawtness"
+			],
+			"guid": "MiYKcYvJ_nZqIzOwoM-ncRT2Q9Vs-TTz9kg1icHO97M"
+		},
+		{
+			"rid": "en/mrmrs.html",
+			"sid": "v2UYqjTk3YQntFzaaiGWXFdb2rX_CokXezr7Rn2UgnI",
 			"nsrc": [
 				{
 					"t": "bx",
-					"v": "<h1 class=\"other-class\">",
-					"v1": "a_bx_h1"
-				},
-				"New hawtness",
-				{
-					"t": "ex",
-					"v": "</h1>",
-					"v1": "b_ex_h1"
-				},
-				" ",
-				{
-					"t": "bx",
 					"v": "<progress value=\"80\" max=\"100\">",
-					"v1": "c_bx_progress"
+					"v1": "a_bx_progress"
 				},
 				"80 %",
 				{
 					"t": "ex",
 					"v": "</progress>",
-					"v1": "d_ex_progress"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<p class=\"test-class\">",
-					"v1": "e_bx_p"
-				},
+					"v1": "b_ex_progress"
+				}
+			],
+			"guid": "5TmHDAbs7YpNYGB9hOaGqpltt7DfJIzJh5B5yvSEcXI"
+		},
+		{
+			"rid": "en/mrmrs.html",
+			"sid": "F7vCB-KBISjftmyTeD1BNEPlI-sh9FL67uRer6exPE0",
+			"nsrc": [
 				"We are this close to the goal: ",
 				{
 					"t": "bx",
 					"v": "<meter min=\"0\" max=\"1000\" value=\"824\">",
-					"v1": "f_bx_meter"
+					"v1": "a_bx_meter"
 				},
 				"$824",
 				{
 					"t": "ex",
 					"v": "</meter>",
-					"v1": "g_ex_meter"
+					"v1": "b_ex_meter"
 				},
-				".",
-				{
-					"t": "ex",
-					"v": "</p>",
-					"v1": "h_ex_p"
-				}
+				"."
 			],
-			"guid": "vnCT6R3Cu726ochkWdYlvNSSwossKVzU-V6MK_FvG24"
+			"guid": "Bstg9X0Rdwj0OWEzBQdjQYOlOamhitljUD_MvJNzHWs"
 		},
 		{
 			"rid": "en/mrmrs.html",
-			"sid": "QqhAxuRjcReoMi0Ht7p0Hr3lL7fpgrotlFZ2JrTU_VU",
+			"sid": "yJX40fIOPFimbelGgE6sB4ZpsXO_l2xtby2XeRbug_M",
+			"nsrc": [
+				"Random Stuff"
+			],
+			"guid": "BONn8ZBMmW6xloq3Iu-pwLNqX9uWEevpYvo8WaSXgvo"
+		},
+		{
+			"rid": "en/mrmrs.html",
+			"sid": "K0ixZy8lxjHWVagPfMXTABWm9yFdk7R6_-SHhJPD4t4",
 			"nsrc": [
 				{
 					"t": "bx",
-					"v": "<header>",
-					"v1": "a_bx_header"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<h1 class=\"other-class\">",
-					"v1": "b_bx_h1"
-				},
-				"Random Stuff",
-				{
-					"t": "ex",
-					"v": "</h1>",
-					"v1": "c_ex_h1"
-				},
-				" ",
-				{
-					"t": "ex",
-					"v": "</header>",
-					"v1": "d_ex_header"
-				},
-				" ",
-				{
-					"t": "bx",
 					"v": "<small>",
-					"v1": "e_bx_small"
+					"v1": "a_bx_small"
 				},
 				"This is for things like copyright info",
 				{
 					"t": "ex",
 					"v": "</small>",
-					"v1": "f_ex_small"
-				},
-				" ",
+					"v1": "b_ex_small"
+				}
+			],
+			"guid": "wX7BBgmI5bI0r7PxPun5na-Ofg_lPl6_689ZyXL9O5c"
+		},
+		{
+			"rid": "en/mrmrs.html",
+			"sid": "OFiCRfTH7Rzg7ZstuPw5sFe7N90hrF62saQvTanStkY",
+			"nsrc": [
 				{
 					"t": "bx",
 					"v": "<s>",
-					"v1": "g_bx_s"
+					"v1": "a_bx_s"
 				},
 				"Content that isn't accurate or relevant anymore.",
 				{
 					"t": "ex",
 					"v": "</s>",
-					"v1": "h_ex_s"
-				},
-				" ",
+					"v1": "b_ex_s"
+				}
+			],
+			"guid": "BTEADgjR-x7um5_pDVFTX3FD7TQAdKTLmiMg8sq3v60"
+		},
+		{
+			"rid": "en/mrmrs.html",
+			"sid": "ueR0tE7KmgiLILXyckKZ9xgo62sX4-BMGOmcYiFtxW0",
+			"nsrc": [
 				{
 					"t": "bx",
 					"v": "<span>",
-					"v1": "i_bx_span"
+					"v1": "a_bx_span"
 				},
 				"Generic span wrapper",
 				{
 					"t": "ex",
 					"v": "</span>",
-					"v1": "j_ex_span"
-				},
-				" ",
+					"v1": "b_ex_span"
+				}
+			],
+			"guid": "LAaglpaEmuF-lk8B9_nlr63Blw9boVe9csv41ZA3EGQ"
+		},
+		{
+			"rid": "en/mrmrs.html",
+			"sid": "T8qS1uKzOyPKsEFtYC8F7jP4DoqjKM4CmNipZ2y78Kc",
+			"nsrc": [
 				{
 					"t": "bx",
 					"v": "<abbr>",
-					"v1": "k_bx_abbr"
+					"v1": "a_bx_abbr"
 				},
 				"HTML How to meet ladies",
 				{
 					"t": "ex",
 					"v": "</abbr>",
-					"v1": "l_ex_abbr"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<p class=\"test-class\">",
-					"v1": "m_bx_p"
-				},
+					"v1": "b_ex_abbr"
+				}
+			],
+			"guid": "B8nZ7Pm__3updMukUaK3NGNbjr_JyTb1whyPev0XRN8"
+		},
+		{
+			"rid": "en/mrmrs.html",
+			"sid": "0ASQvAIxCZOyWrnQNhDMb7TQgeRFGaDscQ6GJpqrJx0",
+			"nsrc": [
 				"This is inline text with ",
 				{
 					"t": "bx",
 					"v": "<sub>",
-					"v1": "n_bx_sub"
+					"v1": "a_bx_sub"
 				},
 				"subscript",
 				{
 					"t": "ex",
 					"v": "</sub>",
-					"v1": "o_ex_sub"
+					"v1": "b_ex_sub"
 				},
 				" and ",
 				{
 					"t": "bx",
 					"v": "<sup>",
-					"v1": "p_bx_sup"
+					"v1": "c_bx_sup"
 				},
 				"superscript",
 				{
 					"t": "ex",
 					"v": "</sup>",
-					"v1": "q_ex_sup"
+					"v1": "d_ex_sup"
 				},
-				" elements.",
-				{
-					"t": "ex",
-					"v": "</p>",
-					"v1": "r_ex_p"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<p class=\"test-class\">",
-					"v1": "s_bx_p"
-				},
-				" ",
+				" elements."
+			],
+			"guid": "yYiVQTuR6OnALPs8O5JD3kGzgcv4ihbRZq7xShkpw5I"
+		},
+		{
+			"rid": "en/mrmrs.html",
+			"sid": "rdVVfIZ3whtnMR6GDQcjnMl5oo5vgcg7UQpA253DWVo",
+			"nsrc": [
 				{
 					"t": "bx",
 					"v": "<var>",
-					"v1": "t_bx_var"
+					"v1": "a_bx_var"
 				},
 				"f",
 				{
 					"t": "ex",
 					"v": "</var>",
-					"v1": "u_ex_var"
+					"v1": "b_ex_var"
 				},
 				"(",
 				{
 					"t": "bx",
 					"v": "<var>",
-					"v1": "v_bx_var"
+					"v1": "c_bx_var"
 				},
 				"x",
 				{
 					"t": "ex",
 					"v": "</var>",
-					"v1": "w_ex_var"
+					"v1": "d_ex_var"
 				},
 				") = ",
 				{
 					"t": "bx",
 					"v": "<var>",
-					"v1": "x_bx_var"
+					"v1": "e_bx_var"
 				},
 				"a",
 				{
 					"t": "ex",
 					"v": "</var>",
-					"v1": "y_ex_var"
+					"v1": "f_ex_var"
 				},
 				{
 					"t": "bx",
 					"v": "<sub>",
-					"v1": "z26_bx_sub"
+					"v1": "g_bx_sub"
 				},
 				"0",
 				{
 					"t": "ex",
 					"v": "</sub>",
-					"v1": "z27_ex_sub"
+					"v1": "h_ex_sub"
 				},
 				" + ",
 				{
 					"t": "bx",
 					"v": "<var>",
-					"v1": "z28_bx_var"
+					"v1": "i_bx_var"
 				},
 				"a",
 				{
 					"t": "ex",
 					"v": "</var>",
-					"v1": "z29_ex_var"
+					"v1": "j_ex_var"
 				},
 				{
 					"t": "bx",
 					"v": "<sub>",
-					"v1": "z30_bx_sub"
+					"v1": "k_bx_sub"
 				},
 				"1",
 				{
 					"t": "ex",
 					"v": "</sub>",
-					"v1": "z31_ex_sub"
+					"v1": "l_ex_sub"
 				},
 				{
 					"t": "bx",
 					"v": "<var>",
-					"v1": "z32_bx_var"
+					"v1": "m_bx_var"
 				},
 				"x",
 				{
 					"t": "ex",
 					"v": "</var>",
-					"v1": "z33_ex_var"
+					"v1": "n_ex_var"
 				},
-				" +\n      ",
+				" + ",
 				{
 					"t": "bx",
 					"v": "<var>",
-					"v1": "z34_bx_var"
+					"v1": "o_bx_var"
 				},
 				"a",
 				{
 					"t": "ex",
 					"v": "</var>",
-					"v1": "z35_ex_var"
+					"v1": "p_ex_var"
 				},
 				{
 					"t": "bx",
 					"v": "<sub>",
-					"v1": "z36_bx_sub"
+					"v1": "q_bx_sub"
 				},
 				"2",
 				{
 					"t": "ex",
 					"v": "</sub>",
-					"v1": "z37_ex_sub"
+					"v1": "r_ex_sub"
 				},
 				{
 					"t": "bx",
 					"v": "<var>",
-					"v1": "z38_bx_var"
+					"v1": "s_bx_var"
 				},
 				"x",
 				{
 					"t": "ex",
 					"v": "</var>",
-					"v1": "z39_ex_var"
+					"v1": "t_ex_var"
 				},
 				{
 					"t": "bx",
 					"v": "<sup>",
-					"v1": "z40_bx_sup"
+					"v1": "u_bx_sup"
 				},
 				"2",
 				{
 					"t": "ex",
 					"v": "</sup>",
-					"v1": "z41_ex_sup"
+					"v1": "v_ex_sup"
 				},
 				", where ",
 				{
 					"t": "bx",
 					"v": "<var>",
-					"v1": "z42_bx_var"
+					"v1": "w_bx_var"
 				},
 				"a",
 				{
 					"t": "ex",
 					"v": "</var>",
-					"v1": "z43_ex_var"
+					"v1": "x_ex_var"
 				},
 				{
 					"t": "bx",
 					"v": "<sup>",
-					"v1": "z44_bx_sup"
+					"v1": "y_bx_sup"
 				},
 				"2",
 				{
 					"t": "ex",
 					"v": "</sup>",
-					"v1": "z45_ex_sup"
+					"v1": "z26_ex_sup"
 				},
-				" ≠ 0\n    ",
-				{
-					"t": "ex",
-					"v": "</p>",
-					"v1": "z46_ex_p"
-				},
-				" ",
+				" ≠ 0"
+			],
+			"guid": "SgfEJQrC5mSGxQ2MpG2A2c_eDApsS9t0Jt88e1vPODY"
+		},
+		{
+			"rid": "en/mrmrs.html",
+			"sid": "QK8-aZh0CDFeUj5JqTvcoMDYD7mBDatS7VL3U7Jt_24",
+			"nsrc": [
 				{
 					"t": "bx",
 					"v": "<time datetime=\"2013-09-07\" pubdate=\"\">",
-					"v1": "z47_bx_time"
+					"v1": "a_bx_time"
 				},
 				"07 September 2013",
 				{
 					"t": "ex",
 					"v": "</time>",
-					"v1": "z48_ex_time"
+					"v1": "b_ex_time"
 				}
 			],
-			"guid": "zbYRC-uinCQEq1h1v3Sasgj8RnKYCl2dBogNobosi7k"
+			"guid": "O-s14lDXWGspobCuuhwUIbHebJdwr1oVw8N7Qe8b_oE"
+		},
+		{
+			"rid": "en/mrmrs.html",
+			"sid": "dT9HNbBLagb9o6n4BPcHtj1QLwk8Cu5Ra3dvfDlzxGo",
+			"nsrc": [
+				{
+					"t": "bx",
+					"v": "<img src=\"http://placekitten.com/g/960/320\" alt=\"Figure Example\">",
+					"v1": "a_bx_img"
+				}
+			],
+			"guid": "9-nEAAss20KaqqpEUaCubm289o362E3hDJ-t4ZO7QFI"
 		},
 		{
 			"rid": "en/mrmrs.html",
@@ -1473,7 +1554,7 @@
 		},
 		{
 			"rid": "en/mrmrs.html",
-			"sid": "JQl2ZpjOWb5DcpCEoWbhAsE3xjy8dSbW2dniMmtsKk0",
+			"sid": "2MfQfzHVwdNHfHtJ5nmczUmyBDfF2hHARD_FFc2n5_M",
 			"nsrc": [
 				{
 					"t": "bx",
@@ -1485,75 +1566,51 @@
 					"t": "ex",
 					"v": "</small>",
 					"v1": "b_ex_small"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<address>",
-					"v1": "c_bx_address"
-				},
-				"email@email.com",
-				{
-					"t": "ex",
-					"v": "</address>",
-					"v1": "d_ex_address"
 				}
 			],
-			"guid": "5DV2smTYTOz2vV-bhvUx6RqiCbBlZn0-K9pEZoxwFHs"
+			"guid": "x_w5nSuC8AE7O04MKcsSoXQbUuhJEIo8Pk0ELvywMps"
+		},
+		{
+			"rid": "en/mrmrs.html",
+			"sid": "8yc90Y2VvBnVHT5jVuSmeebxOCRJcnKicOe7VAsKu50",
+			"nsrc": [
+				"email@email.com"
+			],
+			"guid": "GzlWIw9iu7ZzEGgBFc4aiAG5wkWd-61j_d1j0pof7gU"
 		},
 		{
 			"rid": "en/voucher.html",
-			"sid": "P9vq1R3XnX7Fy2UZ-nadhNNa5PiFG4DIxs5QvyT2wKA",
+			"sid": "Gbq8mvM4gFbjI1az5zwP_k-oC3W2Mc9xG0-TVQEKinA",
+			"nsrc": [
+				"Winter is 🎉"
+			],
+			"guid": "11aGkZKyeSHx-simtcrns0zvejDnysVU89x2lS7Vh3Q"
+		},
+		{
+			"rid": "en/voucher.html",
+			"sid": "_7-rxUyoom72VOHf7M6YAtljJoaRmfSx26wK2x_n3gY",
+			"nsrc": [
+				"coming"
+			],
+			"guid": "VVTevgSiQdkU0psySIzres9i6lc0JtDHIpwwWMecPKI"
+		},
+		{
+			"rid": "en/voucher.html",
+			"sid": "hyU8W9WLcm2WVtumZDCyod3ldamkrc2mSyLHPGsaSB4",
 			"nsrc": [
 				{
 					"t": "bx",
-					"v": "<h1>",
-					"v1": "a_bx_h1"
-				},
-				"Winter is 🎉",
-				{
-					"t": "ex",
-					"v": "</h1>",
-					"v1": "b_ex_h1"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<div>",
-					"v1": "c_bx_div"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<div class=\"body-paragraph\">",
-					"v1": "d_bx_div"
-				},
-				"coming",
-				{
-					"t": "ex",
-					"v": "</div>",
-					"v1": "e_ex_div"
-				},
-				" ",
-				{
-					"t": "ex",
-					"v": "</div>",
-					"v1": "f_ex_div"
-				},
-				" ",
-				{
-					"t": "bx",
 					"v": "<a href=\"#\" id=\"redeemButton\" class=\"button white w-button\">",
-					"v1": "g_bx_a"
+					"v1": "a_bx_a"
 				},
 				"Redeem Gift",
 				{
 					"t": "ex",
 					"v": "</a>",
-					"v1": "h_ex_a"
+					"v1": "b_ex_a"
 				}
 			],
-			"guid": "vVc1_vsNL4nHHXr5LbrkF4sXNxiuqLYsqUvFuwxl_3g"
+			"guid": "iWXYTuj1_k7wmSMqtZ4hetX2nzpBKYy--IyaO-cdG64"
 		}
 	]
 }

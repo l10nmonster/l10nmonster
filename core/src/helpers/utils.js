@@ -312,17 +312,21 @@ export function *getIteratorFromJobPair(jobRequest, jobResponse = {}) {
         }
     }
     if (tus) {
-        for (const tu of tus) {
-            const { jobGuid, translationProvider, ...tuProps } = tu;
-            const overriddenJobProps = { ...jobProps };
-            overriddenJobProps.jobGuid ??= jobGuid;
-            overriddenJobProps.translationProvider ??= translationProvider;
-            try {
-                const properTU = TU.fromRequestResponse(requestedUnits[tu.guid], tuProps);
-                splitJobs[overriddenJobProps.jobGuid] ??= { jobProps: overriddenJobProps, tus: [] };
-                splitJobs[overriddenJobProps.jobGuid].tus.push(properTU);
-            } catch (e) {
-                L10nContext.logger.verbose(`Problems converting entry to TU: ${e}`);
+        if (tus.length === 0) { // allow updating jobs with no units
+            splitJobs[jobProps.jobGuid] ??= { jobProps, tus: [] };
+        } else {
+            for (const tu of tus) {
+                const { jobGuid, translationProvider, ...tuProps } = tu;
+                const overriddenJobProps = { ...jobProps };
+                overriddenJobProps.jobGuid ??= jobGuid;
+                overriddenJobProps.translationProvider ??= translationProvider;
+                try {
+                    const properTU = TU.fromRequestResponse(requestedUnits[tu.guid], tuProps);
+                    splitJobs[overriddenJobProps.jobGuid] ??= { jobProps: overriddenJobProps, tus: [] };
+                    splitJobs[overriddenJobProps.jobGuid].tus.push(properTU);
+                } catch (e) {
+                    L10nContext.logger.verbose(`Problems converting entry to TU: ${e}`);
+                }
             }
         }
     }

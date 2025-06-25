@@ -30,10 +30,30 @@
 			"translationProvider": "InvisicodeProvider"
 		},
 		{
-			"guid": "LZ7oZfH9c9Th-bJLS_z3nFjp6JO4ZZZ-aOI0bcQAq5w",
+			"guid": "N99Bk35NC8Ib_3AnS14oggmCulE7aSC8REwKojBZIHM",
 			"ntgt": [
-				"​︇︋︂︂︆︇︂︂︃︊︂︂︄︌︅︊︃︇︆️︅︊︆︆︄︈︃︉︆︃︃︉︅︄︆︈︂︍︆︂︄︊︄︌︅︃︅️︇︊︃︃︆︎︄︆︆︊︇︀︃︆︄︊︄️︃︄︅︊︅︊︅︊︂︍︆︁︄️︄︉︃︀︆︂︆︃︅︁︄︁︇︁︃︅︇︇︂︂︇︍",
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︄︎︃︉︃︉︄︂︆︋︃︃︃︅︄︎︄︃︃︈︄︉︆︂︅️︃︃︄︁︆︎︅︃︃︁︃︄︆️︆︇︆︇︆︍︄︃︇︅︆︌︄︅︃︇︆︁︅︃︄︃︃︈︅︂︄︅︇︇︄︋︆️︆︊︄︂︅︊︄︉︄︈︄︍︂︂︇︍",
+				{
+					"t": "bx",
+					"v": "<a href=\"\" title=\"Site title\">",
+					"v1": "a_bx_a"
+				},
+				{
+					"t": "bx",
+					"v": "<h1 class=\"other-class\">",
+					"v1": "b_bx_h1"
+				},
 				"Site title",
+				{
+					"t": "ex",
+					"v": "</h1>",
+					"v1": "c_ex_h1"
+				},
+				{
+					"t": "ex",
+					"v": "</a>",
+					"v1": "d_ex_a"
+				},
 				"​"
 			],
 			"ts": 1,
@@ -152,9 +172,9 @@
 			"translationProvider": "InvisicodeProvider"
 		},
 		{
-			"guid": "SOxT5faplVXI4GGokCOPqgIQ1ZUnf5ypouTCjSr14aM",
+			"guid": "vS2ctS854SM95mTgkvB2mq8BIfmxWeJbSdy83kesY-I",
 			"ntgt": [
-				"​︇︋︂︂︆︇︂︂︃︊︂︂︅︃︄️︇︈︅︄︃︅︆︆︆︁︇︀︆︌︅︆︅︈︄︉︃︄︄︇︄︇︆️︆︋︄︃︄️︅︀︇︁︆︇︄︉︅︁︃︁︅︊︅︅︆︎︆︆︃︅︇︉︇︀︆️︇︅︅︄︄︃︆︊︅︃︇︂︃︁︃︄︆︁︄︍︂︂︇︍",
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︇︆︅︃︃︂︆︃︇︄︅︃︃︈︃︅︃︄︅︃︄︍︃︉︃︅︆︍︅︄︆︇︆︋︇︆︄︂︃︂︆︍︇︁︃︈︄︂︄︉︆︆︆︍︇︈︅︇︆︅︄︊︆︂︅︃︆︄︇︉︃︈︃︃︆︋︆︅︇︃︅︉︂︍︄︉︂︂︇︍",
 				"Headings & Copy",
 				"​"
 			],
@@ -176,10 +196,10 @@
 			"translationProvider": "InvisicodeProvider"
 		},
 		{
-			"guid": "11yPtt1t4_DADcX9X7sPiyxemTUY-oMJPmGI18oaH6U",
+			"guid": "ZztSv5GJrQjUNbb3QavvseR0Hdt89_F4qzpXDBTV9IY",
 			"ntgt": [
-				"​︇︋︂︂︆︇︂︂︃︊︂︂︃︁︃︁︇︉︅︀︇︄︇︄︃︁︇︄︃︄︅️︄︄︄︁︄︄︆︃︅︈︃︉︅︈︃︇︇︃︅︀︆︉︇︉︇︈︆︅︆︍︅︄︅︅︅︉︂︍︆️︄︍︄︊︅︀︆︍︄︇︄︉︃︁︃︈︆️︆︁︄︈︃︆︅︅︂︂︇︍",
-				"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis\n        praesentium voluptatum deleniti atque corrupti quos.",
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︅︊︇︊︇︄︅︃︇︆︃︅︄︇︄︊︇︂︅︁︆︊︅︅︄︎︆︂︆︂︃︃︅︁︆︁︇︆︇︆︇︃︆︅︅︂︃︀︄︈︆︄︇︄︃︈︃︉︅️︄︆︃︄︇︁︇︊︇︀︅︈︄︄︄︂︅︄︅︆︃︉︄︉︅︉︂︂︇︍",
+				"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos.",
 				"​"
 			],
 			"ts": 1,
@@ -200,10 +220,10 @@
 			"translationProvider": "InvisicodeProvider"
 		},
 		{
-			"guid": "Xqgi42f66G5S52MOye5A3MTaUoyNKJ3h_jgLQuyKwKA",
+			"guid": "6goYrM_5RWkkZ7FoVVj6-h3H_frJytzmYlqs-jOn4_4",
 			"ntgt": [
-				"​︇︋︂︂︆︇︂︂︃︊︂︂︅︈︇︁︆︇︆︉︃︄︃︂︆︆︃︆︃︆︄︇︃︅︅︃︃︅︃︂︄︍︄️︇︉︆︅︃︅︄︁︃︃︄︍︅︄︆︁︅︅︆️︇︉︄︎︄︋︄︊︃︃︆︈︅️︆︊︆︇︄︌︅︁︇︅︇︉︄︋︇︇︄︋︄︁︂︂︇︍",
-				"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\n        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\n        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\n        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\n        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat\n        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︃︆︆︇︆️︅︉︇︂︄︍︅️︃︅︅︂︅︇︆︋︆︋︅︊︃︇︄︆︆️︅︆︅︆︆︊︃︆︂︍︆︈︃︃︄︈︅️︆︆︇︂︄︊︇︉︇︄︇︊︆︍︅︉︆︌︇︁︇︃︂︍︆︊︄️︆︎︃︄︅️︃︄︂︂︇︍",
+				"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 				"​"
 			],
 			"ts": 1,
@@ -224,10 +244,10 @@
 			"translationProvider": "InvisicodeProvider"
 		},
 		{
-			"guid": "6q2bDflGzN6uGFeDBVrUrKvaS9m2kspmKFqQXphCBwk",
+			"guid": "lEDmVFSHC0fzSLpxQfkWO4th1RTF6ynOKSlUTrn468E",
 			"ntgt": [
-				"​︇︋︂︂︆︇︂︂︃︊︂︂︃︆︇︁︃︂︆︂︄︄︆︆︆︌︄︇︇︊︄︎︃︆︇︅︄︇︄︆︆︅︄︄︄︂︅︆︇︂︅︅︇︂︄︋︇︆︆︁︅︃︃︉︆︍︃︂︆︋︇︃︇︀︆︍︄︋︄︆︇︁︅︁︅︈︇︀︆︈︄︃︄︂︇︇︆︋︂︂︇︍",
-				"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis\n        praesentium voluptatum deleniti atque corrupti quos dolores et quas\n        molestias excepturi sint occaecati cupiditate non provident, similique sunt\n        in culpa qui officia deserunt mollitia animi, id est laborum et dolorum\n        fuga. Et harum quidem rerum facilis est et expedita distinctio.",
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︆︌︄︅︄︄︆︍︅︆︄︆︅︃︄︈︄︃︃︀︆︆︇︊︅︃︄︌︇︀︇︈︅︁︆︆︆︋︅︇︄️︃︄︇︄︆︈︃︁︅︂︅︄︄︆︃︆︇︉︆︎︄️︄︋︅︃︆︌︅︅︅︄︇︂︆︎︃︄︃︆︃︈︄︅︂︂︇︍",
+				"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.",
 				"​"
 			],
 			"ts": 1,
@@ -248,10 +268,10 @@
 			"translationProvider": "InvisicodeProvider"
 		},
 		{
-			"guid": "jtXnstFgLfEwP9X5yf3CJeRyasWfzu-JOYGC0uPHKCQ",
+			"guid": "CTiZGZYtRQ9BHS-s4xVar0f_TZdiPEa2gXSE8sxh8E4",
 			"ntgt": [
-				"​︇︋︂︂︆︇︂︂︃︊︂︂︆︊︇︄︅︈︆︎︇︃︇︄︄︆︆︇︄︌︆︆︄︅︇︇︅︀︃︉︅︈︃︅︇︉︆︆︃︃︄︃︄︊︆︅︅︂︇︉︆︁︇︃︅︇︆︆︇︊︇︅︂︍︄︊︄️︅︉︄︇︄︃︃︀︇︅︅︀︄︈︄︋︄︃︅︁︂︂︇︍",
-				"Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,\n        consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt\n        ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima\n        veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi\n        ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit\n        qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum\n        qui dolorem eum fugiat quo voluptas nulla pariatur?\"",
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︄︃︅︄︆︉︅︊︄︇︅︊︅︉︇︄︅︂︅︁︃︉︄︂︄︈︅︃︂︍︇︃︃︄︇︈︅︆︆︁︇︂︃︀︆︆︅️︅︄︅︊︆︄︆︉︅︀︄︅︆︁︃︂︆︇︅︈︅︃︄︅︃︈︇︃︇︈︆︈︃︈︄︅︃︄︂︂︇︍",
+				"Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\"",
 				"​"
 			],
 			"ts": 1,
@@ -272,10 +292,10 @@
 			"translationProvider": "InvisicodeProvider"
 		},
 		{
-			"guid": "428B6CFch7RxyhDzVVNF6RrmQkPy-mm7BzHQPkEDD4A",
+			"guid": "un6Q6QhLVX8PemOV8otEwz_5g2FdK8Ek5nw1EU0MwY4",
 			"ntgt": [
-				"​︇︋︂︂︆︇︂︂︃︊︂︂︃︄︃︂︃︈︄︂︃︆︄︃︄︆︆︃︆︈︃︇︅︂︇︈︇︉︆︈︄︄︇︊︅︆︅︆︄︎︄︆︃︆︅︂︇︂︆︍︅︁︆︋︅︀︇︉︂︍︆︍︆︍︃︇︄︂︇︊︄︈︅︁︅︀︆︋︄︅︄︄︄︄︃︄︄︁︂︂︇︍",
-				"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium\n        doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore\n        veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim\n        ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia\n        consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︇︅︆︎︃︆︅︁︃︆︅︁︆︈︄︌︅︆︅︈︃︈︅︀︆︅︆︍︄️︅︆︃︈︆️︇︄︄︅︇︇︇︊︅️︃︅︆︇︃︂︄︆︆︄︄︋︃︈︄︅︆︋︃︅︆︎︇︇︃︁︄︅︅︅︃︀︄︍︇︇︅︉︃︄︂︂︇︍",
+				"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
 				"​"
 			],
 			"ts": 1,
@@ -296,43 +316,53 @@
 			"translationProvider": "InvisicodeProvider"
 		},
 		{
-			"guid": "c5CFcSj2SA3Zg8V0IKc-Smp1zg4pWo-ndDa10XFDilc",
+			"guid": "cqQKeBLXjTE5LB4ttFf8Hun8TmU1Tktt8Nxe_lTC5Go",
 			"ntgt": [
-				"​︇︋︂︂︆︇︂︂︃︊︂︂︆︃︃︅︄︃︄︆︆︃︅︃︆︊︃︂︅︃︄︁︃︃︅︊︆︇︃︈︅︆︃︀︄︉︄︋︆︃︂︍︅︃︆︍︇︀︃︁︇︊︆︇︃︄︇︀︅︇︆️︂︍︆︎︆︄︄︄︆︁︃︁︃︀︅︈︄︆︄︄︆︉︆︌︆︃︂︂︇︍",
-				{
-					"t": "bx",
-					"v": "<h1 class=\"other-class\">",
-					"v1": "a_bx_h1"
-				},
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︆︃︇︁︅︁︄︋︆︅︄︂︄︌︅︈︆︊︅︄︄︅︃︅︄︌︄︂︃︄︇︄︇︄︄︆︆︆︃︈︄︈︇︅︆︎︃︈︅︄︆︍︅︅︃︁︅︄︆︋︇︄︇︄︃︈︄︎︇︈︆︅︅️︆︌︅︄︄︃︃︅︄︇︆️︂︂︇︍",
 				"Links",
-				{
-					"t": "ex",
-					"v": "</h1>",
-					"v1": "b_ex_h1"
-				},
-				" ",
+				"​"
+			],
+			"ts": 1,
+			"q": 2,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "InvisicodeProvider"
+		},
+		{
+			"guid": "DKgdIY0ktL6dKc8RX70LkSshf4GpZGyWgkFuioToEXk",
+			"ntgt": [
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︄︄︄︋︆︇︆︄︄︉︅︉︃︀︆︋︇︄︄︌︃︆︆︄︄︋︆︃︃︈︅︂︅︈︃︇︃︀︄︌︆︋︅︃︇︃︆︈︆︆︃︄︄︇︇︀︅︊︄︇︇︉︅︇︆︇︆︋︄︆︇︅︆︉︆️︅︄︆️︄︅︅︈︆︋︂︂︇︍",
 				{
 					"t": "bx",
 					"v": "<a href=\"#\">",
-					"v1": "c_bx_a"
+					"v1": "a_bx_a"
 				},
 				"Sample text link",
 				{
 					"t": "ex",
 					"v": "</a>",
-					"v1": "d_ex_a"
+					"v1": "b_ex_a"
 				},
-				" ",
+				"​"
+			],
+			"ts": 1,
+			"q": 2,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "InvisicodeProvider"
+		},
+		{
+			"guid": "pyNuWesMBq8KmthXtAjcLwys1PrDxjk1Z1TjTkCreHw",
+			"ntgt": [
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︇︀︇︉︄︎︇︅︅︇︆︅︇︃︄︍︄︂︇︁︃︈︄︋︆︍︇︄︆︈︅︈︇︄︄︁︆︊︆︃︄︌︇︇︇︉︇︃︃︁︅︀︇︂︄︄︇︈︆︊︆︋︃︁︅︊︃︁︅︄︆︊︅︄︆︋︄︃︇︂︆︅︄︈︇︇︂︂︇︍",
 				{
 					"t": "bx",
 					"v": "<a href=\"#\">",
-					"v1": "e_bx_a"
+					"v1": "a_bx_a"
 				},
 				"Sample button link",
 				{
 					"t": "ex",
 					"v": "</a>",
-					"v1": "f_ex_a"
+					"v1": "b_ex_a"
 				},
 				"​"
 			],
@@ -714,10 +744,10 @@
 			"translationProvider": "InvisicodeProvider"
 		},
 		{
-			"guid": "xLj9X6yOgIjx_7CG4n7ZzBAFvDCtuX5LdMFKndSl1kI",
+			"guid": "DHdZz7gqToPMYcK_vHw_8S6OpTfLiRJo6N3mBrEpM2M",
 			"ntgt": [
-				"​︇︋︂︂︆︇︂︂︃︊︂︂︇︈︄︌︆︊︃︉︅︈︃︆︇︉︄️︆︇︄︉︆︊︇︈︅️︃︇︄︃︄︇︃︄︆︎︃︇︅︊︇︊︄︂︄︁︄︆︇︆︄︄︄︃︇︄︇︅︅︈︃︅︄︌︆︄︄︍︄︆︄︋︆︎︆︄︅︃︆︌︃︁︆︋︄︉︂︂︇︍",
-				"Traditionally, a complete set of characters for one typeface at\n        one particular type size. Often used more loosely as a synonym for\n        \"typeface\".",
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︄︄︄︈︆︄︅︊︇︊︃︇︆︇︇︁︅︄︆️︅︀︄︍︅︉︆︃︄︋︅️︇︆︄︈︇︇︅️︃︈︅︃︃︆︄️︇︀︅︄︆︆︄︌︆︉︅︂︄︊︆️︃︆︄︎︃︃︆︍︄︂︇︂︄︅︇︀︄︍︃︂︄︍︂︂︇︍",
+				"Traditionally, a complete set of characters for one typeface at one particular type size. Often used more loosely as a synonym for \"typeface\".",
 				"​"
 			],
 			"ts": 1,
@@ -738,10 +768,10 @@
 			"translationProvider": "InvisicodeProvider"
 		},
 		{
-			"guid": "YHzt_o1hR4rm9Bgi63k-WklNjdTVWLQbwzsQ369Y21w",
+			"guid": "u8Rvu3QRvKSNxTPTCV8ED-l0JQfSu80jI6nezMZyDIg",
 			"ntgt": [
-				"​︇︋︂︂︆︇︂︂︃︊︂︂︅︉︄︈︇︊︇︄︅️︆️︃︁︆︈︅︂︃︄︇︂︆︍︃︉︄︂︆︇︆︉︃︆︃︃︆︋︂︍︅︇︆︋︆︌︄︎︆︊︆︄︅︄︅︆︅︇︄︌︅︁︆︂︇︇︇︊︇︃︅︁︃︃︃︆︃︉︅︉︃︂︃︁︇︇︂︂︇︍",
-				"The ideal proportion according to the ancient Greeks. It is visualized as the\n        division of a line into two unequal segments in such a way that the ratio of the\n        smaller segment to the larger segment is equal to the ratio of the larger to the\n        whole. It is usually defined as 21:34, that is, 21/34 and 34/(21+34) both equal\n        approximately 0.618. A rectangle whose sides are of this proportion is called a\n        \"golden rectangle\". Golden rectangles can be found in the proportions of the\n        Parthenon and many medieval manuscripts.",
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︇︅︃︈︅︂︇︆︇︅︃︃︅︁︅︂︇︆︄︋︅︃︄︎︇︈︅︄︅︀︅︄︄︃︅︆︃︈︄︅︄︄︂︍︆︌︃︀︄︊︅︁︆︆︅︃︇︅︃︈︃︀︆︊︄︉︃︆︆︎︆︅︇︊︄︍︅︊︇︉︄︄︄︉︆︇︂︂︇︍",
+				"The ideal proportion according to the ancient Greeks. It is visualized as the division of a line into two unequal segments in such a way that the ratio of the smaller segment to the larger segment is equal to the ratio of the larger to the whole. It is usually defined as 21:34, that is, 21/34 and 34/(21+34) both equal approximately 0.618. A rectangle whose sides are of this proportion is called a \"golden rectangle\". Golden rectangles can be found in the proportions of the Parthenon and many medieval manuscripts.",
 				"​"
 			],
 			"ts": 1,
@@ -786,6 +816,22 @@
 			"translationProvider": "InvisicodeProvider"
 		},
 		{
+			"guid": "TVELRxwpriqtTFIO6flE9AA5uMlneiI2bv1JEgqYDIw",
+			"ntgt": [
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︅︄︅︆︄︅︄︌︅︂︇︈︇︇︇︀︇︂︆︉︇︁︇︄︅︄︄︆︄︉︄️︃︆︆︆︆︌︄︅︃︉︄︁︄︁︃︅︇︅︄︍︆︌︆︎︆︅︆︉︄︉︃︂︆︂︇︆︃︁︄︊︄︅︆︇︇︁︅︉︄︄︄︉︇︇︂︂︇︍",
+				{
+					"t": "bx",
+					"v": "<input type=\"text\">",
+					"v1": "a_bx_input"
+				},
+				"​"
+			],
+			"ts": 1,
+			"q": 2,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "InvisicodeProvider"
+		},
+		{
 			"guid": "TyCAPgwY_vAkgA6hgd5UqPUuknbU0YolPPtkXlMghhc",
 			"ntgt": [
 				"​︇︋︂︂︆︇︂︂︃︊︂︂︅︄︇︉︄︃︄︁︅︀︆︇︇︇︅︉︅️︇︆︄︁︆︋︆︇︄︁︃︆︆︈︆︇︆︄︃︅︅︅︇︁︅︀︅︅︇︅︆︋︆︎︆︂︅︅︃︀︅︉︆️︆︌︅︀︅︀︇︄︆︋︅︈︆︌︄︍︆︇︆︈︆︈︆︃︂︂︇︍",
@@ -802,6 +848,22 @@
 			"ntgt": [
 				"​︇︋︂︂︆︇︂︂︃︊︂︂︆︊︃︇︆︉︆︇︇︀︅︂︃︂︇︉︄︇︄︈︆︎︃︉︄︇︇︊︇︉︃︄︇︂︇︁︆️︅︈︃︉︃︂︇︄︄︁︅︈︆︅︇︈︆︌︃︄︅︈︃︆︆︇︆︎︅︃︆︍︅️︄︅︄︌︄︇︇︈︅︃︇︃︄︍︂︂︇︍",
 				"Password",
+				"​"
+			],
+			"ts": 1,
+			"q": 2,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "InvisicodeProvider"
+		},
+		{
+			"guid": "U7ae9OEDypu-iHAYJF5DMKD2TLLiOn5EB6ENtzY5nrg",
+			"ntgt": [
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︅︅︃︇︆︁︆︅︃︉︄️︄︅︄︄︇︉︇︀︇︅︂︍︆︉︄︈︄︁︅︉︄︊︄︆︃︅︄︄︄︍︄︋︄︄︃︂︅︄︄︌︄︌︆︉︄️︆︎︃︅︄︅︄︂︃︆︄︅︄︎︇︄︇︊︅︉︃︅︆︎︇︂︆︇︂︂︇︍",
+				{
+					"t": "bx",
+					"v": "<input type=\"password\">",
+					"v1": "a_bx_input"
+				},
 				"​"
 			],
 			"ts": 1,
@@ -834,6 +896,22 @@
 			"translationProvider": "InvisicodeProvider"
 		},
 		{
+			"guid": "4xWeLtp3fHEn2MM3LKuo1ZCsdo3G1nugGesgdZR0KcE",
+			"ntgt": [
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︃︄︇︈︅︇︆︅︄︌︇︄︇︀︃︃︆︆︄︈︄︅︆︎︃︂︄︍︄︍︃︃︄︌︄︋︇︅︆️︃︁︅︊︄︃︇︃︆︄︆️︃︃︄︇︃︁︆︎︇︅︆︇︄︇︆︅︇︃︆︇︆︄︅︊︅︂︃︀︄︋︆︃︄︅︂︂︇︍",
+				{
+					"t": "bx",
+					"v": "<input type=\"text\" id=\"first-name\">",
+					"v1": "a_bx_input"
+				},
+				"​"
+			],
+			"ts": 1,
+			"q": 2,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "InvisicodeProvider"
+		},
+		{
 			"guid": "Q__56V-XhiKC6828IvJoA-PuhsDZL2xSWJG1S6K3uT4",
 			"ntgt": [
 				"​︇︋︂︂︆︇︂︂︃︊︂︂︅︁︅️︅️︃︅︃︆︅︆︂︍︅︈︆︈︆︉︄︋︄︃︃︆︃︈︃︂︃︈︄︉︇︆︄︊︆️︄︁︂︍︅︀︇︅︆︈︇︃︄︄︅︊︄︌︃︂︇︈︅︃︅︇︄︊︄︇︃︁︅︃︃︆︄︋︃︃︇︅︅︄︃︄︂︂︇︍",
@@ -846,10 +924,42 @@
 			"translationProvider": "InvisicodeProvider"
 		},
 		{
+			"guid": "_hfdsd9xijQXvjpmq92jEh8WNQXyyJvT06JAVgdoE_U",
+			"ntgt": [
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︅️︆︈︆︆︆︄︇︃︆︄︃︉︇︈︆︉︆︊︅︁︅︈︇︆︆︊︇︀︆︍︇︁︃︉︃︂︆︊︄︅︆︈︃︈︅︇︄︎︅︁︅︈︇︉︇︉︄︊︇︆︅︄︃︀︃︆︄︊︄︁︅︆︆︇︆︄︆️︄︅︅️︅︅︂︂︇︍",
+				{
+					"t": "bx",
+					"v": "<input type=\"text\" id=\"last-name\">",
+					"v1": "a_bx_input"
+				},
+				"​"
+			],
+			"ts": 1,
+			"q": 2,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "InvisicodeProvider"
+		},
+		{
 			"guid": "4C1KXolKOBN4CCdRnqzL3RISeulqLNweT9yoDNiQOrw",
 			"ntgt": [
 				"​︇︋︂︂︆︇︂︂︃︊︂︂︃︄︄︃︃︁︄︋︅︈︆️︆︌︄︋︄️︄︂︄︎︃︄︄︃︄︃︆︄︅︂︆︎︇︁︇︊︄︌︃︃︅︂︄︉︅︃︆︅︇︅︆︌︇︁︄︌︄︎︇︇︆︅︅︄︃︉︇︉︆️︄︄︄︎︆︉︅︁︄️︇︂︇︇︂︂︇︍",
 				"Email",
+				"​"
+			],
+			"ts": 1,
+			"q": 2,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "InvisicodeProvider"
+		},
+		{
+			"guid": "KqennRBa4-uCPqxm6M9NrkvJ2zx86f1WvD0ShZX6W2c",
+			"ntgt": [
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︄︋︇︁︆︅︆︎︆︎︅︂︄︂︆︁︃︄︂︍︇︅︄︃︅︀︇︁︇︈︆︍︃︆︄︍︃︉︄︎︇︂︆︋︇︆︄︊︃︂︇︊︇︈︃︈︃︆︆︆︃︁︅︇︇︆︄︄︃︀︅︃︆︈︅︊︅︈︃︆︅︇︃︂︆︃︂︂︇︍",
+				{
+					"t": "bx",
+					"v": "<input type=\"email\" id=\"email\">",
+					"v1": "a_bx_input"
+				},
 				"​"
 			],
 			"ts": 1,
@@ -981,6 +1091,22 @@
 			"translationProvider": "InvisicodeProvider"
 		},
 		{
+			"guid": "CmUwdVKNFn5RGH8CBFnoVkNKI4y722HSi_gDpvRRkww",
+			"ntgt": [
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︄︃︆︍︅︅︇︇︆︄︅︆︄︋︄︎︄︆︆︎︃︅︅︂︄︇︄︈︃︈︄︃︄︂︄︆︆︎︆️︅︆︆︋︄︎︄︋︄︉︃︄︇︉︃︇︃︂︃︂︄︈︅︃︆︉︅️︆︇︄︄︇︀︇︆︅︂︅︂︆︋︇︇︇︇︂︂︇︍",
+				{
+					"t": "bx",
+					"v": "<input type=\"url\" placeholder=\"http://mrmrs.cc\">",
+					"v1": "a_bx_input"
+				},
+				"​"
+			],
+			"ts": 1,
+			"q": 2,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "InvisicodeProvider"
+		},
+		{
 			"guid": "DLm2EvPN8Cn2oKloabN0uzZ4GVtWJilY_rEmPgeqHgI",
 			"ntgt": [
 				"​︇︋︂︂︆︇︂︂︃︊︂︂︄︄︄︌︆︍︃︂︄︅︇︆︅︀︄︎︃︈︄︃︆︎︃︂︆️︄︋︆︌︆️︆︁︆︂︄︎︃︀︇︅︇︊︅︊︃︄︄︇︅︆︇︄︅︇︄︊︆︉︆︌︅︉︅️︇︂︄︅︆︍︅︀︆︇︆︅︇︁︄︈︆︇︄︉︂︂︇︍",
@@ -1002,6 +1128,22 @@
 					"v1": "a_bx_input"
 				},
 				" This is a checkbox.",
+				"​"
+			],
+			"ts": 1,
+			"q": 2,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "InvisicodeProvider"
+		},
+		{
+			"guid": "gUuIxZw4ovBn0pRxV0fqzd7CwrrtcJjFBBScNCC4bp0",
+			"ntgt": [
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︆︇︅︅︇︅︄︉︇︈︅︊︇︇︃︄︆️︇︆︄︂︆︎︃︀︇︀︅︂︇︈︅︆︃︀︆︆︇︁︇︊︆︄︃︇︄︃︇︇︇︂︇︂︇︄︆︃︄︊︆︊︄︆︄︂︄︂︅︃︆︃︄︎︄︃︄︃︃︄︆︂︇︀︃︀︂︂︇︍",
+				{
+					"t": "bx",
+					"v": "<input type=\"submit\" value=\"Submit\">",
+					"v1": "a_bx_input"
+				},
 				"​"
 			],
 			"ts": 1,
@@ -1070,9 +1212,9 @@
 			"translationProvider": "InvisicodeProvider"
 		},
 		{
-			"guid": "uHGRiZz6oGySM1kG5GL07n-SFbXleQ7jKIkVP6jtOq4",
+			"guid": "Ir9PyUTSwiKs6Ornug3y-OJaNpQV60MFb2K0kIgTnOk",
 			"ntgt": [
-				"​︇︋︂︂︆︇︂︂︃︊︂︂︇︅︄︈︄︇︅︂︆︉︅︊︇︊︃︆︆️︄︇︇︉︅︃︄︍︃︁︆︋︄︇︃︅︄︇︄︌︃︀︃︇︆︎︂︍︅︃︄︆︆︂︅︈︆︌︆︅︅︁︃︇︆︊︄︋︄︉︆︋︅︆︅︀︃︆︆︊︇︄︄️︇︁︃︄︂︂︇︍",
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︄︉︇︂︃︉︅︀︇︉︅︅︅︄︅︃︇︇︆︉︄︋︇︃︃︆︄️︇︂︆︎︇︅︆︇︃︃︇︉︂︍︄️︄︊︆︁︄︎︇︀︅︁︅︆︃︆︃︀︄︍︄︆︆︂︃︂︄︋︃︀︆︋︄︉︆︇︅︄︆︎︄️︆︋︂︂︇︍",
 				"Lorem ipsum dolor sit amet, ",
 				{
 					"t": "bx",
@@ -1085,19 +1227,19 @@
 					"v": "</b>",
 					"v1": "b_ex_b"
 				},
-				", sed do eiusmod\n          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\n          quis nostrud ",
+				", sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud ",
 				{
 					"t": "bx",
 					"v": "<em>",
 					"v1": "c_bx_em"
 				},
-				"exercitation ullamco laboris nisi ut aliquip ex ea commodo\n            consequat",
+				"exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
 				{
 					"t": "ex",
 					"v": "</em>",
 					"v1": "d_ex_em"
 				},
-				". Duis aute irure dolor in reprehenderit in voluptate velit esse\n          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat\n          non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+				". Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 				"​"
 			],
 			"ts": 1,
@@ -1106,68 +1248,32 @@
 			"translationProvider": "InvisicodeProvider"
 		},
 		{
-			"guid": "8WZvhVI6hiZDXI7qdAK9prYQPAu0Bq7WdNYk91RvtME",
+			"guid": "KUDK_AaGM2pY_5BDqBaSZL6fIPb6gm1wmPvjTvHwQYQ",
 			"ntgt": [
-				"​︇︋︂︂︆︇︂︂︃︊︂︂︃︈︅︇︅︊︇︆︆︈︅︆︄︉︃︆︆︈︆︉︅︊︄︄︅︈︄︉︃︇︇︁︆︄︄︁︄︋︃︉︇︀︇︂︅︉︅︁︅︀︄︁︇︅︃︀︄︂︇︁︃︇︅︇︆︄︄︎︅︉︆︋︃︉︃︁︅︂︇︆︇︄︄︍︄︅︂︂︇︍",
-				{
-					"t": "bx",
-					"v": "<p class=\"test-class\">",
-					"v1": "a_bx_p"
-				},
-				"\n            This is a GREAT pull quote.\n          ",
-				{
-					"t": "ex",
-					"v": "</p>",
-					"v1": "b_ex_p"
-				},
-				" ",
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︄︋︅︅︄︄︄︋︅️︄︁︆︁︄︇︄︍︃︂︇︀︅︉︅️︃︅︄︂︄︄︇︁︄︂︆︁︅︃︅︊︄︌︃︆︆︆︄︉︅︀︆︂︃︆︆︇︆︍︃︁︇︇︆︍︅︀︇︆︆︊︅︄︇︆︄︈︇︇︅︁︅︉︅︁︂︂︇︍",
+				"This is a GREAT pull quote.",
+				"​"
+			],
+			"ts": 1,
+			"q": 2,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "InvisicodeProvider"
+		},
+		{
+			"guid": "-LhEJrcZMO-1TY10xVY9B842Ky9aOGjvZ34QoxFODig",
+			"ntgt": [
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︂︍︄︌︆︈︄︅︄︊︇︂︆︃︅︊︄︍︄️︂︍︃︁︅︄︅︉︃︁︃︀︇︈︅︆︅︉︃︉︄︂︃︈︃︄︃︂︄︋︇︉︃︉︆︁︄️︄︇︆︊︇︆︅︊︃︃︃︄︅︁︆️︇︈︄︆︄️︄︄︆︉︆︇︂︂︇︍",
 				{
 					"t": "bx",
 					"v": "<a href=\"#\">",
-					"v1": "c_bx_a"
+					"v1": "a_bx_a"
 				},
 				"- Author",
 				{
 					"t": "ex",
 					"v": "</a>",
-					"v1": "d_ex_a"
+					"v1": "b_ex_a"
 				},
-				"​"
-			],
-			"ts": 1,
-			"q": 2,
-			"jobGuid": "xxx0xxx",
-			"translationProvider": "InvisicodeProvider"
-		},
-		{
-			"guid": "FL_o286PoUpWhKK3P7ryA2F_KE_Li1RxEpy50bhWA6w",
-			"ntgt": [
-				"​︇︋︂︂︆︇︂︂︃︊︂︂︄︆︄︌︅️︆️︃︂︃︈︃︆︅︀︆️︅︅︇︀︅︇︆︈︄︋︄︋︃︃︅︀︃︇︇︂︇︉︄︁︃︂︄︆︅️︄︋︄︅︅️︄︌︆︉︃︁︅︂︇︈︄︅︇︀︇︉︃︅︃︀︆︂︆︈︅︇︄︁︃︆︇︇︂︂︇︍",
-				"Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,\n          consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt\n          ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima\n          veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi\n          ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit\n          qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum\n          qui dolorem eum fugiat quo voluptas nulla pariatur?\"",
-				"​"
-			],
-			"ts": 1,
-			"q": 2,
-			"jobGuid": "xxx0xxx",
-			"translationProvider": "InvisicodeProvider"
-		},
-		{
-			"guid": "xtvaHaKUn_OcoemqVBlzjHvPknJPpefHhofk3eCxO1k",
-			"ntgt": [
-				"​︇︋︂︂︆︇︂︂︃︊︂︂︇︈︇︄︇︆︆︁︄︈︆︁︄︋︅︅︆︎︅️︄️︆︃︆️︆︅︆︍︇︁︅︆︄︂︆︌︇︊︆︊︄︈︇︆︅︀︆︋︆︎︄︊︅︀︇︀︆︅︆︆︄︈︆︈︆️︆︆︆︋︃︃︆︅︄︃︇︈︄️︃︁︆︋︂︂︇︍",
-				"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis\n          praesentium voluptatum deleniti atque corrupti quos dolores et quas\n          molestias excepturi sint occaecati cupiditate non provident, similique sunt\n          in culpa qui officia deserunt mollitia animi, id est laborum et dolorum\n          fuga. Et harum quidem rerum facilis est et expedita distinctio.",
-				"​"
-			],
-			"ts": 1,
-			"q": 2,
-			"jobGuid": "xxx0xxx",
-			"translationProvider": "InvisicodeProvider"
-		},
-		{
-			"guid": "SGnCu2Z_JcpRCxXjRNrAONuzN62zB4jjBCQ5h5TyY2g",
-			"ntgt": [
-				"​︇︋︂︂︆︇︂︂︃︊︂︂︅︃︄︇︆︎︄︃︇︅︃︂︅︊︅️︄︊︆︃︇︀︅︂︄︃︇︈︅︈︆︊︅︂︄︎︇︂︄︁︄️︄︎︇︅︇︊︄︎︃︆︃︂︇︊︄︂︃︄︆︊︆︊︄︂︄︃︅︁︃︅︆︈︃︅︅︄︇︉︅︉︃︂︆︇︂︂︇︍",
-				"Code examples",
 				"​"
 			],
 			"ts": 1,
@@ -1388,55 +1494,31 @@
 			"translationProvider": "InvisicodeProvider"
 		},
 		{
-			"guid": "vnCT6R3Cu726ochkWdYlvNSSwossKVzU-V6MK_FvG24",
+			"guid": "MiYKcYvJ_nZqIzOwoM-ncRT2Q9Vs-TTz9kg1icHO97M",
 			"ntgt": [
-				"​︇︋︂︂︆︇︂︂︃︊︂︂︇︆︆︎︄︃︅︄︃︆︅︂︃︃︄︃︇︅︃︇︃︂︃︆︆️︆︃︆︈︆︋︅︇︆︄︅︉︆︌︇︆︄︎︅︃︅︃︇︇︆️︇︃︇︃︄︋︅︆︇︊︅︅︂︍︅︆︃︆︄︍︄︋︅️︄︆︇︆︄︇︃︂︃︄︂︂︇︍",
-				{
-					"t": "bx",
-					"v": "<h1 class=\"other-class\">",
-					"v1": "a_bx_h1"
-				},
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︄︍︆︉︅︉︄︋︆︃︅︉︇︆︄︊︅️︆︎︅︊︇︁︄︉︇︊︄️︇︇︆️︄︍︂︍︆︎︆︃︅︂︅︄︃︂︅︁︃︉︅︆︇︃︂︍︅︄︅︄︇︊︃︉︆︋︆︇︃︁︆︉︆︃︄︈︄️︃︉︃︇︄︍︂︂︇︍",
 				"New hawtness",
-				{
-					"t": "ex",
-					"v": "</h1>",
-					"v1": "b_ex_h1"
-				},
-				" ",
+				"​"
+			],
+			"ts": 1,
+			"q": 2,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "InvisicodeProvider"
+		},
+		{
+			"guid": "5TmHDAbs7YpNYGB9hOaGqpltt7DfJIzJh5B5yvSEcXI",
+			"ntgt": [
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︃︅︅︄︆︍︄︈︄︄︄︁︆︂︇︃︃︇︅︉︇︀︄︎︅︉︄︇︄︂︃︉︆︈︄️︆︁︄︇︇︁︇︀︆︌︇︄︇︄︃︇︄︄︆︆︄︊︄︉︇︊︄︊︆︈︃︅︄︂︃︅︇︉︇︆︅︃︄︅︆︃︅︈︄︉︂︂︇︍",
 				{
 					"t": "bx",
 					"v": "<progress value=\"80\" max=\"100\">",
-					"v1": "c_bx_progress"
+					"v1": "a_bx_progress"
 				},
 				"80 %",
 				{
 					"t": "ex",
 					"v": "</progress>",
-					"v1": "d_ex_progress"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<p class=\"test-class\">",
-					"v1": "e_bx_p"
-				},
-				"We are this close to the goal: ",
-				{
-					"t": "bx",
-					"v": "<meter min=\"0\" max=\"1000\" value=\"824\">",
-					"v1": "f_bx_meter"
-				},
-				"$824",
-				{
-					"t": "ex",
-					"v": "</meter>",
-					"v1": "g_ex_meter"
-				},
-				".",
-				{
-					"t": "ex",
-					"v": "</p>",
-					"v1": "h_ex_p"
+					"v1": "b_ex_progress"
 				},
 				"​"
 			],
@@ -1446,288 +1528,355 @@
 			"translationProvider": "InvisicodeProvider"
 		},
 		{
-			"guid": "zbYRC-uinCQEq1h1v3Sasgj8RnKYCl2dBogNobosi7k",
+			"guid": "Bstg9X0Rdwj0OWEzBQdjQYOlOamhitljUD_MvJNzHWs",
 			"ntgt": [
-				"​︇︋︂︂︆︇︂︂︃︊︂︂︇︊︆︂︅︉︅︂︄︃︂︍︇︅︆︉︆︎︄︃︅︁︄︅︇︁︃︁︆︈︃︁︇︆︃︃︅︃︆︁︇︃︆︇︆︊︃︈︅︂︆︎︄︋︅︉︄︃︆︌︃︂︆︄︄︂︆️︆︇︄︎︆️︆︂︆️︇︃︆︉︃︇︆︋︂︂︇︍",
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︄︂︇︃︇︄︆︇︃︉︅︈︃︀︅︂︆︄︇︇︆︊︃︀︄️︅︇︄︅︇︊︄︂︅︁︆︄︆︊︅︁︅︉︄️︆︌︄️︆︁︆︍︆︈︆︉︇︄︆︌︆︊︅︅︄︄︅️︄︍︇︆︄︊︄︎︇︊︄︈︅︇︇︃︂︂︇︍",
+				"We are this close to the goal: ",
 				{
 					"t": "bx",
-					"v": "<header>",
-					"v1": "a_bx_header"
+					"v": "<meter min=\"0\" max=\"1000\" value=\"824\">",
+					"v1": "a_bx_meter"
 				},
-				" ",
+				"$824",
 				{
-					"t": "bx",
-					"v": "<h1 class=\"other-class\">",
-					"v1": "b_bx_h1"
+					"t": "ex",
+					"v": "</meter>",
+					"v1": "b_ex_meter"
 				},
+				".",
+				"​"
+			],
+			"ts": 1,
+			"q": 2,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "InvisicodeProvider"
+		},
+		{
+			"guid": "BONn8ZBMmW6xloq3Iu-pwLNqX9uWEevpYvo8WaSXgvo",
+			"ntgt": [
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︄︂︄️︄︎︆︎︃︈︅︊︄︂︄︍︆︍︅︇︃︆︇︈︆︌︆️︇︁︃︃︄︉︇︅︂︍︇︀︇︇︄︌︄︎︇︁︅︈︃︉︇︅︅︇︄︅︆︅︇︆︇︀︅︉︇︆︆️︃︈︅︇︆︁︅︃︅︈︆︇︇︆︆️︂︂︇︍",
 				"Random Stuff",
-				{
-					"t": "ex",
-					"v": "</h1>",
-					"v1": "c_ex_h1"
-				},
-				" ",
-				{
-					"t": "ex",
-					"v": "</header>",
-					"v1": "d_ex_header"
-				},
-				" ",
+				"​"
+			],
+			"ts": 1,
+			"q": 2,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "InvisicodeProvider"
+		},
+		{
+			"guid": "wX7BBgmI5bI0r7PxPun5na-Ofg_lPl6_689ZyXL9O5c",
+			"ntgt": [
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︇︇︅︈︃︇︄︂︄︂︆︇︆︍︄︉︃︅︆︂︄︉︃︀︇︂︃︇︅︀︇︈︅︀︇︅︆︎︃︅︆︎︆︁︂︍︄️︆︆︆︇︅️︆︌︅︀︆︌︃︆︅️︃︆︃︈︃︉︅︊︇︉︅︈︄︌︃︉︄️︃︅︆︃︂︂︇︍",
 				{
 					"t": "bx",
 					"v": "<small>",
-					"v1": "e_bx_small"
+					"v1": "a_bx_small"
 				},
 				"This is for things like copyright info",
 				{
 					"t": "ex",
 					"v": "</small>",
-					"v1": "f_ex_small"
+					"v1": "b_ex_small"
 				},
-				" ",
+				"​"
+			],
+			"ts": 1,
+			"q": 2,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "InvisicodeProvider"
+		},
+		{
+			"guid": "BTEADgjR-x7um5_pDVFTX3FD7TQAdKTLmiMg8sq3v60",
+			"ntgt": [
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︄︂︅︄︄︅︄︁︄︄︆︇︆︊︅︂︂︍︇︈︃︇︇︅︆︍︃︅︅️︇︀︄︄︅︆︄︆︅︄︅︈︃︃︄︆︄︄︃︇︅︄︅︁︄︁︆︄︄︋︅︄︄︌︆︍︆︉︄︍︆︇︃︈︇︃︇︁︃︃︇︆︃︆︃︀︂︂︇︍",
 				{
 					"t": "bx",
 					"v": "<s>",
-					"v1": "g_bx_s"
+					"v1": "a_bx_s"
 				},
 				"Content that isn't accurate or relevant anymore.",
 				{
 					"t": "ex",
 					"v": "</s>",
-					"v1": "h_ex_s"
+					"v1": "b_ex_s"
 				},
-				" ",
+				"​"
+			],
+			"ts": 1,
+			"q": 2,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "InvisicodeProvider"
+		},
+		{
+			"guid": "LAaglpaEmuF-lk8B9_nlr63Blw9boVe9csv41ZA3EGQ",
+			"ntgt": [
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︄︌︄︁︆︁︆︇︆︌︇︀︆︁︄︅︆︍︇︅︄︆︂︍︆︌︆︋︃︈︄︂︃︉︅️︆︎︆︌︇︂︃︆︃︃︄︂︆︌︇︇︃︉︆︂︆️︅︆︆︅︃︉︆︃︇︃︇︆︃︄︃︁︅︊︄︁︃︃︄︅︄︇︅︁︂︂︇︍",
 				{
 					"t": "bx",
 					"v": "<span>",
-					"v1": "i_bx_span"
+					"v1": "a_bx_span"
 				},
 				"Generic span wrapper",
 				{
 					"t": "ex",
 					"v": "</span>",
-					"v1": "j_ex_span"
+					"v1": "b_ex_span"
 				},
-				" ",
+				"​"
+			],
+			"ts": 1,
+			"q": 2,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "InvisicodeProvider"
+		},
+		{
+			"guid": "B8nZ7Pm__3updMukUaK3NGNbjr_JyTb1whyPev0XRN8",
+			"ntgt": [
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︄︂︃︈︆︎︅︊︃︇︅︀︆︍︅️︅️︃︃︇︅︇︀︆︄︄︍︇︅︆︋︅︅︆︁︄︋︃︃︄︎︄︇︄︎︆︂︆︊︇︂︅️︄︊︇︉︅︄︆︂︃︁︇︇︆︈︇︉︅︀︆︅︇︆︃︀︅︈︅︂︄︎︃︈︂︂︇︍",
 				{
 					"t": "bx",
 					"v": "<abbr>",
-					"v1": "k_bx_abbr"
+					"v1": "a_bx_abbr"
 				},
 				"HTML How to meet ladies",
 				{
 					"t": "ex",
 					"v": "</abbr>",
-					"v1": "l_ex_abbr"
+					"v1": "b_ex_abbr"
 				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<p class=\"test-class\">",
-					"v1": "m_bx_p"
-				},
+				"​"
+			],
+			"ts": 1,
+			"q": 2,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "InvisicodeProvider"
+		},
+		{
+			"guid": "yYiVQTuR6OnALPs8O5JD3kGzgcv4ihbRZq7xShkpw5I",
+			"ntgt": [
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︇︉︅︉︆︉︅︆︅︁︅︄︇︅︅︂︃︆︄️︆︎︄︁︄︌︅︀︇︃︃︈︄️︃︅︄︊︄︄︃︃︆︋︄︇︇︊︆︇︆︃︇︆︃︄︆︉︆︈︆︂︅︂︅︊︇︁︃︇︇︈︅︃︆︈︆︋︇︀︇︇︃︅︄︉︂︂︇︍",
 				"This is inline text with ",
 				{
 					"t": "bx",
 					"v": "<sub>",
-					"v1": "n_bx_sub"
+					"v1": "a_bx_sub"
 				},
 				"subscript",
 				{
 					"t": "ex",
 					"v": "</sub>",
-					"v1": "o_ex_sub"
+					"v1": "b_ex_sub"
 				},
 				" and ",
 				{
 					"t": "bx",
 					"v": "<sup>",
-					"v1": "p_bx_sup"
+					"v1": "c_bx_sup"
 				},
 				"superscript",
 				{
 					"t": "ex",
 					"v": "</sup>",
-					"v1": "q_ex_sup"
+					"v1": "d_ex_sup"
 				},
 				" elements.",
-				{
-					"t": "ex",
-					"v": "</p>",
-					"v1": "r_ex_p"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<p class=\"test-class\">",
-					"v1": "s_bx_p"
-				},
-				" ",
+				"​"
+			],
+			"ts": 1,
+			"q": 2,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "InvisicodeProvider"
+		},
+		{
+			"guid": "SgfEJQrC5mSGxQ2MpG2A2c_eDApsS9t0Jt88e1vPODY",
+			"ntgt": [
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︅︃︆︇︆︆︄︅︄︊︅︁︇︂︄︃︃︅︆︍︅︃︄︇︇︈︅︁︃︂︄︍︇︀︄︇︃︂︄︁︃︂︆︃︅️︆︅︄︄︄︁︇︀︇︃︅︃︃︉︇︄︃︀︄︊︇︄︃︈︃︈︆︅︃︁︇︆︅︀︄️︄︄︅︉︂︂︇︍",
 				{
 					"t": "bx",
 					"v": "<var>",
-					"v1": "t_bx_var"
+					"v1": "a_bx_var"
 				},
 				"f",
 				{
 					"t": "ex",
 					"v": "</var>",
-					"v1": "u_ex_var"
+					"v1": "b_ex_var"
 				},
 				"(",
 				{
 					"t": "bx",
 					"v": "<var>",
-					"v1": "v_bx_var"
+					"v1": "c_bx_var"
 				},
 				"x",
 				{
 					"t": "ex",
 					"v": "</var>",
-					"v1": "w_ex_var"
+					"v1": "d_ex_var"
 				},
 				") = ",
 				{
 					"t": "bx",
 					"v": "<var>",
-					"v1": "x_bx_var"
+					"v1": "e_bx_var"
 				},
 				"a",
 				{
 					"t": "ex",
 					"v": "</var>",
-					"v1": "y_ex_var"
+					"v1": "f_ex_var"
 				},
 				{
 					"t": "bx",
 					"v": "<sub>",
-					"v1": "z26_bx_sub"
+					"v1": "g_bx_sub"
 				},
 				"0",
 				{
 					"t": "ex",
 					"v": "</sub>",
-					"v1": "z27_ex_sub"
+					"v1": "h_ex_sub"
 				},
 				" + ",
 				{
 					"t": "bx",
 					"v": "<var>",
-					"v1": "z28_bx_var"
+					"v1": "i_bx_var"
 				},
 				"a",
 				{
 					"t": "ex",
 					"v": "</var>",
-					"v1": "z29_ex_var"
+					"v1": "j_ex_var"
 				},
 				{
 					"t": "bx",
 					"v": "<sub>",
-					"v1": "z30_bx_sub"
+					"v1": "k_bx_sub"
 				},
 				"1",
 				{
 					"t": "ex",
 					"v": "</sub>",
-					"v1": "z31_ex_sub"
+					"v1": "l_ex_sub"
 				},
 				{
 					"t": "bx",
 					"v": "<var>",
-					"v1": "z32_bx_var"
+					"v1": "m_bx_var"
 				},
 				"x",
 				{
 					"t": "ex",
 					"v": "</var>",
-					"v1": "z33_ex_var"
+					"v1": "n_ex_var"
 				},
-				" +\n      ",
+				" + ",
 				{
 					"t": "bx",
 					"v": "<var>",
-					"v1": "z34_bx_var"
+					"v1": "o_bx_var"
 				},
 				"a",
 				{
 					"t": "ex",
 					"v": "</var>",
-					"v1": "z35_ex_var"
+					"v1": "p_ex_var"
 				},
 				{
 					"t": "bx",
 					"v": "<sub>",
-					"v1": "z36_bx_sub"
+					"v1": "q_bx_sub"
 				},
 				"2",
 				{
 					"t": "ex",
 					"v": "</sub>",
-					"v1": "z37_ex_sub"
+					"v1": "r_ex_sub"
 				},
 				{
 					"t": "bx",
 					"v": "<var>",
-					"v1": "z38_bx_var"
+					"v1": "s_bx_var"
 				},
 				"x",
 				{
 					"t": "ex",
 					"v": "</var>",
-					"v1": "z39_ex_var"
+					"v1": "t_ex_var"
 				},
 				{
 					"t": "bx",
 					"v": "<sup>",
-					"v1": "z40_bx_sup"
+					"v1": "u_bx_sup"
 				},
 				"2",
 				{
 					"t": "ex",
 					"v": "</sup>",
-					"v1": "z41_ex_sup"
+					"v1": "v_ex_sup"
 				},
 				", where ",
 				{
 					"t": "bx",
 					"v": "<var>",
-					"v1": "z42_bx_var"
+					"v1": "w_bx_var"
 				},
 				"a",
 				{
 					"t": "ex",
 					"v": "</var>",
-					"v1": "z43_ex_var"
+					"v1": "x_ex_var"
 				},
 				{
 					"t": "bx",
 					"v": "<sup>",
-					"v1": "z44_bx_sup"
+					"v1": "y_bx_sup"
 				},
 				"2",
 				{
 					"t": "ex",
 					"v": "</sup>",
-					"v1": "z45_ex_sup"
+					"v1": "z26_ex_sup"
 				},
-				" ≠ 0\n    ",
-				{
-					"t": "ex",
-					"v": "</p>",
-					"v1": "z46_ex_p"
-				},
-				" ",
+				" ≠ 0",
+				"​"
+			],
+			"ts": 1,
+			"q": 2,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "InvisicodeProvider"
+		},
+		{
+			"guid": "O-s14lDXWGspobCuuhwUIbHebJdwr1oVw8N7Qe8b_oE",
+			"ntgt": [
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︄️︂︍︇︃︃︁︃︄︆︌︄︄︅︈︅︇︄︇︇︃︇︀︆️︆︂︄︃︇︅︇︅︆︈︇︇︅︅︄︉︆︂︄︈︆︅︆︂︄︊︆︄︇︇︇︂︃︁︆️︅︆︇︇︃︈︄︎︃︇︅︁︆︅︃︈︆︂︅️︆️︄︅︂︂︇︍",
 				{
 					"t": "bx",
 					"v": "<time datetime=\"2013-09-07\" pubdate=\"\">",
-					"v1": "z47_bx_time"
+					"v1": "a_bx_time"
 				},
 				"07 September 2013",
 				{
 					"t": "ex",
 					"v": "</time>",
-					"v1": "z48_ex_time"
+					"v1": "b_ex_time"
+				},
+				"​"
+			],
+			"ts": 1,
+			"q": 2,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "InvisicodeProvider"
+		},
+		{
+			"guid": "9-nEAAss20KaqqpEUaCubm289o362E3hDJ-t4ZO7QFI",
+			"ntgt": [
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︃︉︂︍︆︎︄︅︄︁︄︁︇︃︇︃︃︂︃︀︄︋︆︁︇︁︇︁︇︀︄︅︅︅︆︁︄︃︇︅︆︂︆︍︃︂︃︈︃︉︆️︃︃︃︆︃︂︄︅︃︃︆︈︄︄︄︊︂︍︇︄︃︄︅︊︄️︃︇︅︁︄︆︄︉︂︂︇︍",
+				{
+					"t": "bx",
+					"v": "<img src=\"http://placekitten.com/g/960/320\" alt=\"Figure Example\">",
+					"v1": "a_bx_img"
 				},
 				"​"
 			],
@@ -1916,9 +2065,9 @@
 			"translationProvider": "InvisicodeProvider"
 		},
 		{
-			"guid": "5DV2smTYTOz2vV-bhvUx6RqiCbBlZn0-K9pEZoxwFHs",
+			"guid": "x_w5nSuC8AE7O04MKcsSoXQbUuhJEIo8Pk0ELvywMps",
 			"ntgt": [
-				"​︇︋︂︂︆︇︂︂︃︊︂︂︃︅︄︄︅︆︃︂︇︃︆︍︅︄︅︉︅︄︄️︇︊︃︂︇︆︅︆︂︍︆︂︆︈︇︆︅︅︇︈︃︆︅︂︇︁︆︉︄︃︆︂︄︂︆︌︅︊︆︎︃︀︂︍︄︋︃︉︇︀︄︅︅︊︆️︇︈︇︇︄︆︄︈︇︃︂︂︇︍",
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︇︈︅️︇︇︃︅︆︎︅︃︇︅︄︃︃︈︄︁︄︅︃︇︄️︃︀︃︄︄︍︄︋︆︃︇︃︅︃︆️︅︈︅︁︆︂︅︅︇︅︆︈︄︊︄︅︄︉︆️︃︈︅︀︆︋︃︀︄︅︄︌︇︆︇︉︇︇︄︍︇︀︇︃︂︂︇︍",
 				{
 					"t": "bx",
 					"v": "<small>",
@@ -1930,18 +2079,6 @@
 					"v": "</small>",
 					"v1": "b_ex_small"
 				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<address>",
-					"v1": "c_bx_address"
-				},
-				"email@email.com",
-				{
-					"t": "ex",
-					"v": "</address>",
-					"v1": "d_ex_address"
-				},
 				"​"
 			],
 			"ts": 1,
@@ -1950,55 +2087,55 @@
 			"translationProvider": "InvisicodeProvider"
 		},
 		{
-			"guid": "vVc1_vsNL4nHHXr5LbrkF4sXNxiuqLYsqUvFuwxl_3g",
+			"guid": "GzlWIw9iu7ZzEGgBFc4aiAG5wkWd-61j_d1j0pof7gU",
 			"ntgt": [
-				"​︇︋︂︂︆︇︂︂︃︊︂︂︇︆︅︆︆︃︃︁︅️︇︆︇︃︄︎︄︌︃︄︆︎︄︈︄︈︅︈︇︂︃︅︄︌︆︂︇︂︆︋︄︆︃︄︇︃︅︈︄︎︇︈︆︉︇︅︇︁︄︌︅︉︇︃︇︁︅︅︇︆︄︆︇︅︇︇︇︈︆︌︅️︃︃︆︇︂︂︇︍",
-				{
-					"t": "bx",
-					"v": "<h1>",
-					"v1": "a_bx_h1"
-				},
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︄︇︇︊︆︌︅︇︄︉︇︇︃︉︆︉︇︅︃︇︅︊︇︊︄︅︄︇︆︇︄︂︄︆︆︃︃︄︆︁︆︉︄︁︄︇︃︅︇︇︆︋︅︇︆︄︂︍︃︆︃︁︆︊︅️︆︄︃︁︆︊︃︀︇︀︆️︆︆︃︇︆︇︅︅︂︂︇︍",
+				"email@email.com",
+				"​"
+			],
+			"ts": 1,
+			"q": 2,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "InvisicodeProvider"
+		},
+		{
+			"guid": "11aGkZKyeSHx-simtcrns0zvejDnysVU89x2lS7Vh3Q",
+			"ntgt": [
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︃︁︃︁︆︁︄︇︆︋︅︊︄︋︇︉︆︅︅︃︄︈︇︈︂︍︇︃︆︉︆︍︇︄︆︃︇︂︆︎︇︃︃︀︇︊︇︆︆︅︆︊︄︄︆︎︇︉︇︃︅︆︅︅︃︈︃︉︇︈︃︂︆︌︅︃︃︇︅︆︆︈︃︃︅︁︂︂︇︍",
 				"Winter is 🎉",
-				{
-					"t": "ex",
-					"v": "</h1>",
-					"v1": "b_ex_h1"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<div>",
-					"v1": "c_bx_div"
-				},
-				" ",
-				{
-					"t": "bx",
-					"v": "<div class=\"body-paragraph\">",
-					"v1": "d_bx_div"
-				},
+				"​"
+			],
+			"ts": 1,
+			"q": 2,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "InvisicodeProvider"
+		},
+		{
+			"guid": "VVTevgSiQdkU0psySIzres9i6lc0JtDHIpwwWMecPKI",
+			"ntgt": [
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︅︆︅︆︅︄︆︅︇︆︆︇︅︃︆︉︅︁︆︄︆︋︅︅︃︀︇︀︇︃︇︉︅︃︄︉︇︊︇︂︆︅︇︃︃︉︆︉︃︆︆︌︆︃︃︀︄︊︇︄︄︄︄︈︄︉︇︀︇︇︇︇︅︇︄︍︆︅︆︃︅︀︄︋︄︉︂︂︇︍",
 				"coming",
-				{
-					"t": "ex",
-					"v": "</div>",
-					"v1": "e_ex_div"
-				},
-				" ",
-				{
-					"t": "ex",
-					"v": "</div>",
-					"v1": "f_ex_div"
-				},
-				" ",
+				"​"
+			],
+			"ts": 1,
+			"q": 2,
+			"jobGuid": "xxx0xxx",
+			"translationProvider": "InvisicodeProvider"
+		},
+		{
+			"guid": "iWXYTuj1_k7wmSMqtZ4hetX2nzpBKYy--IyaO-cdG64",
+			"ntgt": [
+				"​︇︋︂︂︆︇︂︂︃︊︂︂︆︉︅︇︅︈︅︉︅︄︇︅︆︊︃︁︅️︆︋︃︇︇︇︆︍︅︃︄︍︇︁︇︄︅︊︃︄︆︈︆︅︇︄︅︈︃︂︆︎︇︊︇︀︄︂︄︋︅︉︇︉︂︍︂︍︄︉︇︉︆︁︄️︂︍︆︃︆︄︄︇︃︆︃︄︂︂︇︍",
 				{
 					"t": "bx",
 					"v": "<a href=\"#\" id=\"redeemButton\" class=\"button white w-button\">",
-					"v1": "g_bx_a"
+					"v1": "a_bx_a"
 				},
 				"Redeem Gift",
 				{
 					"t": "ex",
 					"v": "</a>",
-					"v1": "h_ex_a"
+					"v1": "b_ex_a"
 				},
 				"​"
 			],

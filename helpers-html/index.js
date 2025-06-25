@@ -12,15 +12,36 @@ function serializeNode(node, includeOuter = true) {
         tempFragment.childNodes = [node];
         return serialize(tempFragment);
     } else {
-        // Just serialize the inner content
-        return serialize(node);
+        // Just serialize the inner content (child nodes)
+        if (node.childNodes && node.childNodes.length > 0) {
+            const tempFragment = parseFragment('');
+            tempFragment.childNodes = [...node.childNodes];
+            return serialize(tempFragment);
+        }
+        return '';
     }
 }
 
 // from https://developer.mozilla.org/en-US/docs/Web/HTML/Inline_elements
 // the following were removed from inline: label, button
-const inlineTags = new Set([ 'a', 'abbr', 'acronym', 'audio', 'b', 'bdi', 'bdo', 'big', 'br', 'canvas', 'cite', 'code', 'data', 'datalist', 'del', 'dfn', 'em', 'embed', 'i', 'iframe', 'img', 'input', 'ins', 'kbd', 'map', 'mark', 'meter', 'noscript', 'object', 'output', 'picture', 'progress', 'q', 'ruby', 's', 'samp', 'script', 'select', 'slot', 'small', 'span', 'strong', 'sub', 'sup', 'svg', 'template', 'textarea', 'time', 'u', 'tt', 'var', 'video', 'wbr' ]);
+const inlineTags = new Set([ 'a', 'abbr', 'acronym', 'audio', 'b', 'bdi', 'bdo', 'big', 'br', 'cite', 'code', 'data', 'datalist', 'del', 'dfn', 'em', 'embed', 'i', 'img', 'input', 'ins', 'kbd', 'map', 'mark', 'meter', 'object', 'output', 'picture', 'progress', 'q', 'ruby', 's', 'samp', 'slot', 'small', 'span', 'strong', 'sub', 'sup', 'svg', 'template', 'time', 'u', 'tt', 'var', 'wbr' ]);
 const dntTags = new Set([ 'code', 'pre', 'script', 'style', 'template' ]); // TODO: may have to deal with inline DNT like 'var'
+
+// Helper function to check if a node itself is a DNT tag or directly contains DNT tags (not deep descendants)
+function isDntOrContainsDntChildren(node) {
+    if (dntTags.has(node.nodeName)) {
+        return true;
+    }
+    // Check only immediate children for DNT tags
+    if (node.childNodes) {
+        for (const child of node.childNodes) {
+            if (dntTags.has(child.nodeName)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
 
 function collapseWhitespace(node) {
     if (node?.childNodes?.length > 0) {
@@ -89,7 +110,7 @@ export class HTMLFilter {
                     if (child.value.replaceAll(/\s/g,'').length > 0) {
                         return true;
                     }
-                } else if (!dntTags.has(child.nodeName)) {
+                } else if (!isDntOrContainsDntChildren(child)) {
                     const childCandidates = this.#findTranslatableStrings(child, c);
                     if (childCandidates === true) {
                         if (inlineTags.has(child.nodeName)) {
@@ -145,7 +166,7 @@ export class HTMLFilter {
         for (const child of node.childNodes) {
             if (child.nodeName === '#text' && child.value.replaceAll(/\s/g,'').length > 0) {
                 hasInlineOrText = true;
-            } else if (!dntTags.has(child.nodeName)) {
+            } else if (!isDntOrContainsDntChildren(child)) {
                 if (inlineTags.has(child.nodeName)) {
                     hasInlineOrText = true;
                 } else {
@@ -164,8 +185,8 @@ export class HTMLFilter {
                 carry.seq++;
                 
                 const isText = child.nodeName === '#text' && child.value.replaceAll(/\s/g,'').length > 0;
-                const isInline = !dntTags.has(child.nodeName) && inlineTags.has(child.nodeName);
-                const isBlock = !dntTags.has(child.nodeName) && !inlineTags.has(child.nodeName);
+                const isInline = !isDntOrContainsDntChildren(child) && inlineTags.has(child.nodeName);
+                const isBlock = !isDntOrContainsDntChildren(child) && !inlineTags.has(child.nodeName);
                 
                 if (isText || isInline) {
                     if (inlineRunStart === -1) inlineRunStart = carry.seq;
@@ -225,7 +246,7 @@ export class HTMLFilter {
             for (const child of node.childNodes) {
                 if (child.nodeName === '#text' && child.value.replaceAll(/\s/g,'').length > 0) {
                     hasDirectText = true;
-                } else if (!dntTags.has(child.nodeName) && child.nodeName !== '#text') {
+                } else if (!isDntOrContainsDntChildren(child) && child.nodeName !== '#text') {
                     hasChildElements = true;
                 }
             }
@@ -251,14 +272,14 @@ export class HTMLFilter {
                 if (hasBlocks) {
                     // Has child elements - recurse into them
                     for (const child of node.childNodes) {
-                        if (!dntTags.has(child.nodeName) && !inlineTags.has(child.nodeName) && child.nodeName !== '#text') {
+                        if (!isDntOrContainsDntChildren(child) && !inlineTags.has(child.nodeName) && child.nodeName !== '#text') {
                             carry.seq++;
                             await this.#processNodeForSeparateSegments(child, cb, carry, processedNodes);
                         }
                     }
                 } else {
                     // It has children, but none are blocks. So it's a container of inlines.
-                    const content = serializeNode(node);
+                    const content = serializeNode(node, false);
                     if (content.trim()) {
                         const replacement = await cb(content, carry.seq);
                         if (replacement !== undefined) {
@@ -269,7 +290,7 @@ export class HTMLFilter {
                 }
             } else if (hasInlineOrText) {
                 // Pure inline content without blocks
-                const content = serializeNode(collapseWhitespace(node));
+                const content = serializeNode(collapseWhitespace(node), false);
                 const replacement = await cb(content, carry.seq);
                 if (replacement !== undefined) {
                     const parsed = parseFragment(replacement);

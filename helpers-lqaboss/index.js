@@ -1,3 +1,2 @@
-import { lqaboss } from './lqaboss.js';
-
-export const actions = { lqaboss };
+export { LQABossActions } from './lqabossActions.js';
+export { LQABossProvider } from './lqabossProvider.js';

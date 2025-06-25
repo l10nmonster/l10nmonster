@@ -13,8 +13,9 @@
         "@google-cloud/bigquery": "^8",
         "@google-cloud/storage": "^7",
         "@google-cloud/translate": "^9",
-        "@google/genai": "^1.0.1",
-        "google-auth-library": "^10"
+        "@google/genai": "^1",
+        "google-auth-library": "^10",
+        "googleapis": "^150"
     },
     "peerDependencies": {
         "@l10nmonster/core": "^3"

@@ -23,7 +23,7 @@
     "dependencies": {
         "nanoid": "^5",
         "winston": "^3.7.2",
-        "better-sqlite3": "^11.5.0"
+        "better-sqlite3": "^12"
     },
     "devDependencies": {
         "eslint": "^9"
