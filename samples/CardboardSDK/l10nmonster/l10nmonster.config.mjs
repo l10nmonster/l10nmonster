@@ -124,14 +124,16 @@ export default config.l10nMonster(import.meta.dirname)
     //     defaultInstructions: 'You are translating strings from resource files of a mobile app.\nUse the following glossary: viewer=visore, Cardboard=Cardone',
     //     // supportedPairs: { 'en': [ 'it' ] },
     // }))
-    // .provider(new GenAIAgent({
-    //     id: 'gemini-2.5-genai',
-    //     quality: 48,
-    //     apiKey: process.env.gemini_api_key,
-    //     model: 'gemini-2.5-pro-preview-06-05',
-    //     // thinkingBudget: 0,
-    //     // supportedPairs: { 'en': [ 'it' ] },
-    // }))
+    .provider(new GenAIAgent({
+        id: 'gemini-2.5-genai',
+        quality: 48,
+        apiKey: process.env.gemini_api_key,
+        model: 'gemini-2.5-pro',
+        parallelism: 10,
+        maxChunkSize:2,
+        // thinkingBudget: 0,
+        supportedPairs: { 'en': [ 'it' ] },
+    }))
     // .provider(new GenAIAgent({
     //     id: 'gemini-2.5-vertex',
     //     quality: 48,

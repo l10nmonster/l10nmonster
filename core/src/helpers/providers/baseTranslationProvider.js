@@ -13,6 +13,7 @@ import { logVerbose, utils, opsManager, logWarn, L10nContext } from '@l10nmonste
  * @property {number} [costPerWord] - The estimated cost per word for the provider. Optional.
  * @property {number} [costPerMChar] - The estimated cost per million characters for the provider. Optional.
  * @property {boolean} [saveIdenticalEntries] - Save translations even if identical to TM. Optional.
+ * @property {number} [parallelism] - Number of operations to run concurrently when executing tasks. Optional.
  */
 
 /**
@@ -49,12 +50,13 @@ export class BaseTranslationProvider {
     #maxWordQuota;
     #saveIdenticalEntries;
     #supportedPairs;
+    #executeOptions;
 
     /**
      * Initializes a new instance of the BaseTranslationProvider class.
      * @param {BaseTranslationProviderOptions} [options] - Configuration options for the provider.
      */
-    constructor({ id, quality, supportedPairs, translationGroup, defaultInstructions, minWordQuota, maxWordQuota, costPerWord, costPerMChar, saveIdenticalEntries } = {}) {
+    constructor({ id, quality, supportedPairs, translationGroup, defaultInstructions, minWordQuota, maxWordQuota, costPerWord, costPerMChar, saveIdenticalEntries, parallelism } = {}) {
         this.#id = id;
         this.quality = quality;
         this.translationGroup = translationGroup;
@@ -65,6 +67,7 @@ export class BaseTranslationProvider {
         this.#costPerWord = costPerWord ?? 0;
         this.#costPerMChar = costPerMChar ?? 0;
         this.#saveIdenticalEntries = saveIdenticalEntries;
+        this.#executeOptions = parallelism ? { parallelism } : {};
     }
 
     get id() {
@@ -127,7 +130,7 @@ export class BaseTranslationProvider {
             jobResponse.taskName = L10nContext.regression ? 'x' : task.taskName;
             logVerbose`${this.id} provider translating job ${job.jobGuid} using task ${task.taskName}`;
             try {
-                jobResponse = await task.execute();
+                jobResponse = await task.execute(this.#executeOptions);
             } catch (e) {
                 if (this.mm.saveFailedJobs) {
                     logWarn`Unable to start job ${job.jobGuid}: ${e.message}`;
@@ -171,7 +174,7 @@ export class BaseTranslationProvider {
                 throw new Error(`Task ${job.taskName} is already done!`);
             }
             try {
-                return await task.execute(); // TODO: de we want to dedupe here? (but latest TM entry might be the same pending one in the job response)
+                return await task.execute(this.#executeOptions); // TODO: de we want to dedupe here? (but latest TM entry might be the same pending one in the job response)
             } catch (e) {
                 logWarn`Unable to continue job ${job.jobGuid}: ${e.message}`;
             }

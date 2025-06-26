@@ -82,7 +82,9 @@ export default class Task {
         return Task.deserialize(taskName, serializedOps);
     }
 
-    async execute() {
+    async execute(options = {}) {
+        const { parallelism = 1 } = options;
+        
         /*
             create an execution plan.
             start with root op and then enqueue dependencies whose status is not done.
@@ -96,9 +98,19 @@ export default class Task {
             if (executableOps.length === 0) {
                 workToDo = false;
             } else {
-                for (const op of executableOps) {
-                    await op.execute();
-                    if (op.state === 'error') {
+                // Execute operations with controlled parallelism
+                const batches = [];
+                for (let i = 0; i < executableOps.length; i += parallelism) {
+                    batches.push(executableOps.slice(i, i + parallelism));
+                }
+                
+                for (const batch of batches) {
+                    const promises = batch.map(op => op.execute());
+                    await Promise.all(promises);
+                    
+                    // Check if any operation failed
+                    const hasError = batch.some(op => op.state === 'error');
+                    if (hasError) {
                         workToDo = false;
                         break;
                     }
