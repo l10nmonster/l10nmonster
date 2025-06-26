@@ -95,7 +95,7 @@ export class LegacyFileBasedTmStore {
                     return JSON.parse(await this.delegate.getFile(`${blockName}-req.json`));
                 // eslint-disable-next-line no-unused-vars
                 } catch (e) {
-                    L10nContext.logger.verbose(`No job request found for job: ${blockName}`);
+                    logVerbose`No job request found for job: ${blockName}`;
                 }
             })(),
             (async () => {
@@ -107,7 +107,7 @@ export class LegacyFileBasedTmStore {
                         return JSON.parse(await this.delegate.getFile(`${blockName}-pending.json`));
                     // eslint-disable-next-line no-unused-vars
                     } catch (e) {
-                        L10nContext.logger.verbose(`No job response found for job: ${blockName}`);
+                        logVerbose`No job response found for job: ${blockName}`;
                     }
                 }
             })(),
@@ -124,7 +124,7 @@ export class LegacyFileBasedTmStore {
             if (blockName) {
                 return await this.#getTmBlock(blockName);
             } else {
-                L10nContext.logger.info(`Block not found: ${blockId}`);
+                logInfo`Block not found: ${blockId}`;
                 return [null, null];
             }
         };
@@ -132,6 +132,7 @@ export class LegacyFileBasedTmStore {
         // Process blocks in batches with controlled parallelism
         for (let i = 0; i < blockIds.length; i += this.parallelism) {
             const batch = blockIds.slice(i, i + this.parallelism);
+            logVerbose`Fetching blocks: ${batch.join(', ')}`;
             const batchPromises = batch.map(blockId => fetchBlock(blockId));
             const batchResults = await Promise.all(batchPromises);
             

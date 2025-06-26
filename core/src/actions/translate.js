@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import { L10nContext, consoleLog } from '@l10nmonster/core';
+import { consoleLog, logVerbose } from '@l10nmonster/core';
 
 function computeDelta(currentTranslations, newTranslations) {
     const delta = [];
@@ -28,7 +28,7 @@ async function compareToExisting(mm, resHandle, targetLang, translatedRes) {
             delta = computeDelta(currentTranslations, newTranslations);
         }
     } catch (e) {
-        L10nContext.logger.verbose(`Couldn't fetch ${targetLang} resource for ${resHandle.channel}:${resHandle.id}: ${e.message ?? e}`);
+        logVerbose`Couldn't fetch ${targetLang} resource for ${resHandle.channel}:${resHandle.id}: ${e.message ?? e}`;
     }
     const bundleChanges = currentTranslations ?
         (translatedRes ? (delta.length > 0 ? 'changed' : 'unchanged') : 'deleted') :
@@ -102,9 +102,9 @@ export class translate {
                             .commitTranslatedResource(targetLang, resHandle.id, translatedRes);
                         resourceStatus.status = translatedRes === null ? 'deleted' : 'generated';
                         resourceStatus.translatedId = translatedResourceId;
-                        L10nContext.logger.verbose(`Committed translated resource: ${translatedResourceId}`);
+                        logVerbose`Committed translated resource: ${translatedResourceId}`;
                     } else {
-                        L10nContext.logger.verbose(`Delta mode skipped translation of bundle ${resHandle.channel}:${resHandle.id} for ${targetLang}`);
+                        logVerbose`Delta mode skipped translation of bundle ${resHandle.channel}:${resHandle.id} for ${targetLang}`;
                         resourceStatus.status = 'skipped';
                     }
                     response.lang[targetLang] ??= { resourceStatus: []};
