@@ -174,7 +174,8 @@ suite('Normalizers Util tests', () => {
     });
 
     test('extractNormalizedPartsFromXmlV1', () => {
-        assert.deepEqual(extractNormalizedPartsFromXmlV1(xml1, xmlPhMap1), nsrc2);
+        const [actualXml, actualPhMap] = flattenNormalizedSourceToXmlV1(nsrc1);
+        assert.deepEqual(extractNormalizedPartsFromXmlV1(actualXml, actualPhMap), nsrc2);
     });
 
     test('xmlRoundtripNoMarkup', () => {

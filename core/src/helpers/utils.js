@@ -151,6 +151,9 @@ export function extractNormalizedPartsFromXmlV1(str, phMap) {
     let pos = 0;
     for (const match of str.matchAll(/<(?<x>x\d+) \/>|<(?<bx>x\d+)>|<\/(?<ex>x\d+)>/g)) {
         const phSample = phMap[match.groups.ex];
+        // Check if this is an opening tag that has a sample placeholder
+        const isOpeningTagWithSample = match.groups.bx && phMap[match.groups.bx] && phMap[match.groups.bx].s;
+        
         if (match.index > pos) {
             if (phSample) {  // if we have a ph sample, skip the text node and only preserve the leading space if there
                 match.input.charAt(pos) === ' ' && normalizedParts.push(' ');
@@ -158,6 +161,13 @@ export function extractNormalizedPartsFromXmlV1(str, phMap) {
                 normalizedParts.push(cleanXMLEntities(match.input.substring(pos, match.index)));
             }
         }
+        
+        // Skip opening tags that have samples - only process them on the closing tag
+        if (isOpeningTagWithSample) {
+            pos = match.index + match[0].length;
+            continue;
+        }
+        
         const ph = phSample ??
             phMap[match.groups.x] ??
             phMap[match.groups.bx && `b${match.groups.bx}`] ??
@@ -363,3 +373,68 @@ export function validate(context, obj = {}) {
     }
     return validators;
 }
+
+/**
+ * Splits an array of objects into n chunks, balancing the sum of a specific
+ * numerical property ('weight') in each chunk.
+ *
+ * This function uses a greedy algorithm. It sorts the objects by their 'weight'
+ * in descending order and then iteratively adds each object to the chunk with
+ * the currently smallest total weight.
+ *
+ * @param {object[]} items The array of objects to split.
+ * @param {number} n The number of chunks to create.
+ * @param {string} weightProperty The name of the property on each object that contains the numerical weight.
+ * @returns {object[][]} An array containing n arrays (chunks) of the original objects.
+ */
+export function balancedSplitWithObjects(items, n, weightProperty) {
+    // --- Input Validation ---
+    if (n <= 0) {
+      throw new Error("Number of chunks (n) must be a positive integer.");
+    }
+    if (!Array.isArray(items)) {
+      throw new Error("Input 'items' must be an array of objects.");
+    }
+    if (typeof weightProperty !== 'string' || weightProperty.length === 0) {
+      throw new Error("'weightProperty' must be a non-empty string.");
+    }
+    if (items.length === 0) {
+      return Array.from({ length: n }, () => []);
+    }
+  
+    // 1. Sort the input objects in descending order based on the weightProperty.
+    // We create a copy with [...items] to avoid modifying the original array.
+    const sortedItems = [...items].sort((a, b) => {
+      const weightA = a[weightProperty] || 0;
+      const weightB = b[weightProperty] || 0;
+      return weightB - weightA;
+    });
+  
+    // 2. Initialize n chunks and an array to track their sums.
+    const chunks = Array.from({ length: n }, () => []);
+    const sums = Array(n).fill(0);
+  
+    // 3. Distribute the objects into the chunks.
+    for (const item of sortedItems) {
+      // Access the weight from the object's property.
+      const weight = item[weightProperty];
+  
+      // More robust validation: ensure the weight is a number.
+      if (typeof weight !== 'number' || isNaN(weight)) {
+        throw new Error(
+          `Item ${JSON.stringify(item)} has a non-numeric or missing '${weightProperty}' property.`
+        );
+      }
+  
+      // Find the index of the chunk with the smallest current sum.
+      const minSumIndex = sums.indexOf(Math.min(...sums));
+  
+      // Add the entire object to that chunk.
+      chunks[minSumIndex].push(item);
+  
+      // Update the sum for that chunk using the object's weight.
+      sums[minSumIndex] += weight;
+    }
+  
+    return chunks;
+  }

@@ -87,7 +87,7 @@ suite('opsManager tests', () =>{
         await rehydratedTask.execute();
     });
     assert.equal(rehydratedTask.rootOp.state, 'blocked');
-    assert.deepEqual(p1.tasks[t.taskName], p2.tasks['retry-blocked']);
+    assert.deepEqual(p1.tasks[t.taskName], p2.tasks['retry']);
   });
 
 });
