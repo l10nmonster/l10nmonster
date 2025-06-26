@@ -1,4 +1,4 @@
-import { L10nContext, utils } from '@l10nmonster/core';
+import { logInfo, logVerbose, utils } from '@l10nmonster/core';
 
 const statusPriority = { done: 1, pending: 2, req: 3 };
 const legacyJobFilenameRegex = /(?<jobNameStub>[^/]+(?<translationProvider>[^_]+)_(?<sourceLang>[^_]+)_(?<targetLang>[^_]+)_job_(?<jobGuid>[0-9A-Za-z_-]+))-(?<status>req|pending|done)\.json$/;
@@ -11,10 +11,11 @@ const legacyJobFilenameRegex = /(?<jobNameStub>[^/]+(?<translationProvider>[^_]+
  * @property {string} partitioning - Determines how TM Blocks are partitioned ('job', 'provider', or 'language')
  *
  * @example
- * const store = new LegacyFileBasedTmStore(fileDelegate, 'job');
+ * const store = new LegacyFileBasedTmStore({ delegate: fileDelegate, id: 'myStore', parallelism: 3 });
  */
 export class LegacyFileBasedTmStore {
     id;
+    parallelism;
 
     #files;
 
@@ -28,15 +29,20 @@ export class LegacyFileBasedTmStore {
 
     /**
      * Creates a LegacyFileBasedTmStore instance
-     * @param {Object} delegate - Required file store delegate implementing file operations
-     * @throws {Error} If no delegate or name is provided
+     * @param {Object} options - Configuration options
+     * @param {Object} options.delegate - Required file store delegate implementing file operations
+     * @param {string} options.id - Required unique identifier for the store
+     * @param {number} [options.parallelism=1] - Number of blocks to fetch in parallel
+     * @throws {Error} If no delegate or id is provided
      */
-    constructor(delegate, id) {
+    constructor(options) {
+        const { delegate, id, parallelism = 1 } = options || {};
         if (!delegate || !id) {
-            throw new Error('A delegate and a id are required to instantiate a LegacyFileBasedTmStore');
+            throw new Error('A delegate and an id are required to instantiate a LegacyFileBasedTmStore');
         }
         this.delegate = delegate;
         this.id = id;
+        this.parallelism = Math.max(1, parallelism);
     }
 
     async #getAllFiles() {
@@ -82,7 +88,7 @@ export class LegacyFileBasedTmStore {
         return (await this.#listAllTmBlocksExtended(sourceLang, targetLang)).map(([ blockName, jobGuid, modified ]) => [ blockName, modified ]);
     }
 
-    async *#getTmBlock(blockName) {
+    async #getTmBlock(blockName) {
         const [ jobRequest, jobResponse ] = await Promise.all([
             (async () => {
                 try {
@@ -106,17 +112,32 @@ export class LegacyFileBasedTmStore {
                 }
             })(),
         ]);
-        yield* utils.getIteratorFromJobPair(jobRequest, jobResponse);
+        return [ jobRequest, jobResponse ];
     }
 
     async *getTmBlocks(sourceLang, targetLang, blockIds) {
         const toc = await this.getTOC(sourceLang, targetLang);
-        for (const blockId of blockIds) {
+        
+        // Helper function to fetch a single block
+        const fetchBlock = async (blockId) => {
             const blockName = toc.blocks[blockId]?.blockName;
             if (blockName) {
-                yield* this.#getTmBlock(blockName);
+                return await this.#getTmBlock(blockName);
             } else {
                 L10nContext.logger.info(`Block not found: ${blockId}`);
+                return [null, null];
+            }
+        };
+
+        // Process blocks in batches with controlled parallelism
+        for (let i = 0; i < blockIds.length; i += this.parallelism) {
+            const batch = blockIds.slice(i, i + this.parallelism);
+            const batchPromises = batch.map(blockId => fetchBlock(blockId));
+            const batchResults = await Promise.all(batchPromises);
+            
+            // Yield results from this batch in order
+            for (const [jobRequest, jobResponse] of batchResults) {
+                yield* utils.getIteratorFromJobPair(jobRequest, jobResponse);
             }
         }
     }

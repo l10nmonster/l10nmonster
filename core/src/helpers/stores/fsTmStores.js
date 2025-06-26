@@ -5,8 +5,12 @@ import { LegacyFileBasedTmStore } from './legacyFileBasedTmStore.js';
 import { BaseJsonlTmStore } from './baseJsonlTmStore.js';
 
 export class FsLegacyJsonTmStore extends LegacyFileBasedTmStore {
-    constructor({ jobsDir, id }) {
-        super(new FsStoreDelegate(path.join(L10nContext.baseDir, jobsDir)), id);
+    constructor({ jobsDir, id, parallelism }) {
+        super({ 
+            delegate: new FsStoreDelegate(path.join(L10nContext.baseDir, jobsDir)), 
+            id,
+            parallelism 
+        });
     }
 }
 
