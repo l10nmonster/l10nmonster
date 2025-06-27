@@ -176,7 +176,7 @@ export class FormatHandler {
                     if (nstr !== undefined) {
                         const segmentFlags = Object.fromEntries((seg.flags ?? []).map(f => [ f, true ]));
                         const str =this.#encodeTranslatedSegment(nstr, seg.mf, { ...flags, ...segmentFlags });
-                        return { nstr, str };
+                        return { nstr, str, tu: entry };
                     }
                 } catch(e) {
                     L10nContext.logger.verbose(`Problem translating guid ${seg.guid} to ${tm.targetLang}: ${e.message ?? e}`);
