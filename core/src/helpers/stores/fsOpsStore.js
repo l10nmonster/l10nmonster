@@ -1,21 +1,16 @@
-import * as path from 'path';
-import { existsSync, mkdirSync, createReadStream, createWriteStream } from 'fs';
 import readline from 'node:readline/promises';
 import { Readable } from 'node:stream';
-import { pipeline } from 'node:stream/promises';
+import { FsStoreDelegate } from './fsStoreDelegate.js';
 
-export class FsOpsStore {
-    #opsDir;
+export class OpsStore {
+    #storeDelegate;
 
-    constructor(opsDir) {
-        this.#opsDir = opsDir;
-        if (!existsSync(opsDir)) {
-            mkdirSync(opsDir, {recursive: true});
-        }
+    constructor(storeDelegate) {
+        this.#storeDelegate = storeDelegate;
     }
 
     async saveOps(taskName, opList) {
-        const fullPath = path.join(this.#opsDir, `${taskName}.jsonl`);
+        const filename = `${taskName}.jsonl`;
         const generator = function *jsonlGenerator () {
             for (const op of opList) {
                 // eslint-disable-next-line prefer-template
@@ -23,13 +18,12 @@ export class FsOpsStore {
             }
         };
         const readable = Readable.from(generator());
-        const writable = createWriteStream(fullPath);
-        await pipeline(readable, writable);
+        await this.#storeDelegate.saveStream(filename, readable);
     }
 
     async *getTask(taskName) {
-        const fullPath = path.join(this.#opsDir, `${taskName}.jsonl`);
-        const reader = createReadStream(fullPath);
+        const filename = `${taskName}.jsonl`;
+        const reader = this.#storeDelegate.getStream(filename);
         const rl = readline.createInterface({
             input: reader,
             crlfDelay: Infinity,
@@ -38,5 +32,14 @@ export class FsOpsStore {
         for await (const line of rl) {
             yield JSON.parse(line);
         }
+    }
+}
+
+export class FsOpsStore extends OpsStore {
+    constructor(opsDir) {
+        const storeDelegate = new FsStoreDelegate(opsDir);
+        // Ensure the directory exists
+        storeDelegate.ensureBaseDirExists();
+        super(storeDelegate);
     }
 }
