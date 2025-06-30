@@ -112,16 +112,19 @@ export class BaseJsonlTmStore {
                     const row = JSON.parse(line);
                     const { nsrc, ntgt, notes, tuProps, jobProps, ...otherProps } = row;
                     if (jobProps) {
-                        if (currentJob) {
-                            yield currentJob;
+                        const parsedJobProps = JSON.parse(jobProps);
+                        if (currentJob?.jobProps?.jobGuid !== parsedJobProps.jobGuid) {
+                            if (currentJob) {
+                                yield currentJob;
+                            }
+                            currentJob = { jobProps: { sourceLang, targetLang, ...parsedJobProps }, tus: [] }; // add sourceLang and targetLang as they were stripped
                         }
-                        currentJob = { jobProps: JSON.parse(jobProps), tus: [] };
                     }
                     nsrc && (otherProps.nsrc = JSON.parse(nsrc));
                     ntgt && (otherProps.ntgt = JSON.parse(ntgt));
                     notes && (otherProps.notes = JSON.parse(notes));
                     const expandedTuProps = tuProps ? JSON.parse(tuProps) : {};
-                    currentJob.tus.push({ ...otherProps, ...expandedTuProps });
+                    currentJob.tus.push({ ...otherProps, ...expandedTuProps, jobGuid: currentJob.jobProps.jobGuid.jobGuid });
                 }
                 yield currentJob;
                 rl.close();
@@ -182,19 +185,22 @@ export class BaseJsonlTmStore {
                     for await (const job of tmBlockIterator) {
                         const { jobProps, tus } = job;
                         jobs.push([ jobProps.jobGuid, jobProps.updatedAt ]);
+                        const { sourceLang, targetLang, ...otherJobProps } = jobProps; // remove sourceLang and targetLang from jobProps as they are already in the path
                         const out = [];
-                        for (const tu of tus) {
+                        tus.forEach((tu, idx) => {
                             const { guid, jobGuid, rid, sid, nsrc, ntgt, notes, q, ts, ...tuProps } = tu;
-                            const row = { guid, jobGuid, rid, sid, q, ts };
+                            const row = { guid, rid, sid, q, ts };
                             nsrc && (row.nsrc = JSON.stringify(nsrc));
                             ntgt && (row.ntgt = JSON.stringify(ntgt));
                             notes && (row.notes = JSON.stringify(notes));
                             tuProps && (row.tuProps = JSON.stringify(tuProps));
-                            jobProps && (row.jobProps = JSON.stringify(jobProps));
+                            idx === 0 && otherJobProps && (row.jobProps = JSON.stringify(otherJobProps));
                             out.push(JSON.stringify(row));
-                        }
+                        });
                         // eslint-disable-next-line prefer-template
-                        yield out.join('\n') + '\n';
+                        if (out.length > 0) {
+                            yield out.join('\n') + '\n';
+                        }
                     }
                 };
                 const blockName = this.#getTmBlockName({ sourceLang, targetLang, translationProvider, blockId });
