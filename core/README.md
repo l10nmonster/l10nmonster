@@ -1,8 +1,21 @@
-# L10n Monster Core
+# @l10nmonster/core
 
-This is the main L10n Monster package that provides a lot of the core functionality that drives user interfaces such as the [CLI](../cli) and the [VSCode Extension](../vscode-l10nmanager).
+The foundational L10n Monster package containing core functionality for translation management systems. This package provides the essential classes, managers, and plugin system that powers user interfaces like the [CLI](../cli) and [VSCode Extension](../vscode-l10nmanager).
 
-I can also be used directly to control it directly from JS scripts.
+Can be used directly in JavaScript applications for programmatic control of localization workflows.
+
+## Installation
+
+```bash
+npm install @l10nmonster/core
+```
+
+## Core Architecture
+
+- **Translation Pipeline**: Modular 4-stage pipeline (Source → Filter → Translator → Target)
+- **Entity Management**: Jobs, translation units, sources, and translation memory
+- **Manager Classes**: MonsterManager, OpsManager, ResourceManager, TmManager
+- **Plugin System**: Extensible adapters, filters, normalizers, providers, and stores
 
 ## Sources
 

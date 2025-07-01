@@ -1,15 +1,27 @@
-## Getting started
+# @l10nmonster/cli
 
-### Installation
+Command-line interface for L10n Monster - continuous localization for the rest of us.
+
+## Installation
+
+### From npm
+
+```bash
+npm install -g @l10nmonster/cli
+```
+
+### From source
 
 ```sh
 git clone git@github.com:l10nmonster/l10nmonster.git
 cd l10nmonster
-npm i
+npm install
 npm link
 ```
 
-Eventually there will be a binary for each platform, but this is still under heavy development.
+## Getting started
+
+Create a configuration file `l10nmonster.config.mjs` at your project root, then use the CLI commands to manage translations.
 
 ## Basic Operation
 
