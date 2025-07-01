@@ -34,7 +34,7 @@ describe('AnthropicAgent', () => {
             
             assert.throws(() => {
                 new AnthropicAgent(invalidOptions);
-            }, /You must specify quality and model/);
+            }, /You must specify quality/);
         });
 
         it('should throw error when quality is missing', () => {
@@ -43,7 +43,7 @@ describe('AnthropicAgent', () => {
             
             assert.throws(() => {
                 new AnthropicAgent(invalidOptions);
-            }, /You must specify quality and model/);
+            }, /You must specify quality/);
         });
 
         it('should use default values for optional parameters', () => {

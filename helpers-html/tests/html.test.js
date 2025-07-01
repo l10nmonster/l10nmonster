@@ -170,7 +170,6 @@ suite('html filter with hasInlineBlockElements option', () => {
         const resourceFilter = new HTMLFilter();
         const resource = fs.readFileSync('tests/artifacts/www.html', 'utf8');
         const result = await resourceFilter.parseResource({ resource });
-        console.dir(result.segments, { depth: null });
         assert.equal(result.segments.length, 22);
         assert.equal(result.segments[0].str, 'The World Wide Web project');
         assert.match(result.segments[3].str, /Everything there is online about W3.*<a.*>executive summary<\/a>/);
@@ -187,11 +186,6 @@ suite('mrmrs.html file tests', () => {
         const resource = fs.readFileSync(resourceId, 'utf8');
         const result = await resourceFilter.parseResource({ resource });
         
-        // Log the segments to see what's extracted
-        console.log('Total segments found:', result.segments.length);
-        result.segments.forEach((segment, index) => {
-            console.log(`Segment ${index}:`, segment.str);
-        });
         
         // Basic validation
         assert.ok(result.segments.length > 0, 'Should extract some segments');
@@ -213,14 +207,9 @@ suite('mrmrs.html file tests', () => {
             segment.str.includes('Label 3')
         );
         
-        console.log('Radio button segments:');
-        radioSegments.forEach((segment, index) => {
-            console.log(`Radio segment ${index}:`, segment.str);
-        });
         
         // Check that Label 1 appears correctly and not duplicated
         const label1Segments = result.segments.filter(segment => segment.str.includes('Label 1'));
-        console.log('Label 1 segments:', label1Segments.map(s => s.str));
         
         // Verify the structure is correct
         if (label1Segments.length > 0) {
@@ -250,10 +239,6 @@ suite('mrmrs.html file tests', () => {
             segment.str.includes('Radio Buttons')
         );
         
-        console.log('Form-related segments:');
-        formSegments.forEach((segment, index) => {
-            console.log(`Form segment ${index}:`, segment.str);
-        });
         
         assert.ok(formSegments.length > 0, 'Should find form-related content');
     });
@@ -274,13 +259,6 @@ suite('mrmrs.html file tests', () => {
         const labelMatches = translatedRes.match(/<label><label>/g);
         assert.ok(!labelMatches || labelMatches.length === 0, 'Should not have nested label tags');
         
-        // Log a portion of the translated content around the radio buttons for debugging
-        const radioButtonIndex = translatedRes.indexOf('type="radio"');
-        if (radioButtonIndex !== -1) {
-            const start = Math.max(0, radioButtonIndex - 200);
-            const end = Math.min(translatedRes.length, radioButtonIndex + 200);
-            console.log('Radio button area in translated HTML:', translatedRes.substring(start, end));
-        }
     });
 
     test('isolated radio button HTML structure issue', async () => {

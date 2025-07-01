@@ -19,7 +19,8 @@
         "helpers-lqaboss"
     ],
     "scripts": {
-        "test": "npm test --workspaces",
+        "test": "npm test --workspaces && npm run test:regression",
+        "test:regression": "cd regression && ./test.zsh js local all && ./test.zsh cli local all",
         "eslint": "eslint core/src/**/*.js cli/*.js",
         "eslint:files": "npm run eslint | grep -e '^/.*js$'",
         "eslint:files:open": "code $(npm run --silent eslint:files)"

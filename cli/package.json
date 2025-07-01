@@ -19,7 +19,7 @@
         "translation-files"
     ],
     "scripts": {
-        "test": "exit 0"
+        "test": "node --test"
     },
     "author": "Diego Lagunas",
     "license": "MIT",

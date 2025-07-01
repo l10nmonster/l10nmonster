@@ -39,7 +39,8 @@ run_regression() {
     diff -qr $case ../expected/$case
 }
 
-setopt ERR_EXIT
+# Enable error exit - exit immediately if any command fails
+setopt ERR_EXIT 2>/dev/null || set -e
 find expected -name '.DS_Store' -type f -delete
 rm -rf wd
 mkdir wd
