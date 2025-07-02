@@ -1,8 +1,10 @@
-# L10n Monster
+# L10n Monster v3
 
 Do you want to set up continuous localization for your project but don't have a whole team to look after it? Do you know how `git` works? Have you set up a build like `esbuild` before? You've come to the right place and you'll feel right at home!
 
 L10n Monster is the first headless and server-less TMS in the industry! It's born in a world of continuous integration and deployment. It is a solution to manage translation vendors, not translators. It pushes source content out to translation vendors and pulls translations back in. No more no less. It doesn't try to tell you how to consume content or deliver it to production. It doesn't deal with formatting and other internationalization concerns. There are plenty of i18n libraries to deal with that.
+
+**v3 brings major architectural improvements**: ESM-native design, pnpm workspace support, enhanced AI/ML integrations, modular Data Access Layer, and comprehensive testing infrastructure.
 
 # Philosophy
 
@@ -12,14 +14,98 @@ While L10n Monster is written in JS and it's more naturally extended and scripte
 
 # Components
 
-To help manage dependencies and allow the variety of integrations required by the localization industry, there are a lot of packages to choose from and it's very easy to create your own extensions.
+v3 introduces a modern ESM-based monorepo architecture with pnpm workspaces, providing better dependency management and modular development.
 
-1. `@l10nmonster/core`: the foundational classes where most of the functionality lives.
-2. `@l10nmonster/cli`: a thin wrapper to invoke functions from the shell. Suitable for batch jobs.
-3. `@l10nmonster/vscode-l10nmanager`: a VS Code extension to provide a more intuitive UI than the CLI.
-4. `@l10nmonster/helpers-*`: optional configuration components with additional dependencies to deal with different formats and platforms.
+## Core Packages
 
-See the overall [System Design (OUTDATED)](architecture.md#system-design) to get a better idea. Also, a deep dive of the various [pipelines](pipelines.md).
+1. **`@l10nmonster/core`**: The foundational package with DAL, managers, and plugin system
+2. **`@l10nmonster/cli`**: ESM-based CLI providing the `l10n` command interface  
+3. **`@l10nmonster/server`**: (Beta) Web-based interface with REST API and React UI
+
+## Helper Packages
+
+### Platform Support
+- **`@l10nmonster/helpers-android`**: Android XML resource handling
+- **`@l10nmonster/helpers-ios`**: iOS strings and localization
+- **`@l10nmonster/helpers-java`**: Java properties file support
+
+### File Formats
+- **`@l10nmonster/helpers-json`**: JSON and i18next format support
+- **`@l10nmonster/helpers-po`**: GNU gettext PO files
+- **`@l10nmonster/helpers-xliff`**: XLIFF translation interchange
+- **`@l10nmonster/helpers-html`**: HTML content processing
+
+### AI/ML Translation
+- **`@l10nmonster/helpers-openai`**: OpenAI GPT integration
+- **`@l10nmonster/helpers-anthropic`**: Anthropic Claude integration  
+- **`@l10nmonster/helpers-googlecloud`**: Google Cloud Translation and Vertex AI
+- **`@l10nmonster/helpers-translated`**: ModernMT and Lara providers
+- **`@l10nmonster/helpers-deepl`**: DeepL translation service
+
+### Workflow Integration
+- **`@l10nmonster/helpers-lqaboss`**: LQA Boss visual review integration
+- **`@l10nmonster/helpers-demo`**: Development and testing utilities
+
+## Documentation
+
+- **[Architecture Guide](architecture.md)**: Detailed system architecture and design patterns
+- **[Pipeline Documentation](pipelines.md)**: Translation workflow deep-dive
+- **[v3 Migration Guide](v3.md)**: Complete overview of v3 changes and migration
+- **[CLAUDE.md](CLAUDE.md)**: AI assistant integration and project commands
+
+# Getting Started (v3)
+
+## Prerequisites
+
+- **Node.js**: >=20.12.0 (ESM support required)
+- **Package Manager**: pnpm (recommended) or npm
+- **Configuration**: `l10nmonster.config.mjs` (ESM format)
+
+## Installation
+
+```bash
+# Install CLI globally
+npm install -g @l10nmonster/cli
+
+# Or use in project
+pnpm add @l10nmonster/core @l10nmonster/cli
+```
+
+## Quick Setup
+
+```bash
+# Initialize new project
+l10n init
+
+# Analyze source content
+l10n source snap
+l10n analyze
+
+# Translate content
+l10n translate
+
+# Push translated resources
+l10n ops update
+```
+
+## Configuration Example
+
+```javascript
+// l10nmonster.config.mjs
+import { FsSource, FsTarget } from '@l10nmonster/core';
+import { GptAgent } from '@l10nmonster/helpers-openai';
+
+export default {
+  channels: [{
+    source: new FsSource({ globs: ['src/**/*.json'] }),
+    target: new FsTarget({ targetPath: (lang, id) => id.replace('/en/', `/${lang}/`) })
+  }],
+  providers: [{
+    id: 'openai',
+    provider: new GptAgent({ model: 'gpt-4' })
+  }]
+};
+```
 
 ## Channels
 
@@ -27,15 +113,16 @@ A channel represents a logical connection from where source content comes from a
 
 ### Source Adapters
 
-Sources are *adapters* used to interface with a source of content. They only deal with transport concerns and not format. They return a raw string with the content of resources and metadata associated to them. Extracted resource can declare their *format* sot that they can be parsed correctly.
+Sources are *adapters* used to interface with a source of content. They only deal with transport concerns and not format. They return a raw string with the content of resources and metadata associated to them. Extracted resource can declare their *format* so that they can be parsed correctly.
 
 <details>
 <summary>List of provided sources:</summary>
 
 |Module|Export|Description|
 |---|---|---|
-|`helpers`|`adapters.FsSource`|Read from file-system-like sources.
-|`helpers`|`adapters.HttpSource`|Read from url sources.
+|`@l10nmonster/core`|`adapters.FsSource`|Read from file-system sources with glob patterns|
+|`@l10nmonster/core`|`adapters.HttpSource`|Read from HTTP/HTTPS URL sources|
+|`@l10nmonster/helpers-googlecloud`|`BqSource`|Read from Google BigQuery data sources|
 
 </details>
 
@@ -48,7 +135,7 @@ Targets are *adapters* used to interface with a content store. They may or may n
 
 |Module|Export|Description|
 |---|---|---|
-|`helpers`|`adapters.FsTarget`|Write to file-system-like sources.
+|`@l10nmonster/core`|`adapters.FsTarget`|Write to file-system destinations|
 
 </details>
 
@@ -67,13 +154,16 @@ Filters are used to convert raw strings returned by sources into segments that a
 
 |Module|Export|Description|
 |---|---|---|
-|`helpers`|`filters.SnapFilter`|Filter for normalized resources in snap store.
-|`helpers-android`|`Filter`|Filter for Android xml files.|
-|`helpers-html`|`Filter`|Filter for HTML files.|
-|`helpers-ios`|`StringsFilter`|Filter for .strings files.|
-|`helpers-java`|`PropertiesFilter`|Filter for Java properties files.|
-|`helpers-json`|`i18next.Filter`|Filter for ARB-like JSON files used by [i18next v4](https://www.i18next.com/misc/json-format).|
-|`helpers-po`|`Filter`|Filter for PO files.|
+|`@l10nmonster/core`|`filters.SnapFilter`|Filter for normalized resources in snap store|
+|`@l10nmonster/core`|`filters.MNFv1`|Monster Normalized Format v1 filter|
+|`@l10nmonster/core`|`filters.HtmlFilter`|Enhanced HTML content filter|
+|`@l10nmonster/helpers-android`|`Filter`|Android XML resource files|
+|`@l10nmonster/helpers-html`|`Filter`|HTML files with advanced processing|
+|`@l10nmonster/helpers-ios`|`StringsFilter`|iOS .strings files|
+|`@l10nmonster/helpers-java`|`PropertiesFilter`|Java properties files|
+|`@l10nmonster/helpers-json`|`i18next.Filter`|i18next v4 JSON format and generic JSON|
+|`@l10nmonster/helpers-po`|`Filter`|GNU gettext PO files|
+|`@l10nmonster/helpers-xliff`|`Filter`|XLIFF translation interchange files|
 
 </details>
 
@@ -86,22 +176,22 @@ Decoders are used to convert strings with specific formats into either pure stri
 
 |Module|Export|Description|
 |---|---|---|
-|`helpers`|`normalizers.namedDecoder`|Generic wrapper to rename a decoder.|
-|`helpers`|`normalizers.doublePercentDecoder`|Decoder for `%%` escaping.|
-|`helpers`|`normalizers.bracePHDecoder`|Decoder for `{param}` style placeholders.|
-|`helpers`|`normalizers.keywordTranslatorMaker`|Decoder/encoder pair to protect/replace keywords.|
-|`helpers`|`regex.decoderMaker(flag, regex, partDecoder)`|Internal utility to create decoders.|
-|`helpers`|`xml.entityDecoder`|Decoder for XML entities.|
-|`helpers`|`xml.CDataDecoder`|Decoder for XML CData.|
-|`helpers`|`xml.tagDecoder`|Decoder for XML tags.|
-|`helpers-android`|`escapesDecoder`|Decoder for escaped chars like `\n` and `\u00a0`.|
-|`helpers-android`|`spaceCollapser`|Decoder to convert multiple whitespace into a single space.|
-|`helpers-android`|`phDecoder`|Decoder for `%d` style placeholders.|
-|`helpers-ios`|`escapesDecoder`|Decoder for escaped chars like `\n` and `\U00a0`.|
-|`helpers-ios`|`phDecoder`|Decoder for `%d` style placeholders.|
-|`helpers-java`|`escapesDecoder`|Decoder for escaped chars like `\n` and `\u00a0`.|
-|`helpers-java`|`MFQuotesDecoder`|Decoder for dealing with quotes in MessageFormat strings.|
-|`helpers-json`|`i18next.phDecoder`|Decoder for `{{param}}` and `$t(key)` style placeholders.|
+|`@l10nmonster/core`|`normalizers.namedDecoder`|Generic wrapper to rename a decoder|
+|`@l10nmonster/core`|`normalizers.doublePercentDecoder`|Decoder for `%%` escaping|
+|`@l10nmonster/core`|`normalizers.bracePHDecoder`|Decoder for `{param}` style placeholders|
+|`@l10nmonster/core`|`normalizers.keywordTranslatorMaker`|Decoder/encoder pair to protect/replace keywords|
+|`@l10nmonster/core`|`regex.decoderMaker(flag, regex, partDecoder)`|Internal utility to create decoders|
+|`@l10nmonster/core`|`xml.entityDecoder`|Decoder for XML entities|
+|`@l10nmonster/core`|`xml.CDataDecoder`|Decoder for XML CData|
+|`@l10nmonster/core`|`xml.tagDecoder`|Decoder for XML tags|
+|`@l10nmonster/helpers-android`|`escapesDecoder`|Decoder for escaped chars like `\n` and `\u00a0`|
+|`@l10nmonster/helpers-android`|`spaceCollapser`|Decoder to convert multiple whitespace into a single space|
+|`@l10nmonster/helpers-android`|`phDecoder`|Decoder for `%d` style placeholders|
+|`@l10nmonster/helpers-ios`|`escapesDecoder`|Decoder for escaped chars like `\n` and `\U00a0`|
+|`@l10nmonster/helpers-ios`|`phDecoder`|Decoder for `%d` style placeholders|
+|`@l10nmonster/helpers-java`|`escapesDecoder`|Decoder for escaped chars like `\n` and `\u00a0`|
+|`@l10nmonster/helpers-java`|`MFQuotesDecoder`|Decoder for dealing with quotes in MessageFormat strings|
+|`@l10nmonster/helpers-json`|`i18next.phDecoder`|Decoder for `{{param}}` and `$t(key)` style placeholders|
 
 </details>
 
@@ -114,65 +204,126 @@ Encoders are used to convert pure strings and placeholders back to their origina
 
 |Module|Export|Description|
 |---|---|---|
-|`helpers`|`normalizers.gatedEncoder`|Generic flag-based encoder execution.|
-|`helpers`|`normalizers.doublePercentEncoder`|Encoder for `%%` escaping.|
-|`helpers`|`regex.encoderMaker(name, regex, matchMap)`|Internal utility to create encoders.|
-|`helpers`|`xml.entityEncoder`|Encoder for XML entities.|
-|`helpers-android`|`escapesEncoder`|Encoder for escaped chars as required by Android.|
-|`helpers-ios`|`escapesEncoder`|Encoder for escaped chars like `\n`.|
-|`helpers-java`|`escapesEncoder`|Encoder for escaped chars like `\n`.|
-|`helpers-java`|`MFQuotesEncoder`|Encoder for dealing with quotes in MessageFormat strings.|
+|`@l10nmonster/core`|`normalizers.gatedEncoder`|Generic flag-based encoder execution|
+|`@l10nmonster/core`|`normalizers.doublePercentEncoder`|Encoder for `%%` escaping|
+|`@l10nmonster/core`|`regex.encoderMaker(name, regex, matchMap)`|Internal utility to create encoders|
+|`@l10nmonster/core`|`xml.entityEncoder`|Encoder for XML entities|
+|`@l10nmonster/helpers-android`|`escapesEncoder`|Encoder for escaped chars as required by Android|
+|`@l10nmonster/helpers-ios`|`escapesEncoder`|Encoder for escaped chars like `\n`|
+|`@l10nmonster/helpers-java`|`escapesEncoder`|Encoder for escaped chars like `\n`|
+|`@l10nmonster/helpers-java`|`MFQuotesEncoder`|Encoder for dealing with quotes in MessageFormat strings|
 
 </details>
 
-## Translation Providers
+## Translation Providers (v3 Enhanced)
 
-Translation providers are used to interface with the translation process. There are 2 kinds of providers and 2 modes of operation. Synchronous providers return translations right away. Typically these are machine translation engines that respond in real-time.
-Jobs submitted to synchronous providers will go from `req` state to `done` state upon a push. Asynchronous providers will take longer to return translations (e.g. days for human translation). Jobs submitted to asynchronous providers will go from `req` state to `pending` to `done` state upon a push.
-Providers can also support a `translation` push as opposed to a `refresh` push. The former meant for new submissions and the latter to pick up changes from previous submissions (e.g. translation bug fixes). A refresh push is always synchronous and generates a `done` job only if it produces differences (if all translations are unchanged then the job is cancelled).
+v3 introduces a hierarchical provider architecture with BaseTranslationProvider as the foundation, supporting both synchronous and asynchronous translation workflows with enhanced error handling, parallelization, and AI/ML integration.
+
+**Provider Types:**
+- **Synchronous**: Real-time translation (MT engines) - `req` → `done`
+- **Asynchronous**: Human translation workflows - `req` → `pending` → `done`
+- **Internal**: Leverage existing translations and manage repetitions
+
+**Operation Modes:**
+- **Translation push**: New content submission
+- **Refresh push**: Update existing translations (synchronous, generates `done` only if changed)
 
 <details>
-<summary>List of provided translators:</summary>
+<summary>List of provided translation providers:</summary>
 
 |Module|Export|Async|Sync|Translation|Refresh|Description|
 |---|---|:---:|:---:|:---:|:---:|---|
-|`helpers`|`translators.Grandfather`|❌|✅|✅|✅|Create translations based on existing translated resources.
-|`helpers`|`translators.Repetitions`|❌|✅|✅|✅|Create translations based on leverage of 100% text matches.
-|`helpers`|`translators.Visicode`|❌|✅|✅|✅|Pseudo-localization with visual identification of string id's.
-|`helpers-deepl`|`DeepL`|✅|❌|✅|💰|DeepL translation [API](https://www.deepl.com/docs-api).
-|`helpers-demo`|`PigLatinizer`|✅|❌|✅|✅|Translator into pig latin for demo and pseudo-localization.
-|`helpers-googlecloud`|`GoogleCloudTranslateV3`|✅|❌|✅|💰|Google Translate V3 [API](https://cloud.google.com/translate/docs).
-|`helpers-translated`|`ModernMT`|✅|✅|✅|💰|Modern MT translation [API](https://www.modernmt.com/api/#introduction) (both realtime and batch).
-|`helpers-translated`|`TranslationOS`|✅|❌|✅|✅|TOS human translation [API](https://api.translated.com/v2).
-|`helpers-xliff`|`BridgeTranslator`|✅|❌|✅|❌|Translator via XLIFF files in filesystem.
+|**Internal Providers**|||||
+|`@l10nmonster/core`|`providers.Grandfather`|❌|✅|✅|✅|Leverage existing translated resources|
+|`@l10nmonster/core`|`providers.Repetition`|❌|✅|✅|✅|Handle 100% text match repetitions|
+|`@l10nmonster/core`|`providers.InternalLeverage`|❌|✅|✅|✅|Reuse translations from TM|
+|`@l10nmonster/core`|`providers.Variant`|❌|✅|✅|✅|Language variant support|
+|`@l10nmonster/core`|`providers.Invisicode`|❌|✅|✅|✅|Development/testing pseudo-localization|
+|`@l10nmonster/core`|`providers.Visicode`|❌|✅|✅|✅|Visual string ID pseudo-localization|
+|**AI/ML Providers**|||||
+|`@l10nmonster/helpers-openai`|`GptAgent`|✅|❌|✅|✅|OpenAI GPT models with custom schemas|
+|`@l10nmonster/helpers-anthropic`|`AnthropicAgent`|✅|❌|✅|✅|Anthropic Claude models|
+|`@l10nmonster/helpers-googlecloud`|`GctProvider`|✅|❌|✅|💰|Google Cloud Translation V3|
+|`@l10nmonster/helpers-googlecloud`|`GenaiAgent`|✅|❌|✅|✅|Google Vertex AI Gemini models|
+|**Professional MT**|||||
+|`@l10nmonster/helpers-translated`|`MmtProvider`|✅|✅|✅|💰|ModernMT (realtime and batch)|
+|`@l10nmonster/helpers-translated`|`LaraProvider`|✅|❌|✅|✅|Lara advanced translation|
+|`@l10nmonster/helpers-translated`|`TranslationOS`|✅|❌|✅|✅|Human translation via TOS API|
+|`@l10nmonster/helpers-deepl`|`DeepL`|✅|❌|✅|💰|DeepL professional translation|
+|**Workflow Integration**|||||
+|`@l10nmonster/helpers-xliff`|`XliffBridge`|✅|❌|✅|❌|XLIFF file-based translation workflow|
+|`@l10nmonster/helpers-lqaboss`|`LqabossProvider`|✅|❌|✅|✅|LQA Boss visual review integration|
+|**Development/Demo**|||||
+|`@l10nmonster/helpers-demo`|`PigLatinizer`|✅|❌|✅|✅|Pig Latin pseudo-localization|
 
 </details>
 
 ## Operations
 
 Running localization operations requires additional tools to support processes. The following additional components can be used:
-1. **Job Stores**: provide persistence of past translation jobs (so that they can be reused in the future).
-2. **Snap Stores**: provide persistence of normalized source content (in case accessing sources is expensive or impractical).
-3. **Analyzers**: generate report over source content and translations. Some are provided ouf of the box and custom ones can be added.
-4. **Actions**: effectively pieces of the localization process. Some are provided ouf of the box and custom ones can be added.
+1. **TM Stores**: provide persistence of translation memory with various storage backends
+2. **Operations Stores**: manage jobs, tasks, and workflow state
+3. **Store Delegates**: abstract storage implementations for different backends
+4. **Analyzers**: generate reports over source content and translations
+5. **Actions**: modular pieces of the localization process
 
 <details>
-<summary>List of provided stores:</summary>
+<summary>List of provided stores (v3 Enhanced):</summary>
 
 |Module|Export|Description|
 |------|---|---|
-|`helpers`|`stores.JsonJobStore`|Job store based on JSON files in the filesystem.|
-|`helpers`|`stores.FileBasedJobStore`|Abstract job store based on JSON files in a blob store.|
-|`helpers`|`stores.FsSnapStore`|Snap store based on JSON files in the filesystem.|
-|`helpers`|`stores.FileBasedSnapStore`|Abstract snap store based on JSON files in a blob store.|
-|`helpers-googlecloud`|`stores.GCSJobStore`|Job store based on JSON files in GCS.|
-|`helpers-googlecloud`|`stores.GCSSnapStore`|Snap store based on JSON files in GCS.|
+|**TM Stores**|||
+|`@l10nmonster/core`|`stores.BaseJsonlTmStore`|JSONL format TM with compression support|
+|`@l10nmonster/core`|`stores.LegacyFileBasedTmStore`|Backward compatible TM store|
+|`@l10nmonster/core`|`stores.FsTmStores`|File system TM storage|
+|**Operations Stores**|||
+|`@l10nmonster/core`|`stores.OpsStore`|Operations and task management|
+|`@l10nmonster/core`|`stores.FsOpsStore`|File system operations store|
+|**Store Delegates**|||
+|`@l10nmonster/core`|`stores.FsStoreDelegate`|File system storage delegation|
+|`@l10nmonster/helpers-googlecloud`|`stores.GcsStoreDelegate`|Google Cloud Storage delegation|
+|`@l10nmonster/helpers-googlecloud`|`stores.GdriveStoreDelegate`|Google Drive storage delegation|
+|**Cloud Stores**|||
+|`@l10nmonster/helpers-googlecloud`|`stores.GcsTmStore`|Google Cloud Storage TM|
 
 </details>
 
-
 # Testing
 
-Unit testing can be launched with `npm test` either centrally from the root directory, or module by module.
+## Comprehensive Test Suite
 
-Regression testing is a suite of tests from the command line (both from zsh and node). Run `zsh test.zsh` from /regression and pass the desired parameters.
+```bash
+# Run all tests (unit + regression)
+pnpm test
+
+# Unit tests only
+pnpm --recursive test
+
+# Regression tests only
+pnpm run test:regression
+
+# Specific test case
+cd regression && ./test.zsh js local android
+```
+
+**Test Coverage:**
+- **200+ unit tests** across 18 workspace packages
+- **Regression tests** for 8 project configurations (Android, iOS, Java, PO, HTML, etc.)
+- **Integration tests** for all providers
+- **End-to-end workflows** using both JavaScript API and CLI modes
+
+## Development
+
+```bash
+# Install dependencies
+pnpm install
+
+# Run linting
+pnpm run eslint
+
+# Build packages
+pnpm run build
+
+# Run CLI locally
+pnpm exec l10n --help
+```

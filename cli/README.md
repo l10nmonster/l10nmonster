@@ -1,6 +1,6 @@
 # @l10nmonster/cli
 
-Command-line interface for L10n Monster - continuous localization for the rest of us.
+Command-line interface for L10n Monster v3 - continuous localization for the rest of us.
 
 ## Installation
 
@@ -12,104 +12,410 @@ npm install -g @l10nmonster/cli
 
 ### From source
 
-```sh
+```bash
 git clone git@github.com:l10nmonster/l10nmonster.git
 cd l10nmonster
-npm install
-npm link
+pnpm install
+pnpm build
+pnpm link --global @l10nmonster/cli
 ```
 
-## Getting started
+## Getting Started
 
 Create a configuration file `l10nmonster.config.mjs` at your project root, then use the CLI commands to manage translations.
 
-## Basic Operation
+### Basic Configuration
 
-```sh
-l10n push
+```javascript
+// l10nmonster.config.mjs
+import { FsSource, FsTarget } from '@l10nmonster/core';
+
+export default {
+  channels: [{
+    source: new FsSource({ globs: ['src/**/*.json'] }),
+    target: new FsTarget({ 
+      targetPath: (lang, resourceId) => resourceId.replace('/en/', `/${lang}/`) 
+    })
+  }],
+  
+  providers: [{
+    id: 'internal',
+    provider: 'InternalLeverage'
+  }]
+};
 ```
-It will re-read all your source content, figure out what needs translation, and send it to your translator.
 
-```sh
-l10n status
-```
-It will give you an overview of the state of translation of your project.
+## v3 Commands
 
-```sh
+### Core Operations
+
+```bash
+# Analyze source content
 l10n analyze
 ```
-It will analyze your sources and report insights like repeated content in different files and keys.
+Analyzes your sources and reports insights like repeated content, quality metrics, and translation opportunities.
 
-```sh
-l10n grandfather -q 80
+```bash
+# Capture source content snapshot
+l10n source snap
 ```
-TODO: update to Grandfather provider. For all missing translations, it will extract translations from the current translated files and, if present, import them at the specified quality level. This assume translations are faithful translations of the current source (i.e. they didn't become outdated if the source has changed). This is probably only used at the beginning, in order to establish a baseline. Afterwards, translated files are always recreated from the TM and overwritten.
+Creates a snapshot of your source content for translation workflows.
 
-```sh
-l10n leverage -q 70 -u 60
-```
-TODO: update to Repetition provider. For all missing translations, it will look into the TM for translations of the exact same source text but in different resources, while matching or not the string id (called respectively qualified and unqualified repetition). Since reusing translations may lead to a loss of quality, you can choose what quality levels to assign to your specific content. Leveraging can be done on a regular basis before pushing content to translation, or never if it's not safe to do so.
-
-```sh
-l10n pull
-```
-If there are pending translations, it will check if they became available and it will fetch them.
-
-```sh
+```bash
+# Generate translations
 l10n translate
 ```
-It will generate translated files based on the latest sources and translations in the TM.
+Processes translation requests through configured providers and generates translated resources.
 
-### Working files
+```bash
+# Update operations and target resources
+l10n ops update
+```
+Updates target resources with latest translations and manages operation lifecycle.
 
-L10n Monster maintains its working files in a hidden `.l10nmonster` directory at the root of the project. Working files are source-control friendly (json files with newlines) and can be checked in. On the other hand, they can also be destroyed and recreated on the fly if all you want to preserve is translations in your current files.
+### Translation Memory
 
-## Demo
+```bash
+# Synchronize TM with providers
+l10n tm syncup
+```
+Uploads completed translations to translation memory stores.
 
-![Demo screen](tty.gif)
+```bash
+# Download translations from TM
+l10n tm syncdown  
+```
+Downloads latest translations from translation memory to local stores.
 
-## Basic Configuration
+```bash
+# Export TM data
+l10n tm export
+```
+Exports translation memory data for backup or external processing.
 
-At the root of your project there should be a file named `l10nmonster.cjs`. You can create it by hand, or you can use `l10n init` and use one of the configurators to get up and running in no time. Well, that's the plan, it's not implemented yet!
+### Source Management
 
-The configuration must export a class that once instantiated provides the following properties:
+```bash
+# List source content
+l10n source list
+```
+Lists all detected source content with metadata and statistics.
 
-* `sourceLang`: the default source language
-* `minimumQuality`: this is the minimum required quality for a string to be considered translated (anything below  triggers a request to translate)
-* `source`: a source adapter to read input resources from
-* `resourceFilter`: a filter to process the specific resource format
-* `translationProvider`: a connector to the translation vendor
-* `target`: a target adapter to write translated resources to
-* `adapters`, `filters`, `translators`: built-in helpers (see below)
-* TODO: add the other properties that can be defined
+```bash
+# Query specific content
+l10n source query --filter "*.json"
+```
+Queries source content with filters and search criteria.
 
-## Advanced CLI
+```bash
+# Show untranslated content
+l10n source untranslated --target es
+```
+Shows untranslated content for specific target languages.
 
-The CLI support additional options to control its behavior:
+### Operations Management
 
-* `-a, --arg <string>`: this is a user-defined argument that allows to customize the user config behavior
-* `-v, --verbose`: output additional debug information
+```bash
+# View operation details
+l10n ops view
+```
+Displays detailed information about current operations and their status.
 
-Some commands also allow additional options. For more information type `l10n help <command>`.
+```bash
+# Manage jobs
+l10n ops jobs --status pending
+```
+Lists and manages translation jobs by status or other criteria.
 
-## Advanced Configuration
+```bash
+# Provider operations
+l10n ops providers
+```
+Shows configured providers and their current status.
 
-There is also additional functionality in the configuration that can be useful, especially in environments with larger teams.
+```bash
+# Delete operations
+l10n ops delete --job-id abc123
+```
+Removes specific operations or jobs from the system.
 
-The the following properties can optionally be defined:
+### Legacy Commands (v2 compatibility)
 
-* `jobStore`: a durable persistence adapter to store translations
-* `translationProvider`: this can also be a function that given a job request returns the desired vendor (e.g. `(job) => job.targetLang === 'piggy' ? piggyTranslator : xliffTranslator`)
-* TODO: add the other properties that can be defined
+```bash
+# Legacy push operation
+l10n push
+```
+**Deprecated**: Use `l10n translate` and `l10n ops update` instead.
 
-### JSON Job Store
+```bash
+# Legacy pull operation  
+l10n pull
+```
+**Deprecated**: Use `l10n tm syncdown` and `l10n ops update` instead.
 
-```js
-this.jobStore = new stores.JsonJobStore({
-    jobsDir: 'translationJobs',
-});
+```bash
+# Legacy status command
+l10n status
+```
+**Deprecated**: Use `l10n analyze` for detailed insights.
+
+## Working Files
+
+L10n Monster v3 maintains its working files in a `l10nmonster/` directory at the root of the project:
+
+- **TM stores**: `l10nmonster/tm/` - Translation memory data
+- **Operations**: `l10nmonster/ops/` - Job and task management
+- **Snapshots**: `l10nmonster/snap/` - Source content snapshots
+- **Providers**: `l10nmonster/providers/` - Provider-specific data
+
+Working files are source-control friendly (JSON/JSONL files with consistent formatting) and should be checked in for team collaboration.
+
+## Advanced CLI Options
+
+The CLI supports additional options to control behavior:
+
+- `-c, --config <path>`: Specify custom configuration file path
+- `-v, --verbose`: Output additional debug information
+- `--dry-run`: Preview operations without making changes
+- `--parallel <number>`: Set parallelism level for operations
+- `--filter <pattern>`: Apply filters to operations
+
+### Example Usage
+
+```bash
+# Run with custom config and high verbosity
+l10n translate -c ./custom.config.mjs -v
+
+# Preview operations without executing
+l10n ops update --dry-run
+
+# Parallel translation processing
+l10n translate --parallel 4
+
+# Filter specific content
+l10n source snap --filter "components/**/*.json"
 ```
 
-The JSON job store is appropriate for small dev teams where all translations are managed by a single person and there little possibility of conflicts among members. Translation jobs are stored locally in JSON file in a specified folder.
+## v3 Configuration
 
-* `jobsDir` is the directory containing translation jobs. It should be kept (e.g. checked into git) as it is needed to regenerate translated resources in a reliable way.
+### ESM Configuration Format
+
+v3 uses ESM-based configuration files (`l10nmonster.config.mjs`):
+
+```javascript
+import { FsSource, FsTarget } from '@l10nmonster/core';
+import { GptAgent } from '@l10nmonster/helpers-openai';
+
+export default {
+  // Source and target channels
+  channels: [{
+    source: new FsSource({ 
+      globs: ['src/**/*.json'],
+      targetLangs: ['es', 'fr', 'de']
+    }),
+    target: new FsTarget({ 
+      targetPath: (lang, id) => id.replace('/en/', `/${lang}/`) 
+    })
+  }],
+
+  // Translation providers
+  providers: [{
+    id: 'ai-translator',
+    provider: new GptAgent({ model: 'gpt-4' })
+  }, {
+    id: 'internal',
+    provider: 'InternalLeverage'
+  }],
+
+  // Content type definitions
+  contentTypes: [{
+    name: 'json',
+    resourceFilter: 'i18next'
+  }],
+
+  // Storage configuration
+  stores: {
+    tm: 'BaseJsonlTmStore',
+    ops: 'FsOpsStore'
+  }
+};
+```
+
+### Multi-Channel Configuration
+
+```javascript
+export default {
+  channels: [
+    {
+      // Web app content
+      source: new FsSource({ globs: ['web/src/**/*.json'] }),
+      target: new FsTarget({ targetPath: (lang, id) => id.replace('/src/', `/dist/${lang}/`) })
+    },
+    {
+      // Mobile app content  
+      source: new FsSource({ globs: ['mobile/strings/**/*.xml'] }),
+      target: new FsTarget({ targetPath: (lang, id) => id.replace('/strings/', `/strings-${lang}/`) })
+    }
+  ]
+};
+```
+
+### Provider Chains
+
+```javascript
+export default {
+  providers: [
+    { id: 'leverage', provider: 'InternalLeverage' },
+    { id: 'repetitions', provider: 'Repetition' },
+    { id: 'ai', provider: new GptAgent({ model: 'gpt-4' }) },
+    { id: 'fallback', provider: 'Invisicode' }
+  ]
+};
+```
+
+## Error Handling
+
+The CLI provides comprehensive error handling with actionable messages:
+
+```bash
+# Configuration errors
+Error: Configuration file not found: l10nmonster.config.mjs
+Tip: Run 'l10n init' to create a basic configuration
+
+# Provider errors  
+Error: OpenAI API key not configured
+Tip: Set OPENAI_API_KEY environment variable or configure apiKey in provider options
+
+# Operation errors
+Error: Translation job failed for provider 'gpt-4'
+Tip: Check provider configuration and API limits
+```
+
+## Performance Optimization
+
+### Parallel Processing
+
+```bash
+# Enable parallel operations
+l10n translate --parallel 4
+
+# Provider-specific parallelism
+l10n ops update --provider-parallel 2
+```
+
+### Filtering and Batching
+
+```bash
+# Process specific file patterns
+l10n translate --filter "*.json"
+
+# Batch operations by language
+l10n translate --batch-by-language
+
+# Limit operation scope
+l10n source snap --since "2024-01-01"
+```
+
+## Integration Examples
+
+### CI/CD Pipeline
+
+```yaml
+# GitHub Actions example
+name: Localization
+on: [push, pull_request]
+
+jobs:
+  l10n:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - run: npm install -g @l10nmonster/cli
+      - run: l10n analyze
+      - run: l10n translate --dry-run
+```
+
+### NPM Scripts
+
+```json
+{
+  "scripts": {
+    "l10n:analyze": "l10n analyze",
+    "l10n:translate": "l10n translate",
+    "l10n:update": "l10n ops update",
+    "l10n:sync": "l10n tm syncup && l10n tm syncdown"
+  }
+}
+```
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Configuration not found**
+   ```bash
+   # Ensure config file exists and has correct name
+   ls l10nmonster.config.mjs
+   ```
+
+2. **Module import errors**
+   ```bash
+   # Verify Node.js version (requires >= 20.12.0)
+   node --version
+   ```
+
+3. **Provider authentication**
+   ```bash
+   # Check environment variables
+   echo $OPENAI_API_KEY
+   ```
+
+4. **Performance issues**
+   ```bash
+   # Enable debug logging
+   l10n translate -v
+   ```
+
+## Migration from v2
+
+### Configuration Updates
+
+1. **Rename config file**: `l10nmonster.cjs` → `l10nmonster.config.mjs`
+2. **Update imports**: Use ESM import syntax
+3. **Update providers**: Many providers have new names and APIs
+4. **Update commands**: Some command names have changed
+
+### Command Mapping
+
+| v2 Command | v3 Equivalent |
+|------------|---------------|
+| `l10n push` | `l10n translate && l10n ops update` |
+| `l10n pull` | `l10n tm syncdown && l10n ops update` |
+| `l10n status` | `l10n analyze` |
+| `l10n grandfather` | Provider-based (configured in config) |
+| `l10n leverage` | Provider-based (configured in config) |
+
+For detailed migration guidance, see the [v3 Migration Guide](../v3.md).
+
+## Help and Support
+
+```bash
+# Get general help
+l10n help
+
+# Get command-specific help
+l10n help translate
+l10n help ops
+l10n help source
+
+# Get provider information
+l10n ops providers --info
+```
+
+For more detailed documentation, see:
+- [Main Documentation](../README.md)
+- [Architecture Guide](../architecture.md)
+- [Core Package Documentation](../core/README.md)
