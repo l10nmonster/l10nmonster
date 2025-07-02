@@ -23,25 +23,26 @@ const consoleTransport = new winston.transports.Console({
     ),
 });
 
+let verbosity = 1;
+
+export const getVerbosity = () => verbosity;
+export const setVerbosity = (level) => {
+    verbosity = level ?? 1;
+    consoleTransport.level = logLevels[level] ?? 'warn';
+};
+
 class GlobalContext {
     logger;
-    verbosity;
 
     // these are set per "request" even though they are shared
     baseDir = '.';
     regression = false;
 
     constructor() {
-        this.verbosity = 1;
         this.logger = winston.createLogger({
             level: 'warn',
             transports: [ consoleTransport ],
         });
-    }
-
-    setVerbosity(level) {
-        this.verbosity = level ?? 1;
-        consoleTransport.level = logLevels[level] ?? 'warn';
     }
 }
 
@@ -86,6 +87,4 @@ export const consoleLog = (strings, ...values) => {
     console.log(renderTaggedString(strings, values, true));
 };
 
-export const styleString = (strings, ...values) => {
-    return renderTaggedString(strings, values, true);
-};
+export const styleString = (strings, ...values) => renderTaggedString(strings, values, true);

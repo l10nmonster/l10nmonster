@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 
 import { Command, Argument, Option, InvalidArgumentError } from 'commander';
-import { L10nContext } from '@l10nmonster/core';
+import { getVerbosity } from '@l10nmonster/core';
 
 import path from 'path';
 import { readFileSync } from 'fs';
@@ -76,7 +76,7 @@ export default async function runMonsterCLI(monsterConfig, cliCommand) {
         const argv = typeof cliCommand === 'string' ? cliCommand.split(' ') : cliCommand;
         await monsterCLI.parseAsync(argv);
     } catch(e) {
-        console.error(`Unable to run CLI: ${(L10nContext.verbosity > 1 ? e.stack : e.message) || e}`);
+        console.error(`Unable to run CLI: ${(getVerbosity() > 1 ? e.stack : e.message) || e}`);
         process.exit(1);
     }
 }

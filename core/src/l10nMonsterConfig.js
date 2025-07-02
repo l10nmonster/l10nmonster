@@ -1,4 +1,4 @@
-import { L10nContext } from './l10nContext.js';
+import { L10nContext, setVerbosity } from './l10nContext.js';
 import { MonsterManager } from './monsterManager/index.js';
 import * as actions from './actions/index.js';
 import { Channel } from './entities/channel.js';
@@ -397,7 +397,7 @@ export class L10nMonsterConfig {
      * @throws {string} Throws an error if the localization process fails.
      */
     async run(globalOptions, cb) {
-        L10nContext.setVerbosity(globalOptions.verbose);
+        setVerbosity(globalOptions.verbose);
         L10nContext.regression = Boolean(globalOptions.regression);
 
         try {
