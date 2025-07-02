@@ -1,4 +1,4 @@
-import { L10nContext, logVerbose, logInfo, logWarn } from '../l10nContext.js';
+import { getRegressionMode, logVerbose, logInfo, logWarn } from '../l10nContext.js';
 import { TU } from '../entities/tu.js';
 import { utils } from '../helpers/index.js';
 
@@ -116,7 +116,7 @@ export default class Dispatcher {
             jobRequest.status = 'cancelled';
             return;
         }
-        const updatedAt = (L10nContext.regression ? new Date('2022-05-29T00:00:00.000Z') : new Date()).toISOString();
+        const updatedAt = (getRegressionMode() ? new Date('2022-05-29T00:00:00.000Z') : new Date()).toISOString();
         if (jobRequest) {
             jobRequest.updatedAt = updatedAt;
             if (jobResponse) {

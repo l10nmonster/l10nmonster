@@ -1,5 +1,5 @@
 import { createHash } from 'crypto';
-import { L10nContext } from '../l10nContext.js';
+import { logVerbose } from '../l10nContext.js';
 import { TU } from '../entities/tu.js';
 
 export function generateGuid(str) {
@@ -318,7 +318,7 @@ export function *getIteratorFromJobPair(jobRequest, jobResponse = {}) {
                 splitJobs[overriddenJobProps.jobGuid] ??= { jobProps: overriddenJobProps, tus: [] };
                 splitJobs[overriddenJobProps.jobGuid].tus.push(properTU);
             } catch (e) {
-                L10nContext.logger.verbose(`Problems converting in-flight entry to TU: ${e}`);
+                logVerbose`Problems converting in-flight entry to TU: ${e}`;
             }
         }
     }
@@ -336,7 +336,7 @@ export function *getIteratorFromJobPair(jobRequest, jobResponse = {}) {
                     splitJobs[overriddenJobProps.jobGuid] ??= { jobProps: overriddenJobProps, tus: [] };
                     splitJobs[overriddenJobProps.jobGuid].tus.push(properTU);
                 } catch (e) {
-                    L10nContext.logger.verbose(`Problems converting entry to TU: ${e}`);
+                    logVerbose`Problems converting entry to TU: ${e}`;
                 }
             }
         }

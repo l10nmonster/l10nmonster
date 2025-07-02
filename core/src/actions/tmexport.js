@@ -1,9 +1,8 @@
 /* eslint-disable complexity */
 import * as fs from 'fs/promises';
 
-import { L10nContext, consoleLog } from '../l10nContext.js';
+import { getRegressionMode, logInfo, consoleLog } from '../l10nContext.js';
 import { TU } from '../entities/tu.js';
-import { utils } from '../helpers/index.js';
 
 export class tmexport {
     static help = {
@@ -40,7 +39,7 @@ export class tmexport {
                     sourceLang: sourceLang,
                     targetLang: targetLang,
                     jobGuid,
-                    updatedAt: (L10nContext.regression ? new Date('2022-05-30T00:00:00.000Z') : new Date()).toISOString(),
+                    updatedAt: (getRegressionMode() ? new Date('2022-05-30T00:00:00.000Z') : new Date()).toISOString(),
                     status: 'created',
                     tus: [],
                 };
@@ -54,15 +53,15 @@ export class tmexport {
                     try {
                         jobReq.tus.push(TU.asSource(tu));
                     } catch (e) {
-                        L10nContext.logger.info(e.message ?? e);
+                        logInfo`${e.message ?? e}`;
                     }
                     if (tu.inflight) {
-                        L10nContext.logger.info(`Warning: in-flight translation unit ${tu.guid} can't be exported`);
+                        logInfo`Warning: in-flight translation unit ${tu.guid} can't be exported`;
                     } else {
                         try {
                             jobRes.tus.push(TU.asTarget(tu));
                         } catch (e) {
-                            L10nContext.logger.info(e.message ?? e);
+                            logInfo`${e.message ?? e}`;
                         }
                     }
                 }

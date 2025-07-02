@@ -1,4 +1,4 @@
-import { L10nContext } from '../../l10nContext.js';
+import { getRegressionMode } from '../../l10nContext.js';
 import { utils } from '../index.js';
 import { BaseTranslationProvider } from './baseTranslationProvider.js';
 
@@ -39,7 +39,7 @@ export class Visicode extends BaseTranslationProvider {
     }
 
     getTranslatedTus(job) {
-        const ts = L10nContext.regression ? 1 : new Date().getTime();
+        const ts = getRegressionMode() ? 1 : new Date().getTime();
         return job.tus.map(tu => {
             const translation = { guid: tu.guid, ts };
             const prolog = `\u21e5${tu.seq ? `${utils.integerToLabel(tu.seq)}:` : ''}`;

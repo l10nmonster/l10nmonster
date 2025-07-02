@@ -1,4 +1,4 @@
-import { L10nContext } from '../l10nContext.js';
+import { logVerbose } from '../l10nContext.js';
 
 /**
  * @class ResourceHandle
@@ -25,7 +25,7 @@ export class ResourceHandle {
         this.segments = segments;
         this.subresources = subresources;
         if (Object.keys(other).length > 1) {
-            L10nContext.logger.verbose(`Unknown properties in resource handle: ${Object.keys(other).join(', ')}`);
+            logVerbose`Unknown properties in resource handle: ${Object.keys(other).join(', ')}`;
         }
     }
 

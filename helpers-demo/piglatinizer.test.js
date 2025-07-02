@@ -1,10 +1,10 @@
 import { suite, test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { L10nContext } from '@l10nmonster/core';
+import { setRegressionMode } from '@l10nmonster/core';
 import { PigLatinizer } from './index.js';
 
-L10nContext.regression = true;
+setRegressionMode(true);
 
 suite('pig latinizer translator tests', () => {
     const job = {

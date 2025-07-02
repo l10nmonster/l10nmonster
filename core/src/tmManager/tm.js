@@ -1,4 +1,4 @@
-import { L10nContext } from '../l10nContext.js';
+import { logVerbose } from '../l10nContext.js';
 import { utils } from '../helpers/index.js';
 import { groupObjectsByNestedProps } from '../sharedFunctions.js';
 
@@ -49,7 +49,7 @@ export class TM {
         try {
             this.#tuDAL.setEntry(tu);
         } catch (e) {
-            L10nContext.logger.verbose(`Not setting TM entry (guid=${tu.guid}): ${e}`);
+            logVerbose`Not setting TM entry (guid=${tu.guid}): ${e}`;
         }
     }
 

@@ -1,4 +1,4 @@
-import { L10nContext } from '../l10nContext.js';
+import { logVerbose } from '../l10nContext.js';
 import { utils } from '../helpers/index.js';
 import { createSQLObjectTransformer } from './index.js';
 
@@ -278,7 +278,7 @@ ORDER BY channel, rid;
         this.#stmt.searchString ??= this.#db.prepare(/* sql */`SELECT guid, nstr FROM segments WHERE flattenNormalizedSourceToOrdinal(nstr) like '%?%';`);
         // try to delay creating the index until it is actually needed
         if (!this.#flatSrcIdxInitialized) {
-            L10nContext.logger.verbose(`Creating FlatSrcIdx for source segments...`);
+            logVerbose`Creating FlatSrcIdx for source segments...`;
             this.#stmt.createFlatSrcIdx.run();
             this.#flatSrcIdxInitialized = true;
         }

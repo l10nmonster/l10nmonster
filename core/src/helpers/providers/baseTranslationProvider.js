@@ -1,4 +1,4 @@
-import { L10nContext, logVerbose, logWarn } from '../../l10nContext.js';
+import { getRegressionMode, logVerbose, logWarn } from '../../l10nContext.js';
 import * as utils from '../utils.js';
 import * as opsManager from '../../opsManager/index.js';
 
@@ -129,7 +129,7 @@ export class BaseTranslationProvider {
             jobResponse.tus = this.getTranslatedTus(job);
         } else if (this.createTask !== BaseTranslationProvider.prototype.createTask) {
             const task = this.createTask(jobResponse);
-            jobResponse.taskName = L10nContext.regression ? 'x' : task.taskName;
+            jobResponse.taskName = getRegressionMode() ? 'x' : task.taskName;
             logVerbose`${this.id} provider translating job ${job.jobGuid} using task ${task.taskName}`;
             try {
                 jobResponse = await task.execute(this.#executeOptions);

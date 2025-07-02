@@ -1,4 +1,4 @@
-import { L10nContext } from '../../l10nContext.js';
+import { getRegressionMode } from '../../l10nContext.js';
 import { BaseTranslationProvider } from './baseTranslationProvider.js';
 
 const wordMatcher = /\p{L}+/gu;
@@ -59,7 +59,7 @@ export class LanguageVariantProvider extends BaseTranslationProvider {
         if (this.#baseLang !== job.sourceLang) {
             tm = this.mm.tmm.getTM(job.sourceLang, this.#baseLang);
         }
-        const ts = L10nContext.regression ? 1 : new Date().getTime();
+        const ts = getRegressionMode() ? 1 : new Date().getTime();
         this.#replacedWords = new Set();
         return job.tus.map(tu => {
             const baseTranslation = tm ? tm.getEntryByGuid(tu.guid)?.ntgt : tu.nsrc;

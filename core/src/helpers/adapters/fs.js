@@ -8,7 +8,7 @@ import {
     writeFileSync,
 } from 'fs';
 import * as fsPromises from 'fs/promises';
-import { L10nContext } from '../../l10nContext.js';
+import { getBaseDir, getRegressionMode, logInfo, logVerbose, logError } from '../../l10nContext.js';
 
 class AbstractFsAdapter {
     #relativeBaseDir;
@@ -16,7 +16,7 @@ class AbstractFsAdapter {
 
     constructor(baseDir) {
         this.#relativeBaseDir = baseDir;
-        this.baseDir = baseDir ? path.resolve(L10nContext.baseDir, baseDir) : L10nContext.baseDir;
+        this.baseDir = baseDir ? path.resolve(getBaseDir(), baseDir) : getBaseDir();
     }
 
     setChannelOptions(options) {
@@ -67,7 +67,7 @@ export class FsSource extends AbstractFsAdapter {
      * @returns {AsyncGenerator<[Object, string]>} An async generator yielding resource stat-like metadata and content.
      */
     async* fetchAllResources() {
-        L10nContext.logger.info(`FsSource: Fetching all resources with globs: ${this.globs.join(', ')} in baseDir: ${this.baseDir}`);
+        logInfo`FsSource: Fetching all resources with globs: ${this.globs.join(', ')} in baseDir: ${this.baseDir}`;
         // fsPromises.glob returns paths relative to cwd by default.
         // We need to make them relative to this.baseDir for id generation,
         // or provide an absolute path to glob and then make them relative.
@@ -78,7 +78,7 @@ export class FsSource extends AbstractFsAdapter {
         };
 
         for (const globPattern of this.globs) {
-            L10nContext.logger.verbose(`FsSource: Processing glob pattern: ${globPattern} in ${this.baseDir}`);
+            logVerbose`FsSource: Processing glob pattern: ${globPattern} in ${this.baseDir}`;
             try {
                 for await (const relativePathFromGlob of fsPromises.glob(globPattern, globOptions)) {
                     // relativePathFromGlob is already relative to this.baseDir due to cwd option
@@ -90,7 +90,7 @@ export class FsSource extends AbstractFsAdapter {
                     }
 
                     if (this.filter && !this.filter(id)) {
-                        L10nContext.logger.verbose(`FsSource: Filtered out resource ${id} (path: ${relativePathFromGlob}) due to filter function.`);
+                        logVerbose`FsSource: Filtered out resource ${id} (path: ${relativePathFromGlob}) due to filter function.`;
                         continue;
                     }
 
@@ -98,7 +98,7 @@ export class FsSource extends AbstractFsAdapter {
                         const stats = await fsPromises.stat(fullPath);
                         let resMeta = {
                             id,
-                            modified: L10nContext.regression ? 1 : stats.mtime.toISOString(),
+                            modified: getRegressionMode() ? 1 : stats.mtime.toISOString(),
                         };
                         resMeta.sourceLang = this.sourceLang;
                         this.prj && (resMeta.prj = this.prj);
@@ -108,17 +108,17 @@ export class FsSource extends AbstractFsAdapter {
 
                         const content = await fsPromises.readFile(fullPath, 'utf8');
                         yield [resMeta, content];
-                        L10nContext.logger.debug(`FsSource: Yielded resource ${id} from ${fullPath}`);
+                        logVerbose`FsSource: Yielded resource ${id} from ${fullPath}`;
                     } catch (error) {
-                        L10nContext.logger.error(`FsSource: Error processing file ${fullPath} (id: ${id}): ${error.message}`);
+                        logError`FsSource: Error processing file ${fullPath} (id: ${id}): ${error.message}`;
                         // Decide if we should skip, rethrow, or yield an error. Logging and skipping for now.
                     }
                 }
             } catch (globError) {
-                L10nContext.logger.error(`FsSource: Error during glob pattern processing "${globPattern}": ${globError.message}`);
+                logError`FsSource: Error during glob pattern processing "${globPattern}": ${globError.message}`;
             }
         }
-        L10nContext.logger.info(`FsSource: Finished fetching all resources from ${this.baseDir}.`);
+        logInfo`FsSource: Finished fetching all resources from ${this.baseDir}`;
     }
 }
 

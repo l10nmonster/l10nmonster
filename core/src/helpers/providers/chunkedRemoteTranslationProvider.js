@@ -1,4 +1,4 @@
-import { L10nContext, logVerbose, logInfo, styleString, logError, logWarn } from '../../l10nContext.js';
+import { getRegressionMode, logVerbose, logInfo, styleString, logError, logWarn } from '../../l10nContext.js';
 import * as utils from '../utils.js';
 import { BaseTranslationProvider } from './baseTranslationProvider.js';
 import * as opsManager from '../../opsManager/index.js';
@@ -152,7 +152,7 @@ export class ChunkedRemoteTranslationProvider extends BaseTranslationProvider {
             // jobResponse.status = 'pending';
         //     return jobResponse;
         // }
-        const ts = L10nContext.regression ? 1 : new Date().getTime();
+        const ts = getRegressionMode() ? 1 : new Date().getTime();
         const translations = op.inputs.filter(Boolean).map(input => input.res).flat(1);
         jobResponse.tus = translations.map(tu => ({ ...tu, ts, q: this.quality }));
         return jobResponse;

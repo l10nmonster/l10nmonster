@@ -1,4 +1,4 @@
-import { L10nContext, setVerbosity } from './l10nContext.js';
+import { setVerbosity, setRegressionMode, setBaseDir, logVerbose } from './l10nContext.js';
 import { MonsterManager } from './monsterManager/index.js';
 import * as actions from './actions/index.js';
 import { Channel } from './entities/channel.js';
@@ -282,7 +282,7 @@ export class L10nMonsterConfig {
         if (!baseDir) {
             throw new Error('Cannot initialize without a base directory (hint: pass import.meta.dirname)');
         }
-        L10nContext.baseDir = baseDir;
+        setBaseDir(baseDir);
     }
 
     /**
@@ -350,7 +350,7 @@ export class L10nMonsterConfig {
 
     /**
      * Adds a TM store to the set of available TM Stores.
-     * @param {import('@l10nmonster/core').TMStore | Array<import('@l10nmonster/core').TMStore>} storeInstance - The TM Store instance or array of instances.
+     * @param {import('../index.js').TMStore | Array<import('../index.js').TMStore>} storeInstance - The TM Store instance or array of instances.
      * @returns {L10nMonsterConfig} Returns the config for method chaining.
      */
     tmStore(storeInstance) {
@@ -386,7 +386,7 @@ export class L10nMonsterConfig {
      */
     // eslint-disable-next-line no-unused-vars
     async init(mm) {
-        L10nContext.logger.verbose('L10nMonsterConfig initialized!');
+        logVerbose`L10nMonsterConfig initialized!`;
     }
 
     /**
@@ -398,7 +398,7 @@ export class L10nMonsterConfig {
      */
     async run(globalOptions, cb) {
         setVerbosity(globalOptions.verbose);
-        L10nContext.regression = Boolean(globalOptions.regression);
+        setRegressionMode(globalOptions.regression);
 
         try {
             const mm = new MonsterManager(this);
@@ -412,7 +412,7 @@ export class L10nMonsterConfig {
                     flattenedActions.push([ action.name, createHandler(action.action) ]);
                 }
             }
-            L10nContext.logger.verbose(`Registered actions: ${flattenedActions.map(e => e[0]).join(', ')}`);
+            logVerbose`Registered actions: ${flattenedActions.map(e => e[0]).join(', ')}`;
             const l10n = Object.fromEntries(flattenedActions);
             let response, error;
             try {

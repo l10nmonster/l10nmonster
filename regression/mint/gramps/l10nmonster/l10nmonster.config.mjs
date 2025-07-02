@@ -1,4 +1,4 @@
-import { L10nMonsterConfig, ChannelConfig, policies, L10nContext, adapters, providers } from '@l10nmonster/core';
+import { L10nMonsterConfig, ChannelConfig, policies, adapters, providers } from '@l10nmonster/core';
 import { PoFilter } from '@l10nmonster/helpers-po';
 import * as demo from '@l10nmonster/helpers-demo';
 

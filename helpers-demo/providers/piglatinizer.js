@@ -1,5 +1,5 @@
 import PigLatin from 'pig-latinizer';
-import { L10nContext, providers, logVerbose } from '@l10nmonster/core';
+import { getRegressionMode, providers, logVerbose } from '@l10nmonster/core';
 
 const pigLatin = new PigLatin.default();
 
@@ -19,7 +19,7 @@ export class PigLatinizer extends providers.BaseTranslationProvider {
     }
 
     getTranslatedTus(job) {
-        const ts = L10nContext.regression ? 1 : new Date().getTime();
+        const ts = getRegressionMode() ? 1 : new Date().getTime();
         return job.tus.map(tu => {
             const translation = { guid: tu.guid, ts };
             translation.ntgt = [

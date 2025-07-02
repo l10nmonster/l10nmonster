@@ -1,4 +1,4 @@
-import { L10nContext } from '../l10nContext.js';
+import { logVerbose } from '../l10nContext.js';
 import { utils } from '../helpers/index.js';
 
 function processNotes(normalizedSeg) {
@@ -111,7 +111,7 @@ export class FormatHandler {
                 for (const decorator of this.#segmentDecorators) {
                     decoratedSeg = decorator(decoratedSeg);
                     if (decoratedSeg === undefined) { // this basically means DNT (or more like "pretend this doesn't exist")
-                        L10nContext.logger.verbose(`Decorator rejected segment ${normalizedSeg.sid} in resource ${rid}`);
+                        logVerbose`Decorator rejected segment ${normalizedSeg.sid} in resource ${rid}`;
                         break;
                     }
                 }
@@ -180,7 +180,7 @@ export class FormatHandler {
                         return { nstr, str, tu: entry };
                     }
                 } catch(e) {
-                    L10nContext.logger.verbose(`Problem translating guid ${seg.guid} to ${tm.targetLang}: ${e.message ?? e}`);
+                    logVerbose`Problem translating guid ${seg.guid} to ${tm.targetLang}: ${e.message ?? e}`;
                 }
             };
             return this.#resourceFilter.generateResource({ ...resHandle, translator, subresources });
@@ -194,7 +194,7 @@ export class FormatHandler {
             if (normalizedSource) {
                 const segToTranslate = this.#populateGuid(resHandle.id, str, normalizedSource.mf, { sid }, segmentFlags);
                 if (normalizedSource.guid !== segToTranslate.guid) {
-                    L10nContext.logger.verbose(`Normalized source outdated: ${normalizedSource.gstr}\n${segToTranslate.gstr}`);
+                    logVerbose`Normalized source outdated: ${normalizedSource.gstr}\n${segToTranslate.gstr}`;
                     return undefined;
                 }
                 const entry = tm.getEntryByGuid(segToTranslate.guid);
@@ -206,11 +206,11 @@ export class FormatHandler {
                     const normalizedTranslation = this.#translateWithTMEntry(normalizedSource.nstr, entry);
                     return this.#encodeTranslatedSegment(normalizedTranslation, normalizedSource.mf, segmentFlags);
                 } catch(e) {
-                    L10nContext.logger.verbose(`Problem translating ${resHandle.id}, ${sid}, ${str} to ${tm.targetLang}: ${e.message ?? e}`);
+                    logVerbose`Problem translating ${resHandle.id}, ${sid}, ${str} to ${tm.targetLang}: ${e.message ?? e}`;
                     return undefined;
                 }
             } else {
-                L10nContext.logger.verbose(`Dropping ${sid} in ${resHandle.id} as it's missing from normalized source`);
+                logVerbose`Dropping ${sid} in ${resHandle.id} as it's missing from normalized source`;
                 return undefined;
             }
         };

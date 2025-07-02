@@ -1,5 +1,5 @@
 import JSZip from 'jszip';
-import { L10nContext, providers, logVerbose, logInfo, styleString, utils, opsManager, logError, logWarn } from '@l10nmonster/core';
+import { getRegressionMode, providers, logVerbose, logInfo, styleString, utils, opsManager, logError, logWarn } from '@l10nmonster/core';
 
 /**
  * @typedef {object} LQABossProviderOptions
@@ -61,7 +61,7 @@ export class LQABossProvider extends providers.BaseTranslationProvider {
     async completeReviewOp(op) {
         const { tus, ...jobResponse } = op.inputs[1]; // the second op should be continueReviewOp
         jobResponse.status = 'done';
-        const ts = L10nContext.regression ? 1 : new Date().getTime();
+        const ts = getRegressionMode() ? 1 : new Date().getTime();
         jobResponse.tus = tus.map(tu => ({ ...tu, ts, q: this.quality }));
         return jobResponse;
     }

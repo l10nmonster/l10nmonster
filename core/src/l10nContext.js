@@ -7,7 +7,7 @@ const levelColors = {
     warn: 'yellow',
     info: ['gray', 'bold', 'italic'],
     verbose: ['gray', 'dim', 'italic'],
-}
+};
 
 const consoleTransport = new winston.transports.Console({
     format: winston.format.combine(
@@ -23,31 +23,29 @@ const consoleTransport = new winston.transports.Console({
     ),
 });
 
-let verbosity = 1;
+const logger = winston.createLogger({
+    level: 'warn',
+    transports: [ consoleTransport ],
+});
 
+let verbosity = 1;
 export const getVerbosity = () => verbosity;
 export const setVerbosity = (level) => {
     verbosity = level ?? 1;
     consoleTransport.level = logLevels[level] ?? 'warn';
 };
 
-class GlobalContext {
-    logger;
+let regressionMode = false;
+export const getRegressionMode = () => regressionMode;
+export const setRegressionMode = (mode) => {
+    regressionMode = Boolean(mode);
+};
 
-    // these are set per "request" even though they are shared
-    baseDir = '.';
-    regression = false;
-
-    constructor() {
-        this.logger = winston.createLogger({
-            level: 'warn',
-            transports: [ consoleTransport ],
-        });
-    }
-}
-
-// This is a shared context across all components
-export const L10nContext = new GlobalContext();
+let baseDir = '.';
+export const getBaseDir = () => baseDir;
+export const setBaseDir = (dir) => {
+    baseDir = dir;
+};
 
 function renderTaggedString(strings, values, styled = false) {
     const out = [];
@@ -68,19 +66,19 @@ function renderTaggedString(strings, values, styled = false) {
 };
 
 export const logError = (strings, ...values) => {
-    L10nContext.logger.error(renderTaggedString(strings, values, true));
+    logger.error(renderTaggedString(strings, values, true));
 };
 
 export const logWarn = (strings, ...values) => {
-    L10nContext.logger.warn(renderTaggedString(strings, values, true));
+    logger.warn(renderTaggedString(strings, values, true));
 };
 
 export const logInfo = (strings, ...values) => {
-    L10nContext.logger.info(renderTaggedString(strings, values, false));
+    logger.info(renderTaggedString(strings, values, false));
 };
 
 export const logVerbose = (strings, ...values) => {
-    L10nContext.logger.verbose(renderTaggedString(strings, values, false));
+    logger.verbose(renderTaggedString(strings, values, false));
 };
 
 export const consoleLog = (strings, ...values) => {

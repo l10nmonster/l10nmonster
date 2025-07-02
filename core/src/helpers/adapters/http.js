@@ -1,4 +1,4 @@
-import { L10nContext } from '../../l10nContext.js';
+import { getRegressionMode, logInfo, logVerbose, logError } from '../../l10nContext.js';
 
 /**
  *
@@ -38,10 +38,10 @@ export class HttpSource {
      * @returns {AsyncGenerator<[Object, string]>} An async generator yielding resource metadata and content.
      */
     async* fetchAllResources() {
-        L10nContext.logger.info(`HttpSource: Fetching all resources from urlMap.`);
+        logInfo`HttpSource: Fetching all resources from urlMap`;
         for (const [id, url] of Object.entries(this.urlMap)) {
             if (this.filter && !this.filter(id)) {
-                L10nContext.logger.verbose(`HttpSource: Filtered out resource ${id} (URL: ${url}) due to filter function.`);
+                logVerbose`HttpSource: Filtered out resource ${id} (URL: ${url}) due to filter function`;
                 continue;
             }
 
@@ -50,7 +50,7 @@ export class HttpSource {
                 sourceLang: this.sourceLang,
                 // This remains a placeholder, as HTTP headers like Last-Modified or ETag
                 // are not consistently available or easily parsed into a simple timestamp here.
-                modified: L10nContext.regression ? 1 : new Date().toISOString(),
+                modified: getRegressionMode() ? 1 : new Date().toISOString(),
             };
             this.prj && (resMeta.prj = this.prj);
             if (typeof this.resDecorator === 'function') {
@@ -58,23 +58,23 @@ export class HttpSource {
             }
 
             try {
-                L10nContext.logger.verbose(`HttpSource: Fetching ${url} for resource ID ${id}`);
+                logVerbose`HttpSource: Fetching ${url} for resource ID ${id}`;
                 const response = await fetch(url);
                 if (response.ok) {
                     const content = await response.text();
                     yield [resMeta, content];
-                    L10nContext.logger.debug(`HttpSource: Yielded resource ${id} from ${url}`);
+                    logVerbose`HttpSource: Yielded resource ${id} from ${url}`;
                 } else {
                     const errorText = await response.text();
-                    L10nContext.logger.error(`HttpSource: Failed to fetch ${url} (ID: ${id}) - ${response.status} ${response.statusText}: ${errorText}`);
+                    logError`HttpSource: Failed to fetch ${url} (ID: ${id}) - ${response.status} ${response.statusText}: ${errorText}`;
                     // Optionally, rethrow or yield an error object
                     // For now, logging and skipping to the next resource
                 }
             } catch (error) {
-                L10nContext.logger.error(`HttpSource: Network or other error fetching ${url} (ID: ${id}): ${error.message}`);
+                logError`HttpSource: Network or other error fetching ${url} (ID: ${id}): ${error.message}`;
                 // Optionally, rethrow or yield an error object
             }
         }
-        L10nContext.logger.info(`HttpSource: Finished fetching all resources from urlMap.`);
+        logInfo`HttpSource: Finished fetching all resources from urlMap`;
     }
 }

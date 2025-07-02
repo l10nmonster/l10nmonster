@@ -1,6 +1,6 @@
 import * as path from 'path';
 import Database from 'better-sqlite3';
-import { L10nContext, logVerbose } from '../l10nContext.js';
+import { getBaseDir, logVerbose } from '../l10nContext.js';
 import { SourceDAL } from './source.js';
 import { TuDAL } from './tu.js';
 import { JobDAL } from './job.js';
@@ -13,8 +13,8 @@ export default class DALManager {
     #dalCache = new Map();
 
     constructor(sourceDB, tmDB) {
-        this.#sourceDBFilename = sourceDB === undefined ? path.join(L10nContext.baseDir, 'l10nmonsterSource.db') : (sourceDB === false ? ':memory:' : sourceDB);
-        this.#tmDBFilename = tmDB === undefined ? path.join(L10nContext.baseDir, 'l10nmonsterTM.db') : (tmDB === false ? ':memory:' : tmDB);
+        this.#sourceDBFilename = sourceDB === undefined ? path.join(getBaseDir(), 'l10nmonsterSource.db') : (sourceDB === false ? ':memory:' : sourceDB);
+        this.#tmDBFilename = tmDB === undefined ? path.join(getBaseDir(), 'l10nmonsterTM.db') : (tmDB === false ? ':memory:' : tmDB);
     }
 
     async init(mm) {

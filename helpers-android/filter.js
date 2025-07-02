@@ -5,7 +5,7 @@
 
 import { XMLParser, XMLBuilder } from 'fast-xml-parser';
 import { default as formatXml } from 'xml-formatter';
-import { L10nContext } from '@l10nmonster/core';
+import { logVerbose } from '@l10nmonster/core';
 
 function collapseTextNodes(node) {
     return node.map(e => e['#text']).join('').trim();
@@ -86,8 +86,8 @@ export class AndroidXMLFilter {
                         }
                         lastComment = null;
                     } else {
-                        L10nContext.logger.verbose(`Unexpected child node in resources`);
-                        L10nContext.logger.verbose(JSON.stringify(resNode));
+                        logVerbose`Unexpected child node in resources`;
+                        logVerbose`${JSON.stringify(resNode)}`;
                     }
                 }
             }

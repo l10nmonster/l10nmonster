@@ -2,7 +2,7 @@ import path from 'path';
 import { existsSync } from 'fs';
 import fs from 'fs/promises';
 import { createxliff12, xliff12ToJs } from 'xliff';
-import { L10nContext } from '@l10nmonster/core';
+import { getBaseDir, getRegressionMode } from '@l10nmonster/core';
 
 export class XliffBridge {
     constructor({ requestPath, completePath, quality }) {
@@ -34,7 +34,7 @@ export class XliffBridge {
             notes,
         );
         if (xliff) {
-            const prjPath = path.join(L10nContext.baseDir, this.requestPath(jobRequest.targetLang, jobRequest.jobGuid));
+            const prjPath = path.join(getBaseDir(), this.requestPath(jobRequest.targetLang, jobRequest.jobGuid));
             await fs.mkdir(path.dirname(prjPath), {recursive: true});
             await fs.writeFile(prjPath, xliff, 'utf8');
             jobManifest.inflight = Object.values(jobRequest.tus).map(tu => tu.guid);
@@ -47,7 +47,7 @@ export class XliffBridge {
 
     async fetchTranslations(pendingJob) {
         const { inflight, ...jobResponse } = pendingJob;
-        const completePath = path.join(L10nContext.baseDir, this.completePath(jobResponse.targetLang, jobResponse.jobGuid));
+        const completePath = path.join(getBaseDir(), this.completePath(jobResponse.targetLang, jobResponse.jobGuid));
         // const tuMap = pendingJob.tus.reduce((p,c) => (p[c.guid] = c, p), {});
         if (existsSync(completePath)) {
             const translatedRes = await fs.readFile(completePath, 'utf8');
@@ -57,7 +57,7 @@ export class XliffBridge {
                 if (xt?.target?.length > 0) {
                     tus.push({
                         guid,
-                        ts: L10nContext.regression ? 1 : new Date().getTime(),
+                        ts: getRegressionMode() ? 1 : new Date().getTime(),
                         ntgt: [xt.target], // TODO: need to deal with ntgt properly
                         q: this.quality,
                     });

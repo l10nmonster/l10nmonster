@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 
-import { L10nContext, logInfo } from '../l10nContext.js';
+import { getRegressionMode, logInfo } from '../l10nContext.js';
 import { TU } from '../entities/tu.js';
 import { utils } from '../helpers/index.js';
 import { TM } from './tm.js';
@@ -20,7 +20,7 @@ export default class TMManager {
     }
 
     generateJobGuid() {
-        if (L10nContext.regression) {
+        if (getRegressionMode()) {
             const jobCount = this.#DAL.job.getJobCount();
             return `xxx${jobCount}xxx`;
         } else {

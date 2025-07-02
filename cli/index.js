@@ -7,7 +7,7 @@ import path from 'path';
 import { readFileSync } from 'fs';
 const cliVersion = JSON.parse(readFileSync(path.join(import.meta.dirname, 'package.json'), 'utf-8')).version;
 
-function intOptionParser(value, _dummyPrevious) {
+function intOptionParser(value) {
     const parsedValue = parseInt(value, 10);
     if (isNaN(parsedValue)) {
       throw new InvalidArgumentError('Not an integer');

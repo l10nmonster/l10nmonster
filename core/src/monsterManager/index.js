@@ -1,5 +1,4 @@
-import * as path from 'path';
-import { L10nContext, logVerbose, logWarn } from '../l10nContext.js';
+import { logVerbose, logWarn } from '../l10nContext.js';
 import { utils, analyzers } from '../helpers/index.js';
 import * as opsManager from '../opsManager/index.js';
 import DALManager from '../DAL/index.js';
@@ -60,7 +59,7 @@ export class MonsterManager {
         await this.dispatcher.init(this);
         await this.rm.init(this);
         typeof this.monsterConfig.init === 'function' && await this.monsterConfig.init(this);
-        L10nContext.logger.verbose(`MonsterManager initialized!`);
+        logVerbose`MonsterManager initialized!`;
     }
 
     // register an async function to be called during shutdown

@@ -1,4 +1,4 @@
-import { L10nContext } from '../../l10nContext.js';
+import { getRegressionMode } from '../../l10nContext.js';
 import { BaseTranslationProvider } from './baseTranslationProvider.js';
 
 const base = 0xFE00;
@@ -60,7 +60,7 @@ export class InvisicodeProvider extends BaseTranslationProvider {
         if (this.#baseLang) {
             tm = this.mm.tmm.getTM(job.sourceLang, this.#baseLang);
         }
-        const ts = L10nContext.regression ? 1 : new Date().getTime();
+        const ts = getRegressionMode() ? 1 : new Date().getTime();
         return job.tus.map(requestTU => {
             let baseTranslation, q;
             if (this.#baseLang) {

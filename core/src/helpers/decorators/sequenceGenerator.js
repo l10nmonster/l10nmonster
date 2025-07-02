@@ -3,14 +3,14 @@ import {
     readFile,
     writeFile,
 } from 'node:fs/promises';
-import { L10nContext } from '../../l10nContext.js';
+import { getBaseDir, logInfo } from '../../l10nContext.js';
 
 export class SequenceGenerator {
     constructor(seqMapFile, seqThreshold = 7) {
         if (!seqMapFile) {
             throw 'A seqMapFile is required';
         }
-        this.seqMapPath = seqMapFile && path.join(L10nContext.baseDir, seqMapFile);
+        this.seqMapPath = seqMapFile && path.join(getBaseDir(), seqMapFile);
         this.seqThreshold = seqThreshold;
     }
 
@@ -26,7 +26,7 @@ export class SequenceGenerator {
             this.maxSeq = max;
             this.minSeq = min;
         } catch (e) {
-            L10nContext.logger.info(`SequenceGenerator: ${e} - creating new file`);
+            logInfo`SequenceGenerator: ${e} - creating new file`;
             this.seqMap = {};
             this.maxSeq = 32 * 32 - 1;
             this.minSeq = 32 * 32;

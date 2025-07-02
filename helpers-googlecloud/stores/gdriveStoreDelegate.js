@@ -1,6 +1,6 @@
 import { Readable } from 'node:stream';
 import { google } from 'googleapis';
-import { L10nContext } from '@l10nmonster/core';
+import { getRegressionMode } from '@l10nmonster/core';
 
 export class GDriveStoreDelegate {
     constructor(folderId, folderPath = '') {
@@ -207,7 +207,7 @@ export class GDriveStoreDelegate {
             fields: 'version,modifiedTime'
         });
         
-        return L10nContext.regression ? 'TS1' : fileInfo.data.version || fileInfo.data.modifiedTime;
+        return getRegressionMode() ? 'TS1' : fileInfo.data.version || fileInfo.data.modifiedTime;
     }
 
     async deleteFiles(filenames) {

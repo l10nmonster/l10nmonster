@@ -3,7 +3,7 @@ import { test, beforeEach, afterEach } from 'node:test';
 import { FsSource, FsTarget } from '../src/helpers/adapters/fs.js';
 import { writeFileSync, readFileSync, existsSync, mkdirSync, rmSync } from 'fs';
 import * as path from 'path';
-import { L10nContext } from '../src/l10nContext.js';
+import { setBaseDir } from '../src/l10nContext.js';
 
 const TEST_BASE_DIR = path.resolve('test_base');
 
@@ -13,7 +13,7 @@ beforeEach(() => {
         mkdirSync(TEST_BASE_DIR, { recursive: true });
     }
     // Set the L10nContext baseDir to the test directory for proper path resolution
-    L10nContext.baseDir = TEST_BASE_DIR;
+    setBaseDir(TEST_BASE_DIR);
 });
 
 afterEach(() => {
@@ -35,7 +35,7 @@ test('FsSource: fetchAllResources retrieves metadata', async () => {
     });
 
     let count = 0;
-    for await (const [resourceStat, _rawResource] of fsSource.fetchAllResources()) {
+    for await (const [resourceStat] of fsSource.fetchAllResources()) {
         assert.equal(resourceStat.id, 'testFile.json', 'Resource ID should match');
         assert.ok(resourceStat.modified, 'Resource metadata should include modified date');
         assert.equal(resourceStat.sourceLang, 'en', 'Resource sourceLang should match');
@@ -57,7 +57,7 @@ test('FsSource: fetchAllResources retrieves file content', async () => {
     });
 
     let count = 0;
-    for await (const [_resourceStat, rawResource] of fsSource.fetchAllResources()) {
+    for await (const [, rawResource] of fsSource.fetchAllResources()) {
         assert.equal(rawResource, fileContent, 'The retrieved content should match the file content');
         count++;
     }

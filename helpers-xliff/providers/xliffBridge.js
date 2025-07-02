@@ -2,7 +2,7 @@ import path from 'path';
 import { existsSync } from 'fs';
 import fs from 'fs/promises';
 import { createxliff12, xliff12ToJs } from 'xliff';
-import { L10nContext, providers, logVerbose, logInfo } from '@l10nmonster/core';
+import { getBaseDir, getRegressionMode, providers, logVerbose, logInfo } from '@l10nmonster/core';
 
 export class XliffBridge extends providers.BaseTranslationProvider {
     /**
@@ -43,7 +43,7 @@ export class XliffBridge extends providers.BaseTranslationProvider {
             notes,
         );
         if (xliff) {
-            const prjPath = path.join(L10nContext.baseDir, this.requestPath(jobResponse.targetLang, jobResponse.jobGuid));
+            const prjPath = path.join(getBaseDir(), this.requestPath(jobResponse.targetLang, jobResponse.jobGuid));
             await fs.mkdir(path.dirname(prjPath), {recursive: true});
             await fs.writeFile(prjPath, xliff, 'utf8');
             jobResponse.inflight = Object.values(tus).map(tu => tu.guid);
@@ -57,7 +57,7 @@ export class XliffBridge extends providers.BaseTranslationProvider {
     async continue(job) {
         job = await super.continue(job);
         const tus = [];
-        const completePath = path.join(L10nContext.baseDir, this.completePath(job.targetLang, job.jobGuid));
+        const completePath = path.join(getBaseDir(), this.completePath(job.targetLang, job.jobGuid));
         // const tuMap = pendingJob.tus.reduce((p,c) => (p[c.guid] = c, p), {});
         if (existsSync(completePath)) {
             const translatedRes = await fs.readFile(completePath, 'utf8');
@@ -66,7 +66,7 @@ export class XliffBridge extends providers.BaseTranslationProvider {
                 if (xt?.target?.length > 0) {
                     tus.push({
                         guid,
-                        ts: L10nContext.regression ? 1 : new Date().getTime(),
+                        ts: getRegressionMode() ? 1 : new Date().getTime(),
                         ntgt: [xt.target], // TODO: need to deal with ntgt properly
                         q: this.quality,
                     });

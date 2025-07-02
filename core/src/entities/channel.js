@@ -1,4 +1,3 @@
-import { L10nContext } from '../l10nContext.js';
 import { ResourceHandle } from './resourceHandle.js';
 
 /**

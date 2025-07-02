@@ -1,6 +1,6 @@
 import { pipeline } from 'node:stream/promises';
 import { Storage } from '@google-cloud/storage';
-import { L10nContext } from '@l10nmonster/core';
+import { getRegressionMode } from '@l10nmonster/core';
 
 export class GCSStoreDelegate {
     constructor(bucketName, bucketPrefix) {
@@ -47,7 +47,7 @@ export class GCSStoreDelegate {
         this.bucket || (this.bucket = await this.storage.bucket(this.bucketName));
         const file = this.bucket.file(`${this.bucketPrefix}/${filename}`);
         await pipeline(readable, file.createWriteStream());
-        return L10nContext.regression ? 'TS1' : filename.generation;
+        return getRegressionMode() ? 'TS1' : filename.generation;
     }
 
     async deleteFiles(filenames) {

@@ -2,7 +2,7 @@ import readline from 'node:readline/promises';
 import { Readable } from 'node:stream';
 import zlib from 'node:zlib';
 
-import { L10nContext } from '../../l10nContext.js';
+import { logInfo, logVerbose } from '../../l10nContext.js';
 
 const providerFilenameRegex = /blocks\/sl=(?<sourceLang>[^/]+)\/tl=(?<targetLang>[^/]+)\/tp=(?<translationProvider>[^/]+)\/block_(?<blockId>[0-9A-Za-z_-]+)\.jsonl/;
 const languageFilenameRegex = /blocks\/sl=(?<sourceLang>[^/]+)\/tl=(?<targetLang>[^/]+)\/block_(?<blockId>[0-9A-Za-z_-]+)\.jsonl/;
@@ -129,7 +129,7 @@ export class BaseJsonlTmStore {
                 yield currentJob;
                 rl.close();
             } else {
-                L10nContext.logger.info(`Block not found: ${blockId}`);
+                logInfo`Block not found: ${blockId}`;
             }
         }
     }
@@ -154,7 +154,7 @@ export class BaseJsonlTmStore {
         try {
             toc = JSON.parse(await this.delegate.getFile(`TOC-sl=${sourceLang}-tl=${targetLang}.json`));
         } catch (e) {
-            L10nContext.logger.verbose(`No TOC found for pair ${sourceLang} - ${targetLang}: ${e.message}`);
+            logVerbose`No TOC found for pair ${sourceLang} - ${targetLang}: ${e.message}`;
             toc = { v: 1, sourceLang, targetLang, blocks: {} };
         }
         // ensure integrity: prune blocks in TOC  missing in storage and delete extra blocks in storage missing in TOC

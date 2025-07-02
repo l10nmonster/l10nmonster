@@ -1,7 +1,7 @@
 import path from 'path';
 import { mkdirSync, readdirSync, statSync, readFileSync, writeFileSync, unlinkSync, createReadStream, createWriteStream } from 'node:fs';
 import { pipeline } from 'node:stream/promises';
-import { L10nContext } from '../../l10nContext.js';
+import { getRegressionMode } from '../../l10nContext.js';
 
 export class FsStoreDelegate {
     constructor(baseDir) {
@@ -42,7 +42,7 @@ export class FsStoreDelegate {
         const pathName = path.join(this.baseDir, filename);
         writeFileSync(pathName, contents, 'utf8');
         const stats = statSync(pathName);
-        return L10nContext.regression ? 'TS1' : `TS${stats.mtimeMs}`;
+        return getRegressionMode() ? 'TS1' : `TS${stats.mtimeMs}`;
     }
 
     async saveStream(filename, readable) {
@@ -54,7 +54,7 @@ export class FsStoreDelegate {
         const writable = createWriteStream(pathName);
         await pipeline(readable, writable);
         const stats = statSync(pathName);
-        return L10nContext.regression ? 'TS1' : `TS${stats.mtimeMs}`;
+        return getRegressionMode() ? 'TS1' : `TS${stats.mtimeMs}`;
     }
 
     async deleteFiles(filenames) {

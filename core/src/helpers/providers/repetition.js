@@ -1,4 +1,4 @@
-import { L10nContext, styleString } from '../../l10nContext.js';
+import { getRegressionMode, styleString } from '../../l10nContext.js';
 import { BaseTranslationProvider } from './baseTranslationProvider.js';
 
 /**
@@ -57,7 +57,7 @@ export class Repetition extends BaseTranslationProvider {
                         ...sourceTu,
                         ntgt: bestCandidate.ntgt,
                         q: bestCandidate.q,
-                        ts: L10nContext.regression ? 1 : new Date().getTime(),
+                        ts: getRegressionMode() ? 1 : new Date().getTime(),
                         parentGuid: bestCandidate.guid,
                     });
                 }

@@ -1,4 +1,4 @@
-import { L10nContext } from '../l10nContext.js';
+import { logVerbose } from '../l10nContext.js';
 import { utils } from '../helpers/index.js';
 import { createSQLObjectTransformer } from './index.js';
 
@@ -100,7 +100,7 @@ SELECT jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuProps FROM ${this.#t
 WHERE flattenNormalizedSourceToOrdinal(nsrc) = ?`);
         // try to delay creating the index until it is actually needed
         if (!this.#flatSrcIdxInitialized) {
-            L10nContext.logger.verbose(`Creating FlatSrcIdx for table ${this.#tusTable}...`);
+            logVerbose`Creating FlatSrcIdx for table ${this.#tusTable}...`;
             this.#stmt.createFlatSrcIdx.run();
             this.#flatSrcIdxInitialized = true;
         }
