@@ -2,7 +2,7 @@ import readline from 'node:readline/promises';
 import { Readable } from 'node:stream';
 import zlib from 'node:zlib';
 
-import { L10nContext } from '@l10nmonster/core';
+import { L10nContext } from '../../l10nContext.js';
 
 const providerFilenameRegex = /blocks\/sl=(?<sourceLang>[^/]+)\/tl=(?<targetLang>[^/]+)\/tp=(?<translationProvider>[^/]+)\/block_(?<blockId>[0-9A-Za-z_-]+)\.jsonl/;
 const languageFilenameRegex = /blocks\/sl=(?<sourceLang>[^/]+)\/tl=(?<targetLang>[^/]+)\/block_(?<blockId>[0-9A-Za-z_-]+)\.jsonl/;

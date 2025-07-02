@@ -1,5 +1,6 @@
 import { createHash } from 'crypto';
-import { L10nContext, TU } from '@l10nmonster/core';
+import { L10nContext } from '../l10nContext.js';
+import { TU } from '../entities/tu.js';
 
 export function generateGuid(str) {
     const sidContentHash = createHash('sha256');

@@ -1,4 +1,5 @@
-import { L10nContext, utils } from '@l10nmonster/core';
+import { L10nContext } from '../l10nContext.js';
+import { utils } from '../helpers/index.js';
 import { createSQLObjectTransformer } from './index.js';
 
 const sqlTransformer = createSQLObjectTransformer(['nstr', 'nsrc', 'ntgt', 'notes', 'tuProps', 'segProps'], ['tuProps', 'segProps']);

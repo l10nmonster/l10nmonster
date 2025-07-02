@@ -18,6 +18,6 @@
         "googleapis": "^150"
     },
     "peerDependencies": {
-        "@l10nmonster/core": "^3"
+        "@l10nmonster/core": "workspace:*"
     }
 }

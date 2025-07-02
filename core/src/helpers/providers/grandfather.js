@@ -1,4 +1,6 @@
-import { TU, utils, logVerbose } from '@l10nmonster/core';
+import { logVerbose } from '../../l10nContext.js';
+import { TU } from '../../entities/tu.js';
+import { utils } from '../index.js';
 import { BaseTranslationProvider } from './baseTranslationProvider.js';
 
 /**

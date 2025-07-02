@@ -1,4 +1,5 @@
-import { logInfo, logWarn, providers, styleString } from '@l10nmonster/core';
+import { logInfo, logWarn, styleString } from '../../l10nContext.js';
+import { ChunkedRemoteTranslationProvider } from './chunkedRemoteTranslationProvider.js';
 
 function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -29,7 +30,7 @@ const DEFAULT_SCHEMA_INSTRUCTIONS =
  * @class LLMTranslationProvider
  * @extends providers.ChunkedRemoteTranslationProvider
  */
-export class LLMTranslationProvider extends providers.ChunkedRemoteTranslationProvider {
+export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
     #model;
     #temperature;
     #systemPrompt;

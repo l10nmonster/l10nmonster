@@ -145,12 +145,12 @@ export class FlowSnapshotter {
         this.startUrl = startUrl;
         this.flowNameBase = flowNameBase;
         this.headless = options.headless ?? false;
+        this.capturedPagesData = [];
+        this.pageCounter = 0;
     }
 
     async startFlow() {
         this.browser = await puppeteer.launch({ headless: this.headless, defaultViewport: null });
-        this.pageCounter = 0;
-        this.capturedPagesData = [];
         this.page = await this.browser.newPage();
         await this.page.goto(this.startUrl, { waitUntil: 'networkidle2', timeout: 60000 });
     }

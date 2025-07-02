@@ -1,4 +1,4 @@
-import { logInfo } from '@l10nmonster/core';
+import { logInfo } from '../l10nContext.js';
 import { createOp } from './index.js';
 
 export default class Task {

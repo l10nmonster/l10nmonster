@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import runMonsterCLI from '@l10nmonster/cli';
+import runMonsterCLI from './index.js';
 import { resolve } from 'path';
 
 await runMonsterCLI((await import(resolve('.', 'l10nmonster.config.mjs'))).default);

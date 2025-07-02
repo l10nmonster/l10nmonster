@@ -1,4 +1,6 @@
-import { L10nContext, MonsterManager, actions } from '@l10nmonster/core';
+import { L10nContext } from './l10nContext.js';
+import { MonsterManager } from './monsterManager/index.js';
+import * as actions from './actions/index.js';
 import { Channel } from './entities/channel.js';
 import { Normalizer } from './entities/normalizer.js';
 import { FormatHandler } from './entities/formatHandler.js';

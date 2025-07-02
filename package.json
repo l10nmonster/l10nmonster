@@ -1,30 +1,12 @@
 {
-    "workspaces": [
-        "core",
-        "cli",
-        "helpers-android",
-        "helpers-anthropic",
-        "helpers-demo",
-        "helpers-deepl",
-        "helpers-googlecloud",
-        "helpers-html",
-        "helpers-ios",
-        "helpers-java",
-        "helpers-json",
-        "helpers-openai",
-        "helpers-po",
-        "helpers-translated",
-        "helpers-xliff",
-        "server",
-        "helpers-lqaboss"
-    ],
     "scripts": {
-        "test": "npm test --workspaces && npm run test:regression",
+        "test": "pnpm --recursive test && pnpm run test:regression",
         "test:regression": "cd regression && ./test.zsh js local all && ./test.zsh cli local all",
         "eslint": "eslint core/src/**/*.js cli/*.js",
-        "eslint:files": "npm run eslint | grep -e '^/.*js$'",
-        "eslint:files:open": "code $(npm run --silent eslint:files)"
+        "eslint:files": "pnpm run eslint | grep -e '^/.*js$'",
+        "eslint:files:open": "code $(pnpm run --silent eslint:files)"
     },
+    "packageManager": "pnpm@10.12.4",
     "devDependencies": {
         "@eslint/eslintrc": "^3.2.0",
         "@eslint/js": "^9.17.0",

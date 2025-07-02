@@ -1,5 +1,7 @@
 import * as path from 'path';
-import { L10nContext, utils, analyzers, opsManager, logVerbose, logWarn } from '@l10nmonster/core';
+import { L10nContext, logVerbose, logWarn } from '../l10nContext.js';
+import { utils, analyzers } from '../helpers/index.js';
+import * as opsManager from '../opsManager/index.js';
 import DALManager from '../DAL/index.js';
 import TMManager from '../tmManager/index.js';
 import ResourceManager from '../resourceManager/index.js';

@@ -8,7 +8,7 @@ import {
     writeFileSync,
 } from 'fs';
 import * as fsPromises from 'fs/promises';
-import { L10nContext } from '@l10nmonster/core';
+import { L10nContext } from '../../l10nContext.js';
 
 class AbstractFsAdapter {
     #relativeBaseDir;

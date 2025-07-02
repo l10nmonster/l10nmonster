@@ -1,4 +1,5 @@
-import { L10nContext, utils } from '@l10nmonster/core';
+import { L10nContext } from '../l10nContext.js';
+import { utils } from '../helpers/index.js';
 
 function processNotes(normalizedSeg) {
     if (typeof normalizedSeg.notes === 'string') {

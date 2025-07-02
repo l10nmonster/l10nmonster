@@ -115,7 +115,6 @@ export default [
         "no-extra-label": "error",
         "no-extra-parens": "off",
         "no-floating-decimal": "off",
-        "no-floating-promises": "error",
         "no-implicit-coercion": "error",
         "no-implicit-globals": "error",
         "no-implied-eval": "error",
@@ -128,7 +127,6 @@ export default [
         "no-lonely-if": "off",
         "no-loop-func": "off",
         "no-magic-numbers": "off",
-        "no-misused-promises": "error",
         "no-mixed-operators": "off",
         "no-multi-assign": "error",
 

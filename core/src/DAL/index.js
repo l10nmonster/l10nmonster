@@ -1,6 +1,6 @@
 import * as path from 'path';
 import Database from 'better-sqlite3';
-import { L10nContext, logVerbose } from '@l10nmonster/core';
+import { L10nContext, logVerbose } from '../l10nContext.js';
 import { SourceDAL } from './source.js';
 import { TuDAL } from './tu.js';
 import { JobDAL } from './job.js';

@@ -3,7 +3,7 @@ import {
     readFile,
     writeFile,
 } from 'node:fs/promises';
-import { L10nContext } from '@l10nmonster/core';
+import { L10nContext } from '../../l10nContext.js';
 
 export class SequenceGenerator {
     constructor(seqMapFile, seqThreshold = 7) {

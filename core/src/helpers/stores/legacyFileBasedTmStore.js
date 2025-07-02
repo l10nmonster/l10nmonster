@@ -1,4 +1,5 @@
-import { logInfo, logVerbose, utils } from '@l10nmonster/core';
+import { logInfo, logVerbose } from '../../l10nContext.js';
+import { utils } from '../index.js';
 
 const statusPriority = { done: 1, pending: 2, req: 3 };
 const legacyJobFilenameRegex = /(?<jobNameStub>[^/]+(?<translationProvider>[^_]+)_(?<sourceLang>[^_]+)_(?<targetLang>[^_]+)_job_(?<jobGuid>[0-9A-Za-z_-]+))-(?<status>req|pending|done)\.json$/;

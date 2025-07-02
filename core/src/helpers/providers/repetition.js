@@ -1,4 +1,4 @@
-import { L10nContext, styleString } from '@l10nmonster/core';
+import { L10nContext, styleString } from '../../l10nContext.js';
 import { BaseTranslationProvider } from './baseTranslationProvider.js';
 
 /**

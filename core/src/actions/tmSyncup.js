@@ -1,4 +1,4 @@
-import { consoleLog, styleString } from '@l10nmonster/core';
+import { consoleLog, styleString } from '../l10nContext.js';
 
 // eslint-disable-next-line camelcase
 export class tm_syncup {

@@ -6,31 +6,31 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Testing
 ```bash
-npm test
+pnpm test
 ```
 Runs the complete test suite including both unit tests and regression tests:
 - **Unit tests**: 200+ tests across 18 workspace packages using Node.js built-in test runner (`node --test`)
 - **Regression tests**: End-to-end tests for 8 different project configurations (Android, iOS, Java, PO, HTML, etc.)
 
 ```bash
-npm test --workspaces
+pnpm --recursive test
 ```
 Runs only unit tests across all workspaces.
 
 ```bash
-npm run test:regression
+pnpm run test:regression
 ```
 Runs only regression tests using both JavaScript API and CLI modes.
 
 ### Linting
 ```bash
-npm run eslint
+pnpm run eslint
 ```
 Lints JavaScript files in core/src and cli directories using ESLint with comprehensive rules.
 
 ### Running CLI
 ```bash
-npx l10n
+pnpm exec l10n
 ```
 Executes the L10n Monster CLI tool for localization operations.
 
@@ -89,7 +89,7 @@ TM entries include quality scores, timestamps, and job provenance for intelligen
 
 ### Development Patterns
 
-- **Workspace Architecture**: Each helper is an independent npm package
+- **Workspace Architecture**: Each helper is an independent package managed with pnpm workspaces
 - **Plugin Pattern**: Extensible adapters, filters, and providers
 - **Async/Promise-based**: All I/O operations are asynchronous
 - **Configuration over Convention**: Flexible config system for diverse use cases

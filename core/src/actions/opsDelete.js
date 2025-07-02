@@ -1,4 +1,4 @@
-import { consoleLog } from '@l10nmonster/core';
+import { consoleLog } from '../l10nContext.js';
 
 export class ops_delete {
     static help = {

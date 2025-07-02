@@ -2,7 +2,7 @@
 import { suite, test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { i18next } from '@l10nmonster/helpers-json';
+import { i18next } from './index.js';
 import { flattenAndSplitResources } from './utils.js';
 
 suite("json parseResource - description", () => {

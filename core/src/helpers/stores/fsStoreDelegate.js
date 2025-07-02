@@ -1,7 +1,7 @@
 import path from 'path';
 import { mkdirSync, readdirSync, statSync, readFileSync, writeFileSync, unlinkSync, createReadStream, createWriteStream } from 'node:fs';
 import { pipeline } from 'node:stream/promises';
-import { L10nContext } from '@l10nmonster/core';
+import { L10nContext } from '../../l10nContext.js';
 
 export class FsStoreDelegate {
     constructor(baseDir) {

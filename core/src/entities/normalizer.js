@@ -1,4 +1,4 @@
-import { utils, normalizers } from '@l10nmonster/core';
+import { utils, normalizers } from '../helpers/index.js';
 
 /**
  * @class Normalizer

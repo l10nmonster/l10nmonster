@@ -1,5 +1,5 @@
 import { writeFileSync } from 'fs';
-import { consoleLog, styleString } from '@l10nmonster/core';
+import { consoleLog, styleString } from '../l10nContext.js';
 import { groupObjectsByNestedProps } from '../sharedFunctions.js';
 
 export class source_list {

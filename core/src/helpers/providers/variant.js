@@ -1,4 +1,4 @@
-import { L10nContext } from '@l10nmonster/core';
+import { L10nContext } from '../../l10nContext.js';
 import { BaseTranslationProvider } from './baseTranslationProvider.js';
 
 const wordMatcher = /\p{L}+/gu;

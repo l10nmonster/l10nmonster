@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/helpers-java",
-    "version": "2.0.0",
+    "version": "3.0.0",
     "description": "Helpers to deal with Java file formats",
     "type": "module",
     "main": "index.js",
@@ -13,6 +13,6 @@
         "@js.properties/properties": "^0.5.4"
     },
     "peerDependencies": {
-        "@l10nmonster/core": "^3"
+        "@l10nmonster/core": "workspace:*"
     }
 }

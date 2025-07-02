@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import { consoleLog, logVerbose } from '@l10nmonster/core';
+import { consoleLog, logVerbose } from '../l10nContext.js';
 
 function computeDelta(currentTranslations, newTranslations) {
     const delta = [];

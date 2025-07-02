@@ -1,6 +1,8 @@
 import { nanoid } from 'nanoid';
 
-import { L10nContext, logInfo, TU, utils } from '@l10nmonster/core';
+import { L10nContext, logInfo } from '../l10nContext.js';
+import { TU } from '../entities/tu.js';
+import { utils } from '../helpers/index.js';
 import { TM } from './tm.js';
 
 

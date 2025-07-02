@@ -1,4 +1,5 @@
-import { TU, utils } from '@l10nmonster/core';
+import { TU } from '../entities/tu.js';
+import { utils } from '../helpers/index.js';
 
 export async function analyzeCmd(mm, analyzer, params, limitToLang) {
     const Analyzer = mm.analyzers[utils.fixCaseInsensitiveKey(mm.analyzers, analyzer)];

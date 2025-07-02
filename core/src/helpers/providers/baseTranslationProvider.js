@@ -1,4 +1,6 @@
-import { logVerbose, utils, opsManager, logWarn, L10nContext } from '@l10nmonster/core';
+import { L10nContext, logVerbose, logWarn } from '../../l10nContext.js';
+import * as utils from '../utils.js';
+import * as opsManager from '../../opsManager/index.js';
 
 /**
  * Configuration options for initializing a BaseTranslationProvider.

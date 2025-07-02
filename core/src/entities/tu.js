@@ -1,4 +1,4 @@
-import { utils } from '@l10nmonster/core';
+import * as utils from '../helpers/utils.js';
 
 const sourceTUWhitelist = new Set([
     // mandatory

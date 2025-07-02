@@ -4,13 +4,16 @@
         "status": "l10n status"
     },
     "dependencies": {
+        "@l10nmonster/core": "../../../core",
         "@l10nmonster/cli": "../../../cli",
         "@l10nmonster/server": "../../../server",
         "@l10nmonster/helpers-anthropic": "../../../helpers-anthropic",
         "@l10nmonster/helpers-deepl": "../../../helpers-deepl",
-        "@l10nmonster/helpers-lqaboss": "../../helpers-lqaboss",
+        "@l10nmonster/helpers-lqaboss": "../../../helpers-lqaboss",
         "@l10nmonster/helpers-translated": "../../../helpers-translated",
         "@l10nmonster/helpers-ios": "../../../helpers-ios",
-        "@l10nmonster/helpers-xliff": "../../../helpers-xliff"
+        "@l10nmonster/helpers-xliff": "../../../helpers-xliff",
+        "@l10nmonster/helpers-googlecloud": "../../../helpers-googlecloud",
+        "@l10nmonster/helpers-openai": "../../../helpers-openai"
     }
 }

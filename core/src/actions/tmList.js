@@ -1,4 +1,4 @@
-import { consoleLog } from '@l10nmonster/core';
+import { consoleLog } from '../l10nContext.js';
 
 // eslint-disable-next-line camelcase
 export class tm_list {

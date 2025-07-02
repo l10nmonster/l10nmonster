@@ -1,4 +1,4 @@
-import { logInfo } from '@l10nmonster/core';
+import { logInfo } from '../l10nContext.js';
 
 export default class ResourceManager {
     #autoSnap;

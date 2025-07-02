@@ -1,4 +1,5 @@
-import { utils, consoleLog } from '@l10nmonster/core';
+import { consoleLog } from '../l10nContext.js';
+import { utils } from '../helpers/index.js';
 
 // https://stackoverflow.com/questions/9781218/how-to-change-node-jss-console-font-color
 export const consoleColor = {

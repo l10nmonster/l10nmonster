@@ -1,5 +1,5 @@
 import { writeFileSync } from 'fs';
-import { consoleLog } from '@l10nmonster/core';
+import { consoleLog } from '../l10nContext.js';
 import { printRequest } from './shared.js';
 
 export class source_untranslated {

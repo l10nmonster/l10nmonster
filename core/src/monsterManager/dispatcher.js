@@ -1,4 +1,6 @@
-import { TU, utils, L10nContext, logVerbose, logInfo, logWarn } from '@l10nmonster/core';
+import { L10nContext, logVerbose, logInfo, logWarn } from '../l10nContext.js';
+import { TU } from '../entities/tu.js';
+import { utils } from '../helpers/index.js';
 
 export default class Dispatcher {
     #providerPipeline;

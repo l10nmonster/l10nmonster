@@ -1,4 +1,7 @@
-import { L10nContext, providers, logVerbose, logInfo, styleString, utils, opsManager, logError, logWarn } from '@l10nmonster/core';
+import { L10nContext, logVerbose, logInfo, styleString, logError, logWarn } from '../../l10nContext.js';
+import * as utils from '../utils.js';
+import { BaseTranslationProvider } from './baseTranslationProvider.js';
+import * as opsManager from '../../opsManager/index.js';
 
 const MAX_CHAR_LENGTH = 9900;
 const MAX_CHUNK_SIZE = 125;
@@ -22,7 +25,7 @@ const MAX_CHUNK_SIZE = 125;
  * @class ChunkedRemoteTranslationProvider
  * @extends providers.BaseTranslationProvider
  */
-export class ChunkedRemoteTranslationProvider extends providers.BaseTranslationProvider {
+export class ChunkedRemoteTranslationProvider extends BaseTranslationProvider {
 
     #languageMapper;
     #opNames = {};

@@ -1,5 +1,5 @@
 import path from 'path';
-import { L10nContext } from '@l10nmonster/core';
+import { L10nContext } from '../../l10nContext.js';
 import { FsStoreDelegate } from './fsStoreDelegate.js';
 import { LegacyFileBasedTmStore } from './legacyFileBasedTmStore.js';
 import { BaseJsonlTmStore } from './baseJsonlTmStore.js';

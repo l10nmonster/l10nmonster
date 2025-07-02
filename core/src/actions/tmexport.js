@@ -1,7 +1,9 @@
 /* eslint-disable complexity */
 import * as fs from 'fs/promises';
 
-import { L10nContext, TU, utils, consoleLog } from '@l10nmonster/core';
+import { L10nContext, consoleLog } from '../l10nContext.js';
+import { TU } from '../entities/tu.js';
+import { utils } from '../helpers/index.js';
 
 export class tmexport {
     static help = {
