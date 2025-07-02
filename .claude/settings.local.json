@@ -17,7 +17,8 @@
       "Bash(./l10n.mjs --version)",
       "Bash(../../../cli/l10n.mjs --version)",
       "Bash(npx puppeteer browsers:*)",
-      "Bash(npm run install:*)"
+      "Bash(npm run install:*)",
+      "Bash(mv:*)"
     ],
     "deny": []
   }
