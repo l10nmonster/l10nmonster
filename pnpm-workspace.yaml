@@ -1,6 +1,7 @@
 packages:
   - 'core'
   - 'cli'
+  - 'config-mancer'
   - 'helpers-android'
   - 'helpers-anthropic'
   - 'helpers-demo'

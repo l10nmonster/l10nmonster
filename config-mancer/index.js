@@ -80,7 +80,7 @@ export class ConfigMancer {
                 const propertyDef = propertyDefs[key];
                 if (propertyDef || isRootObject || withinArray) {
                     const propType = isRootObject || withinArray ? parentSchema.superType : propertyDef[0];
-                    if (typeof value === propType) {
+                    if (typeof value === propType && !isRootObject && !withinArray) {
                         return value; // this is a primitive type or raw object
                     } else {
                         if (typeof value === 'object') {
