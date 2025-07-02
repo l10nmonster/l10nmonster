@@ -1,0 +1,21 @@
+{
+	"v": 1,
+	"sourceLang": "en",
+	"targetLang": "ru",
+	"blocks": {
+		"xxx4xxx": {
+			"blockName": "blocks/sl=en/tl=ru/block_xxx4xxx.jsonl",
+			"modified": "TS1",
+			"jobs": [
+				[
+					"xxx1xxx",
+					"2022-05-29T00:00:00.000Z"
+				],
+				[
+					"xxx3xxx",
+					"2022-05-29T00:00:00.000Z"
+				]
+			]
+		}
+	}
+}
