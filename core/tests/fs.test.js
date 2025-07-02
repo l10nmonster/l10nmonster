@@ -3,6 +3,7 @@ import { test, beforeEach, afterEach } from 'node:test';
 import { FsSource, FsTarget } from '../src/helpers/adapters/fs.js';
 import { writeFileSync, readFileSync, existsSync, mkdirSync, rmSync } from 'fs';
 import * as path from 'path';
+import { L10nContext } from '../src/l10nContext.js';
 
 const TEST_BASE_DIR = path.resolve('test_base');
 
@@ -11,6 +12,8 @@ beforeEach(() => {
     if (!existsSync(TEST_BASE_DIR)) {
         mkdirSync(TEST_BASE_DIR, { recursive: true });
     }
+    // Set the L10nContext baseDir to the test directory for proper path resolution
+    L10nContext.baseDir = TEST_BASE_DIR;
 });
 
 afterEach(() => {
@@ -25,7 +28,7 @@ test('FsSource: fetchAllResources retrieves metadata', async () => {
     writeFileSync(testFilePath, '{"key": "value"}');
 
     const fsSource = new FsSource({
-        baseDir: TEST_BASE_DIR,
+        baseDir: '.',
         sourceLang: 'en',
         globs: ['**/*.json'],
         idFromPath: (id) => id.replace(/\\/g, '/'), // Normalize path for consistent ID
@@ -47,7 +50,7 @@ test('FsSource: fetchAllResources retrieves file content', async () => {
     writeFileSync(testFilePath, fileContent);
 
     const fsSource = new FsSource({
-        baseDir: TEST_BASE_DIR,
+        baseDir: '.',
         sourceLang: 'en',
         globs: ['**/*.json'],
         idFromPath: (id) => id.replace(/\\/g, '/'), // Normalize path for consistent ID
@@ -73,7 +76,7 @@ test('FsSource: fetchAllResources yields complete resource data for multiple fil
     writeFileSync(file2Path, file2Content);
 
     const fsSource = new FsSource({
-        baseDir: TEST_BASE_DIR,
+        baseDir: '.',
         sourceLang: 'en',
         globs: ['**/*.txt', '**/*.md'],
         idFromPath: (id) => id.replace(/\\/g, '/'), // Normalize path for consistent ID
@@ -103,7 +106,7 @@ test('FsSource: fetchAllResources yields complete resource data for multiple fil
 
 test('FsTarget: commitTranslatedResource writes or deletes files', async () => {
     const fsTarget = new FsTarget({
-        baseDir: TEST_BASE_DIR,
+        baseDir: '.',
         targetPath: (lang, resourceId) => `${lang}/${resourceId}`,
         deleteEmpty: true,
     });
@@ -129,7 +132,7 @@ test('FsTarget: commitTranslatedResource writes or deletes files', async () => {
 
 test('FsTarget: fetchTranslatedResource retrieves file content', async () => {
     const fsTarget = new FsTarget({
-        baseDir: TEST_BASE_DIR,
+        baseDir: '.',
         targetPath: (lang, resourceId) => `${lang}/${resourceId}`,
     });
 
