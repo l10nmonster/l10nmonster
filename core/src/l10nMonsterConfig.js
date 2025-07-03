@@ -246,9 +246,6 @@ export class ChannelConfig {
  */
 export class L10nMonsterConfig {
 
-    /** @type {string} The source language for localization. */
-    sourceLang;
-
     /** @type {Object} Configuration for different channels. */
     channels = {};
 
