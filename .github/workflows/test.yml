@@ -11,10 +11,12 @@ jobs:
         with:
           node-version: '22.x'
           cache: 'pnpm'
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y zsh python3 build-essential
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --link-workspace-packages
-      - name: Install zsh for regression tests
-        run: sudo apt-get update && sudo apt-get install -y zsh
+      - name: Rebuild native modules
+        run: pnpm rebuild
       - name: Run complete test suite (unit tests + regression tests)
         run: pnpm test
         timeout-minutes: 15
