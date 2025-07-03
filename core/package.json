@@ -18,7 +18,7 @@
     },
     "homepage": "https://github.com/l10nmonster/l10nmonster#readme",
     "engines": {
-        "node": ">=20.12.0"
+        "node": ">=22.11.0"
     },
     "dependencies": {
         "nanoid": "^5",

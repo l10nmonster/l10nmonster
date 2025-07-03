@@ -37,6 +37,12 @@ suite('ConfigMancer tests', () => {
         ApiConfig
     });
 
+    // Create validation-only instance for validation tests
+    const validationMancer = ConfigMancer.createFromClasses({
+        DatabaseConfig,
+        ApiConfig
+    }, true);
+
     test('createFromClasses creates schema correctly', () => {
         assert.ok(mancer.schema);
         assert.ok(mancer.schema.DatabaseConfig);
@@ -62,7 +68,7 @@ suite('ConfigMancer tests', () => {
         writeFileSync(testFilePath, JSON.stringify(validConfig));
 
         try {
-            const result = mancer.validateFile(testFilePath);
+            const result = validationMancer.reviveFile(testFilePath);
             assert.equal(result.host, 'db.example.com');
             assert.equal(result.port, 5432);
             assert.equal(result.ssl, true);
@@ -148,7 +154,7 @@ suite('ConfigMancer tests', () => {
 
         try {
             assert.throws(() => {
-                mancer.validateFile(testFilePath);
+                validationMancer.reviveFile(testFilePath);
             }, /mandatory properties not found/);
         } finally {
             unlinkSync(testFilePath);
@@ -168,7 +174,7 @@ suite('ConfigMancer tests', () => {
 
         try {
             assert.throws(() => {
-                mancer.validateFile(testFilePath);
+                validationMancer.reviveFile(testFilePath);
             }, /superType mismatch/);
         } finally {
             unlinkSync(testFilePath);
@@ -213,7 +219,7 @@ suite('ConfigMancer tests', () => {
 
         try {
             assert.throws(() => {
-                mancer.validateFile(testFilePath);
+                validationMancer.reviveFile(testFilePath);
             }, /key "unknownProperty" not allowed/);
         } finally {
             unlinkSync(testFilePath);
