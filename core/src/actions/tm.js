@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
-import { tm_syncup } from './tmSyncup.js';
-import { tm_syncdown } from './tmSyncdown.js';
-import { tm_list } from './tmList.js';
-import { tm_export } from './tmExport.js';
+import { tm_syncup } from './tm_syncup.js';
+import { tm_syncdown } from './tm_syncdown.js';
+import { tm_list } from './tm_list.js';
+import { tm_export } from './tm_export.js';
 
 export class tm {
     static help = {
