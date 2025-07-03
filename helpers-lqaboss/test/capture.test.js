@@ -4,15 +4,35 @@ import { existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { strict as assert } from 'assert';
 import { FlowSnapshotter } from '../flowCapture.js';
+import puppeteer from 'puppeteer';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-describe('PageCapturer', function () {
-    it('should capture a page with LQA metadata', { timeout: 30000 }, async function () {
+// Helper function to check if Chrome/Chromium is available
+async function isChromeAvailable() {
+    try {
+        const browser = await puppeteer.launch({ headless: true });
+        await browser.close();
+        return true;
+    } catch (error) {
+        console.warn('Chrome/Chromium not available:', error.message);
+        return false;
+    }
+}
+
+describe('PageCapturer', () => {
+    it('should capture a page with LQA metadata', { timeout: 30000 }, async (t) => {
+        // Check if Chrome is available
+        const chromeAvailable = await isChromeAvailable();
+        if (!chromeAvailable) {
+            t.skip('Chrome/Chromium not installed');
+            return;
+        }
+
         const testHtmlPath = path.resolve(__dirname, 'en-ZZ-www.html');
         assert(existsSync(testHtmlPath), `Test file not found: ${testHtmlPath}`);
-        const pageCapturer = new FlowSnapshotter(`file://${testHtmlPath}`, 'test-flow', { headless: 'new' });
+        const pageCapturer = new FlowSnapshotter(`file://${testHtmlPath}`, 'test-flow', { headless: true });
         try {
             // Start the flow with the test HTML file
             await pageCapturer.startFlow();
