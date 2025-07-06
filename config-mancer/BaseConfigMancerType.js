@@ -28,6 +28,15 @@ export class BaseConfigMancerType {
      */
     constructor(obj) {
         const proxiedThis = createDoubleProngedObject(obj, this.constructor.prototype);
+        
+        // Store the original constructor for type detection
+        Object.defineProperty(proxiedThis, '__originalConstructor', {
+            value: this.constructor,
+            writable: false,
+            enumerable: false,
+            configurable: false
+        });
+        
         for (const value of Object.values(obj)) {
             if (Array.isArray(value)) {
                 value.forEach(item => typeof item === 'object' && Object.setPrototypeOf(item, proxiedThis));
@@ -37,5 +46,34 @@ export class BaseConfigMancerType {
         }
         // eslint-disable-next-line no-constructor-return
         return proxiedThis;
+    }
+
+    /**
+     * Static factory method for creating instances of this class.
+     * This method is used by ConfigMancer instead of the constructor.
+     * @param {Object} obj - The configuration object containing data properties
+     * @returns {BaseConfigMancerType} A new instance of the class
+     */
+    static configMancerFactory(obj) {
+        return new this(obj);
+    }
+
+    /**
+     * Serializes this object into a format suitable for ConfigMancer.
+     * This method should be overridden by subclasses to provide custom serialization logic.
+     * The returned object should be a plain object without the '@' property.
+     * @returns {Object} A plain object with data properties suitable for factory instantiation
+     */
+    configMancerSerializer() {
+        const result = {};
+        // Copy all enumerable properties from the proxy object
+        const keys = Object.keys(this);
+        for (const key of keys) {
+            const value = this[key];
+            if (typeof value !== 'function') {
+                result[key] = value;
+            }
+        }
+        return result;
     }
 }
