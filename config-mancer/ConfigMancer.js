@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { BaseConfigMancerType } from './BaseConfigMancerType.js';
 import { JsonSchemaGenerator } from './JsonSchemaGenerator.js';
+import { SchemaManager } from './SchemaManager.js';
 
 /**
  * ConfigMancer is a configuration management utility that provides schema-based
@@ -9,150 +10,54 @@ import { JsonSchemaGenerator } from './JsonSchemaGenerator.js';
  * automatic object instantiation based on class factories.
  */
 export class ConfigMancer {
-    schema;
+    #schemaManager;
     validationOnly;
 
     /**
      * Creates a new ConfigMancer instance.
-     * @param {Object} schema - The configuration schema defining types and validation rules
+     * @param {SchemaManager|Object} schemaManagerOrOptions - Either a SchemaManager instance or options to create one
      * @param {boolean} [validationOnly=false] - If true, only validates without constructing objects
      */
-    constructor(schema, validationOnly = false) {
-        this.schema = schema;
+    constructor(schemaManagerOrOptions, validationOnly = false) {
+        if (schemaManagerOrOptions instanceof SchemaManager) {
+            this.#schemaManager = schemaManagerOrOptions;
+        } else {
+            this.#schemaManager = new SchemaManager(schemaManagerOrOptions);
+            // For backward compatibility, if packages are provided, warn that async initialization is needed
+            if (schemaManagerOrOptions?.packages?.length > 0) {
+                console.warn('Warning: Packages provided to ConfigMancer constructor. Call .initialize() to load packages, or use ConfigMancer.createFromSources() for automatic initialization.');
+            }
+        }
         this.validationOnly = validationOnly;
     }
-
+    
     /**
-     * Creates a ConfigMancer instance from a collection of classes.
-     * Each class must have a static `configMancerSample` property that defines
-     * the expected structure and types for configuration objects.
-     * @param {Object} obj - Object containing class constructors keyed by type name
-     * @returns {ConfigMancer} A new ConfigMancer instance with the generated schema
-     * @throws {Error} If any class is missing the required `configMancerSample` property
-     * @example
-     * const mancer = ConfigMancer.createFromClasses({
-     *   MyType: MyTypeClass,
-     *   AnotherType: AnotherTypeClass
-     * });
+     * Initializes the ConfigMancer by loading packages.
+     * This is required when packages are provided to the constructor.
+     * @returns {Promise<void>}
      */
-    static createFromClasses(obj) {
-        const schema = {};
-        for (const [typeName, factory] of Object.entries(obj)) {
-            const sample = factory.configMancerSample;
-            if (sample) {
-                this.#addToSchema(schema, typeName, factory, sample);
-            } else {
-                throw new Error(`Couldn't find a "configMancerSample" property in type ${typeName}`);
-            }
-        }
-        return new ConfigMancer(schema);
+    async initialize() {
+        await this.#schemaManager.initialize();
+    }
+    
+    /**
+     * Static factory method to create a ConfigMancer with packages loaded.
+     * @param {Object|string[]} sources - Either an object with class constructors or array of package names
+     * @param {string} [fromUrl] - URL to resolve packages from (usually import.meta.url from calling code)
+     * @param {boolean} [validationOnly=false] - If true, only validates without constructing objects
+     * @returns {Promise<ConfigMancer>} A new ConfigMancer instance with packages loaded
+     */
+    static async createFromSources(sources, fromUrl = null, validationOnly = false) {
+        const schemaManager = await SchemaManager.createFromSources(sources, fromUrl);
+        return new ConfigMancer(schemaManager, validationOnly);
     }
 
     /**
-     * Creates a ConfigMancer instance from a collection of packages.
-     * Dynamically imports each package and recursively inspects exports for objects
-     * with `configMancerSample` properties. Plain objects are traversed recursively.
-     * @param {string[]} packageNames - Array of package names to import and inspect
-     * @returns {Promise<ConfigMancer>} A new ConfigMancer instance with the generated schema
-     * @throws {Error} If any package fails to import or classes are missing required methods
-     * @example
-     * const mancer = await ConfigMancer.createFromPackages([
-     *   'my-package',
-     *   '@namespace/another-package'
-     * ]);
+     * Gets the current schema (for backward compatibility).
+     * @returns {Object} The current schema
      */
-    static async createFromPackages(packageNames) {
-        const schema = {};
-        
-        for (const packageName of packageNames) {
-            try {
-                const packageExports = await import(packageName);
-                
-                // Helper function to process a single export
-                const processExport = (exportValue, keyPath) => {
-                    if (!exportValue || (typeof exportValue !== 'object' && typeof exportValue !== 'function')) {
-                        return;
-                    }
-                    
-                    // Check if this export has configMancerSample
-                    if (exportValue.configMancerSample) {
-                        const typeName = `${packageName}:${keyPath}`;
-                        this.#addToSchema(schema, typeName, exportValue, exportValue.configMancerSample);
-                    }
-                    
-                    // If it's a plain object, recurse into its properties
-                    if (exportValue.constructor === Object) {
-                        for (const [key, value] of Object.entries(exportValue)) {
-                            processExport(value, `${keyPath}.${key}`);
-                        }
-                    }
-                };
-                
-                // Process all exports from the package
-                for (const [exportName, exportValue] of Object.entries(packageExports)) {
-                    processExport(exportValue, exportName);
-                }
-                
-            } catch (error) {
-                throw new Error(`Failed to import package "${packageName}": ${error.message}`);
-            }
-        }
-        
-        return new ConfigMancer(schema);
-    }
-
-    /**
-     * Private helper method to add a type definition to the schema.
-     * @param {Object} schema - The schema object to add to
-     * @param {string} typeName - The name of the type
-     * @param {any} factory - The factory function/class or constant value
-     * @param {Object|boolean} sample - The configMancerSample object or true for constants
-     */
-    static #addToSchema(schema, typeName, factory, sample) {
-        // Handle constant values where configMancerSample === true
-        if (sample === true) {
-            // Create a clean copy of the factory without configMancerSample
-            let cleanFactory;
-            if (typeof factory === 'object' && factory !== null) {
-                // eslint-disable-next-line no-unused-vars
-                const { configMancerSample, ...cleanObject } = factory;
-                cleanFactory = cleanObject;
-            } else {
-                cleanFactory = factory;
-            }
-            
-            const def = {
-                superType: typeof factory,
-                params: {},
-                factory: cleanFactory,
-                isConstant: true,
-            };
-            schema[typeName] = def;
-            return;
-        }
-
-        // Handle regular factory classes/functions
-        if (typeof factory.configMancerFactory !== 'function') {
-            throw new Error(`Class ${typeName} must have a static "configMancerFactory" method`);
-        }
-        
-        const def = {
-            superType: sample['@'],
-            params: {},
-            factory,
-            isConstant: false,
-        };
-        def.superType ??= typeName;
-        
-        for (const [paramName, sampleValue] of Object.entries(sample)) {
-            if (paramName !== '@') {
-                const [param, isMandatory] = paramName.startsWith('$') ? [paramName.substring(1), false] : [paramName, true];
-                const [paramType, isArray] = Array.isArray(sampleValue) ? [sampleValue[0]['@'] ?? typeof sampleValue[0], true] : [sampleValue['@'] ?? typeof sampleValue, false];
-                def.params[param] = [paramType, isMandatory, isArray];
-            }
-        }
-        
-        schema[typeName] = def;
+    get schema() {
+        return this.#schemaManager.schema;
     }
 
     // TODO: support enforcing objects with arbitrary keys but same value type (basically like arrays)
@@ -171,10 +76,12 @@ export class ConfigMancer {
      * const config = JSON.parse(jsonString, reviver);
      */
     createReviver() {
-        const schema = this.schema;
-        if (!schema) {
-            throw new Error(`Can't revive without a schema.`);
+        if (!this.#schemaManager) {
+            throw new Error(`Can't revive without a schema manager.`);
         }
+        
+        // Capture schema manager reference for use in reviver function
+        const schemaManager = this.#schemaManager;
         
         // Bind private methods to access them from within the reviver function
         const getReviverContext = this.#getReviverContext.bind(this);
@@ -211,7 +118,8 @@ export class ConfigMancer {
             }
             
             if (typeof value !== 'object') {
-                throw new Error(`superType mismatch for key "${key}" in ${containerType}: expected ${propType} and found ${schema[value['@']]?.superType}`);
+                const typeSchema = schemaManager.getType(value['@']);
+                throw new Error(`superType mismatch for key "${key}" in ${containerType}: expected ${propType} and found ${typeSchema?.superType}`);
             }
             
             if (Array.isArray(value)) {
@@ -226,7 +134,7 @@ export class ConfigMancer {
         const isRootObject = key === '';
         const withinArray = Array.isArray(thisArg);
         const containerType = isRootObject || withinArray ? value['@'] : thisArg['@'];
-        const parentSchema = this.schema[containerType];
+        const parentSchema = this.#schemaManager.getType(containerType);
         
         return { isRootObject, withinArray, containerType, parentSchema };
     }
@@ -265,7 +173,7 @@ export class ConfigMancer {
         }
         
         return value.map(obj => {
-            const objSchema = this.schema[obj['@']];
+            const objSchema = this.#schemaManager.getType(obj['@']);
             const objSupertype = objSchema?.superType ?? typeof obj;
             
             if (objSupertype !== propType) {
@@ -289,7 +197,7 @@ export class ConfigMancer {
     }
     
     #handleObjectValue(value, key, containerType, propType, withinArray) {
-        const valueSchema = this.schema[value['@']];
+        const valueSchema = this.#schemaManager.getType(value['@']);
         
         if (valueSchema?.superType !== propType) {
             throw new Error(`primitive type mismatch for key "${key}" in ${containerType}: expected ${propType} and found ${typeof value}`);
@@ -457,7 +365,7 @@ export class ConfigMancer {
         // eslint-disable-next-line dot-notation
         const constructor = obj['__originalConstructor'] || obj.constructor;
         
-        for (const [typeName, schemaEntry] of Object.entries(this.schema)) {
+        for (const [typeName, schemaEntry] of Object.entries(this.#schemaManager.schema)) {
             if (schemaEntry.factory && constructor === schemaEntry.factory) {
                 return typeName;
             }
@@ -476,9 +384,7 @@ export class ConfigMancer {
      * mancer.writeJsonSchema('MyRootType', './config.schema.json');
      */
     writeJsonSchema(rootType, pathName) {
-        const generator = new JsonSchemaGenerator(this.schema);
+        const generator = new JsonSchemaGenerator(this.#schemaManager.schema);
         generator.writeJsonSchema(rootType, pathName);
     }
-
-
-} 
+}

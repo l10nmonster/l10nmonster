@@ -32,18 +32,22 @@ class ApiConfig extends BaseConfigMancerType {
 }
 
 suite('ConfigMancer tests', () => {
-    const mancer = ConfigMancer.createFromClasses({
-        DatabaseConfig,
-        ApiConfig
+    const mancer = new ConfigMancer({
+        classes: {
+            DatabaseConfig,
+            ApiConfig
+        }
     });
 
     // Create validation-only instance for validation tests
-    const validationMancer = ConfigMancer.createFromClasses({
-        DatabaseConfig,
-        ApiConfig
+    const validationMancer = new ConfigMancer({
+        classes: {
+            DatabaseConfig,
+            ApiConfig
+        }
     }, true);
 
-    test('createFromClasses creates schema correctly', () => {
+    test('constructor with classes creates schema correctly', () => {
         assert.ok(mancer.schema);
         assert.ok(mancer.schema.DatabaseConfig);
         assert.ok(mancer.schema.ApiConfig);
@@ -251,7 +255,7 @@ suite('ConfigMancer tests', () => {
         }
 
         assert.throws(() => {
-            ConfigMancer.createFromClasses({ InvalidConfig });
+            new ConfigMancer({ classes: { InvalidConfig } });
         }, /Couldn't find a "configMancerSample" property in type InvalidConfig/);
     });
 
@@ -279,7 +283,7 @@ suite('ConfigMancer tests', () => {
         }
 
         // Create ConfigMancer with the custom class
-        const customMancer = ConfigMancer.createFromClasses({ CustomConfig });
+        const customMancer = new ConfigMancer({ classes: { CustomConfig } });
 
         const config = {
             '@': 'CustomConfig',
@@ -316,7 +320,7 @@ suite('ConfigMancer tests', () => {
         }
 
         assert.throws(() => {
-            ConfigMancer.createFromClasses({ MissingFactoryConfig });
+            new ConfigMancer({ classes: { MissingFactoryConfig } });
         }, /Class MissingFactoryConfig must have a static "configMancerFactory" method/);
     });
 
@@ -350,7 +354,7 @@ suite('ConfigMancer tests', () => {
     });
 
     test('serialize handles primitive values', () => {
-        const mancer = ConfigMancer.createFromClasses({});
+        const mancer = new ConfigMancer({ classes: {} });
         
         assert.equal(mancer.serialize(null), null);
         assert.equal(mancer.serialize(42), 42);
@@ -360,7 +364,7 @@ suite('ConfigMancer tests', () => {
     });
 
     test('serialize handles arrays', () => {
-        const mancer = ConfigMancer.createFromClasses({});
+        const mancer = new ConfigMancer({ classes: {} });
         
         const input = [1, 'hello', true, null];
         const result = mancer.serialize(input);
@@ -369,7 +373,7 @@ suite('ConfigMancer tests', () => {
     });
 
     test('serialize handles plain objects', () => {
-        const mancer = ConfigMancer.createFromClasses({});
+        const mancer = new ConfigMancer({ classes: {} });
         
         const input = {
             name: 'test',
@@ -403,7 +407,7 @@ suite('ConfigMancer tests', () => {
             }
         }
 
-        const mancer = ConfigMancer.createFromClasses({ TestConfig });
+        const mancer = new ConfigMancer({ classes: { TestConfig } });
         
         const config = new TestConfig({
             name: 'test-config',
@@ -435,7 +439,7 @@ suite('ConfigMancer tests', () => {
             };
         }
 
-        const mancer = ConfigMancer.createFromClasses({ DatabaseConfig, ApiConfig });
+        const mancer = new ConfigMancer({ classes: { DatabaseConfig, ApiConfig } });
 
         const dbConfig = new DatabaseConfig({
             host: 'db.example.com',
@@ -473,7 +477,7 @@ suite('ConfigMancer tests', () => {
             };
         }
 
-        const mancer = ConfigMancer.createFromClasses({ DatabaseConfig, ApiConfig });
+        const mancer = new ConfigMancer({ classes: { DatabaseConfig, ApiConfig } });
 
         const db1 = new DatabaseConfig({
             host: 'db1.example.com',
@@ -533,10 +537,10 @@ suite('ConfigMancer tests', () => {
         }
 
         // Create ConfigMancer instance
-        const mancer = ConfigMancer.createFromClasses({
+        const mancer = new ConfigMancer({ classes: {
             DatabaseConfig,
             ApiConfig
-        });
+        } });
 
         // Create original configuration
         const db1 = new DatabaseConfig({
@@ -605,7 +609,7 @@ suite('ConfigMancer tests', () => {
             }
         }
 
-        const mancer = ConfigMancer.createFromClasses({});
+        const mancer = new ConfigMancer({ classes: {} });
 
         const settings = new CustomSettings({
             theme: 'dark',
@@ -629,7 +633,7 @@ suite('ConfigMancer tests', () => {
             }
         }
 
-        const mancer = ConfigMancer.createFromClasses({});
+        const mancer = new ConfigMancer({ classes: {} });
         const obj = new UnsupportedClass('test');
 
         assert.throws(() => {
@@ -653,7 +657,7 @@ suite('ConfigMancer tests', () => {
             }
         }
 
-        const mancer = ConfigMancer.createFromClasses({ TestConfig });
+        const mancer = new ConfigMancer({ classes: { TestConfig } });
 
         const config1 = new TestConfig({ name: 'config1' });
         const config2 = new TestConfig({ name: 'config2' });
@@ -713,7 +717,7 @@ suite('ConfigMancer tests', () => {
             };
         }
 
-        const mancer = ConfigMancer.createFromClasses({ TestConfig });
+        const mancer = new ConfigMancer({ classes: { TestConfig } });
         
         const config = new TestConfig({
             name: 'test-config',
@@ -749,10 +753,10 @@ suite('ConfigMancer tests', () => {
         API_CONFIG.configMancerSample = true;
         DEFAULT_HEADERS.configMancerSample = true;
         
-        const mancer = ConfigMancer.createFromClasses({
+        const mancer = new ConfigMancer({ classes: {
             ApiConfig: API_CONFIG,
             DefaultHeaders: DEFAULT_HEADERS
-        });
+        } });
         
         // Verify schema has isConstant flag
         assert.equal(mancer.schema.ApiConfig.isConstant, true);
@@ -791,10 +795,10 @@ suite('ConfigMancer tests', () => {
             };
         }
         
-        const mancer = ConfigMancer.createFromClasses({
+        const mancer = new ConfigMancer({ classes: {
             ApiConfig,
             DefaultHeaders: DEFAULT_HEADERS
-        });
+        } });
         
         const config = {
             '@': 'ApiConfig',
@@ -824,10 +828,10 @@ suite('ConfigMancer tests', () => {
         formatter.configMancerSample = true;
         
         // Create a simple schema with just the functions
-        const mancer = ConfigMancer.createFromClasses({
+        const mancer = new ConfigMancer({ classes: {
             Logger: logger,
             Formatter: formatter
-        });
+        } });
         
         // Verify schema has isConstant flag and correct superType for functions
         assert.equal(mancer.schema.Logger.isConstant, true);
@@ -862,7 +866,7 @@ suite('ConfigMancer tests', () => {
     });
 });
 
-suite('ConfigMancer createFromPackages tests', () => {
+suite('ConfigMancer lazy loading tests', () => {
     // Helper function to create a temporary test module
     let moduleCounter = 0;
     const createTestModule = (content) => {
@@ -892,7 +896,7 @@ suite('ConfigMancer createFromPackages tests', () => {
         const tempFilePath = createTestModule(testModuleContent);
         
         try {
-            const mancer = await ConfigMancer.createFromPackages([tempFilePath]);
+            const mancer = await ConfigMancer.createFromSources([tempFilePath], import.meta.url);
             
             // Verify schema was created correctly
             assert.ok(mancer.schema);
@@ -959,7 +963,7 @@ suite('ConfigMancer createFromPackages tests', () => {
         const tempFilePath = createTestModule(testModuleContent);
         
         try {
-            const mancer = await ConfigMancer.createFromPackages([tempFilePath]);
+            const mancer = await ConfigMancer.createFromSources([tempFilePath], import.meta.url);
             
             // Verify both schemas were created
             assert.ok(mancer.schema);
@@ -988,7 +992,7 @@ suite('ConfigMancer createFromPackages tests', () => {
         const nonExistentPackage = '/tmp/non-existent-package.mjs';
         
         try {
-            await ConfigMancer.createFromPackages([nonExistentPackage]);
+            await ConfigMancer.createFromSources([nonExistentPackage], import.meta.url);
             assert.fail('Should have thrown an error');
         } catch (error) {
             assert.ok(error.message.includes('Failed to import package'));
@@ -1010,7 +1014,7 @@ suite('ConfigMancer createFromPackages tests', () => {
         const tempFilePath = createTestModule(testModuleContent);
         
         try {
-            await ConfigMancer.createFromPackages([tempFilePath]);
+            await ConfigMancer.createFromSources([tempFilePath], import.meta.url);
             assert.fail('Should have thrown an error');
         } catch (error) {
             assert.ok(error.message.includes('must have a static "configMancerFactory" method'));
@@ -1050,7 +1054,7 @@ suite('ConfigMancer createFromPackages tests', () => {
         const tempFilePath2 = createTestModule(testModule2Content);
         
         try {
-            const mancer = await ConfigMancer.createFromPackages([tempFilePath1, tempFilePath2]);
+            const mancer = await ConfigMancer.createFromSources([tempFilePath1, tempFilePath2], import.meta.url);
             
             // Verify both schemas were created
             assert.ok(mancer.schema[`${tempFilePath1}:Config1`]);
@@ -1090,7 +1094,7 @@ suite('ConfigMancer createFromPackages tests', () => {
         const tempFilePath = createTestModule(testModuleContent);
         
         try {
-            const mancer = await ConfigMancer.createFromPackages([tempFilePath]);
+            const mancer = await ConfigMancer.createFromSources([tempFilePath], import.meta.url);
             
             // Verify constant schemas were created
             const apiConfigKey = `${tempFilePath}:API_CONFIG`;
