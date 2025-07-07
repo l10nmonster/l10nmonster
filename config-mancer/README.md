@@ -10,6 +10,7 @@ ConfigMancer provides a powerful configuration system that enables:
 - **Proxy-based behavior**: Extend objects with inherited behavior through proxies
 - **JSON parsing with validation**: Parse and validate JSON configuration files
 - **Serialization**: Convert objects back to JSON configuration format
+- **JSON Schema generation**: Generate JSON Schema files for configuration authoring and validation
 - **Package discovery**: Automatically discover configuration classes from npm packages
 - **Constants support**: Support for constant configuration values
 
@@ -142,6 +143,29 @@ The serialization process:
 - Handles circular reference detection
 - Preserves primitive values and plain objects
 
+#### JSON Schema Generation
+
+ConfigMancer can generate JSON Schema files that can be used for configuration authoring and validation in IDEs and other tools:
+
+```javascript
+// Generate JSON Schema for a root configuration type
+mancer.writeJsonSchema('ApiConfig', './config.schema.json');
+```
+
+The generated JSON Schema:
+- **Complies with JSON Schema Draft 07** specification
+- **Includes all type definitions** with proper references and constraints
+- **Handles complex nested structures** with arrays and objects
+- **Supports constant values** using JSON Schema's `const` keyword
+- **Provides proper validation rules** for mandatory vs optional properties
+- **Prevents circular references** using `$ref` definitions
+
+Generated schemas can be used with:
+- **IDE/Editor support** for autocomplete and validation during configuration authoring
+- **JSON Schema validators** for runtime validation
+- **Documentation tools** that support JSON Schema
+- **Configuration authoring tools** with JSON Schema integration
+
 #### Example Configuration File
 
 ```json
@@ -229,6 +253,18 @@ Serializes an object and writes it to a file as JSON.
 - `obj`: The object to serialize and write
 - `pathName`: Path to the file where the serialized object will be written
 - `indent`: Number of spaces for JSON indentation (default: 2)
+
+### `configMancer.writeJsonSchema(rootType, pathName)`
+
+Generates a JSON Schema for the specified root type and writes it to a file.
+
+**Parameters:**
+- `rootType`: The name of the root type to generate schema for
+- `pathName`: Path to the file where the JSON schema will be written
+
+**Returns:** None (writes to file)
+
+**Throws:** Error if the root type is not found in the schema or file cannot be written
 
 ## Custom Configuration Classes
 
@@ -371,6 +407,9 @@ const config = mancer.reviveFile('./config.json');
 // Use the configuration
 console.log(config.url);
 console.log(config.getPrimaryDatabase().getConnectionString());
+
+// Generate JSON Schema for authoring and validation
+mancer.writeJsonSchema('ApiConfig', './config.schema.json');
 
 // Serialize back to JSON
 const serialized = mancer.serialize(config);

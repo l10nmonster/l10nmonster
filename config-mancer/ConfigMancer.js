@@ -1,5 +1,6 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { BaseConfigMancerType } from './BaseConfigMancerType.js';
+import { JsonSchemaGenerator } from './JsonSchemaGenerator.js';
 
 /**
  * ConfigMancer is a configuration management utility that provides schema-based
@@ -464,4 +465,20 @@ export class ConfigMancer {
         
         return null;
     }
+
+    /**
+     * Generates a JSON Schema for the specified root type and writes it to a file.
+     * The generated schema can be used for authoring and validation of configurations.
+     * @param {string} rootType - The name of the root type to generate schema for
+     * @param {string} pathName - Path to the file where the JSON schema will be written
+     * @throws {Error} If the root type is not found in the schema or file cannot be written
+     * @example
+     * mancer.writeJsonSchema('MyRootType', './config.schema.json');
+     */
+    writeJsonSchema(rootType, pathName) {
+        const generator = new JsonSchemaGenerator(this.schema);
+        generator.writeJsonSchema(rootType, pathName);
+    }
+
+
 } 
