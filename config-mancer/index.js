@@ -5,5 +5,3 @@
 
 export { BaseConfigMancerType } from './BaseConfigMancerType.js';
 export { ConfigMancer } from './ConfigMancer.js';
-export { JsonSchemaGenerator } from './JsonSchemaGenerator.js';
-export { SchemaManager } from './SchemaManager.js';

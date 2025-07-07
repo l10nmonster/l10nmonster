@@ -1,5 +1,3 @@
-import { createRequire } from 'node:module';
-
 /**
  * SchemaManager handles lazy loading and resolution of ConfigMancer types from packages and classes.
  */
@@ -7,22 +5,16 @@ export class SchemaManager {
     #schema = {};              // Schema of resolved types
     #packageNames = [];        // Packages to search for types
     #localClasses = {};        // Direct class mappings
-    #requireFn = null;         // Cached require function
 
     /**
      * Creates a new SchemaManager instance.
      * @param {Object} options - Configuration options
-     * @param {string} [options.fromUrl] - URL for module resolution (import.meta.url)
      * @param {string[]} [options.packages] - Package names to search for types
      * @param {Object} [options.classes] - Direct class mappings
      */
-    constructor({ fromUrl = null, packages = [], classes = {} } = {}) {
+    constructor({ packages = [], classes = {} } = {}) {
         this.#packageNames = packages;
         this.#localClasses = classes;
-        
-        if (fromUrl) {
-            this.#requireFn = createRequire(fromUrl);
-        }
         
         // Pre-populate schema with local classes
         this.#addLocalClasses();
@@ -142,19 +134,7 @@ export class SchemaManager {
         // Process all packages
         for (const packageName of this.#packageNames) {
             try {
-                let packageExports;
-                
-                try {
-                    // Try require first (for CommonJS modules)
-                    packageExports = this.#requireFn(packageName);
-                } catch (requireError) {
-                    // If require fails, try dynamic import (for ESM modules)
-                    if (requireError.message.includes('require() of ES Module')) {
-                        packageExports = await import(packageName);
-                    } else {
-                        throw requireError; // Re-throw other errors
-                    }
-                }
+                const packageExports = await import(packageName);
                 
                 // Process all exports from the package
                 for (const [exportName, exportValue] of Object.entries(packageExports)) {
@@ -185,31 +165,5 @@ export class SchemaManager {
         return this.#schema[typeName] !== undefined;
     }
 
-    /**
-     * Static factory method to create a SchemaManager from various sources.
-     * @param {Object|string[]} sources - Either an object with class constructors or array of package names
-     * @param {string} [fromUrl] - URL to resolve packages from (usually import.meta.url from calling code)
-     * @returns {Promise<SchemaManager>} A new SchemaManager instance with packages loaded
-     */
-    static async createFromSources(sources, fromUrl = null) {
-        let options = { fromUrl };
-        
-        if (Array.isArray(sources)) {
-            options.packages = sources;
-        } else if (typeof sources === 'object' && sources !== null) {
-            if (sources.packages && Array.isArray(sources.packages)) {
-                options.packages = sources.packages;
-                // Remove packages from sources and use the rest as classes
-                // eslint-disable-next-line no-unused-vars
-                const { packages, ...classes } = sources;
-                options.classes = classes;
-            } else {
-                options.classes = sources;
-            }
-        }
-        
-        const manager = new SchemaManager(options);
-        await manager.initialize();
-        return manager;
-    }
+
 } 

@@ -12,7 +12,10 @@ ConfigMancer provides a powerful configuration system that enables:
 - **Serialization**: Convert objects back to JSON configuration format
 - **JSON Schema generation**: Generate JSON Schema files for configuration authoring and validation
 - **Package discovery**: Automatically discover configuration classes from npm packages
+- **Module resolution**: Proper handling of both CommonJS and ESM modules with correct resolution context
+- **Lazy loading**: Efficient schema management with support for async package loading
 - **Constants support**: Support for constant configuration values
+- **Modular design**: Separate concerns with dedicated classes for different functionality
 
 ## Classes
 
@@ -37,10 +40,10 @@ console.log(config.myMethod()); // "Hello World"
 
 The main class for schema validation and object construction.
 
-#### Creating from Classes
+#### Creating ConfigMancer
 
 ```javascript
-import { ConfigMancer } from '@l10nmonster/configMancer';
+import { ConfigMancer, BaseConfigMancerType } from '@l10nmonster/configMancer';
 
 class DatabaseConfig extends BaseConfigMancerType {
     static configMancerSample = {
@@ -60,28 +63,47 @@ class ApiConfig extends BaseConfigMancerType {
     };
 }
 
-const mancer = ConfigMancer.createFromClasses({
-    DatabaseConfig,
-    ApiConfig
+// Create with local classes
+const mancer = new ConfigMancer({
+    classes: {
+        DatabaseConfig,
+        ApiConfig
+    }
 });
 ```
 
 #### Creating from Packages
 
-ConfigMancer can automatically discover configuration classes from npm packages:
+ConfigMancer can automatically discover configuration classes from npm packages using the `create` factory method:
 
 ```javascript
-const mancer = await ConfigMancer.createFromPackages([
-    '@myorg/config-package',
-    './local-config-module.mjs'
-]);
+const mancer = await ConfigMancer.create({
+    fromUrl: import.meta.url,
+    packages: ['@myorg/config-package', './local-config-module.mjs']
+});
 ```
 
 This method:
-- Dynamically imports each package
+- **Handles both CommonJS and ESM modules** automatically
+- Dynamically imports each package using proper module resolution
 - Recursively inspects exports for objects with `configMancerSample` properties
 - Supports both direct exports and nested object exports
 - Creates type names in the format `packageName:exportPath`
+- **Resolves modules from the calling code's context** (fixes module resolution issues)
+
+#### Mixed Sources
+
+You can combine classes and packages in a single call:
+
+```javascript
+const mancer = await ConfigMancer.create({
+    fromUrl: import.meta.url,
+    packages: ['@myorg/config-package'],
+    classes: { LocalConfig: LocalConfigClass }
+});
+```
+
+> **Note**: When using packages, `create()` is asynchronous and returns a Promise. For classes-only configurations, you can use the synchronous constructor.
 
 #### Constants Support
 
@@ -94,8 +116,8 @@ const API_ENDPOINTS = {
 };
 API_ENDPOINTS.configMancerSample = true;
 
-const mancer = ConfigMancer.createFromClasses({
-    ApiEndpoints: API_ENDPOINTS
+const mancer = new ConfigMancer({
+    classes: { ApiEndpoints: API_ENDPOINTS }
 });
 
 // In configuration file:
@@ -112,17 +134,19 @@ Schema parameters are defined as `[type, isMandatory, isArray]`:
 - **isMandatory**: Whether the parameter is required (default: true, false if prefixed with `$`)
 - **isArray**: Whether the parameter should be an array
 
-#### Validating Configuration Files
+#### Validation-Only Mode
 
 ```javascript
-// Create validation-only instance
-const validationMancer = new ConfigMancer(schema, true);
+// Enable validation-only mode
+const mancer = new ConfigMancer({ classes: { DatabaseConfig } });
+mancer.validationOnly = true;
 
 // Validate configuration without constructing objects
-const isValid = validationMancer.reviveFile('./config.json');
-
-// Parse and construct typed objects
 const config = mancer.reviveFile('./config.json');
+
+// Disable validation-only mode to construct typed objects
+mancer.validationOnly = false;
+const typedConfig = mancer.reviveFile('./config.json');
 ```
 
 #### Serialization
@@ -166,17 +190,6 @@ Generated schemas can be used with:
 - **Documentation tools** that support JSON Schema
 - **Configuration authoring tools** with JSON Schema integration
 
-### `JsonSchemaGenerator`
-
-A utility class for generating JSON Schema files from ConfigMancer schemas. This class is exported from the main module and can be used independently.
-
-```javascript
-import { JsonSchemaGenerator } from '@l10nmonster/configMancer';
-
-const generator = new JsonSchemaGenerator(schema);
-generator.writeJsonSchema('ApiConfig', './config.schema.json');
-```
-
 #### Example Configuration File
 
 ```json
@@ -203,33 +216,34 @@ generator.writeJsonSchema('ApiConfig', './config.schema.json');
 
 ## API Reference
 
-### `ConfigMancer.createFromClasses(classMap)`
+### `new ConfigMancer(options)`
 
-Creates a ConfigMancer instance from a map of configuration classes.
+Creates a ConfigMancer instance.
 
 **Parameters:**
-- `classMap`: Object mapping type names to configuration classes
+- `options.classes`: Object mapping type names to configuration classes
+- `options.fromUrl`: URL for module resolution (usually `import.meta.url`)
+- `options.packages`: Array of package names to search for types
 
 **Returns:** ConfigMancer instance
 
-### `ConfigMancer.createFromPackages(packageNames)`
+### `ConfigMancer.create(options)`
 
-Creates a ConfigMancer instance by importing and inspecting npm packages.
+Creates a ConfigMancer instance with automatic package loading.
 
 **Parameters:**
-- `packageNames`: Array of package names to import and inspect
+- `options.fromUrl`: URL for module resolution (usually `import.meta.url`)
+- `options.packages`: Array of package names to search for types
+- `options.classes`: Object mapping type names to configuration classes
 
 **Returns:** Promise<ConfigMancer> instance
 
-### `new ConfigMancer(schema, validationOnly)`
+### `configMancer.validationOnly`
 
-Creates a ConfigMancer instance with an existing schema.
+Property that controls whether the ConfigMancer instance only validates without constructing objects.
 
-**Parameters:**
-- `schema`: The configuration schema
-- `validationOnly`: If true, only validates without constructing objects (default: false)
-
-**Returns:** ConfigMancer instance
+**Type:** boolean
+**Default:** false
 
 ### `configMancer.reviveFile(pathName)`
 
@@ -276,36 +290,6 @@ Generates a JSON Schema for the specified root type and writes it to a file.
 **Returns:** None (writes to file)
 
 **Throws:** Error if the root type is not found in the schema or file cannot be written
-
-### `new JsonSchemaGenerator(schema)`
-
-Creates a JsonSchemaGenerator instance with a ConfigMancer schema.
-
-**Parameters:**
-- `schema`: The ConfigMancer schema definition
-
-**Returns:** JsonSchemaGenerator instance
-
-### `jsonSchemaGenerator.writeJsonSchema(rootType, pathName)`
-
-Generates a JSON Schema for the specified root type and writes it to a file.
-
-**Parameters:**
-- `rootType`: The name of the root type to generate schema for
-- `pathName`: Path to the file where the JSON schema will be written
-
-**Returns:** None (writes to file)
-
-**Throws:** Error if the root type is not found in the schema or file cannot be written
-
-### `jsonSchemaGenerator.generateJsonSchema(rootType)`
-
-Generates a JSON Schema object for the specified root type.
-
-**Parameters:**
-- `rootType`: The name of the root type to generate schema for
-
-**Returns:** JSON Schema object
 
 ## Custom Configuration Classes
 
@@ -407,7 +391,7 @@ All errors include context about the specific configuration path and expected va
 ## Complete Example
 
 ```javascript
-import { ConfigMancer, BaseConfigMancerType, JsonSchemaGenerator } from '@l10nmonster/configMancer';
+import { ConfigMancer, BaseConfigMancerType } from '@l10nmonster/configMancer';
 
 // Define configuration classes
 class DatabaseConfig extends BaseConfigMancerType {
@@ -428,6 +412,7 @@ class ApiConfig extends BaseConfigMancerType {
     static configMancerSample = {
         '@': 'api',
         url: 'https://api.example.com',
+        $timeout: 5000,
         databases: [{ '@': 'database' }]
     };
 
@@ -436,27 +421,62 @@ class ApiConfig extends BaseConfigMancerType {
     }
 }
 
-// Create ConfigMancer instance
-const mancer = ConfigMancer.createFromClasses({
-    DatabaseConfig,
-    ApiConfig
+// Create ConfigMancer
+const mancer = new ConfigMancer({
+    classes: {
+        DatabaseConfig,
+        ApiConfig
+    }
 });
 
 // Load and validate configuration
 const config = mancer.reviveFile('./config.json');
-
-// Use the configuration
-console.log(config.url);
 console.log(config.getPrimaryDatabase().getConnectionString());
 
-// Generate JSON Schema for authoring and validation
+// Generate JSON Schema
 mancer.writeJsonSchema('ApiConfig', './config.schema.json');
 
-// Or use JsonSchemaGenerator directly
-const generator = new JsonSchemaGenerator(mancer.schema);
-generator.writeJsonSchema('ApiConfig', './config.schema.json');
-
-// Serialize back to JSON
+// Serialize configuration
 const serialized = mancer.serialize(config);
-mancer.serializeToPathName(config, './output.json');
+mancer.serializeToPathName(serialized, './output.json');
 ```
+
+## Migration from Previous Versions
+
+### Constructor Changes
+
+**Before:**
+```javascript
+const mancer = new ConfigMancer({ classes: { MyConfig } });
+const mancer = new ConfigMancer({ classes: { MyConfig } }, true); // validation only
+```
+
+**After:**
+```javascript
+const mancer = new ConfigMancer({ classes: { MyConfig } });
+mancer.validationOnly = true; // set property directly
+```
+
+### Factory Method Changes
+
+**Before:**
+```javascript
+const mancer = await ConfigMancer.createFromSources([
+    '@myorg/config-package'
+], import.meta.url, true);
+```
+
+**After:**
+```javascript
+const mancer = await ConfigMancer.create({
+    fromUrl: import.meta.url,
+    packages: ['@myorg/config-package']
+});
+mancer.validationOnly = true; // set property directly
+```
+
+### Removed Methods
+
+- `configMancer.initialize()` - Use `ConfigMancer.create()` instead
+- `configMancer.schema` - Use `configMancer.schemaManager.schema` instead
+- `ConfigMancer.createFromSources()` - Use `ConfigMancer.create()` instead

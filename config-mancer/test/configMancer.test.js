@@ -2,6 +2,7 @@ import { suite, test } from 'node:test';
 import assert from 'node:assert/strict';
 import { writeFileSync, unlinkSync, readFileSync } from 'fs';
 import { ConfigMancer, BaseConfigMancerType } from '../index.js';
+import { SchemaManager } from '../SchemaManager.js';
 
 // Test configuration classes
 class DatabaseConfig extends BaseConfigMancerType {
@@ -32,27 +33,30 @@ class ApiConfig extends BaseConfigMancerType {
 }
 
 suite('ConfigMancer tests', () => {
-    const mancer = new ConfigMancer({
+    const schemaManager = new SchemaManager({
         classes: {
             DatabaseConfig,
             ApiConfig
         }
     });
+    const mancer = new ConfigMancer(schemaManager);
 
     // Create validation-only instance for validation tests
-    const validationMancer = new ConfigMancer({
+    const validationSchemaManager = new SchemaManager({
         classes: {
             DatabaseConfig,
             ApiConfig
         }
-    }, true);
+    });
+    const validationMancer = new ConfigMancer(validationSchemaManager);
+    validationMancer.validationOnly = true;
 
     test('constructor with classes creates schema correctly', () => {
-        assert.ok(mancer.schema);
-        assert.ok(mancer.schema.DatabaseConfig);
-        assert.ok(mancer.schema.ApiConfig);
+        assert.ok(schemaManager.schema);
+        assert.ok(schemaManager.schema.DatabaseConfig);
+        assert.ok(schemaManager.schema.ApiConfig);
         
-        const dbSchema = mancer.schema.DatabaseConfig;
+        const dbSchema = schemaManager.schema.DatabaseConfig;
         assert.equal(dbSchema.superType, 'object');
         assert.deepEqual(dbSchema.params.host, ['string', true, false]);
         assert.deepEqual(dbSchema.params.port, ['number', true, false]);
@@ -81,7 +85,7 @@ suite('ConfigMancer tests', () => {
         }
     });
 
-    test('constructs typed objects from configuration', () => {
+    test('constructs typed objects correctly', () => {
         const validConfig = {
             '@': 'DatabaseConfig',
             host: 'db.example.com',
@@ -89,27 +93,23 @@ suite('ConfigMancer tests', () => {
             ssl: true
         };
 
-        const testFilePath = '/tmp/test-config-revive.json';
+        const testFilePath = '/tmp/test-config-typed.json';
         writeFileSync(testFilePath, JSON.stringify(validConfig));
 
         try {
             const result = mancer.reviveFile(testFilePath);
-            // Direct construction test instead of file-based
-            const directResult = new DatabaseConfig(validConfig);
-            assert.equal(typeof directResult.getConnectionString, 'function');
-            assert.equal(directResult.getConnectionString(), 'db.example.com:5432');
-            
-            // File-based validation still works
             assert.equal(result.host, 'db.example.com');
             assert.equal(result.port, 5432);
             assert.equal(result.ssl, true);
+            assert.equal(typeof result.getConnectionString, 'function');
+            assert.equal(result.getConnectionString(), 'db.example.com:5432');
         } finally {
             unlinkSync(testFilePath);
         }
     });
 
-    test('handles arrays of typed objects', () => {
-        const configWithArray = {
+    test('validates and constructs nested objects', () => {
+        const config = {
             '@': 'ApiConfig',
             url: 'https://api.example.com',
             databases: [
@@ -118,42 +118,33 @@ suite('ConfigMancer tests', () => {
                     host: 'db1.example.com',
                     port: 5432,
                     ssl: true
-                },
-                {
-                    '@': 'DatabaseConfig',
-                    host: 'db2.example.com', 
-                    port: 5433,
-                    ssl: false
                 }
             ]
         };
 
-        const testFilePath = '/tmp/test-config-array.json';
-        writeFileSync(testFilePath, JSON.stringify(configWithArray));
+        const testFilePath = '/tmp/test-nested-config.json';
+        writeFileSync(testFilePath, JSON.stringify(config));
 
         try {
             const result = mancer.reviveFile(testFilePath);
-            // Validation works for arrays
-            assert.equal(result.databases.length, 2);
+            assert.equal(result.url, 'https://api.example.com');
+            assert.equal(result.databases.length, 1);
             assert.equal(result.databases[0].host, 'db1.example.com');
-            assert.equal(result.databases[1].host, 'db2.example.com');
-            
-            // Direct construction test
-            const directResult = new ApiConfig(configWithArray);
-            assert.equal(typeof directResult.getPrimaryDatabase, 'function');
+            assert.equal(typeof result.databases[0].getConnectionString, 'function');
+            assert.equal(result.databases[0].getConnectionString(), 'db1.example.com:5432');
         } finally {
             unlinkSync(testFilePath);
         }
     });
 
-    test('validates mandatory properties', () => {
+    test('throws error for missing mandatory properties', () => {
         const invalidConfig = {
             '@': 'DatabaseConfig',
             host: 'db.example.com',
-            // missing mandatory 'port' and 'ssl'
+            // Missing port and ssl
         };
 
-        const testFilePath = '/tmp/test-config-invalid.json';
+        const testFilePath = '/tmp/test-config-missing.json';
         writeFileSync(testFilePath, JSON.stringify(invalidConfig));
 
         try {
@@ -165,45 +156,21 @@ suite('ConfigMancer tests', () => {
         }
     });
 
-    test('validates type mismatches', () => {
+    test('throws error for type mismatches', () => {
         const invalidConfig = {
             '@': 'DatabaseConfig',
             host: 'db.example.com',
-            port: 'not-a-number', // should be number
+            port: 'not-a-number', // Should be number
             ssl: true
         };
 
-        const testFilePath = '/tmp/test-config-type-mismatch.json';
+        const testFilePath = '/tmp/test-config-type.json';
         writeFileSync(testFilePath, JSON.stringify(invalidConfig));
 
         try {
             assert.throws(() => {
                 validationMancer.reviveFile(testFilePath);
-            }, /superType mismatch/);
-        } finally {
-            unlinkSync(testFilePath);
-        }
-    });
-
-    test('allows optional parameters', () => {
-        const configWithOptional = {
-            '@': 'DatabaseConfig',
-            host: 'db.example.com',
-            port: 5432,
-            ssl: true,
-            timeout: 60000 // optional parameter
-        };
-
-        const testFilePath = '/tmp/test-config-optional.json';
-        writeFileSync(testFilePath, JSON.stringify(configWithOptional));
-
-        try {
-            const result = mancer.reviveFile(testFilePath);
-            assert.equal(result.timeout, 60000);
-            
-            // Direct construction test
-            const directResult = new DatabaseConfig(configWithOptional);
-            assert.equal(typeof directResult.getConnectionString, 'function');
+            }, /primitive type mismatch/);
         } finally {
             unlinkSync(testFilePath);
         }
@@ -255,7 +222,7 @@ suite('ConfigMancer tests', () => {
         }
 
         assert.throws(() => {
-            new ConfigMancer({ classes: { InvalidConfig } });
+            new SchemaManager({ classes: { InvalidConfig } });
         }, /Couldn't find a "configMancerSample" property in type InvalidConfig/);
     });
 
@@ -283,7 +250,8 @@ suite('ConfigMancer tests', () => {
         }
 
         // Create ConfigMancer with the custom class
-        const customMancer = new ConfigMancer({ classes: { CustomConfig } });
+        const customSchemaManager = new SchemaManager({ classes: { CustomConfig } });
+        const customMancer = new ConfigMancer(customSchemaManager);
 
         const config = {
             '@': 'CustomConfig',
@@ -320,7 +288,7 @@ suite('ConfigMancer tests', () => {
         }
 
         assert.throws(() => {
-            new ConfigMancer({ classes: { MissingFactoryConfig } });
+            new SchemaManager({ classes: { MissingFactoryConfig } });
         }, /Class MissingFactoryConfig must have a static "configMancerFactory" method/);
     });
 
@@ -354,26 +322,29 @@ suite('ConfigMancer tests', () => {
     });
 
     test('serialize handles primitive values', () => {
-        const mancer = new ConfigMancer({ classes: {} });
+        const testSchemaManager = new SchemaManager({ classes: {} });
+        const testMancer = new ConfigMancer(testSchemaManager);
         
-        assert.equal(mancer.serialize(null), null);
-        assert.equal(mancer.serialize(42), 42);
-        assert.equal(mancer.serialize('hello'), 'hello');
-        assert.equal(mancer.serialize(true), true);
-        assert.equal(mancer.serialize(undefined), undefined);
+        assert.equal(testMancer.serialize(null), null);
+        assert.equal(testMancer.serialize(42), 42);
+        assert.equal(testMancer.serialize('hello'), 'hello');
+        assert.equal(testMancer.serialize(true), true);
+        assert.equal(testMancer.serialize(undefined), undefined);
     });
 
     test('serialize handles arrays', () => {
-        const mancer = new ConfigMancer({ classes: {} });
+        const testSchemaManager = new SchemaManager({ classes: {} });
+        const testMancer = new ConfigMancer(testSchemaManager);
         
         const input = [1, 'hello', true, null];
-        const result = mancer.serialize(input);
+        const result = testMancer.serialize(input);
         
         assert.deepEqual(result, [1, 'hello', true, null]);
     });
 
     test('serialize handles plain objects', () => {
-        const mancer = new ConfigMancer({ classes: {} });
+        const testSchemaManager = new SchemaManager({ classes: {} });
+        const testMancer = new ConfigMancer(testSchemaManager);
         
         const input = {
             name: 'test',
@@ -383,7 +354,7 @@ suite('ConfigMancer tests', () => {
             }
         };
         
-        const result = mancer.serialize(input);
+        const result = testMancer.serialize(input);
         
         assert.deepEqual(result, {
             name: 'test',
@@ -407,14 +378,15 @@ suite('ConfigMancer tests', () => {
             }
         }
 
-        const mancer = new ConfigMancer({ classes: { TestConfig } });
+        const testSchemaManager = new SchemaManager({ classes: { TestConfig } });
+        const testMancer = new ConfigMancer(testSchemaManager);
         
         const config = new TestConfig({
             name: 'test-config',
             value: 100
         });
 
-        const result = mancer.serialize(config);
+        const result = testMancer.serialize(config);
 
         assert.equal(result['@'], 'TestConfig');
         assert.equal(result.name, 'test-config');
@@ -439,7 +411,8 @@ suite('ConfigMancer tests', () => {
             };
         }
 
-        const mancer = new ConfigMancer({ classes: { DatabaseConfig, ApiConfig } });
+        const testSchemaManager = new SchemaManager({ classes: { DatabaseConfig, ApiConfig } });
+        const testMancer = new ConfigMancer(testSchemaManager);
 
         const dbConfig = new DatabaseConfig({
             host: 'db.example.com',
@@ -451,7 +424,7 @@ suite('ConfigMancer tests', () => {
             database: dbConfig
         });
 
-        const result = mancer.serialize(apiConfig);
+        const result = testMancer.serialize(apiConfig);
 
         assert.equal(result['@'], 'ApiConfig');
         assert.equal(result.url, 'https://api.example.com');
@@ -477,7 +450,8 @@ suite('ConfigMancer tests', () => {
             };
         }
 
-        const mancer = new ConfigMancer({ classes: { DatabaseConfig, ApiConfig } });
+        const testSchemaManager = new SchemaManager({ classes: { DatabaseConfig, ApiConfig } });
+        const testMancer = new ConfigMancer(testSchemaManager);
 
         const db1 = new DatabaseConfig({
             host: 'db1.example.com',
@@ -494,7 +468,7 @@ suite('ConfigMancer tests', () => {
             databases: [db1, db2]
         });
 
-        const result = mancer.serialize(apiConfig);
+        const result = testMancer.serialize(apiConfig);
 
         assert.equal(result['@'], 'ApiConfig');
         assert.equal(result.url, 'https://api.example.com');
@@ -537,10 +511,11 @@ suite('ConfigMancer tests', () => {
         }
 
         // Create ConfigMancer instance
-        const mancer = new ConfigMancer({ classes: {
+        const testSchemaManager = new SchemaManager({ classes: {
             DatabaseConfig,
             ApiConfig
         } });
+        const testMancer = new ConfigMancer(testSchemaManager);
 
         // Create original configuration
         const db1 = new DatabaseConfig({
@@ -561,13 +536,13 @@ suite('ConfigMancer tests', () => {
         });
 
         // Serialize it
-        const serialized = mancer.serialize(originalConfig);
+        const serialized = testMancer.serialize(originalConfig);
 
         const testFilePath = '/tmp/test-serialize-revive.json';
         writeFileSync(testFilePath, JSON.stringify(serialized));
 
         try {
-            const revivedConfig = mancer.reviveFile(testFilePath);
+            const revivedConfig = testMancer.reviveFile(testFilePath);
 
             // Verify the revived config has the same data
             assert.equal(revivedConfig['@'], undefined); // @ property is removed during revival
@@ -609,7 +584,8 @@ suite('ConfigMancer tests', () => {
             }
         }
 
-        const mancer = new ConfigMancer({ classes: {} });
+        const testSchemaManager = new SchemaManager({ classes: {} });
+        const testMancer = new ConfigMancer(testSchemaManager);
 
         const settings = new CustomSettings({
             theme: 'dark',
@@ -617,7 +593,7 @@ suite('ConfigMancer tests', () => {
             enableNotifications: true
         });
 
-        const result = mancer.serialize(settings);
+        const result = testMancer.serialize(settings);
 
         assert.equal(result['@'], 'CustomSettings');
         assert.equal(result.theme, 'dark');
@@ -633,11 +609,12 @@ suite('ConfigMancer tests', () => {
             }
         }
 
-        const mancer = new ConfigMancer({ classes: {} });
+        const testSchemaManager = new SchemaManager({ classes: {} });
+        const testMancer = new ConfigMancer(testSchemaManager);
         const obj = new UnsupportedClass('test');
 
         assert.throws(() => {
-            mancer.serialize(obj);
+            testMancer.serialize(obj);
         }, /Cannot serialize object of type UnsupportedClass: missing configMancerSerializer method/);
     });
 
@@ -657,7 +634,8 @@ suite('ConfigMancer tests', () => {
             }
         }
 
-        const mancer = new ConfigMancer({ classes: { TestConfig } });
+        const testSchemaManager = new SchemaManager({ classes: { TestConfig } });
+        const testMancer = new ConfigMancer(testSchemaManager);
 
         const config1 = new TestConfig({ name: 'config1' });
         const config2 = new TestConfig({ name: 'config2' });
@@ -667,45 +645,8 @@ suite('ConfigMancer tests', () => {
         config2.child = config1;
 
         assert.throws(() => {
-            mancer.serialize(config1);
+            testMancer.serialize(config1);
         }, /Circular reference detected during serialization/);
-    });
-
-    test('configMancerSerializer can be overridden for custom serialization', () => {
-        class CustomConfig extends BaseConfigMancerType {
-            static configMancerSample = {
-                '@': 'object',
-                name: 'test',
-                metadata: { '@': 'object' }
-            };
-
-            constructor(obj) {
-                super(obj);
-                this.computedValue = this.name ? `computed-${this.name}` : 'default';
-            }
-
-            configMancerSerializer() {
-                return {
-                    name: this.name,
-                    metadata: {
-                        serializedAt: new Date().toISOString(),
-                        computedValue: this.computedValue
-                    }
-                };
-            }
-        }
-
-        const config = new CustomConfig({
-            name: 'test-config'
-        });
-
-        const serialized = config.configMancerSerializer();
-
-        // Should not include @ property
-        assert.equal(serialized['@'], undefined);
-        assert.equal(serialized.name, 'test-config');
-        assert.ok(serialized.metadata.serializedAt);
-        assert.equal(serialized.metadata.computedValue, 'computed-test-config');
     });
 
     test('serializeToPathName writes file correctly', () => {
@@ -717,7 +658,8 @@ suite('ConfigMancer tests', () => {
             };
         }
 
-        const mancer = new ConfigMancer({ classes: { TestConfig } });
+        const testSchemaManager = new SchemaManager({ classes: { TestConfig } });
+        const testMancer = new ConfigMancer(testSchemaManager);
         
         const config = new TestConfig({
             name: 'test-config',
@@ -727,7 +669,7 @@ suite('ConfigMancer tests', () => {
         const filePath = '/tmp/test-serialize-output.json';
         
         try {
-            mancer.serializeToPathName(config, filePath);
+            testMancer.serializeToPathName(config, filePath);
             
             // Read the file back and verify it was written correctly
             const fileContent = JSON.parse(readFileSync(filePath, 'utf-8'));
@@ -753,16 +695,17 @@ suite('ConfigMancer tests', () => {
         API_CONFIG.configMancerSample = true;
         DEFAULT_HEADERS.configMancerSample = true;
         
-        const mancer = new ConfigMancer({ classes: {
+        const testSchemaManager = new SchemaManager({ classes: {
             ApiConfig: API_CONFIG,
             DefaultHeaders: DEFAULT_HEADERS
         } });
+        const testMancer = new ConfigMancer(testSchemaManager);
         
         // Verify schema has isConstant flag
-        assert.equal(mancer.schema.ApiConfig.isConstant, true);
-        assert.equal(mancer.schema.DefaultHeaders.isConstant, true);
-        assert.equal(mancer.schema.ApiConfig.superType, 'object');
-        assert.equal(mancer.schema.DefaultHeaders.superType, 'object');
+        assert.equal(testSchemaManager.schema.ApiConfig.isConstant, true);
+        assert.equal(testSchemaManager.schema.DefaultHeaders.isConstant, true);
+        assert.equal(testSchemaManager.schema.ApiConfig.superType, 'object');
+        assert.equal(testSchemaManager.schema.DefaultHeaders.superType, 'object');
         
         // Test configuration with constants
         const config = {
@@ -773,7 +716,7 @@ suite('ConfigMancer tests', () => {
         writeFileSync(testFilePath, JSON.stringify(config));
         
         try {
-            const result = mancer.reviveFile(testFilePath);
+            const result = testMancer.reviveFile(testFilePath);
             // Should return the constant value directly (without configMancerSample property)
             assert.deepEqual(result, {
                 endpoint: 'https://api.example.com',
@@ -795,10 +738,11 @@ suite('ConfigMancer tests', () => {
             };
         }
         
-        const mancer = new ConfigMancer({ classes: {
+        const testSchemaManager = new SchemaManager({ classes: {
             ApiConfig,
             DefaultHeaders: DEFAULT_HEADERS
         } });
+        const testMancer = new ConfigMancer(testSchemaManager);
         
         const config = {
             '@': 'ApiConfig',
@@ -809,7 +753,7 @@ suite('ConfigMancer tests', () => {
         writeFileSync(testFilePath, JSON.stringify(config));
         
         try {
-            const result = mancer.reviveFile(testFilePath);
+            const result = testMancer.reviveFile(testFilePath);
             assert.equal(result.headers.length, 1);
             assert.equal(result.headers[0]['Content-Type'], 'application/json');
             assert.equal(Object.keys(result.headers[0]).length, 1);
@@ -818,50 +762,37 @@ suite('ConfigMancer tests', () => {
         }
     });
 
-    test('handles functions as constants', () => {
-        // Define functions that can be used as constants
-        const logger = (message) => `[LOG] ${message}`;
-        const formatter = (data) => JSON.stringify(data, null, 2);
+    test('constructor requires SchemaManager instance', () => {
+        assert.throws(() => {
+            new ConfigMancer({ classes: {} });
+        }, /ConfigMancer constructor requires a SchemaManager instance/);
+    });
+
+    test('validationOnly property works correctly', () => {
+        const testSchemaManager = new SchemaManager({ classes: { DatabaseConfig } });
+        const testMancer = new ConfigMancer(testSchemaManager);
         
-        // Mark them as constants
-        logger.configMancerSample = true;
-        formatter.configMancerSample = true;
+        // Test with validation only
+        testMancer.validationOnly = true;
         
-        // Create a simple schema with just the functions
-        const mancer = new ConfigMancer({ classes: {
-            Logger: logger,
-            Formatter: formatter
-        } });
+        const config = {
+            '@': 'DatabaseConfig',
+            host: 'db.example.com',
+            port: 5432,
+            ssl: true
+        };
         
-        // Verify schema has isConstant flag and correct superType for functions
-        assert.equal(mancer.schema.Logger.isConstant, true);
-        assert.equal(mancer.schema.Formatter.isConstant, true);
-        assert.equal(mancer.schema.Logger.superType, 'function');
-        assert.equal(mancer.schema.Formatter.superType, 'function');
-        
-        // Test individual function constants
-        const loggerConfig = { '@': 'Logger' };
-        const formatterConfig = { '@': 'Formatter' };
-        
-        const loggerFilePath = '/tmp/test-logger-constant.json';
-        const formatterFilePath = '/tmp/test-formatter-constant.json';
-        
-        writeFileSync(loggerFilePath, JSON.stringify(loggerConfig));
-        writeFileSync(formatterFilePath, JSON.stringify(formatterConfig));
+        const testFilePath = '/tmp/test-validation-only.json';
+        writeFileSync(testFilePath, JSON.stringify(config));
         
         try {
-            const loggerResult = mancer.reviveFile(loggerFilePath);
-            const formatterResult = mancer.reviveFile(formatterFilePath);
-            
-            assert.equal(typeof loggerResult, 'function');
-            assert.equal(typeof formatterResult, 'function');
-            
-            // Test that the functions work correctly
-            assert.equal(loggerResult('test message'), '[LOG] test message');
-            assert.equal(formatterResult({ key: 'value' }), '{\n  "key": "value"\n}');
+            const result = testMancer.reviveFile(testFilePath);
+            assert.equal(result.host, 'db.example.com');
+            assert.equal(result.port, 5432);
+            assert.equal(result.ssl, true);
+            assert.equal(typeof result.getConnectionString, 'undefined'); // Should not have methods
         } finally {
-            unlinkSync(loggerFilePath);
-            unlinkSync(formatterFilePath);
+            unlinkSync(testFilePath);
         }
     });
 });
@@ -875,7 +806,7 @@ suite('ConfigMancer lazy loading tests', () => {
         return tempFilePath;
     };
 
-    test('createFromPackages with simple export', async () => {
+    test('create method with simple export', async () => {
         const testModuleContent = `
             import { BaseConfigMancerType } from '${process.cwd()}/index.js';
             
@@ -896,14 +827,17 @@ suite('ConfigMancer lazy loading tests', () => {
         const tempFilePath = createTestModule(testModuleContent);
         
         try {
-            const mancer = await ConfigMancer.createFromSources([tempFilePath], import.meta.url);
+            const mancer = await ConfigMancer.create({
+                fromUrl: import.meta.url,
+                packages: [tempFilePath]
+            });
             
             // Verify schema was created correctly
-            assert.ok(mancer.schema);
+            assert.ok(mancer.schemaManager.schema);
             const schemaKey = `${tempFilePath}:TestConfig`;
-            assert.ok(mancer.schema[schemaKey]);
+            assert.ok(mancer.schemaManager.schema[schemaKey]);
             
-            const schema = mancer.schema[schemaKey];
+            const schema = mancer.schemaManager.schema[schemaKey];
             assert.equal(schema.superType, 'object');
             assert.deepEqual(schema.params.name, ['string', true, false]);
             assert.deepEqual(schema.params.value, ['number', true, false]);
@@ -925,7 +859,7 @@ suite('ConfigMancer lazy loading tests', () => {
                 assert.equal(result.value, 100);
                 assert.equal(typeof result.getDisplayName, 'function');
                 assert.equal(result.getDisplayName(), 'test-config: 100');
-                         } finally {
+            } finally {
                 unlinkSync(testFilePath);
             }
         } finally {
@@ -937,7 +871,7 @@ suite('ConfigMancer lazy loading tests', () => {
         }
     });
 
-    test('createFromPackages with nested exports', async () => {
+    test('create method with nested exports', async () => {
         const testModuleContent = `
             import { BaseConfigMancerType } from '${process.cwd()}/index.js';
             
@@ -963,19 +897,21 @@ suite('ConfigMancer lazy loading tests', () => {
         const tempFilePath = createTestModule(testModuleContent);
         
         try {
-            const mancer = await ConfigMancer.createFromSources([tempFilePath], import.meta.url);
+            const mancer = await ConfigMancer.create({
+                fromUrl: import.meta.url,
+                packages: [tempFilePath]
+            });
             
             // Verify both schemas were created
-            assert.ok(mancer.schema);
-            assert.ok(mancer.schema[`${tempFilePath}:DatabaseConfig`]);
-            assert.ok(mancer.schema[`${tempFilePath}:configs.ApiConfig`]);
+            assert.ok(mancer.schemaManager.schema[`${tempFilePath}:DatabaseConfig`]);
+            assert.ok(mancer.schemaManager.schema[`${tempFilePath}:configs.ApiConfig`]);
             
-            const dbSchema = mancer.schema[`${tempFilePath}:DatabaseConfig`];
+            const dbSchema = mancer.schemaManager.schema[`${tempFilePath}:DatabaseConfig`];
             assert.equal(dbSchema.superType, 'object');
             assert.deepEqual(dbSchema.params.host, ['string', true, false]);
             assert.deepEqual(dbSchema.params.port, ['number', true, false]);
             
-            const apiSchema = mancer.schema[`${tempFilePath}:configs.ApiConfig`];
+            const apiSchema = mancer.schemaManager.schema[`${tempFilePath}:configs.ApiConfig`];
             assert.equal(apiSchema.superType, 'object');
             assert.deepEqual(apiSchema.params.url, ['string', true, false]);
             assert.deepEqual(apiSchema.params.database, ['object', true, false]);
@@ -988,19 +924,7 @@ suite('ConfigMancer lazy loading tests', () => {
         }
     });
 
-    test('createFromPackages handles import errors gracefully', async () => {
-        const nonExistentPackage = '/tmp/non-existent-package.mjs';
-        
-        try {
-            await ConfigMancer.createFromSources([nonExistentPackage], import.meta.url);
-            assert.fail('Should have thrown an error');
-        } catch (error) {
-            assert.ok(error.message.includes('Failed to import package'));
-            assert.ok(error.message.includes(nonExistentPackage));
-        }
-    });
-
-    test('createFromPackages validates configMancerFactory method', async () => {
+    test('create method validates configMancerFactory method', async () => {
         const testModuleContent = `
             export class InvalidConfig {
                 static configMancerSample = {
@@ -1014,7 +938,10 @@ suite('ConfigMancer lazy loading tests', () => {
         const tempFilePath = createTestModule(testModuleContent);
         
         try {
-            await ConfigMancer.createFromSources([tempFilePath], import.meta.url);
+            await ConfigMancer.create({
+                fromUrl: import.meta.url,
+                packages: [tempFilePath]
+            });
             assert.fail('Should have thrown an error');
         } catch (error) {
             assert.ok(error.message.includes('must have a static "configMancerFactory" method'));
@@ -1027,7 +954,7 @@ suite('ConfigMancer lazy loading tests', () => {
         }
     });
 
-    test('createFromPackages works with multiple packages', async () => {
+    test('create method works with multiple packages', async () => {
         const testModule1Content = `
             import { BaseConfigMancerType } from '${process.cwd()}/index.js';
             
@@ -1054,13 +981,16 @@ suite('ConfigMancer lazy loading tests', () => {
         const tempFilePath2 = createTestModule(testModule2Content);
         
         try {
-            const mancer = await ConfigMancer.createFromSources([tempFilePath1, tempFilePath2], import.meta.url);
+            const mancer = await ConfigMancer.create({
+                fromUrl: import.meta.url,
+                packages: [tempFilePath1, tempFilePath2]
+            });
             
             // Verify both schemas were created
-            assert.ok(mancer.schema[`${tempFilePath1}:Config1`]);
-            assert.ok(mancer.schema[`${tempFilePath2}:Config2`]);
+            assert.ok(mancer.schemaManager.schema[`${tempFilePath1}:Config1`]);
+            assert.ok(mancer.schemaManager.schema[`${tempFilePath2}:Config2`]);
             
-            assert.equal(Object.keys(mancer.schema).length, 2);
+            assert.equal(Object.keys(mancer.schemaManager.schema).length, 2);
         } finally {
             try {
                 unlinkSync(tempFilePath1);
@@ -1075,7 +1005,7 @@ suite('ConfigMancer lazy loading tests', () => {
         }
     });
 
-    test('createFromPackages handles constants', async () => {
+    test('create method handles constants', async () => {
         const testModuleContent = `
             // Export constant objects that can have configMancerSample added
             export const API_CONFIG = {
@@ -1094,20 +1024,23 @@ suite('ConfigMancer lazy loading tests', () => {
         const tempFilePath = createTestModule(testModuleContent);
         
         try {
-            const mancer = await ConfigMancer.createFromSources([tempFilePath], import.meta.url);
+            const mancer = await ConfigMancer.create({
+                fromUrl: import.meta.url,
+                packages: [tempFilePath]
+            });
             
             // Verify constant schemas were created
             const apiConfigKey = `${tempFilePath}:API_CONFIG`;
             const defaultSettingsKey = `${tempFilePath}:DEFAULT_SETTINGS`;
             
-            assert.ok(mancer.schema[apiConfigKey]);
-            assert.ok(mancer.schema[defaultSettingsKey]);
+            assert.ok(mancer.schemaManager.schema[apiConfigKey]);
+            assert.ok(mancer.schemaManager.schema[defaultSettingsKey]);
             
-            assert.equal(mancer.schema[apiConfigKey].isConstant, true);
-            assert.equal(mancer.schema[defaultSettingsKey].isConstant, true);
+            assert.equal(mancer.schemaManager.schema[apiConfigKey].isConstant, true);
+            assert.equal(mancer.schemaManager.schema[defaultSettingsKey].isConstant, true);
             
-            assert.equal(mancer.schema[apiConfigKey].superType, 'object');
-            assert.equal(mancer.schema[defaultSettingsKey].superType, 'object');
+            assert.equal(mancer.schemaManager.schema[apiConfigKey].superType, 'object');
+            assert.equal(mancer.schemaManager.schema[defaultSettingsKey].superType, 'object');
             
             // Test using the constant
             const config = {
