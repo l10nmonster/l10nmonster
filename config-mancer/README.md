@@ -166,6 +166,17 @@ Generated schemas can be used with:
 - **Documentation tools** that support JSON Schema
 - **Configuration authoring tools** with JSON Schema integration
 
+### `JsonSchemaGenerator`
+
+A utility class for generating JSON Schema files from ConfigMancer schemas. This class is exported from the main module and can be used independently.
+
+```javascript
+import { JsonSchemaGenerator } from '@l10nmonster/configMancer';
+
+const generator = new JsonSchemaGenerator(schema);
+generator.writeJsonSchema('ApiConfig', './config.schema.json');
+```
+
 #### Example Configuration File
 
 ```json
@@ -265,6 +276,36 @@ Generates a JSON Schema for the specified root type and writes it to a file.
 **Returns:** None (writes to file)
 
 **Throws:** Error if the root type is not found in the schema or file cannot be written
+
+### `new JsonSchemaGenerator(schema)`
+
+Creates a JsonSchemaGenerator instance with a ConfigMancer schema.
+
+**Parameters:**
+- `schema`: The ConfigMancer schema definition
+
+**Returns:** JsonSchemaGenerator instance
+
+### `jsonSchemaGenerator.writeJsonSchema(rootType, pathName)`
+
+Generates a JSON Schema for the specified root type and writes it to a file.
+
+**Parameters:**
+- `rootType`: The name of the root type to generate schema for
+- `pathName`: Path to the file where the JSON schema will be written
+
+**Returns:** None (writes to file)
+
+**Throws:** Error if the root type is not found in the schema or file cannot be written
+
+### `jsonSchemaGenerator.generateJsonSchema(rootType)`
+
+Generates a JSON Schema object for the specified root type.
+
+**Parameters:**
+- `rootType`: The name of the root type to generate schema for
+
+**Returns:** JSON Schema object
 
 ## Custom Configuration Classes
 
@@ -366,7 +407,7 @@ All errors include context about the specific configuration path and expected va
 ## Complete Example
 
 ```javascript
-import { ConfigMancer, BaseConfigMancerType } from '@l10nmonster/configMancer';
+import { ConfigMancer, BaseConfigMancerType, JsonSchemaGenerator } from '@l10nmonster/configMancer';
 
 // Define configuration classes
 class DatabaseConfig extends BaseConfigMancerType {
@@ -410,6 +451,10 @@ console.log(config.getPrimaryDatabase().getConnectionString());
 
 // Generate JSON Schema for authoring and validation
 mancer.writeJsonSchema('ApiConfig', './config.schema.json');
+
+// Or use JsonSchemaGenerator directly
+const generator = new JsonSchemaGenerator(mancer.schema);
+generator.writeJsonSchema('ApiConfig', './config.schema.json');
 
 // Serialize back to JSON
 const serialized = mancer.serialize(config);
