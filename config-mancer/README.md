@@ -78,7 +78,7 @@ ConfigMancer can automatically discover configuration classes from npm packages 
 
 ```javascript
 const mancer = await ConfigMancer.create({
-    fromUrl: import.meta.url,
+    baseUrl: import.meta.url,
     packages: ['@myorg/config-package', './local-config-module.mjs']
 });
 ```
@@ -97,7 +97,7 @@ You can combine classes and packages in a single call:
 
 ```javascript
 const mancer = await ConfigMancer.create({
-    fromUrl: import.meta.url,
+    baseUrl: import.meta.url,
     packages: ['@myorg/config-package'],
     classes: { LocalConfig: LocalConfigClass }
 });
@@ -222,7 +222,7 @@ Creates a ConfigMancer instance.
 
 **Parameters:**
 - `options.classes`: Object mapping type names to configuration classes
-- `options.fromUrl`: URL for module resolution (usually `import.meta.url`)
+- `options.baseUrl`: URL for module resolution (usually `import.meta.url`)
 - `options.packages`: Array of package names to search for types
 
 **Returns:** ConfigMancer instance
@@ -232,7 +232,7 @@ Creates a ConfigMancer instance.
 Creates a ConfigMancer instance with automatic package loading.
 
 **Parameters:**
-- `options.fromUrl`: URL for module resolution (usually `import.meta.url`)
+- `options.baseUrl`: URL for module resolution (usually `import.meta.url`)
 - `options.packages`: Array of package names to search for types
 - `options.classes`: Object mapping type names to configuration classes
 
@@ -469,7 +469,7 @@ const mancer = await ConfigMancer.createFromSources([
 **After:**
 ```javascript
 const mancer = await ConfigMancer.create({
-    fromUrl: import.meta.url,
+    baseUrl: import.meta.url,
     packages: ['@myorg/config-package']
 });
 mancer.validationOnly = true; // set property directly

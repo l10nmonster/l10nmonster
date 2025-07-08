@@ -32,11 +32,22 @@ class ApiConfig extends BaseConfigMancerType {
     }
 }
 
+class MyClass {
+    static configMancerSample = {
+        '@': 'MyClass',
+        foo: 'string',
+    };
+    constructor(obj) {
+        this.foo = obj.foo;
+    }
+}
+
 suite('ConfigMancer tests', () => {
     const schemaManager = new SchemaManager({
         classes: {
             DatabaseConfig,
-            ApiConfig
+            ApiConfig,
+            MyClass
         }
     });
     const mancer = new ConfigMancer(schemaManager);
@@ -227,21 +238,17 @@ suite('ConfigMancer tests', () => {
     });
 
     test('instantiates classes that do not extend BaseConfigMancerType', () => {
-        // A class that doesn't extend BaseConfigMancerType but has the required static methods
+        // A class that doesn't extend BaseConfigMancerType and doesn't have configMancerFactory
         class CustomConfig {
             static configMancerSample = {
                 '@': 'object',
                 name: 'test',
-                value: 42,
-                $optional: 'default'
+                value: 42
             };
 
-            static configMancerFactory(obj) {
-                return new CustomConfig(obj);
-            }
-
             constructor(obj) {
-                Object.assign(this, obj);
+                this.name = obj.name;
+                this.value = obj.value;
             }
 
             getDisplayName() {
@@ -265,7 +272,7 @@ suite('ConfigMancer tests', () => {
         try {
             const result = customMancer.reviveFile(testFilePath);
             
-            // Verify the object was created correctly
+            // Verify the object was created correctly using new constructor
             assert.equal(result.name, 'test-config');
             assert.equal(result.value, 100);
             assert.equal(typeof result.getDisplayName, 'function');
@@ -276,20 +283,6 @@ suite('ConfigMancer tests', () => {
         } finally {
             unlinkSync(testFilePath);
         }
-    });
-
-    test('throws error for missing configMancerFactory method', () => {
-        class MissingFactoryConfig {
-            static configMancerSample = {
-                '@': 'object',
-                name: 'test'
-            };
-            // Missing configMancerFactory method
-        }
-
-        assert.throws(() => {
-            new SchemaManager({ classes: { MissingFactoryConfig } });
-        }, /Class MissingFactoryConfig must have a static "configMancerFactory" method/);
     });
 
     test('configMancerSerializer returns serializable object with @ property', () => {
@@ -305,20 +298,20 @@ suite('ConfigMancer tests', () => {
             }
         }
 
+        const testSchemaManager = new SchemaManager({ classes: { TestConfig } });
+        const testMancer = new ConfigMancer(testSchemaManager);
+        
         const config = new TestConfig({
             name: 'test-config',
-            value: 100,
-            description: 'A test configuration'
+            value: 100
         });
 
-        const serialized = config.configMancerSerializer();
+        const result = testMancer.serialize(config);
 
-        // configMancerSerializer should NOT include @ property (added by serialize method)
-        assert.equal(serialized['@'], undefined);
-        assert.equal(serialized.name, 'test-config');
-        assert.equal(serialized.value, 100);
-        assert.equal(serialized.description, 'A test configuration');
-        assert.equal(typeof serialized.getDisplayName, 'undefined');
+        assert.equal(result['@'], 'TestConfig');
+        assert.equal(result.name, 'test-config');
+        assert.equal(result.value, 100);
+        assert.equal(typeof result.getDisplayName, 'undefined');
     });
 
     test('serialize handles primitive values', () => {
@@ -924,57 +917,44 @@ suite('ConfigMancer lazy loading tests', () => {
         }
     });
 
-    test('create method validates configMancerFactory method', async () => {
-        const testModuleContent = `
-            export class InvalidConfig {
-                static configMancerSample = {
-                    '@': 'object',
-                    name: 'test'
-                };
-                // Missing configMancerFactory method
-            }
-        `;
-        
-        const tempFilePath = createTestModule(testModuleContent);
-        
-        try {
-            await ConfigMancer.create({
-                fromUrl: import.meta.url,
-                packages: [tempFilePath]
-            });
-            assert.fail('Should have thrown an error');
-        } catch (error) {
-            assert.ok(error.message.includes('must have a static "configMancerFactory" method'));
-        } finally {
-            try {
-                unlinkSync(tempFilePath);
-            } catch (cleanupError) {
-                // Ignore cleanup errors
-            }
-        }
-    });
-
     test('create method works with multiple packages', async () => {
         const testModule1Content = `
             import { BaseConfigMancerType } from '${process.cwd()}/index.js';
             
-            export class Config1 extends BaseConfigMancerType {
+            export class TestConfig extends BaseConfigMancerType {
                 static configMancerSample = {
                     '@': 'object',
-                    name: 'config1'
+                    name: 'test',
+                    value: 42,
+                    $optional: 'default'
                 };
+                
+                getDisplayName() {
+                    return \`\${this.name}: \${this.value}\`;
+                }
             }
         `;
         
         const testModule2Content = `
             import { BaseConfigMancerType } from '${process.cwd()}/index.js';
             
-            export class Config2 extends BaseConfigMancerType {
+            export class DatabaseConfig extends BaseConfigMancerType {
                 static configMancerSample = {
                     '@': 'object',
-                    name: 'config2'
+                    host: 'localhost',
+                    port: 5432
                 };
             }
+            
+            export const configs = {
+                ApiConfig: class extends BaseConfigMancerType {
+                    static configMancerSample = {
+                        '@': 'object',
+                        url: 'https://api.example.com',
+                        database: { '@': 'object' }
+                    };
+                }
+            };
         `;
         
         const tempFilePath1 = createTestModule(testModule1Content);
@@ -987,17 +967,28 @@ suite('ConfigMancer lazy loading tests', () => {
             });
             
             // Verify both schemas were created
-            assert.ok(mancer.schemaManager.schema[`${tempFilePath1}:Config1`]);
-            assert.ok(mancer.schemaManager.schema[`${tempFilePath2}:Config2`]);
+            assert.ok(mancer.schemaManager.schema[`${tempFilePath1}:TestConfig`]);
+            assert.ok(mancer.schemaManager.schema[`${tempFilePath2}:DatabaseConfig`]);
+            assert.ok(mancer.schemaManager.schema[`${tempFilePath2}:configs.ApiConfig`]);
             
-            assert.equal(Object.keys(mancer.schemaManager.schema).length, 2);
+            const testSchema = mancer.schemaManager.schema[`${tempFilePath1}:TestConfig`];
+            assert.equal(testSchema.superType, 'object');
+            assert.deepEqual(testSchema.params.name, ['string', true, false]);
+            assert.deepEqual(testSchema.params.value, ['number', true, false]);
+            assert.deepEqual(testSchema.params.optional, ['string', false, false]);
+            
+            const dbSchema = mancer.schemaManager.schema[`${tempFilePath2}:DatabaseConfig`];
+            assert.equal(dbSchema.superType, 'object');
+            assert.deepEqual(dbSchema.params.host, ['string', true, false]);
+            assert.deepEqual(dbSchema.params.port, ['number', true, false]);
+            
+            const apiSchema = mancer.schemaManager.schema[`${tempFilePath2}:configs.ApiConfig`];
+            assert.equal(apiSchema.superType, 'object');
+            assert.deepEqual(apiSchema.params.url, ['string', true, false]);
+            assert.deepEqual(apiSchema.params.database, ['object', true, false]);
         } finally {
             try {
                 unlinkSync(tempFilePath1);
-            } catch (cleanupError) {
-                // Ignore cleanup errors
-            }
-            try {
                 unlinkSync(tempFilePath2);
             } catch (cleanupError) {
                 // Ignore cleanup errors

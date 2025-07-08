@@ -37,7 +37,10 @@ export class ConfigMancer {
     
     /**
      * Static factory method to create a ConfigMancer with schema manager options.
-     * @param {Object} schemaManagerOptions - Options to create a SchemaManager
+     * @param {Object} schemaManagerOptions - Options to create a SchemaManager.
+     * @param {string[]} [schemaManagerOptions.packages] - Package names to search for types.
+     * @param {Object} [schemaManagerOptions.classes] - Direct class mappings.
+     * @param {string} [schemaManagerOptions.baseUrl] - The base URL for resolving package paths, typically import.meta.url of the caller.
      * @returns {Promise<ConfigMancer>} A new ConfigMancer instance with initialized schema manager
      */
     static async create(schemaManagerOptions) {

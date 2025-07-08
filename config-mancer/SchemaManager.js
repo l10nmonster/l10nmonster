@@ -1,3 +1,5 @@
+import { createRequire } from 'module';
+
 /**
  * SchemaManager handles lazy loading and resolution of ConfigMancer types from packages and classes.
  */
@@ -5,16 +7,19 @@ export class SchemaManager {
     #schema = {};              // Schema of resolved types
     #packageNames = [];        // Packages to search for types
     #localClasses = {};        // Direct class mappings
+    #baseUrl;                  // Base URL for module resolution
 
     /**
      * Creates a new SchemaManager instance.
-     * @param {Object} options - Configuration options
-     * @param {string[]} [options.packages] - Package names to search for types
-     * @param {Object} [options.classes] - Direct class mappings
+     * @param {Object} [options] - Configuration options.
+     * @param {string[]} [options.packages] - Package names to search for types.
+     * @param {Object} [options.classes] - Direct class mappings.
+     * @param {string} [options.baseUrl] - The base URL for resolving package paths, typically import.meta.url of the caller.
      */
-    constructor({ packages = [], classes = {} } = {}) {
+    constructor({ packages = [], classes = {}, baseUrl = import.meta.url } = {}) {
         this.#packageNames = packages;
         this.#localClasses = classes;
+        this.#baseUrl = baseUrl;
         
         // Pre-populate schema with local classes
         this.#addLocalClasses();
@@ -83,10 +88,6 @@ export class SchemaManager {
         }
 
         // Handle regular factory classes/functions
-        if (typeof factory.configMancerFactory !== 'function') {
-            throw new Error(`Class ${typeName} must have a static "configMancerFactory" method`);
-        }
-        
         const def = {
             superType: sample['@'],
             params: {},
@@ -98,7 +99,17 @@ export class SchemaManager {
         for (const [paramName, sampleValue] of Object.entries(sample)) {
             if (paramName !== '@') {
                 const [param, isMandatory] = paramName.startsWith('$') ? [paramName.substring(1), false] : [paramName, true];
-                const [paramType, isArray] = Array.isArray(sampleValue) ? [sampleValue[0]['@'] ?? typeof sampleValue[0], true] : [sampleValue['@'] ?? typeof sampleValue, false];
+                let paramType, isArray;
+                if (Array.isArray(sampleValue)) {
+                    if (sampleValue[0] === undefined) {
+                        throw new Error(`Array ${typeName}.${paramName} must have at least one sample value`);
+                    }
+                    paramType = sampleValue[0]['@'] ?? typeof sampleValue[0];
+                    isArray = true;
+                } else {
+                    paramType = sampleValue['@'] ?? typeof sampleValue;
+                    isArray = false;
+                }
                 def.params[param] = [paramType, isMandatory, isArray];
             }
         }
@@ -124,7 +135,7 @@ export class SchemaManager {
             }
             
             // If it's a plain object, recurse into its properties
-            if (exportValue.constructor === Object) {
+            if (typeof exportValue === 'object' && (exportValue.constructor === Object || exportValue.constructor === undefined)) { // submodules have no constructor
                 for (const [key, value] of Object.entries(exportValue)) {
                     processExport(value, `${keyPath}.${key}`, packageName);
                 }
@@ -132,9 +143,11 @@ export class SchemaManager {
         };
         
         // Process all packages
+        const require = createRequire(this.#baseUrl);
         for (const packageName of this.#packageNames) {
             try {
-                const packageExports = await import(packageName);
+                const resolvedPath = require.resolve(packageName);
+                const packageExports = await import(resolvedPath);
                 
                 // Process all exports from the package
                 for (const [exportName, exportValue] of Object.entries(packageExports)) {

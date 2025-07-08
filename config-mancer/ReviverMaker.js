@@ -142,7 +142,7 @@ export class ReviverMaker {
                 // Create a copy of the object without the '@' property instead of mutating the original
                 // eslint-disable-next-line no-unused-vars
                 const { '@': _, ...objWithoutType } = obj;
-                return validationOnly ? objWithoutType : (objSchema.factory ?? BaseConfigMancerType).configMancerFactory(objWithoutType);
+                return validationOnly ? objWithoutType : this.#instantiate(objSchema.factory ?? BaseConfigMancerType, objWithoutType);
             }
             
             return obj;
@@ -168,7 +168,7 @@ export class ReviverMaker {
         }
         
         delete value['@'];
-        return validationOnly ? value : (valueSchema.factory ?? BaseConfigMancerType).configMancerFactory(value);
+        return validationOnly ? value : this.#instantiate(valueSchema.factory ?? BaseConfigMancerType, value);
     }
     
     #validateObjectProperties(value, valueSchema, containerType) {
@@ -186,5 +186,12 @@ export class ReviverMaker {
         if (missingProps.length > 0) {
             throw new Error(`mandatory properties not found in ${containerType}: ${missingProps.join(', ')}`);
         }
+    }
+
+    #instantiate(factory, params) {
+        if (typeof factory.configMancerFactory === 'function') {
+            return factory.configMancerFactory(params);
+        }
+        return new factory(params);
     }
 } 
