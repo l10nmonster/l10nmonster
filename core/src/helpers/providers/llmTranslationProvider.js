@@ -5,14 +5,15 @@ function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-const DEFAULT_SCHEMA_INSTRUCTIONS =
-`- Each string may contain HTML tags. Preserve ALL markup and don't close unclosed tags. Translate only text nodes. Do not alter tag structure
+const DEFAULT_PERSONA = 
+`You are one of the best professional translators in the world.
+- When a situation is ambiguous stop to consider your options, use additional context provided (notes, bundle, key), but always provide the best answer you can.
+- Each string may contain HTML tags. Preserve ALL markup and don't close unclosed tags. Translate only text nodes. Do not alter tag structure.
 - Provide a confidence score between 0 and 100 that indicates how likely the translation doesn't need adjustments due to context.
 - Your input is provided in JSON format. It contains the source content and notes about each string that helps you understand the context.
-- When a situation is ambiguous stop to consider your options, use additional context provided (notes, bundle, key), but always provide the best answer you can.
 - Provide a confidence score between 0 and 100 that indicates correctness. Anything below 60 is an ambiguous translation that should be reviewed by a human.
 - If a translation can be ambiguous, or you have questions about it, lower the confidence score and explain why in the notes field, including any clarifying questions.
-- Return your answer as a JSON array with the exact same number of items and in the same order as the input`;
+- Return your answer as a JSON array with the exact same number of items and in the same order as the input.`;
 
 /**
  * @typedef {object} LLMTranslationProviderOptions
@@ -20,6 +21,7 @@ const DEFAULT_SCHEMA_INSTRUCTIONS =
  * @property {string} model - The LLM model to use (required)
  * @property {number} [temperature] - The temperature to use (0.1 by default)
  * @property {string} [persona] - An override to the default persona for the translator.
+ * @property {object} [targetLangInstructions] - Object with target languages as keys and instructions as values
  * @property {import('zod').ZodTypeAny} [customSchema] - A prescribed schema to structure translations into.
  * @property {number} [maxRetries] - Maximum number of retries for failed requests (2 by default)
  * @property {number} [sleepBasePeriod] - Base sleep period in milliseconds for retry backoff (3000 by default)
@@ -28,7 +30,7 @@ const DEFAULT_SCHEMA_INSTRUCTIONS =
 /**
  * Base class for LLM-based translation providers that share common prompt construction and schema handling.
  * @class LLMTranslationProvider
- * @extends providers.ChunkedRemoteTranslationProvider
+ * @extends ChunkedRemoteTranslationProvider
  */
 export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
     #model;
@@ -37,12 +39,13 @@ export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
     #customSchema;
     #maxRetries;
     #sleepBasePeriod;
+    #targetLangInstructions = {};
 
     /**
      * Initializes a new instance of the LLMTranslationProvider class.
      * @param {LLMTranslationProviderOptions} options - Configuration options for the provider.
      */
-    constructor({ model, temperature, persona, customSchema, maxRetries, sleepBasePeriod, ...options }) {
+    constructor({ model, temperature, persona, customSchema, maxRetries, sleepBasePeriod, targetLangInstructions, ...options }) {
         super(options);
         if (!options.quality || !model) {
             throw new Error(`You must specify quality and model for ${this.constructor.name}`);
@@ -52,22 +55,9 @@ export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
         this.#customSchema = customSchema;
         this.#maxRetries = maxRetries ?? 2;
         this.#sleepBasePeriod = sleepBasePeriod ?? 3000;
-        
-        persona = persona ?? 'You are one of the best professional translators in the world.';
-        this.#systemPrompt = this.buildSystemPrompt(persona, customSchema);
-        
+        this.#targetLangInstructions = targetLangInstructions;
+        this.#systemPrompt = `${persona ?? DEFAULT_PERSONA}\n${this.defaultInstructions ?? ''}\n`;   
         logInfo`LLMTranslationProvider ${this.id} initialized with model: ${model}`;
-    }
-
-    /**
-     * Builds the system prompt from persona, default instructions, and schema instructions.
-     * @param {string} persona - The persona for the translator
-     * @param {*} customSchema - Custom schema if provided
-     * @returns {string} The constructed system prompt
-     */
-    buildSystemPrompt(persona, customSchema) {
-        const schemaInstructions = customSchema ? '' : DEFAULT_SCHEMA_INSTRUCTIONS;
-        return `${persona}\n${this.defaultInstructions ?? ''}\n${schemaInstructions}`;
     }
 
     /**
@@ -80,11 +70,20 @@ export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
      * @returns {string} The constructed user prompt
      */
     buildUserPrompt({ sourceLang, targetLang, xmlTus, instructions }) {
-        const jobInstructions = instructions ? `Consider also the following instructions: ${instructions}` : '';
-        return `${jobInstructions}
-Translate these ${xmlTus.length} strings from ${sourceLang} to ${targetLang}:
-
-${JSON.stringify(xmlTus, null, 2)}`;
+        let userPrompt = [];
+        
+        // Add target language specific instructions if available
+        this.#targetLangInstructions[targetLang] && userPrompt.push(this.#targetLangInstructions[targetLang]);
+        
+        // Add job instructions if available
+        instructions && userPrompt.push(`Consider also the following instructions: ${instructions}`);
+        
+        userPrompt.push(`Source language: ${sourceLang}`);
+        userPrompt.push(`Target language: ${targetLang}`);
+        userPrompt.push(`Number of segments: ${xmlTus.length}`);
+        userPrompt.push(`Segments: ${JSON.stringify(xmlTus)}`);
+        
+        return userPrompt.join('\n');
     }
 
     /**
@@ -180,6 +179,14 @@ ${JSON.stringify(xmlTus, null, 2)}`;
      */
     get sleepBasePeriod() {
         return this.#sleepBasePeriod;
+    }
+
+    /**
+     * Gets the target language instructions being used by this provider.
+     * @returns {object|undefined} The target language instructions object or undefined
+     */
+    get targetLangInstructions() {
+        return this.#targetLangInstructions;
     }
 
     /**

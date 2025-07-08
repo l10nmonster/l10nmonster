@@ -23,7 +23,7 @@ const MAX_CHUNK_SIZE = 125;
 /**
  * Base class for providers that need to enforce chunking of input strings and asynchronous translation.
  * @class ChunkedRemoteTranslationProvider
- * @extends providers.BaseTranslationProvider
+ * @extends BaseTranslationProvider
  */
 export class ChunkedRemoteTranslationProvider extends BaseTranslationProvider {
 
