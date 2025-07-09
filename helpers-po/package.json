@@ -13,6 +13,6 @@
         "gettext-parser": "^8"
     },
     "peerDependencies": {
-        "@l10nmonster/core": "workspace:*"
+        "@l10nmonster/core": "file:../core"
     }
 }

@@ -32,6 +32,6 @@
     },
     "dependencies": {
         "commander": "^14",
-        "@l10nmonster/core": "workspace:*"
+        "@l10nmonster/core": "file:../core"
     }
 }

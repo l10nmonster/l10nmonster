@@ -1,10 +1,20 @@
 {
+    "version": "3.0.0",
+    "workspaces": [
+        "core",
+        "cli",
+        "config-mancer",
+        "helpers-*",
+        "server"
+    ],
     "scripts": {
         "test": "pnpm --recursive test && pnpm run test:regression",
         "test:regression": "cd regression && ./test.zsh js local all && ./test.zsh cli local all",
         "eslint": "eslint core/src/**/*.js cli/*.js",
         "eslint:files": "pnpm run eslint | grep -e '^/.*js$'",
-        "eslint:files:open": "code $(pnpm run --silent eslint:files)"
+        "eslint:files:open": "code $(pnpm run --silent eslint:files)",
+        "publish:npm": "npm publish --workspaces",
+        "publish:npm-dry": "npm publish --workspaces --dry-run"
     },
     "packageManager": "pnpm@10.12.4",
     "devDependencies": {

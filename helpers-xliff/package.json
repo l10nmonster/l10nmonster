@@ -14,6 +14,6 @@
         "xliff": "^6.0.1"
     },
     "peerDependencies": {
-        "@l10nmonster/core": "workspace:*"
+        "@l10nmonster/core": "file:../core"
     }
 }

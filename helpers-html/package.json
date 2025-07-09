@@ -13,6 +13,6 @@
         "parse5": "^7.0.0"
     },
     "peerDependencies": {
-        "@l10nmonster/core": "workspace:*"
+        "@l10nmonster/core": "file:../core"
     }
 }

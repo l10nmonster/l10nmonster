@@ -13,6 +13,6 @@
         "@js.properties/properties": "^0.5.4"
     },
     "peerDependencies": {
-        "@l10nmonster/core": "workspace:*"
+        "@l10nmonster/core": "file:../core"
     }
 }

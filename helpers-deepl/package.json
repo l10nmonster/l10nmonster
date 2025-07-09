@@ -10,7 +10,7 @@
     "author": "Diego Lagunas",
     "license": "MIT",
     "peerDependencies": {
-        "@l10nmonster/core": "workspace:*"
+        "@l10nmonster/core": "file:../core"
     },
     "dependencies": {
         "deepl-node": "^1.18.0"

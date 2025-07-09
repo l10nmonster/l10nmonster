@@ -13,6 +13,6 @@
     "puppeteer": "^24"
   },
   "peerDependencies": {
-    "@l10nmonster/core": "workspace:*"
+            "@l10nmonster/core": "file:../core"
   }
 }

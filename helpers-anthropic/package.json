@@ -13,7 +13,7 @@
     "google-auth-library": "^10"
   },
   "peerDependencies": {
-    "@l10nmonster/core": "workspace:*"
+            "@l10nmonster/core": "file:../core"
   },
   "engines": {
     "node": ">=18.0.0"
