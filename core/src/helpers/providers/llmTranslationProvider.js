@@ -55,7 +55,7 @@ export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
         this.#customSchema = customSchema;
         this.#maxRetries = maxRetries ?? 2;
         this.#sleepBasePeriod = sleepBasePeriod ?? 3000;
-        this.#targetLangInstructions = targetLangInstructions;
+        this.#targetLangInstructions = targetLangInstructions ?? {};
         this.#systemPrompt = `${persona ?? DEFAULT_PERSONA}\n${this.defaultInstructions ?? ''}\n`;   
         logInfo`LLMTranslationProvider ${this.id} initialized with model: ${model}`;
     }
