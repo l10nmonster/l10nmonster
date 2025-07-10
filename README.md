@@ -1,4 +1,4 @@
-# L10n Monster
+# L10n Monster - V2 Is Now Archived
 
 Do you want to set up continuous localization for your project but don't have a whole team to look after it? Do you know how `git` works? Have you set up a build like `webpack` before? You've come to the right place and you'll feel right at home!
 
