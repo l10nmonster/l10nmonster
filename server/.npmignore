@@ -6,12 +6,17 @@ test/
 
 # Development files
 .vscode/
+*.gif
 *.drawio.svg
-CHANGELOG.md
+vite.config.js
+
+# UI source files (keep only built dist)
+ui/src/
+ui/public/
+ui/index.html
 
 # Build artifacts
 out/
-dist/
 build/
 
 # Documentation (keep main README.md)
@@ -25,4 +30,4 @@ docs/
 
 # OS files
 .DS_Store
-Thumbs.db
+Thumbs.db 

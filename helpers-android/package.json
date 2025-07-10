@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/helpers-android",
-    "version": "3.0.0",
+    "version": "3.0.0-alpha.2",
     "description": "Helpers to deal with Android file formats",
     "type": "module",
     "main": "index.js",
@@ -14,6 +14,6 @@
         "xml-formatter": "^3"
     },
     "peerDependencies": {
-        "@l10nmonster/core": "file:../core"
+        "@l10nmonster/core": "^3.0.0-alpha.0"
     }
 }

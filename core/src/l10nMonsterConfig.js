@@ -17,6 +17,29 @@ export class ResourceFormatConfig {
      */
     #config = {};
 
+    static configMancerSample = {
+        '@': '@l10nmonster/core:IResourceFormatConfig',
+        id: 'sample-format',
+        defaultMessageFormat: 'sample-format',
+        resourceFilter: {
+            '@': '@l10nmonster/core:IResourceFilter'
+        },
+        segmentDecorators: [Function]
+    };
+
+    static configMancerFactory(obj) {
+        const instance = new ResourceFormatConfig(obj.id);
+        if (obj.defaultMessageFormat !== undefined) {
+            instance.#config.defaultMessageFormat = obj.defaultMessageFormat;
+        }
+        if (obj.resourceFilter !== undefined) {
+            instance.#config.resourceFilter = obj.resourceFilter;
+        }
+        if (obj.segmentDecorators !== undefined) {
+            instance.#config.segmentDecorators = obj.segmentDecorators;
+        }
+        return instance;
+    }
 
     constructor(id) {
         if (!id) {
@@ -70,6 +93,32 @@ export class MessageFormatConfig {
      */
     #config = {};
 
+    static configMancerSample = {
+        '@': '@l10nmonster/core:IMessageFormatConfig',
+        id: 'sample-message-format',
+        decoders: [Function],
+        textEncoders: [Function],
+        codeEncoders: [Function],
+        joiner: Function
+    };
+
+    static configMancerFactory(obj) {
+        const instance = new MessageFormatConfig(obj.id);
+        if (obj.decoders !== undefined) {
+            instance.#config.decoders = obj.decoders;
+        }
+        if (obj.textEncoders !== undefined) {
+            instance.#config.textEncoders = obj.textEncoders;
+        }
+        if (obj.codeEncoders !== undefined) {
+            instance.#config.codeEncoders = obj.codeEncoders;
+        }
+        if (obj.joiner !== undefined) {
+            instance.#config.joiner = obj.joiner;
+        }
+        return instance;
+    }
+
     constructor(id) {
         if (!id) {
             throw new Error('Message Format id is required');
@@ -122,6 +171,43 @@ export class ChannelConfig {
      * @property {Target} [target] - Target adapter for storing translated resources.
      */
     #config = {};
+
+    static configMancerSample = {
+        '@': '@l10nmonster/core:IChannelConfig',
+        id: 'sample-channel',
+        defaultResourceFormat: 'sample-format',
+        source: {
+            '@': '@l10nmonster/core:ISourceAdapter'
+        },
+        target: {
+            '@': '@l10nmonster/core:ITargetAdapter'
+        },
+        translationPolicyPipeline: [Function],
+        formatHandlers: {},
+        channelOptions: {
+            baseDir: 'relative/path/to/channel/base'
+        }
+    };
+
+    static configMancerFactory(obj) {
+        const baseDir = obj.channelOptions?.baseDir;
+        const instance = new ChannelConfig(obj.id, baseDir);
+        if (obj.defaultResourceFormat !== undefined) {
+            instance.#config.defaultResourceFormat = obj.defaultResourceFormat;
+        }
+        if (obj.source !== undefined) {
+            instance.#config.source = obj.source;
+        }
+        if (obj.target !== undefined) {
+            instance.#config.target = obj.target;
+        }
+        // Set additional channelOptions properties
+        if (obj.channelOptions) {
+            Object.assign(instance.#channelOptions, obj.channelOptions);
+        }
+        return instance;
+    }
+
     #resourceFormats = {};
     #messageFormats = {};
     #translationPolicyPipeline = [];
@@ -270,6 +356,67 @@ export class L10nMonsterConfig {
     /** @type {Array} List of actions available for the localization process. */
     actions = Object.values(actions);
 
+    static configMancerSample = {
+        '@': '@l10nmonster/core:IL10nMonsterConfig',
+        channels: {},
+        formats: {},
+        providers: [],
+        autoSnap: true,
+        saveFailedJobs: false,
+        tmStores: {},
+        opsStore: {
+            '@': '@l10nmonster/core:IOpsStore'
+        },
+        actions: [Function],
+        analyzers: [Function],
+        currencyFormatter: {
+            '@': 'Intl.NumberFormat'
+        },
+        sourceDB: 'source.db',
+        tmDB: 'tm.db'
+    };
+
+    static configMancerFactory(obj) {
+        const instance = new L10nMonsterConfig(obj.baseDir);
+        if (obj.channels !== undefined) {
+            instance.channels = obj.channels;
+        }
+        if (obj.formats !== undefined) {
+            instance.formats = obj.formats;
+        }
+        if (obj.providers !== undefined) {
+            instance.providers = obj.providers;
+        }
+        if (obj.autoSnap !== undefined) {
+            instance.autoSnap = obj.autoSnap;
+        }
+        if (obj.saveFailedJobs !== undefined) {
+            instance.saveFailedJobs = obj.saveFailedJobs;
+        }
+        if (obj.tmStores !== undefined) {
+            instance.tmStores = obj.tmStores;
+        }
+        if (obj.opsStore !== undefined) {
+            instance.opsStore = obj.opsStore;
+        }
+        if (obj.actions !== undefined) {
+            instance.actions = obj.actions;
+        }
+        if (obj.analyzers !== undefined) {
+            instance.analyzers = obj.analyzers;
+        }
+        if (obj.currencyFormatter !== undefined) {
+            instance.currencyFormatter = obj.currencyFormatter;
+        }
+        if (obj.sourceDB !== undefined) {
+            instance.sourceDB = obj.sourceDB;
+        }
+        if (obj.tmDB !== undefined) {
+            instance.tmDB = obj.tmDB;
+        }
+        return instance;
+    }
+
     /**
      * Initializes the L10nMonsterConfig with a base directory.
      * @param {string} baseDir - The base directory for relative paths.
@@ -319,8 +466,8 @@ export class L10nMonsterConfig {
      * @param {Object} config - The operations configuration object.
      * @param {boolean} [config.autoSnap] - Configuration for the snapshot store.
      * @param {boolean} [config.saveFailedJobs] - Whether to save failed jobs as pending.
-     * @param {Array} [config.analyzers] - Configuration for analyzers.
-     * @param {Object} [config.opsStore] - Directory for operations.
+     * @param {Function[]} [config.analyzers] - Configuration for analyzers.
+     * @param {any} [config.opsStore] - Directory for operations.
      * @param {Intl.NumberFormat} [config.currencyFormatter] - A currency formatter for estimated costs.
      * @param {string|boolean} [config.sourceDB] - Source database filename or false to disable writing DB files.
      * @param {string|boolean} [config.tmDB] - TM database filename or false to disable writing DB files.
@@ -368,7 +515,7 @@ export class L10nMonsterConfig {
 
     /**
      * Adds an action to the list of available actions for the localization process.
-     * @param {Object} actionDefinition - The action definition object.
+     * @param {Record<string, any>} actionDefinition - The action definition object.
      * @returns {L10nMonsterConfig} Returns the instance for method chaining.
      */
     action(actionDefinition) {
@@ -388,7 +535,7 @@ export class L10nMonsterConfig {
 
     /**
      * Runs the localization process with the given global options and callback.
-     * @param {Object} globalOptions - The global options for the localization process.
+     * @param {Record<string, any>} globalOptions - The global options for the localization process.
      * @param {Function} cb - The callback function to execute after initialization.
      * @returns {Promise} Returns a promise that resolves with the response from the callback.
      * @throws {string} Throws an error if the localization process fails.

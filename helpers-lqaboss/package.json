@@ -1,6 +1,6 @@
 {
   "name": "@l10nmonster/helpers-lqaboss",
-  "version": "3.0.0",
+  "version": "3.0.0-alpha.2",
   "description": "LQA Boss helper for L10n Monster",
   "main": "index.js",
   "type": "module",
@@ -13,6 +13,6 @@
     "puppeteer": "^24"
   },
   "peerDependencies": {
-            "@l10nmonster/core": "file:../core"
+    "@l10nmonster/core": "^3.0.0-alpha.0"
   }
 }

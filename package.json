@@ -1,5 +1,5 @@
 {
-    "version": "3.0.0",
+    "version": "3.0.0-alpha.2",
     "workspaces": [
         "core",
         "cli",
@@ -13,8 +13,10 @@
         "eslint": "eslint core/src/**/*.js cli/*.js",
         "eslint:files": "npm run eslint | grep -e '^/.*js$'",
         "eslint:files:open": "code $(npm run --silent eslint:files)",
-        "publish:npm": "npm publish --workspaces",
-        "publish:npm-dry": "npm publish --workspaces --dry-run"
+        "publish:npm": "npm publish --workspaces --access public",
+        "publish:npm-dry": "npm publish --workspaces --access public --dry-run",
+        "publish:next": "npm publish --workspaces --tag next --access public",
+        "publish:next-dry": "npm publish --workspaces --tag next --access public --dry-run"
     },
     "packageManager": "npm@10.9.2",
     "devDependencies": {

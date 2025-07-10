@@ -7,7 +7,7 @@ import * as opsManager from '../../opsManager/index.js';
  * @typedef {Object} BaseTranslationProviderOptions
  * @property {string} [id] - Global identifier for the provider. Optional.
  * @property {number} [quality] - The quality of translations provided by the provider. Optional.
- * @property {Object} [supportedPairs] - Supported pairs for the provider. Optional. (e.g., { "en-US": ["de-DE", "es-ES"] })
+ * @property {Record<string, string[]>} [supportedPairs] - Supported pairs for the provider. Optional. (e.g., { "en-US": ["de-DE", "es-ES"] })
  * @property {string} [translationGroup] - If defined, only accpept jobs with the same "group" property. Optional.
  * @property {string} [defaultInstructions] - Instructions to use of jon instructions are missing.
  * @property {number} [minWordQuota] - Minimum word quota to accept the job. Optional.
@@ -213,7 +213,7 @@ export class BaseTranslationProvider {
     /**
      * Get the list of tus accepted by the provider.
      *
-     * @param {Object} job - The job request.
+     * @param {Record<string, any>} job - The job request.
      * @returns {Promise<any[]>} A promise resolving to an array of accepted TUs.
      */
     async getAcceptedTus(job) {
@@ -223,7 +223,7 @@ export class BaseTranslationProvider {
     /**
      * Get the translated TUs.
      *
-     * @param {Object} job - The job request.
+     * @param {Record<string, any>} job - The job request.
      * @returns {any[]} The array of translated TUs.
      */
     getTranslatedTus(job) {
@@ -233,8 +233,8 @@ export class BaseTranslationProvider {
     /**
      * Creates a task than when executed will return the job response.
      *
-     * @param {Object} job - The job request.
-     * @returns {Object} The task to execute.
+     * @param {Record<string, any>} job - The job request.
+     * @returns {Record<string, any>} The task to execute.
      */
     createTask(job) {
         throw new Error('Not implemented');

@@ -6,8 +6,8 @@ test/
 
 # Development files
 .vscode/
+*.gif
 *.drawio.svg
-CHANGELOG.md
 
 # Build artifacts
 out/
@@ -25,4 +25,4 @@ docs/
 
 # OS files
 .DS_Store
-Thumbs.db
+Thumbs.db 

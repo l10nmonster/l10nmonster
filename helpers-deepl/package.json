@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/helpers-deepl",
-    "version": "3.0.0",
+    "version": "3.0.0-alpha.2",
     "description": "Helpers to integrate with DeepL",
     "type": "module",
     "main": "index.js",
@@ -10,7 +10,7 @@
     "author": "Diego Lagunas",
     "license": "MIT",
     "peerDependencies": {
-        "@l10nmonster/core": "file:../core"
+        "@l10nmonster/core": "^3.0.0-alpha.0"
     },
     "dependencies": {
         "deepl-node": "^1.18.0"

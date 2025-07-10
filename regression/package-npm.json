@@ -1,16 +1,16 @@
 {
     "name": "npm-regression",
     "dependencies": {
-        "@l10nmonster/core": "3",
-        "@l10nmonster/cli": "3",
-        "@l10nmonster/helpers-android": "3",
-        "@l10nmonster/helpers-demo": "3",
-        "@l10nmonster/helpers-html": "3",
-        "@l10nmonster/helpers-ios": "3",
-        "@l10nmonster/helpers-java": "3",
-        "@l10nmonster/helpers-json": "3",
-        "@l10nmonster/helpers-po": "3",
-        "@l10nmonster/helpers-xliff": "3"
+        "@l10nmonster/core": "next",
+        "@l10nmonster/cli": "next",
+        "@l10nmonster/helpers-android": "next",
+        "@l10nmonster/helpers-demo": "next",
+        "@l10nmonster/helpers-html": "next",
+        "@l10nmonster/helpers-ios": "next",
+        "@l10nmonster/helpers-java": "next",
+        "@l10nmonster/helpers-json": "next",
+        "@l10nmonster/helpers-po": "next",
+        "@l10nmonster/helpers-xliff": "next"
     }
   }
 

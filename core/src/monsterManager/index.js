@@ -13,6 +13,20 @@ export class MonsterManager {
     #functionsForShutdown = [];
     saveFailedJobs = false;
 
+    /**
+     * @param {object} monsterConfig - Configuration object for the MonsterManager
+     * @param {object} [monsterConfig.channels] - Channel configurations where each channel has a createChannel() method
+     * @param {boolean} [monsterConfig.autoSnap] - Whether to automatically create snapshots
+     * @param {object} [monsterConfig.tmStores] - TM stores instances
+     * @param {object} [monsterConfig.opsStore] - Operations store instance
+     * @param {boolean} [monsterConfig.saveFailedJobs] - Whether to save failed jobs (requires opsStore)
+     * @param {Array} [monsterConfig.providers] - Array of translation providers
+     * @param {object} [monsterConfig.analyzers] - Additional analyzers to merge with default analyzers
+     * @param {string|boolean} [monsterConfig.sourceDB] - Filename for the source database
+     * @param {string|boolean} [monsterConfig.tmDB] - Filename for the translation memory database
+     * @param {Intl.NumberFormat} [monsterConfig.currencyFormatter] - Custom currency formatter
+     * @param {Function} [monsterConfig.init] - Optional initialization function called during init()
+     */
     constructor(monsterConfig) {
         this.monsterConfig = monsterConfig;
 

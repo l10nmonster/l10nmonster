@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/server",
-    "version": "3.0.0",
+    "version": "3.0.0-alpha.2",
     "description": "L10n Monster Manager UI",
     "type": "module",
     "main": "index.js",

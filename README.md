@@ -1,5 +1,14 @@
 # L10n Monster v3
 
+> ⚠️ **v3 Pre-release Notice**: You are looking at v3.0.0-alpha.1, which contains breaking changes and is under active development. APIs may change between pre-releases. For stable v2, use `npm install @l10nmonster/cli@latest`.
+>
+> To test v3 pre-release:
+> ```bash
+> npm install @l10nmonster/core@next
+> npm install @l10nmonster/cli@next
+> # Install other packages as needed with @next tag
+> ```
+
 Do you want to set up continuous localization for your project but don't have a whole team to look after it? Do you know how `git` works? Have you set up a build like `esbuild` before? You've come to the right place and you'll feel right at home!
 
 L10n Monster is the first headless and server-less TMS in the industry! It's born in a world of continuous integration and deployment. It is a solution to manage translation vendors, not translators. It pushes source content out to translation vendors and pulls translations back in. No more no less. It doesn't try to tell you how to consume content or deliver it to production. It doesn't deal with formatting and other internationalization concerns. There are plenty of i18n libraries to deal with that.
@@ -326,4 +335,111 @@ npm run build
 
 # Run CLI locally
 npx l10n --help
+```
+
+## Publishing
+
+### Prerequisites
+
+- **npm Account**: Must be logged in with publishing rights to `@l10nmonster` scope
+- **Two-Factor Authentication**: If enabled, use `--otp` flag with publish commands
+- **Testing**: Run full test suite before publishing
+
+```bash
+# Login to npm
+npm login
+
+# Verify login
+npm whoami
+
+# Run tests
+npm test
+```
+
+### Pre-release Publishing (Alpha/Beta/RC)
+
+For v3 development and testing, use pre-release versions with the `next` tag:
+
+```bash
+# Update to next alpha version
+npm version 3.0.0-alpha.2 --workspaces --no-git-tag-version
+
+# Test publishing (dry run)
+npm run publish:next-dry
+
+# Publish to npm with 'next' tag
+npm run publish:next
+
+# Users install with: npm install @l10nmonster/core@next
+```
+
+**Version Progression:**
+- `3.0.0-alpha.1` → `3.0.0-alpha.2` → ... (unstable, breaking changes allowed)
+- `3.0.0-beta.1` → `3.0.0-beta.2` → ... (feature-complete, API stabilizing)
+- `3.0.0-rc.1` → `3.0.0-rc.2` → ... (release candidates, bug fixes only)
+
+### Stable Publishing
+
+When ready for stable release:
+
+```bash
+# Update to stable version
+npm version 3.0.0 --workspaces --no-git-tag-version
+
+# Test publishing (dry run)
+npm run publish:npm-dry
+
+# Publish to npm with 'latest' tag
+npm run publish:npm
+
+# Users install with: npm install @l10nmonster/core (gets latest)
+```
+
+### Available Scripts
+
+| Script | Description |
+|--------|-------------|
+| `npm run publish:next-dry` | Dry run pre-release publish with `next` tag |
+| `npm run publish:next` | Publish pre-release versions with `next` tag |
+| `npm run publish:npm-dry` | Dry run stable publish with `latest` tag |
+| `npm run publish:npm` | Publish stable versions with `latest` tag |
+
+### Publishing Workflow
+
+1. **Feature Development**: Work on feature branches
+2. **Alpha Release**: Merge to `v3` branch, publish alpha for testing
+3. **Beta Release**: When feature-complete, publish beta for wider testing
+4. **RC Release**: When stable, publish release candidate
+5. **Stable Release**: Final version with `latest` tag
+
+### Version Management
+
+```bash
+# Check current versions
+npm list --workspaces --depth=0
+
+# Update specific version type
+npm version prerelease --workspaces --no-git-tag-version  # alpha.1 → alpha.2
+npm version preminor --workspaces --no-git-tag-version    # alpha → beta
+npm version premajor --workspaces --no-git-tag-version    # beta → rc
+
+# Remove pre-release identifier
+npm version patch --workspaces --no-git-tag-version       # rc → stable
+```
+
+### Troubleshooting
+
+**Common Issues:**
+- `403 Forbidden`: Check npm login and scope permissions
+- `Version already published`: Bump version before publishing
+- `Access denied`: Add `--access public` flag (already included in scripts)
+- `2FA required`: Add `--otp=123456` flag to publish commands
+
+**Rollback:**
+```bash
+# Deprecate a published version
+npm deprecate @l10nmonster/core@3.0.0-alpha.1 "Please use @next for latest pre-release"
+
+# Unpublish (only within 24 hours)
+npm unpublish @l10nmonster/core@3.0.0-alpha.1
 ```

@@ -130,9 +130,13 @@ export default config.l10nMonster(import.meta.dirname)
         apiKey: process.env.gemini_api_key,
         model: 'gemini-2.5-pro',
         parallelism: 10,
-        maxChunkSize:2,
+        // maxChunkSize:2,
+        defaultInstructions: 'You are translating strings from resource files',
+        targetLangInstructions: {
+            'ar': 'use arabic numbers',
+        },
         // thinkingBudget: 0,
-        supportedPairs: { 'en': [ 'it' ] },
+        // supportedPairs: { 'en': [ 'it' ] },
     }))
     // .provider(new GenAIAgent({
     //     id: 'gemini-2.5-vertex',

@@ -4,6 +4,7 @@
         "status": "l10n status"
     },
     "dependencies": {
+        "@l10nmonster/config-mancer": "../../../config-mancer",
         "@l10nmonster/core": "../../../core",
         "@l10nmonster/cli": "../../../cli",
         "@l10nmonster/server": "../../../server",

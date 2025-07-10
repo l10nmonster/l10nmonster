@@ -2,8 +2,7 @@ import * as path from 'path';
 import {
     existsSync,
     unlinkSync,
-    // statSync, // No longer needed directly here
-    readFileSync, // Restored for FsTarget
+    readFileSync,
     mkdirSync,
     writeFileSync,
 } from 'fs';
@@ -37,7 +36,7 @@ export class FsSource extends AbstractFsAdapter {
 
     /**
      * Creates a new FsSource instance.
-     * @param {Object} options - Configuration options for the source.
+     * @param {object} options - Configuration options for the source.
      * @param {string} [options.baseDir] - Base directory for resource files.
      * @param {string} options.sourceLang - The source language of the resources.
      * @param {string | string[]} options.globs - glob or array of glob patterns to match resource files.
@@ -61,12 +60,23 @@ export class FsSource extends AbstractFsAdapter {
         }
     }
 
+    static configMancerSample = {
+        '@': '@l10nmonster/core:ISourceAdapter',
+        sourceLang: 'en',
+        globs: ['*.strings'],
+        $baseDir: 'foo',
+        $filter: Function,
+        $prj: 'bar',
+        $resDecorator: Function,
+        $idFromPath: Function,
+    };
+
     /**
      * Fetches all resources matching the glob patterns.
      * Yields an array for each resource: [resourceMeta, resourceContent].
      * @returns {AsyncGenerator<[Object, string]>} An async generator yielding resource stat-like metadata and content.
      */
-    async* fetchAllResources() {
+    async *fetchAllResources() {
         logInfo`FsSource: Fetching all resources with globs: ${this.globs.join(', ')} in baseDir: ${this.baseDir}`;
         // fsPromises.glob returns paths relative to cwd by default.
         // We need to make them relative to this.baseDir for id generation,
@@ -91,6 +101,7 @@ export class FsSource extends AbstractFsAdapter {
 
                     if (this.filter && !this.filter(id)) {
                         logVerbose`FsSource: Filtered out resource ${id} (path: ${relativePathFromGlob}) due to filter function.`;
+                        // eslint-disable-next-line no-continue
                         continue;
                     }
 
@@ -131,7 +142,7 @@ export class FsTarget extends AbstractFsAdapter {
 
     /**
      * Creates a new FsTarget instance.
-     * @param {Object} options - Configuration options for the target.
+     * @param {object} options - Configuration options for the target.
      * @param {string} [options.baseDir] - Base directory for translated files.
      * @param {Function} options.targetPath - Function to determine target path.
      * @param {boolean} [options.deleteEmpty] - Whether to delete empty files.
@@ -140,7 +151,14 @@ export class FsTarget extends AbstractFsAdapter {
         super(baseDir);
         this.targetPath = targetPath;
         this.deleteEmpty = deleteEmpty;
-}
+    }
+
+    static configMancerSample = {
+        '@': '@l10nmonster/core:ITargetAdapter',
+        $baseDir: 'foo',
+        $targetPath: Function,
+        $deleteEmpty: true,
+    };
 
     /**
      * Generates the path for a translated resource.

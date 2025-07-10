@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/helpers-demo",
-    "version": "3.0.0",
+    "version": "3.0.0-alpha.2",
     "description": "Helpers demonstrations",
     "type": "module",
     "main": "index.js",
@@ -13,6 +13,6 @@
         "pig-latinizer": "^1.0.6"
     },
     "peerDependencies": {
-        "@l10nmonster/core": "file:../core"
+        "@l10nmonster/core": "^3.0.0-alpha.0"
     }
 }
