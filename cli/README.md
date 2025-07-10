@@ -15,9 +15,9 @@ npm install -g @l10nmonster/cli
 ```bash
 git clone git@github.com:l10nmonster/l10nmonster.git
 cd l10nmonster
-pnpm install
-pnpm build
-pnpm link --global @l10nmonster/cli
+npm install
+npm run build
+npm link --global @l10nmonster/cli
 ```
 
 ## Getting Started

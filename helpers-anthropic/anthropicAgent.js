@@ -89,7 +89,6 @@ export class AnthropicAgent extends providers.LLMTranslationProvider {
                 maxRetries: this.#maxRetries,
                 timeout: 15 * 60000, // 15 minutes
             });
-            throw new Error('test');
             logInfo`AnthropicAgent ${this.id} initialized with Vertex AI platform (${this.#vertexLocation}/${this.#vertexProject})`;
         }
     }

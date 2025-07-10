@@ -326,16 +326,16 @@ describe('AnthropicAgent', () => {
             assert.ok(agent.systemPrompt.includes('confidence score'));
         });
 
-        it('should not include default schema instructions with custom schema', () => {
+        it('should include default schema instructions even with custom schema', () => {
             const customOptions = {
-                id: 'test-no-schema-instructions-agent',
+                id: 'test-schema-instructions-agent',
                 model: 'claude-3-5-sonnet@20241022',
                 quality: 85,
                 customSchema: { type: 'object', properties: { test: { type: 'string' } } }
             };
             const agent = new AnthropicAgent(customOptions);
-            // Should not include the default HTML tags instruction
-            assert.ok(!agent.systemPrompt.includes('HTML tags'));
+            // Should still include the default HTML tags instruction
+            assert.ok(agent.systemPrompt.includes('HTML tags'));
         });
     });
 
@@ -357,9 +357,10 @@ describe('AnthropicAgent', () => {
             const prompt = agent.buildUserPrompt(promptOptions);
             
             assert.ok(prompt.includes('Use formal tone'));
-            assert.ok(prompt.includes('from en to es'));
+            assert.ok(prompt.includes('Source language: en'));
+            assert.ok(prompt.includes('Target language: es'));
             assert.ok(prompt.includes('Hello world'));
-            assert.ok(prompt.includes('1 strings'));
+            assert.ok(prompt.includes('Number of segments: 1'));
         });
 
         it('should build user prompt without job instructions', () => {
@@ -374,10 +375,11 @@ describe('AnthropicAgent', () => {
 
             const prompt = agent.buildUserPrompt(promptOptions);
             
-            assert.ok(prompt.includes('from fr to de'));
+            assert.ok(prompt.includes('Source language: fr'));
+            assert.ok(prompt.includes('Target language: de'));
             assert.ok(prompt.includes('Bonjour'));
             assert.ok(prompt.includes('Au revoir'));
-            assert.ok(prompt.includes('2 strings'));
+            assert.ok(prompt.includes('Number of segments: 2'));
             assert.ok(!prompt.includes('Consider also the following instructions'));
         });
     });

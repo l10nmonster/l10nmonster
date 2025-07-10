@@ -8,15 +8,15 @@
         "server"
     ],
     "scripts": {
-        "test": "pnpm --recursive test && pnpm run test:regression",
+        "test": "npm run test --workspaces --if-present && npm run test:regression",
         "test:regression": "cd regression && ./test.zsh js local all && ./test.zsh cli local all",
         "eslint": "eslint core/src/**/*.js cli/*.js",
-        "eslint:files": "pnpm run eslint | grep -e '^/.*js$'",
-        "eslint:files:open": "code $(pnpm run --silent eslint:files)",
+        "eslint:files": "npm run eslint | grep -e '^/.*js$'",
+        "eslint:files:open": "code $(npm run --silent eslint:files)",
         "publish:npm": "npm publish --workspaces",
         "publish:npm-dry": "npm publish --workspaces --dry-run"
     },
-    "packageManager": "pnpm@10.12.4",
+    "packageManager": "npm@10.9.2",
     "devDependencies": {
         "@eslint/eslintrc": "^3.2.0",
         "@eslint/js": "^9.17.0",

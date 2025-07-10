@@ -36,7 +36,7 @@ describe('AnthropicAgent Integration', () => {
         
         // Test inherited methods from LLMTranslationProvider
         assert.ok(typeof agent.buildUserPrompt === 'function');
-        assert.ok(typeof agent.buildSystemPrompt === 'function');
+        assert.ok(typeof agent.systemPrompt === 'string');
         assert.ok(typeof agent.processTranslations === 'function');
         assert.ok(typeof agent.extractTargetText === 'function');
     });

@@ -4,7 +4,7 @@ Do you want to set up continuous localization for your project but don't have a 
 
 L10n Monster is the first headless and server-less TMS in the industry! It's born in a world of continuous integration and deployment. It is a solution to manage translation vendors, not translators. It pushes source content out to translation vendors and pulls translations back in. No more no less. It doesn't try to tell you how to consume content or deliver it to production. It doesn't deal with formatting and other internationalization concerns. There are plenty of i18n libraries to deal with that.
 
-**v3 brings major architectural improvements**: ESM-native design, pnpm workspace support, enhanced AI/ML integrations, modular Data Access Layer, and comprehensive testing infrastructure.
+**v3 brings major architectural improvements**: ESM-native design, npm workspace support, enhanced AI/ML integrations, modular Data Access Layer, and comprehensive testing infrastructure.
 
 # Philosophy
 
@@ -14,7 +14,7 @@ While L10n Monster is written in JS and it's more naturally extended and scripte
 
 # Components
 
-v3 introduces a modern ESM-based monorepo architecture with pnpm workspaces, providing better dependency management and modular development.
+v3 introduces a modern ESM-based monorepo architecture with npm workspaces, providing better dependency management and modular development.
 
 ## Core Packages
 
@@ -58,7 +58,7 @@ v3 introduces a modern ESM-based monorepo architecture with pnpm workspaces, pro
 ## Prerequisites
 
 - **Node.js**: >=20.12.0 (ESM support required)
-- **Package Manager**: pnpm (recommended) or npm
+- **Package Manager**: npm
 - **Configuration**: `l10nmonster.config.mjs` (ESM format)
 
 ## Installation
@@ -68,7 +68,7 @@ v3 introduces a modern ESM-based monorepo architecture with pnpm workspaces, pro
 npm install -g @l10nmonster/cli
 
 # Or use in project
-pnpm add @l10nmonster/core @l10nmonster/cli
+npm install @l10nmonster/core @l10nmonster/cli
 ```
 
 ## Quick Setup
@@ -294,13 +294,13 @@ Running localization operations requires additional tools to support processes. 
 
 ```bash
 # Run all tests (unit + regression)
-pnpm test
+npm test
 
 # Unit tests only
-pnpm --recursive test
+npm run test --workspaces --if-present
 
 # Regression tests only
-pnpm run test:regression
+npm run test:regression
 
 # Specific test case
 cd regression && ./test.zsh js local android
@@ -316,14 +316,14 @@ cd regression && ./test.zsh js local android
 
 ```bash
 # Install dependencies
-pnpm install
+npm install
 
 # Run linting
-pnpm run eslint
+npm run eslint
 
 # Build packages
-pnpm run build
+npm run build
 
 # Run CLI locally
-pnpm exec l10n --help
+npx l10n --help
 ```
