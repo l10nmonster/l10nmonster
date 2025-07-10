@@ -178,5 +178,86 @@ export class SchemaManager {
         return this.#schema[typeName] !== undefined;
     }
 
+    /**
+     * Generates markdown documentation for the schema.
+     * @returns {string} Markdown documentation string
+     */
+    generateSchemaDocs() {
+        const typesBySuper = {};
+        const rootTypes = {};
+        
+        // Group types by superType
+        for (const [typeName, def] of Object.entries(this.#schema)) {
+            if (def.superType === typeName) {
+                // Root type (superType same as typeName)
+                rootTypes[typeName] = def;
+            } else {
+                // Grouped by superType
+                if (!typesBySuper[def.superType]) {
+                    typesBySuper[def.superType] = {};
+                }
+                typesBySuper[def.superType][typeName] = def;
+            }
+        }
+        
+        let markdown = '# ConfigMancer Schema Documentation\n\n';
+        
+        // Generate Root Types section first
+        if (Object.keys(rootTypes).length > 0) {
+            markdown += '## Root Types\n\n';
+            const sortedRootTypes = Object.keys(rootTypes).sort();
+            for (const typeName of sortedRootTypes) {
+                markdown += this.#generateTypeDoc(typeName, rootTypes[typeName]);
+            }
+        }
+        
+        // Generate sections for each superType
+        const sortedSuperTypes = Object.keys(typesBySuper).sort();
+        for (const superType of sortedSuperTypes) {
+            markdown += `## ${superType}\n\n`;
+            const sortedTypes = Object.keys(typesBySuper[superType]).sort();
+            for (const typeName of sortedTypes) {
+                markdown += this.#generateTypeDoc(typeName, typesBySuper[superType][typeName]);
+            }
+        }
+        
+        return markdown;
+    }
+    
+    /**
+     * Generates markdown documentation for a single type.
+     * @param {string} typeName - The type name
+     * @param {Object} def - The type definition
+     * @returns {string} Markdown documentation for the type
+     */
+    #generateTypeDoc(typeName, def) {
+        let markdown = `### ${typeName}\n\n`;
+        
+        if (def.isConstant) {
+            markdown += `**Constant value of type:** \`${def.superType}\`\n\n`;
+            markdown += `**Value:** \`${JSON.stringify(def.factory)}\`\n\n`;
+        } else {
+            const paramEntries = Object.entries(def.params);
+            
+            if (paramEntries.length > 0) {
+                markdown += '**Parameters:**\n\n';
+                
+                // Sort parameters alphabetically
+                const sortedParams = paramEntries.sort(([a], [b]) => a.localeCompare(b));
+                
+                for (const [paramName, [paramType, isMandatory, isArray]] of sortedParams) {
+                    const mandatoryLabel = isMandatory ? 'required' : 'optional';
+                    const arrayLabel = isArray ? '[]' : '';
+                    markdown += `- \`${paramName}\` (${mandatoryLabel}): \`${paramType}${arrayLabel}\`\n`;
+                }
+                markdown += '\n';
+            } else {
+                markdown += '**Parameters:** None\n\n';
+            }
+        }
+        
+        return markdown;
+    }
+
 
 } 

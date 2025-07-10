@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { writeFileSync, unlinkSync, readFileSync } from 'fs';
 import { ConfigMancer, BaseConfigMancerType } from '../index.js';
 import { SchemaManager } from '../SchemaManager.js';
+import { ImportTextFile, ImportJsonFile } from '../helpers.js';
 
 // Test configuration classes
 class DatabaseConfig extends BaseConfigMancerType {
@@ -786,6 +787,354 @@ suite('ConfigMancer tests', () => {
             assert.equal(typeof result.getConnectionString, 'undefined'); // Should not have methods
         } finally {
             unlinkSync(testFilePath);
+        }
+    });
+
+    test('createReviver with additionalProperties adds properties to all constructed objects', () => {
+        class TestClass {
+            static configMancerSample = {
+                '@': 'object',
+                name: 'example',
+                '$additionalProp': 'optional-value',
+                '$customProp': 'custom-value'
+            };
+            
+            constructor(obj) {
+                this.name = obj.name;
+                this.additionalProp = obj.additionalProp;
+                this.customProp = obj.customProp;
+            }
+        }
+
+        const testSchemaManager = new SchemaManager({ classes: { TestClass } });
+        const testMancer = new ConfigMancer(testSchemaManager);
+        
+        // Test creating a reviver with additional properties
+        const reviver = testMancer.createReviver({ 
+            additionalProp: 'test-value',
+            customProp: 'custom-value'
+        });
+        
+        // Test JSON string
+        const jsonString = '{"@": "TestClass", "name": "test"}';
+        
+        // Parse with reviver
+        const result = JSON.parse(jsonString, reviver);
+        
+        assert.equal(result.name, 'test');
+        assert.equal(result.additionalProp, 'test-value');
+        assert.equal(result.customProp, 'custom-value');
+        assert.ok(result instanceof TestClass);
+    });
+
+    test('createReviver with additionalProperties works with arrays', () => {
+        class TestClass {
+            static configMancerSample = {
+                '@': 'object',
+                name: 'example',
+                '$additionalProp': 'optional-value',
+                '$contextProp': 'context-value'
+            };
+            
+            constructor(obj) {
+                this.name = obj.name;
+                this.additionalProp = obj.additionalProp;
+                this.contextProp = obj.contextProp;
+            }
+        }
+
+        class ParentClass {
+            static configMancerSample = {
+                '@': 'object',
+                items: [{ '@': 'object' }]
+            };
+            
+            constructor(obj) {
+                this.items = obj.items;
+            }
+        }
+
+        const testSchemaManager = new SchemaManager({ classes: { TestClass, ParentClass } });
+        const testMancer = new ConfigMancer(testSchemaManager);
+        
+        // Test creating a reviver with additional properties
+        const reviver = testMancer.createReviver({ 
+            additionalProp: 'test-value',
+            contextProp: 'context-value'
+        });
+        
+        // Test JSON string with array
+        const jsonString = '{"@": "ParentClass", "items": [{"@": "TestClass", "name": "test1"}, {"@": "TestClass", "name": "test2"}]}';
+        
+        // Parse with reviver
+        const result = JSON.parse(jsonString, reviver);
+        
+        assert.equal(result.items.length, 2);
+        assert.equal(result.items[0].name, 'test1');
+        assert.equal(result.items[0].additionalProp, 'test-value');
+        assert.equal(result.items[0].contextProp, 'context-value');
+        assert.equal(result.items[1].name, 'test2');
+        assert.equal(result.items[1].additionalProp, 'test-value');
+        assert.equal(result.items[1].contextProp, 'context-value');
+        assert.ok(result instanceof ParentClass);
+        assert.ok(result.items[0] instanceof TestClass);
+        assert.ok(result.items[1] instanceof TestClass);
+    });
+
+    test('createReviver with additionalProperties works with validation-only mode', () => {
+        class TestClass {
+            static configMancerSample = {
+                '@': 'object',
+                name: 'example',
+                '$additionalProp': 'optional-value'
+            };
+            
+            constructor(obj) {
+                this.name = obj.name;
+                this.additionalProp = obj.additionalProp;
+            }
+        }
+
+        const testSchemaManager = new SchemaManager({ classes: { TestClass } });
+        const testMancer = new ConfigMancer(testSchemaManager);
+        testMancer.validationOnly = true;
+        
+        // Test creating a reviver with additional properties
+        const reviver = testMancer.createReviver({ 
+            additionalProp: 'test-value',
+            contextProp: 'context-value'
+        });
+        
+        // Test JSON string
+        const jsonString = '{"@": "TestClass", "name": "test"}';
+        
+        // Parse with reviver
+        const result = JSON.parse(jsonString, reviver);
+        
+        assert.equal(result.name, 'test');
+        // In validation-only mode, additionalProperties should not be added
+        assert.equal(result.additionalProp, undefined);
+        assert.equal(result.contextProp, undefined);
+        assert.equal(typeof result.getConnectionString, 'undefined');
+    });
+
+    test('createReviver without additionalProperties works as before', () => {
+        class TestClass {
+            static configMancerSample = {
+                '@': 'object',
+                name: 'example'
+            };
+            
+            constructor(obj) {
+                this.name = obj.name;
+            }
+        }
+
+        const testSchemaManager = new SchemaManager({ classes: { TestClass } });
+        const testMancer = new ConfigMancer(testSchemaManager);
+        
+        // Test creating a reviver without additional properties
+        const reviver = testMancer.createReviver();
+        
+        // Test JSON string
+        const jsonString = '{"@": "TestClass", "name": "test"}';
+        
+        // Parse with reviver
+        const result = JSON.parse(jsonString, reviver);
+        
+        assert.equal(result.name, 'test');
+        assert.ok(result instanceof TestClass);
+    });
+
+    test('ImportTextFile reads text files correctly', () => {
+        const testSchemaManager = new SchemaManager({ classes: { ImportTextFile } });
+        const testMancer = new ConfigMancer(testSchemaManager);
+        
+        // Create a temporary text file
+        const testContent = 'Hello, World!\nThis is a test file.';
+        const testFilePath = '/tmp/test-text-file.txt';
+        writeFileSync(testFilePath, testContent);
+        
+        try {
+            // Test with fileName only (no @baseDir)
+            const config1 = {
+                '@': 'ImportTextFile',
+                fileName: testFilePath
+            };
+            
+            const reviver1 = testMancer.createReviver();
+            const result1 = JSON.parse(JSON.stringify(config1), reviver1);
+            
+            assert.equal(result1, testContent);
+            assert.equal(typeof result1, 'string');
+            
+            // Test with @baseDir
+            const baseDir = '/tmp';
+            const fileName = 'test-text-file.txt';
+            
+            const config2 = {
+                '@': 'ImportTextFile',
+                fileName: fileName
+            };
+            
+            const reviver2 = testMancer.createReviver({ '@baseDir': baseDir });
+            const result2 = JSON.parse(JSON.stringify(config2), reviver2);
+            
+            assert.equal(result2, testContent);
+            assert.equal(typeof result2, 'string');
+            
+        } finally {
+            unlinkSync(testFilePath);
+        }
+    });
+
+    test('ImportJsonFile reads JSON files correctly', () => {
+        const testSchemaManager = new SchemaManager({ classes: { ImportJsonFile } });
+        const testMancer = new ConfigMancer(testSchemaManager);
+        
+        // Create a temporary JSON file
+        const testData = {
+            name: 'test-config',
+            version: '1.0.0',
+            settings: {
+                debug: true,
+                timeout: 5000
+            }
+        };
+        const testFilePath = '/tmp/test-json-file.json';
+        writeFileSync(testFilePath, JSON.stringify(testData, null, 2));
+        
+        try {
+            // Test with fileName only (no @baseDir)
+            const config1 = {
+                '@': 'ImportJsonFile',
+                fileName: testFilePath
+            };
+            
+            const reviver1 = testMancer.createReviver();
+            const result1 = JSON.parse(JSON.stringify(config1), reviver1);
+            
+            assert.deepEqual(result1, testData);
+            assert.equal(typeof result1, 'object');
+            
+            // Test with @baseDir
+            const baseDir = '/tmp';
+            const fileName = 'test-json-file.json';
+            
+            const config2 = {
+                '@': 'ImportJsonFile',
+                fileName: fileName
+            };
+            
+            const reviver2 = testMancer.createReviver({ '@baseDir': baseDir });
+            const result2 = JSON.parse(JSON.stringify(config2), reviver2);
+            
+            assert.deepEqual(result2, testData);
+            assert.equal(typeof result2, 'object');
+            
+        } finally {
+            unlinkSync(testFilePath);
+        }
+    });
+
+    test('ImportTextFile and ImportJsonFile work with reviveFile', () => {
+        const testSchemaManager = new SchemaManager({ classes: { ImportTextFile, ImportJsonFile } });
+        const testMancer = new ConfigMancer(testSchemaManager);
+        
+        // Create test files
+        const textContent = 'Sample text content';
+        const textFilePath = '/tmp/sample.txt';
+        writeFileSync(textFilePath, textContent);
+        
+        const jsonData = { key: 'value', number: 42 };
+        const jsonFilePath = '/tmp/sample.json';
+        writeFileSync(jsonFilePath, JSON.stringify(jsonData));
+        
+        // Test ImportTextFile with reviveFile
+        const textConfigData = {
+            '@': 'ImportTextFile',
+            fileName: 'sample.txt'
+        };
+        
+        const textConfigFilePath = '/tmp/test-text-import.json';
+        writeFileSync(textConfigFilePath, JSON.stringify(textConfigData, null, 2));
+        
+        // Test ImportJsonFile with reviveFile  
+        const jsonConfigData = {
+            '@': 'ImportJsonFile',
+            fileName: 'sample.json'
+        };
+        
+        const jsonConfigFilePath = '/tmp/test-json-import.json';
+        writeFileSync(jsonConfigFilePath, JSON.stringify(jsonConfigData, null, 2));
+        
+        try {
+            // Use reviveFile which automatically adds @baseDir
+            const textResult = testMancer.reviveFile(textConfigFilePath);
+            const jsonResult = testMancer.reviveFile(jsonConfigFilePath);
+            
+            assert.equal(textResult, textContent);
+            assert.deepEqual(jsonResult, jsonData);
+            
+        } finally {
+            unlinkSync(textFilePath);
+            unlinkSync(jsonFilePath);
+            unlinkSync(textConfigFilePath);
+            unlinkSync(jsonConfigFilePath);
+        }
+    });
+
+    test('ImportTextFile and ImportJsonFile handle missing files gracefully', () => {
+        const testSchemaManager = new SchemaManager({ classes: { ImportTextFile, ImportJsonFile } });
+        const testMancer = new ConfigMancer(testSchemaManager);
+        
+        // Test with non-existent text file
+        const textConfig = {
+            '@': 'ImportTextFile',
+            fileName: '/tmp/non-existent-file.txt'
+        };
+        
+        const textReviver = testMancer.createReviver();
+        
+        assert.throws(() => {
+            JSON.parse(JSON.stringify(textConfig), textReviver);
+        }, /ENOENT: no such file or directory/);
+        
+        // Test with non-existent JSON file
+        const jsonConfig = {
+            '@': 'ImportJsonFile',
+            fileName: '/tmp/non-existent-file.json'
+        };
+        
+        const jsonReviver = testMancer.createReviver();
+        
+        assert.throws(() => {
+            JSON.parse(JSON.stringify(jsonConfig), jsonReviver);
+        }, /ENOENT: no such file or directory/);
+    });
+
+    test('ImportJsonFile handles malformed JSON gracefully', () => {
+        const testSchemaManager = new SchemaManager({ classes: { ImportJsonFile } });
+        const testMancer = new ConfigMancer(testSchemaManager);
+        
+        // Create a file with malformed JSON
+        const malformedJsonPath = '/tmp/malformed.json';
+        writeFileSync(malformedJsonPath, '{ invalid json }');
+        
+        try {
+            const config = {
+                '@': 'ImportJsonFile',
+                fileName: malformedJsonPath
+            };
+            
+            const reviver = testMancer.createReviver();
+            
+            assert.throws(() => {
+                JSON.parse(JSON.stringify(config), reviver);
+            }, /Expected property name or '}' in JSON/);
+            
+        } finally {
+            unlinkSync(malformedJsonPath);
         }
     });
 });

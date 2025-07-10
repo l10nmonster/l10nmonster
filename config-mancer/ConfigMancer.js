@@ -1,3 +1,4 @@
+import path from 'path';
 import { readFileSync, writeFileSync } from 'fs';
 import { JsonSchemaGenerator } from './JsonSchemaGenerator.js';
 import { SchemaManager } from './SchemaManager.js';
@@ -53,15 +54,16 @@ export class ConfigMancer {
      * Creates a JSON reviver function for parsing and validating configuration objects.
      * The reviver function can be used with JSON.parse() to automatically validate
      * and construct typed objects from JSON data.
+     * @param {Object} [additionalProperties] - Additional properties to be added to all objects passed to factories
      * @returns {(this: any, key: string, value: any) => any} A JSON reviver function that validates and constructs objects
      * @throws {Error} If no schema is available for validation
      * @example
      * const reviver = mancer.createReviver();
      * const config = JSON.parse(jsonString, reviver);
      */
-    createReviver() {
+    createReviver(additionalProperties) {
         const reviverMaker = new ReviverMaker(this.#schemaManager, this.validationOnly);
-        return reviverMaker.createReviver();
+        return reviverMaker.createReviver(additionalProperties);
     }
 
     /**
@@ -76,7 +78,8 @@ export class ConfigMancer {
      */
     reviveFile(pathName) {
         const configFile = readFileSync(pathName, 'utf-8');
-        return JSON.parse(configFile, this.createReviver());
+        const baseDir = path.dirname(pathName);
+        return JSON.parse(configFile, this.createReviver({ '@baseDir': baseDir }));
     }
 
     /**

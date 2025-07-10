@@ -9,6 +9,8 @@ ConfigMancer provides a powerful configuration system that enables:
 - **Dynamic object construction**: Automatically construct typed objects from configuration data
 - **Proxy-based behavior**: Extend objects with inherited behavior through proxies
 - **JSON parsing with validation**: Parse and validate JSON configuration files
+- **Contextual properties**: Inject additional properties (like `@baseDir`) into all constructed objects
+- **File import helpers**: Built-in classes for importing text and JSON files with automatic path resolution
 - **Serialization**: Convert objects back to JSON configuration format
 - **JSON Schema generation**: Generate JSON Schema files for configuration authoring and validation
 - **Package discovery**: Automatically discover configuration classes from npm packages
@@ -254,11 +256,26 @@ Parses and constructs typed objects from a JSON configuration file.
 
 **Returns:** Constructed configuration object with typed instances
 
-### `configMancer.createReviver()`
+### `configMancer.createReviver(additionalProperties)`
 
 Creates a JSON reviver function for custom parsing with JSON.parse().
 
+**Parameters:**
+- `additionalProperties` (optional): Object containing additional properties to be merged into all constructed objects
+
 **Returns:** JSON reviver function that validates and constructs objects
+
+**Example:**
+```javascript
+// Create reviver with additional context
+const reviver = mancer.createReviver({ 
+    '@baseDir': '/path/to/config',
+    environment: 'production' 
+});
+
+const config = JSON.parse(jsonString, reviver);
+// All constructed objects will have @baseDir and environment properties
+```
 
 ### `configMancer.serialize(obj, visited)`
 
@@ -290,6 +307,51 @@ Generates a JSON Schema for the specified root type and writes it to a file.
 **Returns:** None (writes to file)
 
 **Throws:** Error if the root type is not found in the schema or file cannot be written
+
+### `configMancer.generateSchemaDocs()`
+
+Generates comprehensive markdown documentation for the entire schema.
+
+**Returns:** String containing markdown documentation
+
+**Example:**
+```javascript
+const mancer = new ConfigMancer({
+    classes: { DatabaseConfig, ApiConfig }
+});
+
+const docs = mancer.generateSchemaDocs();
+console.log(docs);
+// Outputs structured markdown documentation
+```
+
+The generated documentation includes:
+- **Organized by supertype**: Types are grouped under major headings based on their `superType`
+- **Root types first**: Types where `superType === typeName` are listed under "Root Types" heading
+- **Alphabetical sorting**: Both supertypes and types within each supertype are sorted alphabetically  
+- **Parameter details**: Each type shows all parameters with their types, whether they're required/optional, and array indicators
+- **Constant values**: Constant configuration values are documented with their type and value
+- **Comprehensive coverage**: Documents all types in the schema including those from packages
+
+**Sample output:**
+```markdown
+# ConfigMancer Schema Documentation
+
+## Root Types
+
+### DatabaseConfig
+**Parameters:**
+- `host` (required): `string`
+- `port` (required): `number`
+- `ssl` (required): `boolean`
+- `timeout` (optional): `number`
+
+## object
+
+### MyPackage:SomeConstant
+**Constant value of type:** `object`
+**Value:** `{"endpoint": "https://api.example.com"}`
+```
 
 ## Custom Configuration Classes
 
@@ -334,6 +396,110 @@ class CustomConfig {
         };
     }
 }
+```
+
+## Helper Classes
+
+ConfigMancer includes built-in helper classes for common configuration patterns.
+
+### File Import Helpers
+
+#### `ImportTextFile`
+
+Imports text content from a file. Useful for loading templates, schemas, or other text-based resources.
+
+```javascript
+import { ImportTextFile } from '@l10nmonster/configMancer';
+
+// In configuration JSON:
+{
+    "@": "ImportTextFile",
+    "fileName": "schema.sql"
+}
+
+// Returns the text content of the file as a string
+```
+
+#### `ImportJsonFile`
+
+Imports and parses JSON content from a file. Useful for loading external JSON configurations or data files.
+
+```javascript
+import { ImportJsonFile } from '@l10nmonster/configMancer';
+
+// In configuration JSON:
+{
+    "@": "ImportJsonFile", 
+    "fileName": "database-config.json"
+}
+
+// Returns the parsed JSON object
+```
+
+### File Path Resolution
+
+Both helper classes support automatic path resolution using the `@baseDir` property, which is automatically provided by `reviveFile()`:
+
+```javascript
+// config.json (in /app/config/ directory)
+{
+    "@": "AppConfig",
+    "database": {
+        "@": "ImportJsonFile",
+        "fileName": "database.json"  // Resolves to /app/config/database.json
+    },
+    "schema": {
+        "@": "ImportTextFile", 
+        "fileName": "schema.sql"     // Resolves to /app/config/schema.sql
+    }
+}
+
+// Load configuration
+const config = mancer.reviveFile('/app/config/config.json');
+// Files are loaded relative to the config file location
+```
+
+You can also provide `@baseDir` explicitly when using `createReviver()`:
+
+```javascript
+const reviver = mancer.createReviver({ '@baseDir': '/custom/path' });
+const config = JSON.parse(jsonString, reviver);
+```
+
+### Error Handling
+
+The file import helpers provide clear error messages for common issues:
+
+- **File not found**: Throws `ENOENT` error with the full file path
+- **Malformed JSON**: For `ImportJsonFile`, throws JSON parsing errors with location details
+- **Permission errors**: Throws appropriate file system errors
+
+### Example Configuration
+
+```javascript
+// app-config.json
+{
+    "@": "ApplicationConfig",
+    "name": "My Application",
+    "database": {
+        "@": "ImportJsonFile",
+        "fileName": "database.json"
+    },
+    "apiSchema": {
+        "@": "ImportTextFile", 
+        "fileName": "api-schema.graphql"
+    },
+    "routes": {
+        "@": "ImportJsonFile",
+        "fileName": "routes/main.json"
+    }
+}
+
+// Usage
+const config = mancer.reviveFile('./app-config.json');
+console.log(config.name);          // "My Application"
+console.log(config.database.host); // From database.json
+console.log(config.apiSchema);     // GraphQL schema as string
 ```
 
 ## Schema Definition Format

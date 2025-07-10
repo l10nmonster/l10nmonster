@@ -23,13 +23,14 @@ export class ReviverMaker {
      * Creates a JSON reviver function for parsing and validating configuration objects.
      * The reviver function can be used with JSON.parse() to automatically validate
      * and construct typed objects from JSON data.
+     * @param {Object} [additionalProperties] - Additional properties to be added to all objects passed to factories
      * @returns {(this: any, key: string, value: any) => any} A JSON reviver function that validates and constructs objects
      * @throws {Error} If no schema is available for validation
      * @example
      * const reviver = reviverMaker.createReviver();
      * const config = JSON.parse(jsonString, reviver);
      */
-    createReviver() {
+    createReviver(additionalProperties) {
         if (!this.#schemaManager) {
             throw new Error(`Can't revive without a schema manager.`);
         }
@@ -45,6 +46,7 @@ export class ReviverMaker {
         const isPrimitiveValue = this.#isPrimitiveValue.bind(this);
         const handleArrayValue = this.#handleArrayValue.bind(this);
         const handleObjectValue = this.#handleObjectValue.bind(this);
+        const instantiate = this.#instantiate.bind(this);
         
         return function reviver(key, value) {
             // console.log(key, this['@'], value['@']);
@@ -76,10 +78,10 @@ export class ReviverMaker {
             }
             
             if (Array.isArray(value)) {
-                return handleArrayValue(value, key, containerType, propType, propertyDef, validationOnly);
+                return handleArrayValue(value, key, containerType, propType, propertyDef, validationOnly, additionalProperties, instantiate);
             }
             
-            return handleObjectValue(value, key, containerType, propType, withinArray, validationOnly);
+            return handleObjectValue(value, key, containerType, propType, withinArray, validationOnly, additionalProperties, instantiate);
         };
     }
     
@@ -120,7 +122,7 @@ export class ReviverMaker {
         return typeof value === propType && !isRootObject && !withinArray && !Array.isArray(value);
     }
     
-    #handleArrayValue(value, key, containerType, propType, propertyDef, validationOnly) {
+    #handleArrayValue(value, key, containerType, propType, propertyDef, validationOnly, additionalProperties, instantiate) {
         if (!propertyDef[2]) {
             throw new Error(`found an array in key "${key}" of ${containerType} instead of a ${propType} object`);
         }
@@ -142,14 +144,14 @@ export class ReviverMaker {
                 // Create a copy of the object without the '@' property instead of mutating the original
                 // eslint-disable-next-line no-unused-vars
                 const { '@': _, ...objWithoutType } = obj;
-                return validationOnly ? objWithoutType : this.#instantiate(objSchema.factory ?? BaseConfigMancerType, objWithoutType);
+                return validationOnly ? objWithoutType : instantiate(objSchema.factory ?? BaseConfigMancerType, objWithoutType, additionalProperties);
             }
             
             return obj;
         });
     }
     
-    #handleObjectValue(value, key, containerType, propType, withinArray, validationOnly) {
+    #handleObjectValue(value, key, containerType, propType, withinArray, validationOnly, additionalProperties, instantiate) {
         const valueSchema = this.#schemaManager.getType(value['@']);
         
         if (valueSchema?.superType !== propType) {
@@ -168,7 +170,7 @@ export class ReviverMaker {
         }
         
         delete value['@'];
-        return validationOnly ? value : this.#instantiate(valueSchema.factory ?? BaseConfigMancerType, value);
+        return validationOnly ? value : instantiate(valueSchema.factory ?? BaseConfigMancerType, value, additionalProperties);
     }
     
     #validateObjectProperties(value, valueSchema, containerType) {
@@ -188,10 +190,13 @@ export class ReviverMaker {
         }
     }
 
-    #instantiate(factory, params) {
+    #instantiate(factory, params, additionalProperties) {
+        // Merge additional properties into params if provided
+        const mergedParams = additionalProperties ? { ...params, ...additionalProperties } : params;
+        
         if (typeof factory.configMancerFactory === 'function') {
-            return factory.configMancerFactory(params);
+            return factory.configMancerFactory(mergedParams);
         }
-        return new factory(params);
+        return new factory(mergedParams);
     }
 } 
