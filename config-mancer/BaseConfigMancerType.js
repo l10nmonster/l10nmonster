@@ -1,7 +1,7 @@
 /**
  * Creates a double-pronged object that combines data properties with behavior methods.
- * @param {Object} data - The data object containing properties
- * @param {Object} behavior - The behavior object containing methods
+ * @param {Record<string, any>} data - The data object containing properties
+ * @param {Record<string, Function>} behavior - The behavior object containing methods
  * @returns {Proxy} A proxy object that provides access to both data and behavior
  */
 function createDoubleProngedObject(data, behavior) {
@@ -21,7 +21,7 @@ export class BaseConfigMancerType {
 
     /**
      * Creates a new BaseConfigMancerType instance.
-     * @param {Object} obj - The configuration object containing data properties
+     * @param {Record<string, any>} obj - The configuration object containing data properties
      * @description This constructor creates a proxy that combines the provided object
      * with the class prototype, allowing seamless access to both data and methods.
      * It also sets up prototype chains for nested objects and array elements.
@@ -51,7 +51,7 @@ export class BaseConfigMancerType {
     /**
      * Static factory method for creating instances of this class.
      * This method is used by ConfigMancer instead of the constructor.
-     * @param {Object} obj - The configuration object containing data properties
+     * @param {Record<string, any>} obj - The configuration object containing data properties
      * @returns {BaseConfigMancerType} A new instance of the class
      */
     static configMancerFactory(obj) {
@@ -62,7 +62,7 @@ export class BaseConfigMancerType {
      * Serializes this object into a format suitable for ConfigMancer.
      * This method should be overridden by subclasses to provide custom serialization logic.
      * The returned object should be a plain object without the '@' property.
-     * @returns {Object} A plain object with data properties suitable for factory instantiation
+     * @returns {Record<string, any>} A plain object with data properties suitable for factory instantiation
      */
     configMancerSerializer() {
         const result = {};

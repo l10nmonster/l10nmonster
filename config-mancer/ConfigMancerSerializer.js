@@ -7,7 +7,7 @@ export class ConfigMancerSerializer {
 
     /**
      * Creates a new ConfigMancerSerializer instance.
-     * @param {Object} schemaManager - A SchemaManager instance
+     * @param {import('./SchemaManager.js').SchemaManager} schemaManager - A SchemaManager instance
      */
     constructor(schemaManager) {
         this.#schemaManager = schemaManager;
@@ -109,7 +109,7 @@ export class ConfigMancerSerializer {
 
     /**
      * Determines the type name for an object by checking if its constructor matches any registered factory.
-     * @param {Object} obj - The object to check
+     * @param {any} obj - The object to check
      * @returns {string|null} The type name if found, null otherwise
      */
     #getTypeNameForObject(obj) {

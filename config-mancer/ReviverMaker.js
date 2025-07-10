@@ -1,6 +1,10 @@
 import { BaseConfigMancerType } from './BaseConfigMancerType.js';
 
 /**
+ * @typedef {import('./types.js').AdditionalProperties} AdditionalProperties
+ */
+
+/**
  * ReviverMaker creates JSON reviver functions for parsing and validating configuration objects.
  * The reviver functions can be used with JSON.parse() to automatically validate
  * and construct typed objects from JSON data.
@@ -11,7 +15,7 @@ export class ReviverMaker {
 
     /**
      * Creates a new ReviverMaker instance.
-     * @param {Object} schemaManager - The schema manager instance
+     * @param {import('./SchemaManager.js').SchemaManager} schemaManager - The schema manager instance
      * @param {boolean} validationOnly - If true, only validates without constructing objects
      */
     constructor(schemaManager, validationOnly = false) {
@@ -23,7 +27,7 @@ export class ReviverMaker {
      * Creates a JSON reviver function for parsing and validating configuration objects.
      * The reviver function can be used with JSON.parse() to automatically validate
      * and construct typed objects from JSON data.
-     * @param {Object} [additionalProperties] - Additional properties to be added to all objects passed to factories
+     * @param {AdditionalProperties} [additionalProperties] - Additional properties to be added to all objects passed to factories
      * @returns {(this: any, key: string, value: any) => any} A JSON reviver function that validates and constructs objects
      * @throws {Error} If no schema is available for validation
      * @example

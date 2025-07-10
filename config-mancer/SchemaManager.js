@@ -1,6 +1,12 @@
 import { createRequire } from 'module';
 
 /**
+ * @typedef {import('./types.js').SchemaManagerOptions} SchemaManagerOptions
+ * @typedef {import('./types.js').ConfigMancerSchema} ConfigMancerSchema
+ * @typedef {import('./types.js').SchemaEntry} SchemaEntry
+ */
+
+/**
  * SchemaManager handles lazy loading and resolution of ConfigMancer types from packages and classes.
  */
 export class SchemaManager {
@@ -11,10 +17,7 @@ export class SchemaManager {
 
     /**
      * Creates a new SchemaManager instance.
-     * @param {Object} [options] - Configuration options.
-     * @param {string[]} [options.packages] - Package names to search for types.
-     * @param {Object} [options.classes] - Direct class mappings.
-     * @param {string} [options.baseUrl] - The base URL for resolving package paths, typically import.meta.url of the caller.
+     * @param {SchemaManagerOptions} [options] - Configuration options.
      */
     constructor({ packages = [], classes = {}, baseUrl = import.meta.url } = {}) {
         this.#packageNames = packages;
@@ -38,7 +41,7 @@ export class SchemaManager {
 
     /**
      * Gets the current schema (useful for JSON schema generation).
-     * @returns {Object} The current schema
+     * @returns {ConfigMancerSchema} The current schema
      */
     get schema() {
         return this.#schema;
@@ -62,7 +65,7 @@ export class SchemaManager {
      * Adds a type definition to the schema.
      * @param {string} typeName - The name of the type
      * @param {any} factory - The factory function/class or constant value
-     * @param {Object|boolean} sample - The configMancerSample object or true for constants
+     * @param {Record<string, any>|boolean} sample - The configMancerSample object or true for constants
      */
     #addToSchema(typeName, factory, sample) {
         // Handle constant values where configMancerSample === true
@@ -163,7 +166,7 @@ export class SchemaManager {
     /**
      * Gets a type from the schema.
      * @param {string} typeName - The type name to get
-     * @returns {Object|null} The schema entry for the type, or null if not found
+     * @returns {SchemaEntry|null} The schema entry for the type, or null if not found
      */
     getType(typeName) {
         return this.#schema[typeName] || null;
@@ -227,7 +230,7 @@ export class SchemaManager {
     /**
      * Generates markdown documentation for a single type.
      * @param {string} typeName - The type name
-     * @param {Object} def - The type definition
+     * @param {SchemaEntry} def - The type definition
      * @returns {string} Markdown documentation for the type
      */
     #generateTypeDoc(typeName, def) {

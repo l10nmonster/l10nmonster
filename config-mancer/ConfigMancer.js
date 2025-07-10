@@ -6,6 +6,11 @@ import { ReviverMaker } from './ReviverMaker.js';
 import { ConfigMancerSerializer } from './ConfigMancerSerializer.js';
 
 /**
+ * @typedef {import('./types.js').SchemaManagerOptions} SchemaManagerOptions
+ * @typedef {import('./types.js').AdditionalProperties} AdditionalProperties
+ */
+
+/**
  * ConfigMancer is a configuration management utility that provides schema-based
  * validation and object construction from JSON configuration files. It supports
  * typed configuration objects with validation, mandatory property checks, and
@@ -18,7 +23,7 @@ export class ConfigMancer {
 
     /**
      * Creates a new ConfigMancer instance.
-     * @param {Object} schemaManager - A SchemaManager instance
+     * @param {SchemaManager} schemaManager - A SchemaManager instance
      */
     constructor(schemaManager) {
         if (!(schemaManager instanceof SchemaManager)) {
@@ -30,7 +35,7 @@ export class ConfigMancer {
 
     /**
      * Gets the schema manager instance.
-     * @returns {Object} The schema manager instance
+     * @returns {SchemaManager} The schema manager instance
      */
     get schemaManager() {
         return this.#schemaManager;
@@ -38,10 +43,7 @@ export class ConfigMancer {
     
     /**
      * Static factory method to create a ConfigMancer with schema manager options.
-     * @param {Object} schemaManagerOptions - Options to create a SchemaManager.
-     * @param {string[]} [schemaManagerOptions.packages] - Package names to search for types.
-     * @param {Object} [schemaManagerOptions.classes] - Direct class mappings.
-     * @param {string} [schemaManagerOptions.baseUrl] - The base URL for resolving package paths, typically import.meta.url of the caller.
+     * @param {SchemaManagerOptions} schemaManagerOptions - Options to create a SchemaManager.
      * @returns {Promise<ConfigMancer>} A new ConfigMancer instance with initialized schema manager
      */
     static async create(schemaManagerOptions) {
@@ -54,7 +56,7 @@ export class ConfigMancer {
      * Creates a JSON reviver function for parsing and validating configuration objects.
      * The reviver function can be used with JSON.parse() to automatically validate
      * and construct typed objects from JSON data.
-     * @param {Object} [additionalProperties] - Additional properties to be added to all objects passed to factories
+     * @param {AdditionalProperties} [additionalProperties] - Additional properties to be added to all objects passed to factories
      * @returns {(this: any, key: string, value: any) => any} A JSON reviver function that validates and constructs objects
      * @throws {Error} If no schema is available for validation
      * @example
@@ -71,7 +73,7 @@ export class ConfigMancer {
      * Validates the configuration against the schema and constructs typed objects
      * using the registered class factories (unless validationOnly is true).
      * @param {string} pathName - Path to the configuration file to load
-     * @returns {Object} The configuration object (with or without typed instances based on validationOnly setting)
+     * @returns {any} The configuration object (with or without typed instances based on validationOnly setting)
      * @throws {Error} If the file cannot be read, validation fails, or object construction fails
      * @example
      * const config = mancer.reviveFile('./config.json');

@@ -1,6 +1,11 @@
 import { writeFileSync } from 'fs';
 
 /**
+ * @typedef {import('./types.js').ConfigMancerSchema} ConfigMancerSchema
+ * @typedef {import('./types.js').SchemaEntry} SchemaEntry
+ */
+
+/**
  * JsonSchemaGenerator provides utilities for generating JSON Schema files
  * from ConfigMancer schema definitions.
  */
@@ -9,7 +14,7 @@ export class JsonSchemaGenerator {
 
     /**
      * Creates a new JsonSchemaGenerator instance.
-     * @param {Object} schema - The ConfigMancer schema definition
+     * @param {ConfigMancerSchema} schema - The ConfigMancer schema definition
      */
     constructor(schema) {
         this.schema = schema;
@@ -37,7 +42,7 @@ export class JsonSchemaGenerator {
     /**
      * Generates a JSON Schema object for the specified root type.
      * @param {string} rootType - The name of the root type to generate schema for
-     * @returns {Object} The JSON Schema object
+     * @returns {Record<string, any>} The JSON Schema object
      */
     generateJsonSchema(rootType) {
         const visited = new Set();
@@ -56,9 +61,9 @@ export class JsonSchemaGenerator {
     /**
      * Generates a JSON Schema for a specific type.
      * @param {string} typeName - The name of the type to generate schema for
-     * @param {Object} definitions - Object to collect type definitions
+     * @param {Record<string, any>} definitions - Object to collect type definitions
      * @param {Set} visited - Set to track visited types and prevent infinite recursion
-     * @returns {Object} The JSON Schema object for the type
+     * @returns {Record<string, any>} The JSON Schema object for the type
      */
     generateTypeSchema(typeName, definitions, visited) {
         const typeSchema = this.schema[typeName];
@@ -98,7 +103,7 @@ export class JsonSchemaGenerator {
     /**
      * Generates a JSON Schema for primitive types.
      * @param {string} typeName - The primitive type name
-     * @returns {Object} The JSON Schema object for the primitive type
+     * @returns {Record<string, any>} The JSON Schema object for the primitive type
      */
     getPrimitiveTypeSchema(typeName) {
         switch (typeName) {
@@ -119,8 +124,8 @@ export class JsonSchemaGenerator {
 
     /**
      * Generates a JSON Schema for constant values.
-     * @param {Object} typeSchema - The type schema definition
-     * @returns {Object} The JSON Schema object for the constant
+     * @param {SchemaEntry} typeSchema - The type schema definition
+     * @returns {Record<string, any>} The JSON Schema object for the constant
      */
     generateConstantSchema(typeSchema) {
         const factory = typeSchema.factory;
@@ -141,10 +146,10 @@ export class JsonSchemaGenerator {
     /**
      * Generates a JSON Schema for object types.
      * @param {string} typeName - The name of the type
-     * @param {Object} typeSchema - The type schema definition
-     * @param {Object} definitions - Object to collect type definitions
+     * @param {SchemaEntry} typeSchema - The type schema definition
+     * @param {Record<string, any>} definitions - Object to collect type definitions
      * @param {Set} visited - Set to track visited types
-     * @returns {Object} The JSON Schema object for the object type
+     * @returns {Record<string, any>} The JSON Schema object for the object type
      */
     generateObjectSchema(typeName, typeSchema, definitions, visited) {
         const properties = {
