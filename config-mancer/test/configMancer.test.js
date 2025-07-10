@@ -8,7 +8,6 @@ import { ImportTextFile, ImportJsonFile } from '../helpers.js';
 // Test configuration classes
 class DatabaseConfig extends BaseConfigMancerType {
     static configMancerSample = {
-        '@': 'object',
         host: 'localhost',
         port: 5432,
         ssl: true,
@@ -22,10 +21,9 @@ class DatabaseConfig extends BaseConfigMancerType {
 
 class ApiConfig extends BaseConfigMancerType {
     static configMancerSample = {
-        '@': 'object',
         url: 'https://api.example.com',
         $timeout: 5000,
-        databases: [{ '@': 'object' }]
+        databases: [{ '@': 'DatabaseConfig' }]
     };
 
     getPrimaryDatabase() {
@@ -69,7 +67,7 @@ suite('ConfigMancer tests', () => {
         assert.ok(schemaManager.schema.ApiConfig);
         
         const dbSchema = schemaManager.schema.DatabaseConfig;
-        assert.equal(dbSchema.superType, 'object');
+        assert.equal(dbSchema.superType, 'DatabaseConfig');
         assert.deepEqual(dbSchema.params.host, ['string', true, false]);
         assert.deepEqual(dbSchema.params.port, ['number', true, false]);
         assert.deepEqual(dbSchema.params.ssl, ['boolean', true, false]);
@@ -242,7 +240,6 @@ suite('ConfigMancer tests', () => {
         // A class that doesn't extend BaseConfigMancerType and doesn't have configMancerFactory
         class CustomConfig {
             static configMancerSample = {
-                '@': 'object',
                 name: 'test',
                 value: 42
             };
@@ -289,7 +286,6 @@ suite('ConfigMancer tests', () => {
     test('configMancerSerializer returns serializable object with @ property', () => {
         class TestConfig extends BaseConfigMancerType {
             static configMancerSample = {
-                '@': 'object',
                 name: 'test',
                 value: 42
             };
@@ -362,7 +358,6 @@ suite('ConfigMancer tests', () => {
     test('serialize handles objects with configMancerSerializer method', () => {
         class TestConfig extends BaseConfigMancerType {
             static configMancerSample = {
-                '@': 'object',
                 name: 'test',
                 value: 42
             };
@@ -391,7 +386,6 @@ suite('ConfigMancer tests', () => {
     test('serialize handles nested objects with configMancerSerializer', () => {
         class DatabaseConfig extends BaseConfigMancerType {
             static configMancerSample = {
-                '@': 'object',
                 host: 'localhost',
                 port: 5432
             };
@@ -399,9 +393,8 @@ suite('ConfigMancer tests', () => {
 
         class ApiConfig extends BaseConfigMancerType {
             static configMancerSample = {
-                '@': 'object',
                 url: 'https://api.example.com',
-                database: { '@': 'object' }
+                database: {}
             };
         }
 
@@ -430,7 +423,6 @@ suite('ConfigMancer tests', () => {
     test('serialize handles arrays of objects with configMancerSerializer', () => {
         class DatabaseConfig extends BaseConfigMancerType {
             static configMancerSample = {
-                '@': 'object',
                 host: 'localhost',
                 port: 5432
             };
@@ -438,9 +430,8 @@ suite('ConfigMancer tests', () => {
 
         class ApiConfig extends BaseConfigMancerType {
             static configMancerSample = {
-                '@': 'object',
                 url: 'https://api.example.com',
-                databases: [{ '@': 'object' }]
+                databases: [{ '@': 'DatabaseConfig' }]
             };
         }
 
@@ -481,7 +472,6 @@ suite('ConfigMancer tests', () => {
     test('serialize result can be revived by ConfigMancer', () => {
         class DatabaseConfig extends BaseConfigMancerType {
             static configMancerSample = {
-                '@': 'object',
                 host: 'localhost',
                 port: 5432,
                 ssl: true
@@ -494,9 +484,8 @@ suite('ConfigMancer tests', () => {
 
         class ApiConfig extends BaseConfigMancerType {
             static configMancerSample = {
-                '@': 'object',
                 url: 'https://api.example.com',
-                databases: [{ '@': 'object' }]
+                databases: [{ '@': 'DatabaseConfig' }]
             };
 
             getPrimaryDatabase() {
@@ -615,9 +604,8 @@ suite('ConfigMancer tests', () => {
     test('serialize throws error for circular references', () => {
         class TestConfig extends BaseConfigMancerType {
             static configMancerSample = {
-                '@': 'object',
                 name: 'test',
-                child: { '@': 'object' }
+                child: {}
             };
 
             configMancerSerializer() {
@@ -646,7 +634,6 @@ suite('ConfigMancer tests', () => {
     test('serializeToPathName writes file correctly', () => {
         class TestConfig extends BaseConfigMancerType {
             static configMancerSample = {
-                '@': 'object',
                 name: 'test',
                 value: 42
             };
@@ -727,7 +714,6 @@ suite('ConfigMancer tests', () => {
         
         class ApiConfig extends BaseConfigMancerType {
             static configMancerSample = {
-                '@': 'object',
                 headers: [{ '@': 'object' }]
             };
         }
@@ -793,7 +779,6 @@ suite('ConfigMancer tests', () => {
     test('createReviver with additionalProperties adds properties to all constructed objects', () => {
         class TestClass {
             static configMancerSample = {
-                '@': 'object',
                 name: 'example',
                 '$additionalProp': 'optional-value',
                 '$customProp': 'custom-value'
@@ -830,7 +815,6 @@ suite('ConfigMancer tests', () => {
     test('createReviver with additionalProperties works with arrays', () => {
         class TestClass {
             static configMancerSample = {
-                '@': 'object',
                 name: 'example',
                 '$additionalProp': 'optional-value',
                 '$contextProp': 'context-value'
@@ -845,8 +829,7 @@ suite('ConfigMancer tests', () => {
 
         class ParentClass {
             static configMancerSample = {
-                '@': 'object',
-                items: [{ '@': 'object' }]
+                items: [{ '@': 'TestClass' }]
             };
             
             constructor(obj) {
@@ -884,7 +867,6 @@ suite('ConfigMancer tests', () => {
     test('createReviver with additionalProperties works with validation-only mode', () => {
         class TestClass {
             static configMancerSample = {
-                '@': 'object',
                 name: 'example',
                 '$additionalProp': 'optional-value'
             };
@@ -921,7 +903,6 @@ suite('ConfigMancer tests', () => {
     test('createReviver without additionalProperties works as before', () => {
         class TestClass {
             static configMancerSample = {
-                '@': 'object',
                 name: 'example'
             };
             
@@ -1137,6 +1118,119 @@ suite('ConfigMancer tests', () => {
             unlinkSync(malformedJsonPath);
         }
     });
+
+    test('ImportJsonFile works in nested configuration objects', () => {
+        class AppConfig extends BaseConfigMancerType {
+            static configMancerSample = {
+                '@': 'AppConfig',
+                name: 'test-app',
+                settings: {}
+            };
+        }
+
+        const testSchemaManager = new SchemaManager({ classes: { AppConfig, ImportJsonFile } });
+        const testMancer = new ConfigMancer(testSchemaManager);
+        
+        // Create a temporary JSON file with settings data
+        const settingsData = {
+            theme: 'dark',
+            language: 'en',
+            features: {
+                notifications: true,
+                autoSave: false
+            }
+        };
+        const testFilePath = '/tmp/app-settings.json';
+        const configFilePath = '/tmp/test-nested-import-config.json';
+        writeFileSync(testFilePath, JSON.stringify(settingsData));
+        
+        try {
+            // Create a config with nested ImportJsonFile
+            const config = {
+                '@': 'AppConfig',
+                name: 'my-app',
+                settings: {
+                    '@': 'ImportJsonFile',
+                    fileName: testFilePath
+                }
+            };
+            
+            writeFileSync(configFilePath, JSON.stringify(config));
+            
+            const result = testMancer.reviveFile(configFilePath);
+            
+            // Verify the main config structure
+            assert.equal(result.name, 'my-app');
+            
+            // Verify the nested ImportJsonFile was resolved to the actual JSON content
+            assert.deepEqual(result.settings, settingsData);
+            assert.equal(result.settings.theme, 'dark');
+            assert.equal(result.settings.language, 'en');
+            assert.equal(result.settings.features.notifications, true);
+            assert.equal(result.settings.features.autoSave, false);
+            
+        } finally {
+            unlinkSync(testFilePath);
+            unlinkSync(configFilePath);
+        }
+    });
+
+    test('ImportJsonFile works with relative paths in nested config using reviveFile', () => {
+        class AppConfig extends BaseConfigMancerType {
+            static configMancerSample = {
+                '@': 'AppConfig',
+                name: 'test-app',
+                settings: {}
+            };
+        }
+
+        const testSchemaManager = new SchemaManager({ classes: { AppConfig, ImportJsonFile } });
+        const testMancer = new ConfigMancer(testSchemaManager);
+        
+        // Create a temporary JSON file with settings data
+        const settingsData = {
+            database: {
+                host: 'localhost',
+                port: 5432
+            },
+            cache: {
+                ttl: 300
+            }
+        };
+        const settingsFilePath = '/tmp/db-settings.json';
+        writeFileSync(settingsFilePath, JSON.stringify(settingsData));
+        
+        // Create the main config file that references the settings file relatively
+        const mainConfig = {
+            '@': 'AppConfig',
+            name: 'my-database-app',
+            settings: {
+                '@': 'ImportJsonFile',
+                fileName: 'db-settings.json'  // Relative path
+            }
+        };
+        
+        const configFilePath = '/tmp/app-config.json';
+        writeFileSync(configFilePath, JSON.stringify(mainConfig));
+        
+        try {
+            // Use reviveFile which should automatically resolve relative paths
+            const result = testMancer.reviveFile(configFilePath);
+            
+            // Verify the main config structure
+            assert.equal(result.name, 'my-database-app');
+            
+            // Verify the nested ImportJsonFile was resolved correctly
+            assert.deepEqual(result.settings, settingsData);
+            assert.equal(result.settings.database.host, 'localhost');
+            assert.equal(result.settings.database.port, 5432);
+            assert.equal(result.settings.cache.ttl, 300);
+            
+        } finally {
+            unlinkSync(settingsFilePath);
+            unlinkSync(configFilePath);
+        }
+    });
 });
 
 suite('ConfigMancer lazy loading tests', () => {
@@ -1154,7 +1248,6 @@ suite('ConfigMancer lazy loading tests', () => {
             
             export class TestConfig extends BaseConfigMancerType {
                 static configMancerSample = {
-                    '@': 'object',
                     name: 'test',
                     value: 42,
                     $optional: 'default'
@@ -1180,7 +1273,7 @@ suite('ConfigMancer lazy loading tests', () => {
             assert.ok(mancer.schemaManager.schema[schemaKey]);
             
             const schema = mancer.schemaManager.schema[schemaKey];
-            assert.equal(schema.superType, 'object');
+            assert.equal(schema.superType, schemaKey);
             assert.deepEqual(schema.params.name, ['string', true, false]);
             assert.deepEqual(schema.params.value, ['number', true, false]);
             assert.deepEqual(schema.params.optional, ['string', false, false]);
@@ -1219,7 +1312,6 @@ suite('ConfigMancer lazy loading tests', () => {
             
             export class DatabaseConfig extends BaseConfigMancerType {
                 static configMancerSample = {
-                    '@': 'object',
                     host: 'localhost',
                     port: 5432
                 };
@@ -1228,9 +1320,8 @@ suite('ConfigMancer lazy loading tests', () => {
             export const configs = {
                 ApiConfig: class extends BaseConfigMancerType {
                     static configMancerSample = {
-                        '@': 'object',
                         url: 'https://api.example.com',
-                        database: { '@': 'object' }
+                        database: {}
                     };
                 }
             };
@@ -1249,12 +1340,12 @@ suite('ConfigMancer lazy loading tests', () => {
             assert.ok(mancer.schemaManager.schema[`${tempFilePath}:configs.ApiConfig`]);
             
             const dbSchema = mancer.schemaManager.schema[`${tempFilePath}:DatabaseConfig`];
-            assert.equal(dbSchema.superType, 'object');
+            assert.equal(dbSchema.superType, `${tempFilePath}:DatabaseConfig`);
             assert.deepEqual(dbSchema.params.host, ['string', true, false]);
             assert.deepEqual(dbSchema.params.port, ['number', true, false]);
             
             const apiSchema = mancer.schemaManager.schema[`${tempFilePath}:configs.ApiConfig`];
-            assert.equal(apiSchema.superType, 'object');
+            assert.equal(apiSchema.superType, `${tempFilePath}:configs.ApiConfig`);
             assert.deepEqual(apiSchema.params.url, ['string', true, false]);
             assert.deepEqual(apiSchema.params.database, ['object', true, false]);
         } finally {
@@ -1272,7 +1363,6 @@ suite('ConfigMancer lazy loading tests', () => {
             
             export class TestConfig extends BaseConfigMancerType {
                 static configMancerSample = {
-                    '@': 'object',
                     name: 'test',
                     value: 42,
                     $optional: 'default'
@@ -1289,7 +1379,6 @@ suite('ConfigMancer lazy loading tests', () => {
             
             export class DatabaseConfig extends BaseConfigMancerType {
                 static configMancerSample = {
-                    '@': 'object',
                     host: 'localhost',
                     port: 5432
                 };
@@ -1298,9 +1387,8 @@ suite('ConfigMancer lazy loading tests', () => {
             export const configs = {
                 ApiConfig: class extends BaseConfigMancerType {
                     static configMancerSample = {
-                        '@': 'object',
                         url: 'https://api.example.com',
-                        database: { '@': 'object' }
+                        database: {}
                     };
                 }
             };
@@ -1321,18 +1409,18 @@ suite('ConfigMancer lazy loading tests', () => {
             assert.ok(mancer.schemaManager.schema[`${tempFilePath2}:configs.ApiConfig`]);
             
             const testSchema = mancer.schemaManager.schema[`${tempFilePath1}:TestConfig`];
-            assert.equal(testSchema.superType, 'object');
+            assert.equal(testSchema.superType, `${tempFilePath1}:TestConfig`);
             assert.deepEqual(testSchema.params.name, ['string', true, false]);
             assert.deepEqual(testSchema.params.value, ['number', true, false]);
             assert.deepEqual(testSchema.params.optional, ['string', false, false]);
             
             const dbSchema = mancer.schemaManager.schema[`${tempFilePath2}:DatabaseConfig`];
-            assert.equal(dbSchema.superType, 'object');
+            assert.equal(dbSchema.superType, `${tempFilePath2}:DatabaseConfig`);
             assert.deepEqual(dbSchema.params.host, ['string', true, false]);
             assert.deepEqual(dbSchema.params.port, ['number', true, false]);
             
             const apiSchema = mancer.schemaManager.schema[`${tempFilePath2}:configs.ApiConfig`];
-            assert.equal(apiSchema.superType, 'object');
+            assert.equal(apiSchema.superType, `${tempFilePath2}:configs.ApiConfig`);
             assert.deepEqual(apiSchema.params.url, ['string', true, false]);
             assert.deepEqual(apiSchema.params.database, ['object', true, false]);
         } finally {

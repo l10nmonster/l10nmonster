@@ -8,7 +8,9 @@ export class ImportTextFile {
     }
 
     static configMancerFactory(obj) {
-        const pathName = obj['@baseDir'] ? path.join(obj['@baseDir'], obj.fileName) : obj.fileName;
+        const pathName = (obj['@baseDir'] && !path.isAbsolute(obj.fileName)) ?
+            path.join(obj['@baseDir'], obj.fileName) :
+            obj.fileName;
         const text = readFileSync(pathName, 'utf8');
         return text;
     }
@@ -21,7 +23,9 @@ export class ImportJsonFile {
     }
 
     static configMancerFactory(obj) {
-        const pathName = obj['@baseDir'] ? path.join(obj['@baseDir'], obj.fileName) : obj.fileName;
+        const pathName = (obj['@baseDir'] && !path.isAbsolute(obj.fileName)) ?
+            path.join(obj['@baseDir'], obj.fileName) :
+            obj.fileName;
         const json = JSON.parse(readFileSync(pathName, 'utf8'));
         return json;
     }

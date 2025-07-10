@@ -119,6 +119,10 @@ export class ReviverMaker {
     }
     
     #isPrimitiveValue(value, propType, isRootObject, withinArray) {
+        // If the value has an @ property, it's a typed object that needs processing, not a primitive
+        if (typeof value === 'object' && value !== null && value['@']) {
+            return false;
+        }
         return typeof value === propType && !isRootObject && !withinArray && !Array.isArray(value);
     }
     
