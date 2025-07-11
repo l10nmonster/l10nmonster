@@ -31,38 +31,37 @@ CREATE TABLE IF NOT EXISTS jobs(
             columns: ['blockId', 'modified', 'jobGuid', 'updatedAt'],
             rows,
         });
+    }
 
-        this.getAvailableLangPairs = () => this.#stmt.getAvailableLangPairs.all()
+    getAvailableLangPairs() {
+        this.#stmt.getAvailableLangPairs ??= this.#db.prepare(/* sql */ 'SELECT DISTINCT sourceLang, targetLang FROM jobs ORDER BY 1, 2;');
+        return this.#stmt.getAvailableLangPairs.all()
             .map(({ sourceLang, targetLang }) => [ sourceLang, targetLang ]);
-        this.#stmt.getAvailableLangPairs = db.prepare(/* sql */ 'SELECT DISTINCT sourceLang, targetLang FROM jobs ORDER BY 1, 2;');
+    }
 
-        this.getJobTOCByLangPair = (sourceLang, targetLang) => this.#stmt.getJobTOCByLangPair.all(sourceLang, targetLang);
-        this.#stmt.getJobTOCByLangPair = db.prepare(/* sql */ 'SELECT jobGuid, status, translationProvider, updatedAt FROM jobs WHERE sourceLang = ? AND targetLang = ? ORDER BY updatedAt DESC;');
+    getJobTOCByLangPair(sourceLang, targetLang) {
+        this.#stmt.getJobTOCByLangPair ??= this.#db.prepare(/* sql */ 'SELECT jobGuid, status, translationProvider, updatedAt FROM jobs WHERE sourceLang = ? AND targetLang = ? ORDER BY updatedAt DESC;');
+        return this.#stmt.getJobTOCByLangPair.all(sourceLang, targetLang);
+    }
 
-        // this.getJobStatus = (jobGuid) => {
-        //     const jobMeta = this.#stmt.getJobMeta.get(jobGuid);
-        //     return [jobMeta?.status, jobMeta?.updatedAt];
-        // };
-        // this.#stmt.getJobMeta = db.prepare(/* sql */ 'SELECT status, updatedAt FROM jobs WHERE jobGuid = ?');
+    // getJobStatus(jobGuid) {
+    //     this.#stmt.getJobMeta ??= this.#db.prepare(/* sql */ 'SELECT status, updatedAt FROM jobs WHERE jobGuid = ?');
+    //     const jobMeta = this.#stmt.getJobMeta.get(jobGuid);
+    //     return [jobMeta?.status, jobMeta?.updatedAt];
+    // }
 
-        /**
-         * Sets or updates a job in the database.
-         * @param {Object} job - The job object to set or update.
-         * @param {string} job.sourceLang - The source language of the job.
-         * @param {string} job.targetLang - The target language of the job.
-         * @param {string} job.jobGuid - The unique identifier for the job.
-         * @param {string} job.status - The status of the job.
-         * @param {string} job.updatedAt - The timestamp when the job was last updated.
-         * @param {string} job.translationProvider - The translation provider associated with the job.
-         */
-        this.setJob = (completeJobProps) => {
-            const { jobGuid, sourceLang, targetLang, status, updatedAt, translationProvider, ...jobProps } = completeJobProps;
-            const result = this.#stmt.setJob.run({ jobGuid, sourceLang, targetLang, status, updatedAt, translationProvider, jobProps: JSON.stringify(jobProps) });
-            if (result.changes !== 1) {
-                throw new Error(`Expecting to change a row but changed ${result}`);
-            }
-        };
-        this.#stmt.setJob = db.prepare(/* sql */ `
+    /**
+     * Sets or updates a job in the database.
+     * @param {Object} job - The job object to set or update.
+     * @param {string} job.sourceLang - The source language of the job.
+     * @param {string} job.targetLang - The target language of the job.
+     * @param {string} job.jobGuid - The unique identifier for the job.
+     * @param {string} job.status - The status of the job.
+     * @param {string} job.updatedAt - The timestamp when the job was last updated.
+     * @param {string} job.translationProvider - The translation provider associated with the job.
+     */
+    setJob(completeJobProps) {
+        this.#stmt.setJob ??= this.#db.prepare(/* sql */ `
 INSERT INTO jobs (sourceLang, targetLang, jobGuid, status, updatedAt, translationProvider, jobProps)
     VALUES (@sourceLang, @targetLang, @jobGuid, @status, @updatedAt, @translationProvider, @jobProps)
 ON CONFLICT (jobGuid) DO UPDATE SET
@@ -73,21 +72,30 @@ ON CONFLICT (jobGuid) DO UPDATE SET
     translationProvider = excluded.translationProvider,
     jobProps = excluded.jobProps
 WHERE excluded.jobGuid = jobs.jobGuid`);
+        const { jobGuid, sourceLang, targetLang, status, updatedAt, translationProvider, ...jobProps } = completeJobProps;
+        const result = this.#stmt.setJob.run({ jobGuid, sourceLang, targetLang, status, updatedAt, translationProvider, jobProps: JSON.stringify(jobProps) });
+        if (result.changes !== 1) {
+            throw new Error(`Expecting to change a row but changed ${result}`);
+        }
+    }
 
-        this.getJob = (jobGuid) => {
-            const jobRow = this.#stmt.getJob.get(jobGuid);
-            if (jobRow) {
-                const { jobProps, ...basicProps } = jobRow;
-                return { ...basicProps, ...JSON.parse(jobProps) };
-            }
-        };
-        this.#stmt.getJob = db.prepare(/* sql */ 'SELECT * FROM jobs WHERE jobGuid = ?;');
+    getJob(jobGuid) {
+        this.#stmt.getJob ??= this.#db.prepare(/* sql */ 'SELECT * FROM jobs WHERE jobGuid = ?;');
+        const jobRow = this.#stmt.getJob.get(jobGuid);
+        if (jobRow) {
+            const { jobProps, ...basicProps } = jobRow;
+            return { ...basicProps, ...JSON.parse(jobProps) };
+        }
+    }
 
-        this.getJobCount = () => this.#stmt.getJobCount.get();
-        this.#stmt.getJobCount = db.prepare(/* sql */ 'SELECT count(*) FROM jobs;').pluck();
+    getJobCount() {
+        this.#stmt.getJobCount ??= this.#db.prepare(/* sql */ 'SELECT count(*) FROM jobs;').pluck();
+        return this.#stmt.getJobCount.get();
+    }
 
-        this.deleteJob = (jobGuid) => this.#stmt.deleteJob.run(jobGuid);
-        this.#stmt.deleteJob = db.prepare(/* sql */ 'DELETE FROM jobs WHERE jobGuid = ?');
+    deleteJob(jobGuid) {
+        this.#stmt.deleteJob ??= this.#db.prepare(/* sql */ 'DELETE FROM jobs WHERE jobGuid = ?');
+        return this.#stmt.deleteJob.run(jobGuid);
     }
 
     getJobDeltas(sourceLang, targetLang, toc) {
