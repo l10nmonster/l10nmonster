@@ -10,14 +10,18 @@ describe('L10n Monster CLI', () => {
     test('should handle invalid configuration gracefully', async () => {
         const mockConfig = {
             actions: [],
-            run: async (opts, cb) => {
+            verbose: () => mockConfig,  // Return this for chaining
+            regression: () => mockConfig,  // Return this for chaining
+            run: async () => {
                 throw new Error('Test error');
             }
         };
 
         let errorThrown = false;
         const originalExit = process.exit;
-        process.exit = () => { errorThrown = true; };
+        process.exit = (() => { 
+            errorThrown = true; 
+        });
 
         try {
             await runMonsterCLI(mockConfig, ['node', 'l10n', '--help']);
@@ -39,13 +43,21 @@ describe('L10n Monster CLI', () => {
                     description: 'Test command'
                 }
             }],
-            run: async (opts, cb) => {
-                capturedOpts = opts;
-                await cb({
-                    test: async (options) => {
-                        // Mock action
+            verbose: () => mockConfig,  // Return this for chaining
+            regression: () => mockConfig,  // Return this for chaining
+            run: async (cb) => {
+                capturedOpts = { verbose: 2 }; // Mock the captured options
+                // The CLI expects the callback to receive mm where mm.l10n is the actions object
+                const mockMM = {
+                    l10n: {
+                        test: async () => {
+                            // Mock action that does nothing
+                        }
                     }
-                });
+                };
+                // The callback that l10nRunner passes is: async mm => await cb(mm.l10n)
+                // So we need to call it with the whole mm object, not just mm.l10n
+                await cb(mockMM);
             }
         };
 
