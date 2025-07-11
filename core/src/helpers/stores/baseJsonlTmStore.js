@@ -33,7 +33,7 @@ export class BaseJsonlTmStore {
      */
     constructor(delegate, { id, partitioning, access, compressBlocks }) {
         if (!delegate || !id) {
-            throw new Error('A delegate and a id are required to instantiate a LegacyFileBasedTmStore');
+            throw new Error(`A delegate and a id are required to instantiate a BaseJsonlTmStore`);
         }
         this.delegate = delegate;
         this.id = id;
@@ -124,7 +124,7 @@ export class BaseJsonlTmStore {
                     ntgt && (otherProps.ntgt = JSON.parse(ntgt));
                     notes && (otherProps.notes = JSON.parse(notes));
                     const expandedTuProps = tuProps ? JSON.parse(tuProps) : {};
-                    currentJob.tus.push({ ...otherProps, ...expandedTuProps, jobGuid: currentJob.jobProps.jobGuid.jobGuid });
+                    currentJob.tus.push({ ...otherProps, ...expandedTuProps, jobGuid: currentJob.jobProps.jobGuid });
                 }
                 yield currentJob;
                 rl.close();

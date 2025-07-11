@@ -37,7 +37,7 @@ export class FormatHandler {
 
     constructor({ id, resourceFilter, normalizers, defaultMessageFormat, segmentDecorators, formatHandlers }) {
         if (!resourceFilter) {
-            throw `Missing resource filter for format ${this.#id}`;
+            throw new Error(`Missing resource filter for format ${this.#id}`);
         }
         this.#id = id;
         this.#resourceFilter = resourceFilter;
@@ -51,7 +51,7 @@ export class FormatHandler {
         base.mf = mf;
         const normalizer = this.#normalizers[base.mf];
         if (!normalizer) {
-            throw `Unknown message format ${mf} in format ${this.#id}`;
+            throw new Error(`Unknown message format ${mf} in format ${this.#id}`);
         }
         base.nstr = normalizer.decode(str, flags);
         const firedFlags = Object.entries(flags).filter(f => f[1]).map(f => f[0]);
@@ -73,22 +73,22 @@ export class FormatHandler {
                         if (ph) {
                             return ph;
                         } else {
-                            throw `unknown placeholder found: ${JSON.stringify(part)}`;
+                            throw new Error(`unknown placeholder found: ${JSON.stringify(part)}`);
                         }
                     }
                 });
             } else {
-                throw `source and target are incompatible\n${JSON.stringify(nsrc)}\n${JSON.stringify(entry.ntgt)}`;
+                throw new Error(`source and target are incompatible\n${JSON.stringify(nsrc)}\n${JSON.stringify(entry.ntgt)}`);
             }
         } else {
-            throw `TM entry missing or in flight`;
+            throw new Error(`TM entry missing or in flight`);
         }
     }
 
     #encodeTranslatedSegment(ntgt, mf, flags) {
         const normalizer = this.#normalizers[mf];
         if (!normalizer) {
-            throw `Unknown message format ${mf} in format ${this.#id}`;
+            throw new Error(`Unknown message format ${mf} in format ${this.#id}`);
         }
         const encodedParts = ntgt.map((part, idx) => normalizer.encodePart(part, {
             ...flags,
@@ -152,7 +152,7 @@ export class FormatHandler {
                 for (const subres of resHandle.subresources) {
                     const subFormat = this.#formatHandlers[subres.resourceFormat];
                     if (!subFormat) {
-                        throw `Unknown resource format ${subres.resourceFormat} for subresource of ${this.#id}`;
+                        throw new Error(`Unknown resource format ${subres.resourceFormat} for subresource of ${this.#id}`);
                     }
                     const { id, guids, ...subresHandle } = subres;
                     guidsToSkip.push(guids);

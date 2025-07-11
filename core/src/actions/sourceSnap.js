@@ -13,7 +13,7 @@ export class source_snap {
         consoleLog`Taking a snapshot of sources... (channel: ${options.channel ?? 'all'}, since: ${options.since ?? 'all'})`;
         const stats = await monsterManager.rm.snap({ channelId: options.channel, since: options.since });
         for (const [ prj, { resources, segments, changes } ] of Object.entries(stats)) {
-            consoleLog`  ‣ ${prj}: ${resources.toLocaleString()} ${[resources, 'resource', 'resources']}, ${segments.toLocaleString()} ${[segments, 'segment', 'segments']} snapped, ${changes.toLocaleString()} ${[segments, 'segment', 'segments']} updated`;
+            consoleLog`  ‣ ${prj}: ${resources.toLocaleString()} ${[resources, 'resource', 'resources']}, ${segments.toLocaleString()} ${[segments, 'segment', 'segments']} snapped, ${changes.toLocaleString()} ${[changes, 'segment', 'segments']} updated`;
         }
     }
 }

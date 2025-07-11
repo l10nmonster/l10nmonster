@@ -10,7 +10,7 @@ export class ops_delete {
 
     static async action(monsterManager, options) {
         const jobGuidList = options.jobGuid.split(',');
-        jobGuidList.forEach(async jobGuid => {
+        for (const jobGuid of jobGuidList) {
             try {
                 consoleLog`Deleting job ${jobGuid}...`;
                 await monsterManager.tmm.deleteJob(jobGuid);
@@ -18,6 +18,6 @@ export class ops_delete {
                 e.message && (e.message = `Failed to delete job: ${e.message}`);
                 throw e;
             }
-        });
+        }
     }
 }

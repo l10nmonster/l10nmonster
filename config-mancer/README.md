@@ -42,7 +42,9 @@ console.log(config.myMethod()); // "Hello World"
 
 The main class for schema validation and object construction.
 
-#### Creating ConfigMancer
+#### Creating ConfigMancer with Local Classes
+
+For simple cases with local classes, you can use the `ConfigMancer.create()` method:
 
 ```javascript
 import { ConfigMancer, BaseConfigMancerType } from '@l10nmonster/configMancer';
@@ -66,7 +68,7 @@ class ApiConfig extends BaseConfigMancerType {
 }
 
 // Create with local classes
-const mancer = new ConfigMancer({
+const mancer = await ConfigMancer.create({
     classes: {
         DatabaseConfig,
         ApiConfig
@@ -105,7 +107,7 @@ const mancer = await ConfigMancer.create({
 });
 ```
 
-> **Note**: When using packages, `create()` is asynchronous and returns a Promise. For classes-only configurations, you can use the synchronous constructor.
+> **Note**: The `create()` method is asynchronous and returns a Promise, even when using classes-only configurations.
 
 #### Constants Support
 
@@ -118,7 +120,7 @@ const API_ENDPOINTS = {
 };
 API_ENDPOINTS.configMancerSample = true;
 
-const mancer = new ConfigMancer({
+const mancer = await ConfigMancer.create({
     classes: { ApiEndpoints: API_ENDPOINTS }
 });
 
@@ -131,16 +133,19 @@ const mancer = new ConfigMancer({
 
 #### Schema Definition
 
-Schema parameters are defined as `[type, isMandatory, isArray]`:
-- **type**: Expected data type or schema type name
-- **isMandatory**: Whether the parameter is required (default: true, false if prefixed with `$`)
-- **isArray**: Whether the parameter should be an array
+Schema parameters are defined using object notation in the `configMancerSample` property:
+- **Properties prefixed with `$`** are optional (e.g., `$timeout`)
+- **Properties without `$` prefix** are required (e.g., `host`, `port`)
+- **Arrays** are indicated by using array notation with type examples (e.g., `[{ '@': 'database' }]`)
+- **Nested objects** are indicated by using object notation with type references (e.g., `{ '@': 'otherType' }`)
+
+Internally, ConfigMancer converts these to schema entries with the format `[type, isMandatory, isArray]`.
 
 #### Validation-Only Mode
 
 ```javascript
 // Enable validation-only mode
-const mancer = new ConfigMancer({ classes: { DatabaseConfig } });
+const mancer = await ConfigMancer.create({ classes: { DatabaseConfig } });
 mancer.validationOnly = true;
 
 // Validate configuration without constructing objects
@@ -218,20 +223,20 @@ Generated schemas can be used with:
 
 ## API Reference
 
-### `new ConfigMancer(options)`
+### `new ConfigMancer(schemaManager)`
 
-Creates a ConfigMancer instance.
+Creates a ConfigMancer instance with a pre-configured SchemaManager.
 
 **Parameters:**
-- `options.classes`: Object mapping type names to configuration classes
-- `options.baseUrl`: URL for module resolution (usually `import.meta.url`)
-- `options.packages`: Array of package names to search for types
+- `schemaManager`: A SchemaManager instance containing type definitions
 
 **Returns:** ConfigMancer instance
 
+**Note:** This is a low-level constructor. Most users should use `ConfigMancer.create()` instead.
+
 ### `ConfigMancer.create(options)`
 
-Creates a ConfigMancer instance with automatic package loading.
+Creates a ConfigMancer instance with automatic schema manager creation and package loading.
 
 **Parameters:**
 - `options.baseUrl`: URL for module resolution (usually `import.meta.url`)
@@ -316,7 +321,7 @@ Generates comprehensive markdown documentation for the entire schema.
 
 **Example:**
 ```javascript
-const mancer = new ConfigMancer({
+const mancer = await ConfigMancer.create({
     classes: { DatabaseConfig, ApiConfig }
 });
 
@@ -409,8 +414,6 @@ ConfigMancer includes built-in helper classes for common configuration patterns.
 Imports text content from a file. Useful for loading templates, schemas, or other text-based resources.
 
 ```javascript
-import { ImportTextFile } from '@l10nmonster/configMancer';
-
 // In configuration JSON:
 {
     "@": "ImportTextFile",
@@ -425,8 +428,6 @@ import { ImportTextFile } from '@l10nmonster/configMancer';
 Imports and parses JSON content from a file. Useful for loading external JSON configurations or data files.
 
 ```javascript
-import { ImportJsonFile } from '@l10nmonster/configMancer';
-
 // In configuration JSON:
 {
     "@": "ImportJsonFile", 
@@ -495,10 +496,17 @@ The file import helpers provide clear error messages for common issues:
     }
 }
 
+// database.json
+{
+    "host": "localhost",
+    "port": 5432,
+    "ssl": true
+}
+
 // Usage
 const config = mancer.reviveFile('./app-config.json');
 console.log(config.name);          // "My Application"
-console.log(config.database.host); // From database.json
+console.log(config.database.host); // "localhost"
 console.log(config.apiSchema);     // GraphQL schema as string
 ```
 
@@ -588,7 +596,7 @@ class ApiConfig extends BaseConfigMancerType {
 }
 
 // Create ConfigMancer
-const mancer = new ConfigMancer({
+const mancer = await ConfigMancer.create({
     classes: {
         DatabaseConfig,
         ApiConfig
@@ -619,7 +627,7 @@ const mancer = new ConfigMancer({ classes: { MyConfig } }, true); // validation 
 
 **After:**
 ```javascript
-const mancer = new ConfigMancer({ classes: { MyConfig } });
+const mancer = await ConfigMancer.create({ classes: { MyConfig } });
 mancer.validationOnly = true; // set property directly
 ```
 

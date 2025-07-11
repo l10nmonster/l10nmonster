@@ -275,7 +275,7 @@ ORDER BY channel, rid;
 
     searchString(str) {
         this.#stmt.createFlatSrcIdx ??= this.#db.prepare(/* sql */`CREATE INDEX IF NOT EXISTS idx_segments_flatSrc ON segments (flattenNormalizedSourceToOrdinal(nstr));`);
-        this.#stmt.searchString ??= this.#db.prepare(/* sql */`SELECT guid, nstr FROM segments WHERE flattenNormalizedSourceToOrdinal(nstr) like '%?%';`);
+        this.#stmt.searchString ??= this.#db.prepare(/* sql */`SELECT guid, nstr FROM segments WHERE flattenNormalizedSourceToOrdinal(nstr) like ?;`);
         // try to delay creating the index until it is actually needed
         if (!this.#flatSrcIdxInitialized) {
             logVerbose`Creating FlatSrcIdx for source segments...`;
@@ -283,7 +283,7 @@ ORDER BY channel, rid;
             this.#flatSrcIdxInitialized = true;
         }
         const flattenedString = utils.flattenNormalizedSourceToOrdinal(str);
-        const tuRows = this.#stmt.searchString.all(flattenedString);
+        const tuRows = this.#stmt.searchString.all(`%${flattenedString}%`);
         return tuRows.map(sqlTransformer.decode);
     }
 

@@ -47,7 +47,7 @@ export class InvisicodeProvider extends BaseTranslationProvider {
      */
     constructor({ baseLang, fallback, includeQ, ...options }) {
         if (options.quality === undefined) {
-            throw 'You must specify quality for InvisicodeProvider';
+            throw new Error('You must specify quality for InvisicodeProvider');
         }
         super(options);
         this.#baseLang = baseLang;

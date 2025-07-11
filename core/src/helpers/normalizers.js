@@ -58,7 +58,7 @@ export function keywordTranslatorMaker(name, keywordToTranslationMap) {
         );
         return [ decoder, encoder ];
     } else {
-        throw 'You have to specify a keyword map to keywordTranslatorMaker';
+        throw new Error('You have to specify a keyword map to keywordTranslatorMaker');
     }
 }
 

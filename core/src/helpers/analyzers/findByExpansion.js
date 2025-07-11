@@ -22,7 +22,7 @@ export default class FindByExpansion {
                 }));
             }
         } else {
-            throw `invalid parameters ${this.average} ${this.minDelta}`;
+            throw new Error(`invalid parameters ${this.average} ${this.minDelta}`);
         }
     }
 

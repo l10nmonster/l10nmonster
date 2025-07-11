@@ -5,6 +5,19 @@ import { ConfigMancer, BaseConfigMancerType } from '../index.js';
 import { SchemaManager } from '../SchemaManager.js';
 import { ImportTextFile, ImportJsonFile } from '../helpers.js';
 
+// Helper function to generate unique temporary filenames
+const generateTempFilename = (suffix = '') => {
+    const timestamp = Date.now();
+    const random = Math.random().toString(36).substring(2, 8);
+    return `/tmp/test-${timestamp}-${random}${suffix ? `-${suffix}` : ''}.json`;
+};
+
+const generateTempFilenameWithExt = (extension, suffix = '') => {
+    const timestamp = Date.now();
+    const random = Math.random().toString(36).substring(2, 8);
+    return `/tmp/test-${timestamp}-${random}${suffix ? `-${suffix}` : ''}.${extension}`;
+};
+
 // Test configuration classes
 class DatabaseConfig extends BaseConfigMancerType {
     static configMancerSample = {
@@ -82,7 +95,7 @@ suite('ConfigMancer tests', () => {
             ssl: true
         };
 
-        const testFilePath = '/tmp/test-config.json';
+        const testFilePath = generateTempFilename('config');
         writeFileSync(testFilePath, JSON.stringify(validConfig));
 
         try {
@@ -103,7 +116,7 @@ suite('ConfigMancer tests', () => {
             ssl: true
         };
 
-        const testFilePath = '/tmp/test-config-typed.json';
+        const testFilePath = generateTempFilename('config-typed');
         writeFileSync(testFilePath, JSON.stringify(validConfig));
 
         try {
@@ -132,7 +145,7 @@ suite('ConfigMancer tests', () => {
             ]
         };
 
-        const testFilePath = '/tmp/test-nested-config.json';
+        const testFilePath = generateTempFilename('nested-config');
         writeFileSync(testFilePath, JSON.stringify(config));
 
         try {
@@ -154,7 +167,7 @@ suite('ConfigMancer tests', () => {
             // Missing port and ssl
         };
 
-        const testFilePath = '/tmp/test-config-missing.json';
+        const testFilePath = generateTempFilename('config-missing');
         writeFileSync(testFilePath, JSON.stringify(invalidConfig));
 
         try {
@@ -174,7 +187,7 @@ suite('ConfigMancer tests', () => {
             ssl: true
         };
 
-        const testFilePath = '/tmp/test-config-type.json';
+        const testFilePath = generateTempFilename('config-type');
         writeFileSync(testFilePath, JSON.stringify(invalidConfig));
 
         try {
@@ -195,7 +208,7 @@ suite('ConfigMancer tests', () => {
             unknownProperty: 'not allowed'
         };
 
-        const testFilePath = '/tmp/test-config-unknown.json';
+        const testFilePath = generateTempFilename('config-unknown');
         writeFileSync(testFilePath, JSON.stringify(invalidConfig));
 
         try {
@@ -264,7 +277,7 @@ suite('ConfigMancer tests', () => {
             value: 100
         };
 
-        const testFilePath = '/tmp/test-custom-config.json';
+        const testFilePath = generateTempFilename('custom-config');
         writeFileSync(testFilePath, JSON.stringify(config));
 
         try {
@@ -521,7 +534,7 @@ suite('ConfigMancer tests', () => {
         // Serialize it
         const serialized = testMancer.serialize(originalConfig);
 
-        const testFilePath = '/tmp/test-serialize-revive.json';
+        const testFilePath = generateTempFilename('serialize-revive');
         writeFileSync(testFilePath, JSON.stringify(serialized));
 
         try {
@@ -647,7 +660,7 @@ suite('ConfigMancer tests', () => {
             value: 100
         });
 
-        const filePath = '/tmp/test-serialize-output.json';
+        const filePath = generateTempFilename('serialize-output');
         
         try {
             testMancer.serializeToPathName(config, filePath);
@@ -693,7 +706,7 @@ suite('ConfigMancer tests', () => {
             '@': 'ApiConfig'
         };
         
-        const testFilePath = '/tmp/test-constant-config.json';
+        const testFilePath = generateTempFilename('constant-config');
         writeFileSync(testFilePath, JSON.stringify(config));
         
         try {
@@ -729,7 +742,7 @@ suite('ConfigMancer tests', () => {
             headers: [{ '@': 'DefaultHeaders' }]
         };
         
-        const testFilePath = '/tmp/test-constant-array.json';
+        const testFilePath = generateTempFilename('constant-array');
         writeFileSync(testFilePath, JSON.stringify(config));
         
         try {
@@ -762,7 +775,7 @@ suite('ConfigMancer tests', () => {
             ssl: true
         };
         
-        const testFilePath = '/tmp/test-validation-only.json';
+        const testFilePath = generateTempFilename('validation-only');
         writeFileSync(testFilePath, JSON.stringify(config));
         
         try {
@@ -933,7 +946,7 @@ suite('ConfigMancer tests', () => {
         
         // Create a temporary text file
         const testContent = 'Hello, World!\nThis is a test file.';
-        const testFilePath = '/tmp/test-text-file.txt';
+        const testFilePath = generateTempFilenameWithExt('txt', 'text-file');
         writeFileSync(testFilePath, testContent);
         
         try {
@@ -951,7 +964,7 @@ suite('ConfigMancer tests', () => {
             
             // Test with @baseDir
             const baseDir = '/tmp';
-            const fileName = 'test-text-file.txt';
+            const fileName = testFilePath.split('/').pop();
             
             const config2 = {
                 '@': 'ImportTextFile',
@@ -982,7 +995,7 @@ suite('ConfigMancer tests', () => {
                 timeout: 5000
             }
         };
-        const testFilePath = '/tmp/test-json-file.json';
+        const testFilePath = generateTempFilename('json-file');
         writeFileSync(testFilePath, JSON.stringify(testData, null, 2));
         
         try {
@@ -1000,7 +1013,7 @@ suite('ConfigMancer tests', () => {
             
             // Test with @baseDir
             const baseDir = '/tmp';
-            const fileName = 'test-json-file.json';
+            const fileName = testFilePath.split('/').pop();
             
             const config2 = {
                 '@': 'ImportJsonFile',
@@ -1024,29 +1037,29 @@ suite('ConfigMancer tests', () => {
         
         // Create test files
         const textContent = 'Sample text content';
-        const textFilePath = '/tmp/sample.txt';
+        const textFilePath = generateTempFilenameWithExt('txt', 'sample');
         writeFileSync(textFilePath, textContent);
         
         const jsonData = { key: 'value', number: 42 };
-        const jsonFilePath = '/tmp/sample.json';
+        const jsonFilePath = generateTempFilename('sample');
         writeFileSync(jsonFilePath, JSON.stringify(jsonData));
         
         // Test ImportTextFile with reviveFile
         const textConfigData = {
             '@': 'ImportTextFile',
-            fileName: 'sample.txt'
+            fileName: textFilePath.split('/').pop()
         };
         
-        const textConfigFilePath = '/tmp/test-text-import.json';
+        const textConfigFilePath = generateTempFilename('text-import');
         writeFileSync(textConfigFilePath, JSON.stringify(textConfigData, null, 2));
         
         // Test ImportJsonFile with reviveFile  
         const jsonConfigData = {
             '@': 'ImportJsonFile',
-            fileName: 'sample.json'
+            fileName: jsonFilePath.split('/').pop()
         };
         
-        const jsonConfigFilePath = '/tmp/test-json-import.json';
+        const jsonConfigFilePath = generateTempFilename('json-import');
         writeFileSync(jsonConfigFilePath, JSON.stringify(jsonConfigData, null, 2));
         
         try {
@@ -1072,7 +1085,7 @@ suite('ConfigMancer tests', () => {
         // Test with non-existent text file
         const textConfig = {
             '@': 'ImportTextFile',
-            fileName: '/tmp/non-existent-file.txt'
+            fileName: generateTempFilenameWithExt('txt', 'non-existent')
         };
         
         const textReviver = testMancer.createReviver();
@@ -1084,7 +1097,7 @@ suite('ConfigMancer tests', () => {
         // Test with non-existent JSON file
         const jsonConfig = {
             '@': 'ImportJsonFile',
-            fileName: '/tmp/non-existent-file.json'
+            fileName: generateTempFilename('non-existent')
         };
         
         const jsonReviver = testMancer.createReviver();
@@ -1099,7 +1112,7 @@ suite('ConfigMancer tests', () => {
         const testMancer = new ConfigMancer(testSchemaManager);
         
         // Create a file with malformed JSON
-        const malformedJsonPath = '/tmp/malformed.json';
+        const malformedJsonPath = generateTempFilename('malformed');
         writeFileSync(malformedJsonPath, '{ invalid json }');
         
         try {
@@ -1140,8 +1153,8 @@ suite('ConfigMancer tests', () => {
                 autoSave: false
             }
         };
-        const testFilePath = '/tmp/app-settings.json';
-        const configFilePath = '/tmp/test-nested-import-config.json';
+        const testFilePath = generateTempFilename('app-settings');
+        const configFilePath = generateTempFilename('nested-import-config');
         writeFileSync(testFilePath, JSON.stringify(settingsData));
         
         try {
@@ -1197,7 +1210,7 @@ suite('ConfigMancer tests', () => {
                 ttl: 300
             }
         };
-        const settingsFilePath = '/tmp/db-settings.json';
+        const settingsFilePath = generateTempFilename('db-settings');
         writeFileSync(settingsFilePath, JSON.stringify(settingsData));
         
         // Create the main config file that references the settings file relatively
@@ -1206,11 +1219,11 @@ suite('ConfigMancer tests', () => {
             name: 'my-database-app',
             settings: {
                 '@': 'ImportJsonFile',
-                fileName: 'db-settings.json'  // Relative path
+                fileName: settingsFilePath.split('/').pop()  // Relative path
             }
         };
         
-        const configFilePath = '/tmp/app-config.json';
+        const configFilePath = generateTempFilename('app-config');
         writeFileSync(configFilePath, JSON.stringify(mainConfig));
         
         try {
@@ -1237,7 +1250,7 @@ suite('ConfigMancer lazy loading tests', () => {
     // Helper function to create a temporary test module
     let moduleCounter = 0;
     const createTestModule = (content) => {
-        const tempFilePath = `/tmp/test-module-${Date.now()}-${++moduleCounter}.mjs`;
+        const tempFilePath = generateTempFilenameWithExt('mjs', `module-${Date.now()}-${++moduleCounter}`);
         writeFileSync(tempFilePath, content);
         return tempFilePath;
     };
@@ -1285,7 +1298,7 @@ suite('ConfigMancer lazy loading tests', () => {
                 value: 100
             };
             
-            const testFilePath = '/tmp/test-packages-config.json';
+            const testFilePath = generateTempFilename('packages-config');
             writeFileSync(testFilePath, JSON.stringify(config));
             
             try {
@@ -1475,7 +1488,7 @@ suite('ConfigMancer lazy loading tests', () => {
                 '@': apiConfigKey
             };
             
-            const testFilePath = '/tmp/test-packages-constant.json';
+            const testFilePath = generateTempFilename('packages-constant');
             writeFileSync(testFilePath, JSON.stringify(config));
             
             try {

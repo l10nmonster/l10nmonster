@@ -4,7 +4,7 @@ import { utils } from '../helpers/index.js';
 export async function analyzeCmd(mm, analyzer, params, limitToLang) {
     const Analyzer = mm.analyzers[utils.fixCaseInsensitiveKey(mm.analyzers, analyzer)];
     if (!Analyzer) {
-        throw `couldn't find a ${analyzer} analyzer`;
+        throw new Error(`couldn't find a ${analyzer} analyzer`);
     }
     if (typeof Analyzer.prototype.processSegment === 'function') { // this analyzer needs a source driver
         const analyzer = new Analyzer(...params);
@@ -34,6 +34,6 @@ export async function analyzeCmd(mm, analyzer, params, limitToLang) {
         }
         return hasAggregateAnalysis ? analyzer.getAggregateAnalysis() : { ...lastAnalysis, body: bodies.flat(1) };
     } else {
-        throw `could not find processSegment or processTU function in analyzer`;
+        throw new Error(`could not find processSegment or processTU function in analyzer`);
     }
 }

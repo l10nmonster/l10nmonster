@@ -14,7 +14,7 @@ export function registerOp(func, options = {}) {
     options.opName ??= func.name;
     if (registry[options.opName]) {
         if (registry[options.opName].callback !== func) {
-            throw `Op ${options.opName} already exists in registry`;
+            throw new Error(`Op ${options.opName} already exists in registry`);
         }
         // if multiple instances of the same class try to register ops, ignore them
     } else {

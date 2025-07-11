@@ -7,7 +7,7 @@ import { getBaseDir, getRegressionMode } from '@l10nmonster/core';
 export class XliffBridge {
     constructor({ requestPath, completePath, quality }) {
         if ((requestPath && completePath && quality) === undefined) {
-            throw 'You must specify requestPath, completePath, quality for XliffBridge';
+            throw new Error('You must specify requestPath, completePath, quality for XliffBridge');
         } else {
             this.requestPath = requestPath;
             this.completePath = completePath;
@@ -75,6 +75,6 @@ export class XliffBridge {
     }
 
     async refreshTranslations() {
-        throw `XliffBridge doesn't support refreshing translations`;
+        throw new Error(`XliffBridge doesn't support refreshing translations`);
     }
 }

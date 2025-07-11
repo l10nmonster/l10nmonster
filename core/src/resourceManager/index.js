@@ -36,7 +36,7 @@ export default class ResourceManager {
     getChannel(channelId) {
         const channel = this.#channels[channelId];
         if (!channel) {
-            throw `Invalid channel reference: ${channelId}`;
+            throw new Error(`Invalid channel reference: ${channelId}`);
         }
         return channel;
     }
@@ -48,7 +48,7 @@ export default class ResourceManager {
 
     async getActiveContentStats(channelId) {
         if (!this.#channels[channelId]) {
-            throw `Invalid channel reference: ${channelId}`;
+            throw new Error(`Invalid channel reference: ${channelId}`);
         }
         await this.#snapIfNecessary();
         return this.#DAL.source.getActiveContentStats(channelId)

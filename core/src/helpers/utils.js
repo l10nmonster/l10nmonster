@@ -351,7 +351,7 @@ export function validate(context, obj = {}) {
         objectProperty: (...props) => {
             props.forEach(propName => {
                 if (obj[propName] !== undefined && typeof obj[propName] !== 'object') {
-                    throw `Property ${propName} of ${context} must be an object`;
+                    throw new Error(`Property ${propName} of ${context} must be an object`);
                 }
             });
             return validators;
@@ -360,11 +360,11 @@ export function validate(context, obj = {}) {
             props.forEach(propName => {
                 if (obj[propName] !== undefined) {
                     if (!Array.isArray(obj[propName])) {
-                        throw `Property ${propName} of ${context} must be an array`;
+                        throw new Error(`Property ${propName} of ${context} must be an array`);
                     }
                     obj[propName].forEach((coder, idx) => {
                         if (typeof coder !== 'function') {
-                            throw `Item at index ${idx} in property ${propName} of ${context} must be a function`;
+                            throw new Error(`Item at index ${idx} in property ${propName} of ${context} must be a function`);
                         }
                     });
                 }

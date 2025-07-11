@@ -11,8 +11,8 @@ export class ops_providers {
         } else {
             for (const provider of mm.dispatcher.providers) {
                 const info = await provider.info();
-                consoleLog`  ‣ id:${info.id} type: ${info.type} q: ${info.quality ?? 'dynamic' } cost/word: ${info.costPerWord ?? 0} cost/MB: ${info.costPerMChar ?? 0}`;
-                consoleLog`      • Supported pairs: ${JSON.stringify(info.supportedPairs) ?? 'any'}`;
+                consoleLog`  ‣ id:${info.id} type: ${info.type} q: ${info.quality ?? 'dynamic'} cost/word: ${info.costPerWord ?? 0} cost/MB: ${info.costPerMChar ?? 0}`;
+                consoleLog`      • Supported pairs: ${JSON.stringify(info.supportedPairs ?? 'any')}`;
                 info.description.forEach(line => consoleLog`      • ${line}`);
                 consoleLog``;
             }

@@ -49,7 +49,7 @@ export class FsSource extends AbstractFsAdapter {
     constructor({ baseDir, globs, filter, sourceLang, prj, resDecorator, idFromPath }) {
         super(baseDir);
         if (globs === undefined || sourceLang === undefined) {
-            throw 'globs and sourceLang properties are required in FsSource';
+            throw new Error('globs and sourceLang properties are required in FsSource');
         } else {
             this.globs = Array.isArray(globs) ? globs : [ globs ];
             this.filter = filter;

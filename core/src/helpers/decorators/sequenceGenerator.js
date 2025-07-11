@@ -8,7 +8,7 @@ import { getBaseDir, logInfo } from '../../l10nContext.js';
 export class SequenceGenerator {
     constructor(seqMapFile, seqThreshold = 7) {
         if (!seqMapFile) {
-            throw 'A seqMapFile is required';
+            throw new Error('A seqMapFile is required');
         }
         this.seqMapPath = seqMapFile && path.join(getBaseDir(), seqMapFile);
         this.seqThreshold = seqThreshold;

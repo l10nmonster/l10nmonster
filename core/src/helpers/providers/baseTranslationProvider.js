@@ -8,8 +8,8 @@ import * as opsManager from '../../opsManager/index.js';
  * @property {string} [id] - Global identifier for the provider. Optional.
  * @property {number} [quality] - The quality of translations provided by the provider. Optional.
  * @property {Record<string, string[]>} [supportedPairs] - Supported pairs for the provider. Optional. (e.g., { "en-US": ["de-DE", "es-ES"] })
- * @property {string} [translationGroup] - If defined, only accpept jobs with the same "group" property. Optional.
- * @property {string} [defaultInstructions] - Instructions to use of jon instructions are missing.
+ * @property {string} [translationGroup] - If defined, only accept jobs with the same "group" property. Optional.
+ * @property {string} [defaultInstructions] - Instructions to include automatically in job.
  * @property {number} [minWordQuota] - Minimum word quota to accept the job. Optional.
  * @property {number} [maxWordQuota] - Maximum word quota to accept the job. Optional.
  * @property {number} [costPerWord] - The estimated cost per word for the provider. Optional.
@@ -47,7 +47,7 @@ export class BaseTranslationProvider {
 
     #id;
     #costPerWord;
-    #costPerMChar
+    #costPerMChar;
     #minWordQuota;
     #maxWordQuota;
     #saveIdenticalEntries;

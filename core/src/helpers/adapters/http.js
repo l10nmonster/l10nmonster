@@ -20,7 +20,7 @@ export class HttpSource {
      */
     constructor({ urlMap, sourceLang, prj, filter, resDecorator }) {
         if (urlMap === undefined || sourceLang === undefined) {
-            throw 'You must specify urlMap and sourceLang in HttpSource';
+            throw new Error('You must specify urlMap and sourceLang in HttpSource');
         } else {
             this.urlMap = urlMap;
             this.sourceLang = sourceLang;
@@ -37,7 +37,7 @@ export class HttpSource {
      * don't reliably provide this information in a standardized way for this context.
      * @returns {AsyncGenerator<[Object, string]>} An async generator yielding resource metadata and content.
      */
-    async* fetchAllResources() {
+    async *fetchAllResources() {
         logInfo`HttpSource: Fetching all resources from urlMap`;
         for (const [id, url] of Object.entries(this.urlMap)) {
             if (this.filter && !this.filter(id)) {

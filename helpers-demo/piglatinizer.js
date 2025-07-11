@@ -6,7 +6,7 @@ const pigLatin = new PigLatin.default();
 export class PigLatinizer {
     constructor({ quality }) {
         if (quality === undefined) {
-            throw 'You must specify a quality for PigLatinizer';
+            throw new Error('You must specify a quality for PigLatinizer');
         } else {
             this.quality = quality;
         }
@@ -31,6 +31,6 @@ export class PigLatinizer {
     }
 
     async fetchTranslations() {
-        throw 'PigLatinizer is a synchronous-only provider';
+        throw new Error('PigLatinizer is a synchronous-only provider');
     }
 }

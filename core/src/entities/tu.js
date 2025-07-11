@@ -105,10 +105,10 @@ export class TU {
      */
     constructor(entry, isSource, isTarget) {
         if (isSource && (!entry.guid || !entry.rid || !entry.sid || !Array.isArray(entry.nsrc))) {
-            throw `Source TU must have guid, rid, sid, nsrc: ${JSON.stringify(entry)}`;
+            throw new Error(`Source TU must have guid, rid, sid, nsrc: ${JSON.stringify(entry)}`);
         }
         if (isTarget && (!entry.guid || !Number.isInteger(entry.q) || (!Array.isArray(entry.ntgt) && !entry.inflight) || !Number.isInteger(entry.ts))) {
-            throw `Target TU must have guid, ntgt/inflight, q, ts: ${JSON.stringify(entry)}`;
+            throw new Error(`Target TU must have guid, ntgt/inflight, q, ts: ${JSON.stringify(entry)}`);
         }
         // eslint-disable-next-line no-nested-ternary
         const whitelist = isSource ? (isTarget ? pairTUWhitelist : sourceTUWhitelist) : targetTUWhitelist;
