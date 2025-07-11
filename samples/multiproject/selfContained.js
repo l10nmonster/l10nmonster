@@ -1,7 +1,7 @@
-const { adapters, stores } = require('@l10nmonster/helpers');
-const ios = require('@l10nmonster/helpers-ios');
-const android = require('@l10nmonster/helpers-android');
-const { runL10nMonster } = require('@l10nmonster/cli');
+import { adapters, stores } from '../../core';
+import ios from '@l10nmonster/helpers-ios';
+import android from '@l10nmonster/helpers-android';
+import { runL10nMonster } from '@l10nmonster/cli';
 
 const androidLangMapping = {
     'pt-BR': 'pr-rBR',
@@ -12,7 +12,6 @@ const androidLangMapping = {
 const config = class MultiProjectConfig2 {
     sourceLang = 'en';
     targetLangs = [ 'ar', 'it', 'ja' ];
-    minimumQuality = 50;
     jobStore = new stores.JsonJobStore({
         jobsDir: 'translationJobs',
     });
@@ -36,9 +35,7 @@ const config = class MultiProjectConfig2 {
                     targetLangs: [ 'ja', 'it' ],
                     prj: 'tachiyomi',
                 }),
-                resourceFilter: new android.Filter({
-                    comment: 'pre',
-                }),
+                resourceFilter: new android.Filter(),
                 decoders: [ android.phDecoder ],
                 target: new adapters.FsTarget({
                     targetPath: (lang, resourceId) => resourceId.replace('values', `values-${androidLangMapping[lang] || lang}`),

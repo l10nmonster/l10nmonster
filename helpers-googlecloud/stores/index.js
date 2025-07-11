@@ -1,3 +1,3 @@
-exports.GCSJobStore = require('./gcsJobStore.js');
-exports.GCSSnapStore = require('./gcsSnapStore.js');
-exports.GCSStoreDelegate = require('./gcsStoreDelegate.js');
+export { GCSLegacyJsonTmStore, GCSJsonlTmStore } from './gcsTmStore.js';
+export { GCSStoreDelegate } from './gcsStoreDelegate.js';
+export { GDriveStoreDelegate } from './gdriveStoreDelegate.js';

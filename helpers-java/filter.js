@@ -1,6 +1,6 @@
-const { parseToEntries, stringifyFromEntries } = require('@js.properties/properties');
+import { parseToEntries, stringifyFromEntries } from '@js.properties/properties';
 
-module.exports = class JavaPropertiesFilter {
+export default class JavaPropertiesFilter {
     async parseResource({ resource }) {
         const parsedResource = parseToEntries(resource, { sep: true, eol: true, all: true, original: true, location: true });
         const segments = [];

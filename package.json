@@ -1,17 +1,32 @@
 {
+    "version": "3.0.0-alpha.2",
+    "type": "module",
     "workspaces": [
         "core",
         "cli",
-        "helpers",
-        "helpers-android",
-        "helpers-demo",
-        "helpers-googlecloud",
-        "helpers-html",
-        "helpers-ios",
-        "helpers-java",
-        "helpers-json",
-        "helpers-po",
-        "helpers-translated",
-        "helpers-xliff"
-    ]
+        "config-mancer",
+        "helpers-*",
+        "server"
+    ],
+    "scripts": {
+        "test": "npm run test:enhanced && npm run test:regression",
+        "test:enhanced": "node scripts/test-runner.js",
+        "test:enhanced:fail-fast": "node scripts/test-runner.js --fail-fast",
+        "test:enhanced:verbose": "node scripts/test-runner.js --verbose",
+        "test:enhanced:unit-only": "node scripts/test-runner.js --unit-only",
+        "test:regression": "cd regression && ./test.zsh js local all && ./test.zsh cli local all",
+        "eslint": "eslint core/src/**/*.js cli/*.js",
+        "eslint:files": "npm run eslint | grep -e '^/.*js$'",
+        "eslint:files:open": "code $(npm run --silent eslint:files)",
+        "publish:npm": "npm publish --workspaces --access public",
+        "publish:npm-dry": "npm publish --workspaces --access public --dry-run",
+        "publish:next": "npm publish --workspaces --tag next --access public",
+        "publish:next-dry": "npm publish --workspaces --tag next --access public --dry-run"
+    },
+    "packageManager": "npm@10.9.2",
+    "devDependencies": {
+        "@eslint/eslintrc": "^3.2.0",
+        "@eslint/js": "^9.17.0",
+        "globals": "^16"
+    }
 }

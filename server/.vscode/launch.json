@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        // Configuration using Chrome
+        "type": "chrome", // Use "chrome" for Chrome or "msedge" for Edge
+        "request": "launch",
+        "name": "Vite: Launch Chrome",
+        "url": "http://localhost:5173",
+        "webRoot": "${workspaceFolder}/ui",
+        "sourceMaps": true, // Ensure source maps are expected
+        "sourceMapPathOverrides": { // Often helps resolve paths correctly
+          "webpack:///./*": "${webRoot}/*",
+          "webpack:///*": "*", // General fallback
+          "webpack:///src/*": "${webRoot}/src/*", // Specific to src
+          "/./*": "${webRoot}/*", // Another common pattern
+          "/src/*": "${webRoot}/src/*" // Another common pattern
+        },
+        // Optional: Use a separate browser profile for debugging
+        // "userDataDir": "${workspaceFolder}/.vscode/vscode-chrome-debug-user-data",
+      }
+    ]
+  }

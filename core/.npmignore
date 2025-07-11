@@ -1,6 +1,28 @@
-*
-!out/index.cjs
-!package.json
-!package-lock.json
-!README.md
-!.js
+# Tests and development files
+tests/
+test/
+*.test.js
+*.test.mjs
+
+# Development files
+.vscode/
+*.drawio.svg
+CHANGELOG.md
+
+# Build artifacts
+out/
+dist/
+build/
+
+# Documentation (keep main README.md)
+docs/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db

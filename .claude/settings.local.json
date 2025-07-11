@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep:*)",
+      "Bash(npm test)",
+      "Bash(npm test:*)",
+      "Bash(find:*)",
+      "Bash(rg:*)",
+      "Bash(./test.zsh:*)",
+      "Bash(npm run test:regression:*)",
+      "Bash(timeout 30 npm run test:regression)",
+      "Bash(pnpm:*)",
+      "Bash(node:*)",
+      "Bash(npx l10n:*)",
+      "Bash(cat:*)",
+      "Bash(ls:*)",
+      "Bash(./l10n.mjs --version)",
+      "Bash(../../../cli/l10n.mjs --version)",
+      "Bash(npx puppeteer browsers:*)",
+      "Bash(npm run install:*)",
+      "Bash(mv:*)",
+      "Bash(mkdir:*)"
+    ],
+    "deny": []
+  }
+}

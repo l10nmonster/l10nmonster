@@ -1,0 +1,6 @@
+<resources>
+	<plurals name="rooms_count_with_suffix">
+		<item quantity="one">plurals.xml rooms_count_with_suffix_one %1$d room • %2$s - **Translation**</item>
+		<item quantity="other">plurals.xml rooms_count_with_suffix_other %1$d rooms • %2$s - **Translation**</item>
+	</plurals>
+</resources>

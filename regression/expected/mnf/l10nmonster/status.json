@@ -1,0 +1,26 @@
+{
+	"en": {
+		"piggy": {
+			"java": {
+				"messages_en.txt": [
+					{
+						"minQ": 1,
+						"q": 10,
+						"res": 1,
+						"seg": 2,
+						"words": 4,
+						"chars": 18
+					},
+					{
+						"minQ": 1,
+						"q": 1,
+						"res": 1,
+						"seg": 2,
+						"words": 8,
+						"chars": 42
+					}
+				]
+			}
+		}
+	}
+}

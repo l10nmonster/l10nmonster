@@ -1,0 +1,17 @@
+{
+	"v": 1,
+	"sourceLang": "en",
+	"targetLang": "piggy",
+	"blocks": {
+		"xxx7xxx": {
+			"blockName": "blocks/sl=en/tl=piggy/tp=PigLatinizer/block_xxx7xxx.jsonl",
+			"modified": "TS1",
+			"jobs": [
+				[
+					"xxx4xxx",
+					"2022-05-29T00:00:00.000Z"
+				]
+			]
+		}
+	}
+}

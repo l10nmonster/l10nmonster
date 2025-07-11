@@ -1,5 +1,11 @@
-import { utils, normalizers } from '@l10nmonster/helpers';
+import { utils, normalizers } from '../helpers/index.js';
 
+/**
+ * @class Normalizer
+ * @classdesc Represents a normalizer that decodes strings into a normalized format
+ * and encodes parts of a normalized string back into a string.
+ * It uses a set of decoders for decoding and text/code encoders for encoding.
+ */
 export class Normalizer {
     #decoders;
     #textEncoders;

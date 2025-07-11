@@ -1,13 +1,13 @@
-const ARB_ANNOTATION_MARKER = "@";
-const FLATTEN_SEPARATOR = ".";
+export const ARB_ANNOTATION_MARKER = "@";
+export const FLATTEN_SEPARATOR = ".";
 
 /**
  * Recursively flatten the resources object while splitting it into resources and notes
  * Keys that start with the ARB annotation marker are separated into notes
  *
  * @param {string[]} keys Stack of keys seen. Used to create a flattened key
- * @param {object} resource Object to parse
- * @returns {{resource: object, notes: object}}
+ * @param {object} obj Object to parse
+ * @returns {{res: object, notes: object}}
  *
  * ```
  * const obj = {
@@ -58,7 +58,7 @@ const FLATTEN_SEPARATOR = ".";
  * )
  * ```
  */
-function flattenAndSplitResources(keys, obj) {
+export function flattenAndSplitResources(keys, obj) {
     return Object.entries(obj).reduce((acc, [key, value]) => {
         if (typeof value === "object" && key.startsWith(ARB_ANNOTATION_MARKER)) {
             // If the key is `@key` and the value is an object, it is likely an ARB annotation.
@@ -95,20 +95,13 @@ function flattenAndSplitResources(keys, obj) {
  * assert(ph === "PH({{count}}|1|number of tickets)")
  * ```
  *
- * @param {{ [key: string]: value }} ARB placeholders
+ * @param {{ [key: string]: object }} placeholders ARB placeholders
  * @returns {string} placeholders formatted in PH() and separated by "\n"
  */
-function arbPlaceholderHandler(placeholders) {
+export function arbPlaceholderHandler(placeholders) {
     const phs = []
     for (const [key, val] of Object.entries(placeholders)) {
         phs.push(`PH({{${key}}}|${val.example}|${val.description})`)
     }
     return phs.join("\n")
-}
-
-module.exports = {
-    ARB_ANNOTATION_MARKER,
-    FLATTEN_SEPARATOR,
-    flattenAndSplitResources,
-    arbPlaceholderHandler,
 }

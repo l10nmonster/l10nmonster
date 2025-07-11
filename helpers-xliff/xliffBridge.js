@@ -1,12 +1,13 @@
-const path = require('path');
-const { existsSync } = require('fs');
-const fs = require('fs/promises');
-const { createxliff12, xliff12ToJs } = require('xliff');
+import path from 'path';
+import { existsSync } from 'fs';
+import fs from 'fs/promises';
+import { createxliff12, xliff12ToJs } from 'xliff';
+import { getBaseDir, getRegressionMode } from '@l10nmonster/core';
 
-module.exports = class XliffBridge {
+export class XliffBridge {
     constructor({ requestPath, completePath, quality }) {
         if ((requestPath && completePath && quality) === undefined) {
-            throw 'You must specify requestPath, completePath, quality for XliffBridge';
+            throw new Error('You must specify requestPath, completePath, quality for XliffBridge');
         } else {
             this.requestPath = requestPath;
             this.completePath = completePath;
@@ -33,7 +34,7 @@ module.exports = class XliffBridge {
             notes,
         );
         if (xliff) {
-            const prjPath = path.join(l10nmonster.baseDir, this.requestPath(jobRequest.targetLang, jobRequest.jobGuid));
+            const prjPath = path.join(getBaseDir(), this.requestPath(jobRequest.targetLang, jobRequest.jobGuid));
             await fs.mkdir(path.dirname(prjPath), {recursive: true});
             await fs.writeFile(prjPath, xliff, 'utf8');
             jobManifest.inflight = Object.values(jobRequest.tus).map(tu => tu.guid);
@@ -44,10 +45,10 @@ module.exports = class XliffBridge {
         return jobManifest;
     }
 
-    async fetchTranslations(pendingJob, jobRequest) {
+    async fetchTranslations(pendingJob) {
         const { inflight, ...jobResponse } = pendingJob;
-        const completePath = path.join(l10nmonster.baseDir, this.completePath(jobResponse.targetLang, jobResponse.jobGuid));
-        const tuMap = jobRequest.tus.reduce((p,c) => (p[c.guid] = c, p), {});
+        const completePath = path.join(getBaseDir(), this.completePath(jobResponse.targetLang, jobResponse.jobGuid));
+        // const tuMap = pendingJob.tus.reduce((p,c) => (p[c.guid] = c, p), {});
         if (existsSync(completePath)) {
             const translatedRes = await fs.readFile(completePath, 'utf8');
             const translations = await xliff12ToJs(translatedRes);
@@ -56,7 +57,7 @@ module.exports = class XliffBridge {
                 if (xt?.target?.length > 0) {
                     tus.push({
                         guid,
-                        ts: l10nmonster.regression ? 1 : new Date().getTime(),
+                        ts: getRegressionMode() ? 1 : new Date().getTime(),
                         ntgt: [xt.target], // TODO: need to deal with ntgt properly
                         q: this.quality,
                     });
@@ -74,6 +75,6 @@ module.exports = class XliffBridge {
     }
 
     async refreshTranslations() {
-        throw `XliffBridge doesn't support refreshing translations`;
+        throw new Error(`XliffBridge doesn't support refreshing translations`);
     }
 }

@@ -1,0 +1,192 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Helper Packages Guide
+
+L10nMonster's helper packages provide format-specific, platform-specific, and service-specific functionality.
+
+## Helper Package Categories
+
+### Platform-Specific Helpers
+
+#### iOS ([helpers-ios/](mdc:helpers-ios/))
+- **StringsFilter**: iOS .strings file format
+- **phDecoder**: iOS placeholder decoder
+- **escapesDecoder**: iOS escape sequences
+
+#### Android ([helpers-android/](mdc:helpers-android/))
+- **AndroidFilter**: Android XML resources
+- **Plurals handling**: Android plural forms
+- **Encoding support**: XML entity handling
+
+#### Java ([helpers-java/](mdc:helpers-java/))
+- **PropertiesFilter**: Java .properties files
+- **ResourceBundle support**: Java resource bundles
+
+### Format-Specific Helpers
+
+#### JSON ([helpers-json/](mdc:helpers-json/))
+- **i18next**: i18next JSON format support
+- **Nested object handling**: Deep JSON structure
+
+#### PO Files ([helpers-po/](mdc:helpers-po/))
+- **POFilter**: GNU gettext PO format
+- **Plural forms**: gettext plural handling
+- **Comment preservation**: Translator comments
+
+#### XLIFF ([helpers-xliff/](mdc:helpers-xliff/))
+- **XliffBridge**: XLIFF workflow integration
+- **Translation unit mapping**: XLIFF to TU conversion
+- **Workflow states**: XLIFF approval states
+
+#### HTML ([helpers-html/](mdc:helpers-html/))
+- **HTML parsing**: Extract translatable content
+- **Attribute handling**: Translatable attributes
+- **DOM preservation**: Structure preservation
+
+### AI/ML Translation Helpers
+
+#### OpenAI ([helpers-openai/](mdc:helpers-openai/))
+- **GPTAgent**: OpenAI GPT integration
+- **Model selection**: GPT-3.5, GPT-4, etc.
+- **Prompt engineering**: Translation-specific prompts
+
+#### Anthropic ([helpers-anthropic/](mdc:helpers-anthropic/))
+- **AnthropicAgent**: Claude integration
+- **Model variants**: Claude Sonnet, Opus, etc.
+- **Safety features**: Content filtering
+
+#### Google Cloud ([helpers-googlecloud/](mdc:helpers-googlecloud/))
+- **GenAIAgent**: Gemini integration
+- **GCTProvider**: Google Cloud Translation
+- **Storage**: GCS and Google Drive delegates
+
+#### DeepL ([helpers-deepl/](mdc:helpers-deepl/))
+- **DeepLProvider**: DeepL API integration
+- **Formality control**: Formal/informal translation
+- **Quality optimization**: DeepL quality settings
+
+#### Translated Services ([helpers-translated/](mdc:helpers-translated/))
+- **MMTProvider**: ModernMT integration
+- **LaraProvider**: Lara translation service
+- **Batch processing**: Efficient job handling
+
+### Workflow Helpers
+
+#### LQA Boss ([helpers-lqaboss/](mdc:helpers-lqaboss/))
+- **Visual review**: Browser-based translation review
+- **LQABossProvider**: Workflow integration
+- **Quality scoring**: Review-based quality assessment
+
+#### Demo/Testing ([helpers-demo/](mdc:helpers-demo/))
+- **Piglatinizer**: Development testing
+- **Mock providers**: Testing translation workflows
+
+## Helper Package Structure
+
+### Common Patterns
+Most helper packages follow this structure:
+```javascript
+// Main export
+export { MyFilter, MyProvider } from './implementation.js';
+
+// Provider pattern
+export class MyProvider extends BaseTranslationProvider {
+    constructor(options) { ... }
+    async create(jobRequest) { ... }
+    async start(jobManifest) { ... }
+    async continue(jobManifest) { ... }
+}
+
+// Filter pattern  
+export class MyFilter {
+    async parseResource({ resource, isSource }) { ... }
+    translateResource({ resourceId, resource, lang, translator }) { ... }
+}
+```
+
+### Configuration Integration
+Helpers integrate with configuration:
+```javascript
+import * as ios from '@l10nmonster/helpers-ios';
+import { GPTAgent } from '@l10nmonster/helpers-openai';
+
+export default config.l10nMonster(import.meta.dirname)
+    .channel(config.channel('ios')
+        .resourceFilter(new ios.StringsFilter())
+        .decoders([ios.phDecoder, ios.escapesDecoder])
+    )
+    .provider(new GPTAgent({ ... }));
+```
+
+## Creating Custom Helpers
+
+### Custom Format Filter
+```javascript
+export class MyFormatFilter {
+    async parseResource({ resource, isSource }) {
+        // Parse resource into translation units
+        return {
+            translationUnits: [
+                { sid: 'key1', str: 'Hello', notes: 'Greeting' },
+                // ...
+            ]
+        };
+    }
+
+    translateResource({ resourceId, resource, lang, translator }) {
+        // Generate translated resource
+        return translatedContent;
+    }
+}
+```
+
+### Custom Provider
+```javascript
+import { BaseTranslationProvider } from '@l10nmonster/core';
+
+export class MyProvider extends BaseTranslationProvider {
+    constructor(options) {
+        super(options);
+        this.apiKey = options.apiKey;
+    }
+
+    async create(jobRequest) {
+        // Create translation job
+        return { jobId: 'job123', status: 'pending' };
+    }
+
+    async start(jobManifest) {
+        // Start translation process
+        return { status: 'started' };
+    }
+
+    async continue(jobManifest) {
+        // Check/continue translation
+        return { status: 'completed', translations: [...] };
+    }
+}
+```
+
+## Helper Package Development
+
+### Testing
+Helper packages include test suites:
+- Unit tests for filters and providers
+- Integration tests with sample data
+- Regression tests for format preservation
+
+### Documentation
+Each helper includes:
+- README with usage examples
+- API documentation
+- Configuration options
+- Format specifications
+
+### Dependencies
+Helper packages manage their own dependencies:
+- `package.json` with specific requirements
+- Peer dependencies on core packages
+- Version compatibility matrices

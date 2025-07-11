@@ -1,10 +1,12 @@
-const PigLatin = require('pig-latinizer');
+import { default as PigLatin } from 'pig-latinizer';
+import { getRegressionMode } from '@l10nmonster/core';
+
 const pigLatin = new PigLatin.default();
 
-module.exports = class PigLatinizer {
-    constructor({ quality } = {}) {
+export class PigLatinizer {
+    constructor({ quality }) {
         if (quality === undefined) {
-            throw 'You must specify a quality for PigLatinizer';
+            throw new Error('You must specify a quality for PigLatinizer');
         } else {
             this.quality = quality;
         }
@@ -13,7 +15,7 @@ module.exports = class PigLatinizer {
     async requestTranslations(jobRequest) {
         // eslint-disable-next-line no-unused-vars
         const { tus, ...jobResponse } = jobRequest;
-        const ts = l10nmonster.regression ? 1 : new Date().getTime();
+        const ts = getRegressionMode() ? 1 : new Date().getTime();
         jobResponse.tus = jobRequest.tus.map(tu => {
             const translation = { guid: tu.guid, ts };
             translation.ntgt = [
@@ -29,6 +31,6 @@ module.exports = class PigLatinizer {
     }
 
     async fetchTranslations() {
-        throw 'PigLatinizer is a synchronous-only provider';
+        throw new Error('PigLatinizer is a synchronous-only provider');
     }
 }

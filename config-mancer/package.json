@@ -1,0 +1,22 @@
+{
+    "name": "@l10nmonster/config-mancer",
+    "version": "3.0.0-alpha.2",
+    "description": "Configuration management utilities with schema validation and object construction",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "test": "node --test"
+    },
+    "author": "Diego Lagunas",
+    "license": "MIT",
+    "keywords": [
+        "configuration",
+        "schema",
+        "validation",
+        "json",
+        "proxy"
+    ],
+    "engines": {
+        "node": ">=22.11.0"
+    }
+}

@@ -1,2 +1,3 @@
-exports.TranslationOS = require('./translationOS');
-exports.ModernMT = require('./modernMT');
+// export { TranslationOS } from './translationOS.js';
+export { MMTProvider } from './mmtProvider.js';
+export { LaraProvider } from './laraProvider.js';

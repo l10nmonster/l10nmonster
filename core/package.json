@@ -1,16 +1,11 @@
 {
     "name": "@l10nmonster/core",
-    "version": "1.0.7",
+    "version": "3.0.0-alpha.2",
     "description": "L10n Monster Core Module",
-    "exports": {
-        "import": "./src/index.js",
-        "require": "./out/index.cjs"
-    },
-    "main": "out/index.cjs",
     "type": "module",
+    "main": "index.js",
     "scripts": {
-        "esbuild": "esbuild src/index.js --bundle --external:better-sqlite3 --external:@l10nmonster/helpers --external:@l10nmonster/words-count --outfile=out/index.cjs --format=cjs --platform=node --sourcemap",
-        "esbuild-watch": "npm run esbuild -- --watch"
+        "test": "node --test"
     },
     "repository": {
         "type": "git",
@@ -23,16 +18,14 @@
     },
     "homepage": "https://github.com/l10nmonster/l10nmonster#readme",
     "engines": {
-        "node": ">=18"
+        "node": ">=22.11.0"
     },
     "dependencies": {
-        "better-sqlite3": "^11.5.0"
+        "nanoid": "^5",
+        "winston": "^3.7.2",
+        "better-sqlite3": "^12"
     },
     "devDependencies": {
-        "esbuild": "latest",
-        "eslint": "latest"
-    },
-    "peerDependencies": {
-        "@l10nmonster/helpers": "^1"
+        "eslint": "^9"
     }
 }

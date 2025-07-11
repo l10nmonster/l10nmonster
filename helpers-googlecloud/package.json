@@ -1,18 +1,26 @@
 {
-  "name": "@l10nmonster/helpers-googlecloud",
-  "version": "1.0.0",
-  "description": "Helpers to integrate with Google Cloud Platfrom",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Diego Lagunas",
-  "license": "MIT",
-  "dependencies": {
-    "@google-cloud/storage": "^7",
-    "@google-cloud/translate": "^8"
-  },
-  "peerDependencies": {
-    "@l10nmonster/helpers": "^1"
-  }
+    "name": "@l10nmonster/helpers-googlecloud",
+    "version": "3.0.0-alpha.2",
+    "description": "Helpers to integrate with Google Cloud Platfrom",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "test": "node --test"
+    },
+    "author": "Diego Lagunas",
+    "license": "MIT",
+    "dependencies": {
+        "@google-cloud/bigquery": "^8",
+        "@google-cloud/storage": "^7",
+        "@google-cloud/translate": "^9",
+        "@google/genai": "^1",
+        "google-auth-library": "^10",
+        "googleapis": "^152"
+    },
+    "peerDependencies": {
+        "@l10nmonster/core": "^3.0.0-alpha.0"
+    },
+    "engines": {
+        "node": ">=22.11.0"
+    }
 }

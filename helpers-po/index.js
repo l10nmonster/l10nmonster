@@ -1,8 +1,7 @@
-const { createHash } = require('crypto');
+import { createHash } from 'crypto';
+import gettextParser from 'gettext-parser';
 
-const gettextParser = require('gettext-parser');
-
-exports.Filter = class PoFilter {
+export class PoFilter {
     async parseResource({ resource, isSource }) {
         const poFile = gettextParser.po.parse(resource);
         const segments = [];

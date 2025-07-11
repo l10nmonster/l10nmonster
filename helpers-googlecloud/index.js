@@ -1,2 +1,5 @@
-exports.GoogleCloudTranslateV3 = require('./gctV3');
-exports.stores = require('./stores/index.js');
+export * from './stores/index.js';
+
+export { GenAIAgent } from './genaiAgent.js';
+export { GCTProvider } from './gctProvider.js';
+export { BQSource } from './bqSource.js';

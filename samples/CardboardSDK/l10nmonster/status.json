@@ -1,0 +1,58 @@
+{
+	"ios": {
+		"default": {
+			"en": {
+				"ar": {
+					"resCount": 1,
+					"segmentCount": 32,
+					"translationStatus": [
+						{
+							"minQ": 30,
+							"q": 40,
+							"res": 1,
+							"seg": 32,
+							"words": 111,
+							"chars": 622
+						}
+					]
+				},
+				"en-ZZ": {
+					"resCount": 1,
+					"segmentCount": 32,
+					"translationStatus": [
+						{
+							"minQ": 20,
+							"q": null,
+							"res": 1,
+							"seg": 32,
+							"words": 111,
+							"chars": 622
+						}
+					]
+				},
+				"it": {
+					"resCount": 1,
+					"segmentCount": 32,
+					"translationStatus": [
+						{
+							"minQ": 30,
+							"q": 48,
+							"res": 1,
+							"seg": 31,
+							"words": 110,
+							"chars": 618
+						},
+						{
+							"minQ": 30,
+							"q": 45,
+							"res": 1,
+							"seg": 1,
+							"words": 1,
+							"chars": 4
+						}
+					]
+				}
+			}
+		}
+	}
+}

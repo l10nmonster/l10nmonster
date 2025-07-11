@@ -1,5 +1,32 @@
-import { utils } from '@l10nmonster/helpers';
+import { logVerbose } from '../l10nContext.js';
+import { utils } from '../helpers/index.js';
 
+function processNotes(normalizedSeg) {
+    if (typeof normalizedSeg.notes === 'string') {
+        normalizedSeg.rawNotes = normalizedSeg.notes;
+        normalizedSeg.notes = utils.extractStructuredNotes(normalizedSeg.notes);
+    }
+    if (normalizedSeg.notes !== null && typeof normalizedSeg.notes === 'object') { // unfortunately null is an object
+        // populate ph samples from comments
+        if (normalizedSeg.notes.ph) {
+            for (const part of normalizedSeg.nstr) {
+                if (part.t === 'x' && normalizedSeg.notes.ph[part.v]?.sample !== undefined && part.s === undefined) {
+                    part.s = normalizedSeg.notes.ph[part.v].sample;
+                }
+            }
+        }
+    } else {
+        delete normalizedSeg.notes;
+    }
+}
+
+/**
+ * @class FormatHandler
+ * @classdesc Handles the parsing, normalization, and translation of resources
+ * for a specific file format. It uses resource filters to parse raw resource
+ * content, normalizers to convert messages into a canonical representation,
+ * and segment decorators to modify segments before translation.
+ */
 export class FormatHandler {
     #id;
     #resourceFilter;
@@ -10,21 +37,21 @@ export class FormatHandler {
 
     constructor({ id, resourceFilter, normalizers, defaultMessageFormat, segmentDecorators, formatHandlers }) {
         if (!resourceFilter) {
-            throw `Missing resource filter for format ${this.#id}`;
+            throw new Error(`Missing resource filter for format ${this.#id}`);
         }
         this.#id = id;
         this.#resourceFilter = resourceFilter;
         this.#normalizers = normalizers;
         this.#defaultMessageFormat = defaultMessageFormat;
         this.#segmentDecorators = segmentDecorators;
-        this.#formatHandlers = formatHandlers;
+        this.#formatHandlers = formatHandlers; // this is needed to process sub-resources
     }
 
     #populateGuid(rid, str, mf, base, flags = {}) {
         base.mf = mf;
         const normalizer = this.#normalizers[base.mf];
         if (!normalizer) {
-            throw `Unknown message format ${mf} in format ${this.#id}`;
+            throw new Error(`Unknown message format ${mf} in format ${this.#id}`);
         }
         base.nstr = normalizer.decode(str, flags);
         const firedFlags = Object.entries(flags).filter(f => f[1]).map(f => f[0]);
@@ -46,22 +73,22 @@ export class FormatHandler {
                         if (ph) {
                             return ph;
                         } else {
-                            throw `unknown placeholder found: ${JSON.stringify(part)}`;
+                            throw new Error(`unknown placeholder found: ${JSON.stringify(part)}`);
                         }
                     }
                 });
             } else {
-                throw `source and target are incompatible\n${JSON.stringify(nsrc)}\n${JSON.stringify(entry.ntgt)}`;
+                throw new Error(`source and target are incompatible\n${JSON.stringify(nsrc)}\n${JSON.stringify(entry.ntgt)}`);
             }
         } else {
-            throw `TM entry missing or in flight`;
+            throw new Error(`TM entry missing or in flight`);
         }
     }
 
     #encodeTranslatedSegment(ntgt, mf, flags) {
         const normalizer = this.#normalizers[mf];
         if (!normalizer) {
-            throw `Unknown message format ${mf} in format ${this.#id}`;
+            throw new Error(`Unknown message format ${mf} in format ${this.#id}`);
         }
         const encodedParts = ntgt.map((part, idx) => normalizer.encodePart(part, {
             ...flags,
@@ -76,32 +103,22 @@ export class FormatHandler {
         const normalizedSegments = []; // these have nstr
         const rawSegments = parsedRes.segments ?? []; // these have str
         for (const rawSegment of rawSegments.flat(1)) {
-            const { str, notes, mf, ...normalizedSeg } = rawSegment;
+            const { str, mf, ...normalizedSeg } = rawSegment;
             this.#populateGuid(rid, str, mf ?? this.#defaultMessageFormat, normalizedSeg);
-            if (typeof notes === 'string') {
-                normalizedSeg.rawNotes = notes;
-                normalizedSeg.notes = utils.extractStructuredNotes(notes);
-            }
-            // populate ph samples from comments
-            if (normalizedSeg.notes?.ph) {
-                for (const part of normalizedSeg.nstr) {
-                    if (part.t === 'x' && normalizedSeg.notes.ph[part.v]?.sample !== undefined && part.s === undefined) {
-                        part.s = normalizedSeg.notes.ph[part.v].sample;
-                    }
-                }
-            }
+            processNotes(normalizedSeg);
             let decoratedSeg = normalizedSeg;
             if (this.#segmentDecorators) {
                 for (const decorator of this.#segmentDecorators) {
                     decoratedSeg = decorator(decoratedSeg);
                     if (decoratedSeg === undefined) { // this basically means DNT (or more like "pretend this doesn't exist")
-                        l10nmonster.logger.verbose(`Decorator rejected segment ${normalizedSeg.sid} in resource ${rid}`);
+                        logVerbose`Decorator rejected segment ${normalizedSeg.sid} in resource ${rid}`;
                         break;
                     }
                 }
+                processNotes(decoratedSeg); // we may need to process notes again as they may have changed in the decorator
             }
             if (decoratedSeg !== undefined) {
-                Object.freeze(decoratedSeg);
+                // Object.freeze(decoratedSeg);
                 normalizedSegments.push(decoratedSeg);
             }
         }
@@ -119,7 +136,7 @@ export class FormatHandler {
             }
         }
         const segments = normalizedSegments.flat(1);
-        Object.freeze(segments);
+        // Object.freeze(segments);
         return { segments, subresources };
     }
 
@@ -135,7 +152,7 @@ export class FormatHandler {
                 for (const subres of resHandle.subresources) {
                     const subFormat = this.#formatHandlers[subres.resourceFormat];
                     if (!subFormat) {
-                        throw `Unknown resource format ${subres.resourceFormat} for subresource of ${this.#id}`;
+                        throw new Error(`Unknown resource format ${subres.resourceFormat} for subresource of ${this.#id}`);
                     }
                     const { id, guids, ...subresHandle } = subres;
                     guidsToSkip.push(guids);
@@ -160,10 +177,10 @@ export class FormatHandler {
                     if (nstr !== undefined) {
                         const segmentFlags = Object.fromEntries((seg.flags ?? []).map(f => [ f, true ]));
                         const str =this.#encodeTranslatedSegment(nstr, seg.mf, { ...flags, ...segmentFlags });
-                        return { nstr, str };
+                        return { nstr, str, tu: entry };
                     }
                 } catch(e) {
-                    l10nmonster.logger.verbose(`Problem translating guid ${seg.guid} to ${tm.targetLang}: ${e.stack ?? e}`);
+                    logVerbose`Problem translating guid ${seg.guid} to ${tm.targetLang}: ${e.message ?? e}`;
                 }
             };
             return this.#resourceFilter.generateResource({ ...resHandle, translator, subresources });
@@ -177,23 +194,23 @@ export class FormatHandler {
             if (normalizedSource) {
                 const segToTranslate = this.#populateGuid(resHandle.id, str, normalizedSource.mf, { sid }, segmentFlags);
                 if (normalizedSource.guid !== segToTranslate.guid) {
-                    l10nmonster.logger.verbose(`Normalized source outdated: ${normalizedSource.gstr}\n${segToTranslate.gstr}`);
+                    logVerbose`Normalized source outdated: ${normalizedSource.gstr}\n${segToTranslate.gstr}`;
                     return undefined;
                 }
                 const entry = tm.getEntryByGuid(segToTranslate.guid);
                 if (!entry) {
-                    // l10nmonster.logger.verbose(`${tm.targetLang} translation not found for ${resHandle.id}, ${sid}, ${str}`);
+                    // L10nContext.logger.verbose(`${tm.targetLang} translation not found for ${resHandle.id}, ${sid}, ${str}`);
                     return undefined;
                 }
                 try {
                     const normalizedTranslation = this.#translateWithTMEntry(normalizedSource.nstr, entry);
                     return this.#encodeTranslatedSegment(normalizedTranslation, normalizedSource.mf, segmentFlags);
                 } catch(e) {
-                    l10nmonster.logger.verbose(`Problem translating ${resHandle.id}, ${sid}, ${str} to ${tm.targetLang}: ${e.stack ?? e}`);
+                    logVerbose`Problem translating ${resHandle.id}, ${sid}, ${str} to ${tm.targetLang}: ${e.message ?? e}`;
                     return undefined;
                 }
             } else {
-                l10nmonster.logger.verbose(`Dropping ${sid} in ${resHandle.id} as it's missing from normalized source`);
+                logVerbose`Dropping ${sid} in ${resHandle.id} as it's missing from normalized source`;
                 return undefined;
             }
         };

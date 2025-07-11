@@ -1,10 +1,11 @@
 {
     "name": "html-demo",
+    "scripts": {
+        "refresh": "l10n translate all"
+    },
     "dependencies": {
-        "@l10nmonster/helpers": "^1",
-        "@l10nmonster/helpers-http": "^1",
-        "@l10nmonster/helpers-html": "^1",
-        "@l10nmonster/helpers-translated": "^1",
-        "@l10nmonster/helpers-demo": "^1"
+        "@l10nmonster/cli": "../../cli",
+        "@l10nmonster/helpers-demo": "../../helpers-demo",
+        "@l10nmonster/helpers-lqaboss": "../../helpers-lqaboss"
     }
-  }
+}

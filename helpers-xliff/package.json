@@ -1,15 +1,19 @@
 {
-  "name": "@l10nmonster/helpers-xliff",
-  "version": "1.0.0",
-  "description": "Helpers to deal with the XLIFF file format",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Diego Lagunas",
-  "license": "MIT",
-  "dependencies": {
-    "@l10nmonster/tmexchange": "^3",
-    "xliff": "^6.0.1"
-  }
+    "name": "@l10nmonster/helpers-xliff",
+    "version": "3.0.0-alpha.2",
+    "description": "Helpers to deal with XLIFF and TMX file formats",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "test": "node --test"
+    },
+    "author": "Diego Lagunas",
+    "license": "MIT",
+    "dependencies": {
+        "@l10nmonster/tmexchange": "^3",
+        "xliff": "^6.0.1"
+    },
+    "peerDependencies": {
+        "@l10nmonster/core": "^3.0.0-alpha.0"
+    }
 }

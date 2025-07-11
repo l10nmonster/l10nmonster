@@ -1,14 +1,18 @@
 {
-  "name": "@l10nmonster/helpers-demo",
-  "version": "1.0.0",
-  "description": "Helpers demonstrations",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Diego Lagunas",
-  "license": "MIT",
-  "dependencies": {
-    "pig-latinizer": "^1.0.6"
-  }
+    "name": "@l10nmonster/helpers-demo",
+    "version": "3.0.0-alpha.2",
+    "description": "Helpers demonstrations",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "test": "node --test"
+    },
+    "author": "Diego Lagunas",
+    "license": "MIT",
+    "dependencies": {
+        "pig-latinizer": "^1.0.6"
+    },
+    "peerDependencies": {
+        "@l10nmonster/core": "^3.0.0-alpha.0"
+    }
 }
