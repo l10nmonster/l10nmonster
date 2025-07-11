@@ -59,9 +59,13 @@ export default async function runMonsterCLI(monsterConfig, cliCommand) {
         .option('-v, --verbose [level]', '0=error, 1=warning, 2=info, 3=verbose', intOptionParser)
         .option('--regression', 'keep variables constant during regression testing');
     try {
-        const { verbose, regression } = monsterCLI.opts();
-        monsterConfig.verbose(verbose).regression(regression);
-        const l10nRunner = async (cb) => await monsterConfig.run(async mm => await cb(mm.l10n));
+        const l10nRunner = async (cb) => {
+            const { verbose, regression } = monsterCLI.opts();
+            await monsterConfig
+                .verbose(verbose)
+                .regression(regression)
+                .run(async mm => await cb(mm.l10n));
+        };
         monsterConfig.actions.forEach(Action => {
             const cmd = monsterCLI.command(Action.name);
             if (Action.subActions) {
