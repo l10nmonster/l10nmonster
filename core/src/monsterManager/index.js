@@ -7,6 +7,22 @@ import ResourceManager from '../resourceManager/index.js';
 import Dispatcher from './dispatcher.js';
 import { analyzeCmd } from './analyze.js';
 
+/**
+ * @typedef {object} L10nMonsterConfig
+ * @property {object} [channels] - Channel configurations where each channel has a createChannel() method
+ * @property {boolean} [autoSnap] - Whether to automatically create snapshots
+ * @property {object} [tmStores] - TM stores instances
+ * @property {object} [opsStore] - Operations store instance
+ * @property {boolean} [saveFailedJobs] - Whether to save failed jobs (requires opsStore)
+ * @property {Array} [providers] - Array of translation providers
+ * @property {object} [analyzers] - Additional analyzers to merge with default analyzers
+ * @property {Array} [actions] - Array of actions to merge with default actions
+ * @property {string|boolean} [sourceDB] - Filename for the source database
+ * @property {string|boolean} [tmDB] - Filename for the translation memory database
+ * @property {Intl.NumberFormat} [currencyFormatter] - Custom currency formatter
+ * @property {Function} [init] - Optional initialization function called during init()
+ */
+
 export class MonsterManager {
     #dalManager;
     #tmStores = {};
@@ -14,18 +30,7 @@ export class MonsterManager {
     saveFailedJobs = false;
 
     /**
-     * @param {object} monsterConfig - Configuration object for the MonsterManager
-     * @param {object} [monsterConfig.channels] - Channel configurations where each channel has a createChannel() method
-     * @param {boolean} [monsterConfig.autoSnap] - Whether to automatically create snapshots
-     * @param {object} [monsterConfig.tmStores] - TM stores instances
-     * @param {object} [monsterConfig.opsStore] - Operations store instance
-     * @param {boolean} [monsterConfig.saveFailedJobs] - Whether to save failed jobs (requires opsStore)
-     * @param {Array} [monsterConfig.providers] - Array of translation providers
-     * @param {object} [monsterConfig.analyzers] - Additional analyzers to merge with default analyzers
-     * @param {string|boolean} [monsterConfig.sourceDB] - Filename for the source database
-     * @param {string|boolean} [monsterConfig.tmDB] - Filename for the translation memory database
-     * @param {Intl.NumberFormat} [monsterConfig.currencyFormatter] - Custom currency formatter
-     * @param {Function} [monsterConfig.init] - Optional initialization function called during init()
+     * @param {L10nMonsterConfig} monsterConfig - Configuration object for the MonsterManager
      */
     constructor(monsterConfig) {
         this.monsterConfig = monsterConfig;
@@ -50,6 +55,18 @@ export class MonsterManager {
         this.tmm = new TMManager(this.#dalManager);
 
         this.dispatcher = new Dispatcher(monsterConfig.providers);
+
+        const createHandler = action => (opts => action(this, opts ?? {}));
+        const flattenedActions = [];
+        for (const action of monsterConfig.actions) {
+            if (action.subActions) {
+                action.subActions.forEach(subAction => flattenedActions.push([ subAction.name, createHandler(subAction.action) ]));
+            } else {
+                flattenedActions.push([ action.name, createHandler(action.action) ]);
+            }
+        }
+        this.l10n = Object.fromEntries(flattenedActions);
+        logVerbose`Registered actions: ${flattenedActions.map(e => e[0]).join(', ')}`;
 
         this.analyzers = { ...analyzers, ...monsterConfig.analyzers };
         this.currencyFormatter = monsterConfig.currencyFormatter || new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
@@ -76,6 +93,35 @@ export class MonsterManager {
         logVerbose`MonsterManager initialized!`;
     }
 
+        /**
+     * Runs the localization process with the given global options and callback.
+     * @param {L10nMonsterConfig} monsterConfig - The configuration object for the MonsterManager
+     * @param {Function} cb - The callback function to execute after initialization.
+     * @returns {Promise} Returns a promise that resolves with the response from the callback.
+     * @throws {string} Throws an error if the localization process fails.
+     */
+    static async run(monsterConfig, cb) {
+        try {
+            const mm = new MonsterManager(monsterConfig);
+            await mm.init();
+            let response, error;
+            try {
+                response = await cb(mm);
+            } catch(e) {
+                error = e;
+            } finally {
+                mm && (await mm.shutdown());
+            }
+            if (error) {
+                throw error;
+            }
+            return response;
+        } catch(e) {
+            e.message && (e.message = `Unable to run L10nMonsterConfig: ${e.message}`);
+            throw e;
+        }
+    }
+    
     // register an async function to be called during shutdown
     scheduleForShutdown(func) {
         this.#functionsForShutdown.push(func);

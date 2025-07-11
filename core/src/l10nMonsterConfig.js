@@ -1,6 +1,6 @@
-import { setVerbosity, setRegressionMode, setBaseDir, logVerbose } from './l10nContext.js';
+import { setBaseDir, logVerbose, setVerbosity, setRegressionMode } from './l10nContext.js';
 import { MonsterManager } from './monsterManager/index.js';
-import * as actions from './actions/index.js';
+import * as defaultActions from './actions/index.js';
 import { Channel } from './entities/channel.js';
 import { Normalizer } from './entities/normalizer.js';
 import { FormatHandler } from './entities/formatHandler.js';
@@ -354,66 +354,63 @@ export class L10nMonsterConfig {
     opsStore;
 
     /** @type {Array} List of actions available for the localization process. */
-    actions = Object.values(actions);
+    actions = Object.values(defaultActions);
 
     static configMancerSample = {
         '@': '@l10nmonster/core:IL10nMonsterConfig',
-        channels: {},
-        formats: {},
-        providers: [],
-        autoSnap: true,
-        saveFailedJobs: false,
-        tmStores: {},
-        opsStore: {
+        baseDir: 'relative/path/to/base',
+        $channels: {},
+        $providers: [],
+        $autoSnap: true,
+        $saveFailedJobs: false,
+        $tmStores: {},
+        $opsStore: {
             '@': '@l10nmonster/core:IOpsStore'
         },
-        actions: [Function],
-        analyzers: [Function],
-        currencyFormatter: {
+        $actions: [Function],
+        $analyzers: [Function],
+        $currencyFormatter: {
             '@': 'Intl.NumberFormat'
         },
-        sourceDB: 'source.db',
-        tmDB: 'tm.db'
+        $sourceDB: 'source.db',
+        $tmDB: 'tm.db'
     };
 
     static configMancerFactory(obj) {
         const instance = new L10nMonsterConfig(obj.baseDir);
+        
         if (obj.channels !== undefined) {
-            instance.channels = obj.channels;
+            // channels is an object map, convert to array for the channel() method
+            Object.values(obj.channels).forEach(channel => instance.channel(channel));
         }
-        if (obj.formats !== undefined) {
-            instance.formats = obj.formats;
-        }
+        
         if (obj.providers !== undefined) {
-            instance.providers = obj.providers;
+            instance.provider(obj.providers);
         }
-        if (obj.autoSnap !== undefined) {
-            instance.autoSnap = obj.autoSnap;
-        }
-        if (obj.saveFailedJobs !== undefined) {
-            instance.saveFailedJobs = obj.saveFailedJobs;
-        }
+        
         if (obj.tmStores !== undefined) {
-            instance.tmStores = obj.tmStores;
+            // tmStores is an object map, convert to array for the tmStore() method
+            Object.values(obj.tmStores).forEach(store => instance.tmStore(store));
         }
-        if (obj.opsStore !== undefined) {
-            instance.opsStore = obj.opsStore;
-        }
+        
         if (obj.actions !== undefined) {
-            instance.actions = obj.actions;
+            obj.actions.forEach(action => instance.action(action));
         }
-        if (obj.analyzers !== undefined) {
-            instance.analyzers = obj.analyzers;
+        
+        // Use operations() method for operations-related configuration
+        const opsConfig = {};
+        if (obj.autoSnap !== undefined) opsConfig.autoSnap = obj.autoSnap;
+        if (obj.saveFailedJobs !== undefined) opsConfig.saveFailedJobs = obj.saveFailedJobs;
+        if (obj.analyzers !== undefined) opsConfig.analyzers = obj.analyzers;
+        if (obj.opsStore !== undefined) opsConfig.opsStore = obj.opsStore;
+        if (obj.currencyFormatter !== undefined) opsConfig.currencyFormatter = obj.currencyFormatter;
+        if (obj.sourceDB !== undefined) opsConfig.sourceDB = obj.sourceDB;
+        if (obj.tmDB !== undefined) opsConfig.tmDB = obj.tmDB;
+        
+        if (Object.keys(opsConfig).length > 0) {
+            instance.operations(opsConfig);
         }
-        if (obj.currencyFormatter !== undefined) {
-            instance.currencyFormatter = obj.currencyFormatter;
-        }
-        if (obj.sourceDB !== undefined) {
-            instance.sourceDB = obj.sourceDB;
-        }
-        if (obj.tmDB !== undefined) {
-            instance.tmDB = obj.tmDB;
-        }
+        
         return instance;
     }
 
@@ -524,6 +521,26 @@ export class L10nMonsterConfig {
     }
 
     /**
+     * Sets the verbosity level for logging.
+     * @param {number} level - The verbosity level to set.
+     * @returns {L10nMonsterConfig} Returns the instance for method chaining.
+     */
+    verbose(level) {
+        level !== undefined && setVerbosity(level);
+        return this;
+    }
+
+    /**
+     * Sets the regression mode for testing.
+     * @param {boolean} mode - The regression mode to set.
+     * @returns {L10nMonsterConfig} Returns the instance for method chaining.
+     */
+    regression(mode) {
+        mode !== undefined && setRegressionMode(mode);
+        return this;
+    }
+
+    /**
      * An optional initialization callback to finish initilizing async children before use.
      * @param {MonsterManager} [mm] - The initialized instance of Monster Manager
      * @return {Promise<void>}
@@ -535,45 +552,12 @@ export class L10nMonsterConfig {
 
     /**
      * Runs the localization process with the given global options and callback.
-     * @param {Record<string, any>} globalOptions - The global options for the localization process.
      * @param {Function} cb - The callback function to execute after initialization.
      * @returns {Promise} Returns a promise that resolves with the response from the callback.
      * @throws {string} Throws an error if the localization process fails.
      */
-    async run(globalOptions, cb) {
-        setVerbosity(globalOptions.verbose);
-        setRegressionMode(globalOptions.regression);
-
-        try {
-            const mm = new MonsterManager(this);
-            await mm.init();
-            const createHandler = action => (opts => action(mm, { ...globalOptions, ...opts}));
-            const flattenedActions = [];
-            for (const action of this.actions) {
-                if (action.subActions) {
-                    action.subActions.forEach(subAction => flattenedActions.push([ subAction.name, createHandler(subAction.action) ]));
-                } else {
-                    flattenedActions.push([ action.name, createHandler(action.action) ]);
-                }
-            }
-            logVerbose`Registered actions: ${flattenedActions.map(e => e[0]).join(', ')}`;
-            const l10n = Object.fromEntries(flattenedActions);
-            let response, error;
-            try {
-                response = await cb(l10n, mm);
-            } catch(e) {
-                error = e;
-            } finally {
-                mm && (await mm.shutdown());
-            }
-            if (error) {
-                throw error;
-            }
-            return response;
-        } catch(e) {
-            e.message && (e.message = `Unable to run L10nMonsterConfig: ${e.message}`);
-            throw e;
-        }
+    async run(cb) {
+        return await MonsterManager.run(this, cb);
     }
 }
 

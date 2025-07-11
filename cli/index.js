@@ -59,7 +59,9 @@ export default async function runMonsterCLI(monsterConfig, cliCommand) {
         .option('-v, --verbose [level]', '0=error, 1=warning, 2=info, 3=verbose', intOptionParser)
         .option('--regression', 'keep variables constant during regression testing');
     try {
-        const l10nRunner = async (cb) => await monsterConfig.run(monsterCLI.opts(), async l10n => await cb(l10n));
+        const { verbose, regression } = monsterCLI.opts();
+        monsterConfig.verbose(verbose).regression(regression);
+        const l10nRunner = async (cb) => await monsterConfig.run(async mm => await cb(mm.l10n));
         monsterConfig.actions.forEach(Action => {
             const cmd = monsterCLI.command(Action.name);
             if (Action.subActions) {
@@ -72,7 +74,7 @@ export default async function runMonsterCLI(monsterConfig, cliCommand) {
             } else {
                 configureCommand(cmd, Action, l10nRunner);
             }
-            });
+        });
         const argv = typeof cliCommand === 'string' ? cliCommand.split(' ') : cliCommand;
         await monsterCLI.parseAsync(argv);
     } catch(e) {
