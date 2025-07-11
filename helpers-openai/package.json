@@ -11,7 +11,7 @@
     "license": "MIT",
     "dependencies": {
         "openai": "^5",
-        "zod": "^3.25"
+        "zod": "^4"
     },
     "peerDependencies": {
         "@l10nmonster/core": "^3.0.0-alpha.0"
