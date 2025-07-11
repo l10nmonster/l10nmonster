@@ -1,5 +1,6 @@
 {
     "version": "3.0.0-alpha.2",
+    "type": "module",
     "workspaces": [
         "core",
         "cli",
@@ -8,7 +9,11 @@
         "server"
     ],
     "scripts": {
-        "test": "npm run test --workspaces --if-present && npm run test:regression",
+        "test": "npm run test:enhanced && npm run test:regression",
+        "test:enhanced": "node scripts/test-runner.js",
+        "test:enhanced:fail-fast": "node scripts/test-runner.js --fail-fast",
+        "test:enhanced:verbose": "node scripts/test-runner.js --verbose",
+        "test:enhanced:unit-only": "node scripts/test-runner.js --unit-only",
         "test:regression": "cd regression && ./test.zsh js local all && ./test.zsh cli local all",
         "eslint": "eslint core/src/**/*.js cli/*.js",
         "eslint:files": "npm run eslint | grep -e '^/.*js$'",
