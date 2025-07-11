@@ -81,7 +81,7 @@ TM entries include quality scores, timestamps, and job provenance for intelligen
 
 ### Key Technologies
 
-- **Node.js ES Modules**: Requires Node.js >=20.12.0
+- **Node.js ES Modules**: Requires Node.js >=22.11.0
 - **SQLite**: Better-sqlite3 for local storage
 - **Winston**: Structured logging
 - **Nanoid**: Unique ID generation

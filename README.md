@@ -66,7 +66,7 @@ v3 introduces a modern ESM-based monorepo architecture with npm workspaces, prov
 
 ## Prerequisites
 
-- **Node.js**: >=20.12.0 (ESM support required)
+- **Node.js**: >=22.11.0 (ESM support required)
 - **Package Manager**: npm
 - **Configuration**: `l10nmonster.config.mjs` (ESM format)
 

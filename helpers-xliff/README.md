@@ -301,7 +301,7 @@ const provider = new XliffBridge();
 
 ## Requirements
 
-- Node.js >= 20.12.0
+- Node.js >= 22.11.0
 - @l10nmonster/core (peer dependency)
 
 ## Related Documentation

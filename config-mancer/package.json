@@ -15,5 +15,8 @@
         "validation",
         "json",
         "proxy"
-    ]
+    ],
+    "engines": {
+        "node": ">=22.11.0"
+    }
 }

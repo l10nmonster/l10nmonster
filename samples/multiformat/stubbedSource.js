@@ -1,11 +1,11 @@
-module.exports = class StubbedSource {
+export default class StubbedSource {
     #stubbedResources;
 
     constructor(stubbedResources) {
         this.#stubbedResources = stubbedResources;
     }
 
-    async* fetchAllResources() {
+    async *fetchAllResources() {
         for (const resource of this.#stubbedResources) {
             // eslint-disable-next-line no-unused-vars
             const { segments, ...stats } = resource; // Extract stats similar to old fetchResourceStats

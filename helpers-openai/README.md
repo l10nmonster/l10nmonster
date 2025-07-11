@@ -86,7 +86,7 @@ npm test
 
 ## Requirements
 
-- Node.js >= 20.12.0
+- Node.js >= 22.11.0
 - OpenAI API key or compatible endpoint
 
 ## Features

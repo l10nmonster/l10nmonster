@@ -365,7 +365,7 @@ import { Filter, i18next } from '@l10nmonster/helpers-json';
 
 ## Requirements
 
-- Node.js >= 20.12.0
+- Node.js >= 22.11.0
 - @l10nmonster/core (peer dependency)
 
 ## Related Documentation

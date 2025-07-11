@@ -185,7 +185,7 @@ New strategic translation management:
 
 ### Workspace Architecture
 v3 supports monorepo workflows with:
-- pnpm workspace management
+- npm workspace management
 - Shared configuration inheritance
 - Cross-package dependency resolution
 - Centralized tooling and testing

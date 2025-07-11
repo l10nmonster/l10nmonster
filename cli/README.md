@@ -363,7 +363,7 @@ jobs:
 
 2. **Module import errors**
    ```bash
-   # Verify Node.js version (requires >= 20.12.0)
+   # Verify Node.js version (requires >= 22.11.0)
    node --version
    ```
 

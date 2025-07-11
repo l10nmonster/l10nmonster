@@ -43,7 +43,7 @@ The tests are located in `test/index.test.js` and cover:
 
 ### Test Requirements
 
-- Node.js 18+ (for built-in test runner)
+- Node.js >= 22.11.0 (for built-in test runner)
 - No additional test dependencies required
 
 ## Dependencies

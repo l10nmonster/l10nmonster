@@ -85,13 +85,11 @@ export default class Task {
     async execute(options = {}) {
         const { parallelism = 1 } = options;
         
-        /*
-            create an execution plan.
-            start with root op and then enqueue dependencies whose status is not done.
-            recurse for each dependency making sure not to enqueue the same op twice.
-            save the execution plan into a private field.
-            execute the plan using desired parallelism.
-        */
+        // create an execution plan.
+        // start with root op and then enqueue dependencies whose status is not done.
+        // recurse for each dependency making sure not to enqueue the same op twice.
+        // save the execution plan into a private field.
+        // execute the plan using desired parallelism.
         let workToDo = true;
         while (workToDo) {
             const executableOps = this.#opList.filter(op => op.isReadyToExecute());
@@ -106,7 +104,20 @@ export default class Task {
                 
                 for (const batch of batches) {
                     const promises = batch.map(op => op.execute());
-                    await Promise.all(promises);
+                    const results = await Promise.allSettled(promises);
+                    
+                    // Check for any Promise rejections that weren't handled by operation.execute()
+                    const rejections = results.filter(result => result.status === 'rejected');
+                    if (rejections.length > 0) {
+                        // Log the rejections for debugging
+                        rejections.forEach((rejection, index) => {
+                            const op = batch[index];
+                            if (op) {
+                                op.state = 'error';
+                                op.output = rejection.reason?.message || String(rejection.reason);
+                            }
+                        });
+                    }
                     
                     // Check if any operation failed
                     const hasError = batch.some(op => op.state === 'error');

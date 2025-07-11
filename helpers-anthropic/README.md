@@ -97,7 +97,7 @@ The test suite includes:
 
 ## Requirements
 
-- Node.js >= 18.0.0
+- Node.js >= 22.11.0
 - Google Cloud Project with Vertex AI API enabled
 - Proper authentication setup for Google Cloud
 

@@ -28,7 +28,7 @@
     },
     "homepage": "https://github.com/l10nmonster/l10nmonster#readme",
     "engines": {
-        "node": ">=20"
+        "node": ">=22.11.0"
     },
     "dependencies": {
         "commander": "^14",
