@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mv:*)",
+      "Bash(npm test)",
+      "Bash(find:*)",
+      "Bash(npm run eslint:*)",
+      "Bash(npm run lint)",
+      "WebFetch(domain:www.chakra-ui.com)"
+    ],
+    "deny": []
+  }
+}

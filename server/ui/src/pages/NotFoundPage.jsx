@@ -1,24 +1,26 @@
 import React from 'react';
-import { Container, Typography, Button, Box } from '@mui/material';
+import { Container, Text, Button, Box } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
 
 const NotFoundPage = () => {
   return (
-    <Container maxWidth="sm" sx={{ textAlign: 'center', mt: 8 }}>
-      <Typography variant="h1" gutterBottom>
+    <Container maxWidth="sm" textAlign="center" mt={20}>
+      <Text fontSize="6xl" fontWeight="bold" mb={4}>
         404
-      </Typography>
-      <Typography variant="h5" gutterBottom>
+      </Text>
+      <Text fontSize="2xl" fontWeight="medium" mb={2}>
         Page Not Found
-      </Typography>
-      <Typography color="text.secondary" sx={{ mb: 4 }}>
+      </Text>
+      <Text color="fg.muted" mb={8}>
         Sorry, the page you are looking for does not exist.
-      </Typography>
-      <Button variant="contained" component={RouterLink} to="/">
-        Go to Home
+      </Text>
+      <Button asChild colorPalette="brand" size="lg">
+        <RouterLink to="/">
+          Go to Home
+        </RouterLink>
       </Button>
     </Container>
   );
 };
 
-export default NotFoundPage;
+export default NotFoundPage; 

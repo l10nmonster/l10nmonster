@@ -1,30 +1,36 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, IconButton, Box } from '@mui/material';
+import { Box, Flex, Heading, IconButton } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
-import LanguageIcon from '@mui/icons-material/Language'; // Placeholder logo
-import AccountCircle from '@mui/icons-material/AccountCircle';
+import { Globe, User } from 'lucide-react';
 
 const Header = () => {
   return (
-    <AppBar position="static">
-      <Toolbar>
-        {/* Logo and Title linked to Home */}
-        <Box sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'inherit', flexGrow: 1 }} component={RouterLink} to="/">
-          <IconButton edge="start" color="inherit" aria-label="logo" sx={{ mr: 1 }}>
-            <LanguageIcon /> {/* Replace with your actual logo component/image */}
-          </IconButton>
-          <Typography variant="h6" component="div">
-            L10n Monster
-          </Typography>
-        </Box>
-
-        {/* Optional: Right side icons */}
-        <IconButton color="inherit">
-          <AccountCircle />
+    <Box bg="blue.600" color="white" px={4} py={3}>
+      <Flex justify="space-between" align="center">
+        <Flex
+          as={RouterLink}
+          to="/"
+          align="center"
+          gap={2}
+          textDecoration="none"
+          color="inherit"
+          _hover={{ opacity: 0.8 }}
+        >
+          <Globe size={24} />
+          <Heading size="lg">L10n Monster</Heading>
+        </Flex>
+        
+        <IconButton 
+          variant="ghost"
+          colorPalette="gray"
+          aria-label="Account"
+          size="lg"
+        >
+          <User />
         </IconButton>
-      </Toolbar>
-    </AppBar>
+      </Flex>
+    </Box>
   );
 };
 
-export default Header;
+export default Header; 

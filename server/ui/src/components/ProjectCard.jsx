@@ -1,42 +1,69 @@
 import React from 'react';
-import { Card, CardContent, Typography, LinearProgress, Box } from '@mui/material';
+import { Card, Text, Box, Flex } from '@chakra-ui/react';
 
 const ProjectCard = ({ project }) => {
-    const { sourceLang, targetLang, resCount, segmentCount, translationStatus } = project;
-    const pairSummary = { untranslated: 0, "in flight": 0, translated: 0, "low quality": 0, words: 0, chars: 0 };
-    for (const { minQ, q, seg, words, chars } of translationStatus) {
-        const tuType = q === null ? 'untranslated' : (q === 0 ? 'in flight' : (q >= minQ ? 'translated' : 'low quality'));
-        pairSummary[tuType] += seg;
-        pairSummary.words += words;
-        pairSummary.chars += chars;
-    }
-    const pctTranslated = Math.round(pairSummary.translated / segmentCount * 100);
-    const otherTranslations = `${pairSummary['in flight'] ? `pairSummary['in flight'] in flight` : ''} ${pairSummary['low quality'] ? `pairSummary['low quality'] low quality` : ''}`;
+  const { sourceLang, targetLang, resCount, segmentCount, translationStatus } = project;
+  
+  const pairSummary = { 
+    untranslated: 0, 
+    "in flight": 0, 
+    translated: 0, 
+    "low quality": 0, 
+    words: 0, 
+    chars: 0 
+  };
+  
+  for (const { minQ, q, seg, words, chars } of translationStatus) {
+    const tuType = q === null ? 'untranslated' : (q === 0 ? 'in flight' : (q >= minQ ? 'translated' : 'low quality'));
+    pairSummary[tuType] += seg;
+    pairSummary.words += words;
+    pairSummary.chars += chars;
+  }
+  
+  const pctTranslated = Math.round(pairSummary.translated / segmentCount * 100);
 
   return (
-    <Card variant="outlined">
-      <CardContent>
-        <Typography variant="h6" component="div" gutterBottom>
+    <Card.Root variant="outline">
+      <Card.Body>
+        <Text fontSize="lg" fontWeight="semibold" mb={2}>
           {sourceLang} → {targetLang}
-        </Typography>
-        {/* <Typography sx={{ mb: 1 }} color="text.secondary">
-          Status: {status}
-        </Typography> */}
-        <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-          <Box sx={{ width: '100%', mr: 1 }}>
-            <LinearProgress variant="determinate" value={pctTranslated} />
-          </Box>
-          <Box sx={{ minWidth: 35 }}>
-            <Typography variant="body2" color="text.secondary">{`${pctTranslated}%`}</Typography>
-          </Box>
+        </Text>
+        
+        <Box mb={3}>
+          <Flex align="center" gap={2} mb={1}>
+            <Box 
+              flex="1" 
+              bg="gray.200" 
+              rounded="full" 
+              height="6px" 
+              position="relative"
+            >
+              <Box 
+                bg="blue.500" 
+                height="100%" 
+                rounded="full" 
+                width={`${pctTranslated}%`}
+                transition="width 0.3s ease"
+              />
+            </Box>
+            <Text fontSize="sm" color="gray.600" minW="45px">
+              {pctTranslated}%
+            </Text>
+          </Flex>
         </Box>
-        <Typography variant="body2">Resources: {resCount}</Typography>
-        <Typography variant="body2">Segments: {segmentCount}</Typography>
-        <Typography variant="body2">Words: {pairSummary.words}</Typography>
-        {pairSummary.translated < segmentCount && (<Typography variant="body2" sx={{ color: 'warning.main' }}>Untranslated: {segmentCount - pairSummary.translated} segments</Typography>)}
-      </CardContent>
-    </Card>
+        
+        <Text fontSize="sm">Resources: {resCount}</Text>
+        <Text fontSize="sm">Segments: {segmentCount}</Text>
+        <Text fontSize="sm">Words: {pairSummary.words}</Text>
+        
+        {pairSummary.untranslated > 0 && (
+          <Text fontSize="sm" color="orange.600">
+            Untranslated: {pairSummary.untranslated} segments
+          </Text>
+        )}
+      </Card.Body>
+    </Card.Root>
   );
 };
 
-export default ProjectCard;
+export default ProjectCard; 
