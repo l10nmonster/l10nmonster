@@ -52,13 +52,13 @@ const ProjectCard = ({ project }) => {
           </Flex>
         </Box>
         
-        <Text fontSize="sm">Resources: {resCount}</Text>
-        <Text fontSize="sm">Segments: {segmentCount}</Text>
-        <Text fontSize="sm">Words: {pairSummary.words}</Text>
+        <Text fontSize="sm">Resources: {resCount.toLocaleString()}</Text>
+        <Text fontSize="sm">Segments: {segmentCount.toLocaleString()}</Text>
+        <Text fontSize="sm">Words: {pairSummary.words.toLocaleString()}</Text>
         
         {pairSummary.untranslated > 0 && (
           <Text fontSize="sm" color="orange.600">
-            Untranslated: {pairSummary.untranslated} segments
+            Untranslated: {pairSummary.untranslated.toLocaleString()} segments
           </Text>
         )}
       </Card.Body>

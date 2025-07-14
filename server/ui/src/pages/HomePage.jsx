@@ -68,19 +68,71 @@ const HomePage = () => {
 
   return (
     <Container maxWidth="6xl" mt={4} mb={4}>
-      <Text fontSize="4xl" fontWeight="medium" mb={2}>
-        Localization Dashboard
-      </Text>
-      <Text fontSize="lg" color="gray.600" mb={4}>
-        Overview of translation activity across all language pairs.
-      </Text>
+      <Box 
+        bg="gradient-to-r"
+        bgGradient="linear(to-r, blue.50, purple.50)"
+        p={8}
+        borderRadius="xl"
+        mb={8}
+        borderWidth="1px"
+        borderColor="gray.200"
+        position="relative"
+        overflow="hidden"
+      >
+        <Box position="relative" zIndex="1">
+          <Text 
+            fontSize="5xl" 
+            fontWeight="bold" 
+            mb={3}
+            bgGradient="to-r"
+            gradientFrom="blue.600"
+            gradientTo="purple.600"
+            bgClip="text"
+            letterSpacing="tight"
+          >
+            Localization Dashboard
+          </Text>
+          <Text 
+            fontSize="xl" 
+            color="gray.700" 
+            mb={0}
+            fontWeight="medium"
+            maxWidth="600px"
+            lineHeight="1.6"
+          >
+            Overview of translation activity across all language pairs
+          </Text>
+        </Box>
+        
+        {/* Decorative elements */}
+        <Box
+          position="absolute"
+          top="-10px"
+          right="-10px"
+          width="100px"
+          height="100px"
+          bg="blue.100"
+          borderRadius="full"
+          opacity="0.3"
+        />
+        <Box
+          position="absolute"
+          bottom="-20px"
+          left="-20px"
+          width="80px"
+          height="80px"
+          bg="purple.100"
+          borderRadius="full"
+          opacity="0.4"
+        />
+      </Box>
 
       {/* Iterate over source languages */}
-      {Object.entries(statusData).map(([sourceLang, targetLangs]) => (
-        Object.entries(targetLangs).map(([targetLang, projects]) => (
-          Object.entries(projects).map(([projectName, channels]) => (
-            <Box 
-              key={`${sourceLang}-${targetLang}-${projectName}`} 
+      {Object.entries(statusData).map(([channelId, projects]) => (
+        Object.entries(projects).map(([projectName, pairs]) => (
+          Object.entries(pairs).map(([sourceLang, targetLangs]) => (
+              <Box 
+              key={`${sourceLang}-${channelId}-${projectName}`} 
               mb={6} 
               p={3} 
               borderWidth="1px" 
@@ -88,10 +140,24 @@ const HomePage = () => {
               bg="white"
               borderColor="gray.200"
             >
-              <Text fontSize="2xl" mt={0}>Project: {projectName}</Text>
+              <Box display="flex" alignItems="center" gap={3} flexWrap="wrap">
+                <Box>
+                  <Text fontSize="sm" color="gray.600" mb={1}>Channel</Text>
+                  <Text fontSize="xl" fontWeight="semibold" color="blue.600">
+                    {channelId}
+                  </Text>
+                </Box>
+                <Box height="40px" width="1px" bg="gray.300" />
+                <Box>
+                  <Text fontSize="sm" color="gray.600" mb={1}>Project</Text>
+                  <Text fontSize="xl" fontWeight="semibold" color="green.600">
+                    {projectName}
+                  </Text>
+                </Box>
+              </Box>
 
               <Grid templateColumns="repeat(auto-fit, minmax(300px, 1fr))" gap={4} mt={4}>
-                {Object.entries(channels).map(([channelId, translationStatusArray]) => {
+                {Object.entries(targetLangs).map(([targetLang, translationStatusArray]) => {
                   // Calculate totals from the translation status array
                   const resCount = translationStatusArray.reduce((sum, item) => sum + item.res, 0);
                   const segmentCount = translationStatusArray.reduce((sum, item) => sum + item.seg, 0);
