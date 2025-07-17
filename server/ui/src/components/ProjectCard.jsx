@@ -58,7 +58,7 @@ const ProjectCard = ({ project }) => {
         
         {pairSummary.untranslated > 0 && (
           <Text fontSize="sm" color="orange.600">
-            Untranslated: {pairSummary.untranslated.toLocaleString()} segments
+            Untranslated segments: {pairSummary.untranslated.toLocaleString()}
           </Text>
         )}
       </Card.Body>

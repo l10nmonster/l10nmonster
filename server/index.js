@@ -2,7 +2,13 @@ import express from 'express';
 import cors from 'cors';
 import path from 'path';
 import open from 'open';
-import * as mockData from './mockData.js'; // Import named exports, add .js extension
+import { readFileSync } from 'fs';
+import { getBaseDir } from '@l10nmonster/core';
+import { setupStatusRoute } from './routes/status.js';
+import { setupActiveContentStatsRoute } from './routes/sources.js';
+import { setupTmRoutes } from './routes/tm.js';
+
+const serverPackage = JSON.parse(readFileSync(path.join(import.meta.dirname, 'package.json'), 'utf-8'));
 
 export default class serve {
     static help = {
@@ -24,55 +30,18 @@ export default class serve {
         // === API Routes ===
         const apiRouter = express.Router();
 
-        // GET /api/status
-        apiRouter.get('/status', async (req, res) => {
-            try {
-                const status = await mm.getTranslationStatus();
-                
-                // Transform the structure from:
-                // source_lang -> target_lang -> channel -> project -> data
-                // to:
-                // channel -> project -> source_lang -> target_lang -> data
-                const flippedStatus = {};
-                
-                for (const [sourceLang, targetLangs] of Object.entries(status)) {
-                    for (const [targetLang, channels] of Object.entries(targetLangs)) {
-                        for (const [channelId, projects] of Object.entries(channels)) {
-                            for (const [projectName, data] of Object.entries(projects)) {
-                                // Initialize nested structure if it doesn't exist
-                                flippedStatus[channelId] ??= {};
-                                flippedStatus[channelId][projectName] ??= {};
-                                flippedStatus[channelId][projectName][sourceLang] ??= {};
-                                
-                                // Set the data at the new location
-                                flippedStatus[channelId][projectName][sourceLang][targetLang] = data;
-                            }
-                        }
-                    }
-                }
-                
-                res.json(flippedStatus);
-            } catch (error) {
-                console.error('Error fetching status: ', error);
-                res.status(500).json({ message: 'Problems fetching status data' });
-            }
+        apiRouter.get('/info', async (req, res) => {
+            res.json({
+                version: serverPackage.version,
+                description: serverPackage.description,
+                baseDir: getBaseDir(),
+            });
         });
-
-        // GET /api/untranslated/:sourceLang/:targetLang
-        apiRouter.get('/untranslated/:sourceLang/:targetLang', (req, res) => {
-            const { sourceLang, targetLang } = req.params;
-            const pairKey = `${sourceLang}_${targetLang}`;
-            const content = mockData.untranslatedContent[pairKey] || [];
-            res.json(content);
-        });
-
-        // GET /api/tm/stats/:sourceLang/:targetLang
-        apiRouter.get('/tm/stats/:sourceLang/:targetLang', (req, res) => {
-            const { sourceLang, targetLang } = req.params;
-            const pairKey = `${sourceLang}_${targetLang}`;
-            const tmInfo = mockData.tmData[pairKey] || { summary: { totalUnits: 0, lastUpdated: 'N/A' }, units: [] };
-            res.json(tmInfo);
-        });
+    
+        // Setup routes from separate files
+        setupStatusRoute(apiRouter, mm);
+        setupActiveContentStatsRoute(apiRouter, mm);
+        setupTmRoutes(apiRouter, mm);
 
         // Mount the API router under the /api prefix
         app.use('/api', apiRouter);

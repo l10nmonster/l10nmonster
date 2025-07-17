@@ -26,6 +26,7 @@ import { analyzeCmd } from './analyze.js';
 export class MonsterManager {
     #dalManager;
     #tmStores = {};
+    #configInitializer;
     #functionsForShutdown = [];
     saveFailedJobs = false;
 
@@ -33,7 +34,7 @@ export class MonsterManager {
      * @param {L10nMonsterConfig} monsterConfig - Configuration object for the MonsterManager
      */
     constructor(monsterConfig) {
-        this.monsterConfig = monsterConfig;
+        this.#configInitializer = monsterConfig.init?.bind(monsterConfig);
 
         this.#dalManager = new DALManager(monsterConfig.sourceDB, monsterConfig.tmDB);
 
@@ -89,7 +90,7 @@ export class MonsterManager {
         await this.tmm.init(this);
         await this.dispatcher.init(this);
         await this.rm.init(this);
-        typeof this.monsterConfig.init === 'function' && await this.monsterConfig.init(this);
+        typeof this.#configInitializer === 'function' && await this.#configInitializer(this);
         logVerbose`MonsterManager initialized!`;
     }
 

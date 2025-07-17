@@ -6,7 +6,13 @@
       "Bash(find:*)",
       "Bash(npm run eslint:*)",
       "Bash(npm run lint)",
-      "WebFetch(domain:www.chakra-ui.com)"
+      "WebFetch(domain:www.chakra-ui.com)",
+      "Bash(npm run dev:*)",
+      "WebFetch(domain:v3.chakra-ui.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:chakra-ui.com)",
+      "Bash(npm run build:*)",
+      "Bash(rm:*)"
     ],
     "deny": []
   }

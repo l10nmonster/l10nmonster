@@ -42,6 +42,24 @@ cd regression && ./test.zsh js local android # Test specific case
 ```
 Runs comprehensive regression tests from the /regression directory.
 
+### Server Development
+```bash
+cd server
+npm run dev      # Run Vite dev server on port 5173
+npm run build    # Build production UI
+npm run preview  # Preview production build
+npm run test     # Run frontend tests
+npm run test:server  # Run server tests
+npm run lint     # Lint frontend code
+npm run format   # Format frontend code with Prettier
+```
+
+To run the L10n Monster server with UI:
+```bash
+cd samples/CardboardSDK/l10nmonster  # Navigate to a project with l10nmonster.config.mjs
+npx l10n serve --port 9691 --ui      # Start server with web UI
+```
+
 ## Architecture
 
 L10n Monster is a headless, serverless Translation Management System (TMS) designed for continuous localization workflows. The codebase is organized as a monorepo with workspaces.
@@ -61,6 +79,12 @@ L10n Monster is a headless, serverless Translation Management System (TMS) desig
 - `helpers-json`, `helpers-po`, `helpers-xliff`: File format handlers  
 - `helpers-openai`, `helpers-anthropic`, `helpers-googlecloud`: AI/ML translation providers
 - `helpers-lqaboss`: LQA Boss flow capture for visual translation review
+
+**@l10nmonster/server**: Web-based management UI (beta):
+- **Backend**: Express.js server implemented as L10n Monster action, serves API endpoints with real project data
+- **Frontend**: React 19 + Chakra UI 3.0 + TypeScript, built with Vite
+- **Architecture**: Server must run within L10n Monster project directory to access MonsterManager instance
+- **API Endpoints**: `/api/status`, `/api/untranslated/:sourceLang/:targetLang`, `/api/tm/stats/:sourceLang/:targetLang`
 
 ### Configuration System
 
