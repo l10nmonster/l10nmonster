@@ -15,6 +15,7 @@ const TranslatorAnnotation = z.array(z.object({
  * @extends LLMTranslationProviderOptions
  * @property {string} [baseURL] - The base URL (https://api.openai.com by default)
  * @property {string} [apiKey] - The LLM provder API key (if needed).
+ * @property {string} [reasoningEffort] - The reasoning effort level: "none", "low", "medium", or "high"
  */
 
 /**
@@ -24,15 +25,25 @@ export class GPTAgent extends providers.LLMTranslationProvider {
     #openai;
     #baseURL;
     #apiKey;
+    #reasoningEffort;
 
     /**
      * Initializes a new instance of the GPTAgent class.
      * @param {GPTAgentOptions} options - Configuration options for the provider.
      */
-    constructor({ baseURL, apiKey, ...options }) {
+    constructor({ baseURL, apiKey, reasoningEffort, ...options }) {
         super(options);
         this.#baseURL = baseURL;
         this.#apiKey = apiKey ?? '';
+        
+        if (reasoningEffort !== undefined) {
+            const validValues = ['none', 'low', 'medium', 'high'];
+            if (!validValues.includes(reasoningEffort)) {
+                throw new Error(`Invalid reasoningEffort value: "${reasoningEffort}". Must be one of: ${validValues.join(', ')}`);
+            }
+        }
+        
+        this.#reasoningEffort = reasoningEffort;
     }
 
     // Lazy initialization to defer OpenAI client creation until first use
@@ -49,7 +60,7 @@ export class GPTAgent extends providers.LLMTranslationProvider {
 
     prepareTranslateChunkArgs({ sourceLang, targetLang, xmlTus, instructions }) {
         const userPrompt = this.buildUserPrompt({ sourceLang, targetLang, xmlTus, instructions });
-        return {
+        const args = {
             model: this.model,
             temperature: this.temperature,
             messages: [
@@ -58,7 +69,14 @@ export class GPTAgent extends providers.LLMTranslationProvider {
             ],
             // eslint-disable-next-line camelcase
             response_format: zodResponseFormat(this.customSchema ?? TranslatorAnnotation, 'translations'),
-          };
+        };
+        
+        if (this.#reasoningEffort) {
+            // eslint-disable-next-line camelcase
+            args.reasoning_effort = this.#reasoningEffort;
+        }
+        
+        return args;
     }
 
     async generateContent(args) {
