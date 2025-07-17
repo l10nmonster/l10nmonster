@@ -86,7 +86,7 @@ const Sources = () => {
             <Text color="gray.500">No active content found.</Text>
           </Box>
         ) : (
-          <Grid templateColumns="repeat(auto-fit, minmax(400px, 1fr))" gap={6}>
+          <VStack gap={6} align="stretch">
             {Object.entries(contentStats).map(([channelId, channelData]) => (
               <Box 
                 key={channelId}
@@ -101,9 +101,6 @@ const Sources = () => {
                   <Box>
                     <Text fontSize="xl" fontWeight="bold" color="blue.600" mb={2}>
                       {channelId}
-                    </Text>
-                    <Text fontSize="sm" color="gray.500">
-                      {channelData.length} content source{channelData.length !== 1 ? 's' : ''}
                     </Text>
                   </Box>
 
@@ -182,7 +179,7 @@ const Sources = () => {
                 </VStack>
               </Box>
             ))}
-          </Grid>
+          </VStack>
         )}
       </VStack>
     </Container>

@@ -34,7 +34,7 @@ export default class serve {
             res.json({
                 version: serverPackage.version,
                 description: serverPackage.description,
-                baseDir: getBaseDir(),
+                baseDir: path.resolve(getBaseDir()),
             });
         });
     
