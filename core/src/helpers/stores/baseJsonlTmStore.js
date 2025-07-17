@@ -189,7 +189,7 @@ export class BaseJsonlTmStore {
                         const out = [];
                         tus.forEach((tu, idx) => {
                             const { guid, jobGuid, rid, sid, nsrc, ntgt, notes, q, ts, ...tuProps } = tu;
-                            const row = { guid, rid, sid, q, ts };
+                            const row = { jobGuid, guid, rid, sid, q, ts };
                             nsrc && (row.nsrc = JSON.stringify(nsrc));
                             ntgt && (row.ntgt = JSON.stringify(ntgt));
                             notes && (row.notes = JSON.stringify(notes));
@@ -197,8 +197,8 @@ export class BaseJsonlTmStore {
                             idx === 0 && otherJobProps && (row.jobProps = JSON.stringify(otherJobProps));
                             out.push(JSON.stringify(row));
                         });
-                        // eslint-disable-next-line prefer-template
                         if (out.length > 0) {
+                            // eslint-disable-next-line prefer-template
                             yield out.join('\n') + '\n';
                         }
                     }
