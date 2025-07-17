@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/server",
-    "version": "3.0.0-alpha.3",
+    "version": "3.0.0-alpha.4",
     "description": "L10n Monster Manager",
     "type": "module",
     "main": "index.js",
@@ -27,7 +27,7 @@
         "test:watch": "vitest",
         "test:ui": "vitest --ui",
         "test:coverage": "vitest run --coverage",
-        "test:server": "node --test",
+        "test:server": "node --test test/*.js",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
         "format": "prettier --write \"ui/src/**/*.{js,jsx,ts,tsx,json,css,md}\"",

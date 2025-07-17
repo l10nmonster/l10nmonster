@@ -26,6 +26,31 @@ describe('L10n Monster Server Integration Tests', () => {
             }
           }
         }
+      }),
+      getActiveContentStats: async () => ({
+        'ios': [
+          {
+            prj: null,
+            sourceLang: 'en',
+            targetLangs: ['ar', 'it'],
+            segmentCount: 96,
+            resCount: 3,
+            lastModified: '2025-04-21T21:14:28.050Z'
+          }
+        ]
+      }),
+      getTmStats: async () => ({
+        'en': {
+          'ar': [
+            {
+              translationProvider: 'gemini-openai',
+              status: 'done',
+              tuCount: 31,
+              distinctGuids: 31,
+              jobCount: 1
+            }
+          ]
+        }
       })
     };
 
@@ -41,8 +66,19 @@ describe('L10n Monster Server Integration Tests', () => {
       app.use(cors());
       app.use(express.json());
 
-      // Add the API routes
-      app.get('/api/status', async (req, res) => {
+      // === API Routes ===
+      const apiRouter = express.Router();
+
+      apiRouter.get('/info', async (req, res) => {
+        res.json({
+          version: '3.0.0-alpha.3',
+          description: 'L10n Monster Manager',
+          baseDir: '/test/path',
+        });
+      });
+
+      // Status route
+      apiRouter.get('/status', async (req, res) => {
         try {
           const status = await mm.getTranslationStatus();
           res.json(status);
@@ -51,33 +87,28 @@ describe('L10n Monster Server Integration Tests', () => {
         }
       });
 
-      app.get('/api/untranslated/:sourceLang/:targetLang', (req, res) => {
-        const content = [
-          {
-            id: 'test1',
-            sourceText: 'Hello world',
-            channel: 'default',
-            project: 'test',
-            resourcePath: 'test.json'
-          }
-        ];
-        res.json(content);
+      // Active content stats route
+      apiRouter.get('/activeContentStats', async (req, res) => {
+        try {
+          const stats = await mm.getActiveContentStats();
+          res.json(stats);
+        } catch {
+          res.status(500).json({ message: 'Problems fetching active content stats' });
+        }
       });
 
-      app.get('/api/tm/stats/:sourceLang/:targetLang', (req, res) => {
-        const tmInfo = {
-          summary: { totalUnits: 100, lastUpdated: '2024-01-01' },
-          units: [
-            {
-              id: 'tm1',
-              sourceText: 'Hello',
-              targetText: 'Bonjour',
-              quality: 1
-            }
-          ]
-        };
-        res.json(tmInfo);
+      // TM stats route
+      apiRouter.get('/tm/stats', async (req, res) => {
+        try {
+          const stats = await mm.getTmStats();
+          res.json(stats);
+        } catch {
+          res.status(500).json({ message: 'Problems fetching TM stats' });
+        }
       });
+
+      // Mount the API router under the /api prefix
+      app.use('/api', apiRouter);
 
       return new Promise((resolve) => {
         server = app.listen(options.port, () => {
@@ -97,6 +128,18 @@ describe('L10n Monster Server Integration Tests', () => {
     }
   });
 
+  test('GET /api/info returns server information', async () => {
+    const response = await fetch(`${baseUrl}/api/info`);
+    assert.strictEqual(response.status, 200);
+    
+    const data = await response.json();
+    assert.ok(data);
+    assert.strictEqual(typeof data, 'object');
+    assert.ok(data.version);
+    assert.ok(data.description);
+    assert.ok(data.baseDir);
+  });
+
   test('GET /api/status returns translation status', async () => {
     const response = await fetch(`${baseUrl}/api/status`);
     assert.strictEqual(response.status, 200);
@@ -107,24 +150,29 @@ describe('L10n Monster Server Integration Tests', () => {
     assert.ok(data.default);
   });
 
-  test('GET /api/untranslated/:sourceLang/:targetLang returns content', async () => {
-    const response = await fetch(`${baseUrl}/api/untranslated/en/fr`);
-    assert.strictEqual(response.status, 200);
-    
-    const data = await response.json();
-    assert.ok(Array.isArray(data));
-    assert.strictEqual(data.length, 1);
-    assert.strictEqual(data[0].sourceText, 'Hello world');
-  });
-
-  test('GET /api/tm/stats/:sourceLang/:targetLang returns TM data', async () => {
-    const response = await fetch(`${baseUrl}/api/tm/stats/en/fr`);
+  test('GET /api/activeContentStats returns active content statistics', async () => {
+    const response = await fetch(`${baseUrl}/api/activeContentStats`);
     assert.strictEqual(response.status, 200);
     
     const data = await response.json();
     assert.ok(data);
-    assert.ok(Object.hasOwn(data, 'summary'));
-    assert.ok(Object.hasOwn(data, 'units'));
-    assert.strictEqual(data.summary.totalUnits, 100);
+    assert.strictEqual(typeof data, 'object');
+    assert.ok(data.ios);
+    assert.ok(Array.isArray(data.ios));
+    assert.strictEqual(data.ios.length, 1);
+    assert.strictEqual(data.ios[0].sourceLang, 'en');
+  });
+
+  test('GET /api/tm/stats returns TM statistics', async () => {
+    const response = await fetch(`${baseUrl}/api/tm/stats`);
+    assert.strictEqual(response.status, 200);
+    
+    const data = await response.json();
+    assert.ok(data);
+    assert.strictEqual(typeof data, 'object');
+    assert.ok(data.en);
+    assert.ok(data.en.ar);
+    assert.ok(Array.isArray(data.en.ar));
+    assert.strictEqual(data.en.ar[0].translationProvider, 'gemini-openai');
   });
 }); 

@@ -3,31 +3,67 @@ tests/
 test/
 *.test.js
 *.test.mjs
+*.test.jsx
+*.test.ts
+*.test.tsx
+*.spec.js
+*.spec.mjs
+*.spec.jsx
+*.spec.ts
+*.spec.tsx
+
+# Development directories
+.claude/
+.vscode/
+.idea/
+node_modules/
+coverage/
+.nyc_output/
 
 # Development files
-.vscode/
+.env
+.env.*
 *.gif
 *.drawio.svg
 vite.config.js
+vite.config.ts
 
-# UI source files (keep only built dist)
+# UI source files and config (keep only built dist)
 ui/src/
 ui/public/
 ui/index.html
+ui/.eslintrc.json
+ui/.prettierrc
+ui/tsconfig.json
+ui/tsconfig.node.json
+ui/.gitignore
+ui/node_modules/
 
-# Build artifacts
+# Build artifacts and temp files
 out/
 build/
+tmp/
+temp/
+*.tmp
+*.temp
 
 # Documentation (keep main README.md)
 docs/
 
 # IDE and editor files
-.idea/
-.vscode/
 *.swp
 *.swo
+*.sublime-*
+.editorconfig
 
 # OS files
 .DS_Store
-Thumbs.db 
+Thumbs.db
+Desktop.ini
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log* 

@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/helpers-json",
-    "version": "3.0.0-alpha.3",
+    "version": "3.0.0-alpha.4",
     "description": "Helpers to deal with JSON file formats",
     "type": "module",
     "main": "index.js",

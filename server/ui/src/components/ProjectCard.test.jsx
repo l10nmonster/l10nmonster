@@ -38,7 +38,7 @@ describe('ProjectCard', () => {
 
   it('shows untranslated warning when applicable', () => {
     render(<ProjectCard project={mockProject} />);
-    expect(screen.getByText('Untranslated: 20 segments')).toBeInTheDocument();
+    expect(screen.getByText('Untranslated segments: 20')).toBeInTheDocument();
   });
 
   it('calculates progress percentage correctly', () => {

@@ -12,7 +12,9 @@
       "WebFetch(domain:github.com)",
       "WebFetch(domain:chakra-ui.com)",
       "Bash(npm run build:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(npm run test:server:*)",
+      "Bash(node:*)"
     ],
     "deny": []
   }
