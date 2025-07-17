@@ -16,10 +16,13 @@ export class tm_syncdown {
 
     static async action(monsterManager, options) {
         const dryrun = !options.commit;
+        const response = { dryrun, syncDownStats: {} };
         consoleLog`Figuring out what needs to be synced down...`;
         const tmStore = await monsterManager.getTmStore(options.tmStore);
         const syncDownPair = async (srcLang, tgtLang) => {
             const syncDownStats = await monsterManager.tmm.prepareSyncDown(tmStore, srcLang, tgtLang);
+            response.syncDownStats[srcLang] ??= {};
+            response.syncDownStats[srcLang][tgtLang] = syncDownStats;
             if (syncDownStats.blocksToStore.length === 0 && syncDownStats.jobsToDelete.length === 0) {
                 consoleLog`\nNothing to sync down from ${tmStore.id} store for ${srcLang} → ${tgtLang}`;
                 return;
@@ -55,5 +58,6 @@ export class tm_syncdown {
         } else {
             consoleLog`\nDone!`;
         }
+        return response;
     }
 }

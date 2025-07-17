@@ -6,6 +6,7 @@ export class ops_update {
     };
 
     static async action(mm, options) {
+        const response = {};
         const pairs = await mm.tmm.getAvailableLangPairs();
         if (pairs.length === 0) {
             consoleLog`There are no jobs in the local TM Cache`;
@@ -20,10 +21,13 @@ export class ops_update {
                 } else {
                     for (const jobGuid of pendingJobs) {
                         const job = await mm.dispatcher.updateJob(jobGuid);
+                        response.jobs ??= [];
+                        response.jobs.push(job);
                         consoleLog`      • Job ${jobGuid} (${job.translationProvider}): ${job.status}`;
                     }
                 }
             }
         }
+        return response;
     }
 }

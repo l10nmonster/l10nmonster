@@ -21,10 +21,12 @@ export class source_list {
             minimumFractionDigits: 0,
             maximumFractionDigits: 1,
         });
+        const response = {};
         let translationStatus;
         if (withStatus) {
             consoleLog`Active Content Channels with Translation Status`;
             translationStatus = await mm.getTranslationStatus();
+            response.translationStatus = translationStatus;
             for (const [ sourceLang, sourceStatus ] of Object.entries(translationStatus)) {
                 if (options.srcLang && sourceLang !== options.srcLang) {
                     continue;
@@ -60,8 +62,10 @@ export class source_list {
             }
         } else {
             consoleLog`Active Content Channels`;
+            response.channelStats = {};
             for (const channelId of Object.keys(mm.rm.channels)) {
                 const channelStats = await mm.rm.getActiveContentStats(channelId);
+                response.channelStats[channelId] = channelStats;
                 const lastModified = channelStats.length > 0 ? new Date(Math.max(...channelStats.map(({ lastModified }) => new Date(lastModified)))) : null;
                 consoleLog`\n  ‣ Channel ${channelId} ${lastModified ? styleString`- last modified ${lastModified}` : ''}`;
                 channelStats.forEach(({ prj, sourceLang, targetLangs, segmentCount, resCount, lastModified }) => consoleLog`      • Project ${prj ?? 'default'} (${sourceLang} → ${targetLangs.length === 0 ? '∅' : targetLangs.join(', ')}): ${segmentCount.toLocaleString()} ${[segmentCount, 'segment', 'segments']} in ${resCount.toLocaleString()} ${[resCount, 'resource', 'resources']} - last modified ${new Date(lastModified)}`);
@@ -71,5 +75,6 @@ export class source_list {
             writeFileSync(options.statusFile, JSON.stringify(translationStatus, null, '\t'), 'utf8');
             consoleLog`\nStatus file written to ${options.statusFile}`;
         }
+        return response;
     }
 }

@@ -16,6 +16,7 @@ export class tm_syncup {
 
     static async action(monsterManager, options) {
         const dryrun = !options.commit;
+        const response = { dryrun, syncUpStats: {} };
         consoleLog`Figuring out what needs to be synced up...`;
         const tmStore = await monsterManager.getTmStore(options.tmStore);
         if (tmStore.access === 'readonly') {
@@ -25,6 +26,8 @@ export class tm_syncup {
             const syncUpStats = await monsterManager.tmm.prepareSyncUp(tmStore, srcLang, tgtLang, {
                 newerOnly: Boolean(options.neweronly),
             });
+            response.syncUpStats[srcLang] ??= {};
+            response.syncUpStats[srcLang][tgtLang] = syncUpStats;
             if (syncUpStats.blocksToUpdate.length === 0 && syncUpStats.jobsToUpdate.length === 0) {
                 consoleLog`\nNothing to sync up with ${tmStore.id} store for ${srcLang} → ${tgtLang}`;
                 return;
@@ -55,5 +58,6 @@ export class tm_syncup {
         } else {
             consoleLog`\nDone!`;
         }
-}
+        return response;
+    }
 }
