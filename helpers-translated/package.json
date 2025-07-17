@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/helpers-translated",
-    "version": "3.0.0-alpha.4",
+    "version": "3.0.0-alpha.5",
     "description": "Helpers to integrate with Translated.com",
     "main": "index.js",
     "type": "module",

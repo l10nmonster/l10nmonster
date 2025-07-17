@@ -23,7 +23,7 @@ export class OpsStore {
 
     async *getTask(taskName) {
         const filename = `${taskName}.jsonl`;
-        const reader = this.#storeDelegate.getStream(filename);
+        const reader = await this.#storeDelegate.getStream(filename);
         const rl = readline.createInterface({
             input: reader,
             crlfDelay: Infinity,
