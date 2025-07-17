@@ -4,11 +4,11 @@ import { z } from "zod";
 
 import { logInfo, providers, styleString } from '@l10nmonster/core';
 
-const TranslatorAnnotation = z.object({
+const TranslatorAnnotation = z.array(z.object({
     translation: z.string().describe('the translated string'),
     confidence: z.number().describe('a confidence score between 0 and 100 that indicates whether the translation is possibly ambiguous'),
     notes: z.string().describe('any additional notes about the translation'),
-});
+}));
 
 /**
  * @typedef {object} GPTAgentOptions
@@ -56,7 +56,8 @@ export class GPTAgent extends providers.LLMTranslationProvider {
               { role: 'system', content: this.systemPrompt },
               { role: 'user', content: userPrompt },
             ],
-            response_format: zodResponseFormat(z.array(this.customSchema ?? TranslatorAnnotation), 'translations'),
+            // eslint-disable-next-line camelcase
+            response_format: zodResponseFormat(this.customSchema ?? TranslatorAnnotation, 'translations'),
           };
     }
 

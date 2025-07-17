@@ -117,10 +117,10 @@ export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
             return await this.generateContent(args);
         } catch (e) {
             let lastError = e;
-            for (let retry = 1; retry <= this.#maxRetries; retry++) {
-                logWarn`Unexpected generateContent error (attempt ${retry}/${this.#maxRetries}): ${e.message}`;
+            for (let retry = 1; retry <= this.#maxRetries && lastError.status >= 500; retry++) {
+                logWarn`Unexpected generateContent error (status=${e.status}): ${e.message}`;
                 const sleepTime = this.#sleepBasePeriod * retry * retry;
-                logInfo`Sleeping ${sleepTime}ms before retrying...`;
+                logInfo`Sleeping ${sleepTime}ms before retrying (attempt ${retry}/${this.#maxRetries})...`;
                 await sleep(sleepTime);
                 try {
                     return await this.generateContent(args);
@@ -128,6 +128,7 @@ export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
                     lastError = e;
                 }
             }
+            logWarn`Unexpected generateContent error (status=${e.status}): ${e.message}`;
             throw lastError; // Re-throw after final attempt
         }
     }
