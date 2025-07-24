@@ -8,7 +8,9 @@ import { ModernMT as MMTClient } from 'modernmt';
  * @property {Promise<string>|string} apiKey - The ModernMT API key.
  * @property {string} [webhook] - The webhook URL for batch translation.
  * @property {function(any): any} [chunkFetcher] - The chunk fetcher operation name.
- * @property {(string | number)[]} [hints] - Hints to include in the MMT request.
+ * @property {string | number[]} [hints] - Hints to include in the MMT request.
+ * @property {string | number[]} [glossaries] - Glossaries to include in the MMT request.
+ * @property {boolean} [ignoreGlossaryCase] - Whether to use ignore case in glossary entries.
  * @property {boolean} [multiline] - Whether to use multiline mode.
  */
 
@@ -22,7 +24,7 @@ export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
      * Initializes a new instance of the MMTProvider class.
      * @param {MMTProviderOptions} options - Configuration options for the provider.
      */
-    constructor({ id, apiKey, webhook, chunkFetcher, hints, multiline = true, ...options }) {
+    constructor({ id, apiKey, webhook, chunkFetcher, hints, glossaries, ignoreGlossaryCase, multiline = true, ...options }) {
         id ??= webhook ? 'MMTBatch' : 'MMTRealtime';
         super({ id, ...options });
         if (webhook) {
@@ -38,6 +40,8 @@ export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
             options: {
                 multiline,
                 format: 'text/xml',
+                glossaries,
+                ignoreGlossaryCase,
             },
             webhook,
         }
