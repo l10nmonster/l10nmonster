@@ -1,0 +1,10 @@
+{
+    "name": "bigdata-demo",
+    "type": "module",
+    "dependencies": {
+        "@l10nmonster/core": "../../../core",
+        "@l10nmonster/cli": "../../../cli",
+        "@l10nmonster/helpers-demo": "../../../helpers-demo",
+        "@l10nmonster/server": "../../../server"
+    }
+}
