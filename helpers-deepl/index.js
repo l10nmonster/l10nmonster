@@ -4,7 +4,7 @@ import { DeepLClient } from 'deepl-node';
 /**
  * @typedef {object} DeepLProviderOptions
  * @extends ChunkedRemoteTranslationProviderOptions
- * @property {string} authKey - The DeepL API key. This is required.
+ * @property {Promise<string>|string} authKey - The DeepL API key. This is required.
  * @property {Record<string, string[]>} [formalityMap] - Optional map from language to desired formality (less, more, default, prefer_less, prefer_more).
  * @property {string} [modelType] - Specifies the type of translation model to use (quality_optimized, prefer_quality_optimized, latency_optimized).
  */
@@ -43,7 +43,7 @@ export class DeepLProvider extends providers.ChunkedRemoteTranslationProvider {
 
     async startTranslateChunk(args) {
         const { payload, sourceLang, targetLang, options } = args;
-        const deeplClient = new DeepLClient(this.#authKey);
+        const deeplClient = new DeepLClient(await this.#authKey);
         return await deeplClient.translateText(payload, sourceLang, targetLang, options);
     }
 
@@ -57,7 +57,7 @@ export class DeepLProvider extends providers.ChunkedRemoteTranslationProvider {
     async info() {
         const info = await super.info();
         try {
-            const deeplClient = new DeepLClient(this.#authKey);
+            const deeplClient = new DeepLClient(await this.#authKey);
             const usage = await deeplClient.getUsage();
             usage.anyLimitReached() && info.description.push('Translation limit exceeded.');
             usage.character && info.description.push(styleString`Characters: ${usage.character.count} of ${usage.character.limit}`);

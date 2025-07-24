@@ -17,7 +17,7 @@ const TRANSLATOR_SCHEMA = {
  * @typedef {object} GenAIAgentOptions
  * @extends LLMTranslationProviderOptions
  * @property {number} [thinkingBudget] - Maximum number of tokens for thinking
- * @property {string} [apiKey] - The LLM provder API key (if needed).
+ * @property {Promise<string>|string} [apiKey] - The LLM provder API key (if needed).
  * @property {string} [vertexProject] - The VertexAI project ID.
  * @property {string} [vertexLocation] - The VertexAI datacenter location.
  */
@@ -52,7 +52,7 @@ export class GenAIAgent extends providers.LLMTranslationProvider {
             return;
         }
         if (this.#apiKey) {
-            this.#ai = new GoogleGenAI({ apiKey: this.#apiKey });
+            this.#ai = new GoogleGenAI({ apiKey: await this.#apiKey });
             logInfo`GenAIAgent ${this.id} initialized with the Gemini Developer platform`;
         } else {
             if (!this.#vertexProject) {

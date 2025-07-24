@@ -1,3 +1,4 @@
+import fs from 'fs';
 import { config, policies, normalizers, xml, stores, adapters, providers } from '@l10nmonster/core';
 import serve from '@l10nmonster/server';
 import * as ios from '@l10nmonster/helpers-ios';
@@ -26,7 +27,7 @@ export const iosChannel = config.channel('ios', import.meta.dirname)
     .resourceFilter(new ios.StringsFilter())
     .decoders([ ios.phDecoder, ios.escapesDecoder, xml.entityDecoder ])
     .textEncoders([ normalizers.gatedEncoder(xml.entityEncoder, 'xmlEntityDecoder') ])
-    .policy(policies.fixedTargets(['ar', 'it'], 30))
+    .policy(policies.fixedTargets(['ar', 'it', 'es', 'fr', 'de', 'ja', 'zh', 'en-ZZ', 'en-YY', 'en-GB', 'en-AU'], 30))
     .policy(policies.fixedTargets('en-ZZ', 20))
     .target(new adapters.FsTarget({
         targetPath: (lang, resourceId) => resourceId.replace('en.lproj/', `${lang}.lproj/`),
@@ -34,76 +35,56 @@ export const iosChannel = config.channel('ios', import.meta.dirname)
 
 export default config.l10nMonster(import.meta.dirname)
     .channel(iosChannel)
-        // BritishTranslator: {
-        //     translator: new translators.VariantGenerator({
-        //         dict: JSON.parse(fs.readFileSync(path.join(import.meta.dirname, 'dict.json'), 'utf-8')),
-        //         quality: 70,
-        //     }),
-        //     pairs: { 'en': [ 'en-GB' ] },
-        // },
-        // AussieTranslator: {
-        //     translator: new translators.VariantGenerator({
-        //         dict: {
-        //             customise: 'tinkerise',
-        //             find: 'finday',
-        //         },
-        //         baseLang: 'en-GB',
-        //         quality: 70,
-        //     }),
-        //     pairs: { 'en': [ 'en-AU' ] },
-        // },
-        // TranslationOS: {
-        //     translator: new translated.TranslationOS(defaultTOSConfig),
-        //     pairs: { 'en': [ 'ar', 'it', 'ja' ] },
-        // },
-        // TOSLQA: { // fake sample of a "push and forget" configuration
-        //     translator: new translated.TranslationOS({ ...defaultTOSConfig, serviceType: 'bugfix', requestOnly: true }),
-        // },
-        // DeepL: {
-        //     translator: new translators.DeepL({
-        //         apiKey: l10nmonster.env.deepl_api_key,
-        //         quality: 40,
-        //     }),
-        //     quota: 0,
-        // },
-        // Invisicode: {
-        //     translator: new translators.InvisicodeGenerator({
-        //         quality: 50,
-        //         lowQ: 50,
-        //         highQ: 70,
-        //     }),
-        //     pairs: { 'en': [ 'en-ZZ' ] },
-        // },
-        // Visicode: {
-        //     translator: new translators.Visicode({
-        //         quality: 50,
-        //     }),
-        // },
-    .operations({
-        opsStore: new stores.FsOpsStore(path.join(import.meta.dirname, 'l10nOps')),
-        saveFailedJobs: true,
-    })
+    .provider(new providers.Grandfather({ quality: 70 }))
     .provider(new providers.InternalLeverageHoldout())
     .provider(new providers.Repetition({ qualifiedPenalty: 1, unqualifiedPenalty: 9, notesMismatchPenalty: 1 }))
-    .provider(new providers.Grandfather({ quality: 70 }))
-    // .provider(new DeepLProvider({
-    //     id: 'DeepL',
-    //     authKey: process.env.deepl_auth_key,
-    //     formalityMap: {
-    //         'it': 'more',
-    //     },
-    //     // modelType: 'quality_optimized', // this is disabled for free users
-    //     quality: 50,
-    //     supportedPairs: { 'en': [ 'it' ] },
-    // }))
-    // .provider(new LaraProvider({
-    //     id: 'Lara',
-    //     keyId: process.env.lara_key_id,
-    //     keySecret: process.env.lara_key_secret,
-    //     quality: 48,
-    //     maxChunkSize: 50,
-    //     supportedPairs: { 'en': [ 'it' ] },
-    // }))
+    .provider(new providers.LanguageVariantProvider({
+        id: 'BritishTranslator',
+        dict: JSON.parse(fs.readFileSync(path.join(import.meta.dirname, 'dict.json'), 'utf-8')),
+        baseLang: 'en',
+        quality: 70,
+        supportedPairs: { 'en': [ 'en-GB' ] },
+    }))
+    .provider(new providers.LanguageVariantProvider({
+        id: 'AussieTranslator',
+        dict: {
+            customise: 'tinkerise',
+            find: 'finday',
+        },
+        baseLang: 'en-GB',
+        quality: 70,
+        supportedPairs: { 'en': [ 'en-AU' ] },
+    }))
+    .provider(new providers.InvisicodeProvider({
+        id: 'Invisicode',
+        quality: 50,
+        lowQ: 50,
+        highQ: 70,
+        supportedPairs: { 'en': [ 'en-ZZ' ] },
+    }))
+    .provider(new providers.Visicode({  
+        id: 'Visicode',
+        quality: 50,
+        supportedPairs: { 'en': [ 'en-YY' ] },
+    }))
+    .provider(new DeepLProvider({
+        id: 'DeepL',
+        authKey: process.env.deepl_auth_key,
+        formalityMap: {
+            'it': 'more',
+        },
+        // modelType: 'quality_optimized', // this is disabled for free users
+        quality: 50,
+        supportedPairs: { 'en': [ 'de' ] },
+    }))
+    .provider(new LaraProvider({
+        id: 'Lara',
+        keyId: process.env.lara_key_id,
+        keySecret: process.env.lara_key_secret,
+        quality: 48,
+        maxChunkSize: 50,
+        supportedPairs: { 'en': [ 'fr' ] },
+    }))
     // .provider(new GPTAgent({
     //     id: 'Ollama-LL',
     //     quality: 45,
@@ -115,15 +96,16 @@ export default config.l10nMonster(import.meta.dirname)
     //     // model: 'qwen2.5:72b',
     //     // supportedPairs: { 'en': [ 'it' ] },
     // }))
-    // .provider(new GPTAgent({
-    //     id: 'gemini-openai',
-    //     quality: 47,
-    //     baseURL: 'https://generativelanguage.googleapis.com/v1beta/openai/',
-    //     apiKey: process.env.gemini_api_key,
-    //     model: 'gemini-2.0-flash',
-    //     defaultInstructions: 'You are translating strings from resource files of a mobile app.\nUse the following glossary: viewer=visore, Cardboard=Cardone',
-    //     // supportedPairs: { 'en': [ 'it' ] },
-    // }))
+    .provider(new GPTAgent({
+        id: 'gemini-openai',
+        quality: 47,
+        baseURL: 'https://generativelanguage.googleapis.com/v1beta/openai/',
+        apiKey: process.env.gemini_api_key,
+        model: 'gemini-2.5-flash',
+        // model: 'gemini-2.5-pro',
+        defaultInstructions: 'You are translating strings from resource files of a mobile app.\nUse the following glossary: viewer=visore, Cardboard=Cardone',
+        supportedPairs: { 'en': [ 'it' ] },
+    }))
     .provider(new GenAIAgent({
         id: 'gemini-2.5-genai',
         quality: 48,
@@ -136,44 +118,49 @@ export default config.l10nMonster(import.meta.dirname)
             'ar': 'use arabic numbers',
         },
         // thinkingBudget: 0,
-        // supportedPairs: { 'en': [ 'it' ] },
+        supportedPairs: { 'en': [ 'ar' ] },
     }))
     // .provider(new GenAIAgent({
     //     id: 'gemini-2.5-vertex',
     //     quality: 48,
-    //     model: 'gemini-2.5-pro-preview-05-06',
-    //     // supportedPairs: { 'en': [ 'it' ] },
+    //     model: 'gemini-2.5-pro',
+    //     // supportedPairs: { 'en': [ 'zh' ] },
     // }))
-    // .provider(new AnthropicAgent({
-    //     id: 'claude-sonnet-4-vertex',
-    //     quality: 48,
-    //     // model: 'claude-opus-4@20250514',
-    //     model: 'claude-sonnet-4@20250514',
-    //     // supportedPairs: { 'en': [ 'it' ] },
-    // }))
-    // .provider(new MMTProvider({
-    //     quality: 40,
-    //     apiKey: process.env.mmt_api_key,
-    //     supportedPairs: { 'en': [ 'it' ] },
-    //     costPerMChar: 15,
-    // }))
+    .provider(new AnthropicAgent({
+        id: 'claude-sonnet-4-vertex',
+        quality: 48,
+        // model: 'claude-opus-4@20250514',
+        model: 'claude-sonnet-4@20250514',
+        supportedPairs: { 'en': [ 'es' ] },
+    }))
+    .provider(new MMTProvider({
+        quality: 40,
+        apiKey: process.env.mmt_api_key,
+        supportedPairs: { 'en': [ 'ja' ] },
+        costPerMChar: 15,
+    }))
     // .provider(new xliff.providers.XliffBridge({
     //     requestPath: (lang, jobId) => `outbox/job${jobId}-${lang}.xml`,
     //     completePath: (lang, jobId) => `inbox/job${jobId}-${lang}.xml`,
     //     quality: 80,
     // }))
-    .provider(new LQABossProvider({
-        id: 'LQABoss',
-        // delegate: new stores.FsStoreDelegate('lqaBoss'),
-        delegate: new GCSStoreDelegate('foobucket', 'lqaboss1'),
-        // delegate: new GDriveStoreDelegate('1mZekxxxxxxxxxxxxxxxxxxxx'),
-        quality: 80,
-    }))
+    // .provider(new LQABossProvider({
+    //     id: 'LQABoss',
+    //     // delegate: new stores.FsStoreDelegate('lqaBoss'),
+    //     delegate: new GCSStoreDelegate('foobucket', 'lqaboss1'),
+    //     // delegate: new GDriveStoreDelegate('1mZekxxxxxxxxxxxxxxxxxxxx'),
+    //     quality: 80,
+    // }))
+    .operations({
+        opsStore: new stores.FsOpsStore(path.join(import.meta.dirname, 'l10nOps')),
+        autoSnap: true,
+        saveFailedJobs: true,
+    })
     .tmStore(new stores.FsJsonlTmStore({
         id: 'primary',
         jobsDir: 'tmStore',
-        partitioning: 'language',
-        compressBlocks: true,
+        partitioning: 'job',
+        // compressBlocks: true,
     }))
     .action(serve)
     .action(class mystats {

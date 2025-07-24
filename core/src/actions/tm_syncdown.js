@@ -36,7 +36,7 @@ export class tm_syncdown {
                 if (options.delete) {
                     consoleLog`${syncDownStats.jobsToDelete.length} ${[syncDownStats.jobsToDelete.length, 'job', 'jobs']} to delete locally: ${syncDownStats.jobsToDelete.join(', ')}`;
                 } else {
-                    consoleLog`${syncDownStats.jobsToDelete.length} local ${[syncDownStats.jobsToDelete.length, 'job', 'jobs']} do not exist in the remote TM Store. Use --delete option to delete them.`;
+                    consoleLog`${syncDownStats.jobsToDelete.length} local ${[syncDownStats.jobsToDelete.length, 'job does', 'jobs do']} not exist in the remote TM Store. Use --delete option to delete them.`;
                     syncDownStats.jobsToDelete = [];
                 }
             }

@@ -1,8 +1,6 @@
 {
     "name": "ios-demo",
-    "scripts": {
-        "status": "l10n status"
-    },
+    "type": "module",
     "dependencies": {
         "@l10nmonster/config-mancer": "../../../config-mancer",
         "@l10nmonster/core": "../../../core",

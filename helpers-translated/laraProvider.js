@@ -1,11 +1,11 @@
-import { logWarn, providers, styleString } from '@l10nmonster/core';
+import { providers, styleString } from '@l10nmonster/core';
 import { Credentials, Translator } from '@translated/lara';
 
 /**
  * @typedef {object} LaraProviderOptions
  * @extends ChunkedRemoteTranslationProviderOptions
  * @property {string} keyId - The Lara API key id. This is required.
- * @property {string} [keySecret] - The Lara API key secret. Optional, but often needed for authentication.
+ * @property {Promise<string>|string} [keySecret] - The Lara API key secret. Optional, but often needed for authentication.
  * @property {string|Array<string>} [adaptTo] - An optional single translation memory ID or an array of IDs to adapt translations to.
  * @property {number} [maxChunkSize=60] - Maximum number of text segments (strings) allowed in a single API request chunk. Defaults to 60 if not provided.
  */
@@ -17,7 +17,6 @@ export class LaraProvider extends providers.ChunkedRemoteTranslationProvider {
     #keyId;
     #keySecret;
     #adaptTo;
-    #lara;
     #translateOptions;
 
     /**
@@ -29,14 +28,17 @@ export class LaraProvider extends providers.ChunkedRemoteTranslationProvider {
         this.#keyId = keyId;
         this.#keySecret = keySecret;
         this.#adaptTo = adaptTo && (Array.isArray(adaptTo) ? adaptTo : adaptTo.split(','));
-        const credentials = new Credentials(this.#keyId, this.#keySecret);
-        this.#lara = new Translator(credentials);
         this.#translateOptions = {
             contentType: 'text/plain',
             instructions: [],
         };
         this.#adaptTo && (this.#translateOptions.adaptTo = this.#adaptTo);
         this.defaultInstructions && this.#translateOptions.instructions.push(this.defaultInstructions);
+    }
+
+    async #getLara() {
+        const credentials = new Credentials(this.#keyId, await this.#keySecret);
+        return new Translator(credentials);
     }
 
     prepareTranslateChunkArgs({ sourceLang, targetLang, xmlTus, instructions }) {
@@ -52,8 +54,9 @@ export class LaraProvider extends providers.ChunkedRemoteTranslationProvider {
 
     async startTranslateChunk(args) {
         const { payload, sourceLang, targetLang, translateOptions } = args;
+        const lara = await this.#getLara();
         try {
-            return await this.#lara.translate(payload, sourceLang, targetLang, translateOptions);
+            return await lara.translate(payload, sourceLang, targetLang, translateOptions);
         } catch (e) {
             throw new Error(`Lara API error ${e.statusCode}: ${e.type}: ${e.message}`);
         }
@@ -72,15 +75,12 @@ export class LaraProvider extends providers.ChunkedRemoteTranslationProvider {
             return info;
         }
         try {
-            const credentials = new Credentials(this.#keyId, this.#keySecret);
-            const lara = new Translator(credentials);
+            const lara = await this.#getLara();
             const languages = (await lara.getLanguages()).sort();
             info.description.push(styleString`Vendor-supported languages: ${languages?.join(', ') ?? 'unknown'}`);
             const memories = await lara.memories.list();
             if (memories.length > 0) {
-                memories.forEach(m =>
-                    info.description.push(styleString`Vendor TM "${m.name}": id: ${m.id} owner: ${m.ownerId} collaborators: ${m.collaboratorsCount} created: ${m.createdAt} updated: ${m.updatedAt}`)
-                );
+                memories.forEach(m => info.description.push(styleString`Vendor TM "${m.name}": id: ${m.id} owner: ${m.ownerId} collaborators: ${m.collaboratorsCount} created: ${m.createdAt} updated: ${m.updatedAt}`));
             } else {
                 info.description.push(styleString`No TMs configured.`);
             }

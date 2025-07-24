@@ -14,7 +14,7 @@ const TranslatorAnnotation = z.array(z.object({
  * @typedef {object} GPTAgentOptions
  * @extends LLMTranslationProviderOptions
  * @property {string} [baseURL] - The base URL (https://api.openai.com by default)
- * @property {string} [apiKey] - The LLM provder API key (if needed).
+ * @property {Promise<string>|string} [apiKey] - The LLM provder API key (if needed).
  * @property {string} [reasoningEffort] - The reasoning effort level: "none", "low", "medium", or "high"
  */
 
@@ -52,7 +52,7 @@ export class GPTAgent extends providers.LLMTranslationProvider {
             return;
         }
         this.#openai = new OpenAI({
-            apiKey: this.#apiKey,
+            apiKey: await this.#apiKey,
             baseURL: this.#baseURL,
         });
         logInfo`GPTAgent ${this.id} initialized with url: ${this.#baseURL} model: ${this.model}`;

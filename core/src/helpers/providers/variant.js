@@ -26,10 +26,10 @@ export class LanguageVariantProvider extends BaseTranslationProvider {
      * @param {LanguageVariantProviderOptions} options - The parameters for the constructor.
      */
     constructor({ dict, baseLang, ...options }) {
-        if (!baseLang || !dict || options.quality === undefined) {
-            throw new Error('You must specify baseLang, dict and quality for LanguageVariantProvider');
-        }
         super(options);
+        if (!baseLang || !dict || options.quality === undefined) {
+            throw new Error(`You must specify baseLang, dict and quality for LanguageVariantProvider (${this.id})`);
+        }
         this.#dict = dict;
         this.#baseLang = baseLang;
     }

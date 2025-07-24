@@ -5,7 +5,7 @@ import { ModernMT as MMTClient } from 'modernmt';
  * @typedef {object} MMTProviderOptions
  * @extends ChunkedRemoteTranslationProviderOptions
  * @property {string} [id] - Global identifier (by default 'MMTBatch' or 'MMTRealtime')
- * @property {string} apiKey - The ModernMT API key.
+ * @property {Promise<string>|string} apiKey - The ModernMT API key.
  * @property {string} [webhook] - The webhook URL for batch translation.
  * @property {function(any): any} [chunkFetcher] - The chunk fetcher operation name.
  * @property {(string | number)[]} [hints] - Hints to include in the MMT request.
@@ -16,6 +16,8 @@ import { ModernMT as MMTClient } from 'modernmt';
  * Provider for Translated Modern MT.
  */
 export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
+    #apiKey;
+
     /**
      * Initializes a new instance of the MMTProvider class.
      * @param {MMTProviderOptions} options - Configuration options for the provider.
@@ -30,8 +32,8 @@ export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
                 throw new Error('If you specify a webhook you must also specify a chunkFetcher');
             }
         }
+        this.#apiKey = apiKey;
         this.baseRequest = {
-            mmtConstructor: [ apiKey, 'l10n.monster/MMT', '3.0' ],
             hints,
             options: {
                 multiline,
@@ -39,13 +41,6 @@ export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
             },
             webhook,
         }
-    }
-
-    start(job) {
-        if (!this.baseRequest.mmtConstructor[0]) {
-            throw new Error('You must have an apiKey to start an MMT job');
-        }
-        return super.start(job);
     }
 
     prepareTranslateChunkArgs({ sourceLang, targetLang, xmlTus, jobGuid, chunkNumber }) {
@@ -67,9 +62,8 @@ export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
 
     async startTranslateChunk(args) {
         const { sourceLang, targetLang, q, hints, contextVector, options, webhook, batchOptions } = args;
-        const [ apiKey, platform, platformVersion ] = this.baseRequest.mmtConstructor;
         try {
-            const mmt = new MMTClient(apiKey, platform, platformVersion);
+            const mmt = new MMTClient(await this.#apiKey, 'l10n.monster/MMT', '3.0');
             if (webhook) {
                 const response = await mmt.batchTranslate(webhook, sourceLang, targetLang, q, hints, contextVector, batchOptions);
                 return { enqueued: response };

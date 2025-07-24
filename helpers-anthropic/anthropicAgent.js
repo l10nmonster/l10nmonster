@@ -2,7 +2,7 @@ import { AnthropicVertex } from '@anthropic-ai/vertex-sdk';
 import Anthropic from '@anthropic-ai/sdk';
 import { GoogleAuth } from 'google-auth-library';
 
-import { logInfo, logVerbose, logWarn, providers, styleString } from '../core/index.js';
+import { logInfo, logWarn, providers, styleString } from '../core/index.js';
 
 const TRANSLATION_TOOL = {
     name: 'provide_translations',
@@ -30,7 +30,7 @@ const TRANSLATION_TOOL = {
 /**
  * @typedef {object} AnthropicAgentOptions
  * @extends LLMTranslationProviderOptions
- * @property {string} [apiKey] - The Anthropic API key (if using direct API).
+ * @property {Promise<string>|string} [apiKey] - The Anthropic API key (if using direct API).
  * @property {string} [vertexProject] - The VertexAI project ID.
  * @property {string} [vertexLocation] - The VertexAI datacenter location.
  * @property {number} [maxTokens] - Maximum number of output tokens (32000 by default)
@@ -69,7 +69,7 @@ export class AnthropicAgent extends providers.LLMTranslationProvider {
         if (this.#apiKey) {
             // Direct Anthropic API
             this.#client = new Anthropic({
-                apiKey: this.#apiKey,
+                apiKey: await this.#apiKey,
                 maxRetries: this.#maxRetries,
                 timeout: 15 * 60000, // 15 minutes
             });

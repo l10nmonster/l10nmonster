@@ -26,9 +26,12 @@ export class Channel {
     makeResourceHandleFromHeader(resourceHeader) {
          // sources can provide resources of different formats but we have a default
         const resourceFormat = resourceHeader.resourceFormat ?? this.#defaultResourceFormat;
-        const formatHandler = this.#formatHandlers[resourceFormat];
         if (!resourceHeader.sourceLang) {
             throw new Error(`Missing sourceLang in resource handle: ${JSON.stringify(resourceHeader)}`);
+        }
+        const formatHandler = this.#formatHandlers[resourceFormat];
+        if (!formatHandler) {
+            throw new Error(`No format handler found for resource format: ${resourceFormat}`);
         }
         return new ResourceHandle({
             channel: this.#id,
