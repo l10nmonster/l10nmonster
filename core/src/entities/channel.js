@@ -66,7 +66,8 @@ export class Channel {
             stats[statsKey] ??= 0;
             stats[statsKey]++;
         }
-        const defaultPlanKey = Object.entries(stats).sort((a, b) => b[1] - a[1])[0][0];
+        const defaultPlan = Object.entries(stats).sort((a, b) => b[1] - a[1]);
+        const defaultPlanKey = defaultPlan.length > 0 ? defaultPlan[0][0] : 'empty';
         let plan = {};
         for (const segment of handle.segments) {
             const statsKey = getStatsKey(segment.plan);
