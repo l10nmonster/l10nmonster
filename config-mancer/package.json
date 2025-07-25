@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/config-mancer",
-    "version": "3.0.0-alpha.5",
+    "version": "3.0.0-alpha.6",
     "description": "Configuration management utilities with schema validation and object construction",
     "type": "module",
     "main": "index.js",
