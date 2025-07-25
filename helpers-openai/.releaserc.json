@@ -1,0 +1,31 @@
+{
+  "branches": [
+    "main",
+    {
+      "name": "next",
+      "prerelease": "alpha"
+    },
+    {
+      "name": "beta",
+      "prerelease": "beta"
+    }
+  ],
+  "tagFormat": "@l10nmonster/helpers-openai@${version}",
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    {
+      "path": "@semantic-release/changelog",
+      "changelogFile": "CHANGELOG.md"
+    },
+    {
+      "path": "@semantic-release/npm",
+      "npmPublish": true
+    },
+    {
+      "path": "@semantic-release/git",
+      "assets": ["CHANGELOG.md", "package.json"],
+      "message": "chore(release): @l10nmonster/helpers-openai@${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+    }
+  ]
+}

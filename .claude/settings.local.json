@@ -19,7 +19,11 @@
       "Bash(npx puppeteer browsers:*)",
       "Bash(npm run install:*)",
       "Bash(mv:*)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run release:*)",
+      "Bash(npm view:*)",
+      "Bash(git tag:*)"
     ],
     "deny": []
   }
