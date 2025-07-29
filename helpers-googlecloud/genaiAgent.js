@@ -52,7 +52,7 @@ export class GenAIAgent extends providers.LLMTranslationProvider {
             return;
         }
         if (this.#apiKey) {
-            this.#ai = new GoogleGenAI({ apiKey: await this.#apiKey });
+            this.#ai = new GoogleGenAI({ apiKey: await (typeof this.#apiKey === 'function' ? this.#apiKey() : this.#apiKey) });
             logInfo`GenAIAgent ${this.id} initialized with the Gemini Developer platform`;
         } else {
             if (!this.#vertexProject) {

@@ -69,7 +69,7 @@ export class AnthropicAgent extends providers.LLMTranslationProvider {
         if (this.#apiKey) {
             // Direct Anthropic API
             this.#client = new Anthropic({
-                apiKey: await this.#apiKey,
+                apiKey: await (typeof this.#apiKey === 'function' ? this.#apiKey() : this.#apiKey),
                 maxRetries: this.#maxRetries,
                 timeout: 15 * 60000, // 15 minutes
             });

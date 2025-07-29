@@ -6,7 +6,8 @@ import { Credentials, Translator } from '@translated/lara';
  * @extends ChunkedRemoteTranslationProviderOptions
  * @property {string} keyId - The Lara API key id. This is required.
  * @property {Promise<string>|string} [keySecret] - The Lara API key secret. Optional, but often needed for authentication.
- * @property {string|Array<string>} [adaptTo] - An optional single translation memory ID or an array of IDs to adapt translations to.
+ * @property {string | Array<string>} [adaptTo] - An optional single translation memory ID or an array of IDs to adapt translations to.
+ * @property {string | Array<string>} [glossaries] - Glossaries to include in the request.
  * @property {number} [maxChunkSize=60] - Maximum number of text segments (strings) allowed in a single API request chunk. Defaults to 60 if not provided.
  */
 
@@ -16,28 +17,27 @@ import { Credentials, Translator } from '@translated/lara';
 export class LaraProvider extends providers.ChunkedRemoteTranslationProvider {
     #keyId;
     #keySecret;
-    #adaptTo;
     #translateOptions;
 
     /**
      * Initializes a new instance of the LaraProvider class.
      * @param {LaraProviderOptions} options - Configuration options for the provider.
      */
-    constructor({ keyId, keySecret, adaptTo, ...options }) {
+    constructor({ keyId, keySecret, adaptTo, glossaries, ...options }) {
         super({ maxChunkSize: 60, ...options }); // maximum number of strings sent to Lara is 128 including notes
         this.#keyId = keyId;
         this.#keySecret = keySecret;
-        this.#adaptTo = adaptTo && (Array.isArray(adaptTo) ? adaptTo : adaptTo.split(','));
         this.#translateOptions = {
             contentType: 'text/plain',
             instructions: [],
         };
-        this.#adaptTo && (this.#translateOptions.adaptTo = this.#adaptTo);
+        adaptTo && (this.#translateOptions.adaptTo = Array.isArray(adaptTo) ? adaptTo : adaptTo.split(','));
+        glossaries && (this.#translateOptions.glossaries = Array.isArray(glossaries) ? glossaries : glossaries.split(','));
         this.defaultInstructions && this.#translateOptions.instructions.push(this.defaultInstructions);
     }
 
     async #getLara() {
-        const credentials = new Credentials(this.#keyId, await this.#keySecret);
+        const credentials = new Credentials(this.#keyId, await (typeof this.#keySecret === 'function' ? this.#keySecret() : this.#keySecret));
         return new Translator(credentials);
     }
 

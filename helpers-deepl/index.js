@@ -28,6 +28,10 @@ export class DeepLProvider extends providers.ChunkedRemoteTranslationProvider {
         this.#modelType = modelType;
     }
 
+    async #getClient() {
+        return new DeepLClient(await (typeof this.#authKey === 'function' ? this.#authKey() : this.#authKey));
+    }
+
     prepareTranslateChunkArgs({ sourceLang, targetLang, xmlTus, instructions }) {
         const payload = xmlTus.map(xmlTu => xmlTu.source);
         const options = {
@@ -43,7 +47,7 @@ export class DeepLProvider extends providers.ChunkedRemoteTranslationProvider {
 
     async startTranslateChunk(args) {
         const { payload, sourceLang, targetLang, options } = args;
-        const deeplClient = new DeepLClient(await this.#authKey);
+        const deeplClient = await this.#getClient();
         return await deeplClient.translateText(payload, sourceLang, targetLang, options);
     }
 
@@ -57,7 +61,7 @@ export class DeepLProvider extends providers.ChunkedRemoteTranslationProvider {
     async info() {
         const info = await super.info();
         try {
-            const deeplClient = new DeepLClient(await this.#authKey);
+            const deeplClient = await this.#getClient();
             const usage = await deeplClient.getUsage();
             usage.anyLimitReached() && info.description.push('Translation limit exceeded.');
             usage.character && info.description.push(styleString`Characters: ${usage.character.count} of ${usage.character.limit}`);

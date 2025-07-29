@@ -67,7 +67,7 @@ export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
     async startTranslateChunk(args) {
         const { sourceLang, targetLang, q, hints, contextVector, options, webhook, batchOptions } = args;
         try {
-            const mmt = new MMTClient(await this.#apiKey, 'l10n.monster/MMT', '3.0');
+            const mmt = new MMTClient(await (typeof this.#apiKey === 'function' ? this.#apiKey() : this.#apiKey), 'l10n.monster/MMT', '3.0');
             if (webhook) {
                 const response = await mmt.batchTranslate(webhook, sourceLang, targetLang, q, hints, contextVector, batchOptions);
                 return { enqueued: response };

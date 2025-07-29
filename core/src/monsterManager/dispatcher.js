@@ -55,6 +55,7 @@ export default class Dispatcher {
             job.jobGuid = this.#tmm.generateJobGuid();
             options.instructions && (job.instructions = options.instructions);
             const provider = this.getProvider(job.translationProvider);
+            logInfo`Starting job ${job.jobGuid} with provider ${job.translationProvider}...`;
             const jobResponse = { ...await provider.start(job) };
             await this.processJob(jobResponse, job);
             const { sourceLang, targetLang, jobGuid, translationProvider, status } = jobResponse;

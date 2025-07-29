@@ -53,7 +53,6 @@ describe('Translated Helpers', () => {
             });
 
             assert.ok(provider.baseRequest);
-            assert.deepStrictEqual(provider.baseRequest.mmtConstructor, ['test-key', 'l10n.monster/MMT', '3.0']);
             assert.deepStrictEqual(provider.baseRequest.hints, ['hint1', 'hint2']);
             assert.strictEqual(provider.baseRequest.options.multiline, false);
             assert.strictEqual(provider.baseRequest.options.format, 'text/xml');

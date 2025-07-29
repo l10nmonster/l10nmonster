@@ -52,7 +52,7 @@ export class GPTAgent extends providers.LLMTranslationProvider {
             return;
         }
         this.#openai = new OpenAI({
-            apiKey: await this.#apiKey,
+            apiKey: await (typeof this.#apiKey === 'function' ? this.#apiKey() : this.#apiKey),
             baseURL: this.#baseURL,
         });
         logInfo`GPTAgent ${this.id} initialized with url: ${this.#baseURL} model: ${this.model}`;
