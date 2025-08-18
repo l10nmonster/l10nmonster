@@ -13,6 +13,7 @@ function decodeSqlResponse(segmentOrSubresource) {
 }
 
 export class BQSource {
+    #projectId;
     #query;
     #location;
     #resourceFormat;
@@ -21,15 +22,17 @@ export class BQSource {
     /**
      * Initializes a new instance of the BQSource class.
      * @param {Object} options - BQSource filter options.
+     * @param {string} options.projectId - GCP project ID.
      * @param {function} options.query - The SQL query template returning MNFv1-compliant bundles.
      * @param {string} [options.location] - GCP datacenter location (US by default).
      * @param {function} [options.bundleDecorator] - Optional manipulator of bundles returned by query.
      * @param {string} [options.resourceFormat] - The resource format (MNFv1 by default)
      */
-    constructor({ query, bundleDecorator, resourceFormat, location }) {
+    constructor({projectId, query, bundleDecorator, resourceFormat, location }) {
         if (!query) {
             throw new Error('You must specify query for BQSource');
         }
+        this.#projectId = projectId;
         this.#query = query;
         this.#location = location ?? 'US';
         this.#resourceFormat = resourceFormat ?? 'MNFv1';
@@ -43,7 +46,7 @@ export class BQSource {
      */
     async *fetchAllResources({ since } = {}) {
         logInfo`\nFetching resources from BQ...`;
-        const bigquery = new BigQuery();
+        const bigquery = new BigQuery({ projectId: this.#projectId });
         const query = this.#query({ since });
         const [ job ] = await bigquery.createQueryJob({ query, location: this.#location });
         logInfo`BQ Job ${job.id} started (principal: ${job.metadata.principal_subject}) -- ${job.metadata?.status?.state}`;
