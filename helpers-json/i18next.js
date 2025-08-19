@@ -6,7 +6,7 @@ import { flatten, unflatten } from 'flat';
 import { regex } from '@l10nmonster/core';
 import { flattenAndSplitResources, ARB_ANNOTATION_MARKER, arbPlaceholderHandler } from './utils.js';
 
-const isArbAnnotations = e => e[0].split('.').slice(-2)[0].startsWith(ARB_ANNOTATION_MARKER);
+const isArbAnnotations = e => e[0].split('.').some(segment => segment.startsWith(ARB_ANNOTATION_MARKER));
 const validPluralSuffixes = new Set(['one', 'other', 'zero', 'two', 'few', 'many']);
 const extractArbGroupsRegex = /(?<prefix>.+?\.)?@(?<key>\S+)\.(?<attribute>\S+)/;
 const defaultArbAnnotationHandlers = {
@@ -127,10 +127,25 @@ export class I18nextFilter {
         }
         if (this.enableArbAnnotations) {
             for (const entry of Object.entries(flatResource).filter(entry => isArbAnnotations(entry))) {
-                const arbGroups = extractArbGroupsRegex.exec(entry[0]).groups;
-                const sid = `${arbGroups.prefix ?? ''}${arbGroups.key}`;
-                if (!this.emitArbAnnotations || !flatResource[sid]) {
-                    delete flatResource[entry[0]];
+                const [key] = entry;
+                const match = extractArbGroupsRegex.exec(key);
+                
+                // Always delete if not emitting annotations
+                if (!this.emitArbAnnotations) {
+                    delete flatResource[key];
+                    continue;
+                }
+                
+                // Only keep if regex matches and corresponding translation exists
+                if (match?.groups) {
+                    const { prefix = '', key: arbKey } = match.groups;
+                    const sid = `${prefix}${arbKey}`;
+                    if (!flatResource[sid]) {
+                        delete flatResource[key];
+                    }
+                } else {
+                    // No regex match, can't determine corresponding translation, so delete
+                    delete flatResource[key];
                 }
             }
         }
