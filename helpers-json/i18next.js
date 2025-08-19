@@ -128,7 +128,6 @@ export class I18nextFilter {
         if (this.enableArbAnnotations) {
             for (const entry of Object.entries(flatResource).filter(entry => isArbAnnotations(entry))) {
                 const [key] = entry;
-                const match = extractArbGroupsRegex.exec(key);
                 
                 // Always delete if not emitting annotations
                 if (!this.emitArbAnnotations) {
@@ -137,6 +136,7 @@ export class I18nextFilter {
                 }
                 
                 // Only keep if regex matches and corresponding translation exists
+                const match = extractArbGroupsRegex.exec(key);
                 if (match?.groups) {
                     const { prefix = '', key: arbKey } = match.groups;
                     const sid = `${prefix}${arbKey}`;
