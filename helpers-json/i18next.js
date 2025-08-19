@@ -140,7 +140,7 @@ export class I18nextFilter {
                 if (match?.groups) {
                     const { prefix = '', key: arbKey } = match.groups;
                     const sid = `${prefix}${arbKey}`;
-                    if (!Object.prototype.hasOwnProperty.call(flatResource, sid)) {
+                    if (!Object.prototype.hasOwnProperty.call(flatResource, sid) || flatResource[sid] == null) {
                         delete flatResource[key];
                     }
                 } else {
