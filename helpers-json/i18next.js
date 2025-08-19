@@ -142,9 +142,6 @@ export class I18nextFilter {
                     const sid = `${prefix}${arbKey}`;
                     if (!Object.prototype.hasOwnProperty.call(flatResource, sid) || flatResource[sid] == null) {
                         delete flatResource[key];
-                    } else if (attribute.startsWith('placeholders')) {
-                        // Filter out placeholders attribute - only keep description
-                        delete flatResource[key];
                     }
                 } else {
                     // No regex match, can't determine corresponding translation, so delete
