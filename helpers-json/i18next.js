@@ -127,7 +127,7 @@ export class I18nextFilter {
         }
         if (this.enableArbAnnotations) {
             for (const entry of Object.entries(flatResource).filter(entry => isArbAnnotations(entry))) {
-                const [key] = entry;
+                const [key, value] = entry;
                 
                 // Always delete if not emitting annotations
                 if (!this.emitArbAnnotations) {
@@ -138,9 +138,12 @@ export class I18nextFilter {
                 // Only keep if regex matches and corresponding translation exists and is not null
                 const match = extractArbGroupsRegex.exec(key);
                 if (match?.groups) {
-                    const { prefix = '', key: arbKey } = match.groups;
+                    const { prefix = '', key: arbKey, attribute } = match.groups;
                     const sid = `${prefix}${arbKey}`;
                     if (!Object.prototype.hasOwnProperty.call(flatResource, sid) || flatResource[sid] == null) {
+                        delete flatResource[key];
+                    } else if (attribute.startsWith('placeholders')) {
+                        // Filter out placeholders attribute - only keep description
                         delete flatResource[key];
                     }
                 } else {
