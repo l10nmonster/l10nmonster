@@ -8,7 +8,7 @@ import { flattenAndSplitResources, ARB_ANNOTATION_MARKER, arbPlaceholderHandler 
 
 const isArbAnnotations = e => e[0].split('.').some(segment => segment.startsWith(ARB_ANNOTATION_MARKER));
 const validPluralSuffixes = new Set(['one', 'other', 'zero', 'two', 'few', 'many']);
-const extractArbGroupsRegex = /(?<prefix>.+?\.)?@(?<key>\S+)\.(?<attribute>\S+)/;
+const extractArbGroupsRegex = /(?<prefix>.+?\.)?@(?<key>[^.]+)\.(?<attribute>.+)/;
 const defaultArbAnnotationHandlers = {
     description: (_, data) => (data == null ? undefined : data),
     placeholders: (_, data) => (data == null ? undefined : arbPlaceholderHandler(data)),
@@ -140,7 +140,7 @@ export class I18nextFilter {
                 if (match?.groups) {
                     const { prefix = '', key: arbKey } = match.groups;
                     const sid = `${prefix}${arbKey}`;
-                    if (!flatResource[sid]) {
+                    if (!Object.prototype.hasOwnProperty.call(flatResource, sid)) {
                         delete flatResource[key];
                     }
                 } else {
