@@ -135,7 +135,7 @@ export class I18nextFilter {
                     continue;
                 }
                 
-                // Only keep if regex matches and corresponding translation exists
+                // Only keep if regex matches and corresponding translation exists and is not null
                 const match = extractArbGroupsRegex.exec(key);
                 if (match?.groups) {
                     const { prefix = '', key: arbKey } = match.groups;
