@@ -777,6 +777,12 @@ suite("nested placeholder tests", () => {
                     differentPlaceDropOff: "Drop off at {{pickupLocationName}} instead of pickup location",
                     "@differentPlaceDropOff": {
                         description: "Message when drop-off differs from pickup for car rentals",
+                        placeholders: {
+                            pickupLocationName: {
+                                example: "Downtown San Francisco",
+                                description: "The name of the pickup location for car rental"
+                            }
+                        }
                     }
                 }
             }
@@ -937,155 +943,4 @@ suite("annotation handler tests", () => {
         const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
         assert.deepEqual(output, expectedOutput);
     })
-})
-
-suite("nested placeholder tests", () => {
-    test("parseResource handles deeply nested placeholders", async () => {
-        const resourceFilter = new i18next.I18nextFilter({
-            enableArbAnnotations: true,
-        });
-        const resource = {
-            recentSearch: {
-                cars: {
-                    differentPlaceDropOff: "Drop off at {{pickupLocationName}} instead of pickup location",
-                    "@differentPlaceDropOff": {
-                        description: "Message when drop-off differs from pickup for car rentals",
-                        placeholders: {
-                            pickupLocationName: {
-                                example: "Downtown San Francisco",
-                                description: "The name of the pickup location for car rental"
-                            }
-                        }
-                    }
-                }
-            }
-        };
-        const expectedOutput = {
-            segments: [
-                {
-                    sid: "recentSearch.cars.differentPlaceDropOff",
-                    str: "Drop off at {{pickupLocationName}} instead of pickup location",
-                    notes: `Message when drop-off differs from pickup for car rentals\nPH({{pickupLocationName}}|Downtown San Francisco|The name of the pickup location for car rental)`
-                },
-            ],
-        };
-        const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
-        assert.deepEqual(output, expectedOutput);
-    });
-
-    test("translateResource preserves deeply nested placeholder annotations when emitArbAnnotations is true", async () => {
-        const resourceFilter = new i18next.I18nextFilter({
-            enableArbAnnotations: true,
-            emitArbAnnotations: true,
-        });
-        const translator = async (sid, str) => `${str} - **Translated**`;
-        const resource = {
-            recentSearch: {
-                cars: {
-                    differentPlaceDropOff: "Drop off at {{pickupLocationName}} instead of pickup location",
-                    "@differentPlaceDropOff": {
-                        description: "Message when drop-off differs from pickup for car rentals",
-                    }
-                }
-            }
-        };
-        const expectedOutput = {
-            recentSearch: {
-                cars: {
-                    differentPlaceDropOff: "Drop off at {{pickupLocationName}} instead of pickup location - **Translated**",
-                    "@differentPlaceDropOff": {
-                        description: "Message when drop-off differs from pickup for car rentals",
-                        placeholders: {
-                            pickupLocationName: {
-                                example: "Downtown San Francisco",
-                                description: "The name of the pickup location for car rental"
-                            }
-                        }
-                    }
-                }
-            }
-        };
-        const output = await resourceFilter.translateResource({
-            resource: JSON.stringify(resource),
-            translator,
-        });
-        assert.deepEqual(JSON.parse(output), expectedOutput);
-    });
-
-    test("translateResource removes deeply nested placeholder annotations when emitArbAnnotations is false", async () => {
-        const resourceFilter = new i18next.I18nextFilter({
-            enableArbAnnotations: true,
-            emitArbAnnotations: false,
-        });
-        const translator = async (sid, str) => `${str} - **Translated**`;
-        const resource = {
-            recentSearch: {
-                cars: {
-                    differentPlaceDropOff: "Drop off at {{pickupLocationName}} instead of pickup location",
-                    "@differentPlaceDropOff": {
-                        description: "Message when drop-off differs from pickup for car rentals",
-                        placeholders: {
-                            pickupLocationName: {
-                                example: "Downtown San Francisco",
-                                description: "The name of the pickup location for car rental"
-                            }
-                        }
-                    }
-                }
-            }
-        };
-        const expectedOutput = {
-            recentSearch: {
-                cars: {
-                    differentPlaceDropOff: "Drop off at {{pickupLocationName}} instead of pickup location - **Translated**"
-                }
-            }
-        };
-        const output = await resourceFilter.translateResource({
-            resource: JSON.stringify(resource),
-            translator,
-        });
-        assert.deepEqual(JSON.parse(output), expectedOutput);
-    });
-
-    test("translateResource removes nested annotations when translation is null", async () => {
-        const resourceFilter = new i18next.I18nextFilter({
-            enableArbAnnotations: true,
-            emitArbAnnotations: true,
-        });
-        const translator = async (sid, str) => {
-            // Return null for the nested key to test annotation removal
-            return sid === "recentSearch.cars.differentPlaceDropOff" ? null : `${str} - **Translated**`;
-        };
-        const resource = {
-            recentSearch: {
-                cars: {
-                    differentPlaceDropOff: "Drop off at {{pickupLocationName}} instead of pickup location",
-                    "@differentPlaceDropOff": {
-                        description: "Message when drop-off differs from pickup for car rentals",
-                        placeholders: {
-                            pickupLocationName: {
-                                example: "Downtown San Francisco",
-                                description: "The name of the pickup location for car rental"
-                            }
-                        }
-                    },
-                    anotherKey: "Another message"
-                }
-            }
-        };
-        const expectedOutput = {
-            recentSearch: {
-                cars: {
-                    differentPlaceDropOff: null,
-                    anotherKey: "Another message - **Translated**"
-                }
-            }
-        };
-        const output = await resourceFilter.translateResource({
-            resource: JSON.stringify(resource),
-            translator,
-        });
-        assert.deepEqual(JSON.parse(output), expectedOutput);
-    });
 })
