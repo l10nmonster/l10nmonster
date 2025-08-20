@@ -117,7 +117,7 @@ export class I18nextFilter {
         for (const entry of Object.entries(flatResource)) {
             if (!this.enableArbAnnotations || !isArbAnnotations(entry)) {
                 const translation = await translator(...entry);
-                if (translation === undefined) {
+                if (translation === null) {
                     delete flatResource[entry[0]];
                 } else {
                     flatResource[entry[0]] = translation;
