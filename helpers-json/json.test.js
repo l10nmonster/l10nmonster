@@ -531,7 +531,6 @@ suite("json translateResource - if no translation, delete annotations", () => {
             },
         };
         const expectedOutput = {
-            homeSubtitle: null,
             title: "title <strong>Welcome back</strong> to travel. - **Translation**",
             "@title": {
                 description: "header - welcome message of flight flow",
@@ -875,7 +874,6 @@ suite("nested placeholder tests", () => {
         const expectedOutput = {
             recentSearch: {
                 cars: {
-                    differentPlaceDropOff: null,
                     anotherKey: "Another message - **Translated**"
                 }
             }
