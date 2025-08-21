@@ -10,6 +10,12 @@
   },
   "nationalIdPlaceholder": "⇥Q9:E̲n̲t̲e̲r̲̟ ̲y̲o̲u̲r̲̟ ̲{{id}}⇤",
   "@nationalIdPlaceholder": {
-    "description": "copy - national ID input placeholder on passenger form"
+    "description": "copy - national ID input placeholder on passenger form",
+    "placeholders": {
+      "id": {
+        "example": "CPF",
+        "description": "Name of a national ID"
+      }
+    }
   }
 }
