@@ -23,7 +23,10 @@
       "Bash(npm install:*)",
       "Bash(npm run release:*)",
       "Bash(npm view:*)",
-      "Bash(git tag:*)"
+      "Bash(git tag:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh api:*)",
+      "Bash(npm run eslint:*)"
     ],
     "deny": []
   }

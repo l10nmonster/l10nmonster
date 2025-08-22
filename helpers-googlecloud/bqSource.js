@@ -1,5 +1,4 @@
 import { BigQuery } from '@google-cloud/bigquery';
-import { GoogleAuth } from 'google-auth-library';
 import { logInfo, logVerbose } from '@l10nmonster/core';
 
 function decodeSqlResponse(segmentOrSubresource) {
@@ -19,7 +18,6 @@ export class BQSource {
     #location;
     #resourceFormat;
     #bundleDecorator;
-    #initialized = false;
 
     /**
      * Initializes a new instance of the BQSource class.
