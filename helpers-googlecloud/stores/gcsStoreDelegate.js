@@ -15,8 +15,10 @@ export class GCSStoreDelegate {
 
     async listAllFiles() {
         this.bucket || (this.bucket = await this.storage.bucket(this.bucketName));
-        const [ files ] = await this.bucket.getFiles({ prefix: this.bucketPrefix });
-        const filenamesWithModified = files.map(f => [ f.name.replace(`${this.bucketPrefix}/`, ''), f.generation ]);
+        const prefix = this.bucketPrefix === '' ? '' : 
+                      (this.bucketPrefix.endsWith('/') ? this.bucketPrefix : `${this.bucketPrefix}/`);
+        const [ files ] = await this.bucket.getFiles({ prefix });
+        const filenamesWithModified = files.map(f => [ f.name.replace(prefix, ''), f.generation ]);
         return filenamesWithModified;
     }
 
