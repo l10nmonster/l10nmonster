@@ -1,4 +1,5 @@
 import { BigQuery } from '@google-cloud/bigquery';
+import { GoogleAuth } from 'google-auth-library';
 import { logInfo, logVerbose } from '@l10nmonster/core';
 
 function decodeSqlResponse(segmentOrSubresource) {
@@ -18,6 +19,7 @@ export class BQSource {
     #location;
     #resourceFormat;
     #bundleDecorator;
+    #initialized = false;
 
     /**
      * Initializes a new instance of the BQSource class.
@@ -46,7 +48,8 @@ export class BQSource {
      */
     async *fetchAllResources({ since } = {}) {
         logInfo`\nFetching resources from BQ...`;
-        const bigquery = new BigQuery({ projectId: this.#projectId });
+        const options = this.#projectId ? { projectId: this.#projectId } : {};
+        const bigquery = new BigQuery(options);
         const query = this.#query({ since });
         const [ job ] = await bigquery.createQueryJob({ query, location: this.#location });
         logInfo`BQ Job ${job.id} started (principal: ${job.metadata.principal_subject}) -- ${job.metadata?.status?.state}`;
