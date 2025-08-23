@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 
-import { getRegressionMode, logInfo, logWarn } from '../l10nContext.js';
+import { getRegressionMode, logInfo, logVerbose, logWarn } from '../l10nContext.js';
 import { TM } from './tm.js';
 
 
@@ -42,7 +42,11 @@ export default class TMManager {
         });
         for await (const job of tmBlockIterator) {
             if (job) {
-                insertJob(job);
+                if (job.tus?.length > 0) {
+                    insertJob(job);
+                } else {
+                    logVerbose`Ignoring empty job ${job.jobGuid}`;
+                }
             } else {
                 logWarn`Received a nullish job while saving a TM block`;
             }

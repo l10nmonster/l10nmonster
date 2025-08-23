@@ -1,7 +1,7 @@
 import path from 'path';
 import { mkdirSync, readdirSync, statSync, readFileSync, writeFileSync, unlinkSync, createReadStream, createWriteStream } from 'node:fs';
 import { pipeline } from 'node:stream/promises';
-import { getRegressionMode } from '../../l10nContext.js';
+import { getRegressionMode, logVerbose } from '../../l10nContext.js';
 
 export class FsStoreDelegate {
     constructor(baseDir) {
@@ -59,11 +59,12 @@ export class FsStoreDelegate {
 
     async deleteFiles(filenames) {
         for (const filename of filenames) {
+            const pathName = path.join(this.baseDir, filename);
             try {
-                unlinkSync(path.join(this.baseDir, filename));
-            // eslint-disable-next-line no-unused-vars
+                logVerbose`Deleting file ${pathName}`;
+                unlinkSync(pathName);
             } catch(e) {
-                // L10nContext.logger.info(e.message ?? e);
+                logVerbose`Error deleting file ${pathName}: ${e.message ?? e}`;
             }
         }
     }

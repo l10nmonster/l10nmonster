@@ -157,17 +157,19 @@ export class BaseJsonlTmStore {
             logVerbose`No TOC found for pair ${sourceLang} - ${targetLang}: ${e.message}`;
             toc = { v: 1, sourceLang, targetLang, blocks: {} };
         }
-        // ensure integrity: prune blocks in TOC  missing in storage and delete extra blocks in storage missing in TOC
+        // ensure integrity of TOC
         const storedBlocks = await this.#listAllTmBlocks(sourceLang, targetLang);
         const storedBlocksMap = new Map(storedBlocks);
+        // prune blocks in TOC if file missing in storage or it has no jobs
+        for (const blockId of Object.keys(toc.blocks)) {
+            if (!storedBlocksMap.has(blockId) || toc.blocks[blockId].jobs.length === 0) {
+                delete toc.blocks[blockId];
+            }
+        }
+        // delete blocks in storage missing in TOC
         for (const [ blockId, blockName ] of storedBlocks) {
             if (!toc.blocks[blockId]) {
                 await this.delegate.deleteFiles([ blockName ]);
-            }
-        }
-        for (const blockId of Object.keys(toc.blocks)) {
-            if (!storedBlocksMap.has(blockId)) {
-                delete toc.blocks[blockId];
             }
         }
         return toc;
@@ -178,9 +180,11 @@ export class BaseJsonlTmStore {
             throw new Error(`Cannot write to readonly TM Store: ${this.id}`);
         }
         const toc = await this.getTOC(sourceLang, targetLang);
+        const tocChanges = [];
         await cb(async ({ translationProvider, blockId }, tmBlockIterator) => {
             const jobs = [];
             if (tmBlockIterator) {
+                let tuCount = 0;
                 const generator = async function *jsonlGenerator () {
                     for await (const job of tmBlockIterator) {
                         const { jobProps, tus } = job;
@@ -198,24 +202,44 @@ export class BaseJsonlTmStore {
                             out.push(JSON.stringify(row));
                         });
                         if (out.length > 0) {
+                            tuCount += out.length;
                             // eslint-disable-next-line prefer-template
                             yield out.join('\n') + '\n';
                         }
                     }
                 };
-                const blockName = this.#getTmBlockName({ sourceLang, targetLang, translationProvider, blockId });
                 let readable = Readable.from(generator());
-
                 if (this.#compressBlocks) {
                     readable = readable.pipe(zlib.createGzip());
                 }
+                const blockName = toc.blocks[blockId]?.blockName ?? this.#getTmBlockName({ sourceLang, targetLang, translationProvider, blockId });
                 const modified = await this.delegate.saveStream(blockName, readable);
-                toc.blocks[blockId] = { blockName, modified, jobs };
+                if (tuCount > 0) {
+                    logVerbose`Saved ${tuCount} ${[tuCount, 'TU', 'TUs']} in block ${blockId} of TM Store ${this.id}`;
+                    tocChanges.push([ blockId, { blockName, modified, jobs } ]);
+                } else {
+                    logVerbose`Deleting empty block ${blockId} from TM Store ${this.id}`;
+                    await this.delegate.deleteFiles([ blockName ]);
+                    tocChanges.push([ blockId, null ]);
+                }
             } else {
                 const blockName = toc.blocks[blockId]?.blockName;
-                blockName && await this.delegate.deleteFiles([ blockName ]);
+                if (blockName) {
+                    logVerbose`Deleting block ${blockId} from TM Store ${this.id}`;
+                    await this.delegate.deleteFiles([ blockName ]);
+                    tocChanges.push([ blockId, null ]);
+                } else {
+                    logVerbose`Couldn't delete block ${blockId} from TM Store ${this.id} because it was not found`;
+                }
             }
         });
+        for (const [ blockId, block ] of tocChanges) {
+            if (block) {
+                toc.blocks[blockId] = block;
+            } else {
+                delete toc.blocks[blockId];
+            }
+        }
         await this.delegate.saveFile(`TOC-sl=${sourceLang}-tl=${targetLang}.json`, JSON.stringify(toc, null, '\t'));
     }
 }
