@@ -106,6 +106,11 @@ export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
         throw new Error(`generateContent not implemented in ${this.constructor.name}`);
     }
 
+    shouldRetry(error) {
+        const status = error.status;
+        return status === 408 || status === 429 || status >= 500 || status === undefined; // in case the exception doesn't have a status property, retry
+    }
+
     /**
      * Executes LLM content generation with retry logic and error handling.
      * @param {object} args - The provider-specific arguments for the LLM call
@@ -117,7 +122,7 @@ export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
             return await this.generateContent(args);
         } catch (e) {
             let lastError = e;
-            for (let retry = 1; retry <= this.#maxRetries && lastError.status >= 500; retry++) {
+            for (let retry = 1; retry <= this.#maxRetries && this.shouldRetry(lastError); retry++) {
                 logWarn`Unexpected generateContent error (status=${e.status}): ${e.message}`;
                 const sleepTime = this.#sleepBasePeriod * retry * retry;
                 logInfo`Sleeping ${sleepTime}ms before retrying (attempt ${retry}/${this.#maxRetries})...`;
@@ -128,7 +133,7 @@ export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
                     lastError = e;
                 }
             }
-            logWarn`Unexpected generateContent error (status=${e.status}): ${e.message}`;
+            logWarn`Exceeded retries (max=${this.#maxRetries}, shouldRetry=${this.shouldRetry(lastError)}) for unexpected generateContent error (status=${e.status}): ${e.message}`;
             throw lastError; // Re-throw after final attempt
         }
     }
