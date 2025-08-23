@@ -107,6 +107,9 @@ export default class Dispatcher {
     //   2 - only jobRequest is passed because it's blocked -> write if "blocked", cancel if "created"
     //   3 - only jobResponse is passed because it's pulled -> must write even if empty or it will show as blocked/pending
     async processJob(jobResponse, jobRequest) {
+        if (jobResponse?.status === 'cancelled') {
+            return;
+        }
         if (jobRequest && jobResponse) {
             if (jobResponse.status === 'created' && !(jobResponse.tus?.length > 0 || jobResponse.inflight?.length > 0)) {
                 jobResponse.status = 'cancelled';
