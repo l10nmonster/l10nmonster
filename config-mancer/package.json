@@ -14,8 +14,12 @@
         "schema",
         "validation",
         "json",
+        "yaml",
         "proxy"
     ],
+    "dependencies": {
+        "yaml": "^2.8.1"
+    },
     "engines": {
         "node": ">=22.11.0"
     }

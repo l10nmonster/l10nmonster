@@ -47,7 +47,7 @@ class ApiConfig extends BaseConfigMancerType {
 class MyClass {
     static configMancerSample = {
         '@': 'MyClass',
-        foo: 'string',
+        foo: {},
     };
     constructor(obj) {
         this.foo = obj.foo;
@@ -1242,6 +1242,319 @@ suite('ConfigMancer tests', () => {
         } finally {
             unlinkSync(settingsFilePath);
             unlinkSync(configFilePath);
+        }
+    });
+
+    // YAML Support Tests
+    test('reviveFile handles YAML files with type-aware revival', () => {
+        const testFilePath = generateTempFilenameWithExt('yaml', 'config');
+        writeFileSync(testFilePath, `---
+"@": DatabaseConfig
+host: yaml-db.example.com
+port: 5432
+ssl: true
+`);
+
+        try {
+            const result = mancer.reviveFile(testFilePath);
+            assert.equal(typeof result.getConnectionString, 'function');
+            assert.equal(result.host, 'yaml-db.example.com');
+            assert.equal(result.port, 5432);
+            assert.equal(result.ssl, true);
+            assert.equal(result.getConnectionString(), 'yaml-db.example.com:5432');
+        } finally {
+            unlinkSync(testFilePath);
+        }
+    });
+
+    test('reviveFile handles YAML files with .yml extension', () => {
+        const testFilePath = generateTempFilenameWithExt('yml', 'config');
+        writeFileSync(testFilePath, `---
+"@": DatabaseConfig
+host: yml-db.example.com
+port: 3306
+ssl: false
+`);
+
+        try {
+            const result = mancer.reviveFile(testFilePath);
+            assert.equal(typeof result.getConnectionString, 'function');
+            assert.equal(result.host, 'yml-db.example.com');
+            assert.equal(result.port, 3306);
+            assert.equal(result.ssl, false);
+        } finally {
+            unlinkSync(testFilePath);
+        }
+    });
+
+    test('reviveFile handles complex YAML with nested objects and arrays', () => {
+        const testFilePath = generateTempFilenameWithExt('yaml', 'complex');
+        writeFileSync(testFilePath, `---
+"@": ApiConfig
+url: https://yaml-api.example.com
+databases:
+  - "@": DatabaseConfig
+    host: yaml-primary.db.com
+    port: 5432
+    ssl: true
+  - "@": DatabaseConfig
+    host: yaml-secondary.db.com
+    port: 5433
+    ssl: false
+`);
+
+        try {
+            const result = mancer.reviveFile(testFilePath);
+            assert.equal(typeof result.getPrimaryDatabase, 'function');
+            assert.equal(result.url, 'https://yaml-api.example.com');
+            assert.equal(result.databases.length, 2);
+            
+            assert.equal(typeof result.databases[0].getConnectionString, 'function');
+            assert.equal(result.databases[0].host, 'yaml-primary.db.com');
+            assert.equal(result.databases[0].port, 5432);
+            assert.equal(result.databases[0].ssl, true);
+            
+            assert.equal(typeof result.databases[1].getConnectionString, 'function');
+            assert.equal(result.databases[1].host, 'yaml-secondary.db.com');
+            assert.equal(result.databases[1].port, 5433);
+            assert.equal(result.databases[1].ssl, false);
+            
+            assert.equal(result.getPrimaryDatabase().host, 'yaml-primary.db.com');
+        } finally {
+            unlinkSync(testFilePath);
+        }
+    });
+
+    test('serializeToPathName writes YAML files based on extension', () => {
+        const config = new DatabaseConfig({
+            '@': 'DatabaseConfig',
+            host: 'serialized-db.example.com',
+            port: 5432,
+            ssl: true
+        });
+
+        const testFilePath = generateTempFilenameWithExt('yaml', 'serialized');
+
+        try {
+            mancer.serializeToPathName(config, testFilePath);
+            
+            // Verify file was created
+            const fileContent = readFileSync(testFilePath, 'utf-8');
+            assert.ok(fileContent.includes('host: serialized-db.example.com'));
+            assert.ok(fileContent.includes('port: 5432'));
+            assert.ok(fileContent.includes('ssl: true'));
+            assert.ok(fileContent.includes('"@": DatabaseConfig'));
+            
+            // Verify we can read it back
+            const revived = mancer.reviveFile(testFilePath);
+            assert.equal(typeof revived.getConnectionString, 'function');
+            assert.equal(revived.host, 'serialized-db.example.com');
+            assert.equal(revived.port, 5432);
+            assert.equal(revived.ssl, true);
+        } finally {
+            unlinkSync(testFilePath);
+        }
+    });
+
+    test('serializeToPathName writes YAML files with .yml extension', () => {
+        const config = new DatabaseConfig({
+            '@': 'DatabaseConfig',
+            host: 'yml-serialized.example.com',
+            port: 3306,
+            ssl: false
+        });
+
+        const testFilePath = generateTempFilenameWithExt('yml', 'serialized');
+
+        try {
+            mancer.serializeToPathName(config, testFilePath);
+            
+            // Verify file was created and is valid YAML
+            const fileContent = readFileSync(testFilePath, 'utf-8');
+            assert.ok(fileContent.includes('host: yml-serialized.example.com'));
+            assert.ok(fileContent.includes('port: 3306'));
+            assert.ok(fileContent.includes('ssl: false'));
+            
+            // Verify roundtrip
+            const revived = mancer.reviveFile(testFilePath);
+            assert.equal(typeof revived.getConnectionString, 'function');
+            assert.equal(revived.host, 'yml-serialized.example.com');
+            assert.equal(revived.port, 3306);
+            assert.equal(revived.ssl, false);
+        } finally {
+            unlinkSync(testFilePath);
+        }
+    });
+
+    test('serializeToPathName defaults to JSON for unknown extensions', () => {
+        const config = new DatabaseConfig({
+            '@': 'DatabaseConfig',
+            host: 'default-json.example.com',
+            port: 5432,
+            ssl: true
+        });
+
+        const testFilePath = generateTempFilenameWithExt('unknown', 'serialized');
+
+        try {
+            mancer.serializeToPathName(config, testFilePath);
+            
+            // Verify file was created as JSON
+            const fileContent = readFileSync(testFilePath, 'utf-8');
+            const parsed = JSON.parse(fileContent);
+            assert.equal(parsed['@'], 'DatabaseConfig');
+            assert.equal(parsed.host, 'default-json.example.com');
+            assert.equal(parsed.port, 5432);
+            assert.equal(parsed.ssl, true);
+        } finally {
+            unlinkSync(testFilePath);
+        }
+    });
+
+    test('ImportJsonFile helper handles YAML files', () => {
+        const testSchemaManager = new SchemaManager({ classes: { ImportJsonFile, MyClass } });
+        const testMancer = new ConfigMancer(testSchemaManager);
+        
+        const yamlContent = {
+            database: {
+                host: 'imported-yaml.db.com',
+                port: 5432,
+                ssl: true
+            },
+            settings: {
+                timeout: 30000,
+                retries: 3
+            }
+        };
+
+        const yamlFilePath = generateTempFilenameWithExt('yaml', 'import');
+        writeFileSync(yamlFilePath, `---
+database:
+  host: imported-yaml.db.com
+  port: 5432
+  ssl: true
+settings:
+  timeout: 30000
+  retries: 3
+`);
+
+        const config = {
+            '@': 'MyClass',
+            foo: {
+                '@': 'ImportJsonFile',
+                fileName: yamlFilePath
+            }
+        };
+
+        const testFilePath = generateTempFilename('import-yaml');
+        writeFileSync(testFilePath, JSON.stringify(config));
+
+        try {
+            const result = testMancer.reviveFile(testFilePath);
+            assert.equal(result.foo.constructor.name, 'Object');
+            assert.deepEqual(result.foo, yamlContent);
+            assert.equal(result.foo.database.host, 'imported-yaml.db.com');
+            assert.equal(result.foo.database.port, 5432);
+            assert.equal(result.foo.settings.timeout, 30000);
+        } finally {
+            unlinkSync(testFilePath);
+            unlinkSync(yamlFilePath);
+        }
+    });
+
+    test('ImportJsonFile helper handles .yml files', () => {
+        const testSchemaManager = new SchemaManager({ classes: { ImportJsonFile, MyClass } });
+        const testMancer = new ConfigMancer(testSchemaManager);
+        
+        const yamlContent = {
+            config: {
+                name: 'test-yml-import',
+                version: '1.0.0'
+            }
+        };
+
+        const ymlFilePath = generateTempFilenameWithExt('yml', 'import');
+        writeFileSync(ymlFilePath, `---
+config:
+  name: test-yml-import
+  version: "1.0.0"
+`);
+
+        const config = {
+            '@': 'MyClass',
+            foo: {
+                '@': 'ImportJsonFile',
+                fileName: ymlFilePath
+            }
+        };
+
+        const testFilePath = generateTempFilename('import-yml');
+        writeFileSync(testFilePath, JSON.stringify(config));
+
+        try {
+            const result = testMancer.reviveFile(testFilePath);
+            assert.equal(result.foo.constructor.name, 'Object');
+            assert.deepEqual(result.foo, yamlContent);
+            assert.equal(result.foo.config.name, 'test-yml-import');
+            assert.equal(result.foo.config.version, '1.0.0');
+        } finally {
+            unlinkSync(testFilePath);
+            unlinkSync(ymlFilePath);
+        }
+    });
+
+    test('YAML and JSON produce equivalent results for same data', () => {
+        const configData = {
+            '@': 'ApiConfig',
+            url: 'https://equivalent-test.example.com',
+            databases: [
+                {
+                    '@': 'DatabaseConfig',
+                    host: 'equiv-db.example.com',
+                    port: 5432,
+                    ssl: true
+                }
+            ]
+        };
+
+        const jsonFilePath = generateTempFilename('equivalent');
+        const yamlFilePath = generateTempFilenameWithExt('yaml', 'equivalent');
+
+        writeFileSync(jsonFilePath, JSON.stringify(configData, null, 2));
+        writeFileSync(yamlFilePath, `---
+"@": ApiConfig
+url: https://equivalent-test.example.com
+databases:
+  - "@": DatabaseConfig
+    host: equiv-db.example.com
+    port: 5432
+    ssl: true
+`);
+
+        try {
+            const jsonResult = mancer.reviveFile(jsonFilePath);
+            const yamlResult = mancer.reviveFile(yamlFilePath);
+
+            // Both should have ApiConfig methods
+            assert.equal(typeof jsonResult.getPrimaryDatabase, 'function');
+            assert.equal(typeof yamlResult.getPrimaryDatabase, 'function');
+
+            // Properties should be identical
+            assert.equal(jsonResult.url, yamlResult.url);
+            assert.equal(jsonResult.databases.length, yamlResult.databases.length);
+
+            // Database methods should be identical
+            const jsonDb = jsonResult.databases[0];
+            const yamlDb = yamlResult.databases[0];
+            assert.equal(typeof jsonDb.getConnectionString, 'function');
+            assert.equal(typeof yamlDb.getConnectionString, 'function');
+            assert.equal(jsonDb.host, yamlDb.host);
+            assert.equal(jsonDb.port, yamlDb.port);
+            assert.equal(jsonDb.ssl, yamlDb.ssl);
+
+        } finally {
+            unlinkSync(jsonFilePath);
+            unlinkSync(yamlFilePath);
         }
     });
 });
