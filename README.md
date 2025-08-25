@@ -362,7 +362,7 @@ For v3 development and testing, use pre-release versions with the `next` tag:
 
 ```bash
 # Update to next alpha version
-npm version 3.0.0-alpha.2 --workspaces --no-git-tag-version
+npm version 3.0.0-alpha.9 --workspaces
 
 # Test publishing (dry run)
 npm run publish:next-dry
@@ -384,7 +384,7 @@ When ready for stable release:
 
 ```bash
 # Update to stable version
-npm version 3.0.0 --workspaces --no-git-tag-version
+npm version 3.0.0 --workspaces
 
 # Test publishing (dry run)
 npm run publish:npm-dry
@@ -419,12 +419,12 @@ npm run publish:npm
 npm list --workspaces --depth=0
 
 # Update specific version type
-npm version prerelease --workspaces --no-git-tag-version  # alpha.1 → alpha.2
-npm version preminor --workspaces --no-git-tag-version    # alpha → beta
-npm version premajor --workspaces --no-git-tag-version    # beta → rc
+npm version prerelease --workspaces  # alpha.1 → alpha.2
+npm version preminor --workspaces    # alpha → beta
+npm version premajor --workspaces    # beta → rc
 
 # Remove pre-release identifier
-npm version patch --workspaces --no-git-tag-version       # rc → stable
+npm version patch --workspaces       # rc → stable
 ```
 
 ### Troubleshooting
