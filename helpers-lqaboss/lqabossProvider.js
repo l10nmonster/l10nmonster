@@ -1,5 +1,5 @@
 import JSZip from 'jszip';
-import { getRegressionMode, providers, logVerbose, logInfo, styleString, utils, opsManager, logError, logWarn } from '@l10nmonster/core';
+import { providers, logVerbose, styleString, opsManager } from '@l10nmonster/core';
 
 /**
  * @typedef {object} LQABossProviderOptions
@@ -22,47 +22,34 @@ export class LQABossProvider extends providers.BaseTranslationProvider {
         super(options);
         this.#storageDelegate = delegate;
         this.#opNames.startReviewOp = `${this.id}.startReviewOp`;
-        this.#opNames.continueReviewOp = `${this.id}.continueReviewOp`;
-        this.#opNames.completeReviewOp = `${this.id}.completeReviewOp`;
         opsManager.registerOp(this.startReviewOp.bind(this), { opName: this.#opNames.startReviewOp, idempotent: false });
-        opsManager.registerOp(this.continueReviewOp.bind(this), { opName: this.#opNames.continueReviewOp, idempotent: true });
-        opsManager.registerOp(this.completeReviewOp.bind(this), { opName: this.#opNames.completeReviewOp, idempotent: true });
     }
 
     createTask(job) {
         logVerbose`LQABossProvider creating task for job ${job.jobGuid}`;
-        const requestTranslationsTask = opsManager.createTask(this.id, this.#opNames.completeReviewOp);
-        requestTranslationsTask.rootOp.enqueue(this.#opNames.startReviewOp, { job });
-        return requestTranslationsTask;
+        return opsManager.createTask(this.id, this.#opNames.startReviewOp, { job });
     }
 
     async startReviewOp(op) {
-        const { job } = op.args;
+        const { tus, ...jobResponse } = op.args.job;
         const zip = new JSZip();
-        zip.file('job.json', JSON.stringify(job, null, 2));
+        zip.file('job.json', JSON.stringify({
+            ...jobResponse,
+            tus: tus.map(tu => ({
+                rid: tu.rid,
+                sid: tu.sid,
+                guid: tu.guid,
+                nsrc: tu.nsrc,
+                notes: tu.notes,
+                ntgt: tu.ntgt,
+                q: this.quality,
+            })),
+        }, null, 2));
         const buffer = await zip.generateAsync({ type: 'nodebuffer', compression: 'DEFLATE', compressionOptions: { level: 6 } });
-        const filename = `${job.jobGuid}.lqaboss`;
+        const filename = `${jobResponse.jobGuid}.lqaboss`;
         await this.#storageDelegate.saveFile(filename, buffer);
-        logVerbose`LQABoss file ${filename} with ${job.tus.length} guids and ${buffer.length} bytes saved`;
-        op.parentTask.rootOp.enqueue(this.#opNames.continueReviewOp, { jobGuid: job.jobGuid });
-    }
-
-    /**
-     * Fetches the completed review job. This will error out until the review is complete.
-     * @param {object} op - The operation context containing fetch parameters.
-     * @returns {Promise<*>} The job response.
-     */
-    async continueReviewOp(op) {
-        const filename = `${op.args.jobGuid}.json`;
-        logVerbose`Trying to fetch completed LQABoss file ${filename}`;
-        return JSON.parse(await this.#storageDelegate.getFile(filename));
-    }
-
-    async completeReviewOp(op) {
-        const { tus, ...jobResponse } = op.inputs[1]; // the second op should be continueReviewOp
-        jobResponse.status = 'done';
-        const ts = getRegressionMode() ? 1 : new Date().getTime();
-        jobResponse.tus = tus.map(tu => ({ ...tu, ts, q: this.quality }));
+        logVerbose`Saved LQABoss file ${filename} with ${tus.length} guids and ${buffer.length} bytes`;
+        jobResponse.tus = []; // remove tus so that job is cancelled and won't be stored
         return jobResponse;
     }
 

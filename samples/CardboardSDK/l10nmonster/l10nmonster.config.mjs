@@ -9,7 +9,7 @@ import { AnthropicAgent } from '@l10nmonster/helpers-anthropic';
 import { DeepLProvider } from '@l10nmonster/helpers-deepl';
 import { LaraProvider, MMTProvider } from '@l10nmonster/helpers-translated';
 import { GPTAgent } from '@l10nmonster/helpers-openai';
-import { LQABossProvider } from '@l10nmonster/helpers-lqaboss';
+import { LQABossProvider, LQABossTmStore } from '@l10nmonster/helpers-lqaboss';
 
 // const defaultTOSConfig = {
 //     baseURL: 'https://api-sandbox.translated.com/v2',
@@ -144,23 +144,27 @@ export default config.l10nMonster(import.meta.dirname)
     //     completePath: (lang, jobId) => `inbox/job${jobId}-${lang}.xml`,
     //     quality: 80,
     // }))
-    // .provider(new LQABossProvider({
-    //     id: 'LQABoss',
-    //     // delegate: new stores.FsStoreDelegate('lqaBoss'),
-    //     delegate: new GCSStoreDelegate('foobucket', 'lqaboss1'),
-    //     // delegate: new GDriveStoreDelegate('1mZekxxxxxxxxxxxxxxxxxxxx'),
-    //     quality: 80,
-    // }))
+    .provider(new LQABossProvider({
+        id: 'LQABoss',
+        delegate: new stores.FsStoreDelegate('lqaBoss'),
+        // delegate: new GCSStoreDelegate('foobucket', 'lqaboss1'),
+        // delegate: new GDriveStoreDelegate('1mZekxxxxxxxxxxxxxxxxxxxx'),
+        quality: 80,
+    }))
     .operations({
         opsStore: new stores.FsOpsStore(path.join(import.meta.dirname, 'l10nOps')),
         autoSnap: true,
-        saveFailedJobs: true,
+        saveFailedJobs: false,
     })
     .tmStore(new stores.FsJsonlTmStore({
         id: 'primary',
         jobsDir: 'tmStore',
         partitioning: 'job',
         // compressBlocks: true,
+    }))
+    .tmStore(new LQABossTmStore({
+        id: 'lqaboss',
+        delegate: new stores.FsStoreDelegate('lqaBoss'),
     }))
     .action(serve)
     .action(class mystats {

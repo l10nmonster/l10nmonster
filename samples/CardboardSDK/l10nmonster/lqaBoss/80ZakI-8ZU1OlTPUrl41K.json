@@ -1,0 +1,72 @@
+{
+  "sourceLang": "en",
+  "targetLang": "zh",
+  "status": "done",
+  "estimatedCost": 0,
+  "translationProvider": "LQABoss",
+  "jobGuid": "80ZakI-8ZU1OlTPUrl41K",
+  "taskName": "Task-1755997211488-LQABoss-lJq",
+  "tus": [
+    {
+      "rid": "en.lproj/CardboardSDK.strings",
+      "sid": "BackButtonLabel",
+      "guid": "S0-rKxC3Jf5-IaURvhMKN-Jm16uYAJNSbMYgAEAMM3w",
+      "nsrc": [
+        "Back & not escaped as ios"
+      ],
+      "notes": {
+        "desc": "Back button label used to go back to the previous screen. (15 chars)"
+      },
+      "q": 80,
+      "ntgt": [
+        "Back & not escaped as ios111"
+      ]
+    },
+    {
+      "rid": "en.lproj/CardboardSDK.strings",
+      "sid": "NavTitleLabel",
+      "guid": "-U07czEmMZZm_ncjptVtcAdsmBUfWEEGivDSPbReVQM",
+      "nsrc": [
+        "QR Scan & as xml"
+      ],
+      "notes": {
+        "desc": "Label of the app title bar when on the QR code scanner screen. (45 chars)"
+      },
+      "q": 80,
+      "ntgt": [
+        "QR Scan & as xml111"
+      ]
+    },
+    {
+      "rid": "en.lproj/CardboardSDK.strings",
+      "sid": "LoadingMessage",
+      "guid": "PV7WBP4aNfZzq1Hre1_bkECpoSmhPedg7xfh7UKYkyw",
+      "nsrc": [
+        "Parsing configuration data"
+      ],
+      "notes": {
+        "desc": "Message shown to the user while waiting to process the QR code. (60 chars)"
+      },
+      "q": 80,
+      "ntgt": [
+        "Parsing configuration data1111"
+      ]
+    },
+    {
+      "rid": "en.lproj/CardboardSDK.strings",
+      "sid": "InvalidQRCode",
+      "guid": "jkJekuVBcsiufoG2zmxszlbnMGkREPRBAeb2QTDfUaI",
+      "nsrc": [
+        "The QR code is invalid"
+      ],
+      "notes": {
+        "desc": "Error message shown to the user if the QR code is invalid. (60 chars)"
+      },
+      "q": 80,
+      "ntgt": [
+        "The QR code is invalid1111"
+      ]
+    }
+  ],
+  "updatedAt": "2025-08-24T01:02:19.298Z"
+}
