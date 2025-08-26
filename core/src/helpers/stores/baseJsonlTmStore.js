@@ -157,25 +157,25 @@ export class BaseJsonlTmStore {
             logVerbose`No TOC found for pair ${sourceLang} - ${targetLang}: ${e.message}`;
             toc = { v: 1, sourceLang, targetLang, blocks: {} };
         }
-        return toc;
-    }
-
-    // this is private because not all stores can write the TOC
-    async #writeTOC(sourceLang, targetLang, tocChanges) {
-        const toc = await this.getTOC(sourceLang, targetLang);
-        // apply changes to TOC
-        for (const [ blockId, block ] of tocChanges) {
-            if (block) {
-                toc.blocks[blockId] = block;
-            } else {
-                delete toc.blocks[blockId];
-            }
-        }
         // ensure integrity of TOC by pruning blocks in TOC if file missing in storage or it has no jobs
         const storedBlocks = await this.#listAllTmBlocks(sourceLang, targetLang);
         const storedBlocksMap = new Map(storedBlocks);
         for (const blockId of Object.keys(toc.blocks)) {
             if (!storedBlocksMap.has(blockId) || toc.blocks[blockId].jobs.length === 0) {
+                delete toc.blocks[blockId];
+            }
+        }
+        return { ...toc, storedBlocks };
+    }
+
+    // this is private because not all stores can write the TOC
+    async #writeTOC(sourceLang, targetLang, tocChanges) {
+        const { storedBlocks, ...toc } = await this.getTOC(sourceLang, targetLang);
+        // apply changes to TOC
+        for (const [ blockId, block ] of tocChanges) {
+            if (block) {
+                toc.blocks[blockId] = block;
+            } else {
                 delete toc.blocks[blockId];
             }
         }
