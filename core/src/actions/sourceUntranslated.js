@@ -1,3 +1,5 @@
+/* eslint-disable no-negated-condition */
+/* eslint-disable complexity */
 import { writeFileSync } from 'fs';
 import { consoleLog } from '../l10nContext.js';
 import { printRequest } from './shared.js';
@@ -12,7 +14,7 @@ export class source_untranslated {
             [ '--instructions <instructions>', 'job-specific instructions' ],
             [ '--statusFile <filename>', 'write status to the specified file' ],
             [ '--outFile <filename>', 'write output to the specified file' ],
-            [ '--print', 'print jobs to console' ],
+            [ '--print [verbosity]', 'print jobs to console (basic, detailed, unassigned)', [ 'basic', 'detailed', 'unassigned' ] ],
         ]
     };
 
@@ -39,7 +41,8 @@ export class source_untranslated {
                         consoleLog`      • ${job.translationProvider ?? 'No provider available'}: ${job.tus.length.toLocaleString()} ${[job.tus.length, 'segment', 'segments']}, cost: ${formattedCost}`;
                         status[targetLang][sourceLang][job.translationProvider] = { segments: job.tus.length, cost: job.estimatedCost };
                         job.translationProvider && jobs.push(job);
-                        options.print && printRequest(job);
+                        const print = Boolean(options.print) && !(options.print === 'unassigned' && job.translationProvider);
+                        print && printRequest(job, 10, options.print === 'detailed');
                     }
                 } else {
                     jobs.push({ sourceLang, targetLang, tus });

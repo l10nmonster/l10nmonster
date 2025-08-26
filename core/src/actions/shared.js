@@ -11,19 +11,20 @@ export const consoleColor = {
     bright: '\x1b[1m',
 };
 
-function printContent(contentPairs) {
+function printContent(contentPairs, indentation = 0, verbose = false) {
+    const indent = ' '.repeat(indentation);
     for (const [prj, uc] of Object.entries(contentPairs)) {
-        consoleLog`Project: ${prj}`;
+        consoleLog`${indent}Project: ${prj}`;
         for (const [rid, content] of Object.entries(uc)) {
-            consoleLog`  ‣ ${rid}`;
+            consoleLog`${indent}  ‣ ${rid}`;
             for (const [sid, str] of Object.entries(content)) {
-                console.log(`    ∙ ${consoleColor.dim}${sid}:${consoleColor.reset} ${str.color}${sid === str.txt ? '≣' : str.txt}${consoleColor.reset}`);
+                console.log(`${indent}    ∙ ${consoleColor.dim}(${str.group ?? 'no group'}) ${sid}${consoleColor.reset} ${verbose ? `${str.color}${str.txt}${consoleColor.reset}` : ''}`);
             }
         }
     }
 }
 
-export function printRequest(job) {
+export function printRequest(job, indentation = 0, verbose = false) {
     const untranslatedContent = {};
     // const srcLang = job.sourceLang.substring(0, 2);
     for (const tu of job.tus) {
@@ -32,11 +33,11 @@ export function printRequest(job) {
         untranslatedContent[prj][tu.rid] ??= {};
         untranslatedContent[prj][tu.rid][tu.sid] = {
             txt: utils.flattenNormalizedSourceV1(tu.nsrc)[0],
-            // eslint-disable-next-line no-nested-ternary
+            group: tu.group,
             color: consoleColor.green,
         }
     }
-    printContent(untranslatedContent);
+    printContent(untranslatedContent, indentation, verbose);
 }
 
 export function printResponse(job, showPairs) {
