@@ -38,7 +38,7 @@ export class tm_syncup {
                 consoleLog`${syncUpStats.blocksToUpdate.length} ${[syncUpStats.blocksToUpdate.length, 'block', 'blocks']} to update: ${syncUpStats.blocksToUpdate.map(([ blockId, jobs ]) => styleString`${blockId} (${jobs.length.toLocaleString()} ${[jobs.length, 'job', 'jobs']})`).join(', ')}`;
             }
             if (syncUpStats.jobsToUpdate.length > 0) {
-                consoleLog`${syncUpStats.jobsToUpdate.length} ${[syncUpStats.jobsToUpdate.length, 'job', 'jobs']} to store: ${syncUpStats.jobsToUpdate.join(', ')}`;
+                consoleLog`${syncUpStats.jobsToUpdate.length} ${[syncUpStats.jobsToUpdate.length, 'job', 'jobs']} to update: ${syncUpStats.jobsToUpdate.join(', ')}`;
             }
             if (!dryrun) {
                 await monsterManager.tmm.syncUp(tmStore, syncUpStats);

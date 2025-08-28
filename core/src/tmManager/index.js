@@ -151,22 +151,28 @@ export default class TMManager {
 
         const tm = this.getTM(sourceLang, targetLang);
         await tmStore.getWriter(sourceLang, targetLang, async writeTmBlock => {
+            const updatedJobs = new Set();
             if (blocksToUpdate.length > 0) {
                 logInfo`Updating ${blocksToUpdate.length} ${[blocksToUpdate.length, 'block', 'blocks']} in ${tmStore.id}`;
                 for (const [ blockId, jobs ] of blocksToUpdate) {
                     await writeTmBlock({ blockId }, tm.getJobsByGuids(jobs));
+                    jobs.forEach(jobGuid => updatedJobs.add(jobGuid));
                 }
             }
-            if (jobsToUpdate.length > 0) {
-                logInfo`Syncing ${jobsToUpdate.length} ${[jobsToUpdate.length, 'job', 'jobs']} to ${tmStore.id}`;
+            const filteredJobsToUpdate = jobsToUpdate.filter(jobGuid => !updatedJobs.has(jobGuid));
+            if (filteredJobsToUpdate.length !== jobsToUpdate.length) {
+                logVerbose`${jobsToUpdate.length - filteredJobsToUpdate.length} ${[jobsToUpdate.length - filteredJobsToUpdate.length, 'job was skipped because it was', 'jobs were skipped because they were']} already updated`;
+            }
+            if (filteredJobsToUpdate.length > 0) {
+                logInfo`Syncing ${filteredJobsToUpdate.length} ${[filteredJobsToUpdate.length, 'job', 'jobs']} to ${tmStore.id}`;
                 if (tmStore.partitioning === 'job') {
-                    for (const jobGuid of jobsToUpdate) {
+                    for (const jobGuid of filteredJobsToUpdate) {
                         const job = this.#DAL.job.getJob(jobGuid);
                         await writeTmBlock({ translationProvider: job.translationProvider, blockId: jobGuid}, [ tm.getJobByGuid(jobGuid) ]);
                     }
                 } else if (tmStore.partitioning === 'provider') {
                     const jobsByProvider = {};
-                    for (const jobGuid of jobsToUpdate) {
+                    for (const jobGuid of filteredJobsToUpdate) {
                         const job = this.#DAL.job.getJob(jobGuid);
                         jobsByProvider[job.translationProvider] ??= [];
                         jobsByProvider[job.translationProvider].push(job.jobGuid);
@@ -175,7 +181,7 @@ export default class TMManager {
                         await writeTmBlock({ translationProvider, blockId: this.generateJobGuid() }, tm.getJobsByGuids(jobs));
                     }
                 } else if (tmStore.partitioning === 'language') {
-                    await writeTmBlock({ blockId: this.generateJobGuid() }, tm.getJobsByGuids(jobsToUpdate));
+                    await writeTmBlock({ blockId: this.generateJobGuid() }, tm.getJobsByGuids(filteredJobsToUpdate));
                 }
             }
         });
