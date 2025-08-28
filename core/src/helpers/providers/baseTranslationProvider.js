@@ -43,7 +43,6 @@ export class BaseTranslationProvider {
             description: 'Job cancelled',
         },
     };
-    mm;
 
     #id;
     #costPerWord;
@@ -70,6 +69,14 @@ export class BaseTranslationProvider {
         this.#costPerMChar = costPerMChar ?? 0;
         this.#saveIdenticalEntries = saveIdenticalEntries;
         this.#executeOptions = parallelism ? { parallelism } : {};
+        
+        // Define mm as non-enumerable property
+        Object.defineProperty(this, 'mm', {
+            writable: true,
+            enumerable: false,
+            configurable: true,
+            value: undefined
+        });
     }
 
     get id() {

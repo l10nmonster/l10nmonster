@@ -153,7 +153,7 @@ export class MonsterManager {
             translationStatusByPair[sourceLang] ??= {};
             const tm = this.tmm.getTM(sourceLang, targetLang);
             translationStatusByPair[sourceLang][targetLang] = tm.getActiveContentTranslationStatus();
-            logVerbose`Got active content translation status for ${sourceLang} → ${targetLang}`;
+            // logVerbose`Got active content translation status for ${sourceLang} → ${targetLang}`;
         }
         return translationStatusByPair;
     }
