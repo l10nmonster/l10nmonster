@@ -28,7 +28,7 @@ export default class DALManager {
                 logVerbose`Source DB initialized from TM DB`;
             } else {
                 this.#lazySourceDB = new Database(this.#sourceDBFilename);
-                // this.#lazySourceDB.pragma('journal_mode = WAL');
+                this.#lazySourceDB.pragma('journal_mode = WAL');
                 logVerbose`Initialized Source DB (${this.#sourceDBFilename})`;
             }
         }
@@ -44,7 +44,7 @@ export default class DALManager {
                 logVerbose`TM DB initialized from Source DB`;
             } else {
                 this.#lazyTmDB = new Database(this.#tmDBFilename);
-                // this.#lazyTmDB.pragma('journal_mode = WAL');
+                this.#lazyTmDB.pragma('journal_mode = WAL');
                 this.#sourceDBFilename !== this.#tmDBFilename && this.#lazyTmDB.prepare('ATTACH ? as source;').run(this.#sourceDB.name);
                 logVerbose`Initialized TM DB (${this.#tmDBFilename})`;
             }
