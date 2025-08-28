@@ -195,13 +195,13 @@ export class BaseJsonlTmStore {
         const toc = await this.getTOC(sourceLang, targetLang);
         const tocChanges = [];
         await cb(async ({ translationProvider, blockId }, tmBlockIterator) => {
-            const jobs = [];
+            const jobs = {}; // prevent duplicate jobs in the same block
             if (tmBlockIterator) {
                 let tuCount = 0;
                 const generator = async function *jsonlGenerator () {
                     for await (const job of tmBlockIterator) {
                         const { jobProps, tus } = job;
-                        jobs.push([ jobProps.jobGuid, jobProps.updatedAt ]);
+                        jobs[jobProps.jobGuid] = jobProps.updatedAt;
                         const { sourceLang, targetLang, ...otherJobProps } = jobProps; // remove sourceLang and targetLang from jobProps as they are already in the path
                         const out = [];
                         tus.forEach((tu, idx) => {
@@ -229,7 +229,7 @@ export class BaseJsonlTmStore {
                 const modified = await this.delegate.saveStream(blockName, readable);
                 if (tuCount > 0) {
                     logVerbose`Saved ${tuCount} ${[tuCount, 'TU', 'TUs']} in block ${blockId} of TM Store ${this.id}`;
-                    tocChanges.push([ blockId, { blockName, modified, jobs } ]);
+                    tocChanges.push([ blockId, { blockName, modified, jobs: Object.entries(jobs) } ]);
                 } else {
                     logVerbose`Deleting empty block ${blockId} from TM Store ${this.id}`;
                     await this.delegate.deleteFiles([ blockName ]);
