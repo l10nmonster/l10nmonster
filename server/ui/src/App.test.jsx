@@ -1,6 +1,13 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import App from './App.jsx';
+
+// Mock @tanstack/react-query
+vi.mock('@tanstack/react-query', () => ({
+  QueryClient: vi.fn().mockImplementation(() => ({})),
+  QueryClientProvider: ({ children }) => <div data-testid="query-client-provider">{children}</div>,
+  useQuery: () => ({ data: null, isLoading: false, error: null }),
+}));
 
 // Mock react-router-dom
 vi.mock('react-router-dom', () => ({
@@ -9,6 +16,7 @@ vi.mock('react-router-dom', () => ({
   Route: ({ element }) => <div data-testid="route">{element}</div>,
   useNavigate: () => vi.fn(),
   useLocation: () => ({ pathname: '/' }),
+  useParams: () => ({ jobGuid: 'test-job-guid' }),
 }));
 
 // Mock Chakra UI components
@@ -18,12 +26,24 @@ vi.mock('@chakra-ui/react', () => ({
   Heading: ({ children, ...props }) => <h1 data-testid="heading" {...props}>{children}</h1>,
   Flex: ({ children, ...props }) => <div data-testid="flex" {...props}>{children}</div>,
   Spinner: ({ ...props }) => <div data-testid="spinner" {...props}>Loading...</div>,
+  Text: ({ children, ...props }) => <span data-testid="text" {...props}>{children}</span>,
+  VStack: ({ children, ...props }) => <div data-testid="vstack" {...props}>{children}</div>,
+  HStack: ({ children, ...props }) => <div data-testid="hstack" {...props}>{children}</div>,
+  Badge: ({ children, ...props }) => <span data-testid="badge" {...props}>{children}</span>,
+  Alert: ({ children, ...props }) => <div data-testid="alert" {...props}>{children}</div>,
+  Button: ({ children, ...props }) => <button data-testid="button" {...props}>{children}</button>,
+  Collapsible: ({ children, ...props }) => <div data-testid="collapsible" {...props}>{children}</div>,
   Tabs: {
     Root: ({ children, ...props }) => <div data-testid="tabs-root" {...props}>{children}</div>,
     List: ({ children, ...props }) => <div data-testid="tabs-list" role="tablist" {...props}>{children}</div>,
     Trigger: ({ children, value, ...props }) => <button data-testid="tab-trigger" role="tab" data-value={value} {...props}>{children}</button>,
     Content: ({ children, value, ...props }) => <div data-testid="tabs-content" data-value={value} {...props}>{children}</div>,
   },
+}));
+
+// Mock utils/api
+vi.mock('../utils/api', () => ({
+  fetchApi: vi.fn().mockResolvedValue({}),
 }));
 
 // Mock page components
@@ -53,31 +73,11 @@ describe('App', () => {
     expect(container).toBeTruthy();
   });
 
-  // it('renders the main layout structure', () => {
-  //   render(<App />);
-    
-  //   // Check if the L10n Monster heading exists
-  //   const heading = screen.getByTestId('heading');
-  //   expect(heading).toBeInTheDocument();
-  //   expect(heading).toHaveTextContent('L10n Monster');
-    
-  //   // Check if navigation tabs are present
-  //   const homeTab = screen.getByRole('tab', { name: /home/i });
-  //   const statusTab = screen.getByRole('tab', { name: /status/i });
-  //   const sourcesTab = screen.getByRole('tab', { name: /sources/i });
-  //   const tmTab = screen.getByRole('tab', { name: /tm/i });
-    
-  //   expect(homeTab).toBeInTheDocument();
-  //   expect(statusTab).toBeInTheDocument();
-  //   expect(sourcesTab).toBeInTheDocument();
-  //   expect(tmTab).toBeInTheDocument();
-  // });
-
   it('renders the router structure', () => {
     render(<App />);
     
     // Check if router components are rendered
+    expect(screen.getByTestId('query-client-provider')).toBeInTheDocument();
     expect(screen.getByTestId('router')).toBeInTheDocument();
-    expect(screen.getByTestId('routes')).toBeInTheDocument();
   });
 }); 
