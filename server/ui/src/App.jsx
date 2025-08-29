@@ -1,12 +1,16 @@
 import React, { useState, lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
-import { Box, Container, Heading, Tabs, Spinner, Flex } from '@chakra-ui/react';
+import { Box, Container, Heading, Spinner, Flex, Text } from '@chakra-ui/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 // Lazy load tab content components
 const Welcome = lazy(() => import('./pages/Welcome.jsx'));
 const Status = lazy(() => import('./pages/Status.jsx'));
 const Sources = lazy(() => import('./pages/Sources.jsx'));
 const TM = lazy(() => import('./pages/TM.jsx'));
+const TMDetail = lazy(() => import('./pages/TMDetail.jsx'));
+const Providers = lazy(() => import('./pages/Providers.jsx'));
+const Cart = lazy(() => import('./pages/Cart.jsx'));
 
 // Other route components
 import NotFoundPage from './pages/NotFoundPage.jsx';
@@ -14,119 +18,187 @@ import NotFoundPage from './pages/NotFoundPage.jsx';
 function MainLayout() {
   const navigate = useNavigate();
   const location = useLocation();
-  
-  // Determine active tab from URL
-  const getTabFromPath = (path) => {
-    if (path === '/status') return 'status';
-    if (path === '/sources') return 'sources';
-    if (path === '/tm') return 'tm';
-    return 'home'; // default to home for '/' or any other path
+  const [cartCount, setCartCount] = useState(0);
+
+  // Function to get total cart count
+  const updateCartCount = () => {
+    try {
+      const cartData = sessionStorage.getItem('tmCart');
+      if (cartData) {
+        const cart = JSON.parse(cartData);
+        const total = Object.values(cart).reduce((sum, items) => {
+          // Handle both old format (array) and new format (object with tus array)
+          if (Array.isArray(items)) {
+            return sum + items.length;
+          } else {
+            return sum + (items.tus ? items.tus.length : 0);
+          }
+        }, 0);
+        setCartCount(total);
+      } else {
+        setCartCount(0);
+      }
+    } catch (err) {
+      setCartCount(0);
+    }
   };
   
-  const [activeTab, setActiveTab] = useState(getTabFromPath(location.pathname));
-  
-  // Update active tab when URL changes
-  useEffect(() => {
-    setActiveTab(getTabFromPath(location.pathname));
-  }, [location.pathname]);
 
-  const handleTabChange = (details) => {
-    const value = typeof details === 'object' ? details.value : details;
-    console.log('Tab changing to:', value);
-    setActiveTab(value);
+  // Update cart count on mount and when storage changes
+  useEffect(() => {
+    updateCartCount();
     
-    // Update URL based on tab
-    if (value === 'home') {
-      navigate('/');
-    } else {
-      navigate(`/${value}`);
-    }
+    // Listen for storage events (from other tabs) and custom events
+    const handleStorageChange = () => updateCartCount();
+    const handleCartUpdate = () => updateCartCount();
+    
+    window.addEventListener('storage', handleStorageChange);
+    window.addEventListener('cartUpdated', handleCartUpdate);
+    
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('cartUpdated', handleCartUpdate);
+    };
+  }, []);
+
+  // Helper to determine if a path is active
+  const isActiveRoute = (path) => {
+    if (path === '/') return location.pathname === '/';
+    return location.pathname.startsWith(path);
   };
 
   return (
-    <Box minH="100vh" bg="gray.50">
-      <Tabs.Root 
-        value={activeTab} 
-        onValueChange={handleTabChange}
-        variant="enclosed"
-      >
-        {/* Header */}
-        <Box bg="white" borderBottom="1px" borderColor="gray.200">
-          <Container maxWidth="6xl" py={3}>
-            <Flex align="center" justify="space-between">
-              {/* Logo and Title */}
-              <Flex align="center" gap={3}>
-                <img src="/logo.svg" alt="L10n Monster" width="32" height="32" />
-                <Heading size="lg" color="gray.800">L10n Monster</Heading>
-              </Flex>
-              
-              {/* Tab Triggers */}
-              <Tabs.List>
-                <Tabs.Trigger value="home">Home</Tabs.Trigger>
-                <Tabs.Trigger value="status">Status</Tabs.Trigger>
-                <Tabs.Trigger value="sources">Sources</Tabs.Trigger>
-                <Tabs.Trigger value="tm">TM</Tabs.Trigger>
-              </Tabs.List>
+    <Box minH="100vh" bg="bg.muted">
+      {/* Header */}
+      <Box bg="white" borderBottom="1px" borderColor="border.default">
+        <Box px={6} py={3}>
+          <Flex align="center" justify="space-between">
+            {/* Logo and Title */}
+            <Flex align="center" gap={3}>
+              <img src="/logo.svg" alt="L10n Monster" width="32" height="32" />
+              <Heading size="lg" color="fg.default">L10n Monster</Heading>
             </Flex>
-          </Container>
-        </Box>
+            
+            {/* Navigation Links */}
+            <Flex align="center" gap={4}>
+              <Box 
+                cursor="pointer" 
+                px={3} 
+                py={1} 
+                borderRadius="md"
+                bg={isActiveRoute('/') ? "blue.subtle" : "transparent"}
+                _hover={{ bg: isActiveRoute('/') ? "blue.subtle" : "gray.subtle" }}
+                onClick={() => navigate('/')}
+              >
+                <Text fontSize="sm" fontWeight="medium">Home</Text>
+              </Box>
+              <Box 
+                cursor="pointer" 
+                px={3} 
+                py={1} 
+                borderRadius="md"
+                bg={isActiveRoute('/status') ? "blue.subtle" : "transparent"}
+                _hover={{ bg: isActiveRoute('/status') ? "blue.subtle" : "gray.subtle" }}
+                onClick={() => navigate('/status')}
+              >
+                <Text fontSize="sm" fontWeight="medium">Status</Text>
+              </Box>
+              <Box 
+                cursor="pointer" 
+                px={3} 
+                py={1} 
+                borderRadius="md"
+                bg={isActiveRoute('/sources') ? "blue.subtle" : "transparent"}
+                _hover={{ bg: isActiveRoute('/sources') ? "blue.subtle" : "gray.subtle" }}
+                onClick={() => navigate('/sources')}
+              >
+                <Text fontSize="sm" fontWeight="medium">Sources</Text>
+              </Box>
+              <Box 
+                cursor="pointer" 
+                px={3} 
+                py={1} 
+                borderRadius="md"
+                bg={isActiveRoute('/tm') ? "blue.subtle" : "transparent"}
+                _hover={{ bg: isActiveRoute('/tm') ? "blue.subtle" : "gray.subtle" }}
+                onClick={() => navigate('/tm')}
+              >
+                <Text fontSize="sm" fontWeight="medium">TM</Text>
+              </Box>
+              <Box 
+                cursor="pointer" 
+                px={3} 
+                py={1} 
+                borderRadius="md"
+                bg={isActiveRoute('/providers') ? "blue.subtle" : "transparent"}
+                _hover={{ bg: isActiveRoute('/providers') ? "blue.subtle" : "gray.subtle" }}
+                onClick={() => navigate('/providers')}
+              >
+                <Text fontSize="sm" fontWeight="medium">Providers</Text>
+              </Box>
+            </Flex>
 
-        {/* Tab Content */}
-        <Tabs.Content value="home">
-          <Suspense fallback={
-            <Container display="flex" justifyContent="center" mt={10}>
-              <Spinner size="xl" />
-            </Container>
-          }>
-            <Welcome />
-          </Suspense>
-        </Tabs.Content>
-        
-        <Tabs.Content value="status">
-          <Suspense fallback={
-            <Container display="flex" justifyContent="center" mt={10}>
-              <Spinner size="xl" />
-            </Container>
-          }>
-            <Status />
-          </Suspense>
-        </Tabs.Content>
-        
-        <Tabs.Content value="sources">
-          <Suspense fallback={
-            <Container display="flex" justifyContent="center" mt={10}>
-              <Spinner size="xl" />
-            </Container>
-          }>
-            <Sources />
-          </Suspense>
-        </Tabs.Content>
-        
-        <Tabs.Content value="tm">
-          <Suspense fallback={
-            <Container display="flex" justifyContent="center" mt={10}>
-              <Spinner size="xl" />
-            </Container>
-          }>
-            <TM />
-          </Suspense>
-        </Tabs.Content>
-      </Tabs.Root>
+            {/* Cart Icon */}
+            <Flex 
+              align="center" 
+              gap={2} 
+              px={3} 
+              py={1} 
+              bg={isActiveRoute('/cart') ? "blue.subtle" : (cartCount > 0 ? "blue.muted" : "gray.muted")}
+              borderRadius="md"
+              cursor="pointer"
+              _hover={{ bg: "blue.subtle" }}
+              onClick={() => navigate('/cart')}
+            >
+              <Box fontSize="lg">🛒</Box>
+              <Text fontSize="sm" fontWeight="medium">
+                {cartCount} {cartCount === 1 ? 'TU' : 'TUs'}
+              </Text>
+            </Flex>
+          </Flex>
+        </Box>
+      </Box>
+
+      {/* Route-based Content */}
+      <Suspense fallback={
+        <Box display="flex" justifyContent="center" mt={10}>
+          <Spinner size="xl" />
+        </Box>
+      }>
+        <Routes>
+          <Route path="/" element={<Welcome />} />
+          <Route path="/status" element={<Status />} />
+          <Route path="/sources" element={<Sources />} />
+          <Route path="/tm" element={<TM />} />
+          <Route path="/tm/:sourceLang/:targetLang" element={<TMDetail />} />
+          <Route path="/providers" element={<Providers />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+      </Suspense>
     </Box>
   );
 }
 
+// Create a client
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000, // 5 minutes
+      gcTime: 10 * 60 * 1000, // 10 minutes
+    },
+  },
+});
+
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<MainLayout />} />
-        <Route path="/status" element={<MainLayout />} />
-        <Route path="/sources" element={<MainLayout />} />
-        <Route path="/tm" element={<MainLayout />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </Router>
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <Routes>
+          <Route path="/*" element={<MainLayout />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Router>
+    </QueryClientProvider>
   );
 }
 

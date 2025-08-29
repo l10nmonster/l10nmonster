@@ -1,51 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Container, Text, Box, Spinner, Alert, VStack, Flex } from '@chakra-ui/react';
+import { useQuery } from '@tanstack/react-query';
 import { fetchApi } from '../utils/api';
 
 const Welcome = () => {
-  const [infoData, setInfoData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchInfo = async () => {
-      try {
-        const data = await fetchApi('/api/info');
-        setInfoData(data);
-      } catch (err) {
-        console.error('Error fetching info:', err);
-        setError(err instanceof Error ? err.message : 'Failed to fetch info data');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchInfo();
-  }, []);
+  const { data: infoData, isLoading: loading, error } = useQuery({
+    queryKey: ['info'],
+    queryFn: () => fetchApi('/api/info'),
+  });
 
   if (loading) {
     return (
-      <Container display="flex" justifyContent="center" mt={20}>
+      <Box display="flex" justifyContent="center" mt={20}>
         <Spinner size="xl" />
-      </Container>
+      </Box>
     );
   }
 
   if (error) {
     return (
-      <Container mt={10}>
+      <Box mt={10} px={6}>
         <Alert status="error">
           <Box>
             <Text fontWeight="bold">Error</Text>
             <Text>{error}</Text>
           </Box>
         </Alert>
-      </Container>
+      </Box>
     );
   }
 
   return (
-    <Container maxWidth="2xl" py={20}>
+    <Box py={20} px={6}>
       <VStack gap={8} align="center">
         {/* Business Card */}
         {infoData && (
@@ -59,7 +45,7 @@ const Welcome = () => {
             height="300px"
             position="relative"
             background="linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)"
-            borderColor="gray.300"
+            borderColor="border.default"
           >
             <Flex height="100%" direction="column" justify="space-between">
               {/* Header with Logo and Title */}
@@ -71,7 +57,7 @@ const Welcome = () => {
                   height="60"
                 />
                 <Box>
-                  <Text fontSize="xl" fontWeight="bold" color="gray.800" lineHeight="1.2">
+                  <Text fontSize="xl" fontWeight="bold" color="fg.default" lineHeight="1.2">
                     {infoData.description}
                   </Text>
                 </Box>
@@ -80,7 +66,7 @@ const Welcome = () => {
               {/* Card Details */}
               <VStack gap={3} align="stretch" mt={4}>
                 <Box>
-                  <Text fontSize="xs" color="gray.500" textTransform="uppercase" letterSpacing="wide" mb={1}>
+                  <Text fontSize="xs" color="fg.muted" textTransform="uppercase" letterSpacing="wide" mb={1}>
                     Version
                   </Text>
                   <Text fontSize="lg" fontWeight="semibold" color="blue.600">
@@ -89,10 +75,10 @@ const Welcome = () => {
                 </Box>
                 
                 <Box>
-                  <Text fontSize="xs" color="gray.500" textTransform="uppercase" letterSpacing="wide" mb={1}>
+                  <Text fontSize="xs" color="fg.muted" textTransform="uppercase" letterSpacing="wide" mb={1}>
                     Project Directory
                   </Text>
-                  <Text fontSize="xs" fontFamily="mono" color="gray.600" wordBreak="break-all" lineHeight="1.3">
+                  <Text fontSize="xs" fontFamily="mono" color="fg.muted" wordBreak="break-all" lineHeight="1.3">
                     {infoData.baseDir}
                   </Text>
                 </Box>
@@ -105,7 +91,7 @@ const Welcome = () => {
                 right="-10px" 
                 width="80px" 
                 height="80px" 
-                bg="blue.50" 
+                bg="blue.subtle" 
                 borderRadius="full" 
                 opacity="0.5"
                 zIndex="-1"
@@ -114,7 +100,7 @@ const Welcome = () => {
           </Box>
         )}
       </VStack>
-    </Container>
+    </Box>
   );
 };
 

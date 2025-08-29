@@ -23,7 +23,7 @@ const ProjectCard = ({ project }) => {
   const pctTranslated = Math.round(pairSummary.translated / segmentCount * 100);
 
   return (
-    <Card.Root variant="outline">
+    <Card.Root variant="outline" bg="yellow.subtle">
       <Card.Body>
         <Text fontSize="lg" fontWeight="semibold" mb={2}>
           {sourceLang} → {targetLang}
@@ -33,20 +33,20 @@ const ProjectCard = ({ project }) => {
           <Flex align="center" gap={2} mb={1}>
             <Box 
               flex="1" 
-              bg="gray.200" 
+              bg="gray.muted" 
               rounded="full" 
               height="6px" 
               position="relative"
             >
               <Box 
-                bg="blue.500" 
+                bg="blue.600" 
                 height="100%" 
                 rounded="full" 
                 width={`${pctTranslated}%`}
                 transition="width 0.3s ease"
               />
             </Box>
-            <Text fontSize="sm" color="gray.600" minW="45px">
+            <Text fontSize="sm" color="fg.muted" minW="45px">
               {pctTranslated}%
             </Text>
           </Flex>

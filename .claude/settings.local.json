@@ -23,7 +23,14 @@
       "Bash(npm install:*)",
       "Bash(npm run release:*)",
       "Bash(npm view:*)",
-      "Bash(git tag:*)"
+      "Bash(git tag:*)",
+      "Bash(npm run lint)",
+      "Bash(npm run build:*)",
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__get-library-docs",
+      "Bash(npm run dev:*)",
+      "WebFetch(domain:v3.chakra-ui.com)",
+      "WebFetch(domain:chakra-ui.com)"
     ],
     "deny": []
   }
