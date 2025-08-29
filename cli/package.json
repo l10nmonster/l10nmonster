@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/cli",
-    "version": "3.0.0-alpha.9",
+    "version": "3.0.0-alpha.10",
     "description": "Continuous localization for the rest of us",
     "bin": {
         "l10n": "l10n.mjs"

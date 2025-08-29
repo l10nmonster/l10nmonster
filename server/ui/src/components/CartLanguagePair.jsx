@@ -153,17 +153,17 @@ const CartLanguagePair = ({ langPairKey, tus, onRemoveTU }) => {
     setJobData(null);
     setJobInstructions('');
     
-    // Remove processed TUs from cart
+    // Remove processed TUs from cart based on their GUIDs
     if (jobData && jobData.tus) {
       const processedGuids = new Set(jobData.tus.map(tu => tu.guid));
       const actualTus = Array.isArray(tus) ? tus : tus.tus;
       
-      // Remove TUs that were processed
-      actualTus.forEach((tu, index) => {
-        if (processedGuids.has(tu.guid)) {
-          onRemoveTU(langPairKey, index);
+      // Find indices of TUs to remove (iterate backwards to avoid index issues)
+      for (let i = actualTus.length - 1; i >= 0; i--) {
+        if (processedGuids.has(actualTus[i].guid)) {
+          onRemoveTU(langPairKey, i);
         }
-      });
+      }
     }
   };
 
