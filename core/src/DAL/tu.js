@@ -242,4 +242,43 @@ LIMIT 10000
         tus.forEach(tu => tu.gstr = utils.flattenNormalizedSourceToOrdinal(tu.nsrc));
         return tus;
     }
+
+    search(sourceLang, targetLang, offset, limit, { guid, jobGuid, rid, sid, nsrc, ntgt, notes, q, translationProvider }) {
+            this.#stmt.search ??= this.#db.prepare(/* sql */`
+SELECT
+guid,
+jobGuid,
+rid,
+sid,
+nsrc,
+ntgt,
+notes,
+q,
+ts,
+translationProvider,
+updatedAt
+FROM ${this.#tusTable}
+JOIN jobs USING (jobGuid)
+WHERE
+(guid LIKE @guid OR @guid IS NULL)
+AND (jobGuid LIKE @jobGuid OR @jobGuid IS NULL)
+AND (rid LIKE @rid OR @rid IS NULL)
+AND (sid LIKE @sid OR @sid IS NULL)
+AND (flattenNormalizedSourceToOrdinal(nsrc) LIKE @nsrc OR @nsrc IS NULL)
+AND (flattenNormalizedSourceToOrdinal(ntgt) LIKE @ntgt OR @ntgt IS NULL)
+AND (notes LIKE @notes OR @notes IS NULL)
+AND (q = @q OR @q IS NULL)
+AND (translationProvider LIKE @translationProvider OR @translationProvider IS NULL)
+ORDER BY rid, sid, guid
+LIMIT @limit
+OFFSET @offset
+;`);
+        try {
+            const tus = this.#stmt.search.all({ offset, limit, guid, jobGuid, rid, sid, nsrc, ntgt, notes, q, translationProvider }).map(sqlTransformer.decode);
+            return tus;
+        } catch (error) {
+            throw new Error(`${error.code}: ${error.message}`);
+        }
+    }
+
 }

@@ -77,4 +77,8 @@ export class TM {
     querySource(whereCondition) {
         return this.#tuDAL.querySource(this.sourceLang, this.targetLang, whereCondition);
     }
+
+    search(offset, limit, likeConditions = {}) {
+        return this.#tuDAL.search(this.sourceLang, this.targetLang, offset, limit, likeConditions);
+    }
 }
