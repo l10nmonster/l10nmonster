@@ -495,6 +495,12 @@ const TMDetail = () => {
                       textOverflow="ellipsis"
                       whiteSpace="nowrap"
                       maxW="100px"
+                      cursor="pointer"
+                      _hover={{ textDecoration: "underline" }}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        window.open(`/job/${item.jobGuid}`, '_blank');
+                      }}
                     >
                       {item.jobGuid}
                     </Text>

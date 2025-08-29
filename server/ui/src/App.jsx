@@ -11,11 +11,12 @@ const TM = lazy(() => import('./pages/TM.jsx'));
 const TMDetail = lazy(() => import('./pages/TMDetail.jsx'));
 const Providers = lazy(() => import('./pages/Providers.jsx'));
 const Cart = lazy(() => import('./pages/Cart.jsx'));
+const Job = lazy(() => import('./pages/Job.jsx'));
 
 // Other route components
 import NotFoundPage from './pages/NotFoundPage.jsx';
 
-function MainLayout() {
+function MainLayout({ children }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [cartCount, setCartCount] = useState(0);
@@ -165,15 +166,7 @@ function MainLayout() {
           <Spinner size="xl" />
         </Box>
       }>
-        <Routes>
-          <Route path="/" element={<Welcome />} />
-          <Route path="/status" element={<Status />} />
-          <Route path="/sources" element={<Sources />} />
-          <Route path="/tm" element={<TM />} />
-          <Route path="/tm/:sourceLang/:targetLang" element={<TMDetail />} />
-          <Route path="/providers" element={<Providers />} />
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
+        {children}
       </Suspense>
     </Box>
   );
@@ -193,10 +186,51 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
-        <Routes>
-          <Route path="/*" element={<MainLayout />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+        <Suspense fallback={
+          <Box display="flex" justifyContent="center" alignItems="center" minH="100vh">
+            <Spinner size="xl" />
+          </Box>
+        }>
+          <Routes>
+            <Route path="/job/:jobGuid" element={<Job />} />
+            <Route path="/" element={
+              <MainLayout>
+                <Welcome />
+              </MainLayout>
+            } />
+            <Route path="/status" element={
+              <MainLayout>
+                <Status />
+              </MainLayout>
+            } />
+            <Route path="/sources" element={
+              <MainLayout>
+                <Sources />
+              </MainLayout>
+            } />
+            <Route path="/tm" element={
+              <MainLayout>
+                <TM />
+              </MainLayout>
+            } />
+            <Route path="/tm/:sourceLang/:targetLang" element={
+              <MainLayout>
+                <TMDetail />
+              </MainLayout>
+            } />
+            <Route path="/providers" element={
+              <MainLayout>
+                <Providers />
+              </MainLayout>
+            } />
+            <Route path="/cart" element={
+              <MainLayout>
+                <Cart />
+              </MainLayout>
+            } />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Suspense>
       </Router>
     </QueryClientProvider>
   );

@@ -470,18 +470,27 @@ const CartLanguagePair = ({ langPairKey, tus, onRemoveTU }) => {
         <Dialog.Positioner>
           <Dialog.Content maxW="400px">
             <Dialog.Header>
-              <Dialog.Title>Job Status</Dialog.Title>
+              <Dialog.Title>Job Started Successfully</Dialog.Title>
               <Dialog.CloseTrigger />
             </Dialog.Header>
             <Dialog.Body>
               {jobStatus && (
                 <VStack gap={4} align="stretch">
                   <Box>
-                    <Text fontSize="lg" fontWeight="bold" color="blue.600">
-                      Job Started Successfully
-                    </Text>
                     <Text fontSize="sm" color="fg.muted">
-                      Job ID: {jobStatus.jobGuid}
+                      Job ID: <Text 
+                        as="span" 
+                        fontFamily="mono" 
+                        color="blue.600" 
+                        cursor="pointer"
+                        _hover={{ textDecoration: "underline" }}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          window.open(`/job/${jobStatus.jobGuid}`, '_blank');
+                        }}
+                      >
+                        {jobStatus.jobGuid}
+                      </Text>
                     </Text>
                     <Text fontSize="sm" color="fg.muted">
                       Provider: {jobStatus.translationProvider}

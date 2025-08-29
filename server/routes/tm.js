@@ -35,4 +35,37 @@ export function setupTmRoutes(router, mm) {
         logVerbose`Returned TM search results for ${data.length} entries`;
         res.json({ data, page: pageInt, limit: limitInt });
     });
+
+    router.get('/tm/job/:jobGuid', async (req, res) => {
+        logInfo`/tm/job/${req.params.jobGuid}`;
+        
+        try {
+            const { jobGuid } = req.params;
+            
+            if (!jobGuid) {
+                return res.status(400).json({
+                    error: 'Missing jobGuid parameter'
+                });
+            }
+            
+            const job = await mm.tmm.getJob(jobGuid);
+            
+            if (!job) {
+                return res.status(404).json({
+                    error: 'Job not found',
+                    jobGuid
+                });
+            }
+            
+            logVerbose`Returned job data for ${jobGuid}`;
+            res.json(job);
+            
+        } catch (error) {
+            logInfo`Error fetching job ${req.params.jobGuid}: ${error.message}`;
+            res.status(500).json({
+                error: 'Failed to fetch job',
+                message: error.message
+            });
+        }
+    });
 }

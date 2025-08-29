@@ -47,6 +47,15 @@ export default class serve {
         // Mount the API router under the /api prefix
         app.use('/api', apiRouter);
 
+        // API 404 handler - must come before the UI catch-all
+        app.use('/api/*splat', (req, res) => {
+            res.status(404).json({
+                error: 'API endpoint not found',
+                path: req.path,
+                method: req.method
+            });
+        });
+
         if (options.ui || options.open) {
             const uiDistPath = path.join(import.meta.dirname, 'ui', 'dist');
             app.use(express.static(uiDistPath)); // rest of dist files
