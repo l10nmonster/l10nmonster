@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import { getRegressionMode, logVerbose, logWarn } from '../../l10nContext.js';
 import * as utils from '../utils.js';
 import * as opsManager from '../../opsManager/index.js';
@@ -83,21 +84,29 @@ export class BaseTranslationProvider {
         return this.#id ?? this.constructor.name;
     }
 
-    async create(job) {
+    async create(job, options = {}) {
+        const {
+            skipQualityCheck = false,
+            skipGroupCheck = false,
+        } = options;
         if (job.status) {
             throw new Error(`Cannot create job as it's already in "${job.status}" state`);
         }
         // by default take any job in the supported pairs and above the minimum quality
         let acceptedTus = [];
         if (!this.#supportedPairs || this.#supportedPairs[job.sourceLang]?.includes(job.targetLang)) {
-            acceptedTus = this.quality ? job.tus.filter(tu => tu.minQ <= this.quality) : job.tus;
-            if (job.tus.length !== acceptedTus.length) {
-                logVerbose`Provider ${this.id} rejected ${job.tus.length - acceptedTus.length} out of ${job.tus.length} TUs because minimum quality was not met`;
+            if (skipQualityCheck || !this.quality) {
+                acceptedTus = job.tus;
+            } else {
+                acceptedTus = job.tus.filter(tu => tu.minQ <= this.quality);
+                if (job.tus.length !== acceptedTus.length) {
+                    logVerbose`Provider ${this.id} rejected ${job.tus.length - acceptedTus.length} out of ${job.tus.length} TUs because minimum quality was not met`;
+                }
             }
         } else {
             logVerbose`Provider ${this.id} rejected job because the language pair is not supported`;
         }
-        if (this.translationGroup && acceptedTus.length > 0) {
+        if (!skipGroupCheck && this.translationGroup && acceptedTus.length > 0) {
             const initialLength = acceptedTus.length;
             acceptedTus = acceptedTus.filter(tu => tu.group === this.translationGroup);
             if (acceptedTus.length !== initialLength) {

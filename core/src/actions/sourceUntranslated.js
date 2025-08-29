@@ -34,7 +34,7 @@ export class source_untranslated {
             } else {
                 if (provider) {
                     consoleLog`  ‣ ${sourceLang} → ${targetLang}:`;
-                    const assignedJobs = await mm.dispatcher.createJobs({ sourceLang, targetLang, tus, providerList: provider === true ? undefined : provider });
+                    const assignedJobs = await mm.dispatcher.createJobs({ sourceLang, targetLang, tus }, { providerList: provider === true ? undefined : provider });
                     for (const job of assignedJobs) {
                         const formattedCost = job.estimatedCost !== undefined ? mm.currencyFormatter.format(job.estimatedCost) : 'unknown';
                         // TODO: show strings/words/chars totals

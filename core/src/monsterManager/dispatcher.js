@@ -31,13 +31,17 @@ export default class Dispatcher {
         return provider;
     }
 
-    async createJobs({ providerList, ...job }) {
+    async createJobs(job, options = {}) {
+        const {
+            providerList,
+            ...providerOptions
+        } = options;
         const jobs = [];
         const pipeline = providerList ? providerList.map(id => this.getProvider(id)) : this.#providerPipeline;
         let providerIdx = 0;
         while (job.tus.length > 0 && providerIdx < pipeline.length) {
             const provider = pipeline[providerIdx];
-            const createdJob = await provider.create(job);
+            const createdJob = await provider.create(job, providerOptions);
             if (createdJob.tus.length > 0) {
                 jobs.push({ ...createdJob, translationProvider: provider.id });
                 const acceptedGuids = new Set(createdJob.tus.map(tu => tu.guid));

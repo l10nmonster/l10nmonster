@@ -51,7 +51,7 @@ You can write your own where conditions against the following columns:
         } else {
             consoleLog`  ‣ ${sourceLang} → ${targetLang}:`;
             const providerList = options.provider && (Array.isArray(options.provider) ? options.provider : options.provider.split(','));
-            const assignedJobs = await mm.dispatcher.createJobs({ sourceLang, targetLang, tus, providerList });
+            const assignedJobs = await mm.dispatcher.createJobs({ sourceLang, targetLang, tus }, { providerList });
             for (const job of assignedJobs) {
                 const formattedCost = job.estimatedCost !== undefined ? mm.currencyFormatter.format(job.estimatedCost) : 'unknown';
                 consoleLog`      • ${job.translationProvider ?? 'No provider available'}: ${job.tus.length.toLocaleString()} ${[job.tus.length, 'segment', 'segments']}, cost: ${formattedCost}`;
