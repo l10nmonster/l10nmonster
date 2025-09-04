@@ -1,6 +1,6 @@
+/* eslint-disable complexity */
 import { writeFileSync } from 'fs';
 import { consoleLog, styleString } from '../l10nContext.js';
-import { groupObjectsByNestedProps } from '../sharedFunctions.js';
 
 export class source_list {
     static help = {
@@ -38,20 +38,13 @@ export class source_list {
                     consoleLog`${sourceLang} → ${targetLang}`;
                     for (const [ channelId, projectStatus ] of Object.entries(channelStatus)) {
                         consoleLog`  ‣ Channel ${channelId}`;
-                        for (const [ prj, translationStatus ] of Object.entries(projectStatus)) {
-                            const pairSummary = { segs: 0, words: 0, chars: 0 };
-                            const pairSummaryByStatus = { translated: 0, 'low quality': 0, 'in flight': 0, 'untranslated': 0 };
-                            for (const { minQ, q, seg, words, chars } of translationStatus) {
-                                pairSummary.segs += seg;
-                                pairSummaryByStatus[q === null ? 'untranslated' : (q === 0 ? 'in flight' : (q >= minQ ? 'translated' : 'low quality'))] += seg;
-                                pairSummary.words += words;
-                                pairSummary.chars += chars;
-                            }
+                        for (const [ prj, { details, pairSummary, pairSummaryByStatus } ] of Object.entries(projectStatus)) {
                             const pctTranslated = pctFormatter.format(pairSummaryByStatus.translated / pairSummary.segs);
                             const segStatus = Object.entries(pairSummaryByStatus).filter(e => e[1]).map(([status, segs]) => styleString`${status}: ${segs}`).join(', ');
                             consoleLog`    • Project ${prj}: ${pairSummary.segs.toLocaleString()} ${[pairSummary.segs, 'segment', 'segments']} (${segStatus}) ${pairSummary.words.toLocaleString()} ${[pairSummary.words, 'word', 'words']} ${pairSummary.chars.toLocaleString()} ${[pairSummary.chars, 'char', 'chars']} (${pctTranslated} translated)`;
                             if (options.detailed) {
-                                for (const { minQ, q, res, seg, words, chars } of translationStatus) {
+                                for (const { minQ, q, res, seg, words, chars } of details) {
+                                    // eslint-disable-next-line no-nested-ternary
                                     const status = q === null ? 'untranslated' : (q === 0 ? 'in flight' : (q >= minQ ? 'translated' : 'low quality'));
                                     consoleLog`      ⁃ ${status} (minQ=${minQ}, q=${q || 'none'}) ${res.toLocaleString()} ${[res, 'resource', 'resources']} with ${seg.toLocaleString()} ${[seg, 'segment', 'segments']} ${words.toLocaleString()} ${[words, 'word', 'words']} ${chars.toLocaleString()} ${[chars, 'char', 'chars']}`;
                                 }

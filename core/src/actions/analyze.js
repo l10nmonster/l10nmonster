@@ -11,15 +11,14 @@ export class analyze {
         ],
         options: [
             [ '-l, --lang <language>', 'target language to analyze (if TM analyzer)' ],
-            [ '--filter <filter>', 'use the specified tu filter' ],
-            [ '--output <filename>', 'filename to write the analysis to)' ],
+            [ '--output <filename>', 'filename to write the analysis to' ],
         ]
     };
 
     static async action(monsterManager, options) {
         try {
             if (options.analyzer) {
-                const analysis = await monsterManager.analyze(options.analyzer, options.params, options.lang, options.filter);
+                const analysis = await monsterManager.analyze(options.analyzer, options.params, options.lang);
                 const header = analysis.head;
                 if (options.output) {
                     const rows = header ? [ header, ...analysis.body].map(row => row.join(',')) : analysis.body;

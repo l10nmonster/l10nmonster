@@ -138,8 +138,8 @@ SELECT
     COALESCE(prj, 'default') prj,
     p.value minQ,
     t.q q,
-    COUNT(distinct r.rid) res,
-    COUNT(s.value) seg,
+    COUNT(DISTINCT r.rid) res,
+    COUNT(DISTINCT s.value) seg,
     SUM(words) words,
     SUM(chars) chars
 FROM
@@ -164,7 +164,7 @@ ORDER BY 3 DESC, 4 DESC
 WITH tus AS (SELECT guid, MAX(q) q FROM ${this.#tusTable} GROUP BY 1)
 SELECT
     channel,
-    prj,
+    COALESCE(prj, 'default') prj,
     r.rid rid,
     seg.sid sid,
     seg.guid guid,
@@ -186,7 +186,6 @@ WHERE
     AND p.key = ?
     AND active = true
     AND (q IS NULL OR (q != 0 AND q < p.value))
-GROUP BY 1, 2, 3, 4
 ORDER BY channel, prj, rid, s.key
 LIMIT 10000
 ;`);

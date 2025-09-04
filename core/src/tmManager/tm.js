@@ -67,7 +67,8 @@ export class TM {
     }
 
     getActiveContentTranslationStatus() {
-        return groupObjectsByNestedProps(this.#tuDAL.getActiveContentTranslationStatus(this.sourceLang, this.targetLang), [ 'channel', 'prj' ]);
+        const status = this.#tuDAL.getActiveContentTranslationStatus(this.sourceLang, this.targetLang);
+        return groupObjectsByNestedProps(status, [ 'channel', 'prj' ]);
     }
 
     getUntranslatedContent() {

@@ -151,8 +151,24 @@ export class MonsterManager {
         const langPairs = await this.rm.getAvailableLangPairs();
         for (const [ sourceLang, targetLang ] of langPairs) {
             translationStatusByPair[sourceLang] ??= {};
+            translationStatusByPair[sourceLang][targetLang] ??= {};
             const tm = this.tmm.getTM(sourceLang, targetLang);
-            translationStatusByPair[sourceLang][targetLang] = tm.getActiveContentTranslationStatus();
+            const channelStatus = tm.getActiveContentTranslationStatus();
+            for (const [ channelId, projectStatus ] of Object.entries(channelStatus)) {
+                translationStatusByPair[sourceLang][targetLang][channelId] ??= {};
+                for (const [ prj, details ] of Object.entries(projectStatus)) {
+                    const pairSummary = { segs: 0, words: 0, chars: 0 };
+                    const pairSummaryByStatus = { translated: 0, 'low quality': 0, 'in flight': 0, 'untranslated': 0 };
+                    for (const { minQ, q, seg, words, chars } of details) {
+                        pairSummary.segs += seg;
+                        // eslint-disable-next-line no-nested-ternary
+                        pairSummaryByStatus[q === null ? 'untranslated' : (q === 0 ? 'in flight' : (q >= minQ ? 'translated' : 'low quality'))] += seg;
+                        pairSummary.words += words;
+                        pairSummary.chars += chars;
+                    }
+                    translationStatusByPair[sourceLang][targetLang][channelId][prj] = { details, pairSummary, pairSummaryByStatus };
+                }
+            }
             // logVerbose`Got active content translation status for ${sourceLang} → ${targetLang}`;
         }
         return translationStatusByPair;
