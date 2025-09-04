@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/helpers-java",
-    "version": "3.0.0-alpha.10",
+    "version": "3.0.0-alpha.11",
     "description": "Helpers to deal with Java file formats",
     "type": "module",
     "main": "index.js",
