@@ -2,46 +2,72 @@
 	"en": {
 		"de": {
 			"react": {
-				"default": [
-					{
-						"minQ": 1,
-						"q": 70,
-						"res": 1,
-						"seg": 5,
-						"words": 27,
-						"chars": 170
+				"default": {
+					"details": [
+						{
+							"minQ": 1,
+							"q": 70,
+							"res": 1,
+							"seg": 5,
+							"words": 27,
+							"chars": 170
+						},
+						{
+							"minQ": 1,
+							"q": 2,
+							"res": 2,
+							"seg": 14,
+							"words": 53,
+							"chars": 260
+						}
+					],
+					"pairSummary": {
+						"segs": 19,
+						"words": 80,
+						"chars": 430
 					},
-					{
-						"minQ": 1,
-						"q": 2,
-						"res": 2,
-						"seg": 14,
-						"words": 53,
-						"chars": 260
+					"pairSummaryByStatus": {
+						"translated": 19,
+						"low quality": 0,
+						"in flight": 0,
+						"untranslated": 0
 					}
-				]
+				}
 			}
 		},
 		"ru": {
 			"react": {
-				"default": [
-					{
-						"minQ": 1,
-						"q": 70,
-						"res": 1,
-						"seg": 5,
-						"words": 27,
-						"chars": 170
+				"default": {
+					"details": [
+						{
+							"minQ": 1,
+							"q": 70,
+							"res": 1,
+							"seg": 5,
+							"words": 27,
+							"chars": 170
+						},
+						{
+							"minQ": 1,
+							"q": 2,
+							"res": 2,
+							"seg": 14,
+							"words": 53,
+							"chars": 260
+						}
+					],
+					"pairSummary": {
+						"segs": 19,
+						"words": 80,
+						"chars": 430
 					},
-					{
-						"minQ": 1,
-						"q": 2,
-						"res": 2,
-						"seg": 14,
-						"words": 53,
-						"chars": 260
+					"pairSummaryByStatus": {
+						"translated": 19,
+						"low quality": 0,
+						"in flight": 0,
+						"untranslated": 0
 					}
-				]
+				}
 			}
 		}
 	}

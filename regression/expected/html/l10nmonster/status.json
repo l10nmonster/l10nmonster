@@ -2,16 +2,29 @@
 	"en": {
 		"en-ZZ": {
 			"html": {
-				"default": [
-					{
-						"minQ": 1,
-						"q": 2,
-						"res": 2,
-						"seg": 133,
+				"default": {
+					"details": [
+						{
+							"minQ": 1,
+							"q": 2,
+							"res": 2,
+							"seg": 133,
+							"words": 739,
+							"chars": 4390
+						}
+					],
+					"pairSummary": {
+						"segs": 133,
 						"words": 739,
 						"chars": 4390
+					},
+					"pairSummaryByStatus": {
+						"translated": 133,
+						"low quality": 0,
+						"in flight": 0,
+						"untranslated": 0
 					}
-				]
+				}
 			}
 		}
 	}

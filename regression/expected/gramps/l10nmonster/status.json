@@ -2,32 +2,45 @@
 	"en": {
 		"ja": {
 			"po": {
-				"default": [
-					{
-						"minQ": 0,
-						"q": 70,
-						"res": 1,
-						"seg": 6905,
-						"words": 39784,
-						"chars": 259764
+				"default": {
+					"details": [
+						{
+							"minQ": 0,
+							"q": 70,
+							"res": 1,
+							"seg": 6905,
+							"words": 39784,
+							"chars": 259764
+						},
+						{
+							"minQ": 0,
+							"q": 61,
+							"res": 1,
+							"seg": 7,
+							"words": 30,
+							"chars": 288
+						},
+						{
+							"minQ": 0,
+							"q": 2,
+							"res": 1,
+							"seg": 45,
+							"words": 277,
+							"chars": 1818
+						}
+					],
+					"pairSummary": {
+						"segs": 6957,
+						"words": 40091,
+						"chars": 261870
 					},
-					{
-						"minQ": 0,
-						"q": 61,
-						"res": 1,
-						"seg": 7,
-						"words": 30,
-						"chars": 288
-					},
-					{
-						"minQ": 0,
-						"q": 2,
-						"res": 1,
-						"seg": 45,
-						"words": 277,
-						"chars": 1818
+					"pairSummaryByStatus": {
+						"translated": 6957,
+						"low quality": 0,
+						"in flight": 0,
+						"untranslated": 0
 					}
-				]
+				}
 			}
 		}
 	}

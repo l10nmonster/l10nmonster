@@ -2,24 +2,37 @@
 	"en": {
 		"piggy": {
 			"java": {
-				"messages_en.txt": [
-					{
-						"minQ": 1,
-						"q": 10,
-						"res": 1,
-						"seg": 2,
-						"words": 4,
-						"chars": 18
+				"messages_en.txt": {
+					"details": [
+						{
+							"minQ": 1,
+							"q": 10,
+							"res": 1,
+							"seg": 2,
+							"words": 4,
+							"chars": 18
+						},
+						{
+							"minQ": 1,
+							"q": 1,
+							"res": 1,
+							"seg": 2,
+							"words": 8,
+							"chars": 42
+						}
+					],
+					"pairSummary": {
+						"segs": 4,
+						"words": 12,
+						"chars": 60
 					},
-					{
-						"minQ": 1,
-						"q": 1,
-						"res": 1,
-						"seg": 2,
-						"words": 8,
-						"chars": 42
+					"pairSummaryByStatus": {
+						"translated": 4,
+						"low quality": 0,
+						"in flight": 0,
+						"untranslated": 0
 					}
-				]
+				}
 			}
 		}
 	}

@@ -10,10 +10,10 @@ const ProjectCard = ({ project }) => {
   } = project;
   
   const statusCounts = {
-    translated: pairSummaryByStatus.translated || 0,
-    'in flight': pairSummaryByStatus['in flight'] || 0,
-    'low quality': pairSummaryByStatus['low quality'] || 0,
-    untranslated: pairSummaryByStatus.untranslated || 0
+    translated: pairSummaryByStatus?.translated || 0,
+    'in flight': pairSummaryByStatus?.['in flight'] || 0,
+    'low quality': pairSummaryByStatus?.['low quality'] || 0,
+    untranslated: pairSummaryByStatus?.untranslated || 0
   };
   
   const totalSegs = Object.values(statusCounts).reduce((sum, count) => sum + count, 0);
@@ -135,13 +135,13 @@ const ProjectCard = ({ project }) => {
         
         <Flex gap={2} flexWrap="wrap" align="center">
           <Badge variant="subtle" colorPalette="blue">
-            Segments: {pairSummary.segs.toLocaleString()}
+            Segments: {pairSummary?.segs?.toLocaleString() || '0'}
           </Badge>
           <Badge variant="subtle" colorPalette="green">
-            Words: {pairSummary.words.toLocaleString()}
+            Words: {pairSummary?.words?.toLocaleString() || '0'}
           </Badge>
           <Badge variant="subtle" colorPalette="purple">
-            Chars: {pairSummary.chars.toLocaleString()}
+            Chars: {pairSummary?.chars?.toLocaleString() || '0'}
           </Badge>
           {statusCounts.untranslated > 0 && (
             <Badge variant="solid" colorPalette="red">
