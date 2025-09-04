@@ -15,7 +15,7 @@ import {
   Checkbox,
   Tooltip
 } from '@chakra-ui/react';
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { fetchApi } from '../utils/api';
 
 // Helper function to flatten normalized source/target arrays
@@ -35,96 +35,69 @@ function formatTimestamp(timestamp) {
   });
 }
 
-const TMDetail = () => {
+const StatusDetail = () => {
   const { sourceLang, targetLang } = useParams();
   const navigate = useNavigate();
   
   const [selectedRows, setSelectedRows] = useState(new Set());
   const [filters, setFilters] = useState({
     guid: '',
+    channel: '',
+    prj: '',
     rid: '',
     sid: '',
     nsrc: '',
-    ntgt: '',
-    q: '',
-    translationProvider: '',
-    ts: '',
-    jobGuid: ''
+    group: '',
+    mf: ''
   });
   
   // Separate state for input values to prevent focus loss
   const [inputValues, setInputValues] = useState({
     guid: '',
+    channel: '',
+    prj: '',
     rid: '',
     sid: '',
     nsrc: '',
-    ntgt: '',
-    q: '',
-    translationProvider: '',
-    ts: '',
-    jobGuid: ''
+    group: '',
+    mf: ''
   });
 
-  const observerRef = useRef();
   const timeoutRef = useRef();
   const focusedInputRef = useRef(null);
   const inputRefs = useRef({});
   
-  // Create query key that includes filters for automatic refetching when filters change
-  const queryKey = useMemo(() => [
-    'tmSearch', 
-    sourceLang, 
-    targetLang, 
-    filters
-  ], [sourceLang, targetLang, filters]);
-
   const {
-    data: infiniteData,
+    data = [],
     isLoading,
     isError,
     error,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-  } = useInfiniteQuery({
-    queryKey,
-    queryFn: async ({ pageParam = 1 }) => {
-      const queryParams = new URLSearchParams({
-        sourceLang,
-        targetLang,
-        page: pageParam.toString(),
-        limit: '100',
-        ...Object.fromEntries(Object.entries(filters).filter(([_, value]) => value.trim() !== ''))
-      });
-      
-      const response = await fetchApi(`/api/tm/search?${queryParams}`);
-      return response;
-    },
-    getNextPageParam: (lastPage, allPages) => {
-      // If we got exactly the limit, there might be more pages
-      const hasMore = lastPage.data.length === parseInt(lastPage.limit);
-      return hasMore ? allPages.length + 1 : undefined;
-    },
-    staleTime: 30000, // 30 seconds - shorter for search results
-    refetchOnWindowFocus: false, // Prevent refetch on window focus
-    placeholderData: (previousData) => previousData, // Keep previous data while loading
+  } = useQuery({
+    queryKey: ['statusDetail', sourceLang, targetLang],
+    queryFn: () => fetchApi(`/api/status/${sourceLang}/${targetLang}`),
   });
 
-  // Flatten all pages into a single array
-  const data = useMemo(() => {
-    return infiniteData?.pages.flatMap(page => page.data) || [];
-  }, [infiniteData]);
-
-  const triggerElementRef = useCallback(node => {
-    if (isLoading || isFetchingNextPage) return;
-    if (observerRef.current) observerRef.current.disconnect();
-    observerRef.current = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting && hasNextPage) {
-        fetchNextPage();
-      }
+  // Apply client-side filtering
+  const filteredData = useMemo(() => {
+    if (!data.length) return [];
+    
+    return data.filter(item => {
+      return Object.entries(filters).every(([key, value]) => {
+        if (!value.trim()) return true;
+        
+        const itemValue = item[key];
+        if (itemValue === null || itemValue === undefined) return false;
+        
+        // Handle nsrc special case (array)
+        if (key === 'nsrc' && Array.isArray(itemValue)) {
+          const flattenedValue = flattenNormalizedSourceToOrdinal(itemValue);
+          return flattenedValue.toLowerCase().includes(value.toLowerCase());
+        }
+        
+        return String(itemValue).toLowerCase().includes(value.toLowerCase());
+      });
     });
-    if (node) observerRef.current.observe(node);
-  }, [isLoading, isFetchingNextPage, hasNextPage, fetchNextPage]);
+  }, [data, filters]);
 
   const handleInputFocus = useCallback((column) => {
     focusedInputRef.current = column;
@@ -141,10 +114,10 @@ const TMDetail = () => {
     // Clear selection when filtering
     setSelectedRows(new Set());
     
-    // Debounce the filter update for API calls
+    // Debounce the filter update
     clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => {
-      setFilters(prev => ({ ...prev, [column]: value })); // This will trigger React Query to refetch automatically
+      setFilters(prev => ({ ...prev, [column]: value }));
     }, 300);
   }, []);
 
@@ -160,7 +133,7 @@ const TMDetail = () => {
 
   const handleSelectAll = (checked) => {
     if (checked) {
-      const allIndices = new Set(data.map((_, index) => index));
+      const allIndices = new Set(filteredData.map((_, index) => index));
       setSelectedRows(allIndices);
     } else {
       setSelectedRows(new Set());
@@ -168,12 +141,12 @@ const TMDetail = () => {
   };
 
   const getCart = () => {
-    const cartData = sessionStorage.getItem('tmCart');
+    const cartData = sessionStorage.getItem('statusCart');
     return cartData ? JSON.parse(cartData) : {};
   };
 
   const saveCart = (cart) => {
-    sessionStorage.setItem('tmCart', JSON.stringify(cart));
+    sessionStorage.setItem('statusCart', JSON.stringify(cart));
   };
 
   const handleAddToCart = () => {
@@ -188,7 +161,7 @@ const TMDetail = () => {
       };
     }
     
-    const selectedData = Array.from(selectedRows).map(index => data[index]);
+    const selectedData = Array.from(selectedRows).map(index => filteredData[index]);
     cart[langPairKey].tus.push(...selectedData);
     
     saveCart(cart);
@@ -196,11 +169,10 @@ const TMDetail = () => {
     
     // Trigger cart update event for header
     window.dispatchEvent(new Event('cartUpdated'));
-    
   };
 
-  const isAllSelected = data.length > 0 && selectedRows.size === data.length;
-  const isIndeterminate = selectedRows.size > 0 && selectedRows.size < data.length;
+  const isAllSelected = filteredData.length > 0 && selectedRows.size === filteredData.length;
+  const isIndeterminate = selectedRows.size > 0 && selectedRows.size < filteredData.length;
 
   // Restore focus after data updates
   useEffect(() => {
@@ -215,7 +187,7 @@ const TMDetail = () => {
         }
       }, 10);
     }
-  }, [data]); // Re-run when data changes (after table refresh)
+  }, [filteredData]);
 
   // Cleanup filter timeout on unmount
   useEffect(() => {
@@ -226,13 +198,7 @@ const TMDetail = () => {
     };
   }, []);
 
-  const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleString();
-  };
-
-
-  // Only show full-page spinner on initial load, not during filter updates
-  if (isLoading && data.length === 0 && !infiniteData) {
+  if (isLoading) {
     return (
       <Box display="flex" justifyContent="center" mt={10}>
         <Spinner size="xl" />
@@ -246,7 +212,7 @@ const TMDetail = () => {
         <Alert status="error">
           <Box>
             <Text fontWeight="bold">Error</Text>
-            <Text>{error?.message || 'Failed to fetch translation memory data'}</Text>
+            <Text>{error?.message || 'Failed to fetch status data'}</Text>
           </Box>
         </Alert>
       </Box>
@@ -261,7 +227,7 @@ const TMDetail = () => {
           <Flex align="center" justify="space-between" mb={2}>
             <Flex align="center" gap={3}>
               <Text fontSize="2xl" fontWeight="bold">
-                Translation Memory: {sourceLang} → {targetLang}
+                Untranslated Content: {sourceLang} → {targetLang}
               </Text>
               {isLoading && (
                 <Spinner size="sm" />
@@ -276,6 +242,9 @@ const TMDetail = () => {
               </Button>
             )}
           </Flex>
+          <Text color="fg.muted">
+            Translation units requiring translation ({filteredData.length} of {data.length} shown)
+          </Text>
         </Box>
 
         {/* Table Container */}
@@ -285,10 +254,10 @@ const TMDetail = () => {
               as="thead" 
               position="sticky" 
               top={0} 
-              bg="blue.subtle" 
+              bg="orange.subtle" 
               zIndex={1}
               borderBottom="2px"
-              borderColor="blue.muted"
+              borderColor="orange.muted"
               shadow="sm"
             >
               <Box as="tr">
@@ -305,7 +274,7 @@ const TMDetail = () => {
                 </Box>
                 <Box as="th" p={3} borderBottom="1px" borderColor="border.default" minW="120px" textAlign="left">
                   <VStack gap={2} align="stretch">
-                    <Text fontSize="sm" fontWeight="bold" color="blue.600">GUID</Text>
+                    <Text fontSize="sm" fontWeight="bold" color="orange.600">GUID</Text>
                     <Input
                       size="xs"
                       placeholder="Filter GUID..."
@@ -321,23 +290,39 @@ const TMDetail = () => {
                 </Box>
                 <Box as="th" p={3} borderBottom="1px" borderColor="border.default" minW="120px" textAlign="left">
                   <VStack gap={2} align="stretch">
-                    <Text fontSize="sm" fontWeight="bold" color="blue.600">JOB GUID</Text>
+                    <Text fontSize="sm" fontWeight="bold" color="orange.600">CHANNEL</Text>
                     <Input
                       size="xs"
-                      placeholder="Filter Job GUID..."
-                      value={inputValues.jobGuid}
-                      onChange={(e) => handleFilterChange('jobGuid', e.target.value)}
-                      onFocus={() => handleInputFocus('jobGuid')}
+                      placeholder="Filter channel..."
+                      value={inputValues.channel}
+                      onChange={(e) => handleFilterChange('channel', e.target.value)}
+                      onFocus={() => handleInputFocus('channel')}
                       onBlur={handleInputBlur}
-                      ref={(el) => { if (el) inputRefs.current.jobGuid = el; }}
+                      ref={(el) => { if (el) inputRefs.current.channel = el; }}
                       bg="yellow.subtle"
-                      key="jobGuid-input"
+                      key="channel-input"
+                    />
+                  </VStack>
+                </Box>
+                <Box as="th" p={3} borderBottom="1px" borderColor="border.default" minW="120px" textAlign="left">
+                  <VStack gap={2} align="stretch">
+                    <Text fontSize="sm" fontWeight="bold" color="orange.600">PRJ</Text>
+                    <Input
+                      size="xs"
+                      placeholder="Filter project..."
+                      value={inputValues.prj}
+                      onChange={(e) => handleFilterChange('prj', e.target.value)}
+                      onFocus={() => handleInputFocus('prj')}
+                      onBlur={handleInputBlur}
+                      ref={(el) => { if (el) inputRefs.current.prj = el; }}
+                      bg="yellow.subtle"
+                      key="prj-input"
                     />
                   </VStack>
                 </Box>
                 <Box as="th" p={3} borderBottom="1px" borderColor="border.default" minW="150px" textAlign="left">
                   <VStack gap={2} align="stretch">
-                    <Text fontSize="sm" fontWeight="bold" color="blue.600">RID</Text>
+                    <Text fontSize="sm" fontWeight="bold" color="orange.600">RID</Text>
                     <Input
                       size="xs"
                       placeholder="Filter RID..."
@@ -353,7 +338,7 @@ const TMDetail = () => {
                 </Box>
                 <Box as="th" p={3} borderBottom="1px" borderColor="border.default" minW="150px" textAlign="left">
                   <VStack gap={2} align="stretch">
-                    <Text fontSize="sm" fontWeight="bold" color="blue.600">SID</Text>
+                    <Text fontSize="sm" fontWeight="bold" color="orange.600">SID</Text>
                     <Input
                       size="xs"
                       placeholder="Filter SID..."
@@ -369,7 +354,7 @@ const TMDetail = () => {
                 </Box>
                 <Box as="th" p={3} borderBottom="1px" borderColor="border.default" minW="350px" textAlign="left">
                   <VStack gap={2} align="stretch">
-                    <Text fontSize="sm" fontWeight="bold" color="blue.600">NSRC</Text>
+                    <Text fontSize="sm" fontWeight="bold" color="orange.600">NSRC</Text>
                     <Input
                       size="xs"
                       placeholder="Filter source..."
@@ -384,79 +369,45 @@ const TMDetail = () => {
                     />
                   </VStack>
                 </Box>
-                <Box as="th" p={3} borderBottom="1px" borderColor="border.default" minW="350px" textAlign="left">
+                <Box as="th" p={3} borderBottom="1px" borderColor="border.default" minW="120px" textAlign="left">
                   <VStack gap={2} align="stretch">
-                    <Text fontSize="sm" fontWeight="bold" color="blue.600">NTGT</Text>
+                    <Text fontSize="sm" fontWeight="bold" color="orange.600">GROUP</Text>
                     <Input
                       size="xs"
-                      placeholder="Filter target..."
-                      value={inputValues.ntgt}
-                      onChange={(e) => handleFilterChange('ntgt', e.target.value)}
-                      onFocus={() => handleInputFocus('ntgt')}
+                      placeholder="Filter group..."
+                      value={inputValues.group}
+                      onChange={(e) => handleFilterChange('group', e.target.value)}
+                      onFocus={() => handleInputFocus('group')}
                       onBlur={handleInputBlur}
-                      ref={(el) => { if (el) inputRefs.current.ntgt = el; }}
+                      ref={(el) => { if (el) inputRefs.current.group = el; }}
                       bg="yellow.subtle"
-                      key="ntgt-input"
-                      dir={targetLang?.startsWith('he') || targetLang?.startsWith('ar') ? 'rtl' : 'ltr'}
-                    />
-                  </VStack>
-                </Box>
-                <Box as="th" p={3} borderBottom="1px" borderColor="border.default" minW="40px" textAlign="left">
-                  <VStack gap={2} align="stretch">
-                    <Text fontSize="sm" fontWeight="bold" color="blue.600">Q</Text>
-                    <Input
-                      size="xs"
-                      placeholder="Quality..."
-                      value={inputValues.q}
-                      onChange={(e) => handleFilterChange('q', e.target.value)}
-                      onFocus={() => handleInputFocus('q')}
-                      onBlur={handleInputBlur}
-                      ref={(el) => { if (el) inputRefs.current.q = el; }}
-                      bg="yellow.subtle"
-                      key="q-input"
+                      key="group-input"
                     />
                   </VStack>
                 </Box>
                 <Box as="th" p={3} borderBottom="1px" borderColor="border.default" minW="120px" textAlign="left">
                   <VStack gap={2} align="stretch">
-                    <Text fontSize="sm" fontWeight="bold" color="blue.600">Provider</Text>
+                    <Text fontSize="sm" fontWeight="bold" color="orange.600">MF</Text>
                     <Input
                       size="xs"
-                      placeholder="Provider..."
-                      value={inputValues.translationProvider}
-                      onChange={(e) => handleFilterChange('translationProvider', e.target.value)}
-                      onFocus={() => handleInputFocus('translationProvider')}
+                      placeholder="Filter mf..."
+                      value={inputValues.mf}
+                      onChange={(e) => handleFilterChange('mf', e.target.value)}
+                      onFocus={() => handleInputFocus('mf')}
                       onBlur={handleInputBlur}
-                      ref={(el) => { if (el) inputRefs.current.translationProvider = el; }}
+                      ref={(el) => { if (el) inputRefs.current.mf = el; }}
                       bg="yellow.subtle"
-                      key="translationProvider-input"
-                    />
-                  </VStack>
-                </Box>
-                <Box as="th" p={3} borderBottom="1px" borderColor="border.default" minW="120px" textAlign="left">
-                  <VStack gap={2} align="stretch">
-                    <Text fontSize="sm" fontWeight="bold" color="blue.600">Timestamp</Text>
-                    <Input
-                      size="xs"
-                      placeholder="Date..."
-                      value={inputValues.ts}
-                      onChange={(e) => handleFilterChange('ts', e.target.value)}
-                      onFocus={() => handleInputFocus('ts')}
-                      onBlur={handleInputBlur}
-                      ref={(el) => { if (el) inputRefs.current.ts = el; }}
-                      bg="yellow.subtle"
-                      key="ts-input"
+                      key="mf-input"
                     />
                   </VStack>
                 </Box>
               </Box>
             </Box>
             <Box as="tbody">
-              {data.map((item, index) => (
+              {filteredData.map((item, index) => (
                 <Box 
                   as="tr" 
                   key={`${item.guid}-${index}`}
-                  ref={index === data.length - 20 ? triggerElementRef : null}
                   _hover={{ bg: "gray.subtle" }}
                 >
                   <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle" textAlign="center">
@@ -472,7 +423,7 @@ const TMDetail = () => {
                     <Text 
                       fontSize="xs" 
                       fontFamily="mono" 
-                      color="blue.600"
+                      color="orange.600"
                       userSelect="all"
                       overflow="hidden"
                       textOverflow="ellipsis"
@@ -483,24 +434,10 @@ const TMDetail = () => {
                     </Text>
                   </Box>
                   <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
-                    <Text 
-                      fontSize="xs" 
-                      fontFamily="mono" 
-                      color="green.600"
-                      userSelect="all"
-                      overflow="hidden"
-                      textOverflow="ellipsis"
-                      whiteSpace="nowrap"
-                      maxW="100px"
-                      cursor="pointer"
-                      _hover={{ textDecoration: "underline" }}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        window.open(`/job/${item.jobGuid}`, '_blank');
-                      }}
-                    >
-                      {item.jobGuid}
-                    </Text>
+                    <Text fontSize="xs">{item.channel}</Text>
+                  </Box>
+                  <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
+                    <Text fontSize="xs">{item.prj}</Text>
                   </Box>
                   <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
                     <Text fontSize="xs" wordBreak="break-all" whiteSpace="normal">{item.rid}</Text>
@@ -509,7 +446,7 @@ const TMDetail = () => {
                     <Text fontSize="xs" wordBreak="break-all" whiteSpace="normal">{item.sid}</Text>
                   </Box>
                   <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
-                    {item.notes ? (
+                    {item.notes && (item.notes.desc?.trim() || (item.notes.ph && Object.keys(item.notes.ph).length > 0)) ? (
                       <Tooltip.Root>
                         <Tooltip.Trigger asChild>
                           <Text fontSize="xs" noOfLines={2} cursor="help" dir={sourceLang?.startsWith('he') || sourceLang?.startsWith('ar') ? 'rtl' : 'ltr'}>
@@ -520,12 +457,12 @@ const TMDetail = () => {
                           <Tooltip.Content maxW="400px" bg="yellow.100" borderWidth="1px" borderColor="yellow.300" shadow="lg">
                             <Tooltip.Arrow />
                             <Box>
-                              {item.notes.desc && (
+                              {item.notes.desc?.trim() && (
                                 <Text fontSize="sm" mb={2} whiteSpace="pre-wrap" color="black">
                                   {item.notes.desc}
                                 </Text>
                               )}
-                              {item.notes.ph && (
+                              {item.notes.ph && Object.keys(item.notes.ph).length > 0 && (
                                 <Box>
                                   <Text fontSize="xs" fontWeight="bold" color="gray.600" mb={1}>
                                     Placeholders:
@@ -553,58 +490,20 @@ const TMDetail = () => {
                     )}
                   </Box>
                   <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
-                    <Text fontSize="xs" noOfLines={2} dir={targetLang?.startsWith('he') || targetLang?.startsWith('ar') ? 'rtl' : 'ltr'}>
-                      {flattenNormalizedSourceToOrdinal(item.ntgt)}
-                    </Text>
+                    <Text fontSize="xs">{item.group}</Text>
                   </Box>
                   <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
-                    <Text fontSize="xs">
-                      {item.q}
-                    </Text>
-                  </Box>
-                  <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
-                    <Text fontSize="xs">{item.translationProvider}</Text>
-                  </Box>
-                  <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
-                    <Tooltip.Root>
-                      <Tooltip.Trigger asChild>
-                        <Text fontSize="xs" color="fg.muted" cursor="help">
-                          {formatTimestamp(item.ts)}
-                        </Text>
-                      </Tooltip.Trigger>
-                      <Tooltip.Positioner>
-                        <Tooltip.Content>
-                          <Tooltip.Arrow />
-                          <Text fontSize="sm">
-                            Job Date: {formatTimestamp(item.updatedAt)}
-                          </Text>
-                        </Tooltip.Content>
-                      </Tooltip.Positioner>
-                    </Tooltip.Root>
+                    <Text fontSize="xs">{item.mf}</Text>
                   </Box>
                 </Box>
               ))}
             </Box>
           </Box>
           
-          {isFetchingNextPage && (
-            <Flex justify="center" p={4}>
-              <Spinner size="md" />
-            </Flex>
-          )}
-          
-          {!hasNextPage && data.length > 0 && (
-            <Flex justify="center" p={4}>
-              <Text color="fg.muted" fontSize="sm">
-                No more results
-              </Text>
-            </Flex>
-          )}
-          
-          {data.length === 0 && !isLoading && (
+          {filteredData.length === 0 && !isLoading && (
             <Flex justify="center" p={8}>
               <Text color="fg.muted">
-                No translation units found for the current filters
+                No untranslated content found for the current filters
               </Text>
             </Flex>
           )}
@@ -614,4 +513,4 @@ const TMDetail = () => {
   );
 };
 
-export default TMDetail;
+export default StatusDetail;

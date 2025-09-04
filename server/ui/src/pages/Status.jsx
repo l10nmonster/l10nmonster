@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Container, Text, Box, Button, Grid, Spinner, Alert, Flex, Switch } from '@chakra-ui/react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Container, Text, Box, Button, Grid, Spinner, Alert, Flex, Switch, Link } from '@chakra-ui/react';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import ProjectCard from '../components/ProjectCard';
 import { fetchApi } from '../utils/api';
 
 const Status = () => {
+  const navigate = useNavigate();
   const [hideComplete, setHideComplete] = useState(false);
 
   const { data: statusData = {}, isLoading: loading, error } = useQuery({
@@ -34,17 +35,11 @@ const Status = () => {
     );
   }
 
-  const calculateCompletionPercentage = (translationStatusArray, segmentCount) => {
-    const pairSummary = { translated: 0 };
+  const calculateCompletionPercentage = (pairSummaryByStatus) => {
+    const totalSegs = Object.values(pairSummaryByStatus).reduce((sum, count) => sum + count, 0);
+    if (totalSegs === 0) return 100;
     
-    for (const { minQ, q, seg } of translationStatusArray) {
-      const tuType = q === null ? 'untranslated' : (q === 0 ? 'in flight' : (q >= minQ ? 'translated' : 'low quality'));
-      if (tuType === 'translated') {
-        pairSummary.translated += seg;
-      }
-    }
-    
-    return Math.round(pairSummary.translated / segmentCount * 100);
+    return Math.round((pairSummaryByStatus.translated || 0) / totalSegs * 100);
   };
 
   return (
@@ -65,67 +60,71 @@ const Status = () => {
         </Switch.Root>
       </Flex>
 
-      {/* Iterate over source languages */}
-      {Object.entries(statusData).map(([channelId, projects]) => (
-        Object.entries(projects).map(([projectName, pairs]) => (
-          Object.entries(pairs).map(([sourceLang, targetLangs]) => (
-              <Box 
-              key={`${sourceLang}-${channelId}-${projectName}`} 
-              mb={6} 
-              p={3} 
-              borderWidth="1px" 
-              borderRadius="md" 
-              bg="white"
-              borderColor="border.default"
-            >
-              <Box display="flex" alignItems="center" gap={3} flexWrap="wrap">
-                <Box>
-                  <Text fontSize="sm" color="fg.muted" mb={1}>Channel</Text>
-                  <Text fontSize="xl" fontWeight="semibold" color="blue.600">
-                    {channelId}
-                  </Text>
-                </Box>
-                <Box height="40px" width="1px" bg="border.default" />
-                <Box>
-                  <Text fontSize="sm" color="fg.muted" mb={1}>Project</Text>
-                  <Text fontSize="xl" fontWeight="semibold" color="green.600">
-                    {projectName}
-                  </Text>
-                </Box>
-              </Box>
-
-              <Grid templateColumns="repeat(auto-fit, minmax(300px, 1fr))" gap={4} mt={4}>
-                {Object.entries(targetLangs)
-                  .filter(([targetLang, translationStatusArray]) => {
-                    if (!hideComplete) return true;
-                    
-                    // Calculate totals from the translation status array
-                    const segmentCount = translationStatusArray.reduce((sum, item) => sum + item.seg, 0);
-                    const completionPercentage = calculateCompletionPercentage(translationStatusArray, segmentCount);
-                    
-                    return completionPercentage < 100;
-                  })
-                  .map(([targetLang, translationStatusArray]) => {
-                    // Calculate totals from the translation status array
-                    const resCount = translationStatusArray.reduce((sum, item) => sum + item.res, 0);
-                    const segmentCount = translationStatusArray.reduce((sum, item) => sum + item.seg, 0);
-                    
-                    return (
-                      <ProjectCard 
-                        key={`${sourceLang}-${targetLang}-${projectName}-${channelId}`}
-                        project={{ 
-                          sourceLang, 
-                          targetLang, 
-                          resCount,
-                          segmentCount,
-                          translationStatus: translationStatusArray 
-                        }} 
-                      />
-                    );
-                  })}
-              </Grid>
+      {/* Iterate over source languages -> target languages -> channels -> projects */}
+      {Object.entries(statusData).map(([sourceLang, targetLangs]) => (
+        Object.entries(targetLangs).map(([targetLang, channels]) => (
+          <Box 
+            key={`${sourceLang}-${targetLang}`} 
+            mb={6} 
+            p={4} 
+            borderWidth="1px" 
+            borderRadius="md" 
+            bg="white"
+            borderColor="border.default"
+          >
+            {/* Language Pair Header */}
+            <Box display="flex" alignItems="center" gap={3} flexWrap="wrap" mb={4}>
+              <Link 
+                as={RouterLink}
+                to={`/status/${sourceLang}/${targetLang}`}
+                fontSize="xl" 
+                fontWeight="semibold" 
+                color="blue.600"
+                _hover={{ textDecoration: "underline" }}
+              >
+                {sourceLang} → {targetLang}
+              </Link>
             </Box>
-          ))
+
+            {/* Channels within this language pair */}
+            {Object.entries(channels).map(([channelId, projects]) => (
+              <Box key={`${sourceLang}-${targetLang}-${channelId}`} mb={4}>
+                <Box display="flex" alignItems="center" gap={3} flexWrap="wrap" mb={3}>
+                  <Box>
+                    <Text fontSize="sm" color="fg.muted" mb={1}>Channel</Text>
+                    <Text fontSize="lg" fontWeight="medium" color="green.600">
+                      {channelId}
+                    </Text>
+                  </Box>
+                </Box>
+
+                <Grid templateColumns="repeat(auto-fit, minmax(300px, 1fr))" gap={4}>
+                  {Object.entries(projects)
+                    .filter(([projectName, projectData]) => {
+                      if (!hideComplete) return true;
+                      
+                      // Calculate completion percentage from pairSummaryByStatus
+                      const completionPercentage = calculateCompletionPercentage(projectData.pairSummaryByStatus);
+                      
+                      return completionPercentage < 100;
+                    })
+                    .map(([projectName, projectData]) => {
+                      return (
+                        <ProjectCard 
+                          key={`${sourceLang}-${targetLang}-${channelId}-${projectName}`}
+                          project={{ 
+                            translationStatus: projectData.details || [],
+                            pairSummary: projectData.pairSummary,
+                            pairSummaryByStatus: projectData.pairSummaryByStatus,
+                            projectName
+                          }} 
+                        />
+                      );
+                    })}
+                </Grid>
+              </Box>
+            ))}
+          </Box>
         ))
       ))}
       

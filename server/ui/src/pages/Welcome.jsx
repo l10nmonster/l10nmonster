@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Text, Box, Spinner, Alert, VStack, Flex } from '@chakra-ui/react';
+import { Container, Text, Box, Spinner, Alert, VStack, Flex, Badge, Grid } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchApi } from '../utils/api';
 
@@ -31,8 +31,8 @@ const Welcome = () => {
   }
 
   return (
-    <Box py={20} px={6}>
-      <VStack gap={8} align="center">
+    <Box py={8} px={6}>
+      <VStack gap={8} align="stretch" maxW="6xl" mx="auto">
         {/* Business Card */}
         {infoData && (
           <Box 
@@ -41,13 +41,14 @@ const Welcome = () => {
             borderRadius="xl" 
             bg="white" 
             shadow="lg"
-            width="500px"
-            height="300px"
+            width="100%"
+            maxW="500px"
+            mx="auto"
             position="relative"
             background="linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)"
             borderColor="border.default"
           >
-            <Flex height="100%" direction="column" justify="space-between">
+            <Flex direction="column" gap={4}>
               {/* Header with Logo and Title */}
               <Flex align="center" gap={4}>
                 <img 
@@ -64,7 +65,7 @@ const Welcome = () => {
               </Flex>
               
               {/* Card Details */}
-              <VStack gap={3} align="stretch" mt={4}>
+              <VStack gap={3} align="stretch">
                 <Box>
                   <Text fontSize="xs" color="fg.muted" textTransform="uppercase" letterSpacing="wide" mb={1}>
                     Version
@@ -98,6 +99,88 @@ const Welcome = () => {
               />
             </Flex>
           </Box>
+        )}
+
+        {/* Configuration Sections */}
+        {infoData && (
+          <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap={6}>
+            {/* Channels Section */}
+            <Box 
+              p={6} 
+              borderWidth="1px" 
+              borderRadius="lg" 
+              bg="white" 
+              shadow="sm"
+              borderColor="border.default"
+            >
+              <Text fontSize="lg" fontWeight="bold" mb={4} color="fg.default">
+                Channels ({infoData.channels?.length || 0})
+              </Text>
+              <VStack gap={2} align="stretch" maxH="300px" overflow="auto">
+                {infoData.channels?.map((channel, index) => (
+                  <Badge 
+                    key={index} 
+                    variant="subtle" 
+                    colorPalette="blue"
+                    fontSize="xs"
+                    p={2}
+                    borderRadius="md"
+                  >
+                    {channel}
+                  </Badge>
+                ))}
+                {(!infoData.channels || infoData.channels.length === 0) && (
+                  <Text fontSize="sm" color="fg.muted">No channels configured</Text>
+                )}
+              </VStack>
+            </Box>
+
+            {/* TM Stores Section */}
+            <Box 
+              p={6} 
+              borderWidth="1px" 
+              borderRadius="lg" 
+              bg="white" 
+              shadow="sm"
+              borderColor="border.default"
+            >
+              <Text fontSize="lg" fontWeight="bold" mb={4} color="fg.default">
+                TM Stores ({infoData.tmStores?.length || 0})
+              </Text>
+              <VStack gap={3} align="stretch" maxH="300px" overflow="auto">
+                {infoData.tmStores?.map((store, index) => (
+                  <Box 
+                    key={index}
+                    p={3}
+                    borderWidth="1px"
+                    borderRadius="md"
+                    borderColor="border.subtle"
+                    bg="bg.subtle"
+                  >
+                    <Flex justify="space-between" align="center" mb={2}>
+                      <Text fontSize="sm" fontWeight="semibold" color="fg.default">
+                        {store.id}
+                      </Text>
+                      <Badge variant="subtle" colorPalette="gray" fontSize="xs">
+                        {store.type}
+                      </Badge>
+                    </Flex>
+                    <Flex gap={4} flexWrap="wrap" fontSize="xs" color="fg.muted">
+                      <Text>
+                        <Text as="span" fontWeight="medium">Access:</Text> {store.access}
+                      </Text>
+                      <Text>
+                        <Text as="span" fontWeight="medium">Partitioning:</Text> {store.partitioning}
+                      </Text>
+                    </Flex>
+                  </Box>
+                ))}
+                {(!infoData.tmStores || infoData.tmStores.length === 0) && (
+                  <Text fontSize="sm" color="fg.muted">No TM stores configured</Text>
+                )}
+              </VStack>
+            </Box>
+          </Grid>
         )}
       </VStack>
     </Box>

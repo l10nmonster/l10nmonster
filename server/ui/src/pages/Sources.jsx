@@ -35,16 +35,6 @@ const Sources = () => {
   return (
     <Box py={6} px={6}>
       <VStack gap={6} align="stretch">
-        {/* Header */}
-        <Box textAlign="center">
-          <Text fontSize="2xl" fontWeight="bold" mb={2}>
-            Active Content Sources
-          </Text>
-          <Text color="fg.muted">
-            Overview of content sources across all channels
-          </Text>
-        </Box>
-
         {/* Content Stats by Channel */}
         {Object.keys(contentStats).length === 0 ? (
           <Box p={6} borderWidth="1px" borderRadius="md" bg="white" textAlign="center">
@@ -60,7 +50,7 @@ const Sources = () => {
                 borderRadius="lg" 
                 bg="white" 
                 shadow="sm"
-                minW="800px"
+                minW="600px"
                 maxW="1200px"
                 w="100%"
               >
@@ -88,7 +78,10 @@ const Sources = () => {
                     </Box>
                   ) : (
                     <Grid 
-                      templateColumns="repeat(auto-fit, minmax(800px, 1200px))" 
+                      templateColumns={{ 
+                        base: "1fr", 
+                        lg: "repeat(auto-fit, minmax(600px, 1fr))" 
+                      }} 
                       gap={4} 
                       justifyItems="center"
                     >

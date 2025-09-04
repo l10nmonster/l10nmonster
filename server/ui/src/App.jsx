@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 // Lazy load tab content components
 const Welcome = lazy(() => import('./pages/Welcome.jsx'));
 const Status = lazy(() => import('./pages/Status.jsx'));
+const StatusDetail = lazy(() => import('./pages/StatusDetail.jsx'));
 const Sources = lazy(() => import('./pages/Sources.jsx'));
 const TM = lazy(() => import('./pages/TM.jsx'));
 const TMDetail = lazy(() => import('./pages/TMDetail.jsx'));
@@ -91,7 +92,7 @@ function MainLayout({ children }) {
                 _hover={{ bg: isActiveRoute('/') ? "blue.subtle" : "gray.subtle" }}
                 onClick={() => navigate('/')}
               >
-                <Text fontSize="sm" fontWeight="medium">Home</Text>
+                <Text fontSize="md" fontWeight="medium">Home</Text>
               </Box>
               <Box 
                 cursor="pointer" 
@@ -102,7 +103,7 @@ function MainLayout({ children }) {
                 _hover={{ bg: isActiveRoute('/status') ? "blue.subtle" : "gray.subtle" }}
                 onClick={() => navigate('/status')}
               >
-                <Text fontSize="sm" fontWeight="medium">Status</Text>
+                <Text fontSize="md" fontWeight="medium">Status</Text>
               </Box>
               <Box 
                 cursor="pointer" 
@@ -113,7 +114,7 @@ function MainLayout({ children }) {
                 _hover={{ bg: isActiveRoute('/sources') ? "blue.subtle" : "gray.subtle" }}
                 onClick={() => navigate('/sources')}
               >
-                <Text fontSize="sm" fontWeight="medium">Sources</Text>
+                <Text fontSize="md" fontWeight="medium">Sources</Text>
               </Box>
               <Box 
                 cursor="pointer" 
@@ -124,7 +125,7 @@ function MainLayout({ children }) {
                 _hover={{ bg: isActiveRoute('/tm') ? "blue.subtle" : "gray.subtle" }}
                 onClick={() => navigate('/tm')}
               >
-                <Text fontSize="sm" fontWeight="medium">TM</Text>
+                <Text fontSize="md" fontWeight="medium">TM</Text>
               </Box>
               <Box 
                 cursor="pointer" 
@@ -135,7 +136,7 @@ function MainLayout({ children }) {
                 _hover={{ bg: isActiveRoute('/providers') ? "blue.subtle" : "gray.subtle" }}
                 onClick={() => navigate('/providers')}
               >
-                <Text fontSize="sm" fontWeight="medium">Providers</Text>
+                <Text fontSize="md" fontWeight="medium">Providers</Text>
               </Box>
             </Flex>
 
@@ -152,7 +153,7 @@ function MainLayout({ children }) {
               onClick={() => navigate('/cart')}
             >
               <Box fontSize="lg">🛒</Box>
-              <Text fontSize="sm" fontWeight="medium">
+              <Text fontSize="md" fontWeight="medium">
                 {cartCount} {cartCount === 1 ? 'TU' : 'TUs'}
               </Text>
             </Flex>
@@ -201,6 +202,11 @@ function App() {
             <Route path="/status" element={
               <MainLayout>
                 <Status />
+              </MainLayout>
+            } />
+            <Route path="/status/:sourceLang/:targetLang" element={
+              <MainLayout>
+                <StatusDetail />
               </MainLayout>
             } />
             <Route path="/sources" element={

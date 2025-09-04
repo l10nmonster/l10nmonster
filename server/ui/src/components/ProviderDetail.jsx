@@ -101,13 +101,43 @@ const ProviderDetail = ({ provider, providerId }) => {
   };
 
   return (
-    <Box flex="1" p={6} overflow="auto">
+    <Box width="75%" p={6} overflow="auto">
       <VStack gap={6} align="stretch">
         {/* Provider Header */}
         <Box>
           <Text fontSize="2xl" fontWeight="bold" mb={2}>
             {providerId}
           </Text>
+        </Box>
+
+        {/* Properties Section */}
+        <Box 
+          p={4} 
+          borderWidth="1px" 
+          borderRadius="lg" 
+          bg="white"
+          shadow="sm"
+        >
+          <Text fontSize="lg" fontWeight="semibold" mb={4}>
+            Properties
+          </Text>
+          
+          {Object.keys(properties).length === 0 ? (
+            <Text color="fg.muted" fontSize="sm">No properties available</Text>
+          ) : (
+            <VStack gap={4} align="stretch">
+              {Object.entries(properties).map(([key, value]) => (
+                <Box key={key}>
+                  <Text fontSize="sm" fontWeight="bold" color="blue.600" mb={2}>
+                    {key}:
+                  </Text>
+                  <Box pl={4}>
+                    {renderValue(value)}
+                  </Box>
+                </Box>
+              ))}
+            </VStack>
+          )}
         </Box>
 
         {/* Info Section */}
@@ -143,36 +173,6 @@ const ProviderDetail = ({ provider, providerId }) => {
               </>
             )}
           </Grid>
-        </Box>
-
-        {/* Properties Section */}
-        <Box 
-          p={4} 
-          borderWidth="1px" 
-          borderRadius="lg" 
-          bg="white"
-          shadow="sm"
-        >
-          <Text fontSize="lg" fontWeight="semibold" mb={4}>
-            Properties
-          </Text>
-          
-          {Object.keys(properties).length === 0 ? (
-            <Text color="fg.muted" fontSize="sm">No properties available</Text>
-          ) : (
-            <VStack gap={4} align="stretch">
-              {Object.entries(properties).map(([key, value]) => (
-                <Box key={key}>
-                  <Text fontSize="sm" fontWeight="bold" color="blue.600" mb={2}>
-                    {key}:
-                  </Text>
-                  <Box pl={4}>
-                    {renderValue(value)}
-                  </Box>
-                </Box>
-              ))}
-            </VStack>
-          )}
         </Box>
       </VStack>
     </Box>

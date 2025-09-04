@@ -6,11 +6,12 @@ const ProviderList = ({ providers, selectedProvider, onProviderSelect }) => {
 
   return (
     <Box 
-      w="300px" 
+      width="25%" 
+      flexShrink={0}
       borderRight="1px" 
       borderColor="border.default" 
       p={4}
-      bg="bg.muted"
+      bg="yellow.subtle"
       minH="70vh"
     >
       <Text fontSize="lg" fontWeight="bold" mb={4}>

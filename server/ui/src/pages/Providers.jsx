@@ -43,16 +43,6 @@ const Providers = () => {
 
   return (
     <Box py={6} px={6}>
-      {/* Header */}
-      <Box textAlign="center" mb={6}>
-        <Text fontSize="2xl" fontWeight="bold" mb={2}>
-          Translation Providers
-        </Text>
-        <Text color="fg.muted">
-          Configuration and details for all available translation providers
-        </Text>
-      </Box>
-
       {/* Master/Detail Layout */}
       <Box 
         borderWidth="1px" 

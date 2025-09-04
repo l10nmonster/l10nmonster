@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Text, Badge, Flex, Button, VStack, Grid } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
+import { Box, Text, Badge, Flex, Button, VStack, Grid, Link } from '@chakra-ui/react';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
 const TMCard = ({ sourceLang, targetLang, providers }) => {
   const navigate = useNavigate();
@@ -21,29 +21,23 @@ const TMCard = ({ sourceLang, targetLang, providers }) => {
       borderRadius="lg" 
       bg="white" 
       shadow="sm"
-      w="900px"
+      w="100%"
     >
       <VStack gap={4} align="stretch">
         {/* Language Pair Header */}
         <Box>
-          <Flex align="center" justify="space-between" mb={2}>
-            <Flex align="center" gap={3}>
-              <Badge colorPalette="blue" size="sm">
-                {sourceLang}
-              </Badge>
-              <Text color="fg.muted" fontSize="lg">→</Text>
-              <Badge colorPalette="green" size="sm">
-                {targetLang}
-              </Badge>
-            </Flex>
-            <Button
-              size="sm"
-              variant="outline"
-              onClick={() => navigate(`/tm/${sourceLang}/${targetLang}`)}
+          <Box mb={2}>
+            <Link 
+              as={RouterLink}
+              to={`/tm/${sourceLang}/${targetLang}`}
+              fontSize="xl" 
+              fontWeight="semibold" 
+              color="blue.600"
+              _hover={{ textDecoration: "underline" }}
             >
-              View
-            </Button>
-          </Flex>
+              {sourceLang} → {targetLang}
+            </Link>
+          </Box>
         </Box>
 
         {/* Providers */}
@@ -57,11 +51,25 @@ const TMCard = ({ sourceLang, targetLang, providers }) => {
               borderColor="border.default"
               bg="yellow.subtle"
             >
-              <Grid templateColumns="2fr 80px 80px 80px 80px" gap={4} alignItems="center">
+              <Grid 
+                templateColumns={{ 
+                  base: "minmax(0, 2fr) 1fr 1fr 1fr 1fr", 
+                  md: "minmax(0, 3fr) 1fr 1fr 1fr 1fr" 
+                }} 
+                gap={{ base: 1, md: 2 }} 
+                alignItems="center"
+                overflow="hidden"
+                minWidth="0"
+              >
                 {/* Provider Name */}
-                <Box>
+                <Box minWidth="0" overflow="hidden">
                   <Text fontSize="xs" color="fg.muted" mb={1}>Provider</Text>
-                  <Text fontSize="sm" fontWeight="semibold">
+                  <Text 
+                    fontSize="sm" 
+                    fontWeight="semibold"
+                    noOfLines={1}
+                    title={provider.translationProvider}
+                  >
                     {provider.translationProvider}
                   </Text>
                 </Box>
