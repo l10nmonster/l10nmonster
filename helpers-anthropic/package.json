@@ -1,6 +1,6 @@
 {
   "name": "@l10nmonster/helpers-anthropic",
-  "version": "3.0.0-alpha.11",
+  "version": "3.0.0-alpha.12",
   "description": "Anthropic Claude LLM provider for l10nmonster using Vertex AI",
   "type": "module",
   "main": "anthropicAgent.js",

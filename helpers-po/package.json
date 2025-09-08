@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/helpers-po",
-    "version": "3.0.0-alpha.11",
+    "version": "3.0.0-alpha.12",
     "description": "Helpers to deal with the PO file format",
     "type": "module",
     "main": "index.js",
