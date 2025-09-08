@@ -1,20 +1,27 @@
 import { nanoid } from 'nanoid';
+import fastq from 'fastq';
 
 import { getRegressionMode, logInfo, logVerbose, logWarn } from '../l10nContext.js';
+import { utils } from '../helpers/index.js';
 import { TM } from './tm.js';
 
 
 export default class TMManager {
     #DAL;
+    #tmStores;
     #tmCache = new Map();
 
-    constructor(dal) {
+    constructor(dal, tmStores) {
         this.#DAL = dal;
+        this.#tmStores = tmStores ?? {};
     }
 
     // eslint-disable-next-line no-unused-vars
     async init(mm) {
-        logInfo`TMManager initialized`;
+        for (const tmStore of Object.values(this.#tmStores)) {
+            typeof tmStore.init === 'function' && await tmStore.init(this);
+        }
+        logVerbose`TMManager initialized`;
     }
 
     generateJobGuid() {
@@ -78,6 +85,27 @@ export default class TMManager {
         }
     }
 
+    getTmStore(id) {
+        const fixedId = utils.fixCaseInsensitiveKey(this.#tmStores, id);
+        if (fixedId) {
+            return this.#tmStores[fixedId];
+        } else {
+            throw new Error(`Unknown tm store: ${id}`);
+        }
+    }
+
+    async getTmStoreTOCs(tmStore, parallelism = 8) {
+        const queue = fastq.promise(async ([srcLang, tgtLang]) => tmStore.getTOC(srcLang, tgtLang), parallelism);
+        const pairs = await tmStore.getAvailableLangPairs(tmStore);
+        const tocPromises = pairs.map(pair => queue.push(pair));
+        const tocs = await Promise.all(tocPromises);
+        return pairs.map(([srcLang, tgtLang], index) => [ srcLang, tgtLang, tocs[index] ]);
+    }
+
+    getTmStoreIds() {
+        return Object.keys(this.#tmStores);
+    }
+
     // const TOC = {
     //         v: 1,
     //         blocks: {
@@ -90,7 +118,7 @@ export default class TMManager {
     //         }
     // }
 
-    async prepareSyncDown(tmStore, sourceLang, targetLang) {
+    async #prepareSyncDownTask({ tmStore, sourceLang, targetLang }) {
         if (tmStore.access === 'writeonly') {
             throw new Error(`Cannot sync down ${tmStore.id} store because it is write-only!`);
         }
@@ -106,46 +134,62 @@ export default class TMManager {
         };
     }
 
-    async syncDown(tmStore, { sourceLang, targetLang, blocksToStore, jobsToDelete }) {
+    async #syncDownTask({ tmStore, sourceLang, targetLang, blocksToStore, jobsToDelete }) {
         if (blocksToStore.length === 0 && jobsToDelete.length === 0) {
-            logInfo`Nothing to sync up with store ${tmStore.id}`;
             return;
         }
         if (blocksToStore.length > 0) {
-            logInfo`Storing ${blocksToStore.length} ${[blocksToStore.length, 'block', 'blocks']} from ${tmStore.id}`;
+            logInfo`Storing ${blocksToStore.length} ${[blocksToStore.length, 'block', 'blocks']} from ${tmStore.id}(${sourceLang} → ${targetLang})`;
             await this.saveTmBlock(tmStore.getTmBlocks(sourceLang, targetLang, blocksToStore));
         }
         if (jobsToDelete.length > 0) {
-            logInfo`Deleting ${jobsToDelete.length} ${[jobsToDelete.length, 'job', 'jobs']}`;
+            logInfo`Deleting ${jobsToDelete.length} ${[jobsToDelete.length, 'job', 'jobs']} (${sourceLang} → ${targetLang})`;
             for (const jobGuid of jobsToDelete) {
                 await this.#deleteJobContents(jobGuid);
             }
         }
     }
 
-    async prepareSyncUp(tmStore, sourceLang, targetLang, options) {
+    async syncDown(tmStore, { dryrun, sourceLang, targetLang, deleteExtraJobs = false, parallelism = 4 }) {
+        const pairs = sourceLang && targetLang ? [ [ sourceLang, targetLang ] ] : await tmStore.getAvailableLangPairs();
+        const prepareQueue = fastq.promise(this, this.#prepareSyncDownTask, parallelism);
+        const preparePromises = pairs.map(([ sourceLang, targetLang ]) => prepareQueue.push({ tmStore, sourceLang, targetLang }));
+        const syncDownStats = await Promise.all(preparePromises);
+        if (!dryrun) {
+            const syncUpQueue = fastq.promise(this, this.#syncDownTask, parallelism);
+            const syncUpPromises = syncDownStats.map(task => syncUpQueue.push({ tmStore, ...task, jobsToDelete: deleteExtraJobs ? task.jobsToDelete : [] }));
+            await Promise.all(syncUpPromises);
+        }
+        return syncDownStats;
+    }
+
+    async #prepareSyncUpTask({ tmStore, sourceLang, targetLang, newerOnly = false, deleteEmptyBlocks = false }) {
         const toc = await tmStore.getTOC(sourceLang, targetLang);
         const deltas = this.#DAL.job.getJobDeltas(toc.sourceLang, toc.targetLang, toc);
         const blockIdsToUpdate = new Set(deltas.filter(e => e.remoteJobGuid).map(e => e.blockId)); // either because they changed or because some jobs don't exist locally and need to be deleted remotely
+        let blocksToUpdate = Array.from(blockIdsToUpdate).map(blockId => [ blockId, this.#DAL.job.getValidJobIds(toc.sourceLang, toc.targetLang, toc, blockId) ]);
+        const blocksToDelete = blocksToUpdate.filter(e => e[1].length === 0); // if there are no jobs to write the block gets deleted
+        if (blocksToDelete.length > 0 && !deleteEmptyBlocks) {
+            blocksToUpdate = blocksToUpdate.filter(e => e[1].length > 0);
+        }
         let jobsToUpdate = deltas.filter(e => e.localJobGuid).map(e => [ e.localJobGuid, e.localUpdatedAt ]); // this will catch changed jobs and jobs that don't exist remotely
-        if (jobsToUpdate.length > 0 && options?.newerOnly) {
+        if (jobsToUpdate.length > 0 && newerOnly) {
             const highWaterMark = Math.max(...Object.values(toc.blocks).map(blockProps => Math.max(...blockProps.jobs.map(e => new Date(e[1]).getTime()))));
             jobsToUpdate = jobsToUpdate.filter(e => new Date(e[1]).getTime() > highWaterMark);
         }
         return {
             sourceLang,
             targetLang,
-            blocksToUpdate: Array.from(blockIdsToUpdate).map(blockId => [ blockId, this.#DAL.job.getValidJobIds(toc.sourceLang, toc.targetLang, toc, blockId) ]),
+            blocksToUpdate,
             jobsToUpdate: jobsToUpdate.map(e => e[0]),
         };
     }
 
-    async syncUp(tmStore, { sourceLang, targetLang, blocksToUpdate, jobsToUpdate }) {
+    async #syncUpTask({ tmStore, sourceLang, targetLang, blocksToUpdate, jobsToUpdate }) {
         if (tmStore.access === 'readonly') {
             throw new Error(`Cannot sync up ${tmStore.id} store because it is readonly!`);
         }
         if (blocksToUpdate.length === 0 && jobsToUpdate.length === 0) {
-            logInfo`Nothing to sync up with store ${tmStore.id}`;
             return;
         }
 
@@ -185,6 +229,25 @@ export default class TMManager {
                 }
             }
         });
+    }
+
+    async syncUp(tmStore, { dryrun, sourceLang, targetLang, newerOnly = false, deleteEmptyBlocks = false, parallelism = 4 }) {
+        const pairs = sourceLang && targetLang ? [ [ sourceLang, targetLang ] ] : await this.getAvailableLangPairs();
+        const prepareQueue = fastq.promise(this, this.#prepareSyncUpTask, parallelism);
+        const preparePromises = pairs.map(([ sourceLang, targetLang ]) => prepareQueue.push({
+            tmStore,
+            sourceLang,
+            targetLang,
+            newerOnly,
+            deleteEmptyBlocks,
+        }));
+        const syncUpStats = await Promise.all(preparePromises);
+        if (!dryrun) {
+            const syncUpQueue = fastq.promise(this, this.#syncUpTask, parallelism);
+            const syncUpPromises = syncUpStats.map(task => syncUpQueue.push({ tmStore, ...task }));
+            await Promise.all(syncUpPromises);
+        }
+        return syncUpStats;
     }
 
     async getAvailableLangPairs() {

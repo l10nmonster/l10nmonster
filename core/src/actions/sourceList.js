@@ -1,3 +1,5 @@
+/* eslint-disable no-continue */
+/* eslint-disable camelcase */
 /* eslint-disable complexity */
 import { writeFileSync } from 'fs';
 import { consoleLog, styleString } from '../l10nContext.js';

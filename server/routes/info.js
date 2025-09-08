@@ -10,8 +10,8 @@ export function setupInfoRoute(router, mm, serverPackage) {
             baseDir: path.resolve(getBaseDir()),
             providers: mm.dispatcher.providers.map(p => p.id),
             channels: Object.keys(mm.rm.channels),
-            tmStores: mm.getTmStoreIds().map(id => {
-                const tmStore = mm.getTmStore(id);
+            tmStores: mm.tmm.getTmStoreIds().map(id => {
+                const tmStore = mm.tmm.getTmStore(id);
                 return {
                     id: tmStore.id,
                     type: tmStore.constructor.name,

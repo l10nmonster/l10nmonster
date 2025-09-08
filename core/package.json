@@ -21,9 +21,10 @@
         "node": ">=22.11.0"
     },
     "dependencies": {
+        "better-sqlite3": "^12",
+        "fastq": "^1.19.1",
         "nanoid": "^5",
-        "winston": "^3.7.2",
-        "better-sqlite3": "^12"
+        "winston": "^3.7.2"
     },
     "devDependencies": {
         "eslint": "^9"

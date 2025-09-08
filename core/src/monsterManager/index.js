@@ -1,5 +1,5 @@
 import { logVerbose, logWarn } from '../l10nContext.js';
-import { utils, analyzers } from '../helpers/index.js';
+import { analyzers } from '../helpers/index.js';
 import * as opsManager from '../opsManager/index.js';
 import DALManager from '../DAL/index.js';
 import TMManager from '../tmManager/index.js';
@@ -25,7 +25,6 @@ import { analyzeCmd } from './analyze.js';
 
 export class MonsterManager {
     #dalManager;
-    #tmStores = {};
     #configInitializer;
     #functionsForShutdown = [];
     saveFailedJobs = false;
@@ -44,7 +43,7 @@ export class MonsterManager {
         }
         this.rm = new ResourceManager(this.#dalManager, { channels, autoSnap: monsterConfig.autoSnap });
 
-        monsterConfig.tmStores && (this.#tmStores = monsterConfig.tmStores);
+        this.tmm = new TMManager(this.#dalManager, monsterConfig.tmStores);
 
         if (monsterConfig.opsStore) {
             opsManager.setOpsStore(monsterConfig.opsStore);
@@ -52,8 +51,6 @@ export class MonsterManager {
         } else {
             monsterConfig.saveFailedJobs && logWarn`saveFailedJobs is set but no opsStore is configured -- ignoring`;
         }
-
-        this.tmm = new TMManager(this.#dalManager);
 
         this.dispatcher = new Dispatcher(monsterConfig.providers);
 
@@ -84,9 +81,6 @@ export class MonsterManager {
 
     async init() {
         await this.#dalManager.init(this);
-        for (const tmStore of Object.values(this.#tmStores)) {
-            typeof tmStore.init === 'function' && await tmStore.init(this);
-        }
         await this.tmm.init(this);
         await this.dispatcher.init(this);
         await this.rm.init(this);
@@ -172,19 +166,6 @@ export class MonsterManager {
             // logVerbose`Got active content translation status for ${sourceLang} → ${targetLang}`;
         }
         return translationStatusByPair;
-    }
-
-    getTmStore(id) {
-        const fixedId = utils.fixCaseInsensitiveKey(this.#tmStores, id);
-        if (fixedId) {
-            return this.#tmStores[fixedId];
-        } else {
-            throw new Error(`Unknown tm store: ${id}`);
-        }
-    }
-
-    getTmStoreIds() {
-        return Object.keys(this.#tmStores);
     }
 
     async shutdown() {

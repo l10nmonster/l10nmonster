@@ -15,26 +15,17 @@ export class tm_export {
     };
 
     static async action(monsterManager, options) {
+        let sourceLang, targetLang;
+        options.lang && ([ sourceLang, targetLang ] = options.lang.split(','));
         const tmStore = new FsJsonlTmStore({
             id: 'tmexport',
             jobsDir: options.jobsDir,
             partitioning: options.partitioning ?? 'language',
         });
-        let jobsWritten = 0;
-        const exportPair = async (srcLang, tgtLang) => {
-            const syncUpStats = await monsterManager.tmm.prepareSyncUp(tmStore, srcLang, tgtLang);
-            jobsWritten += syncUpStats.jobsToUpdate.length;
-            await monsterManager.tmm.syncUp(tmStore, syncUpStats);
-        };
-        if (options.lang) {
-            const [ srcLang, tgtLang ] = options.lang.split(',');
-            await exportPair(srcLang, tgtLang);
-        } else {
-            const pairs = await monsterManager.tmm.getAvailableLangPairs();
-            for (const [ srcLang, tgtLang ] of pairs) {
-                await exportPair(srcLang, tgtLang);
-            }
+        const syncUpStats = await monsterManager.tmm.syncUp(tmStore, { dryrun: false, sourceLang, targetLang });
+        consoleLog`\nExport done`;
+        for (const { sourceLang, targetLang, jobsToUpdate } of syncUpStats) {
+            consoleLog`  ‣ ${sourceLang} → ${targetLang} ${jobsToUpdate.length} ${[jobsToUpdate.length, 'job', 'jobs']} exported`;
         }
-        consoleLog`\nExport done. Jobs written: ${jobsWritten}`;
     }
 }

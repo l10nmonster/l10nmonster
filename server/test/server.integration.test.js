@@ -100,7 +100,7 @@ describe('L10n Monster Server Integration Tests', () => {
       // TM stats route
       apiRouter.get('/tm/stats', async (req, res) => {
         try {
-          const stats = await mm.getTmStats();
+          const stats = await mm.tmm.getTmStats();
           res.json(stats);
         } catch {
           res.status(500).json({ message: 'Problems fetching TM stats' });

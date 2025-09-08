@@ -27,6 +27,10 @@ export default class ResourceManager {
         return this.#channels;
     }
 
+    get channelIds() {
+        return Object.keys(this.#channels);
+    }
+
     /**
      * Returns a channel given its id.
      *
@@ -102,7 +106,7 @@ export default class ResourceManager {
 
     async snap(options = { channelId: undefined, since: undefined }) {
         const stats = {};
-        logInfo`Starting snapshot of all resources...`;
+        logInfo`Starting snapshot of all resources (channel: ${options.channelId ?? 'all'}, since: ${options.since ?? 'all'})...`;
         !options.since && this.#DAL.source.markResourcesAsInactive(options.channelId);
         for await (const res of this.#getAllResourcesFromSources(options)) {
             const changes = this.#DAL.source.saveResource(res);

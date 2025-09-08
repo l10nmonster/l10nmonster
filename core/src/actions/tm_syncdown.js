@@ -11,53 +11,51 @@ export class tm_syncdown {
             [ '--commit', 'commit making changes that are needed (dry-run by default)' ],
             [ '--delete', 'delete local jobs that do not exist in the remote TM Store' ],
             [ '--lang <srcLang,tgtLang>', 'source and target language pair' ],
+            [ '--parallelism <number>', 'number of parallel operations' ],
         ],
     };
 
     static async action(monsterManager, options) {
         const dryrun = !options.commit;
-        const response = { dryrun, syncDownStats: {} };
-        consoleLog`Figuring out what needs to be synced down...`;
-        const tmStore = await monsterManager.getTmStore(options.tmStore);
-        const syncDownPair = async (srcLang, tgtLang) => {
-            const syncDownStats = await monsterManager.tmm.prepareSyncDown(tmStore, srcLang, tgtLang);
-            response.syncDownStats[srcLang] ??= {};
-            response.syncDownStats[srcLang][tgtLang] = syncDownStats;
-            if (syncDownStats.blocksToStore.length === 0 && syncDownStats.jobsToDelete.length === 0) {
-                consoleLog`\nNothing to sync down from ${tmStore.id} store for ${srcLang} → ${tgtLang}`;
-                return;
-            } else {
-                consoleLog`\nSyncing down ${srcLang} → ${tgtLang} from ${tmStore.id} store...`;
+        const deleteExtraJobs = Boolean(options.delete);
+        const tmStore = await monsterManager.tmm.getTmStore(options.tmStore);
+        if (tmStore.access === 'writeonly') {
+            throw new Error(`TM Store ${tmStore.id} is write-only!`);
+        }
+        let sourceLang, targetLang;
+        options.lang && ([ sourceLang, targetLang ] = options.lang.split(','));
+        consoleLog`Syncing down ${tmStore.id} store...`;
+        const syncDownStats = await monsterManager.tmm.syncDown(tmStore, {
+            dryrun,
+            sourceLang,
+            targetLang,
+            deleteExtraJobs,
+            parallelism: options.parallelism,
+        });
+        let changes = false;
+        for (const { sourceLang, targetLang, blocksToStore, jobsToDelete } of syncDownStats) {
+            if (blocksToStore.length > 0) {
+                changes = true;
+                consoleLog`  ‣ ${sourceLang} → ${targetLang}: ${blocksToStore.length} ${[blocksToStore.length, 'block', 'blocks']} stored: ${blocksToStore.join(', ')}`;
             }
-            if (syncDownStats.blocksToStore.length > 0) {
-                consoleLog`${syncDownStats.blocksToStore.length} ${[syncDownStats.blocksToStore.length, 'block', 'blocks']} to store: ${syncDownStats.blocksToStore.join(', ')}`;
-            }
-            if (syncDownStats.jobsToDelete.length > 0) {
-                if (options.delete) {
-                    consoleLog`${syncDownStats.jobsToDelete.length} ${[syncDownStats.jobsToDelete.length, 'job', 'jobs']} to delete locally: ${syncDownStats.jobsToDelete.join(', ')}`;
+            if (jobsToDelete.length > 0) {
+                changes = true;
+                if (deleteExtraJobs) {
+                    consoleLog`  ‣ ${sourceLang} → ${targetLang}: ${jobsToDelete.length} ${[jobsToDelete.length, 'job', 'jobs']} deleted locally: ${jobsToDelete.join(', ')}`;
                 } else {
-                    consoleLog`${syncDownStats.jobsToDelete.length} local ${[syncDownStats.jobsToDelete.length, 'job does', 'jobs do']} not exist in the remote TM Store. Use --delete option to delete them.`;
-                    syncDownStats.jobsToDelete = [];
+                    consoleLog`  ‣ ${sourceLang} → ${targetLang}: ${jobsToDelete.length} local ${[jobsToDelete.length, 'job does', 'jobs do']} not exist in the remote TM Store. Use the --delete option to delete them.`;
                 }
             }
-            if (!dryrun) {
-                await monsterManager.tmm.syncDown(tmStore, syncDownStats);
+        }
+        if (changes) {
+            if (dryrun) {
+                consoleLog`\nThis was just a dryrun, no changes were made!`;
+            } else {
+                consoleLog`\nDone!`;
             }
-        }
-        if (options.lang) {
-            const [ srcLang, tgtLang ] = options.lang.split(',');
-            await syncDownPair(srcLang, tgtLang);
         } else {
-            const pairs = await tmStore.getAvailableLangPairs();
-            for (const [ srcLang, tgtLang ] of pairs) {
-                await syncDownPair(srcLang, tgtLang);
-            }
+            consoleLog`Nothing to sync down with ${tmStore.id} store!`;
         }
-        if (dryrun) {
-            consoleLog`\nThis was just a dryrun, no changes were made!`;
-        } else {
-            consoleLog`\nDone!`;
-        }
-        return response;
+        return { dryrun, deleteExtraJobs, syncDownStats };
     }
 }
