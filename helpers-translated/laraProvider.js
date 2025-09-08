@@ -28,7 +28,6 @@ export class LaraProvider extends providers.ChunkedRemoteTranslationProvider {
         this.#keyId = keyId;
         this.#keySecret = keySecret;
         this.#translateOptions = {
-            contentType: 'text/plain',
             instructions: [],
         };
         adaptTo && (this.#translateOptions.adaptTo = Array.isArray(adaptTo) ? adaptTo : adaptTo.split(','));
