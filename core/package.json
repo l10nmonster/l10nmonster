@@ -24,7 +24,8 @@
         "better-sqlite3": "^12",
         "fastq": "^1.19.1",
         "nanoid": "^5",
-        "winston": "^3.7.2"
+        "winston": "^3.7.2",
+        "winston-transport": "^4.7.1"
     },
     "devDependencies": {
         "eslint": "^9"
