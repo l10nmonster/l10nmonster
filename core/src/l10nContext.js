@@ -1,9 +1,8 @@
 import { inspect, styleText } from 'node:util';
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync } from 'fs';
 import path from 'path';
-import { tmpdir } from 'os';
 import * as winston from 'winston';
-import Transport from 'winston-transport';
+import MemoryBufferTransport from './helpers/MemoryBufferTransport.js';
 
 const corePackage = JSON.parse(readFileSync(path.join(import.meta.dirname, '../package.json'), 'utf-8'));
 export const corePackageVersion = corePackage.version;
@@ -16,74 +15,6 @@ const levelColors = {
     verbose: ['gray', 'dim', 'italic'],
 };
 
-class MemoryBufferTransport extends Transport {
-    constructor(opts) {
-        super(opts);
-        this.buffer = [];
-        this.maxSize = opts.maxSize || 100000;
-    }
-
-    log(info, callback) {
-        // Add new log to buffer with timestamp
-        const logEntry = {
-            timestamp: new Date().toISOString(),
-            level: info.level,
-            message: info.message,
-            ms: info.ms,
-            rss: Math.round(process.memoryUsage().rss / 1024 / 1024),
-            heap: Math.round(process.memoryUsage().heapUsed / 1024 / 1024),
-            ...info
-        };
-
-        this.buffer.push(logEntry);
-
-        // Remove oldest if buffer exceeds max size
-        if (this.buffer.length > this.maxSize) {
-            this.buffer.shift();
-        }
-
-        callback();
-    }
-
-    // Helper method to format a log entry
-    formatLogEntry(logEntry) {
-        const time = String(logEntry.timestamp).substring(11, 23);
-        const messageString = typeof logEntry.message === 'string' ? logEntry.message : inspect(logEntry.message);
-        return `${time} (${logEntry.ms || 'N/A'}) [${logEntry.rss || 0}MB/${logEntry.heap || 0}MB] ${logEntry.level}: ${messageString}`;
-    }
-
-    // Method to retrieve recent logs
-    getRecentLogs(maxSize) {
-        const logs = maxSize === undefined ? [...this.buffer] : this.buffer.slice(-maxSize);
-        return logs.map(logEntry => this.formatLogEntry(logEntry));
-    }
-
-    // Method to dump all logs to a temporary file
-    dumpLogs() {
-        const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-        const filename = `l10nmonster-logs-${timestamp}.txt`;
-        const filepath = path.join(tmpdir(), filename);
-        
-        const formattedLogs = this.buffer.map(logEntry => this.formatLogEntry(logEntry));
-        
-        const logContent = [
-            `L10n Monster Log Dump`,
-            `Dumped at: ${new Date().toISOString()}`,
-            `Total logs: ${this.buffer.length}`,
-            `Max buffer size: ${this.maxSize}`,
-            ``,
-            ...formattedLogs
-        ].join('\n');
-
-        writeFileSync(filepath, logContent, 'utf-8');
-        return filepath;
-    }
-
-    // Method to clear buffer
-    clearBuffer() {
-        this.buffer = [];
-    }
-}
 
 const consoleTransport = new winston.transports.Console({
     level: 'warn',  // Initial console level
@@ -174,5 +105,5 @@ export const consoleLog = (strings, ...values) => {
 export const styleString = (strings, ...values) => renderTaggedString(strings, values, true);
 
 // Memory buffer log methods
-export const getRecentLogs = (maxSize) => memoryTransport.getRecentLogs(maxSize);
+export const getRecentLogs = (maxSize, verbosity) => memoryTransport.getRecentLogs(maxSize, verbosity);
 export const dumpLogs = () => memoryTransport.dumpLogs();
