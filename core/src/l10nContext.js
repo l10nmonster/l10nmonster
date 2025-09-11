@@ -1,5 +1,10 @@
 import { inspect, styleText } from 'node:util';
+import { readFileSync } from 'fs';
+import path from 'path';
 import * as winston from 'winston';
+
+const corePackage = JSON.parse(readFileSync(path.join(import.meta.dirname, '../package.json'), 'utf-8'));
+export const corePackageVersion = corePackage.version;
 
 const logLevels = ['error', 'warn', 'info', 'verbose'];
 const levelColors = {
