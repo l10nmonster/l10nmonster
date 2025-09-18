@@ -1,4 +1,4 @@
-export default class mcpServe {
+export class mcp {
     static help = {
         description: 'starts the L10n Monster MCP server.',
         options: [
@@ -9,7 +9,7 @@ export default class mcpServe {
     static async action(mm) {
         try {
             // Dynamic import of the MCP server
-            const { L10nMonsterMCPServer } = await import('./index.js');
+            const { L10nMonsterMCPServer } = await import('./server.js');
             const mcpServer = new L10nMonsterMCPServer(mm);
             
             // Start the MCP server with stdio transport

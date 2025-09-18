@@ -1,6 +1,6 @@
 import { describe, it, beforeEach } from 'node:test';
 import assert from 'node:assert';
-import { L10nMonsterMCPServer } from '../index.js';
+import { L10nMonsterMCPServer } from '../server.js';
 
 describe('L10nMonsterMCPServer', () => {
     let mockMM, mcpServer;
