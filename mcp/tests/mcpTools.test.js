@@ -1,15 +1,11 @@
 import { describe, it, beforeEach } from 'node:test';
 import assert from 'node:assert';
-import { configureMcpTools } from '../utils/mcpTools.js';
+import { convertToMcpTool } from '../utils/mcpTools.js';
 
 describe('mcpTools', () => {
-    let mockServer, mockMM, toolHandlers, mockAction;
+    let mockMM, mockAction;
 
     beforeEach(() => {
-        mockServer = {
-            _tools: new Map()
-        };
-        
         mockMM = {
             tmm: {
                 getTM: () => ({
@@ -37,8 +33,6 @@ describe('mcpTools', () => {
             }
         };
         
-        toolHandlers = new Map();
-        
         mockAction = class source_query {
             static help = {
                 summary: 'query sources in the local cache.',
@@ -65,26 +59,19 @@ describe('mcpTools', () => {
         };
     });
 
-    describe('configureMcpTools', () => {
-        it('should register tool with correct name and schema', () => {
-            configureMcpTools(mockServer, mockAction, mockMM, toolHandlers);
+    describe('convertToMcpTool', () => {
+        it('should convert action to MCP tool with correct properties', () => {
+            const tool = convertToMcpTool(mockAction, mockMM);
             
-            // Check tool is registered
-            assert.ok(mockServer._tools.has('source_query'));
-            
-            const tool = mockServer._tools.get('source_query');
+            assert.ok(tool);
             assert.strictEqual(tool.name, 'source_query');
             assert.strictEqual(tool.description, 'query sources in the local cache.');
             assert.ok(tool.inputSchema);
-            
-            // Check handler is registered
-            assert.ok(toolHandlers.has('source_query'));
+            assert.ok(typeof tool.handler === 'function');
         });
 
         it('should validate input arguments before calling action', async () => {
-            configureMcpTools(mockServer, mockAction, mockMM, toolHandlers);
-            
-            const handler = toolHandlers.get('source_query');
+            const tool = convertToMcpTool(mockAction, mockMM);
             
             // Valid arguments should work
             const validArgs = {
@@ -93,7 +80,7 @@ describe('mcpTools', () => {
                 provider: 'openai'
             };
             
-            const result = await handler(validArgs);
+            const result = await tool.handler(validArgs);
             assert.ok(result.content);
             assert.strictEqual(result.content[0].type, 'text');
             
@@ -103,7 +90,7 @@ describe('mcpTools', () => {
                 // missing required lang
             };
             
-            const errorResult = await handler(invalidArgs);
+            const errorResult = await tool.handler(invalidArgs);
             assert.ok(errorResult.isError);
             assert.ok(errorResult.content[0].text.includes('Error executing'));
         });
@@ -129,10 +116,8 @@ describe('mcpTools', () => {
                 }
             };
             
-            configureMcpTools(mockServer, actionWithMcp, mockMM, toolHandlers);
-            
-            const handler = toolHandlers.get('source_query');
-            const result = await handler({
+            const tool = convertToMcpTool(actionWithMcp, mockMM);
+            const result = await tool.handler({
                 lang: 'en,fr'
             });
             
@@ -147,18 +132,15 @@ describe('mcpTools', () => {
                 }
             };
             
-            configureMcpTools(mockServer, actionWithoutHelp, mockMM, toolHandlers);
+            const tool = convertToMcpTool(actionWithoutHelp, mockMM);
             
-            // Should not register any tools
-            assert.strictEqual(mockServer._tools.size, 0);
-            assert.strictEqual(toolHandlers.size, 0);
+            // Should return undefined for actions without help
+            assert.strictEqual(tool, undefined);
         });
 
         it('should format CLI results for MCP', async () => {
-            configureMcpTools(mockServer, mockAction, mockMM, toolHandlers);
-            
-            const handler = toolHandlers.get('source_query');
-            const result = await handler({
+            const tool = convertToMcpTool(mockAction, mockMM);
+            const result = await tool.handler({
                 lang: 'en,fr'
             });
             

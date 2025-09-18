@@ -1,70 +1,40 @@
-import { Server } from '@modelcontextprotocol/sdk/server/index.js';
-import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
-import { configureMcpTools } from './utils/mcpTools.js';
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { convertToMcpTool } from './utils/mcpTools.js';
 
 /**
  * L10n Monster MCP Server - provides translation management functionality through MCP tools
  */
-export class L10nMonsterMCPServer {
+export class MCPServer {
     constructor(monsterManager) {
         this.mm = monsterManager;
-        this.server = new Server({
+        this.server = new McpServer({
             name: 'l10nmonster-mcp',
             version: '1.0.0'
-        }, {
-            capabilities: {
-                tools: {}
-            }
         });
-        
-        this.toolHandlers = new Map();
-        this.setupRequestHandlers();
     }
 
     async setupTools() {
         try {
-            // For Phase 1, we'll focus on just source_query action
-            // Later phases will auto-discover all actions from monster config
-            
+            // TODO: auto-discover all actions from monster config
             // Import source_query action
-            const { source_query } = await import('@l10nmonster/core/src/actions/sourceQuery.js');
-            configureMcpTools(this.server, source_query, this.mm, this.toolHandlers);
+            const { source_query } = await import('../core/src/actions/sourceQuery.js');
+            const tool = convertToMcpTool(source_query, this.mm);
+            
+            if (tool) {
+                this.server.registerTool(
+                    tool.name,
+                    {
+                        title: tool.name,
+                        description: tool.description,
+                        inputSchema: tool.inputSchema
+                    },
+                    tool.handler
+                );
+            }
         } catch (error) {
             console.error('Error loading source_query action:', error);
         }
-    }
-
-    setupRequestHandlers() {
-        // Handle list tools request
-        this.server.setRequestHandler(ListToolsRequestSchema, async () => {
-            const tools = [];
-            
-            // Get registered tools from the server
-            if (this.server._tools) {
-                for (const [name, tool] of this.server._tools) {
-                    tools.push({
-                        name,
-                        description: tool.description,
-                        inputSchema: tool.inputSchema
-                    });
-                }
-            }
-            
-            return { tools };
-        });
-
-        // Handle call tool request
-        this.server.setRequestHandler(CallToolRequestSchema, async (request) => {
-            const { name, arguments: args } = request.params;
-            
-            const handler = this.toolHandlers.get(name);
-            if (!handler) {
-                throw new Error(`Unknown tool: ${name}`);
-            }
-            
-            return await handler(args || {});
-        });
     }
 
     /**
@@ -87,4 +57,4 @@ export class L10nMonsterMCPServer {
     }
 }
 
-export default L10nMonsterMCPServer;
+export default MCPServer;

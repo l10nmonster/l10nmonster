@@ -1,3 +1,24 @@
+import { MCPServer } from './server.js';
+export class mcp {
+    static help = {
+        description: 'starts the L10n Monster MCP server.',
+        options: [
+            ['--stdio', 'use stdio transport (default)']
+        ]
+    };
 
-// Export the MCP serve action for CLI integration
-export { mcp } from './mcp.js';
+    static async action(mm) {
+        try {
+            // Dynamic import of the MCP server
+            const mcpServer = new MCPServer(mm);
+            // Start the MCP server with stdio transport
+            await mcpServer.start();
+            
+            console.error('L10n Monster MCP server started successfully');
+            
+        } catch (error) {
+            console.error(`Error starting MCP server: ${error.message}`);
+            throw error;
+        }
+    }
+}
