@@ -1,0 +1,29 @@
+{
+  "name": "@l10nmonster/mcp",
+  "version": "1.0.0",
+  "description": "L10n Monster Model Context Protocol (MCP) Server",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.23.8",
+    "zod-to-json-schema": "^3.23.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0"
+  },
+  "keywords": [
+    "mcp",
+    "localization",
+    "translation",
+    "l10n"
+  ],
+  "author": "L10n Monster",
+  "license": "MIT"
+}
