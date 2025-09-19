@@ -33,6 +33,7 @@ function formatCliResultForMcp(result) {
 export function convertToMcpTool(ActionClass, mm) {
     // Only process actions that have help definitions
     if (!ActionClass.help) {
+        console.warn(`Action ${ActionClass.name} does not have help defined, skipping...`);
         return;
     }
 
