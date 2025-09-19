@@ -6,7 +6,8 @@ import express from 'express';
 import { randomUUID } from 'node:crypto';
 import { convertToMcpTool } from './utils/mcpTools.js';
 import { z } from 'zod';
-
+import { source_query } from '../core/src/actions/sourceQuery.js'
+    
 /**
  * Setup tools on an MCP server instance
  */
@@ -14,9 +15,6 @@ async function setupToolsOnServer(server, monsterManager) {
     try {
         // TODO: auto-discover all actions from monster config
         // Import source_query action
-        const { source_query } = await import(
-            '../core/src/actions/sourceQuery.js'
-        );
         const tool = convertToMcpTool(source_query, monsterManager);
 
         if (tool) {
@@ -26,7 +24,7 @@ async function setupToolsOnServer(server, monsterManager) {
                 {
                     title: tool.name,
                     description: tool.description,
-                    inputSchema: {city: z.string()},
+                    inputSchema: tool.inputSchema.shape,
                 },
                 tool.handler,
             );

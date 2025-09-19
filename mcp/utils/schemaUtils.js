@@ -14,7 +14,7 @@ export function cliToZodSchema(help) {
             const match = argSpec.match(/<(\w+)>|\[(\w+)\]/);
             if (match) {
                 const name = match[1] || match[2];
-                const isRequired = Boolean(match[1]); // <arg> is required, [arg] is optional
+                const isRequired = !!match[1]; // <arg> is required, [arg] is optional
                 
                 let field;
                 if (choices && Array.isArray(choices)) {
