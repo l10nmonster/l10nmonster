@@ -45,6 +45,25 @@ export class MCPServer {
 
         // Session management for HTTP transport
         this.sessions = new Map(); // sessionId -> { transport, server }
+
+        // Persistent MCP server instance (used in stdio mode and for tests)
+        this.server = new McpServer({
+            name: 'l10nmonster-mcp',
+            version: '1.0.0',
+        });
+    }
+
+    /**
+     * Set up tools on the persistent server instance.
+     * Kept separate to match test expectations and allow reuse.
+     */
+    async setupTools() {
+        try {
+            await setupToolsOnServer(this.server, this.mm);
+        } catch (err) {
+            // Do not throw to keep behavior graceful under failing imports
+            console.error('Error setting up tools:', err);
+        }
     }
 
     async createHTTPServer() {
@@ -53,8 +72,8 @@ export class MCPServer {
         const app = express();
         app.use(express.json());
 
-        // Map to store transports by session ID
-        const transports = new Map();
+        // Use instance sessions map to store transports by session ID
+        const transports = this.sessions;
 
         // Handle POST requests for client-to-server communication
         app.post('/mcp', async (req, res) => {
@@ -82,7 +101,7 @@ export class MCPServer {
                 // Clean up transport when closed
                 transport.onclose = () => {
                     if (transport.sessionId) {
-                        delete transports[transport.sessionId];
+                        transports.delete(transport.sessionId);
                     }
                 };
 
@@ -95,7 +114,7 @@ export class MCPServer {
                 await setupToolsOnServer(server, this.mm);
 
                 // Connect to the MCP server
-                 await server.connect(transport);
+                await server.connect(transport);
                 console.error(`Connected to new transport`);
             } else {
                 // Invalid request
@@ -117,7 +136,7 @@ export class MCPServer {
         // Reusable handler for GET and DELETE requests
         const handleSessionRequest = async (req, res) => {
             const sessionId = req.headers['mcp-session-id'];
-            if (!sessionId || !transports[sessionId]) {
+            if (!sessionId || !transports.has(sessionId)) {
                 res.status(400).send('Invalid or missing session ID');
                 return;
             }
@@ -132,9 +151,11 @@ export class MCPServer {
         // Handle DELETE requests for session termination
         app.delete('/mcp', handleSessionRequest);
 
-        app.listen(this.port);
+        this.httpServer = app.listen(this.port);
         console.error(`L10n Monster MCP server started (port ${this.port})`);
 
+        // Return app to the caller for testing/lifecycle hooks
+        return app;
     }
     
     /**
@@ -143,12 +164,8 @@ export class MCPServer {
     async start() {
         if (this.useStdio) {
             const transport = new StdioServerTransport();
-            const server = new McpServer({
-                name: 'l10nmonster-mcp',
-                version: '1.0.0',
-            });
-            await setupToolsOnServer(server, this.mm);
-            await server.connect(transport);
+            await this.setupTools();
+            await this.server.connect(transport);
             console.error('L10n Monster MCP server started (stdio transport)');
         } else {
             this.app = await this.createHTTPServer();

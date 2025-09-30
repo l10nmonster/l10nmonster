@@ -43,8 +43,11 @@ export function cliToZodSchema(help) {
                     field = z.enum(choices);
                 } else if (type) {
                     // Parse type hints from CLI help
-                    if (type.includes('number')) {
+                    if (/(^|[^a-z])num(ber)?([^a-z]|$)/i.test(type)) {
                         field = z.number();
+                    } else if (/[,\.]{3}/.test(type) || /,/.test(type)) {
+                        // treat comma- or ellipsis-marked multi-values as string for now
+                        field = z.string();
                     } else {
                         field = z.string();
                     }
@@ -77,8 +80,11 @@ export function cliToZodSchema(help) {
                     field = z.enum(choices);
                 } else if (type) {
                     // Parse type hints from CLI help
-                    if (type.includes('number')) {
+                    if (/(^|[^a-z])num(ber)?([^a-z]|$)/i.test(type)) {
                         field = z.number();
+                    } else if (/[,\.]{3}/.test(type) || /,/.test(type)) {
+                        // treat comma- or ellipsis-marked multi-values as string for now
+                        field = z.string();
                     } else {
                         field = z.string();
                     }

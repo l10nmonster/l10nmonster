@@ -1,4 +1,5 @@
 import { cliToZodSchema } from './schemaUtils.js';
+import { z } from 'zod';
 
 
 /**
@@ -58,10 +59,15 @@ export function convertToMcpTool(ActionClass, mm) {
             
             return result;
         } catch (error) {
+            let text = `Error executing ${toolName}: ${error.message}`;
+            if (error instanceof z.ZodError) {
+                const details = error.issues?.map(i => `${i.path.join('.')}: ${i.message}`).join('; ');
+                if (details) text += ` | ${details}`;
+            }
             return {
                 content: [{
                     type: 'text',
-                    text: `Error executing ${toolName}: ${error.message}`
+                    text
                 }],
                 isError: true
             };

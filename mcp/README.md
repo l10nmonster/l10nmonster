@@ -26,7 +26,7 @@ npx l10n mcp --stdio
 
 ## Development
 
-When developping the best way to test out the MCP server is by running it and using the inspecter.
+When developing, the best way to test the MCP server is by running it and using the inspector.
 
 ```
 npx @modelcontextprotocol/inspector
