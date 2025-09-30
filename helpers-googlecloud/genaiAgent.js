@@ -30,7 +30,7 @@ export class GenAIAgent extends providers.LLMTranslationProvider {
     #apiKey;
     #vertexProject;
     #vertexLocation;
-    #thinkingBudget;
+    thinkingBudget;
 
     /**
      * Initializes a new instance of the GenAIAgent class.
@@ -42,7 +42,7 @@ export class GenAIAgent extends providers.LLMTranslationProvider {
         this.#apiKey = apiKey;
         this.#vertexProject = vertexProject;
         this.#vertexLocation = vertexLocation;
-        this.#thinkingBudget = thinkingBudget;
+        this.thinkingBudget = thinkingBudget;
     }
 
     // we initialize on first use so that constructor is fast and doesn't fail if auth is missing
@@ -85,7 +85,7 @@ export class GenAIAgent extends providers.LLMTranslationProvider {
                 items: this.customSchema ?? TRANSLATOR_SCHEMA,
             },
         };
-        this.#thinkingBudget !== undefined && (config.thinkingConfig = { thinkingBudget: this.#thinkingBudget });
+        this.thinkingBudget !== undefined && (config.thinkingConfig = { thinkingBudget: this.thinkingBudget });
         return {
             model: this.model,
             contents: userPrompt,

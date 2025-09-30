@@ -1,5 +1,24 @@
 #!/usr/bin/env node
 
+// Global unhandled promise rejection handler
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('🚨 Unhandled Promise Rejection detected:');
+    console.error('Promise:', promise);
+    console.error('Reason:', reason);
+    if (reason instanceof Error && reason.stack) {
+        console.error('Stack trace:', reason.stack);
+    }
+    // In CLI context, we should exit on unhandled rejections to prevent silent failures
+    console.error('Exiting due to unhandled promise rejection...');
+    process.exit(1);
+});
+
+// Global uncaught exception handler (for completeness)
+process.on('uncaughtException', (error) => {
+    console.error('🚨 Uncaught Exception:', error);
+    process.exit(1);
+});
+
 import runMonsterCLI from './index.js';
 import { resolve, dirname, join } from 'path';
 import { existsSync } from 'fs';

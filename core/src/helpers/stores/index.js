@@ -3,3 +3,4 @@ export * from './baseJsonlTmStore.js';
 export * from './legacyFileBasedTmStore.js';
 export * from './fsStoreDelegate.js';
 export * from './fsOpsStore.js';
+export * from './baseFileBasedSnapStore.js';

@@ -1,7 +1,6 @@
-import { TU } from '../entities/tu.js';
 import { utils } from '../helpers/index.js';
 
-export async function analyzeCmd(mm, analyzer, params, limitToLang) {
+export async function analyzeCmd(mm, channelId, analyzer, params, limitToLang) {
     const Analyzer = mm.analyzers[utils.fixCaseInsensitiveKey(mm.analyzers, analyzer)];
     if (!Analyzer) {
         throw new Error(`couldn't find a ${analyzer} analyzer`);
@@ -19,13 +18,12 @@ export async function analyzeCmd(mm, analyzer, params, limitToLang) {
         let lastAnalysis;
         const hasAggregateAnalysis = typeof Analyzer.prototype.getAggregateAnalysis === 'function';
         let analyzer;
-        const desiredTargetLangs = new Set(await mm.getTargetLangs(limitToLang));
+        const desiredTargetLangs = new Set(await mm.rm.getDesiredTargetLangs(channelId, limitToLang));
         const availableLangPairs = (await mm.tmm.getAvailableLangPairs())
             .filter(pair => desiredTargetLangs.has(pair[1]));
         for (const [sourceLang, targetLang] of availableLangPairs) {
-                (!hasAggregateAnalysis || !analyzer) && (analyzer = new Analyzer(...params));
-            const tm = mm.tmm.getTM(sourceLang, targetLang);
-            for (const job of tm.getAllJobs()) {
+            (!hasAggregateAnalysis || !analyzer) && (analyzer = new Analyzer(...params));
+            for (const job of await mm.tmm.getAllJobs(sourceLang, targetLang)) {
                 for (const tu of job.tus) {
                     analyzer.processTU({ targetLang, tu });
                 }

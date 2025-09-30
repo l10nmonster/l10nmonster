@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Text, Box, Spinner, Alert, VStack, Flex, Badge, Grid } from '@chakra-ui/react';
+import { Container, Text, Box, Spinner, Alert, VStack, Flex, Badge, Grid, HStack } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchApi } from '../utils/api';
 
@@ -103,31 +103,84 @@ const Welcome = () => {
 
         {/* Configuration Sections */}
         {infoData && (
-          <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap={6}>
+          <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={6}>
             {/* Channels Section */}
-            <Box 
-              p={6} 
-              borderWidth="1px" 
-              borderRadius="lg" 
-              bg="white" 
+            <Box
+              p={6}
+              borderWidth="1px"
+              borderRadius="lg"
+              bg="white"
               shadow="sm"
               borderColor="border.default"
             >
               <Text fontSize="lg" fontWeight="bold" mb={4} color="fg.default">
                 Channels ({infoData.channels?.length || 0})
               </Text>
-              <VStack gap={2} align="stretch" maxH="300px" overflow="auto">
+              <VStack gap={3} align="stretch" maxH="500px" overflow="auto">
                 {infoData.channels?.map((channel, index) => (
-                  <Badge 
-                    key={index} 
-                    variant="subtle" 
-                    colorPalette="blue"
-                    fontSize="xs"
-                    p={2}
+                  <Box
+                    key={index}
+                    p={4}
+                    borderWidth="1px"
                     borderRadius="md"
+                    borderColor="border.subtle"
+                    bg="bg.subtle"
                   >
-                    {channel}
-                  </Badge>
+                    <Flex justify="space-between" align="center" mb={3}>
+                      <Text fontSize="sm" fontWeight="semibold" color="fg.default">
+                        {channel.id}
+                      </Text>
+                      <Badge variant="subtle" colorPalette="purple" fontSize="xs">
+                        {channel.translationPolicies} {channel.translationPolicies === 1 ? 'policy' : 'policies'}
+                      </Badge>
+                    </Flex>
+
+                    <HStack gap={4} mb={3} flexWrap="wrap">
+                      <Box>
+                        <Text fontSize="xs" color="fg.muted" mb={1}>Source</Text>
+                        <Badge variant="subtle" colorPalette="blue" fontSize="xs">
+                          {channel.source}
+                        </Badge>
+                      </Box>
+                      <Box>
+                        <Text fontSize="xs" color="fg.muted" mb={1}>Target</Text>
+                        <Badge variant="subtle" colorPalette="green" fontSize="xs">
+                          {channel.target}
+                        </Badge>
+                      </Box>
+                    </HStack>
+
+                    {channel.formatHandlers && channel.formatHandlers.length > 0 && (
+                      <Box>
+                        <Text fontSize="xs" color="fg.muted" mb={2}>Format Handlers</Text>
+                        <VStack gap={2} align="stretch">
+                          {channel.formatHandlers.map((handler, handlerIndex) => (
+                            <Box key={handlerIndex} p={2} bg="white" borderRadius="sm" borderWidth="1px">
+                              <Flex justify="space-between" align="center" mb={1}>
+                                <Text fontSize="xs" fontWeight="medium">
+                                  {handler.id}{handler.resourceFilter && ` (${handler.resourceFilter})`}
+                                </Text>
+                                {handler.defaultMessageFormat && (
+                                  <Badge variant="outline" colorPalette="orange" size="sm">
+                                    {handler.defaultMessageFormat}
+                                  </Badge>
+                                )}
+                              </Flex>
+                              {handler.messageFormats && handler.messageFormats.length > 0 && (
+                                <HStack gap={1} flexWrap="wrap">
+                                  {handler.messageFormats.map((format, formatIndex) => (
+                                    <Badge key={formatIndex} variant="subtle" colorPalette="gray" size="sm">
+                                      {format}
+                                    </Badge>
+                                  ))}
+                                </HStack>
+                              )}
+                            </Box>
+                          ))}
+                        </VStack>
+                      </Box>
+                    )}
+                  </Box>
                 ))}
                 {(!infoData.channels || infoData.channels.length === 0) && (
                   <Text fontSize="sm" color="fg.muted">No channels configured</Text>
@@ -136,20 +189,20 @@ const Welcome = () => {
             </Box>
 
             {/* TM Stores Section */}
-            <Box 
-              p={6} 
-              borderWidth="1px" 
-              borderRadius="lg" 
-              bg="white" 
+            <Box
+              p={6}
+              borderWidth="1px"
+              borderRadius="lg"
+              bg="white"
               shadow="sm"
               borderColor="border.default"
             >
               <Text fontSize="lg" fontWeight="bold" mb={4} color="fg.default">
                 TM Stores ({infoData.tmStores?.length || 0})
               </Text>
-              <VStack gap={3} align="stretch" maxH="300px" overflow="auto">
+              <VStack gap={3} align="stretch" overflow="auto">
                 {infoData.tmStores?.map((store, index) => (
-                  <Box 
+                  <Box
                     key={index}
                     p={3}
                     borderWidth="1px"
@@ -177,6 +230,82 @@ const Welcome = () => {
                 ))}
                 {(!infoData.tmStores || infoData.tmStores.length === 0) && (
                   <Text fontSize="sm" color="fg.muted">No TM stores configured</Text>
+                )}
+              </VStack>
+            </Box>
+
+            {/* Providers Section */}
+            <Box
+              p={6}
+              borderWidth="1px"
+              borderRadius="lg"
+              bg="white"
+              shadow="sm"
+              borderColor="border.default"
+            >
+              <Text fontSize="lg" fontWeight="bold" mb={4} color="fg.default">
+                Providers ({infoData.providers?.length || 0})
+              </Text>
+              <VStack gap={3} align="stretch" maxH="300px" overflow="auto">
+                {infoData.providers?.map((provider, index) => (
+                  <Box
+                    key={index}
+                    p={3}
+                    borderWidth="1px"
+                    borderRadius="md"
+                    borderColor="border.subtle"
+                    bg="bg.subtle"
+                  >
+                    <Flex justify="space-between" align="center">
+                      <Text fontSize="sm" fontWeight="semibold" color="fg.default">
+                        {provider.id}
+                      </Text>
+                      <Badge variant="subtle" colorPalette="green" fontSize="xs">
+                        {provider.type}
+                      </Badge>
+                    </Flex>
+                  </Box>
+                ))}
+                {(!infoData.providers || infoData.providers.length === 0) && (
+                  <Text fontSize="sm" color="fg.muted">No providers configured</Text>
+                )}
+              </VStack>
+            </Box>
+
+            {/* Snap Stores Section */}
+            <Box
+              p={6}
+              borderWidth="1px"
+              borderRadius="lg"
+              bg="white"
+              shadow="sm"
+              borderColor="border.default"
+            >
+              <Text fontSize="lg" fontWeight="bold" mb={4} color="fg.default">
+                Snap Stores ({infoData.snapStores?.length || 0})
+              </Text>
+              <VStack gap={3} align="stretch" maxH="300px" overflow="auto">
+                {infoData.snapStores?.map((snapStore, index) => (
+                  <Box
+                    key={index}
+                    p={3}
+                    borderWidth="1px"
+                    borderRadius="md"
+                    borderColor="border.subtle"
+                    bg="bg.subtle"
+                  >
+                    <Flex justify="space-between" align="center">
+                      <Text fontSize="sm" fontWeight="semibold" color="fg.default">
+                        {snapStore.id}
+                      </Text>
+                      <Badge variant="subtle" colorPalette="orange" fontSize="xs">
+                        {snapStore.type}
+                      </Badge>
+                    </Flex>
+                  </Box>
+                ))}
+                {(!infoData.snapStores || infoData.snapStores.length === 0) && (
+                  <Text fontSize="sm" color="fg.muted">No snap stores configured</Text>
                 )}
               </VStack>
             </Box>

@@ -84,7 +84,7 @@ test('InvisicodeProvider - init', async (t) => {
       ],
     };
 
-    const tus = generator.getTranslatedTus(jobRequest); // Renamed and not async
+    const tus = await generator.getTranslatedTus(jobRequest); // Renamed and not async
 
     assert.strictEqual(tus.length, 1);
     assert.strictEqual(tus[0].guid, '123');
@@ -118,7 +118,7 @@ test('InvisicodeProvider - getTranslatedTus', async (t) => { // Renamed test sui
       ],
     };
 
-    const tus = generator.getTranslatedTus(jobRequest); // Renamed and not async
+    const tus = await generator.getTranslatedTus(jobRequest); // Renamed and not async
 
     assert.strictEqual(tus.length, 1);
 
@@ -160,7 +160,7 @@ test('InvisicodeProvider - getTranslatedTus', async (t) => { // Renamed test sui
       ],
     };
 
-    const tus = generator.getTranslatedTus(jobRequest); // Renamed and not async
+    const tus = await generator.getTranslatedTus(jobRequest); // Renamed and not async
 
     assert.strictEqual(tus.length, 1);
     const translatedTu = tus[0];
@@ -191,7 +191,7 @@ test('InvisicodeProvider - getTranslatedTus', async (t) => { // Renamed test sui
       ],
     };
 
-    const tus = generator.getTranslatedTus(jobRequest); // Renamed and not async
+    const tus = await generator.getTranslatedTus(jobRequest); // Renamed and not async
 
     assert.strictEqual(tus.length, 0); // No translation added
   });
@@ -222,7 +222,7 @@ test('InvisicodeProvider - getTranslatedTus', async (t) => { // Renamed test sui
       ],
     };
 
-    const tus = generator.getTranslatedTus(jobRequest); // Renamed and not async
+    const tus = await generator.getTranslatedTus(jobRequest); // Renamed and not async
 
     assert.strictEqual(tus.length, 3);
 
@@ -269,7 +269,7 @@ test('InvisicodeProvider - getTranslatedTus', async (t) => { // Renamed test sui
       sourceLang: 'en',
       tus: [ { guid: '777', nsrc: ['Hallo'] } ],
     };
-    const tus = generator.getTranslatedTus(jobRequest); // Renamed and not async
+    const tus = await generator.getTranslatedTus(jobRequest); // Renamed and not async
     assert.strictEqual(tus.length, 1);
     const translatedTu = tus[0];
     assert.strictEqual(translatedTu.q, jobQuality);
@@ -364,7 +364,7 @@ test('InvisicodeProvider - getTranslatedTus metadata encoding', async (t) => { /
       ],
     };
 
-    const tus = generator.getTranslatedTus(jobRequest); // Renamed and not async
+    const tus = await generator.getTranslatedTus(jobRequest); // Renamed and not async
 
     assert.equal(tus.length, 1);
     const translatedTu = tus[0];
@@ -400,7 +400,7 @@ test('InvisicodeProvider - getTranslatedTus metadata encoding', async (t) => { /
         sourceLang: 'en',
         tus: [ { guid: '666', nsrc: ['Test UTF-8 Omit'] } ],
     };
-    const tus = generator.getTranslatedTus(jobRequest); // Renamed and not async
+    const tus = await generator.getTranslatedTus(jobRequest); // Renamed and not async
     assert.equal(tus.length, 1);
     const translatedTu = tus[0];
     const invisicodePart = translatedTu.ntgt[0].match(invisicodePrologueRegex)[1];

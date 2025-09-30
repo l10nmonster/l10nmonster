@@ -110,7 +110,6 @@ export class TU {
         if (isTarget && (!entry.guid || !Number.isInteger(entry.q) || (!Array.isArray(entry.ntgt) && !entry.inflight) || !Number.isInteger(entry.ts))) {
             throw new Error(`Target TU must have guid, ntgt/inflight, q, ts: ${JSON.stringify(entry)}`);
         }
-        // eslint-disable-next-line no-nested-ternary
         const whitelist = isSource ? (isTarget ? pairTUWhitelist : sourceTUWhitelist) : targetTUWhitelist;
         for (const [k, v] of Object.entries(entry)) {
             if (whitelist.has(k)) {

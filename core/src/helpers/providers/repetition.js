@@ -7,6 +7,7 @@ import { BaseTranslationProvider } from './baseTranslationProvider.js';
  * The assigned quality of the reused string is equal to the original one minus the corresponding penalty.
  */
 export class Repetition extends BaseTranslationProvider {
+
     /**
      * Initializes a new instance of the Repetition class.
      * @param {Object} options - The parameters for the constructor.
@@ -29,7 +30,7 @@ export class Repetition extends BaseTranslationProvider {
 
     #calculateAdjustedQuality(tu, candidate) {
         const idPenalty = tu.sid === candidate.sid ? this.qualifiedPenalty : this.unqualifiedPenalty;
-        const notesPenalty =  tu.notes?.desc && tu.notes.desc !== candidate.notes?.desc ? this.notesMismatchPenalty : 0;
+        const notesPenalty = tu.notes?.desc && tu.notes.desc !== candidate.notes?.desc ? this.notesMismatchPenalty : 0;
         return Math.max(0, candidate.q - idPenalty - notesPenalty);
     }
 
@@ -49,7 +50,7 @@ export class Repetition extends BaseTranslationProvider {
         const matchedTus = [];
         const tm = this.mm.tmm.getTM(job.sourceLang, job.targetLang);
         for (const sourceTu of job.tus) {
-            const tuCandidates = tm.getExactMatches(sourceTu.nsrc);
+            const tuCandidates = await tm.getExactMatches(sourceTu.nsrc);
             if (tuCandidates.length > 0) {
                 const bestCandidate = this.#pickBestCandidate(sourceTu, tuCandidates);
                 if (sourceTu.minQ <= bestCandidate.q) {
@@ -65,6 +66,7 @@ export class Repetition extends BaseTranslationProvider {
         }
         return matchedTus;
     }
+    
     async info() {
         const info = await super.info();
         info.description.push(styleString`Quality penalties: qualified: ${this.qualifiedPenalty ?? 0}, unqualified: ${this.unqualifiedPenalty ?? 0}, notes mismatch: ${this.notesMismatchPenalty ?? 0}`);

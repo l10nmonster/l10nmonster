@@ -1,3 +1,4 @@
+/* eslint-disable no-bitwise */
 import { getRegressionMode } from '../../l10nContext.js';
 import { BaseTranslationProvider } from './baseTranslationProvider.js';
 
@@ -55,16 +56,20 @@ export class InvisicodeProvider extends BaseTranslationProvider {
         this.#includeQ = Boolean(includeQ);
     }
 
-    getTranslatedTus(job) {
+    async getTranslatedTus(job) {
         let tm;
         if (this.#baseLang) {
             tm = this.mm.tmm.getTM(job.sourceLang, this.#baseLang);
         }
         const ts = getRegressionMode() ? 1 : new Date().getTime();
+        let translations = {};
+        if (this.#baseLang) {
+            translations = await tm.getEntries(job.tus.map(tu => tu.guid));
+        }
         return job.tus.map(requestTU => {
             let baseTranslation, q;
             if (this.#baseLang) {
-                const tu = tm.getEntryByGuid(requestTU.guid);
+                const tu = translations[requestTU.guid];
                 baseTranslation = tu?.ntgt || (this.#fallback && requestTU?.nsrc);
                 // eslint-disable-next-line no-nested-ternary
                 q = tu?.q ?? 0;

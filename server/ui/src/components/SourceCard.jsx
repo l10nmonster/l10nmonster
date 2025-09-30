@@ -1,7 +1,8 @@
 import React from 'react';
-import { Box, Text, Badge, Flex, Grid, Tooltip } from '@chakra-ui/react';
+import { Box, Text, Badge, Flex, Grid, Tooltip, Link } from '@chakra-ui/react';
+import { Link as RouterLink } from 'react-router-dom';
 
-const SourceCard = ({ item }) => {
+const SourceCard = ({ item, channelId }) => {
   const formatRelativeDate = (dateString) => {
     const now = new Date();
     const date = new Date(dateString);
@@ -52,9 +53,16 @@ const SourceCard = ({ item }) => {
         {/* Project */}
         <Box>
           <Text fontSize="xs" color="fg.muted" mb={1}>Project</Text>
-          <Text fontSize="sm" fontWeight="semibold">
-            {item.prj || 'Default'}
-          </Text>
+          <Link
+            as={RouterLink}
+            to={`/sources/${channelId}/${item.prj ?? 'default'}`}
+            fontSize="sm"
+            fontWeight="semibold"
+            color="blue.600"
+            _hover={{ textDecoration: "underline" }}
+          >
+            {item.prj ?? 'default'}
+          </Link>
         </Box>
 
         {/* Source */}

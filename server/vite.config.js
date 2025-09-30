@@ -17,8 +17,21 @@ export default defineConfig({
     }
   },
 
-  // Optional: Configure the build output directory if needed (defaults to 'dist')
-  // build: {
-  //   outDir: 'build' // Match CRA's default build folder name
-  // }
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: (id) => {
+          // All node_modules in one vendor bundle
+          if (id.includes('node_modules')) {
+            return 'vendor';
+          }
+          // Bundle utility files with index instead of creating tiny chunks
+          if (id.includes('/utils/') || id.includes('/src/components/')) {
+            return 'index';
+          }
+          // Pages remain separate for lazy loading
+        }
+      }
+    }
+  }
 });

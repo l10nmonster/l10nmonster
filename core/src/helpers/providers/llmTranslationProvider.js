@@ -1,8 +1,11 @@
 import { logInfo, logWarn, styleString } from '../../l10nContext.js';
 import { ChunkedRemoteTranslationProvider } from './chunkedRemoteTranslationProvider.js';
+import * as utils from '../utils.js';
 
 function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
+    return new Promise((resolve) => {
+        setTimeout(resolve, ms)
+    });
 }
 
 const DEFAULT_PERSONA = 
@@ -32,13 +35,13 @@ const DEFAULT_PERSONA =
  * @extends ChunkedRemoteTranslationProvider
  */
 export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
-    #model;
-    #temperature;
-    #systemPrompt;
-    #customSchema;
-    #maxRetries;
-    #sleepBasePeriod;
-    #targetLangInstructions = {};
+    model;
+    temperature;
+    systemPrompt;
+    customSchema;
+    maxRetries;
+    sleepBasePeriod;
+    targetLangInstructions = {};
 
     /**
      * Initializes a new instance of the LLMTranslationProvider class.
@@ -49,13 +52,13 @@ export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
         if (!options.quality || !model) {
             throw new Error(`You must specify quality and model for ${this.constructor.name}`);
         }
-        this.#model = model;
-        this.#temperature = temperature ?? 0.1;
-        this.#customSchema = customSchema;
-        this.#maxRetries = maxRetries ?? 2;
-        this.#sleepBasePeriod = sleepBasePeriod ?? 3000;
-        this.#targetLangInstructions = targetLangInstructions ?? {};
-        this.#systemPrompt = `${persona ?? DEFAULT_PERSONA}\n${this.defaultInstructions ?? ''}\n`;   
+        this.model = model;
+        this.temperature = temperature ?? 0.1;
+        this.customSchema = customSchema;
+        this.maxRetries = maxRetries ?? 2;
+        this.sleepBasePeriod = sleepBasePeriod ?? 3000;
+        this.targetLangInstructions = targetLangInstructions ?? {};
+        this.systemPrompt = `${persona ?? DEFAULT_PERSONA}\n${this.defaultInstructions ?? ''}\n`;   
         logInfo`LLMTranslationProvider ${this.id} initialized with model: ${model}`;
     }
 
@@ -72,7 +75,7 @@ export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
         let userPrompt = [];
         
         // Add target language specific instructions if available
-        this.#targetLangInstructions[targetLang] && userPrompt.push(this.#targetLangInstructions[targetLang]);
+        this.targetLangInstructions[targetLang] && userPrompt.push(this.targetLangInstructions[targetLang]);
         
         // Add job instructions if available
         instructions && userPrompt.push(`Consider also the following instructions: ${instructions}`);
@@ -80,7 +83,7 @@ export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
         userPrompt.push(`Source language: ${sourceLang}`);
         userPrompt.push(`Target language: ${targetLang}`);
         userPrompt.push(`Number of segments: ${xmlTus.length}`);
-        userPrompt.push(`Segments: ${JSON.stringify(xmlTus)}`);
+        userPrompt.push(`Segments: ${JSON.stringify(Object.fromEntries(xmlTus.map((xmlTU, idx) => [`tu${idx}`, xmlTU])))}`);
         
         return userPrompt.join('\n');
     }
@@ -102,6 +105,7 @@ export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
      * @param {object} args - The provider-specific arguments for the LLM call
      * @returns {Promise<*>} The raw response from the LLM
      */
+    // eslint-disable-next-line no-unused-vars
     async generateContent(args) {
         throw new Error(`generateContent not implemented in ${this.constructor.name}`);
     }
@@ -122,10 +126,10 @@ export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
             return await this.generateContent(args);
         } catch (e) {
             let lastError = e;
-            for (let retry = 1; retry <= this.#maxRetries && this.shouldRetry(lastError); retry++) {
+            for (let retry = 1; retry <= this.maxRetries && this.shouldRetry(lastError); retry++) {
                 logWarn`Unexpected generateContent error (status=${e.status}): ${e.message}`;
-                const sleepTime = this.#sleepBasePeriod * retry * retry;
-                logInfo`Sleeping ${sleepTime}ms before retrying (attempt ${retry}/${this.#maxRetries})...`;
+                const sleepTime = this.sleepBasePeriod * retry * retry;
+                logInfo`Sleeping ${sleepTime}ms before retrying (attempt ${retry}/${this.maxRetries})...`;
                 await sleep(sleepTime);
                 try {
                     return await this.generateContent(args);
@@ -133,65 +137,37 @@ export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
                     lastError = e;
                 }
             }
-            logWarn`Exceeded retries (max=${this.#maxRetries}, shouldRetry=${this.shouldRetry(lastError)}) for unexpected generateContent error (status=${e.status}): ${e.message}`;
+            logWarn`Exceeded retries (max=${this.maxRetries}, shouldRetry=${this.shouldRetry(lastError)}) for unexpected generateContent error (status=${e.status}): ${e.message}`;
             throw lastError; // Re-throw after final attempt
         }
     }
 
-    /**
-     * Gets the model being used by this provider.
-     * @returns {string} The model name
-     */
-    get model() {
-        return this.#model;
-    }
-
-    /**
-     * Gets the temperature being used by this provider.
-     * @returns {number} The temperature value
-     */
-    get temperature() {
-        return this.#temperature;
-    }
-
-    /**
-     * Gets the system prompt being used by this provider.
-     * @returns {string} The system prompt
-     */
-    get systemPrompt() {
-        return this.#systemPrompt;
-    }
-
-    /**
-     * Gets the custom schema being used by this provider.
-     * @returns {*} The custom schema or undefined
-     */
-    get customSchema() {
-        return this.#customSchema;
-    }
-
-    /**
-     * Gets the maximum number of retries.
-     * @returns {number} The max retries value
-     */
-    get maxRetries() {
-        return this.#maxRetries;
-    }
-
-    /**
-     * Gets the base sleep period for retry backoff.
-     * @returns {number} The sleep base period in milliseconds
-     */
-    get sleepBasePeriod() {
-        return this.#sleepBasePeriod;
-    }
-
-    /**
-     * Gets the target language instructions being used by this provider.
-     * @returns {object|undefined} The target language instructions object or undefined
-     */
-    get targetLangInstructions() {
-        return this.#targetLangInstructions;
+    async startTranslateChunkOp(op) {
+        const { tuMeta, ...args } = op.args;
+        const raw = await this.startTranslateChunk(args);
+        const convertedResponse = this.convertTranslationResponse(raw);
+        // if (tuMeta.length !== flattenedRes.length) {
+        //     logError`Expected chunk to have ${tuMeta.length} translations but got ${flattenedRes.length}`;
+        //     return { raw, res: [] }; // discard the chunk because we can't pair up the translations with the guids
+        // }
+        const res = [];
+        convertedResponse.forEach((convertedTu, idx) => {
+            const { tuIdx, tgt, ...tu } = convertedTu;
+            const meta = tuMeta[idx];
+            if (meta) {
+                tuIdx !== idx && logWarn`Warning guid ${meta.guid} has tuIdx ${tuIdx} but expected ${idx}`;
+                tu.guid = meta.guid;
+                try {
+                    tu.ntgt = utils.extractNormalizedPartsFromXmlV1(tgt, meta.phMap || {});
+                    res.push(tu);
+                } catch (e) {
+                    logWarn`Error extracting normalized parts for tu ${meta.guid}: ${e}`;
+                }
+            } else {
+                logWarn`Warning response at index ${idx} has a tuIdx ${tuIdx} that doesn't exist in tuMeta`;
+            }
+        });
+        return { raw, res }; // return raw just for debugging
     }
 
     /**
@@ -202,7 +178,7 @@ export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
      * @returns {string} The target translation text
      */
     extractTargetText(translationObj) {
-        return this.#customSchema ? JSON.stringify(translationObj) : translationObj.translation;
+        return this.customSchema ? JSON.stringify(translationObj) : translationObj.translation;
     }
 
     /**
@@ -212,14 +188,15 @@ export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
      * @returns {Array} Array of processed translation units
      */
     processTranslations(translations, cost) {
-        return translations.map(obj => {
+        return Object.entries(translations).map(([tuIdx, obj]) => {
             const baseTu = {
+                tuIdx: Number(tuIdx.replace('tu', '')),
                 tgt: this.extractTargetText(obj),
                 cost,
             };
             
             // Add confidence and notes if available (for default schema)
-            if (!this.#customSchema) {
+            if (!this.customSchema) {
                 if (obj.confidence !== undefined) {
                     baseTu.tconf = obj.confidence;
                 }
@@ -238,7 +215,7 @@ export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
 
     async info() {
         const info = await super.info();
-        info.description.push(styleString`Max retries: ${this.#maxRetries}, sleep base period: ${this.#sleepBasePeriod}ms`);
+        info.description.push(styleString`Max retries: ${this.maxRetries}, sleep base period: ${this.sleepBasePeriod}ms`);
         return info;
     }
 } 

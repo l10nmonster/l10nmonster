@@ -1,10 +1,10 @@
-import { logVerbose } from '../../l10nContext.js';
 import { BaseTranslationProvider } from './baseTranslationProvider.js';
 
 /**
  * This provider prevents sending idendical sources for translation and holds them back for internal leverage later.
  */
 export class InternalLeverageHoldout extends BaseTranslationProvider {
+
     /**
      * Initializes a new instance of the Repetition class.
      * @param {Object} [options] - The parameters for the constructor.
@@ -44,7 +44,7 @@ export class InternalLeverageHoldout extends BaseTranslationProvider {
         return holdout;
     }
 
-    getTranslatedTus() {
+    async getTranslatedTus() {
         return []; // release held tus
     }
 }

@@ -1,20 +1,22 @@
 import React, { useState, useCallback, useRef, useMemo, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { 
-  Container, 
-  Text, 
-  Box, 
-  Spinner, 
-  Alert, 
-  VStack, 
-  Input, 
-  Badge, 
+import {
+  Container,
+  Text,
+  Box,
+  Spinner,
+  Alert,
+  VStack,
+  Input,
+  Badge,
   Button,
   Flex,
   HStack,
   Checkbox,
-  Tooltip
+  Tooltip,
+  Link
 } from '@chakra-ui/react';
+import { Link as RouterLink } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { fetchApi } from '../utils/api';
 
@@ -36,7 +38,7 @@ function formatTimestamp(timestamp) {
 }
 
 const StatusDetail = () => {
-  const { sourceLang, targetLang } = useParams();
+  const { channelId, sourceLang, targetLang } = useParams();
   const navigate = useNavigate();
   
   const [selectedRows, setSelectedRows] = useState(new Set());
@@ -47,8 +49,7 @@ const StatusDetail = () => {
     rid: '',
     sid: '',
     nsrc: '',
-    group: '',
-    mf: ''
+    group: ''
   });
   
   // Separate state for input values to prevent focus loss
@@ -59,8 +60,7 @@ const StatusDetail = () => {
     rid: '',
     sid: '',
     nsrc: '',
-    group: '',
-    mf: ''
+    group: ''
   });
 
   const timeoutRef = useRef();
@@ -73,8 +73,8 @@ const StatusDetail = () => {
     isError,
     error,
   } = useQuery({
-    queryKey: ['statusDetail', sourceLang, targetLang],
-    queryFn: () => fetchApi(`/api/status/${sourceLang}/${targetLang}`),
+    queryKey: ['statusDetail', channelId, sourceLang, targetLang],
+    queryFn: () => fetchApi(`/api/status/${channelId}/${sourceLang}/${targetLang}`),
   });
 
   // Apply client-side filtering
@@ -221,18 +221,40 @@ const StatusDetail = () => {
 
   return (
     <Box py={6} px={6}>
-      <VStack gap={6} align="stretch">
-        {/* Header with Add to Cart Button */}
-        <Box>
-          <Flex align="center" justify="space-between" mb={2}>
-            <Flex align="center" gap={3}>
-              <Text fontSize="2xl" fontWeight="bold">
-                Untranslated Content: {sourceLang} → {targetLang}
+      {/* Channel Card Container */}
+      <Box
+        p={6}
+        borderWidth="2px"
+        borderRadius="lg"
+        bg="white"
+        borderColor="green.200"
+      >
+        {/* Channel Header with Language Pair and TU Count */}
+        <Box display="flex" alignItems="center" gap={6} flexWrap="wrap" mb={6} pb={4} borderBottom="2px" borderColor="green.100">
+          <Box>
+            <Text fontSize="sm" color="fg.muted" mb={1}>Channel</Text>
+            <Text fontSize="lg" fontWeight="bold" color="green.600">
+              {channelId}
+            </Text>
+          </Box>
+          <Box>
+            <Text fontSize="sm" color="fg.muted" mb={1}>Language Pair</Text>
+            <Flex align="center" gap={2}>
+              <Text fontSize="lg" fontWeight="semibold" color="blue.600">
+                {sourceLang} → {targetLang}
               </Text>
               {isLoading && (
                 <Spinner size="sm" />
               )}
             </Flex>
+          </Box>
+          <Box>
+            <Text fontSize="sm" color="fg.muted" mb={1}>Translation Units</Text>
+            <Text fontSize="lg" fontWeight="medium">
+              {filteredData.length} of {data.length} shown
+            </Text>
+          </Box>
+          <Box ml="auto">
             {selectedRows.size > 0 && (
               <Button
                 colorPalette="blue"
@@ -241,14 +263,11 @@ const StatusDetail = () => {
                 Add to Cart ({selectedRows.size} {selectedRows.size === 1 ? 'TU' : 'TUs'})
               </Button>
             )}
-          </Flex>
-          <Text color="fg.muted">
-            Translation units requiring translation ({filteredData.length} of {data.length} shown)
-          </Text>
+          </Box>
         </Box>
 
-        {/* Table Container */}
-        <Box bg="white" borderRadius="lg" shadow="sm" overflow="auto" maxH="70vh">
+          {/* Table Container */}
+          <Box bg="white" borderRadius="lg" shadow="sm" overflow="auto" h="calc(100vh - 250px)">
           <Box as="table" w="100%" fontSize="sm">
             <Box 
               as="thead" 
@@ -385,22 +404,6 @@ const StatusDetail = () => {
                     />
                   </VStack>
                 </Box>
-                <Box as="th" p={3} borderBottom="1px" borderColor="border.default" minW="120px" textAlign="left">
-                  <VStack gap={2} align="stretch">
-                    <Text fontSize="sm" fontWeight="bold" color="orange.600">MF</Text>
-                    <Input
-                      size="xs"
-                      placeholder="Filter mf..."
-                      value={inputValues.mf}
-                      onChange={(e) => handleFilterChange('mf', e.target.value)}
-                      onFocus={() => handleInputFocus('mf')}
-                      onBlur={handleInputBlur}
-                      ref={(el) => { if (el) inputRefs.current.mf = el; }}
-                      bg="yellow.subtle"
-                      key="mf-input"
-                    />
-                  </VStack>
-                </Box>
               </Box>
             </Box>
             <Box as="tbody">
@@ -440,7 +443,18 @@ const StatusDetail = () => {
                     <Text fontSize="xs">{item.prj}</Text>
                   </Box>
                   <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
-                    <Text fontSize="xs" wordBreak="break-all" whiteSpace="normal">{item.rid}</Text>
+                    <Link
+                      as={RouterLink}
+                      to={`/sources/${item.channel}?rid=${encodeURIComponent(item.rid)}`}
+                      fontSize="xs"
+                      fontFamily="mono"
+                      color="blue.600"
+                      wordBreak="break-all"
+                      whiteSpace="normal"
+                      _hover={{ textDecoration: "underline" }}
+                    >
+                      {item.rid}
+                    </Link>
                   </Box>
                   <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
                     <Text fontSize="xs" wordBreak="break-all" whiteSpace="normal">{item.sid}</Text>
@@ -492,9 +506,6 @@ const StatusDetail = () => {
                   <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
                     <Text fontSize="xs">{item.group}</Text>
                   </Box>
-                  <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
-                    <Text fontSize="xs">{item.mf}</Text>
-                  </Box>
                 </Box>
               ))}
             </Box>
@@ -508,7 +519,7 @@ const StatusDetail = () => {
             </Flex>
           )}
         </Box>
-      </VStack>
+      </Box>
     </Box>
   );
 };

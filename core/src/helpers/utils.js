@@ -329,8 +329,8 @@ export function *getIteratorFromJobPair(jobRequest, jobResponse = {}) {
             for (const tu of tus) {
                 const { jobGuid, translationProvider, ...tuProps } = tu;
                 const overriddenJobProps = { ...jobProps };
-                overriddenJobProps.jobGuid ??= jobGuid;
-                overriddenJobProps.translationProvider ??= translationProvider;
+                jobGuid && (overriddenJobProps.jobGuid = jobGuid);
+                translationProvider && (overriddenJobProps.translationProvider = translationProvider);
                 try {
                     const properTU = TU.fromRequestResponse(requestedUnits[tu.guid], tuProps);
                     splitJobs[overriddenJobProps.jobGuid] ??= { jobProps: overriddenJobProps, tus: [] };
@@ -422,9 +422,7 @@ export function balancedSplitWithObjects(items, n, weightProperty) {
   
       // More robust validation: ensure the weight is a number.
       if (typeof weight !== 'number' || isNaN(weight)) {
-        throw new Error(
-          `Item ${JSON.stringify(item)} has a non-numeric or missing '${weightProperty}' property.`
-        );
+        throw new Error(`Item ${JSON.stringify(item)} has a non-numeric or missing '${weightProperty}' property.`);
       }
   
       // Find the index of the chunk with the smallest current sum.

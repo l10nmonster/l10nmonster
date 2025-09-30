@@ -14,6 +14,7 @@ vi.mock('react-router-dom', () => ({
   BrowserRouter: ({ children }) => <div data-testid="router">{children}</div>,
   Routes: ({ children }) => <div data-testid="routes">{children}</div>,
   Route: ({ element }) => <div data-testid="route">{element}</div>,
+  Link: ({ children, to, ...props }) => <a href={to} data-testid="link" {...props}>{children}</a>,
   useNavigate: () => vi.fn(),
   useLocation: () => ({ pathname: '/' }),
   useParams: () => ({ jobGuid: 'test-job-guid' }),

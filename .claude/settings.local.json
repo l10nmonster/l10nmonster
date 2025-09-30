@@ -30,7 +30,8 @@
       "mcp__context7__get-library-docs",
       "Bash(npm run dev:*)",
       "WebFetch(domain:v3.chakra-ui.com)",
-      "WebFetch(domain:chakra-ui.com)"
+      "WebFetch(domain:chakra-ui.com)",
+      "Bash(npm run test:*)"
     ],
     "deny": []
   }

@@ -5,10 +5,7 @@ export const L10nContext = {
 };
 
 export const utils = {
-  normalizedStringsAreEqual: (original, updated) => {
-    // Simple mock implementation
-    return original === updated;
-  },
+    normalizedStringsAreEqual: (original, updated) => original === updated,
 };
 
 export class TranslationMemory {
@@ -16,21 +13,26 @@ export class TranslationMemory {
     this.entries = new Map();
   }
 
-  getEntryByGuid(guid) {
-    return this.entries.get(guid);
-  }
-
   setEntry(guid, entry) {
     this.entries.set(guid, entry);
+  }
+
+  async getEntries(guids) {
+    const result = {};
+    for (const guid of guids) {
+      const entry = this.entries.get(guid);
+      if (entry) {
+        result[guid] = entry;
+      }
+    }
+    return result;
   }
 }
 
 export class MonsterManager {
   constructor() {
     this.tmm = {
-      getTM: (sourceLang, baseLang) => {
-        return this.translationMemory;
-      },
+      getTM: () => this.translationMemory,
     };
     this.translationMemory = new TranslationMemory();
   }

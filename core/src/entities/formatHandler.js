@@ -30,21 +30,33 @@ function processNotes(normalizedSeg) {
 export class FormatHandler {
     #id;
     #resourceFilter;
+    #resourceGenerator;
     #normalizers;
     #defaultMessageFormat;
     #segmentDecorators;
     #formatHandlers;
 
-    constructor({ id, resourceFilter, normalizers, defaultMessageFormat, segmentDecorators, formatHandlers }) {
+    constructor({ id, resourceFilter, resourceGenerator, normalizers, defaultMessageFormat, segmentDecorators, formatHandlers }) {
         if (!resourceFilter) {
             throw new Error(`Missing resource filter for format ${this.#id}`);
         }
         this.#id = id;
         this.#resourceFilter = resourceFilter;
+        this.#resourceGenerator = resourceGenerator ?? resourceFilter;
         this.#normalizers = normalizers;
         this.#defaultMessageFormat = defaultMessageFormat;
         this.#segmentDecorators = segmentDecorators;
         this.#formatHandlers = formatHandlers; // this is needed to process sub-resources
+    }
+
+    getInfo() {
+        return {
+            id: this.#id,
+            resourceFilter: this.#resourceFilter.constructor.name,
+            resourceGenerator: this.#resourceGenerator.constructor.name,
+            messageFormats: Object.keys(this.#normalizers),
+            defaultMessageFormat: this.#defaultMessageFormat,
+        };
     }
 
     #populateGuid(rid, str, mf, base, flags = {}) {
@@ -142,9 +154,10 @@ export class FormatHandler {
 
     async generateTranslatedResource(resHandle, tm) {
         const flags = { sourceLang: resHandle.sourceLang, targetLang: tm.targetLang, prj: resHandle.prj };
+        const translations = await tm.getEntries(resHandle.segments.map(seg => seg.guid));
 
         // give priority to generators over translators (for performance), if available
-        if (this.#resourceFilter.generateResource) {
+        if (this.#resourceGenerator.generateResource) {
             const guidsToSkip = [];
             let subresources;
             if (resHandle.subresources) {
@@ -161,7 +174,7 @@ export class FormatHandler {
                     const translatedSubres = await subFormat.generateTranslatedResource({
                         ...resHandle,
                         ...subresHandle,
-                        segment: subresSegments,
+                        segments: subresSegments,
                     }, tm);
                     translatedSubres !== undefined && subresources.push({
                         ...subresHandle,
@@ -171,7 +184,7 @@ export class FormatHandler {
                 }
             }
             const translator = async (seg) => {
-                const entry = tm.getEntryByGuid(seg.guid);
+                const entry = translations[seg.guid];
                 try {
                     const nstr = this.#translateWithTMEntry(seg.nstr, entry);
                     if (nstr !== undefined) {
@@ -183,7 +196,7 @@ export class FormatHandler {
                     logVerbose`Problem translating guid ${seg.guid} to ${tm.targetLang}: ${e.message ?? e}`;
                 }
             };
-            return this.#resourceFilter.generateResource({ ...resHandle, translator, subresources });
+            return this.#resourceGenerator.generateResource({ ...resHandle, translator, subresources });
         }
 
         // if generator is not available, use translator-based resource transformation
@@ -197,7 +210,7 @@ export class FormatHandler {
                     logVerbose`Normalized source outdated: ${normalizedSource.gstr}\n${segToTranslate.gstr}`;
                     return undefined;
                 }
-                const entry = tm.getEntryByGuid(segToTranslate.guid);
+                const entry = translations[segToTranslate.guid];
                 if (!entry) {
                     // L10nContext.logger.verbose(`${tm.targetLang} translation not found for ${resHandle.id}, ${sid}, ${str}`);
                     return undefined;

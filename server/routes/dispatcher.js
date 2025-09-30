@@ -28,14 +28,24 @@ export function setupDispatcherRoutes(router, mm) {
                 });
             }
             
-            logVerbose`Creating jobs for ${tus.length} TUs with providers: ${providerList.join(', ')}`;
-            
+            logVerbose`Fetching content of ${tus.length} TUs`;
+            const tm = mm.tmm.getTM(sourceLang, targetLang);
+            const guidsByChannel = {};
+            for (const tu of tus) {
+                const channel = tu.channel ?? '';
+                guidsByChannel[channel] ??= new Set();
+                guidsByChannel[channel].add(tu.guid);
+            }
+            const expandedTus = [];
+            for (const [ channel, tus ] of Object.entries(guidsByChannel)) {
+                const tusForChannel = await tm.queryByGuids(Array.from(tus), channel.length > 0 ? channel : undefined);
+                expandedTus.push(tusForChannel);
+            }
             // Call the MonsterManager dispatcher
-            const result = await mm.dispatcher.createJobs({ sourceLang, targetLang, tus }, { providerList, skipQualityCheck: true, skipGroupCheck: true });
+            const jobs = await mm.dispatcher.createJobs({ sourceLang, targetLang, tus: expandedTus.flat(1) }, { providerList, skipQualityCheck: true, skipGroupCheck: true });
             
-            logVerbose`Created ${result?.length || 0} jobs successfully`;
-            res.json(result);
-            
+            logVerbose`Created ${jobs?.length || 0} jobs successfully`;
+            res.json(jobs);
         } catch (error) {
             logInfo`Error creating jobs: ${error.message}`;
             res.status(500).json({
@@ -63,7 +73,7 @@ export function setupDispatcherRoutes(router, mm) {
             // Call the MonsterManager dispatcher
             const result = await mm.dispatcher.startJobs(jobs, { instructions });
             
-            logVerbose`Started jobs, returned ${result?.length || 0} job statuses`;
+            logVerbose`Started ${result?.length || 0} jobs`;
             res.json(result);
             
         } catch (error) {

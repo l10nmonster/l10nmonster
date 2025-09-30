@@ -1,5 +1,5 @@
 import React, { useState, lazy, Suspense, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation, Link } from 'react-router-dom';
 import { Box, Container, Heading, Spinner, Flex, Text } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
@@ -8,6 +8,8 @@ const Welcome = lazy(() => import('./pages/Welcome.jsx'));
 const Status = lazy(() => import('./pages/Status.jsx'));
 const StatusDetail = lazy(() => import('./pages/StatusDetail.jsx'));
 const Sources = lazy(() => import('./pages/Sources.jsx'));
+const SourcesDetail = lazy(() => import('./pages/SourcesDetail.jsx'));
+const SourcesResource = lazy(() => import('./pages/SourcesResource.jsx'));
 const TM = lazy(() => import('./pages/TM.jsx'));
 const TMDetail = lazy(() => import('./pages/TMDetail.jsx'));
 const Providers = lazy(() => import('./pages/Providers.jsx'));
@@ -82,81 +84,95 @@ function MainLayout({ children }) {
             </Flex>
             
             {/* Navigation Links */}
-            <Flex align="center" gap={4}>
-              <Box 
-                cursor="pointer" 
-                px={3} 
-                py={1} 
-                borderRadius="md"
-                bg={isActiveRoute('/') ? "blue.subtle" : "transparent"}
-                _hover={{ bg: isActiveRoute('/') ? "blue.subtle" : "gray.subtle" }}
-                onClick={() => navigate('/')}
-              >
-                <Text fontSize="md" fontWeight="medium">Home</Text>
-              </Box>
-              <Box 
-                cursor="pointer" 
-                px={3} 
-                py={1} 
-                borderRadius="md"
-                bg={isActiveRoute('/status') ? "blue.subtle" : "transparent"}
-                _hover={{ bg: isActiveRoute('/status') ? "blue.subtle" : "gray.subtle" }}
-                onClick={() => navigate('/status')}
-              >
-                <Text fontSize="md" fontWeight="medium">Status</Text>
-              </Box>
-              <Box 
-                cursor="pointer" 
-                px={3} 
-                py={1} 
-                borderRadius="md"
-                bg={isActiveRoute('/sources') ? "blue.subtle" : "transparent"}
-                _hover={{ bg: isActiveRoute('/sources') ? "blue.subtle" : "gray.subtle" }}
-                onClick={() => navigate('/sources')}
-              >
-                <Text fontSize="md" fontWeight="medium">Sources</Text>
-              </Box>
-              <Box 
-                cursor="pointer" 
-                px={3} 
-                py={1} 
-                borderRadius="md"
-                bg={isActiveRoute('/tm') ? "blue.subtle" : "transparent"}
-                _hover={{ bg: isActiveRoute('/tm') ? "blue.subtle" : "gray.subtle" }}
-                onClick={() => navigate('/tm')}
-              >
-                <Text fontSize="md" fontWeight="medium">TM</Text>
-              </Box>
-              <Box 
-                cursor="pointer" 
-                px={3} 
-                py={1} 
-                borderRadius="md"
-                bg={isActiveRoute('/providers') ? "blue.subtle" : "transparent"}
-                _hover={{ bg: isActiveRoute('/providers') ? "blue.subtle" : "gray.subtle" }}
-                onClick={() => navigate('/providers')}
-              >
-                <Text fontSize="md" fontWeight="medium">Providers</Text>
-              </Box>
+            <Flex align="center" gap={4} css={{
+              '& a': {
+                textDecoration: 'none',
+                color: 'inherit'
+              }
+            }}>
+              <Link to="/">
+                <Box
+                  cursor="pointer"
+                  px={3}
+                  py={1}
+                  borderRadius="md"
+                  bg={isActiveRoute('/') ? "blue.subtle" : "transparent"}
+                  _hover={{ bg: isActiveRoute('/') ? "blue.subtle" : "gray.subtle" }}
+                >
+                  <Text fontSize="md" fontWeight="medium">Home</Text>
+                </Box>
+              </Link>
+              <Link to="/status">
+                <Box
+                  cursor="pointer"
+                  px={3}
+                  py={1}
+                  borderRadius="md"
+                  bg={isActiveRoute('/status') ? "blue.subtle" : "transparent"}
+                  _hover={{ bg: isActiveRoute('/status') ? "blue.subtle" : "gray.subtle" }}
+                >
+                  <Text fontSize="md" fontWeight="medium">Status</Text>
+                </Box>
+              </Link>
+              <Link to="/sources">
+                <Box
+                  cursor="pointer"
+                  px={3}
+                  py={1}
+                  borderRadius="md"
+                  bg={isActiveRoute('/sources') ? "blue.subtle" : "transparent"}
+                  _hover={{ bg: isActiveRoute('/sources') ? "blue.subtle" : "gray.subtle" }}
+                >
+                  <Text fontSize="md" fontWeight="medium">Sources</Text>
+                </Box>
+              </Link>
+              <Link to="/tm">
+                <Box
+                  cursor="pointer"
+                  px={3}
+                  py={1}
+                  borderRadius="md"
+                  bg={isActiveRoute('/tm') ? "blue.subtle" : "transparent"}
+                  _hover={{ bg: isActiveRoute('/tm') ? "blue.subtle" : "gray.subtle" }}
+                >
+                  <Text fontSize="md" fontWeight="medium">TM</Text>
+                </Box>
+              </Link>
+              <Link to="/providers">
+                <Box
+                  cursor="pointer"
+                  px={3}
+                  py={1}
+                  borderRadius="md"
+                  bg={isActiveRoute('/providers') ? "blue.subtle" : "transparent"}
+                  _hover={{ bg: isActiveRoute('/providers') ? "blue.subtle" : "gray.subtle" }}
+                >
+                  <Text fontSize="md" fontWeight="medium">Providers</Text>
+                </Box>
+              </Link>
             </Flex>
 
             {/* Cart Icon */}
-            <Flex 
-              align="center" 
-              gap={2} 
-              px={3} 
-              py={1} 
-              bg={isActiveRoute('/cart') ? "blue.subtle" : (cartCount > 0 ? "blue.muted" : "gray.muted")}
-              borderRadius="md"
-              cursor="pointer"
-              _hover={{ bg: "blue.subtle" }}
-              onClick={() => navigate('/cart')}
-            >
-              <Box fontSize="lg">🛒</Box>
-              <Text fontSize="md" fontWeight="medium">
-                {cartCount} {cartCount === 1 ? 'TU' : 'TUs'}
-              </Text>
-            </Flex>
+            <Link to="/cart" css={{
+              textDecoration: 'none',
+              color: 'inherit'
+            }}>
+              <Flex
+                align="center"
+                gap={2}
+                px={3}
+                py={1}
+                bg={isActiveRoute('/cart') ? "blue.subtle" : (cartCount > 0 ? "blue.muted" : "gray.muted")}
+                borderRadius="md"
+                cursor="pointer"
+                _hover={{ bg: "blue.subtle" }}
+              >
+                <Box fontSize="lg">🛒</Box>
+                <Text fontSize="md" fontWeight="medium">
+                  {cartCount} {cartCount === 1 ? 'TU' : 'TUs'}
+                </Text>
+              </Flex>
+            </Link>
           </Flex>
         </Box>
       </Box>
@@ -204,7 +220,7 @@ function App() {
                 <Status />
               </MainLayout>
             } />
-            <Route path="/status/:sourceLang/:targetLang" element={
+            <Route path="/status/:channelId/:sourceLang/:targetLang" element={
               <MainLayout>
                 <StatusDetail />
               </MainLayout>
@@ -212,6 +228,16 @@ function App() {
             <Route path="/sources" element={
               <MainLayout>
                 <Sources />
+              </MainLayout>
+            } />
+            <Route path="/sources/:channelId/:prj" element={
+              <MainLayout>
+                <SourcesDetail />
+              </MainLayout>
+            } />
+            <Route path="/sources/:channelId" element={
+              <MainLayout>
+                <SourcesResource />
               </MainLayout>
             } />
             <Route path="/tm" element={

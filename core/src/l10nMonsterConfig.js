@@ -12,6 +12,7 @@ export class ResourceFormatConfig {
      * @type {Object} FormatHandlerConfig
      * @property {string} id - Unique identifier for this format handler.
      * @property {Object} resourceFilter - A resource filter to parse raw content.
+     * @property {Object} [resourceGenerator] - A resource generator to produce translations from normalized content.
      * @property {string} [defaultMessageFormat] - The default message format for this format handler.
      * @property {Function[]} [segmentDecorators] - An array of functions that decorate the segments.
      */
@@ -24,6 +25,9 @@ export class ResourceFormatConfig {
         resourceFilter: {
             '@': '@l10nmonster/core:IResourceFilter'
         },
+        $resourceGenerator: {
+            '@': '@l10nmonster/core:IResourceGenerator'
+        },
         segmentDecorators: [Function]
     };
 
@@ -34,6 +38,9 @@ export class ResourceFormatConfig {
         }
         if (obj.resourceFilter !== undefined) {
             instance.#config.resourceFilter = obj.resourceFilter;
+        }
+        if (obj.$resourceGenerator !== undefined) {
+            instance.#config.resourceGenerator = obj.$resourceGenerator;
         }
         if (obj.segmentDecorators !== undefined) {
             instance.#config.segmentDecorators = obj.segmentDecorators;
@@ -55,7 +62,7 @@ export class ResourceFormatConfig {
 
     createFormatHandler(formatHandlers, normalizers) {
         validate(`ResourceFormat ${this.id}`, this.#config)
-            .objectProperty('resourceFilter', 'normalizers')
+            .objectProperty('resourceFilter', 'normalizers', 'resourceGenerator')
             .arrayOfFunctions('segmentDecorators');
         return new FormatHandler({
             ...this.#config,
@@ -68,6 +75,11 @@ export class ResourceFormatConfig {
 
     resourceFilter(filter) {
         this.#config.resourceFilter = filter;
+        return this;
+    }
+
+    resourceGenerator(generator) {
+        this.#config.resourceGenerator = generator;
         return this;
     }
 
@@ -286,6 +298,10 @@ export class ChannelConfig {
         return this.#proxyResourceFormatSugarSetter('resourceFilter', filter);
     }
 
+    resourceGenerator(generator) {
+        return this.#proxyResourceFormatSugarSetter('resourceGenerator', generator);
+    }
+
     defaultMessageFormat(format) {
         return this.#proxyResourceFormatSugarSetter('defaultMessageFormat', format);
     }
@@ -349,6 +365,9 @@ export class L10nMonsterConfig {
 
     /** @type {Object} Configuration for the tm stores. */
     tmStores;
+
+    /** @type {Object} Configuration for the snap stores. */
+    snapStores;
 
     /** @type {string} Operation logs store. */
     opsStore;
@@ -508,6 +527,27 @@ export class L10nMonsterConfig {
             return this;
         }
         throw new Error('A id, access, and partitioning are required to instantiate a TM Store');
+    }
+
+    /**
+     * Adds a Snap Store to the set of available Snap Stores.
+     * @param {import('../index.js').SnapStore | Array<import('../index.js').SnapStore>} storeInstance - The Snap Store instance or array of instances.
+     * @returns {L10nMonsterConfig} Returns the config for method chaining.
+     */
+    snapStore(storeInstance) {
+        if (Array.isArray(storeInstance)) {
+            storeInstance.forEach((s) => this.snapStore(s));
+            return this;
+        }
+        if (storeInstance.id) {
+            this.snapStores ??= {};
+            if (this.snapStores[storeInstance.id]) {
+                throw new Error(`Snap Store with id ${storeInstance.id} already exists`);
+            }
+            this.snapStores[storeInstance.id] = storeInstance;
+            return this;
+        }
+        throw new Error('A id is required to instantiate a Snap Store');
     }
 
     /**

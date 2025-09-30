@@ -1,4 +1,4 @@
-import { logInfo, logVerbose, utils } from '@l10nmonster/core';
+import { utils } from '@l10nmonster/core';
 
 /**
  * Adapter class to expose LQABoss completion files as a TM store.

@@ -1,3 +1,20 @@
+// Global unhandled promise rejection handler for server
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('🚨 Unhandled Promise Rejection in L10n Monster Server:');
+    console.error('Promise:', promise);
+    console.error('Reason:', reason);
+    if (reason instanceof Error && reason.stack) {
+        console.error('Stack trace:', reason.stack);
+    }
+    // In server context, log but don't exit immediately to allow graceful handling
+    console.error('This should be investigated and fixed!');
+});
+
+// Global uncaught exception handler
+process.on('uncaughtException', (error) => {
+    console.error('🚨 Uncaught Exception in L10n Monster Server:', error);
+});
+
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
@@ -6,7 +23,7 @@ import os from 'os';
 import { readFileSync } from 'fs';
 import { setupInfoRoute } from './routes/info.js';
 import { setupStatusRoute } from './routes/status.js';
-import { setupActiveContentStatsRoute } from './routes/sources.js';
+import { setupChannelRoutes } from './routes/sources.js';
 import { setupTmRoutes } from './routes/tm.js';
 import { setupProviderRoute } from './routes/providers.js';
 import { setupDispatcherRoutes } from './routes/dispatcher.js';
@@ -39,7 +56,7 @@ export default class serve {
         // Setup routes from separate files
         setupInfoRoute(apiRouter, mm, serverPackage);
         setupStatusRoute(apiRouter, mm);
-        setupActiveContentStatsRoute(apiRouter, mm);
+        setupChannelRoutes(apiRouter, mm);
         setupTmRoutes(apiRouter, mm);
         setupProviderRoute(apiRouter, mm);
         setupDispatcherRoutes(apiRouter, mm);

@@ -32,6 +32,11 @@
  */
 
 /**
+ * @typedef {Object} SnapStore
+ * @property {string} id - The logical id of this store instance.
+ */
+
+/**
  * @typedef {import('./src/entities/channel.js').Channel} Channel
  */
 

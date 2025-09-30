@@ -8,7 +8,6 @@ export class source_query {
         description: `query sources in the local cache.
 
 You can write your own where conditions against the following columns:
-  - channel      Channel id
   - prj          Project id
   - rid          Resource id
   - sid          Segment id
@@ -26,11 +25,14 @@ You can write your own where conditions against the following columns:
             [ '[whereCondition]', 'where condition against sources' ],
         ],
         requiredOptions: [
+            [ '--channel <channelId>', 'channel id' ],
             [ '--lang <srcLang,tgtLang>', 'source and target language pair' ],
         ],
         options: [
             [ '--provider <name,...>', 'use the specified providers' ],
             [ '--push', 'push content to providers' ],
+            [ '--skipQualityCheck', 'skip quality check' ],
+            [ '--skipGroupCheck', 'skip group check' ],
             [ '--instructions <instructions>', 'job-specific instructions' ],
             [ '--outFile <filename>', 'write output to the specified file' ],
             [ '--print', 'print jobs to console' ],
@@ -43,15 +45,19 @@ You can write your own where conditions against the following columns:
         if (!targetLang) {
             throw new Error('Missing target language');
         }
+        const channelId = options.channel;
+        if (!channelId) {
+            throw new Error('Missing channel id');
+        }
         const jobs = [];
         const tm = mm.tmm.getTM(sourceLang, targetLang);
-        const tus = tm.querySource(options.whereCondition ?? 'true');
+        const tus = await tm.querySource(channelId, options.whereCondition ?? 'true');
         if (tus.length === 0) {
             consoleLog`No content returned`;
         } else {
             consoleLog`  ‣ ${sourceLang} → ${targetLang}:`;
             const providerList = options.provider && (Array.isArray(options.provider) ? options.provider : options.provider.split(','));
-            const assignedJobs = await mm.dispatcher.createJobs({ sourceLang, targetLang, tus }, { providerList });
+            const assignedJobs = await mm.dispatcher.createJobs({ sourceLang, targetLang, tus }, { providerList, skipQualityCheck: options.skipQualityCheck, skipGroupCheck: options.skipGroupCheck });
             for (const job of assignedJobs) {
                 const formattedCost = job.estimatedCost !== undefined ? mm.currencyFormatter.format(job.estimatedCost) : 'unknown';
                 consoleLog`      • ${job.translationProvider ?? 'No provider available'}: ${job.tus.length.toLocaleString()} ${[job.tus.length, 'segment', 'segments']}, cost: ${formattedCost}`;

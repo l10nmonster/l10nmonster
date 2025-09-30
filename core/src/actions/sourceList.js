@@ -1,5 +1,3 @@
-/* eslint-disable no-continue */
-/* eslint-disable camelcase */
 /* eslint-disable complexity */
 import { writeFileSync } from 'fs';
 import { consoleLog, styleString } from '../l10nContext.js';
@@ -8,6 +6,7 @@ export class source_list {
     static help = {
         description: 'list source content and its channels and projects.',
         options: [
+            [ '--channel <channelId>', 'limit to the specified channels' ],
             [ '--status', 'show translation status' ],
             [ '--srcLang <language>', 'limit to the specified source language' ],
             [ '--tgtLang <language>', 'limit to the specified target language' ],
@@ -17,6 +16,7 @@ export class source_list {
     };
 
     static async action(mm, options) {
+        const channels = options.channel ? (Array.isArray(options.channel) ? options.channel : options.channel.split(',')) : mm.rm.channelIds;
         const withStatus = options.status || options.srcLang || options.tgtLang || options.detailed || options.statusFile;
         const pctFormatter = new Intl.NumberFormat('en-US', {
             style: 'percent',
@@ -27,28 +27,27 @@ export class source_list {
         let translationStatus;
         if (withStatus) {
             consoleLog`Active Content Channels with Translation Status`;
-            translationStatus = await mm.getTranslationStatus();
+            translationStatus = await mm.getTranslationStatus(channels);
             response.translationStatus = translationStatus;
-            for (const [ sourceLang, sourceStatus ] of Object.entries(translationStatus)) {
-                if (options.srcLang && sourceLang !== options.srcLang) {
-                    continue;
-                }
-                for (const [ targetLang, channelStatus ] of Object.entries(sourceStatus)) {
-                    if (options.tgtLang && targetLang !== options.tgtLang) {
+            for (const [ channelId, channelStatus ] of Object.entries(translationStatus)) {
+                consoleLog`\n  ‣ Channel ${channelId}`;
+                for (const [ sourceLang, sourceStatus ] of Object.entries(channelStatus)) {
+                    if (options.srcLang && sourceLang !== options.srcLang) {
                         continue;
                     }
-                    consoleLog`${sourceLang} → ${targetLang}`;
-                    for (const [ channelId, projectStatus ] of Object.entries(channelStatus)) {
-                        consoleLog`  ‣ Channel ${channelId}`;
+                    for (const [ targetLang, projectStatus ] of Object.entries(sourceStatus)) {
+                        if (options.tgtLang && targetLang !== options.tgtLang) {
+                            continue;
+                        }
+                        consoleLog`    ${sourceLang} → ${targetLang}`;
                         for (const [ prj, { details, pairSummary, pairSummaryByStatus } ] of Object.entries(projectStatus)) {
                             const pctTranslated = pctFormatter.format(pairSummaryByStatus.translated / pairSummary.segs);
-                            const segStatus = Object.entries(pairSummaryByStatus).filter(e => e[1]).map(([status, segs]) => styleString`${status}: ${segs}`).join(', ');
-                            consoleLog`    • Project ${prj}: ${pairSummary.segs.toLocaleString()} ${[pairSummary.segs, 'segment', 'segments']} (${segStatus}) ${pairSummary.words.toLocaleString()} ${[pairSummary.words, 'word', 'words']} ${pairSummary.chars.toLocaleString()} ${[pairSummary.chars, 'char', 'chars']} (${pctTranslated} translated)`;
+                            const segStatus = Object.entries(pairSummaryByStatus).filter(e => e[1]).map(([status, segs]) => styleString`${status}: ${segs.toLocaleString()}`).join(', ');
+                            consoleLog`      • Project ${prj}: ${pairSummary.segs.toLocaleString()} ${[pairSummary.segs, 'segment', 'segments']} (${segStatus}) ${pairSummary.words.toLocaleString()} ${[pairSummary.words, 'word', 'words']} ${pairSummary.chars.toLocaleString()} ${[pairSummary.chars, 'char', 'chars']} (${pctTranslated} translated)`;
                             if (options.detailed) {
                                 for (const { minQ, q, res, seg, words, chars } of details) {
-                                    // eslint-disable-next-line no-nested-ternary
                                     const status = q === null ? 'untranslated' : (q === 0 ? 'in flight' : (q >= minQ ? 'translated' : 'low quality'));
-                                    consoleLog`      ⁃ ${status} (minQ=${minQ}, q=${q || 'none'}) ${res.toLocaleString()} ${[res, 'resource', 'resources']} with ${seg.toLocaleString()} ${[seg, 'segment', 'segments']} ${words.toLocaleString()} ${[words, 'word', 'words']} ${chars.toLocaleString()} ${[chars, 'char', 'chars']}`;
+                                    consoleLog`        ⁃ ${status} (minQ=${minQ}, q=${q || 'none'}) ${res.toLocaleString()} ${[res, 'resource', 'resources']} with ${seg.toLocaleString()} ${[seg, 'segment', 'segments']} ${words.toLocaleString()} ${[words, 'word', 'words']} ${chars.toLocaleString()} ${[chars, 'char', 'chars']}`;
                                 }
                             }
                         }
@@ -58,7 +57,7 @@ export class source_list {
         } else {
             consoleLog`Active Content Channels`;
             response.channelStats = {};
-            for (const channelId of Object.keys(mm.rm.channels)) {
+            for (const channelId of channels) {
                 const channelStats = await mm.rm.getActiveContentStats(channelId);
                 response.channelStats[channelId] = channelStats;
                 const lastModified = channelStats.length > 0 ? new Date(Math.max(...channelStats.map(({ lastModified }) => new Date(lastModified)))) : null;

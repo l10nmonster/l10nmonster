@@ -45,7 +45,7 @@ export class FsStoreDelegate {
         return getRegressionMode() ? 'TS1' : `TS${stats.mtimeMs}`;
     }
 
-    async saveStream(filename, readable) {
+    async saveStream(filename, readable, deleteEmptyFiles = false) {
         Array.isArray(filename) && (filename = path.join(...filename));
         const dir = path.dirname(path.join(this.baseDir, filename));
         mkdirSync(dir, { recursive: true });
@@ -53,6 +53,12 @@ export class FsStoreDelegate {
 
         const writable = createWriteStream(pathName);
         await pipeline(readable, writable);
+        logVerbose`FsStoreDelegate: ${writable.bytesWritten} bytes written to ${pathName}`;
+        if (deleteEmptyFiles && writable.bytesWritten === 0) {
+            logVerbose`FsStoreDelegate: deleting empty file ${pathName}`;
+            unlinkSync(pathName);
+            return null;
+        }
         const stats = statSync(pathName);
         return getRegressionMode() ? 'TS1' : `TS${stats.mtimeMs}`;
     }

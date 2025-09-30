@@ -70,6 +70,10 @@ L10n Monster is a headless, serverless Translation Management System (TMS) desig
 - **Translation Pipeline**: 4-stage modular pipeline (Source Adapter → Format Filter → Translator → Target Adapter)
 - **Entity Management**: Jobs, translation units (TUs), sources, and translation memory blocks
 - **Managers**: MonsterManager (analysis), OpsManager (operations), ResourceManager, TmManager (translation memory)
+- **Data Access Layer (DAL)**: SQLite-based storage with three main DALs:
+  - `ChannelDAL`: Source content and snapshots
+  - `TuDAL`: Translation memory entries per language pair
+  - `JobDAL`: Job metadata and history
 - **Plugin System**: Extensible adapters, filters, normalizers, providers, and stores
 
 **@l10nmonster/cli**: Command-line interface built with Commander.js providing the `l10n` command for localization operations.
@@ -80,11 +84,28 @@ L10n Monster is a headless, serverless Translation Management System (TMS) desig
 - `helpers-openai`, `helpers-anthropic`, `helpers-googlecloud`: AI/ML translation providers
 - `helpers-lqaboss`: LQA Boss flow capture for visual translation review
 
-**@l10nmonster/server**: Web-based management UI (beta):
-- **Backend**: Express.js server implemented as L10n Monster action, serves API endpoints with real project data
-- **Frontend**: React 19 + Chakra UI 3.0 + TypeScript, built with Vite
-- **Architecture**: Server must run within L10n Monster project directory to access MonsterManager instance
-- **API Endpoints**: `/api/status`, `/api/untranslated/:sourceLang/:targetLang`, `/api/tm/stats/:sourceLang/:targetLang`
+**@l10nmonster/server**: Web-based management UI:
+- **Backend**: Express.js server implemented as L10n Monster action, serves RESTful API endpoints
+- **Frontend**: React 19 + Chakra UI v3 + React Router v6 + React Query, built with Vite
+- **Architecture**:
+  - Server must run within L10n Monster project directory to access MonsterManager instance
+  - Pure React Router navigation (no tab system)
+  - React Query for all data fetching with automatic caching and deduplication
+  - Code-split pages with hybrid Vite chunking (vendor + pages)
+- **API Endpoints**:
+  - `/api/info` - System information and provider list
+  - `/api/status` - Project status and statistics
+  - `/api/channel/:channelId` - Channel metadata and content stats
+  - `/api/channel/:channelId/:prj` - Project table of contents with pagination
+  - `/api/resource/:channelId?rid=<rid>` - Resource details with segments
+  - `/api/tm/stats` - Available language pairs
+  - `/api/tm/stats/:sourceLang/:targetLang` - TM statistics for language pair
+  - `/api/tm/search` - Advanced TM search with filtering and pagination (supports text search with quotes, date range filtering with minTS/maxTS)
+  - `/api/tm/lowCardinalityColumns/:sourceLang/:targetLang` - Available filter options
+  - `/api/tm/job/:jobGuid` - Job details by GUID
+  - `/api/dispatcher/createJobs` - Create translation jobs (POST)
+  - `/api/dispatcher/startJobs` - Start created jobs (POST)
+  - `/api/providers` - Detailed provider information
 
 ### Configuration System
 
@@ -92,7 +113,22 @@ Projects use `l10nmonster.config.mjs` files to configure:
 - **Channels**: Source/target adapter pairs for content flow
 - **Content Types**: Format filters and normalizers for different file types
 - **Translation Providers**: MT engines, human translation services, or AI providers
-- **Stores**: Job stores (translation history) and snap stores (content snapshots)
+- **Stores**: Optional custom stores (system defaults to SQLite databases)
+
+### Storage Architecture
+
+The system uses SQLite databases for local storage:
+- **`l10nmonsterSource.db`**: Source content snapshots and channel metadata
+  - Stores resource snapshots per channel
+  - Tracks project structure and segments
+  - Enables fast content queries and diffing
+- **`l10nmonsterTM.db`**: Translation memory and job history
+  - Stores TUs (Translation Units) per language pair
+  - Maintains job metadata and provenance
+  - Supports advanced filtering and search queries
+  - Can be the same database as source DB for simpler projects
+- **WAL mode**: Both databases use Write-Ahead Logging for better concurrency
+- **Custom functions**: SQLite extended with JavaScript functions for normalization
 
 ### Translation Memory Design
 

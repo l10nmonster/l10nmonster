@@ -11,7 +11,6 @@ const namedEntities = {
 export const entityDecoder = decoderMaker(
     'xmlEntityDecoder',
     /(?<node>&#x(?<hexEntity>[0-9a-fA-F]+);|(?<namedEntity>&[^#;]+;)|&#(?<numericEntity>\d+);)/g,
-    // eslint-disable-next-line no-nested-ternary
     (groups) => (groups.namedEntity ?
                     (namedEntities[groups.namedEntity] || groups.namedEntity) :
                     (groups.hexEntity ?
@@ -44,6 +43,5 @@ export const entityEncoder = encoderMaker(
 export const tagDecoder = decoderMaker(
     'xmlDecoder',
     /(?<tag>(?<x><[^>]+\/>)|(?<bx><[^/!][^>]*>)|(?<ex><\/[^>]+>))/g,
-    // eslint-disable-next-line no-nested-ternary
     (groups) => ({ t: (groups.bx ? 'bx' : (groups.ex ? 'ex' : 'x')), v: groups.tag })
 );

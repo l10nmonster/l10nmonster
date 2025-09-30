@@ -1,6 +1,6 @@
 import { pipeline } from 'node:stream/promises';
 import { Storage } from '@google-cloud/storage';
-import { getRegressionMode } from '@l10nmonster/core';
+import { getRegressionMode, logVerbose } from '@l10nmonster/core';
 
 export class GCSStoreDelegate {
     constructor(bucketName, bucketPrefix) {
@@ -15,8 +15,9 @@ export class GCSStoreDelegate {
 
     async listAllFiles() {
         this.bucket || (this.bucket = await this.storage.bucket(this.bucketName));
-        const prefix = this.bucketPrefix === '' ? '' : 
-                      (this.bucketPrefix.endsWith('/') ? this.bucketPrefix : `${this.bucketPrefix}/`);
+        const prefix = this.bucketPrefix === '' ?
+            '' : 
+            (this.bucketPrefix.endsWith('/') ? this.bucketPrefix : `${this.bucketPrefix}/`);
         const [ files ] = await this.bucket.getFiles({ prefix });
         const filenamesWithModified = files.map(f => [ f.name.replace(prefix, ''), f.generation ]);
         return filenamesWithModified;
@@ -44,11 +45,19 @@ export class GCSStoreDelegate {
         await file.save(contents);
     }
 
-    async saveStream(filename, readable) {
+    async saveStream(filename, readable, deleteEmptyFiles = false) {
         Array.isArray(filename) && (filename = filename.join('/'));
         this.bucket || (this.bucket = await this.storage.bucket(this.bucketName));
         const file = this.bucket.file(`${this.bucketPrefix}/${filename}`);
         await pipeline(readable, file.createWriteStream());
+        if (deleteEmptyFiles) {
+            const [metadata] = await file.getMetadata();
+            if (metadata.size === '0') { // metadata.size is a string!
+                logVerbose`GCSStoreDelegate: deleting empty file ${filename}`;
+                await file.delete();
+                return null;
+            }
+        }
         return getRegressionMode() ? 'TS1' : filename.generation;
     }
 

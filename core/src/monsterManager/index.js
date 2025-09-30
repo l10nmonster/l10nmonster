@@ -1,7 +1,7 @@
-import { corePackageVersion, logVerbose, logWarn, dumpLogs } from '../l10nContext.js';
+import { corePackageVersion, logVerbose, logWarn, dumpLogs, logInfo } from '../l10nContext.js';
 import { analyzers } from '../helpers/index.js';
 import * as opsManager from '../opsManager/index.js';
-import DALManager from '../DAL/index.js';
+import SQLiteDALManager from '../DAL/index.js';
 import TMManager from '../tmManager/index.js';
 import ResourceManager from '../resourceManager/index.js';
 import Dispatcher from './dispatcher.js';
@@ -11,6 +11,7 @@ import { analyzeCmd } from './analyze.js';
  * @typedef {object} L10nMonsterConfig
  * @property {object} [channels] - Channel configurations where each channel has a createChannel() method
  * @property {boolean} [autoSnap] - Whether to automatically create snapshots
+ * @property {object} [snapStores] - Snap stores instances
  * @property {object} [tmStores] - TM stores instances
  * @property {object} [opsStore] - Operations store instance
  * @property {boolean} [saveFailedJobs] - Whether to save failed jobs (requires opsStore)
@@ -35,13 +36,13 @@ export class MonsterManager {
     constructor(monsterConfig) {
         this.#configInitializer = monsterConfig.init?.bind(monsterConfig);
 
-        this.#dalManager = new DALManager(monsterConfig.sourceDB, monsterConfig.tmDB);
+        this.#dalManager = new SQLiteDALManager(monsterConfig.sourceDB, monsterConfig.tmDB);
 
         let channels;
         if (typeof monsterConfig.channels === 'object') {
             channels = Object.fromEntries(Object.entries(monsterConfig.channels).map(([id, channel]) => [ id, channel.createChannel() ]));
         }
-        this.rm = new ResourceManager(this.#dalManager, { channels, autoSnap: monsterConfig.autoSnap });
+        this.rm = new ResourceManager(this.#dalManager, { channels, autoSnap: monsterConfig.autoSnap, snapStores: monsterConfig.snapStores });
 
         this.tmm = new TMManager(this.#dalManager, monsterConfig.tmStores);
 
@@ -68,15 +69,6 @@ export class MonsterManager {
 
         this.analyzers = { ...analyzers, ...monsterConfig.analyzers };
         this.currencyFormatter = monsterConfig.currencyFormatter || new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
-
-        // generated info
-        this.capabilitiesByChannel = Object.fromEntries(Object.entries(monsterConfig.channels).map(([type, channel]) => [ type, {
-            snap: Boolean(channel.source),
-            status: Boolean(channel.source),
-            push: Boolean(channel.source && monsterConfig.providers.length > 0),
-            update: Boolean(monsterConfig.providers.length > 0),
-            translate: Boolean(channel.source && channel.target),
-        }]));
     }
 
     async init() {
@@ -112,6 +104,7 @@ export class MonsterManager {
             }
             return response;
         } catch(e) {
+            logInfo`Exception thrown while running L10nMonsterConfig: ${e.stack ?? e.message}`;
             e.message && (e.message = `Unable to run L10nMonsterConfig: ${e.message}`);
             const logFilePath = dumpLogs();
             e.message = `${e.message}\n\nA complete log of this run can be found in: ${logFilePath}`;
@@ -128,44 +121,30 @@ export class MonsterManager {
         return await analyzeCmd(this, analyzer, params, limitToLang);
     }
 
-    /**
-     * @param {Array | string} limitToLang Language or list of languages to limit to
-     */
-    async getTargetLangs(limitToLang = []) {
-        const desiredTargetLangs = new Set((await this.rm.getAvailableLangPairs()).map(pair => pair[1]));
-        const langsToLimit = Array.isArray(limitToLang) ? limitToLang : limitToLang.split(',');
-        langsToLimit.forEach(limitedLang => {
-            if (!desiredTargetLangs.has(limitedLang)) {
-                throw new Error(`Invalid language: ${limitedLang}`);
-            }
-        });
-        return [ ...desiredTargetLangs ].filter(lang => limitToLang.length === 0 || langsToLimit.includes(lang)).sort();
-    }
-
-    async getTranslationStatus() {
+    async getTranslationStatus(channels) {
+        const channelIds = Array.isArray(channels) ? channels : (typeof channels === 'string' ? [ channels ] : this.rm.channelIds);
         const translationStatusByPair = {};
-        const langPairs = await this.rm.getAvailableLangPairs();
-        for (const [ sourceLang, targetLang ] of langPairs) {
-            translationStatusByPair[sourceLang] ??= {};
-            translationStatusByPair[sourceLang][targetLang] ??= {};
-            const tm = this.tmm.getTM(sourceLang, targetLang);
-            const channelStatus = tm.getActiveContentTranslationStatus();
-            for (const [ channelId, projectStatus ] of Object.entries(channelStatus)) {
-                translationStatusByPair[sourceLang][targetLang][channelId] ??= {};
-                for (const [ prj, details ] of Object.entries(projectStatus)) {
+        for (const channelId of channelIds) {
+            translationStatusByPair[channelId] ??= {};
+            const langPairs = await this.rm.getDesiredLangPairs(channelId);
+            for (const [ sourceLang, targetLang ] of langPairs) {
+                translationStatusByPair[channelId][sourceLang] ??= {};
+                translationStatusByPair[channelId][sourceLang][targetLang] ??= {};
+                const tm = this.tmm.getTM(sourceLang, targetLang);
+                const channelStatus = await tm.getActiveContentTranslationStatus(channelId);
+                for (const [ prj, details ] of Object.entries(channelStatus)) {
                     const pairSummary = { segs: 0, words: 0, chars: 0 };
                     const pairSummaryByStatus = { translated: 0, 'low quality': 0, 'in flight': 0, 'untranslated': 0 };
                     for (const { minQ, q, seg, words, chars } of details) {
                         pairSummary.segs += seg;
-                        // eslint-disable-next-line no-nested-ternary
                         pairSummaryByStatus[q === null ? 'untranslated' : (q === 0 ? 'in flight' : (q >= minQ ? 'translated' : 'low quality'))] += seg;
                         pairSummary.words += words;
                         pairSummary.chars += chars;
                     }
-                    translationStatusByPair[sourceLang][targetLang][channelId][prj] = { details, pairSummary, pairSummaryByStatus };
+                    translationStatusByPair[channelId][sourceLang][targetLang][prj] = { details, pairSummary, pairSummaryByStatus };
                 }
+                // logVerbose`Got active content translation status for ${sourceLang} → ${targetLang}`;
             }
-            // logVerbose`Got active content translation status for ${sourceLang} → ${targetLang}`;
         }
         return translationStatusByPair;
     }

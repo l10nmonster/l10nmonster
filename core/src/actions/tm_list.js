@@ -1,6 +1,5 @@
 import { consoleLog } from '../l10nContext.js';
 
-// eslint-disable-next-line camelcase
 export class tm_list {
     static help = {
         description: 'show information about local TM and TM Stores.',
@@ -18,7 +17,7 @@ export class tm_list {
         if (options.tmStore) {
             tmStoreIds = [ options.tmStore ];
         } else {
-            tmStoreIds = monsterManager.tmm.getTmStoreIds();
+            tmStoreIds = monsterManager.tmm.tmStoreIds;
             // if no tm store is specified, list the local TM Cache as well
             const pairs = await monsterManager.tmm.getAvailableLangPairs();
             if (pairs.length === 0) {
@@ -33,7 +32,7 @@ export class tm_list {
                 for (const [ srcLang, tgtLang ] of pairs) {
                     consoleLog`  ‣ ${srcLang} → ${tgtLang}`;
                     const tm = await monsterManager.tmm.getTM(srcLang, tgtLang);
-                    const tmStats = tm.getStats();
+                    const tmStats = await tm.getStats();
                     for (const stats of tmStats) {
                         consoleLog`      • ${stats.translationProvider}(${stats.status}): ${stats.jobCount.toLocaleString()} ${[stats.jobCount, 'job', 'jobs']}, ${stats.tuCount.toLocaleString()} ${[stats.tuCount, 'tu', 'tus']}, ${stats.distinctGuids.toLocaleString()} ${[stats.distinctGuids, 'guid', 'guids']} ${pctFormatter.format(stats.tuCount / stats.distinctGuids - 1)} redundancy`;
                     }

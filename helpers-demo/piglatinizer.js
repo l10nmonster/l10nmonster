@@ -27,6 +27,7 @@ export class PigLatinizer {
             return translation;
         });
         jobResponse.status = 'done';
+        jobResponse.statusDescription = 'Job has been PigLatinized';
         return jobResponse;
     }
 

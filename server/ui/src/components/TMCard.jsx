@@ -27,11 +27,11 @@ const TMCard = ({ sourceLang, targetLang, providers }) => {
         {/* Language Pair Header */}
         <Box>
           <Box mb={2}>
-            <Link 
+            <Link
               as={RouterLink}
               to={`/tm/${sourceLang}/${targetLang}`}
-              fontSize="xl" 
-              fontWeight="semibold" 
+              fontSize="lg"
+              fontWeight="semibold"
               color="blue.600"
               _hover={{ textDecoration: "underline" }}
             >
@@ -64,14 +64,18 @@ const TMCard = ({ sourceLang, targetLang, providers }) => {
                 {/* Provider Name */}
                 <Box minWidth="0" overflow="hidden">
                   <Text fontSize="xs" color="fg.muted" mb={1}>Provider</Text>
-                  <Text 
-                    fontSize="sm" 
+                  <Link
+                    as={RouterLink}
+                    to={`/tm/${sourceLang}/${targetLang}?translationProvider=${encodeURIComponent(provider.translationProvider)}`}
+                    fontSize="sm"
                     fontWeight="semibold"
+                    color="blue.600"
+                    _hover={{ textDecoration: "underline", color: "blue.700" }}
                     noOfLines={1}
                     title={provider.translationProvider}
                   >
                     {provider.translationProvider}
-                  </Text>
+                  </Link>
                 </Box>
 
                 {/* Status */}

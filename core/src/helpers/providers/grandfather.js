@@ -1,4 +1,4 @@
-import { logVerbose } from '../../l10nContext.js';
+import { logVerbose, logWarn } from '../../l10nContext.js';
 import { TU } from '../../entities/tu.js';
 import { utils } from '../index.js';
 import { BaseTranslationProvider } from './baseTranslationProvider.js';
@@ -9,6 +9,7 @@ import { BaseTranslationProvider } from './baseTranslationProvider.js';
  * The assigned quality of the reused string is equal to the original one minus the corresponding penalty.
  */
 export class Grandfather extends BaseTranslationProvider {
+
     /**
      * Initializes a new instance of the Grandfather class.
      * @param {Object} options - The parameters for the constructor.
@@ -28,7 +29,12 @@ export class Grandfather extends BaseTranslationProvider {
         const txCache = {};
         const resourceHandles = [];
         for (const tu of job.tus) {
-            resourceHandles[tu.rid] ??= await this.mm.rm.getResourceHandle(tu.rid);
+            const channelId = tu.channel;
+            if (!channelId) {
+                logWarn`Grandfather: tu ${tu.guid} has no channel so it can't be looked up`;
+                continue;
+            }
+            resourceHandles[tu.rid] ??= await this.mm.rm.getResourceHandle(channelId, tu.rid);
             const resHandle = resourceHandles[tu.rid];
             if (!txCache[tu.rid]) {
                 if (resHandle) {

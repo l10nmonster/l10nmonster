@@ -12,6 +12,7 @@ export function byProject(prjToPipelineMap) {
         pipeline.forEach(policy => {
             const returnedContext = policy(policyContext);
             if (returnedContext) {
+                // eslint-disable-next-line no-unused-vars
                 const { res, seg, ...segmentProps } = returnedContext; // preserve res and seg in policyContext
                 Object.assign(policyContext, segmentProps);
             } else {

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Box, Text, Badge, Flex, Button, VStack, Select, Spinner, Dialog, Input, Textarea } from '@chakra-ui/react';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { fetchApi } from '../utils/api';
+import { renderTextWithLinks } from '../utils/textUtils.jsx';
 
 const CartLanguagePair = ({ langPairKey, tus, onRemoveTU }) => {
   const [selectedProvider, setSelectedProvider] = useState('');
@@ -90,6 +91,7 @@ const CartLanguagePair = ({ langPairKey, tus, onRemoveTU }) => {
     });
   }
 
+
   const handleCreateJob = async () => {
     if (!selectedProvider) {
       alert('Please select a provider first');
@@ -97,20 +99,27 @@ const CartLanguagePair = ({ langPairKey, tus, onRemoveTU }) => {
     }
     
     const actualTus = Array.isArray(tus) ? tus : tus.tus;
-    
+    const providerId = typeof selectedProvider === 'object' && selectedProvider?.id ? selectedProvider.id : selectedProvider;
+
     try {
+      // Minimize payload - only send channel and guid for each TU
+      const minimalTus = actualTus.map(tu => ({
+        channel: tu.channel,
+        guid: tu.guid
+      }));
+
       const jobs = await createJobsMutation.mutateAsync({
         sourceLang,
         targetLang,
-        tus: actualTus,
-        providerList: [selectedProvider],
+        tus: minimalTus,
+        providerList: [providerId],
       });
       
       // Look for job with matching provider
-      const matchingJob = jobs.find(job => job.translationProvider === selectedProvider);
+      const matchingJob = jobs.find(job => job.translationProvider === providerId);
       
       if (!matchingJob) {
-        setErrorMessage(`Provider "${selectedProvider}" did not accept any of the selected translation units.`);
+        setErrorMessage(`Provider "${providerId}" did not accept any of the selected translation units.`);
         setShowErrorModal(true);
       } else {
         setJobData(matchingJob);
@@ -177,6 +186,10 @@ const CartLanguagePair = ({ langPairKey, tus, onRemoveTU }) => {
   const sourceLang = Array.isArray(tus) ? langPairKey.split('|')[0] || langPairKey.split('→')[0] : tus.sourceLang;
   const targetLang = Array.isArray(tus) ? langPairKey.split('|')[1] || langPairKey.split('→').slice(1).join('→') : tus.targetLang;
 
+  // Determine which columns to show based on available data
+  const showTargetColumn = actualTus.some(tu => tu.ntgt !== undefined);
+  const showChannelColumn = actualTus.some(tu => tu.channel !== undefined);
+
   return (
     <Box 
       p={6} 
@@ -216,7 +229,7 @@ const CartLanguagePair = ({ langPairKey, tus, onRemoveTU }) => {
                 >
                   <Select.Trigger>
                     <Text fontSize="sm" flex="1" textAlign="left">
-                      {selectedProvider || "Select Provider"}
+                      {typeof selectedProvider === 'object' && selectedProvider?.id ? selectedProvider.id : selectedProvider || "Select Provider"}
                     </Text>
                     <Select.Indicator />
                   </Select.Trigger>
@@ -240,14 +253,21 @@ const CartLanguagePair = ({ langPairKey, tus, onRemoveTU }) => {
                         </Text>
                       </Box>
                     ) : (
-                      providers.map((providerId) => (
-                        <Select.Item 
-                          key={providerId} 
+                      providers
+                        .slice()
+                        .sort((a, b) => {
+                          const aName = typeof a === 'object' && a?.id ? a.id : a;
+                          const bName = typeof b === 'object' && b?.id ? b.id : b;
+                          return aName.localeCompare(bName);
+                        })
+                        .map((providerId, index) => (
+                        <Select.Item
+                          key={`provider-${index}-${typeof providerId === 'string' ? providerId : JSON.stringify(providerId)}`}
                           item={providerId}
                           value={providerId}
                           onClick={() => handleProviderSelect(providerId)}
                         >
-                          <Select.ItemText>{providerId}</Select.ItemText>
+                          <Select.ItemText>{typeof providerId === 'object' && providerId?.id ? providerId.id : providerId}</Select.ItemText>
                           <Select.ItemIndicator />
                         </Select.Item>
                       ))
@@ -288,21 +308,19 @@ const CartLanguagePair = ({ langPairKey, tus, onRemoveTU }) => {
                 <Box as="th" p={3} borderBottom="1px" borderColor="border.default" textAlign="left" minW="120px">
                   <Text fontSize="sm" fontWeight="bold" color="blue.600">GUID</Text>
                 </Box>
+                {showChannelColumn && (
+                  <Box as="th" p={3} borderBottom="1px" borderColor="border.default" textAlign="left" minW="120px">
+                    <Text fontSize="sm" fontWeight="bold" color="blue.600">CHANNEL</Text>
+                  </Box>
+                )}
                 <Box as="th" p={3} borderBottom="1px" borderColor="border.default" textAlign="left" minW="350px">
                   <Text fontSize="sm" fontWeight="bold" color="blue.600">SOURCE</Text>
                 </Box>
-                <Box as="th" p={3} borderBottom="1px" borderColor="border.default" textAlign="left" minW="350px">
-                  <Text fontSize="sm" fontWeight="bold" color="blue.600">TARGET</Text>
-                </Box>
-                <Box as="th" p={3} borderBottom="1px" borderColor="border.default" textAlign="center" minW="40px">
-                  <Text fontSize="sm" fontWeight="bold" color="blue.600">QUALITY</Text>
-                </Box>
-                <Box as="th" p={3} borderBottom="1px" borderColor="border.default" textAlign="left" minW="120px">
-                  <Text fontSize="sm" fontWeight="bold" color="blue.600">PROVIDER</Text>
-                </Box>
-                <Box as="th" p={3} borderBottom="1px" borderColor="border.default" textAlign="left" minW="120px">
-                  <Text fontSize="sm" fontWeight="bold" color="blue.600">TIMESTAMP</Text>
-                </Box>
+                {showTargetColumn && (
+                  <Box as="th" p={3} borderBottom="1px" borderColor="border.default" textAlign="left" minW="350px">
+                    <Text fontSize="sm" fontWeight="bold" color="blue.600">TARGET</Text>
+                  </Box>
+                )}
                 <Box as="th" p={3} borderBottom="1px" borderColor="border.default" textAlign="center" minW="100px">
                   <Text fontSize="sm" fontWeight="bold" color="blue.600">ACTION</Text>
                 </Box>
@@ -310,15 +328,15 @@ const CartLanguagePair = ({ langPairKey, tus, onRemoveTU }) => {
             </Box>
             <Box as="tbody">
               {actualTus.map((tu, index) => (
-                <Box 
-                  as="tr" 
-                  key={`${tu.guid}-${index}`}
+                <Box
+                  as="tr"
+                  key={`cart-tu-${index}-${typeof tu.guid === 'string' ? tu.guid : tu.nid || index}`}
                   _hover={{ bg: "gray.subtle" }}
                 >
                   <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
-                    <Text 
-                      fontSize="xs" 
-                      fontFamily="mono" 
+                    <Text
+                      fontSize="xs"
+                      fontFamily="mono"
                       color="blue.600"
                       userSelect="all"
                       overflow="hidden"
@@ -329,29 +347,23 @@ const CartLanguagePair = ({ langPairKey, tus, onRemoveTU }) => {
                       {tu.guid}
                     </Text>
                   </Box>
+                  {showChannelColumn && (
+                    <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
+                      <Text fontSize="xs">{tu.channel || ''}</Text>
+                    </Box>
+                  )}
                   <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
                     <Text fontSize="xs" noOfLines={2} dir={sourceLang?.startsWith('he') || sourceLang?.startsWith('ar') ? 'rtl' : 'ltr'}>
                       {Array.isArray(tu.nsrc) ? flattenNormalizedSourceToOrdinal(tu.nsrc) : tu.nsrc}
                     </Text>
                   </Box>
-                  <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
-                    <Text fontSize="xs" noOfLines={2} dir={targetLang?.startsWith('he') || targetLang?.startsWith('ar') ? 'rtl' : 'ltr'}>
-                      {Array.isArray(tu.ntgt) ? flattenNormalizedSourceToOrdinal(tu.ntgt) : tu.ntgt}
-                    </Text>
-                  </Box>
-                  <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle" textAlign="center">
-                    <Text fontSize="xs">
-                      {tu.q}
-                    </Text>
-                  </Box>
-                  <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
-                    <Text fontSize="xs">{tu.translationProvider || tu.provider}</Text>
-                  </Box>
-                  <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
-                    <Text fontSize="xs" color="fg.muted">
-                      {formatTimestamp(tu.ts)}
-                    </Text>
-                  </Box>
+                  {showTargetColumn && (
+                    <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
+                      <Text fontSize="xs" noOfLines={2} dir={targetLang?.startsWith('he') || targetLang?.startsWith('ar') ? 'rtl' : 'ltr'}>
+                        {Array.isArray(tu.ntgt) ? flattenNormalizedSourceToOrdinal(tu.ntgt) : tu.ntgt || ''}
+                      </Text>
+                    </Box>
+                  )}
                   <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle" textAlign="center">
                     <Button
                       size="xs"
@@ -382,15 +394,27 @@ const CartLanguagePair = ({ langPairKey, tus, onRemoveTU }) => {
               {jobData && (
                 <VStack gap={4} align="stretch">
                   <Box>
-                    <Text fontSize="lg" fontWeight="bold" color="green.600">
+                    <Text fontSize="lg" fontWeight="bold" color="green.600" mb={3}>
                       {jobData.tus?.length || 0} TUs accepted out of {actualTus.length} sent
                     </Text>
-                    <Text fontSize="sm" color="fg.muted">
-                      Provider: {selectedProvider}
-                    </Text>
-                    <Text fontSize="sm" color="fg.muted">
-                      Estimated Cost: {formatCost(jobData.estimatedCost)}
-                    </Text>
+                    <VStack gap={2} align="stretch">
+                      <Box>
+                        <Text fontSize="sm" fontWeight="semibold" color="fg.default" display="inline">Provider: </Text>
+                        <Text fontSize="sm" color="blue.600" fontFamily="mono" display="inline">{typeof selectedProvider === 'object' && selectedProvider?.id ? selectedProvider.id : selectedProvider}</Text>
+                      </Box>
+                      <Box>
+                        <Text fontSize="sm" fontWeight="semibold" color="fg.default" display="inline">Estimated Cost: </Text>
+                        <Text fontSize="sm" color="green.600" fontWeight="medium" display="inline">{formatCost(jobData.estimatedCost)}</Text>
+                      </Box>
+                      {jobData.statusDescription && (
+                        <Box>
+                          <Text fontSize="sm" fontWeight="semibold" color="fg.default" display="inline">Status: </Text>
+                          <Text fontSize="sm" color="fg.muted" display="inline">
+                            {renderTextWithLinks(jobData.statusDescription)}
+                          </Text>
+                        </Box>
+                      )}
+                    </VStack>
                   </Box>
                   
                   <Box>
@@ -477,32 +501,51 @@ const CartLanguagePair = ({ langPairKey, tus, onRemoveTU }) => {
               {jobStatus && (
                 <VStack gap={4} align="stretch">
                   <Box>
-                    <Text fontSize="sm" color="fg.muted">
-                      Job ID: <Text 
-                        as="span" 
-                        fontFamily="mono" 
-                        color="blue.600" 
-                        cursor="pointer"
-                        _hover={{ textDecoration: "underline" }}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          window.open(`/job/${jobStatus.jobGuid}`, '_blank');
-                        }}
-                      >
-                        {jobStatus.jobGuid}
-                      </Text>
-                    </Text>
-                    <Text fontSize="sm" color="fg.muted">
-                      Provider: {jobStatus.translationProvider}
-                    </Text>
-                    <Text fontSize="sm" color="fg.muted">
-                      Language Pair: {jobStatus.sourceLang} → {jobStatus.targetLang}
-                    </Text>
-                    <Text fontSize="sm" color="fg.muted">
-                      Status: <Text as="span" fontWeight="bold" color={jobStatus.status === 'completed' ? 'green.600' : 'orange.600'}>
-                        {jobStatus.status}
-                      </Text>
-                    </Text>
+                    <VStack gap={2} align="stretch">
+                      <Box>
+                        <Text fontSize="sm" fontWeight="semibold" color="fg.default" display="inline">Job ID: </Text>
+                        <Text 
+                          fontSize="sm"
+                          fontFamily="mono" 
+                          color="blue.600" 
+                          cursor="pointer"
+                          _hover={{ textDecoration: "underline" }}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            window.open(`/job/${jobStatus.jobGuid}`, '_blank');
+                          }}
+                          display="inline"
+                        >
+                          {jobStatus.jobGuid}
+                        </Text>
+                      </Box>
+                      
+                      <Box>
+                        <Text fontSize="sm" fontWeight="semibold" color="fg.default" display="inline">Provider: </Text>
+                        <Text fontSize="sm" color="blue.600" fontFamily="mono" display="inline">{jobStatus.translationProvider}</Text>
+                      </Box>
+                      
+                      <Box>
+                        <Text fontSize="sm" fontWeight="semibold" color="fg.default" display="inline">Language Pair: </Text>
+                        <Text fontSize="sm" color="purple.600" fontWeight="medium" display="inline">{jobStatus.sourceLang} → {jobStatus.targetLang}</Text>
+                      </Box>
+                      
+                      <Box>
+                        <Text fontSize="sm" fontWeight="semibold" color="fg.default" display="inline">Status: </Text>
+                        <Text fontSize="sm" fontWeight="bold" color={jobStatus.status === 'completed' ? 'green.600' : 'orange.600'} display="inline">
+                          {jobStatus.status.toUpperCase()}
+                        </Text>
+                      </Box>
+                      
+                      {jobStatus.statusDescription && (
+                        <Box>
+                          <Text fontSize="sm" fontWeight="semibold" color="fg.default" mb={1}>Description:</Text>
+                          <Text fontSize="sm" color="fg.muted" pl={2} borderLeft="2px" borderColor="blue.200">
+                            {renderTextWithLinks(jobStatus.statusDescription)}
+                          </Text>
+                        </Box>
+                      )}
+                    </VStack>
                   </Box>
                   
                   <Box>

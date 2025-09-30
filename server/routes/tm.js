@@ -1,39 +1,101 @@
 import { logInfo, logVerbose } from '@l10nmonster/core';
 
+// Helper function to process search terms - handles exact vs partial matching
+function processSearchTerm(term) {
+    if (!term) return undefined;
+    
+    // Check if term is surrounded by double quotes
+    if (term.startsWith('"') && term.endsWith('"') && term.length >= 2) {
+        // Extract the content inside quotes for exact match
+        return term.slice(1, -1);
+    }
+    
+    // Default partial match behavior
+    return `%${term}%`;
+}
+
 export function setupTmRoutes(router, mm) {
     router.get('/tm/stats', async (req, res) => {
         logInfo`/tm/stats`;
-        const tmInfo = {};
-        const availableLangPairs = (await mm.tmm.getAvailableLangPairs()).sort();
-        for (const [sourceLang, targetLang] of availableLangPairs) {
-            const tm = mm.tmm.getTM(sourceLang, targetLang);
-            tmInfo[sourceLang] ??= {};
-            tmInfo[sourceLang][targetLang] = tm.getStats();
+        try {
+            const availableLangPairs = (await mm.tmm.getAvailableLangPairs()).sort();
+            logVerbose`Returned ${availableLangPairs.length} language pairs`;
+            res.json(availableLangPairs);
+        } catch (error) {
+            logInfo`Error in /tm/stats: ${error.message}`;
+            res.status(500).json({
+                error: 'Failed to get TM stats',
+                message: error.message
+            });
         }
-        logVerbose`Returned TM stats for ${Object.keys(tmInfo).length} lang pairs`;
-        res.json(tmInfo);
     });
 
+    router.get('/tm/stats/:sourceLang/:targetLang', async (req, res) => {
+        logInfo`/tm/stats/${req.params.sourceLang}/${req.params.targetLang}`;
+        try {
+            const tm = mm.tmm.getTM(req.params.sourceLang, req.params.targetLang);
+            const stats = await tm.getStats();
+            logVerbose`Returned TM stats for ${req.params.sourceLang}->${req.params.targetLang}`;
+            res.json(stats);
+        } catch (error) {
+            logInfo`Error in /tm/stats/${req.params.sourceLang}/${req.params.targetLang}: ${error.message}`;
+            res.status(500).json({
+                error: 'Failed to get TM stats for language pair',
+                message: error.message
+            });
+        }
+    });
+
+    router.get('/tm/lowCardinalityColumns/:sourceLang/:targetLang', async (req, res) => {
+        const { sourceLang, targetLang } = req.params;
+        logInfo`/tm/lowCardinalityColumns/${sourceLang}/${targetLang}`;
+        try {
+            const tm = mm.tmm.getTM(sourceLang, targetLang);
+            const data = await tm.getLowCardinalityColumns();
+            logVerbose`Returned TM low cardinality columns for ${sourceLang}->${targetLang}`;
+            res.json({ channel: mm.rm.channelIds, ...data });
+        } catch (error) {
+            logInfo`Error in /tm/lowCardinalityColumns/${sourceLang}/${targetLang}: ${error.message}`;
+            res.status(500).json({
+                error: 'Failed to get low cardinality columns',
+                message: error.message
+            });
+        }
+    });
     router.get('/tm/search', async (req, res) => {
         logInfo`/tm/search`;
-        const { sourceLang, targetLang, page, limit, guid, jobGuid, rid, sid, nsrc, ntgt, notes, q, translationProvider } = req.query;
-        const tm = mm.tmm.getTM(sourceLang, targetLang);
-        const limitInt = limit ? parseInt(limit, 10) : 100;
-        const pageInt = page ? parseInt(page, 10) : 1;
-        const offset = (pageInt - 1) * limitInt;
-        const data = tm.search(offset, limitInt, {
-            guid: guid && `%${guid}%`,
-            jobGuid: jobGuid && `%${jobGuid}%`,
-            rid: rid && `%${rid}%`,
-            sid: sid && `%${sid}%`,
-            nsrc: nsrc && `%${nsrc}%`,
-            ntgt: ntgt && `%${ntgt}%`,
-            notes: notes && `%${notes}%`,
-            q,
-            translationProvider: translationProvider && `%${translationProvider}%`,
-        });
-        logVerbose`Returned TM search results for ${data.length} entries`;
-        res.json({ data, page: pageInt, limit: limitInt });
+        try {
+            const { sourceLang, targetLang, page, limit, guid, nid, jobGuid, rid, sid, channel, nsrc, ntgt, notes, tconf, q, translationProvider, onlyTNotes, minTS, maxTS } = req.query;
+            const tm = mm.tmm.getTM(sourceLang, targetLang);
+            const limitInt = limit ? parseInt(limit, 10) : 100;
+            const pageInt = page ? parseInt(page, 10) : 1;
+            const offset = (pageInt - 1) * limitInt;
+            const data = await tm.search(offset, limitInt, {
+                guid: processSearchTerm(guid),
+                nid: processSearchTerm(nid),
+                jobGuid: processSearchTerm(jobGuid),
+                rid: processSearchTerm(rid),
+                sid: processSearchTerm(sid),
+                channel: processSearchTerm(channel),
+                nsrc: processSearchTerm(nsrc),
+                ntgt: processSearchTerm(ntgt),
+                notes: processSearchTerm(notes),
+                tconf: processSearchTerm(tconf),
+                q,
+                minTS,
+                maxTS,
+                translationProvider: processSearchTerm(translationProvider),
+                onlyTNotes: onlyTNotes === '1',
+            });
+            logVerbose`Returned TM search results for ${data.length} entries`;
+            res.json({ data, page: pageInt, limit: limitInt });
+        } catch (error) {
+            logInfo`Error in /tm/search: ${error.message}`;
+            res.status(500).json({
+                error: 'Failed to search translation memory',
+                message: error.message
+            });
+        }
     });
 
     router.get('/tm/job/:jobGuid', async (req, res) => {
@@ -68,4 +130,5 @@ export function setupTmRoutes(router, mm) {
             });
         }
     });
+
 }

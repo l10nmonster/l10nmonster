@@ -5,7 +5,7 @@ export class ops_update {
         description: 'update pending translation jobs.',
     };
 
-    static async action(mm, options) {
+    static async action(mm) {
         const response = {};
         const pairs = await mm.tmm.getAvailableLangPairs();
         if (pairs.length === 0) {

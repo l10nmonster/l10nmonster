@@ -24,6 +24,7 @@ function underlineString(str, runningLength) {
 // e.g. encodeNumber(26, 9372, job.jobId) or encodeNumber(52, 9398, tuIdx)
 
 export class Visicode extends BaseTranslationProvider {
+    
     /**
      * Initializes a new instance of the Visicode class.
      * @param {Object} options - The parameters for the constructor.
@@ -38,7 +39,7 @@ export class Visicode extends BaseTranslationProvider {
         super(options);
     }
 
-    getTranslatedTus(job) {
+    async getTranslatedTus(job) {
         const ts = getRegressionMode() ? 1 : new Date().getTime();
         return job.tus.map(tu => {
             const translation = { guid: tu.guid, ts };

@@ -1,6 +1,4 @@
-import { getRegressionMode, logVerbose, logInfo, logWarn } from '../l10nContext.js';
-import { TU } from '../entities/tu.js';
-import { utils } from '../helpers/index.js';
+import { logVerbose, logInfo, logWarn } from '../l10nContext.js';
 
 export default class Dispatcher {
     #providerPipeline;
@@ -56,26 +54,28 @@ export default class Dispatcher {
     async startJobs(jobs, options) {
         const startedJobs = [];
         for (const job of jobs) {
-            job.jobGuid = this.#tmm.generateJobGuid();
+            job.jobGuid = await this.#tmm.generateJobGuid();
             options.instructions && (job.instructions = options.instructions);
             const provider = this.getProvider(job.translationProvider);
             logInfo`Starting job ${job.jobGuid} with provider ${job.translationProvider}...`;
             const jobResponse = { ...await provider.start(job) };
-            await this.processJob(jobResponse, job);
-            const { sourceLang, targetLang, jobGuid, translationProvider, status } = jobResponse;
-            startedJobs.push({ sourceLang, targetLang, jobGuid, translationProvider, status });
+            const blockIterator = provider.processJob(jobResponse, job);
+            blockIterator && await this.#tmm.saveTmBlock(blockIterator);
+            const { sourceLang, targetLang, jobGuid, translationProvider, status, statusDescription } = jobResponse;
+            startedJobs.push({ sourceLang, targetLang, jobGuid, translationProvider, status, statusDescription });
         }
         return startedJobs;
     }
 
-    async updateJob(jobGuid, options) {
+    async updateJob(jobGuid) {
         const pendingJob = await this.#tmm.getJob(jobGuid);
         if (pendingJob.status === 'pending') {
             logInfo`Updating job ${jobGuid}...`;
             const provider = this.getProvider(pendingJob.translationProvider);
             const jobResponse = await provider.continue(pendingJob);
             if (jobResponse) {
-                await this.processJob(jobResponse, pendingJob);
+                const blockIterator = provider.processJob(jobResponse, pendingJob);
+                blockIterator && await this.#tmm.saveTmBlock(blockIterator);
                 logVerbose`Got status ${jobResponse.status} with ${jobResponse.tus.length} ${[jobResponse.tus, 'tu', 'tus']} segments for job ${jobGuid} and ${jobResponse.inflight?.length ?? 0} ${[jobResponse.inflight?.length ?? 0, 'tu', 'tus']} in flight`;
                 if (jobResponse?.status === 'pending') {
                     logInfo`Got ${jobResponse.tus.length} translations for job ${pendingJob.jobGuid} but there are still ${jobResponse.inflight?.length} translations in flight`;
@@ -104,41 +104,5 @@ export default class Dispatcher {
             return jobResponse;
         }
         throw new Error(`Can't update job ${jobGuid} because it is not pending`);
-    }
-
-    // use cases:
-    //   1 - both are passed as both are created at the same time -> may cancel if response is empty
-    //   2 - only jobRequest is passed because it's blocked -> write if "blocked", cancel if "created"
-    //   3 - only jobResponse is passed because it's pulled -> must write even if empty or it will show as blocked/pending
-    async processJob(jobResponse, jobRequest) {
-        if (jobResponse?.status === 'cancelled') {
-            return;
-        }
-        if (jobRequest && jobResponse) {
-            if (jobResponse.status === 'created' && !(jobResponse.tus?.length > 0 || jobResponse.inflight?.length > 0)) {
-                jobResponse.status = 'cancelled';
-                return;
-            }
-        }
-        if (jobRequest && !jobResponse && jobRequest.status === 'created') {
-            jobRequest.status = 'cancelled';
-            return;
-        }
-        const updatedAt = (getRegressionMode() ? new Date('2022-05-29T00:00:00.000Z') : new Date()).toISOString();
-        if (jobRequest) {
-            jobRequest.updatedAt = updatedAt;
-            if (jobResponse) {
-                const guidsInFlight = jobResponse.inflight ?? [];
-                const translatedGuids = jobResponse?.tus?.map(tu => tu.guid) ?? [];
-                const acceptedGuids = new Set(guidsInFlight.concat(translatedGuids));
-                jobRequest.tus = jobRequest.tus.filter(tu => acceptedGuids.has(tu.guid));
-            }
-            jobRequest.tus = jobRequest.tus.map(TU.asSource);
-        }
-        if (jobResponse) {
-            jobResponse.updatedAt = updatedAt;
-            jobResponse.tus && (jobResponse.tus = jobResponse.tus.map(TU.asTarget));
-        }
-        await this.#tmm.saveTmBlock(utils.getIteratorFromJobPair(jobRequest, jobResponse));
     }
 }

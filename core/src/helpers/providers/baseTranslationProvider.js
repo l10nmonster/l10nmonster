@@ -2,6 +2,7 @@
 import { getRegressionMode, logVerbose, logWarn } from '../../l10nContext.js';
 import * as utils from '../utils.js';
 import * as opsManager from '../../opsManager/index.js';
+import { TU } from '../../entities/tu.js';
 
 /**
  * Configuration options for initializing a BaseTranslationProvider.
@@ -26,32 +27,14 @@ export class BaseTranslationProvider {
     defaultInstructions;
     quality;
     translationGroup;
-    statusProperties = {
-        'created': {
-            actions: [ 'start' ],
-            description: 'Job ready to be started',
-        },
-        'pending': {
-            actions: [ 'continue' ],
-            description: 'Job pending completion',
-        },
-        'done': {
-            actions: [],
-            description: 'Job completed',
-        },
-        'cancelled': {
-            actions: [],
-            description: 'Job cancelled',
-        },
-    };
 
     #id;
-    #costPerWord;
-    #costPerMChar;
-    #minWordQuota;
-    #maxWordQuota;
-    #saveIdenticalEntries;
-    #supportedPairs;
+    costPerWord;
+    costPerMChar;
+    minWordQuota;
+    maxWordQuota;
+    saveIdenticalEntries;
+    supportedPairs;
     #executeOptions;
 
     /**
@@ -63,15 +46,38 @@ export class BaseTranslationProvider {
         this.quality = quality;
         this.translationGroup = translationGroup;
         this.defaultInstructions = defaultInstructions;
-        this.#minWordQuota = minWordQuota;
-        this.#maxWordQuota = maxWordQuota;
-        this.#supportedPairs = supportedPairs;
-        this.#costPerWord = costPerWord ?? 0;
-        this.#costPerMChar = costPerMChar ?? 0;
-        this.#saveIdenticalEntries = saveIdenticalEntries;
+        this.minWordQuota = minWordQuota;
+        this.maxWordQuota = maxWordQuota;
+        this.supportedPairs = supportedPairs;
+        this.costPerWord = costPerWord ?? 0;
+        this.costPerMChar = costPerMChar ?? 0;
+        this.saveIdenticalEntries = saveIdenticalEntries;
         this.#executeOptions = parallelism ? { parallelism } : {};
         
-        // Define mm as non-enumerable property
+        // Define as non-enumerable properties so they are not included in the output of the info() method
+        Object.defineProperty(this, 'statusProperties', {
+            writable: true,
+            enumerable: false,
+            configurable: true,
+        });
+        this.statusProperties = {
+            'created': {
+                actions: [ 'start' ],
+                description: 'Job ready to be started',
+            },
+            'pending': {
+                actions: [ 'continue' ],
+                description: 'Job pending completion',
+            },
+            'done': {
+                actions: [],
+                description: 'Job completed',
+            },
+            'cancelled': {
+                actions: [],
+                description: 'Job cancelled',
+            },
+        };
         Object.defineProperty(this, 'mm', {
             writable: true,
             enumerable: false,
@@ -94,7 +100,7 @@ export class BaseTranslationProvider {
         }
         // by default take any job in the supported pairs and above the minimum quality
         let acceptedTus = [];
-        if (!this.#supportedPairs || this.#supportedPairs[job.sourceLang]?.includes(job.targetLang)) {
+        if (!this.supportedPairs || this.supportedPairs[job.sourceLang]?.includes(job.targetLang)) {
             if (skipQualityCheck || !this.quality) {
                 acceptedTus = job.tus;
             } else {
@@ -118,19 +124,21 @@ export class BaseTranslationProvider {
             acceptedTus = await this.getAcceptedTus({ ...job, tus: acceptedTus });
         }
         const totalWords = acceptedTus.reduce((total, tu) => total + (tu.words ?? 0), 0);
-        if (this.#minWordQuota !== undefined && acceptedTus.length > 0 && totalWords < this.#minWordQuota) {
-            logVerbose`${this.id} provider rejected job because it has too few words (${totalWords} < ${this.#minWordQuota})`;
+        if (this.minWordQuota !== undefined && acceptedTus.length > 0 && totalWords < this.minWordQuota) {
+            logVerbose`${this.id} provider rejected job because it has too few words (${totalWords} < ${this.minWordQuota})`;
             acceptedTus = [];
         }
-        if (this.#maxWordQuota !== undefined && acceptedTus.length > 0 && totalWords > this.#maxWordQuota) {
-            logVerbose`${this.id} provider rejected job because it has too many words (${totalWords} > ${this.#maxWordQuota})`;
+        if (this.maxWordQuota !== undefined && acceptedTus.length > 0 && totalWords > this.maxWordQuota) {
+            logVerbose`${this.id} provider rejected job because it has too many words (${totalWords} > ${this.maxWordQuota})`;
             acceptedTus = [];
         }
-        const estimatedCost = acceptedTus.reduce((total, tu) => total + (tu.words ?? 0) * this.#costPerWord + ((tu.chars ?? 0) / 1000000) * this.#costPerMChar, 0);
+        const estimatedCost = acceptedTus.reduce((total, tu) => total + (tu.words ?? 0) * this.costPerWord + ((tu.chars ?? 0) / 1000000) * this.costPerMChar, 0);
         if (acceptedTus.length > 0) {
             logVerbose`${this.id} provider accepted ${acceptedTus.length} TUs (words: ${totalWords}, cost: ${estimatedCost})`;
         }
-        return { ...job, status: acceptedTus.length > 0 ? 'created' : 'cancelled', tus: acceptedTus, estimatedCost };
+        const status = acceptedTus.length > 0 ? 'created' : 'cancelled';
+        job.statusDescription ??= this.statusProperties[status]?.description;
+        return { ...job, status, tus: acceptedTus, estimatedCost };
     }
 
     // by default providers are synchronous and they are done once they are started
@@ -139,13 +147,12 @@ export class BaseTranslationProvider {
         if (!statusProperties || !statusProperties.actions.includes('start')) {
             throw new Error(`Cannot start jobs that are in the "${job.status}" state`);
         }
-        let jobResponse = { ...job, status: 'done' }; // return a shallow copy to be used as a response
+        let jobResponse = { ...job, status: 'done', statusDescription: this.statusProperties.done.description }; // return a shallow copy to be used as a response
         if (this.getTranslatedTus !== BaseTranslationProvider.prototype.getTranslatedTus) {
             logVerbose`${this.id} provider translating job ${job.jobGuid} using getTranslatedTus() method`;
-            jobResponse.tus = this.getTranslatedTus(job);
+            jobResponse.tus = await this.getTranslatedTus(job);
         } else if (this.createTask !== BaseTranslationProvider.prototype.createTask) {
             const task = this.createTask(jobResponse);
-            jobResponse.taskName = getRegressionMode() ? 'x' : task.taskName;
             logVerbose`${this.id} provider translating job ${job.jobGuid} using task ${task.taskName}`;
             try {
                 jobResponse = await task.execute(this.#executeOptions);
@@ -155,19 +162,22 @@ export class BaseTranslationProvider {
                     jobResponse.inflight = jobResponse.tus.map(tu => tu.guid);
                     jobResponse.tus = undefined;
                     jobResponse.status = 'pending';
+                    jobResponse.statusDescription = this.statusProperties.pending.description;
                 } else {
                     throw e;
                 }
             }
+            jobResponse.taskName = getRegressionMode() ? 'x' : task.taskName;
         }
 
         // remove translations identical to latest TM entry
         const tm = this.mm.tmm.getTM(jobResponse.sourceLang, jobResponse.targetLang);
-        if (!this.#saveIdenticalEntries && jobResponse.tus) {
+        if (!this.saveIdenticalEntries && jobResponse.tus) {
             const tusToDedupe = jobResponse.tus;
             jobResponse.tus = [];
+            const existingEntries = await tm.getEntries(tusToDedupe.map(tu => tu.guid));
             for (const sourceTu of tusToDedupe) {
-                const existingEntry = tm.getEntryByGuid(sourceTu.guid);
+                const existingEntry = existingEntries[sourceTu.guid];
                 if (!existingEntry || (!existingEntry.inflight && !utils.normalizedStringsAreEqual(existingEntry.ntgt, sourceTu.ntgt))) {
                     jobResponse.tus.push(sourceTu);
                 }
@@ -200,12 +210,42 @@ export class BaseTranslationProvider {
         return job;
     }
 
-    describe(job) {
-        const statusProperties = this.statusProperties[job.status];
-        if (!statusProperties) {
-            throw new Error(`Cannot describe job ${job.jobGuid} in unsupported "${job.status}" state`);
+        // use cases:
+    //   1 - both are passed as both are created at the same time -> may cancel if response is empty
+    //   2 - only jobRequest is passed because it's blocked -> write if "blocked", cancel if "created"
+    //   3 - only jobResponse is passed because it's pulled -> must write even if empty or it will show as blocked/pending
+    processJob(jobResponse, jobRequest) {
+        if (jobResponse?.status === 'cancelled') {
+            return;
         }
-        return statusProperties;
+        if (jobRequest && jobResponse) {
+            if (jobResponse.status === 'created' && !(jobResponse.tus?.length > 0 || jobResponse.inflight?.length > 0)) {
+                jobResponse.status = 'cancelled';
+                jobResponse.statusDescription = this.statusProperties.cancelled.description;
+                return;
+            }
+        }
+        if (jobRequest && !jobResponse && jobRequest.status === 'created') {
+            jobRequest.status = 'cancelled';
+            jobRequest.statusDescription = this.statusProperties.cancelled.description;
+            return;
+        }
+        const updatedAt = (getRegressionMode() ? new Date('2022-05-29T00:00:00.000Z') : new Date()).toISOString();
+        if (jobRequest) {
+            jobRequest.updatedAt = updatedAt;
+            if (jobResponse) {
+                const guidsInFlight = jobResponse.inflight ?? [];
+                const translatedGuids = jobResponse?.tus?.map(tu => tu.guid) ?? [];
+                const acceptedGuids = new Set(guidsInFlight.concat(translatedGuids));
+                jobRequest.tus = jobRequest.tus.filter(tu => acceptedGuids.has(tu.guid));
+            }
+            jobRequest.tus = jobRequest.tus.map(TU.asSource);
+        }
+        if (jobResponse) {
+            jobResponse.updatedAt = updatedAt;
+            jobResponse.tus && (jobResponse.tus = jobResponse.tus.map(TU.asTarget));
+        }
+        return utils.getIteratorFromJobPair(jobRequest, jobResponse);
     }
 
     async info() {
@@ -213,9 +253,9 @@ export class BaseTranslationProvider {
             id: this.id,
             type: this.constructor.name,
             quality: this.quality,
-            supportedPairs: this.#supportedPairs,
-            costPerWord: this.#costPerWord,
-            costPerMChar: this.#costPerMChar,
+            supportedPairs: this.supportedPairs,
+            costPerWord: this.costPerWord,
+            costPerMChar: this.costPerMChar,
             description: [],
         };
     }
@@ -232,6 +272,7 @@ export class BaseTranslationProvider {
      * @param {Record<string, any>} job - The job request.
      * @returns {Promise<any[]>} A promise resolving to an array of accepted TUs.
      */
+    // eslint-disable-next-line no-unused-vars
     async getAcceptedTus(job) {
         throw new Error('Not implemented');
     }
@@ -240,9 +281,10 @@ export class BaseTranslationProvider {
      * Get the translated TUs.
      *
      * @param {Record<string, any>} job - The job request.
-     * @returns {any[]} The array of translated TUs.
+     * @returns {Promise<any[]>} The array of translated TUs.
      */
-    getTranslatedTus(job) {
+    // eslint-disable-next-line no-unused-vars
+    async getTranslatedTus(job) {
         throw new Error('Not implemented');
     }
 
@@ -252,6 +294,7 @@ export class BaseTranslationProvider {
      * @param {Record<string, any>} job - The job request.
      * @returns {Record<string, any>} The task to execute.
      */
+    // eslint-disable-next-line no-unused-vars
     createTask(job) {
         throw new Error('Not implemented');
     }

@@ -54,15 +54,16 @@ export class LanguageVariantProvider extends BaseTranslationProvider {
         return str.replace(wordMatcher, word => this.#translateWord(word));
     }
 
-    getTranslatedTus(job) {
-        let tm;
+    async getTranslatedTus(job) {
+        let translations;
         if (this.#baseLang !== job.sourceLang) {
-            tm = this.mm.tmm.getTM(job.sourceLang, this.#baseLang);
+            const tm = this.mm.tmm.getTM(job.sourceLang, this.#baseLang);
+            translations = await tm.getEntries(job.tus.map(tu => tu.guid));
         }
         const ts = getRegressionMode() ? 1 : new Date().getTime();
         this.#replacedWords = new Set();
         return job.tus.map(tu => {
-            const baseTranslation = tm ? tm.getEntryByGuid(tu.guid)?.ntgt : tu.nsrc;
+            const baseTranslation = translations ? translations[tu.guid]?.ntgt : tu.nsrc;
             if (baseTranslation) {
                 let changed = false;
                 const ntgt = [];
@@ -84,6 +85,7 @@ export class LanguageVariantProvider extends BaseTranslationProvider {
                     };
                 }
             }
+            return undefined;
         }).filter(Boolean);
     }
 }

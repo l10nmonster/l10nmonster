@@ -1,7 +1,6 @@
 import { consoleLog } from '../l10nContext.js';
 import { FsJsonlTmStore } from '../helpers/stores/fsTmStores.js';
 
-// eslint-disable-next-line camelcase
 export class tm_export {
     static help = {
         description: 'exports jobs to jsonl files.',

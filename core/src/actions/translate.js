@@ -1,5 +1,5 @@
-/* eslint-disable no-nested-ternary */
-import { consoleLog, logVerbose } from '../l10nContext.js';
+/* eslint-disable complexity */
+import { consoleLog, logInfo, logVerbose } from '../l10nContext.js';
 
 function computeDelta(currentTranslations, newTranslations) {
     const delta = [];
@@ -68,47 +68,53 @@ export class translate {
             [ '[mode]', 'commit all/changed/none of the translations', ['all', 'delta', 'dryrun'] ],
         ],
         options: [
-            [ '-l, --lang <language>', 'target language to translate' ],
-            [ '-c, --channel <channel1,...>', 'limit translations to specified channels' ],
-            [ '-p, --prj <prj1,...>', 'limit translations to specified projects' ],
+            [ '--lang <language>', 'target language to translate' ],
+            [ '--channel <channel1,...>', 'limit translations to specified channels' ],
+            [ '--prj <prj1,...>', 'limit translations to specified projects' ],
         ]
     };
 
     static async action(mm, options) {
         const mode = (options.mode ?? 'all').toLowerCase();
-        const channel = options.channel ? (Array.isArray(options.channel) ? options.channel : options.channel.split(',')) : undefined;
+        const channels = options.channel ? (Array.isArray(options.channel) ? options.channel : options.channel.split(',')) : mm.rm.channelIds;
         const prj = options.prj ? (Array.isArray(options.prj) ? options.prj : options.prj.split(',')) : undefined;
+        if (Array.isArray(prj) && channels.length > 1) {
+            throw new Error('Cannot specify projects with more than one channel');
+        }
         consoleLog`Generating translated resources for ${options.lang ? options.lang : 'all languages'}... (${mode} mode)`;
         const response = { lang: {} };
-        const targetLangs = await mm.getTargetLangs(options.lang);
-        const allResources = await mm.rm.getAllResources({ keepRaw: true, channel, prj });
-        for await (const resHandle of allResources) {
-            for (const targetLang of targetLangs) {
-                if (resHandle.targetLangs.includes(targetLang)) {
-                    const resourceStatus = { id: resHandle.id };
-                    const tm = mm.tmm.getTM(resHandle.sourceLang, targetLang);
-                    const translatedRes = await resHandle.generateTranslatedRawResource(tm);
-                    let bundleChanges, delta;
-                    if (mode === 'delta' || mode === 'dryrun') {
-                        [ bundleChanges, delta ] = await compareToExisting(mm, resHandle, targetLang, translatedRes);
-                        resourceStatus.status = bundleChanges;
-                        resourceStatus.delta = delta;
+        for (const channelId of channels) {
+            const targetLangs = await mm.rm.getDesiredTargetLangs(channelId, options.lang);
+            logInfo`Generating translated resources for channel ${channelId}...`;
+            const allResources = mm.rm.getAllResources(channelId, { keepRaw: true, prj });
+            for await (const resHandle of allResources) {
+                for (const targetLang of targetLangs) {
+                    if (resHandle.targetLangs.includes(targetLang)) {
+                        const resourceStatus = { id: resHandle.id };
+                        const tm = mm.tmm.getTM(resHandle.sourceLang, targetLang);
+                        const translatedRes = await resHandle.generateTranslatedRawResource(tm);
+                        let bundleChanges, delta;
+                        if (mode === 'delta' || mode === 'dryrun') {
+                            [ bundleChanges, delta ] = await compareToExisting(mm, resHandle, targetLang, translatedRes);
+                            resourceStatus.status = bundleChanges;
+                            resourceStatus.delta = delta;
+                        }
+                        if (mode === 'dryrun') {
+                            printChanges(resHandle, targetLang, bundleChanges, delta);
+                        // delta mode commits translations if segments have changed, or translations are new or deleted
+                        } else if (mode === 'all' || bundleChanges === 'changed' || bundleChanges === 'new' || bundleChanges === 'deleted') {
+                            const translatedResourceId = await mm.rm.getChannel(resHandle.channel)
+                                .commitTranslatedResource(targetLang, resHandle.id, translatedRes);
+                            resourceStatus.status = translatedRes === null ? 'deleted' : 'generated';
+                            resourceStatus.translatedId = translatedResourceId;
+                            logVerbose`Committed translated resource: ${translatedResourceId}`;
+                        } else {
+                            logVerbose`Delta mode skipped translation of bundle ${resHandle.channel}:${resHandle.id} for ${targetLang}`;
+                            resourceStatus.status = 'skipped';
+                        }
+                        response.lang[targetLang] ??= { resourceStatus: []};
+                        response.lang[targetLang].resourceStatus.push(resourceStatus);
                     }
-                    if (mode === 'dryrun') {
-                        printChanges(resHandle, targetLang, bundleChanges, delta);
-                    // delta mode commits translations if segments have changed, or translations are new or deleted
-                    } else if (mode === 'all' || bundleChanges === 'changed' || bundleChanges === 'new' || bundleChanges === 'deleted') {
-                        const translatedResourceId = await mm.rm.getChannel(resHandle.channel)
-                            .commitTranslatedResource(targetLang, resHandle.id, translatedRes);
-                        resourceStatus.status = translatedRes === null ? 'deleted' : 'generated';
-                        resourceStatus.translatedId = translatedResourceId;
-                        logVerbose`Committed translated resource: ${translatedResourceId}`;
-                    } else {
-                        logVerbose`Delta mode skipped translation of bundle ${resHandle.channel}:${resHandle.id} for ${targetLang}`;
-                        resourceStatus.status = 'skipped';
-                    }
-                    response.lang[targetLang] ??= { resourceStatus: []};
-                    response.lang[targetLang].resourceStatus.push(resourceStatus);
                 }
             }
         }

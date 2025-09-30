@@ -202,6 +202,7 @@ export class BaseJsonlTmStore {
                     for await (const job of tmBlockIterator) {
                         const { jobProps, tus } = job;
                         jobs[jobProps.jobGuid] = jobProps.updatedAt;
+                        // eslint-disable-next-line no-unused-vars
                         const { sourceLang, targetLang, ...otherJobProps } = jobProps; // remove sourceLang and targetLang from jobProps as they are already in the path
                         const out = [];
                         tus.forEach((tu, idx) => {

@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-npx l10n --regression -v2 source untranslated --push --provider Grandfather
+npx l10n --regression -v2 source untranslated --push --provider Grandfather --limit 10000
 npx l10n --regression -v2 source untranslated --push --provider Repetition,PigLatinizer
 npx l10n --regression -v2 translate all
 npx l10n --regression -v2 source list --statusFile status.json

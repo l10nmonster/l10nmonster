@@ -10,15 +10,22 @@ export class analyze {
             [ '[params...]', 'optional parameters to the analyzer' ],
         ],
         options: [
-            [ '-l, --lang <language>', 'target language to analyze (if TM analyzer)' ],
+            [ '--channel <channel1,...>', 'limit translations to specified channels' ],
+            [ '--prj <prj1,...>', 'limit translations to specified projects' ],
+            [ '--lang <language>', 'target language to analyze (if TM analyzer)' ],
             [ '--output <filename>', 'filename to write the analysis to' ],
         ]
     };
 
-    static async action(monsterManager, options) {
+    static async action(mm, options) {
+        const channels = options.channel ? (Array.isArray(options.channel) ? options.channel : options.channel.split(',')) : mm.rm.channelIds;
+        const prj = options.prj ? (Array.isArray(options.prj) ? options.prj : options.prj.split(',')) : undefined;
+        if (Array.isArray(prj) && channels.length > 1) {
+            throw new Error('Cannot specify projects with more than one channel');
+        }
         try {
             if (options.analyzer) {
-                const analysis = await monsterManager.analyze(options.analyzer, options.params, options.lang);
+                const analysis = await mm.analyze(options.analyzer, options.params, options.lang);
                 const header = analysis.head;
                 if (options.output) {
                     const rows = header ? [ header, ...analysis.body].map(row => row.join(',')) : analysis.body;
@@ -53,7 +60,7 @@ export class analyze {
                 }
             } else {
                 console.log('Available analyzers:');
-                for (const [name, analyzer] of Object.entries(monsterManager.analyzers)) {
+                for (const [name, analyzer] of Object.entries(mm.analyzers)) {
                     console.log(`  ${typeof analyzer.prototype.processSegment === 'function' ? '(src)' : ' (tu)'} ${consoleColor.bright}${name} ${analyzer.helpParams ?? ''}${consoleColor.reset} ${analyzer.help}`);
                 }
             }

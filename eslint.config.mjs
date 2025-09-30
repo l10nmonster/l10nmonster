@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import js from "@eslint/js";
 import { FlatCompat } from "@eslint/eslintrc";
+import promisePlugin from "eslint-plugin-promise";
 
 const compat = new FlatCompat({
     baseDirectory: path.dirname(fileURLToPath(import.meta.url)),
@@ -22,6 +23,9 @@ export default [
         ecmaVersion: "latest",
         sourceType: "module",
     },
+    plugins: {
+        promise: promisePlugin
+    },
     rules: {
         "accessor-pairs": "error",
         "array-bracket-newline": "off",
@@ -34,7 +38,7 @@ export default [
         "block-scoped-var": "error",
         "block-spacing": "error",
         "brace-style": ["error", "1tbs"],
-        camelcase: "error",
+        camelcase: "off",
         "capitalized-comments": "off",
         "class-methods-use-this": "off",
         "comma-dangle": "off",
@@ -103,7 +107,7 @@ export default [
         "no-confusing-arrow": "error",
         "no-console": "off",
         "no-constructor-return": "error",
-        "no-continue": "error",
+        "no-continue": "off",
         "no-div-regex": "error",
         "no-duplicate-imports": "error",
         "no-else-return": "off",
@@ -136,8 +140,8 @@ export default [
 
         "no-multi-str": "error",
         "no-multiple-empty-lines": "error",
-        "no-negated-condition": "error",
-        "no-nested-ternary": "error",
+        "no-negated-condition": "off",
+        "no-nested-ternary": "off",
         "no-new": "error",
         "no-new-func": "error",
         "no-new-object": "error",
@@ -232,5 +236,19 @@ export default [
         "wrap-regex": "error",
         "yield-star-spacing": "error",
         yoda: ["error", "never"],
+        
+        // Promise handling rules
+        "promise/always-return": "error",
+        "promise/catch-or-return": "error",
+        "promise/no-return-wrap": "error",
+        "promise/param-names": "error",
+        "promise/valid-params": "error",
+        "promise/no-nesting": "warn",
+        "promise/no-promise-in-callback": "warn",
+        "promise/no-callback-in-promise": "warn",
+        "promise/avoid-new": "off", // Allow new Promise() when needed
+        "promise/no-new-statics": "error",
+        "promise/no-return-in-finally": "warn",
+        "promise/prefer-await-to-then": "warn",
     },
 }];

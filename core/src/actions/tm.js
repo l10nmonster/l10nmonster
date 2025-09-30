@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { tm_syncup } from './tm_syncup.js';
 import { tm_syncdown } from './tm_syncdown.js';
 import { tm_list } from './tm_list.js';

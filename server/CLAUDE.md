@@ -206,6 +206,7 @@ borderColor="border.default"  // Default border color
 - **Before using any component**, check the official Chakra UI v3 documentation
 - **Never assume** v2 patterns will work in v3
 - Use the MCP Context7 tool to get up-to-date documentation
+- **Use the Chakra UI MCP server** - This project has access to specialized Chakra UI MCP tools for getting component examples, props, themes, and migration guidance
 
 ### 2. Common Pitfalls to Avoid
 - Don't use `isChecked`, use `checked`
@@ -279,6 +280,14 @@ import { Checkbox } from '@chakra-ui/react'
 - [Chakra UI v3 Migration Guide](https://v3.chakra-ui.com/docs/migration)
 - [Chakra UI v3 Components](https://v3.chakra-ui.com/docs/components)
 - Use MCP Context7 tool with library ID `/llmstxt/chakra-ui-llms-full.txt` for latest docs
+- **Chakra UI MCP Server Tools:**
+  - `mcp__chakra-ui__get_component_props` - Get component properties and configuration options
+  - `mcp__chakra-ui__get_component_example` - Get practical implementation examples with code snippets
+  - `mcp__chakra-ui__list_components` - List all available Chakra UI components
+  - `mcp__chakra-ui__get_theme` - Retrieve theme specification (colors, fonts, textStyles)
+  - `mcp__chakra-ui__customize_theme` - Setup custom theme tokens
+  - `mcp__chakra-ui__v2_to_v3_code_review` - Get migration guidance for specific v2→v3 scenarios
+  - `mcp__chakra-ui__installation` - Get setup instructions for different frameworks
 
 ## Data Fetching Architecture
 
@@ -334,7 +343,6 @@ Use consistent query keys that include all relevant parameters:
 // ✅ Good query keys - include all parameters that affect the data
 queryKey: ['status']
 queryKey: ['tmStats'] 
-queryKey: ['activeContentStats']
 queryKey: ['info']
 queryKey: ['tmSearch', sourceLang, targetLang, filters]
 
@@ -605,11 +613,11 @@ Routes are organized by functionality in separate files under `/server/routes/`:
 ```
 /server/routes/
 ├── info.js          # System information endpoints
-├── status.js        # Project status endpoints  
-├── sources.js       # Content source endpoints
+├── status.js        # Project status endpoints
+├── sources.js       # Source content (channels, projects, resources)
 ├── tm.js           # Translation memory endpoints
 ├── providers.js     # Translation provider endpoints
-└── dispatcher.js    # Job creation endpoints
+└── dispatcher.js    # Job creation and management
 ```
 
 ### Available Endpoints
@@ -620,23 +628,40 @@ Routes are organized by functionality in separate files under `/server/routes/`:
   - `providers`: Array of available provider IDs
   - `config`: System configuration
 
-#### Project Status  
+#### Project Status
 - **GET `/api/status`** - Returns project status and statistics
 
-#### Content Sources
-- **GET `/api/activeContentStats`** - Returns statistics about active content sources grouped by channel
+#### Source Content
+- **GET `/api/channel/:channelId`** - Returns channel metadata and active content statistics
+  - **Response:** `{ ts: number, store: string, projects: [...] }`
+- **GET `/api/channel/:channelId/:prj`** - Returns project table of contents
+  - **Query Parameters:** `offset`, `limit` (pagination)
+  - **Response:** Array of resource handles for the project
+- **GET `/api/resource/:channelId?rid=<resourceId>`** - Returns resource details with segments
+  - **Query Parameters:** `rid` (required) - Resource ID
+  - **Response:** Resource handle with segments array
 
 #### Translation Memory
-- **GET `/api/tm/stats`** - Returns translation memory statistics for all language pairs
-- **GET `/api/tm/search`** - Search translation memory entries
+- **GET `/api/tm/stats`** - Returns available language pairs (sorted array)
+- **GET `/api/tm/stats/:sourceLang/:targetLang`** - Returns TM statistics for specific language pair
+  - **Response:** Statistics object with counts, quality distribution, etc.
+- **GET `/api/tm/lowCardinalityColumns/:sourceLang/:targetLang`** - Returns available filter options
+  - **Response:** `{ channel: [...], translationProvider: [...], ... }`
+- **GET `/api/tm/search`** - Search translation memory entries with advanced filtering
   - **Query Parameters:**
     - `sourceLang`, `targetLang` (required)
-    - `page`, `limit` (pagination)
-    - `guid`, `jobGuid`, `rid`, `sid` (filtering)
-    - `nsrc`, `ntgt` (source/target text filtering)
+    - `page`, `limit` (pagination, default: page=1, limit=100)
+    - `guid`, `nid`, `jobGuid`, `rid`, `sid`, `channel` (exact or partial match)
+    - `nsrc`, `ntgt`, `notes`, `tconf` (text search - supports quoted exact match)
     - `q` (quality score filtering)
     - `translationProvider` (provider filtering)
+    - `onlyTNotes` (boolean: "1" to show only TUs with translator notes)
+    - `minTS`, `maxTS` (timestamp range filtering - milliseconds since epoch)
+  - **Text Search:** Use quotes for exact match (e.g., `nsrc="hello world"`), otherwise partial match
+  - **Date Range Filtering:** Filter by timestamp range using minTS and maxTS (milliseconds). UI displays clickable date range (M/D format without leading zeros, uses current year). Click to open popover with From/To date pickers and Apply/Clear buttons.
   - **Response:** `{ data: [...], page: number, limit: number }`
+- **GET `/api/tm/job/:jobGuid`** - Returns job details by GUID
+  - **Response:** Job object with metadata, TUs, timestamps, etc.
 
 #### Translation Providers
 - **GET `/api/providers`** - Returns detailed provider information (slower)
@@ -731,6 +756,48 @@ The job management system follows a two-step process:
    - Actually initiates the translation process
    - Returns status information for tracking job progress
 
+## Production Build Configuration
+
+The Vite build is configured with a hybrid chunking strategy for optimal performance:
+
+```javascript
+// vite.config.js
+build: {
+  rollupOptions: {
+    output: {
+      manualChunks: (id) => {
+        // All node_modules in one vendor bundle
+        if (id.includes('node_modules')) {
+          return 'vendor';
+        }
+        // Bundle utility files with index instead of creating tiny chunks
+        if (id.includes('/utils/') || id.includes('/src/components/')) {
+          return 'index';
+        }
+        // Pages remain separate for lazy loading
+      }
+    }
+  }
+}
+```
+
+**Build Output:**
+- **1 vendor bundle** (~725 KB / 210 KB gzipped) - All dependencies (React, Chakra UI, React Router, etc.)
+- **1 index bundle** (~28 KB) - App core, utilities, and shared components
+- **~11 page chunks** (1-17 KB each) - Individual pages for code splitting
+
+**Benefits:**
+- ✅ Vendor bundle rarely changes (excellent for caching)
+- ✅ Pages lazy load independently for faster initial render
+- ✅ Shared components bundled efficiently
+- ✅ Fewer files than default Vite chunking (~16 vs ~40)
+
+**Commands:**
+```bash
+npm run build    # Build production bundle
+npm run preview  # Preview production build locally
+```
+
 ## Remember
 
 **When in doubt:**
@@ -738,3 +805,4 @@ The job management system follows a two-step process:
 2. **Check Chakra UI v3 docs** for component usage
 3. **Use pure React Router** for navigation
 4. **Never guess based on v2 Chakra UI knowledge**
+5. **Use Chakra UI MCP tools** for accurate component examples and props

@@ -19,7 +19,7 @@ export class GCTProvider extends providers.ChunkedRemoteTranslationProvider {
 
     #projectId;
     #location;
-    #model;
+    model;
     #initialized;
 
     /**
@@ -33,7 +33,7 @@ export class GCTProvider extends providers.ChunkedRemoteTranslationProvider {
         super(options);
         this.#projectId = projectId;
         this.#location = location;
-        this.#model = model;
+        this.model = model;
     }
 
     // we initialize on first use so that constructor is fast and doesn't fail if auth is missing
@@ -51,14 +51,14 @@ export class GCTProvider extends providers.ChunkedRemoteTranslationProvider {
             }
         }
         this.#parentPath = `projects/${this.#projectId}/locations/${this.#location ?? 'global'}`;
-        this.#modelPath = `${this.#parentPath}/models/${this.#model === 'llm' ? 'general/translation-llm' : 'general/nmt' }`;
+        this.#modelPath = `${this.#parentPath}/models/${this.model === 'llm' ? 'general/translation-llm' : 'general/nmt'}`;
         const translationClient = new TranslationServiceClient();
         const [ response ] = await translationClient.getSupportedLanguages({ parent: this.#parentPath });
         this.supportedSourceLangs = response.languages.filter(l => l.supportSource).map(l => l.languageCode);
         this.supportedTargetLangs = response.languages.filter(l => l.supportTarget).map(l => l.languageCode);
         if (!this.languageMapper) {
             const supportedLangs = new Set([ ...this.supportedSourceLangs, ...this.supportedTargetLangs ]);
-            this.languageMapper = lang => supportedLangs.has(lang) ? lang : lang.split('-')[0];
+            this.languageMapper = lang => (supportedLangs.has(lang) ? lang : lang.split('-')[0]);
         }
         this.#initialized = true;
     }

@@ -25,7 +25,7 @@ const ProjectCard = ({ project }) => {
   return (
     <Card.Root variant="outline" bg="yellow.subtle">
       <Card.Body>
-        <Text fontSize="lg" fontWeight="semibold" mb={2}>
+        <Text fontSize="sm" fontWeight="semibold" mb={2}>
           {projectName}
         </Text>
         

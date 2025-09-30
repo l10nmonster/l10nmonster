@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import JSZip from 'jszip';
 import puppeteer from 'puppeteer';
 import { logInfo, logVerbose } from '@l10nmonster/core';
@@ -24,7 +25,7 @@ async function extractTextAndMetadataInPageContext() {
 
     const textElements = [];
     const START_MARKER_REGEX = /(?<![''<])\u200B([\uFE00-\uFE0F]+)/g;
-    const END_MARKER = '\u200B';
+    const END_MARKER = '\u200C';
 
     if (!document.body) {
         return { error: 'Document body not found.' };
@@ -221,12 +222,8 @@ export class FlowSnapshotter {
             const job = {
                 sourceLang: tm.sourceLang,
                 targetLang: tm.targetLang,
-                tus: [],
+                tus: Object.values(await tm.getEntries(Array.from(guids))),
             };
-            guids.forEach(guid => {
-                const tu = tm.getEntryByGuid(guid);
-                tu && job.tus.push(tu);
-            });
             if (job.tus.length > 0) {
                 zip.file('job.json', JSON.stringify(job, null, 2));
             }

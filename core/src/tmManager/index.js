@@ -24,9 +24,9 @@ export default class TMManager {
         logVerbose`TMManager initialized`;
     }
 
-    generateJobGuid() {
+    async generateJobGuid() {
         if (getRegressionMode()) {
-            const jobCount = this.#DAL.job.getJobCount();
+            const jobCount = await this.#DAL.job.getJobCount();
             return `xxx${jobCount}xxx`;
         } else {
             return nanoid();
@@ -35,22 +35,12 @@ export default class TMManager {
 
     async saveTmBlock(tmBlockIterator) {
         const jobs = [];
-        const insertJob = this.#DAL.tmTransaction(job => {
-            const { jobProps, tus } = job;
-            this.#DAL.job.setJob(jobProps);
-            jobs.push(jobProps);
-            const tm = this.getTM(jobProps.sourceLang, jobProps.targetLang);
-            tm.deleteEntriesByJobGuid(jobProps.jobGuid);
-            tus.forEach((tu, tuOrder) => tm.setEntry({
-                ...tu,
-                jobGuid: jobProps.jobGuid,
-                tuOrder,
-            }));
-        });
         for await (const job of tmBlockIterator) {
             if (job) {
-                if (job.tus?.length > 0) {
-                    insertJob(job);
+                const { jobProps, tus } = job;
+                if (tus?.length > 0) {
+                    await this.#DAL.tu(jobProps.sourceLang, jobProps.targetLang).saveJob(jobProps, tus);
+                    jobs.push(jobProps);
                 } else {
                     logVerbose`Ignoring empty job ${job.jobGuid}`;
                 }
@@ -59,19 +49,6 @@ export default class TMManager {
             }
         }
         return jobs;
-    }
-
-    async #deleteJobContents(jobGuid) {
-        const job = this.#DAL.job.getJob(jobGuid);
-        if (!job) {
-            throw new Error(`Job ${jobGuid} does not exist`);
-        }
-        const tm = this.getTM(job.sourceLang, job.targetLang);
-        const deleteJob = this.#DAL.tmTransaction(jobGuid => {
-            tm.deleteEntriesByJobGuid(jobGuid);
-            this.#DAL.job.deleteJob(jobGuid);
-        });
-        deleteJob(jobGuid);
     }
 
     getTM(sourceLang, targetLang) {
@@ -94,6 +71,16 @@ export default class TMManager {
         }
     }
 
+    getTmStoreInfo(id) {
+        const tmStore = this.getTmStore(id);
+        return {
+            id: tmStore.id,
+            type: tmStore.constructor.name,
+            access: tmStore.access,
+            partitioning: tmStore.partitioning,
+        };
+    }
+
     async getTmStoreTOCs(tmStore, parallelism = 8) {
         const queue = fastq.promise(async ([srcLang, tgtLang]) => tmStore.getTOC(srcLang, tgtLang), parallelism);
         const pairs = await tmStore.getAvailableLangPairs(tmStore);
@@ -102,7 +89,7 @@ export default class TMManager {
         return pairs.map(([srcLang, tgtLang], index) => [ srcLang, tgtLang, tocs[index] ]);
     }
 
-    getTmStoreIds() {
+    get tmStoreIds() {
         return Object.keys(this.#tmStores);
     }
 
@@ -123,7 +110,7 @@ export default class TMManager {
             throw new Error(`Cannot sync down ${tmStore.id} store because it is write-only!`);
         }
         const toc = await tmStore.getTOC(sourceLang, targetLang);
-        const deltas = this.#DAL.job.getJobDeltas(toc.sourceLang, toc.targetLang, toc);
+        const deltas = await this.#DAL.job.getJobDeltas(toc.sourceLang, toc.targetLang, toc);
         const blocksToStore = Array.from(new Set(deltas.filter(e => e.remoteJobGuid).map(e => e.blockId))); // either because they changed or because some jobs don't exist locally
         let jobsToDelete = deltas.filter(e => e.localJobGuid && !e.remoteJobGuid).map(e => e.localJobGuid);
         return {
@@ -145,7 +132,7 @@ export default class TMManager {
         if (jobsToDelete.length > 0) {
             logInfo`Deleting ${jobsToDelete.length} ${[jobsToDelete.length, 'job', 'jobs']} (${sourceLang} → ${targetLang})`;
             for (const jobGuid of jobsToDelete) {
-                await this.#deleteJobContents(jobGuid);
+                await this.deleteJob(jobGuid);
             }
         }
     }
@@ -165,9 +152,12 @@ export default class TMManager {
 
     async #prepareSyncUpTask({ tmStore, sourceLang, targetLang, newerOnly = false, deleteEmptyBlocks = false }) {
         const toc = await tmStore.getTOC(sourceLang, targetLang);
-        const deltas = this.#DAL.job.getJobDeltas(toc.sourceLang, toc.targetLang, toc);
+        const deltas = await this.#DAL.job.getJobDeltas(toc.sourceLang, toc.targetLang, toc);
         const blockIdsToUpdate = new Set(deltas.filter(e => e.remoteJobGuid).map(e => e.blockId)); // either because they changed or because some jobs don't exist locally and need to be deleted remotely
-        let blocksToUpdate = Array.from(blockIdsToUpdate).map(blockId => [ blockId, this.#DAL.job.getValidJobIds(toc.sourceLang, toc.targetLang, toc, blockId) ]);
+        let blocksToUpdate = [];
+        for (const blockId of blockIdsToUpdate) {
+            blocksToUpdate.push([ blockId, await this.#DAL.job.getValidJobIds(toc.sourceLang, toc.targetLang, toc, blockId) ]);
+        }
         const blocksToDelete = blocksToUpdate.filter(e => e[1].length === 0); // if there are no jobs to write the block gets deleted
         if (blocksToDelete.length > 0 && !deleteEmptyBlocks) {
             blocksToUpdate = blocksToUpdate.filter(e => e[1].length > 0);
@@ -193,13 +183,12 @@ export default class TMManager {
             return;
         }
 
-        const tm = this.getTM(sourceLang, targetLang);
         await tmStore.getWriter(sourceLang, targetLang, async writeTmBlock => {
             const updatedJobs = new Set();
             if (blocksToUpdate.length > 0) {
                 logInfo`Updating ${blocksToUpdate.length} ${[blocksToUpdate.length, 'block', 'blocks']} in ${tmStore.id}`;
                 for (const [ blockId, jobs ] of blocksToUpdate) {
-                    await writeTmBlock({ blockId }, tm.getJobsByGuids(jobs));
+                    await writeTmBlock({ blockId }, this.getJobPropsTusPair(jobs));
                     jobs.forEach(jobGuid => updatedJobs.add(jobGuid));
                 }
             }
@@ -211,21 +200,21 @@ export default class TMManager {
                 logInfo`Syncing ${filteredJobsToUpdate.length} ${[filteredJobsToUpdate.length, 'job', 'jobs']} to ${tmStore.id}`;
                 if (tmStore.partitioning === 'job') {
                     for (const jobGuid of filteredJobsToUpdate) {
-                        const job = this.#DAL.job.getJob(jobGuid);
-                        await writeTmBlock({ translationProvider: job.translationProvider, blockId: jobGuid}, [ tm.getJobByGuid(jobGuid) ]);
+                        const { tus, ...jobProps } = await this.getJob(jobGuid);
+                        await writeTmBlock({ translationProvider: jobProps.translationProvider, blockId: jobGuid}, [ { jobProps, tus } ]);
                     }
                 } else if (tmStore.partitioning === 'provider') {
                     const jobsByProvider = {};
                     for (const jobGuid of filteredJobsToUpdate) {
-                        const job = this.#DAL.job.getJob(jobGuid);
+                        const job = await this.#DAL.job.getJob(jobGuid);
                         jobsByProvider[job.translationProvider] ??= [];
                         jobsByProvider[job.translationProvider].push(job.jobGuid);
                     }
                     for (const [ translationProvider, jobs ] of Object.entries(jobsByProvider)) {
-                        await writeTmBlock({ translationProvider, blockId: this.generateJobGuid() }, tm.getJobsByGuids(jobs));
+                        await writeTmBlock({ translationProvider, blockId: await this.generateJobGuid() }, this.getJobPropsTusPair(jobs));
                     }
                 } else if (tmStore.partitioning === 'language') {
-                    await writeTmBlock({ blockId: this.generateJobGuid() }, tm.getJobsByGuids(filteredJobsToUpdate));
+                    await writeTmBlock({ blockId: await this.generateJobGuid() }, this.getJobPropsTusPair(filteredJobsToUpdate));
                 }
             }
         });
@@ -251,31 +240,50 @@ export default class TMManager {
     }
 
     async getAvailableLangPairs() {
-        return this.#DAL.job.getAvailableLangPairs();
+        return await this.#DAL.job.getAvailableLangPairs();
     }
 
     async getJobTOCByLangPair(sourceLang, targetLang) {
-        return this.#DAL.job.getJobTOCByLangPair(sourceLang, targetLang);
+        return await this.#DAL.job.getJobTOCByLangPair(sourceLang, targetLang);
     }
 
-    async createJobManifest() {
-        return {
-            jobGuid: this.generateJobGuid(),
-            status: 'created',
-        };
-    }
+    // async createJobManifest() {
+    //     return {
+    //         jobGuid: await this.generateJobGuid(),
+    //         status: 'created',
+    //     };
+    // }
 
     async getJob(jobGuid) {
-        const jobRow = this.#DAL.job.getJob(jobGuid);
+        const jobRow = await this.#DAL.job.getJob(jobGuid);
         if (jobRow) {
-            const tm = this.getTM(jobRow.sourceLang, jobRow.targetLang);
-            const tus = tm.getEntriesByJobGuid(jobGuid);
-            const inflight = tus.filter(tu => tu.inflight).map(tu => tu.guid);
-            return { ...jobRow, tus, inflight };
+            const job = { ...jobRow, tus: await this.#DAL.tu(jobRow.sourceLang, jobRow.targetLang).getEntriesByJobGuid(jobGuid) };
+            const inflight = job.tus.filter(tu => tu.inflight).map(tu => tu.guid);
+            inflight.length > 0 && (job.inflight = inflight);
+            return job;
+        }
+    }
+
+    async *getJobPropsTusPair(jobGuids) {
+        for (const jobGuid of jobGuids) {
+            const jobProps = await this.#DAL.job.getJob(jobGuid);
+            const tus = await this.#DAL.tu(jobProps.sourceLang, jobProps.targetLang).getEntriesByJobGuid(jobGuid);
+            yield { jobProps, tus };
+        }
+    }
+
+    async *getAllJobs(sourceLang, targetLang) {
+        const allJobs = await this.#DAL.job.getJobTOCByLangPair(sourceLang, targetLang).map(e => e.jobGuid);
+        for (const jobGuid of allJobs) {
+            yield await this.getJob(jobGuid);
         }
     }
 
     async deleteJob(jobGuid) {
-        await this.#deleteJobContents(jobGuid);
+        const job = await this.#DAL.job.getJob(jobGuid);
+        if (!job) {
+            throw new Error(`Job ${jobGuid} does not exist`);
+        }
+        await this.#DAL.tu(job.sourceLang, job.targetLang).deleteJob(jobGuid);
     }
 }

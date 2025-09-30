@@ -1,6 +1,5 @@
 import { consoleLog, styleString } from '../l10nContext.js';
 
-// eslint-disable-next-line camelcase
 export class tm_syncup {
     static help = {
         description: 'pushes local TM to TM Stores.',

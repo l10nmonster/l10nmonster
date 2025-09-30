@@ -26,12 +26,11 @@ export class monster {
 `);
         console.time('Initialization time');
 
-        // eslint-disable-next-line no-unused-vars
-        const printCapabilities = cap => Object.entries(cap).filter(([cmd, available]) => available).map(([cmd]) => cmd).join(' ');
-        consoleLog`\nResource Channels and available commands: [autoSnap ${mm.rm.autoSnap ? 'on' : 'off'}]`;
-        for (const channelId of Object.keys(mm.rm.channels)) {
+        consoleLog`\nResource Channels:`;
+        for (const channelId of mm.rm.channelIds) {
             const channelStats = await mm.rm.getActiveContentStats(channelId);
-            consoleLog`  ‣ ${channelId}: ${printCapabilities(mm.capabilitiesByChannel[channelId])}`;
+            const desiredLangPairs = await mm.rm.getDesiredLangPairs(channelId);
+            consoleLog`  ‣ ${channelId}: ${desiredLangPairs.map(([ sourceLang, targetLang ]) => `${sourceLang} → ${targetLang}`).join(', ')}`;
             if (channelStats.length === 0) {
                 consoleLog`      • No resources in this channel!`;
             } else {
@@ -39,27 +38,21 @@ export class monster {
             }
         }
 
-        const desiredPairs = {};
-        for (const [sourceLang, targetLang] of await mm.rm.getAvailableLangPairs()) {
-            desiredPairs[sourceLang] ??= [];
-            desiredPairs[sourceLang].push(targetLang);
-        }
-        consoleLog`\nDesired language pairs:`;
-        for (const [sourceLang, targetLangs] of Object.entries(desiredPairs)) {
-            consoleLog`  ‣ ${sourceLang} → ${targetLangs.join(', ')}`;
-        }
-
         consoleLog`\n${mm.dispatcher.providers.length || 'No'} providers configured: ${mm.dispatcher.providers.map(provider => provider.id).join(', ')}`;
 
-        consoleLog`\nTranslation Memories:`;
         const availableLangPairs = (await mm.tmm.getAvailableLangPairs()).sort();
-        for (const [sourceLang, targetLang] of availableLangPairs) {
-            const tm = mm.tmm.getTM(sourceLang, targetLang);
-            consoleLog`  ‣ ${sourceLang} → ${targetLang}`;
-            const tmStats = tm.getStats();
-            for (const stats of tmStats) {
-                consoleLog`      • ${stats.translationProvider}(${stats.status}): ${stats.jobCount.toLocaleString()} ${[stats.jobCount, 'job', 'jobs']}, ${stats.tuCount.toLocaleString()} ${[stats.tuCount, 'tu', 'tus']}, ${stats.distinctGuids.toLocaleString()} ${[stats.distinctGuids, 'guid', 'guids']}`;
+        if (availableLangPairs.length > 0) {
+            consoleLog`\nTranslation Memories:`;
+            for (const [sourceLang, targetLang] of availableLangPairs) {
+                const tm = mm.tmm.getTM(sourceLang, targetLang);
+                consoleLog`  ‣ ${sourceLang} → ${targetLang}`;
+                const tmStats = await tm.getStats();
+                for (const stats of tmStats) {
+                    consoleLog`      • ${stats.translationProvider}(${stats.status}): ${stats.jobCount.toLocaleString()} ${[stats.jobCount, 'job', 'jobs']}, ${stats.tuCount.toLocaleString()} ${[stats.tuCount, 'tu', 'tus']}, ${stats.distinctGuids.toLocaleString()} ${[stats.distinctGuids, 'guid', 'guids']}`;
+                }
             }
+        } else {
+            consoleLog`\nNo translation memories found!`;
         }
         console.timeEnd('Initialization time');
     }

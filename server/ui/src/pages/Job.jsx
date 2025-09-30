@@ -29,6 +29,34 @@ function formatCost(estimatedCost) {
   return `$${estimatedCost.toFixed(2)}`;
 }
 
+// Helper function to render text with clickable HTTPS links
+function renderTextWithLinks(text) {
+  if (!text) return null;
+  
+  const urlRegex = /(https:\/\/[^\s]+)/g;
+  const parts = text.split(urlRegex);
+  
+  return parts.map((part, index) => {
+    if (part.match(urlRegex)) {
+      return (
+        <Text
+          key={index}
+          as="a"
+          href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          color="blue.600"
+          textDecoration="underline"
+          _hover={{ color: "blue.800" }}
+        >
+          {part}
+        </Text>
+      );
+    }
+    return part;
+  });
+}
+
 const Job = () => {
   const { jobGuid } = useParams();
   const [showAdditionalProps, setShowAdditionalProps] = useState({});
@@ -267,7 +295,7 @@ const Job = () => {
   // Extract core job properties (always displayed in main header)
   const coreJobProps = new Set([
     'jobGuid', 'sourceLang', 'targetLang', 'translationProvider', 'updatedAt', 
-    'taskName', 'inflight', 'status', 'tus', 'estimatedCost'
+    'taskName', 'inflight', 'status', 'statusDescription', 'tus', 'estimatedCost'
   ]);
   
   // Additional job properties (shown in separate section)
@@ -319,9 +347,16 @@ const Job = () => {
                 )}
               </HStack>
               
-              <Badge size="lg" colorPalette={getStatusColor(job.status)}>
-                {job.status?.toUpperCase()}
-              </Badge>
+              <Box textAlign="right">
+                <Badge size="lg" colorPalette={getStatusColor(job.status)}>
+                  {job.status?.toUpperCase()}
+                </Badge>
+                {job.statusDescription && (
+                  <Text fontSize="xs" color="fg.muted" mt={1}>
+                    {renderTextWithLinks(job.statusDescription)}
+                  </Text>
+                )}
+              </Box>
             </Flex>
             
             {/* Additional Job Properties */}

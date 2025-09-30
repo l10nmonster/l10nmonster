@@ -1,6 +1,5 @@
 import { consoleLog } from '../l10nContext.js';
 
-// eslint-disable-next-line camelcase
 export class tm_syncdown {
     static help = {
         description: 'synchronizes remote TM store to local TM cache.',

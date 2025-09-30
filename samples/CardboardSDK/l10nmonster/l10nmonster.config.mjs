@@ -2,7 +2,7 @@ import fs from 'fs';
 import { config, policies, normalizers, xml, stores, adapters, providers } from '@l10nmonster/core';
 import serve from '@l10nmonster/server';
 import * as ios from '@l10nmonster/helpers-ios';
-import * as xliff from '@l10nmonster/helpers-xliff';
+// import * as xliff from '@l10nmonster/helpers-xliff';
 import path from 'path';
 import { GenAIAgent, GCSStoreDelegate, GDriveStoreDelegate } from '@l10nmonster/helpers-googlecloud';
 import { AnthropicAgent } from '@l10nmonster/helpers-anthropic';
@@ -156,6 +156,7 @@ export default config.l10nMonster(import.meta.dirname)
         autoSnap: true,
         saveFailedJobs: false,
     })
+    .snapStore(new stores.BaseFileBasedSnapStore(new stores.FsStoreDelegate('snaps'), { id: 'snaps', format: 'jsonl' }))
     .tmStore(new stores.FsJsonlTmStore({
         id: 'primary',
         jobsDir: 'tmStore',

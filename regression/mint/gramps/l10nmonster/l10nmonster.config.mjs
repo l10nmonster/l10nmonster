@@ -12,7 +12,7 @@ export default new L10nMonsterConfig(import.meta.dirname)
             ],
         }))
         .resourceFilter(new PoFilter())
-        .policy(policies.fixedTargets([ 'ja' ], 0))
+        .policy(policies.fixedTargets([ 'ja' ], 1))
         .target(new adapters.FsTarget({
             baseDir: '..',
             targetPath: (lang) => `artifacts/${lang}.po`,

@@ -5,6 +5,7 @@ import { providers, logVerbose, styleString, opsManager } from '@l10nmonster/cor
  * @typedef {object} LQABossProviderOptions
  * @extends BaseTranslationProvider
  * @property {Object} delegate - Required file store delegate implementing file operations
+ * @property {string} [urlPrefix] - Prefix for the LQA Boss URL
  */
 
 /**
@@ -12,15 +13,17 @@ import { providers, logVerbose, styleString, opsManager } from '@l10nmonster/cor
  */
 export class LQABossProvider extends providers.BaseTranslationProvider {
     #storageDelegate;
+    urlPrefix;
     #opNames = {};
 
     /**
      * Initializes a new instance of the LQABossProvider class.
      * @param {LQABossProviderOptions} options - Configuration options for the provider.
      */
-    constructor({ delegate, ...options }) {
+    constructor({ delegate, urlPrefix, ...options }) {
         super(options);
         this.#storageDelegate = delegate;
+        this.urlPrefix = urlPrefix;
         this.#opNames.startReviewOp = `${this.id}.startReviewOp`;
         opsManager.registerOp(this.startReviewOp.bind(this), { opName: this.#opNames.startReviewOp, idempotent: false });
     }
@@ -49,6 +52,7 @@ export class LQABossProvider extends providers.BaseTranslationProvider {
         const filename = `${jobResponse.jobGuid}.lqaboss`;
         await this.#storageDelegate.saveFile(filename, buffer);
         logVerbose`Saved LQABoss file ${filename} with ${tus.length} guids and ${buffer.length} bytes`;
+        jobResponse.statusDescription = `Created LQA Boss file${this.urlPrefix ? ` at ${this.urlPrefix}/${filename}` : ''}`;
         jobResponse.tus = []; // remove tus so that job is cancelled and won't be stored
         return jobResponse;
     }

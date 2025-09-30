@@ -87,16 +87,6 @@ describe('L10n Monster Server Integration Tests', () => {
         }
       });
 
-      // Active content stats route
-      apiRouter.get('/activeContentStats', async (req, res) => {
-        try {
-          const stats = await mm.getActiveContentStats();
-          res.json(stats);
-        } catch {
-          res.status(500).json({ message: 'Problems fetching active content stats' });
-        }
-      });
-
       // TM stats route
       apiRouter.get('/tm/stats', async (req, res) => {
         try {
@@ -148,19 +138,6 @@ describe('L10n Monster Server Integration Tests', () => {
     assert.ok(data);
     assert.strictEqual(typeof data, 'object');
     assert.ok(data.default);
-  });
-
-  test('GET /api/activeContentStats returns active content statistics', async () => {
-    const response = await fetch(`${baseUrl}/api/activeContentStats`);
-    assert.strictEqual(response.status, 200);
-    
-    const data = await response.json();
-    assert.ok(data);
-    assert.strictEqual(typeof data, 'object');
-    assert.ok(data.ios);
-    assert.ok(Array.isArray(data.ios));
-    assert.strictEqual(data.ios.length, 1);
-    assert.strictEqual(data.ios[0].sourceLang, 'en');
   });
 
   test('GET /api/tm/stats returns TM statistics', async () => {

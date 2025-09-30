@@ -6,31 +6,39 @@ const sqlTransformer = createSQLObjectTransformer(['nstr', 'nsrc', 'ntgt', 'note
 
 export class TuDAL {
     #db;
+    #sourceLang;
+    #targetLang;
+    #DAL;
     #tusTable;
     #stmt = {}; // prepared statements
     #flatSrcIdxInitialized = false; // used to add the index as late as possible
+    #lazyActiveGuidsCTE;
 
-    constructor(db, tusTable) {
+    constructor(db, sourceLang, targetLang, DAL) {
         this.#db = db;
-        this.#tusTable = tusTable;
+        this.#sourceLang = sourceLang;
+        this.#targetLang = targetLang;
+        this.#DAL = DAL;
+        this.#tusTable = `tus_${sourceLang}_${targetLang}`.replace(/[^a-zA-Z0-9_]/g, '_');
         db.exec(/* sql */`
-CREATE TABLE IF NOT EXISTS ${tusTable} (
-    guid TEXT NOT NULL,
-    jobGuid TEXT NOT NULL,
-    rid TEXT,
-    sid TEXT,
-    nsrc TEXT,
-    ntgt TEXT,
-    notes TEXT,
-    tuProps TEXT,
-    q INTEGER,
-    ts INTEGER,
-    tuOrder INTEGER,
-    PRIMARY KEY (guid, jobGuid)
-);
-CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_jobGuid
-ON ${this.#tusTable} (jobGuid);
-`);
+            CREATE TABLE IF NOT EXISTS ${this.#tusTable} (
+                guid TEXT NOT NULL,
+                jobGuid TEXT NOT NULL,
+                rid TEXT,
+                sid TEXT,
+                nsrc TEXT,
+                ntgt TEXT,
+                notes TEXT,
+                tuProps TEXT,
+                q INTEGER,
+                ts INTEGER,
+                tuOrder INTEGER,
+                rank INTEGER,
+                PRIMARY KEY (guid, jobGuid)
+            );
+            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_jobGuid ON ${this.#tusTable} (jobGuid);
+            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_ts ON ${this.#tusTable} (ts);
+        `);
         db.function(
             'flattenNormalizedSourceToOrdinal',
             { deterministic: true },
@@ -38,36 +46,64 @@ ON ${this.#tusTable} (jobGuid);
         );
     }
 
-    getGuids() {
-        this.#stmt.getGuids ??= this.#db.prepare(/* sql */`SELECT DISTINCT guid FROM ${this.#tusTable} ORDER BY ROWID`).pluck();
-        return this.#stmt.getGuids.all();
+    get #activeGuidsCTE() {
+        if (!this.#lazyActiveGuidsCTE) {
+            const segmentTables = [];
+            for (const channelId of this.#DAL.activeChannels) {
+                const channelDAL = this.#DAL.channel(channelId);
+                segmentTables.push([channelDAL.segmentsTable, channelId]);
+            }
+            this.#lazyActiveGuidsCTE = /* sql */`
+                active_guids AS (
+                    ${segmentTables.map(([table, channelId]) => `SELECT guid, '${channelId}' AS channel FROM ${table}`).join(' UNION ALL ')}
+                )
+            `;
+        }
+        return this.#lazyActiveGuidsCTE;
     }
 
-    getEntry(guid) {
+    #getEntry(guid) {
         this.#stmt.getEntry ??= this.#db.prepare(/* sql */`
-SELECT jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuProps
-FROM ${this.#tusTable}
-WHERE guid = ?
-ORDER BY q DESC, ts DESC
-LIMIT 1`);
+            SELECT jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuProps
+            FROM ${this.#tusTable}
+            WHERE guid = ?
+            ORDER BY q DESC, ts DESC
+            LIMIT 1;
+        `);
         const tuRow = this.#stmt.getEntry.get(guid);
         return tuRow ? sqlTransformer.decode(tuRow) : undefined;
     }
 
-    getEntriesByJobGuid(jobGuid) {
+    async getEntries(guids) {
+        const uniqueGuids = new Set(guids);
+        const entries = {};
+        for (const guid of uniqueGuids) {
+            const entry = this.#getEntry(guid);
+            entry && (entries[guid] = entry);
+        }
+        return entries;
+    }
+
+    async getEntriesByJobGuid(jobGuid) {
         this.#stmt.getEntriesByJobGuid ??= this.#db.prepare(/* sql */`
-SELECT jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuProps
-FROM ${this.#tusTable}
-WHERE jobGuid = ?
-ORDER BY tuOrder`);
+            SELECT jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuProps
+            FROM ${this.#tusTable}
+            WHERE jobGuid = ?
+            ORDER BY tuOrder;
+        `);
         const tuRows = this.#stmt.getEntriesByJobGuid.all(jobGuid);
         return tuRows.map(sqlTransformer.decode);
     }
 
-    setEntry(tu) {
+    #deleteEntriesByJobGuid(jobGuid) {
+        this.#stmt.deleteEntriesByJobGuid ??= this.#db.prepare(`DELETE FROM ${this.#tusTable} WHERE jobGuid = ?`);
+        return this.#stmt.deleteEntriesByJobGuid.run(jobGuid);
+    }
+
+    #setEntry(tu) {
         this.#stmt.setEntry ??= this.#db.prepare(/* sql */`
-            INSERT INTO ${this.#tusTable} (jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuOrder, tuProps)
-            VALUES (@jobGuid, @guid, @rid, @sid, @nsrc, @ntgt, @notes, @q, @ts, @tuOrder, @tuProps)
+            INSERT INTO ${this.#tusTable} (guid, jobGuid, rid, sid, nsrc, ntgt, notes, tuProps, q, ts, tuOrder, rank)
+            VALUES (@guid, @jobGuid, @rid, @sid, @nsrc, @ntgt, @notes, @tuProps, @q, @ts, @tuOrder, 1)
             ON CONFLICT (jobGuid, guid)
             DO UPDATE SET
                 rid = excluded.rid,
@@ -91,13 +127,52 @@ ORDER BY tuOrder`);
         }
     }
 
-    getExactMatches(nsrc) {
+    #updateRank(jobGuid, includeJob) {
+        this.#stmt.updateRank ??= this.#db.prepare(/* sql */`
+            UPDATE ${this.#tusTable}
+            SET rank = (
+                SELECT ROW_NUMBER() OVER (PARTITION BY guid ORDER BY q DESC, ts DESC)
+                FROM ${this.#tusTable} t2
+                WHERE
+                    t2.guid = ${this.#tusTable}.guid
+                    AND (t2.jobGuid != @jobGuid OR @includeJob = 1)
+            )
+            WHERE jobGuid = @jobGuid;
+        `);
+        return this.#stmt.updateRank.run({jobGuid, includeJob: includeJob ? 1 : 0});
+    }
+
+    async saveJob(jobProps, tus) {
+        this.#db.transaction(() => {
+            this.#DAL.job.setJob(jobProps);
+            this.#updateRank(jobProps.jobGuid, false); // we need to update the rank in case some extries will be deleted
+            this.#deleteEntriesByJobGuid(jobProps.jobGuid);
+            tus.forEach((tu, tuOrder) => this.#setEntry({
+                ...tu,
+                jobGuid: jobProps.jobGuid,
+                tuOrder,
+            }));
+            this.#updateRank(jobProps.jobGuid, true);
+        })();
+    }
+
+    async deleteJob(jobGuid) {
+        this.#db.transaction(() => {
+            this.#updateRank(jobGuid, false); // we need to update the rank for the job before deleting the entries
+            this.#deleteEntriesByJobGuid(jobGuid);
+            this.#DAL.job.deleteJob(jobGuid);
+        })();
+    }
+
+    async getExactMatches(nsrc) {
         this.#stmt.createFlatSrcIdx ??= this.#db.prepare(/* sql */`
-CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_flatSrc
-ON ${this.#tusTable} (flattenNormalizedSourceToOrdinal(nsrc));`);
+            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_flatSrc
+            ON ${this.#tusTable} (flattenNormalizedSourceToOrdinal(nsrc));
+        `);
         this.#stmt.getEntriesByFlatSrc ??= this.#db.prepare(/* sql */`
-SELECT jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuProps FROM ${this.#tusTable}
-WHERE flattenNormalizedSourceToOrdinal(nsrc) = ?`);
+            SELECT jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuProps FROM ${this.#tusTable}
+            WHERE flattenNormalizedSourceToOrdinal(nsrc) = ?;
+        `);
         // try to delay creating the index until it is actually needed
         if (!this.#flatSrcIdxInitialized) {
             logVerbose`Creating FlatSrcIdx for table ${this.#tusTable}...`;
@@ -109,12 +184,7 @@ WHERE flattenNormalizedSourceToOrdinal(nsrc) = ?`);
         return tuRows.map(sqlTransformer.decode);
     }
 
-    deleteEntriesByJobGuid(jobGuid) {
-        this.#stmt.deleteEntriesByJobGuid ??= this.#db.prepare(`DELETE FROM ${this.#tusTable} WHERE jobGuid = ?`);
-        return this.#stmt.deleteEntriesByJobGuid.run(jobGuid);
-    }
-
-    getStats() {
+    async getStats() {
         this.#stmt.getStats ??= this.#db.prepare(/* sql */`
             SELECT
                 translationProvider,
@@ -130,154 +200,218 @@ WHERE flattenNormalizedSourceToOrdinal(nsrc) = ?`);
         return this.#stmt.getStats.all();
     }
 
-    getActiveContentTranslationStatus(sourceLang, targetLang) {
-        this.#stmt.getActiveContentTranslationStatus ??= this.#db.prepare(/* sql */`
-WITH tus AS (SELECT guid, MAX(q) q FROM ${this.#tusTable} GROUP BY 1)
-SELECT
-    channel,
-    COALESCE(prj, 'default') prj,
-    p.value minQ,
-    t.q q,
-    COUNT(DISTINCT r.rid) res,
-    COUNT(DISTINCT s.value) seg,
-    SUM(words) words,
-    SUM(chars) chars
-FROM
-    resources r,
-    JSON_EACH(segments) s
-    JOIN segments seg ON s.value = seg.guid,
-    JSON_EACH(COALESCE(seg.plan, r.plan)) p
-    LEFT JOIN tus t ON s.value = t.guid
-WHERE
-    sourceLang = ?
-    AND p.key = ?
-    AND active = true
-GROUP BY 1, 2, 3, 4
-ORDER BY 3 DESC, 4 DESC
-;`);
-        return this.#stmt.getActiveContentTranslationStatus.all(sourceLang, targetLang);
+    async getActiveContentTranslationStatus(channelDAL) {
+        const getActiveContentTranslationStatusStmt = this.#db.prepare(/* sql */`
+            SELECT
+                COALESCE(seg.prj, 'default') prj,
+                p.value minQ,
+                tu.q q,
+                COUNT(DISTINCT seg.rid) res,
+                COUNT(DISTINCT seg.guid) seg,
+                SUM(words) words,
+                SUM(chars) chars
+            FROM
+                ${channelDAL.segmentsTable} seg,
+                JSON_EACH(seg.plan) p
+                LEFT JOIN ${this.#tusTable} tu ON seg.guid = tu.guid
+            WHERE sourceLang = ? AND p.key = ?
+            AND (tu.rank = 1 OR tu.rank IS NULL)
+            GROUP BY 1, 2, 3
+            ORDER BY 2 DESC, 3 DESC;
+        `);
+        return getActiveContentTranslationStatusStmt.all(this.#sourceLang, this.#targetLang);
     }
 
-    // TODO: parametrize a maximum segment parameter to limit giant jobs
-    getUntranslatedContent(sourceLang, targetLang) {
+    async getUntranslatedContent(channelDAL, limit = 100) {
         this.#stmt.getUntranslatedContent ??= this.#db.prepare(/* sql */`
-WITH tus AS (SELECT guid, MAX(q) q FROM ${this.#tusTable} GROUP BY 1)
-SELECT
-    channel,
-    COALESCE(prj, 'default') prj,
-    r.rid rid,
-    seg.sid sid,
-    seg.guid guid,
-    nstr nsrc,
-    notes,
-    mf,
-    segProps,
-    p.value minQ,
-    words,
-    chars
-FROM
-    resources r,
-    JSON_EACH(segments) s
-    JOIN segments seg ON s.value = seg.guid,
-    JSON_EACH(COALESCE(seg.plan, r.plan)) p
-    LEFT JOIN tus t ON s.value = t.guid
-WHERE
-    sourceLang = ?
-    AND p.key = ?
-    AND active = true
-    AND (q IS NULL OR (q != 0 AND q < p.value))
-ORDER BY channel, prj, rid, s.key
-LIMIT 10000
-;`);
-        const tus = this.#stmt.getUntranslatedContent.all(sourceLang, targetLang).map(sqlTransformer.decode);
+            SELECT
+                '${channelDAL.channelId}' channel,
+                COALESCE(prj, 'default') prj,
+                seg.rid rid,
+                seg.sid sid,
+                seg.guid guid,
+                seg.nstr nsrc,
+                seg.notes notes,
+                seg.mf mf,
+                seg."group" "group",
+                seg.segProps segProps,
+                p.value minQ,
+                seg.words words,
+                seg.chars chars
+            FROM
+                ${channelDAL.segmentsTable} seg,
+                JSON_EACH(seg.plan) p
+                LEFT JOIN ${this.#tusTable} tu ON seg.guid = tu.guid
+            WHERE
+                sourceLang = ? AND p.key = ? 
+                AND (tu.rank = 1 OR tu.rank IS NULL)
+                AND (tu.q IS NULL OR (tu.q != 0 AND tu.q < p.value))
+            ORDER BY prj, rid, segOrder
+            LIMIT ?;
+        `);
+        const tus = this.#stmt.getUntranslatedContent.all(this.#sourceLang, this.#targetLang, limit).map(sqlTransformer.decode);
         tus.forEach(tu => tu.gstr = utils.flattenNormalizedSourceToOrdinal(tu.nsrc));
         return tus;
     }
 
-    querySource(sourceLang, targetLang, whereCondition) {
+    async querySource(channelDAL, whereCondition) {
         let stmt;
         try {
             stmt = this.#db.prepare(/* sql */`
-WITH activeTranslations AS (
-    SELECT guid, ntgt, q
-    FROM (SELECT guid, ntgt, q,
-        ROW_NUMBER() OVER (PARTITION BY guid ORDER BY q DESC, ts DESC) as rank
-        FROM ${this.#tusTable})
-    WHERE rank = 1)
-SELECT
-channel,
-prj,
-r.rid rid,
-seg.sid sid,
-seg.guid guid,
-nstr nsrc,
-ntgt,
-q,
-p.value minQ,
-notes,
-mf,
-segProps,
-words,
-chars
-FROM
-resources r,
-JSON_EACH(segments) s
-JOIN segments seg ON s.value = seg.guid,
-JSON_EACH(COALESCE(seg.plan, r.plan)) p
-LEFT JOIN activeTranslations t ON s.value = t.guid
-WHERE
-sourceLang = ?
-AND p.key = ?
-AND active = true
-AND ${whereCondition.replaceAll(';', '')}
-GROUP BY 1, 2, 3, 4, 5
-ORDER BY channel, rid, s.key
-LIMIT 10000
-;`);
+                SELECT
+                    '${channelDAL.channelId}' channel,
+                    seg.prj prj,
+                    seg.rid rid,
+                    seg.sid sid,
+                    seg.guid guid,
+                    seg.nstr nsrc,
+                    tu.ntgt ntgt,
+                    tu.q q,
+                    p.value minQ,
+                    seg.notes notes,
+                    seg.mf mf,
+                    seg."group" "group",
+                    seg.segProps segProps,
+                    seg.words words,
+                    seg.chars chars
+                FROM ${channelDAL.segmentsTable} seg,
+                    JSON_EACH(seg.plan) p
+                    LEFT JOIN ${this.#tusTable} tu ON seg.guid = tu.guid
+                WHERE
+                    sourceLang = ? AND p.key = ?
+                    AND (tu.rank = 1 OR tu.rank IS NULL)
+                    AND ${whereCondition.replaceAll(';', '')}
+                ORDER BY prj, rid, segOrder
+                LIMIT 10000;
+            `);
         } catch (error) {
             throw new Error(`${error.code}: ${error.message}`);
         }
-        const tus = stmt.all(sourceLang, targetLang).map(sqlTransformer.decode);
+        const tus = stmt.all(this.#sourceLang, this.#targetLang).map(sqlTransformer.decode);
         tus.forEach(tu => tu.gstr = utils.flattenNormalizedSourceToOrdinal(tu.nsrc));
         return tus;
     }
 
-    search(sourceLang, targetLang, offset, limit, { guid, jobGuid, rid, sid, nsrc, ntgt, notes, q, translationProvider }) {
-            this.#stmt.search ??= this.#db.prepare(/* sql */`
-SELECT
-guid,
-jobGuid,
-rid,
-sid,
-nsrc,
-ntgt,
-notes,
-q,
-ts,
-translationProvider,
-updatedAt
-FROM ${this.#tusTable}
-JOIN jobs USING (jobGuid)
-WHERE
-(guid LIKE @guid OR @guid IS NULL)
-AND (jobGuid LIKE @jobGuid OR @jobGuid IS NULL)
-AND (rid LIKE @rid OR @rid IS NULL)
-AND (sid LIKE @sid OR @sid IS NULL)
-AND (flattenNormalizedSourceToOrdinal(nsrc) LIKE @nsrc OR @nsrc IS NULL)
-AND (flattenNormalizedSourceToOrdinal(ntgt) LIKE @ntgt OR @ntgt IS NULL)
-AND (notes LIKE @notes OR @notes IS NULL)
-AND (q = @q OR @q IS NULL)
-AND (translationProvider LIKE @translationProvider OR @translationProvider IS NULL)
-ORDER BY rid, sid, guid
-LIMIT @limit
-OFFSET @offset
-;`);
+    async queryByGuids(guids, channelDAL) {
+        let stmt;
+        if (channelDAL) {
+            // source can be tracked down, so use the latest
+            stmt = this.#db.prepare(/* sql */`
+                SELECT
+                    '${channelDAL.channelId}' channel,
+                    seg.prj prj,
+                    seg.rid rid,
+                    seg.sid sid,
+                    seg.guid guid,
+                    seg.nstr nsrc,
+                    tu.ntgt ntgt,
+                    tu.q q,
+                    p.value minQ,
+                    seg.notes notes,
+                    seg.mf mf,
+                    seg."group" "group",
+                    seg.segProps segProps,
+                    seg.words words,
+                    seg.chars chars
+                FROM
+                    ${channelDAL.segmentsTable} seg
+                    JOIN JSON_EACH(@guids) wantedGuid ON seg.guid = wantedGuid.value,
+                    JSON_EACH(seg.plan) p
+                    LEFT JOIN ${this.#tusTable} tu ON tu.guid = wantedGuid.value
+                WHERE
+                    seg.sourceLang = @sourceLang AND p.key = @targetLang
+                    AND (tu.rank = 1 OR tu.rank IS NULL)
+                ORDER BY prj, rid, segOrder;
+            `);
+        } else {
+            // this is for basically retranslating orphaned TUs
+            this.#stmt.getEntry ??= this.#db.prepare(/* sql */`
+                SELECT
+                    rid,
+                    sid,
+                    guid,
+                    nsrc,
+                    ntgt,
+                    q,
+                    notes
+                FROM
+                    ${this.#tusTable} tu
+                    JOIN JSON_EACH(@guids) wantedGuid ON tu.guid = wantedGuid.value
+                WHERE tu.rank = 1
+                ORDER BY rid;
+            `);
+            stmt = this.#stmt.getEntry;
+        }
+        const tus = stmt.all({ guids: JSON.stringify(guids), sourceLang: this.#sourceLang, targetLang: this.#targetLang }).map(sqlTransformer.decode);
+        tus.forEach(tu => tu.gstr = utils.flattenNormalizedSourceToOrdinal(tu.nsrc));
+        return tus;
+    }
+
+    async search(offset, limit, { guid, nid, jobGuid, rid, sid, channel, nsrc, ntgt, notes, tconf, onlyTNotes, q, minTS, maxTS, translationProvider }) {
+        const activeGuidsCTE = this.#activeGuidsCTE; // we need to ensure all tables are created before we can join them
+        this.#stmt.search ??= this.#db.prepare(/* sql */`
+            WITH ${activeGuidsCTE}
+            SELECT
+                guid,
+                jobGuid,
+                channel,
+                rid,
+                sid,
+                nsrc,
+                ntgt,
+                notes,
+                tuProps->>'$.nid' nid,
+                tuProps->>'$.tconf' tconf,
+                tuProps->>'$.tnotes' tnotes,
+                q,
+                ts,
+                translationProvider,
+                rank = 1 active,
+                updatedAt
+            FROM ${this.#tusTable}
+            JOIN jobs USING (jobGuid)
+            LEFT JOIN active_guids USING (guid)
+            WHERE
+                (guid LIKE @guid OR @guid IS NULL)
+                AND (nid LIKE @nid OR @nid IS NULL)
+                AND (jobGuid LIKE @jobGuid OR @jobGuid IS NULL)
+                AND (rid LIKE @rid OR @rid IS NULL)
+                AND (sid LIKE @sid OR @sid IS NULL)
+                AND (channel LIKE @channel OR @channel IS NULL)
+                AND (flattenNormalizedSourceToOrdinal(nsrc) LIKE @nsrc OR @nsrc IS NULL)
+                AND (flattenNormalizedSourceToOrdinal(ntgt) LIKE @ntgt OR @ntgt IS NULL)
+                AND (notes LIKE @notes OR @notes IS NULL)
+                AND (tconf LIKE @tconf OR @tconf IS NULL)
+                AND (NOT @onlyTNotes OR tnotes IS NOT NULL)
+                AND (q = @q OR @q IS NULL)
+                AND (ts >= @minTS OR @minTS IS NULL)
+                AND (ts <= @maxTS OR @maxTS IS NULL)
+                AND (translationProvider LIKE @translationProvider OR @translationProvider IS NULL)
+            ORDER BY ts DESC, rid, tuOrder
+            LIMIT @limit
+            OFFSET @offset;
+        `);
         try {
-            const tus = this.#stmt.search.all({ offset, limit, guid, jobGuid, rid, sid, nsrc, ntgt, notes, q, translationProvider }).map(sqlTransformer.decode);
+            const tus = this.#stmt.search.all({ offset, limit, guid, nid, jobGuid, rid, sid, channel, nsrc, ntgt, notes, tconf, onlyTNotes: onlyTNotes ? 1 : 0, q, minTS, maxTS, translationProvider }).map(sqlTransformer.decode);
             return tus;
         } catch (error) {
             throw new Error(`${error.code}: ${error.message}`);
         }
     }
 
+    async getLowCardinalityColumns() {
+        this.#stmt.getLowCardinalityColumns ??= this.#db.prepare(/* sql */`
+            SELECT
+                GROUP_CONCAT(DISTINCT q) q,
+                GROUP_CONCAT(DISTINCT translationProvider) translationProvider,
+                GROUP_CONCAT(DISTINCT tuProps->>'$.tconf') tconf
+            FROM ${this.#tusTable} JOIN jobs USING (jobGuid);
+        `);
+        const enumValues = {};
+        const result = this.#stmt.getLowCardinalityColumns.get();
+        for (const [key, value] of Object.entries(result)) {
+            value !== null && (enumValues[key] = value.split(','));
+        }
+        return enumValues;
+    }
 }
