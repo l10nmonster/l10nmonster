@@ -78,6 +78,7 @@ suite('pig latinizer translator tests', () => {
             },
         ],
         status: 'done',
+        statusDescription: 'Job has been PigLatinized',
     };
     var translator = new PigLatinizer({
         quality: 80,
