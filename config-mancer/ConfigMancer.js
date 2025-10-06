@@ -2,6 +2,7 @@ import path from 'path';
 import { readFileSync, writeFileSync } from 'fs';
 import { parse as yamlParse, stringify as yamlStringify } from 'yaml';
 import { JsonSchemaGenerator } from './JsonSchemaGenerator.js';
+import { CueSchemaGenerator } from './CueSchemaGenerator.js';
 import { SchemaManager } from './SchemaManager.js';
 import { ReviverMaker } from './ReviverMaker.js';
 import { ConfigMancerSerializer } from './ConfigMancerSerializer.js';
@@ -138,5 +139,27 @@ export class ConfigMancer {
     writeJsonSchema(rootType, pathName) {
         const generator = new JsonSchemaGenerator(this.#schemaManager.schema);
         generator.writeJsonSchema(rootType, pathName);
+    }
+
+    /**
+     * Generates a CUE schema and writes it to a file.
+     * The generated schema can be used with CUE tooling to author and validate configurations.
+     * Supports polymorphism through disjunctions and properly handles the `@` type marker.
+     * @param {string} pathName - Path to the file where the CUE schema will be written
+     * @param {Object} [options] - Optional configuration
+     * @param {string} [options.rootType] - Optional root type. If provided, generates only that type and dependencies. If omitted, generates all types.
+     * @param {string} [options.packageName] - Optional package name to include in the CUE file
+     * @throws {Error} If the root type is not found in the schema or file cannot be written
+     * @example
+     * mancer.writeCueSchema('./config_schema.cue'); // Generate all types
+     * mancer.writeCueSchema('./config_schema.cue', { rootType: 'MyRootType' }); // Generate specific type
+     * mancer.writeCueSchema('./config_schema.cue', { packageName: 'config' }); // Add package declaration
+     * mancer.writeCueSchema('./config_schema.cue', { rootType: 'MyRootType', packageName: 'config' });
+     */
+    writeCueSchema(pathName, options = {}) {
+        const { rootType, packageName } = options;
+        const generator = new CueSchemaGenerator(this.#schemaManager.schema);
+        const cueSchema = generator.generateCueSchema(rootType, packageName);
+        writeFileSync(pathName, cueSchema, 'utf-8');
     }
 }
