@@ -27,10 +27,13 @@ import { setupChannelRoutes } from './routes/sources.js';
 import { setupTmRoutes } from './routes/tm.js';
 import { setupProviderRoute } from './routes/providers.js';
 import { setupDispatcherRoutes } from './routes/dispatcher.js';
+import { logVerbose } from '@l10nmonster/core';
 
 const serverPackage = JSON.parse(readFileSync(path.join(import.meta.dirname, 'package.json'), 'utf-8'));
 
-export default class serve {
+export default class ServeAction {
+    static extensions = {};
+    static name = 'serve';
     static help = {
         description: 'starts the L10n Monster server.',
         options: [
@@ -40,6 +43,10 @@ export default class serve {
             [ '--open', 'open browser with web frontend' ],
         ]
     };
+
+    static registerExtension(name, routeMaker) {
+        ServeAction.extensions[name] = routeMaker;
+    }
 
     static async action(mm, options) {
         const port = options.port ?? 9691;
@@ -63,6 +70,16 @@ export default class serve {
 
         // Mount the API router under the /api prefix
         app.use('/api', apiRouter);
+
+        for (const [name, routeMaker] of Object.entries(ServeAction.extensions)) {
+            const extensionRouter = express.Router();
+            const routes = routeMaker(mm);
+            for (const [method, path, handler] of routes) {
+                extensionRouter[method](path, handler);
+            }
+            app.use(`/api/ext/${name}`, extensionRouter);
+            logVerbose`Mounted extension ${name} at /api/ext/${name}`;
+        }
 
         // API 404 handler - must come before the UI catch-all
         app.use('/api/*splat', (req, res) => {
