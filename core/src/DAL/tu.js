@@ -66,8 +66,7 @@ export class TuDAL {
         this.#stmt.getEntry ??= this.#db.prepare(/* sql */`
             SELECT jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuProps
             FROM ${this.#tusTable}
-            WHERE guid = ?
-            ORDER BY q DESC, ts DESC
+            WHERE guid = ? AND rank = 1
             LIMIT 1;
         `);
         const tuRow = this.#stmt.getEntry.get(guid);
@@ -130,21 +129,28 @@ export class TuDAL {
     #updateRank(jobGuid, includeJob) {
         this.#stmt.updateRank ??= this.#db.prepare(/* sql */`
             UPDATE ${this.#tusTable}
-            SET rank = (
-                SELECT ROW_NUMBER() OVER (PARTITION BY guid ORDER BY q DESC, ts DESC)
-                FROM ${this.#tusTable} t2
+            SET rank = t2.new_rank
+            FROM (
+                SELECT
+                    guid,
+                    jobGuid,
+                    ROW_NUMBER() OVER (PARTITION BY guid ORDER BY q DESC, ts DESC) as new_rank
+                FROM
+                    ${this.#tusTable}
                 WHERE
-                    t2.guid = ${this.#tusTable}.guid
-                    AND (t2.jobGuid != @jobGuid OR @includeJob = 1)
-            )
-            WHERE jobGuid = @jobGuid;
+                    guid in (SELECT guid FROM ${this.#tusTable} WHERE jobGuid = @jobGuid)
+                    AND (jobGuid != @jobGuid OR @includeJob = 1)
+            ) AS t2
+            WHERE
+                ${this.#tusTable}.guid = t2.guid AND
+                ${this.#tusTable}.jobGuid = t2.jobGuid;
         `);
         return this.#stmt.updateRank.run({jobGuid, includeJob: includeJob ? 1 : 0});
     }
 
-    async saveJob(jobProps, tus) {
+    async saveJob(jobProps, tus, tmStoreId) {
         this.#db.transaction(() => {
-            this.#DAL.job.setJob(jobProps);
+            this.#DAL.job.setJob(jobProps, tmStoreId);
             this.#updateRank(jobProps.jobGuid, false); // we need to update the rank in case some extries will be deleted
             this.#deleteEntriesByJobGuid(jobProps.jobGuid);
             tus.forEach((tu, tuOrder) => this.#setEntry({
@@ -171,7 +177,7 @@ export class TuDAL {
         `);
         this.#stmt.getEntriesByFlatSrc ??= this.#db.prepare(/* sql */`
             SELECT jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuProps FROM ${this.#tusTable}
-            WHERE flattenNormalizedSourceToOrdinal(nsrc) = ?;
+            WHERE flattenNormalizedSourceToOrdinal(nsrc) = ? AND rank = 1;
         `);
         // try to delay creating the index until it is actually needed
         if (!this.#flatSrcIdxInitialized) {
@@ -393,6 +399,34 @@ export class TuDAL {
         `);
         try {
             const tus = this.#stmt.search.all({ offset, limit, guid, nid, jobGuid, rid, sid, channel, nsrc, ntgt, notes, tconf, onlyTNotes: onlyTNotes ? 1 : 0, q, minTS, maxTS, translationProvider }).map(sqlTransformer.decode);
+            return tus;
+        } catch (error) {
+            throw new Error(`${error.code}: ${error.message}`);
+        }
+    }
+
+    async lookup({ guid, nid, rid, sid }) {
+        this.#stmt.lookup ??= this.#db.prepare(/* sql */`
+            SELECT
+                rid,
+                sid,
+                guid,
+                nsrc,
+                ntgt,
+                q,
+                notes
+            FROM ${this.#tusTable}
+            WHERE
+                (guid = @guid OR @guid IS NULL)
+                AND (tuProps->>'$.nid' = @nid OR @nid IS NULL)
+                AND (rid = @rid OR @rid IS NULL)
+                AND (sid = @sid OR @sid IS NULL)
+                AND rank = 1
+            ORDER BY ts DESC, q
+            LIMIT 10;
+        `);
+        try {
+            const tus = this.#stmt.lookup.all({ guid, nid, rid, sid }).map(sqlTransformer.decode);
             return tus;
         } catch (error) {
             throw new Error(`${error.code}: ${error.message}`);

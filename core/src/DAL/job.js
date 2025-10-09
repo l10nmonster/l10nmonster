@@ -14,6 +14,7 @@ export class JobDAL {
                 status TEXT,
                 updatedAt TEXT,
                 jobProps TEXT,
+                tmStore TEXT,
                 PRIMARY KEY (jobGuid)
             );
         `);
@@ -64,21 +65,22 @@ export class JobDAL {
      * @param {string} job.updatedAt - The timestamp when the job was last updated.
      * @param {string} job.translationProvider - The translation provider associated with the job.
      */
-    setJob(completeJobProps) { // TODO: make async (but it's used with a transaction)
+    setJob(completeJobProps, tmStoreId) { // TODO: make async (but it's used with a transaction)
         this.#stmt.setJob ??= this.#db.prepare(/* sql */`
-            INSERT INTO jobs (sourceLang, targetLang, jobGuid, status, updatedAt, translationProvider, jobProps)
-            VALUES (@sourceLang, @targetLang, @jobGuid, @status, @updatedAt, @translationProvider, @jobProps)
+            INSERT INTO jobs (sourceLang, targetLang, jobGuid, status, updatedAt, translationProvider, jobProps, tmStore)
+            VALUES (@sourceLang, @targetLang, @jobGuid, @status, @updatedAt, @translationProvider, @jobProps, @tmStoreId)
             ON CONFLICT (jobGuid) DO UPDATE SET
                 sourceLang = excluded.sourceLang,
                 targetLang = excluded.targetLang,
                 status = excluded.status,
                 updatedAt = excluded.updatedAt,
                 translationProvider = excluded.translationProvider,
-                jobProps = excluded.jobProps
+                jobProps = excluded.jobProps,
+                tmStore = excluded.tmStore
             WHERE excluded.jobGuid = jobs.jobGuid;
         `);
         const { jobGuid, sourceLang, targetLang, status, updatedAt, translationProvider, ...jobProps } = completeJobProps;
-        const result = this.#stmt.setJob.run({ jobGuid, sourceLang, targetLang, status, updatedAt, translationProvider, jobProps: JSON.stringify(jobProps) });
+        const result = this.#stmt.setJob.run({ jobGuid, sourceLang, targetLang, status, updatedAt, translationProvider, jobProps: JSON.stringify(jobProps), tmStoreId });
         if (result.changes !== 1) {
             throw new Error(`Expecting to change a row but changed ${result}`);
         }
@@ -86,7 +88,15 @@ export class JobDAL {
 
     async getJob(jobGuid) {
         this.#stmt.getJob ??= this.#db.prepare(/* sql */`
-            SELECT * FROM jobs WHERE jobGuid = ?;
+            SELECT
+                jobGuid,
+                jobProps,
+                sourceLang,
+                targetLang,
+                translationProvider,
+                status,
+                updatedAt
+            FROM jobs WHERE jobGuid = ?;
         `);
         const jobRow = this.#stmt.getJob.get(jobGuid);
         if (jobRow) {

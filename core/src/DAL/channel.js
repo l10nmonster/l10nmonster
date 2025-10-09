@@ -53,14 +53,14 @@ export class ChannelDAL {
                 segProps TEXT,
                 chars INTEGER,
                 words INTEGER,
-                segOrder INTEGER,
-                PRIMARY KEY (guid)
+                segOrder INTEGER
             );
         `);
     }
 
     #createSegmentTableIndexes(name) {
         this.#db.exec(/* sql */`
+            CREATE INDEX IF NOT EXISTS idx_${name}_guid ON ${name} (guid);
             CREATE INDEX IF NOT EXISTS idx_${name}_rid ON ${name} (rid);
             CREATE INDEX IF NOT EXISTS idx_${name}_prj_rid ON ${name} (prj, rid);
             CREATE INDEX IF NOT EXISTS idx_${name}_segOrder ON ${name} (segOrder);

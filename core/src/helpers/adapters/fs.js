@@ -101,7 +101,7 @@ export class FsSource extends AbstractFsAdapter {
 
                     if (this.filter && !this.filter(id)) {
                         logVerbose`FsSource: Filtered out resource ${id} (path: ${relativePathFromGlob}) due to filter function.`;
-                        // eslint-disable-next-line no-continue
+                        // eslint-disabe-next-line no-continue
                         continue;
                     }
 

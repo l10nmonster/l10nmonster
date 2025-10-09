@@ -50,6 +50,10 @@ export class TM {
         return await this.#tuDAL.search(offset, limit, likeConditions);
     }
 
+    async lookup(conditions = {}) {
+        return await this.#tuDAL.lookup(conditions);
+    }
+
     async getLowCardinalityColumns() {
         return await this.#tuDAL.getLowCardinalityColumns();
     }

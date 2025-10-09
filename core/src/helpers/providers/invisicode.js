@@ -82,7 +82,7 @@ export class InvisicodeProvider extends BaseTranslationProvider {
                 this.#includeQ && (meta.q = q);
                 return {
                     guid: requestTU.guid,
-                    ntgt: [ `\u200B${utf8ToFE00Range(JSON.stringify(meta))}`, ...baseTranslation, '\u200B' ],
+                    ntgt: [ `\u200B${utf8ToFE00Range(JSON.stringify(meta))}`, ...baseTranslation, '\u200C' ],
                     q: this.quality,
                     ts,
                 };

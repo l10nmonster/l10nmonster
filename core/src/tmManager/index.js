@@ -33,13 +33,13 @@ export default class TMManager {
         }
     }
 
-    async saveTmBlock(tmBlockIterator) {
+    async saveTmBlock(tmBlockIterator, tmStoreId) {
         const jobs = [];
         for await (const job of tmBlockIterator) {
             if (job) {
                 const { jobProps, tus } = job;
                 if (tus?.length > 0) {
-                    await this.#DAL.tu(jobProps.sourceLang, jobProps.targetLang).saveJob(jobProps, tus);
+                    await this.#DAL.tu(jobProps.sourceLang, jobProps.targetLang).saveJob(jobProps, tus, tmStoreId);
                     jobs.push(jobProps);
                 } else {
                     logVerbose`Ignoring empty job ${job.jobGuid}`;
@@ -127,7 +127,7 @@ export default class TMManager {
         }
         if (blocksToStore.length > 0) {
             logInfo`Storing ${blocksToStore.length} ${[blocksToStore.length, 'block', 'blocks']} from ${tmStore.id}(${sourceLang} → ${targetLang})`;
-            await this.saveTmBlock(tmStore.getTmBlocks(sourceLang, targetLang, blocksToStore));
+            await this.saveTmBlock(tmStore.getTmBlocks(sourceLang, targetLang, blocksToStore), tmStore.id);
         }
         if (jobsToDelete.length > 0) {
             logInfo`Deleting ${jobsToDelete.length} ${[jobsToDelete.length, 'job', 'jobs']} (${sourceLang} → ${targetLang})`;

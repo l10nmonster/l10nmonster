@@ -126,7 +126,7 @@ test('InvisicodeProvider - getTranslatedTus', async (t) => { // Renamed test sui
     assert.strictEqual(translatedTu.guid, '123');
     assert.strictEqual(translatedTu.q, qualityValue);
     assert.equal(translatedTu.ntgt[0].charAt(0), '\u200B');
-    assert.equal(translatedTu.ntgt[translatedTu.ntgt.length - 1].charAt(0), '\u200B');
+    assert.equal(translatedTu.ntgt[translatedTu.ntgt.length - 1].charAt(0), '\u200C');
     assert.ok(translatedTu.ntgt.includes('Hola'));
 
     // Check metadata does NOT contain 'q' when includeQ is false
@@ -369,9 +369,9 @@ test('InvisicodeProvider - getTranslatedTus metadata encoding', async (t) => { /
     assert.equal(tus.length, 1);
     const translatedTu = tus[0];
 
-    // Check that ntgt starts and ends with ZERO WIDTH SPACE
+    // Check that ntgt starts with ZERO WIDTH SPACE and ends with ZERO WIDTH NON-JOINER
     assert.equal(translatedTu.ntgt[0].charAt(0), '\u200B');
-    assert.equal(translatedTu.ntgt[translatedTu.ntgt.length - 1].charAt(0), '\u200B');
+    assert.equal(translatedTu.ntgt[translatedTu.ntgt.length - 1].charAt(0), '\u200C');
 
     // Extract the Invisicode part
     const invisicodePart = translatedTu.ntgt[0].match(invisicodePrologueRegex)[1];
