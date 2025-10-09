@@ -6,6 +6,7 @@
     "dependencies": {
         "@l10nmonster/cli": "../../cli",
         "@l10nmonster/helpers-demo": "../../helpers-demo",
+        "@l10nmonster/helpers-server": "../../helpers-server",
         "@l10nmonster/helpers-lqaboss": "../../helpers-lqaboss"
     }
 }

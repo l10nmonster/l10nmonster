@@ -9,7 +9,9 @@ import { AnthropicAgent } from '@l10nmonster/helpers-anthropic';
 import { DeepLProvider } from '@l10nmonster/helpers-deepl';
 import { LaraProvider, MMTProvider } from '@l10nmonster/helpers-translated';
 import { GPTAgent } from '@l10nmonster/helpers-openai';
-import { LQABossProvider, LQABossTmStore } from '@l10nmonster/helpers-lqaboss';
+import { LQABossProvider, LQABossTmStore, createLQABossRoutes } from '@l10nmonster/helpers-lqaboss';
+
+serve.registerExtension('lqaboss', createLQABossRoutes);
 
 // const defaultTOSConfig = {
 //     baseURL: 'https://api-sandbox.translated.com/v2',

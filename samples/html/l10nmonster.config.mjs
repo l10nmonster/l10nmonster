@@ -1,7 +1,10 @@
 import { L10nMonsterConfig, ChannelConfig, policies, xml, adapters, providers } from '@l10nmonster/core';
 import { HTMLFilter } from '@l10nmonster/helpers-html';
-import { LQABossActions } from '@l10nmonster/helpers-lqaboss';
+import serve from '@l10nmonster/server';
+import { LQABossActions, createLQABossRoutes } from '@l10nmonster/helpers-lqaboss';
 import * as demo from '@l10nmonster/helpers-demo';
+
+serve.registerExtension('lqaboss', createLQABossRoutes);
 
 export default new L10nMonsterConfig(import.meta.dirname)
     .channel(new ChannelConfig('html')
@@ -25,4 +28,5 @@ export default new L10nMonsterConfig(import.meta.dirname)
     }))
     .provider(new demo.providers.PigLatinizer({ quality: 1, supportedPairs: { en: [ 'piggy' ] } }))
     .action(LQABossActions)
+    .action(serve)
 ;
