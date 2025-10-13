@@ -21,4 +21,4 @@ regression/wd/
 samples/*/translationJobs/
 **/l10nOps/*
 **/l10njobs/**
-**/l10nmonster*.db
+**/l10nmonster*.db*
