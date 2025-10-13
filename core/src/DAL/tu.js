@@ -422,7 +422,7 @@ export class TuDAL {
                 AND (rid = @rid OR @rid IS NULL)
                 AND (sid = @sid OR @sid IS NULL)
                 AND rank = 1
-            ORDER BY ts DESC, q
+            ORDER BY q DESC, ts DESC
             LIMIT 10;
         `);
         try {
