@@ -15,7 +15,7 @@ export function createLQABossRoutes(mm) {
                 const guidMap = new Map(tus.map(tu => [ tu.guid, tu ]));
                 const results = segments.map(segment => guidMap.get(segment.g) ?? {});
                 logVerbose`Matched ${tus.length} segments out of ${guids.size}`;
-                res.json(results);
+                res.json({ results });
             } catch (error) {
                 logInfo`Error in LQABossRoute:/lookup: ${error.message}`;
                 res.status(500).json({
