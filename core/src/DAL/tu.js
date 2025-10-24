@@ -229,7 +229,7 @@ export class TuDAL {
     }
 
     async getUntranslatedContent(channelDAL, limit = 100) {
-        this.#stmt.getUntranslatedContent ??= this.#db.prepare(/* sql */`
+        const getUntranslatedContentStmt = this.#db.prepare(/* sql */`
             SELECT
                 '${channelDAL.channelId}' channel,
                 COALESCE(prj, 'default') prj,
@@ -255,7 +255,7 @@ export class TuDAL {
             ORDER BY prj, rid, segOrder
             LIMIT ?;
         `);
-        const tus = this.#stmt.getUntranslatedContent.all(this.#sourceLang, this.#targetLang, limit).map(sqlTransformer.decode);
+        const tus = getUntranslatedContentStmt.all(this.#sourceLang, this.#targetLang, limit).map(sqlTransformer.decode);
         tus.forEach(tu => tu.gstr = utils.flattenNormalizedSourceToOrdinal(tu.nsrc));
         return tus;
     }

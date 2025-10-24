@@ -28,14 +28,14 @@ export class source_untranslated {
         }
 
         const provider = typeof options.provider === 'string' ? options.provider.split(',') : options.provider; // could be an array or a boolean
-        consoleLog`Untranslated source content:`;
         const jobs = [];
         const status = {};
         for (const channelId of channels) {
+            consoleLog`Untranslated source content for channel ${channelId}:`;
             const langPairs = options.lang ? [ options.lang.split(',') ] : await mm.rm.getDesiredLangPairs(channelId);            
             for (const [ sourceLang, targetLang ] of langPairs) {
                 status[targetLang] ??= {};
-                status[targetLang][sourceLang] = {};
+                status[targetLang][sourceLang] ??= {};
                 const tm = mm.tmm.getTM(sourceLang, targetLang);
                 const tus = await tm.getUntranslatedContent(channelId, options.limit ?? 5000);
                 if (tus.length === 0) {
@@ -48,7 +48,9 @@ export class source_untranslated {
                             const formattedCost = job.estimatedCost !== undefined ? mm.currencyFormatter.format(job.estimatedCost) : 'unknown';
                             // TODO: show strings/words/chars totals
                             consoleLog`      • ${job.translationProvider ?? 'No provider available'}: ${job.tus.length.toLocaleString()} ${[job.tus.length, 'segment', 'segments']}, cost: ${formattedCost}`;
-                            status[targetLang][sourceLang][job.translationProvider] = { segments: job.tus.length, cost: job.estimatedCost };
+                            status[targetLang][sourceLang][job.translationProvider] ??= { segments: 0, cost: 0 };
+                            status[targetLang][sourceLang][job.translationProvider].segments += job.tus.length;
+                            status[targetLang][sourceLang][job.translationProvider].cost += job.estimatedCost;
                             if (job.translationProvider) {
                                 jobs.push(job);
                             } else {
