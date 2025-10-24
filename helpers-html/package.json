@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/helpers-html",
-    "version": "3.0.0-alpha.14",
+    "version": "3.0.0-alpha.15",
     "description": "Helpers to deal with HTML file formats",
     "type": "module",
     "main": "index.js",
