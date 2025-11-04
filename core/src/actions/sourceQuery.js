@@ -62,7 +62,7 @@ You can write your own where conditions against the following columns:
                 const formattedCost = job.estimatedCost !== undefined ? mm.currencyFormatter.format(job.estimatedCost) : 'unknown';
                 consoleLog`      • ${job.translationProvider ?? 'No provider available'}: ${job.tus.length.toLocaleString()} ${[job.tus.length, 'segment', 'segments']}, cost: ${formattedCost}`;
                 job.translationProvider && jobs.push(job);
-                options.print && printRequest(job);
+                options.print && printRequest(job, 10, true);
             }
         }
         if (options.outFile) {
