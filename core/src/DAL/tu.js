@@ -190,6 +190,53 @@ export class TuDAL {
         return tuRows.map(sqlTransformer.decode);
     }
 
+    async deleteEmptyJobs(dryrun) {
+        if (dryrun) {
+            this.#stmt.countEmptyJobs ??= this.#db.prepare(/* sql */`
+                SELECT COUNT(*)
+                FROM jobs
+                LEFT JOIN ${this.#tusTable} USING (jobGuid)
+                WHERE sourceLang = ? AND targetLang = ? AND ${this.#tusTable}.guid IS NULL;
+            `).pluck();
+            return this.#stmt.countEmptyJobs.get(this.#sourceLang, this.#targetLang);
+        } else {
+            this.#stmt.deleteEmptyJobs ??= this.#db.prepare(/* sql */`
+                DELETE FROM jobs
+                WHERE jobGuid IN (
+                    SELECT jobGuid
+                    FROM jobs
+                    LEFT JOIN ${this.#tusTable} USING (jobGuid)
+                    WHERE sourceLang = ? AND targetLang = ? AND ${this.#tusTable}.guid IS NULL
+                );
+            `);
+            return this.#stmt.deleteEmptyJobs.run(this.#sourceLang, this.#targetLang).changes;
+        }
+    }
+
+    async deleteOverRank(dryrun, maxRank) {
+        if (dryrun) {
+            this.#stmt.countOverRank ??= this.#db.prepare(/* sql */`
+                SELECT COUNT(*) FROM ${this.#tusTable} WHERE rank > ?;`).pluck();
+            return this.#stmt.countOverRank.get(maxRank);
+        } else {
+            this.#stmt.deleteOverRank ??= this.#db.prepare(/* sql */`
+                DELETE FROM ${this.#tusTable} WHERE rank > ?;`);
+            return this.#stmt.deleteOverRank.run(maxRank).changes;
+        }
+    }
+
+    async deleteByQuality(dryrun, quality) {
+        if (dryrun) {
+            this.#stmt.countByQuality ??= this.#db.prepare(/* sql */`
+                SELECT COUNT(*) FROM ${this.#tusTable} WHERE q = ?;`).pluck();
+            return this.#stmt.countByQuality.get(quality);
+        } else {
+            this.#stmt.deleteByQuality ??= this.#db.prepare(/* sql */`
+                DELETE FROM ${this.#tusTable} WHERE q = ?;`);
+            return this.#stmt.deleteByQuality.run(quality).changes;
+        }
+    }
+
     async getStats() {
         this.#stmt.getStats ??= this.#db.prepare(/* sql */`
             SELECT
@@ -447,5 +494,17 @@ export class TuDAL {
             value !== null && (enumValues[key] = value.split(','));
         }
         return enumValues;
+    }
+
+    async getQualityDistribution() {
+        this.#stmt.getQualityDistribution ??= this.#db.prepare(/* sql */`
+            SELECT
+                q,
+                COUNT(*) count
+            FROM ${this.#tusTable}
+            GROUP BY q
+            ORDER BY q;
+        `);
+        return this.#stmt.getQualityDistribution.all();
     }
 }
