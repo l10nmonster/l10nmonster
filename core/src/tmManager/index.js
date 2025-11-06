@@ -143,9 +143,9 @@ export default class TMManager {
         const preparePromises = pairs.map(([ sourceLang, targetLang ]) => prepareQueue.push({ tmStore, sourceLang, targetLang }));
         const syncDownStats = await Promise.all(preparePromises);
         if (!dryrun) {
-            const syncUpQueue = fastq.promise(this, this.#syncDownTask, parallelism);
-            const syncUpPromises = syncDownStats.map(task => syncUpQueue.push({ tmStore, ...task, jobsToDelete: deleteExtraJobs ? task.jobsToDelete : [] }));
-            await Promise.all(syncUpPromises);
+            const syncDownQueue = fastq.promise(this, this.#syncDownTask, parallelism);
+            const syncDownPromises = syncDownStats.map(task => syncDownQueue.push({ tmStore, ...task, jobsToDelete: deleteExtraJobs ? task.jobsToDelete : [] }));
+            await Promise.all(syncDownPromises);
         }
         return syncDownStats;
     }
@@ -186,7 +186,7 @@ export default class TMManager {
         await tmStore.getWriter(sourceLang, targetLang, async writeTmBlock => {
             const updatedJobs = new Set();
             if (blocksToUpdate.length > 0) {
-                logInfo`Updating ${blocksToUpdate.length} ${[blocksToUpdate.length, 'block', 'blocks']} in ${tmStore.id}`;
+                logInfo`Updating ${blocksToUpdate.length} ${[blocksToUpdate.length, 'block', 'blocks']} in ${tmStore.id} (${sourceLang} → ${targetLang})`;
                 for (const [ blockId, jobs ] of blocksToUpdate) {
                     await writeTmBlock({ blockId }, this.getJobPropsTusPair(jobs));
                     jobs.forEach(jobGuid => updatedJobs.add(jobGuid));

@@ -2,7 +2,7 @@ import readline from 'node:readline/promises';
 import { Readable } from 'node:stream';
 import zlib from 'node:zlib';
 
-import { logInfo, logVerbose } from '../../l10nContext.js';
+import { logError, logInfo, logVerbose } from '../../l10nContext.js';
 
 const providerFilenameRegex = /blocks\/sl=(?<sourceLang>[^/]+)\/tl=(?<targetLang>[^/]+)\/tp=(?<translationProvider>[^/]+)\/block_(?<blockId>[0-9A-Za-z_-]+)\.jsonl/;
 const languageFilenameRegex = /blocks\/sl=(?<sourceLang>[^/]+)\/tl=(?<targetLang>[^/]+)\/block_(?<blockId>[0-9A-Za-z_-]+)\.jsonl/;
@@ -52,9 +52,10 @@ export class BaseJsonlTmStore {
             }
         }
         if (compressBlocks) {
-            this.#compressBlocks = compressBlocks;
+            this.#compressBlocks = Boolean(compressBlocks);
             this.#compressionSuffix = '.gz';
         }
+        logVerbose`${this.constructor.name} ${this.id} created with delegate: ${this.delegate.toString()} partitioning: ${this.partitioning} access: ${this.access} compressBlocks: ${this.#compressBlocks}`;
     }
 
     #getTmBlockName(blockProperties) {
@@ -97,6 +98,7 @@ export class BaseJsonlTmStore {
         for (const blockId of blockIds) {
             const blockName = toc.blocks[blockId]?.blockName;
             if (blockName) {
+                logVerbose`Getting block ${blockId} from ${blockName} in TM Store ${this.id}`;
                 let reader = await this.delegate.getStream(blockName);
                 if (this.#compressBlocks) {
                     reader = reader.pipe(zlib.createGunzip());
@@ -109,22 +111,26 @@ export class BaseJsonlTmStore {
 
                 let currentJob;
                 for await (const line of rl) {
-                    const row = JSON.parse(line);
-                    const { nsrc, ntgt, notes, tuProps, jobProps, ...otherProps } = row;
-                    if (jobProps) {
-                        const parsedJobProps = JSON.parse(jobProps);
-                        if (currentJob?.jobProps?.jobGuid !== parsedJobProps.jobGuid) {
-                            if (currentJob) {
-                                yield currentJob;
+                    try {
+                        const row = JSON.parse(line);
+                        const { nsrc, ntgt, notes, tuProps, jobProps, ...otherProps } = row;
+                        if (jobProps) {
+                            const parsedJobProps = JSON.parse(jobProps);
+                            if (currentJob?.jobProps?.jobGuid !== parsedJobProps.jobGuid) {
+                                if (currentJob) {
+                                    yield currentJob;
+                                }
+                                currentJob = { jobProps: { sourceLang, targetLang, ...parsedJobProps }, tus: [] }; // add sourceLang and targetLang as they were stripped
                             }
-                            currentJob = { jobProps: { sourceLang, targetLang, ...parsedJobProps }, tus: [] }; // add sourceLang and targetLang as they were stripped
                         }
+                        nsrc && (otherProps.nsrc = JSON.parse(nsrc));
+                        ntgt && (otherProps.ntgt = JSON.parse(ntgt));
+                        notes && (otherProps.notes = JSON.parse(notes));
+                        const expandedTuProps = tuProps ? JSON.parse(tuProps) : {};
+                        currentJob.tus.push({ ...otherProps, ...expandedTuProps, jobGuid: currentJob.jobProps.jobGuid });
+                    } catch (e) {
+                        logError`${this.constructor.name} ${this.id} error parsing block ${blockId}: ${e.message}\n"""\n${line}\n"""`;
                     }
-                    nsrc && (otherProps.nsrc = JSON.parse(nsrc));
-                    ntgt && (otherProps.ntgt = JSON.parse(ntgt));
-                    notes && (otherProps.notes = JSON.parse(notes));
-                    const expandedTuProps = tuProps ? JSON.parse(tuProps) : {};
-                    currentJob.tus.push({ ...otherProps, ...expandedTuProps, jobGuid: currentJob.jobProps.jobGuid });
                 }
                 yield currentJob;
                 rl.close();
@@ -213,7 +219,9 @@ export class BaseJsonlTmStore {
                             notes && (row.notes = JSON.stringify(notes));
                             tuProps && (row.tuProps = JSON.stringify(tuProps));
                             idx === 0 && otherJobProps && (row.jobProps = JSON.stringify(otherJobProps));
-                            out.push(JSON.stringify(row));
+                            // Node v24 readline treats \n, \r, \u2028, \u2029 as line breaks
+                            const jsonlRow = JSON.stringify(row).replaceAll('\n', '\\n').replaceAll('\r', '\\r').replaceAll('\u2028', '\\u2028').replaceAll('\u2029', '\\u2029');
+                            out.push(jsonlRow);
                         });
                         if (out.length > 0) {
                             tuCount += out.length;
@@ -229,7 +237,7 @@ export class BaseJsonlTmStore {
                 const blockName = toc.blocks[blockId]?.blockName ?? this.#getTmBlockName({ sourceLang, targetLang, translationProvider, blockId });
                 const modified = await this.delegate.saveStream(blockName, readable);
                 if (tuCount > 0) {
-                    logVerbose`Saved ${tuCount} ${[tuCount, 'TU', 'TUs']} in block ${blockId} of TM Store ${this.id}`;
+                    logVerbose`Saved ${tuCount.toLocaleString()} ${[tuCount, 'TU', 'TUs']} in block ${blockId} of TM Store ${this.id} (${sourceLang} → ${targetLang})`;
                     tocChanges.push([ blockId, { blockName, modified, jobs: Object.entries(jobs) } ]);
                 } else {
                     logVerbose`Deleting empty block ${blockId} from TM Store ${this.id}`;
