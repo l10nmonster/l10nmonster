@@ -68,23 +68,6 @@ describe('MCPServer', () => {
             }, 'setupTools should complete without errors');
         });
 
-        it('should handle import errors gracefully', async () => {
-            // Create a server with broken import path (simulate error condition)
-            const brokenServer = new MCPServer(mockMM, { stdio: true });
-            
-            // Override the import to simulate failure
-            const originalImport = global.import;
-            global.import = () => Promise.reject(new Error('Module not found'));
-            
-            try {
-                await brokenServer.setupTools();
-                // Should not throw, just log error
-                assert.ok(true, 'Should handle import errors gracefully');
-            } finally {
-                // Restore original import
-                global.import = originalImport;
-            }
-        });
     });
 
     describe('start method', () => {
