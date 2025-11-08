@@ -118,9 +118,9 @@ export function createMcpRoutes(mm) {
     };
 
     return [
-        ['post', '/mcp', handlePost],
-        ['get', '/mcp', handleSessionRequest],
-        ['delete', '/mcp', handleSessionRequest],
+        ['post', '/', handlePost],
+        ['get', '/', handleSessionRequest],
+        ['delete', '/', handleSessionRequest],
     ];
 }
 

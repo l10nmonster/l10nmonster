@@ -32,6 +32,8 @@ WARNING: Because of potential SQL injection attacks, don't use this unless you k
         inputSchema: z.object({
             lang: z.string()
                 .describe('Source and target language pair in format "srcLang,tgtLang" (e.g., "en,es")'),
+            channel: z.string()
+                .describe('Channel ID to query sources from'),
             whereCondition: z.string()
                 .optional()
                 .describe('SQL WHERE condition against sources (default: "true" to match all)'),
@@ -55,9 +57,13 @@ WARNING: Because of potential SQL injection attacks, don't use this unless you k
             throw new Error('Missing target language. Format: "srcLang,tgtLang"');
         }
 
+        if (!args.channel) {
+            throw new Error('Missing channel ID');
+        }
+
         // Get translation memory and query sources
         const tm = mm.tmm.getTM(sourceLang, targetLang);
-        const tus = tm.querySource(args.whereCondition ?? 'true');
+        const tus = await tm.querySource(args.channel, args.whereCondition ?? 'true');
 
         if (tus.length === 0) {
             return {
