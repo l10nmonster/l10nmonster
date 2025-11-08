@@ -1,29 +1,11 @@
-import { MCPServer } from './server.js';
-export class mcp {
-    static help = {
-        description: 'starts the L10n Monster MCP server.',
-        options: [
-            ['--stdio', 'use stdio transport instead of HTTP/SSE'],
-            ['--port <port>', 'port for HTTP/SSE transport (default: 3000)']
-        ]
-    };
+import { createMcpRoutes } from './server.js';
 
-    static async action(mm, args = {}) {
-        try {
-            const options = {
-                stdio: args.stdio || false,
-                port: args.port ? parseInt(args.port, 10) : 3000
-            };
-            
-            const mcpServer = new MCPServer(mm, options);
-            await mcpServer.start();
-            
-            console.info('L10n Monster MCP server started successfully');
-            return mcpServer;
-
-        } catch (error) {
-            console.error(`Error starting MCP server: ${error.message}`);
-            throw error;
-        }
-    }
+/**
+ * Register MCP routes with the serve action extension mechanism.
+ * This allows MCP to be served alongside the main L10n Monster server.
+ * 
+ * @param {typeof import('@l10nmonster/server').default} ServeAction - The ServeAction class from @l10nmonster/server
+ */
+export function register(ServeAction) {
+    ServeAction.registerExtension('mcp', createMcpRoutes, '/');
 }

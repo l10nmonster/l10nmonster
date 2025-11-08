@@ -1,10 +1,12 @@
 import { randomUUID } from 'node:crypto';
 import express from 'express';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import { isInitializeRequest } from '@modelcontextprotocol/sdk/types.js';
 import * as mcpTools from './tools/index.js';
+
+// Session management for HTTP transport (shared across route handlers)
+const sessions = new Map(); // sessionId -> transport
 
 /**
  * Setup tools on an MCP server instance
@@ -42,18 +44,100 @@ async function setupToolsOnServer(server, monsterManager) {
 }
 
 /**
+ * Creates MCP route handlers for use with the serve action extension mechanism.
+ * Returns route definitions that can be registered via ServeAction.registerExtension.
+ * 
+ * @param {import('@l10nmonster/core').MonsterManager} mm - MonsterManager instance
+ * @returns {Array<[string, string, Function]>} Array of [method, path, handler] route definitions
+ */
+export function createMcpRoutes(mm) {
+    // Handle POST requests for client-to-server communication
+    const handlePost = async (req, res) => {
+        // Check for existing session ID
+        const sessionId = req.headers['mcp-session-id'];
+        let transport;
+
+        if (sessionId && sessions.get(sessionId)) {
+            transport = sessions.get(sessionId);
+        } else if (!sessionId && isInitializeRequest(req.body)) {
+            // New initialization request
+            transport = new StreamableHTTPServerTransport({
+                sessionIdGenerator: () => randomUUID(),
+                onsessioninitialized: (sessionId) => {
+                    sessions.set(sessionId, transport);
+                },
+                // DNS rebinding protection is disabled by default for backwards compatibility. If you are running this server
+                // locally, make sure to set:
+                // enableDnsRebindingProtection: true,
+                // allowedHosts: ['127.0.0.1'],
+            });
+
+            transport.onclose = () => {
+                if (transport.sessionId) {
+                    sessions.delete(transport.sessionId);
+                }
+            };
+
+            // Set up server resources, tools, and prompts.
+            const server = new McpServer({
+                name: 'l10nmonster-mcp',
+                version: '1.0.0',
+            });
+
+            await setupToolsOnServer(server, mm);
+
+            // Connect to the MCP server
+            await server.connect(transport);
+            console.error(`Connected to new transport`);
+        } else {
+            // Invalid request
+            res.status(400).json({
+                jsonrpc: '2.0',
+                error: {
+                    code: -32000,
+                    message: 'Bad Request: No valid session ID provided',
+                },
+                id: null,
+            });
+            return;
+        }
+        // Handle the request
+        await transport.handleRequest(req, res, req.body);
+    };
+
+    // Reusable handler for GET and DELETE requests
+    const handleSessionRequest = async (req, res) => {
+        const sessionId = req.headers['mcp-session-id'];
+        if (!sessionId || !sessions.has(sessionId)) {
+            res.status(400).send('Invalid or missing session ID');
+            return;
+        }
+
+        const transport = sessions.get(sessionId);
+        await transport.handleRequest(req, res);
+    };
+
+    return [
+        ['post', '/mcp', handlePost],
+        ['get', '/mcp', handleSessionRequest],
+        ['delete', '/mcp', handleSessionRequest],
+    ];
+}
+
+/**
  * L10n Monster MCP Server - provides translation management functionality through MCP tools
+ * Note: This class is kept for backward compatibility and testing. In normal usage,
+ * MCP routes are registered via the serve action extension mechanism.
  */
 export class MCPServer {
     constructor(monsterManager, options = {}) {
         this.mm = monsterManager;
-        this.useStdio = options.stdio || false;
         this.port = options.port || 3000;
 
-        // Session management for HTTP transport
-        this.sessions = new Map(); // sessionId -> { transport, server }
+        // Session management for HTTP transport (for standalone mode)
+        this.sessions = sessions; // Share the same sessions map
 
-        // Persistent MCP server instance (used in stdio mode and for tests)
+        // Persistent MCP server instance (used for tests)
         this.server = new McpServer({
             name: 'l10nmonster-mcp',
             version: '1.0.0',
@@ -76,81 +160,11 @@ export class MCPServer {
         const app = express();
         app.use(express.json());
 
-        // Use instance sessions map to store transports by session ID
-        const transports = this.sessions;
-
-        // Handle POST requests for client-to-server communication
-        app.post('/mcp', async (req, res) => {
-            // Check for existing session ID
-            const sessionId = req.headers['mcp-session-id'];
-            let transport;
-
-            if (sessionId && transports.get(sessionId)) {
-                transport = transports.get(sessionId);
-            } else if (!sessionId && isInitializeRequest(req.body)) {
-                // New initialization request
-                transport = new StreamableHTTPServerTransport({
-                    sessionIdGenerator: () => randomUUID(),
-                    onsessioninitialized: (sessionId) => {
-                        transports.set(sessionId, transport);
-                    },
-                    // DNS rebinding protection is disabled by default for backwards compatibility. If you are running this server
-                    // locally, make sure to set:
-                    // enableDnsRebindingProtection: true,
-                    // allowedHosts: ['127.0.0.1'],
-                });
-
-                transport.onclose = () => {
-                    if (transport.sessionId) {
-                        transports.delete(transport.sessionId);
-                    }
-                };
-
-                // Set up server resources, tools, and prompts.
-                const server = new McpServer({
-                    name: 'l10nmonster-mcp',
-                    version: '1.0.0',
-                });
-
-                await setupToolsOnServer(server, this.mm);
-
-                // Connect to the MCP server
-                await server.connect(transport);
-                console.error(`Connected to new transport`);
-            } else {
-                // Invalid request
-                res.status(400).json({
-                    jsonrpc: '2.0',
-                    error: {
-                        code: -32000,
-                        message:
-                            'Bad Request: No valid session ID provided',
-                    },
-                    id: null,
-                });
-                return;
-            }
-            // Handle the request
-            await transport.handleRequest(req, res, req.body);
-        });
-
-        // Reusable handler for GET and DELETE requests
-        const handleSessionRequest = async (req, res) => {
-            const sessionId = req.headers['mcp-session-id'];
-            if (!sessionId || !transports.has(sessionId)) {
-                res.status(400).send('Invalid or missing session ID');
-                return;
-            }
-
-            const transport = transports.get(sessionId);
-            await transport.handleRequest(req, res);
-        };
-
-        // Handle GET requests for server-to-client notifications via SSE
-        app.get('/mcp', handleSessionRequest);
-
-        // Handle DELETE requests for session termination
-        app.delete('/mcp', handleSessionRequest);
+        // Use shared sessions map
+        const routes = createMcpRoutes(this.mm);
+        for (const [method, path, handler] of routes) {
+            app[method](path, handler);
+        }
 
         this.httpServer = app.listen(this.port);
 
@@ -159,18 +173,12 @@ export class MCPServer {
     }
     
     /**
-     * Start the MCP server with configured transport.
+     * Start the MCP server with HTTP transport.
+     * Note: In normal usage, MCP routes are registered via serve action extension.
      */
     async start() {
-        if (this.useStdio) {
-            const transport = new StdioServerTransport();
-            await this.setupTools();
-            await this.server.connect(transport);
-            console.error('L10n Monster MCP server started (stdio transport)');
-        } else {
-            this.app = await this.createHTTPServer();
-            console.error(`L10n Monster MCP server started (http transport); port ${this.port})`);
-        }
+        this.app = await this.createHTTPServer();
+        console.error(`L10n Monster MCP server started (http transport); port ${this.port})`);
 
         // Keep the process running
         process.on('SIGINT', () => {
