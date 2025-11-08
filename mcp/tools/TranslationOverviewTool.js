@@ -34,7 +34,8 @@ async function getChannelStats(mm, filters) {
         mm.rm.channelIds;
     
     if (filters.channel && channelIds.length === 0) {
-        throw new Error(`Channel '${filters.channel}' not found`);
+        // Include available channels in the error message so LLM can use it.
+        throw new Error(`Channel '${filters.channel}' not found. Available channels: ${mm.rm.channelIds.join(', ')}`);
     }
     
     // Warm caches by calling methods that trigger initialization
@@ -85,7 +86,6 @@ async function getDesiredLangPairs(mm, channelIds, filters) {
  */
 async function getAvailableProviders(mm, filters) {
     const providers = [];
-    
     for (const provider of mm.dispatcher.providers) {
         // Apply provider filter
         if (filters.provider && provider.id !== filters.provider) continue;
@@ -111,7 +111,8 @@ async function getAvailableProviders(mm, filters) {
     }
     
     if (filters.provider && providers.length === 0) {
-        throw new Error(`Provider '${filters.provider}' not found`);
+        // Include available providers in the error message so LLM can use it.
+        throw new Error(`Provider '${filters.provider}' not found. Available providers: ${mm.dispatcher.providers.map(p => p.id).join(', ')}`);
     }
     
     return providers;
@@ -383,7 +384,6 @@ function evaluateReadiness({ providers, coverage, channelStats, pendingJobs }) {
  * @param {Object} params.tmStats Translation memory statistics
  * @param {Object} params.coverage Coverage metrics
  * @param {Object} params.jobSummaries Job summaries
- * @param {Object} params.translationStatusRaw Raw translation status
  * @param {boolean} params.withDetails Whether to include detailed information
  * @param {*} params.mm MonsterManager instance
  * @returns {Object} Complete response object
