@@ -47,13 +47,8 @@ export class McpTool {
         
         return async (args) => {
             try {
-                // Validate args with Zod
                 const validatedArgs = schema.parse(args);
-                
-                // Execute the tool
                 const result = await this.execute(mm, validatedArgs);
-                
-                // Always format the result
                 return this.formatResult(result);
             } catch (error) {
                 return this.formatError(error);

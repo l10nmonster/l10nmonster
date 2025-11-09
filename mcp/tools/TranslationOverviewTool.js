@@ -2,6 +2,16 @@ import { z } from 'zod';
 import { McpTool } from './BaseMcpTool.js';
 
 /**
+ * Create a language pair key in the format "sourceLang→targetLang"
+ * @param {string} sourceLang Source language code
+ * @param {string} targetLang Target language code
+ * @returns {string} Formatted language pair key
+ */
+function makeLangPairKey(sourceLang, targetLang) {
+    return `${sourceLang}→${targetLang}`;
+}
+
+/**
  * MCP tool for assembling a health snapshot of the localization system.
  * 
  * This tool chains together functionality from monster, source_list (status mode),
@@ -11,15 +21,12 @@ import { McpTool } from './BaseMcpTool.js';
  * - Provider availability
  * - Pending job counts
  * - Translation memory coverage
- * - Overall readiness assessment
  * 
  * Supports optional filtering by:
  * - channel: Filter to specific channel ID
  * - provider: Filter to specific translation provider
  * - sourceLang: Filter to specific source language
  * - targetLang: Filter to specific target language
- * 
- * Ideal for daily check-ins or CI gates that need a yes/no answer on localization readiness.
  */
 
 /**
@@ -66,7 +73,7 @@ async function getDesiredLangPairs(mm, channelIds, filters) {
             if (filters.sourceLang && sourceLang !== filters.sourceLang) continue;
             if (filters.targetLang && targetLang !== filters.targetLang) continue;
             
-            const pairKey = `${sourceLang},${targetLang}`;
+            const pairKey = makeLangPairKey(sourceLang, targetLang);
             if (!allLangPairs.has(pairKey)) {
                 allLangPairs.add(pairKey);
                 desiredPairs[sourceLang] ??= [];
@@ -122,7 +129,7 @@ async function getAvailableProviders(mm, filters) {
  * Get translation memory statistics for available language pairs.
  * @param {*} mm MonsterManager instance
  * @param {Object} filters Filter object with optional provider, sourceLang, and targetLang properties
- * @returns {Promise<{tmStats: Object, availableLangPairs: Array, withTMBySource: Object}>}
+ * @returns {Promise<{tmStats: Object, availableLangPairs: Array}>}
  */
 async function getTranslationMemoryStats(mm, filters) {
     const tmStats = {};
@@ -135,15 +142,10 @@ async function getTranslationMemoryStats(mm, filters) {
         return true;
     }).sort();
     
-    // Group withTM pairs by source language
-    const withTMBySource = {};
     for (const [sourceLang, targetLang] of availableLangPairs) {
-        withTMBySource[sourceLang] ??= [];
-        withTMBySource[sourceLang].push(targetLang);
-        
         const tm = mm.tmm.getTM(sourceLang, targetLang);
         const stats = await tm.getStats();
-        const pairKey = `${sourceLang}→${targetLang}`;
+        const pairKey = makeLangPairKey(sourceLang, targetLang);
         
         // Apply provider filter to TM stats
         const filteredStats = filters.provider ?
@@ -155,12 +157,11 @@ async function getTranslationMemoryStats(mm, filters) {
             status: s.status,
             jobCount: s.jobCount,
             tuCount: s.tuCount,
-            distinctGuids: s.distinctGuids,
             redundancy: s.distinctGuids > 0 ? (s.tuCount / s.distinctGuids - 1) : 0
         }));
     }
     
-    return { tmStats, availableLangPairs, withTMBySource };
+    return { tmStats, availableLangPairs };
 }
 
 /**
@@ -237,7 +238,7 @@ function computeCoverage(translationStatus) {
             lowQualitySegments += pairLowQuality;
             
             const coverage = pairSegments > 0 ? pairTranslated / pairSegments : 0;
-            const pairKey = `${sourceLang}→${targetLang}`;
+            const pairKey = makeLangPairKey(sourceLang, targetLang);
             coverageByPair[pairKey] = {
                 total: pairSegments,
                 translated: pairTranslated,
@@ -261,7 +262,6 @@ function computeCoverage(translationStatus) {
             coverage: overallCoverage
         },
         byPair: coverageByPair,
-        overallCoverage
     };
 }
 
@@ -295,7 +295,7 @@ async function getJobSummaries(mm, filters, availableLangPairs) {
             })
             .slice(0, 10);
         
-        const pairKey = `${sourceLang}→${targetLang}`;
+        const pairKey = makeLangPairKey(sourceLang, targetLang);
         jobCountsByPair[pairKey] = {
             total: filteredJobs.length,
             unfinished: unfinished.length,
@@ -327,59 +327,10 @@ async function getJobSummaries(mm, filters, availableLangPairs) {
 }
 
 /**
- * Evaluate system readiness based on providers, coverage, channels, and jobs.
- * @param {Object} params Parameters object
- * @param {Array} params.providers List of provider objects
- * @param {Object} params.coverage Coverage metrics object
- * @param {Object} params.channelStats Channel statistics object
- * @param {Array} params.pendingJobs List of pending job objects
- * @returns {Object} Readiness assessment with isReady flag and issues list
- */
-function evaluateReadiness({ providers, coverage, channelStats, pendingJobs }) {
-    const readinessIssues = [];
-    
-    if (providers.length === 0) {
-        readinessIssues.push('No translation providers configured');
-    } else {
-        const unavailableProviders = providers.filter(p => !p.available);
-        if (unavailableProviders.length > 0) {
-            readinessIssues.push(`${unavailableProviders.length} provider(s) unavailable: ${unavailableProviders.map(p => p.id).join(', ')}`);
-        }
-    }
-    
-    if (coverage.overallCoverage < 1.0) {
-        readinessIssues.push(`Translation coverage (${(coverage.overallCoverage * 100).toFixed(1)}%) below threshold (100%)`);
-    }
-    
-    if (pendingJobs.length > 0) {
-        readinessIssues.push(`${pendingJobs.length} unfinished job(s) pending`);
-    }
-    
-    if (Object.keys(channelStats).length === 0) {
-        readinessIssues.push('No channels configured');
-    } else {
-        const emptyChannels = Object.entries(channelStats)
-            .filter(([, stats]) => stats.length === 0)
-            .map(([channelId]) => channelId);
-        if (emptyChannels.length > 0) {
-            readinessIssues.push(`Empty channels: ${emptyChannels.join(', ')}`);
-        }
-    }
-    
-    const isReady = readinessIssues.length === 0;
-    
-    return { isReady, issues: readinessIssues };
-}
-
-/**
  * Build the final response object.
  * @param {Object} params Parameters object
- * @param {number} params.startTime Start timestamp
- * @param {Object} params.filters Filter object
- * @param {Object} params.readiness Readiness assessment
  * @param {Object} params.channelStats Channel statistics
  * @param {Object} params.desiredPairs Desired language pairs by source language
- * @param {Object} params.withTMBySource Language pairs with TM by source language
  * @param {Array} params.providers List of providers
  * @param {Object} params.tmStats Translation memory statistics
  * @param {Object} params.coverage Coverage metrics
@@ -388,75 +339,118 @@ function evaluateReadiness({ providers, coverage, channelStats, pendingJobs }) {
  * @param {*} params.mm MonsterManager instance
  * @returns {Object} Complete response object
  */
-function buildResponse({ startTime, filters, readiness, channelStats, desiredPairs, withTMBySource, providers, tmStats, coverage, jobSummaries, withDetails, mm }) {
-    const initializationTime = Date.now() - startTime;
+function buildResponse({ channelStats, desiredPairs, providers, tmStats, coverage, jobSummaries, withDetails, mm }) {
+    // Build channels map: channelId -> array of projects
+    const channelsMap = {};
+    for (const [channelId, stats] of Object.entries(channelStats)) {
+        channelsMap[channelId] = stats.map(s => ({
+            project: s.prj ?? 'default',
+            sourceLang: s.sourceLang,
+            targetLangs: s.targetLangs || [],
+            segmentCount: s.segmentCount,
+            lastModified: s.lastModified,
+            ...(withDetails && { resourceCount: s.resCount })
+        }));
+    }
+    
+    // Build languagePairs map: sourceLang -> array of targetLangs
+    const languagePairsMap = {};
+    for (const [sourceLang, targetLangs] of Object.entries(desiredPairs)) {
+        languagePairsMap[sourceLang] = targetLangs;
+    }
+    
+    // Build providers map: id -> provider info
+    const providersMap = {};
+    for (const p of providers) {
+        providersMap[p.id] = {
+            type: p.type,
+            available: p.available,
+            supportedPairs: p.supportedPairs,
+            ...(withDetails && {
+                quality: p.quality,
+                costPerWord: p.costPerWord,
+                costPerMChar: p.costPerMChar
+            }),
+            ...(p.error && { error: p.error })
+        };
+    }
+    
+    // Build translationMemory map: "sourceLang→targetLang" -> sum or provider map
+    const translationMemoryMap = {};
+    for (const [pairKey, stats] of Object.entries(tmStats)) {
+        const [sourceLang, targetLang] = pairKey.split('→');
+        const langPairKey = makeLangPairKey(sourceLang, targetLang);
+        
+        if (withDetails) {
+            // Show detailed breakdown by provider
+            const providerMap = {};
+            for (const s of stats) {
+                providerMap[s.translationProvider] = {
+                    translationUnitCount: s.tuCount,
+                    status: s.status,
+                    jobCount: s.jobCount,
+                    redundancy: s.redundancy
+                };
+            }
+            translationMemoryMap[langPairKey] = providerMap;
+        } else {
+            // Show just the sum of all translation units
+            const totalUnits = stats.reduce((sum, s) => sum + s.tuCount, 0);
+            translationMemoryMap[langPairKey] = totalUnits;
+        }
+    }
+    
+    // Build coverage map: "sourceLang→targetLang" -> coverage info
+    const coverageMap = {};
+    for (const [pairKey, pairCoverage] of Object.entries(coverage.byPair)) {
+        const [sourceLang, targetLang] = pairKey.split('→');
+        const langPairKey = makeLangPairKey(sourceLang, targetLang);
+        coverageMap[langPairKey] = {
+            totalSegments: pairCoverage.total,
+            translated: pairCoverage.translated,
+            untranslated: pairCoverage.untranslated,
+            coveragePercentage: (pairCoverage.coverage * 100).toFixed(2),
+            ...(withDetails && {
+                inFlight: pairCoverage.inFlight,
+                lowQuality: pairCoverage.lowQuality
+            })
+        };
+    }
+    
+    // Build jobs map: "sourceLang→targetLang" -> array of jobs
+    const jobsMap = {};
+    const allJobs = jobSummaries.pendingJobs.concat(jobSummaries.recentJobs);
+    for (const job of allJobs) {
+        const [sourceLang, targetLang] = job.pair.split('→');
+        const langPairKey = makeLangPairKey(sourceLang, targetLang);
+        if (!jobsMap[langPairKey]) {
+            jobsMap[langPairKey] = [];
+        }
+        jobsMap[langPairKey].push({
+            jobGuid: job.jobGuid,
+            status: job.status,
+            translationProvider: job.translationProvider,
+            updatedAt: job.updatedAt
+        });
+    }
     
     const result = {
         timestamp: new Date().toISOString(),
-        initializationTimeMs: initializationTime,
-        filters: {
-            channel: filters.channel,
-            provider: filters.provider,
-            sourceLang: filters.sourceLang,
-            targetLang: filters.targetLang
-        },
-        readiness: {
-            isReady: readiness.isReady,
-            issues: readiness.issues,
-            overallCoverage: coverage.overallCoverage,
-            minThreshold: filters.minReadinessThreshold
-        },
-        channels: {
-            count: Object.keys(channelStats).length,
-            autoSnap: mm.rm.autoSnap,
-            stats: Object.entries(channelStats).map(([channelId, stats]) => ({
-                channelId,
-                projects: stats.map(s => ({
-                    project: s.prj ?? 'default',
-                    sourceLang: s.sourceLang,
-                    targetLangs: s.targetLangs || [],
-                    segmentCount: s.segmentCount,
-                    resourceCount: s.resCount,
-                    lastModified: s.lastModified
-                }))
-            }))
-        },
-        languagePairs: {
-            desired: Object.fromEntries(Object.entries(desiredPairs).map(([sourceLang, targetLangs]) => [
-                sourceLang, 
-                targetLangs.join(', ')
-            ])),
-            withTM: Object.fromEntries(Object.entries(withTMBySource).map(([sourceLang, targetLangs]) => [
-                sourceLang,
-                targetLangs.join(', ')
-            ]))
-        },
-        providers: {
-            count: providers.length,
-            available: providers.filter(p => p.available).length,
-            list: providers
-        },
-        translationMemory: {
-            languagePairs: Object.keys(tmStats).length,
-            stats: tmStats
-        },
-        coverage: {
-            overall: coverage.overall,
-            byPair: coverage.byPair
-        },
-        jobs: {
-            pending: {
-                count: jobSummaries.pendingJobs.length,
-                jobs: withDetails ? jobSummaries.pendingJobs : "available in detailed information"
-            },
-            recent: {
-                count: jobSummaries.recentJobs.length,
-                jobs: withDetails ? jobSummaries.recentJobs : "available in detailed information"
-            },
-            byPair: jobSummaries.jobCountsByPair
-        }
+        channels: channelsMap,
+        languagePairs: languagePairsMap,
+        providers: providersMap,
+        translationMemory: translationMemoryMap,
+        coverage: coverageMap,
+        jobs: jobsMap
     };
     
+    // Add details section if requested
+    if (withDetails) {
+        result.details = {
+            channelCount: Object.keys(channelStats).length,
+            autoSnap: mm.rm.autoSnap
+        };
+    }
     
     return result;
 }
@@ -465,9 +459,9 @@ export class TranslationOverviewTool extends McpTool {
     static metadata = {
         name: 'translation_overview',
         description: `
-        Assemble a health snapshot of the translation system.
-        Provides a list of supported language pairs, translation provider availability, 
-        translation memory coverage, and translation channel status.
+        Assemble a health snapshot of the translation system. Can be used to get a list of 
+        translation channel and projects, translation provider availability, supported language pairs, 
+        current translation jobs, translation memory coverage, and translation channel status.
         `,
         inputSchema: z.object({
             includeDetailed: z.boolean()
@@ -489,19 +483,17 @@ export class TranslationOverviewTool extends McpTool {
     };
 
     // Warms Monster caches, reports channel stats, provider availability, pending job counts,
-    // and TM coverage. Provides a yes/no answer on localization readiness.
+    // and TM coverage.
     // This tool internally chains monster, source_list (status mode), and ops_jobs functionality.
     // @param {*} mm MonsterManager instance
     // @param {*} args Validated arguments from Zod schema
     // @returns {Promise<Object>} Health snapshot object
     static async execute(mm, args) {
-        const startTime = Date.now();
         const filters = {
             channel: args.channel,
             provider: args.provider,
             sourceLang: args.sourceLang,
-            targetLang: args.targetLang,
-            minReadinessThreshold: args.minReadinessThreshold
+            targetLang: args.targetLang
         };
         const withDetails = args.includeDetailed ?? false;
         
@@ -509,27 +501,15 @@ export class TranslationOverviewTool extends McpTool {
         const { channelStats, channelIds } = await getChannelStats(mm, filters);
         const { desiredPairs } = await getDesiredLangPairs(mm, channelIds, filters);
         const providers = await getAvailableProviders(mm, filters);
-        const { tmStats, availableLangPairs, withTMBySource } = await getTranslationMemoryStats(mm, filters);
+        const { tmStats, availableLangPairs } = await getTranslationMemoryStats(mm, filters);
         const { translationStatus } = await getTranslationStatus(mm, filters);
         const coverage = computeCoverage(translationStatus);
         const jobSummaries = await getJobSummaries(mm, filters, availableLangPairs);
         
-        // Evaluate readiness
-        const readiness = evaluateReadiness({
-            providers,
-            coverage,
-            channelStats,
-            pendingJobs: jobSummaries.pendingJobs
-        });
-        
         // Build and return response
         return buildResponse({
-            startTime,
-            filters,
-            readiness,
             channelStats,
             desiredPairs,
-            withTMBySource,
             providers,
             tmStats,
             coverage,

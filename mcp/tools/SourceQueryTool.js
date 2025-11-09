@@ -10,7 +10,7 @@ import { McpTool } from './BaseMcpTool.js';
 export class SourceQueryTool extends McpTool {
     static metadata = {
         name: 'source_query',
-        description: `Query sources in the local cache and optionally create translation jobs.
+        description: `Query sources  and optionally create translation jobs.
 
 You can write your own where conditions against the following columns:
 - channel: Channel id
@@ -26,9 +26,7 @@ You can write your own where conditions against the following columns:
 - mf: Message format id
 - segProps: Non-standard segment properties object (if any)
 - words: Word count
-- chars: Character count
-
-WARNING: Because of potential SQL injection attacks, don't use this unless you know what you're doing!`,
+- chars: Character count`,
         inputSchema: z.object({
             lang: z.string()
                 .describe('Source and target language pair in format "srcLang,tgtLang" (e.g., "en,es")'),
@@ -37,16 +35,6 @@ WARNING: Because of potential SQL injection attacks, don't use this unless you k
             whereCondition: z.string()
                 .optional()
                 .describe('SQL WHERE condition against sources (default: "true" to match all)'),
-            provider: z.array(z.string())
-                .optional()
-                .describe('Translation providers to use for job creation'),
-            push: z.boolean()
-                .optional()
-                .default(false)
-                .describe('Whether to push content to providers immediately'),
-            instructions: z.string()
-                .optional()
-                .describe('Job-specific instructions for translation providers')
         })
     };
 
@@ -65,60 +53,13 @@ WARNING: Because of potential SQL injection attacks, don't use this unless you k
         const tm = mm.tmm.getTM(sourceLang, targetLang);
         const tus = await tm.querySource(args.channel, args.whereCondition ?? 'true');
 
-        if (tus.length === 0) {
-            return {
-                sourceLang,
-                targetLang,
-                translationUnits: [],
-                jobs: [],
-                message: 'No content returned for the specified query'
-            };
-        }
-
-        const result = {
+        return {
+            message: tus.length === 0 ? 'No content returned for the specified query' : `Found ${tus.length} translation units`,
             sourceLang,
             targetLang,
-            translationUnits: tus.length,
-            jobs: []
+            translationUnits: tus,
         };
 
-        // Create jobs if providers are specified
-        if (args.provider && args.provider.length > 0) {
-            const assignedJobs = await mm.dispatcher.createJobs(
-                { sourceLang, targetLang, tus },
-                { providerList: args.provider }
-            );
-
-            // Format jobs for response
-            result.jobs = assignedJobs.map(job => ({
-                translationProvider: job.translationProvider || null,
-                segmentCount: job.tus.length,
-                estimatedCost: job.estimatedCost,
-                jobGuid: job.jobGuid || null,
-                formattedCost: job.estimatedCost === undefined ? 'unknown' : mm.currencyFormatter.format(job.estimatedCost)
-            }));
-
-            // Push jobs if requested
-            if (args.push) {
-                const jobsToPush = assignedJobs.filter(job => job.translationProvider);
-                if (jobsToPush.length > 0) {
-                    const jobStatus = await mm.dispatcher.startJobs(
-                        jobsToPush,
-                        { instructions: args.instructions }
-                    );
-                    
-                    result.pushedJobs = jobStatus.map(status => ({
-                        sourceLang: status.sourceLang,
-                        targetLang: status.targetLang,
-                        jobGuid: status.jobGuid,
-                        translationProvider: status.translationProvider,
-                        status: status.status
-                    }));
-                }
-            }
-        }
-
-        return result;
     }
 }
 

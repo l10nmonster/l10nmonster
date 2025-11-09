@@ -3,7 +3,7 @@ import { McpTool } from './BaseMcpTool.js';
 import { TU } from '@l10nmonster/core';
 
 /**
- * MCP tool for translating a list of source translation units.
+ * MCP tool for translating source translation units by their GUIDs.
  * 
  * This tool creates a translation job, assigns it to a provider,
  * starts the job, and returns the translated TUs.
@@ -11,19 +11,14 @@ import { TU } from '@l10nmonster/core';
 export class TranslateTool extends McpTool {
     static metadata = {
         name: 'translate',
-        description: `Translate a list of source translation units (TUs) using a specified provider.
+        description: `Translate source translation units (TUs) by their GUIDs using a specified provider.
 
 This tool:
-1. Creates a translation job with the provided source TUs
-2. Assigns the job to the specified translation provider
-3. Starts the job (executes the translation)
-4. Returns the translated TUs with their target text
-
-Each source TU must have:
-- guid: Unique identifier for the TU
-- rid: Resource ID the TU belongs to
-- sid: Segment ID the TU belongs to
-- nsrc: Normalized source strings (array of strings)
+1. Fetches source TUs from the channel using the provided GUIDs
+2. Creates a translation job with the fetched source TUs
+3. Assigns the job to the specified translation provider
+4. Starts the job (executes the translation)
+5. Returns the translated TUs with their target text
 
 The tool returns translated TUs with:
 - guid: Same as source TU
@@ -35,22 +30,13 @@ The tool returns translated TUs with:
                 .describe('Source language code (e.g., "en-US")'),
             targetLang: z.string()
                 .describe('Target language code (e.g., "es-419")'),
+            channelId: z.string()
+                .describe('Channel ID to fetch source TUs from'),
             provider: z.string()
                 .describe('Translation provider ID to use for translation'),
-            tus: z.array(z.object({
-                guid: z.string().describe('Unique identifier for the translation unit'),
-                rid: z.string().describe('Resource ID the TU belongs to'),
-                sid: z.string().describe('Segment ID the TU belongs to'),
-                nsrc: z.array(z.string()).describe('Normalized source strings'),
-                prj: z.string().optional().describe('Project ID (optional)'),
-                notes: z.any().optional().describe('Notes object (optional)'),
-                seq: z.number().optional().describe('Sequence number (optional)'),
-                nid: z.string().optional().describe('Native ID (optional)'),
-                isSuffixPluralized: z.boolean().optional().describe('Whether suffix is pluralized (optional)'),
-                jobProps: z.any().optional().describe('Job-specific properties (optional)'),
-            }))
+            guids: z.array(z.string())
                 .min(1)
-                .describe('Array of source translation units to translate'),
+                .describe('Array of TU GUIDs to translate'),
             instructions: z.string()
                 .optional()
                 .describe('Optional instructions for the translation provider')
@@ -58,21 +44,22 @@ The tool returns translated TUs with:
     };
 
     static async execute(mm, args) {
-        const { sourceLang, targetLang, provider, tus, instructions } = args;
+        const { sourceLang, targetLang, channelId, provider, guids, instructions } = args;
 
-        // Validate that TUs have required fields
-        for (const tu of tus) {
-            if (!tu.guid || !tu.rid || !tu.sid || !Array.isArray(tu.nsrc)) {
-                throw new Error(`Invalid TU: must have guid, rid, sid, and nsrc array. Got: ${JSON.stringify(tu)}`);
-            }
+        // Fetch source TUs from the channel using the GUIDs
+        const tm = mm.tmm.getTM(sourceLang, targetLang);
+        const fetchedTUs = await tm.queryByGuids(guids, channelId);
+
+        if (!fetchedTUs || fetchedTUs.length === 0) {
+            throw new Error(`No TUs found for the provided GUIDs in channel "${channelId}"`);
         }
 
-        // Convert input TUs to proper TU objects
-        const sourceTUs = tus.map(tu => {
+        // Convert fetched TUs to proper source TU objects
+        const sourceTUs = fetchedTUs.map(tu => {
             try {
                 return TU.asSource(tu);
             } catch (error) {
-                throw new Error(`Failed to create source TU: ${error.message}`);
+                throw new Error(`Failed to create source TU for guid ${tu.guid}: ${error.message}`);
             }
         });
 
@@ -86,7 +73,7 @@ The tool returns translated TUs with:
         // Create jobs and assign to provider
         const assignedJobs = await mm.dispatcher.createJobs(
             jobRequest,
-            { providerList: [provider] }
+            { providerList: [provider], skipGroupCheck: true, skipQualityCheck: true }
         );
 
         // Find the job assigned to the requested provider
@@ -96,10 +83,8 @@ The tool returns translated TUs with:
             // Check if any TUs were rejected
             const rejectedJob = assignedJobs.find(j => !j.translationProvider);
             if (rejectedJob && rejectedJob.tus.length > 0) {
-                throw new Error(
-                    `Provider "${provider}" did not accept any of the ${tus.length} translation units. ` +
-                    `The provider may not support the requested language pair or content type.`
-                );
+                throw new Error(`Provider "${provider}" did not accept any of the ${guids.length} translation units. ` +
+                    `The provider may not support the requested language pair or content type.`);
             }
             throw new Error(`Failed to create job with provider "${provider}"`);
         }
