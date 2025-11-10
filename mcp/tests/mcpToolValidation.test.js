@@ -10,7 +10,7 @@ import {
 } from '../tools/mcpTool.js';
 import { SourceQueryTool } from '../tools/sourceQuery.js';
 import { TranslateTool } from '../tools/translate.js';
-import { TranslationStatusTool } from '../tools/status.js';
+import { StatusTool } from '../tools/status.js';
 
 describe('MCP Tool Input Validation and Output', () => {
     let mockMM;
@@ -733,7 +733,7 @@ describe('MCP Tool Input Validation and Output', () => {
     describe('TranslationStatusTool', () => {
         describe('input validation', () => {
             it('should accept valid detailLevel enum', async () => {
-                const handler = TranslationStatusTool.handler(mockMM);
+                const handler = StatusTool.handler(mockMM);
                 
                 const result1 = await handler({ detailLevel: 'summary' });
                 assert.ok(!result1.isError);
@@ -743,7 +743,7 @@ describe('MCP Tool Input Validation and Output', () => {
             });
 
             it('should reject invalid detailLevel', async () => {
-                const handler = TranslationStatusTool.handler(mockMM);
+                const handler = StatusTool.handler(mockMM);
                 const result = await handler({ detailLevel: 'invalid' });
                 
                 assert.ok(result.isError);
@@ -752,14 +752,14 @@ describe('MCP Tool Input Validation and Output', () => {
             });
 
             it('should default detailLevel to summary', async () => {
-                const handler = TranslationStatusTool.handler(mockMM);
+                const handler = StatusTool.handler(mockMM);
                 const result = await handler({});
                 
                 assert.ok(!result.isError);
             });
 
             it('should accept valid include array', async () => {
-                const handler = TranslationStatusTool.handler(mockMM);
+                const handler = StatusTool.handler(mockMM);
                 
                 const result1 = await handler({ include: ['jobs'] });
                 assert.ok(!result1.isError);
@@ -772,14 +772,14 @@ describe('MCP Tool Input Validation and Output', () => {
             });
 
             it('should reject invalid include values', async () => {
-                const handler = TranslationStatusTool.handler(mockMM);
+                const handler = StatusTool.handler(mockMM);
                 const result = await handler({ include: ['invalid'] });
                 
                 assert.ok(result.isError);
             });
 
             it('should default include to channels, providers, and languagePairs', async () => {
-                const handler = TranslationStatusTool.handler(mockMM);
+                const handler = StatusTool.handler(mockMM);
                 const result = await handler({});
                 
                 assert.ok(!result.isError);
@@ -793,7 +793,7 @@ describe('MCP Tool Input Validation and Output', () => {
             });
 
             it('should accept optional filters', async () => {
-                const handler = TranslationStatusTool.handler(mockMM);
+                const handler = StatusTool.handler(mockMM);
                 
                 const result1 = await handler({ channel: 'channel1' });
                 assert.ok(!result1.isError);
@@ -809,7 +809,7 @@ describe('MCP Tool Input Validation and Output', () => {
             });
 
             it('should accept all filters together', async () => {
-                const handler = TranslationStatusTool.handler(mockMM);
+                const handler = StatusTool.handler(mockMM);
                 const result = await handler({
                     detailLevel: 'detailed',
                     include: ['jobs', 'coverage'],
@@ -825,7 +825,7 @@ describe('MCP Tool Input Validation and Output', () => {
 
         describe('error handling', () => {
             it('should handle non-existent channel', async () => {
-                const handler = TranslationStatusTool.handler(mockMM);
+                const handler = StatusTool.handler(mockMM);
                 const result = await handler({ channel: 'nonexistent' });
                 
                 assert.ok(result.isError);
@@ -834,7 +834,7 @@ describe('MCP Tool Input Validation and Output', () => {
             });
 
             it('should handle non-existent provider', async () => {
-                const handler = TranslationStatusTool.handler(mockMM);
+                const handler = StatusTool.handler(mockMM);
                 const result = await handler({ 
                     include: ['providers'],
                     provider: 'nonexistent' 
@@ -848,7 +848,7 @@ describe('MCP Tool Input Validation and Output', () => {
 
         describe('output format', () => {
             it('should return structured status with required fields', async () => {
-                const handler = TranslationStatusTool.handler(mockMM);
+                const handler = StatusTool.handler(mockMM);
                 const result = await handler({
                     include: ['channels', 'languagePairs', 'translationMemory']
                 });
@@ -862,7 +862,7 @@ describe('MCP Tool Input Validation and Output', () => {
             });
 
             it('should include coverage when requested', async () => {
-                const handler = TranslationStatusTool.handler(mockMM);
+                const handler = StatusTool.handler(mockMM);
                 const result = await handler({ include: ['coverage'] });
                 
                 assert.ok(!result.isError);
@@ -871,7 +871,7 @@ describe('MCP Tool Input Validation and Output', () => {
             });
 
             it('should include jobs when requested', async () => {
-                const handler = TranslationStatusTool.handler(mockMM);
+                const handler = StatusTool.handler(mockMM);
                 const result = await handler({ include: ['jobs'] });
                 
                 assert.ok(!result.isError);
@@ -880,7 +880,7 @@ describe('MCP Tool Input Validation and Output', () => {
             });
 
             it('should include providers when requested', async () => {
-                const handler = TranslationStatusTool.handler(mockMM);
+                const handler = StatusTool.handler(mockMM);
                 const result = await handler({ include: ['providers'] });
                 
                 assert.ok(!result.isError);
@@ -889,7 +889,7 @@ describe('MCP Tool Input Validation and Output', () => {
             });
 
             it('should include details when detailLevel is detailed', async () => {
-                const handler = TranslationStatusTool.handler(mockMM);
+                const handler = StatusTool.handler(mockMM);
                 const result = await handler({ detailLevel: 'detailed' });
                 
                 assert.ok(!result.isError);
@@ -898,7 +898,7 @@ describe('MCP Tool Input Validation and Output', () => {
             });
 
             it('should not include details when detailLevel is summary', async () => {
-                const handler = TranslationStatusTool.handler(mockMM);
+                const handler = StatusTool.handler(mockMM);
                 const result = await handler({ detailLevel: 'summary' });
                 
                 assert.ok(!result.isError);

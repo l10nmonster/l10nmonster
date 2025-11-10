@@ -577,10 +577,10 @@ function buildResponse({ channelStats, desiredPairs, supportedPairs, providers, 
  * - sourceLang: Filter to specific source language (default: all languages)
  * - targetLang: Filter to specific target language (default: all languages)
  */
-export class TranslationStatusTool extends McpTool {
+export class StatusTool extends McpTool {
     static metadata = {
-        name: 'translation_status',
-        description: `Assemble the status of the translation system as a whole or specific parts of it.
+        name: 'status',
+        description: `Assemble the status of the l10nmonster translation system as a whole or specific parts of it.
 The result may include any of these sections: translation channels, projects, jobs, memory, coverage, providers and supported language pairs. 
 The result can be further refined by filtering by channel, provider, source language, and target language.
 `,
