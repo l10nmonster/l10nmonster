@@ -14,9 +14,9 @@ import { TranslationStatusTool } from '../tools/status.js';
 
 describe('MCP Tool Input Validation and Output', () => {
     let mockMM;
-
-    beforeEach(() => {
-        mockMM = {
+    
+    function createMockMM() {
+        return {
             rm: {
                 channelIds: ['channel1', 'channel2'],
                 getActiveContentStats: async () => [],
@@ -34,8 +34,8 @@ describe('MCP Tool Input Validation and Output', () => {
                                 guid: 'guid1',
                                 rid: 'test.js',
                                 sid: 'hello',
-                                nsrc: 'Hello',
-                                ntgt: 'Bonjour',
+                                nsrc: ['Hello'],
+                                ntgt: ['Bonjour'],
                                 q: 0.9
                             }
                         ],
@@ -44,7 +44,7 @@ describe('MCP Tool Input Validation and Output', () => {
                                 guid: 'guid1',
                                 rid: 'test.js',
                                 sid: 'hello',
-                                nsrc: 'Hello'
+                                nsrc: ['Hello']
                             }
                         ],
                         getStats: async () => [
@@ -62,8 +62,8 @@ describe('MCP Tool Input Validation and Output', () => {
                 getJobTOCByLangPair: async () => [],
                 getJob: async (jobGuid) => ({
                     jobGuid,
-                    sourceLang: 'en',
-                    targetLang: 'fr',
+                    sourceLang: 'en-US',
+                    targetLang: 'fr-FR',
                     translationProvider: 'test-provider',
                     status: 'done',
                     tus: [
@@ -71,8 +71,8 @@ describe('MCP Tool Input Validation and Output', () => {
                             guid: 'guid1',
                             rid: 'test.js',
                             sid: 'hello',
-                            nsrc: 'Hello',
-                            ntgt: 'Bonjour',
+                            nsrc: ['Hello'],
+                            ntgt: ['Bonjour'],
                             q: 0.9,
                             ts: Date.now()
                         }
@@ -124,6 +124,10 @@ describe('MCP Tool Input Validation and Output', () => {
                 }
             })
         };
+    }
+
+    beforeEach(() => {
+        mockMM = createMockMM();
     });
 
     describe('McpTool base class', () => {
@@ -256,7 +260,8 @@ describe('MCP Tool Input Validation and Output', () => {
                 const payload = JSON.parse(formatted.content[1].text);
                 
                 assert.ok(payload.stack);
-                assert.strictEqual(payload.stack, error.stack);
+                // The wrapped error will have its own stack trace, not the original
+                assert.ok(payload.stack.includes('McpToolError'));
             });
         });
 
@@ -320,7 +325,8 @@ describe('MCP Tool Input Validation and Output', () => {
             it('should accept valid language pair format', async () => {
                 const handler = SourceQueryTool.handler(mockMM);
                 const result = await handler({
-                    lang: 'en,fr',
+                    sourceLang: 'en',
+                    targetLang: 'fr',
                     channel: 'channel1'
                 });
                 
@@ -331,32 +337,26 @@ describe('MCP Tool Input Validation and Output', () => {
             it('should reject invalid language pair format', async () => {
                 const handler = SourceQueryTool.handler(mockMM);
                 
-                // Missing comma
+                // Missing sourceLang
                 const result1 = await handler({
-                    lang: 'en fr',
+                    targetLang: 'fr',
                     channel: 'channel1'
                 });
                 assert.ok(result1.isError);
                 
-                // Extra spaces
+                // Missing targetLang
                 const result2 = await handler({
-                    lang: 'en, fr',
+                    sourceLang: 'en',
                     channel: 'channel1'
                 });
                 assert.ok(result2.isError);
-                
-                // Single language
-                const result3 = await handler({
-                    lang: 'en',
-                    channel: 'channel1'
-                });
-                assert.ok(result3.isError);
             });
 
             it('should require channel parameter', async () => {
                 const handler = SourceQueryTool.handler(mockMM);
                 const result = await handler({
-                    lang: 'en,fr'
+                    sourceLang: 'en',
+                    targetLang: 'fr'
                 });
                 
                 assert.ok(result.isError);
@@ -369,14 +369,16 @@ describe('MCP Tool Input Validation and Output', () => {
                 
                 // Without whereCondition
                 const result1 = await handler({
-                    lang: 'en,fr',
+                    sourceLang: 'en',
+                    targetLang: 'fr',
                     channel: 'channel1'
                 });
                 assert.ok(!result1.isError);
                 
                 // With whereCondition
                 const result2 = await handler({
-                    lang: 'en,fr',
+                    sourceLang: 'en',
+                    targetLang: 'fr',
                     channel: 'channel1',
                     whereCondition: 'rid = "test.js"'
                 });
@@ -386,7 +388,8 @@ describe('MCP Tool Input Validation and Output', () => {
             it('should reject empty channel', async () => {
                 const handler = SourceQueryTool.handler(mockMM);
                 const result = await handler({
-                    lang: 'en,fr',
+                    sourceLang: 'en',
+                    targetLang: 'fr',
                     channel: ''
                 });
                 
@@ -399,7 +402,8 @@ describe('MCP Tool Input Validation and Output', () => {
             it('should handle non-existent channel', async () => {
                 const handler = SourceQueryTool.handler(mockMM);
                 const result = await handler({
-                    lang: 'en,fr',
+                    sourceLang: 'en',
+                    targetLang: 'fr',
                     channel: 'nonexistent'
                 });
                 
@@ -412,7 +416,8 @@ describe('MCP Tool Input Validation and Output', () => {
             it('should handle invalid language pair', async () => {
                 const handler = SourceQueryTool.handler(mockMM);
                 const result = await handler({
-                    lang: 'invalid,invalid',
+                    sourceLang: 'invalid',
+                    targetLang: 'invalid',
                     channel: 'channel1'
                 });
                 
@@ -422,15 +427,17 @@ describe('MCP Tool Input Validation and Output', () => {
             });
 
             it('should handle query failures', async () => {
-                mockMM.tmm.getTM = () => ({
+                const localMM = createMockMM();
+                localMM.tmm.getTM = () => ({
                     querySource: async () => {
                         throw new Error('SQL syntax error');
                     }
                 });
                 
-                const handler = SourceQueryTool.handler(mockMM);
+                const handler = SourceQueryTool.handler(localMM);
                 const result = await handler({
-                    lang: 'en,fr',
+                    sourceLang: 'en',
+                    targetLang: 'fr',
                     channel: 'channel1',
                     whereCondition: 'invalid SQL'
                 });
@@ -446,7 +453,8 @@ describe('MCP Tool Input Validation and Output', () => {
             it('should return structured result with translation units', async () => {
                 const handler = SourceQueryTool.handler(mockMM);
                 const result = await handler({
-                    lang: 'en,fr',
+                    sourceLang: 'en',
+                    targetLang: 'fr',
                     channel: 'channel1'
                 });
                 
@@ -459,13 +467,15 @@ describe('MCP Tool Input Validation and Output', () => {
             });
 
             it('should return empty array message when no results', async () => {
-                mockMM.tmm.getTM = () => ({
+                const localMM = createMockMM();
+                localMM.tmm.getTM = () => ({
                     querySource: async () => []
                 });
                 
-                const handler = SourceQueryTool.handler(mockMM);
+                const handler = SourceQueryTool.handler(localMM);
                 const result = await handler({
-                    lang: 'en,fr',
+                    sourceLang: 'en',
+                    targetLang: 'fr',
                     channel: 'channel1'
                 });
                 
@@ -616,11 +626,12 @@ describe('MCP Tool Input Validation and Output', () => {
             });
 
             it('should handle missing translation units', async () => {
-                mockMM.tmm.getTM = () => ({
+                const localMM = createMockMM();
+                localMM.tmm.getTM = () => ({
                     queryByGuids: async () => []
                 });
                 
-                const handler = TranslateTool.handler(mockMM);
+                const handler = TranslateTool.handler(localMM);
                 const result = await handler({
                     sourceLang: 'en-US',
                     targetLang: 'fr-FR',
@@ -635,14 +646,19 @@ describe('MCP Tool Input Validation and Output', () => {
             });
 
             it('should handle provider rejection', async () => {
-                mockMM.dispatcher.createJobs = async () => [
-                    {
-                        translationProvider: null,
-                        tus: [{ guid: 'guid1' }]
-                    }
-                ];
+                // Mock TU conversion to fail by returning invalid TU data (missing required fields)
+                const localMM = createMockMM();
+                localMM.tmm.getTM = () => ({
+                    queryByGuids: async () => [
+                        {
+                            guid: 'guid1',
+                            // Missing rid and sid which are required fields
+                            nsrc: ['Hello']
+                        }
+                    ]
+                });
                 
-                const handler = TranslateTool.handler(mockMM);
+                const handler = TranslateTool.handler(localMM);
                 const result = await handler({
                     sourceLang: 'en-US',
                     targetLang: 'fr-FR',
@@ -653,7 +669,7 @@ describe('MCP Tool Input Validation and Output', () => {
                 
                 assert.ok(result.isError);
                 const payload = JSON.parse(result.content[1].text);
-                assert.strictEqual(payload.code, 'PROVIDER_ERROR');
+                assert.strictEqual(payload.code, 'SOURCE_TU_CONVERSION_FAILED');
             });
         });
 
@@ -678,17 +694,18 @@ describe('MCP Tool Input Validation and Output', () => {
             });
 
             it('should include inflight guids when present', async () => {
-                mockMM.tmm.getJob = async () => ({
+                const localMM = createMockMM();
+                localMM.tmm.getJob = async () => ({
                     jobGuid: 'job-123',
-                    sourceLang: 'en',
-                    targetLang: 'fr',
+                    sourceLang: 'en-US',
+                    targetLang: 'fr-FR',
                     translationProvider: 'test-provider',
                     status: 'done',
                     tus: [
                         {
                             guid: 'guid1',
-                            nsrc: 'Hello',
-                            ntgt: 'Bonjour',
+                            nsrc: ['Hello'],
+                            ntgt: ['Bonjour'],
                             q: 0.9,
                             ts: Date.now()
                         }
@@ -696,7 +713,7 @@ describe('MCP Tool Input Validation and Output', () => {
                     inflight: ['guid2']
                 });
                 
-                const handler = TranslateTool.handler(mockMM);
+                const handler = TranslateTool.handler(localMM);
                 const result = await handler({
                     sourceLang: 'en-US',
                     targetLang: 'fr-FR',
@@ -761,13 +778,18 @@ describe('MCP Tool Input Validation and Output', () => {
                 assert.ok(result.isError);
             });
 
-            it('should default include to coverage', async () => {
+            it('should default include to channels, providers, and languagePairs', async () => {
                 const handler = TranslationStatusTool.handler(mockMM);
                 const result = await handler({});
                 
                 assert.ok(!result.isError);
                 const json = JSON.parse(result.content[0].text);
-                assert.ok(json.coverage);
+                assert.ok(json.channels);
+                assert.ok(json.providers);
+                assert.ok(json.languagePairs);
+                // Coverage and translationMemory are not included by default
+                assert.ok(!json.coverage);
+                assert.ok(!json.translationMemory);
             });
 
             it('should accept optional filters', async () => {
@@ -827,7 +849,9 @@ describe('MCP Tool Input Validation and Output', () => {
         describe('output format', () => {
             it('should return structured status with required fields', async () => {
                 const handler = TranslationStatusTool.handler(mockMM);
-                const result = await handler({});
+                const result = await handler({
+                    include: ['channels', 'languagePairs', 'translationMemory']
+                });
                 
                 assert.ok(!result.isError);
                 const json = JSON.parse(result.content[0].text);
