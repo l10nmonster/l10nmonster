@@ -3,6 +3,11 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import { isInitializeRequest } from '@modelcontextprotocol/sdk/types.js';
 import * as mcpTools from './tools/index.js';
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
+
+
+
 
 // Session management for HTTP transport
 const sessions = new Map(); // sessionId -> { transport, lastActivity }
@@ -12,6 +17,19 @@ const SESSION_CLEANUP_INTERVAL_MS = 1 * 60 * 1000; // 1 hour
 // Shared MCP server instance per MonsterManager
 // Use a WeakMap to avoid memory leaks. Once all sessions to a server are closed the server will be garbage collected.
 const serverInstances = new WeakMap(); // monsterManager -> McpServer
+
+
+function getMcpPackageVersion() {
+    try {
+        return JSON.parse(readFileSync(path.join(import.meta.dirname, 'package.json'), 'utf-8')).version;
+    } catch (error) {
+        console.error('Error parsing MCP package version:', error);
+        return '0.0.1-unknown';
+    }
+}
+
+// Set server version to be the package version
+const serverVersion = getMcpPackageVersion();
 
 /**
  * Setup tools on an MCP server instance
@@ -53,7 +71,7 @@ async function getOrCreateSharedServer(monsterManager) {
     if (!server) {
         server = new McpServer({
             name: 'l10nmonster-mcp',
-            version: '1.0.0',
+            version: serverVersion,
         });
         
         await setupToolsOnServer(server, monsterManager);
@@ -120,11 +138,10 @@ export function createMcpRoutes(mm) {
                         sessions.delete(transport.sessionId);
                     }
                 };
-
+                
                 // Get or create shared MCP server and connect to new transport
                 const server = await getOrCreateSharedServer(mm);
                 await server.connect(transport);
-                
                 console.info(`New MCP session initialized: ${transport.sessionId}`);
                 
                 session = { transport, lastActivity: Date.now() };
