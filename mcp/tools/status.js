@@ -110,6 +110,51 @@ async function getAvailableProviders(mm, filters) {
 }
 
 /**
+ * Get supported language pairs from providers.
+ * @param {Array} providers List of provider objects
+ * @param {Object} filters Filter object with optional sourceLang and targetLang properties
+ * @returns {Object} Supported language pairs by source language
+ */
+function getSupportedLangPairs(providers, filters) {
+    const supportedPairs = {};
+    const allSupportedPairs = new Set();
+    
+    if (!Array.isArray(providers)) {
+        return supportedPairs;
+    }
+    
+    for (const provider of providers) {
+        if (!provider.available || !provider.supportedPairs) continue;
+        
+        // Handle different formats of supportedPairs
+        if (provider.supportedPairs === 'any') {
+            // Provider supports any language pair, we can't enumerate them
+            continue;
+        }
+        
+        if (Array.isArray(provider.supportedPairs)) {
+            // Format: [["en", "es"], ["en", "fr"], ...]
+            for (const [sourceLang, targetLang] of provider.supportedPairs) {
+                // Apply language filters
+                if (filters.sourceLang && sourceLang !== filters.sourceLang) continue;
+                if (filters.targetLang && targetLang !== filters.targetLang) continue;
+                
+                const pairKey = makeLangPairKey(sourceLang, targetLang);
+                if (!allSupportedPairs.has(pairKey)) {
+                    allSupportedPairs.add(pairKey);
+                    supportedPairs[sourceLang] ??= [];
+                    if (!supportedPairs[sourceLang].includes(targetLang)) {
+                        supportedPairs[sourceLang].push(targetLang);
+                    }
+                }
+            }
+        }
+    }
+    
+    return supportedPairs;
+}
+
+/**
  * Get translation memory statistics for available language pairs.
  * @param {*} mm MonsterManager instance
  * @param {Object} filters Filter object with optional provider, sourceLang, and targetLang properties
@@ -325,12 +370,26 @@ function createChannelsMap(channelStats, withDetails) {
     return channelsMap;
 }
 
-function createLanguagePairsMap(desiredPairs) {
-    const languagePairsMap = {};
-    for (const [sourceLang, targetLangs] of Object.entries(desiredPairs)) {
-        languagePairsMap[sourceLang] = targetLangs;
+function createLanguagePairsMap(desiredPairs, supportedPairs) {
+    const result = {};
+    
+    if (Object.keys(desiredPairs).length > 0) {
+        const desiredMap = {};
+        for (const [sourceLang, targetLangs] of Object.entries(desiredPairs)) {
+            desiredMap[sourceLang] = targetLangs;
+        }
+        result.desired = desiredMap;
     }
-    return languagePairsMap;
+    
+    if (Object.keys(supportedPairs).length > 0) {
+        const supportedMap = {};
+        for (const [sourceLang, targetLangs] of Object.entries(supportedPairs)) {
+            supportedMap[sourceLang] = targetLangs;
+        }
+        result.supported = supportedMap;
+    }
+    
+    return result;
 }
 
 function createProvidersMap(providers, withDetails) {
@@ -422,42 +481,23 @@ function createJobsData(jobSummaries) {
     };
 }
 
-function selectProvidersData(requestedSections, providers, withDetails) {
-    if (!requestedSections.has('providers') || !Array.isArray(providers)) {
-        return undefined;
-    }
-    return createProvidersMap(providers, withDetails);
-}
-
-function selectCoverageData(requestedSections, coverage, withDetails) {
-    if (!requestedSections.has('coverage') || !coverage) {
-        return undefined;
-    }
-    return createCoverageData(coverage, withDetails);
-}
-
-function selectJobsData(requestedSections, jobSummaries) {
-    if (!requestedSections.has('jobs') || !jobSummaries) {
-        return undefined;
-    }
-    return createJobsData(jobSummaries);
-}
-
-function applyOptionalSections(result, { requestedSections, providersData, coverageData, jobsData, withDetails, channelStats, mm }) {
-    if (requestedSections.has('providers')) {
-        result.providers = providersData ?? {};
+function applyOptionalSections(result, { requestedSections, providers, coverage, jobSummaries, withDetails, channelStats, mm }) {
+    if (requestedSections.has('providers') && Array.isArray(providers)) {
+        result.providers = createProvidersMap(providers, withDetails);
     }
     
-    if (requestedSections.has('coverage')) {
-        result.coverage = coverageData?.map ?? {};
-        if (coverageData?.summary) {
+    if (requestedSections.has('coverage') && coverage) {
+        const coverageData = createCoverageData(coverage, withDetails);
+        result.coverage = coverageData.map;
+        if (coverageData.summary) {
             result.coverageSummary = coverageData.summary;
         }
     }
     
-    if (requestedSections.has('jobs')) {
-        result.jobs = jobsData?.jobsMap ?? {};
-        if (jobsData?.counts) {
+    if (requestedSections.has('jobs') && jobSummaries) {
+        const jobsData = createJobsData(jobSummaries);
+        result.jobs = jobsData.jobsMap;
+        if (jobsData.counts) {
             result.jobCounts = jobsData.counts;
         }
     }
@@ -475,6 +515,7 @@ function applyOptionalSections(result, { requestedSections, providersData, cover
  * @param {Object} params Parameters object
  * @param {Object} params.channelStats Channel statistics
  * @param {Object} params.desiredPairs Desired language pairs by source language
+ * @param {Object} params.supportedPairs Supported language pairs by source language from providers
  * @param {Array} params.providers List of providers
  * @param {Object} params.tmStats Translation memory statistics
  * @param {Object} params.coverage Coverage metrics
@@ -484,28 +525,32 @@ function applyOptionalSections(result, { requestedSections, providersData, cover
  * @param {*} params.mm MonsterManager instance
  * @returns {Object} Complete response object
  */
-function buildResponse({ channelStats, desiredPairs, providers, tmStats, coverage, jobSummaries, withDetails, includeSet, mm }) {
+function buildResponse({ channelStats, desiredPairs, supportedPairs, providers, tmStats, coverage, jobSummaries, withDetails, includeSet, mm }) {
     const requestedSections = includeSet instanceof Set ? includeSet : new Set(includeSet ?? []);
     
-    const channelsMap = createChannelsMap(channelStats, withDetails);
-    const languagePairsMap = createLanguagePairsMap(desiredPairs);
-    const translationMemoryMap = createTranslationMemoryMap(tmStats, withDetails);
-    const providersData = selectProvidersData(requestedSections, providers, withDetails);
-    const coverageData = selectCoverageData(requestedSections, coverage, withDetails);
-    const jobsData = selectJobsData(requestedSections, jobSummaries);
-    
     const result = {
-        timestamp: new Date().toISOString(),
-        channels: channelsMap,
-        languagePairs: languagePairsMap,
-        translationMemory: translationMemoryMap
+        timestamp: new Date().toISOString()
     };
     
+    // Add base sections if requested
+    if (requestedSections.has('channels')) {
+        result.channels = createChannelsMap(channelStats, withDetails);
+    }
+    
+    if (requestedSections.has('languagePairs')) {
+        result.languagePairs = createLanguagePairsMap(desiredPairs, supportedPairs);
+    }
+    
+    if (requestedSections.has('translationMemory')) {
+        result.translationMemory = createTranslationMemoryMap(tmStats, withDetails);
+    }
+    
+    // Add optional sections
     applyOptionalSections(result, {
         requestedSections,
-        providersData,
-        coverageData,
-        jobsData,
+        providers,
+        coverage,
+        jobSummaries,
         withDetails,
         channelStats,
         mm
@@ -521,15 +566,16 @@ function buildResponse({ channelStats, desiredPairs, providers, tmStats, coverag
  * This tool chains together functionality from monster, source_list (status mode),
  * and ops_jobs to provide a comprehensive overview including:
  * - Channel statistics
- * - Provider availability
- * - Pending job counts
- * - Translation memory coverage
+ * - Language pairs
+ * - Translation memory and coverage
+ *   - Provider availability
+ * - Job summaries
  * 
  * Supports optional filtering by:
- * - channel: Filter to specific channel ID
- * - provider: Filter to specific translation provider
- * - sourceLang: Filter to specific source language
- * - targetLang: Filter to specific target language
+ * - channel: Filter to specific channel ID (default: all channels)
+ * - provider: Filter to specific translation provider (default: all providers)
+ * - sourceLang: Filter to specific source language (default: all languages)
+ * - targetLang: Filter to specific target language (default: all languages)
  */
 export class TranslationStatusTool extends McpTool {
     static metadata = {
@@ -542,9 +588,9 @@ availability and supported language pairs.`,
             detailLevel: z.enum(['summary', 'detailed'])
                 .default('summary')
                 .describe('Controls response verbosity: "summary" omits secondary fields, "detailed" includes them'),
-            include: z.array(z.enum(['jobs', 'coverage', 'providers']))
-                .default(['coverage'])
-                .describe('Optional sections to include in the response. Defaults to ["coverage"]'),
+            include: z.array(z.enum(['channels', 'languagePairs', 'translationMemory', 'providers', 'coverage', 'jobs']))
+                .default(['channels', 'providers', 'languagePairs'])
+                .describe('Optional sections to include in the response. Defaults to ["channels", "providers", "languagePairs"]'),
             channel: z.string()
                 .optional()
                 .describe('Optional channel ID to filter results'),
@@ -572,14 +618,31 @@ availability and supported language pairs.`,
         
         // Gather all data using helper functions
         const { channelStats, channelIds } = await getChannelStats(mm, filters);
-        const { desiredPairs } = await getDesiredLangPairs(mm, channelIds, filters);
-        const providers = includeSet.has('providers') ?
+        
+        // Get providers if needed for languagePairs:supported or providers section
+        const needsProviders = includeSet.has('providers') || includeSet.has('languagePairs');
+        const providers = needsProviders ?
             await getAvailableProviders(mm, filters) :
             null;
-        const { tmStats, availableLangPairs } = await getTranslationMemoryStats(mm, filters);
+        
+        const desiredPairs = includeSet.has('languagePairs') ?
+            (await getDesiredLangPairs(mm, channelIds, filters)).desiredPairs :
+            {};
+        
+        const supportedPairs = includeSet.has('languagePairs') ?
+            getSupportedLangPairs(providers, filters) :
+            {};
+        
+        // Get TM stats if translationMemory, coverage, or jobs is requested
+        const needsTmStats = includeSet.has('translationMemory') || includeSet.has('coverage') || includeSet.has('jobs');
+        const { tmStats, availableLangPairs } = needsTmStats ?
+            await getTranslationMemoryStats(mm, filters) :
+            { tmStats: {}, availableLangPairs: [] };
+        
         const coverage = includeSet.has('coverage') ?
             computeCoverage((await getTranslationStatus(mm, filters)).translationStatus) :
             null;
+        
         const jobSummaries = includeSet.has('jobs') ?
             await getJobSummaries(mm, filters, availableLangPairs) :
             null;
@@ -588,6 +651,7 @@ availability and supported language pairs.`,
         return buildResponse({
             channelStats,
             desiredPairs,
+            supportedPairs,
             providers,
             tmStats,
             coverage,

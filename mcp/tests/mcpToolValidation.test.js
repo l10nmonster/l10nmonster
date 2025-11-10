@@ -134,8 +134,8 @@ describe('MCP Tool Input Validation and Output', () => {
                 
                 assert.ok(formatted.content);
                 assert.strictEqual(formatted.content.length, 1);
-                assert.strictEqual(formatted.content[0].type, 'json');
-                assert.deepStrictEqual(formatted.content[0].json, result);
+                assert.strictEqual(formatted.content[0].type, 'text');
+                assert.strictEqual(formatted.content[0].text, JSON.stringify(result, null, 2));
             });
 
             it('should format string results as text content', () => {
@@ -172,8 +172,8 @@ describe('MCP Tool Input Validation and Output', () => {
                 const result = [1, 2, 3];
                 const formatted = McpTool.formatResult(result);
                 
-                assert.strictEqual(formatted.content[0].type, 'json');
-                assert.deepStrictEqual(formatted.content[0].json, result);
+                assert.strictEqual(formatted.content[0].type, 'text');
+                assert.strictEqual(formatted.content[0].text, JSON.stringify(result, null, 2));
             });
         });
 
@@ -192,9 +192,9 @@ describe('MCP Tool Input Validation and Output', () => {
                 assert.ok(formatted.content);
                 assert.strictEqual(formatted.content.length, 2);
                 assert.strictEqual(formatted.content[0].type, 'text');
-                assert.strictEqual(formatted.content[1].type, 'json');
+                assert.strictEqual(formatted.content[1].type, 'text');
                 
-                const payload = formatted.content[1].json;
+                const payload = JSON.parse(formatted.content[1].text);
                 assert.strictEqual(payload.name, 'McpToolError');
                 assert.strictEqual(payload.message, 'Test error');
                 assert.strictEqual(payload.code, 'TEST_ERROR');
@@ -219,7 +219,7 @@ describe('MCP Tool Input Validation and Output', () => {
                 const formatted = McpTool.formatError(zodError);
                 
                 assert.ok(formatted.isError);
-                const payload = formatted.content[1].json;
+                const payload = JSON.parse(formatted.content[1].text);
                 assert.strictEqual(payload.code, 'INVALID_INPUT');
                 assert.ok(payload.details);
                 assert.ok(payload.details.issues);
@@ -232,7 +232,7 @@ describe('MCP Tool Input Validation and Output', () => {
                 const error = new McpToolError('Wrapper error', { cause });
                 
                 const formatted = McpTool.formatError(error);
-                const payload = formatted.content[1].json;
+                const payload = JSON.parse(formatted.content[1].text);
                 
                 assert.ok(payload.cause);
                 assert.strictEqual(payload.cause.name, 'Error');
@@ -242,7 +242,7 @@ describe('MCP Tool Input Validation and Output', () => {
             it('should wrap unknown errors', () => {
                 const error = new Error('Unknown error');
                 const formatted = McpTool.formatError(error);
-                const payload = formatted.content[1].json;
+                const payload = JSON.parse(formatted.content[1].text);
                 
                 assert.strictEqual(payload.code, 'UNKNOWN_ERROR');
                 assert.strictEqual(payload.message, 'Unknown error');
@@ -253,7 +253,7 @@ describe('MCP Tool Input Validation and Output', () => {
                 error.stack = 'Error: Test\n    at test.js:1:1';
                 
                 const formatted = McpTool.formatError(error);
-                const payload = formatted.content[1].json;
+                const payload = JSON.parse(formatted.content[1].text);
                 
                 assert.ok(payload.stack);
                 assert.strictEqual(payload.stack, error.stack);
@@ -282,13 +282,15 @@ describe('MCP Tool Input Validation and Output', () => {
                 // Valid input
                 const validResult = await handler({ required: 'test', optional: 42 });
                 assert.ok(validResult.content);
-                assert.strictEqual(validResult.content[0].type, 'json');
-                assert.strictEqual(validResult.content[0].json.result, 'test');
+                assert.strictEqual(validResult.content[0].type, 'text');
+                const validPayload = JSON.parse(validResult.content[0].text);
+                assert.strictEqual(validPayload.result, 'test');
                 
                 // Invalid input - missing required
                 const invalidResult = await handler({ optional: 42 });
                 assert.ok(invalidResult.isError);
-                assert.strictEqual(invalidResult.content[1].json.code, 'INVALID_INPUT');
+                const invalidPayload = JSON.parse(invalidResult.content[1].text);
+                assert.strictEqual(invalidPayload.code, 'INVALID_INPUT');
             });
 
             it('should format execution errors', async () => {
@@ -358,7 +360,8 @@ describe('MCP Tool Input Validation and Output', () => {
                 });
                 
                 assert.ok(result.isError);
-                assert.strictEqual(result.content[1].json.code, 'INVALID_INPUT');
+                const payload = JSON.parse(result.content[1].text);
+                assert.strictEqual(payload.code, 'INVALID_INPUT');
             });
 
             it('should accept optional whereCondition', async () => {
@@ -401,8 +404,9 @@ describe('MCP Tool Input Validation and Output', () => {
                 });
                 
                 assert.ok(result.isError);
-                assert.strictEqual(result.content[1].json.code, 'NOT_FOUND');
-                assert.ok(result.content[1].json.hints);
+                const payload = JSON.parse(result.content[1].text);
+                assert.strictEqual(payload.code, 'NOT_FOUND');
+                assert.ok(payload.hints);
             });
 
             it('should handle invalid language pair', async () => {
@@ -413,7 +417,8 @@ describe('MCP Tool Input Validation and Output', () => {
                 });
                 
                 assert.ok(result.isError);
-                assert.strictEqual(result.content[1].json.code, 'INVALID_INPUT');
+                const payload = JSON.parse(result.content[1].text);
+                assert.strictEqual(payload.code, 'INVALID_INPUT');
             });
 
             it('should handle query failures', async () => {
@@ -431,8 +436,9 @@ describe('MCP Tool Input Validation and Output', () => {
                 });
                 
                 assert.ok(result.isError);
-                assert.strictEqual(result.content[1].json.code, 'QUERY_FAILED');
-                assert.ok(result.content[1].json.hints);
+                const payload = JSON.parse(result.content[1].text);
+                assert.strictEqual(payload.code, 'QUERY_FAILED');
+                assert.ok(payload.hints);
             });
         });
 
@@ -445,7 +451,7 @@ describe('MCP Tool Input Validation and Output', () => {
                 });
                 
                 assert.ok(!result.isError);
-                const json = result.content[0].json;
+                const json = JSON.parse(result.content[0].text);
                 assert.ok(json.sourceLang);
                 assert.ok(json.targetLang);
                 assert.ok(Array.isArray(json.translationUnits));
@@ -464,7 +470,7 @@ describe('MCP Tool Input Validation and Output', () => {
                 });
                 
                 assert.ok(!result.isError);
-                const json = result.content[0].json;
+                const json = JSON.parse(result.content[0].text);
                 assert.strictEqual(json.translationUnits.length, 0);
                 assert.ok(json.message.includes('No content'));
             });
@@ -496,7 +502,8 @@ describe('MCP Tool Input Validation and Output', () => {
                 });
                 
                 assert.ok(result.isError);
-                assert.strictEqual(result.content[1].json.code, 'INVALID_INPUT');
+                const payload = JSON.parse(result.content[1].text);
+                assert.strictEqual(payload.code, 'INVALID_INPUT');
             });
 
             it('should require targetLang', async () => {
@@ -588,8 +595,9 @@ describe('MCP Tool Input Validation and Output', () => {
                 });
                 
                 assert.ok(result.isError);
-                assert.strictEqual(result.content[1].json.code, 'INVALID_INPUT');
-                assert.ok(result.content[1].json.hints);
+                const payload = JSON.parse(result.content[1].text);
+                assert.strictEqual(payload.code, 'INVALID_INPUT');
+                assert.ok(payload.hints);
             });
 
             it('should handle invalid language pair', async () => {
@@ -603,7 +611,8 @@ describe('MCP Tool Input Validation and Output', () => {
                 });
                 
                 assert.ok(result.isError);
-                assert.strictEqual(result.content[1].json.code, 'INVALID_INPUT');
+                const payload = JSON.parse(result.content[1].text);
+                assert.strictEqual(payload.code, 'INVALID_INPUT');
             });
 
             it('should handle missing translation units', async () => {
@@ -621,7 +630,8 @@ describe('MCP Tool Input Validation and Output', () => {
                 });
                 
                 assert.ok(result.isError);
-                assert.strictEqual(result.content[1].json.code, 'NOT_FOUND');
+                const payload = JSON.parse(result.content[1].text);
+                assert.strictEqual(payload.code, 'NOT_FOUND');
             });
 
             it('should handle provider rejection', async () => {
@@ -642,7 +652,8 @@ describe('MCP Tool Input Validation and Output', () => {
                 });
                 
                 assert.ok(result.isError);
-                assert.strictEqual(result.content[1].json.code, 'PROVIDER_ERROR');
+                const payload = JSON.parse(result.content[1].text);
+                assert.strictEqual(payload.code, 'PROVIDER_ERROR');
             });
         });
 
@@ -658,7 +669,7 @@ describe('MCP Tool Input Validation and Output', () => {
                 });
                 
                 assert.ok(!result.isError);
-                const json = result.content[0].json;
+                const json = JSON.parse(result.content[0].text);
                 assert.ok(json.jobGuid);
                 assert.strictEqual(json.sourceLang, 'en-US');
                 assert.strictEqual(json.targetLang, 'fr-FR');
@@ -695,7 +706,7 @@ describe('MCP Tool Input Validation and Output', () => {
                 });
                 
                 assert.ok(!result.isError);
-                const json = result.content[0].json;
+                const json = JSON.parse(result.content[0].text);
                 assert.ok(json.inflightGuids);
                 assert.strictEqual(json.inflightCount, 1);
             });
@@ -719,7 +730,8 @@ describe('MCP Tool Input Validation and Output', () => {
                 const result = await handler({ detailLevel: 'invalid' });
                 
                 assert.ok(result.isError);
-                assert.strictEqual(result.content[1].json.code, 'INVALID_INPUT');
+                const payload = JSON.parse(result.content[1].text);
+                assert.strictEqual(payload.code, 'INVALID_INPUT');
             });
 
             it('should default detailLevel to summary', async () => {
@@ -754,7 +766,7 @@ describe('MCP Tool Input Validation and Output', () => {
                 const result = await handler({});
                 
                 assert.ok(!result.isError);
-                const json = result.content[0].json;
+                const json = JSON.parse(result.content[0].text);
                 assert.ok(json.coverage);
             });
 
@@ -795,7 +807,8 @@ describe('MCP Tool Input Validation and Output', () => {
                 const result = await handler({ channel: 'nonexistent' });
                 
                 assert.ok(result.isError);
-                assert.strictEqual(result.content[1].json.code, 'NOT_FOUND');
+                const payload = JSON.parse(result.content[1].text);
+                assert.strictEqual(payload.code, 'NOT_FOUND');
             });
 
             it('should handle non-existent provider', async () => {
@@ -806,7 +819,8 @@ describe('MCP Tool Input Validation and Output', () => {
                 });
                 
                 assert.ok(result.isError);
-                assert.strictEqual(result.content[1].json.code, 'NOT_FOUND');
+                const payload = JSON.parse(result.content[1].text);
+                assert.strictEqual(payload.code, 'NOT_FOUND');
             });
         });
 
@@ -816,7 +830,7 @@ describe('MCP Tool Input Validation and Output', () => {
                 const result = await handler({});
                 
                 assert.ok(!result.isError);
-                const json = result.content[0].json;
+                const json = JSON.parse(result.content[0].text);
                 assert.ok(json.timestamp);
                 assert.ok(json.channels);
                 assert.ok(json.languagePairs);
@@ -828,7 +842,7 @@ describe('MCP Tool Input Validation and Output', () => {
                 const result = await handler({ include: ['coverage'] });
                 
                 assert.ok(!result.isError);
-                const json = result.content[0].json;
+                const json = JSON.parse(result.content[0].text);
                 assert.ok(json.coverage);
             });
 
@@ -837,7 +851,7 @@ describe('MCP Tool Input Validation and Output', () => {
                 const result = await handler({ include: ['jobs'] });
                 
                 assert.ok(!result.isError);
-                const json = result.content[0].json;
+                const json = JSON.parse(result.content[0].text);
                 assert.ok(json.jobs !== undefined);
             });
 
@@ -846,7 +860,7 @@ describe('MCP Tool Input Validation and Output', () => {
                 const result = await handler({ include: ['providers'] });
                 
                 assert.ok(!result.isError);
-                const json = result.content[0].json;
+                const json = JSON.parse(result.content[0].text);
                 assert.ok(json.providers);
             });
 
@@ -855,7 +869,7 @@ describe('MCP Tool Input Validation and Output', () => {
                 const result = await handler({ detailLevel: 'detailed' });
                 
                 assert.ok(!result.isError);
-                const json = result.content[0].json;
+                const json = JSON.parse(result.content[0].text);
                 assert.ok(json.details);
             });
 
@@ -864,7 +878,7 @@ describe('MCP Tool Input Validation and Output', () => {
                 const result = await handler({ detailLevel: 'summary' });
                 
                 assert.ok(!result.isError);
-                const json = result.content[0].json;
+                const json = JSON.parse(result.content[0].text);
                 assert.ok(!json.details);
             });
         });

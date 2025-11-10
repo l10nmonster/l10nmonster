@@ -124,8 +124,8 @@ export class McpTool {
             }
             return {
                 content: [{
-                    type: 'json',
-                    json: result
+                    type: 'text',
+                    text: JSON.stringify(result, null, 2)
                 }]
             };
         }
@@ -204,8 +204,8 @@ export class McpTool {
                 type: 'text',
                 text: summary
             }, {
-                type: 'json',
-                json: payload
+                type: 'text',
+                text: JSON.stringify(payload, null, 2)
             }],
             isError: true
         };

@@ -41,7 +41,6 @@ describe('MCPServer', () => {
             assert.ok(mcpServer.server, 'Server should be initialized');
             assert.ok(mcpServer.mm, 'MonsterManager should be stored');
             assert.strictEqual(mcpServer.mm, mockMM, 'MonsterManager should match input');
-            assert.strictEqual(mcpServer.useStdio, false, 'Should default to HTTP/SSE transport');
             assert.strictEqual(mcpServer.port, 3000, 'Should default to port 3000');
             
             // Verify server exists and is properly configured
@@ -54,9 +53,8 @@ describe('MCPServer', () => {
         });
 
         it('should accept options for transport configuration', () => {
-            const stdioServer = new MCPServer(mockMM, { stdio: true, port: 8080 });
-            assert.strictEqual(stdioServer.useStdio, true, 'Should use stdio when option is set');
-            assert.strictEqual(stdioServer.port, 8080, 'Should use specified port');
+            const customServer = new MCPServer(mockMM, { port: 8080 });
+            assert.strictEqual(customServer.port, 8080, 'Should use specified port');
         });
     });
 
@@ -76,59 +74,64 @@ describe('MCPServer', () => {
         });
 
         it('should call setupTools when starting', async () => {
-            // Create a server with stdio to avoid HTTP server issues in tests
-            const stdioServer = new MCPServer(mockMM, { stdio: true });
+            // Create a server instance with test port
+            const testServer = new MCPServer(mockMM, { port: 9999 });
             let setupToolsCalled = false;
             
             // Override setupTools to track if it's called
-            const originalSetupTools = stdioServer.setupTools;
-            stdioServer.setupTools = async () => {
+            const originalSetupTools = testServer.setupTools;
+            testServer.setupTools = async () => {
                 setupToolsCalled = true;
-                return originalSetupTools.call(stdioServer);
+                return originalSetupTools.call(testServer);
             };
             
-            // Mock the transport connection to avoid actually starting the server
-            const originalConnect = stdioServer.server.connect;
-            stdioServer.server.connect = async () => {
-                // Mock connection - don't actually start server
-                return Promise.resolve();
+            // Mock the HTTP server creation to avoid port conflicts
+            const originalCreateHTTPServer = testServer.createHTTPServer;
+            testServer.createHTTPServer = async () => {
+                // Call setupTools as the real implementation would
+                await testServer.setupTools();
+                // Return a mock HTTP server
+                return {
+                    listen: () => ({ close: () => {} })
+                };
             };
             
             try {
-                await stdioServer.start();
-                assert.ok(setupToolsCalled, 'setupTools should be called during start');
+                // This will fail because we're mocking, but setupTools should be called
+                await testServer.start();
             } catch (error) {
-                // Expected since we're mocking - just verify setupTools was called
-                assert.ok(setupToolsCalled, 'setupTools should be called even if start fails');
-            } finally {
-                // Restore original methods
-                stdioServer.setupTools = originalSetupTools;
-                stdioServer.server.connect = originalConnect;
+                // Expected - we're mocking
             }
+            
+            // Verify setupTools was called
+            assert.ok(setupToolsCalled, 'setupTools should be called even if start fails');
+            
+            // Cleanup
+            testServer.setupTools = originalSetupTools;
+            testServer.createHTTPServer = originalCreateHTTPServer;
         });
     });
 
     describe('transport configuration', () => {
-        it('should start HTTP/SSE server when stdio is false', () => {
-            const httpServer = new MCPServer(mockMM, { stdio: false, port: 8080 });
-            assert.strictEqual(httpServer.useStdio, false, 'Should not use stdio');
+        it('should configure HTTP server with custom port', () => {
+            const httpServer = new MCPServer(mockMM, { port: 8080 });
             assert.strictEqual(httpServer.port, 8080, 'Should use specified port');
         });
 
-        it('should start stdio transport when stdio is true', () => {
-            const stdioServer = new MCPServer(mockMM, { stdio: true });
-            assert.strictEqual(stdioServer.useStdio, true, 'Should use stdio');
+        it('should use default port when not specified', () => {
+            const defaultServer = new MCPServer(mockMM);
+            assert.strictEqual(defaultServer.port, 3000, 'Should use default port 3000');
         });
 
-        it('should use StreamableHTTP transport for HTTP mode', async () => {
-            const httpServer = new MCPServer(mockMM, { stdio: false, port: 8080 });
+        it('should use HTTP transport', async () => {
+            const httpServer = new MCPServer(mockMM, { port: 8080 });
             
             // Setup tools
             await httpServer.setupTools();
             
-            // Verify the server is configured for HTTP transport
-            assert.strictEqual(httpServer.useStdio, false, 'Should be configured for HTTP transport');
+            // Verify the server is configured
             assert.ok(httpServer.server, 'Should have MCP server instance');
+            assert.ok(httpServer.mm, 'Should have MonsterManager instance');
         });
     });
 

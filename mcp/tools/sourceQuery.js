@@ -27,9 +27,10 @@ You can write your own where conditions using SQL syntaxt against the following 
 - words: Word count
 - chars: Character count`,
         inputSchema: z.object({
-            lang: z.string()
-                .regex(/^[^,\s]+,[^,\s]+$/, 'Format must be "srcLang,tgtLang"')
-                .describe('Source and target language pair in format "srcLang,tgtLang" (e.g., "en,es")'),
+            sourceLang: z.string()
+                .describe('Source language code (e.g., "en-US")'),
+            targetLang: z.string()
+                .describe('Target language code (e.g., "es-419")'),
             channel: z.string()
                 .describe('Channel ID to query sources from'),
             whereCondition: z.string()
@@ -39,8 +40,7 @@ You can write your own where conditions using SQL syntaxt against the following 
     };
 
     static async execute(mm, args) {
-        const [sourceLang, targetLang] = args.lang.split(',').map(part => part.trim());
-        const channelId = args.channel.trim();
+        const { sourceLang, targetLang, channel: channelId } = args;
         const whereCondition = args.whereCondition ?? 'true';
 
         const availableChannels = mm.rm.channelIds ?? [];
