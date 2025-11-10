@@ -1,10 +1,12 @@
 # L10n Monster MCP Server
 
 Model Context Protocol (MCP) server for L10n Monster, exposing translation management functionality to Claude Code and other MCP clients.
+The server exposed an standards-compliant Streamable HTTP transport with per-request isolation.
 
 ## Usage
 
 Register MCP as an extension to be served and then start an l10n monster server as usual.
+
 
 ### Example
 
@@ -15,7 +17,6 @@ import { createMcpRoutes } from '@l10nmonster/mcp';
 serve.registerExtension('mcp', createMcpRoutes);
 
 export default config.l10nMonster(import.meta.dirname).action(serve)
-
 ```
 
 With above config, you can start the l10n server via:
@@ -28,14 +29,10 @@ The server then exposes an mcp at `http://localhost:9000/api/ext/mcp` which can 
 
 ## Available Tools
 
-- `source_query` - Query source content and translation memory
-- `translate` - Translate segments using configured providers
-- `translation_status` - Get translation memory statistics and provider information
+- `translation_status` - Get status of various l10nmonster subsystems inclugin channels, projects, providers, language pairs, jobs, translation memory etc. The caller agent controls which sub-systems to include and the level of details to allow for more efficient use of the context.
+- `source_query` - Query source content and translation memory.
+- `translate` - Translate segments using configured providers.
 
-## Transport Options
-
-- **HTTP/SSE** (default): Standards-compliant Streamable HTTP transport with per-request isolation
-- **Stdio**: Standard input/output transport for direct integration
 
 ## Development
 
@@ -45,16 +42,14 @@ When developing, the best way to test the MCP server is by running it and using 
 npx @modelcontextprotocol/inspector
 ```
 
-## MCP Tools
-
-This directory contains MCP tool classes that interface directly with MonsterManager, providing structured access to L10n Monster functionality through the Model Context Protocol. Unlike CLI actions, these tools return structured data optimized for programmatic consumption rather than console output.
-
-### Architecture
-
-All MCP tools inherit from the `McpTool` base class, which handles schema validation with Zod, automatic error formatting, and MCP response serialization. Tools are automatically discovered and registered at server startup by scanning exports from `tools/index.js`.
 
 
 ## Creating New Tools
+
+All tools live under `/tools` directory. Each tool interface directly with MonsterManager, providing structured access to L10n Monster functionality through the Model Context Protocol. Unlike CLI actions, these tools return structured data optimized for programmatic consumption rather than console output.
+
+
+All MCP tools inherit from the `McpTool` base class, which handles schema validation with Zod, automatic error formatting, and MCP response serialization. Tools are automatically discovered and registered at server startup by scanning exports from `tools/index.js`.
 
 New tools should focus on a single responsibility while remaining composable with existing tools. Design them to be idempotent where possible, especially for query operations that shouldn't modify state.
 
