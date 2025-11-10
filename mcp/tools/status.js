@@ -580,29 +580,29 @@ function buildResponse({ channelStats, desiredPairs, supportedPairs, providers, 
 export class TranslationStatusTool extends McpTool {
     static metadata = {
         name: 'translation_status',
-        description: 
-`Assemble the status of the translation system as a whole. This includes: translation 
-channel and projects, translation jobs, translation memory coverage, translation provider
-availability and supported language pairs.`,
+        description: `Assemble the status of the translation system as a whole or specific parts of it.
+The result may include any of these sections: translation channels, projects, jobs, memory, coverage, providers and supported language pairs. 
+The result can be further refined by filtering by channel, provider, source language, and target language.
+`,
         inputSchema: z.object({
             detailLevel: z.enum(['summary', 'detailed'])
                 .default('summary')
                 .describe('Controls response verbosity: "summary" omits secondary fields, "detailed" includes them'),
-            include: z.array(z.enum(['channels', 'languagePairs', 'translationMemory', 'providers', 'coverage', 'jobs']))
+            include: z.array(z.enum(['channels', 'providers', 'languagePairs', 'translationMemory', 'coverage', 'jobs']))
                 .default(['channels', 'providers', 'languagePairs'])
                 .describe('Optional sections to include in the response. Defaults to ["channels", "providers", "languagePairs"]'),
             channel: z.string()
                 .optional()
-                .describe('Optional channel ID to filter results'),
+                .describe('Optional channel ID to filter results. Defaults to all channels.'),
             provider: z.string()
                 .optional()
-                .describe('Optional provider ID to filter results'),
+                .describe('Optional provider ID to filter results. Defaults to all providers.'),
             sourceLang: z.string()
                 .optional()
-                .describe('Optional source language to filter results'),
+                .describe('Optional source language to filter results. Defaults to all source languages.'),
             targetLang: z.string()
                 .optional()
-                .describe('Optional target language to filter results'),
+                .describe('Optional target language to filter results. Defaults to all target languages.'),
         })
     };
 
