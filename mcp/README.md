@@ -10,8 +10,9 @@ Register MCP as an extension to be served and then start an l10n monster server 
 
 ### Example
 
-`l10nmonster.config.json`:
+`l10nmonster.config.mjs`:
 ```javascript
+import config from '@l10nmonster/core';
 import serve from '@l10nmonster/server';
 import { createMcpRoutes } from '@l10nmonster/mcp';
 serve.registerExtension('mcp', createMcpRoutes);
@@ -41,7 +42,6 @@ When developing, the best way to test the MCP server is by running it and using 
 ```
 npx @modelcontextprotocol/inspector
 ```
-
 
 
 ## Creating New Tools

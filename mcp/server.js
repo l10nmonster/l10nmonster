@@ -3,25 +3,24 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import { isInitializeRequest } from '@modelcontextprotocol/sdk/types.js';
 import * as mcpTools from './tools/index.js';
-import { readFileSync } from 'node:fs';
+import { readFile } from 'node:fs/promises';
 import path from 'node:path';
-
-
-
 
 // Session management for HTTP transport
 const sessions = new Map(); // sessionId -> { transport, lastActivity }
 const SESSION_TIMEOUT_MS = 30 * 60 * 1000; // 30 minutes
-const SESSION_CLEANUP_INTERVAL_MS = 1 * 60 * 1000; // 1 hour
+const SESSION_CLEANUP_INTERVAL_MS = 60 * 60 * 1000; // 1 hour
 
 // Shared MCP server instance per MonsterManager
 // Use a WeakMap to avoid memory leaks. Once all sessions to a server are closed the server will be garbage collected.
 const serverInstances = new WeakMap(); // monsterManager -> McpServer
 
 
-function getMcpPackageVersion() {
+async function getMcpPackageVersion() {
     try {
-        return JSON.parse(readFileSync(path.join(import.meta.dirname, 'package.json'), 'utf-8')).version;
+        const packageJsonContent = await readFile(path.join(import.meta.dirname, 'package.json'), 'utf-8');
+        const packageJson = JSON.parse(packageJsonContent.toString());
+        return packageJson.version;
     } catch (error) {
         console.error('Error parsing MCP package version:', error);
         return '0.0.1-unknown';
@@ -29,7 +28,7 @@ function getMcpPackageVersion() {
 }
 
 // Set server version to be the package version
-const serverVersion = getMcpPackageVersion();
+const serverVersion = await getMcpPackageVersion();
 
 /**
  * Setup tools on an MCP server instance
