@@ -4,20 +4,33 @@ Model Context Protocol (MCP) server for L10n Monster, exposing translation manag
 
 ## Usage
 
-```bash
-# Start with HTTP/SSE transport (default)
-npx l10n mcp
+Register MCP as an extension to be served and then start an l10n monster server as usual.
 
-# Start with custom port
-npx l10n mcp --port 8080
+### Example
 
-# Start with stdio transport
-npx l10n mcp --stdio
+`l10nmonster.config.json`:
+```javascript
+import serve from '@l10nmonster/server';
+import { createMcpRoutes } from '@l10nmonster/mcp';
+serve.registerExtension('mcp', createMcpRoutes);
+
+export default config.l10nMonster(import.meta.dirname).action(serve)
+
 ```
+
+With above config, you can start the l10n server via:
+```shell
+$ npx l10n serve
+```
+
+The server then exposes an mcp at `http://localhost:9000/api/ext/mcp` which can be leveraged by any LLM agent.
+
 
 ## Available Tools
 
 - `source_query` - Query source content and translation memory
+- `translate` - Translate segments using configured providers
+- `translation_status` - Get translation memory statistics and provider information
 
 ## Transport Options
 
@@ -32,61 +45,25 @@ When developing, the best way to test the MCP server is by running it and using 
 npx @modelcontextprotocol/inspector
 ```
 
-
-
 ## MCP Tools
 
-All MCP tools extend `McpTool`, which provides:
+This directory contains MCP tool classes that interface directly with MonsterManager, providing structured access to L10n Monster functionality through the Model Context Protocol. Unlike CLI actions, these tools return structured data optimized for programmatic consumption rather than console output.
 
-- **Schema-based validation**: Uses Zod  for input validation
-- **Error handling**: Automatic error formatting for MCP responses
-- **Result formatting**: Always formats resultsschemas to MCP-compatible format
-- **Tool registration**: `handler()` method returns an async handler function for MCP registration
+### Architecture
 
-### Key Differences from CLI Actions
+All MCP tools inherit from the `McpTool` base class, which handles schema validation with Zod, automatic error formatting, and MCP response serialization. Tools are automatically discovered and registered at server startup by scanning exports from `tools/index.js`.
 
-MCP tools differ from CLI actions in several important ways:
-
-1. **No CLI-specific concerns**: No console logging (`consoleLog`), no file I/O (`writeFileSync`)
-2. **Structured data return**: Return structured objects/arrays, not formatted strings
-3. **MCP-optimized schemas**: Schemas designed for API use, not CLI argument parsing
-4. **Direct function calls**: Call underlying MonsterManager methods directly
 
 ## Creating New Tools
 
-1. **Create a new tool class** extending `McpTool`:
-   ```javascript
-   export class MyNewTool extends McpTool {
-       static metadata = {
-           name: 'my_new_tool',
-           description: '...',
-           inputSchema: z.object({...})
-       };
-       
-       static async execute(mm, args) { 
-           // Return structured data
-           return { ... };
-       }
-   }
-   ```
+New tools should focus on a single responsibility while remaining composable with existing tools. Design them to be idempotent where possible, especially for query operations that shouldn't modify state.
 
-2. **Export it** from `tools/index.js`:
-   ```javascript
-   export { MyNewTool } from './MyNewTool.js';
-   ```
+Use consistent naming conventions: prefer verb-noun patterns like `source_query` or `translate_segments`, and standardize parameter names such as `channelId`, `sourceLang`, and `targetLang`. Write clear descriptions for both the tool and its parameters, as these directly influence how AI agents discover and use your tools. Include example values in parameter descriptions when they help clarify expected formats.
 
-3. **The tool will be automatically registered** when the MCP server starts.
-
-
-### Schema Design
-
-When creating a new tool here are the guidelines to write good description and shema.
-
-    - Remember that Tool descriptions and schema descriptions serve different purposes and audiences. Descriptions help with tool selection and understanding, while schema descriptions guide proper usage.
-    - LLM discover tools first via descriptions then invoke them via schemas
-    - Aim to have good sensible default for variables to make it easy out-of-the-box usage. Users should be able to get started without extensive configuration.
-    - In case of error emit  a helpful message to the caller with information to potentially recover. For example if a provided parameter is not valid in the error return a list of valid values so LLM can recover.
-    - Optional paramter should have their default explained.
+Remember that tool description and schema descriptions serve different purposes and audiences. Descriptions help with tool selection and understanding, while schema descriptions guide proper usage. So
+   - Aim to have good sensible default for variables to make it easy out-of-the-box usage. Users should be able to get started without extensive configuration.
+   - In case of error emit  a helpful message to the caller with information to potentially recover. For example if a provided parameter is not valid in the error return a list of valid values so LLM can recover.
+   - Optional paramter should have their default explained.
 
 
 
@@ -96,115 +73,63 @@ Additional reading:
 
 
 
-1. **Use descriptive field descriptions**: Zod's `.describe()` method helps AI agents understand parameters
-   ```javascript
-   inputSchema: z.object({
-       channelId: z.string().describe('Channel ID to fetch source TUs from'),
-       guids: z.array(z.string()).min(1).describe('Array of TU GUIDs to translate')
-   })
-   ```
+### Schema Design
 
-2. **Provide sensible defaults**: Use `.optional()` and `.default()` to make tools easier to use
-   ```javascript
-   whereCondition: z.string().optional().default('true').describe('SQL WHERE condition')
-   ```
+Define input schemas using Zod with descriptive field documentation. Use `.describe()` to explain each parameter's purpose and format, and leverage Zod's validation features like `.min()`, `.max()`, and `.optional()` to enforce constraints and provide sensible defaults.
 
-3. **Validate constraints**: Use Zod's validation features (`.min()`, `.max()`, `.regex()`, etc.)
-   ```javascript
-   guids: z.array(z.string()).min(1).describe('Array of TU GUIDs (at least one required)')
-   ```
+```javascript
+inputSchema: z.object({
+    channelId: z.string().describe('Channel ID to fetch source TUs from'),
+    guids: z.array(z.string()).min(1).describe('Array of TU GUIDs to translate'),
+    whereCondition: z.string().optional().default('true').describe('SQL WHERE condition against sources')
+})
+```
 
-### Data Return Guidelines
+### Implementation
 
-1. **Return structured data, not formatted strings**: Let the MCP client format the response
-   ```javascript
-   // Good: Return structured object
-   return { sourceLang, targetLang, totalSegments: 1234, jobs: [...] };
-   
-   // Bad: Return pre-formatted string
-   return `Found 1234 segments in ${sourceLang}->${targetLang}`;
-   ```
+Create a tool class that extends `McpTool` with static `metadata` and `execute` method:
 
-2. **Use arrays for lists**: Return arrays of objects, not string tables
-   ```javascript
-   // Good
-   return { translationUnits: tus.map(tu => ({ guid: tu.guid, text: tu.nsrc })) };
-   
-   // Bad
-   return tus.map(tu => `${tu.guid}: ${tu.nsrc}`).join('\n');
-   ```
+```javascript
+export class MyNewTool extends McpTool {
+    static metadata = {
+        name: 'my_new_tool',
+        description: 'Tool description for MCP discovery',
+        inputSchema: z.object({...})
+    };
 
-3. **Include metadata**: Provide context about the results
-   ```javascript
-   return {
-       sourceLang,
-       targetLang,
-       totalResults: tus.length,
-       query: args.whereCondition,
-       results: tus
-   };
-   ```
+    static async execute(mm, args) {
+        // Call MonsterManager methods directly
+        // Return structured data - the base class handles MCP formatting
+        return { ... };
+    }
+}
+```
+
+Export the tool from `tools/index.js` to make it available for automatic registration:
+
+```javascript
+export { MyNewTool } from './MyNewTool.js';
+```
+
+### Output Guidelines
+
+Return structured objects rather than formatted strings, letting MCP clients handle presentation. Use arrays of objects for lists instead of concatenated strings, and include contextual metadata with results to help consumers understand what they're receiving.
+
+The base class automatically formats results for MCP compatibility, so focus on returning clean, structured data that represents your tool's output naturally.
 
 ### Error Handling
 
-1. **Let errors bubble up**: The base class handles error formatting automatically
-   ```javascript
-   static async execute(mm, args) {
-       // Don't wrap in try-catch unless you need to add context
-       const tm = mm.tmm.getTM(sourceLang, targetLang);
-       return tm.querySource(args.whereCondition);
-   }
-   ```
+The base class provides structured error handling with specific error types (`McpInputError`, `McpNotFoundError`, `McpProviderError`) that include machine-readable codes, retry hints, and detailed context. Let errors bubble up naturally unless you need to add domain-specific context.
 
-2. **Add context when catching errors**: If you do catch, provide useful error messages
-   ```javascript
-   try {
-       return await someOperation();
-   } catch (error) {
-       throw new Error(`Failed to process ${channelId}: ${error.message}`);
-   }
-   ```
+When catching errors, use the structured error types to provide actionable information:
 
-### Performance Considerations
-
-1. **Limit large result sets**: Add pagination or reasonable limits
-   ```javascript
-   const results = tm.querySource(whereCondition);
-   const limited = results.slice(0, 1000); // Reasonable limit
-   return {
-       results: limited,
-       totalCount: results.length,
-       truncated: results.length > 1000
-   };
-   ```
-
-2. **Avoid unnecessary data transformation**: Return data in a format close to the source
-   ```javascript
-   // Good: Return DB results directly (if structure is reasonable)
-   return tm.querySource(whereCondition);
-   
-   // Bad: Transform every field unnecessarily
-   return tus.map(tu => ({ id: tu.guid, source: tu.nsrc, ... }));
-   ```
-
-### Tool Design Philosophy
-
-1. **Single responsibility**: Each tool should do one thing well
-2. **Composable**: Design tools that can work together (e.g., query → translate)
-3. **Idempotent when possible**: Same input should produce same output
-4. **No side effects in queries**: Query tools shouldn't modify state
-5. **Consistent naming**: Use clear, consistent naming patterns across tools
-   - Use verb-noun pattern: `query_source`, `translate_segments`, `create_jobs`
-   - Use consistent parameter names: `channelId`, `sourceLang`, `targetLang`
-
-### Documentation
-
-1. **Clear tool descriptions**: Explain what the tool does and when to use it
-2. **Parameter descriptions**: Document each parameter's purpose and format
-3. **Example values**: Include example values in descriptions when helpful
-   ```javascript
-   lang: z.string().describe('Source and target language pair in format "srcLang,tgtLang" (e.g., "en,es")')
-   ```
-
-4. **Document return structure**: Explain the shape of returned data in the tool description
-
+```javascript
+try {
+    return await someOperation();
+} catch (error) {
+    throw new McpInputError(`Invalid channel: ${channelId}`, {
+        hints: ['Call translation_status to see available channels'],
+        cause: error
+    });
+}
+```
