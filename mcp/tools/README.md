@@ -13,92 +13,33 @@ All MCP tools extend `McpTool`, which provides:
 - **Result formatting**: Always formats resultsschemas to MCP-compatible format
 - **Tool registration**: `handler()` method returns an async handler function for MCP registration
 
-### Key Differences from CLI Actions
 
-MCP tools differ from CLI actions in several important ways:
-
-1. **No CLI-specific concerns**: No console logging (`consoleLog`), no file I/O (`writeFileSync`)
-2. **Structured data return**: Return structured objects/arrays, not formatted strings
-3. **MCP-optimized schemas**: Schemas designed for API use, not CLI argument parsing
-4. **Direct function calls**: Call underlying MonsterManager methods directly
-
-### Example: SourceQueryTool
-
-```javascript
-import { z } from 'zod';
-import { McpTool } from './BaseMcpTool.js';
-
-export class SourceQueryTool extends McpTool {
-    static metadata = {
-        name: 'source_query',
-        description: 'Query sources in the local cache...',
-        inputSchema: z.object({
-            lang: z.string().describe('Language pair "srcLang,tgtLang"'),
-            whereCondition: z.string().optional(),
-            // ... more fields
-        })
-    };
-
-    static async execute(mm, args) {
-        // Call underlying functions directly
-        const tm = mm.tmm.getTM(sourceLang, targetLang);
-        const tus = tm.querySource(args.whereCondition ?? 'true');
-        
-        // Return structured data (will be automatically formatted)
-        return {
-            sourceLang,
-            targetLang,
-            translationUnits: tus.length,
-            jobs: [...]
-        };
-    }
-}
-```
 
 ## Creating New Tools
 
-1. **Create a new tool class** extending `McpTool`:
+
+Here are general guidelines for creating good MCP tool
+
+1. **Single responsibility**: Each tool should do one thing well
+2. **Composable**: Design tools that can work together (e.g., status → query → translate)
+3. **Idempotent when possible**: Same input should produce same output
+4. **No side effects in queries**: Query tools shouldn't modify state
+5. **Consistent naming**: Use clear, consistent naming patterns across tools.
+   - Use verb-noun pattern: `query_source`, `translate_segments`, `create_jobs`
+   - Use consistent parameter names: `channelId`, `sourceLang`, `targetLang`
+6. **Clear tool descriptions**: Explain what the tool does and when to use it. These are used for discovery of tool by LLM so optimize them.
+7. **Parameter descriptions**: Document each parameter's purpose and format. These tell LLM how to use the tool.
+8. **Example values**: Include example values in descriptions when helpful
    ```javascript
-   export class MyNewTool extends McpTool {
-       static metadata = {
-           name: 'my_new_tool',
-           description: '...',
-           inputSchema: z.object({...})
-       };
-       
-       static async execute(mm, args) { 
-           // Return structured data
-           return { ... };
-       }
-   }
+   lang: z.string().describe('Source and target language pair in format "srcLang,tgtLang" (e.g., "en,es")')
    ```
+9. **Document return structure**: Explain the shape of returned data in the tool description
 
-2. **Export it** from `tools/index.js`:
-   ```javascript
-   export { MyNewTool } from './MyNewTool.js';
-   ```
+Additinal resources on best practices:
+ - https://github.com/modelcontextprotocol/modelcontextprotocol/issues/1382
+ - https://steipete.me/posts/2025/mcp-best-practices#tool--parameter-descriptions 
 
-3. **The tool will be automatically registered** when the MCP server starts.
 
-## Underlying Functions
-
-MCP tools call MonsterManager methods directly:
-
-- **Translation Memory**: `mm.tmm.getTM(srcLang, tgtLang)` → `tm.querySource()`, `tm.getUntranslatedContent()`
-- **Job Dispatcher**: `mm.dispatcher.createJobs()`, `mm.dispatcher.startJobs()`
-- **Resource Manager**: `mm.rm.getAllResources()`, `mm.rm.getChannel()`
-- **Operations**: `mm.ops.*` methods
-- **Currency Formatting**: `mm.currencyFormatter.format()`
-
-## Benefits
-
-1. **Separation of concerns**: MCP tools don't depend on CLI action implementations
-2. **Better schemas**: MCP-optimized schemas with proper types and descriptions
-3. **Structured responses**: Return data structures instead of console output
-4. **Easier testing**: Can test tools independently of CLI actions
-5. **Future-proof**: Can evolve independently from CLI interface
-
-## Best Practices
 
 ### Schema Design
 
@@ -120,7 +61,7 @@ MCP tools call MonsterManager methods directly:
    guids: z.array(z.string()).min(1).describe('Array of TU GUIDs (at least one required)')
    ```
 
-### Data Return Guidelines
+### Output Guidelines
 
 1. **Return structured data, not formatted strings**: Let the MCP client format the response
    ```javascript
@@ -193,24 +134,28 @@ MCP tools call MonsterManager methods directly:
    return tus.map(tu => ({ id: tu.guid, source: tu.nsrc, ... }));
    ```
 
-### Tool Design Philosophy
 
-1. **Single responsibility**: Each tool should do one thing well
-2. **Composable**: Design tools that can work together (e.g., query → translate)
-3. **Idempotent when possible**: Same input should produce same output
-4. **No side effects in queries**: Query tools shouldn't modify state
-5. **Consistent naming**: Use clear, consistent naming patterns across tools
-   - Use verb-noun pattern: `query_source`, `translate_segments`, `create_jobs`
-   - Use consistent parameter names: `channelId`, `sourceLang`, `targetLang`
+### Mechanics
 
-### Documentation
-
-1. **Clear tool descriptions**: Explain what the tool does and when to use it
-2. **Parameter descriptions**: Document each parameter's purpose and format
-3. **Example values**: Include example values in descriptions when helpful
+1. **Create a new tool class** extending `McpTool`:
    ```javascript
-   lang: z.string().describe('Source and target language pair in format "srcLang,tgtLang" (e.g., "en,es")')
+   export class MyNewTool extends McpTool {
+       static metadata = {
+           name: 'my_new_tool',
+           description: '...',
+           inputSchema: z.object({...})
+       };
+       
+       static async execute(mm, args) { 
+           // Return structured data
+           return { ... };
+       }
+   }
    ```
 
-4. **Document return structure**: Explain the shape of returned data in the tool description
+2. **Export it** from `tools/index.js`:
+   ```javascript
+   export { MyNewTool } from './MyNewTool.js';
+   ```
 
+3. **The tool will be automatically registered** when the MCP server starts.
