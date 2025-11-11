@@ -4,7 +4,7 @@ import App from './App.jsx';
 
 // Mock @tanstack/react-query
 vi.mock('@tanstack/react-query', () => ({
-  QueryClient: vi.fn().mockImplementation(() => ({})),
+  QueryClient: vi.fn(function() { return {}; }),
   QueryClientProvider: ({ children }) => <div data-testid="query-client-provider">{children}</div>,
   useQuery: () => ({ data: null, isLoading: false, error: null }),
 }));

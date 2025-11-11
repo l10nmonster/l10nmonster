@@ -97,10 +97,12 @@ describe('GPTAgent', () => {
         const mockResponse = {
             choices: [{
                 message: {
-                    parsed: [
-                        { translation: 'Bonjour', confidence: 95, notes: 'Standard greeting' },
-                        { translation: 'Monde', confidence: 90, notes: '' }
-                    ]
+                    parsed: {
+                        translations: [
+                            { translation: 'Bonjour', confidence: 95, notes: 'Standard greeting' },
+                            { translation: 'Monde', confidence: 90, notes: '' }
+                        ]
+                    }
                 }
             }],
             usage: {

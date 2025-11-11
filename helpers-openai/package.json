@@ -10,8 +10,8 @@
     "author": "Diego Lagunas",
     "license": "MIT",
     "dependencies": {
-        "openai": "^5",
-        "zod": "^3"
+        "openai": "^6",
+        "zod": "^4"
     },
     "peerDependencies": {
         "@l10nmonster/core": "^3.0.0-alpha.0"

@@ -15,7 +15,7 @@
         "@google-cloud/translate": "^9",
         "@google/genai": "^1",
         "google-auth-library": "^10",
-        "googleapis": "^152"
+        "googleapis": "^166"
     },
     "peerDependencies": {
         "@l10nmonster/core": "^3.0.0-alpha.0"

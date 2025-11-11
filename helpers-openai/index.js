@@ -4,11 +4,13 @@ import { z } from "zod";
 
 import { logInfo, providers, styleString } from '@l10nmonster/core';
 
-const TranslatorAnnotation = z.array(z.object({
-    translation: z.string().describe('the translated string'),
-    confidence: z.number().describe('a confidence score between 0 and 100 that indicates whether the translation is possibly ambiguous'),
-    notes: z.string().describe('any additional notes about the translation'),
-}));
+const TranslatorAnnotation = z.object({
+    translations: z.array(z.object({
+        translation: z.string().describe('the translated string'),
+        confidence: z.number().describe('a confidence score between 0 and 100 that indicates whether the translation is possibly ambiguous'),
+        notes: z.string().describe('any additional notes about the translation'),
+    })).describe('array of translations'),
+});
 
 /**
  * @typedef {object} GPTAgentOptions
@@ -84,7 +86,7 @@ export class GPTAgent extends providers.LLMTranslationProvider {
     }
 
     convertTranslationResponse(chunk) {
-        const translations = chunk.choices[0].message.parsed;
+        const translations = chunk.choices[0].message.parsed.translations;
         const cost = [ chunk.usage.total_tokens / translations.length ];
         return this.processTranslations(translations, cost);
     }

@@ -8,8 +8,8 @@ import path from 'node:path';
 
 // Session management for HTTP transport
 const sessions = new Map(); // sessionId -> { transport, lastActivity }
-const SESSION_TIMEOUT_MS = 30 * 60 * 1000; // 30 minutes
-const SESSION_CLEANUP_INTERVAL_MS = 60 * 60 * 1000; // 1 hour
+// const SESSION_TIMEOUT_MS = 30 * 60 * 1000; // 30 minutes
+// const SESSION_CLEANUP_INTERVAL_MS = 60 * 60 * 1000; // 1 hour
 
 // Shared MCP server instance per MonsterManager
 // Use a WeakMap to avoid memory leaks. Once all sessions to a server are closed the server will be garbage collected.
@@ -84,18 +84,18 @@ async function getOrCreateSharedServer(monsterManager) {
 /**
  * Clean up expired sessions
  */
-function cleanupExpiredSessions() {
-    const now = Date.now();
-    for (const [sessionId, session] of sessions.entries()) {
-        if (now - session.lastActivity > SESSION_TIMEOUT_MS) {
-            console.info(`Cleaning up expired session: ${sessionId}`);
-            sessions.delete(sessionId);
-        }
-    }
-}
+// function cleanupExpiredSessions() {
+//     const now = Date.now();
+//     for (const [sessionId, session] of sessions.entries()) {
+//         if (now - session.lastActivity > SESSION_TIMEOUT_MS) {
+//             console.info(`Cleaning up expired session: ${sessionId}`);
+//             sessions.delete(sessionId);
+//         }
+//     }
+// }
 
 // Run cleanup periodically
-setInterval(cleanupExpiredSessions, SESSION_CLEANUP_INTERVAL_MS);
+// setInterval(cleanupExpiredSessions, SESSION_CLEANUP_INTERVAL_MS);
 
 /**
  * Creates MCP route handlers for use with the serve action extension mechanism.
