@@ -8,7 +8,8 @@
         "cli",
         "config-mancer",
         "helpers-*",
-        "server"
+        "server",
+        "mcp"
     ],
     "scripts": {
         "test": "npm run test:enhanced && npm run test:regression",

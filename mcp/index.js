@@ -1,0 +1,1 @@
+export { createMcpRoutes } from './server.js';

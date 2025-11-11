@@ -10,8 +10,10 @@ import { DeepLProvider } from '@l10nmonster/helpers-deepl';
 import { LaraProvider, MMTProvider } from '@l10nmonster/helpers-translated';
 import { GPTAgent } from '@l10nmonster/helpers-openai';
 import { LQABossProvider, LQABossTmStore, createLQABossRoutes } from '@l10nmonster/helpers-lqaboss';
+import { createMcpRoutes } from '@l10nmonster/mcp';
 
 serve.registerExtension('lqaboss', createLQABossRoutes);
+serve.registerExtension('mcp', createMcpRoutes);
 
 // const defaultTOSConfig = {
 //     baseURL: 'https://api-sandbox.translated.com/v2',
