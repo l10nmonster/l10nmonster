@@ -31,7 +31,8 @@
       "Bash(npm run dev:*)",
       "WebFetch(domain:v3.chakra-ui.com)",
       "WebFetch(domain:chakra-ui.com)",
-      "Bash(npm run test:*)"
+      "Bash(npm run test:*)",
+      "Bash(echo:*)"
     ],
     "deny": []
   }

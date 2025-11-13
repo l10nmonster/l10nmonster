@@ -55,6 +55,7 @@ export default class Dispatcher {
         const startedJobs = [];
         for (const job of jobs) {
             job.jobGuid = await this.#tmm.generateJobGuid();
+            options.jobName && (job.jobName = options.jobName);
             options.instructions && (job.instructions = options.instructions);
             const provider = this.getProvider(job.translationProvider);
             logInfo`Starting job ${job.jobGuid} with provider ${job.translationProvider}...`;

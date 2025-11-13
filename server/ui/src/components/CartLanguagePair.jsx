@@ -9,6 +9,7 @@ const CartLanguagePair = ({ langPairKey, tus, onRemoveTU }) => {
   const [showJobModal, setShowJobModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [jobData, setJobData] = useState(null);
+  const [jobName, setJobName] = useState('');
   const [jobInstructions, setJobInstructions] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [jobStatus, setJobStatus] = useState(null);
@@ -21,9 +22,9 @@ const CartLanguagePair = ({ langPairKey, tus, onRemoveTU }) => {
 
   const providers = info.providers || [];
 
-  const createJobsMutation = useMutation({
-    mutationFn: async ({ sourceLang, targetLang, tus, providerList }) => {
-      const response = await fetch('/api/dispatcher/createJobs', {
+  const estimateJobMutation = useMutation({
+    mutationFn: async ({ sourceLang, targetLang, guids, provider }) => {
+      const response = await fetch('/api/dispatcher/estimateJob', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -31,38 +32,42 @@ const CartLanguagePair = ({ langPairKey, tus, onRemoveTU }) => {
         body: JSON.stringify({
           sourceLang,
           targetLang,
-          tus,
-          providerList,
+          guids,
+          provider,
         }),
       });
-      
+
       if (!response.ok) {
         const error = await response.json();
-        throw new Error(error.message || 'Failed to create jobs');
+        throw new Error(error.message || 'Failed to estimate job');
       }
-      
+
       return response.json();
     },
   });
 
-  const startJobsMutation = useMutation({
-    mutationFn: async ({ jobs, instructions }) => {
-      const response = await fetch('/api/dispatcher/startJobs', {
+  const startJobMutation = useMutation({
+    mutationFn: async ({ sourceLang, targetLang, guids, provider, jobName, instructions }) => {
+      const response = await fetch('/api/dispatcher/startJob', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          jobs,
+          sourceLang,
+          targetLang,
+          guids,
+          provider,
+          jobName,
           instructions,
         }),
       });
-      
+
       if (!response.ok) {
         const error = await response.json();
-        throw new Error(error.message || 'Failed to start jobs');
+        throw new Error(error.message || 'Failed to start job');
       }
-      
+
       return response.json();
     },
   });
@@ -97,37 +102,32 @@ const CartLanguagePair = ({ langPairKey, tus, onRemoveTU }) => {
       alert('Please select a provider first');
       return;
     }
-    
+
     const actualTus = Array.isArray(tus) ? tus : tus.tus;
     const providerId = typeof selectedProvider === 'object' && selectedProvider?.id ? selectedProvider.id : selectedProvider;
 
     try {
-      // Minimize payload - only send channel and guid for each TU
-      const minimalTus = actualTus.map(tu => ({
-        channel: tu.channel,
-        guid: tu.guid
-      }));
+      // Minimize payload - only send guids
+      const guids = actualTus.map(tu => tu.guid);
 
-      const jobs = await createJobsMutation.mutateAsync({
+      const estimatedJob = await estimateJobMutation.mutateAsync({
         sourceLang,
         targetLang,
-        tus: minimalTus,
-        providerList: [providerId],
+        guids,
+        provider: providerId,
       });
-      
-      // Look for job with matching provider
-      const matchingJob = jobs.find(job => job.translationProvider === providerId);
-      
-      if (!matchingJob) {
+
+      if (!estimatedJob) {
         setErrorMessage(`Provider "${providerId}" did not accept any of the selected translation units.`);
         setShowErrorModal(true);
       } else {
-        setJobData(matchingJob);
+        setJobData(estimatedJob);
+        setJobName('');
         setJobInstructions('');
         setShowJobModal(true);
       }
     } catch (error) {
-      setErrorMessage(`Failed to create job: ${error.message}`);
+      setErrorMessage(`Failed to estimate job: ${error.message}`);
       setShowErrorModal(true);
     }
   };
@@ -138,15 +138,21 @@ const CartLanguagePair = ({ langPairKey, tus, onRemoveTU }) => {
 
   const handlePushJob = async () => {
     if (!jobData) return;
-    
+
+    const providerId = typeof selectedProvider === 'object' && selectedProvider?.id ? selectedProvider.id : selectedProvider;
+
     try {
-      const jobStatuses = await startJobsMutation.mutateAsync({
-        jobs: [jobData],
+      const jobStatuses = await startJobMutation.mutateAsync({
+        sourceLang,
+        targetLang,
+        guids: jobData.guids,
+        provider: providerId,
+        jobName: jobName || undefined,
         instructions: jobInstructions || undefined,
       });
-      
-      // Get the status for our job
-      const status = jobStatuses.find(s => s.jobGuid === jobData.jobGuid) || jobStatuses[0];
+
+      // Get the status for our job (should be single job in array)
+      const status = jobStatuses[0];
       setJobStatus(status);
       setShowJobModal(false);
       setShowJobStatusModal(true);
@@ -160,13 +166,14 @@ const CartLanguagePair = ({ langPairKey, tus, onRemoveTU }) => {
     setShowJobStatusModal(false);
     setJobStatus(null);
     setJobData(null);
+    setJobName('');
     setJobInstructions('');
-    
+
     // Remove processed TUs from cart based on their GUIDs
-    if (jobData && jobData.tus) {
-      const processedGuids = new Set(jobData.tus.map(tu => tu.guid));
+    if (jobData && jobData.guids) {
+      const processedGuids = new Set(jobData.guids);
       const actualTus = Array.isArray(tus) ? tus : tus.tus;
-      
+
       // Find indices of TUs to remove (iterate backwards to avoid index issues)
       for (let i = actualTus.length - 1; i >= 0; i--) {
         if (processedGuids.has(actualTus[i].guid)) {
@@ -281,7 +288,7 @@ const CartLanguagePair = ({ langPairKey, tus, onRemoveTU }) => {
                   colorPalette="blue"
                   onClick={handleCreateJob}
                   disabled={!selectedProvider}
-                  loading={createJobsMutation.isPending}
+                  loading={estimateJobMutation.isPending}
                 >
                   Create Job
                 </Button>
@@ -395,7 +402,7 @@ const CartLanguagePair = ({ langPairKey, tus, onRemoveTU }) => {
                 <VStack gap={4} align="stretch">
                   <Box>
                     <Text fontSize="lg" fontWeight="bold" color="green.600" mb={3}>
-                      {jobData.tus?.length || 0} TUs accepted out of {actualTus.length} sent
+                      {jobData.guids?.length || 0} TUs accepted out of {actualTus.length} sent
                     </Text>
                     <VStack gap={2} align="stretch">
                       <Box>
@@ -416,7 +423,18 @@ const CartLanguagePair = ({ langPairKey, tus, onRemoveTU }) => {
                       )}
                     </VStack>
                   </Box>
-                  
+
+                  <Box>
+                    <Text fontSize="sm" fontWeight="bold" mb={2}>
+                      Job Name (optional):
+                    </Text>
+                    <Input
+                      placeholder="Enter a name for this job..."
+                      value={jobName}
+                      onChange={(e) => setJobName(e.target.value)}
+                    />
+                  </Box>
+
                   <Box>
                     <Text fontSize="sm" fontWeight="bold" mb={2}>
                       Job Instructions (optional):
@@ -436,17 +454,18 @@ const CartLanguagePair = ({ langPairKey, tus, onRemoveTU }) => {
                       onClick={() => {
                         setShowJobModal(false);
                         setJobData(null);
+                        setJobName('');
                         setJobInstructions('');
                       }}
                       flex="1"
-                      disabled={startJobsMutation.isPending}
+                      disabled={startJobMutation.isPending}
                     >
                       Cancel
                     </Button>
                     <Button
                       colorPalette="green"
                       onClick={handlePushJob}
-                      loading={startJobsMutation.isPending}
+                      loading={startJobMutation.isPending}
                       flex="1"
                     >
                       Push Job

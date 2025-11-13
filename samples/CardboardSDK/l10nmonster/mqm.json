@@ -1,0 +1,73 @@
+{
+  "id": "mqm-standard-v1",
+  "name": "MQM Standard",
+  "version": "1.0",
+  "description": "Standard MQM model with categories and subcategories limited to two levels. Based on MQM Core (WMT 2020).",
+  "severities": [
+    { "id": "minor", "label": "Minor", "weight": 1, "description": "An issue that slightly affects quality but does not change meaning or seriously reduce usability." },
+    { "id": "major", "label": "Major", "weight": 5, "description": "An issue that significantly affects meaning, usability, or professional presentation." },
+    { "id": "critical", "label": "Critical", "weight": 10, "description": "An issue that renders the translation incorrect or unusable, such as a meaning inversion or offensive content." }
+  ],
+  "errorCategories": [
+    {
+      "id": "accuracy",
+      "label": "Accuracy",
+      "description": "Errors where the target text does not accurately represent the meaning of the source text.",
+      "subcategories": [
+        { "id": "mistranslation", "label": "Mistranslation", "description": "The translated content conveys an incorrect meaning, changes intent, or mistranslates key terms or expressions." },
+        { "id": "addition", "label": "Addition", "description": "Information has been added in the translation that is not present in the source text." },
+        { "id": "omission", "label": "Omission", "description": "Content or meaning present in the source text is missing from the translation." },
+        { "id": "untranslated", "label": "Untranslated Text", "description": "Portions of the text remain in the source language or are otherwise left untranslated." }
+      ]
+    },
+    {
+      "id": "fluency",
+      "label": "Fluency",
+      "description": "Errors related to the form or naturalness of the target text, independent of source meaning.",
+      "subcategories": [
+        { "id": "grammar", "label": "Grammar", "description": "Incorrect grammar, including agreement, tense, or word form errors." },
+        { "id": "spelling", "label": "Spelling", "description": "Misspelled words, typos, or incorrect diacritics." },
+        { "id": "punctuation", "label": "Punctuation", "description": "Improper punctuation use or omission affecting readability or correctness." },
+        { "id": "word_order", "label": "Word Order", "description": "Unnatural or incorrect word order that reduces fluency or clarity." },
+        { "id": "register", "label": "Register", "description": "Incorrect level of formality, tone, or style for the intended audience." }
+      ]
+    },
+    {
+      "id": "terminology",
+      "label": "Terminology",
+      "description": "Errors involving inconsistent or incorrect use of specialized terms or glossary entries.",
+      "subcategories": [
+        { "id": "inconsistent", "label": "Inconsistent Terminology", "description": "The same term is translated differently within the same document or project." },
+        { "id": "incorrect_term", "label": "Incorrect Terminology", "description": "A specialized term is translated incorrectly or conflicts with approved terminology." }
+      ]
+    },
+    {
+      "id": "style",
+      "label": "Style",
+      "description": "Errors where the translation fails to follow stylistic guidelines or target-language conventions.",
+      "subcategories": [
+        { "id": "awkward", "label": "Awkward or Non-Native Style", "description": "Text is grammatically correct but unnatural or clumsy in the target language." },
+        { "id": "inconsistent_tone", "label": "Inconsistent Tone", "description": "Inconsistent tone or style within the text or compared to previous translations." },
+        { "id": "inappropriate", "label": "Inappropriate Style", "description": "Tone or style does not fit the purpose, audience, or brand guidelines." }
+      ]
+    },
+    {
+      "id": "locale_convention",
+      "label": "Locale Convention",
+      "description": "Errors where the translation does not follow target locale norms or conventions.",
+      "subcategories": [
+        { "id": "date_format", "label": "Date/Time Format", "description": "Incorrect formatting of dates or times for the target locale." },
+        { "id": "number_format", "label": "Number Format", "description": "Incorrect use of separators, currency, or decimal conventions." },
+        { "id": "measurement", "label": "Measurement Conversion", "description": "Incorrect or missing conversion of measurement units." }
+      ]
+    },
+    {
+      "id": "other",
+      "label": "Other",
+      "description": "Errors that do not fit in any of the other defined categories.",
+      "subcategories": [
+        { "id": "uncategorized", "label": "Uncategorized", "description": "Used when the issue type does not match any other category." }
+      ]
+    }
+  ]
+}

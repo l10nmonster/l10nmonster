@@ -154,6 +154,7 @@ export default config.l10nMonster(import.meta.dirname)
         // delegate: new GCSStoreDelegate('foobucket', 'lqaboss1'),
         // delegate: new GDriveStoreDelegate('1mZekxxxxxxxxxxxxxxxxxxxx'),
         quality: 80,
+        qualityFile: 'mqm.json',
     }))
     .operations({
         opsStore: new stores.FsOpsStore(path.join(import.meta.dirname, 'l10nOps')),

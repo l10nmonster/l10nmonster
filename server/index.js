@@ -1,20 +1,3 @@
-// Global unhandled promise rejection handler for server
-process.on('unhandledRejection', (reason, promise) => {
-    console.error('🚨 Unhandled Promise Rejection in L10n Monster Server:');
-    console.error('Promise:', promise);
-    console.error('Reason:', reason);
-    if (reason instanceof Error && reason.stack) {
-        console.error('Stack trace:', reason.stack);
-    }
-    // In server context, log but don't exit immediately to allow graceful handling
-    console.error('This should be investigated and fixed!');
-});
-
-// Global uncaught exception handler
-process.on('uncaughtException', (error) => {
-    console.error('🚨 Uncaught Exception in L10n Monster Server:', error);
-});
-
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
@@ -27,7 +10,7 @@ import { setupChannelRoutes } from './routes/sources.js';
 import { setupTmRoutes } from './routes/tm.js';
 import { setupProviderRoute } from './routes/providers.js';
 import { setupDispatcherRoutes } from './routes/dispatcher.js';
-import { logVerbose } from '@l10nmonster/core';
+import { logVerbose, consoleLog } from '@l10nmonster/core';
 
 const serverPackage = JSON.parse(readFileSync(path.join(import.meta.dirname, 'package.json'), 'utf-8'));
 
@@ -56,6 +39,7 @@ export default class ServeAction {
         // === Middleware ===
         app.use(cors());
         app.use(express.json());
+        app.use(express.json({ limit: '10mb' }));
 
         // === API Routes ===
         const apiRouter = express.Router();
@@ -78,7 +62,7 @@ export default class ServeAction {
                 extensionRouter[method](path, handler);
             }
             app.use(`/api/ext/${name}`, extensionRouter);
-            logVerbose`Mounted extension ${name} at /api/ext/${name}`;
+            consoleLog`Mounted extension ${name} at /api/ext/${name}`;
         }
 
         // API 404 handler - must come before the UI catch-all
@@ -105,21 +89,21 @@ export default class ServeAction {
         const server = app.listen(...listenArgs, async () => {
             const address = server.address();
             
-            console.log(`🚀 L10n Monster Server v${serverPackage.version} started\n`);
+            consoleLog`L10n Monster Server v${serverPackage.version} started 🚀\n`;
             
             // Handle Unix domain sockets (string) vs TCP sockets (AddressInfo)
             if (typeof address === 'string') {
-                console.log('  Listening on Unix socket:');
-                console.log(`  - ${address}`);
+                consoleLog`  Listening on Unix socket:`;
+                consoleLog`  - ${address}`;
                 
                 if (options.open && options.ui) {
-                    console.log('\n  ⚠️  Cannot open browser for Unix domain socket. Please access the server manually.');
+                    consoleLog`\n  ⚠️  Cannot open browser for Unix domain socket. Please access the server manually.`;
                 }
             } else {
                 const boundPort = address.port;
                 const boundAddress = address.address;
                 
-                console.log('  Available at:');
+                consoleLog`  Available at:`;
                 
                 // Determine what URLs to show and what to open
                 let openHost = host || 'localhost'; // Default to localhost for opening
@@ -127,8 +111,8 @@ export default class ServeAction {
                 // If listening on all interfaces (0.0.0.0 or ::)
                 if (!host || boundAddress === '0.0.0.0' || boundAddress === '::') {
                     // Show localhost first
-                    console.log(`  - http://localhost:${boundPort}`);
-                    console.log(`  - http://127.0.0.1:${boundPort}`);
+                    consoleLog`  - http://localhost:${boundPort}`;
+                    consoleLog`  - http://127.0.0.1:${boundPort}`;
                     
                     // Get all network interfaces
                     const interfaces = os.networkInterfaces();
@@ -136,29 +120,29 @@ export default class ServeAction {
                         for (const addr of addresses) {
                             // Skip internal interfaces and IPv6 link-local addresses
                             if (!addr.internal && addr.family === 'IPv4') {
-                                console.log(`  - http://${addr.address}:${boundPort} (${name})`);
+                                consoleLog`  - http://${addr.address}:${boundPort} (${name})`;
                             }
                         }
                     }
                 } else {
                     // Specific address was bound
                     openHost = boundAddress; // Use the bound address for opening
-                    console.log(`  - http://${boundAddress}:${boundPort}`);
+                    consoleLog`  - http://${boundAddress}:${boundPort}`;
                     
                     // Also show localhost if we bound to 127.0.0.1
                     if (boundAddress === '127.0.0.1') {
-                        console.log(`  - http://localhost:${boundPort}`);
+                        consoleLog`  - http://localhost:${boundPort}`;
                     }
                 }
                 
                 if (options.open) {
                     const openUrl = `http://${openHost}:${boundPort}`;
-                    console.log('');
-                    console.log(`  Opening browser at: ${openUrl}`);
+                    consoleLog``;
+                    consoleLog`  Opening browser at: ${openUrl}`;
                     await open(openUrl);
                 }
             }
-            console.log('');
+            consoleLog``;
         });
 
         // Handle server binding errors

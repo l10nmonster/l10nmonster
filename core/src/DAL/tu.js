@@ -359,6 +359,8 @@ export class TuDAL {
                     seg.nstr nsrc,
                     tu.ntgt ntgt,
                     tu.q q,
+                    translationProvider,
+                    ts,
                     p.value minQ,
                     seg.notes notes,
                     seg.mf mf,
@@ -371,6 +373,7 @@ export class TuDAL {
                     JOIN JSON_EACH(@guids) wantedGuid ON seg.guid = wantedGuid.value,
                     JSON_EACH(seg.plan) p
                     LEFT JOIN ${this.#tusTable} tu ON tu.guid = wantedGuid.value
+                    JOIN jobs USING (jobGuid)
                 WHERE
                     seg.sourceLang = @sourceLang AND p.key = @targetLang
                     AND (tu.rank = 1 OR tu.rank IS NULL)
@@ -385,11 +388,14 @@ export class TuDAL {
                     guid,
                     nsrc,
                     ntgt,
+                    translationProvider,
+                    ts,
                     q,
                     notes
                 FROM
                     ${this.#tusTable} tu
                     JOIN JSON_EACH(@guids) wantedGuid ON tu.guid = wantedGuid.value
+                    JOIN jobs USING (jobGuid)
                 WHERE tu.rank = 1
                 ORDER BY rid;
             `);

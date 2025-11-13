@@ -1,85 +1,114 @@
 import { logInfo, logVerbose } from '@l10nmonster/core';
 
+async function createJob(mm, sourceLang, targetLang, guids, provider) {
+    logVerbose`Creating job with ${guids.length} TUs for provider ${provider}`;
+
+    // Expand TUs from guids to full TU data
+    const tm = mm.tmm.getTM(sourceLang, targetLang);
+    const expandedTus = await tm.queryByGuids(guids);
+
+    // Call the MonsterManager dispatcher with single provider
+    const jobs = await mm.dispatcher.createJobs(
+        { sourceLang, targetLang, tus: expandedTus },
+        { providerList: [provider], skipQualityCheck: true, skipGroupCheck: true }
+    );
+
+    // Find the job for this provider (if accepted)
+    const job = jobs.find(j => j.translationProvider === provider);
+
+    if (!job) {
+        logVerbose`Provider ${provider} did not accept any TUs`;
+        return null;
+    }
+
+    return job;
+}
+
 export function setupDispatcherRoutes(router, mm) {
-    router.post('/dispatcher/createJobs', async (req, res) => {
-        logInfo`/dispatcher/createJobs`;
-        
+    router.post('/dispatcher/estimateJob', async (req, res) => {
+        logInfo`/dispatcher/estimateJob`;
+
         try {
-            const { sourceLang, targetLang, tus, providerList } = req.body;
-            
+            const { sourceLang, targetLang, guids, provider } = req.body;
+
             // Validate required parameters
-            if (!sourceLang || !targetLang || !tus || !providerList) {
+            if (!sourceLang || !targetLang || !guids || !provider) {
                 return res.status(400).json({
-                    error: 'Missing required parameters: sourceLang, targetLang, tus, providerList'
+                    error: 'Missing required parameters: sourceLang, targetLang, guids, provider'
                 });
             }
-            
-            // Validate that tus is an array
-            if (!Array.isArray(tus)) {
+
+            // Validate that guids is an array
+            if (!Array.isArray(guids)) {
                 return res.status(400).json({
-                    error: 'tus must be an array'
+                    error: 'guids must be an array'
                 });
             }
-            
-            // Validate that providerList is an array
-            if (!Array.isArray(providerList)) {
-                return res.status(400).json({
-                    error: 'providerList must be an array'
-                });
+
+            // Create job with provider
+            const job = await createJob(mm, sourceLang, targetLang, guids, provider);
+
+            if (!job) {
+                return res.json(null);
             }
-            
-            logVerbose`Fetching content of ${tus.length} TUs`;
-            const tm = mm.tmm.getTM(sourceLang, targetLang);
-            const guidsByChannel = {};
-            for (const tu of tus) {
-                const channel = tu.channel ?? '';
-                guidsByChannel[channel] ??= new Set();
-                guidsByChannel[channel].add(tu.guid);
-            }
-            const expandedTus = [];
-            for (const [ channel, tus ] of Object.entries(guidsByChannel)) {
-                const tusForChannel = await tm.queryByGuids(Array.from(tus), channel.length > 0 ? channel : undefined);
-                expandedTus.push(tusForChannel);
-            }
-            // Call the MonsterManager dispatcher
-            const jobs = await mm.dispatcher.createJobs({ sourceLang, targetLang, tus: expandedTus.flat(1) }, { providerList, skipQualityCheck: true, skipGroupCheck: true });
-            
-            logVerbose`Created ${jobs?.length || 0} jobs successfully`;
-            res.json(jobs);
+
+            // Return job with guids array instead of full tus to minimize payload
+            const { tus: jobTus, ...jobWithoutTus } = job;
+            const estimatedJob = {
+                ...jobWithoutTus,
+                guids: jobTus.map(tu => tu.guid)
+            };
+
+            logVerbose`Estimated job with ${estimatedJob.guids.length} TUs`;
+            res.json(estimatedJob);
         } catch (error) {
-            logInfo`Error creating jobs: ${error.message}`;
+            logInfo`Error estimating job: ${error.message}`;
             res.status(500).json({
-                error: 'Failed to create jobs',
+                error: 'Failed to estimate job',
                 message: error.message
             });
         }
     });
 
-    router.post('/dispatcher/startJobs', async (req, res) => {
-        logInfo`/dispatcher/startJobs`;
-        
+    router.post('/dispatcher/startJob', async (req, res) => {
+        logInfo`/dispatcher/startJob`;
+
         try {
-            const { jobs, instructions } = req.body;
-            
+            const { sourceLang, targetLang, guids, provider, jobName, instructions } = req.body;
+
             // Validate required parameters
-            if (!jobs || !Array.isArray(jobs)) {
+            if (!sourceLang || !targetLang || !guids || !provider) {
                 return res.status(400).json({
-                    error: 'Missing or invalid jobs parameter (must be an array)'
+                    error: 'Missing required parameters: sourceLang, targetLang, guids, provider'
                 });
             }
-            
-            logVerbose`Starting ${jobs.length} jobs with instructions: ${instructions || 'none'}`;
-            
-            // Call the MonsterManager dispatcher
-            const result = await mm.dispatcher.startJobs(jobs, { instructions });
-            
-            logVerbose`Started ${result?.length || 0} jobs`;
+
+            // Validate that guids is an array
+            if (!Array.isArray(guids)) {
+                return res.status(400).json({
+                    error: 'guids must be an array'
+                });
+            }
+
+            // Create job with provider
+            const job = await createJob(mm, sourceLang, targetLang, guids, provider);
+
+            if (!job) {
+                return res.status(400).json({
+                    error: `Provider ${provider} did not accept any TUs`
+                });
+            }
+
+            // Start the job
+            const result = await mm.dispatcher.startJobs([job], { jobName, instructions });
+
+            logVerbose`Started job with name: ${jobName || 'none'} and instructions: ${instructions || 'none'}`;
             res.json(result);
-            
+
         } catch (error) {
-            logInfo`Error starting jobs: ${error.message}`;
+            logInfo`Error starting job: ${error.message}`;
             res.status(500).json({
-                error: 'Failed to start jobs',
+                error: 'Failed to start job',
                 message: error.message
             });
         }
