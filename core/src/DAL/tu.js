@@ -406,7 +406,7 @@ export class TuDAL {
         return tus;
     }
 
-    async search(offset, limit, { guid, nid, jobGuid, rid, sid, channel, nsrc, ntgt, notes, tconf, onlyTNotes, q, minTS, maxTS, translationProvider }) {
+    async search(offset, limit, { guid, nid, jobGuid, rid, sid, channel, nsrc, ntgt, notes, tconf, maxRank,onlyTNotes, q, minTS, maxTS, translationProvider }) {
         const activeGuidsCTE = this.#activeGuidsCTE; // we need to ensure all tables are created before we can join them
         this.#stmt.search ??= this.#db.prepare(/* sql */`
             WITH ${activeGuidsCTE}
@@ -441,6 +441,7 @@ export class TuDAL {
                 AND (flattenNormalizedSourceToOrdinal(ntgt) LIKE @ntgt OR @ntgt IS NULL)
                 AND (notes LIKE @notes OR @notes IS NULL)
                 AND (tconf LIKE @tconf OR @tconf IS NULL)
+                AND rank <= @maxRank
                 AND (NOT @onlyTNotes OR tnotes IS NOT NULL)
                 AND (q = @q OR @q IS NULL)
                 AND (ts >= @minTS OR @minTS IS NULL)
@@ -451,7 +452,7 @@ export class TuDAL {
             OFFSET @offset;
         `);
         try {
-            const tus = this.#stmt.search.all({ offset, limit, guid, nid, jobGuid, rid, sid, channel, nsrc, ntgt, notes, tconf, onlyTNotes: onlyTNotes ? 1 : 0, q, minTS, maxTS, translationProvider }).map(sqlTransformer.decode);
+            const tus = this.#stmt.search.all({ offset, limit, guid, nid, jobGuid, rid, sid, channel, nsrc, ntgt, notes, tconf, maxRank: maxRank ?? 10, onlyTNotes: onlyTNotes ? 1 : 0, q, minTS, maxTS, translationProvider }).map(sqlTransformer.decode);
             return tus;
         } catch (error) {
             throw new Error(`${error.code}: ${error.message}`);
