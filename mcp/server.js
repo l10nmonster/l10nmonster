@@ -3,6 +3,7 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import { isInitializeRequest } from '@modelcontextprotocol/sdk/types.js';
 import * as mcpTools from './tools/index.js';
+import { registry } from './tools/registry.js';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 
@@ -32,18 +33,27 @@ const serverVersion = await getMcpPackageVersion();
 /**
  * Setup tools on an MCP server instance
  * 
- * Registers all MCP tools exported from ./tools/index.js
+ * Registers all MCP tools from the registry, including:
+ * 1. Built-in tools (auto-registered from ./tools/index.js)
+ * 2. External tools registered via registerTool()
  */
 async function setupToolsOnServer(server, monsterManager) {
-    // Get all tool classes exported from tools/index.js
-    // Filter for classes that have the handler static method and metadata
-    const toolClasses = Object.values(mcpTools).filter(ToolClass => (
+    // Register built-in tools if not already registered
+    const builtInTools = Object.values(mcpTools).filter(ToolClass => (
         ToolClass && 
         typeof ToolClass === 'function' && 
         typeof ToolClass.handler === 'function' && 
         ToolClass.metadata));
 
-    for (const ToolClass of toolClasses) {
+    for (const ToolClass of builtInTools) {
+        const toolName = ToolClass.metadata.name;
+        if (!registry.hasTool(toolName)) {
+            registry.registerTool(ToolClass);
+        }
+    }
+
+    // Register all tools from the registry with the MCP server
+    for (const ToolClass of registry.getAllTools()) {
         const { name, description, inputSchema } = ToolClass.metadata;
         const handler = ToolClass.handler(monsterManager);
         
