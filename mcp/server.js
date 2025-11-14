@@ -85,19 +85,20 @@ async function getOrCreateSharedServer(monsterManager) {
  */
 async function cleanupExpiredSessions() {
     let cleaned = 0;
-    try {
-        const now = Date.now();
-        for (const [sessionId, session] of sessions.entries()) {
-            if (now - session.lastActivity > SESSION_TIMEOUT_MS) {
+    const now = Date.now();
+    for (const [sessionId, session] of sessions.entries()) {
+        if (now - session.lastActivity > SESSION_TIMEOUT_MS) {
+            try {
                 console.info(`Cleaning up expired session: ${sessionId}`);
                 await session.transport.close();
+            } catch (error) {
+                // Log error per session but continue cleaning other expired sessions
+                console.error(`Error cleaning up expired session ${sessionId}:`, error);
+            } finally {
                 sessions.delete(sessionId);
                 cleaned++;
             }
         }
-    } catch (error) {
-        // Don't throw an error, just log it to avoid cleanup from interrupting the handling of the current request.
-        console.error('Error cleaning up expired sessions:', error);
     }
     return cleaned;
 }
