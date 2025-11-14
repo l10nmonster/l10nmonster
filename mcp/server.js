@@ -90,8 +90,8 @@ async function cleanupExpiredSessions() {
         for (const [sessionId, session] of sessions.entries()) {
             if (now - session.lastActivity > SESSION_TIMEOUT_MS) {
                 console.info(`Cleaning up expired session: ${sessionId}`);
-                sessions.delete(sessionId);
                 await session.transport.close();
+                sessions.delete(sessionId);
                 cleaned++;
             }
         }
