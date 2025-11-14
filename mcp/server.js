@@ -83,13 +83,14 @@ async function getOrCreateSharedServer(monsterManager) {
 /**
  * Clean up expired sessions on-demand
  */
-function cleanupExpiredSessions() {
+async function cleanupExpiredSessions() {
     const now = Date.now();
     let cleaned = 0;
     for (const [sessionId, session] of sessions.entries()) {
         if (now - session.lastActivity > SESSION_TIMEOUT_MS) {
             console.info(`Cleaning up expired session: ${sessionId}`);
             sessions.delete(sessionId);
+            await session.transport.close();
             cleaned++;
         }
     }
@@ -107,7 +108,7 @@ export function createMcpRoutes(mm) {
     // Handle POST requests for client-to-server communication
     const handlePost = async (req, res) => {
         // Clean up expired sessions on each request
-        cleanupExpiredSessions();
+        await cleanupExpiredSessions();
         
         try {
             const sessionId = req.headers['mcp-session-id'];
@@ -177,7 +178,7 @@ export function createMcpRoutes(mm) {
     // Handle GET and DELETE requests for existing sessions
     const handleSessionRequest = async (req, res) => {
         // Clean up expired sessions on each request
-        cleanupExpiredSessions();
+        await cleanupExpiredSessions();
         
         try {
             const sessionId = req.headers['mcp-session-id'];
