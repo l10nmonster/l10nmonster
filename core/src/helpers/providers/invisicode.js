@@ -26,7 +26,7 @@ function utf8ToFE00Range(input) {
  * Configuration options for initializing a InvisicodeProvider.
  * @typedef {Object} InvisicodeProviderOptions
  * @extends BaseTranslationProviderOptions
- * @property {string} [baseLang] - language code for the base language (source if not specified)
+ * @property {string|function(string): string} [baseLang] - language code for the base language (source if not specified), or a function that takes targetLang and returns the base language code
  * @property {boolean} [fallback] - if true, fall back to source if translation is missing
  * @property {boolean} [includeQ] - if true, include quality score in the output
  */
@@ -57,21 +57,25 @@ export class InvisicodeProvider extends BaseTranslationProvider {
     }
 
     async getTranslatedTus(job) {
+        // Resolve baseLang - can be a string or a function that takes targetLang
+        const resolvedBaseLang = typeof this.#baseLang === 'function' ?
+            this.#baseLang(job.targetLang) :
+            this.#baseLang;
+
         let tm;
-        if (this.#baseLang) {
-            tm = this.mm.tmm.getTM(job.sourceLang, this.#baseLang);
+        if (resolvedBaseLang) {
+            tm = this.mm.tmm.getTM(job.sourceLang, resolvedBaseLang);
         }
         const ts = getRegressionMode() ? 1 : new Date().getTime();
         let translations = {};
-        if (this.#baseLang) {
+        if (resolvedBaseLang) {
             translations = await tm.getEntries(job.tus.map(tu => tu.guid));
         }
         return job.tus.map(requestTU => {
             let baseTranslation, q;
-            if (this.#baseLang) {
+            if (resolvedBaseLang) {
                 const tu = translations[requestTU.guid];
                 baseTranslation = tu?.ntgt || (this.#fallback && requestTU?.nsrc);
-                // eslint-disable-next-line no-nested-ternary
                 q = tu?.q ?? 0;
             } else {
                 baseTranslation = requestTU.nsrc;
@@ -87,6 +91,7 @@ export class InvisicodeProvider extends BaseTranslationProvider {
                     ts,
                 };
             }
+            return undefined;
         }).filter(Boolean);
     }
 }

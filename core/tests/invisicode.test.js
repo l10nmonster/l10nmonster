@@ -339,6 +339,121 @@ test('InvisicodeProvider - getTranslatedTus', async (t) => { // Renamed test sui
 //   });
 // });
 
+test('InvisicodeProvider - baseLang as function', async (t) => {
+  await t.test('should accept baseLang as a function and call it with targetLang', async () => {
+    const qualityValue = 80;
+    let capturedTargetLang;
+    
+    const baseLangFunction = (targetLang) => {
+      capturedTargetLang = targetLang;
+      return 'en'; // Return 'en' as the base language
+    };
+
+    const generator = new InvisicodeProvider({
+      quality: qualityValue,
+      baseLang: baseLangFunction,
+      fallback: true,
+      includeQ: false,
+    });
+    const monsterManager = new MonsterManager();
+    monsterManager.translationMemory.setEntry('123', { ntgt: ['Hola'] });
+    await generator.init(monsterManager);
+
+    const jobRequest = {
+      sourceLang: 'en',
+      targetLang: 'es',
+      tus: [
+        {
+          guid: '123',
+          nsrc: ['Hello'],
+        },
+      ],
+    };
+
+    const tus = await generator.getTranslatedTus(jobRequest);
+
+    assert.strictEqual(capturedTargetLang, 'es', 'baseLang function should be called with targetLang');
+    assert.strictEqual(tus.length, 1);
+    assert.strictEqual(tus[0].guid, '123');
+    assert.ok(tus[0].ntgt.includes('Hola'));
+  });
+
+  await t.test('should support dynamic baseLang selection based on targetLang', async () => {
+    const qualityValue = 80;
+    
+    // Function that returns different base languages for different target languages
+    const baseLangFunction = (targetLang) => {
+      if (targetLang === 'es-MX') return 'es';
+      if (targetLang === 'pt-BR') return 'pt';
+      if (targetLang === 'zh-CN') return 'zh';
+      return 'en';
+    };
+
+    const generator = new InvisicodeProvider({
+      quality: qualityValue,
+      baseLang: baseLangFunction,
+      fallback: false,
+      includeQ: false,
+    });
+    const monsterManager = new MonsterManager();
+    
+    // Add translations for different base languages
+    monsterManager.translationMemory.setEntry('456', { ntgt: ['Hola desde España'] });
+    
+    await generator.init(monsterManager);
+
+    const jobRequest = {
+      sourceLang: 'en',
+      targetLang: 'es-MX',
+      tus: [
+        {
+          guid: '456',
+          nsrc: ['Hello from Spain'],
+        },
+      ],
+    };
+
+    const tus = await generator.getTranslatedTus(jobRequest);
+
+    assert.strictEqual(tus.length, 1);
+    assert.ok(tus[0].ntgt.includes('Hola desde España'));
+  });
+
+  await t.test('should fallback to source when baseLang function returns null/undefined', async () => {
+    const qualityValue = 80;
+    
+    const baseLangFunction = (targetLang) => {
+      return undefined; // Return undefined
+    };
+
+    const generator = new InvisicodeProvider({
+      quality: qualityValue,
+      baseLang: baseLangFunction,
+      fallback: true,
+      includeQ: false,
+    });
+    const monsterManager = new MonsterManager();
+    await generator.init(monsterManager);
+
+    const jobRequest = {
+      sourceLang: 'en',
+      targetLang: 'fr',
+      tus: [
+        {
+          guid: '789',
+          nsrc: ['Source text'],
+        },
+      ],
+    };
+
+    const tus = await generator.getTranslatedTus(jobRequest);
+
+    // When baseLang function returns undefined, it should use source text
+    assert.strictEqual(tus.length, 1);
+    assert.ok(tus[0].ntgt.includes('Source text'));
+  });
+});
+
 test('InvisicodeProvider - getTranslatedTus metadata encoding', async (t) => { // Renamed test suite
   await t.test('should correctly encode guid and TM quality in metadata when includeQ is true', async () => {
     const jobQuality = 80;
