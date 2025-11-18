@@ -21,7 +21,7 @@ export default class SQLiteDALManager {
 
     async init(mm) {
         mm.scheduleForShutdown(this.shutdown.bind(this));
-        this.activeChannels = mm.rm.channelIds;
+        this.activeChannels = new Set(mm.rm.channelIds);
     }
 
     get #sourceDB() {
@@ -73,6 +73,9 @@ export default class SQLiteDALManager {
     }
 
     channel(channelId) {
+        if (!this.activeChannels.has(channelId)) {
+            throw new Error(`Invalid channel reference: ${channelId}`);
+        }
         if (this.#dalCache.has(channelId)) {
             return this.#dalCache.get(channelId);
         }
