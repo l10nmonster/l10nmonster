@@ -2,7 +2,7 @@ import { logVerbose } from '../l10nContext.js';
 import { utils } from '../helpers/index.js';
 import { createSQLObjectTransformer } from './index.js';
 
-const sqlTransformer = createSQLObjectTransformer(['nstr', 'nsrc', 'ntgt', 'notes', 'tuProps', 'segProps'], ['tuProps', 'segProps']);
+const sqlTransformer = createSQLObjectTransformer(['nstr', 'nsrc', 'ntgt', 'notes', 'qa', 'tuProps', 'segProps'], ['tuProps', 'segProps']);
 
 export class TuDAL {
     #db;
