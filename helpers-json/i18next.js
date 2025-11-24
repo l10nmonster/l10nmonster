@@ -88,27 +88,60 @@ export class I18nextFilter {
     }
 
     async parseResource({ resource }) {
-        const response = {
-            segments: []
+        const response = { segments: [] };
+        if (!resource) return response;
+
+        const unParsedResource = JSON.parse(resource);
+        const targetLangs = unParsedResource['@@targetLocales'];
+        Array.isArray(targetLangs) && (response.targetLangs = targetLangs);
+
+        const [parsedResource, notes] = parseResourceAnnotations(
+            unParsedResource,
+            this.enableArbAnnotations,
+            this.arbAnnotationHandlers,
+        );
+
+        const pluralizedGroups = new Map();
+
+        // Collect existing segments and track plural groups
+        for (const [key, value] of parsedResource) {
+            const parts = key.split('_');
+            const suffix = parts[parts.length - 1];
+            const isPluralForm = this.enablePluralSuffixes &&
+                                 key.indexOf('_') !== -1 &&
+                                 validPluralSuffixes.has(suffix);
+
+            const seg = { sid: key, str: value };
+            if (notes[key]) seg.notes = notes[key];
+            if (isPluralForm) {
+                seg.isSuffixPluralized = true;
+                const baseKey = parts.slice(0, -1).join('_');
+                if (!pluralizedGroups.has(baseKey)) pluralizedGroups.set(baseKey, new Map());
+                pluralizedGroups.get(baseKey).set(suffix, { value, notes: notes[key] });
+            }
+            response.segments.push(seg);
         }
-        if (resource) {
-            const unParsedResource = JSON.parse(resource);
-            const targetLangs = unParsedResource['@@targetLocales'];
-            Array.isArray(targetLangs) && (response.targetLangs = targetLangs);
-            const [ parsedResource, notes ] = parseResourceAnnotations(
-                unParsedResource,
-                this.enableArbAnnotations,
-                this.arbAnnotationHandlers,
-            );
-            for (const [key, value] of parsedResource) {
-                let seg = { sid: key, str: value };
-                notes[key] && (seg.notes = notes[key]);
-                if (this.enablePluralSuffixes && key.indexOf('_') !== -1 && validPluralSuffixes.has(key.split('_').slice(-1)[0])) {
-                    seg.isSuffixPluralized = true;
+
+        // Generate missing plural forms from _other
+        if (this.enablePluralSuffixes) {
+            for (const [baseKey, existingForms] of pluralizedGroups) {
+                const otherForm = existingForms.get('other');
+                if (otherForm) {
+                    for (const suffix of validPluralSuffixes) {
+                        if (!existingForms.has(suffix)) {
+                            const seg = {
+                                sid: `${baseKey}_${suffix}`,
+                                str: otherForm.value,
+                                isSuffixPluralized: true
+                            };
+                            if (otherForm.notes) seg.notes = otherForm.notes;
+                            response.segments.push(seg);
+                        }
+                    }
                 }
-                response.segments.push(seg);
             }
         }
+
         return response;
     }
 

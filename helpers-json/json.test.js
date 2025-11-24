@@ -323,10 +323,71 @@ suite("json parseResource -  plurals", () => {
                     isSuffixPluralized: true,
                     notes: "copy - time copy for seconds plural",
                 },
+                {
+                    sid: "timeCount.second_zero",
+                    str: "{{count}} seconds",
+                    isSuffixPluralized: true,
+                    notes: "copy - time copy for seconds plural",
+                },
+                {
+                    sid: "timeCount.second_two",
+                    str: "{{count}} seconds",
+                    isSuffixPluralized: true,
+                    notes: "copy - time copy for seconds plural",
+                },
+                {
+                    sid: "timeCount.second_few",
+                    str: "{{count}} seconds",
+                    isSuffixPluralized: true,
+                    notes: "copy - time copy for seconds plural",
+                },
+                {
+                    sid: "timeCount.second_many",
+                    str: "{{count}} seconds",
+                    isSuffixPluralized: true,
+                    notes: "copy - time copy for seconds plural",
+                },
             ],
         };
         const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
         assert.deepEqual(output, expectedOutput);
+    });
+
+    test("parseResource adds missing plural forms from _other", async () => {
+        const resource = {
+            key_one: "{{count}} item",
+            "@key_one": {
+                description: "singular form",
+            },
+            key_other: "{{count}} items",
+            "@key_other": {
+                description: "plural form",
+            },
+        };
+        const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
+
+        // Should have original forms plus missing forms (zero, two, few, many)
+        assert.equal(output.segments.length, 6);
+
+        // Check that all forms are present
+        const sids = output.segments.map(s => s.sid);
+        assert.ok(sids.includes("key_one"));
+        assert.ok(sids.includes("key_other"));
+        assert.ok(sids.includes("key_zero"));
+        assert.ok(sids.includes("key_two"));
+        assert.ok(sids.includes("key_few"));
+        assert.ok(sids.includes("key_many"));
+
+        // Check that missing forms use _other value and notes
+        const zeroForm = output.segments.find(s => s.sid === "key_zero");
+        assert.equal(zeroForm.str, "{{count}} items");
+        assert.equal(zeroForm.notes, "plural form");
+        assert.equal(zeroForm.isSuffixPluralized, true);
+
+        const twoForm = output.segments.find(s => s.sid === "key_two");
+        assert.equal(twoForm.str, "{{count}} items");
+        assert.equal(twoForm.notes, "plural form");
+        assert.equal(twoForm.isSuffixPluralized, true);
     });
 });
 
