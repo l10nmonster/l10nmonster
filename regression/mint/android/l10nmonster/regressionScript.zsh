@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-npx l10n --regression -v2 tm syncdown default --commit
+npx l10n --regression -v2 tm syncdown default --import --commit
 npx l10n --regression -v2 source untranslated --push --provider
 npx l10n --regression -v2 translate all
 npx l10n --regression -v2 source list --statusFile status.json

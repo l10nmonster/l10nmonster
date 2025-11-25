@@ -105,14 +105,21 @@ export default class TMManager {
     //         }
     // }
 
-    async #prepareSyncDownTask({ tmStore, sourceLang, targetLang }) {
+    async #prepareSyncDownTask({ tmStore, sourceLang, targetLang, storeAlias }) {
         if (tmStore.access === 'writeonly') {
             throw new Error(`Cannot sync down ${tmStore.id} store because it is write-only!`);
         }
+        const storeId = storeAlias ?? tmStore.id;
         const toc = await tmStore.getTOC(sourceLang, targetLang);
         const deltas = await this.#DAL.job.getJobDeltas(toc.sourceLang, toc.targetLang, toc);
-        const blocksToStore = Array.from(new Set(deltas.filter(e => e.remoteJobGuid).map(e => e.blockId))); // either because they changed or because some jobs don't exist locally
-        let jobsToDelete = deltas.filter(e => e.localJobGuid && !e.remoteJobGuid).map(e => e.localJobGuid);
+        const remoteJobs = deltas.filter(e => e.remoteJobGuid);
+        const remoteJobsWithTimestampMismatch = remoteJobs.filter(e => e.tmStore === storeId);
+        const remoteJobsMissingLocally = remoteJobs.filter(e => !e.localJobGuid);
+        const remoteJobsWithTmStoreMismatch = remoteJobs.filter(e => e.tmStore && e.tmStore !== storeId);
+        remoteJobs.length > 0 && logInfo`  - ${sourceLang} → ${targetLang}: ${remoteJobs.length} remote ${[remoteJobs.length, 'job', 'jobs']} have changes (${remoteJobsWithTimestampMismatch.length} with different timestamp, ${remoteJobsMissingLocally.length} missing locally, ${remoteJobsWithTmStoreMismatch.length} with tm store mismatch)`;
+        remoteJobsWithTmStoreMismatch.length > 0 && logWarn`  - ${sourceLang} → ${targetLang} TM Store mismatch: ${remoteJobsWithTmStoreMismatch.map(e => `${e.remoteJobGuid} (${e.tmStore})`).join(', ')}`;
+        const blocksToStore = Array.from(new Set(remoteJobsWithTimestampMismatch.concat(remoteJobsMissingLocally).map(e => e.blockId)));
+        const jobsToDelete = deltas.filter(e => e.tmStore === storeId && !e.remoteJobGuid).map(e => e.localJobGuid); // local jobs with the same store id, but missing remotely
         return {
             sourceLang,
             targetLang,
@@ -121,13 +128,13 @@ export default class TMManager {
         };
     }
 
-    async #syncDownTask({ tmStore, sourceLang, targetLang, blocksToStore, jobsToDelete }) {
+    async #syncDownTask({ tmStore, sourceLang, targetLang, blocksToStore, jobsToDelete, eraseParentTmStore, storeAlias }) {
         if (blocksToStore.length === 0 && jobsToDelete.length === 0) {
             return;
         }
         if (blocksToStore.length > 0) {
             logInfo`Storing ${blocksToStore.length} ${[blocksToStore.length, 'block', 'blocks']} from ${tmStore.id}(${sourceLang} → ${targetLang})`;
-            await this.saveTmBlock(tmStore.getTmBlocks(sourceLang, targetLang, blocksToStore), tmStore.id);
+            await this.saveTmBlock(tmStore.getTmBlocks(sourceLang, targetLang, blocksToStore), eraseParentTmStore ? null : storeAlias ?? tmStore.id);
         }
         if (jobsToDelete.length > 0) {
             logInfo`Deleting ${jobsToDelete.length} ${[jobsToDelete.length, 'job', 'jobs']} (${sourceLang} → ${targetLang})`;
@@ -137,63 +144,80 @@ export default class TMManager {
         }
     }
 
-    async syncDown(tmStore, { dryrun, sourceLang, targetLang, deleteExtraJobs = false, parallelism = 4 }) {
+    async syncDown(tmStore, { dryrun, sourceLang, targetLang, deleteExtraJobs = false, eraseParentTmStore = false, storeAlias = null, parallelism = 4 }) {
+        logInfo`Preparing sync down for store ${tmStore.id} [deleteExtraJobs: ${deleteExtraJobs}, eraseParentTmStore: ${eraseParentTmStore}, parallelism: ${parallelism}, storeAlias: ${storeAlias}]`;
         const pairs = sourceLang && targetLang ? [ [ sourceLang, targetLang ] ] : await tmStore.getAvailableLangPairs();
         const prepareQueue = fastq.promise(this, this.#prepareSyncDownTask, parallelism);
-        const preparePromises = pairs.map(([ sourceLang, targetLang ]) => prepareQueue.push({ tmStore, sourceLang, targetLang }));
+        const preparePromises = pairs.map(([ sourceLang, targetLang ]) => prepareQueue.push({ tmStore, sourceLang, targetLang, storeAlias }));
         const syncDownStats = await Promise.all(preparePromises);
         if (!dryrun) {
             const syncDownQueue = fastq.promise(this, this.#syncDownTask, parallelism);
-            const syncDownPromises = syncDownStats.map(task => syncDownQueue.push({ tmStore, ...task, jobsToDelete: deleteExtraJobs ? task.jobsToDelete : [] }));
+            const syncDownPromises = syncDownStats.map(task => syncDownQueue.push({ tmStore, ...task, jobsToDelete: deleteExtraJobs ? task.jobsToDelete : [], eraseParentTmStore, storeAlias }));
             await Promise.all(syncDownPromises);
         }
         return syncDownStats;
     }
 
-    async #prepareSyncUpTask({ tmStore, sourceLang, targetLang, newerOnly = false, deleteEmptyBlocks = false }) {
+    async #prepareSyncUpTask({ tmStore, sourceLang, targetLang, deleteEmptyBlocks = false, includeUnassigned = false, storeAlias = null }) {
         const toc = await tmStore.getTOC(sourceLang, targetLang);
         const deltas = await this.#DAL.job.getJobDeltas(toc.sourceLang, toc.targetLang, toc);
-        const blockIdsToUpdate = new Set(deltas.filter(e => e.remoteJobGuid).map(e => e.blockId)); // either because they changed or because some jobs don't exist locally and need to be deleted remotely
-        let blocksToUpdate = [];
-        for (const blockId of blockIdsToUpdate) {
-            blocksToUpdate.push([ blockId, await this.#DAL.job.getValidJobIds(toc.sourceLang, toc.targetLang, toc, blockId) ]);
+        const storeId = storeAlias ?? tmStore.id;
+
+        // first go over differences with jobs that exist remotely in the tm store, these need to be updated by block
+        const remoteJobs = deltas.filter(e => e.remoteJobGuid);
+        const remoteJobsWithTimestampMismatch = remoteJobs.filter(e => e.tmStore === storeId);
+        const remoteJobsToDeleteMissingLocally = remoteJobs.filter(e => !e.localJobGuid);
+        const remoteJobsToDeleteWithTmStoreMismatch = remoteJobs.filter(e => e.tmStore && e.tmStore !== storeId);
+        const remoteJobsToUpdate = deleteEmptyBlocks ? remoteJobsWithTimestampMismatch.concat(remoteJobsToDeleteMissingLocally, remoteJobsToDeleteWithTmStoreMismatch) : remoteJobsWithTimestampMismatch;
+        const blocksToUpdateMap = {};
+        for (const { blockId } of remoteJobsToUpdate) {
+            if (!blocksToUpdateMap[blockId]) {
+                const validJobIds = await this.#DAL.job.getValidJobIds(toc.sourceLang, toc.targetLang, toc, blockId);
+                if (validJobIds.length > 0 || deleteEmptyBlocks) { // delete empty blocks only if allowed
+                    blocksToUpdateMap[blockId] = validJobIds;
+                }
+            }
         }
-        const blocksToDelete = blocksToUpdate.filter(e => e[1].length === 0); // if there are no jobs to write the block gets deleted
-        if (blocksToDelete.length > 0 && !deleteEmptyBlocks) {
-            blocksToUpdate = blocksToUpdate.filter(e => e[1].length > 0);
-        }
-        let jobsToUpdate = deltas.filter(e => e.localJobGuid).map(e => [ e.localJobGuid, e.localUpdatedAt ]); // this will catch changed jobs and jobs that don't exist remotely
-        if (jobsToUpdate.length > 0 && newerOnly) {
-            const highWaterMark = Math.max(...Object.values(toc.blocks).map(blockProps => Math.max(...blockProps.jobs.map(e => new Date(e[1]).getTime()))));
-            jobsToUpdate = jobsToUpdate.filter(e => new Date(e[1]).getTime() > highWaterMark);
-        }
+        const blocksToUpdate = Object.entries(blocksToUpdateMap);
+
+        // then go over jobs that only exist locally, these will be aggregated into blocks when the actual write happens
+        const localJobs = deltas.filter(e => e.localJobGuid && !e.remoteJobGuid);
+        const localJobsMatchingTmStore = localJobs.filter(e => e.tmStore === storeId); // this shouldn't be possible because and it should be included above
+        const localJobsUnassigned = localJobs.filter(e => !e.tmStore);
+        const localJobsToUpdate = includeUnassigned ? localJobsMatchingTmStore.concat(localJobsUnassigned) : localJobsMatchingTmStore;
+        remoteJobs.length > 0 && logInfo`  - ${sourceLang} → ${targetLang}: ${remoteJobs.length} remote ${[remoteJobs.length, 'job', 'jobs']} have changes (${remoteJobsWithTimestampMismatch.length} with different timestamp, ${remoteJobsToDeleteMissingLocally.length} missing locally, ${remoteJobsToDeleteWithTmStoreMismatch.length} with tm store mismatch)`;
+        localJobs.length > 0 && logInfo`  - ${sourceLang} → ${targetLang}: ${localJobs.length} local ${[localJobs.length, 'job', 'jobs']} are missing from tm store: ${localJobsMatchingTmStore.length} matching store id, ${localJobsUnassigned.length} unassigned`;
+
         return {
             sourceLang,
             targetLang,
             blocksToUpdate,
-            jobsToUpdate: jobsToUpdate.map(e => e[0]),
+            jobsToUpdate: localJobsToUpdate.map(e => e.localJobGuid), // TODO: should really be called jobsToStore because it includes only jobs that are not in the tm store
         };
     }
 
-    async #syncUpTask({ tmStore, sourceLang, targetLang, blocksToUpdate, jobsToUpdate }) {
+    async #syncUpTask({ tmStore, sourceLang, targetLang, blocksToUpdate, jobsToUpdate, assignUnassigned, storeAlias }) {
         if (tmStore.access === 'readonly') {
             throw new Error(`Cannot sync up ${tmStore.id} store because it is readonly!`);
         }
         if (blocksToUpdate.length === 0 && jobsToUpdate.length === 0) {
             return;
         }
-
+        const storeId = storeAlias ?? tmStore.id;
         await tmStore.getWriter(sourceLang, targetLang, async writeTmBlock => {
             const updatedJobs = new Set();
             if (blocksToUpdate.length > 0) {
                 logInfo`Updating ${blocksToUpdate.length} ${[blocksToUpdate.length, 'block', 'blocks']} in ${tmStore.id} (${sourceLang} → ${targetLang})`;
                 for (const [ blockId, jobs ] of blocksToUpdate) {
                     await writeTmBlock({ blockId }, this.getJobPropsTusPair(jobs));
-                    jobs.forEach(jobGuid => updatedJobs.add(jobGuid));
+                    for (const jobGuid of jobs) {
+                        updatedJobs.add(jobGuid);
+                        assignUnassigned && await this.#DAL.job.setJobTmStore(jobGuid, storeId);
+                    }
                 }
             }
             const filteredJobsToUpdate = jobsToUpdate.filter(jobGuid => !updatedJobs.has(jobGuid));
-            if (filteredJobsToUpdate.length !== jobsToUpdate.length) {
+            if (filteredJobsToUpdate.length !== jobsToUpdate.length) { // this shouldn't be possible because the jobs should be updated in the blocks above
                 logVerbose`${jobsToUpdate.length - filteredJobsToUpdate.length} ${[jobsToUpdate.length - filteredJobsToUpdate.length, 'job was skipped because it was', 'jobs were skipped because they were']} already updated`;
             }
             if (filteredJobsToUpdate.length > 0) {
@@ -202,6 +226,7 @@ export default class TMManager {
                     for (const jobGuid of filteredJobsToUpdate) {
                         const { tus, ...jobProps } = await this.getJob(jobGuid);
                         await writeTmBlock({ translationProvider: jobProps.translationProvider, blockId: jobGuid}, [ { jobProps, tus } ]);
+                        assignUnassigned && await this.#DAL.job.setJobTmStore(jobGuid, storeId);
                     }
                 } else if (tmStore.partitioning === 'provider') {
                     const jobsByProvider = {};
@@ -212,28 +237,40 @@ export default class TMManager {
                     }
                     for (const [ translationProvider, jobs ] of Object.entries(jobsByProvider)) {
                         await writeTmBlock({ translationProvider, blockId: await this.generateJobGuid() }, this.getJobPropsTusPair(jobs));
+                        if (assignUnassigned) {
+                            for (const jobGuid of jobs) {
+                                await this.#DAL.job.setJobTmStore(jobGuid, storeId);
+                            }
+                        }
                     }
                 } else if (tmStore.partitioning === 'language') {
                     await writeTmBlock({ blockId: await this.generateJobGuid() }, this.getJobPropsTusPair(filteredJobsToUpdate));
+                    if (assignUnassigned) {
+                        for (const jobGuid of filteredJobsToUpdate) {
+                            await this.#DAL.job.setJobTmStore(jobGuid, storeId);
+                        }
+                    }
                 }
             }
         });
     }
 
-    async syncUp(tmStore, { dryrun, sourceLang, targetLang, newerOnly = false, deleteEmptyBlocks = false, parallelism = 4 }) {
+    async syncUp(tmStore, { dryrun, sourceLang, targetLang, deleteEmptyBlocks = false, includeUnassigned = true, assignUnassigned = true, storeAlias = null, parallelism = 4 }) {
+        logInfo`Preparing sync up for store ${tmStore.id} [deleteEmptyBlocks: ${deleteEmptyBlocks}, includeUnassigned: ${includeUnassigned}, parallelism: ${parallelism}]`;
         const pairs = sourceLang && targetLang ? [ [ sourceLang, targetLang ] ] : await this.getAvailableLangPairs();
         const prepareQueue = fastq.promise(this, this.#prepareSyncUpTask, parallelism);
         const preparePromises = pairs.map(([ sourceLang, targetLang ]) => prepareQueue.push({
             tmStore,
             sourceLang,
             targetLang,
-            newerOnly,
             deleteEmptyBlocks,
+            includeUnassigned,
+            storeAlias,
         }));
         const syncUpStats = await Promise.all(preparePromises);
         if (!dryrun) {
             const syncUpQueue = fastq.promise(this, this.#syncUpTask, parallelism);
-            const syncUpPromises = syncUpStats.map(task => syncUpQueue.push({ tmStore, ...task }));
+            const syncUpPromises = syncUpStats.map(task => syncUpQueue.push({ tmStore, assignUnassigned, storeAlias, ...task }));
             await Promise.all(syncUpPromises);
         }
         return syncUpStats;

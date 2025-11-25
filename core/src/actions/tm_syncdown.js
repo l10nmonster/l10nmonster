@@ -9,6 +9,8 @@ export class tm_syncdown {
         options: [
             [ '--commit', 'commit making changes that are needed (dry-run by default)' ],
             [ '--delete', 'delete local jobs that do not exist in the remote TM Store' ],
+            [ '--import', 'treat jobs as unassigned (do not sync them back up to the same TM Store)' ],
+            [ '--storeAlias <id>', 'alias of the TM Store to sync down' ],
             [ '--lang <srcLang,tgtLang>', 'source and target language pair' ],
             [ '--parallelism <number>', 'number of parallel operations' ],
         ],
@@ -17,6 +19,7 @@ export class tm_syncdown {
     static async action(monsterManager, options) {
         const dryrun = !options.commit;
         const deleteExtraJobs = Boolean(options.delete);
+        const eraseParentTmStore = Boolean(options.import);
         const tmStore = await monsterManager.tmm.getTmStore(options.tmStore);
         if (tmStore.access === 'writeonly') {
             throw new Error(`TM Store ${tmStore.id} is write-only!`);
@@ -29,6 +32,8 @@ export class tm_syncdown {
             sourceLang,
             targetLang,
             deleteExtraJobs,
+            eraseParentTmStore,
+            storeAlias: options.storeAlias,
             parallelism: options.parallelism,
         });
         let changes = false;
@@ -42,7 +47,7 @@ export class tm_syncdown {
                 if (deleteExtraJobs) {
                     consoleLog`  ‣ ${sourceLang} → ${targetLang}: ${jobsToDelete.length} ${[jobsToDelete.length, 'job', 'jobs']} deleted locally: ${jobsToDelete.join(', ')}`;
                 } else {
-                    consoleLog`  ‣ ${sourceLang} → ${targetLang}: ${jobsToDelete.length} local ${[jobsToDelete.length, 'job does', 'jobs do']} not exist in the remote TM Store. Use the --delete option to delete them.`;
+                    // consoleLog`  ‣ ${sourceLang} → ${targetLang}: ${jobsToDelete.length} local ${[jobsToDelete.length, 'job does', 'jobs do']} not exist in the remote TM Store. Use the --delete option to delete them.`;
                 }
             }
         }

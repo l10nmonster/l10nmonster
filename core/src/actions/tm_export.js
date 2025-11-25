@@ -10,6 +10,7 @@ export class tm_export {
         options: [
             [ '--partitioning <mode>', 'one file per job, provider, or language', [ 'job', 'provider', 'language' ] ],
             [ '--lang <srcLang,tgtLang>', 'source and target language pair' ],
+            [ '--storeAlias <id>', 'alias of the TM Store to export' ],
         ],
     };
 
@@ -21,7 +22,14 @@ export class tm_export {
             jobsDir: options.jobsDir,
             partitioning: options.partitioning ?? 'language',
         });
-        const syncUpStats = await monsterManager.tmm.syncUp(tmStore, { dryrun: false, sourceLang, targetLang });
+        const syncUpStats = await monsterManager.tmm.syncUp(tmStore, {
+            dryrun: false,
+            includeUnassigned: true,
+            assignUnassigned: false,
+            storeAlias: options.storeAlias,
+            sourceLang,
+            targetLang,
+        });
         consoleLog`\nExport done`;
         for (const { sourceLang, targetLang, jobsToUpdate } of syncUpStats) {
             consoleLog`  ‣ ${sourceLang} → ${targetLang} ${jobsToUpdate.length} ${[jobsToUpdate.length, 'job', 'jobs']} exported`;

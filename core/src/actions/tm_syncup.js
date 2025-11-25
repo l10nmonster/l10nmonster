@@ -9,7 +9,8 @@ export class tm_syncup {
         options: [
             [ '--commit', 'commit making changes that are needed (dry-run by default)' ],
             [ '--delete', 'delete remote blocks with no jobs that exist in the local TM Store' ],
-            [ '--neweronly', 'only sync up newer jobs' ],
+            [ '--excludeUnassigned', 'exclude unassigned jobs from the sync up' ],
+            [ '--storeAlias <id>', 'alias of the TM Store to sync up' ],
             [ '--lang <sourceLang,targetLang>', 'source and target language pair' ],
             [ '--parallelism <number>', 'number of parallel operations' ],
         ],
@@ -17,7 +18,7 @@ export class tm_syncup {
 
     static async action(monsterManager, options) {
         const dryrun = !options.commit;
-        const newerOnly = Boolean(options.neweronly);
+        const includeUnassigned = !options.excludeUnassigned;
         const deleteEmptyBlocks = Boolean(options.delete);
         const tmStore = await monsterManager.tmm.getTmStore(options.tmStore);
         if (tmStore.access === 'readonly') {
@@ -30,8 +31,10 @@ export class tm_syncup {
             dryrun,
             sourceLang,
             targetLang,
-            newerOnly,
             deleteEmptyBlocks,
+            includeUnassigned,
+            assignUnassigned: true,
+            storeAlias: options.storeAlias,
             parallelism: options.parallelism,
         });
         let changes = false;
@@ -54,6 +57,6 @@ export class tm_syncup {
         } else {
             consoleLog`Nothing to sync up with ${tmStore.id} store!`;
         }
-        return { dryrun, newerOnly, deleteEmptyBlocks, syncUpStats };
+        return { dryrun, deleteEmptyBlocks, syncUpStats };
     }
 }

@@ -80,10 +80,17 @@ export class JobDAL {
             WHERE excluded.jobGuid = jobs.jobGuid;
         `);
         const { jobGuid, sourceLang, targetLang, status, updatedAt, translationProvider, ...jobProps } = completeJobProps;
-        const result = this.#stmt.setJob.run({ jobGuid, sourceLang, targetLang, status, updatedAt, translationProvider, jobProps: JSON.stringify(jobProps), tmStoreId });
+        const result = this.#stmt.setJob.run({ jobGuid, sourceLang, targetLang, status, updatedAt: updatedAt ?? new Date().toISOString(), translationProvider, jobProps: JSON.stringify(jobProps), tmStoreId });
         if (result.changes !== 1) {
             throw new Error(`Expecting to change a row but changed ${result}`);
         }
+    }
+
+    async setJobTmStore(jobGuid, tmStoreId) {
+        this.#stmt.setJobTmStore ??= this.#db.prepare(/* sql */`
+            UPDATE jobs SET tmStore = ? WHERE jobGuid = ?;
+        `);
+        return this.#stmt.setJobTmStore.run(tmStoreId, jobGuid);
     }
 
     async getJob(jobGuid) {
@@ -121,8 +128,18 @@ export class JobDAL {
 
     async getJobDeltas(sourceLang, targetLang, toc) {
         this.#stmt.getJobDeltas ??= this.#db.prepare(/* sql */`
-            SELECT j.jobGuid localJobGuid, blockId, lt.jobGuid remoteJobGuid, j.updatedAt localUpdatedAt, lt.updatedAt remoteUpdatedAt
-            FROM (SELECT jobGuid, updatedAt FROM jobs WHERE sourceLang = ? AND targetLang = ?) j
+            SELECT
+                tmStore,
+                blockId,
+                j.jobGuid localJobGuid,
+                lt.jobGuid remoteJobGuid,
+                j.updatedAt localUpdatedAt,
+                lt.updatedAt remoteUpdatedAt
+            FROM (
+                SELECT tmStore, jobGuid, updatedAt
+                FROM jobs 
+                WHERE sourceLang = ? AND targetLang = ?
+            ) j
             FULL JOIN last_toc lt USING (jobGuid)
             WHERE j.updatedAt != lt.updatedAt OR j.updatedAt IS NULL OR lt.updatedAt IS NULL
         `);
