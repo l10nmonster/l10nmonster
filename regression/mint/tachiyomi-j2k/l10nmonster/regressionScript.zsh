@@ -6,6 +6,6 @@ npx l10n --regression -v2 source untranslated --push --provider PigLatinizer,Bri
 npx l10n --regression -v2 ops update
 npx l10n --regression -v2 translate all
 npx l10n --regression -v2 source list --statusFile status.json
-npx l10n --regression -v2 tm syncup job --commit
-npx l10n --regression -v2 tm syncup provider --commit
-npx l10n --regression -v2 tm syncup language --commit
+npx l10n --regression -v2 tm syncup job --commit --storeAlias tmstore
+npx l10n --regression -v2 tm syncup provider --commit --storeAlias tmstore
+npx l10n --regression -v2 tm syncup language --commit --storeAlias tmstore
