@@ -78,13 +78,108 @@ function parseResourceAnnotations(resource, enableArbAnnotations, arbAnnotationH
 export class I18nextFilter {
     constructor(params) {
         this.enableArbAnnotations = params?.enableArbAnnotations || false;
-        this.enablePluralSuffixes = params?.enablePluralSuffixes || false;
         this.enableArrays = params?.enableArrays || false;
         this.emitArbAnnotations = params?.emitArbAnnotations || false;
         this.arbAnnotationHandlers = {
             ...defaultArbAnnotationHandlers,
             ...(params?.arbAnnotationHandlers ?? {})
         }
+    }
+
+    /**
+     * Check if a key is a plural form and extract its components
+     * @private
+     */
+    _parsePluralKey(key) {
+        if (key.indexOf('_') === -1) {
+            return null;
+        }
+        const parts = key.split('_');
+        const suffix = parts[parts.length - 1];
+        if (!validPluralSuffixes.has(suffix)) {
+            return null;
+        }
+        const baseKey = parts.slice(0, -1).join('_');
+        return { baseKey, suffix };
+    }
+
+    /**
+     * Track a plural form in the groups map
+     * @private
+     */
+    _trackPluralForm(pluralizedGroups, baseKey, suffix, data) {
+        if (!pluralizedGroups.has(baseKey)) {
+            pluralizedGroups.set(baseKey, new Map());
+        }
+        pluralizedGroups.get(baseKey).set(suffix, data);
+    }
+
+    /**
+     * Generate missing plural forms from _other form
+     * @private
+     * @param {Map} pluralizedGroups - Map of baseKey -> Map(suffix -> data)
+     * @param {Object} flatResource - The flat resource object to add forms to
+     */
+    _addMissingPluralForms(pluralizedGroups, flatResource) {
+        for (const [baseKey, existingForms] of pluralizedGroups) {
+            if (existingForms.has('other')) {
+                const otherSid = `${baseKey}_other`;
+                const otherValue = flatResource[otherSid];
+
+                for (const suffix of validPluralSuffixes) {
+                    if (!existingForms.has(suffix)) {
+                        flatResource[`${baseKey}_${suffix}`] = otherValue;
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Collect plural groups from items
+     * @private
+     * @param {Iterable} items - Items to collect from
+     * @param {Function} getSegmentData - Function to extract sid and data from each item
+     * @returns {Map} Map of baseKey -> Map(suffix -> data)
+     */
+    _collectPluralGroups(items, getSegmentData) {
+        const pluralizedGroups = new Map();
+
+        for (const item of items) {
+            const { sid, data } = getSegmentData(item);
+            const pluralInfo = this._parsePluralKey(sid);
+
+            if (pluralInfo) {
+                this._trackPluralForm(pluralizedGroups, pluralInfo.baseKey, pluralInfo.suffix, data);
+            }
+        }
+
+        return pluralizedGroups;
+    }
+
+    /**
+     * Generate missing plural form segments from _other
+     * @private
+     * @param {Map} pluralizedGroups - Map of baseKey -> Map(suffix -> data)
+     * @param {Function} createSegment - Function(sid, otherData) to create segment object
+     * @returns {Array} Array of generated segments
+     */
+    _generateMissingPluralSegments(pluralizedGroups, createSegment) {
+        const generatedSegments = [];
+
+        for (const [baseKey, existingForms] of pluralizedGroups) {
+            const otherData = existingForms.get('other');
+            if (!otherData) continue;
+
+            for (const suffix of validPluralSuffixes) {
+                if (!existingForms.has(suffix)) {
+                    const sid = `${baseKey}_${suffix}`;
+                    generatedSegments.push(createSegment(sid, otherData));
+                }
+            }
+        }
+
+        return generatedSegments;
     }
 
     async parseResource({ resource }) {
@@ -101,87 +196,76 @@ export class I18nextFilter {
             this.arbAnnotationHandlers,
         );
 
-        const pluralizedGroups = new Map();
+        const flatResource = {};
 
-        // Collect existing segments and track plural groups
+        // Collect existing segments
         for (const [key, value] of parsedResource) {
-            const parts = key.split('_');
-            const suffix = parts[parts.length - 1];
-            const isPluralForm = this.enablePluralSuffixes &&
-                                 key.indexOf('_') !== -1 &&
-                                 validPluralSuffixes.has(suffix);
+            flatResource[key] = value;
+            const pluralInfo = this._parsePluralKey(key);
 
-            const seg = { sid: key, str: value };
-            if (notes[key]) seg.notes = notes[key];
-            if (isPluralForm) {
-                seg.isSuffixPluralized = true;
-                const baseKey = parts.slice(0, -1).join('_');
-                if (!pluralizedGroups.has(baseKey)) pluralizedGroups.set(baseKey, new Map());
-                pluralizedGroups.get(baseKey).set(suffix, { value, notes: notes[key] });
-            }
+            const seg = {
+                sid: key,
+                str: value,
+                ...(notes[key] && { notes: notes[key] }),
+                ...(pluralInfo && { isSuffixPluralized: true })
+            };
+
             response.segments.push(seg);
         }
 
-        // Generate missing plural forms from _other
-        if (this.enablePluralSuffixes) {
-            for (const [baseKey, existingForms] of pluralizedGroups) {
-                const otherForm = existingForms.get('other');
-                if (otherForm) {
-                    for (const suffix of validPluralSuffixes) {
-                        if (!existingForms.has(suffix)) {
-                            const seg = {
-                                sid: `${baseKey}_${suffix}`,
-                                str: otherForm.value,
-                                isSuffixPluralized: true
-                            };
-                            if (otherForm.notes) seg.notes = otherForm.notes;
-                            response.segments.push(seg);
-                        }
-                    }
-                }
-            }
-        }
+        // Collect and generate missing plural forms
+        const pluralizedGroups = this._collectPluralGroups(
+            parsedResource,
+            ([key, value]) => ({ sid: key, data: { value, notes: notes[key] } })
+        );
 
+        this._addMissingPluralForms(pluralizedGroups, flatResource);
+
+        const generatedSegments = this._generateMissingPluralSegments(
+            pluralizedGroups,
+            (sid, otherData) => ({
+                sid,
+                str: flatResource[sid],
+                isSuffixPluralized: true,
+                ...(otherData.notes && { notes: otherData.notes })
+            })
+        );
+
+        response.segments.push(...generatedSegments);
         return response;
     }
 
-    async translateResource({ resource, translator }) {
-        let flatResource = flatten(JSON.parse(resource));
-        for (const entry of Object.entries(flatResource)) {
-            if (!this.enableArbAnnotations || !isArbAnnotations(entry)) {
-                const translation = await translator(...entry);
-                if (translation === null) {
-                    delete flatResource[entry[0]];
-                } else {
-                    flatResource[entry[0]] = translation;
-                    // TODO: deal with pluralized forms as well
-                }
+    /**
+     * Generate a resource file from segments
+     * @param {Object} params
+     * @param {Array} params.segments - Array of segment objects with sid, str, etc.
+     * @param {Function} params.translator - Translator function(seg) that returns translated string
+     * @returns {Promise<string>} JSON string of the generated resource
+     */
+    async generateResource({ segments, translator }) {
+        const segmentsMap = new Map(segments.map(seg => [seg.sid, seg]));
+
+        const pluralizedGroups = this._collectPluralGroups(
+            segments.filter(seg => seg.isSuffixPluralized),
+            (seg) => ({ sid: seg.sid, data: seg.str })
+        );
+
+        const generatedSegments = this._generateMissingPluralSegments(
+            pluralizedGroups,
+            (sid, otherStr) => ({ sid, str: otherStr, isSuffixPluralized: true })
+        );
+
+        generatedSegments.forEach(seg => segmentsMap.set(seg.sid, seg));
+
+        // Translate all segments (original + generated)
+        const flatResource = {};
+        for (const seg of segmentsMap.values()) {
+            const translatedStr = await translator(seg);
+            if (translatedStr != null) {
+                flatResource[seg.sid] = translatedStr.str;
             }
         }
-        if (this.enableArbAnnotations) {
-            for (const entry of Object.entries(flatResource).filter(entry => isArbAnnotations(entry))) {
-                const [key, value] = entry;
-                
-                // Always delete if not emitting annotations
-                if (!this.emitArbAnnotations) {
-                    delete flatResource[key];
-                    continue;
-                }
-                
-                // Only keep if regex matches and corresponding translation exists and is not null
-                const match = extractArbGroupsRegex.exec(key);
-                if (match?.groups) {
-                    const { prefix = '', key: arbKey, attribute } = match.groups;
-                    const sid = `${prefix}${arbKey}`;
-                    if (!Object.prototype.hasOwnProperty.call(flatResource, sid) || flatResource[sid] == null) {
-                        delete flatResource[key];
-                    }
-                } else {
-                    // No regex match, can't determine corresponding translation, so delete
-                    delete flatResource[key];
-                }
-            }
-        }
+
         return `${JSON.stringify(unflatten(flatResource, { object: !this.enableArrays }), null, 2)}\n`;
     }
 }

@@ -232,7 +232,6 @@ suite("json parseResource - no options", () => {
 suite("json parseResource -  plurals", () => {
     const resourceFilter = new i18next.I18nextFilter({
         enableArbAnnotations: true,
-        enablePluralSuffixes: true,
     });
     test("parseResource returns raw parsed resource for plural", async () => {
         const resource = {
@@ -391,291 +390,6 @@ suite("json parseResource -  plurals", () => {
     });
 });
 
-suite("json translateResource - emit annotations", () => {
-    const resourceFilter = new i18next.I18nextFilter({
-        enableArbAnnotations: true,
-        enablePluralSuffixes: true,
-        emitArbAnnotations: true,
-    });
-
-    const translator = async function translate(sid, str) {
-        return `${sid} ${str} - **Translation**`;
-    };
-
-    test("translateResource with descriptions", async () => {
-        const resource = {
-            homeSubtitle: "Book the trip you've been waiting for.",
-            "@homeSubtitle": {
-                description:
-                    "header - This is the welcome message subtitle on the home page",
-            },
-            title: "<strong>Welcome back</strong> to travel.",
-            "@title": {
-                description: "header - welcome message of flight flow",
-                context: "context attribute",
-                type: "type attribute",
-            },
-        };
-        const expectedOutput = {
-            homeSubtitle:
-                "homeSubtitle Book the trip you've been waiting for. - **Translation**",
-            "@homeSubtitle": {
-                description:
-                    "header - This is the welcome message subtitle on the home page",
-            },
-            title: "title <strong>Welcome back</strong> to travel. - **Translation**",
-            "@title": {
-                description: "header - welcome message of flight flow",
-                context: "context attribute",
-                type: "type attribute",
-            },
-        };
-
-        const output = await resourceFilter.translateResource({
-            resource: JSON.stringify(resource),
-            translator,
-        });
-        assert.deepEqual(JSON.parse(output), expectedOutput);
-    });
-
-    test("translateResource with plurals", async () => {
-        const resource = {
-            timeCount: {
-                day_one: "{{count}} day",
-                "@day_one": {
-                    description: "copy - time copy for day singular",
-                },
-
-                day_other: "{{count}} days",
-                "@day_other": {
-                    description: "copy - time copy for days plural",
-                },
-                day_zero: "{{count}} days",
-                "@day_zero": {
-                    description: "copy - time copy for days plural",
-                },
-                day_two: "{{count}} days",
-                "@day_two": {
-                    description: "copy - time copy for days plural",
-                },
-                day_few: "{{count}} days",
-                "@day_few": {
-                    description: "copy - time copy for days plural",
-                },
-                day_many: "{{count}} days",
-                "@day_many": {
-                    description: "copy - time copy for days plural",
-                },
-                second_one: "{{count}} second",
-                "@second_one": {
-                    description: "copy - time copy for second singular",
-                },
-
-                second_other: "{{count}} seconds",
-                "@second_other": {
-                    description: "copy - time copy for seconds plural",
-                },
-            },
-        };
-        const expectedOutput = {
-            timeCount: {
-                day_one: "timeCount.day_one {{count}} day - **Translation**",
-                "@day_one": {
-                    description: "copy - time copy for day singular",
-                },
-
-                day_other:
-                    "timeCount.day_other {{count}} days - **Translation**",
-                "@day_other": {
-                    description: "copy - time copy for days plural",
-                },
-                day_zero: "timeCount.day_zero {{count}} days - **Translation**",
-                "@day_zero": {
-                    description: "copy - time copy for days plural",
-                },
-                day_two: "timeCount.day_two {{count}} days - **Translation**",
-                "@day_two": {
-                    description: "copy - time copy for days plural",
-                },
-                day_few: "timeCount.day_few {{count}} days - **Translation**",
-                "@day_few": {
-                    description: "copy - time copy for days plural",
-                },
-                day_many: "timeCount.day_many {{count}} days - **Translation**",
-                "@day_many": {
-                    description: "copy - time copy for days plural",
-                },
-                second_one:
-                    "timeCount.second_one {{count}} second - **Translation**",
-                "@second_one": {
-                    description: "copy - time copy for second singular",
-                },
-
-                second_other:
-                    "timeCount.second_other {{count}} seconds - **Translation**",
-                "@second_other": {
-                    description: "copy - time copy for seconds plural",
-                },
-            },
-        };
-        const output = await resourceFilter.translateResource({
-            resource: JSON.stringify(resource),
-            translator,
-        });
-        assert.deepEqual(JSON.parse(output), expectedOutput);
-    });
-});
-
-suite("json translateResource - don't emit annotations", () => {
-    const resourceFilter = new i18next.I18nextFilter({
-        enableArbAnnotations: true,
-        enablePluralSuffixes: true,
-    });
-
-    const translator = async function translate(sid, str) {
-        return `${sid} ${str} - **Translation**`;
-    };
-
-    test("translateResource with descriptions", async () => {
-        const resource = {
-            homeSubtitle: "Book the trip you've been waiting for.",
-            "@homeSubtitle": {
-                description:
-                    "header - This is the welcome message subtitle on the home page",
-            },
-            title: "<strong>Welcome back</strong> to travel.",
-            "@title": {
-                description: "header - welcome message of flight flow",
-                context: "context attribute",
-                type: "type attribute",
-            },
-        };
-        const expectedOutput = {
-            homeSubtitle:
-                "homeSubtitle Book the trip you've been waiting for. - **Translation**",
-            title: "title <strong>Welcome back</strong> to travel. - **Translation**",
-        };
-
-        const output = await resourceFilter.translateResource({
-            resource: JSON.stringify(resource),
-            translator,
-        });
-        assert.deepEqual(JSON.parse(output), expectedOutput);
-    });
-});
-
-suite("json translateResource - if no translation, delete annotations", () => {
-    const resourceFilter = new i18next.I18nextFilter({
-        enableArbAnnotations: true,
-        enablePluralSuffixes: true,
-        emitArbAnnotations: true,
-    });
-
-    const translator = async function translate(sid, str) {
-        return sid === "homeSubtitle" ?
-            null :
-            `${sid} ${str} - **Translation**`;
-    };
-
-    test("translateResource with descriptions", async () => {
-        const resource = {
-            homeSubtitle: "Book the trip you've been waiting for.",
-            "@homeSubtitle": {
-                description:
-                    "header - This is the welcome message subtitle on the home page",
-            },
-            title: "<strong>Welcome back</strong> to travel.",
-            "@title": {
-                description: "header - welcome message of flight flow",
-                context: "context attribute",
-                type: "type attribute",
-            },
-        };
-        const expectedOutput = {
-            title: "title <strong>Welcome back</strong> to travel. - **Translation**",
-            "@title": {
-                description: "header - welcome message of flight flow",
-                context: "context attribute",
-                type: "type attribute",
-            },
-        };
-
-        const output = await resourceFilter.translateResource({
-            resource: JSON.stringify(resource),
-            translator,
-        });
-        assert.deepEqual(JSON.parse(output), expectedOutput);
-    });
-});
-
-suite("json translateResource - enableArrays", () => {
-    const translator = async function translate(sid, str) {
-        return `${sid} ${str} - **Translation**`;
-    };
-
-    const resource = {
-        test: { 0: 'zero', 1: 'one' }
-    };
-
-    test("translateResource with array enabled", async () => {
-        const resourceFilter = new i18next.I18nextFilter({
-            enableArbAnnotations: true,
-            enablePluralSuffixes: true,
-            emitArbAnnotations: true,
-            enableArrays: true
-        });
-        const expectedOutput = {
-            "test": [
-                "test.0 zero - **Translation**",
-                "test.1 one - **Translation**"
-            ]
-        };
-        const output = await resourceFilter.translateResource({
-            resource: JSON.stringify(resource),
-            translator,
-        });
-        assert.deepEqual(JSON.parse(output), expectedOutput);
-    });
-
-    test("translateResource with array not enabled", async () => {
-        const resourceFilter = new i18next.I18nextFilter({
-            enableArbAnnotations: true,
-            enablePluralSuffixes: true,
-            emitArbAnnotations: true,
-            enableArrays: false
-        });
-        const expectedOutput = {
-            "test": {
-                "0": "test.0 zero - **Translation**",
-                "1": "test.1 one - **Translation**"
-              }
-        };
-        const output = await resourceFilter.translateResource({
-            resource: JSON.stringify(resource),
-            translator,
-        });
-        assert.deepEqual(JSON.parse(output), expectedOutput);
-    });
-
-    test("translateResource with enableArrays default", async () => {
-        const resourceFilter = new i18next.I18nextFilter({
-            enableArbAnnotations: true,
-            enablePluralSuffixes: true,
-            emitArbAnnotations: true
-        });
-        const expectedOutput = {
-            "test": {
-                "0": "test.0 zero - **Translation**",
-                "1": "test.1 one - **Translation**"
-              }
-        };
-        const output = await resourceFilter.translateResource({
-            resource: JSON.stringify(resource),
-            translator,
-        });
-        assert.deepEqual(JSON.parse(output), expectedOutput);
-    });
-});
 
 suite("flattenAndSplitResources tests", () => {
     test("flattenAndSplitResources happy case", () => {
@@ -825,126 +539,6 @@ suite("nested placeholder tests", () => {
         assert.deepEqual(output, expectedOutput);
     });
 
-    test("translateResource preserves deeply nested placeholder annotations when emitArbAnnotations is true", async () => {
-        const resourceFilter = new i18next.I18nextFilter({
-            enableArbAnnotations: true,
-            emitArbAnnotations: true,
-        });
-        const translator = async (sid, str) => `${str} - **Translated**`;
-        const resource = {
-            recentSearch: {
-                cars: {
-                    differentPlaceDropOff: "Drop off at {{pickupLocationName}} instead of pickup location",
-                    "@differentPlaceDropOff": {
-                        description: "Message when drop-off differs from pickup for car rentals",
-                        placeholders: {
-                            pickupLocationName: {
-                                example: "Downtown San Francisco",
-                                description: "The name of the pickup location for car rental"
-                            }
-                        }
-                    }
-                }
-            }
-        };
-        const expectedOutput = {
-            recentSearch: {
-                cars: {
-                    differentPlaceDropOff: "Drop off at {{pickupLocationName}} instead of pickup location - **Translated**",
-                    "@differentPlaceDropOff": {
-                        description: "Message when drop-off differs from pickup for car rentals",
-                        placeholders: {
-                            pickupLocationName: {
-                                example: "Downtown San Francisco",
-                                description: "The name of the pickup location for car rental"
-                            }
-                        }
-                    }
-                }
-            }
-        };
-        const output = await resourceFilter.translateResource({
-            resource: JSON.stringify(resource),
-            translator,
-        });
-        assert.deepEqual(JSON.parse(output), expectedOutput);
-    });
-
-    test("translateResource removes deeply nested placeholder annotations when emitArbAnnotations is false", async () => {
-        const resourceFilter = new i18next.I18nextFilter({
-            enableArbAnnotations: true,
-            emitArbAnnotations: false,
-        });
-        const translator = async (sid, str) => `${str} - **Translated**`;
-        const resource = {
-            recentSearch: {
-                cars: {
-                    differentPlaceDropOff: "Drop off at {{pickupLocationName}} instead of pickup location",
-                    "@differentPlaceDropOff": {
-                        description: "Message when drop-off differs from pickup for car rentals",
-                        placeholders: {
-                            pickupLocationName: {
-                                example: "Downtown San Francisco",
-                                description: "The name of the pickup location for car rental"
-                            }
-                        }
-                    }
-                }
-            }
-        };
-        const expectedOutput = {
-            recentSearch: {
-                cars: {
-                    differentPlaceDropOff: "Drop off at {{pickupLocationName}} instead of pickup location - **Translated**"
-                }
-            }
-        };
-        const output = await resourceFilter.translateResource({
-            resource: JSON.stringify(resource),
-            translator,
-        });
-        assert.deepEqual(JSON.parse(output), expectedOutput);
-    });
-
-    test("translateResource removes nested annotations when translation is null", async () => {
-        const resourceFilter = new i18next.I18nextFilter({
-            enableArbAnnotations: true,
-            emitArbAnnotations: true,
-        });
-        const translator = async (sid, str) => {
-            // Return null for the nested key to test annotation removal
-            return sid === "recentSearch.cars.differentPlaceDropOff" ? null : `${str} - **Translated**`;
-        };
-        const resource = {
-            recentSearch: {
-                cars: {
-                    differentPlaceDropOff: "Drop off at {{pickupLocationName}} instead of pickup location",
-                    "@differentPlaceDropOff": {
-                        description: "Message when drop-off differs from pickup for car rentals",
-                        placeholders: {
-                            pickupLocationName: {
-                                example: "Downtown San Francisco",
-                                description: "The name of the pickup location for car rental"
-                            }
-                        }
-                    },
-                    anotherKey: "Another message"
-                }
-            }
-        };
-        const expectedOutput = {
-            recentSearch: {
-                cars: {
-                    anotherKey: "Another message - **Translated**"
-                }
-            }
-        };
-        const output = await resourceFilter.translateResource({
-            resource: JSON.stringify(resource),
-            translator,
-        });
-        assert.deepEqual(JSON.parse(output), expectedOutput);
-    });
 })
 
 suite("annotation handler tests", () => {
@@ -1002,4 +596,290 @@ suite("annotation handler tests", () => {
         const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
         assert.deepEqual(output, expectedOutput);
     })
+})
+
+suite("generateResource tests", () => {
+    const identityTranslator = async (seg) => ({ str: seg.str });
+
+    test("generates simple resource", async () => {
+        const resourceFilter = new i18next.I18nextFilter();
+        const segments = [
+            { sid: "hello", str: "Hello World" },
+            { sid: "goodbye", str: "Goodbye World" }
+        ];
+        const output = await resourceFilter.generateResource({ segments, translator: identityTranslator });
+        const parsed = JSON.parse(output);
+        assert.deepEqual(parsed, {
+            hello: "Hello World",
+            goodbye: "Goodbye World"
+        });
+    });
+
+    test("generates nested resource", async () => {
+        const resourceFilter = new i18next.I18nextFilter();
+        const segments = [
+            { sid: "greeting.hello", str: "Hello" },
+            { sid: "greeting.goodbye", str: "Goodbye" },
+            { sid: "title", str: "My App" }
+        ];
+        const output = await resourceFilter.generateResource({ segments, translator: identityTranslator });
+        const parsed = JSON.parse(output);
+        assert.deepEqual(parsed, {
+            greeting: {
+                hello: "Hello",
+                goodbye: "Goodbye"
+            },
+            title: "My App"
+        });
+    });
+
+    test("generates resource with plural forms (with auto-generation)", async () => {
+        const resourceFilter = new i18next.I18nextFilter();
+        const segments = [
+            { sid: "item_one", str: "{{count}} item", isSuffixPluralized: true },
+            { sid: "item_other", str: "{{count}} items", isSuffixPluralized: true }
+        ];
+        const output = await resourceFilter.generateResource({ segments, translator: identityTranslator });
+        const parsed = JSON.parse(output);
+        assert.deepEqual(parsed, {
+            item_one: "{{count}} item",
+            item_other: "{{count}} items",
+            item_zero: "{{count}} items",
+            item_two: "{{count}} items",
+            item_few: "{{count}} items",
+            item_many: "{{count}} items"
+        });
+    });
+
+    test("generates simple resource from segments with notes", async () => {
+        const resourceFilter = new i18next.I18nextFilter();
+        const segments = [
+            {
+                sid: "hello",
+                str: "Hello World",
+                notes: "greeting message"  // notes are ignored in generateResource
+            }
+        ];
+        const output = await resourceFilter.generateResource({ segments, translator: identityTranslator });
+        const parsed = JSON.parse(output);
+        assert.deepEqual(parsed, {
+            hello: "Hello World"  // Only the string value, no annotations
+        });
+    });
+
+    test("generates and translates missing plural forms from _other", async () => {
+        const resourceFilter = new i18next.I18nextFilter({
+            enablePluralSuffixes: true
+        });
+        const segments = [
+            { sid: "item_one", str: "{{count}} item", isSuffixPluralized: true },
+            { sid: "item_other", str: "{{count}} items", isSuffixPluralized: true }
+        ];
+        // Translator that uppercases strings
+        const translator = async (seg) => ({ str: seg.str.toUpperCase() });
+        const output = await resourceFilter.generateResource({ segments, translator });
+        const parsed = JSON.parse(output);
+
+        // All forms should be translated (uppercased)
+        assert.equal(parsed.item_one, "{{COUNT}} ITEM");
+        assert.equal(parsed.item_other, "{{COUNT}} ITEMS");
+        assert.equal(parsed.item_zero, "{{COUNT}} ITEMS");
+        assert.equal(parsed.item_two, "{{COUNT}} ITEMS");
+        assert.equal(parsed.item_few, "{{COUNT}} ITEMS");
+        assert.equal(parsed.item_many, "{{COUNT}} ITEMS");
+    });
+
+    test("does not overwrite existing plural forms", async () => {
+        const resourceFilter = new i18next.I18nextFilter({
+            enablePluralSuffixes: true
+        });
+        const segments = [
+            { sid: "item_one", str: "{{count}} item", isSuffixPluralized: true },
+            { sid: "item_other", str: "{{count}} items", isSuffixPluralized: true },
+            { sid: "item_zero", str: "no items", isSuffixPluralized: true }
+        ];
+        const output = await resourceFilter.generateResource({ segments, translator: identityTranslator });
+        const parsed = JSON.parse(output);
+
+        // Existing zero form should be preserved
+        assert.equal(parsed.item_zero, "no items");
+        // Missing forms should use _other
+        assert.equal(parsed.item_two, "{{count}} items");
+        assert.equal(parsed.item_few, "{{count}} items");
+    });
+
+    test("roundtrip with plurals: parse then generate maintains all forms", async () => {
+        const resourceFilter = new i18next.I18nextFilter({
+            enablePluralSuffixes: true
+        });
+        const original = {
+            item_one: "{{count}} item",
+            item_other: "{{count}} items"
+        };
+
+        // Parse - this will add missing forms
+        const { segments } = await resourceFilter.parseResource({
+            resource: JSON.stringify(original)
+        });
+
+        // Generate back - this should also add missing forms
+        const generated = await resourceFilter.generateResource({ segments, translator: identityTranslator });
+        const parsed = JSON.parse(generated);
+
+        // Should have all 6 forms
+        assert.equal(Object.keys(parsed).length, 6);
+        assert.equal(parsed.item_one, "{{count}} item");
+        assert.equal(parsed.item_other, "{{count}} items");
+        assert.equal(parsed.item_zero, "{{count}} items");
+        assert.equal(parsed.item_two, "{{count}} items");
+        assert.equal(parsed.item_few, "{{count}} items");
+        assert.equal(parsed.item_many, "{{count}} items");
+    });
+})
+
+suite("generateResource with translator tests", () => {
+    test("translates segments during generation", async () => {
+        const resourceFilter = new i18next.I18nextFilter();
+        const segments = [
+            { sid: "hello", str: "Hello" },
+            { sid: "goodbye", str: "Goodbye" }
+        ];
+        const translator = async (seg) => ({ str: `${seg.str} (translated)` });
+
+        const output = await resourceFilter.generateResource({ segments, translator });
+        const parsed = JSON.parse(output);
+
+        assert.equal(parsed.hello, "Hello (translated)");
+        assert.equal(parsed.goodbye, "Goodbye (translated)");
+    });
+
+    test("translates nested resources", async () => {
+        const resourceFilter = new i18next.I18nextFilter();
+        const segments = [
+            { sid: "greeting.hello", str: "Hello" },
+            { sid: "greeting.goodbye", str: "Goodbye" }
+        ];
+        const translator = async (seg) => ({ str: seg.str.toUpperCase() });
+
+        const output = await resourceFilter.generateResource({ segments, translator });
+        const parsed = JSON.parse(output);
+
+        assert.deepEqual(parsed, {
+            greeting: {
+                hello: "HELLO",
+                goodbye: "GOODBYE"
+            }
+        });
+    });
+
+    test("translates plural forms", async () => {
+        const resourceFilter = new i18next.I18nextFilter({
+            enablePluralSuffixes: true
+        });
+        const segments = [
+            { sid: "item_one", str: "{{count}} item", isSuffixPluralized: true },
+            { sid: "item_other", str: "{{count}} items", isSuffixPluralized: true }
+        ];
+        const translator = async (seg) => ({ str: seg.str.replace('item', 'elemento').replace('items', 'elementos') });
+
+        const output = await resourceFilter.generateResource({ segments, translator });
+        const parsed = JSON.parse(output);
+
+        // Translated forms
+        assert.equal(parsed.item_one, "{{count}} elemento");
+        assert.equal(parsed.item_other, "{{count}} elementos");
+        // Auto-generated forms should use translated _other
+        assert.equal(parsed.item_zero, "{{count}} elementos");
+        assert.equal(parsed.item_two, "{{count}} elementos");
+    });
+
+    test("skips segments when translator returns null", async () => {
+        const resourceFilter = new i18next.I18nextFilter();
+        const segments = [
+            { sid: "hello", str: "Hello" },
+            { sid: "goodbye", str: "Goodbye" },
+            { sid: "skip", str: "Skip this" }
+        ];
+        const translator = async (seg) => {
+            if (seg.sid === "skip") return null;
+            return { str: `${seg.str} (translated)` };
+        };
+
+        const output = await resourceFilter.generateResource({ segments, translator });
+        const parsed = JSON.parse(output);
+
+        assert.equal(parsed.hello, "Hello (translated)");
+        assert.equal(parsed.goodbye, "Goodbye (translated)");
+        assert.equal(parsed.skip, undefined);
+    });
+
+    test("translates segments with notes (notes are ignored)", async () => {
+        const resourceFilter = new i18next.I18nextFilter();
+        const segments = [
+            {
+                sid: "hello",
+                str: "Hello {{name}}",
+                notes: "greeting message\nPH({{name}}|John|User name)"  // notes ignored
+            }
+        ];
+        const translator = async (seg) => ({ str: seg.str.replace("Hello", "Hola") });
+
+        const output = await resourceFilter.generateResource({ segments, translator });
+        const parsed = JSON.parse(output);
+
+        assert.equal(parsed.hello, "Hola {{name}}");
+        // No annotations in output
+        assert.equal(Object.keys(parsed).length, 1);
+    });
+
+    test("translator receives correct segment object", async () => {
+        const resourceFilter = new i18next.I18nextFilter();
+        const segments = [
+            { sid: "test.key", str: "Test value", notes: "some note" }
+        ];
+        const calls = [];
+        const translator = async (seg) => {
+            calls.push(seg);
+            return { str: seg.str };
+        };
+
+        await resourceFilter.generateResource({ segments, translator });
+
+        assert.equal(calls.length, 1);
+        assert.equal(calls[0].sid, "test.key");
+        assert.equal(calls[0].str, "Test value");
+        assert.equal(calls[0].notes, "some note");
+    });
+
+    test("translator is called for auto-generated plural forms", async () => {
+        const resourceFilter = new i18next.I18nextFilter({
+            enablePluralSuffixes: true
+        });
+        const segments = [
+            { sid: "item_one", str: "{{count}} item", isSuffixPluralized: true },
+            { sid: "item_other", str: "{{count}} items", isSuffixPluralized: true }
+        ];
+        const calls = [];
+        const translator = async (seg) => {
+            calls.push(seg);
+            return { str: seg.str.toUpperCase() };
+        };
+
+        await resourceFilter.generateResource({ segments, translator });
+
+        // Should be called for all 6 forms (2 original + 4 generated)
+        assert.equal(calls.length, 6);
+
+        // Verify generated forms are in the calls
+        const sids = calls.map(c => c.sid);
+        assert.ok(sids.includes("item_zero"));
+        assert.ok(sids.includes("item_two"));
+        assert.ok(sids.includes("item_few"));
+        assert.ok(sids.includes("item_many"));
+
+        // Verify generated forms receive _other's source text
+        const zeroCall = calls.find(c => c.sid === "item_zero");
+        assert.equal(zeroCall.str, "{{count}} items");
+        assert.equal(zeroCall.isSuffixPluralized, true);
+    });
 })
