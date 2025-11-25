@@ -8,7 +8,7 @@
     "name1": "Willkommen, {{name}}!",
     "name2": "Willkommen, <a>{{name}}</a>!"
   },
-  "nationalIdPlaceholder": "⇥Q9:E̲n̲t̲e̲r̲̟ ̲y̲o̲u̲r̲̟ ̲{{id}}⇤",
+  "nationalIdPlaceholder": "⇥88:E̲n̲t̲e̲r̲̟ ̲y̲o̲u̲r̲̟ ̲{{id}}⇤",
   "@nationalIdPlaceholder": {
     "description": "copy - national ID input placeholder on passenger form",
     "placeholders": {

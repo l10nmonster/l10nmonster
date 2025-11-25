@@ -16,18 +16,18 @@
 							"minQ": 1,
 							"q": 2,
 							"res": 2,
-							"seg": 14,
-							"words": 53,
-							"chars": 260
+							"seg": 30,
+							"words": 81,
+							"chars": 372
 						}
 					],
 					"pairSummary": {
-						"segs": 19,
-						"words": 80,
-						"chars": 430
+						"segs": 35,
+						"words": 108,
+						"chars": 542
 					},
 					"pairSummaryByStatus": {
-						"translated": 19,
+						"translated": 35,
 						"low quality": 0,
 						"in flight": 0,
 						"untranslated": 0
@@ -49,18 +49,18 @@
 							"minQ": 1,
 							"q": 2,
 							"res": 2,
-							"seg": 14,
-							"words": 53,
-							"chars": 260
+							"seg": 30,
+							"words": 81,
+							"chars": 372
 						}
 					],
 					"pairSummary": {
-						"segs": 19,
-						"words": 80,
-						"chars": 430
+						"segs": 35,
+						"words": 108,
+						"chars": 542
 					},
 					"pairSummaryByStatus": {
-						"translated": 19,
+						"translated": 35,
 						"low quality": 0,
 						"in flight": 0,
 						"untranslated": 0
