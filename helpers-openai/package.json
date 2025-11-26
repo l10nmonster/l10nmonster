@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/helpers-openai",
-    "version": "3.0.0-alpha.16",
+    "version": "3.0.0-alpha.17",
     "description": "Helpers to integrate with the OpenAI REST API",
     "main": "index.js",
     "type": "module",

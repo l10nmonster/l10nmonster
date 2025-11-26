@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/helpers-ios",
-    "version": "3.0.0-alpha.16",
+    "version": "3.0.0-alpha.17",
     "description": "Helpers to deal with iOS file formats",
     "type": "module",
     "main": "index.js",
