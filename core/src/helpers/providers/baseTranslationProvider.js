@@ -11,6 +11,7 @@ import { TU } from '../../entities/tu.js';
  * @property {number} [quality] - The quality of translations provided by the provider. Optional.
  * @property {Record<string, string[]>} [supportedPairs] - Supported pairs for the provider. Optional. (e.g., { "en-US": ["de-DE", "es-ES"] })
  * @property {string} [translationGroup] - If defined, only accept jobs with the same "group" property. Optional.
+ * @property {string[]} [translationGroups] - If defined, only accept jobs with a "group" property matching one of these values. Optional.
  * @property {string} [defaultInstructions] - Instructions to include automatically in job.
  * @property {number} [minWordQuota] - Minimum word quota to accept the job. Optional.
  * @property {number} [maxWordQuota] - Maximum word quota to accept the job. Optional.
@@ -26,7 +27,7 @@ import { TU } from '../../entities/tu.js';
 export class BaseTranslationProvider {
     defaultInstructions;
     quality;
-    translationGroup;
+    translationGroups;
 
     #id;
     costPerWord;
@@ -41,10 +42,15 @@ export class BaseTranslationProvider {
      * Initializes a new instance of the BaseTranslationProvider class.
      * @param {BaseTranslationProviderOptions} [options] - Configuration options for the provider.
      */
-    constructor({ id, quality, supportedPairs, translationGroup, defaultInstructions, minWordQuota, maxWordQuota, costPerWord, costPerMChar, saveIdenticalEntries, parallelism } = {}) {
+    constructor({ id, quality, supportedPairs, translationGroup, translationGroups, defaultInstructions, minWordQuota, maxWordQuota, costPerWord, costPerMChar, saveIdenticalEntries, parallelism } = {}) {
         this.#id = id;
         this.quality = quality;
-        this.translationGroup = translationGroup;
+        if (translationGroups !== undefined && (!Array.isArray(translationGroups) || translationGroups.length === 0)) {
+            throw new Error('translationGroups must be an array with at least 1 element');
+        }
+        this.translationGroups = translationGroups ?
+            new Set(translationGroups) :
+            (translationGroup ? new Set([translationGroup]) : undefined);
         this.defaultInstructions = defaultInstructions;
         this.minWordQuota = minWordQuota;
         this.maxWordQuota = maxWordQuota;
@@ -112,9 +118,9 @@ export class BaseTranslationProvider {
         } else {
             logVerbose`Provider ${this.id} rejected job because the language pair is not supported`;
         }
-        if (!skipGroupCheck && this.translationGroup && acceptedTus.length > 0) {
+        if (!skipGroupCheck && this.translationGroups && acceptedTus.length > 0) {
             const initialLength = acceptedTus.length;
-            acceptedTus = acceptedTus.filter(tu => tu.group === this.translationGroup);
+            acceptedTus = acceptedTus.filter(tu => this.translationGroups.has(tu.group));
             if (acceptedTus.length !== initialLength) {
                 logVerbose`Provider ${this.id} rejected ${initialLength - acceptedTus.length} out of ${initialLength} TUs because translation groups did not match`;
             }
