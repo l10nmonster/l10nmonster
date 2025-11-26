@@ -11,7 +11,7 @@ import { TU } from '../../entities/tu.js';
  * @property {number} [quality] - The quality of translations provided by the provider. Optional.
  * @property {Record<string, string[]>} [supportedPairs] - Supported pairs for the provider. Optional. (e.g., { "en-US": ["de-DE", "es-ES"] })
  * @property {string} [translationGroup] - If defined, only accept jobs with the same "group" property. Optional.
- * @property {string[]} [translationGroups] - If defined, only accept jobs with a "group" property matching one of these values. Optional.
+ * @property {string[] | string} [translationGroups] - If defined, only accept jobs with a "group" property matching one of these values. Can be an array or a comma-separated string. Optional.
  * @property {string} [defaultInstructions] - Instructions to include automatically in job.
  * @property {number} [minWordQuota] - Minimum word quota to accept the job. Optional.
  * @property {number} [maxWordQuota] - Maximum word quota to accept the job. Optional.
@@ -45,8 +45,13 @@ export class BaseTranslationProvider {
     constructor({ id, quality, supportedPairs, translationGroup, translationGroups, defaultInstructions, minWordQuota, maxWordQuota, costPerWord, costPerMChar, saveIdenticalEntries, parallelism } = {}) {
         this.#id = id;
         this.quality = quality;
-        if (translationGroups !== undefined && (!Array.isArray(translationGroups) || translationGroups.length === 0)) {
-            throw new Error('translationGroups must be an array with at least 1 element');
+        if (translationGroups !== undefined) {
+            if (typeof translationGroups === 'string') {
+                translationGroups = translationGroups.split(',').map(g => g.trim()).filter(Boolean);
+            }
+            if (!Array.isArray(translationGroups) || translationGroups.length === 0) {
+                throw new Error('translationGroups must be a non-empty array or comma-separated string');
+            }
         }
         this.translationGroups = translationGroups ?
             new Set(translationGroups) :
