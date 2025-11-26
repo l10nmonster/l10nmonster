@@ -1,0 +1,12 @@
+{
+  "title": "⇥D9:W̲e̲l̲c̲o̲̟m̲e̲ ̲t̲o̲̟ ̲r̲e̲a̲c̲̟t̲ ̲u̲s̲i̲̟n̲g̲ ̲r̲e̲̟a̲c̲t̲-̲i̲̟1̲8̲n̲e̲x̲̟t̲⇤",
+  "description": {
+    "part1": "⇥C9:T̲o̲ ̲g̲e̲̟t̲ ̲s̲t̲a̲̟r̲t̲e̲d̲,̲̟ ̲e̲d̲i̲t̲̟ ̲<a>s̲r̲c̲/̲̟A̲p̲p̲.̲j̲̟s̲</a> ̲a̲n̲d̲̟ ̲s̲a̲v̲e̲̟ ̲t̲o̲ ̲r̲̟e̲l̲o̲a̲d̲̟.̲⇤",
+    "part2": "⇥B9:S̲w̲i̲t̲c̲̟h̲ ̲l̲a̲n̲̟g̲u̲a̲g̲e̲̟ ̲b̲e̲t̲w̲̟e̲e̲n̲ ̲e̲̟n̲g̲l̲i̲s̲̟h̲ ̲a̲n̲d̲̟ ̲g̲e̲r̲m̲̟a̲n̲ ̲u̲s̲̟i̲n̲g̲ ̲b̲̟u̲t̲t̲o̲n̲̟s̲ ̲a̲b̲o̲̟v̲e̲.̲⇤"
+  },
+  "welcome": {
+    "name1": "⇥A9:W̲e̲l̲c̲o̲̟m̲e̲,̲ ̲{{name}}!̲̟⇤",
+    "name2": "⇥98:W̲e̲l̲c̲o̲̟m̲e̲,̲ ̲<a>{{name}}</a>!̲̟⇤"
+  },
+  "nationalIdPlaceholder": "⇥88:E̲n̲t̲e̲r̲̟ ̲y̲o̲u̲r̲̟ ̲{{id}}⇤"
+}

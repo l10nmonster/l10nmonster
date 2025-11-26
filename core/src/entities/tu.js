@@ -9,7 +9,7 @@ const sourceTUWhitelist = new Set([
     // optional
     'prj', // this is primarily for filtering
     'notes', // this is for bug fixes
-    'isSuffixPluralized', // TODO: change this from boolean to `pluralForm` enumeration (so it doesn't have to be a suffix)
+    'pluralForm', // if it is a pluralized string, this is the form of the plural (one, other, zero, two, few, many)
     'nid', // opaque native id of the segment (in the original storage format)
     'seq', // sequence number to shorten guid
     'jobProps', // this is for job specific properties

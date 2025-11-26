@@ -22,12 +22,13 @@ export class PoFilter {
                     }
                     if (s.msgid_plural) {
                         const baseSid = seg.sid;
-                        seg.isSuffixPluralized = true;
                         (isSource || seg.str.length > 0) && segments.push({
                             ...seg,
                             sid: `${baseSid}_one`,
+                            pluralForm: 'one',
                         });
                         seg.sid = `${baseSid}_other`;
+                        seg.pluralForm = "other";
                         seg.str = s.msgid_plural; // TODO: this is wrong if isSource === true, should get s.msgstr array and create corresponding segments
                     }
                     (isSource || seg.str.length > 0) && segments.push(seg);

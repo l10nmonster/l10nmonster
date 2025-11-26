@@ -5,7 +5,7 @@
  * @property {string} sid - The segment ID.
  * @property {string} str - The translatable string.
  * @property {string} [notes] - Optional notes associated with the segment.
- * @property {boolean} [isSuffixPluralized] - Indicates if the segment is pluralized.
+ * @property {string} [pluralForm] - If the segment is pluralized, this is the form of the plural (one, other, zero, two, few, many).
  */
 
 /**
@@ -61,6 +61,7 @@ export * as opsManager from './src/opsManager/index.js';
 export * from './src/helpers/index.js';
 export * as actions from './src/actions/index.js';
 
-import path from 'path';
-import { readFileSync } from 'fs';
-export const coreVersion = JSON.parse(readFileSync(path.join(import.meta.dirname, 'package.json'), 'utf-8')).version;
+export { requiredPluralForms } from './src/requiredPluralForms.js';
+
+import packageJson from './package.json' with { type: 'json' };
+export const coreVersion = packageJson.version;

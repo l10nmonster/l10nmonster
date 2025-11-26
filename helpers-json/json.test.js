@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { suite, test } from 'node:test';
 import assert from 'node:assert/strict';
 
@@ -277,73 +276,73 @@ suite("json parseResource -  plurals", () => {
                 {
                     sid: "timeCount.day_one",
                     str: "{{count}} day",
-                    isSuffixPluralized: true,
+                    pluralForm: "one",
                     notes: "copy - time copy for day singular",
                 },
                 {
                     sid: "timeCount.day_other",
                     str: "{{count}} days",
-                    isSuffixPluralized: true,
+                    pluralForm: "other",
                     notes: "copy - time copy for days plural",
                 },
                 {
                     sid: "timeCount.day_zero",
                     str: "{{count}} days",
-                    isSuffixPluralized: true,
+                    pluralForm: "zero",
                     notes: "copy - time copy for days plural",
                 },
                 {
                     sid: "timeCount.day_two",
                     str: "{{count}} days",
-                    isSuffixPluralized: true,
+                    pluralForm: "two",
                     notes: "copy - time copy for days plural",
                 },
                 {
                     sid: "timeCount.day_few",
                     str: "{{count}} days",
-                    isSuffixPluralized: true,
+                    pluralForm: "few",
                     notes: "copy - time copy for days plural",
                 },
                 {
                     sid: "timeCount.day_many",
                     str: "{{count}} days",
-                    isSuffixPluralized: true,
+                    pluralForm: "many",
                     notes: "copy - time copy for days plural",
                 },
                 {
                     sid: "timeCount.second_one",
                     str: "{{count}} second",
-                    isSuffixPluralized: true,
+                    pluralForm: "one",
                     notes: "copy - time copy for second singular",
                 },
                 {
                     sid: "timeCount.second_other",
                     str: "{{count}} seconds",
-                    isSuffixPluralized: true,
+                    pluralForm: "other",
                     notes: "copy - time copy for seconds plural",
                 },
                 {
                     sid: "timeCount.second_zero",
                     str: "{{count}} seconds",
-                    isSuffixPluralized: true,
+                    pluralForm: "zero",
                     notes: "copy - time copy for seconds plural",
                 },
                 {
                     sid: "timeCount.second_two",
                     str: "{{count}} seconds",
-                    isSuffixPluralized: true,
+                    pluralForm: "two",
                     notes: "copy - time copy for seconds plural",
                 },
                 {
                     sid: "timeCount.second_few",
                     str: "{{count}} seconds",
-                    isSuffixPluralized: true,
+                    pluralForm: "few",
                     notes: "copy - time copy for seconds plural",
                 },
                 {
                     sid: "timeCount.second_many",
                     str: "{{count}} seconds",
-                    isSuffixPluralized: true,
+                        pluralForm: "many",
                     notes: "copy - time copy for seconds plural",
                 },
             ],
@@ -381,12 +380,78 @@ suite("json parseResource -  plurals", () => {
         const zeroForm = output.segments.find(s => s.sid === "key_zero");
         assert.equal(zeroForm.str, "{{count}} items");
         assert.equal(zeroForm.notes, "plural form");
-        assert.equal(zeroForm.isSuffixPluralized, true);
+        assert.equal(zeroForm.pluralForm, "zero");
 
         const twoForm = output.segments.find(s => s.sid === "key_two");
         assert.equal(twoForm.str, "{{count}} items");
         assert.equal(twoForm.notes, "plural form");
-        assert.equal(twoForm.isSuffixPluralized, true);
+        assert.equal(twoForm.pluralForm, "two");
+    });
+
+    test("incomplete plural sets are NOT marked as pluralized", async () => {
+        // For English, both _one and _other are required
+        const resource = {
+            // Only has _one, missing _other - should NOT be pluralized
+            incomplete_one: "{{count}} thing",
+            // Only has _other, missing _one - should NOT be pluralized
+            partial_other: "{{count}} widgets",
+            // Regular string that happens to end with _one - should NOT be pluralized
+            button_one: "Click me",
+        };
+        const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
+
+        // Should have exactly 3 segments (no generated forms)
+        assert.equal(output.segments.length, 3);
+
+        // None should have pluralForm
+        for (const seg of output.segments) {
+            assert.equal(seg.pluralForm, undefined, `${seg.sid} should not have pluralForm`);
+        }
+    });
+
+    test("Arabic source requires all 6 forms to be considered pluralized", async () => {
+        const arabicFilter = new i18next.I18nextFilter({
+            enableArbAnnotations: true,
+        });
+        const arabicPluralForms = ['zero', 'one', 'two', 'few', 'many', 'other'];
+
+        // Only provide 2 forms - not enough for Arabic
+        const incompleteResource = {
+            item_one: "عنصر واحد",
+            item_other: "عناصر",
+        };
+        const incompleteOutput = await arabicFilter.parseResource({
+            resource: JSON.stringify(incompleteResource),
+            sourcePluralForms: arabicPluralForms,
+            targetPluralForms: arabicPluralForms,
+        });
+
+        // Should NOT be pluralized (Arabic requires zero, one, two, few, many, other)
+        assert.equal(incompleteOutput.segments.length, 2);
+        for (const seg of incompleteOutput.segments) {
+            assert.equal(seg.pluralForm, undefined);
+        }
+
+        // Provide all 6 forms - should be pluralized
+        const completeResource = {
+            item_zero: "لا عناصر",
+            item_one: "عنصر واحد",
+            item_two: "عنصران",
+            item_few: "عناصر قليلة",
+            item_many: "عناصر كثيرة",
+            item_other: "عناصر",
+        };
+        const completeOutput = await arabicFilter.parseResource({
+            resource: JSON.stringify(completeResource),
+            sourcePluralForms: arabicPluralForms,
+            targetPluralForms: arabicPluralForms,
+        });
+
+        // All 6 should be pluralized (no missing forms to generate)
+        assert.equal(completeOutput.segments.length, 6);
+        for (const seg of completeOutput.segments) {
+            assert.ok(seg.pluralForm, `${seg.sid} should have pluralForm`);
+        }
     });
 });
 
@@ -633,21 +698,17 @@ suite("generateResource tests", () => {
         });
     });
 
-    test("generates resource with plural forms (with auto-generation)", async () => {
+    test("generates resource with plural forms", async () => {
         const resourceFilter = new i18next.I18nextFilter();
         const segments = [
-            { sid: "item_one", str: "{{count}} item", isSuffixPluralized: true },
-            { sid: "item_other", str: "{{count}} items", isSuffixPluralized: true }
+            { sid: "item_one", str: "{{count}} item", pluralForm: "one" },
+            { sid: "item_other", str: "{{count}} items", pluralForm: "other" }
         ];
         const output = await resourceFilter.generateResource({ segments, translator: identityTranslator });
         const parsed = JSON.parse(output);
         assert.deepEqual(parsed, {
             item_one: "{{count}} item",
-            item_other: "{{count}} items",
-            item_zero: "{{count}} items",
-            item_two: "{{count}} items",
-            item_few: "{{count}} items",
-            item_many: "{{count}} items"
+            item_other: "{{count}} items"
         });
     });
 
@@ -665,47 +726,6 @@ suite("generateResource tests", () => {
         assert.deepEqual(parsed, {
             hello: "Hello World"  // Only the string value, no annotations
         });
-    });
-
-    test("generates and translates missing plural forms from _other", async () => {
-        const resourceFilter = new i18next.I18nextFilter({
-            enablePluralSuffixes: true
-        });
-        const segments = [
-            { sid: "item_one", str: "{{count}} item", isSuffixPluralized: true },
-            { sid: "item_other", str: "{{count}} items", isSuffixPluralized: true }
-        ];
-        // Translator that uppercases strings
-        const translator = async (seg) => ({ str: seg.str.toUpperCase() });
-        const output = await resourceFilter.generateResource({ segments, translator });
-        const parsed = JSON.parse(output);
-
-        // All forms should be translated (uppercased)
-        assert.equal(parsed.item_one, "{{COUNT}} ITEM");
-        assert.equal(parsed.item_other, "{{COUNT}} ITEMS");
-        assert.equal(parsed.item_zero, "{{COUNT}} ITEMS");
-        assert.equal(parsed.item_two, "{{COUNT}} ITEMS");
-        assert.equal(parsed.item_few, "{{COUNT}} ITEMS");
-        assert.equal(parsed.item_many, "{{COUNT}} ITEMS");
-    });
-
-    test("does not overwrite existing plural forms", async () => {
-        const resourceFilter = new i18next.I18nextFilter({
-            enablePluralSuffixes: true
-        });
-        const segments = [
-            { sid: "item_one", str: "{{count}} item", isSuffixPluralized: true },
-            { sid: "item_other", str: "{{count}} items", isSuffixPluralized: true },
-            { sid: "item_zero", str: "no items", isSuffixPluralized: true }
-        ];
-        const output = await resourceFilter.generateResource({ segments, translator: identityTranslator });
-        const parsed = JSON.parse(output);
-
-        // Existing zero form should be preserved
-        assert.equal(parsed.item_zero, "no items");
-        // Missing forms should use _other
-        assert.equal(parsed.item_two, "{{count}} items");
-        assert.equal(parsed.item_few, "{{count}} items");
     });
 
     test("roundtrip with plurals: parse then generate maintains all forms", async () => {
@@ -773,24 +793,18 @@ suite("generateResource with translator tests", () => {
     });
 
     test("translates plural forms", async () => {
-        const resourceFilter = new i18next.I18nextFilter({
-            enablePluralSuffixes: true
-        });
+        const resourceFilter = new i18next.I18nextFilter();
         const segments = [
-            { sid: "item_one", str: "{{count}} item", isSuffixPluralized: true },
-            { sid: "item_other", str: "{{count}} items", isSuffixPluralized: true }
+            { sid: "item_one", str: "{{count}} item", pluralForm: "one" },
+            { sid: "item_other", str: "{{count}} items", pluralForm: "other" }
         ];
         const translator = async (seg) => ({ str: seg.str.replace('item', 'elemento').replace('items', 'elementos') });
 
         const output = await resourceFilter.generateResource({ segments, translator });
         const parsed = JSON.parse(output);
 
-        // Translated forms
         assert.equal(parsed.item_one, "{{count}} elemento");
         assert.equal(parsed.item_other, "{{count}} elementos");
-        // Auto-generated forms should use translated _other
-        assert.equal(parsed.item_zero, "{{count}} elementos");
-        assert.equal(parsed.item_two, "{{count}} elementos");
     });
 
     test("skips segments when translator returns null", async () => {
@@ -851,35 +865,4 @@ suite("generateResource with translator tests", () => {
         assert.equal(calls[0].notes, "some note");
     });
 
-    test("translator is called for auto-generated plural forms", async () => {
-        const resourceFilter = new i18next.I18nextFilter({
-            enablePluralSuffixes: true
-        });
-        const segments = [
-            { sid: "item_one", str: "{{count}} item", isSuffixPluralized: true },
-            { sid: "item_other", str: "{{count}} items", isSuffixPluralized: true }
-        ];
-        const calls = [];
-        const translator = async (seg) => {
-            calls.push(seg);
-            return { str: seg.str.toUpperCase() };
-        };
-
-        await resourceFilter.generateResource({ segments, translator });
-
-        // Should be called for all 6 forms (2 original + 4 generated)
-        assert.equal(calls.length, 6);
-
-        // Verify generated forms are in the calls
-        const sids = calls.map(c => c.sid);
-        assert.ok(sids.includes("item_zero"));
-        assert.ok(sids.includes("item_two"));
-        assert.ok(sids.includes("item_few"));
-        assert.ok(sids.includes("item_many"));
-
-        // Verify generated forms receive _other's source text
-        const zeroCall = calls.find(c => c.sid === "item_zero");
-        assert.equal(zeroCall.str, "{{count}} items");
-        assert.equal(zeroCall.isSuffixPluralized, true);
-    });
 })

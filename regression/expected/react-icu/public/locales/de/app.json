@@ -14,22 +14,6 @@
     "hour_one": "⇥Z9:{{count}} ̲h̲o̲u̲r̲̟⇤",
     "hour_other": "⇥Y9:{{count}} ̲h̲o̲u̲r̲̟s̲⇤",
     "second_one": "⇥X9:{{count}} ̲s̲e̲c̲o̲̟n̲d̲⇤",
-    "second_other": "⇥W9:{{count}} ̲s̲e̲c̲o̲̟n̲d̲s̲⇤",
-    "day_zero": "⇥R9:{{count}} ̲d̲a̲y̲s̲̟⇤",
-    "day_two": "⇥Q9:{{count}} ̲d̲a̲y̲s̲̟⇤",
-    "day_few": "⇥P9:{{count}} ̲d̲a̲y̲s̲̟⇤",
-    "day_many": "⇥N9:{{count}} ̲d̲a̲y̲s̲̟⇤",
-    "hour_zero": "⇥M9:{{count}} ̲h̲o̲u̲r̲̟s̲⇤",
-    "hour_two": "⇥L9:{{count}} ̲h̲o̲u̲r̲̟s̲⇤",
-    "hour_few": "⇥K9:{{count}} ̲h̲o̲u̲r̲̟s̲⇤",
-    "hour_many": "⇥J9:{{count}} ̲h̲o̲u̲r̲̟s̲⇤",
-    "second_zero": "⇥H9:{{count}} ̲s̲e̲c̲o̲̟n̲d̲s̲⇤",
-    "second_two": "⇥G9:{{count}} ̲s̲e̲c̲o̲̟n̲d̲s̲⇤",
-    "second_few": "⇥F9:{{count}} ̲s̲e̲c̲o̲̟n̲d̲s̲⇤",
-    "second_many": "⇥E9:{{count}} ̲s̲e̲c̲o̲̟n̲d̲s̲⇤"
-  },
-  "pickerTraveler_zero": "⇥V9:T̲r̲a̲v̲e̲̟l̲e̲r̲s̲⇤",
-  "pickerTraveler_two": "⇥U9:T̲r̲a̲v̲e̲̟l̲e̲r̲s̲⇤",
-  "pickerTraveler_few": "⇥T9:T̲r̲a̲v̲e̲̟l̲e̲r̲s̲⇤",
-  "pickerTraveler_many": "⇥S9:T̲r̲a̲v̲e̲̟l̲e̲r̲s̲⇤"
+    "second_other": "⇥W9:{{count}} ̲s̲e̲c̲o̲̟n̲d̲s̲⇤"
+  }
 }

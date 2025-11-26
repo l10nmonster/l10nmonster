@@ -1,3 +1,5 @@
+import { pluralForms } from '../pluralForms.js';
+
 export function fixedTargets(targetLangs, minimumQuality) {
     if (targetLangs && !Array.isArray(targetLangs)) {
         targetLangs = [ targetLangs ];
@@ -22,3 +24,22 @@ export function byProject(prjToPipelineMap) {
         return policyContext;
     };
 };
+
+export function minimizePluralForms() {
+    return ({ plan, seg, ...rest }) => {
+        if (seg.pluralForm) {
+            const filteredPlan = {};
+            for (const [lang, quality] of Object.entries(plan)) {
+                // Extract language family (first part before "-" or "_")
+                const langFamily = lang.split(/[-_]/)[0];
+                const requiredForms = pluralForms[langFamily];
+                // Keep the language if we don't know its plural forms or if the form is required
+                if (!requiredForms || requiredForms.includes(seg.pluralForm)) {
+                    filteredPlan[lang] = quality;
+                }
+            }
+            return { plan: filteredPlan, seg, ...rest };
+        }
+        return { plan, seg, ...rest };
+    };
+}

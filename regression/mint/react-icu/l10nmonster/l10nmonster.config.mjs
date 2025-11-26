@@ -20,7 +20,8 @@ class ReactConfig extends L10nMonsterConfig {
             }))
                 .segmentDecorators([ this.#sg.getDecorator() ])
                 .decoders([ xml.tagDecoder, xml.entityDecoder, i18next.phDecoder ])
-            .policy(policies.fixedTargets([ 'de', 'ru' ], 1))
+            .policy(policies.fixedTargets([ 'de', 'ru', 'ja' ], 1))
+            .policy(policies.minimizePluralForms())
             .target(new adapters.FsTarget({
                 baseDir: '..',
                 targetPath: (lang, resourceId) => resourceId.replace('en/', `${lang}/`),

@@ -29,12 +29,12 @@ suite("android filter tests", () => {
                     str: "Move %1$s to…",
                 },
                 {
-                    isSuffixPluralized: true,
+                    pluralForm: "one",
                     sid: "chapters_plural_one",
                     str: "%1$d chapter",
                 },
                 {
-                    isSuffixPluralized: true,
+                    pluralForm: "other",
                     sid: "chapters_plural_other",
                     str: "%1$d chapters",
                 },
@@ -234,13 +234,13 @@ suite("android filter plurals tests", () => {
         const expected = {
             segments: [
                 {
-                    isSuffixPluralized: true,
+                    pluralForm: "one",
                     notes: "PH(%1$d|1|The number of rooms desired for a hotel search) PH(%2$s|2 Adults|A suffix, in this case the number of adult and children passengers)",
                     sid: "rooms_count_with_suffix_one",
                     str: "%1$d room • %2$s",
                 },
                 {
-                    isSuffixPluralized: true,
+                    pluralForm: "other",
                     notes: "PH(%1$d|1|The number of rooms desired for a hotel search) PH(%2$s|2 Adults|A suffix, in this case the number of adult and children passengers)",
                     sid: "rooms_count_with_suffix_other",
                     str: "%1$d rooms • %2$s",

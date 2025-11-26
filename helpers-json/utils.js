@@ -1,3 +1,8 @@
+// Intentionally uses `== null` to handle undefined and null
+/* eslint-disable no-eq-null, eqeqeq */
+
+import { flatten } from 'flat';
+
 export const ARB_ANNOTATION_MARKER = "@";
 export const FLATTEN_SEPARATOR = ".";
 
@@ -104,4 +109,64 @@ export function arbPlaceholderHandler(placeholders) {
         phs.push(`PH({{${key}}}|${val.example}|${val.description})`)
     }
     return phs.join("\n")
+}
+
+/**
+ * @function parseResourceAnnotations
+ *
+ * @description
+ * Parse resource annotations according to the given configuration.
+ *
+ * @param {object} resource - The resource to parse.
+ * @param {boolean} enableArbAnnotations - Whether to enable annotations
+ * @param {object} arbAnnotationHandlers - An object mapping annotation names to a function which takes an annotation name and its value and returns a string.
+ *
+ * @returns {array} An array with two elements. The first element is an array of key-value pairs for the translatable segments. The second element is an object with the parsed annotations.
+ *
+ * @example
+ * const resource = {
+ *   "key": "value",
+ *   "@key": {
+ *     "description": "description for key",
+ *     "placeholders": {
+ *       "placeholder": {
+ *         "example": "example for placeholder",
+ *         "description": "description for placeholder",
+ *       }
+ *     }
+ *   }
+ * };
+ * const [segments, notes] = parseResourceAnnotations(resource, true, {
+ *   description: (_, data) => (data == null ? undefined : data),
+ *   placeholders: (_, data) => (data == null ? undefined : arbPlaceholderHandler(data)),
+ *   DEFAULT: (name, data) => (data == null ? undefined : `${name}: ${data}`),
+ * });
+ * // segments is [["key", "value"]]
+ * // notes is { "key": "description for key\nplaceholder: example for placeholder - description for placeholder" }
+ */
+export function parseResourceAnnotations(resource, enableArbAnnotations, arbAnnotationHandlers) {
+    if (!enableArbAnnotations) {
+        return [ Object.entries(flatten(resource)), {} ]
+    }
+
+    const { res, notes } = flattenAndSplitResources([], resource)
+    const parsedNotes = {}
+    for (const [key, arbAnnotations] of Object.entries(notes)) {
+        if (typeof arbAnnotations === "object") {
+            const notesList = []
+            for (const [annotation, data] of Object.entries(arbAnnotations)) {
+                const handler = arbAnnotationHandlers[annotation] ?? arbAnnotationHandlers.DEFAULT
+                if (handler != null) {
+                    const val = handler(annotation, data)
+                    if (val !== undefined) {
+                        notesList.push(val)
+                    }
+                }
+            }
+            parsedNotes[key] = notesList.join("\n")
+        } else {
+            parsedNotes[key] = arbAnnotations
+        }
+    }
+    return [ Object.entries(res), parsedNotes ];
 }

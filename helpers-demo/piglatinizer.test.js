@@ -30,12 +30,12 @@ suite('pig latinizer translator tests', () => {
                 nsrc: ['Chapter %1$d of %2$d'],
             },
             {
-                isSuffixPluralized: true,
+                pluralForm: "one",
                 guid: 'chapters_plural_one',
                 nsrc: ['%1$d chapter'],
             },
             {
-                isSuffixPluralized: true,
+                pluralForm: "other",
                 guid: 'chapters_plural_other',
                 nsrc: ['%1$d chapters'],
             },

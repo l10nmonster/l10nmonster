@@ -28,6 +28,7 @@
         "winston-transport": "^4.7.1"
     },
     "devDependencies": {
+        "cldr-core": "^48.0.0",
         "eslint": "^9"
     }
 }

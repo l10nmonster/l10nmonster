@@ -1,5 +1,6 @@
 import { logVerbose } from '../l10nContext.js';
 import { utils } from '../helpers/index.js';
+import { requiredPluralForms } from '../requiredPluralForms.js';
 
 function processNotes(normalizedSeg) {
     if (typeof normalizedSeg.notes === 'string') {
@@ -110,8 +111,11 @@ export class FormatHandler {
         return normalizer.join(encodedParts);
     }
 
-    async getNormalizedResource(rid, resource, isSource) {
-        let parsedRes = await this.#resourceFilter.parseResource({ resource, isSource });
+    async getNormalizedResource(rid, resource, options = {}) {
+        const { isSource, sourceLang, targetLangs } = options;
+        const sourcePluralForms = requiredPluralForms(sourceLang ? [sourceLang] : undefined);
+        const targetPluralForms = requiredPluralForms(targetLangs);
+        let parsedRes = await this.#resourceFilter.parseResource({ resource, isSource, sourcePluralForms, targetPluralForms });
         const normalizedSegments = []; // these have nstr
         const rawSegments = parsedRes.segments ?? []; // these have str
         for (const rawSegment of rawSegments.flat(1)) {
@@ -139,7 +143,7 @@ export class FormatHandler {
             subresources = [];
             for (const subres of parsedRes.subresources) {
                 const subFormat = this.#formatHandlers[subres.resourceFormat];
-                const parsedSubres = await subFormat.getNormalizedResource(rid, subres.raw, true);
+                const parsedSubres = await subFormat.getNormalizedResource(rid, subres.raw, { isSource: true, sourceLang, targetLangs });
                 if (parsedSubres.segments) {
                     subres.guids = parsedSubres.segments.map(seg => seg.guid);
                     normalizedSegments.push(parsedSubres.segments);
@@ -155,6 +159,10 @@ export class FormatHandler {
     async generateTranslatedResource(resHandle, tm) {
         const flags = { sourceLang: resHandle.sourceLang, targetLang: tm.targetLang, prj: resHandle.prj };
         const translations = await tm.getEntries(resHandle.segments.map(seg => seg.guid));
+
+        // Compute plural forms for source and target languages
+        const sourcePluralForms = requiredPluralForms([resHandle.sourceLang]);
+        const targetPluralForms = requiredPluralForms([tm.targetLang]);
 
         // give priority to generators over translators (for performance), if available
         if (this.#resourceGenerator.generateResource) {
@@ -196,7 +204,7 @@ export class FormatHandler {
                     // logVerbose`Problem translating guid ${seg.guid} to ${tm.targetLang}: ${e.message ?? e}`;
                 }
             };
-            return this.#resourceGenerator.generateResource({ ...resHandle, translator, subresources });
+            return this.#resourceGenerator.generateResource({ ...resHandle, translator, subresources, sourcePluralForms, targetPluralForms });
         }
 
         // if generator is not available, use translator-based resource transformation
@@ -227,6 +235,6 @@ export class FormatHandler {
                 return undefined;
             }
         };
-        return this.#resourceFilter.translateResource({ resource: resHandle.raw, translator });
+        return this.#resourceFilter.translateResource({ resource: resHandle.raw, translator, sourcePluralForms, targetPluralForms });
    }
 }

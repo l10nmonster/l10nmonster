@@ -77,7 +77,7 @@ export class AndroidXMLFilter {
                             } else if ('item' in itemNode) {
                                 const seg = {
                                     sid: `${resNode[':@'].name}_${itemNode[':@'].quantity}`,
-                                    isSuffixPluralized: true,
+                                    pluralForm: itemNode[':@'].quantity,
                                     str: collapseTextNodes(itemNode.item)
                                 };
                                 lastComment && (seg.notes = lastComment);

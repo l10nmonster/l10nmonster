@@ -16,18 +16,43 @@
 							"minQ": 1,
 							"q": 2,
 							"res": 2,
-							"seg": 30,
-							"words": 81,
-							"chars": 372
+							"seg": 14,
+							"words": 53,
+							"chars": 260
 						}
 					],
 					"pairSummary": {
-						"segs": 35,
-						"words": 108,
-						"chars": 542
+						"segs": 19,
+						"words": 80,
+						"chars": 430
 					},
 					"pairSummaryByStatus": {
-						"translated": 35,
+						"translated": 19,
+						"low quality": 0,
+						"in flight": 0,
+						"untranslated": 0
+					}
+				}
+			},
+			"ja": {
+				"default": {
+					"details": [
+						{
+							"minQ": 1,
+							"q": 2,
+							"res": 2,
+							"seg": 15,
+							"words": 73,
+							"chars": 406
+						}
+					],
+					"pairSummary": {
+						"segs": 15,
+						"words": 73,
+						"chars": 406
+					},
+					"pairSummaryByStatus": {
+						"translated": 15,
 						"low quality": 0,
 						"in flight": 0,
 						"untranslated": 0
@@ -49,18 +74,18 @@
 							"minQ": 1,
 							"q": 2,
 							"res": 2,
-							"seg": 30,
-							"words": 81,
-							"chars": 372
+							"seg": 22,
+							"words": 67,
+							"chars": 316
 						}
 					],
 					"pairSummary": {
-						"segs": 35,
-						"words": 108,
-						"chars": 542
+						"segs": 27,
+						"words": 94,
+						"chars": 486
 					},
 					"pairSummaryByStatus": {
-						"translated": 35,
+						"translated": 27,
 						"low quality": 0,
 						"in flight": 0,
 						"untranslated": 0
