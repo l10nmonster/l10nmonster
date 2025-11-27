@@ -50,6 +50,10 @@ export class Repetition extends BaseTranslationProvider {
         const matchedTus = [];
         const tm = this.mm.tmm.getTM(job.sourceLang, job.targetLang);
         for (const sourceTu of job.tus) {
+            // Skip pluralized TUs as they require special handling
+            if (sourceTu.pluralForm) {
+                continue;
+            }
             const tuCandidates = await tm.getExactMatches(sourceTu.nsrc);
             if (tuCandidates.length > 0) {
                 const bestCandidate = this.#pickBestCandidate(sourceTu, tuCandidates);
