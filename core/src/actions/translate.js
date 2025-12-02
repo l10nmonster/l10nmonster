@@ -1,18 +1,20 @@
 /* eslint-disable complexity */
 import { consoleLog, logInfo, logVerbose } from '../l10nContext.js';
+import { utils } from '../helpers/index.js';
 
 function computeDelta(currentTranslations, newTranslations) {
     const delta = [];
-    const newGstrMap = Object.fromEntries(newTranslations.segments.map(seg => [ seg.sid, seg.gstr ]));
+    const newGstrMap = Object.fromEntries(newTranslations.segments.map(seg => [ seg.sid, utils.flattenNormalizedSourceToOrdinal(seg.nstr) ]));
     const seenIds = new Set();
     for (const seg of currentTranslations.segments) {
         seenIds.add(seg.sid);
-        const newGstr = newGstrMap[seg.sid];
-        if (seg.gstr !== newGstr) {
-            delta.push({ id: seg.sid, l: seg.gstr, r: newGstr });
+        const r = newGstrMap[seg.sid];
+        const l = utils.flattenNormalizedSourceToOrdinal(seg.nstr);
+        if (l !== r) {
+            delta.push({ id: seg.sid, l, r });
         }
     }
-    newTranslations.segments.filter(seg => !seenIds.has(seg.sid)).forEach(seg => delta.push({ id: seg.sid, r: seg.gstr }));
+    newTranslations.segments.filter(seg => !seenIds.has(seg.sid)).forEach(seg => delta.push({ id: seg.sid, r: newGstrMap[seg.sid] }));
     return delta;
 }
 

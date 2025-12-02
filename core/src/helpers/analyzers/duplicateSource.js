@@ -1,3 +1,5 @@
+import { utils } from "../index.js";
+
 export default class DuplicateSource {
     static help = 'find duplicate text in source that could be leveraged as qualified/unqualified';
 
@@ -7,7 +9,7 @@ export default class DuplicateSource {
     }
 
     processSegment({ rid, prj, seg }) {
-        const gstr = seg.gstr;
+        const gstr = utils.flattenNormalizedSourceToOrdinal(seg.nstr);
         this.unqualifiedMatches[gstr] ??= [];
         this.unqualifiedMatches[gstr].push({ rid, prj, sid: seg.sid, gstr });
         const qStr = `${seg.sid}|${gstr}`;
@@ -25,7 +27,7 @@ export default class DuplicateSource {
         const unqualifiedRepetitions = Object.values(this.unqualifiedMatches).filter(e => e.length > 1);
         for (const rep of [...qualifiedRepetitions, ...unqualifiedRepetitions]) {
             for (const r of rep) {
-                analysis.body.push([rep[0].gstr, r.prj, r.rid, r.sid]);
+                analysis.body.push([utils.flattenNormalizedSourceToOrdinal(rep[0].nstr), r.prj, r.rid, r.sid]);
             }
         }
         return analysis;

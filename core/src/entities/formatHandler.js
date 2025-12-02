@@ -69,8 +69,8 @@ export class FormatHandler {
         base.nstr = normalizer.decode(str, flags);
         const firedFlags = Object.entries(flags).filter(f => f[1]).map(f => f[0]);
         firedFlags.length > 0 && (base.flags = firedFlags);
-        base.gstr = utils.flattenNormalizedSourceToOrdinal(base.nstr);
-        base.guid = utils.generateGuid(`${rid}|${base.sid}|${base.gstr}`);
+        const gstr = utils.flattenNormalizedSourceToOrdinal(base.nstr);
+        base.guid = utils.generateGuid(`${rid}|${base.sid}|${gstr}`);
         return base;
     }
 
@@ -215,7 +215,7 @@ export class FormatHandler {
             if (normalizedSource) {
                 const segToTranslate = this.#populateGuid(resHandle.id, str, normalizedSource.mf, { sid }, segmentFlags);
                 if (normalizedSource.guid !== segToTranslate.guid) {
-                    logVerbose`Normalized source outdated: ${normalizedSource.gstr}\n${segToTranslate.gstr}`;
+                    logVerbose`Normalized source outdated: ${utils.flattenNormalizedSourceToOrdinal(normalizedSource.nstr)}\n${utils.flattenNormalizedSourceToOrdinal(segToTranslate.nstr)}`;
                     return undefined;
                 }
                 const entry = translations[segToTranslate.guid];

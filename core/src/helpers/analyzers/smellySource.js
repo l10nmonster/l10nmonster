@@ -1,3 +1,5 @@
+import { utils } from "../index.js";
+
 export default class SmellySource {
     static helpParams = '[smellyRegex]';
     static help = 'find all source segments that match the regular expression';
@@ -8,8 +10,9 @@ export default class SmellySource {
     }
 
     processSegment({ rid, prj, seg }) {
-        if (this.smellyRegex.test(seg.gstr)) {
-            this.smelly.push([prj, rid, seg.sid, seg.gstr]);
+        const gstr = utils.flattenNormalizedSourceToOrdinal(seg.nstr);
+        if (this.smellyRegex.test(gstr)) {
+            this.smelly.push([prj, rid, seg.sid, gstr]);
         }
     }
 

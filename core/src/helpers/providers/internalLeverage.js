@@ -1,3 +1,4 @@
+import { utils } from '../index.js';
 import { BaseTranslationProvider } from './baseTranslationProvider.js';
 
 /**
@@ -23,8 +24,9 @@ export class InternalLeverageHoldout extends BaseTranslationProvider {
         const gstrMap = {};
         const holdout = [];
         for (const tu of job.tus) {
-            gstrMap[tu.gstr] ??= [];
-            gstrMap[tu.gstr].push(tu);
+            const gstr = utils.flattenNormalizedSourceToOrdinal(tu.nsrc);
+            gstrMap[gstr] ??= [];
+            gstrMap[gstr].push(tu);
         }
         const internalRepetitions = Object.values(gstrMap).filter(internalRepetition => internalRepetition.length > 1);
         for (const internalRepetition of internalRepetitions) {

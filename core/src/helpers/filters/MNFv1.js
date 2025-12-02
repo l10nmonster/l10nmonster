@@ -18,7 +18,7 @@ export class MNFv1Filter {
         await segments.forEach(async seg => {
             const translatedStr = await translator(seg);
             // eslint-disable-next-line no-unused-vars
-            const { nstr, gstr, ...rawSegment } = seg;
+            const { nstr, ...rawSegment } = seg;
             translatedStr && translatedRawSegments.push({
                 ...rawSegment,
                 ...translatedStr,

@@ -150,9 +150,8 @@ export class ChannelDAL {
                 modifiedAt: modified,
             }));
             segments.forEach((segment, segOrder) => {
-                // gstr is not saved as it can be derived from nstr
                 // eslint-disable-next-line no-unused-vars
-                const { guid, sid, nstr, gstr, notes, mf, plan, group, ...segProps } = segment;
+                const { guid, sid, nstr, notes, mf, plan, group, ...segProps } = segment;
                 const plainText = nstr.map(e => (typeof e === 'string' ? e : '')).join('');
                 insertSegmentRow(sqlTransformer.encode({
                     rid: id, guid, sourceLang, prj, sid, nstr, notes, mf, plan, group, segProps,
@@ -196,7 +195,6 @@ export class ChannelDAL {
         const segments = this.#stmt.getSegmentsByRid.all(rid).map(segment => {
             const decodedSeg = sqlTransformer.decode(segment);
             decodedSeg.rid = rid;
-            decodedSeg.gstr = utils.flattenNormalizedSourceToOrdinal(decodedSeg.nstr);
             return decodedSeg;
          });
         const decodedRes = sqlTransformer.decode(rawResource);

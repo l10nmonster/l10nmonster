@@ -303,7 +303,6 @@ export class TuDAL {
             LIMIT ?;
         `);
         const tus = getUntranslatedContentStmt.all(this.#sourceLang, this.#targetLang, limit).map(sqlTransformer.decode);
-        tus.forEach(tu => tu.gstr = utils.flattenNormalizedSourceToOrdinal(tu.nsrc));
         return tus;
     }
 
@@ -341,7 +340,6 @@ export class TuDAL {
             throw new Error(`${error.code}: ${error.message}`);
         }
         const tus = stmt.all(this.#sourceLang, this.#targetLang).map(sqlTransformer.decode);
-        tus.forEach(tu => tu.gstr = utils.flattenNormalizedSourceToOrdinal(tu.nsrc));
         return tus;
     }
 
@@ -402,7 +400,6 @@ export class TuDAL {
             stmt = this.#stmt.getEntry;
         }
         const tus = stmt.all({ guids: JSON.stringify(guids), sourceLang: this.#sourceLang, targetLang: this.#targetLang }).map(sqlTransformer.decode);
-        tus.forEach(tu => tu.gstr = utils.flattenNormalizedSourceToOrdinal(tu.nsrc));
         return tus;
     }
 
