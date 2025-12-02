@@ -4,16 +4,16 @@
     "title": "⇥89:<strong>W̲e̲l̲c̲o̲̟m̲e̲ ̲b̲a̲̟c̲k̲</strong> ̲t̲o̲̟ ̲t̲r̲a̲v̲̟e̲l̲.̲⇤",
     "subtitle": "⇥79:B̲o̲o̲k̲ ̲̟t̲h̲e̲ ̲t̲̟r̲i̲p̲ ̲y̲̟o̲u̲'̲v̲e̲̟ ̲b̲e̲e̲n̲̟ ̲w̲a̲i̲t̲̟i̲n̲g̲ ̲f̲̟o̲r̲.̲⇤"
   },
-  "pickerTraveler_one": "⇥69:T̲r̲a̲v̲e̲̟l̲e̲r̲⇤",
-  "pickerTraveler_other": "⇥59:T̲r̲a̲v̲e̲̟l̲e̲r̲s̲⇤",
-  "warningMessage": "⇥49:Y̲o̲u̲ ̲c̲̟a̲n̲ ̲s̲e̲̟a̲r̲c̲h̲ ̲̟f̲o̲r̲ ̲u̲̟p̲ ̲t̲o̲ ̲̟{{maximumCount}} ̲t̲r̲a̲v̲̟e̲l̲e̲r̲s̲̟⇤",
+  "pickerTraveler_one": "⇥59:T̲r̲a̲v̲e̲̟l̲e̲r̲⇤",
+  "pickerTraveler_other": "⇥Z9:T̲r̲a̲v̲e̲̟l̲e̲r̲s̲⇤",
+  "warningMessage": "⇥Y9:Y̲o̲u̲ ̲c̲̟a̲n̲ ̲s̲e̲̟a̲r̲c̲h̲ ̲̟f̲o̲r̲ ̲u̲̟p̲ ̲t̲o̲ ̲̟{{maximumCount}} ̲t̲r̲a̲v̲̟e̲l̲e̲r̲s̲̟⇤",
   "termsAndConditions": "⇥AAB:<p>$t(brand:portalName) ̲p̲r̲i̲c̲̟e̲ ̲s̲e̲r̲̟v̲i̲c̲e̲s̲̟ ̲a̲n̲d̲ ̲̟n̲o̲t̲i̲f̲̟i̲c̲a̲t̲i̲̟o̲n̲s̲.̲ ̲̟$t(brand:clientName) ̲w̲o̲r̲k̲̟ ̲h̲a̲r̲d̲̟ ̲t̲o̲ ̲e̲̟n̲s̲u̲r̲e̲̟ ̲t̲h̲e̲ ̲̟a̲c̲c̲u̲r̲̟a̲c̲y̲ ̲o̲̟f̲ ̲i̲t̲s̲̟ ̲p̲r̲e̲d̲̟i̲c̲t̲i̲o̲̟n̲s̲.̲ ̲</p>⇤",
   "timeCount": {
-    "day_one": "⇥39:{{count}} ̲d̲a̲y̲⇤",
-    "day_other": "⇥29:{{count}} ̲d̲a̲y̲s̲̟⇤",
-    "hour_one": "⇥Z9:{{count}} ̲h̲o̲u̲r̲̟⇤",
-    "hour_other": "⇥Y9:{{count}} ̲h̲o̲u̲r̲̟s̲⇤",
-    "second_one": "⇥X9:{{count}} ̲s̲e̲c̲o̲̟n̲d̲⇤",
-    "second_other": "⇥W9:{{count}} ̲s̲e̲c̲o̲̟n̲d̲s̲⇤"
+    "day_one": "⇥W9:{{count}} ̲d̲a̲y̲⇤",
+    "day_other": "⇥S9:{{count}} ̲d̲a̲y̲s̲̟⇤",
+    "hour_one": "⇥Q9:{{count}} ̲h̲o̲u̲r̲̟⇤",
+    "hour_other": "⇥L9:{{count}} ̲h̲o̲u̲r̲̟s̲⇤",
+    "second_one": "⇥J9:{{count}} ̲s̲e̲c̲o̲̟n̲d̲⇤",
+    "second_other": "⇥E9:{{count}} ̲s̲e̲c̲o̲̟n̲d̲s̲⇤"
   }
 }

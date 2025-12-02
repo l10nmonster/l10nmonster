@@ -24,18 +24,18 @@
 							"minQ": 1,
 							"q": 1,
 							"res": 1,
-							"seg": 5,
-							"words": 48,
-							"chars": 215
+							"seg": 9,
+							"words": 64,
+							"chars": 251
 						}
 					],
 					"pairSummary": {
-						"segs": 11,
-						"words": 63,
-						"chars": 280
+						"segs": 15,
+						"words": 79,
+						"chars": 316
 					},
 					"pairSummaryByStatus": {
-						"translated": 11,
+						"translated": 15,
 						"low quality": 0,
 						"in flight": 0,
 						"untranslated": 0

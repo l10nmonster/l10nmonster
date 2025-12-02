@@ -13,22 +13,12 @@
 				]
 			]
 		},
-		"xxx2xxx": {
-			"blockName": "blocks/sl=en/tl=zh-Hans/tp=Repetition/block_xxx2xxx.jsonl",
+		"xxx4xxx": {
+			"blockName": "blocks/sl=en/tl=zh-Hans/tp=XliffBridge/block_xxx4xxx.jsonl",
 			"modified": "TS1",
 			"jobs": [
 				[
-					"xxx2xxx",
-					"2022-05-29T00:00:00.000Z"
-				]
-			]
-		},
-		"xxx5xxx": {
-			"blockName": "blocks/sl=en/tl=zh-Hans/tp=XliffBridge/block_xxx5xxx.jsonl",
-			"modified": "TS1",
-			"jobs": [
-				[
-					"xxx5xxx",
+					"xxx4xxx",
 					"2022-05-29T00:00:00.000Z"
 				]
 			]

@@ -141,7 +141,6 @@
 	<string name="new_chapters_found">發現新章節</string>
 	<string name="notification_size_warning">XYZ123</string>
 	<plurals name="notification_update_failed">
-		<item quantity="one">XYZ123</item>
 		<item quantity="other">有 %1$d 項更新失敗</item>
 	</plurals>
 	<string name="channel_errors">XYZ123</string>
@@ -236,7 +235,6 @@
 	<string name="updating_extensions">XYZ123</string>
 	<string name="extensions_updated">XYZ123</string>
 	<plurals name="extension_updates_available">
-		<item quantity="one">XYZ123</item>
 		<item quantity="other">%d 個擴充套件可更新</item>
 	</plurals>
 	<string name="set_as_cover">設為書封</string>
@@ -366,7 +364,6 @@
 	<string name="save_pages_separately">XYZ123</string>
 	<string name="create_folders_by_manga_title">XYZ123</string>
 	<plurals name="missing_chapters_warning">
-		<item quantity="one">XYZ123</item>
 		<item quantity="other">略過了 %d 章，也許是來源沒有這些章節，或其已被你的篩選規則排除</item>
 	</plurals>
 	<string name="start_reading">開始閱讀</string>
@@ -568,6 +565,9 @@
 	<string name="restore_miui_warning">XYZ123</string>
 	<string name="progress">進度</string>
 	<string name="complete">作業完成</string>
+	<plurals name="restore_completed_message">
+		<item quantity="other">歷時 %1$s，出現 %2$s 個錯誤</item>
+	</plurals>
 	<string name="clear_chapter_cache">清除章節快取</string>
 	<string name="force_download_cache_refresh">XYZ123</string>
 	<string name="force_download_cache_refresh_summary">XYZ123</string>

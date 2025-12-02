@@ -10,7 +10,8 @@
     "author": "Diego Lagunas",
     "license": "MIT",
     "dependencies": {
-        "@l10nmonster/i18n-strings-files": "^3.0.0"
+        "@l10nmonster/i18n-strings-files": "^3.0.0",
+        "plist": "^3.1.0"
     },
     "peerDependencies": {
         "@l10nmonster/core": "^3.0.0-alpha.0"

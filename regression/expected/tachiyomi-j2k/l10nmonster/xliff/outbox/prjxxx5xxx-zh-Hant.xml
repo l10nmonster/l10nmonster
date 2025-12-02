@@ -13,19 +13,55 @@
       <trans-unit id="jxe6lKXpItYQ7tDgDvJvzwVZ-RfgcQoviUHOGfCohj4">
         <source>Scanlators</source>
       </trans-unit>
+      <trans-unit id="Ng7fZRghH-MeNb6BlceB23OslrIz-xVkd_30LdnAht4">
+        <source>Remove </source>
+      </trans-unit>
       <trans-unit id="t4VWxI0XBS7jJwzcIpjyWz95PtQe0nM2xUjvN4A1U_4">
+        <source>Remove </source>
+      </trans-unit>
+      <trans-unit id="zH3KI9HLLH8Cmti4lt3PAw05yc9Zk6CB1suPtwQdgrY">
+        <source>Remove </source>
+      </trans-unit>
+      <trans-unit id="BfxI11QTjG4kb2ElzeXgc0l03mo7rBHCG9zFQY3rNME">
+        <source>Remove </source>
+      </trans-unit>
+      <trans-unit id="puVZG9M_3aKa0eSW1fel-n67ZttXeYcVijQwCB2tMpk">
         <source>Remove </source>
       </trans-unit>
       <trans-unit id="p7jJcpu_ZOzMod7iebzwKDCR2JYb4Qef0D1lq2MQLKg">
         <source>Remove </source>
       </trans-unit>
+      <trans-unit id="3N4XxPautwcE4NaH81a5LmYa6e5nTWrYOIbKYL_5jH4">
+        <source>[object Object]</source>
+      </trans-unit>
       <trans-unit id="1d7HtgdwLMLoxTTiv83rLZkKjkpfAmsehateH09g4gc">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="8yXhbd5YTkUjN_EMxxXXtO6DXUy0gWiD0eIjiCwNPzc">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="KeEfY5Gy4G-otwrthT7AM-HcbeyCxxUo3CeaR9oatTg">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="BCEiIB2dcIKilWZ_YhwY3AgEIWEdCgX_pP9xY-bYQbw">
         <source>[object Object]</source>
       </trans-unit>
       <trans-unit id="qwYhEI77stoakCdt86oc0Z9IcmbpLN19jqquS_d2WL0">
         <source>[object Object]</source>
       </trans-unit>
+      <trans-unit id="LLD0D2be27uul0zAWN0S_sRsOTl_coHyXjoWNEhbKQA">
+        <source>[object Object]</source>
+      </trans-unit>
       <trans-unit id="2udl0hvWKKtR3kYZ1ZxvWfGf6Sq6I_AP1i91nZoJRuU">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="-RjAbgLSg6IfV8YVJIrq7ZVJmpVcDcteu8q5VXHY59w">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="5zgI6fumEbPW4lNVqHmpyDrEj_9X5gX0OFp07fJExDo">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="v2it_wVaQhcUwRboqTIVRTKJYNMHuC6x_bw_4njV6nA">
         <source>[object Object]</source>
       </trans-unit>
       <trans-unit id="cwofMrt4vcR72muKJgdj3ynRXfS-8kRankY4lw_Cmm4">
@@ -74,7 +110,19 @@
       <trans-unit id="mdJXc6b3zFcJjCiCBwa3eIMD0ftft4hpfhR8y24AKCw">
         <source>Manage category</source>
       </trans-unit>
+      <trans-unit id="I8o5nIl4cGwwZiF2cPxjNpSy7D2SQ6hBaM9A0LkYjGk">
+        <source>[object Object]</source>
+      </trans-unit>
       <trans-unit id="PR-mra8oJXYjh-iGJbPWRJ93cqMsnv3I9kI-KHWftDI">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="tqmS1PtGFbazZalyk4KazqyNf9dsDxkcFWQ3ipJheGs">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="ShQgT4diS--74YFQH4faQ4mtzkp93b_RlQI53HonasE">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="dRMQwcJQGF0yeNQhMX9FZ57gKWyJj5UzoWulNtygYSc">
         <source>[object Object]</source>
       </trans-unit>
       <trans-unit id="xIQ8JakD15UWHPlTjfDfsR_DppXZXRKrIBcVjpnIUH0">
@@ -201,20 +249,56 @@
       <trans-unit id="Ph2bJ5o6hNyyzK0cUaxO-y1H_ebjPITypSCOgs8JPSw">
         <source>Large updates may lead to increased battery usage and sources becoming slower</source>
       </trans-unit>
+      <trans-unit id="O7whkX62hxxduocfmaHDTCuudJFPY2rUqj3ij94xsrA">
+        <source>For </source>
+      </trans-unit>
       <trans-unit id="nn9ifCxTi0t0nXPKjjqANSd9RsYNb7nXBbc0e-L1MBY">
+        <source>For </source>
+      </trans-unit>
+      <trans-unit id="S4eoxMGNTt7qbHgqanTQ0h_14o3ttWmNWRCwHAyZOYs">
+        <source>For </source>
+      </trans-unit>
+      <trans-unit id="IbwZAYeLUymzTEMN7NDU9sBxlA0kD71AqVpYR9HgNAA">
+        <source>For </source>
+      </trans-unit>
+      <trans-unit id="bJcLHbPRP4X3gy_NeAG_oeGV6KwQSDQMfKbnB5Zig_k">
         <source>For </source>
       </trans-unit>
       <trans-unit id="9xj-HFVJXt2nNpthtY1LQ-fzWVcARPZvaiL2c39B23w">
         <source>For </source>
       </trans-unit>
+      <trans-unit id="mIXmMHW3s-fI4PuoZlCKqFYpLYbZHiifqNfrulMZkNk">
+        <source>and </source>
+      </trans-unit>
       <trans-unit id="i6ms_Au63GlXHZGXAcuj1OlRcD9GhIwb0mR2FlStmOo">
+        <source>and </source>
+      </trans-unit>
+      <trans-unit id="qxu0C63klsWzC68N4SPGgKHNOD-cA7iFqcDAJjmRct4">
+        <source>and </source>
+      </trans-unit>
+      <trans-unit id="L2vs3JjI54H1yq8MDRjyod5UEF8CgcSMZ1ukVIutCa4">
+        <source>and </source>
+      </trans-unit>
+      <trans-unit id="VX6MUZTUSqmPstTLlfkjylu-MgrEij_dLyt7Whdhnks">
         <source>and </source>
       </trans-unit>
       <trans-unit id="67xZqBzSLejsIoJhJeoe41TLoKsEqXHdzFIIP8ysYJs">
         <source>and </source>
       </trans-unit>
+      <trans-unit id="saGTxCd1kR_YWPvdwFnNZjyXVdqDAh_ndPMCK2Y6nTk">
+        <source>[object Object]</source>
+      </trans-unit>
       <trans-unit id="n-9x0mdfrc5EllF9g4lxFwLkppPeEQND2uhVP0ERBFU">
         <source>1 update failed</source>
+      </trans-unit>
+      <trans-unit id="D3efGZovwwwUKLLE1cP3movzlVAiizBXGFsM-CkRbl0">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="yhGsL0d_23_3YBpVO0bPGSRtpndUN6tyzQa7CiYV-Rk">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="dewO8gsNjiriqv7d-Jld93lKjuozsgk7b9w6G3WVMus">
+        <source>[object Object]</source>
       </trans-unit>
       <trans-unit id="zvr59y3s5K3qszjqGTIXKeg_HsuE1uajtP_Jw40Sp5U">
         <source>Errors</source>
@@ -383,7 +467,19 @@
       <trans-unit id="rEhqIqyMOpPGm9tucXpboZ2m3WcZOJWCxH6YdSbJQvw">
         <source>Updating extensions</source>
       </trans-unit>
+      <trans-unit id="tnMyYUrIQcUB1a_OgYgd1rLDpJJNspPaX10aNV3QHbk">
+        <source>[object Object]</source>
+      </trans-unit>
       <trans-unit id="-BgwQxYmz_OcJgZCUZeNEhbIn71aeYWQLfqDzIdO5-A">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="gH-ieSg5mN-rSRS4T974bIN4iJ2QhDKEWp8rpH-5dUU">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="EDfQw7NaKqyCSZwpHlA2pXKhxEK_3KyjsEm5hWT-uSE">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="MLJp365GJCl9GMPkvvuAZ4kvXryUl_N6Ks_4ozCeJZE">
         <source>[object Object]</source>
       </trans-unit>
       <trans-unit id="DZ_sc6S4EfGY49WXOACTA14IzN7IGl__L84uf8WbSwc">
@@ -392,14 +488,38 @@
       <trans-unit id="XlcudDTXzG61J5iRPIyqhRE70F5HFnn2xrll5R17-n8">
         <source>Extensions updated</source>
       </trans-unit>
+      <trans-unit id="VIFCMC09wH_EnowYnlP2bGC3ObZxFpTfW3crQngRv_w">
+        <source>[object Object]</source>
+      </trans-unit>
       <trans-unit id="PDKvwcIWbKlbrMMuqEa00drfTM71kt4AE5hfbznTe_o">
         <source>Extension updated</source>
+      </trans-unit>
+      <trans-unit id="5kLjsuUi7zl3xZg8UVlDJ5eF6ik5Cbg5egTxDZZQrcY">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="LDX3DgshsP36EaAPnCldpVVXIlCTX8-tazL1Jrqx1mY">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="smEm_3ngmMeP13LeMc2z-Rt8brs3mdko6p9vLaYq0yY">
+        <source>[object Object]</source>
       </trans-unit>
       <trans-unit id="E7eIPBUFNkUQCaPZAqanJVmi_cYO9S0JCeKB3Trm0S4">
         <source>[object Object]</source>
       </trans-unit>
+      <trans-unit id="AkS7Eu4AFXqAXh7qy0lBG_F0mFFqA5HKeMwscdCyEZo">
+        <source>[object Object]</source>
+      </trans-unit>
       <trans-unit id="ZNcGVkm_LvhJlULW759Z140eW5Es4GSIXDFWwYiq7Lo">
         <source>Extension update available</source>
+      </trans-unit>
+      <trans-unit id="7fIfFYQCKRc7gelBO0MMdd8LHBbSbRra1PX17UFgmyA">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="mAUW7f6iRzTpwFgAGL6FCVeOEu_tUvrKsCWA5GP3S1w">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="NkOjL2DLZnN3xMN9zki5N3Eu5RQ7FEYCtf8frWsUdFA">
+        <source>[object Object]</source>
       </trans-unit>
       <trans-unit id="aVTh9yvCCOJS6biHAKAoKQDWmjjqo8cIFgcwqCIilRo">
         <source>Reader settings</source>
@@ -554,14 +674,38 @@
       <trans-unit id="yY0LZeDyRVAoWbU-M40m8KynYbHYMrFP8qU8oYKpi_o">
         <source>Creates folders according to manga title</source>
       </trans-unit>
+      <trans-unit id="JUWTQoOLyxj5nl1k5a01-E0xT9W6VReuyp31s1kK9kE">
+        <source>[object Object]</source>
+      </trans-unit>
       <trans-unit id="ftTBQ9mT8jzVQTlzVQThq84qga7aRnm1A_EmQPZ62tE">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="tu04zYgE5mHBIsjZrTOlKHyXRYIKwr9V-NOhYMKpuFg">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="5A29R63Pn-Tk8Wid1fkjoS6EYZecy-stZKW80qEkqbM">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="YGhBxOYIFk0FXAmBbcSz8fgvabfpFbBDcXulo-a_E1U">
         <source>[object Object]</source>
       </trans-unit>
       <trans-unit id="oXUmwOmJSilJYNINjFscNXUcar5msRG4KX7zU-4zQ5A">
         <source>[object Object]</source>
       </trans-unit>
+      <trans-unit id="n_l_0M_EsdamjvvceX3N6shL3axNVMtxTMz7TSc0PM8">
+        <source>Skipping </source>
+      </trans-unit>
       <trans-unit id="TyE4yyopQMXi9xPAwddqixG0FiRUr7u1yXsHaK5cFNg">
         <source>Skipping 1 chapter, either the source is missing it or it has been filtered out</source>
+      </trans-unit>
+      <trans-unit id="oiTuKkyj0UUAla0rO9UE1JYPoTH28xIMmpWAqMZ-NWI">
+        <source>Skipping </source>
+      </trans-unit>
+      <trans-unit id="HRSHgrZFnEbPUt-9o_YG0O8cFV_fMP4Rwo6GA3uiWrY">
+        <source>Skipping </source>
+      </trans-unit>
+      <trans-unit id="mnpkTKyO6cl19de8iNymmi2LB3R07jNrClA052CIdQs">
+        <source>Skipping </source>
       </trans-unit>
       <trans-unit id="rXnFisSe-TCQMWVdPr043XAD3SjPf9t7nr3_A3JFQ4Q">
         <source>About this </source>
@@ -603,9 +747,21 @@
       <trans-unit id="4VnsQVEawPmvgH-O45FKaXHWGWxMnjIWsFtFV5GlyFc">
         <source>Filter scanlator groups</source>
       </trans-unit>
+      <trans-unit id="jz5aZDd4AEtFQO626QxkPeoJX1UMishr7VumPKgH8Dc">
+        <source>[object Object]</source>
+      </trans-unit>
       <trans-unit id="SSZERtfZuYpDYos6-_VXWBeWY2P0LQQBQ5wwygKih98">
         <source>A chapter has been removed from the source:
 </source>
+      </trans-unit>
+      <trans-unit id="WCru_eec-ZoINXAm77d6dj5TsJx-HnHKPEjoV3zxafU">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="owDe0qshOjTujzvwhU4OeDi4apTtRRIxjLdi8BbV0No">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="v-rdOjHr4pfBsc0c1vOI8JfCgge8fp9gaUQ1Y00bor0">
+        <source>[object Object]</source>
       </trans-unit>
       <trans-unit id="SMy5CDGGN0GtdJzMKHTWbjT3VqLYuEtNpEvWA5bRmLc">
         <source>[object Object]</source>
@@ -706,13 +862,37 @@
       <trans-unit id="qgyhbpKDjI7jLUvTkyBinCJwj8i7lfiKwHOif76StvI">
         <source>Stop migrating?</source>
       </trans-unit>
+      <trans-unit id="fFA0xBBIs9ECI6-GTkSzDvj-cIOBzn4kEzgBc6RjYME">
+        <source>Migrate </source>
+      </trans-unit>
       <trans-unit id="5otAlRi18WJHdTNddhXrbauyBBuNmozvj5T1U3LdNio">
+        <source>Migrate </source>
+      </trans-unit>
+      <trans-unit id="9J7_5V86074DlIEVVW5bhCXVFbD9Oxg9kEfuEp4pF5o">
+        <source>Migrate </source>
+      </trans-unit>
+      <trans-unit id="_fxSI6AicktL_vz8VtsHLEudg3GnoTqwgfBFC-_pBE0">
+        <source>Migrate </source>
+      </trans-unit>
+      <trans-unit id="JRu1byWuYS5xay6LHvaJffEiVTO3ZZhmG1_aHLKqhkM">
         <source>Migrate </source>
       </trans-unit>
       <trans-unit id="NbSotC-esLltIb4qX2tNcSjKPSlGcoWI-D8v8pewC08">
         <source>Migrate </source>
       </trans-unit>
+      <trans-unit id="kod5JtPjSmWK9f-WDcXQ2IKic6SodfFLDYdcw4Wf4Zw">
+        <source>Copy </source>
+      </trans-unit>
       <trans-unit id="V7Ipy8tVMS_hgViqxAA2GVdKnK2eiylBmpYsz6R23AM">
+        <source>Copy </source>
+      </trans-unit>
+      <trans-unit id="Tt5HcyN0U63oC1Lup6d6yl7uL6J3BuXf6y-hoQL_IAU">
+        <source>Copy </source>
+      </trans-unit>
+      <trans-unit id="xPXlumX6NOKvQEGAyKVdSxYm3lQjqjj4kC-C3DqoZLw">
+        <source>Copy </source>
+      </trans-unit>
+      <trans-unit id="VrykjHsbT5U8In8WofQz3tPeW3BCgjbJuSoB6vG4W0Q">
         <source>Copy </source>
       </trans-unit>
       <trans-unit id="8QzHRFQRgUcTAprTZeAm2ftfggD-_EULwyTccQDeOTA">
@@ -721,7 +901,19 @@
       <trans-unit id="PT1Q-KeWPfn_xxc-bX4Y7GEGvvA-Y19t7vD-todWShg">
         <source>(skipping </source>
       </trans-unit>
+      <trans-unit id="9ZRTfWW4zQqhKkdTZdmhZBsP6zN6XyvqUkvGUA3XQ6M">
+        <source>[object Object]</source>
+      </trans-unit>
       <trans-unit id="26atAzC3mwZ3kvEaRGvJjuffpG2YiWvLb_0uDvsLPtE">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="286LXnT2egoQB5mJjXVX8n3sDptnXN0YNeRgWdjzdCo">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="yLXQd4J0VPbE6kt4zoENEaTciNRFRil2BvgZNZJZpEw">
+        <source>[object Object]</source>
+      </trans-unit>
+      <trans-unit id="2WN4XzXSw1GCx6YRLACIIR7Rh6mNs8895Pox096cXDo">
         <source>[object Object]</source>
       </trans-unit>
       <trans-unit id="NR_8aJYvx44XUvYFNO1tkp7aEhaPGsIEjxtjvkMyPyc">
@@ -879,7 +1071,16 @@ You will need to install any missing extensions and log in to tracking services 
       <trans-unit id="X_KLc5HBAfegVR9vZD8aXzXPwMiU8FIqSVIzsp8-4Gw">
         <source>Backup/restore may not function properly if MIUI Optimization is disabled.</source>
       </trans-unit>
-      <trans-unit id="dUY5CemIa3xpPTEoUKN5hZLIYyFYKU1bhYQvPyUJvk0">
+      <trans-unit id="fLvLfAequzwWD8-rmowhCgA5QtMaRx0_OVMXNFNvxj4">
+        <source>Done in </source>
+      </trans-unit>
+      <trans-unit id="jySu2hzgLnOXVjEfXIGLysb8XeSVOmTc2Xm6vHDrotw">
+        <source>Done in </source>
+      </trans-unit>
+      <trans-unit id="AFFfK6PR_SThpdaWMv8ewqWllpDlD94Uzha2ti90-xA">
+        <source>Done in </source>
+      </trans-unit>
+      <trans-unit id="W8Vp5hUevv_-Jl9mt-mp_zj6IVXXPBQU5UK7AKEu8uk">
         <source>Done in </source>
       </trans-unit>
       <trans-unit id="2uYPHtC1kQJwVaCe1QnpczVkqD-zdpHEtbJTGyYzpSU">
@@ -897,7 +1098,19 @@ You will need to install any missing extensions and log in to tracking services 
       <trans-unit id="6kZ4y-TCeSlLR40rmH-lwkbxuWb_KeELspwgQrvljIY">
         <source>Disabled</source>
       </trans-unit>
+      <trans-unit id="3aOxJ5zup5g85SI-lpx1UaBg4YCksVFBTm1025PGx6M">
+        <source>Cache cleared. </source>
+      </trans-unit>
       <trans-unit id="5eZfQwyisFt-eAr3zUOKugP__L-uALc_ylWptAYKJQI">
+        <source>Cache cleared. </source>
+      </trans-unit>
+      <trans-unit id="GOEWJGRUzb0HKCkIQ8PlUxPDGGNd63VzYh5QQBZ1kYw">
+        <source>Cache cleared. </source>
+      </trans-unit>
+      <trans-unit id="sl0_jv-comZEpqSJrikMy3XndjIHz8Hzvc5RI6rtR5s">
+        <source>Cache cleared. </source>
+      </trans-unit>
+      <trans-unit id="fdXHwkqVbwFNvtnCTin7hxUpCqe528CVIHoyqu6F3gY">
         <source>Cache cleared. </source>
       </trans-unit>
       <trans-unit id="0MGHojsg991bW2BX_cczB7XrP0mfW2DJ6OMvNsJaj48">
@@ -927,7 +1140,19 @@ You will need to install any missing extensions and log in to tracking services 
       <trans-unit id="-wkXZ-U6feYoBLD03zOySY9bCJ2q3iJdBWNGiVyzb-w">
         <source>Disable this if you are experiencing issues with updating or restoring your library</source>
       </trans-unit>
+      <trans-unit id="R9JegpyM_zkpP1_6af_Amb0Y7E-PdxjP5trTJu0SrRE">
+        <source>Cleanup done. Removed </source>
+      </trans-unit>
       <trans-unit id="rh1h0cJO-5V2S5q15JDf5bxw2kDqyrXKS4r_wy5PUwU">
+        <source>Cleanup done. Removed </source>
+      </trans-unit>
+      <trans-unit id="FWvG-Dtj-SaGG9kDnD0OHLwIvqR0c5ZeeQGT3NjfKgE">
+        <source>Cleanup done. Removed </source>
+      </trans-unit>
+      <trans-unit id="AdbBg6haSjf83PzTMizJ8gf3HpAFJ6hIyn8RXLdPmu8">
+        <source>Cleanup done. Removed </source>
+      </trans-unit>
+      <trans-unit id="g79HMVk9j6kLf7LmgzjVcV7Xzw3R36mktWKM8p7InQI">
         <source>Cleanup done. Removed </source>
       </trans-unit>
       <trans-unit id="FICdN6ZTFGYJmB81aL4akRY846OS0LMXjqPMDZFDuqQ">
@@ -1046,7 +1271,19 @@ Currently using: </source>
       <trans-unit id="XbMMlk7ML13AJYJW0ALnnF4spRO4SHgEXRstAy0bj1o">
         <source>Automatic removal</source>
       </trans-unit>
+      <trans-unit id="CvcU-9JCmoZ5_CvhTV5f5v4isPvasTMhHvetWe3sEec">
+        <source>After </source>
+      </trans-unit>
       <trans-unit id="C0PQbeoPQFB8cyWahP6wddbk0QOh4f-mmiHyTcQUny4">
+        <source>After </source>
+      </trans-unit>
+      <trans-unit id="sVZ6PDQfo8-vB9IpSXJfwx6UIbCL66Ichc-EVLKxy_M">
+        <source>After </source>
+      </trans-unit>
+      <trans-unit id="OTv8yjLtv1RgKTrwOABuSJ3N-hykkt8sLTupt2O3siI">
+        <source>After </source>
+      </trans-unit>
+      <trans-unit id="B8qLQ60nyqs3CFs6QqROPxrLGrt52XlppYlaVwS8nLU">
         <source>After </source>
       </trans-unit>
       <trans-unit id="y51rnyKxtYjssSeHCmtKvJwyTUp_J-6z11PC9kxAmM4">

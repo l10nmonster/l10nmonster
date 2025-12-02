@@ -1,8 +1,5 @@
 import { parseToEntries, stringifyFromEntries } from '@js.properties/properties';
 
-const ALL_PLURAL_FORMS = ['zero', 'one', 'two', 'few', 'many', 'other'];
-const DEFAULT_SOURCE_PLURAL_FORMS = ['one', 'other'];
-
 export default class JavaPropertiesFilter {
     /**
      * @param {Object} [params] - Configuration options
@@ -46,9 +43,7 @@ export default class JavaPropertiesFilter {
 
         // Second pass: detect and mark plural forms (only if enabled)
         if (this.enablePluralizationSuffixes) {
-            const requiredSourceForms = sourcePluralForms ?? DEFAULT_SOURCE_PLURAL_FORMS;
-            const requiredTargetForms = targetPluralForms ?? ALL_PLURAL_FORMS;
-            const targetFormsSet = new Set(requiredTargetForms);
+            const targetFormsSet = new Set(targetPluralForms);
             const potentialPluralGroups = new Map(); // baseKey -> Map(suffix -> segment)
 
             for (const seg of segments) {
@@ -66,8 +61,11 @@ export default class JavaPropertiesFilter {
             }
 
             // For groups with all required source forms: set pluralForm and generate missing forms
+            // We need to reorder segments so all forms of a plural group are together in CLDR order
+            const pluralGroupsToReorder = new Map(); // baseKey -> forms Map
+
             for (const [baseKey, forms] of potentialPluralGroups) {
-                const hasAllForms = requiredSourceForms.every(form => forms.has(form));
+                const hasAllForms = sourcePluralForms.every(form => forms.has(form));
                 if (!hasAllForms) continue;
 
                 // Set pluralForm on existing segments
@@ -77,9 +75,9 @@ export default class JavaPropertiesFilter {
 
                 // Generate missing forms from _other
                 const other = forms.get('other');
-                for (const suffix of requiredTargetForms) {
+                for (const suffix of targetPluralForms) {
                     if (!forms.has(suffix)) {
-                        segments.push({
+                        forms.set(suffix, {
                             sid: `${baseKey}_${suffix}`,
                             str: other.str,
                             pluralForm: suffix,
@@ -88,6 +86,37 @@ export default class JavaPropertiesFilter {
                         });
                     }
                 }
+
+                pluralGroupsToReorder.set(baseKey, forms);
+            }
+
+            // Rebuild segments with plural groups in correct order
+            if (pluralGroupsToReorder.size > 0) {
+                const newSegments = [];
+                const processedPluralKeys = new Set();
+
+                for (const seg of segments) {
+                    const underscoreIdx = seg.sid.lastIndexOf('_');
+                    const suffix = underscoreIdx !== -1 ? seg.sid.slice(underscoreIdx + 1) : null;
+                    const baseKey = underscoreIdx !== -1 ? seg.sid.slice(0, underscoreIdx) : null;
+
+                    if (baseKey && pluralGroupsToReorder.has(baseKey) && !processedPluralKeys.has(baseKey)) {
+                        // Insert all forms of this plural group in CLDR order
+                        processedPluralKeys.add(baseKey);
+                        const forms = pluralGroupsToReorder.get(baseKey);
+                        for (const form of targetPluralForms) {
+                            if (forms.has(form)) {
+                                newSegments.push(forms.get(form));
+                            }
+                        }
+                    } else if (!baseKey || !pluralGroupsToReorder.has(baseKey)) {
+                        // Non-plural segment
+                        newSegments.push(seg);
+                    }
+                    // Skip plural segments that were already added via the group
+                }
+
+                return { segments: newSegments };
             }
         }
 
@@ -101,10 +130,7 @@ export default class JavaPropertiesFilter {
         const translatedEntries = [];
 
         if (this.enablePluralizationSuffixes) {
-            // Use provided plural forms or defaults
-            const requiredSourceForms = sourcePluralForms ?? DEFAULT_SOURCE_PLURAL_FORMS;
-            const requiredTargetForms = targetPluralForms ?? ALL_PLURAL_FORMS;
-            const targetFormsSet = new Set(requiredTargetForms);
+            const targetFormsSet = new Set(targetPluralForms);
 
             // First pass: identify plural groups and collect entries
             const potentialPluralGroups = new Map(); // baseKey -> Map(suffix -> entry)
@@ -128,7 +154,7 @@ export default class JavaPropertiesFilter {
             // Identify valid plural groups (those with all required source forms)
             const validPluralBaseKeys = new Set();
             for (const [baseKey, forms] of potentialPluralGroups) {
-                const hasAllForms = requiredSourceForms.every(form => forms.has(form));
+                const hasAllForms = sourcePluralForms.every(form => forms.has(form));
                 if (hasAllForms) {
                     validPluralBaseKeys.add(baseKey);
                 }
@@ -156,7 +182,7 @@ export default class JavaPropertiesFilter {
                         const templateEntry = otherEntry || entry;
 
                         // Generate all required target forms
-                        for (const targetSuffix of requiredTargetForms) {
+                        for (const targetSuffix of targetPluralForms) {
                             const targetKey = `${baseKey}_${targetSuffix}`;
                             const sourceEntry = potentialPluralGroups.get(baseKey).get(targetSuffix) || otherEntry;
 

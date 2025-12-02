@@ -35,9 +35,10 @@ export class AndroidXMLFilter {
      * Parse an Android resource file and extract translatable segments.
      * @param {Object} params - Parameters for parsing the resource.
      * @param {string} params.resource - The XML content of the Android resource file.
+     * @param {string[]} [params.targetPluralForms] - Array of plural forms required for target languages.
      * @returns {Promise<Object>} An object containing the extracted segments.
      */
-    async parseResource({ resource }) {
+    async parseResource({ resource, targetPluralForms }) {
         const segments = [];
         const parsingOptions = {
             ignoreAttributes: false,
@@ -52,6 +53,7 @@ export class AndroidXMLFilter {
             parseTagValue: false,
             trimValues: true,
         };
+
         const parser = new XMLParser(parsingOptions);
         for (const rootNode of parser.parse(resource)) {
             if ('resources' in rootNode) {
@@ -71,17 +73,42 @@ export class AndroidXMLFilter {
                             lastComment = null;
                         }
                     } else if ('plurals' in resNode) { // TODO: support string-array
+                        const pluralName = resNode[':@'].name;
+                        const pluralForms = new Map(); // quantity -> { seg, notes }
+                        let pluralComment = lastComment;
+
+                        // Collect existing plural forms
                         for (const itemNode of resNode.plurals) {
                             if ('#comment' in itemNode) {
-                                lastComment = itemNode['#comment'].map(e => e['#text']).join('').trim();
+                                pluralComment = itemNode['#comment'].map(e => e['#text']).join('').trim();
                             } else if ('item' in itemNode) {
+                                const quantity = itemNode[':@'].quantity;
                                 const seg = {
-                                    sid: `${resNode[':@'].name}_${itemNode[':@'].quantity}`,
-                                    pluralForm: itemNode[':@'].quantity,
+                                    sid: `${pluralName}_${quantity}`,
+                                    pluralForm: quantity,
                                     str: collapseTextNodes(itemNode.item)
                                 };
-                                lastComment && (seg.notes = lastComment);
-                                segments.push(seg);
+                                pluralComment && (seg.notes = pluralComment);
+                                pluralForms.set(quantity, seg);
+                            }
+                        }
+
+                        // Android <plurals> element explicitly defines plural rules
+                        // Expansion can happen as long as 'other' form is present
+                        const otherForm = pluralForms.get('other');
+
+                        // Add forms in natural plural order (existing or generated from 'other')
+                        for (const form of targetPluralForms) {
+                            if (pluralForms.has(form)) {
+                                segments.push(pluralForms.get(form));
+                            } else if (otherForm) {
+                                // Generate missing form from 'other'
+                                segments.push({
+                                    sid: `${pluralName}_${form}`,
+                                    pluralForm: form,
+                                    str: otherForm.str,
+                                    ...(otherForm.notes && { notes: otherForm.notes })
+                                });
                             }
                         }
                         lastComment = null;
@@ -102,9 +129,10 @@ export class AndroidXMLFilter {
      * @param {Object} params - Parameters for translating the resource.
      * @param {string} params.resource - The XML content of the Android resource file.
      * @param {Function} params.translator - A function that translates a string given its ID and source text.
+     * @param {string[]} [params.targetPluralForms] - Array of plural forms required for the target language.
      * @returns {Promise<string|null>} The translated XML content, or null if no translations were made.
      */
-    async translateResource({ resource, translator }) {
+    async translateResource({ resource, translator, targetPluralForms }) {
         const parsingOptions = {
             ignoreAttributes: false,
             processEntities: true,
@@ -118,6 +146,7 @@ export class AndroidXMLFilter {
             parseTagValue: false,
             trimValues: true,
         };
+
         const parser = new XMLParser(parsingOptions);
         const parsedResource = parser.parse(resource);
         const nodesToDelete = [];
@@ -138,26 +167,51 @@ export class AndroidXMLFilter {
                         } else {
                             nodesToDelete.push(resNode);
                         }
-                    } else if ('plurals' in resNode) { // TODO: deal with plurals of the target language, not the source
-                        let dropPlural = false;
-                        const itemNodesToDelete = []
+                    } else if ('plurals' in resNode) {
+                        const pluralName = resNode[':@'].name;
+
+                        // Collect source plural forms
+                        const sourceForms = new Map(); // quantity -> { text, itemNode }
                         for (const itemNode of resNode.plurals) {
-                            if ('#comment' in itemNode) {
-                                itemNodesToDelete.push(itemNode)
-                                // eslint-disable-next-line no-continue
-                                continue;
-                            }
-                            const translation = await translator(`${resNode[':@'].name}_${itemNode[':@'].quantity}`, collapseTextNodes(itemNode.item));
-                            if (translation === undefined) {
-                                dropPlural = true;
-                            } else {
-                                itemNode.item = [ { '#text': translation } ];
+                            if ('item' in itemNode) {
+                                sourceForms.set(itemNode[':@'].quantity, {
+                                    text: collapseTextNodes(itemNode.item),
+                                    itemNode
+                                });
                             }
                         }
-                        resNode.plurals = resNode.plurals.filter(n => !itemNodesToDelete.includes(n))
-                        if (dropPlural) {
+
+                        // Get 'other' form for generating missing target forms
+                        // Android <plurals> is explicitly a plural, so we can expand as long as 'other' exists
+                        const otherForm = sourceForms.get('other');
+
+                        // Build new plurals node with only required target forms in CLDR order
+                        const newPluralItems = [];
+                        let dropPlural = false;
+
+                        for (const form of targetPluralForms) {
+                            const sourceForm = sourceForms.get(form) ?? otherForm;
+                            if (!sourceForm) {
+                                // Can't generate this required form - no source and no fallback
+                                dropPlural = true;
+                                break;
+                            }
+                            const translation = await translator(`${pluralName}_${form}`, sourceForm.text);
+                            if (translation === undefined) {
+                                dropPlural = true;
+                                break;
+                            }
+                            newPluralItems.push({
+                                item: [{ '#text': translation }],
+                                ':@': { quantity: form }
+                            });
+                        }
+
+                        if (dropPlural || newPluralItems.length === 0) {
                             nodesToDelete.push(resNode);
                         } else {
+                            // Replace plurals with new items containing only target forms
+                            resNode.plurals = newPluralItems;
                             translated++;
                         }
                     } else {

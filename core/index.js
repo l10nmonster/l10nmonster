@@ -61,7 +61,7 @@ export * as opsManager from './src/opsManager/index.js';
 export * from './src/helpers/index.js';
 export * as actions from './src/actions/index.js';
 
-export { requiredPluralForms } from './src/requiredPluralForms.js';
+export { requiredSourcePluralForms, requiredTargetPluralForms } from './src/requiredPluralForms.js';
 
 import packageJson from './package.json' with { type: 'json' };
 export const coreVersion = packageJson.version;

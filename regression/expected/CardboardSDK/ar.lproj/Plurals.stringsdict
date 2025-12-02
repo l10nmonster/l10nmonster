@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>items_count</key>
+    <dict>
+      <key>NSStringLocalizedFormatKey</key>
+      <string>%#@items@</string>
+      <key>items</key>
+      <dict>
+        <key>NSStringFormatSpecTypeKey</key>
+        <string>NSStringPluralRuleType</string>
+        <key>NSStringFormatValueTypeKey</key>
+        <string>d</string>
+        <key>zero</key>
+        <string>⇥RBB:%d ̲i̲t̲e̲m̲̟s̲⇤</string>
+        <key>one</key>
+        <string>⇥SBB:O̲n̲e̲ ̲i̲̟t̲e̲m̲⇤</string>
+        <key>two</key>
+        <string>⇥TBB:%d ̲i̲t̲e̲m̲̟s̲⇤</string>
+        <key>few</key>
+        <string>⇥UBB:%d ̲i̲t̲e̲m̲̟s̲⇤</string>
+        <key>many</key>
+        <string>⇥VBB:%d ̲i̲t̲e̲m̲̟s̲⇤</string>
+        <key>other</key>
+        <string>⇥WBB:%d ̲i̲t̲e̲m̲̟s̲⇤</string>
+      </dict>
+    </dict>
+    <key>viewers_count</key>
+    <dict>
+      <key>NSStringLocalizedFormatKey</key>
+      <string>You have %#@viewers@</string>
+      <key>viewers</key>
+      <dict>
+        <key>NSStringFormatSpecTypeKey</key>
+        <string>NSStringPluralRuleType</string>
+        <key>NSStringFormatValueTypeKey</key>
+        <string>d</string>
+        <key>zero</key>
+        <string>⇥XBB:%d ̲v̲i̲e̲w̲̟e̲r̲s̲⇤</string>
+        <key>one</key>
+        <string>⇥YBB:o̲n̲e̲ ̲v̲̟i̲e̲w̲e̲r̲̟⇤</string>
+        <key>two</key>
+        <string>⇥ZBB:%d ̲v̲i̲e̲w̲̟e̲r̲s̲⇤</string>
+        <key>few</key>
+        <string>⇥2BB:%d ̲v̲i̲e̲w̲̟e̲r̲s̲⇤</string>
+        <key>many</key>
+        <string>⇥3BB:%d ̲v̲i̲e̲w̲̟e̲r̲s̲⇤</string>
+        <key>other</key>
+        <string>⇥4BB:%d ̲v̲i̲e̲w̲̟e̲r̲s̲⇤</string>
+      </dict>
+    </dict>
+  </dict>
+</plist>

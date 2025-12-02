@@ -22,6 +22,22 @@ class CardboardConfig extends L10nMonsterConfig {
                 baseDir: '..',
                 targetPath: (lang, resourceId) => resourceId.replace('en.lproj/', `${lang}.lproj/`)
             })))
+        .channel(new ChannelConfig('ios-stringsdict')
+            .source(new adapters.FsSource({
+                sourceLang: 'en',
+                baseDir: '..',
+                globs: [ '**/en.lproj/*.stringsdict' ],
+            }))
+            .resourceFilter(new ios.StringsdictFilter())
+                .segmentDecorators([ this.#sg.getDecorator() ])
+                .decoders([ ios.phDecoder, ios.escapesDecoder ])
+                .textEncoders([ xml.entityEncoder, ios.escapesEncoder ])
+            .policy(policies.fixedTargets('ar', 50))
+            .policy(policies.minimizePluralForms())
+            .target(new adapters.FsTarget({
+                baseDir: '..',
+                targetPath: (lang, resourceId) => resourceId.replace('en.lproj/', `${lang}.lproj/`)
+            })))
         .provider(new providers.Grandfather({ quality: 70 }))
         .provider(new providers.Repetition({ qualifiedPenalty: 1, unqualifiedPenalty: 9 }))
         .provider(new providers.Visicode({ quality: 60 }));

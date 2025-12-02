@@ -3,8 +3,8 @@
 	"sourceLang": "en",
 	"targetLang": "ja",
 	"blocks": {
-		"xxx3xxx": {
-			"blockName": "blocks/sl=en/tl=ja/block_xxx3xxx.jsonl",
+		"xxx2xxx": {
+			"blockName": "blocks/sl=en/tl=ja/block_xxx2xxx.jsonl",
 			"modified": "TS1",
 			"jobs": [
 				[
@@ -13,10 +13,6 @@
 				],
 				[
 					"xxx1xxx",
-					"2022-05-29T00:00:00.000Z"
-				],
-				[
-					"xxx2xxx",
 					"2022-05-29T00:00:00.000Z"
 				]
 			]

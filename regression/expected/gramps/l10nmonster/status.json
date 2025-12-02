@@ -14,19 +14,11 @@
 						},
 						{
 							"minQ": 1,
-							"q": 61,
-							"res": 1,
-							"seg": 7,
-							"words": 30,
-							"chars": 288
-						},
-						{
-							"minQ": 1,
 							"q": 2,
 							"res": 1,
-							"seg": 45,
-							"words": 277,
-							"chars": 1818
+							"seg": 52,
+							"words": 307,
+							"chars": 2106
 						}
 					],
 					"pairSummary": {

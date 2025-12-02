@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 
 import { i18next } from './index.js';
 import { flattenAndSplitResources } from './utils.js';
+import { requiredSourcePluralForms, requiredTargetPluralForms } from '@l10nmonster/core';
 
 suite("json parseResource - description", () => {
     const resourceFilter = new i18next.I18nextFilter({
@@ -271,25 +272,22 @@ suite("json parseResource -  plurals", () => {
                 },
             },
         };
+        // Expected output in CLDR order: zero, one, two, few, many, other
+        // sourcePluralForms = ['one', 'other'] determines what constitutes a valid plural group
+        // targetPluralForms = all 6 forms for expansion
         const expectedOutput = {
             segments: [
-                {
-                    sid: "timeCount.day_one",
-                    str: "{{count}} day",
-                    pluralForm: "one",
-                    notes: "copy - time copy for day singular",
-                },
-                {
-                    sid: "timeCount.day_other",
-                    str: "{{count}} days",
-                    pluralForm: "other",
-                    notes: "copy - time copy for days plural",
-                },
                 {
                     sid: "timeCount.day_zero",
                     str: "{{count}} days",
                     pluralForm: "zero",
                     notes: "copy - time copy for days plural",
+                },
+                {
+                    sid: "timeCount.day_one",
+                    str: "{{count}} day",
+                    pluralForm: "one",
+                    notes: "copy - time copy for day singular",
                 },
                 {
                     sid: "timeCount.day_two",
@@ -310,22 +308,22 @@ suite("json parseResource -  plurals", () => {
                     notes: "copy - time copy for days plural",
                 },
                 {
-                    sid: "timeCount.second_one",
-                    str: "{{count}} second",
-                    pluralForm: "one",
-                    notes: "copy - time copy for second singular",
-                },
-                {
-                    sid: "timeCount.second_other",
-                    str: "{{count}} seconds",
+                    sid: "timeCount.day_other",
+                    str: "{{count}} days",
                     pluralForm: "other",
-                    notes: "copy - time copy for seconds plural",
+                    notes: "copy - time copy for days plural",
                 },
                 {
                     sid: "timeCount.second_zero",
                     str: "{{count}} seconds",
                     pluralForm: "zero",
                     notes: "copy - time copy for seconds plural",
+                },
+                {
+                    sid: "timeCount.second_one",
+                    str: "{{count}} second",
+                    pluralForm: "one",
+                    notes: "copy - time copy for second singular",
                 },
                 {
                     sid: "timeCount.second_two",
@@ -342,12 +340,22 @@ suite("json parseResource -  plurals", () => {
                 {
                     sid: "timeCount.second_many",
                     str: "{{count}} seconds",
-                        pluralForm: "many",
+                    pluralForm: "many",
+                    notes: "copy - time copy for seconds plural",
+                },
+                {
+                    sid: "timeCount.second_other",
+                    str: "{{count}} seconds",
+                    pluralForm: "other",
                     notes: "copy - time copy for seconds plural",
                 },
             ],
         };
-        const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
+        const output = await resourceFilter.parseResource({
+            resource: JSON.stringify(resource),
+            sourcePluralForms: requiredSourcePluralForms('en'),
+            targetPluralForms: requiredTargetPluralForms(),
+        });
         assert.deepEqual(output, expectedOutput);
     });
 
@@ -362,7 +370,11 @@ suite("json parseResource -  plurals", () => {
                 description: "plural form",
             },
         };
-        const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
+        const output = await resourceFilter.parseResource({
+            resource: JSON.stringify(resource),
+            sourcePluralForms: requiredSourcePluralForms('en'),
+            targetPluralForms: requiredTargetPluralForms(),
+        });
 
         // Should have original forms plus missing forms (zero, two, few, many)
         assert.equal(output.segments.length, 6);
@@ -398,7 +410,11 @@ suite("json parseResource -  plurals", () => {
             // Regular string that happens to end with _one - should NOT be pluralized
             button_one: "Click me",
         };
-        const output = await resourceFilter.parseResource({ resource: JSON.stringify(resource) });
+        const output = await resourceFilter.parseResource({
+            resource: JSON.stringify(resource),
+            sourcePluralForms: requiredSourcePluralForms('en'),
+            targetPluralForms: requiredTargetPluralForms(),
+        });
 
         // Should have exactly 3 segments (no generated forms)
         assert.equal(output.segments.length, 3);
@@ -704,7 +720,11 @@ suite("generateResource tests", () => {
             { sid: "item_one", str: "{{count}} item", pluralForm: "one" },
             { sid: "item_other", str: "{{count}} items", pluralForm: "other" }
         ];
-        const output = await resourceFilter.generateResource({ segments, translator: identityTranslator });
+        const output = await resourceFilter.generateResource({
+            segments,
+            translator: identityTranslator,
+            targetPluralForms: requiredSourcePluralForms('en'),
+        });
         const parsed = JSON.parse(output);
         assert.deepEqual(parsed, {
             item_one: "{{count}} item",
@@ -738,12 +758,19 @@ suite("generateResource tests", () => {
         };
 
         // Parse - this will add missing forms
+        const allForms = requiredTargetPluralForms();
         const { segments } = await resourceFilter.parseResource({
-            resource: JSON.stringify(original)
+            resource: JSON.stringify(original),
+            sourcePluralForms: requiredSourcePluralForms('en'),
+            targetPluralForms: allForms,
         });
 
         // Generate back - this should also add missing forms
-        const generated = await resourceFilter.generateResource({ segments, translator: identityTranslator });
+        const generated = await resourceFilter.generateResource({
+            segments,
+            translator: identityTranslator,
+            targetPluralForms: allForms,
+        });
         const parsed = JSON.parse(generated);
 
         // Should have all 6 forms
@@ -800,7 +827,11 @@ suite("generateResource with translator tests", () => {
         ];
         const translator = async (seg) => ({ str: seg.str.replace('item', 'elemento').replace('items', 'elementos') });
 
-        const output = await resourceFilter.generateResource({ segments, translator });
+        const output = await resourceFilter.generateResource({
+            segments,
+            translator,
+            targetPluralForms: requiredSourcePluralForms('es'), // Spanish target
+        });
         const parsed = JSON.parse(output);
 
         assert.equal(parsed.item_one, "{{count}} elemento");

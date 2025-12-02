@@ -1,6 +1,6 @@
 import { logVerbose } from '../l10nContext.js';
 import { utils } from '../helpers/index.js';
-import { requiredPluralForms } from '../requiredPluralForms.js';
+import { requiredSourcePluralForms, requiredTargetPluralForms } from '../requiredPluralForms.js';
 
 function processNotes(normalizedSeg) {
     if (typeof normalizedSeg.notes === 'string') {
@@ -113,8 +113,8 @@ export class FormatHandler {
 
     async getNormalizedResource(rid, resource, options = {}) {
         const { isSource, sourceLang, targetLangs } = options;
-        const sourcePluralForms = requiredPluralForms(sourceLang ? [sourceLang] : undefined);
-        const targetPluralForms = requiredPluralForms(targetLangs);
+        const sourcePluralForms = requiredSourcePluralForms(sourceLang);
+        const targetPluralForms = requiredTargetPluralForms(targetLangs);
         let parsedRes = await this.#resourceFilter.parseResource({ resource, isSource, sourcePluralForms, targetPluralForms });
         const normalizedSegments = []; // these have nstr
         const rawSegments = parsedRes.segments ?? []; // these have str
@@ -161,8 +161,8 @@ export class FormatHandler {
         const translations = await tm.getEntries(resHandle.segments.map(seg => seg.guid));
 
         // Compute plural forms for source and target languages
-        const sourcePluralForms = requiredPluralForms([resHandle.sourceLang]);
-        const targetPluralForms = requiredPluralForms([tm.targetLang]);
+        const sourcePluralForms = requiredSourcePluralForms(resHandle.sourceLang);
+        const targetPluralForms = requiredTargetPluralForms([tm.targetLang]);
 
         // give priority to generators over translators (for performance), if available
         if (this.#resourceGenerator.generateResource) {

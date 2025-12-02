@@ -43,5 +43,34 @@
 				}
 			}
 		}
+	},
+	"ios-stringsdict": {
+		"en": {
+			"ar": {
+				"default": {
+					"details": [
+						{
+							"minQ": 50,
+							"q": 60,
+							"res": 1,
+							"seg": 12,
+							"words": 24,
+							"chars": 88
+						}
+					],
+					"pairSummary": {
+						"segs": 12,
+						"words": 24,
+						"chars": 88
+					},
+					"pairSummaryByStatus": {
+						"translated": 12,
+						"low quality": 0,
+						"in flight": 0,
+						"untranslated": 0
+					}
+				}
+			}
+		}
 	}
 }

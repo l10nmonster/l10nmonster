@@ -1,6 +1,8 @@
 import i18nStringsFiles from '@l10nmonster/i18n-strings-files';
 import { regex } from '@l10nmonster/core';
 
+export { StringsdictFilter } from './stringsdict.js';
+
 // filter for iOS .strings file (in utf-8)
 export class StringsFilter {
     constructor(params) {

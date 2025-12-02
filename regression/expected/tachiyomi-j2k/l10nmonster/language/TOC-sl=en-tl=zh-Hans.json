@@ -3,8 +3,8 @@
 	"sourceLang": "en",
 	"targetLang": "zh-Hans",
 	"blocks": {
-		"xxx7xxx": {
-			"blockName": "blocks/sl=en/tl=zh-Hans/block_xxx7xxx.jsonl",
+		"xxx6xxx": {
+			"blockName": "blocks/sl=en/tl=zh-Hans/block_xxx6xxx.jsonl",
 			"modified": "TS1",
 			"jobs": [
 				[
@@ -12,11 +12,7 @@
 					"2022-05-29T00:00:00.000Z"
 				],
 				[
-					"xxx2xxx",
-					"2022-05-29T00:00:00.000Z"
-				],
-				[
-					"xxx5xxx",
+					"xxx4xxx",
 					"2022-05-29T00:00:00.000Z"
 				]
 			]

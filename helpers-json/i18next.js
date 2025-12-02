@@ -9,9 +9,6 @@ import {
     parseResourceAnnotations,
 } from './utils.js';
 
-const ALL_PLURAL_FORMS = ['zero', 'one', 'two', 'few', 'many', 'other'];
-const DEFAULT_SOURCE_PLURAL_FORMS = ['one', 'other'];
-
 const defaultArbAnnotationHandlers = {
     description: (_, data) => (data == null ? undefined : data),
     placeholders: (_, data) => (data == null ? undefined : arbPlaceholderHandler(data)),
@@ -57,10 +54,7 @@ export class I18nextFilter {
             this.arbAnnotationHandlers,
         );
 
-        // Use provided plural forms or defaults
-        const requiredSourceForms = sourcePluralForms ?? DEFAULT_SOURCE_PLURAL_FORMS;
-        const requiredTargetForms = targetPluralForms ?? ALL_PLURAL_FORMS;
-        const targetFormsSet = new Set(requiredTargetForms);
+        const targetFormsSet = new Set(targetPluralForms);
 
         // Collect all segments and group potential plurals by baseKey
         const potentialPluralGroups = new Map(); // baseKey -> Map(suffix -> segment)
@@ -88,9 +82,22 @@ export class I18nextFilter {
         }
 
         // For groups with all required forms: set pluralForm and generate missing forms
+        // We need to reorder segments so all forms of a plural group are together in CLDR order
+        const pluralGroupsToReorder = new Map(); // baseKey -> { firstIndex, forms: Map(suffix -> seg) }
+
         for (const [baseKey, forms] of potentialPluralGroups) {
-            const hasAllForms = requiredSourceForms.every(form => forms.has(form));
+            const hasAllForms = sourcePluralForms.every(form => forms.has(form));
             if (!hasAllForms) continue;
+
+            // Find the first index of this plural group in segments
+            let firstIndex = -1;
+            for (let i = 0; i < response.segments.length; i++) {
+                if (forms.has(response.segments[i].sid?.split('_').pop()) &&
+                    response.segments[i].sid?.startsWith(baseKey + '_')) {
+                    firstIndex = i;
+                    break;
+                }
+            }
 
             // Set pluralForm on existing segments
             for (const [suffix, seg] of forms) {
@@ -99,9 +106,9 @@ export class I18nextFilter {
 
             // Generate missing forms from _other
             const other = forms.get('other');
-            for (const suffix of requiredTargetForms) {
+            for (const suffix of targetPluralForms) {
                 if (!forms.has(suffix)) {
-                    response.segments.push({
+                    forms.set(suffix, {
                         sid: `${baseKey}_${suffix}`,
                         str: other.str,
                         pluralForm: suffix,
@@ -109,7 +116,39 @@ export class I18nextFilter {
                     });
                 }
             }
+
+            pluralGroupsToReorder.set(baseKey, { firstIndex, forms });
         }
+
+        // Rebuild segments with plural groups in correct order
+        if (pluralGroupsToReorder.size > 0) {
+            const newSegments = [];
+            const processedPluralKeys = new Set();
+
+            for (const seg of response.segments) {
+                const underscoreIdx = seg.sid.lastIndexOf('_');
+                const suffix = underscoreIdx !== -1 ? seg.sid.slice(underscoreIdx + 1) : null;
+                const baseKey = underscoreIdx !== -1 ? seg.sid.slice(0, underscoreIdx) : null;
+
+                if (baseKey && pluralGroupsToReorder.has(baseKey) && !processedPluralKeys.has(baseKey)) {
+                    // Insert all forms of this plural group in CLDR order
+                    processedPluralKeys.add(baseKey);
+                    const { forms } = pluralGroupsToReorder.get(baseKey);
+                    for (const form of targetPluralForms) {
+                        if (forms.has(form)) {
+                            newSegments.push(forms.get(form));
+                        }
+                    }
+                } else if (!baseKey || !pluralGroupsToReorder.has(baseKey)) {
+                    // Non-plural segment
+                    newSegments.push(seg);
+                }
+                // Skip plural segments that were already added via the group
+            }
+
+            response.segments = newSegments;
+        }
+
         return response;
     }
 
@@ -123,7 +162,11 @@ export class I18nextFilter {
      */
     async generateResource({ segments, translator, targetPluralForms }) {
         const targetFormsSet = targetPluralForms ? new Set(targetPluralForms) : null;
-        const flatResource = {};
+
+        // Collect translations
+        const translations = new Map(); // sid -> translatedStr
+        const pluralGroups = new Map(); // baseKey -> Set of sids
+
         for (const seg of segments) {
             // Skip plural forms not needed for target language
             if (seg.pluralForm && targetFormsSet && !targetFormsSet.has(seg.pluralForm)) {
@@ -131,7 +174,46 @@ export class I18nextFilter {
             }
             const translatedStr = await translator(seg);
             if (translatedStr != null) {
-                flatResource[seg.sid] = translatedStr.str;
+                translations.set(seg.sid, translatedStr.str);
+
+                // Track plural groups
+                if (seg.pluralForm) {
+                    const underscoreIdx = seg.sid.lastIndexOf('_');
+                    if (underscoreIdx !== -1) {
+                        const baseKey = seg.sid.slice(0, underscoreIdx);
+                        if (!pluralGroups.has(baseKey)) {
+                            pluralGroups.set(baseKey, new Set());
+                        }
+                        pluralGroups.get(baseKey).add(seg.sid);
+                    }
+                }
+            }
+        }
+
+        // Build flatResource with plural forms grouped and ordered
+        const flatResource = {};
+        const processedPluralKeys = new Set();
+
+        for (const seg of segments) {
+            if (!translations.has(seg.sid)) continue;
+
+            if (seg.pluralForm) {
+                const underscoreIdx = seg.sid.lastIndexOf('_');
+                const baseKey = underscoreIdx !== -1 ? seg.sid.slice(0, underscoreIdx) : null;
+
+                if (baseKey && pluralGroups.has(baseKey) && !processedPluralKeys.has(baseKey)) {
+                    // Output all forms of this plural group in CLDR order
+                    processedPluralKeys.add(baseKey);
+                    for (const form of targetPluralForms) {
+                        const sid = `${baseKey}_${form}`;
+                        if (translations.has(sid)) {
+                            flatResource[sid] = translations.get(sid);
+                        }
+                    }
+                }
+                // Skip individual plural forms - they were added via the group
+            } else {
+                flatResource[seg.sid] = translations.get(seg.sid);
             }
         }
 
