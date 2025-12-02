@@ -7,10 +7,6 @@
     },
     "type": "module",
     "main": "index.js",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/l10nmonster/l10nmonster.git"
-    },
     "keywords": [
         "translation",
         "localization",

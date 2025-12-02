@@ -1,7 +1,7 @@
 {
     "name": "l10nmonster-monorepo",
     "private": true,
-    "version": "3.0.0-alpha.13",
+    "version": "3.0.0",
     "type": "module",
     "workspaces": [
         "core",
@@ -25,9 +25,8 @@
         "publish:npm-dry": "npm publish --workspaces --access public --dry-run",
         "publish:next": "npm publish --workspaces --tag next --access public",
         "publish:next-dry": "npm publish --workspaces --tag next --access public --dry-run",
-        "release": "node --max-old-space-size=8192 ./node_modules/.bin/multi-semantic-release",
-        "release:dry-run": "node --max-old-space-size=8192 ./node_modules/.bin/multi-semantic-release --dry-run",
-        "release:core": "cd core && npx semantic-release --dry-run"
+        "release": "node ./node_modules/.bin/multi-semantic-release",
+        "release:dry-run": "node ./node_modules/.bin/multi-semantic-release --dry-run"
     },
     "packageManager": "npm@10.9.2",
     "devDependencies": {
