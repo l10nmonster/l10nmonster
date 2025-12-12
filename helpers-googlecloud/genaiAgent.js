@@ -20,6 +20,8 @@ const TRANSLATOR_SCHEMA = {
  * @property {Promise<string>|string} [apiKey] - The LLM provder API key (if needed).
  * @property {string} [vertexProject] - The VertexAI project ID.
  * @property {string} [vertexLocation] - The VertexAI datacenter location.
+ * @property {boolean} [enableSearch] - Enable Google Search grounding.
+ * @property {boolean} [enableMaps] - Enable Google Maps grounding.
  */
 
 /**
@@ -30,18 +32,22 @@ export class GenAIAgent extends providers.LLMTranslationProvider {
     #apiKey;
     #vertexProject;
     #vertexLocation;
+    #enableSearch;
+    #enableMaps;
     thinkingBudget;
 
     /**
      * Initializes a new instance of the GenAIAgent class.
      * @param {GenAIAgentOptions} options - Configuration options for the provider.
      */
-    constructor({ apiKey, vertexProject, vertexLocation, thinkingBudget, ...options }) {
+    constructor({ apiKey, vertexProject, vertexLocation, thinkingBudget, enableSearch, enableMaps, ...options }) {
         // TODO: do we need to expose topX, topP?
         super(options);
         this.#apiKey = apiKey;
         this.#vertexProject = vertexProject;
         this.#vertexLocation = vertexLocation;
+        this.#enableSearch = enableSearch;
+        this.#enableMaps = enableMaps;
         this.thinkingBudget = thinkingBudget;
     }
 
@@ -86,6 +92,10 @@ export class GenAIAgent extends providers.LLMTranslationProvider {
             },
         };
         this.thinkingBudget !== undefined && (config.thinkingConfig = { thinkingBudget: this.thinkingBudget });
+        const tools = [];
+        this.#enableSearch && tools.push({ googleSearch: {} });
+        this.#enableMaps && tools.push({ googleMaps: {} });
+        tools.length > 0 && (config.tools = tools);
         return {
             model: this.model,
             contents: userPrompt,
