@@ -18,6 +18,7 @@ const MAX_CHUNK_SIZE = 125;
  * @property {(languageCode: string) => string} [languageMapper] - An optional function to map standard language codes
  *   (e.g., 'en-US') to provider-specific codes if needed. Receives a standard language code and should return the
  *   provider-specific code. If omitted, language codes are used as-is.
+ * @property {boolean} [includeTranslations=false] - When true and a previous translation (ntgt) exists on a TU, include it in the xmlTu as a 'translation' property.
  */
 
 /**
@@ -34,7 +35,7 @@ export class ChunkedRemoteTranslationProvider extends BaseTranslationProvider {
      * Initializes a new instance of the ChunkedRemoteTranslationProvider class.
      * @param {ChunkedRemoteTranslationProviderOptions} options - Configuration options for the provider.
      */
-    constructor({ maxCharLength, maxChunkSize, languageMapper, ...options }) {
+    constructor({ maxCharLength, maxChunkSize, languageMapper, includeTranslations, ...options }) {
         if (options.quality === undefined) {
             throw new Error('You must specify quality for ChunkedRemoteTranslationProvider');
         }
@@ -42,6 +43,7 @@ export class ChunkedRemoteTranslationProvider extends BaseTranslationProvider {
         this.maxCharLength = maxCharLength ?? MAX_CHAR_LENGTH;
         this.maxChunkSize = maxChunkSize ?? MAX_CHUNK_SIZE;
         this.#languageMapper = languageMapper;
+        this.includeTranslations = includeTranslations ?? false;
         this.#opNames.startTranslateChunkOp = `${this.id}.startTranslateChunkOp`;
         this.#opNames.mergeTranslatedChunksOp = `${this.id}.mergeTranslatedChunksOp`;
         this.#opNames.continueTranslateChunkOp = `${this.id}.continueTranslateChunkOp`;
@@ -63,6 +65,9 @@ export class ChunkedRemoteTranslationProvider extends BaseTranslationProvider {
             tu.notes?.desc && (xmlTu.notes = tu.notes.desc);
             xmlTu.source = source; // adding source second so that LLMs see notes first
             Object.keys(phMap).length > 0 && (xmlTu.phMap = phMap);
+            if (this.includeTranslations && tu.ntgt) {
+                xmlTu.translation = utils.flattenNormalizedSourceToXmlV1(tu.ntgt)[0];
+            }
             return xmlTu;
         });
 
@@ -205,6 +210,7 @@ export class ChunkedRemoteTranslationProvider extends BaseTranslationProvider {
     async info() {
         const info = await super.info();
         info.description.push(styleString`Max chunk size: ${this.maxChunkSize.toLocaleString()}, max char length: ${this.maxCharLength.toLocaleString()}`);
+        this.includeTranslations && info.description.push(styleString`Include previous translations: enabled`);
         return info;
     }
 }
