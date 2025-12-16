@@ -17,11 +17,14 @@ export function setupStatusRoute(router, mm) {
 
     router.get('/status/:channelId/:sourceLang/:targetLang', async (req, res) => {
         const { channelId, sourceLang, targetLang } = req.params;
-        logInfo`/status/${channelId}/${sourceLang}/${targetLang}`;
+        const { prj } = req.query;
+        logInfo`/status/${channelId}/${sourceLang}/${targetLang}${prj ? `?prj=${prj}` : ''}`;
         try {
             const tm = mm.tmm.getTM(sourceLang, targetLang);
-            const tus = await tm.getUntranslatedContent(channelId, 500);
-            logVerbose`Returned ${tus.length} untranslated TUs for ${sourceLang}->${targetLang} in channel ${channelId}`;
+            const options = { limit: 500 };
+            if (prj) options.prj = [prj];
+            const tus = await tm.getUntranslatedContent(channelId, options);
+            logVerbose`Returned ${tus.length} untranslated TUs for ${sourceLang}->${targetLang} in channel ${channelId}${prj ? ` (project: ${prj})` : ''}`;
             res.json(tus);
         } catch (error) {
             logInfo`Error: ${error.message}`;

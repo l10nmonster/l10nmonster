@@ -169,6 +169,9 @@ const ChannelContainer = ({ channelId, hideComplete, calculateCompletionPercenta
                             pairSummaryByStatus: projectData.pairSummaryByStatus,
                             projectName
                           }}
+                          channelId={channelId}
+                          sourceLang={sourceLang}
+                          targetLang={targetLang}
                         />
                       );
                     })}

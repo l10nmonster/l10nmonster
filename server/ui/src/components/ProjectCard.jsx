@@ -1,7 +1,8 @@
 import React from 'react';
-import { Card, Text, Box, Flex, Tooltip, Badge } from '@chakra-ui/react';
+import { Card, Text, Box, Flex, Tooltip, Badge, Link } from '@chakra-ui/react';
+import { Link as RouterLink } from 'react-router-dom';
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project, channelId, sourceLang, targetLang }) => {
   const { 
     projectName, 
     pairSummary, 
@@ -22,12 +23,32 @@ const ProjectCard = ({ project }) => {
   const pctLowQuality = totalSegs > 0 ? Math.round(statusCounts['low quality'] / totalSegs * 100) : 0;
   const pctUntranslated = totalSegs > 0 ? Math.round(statusCounts.untranslated / totalSegs * 100) : 0;
 
+  // Build the link URL if navigation props are provided
+  const statusUrl = channelId && sourceLang && targetLang
+    ? `/status/${channelId}/${sourceLang}/${targetLang}?prj=${encodeURIComponent(projectName)}`
+    : null;
+
   return (
     <Card.Root variant="outline" bg="yellow.subtle">
       <Card.Body>
-        <Text fontSize="sm" fontWeight="semibold" mb={2}>
-          {projectName}
-        </Text>
+        {statusUrl ? (
+          <Link
+            as={RouterLink}
+            to={statusUrl}
+            fontSize="sm"
+            fontWeight="semibold"
+            mb={2}
+            display="block"
+            color="purple.600"
+            _hover={{ textDecoration: "underline" }}
+          >
+            {projectName}
+          </Link>
+        ) : (
+          <Text fontSize="sm" fontWeight="semibold" mb={2}>
+            {projectName}
+          </Text>
+        )}
         
         <Box mb={3}>
           <Flex align="center" gap={2} mb={1}>

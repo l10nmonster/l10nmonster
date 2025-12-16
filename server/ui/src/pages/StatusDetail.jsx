@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useRef, useMemo, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import {
   Container,
   Text,
@@ -40,6 +40,8 @@ function formatTimestamp(timestamp) {
 const StatusDetail = () => {
   const { channelId, sourceLang, targetLang } = useParams();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const prj = searchParams.get('prj');
   
   const [selectedRows, setSelectedRows] = useState(new Set());
   const [filters, setFilters] = useState({
@@ -73,8 +75,8 @@ const StatusDetail = () => {
     isError,
     error,
   } = useQuery({
-    queryKey: ['statusDetail', channelId, sourceLang, targetLang],
-    queryFn: () => fetchApi(`/api/status/${channelId}/${sourceLang}/${targetLang}`),
+    queryKey: ['statusDetail', channelId, sourceLang, targetLang, prj],
+    queryFn: () => fetchApi(`/api/status/${channelId}/${sourceLang}/${targetLang}${prj ? `?prj=${encodeURIComponent(prj)}` : ''}`),
   });
 
   // Apply client-side filtering
@@ -248,6 +250,14 @@ const StatusDetail = () => {
               )}
             </Flex>
           </Box>
+          {prj && (
+            <Box>
+              <Text fontSize="sm" color="fg.muted" mb={1}>Project</Text>
+              <Text fontSize="lg" fontWeight="semibold" color="purple.600">
+                {prj}
+              </Text>
+            </Box>
+          )}
           <Box>
             <Text fontSize="sm" color="fg.muted" mb={1}>Translation Units</Text>
             <Text fontSize="lg" fontWeight="medium">
