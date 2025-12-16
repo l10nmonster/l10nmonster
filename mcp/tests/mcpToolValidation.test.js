@@ -352,16 +352,16 @@ describe('MCP Tool Input Validation and Output', () => {
                 assert.ok(result2.isError);
             });
 
-            it('should require channel parameter', async () => {
+            it('should query all channels when channel is omitted', async () => {
                 const handler = SourceQueryTool.handler(mockMM);
                 const result = await handler({
                     sourceLang: 'en',
                     targetLang: 'fr'
                 });
-                
-                assert.ok(result.isError);
-                const payload = JSON.parse(result.content[1].text);
-                assert.strictEqual(payload.code, 'INVALID_INPUT');
+
+                assert.ok(!result.isError);
+                const json = JSON.parse(result.content[0].text);
+                assert.ok(json.translationUnits);
             });
 
             it('should accept optional whereCondition', async () => {
@@ -385,16 +385,18 @@ describe('MCP Tool Input Validation and Output', () => {
                 assert.ok(!result2.isError);
             });
 
-            it('should reject empty channel', async () => {
+            it('should treat empty channel as query all channels', async () => {
                 const handler = SourceQueryTool.handler(mockMM);
                 const result = await handler({
                     sourceLang: 'en',
                     targetLang: 'fr',
                     channel: ''
                 });
-                
-                // Empty string should fail Zod validation (string().min(1) implicit)
-                assert.ok(result.isError);
+
+                // Empty string channel is falsy, so queries all channels
+                assert.ok(!result.isError);
+                const json = JSON.parse(result.content[0].text);
+                assert.ok(json.translationUnits);
             });
         });
 

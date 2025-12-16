@@ -25,10 +25,10 @@ You can write your own where conditions against the following columns:
             [ '[whereCondition]', 'where condition against sources' ],
         ],
         requiredOptions: [
-            [ '--channel <channelId>', 'channel id' ],
             [ '--lang <srcLang,tgtLang>', 'source and target language pair' ],
         ],
         options: [
+            [ '--channel <channel1,...>', 'limit to specified channels' ],
             [ '--provider <name,...>', 'use the specified providers' ],
             [ '--push', 'push content to providers' ],
             [ '--skipQualityCheck', 'skip quality check' ],
@@ -45,13 +45,14 @@ You can write your own where conditions against the following columns:
         if (!targetLang) {
             throw new Error('Missing target language');
         }
-        const channelId = options.channel;
-        if (!channelId) {
-            throw new Error('Missing channel id');
-        }
+        const channels = options.channel ? (Array.isArray(options.channel) ? options.channel : options.channel.split(',')) : mm.rm.channelIds;
         const jobs = [];
         const tm = mm.tmm.getTM(sourceLang, targetLang);
-        const tus = await tm.querySource(channelId, options.whereCondition ?? 'true');
+        const tus = [];
+        for (const channelId of channels) {
+            const channelTus = await tm.querySource(channelId, options.whereCondition ?? 'true');
+            tus.push(...channelTus);
+        }
         if (tus.length === 0) {
             consoleLog`No content returned`;
         } else {

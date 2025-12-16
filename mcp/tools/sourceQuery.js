@@ -32,7 +32,8 @@ You can write your own where conditions using SQL syntaxt against the following 
             targetLang: z.string()
                 .describe('Target language code (e.g., "es-419")'),
             channel: z.string()
-                .describe('Channel ID to query sources from'),
+                .optional()
+                .describe('Channel ID to query sources from. If omitted, queries all channels.'),
             whereCondition: z.string()
                 .optional()
                 .describe('SQL WHERE condition against sources (default: "true" to match all)'),
@@ -40,12 +41,14 @@ You can write your own where conditions using SQL syntaxt against the following 
     };
 
     static async execute(mm, args) {
-        const { sourceLang, targetLang, channel: channelId } = args;
+        const { sourceLang, targetLang, channel } = args;
         const whereCondition = args.whereCondition ?? 'true';
 
         const availableChannels = mm.rm.channelIds ?? [];
-        if (availableChannels.length > 0 && !availableChannels.includes(channelId)) {
-            throw new McpNotFoundError(`Channel "${channelId}" not found`, {
+        const channels = channel ? [channel] : availableChannels;
+
+        if (channel && availableChannels.length > 0 && !availableChannels.includes(channel)) {
+            throw new McpNotFoundError(`Channel "${channel}" not found`, {
                 hints: [`Available channels: ${availableChannels.join(', ')}`]
             });
         }
@@ -61,19 +64,22 @@ You can write your own where conditions using SQL syntaxt against the following 
             });
         }
 
-        let tus;
-        try {
-            tus = await tm.querySource(channelId, whereCondition);
-        } catch (error) {
-            throw new McpToolError('Failed to execute query against source snapshot', {
-                code: 'QUERY_FAILED',
-                hints: [
-                    'Verify that your SQL WHERE clause only references supported columns.',
-                    'Escaping: wrap string literals in single quotes.'
-                ],
-                details: { channelId, whereCondition },
-                cause: error
-            });
+        const tus = [];
+        for (const channelId of channels) {
+            try {
+                const channelTus = await tm.querySource(channelId, whereCondition);
+                tus.push(...channelTus);
+            } catch (error) {
+                throw new McpToolError('Failed to execute query against source snapshot', {
+                    code: 'QUERY_FAILED',
+                    hints: [
+                        'Verify that your SQL WHERE clause only references supported columns.',
+                        'Escaping: wrap string literals in single quotes.'
+                    ],
+                    details: { channelId, whereCondition },
+                    cause: error
+                });
+            }
         }
 
         return {
