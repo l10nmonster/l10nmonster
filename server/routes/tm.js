@@ -3,15 +3,22 @@ import { logInfo, logVerbose, logError } from '@l10nmonster/core';
 // Helper function to process search terms - handles exact vs partial matching
 function processSearchTerm(term) {
     if (!term) return undefined;
-    
+
     // Check if term is surrounded by double quotes
     if (term.startsWith('"') && term.endsWith('"') && term.length >= 2) {
         // Extract the content inside quotes for exact match
         return term.slice(1, -1);
     }
-    
+
     // Default partial match behavior
     return `%${term}%`;
+}
+
+// Helper function to parse multi-value parameters (comma-separated)
+function parseMultiValue(value) {
+    if (!value) return undefined;
+    const values = value.split(',').map(v => v.trim()).filter(Boolean);
+    return values.length > 0 ? values : undefined;
 }
 
 export function setupTmRoutes(router, mm) {
@@ -76,15 +83,15 @@ export function setupTmRoutes(router, mm) {
                 jobGuid: processSearchTerm(jobGuid),
                 rid: processSearchTerm(rid),
                 sid: processSearchTerm(sid),
-                channel: processSearchTerm(channel),
+                channel: parseMultiValue(channel),
                 nsrc: processSearchTerm(nsrc),
                 ntgt: processSearchTerm(ntgt),
                 notes: processSearchTerm(notes),
-                tconf: processSearchTerm(tconf),
-                q,
+                tconf: parseMultiValue(tconf),
+                q: parseMultiValue(q),
                 minTS,
                 maxTS,
-                translationProvider: processSearchTerm(translationProvider),
+                translationProvider: parseMultiValue(translationProvider),
                 onlyTNotes: onlyTNotes === '1',
                 ...(active === '1' && { maxRank: 1 }),
             });

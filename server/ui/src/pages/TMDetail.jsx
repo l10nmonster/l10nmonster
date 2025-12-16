@@ -17,7 +17,9 @@ import {
   Icon,
   Select,
   Link,
-  Popover
+  Popover,
+  Menu,
+  Portal
 } from '@chakra-ui/react';
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import { fetchApi } from '../utils/api';
@@ -115,6 +117,135 @@ const FilterInput = ({ columnName, label, value, onChange, onFocus, onBlur, inpu
   );
 };
 
+// Multi-select filter component using Menu with manual checkbox state
+const MultiSelectFilter = ({ value = [], onChange, options = [], placeholder }) => {
+  const selectedCount = value.length;
+  // Show actual value if only 1 selected, otherwise show count
+  const displayText = selectedCount === 0
+    ? placeholder
+    : selectedCount === 1
+      ? value[0]
+      : `${selectedCount} selected`;
+
+  const handleToggle = (option) => {
+    const optionStr = String(option);
+    if (value.includes(optionStr)) {
+      onChange(value.filter(v => v !== optionStr));
+    } else {
+      onChange([...value, optionStr]);
+    }
+  };
+
+  const handleClearAll = (e) => {
+    e.stopPropagation();
+    onChange([]);
+  };
+
+  if (!options || options.length === 0) {
+    return (
+      <Box
+        fontSize="xs"
+        px={2}
+        py={1}
+        bg="gray.subtle"
+        borderRadius="sm"
+        color="fg.muted"
+      >
+        No options
+      </Box>
+    );
+  }
+
+  return (
+    <Menu.Root closeOnSelect={false}>
+      <Menu.Trigger asChild>
+        <Button
+          size="xs"
+          variant="outline"
+          bg="yellow.subtle"
+          borderColor="border.default"
+          fontWeight="normal"
+          w="100%"
+          justifyContent="space-between"
+          _hover={{ bg: "yellow.muted" }}
+        >
+          <Flex align="center" justify="space-between" w="100%" gap={1}>
+            <Text fontSize="xs" color={selectedCount > 0 ? "fg.default" : "fg.muted"} overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">
+              {displayText}
+            </Text>
+            <Text fontSize="xs" color="fg.muted">▼</Text>
+          </Flex>
+        </Button>
+      </Menu.Trigger>
+      <Portal>
+        <Menu.Positioner>
+          <Menu.Content
+            minW="150px"
+            maxH="250px"
+            overflow="auto"
+            bg="white"
+            borderWidth="1px"
+            borderColor="border.default"
+            borderRadius="md"
+            shadow="lg"
+            zIndex={1000}
+          >
+            {selectedCount > 0 && (
+              <>
+                <Menu.Item
+                  value="__clear__"
+                  onClick={handleClearAll}
+                  color="red.500"
+                  fontSize="xs"
+                >
+                  Clear All ({selectedCount})
+                </Menu.Item>
+                <Menu.Separator />
+              </>
+            )}
+            {options
+              .slice()
+              .sort((a, b) => String(a).localeCompare(String(b)))
+              .map((option) => {
+                const optionStr = String(option);
+                const isSelected = value.includes(optionStr);
+                return (
+                  <Menu.Item
+                    key={option}
+                    value={optionStr}
+                    onClick={() => handleToggle(option)}
+                    fontSize="xs"
+                  >
+                    <Flex align="center" gap={2}>
+                      <Box
+                        w="14px"
+                        h="14px"
+                        borderWidth="1px"
+                        borderColor={isSelected ? "blue.500" : "gray.300"}
+                        borderRadius="sm"
+                        bg={isSelected ? "blue.500" : "white"}
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="center"
+                      >
+                        {isSelected && (
+                          <Text color="white" fontSize="10px" lineHeight="1">
+                            ✓
+                          </Text>
+                        )}
+                      </Box>
+                      <Text>{option}</Text>
+                    </Flex>
+                  </Menu.Item>
+                );
+              })}
+          </Menu.Content>
+        </Menu.Positioner>
+      </Portal>
+    </Menu.Root>
+  );
+};
+
 const TMDetail = () => {
   const { sourceLang, targetLang } = useParams();
   const navigate = useNavigate();
@@ -122,7 +253,14 @@ const TMDetail = () => {
   
   const [selectedRows, setSelectedRows] = useState(new Set());
   
+  // Helper to parse array params from URL
+  const parseArrayParam = (param) => {
+    const value = searchParams.get(param);
+    return value ? value.split(',').filter(Boolean) : [];
+  };
+
   // Initialize filters from URL parameters
+  // Multi-select filters (channel, tconf, q, translationProvider) use arrays
   const [filters, setFilters] = useState(() => ({
     guid: searchParams.get('guid') || '',
     nid: searchParams.get('nid') || '',
@@ -130,11 +268,11 @@ const TMDetail = () => {
     sid: searchParams.get('sid') || '',
     nsrc: searchParams.get('nsrc') || '',
     ntgt: searchParams.get('ntgt') || '',
-    tconf: searchParams.get('tconf') || '',
-    q: searchParams.get('q') || '',
-    translationProvider: searchParams.get('translationProvider') || '',
+    tconf: parseArrayParam('tconf'),
+    q: parseArrayParam('q'),
+    translationProvider: parseArrayParam('translationProvider'),
     jobGuid: searchParams.get('jobGuid') || '',
-    channel: searchParams.get('channel') || '',
+    channel: parseArrayParam('channel'),
     minTS: searchParams.get('minTS') || '',
     maxTS: searchParams.get('maxTS') || ''
   }));
@@ -155,6 +293,7 @@ const TMDetail = () => {
   });
   
   // Separate state for input values to prevent focus loss
+  // Multi-select filters use arrays, text inputs use strings
   const [inputValues, setInputValues] = useState(() => ({
     guid: searchParams.get('guid') || '',
     nid: searchParams.get('nid') || '',
@@ -162,11 +301,11 @@ const TMDetail = () => {
     sid: searchParams.get('sid') || '',
     nsrc: searchParams.get('nsrc') || '',
     ntgt: searchParams.get('ntgt') || '',
-    tconf: searchParams.get('tconf') || '',
-    q: searchParams.get('q') || '',
-    translationProvider: searchParams.get('translationProvider') || '',
+    tconf: parseArrayParam('tconf'),
+    q: parseArrayParam('q'),
+    translationProvider: parseArrayParam('translationProvider'),
     jobGuid: searchParams.get('jobGuid') || '',
-    channel: searchParams.get('channel') || '',
+    channel: parseArrayParam('channel'),
     minTS: searchParams.get('minTS') || '',
     maxTS: searchParams.get('maxTS') || ''
   }));
@@ -209,9 +348,24 @@ const TMDetail = () => {
         targetLang,
         page: pageParam.toString(),
         limit: '100',
-        ...Object.fromEntries(Object.entries(filters).filter(([_, value]) => value.trim() !== '')),
         ...(showOnlyActive && { active: '1' }),
         ...(showTNotes && { onlyTNotes: '1' })
+      });
+
+      // Add string filters (non-empty strings only)
+      const stringFilters = ['guid', 'nid', 'rid', 'sid', 'nsrc', 'ntgt', 'jobGuid'];
+      stringFilters.forEach(key => {
+        if (filters[key] && filters[key].trim() !== '') {
+          queryParams.set(key, filters[key]);
+        }
+      });
+
+      // Add multi-select filters (arrays as comma-separated values)
+      const arrayFilters = ['channel', 'tconf', 'q', 'translationProvider'];
+      arrayFilters.forEach(key => {
+        if (Array.isArray(filters[key]) && filters[key].length > 0) {
+          queryParams.set(key, filters[key].join(','));
+        }
       });
 
       // Add timestamp filters if they exist
@@ -284,9 +438,15 @@ const TMDetail = () => {
   const updateUrlParams = useCallback((newFilters, newShowOnlyActive, newShowTechnicalColumns, newShowTNotes, newShowOnlyLeveraged) => {
     const params = new URLSearchParams();
 
-    // Add non-empty filters to URL
+    // Add non-empty filters to URL (handle both strings and arrays)
     Object.entries(newFilters).forEach(([key, value]) => {
-      if (value.trim() !== '') {
+      if (Array.isArray(value)) {
+        // Array filters (multi-select) - join as comma-separated
+        if (value.length > 0) {
+          params.set(key, value.join(','));
+        }
+      } else if (typeof value === 'string' && value.trim() !== '') {
+        // String filters
         params.set(key, value);
       }
     });
@@ -638,15 +798,10 @@ const TMDetail = () => {
                 <Box as="th" p={3} borderBottom="1px" borderColor="border.default" minW="120px" textAlign="left">
                   <VStack gap={2} align="stretch">
                     <Text fontSize="sm" fontWeight="bold" color="blue.600">Channel</Text>
-                    <FilterInput
-                      columnName="channel"
-                      label="Channel"
+                    <MultiSelectFilter
                       value={inputValues.channel}
                       onChange={(value) => handleFilterChange('channel', value)}
-                      onFocus={() => handleInputFocus('channel')}
-                      onBlur={handleInputBlur}
-                      inputRef={(el) => { if (el) inputRefs.current.channel = el; }}
-                      lowCardinalityOptions={lowCardinalityColumns.channel}
+                      options={lowCardinalityColumns.channel}
                       placeholder="Channel..."
                     />
                   </VStack>
@@ -702,15 +857,10 @@ const TMDetail = () => {
                 <Box as="th" p={3} borderBottom="1px" borderColor="border.default" minW="60px" textAlign="center">
                   <VStack gap={2} align="stretch">
                     <Text fontSize="sm" fontWeight="bold" color="blue.600">TConf</Text>
-                    <FilterInput
-                      columnName="tconf"
-                      label="TConf"
+                    <MultiSelectFilter
                       value={inputValues.tconf}
                       onChange={(value) => handleFilterChange('tconf', value)}
-                      onFocus={() => handleInputFocus('tconf')}
-                      onBlur={handleInputBlur}
-                      inputRef={(el) => { if (el) inputRefs.current.tconf = el; }}
-                      lowCardinalityOptions={lowCardinalityColumns.tconf}
+                      options={lowCardinalityColumns.tconf}
                       placeholder="TConf..."
                     />
                   </VStack>
@@ -718,15 +868,10 @@ const TMDetail = () => {
                 <Box as="th" p={3} borderBottom="1px" borderColor="border.default" minW="40px" textAlign="center">
                   <VStack gap={2} align="stretch">
                     <Text fontSize="sm" fontWeight="bold" color="blue.600">q</Text>
-                    <FilterInput
-                      columnName="q"
-                      label="Quality"
+                    <MultiSelectFilter
                       value={inputValues.q}
                       onChange={(value) => handleFilterChange('q', value)}
-                      onFocus={() => handleInputFocus('q')}
-                      onBlur={handleInputBlur}
-                      inputRef={(el) => { if (el) inputRefs.current.q = el; }}
-                      lowCardinalityOptions={lowCardinalityColumns.q}
+                      options={lowCardinalityColumns.q}
                       placeholder="Quality..."
                     />
                   </VStack>
@@ -734,15 +879,10 @@ const TMDetail = () => {
                 <Box as="th" p={3} borderBottom="1px" borderColor="border.default" minW="120px" textAlign="left">
                   <VStack gap={2} align="stretch">
                     <Text fontSize="sm" fontWeight="bold" color="blue.600">Provider</Text>
-                    <FilterInput
-                      columnName="translationProvider"
-                      label="Provider"
+                    <MultiSelectFilter
                       value={inputValues.translationProvider}
                       onChange={(value) => handleFilterChange('translationProvider', value)}
-                      onFocus={() => handleInputFocus('translationProvider')}
-                      onBlur={handleInputBlur}
-                      inputRef={(el) => { if (el) inputRefs.current.translationProvider = el; }}
-                      lowCardinalityOptions={lowCardinalityColumns.translationProvider}
+                      options={lowCardinalityColumns.translationProvider}
                       placeholder="Provider..."
                     />
                   </VStack>

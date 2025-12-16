@@ -426,6 +426,31 @@ export class TuDAL {
         return tus;
     }
 
+    /**
+     * Search translation units with filtering.
+     * @param {number} offset - Number of records to skip for pagination.
+     * @param {number} limit - Maximum number of records to return.
+     * @param {Object} options - Search filter options.
+     * @param {string} [options.guid] - Filter by GUID (supports SQL LIKE patterns).
+     * @param {string} [options.nid] - Filter by NID (supports SQL LIKE patterns).
+     * @param {string} [options.jobGuid] - Filter by job GUID (supports SQL LIKE patterns).
+     * @param {string} [options.rid] - Filter by resource ID (supports SQL LIKE patterns).
+     * @param {string} [options.sid] - Filter by segment ID (supports SQL LIKE patterns).
+     * @param {string[]} [options.channel] - Filter by channel(s) - array for multi-select (exact match).
+     * @param {string} [options.nsrc] - Filter by source text (supports SQL LIKE patterns).
+     * @param {string} [options.ntgt] - Filter by target text (supports SQL LIKE patterns).
+     * @param {string} [options.notes] - Filter by notes (supports SQL LIKE patterns).
+     * @param {string[]} [options.tconf] - Filter by translation confidence(s) - array of string representations of integers.
+     *                                     SQL casts JSON values to INTEGER for comparison with DB integers.
+     * @param {number} [options.maxRank=10] - Maximum rank to include (1 = only active/best translations).
+     * @param {boolean} [options.onlyTNotes] - If true, only return TUs with translator notes.
+     * @param {string[]} [options.q] - Filter by quality score(s) - array of string representations of integers.
+     *                                  SQL casts JSON values to INTEGER for comparison with DB integers.
+     * @param {number} [options.minTS] - Minimum timestamp (milliseconds since epoch).
+     * @param {number} [options.maxTS] - Maximum timestamp (milliseconds since epoch).
+     * @param {string[]} [options.translationProvider] - Filter by provider(s) - array for multi-select (exact match).
+     * @returns {Promise<Object[]>} Array of matching translation units.
+     */
     async search(offset, limit, { guid, nid, jobGuid, rid, sid, channel, nsrc, ntgt, notes, tconf, maxRank,onlyTNotes, q, minTS, maxTS, translationProvider }) {
         const activeGuidsCTE = this.#activeGuidsCTE; // we need to ensure all tables are created before we can join them
         this.#stmt.search ??= this.#db.prepare(/* sql */`
@@ -456,23 +481,43 @@ export class TuDAL {
                 AND (jobGuid LIKE @jobGuid OR @jobGuid IS NULL)
                 AND (rid LIKE @rid OR @rid IS NULL)
                 AND (sid LIKE @sid OR @sid IS NULL)
-                AND (channel LIKE @channel OR @channel IS NULL)
+                AND (channel IN (SELECT value FROM JSON_EACH(@channel)) OR @channel IS NULL)
                 AND (flattenNormalizedSourceToOrdinal(nsrc) LIKE @nsrc OR @nsrc IS NULL)
                 AND (flattenNormalizedSourceToOrdinal(ntgt) LIKE @ntgt OR @ntgt IS NULL)
                 AND (notes LIKE @notes OR @notes IS NULL)
-                AND (tconf LIKE @tconf OR @tconf IS NULL)
+                AND (tuProps->>'$.tconf' IN (SELECT CAST(value AS INTEGER) FROM JSON_EACH(@tconf)) OR @tconf IS NULL)
                 AND rank <= @maxRank
                 AND (NOT @onlyTNotes OR tnotes IS NOT NULL)
-                AND (q = @q OR @q IS NULL)
+                AND (q IN (SELECT CAST(value AS INTEGER) FROM JSON_EACH(@q)) OR @q IS NULL)
                 AND (ts >= @minTS OR @minTS IS NULL)
                 AND (ts <= @maxTS OR @maxTS IS NULL)
-                AND (translationProvider LIKE @translationProvider OR @translationProvider IS NULL)
+                AND (translationProvider IN (SELECT value FROM JSON_EACH(@translationProvider)) OR @translationProvider IS NULL)
             ORDER BY ts DESC, rid, tuOrder
             LIMIT @limit
             OFFSET @offset;
         `);
         try {
-            const searchParams = { offset, limit, guid, nid, jobGuid, rid, sid, channel, nsrc, ntgt, notes, tconf, maxRank: maxRank ?? 10, onlyTNotes: onlyTNotes ? 1 : 0, q, minTS, maxTS, translationProvider };
+            // Convert array params to JSON strings for SQLite JSON_EACH
+            const searchParams = {
+                offset,
+                limit,
+                guid,
+                nid,
+                jobGuid,
+                rid,
+                sid,
+                channel: Array.isArray(channel) ? JSON.stringify(channel) : null,
+                nsrc,
+                ntgt,
+                notes,
+                tconf: Array.isArray(tconf) ? JSON.stringify(tconf) : null,
+                maxRank: maxRank ?? 10,
+                onlyTNotes: onlyTNotes ? 1 : 0,
+                q: Array.isArray(q) ? JSON.stringify(q) : null,
+                minTS,
+                maxTS,
+                translationProvider: Array.isArray(translationProvider) ? JSON.stringify(translationProvider) : null
+            };
             const results = this.#stmt.search.all(searchParams);
             return results.map(sqlTransformer.decode);
         } catch (error) {
