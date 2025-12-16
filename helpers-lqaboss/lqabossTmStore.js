@@ -41,7 +41,7 @@ export class LQABossTmStore {
             for (const [ fileName ] of files) {
                 if (fileName.endsWith('.json')) {
                     const job = JSON.parse(await this.#storageDelegate.getFile(fileName));
-                    if (!job.job.sourceLang || !job.job.targetLang || !job.job.jobGuid) {
+                    if (!job.sourceLang || !job.targetLang || !job.jobGuid) {
                         continue;
                     }
                     !job.updatedAt && (job.updatedAt = '2025-08-29T21:29:36.269Z'); // workaround for old jobs that don't have an updatedAt
