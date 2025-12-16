@@ -42,7 +42,12 @@ export class TuDAL {
         db.function(
             'flattenNormalizedSourceToOrdinal',
             { deterministic: true },
-            nsrc => utils.flattenNormalizedSourceToOrdinal(JSON.parse(nsrc))
+            nsrc => {
+                if (nsrc === null || nsrc === undefined) return null;
+                const parsed = JSON.parse(nsrc);
+                if (!Array.isArray(parsed)) return null;
+                return utils.flattenNormalizedSourceToOrdinal(parsed);
+            }
         );
     }
 
@@ -53,9 +58,13 @@ export class TuDAL {
                 const channelDAL = this.#DAL.channel(channelId);
                 segmentTables.push([channelDAL.segmentsTable, channelId]);
             }
+            // Handle the case when there are no active channels - provide an empty CTE
+            const unionQuery = segmentTables.length > 0
+                ? segmentTables.map(([table, channelId]) => `SELECT guid, '${channelId}' AS channel FROM ${table}`).join(' UNION ALL ')
+                : `SELECT NULL AS guid, NULL AS channel WHERE 0`; // Empty result set
             this.#lazyActiveGuidsCTE = /* sql */`
                 active_guids AS (
-                    ${segmentTables.map(([table, channelId]) => `SELECT guid, '${channelId}' AS channel FROM ${table}`).join(' UNION ALL ')}
+                    ${unionQuery}
                 )
             `;
         }
@@ -463,10 +472,11 @@ export class TuDAL {
             OFFSET @offset;
         `);
         try {
-            const tus = this.#stmt.search.all({ offset, limit, guid, nid, jobGuid, rid, sid, channel, nsrc, ntgt, notes, tconf, maxRank: maxRank ?? 10, onlyTNotes: onlyTNotes ? 1 : 0, q, minTS, maxTS, translationProvider }).map(sqlTransformer.decode);
-            return tus;
+            const searchParams = { offset, limit, guid, nid, jobGuid, rid, sid, channel, nsrc, ntgt, notes, tconf, maxRank: maxRank ?? 10, onlyTNotes: onlyTNotes ? 1 : 0, q, minTS, maxTS, translationProvider };
+            const results = this.#stmt.search.all(searchParams);
+            return results.map(sqlTransformer.decode);
         } catch (error) {
-            throw new Error(`${error.code}: ${error.message}`);
+            throw new Error(`TM search failed: ${error.message}`);
         }
     }
 

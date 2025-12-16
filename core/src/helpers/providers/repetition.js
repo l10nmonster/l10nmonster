@@ -202,6 +202,10 @@ export class Repetition extends BaseTranslationProvider {
         return matchedTus;
     }
 
+    async getTranslatedTus(job) {
+        return job.tus.filter(tu => !tu.inflight);
+    }
+
     async info() {
         const info = await super.info();
         info.description.push(styleString`Quality penalties: qualified: ${this.qualifiedPenalty ?? 0}, unqualified: ${this.unqualifiedPenalty ?? 0}, notes mismatch: ${this.notesMismatchPenalty ?? 0}, group: ${this.groupPenalty ?? 0}`);

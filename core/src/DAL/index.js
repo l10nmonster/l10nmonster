@@ -50,7 +50,12 @@ export default class SQLiteDALManager {
             this.#lazySourceDB.function(
                 'flattenNormalizedSourceToOrdinal',
                 { deterministic: true },
-                nstr => utils.flattenNormalizedSourceToOrdinal(JSON.parse(nstr))
+                nstr => {
+                    if (nstr === null || nstr === undefined) return null;
+                    const parsed = JSON.parse(nstr);
+                    if (!Array.isArray(parsed)) return null;
+                    return utils.flattenNormalizedSourceToOrdinal(parsed);
+                }
             );
         }
         return this.#lazySourceDB;
