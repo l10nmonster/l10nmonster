@@ -1,4 +1,4 @@
-import { logInfo, logVerbose } from '@l10nmonster/core';
+import { logInfo, logVerbose, logError } from '@l10nmonster/core';
 
 // Helper function to process search terms - handles exact vs partial matching
 function processSearchTerm(term) {
@@ -22,7 +22,7 @@ export function setupTmRoutes(router, mm) {
             logVerbose`Returned ${availableLangPairs.length} language pairs`;
             res.json(availableLangPairs);
         } catch (error) {
-            logInfo`Error in /tm/stats: ${error.message}`;
+            logError`Error in /tm/stats: ${error.message}`;
             res.status(500).json({
                 error: 'Failed to get TM stats',
                 message: error.message
@@ -38,7 +38,7 @@ export function setupTmRoutes(router, mm) {
             logVerbose`Returned TM stats for ${req.params.sourceLang}->${req.params.targetLang}`;
             res.json(stats);
         } catch (error) {
-            logInfo`Error in /tm/stats/${req.params.sourceLang}/${req.params.targetLang}: ${error.message}`;
+            logError`Error in /tm/stats/${req.params.sourceLang}/${req.params.targetLang}: ${error.message}`;
             res.status(500).json({
                 error: 'Failed to get TM stats for language pair',
                 message: error.message
@@ -55,7 +55,7 @@ export function setupTmRoutes(router, mm) {
             logVerbose`Returned TM low cardinality columns for ${sourceLang}->${targetLang}`;
             res.json({ channel: mm.rm.channelIds, ...data });
         } catch (error) {
-            logInfo`Error in /tm/lowCardinalityColumns/${sourceLang}/${targetLang}: ${error.message}`;
+            logError`Error in /tm/lowCardinalityColumns/${sourceLang}/${targetLang}: ${error.message}`;
             res.status(500).json({
                 error: 'Failed to get low cardinality columns',
                 message: error.message
@@ -91,7 +91,8 @@ export function setupTmRoutes(router, mm) {
             logVerbose`Returned TM search results for ${data.length} entries`;
             res.json({ data, page: pageInt, limit: limitInt });
         } catch (error) {
-            logInfo`Error in /tm/search: ${error.message}`;
+            logError`Error in /tm/search: ${error.message}`;
+            logVerbose`Stack trace: ${error.stack}`;
             res.status(500).json({
                 error: 'Failed to search translation memory',
                 message: error.message
@@ -124,7 +125,7 @@ export function setupTmRoutes(router, mm) {
             res.json(job);
             
         } catch (error) {
-            logInfo`Error fetching job ${req.params.jobGuid}: ${error.message}`;
+            logError`Error fetching job ${req.params.jobGuid}: ${error.message}`;
             res.status(500).json({
                 error: 'Failed to fetch job',
                 message: error.message

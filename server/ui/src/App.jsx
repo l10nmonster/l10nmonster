@@ -2,6 +2,7 @@ import React, { useState, lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation, Link } from 'react-router-dom';
 import { Box, Container, Heading, Spinner, Flex, Text } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import ErrorBoundary from './components/ErrorBoundary.jsx';
 
 // Lazy load tab content components
 const Welcome = lazy(() => import('./pages/Welcome.jsx'));
@@ -178,13 +179,15 @@ function MainLayout({ children }) {
       </Box>
 
       {/* Route-based Content */}
-      <Suspense fallback={
-        <Box display="flex" justifyContent="center" mt={10}>
-          <Spinner size="xl" />
-        </Box>
-      }>
-        {children}
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={
+          <Box display="flex" justifyContent="center" mt={10}>
+            <Spinner size="xl" />
+          </Box>
+        }>
+          {children}
+        </Suspense>
+      </ErrorBoundary>
     </Box>
   );
 }
@@ -195,6 +198,8 @@ const queryClient = new QueryClient({
     queries: {
       staleTime: 5 * 60 * 1000, // 5 minutes
       gcTime: 10 * 60 * 1000, // 10 minutes
+      retry: 1, // Only retry once on failure, prevents infinite loop on persistent errors
+      retryDelay: 1000, // Wait 1 second before retry
     },
   },
 });

@@ -25,6 +25,7 @@ import { addTMTUsToCart } from '../utils/cartUtils.jsx';
 
 // Helper function to flatten normalized source/target arrays
 function flattenNormalizedSourceToOrdinal(nsrc) {
+  if (!Array.isArray(nsrc)) return '';
   return nsrc.map(e => (typeof e === 'string' ? e : `{{${e.t}}}`)).join('');
 }
 
