@@ -34,8 +34,16 @@ export class TM {
         return groupObjectsByNestedProps(status, [ 'prj' ]);
     }
 
-    async getUntranslatedContent(channelId, limit = 5000) {
-        return await this.#tuDAL.getUntranslatedContent(this.#DAL.channel(channelId), limit);
+    /**
+     * Get untranslated content from a channel.
+     * @param {string} channelId - The channel ID to query.
+     * @param {Object} [options] - Options for the query.
+     * @param {number} [options.limit=5000] - Maximum number of segments to return.
+     * @param {string[]} [options.prj] - Array of project names to filter by.
+     * @returns {Promise<Object[]>} Array of untranslated translation units.
+     */
+    async getUntranslatedContent(channelId, { limit = 5000, prj } = {}) {
+        return await this.#tuDAL.getUntranslatedContent(this.#DAL.channel(channelId), { limit, prj });
     }
 
     async querySource(channelId, whereCondition) {

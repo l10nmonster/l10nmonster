@@ -37,7 +37,7 @@ export class source_untranslated {
                 status[targetLang] ??= {};
                 status[targetLang][sourceLang] ??= {};
                 const tm = mm.tmm.getTM(sourceLang, targetLang);
-                const tus = await tm.getUntranslatedContent(channelId, options.limit ?? 5000);
+                const tus = await tm.getUntranslatedContent(channelId, { limit: options.limit ?? 5000, prj });
                 if (tus.length === 0) {
                     consoleLog`  ‣ ${sourceLang} → ${targetLang}: fully translated`;
                 } else {

@@ -275,7 +275,15 @@ export class TuDAL {
         return getActiveContentTranslationStatusStmt.all(this.#sourceLang, this.#targetLang);
     }
 
-    async getUntranslatedContent(channelDAL, limit = 100) {
+    /**
+     * Get untranslated content from a channel.
+     * @param {Object} channelDAL - The channel DAL instance.
+     * @param {Object} [options] - Options for the query.
+     * @param {number} [options.limit=100] - Maximum number of segments to return.
+     * @param {string[]} [options.prj] - Array of project names to filter by.
+     * @returns {Promise<Object[]>} Array of untranslated translation units.
+     */
+    async getUntranslatedContent(channelDAL, { limit = 100, prj } = {}) {
         const getUntranslatedContentStmt = this.#db.prepare(/* sql */`
             SELECT
                 '${channelDAL.channelId}' channel,
@@ -296,13 +304,19 @@ export class TuDAL {
                 JSON_EACH(seg.plan) p
                 LEFT JOIN ${this.#tusTable} tu ON seg.guid = tu.guid
             WHERE
-                sourceLang = ? AND p.key = ? 
+                sourceLang = @sourceLang AND p.key = @targetLang
                 AND (tu.rank = 1 OR tu.rank IS NULL)
                 AND (tu.q IS NULL OR (tu.q != 0 AND tu.q < p.value))
+                AND (@prj IS NULL OR COALESCE(prj, 'default') IN (SELECT value FROM JSON_EACH(@prj)))
             ORDER BY prj, rid, segOrder
-            LIMIT ?;
+            LIMIT @limit;
         `);
-        const tus = getUntranslatedContentStmt.all(this.#sourceLang, this.#targetLang, limit).map(sqlTransformer.decode);
+        const tus = getUntranslatedContentStmt.all({
+            sourceLang: this.#sourceLang,
+            targetLang: this.#targetLang,
+            prj: prj?.length ? JSON.stringify(prj) : null,
+            limit
+        }).map(sqlTransformer.decode);
         return tus;
     }
 
