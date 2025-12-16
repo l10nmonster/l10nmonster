@@ -40,8 +40,13 @@ export const iosChannel = config.channel('ios', import.meta.dirname)
 export default config.l10nMonster(import.meta.dirname)
     .channel(iosChannel)
     .provider(new providers.Grandfather({ quality: 70 }))
-    .provider(new providers.InternalLeverageHoldout())
-    .provider(new providers.Repetition({ qualifiedPenalty: 1, unqualifiedPenalty: 9, notesMismatchPenalty: 1 }))
+    .provider(new providers.Repetition({
+        holdInternalLeverage: true,
+        expectedQuality: 80,
+        qualifiedPenalty: 1,
+        unqualifiedPenalty: 5,
+        notesMismatchPenalty: 100,
+    }))
     .provider(new providers.LanguageVariantProvider({
         id: 'BritishTranslator',
         dict: JSON.parse(fs.readFileSync(path.join(import.meta.dirname, 'dict.json'), 'utf-8')),

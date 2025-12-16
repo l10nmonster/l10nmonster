@@ -2,15 +2,17 @@ import { utils } from '../index.js';
 import { BaseTranslationProvider } from './baseTranslationProvider.js';
 
 /**
- * This provider prevents sending idendical sources for translation and holds them back for internal leverage later.
+ * @deprecated Use Repetition provider with holdInternalLeverage: true instead.
+ * This provider prevents sending identical sources for translation and holds them back for internal leverage later.
  */
 export class InternalLeverageHoldout extends BaseTranslationProvider {
 
     /**
-     * Initializes a new instance of the Repetition class.
+     * Initializes a new instance of the InternalLeverageHoldout class.
      * @param {Object} [options] - The parameters for the constructor.
      * @param {string} [options.id] - Global identifier for the provider.
      * @param {Object} [options.supportedPairs] - Supported pairs for the provider.
+     * @deprecated Use Repetition provider with holdInternalLeverage: true instead.
      */
     constructor(options = {}) {
         // @ts-ignore
@@ -18,6 +20,7 @@ export class InternalLeverageHoldout extends BaseTranslationProvider {
             throw new Error('Fixed quality is not supported for InternalLeverageHoldout');
         }
         super(options);
+        console.warn('InternalLeverageHoldout is deprecated. Use Repetition with holdInternalLeverage: true and expectedQuality option instead.');
     }
 
     async getAcceptedTus(job) {

@@ -17,8 +17,12 @@ export default config.l10nMonster(import.meta.dirname)
         .target(new adapters.FsTarget({
             targetPath: (lang, resourceId) => resourceId.replace('en.lproj/', `${lang}.lproj/`),
         })))
-    .provider(new providers.InternalLeverageHoldout())
-    .provider(new providers.Repetition({ qualifiedPenalty: 1, unqualifiedPenalty: 9 }))
+    .provider(new providers.Repetition({
+        holdInternalLeverage: true,
+        expectedQuality: 80,
+        qualifiedPenalty: 1,
+        unqualifiedPenalty: 9,
+    }))
     .provider(new demo.providers.PigLatinizer({ quality: 80, supportedPairs: { en: [ 'piggy' ] } }))
     .operations({ autoSnap: false })
     .action(serve)

@@ -63,6 +63,12 @@
 /* Button label for the control that allows the user to skip the QR code step. (40 chars) */
 "SkipButtonLabel" = "SKIP";
 
+/* Button label for the control that allows the user to skip the QR code step. (40 chars) */
+"SkipButtonLabel2" = "SKIP";
+
+/* A notes mismatch is disqualifying */
+"SkipButtonLabel3" = "SKIP";
+
 /* First line of the onboarding introduction. (40 chars) */
 "OnboardingIntroLine1" = "Let's get you set up";
 
