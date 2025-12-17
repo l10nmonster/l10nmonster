@@ -25,20 +25,9 @@ const TMCard = ({ sourceLang, targetLang, providers }) => {
     >
       <VStack gap={4} align="stretch">
         {/* Language Pair Header */}
-        <Box>
-          <Box mb={2}>
-            <Link
-              as={RouterLink}
-              to={`/tm/${sourceLang}/${targetLang}`}
-              fontSize="lg"
-              fontWeight="semibold"
-              color="blue.600"
-              _hover={{ textDecoration: "underline" }}
-            >
-              {sourceLang} → {targetLang}
-            </Link>
-          </Box>
-        </Box>
+        <Text fontSize="lg" fontWeight="bold">
+            Provider Breakdown: {sourceLang} → {targetLang}
+        </Text>
 
         {/* Providers */}
         <VStack gap={3} align="stretch">

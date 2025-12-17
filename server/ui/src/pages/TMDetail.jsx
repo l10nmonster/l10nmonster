@@ -24,6 +24,7 @@ import {
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import { fetchApi } from '../utils/api';
 import { addTMTUsToCart } from '../utils/cartUtils.jsx';
+import LanguagePairSelector from '../components/LanguagePairSelector';
 
 // Helper function to flatten normalized source/target arrays
 function flattenNormalizedSourceToOrdinal(nsrc) {
@@ -32,7 +33,7 @@ function flattenNormalizedSourceToOrdinal(nsrc) {
 }
 
 // Helper component to render filter input (select for low cardinality, input otherwise)
-const FilterInput = ({ columnName, label, value, onChange, onFocus, onBlur, inputRef, lowCardinalityOptions, placeholder }) => {
+const FilterInput = ({ columnName, label, value, onChange, onFocus, onBlur, inputRef, lowCardinalityOptions, placeholder, disabled }) => {
   const hasLowCardinalityOptions = lowCardinalityOptions && lowCardinalityOptions.length > 0;
 
   if (hasLowCardinalityOptions) {
@@ -56,6 +57,7 @@ const FilterInput = ({ columnName, label, value, onChange, onFocus, onBlur, inpu
           onFocus={onFocus}
           onBlur={onBlur}
           ref={inputRef}
+          disabled={disabled}
         >
           <Text fontSize="xs" flex="1" textAlign="left" color={value ? "fg.default" : "fg.muted"}>
             {value || placeholder}
@@ -113,12 +115,13 @@ const FilterInput = ({ columnName, label, value, onChange, onFocus, onBlur, inpu
       onBlur={onBlur}
       ref={inputRef}
       bg="yellow.subtle"
+      disabled={disabled}
     />
   );
 };
 
 // Multi-select filter component using Menu with manual checkbox state
-const MultiSelectFilter = ({ value = [], onChange, options = [], placeholder }) => {
+const MultiSelectFilter = ({ value = [], onChange, options = [], placeholder, disabled }) => {
   const selectedCount = value.length;
   // Show actual value if only 1 selected, otherwise show count
   const displayText = selectedCount === 0
@@ -168,6 +171,7 @@ const MultiSelectFilter = ({ value = [], onChange, options = [], placeholder }) 
           w="100%"
           justifyContent="space-between"
           _hover={{ bg: "yellow.muted" }}
+          disabled={disabled}
         >
           <Flex align="center" justify="space-between" w="100%" gap={1}>
             <Text fontSize="xs" color={selectedCount > 0 ? "fg.default" : "fg.muted"} overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">
@@ -315,6 +319,10 @@ const TMDetail = () => {
   const urlTimeoutRef = useRef();
   const focusedInputRef = useRef(null);
   const inputRefs = useRef({});
+  const slowRequestTimeoutRef = useRef(null);
+
+  // Track slow requests (> 1 second) to show blocking overlay
+  const [isSlowRequest, setIsSlowRequest] = useState(false);
 
   // Temporary date range state for popover
   const [tempMinTS, setTempMinTS] = useState('');
@@ -340,6 +348,7 @@ const TMDetail = () => {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
+    isFetching,
   } = useInfiniteQuery({
     queryKey,
     queryFn: async ({ pageParam = 1 }) => {
@@ -583,6 +592,19 @@ const TMDetail = () => {
     };
   }, []);
 
+  // Track slow requests (> 1 second) to show blocking overlay
+  useEffect(() => {
+    if (isFetching) {
+      slowRequestTimeoutRef.current = setTimeout(() => {
+        setIsSlowRequest(true);
+      }, 1000);
+    } else {
+      clearTimeout(slowRequestTimeoutRef.current);
+      setIsSlowRequest(false);
+    }
+    return () => clearTimeout(slowRequestTimeoutRef.current);
+  }, [isFetching]);
+
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleString();
   };
@@ -610,21 +632,17 @@ const TMDetail = () => {
     );
   }
 
+  const handleLanguagePairSelect = (newSourceLang, newTargetLang) => {
+    navigate(`/tm/${newSourceLang}/${newTargetLang}`);
+  };
+
   return (
     <Box>
-      {/* Header with Add to Cart Button */}
-      <Box 
-        bg="blue.subtle" 
-        borderBottom="1px" 
-        borderColor="blue.muted" 
-        shadow="md"
-        borderLeft="4px"
-        borderLeftColor="blue.500"
-        px={6} 
-        py={4}
-        mb={6}
-      >
-        <Flex align="center" justify="space-between">
+      {/* Language Pair Selector with Header Controls */}
+      <LanguagePairSelector
+        onSelect={handleLanguagePairSelect}
+        currentPair={{ sourceLang, targetLang }}
+        triggerContent={
           <Flex align="center" gap={3}>
             <Text fontSize="md" fontWeight="semibold" color="blue.700">
               {sourceLang} → {targetLang}
@@ -633,13 +651,16 @@ const TMDetail = () => {
               <Spinner size="sm" />
             )}
           </Flex>
-          <Flex align="center" gap={3}>
+        }
+        rightContent={
+          <>
             <Flex align="center" gap={2}>
               <Text fontSize="sm" color="blue.600">Show Technical IDs</Text>
               <Checkbox.Root
                 checked={showTechnicalColumns}
                 onCheckedChange={(details) => handleShowTechnicalColumnsChange(details.checked)}
                 size="sm"
+                disabled={isSlowRequest}
               >
                 <Checkbox.HiddenInput />
                 <Checkbox.Control />
@@ -651,6 +672,7 @@ const TMDetail = () => {
                 checked={showOnlyLeveraged}
                 onCheckedChange={(details) => handleShowOnlyLeveragedChange(details.checked)}
                 size="sm"
+                disabled={isSlowRequest}
               >
                 <Checkbox.HiddenInput />
                 <Checkbox.Control />
@@ -662,6 +684,7 @@ const TMDetail = () => {
                 checked={showTNotes}
                 onCheckedChange={(details) => handleShowTNotesChange(details.checked)}
                 size="sm"
+                disabled={isSlowRequest}
               >
                 <Checkbox.HiddenInput />
                 <Checkbox.Control />
@@ -671,23 +694,47 @@ const TMDetail = () => {
               <Button
                 colorPalette="blue"
                 onClick={handleAddToCart}
+                disabled={isSlowRequest}
               >
                 Add to Cart ({selectedRows.size} {selectedRows.size === 1 ? 'TU' : 'TUs'})
               </Button>
             )}
-          </Flex>
-        </Flex>
-      </Box>
+          </>
+        }
+      />
 
       {/* Table Container */}
-      <Box 
+      <Box
         mx={6}
-        h="calc(100vh - 180px)"
-        bg="white" 
-        borderRadius="lg" 
-        shadow="sm" 
+        mt={6}
+        h="calc(100vh - 140px)"
+        bg="white"
+        borderRadius="lg"
+        shadow="sm"
         overflow="auto"
+        position="relative"
       >
+        {/* Blocking overlay for slow requests */}
+        {isSlowRequest && (
+          <Box
+            position="absolute"
+            top={0}
+            left={0}
+            right={0}
+            bottom={0}
+            bg="blackAlpha.400"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            zIndex={10}
+            borderRadius="lg"
+          >
+            <VStack gap={3} bg="white" p={6} borderRadius="md" shadow="lg">
+              <Spinner size="lg" color="blue.500" />
+              <Text color="fg.default" fontWeight="medium">Loading...</Text>
+            </VStack>
+          </Box>
+        )}
         <Box as="table" w="100%" fontSize="sm">
             <Box
               as="thead"
@@ -704,6 +751,7 @@ const TMDetail = () => {
                   <Checkbox.Root
                     checked={isAllSelected}
                     onCheckedChange={(details) => handleSelectAll(details.checked)}
+                    disabled={isSlowRequest}
                   >
                     <Checkbox.HiddenInput ref={(el) => {
                       if (el) el.indeterminate = isIndeterminate;
@@ -726,6 +774,7 @@ const TMDetail = () => {
                           ref={(el) => { if (el) inputRefs.current.guid = el; }}
                           bg="yellow.subtle"
                           key="guid-input"
+                          disabled={isSlowRequest}
                         />
                       </VStack>
                     </Box>
@@ -742,6 +791,7 @@ const TMDetail = () => {
                           ref={(el) => { if (el) inputRefs.current.nid = el; }}
                           bg="yellow.subtle"
                           key="nid-input"
+                          disabled={isSlowRequest}
                         />
                       </VStack>
                     </Box>
@@ -758,6 +808,7 @@ const TMDetail = () => {
                           ref={(el) => { if (el) inputRefs.current.jobGuid = el; }}
                           bg="yellow.subtle"
                           key="jobGuid-input"
+                          disabled={isSlowRequest}
                         />
                       </VStack>
                     </Box>
@@ -774,6 +825,7 @@ const TMDetail = () => {
                           ref={(el) => { if (el) inputRefs.current.rid = el; }}
                           bg="yellow.subtle"
                           key="rid-input"
+                          disabled={isSlowRequest}
                         />
                       </VStack>
                     </Box>
@@ -790,6 +842,7 @@ const TMDetail = () => {
                           ref={(el) => { if (el) inputRefs.current.sid = el; }}
                           bg="yellow.subtle"
                           key="sid-input"
+                          disabled={isSlowRequest}
                         />
                       </VStack>
                     </Box>
@@ -803,6 +856,7 @@ const TMDetail = () => {
                       onChange={(value) => handleFilterChange('channel', value)}
                       options={lowCardinalityColumns.channel}
                       placeholder="Channel..."
+                      disabled={isSlowRequest}
                     />
                   </VStack>
                 </Box>
@@ -827,6 +881,7 @@ const TMDetail = () => {
                       bg="yellow.subtle"
                       key="nsrc-input"
                       dir={sourceLang?.startsWith('he') || sourceLang?.startsWith('ar') ? 'rtl' : 'ltr'}
+                      disabled={isSlowRequest}
                     />
                   </VStack>
                 </Box>
@@ -851,6 +906,7 @@ const TMDetail = () => {
                       bg="yellow.subtle"
                       key="ntgt-input"
                       dir={targetLang?.startsWith('he') || targetLang?.startsWith('ar') ? 'rtl' : 'ltr'}
+                      disabled={isSlowRequest}
                     />
                   </VStack>
                 </Box>
@@ -862,6 +918,7 @@ const TMDetail = () => {
                       onChange={(value) => handleFilterChange('tconf', value)}
                       options={lowCardinalityColumns.tconf}
                       placeholder="TConf..."
+                      disabled={isSlowRequest}
                     />
                   </VStack>
                 </Box>
@@ -873,6 +930,7 @@ const TMDetail = () => {
                       onChange={(value) => handleFilterChange('q', value)}
                       options={lowCardinalityColumns.q}
                       placeholder="Quality..."
+                      disabled={isSlowRequest}
                     />
                   </VStack>
                 </Box>
@@ -884,6 +942,7 @@ const TMDetail = () => {
                       onChange={(value) => handleFilterChange('translationProvider', value)}
                       options={lowCardinalityColumns.translationProvider}
                       placeholder="Provider..."
+                      disabled={isSlowRequest}
                     />
                   </VStack>
                 </Box>
@@ -894,6 +953,7 @@ const TMDetail = () => {
                       checked={showOnlyActive}
                       onCheckedChange={(details) => handleShowOnlyActiveChange(details.checked)}
                       size="sm"
+                      disabled={isSlowRequest}
                     >
                       <Checkbox.HiddenInput />
                       <Checkbox.Control />
@@ -1054,6 +1114,7 @@ const TMDetail = () => {
                     <Checkbox.Root
                       checked={selectedRows.has(index)}
                       onCheckedChange={(details) => handleRowSelect(index, details.checked)}
+                      disabled={isSlowRequest}
                     >
                       <Checkbox.HiddenInput />
                       <Checkbox.Control />

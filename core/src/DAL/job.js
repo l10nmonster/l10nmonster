@@ -50,11 +50,11 @@ export class JobDAL {
                 sourceLang,
                 targetLang,
                 tmStore,
-                translationProvider,
                 COUNT(*) jobCount,
                 MAX(updatedAt) lastUpdatedAt
             FROM jobs
-            GROUP BY 1, 2;
+            GROUP BY 1, 2, 3
+            ORDER BY 5 DESC;
         `);
         return this.#stmt.getStats.all();
     }

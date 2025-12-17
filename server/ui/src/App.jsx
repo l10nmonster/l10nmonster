@@ -11,8 +11,9 @@ const StatusDetail = lazy(() => import('./pages/StatusDetail.jsx'));
 const Sources = lazy(() => import('./pages/Sources.jsx'));
 const SourcesDetail = lazy(() => import('./pages/SourcesDetail.jsx'));
 const SourcesResource = lazy(() => import('./pages/SourcesResource.jsx'));
-const TM = lazy(() => import('./pages/TM.jsx'));
+const TMToc = lazy(() => import('./pages/TMToc.jsx'));
 const TMDetail = lazy(() => import('./pages/TMDetail.jsx'));
+const TMByProvider = lazy(() => import('./pages/TMByProvider.jsx'));
 const Providers = lazy(() => import('./pages/Providers.jsx'));
 const Cart = lazy(() => import('./pages/Cart.jsx'));
 const Job = lazy(() => import('./pages/Job.jsx'));
@@ -247,7 +248,12 @@ function App() {
             } />
             <Route path="/tm" element={
               <MainLayout>
-                <TM />
+                <TMToc />
+              </MainLayout>
+            } />
+            <Route path="/tm/providers/:sourceLang/:targetLang" element={
+              <MainLayout>
+                <TMByProvider />
               </MainLayout>
             } />
             <Route path="/tm/:sourceLang/:targetLang" element={

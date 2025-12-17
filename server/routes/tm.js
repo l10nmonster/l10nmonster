@@ -22,6 +22,21 @@ function parseMultiValue(value) {
 }
 
 export function setupTmRoutes(router, mm) {
+    router.get('/tm/toc', async (req, res) => {
+        logInfo`/tm/toc`;
+        try {
+            const stats = await mm.tmm.getStats();
+            logVerbose`Returned TM table of contents`;
+            res.json(stats);
+        } catch (error) {
+            logError`Error in /tm/toc: ${error.message}`;
+            res.status(500).json({
+                error: 'Failed to get TM table of contents',
+                message: error.message
+            });
+        }
+    });
+
     router.get('/tm/stats', async (req, res) => {
         logInfo`/tm/stats`;
         try {
