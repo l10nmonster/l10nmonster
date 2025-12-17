@@ -12,7 +12,6 @@ export class TuDAL {
     #tusTable;
     #stmt = {}; // prepared statements
     #flatSrcIdxInitialized = false; // used to add the index as late as possible
-    #lazyActiveGuidsCTE;
 
     constructor(db, sourceLang, targetLang, DAL) {
         this.#db = db;
@@ -36,8 +35,10 @@ export class TuDAL {
                 rank INTEGER,
                 PRIMARY KEY (guid, jobGuid)
             );
-            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_jobGuid ON ${this.#tusTable} (jobGuid);
-            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_ts ON ${this.#tusTable} (ts);
+            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_jobGuid_guid ON ${this.#tusTable} (jobGuid, guid);
+            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_ts ON ${this.#tusTable} (ts DESC);
+            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_q_ts ON ${this.#tusTable} (q, ts DESC);
+            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_tconf_ts ON ${this.#tusTable} (tuProps->>'$.tconf', ts DESC);
         `);
         db.function(
             'flattenNormalizedSourceToOrdinal',
@@ -51,24 +52,22 @@ export class TuDAL {
         );
     }
 
-    get #activeGuidsCTE() {
-        if (!this.#lazyActiveGuidsCTE) {
-            const segmentTables = [];
-            for (const channelId of this.#DAL.activeChannels) {
-                const channelDAL = this.#DAL.channel(channelId);
-                segmentTables.push([channelDAL.segmentsTable, channelId]);
-            }
-            // Handle the case when there are no active channels - provide an empty CTE
-            const unionQuery = segmentTables.length > 0
-                ? segmentTables.map(([table, channelId]) => `SELECT guid, '${channelId}' AS channel FROM ${table}`).join(' UNION ALL ')
-                : `SELECT NULL AS guid, NULL AS channel WHERE 0`; // Empty result set
-            this.#lazyActiveGuidsCTE = /* sql */`
-                active_guids AS (
-                    ${unionQuery}
-                )
-            `;
+    #getActiveGuidsCTE(channelList) {
+        const segmentTables = [];
+        for (const channelId of this.#DAL.activeChannels) {
+            if (channelList && !channelList.includes(channelId)) continue;
+            const channelDAL = this.#DAL.channel(channelId);
+            segmentTables.push([channelDAL.segmentsTable, channelId]);
         }
-        return this.#lazyActiveGuidsCTE;
+        // Handle the case when there are no active channels - provide an empty CTE
+        const unionQuery = segmentTables.length > 0
+            ? segmentTables.map(([table, channelId]) => `SELECT guid, '${channelId}' AS channel FROM ${table}`).join(' UNION ALL ')
+            : `SELECT NULL AS guid, NULL AS channel WHERE 0`; // Empty result set
+        return /* sql */`
+            active_guids AS (
+                ${unionQuery}
+            )
+        `;
     }
 
     #getEntry(guid) {
@@ -252,14 +251,19 @@ export class TuDAL {
                 translationProvider,
                 status,
                 COUNT(*) AS tuCount,
-                COUNT (DISTINCT guid) AS distinctGuids,
-                COUNT (DISTINCT jobGuid) AS jobCount
+                COUNT(DISTINCT guid) AS distinctGuids,
+                COUNT(DISTINCT jobGuid) AS jobCount
             FROM ${this.#tusTable}
             JOIN jobs USING (jobGuid)
+            WHERE
+                sourceLang = @sourceLang AND targetLang = @targetLang
             GROUP BY 1, 2
-            ORDER BY 3 DESC
-            ;`);
-        return this.#stmt.getStats.all();
+            ORDER BY 3 DESC;
+        `);
+        return this.#stmt.getStats.all({
+            sourceLang: this.#sourceLang,
+            targetLang: this.#targetLang,
+        });
     }
 
     async getActiveContentTranslationStatus(channelDAL) {
@@ -452,9 +456,50 @@ export class TuDAL {
      * @returns {Promise<Object[]>} Array of matching translation units.
      */
     async search(offset, limit, { guid, nid, jobGuid, rid, sid, channel, nsrc, ntgt, notes, tconf, maxRank,onlyTNotes, q, minTS, maxTS, translationProvider }) {
-        const activeGuidsCTE = this.#activeGuidsCTE; // we need to ensure all tables are created before we can join them
-        this.#stmt.search ??= this.#db.prepare(/* sql */`
-            WITH ${activeGuidsCTE}
+        // Convert array params to JSON strings for SQLite JSON_EACH
+        const searchParams = {
+            sourceLang: this.#sourceLang,
+            targetLang: this.#targetLang,
+            offset,
+            limit,
+            guid,
+            nid,
+            jobGuid,
+            rid,
+            sid,
+            nsrc,
+            ntgt,
+            notes,
+            maxRank: maxRank ?? 10,
+            onlyTNotes: onlyTNotes ? 1 : 0,
+            tconf: Array.isArray(tconf) ? tconf.map(Number).filter(tconf => !isNaN(tconf)).join(',') : null,
+            q: Array.isArray(q) ? q.map(Number).filter(q => !isNaN(q)).join(',') : null,
+            minTS,
+            maxTS,
+        };
+        if (Array.isArray(channel)) {
+            channel.forEach((ch, idx) => {
+                searchParams[`ch_${idx}`] = ch;
+            });
+        }
+        if (Array.isArray(translationProvider)) {
+            translationProvider.forEach((tp, idx) => {
+                searchParams[`tp_${idx}`] = tp;
+            });
+        }
+        const filteredJobsCTE = Array.isArray(translationProvider) ?
+            /* sql */`
+            filtered_jobs AS (
+                SELECT jobGuid, translationProvider, updatedAt FROM jobs
+                WHERE
+                    sourceLang = @sourceLang AND targetLang = @targetLang
+                    AND translationProvider IN (${translationProvider.map((_, idx) => `@tp_${idx}`).join(',')})
+            ),`:
+            '';
+        const searchSql = /* sql */`
+            WITH
+                ${filteredJobsCTE}
+                ${this.#getActiveGuidsCTE(channel)}
             SELECT
                 guid,
                 jobGuid,
@@ -473,52 +518,31 @@ export class TuDAL {
                 rank = 1 active,
                 updatedAt
             FROM ${this.#tusTable}
-            JOIN jobs USING (jobGuid)
-            LEFT JOIN active_guids USING (guid)
+            JOIN ${Array.isArray(translationProvider) ? 'filtered_jobs' : 'jobs'} USING (jobGuid)
+            ${Array.isArray(channel) ? `INNER` : 'LEFT'} JOIN active_guids USING (guid)
             WHERE
-                (guid LIKE @guid OR @guid IS NULL)
-                AND (nid LIKE @nid OR @nid IS NULL)
-                AND (jobGuid LIKE @jobGuid OR @jobGuid IS NULL)
-                AND (rid LIKE @rid OR @rid IS NULL)
-                AND (sid LIKE @sid OR @sid IS NULL)
-                AND (channel IN (SELECT value FROM JSON_EACH(@channel)) OR @channel IS NULL)
-                AND (flattenNormalizedSourceToOrdinal(nsrc) LIKE @nsrc OR @nsrc IS NULL)
-                AND (flattenNormalizedSourceToOrdinal(ntgt) LIKE @ntgt OR @ntgt IS NULL)
-                AND (notes LIKE @notes OR @notes IS NULL)
-                AND (tuProps->>'$.tconf' IN (SELECT CAST(value AS INTEGER) FROM JSON_EACH(@tconf)) OR @tconf IS NULL)
-                AND rank <= @maxRank
-                AND (NOT @onlyTNotes OR tnotes IS NOT NULL)
-                AND (q IN (SELECT CAST(value AS INTEGER) FROM JSON_EACH(@q)) OR @q IS NULL)
-                AND (ts >= @minTS OR @minTS IS NULL)
-                AND (ts <= @maxTS OR @maxTS IS NULL)
-                AND (translationProvider IN (SELECT value FROM JSON_EACH(@translationProvider)) OR @translationProvider IS NULL)
+                rank <= @maxRank
+                ${searchParams.guid ? 'AND guid LIKE @guid' : ''}
+                ${searchParams.nid ? 'AND nid LIKE @nid' : ''}
+                ${searchParams.jobGuid ? 'AND jobGuid LIKE @jobGuid' : ''}
+                ${searchParams.rid ? 'AND rid LIKE @rid' : ''}
+                ${searchParams.sid ? 'AND sid LIKE @sid' : ''}
+                ${searchParams.nsrc ? 'AND flattenNormalizedSourceToOrdinal(nsrc) LIKE @nsrc' : ''}
+                ${searchParams.ntgt ? 'AND flattenNormalizedSourceToOrdinal(ntgt) LIKE @ntgt' : ''}
+                ${searchParams.notes ? 'AND notes LIKE @notes' : ''}
+                ${searchParams.tconf !== null ? `AND tuProps->>'$.tconf' IN (${searchParams.tconf})` : ''}
+                ${searchParams.onlyTNotes ? 'AND (NOT @onlyTNotes OR tnotes IS NOT NULL)' : ''}
+                ${searchParams.q !== null ? `AND q IN (${searchParams.q})` : ''}
+                ${searchParams.minTS ? 'AND ts >= @minTS' : ''}
+                ${searchParams.maxTS ? 'AND ts <= @maxTS' : ''}
             ORDER BY ts DESC, rid, tuOrder
             LIMIT @limit
             OFFSET @offset;
-        `);
+        `;
         try {
-            // Convert array params to JSON strings for SQLite JSON_EACH
-            const searchParams = {
-                offset,
-                limit,
-                guid,
-                nid,
-                jobGuid,
-                rid,
-                sid,
-                channel: Array.isArray(channel) ? JSON.stringify(channel) : null,
-                nsrc,
-                ntgt,
-                notes,
-                tconf: Array.isArray(tconf) ? JSON.stringify(tconf) : null,
-                maxRank: maxRank ?? 10,
-                onlyTNotes: onlyTNotes ? 1 : 0,
-                q: Array.isArray(q) ? JSON.stringify(q) : null,
-                minTS,
-                maxTS,
-                translationProvider: Array.isArray(translationProvider) ? JSON.stringify(translationProvider) : null
-            };
-            const results = this.#stmt.search.all(searchParams);
+            // logVerbose`Running ${searchSql} with params: ${JSON.stringify(searchParams)}`;
+            const results = this.#db.prepare(searchSql).all(searchParams);
+            // logVerbose`${results.length} search results returned`;
             return results.map(sqlTransformer.decode);
         } catch (error) {
             throw new Error(`TM search failed: ${error.message}`);
@@ -554,18 +578,31 @@ export class TuDAL {
     }
 
     async getLowCardinalityColumns() {
-        this.#stmt.getLowCardinalityColumns ??= this.#db.prepare(/* sql */`
-            SELECT
-                GROUP_CONCAT(DISTINCT q) q,
-                GROUP_CONCAT(DISTINCT translationProvider) translationProvider,
-                GROUP_CONCAT(DISTINCT tuProps->>'$.tconf') tconf
-            FROM ${this.#tusTable} JOIN jobs USING (jobGuid);
-        `);
+        this.#stmt.getQValues ??= this.#db.prepare(/* sql */`
+            SELECT DISTINCT q
+            FROM ${this.#tusTable}
+            WHERE q IS NOT NULL;
+        `).pluck();
+        this.#stmt.getTconfValues ??= this.#db.prepare(/* sql */`
+            SELECT DISTINCT tuProps->>'$.tconf' tconf
+            FROM ${this.#tusTable}
+            WHERE tuProps->>'$.tconf' IS NOT NULL;
+        `).pluck();
+        this.#stmt.getTranslationProviderValues ??= this.#db.prepare(/* sql */`
+            SELECT DISTINCT translationProvider
+            FROM jobs
+            WHERE
+                translationProvider IS NOT NULL AND
+                sourceLang = ? AND
+                targetLang = ?;
+        `).pluck();
         const enumValues = {};
-        const result = this.#stmt.getLowCardinalityColumns.get();
-        for (const [key, value] of Object.entries(result)) {
-            value !== null && (enumValues[key] = value.split(','));
-        }
+        const qValues = this.#stmt.getQValues.all();
+        const tconfValues = this.#stmt.getTconfValues.all();
+        const translationProviderValues = this.#stmt.getTranslationProviderValues.all(this.#sourceLang, this.#targetLang);
+        qValues.length > 0 && (enumValues.q = qValues);
+        tconfValues.length > 0 && (enumValues.tconf = tconfValues);
+        translationProviderValues.length > 0 && (enumValues.translationProvider = translationProviderValues);
         return enumValues;
     }
 

@@ -17,6 +17,7 @@ export class JobDAL {
                 tmStore TEXT,
                 PRIMARY KEY (jobGuid)
             );
+            CREATE INDEX IF NOT EXISTS idx_jobs_sourceLang_targetLang_translationProvider_status_jobGuid ON jobs (sourceLang, targetLang, translationProvider, status, jobGuid);
         `);
         const rows = (function *unrollJobs() {
             if (this.#lastTOC.v !== 1) {
@@ -41,6 +42,21 @@ export class JobDAL {
         `);
         return this.#stmt.getAvailableLangPairs.all()
             .map(({ sourceLang, targetLang }) => [ sourceLang, targetLang ]);
+    }
+
+    async getStats() {
+        this.#stmt.getStats ??= this.#db.prepare(/* sql */`
+            SELECT
+                sourceLang,
+                targetLang,
+                tmStore,
+                translationProvider,
+                COUNT(*) jobCount,
+                MAX(updatedAt) lastUpdatedAt
+            FROM jobs
+            GROUP BY 1, 2;
+        `);
+        return this.#stmt.getStats.all();
     }
 
     async getJobTOCByLangPair(sourceLang, targetLang) {

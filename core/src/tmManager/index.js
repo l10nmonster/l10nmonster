@@ -4,7 +4,7 @@ import fastq from 'fastq';
 import { getRegressionMode, logInfo, logVerbose, logWarn } from '../l10nContext.js';
 import { utils } from '../helpers/index.js';
 import { TM } from './tm.js';
-
+import { groupObjectsByNestedProps } from '../sharedFunctions.js';
 
 export default class TMManager {
     #DAL;
@@ -278,6 +278,11 @@ export default class TMManager {
 
     async getAvailableLangPairs() {
         return await this.#DAL.job.getAvailableLangPairs();
+    }
+
+    async getStats() {
+        const rawStats = await this.#DAL.job.getStats();
+        return groupObjectsByNestedProps(rawStats, [ 'sourceLang', 'targetLang' ]);
     }
 
     async getJobTOCByLangPair(sourceLang, targetLang) {
