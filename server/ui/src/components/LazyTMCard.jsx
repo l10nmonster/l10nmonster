@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Box, Spinner, Alert, Text } from '@chakra-ui/react';
+import { Box, Spinner, Text } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchApi } from '../utils/api';
 import TMCard from './TMCard';
+import ErrorBox from './ErrorBox';
 
-const LazyTMCard = ({ sourceLang, targetLang }) => {
+const LazyTMCard = ({ sourceLang, targetLang, headerAction }) => {
   const [shouldLoad, setShouldLoad] = useState(false);
   const containerRef = useRef(null);
 
@@ -42,12 +43,7 @@ const LazyTMCard = ({ sourceLang, targetLang }) => {
   return (
     <Box ref={containerRef} minH="200px">
       {error ? (
-        <Alert status="error">
-          <Box>
-            <Text fontWeight="bold">Error loading {sourceLang} → {targetLang}</Text>
-            <Text>{error.message || 'Unknown error'}</Text>
-          </Box>
-        </Alert>
+        <ErrorBox error={error} title={`Error loading ${sourceLang} → ${targetLang}`} />
       ) : isLoading ? (
         <Box
           display="flex"
@@ -67,6 +63,7 @@ const LazyTMCard = ({ sourceLang, targetLang }) => {
           sourceLang={sourceLang}
           targetLang={targetLang}
           providers={pairStats}
+          headerAction={headerAction}
         />
       ) : !shouldLoad ? (
         <Box

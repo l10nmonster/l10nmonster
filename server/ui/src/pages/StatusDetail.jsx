@@ -5,7 +5,6 @@ import {
   Text,
   Box,
   Spinner,
-  Alert,
   VStack,
   Input,
   Badge,
@@ -19,6 +18,7 @@ import {
 import { Link as RouterLink } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { fetchApi } from '../utils/api';
+import ErrorBox from '../components/ErrorBox';
 
 // Helper function to flatten normalized source/target arrays
 function flattenNormalizedSourceToOrdinal(nsrc) {
@@ -211,12 +211,7 @@ const StatusDetail = () => {
   if (isError) {
     return (
       <Box mt={5} px={6}>
-        <Alert status="error">
-          <Box>
-            <Text fontWeight="bold">Error</Text>
-            <Text>{error?.message || 'Failed to fetch status data'}</Text>
-          </Box>
-        </Alert>
+        <ErrorBox error={error} fallbackMessage="Failed to fetch status data" />
       </Box>
     );
   }

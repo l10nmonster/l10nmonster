@@ -1,9 +1,10 @@
 import React, { useMemo } from 'react';
-import { Text, Box, Spinner, Alert, VStack, Flex, Button, SimpleGrid } from '@chakra-ui/react';
+import { Text, Box, Spinner, VStack, Flex, Button, SimpleGrid } from '@chakra-ui/react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { fetchApi } from '../utils/api';
 import LanguagePairSelector from '../components/LanguagePairSelector';
+import ErrorBox from '../components/ErrorBox';
 
 const TMToc = () => {
   const navigate = useNavigate();
@@ -67,12 +68,7 @@ const TMToc = () => {
   if (error) {
     return (
       <Box mt={5} px={6}>
-        <Alert status="error">
-          <Box>
-            <Text fontWeight="bold">Error</Text>
-            <Text>{error?.message || 'Failed to load TM data'}</Text>
-          </Box>
-        </Alert>
+        <ErrorBox error={error} fallbackMessage="Failed to load TM data" />
       </Box>
     );
   }
@@ -91,14 +87,16 @@ const TMToc = () => {
         ) : (
           <SimpleGrid columns={{ base: 1, md: 2, lg: 3, xl: 4 }} gap={4}>
             {languagePairCards.map(({ sourceLang, targetLang, stores }) => (
-              <Box
+              <Flex
                 key={`${sourceLang}-${targetLang}`}
+                direction="column"
                 bg="white"
                 borderWidth="1px"
                 borderColor="border.default"
                 borderRadius="lg"
                 shadow="sm"
                 overflow="hidden"
+                h="100%"
               >
                 {/* Card Header */}
                 <Box
@@ -114,7 +112,7 @@ const TMToc = () => {
                 </Box>
 
                 {/* Card Body - List of stores */}
-                <VStack align="stretch" gap={2} p={4}>
+                <VStack align="stretch" gap={2} p={4} flex="1">
                   {stores.length === 0 ? (
                     <Text fontSize="sm" color="fg.muted">No stores</Text>
                   ) : (
@@ -144,6 +142,7 @@ const TMToc = () => {
                   borderColor="border.default"
                   gap={2}
                   justify="flex-end"
+                  mt="auto"
                 >
                   <Button
                     as={RouterLink}
@@ -163,7 +162,7 @@ const TMToc = () => {
                     Providers
                   </Button>
                 </Flex>
-              </Box>
+              </Flex>
             ))}
           </SimpleGrid>
         )}

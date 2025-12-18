@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Text, Badge, Flex, Button, VStack, Grid, Link } from '@chakra-ui/react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
-const TMCard = ({ sourceLang, targetLang, providers }) => {
+const TMCard = ({ sourceLang, targetLang, providers, headerAction }) => {
   const navigate = useNavigate();
 
   const getStatusColor = (status) => {
@@ -25,9 +25,12 @@ const TMCard = ({ sourceLang, targetLang, providers }) => {
     >
       <VStack gap={4} align="stretch">
         {/* Language Pair Header */}
-        <Text fontSize="lg" fontWeight="bold">
-            Provider Breakdown: {sourceLang} → {targetLang}
-        </Text>
+        <Flex justify="space-between" align="center">
+          <Text fontSize="lg" fontWeight="bold">
+              Provider Breakdown: {sourceLang} → {targetLang}
+          </Text>
+          {headerAction}
+        </Flex>
 
         {/* Providers */}
         <VStack gap={3} align="stretch">

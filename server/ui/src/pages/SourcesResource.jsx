@@ -5,7 +5,6 @@ import {
   Text,
   Box,
   Spinner,
-  Alert,
   VStack,
   HStack,
   Badge,
@@ -21,6 +20,7 @@ import {
 } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchApi } from '../utils/api';
+import ErrorBox from '../components/ErrorBox';
 import { renderTextWithLinks } from '../utils/textUtils.jsx';
 import { addSourceTUsToCart } from '../utils/cartUtils.jsx';
 import SourcesHeader from '../components/SourcesHeader';
@@ -167,12 +167,7 @@ const SourcesResource = () => {
   if (!rid) {
     return (
       <Box mt={5} px={6}>
-        <Alert status="error">
-          <Box>
-            <Text fontWeight="bold">Missing Resource ID</Text>
-            <Text>No resource ID specified in the URL.</Text>
-          </Box>
-        </Alert>
+        <ErrorBox error={{ message: 'No resource ID specified in the URL.' }} title="Missing Resource ID" />
       </Box>
     );
   }
@@ -188,12 +183,7 @@ const SourcesResource = () => {
   if (error) {
     return (
       <Box mt={5} px={6}>
-        <Alert status="error">
-          <Box>
-            <Text fontWeight="bold">Error</Text>
-            <Text>{error?.message || 'Failed to fetch resource data'}</Text>
-          </Box>
-        </Alert>
+        <ErrorBox error={error} fallbackMessage="Failed to fetch resource data" />
       </Box>
     );
   }

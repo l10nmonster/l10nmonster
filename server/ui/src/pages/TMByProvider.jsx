@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Text, VStack } from '@chakra-ui/react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Box, VStack, Button } from '@chakra-ui/react';
+import { useNavigate, useParams, Link as RouterLink } from 'react-router-dom';
 import LazyTMCard from '../components/LazyTMCard';
 import LanguagePairSelector from '../components/LanguagePairSelector';
 
@@ -26,6 +26,17 @@ const TMByProvider = () => {
           <LazyTMCard
             sourceLang={sourceLang}
             targetLang={targetLang}
+            headerAction={
+              <Button
+                as={RouterLink}
+                to={`/tm/${sourceLang}/${targetLang}`}
+                size="sm"
+                colorPalette="blue"
+                variant="outline"
+              >
+                Search
+              </Button>
+            }
           />
         </VStack>
       </Box>

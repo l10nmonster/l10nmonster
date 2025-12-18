@@ -5,7 +5,6 @@ import {
   Text,
   Box,
   Spinner,
-  Alert,
   VStack,
   Grid,
   Badge,
@@ -17,6 +16,7 @@ import {
 import { Link as RouterLink } from 'react-router-dom';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { fetchApi } from '../utils/api';
+import ErrorBox from '../components/ErrorBox';
 import SourcesHeader from '../components/SourcesHeader';
 
 const SourcesDetail = () => {
@@ -114,12 +114,7 @@ const SourcesDetail = () => {
   if (error) {
     return (
       <Box mt={5} px={6}>
-        <Alert status="error">
-          <Box>
-            <Text fontWeight="bold">Error</Text>
-            <Text>{error?.message || 'Failed to fetch project data'}</Text>
-          </Box>
-        </Alert>
+        <ErrorBox error={error} fallbackMessage="Failed to fetch project data" />
       </Box>
     );
   }

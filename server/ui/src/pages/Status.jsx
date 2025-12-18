@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
-import { Container, Text, Box, Button, Grid, Spinner, Alert, Flex, Switch, Link, Collapsible, IconButton } from '@chakra-ui/react';
+import { Container, Text, Box, Button, Grid, Spinner, Flex, Switch, Link, Collapsible, IconButton } from '@chakra-ui/react';
 import { Link as RouterLink, useNavigate, useSearchParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import ProjectCard from '../components/ProjectCard';
 import { fetchApi } from '../utils/api';
+import ErrorBox from '../components/ErrorBox';
 
 // Individual channel component with lazy loading
 const ChannelContainer = ({ channelId, hideComplete, calculateCompletionPercentage, hasIncompleteContent }) => {
@@ -120,12 +121,7 @@ const ChannelContainer = ({ channelId, hideComplete, calculateCompletionPercenta
       <Collapsible.Root open={isExpanded}>
         <Collapsible.Content>
           {error ? (
-            <Alert status="error">
-              <Box>
-                <Text fontWeight="bold">Error loading channel {channelId}</Text>
-                <Text>{error.message || 'Unknown error'}</Text>
-              </Box>
-            </Alert>
+            <ErrorBox error={error} title={`Error loading channel ${channelId}`} />
           ) : isLoading ? (
             <Box display="flex" justifyContent="center" py={8}>
               <Text color="fg.muted">Loading channel data...</Text>
@@ -262,12 +258,7 @@ const Status = () => {
   if (error) {
     return (
       <Box mt={5} px={6}>
-        <Alert status="error">
-          <Box>
-            <Text fontWeight="bold">Error</Text>
-            <Text>{error}</Text>
-          </Box>
-        </Alert>
+        <ErrorBox error={error} />
       </Box>
     );
   }

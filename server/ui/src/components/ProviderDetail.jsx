@@ -1,7 +1,8 @@
 import React from 'react';
-import { Box, Text, VStack, Grid, Badge, Spinner, Alert } from '@chakra-ui/react';
+import { Box, Text, VStack, Grid, Badge, Spinner } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchApi } from '../utils/api';
+import ErrorBox from './ErrorBox';
 
 const ProviderDetail = ({ providerId }) => {
   const { data: provider, isLoading, error } = useQuery({
@@ -29,12 +30,7 @@ const ProviderDetail = ({ providerId }) => {
   if (error) {
     return (
       <Box width="75%" p={6}>
-        <Alert status="error">
-          <Box>
-            <Text fontWeight="bold">Error</Text>
-            <Text>{error?.message || 'Failed to fetch provider details'}</Text>
-          </Box>
-        </Alert>
+        <ErrorBox error={error} fallbackMessage="Failed to fetch provider details" />
       </Box>
     );
   }

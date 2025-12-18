@@ -5,7 +5,6 @@ import {
   Text,
   Box,
   Spinner,
-  Alert,
   VStack,
   Input,
   Badge,
@@ -25,11 +24,21 @@ import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import { fetchApi } from '../utils/api';
 import { addTMTUsToCart } from '../utils/cartUtils.jsx';
 import LanguagePairSelector from '../components/LanguagePairSelector';
+import ErrorBox from '../components/ErrorBox';
 
 // Helper function to flatten normalized source/target arrays
 function flattenNormalizedSourceToOrdinal(nsrc) {
   if (!Array.isArray(nsrc)) return '';
   return nsrc.map(e => (typeof e === 'string' ? e : `{{${e.t}}}`)).join('');
+}
+
+// Helper function to safely render any value as a string (prevents React crashes on objects)
+function safeString(value, fallback = '') {
+  if (value === null || value === undefined) return fallback;
+  if (typeof value === 'string') return value;
+  if (typeof value === 'number' || typeof value === 'boolean') return String(value);
+  // For objects/arrays, return fallback to prevent React crashes
+  return fallback;
 }
 
 // Helper component to render filter input (select for low cardinality, input otherwise)
@@ -121,7 +130,7 @@ const FilterInput = ({ columnName, label, value, onChange, onFocus, onBlur, inpu
 };
 
 // Multi-select filter component using Menu with manual checkbox state
-const MultiSelectFilter = ({ value = [], onChange, options = [], placeholder, disabled }) => {
+const MultiSelectFilter = ({ value = [], onChange, options = [], placeholder, disabled, sortNumeric = false }) => {
   const selectedCount = value.length;
   // Show actual value if only 1 selected, otherwise show count
   const displayText = selectedCount === 0
@@ -143,6 +152,14 @@ const MultiSelectFilter = ({ value = [], onChange, options = [], placeholder, di
     e.stopPropagation();
     onChange([]);
   };
+
+  const handleSelectAll = (e) => {
+    e.stopPropagation();
+    onChange(options.map(opt => String(opt)));
+  };
+
+  const isAllSelected = selectedCount === options.length;
+  const isPartiallySelected = selectedCount > 0 && selectedCount < options.length;
 
   if (!options || options.length === 0) {
     return (
@@ -194,30 +211,63 @@ const MultiSelectFilter = ({ value = [], onChange, options = [], placeholder, di
             shadow="lg"
             zIndex={1000}
           >
-            {selectedCount > 0 && (
+            {options.length > 1 && (
               <>
+                {/* Checkbox row: Select All / Indeterminate / All Selected */}
                 <Menu.Item
-                  value="__clear__"
-                  onClick={handleClearAll}
-                  color="red.500"
+                  value="__select_all__"
+                  onClick={isAllSelected ? handleClearAll : handleSelectAll}
                   fontSize="xs"
                 >
-                  Clear All ({selectedCount})
+                  <Flex align="center" gap={2}>
+                    <Box
+                      w="14px"
+                      h="14px"
+                      borderWidth="1px"
+                      borderColor={selectedCount > 0 ? "blue.500" : "gray.300"}
+                      borderRadius="sm"
+                      bg={selectedCount > 0 ? "blue.500" : "white"}
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                    >
+                      {isAllSelected && (
+                        <Text color="white" fontSize="10px" lineHeight="1">✓</Text>
+                      )}
+                      {isPartiallySelected && (
+                        <Text color="white" fontSize="10px" lineHeight="1">−</Text>
+                      )}
+                    </Box>
+                    <Text>Select All</Text>
+                  </Flex>
                 </Menu.Item>
-                <Menu.Separator />
+                {/* Clear All button: only show when something is selected */}
+                {selectedCount > 0 && (
+                  <Menu.Item
+                    value="__clear_all__"
+                    onClick={handleClearAll}
+                    fontSize="xs"
+                    color="red.500"
+                  >
+                    Clear All ({selectedCount})
+                  </Menu.Item>
+                )}
+                <Box h="1px" bg="gray.200" my={1} />
               </>
             )}
             {options
               .slice()
-              .sort((a, b) => String(a).localeCompare(String(b)))
+              .sort((a, b) => sortNumeric
+                ? Number(a) - Number(b)
+                : String(a).localeCompare(String(b)))
               .map((option) => {
                 const optionStr = String(option);
                 const isSelected = value.includes(optionStr);
                 return (
                   <Menu.Item
-                    key={option}
+                    key={optionStr}
                     value={optionStr}
-                    onClick={() => handleToggle(option)}
+                    onClick={() => handleToggle(optionStr)}
                     fontSize="xs"
                   >
                     <Flex align="center" gap={2}>
@@ -238,7 +288,7 @@ const MultiSelectFilter = ({ value = [], onChange, options = [], placeholder, di
                           </Text>
                         )}
                       </Box>
-                      <Text>{option}</Text>
+                      <Text>{optionStr}</Text>
                     </Flex>
                   </Menu.Item>
                 );
@@ -260,11 +310,16 @@ const TMDetail = () => {
   // Helper to parse array params from URL
   const parseArrayParam = (param) => {
     const value = searchParams.get(param);
-    return value ? value.split(',').filter(Boolean) : [];
+    const values = value ? value.split(',').filter(Boolean) : [];
+    // Transform __null__ to New/Unassigned for display
+    if (param === 'tmStore') {
+      return values.map(v => v === '__null__' ? 'New/Unassigned' : v);
+    }
+    return values;
   };
 
   // Initialize filters from URL parameters
-  // Multi-select filters (channel, tconf, q, translationProvider) use arrays
+  // Multi-select filters (channel, tconf, q, translationProvider, tmStore) use arrays
   const [filters, setFilters] = useState(() => ({
     guid: searchParams.get('guid') || '',
     nid: searchParams.get('nid') || '',
@@ -275,6 +330,7 @@ const TMDetail = () => {
     tconf: parseArrayParam('tconf'),
     q: parseArrayParam('q'),
     translationProvider: parseArrayParam('translationProvider'),
+    tmStore: parseArrayParam('tmStore'),
     jobGuid: searchParams.get('jobGuid') || '',
     channel: parseArrayParam('channel'),
     minTS: searchParams.get('minTS') || '',
@@ -308,6 +364,7 @@ const TMDetail = () => {
     tconf: parseArrayParam('tconf'),
     q: parseArrayParam('q'),
     translationProvider: parseArrayParam('translationProvider'),
+    tmStore: parseArrayParam('tmStore'),
     jobGuid: searchParams.get('jobGuid') || '',
     channel: parseArrayParam('channel'),
     minTS: searchParams.get('minTS') || '',
@@ -320,6 +377,7 @@ const TMDetail = () => {
   const focusedInputRef = useRef(null);
   const inputRefs = useRef({});
   const slowRequestTimeoutRef = useRef(null);
+  const tableContainerRef = useRef(null);
 
   // Track slow requests (> 1 second) to show blocking overlay
   const [isSlowRequest, setIsSlowRequest] = useState(false);
@@ -370,10 +428,15 @@ const TMDetail = () => {
       });
 
       // Add multi-select filters (arrays as comma-separated values)
-      const arrayFilters = ['channel', 'tconf', 'q', 'translationProvider'];
+      const arrayFilters = ['channel', 'tconf', 'q', 'translationProvider', 'tmStore'];
       arrayFilters.forEach(key => {
         if (Array.isArray(filters[key]) && filters[key].length > 0) {
-          queryParams.set(key, filters[key].join(','));
+          // Transform tmStore filter values back to API format
+          let values = filters[key];
+          if (key === 'tmStore') {
+            values = values.map(v => v === 'New/Unassigned' ? '__null__' : v);
+          }
+          queryParams.set(key, values.join(','));
         }
       });
 
@@ -402,7 +465,7 @@ const TMDetail = () => {
     },
     staleTime: 30000, // 30 seconds - shorter for search results
     refetchOnWindowFocus: false, // Prevent refetch on window focus
-    placeholderData: (previousData) => previousData, // Keep previous data while loading
+    // Note: removed placeholderData to ensure query resets to page 1 when filters change
   });
 
   // Query for low cardinality columns
@@ -414,7 +477,11 @@ const TMDetail = () => {
 
   // Flatten all pages into a single array and apply client-side filtering
   const data = useMemo(() => {
-    let allData = infiniteData?.pages.flatMap(page => page.data) || [];
+    // Defensive: ensure we only process valid page data arrays
+    let allData = infiniteData?.pages.flatMap(page => {
+      if (!page || !Array.isArray(page.data)) return [];
+      return page.data;
+    }) || [];
 
     // Apply "Only Leveraged" filter (hide entries with null channel)
     if (showOnlyLeveraged) {
@@ -452,7 +519,12 @@ const TMDetail = () => {
       if (Array.isArray(value)) {
         // Array filters (multi-select) - join as comma-separated
         if (value.length > 0) {
-          params.set(key, value.join(','));
+          // Transform tmStore display values back to URL format
+          let values = value;
+          if (key === 'tmStore') {
+            values = value.map(v => v === 'New/Unassigned' ? '__null__' : v);
+          }
+          params.set(key, values.join(','));
         }
       } else if (typeof value === 'string' && value.trim() !== '') {
         // String filters
@@ -485,16 +557,21 @@ const TMDetail = () => {
   const handleFilterChange = useCallback((column, value) => {
     // Update input values immediately to prevent focus loss
     setInputValues(prev => ({ ...prev, [column]: value }));
-    
+
     // Clear selection when filtering
     setSelectedRows(new Set());
-    
+
+    // Scroll table to top when filters change
+    if (tableContainerRef.current) {
+      tableContainerRef.current.scrollTop = 0;
+    }
+
     // Debounce the filter update for API calls
     clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => {
       const newFilters = { ...filters, [column]: value };
       setFilters(newFilters);
-      
+
       // Debounce URL updates separately (200ms)
       clearTimeout(urlTimeoutRef.current);
       urlTimeoutRef.current = setTimeout(() => {
@@ -622,12 +699,7 @@ const TMDetail = () => {
   if (isError) {
     return (
       <Box mt={5} px={6}>
-        <Alert status="error">
-          <Box>
-            <Text fontWeight="bold">Error</Text>
-            <Text>{error?.message || 'Failed to fetch translation memory data'}</Text>
-          </Box>
-        </Alert>
+        <ErrorBox error={error} fallbackMessage="Failed to fetch translation memory data" />
       </Box>
     );
   }
@@ -705,6 +777,7 @@ const TMDetail = () => {
 
       {/* Table Container */}
       <Box
+        ref={tableContainerRef}
         mx={6}
         mt={6}
         h="calc(100vh - 140px)"
@@ -846,6 +919,20 @@ const TMDetail = () => {
                         />
                       </VStack>
                     </Box>
+                    <Box as="th" p={3} borderBottom="1px" borderColor="border.default" minW="120px" textAlign="left">
+                      <VStack gap={2} align="stretch">
+                        <Text fontSize="sm" fontWeight="bold" color="blue.600">TM Store</Text>
+                        <MultiSelectFilter
+                          value={inputValues.tmStore}
+                          onChange={(value) => handleFilterChange('tmStore', value)}
+                          options={(Array.isArray(lowCardinalityColumns.tmStore) ? lowCardinalityColumns.tmStore : []).map(opt =>
+                            opt === '__null__' ? 'New/Unassigned' : safeString(opt, String(opt))
+                          )}
+                          placeholder="TM Store..."
+                          disabled={isSlowRequest}
+                        />
+                      </VStack>
+                    </Box>
                   </>
                 )}
                 <Box as="th" p={3} borderBottom="1px" borderColor="border.default" minW="120px" textAlign="left">
@@ -919,6 +1006,7 @@ const TMDetail = () => {
                       options={lowCardinalityColumns.tconf}
                       placeholder="TConf..."
                       disabled={isSlowRequest}
+                      sortNumeric
                     />
                   </VStack>
                 </Box>
@@ -931,6 +1019,7 @@ const TMDetail = () => {
                       options={lowCardinalityColumns.q}
                       placeholder="Quality..."
                       disabled={isSlowRequest}
+                      sortNumeric
                     />
                   </VStack>
                 </Box>
@@ -1175,6 +1264,16 @@ const TMDetail = () => {
                       </Box>
                       <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
                         <Text fontSize="xs" wordBreak="break-all" whiteSpace="normal">{item.sid}</Text>
+                      </Box>
+                      <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
+                        <Text
+                          fontSize="xs"
+                          fontFamily="mono"
+                          color={safeString(item.tmStore) ? "blue.600" : "gray.500"}
+                          fontStyle={safeString(item.tmStore) ? "normal" : "italic"}
+                        >
+                          {safeString(item.tmStore, 'New/Unassigned')}
+                        </Text>
                       </Box>
                     </>
                   )}

@@ -1,8 +1,9 @@
 import React, { useState, useMemo } from 'react';
-import { Box, Text, Spinner, Alert, Flex } from '@chakra-ui/react';
+import { Box, Text, Spinner, Flex } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
 import { useSearchParams } from 'react-router-dom';
 import { fetchApi } from '../utils/api';
+import ErrorBox from '../components/ErrorBox';
 import ProviderList from '../components/ProviderList';
 import ProviderDetail from '../components/ProviderDetail';
 
@@ -58,12 +59,7 @@ const Providers = () => {
   if (error) {
     return (
       <Box mt={5} px={6}>
-        <Alert status="error">
-          <Box>
-            <Text fontWeight="bold">Error</Text>
-            <Text>{error?.message || 'Failed to fetch provider data'}</Text>
-          </Box>
-        </Alert>
+        <ErrorBox error={error} fallbackMessage="Failed to fetch provider data" />
       </Box>
     );
   }

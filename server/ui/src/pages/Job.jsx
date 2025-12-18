@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Box, Text, VStack, HStack, Badge, Spinner, Alert, Flex, Button, Collapsible } from '@chakra-ui/react';
+import { Box, Text, VStack, HStack, Badge, Spinner, Flex, Button, Collapsible } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchApi } from '../utils/api';
+import ErrorBox from '../components/ErrorBox';
 
 // Helper function to flatten normalized source/target arrays
 function flattenNormalizedSourceToOrdinal(nsrc) {
@@ -85,10 +86,7 @@ const Job = () => {
   if (error) {
     return (
       <Box mt={5} px={6}>
-        <Box p={4} bg="red.subtle" borderRadius="md" borderWidth="1px" borderColor="red.muted">
-          <Text fontWeight="bold" color="red.600" mb={2}>Error</Text>
-          <Text color="red.600">{error?.message || 'Failed to fetch job data'}</Text>
-        </Box>
+        <ErrorBox error={error} fallbackMessage="Failed to fetch job data" />
       </Box>
     );
   }
@@ -96,12 +94,10 @@ const Job = () => {
   if (!job) {
     return (
       <Box mt={5} px={6}>
-        <Alert status="warning">
-          <Box>
-            <Text fontWeight="bold">Job Not Found</Text>
-            <Text>Job with GUID {jobGuid} was not found.</Text>
-          </Box>
-        </Alert>
+        <Box p={4} bg="yellow.100" borderRadius="md" borderWidth="1px" borderColor="yellow.300">
+          <Text fontWeight="bold" color="yellow.700" mb={2}>Job Not Found</Text>
+          <Text color="yellow.600">Job with GUID {jobGuid} was not found.</Text>
+        </Box>
       </Box>
     );
   }

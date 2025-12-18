@@ -1,7 +1,8 @@
 import React from 'react';
-import { Container, Text, Box, Spinner, Alert, VStack, Flex, Badge, Grid, HStack } from '@chakra-ui/react';
+import { Container, Text, Box, Spinner, VStack, Flex, Badge, Grid, HStack } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchApi } from '../utils/api';
+import ErrorBox from '../components/ErrorBox';
 
 const Welcome = () => {
   const { data: infoData, isLoading: loading, error } = useQuery({
@@ -20,12 +21,7 @@ const Welcome = () => {
   if (error) {
     return (
       <Box mt={10} px={6}>
-        <Alert status="error">
-          <Box>
-            <Text fontWeight="bold">Error</Text>
-            <Text>{error}</Text>
-          </Box>
-        </Alert>
+        <ErrorBox error={error} />
       </Box>
     );
   }
@@ -103,7 +99,7 @@ const Welcome = () => {
 
         {/* Configuration Sections */}
         {infoData && (
-          <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={6}>
+          <Flex direction={{ base: "column", md: "row" }} gap={6} align="flex-start">
             {/* Channels Section */}
             <Box
               p={6}
@@ -112,11 +108,12 @@ const Welcome = () => {
               bg="white"
               shadow="sm"
               borderColor="border.default"
+              flex={{ base: "none", md: "1" }}
             >
               <Text fontSize="lg" fontWeight="bold" mb={4} color="fg.default">
                 Channels ({infoData.channels?.length || 0})
               </Text>
-              <VStack gap={3} align="stretch" maxH="500px" overflow="auto">
+              <VStack gap={3} align="stretch">
                 {infoData.channels?.map((channel, index) => (
                   <Box
                     key={index}
@@ -188,128 +185,131 @@ const Welcome = () => {
               </VStack>
             </Box>
 
-            {/* TM Stores Section */}
-            <Box
-              p={6}
-              borderWidth="1px"
-              borderRadius="lg"
-              bg="white"
-              shadow="sm"
-              borderColor="border.default"
-            >
-              <Text fontSize="lg" fontWeight="bold" mb={4} color="fg.default">
-                TM Stores ({infoData.tmStores?.length || 0})
-              </Text>
-              <VStack gap={3} align="stretch" overflow="auto">
-                {infoData.tmStores?.map((store, index) => (
-                  <Box
-                    key={index}
-                    p={3}
-                    borderWidth="1px"
-                    borderRadius="md"
-                    borderColor="border.subtle"
-                    bg="bg.subtle"
-                  >
-                    <Flex justify="space-between" align="center" mb={2}>
-                      <Text fontSize="sm" fontWeight="semibold" color="fg.default">
-                        {store.id}
-                      </Text>
-                      <Badge variant="subtle" colorPalette="gray" fontSize="xs">
-                        {store.type}
-                      </Badge>
-                    </Flex>
-                    <Flex gap={4} flexWrap="wrap" fontSize="xs" color="fg.muted">
-                      <Text>
-                        <Text as="span" fontWeight="medium">Access:</Text> {store.access}
-                      </Text>
-                      <Text>
-                        <Text as="span" fontWeight="medium">Partitioning:</Text> {store.partitioning}
-                      </Text>
-                    </Flex>
-                  </Box>
-                ))}
-                {(!infoData.tmStores || infoData.tmStores.length === 0) && (
-                  <Text fontSize="sm" color="fg.muted">No TM stores configured</Text>
-                )}
-              </VStack>
-            </Box>
+            {/* Right Column - Stacked Cards */}
+            <VStack gap={6} align="stretch" flex={{ base: "none", md: "1" }}>
+              {/* Snap Stores Section */}
+              <Box
+                p={6}
+                borderWidth="1px"
+                borderRadius="lg"
+                bg="white"
+                shadow="sm"
+                borderColor="border.default"
+              >
+                <Text fontSize="lg" fontWeight="bold" mb={4} color="fg.default">
+                  Snap Stores ({infoData.snapStores?.length || 0})
+                </Text>
+                <VStack gap={3} align="stretch">
+                  {infoData.snapStores?.map((snapStore, index) => (
+                    <Box
+                      key={index}
+                      p={3}
+                      borderWidth="1px"
+                      borderRadius="md"
+                      borderColor="border.subtle"
+                      bg="bg.subtle"
+                    >
+                      <Flex justify="space-between" align="center">
+                        <Text fontSize="sm" fontWeight="semibold" color="fg.default">
+                          {snapStore.id}
+                        </Text>
+                        <Badge variant="subtle" colorPalette="orange" fontSize="xs">
+                          {snapStore.type}
+                        </Badge>
+                      </Flex>
+                    </Box>
+                  ))}
+                  {(!infoData.snapStores || infoData.snapStores.length === 0) && (
+                    <Text fontSize="sm" color="fg.muted">No snap stores configured</Text>
+                  )}
+                </VStack>
+              </Box>
 
-            {/* Providers Section */}
-            <Box
-              p={6}
-              borderWidth="1px"
-              borderRadius="lg"
-              bg="white"
-              shadow="sm"
-              borderColor="border.default"
-            >
-              <Text fontSize="lg" fontWeight="bold" mb={4} color="fg.default">
-                Providers ({infoData.providers?.length || 0})
-              </Text>
-              <VStack gap={3} align="stretch" maxH="300px" overflow="auto">
-                {infoData.providers?.map((provider, index) => (
-                  <Box
-                    key={index}
-                    p={3}
-                    borderWidth="1px"
-                    borderRadius="md"
-                    borderColor="border.subtle"
-                    bg="bg.subtle"
-                  >
-                    <Flex justify="space-between" align="center">
-                      <Text fontSize="sm" fontWeight="semibold" color="fg.default">
-                        {provider.id}
-                      </Text>
-                      <Badge variant="subtle" colorPalette="green" fontSize="xs">
-                        {provider.type}
-                      </Badge>
-                    </Flex>
-                  </Box>
-                ))}
-                {(!infoData.providers || infoData.providers.length === 0) && (
-                  <Text fontSize="sm" color="fg.muted">No providers configured</Text>
-                )}
-              </VStack>
-            </Box>
+              {/* TM Stores Section */}
+              <Box
+                p={6}
+                borderWidth="1px"
+                borderRadius="lg"
+                bg="white"
+                shadow="sm"
+                borderColor="border.default"
+              >
+                <Text fontSize="lg" fontWeight="bold" mb={4} color="fg.default">
+                  TM Stores ({infoData.tmStores?.length || 0})
+                </Text>
+                <VStack gap={3} align="stretch">
+                  {infoData.tmStores?.map((store, index) => (
+                    <Box
+                      key={index}
+                      p={3}
+                      borderWidth="1px"
+                      borderRadius="md"
+                      borderColor="border.subtle"
+                      bg="bg.subtle"
+                    >
+                      <Flex justify="space-between" align="center" mb={2}>
+                        <Text fontSize="sm" fontWeight="semibold" color="fg.default">
+                          {store.id}
+                        </Text>
+                        <Badge variant="subtle" colorPalette="gray" fontSize="xs">
+                          {store.type}
+                        </Badge>
+                      </Flex>
+                      <Flex gap={4} flexWrap="wrap" fontSize="xs" color="fg.muted">
+                        <Text>
+                          <Text as="span" fontWeight="medium">Access:</Text> {store.access}
+                        </Text>
+                        <Text>
+                          <Text as="span" fontWeight="medium">Partitioning:</Text> {store.partitioning}
+                        </Text>
+                      </Flex>
+                    </Box>
+                  ))}
+                  {(!infoData.tmStores || infoData.tmStores.length === 0) && (
+                    <Text fontSize="sm" color="fg.muted">No TM stores configured</Text>
+                  )}
+                </VStack>
+              </Box>
 
-            {/* Snap Stores Section */}
-            <Box
-              p={6}
-              borderWidth="1px"
-              borderRadius="lg"
-              bg="white"
-              shadow="sm"
-              borderColor="border.default"
-            >
-              <Text fontSize="lg" fontWeight="bold" mb={4} color="fg.default">
-                Snap Stores ({infoData.snapStores?.length || 0})
-              </Text>
-              <VStack gap={3} align="stretch" maxH="300px" overflow="auto">
-                {infoData.snapStores?.map((snapStore, index) => (
-                  <Box
-                    key={index}
-                    p={3}
-                    borderWidth="1px"
-                    borderRadius="md"
-                    borderColor="border.subtle"
-                    bg="bg.subtle"
-                  >
-                    <Flex justify="space-between" align="center">
-                      <Text fontSize="sm" fontWeight="semibold" color="fg.default">
-                        {snapStore.id}
-                      </Text>
-                      <Badge variant="subtle" colorPalette="orange" fontSize="xs">
-                        {snapStore.type}
-                      </Badge>
-                    </Flex>
-                  </Box>
-                ))}
-                {(!infoData.snapStores || infoData.snapStores.length === 0) && (
-                  <Text fontSize="sm" color="fg.muted">No snap stores configured</Text>
-                )}
-              </VStack>
-            </Box>
-          </Grid>
+              {/* Providers Section */}
+              <Box
+                p={6}
+                borderWidth="1px"
+                borderRadius="lg"
+                bg="white"
+                shadow="sm"
+                borderColor="border.default"
+              >
+                <Text fontSize="lg" fontWeight="bold" mb={4} color="fg.default">
+                  Providers ({infoData.providers?.length || 0})
+                </Text>
+                <VStack gap={3} align="stretch">
+                  {infoData.providers?.map((provider, index) => (
+                    <Box
+                      key={index}
+                      p={3}
+                      borderWidth="1px"
+                      borderRadius="md"
+                      borderColor="border.subtle"
+                      bg="bg.subtle"
+                    >
+                      <Flex justify="space-between" align="center">
+                        <Text fontSize="sm" fontWeight="semibold" color="fg.default">
+                          {provider.id}
+                        </Text>
+                        <Badge variant="subtle" colorPalette="green" fontSize="xs">
+                          {provider.type}
+                        </Badge>
+                      </Flex>
+                    </Box>
+                  ))}
+                  {(!infoData.providers || infoData.providers.length === 0) && (
+                    <Text fontSize="sm" color="fg.muted">No providers configured</Text>
+                  )}
+                </VStack>
+              </Box>
+            </VStack>
+          </Flex>
         )}
       </VStack>
     </Box>
