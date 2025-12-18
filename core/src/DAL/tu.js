@@ -156,9 +156,40 @@ export class TuDAL {
         return this.#stmt.updateRank.run({jobGuid, includeJob: includeJob ? 1 : 0});
     }
 
+    /**
+     * Sets or updates a job in the database.
+     * @param {Object} job - The job object to set or update.
+     * @param {string} job.sourceLang - The source language of the job.
+     * @param {string} job.targetLang - The target language of the job.
+     * @param {string} job.jobGuid - The unique identifier for the job.
+     * @param {string} job.status - The status of the job.
+     * @param {string} job.updatedAt - The timestamp when the job was last updated.
+     * @param {string} job.translationProvider - The translation provider associated with the job.
+     */
+    #upsertJobRow(completeJobProps, tmStoreId) {
+        this.#stmt.upsertJobRow ??= this.#db.prepare(/* sql */`
+            INSERT INTO jobs (sourceLang, targetLang, jobGuid, status, updatedAt, translationProvider, jobProps, tmStore)
+            VALUES (@sourceLang, @targetLang, @jobGuid, @status, @updatedAt, @translationProvider, @jobProps, @tmStoreId)
+            ON CONFLICT (jobGuid) DO UPDATE SET
+                sourceLang = excluded.sourceLang,
+                targetLang = excluded.targetLang,
+                status = excluded.status,
+                updatedAt = excluded.updatedAt,
+                translationProvider = excluded.translationProvider,
+                jobProps = excluded.jobProps,
+                tmStore = excluded.tmStore
+            WHERE excluded.jobGuid = jobs.jobGuid;
+        `);
+        const { jobGuid, sourceLang, targetLang, status, updatedAt, translationProvider, ...jobProps } = completeJobProps;
+        const result = this.#stmt.upsertJobRow.run({ jobGuid, sourceLang, targetLang, status, updatedAt: updatedAt ?? new Date().toISOString(), translationProvider, jobProps: JSON.stringify(jobProps), tmStoreId });
+        if (result.changes !== 1) {
+            throw new Error(`Expecting to change a row but changed ${result}`);
+        }
+    }
+    
     async saveJob(jobProps, tus, tmStoreId) {
         this.#db.transaction(() => {
-            this.#DAL.job.setJob(jobProps, tmStoreId);
+            this.#upsertJobRow(jobProps, tmStoreId);
             this.#updateRank(jobProps.jobGuid, false); // we need to update the rank in case some extries will be deleted
             this.#deleteEntriesByJobGuid(jobProps.jobGuid);
             tus.forEach((tu, tuOrder) => this.#setEntry({
@@ -171,10 +202,13 @@ export class TuDAL {
     }
 
     async deleteJob(jobGuid) {
+        this.#stmt.deleteJob ??= this.#db.prepare(/* sql */`
+            DELETE FROM jobs WHERE jobGuid = ?;
+        `);
         this.#db.transaction(() => {
             this.#updateRank(jobGuid, false); // we need to update the rank for the job before deleting the entries
             this.#deleteEntriesByJobGuid(jobGuid);
-            this.#DAL.job.deleteJob(jobGuid);
+            this.#stmt.deleteJob.run(jobGuid);
         })();
     }
 
@@ -221,28 +255,52 @@ export class TuDAL {
         }
     }
 
-    async deleteOverRank(dryrun, maxRank) {
-        if (dryrun) {
-            this.#stmt.countOverRank ??= this.#db.prepare(/* sql */`
-                SELECT COUNT(*) FROM ${this.#tusTable} WHERE rank > ?;`).pluck();
-            return this.#stmt.countOverRank.get(maxRank);
-        } else {
-            this.#stmt.deleteOverRank ??= this.#db.prepare(/* sql */`
-                DELETE FROM ${this.#tusTable} WHERE rank > ?;`);
-            return this.#stmt.deleteOverRank.run(maxRank).changes;
-        }
+    /**
+     * Get TU keys (guid, jobGuid tuples) where rank exceeds the specified maximum.
+     * @param {number} maxRank - Maximum rank threshold.
+     * @returns {Promise<[string, string][]>} Array of [guid, jobGuid] tuples identifying TUs.
+     */
+    async tuKeysOverRank(maxRank) {
+        this.#stmt.tuKeysOverRank ??= this.#db.prepare(/* sql */`
+            SELECT guid, jobGuid FROM ${this.#tusTable} WHERE rank > ?;`);
+        return this.#stmt.tuKeysOverRank.all(maxRank).map(row => [row.guid, row.jobGuid]);
     }
 
-    async deleteByQuality(dryrun, quality) {
-        if (dryrun) {
-            this.#stmt.countByQuality ??= this.#db.prepare(/* sql */`
-                SELECT COUNT(*) FROM ${this.#tusTable} WHERE q = ?;`).pluck();
-            return this.#stmt.countByQuality.get(quality);
-        } else {
-            this.#stmt.deleteByQuality ??= this.#db.prepare(/* sql */`
-                DELETE FROM ${this.#tusTable} WHERE q = ?;`);
-            return this.#stmt.deleteByQuality.run(quality).changes;
-        }
+    /**
+     * Get TU keys (guid, jobGuid tuples) with a specific quality score.
+     * @param {number} quality - Quality score to match.
+     * @returns {Promise<[string, string][]>} Array of [guid, jobGuid] tuples identifying TUs.
+     */
+    async tuKeysByQuality(quality) {
+        this.#stmt.tuKeysByQuality ??= this.#db.prepare(/* sql */`
+            SELECT guid, jobGuid FROM ${this.#tusTable} WHERE q = ?;`);
+        return this.#stmt.tuKeysByQuality.all(quality).map(row => [row.guid, row.jobGuid]);
+    }
+
+    /**
+     * Delete TUs identified by their composite keys (guid, jobGuid tuples).
+     * @param {[string, string][]} tuKeys - Array of [guid, jobGuid] tuples identifying TUs to delete.
+     * @returns {Promise<{deletedTusCount: number, touchedJobsCount: number}>} Count of deleted TUs and touched jobs.
+     */
+    async deleteTuKeys(tuKeys) {
+        this.#stmt.deleteTuKey ??= this.#db.prepare(/* sql */`
+            DELETE FROM ${this.#tusTable} WHERE guid = ? AND jobGuid = ?;`);
+        this.#stmt.touchJobs ??= this.#db.prepare(/* sql */`
+            UPDATE jobs SET updatedAt = ? WHERE jobGuid IN (SELECT value FROM JSON_EACH(?));
+        `);
+        return this.#db.transaction(() => {
+            let deletedTusCount = 0;
+            const touchedJobGuids = new Set();
+            for (const [guid, jobGuid] of tuKeys) {
+                const result = this.#stmt.deleteTuKey.run(guid, jobGuid);
+                deletedTusCount += result.changes;
+                if (result.changes > 0) {
+                    touchedJobGuids.add(jobGuid);
+                }
+            }
+            const touchedJobsCount = this.#stmt.touchJobs.run(new Date().toISOString(), JSON.stringify([...touchedJobGuids])).changes;
+            return { deletedTusCount, touchedJobsCount };
+        })();
     }
 
     async getStats() {
@@ -453,9 +511,10 @@ export class TuDAL {
      * @param {number} [options.minTS] - Minimum timestamp (milliseconds since epoch).
      * @param {number} [options.maxTS] - Maximum timestamp (milliseconds since epoch).
      * @param {string[]} [options.translationProvider] - Filter by provider(s) - array for multi-select (exact match).
+     * @param {string[]} [options.tmStore] - Filter by TM store(s) - array for multi-select. Use '__null__' to filter for NULL values.
      * @returns {Promise<Object[]>} Array of matching translation units.
      */
-    async search(offset, limit, { guid, nid, jobGuid, rid, sid, channel, nsrc, ntgt, notes, tconf, maxRank,onlyTNotes, q, minTS, maxTS, translationProvider }) {
+    async search(offset, limit, { guid, nid, jobGuid, rid, sid, channel, nsrc, ntgt, notes, tconf, maxRank,onlyTNotes, q, minTS, maxTS, translationProvider, tmStore }) {
         // Convert array params to JSON strings for SQLite JSON_EACH
         const searchParams = {
             sourceLang: this.#sourceLang,
@@ -487,13 +546,24 @@ export class TuDAL {
                 searchParams[`tp_${idx}`] = tp;
             });
         }
-        const filteredJobsCTE = Array.isArray(translationProvider) ?
+        // Handle tmStore filter (including __null__ for NULL values)
+        if (Array.isArray(tmStore)) {
+            const hasNullFilter = tmStore.includes('__null__');
+            searchParams.includeNullTmStore = hasNullFilter ? 1 : 0;
+            const nonNullTmStores = tmStore.filter(ts => ts !== '__null__');
+            nonNullTmStores.forEach((ts, idx) => {
+                searchParams[`ts_${idx}`] = ts;
+            });
+            searchParams.tmStoreCount = nonNullTmStores.length;
+        }
+        const filteredJobsCTE = Array.isArray(translationProvider) || Array.isArray(tmStore) ?
             /* sql */`
             filtered_jobs AS (
-                SELECT jobGuid, translationProvider, updatedAt FROM jobs
+                SELECT jobGuid, translationProvider, tmStore, updatedAt FROM jobs
                 WHERE
                     sourceLang = @sourceLang AND targetLang = @targetLang
-                    AND translationProvider IN (${translationProvider.map((_, idx) => `@tp_${idx}`).join(',')})
+                    ${Array.isArray(translationProvider) ? `AND translationProvider IN (${translationProvider.map((_, idx) => `@tp_${idx}`).join(',')})` : ''}
+                    ${Array.isArray(tmStore) ? `AND (${searchParams.tmStoreCount > 0 ? `tmStore IN (${tmStore.filter(ts => ts !== '__null__').map((_, idx) => `@ts_${idx}`).join(',')})` : '0'}${searchParams.includeNullTmStore ? `${searchParams.tmStoreCount > 0 ? ' OR ' : ''}tmStore IS NULL` : ''})` : ''}
             ),`:
             '';
         const searchSql = /* sql */`
@@ -515,10 +585,11 @@ export class TuDAL {
                 q,
                 ts,
                 translationProvider,
+                tmStore,
                 rank = 1 active,
                 updatedAt
             FROM ${this.#tusTable}
-            JOIN ${Array.isArray(translationProvider) ? 'filtered_jobs' : 'jobs'} USING (jobGuid)
+            JOIN ${Array.isArray(translationProvider) || Array.isArray(tmStore) ? 'filtered_jobs' : 'jobs'} USING (jobGuid)
             ${Array.isArray(channel) ? `INNER` : 'LEFT'} JOIN active_guids USING (guid)
             WHERE
                 rank <= @maxRank
@@ -596,13 +667,22 @@ export class TuDAL {
                 sourceLang = ? AND
                 targetLang = ?;
         `).pluck();
+        this.#stmt.getTmStoreValues ??= this.#db.prepare(/* sql */`
+            SELECT DISTINCT COALESCE(tmStore, '__null__') tmStore
+            FROM jobs
+            WHERE
+                sourceLang = ? AND
+                targetLang = ?;
+        `).pluck();
         const enumValues = {};
         const qValues = this.#stmt.getQValues.all();
         const tconfValues = this.#stmt.getTconfValues.all();
         const translationProviderValues = this.#stmt.getTranslationProviderValues.all(this.#sourceLang, this.#targetLang);
+        const tmStoreValues = this.#stmt.getTmStoreValues.all(this.#sourceLang, this.#targetLang);
         qValues.length > 0 && (enumValues.q = qValues);
         tconfValues.length > 0 && (enumValues.tconf = tconfValues);
         translationProviderValues.length > 0 && (enumValues.translationProvider = translationProviderValues);
+        tmStoreValues.length > 0 && (enumValues.tmStore = tmStoreValues);
         return enumValues;
     }
 

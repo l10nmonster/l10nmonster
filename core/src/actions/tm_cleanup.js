@@ -7,6 +7,7 @@ export class tm_cleanup {
         options: [
             [ '--commit', 'commit making changes (dry-run by default)' ],
             [ '--lang <srcLang,tgtLang>', 'source and target language pair' ],
+            [ '--emptyJobs', 'delete empty jobs' ],
             [ '--maxRank <number>', 'maximum number of competing translations to keep' ],
             [ '--quality [q1,q2,...]', 'quality levels to delete' ],
         ],
@@ -31,21 +32,23 @@ export class tm_cleanup {
             const tm = await monsterManager.tmm.getTM(srcLang, tgtLang);
             stats[srcLang] ??= {};
             stats[srcLang][tgtLang] ??= {};
-            const emptyJobs = await tm.deleteEmptyJobs(dryrun);
-            if (emptyJobs > 0) {
-                changes = true;
-                stats[srcLang][tgtLang].emptyJobs = emptyJobs;
-                consoleLog`  ‣ ${emptyJobs.toLocaleString()} ${[emptyJobs, 'job', 'jobs']} ${dryrun ? 'would be ' : ''}deleted`;
-            }
+
+            // Accumulate TU keys (guid, jobGuid tuples) to delete from various sources
+            // Use Map with composite key for deduplication since tuples can't be compared by value in Set
+            const tuKeysToDelete = new Map();
             const maxRank = Number(options.maxRank);
+
+            // Collect TU keys over maxRank
             if (maxRank > 0) {
-                const overRank = await tm.deleteOverRank(dryrun, maxRank);
-                if (overRank > 0) {
-                    changes = true;
-                    stats[srcLang][tgtLang].overRank = overRank;
-                    consoleLog`  ‣ ${overRank.toLocaleString()} ${[overRank, 'tu', 'tus']} ${dryrun ? 'would be ' : ''}deleted as rank is over ${maxRank}`;
+                const tuKeys = await tm.tuKeysOverRank(maxRank);
+                tuKeys.forEach(([guid, jobGuid]) => tuKeysToDelete.set(`${guid}\0${jobGuid}`, [guid, jobGuid]));
+                if (tuKeys.length > 0) {
+                    stats[srcLang][tgtLang].overRankCount = tuKeys.length;
+                    consoleLog`  ‣ ${tuKeys.length.toLocaleString()} ${[tuKeys.length, 'tu', 'tus']} over rank ${maxRank}`;
                 }
             }
+
+            // Show quality distribution if --quality flag is provided without values
             if (options.quality === true) {
                 const qualityDistribution = await tm.getQualityDistribution();
                 if (qualityDistribution.length > 0) {
@@ -56,22 +59,40 @@ export class tm_cleanup {
                     }
                 }
             } else if (options.quality) {
+                // Collect TU keys by quality levels
                 const qualities = options.quality.split(',').map(Number);
                 for (const quality of qualities) {
-                    const byQuality = await tm.deleteByQuality(dryrun, quality);
-                    if (byQuality > 0) {
-                        changes = true;
-                        stats[srcLang][tgtLang].byQuality ??= 0;
-                        stats[srcLang][tgtLang].byQuality += byQuality;
-                        consoleLog`  ‣ ${byQuality.toLocaleString()} ${[byQuality, 'tu', 'tus']} ${dryrun ? 'would be ' : ''}deleted as quality is ${quality}`;
+                    const tuKeys = await tm.tuKeysByQuality(quality);
+                    tuKeys.forEach(([guid, jobGuid]) => tuKeysToDelete.set(`${guid}\0${jobGuid}`, [guid, jobGuid]));
+                    if (tuKeys.length > 0) {
+                        stats[srcLang][tgtLang].qualityCount ??= 0;
+                        stats[srcLang][tgtLang].qualityCount += tuKeys.length;
+                        consoleLog`  ‣ ${tuKeys.length.toLocaleString()} ${[tuKeys.length, 'tu', 'tus']} with quality ${quality}`;
                     }
                 }
             }
-            if (changes && !dryrun) {
-                const emptyJobs = await tm.deleteEmptyJobs(false);
+
+            // Delete all accumulated TU keys in a single operation
+            if (tuKeysToDelete.size > 0) {
+                changes = true;
+                if (dryrun) {
+                    stats[srcLang][tgtLang].tusToDelete = tuKeysToDelete.size;
+                    consoleLog`  ‣ ${tuKeysToDelete.size.toLocaleString()} ${[tuKeysToDelete.size, 'tu', 'tus']} would be deleted`;
+                } else {
+                    const { deletedTusCount, touchedJobsCount } = await tm.deleteTuKeys([...tuKeysToDelete.values()]);
+                    stats[srcLang][tgtLang].deletedTusCount = deletedTusCount;
+                    stats[srcLang][tgtLang].touchedJobsCount = touchedJobsCount;
+                    consoleLog`  ‣ ${deletedTusCount.toLocaleString()} ${[deletedTusCount, 'tu', 'tus']} deleted, ${touchedJobsCount.toLocaleString()} ${[touchedJobsCount, 'job', 'jobs']} touched`;
+                }
+            }
+
+            // Delete empty jobs (only when --emptyJobs is specified)
+            if (options.emptyJobs) {
+                const emptyJobs = await tm.deleteEmptyJobs(dryrun);
                 if (emptyJobs > 0) {
-                    stats[srcLang][tgtLang].cleanupEmptyJobs = emptyJobs;
-                    consoleLog`  ‣ ${emptyJobs.toLocaleString()} ${[emptyJobs, 'job', 'jobs']} deleted after cleanup`;
+                    changes = true;
+                    stats[srcLang][tgtLang].emptyJobs = emptyJobs;
+                    consoleLog`  ‣ ${emptyJobs.toLocaleString()} empty ${[emptyJobs, 'job', 'jobs']} ${dryrun ? 'would be ' : ''}deleted`;
                 }
             }
         }

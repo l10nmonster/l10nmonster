@@ -71,37 +71,6 @@ export class JobDAL {
         return this.#stmt.getJobTOCByLangPair.all({ sourceLang, targetLang });
     }
 
-    /**
-     * Sets or updates a job in the database.
-     * @param {Object} job - The job object to set or update.
-     * @param {string} job.sourceLang - The source language of the job.
-     * @param {string} job.targetLang - The target language of the job.
-     * @param {string} job.jobGuid - The unique identifier for the job.
-     * @param {string} job.status - The status of the job.
-     * @param {string} job.updatedAt - The timestamp when the job was last updated.
-     * @param {string} job.translationProvider - The translation provider associated with the job.
-     */
-    setJob(completeJobProps, tmStoreId) { // TODO: make async (but it's used with a transaction)
-        this.#stmt.setJob ??= this.#db.prepare(/* sql */`
-            INSERT INTO jobs (sourceLang, targetLang, jobGuid, status, updatedAt, translationProvider, jobProps, tmStore)
-            VALUES (@sourceLang, @targetLang, @jobGuid, @status, @updatedAt, @translationProvider, @jobProps, @tmStoreId)
-            ON CONFLICT (jobGuid) DO UPDATE SET
-                sourceLang = excluded.sourceLang,
-                targetLang = excluded.targetLang,
-                status = excluded.status,
-                updatedAt = excluded.updatedAt,
-                translationProvider = excluded.translationProvider,
-                jobProps = excluded.jobProps,
-                tmStore = excluded.tmStore
-            WHERE excluded.jobGuid = jobs.jobGuid;
-        `);
-        const { jobGuid, sourceLang, targetLang, status, updatedAt, translationProvider, ...jobProps } = completeJobProps;
-        const result = this.#stmt.setJob.run({ jobGuid, sourceLang, targetLang, status, updatedAt: updatedAt ?? new Date().toISOString(), translationProvider, jobProps: JSON.stringify(jobProps), tmStoreId });
-        if (result.changes !== 1) {
-            throw new Error(`Expecting to change a row but changed ${result}`);
-        }
-    }
-
     async setJobTmStore(jobGuid, tmStoreId) {
         this.#stmt.setJobTmStore ??= this.#db.prepare(/* sql */`
             UPDATE jobs SET tmStore = ? WHERE jobGuid = ?;
@@ -133,13 +102,6 @@ export class JobDAL {
             SELECT count(*) FROM jobs;
         `).pluck();
         return this.#stmt.getJobCount.get();
-    }
-
-    deleteJob(jobGuid) { // TODO: make async (but it's used with a transaction)
-        this.#stmt.deleteJob ??= this.#db.prepare(/* sql */`
-            DELETE FROM jobs WHERE jobGuid = ?;
-        `);
-        return this.#stmt.deleteJob.run(jobGuid);
     }
 
     async getJobDeltas(sourceLang, targetLang, toc) {

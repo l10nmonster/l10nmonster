@@ -15,7 +15,13 @@
       "Bash(rm:*)",
       "Bash(npm run test:server:*)",
       "Bash(node:*)",
-      "mcp__chakra-ui__get_component_example"
+      "mcp__chakra-ui__get_component_example",
+      "mcp__context7__get-library-docs",
+      "mcp__context7__resolve-library-id",
+      "Bash(npm run test:*)",
+      "Bash(grep:*)",
+      "Bash(cat:*)",
+      "WebSearch"
     ],
     "deny": []
   }

@@ -70,12 +70,31 @@ export class TM {
         return await this.#tuDAL.deleteEmptyJobs(dryrun);
     }
 
-    async deleteOverRank(dryrun, maxRank) {
-        return await this.#tuDAL.deleteOverRank(dryrun, maxRank);
+    /**
+     * Get TU keys (guid, jobGuid tuples) where rank exceeds the specified maximum.
+     * @param {number} maxRank - Maximum rank threshold.
+     * @returns {Promise<[string, string][]>} Array of [guid, jobGuid] tuples identifying TUs to delete.
+     */
+    async tuKeysOverRank(maxRank) {
+        return await this.#tuDAL.tuKeysOverRank(maxRank);
     }
 
-    async deleteByQuality(dryrun, quality) {
-        return await this.#tuDAL.deleteByQuality(dryrun, quality);
+    /**
+     * Get TU keys (guid, jobGuid tuples) with a specific quality score.
+     * @param {number} quality - Quality score to match.
+     * @returns {Promise<[string, string][]>} Array of [guid, jobGuid] tuples identifying TUs to delete.
+     */
+    async tuKeysByQuality(quality) {
+        return await this.#tuDAL.tuKeysByQuality(quality);
+    }
+
+    /**
+     * Delete TUs identified by their composite keys (guid, jobGuid tuples).
+     * @param {[string, string][]} tuKeys - Array of [guid, jobGuid] tuples identifying TUs to delete.
+     * @returns {Promise<{deletedTusCount: number, touchedJobsCount: number}>} Count of deleted TUs and touched jobs.
+     */
+    async deleteTuKeys(tuKeys) {
+        return await this.#tuDAL.deleteTuKeys(tuKeys);
     }
 
     async getQualityDistribution() {
