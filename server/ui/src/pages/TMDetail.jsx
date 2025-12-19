@@ -319,7 +319,7 @@ const TMDetail = () => {
   };
 
   // Initialize filters from URL parameters
-  // Multi-select filters (channel, tconf, q, translationProvider, tmStore) use arrays
+  // Multi-select filters (channel, tconf, q, translationProvider, tmStore, group) use arrays
   const [filters, setFilters] = useState(() => ({
     guid: searchParams.get('guid') || '',
     nid: searchParams.get('nid') || '',
@@ -331,6 +331,7 @@ const TMDetail = () => {
     q: parseArrayParam('q'),
     translationProvider: parseArrayParam('translationProvider'),
     tmStore: parseArrayParam('tmStore'),
+    group: parseArrayParam('group'),
     jobGuid: searchParams.get('jobGuid') || '',
     channel: parseArrayParam('channel'),
     minTS: searchParams.get('minTS') || '',
@@ -365,6 +366,7 @@ const TMDetail = () => {
     q: parseArrayParam('q'),
     translationProvider: parseArrayParam('translationProvider'),
     tmStore: parseArrayParam('tmStore'),
+    group: parseArrayParam('group'),
     jobGuid: searchParams.get('jobGuid') || '',
     channel: parseArrayParam('channel'),
     minTS: searchParams.get('minTS') || '',
@@ -428,7 +430,7 @@ const TMDetail = () => {
       });
 
       // Add multi-select filters (arrays as comma-separated values)
-      const arrayFilters = ['channel', 'tconf', 'q', 'translationProvider', 'tmStore'];
+      const arrayFilters = ['channel', 'tconf', 'q', 'translationProvider', 'tmStore', 'group'];
       arrayFilters.forEach(key => {
         if (Array.isArray(filters[key]) && filters[key].length > 0) {
           // Transform tmStore filter values back to API format
@@ -921,6 +923,18 @@ const TMDetail = () => {
                     </Box>
                     <Box as="th" p={3} borderBottom="1px" borderColor="border.default" minW="120px" textAlign="left">
                       <VStack gap={2} align="stretch">
+                        <Text fontSize="sm" fontWeight="bold" color="blue.600">Group</Text>
+                        <MultiSelectFilter
+                          value={inputValues.group}
+                          onChange={(value) => handleFilterChange('group', value)}
+                          options={lowCardinalityColumns.group}
+                          placeholder="Group..."
+                          disabled={isSlowRequest}
+                        />
+                      </VStack>
+                    </Box>
+                    <Box as="th" p={3} borderBottom="1px" borderColor="border.default" minW="120px" textAlign="left">
+                      <VStack gap={2} align="stretch">
                         <Text fontSize="sm" fontWeight="bold" color="blue.600">TM Store</Text>
                         <MultiSelectFilter
                           value={inputValues.tmStore}
@@ -1264,6 +1278,15 @@ const TMDetail = () => {
                       </Box>
                       <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
                         <Text fontSize="xs" wordBreak="break-all" whiteSpace="normal">{item.sid}</Text>
+                      </Box>
+                      <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
+                        <Text
+                          fontSize="xs"
+                          color={item.group === 'Unknown' || item.group === 'Unassigned' ? 'gray.500' : 'fg.default'}
+                          fontStyle={item.group === 'Unknown' || item.group === 'Unassigned' ? 'italic' : 'normal'}
+                        >
+                          {item.group}
+                        </Text>
                       </Box>
                       <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
                         <Text

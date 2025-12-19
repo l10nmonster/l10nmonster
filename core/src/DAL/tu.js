@@ -61,8 +61,8 @@ export class TuDAL {
         }
         // Handle the case when there are no active channels - provide an empty CTE
         const unionQuery = segmentTables.length > 0
-            ? segmentTables.map(([table, channelId]) => `SELECT guid, '${channelId}' AS channel FROM ${table}`).join(' UNION ALL ')
-            : `SELECT NULL AS guid, NULL AS channel WHERE 0`; // Empty result set
+            ? segmentTables.map(([table, channelId]) => `SELECT guid, '${channelId}' AS channel, "group" FROM ${table}`).join(' UNION ALL ')
+            : `SELECT NULL AS guid, NULL AS channel, NULL AS "group" WHERE 0`; // Empty result set
         return /* sql */`
             active_guids AS (
                 ${unionQuery}
@@ -512,9 +512,10 @@ export class TuDAL {
      * @param {number} [options.maxTS] - Maximum timestamp (milliseconds since epoch).
      * @param {string[]} [options.translationProvider] - Filter by provider(s) - array for multi-select (exact match).
      * @param {string[]} [options.tmStore] - Filter by TM store(s) - array for multi-select. Use '__null__' to filter for NULL values.
+     * @param {string[]} [options.group] - Filter by group(s) - array for multi-select (exact match). Includes 'Unknown' and 'Unassigned' as special values.
      * @returns {Promise<Object[]>} Array of matching translation units.
      */
-    async search(offset, limit, { guid, nid, jobGuid, rid, sid, channel, nsrc, ntgt, notes, tconf, maxRank,onlyTNotes, q, minTS, maxTS, translationProvider, tmStore }) {
+    async search(offset, limit, { guid, nid, jobGuid, rid, sid, channel, nsrc, ntgt, notes, tconf, maxRank,onlyTNotes, q, minTS, maxTS, translationProvider, tmStore, group }) {
         // Convert array params to JSON strings for SQLite JSON_EACH
         const searchParams = {
             sourceLang: this.#sourceLang,
@@ -556,6 +557,16 @@ export class TuDAL {
             });
             searchParams.tmStoreCount = nonNullTmStores.length;
         }
+        // Handle group filter (including 'Unknown' and 'Unassigned' as special values)
+        if (Array.isArray(group)) {
+            searchParams.filterGroupUnknown = group.includes('Unknown') ? 1 : 0;
+            searchParams.filterGroupUnassigned = group.includes('Unassigned') ? 1 : 0;
+            const regularGroups = group.filter(g => g !== 'Unknown' && g !== 'Unassigned');
+            regularGroups.forEach((g, idx) => {
+                searchParams[`grp_${idx}`] = g;
+            });
+            searchParams.groupCount = regularGroups.length;
+        }
         const filteredJobsCTE = Array.isArray(translationProvider) || Array.isArray(tmStore) ?
             /* sql */`
             filtered_jobs AS (
@@ -576,6 +587,11 @@ export class TuDAL {
                 channel,
                 rid,
                 sid,
+                CASE
+                    WHEN channel IS NULL THEN 'Unknown'
+                    WHEN active_guids."group" IS NULL THEN 'Unassigned'
+                    ELSE active_guids."group"
+                END AS "group",
                 nsrc,
                 ntgt,
                 notes,
@@ -606,6 +622,13 @@ export class TuDAL {
                 ${searchParams.q !== null ? `AND q IN (${searchParams.q})` : ''}
                 ${searchParams.minTS ? 'AND ts >= @minTS' : ''}
                 ${searchParams.maxTS ? 'AND ts <= @maxTS' : ''}
+                ${Array.isArray(group) ?
+                    `AND (
+                    ${searchParams.filterGroupUnknown ? 'channel IS NULL' : '0'}
+                    ${searchParams.filterGroupUnassigned ? `${searchParams.filterGroupUnknown ? ' OR ' : ''}(channel IS NOT NULL AND active_guids."group" IS NULL)` : ''}
+                    ${searchParams.groupCount > 0 ? `${searchParams.filterGroupUnknown || searchParams.filterGroupUnassigned ? ' OR ' : ''}active_guids."group" IN (${group.filter(g => g !== 'Unknown' && g !== 'Unassigned').map((_, idx) => `@grp_${idx}`).join(',')})` : ''}
+                )` :
+                    ''}
             ORDER BY ts DESC, rid, tuOrder
             LIMIT @limit
             OFFSET @offset;
@@ -683,6 +706,28 @@ export class TuDAL {
         tconfValues.length > 0 && (enumValues.tconf = tconfValues);
         translationProviderValues.length > 0 && (enumValues.translationProvider = translationProviderValues);
         tmStoreValues.length > 0 && (enumValues.tmStore = tmStoreValues);
+
+        // Get distinct group values from active segment tables
+        // This requires dynamic query since segment tables vary by active channels
+        const groupValues = new Set(['Unknown', 'Unassigned']); // Always include these special values
+        for (const channelId of this.#DAL.activeChannels) {
+            const channelDAL = this.#DAL.channel(channelId);
+            try {
+                const stmt = this.#db.prepare(/* sql */`
+                    SELECT DISTINCT "group"
+                    FROM ${channelDAL.segmentsTable}
+                    WHERE "group" IS NOT NULL;
+                `).pluck();
+                const channelGroups = stmt.all();
+                channelGroups.forEach(g => groupValues.add(g));
+            } catch {
+                // If segment table doesn't exist or has no group column, skip silently
+            }
+        }
+        if (groupValues.size > 0) {
+            enumValues.group = Array.from(groupValues);
+        }
+
         return enumValues;
     }
 
