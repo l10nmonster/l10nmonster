@@ -20,7 +20,7 @@ import {
   Menu,
   Portal
 } from '@chakra-ui/react';
-import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery, useQuery, keepPreviousData } from '@tanstack/react-query';
 import { fetchApi } from '../utils/api';
 import { addTMTUsToCart } from '../utils/cartUtils.jsx';
 import LanguagePairSelector from '../components/LanguagePairSelector';
@@ -397,8 +397,9 @@ const TMDetail = () => {
     filters,
     showOnlyActive,
     showTNotes,
-    showOnlyLeveraged
-  ], [sourceLang, targetLang, filters, showOnlyActive, showTNotes, showOnlyLeveraged]);
+    showOnlyLeveraged,
+    showTechnicalColumns
+  ], [sourceLang, targetLang, filters, showOnlyActive, showTNotes, showOnlyLeveraged, showTechnicalColumns]);
 
   const {
     data: infiniteData,
@@ -418,7 +419,8 @@ const TMDetail = () => {
         page: pageParam.toString(),
         limit: '100',
         ...(showOnlyActive && { active: '1' }),
-        ...(showTNotes && { onlyTNotes: '1' })
+        ...(showTNotes && { onlyTNotes: '1' }),
+        ...(showTechnicalColumns && { includeTechnicalColumns: '1' })
       });
 
       // Add string filters (non-empty strings only)
@@ -467,14 +469,16 @@ const TMDetail = () => {
     },
     staleTime: 30000, // 30 seconds - shorter for search results
     refetchOnWindowFocus: false, // Prevent refetch on window focus
-    // Note: removed placeholderData to ensure query resets to page 1 when filters change
+    placeholderData: keepPreviousData, // Keep showing old results while loading new search
   });
 
-  // Query for low cardinality columns
+  // Query for low cardinality columns - lazy loaded after search results
+  // This ensures search results display immediately without waiting for filter options
   const { data: lowCardinalityColumns = {} } = useQuery({
     queryKey: ['lowCardinalityColumns', sourceLang, targetLang],
     queryFn: () => fetchApi(`/api/tm/lowCardinalityColumns/${sourceLang}/${targetLang}`),
     staleTime: 5 * 60 * 1000, // 5 minutes - these don't change often
+    enabled: !isLoading, // Only fetch after search results start loading
   });
 
   // Flatten all pages into a single array and apply client-side filtering
@@ -795,19 +799,25 @@ const TMDetail = () => {
             position="absolute"
             top={0}
             left={0}
-            right={0}
             bottom={0}
+            minW="100%"
+            w={tableContainerRef.current?.scrollWidth ? `${tableContainerRef.current.scrollWidth}px` : '100%'}
             bg="blackAlpha.400"
             display="flex"
             alignItems="center"
-            justifyContent="center"
-            zIndex={10}
+            zIndex={1500}
             borderRadius="lg"
           >
-            <VStack gap={3} bg="white" p={6} borderRadius="md" shadow="lg">
-              <Spinner size="lg" color="blue.500" />
-              <Text color="fg.default" fontWeight="medium">Loading...</Text>
-            </VStack>
+            <Box
+              position="sticky"
+              left="50%"
+              transform="translateX(-50%)"
+            >
+              <VStack gap={3} bg="white" p={6} borderRadius="md" shadow="lg" zIndex={1501}>
+                <Spinner size="lg" color="blue.500" />
+                <Text color="fg.default" fontWeight="medium">Loading...</Text>
+              </VStack>
+            </Box>
           </Box>
         )}
         <Box as="table" w="100%" fontSize="sm">
@@ -947,20 +957,20 @@ const TMDetail = () => {
                         />
                       </VStack>
                     </Box>
+                    <Box as="th" p={3} borderBottom="1px" borderColor="border.default" minW="120px" textAlign="left">
+                      <VStack gap={2} align="stretch">
+                        <Text fontSize="sm" fontWeight="bold" color="blue.600">Channel</Text>
+                        <MultiSelectFilter
+                          value={inputValues.channel}
+                          onChange={(value) => handleFilterChange('channel', value)}
+                          options={lowCardinalityColumns.channel}
+                          placeholder="Channel..."
+                          disabled={isSlowRequest}
+                        />
+                      </VStack>
+                    </Box>
                   </>
                 )}
-                <Box as="th" p={3} borderBottom="1px" borderColor="border.default" minW="120px" textAlign="left">
-                  <VStack gap={2} align="stretch">
-                    <Text fontSize="sm" fontWeight="bold" color="blue.600">Channel</Text>
-                    <MultiSelectFilter
-                      value={inputValues.channel}
-                      onChange={(value) => handleFilterChange('channel', value)}
-                      options={lowCardinalityColumns.channel}
-                      placeholder="Channel..."
-                      disabled={isSlowRequest}
-                    />
-                  </VStack>
-                </Box>
                 <Box as="th" p={3} borderBottom="1px" borderColor="border.default" minW="350px" textAlign="left">
                   <VStack gap={2} align="stretch">
                     <Text
@@ -1298,23 +1308,23 @@ const TMDetail = () => {
                           {safeString(item.tmStore, 'New/Unassigned')}
                         </Text>
                       </Box>
+                      <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
+                        {item.channel ? (
+                          <Link
+                            as={RouterLink}
+                            to={`/sources/${item.channel}?rid=${encodeURIComponent(item.rid)}&guid=${encodeURIComponent(item.guid)}`}
+                            fontSize="xs"
+                            color="blue.600"
+                            _hover={{ textDecoration: "underline" }}
+                          >
+                            {item.channel}
+                          </Link>
+                        ) : (
+                          <Text fontSize="xs">{item.channel}</Text>
+                        )}
+                      </Box>
                     </>
                   )}
-                  <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
-                    {item.channel ? (
-                      <Link
-                        as={RouterLink}
-                        to={`/sources/${item.channel}?rid=${encodeURIComponent(item.rid)}&guid=${encodeURIComponent(item.guid)}`}
-                        fontSize="xs"
-                        color="blue.600"
-                        _hover={{ textDecoration: "underline" }}
-                      >
-                        {item.channel}
-                      </Link>
-                    ) : (
-                      <Text fontSize="xs">{item.channel}</Text>
-                    )}
-                  </Box>
                   <Box as="td" p={3} borderBottom="1px" borderColor="border.subtle">
                     {item.notes ? (
                       <Tooltip.Root>

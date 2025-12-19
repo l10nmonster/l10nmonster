@@ -87,7 +87,7 @@ export function setupTmRoutes(router, mm) {
     router.get('/tm/search', async (req, res) => {
         logInfo`/tm/search`;
         try {
-            const { sourceLang, targetLang, page, limit, guid, nid, jobGuid, rid, sid, channel, nsrc, ntgt, notes, tconf, q, translationProvider, onlyTNotes, active, minTS, maxTS, tmStore, group } = req.query;
+            const { sourceLang, targetLang, page, limit, guid, nid, jobGuid, rid, sid, channel, nsrc, ntgt, notes, tconf, q, translationProvider, onlyTNotes, active, minTS, maxTS, tmStore, group, includeTechnicalColumns } = req.query;
             const tm = mm.tmm.getTM(sourceLang, targetLang);
             const limitInt = limit ? parseInt(limit, 10) : 100;
             const pageInt = page ? parseInt(page, 10) : 1;
@@ -109,6 +109,7 @@ export function setupTmRoutes(router, mm) {
                 translationProvider: parseMultiValue(translationProvider),
                 tmStore: parseMultiValue(tmStore),
                 group: parseMultiValue(group),
+                includeTechnicalColumns: includeTechnicalColumns === '1',
                 onlyTNotes: onlyTNotes === '1',
                 ...(active === '1' && { maxRank: 1 }),
             });

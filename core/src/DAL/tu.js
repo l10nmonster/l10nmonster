@@ -513,9 +513,13 @@ export class TuDAL {
      * @param {string[]} [options.translationProvider] - Filter by provider(s) - array for multi-select (exact match).
      * @param {string[]} [options.tmStore] - Filter by TM store(s) - array for multi-select. Use '__null__' to filter for NULL values.
      * @param {string[]} [options.group] - Filter by group(s) - array for multi-select (exact match). Includes 'Unknown' and 'Unassigned' as special values.
+     * @param {boolean} [options.includeTechnicalColumns] - If true, includes channel and group columns (requires CTE join).
      * @returns {Promise<Object[]>} Array of matching translation units.
      */
-    async search(offset, limit, { guid, nid, jobGuid, rid, sid, channel, nsrc, ntgt, notes, tconf, maxRank,onlyTNotes, q, minTS, maxTS, translationProvider, tmStore, group }) {
+    async search(offset, limit, { guid, nid, jobGuid, rid, sid, channel, nsrc, ntgt, notes, tconf, maxRank,onlyTNotes, q, minTS, maxTS, translationProvider, tmStore, group, includeTechnicalColumns }) {
+        // Determine if we need the CTE (for channel/group display or filtering)
+        const needsCTE = includeTechnicalColumns || Array.isArray(channel) || Array.isArray(group);
+
         // Convert array params to JSON strings for SQLite JSON_EACH
         const searchParams = {
             sourceLang: this.#sourceLang,
@@ -567,7 +571,8 @@ export class TuDAL {
             });
             searchParams.groupCount = regularGroups.length;
         }
-        const filteredJobsCTE = Array.isArray(translationProvider) || Array.isArray(tmStore) ?
+        const hasFilteredJobs = Array.isArray(translationProvider) || Array.isArray(tmStore);
+        const filteredJobsCTE = hasFilteredJobs ?
             /* sql */`
             filtered_jobs AS (
                 SELECT jobGuid, translationProvider, tmStore, updatedAt FROM jobs
@@ -575,23 +580,33 @@ export class TuDAL {
                     sourceLang = @sourceLang AND targetLang = @targetLang
                     ${Array.isArray(translationProvider) ? `AND translationProvider IN (${translationProvider.map((_, idx) => `@tp_${idx}`).join(',')})` : ''}
                     ${Array.isArray(tmStore) ? `AND (${searchParams.tmStoreCount > 0 ? `tmStore IN (${tmStore.filter(ts => ts !== '__null__').map((_, idx) => `@ts_${idx}`).join(',')})` : '0'}${searchParams.includeNullTmStore ? `${searchParams.tmStoreCount > 0 ? ' OR ' : ''}tmStore IS NULL` : ''})` : ''}
-            ),`:
+            )` :
             '';
+        // Build CTE section only when needed
+        const cteParts = [];
+        if (filteredJobsCTE) {
+            cteParts.push(filteredJobsCTE);
+        }
+        if (needsCTE) {
+            cteParts.push(this.#getActiveGuidsCTE(channel));
+        }
+        const withClause = cteParts.length > 0 ? `WITH ${cteParts.join(', ')}` : '';
+
         const searchSql = /* sql */`
-            WITH
-                ${filteredJobsCTE}
-                ${this.#getActiveGuidsCTE(channel)}
+            ${withClause}
             SELECT
                 guid,
                 jobGuid,
-                channel,
+                ${needsCTE ? 'channel,' : ''}
                 rid,
                 sid,
-                CASE
+                ${needsCTE ?
+                    `CASE
                     WHEN channel IS NULL THEN 'Unknown'
                     WHEN active_guids."group" IS NULL THEN 'Unassigned'
                     ELSE active_guids."group"
-                END AS "group",
+                END AS "group",` :
+                    ''}
                 nsrc,
                 ntgt,
                 notes,
@@ -606,7 +621,7 @@ export class TuDAL {
                 updatedAt
             FROM ${this.#tusTable}
             JOIN ${Array.isArray(translationProvider) || Array.isArray(tmStore) ? 'filtered_jobs' : 'jobs'} USING (jobGuid)
-            ${Array.isArray(channel) ? `INNER` : 'LEFT'} JOIN active_guids USING (guid)
+            ${needsCTE ? `${Array.isArray(channel) ? 'INNER' : 'LEFT'} JOIN active_guids USING (guid)` : ''}
             WHERE
                 rank <= @maxRank
                 ${searchParams.guid ? 'AND guid LIKE @guid' : ''}
@@ -622,9 +637,9 @@ export class TuDAL {
                 ${searchParams.q !== null ? `AND q IN (${searchParams.q})` : ''}
                 ${searchParams.minTS ? 'AND ts >= @minTS' : ''}
                 ${searchParams.maxTS ? 'AND ts <= @maxTS' : ''}
-                ${Array.isArray(group) ?
+                ${Array.isArray(group) && (searchParams.filterGroupUnknown || searchParams.filterGroupUnassigned || searchParams.groupCount > 0) ?
                     `AND (
-                    ${searchParams.filterGroupUnknown ? 'channel IS NULL' : '0'}
+                    ${searchParams.filterGroupUnknown ? 'channel IS NULL' : ''}
                     ${searchParams.filterGroupUnassigned ? `${searchParams.filterGroupUnknown ? ' OR ' : ''}(channel IS NOT NULL AND active_guids."group" IS NULL)` : ''}
                     ${searchParams.groupCount > 0 ? `${searchParams.filterGroupUnknown || searchParams.filterGroupUnassigned ? ' OR ' : ''}active_guids."group" IN (${group.filter(g => g !== 'Unknown' && g !== 'Unassigned').map((_, idx) => `@grp_${idx}`).join(',')})` : ''}
                 )` :
@@ -634,9 +649,8 @@ export class TuDAL {
             OFFSET @offset;
         `;
         try {
-            // logVerbose`Running ${searchSql} with params: ${JSON.stringify(searchParams)}`;
+            logVerbose`Running ${searchSql} with params: ${JSON.stringify(searchParams)}`;
             const results = this.#db.prepare(searchSql).all(searchParams);
-            // logVerbose`${results.length} search results returned`;
             return results.map(sqlTransformer.decode);
         } catch (error) {
             throw new Error(`TM search failed: ${error.message}`);
