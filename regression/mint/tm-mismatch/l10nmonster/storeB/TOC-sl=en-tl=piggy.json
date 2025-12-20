@@ -3,8 +3,8 @@
 	"sourceLang": "en",
 	"targetLang": "piggy",
 	"blocks": {
-		"blockA": {
-			"blockName": "blocks/sl=en/tl=piggy/block_blockA.jsonl",
+		"blockB": {
+			"blockName": "blocks/sl=en/tl=piggy/block_blockB.jsonl",
 			"modified": "TS1",
 			"jobs": [
 				["sharedJob", "2024-01-01T00:00:00.000Z"]

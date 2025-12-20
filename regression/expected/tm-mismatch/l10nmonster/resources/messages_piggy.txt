@@ -1,3 +1,0 @@
-greeting=[Ellohay Orldway-piggy]
-farewell=[Oodbyegay-piggy]
-thanks=[Ankthay ouyay-piggy]

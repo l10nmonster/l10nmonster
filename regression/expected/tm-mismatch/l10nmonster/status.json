@@ -3,27 +3,27 @@
 		"en": {
 			"piggy": {
 				"messages_en.txt": {
-					"translatedDetails": [
-						{
-							"minQ": 1,
-							"q": 1,
-							"res": 1,
-							"seg": 3,
-							"words": 5,
-							"chars": 27
-						}
-					],
-					"untranslatedDetails": {},
+					"translatedDetails": [],
+					"untranslatedDetails": {
+						"null": [
+							{
+								"minQ": 1,
+								"seg": 3,
+								"words": 5,
+								"chars": 27
+							}
+						]
+					},
 					"pairSummary": {
 						"segs": 3,
 						"words": 5,
 						"chars": 27
 					},
 					"pairSummaryByStatus": {
-						"translated": 3,
+						"translated": 0,
 						"low quality": 0,
 						"in flight": 0,
-						"untranslated": 0
+						"untranslated": 3
 					}
 				}
 			}
