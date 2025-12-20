@@ -1,3 +1,12 @@
+## @l10nmonster/helpers-java [3.0.1](https://public-github/l10nmonster/l10nmonster/compare/@l10nmonster/helpers-java@3.0.0...@l10nmonster/helpers-java@3.0.1) (2025-12-20)
+
+
+### Bug Fixes
+
+* Add proper pluralization expansion support ([3d062bb](https://public-github/l10nmonster/l10nmonster/commit/3d062bbb3272c61e969b419a56a7a5e347ab96c6))
+* Pluralization improvements ([5964250](https://public-github/l10nmonster/l10nmonster/commit/596425092c425cc8d6c312ef58509c4c3c537431))
+* **server:** Fix cart cleanup ([9bbcab9](https://public-github/l10nmonster/l10nmonster/commit/9bbcab93e1fd20aeb09f59c828665159f091f37c))
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
