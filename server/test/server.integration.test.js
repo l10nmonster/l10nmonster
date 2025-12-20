@@ -39,19 +39,12 @@ describe('L10n Monster Server Integration Tests', () => {
           }
         ]
       }),
-      getTmStats: async () => ({
-        'en': {
-          'ar': [
-            {
-              translationProvider: 'gemini-openai',
-              status: 'done',
-              tuCount: 31,
-              distinctGuids: 31,
-              jobCount: 1
-            }
-          ]
-        }
-      })
+      tmm: {
+        getAvailableLangPairs: async () => [
+          ['en', 'ar'],
+          ['en', 'fr']
+        ]
+      }
     };
 
     // Start the server on a random port
@@ -90,8 +83,8 @@ describe('L10n Monster Server Integration Tests', () => {
       // TM stats route
       apiRouter.get('/tm/stats', async (req, res) => {
         try {
-          const stats = await mm.tmm.getTmStats();
-          res.json(stats);
+          const langPairs = await mm.tmm.getAvailableLangPairs();
+          res.json(langPairs);
         } catch {
           res.status(500).json({ message: 'Problems fetching TM stats' });
         }
@@ -143,13 +136,13 @@ describe('L10n Monster Server Integration Tests', () => {
   test('GET /api/tm/stats returns TM statistics', async () => {
     const response = await fetch(`${baseUrl}/api/tm/stats`);
     assert.strictEqual(response.status, 200);
-    
+
     const data = await response.json();
     assert.ok(data);
-    assert.strictEqual(typeof data, 'object');
-    assert.ok(data.en);
-    assert.ok(data.en.ar);
-    assert.ok(Array.isArray(data.en.ar));
-    assert.strictEqual(data.en.ar[0].translationProvider, 'gemini-openai');
+    assert.ok(Array.isArray(data), 'Response should be an array of language pairs');
+    assert.ok(data.length > 0, 'Should have at least one language pair');
+    // Each item should be a [sourceLang, targetLang] tuple
+    assert.ok(Array.isArray(data[0]), 'Each item should be a tuple');
+    assert.strictEqual(data[0].length, 2, 'Each tuple should have 2 elements');
   });
 }); 

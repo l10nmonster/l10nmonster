@@ -70,6 +70,59 @@ export class TuDAL {
         `;
     }
 
+    /**
+     * Generate an EXISTS condition to filter for leveraged guids (those that exist in any segment table).
+     * Uses OR'd EXISTS subqueries which is much faster than UNION ALL CTE because it can short-circuit.
+     * @param {string} guidColumn - The column name to check (e.g., 'guid' or 'tus.guid').
+     * @param {string[]|null} channelFilter - Optional array of channel IDs to filter by.
+     * @returns {string} SQL EXISTS condition or '1=1' if no segment tables.
+     */
+    #getLeveragedExistsCondition(guidColumn, channelFilter) {
+        const existsConditions = [];
+        for (const channelId of this.#DAL.activeChannels) {
+            if (channelFilter && !channelFilter.includes(channelId)) continue;
+            const channelDAL = this.#DAL.channel(channelId);
+            existsConditions.push(`EXISTS (SELECT 1 FROM ${channelDAL.segmentsTable} WHERE guid = ${guidColumn})`);
+        }
+        return existsConditions.length > 0 ? `(${existsConditions.join(' OR ')})` : '1=0';
+    }
+
+    /**
+     * Look up channel and group for a list of guids by querying each segment table.
+     * This is much faster than a UNION ALL CTE when we only need to look up a small set of guids.
+     * @param {string[]} guids - Array of guids to look up.
+     * @param {string[]|null} channelFilter - Optional array of channel IDs to filter by.
+     * @returns {Map<string, {channel: string, group: string|null}>} Map of guid to channel/group info.
+     */
+    #lookupChannelAndGroup(guids, channelFilter) {
+        if (!guids.length) return new Map();
+
+        const result = new Map();
+        const guidsJson = JSON.stringify(guids);
+
+        for (const channelId of this.#DAL.activeChannels) {
+            if (channelFilter && !channelFilter.includes(channelId)) continue;
+            const channelDAL = this.#DAL.channel(channelId);
+            try {
+                const stmt = this.#db.prepare(/* sql */`
+                    SELECT guid, "group"
+                    FROM ${channelDAL.segmentsTable}
+                    WHERE guid IN (SELECT value FROM JSON_EACH(?))
+                `);
+                const rows = stmt.all(guidsJson);
+                for (const row of rows) {
+                    // Only set if not already found (first match wins)
+                    if (!result.has(row.guid)) {
+                        result.set(row.guid, { channel: channelId, group: row.group });
+                    }
+                }
+            } catch {
+                // If segment table doesn't exist, skip silently
+            }
+        }
+        return result;
+    }
+
     #getEntry(guid) {
         this.#stmt.getEntry ??= this.#db.prepare(/* sql */`
             SELECT jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuProps
@@ -537,11 +590,16 @@ export class TuDAL {
      * @param {string[]} [options.tmStore] - Filter by TM store(s) - array for multi-select. Use '__null__' to filter for NULL values.
      * @param {string[]} [options.group] - Filter by group(s) - array for multi-select (exact match). Includes 'Unknown' and 'Unassigned' as special values.
      * @param {boolean} [options.includeTechnicalColumns] - If true, includes channel and group columns (requires CTE join).
+     * @param {boolean} [options.onlyLeveraged] - If true, only return TUs that exist in active segment tables (have a channel).
      * @returns {Promise<Object[]>} Array of matching translation units.
      */
-    async search(offset, limit, { guid, nid, jobGuid, rid, sid, channel, nsrc, ntgt, notes, tconf, maxRank,onlyTNotes, q, minTS, maxTS, translationProvider, tmStore, group, includeTechnicalColumns }) {
-        // Determine if we need the CTE (for channel/group display or filtering)
-        const needsCTE = includeTechnicalColumns || Array.isArray(channel) || Array.isArray(group);
+    async search(offset, limit, { guid, nid, jobGuid, rid, sid, channel, nsrc, ntgt, notes, tconf, maxRank, onlyTNotes, q, minTS, maxTS, translationProvider, tmStore, group, includeTechnicalColumns, onlyLeveraged }) {
+        // Determine if we need channel/group for filtering vs just display
+        // Note: onlyLeveraged uses EXISTS conditions (fast) instead of CTE join
+        const needsChannelGroupFiltering = Array.isArray(channel) || Array.isArray(group);
+        const needsChannelGroupDisplay = includeTechnicalColumns && !needsChannelGroupFiltering;
+        // Generate EXISTS condition for onlyLeveraged filter (much faster than CTE INNER JOIN)
+        const leveragedExistsCondition = onlyLeveraged ? this.#getLeveragedExistsCondition(`${this.#tusTable}.guid`, channel) : null;
 
         // Convert array params to JSON strings for SQLite JSON_EACH
         const searchParams = {
@@ -605,12 +663,13 @@ export class TuDAL {
                     ${Array.isArray(tmStore) ? `AND (${searchParams.tmStoreCount > 0 ? `tmStore IN (${tmStore.filter(ts => ts !== '__null__').map((_, idx) => `@ts_${idx}`).join(',')})` : '0'}${searchParams.includeNullTmStore ? `${searchParams.tmStoreCount > 0 ? ' OR ' : ''}tmStore IS NULL` : ''})` : ''}
             )` :
             '';
-        // Build CTE section only when needed
+
+        // Build CTE section - only include active_guids CTE when filtering by channel/group
         const cteParts = [];
         if (filteredJobsCTE) {
             cteParts.push(filteredJobsCTE);
         }
-        if (needsCTE) {
+        if (needsChannelGroupFiltering) {
             cteParts.push(this.#getActiveGuidsCTE(channel));
         }
         const withClause = cteParts.length > 0 ? `WITH ${cteParts.join(', ')}` : '';
@@ -620,10 +679,10 @@ export class TuDAL {
             SELECT
                 guid,
                 jobGuid,
-                ${needsCTE ? 'channel,' : ''}
+                ${needsChannelGroupFiltering ? 'channel,' : ''}
                 rid,
                 sid,
-                ${needsCTE ?
+                ${needsChannelGroupFiltering ?
                     `CASE
                     WHEN channel IS NULL THEN 'Unknown'
                     WHEN active_guids."group" IS NULL THEN 'Unassigned'
@@ -644,9 +703,10 @@ export class TuDAL {
                 updatedAt
             FROM ${this.#tusTable}
             JOIN ${Array.isArray(translationProvider) || Array.isArray(tmStore) ? 'filtered_jobs' : 'jobs'} USING (jobGuid)
-            ${needsCTE ? `${Array.isArray(channel) ? 'INNER' : 'LEFT'} JOIN active_guids USING (guid)` : ''}
+            ${needsChannelGroupFiltering ? `${Array.isArray(channel) ? 'INNER' : 'LEFT'} JOIN active_guids USING (guid)` : ''}
             WHERE
                 rank <= @maxRank
+                ${leveragedExistsCondition ? `AND ${leveragedExistsCondition}` : ''}
                 ${searchParams.guid ? 'AND guid LIKE @guid' : ''}
                 ${searchParams.nid ? 'AND nid LIKE @nid' : ''}
                 ${searchParams.jobGuid ? 'AND jobGuid LIKE @jobGuid' : ''}
@@ -672,9 +732,29 @@ export class TuDAL {
             OFFSET @offset;
         `;
         try {
-            logVerbose`Running ${searchSql} with params: ${JSON.stringify(searchParams)}`;
+            // logVerbose`Running ${searchSql} with params: ${JSON.stringify(searchParams)}`;
             const results = this.#db.prepare(searchSql).all(searchParams);
-            return results.map(sqlTransformer.decode);
+            const decodedResults = results.map(sqlTransformer.decode);
+
+            // If we need channel/group for display only (not filtering), look them up separately
+            // This is much faster than joining with a massive UNION ALL CTE
+            if (needsChannelGroupDisplay && decodedResults.length > 0) {
+                const guids = decodedResults.map(r => r.guid);
+                const channelGroupMap = this.#lookupChannelAndGroup(guids, null);
+
+                for (const result of decodedResults) {
+                    const info = channelGroupMap.get(result.guid);
+                    if (info) {
+                        result.channel = info.channel;
+                        result.group = info.group ?? 'Unassigned';
+                    } else {
+                        result.channel = null;
+                        result.group = 'Unknown';
+                    }
+                }
+            }
+
+            return decodedResults;
         } catch (error) {
             throw new Error(`TM search failed: ${error.message}`);
         }

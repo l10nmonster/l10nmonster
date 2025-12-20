@@ -250,7 +250,8 @@ const TMDetail = () => {
         limit: '100',
         ...(showOnlyActive && { active: '1' }),
         ...(showTNotes && { onlyTNotes: '1' }),
-        ...(showTechnicalColumns && { includeTechnicalColumns: '1' })
+        ...(showTechnicalColumns && { includeTechnicalColumns: '1' }),
+        ...(showOnlyLeveraged && { onlyLeveraged: '1' })
       });
 
       // Add string filters (non-empty strings only)
@@ -311,21 +312,14 @@ const TMDetail = () => {
     enabled: !isLoading, // Only fetch after search results start loading
   });
 
-  // Flatten all pages into a single array and apply client-side filtering
+  // Flatten all pages into a single array
   const data = useMemo(() => {
     // Defensive: ensure we only process valid page data arrays
-    let allData = infiniteData?.pages.flatMap(page => {
+    return infiniteData?.pages.flatMap(page => {
       if (!page || !Array.isArray(page.data)) return [];
       return page.data;
     }) || [];
-
-    // Apply "Only Leveraged" filter (hide entries with null channel)
-    if (showOnlyLeveraged) {
-      allData = allData.filter(item => item.channel !== null && item.channel !== undefined && item.channel !== '');
-    }
-
-    return allData;
-  }, [infiniteData, showOnlyLeveraged]);
+  }, [infiniteData]);
 
   const triggerElementRef = useCallback(node => {
     if (isLoading || isFetchingNextPage) return;
