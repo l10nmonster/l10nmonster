@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/helpers-deepl",
-    "version": "3.0.0-alpha.17",
+    "version": "3.1.0",
     "description": "Helpers to integrate with DeepL",
     "type": "module",
     "main": "index.js",
