@@ -1,6 +1,6 @@
 {
   "name": "@l10nmonster/mcp",
-  "version": "3.0.0-alpha.17",
+  "version": "3.1.0",
   "description": "L10n Monster Model Context Protocol (MCP) Server",
   "type": "module",
   "main": "index.js",
@@ -12,7 +12,7 @@
     "zod": "^3"
   },
   "peerDependencies": {
-    "@l10nmonster/core": "^3.0.0-alpha.0"
+    "@l10nmonster/core": "3.1.0"
   },
   "engines": {
     "node": ">=22.11.0"
