@@ -69,19 +69,27 @@ export class BaseFileBasedSnapStore {
 
     async getTOC() {
         await this.delegate.ensureBaseDirExists();
-        let TOC = {};
+        const filesByChannelTs = {};
         const files = await this.delegate.listAllFiles();
         for (const [ fileName ] of files) {
             const match = fileName.match(this.#snapFilenameRegex);
             if (match) {
-                const { ts, channel } = match.groups;
-                const tsMillis = parseInt(ts, 10);
-                TOC[channel] ??= new Set();
-                TOC[channel].add(tsMillis);
+                const { ts, channel, table } = match.groups;
+                const key = `${channel}:${ts}`;
+                filesByChannelTs[key] ??= { channel, ts: parseInt(ts, 10), tables: new Set() };
+                filesByChannelTs[key].tables.add(table);
             }
         }
-        Object.entries(TOC).forEach(([ channel, ts ]) => {
-            TOC[channel] = [...ts].sort((a, b) => b - a);
+        // Only include timestamps where both resources and segments files exist
+        let TOC = {};
+        for (const { channel, ts, tables } of Object.values(filesByChannelTs)) {
+            if (tables.has('resources') && tables.has('segments')) {
+                TOC[channel] ??= [];
+                TOC[channel].push(ts);
+            }
+        }
+        Object.keys(TOC).forEach(channel => {
+            TOC[channel].sort((a, b) => b - a);
         });
         return TOC;
     }
@@ -107,7 +115,7 @@ export class BaseFileBasedSnapStore {
     async saveSnap(ts, channelId, rowGenerator, table) {
         logInfo`Saving snap(${table}) for channel ${channelId} into snap store ${this.id}...`;
         const stats = {};
-        await this.delegate.saveStream(this.#getSnapFileName(ts, channelId, table), this.#format.createSerializer(rowGenerator, stats), true);
+        await this.delegate.saveStream(this.#getSnapFileName(ts, channelId, table), this.#format.createSerializer(rowGenerator, stats));
         logVerbose`Saved ${stats.count} ${[stats.count, 'row', 'rows']} from table ${table} in channel ${channelId} into snap store ${this.id} ts=${ts}`;
         return stats;
     }
