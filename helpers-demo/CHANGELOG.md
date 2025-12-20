@@ -1,3 +1,16 @@
+# @l10nmonster/helpers-demo [3.1.0](https://public-github/l10nmonster/l10nmonster/compare/@l10nmonster/helpers-demo@3.0.0...@l10nmonster/helpers-demo@3.1.0) (2025-12-20)
+
+
+### Bug Fixes
+
+* Add proper pluralization expansion support ([3d062bb](https://public-github/l10nmonster/l10nmonster/commit/3d062bbb3272c61e969b419a56a7a5e347ab96c6))
+* **server:** Fix cart cleanup ([9bbcab9](https://public-github/l10nmonster/l10nmonster/commit/9bbcab93e1fd20aeb09f59c828665159f091f37c))
+
+
+### Features
+
+* **core:** Major refactor ([6992ee4](https://public-github/l10nmonster/l10nmonster/commit/6992ee4d74ad2e25afef6220f92f2e72dfd02457))
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
