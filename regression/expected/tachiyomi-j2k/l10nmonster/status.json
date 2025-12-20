@@ -3,7 +3,7 @@
 		"en": {
 			"en-GB": {
 				"default": {
-					"details": [
+					"translatedDetails": [
 						{
 							"minQ": 50,
 							"q": 50,
@@ -11,16 +11,19 @@
 							"seg": 20,
 							"words": 81,
 							"chars": 562
-						},
-						{
-							"minQ": 50,
-							"q": null,
-							"res": 1,
-							"seg": 931,
-							"words": 3129,
-							"chars": 18765
 						}
 					],
+					"untranslatedDetails": {
+						"null": [
+							{
+								"minQ": 50,
+								"res": 1,
+								"seg": 931,
+								"words": 3129,
+								"chars": 18765
+							}
+						]
+					},
 					"pairSummary": {
 						"segs": 951,
 						"words": 3210,
@@ -36,7 +39,7 @@
 			},
 			"piggy": {
 				"default": {
-					"details": [
+					"translatedDetails": [
 						{
 							"minQ": 1,
 							"q": 1,
@@ -46,6 +49,7 @@
 							"chars": 19327
 						}
 					],
+					"untranslatedDetails": {},
 					"pairSummary": {
 						"segs": 951,
 						"words": 3210,
@@ -61,7 +65,7 @@
 			},
 			"zh-Hans": {
 				"default": {
-					"details": [
+					"translatedDetails": [
 						{
 							"minQ": 50,
 							"q": 70,
@@ -79,6 +83,7 @@
 							"chars": 2090
 						}
 					],
+					"untranslatedDetails": {},
 					"pairSummary": {
 						"segs": 951,
 						"words": 3210,
@@ -94,7 +99,7 @@
 			},
 			"zh-Hant": {
 				"default": {
-					"details": [
+					"translatedDetails": [
 						{
 							"minQ": 50,
 							"q": 80,
@@ -120,6 +125,7 @@
 							"chars": 1888
 						}
 					],
+					"untranslatedDetails": {},
 					"pairSummary": {
 						"segs": 951,
 						"words": 3210,

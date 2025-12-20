@@ -3,7 +3,7 @@
 		"en": {
 			"piggy": {
 				"default": {
-					"details": [
+					"translatedDetails": [
 						{
 							"minQ": 1,
 							"q": 70,
@@ -29,6 +29,7 @@
 							"chars": 251
 						}
 					],
+					"untranslatedDetails": {},
 					"pairSummary": {
 						"segs": 15,
 						"words": 79,

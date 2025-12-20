@@ -131,17 +131,42 @@ export class MonsterManager {
                 translationStatusByPair[channelId][sourceLang] ??= {};
                 translationStatusByPair[channelId][sourceLang][targetLang] ??= {};
                 const tm = this.tmm.getTM(sourceLang, targetLang);
-                const channelStatus = await tm.getActiveContentTranslationStatus(channelId);
-                for (const [ prj, details ] of Object.entries(channelStatus)) {
+                const translatedStatus = await tm.getTranslatedContentStatus(channelId);
+                const untranslatedStatus = await tm.getUntranslatedContentStatus(channelId);
+
+                // Get all unique project names from both results
+                const allProjects = new Set([...Object.keys(translatedStatus), ...Object.keys(untranslatedStatus)]);
+
+                for (const prj of allProjects) {
+                    const translatedDetails = translatedStatus[prj] || [];
+                    const untranslatedDetails = untranslatedStatus[prj] || {};
                     const pairSummary = { segs: 0, words: 0, chars: 0 };
-                    const pairSummaryByStatus = { translated: 0, 'low quality': 0, 'in flight': 0, 'untranslated': 0 };
-                    for (const { minQ, q, seg, words, chars } of details) {
+                    const pairSummaryByStatus = { translated: 0, 'low quality': 0, 'in flight': 0, untranslated: 0 };
+
+                    // Process translated content
+                    for (const { minQ, q, seg, words, chars } of translatedDetails) {
                         pairSummary.segs += seg;
-                        pairSummaryByStatus[q === null ? 'untranslated' : (q === 0 ? 'in flight' : (q >= minQ ? 'translated' : 'low quality'))] += seg;
+                        pairSummaryByStatus[q === 0 ? 'in flight' : (q >= minQ ? 'translated' : 'low quality')] += seg;
                         pairSummary.words += words;
                         pairSummary.chars += chars;
                     }
-                    translationStatusByPair[channelId][sourceLang][targetLang][prj] = { details, pairSummary, pairSummaryByStatus };
+
+                    // Process untranslated content (nested by group)
+                    for (const [ group, groupDetails ] of Object.entries(untranslatedDetails)) {
+                        for (const { seg, words, chars } of groupDetails) {
+                            pairSummary.segs += seg;
+                            pairSummaryByStatus.untranslated += seg;
+                            pairSummary.words += words;
+                            pairSummary.chars += chars;
+                        }
+                    }
+
+                    translationStatusByPair[channelId][sourceLang][targetLang][prj] = {
+                        translatedDetails,
+                        untranslatedDetails,
+                        pairSummary,
+                        pairSummaryByStatus
+                    };
                 }
                 // logVerbose`Got active content translation status for ${sourceLang} → ${targetLang}`;
             }

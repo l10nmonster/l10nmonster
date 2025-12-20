@@ -40,14 +40,22 @@ export class source_list {
                             continue;
                         }
                         consoleLog`    ${sourceLang} → ${targetLang}`;
-                        for (const [ prj, { details, pairSummary, pairSummaryByStatus } ] of Object.entries(projectStatus)) {
-                            const pctTranslated = pctFormatter.format(pairSummaryByStatus.translated / pairSummary.segs);
+                        for (const [ prj, { translatedDetails, untranslatedDetails, pairSummary, pairSummaryByStatus } ] of Object.entries(projectStatus)) {
+                            const pctTranslated = pairSummary.segs > 0 ? pctFormatter.format(pairSummaryByStatus.translated / pairSummary.segs) : '100%';
                             const segStatus = Object.entries(pairSummaryByStatus).filter(e => e[1]).map(([status, segs]) => styleString`${status}: ${segs.toLocaleString()}`).join(', ');
                             consoleLog`      • Project ${prj}: ${pairSummary.segs.toLocaleString()} ${[pairSummary.segs, 'segment', 'segments']} (${segStatus}) ${pairSummary.words.toLocaleString()} ${[pairSummary.words, 'word', 'words']} ${pairSummary.chars.toLocaleString()} ${[pairSummary.chars, 'char', 'chars']} (${pctTranslated} translated)`;
                             if (options.detailed) {
-                                for (const { minQ, q, res, seg, words, chars } of details) {
-                                    const status = q === null ? 'untranslated' : (q === 0 ? 'in flight' : (q >= minQ ? 'translated' : 'low quality'));
+                                // Show translated content details
+                                for (const { minQ, q, res, seg, words, chars } of translatedDetails) {
+                                    const status = q === 0 ? 'in flight' : (q >= minQ ? 'translated' : 'low quality');
                                     consoleLog`        ⁃ ${status} (minQ=${minQ}, q=${q || 'none'}) ${res.toLocaleString()} ${[res, 'resource', 'resources']} with ${seg.toLocaleString()} ${[seg, 'segment', 'segments']} ${words.toLocaleString()} ${[words, 'word', 'words']} ${chars.toLocaleString()} ${[chars, 'char', 'chars']}`;
+                                }
+                                // Show untranslated content details grouped by group
+                                for (const [ group, groupDetails ] of Object.entries(untranslatedDetails)) {
+                                    const groupName = group === 'null' ? '(no group)' : group;
+                                    for (const { minQ, res, seg, words, chars } of groupDetails) {
+                                        consoleLog`        ⁃ untranslated [${groupName}] (minQ=${minQ}) ${res.toLocaleString()} ${[res, 'resource', 'resources']} with ${seg.toLocaleString()} ${[seg, 'segment', 'segments']} ${words.toLocaleString()} ${[words, 'word', 'words']} ${chars.toLocaleString()} ${[chars, 'char', 'chars']}`;
+                                    }
                                 }
                             }
                         }

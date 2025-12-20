@@ -3,7 +3,7 @@
 		"en": {
 			"de": {
 				"default": {
-					"details": [
+					"translatedDetails": [
 						{
 							"minQ": 1,
 							"q": 70,
@@ -21,6 +21,7 @@
 							"chars": 260
 						}
 					],
+					"untranslatedDetails": {},
 					"pairSummary": {
 						"segs": 19,
 						"words": 80,
@@ -36,7 +37,7 @@
 			},
 			"ja": {
 				"default": {
-					"details": [
+					"translatedDetails": [
 						{
 							"minQ": 1,
 							"q": 2,
@@ -46,6 +47,7 @@
 							"chars": 406
 						}
 					],
+					"untranslatedDetails": {},
 					"pairSummary": {
 						"segs": 15,
 						"words": 73,
@@ -61,7 +63,7 @@
 			},
 			"ru": {
 				"default": {
-					"details": [
+					"translatedDetails": [
 						{
 							"minQ": 1,
 							"q": 70,
@@ -79,6 +81,7 @@
 							"chars": 316
 						}
 					],
+					"untranslatedDetails": {},
 					"pairSummary": {
 						"segs": 27,
 						"words": 94,

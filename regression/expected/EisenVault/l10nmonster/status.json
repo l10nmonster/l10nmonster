@@ -3,7 +3,7 @@
 		"en": {
 			"it": {
 				"default": {
-					"details": [
+					"translatedDetails": [
 						{
 							"minQ": 50,
 							"q": 70,
@@ -29,6 +29,7 @@
 							"chars": 9
 						}
 					],
+					"untranslatedDetails": {},
 					"pairSummary": {
 						"segs": 335,
 						"words": 2253,

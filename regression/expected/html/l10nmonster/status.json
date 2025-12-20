@@ -3,7 +3,7 @@
 		"en": {
 			"en-ZZ": {
 				"default": {
-					"details": [
+					"translatedDetails": [
 						{
 							"minQ": 1,
 							"q": 2,
@@ -13,6 +13,7 @@
 							"chars": 4390
 						}
 					],
+					"untranslatedDetails": {},
 					"pairSummary": {
 						"segs": 133,
 						"words": 739,

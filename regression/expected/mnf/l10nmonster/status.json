@@ -3,7 +3,7 @@
 		"en": {
 			"piggy": {
 				"messages_en.txt": {
-					"details": [
+					"translatedDetails": [
 						{
 							"minQ": 1,
 							"q": 10,
@@ -21,6 +21,7 @@
 							"chars": 42
 						}
 					],
+					"untranslatedDetails": {},
 					"pairSummary": {
 						"segs": 4,
 						"words": 12,

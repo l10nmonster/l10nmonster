@@ -29,9 +29,14 @@ export class TM {
         return await this.#tuDAL.getStats();
     }
 
-    async getActiveContentTranslationStatus(channelId) {
-        const status = await this.#tuDAL.getActiveContentTranslationStatus(this.#DAL.channel(channelId));
+    async getTranslatedContentStatus(channelId) {
+        const status = await this.#tuDAL.getTranslatedContentStatus(this.#DAL.channel(channelId));
         return groupObjectsByNestedProps(status, [ 'prj' ]);
+    }
+
+    async getUntranslatedContentStatus(channelId) {
+        const status = await this.#tuDAL.getUntranslatedContentStatus(this.#DAL.channel(channelId));
+        return groupObjectsByNestedProps(status, [ 'prj', 'group' ]);
     }
 
     /**

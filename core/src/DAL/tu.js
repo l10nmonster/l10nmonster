@@ -36,7 +36,7 @@ export class TuDAL {
                 PRIMARY KEY (guid, jobGuid)
             );
             CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_jobGuid_guid ON ${this.#tusTable} (jobGuid, guid);
-            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_ts ON ${this.#tusTable} (ts DESC);
+            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_ts_rid_tuOrder ON ${this.#tusTable} (ts DESC, rid, tuOrder);
             CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_q_ts ON ${this.#tusTable} (q, ts DESC);
             CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_tconf_ts ON ${this.#tusTable} (tuProps->>'$.tconf', ts DESC);
         `);
@@ -324,26 +324,49 @@ export class TuDAL {
         });
     }
 
-    async getActiveContentTranslationStatus(channelDAL) {
-        const getActiveContentTranslationStatusStmt = this.#db.prepare(/* sql */`
+    async getTranslatedContentStatus(channelDAL) {
+        const getTranslatedContentStatusStmt = this.#db.prepare(/* sql */`
             SELECT
                 COALESCE(seg.prj, 'default') prj,
                 p.value minQ,
                 tu.q q,
                 COUNT(DISTINCT seg.rid) res,
                 COUNT(DISTINCT seg.guid) seg,
-                SUM(words) words,
-                SUM(chars) chars
+                SUM(seg.words) words,
+                SUM(seg.chars) chars
+            FROM
+                ${channelDAL.segmentsTable} seg,
+                JSON_EACH(seg.plan) p
+                INNER JOIN ${this.#tusTable} tu ON seg.guid = tu.guid
+            WHERE seg.sourceLang = ? AND p.key = ?
+            AND tu.rank = 1
+            GROUP BY 1, 2, 3
+            ORDER BY 2 DESC, 3 DESC;
+        `);
+        return getTranslatedContentStatusStmt.all(this.#sourceLang, this.#targetLang);
+    }
+
+    async getUntranslatedContentStatus(channelDAL) {
+        const getUntranslatedContentStatusStmt = this.#db.prepare(/* sql */`
+            SELECT
+                COALESCE(seg.prj, 'default') prj,
+                seg."group" "group",
+                p.value minQ,
+                COUNT(DISTINCT seg.rid) res,
+                COUNT(DISTINCT seg.guid) seg,
+                SUM(seg.words) words,
+                SUM(seg.chars) chars
             FROM
                 ${channelDAL.segmentsTable} seg,
                 JSON_EACH(seg.plan) p
                 LEFT JOIN ${this.#tusTable} tu ON seg.guid = tu.guid
-            WHERE sourceLang = ? AND p.key = ?
+            WHERE seg.sourceLang = ? AND p.key = ?
             AND (tu.rank = 1 OR tu.rank IS NULL)
+            AND (tu.q IS NULL OR (tu.q != 0 AND tu.q < p.value))
             GROUP BY 1, 2, 3
-            ORDER BY 2 DESC, 3 DESC;
+            ORDER BY 1, 2, 3 DESC;
         `);
-        return getActiveContentTranslationStatusStmt.all(this.#sourceLang, this.#targetLang);
+        return getUntranslatedContentStatusStmt.all(this.#sourceLang, this.#targetLang);
     }
 
     /**
@@ -687,14 +710,33 @@ export class TuDAL {
 
     async getLowCardinalityColumns() {
         this.#stmt.getQValues ??= this.#db.prepare(/* sql */`
-            SELECT DISTINCT q
-            FROM ${this.#tusTable}
-            WHERE q IS NOT NULL;
+            WITH RECURSIVE distinct_q(q) AS (
+                SELECT min(q) FROM ${this.#tusTable}
+                UNION ALL
+                SELECT (SELECT min(q) FROM ${this.#tusTable} WHERE q > distinct_q.q)
+                FROM distinct_q
+                WHERE q IS NOT NULL
+            )
+            SELECT q FROM distinct_q WHERE q IS NOT NULL;
         `).pluck();
         this.#stmt.getTconfValues ??= this.#db.prepare(/* sql */`
-            SELECT DISTINCT tuProps->>'$.tconf' tconf
-            FROM ${this.#tusTable}
-            WHERE tuProps->>'$.tconf' IS NOT NULL;
+            WITH RECURSIVE distinct_tconf(tconf) AS (
+                -- 1. Get the very first (lowest) value
+                SELECT min(tuProps->>'$.tconf') 
+                FROM ${this.#tusTable}
+                
+                UNION ALL
+                
+                -- 2. Find the next value greater than the current one
+                SELECT (
+                    SELECT min(tuProps->>'$.tconf') 
+                    FROM ${this.#tusTable} 
+                    WHERE (tuProps->>'$.tconf') > distinct_tconf.tconf
+                )
+                FROM distinct_tconf
+                WHERE tconf IS NOT NULL
+            )
+            SELECT tconf FROM distinct_tconf WHERE tconf IS NOT NULL;
         `).pluck();
         this.#stmt.getTranslationProviderValues ??= this.#db.prepare(/* sql */`
             SELECT DISTINCT translationProvider
@@ -728,9 +770,23 @@ export class TuDAL {
             const channelDAL = this.#DAL.channel(channelId);
             try {
                 const stmt = this.#db.prepare(/* sql */`
-                    SELECT DISTINCT "group"
-                    FROM ${channelDAL.segmentsTable}
-                    WHERE "group" IS NOT NULL;
+                    WITH RECURSIVE distinct_groups("group") AS (
+                        -- 1. Get the first alphabetical group
+                        SELECT min("group") 
+                        FROM ${channelDAL.segmentsTable}
+                        
+                        UNION ALL
+                        
+                        -- 2. Hop to the next group alphabetically
+                        SELECT (
+                            SELECT min("group")
+                            FROM ${channelDAL.segmentsTable}
+                            WHERE "group" > distinct_groups."group"
+                        )
+                        FROM distinct_groups
+                        WHERE "group" IS NOT NULL
+                    )
+                    SELECT "group" FROM distinct_groups WHERE "group" IS NOT NULL;
                 `).pluck();
                 const channelGroups = stmt.all();
                 channelGroups.forEach(g => groupValues.add(g));

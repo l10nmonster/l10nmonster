@@ -3,7 +3,7 @@
 		"en": {
 			"ar": {
 				"default": {
-					"details": [
+					"translatedDetails": [
 						{
 							"minQ": 50,
 							"q": 70,
@@ -29,6 +29,7 @@
 							"chars": 59
 						}
 					],
+					"untranslatedDetails": {},
 					"pairSummary": {
 						"segs": 33,
 						"words": 109,
@@ -48,7 +49,7 @@
 		"en": {
 			"ar": {
 				"default": {
-					"details": [
+					"translatedDetails": [
 						{
 							"minQ": 50,
 							"q": 60,
@@ -58,6 +59,7 @@
 							"chars": 88
 						}
 					],
+					"untranslatedDetails": {},
 					"pairSummary": {
 						"segs": 12,
 						"words": 24,

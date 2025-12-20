@@ -3,11 +3,12 @@ import { Container, Text, Box, Button, Grid, Spinner, Flex, Switch, Link, Collap
 import { Link as RouterLink, useNavigate, useSearchParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import ProjectCard from '../components/ProjectCard';
+import MultiSelectFilter from '../components/MultiSelectFilter';
 import { fetchApi } from '../utils/api';
 import ErrorBox from '../components/ErrorBox';
 
 // Individual channel component with lazy loading
-const ChannelContainer = ({ channelId, hideComplete, calculateCompletionPercentage, hasIncompleteContent }) => {
+const ChannelContainer = ({ channelId, hideComplete, selectedLanguagePairs, calculateCompletionPercentage, hasIncompleteContent }) => {
   const [shouldLoad, setShouldLoad] = useState(false);
   const [isExpanded, setIsExpanded] = useState(true);
   const containerRef = useRef(null);
@@ -43,21 +44,31 @@ const ChannelContainer = ({ channelId, hideComplete, calculateCompletionPercenta
     enabled: shouldLoad,
   });
 
-  // Filter channel data based on hideComplete
+  // Filter channel data based on hideComplete and selectedLanguagePairs
   const filteredChannelData = useMemo(() => {
-    if (!channelData || !hideComplete) return channelData;
+    if (!channelData) return channelData;
 
     const filtered = {};
     Object.entries(channelData).forEach(([sourceLang, targetLangs]) => {
       const filteredTargetLangs = {};
 
       Object.entries(targetLangs).forEach(([targetLang, projects]) => {
+        // Filter by selected language pairs if any are selected
+        if (selectedLanguagePairs.length > 0) {
+          const langPair = `${sourceLang} → ${targetLang}`;
+          if (!selectedLanguagePairs.includes(langPair)) {
+            return; // Skip this language pair
+          }
+        }
+
         const filteredProjects = {};
 
         Object.entries(projects).forEach(([projectName, projectData]) => {
-          if (hasIncompleteContent(projectData.pairSummaryByStatus)) {
-            filteredProjects[projectName] = projectData;
+          // Filter by hideComplete if enabled
+          if (hideComplete && !hasIncompleteContent(projectData.pairSummaryByStatus)) {
+            return; // Skip complete projects
           }
+          filteredProjects[projectName] = projectData;
         });
 
         if (Object.keys(filteredProjects).length > 0) {
@@ -71,7 +82,7 @@ const ChannelContainer = ({ channelId, hideComplete, calculateCompletionPercenta
     });
 
     return Object.keys(filtered).length > 0 ? filtered : null;
-  }, [channelData, hideComplete, hasIncompleteContent]);
+  }, [channelData, hideComplete, selectedLanguagePairs, hasIncompleteContent]);
 
   // Calculate language pair count for collapsed state
   const languagePairCount = useMemo(() => {
@@ -112,9 +123,6 @@ const ChannelContainer = ({ channelId, hideComplete, calculateCompletionPercenta
             {channelId}
           </Text>
         </Box>
-        {isLoading && (
-          <Spinner size="md" />
-        )}
       </Box>
 
       {/* Channel content */}
@@ -123,7 +131,8 @@ const ChannelContainer = ({ channelId, hideComplete, calculateCompletionPercenta
           {error ? (
             <ErrorBox error={error} title={`Error loading channel ${channelId}`} />
           ) : isLoading ? (
-            <Box display="flex" justifyContent="center" py={8}>
+            <Box display="flex" flexDirection="column" alignItems="center" gap={3} py={8}>
+              <Spinner size="md" />
               <Text color="fg.muted">Loading channel data...</Text>
             </Box>
           ) : filteredChannelData && Object.keys(filteredChannelData).length > 0 ? (
@@ -154,13 +163,14 @@ const ChannelContainer = ({ channelId, hideComplete, calculateCompletionPercenta
                   </Box>
 
                   {/* Projects within this language pair */}
-                  <Grid templateColumns="repeat(auto-fit, minmax(300px, 1fr))" gap={4}>
+                  <Grid templateColumns="repeat(auto-fit, minmax(420px, 1fr))" gap={4}>
                     {Object.entries(projects).map(([projectName, projectData]) => {
                       return (
                         <ProjectCard
                           key={`${channelId}-${sourceLang}-${targetLang}-${projectName}`}
                           project={{
-                            translationStatus: projectData.details || [],
+                            translatedDetails: projectData.translatedDetails || [],
+                            untranslatedDetails: projectData.untranslatedDetails || {},
                             pairSummary: projectData.pairSummary,
                             pairSummaryByStatus: projectData.pairSummaryByStatus,
                             projectName
@@ -209,19 +219,37 @@ const Status = () => {
   const [hideComplete, setHideComplete] = useState(() => {
     return searchParams.get('hideComplete') === 'true';
   });
+  const [selectedLanguagePairs, setSelectedLanguagePairs] = useState(() => {
+    const pairs = searchParams.get('pairs');
+    if (!pairs) return [];
+    // Convert URL format (en*es) to display format (en → es)
+    return pairs.split(',').map(p => p.replace('*', ' → '));
+  });
 
-  // First, fetch the info to get channel IDs
+  // Fetch the info to get channel IDs
   const { data: infoData, isLoading: isLoadingInfo, error: infoError } = useQuery({
     queryKey: ['info'],
     queryFn: () => fetchApi('/api/info'),
   });
+
+  // Fetch TM stats to get available language pairs
+  const { data: tmStats } = useQuery({
+    queryKey: ['tmStats'],
+    queryFn: () => fetchApi('/api/tm/stats'),
+  });
+
+  // Build language pair options from TM stats (array of [sourceLang, targetLang] tuples)
+  const languagePairOptions = useMemo(() => {
+    if (!tmStats || !Array.isArray(tmStats)) return [];
+    return tmStats.map(([sourceLang, targetLang]) => `${sourceLang} → ${targetLang}`);
+  }, [tmStats]);
 
   const channelIds = infoData?.channels?.map(channel => channel.id) || [];
 
   const loading = isLoadingInfo;
   const error = infoError;
 
-  // Update URL when hideComplete changes
+  // Update URL when filters change
   useEffect(() => {
     const newSearchParams = new URLSearchParams(searchParams);
     if (hideComplete) {
@@ -229,8 +257,15 @@ const Status = () => {
     } else {
       newSearchParams.delete('hideComplete');
     }
+    if (selectedLanguagePairs.length > 0) {
+      // Convert display format (en → es) to URL format (en*es)
+      const urlPairs = selectedLanguagePairs.map(p => p.replace(' → ', '*')).join(',');
+      newSearchParams.set('pairs', urlPairs);
+    } else {
+      newSearchParams.delete('pairs');
+    }
     setSearchParams(newSearchParams, { replace: true });
-  }, [hideComplete, searchParams, setSearchParams]);
+  }, [hideComplete, selectedLanguagePairs, searchParams, setSearchParams]);
 
   const calculateCompletionPercentage = (pairSummaryByStatus) => {
     const totalSegs = Object.values(pairSummaryByStatus).reduce((sum, count) => sum + count, 0);
@@ -264,40 +299,73 @@ const Status = () => {
   }
 
   return (
-    <Box py={6} px={6}>
-      {/* Hide Complete Toggle */}
-      <Flex align="center" gap={3} mb={6}>
-        <Switch.Root
-          checked={hideComplete}
-          onCheckedChange={(details) => setHideComplete(details.checked)}
-        >
-          <Switch.HiddenInput />
-          <Switch.Control>
-            <Switch.Thumb />
-          </Switch.Control>
-          <Switch.Label>
-            <Text fontSize="md" fontWeight="medium">Hide complete</Text>
-          </Switch.Label>
-        </Switch.Root>
-      </Flex>
+    <Box>
+      {/* Blue subheader with filters */}
+      <Box
+        bg="blue.subtle"
+        borderBottom="1px"
+        borderColor="blue.muted"
+        shadow="md"
+        borderLeft="4px"
+        borderLeftColor="blue.500"
+        px={6}
+        py={4}
+      >
+        <Flex align="center" justify="space-between">
+          <Text fontSize="md" fontWeight="semibold" color="blue.700">
+            Translation Status
+          </Text>
+          <Flex align="center" gap={6}>
+            <Flex align="center" gap={2}>
+              <Text fontSize="sm" color="blue.600">Hide Complete</Text>
+              <Switch.Root
+                checked={hideComplete}
+                onCheckedChange={(details) => setHideComplete(details.checked)}
+                size="sm"
+                colorPalette="blue"
+              >
+                <Switch.HiddenInput />
+                <Switch.Control bg={hideComplete ? "blue.500" : "gray.300"}>
+                  <Switch.Thumb />
+                </Switch.Control>
+              </Switch.Root>
+            </Flex>
+            <Flex align="center" gap={2}>
+              <Text fontSize="sm" color="blue.600">Language Pairs</Text>
+              <Box minW="150px">
+                <MultiSelectFilter
+                  value={selectedLanguagePairs}
+                  onChange={setSelectedLanguagePairs}
+                  options={languagePairOptions}
+                  placeholder="All"
+                />
+              </Box>
+            </Flex>
+          </Flex>
+        </Flex>
+      </Box>
 
-      {/* Render each channel with lazy loading */}
-      {channelIds.map((channelId) => (
-        <ChannelContainer
-          key={channelId}
-          channelId={channelId}
-          hideComplete={hideComplete}
-          calculateCompletionPercentage={calculateCompletionPercentage}
-          hasIncompleteContent={hasIncompleteContent}
-        />
-      ))}
+      {/* Content area */}
+      <Box py={6} px={6}>
+        {/* Render each channel with lazy loading */}
+        {channelIds.map((channelId) => (
+          <ChannelContainer
+            key={channelId}
+            channelId={channelId}
+            hideComplete={hideComplete}
+            selectedLanguagePairs={selectedLanguagePairs}
+            calculateCompletionPercentage={calculateCompletionPercentage}
+            hasIncompleteContent={hasIncompleteContent}
+          />
+        ))}
 
-      {/* Handle case where no channels found */}
-      {channelIds.length === 0 && !loading && (
-        <Text mt={4} color="fg.muted">
-          No channels found.
-        </Text>
-      )}
+        {/* Handle case where no channels found */}
+        {channelIds.length === 0 && !loading && (
+          <Text mt={4} color="fg.muted">
+            No channels found.
+          </Text>
+        )}
+      </Box>
     </Box>
   );
 };
