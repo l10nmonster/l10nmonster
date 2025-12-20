@@ -1,4 +1,4 @@
-import { logInfo, logVerbose } from '@l10nmonster/core';
+import { logInfo, logVerbose, logWarn } from '@l10nmonster/core';
 
 export function setupStatusRoute(router, mm) {
     router.get('/status/:channelId', async (req, res) => {
@@ -27,7 +27,7 @@ export function setupStatusRoute(router, mm) {
             logVerbose`Returned ${tus.length} untranslated TUs for ${sourceLang}->${targetLang} in channel ${channelId}${prj ? ` (project: ${prj})` : ''}`;
             res.json(tus);
         } catch (error) {
-            logInfo`Error: ${error.message}`;
+            logWarn`Error: ${error.message}`;
             res.status(500).json({ error: error.message });
         }
     });

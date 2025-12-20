@@ -1,4 +1,4 @@
-import { logInfo, getBaseDir } from '@l10nmonster/core';
+import { logInfo, getBaseDir, logWarn } from '@l10nmonster/core';
 import path from 'path';
 
 export function setupInfoRoute(router, mm, serverPackage) {
@@ -15,7 +15,7 @@ export function setupInfoRoute(router, mm, serverPackage) {
                 snapStores: mm.rm.snapStoreIds.map(id => mm.rm.getSnapStoreInfo(id)),
             });
         } catch (error) {
-            logInfo`Error in /info: ${error.message}`;
+            logWarn`Error in /info: ${error.message}`;
             res.status(500).json({
                 error: 'Failed to get system info',
                 message: error.message

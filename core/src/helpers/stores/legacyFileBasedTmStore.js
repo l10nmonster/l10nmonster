@@ -1,4 +1,4 @@
-import { logInfo, logVerbose } from '../../l10nContext.js';
+import { logVerbose, logWarn } from '../../l10nContext.js';
 import { utils } from '../index.js';
 
 const statusPriority = { done: 1, pending: 2, req: 3 };
@@ -125,7 +125,7 @@ export class LegacyFileBasedTmStore {
             if (blockName) {
                 return await this.#getTmBlock(blockName);
             } else {
-                logInfo`Block not found: ${blockId}`;
+                logWarn`Block not found: ${blockId}`;
                 return [null, null];
             }
         };

@@ -1,4 +1,4 @@
-import { logInfo, logVerbose } from '@l10nmonster/core';
+import { logInfo, logVerbose, logWarn } from '@l10nmonster/core';
 
 async function createJob(mm, sourceLang, targetLang, guids, provider) {
     logVerbose`Creating job with ${guids.length} TUs for provider ${provider}`;
@@ -62,7 +62,7 @@ export function setupDispatcherRoutes(router, mm) {
             logVerbose`Estimated job with ${estimatedJob.guids.length} TUs`;
             res.json(estimatedJob);
         } catch (error) {
-            logInfo`Error estimating job: ${error.message}`;
+            logWarn`Error estimating job: ${error.message}`;
             res.status(500).json({
                 error: 'Failed to estimate job',
                 message: error.message
@@ -106,7 +106,7 @@ export function setupDispatcherRoutes(router, mm) {
             res.json(result);
 
         } catch (error) {
-            logInfo`Error starting job: ${error.message}`;
+            logWarn`Error starting job: ${error.message}`;
             res.status(500).json({
                 error: 'Failed to start job',
                 message: error.message

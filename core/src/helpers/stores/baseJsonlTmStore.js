@@ -2,7 +2,7 @@ import readline from 'node:readline/promises';
 import { Readable } from 'node:stream';
 import zlib from 'node:zlib';
 
-import { logError, logInfo, logVerbose } from '../../l10nContext.js';
+import { logError, logVerbose, logWarn } from '../../l10nContext.js';
 
 const providerFilenameRegex = /blocks\/sl=(?<sourceLang>[^/]+)\/tl=(?<targetLang>[^/]+)\/tp=(?<translationProvider>[^/]+)\/block_(?<blockId>[0-9A-Za-z_-]+)\.jsonl/;
 const languageFilenameRegex = /blocks\/sl=(?<sourceLang>[^/]+)\/tl=(?<targetLang>[^/]+)\/block_(?<blockId>[0-9A-Za-z_-]+)\.jsonl/;
@@ -135,7 +135,7 @@ export class BaseJsonlTmStore {
                 yield currentJob;
                 rl.close();
             } else {
-                logInfo`Block not found: ${blockId}`;
+                logWarn`Block not found: ${blockId}`;
             }
         }
     }

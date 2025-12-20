@@ -1,4 +1,4 @@
-import { corePackageVersion, logVerbose, logWarn, dumpLogs, logInfo } from '../l10nContext.js';
+import { corePackageVersion, logVerbose, logWarn, dumpLogs, logError } from '../l10nContext.js';
 import { analyzers } from '../helpers/index.js';
 import * as opsManager from '../opsManager/index.js';
 import SQLiteDALManager from '../DAL/index.js';
@@ -104,7 +104,7 @@ export class MonsterManager {
             }
             return response;
         } catch(e) {
-            logInfo`Exception thrown while running L10nMonsterConfig: ${e.stack ?? e.message}`;
+            logError`Exception thrown while running L10nMonsterConfig: ${e.stack ?? e.message}`;
             e.message && (e.message = `Unable to run L10nMonsterConfig: ${e.message}`);
             const logFilePath = dumpLogs();
             e.message = `${e.message}\n\nA complete log of this run can be found in: ${logFilePath}`;

@@ -1,4 +1,4 @@
-import { logInfo, logVerbose } from '@l10nmonster/core';
+import { logInfo, logVerbose, logWarn } from '@l10nmonster/core';
 
 export function setupChannelRoutes(router, mm) {
     router.get('/channel/:channelId', async (req, res) => {
@@ -10,7 +10,7 @@ export function setupChannelRoutes(router, mm) {
             logVerbose`Returned active content stats for ${projects.length} projects`;
             res.json({ ts, store, projects });
         } catch (error) {
-            logInfo`Error in /channel/${channelId}: ${error.message}`;
+            logWarn`Error in /channel/${channelId}: ${error.message}`;
             res.status(500).json({
                 error: 'Failed to get channel data',
                 message: error.message
@@ -26,7 +26,7 @@ export function setupChannelRoutes(router, mm) {
             logVerbose`Returned project TOC for ${prj} with ${projectTOC.length} resources`;
             res.json(projectTOC);
         } catch (error) {
-            logInfo`Error in /channel/${channelId}/${prj}: ${error.message}`;
+            logWarn`Error in /channel/${channelId}/${prj}: ${error.message}`;
             res.status(500).json({
                 error: 'Failed to get project TOC',
                 message: error.message
@@ -42,7 +42,7 @@ export function setupChannelRoutes(router, mm) {
             logVerbose`Returned resource ${rid} with ${resource.segments.length} segments`;
             res.json(resource);
         } catch (error) {
-            logInfo`Error in /resource/${channelId}/${rid}: ${error.message}`;
+            logWarn`Error in /resource/${channelId}/${rid}: ${error.message}`;
             res.status(500).json({
                 error: 'Failed to get resource',
                 message: error.message

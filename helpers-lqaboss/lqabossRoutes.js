@@ -1,4 +1,4 @@
-import { logInfo, logVerbose } from '@l10nmonster/core';
+import { logInfo, logVerbose, logWarn } from '@l10nmonster/core';
 
 export function createLQABossRoutes(mm) {
     return [
@@ -17,7 +17,7 @@ export function createLQABossRoutes(mm) {
                 logVerbose`Matched ${tus.length} segments out of ${guids.size}`;
                 res.json({ results });
             } catch (error) {
-                logInfo`Error in LQABossRoute:/lookup: ${error.message}`;
+                logWarn`Error in LQABossRoute:/lookup: ${error.message}`;
                 res.status(500).json({
                     error: 'Failed to lookup translation memory',
                     message: error.message
