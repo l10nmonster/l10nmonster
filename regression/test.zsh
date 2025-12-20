@@ -36,7 +36,8 @@ run_regression() {
     rm l10nmonster* package.json regressionScript.*
     cd ../..
     find $case -name '.DS_Store' -type f -delete
-    diff -qr $case ../expected/$case
+    find $case -name '.gitkeep' -type f -delete
+    diff -qr $case ../expected/$case --exclude='.gitkeep'
 }
 
 # Enable error exit - exit immediately if any command fails
