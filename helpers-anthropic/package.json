@@ -1,6 +1,6 @@
 {
   "name": "@l10nmonster/helpers-anthropic",
-  "version": "3.0.0-alpha.17",
+  "version": "3.1.0",
   "description": "Anthropic Claude LLM provider for l10nmonster using Vertex AI",
   "type": "module",
   "main": "anthropicAgent.js",
@@ -13,7 +13,7 @@
     "google-auth-library": "^10"
   },
   "peerDependencies": {
-    "@l10nmonster/core": "^3.0.0-alpha.0"
+    "@l10nmonster/core": "3.1.0"
   },
   "engines": {
     "node": ">=22.11.0"
