@@ -104,7 +104,7 @@ export class JobDAL {
         return this.#stmt.getJobCount.get();
     }
 
-    async getJobDeltas(sourceLang, targetLang, toc) {
+    async getJobDeltas(sourceLang, targetLang, toc, storeId) {
         this.#stmt.getJobDeltas ??= this.#db.prepare(/* sql */`
             SELECT
                 tmStore,
@@ -115,23 +115,27 @@ export class JobDAL {
                 lt.updatedAt remoteUpdatedAt
             FROM (
                 SELECT tmStore, jobGuid, updatedAt
-                FROM jobs 
+                FROM jobs
                 WHERE sourceLang = ? AND targetLang = ?
             ) j
             FULL JOIN last_toc lt USING (jobGuid)
-            WHERE j.updatedAt != lt.updatedAt OR j.updatedAt IS NULL OR lt.updatedAt IS NULL
+            WHERE j.updatedAt != lt.updatedAt
+               OR j.updatedAt IS NULL
+               OR lt.updatedAt IS NULL
+               OR (j.tmStore IS NOT NULL AND j.tmStore != ?)
         `);
         this.#lastTOC = toc;
-        return this.#stmt.getJobDeltas.all(sourceLang, targetLang);
+        return this.#stmt.getJobDeltas.all(sourceLang, targetLang, storeId);
     }
 
-    async getValidJobIds(sourceLang, targetLang, toc, blockId) {
+    async getValidJobIds(sourceLang, targetLang, toc, blockId, storeId) {
         this.#stmt.getValidJobIds ??= this.#db.prepare(/* sql */`
             SELECT jobs.jobGuid
             FROM jobs JOIN last_toc USING (jobGuid)
-            WHERE sourceLang = ? AND targetLang = ? AND blockId = ?;
+            WHERE sourceLang = ? AND targetLang = ? AND blockId = ?
+              AND jobs.tmStore = ?;
         `).pluck();
         this.#lastTOC = toc;
-        return this.#stmt.getValidJobIds.all(sourceLang, targetLang, blockId);
+        return this.#stmt.getValidJobIds.all(sourceLang, targetLang, blockId, storeId);
     }
 }

@@ -111,7 +111,7 @@ export default class TMManager {
         }
         const storeId = storeAlias ?? tmStore.id;
         const toc = await tmStore.getTOC(sourceLang, targetLang);
-        const deltas = await this.#DAL.job.getJobDeltas(toc.sourceLang, toc.targetLang, toc);
+        const deltas = await this.#DAL.job.getJobDeltas(toc.sourceLang, toc.targetLang, toc, storeId);
         const remoteJobs = deltas.filter(e => e.remoteJobGuid);
         const remoteJobsWithTimestampMismatch = remoteJobs.filter(e => e.tmStore === storeId);
         const remoteJobsMissingLocally = remoteJobs.filter(e => !e.localJobGuid);
@@ -159,9 +159,9 @@ export default class TMManager {
     }
 
     async #prepareSyncUpTask({ tmStore, sourceLang, targetLang, deleteEmptyBlocks = false, includeUnassigned = false, storeAlias = null }) {
-        const toc = await tmStore.getTOC(sourceLang, targetLang);
-        const deltas = await this.#DAL.job.getJobDeltas(toc.sourceLang, toc.targetLang, toc);
         const storeId = storeAlias ?? tmStore.id;
+        const toc = await tmStore.getTOC(sourceLang, targetLang);
+        const deltas = await this.#DAL.job.getJobDeltas(toc.sourceLang, toc.targetLang, toc, storeId);
 
         // first go over differences with jobs that exist remotely in the tm store, these need to be updated by block
         const remoteJobs = deltas.filter(e => e.remoteJobGuid);
@@ -172,7 +172,7 @@ export default class TMManager {
         const blocksToUpdateMap = {};
         for (const { blockId } of remoteJobsToUpdate) {
             if (!blocksToUpdateMap[blockId]) {
-                const validJobIds = await this.#DAL.job.getValidJobIds(toc.sourceLang, toc.targetLang, toc, blockId);
+                const validJobIds = await this.#DAL.job.getValidJobIds(toc.sourceLang, toc.targetLang, toc, blockId, storeId);
                 if (validJobIds.length > 0 || deleteEmptyBlocks) { // delete empty blocks only if allowed
                     blocksToUpdateMap[blockId] = validJobIds;
                 }

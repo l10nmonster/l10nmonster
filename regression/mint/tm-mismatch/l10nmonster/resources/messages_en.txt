@@ -1,0 +1,3 @@
+greeting=Hello World
+farewell=Goodbye
+thanks=Thank you
