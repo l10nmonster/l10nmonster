@@ -64,6 +64,8 @@ export class ChannelDAL {
             CREATE INDEX IF NOT EXISTS idx_${name}_rid_segOrder ON ${name} (rid, segOrder);
             CREATE INDEX IF NOT EXISTS idx_${name}_prj_rid ON ${name} (prj, rid);
             CREATE INDEX IF NOT EXISTS idx_${name}_group ON ${name} ("group");
+            CREATE INDEX IF NOT EXISTS idx_${name}_sourceLang_guid ON ${name} (sourceLang, guid);
+            CREATE INDEX IF NOT EXISTS idx_${name}_sourceLang_prj_rid ON ${name} (sourceLang, prj, rid);
         `);
     }
 

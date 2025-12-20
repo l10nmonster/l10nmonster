@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
-import { Container, Text, Box, Button, Grid, Spinner, Flex, Switch, Link, Collapsible, IconButton } from '@chakra-ui/react';
-import { Link as RouterLink, useNavigate, useSearchParams } from 'react-router-dom';
+import React, { useState, useEffect, useMemo } from 'react';
+import { Text, Box, Grid, Spinner, Flex, Switch, Link, Collapsible } from '@chakra-ui/react';
+import { Link as RouterLink, useSearchParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import ProjectCard from '../components/ProjectCard';
 import MultiSelectFilter from '../components/MultiSelectFilter';
@@ -8,34 +8,26 @@ import { fetchApi } from '../utils/api';
 import ErrorBox from '../components/ErrorBox';
 
 // Individual channel component with lazy loading
-const ChannelContainer = ({ channelId, hideComplete, selectedLanguagePairs, calculateCompletionPercentage, hasIncompleteContent }) => {
-  const [shouldLoad, setShouldLoad] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(true);
-  const containerRef = useRef(null);
+const ChannelContainer = ({ channelId, hideComplete, selectedLanguagePairs, calculateCompletionPercentage, hasIncompleteContent, expandAll }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  // Set up intersection observer for lazy loading
+  // Sync with expandAll prop
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setShouldLoad(true);
-            observer.disconnect(); // Only trigger once
-          }
-        });
-      },
-      {
-        rootMargin: '200px', // Start loading 200px before the element comes into view
-        threshold: 0,
-      }
-    );
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
+    if (expandAll !== undefined) {
+      setIsExpanded(expandAll);
     }
+  }, [expandAll]);
+  const [hasLoadedOnce, setHasLoadedOnce] = useState(false);
 
-    return () => observer.disconnect();
-  }, []);
+  // Track if we've ever expanded this channel (to keep data loaded after collapse)
+  useEffect(() => {
+    if (isExpanded && !hasLoadedOnce) {
+      setHasLoadedOnce(true);
+    }
+  }, [isExpanded, hasLoadedOnce]);
+
+  // Only load data when expanded (or if it was previously loaded)
+  const shouldLoad = isExpanded || hasLoadedOnce;
 
   // Query for this specific channel
   const { data: channelData, isLoading, error } = useQuery({
@@ -84,14 +76,6 @@ const ChannelContainer = ({ channelId, hideComplete, selectedLanguagePairs, calc
     return Object.keys(filtered).length > 0 ? filtered : null;
   }, [channelData, hideComplete, selectedLanguagePairs, hasIncompleteContent]);
 
-  // Calculate language pair count for collapsed state
-  const languagePairCount = useMemo(() => {
-    if (!filteredChannelData) return 0;
-    return Object.values(filteredChannelData).reduce((total, targetLangs) => {
-      return total + Object.keys(targetLangs).length;
-    }, 0);
-  }, [filteredChannelData]);
-
   // Don't render if filtered out AND we have data (to avoid hiding channels before they load)
   if (hideComplete && !filteredChannelData && channelData !== undefined) {
     return null;
@@ -99,30 +83,33 @@ const ChannelContainer = ({ channelId, hideComplete, selectedLanguagePairs, calc
 
   return (
     <Box
-      ref={containerRef}
-      mb={8}
-      p={6}
+      mb={4}
+      p={isExpanded ? 6 : 4}
       borderWidth="2px"
       borderRadius="lg"
       bg="white"
       borderColor="green.200"
     >
       {/* Channel Header */}
-      <Box display="flex" alignItems="center" gap={3} flexWrap="wrap" mb={6} pb={4} borderBottom="2px" borderColor="green.100">
-        <IconButton
-          aria-label={isExpanded ? "Collapse channel" : "Expand channel"}
-          onClick={() => setIsExpanded(!isExpanded)}
-          variant="ghost"
-          size="sm"
-        >
+      <Box
+        display="flex"
+        alignItems="center"
+        gap={3}
+        cursor="pointer"
+        onClick={() => setIsExpanded(!isExpanded)}
+        _hover={{ bg: "gray.50" }}
+        borderRadius="md"
+        mx={-2}
+        px={2}
+        py={1}
+        {...(isExpanded && { mb: 4, pb: 4, borderBottom: "2px", borderColor: "green.100" })}
+      >
+        <Text fontSize="lg" color="green.600">
           {isExpanded ? "▼" : "▶"}
-        </IconButton>
-        <Box>
-          <Text fontSize="sm" color="fg.muted" mb={1}>Channel</Text>
-          <Text fontSize="lg" fontWeight="bold" color="green.600">
-            {channelId}
-          </Text>
-        </Box>
+        </Text>
+        <Text fontSize="lg" fontWeight="bold" color="green.600">
+          {channelId}
+        </Text>
       </Box>
 
       {/* Channel content */}
@@ -189,10 +176,6 @@ const ChannelContainer = ({ channelId, hideComplete, selectedLanguagePairs, calc
             <Box display="flex" justifyContent="center" py={8}>
               <Text color="fg.muted">This channel has no projects</Text>
             </Box>
-          ) : !shouldLoad ? (
-            <Box display="flex" justifyContent="center" py={8}>
-              <Text color="fg.muted">Scroll down to load content...</Text>
-            </Box>
           ) : (
             <Box display="flex" justifyContent="center" py={8}>
               <Text color="fg.muted">No content available for this channel</Text>
@@ -200,25 +183,16 @@ const ChannelContainer = ({ channelId, hideComplete, selectedLanguagePairs, calc
           )}
         </Collapsible.Content>
       </Collapsible.Root>
-
-      {/* Show summary when collapsed */}
-      {!isExpanded && filteredChannelData && (
-        <Box display="flex" justifyContent="center" py={4}>
-          <Text fontSize="sm" color="gray.600" fontStyle="italic">
-            {languagePairCount} language pair{languagePairCount !== 1 ? 's' : ''} (collapsed)
-          </Text>
-        </Box>
-      )}
     </Box>
   );
 };
 
 const Status = () => {
-  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [hideComplete, setHideComplete] = useState(() => {
     return searchParams.get('hideComplete') === 'true';
   });
+  const [expandAll, setExpandAll] = useState(undefined); // undefined = no override, true/false = force state
   const [selectedLanguagePairs, setSelectedLanguagePairs] = useState(() => {
     const pairs = searchParams.get('pairs');
     if (!pairs) return [];
@@ -317,6 +291,20 @@ const Status = () => {
           </Text>
           <Flex align="center" gap={6}>
             <Flex align="center" gap={2}>
+              <Text fontSize="sm" color="blue.600">Expand All</Text>
+              <Switch.Root
+                checked={expandAll === true}
+                onCheckedChange={(details) => setExpandAll(details.checked)}
+                size="sm"
+                colorPalette="blue"
+              >
+                <Switch.HiddenInput />
+                <Switch.Control bg={expandAll === true ? "blue.500" : "gray.300"}>
+                  <Switch.Thumb />
+                </Switch.Control>
+              </Switch.Root>
+            </Flex>
+            <Flex align="center" gap={2}>
               <Text fontSize="sm" color="blue.600">Hide Complete</Text>
               <Switch.Root
                 checked={hideComplete}
@@ -356,6 +344,7 @@ const Status = () => {
             selectedLanguagePairs={selectedLanguagePairs}
             calculateCompletionPercentage={calculateCompletionPercentage}
             hasIncompleteContent={hasIncompleteContent}
+            expandAll={expandAll}
           />
         ))}
 

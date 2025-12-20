@@ -39,6 +39,8 @@ export class TuDAL {
             CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_ts_rid_tuOrder ON ${this.#tusTable} (ts DESC, rid, tuOrder);
             CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_q_ts ON ${this.#tusTable} (q, ts DESC);
             CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_tconf_ts ON ${this.#tusTable} (tuProps->>'$.tconf', ts DESC);
+            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_guid_rank ON ${this.#tusTable} (guid, rank);
+            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_rank_guid_q ON ${this.#tusTable} (rank, guid, q);
         `);
         db.function(
             'flattenNormalizedSourceToOrdinal',
@@ -378,48 +380,54 @@ export class TuDAL {
     }
 
     async getTranslatedContentStatus(channelDAL) {
+        // Use covering index rank_guid_q on TU table - all TU data comes from index
+        // Use guid index on segments for fast join lookup
+        const tuIdxName = `idx_${this.#tusTable}_rank_guid_q`;
+        const segIdxName = `idx_${channelDAL.segmentsTable}_guid`;
         const getTranslatedContentStatusStmt = this.#db.prepare(/* sql */`
             SELECT
                 COALESCE(seg.prj, 'default') prj,
-                p.value minQ,
+                seg.plan ->> @targetLang AS minQ,
                 tu.q q,
                 COUNT(DISTINCT seg.rid) res,
-                COUNT(DISTINCT seg.guid) seg,
+                COUNT(*) seg,
                 SUM(seg.words) words,
                 SUM(seg.chars) chars
             FROM
-                ${channelDAL.segmentsTable} seg,
-                JSON_EACH(seg.plan) p
-                INNER JOIN ${this.#tusTable} tu ON seg.guid = tu.guid
-            WHERE seg.sourceLang = ? AND p.key = ?
-            AND tu.rank = 1
+                ${this.#tusTable} tu INDEXED BY ${tuIdxName}
+                INNER JOIN ${channelDAL.segmentsTable} seg INDEXED BY ${segIdxName}
+                    ON tu.guid = seg.guid
+            WHERE tu.rank = 1
+            AND seg.sourceLang = @sourceLang
+            AND seg.plan ->> @targetLang IS NOT NULL
             GROUP BY 1, 2, 3
             ORDER BY 2 DESC, 3 DESC;
         `);
-        return getTranslatedContentStatusStmt.all(this.#sourceLang, this.#targetLang);
+        return getTranslatedContentStatusStmt.all({ sourceLang: this.#sourceLang, targetLang: this.#targetLang });
     }
 
     async getUntranslatedContentStatus(channelDAL) {
+        // Use guid_rank index on TU table for fast LEFT JOIN lookup
+        const tuIdxName = `idx_${this.#tusTable}_guid_rank`;
         const getUntranslatedContentStatusStmt = this.#db.prepare(/* sql */`
             SELECT
                 COALESCE(seg.prj, 'default') prj,
                 seg."group" "group",
-                p.value minQ,
-                COUNT(DISTINCT seg.rid) res,
-                COUNT(DISTINCT seg.guid) seg,
+                seg.plan ->> @targetLang AS minQ,
+                COUNT(*) seg,
                 SUM(seg.words) words,
                 SUM(seg.chars) chars
             FROM
-                ${channelDAL.segmentsTable} seg,
-                JSON_EACH(seg.plan) p
-                LEFT JOIN ${this.#tusTable} tu ON seg.guid = tu.guid
-            WHERE seg.sourceLang = ? AND p.key = ?
-            AND (tu.rank = 1 OR tu.rank IS NULL)
-            AND (tu.q IS NULL OR (tu.q != 0 AND tu.q < p.value))
+                ${channelDAL.segmentsTable} seg
+                LEFT JOIN ${this.#tusTable} tu INDEXED BY ${tuIdxName}
+                    ON seg.guid = tu.guid AND tu.rank = 1
+            WHERE seg.sourceLang = @sourceLang
+            AND seg.plan ->> @targetLang IS NOT NULL
+            AND (tu.q IS NULL OR (tu.q != 0 AND tu.q < (seg.plan ->> @targetLang)))
             GROUP BY 1, 2, 3
             ORDER BY 1, 2, 3 DESC;
         `);
-        return getUntranslatedContentStatusStmt.all(this.#sourceLang, this.#targetLang);
+        return getUntranslatedContentStatusStmt.all({ sourceLang: this.#sourceLang, targetLang: this.#targetLang });
     }
 
     /**
@@ -431,6 +439,7 @@ export class TuDAL {
      * @returns {Promise<Object[]>} Array of untranslated translation units.
      */
     async getUntranslatedContent(channelDAL, { limit = 100, prj } = {}) {
+        // Use json_extract instead of JSON_EACH to avoid expensive row expansion
         const getUntranslatedContentStmt = this.#db.prepare(/* sql */`
             SELECT
                 '${channelDAL.channelId}' channel,
@@ -443,17 +452,16 @@ export class TuDAL {
                 seg.mf mf,
                 seg."group" "group",
                 seg.segProps segProps,
-                p.value minQ,
+                seg.plan ->> @targetLang AS minQ,
                 seg.words words,
                 seg.chars chars
             FROM
-                ${channelDAL.segmentsTable} seg,
-                JSON_EACH(seg.plan) p
-                LEFT JOIN ${this.#tusTable} tu ON seg.guid = tu.guid
+                ${channelDAL.segmentsTable} seg
+                LEFT JOIN ${this.#tusTable} tu ON seg.guid = tu.guid AND tu.rank = 1
             WHERE
-                sourceLang = @sourceLang AND p.key = @targetLang
-                AND (tu.rank = 1 OR tu.rank IS NULL)
-                AND (tu.q IS NULL OR (tu.q != 0 AND tu.q < p.value))
+                sourceLang = @sourceLang
+                AND seg.plan ->> @targetLang IS NOT NULL
+                AND (tu.q IS NULL OR (tu.q != 0 AND tu.q < (seg.plan ->> @targetLang)))
                 AND (@prj IS NULL OR COALESCE(prj, 'default') IN (SELECT value FROM JSON_EACH(@prj)))
             ORDER BY prj, rid, segOrder
             LIMIT @limit;
@@ -470,6 +478,7 @@ export class TuDAL {
     async querySource(channelDAL, whereCondition) {
         let stmt;
         try {
+            // Use json_extract instead of JSON_EACH to avoid expensive row expansion
             stmt = this.#db.prepare(/* sql */`
                 SELECT
                     '${channelDAL.channelId}' channel,
@@ -480,19 +489,18 @@ export class TuDAL {
                     seg.nstr nsrc,
                     tu.ntgt ntgt,
                     tu.q q,
-                    p.value minQ,
+                    seg.plan ->> @targetLang AS minQ,
                     seg.notes notes,
                     seg.mf mf,
                     seg."group" "group",
                     seg.segProps segProps,
                     seg.words words,
                     seg.chars chars
-                FROM ${channelDAL.segmentsTable} seg,
-                    JSON_EACH(seg.plan) p
-                    LEFT JOIN ${this.#tusTable} tu ON seg.guid = tu.guid
+                FROM ${channelDAL.segmentsTable} seg
+                    LEFT JOIN ${this.#tusTable} tu ON seg.guid = tu.guid AND tu.rank = 1
                 WHERE
-                    sourceLang = ? AND p.key = ?
-                    AND (tu.rank = 1 OR tu.rank IS NULL)
+                    sourceLang = @sourceLang
+                    AND seg.plan ->> @targetLang IS NOT NULL
                     AND ${whereCondition.replaceAll(';', '')}
                 ORDER BY prj, rid, segOrder
                 LIMIT 10000;
@@ -500,7 +508,7 @@ export class TuDAL {
         } catch (error) {
             throw new Error(`${error.code}: ${error.message}`);
         }
-        const tus = stmt.all(this.#sourceLang, this.#targetLang).map(sqlTransformer.decode);
+        const tus = stmt.all({ sourceLang: this.#sourceLang, targetLang: this.#targetLang }).map(sqlTransformer.decode);
         return tus;
     }
 
@@ -508,6 +516,7 @@ export class TuDAL {
         let stmt;
         if (channelDAL) {
             // source can be tracked down, so use the latest
+            // Use json_extract instead of JSON_EACH to avoid expensive row expansion
             stmt = this.#db.prepare(/* sql */`
                 SELECT
                     '${channelDAL.channelId}' channel,
@@ -520,7 +529,7 @@ export class TuDAL {
                     tu.q q,
                     translationProvider,
                     ts,
-                    p.value minQ,
+                    seg.plan ->> @targetLang AS minQ,
                     seg.notes notes,
                     seg.mf mf,
                     seg."group" "group",
@@ -529,13 +538,12 @@ export class TuDAL {
                     seg.chars chars
                 FROM
                     ${channelDAL.segmentsTable} seg
-                    JOIN JSON_EACH(@guids) wantedGuid ON seg.guid = wantedGuid.value,
-                    JSON_EACH(seg.plan) p
-                    LEFT JOIN ${this.#tusTable} tu ON tu.guid = wantedGuid.value
-                    JOIN jobs USING (jobGuid)
+                    JOIN JSON_EACH(@guids) wantedGuid ON seg.guid = wantedGuid.value
+                    LEFT JOIN ${this.#tusTable} tu ON tu.guid = wantedGuid.value AND tu.rank = 1
+                    LEFT JOIN jobs USING (jobGuid)
                 WHERE
-                    seg.sourceLang = @sourceLang AND p.key = @targetLang
-                    AND (tu.rank = 1 OR tu.rank IS NULL)
+                    seg.sourceLang = @sourceLang
+                    AND seg.plan ->> @targetLang IS NOT NULL
                 ORDER BY prj, rid, segOrder;
             `);
         } else {
