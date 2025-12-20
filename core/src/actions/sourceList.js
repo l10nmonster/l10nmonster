@@ -53,8 +53,8 @@ export class source_list {
                                 // Show untranslated content details grouped by group
                                 for (const [ group, groupDetails ] of Object.entries(untranslatedDetails)) {
                                     const groupName = group === 'null' ? '(no group)' : group;
-                                    for (const { minQ, res, seg, words, chars } of groupDetails) {
-                                        consoleLog`        ⁃ untranslated [${groupName}] (minQ=${minQ}) ${res.toLocaleString()} ${[res, 'resource', 'resources']} with ${seg.toLocaleString()} ${[seg, 'segment', 'segments']} ${words.toLocaleString()} ${[words, 'word', 'words']} ${chars.toLocaleString()} ${[chars, 'char', 'chars']}`;
+                                    for (const { minQ, seg, words, chars } of groupDetails) {
+                                        consoleLog`        ⁃ untranslated [${groupName}] (minQ=${minQ}) ${seg.toLocaleString()} ${[seg, 'segment', 'segments']} ${words.toLocaleString()} ${[words, 'word', 'words']} ${chars.toLocaleString()} ${[chars, 'char', 'chars']}`;
                                     }
                                 }
                             }
