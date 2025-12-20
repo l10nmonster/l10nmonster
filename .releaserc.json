@@ -19,7 +19,7 @@
     },
     {
       "path": "@semantic-release/npm",
-      "npmPublish": true
+      "npmPublish": false
     },
     {
       "path": "@semantic-release/git",

@@ -1,0 +1,144 @@
+#!/usr/bin/env node
+
+import { execSync, spawnSync } from 'child_process';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+
+// Get or create NPM token
+let npmToken = process.env.NPM_TOKEN;
+
+if (!npmToken) {
+    console.log('No NPM_TOKEN found. Creating a new publish token...');
+    console.log('You will be prompted for your npm password.\n');
+
+    const result = spawnSync('npm', ['token', 'create', '--json'], {
+        stdio: ['inherit', 'pipe', 'inherit']
+    });
+
+    if (result.status !== 0) {
+        console.error('\nFailed to create token. Make sure you are logged in with `npm login`.');
+        process.exit(1);
+    }
+
+    try {
+        const output = JSON.parse(result.stdout.toString());
+        npmToken = output.token;
+        console.log(`\nToken created successfully (ID: ${output.id})`);
+        console.log('Note: This token has read-write access. You can revoke it later at:');
+        console.log('https://www.npmjs.com/settings/tokens\n');
+    } catch (e) {
+        console.error('Failed to parse token response:', e.message);
+        process.exit(1);
+    }
+}
+
+// Get all workspace directories
+const rootPkg = JSON.parse(readFileSync('package.json', 'utf8'));
+const workspacePatterns = rootPkg.workspaces || [];
+
+// Expand workspace patterns to actual directories
+function getWorkspaceDirs() {
+    const dirs = [];
+    for (const pattern of workspacePatterns) {
+        if (pattern.includes('*')) {
+            // Glob pattern - use find to expand
+            const base = pattern.replace('*', '');
+            try {
+                const output = execSync(`ls -d ${pattern} 2>/dev/null`, { encoding: 'utf8' });
+                dirs.push(...output.trim().split('\n').filter(Boolean));
+            } catch {
+                // No matches
+            }
+        } else {
+            dirs.push(pattern);
+        }
+    }
+    return dirs;
+}
+
+// Check if a package version is already published
+function isPublished(name, version) {
+    try {
+        const output = execSync(`npm view ${name}@${version} version 2>/dev/null`, { encoding: 'utf8' });
+        return output.trim() === version;
+    } catch {
+        return false;
+    }
+}
+
+// Collect packages to publish first
+function getPackagesToPublish(dirs) {
+    const packages = [];
+    for (const dir of dirs) {
+        const pkgPath = join(dir, 'package.json');
+        let pkg;
+        try {
+            pkg = JSON.parse(readFileSync(pkgPath, 'utf8'));
+        } catch {
+            continue;
+        }
+
+        if (pkg.private) {
+            console.log(`Skipping ${pkg.name} - private package`);
+            continue;
+        }
+
+        const { name, version } = pkg;
+
+        if (isPublished(name, version)) {
+            console.log(`Skipping ${name}@${version} - already published`);
+            continue;
+        }
+
+        packages.push({ dir, name, version });
+    }
+    return packages;
+}
+
+// Publish a single workspace
+function publishWorkspace(dir, name, version) {
+    console.log(`Publishing ${name}@${version}...`);
+
+    const result = spawnSync('npm', ['publish', '--access', 'public'], {
+        cwd: dir,
+        stdio: 'inherit',
+        env: { ...process.env, NPM_TOKEN: npmToken }
+    });
+
+    if (result.status !== 0) {
+        console.error(`Failed to publish ${name}@${version}`);
+        return false;
+    }
+
+    console.log(`Successfully published ${name}@${version}`);
+    return true;
+}
+
+// Main
+const dirs = getWorkspaceDirs();
+console.log(`Found ${dirs.length} workspaces\n`);
+
+const packages = getPackagesToPublish(dirs);
+
+if (packages.length === 0) {
+    console.log('\nNo packages need publishing.');
+    process.exit(0);
+}
+
+console.log(`\nPublishing ${packages.length} packages...\n`);
+
+let failed = false;
+for (const { dir, name, version } of packages) {
+    if (!publishWorkspace(dir, name, version)) {
+        failed = true;
+        break;
+    }
+}
+
+if (failed) {
+    console.log('\nPublishing failed. Check token permissions and try again.');
+    console.log('Already-published packages will be skipped automatically.');
+    process.exit(1);
+}
+
+console.log('\nDone!');

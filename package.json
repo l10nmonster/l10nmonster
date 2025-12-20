@@ -25,8 +25,8 @@
         "publish:npm-dry": "npm publish --workspaces --access public --dry-run",
         "publish:next": "npm publish --workspaces --tag next --access public",
         "publish:next-dry": "npm publish --workspaces --tag next --access public --dry-run",
-        "release": "node ./node_modules/.bin/multi-semantic-release",
-        "release:dry-run": "node ./node_modules/.bin/multi-semantic-release --dry-run"
+        "release:prepare": "node ./node_modules/.bin/multi-semantic-release --no-ci",
+        "release:publish": "node scripts/publish-workspaces.js"
     },
     "packageManager": "npm@10.9.2",
     "devDependencies": {

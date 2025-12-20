@@ -339,14 +339,16 @@ npx l10n --help
 
 ## Publishing
 
+This project uses [semantic-release](https://semantic-release.gitbook.io/) with [multi-semantic-release](https://github.com/dhoulb/multi-semantic-release) to automate version management and changelog generation based on [Conventional Commits](https://www.conventionalcommits.org/).
+
 ### Prerequisites
 
 - **npm Account**: Must be logged in with publishing rights to `@l10nmonster` scope
-- **Two-Factor Authentication**: If enabled, use `--otp` flag with publish commands
+- **Two-Factor Authentication**: Required for publishing (interactive OTP prompt)
 - **Testing**: Run full test suite before publishing
 
 ```bash
-# Login to npm
+# Login to npm (creates 2-hour session)
 npm login
 
 # Verify login
@@ -356,90 +358,83 @@ npm whoami
 npm test
 ```
 
-### Pre-release Publishing (Alpha/Beta/RC)
+### Release Workflow
 
-For v3 development and testing, use pre-release versions with the `next` tag:
+The release process is split into two steps:
+
+1. **Prepare**: Analyze commits, update versions, generate changelogs, create git tags
+2. **Publish**: Manually publish to npm with interactive OTP prompt
 
 ```bash
-# Update to next alpha version
-npm version 3.0.0-alpha.9 --workspaces
+# Step 1: Prepare release (updates package.json, CHANGELOG.md, creates tags)
+npm run release:prepare
 
-# Test publishing (dry run)
-npm run publish:next-dry
-
-# Publish to npm with 'next' tag
-npm run publish:next
-
-# Users install with: npm install @l10nmonster/core@next
+# Step 2: Login and publish
+npm login
+npm run release:publish
 ```
 
-**Version Progression:**
-- `3.0.0-alpha.1` → `3.0.0-alpha.2` → ... (unstable, breaking changes allowed)
-- `3.0.0-beta.1` → `3.0.0-beta.2` → ... (feature-complete, API stabilizing)
-- `3.0.0-rc.1` → `3.0.0-rc.2` → ... (release candidates, bug fixes only)
+The publish script will:
+- Prompt for your npm password to create a temporary publish token
+- Skip already-published packages (safe to re-run if interrupted)
+- Show the token ID so you can revoke it later at https://www.npmjs.com/settings/tokens
 
-### Stable Publishing
-
-When ready for stable release:
-
+Alternatively, set `NPM_TOKEN` to skip the password prompt:
 ```bash
-# Update to stable version
-npm version 3.0.0 --workspaces
-
-# Test publishing (dry run)
-npm run publish:npm-dry
-
-# Publish to npm with 'latest' tag
-npm run publish:npm
-
-# Users install with: npm install @l10nmonster/core (gets latest)
+export NPM_TOKEN=<your-token>
+npm run release:publish
 ```
 
 ### Available Scripts
 
 | Script | Description |
 |--------|-------------|
-| `npm run publish:next-dry` | Dry run pre-release publish with `next` tag |
-| `npm run publish:next` | Publish pre-release versions with `next` tag |
-| `npm run publish:npm-dry` | Dry run stable publish with `latest` tag |
-| `npm run publish:npm` | Publish stable versions with `latest` tag |
+| `npm run release:prepare` | Analyze commits, bump versions, update changelogs, create git tags |
+| `npm run release:publish` | Publish all workspaces to npm (interactive OTP) |
+| `npm run publish:npm-dry` | Dry run publish to verify what would be published |
 
-### Publishing Workflow
+### How Versioning Works
 
-1. **Feature Development**: Work on feature branches
-2. **Alpha Release**: Merge to `v3` branch, publish alpha for testing
-3. **Beta Release**: When feature-complete, publish beta for wider testing
-4. **RC Release**: When stable, publish release candidate
-5. **Stable Release**: Final version with `latest` tag
+Version bumps are determined automatically from commit messages:
 
-### Version Management
+| Commit Type | Version Bump | Example |
+|-------------|--------------|---------|
+| `fix:` | Patch (0.0.x) | `fix(core): resolve memory leak` |
+| `feat:` | Minor (0.x.0) | `feat(server): add dark mode` |
+| `BREAKING CHANGE:` | Major (x.0.0) | `feat!: redesign API` |
 
-```bash
-# Check current versions
-npm list --workspaces --depth=0
+Scoped commits (e.g., `fix(core):`) only trigger releases for the affected package.
 
-# Update specific version type
-npm version prerelease --workspaces  # alpha.1 → alpha.2
-npm version preminor --workspaces    # alpha → beta
-npm version premajor --workspaces    # beta → rc
+### Branch Configuration
 
-# Remove pre-release identifier
-npm version patch --workspaces       # rc → stable
-```
+| Branch | Release Type | npm Tag |
+|--------|--------------|---------|
+| `main` | Stable | `latest` |
+| `next` | Pre-release | `next` (alpha) |
+| `beta` | Pre-release | `beta` |
 
 ### Troubleshooting
 
 **Common Issues:**
 - `403 Forbidden`: Check npm login and scope permissions
-- `Version already published`: Bump version before publishing
-- `Access denied`: Add `--access public` flag (already included in scripts)
-- `2FA required`: Add `--otp=123456` flag to publish commands
+- `EOTP`: OTP required - the publish step will prompt interactively
+- `Version already published`: The prepare step handles version bumping automatically
+- `No release needed`: No `feat:` or `fix:` commits since last release
+
+**Manual Version Check:**
+```bash
+# Check current versions
+npm list --workspaces --depth=0
+
+# Check what's published on npm
+npm view @l10nmonster/core version
+```
 
 **Rollback:**
 ```bash
 # Deprecate a published version
-npm deprecate @l10nmonster/core@3.0.0-alpha.1 "Please use @next for latest pre-release"
+npm deprecate @l10nmonster/core@3.1.0 "Please use latest version"
 
-# Unpublish (only within 24 hours)
-npm unpublish @l10nmonster/core@3.0.0-alpha.1
+# Unpublish (only within 72 hours)
+npm unpublish @l10nmonster/core@3.1.0
 ```
