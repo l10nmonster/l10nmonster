@@ -277,21 +277,53 @@ export class ChannelDAL {
     }
 
     async getActiveContentStats() {
-        this.#stmt.getActiveContentStats ??= this.#db.prepare(/* sql */`
+        // Split into two queries to avoid expensive JSON_EACH row expansion combined with segment join
+        // Query 1: Get resource-level stats (no segment join needed)
+        this.#stmt.getActiveContentStatsResources ??= this.#db.prepare(/* sql */`
             SELECT
-                r.prj prj,
-                r.sourceLang sourceLang,
+                COALESCE(prj, 'default') prj,
+                sourceLang,
                 GROUP_CONCAT(DISTINCT value) targetLangs,
-                COUNT(DISTINCT guid) AS segmentCount,
-                COUNT(DISTINCT r.rid) AS resCount,
+                COUNT(*) AS resCount,
                 MAX(modifiedAt) AS lastModified
-            FROM ${this.resourcesTable} r
+            FROM ${this.resourcesTable}
             LEFT JOIN JSON_EACH(targetLangs)
-            LEFT JOIN ${this.segmentsTable} s ON r.rid = s.rid
-            GROUP BY r.prj, r.sourceLang
-            ORDER BY 4 DESC;
+            GROUP BY 1, 2;
         `);
-        return this.#stmt.getActiveContentStats.all();
+
+        // Query 2: Get segment counts per project (no JSON expansion needed)
+        this.#stmt.getActiveContentStatsSegments ??= this.#db.prepare(/* sql */`
+            SELECT
+                COALESCE(prj, 'default') prj,
+                sourceLang,
+                COUNT(*) AS segmentCount
+            FROM ${this.segmentsTable}
+            GROUP BY 1, 2;
+        `);
+
+        const resourceStats = this.#stmt.getActiveContentStatsResources.all();
+        const segmentStats = this.#stmt.getActiveContentStatsSegments.all();
+
+        // Create a map for segment counts
+        const segmentMap = new Map();
+        for (const row of segmentStats) {
+            segmentMap.set(`${row.prj}|${row.sourceLang}`, row.segmentCount);
+        }
+
+        // Merge results
+        const results = resourceStats.map(row => ({
+            prj: row.prj,
+            sourceLang: row.sourceLang,
+            targetLangs: row.targetLangs,
+            segmentCount: segmentMap.get(`${row.prj}|${row.sourceLang}`) || 0,
+            resCount: row.resCount,
+            lastModified: row.lastModified
+        }));
+
+        // Sort by segment count descending
+        results.sort((a, b) => b.segmentCount - a.segmentCount);
+
+        return results;
     }
 
     async getProjectTOC(prj, offset, limit) {
