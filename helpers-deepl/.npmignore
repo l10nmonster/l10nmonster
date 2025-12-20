@@ -6,6 +6,9 @@ test/
 
 # Development files
 .vscode/
+.claude/
+CLAUDE.md
+.releaserc.json
 *.gif
 *.drawio.svg
 

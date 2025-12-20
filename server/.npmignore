@@ -23,6 +23,8 @@ coverage/
 # Development files
 .env
 .env.*
+CLAUDE.md
+.releaserc.json
 *.gif
 *.drawio.svg
 vite.config.js

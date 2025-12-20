@@ -3,9 +3,13 @@ tests/
 test/
 *.test.js
 *.test.mjs
+filter.test.js
 
 # Development files
 .vscode/
+.claude/
+CLAUDE.md
+.releaserc.json
 *.gif
 *.drawio.svg
 
