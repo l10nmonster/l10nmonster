@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/helpers-po",
-    "version": "3.0.0-alpha.17",
+    "version": "3.0.1",
     "description": "Helpers to deal with the PO file format",
     "type": "module",
     "main": "index.js",
@@ -13,6 +13,6 @@
         "gettext-parser": "^8"
     },
     "peerDependencies": {
-        "@l10nmonster/core": "^3.0.0-alpha.0"
+        "@l10nmonster/core": "3.1.0"
     }
 }
