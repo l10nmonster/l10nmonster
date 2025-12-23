@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/helpers-ios",
-    "version": "3.0.1",
+    "version": "3.0.2",
     "description": "Helpers to deal with iOS file formats",
     "type": "module",
     "main": "index.js",
@@ -15,6 +15,6 @@
         "plist": "^3.1.0"
     },
     "peerDependencies": {
-        "@l10nmonster/core": "3.1.0"
+        "@l10nmonster/core": "3.1.1"
     }
 }
