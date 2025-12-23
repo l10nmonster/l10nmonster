@@ -4687,7 +4687,7 @@ export function requiredSourcePluralForms(lang?: string): string[];
  */
 export function requiredTargetPluralForms(langs?: string[]): string[];
 export const l10nMonsterPackage: "@l10nmonster/core";
-export const l10nMonsterVersion: "3.1.0";
+export const l10nMonsterVersion: "3.1.1";
 export const l10nMonsterDescription: "L10n Monster Core Module";
 type Segment$2 = Segment;
 type Part$6 = Part;
