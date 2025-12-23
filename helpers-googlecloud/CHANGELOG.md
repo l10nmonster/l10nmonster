@@ -1,3 +1,18 @@
+## @l10nmonster/helpers-googlecloud [3.1.1](https://public-github/l10nmonster/l10nmonster/compare/@l10nmonster/helpers-googlecloud@3.1.0...@l10nmonster/helpers-googlecloud@3.1.1) (2025-12-23)
+
+
+### Bug Fixes
+
+* Improve type definitions and checks ([826b412](https://public-github/l10nmonster/l10nmonster/commit/826b412f0f7e761d404165a243b0c2b26c416ac1))
+
+
+
+
+
+### Dependencies
+
+* **@l10nmonster/core:** upgraded to 3.1.1
+
 # @l10nmonster/helpers-googlecloud [3.1.0](https://public-github/l10nmonster/l10nmonster/compare/@l10nmonster/helpers-googlecloud@3.0.0...@l10nmonster/helpers-googlecloud@3.1.0) (2025-12-20)
 
 
