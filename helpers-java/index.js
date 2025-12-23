@@ -9,6 +9,8 @@ const javaControlCharsToDecode = {
     r: '\r',
     f: '\f',
 };
+
+/** @type {import('@l10nmonster/core').DecoderFunction} */
 export const escapesDecoder = regex.decoderMaker(
     'javaEscapesDecoder',
     /(?<node>\\(?<escapedChar>['"\\])|\\(?<escapedControl>[tbnrf])|\\u(?<codePoint>[0-9A-Za-z]{4}))/g,
@@ -21,6 +23,7 @@ export const escapesDecoder = regex.decoderMaker(
 );
 
 // TODO: do we need to escape also those escapedChar that we decoded?
+/** @type {import('@l10nmonster/core').TextEncoderFunction} */
 export const escapesEncoder = regex.encoderMaker(
     'javaEscapesEncoder',
     // eslint-disable-next-line prefer-named-capture-group
@@ -34,6 +37,7 @@ export const escapesEncoder = regex.encoderMaker(
     }
 );
 
+/** @type {import('@l10nmonster/core').DecoderFunction} */
 export const MFQuotesDecoder = regex.decoderMaker(
     'javaMFQuotesDecoder',
     /(?:(?<quote>')'|(?:'(?<quoted>[^']+)'))/g,
@@ -41,6 +45,7 @@ export const MFQuotesDecoder = regex.decoderMaker(
 );
 
 // need to be smart about detecting whether MessageFormat was used or not based on presence of {vars}
+/** @type {import('@l10nmonster/core').TextEncoderFunction} */
 export const MFQuotesEncoder = regex.encoderMaker(
     'javaMFQuotesEncoder',
     // eslint-disable-next-line prefer-named-capture-group

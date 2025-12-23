@@ -14,7 +14,7 @@ describe('DeepL Provider', () => {
     test('should prepare translation chunk args correctly', () => {
         // Create unique provider to avoid registry conflicts
         const provider = new DeepLProvider({
-            id: 'test-provider-' + Date.now(),
+            id: `test-provider-${Date.now()}`,
             authKey: 'test-key',
             formalityMap: { 'de': 'more' },
             modelType: 'quality_optimized',
@@ -39,7 +39,7 @@ describe('DeepL Provider', () => {
 
     test('should convert translation response correctly', () => {
         const provider = new DeepLProvider({
-            id: 'test-convert-' + Date.now(),
+            id: `test-convert-${Date.now()}`,
             authKey: 'test-key',
             quality: 80
         });
@@ -60,7 +60,7 @@ describe('DeepL Provider', () => {
 
     test('should handle missing formality mapping', () => {
         const provider = new DeepLProvider({
-            id: 'test-formality-' + Date.now(),
+            id: `test-formality-${Date.now()}`,
             authKey: 'test-key',
             quality: 80
         });

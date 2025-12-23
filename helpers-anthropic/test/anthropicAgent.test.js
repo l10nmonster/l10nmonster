@@ -1,3 +1,4 @@
+/* eslint-disable no-new */
 import { describe, it, beforeEach, mock } from 'node:test';
 import assert from 'node:assert';
 import { AnthropicAgent } from '../anthropicAgent.js';

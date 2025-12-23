@@ -55,7 +55,7 @@ export function groupObjectsByNestedProps(data, groupByProps, keepGroupProps = f
       // Traverse/create the nested structure based on groupByProps
       for (let i = 0; i < groupByProps.length - 1; i++) {
         const propName = groupByProps[i];
-        const key = item.hasOwnProperty(propName) ? item[propName] : undefined; // Handle missing properties
+        const key = Object.hasOwn(item, propName) ? item[propName] : undefined; // Handle missing properties
   
         // If the key node doesn't exist, or isn't an object, create/overwrite it
         // We use String(key) because object keys are implicitly strings (or Symbols)
@@ -70,7 +70,7 @@ export function groupObjectsByNestedProps(data, groupByProps, keepGroupProps = f
   
       // Handle the final level (where the array of items/processed items goes)
       const finalPropName = groupByProps[groupByProps.length - 1];
-      const finalKey = item.hasOwnProperty(finalPropName) ? item[finalPropName] : undefined;
+      const finalKey = Object.hasOwn(item, finalPropName) ? item[finalPropName] : undefined;
       const finalKeyString = String(finalKey);
   
       // Initialize the array if it doesn't exist at the final key position

@@ -2,6 +2,17 @@ import { getRegressionMode } from '../../l10nContext.js';
 import { utils } from '../index.js';
 import { BaseTranslationProvider } from './baseTranslationProvider.js';
 
+/**
+ * @typedef {import('../../interfaces.js').Job} Job
+ * @typedef {import('../../interfaces.js').TU} TUType
+ */
+
+/**
+ * Underlines a string with combining characters.
+ * @param {string} str - String to underline.
+ * @param {number} runningLength - Current running length for tick marks.
+ * @returns {string} Underlined string.
+ */
 function underlineString(str, runningLength) {
     const newStr = [];
     for (const c of str) {
@@ -24,12 +35,12 @@ function underlineString(str, runningLength) {
 // e.g. encodeNumber(26, 9372, job.jobId) or encodeNumber(52, 9398, tuIdx)
 
 export class Visicode extends BaseTranslationProvider {
-    
+
     /**
      * Initializes a new instance of the Visicode class.
      * @param {Object} options - The parameters for the constructor.
      * @param {string} [options.id] - Global identifier for the provider.
-     * @param {Object} [options.supportedPairs] - Supported pairs for the provider.
+     * @param {Record<string, string[]>} [options.supportedPairs] - Supported pairs for the provider.
      * @param {number} options.quality - The quality to assign translations.
      */
     constructor(options) {
@@ -39,6 +50,11 @@ export class Visicode extends BaseTranslationProvider {
         super(options);
     }
 
+    /**
+     * Generates visicode translations with underlined text.
+     * @param {Job} job - The job to process.
+     * @returns {Promise<TUType[]>} Array of translated TUs.
+     */
     async getTranslatedTus(job) {
         const ts = getRegressionMode() ? 1 : new Date().getTime();
         return job.tus.map(tu => {

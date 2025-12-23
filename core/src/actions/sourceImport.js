@@ -1,8 +1,19 @@
 import fastq from 'fastq';
 import { consoleLog, logVerbose } from '../l10nContext.js';
 
-export class source_import {
-    static help = {
+/**
+ * @typedef {Object} SourceImportOptions
+ * @property {string} [snapStore] - Snap store ID
+ * @property {string | string[]} [channel] - Channel ID(s)
+ */
+
+/**
+ * CLI action for importing a snapshot of sources.
+ * @type {import('../../index.js').L10nAction}
+ */
+export const source_import = {
+    name: 'source_import',
+    help: {
         description: 'imports a snapshot of sources in the local cache.',
         arguments: [
             [ '[snapStore]', 'id of the snap store' ],
@@ -10,9 +21,10 @@ export class source_import {
         options: [
             [ '--channel <channelId>', 'limit to the specified channels' ],
         ]
-    };
+    },
 
-    static async action(mm, { snapStore, channel }) {
+    async action(mm, options) {
+        const { snapStore, channel } = /** @type {SourceImportOptions} */ (options);
         const channels = channel ? (Array.isArray(channel) ? channel : channel.split(',')) : mm.rm.channelIds;
         if (snapStore) {
             const toc = await mm.rm.getSnapStoreTOC(snapStore);
@@ -58,5 +70,5 @@ export class source_import {
                 }
             }
         }
-    }
-}
+    },
+};

@@ -6,16 +6,27 @@ import { Normalizer } from './entities/normalizer.js';
 import { FormatHandler } from './entities/formatHandler.js';
 import { validate } from './helpers/utils.js';
 
+/**
+ * @typedef {import('./interfaces.js').ResourceFilter} ResourceFilter
+ * @typedef {import('./interfaces.js').ResourceGenerator} ResourceGenerator
+ * @typedef {import('./interfaces.js').SourceAdapter} SourceAdapter
+ * @typedef {import('./interfaces.js').TargetAdapter} TargetAdapter
+ * @typedef {import('./interfaces.js').TMStore} TMStore
+ * @typedef {import('./interfaces.js').SnapStore} SnapStore
+ * @typedef {import('./interfaces.js').TranslationProvider} TranslationProvider
+ * @typedef {import('./interfaces.js').TranslationPolicy} TranslationPolicy
+ * @typedef {import('./interfaces.js').OpsStoreInterface} OpsStoreInterface
+ * @typedef {import('./interfaces.js').L10nAction} L10nAction
+ * @typedef {import('./interfaces.js').Analyzer} Analyzer
+ */
+
+/**
+ * Configuration for resource format handling.
+ * Defines how resources are parsed and generated for a specific format.
+ */
 export class ResourceFormatConfig {
 
-    /**
-     * @type {Object} FormatHandlerConfig
-     * @property {string} id - Unique identifier for this format handler.
-     * @property {Object} resourceFilter - A resource filter to parse raw content.
-     * @property {Object} [resourceGenerator] - A resource generator to produce translations from normalized content.
-     * @property {string} [defaultMessageFormat] - The default message format for this format handler.
-     * @property {Function[]} [segmentDecorators] - An array of functions that decorate the segments.
-     */
+    /** @type {Object} */
     #config = {};
 
     static configMancerSample = {
@@ -48,6 +59,10 @@ export class ResourceFormatConfig {
         return instance;
     }
 
+    /**
+     * Creates a new ResourceFormatConfig instance.
+     * @param {string} id - Unique identifier for this format.
+     */
     constructor(id) {
         if (!id) {
             throw new Error('Resource Format id is required');
@@ -56,10 +71,17 @@ export class ResourceFormatConfig {
         this.#config.defaultMessageFormat = id;
     }
 
+    /** @returns {string} The format identifier. */
     get id() {
         return this.#config.id;
     }
 
+    /**
+     * Creates a FormatHandler from this configuration.
+     * @param {Record<string, FormatHandler>} formatHandlers - Map of format handlers by ID.
+     * @param {Record<string, Normalizer>} normalizers - Map of normalizers by ID.
+     * @returns {FormatHandler} The created format handler.
+     */
     createFormatHandler(formatHandlers, normalizers) {
         validate(`ResourceFormat ${this.id}`, this.#config)
             .objectProperty('resourceFilter', 'normalizers', 'resourceGenerator')
@@ -73,36 +95,54 @@ export class ResourceFormatConfig {
 
     // ResourceFormatConfig sugar setters
 
+    /**
+     * Sets the resource filter for parsing raw content.
+     * @param {ResourceFilter} filter - The resource filter.
+     * @returns {ResourceFormatConfig} This instance for method chaining.
+     */
     resourceFilter(filter) {
         this.#config.resourceFilter = filter;
         return this;
     }
 
+    /**
+     * Sets the resource generator for producing translations.
+     * @param {ResourceGenerator} generator - The resource generator.
+     * @returns {ResourceFormatConfig} This instance for method chaining.
+     */
     resourceGenerator(generator) {
         this.#config.resourceGenerator = generator;
         return this;
     }
 
+    /**
+     * Sets the default message format for this resource format.
+     * @param {string} format - The message format identifier.
+     * @returns {ResourceFormatConfig} This instance for method chaining.
+     */
     defaultMessageFormat(format) {
         this.#config.defaultMessageFormat = format;
         return this;
     }
 
+    /**
+     * Sets the segment decorators for processing segments.
+     * @param {Function[]} decorators - Array of decorator functions.
+     * @returns {ResourceFormatConfig} This instance for method chaining.
+     */
     segmentDecorators(decorators) {
         this.#config.segmentDecorators = decorators;
         return this;
     }
 }
 
+/**
+ * Configuration for message format normalization.
+ * Defines how strings are decoded, encoded, and normalized.
+ */
 export class MessageFormatConfig {
 
-    /**
-     * @type {Object} NormalizerConfig
-     * @property {Array} decoders
-     * @property {Array} textEncoders
-     * @property {Array} codeEncoders
-     * @property {string} joiner
-     */
+    /** @type {Object} */
     #config = {};
 
     static configMancerSample = {
@@ -131,6 +171,10 @@ export class MessageFormatConfig {
         return instance;
     }
 
+    /**
+     * Creates a new MessageFormatConfig instance.
+     * @param {string} id - Unique identifier for this message format.
+     */
     constructor(id) {
         if (!id) {
             throw new Error('Message Format id is required');
@@ -138,10 +182,15 @@ export class MessageFormatConfig {
         this.#config.id = id;
     }
 
+    /** @returns {string} The message format identifier. */
     get id() {
         return this.#config.id;
     }
 
+    /**
+     * Creates a Normalizer from this configuration.
+     * @returns {Normalizer} The created normalizer.
+     */
     createNormalizer() {
         validate(`MessageFormat ${this.id}`, this.#config)
             .arrayOfFunctions('decoders', 'textEncoders', 'codeEncoders', 'joiner');
@@ -150,38 +199,57 @@ export class MessageFormatConfig {
 
     // MessageFormatConfig sugar setters
 
+    /**
+     * Sets the decoder functions for parsing source strings.
+     * @param {Function[]} decoders - Array of decoder functions.
+     * @returns {MessageFormatConfig} This instance for method chaining.
+     */
     decoders(decoders) {
         this.#config.decoders = decoders;
         return this;
     }
 
+    /**
+     * Sets the text encoder functions for encoding output strings.
+     * @param {Function[]} encoders - Array of text encoder functions.
+     * @returns {MessageFormatConfig} This instance for method chaining.
+     */
     textEncoders(encoders) {
         this.#config.textEncoders = encoders;
         return this;
     }
 
+    /**
+     * Sets the code encoder functions for encoding placeholders.
+     * @param {Function[]} encoders - Array of code encoder functions.
+     * @returns {MessageFormatConfig} This instance for method chaining.
+     */
     codeEncoders(encoders) {
         this.#config.codeEncoders = encoders;
         return this;
     }
 
+    /**
+     * Sets the joiner function for combining parts.
+     * @param {Function} joiner - The joiner function.
+     * @returns {MessageFormatConfig} This instance for method chaining.
+     */
     joiner(joiner) {
         this.#config.joiner = joiner;
         return this;
     }
 }
 
+/**
+ * Configuration for a localization channel.
+ * A channel defines the source/target adapters and format handlers for processing resources.
+ */
 export class ChannelConfig {
+
+    /** @type {{ baseDir?: string }} */
     #channelOptions = {};
 
-    /**
-     * @type {Object} ChannelConfig
-     * @property {string} id - Unique identifier of the channel.
-     * @property {Source} source - Source adapter for fetching resources from the source.
-     * @property {Object} formatHandlers - A map of format name to `FormatHandler` objects that can be used to process resources of each format.
-     * @property {string} [defaultResourceFormat] - The default resource format to use when a resource doesn't specify one.
-     * @property {Target} [target] - Target adapter for storing translated resources.
-     */
+    /** @type {Object} */
     #config = {};
 
     static configMancerSample = {
@@ -220,12 +288,26 @@ export class ChannelConfig {
         return instance;
     }
 
+    /** @type {Record<string, ResourceFormatConfig>} */
     #resourceFormats = {};
+
+    /** @type {Record<string, MessageFormatConfig>} */
     #messageFormats = {};
+
+    /** @type {TranslationPolicy[]} */
     #translationPolicyPipeline = [];
+
+    /** @type {ResourceFormatConfig|undefined} */
     #currentResourceFormat;
+
+    /** @type {MessageFormatConfig|undefined} */
     #currentMessageFormat;
 
+    /**
+     * Creates a new ChannelConfig instance.
+     * @param {string} id - Unique identifier for this channel.
+     * @param {string} [baseDir] - Optional base directory for relative paths.
+     */
     constructor(id, baseDir) {
         if (!id) {
             throw new Error('Channel id is required');
@@ -235,10 +317,15 @@ export class ChannelConfig {
         baseDir && (this.#channelOptions.baseDir = baseDir);
     }
 
+    /** @returns {string} The channel identifier. */
     get id() {
         return this.#config.id;
     }
 
+    /**
+     * Creates a Channel instance from this configuration.
+     * @returns {Channel} The created channel.
+     */
     createChannel() {
         validate(`Channel ${this.id}`, this.#config).objectProperty('source', 'target');
         this.#config.source?.setChannelOptions && this.#config.source.setChannelOptions(this.#channelOptions);
@@ -246,6 +333,8 @@ export class ChannelConfig {
         Object.keys(this.#messageFormats).length === 0 && (this.#messageFormats[this.id] = new MessageFormatConfig(this.id)); // at least have an empty normalizer!
         const normalizers = Object.fromEntries(Object.entries(this.#messageFormats)
             .map(([ id, format ]) => [ id, format.createNormalizer() ]));
+
+        /** @type {Record<string, FormatHandler>} */
         const formatHandlers = {};
         Object.entries(this.#resourceFormats).forEach(([ id, format ]) => {
             formatHandlers[id] = format.createFormatHandler(formatHandlers, normalizers);
@@ -257,16 +346,31 @@ export class ChannelConfig {
         });
     }
 
+    /**
+     * Sets the source adapter for this channel.
+     * @param {SourceAdapter} source - The source adapter.
+     * @returns {ChannelConfig} This instance for method chaining.
+     */
     source(source) {
         this.#config.source = source;
         return this;
     }
 
+    /**
+     * Sets the target adapter for this channel.
+     * @param {TargetAdapter} target - The target adapter.
+     * @returns {ChannelConfig} This instance for method chaining.
+     */
     target(target) {
         this.#config.target = target;
         return this;
     }
 
+    /**
+     * Adds a translation policy to the pipeline.
+     * @param {TranslationPolicy|TranslationPolicy[]} policy - The translation policy function(s).
+     * @returns {ChannelConfig} This instance for method chaining.
+     */
     policy(policy) {
         if (Array.isArray(policy)) {
             policy.forEach(p => this.policy(p));
@@ -281,12 +385,23 @@ export class ChannelConfig {
 
     // ResourceFormatConfig sugar setters
 
+    /**
+     * Adds a resource format configuration.
+     * @param {ResourceFormatConfig} resourceFormatConfig - The resource format configuration.
+     * @returns {ChannelConfig} This instance for method chaining.
+     */
     resourceFormat(resourceFormatConfig) {
         this.#resourceFormats[resourceFormatConfig.id] = resourceFormatConfig;
         this.#currentResourceFormat = resourceFormatConfig;
         return this;
     }
 
+    /**
+     * Proxies a method call to the current resource format config.
+     * @param {string} method - The method name to call.
+     * @param {unknown} value - The value to pass to the method.
+     * @returns {ChannelConfig} This instance for method chaining.
+     */
     #proxyResourceFormatSugarSetter(method, value) {
         this.#currentResourceFormat ??= new ResourceFormatConfig(this.id);
         this.#resourceFormats[this.#currentResourceFormat.id] ??= this.#currentResourceFormat;
@@ -294,18 +409,38 @@ export class ChannelConfig {
         return this;
     }
 
+    /**
+     * Sets the resource filter for the current resource format.
+     * @param {ResourceFilter} filter - The resource filter.
+     * @returns {ChannelConfig} This instance for method chaining.
+     */
     resourceFilter(filter) {
         return this.#proxyResourceFormatSugarSetter('resourceFilter', filter);
     }
 
+    /**
+     * Sets the resource generator for the current resource format.
+     * @param {ResourceGenerator} generator - The resource generator.
+     * @returns {ChannelConfig} This instance for method chaining.
+     */
     resourceGenerator(generator) {
         return this.#proxyResourceFormatSugarSetter('resourceGenerator', generator);
     }
 
+    /**
+     * Sets the default message format for the current resource format.
+     * @param {string} format - The message format identifier.
+     * @returns {ChannelConfig} This instance for method chaining.
+     */
     defaultMessageFormat(format) {
         return this.#proxyResourceFormatSugarSetter('defaultMessageFormat', format);
     }
 
+    /**
+     * Sets the segment decorators for the current resource format.
+     * @param {Function[]} decorators - Array of decorator functions.
+     * @returns {ChannelConfig} This instance for method chaining.
+     */
     segmentDecorators(decorators) {
         return this.#proxyResourceFormatSugarSetter('segmentDecorators', decorators);
     }
@@ -313,11 +448,22 @@ export class ChannelConfig {
 
     // MessageFormatConfig sugar setters
 
+    /**
+     * Adds a message format configuration.
+     * @param {MessageFormatConfig} messageFormatConfig - The message format configuration.
+     * @returns {ChannelConfig} This instance for method chaining.
+     */
     messageFormat(messageFormatConfig) {
         this.#messageFormats[messageFormatConfig.id] = messageFormatConfig;
         return this;
     }
 
+    /**
+     * Proxies a method call to the current message format config.
+     * @param {string} method - The method name to call.
+     * @param {unknown} value - The value to pass to the method.
+     * @returns {ChannelConfig} This instance for method chaining.
+     */
     #proxyMessageFormatSugarSetter(method, value) {
         this.#currentMessageFormat ??= new MessageFormatConfig(this.id);
         this.#messageFormats[this.#currentMessageFormat.id] ??= this.#currentMessageFormat;
@@ -325,36 +471,56 @@ export class ChannelConfig {
         return this;
     }
 
+    /**
+     * Sets the decoders for the current message format.
+     * @param {Function[]} decoders - Array of decoder functions.
+     * @returns {ChannelConfig} This instance for method chaining.
+     */
     decoders(decoders) {
         return this.#proxyMessageFormatSugarSetter('decoders', decoders);
     }
 
+    /**
+     * Sets the text encoders for the current message format.
+     * @param {Function[]} encoders - Array of text encoder functions.
+     * @returns {ChannelConfig} This instance for method chaining.
+     */
     textEncoders(encoders) {
         return this.#proxyMessageFormatSugarSetter('textEncoders', encoders);
     }
 
+    /**
+     * Sets the code encoders for the current message format.
+     * @param {Function[]} encoders - Array of code encoder functions.
+     * @returns {ChannelConfig} This instance for method chaining.
+     */
     codeEncoders(encoders) {
         return this.#proxyMessageFormatSugarSetter('codeEncoders', encoders);
     }
 
+    /**
+     * Sets the joiner function for the current message format.
+     * @param {Function} joiner - The joiner function.
+     * @returns {ChannelConfig} This instance for method chaining.
+     */
     joiner(joiner) {
         return this.#proxyMessageFormatSugarSetter('joiner', joiner);
     }
 }
 
 /**
- * Represents the configuration class for L10n Monster.
- * This class is used to initialize `MonsterManager` and run all localization processes.
+ * Main configuration class for L10n Monster.
+ * This class is used to initialize MonsterManager and run all localization processes.
  */
 export class L10nMonsterConfig {
 
-    /** @type {Object} Configuration for different channels. */
+    /** @type {Record<string, ChannelConfig>} Configuration for different channels. */
     channels = {};
 
-    /** @type {Object} Configuration for different formats. */
+    /** @type {Record<string, ResourceFormatConfig>} Configuration for different formats. */
     formats = {};
 
-    /** @type {Object} Providers for the localization process. */
+    /** @type {TranslationProvider[]} Providers for the localization process. */
     providers = [];
 
     /** @type {boolean} Whether to automatically create snapshots at each run. */
@@ -363,17 +529,29 @@ export class L10nMonsterConfig {
     /** @type {boolean} Whether to save failed jobs as pending. */
     saveFailedJobs = false;
 
-    /** @type {Object} Configuration for the tm stores. */
+    /** @type {Record<string, TMStore>|undefined} Configuration for the TM stores. */
     tmStores;
 
-    /** @type {Object} Configuration for the snap stores. */
+    /** @type {Record<string, SnapStore>|undefined} Configuration for the snap stores. */
     snapStores;
 
-    /** @type {string} Operation logs store. */
+    /** @type {OpsStoreInterface | undefined} Operation logs store. */
     opsStore;
 
-    /** @type {Array} List of actions available for the localization process. */
+    /** @type {L10nAction[]} List of actions available for the localization process. */
     actions = Object.values(defaultActions);
+
+    /** @type {Analyzer[]|undefined} Analyzer functions for content analysis. */
+    analyzers;
+
+    /** @type {Intl.NumberFormat|undefined} Currency formatter for cost estimates. */
+    currencyFormatter;
+
+    /** @type {string|boolean|undefined} Source database filename or false to disable. */
+    sourceDB;
+
+    /** @type {string|boolean|undefined} TM database filename or false to disable. */
+    tmDB;
 
     static configMancerSample = {
         '@': '@l10nmonster/core:IL10nMonsterConfig',
@@ -462,6 +640,12 @@ export class L10nMonsterConfig {
         return this;
     }
 
+    /**
+     * Adds a translation provider.
+     * @param {TranslationProvider|TranslationProvider[]} provider - The translation provider(s).
+     * @returns {L10nMonsterConfig} Returns the instance for method chaining.
+     * @throws {Error} Throws if provider with same id already exists or if provider is invalid.
+     */
     provider(provider) {
         if (Array.isArray(provider)) {
             provider.forEach(p => this.provider(p));
@@ -482,8 +666,8 @@ export class L10nMonsterConfig {
      * @param {Object} config - The operations configuration object.
      * @param {boolean} [config.autoSnap] - Configuration for the snapshot store.
      * @param {boolean} [config.saveFailedJobs] - Whether to save failed jobs as pending.
-     * @param {Function[]} [config.analyzers] - Configuration for analyzers.
-     * @param {any} [config.opsStore] - Directory for operations.
+     * @param {Analyzer[]} [config.analyzers] - Configuration for analyzers.
+     * @param {OpsStoreInterface} [config.opsStore] - Operations store for persistence.
      * @param {Intl.NumberFormat} [config.currencyFormatter] - A currency formatter for estimated costs.
      * @param {string|boolean} [config.sourceDB] - Source database filename or false to disable writing DB files.
      * @param {string|boolean} [config.tmDB] - TM database filename or false to disable writing DB files.
@@ -552,7 +736,7 @@ export class L10nMonsterConfig {
 
     /**
      * Adds an action to the list of available actions for the localization process.
-     * @param {Record<string, any>} actionDefinition - The action definition object.
+     * @param {L10nAction} actionDefinition - The action definition object.
      * @returns {L10nMonsterConfig} Returns the instance for method chaining.
      */
     action(actionDefinition) {
@@ -601,6 +785,15 @@ export class L10nMonsterConfig {
     }
 }
 
+/**
+ * Factory functions for creating configuration objects.
+ * @type {{
+ *   l10nMonster: (baseDir: string) => L10nMonsterConfig,
+ *   channel: (id: string, baseDir?: string) => ChannelConfig,
+ *   resourceFormat: (id: string) => ResourceFormatConfig,
+ *   messageFormat: (id: string) => MessageFormatConfig
+ * }}
+ */
 export const config = {
     l10nMonster: baseDir => new L10nMonsterConfig(baseDir),
     channel: (id, baseDir) => new ChannelConfig(id, baseDir),

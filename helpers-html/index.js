@@ -1,6 +1,8 @@
 import { parse, parseFragment, serialize } from 'parse5';
 import { utils } from '@l10nmonster/core';
 
+/** @typedef {import('@l10nmonster/core').ResourceFilter} ResourceFilter */
+
 // Helper function to serialize a node with its tags
 function serializeNode(node, includeOuter = true) {
     if (node.nodeName === '#text') {
@@ -77,6 +79,7 @@ function parseResource(resource) {
  * - hasInlineBlockElements (boolean, default: true): 
  *   - When true: mixed block/inline siblings are treated as one segment (original behavior)
  *   - When false: block elements are kept as separate segments, only inline/text runs between them are grouped
+ * @implements {ResourceFilter}
  */
 export class HTMLFilter {
     #hasInlineBlockElements;

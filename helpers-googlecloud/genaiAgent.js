@@ -1,7 +1,7 @@
 import { GoogleGenAI, Type } from '@google/genai';
 import { GoogleAuth } from 'google-auth-library';
 
-import { logInfo, logVerbose, logWarn, providers, styleString } from '../core/index.js';
+import { logInfo, logVerbose, logWarn, providers, styleString } from '@l10nmonster/core';
 
 const TRANSLATOR_SCHEMA = {
     type: Type.OBJECT,
@@ -15,7 +15,6 @@ const TRANSLATOR_SCHEMA = {
 
 /**
  * @typedef {object} GenAIAgentOptions
- * @extends LLMTranslationProviderOptions
  * @property {number} [thinkingBudget] - Maximum number of tokens for thinking
  * @property {Promise<string>|string} [apiKey] - The LLM provder API key (if needed).
  * @property {string} [vertexProject] - The VertexAI project ID.
@@ -42,6 +41,7 @@ export class GenAIAgent extends providers.LLMTranslationProvider {
      */
     constructor({ apiKey, vertexProject, vertexLocation, thinkingBudget, enableSearch, enableMaps, ...options }) {
         // TODO: do we need to expose topX, topP?
+        // @ts-ignore - spread loses type info but parent class handles validation
         super(options);
         this.#apiKey = apiKey;
         this.#vertexProject = vertexProject;
@@ -58,7 +58,9 @@ export class GenAIAgent extends providers.LLMTranslationProvider {
             return;
         }
         if (this.#apiKey) {
-            this.#ai = new GoogleGenAI({ apiKey: await (typeof this.#apiKey === 'function' ? this.#apiKey() : this.#apiKey) });
+            // @ts-ignore - apiKey can be a function or value, TypeScript doesn't narrow correctly
+            const resolvedKey = await (typeof this.#apiKey === 'function' ? this.#apiKey() : this.#apiKey);
+            this.#ai = new GoogleGenAI({ apiKey: resolvedKey });
             logInfo`GenAIAgent ${this.id} initialized with the Gemini Developer platform`;
         } else {
             if (!this.#vertexProject) {
@@ -78,7 +80,7 @@ export class GenAIAgent extends providers.LLMTranslationProvider {
         }
     }
 
-    prepareTranslateChunkArgs({ sourceLang, targetLang, xmlTus, instructions }) {
+    prepareTranslateChunkArgs({ sourceLang, targetLang, xmlTus, jobGuid, chunkNumber, instructions }) {
         const userPrompt = this.buildUserPrompt({ sourceLang, targetLang, xmlTus, instructions });
         const config = {
             systemInstruction: this.systemPrompt,
@@ -100,6 +102,11 @@ export class GenAIAgent extends providers.LLMTranslationProvider {
             model: this.model,
             contents: userPrompt,
             config,
+            sourceLang,
+            targetLang,
+            xmlTus,
+            jobGuid,
+            chunkNumber,
         };
     }
 

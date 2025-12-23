@@ -1,10 +1,13 @@
 import { lqaboss_capture } from './lqabossCapture.js';
 
-export class LQABossActions {
-    static name = 'lqaboss';
-    static help = {
+/**
+ * CLI actions for LQA Boss integration.
+ * @type {import('@l10nmonster/core').L10nAction}
+ */
+export const LQABossActions = {
+    name: 'lqaboss',
+    help: {
         description: 'Actions to integrate with LQA Boss.',
-    };
-
-    static subActions = [ lqaboss_capture ];
-}
+    },
+    subActions: [ lqaboss_capture ],
+};

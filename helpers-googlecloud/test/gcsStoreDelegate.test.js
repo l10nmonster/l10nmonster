@@ -4,12 +4,6 @@ import assert from 'node:assert/strict';
 import { GCSStoreDelegate } from '../stores/gcsStoreDelegate.js';
 
 // Mock the Google Cloud Storage
-class MockStorage {
-    bucket(bucketName) {
-        return new MockBucket(bucketName);
-    }
-}
-
 class MockBucket {
     constructor(bucketName) {
         this.bucketName = bucketName;
@@ -18,7 +12,7 @@ class MockBucket {
 
     async getFiles({ prefix }) {
         const files = [];
-        for (const [filename, content] of this.mockFiles) {
+        for (const [filename] of this.mockFiles) {
             if (filename.startsWith(prefix)) {
                 files.push({
                     name: filename,
@@ -35,14 +29,18 @@ class MockBucket {
             save: async (content) => {
                 this.mockFiles.set(filename, content);
             },
-            download: async () => {
-                return this.mockFiles.get(filename) || '';
-            }
+            download: async () => this.mockFiles.get(filename) || ''
         };
     }
 
     setMockFile(filename, content) {
         this.mockFiles.set(filename, content);
+    }
+}
+
+class MockStorage {
+    bucket(bucketName) {
+        return new MockBucket(bucketName);
     }
 }
 
@@ -158,8 +156,10 @@ suite('GCSStoreDelegate Prefix Logic Tests', () => {
 
         const files1 = await delegate1.listAllFiles();
         const filenames1 = files1.map(f => f[0]);
-        assert.ok(filenames1.every(name => !String(name).startsWith('tm-store/')), 
-                  'Filenames should have prefix removed');
+        assert.ok(
+filenames1.every(name => !String(name).startsWith('tm-store/')), 
+                  'Filenames should have prefix removed'
+);
 
         const delegate2 = new GCSStoreDelegate('test-bucket', 'tm-store/');
         delegate2.storage = mockStorage;
@@ -167,8 +167,10 @@ suite('GCSStoreDelegate Prefix Logic Tests', () => {
 
         const files2 = await delegate2.listAllFiles();
         const filenames2 = files2.map(f => f[0]);
-        assert.ok(filenames2.every(name => !String(name).startsWith('tm-store/')), 
-                  'Filenames should have prefix removed');
+        assert.ok(
+filenames2.every(name => !String(name).startsWith('tm-store/')), 
+                  'Filenames should have prefix removed'
+);
         
         assert.deepEqual(filenames1.sort(), filenames2.sort());
     });

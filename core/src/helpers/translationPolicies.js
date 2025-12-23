@@ -1,13 +1,32 @@
 import { pluralForms } from '../pluralForms.js';
 
+/**
+ * @typedef {import('../../index.js').TranslationPlan} TranslationPlan
+ * @typedef {import('../../index.js').TranslationPolicy} TranslationPolicy
+ * @typedef {import('../../index.js').PolicyContext} PolicyContext
+ */
+
+/**
+ * Creates a policy that sets fixed target languages with a minimum quality.
+ * @param {string | string[]} targetLangs - Target language(s) to translate to.
+ * @param {number} minimumQuality - Minimum quality score (0-100).
+ * @returns {TranslationPolicy} A translation policy function.
+ */
 export function fixedTargets(targetLangs, minimumQuality) {
-    if (targetLangs && !Array.isArray(targetLangs)) {
-        targetLangs = [ targetLangs ];
-    }
-    const planToApply = targetLangs ? Object.fromEntries(targetLangs.map(targetLang => [ targetLang, minimumQuality ])) : {};
+
+    /** @type {string[]} */
+    const langs = targetLangs ? (Array.isArray(targetLangs) ? targetLangs : [ targetLangs ]) : [];
+
+    /** @type {TranslationPlan} */
+    const planToApply = Object.fromEntries(langs.map(targetLang => [ targetLang, minimumQuality ]));
     return ({ plan }) => ({ plan: { ...plan, ...planToApply } });
 };
 
+/**
+ * Creates a policy that routes to different pipelines based on project.
+ * @param {Record<string, TranslationPolicy[]>} prjToPipelineMap - Map of project names to policy pipelines.
+ * @returns {TranslationPolicy} A translation policy function.
+ */
 export function byProject(prjToPipelineMap) {
     return (policyContext) => {
         const pipeline = prjToPipelineMap[policyContext.res.prj] ?? [];
@@ -25,9 +44,15 @@ export function byProject(prjToPipelineMap) {
     };
 };
 
+/**
+ * Creates a policy that filters out plural forms not needed by target languages.
+ * @returns {TranslationPolicy} A translation policy function.
+ */
 export function minimizePluralForms() {
-    return ({ plan, seg, ...rest }) => {
+    return (/** @type {PolicyContext} */ { plan, seg, ...rest }) => {
         if (seg.pluralForm) {
+
+            /** @type {TranslationPlan} */
             const filteredPlan = {};
             for (const [lang, quality] of Object.entries(plan)) {
                 // Extract language family (first part before "-" or "_")

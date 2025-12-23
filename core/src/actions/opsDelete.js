@@ -1,15 +1,26 @@
 import { consoleLog } from '../l10nContext.js';
 
-export class ops_delete {
-    static help = {
+/**
+ * @typedef {Object} OpsDeleteOptions
+ * @property {string} jobGuid - Job GUID(s) to delete (comma-separated)
+ */
+
+/**
+ * CLI action for deleting a job.
+ * @type {import('../../index.js').L10nAction}
+ */
+export const ops_delete = {
+    name: 'ops_delete',
+    help: {
         description: 'delete a job.',
         arguments: [
             [ '<jobGuid>', 'guid of job to delete' ],
         ],
-    };
+    },
 
-    static async action(monsterManager, options) {
-        const jobGuidList = options.jobGuid.split(',');
+    async action(monsterManager, options) {
+        const opts = /** @type {OpsDeleteOptions} */ (options);
+        const jobGuidList = opts.jobGuid.split(',');
         for (const jobGuid of jobGuidList) {
             try {
                 consoleLog`Deleting job ${jobGuid}...`;
@@ -19,5 +30,5 @@ export class ops_delete {
                 throw e;
             }
         }
-    }
-}
+    },
+};

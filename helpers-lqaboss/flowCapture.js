@@ -68,7 +68,9 @@ async function extractTextAndMetadataInPageContext() {
                             if (decodedJsonMetadata && decodedJsonMetadata.trim() !== '') {
                                  parsedMetadata = JSON.parse(decodedJsonMetadata);
                             }
-                        } catch (e) { parsedMetadata.decodingError = e.message; }
+                        } catch (e) {
+ parsedMetadata.decodingError = e.message; 
+}
 
                         textElements.push({
                             text: activeSegment.text,
@@ -110,7 +112,9 @@ async function extractTextAndMetadataInPageContext() {
                                 if (decodedJsonMetadata && decodedJsonMetadata.trim() !== '') {
                                      parsedMetadata = JSON.parse(decodedJsonMetadata);
                                 }
-                            } catch (e) { parsedMetadata.decodingError = e.message; }
+                            } catch (e) {
+ parsedMetadata.decodingError = e.message; 
+}
     
                             textElements.push({
                                 text: capturedText,

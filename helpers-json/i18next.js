@@ -9,6 +9,8 @@ import {
     parseResourceAnnotations,
 } from './utils.js';
 
+/** @typedef {import('@l10nmonster/core').ResourceFilter} ResourceFilter */
+
 const defaultArbAnnotationHandlers = {
     description: (_, data) => (data == null ? undefined : data),
     placeholders: (_, data) => (data == null ? undefined : arbPlaceholderHandler(data)),
@@ -18,6 +20,7 @@ const defaultArbAnnotationHandlers = {
 /**
  * Filter for i18next v4 JSON format.
  * @see https://www.i18next.com/misc/json-format
+ * @implements {ResourceFilter}
  */
 export class I18nextFilter {
 
@@ -93,7 +96,7 @@ export class I18nextFilter {
             let firstIndex = -1;
             for (let i = 0; i < response.segments.length; i++) {
                 if (forms.has(response.segments[i].sid?.split('_').pop()) &&
-                    response.segments[i].sid?.startsWith(baseKey + '_')) {
+                    response.segments[i].sid?.startsWith(`${baseKey}_`)) {
                     firstIndex = i;
                     break;
                 }
@@ -225,6 +228,7 @@ export class I18nextFilter {
 // - "keyNesting": "reuse $t(keyDeep.inner)", or
 // - "keyInterpolate": "replace this {{value}}"
 // See: https://www.i18next.com/misc/json-format#i18next-json-v4
+/** @type {import('@l10nmonster/core').DecoderFunction} */
 export const phDecoder = regex.decoderMaker(
     'i18nextKey',
     /(?<nestingPh>\$t\([\w:.]+\))|(?<doubleBracePh>{{[^}]+}})/g,

@@ -114,9 +114,9 @@ export class CueSchemaGenerator {
             const disjunction = visitedImpls.map(t => `#${this.#sanitizeTypeName(t)}`).join(' | ');
 
             // Special case: 'object' supertype should also allow any arbitrary object
-            const finalDisjunction = superType === 'object'
-                ? `${disjunction} | {...}`
-                : disjunction;
+            const finalDisjunction = superType === 'object' ?
+                `${disjunction} | {...}` :
+                disjunction;
 
             const sanitizedSuperType = this.#sanitizeTypeName(superType);
             definitions.unshift(`// Abstract supertype: ${superType}\n#${sanitizedSuperType}: ${finalDisjunction}`);
@@ -136,9 +136,9 @@ export class CueSchemaGenerator {
             const disjunction = implementations.sort().map(t => `#${this.#sanitizeTypeName(t)}`).join(' | ');
 
             // Special case: 'object' supertype should also allow any arbitrary object
-            const finalDisjunction = superType === 'object'
-                ? `${disjunction} | {...}`
-                : disjunction;
+            const finalDisjunction = superType === 'object' ?
+                `${disjunction} | {...}` :
+                disjunction;
 
             const sanitizedSuperType = this.#sanitizeTypeName(superType);
             definitions.push(`// Abstract supertype: ${superType}\n#${sanitizedSuperType}: ${finalDisjunction}`);

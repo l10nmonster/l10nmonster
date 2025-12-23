@@ -1,9 +1,9 @@
+/* eslint-disable no-new */
 import { describe, it } from 'node:test';
 import assert from 'node:assert';
 import { AnthropicAgent } from '../index.js';
 
-// Import from relative path since we can't rely on workspace in tests
-import { providers } from '../../core/index.js';
+import { providers } from '@l10nmonster/core';
 
 describe('AnthropicAgent Integration', () => {
     it('should properly extend LLMTranslationProvider', () => {

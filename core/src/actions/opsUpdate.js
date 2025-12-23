@@ -1,11 +1,16 @@
 import { consoleLog } from '../l10nContext.js';
 
-export class ops_update {
-    static help = {
+/**
+ * CLI action for updating pending translation jobs.
+ * @type {import('../../index.js').L10nAction}
+ */
+export const ops_update = {
+    name: 'ops_update',
+    help: {
         description: 'update pending translation jobs.',
-    };
+    },
 
-    static async action(mm) {
+    async action(mm) {
         const response = {};
         const pairs = await mm.tmm.getAvailableLangPairs();
         if (pairs.length === 0) {
@@ -29,5 +34,5 @@ export class ops_update {
             }
         }
         return response;
-    }
-}
+    },
+};

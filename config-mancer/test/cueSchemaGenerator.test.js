@@ -2,7 +2,7 @@ import { CueSchemaGenerator } from '../CueSchemaGenerator.js';
 import { BaseConfigMancerType } from '../BaseConfigMancerType.js';
 import { suite, test, beforeEach, afterEach } from 'node:test';
 import { strictEqual, throws, ok, match } from 'node:assert';
-import { readFileSync, unlinkSync, existsSync, writeFileSync } from 'fs';
+import { unlinkSync, existsSync } from 'fs';
 import { tmpdir } from 'os';
 import { join } from 'path';
 

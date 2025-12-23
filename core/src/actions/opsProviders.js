@@ -1,11 +1,16 @@
 import { consoleLog } from '../l10nContext.js';
 
-export class ops_providers {
-    static help = {
+/**
+ * CLI action for listing available providers.
+ * @type {import('../../index.js').L10nAction}
+ */
+export const ops_providers = {
+    name: 'ops_providers',
+    help: {
         description: 'list of available providers.',
-    };
+    },
 
-    static async action(mm) {
+    async action(mm) {
         if (mm.dispatcher.providers.length === 0) {
             consoleLog`  ‣ No providers configured`;
         } else {
@@ -17,5 +22,5 @@ export class ops_providers {
                 consoleLog``;
             }
         }
-    }
-}
+    },
+};

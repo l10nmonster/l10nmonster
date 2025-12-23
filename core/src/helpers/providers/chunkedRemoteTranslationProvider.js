@@ -3,6 +3,18 @@ import * as utils from '../utils.js';
 import { BaseTranslationProvider } from './baseTranslationProvider.js';
 import * as opsManager from '../../opsManager/index.js';
 
+/**
+ * @typedef {import('../../interfaces.js').Job} Job
+ * @typedef {import('../../interfaces.js').TranslateChunkArgs} TranslateChunkArgs
+ * @typedef {import('../../interfaces.js').ProviderTranslateChunkArgs} ProviderTranslateChunkArgs
+ * @typedef {import('../../interfaces.js').ProviderResponseChunk} ProviderResponseChunk
+ * @typedef {import('../../interfaces.js').TranslatedChunk} TranslatedChunk
+ * @typedef {import('../../interfaces.js').ChunkTuMeta} ChunkTuMeta
+ * @typedef {import('../../interfaces.js').TranslateChunkOpResult} TranslateChunkOpResult
+ * @typedef {import('../../opsManager/task.js').default} Task
+ * @typedef {import('../../opsManager/operation.js').default} Op
+ */
+
 const MAX_CHAR_LENGTH = 9900;
 const MAX_CHUNK_SIZE = 125;
 
@@ -52,6 +64,11 @@ export class ChunkedRemoteTranslationProvider extends BaseTranslationProvider {
         opsManager.registerOp(this.continueTranslateChunkOp.bind(this), { opName: this.#opNames.continueTranslateChunkOp, idempotent: true });
     }
 
+    /**
+     * Creates a task for chunked translation.
+     * @param {Job} job - The job to create a task for.
+     * @returns {Task} The task to execute.
+     */
     createTask(job) {
         logVerbose`ChunkedRemoteTranslationProvider creating task for job ${job.jobGuid}`;
         const { tus, ...jobResponse } = job;
@@ -62,7 +79,7 @@ export class ChunkedRemoteTranslationProvider extends BaseTranslationProvider {
         const payload = tus.map(tu => {
             const [source, phMap ] = utils.flattenNormalizedSourceToXmlV1(tu.nsrc);
             const xmlTu = { guid: tu.guid, bundle: tu.rid, key: tu.sid };
-            tu.notes?.desc && (xmlTu.notes = tu.notes.desc);
+            (typeof tu.notes !== 'string' && tu.notes?.desc) && (xmlTu.notes = tu.notes.desc);
             xmlTu.source = source; // adding source second so that LLMs see notes first
             Object.keys(phMap).length > 0 && (xmlTu.phMap = phMap);
             if (this.includeTranslations && tu.ntgt) {
@@ -88,11 +105,15 @@ export class ChunkedRemoteTranslationProvider extends BaseTranslationProvider {
                 throw new Error(`String at index ${currentIdx} exceeds ${this.maxCharLength} max char length`);
             }
             logInfo`Preparing chunked translation with ${flattenedTus.length} ${[flattenedTus.length, 'string', 'strings']}, total char length: ${currentTotalLength}`;
+
+            /** @type {ChunkTuMeta[]} */
             const tuMeta = [];
+
+            /** @type {import('../../interfaces.js').XmlTu[]} */
             const xmlTus = flattenedTus.map(flattenedTu => {
                 const { guid, phMap, ...xmlTu } = flattenedTu;
                 tuMeta.push({ guid, phMap });
-                return xmlTu;
+                return /** @type {import('../../interfaces.js').XmlTu} */ (xmlTu);
             });
             chunkNumber++;
             const args = this.prepareTranslateChunkArgs({ sourceLang, targetLang, xmlTus, jobGuid: job.jobGuid, instructions: job.instructions, chunkNumber });
@@ -102,12 +123,23 @@ export class ChunkedRemoteTranslationProvider extends BaseTranslationProvider {
         return requestTranslationsTask;
     }
 
+    /**
+     * Prepares chunk arguments for translation. Override to add provider-specific properties.
+     * @param {TranslateChunkArgs} chunkArgs - Base chunk arguments.
+     * @returns {ProviderTranslateChunkArgs} Provider-specific chunk arguments.
+     */
     prepareTranslateChunkArgs(chunkArgs) {
         return chunkArgs; // this is normally overridden by the provider
     }
 
+    /**
+     * Operation handler for translating a single chunk.
+     * @param {Op} op - The operation with args containing tuMeta and provider-specific args.
+     * @returns {Promise<TranslateChunkOpResult>} Result with raw response and normalized translations.
+     */
     async startTranslateChunkOp(op) {
-        const { tuMeta, ...args } = op.args;
+        const opArgs = /** @type {ProviderTranslateChunkArgs & { tuMeta: ChunkTuMeta[] }} */ (/** @type {unknown} */ (op.args));
+        const { tuMeta, ...args } = opArgs;
         const raw = await this.startTranslateChunk(args);
         const flattenedRes = this.convertTranslationResponse(raw);
         if (tuMeta.length !== flattenedRes.length) {
@@ -117,22 +149,27 @@ export class ChunkedRemoteTranslationProvider extends BaseTranslationProvider {
         const normalizedRes = tuMeta.map(({ guid, phMap }, idx) => {
             try {
                 const { tgt, ...tu } = flattenedRes[idx];
-                tu.guid = guid;
-                tu.ntgt = utils.extractNormalizedPartsFromXmlV1(tgt, phMap || {});
-                return tu;
+                return {
+                    ...tu,
+                    guid,
+                    ntgt: utils.extractNormalizedPartsFromXmlV1(tgt, phMap || {}),
+                };
             } catch (e) {
                 logError`Error extracting normalized parts for tu ${guid}: ${e}`;
                 return null;
             }
         });
-        const res = normalizedRes.filter(Boolean); // remove tus that failed to be normalized
+
+        /** @type {Array<{ guid: string; ntgt: import('../../interfaces.js').NormalizedString; cost?: number }>} */
+        const res = normalizedRes.filter(/** @returns {x is { guid: string; ntgt: import('../../interfaces.js').NormalizedString; cost?: number }} */ (x) => x !== null);
         return { raw, res }; // return raw just for debugging
     }
 
     /**
-     * Provider-specific method to synchronously translate a chunk of tus.
-     * @param {object} args - The provider-specific arguments generated by prepareTranslateChunkArgs.
-     * @returns {Promise<*>} Any object containing the translation results.
+     * Provider-specific method to translate a chunk of TUs.
+     * Must be implemented by subclasses.
+     * @param {ProviderTranslateChunkArgs} args - Provider-specific arguments from prepareTranslateChunkArgs.
+     * @returns {Promise<ProviderResponseChunk>} Raw response from the translation API.
      */
     // eslint-disable-next-line no-unused-vars
     async startTranslateChunk(args) {
@@ -140,17 +177,24 @@ export class ChunkedRemoteTranslationProvider extends BaseTranslationProvider {
     }
 
     /**
-     * Convert the raw translation response into a standard format.
-     * @param {Object} chunk - The raw response for the chunk.
-     * @returns {Array} An array containing the translation results.
+     * Converts the raw translation response into a standard format.
+     * Must be implemented by subclasses.
+     * @param {ProviderResponseChunk} chunk - The raw response from startTranslateChunk.
+     * @returns {TranslatedChunk[]} Array of normalized translation results.
      */
     // eslint-disable-next-line no-unused-vars
     convertTranslationResponse(chunk) {
         throw new Error(`convertTranslationResponse not implemented in ${this.constructor.name}`);
     }
 
+    /**
+     * Operation handler that merges translated chunks into the final job response.
+     * @param {Op} op - The operation with inputs from all chunk translations.
+     * @returns {Promise<Job>} The completed job with merged translations.
+     */
     async mergeTranslatedChunksOp(op) {
-        const { jobResponse } = op.args;
+        const opArgs = /** @type {{ jobResponse: Job }} */ (op.args);
+        const { jobResponse } = opArgs;
         // TODO: find a better way to handle pending status
         // if (op.inputs.find(input => input === null)) {
             // logVerbose`ChunkedRemoteTranslationProvider submitted ${op.inputs.length} chunks with ${guids.length} guids`;
@@ -160,7 +204,8 @@ export class ChunkedRemoteTranslationProvider extends BaseTranslationProvider {
         //     return jobResponse;
         // }
         const ts = getRegressionMode() ? 1 : new Date().getTime();
-        const translations = op.inputs.filter(Boolean).map(input => input.res).flat(1);
+        const inputs = /** @type {TranslateChunkOpResult[]} */ (op.inputs.filter(Boolean));
+        const translations = inputs.map(input => input.res).flat(1);
         jobResponse.tus = translations.map(tu => ({ ...tu, ts, q: this.quality }));
         return jobResponse;
     }
@@ -198,9 +243,10 @@ export class ChunkedRemoteTranslationProvider extends BaseTranslationProvider {
     // }
 
     /**
-     * Fetches a translated chunk from the remote provider.
-     * @param {object} op - The operation context containing fetch parameters.
-     * @returns {Promise<*>} Any object containing the translation results.
+     * Operation handler for continuing/fetching a pending chunk translation.
+     * Override in subclasses that support async continuation.
+     * @param {Op} op - The operation context containing fetch parameters.
+     * @returns {Promise<TranslateChunkOpResult>} Result with raw response and normalized translations.
      */
     // eslint-disable-next-line no-unused-vars
     async continueTranslateChunkOp(op) {

@@ -3,6 +3,9 @@ import { getRegressionMode, providers } from '@l10nmonster/core';
 
 const pigLatin = new PigLatin.default();
 
+/**
+ * Demo provider that translates strings to Pig Latin.
+ */
 export class PigLatinizer extends providers.BaseTranslationProvider {
 
     /**

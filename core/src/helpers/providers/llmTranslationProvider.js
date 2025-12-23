@@ -2,6 +2,21 @@ import { logInfo, logWarn, styleString } from '../../l10nContext.js';
 import { ChunkedRemoteTranslationProvider } from './chunkedRemoteTranslationProvider.js';
 import * as utils from '../utils.js';
 
+/**
+ * @typedef {import('../../interfaces.js').ProviderTranslateChunkArgs} ProviderTranslateChunkArgs
+ * @typedef {import('../../interfaces.js').ProviderResponseChunk} ProviderResponseChunk
+ * @typedef {import('../../interfaces.js').TranslateChunkOpResult} TranslateChunkOpResult
+ * @typedef {import('../../interfaces.js').TranslatedChunk} TranslatedChunk
+ * @typedef {import('../../interfaces.js').ChunkTuMeta} ChunkTuMeta
+ * @typedef {import('../../interfaces.js').XmlTu} XmlTu
+ * @typedef {import('../../opsManager/operation.js').default} Op
+ */
+
+/**
+ * Sleeps for the specified number of milliseconds.
+ * @param {number} ms - Milliseconds to sleep.
+ * @returns {Promise<void>}
+ */
 function sleep(ms) {
     return new Promise((resolve) => {
         setTimeout(resolve, ms)
@@ -18,15 +33,15 @@ const DEFAULT_PERSONA =
 - Return your answer as a JSON array with the exact same number of items and in the same order as the input.`;
 
 /**
- * @typedef {object} LLMTranslationProviderOptions
- * @extends ChunkedRemoteTranslationProviderOptions
- * @property {string} model - The LLM model to use (required)
- * @property {number} [temperature] - The temperature to use (0.1 by default)
- * @property {string} [persona] - An override to the default persona for the translator.
- * @property {object} [targetLangInstructions] - Object with target languages as keys and instructions as values
- * @property {import('zod').ZodTypeAny} [customSchema] - A prescribed schema to structure translations into.
- * @property {number} [maxRetries] - Maximum number of retries for failed requests (2 by default)
- * @property {number} [sleepBasePeriod] - Base sleep period in milliseconds for retry backoff (3000 by default)
+ * @typedef {import('./chunkedRemoteTranslationProvider.js').ChunkedRemoteTranslationProviderOptions & {
+ *   model: string,
+ *   temperature?: number,
+ *   persona?: string,
+ *   targetLangInstructions?: Object<string, string>,
+ *   customSchema?: import('zod').ZodTypeAny,
+ *   maxRetries?: number,
+ *   sleepBasePeriod?: number
+ * }} LLMTranslationProviderOptions
  */
 
 /**
@@ -67,7 +82,7 @@ export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
      * @param {object} options - Options for building the prompt
      * @param {string} options.sourceLang - Source language
      * @param {string} options.targetLang - Target language
-     * @param {Array} options.xmlTus - Translation units in XML format
+     * @param {XmlTu[]} options.xmlTus - Translation units in XML format
      * @param {string} [options.instructions] - Additional job instructions
      * @returns {string} The constructed user prompt
      */
@@ -102,14 +117,19 @@ export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
      * Provider-specific method to generate content from the LLM.
      * This should make the actual API call to the LLM service.
      * @abstract
-     * @param {object} args - The provider-specific arguments for the LLM call
-     * @returns {Promise<*>} The raw response from the LLM
+     * @param {ProviderTranslateChunkArgs} args - The provider-specific arguments for the LLM call.
+     * @returns {Promise<ProviderResponseChunk>} The raw response from the LLM.
      */
     // eslint-disable-next-line no-unused-vars
     async generateContent(args) {
         throw new Error(`generateContent not implemented in ${this.constructor.name}`);
     }
 
+    /**
+     * Determines whether to retry a failed request based on the error status.
+     * @param {Error & { status?: number }} error - The error from the LLM call.
+     * @returns {boolean} True if the request should be retried.
+     */
     shouldRetry(error) {
         const status = error.status;
         return status === 408 || status === 429 || status >= 500 || status === undefined; // in case the exception doesn't have a status property, retry
@@ -117,8 +137,8 @@ export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
 
     /**
      * Executes LLM content generation with retry logic and error handling.
-     * @param {object} args - The provider-specific arguments for the LLM call
-     * @returns {Promise<*>} The response from the LLM
+     * @param {ProviderTranslateChunkArgs} args - The provider-specific arguments for the LLM call.
+     * @returns {Promise<ProviderResponseChunk>} The response from the LLM.
      */
     async startTranslateChunk(args) {
         try {
@@ -142,8 +162,14 @@ export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
         }
     }
 
+    /**
+     * Operation handler for translating a single chunk using LLM.
+     * @param {Op} op - The operation with args containing tuMeta and provider-specific args.
+     * @returns {Promise<TranslateChunkOpResult>} Result with raw response and normalized translations.
+     */
     async startTranslateChunkOp(op) {
-        const { tuMeta, ...args } = op.args;
+        const opArgs = /** @type {ProviderTranslateChunkArgs & { tuMeta: ChunkTuMeta[] }} */ (/** @type {unknown} */ (op.args));
+        const { tuMeta, ...args } = opArgs;
         const raw = await this.startTranslateChunk(args);
         const convertedResponse = this.convertTranslationResponse(raw);
         // if (tuMeta.length !== flattenedRes.length) {
@@ -183,9 +209,9 @@ export class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
 
     /**
      * Processes translation objects to create standard translation units.
-     * @param {Array} translations - Array of translation objects from LLM
-     * @param {Array} cost - Cost information per translation
-     * @returns {Array} Array of processed translation units
+     * @param {Record<string, { translation?: string, confidence?: number, tnotes?: string, notes?: string }> | Array<{ translation?: string, confidence?: number, tnotes?: string, notes?: string }>} translations - Object or array of translation results.
+     * @param {number | number[]} cost - Cost per translation (number or array for detailed token breakdown).
+     * @returns {TranslatedChunk[]} Array of processed translation units.
      */
     processTranslations(translations, cost) {
         return Object.entries(translations).map(([tuIdx, obj]) => {

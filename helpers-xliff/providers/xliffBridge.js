@@ -4,7 +4,11 @@ import fs from 'fs/promises';
 import { createxliff12, xliff12ToJs } from 'xliff';
 import { getBaseDir, getRegressionMode, providers, logVerbose, logInfo } from '@l10nmonster/core';
 
+/**
+ * Provider for XLIFF-based translation workflows.
+ */
 export class XliffBridge extends providers.BaseTranslationProvider {
+
     /**
      * Initializes a new instance of the XliffBridge class.
      * @param {Object} options - The parameters for the constructor.

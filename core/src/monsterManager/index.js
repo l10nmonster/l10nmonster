@@ -8,6 +8,11 @@ import Dispatcher from './dispatcher.js';
 import { analyzeCmd } from './analyze.js';
 
 /**
+ * @typedef {import('../interfaces.js').TranslationProvider} TranslationProvider
+ * @typedef {import('../interfaces.js').L10nAction} L10nAction
+ */
+
+/**
  * @typedef {object} L10nMonsterConfig
  * @property {object} [channels] - Channel configurations where each channel has a createChannel() method
  * @property {boolean} [autoSnap] - Whether to automatically create snapshots
@@ -15,13 +20,17 @@ import { analyzeCmd } from './analyze.js';
  * @property {object} [tmStores] - TM stores instances
  * @property {object} [opsStore] - Operations store instance
  * @property {boolean} [saveFailedJobs] - Whether to save failed jobs (requires opsStore)
- * @property {Array} [providers] - Array of translation providers
+ * @property {TranslationProvider[]} [providers] - Array of translation providers
  * @property {object} [analyzers] - Additional analyzers to merge with default analyzers
- * @property {Array} [actions] - Array of actions to merge with default actions
+ * @property {L10nAction[]} [actions] - Array of actions to merge with default actions
  * @property {string|boolean} [sourceDB] - Filename for the source database
  * @property {string|boolean} [tmDB] - Filename for the translation memory database
  * @property {Intl.NumberFormat} [currencyFormatter] - Custom currency formatter
  * @property {Function} [init] - Optional initialization function called during init()
+ */
+
+/**
+ * @typedef {import('../interfaces.js').Analyzer} Analyzer
  */
 
 export class MonsterManager {
@@ -29,6 +38,12 @@ export class MonsterManager {
     #configInitializer;
     #functionsForShutdown = [];
     saveFailedJobs = false;
+
+    /** @type {Record<string, (opts?: Record<string, unknown>) => Promise<unknown>>} */
+    l10n;
+
+    /** @type {Record<string, new (...args: unknown[]) => Analyzer>} */
+    analyzers;
 
     /**
      * @param {L10nMonsterConfig} monsterConfig - Configuration object for the MonsterManager
@@ -112,17 +127,39 @@ export class MonsterManager {
         }
     }
     
-    // register an async function to be called during shutdown
+    /**
+     * Registers an async function to be called during shutdown.
+     * @param {() => Promise<void>} func - Async cleanup function.
+     */
     scheduleForShutdown(func) {
         this.#functionsForShutdown.push(func);
     }
 
+    /**
+     * Runs an analyzer on source content or translation memory.
+     * @param {string | import('../interfaces.js').Analyzer} analyzer - Analyzer name or Analyzer class.
+     * @param {string[]} [params] - Parameters passed to the analyzer constructor.
+     * @param {string} [limitToLang] - Optional language code to limit TM analysis.
+     * @returns {Promise<import('../interfaces.js').AnalysisResult>} Analysis results.
+     */
     async analyze(analyzer, params, limitToLang) {
         return await analyzeCmd(this, analyzer, params, limitToLang);
     }
 
+    /**
+     * Gets translation status for specified channels.
+     * @param {string | string[] | undefined} [channels] - Channel ID, array of IDs, or undefined for all channels.
+     * @returns {Promise<Record<string, Record<string, Record<string, Record<string, {
+     *   translatedDetails: Array<{minQ: number; q: number; res: number; seg: number; words: number; chars: number}>;
+     *   untranslatedDetails: Record<string, Array<{minQ: number; seg: number; words: number; chars: number}>>;
+     *   pairSummary: {segs: number; words: number; chars: number};
+     *   pairSummaryByStatus: {translated: number; 'low quality': number; 'in flight': number; untranslated: number};
+     * }>>>>>} Translation status by channel/source/target/project.
+     */
     async getTranslationStatus(channels) {
         const channelIds = Array.isArray(channels) ? channels : (typeof channels === 'string' ? [ channels ] : this.rm.channelIds);
+
+        /** @type {Record<string, Record<string, Record<string, Record<string, any>>>>} */
         const translationStatusByPair = {};
         for (const channelId of channelIds) {
             translationStatusByPair[channelId] ??= {};
@@ -152,7 +189,7 @@ export class MonsterManager {
                     }
 
                     // Process untranslated content (nested by group)
-                    for (const [ group, groupDetails ] of Object.entries(untranslatedDetails)) {
+                    for (const groupDetails of Object.values(untranslatedDetails)) {
                         for (const { seg, words, chars } of groupDetails) {
                             pairSummary.segs += seg;
                             pairSummaryByStatus.untranslated += seg;

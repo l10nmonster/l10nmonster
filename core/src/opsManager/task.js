@@ -1,12 +1,38 @@
 import { logInfo } from '../l10nContext.js';
 import { createOp } from './index.js';
 
+/**
+ * @typedef {import('../interfaces.js').OpsStoreInterface} OpsStoreInterface
+ * @typedef {import('../interfaces.js').SerializedOp} SerializedOp
+ * @typedef {import('./operation.js').default} Op
+ */
+
+/**
+ * Options for task execution.
+ * @typedef {Object} ExecuteOptions
+ * @property {number} [parallelism=1] - Number of operations to run concurrently.
+ */
+
+/**
+ * Represents a task containing a DAG of operations to execute.
+ * Tasks can be serialized, persisted, and resumed.
+ */
 export default class Task {
+
+    /** @type {OpsStoreInterface | undefined} */
     #opsStore;
+
+    /** @type {Op[]} */
     #opList;
 
+    /** @type {string} Name/ID of this task. */
     taskName;
 
+    /**
+     * Creates a new task with a root operation.
+     * @param {string} taskName - Name/ID for the task.
+     * @param {Op} rootOp - The root operation of the task.
+     */
     constructor(taskName, rootOp) {
         if (!rootOp) {
             throw new Error(`OpsManager: Task must have a rootOp`);
@@ -17,14 +43,27 @@ export default class Task {
         this.#opList = [rootOp];
     }
 
+    /**
+     * Sets the operations store for persistence.
+     * @param {OpsStoreInterface} store - The operations store.
+     */
     setOpsStore(store) {
         this.#opsStore = store;
     }
 
+    /**
+     * Gets the root operation of this task.
+     * @returns {Op} The root operation.
+     */
     get rootOp() {
         return this.#opList[0];
     }
 
+    /**
+     * Adds an operation to this task.
+     * @param {Op} op - The operation to add.
+     * @returns {Op} The added operation.
+     */
     addOp(op) {
         const opId = this.#opList.length;
         op.opId = opId;
@@ -33,6 +72,10 @@ export default class Task {
         return op;
     }
 
+    /**
+     * Serializes the task to a list of serialized operations.
+     * @returns {SerializedOp[]} Array of serialized operations.
+     */
     serialize() {
         return this.#opList.map(op => ({
             opName: op.opName,
@@ -45,6 +88,10 @@ export default class Task {
         }));
     }
 
+    /**
+     * Saves the task to the operations store.
+     * @returns {Promise<void>}
+     */
     async save() {
         if (this.#opsStore) {
             const serializedOpList = this.serialize();
@@ -54,6 +101,12 @@ export default class Task {
         }
     }
 
+    /**
+     * Deserializes a task from a serialized operation list.
+     * @param {string} taskName - The task name.
+     * @param {SerializedOp[]} serializedOpList - Serialized operations.
+     * @returns {Task} The deserialized task.
+     */
     static deserialize(taskName, serializedOpList) {
         const ops = [];
         const inputs = [];
@@ -74,6 +127,12 @@ export default class Task {
         return task;
     }
 
+    /**
+     * Hydrates a task from the operations store.
+     * @param {OpsStoreInterface} opsStore - The operations store.
+     * @param {string} taskName - The task name to hydrate.
+     * @returns {Promise<Task>} The hydrated task.
+     */
     static async hydrateFromStore(opsStore, taskName) {
         const serializedOps = [];
         for await (const serializedOp of opsStore.getTask(taskName)) {
@@ -82,6 +141,11 @@ export default class Task {
         return Task.deserialize(taskName, serializedOps);
     }
 
+    /**
+     * Executes the task by running all operations in dependency order.
+     * @param {ExecuteOptions} [options] - Execution options.
+     * @returns {Promise<unknown>} The root operation's output.
+     */
     async execute(options = {}) {
         const { parallelism = 1 } = options;
         

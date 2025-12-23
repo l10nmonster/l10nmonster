@@ -1,8 +1,19 @@
 import fastq from 'fastq';
 import { consoleLog } from '../l10nContext.js';
 
-export class source_export {
-    static help = {
+/**
+ * @typedef {Object} SourceExportOptions
+ * @property {string} [snapStore] - Snap store ID
+ * @property {string | string[]} [channel] - Channel ID(s)
+ */
+
+/**
+ * CLI action for exporting sources to a snap store.
+ * @type {import('../../index.js').L10nAction}
+ */
+export const source_export = {
+    name: 'source_export',
+    help: {
         description: 'exports sources to a snap store.',
         arguments: [
             [ '[snapStore]', 'id of the snap store' ],
@@ -10,9 +21,10 @@ export class source_export {
         options: [
             [ '--channel <channelId>', 'limit to the specified channels' ],
         ]
-    };
+    },
 
-    static async action(mm, { snapStore, channel }) {
+    async action(mm, options) {
+        const { snapStore, channel } = /** @type {SourceExportOptions} */ (options);
         if (snapStore) {
             const channels = channel ? (Array.isArray(channel) ? channel : channel.split(',')) : mm.rm.channelIds;
             consoleLog`Exporting sources to ${snapStore}... (channels: ${channels.join(', ')})`;
@@ -35,5 +47,5 @@ export class source_export {
         } else {
             consoleLog`You have to specify a snap store. Available snap store ids: ${snapStoreIds.join(', ')}`;
         }
-    }
-}
+    },
+};

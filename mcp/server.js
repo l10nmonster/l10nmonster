@@ -4,8 +4,7 @@ import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/
 import { isInitializeRequest } from '@modelcontextprotocol/sdk/types.js';
 import * as mcpTools from './tools/index.js';
 import { registry } from './tools/registry.js';
-import { readFile } from 'node:fs/promises';
-import path from 'node:path';
+import { l10nMonsterVersion } from '@l10nmonster/core';
 
 // Session management for HTTP transport
 const sessions = new Map(); // sessionId -> { transport, lastActivity }
@@ -15,20 +14,8 @@ const SESSION_TIMEOUT_MS = 30 * 60 * 1000; // 30 minutes
 // Use a WeakMap to avoid memory leaks. Once all sessions to a server are closed the server will be garbage collected.
 const serverInstances = new WeakMap(); // monsterManager -> McpServer
 
-
-async function getMcpPackageVersion() {
-    try {
-        const packageJsonContent = await readFile(path.join(import.meta.dirname, 'package.json'), 'utf-8');
-        const packageJson = JSON.parse(packageJsonContent.toString());
-        return packageJson.version;
-    } catch (error) {
-        console.error('Error parsing MCP package version:', error);
-        return '0.0.1-unknown';
-    }
-}
-
-// Set server version to be the package version
-const serverVersion = await getMcpPackageVersion();
+// Server version from core package
+const serverVersion = l10nMonsterVersion;
 
 /**
  * Setup tools on an MCP server instance
@@ -116,9 +103,9 @@ async function cleanupExpiredSessions() {
 /**
  * Creates MCP route handlers for use with the serve action extension mechanism.
  * Returns route definitions that can be registered via ServeAction.registerExtension.
- * 
- * @param {import('@l10nmonster/core').MonsterManager} mm - MonsterManager instance
- * @returns {Array<[string, string, Function]>} Array of [method, path, handler] route definitions
+ *
+ * @param {unknown} mm - MonsterManager instance.
+ * @returns {Array<[string, string, Function]>} Route definitions.
  */
 export function createMcpRoutes(mm) {
     // Handle POST requests for client-to-server communication

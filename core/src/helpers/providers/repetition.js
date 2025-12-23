@@ -3,6 +3,11 @@ import { utils } from '../index.js';
 import { BaseTranslationProvider } from './baseTranslationProvider.js';
 
 /**
+ * @typedef {import('../../interfaces.js').Job} Job
+ * @typedef {import('../../interfaces.js').TU} TU
+ */
+
+/**
  * This provider implements reuse of exact matches against the TM and other segments in the same request (aka internal leverage).
  * It supports a penalty factor based on matching the same id (aka qualified) or not (aka unqualified) and whether the notes match.
  * The assigned quality of the reused string is equal to the original one minus the corresponding penalty.
@@ -17,7 +22,7 @@ export class Repetition extends BaseTranslationProvider {
      * Initializes a new instance of the Repetition class.
      * @param {Object} options - The parameters for the constructor.
      * @param {string} [options.id] - Global identifier for the provider.
-     * @param {Object} [options.supportedPairs] - Supported pairs for the provider.
+     * @param {Record<string, string[]>} [options.supportedPairs] - Supported pairs for the provider.
      * @param {number} [options.qualifiedPenalty] - Penalty for qualified matches.
      * @param {number} [options.unqualifiedPenalty] - Penalty for unqualified matches.
      * @param {number} [options.notesMismatchPenalty] - Penalty for notes mismatch.
@@ -166,13 +171,18 @@ export class Repetition extends BaseTranslationProvider {
         return bestCandidate;
     }
 
+    /**
+     * Gets TUs that can be matched from TM or internal leverage.
+     * @param {Job} job - The job request.
+     * @returns {Promise<TU[]>} Matched TUs with translations.
+     */
     async getAcceptedTus(job) {
         const matchedTus = [];
         let tusToProcess = job.tus;
 
         // Handle internal leverage holdouts if enabled
         if (this.holdInternalLeverage) {
-            const { toTranslate, holdouts } = this.#computeInternalLeverageHoldouts(job.tus);
+            const { holdouts } = this.#computeInternalLeverageHoldouts(job.tus);
             matchedTus.push(...holdouts);
             // Only process TUs that need translation (not held back)
             tusToProcess = job.tus.filter(tu => !holdouts.some(h => h.guid === tu.guid));
@@ -202,6 +212,11 @@ export class Repetition extends BaseTranslationProvider {
         return matchedTus;
     }
 
+    /**
+     * Gets translated TUs (excludes in-flight ones).
+     * @param {Job} job - The job with TUs.
+     * @returns {Promise<TU[]>} Translated TUs.
+     */
     async getTranslatedTus(job) {
         return job.tus.filter(tu => !tu.inflight);
     }

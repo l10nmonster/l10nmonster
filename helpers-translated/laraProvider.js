@@ -3,7 +3,6 @@ import { Credentials, Translator } from '@translated/lara';
 
 /**
  * @typedef {object} LaraProviderOptions
- * @extends ChunkedRemoteTranslationProviderOptions
  * @property {string} keyId - The Lara API key id. This is required.
  * @property {Promise<string>|string} [keySecret] - The Lara API key secret. Optional, but often needed for authentication.
  * @property {string | Array<string>} [adaptTo] - An optional single translation memory ID or an array of IDs to adapt translations to.
@@ -24,6 +23,7 @@ export class LaraProvider extends providers.ChunkedRemoteTranslationProvider {
      * @param {LaraProviderOptions} options - Configuration options for the provider.
      */
     constructor({ keyId, keySecret, adaptTo, glossaries, ...options }) {
+        // @ts-ignore - spread loses type info but parent class handles validation
         super({ maxChunkSize: 60, ...options }); // maximum number of strings sent to Lara is 128 including notes
         this.#keyId = keyId;
         this.#keySecret = keySecret;
@@ -36,11 +36,13 @@ export class LaraProvider extends providers.ChunkedRemoteTranslationProvider {
     }
 
     async #getLara() {
-        const credentials = new Credentials(this.#keyId, await (typeof this.#keySecret === 'function' ? this.#keySecret() : this.#keySecret));
+        // @ts-ignore - keySecret can be a function or value, TypeScript doesn't narrow correctly
+        const resolvedSecret = await (typeof this.#keySecret === 'function' ? this.#keySecret() : this.#keySecret);
+        const credentials = new Credentials(this.#keyId, resolvedSecret);
         return new Translator(credentials);
     }
 
-    prepareTranslateChunkArgs({ sourceLang, targetLang, xmlTus, instructions }) {
+    prepareTranslateChunkArgs({ sourceLang, targetLang, xmlTus, jobGuid, chunkNumber, instructions }) {
         const payload = xmlTus.map(xmlTu => {
             const textBlock = [];
             textBlock.push({ text: `bundle: ${xmlTu.bundle} key: ${xmlTu.key} notes: ${xmlTu.notes ?? ''}`, translatable: false });
@@ -48,7 +50,7 @@ export class LaraProvider extends providers.ChunkedRemoteTranslationProvider {
             return textBlock;
         }).flat(1);
         const translateOptions = instructions ? { ...this.#translateOptions, instructions: [...this.#translateOptions.instructions, instructions] } : this.#translateOptions;
-        return { payload, sourceLang, targetLang, translateOptions };
+        return { payload, sourceLang, targetLang, xmlTus, jobGuid, chunkNumber, translateOptions };
     }
 
     async startTranslateChunk(args) {

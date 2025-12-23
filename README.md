@@ -55,6 +55,97 @@ v3 introduces a modern ESM-based monorepo architecture with npm workspaces, prov
 - **`@l10nmonster/helpers-lqaboss`**: LQA Boss visual review integration
 - **`@l10nmonster/helpers-demo`**: Development and testing utilities
 
+## TypeScript Interfaces
+
+v3 provides comprehensive TypeScript interfaces for all plugin contracts, enabling type-safe extensions and IDE support. All interfaces are defined in `@l10nmonster/core` and can be imported for custom implementations.
+
+<details>
+<summary>Core Interfaces</summary>
+
+| Interface | Purpose |
+|-----------|---------|
+| `SourceAdapter` | Contract for source content adapters (fetch resources) |
+| `TargetAdapter` | Contract for target content adapters (commit translations) |
+| `ResourceFilter` | Contract for parsing resources into segments |
+| `ResourceGenerator` | Contract for generating translated resources |
+| `TMStore` | Contract for Translation Memory storage backends |
+| `SnapStore` | Contract for source snapshot storage backends |
+| `TranslationProvider` | Contract for translation service providers |
+| `Analyzer` | Contract for content analyzers and reporters |
+| `OpsStoreInterface` | Contract for operations/task storage |
+| `SegmentDecoratorFactory` | Contract for segment decorator plugins |
+
+</details>
+
+<details>
+<summary>Type Definitions</summary>
+
+| Type | Purpose |
+|------|---------|
+| `Segment` | Normalized segment with id, source, notes |
+| `Part` | String or placeholder part of normalized content |
+| `NormalizedString` | Array of Parts representing translatable content |
+| `TranslationPolicy` | Function for translation decision logic |
+| `DecoderFunction` | Function for parsing placeholders from strings |
+| `TextEncoderFunction` | Function for encoding text parts |
+| `CodeEncoderFunction` | Function for encoding placeholder parts |
+| `SegmentDecorator` | Function for transforming segments |
+
+</details>
+
+<details>
+<summary>Implementing Custom Plugins</summary>
+
+```javascript
+// Custom source adapter
+import { SourceAdapter } from '@l10nmonster/core';
+
+/**
+ * @implements {SourceAdapter}
+ */
+export class MyCustomSource {
+    async *fetchAllResources() {
+        // Yield [resourceMeta, content] pairs
+        yield [{ id: 'resource1', sourceLang: 'en' }, '{"key": "value"}'];
+    }
+}
+
+// Custom analyzer
+import { Analyzer } from '@l10nmonster/core';
+
+/**
+ * @implements {Analyzer}
+ */
+export class MyAnalyzer {
+    static help = 'Description of what this analyzer does';
+
+    processSegment({ rid, prj, seg }) {
+        // Process each segment
+    }
+
+    getAnalysis() {
+        return { head: ['col1', 'col2'], body: [['a', 'b']] };
+    }
+}
+
+// Custom translation provider (extend base class)
+import { BaseTranslationProvider } from '@l10nmonster/core';
+
+export class MyProvider extends BaseTranslationProvider {
+    async getTranslatedTus(job) {
+        // Return translated TUs
+        return job.tus.map(tu => ({
+            ...tu,
+            ntgt: ['Translated: ', ...tu.nsrc],
+            q: this.quality,
+            ts: Date.now()
+        }));
+    }
+}
+```
+
+</details>
+
 ## Documentation
 
 - **[Architecture Guide](architecture.md)**: Detailed system architecture and design patterns
@@ -72,12 +163,42 @@ v3 introduces a modern ESM-based monorepo architecture with npm workspaces, prov
 
 ## Installation
 
-```bash
-# Install CLI globally
-npm install -g @l10nmonster/cli
+### Option 1: All-in-One Package (Recommended)
 
-# Or use in project
+```bash
+npm install l10nmonster
+```
+
+The `l10nmonster` package includes everything: core, CLI, server, and all helpers. All exports are merged into convenient categories:
+
+```javascript
+import {
+  L10nMonsterConfig, ChannelConfig,
+  adapters, filters, providers, stores, normalizers, actions
+} from 'l10nmonster';
+
+// Use providers from any helper package
+new providers.GPTAgent({ ... })      // from helpers-openai
+new providers.DeepLProvider({ ... }) // from helpers-deepl
+new providers.PigLatinizer({ ... })  // from helpers-demo
+
+// Use filters from any helper package
+new filters.AndroidXMLFilter()       // from helpers-android
+new filters.I18nextFilter()          // from helpers-json
+new filters.PoFilter()               // from helpers-po
+
+// Use normalizers with platform prefixes
+normalizers.androidEscapesDecoder    // from helpers-android
+normalizers.iosPhDecoder             // from helpers-ios
+normalizers.javaEscapesEncoder       // from helpers-java
+```
+
+### Option 2: Individual Packages
+
+```bash
+# Install only what you need
 npm install @l10nmonster/core @l10nmonster/cli
+npm install @l10nmonster/helpers-openai  # Add specific helpers
 ```
 
 ## Quick Setup

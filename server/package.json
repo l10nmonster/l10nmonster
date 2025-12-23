@@ -32,7 +32,8 @@
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
         "format": "prettier --write \"ui/src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
-        "type-check": "tsc --noEmit"
+        "type-check": "tsc --noEmit",
+        "typecheck": "tsc --noEmit"
     },
     "eslintConfig": {
         "extends": [

@@ -1,8 +1,11 @@
 import plist from 'plist';
 
+/** @typedef {import('@l10nmonster/core').ResourceFilter} ResourceFilter */
+
 /**
  * Filter for iOS .stringsdict files (plist format for pluralization).
  * @see https://developer.apple.com/documentation/xcode/localizing-strings-that-contain-plurals
+ * @implements {ResourceFilter}
  */
 export class StringsdictFilter {
 

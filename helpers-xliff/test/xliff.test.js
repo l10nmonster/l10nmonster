@@ -1,3 +1,4 @@
+/* eslint-disable no-new */
 import { test, describe } from 'node:test';
 import assert from 'node:assert';
 import { XliffBridge } from '../xliffBridge.js';

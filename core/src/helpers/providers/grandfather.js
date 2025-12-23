@@ -4,6 +4,11 @@ import { utils } from '../index.js';
 import { BaseTranslationProvider } from './baseTranslationProvider.js';
 
 /**
+ * @typedef {import('../../interfaces.js').Job} Job
+ * @typedef {import('../../interfaces.js').TU} TUType
+ */
+
+/**
  * This provider implements reuse of exact matches against the TM and other segments in the same request (aka internal leverage).
  * It supports a penalty factor based on matching the same id (aka qualified) or not (aka unqualified) and whether the notes match.
  * The assigned quality of the reused string is equal to the original one minus the corresponding penalty.
@@ -14,7 +19,7 @@ export class Grandfather extends BaseTranslationProvider {
      * Initializes a new instance of the Grandfather class.
      * @param {Object} options - The parameters for the constructor.
      * @param {string} [options.id] - Global identifier for the provider.
-     * @param {Object} [options.supportedPairs] - Supported pairs for the provider.
+     * @param {Record<string, string[]>} [options.supportedPairs] - Supported pairs for the provider.
      * @param {number} options.quality - The quality to assign grandfathered translations.
      */
     constructor(options) {
@@ -24,6 +29,11 @@ export class Grandfather extends BaseTranslationProvider {
         super(options);
     }
 
+    /**
+     * Gets TUs that can be grandfathered from existing translations.
+     * @param {Job} job - The job to process.
+     * @returns {Promise<TUType[]>} Array of matched TUs with grandfathered translations.
+     */
     async getAcceptedTus(job) {
         const matchedTus = [];
         const txCache = {};

@@ -1,3 +1,4 @@
+/* eslint-disable no-new */
 import { test, describe } from 'node:test';
 import assert from 'node:assert';
 import { MMTProvider, LaraProvider } from '../index.js';
@@ -14,22 +15,22 @@ describe('Translated Helpers', () => {
 
         test('should set default id based on webhook presence', () => {
             const realtimeProvider = new MMTProvider({
-                id: 'test-realtime-' + Date.now(),
+                id: `test-realtime-${Date.now()}`,
                 apiKey: 'test-key',
                 quality: 80
             });
             // Should default to 'MMTRealtime' when no webhook
+            assert.ok(realtimeProvider);
 
             const batchProvider = new MMTProvider({
-                id: 'test-batch-' + Date.now(),
+                id: `test-batch-${Date.now()}`,
                 apiKey: 'test-key',
                 webhook: 'https://example.com/webhook',
                 chunkFetcher: () => {},
                 quality: 80
             });
             // Should default to 'MMTBatch' when webhook is provided
-            
-            assert.ok(true); // Basic instantiation test
+            assert.ok(batchProvider);
         });
 
         test('should require chunkFetcher when webhook is provided', () => {
@@ -45,7 +46,7 @@ describe('Translated Helpers', () => {
 
         test('should configure base request correctly', () => {
             const provider = new MMTProvider({
-                id: 'test-config-' + Date.now(),
+                id: `test-config-${Date.now()}`,
                 apiKey: 'test-key',
                 hints: ['hint1', 'hint2'],
                 multiline: false,
@@ -60,7 +61,7 @@ describe('Translated Helpers', () => {
 
         test('should handle multiline default value', () => {
             const provider = new MMTProvider({
-                id: 'test-multiline-' + Date.now(),
+                id: `test-multiline-${Date.now()}`,
                 apiKey: 'test-key',
                 quality: 80
             });
@@ -80,7 +81,7 @@ describe('Translated Helpers', () => {
 
         test('should handle provider configuration', () => {
             const provider = new LaraProvider({
-                id: 'test-lara-' + Date.now(),
+                id: `test-lara-${Date.now()}`,
                 apiKey: 'test-key',
                 projectId: 'test-project',
                 quality: 80

@@ -77,29 +77,85 @@ function cleanupTU(entry) {
 }
 
 /**
+ * @typedef {import('../../index.js').NormalizedString} NormalizedString
+ * @typedef {import('../../index.js').StructuredNotes} StructuredNotes
+ * @typedef {import('../../index.js').JobProps} JobProps
+ */
+
+/**
  * Represents a Translation Unit (TU).
  */
 export class TU {
+
+    /** @type {string} Resource ID the TU belongs to. */
     rid;
+
+    /** @type {string} Segment ID the TU belongs to. */
     sid;
+
+    /** @type {NormalizedString | undefined} Normalized source string for the TU. */
     nsrc;
+
+    /** @type {string} Unique identifier for the TU. */
     guid;
+
+    /** @type {boolean | undefined} Indicates if the TU is in-flight (submitted and pending translation). */
     inflight;
+
+    /** @type {NormalizedString | undefined} Normalized target string for the TU. */
     ntgt;
+
+    /** @type {number | undefined} Timestamp for the TU. */
     ts;
+
+    /** @type {number | undefined} Quality score for the TU. */
     q;
 
+    /** @type {string | StructuredNotes | undefined} Structured notes for translators. */
+    notes;
+
+    /** @type {string | undefined} Project name for filtering. */
+    prj;
+
+    /** @type {string | undefined} Plural form (one, other, zero, two, few, many). */
+    pluralForm;
+
+    /** @type {string | undefined} Opaque native ID in original storage format. */
+    nid;
+
+    /** @type {number | undefined} Sequence number to shorten GUID. */
+    seq;
+
+    /** @type {JobProps | undefined} Job-specific properties. */
+    jobProps;
+
+    /** @type {number | number[] | undefined} Translation cost (number or array for detailed token breakdown). */
+    cost;
+
+    /** @type {string | undefined} Job GUID this TU was translated in. */
+    jobGuid;
+
+    /** @type {string | undefined} ID of the translation provider. */
+    translationProvider;
+
+    /** @type {number | undefined} Translation confidence score. */
+    tconf;
+
+    /** @type {string | undefined} Translation notes. */
+    tnotes;
+
+    /** @type {object | undefined} QA data. */
+    qa;
+
+    /** @type {string | undefined} Translation hash for detecting vendor-side fixes. */
+    th;
+
+    /** @type {{ reviewedWords?: number, errorsFound?: number } | undefined} Review data (reviewed words and errors found). */
+    rev;
+
     /**
-     * @property {string} rid - Resource ID the TU belongs to.
-     * @property {string} sid - Segment ID the TU belongs to.
-     * @property {string[]} nsrc - Normalized source strings for the TU.
-     * @property {string} guid - Unique identifier for the TU.
-     * @property {boolean} inflight - Indicates if the TU is in-flight (submitted and pending translation).
-     * @property {string[]} ntgt - Normalized target strings for the TU.
-     * @property {number} ts - Timestamp for the TU.
-     * @property {number} q - Quality score for the TU.
-     *
-     * @param {Object} entry - A TU-like objecty with properties like guid, rid, sid, nsrc, etc.
+     * Creates a new TU instance.
+     * @param {Partial<TU>} entry - A TU-like object with properties like guid, rid, sid, nsrc, etc.
      * @param {boolean} isSource - Indicates if the TU is a source.
      * @param {boolean} isTarget - Indicates if the TU is a target.
      * @throws Will throw an error if the required properties are missing based on the TU type.
@@ -121,7 +177,7 @@ export class TU {
 
     /**
      * Creates a TU instance with only the source string.
-     * @param {Object} obj - The object to convert to a source TU.
+     * @param {Partial<TU>} obj - The object to convert to a source TU.
      * @returns {TU} The created source TU.
      */
     static asSource(obj) {
@@ -130,7 +186,7 @@ export class TU {
 
     /**
      * Creates a TU instance with both source and target strings.
-     * @param {Object} obj - The object to convert to a target TU.
+     * @param {Partial<TU>} obj - The object to convert to a target TU.
      * @returns {TU} The created target TU.
      */
     static asTarget(obj) {
@@ -139,7 +195,7 @@ export class TU {
 
     /**
      * Creates a TU instance with both source and target strings.
-     * @param {Object} obj - The object to convert to a pair TU.
+     * @param {Partial<TU>} obj - The object to convert to a pair TU.
      * @returns {TU} The created pair TU.
      */
     static asPair(obj) {
@@ -148,8 +204,8 @@ export class TU {
 
     /**
      * Converts a segment into a source TU.
-     * @param {Object} res - The resource object containing the segment.
-     * @param {Object} segment - The segment to convert.
+     * @param {{ id: string, prj?: string }} res - The resource object containing the segment.
+     * @param {import('../../index.js').NormalizedSegment} segment - The segment to convert.
      * @returns {TU} The created source TU.
      */
     static fromSegment(res, segment) {
@@ -165,6 +221,13 @@ export class TU {
         return TU.asSource(tu);
     }
 
+    /**
+     * Creates a pair TU from request and response objects.
+     * @param {Partial<TU>} [req] - The request TU object.
+     * @param {Partial<TU>} [res] - The response TU object.
+     * @param {Partial<TU>} [additionalProps] - Additional properties to merge.
+     * @returns {TU} The created pair TU.
+     */
     static fromRequestResponse(req = {}, res = {}, additionalProps = {}) {
         const coalescedEntry = Object.fromEntries(Object.keys({...req, ...res}).map(k => [k, res[k] === undefined ? req[k] : res[k]]));
         return new TU(cleanupTU({ ...additionalProps, ...coalescedEntry }), true, true);

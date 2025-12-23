@@ -1,6 +1,8 @@
 import { BigQuery } from '@google-cloud/bigquery';
 import { logInfo, logVerbose } from '@l10nmonster/core';
 
+/** @typedef {import('@l10nmonster/core').SourceAdapter} SourceAdapter */
+
 function decodeSqlResponse(segmentOrSubresource) {
     if (segmentOrSubresource.notes === null) {
         delete segmentOrSubresource.notes;
@@ -12,6 +14,10 @@ function decodeSqlResponse(segmentOrSubresource) {
     });
 }
 
+/**
+ * BigQuery-based source adapter for fetching resources from BQ.
+ * @implements {SourceAdapter}
+ */
 export class BQSource {
     #projectId;
     #query;
@@ -43,6 +49,7 @@ export class BQSource {
     * @param {Object} [options] - The parameters for the constructor.
     * @param {Array|string} [options.prj] - Only fetch the specified projects.
     * @param {string} [options.since] - Only fetch resources last modified since.
+    * @returns {AsyncGenerator<[import('@l10nmonster/core').ResourceHeader, string], void, unknown>}
      */
     async *fetchAllResources({ since } = {}) {
         logInfo`\nFetching resources from BQ...`;

@@ -3,8 +3,27 @@ import { writeFileSync } from 'fs';
 import { consoleLog, logWarn } from '../l10nContext.js';
 import { printRequest } from './shared.js';
 
-export class source_untranslated {
-    static help = {
+/**
+ * @typedef {Object} SourceUntranslatedOptions
+ * @property {string} [lang] - Language pair (srcLang,tgtLang)
+ * @property {string | string[]} [channel] - Channel ID(s)
+ * @property {string | string[]} [prj] - Project ID(s)
+ * @property {string | string[] | boolean} [provider] - Provider(s)
+ * @property {number} [limit] - Segment limit
+ * @property {boolean} [push] - Push to providers
+ * @property {string} [instructions] - Job instructions
+ * @property {string} [statusFile] - Status output file
+ * @property {string} [outFile] - Output file
+ * @property {string | boolean} [print] - Print verbosity
+ */
+
+/**
+ * CLI action for identifying untranslated source content.
+ * @type {import('../../index.js').L10nAction}
+ */
+export const source_untranslated = {
+    name: 'source_untranslated',
+    help: {
         description: 'identifies untranslated source content.',
         options: [
             [ '--lang <srcLang,tgtLang>', 'source and target language pair' ],
@@ -18,26 +37,27 @@ export class source_untranslated {
             [ '--outFile <filename>', 'write output to the specified file' ],
             [ '--print [verbosity]', 'print jobs to console (basic, detailed, unassigned)', [ 'basic', 'detailed', 'unassigned' ] ],
         ]
-    };
+    },
 
-    static async action(mm, options) {
-        const channels = options.channel ? (Array.isArray(options.channel) ? options.channel : options.channel.split(',')) : mm.rm.channelIds;
-        const prj = options.prj ? (Array.isArray(options.prj) ? options.prj : options.prj.split(',')) : undefined;
+    async action(mm, options) {
+        const opts = /** @type {SourceUntranslatedOptions} */ (options);
+        const channels = opts.channel ? (Array.isArray(opts.channel) ? opts.channel : opts.channel.split(',')) : mm.rm.channelIds;
+        const prj = opts.prj ? (Array.isArray(opts.prj) ? opts.prj : opts.prj.split(',')) : undefined;
         if (Array.isArray(prj) && channels.length > 1) {
             throw new Error('Cannot specify projects with more than one channel');
         }
 
-        const provider = typeof options.provider === 'string' ? options.provider.split(',') : options.provider; // could be an array or a boolean
+        const provider = typeof opts.provider === 'string' ? opts.provider.split(',') : opts.provider; // could be an array or a boolean
         const jobs = [];
         const status = {};
         for (const channelId of channels) {
             consoleLog`Untranslated source content for channel ${channelId}:`;
-            const langPairs = options.lang ? [ options.lang.split(',') ] : await mm.rm.getDesiredLangPairs(channelId);            
+            const langPairs = opts.lang ? [ opts.lang.split(',') ] : await mm.rm.getDesiredLangPairs(channelId);
             for (const [ sourceLang, targetLang ] of langPairs) {
                 status[targetLang] ??= {};
                 status[targetLang][sourceLang] ??= {};
                 const tm = mm.tmm.getTM(sourceLang, targetLang);
-                const tus = await tm.getUntranslatedContent(channelId, { limit: options.limit ?? 5000, prj });
+                const tus = await tm.getUntranslatedContent(channelId, { limit: opts.limit ?? 5000, prj });
                 if (tus.length === 0) {
                     consoleLog`  ‣ ${sourceLang} → ${targetLang}: fully translated`;
                 } else {
@@ -56,8 +76,8 @@ export class source_untranslated {
                             } else {
                                 logWarn`${job.tus.length.toLocaleString()} ${[job.tus.length, 'segment', 'segments']} have no provider available for ${sourceLang} → ${targetLang} translation`;
                             }
-                            const print = Boolean(options.print) && !(options.print === 'unassigned' && job.translationProvider);
-                            print && printRequest(job, 10, options.print === 'detailed');
+                            const print = Boolean(opts.print) && !(opts.print === 'unassigned' && job.translationProvider);
+                            print && printRequest(job, 10, opts.print === 'detailed');
                         }
                     } else {
                         jobs.push({ sourceLang, targetLang, tus });
@@ -68,24 +88,24 @@ export class source_untranslated {
                 }
             }
         }
-        if (options.statusFile) {
+        if (opts.statusFile) {
             if (!provider) {
                 throw new Error(`\nYou must specify providers to write a status file!`);
             } else {
-                writeFileSync(options.statusFile, JSON.stringify(status, null, '\t'), 'utf8');
-                consoleLog`\nStatus file written to ${options.statusFile}`;
+                writeFileSync(opts.statusFile, JSON.stringify(status, null, '\t'), 'utf8');
+                consoleLog`\nStatus file written to ${opts.statusFile}`;
             }
         }
-        if (options.outFile) {
-            writeFileSync(options.outFile, JSON.stringify(jobs, null, '\t'), 'utf8');
-            consoleLog`\nJobs written to ${options.outFile}`;
+        if (opts.outFile) {
+            writeFileSync(opts.outFile, JSON.stringify(jobs, null, '\t'), 'utf8');
+            consoleLog`\nJobs written to ${opts.outFile}`;
         }
-        if (options.push) {
+        if (opts.push) {
             if (!provider) {
                 throw new Error(`\nYou must specify providers to push!`);
             } else {
                 consoleLog`\nPushing content to providers...`;
-                const jobStatus = await mm.dispatcher.startJobs(jobs, { instructions: options.instructions });
+                const jobStatus = await mm.dispatcher.startJobs(/** @type {import('../../index.js').Job[]} */ (jobs), { instructions: opts.instructions });
                 consoleLog`Pushed ${jobStatus.length} jobs:`;
                 for (const { sourceLang, targetLang, jobGuid, translationProvider, status } of jobStatus) {
                     consoleLog`  ${sourceLang} → ${targetLang}: ${translationProvider}(${jobGuid}) → ${status}`;
@@ -93,5 +113,5 @@ export class source_untranslated {
             }
         }
         return jobs;
-    }
-}
+    },
+};

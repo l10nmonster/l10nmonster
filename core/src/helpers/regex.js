@@ -5,7 +5,21 @@
 //   (e.g. MessageFormat variables and HTML markup). There are also edge cases like a Java service returning
 //   an Android message format string, where we may need to overlay both Java and Android rules together.
 
-// Generic pluggable decoder
+/**
+ * @typedef {import('../../index.js').Part} Part
+ * @typedef {import('../../index.js').PlaceholderPart} PlaceholderPart
+ * @typedef {import('../../index.js').DecoderFunction} DecoderFunction
+ * @typedef {import('../../index.js').TextEncoderFunction} TextEncoderFunction
+ * @typedef {import('../../index.js').EncodeFlags} EncodeFlags
+ */
+
+/**
+ * Creates a decoder function based on a regex pattern.
+ * @param {string} flag - Name/flag for the decoder.
+ * @param {RegExp} regex - Regex pattern to match (must have named groups).
+ * @param {(groups: Record<string, string>) => string | PlaceholderPart | Part[]} partDecoder - Function to decode matched groups.
+ * @returns {DecoderFunction} A decoder function.
+ */
 export const decoderMaker = function regexDecoderMaker(flag, regex, partDecoder) {
     const fn = function decoder(parts) {
         const decodedParts = parts.map(p => {
@@ -51,7 +65,13 @@ export const decoderMaker = function regexDecoderMaker(flag, regex, partDecoder)
     return fn;
 }
 
-// Generic pluggable encoder based on a regex and a mapping table or function
+/**
+ * Creates an encoder function based on a regex pattern and mapping.
+ * @param {string} name - Name for the encoder.
+ * @param {RegExp} regex - Regex pattern to match.
+ * @param {Record<string, string> | ((match: string, flags: EncodeFlags, ...captures: string[]) => string)} matchMap - Mapping table or function.
+ * @returns {TextEncoderFunction} An encoder function.
+ */
 export const encoderMaker = function regexEncoderMaker(name, regex, matchMap) {
     const fn = function encoder(str, flags = {}) {
         str = typeof str === 'string' ? str : str.v;

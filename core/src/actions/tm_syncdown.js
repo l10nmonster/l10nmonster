@@ -1,7 +1,23 @@
 import { consoleLog } from '../l10nContext.js';
 
-export class tm_syncdown {
-    static help = {
+/**
+ * @typedef {Object} TmSyncdownOptions
+ * @property {string} tmStore - TM store ID
+ * @property {boolean} [commit] - Commit changes
+ * @property {boolean} [delete] - Delete extra jobs
+ * @property {boolean} [import] - Treat as unassigned
+ * @property {string} [storeAlias] - Store alias
+ * @property {string} [lang] - Language pair
+ * @property {number} [parallelism] - Parallel operations
+ */
+
+/**
+ * CLI action for syncing remote TM store to local TM cache.
+ * @type {import('../../index.js').L10nAction}
+ */
+export const tm_syncdown = {
+    name: 'tm_syncdown',
+    help: {
         description: 'synchronizes remote TM store to local TM cache.',
         arguments: [
             [ '<tmStore>', 'id of the TM Store' ],
@@ -14,18 +30,19 @@ export class tm_syncdown {
             [ '--lang <srcLang,tgtLang>', 'source and target language pair' ],
             [ '--parallelism <number>', 'number of parallel operations' ],
         ],
-    };
+    },
 
-    static async action(monsterManager, options) {
-        const dryrun = !options.commit;
-        const deleteExtraJobs = Boolean(options.delete);
-        const eraseParentTmStore = Boolean(options.import);
-        const tmStore = await monsterManager.tmm.getTmStore(options.tmStore);
+    async action(monsterManager, options) {
+        const opts = /** @type {TmSyncdownOptions} */ (options);
+        const dryrun = !opts.commit;
+        const deleteExtraJobs = Boolean(opts.delete);
+        const eraseParentTmStore = Boolean(opts.import);
+        const tmStore = await monsterManager.tmm.getTmStore(opts.tmStore);
         if (tmStore.access === 'writeonly') {
             throw new Error(`TM Store ${tmStore.id} is write-only!`);
         }
         let sourceLang, targetLang;
-        options.lang && ([ sourceLang, targetLang ] = options.lang.split(','));
+        opts.lang && ([ sourceLang, targetLang ] = opts.lang.split(','));
         consoleLog`Syncing down ${tmStore.id} store...`;
         const syncDownStats = await monsterManager.tmm.syncDown(tmStore, {
             dryrun,
@@ -33,8 +50,8 @@ export class tm_syncdown {
             targetLang,
             deleteExtraJobs,
             eraseParentTmStore,
-            storeAlias: options.storeAlias,
-            parallelism: options.parallelism,
+            storeAlias: opts.storeAlias,
+            parallelism: opts.parallelism,
         });
         let changes = false;
         for (const { sourceLang, targetLang, blocksToStore, jobsToDelete } of syncDownStats) {
@@ -61,5 +78,5 @@ export class tm_syncdown {
             consoleLog`Nothing to sync down with ${tmStore.id} store!`;
         }
         return { dryrun, deleteExtraJobs, syncDownStats };
-    }
-}
+    },
+};

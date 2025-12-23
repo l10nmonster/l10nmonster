@@ -13,7 +13,7 @@ export class GDriveStoreDelegate {
         return `GDriveStoreDelegate(folderId=${this.folderId}, folderPath=${this.folderPath})`;
     }
 
-    async _initializeDrive() {
+    async #initializeDrive() {
         if (!this.drive) {
             try {
                 const auth = new google.auth.GoogleAuth({
@@ -29,8 +29,8 @@ export class GDriveStoreDelegate {
         }
     }
 
-    async _getOrCreateFolder(folderName, parentId) {
-        await this._initializeDrive();
+    async #getOrCreateFolder(folderName, parentId) {
+        await this.#initializeDrive();
         
         // Check if folder exists
         const query = `name='${folderName}' and parents in '${parentId}' and mimeType='application/vnd.google-apps.folder'`;
@@ -55,24 +55,24 @@ export class GDriveStoreDelegate {
         return folder.data.id;
     }
 
-    async _resolveFolderPath() {
+    async #resolveFolderPath() {
         if (!this.folderPath) {
             return this.folderId;
         }
-        
+
         const pathParts = this.folderPath.split('/').filter(part => part.length > 0);
         let currentFolderId = this.folderId;
-        
+
         for (const folderName of pathParts) {
-            currentFolderId = await this._getOrCreateFolder(folderName, currentFolderId);
+            currentFolderId = await this.#getOrCreateFolder(folderName, currentFolderId);
         }
-        
+
         return currentFolderId;
     }
 
     async listAllFiles() {
-        await this._initializeDrive();
-        const targetFolderId = await this._resolveFolderPath();
+        await this.#initializeDrive();
+        const targetFolderId = await this.#resolveFolderPath();
         
         const query = `'${targetFolderId}' in parents and mimeType != 'application/vnd.google-apps.folder'`;
         const response = await this.drive.files.list({
@@ -85,12 +85,12 @@ export class GDriveStoreDelegate {
     }
 
     async ensureBaseDirExists() {
-        await this._resolveFolderPath();
+        return await this.#resolveFolderPath();
     }
 
     async getFile(filename) {
-        await this._initializeDrive();
-        const targetFolderId = await this._resolveFolderPath();
+        await this.#initializeDrive();
+        const targetFolderId = await this.#resolveFolderPath();
         
         const query = `name='${filename}' and '${targetFolderId}' in parents`;
         const response = await this.drive.files.list({ q: query });
@@ -109,8 +109,8 @@ export class GDriveStoreDelegate {
     }
 
     async getStream(filename) {
-        await this._initializeDrive();
-        const targetFolderId = await this._resolveFolderPath();
+        await this.#initializeDrive();
+        const targetFolderId = await this.#resolveFolderPath();
         
         const query = `name='${filename}' and '${targetFolderId}' in parents`;
         const response = await this.drive.files.list({ q: query });
@@ -130,8 +130,8 @@ export class GDriveStoreDelegate {
 
     async saveFile(filename, contents) {
         Array.isArray(filename) && (filename = filename.join('/'));
-        await this._initializeDrive();
-        const targetFolderId = await this._resolveFolderPath();
+        await this.#initializeDrive();
+        const targetFolderId = await this.#resolveFolderPath();
         
         // Check if file already exists
         const query = `name='${filename}' and '${targetFolderId}' in parents`;
@@ -166,8 +166,8 @@ export class GDriveStoreDelegate {
 
     async saveStream(filename, readable) {
         Array.isArray(filename) && (filename = filename.join('/'));
-        await this._initializeDrive();
-        const targetFolderId = await this._resolveFolderPath();
+        await this.#initializeDrive();
+        const targetFolderId = await this.#resolveFolderPath();
         
         // Check if file already exists
         const query = `name='${filename}' and '${targetFolderId}' in parents`;
@@ -211,8 +211,8 @@ export class GDriveStoreDelegate {
     }
 
     async deleteFiles(filenames) {
-        await this._initializeDrive();
-        const targetFolderId = await this._resolveFolderPath();
+        await this.#initializeDrive();
+        const targetFolderId = await this.#resolveFolderPath();
         
         for (const filename of filenames) {
             const query = `name='${filename}' and '${targetFolderId}' in parents`;

@@ -63,8 +63,21 @@ function printSummary(response) {
     }
 }
 
-export class translate {
-    static help = {
+/**
+ * @typedef {Object} TranslateOptions
+ * @property {string} [mode] - Mode (all, delta, dryrun)
+ * @property {string} [lang] - Target language
+ * @property {string | string[]} [channel] - Channel ID(s)
+ * @property {string | string[]} [prj] - Project ID(s)
+ */
+
+/**
+ * CLI action for generating translated resources.
+ * @type {import('../../index.js').L10nAction}
+ */
+export const translate = {
+    name: 'translate',
+    help: {
         description: 'generate translated resources based on latest source and translations.',
         arguments: [
             [ '[mode]', 'commit all/changed/none of the translations', ['all', 'delta', 'dryrun'] ],
@@ -74,19 +87,20 @@ export class translate {
             [ '--channel <channel1,...>', 'limit translations to specified channels' ],
             [ '--prj <prj1,...>', 'limit translations to specified projects' ],
         ]
-    };
+    },
 
-    static async action(mm, options) {
-        const mode = (options.mode ?? 'all').toLowerCase();
-        const channels = options.channel ? (Array.isArray(options.channel) ? options.channel : options.channel.split(',')) : mm.rm.channelIds;
-        const prj = options.prj ? (Array.isArray(options.prj) ? options.prj : options.prj.split(',')) : undefined;
+    async action(mm, options) {
+        const opts = /** @type {TranslateOptions} */ (options);
+        const mode = (opts.mode ?? 'all').toLowerCase();
+        const channels = opts.channel ? (Array.isArray(opts.channel) ? opts.channel : opts.channel.split(',')) : mm.rm.channelIds;
+        const prj = opts.prj ? (Array.isArray(opts.prj) ? opts.prj : opts.prj.split(',')) : undefined;
         if (Array.isArray(prj) && channels.length > 1) {
             throw new Error('Cannot specify projects with more than one channel');
         }
-        consoleLog`Generating translated resources for ${options.lang ? options.lang : 'all languages'}... (${mode} mode)`;
+        consoleLog`Generating translated resources for ${opts.lang ? opts.lang : 'all languages'}... (${mode} mode)`;
         const response = { lang: {} };
         for (const channelId of channels) {
-            const targetLangs = await mm.rm.getDesiredTargetLangs(channelId, options.lang);
+            const targetLangs = await mm.rm.getDesiredTargetLangs(channelId, opts.lang);
             logInfo`Generating translated resources for channel ${channelId}...`;
             const allResources = mm.rm.getAllResources(channelId, { keepRaw: true, prj });
             for await (const resHandle of allResources) {
@@ -122,5 +136,5 @@ export class translate {
         }
         printSummary(response);
         return response;
-    }
-}
+    },
+};

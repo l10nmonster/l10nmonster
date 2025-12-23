@@ -7,6 +7,8 @@ import { XMLParser, XMLBuilder } from 'fast-xml-parser';
 import { default as formatXml } from 'xml-formatter';
 import { logVerbose } from '@l10nmonster/core';
 
+/** @typedef {import('@l10nmonster/core').ResourceFilter} ResourceFilter */
+
 function collapseTextNodes(node) {
     return node.map(e => e['#text']).join('').trim();
 }
@@ -19,6 +21,7 @@ function isTranslatableNode(resNode, str) {
 
 /**
  * Class representing an AndroidFilter for parsing and translating Android resource files.
+ * @implements {ResourceFilter}
  */
 export class AndroidXMLFilter {
 
@@ -226,7 +229,8 @@ export class AndroidXMLFilter {
         }
         const builder = new XMLBuilder(parsingOptions);
         const roughXML = builder.build(parsedResource);
-        // eslint-disable-next-line prefer-template
-        return formatXml(roughXML, { collapseContent: true, indentation: this.indentation, lineSeparator: '\n' }) + '\n';
+         
+        // @ts-ignore - xml-formatter types don't match actual module export
+        return `${formatXml(roughXML, { collapseContent: true, indentation: this.indentation, lineSeparator: '\n' })}\n`;
     }
 }

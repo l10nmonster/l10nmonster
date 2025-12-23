@@ -208,9 +208,9 @@ item_other=Many items`;
         });
 
         // item_few should use item_other's value
-        assert.equal(translations['item_one'], 'One item');
-        assert.equal(translations['item_few'], 'Many items');
-        assert.equal(translations['item_other'], 'Many items');
+        assert.equal(translations.item_one, 'One item');
+        assert.equal(translations.item_few, 'Many items');
+        assert.equal(translations.item_other, 'Many items');
     });
 
     test("translateResource does not process incomplete plural groups", async () => {

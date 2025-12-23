@@ -1,6 +1,12 @@
 import { createHash } from 'crypto';
 import gettextParser from 'gettext-parser';
 
+/** @typedef {import('@l10nmonster/core').ResourceFilter} ResourceFilter */
+
+/**
+ * Filter for gettext PO files.
+ * @implements {ResourceFilter}
+ */
 export class PoFilter {
     async parseResource({ resource, isSource }) {
         const poFile = gettextParser.po.parse(resource);

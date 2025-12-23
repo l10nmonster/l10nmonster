@@ -1,5 +1,12 @@
 import { logInfo, logVerbose, logWarn } from '@l10nmonster/core';
 
+/** @typedef {import('@l10nmonster/core').MonsterManager} MonsterManager */
+
+/**
+ * Creates LQABoss route handlers for the server extension mechanism.
+ * @param {MonsterManager} mm - MonsterManager instance.
+ * @returns {Array<[string, string, Function]>} Route definitions.
+ */
 export function createLQABossRoutes(mm) {
     return [
         ['post', '/lookup', async (req, res) => {

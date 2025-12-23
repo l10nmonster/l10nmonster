@@ -1,14 +1,19 @@
 import { consoleLog } from '../l10nContext.js';
 
-export class monster {
-    static help = {
+/**
+ * CLI action for testing configuration and warming up caches.
+ * @type {import('../../index.js').L10nAction}
+ */
+export const monster = {
+    name: 'monster',
+    help: {
         description: 'test configuration and warm up caches',
         // options: [
         //     [ '-l, --lang <language>', 'target languages to warm up' ],
         // ]
-    };
+    },
 
-    static async action(mm) {
+    async action(mm) {
         console.log(`
 ██╗     ███╗   ██████╗ ███╗   ██╗
 ██║    ████║  ██╔═████╗████╗  ██║
@@ -55,5 +60,5 @@ export class monster {
             consoleLog`\nNo translation memories found!`;
         }
         console.timeEnd('Initialization time');
-    }
-}
+    },
+};

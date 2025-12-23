@@ -62,9 +62,9 @@ export class TuDAL {
             segmentTables.push([channelDAL.segmentsTable, channelId]);
         }
         // Handle the case when there are no active channels - provide an empty CTE
-        const unionQuery = segmentTables.length > 0
-            ? segmentTables.map(([table, channelId]) => `SELECT guid, '${channelId}' AS channel, "group" FROM ${table}`).join(' UNION ALL ')
-            : `SELECT NULL AS guid, NULL AS channel, NULL AS "group" WHERE 0`; // Empty result set
+        const unionQuery = segmentTables.length > 0 ?
+            segmentTables.map(([table, channelId]) => `SELECT guid, '${channelId}' AS channel, "group" FROM ${table}`).join(' UNION ALL ') :
+            `SELECT NULL AS guid, NULL AS channel, NULL AS "group" WHERE 0`; // Empty result set
         return /* sql */`
             active_guids AS (
                 ${unionQuery}
@@ -136,8 +136,15 @@ export class TuDAL {
         return tuRow ? sqlTransformer.decode(tuRow) : undefined;
     }
 
+    /**
+     * Gets TU entries by GUIDs.
+     * @param {string[]} guids - GUIDs to retrieve.
+     * @returns {Promise<Record<string, import('../interfaces.js').TU>>} Map of GUID to TU.
+     */
     async getEntries(guids) {
         const uniqueGuids = new Set(guids);
+
+        /** @type {Record<string, import('../interfaces.js').TU>} */
         const entries = {};
         for (const guid of uniqueGuids) {
             const entry = this.#getEntry(guid);
@@ -573,34 +580,17 @@ export class TuDAL {
     }
 
     /**
+     * @typedef {import('../interfaces.js').TuSearchParams} TuSearchParams
+     */
+
+    /**
      * Search translation units with filtering.
      * @param {number} offset - Number of records to skip for pagination.
      * @param {number} limit - Maximum number of records to return.
-     * @param {Object} options - Search filter options.
-     * @param {string} [options.guid] - Filter by GUID (supports SQL LIKE patterns).
-     * @param {string} [options.nid] - Filter by NID (supports SQL LIKE patterns).
-     * @param {string} [options.jobGuid] - Filter by job GUID (supports SQL LIKE patterns).
-     * @param {string} [options.rid] - Filter by resource ID (supports SQL LIKE patterns).
-     * @param {string} [options.sid] - Filter by segment ID (supports SQL LIKE patterns).
-     * @param {string[]} [options.channel] - Filter by channel(s) - array for multi-select (exact match).
-     * @param {string} [options.nsrc] - Filter by source text (supports SQL LIKE patterns).
-     * @param {string} [options.ntgt] - Filter by target text (supports SQL LIKE patterns).
-     * @param {string} [options.notes] - Filter by notes (supports SQL LIKE patterns).
-     * @param {string[]} [options.tconf] - Filter by translation confidence(s) - array of string representations of integers.
-     *                                     SQL casts JSON values to INTEGER for comparison with DB integers.
-     * @param {number} [options.maxRank=10] - Maximum rank to include (1 = only active/best translations).
-     * @param {boolean} [options.onlyTNotes] - If true, only return TUs with translator notes.
-     * @param {string[]} [options.q] - Filter by quality score(s) - array of string representations of integers.
-     *                                  SQL casts JSON values to INTEGER for comparison with DB integers.
-     * @param {number} [options.minTS] - Minimum timestamp (milliseconds since epoch).
-     * @param {number} [options.maxTS] - Maximum timestamp (milliseconds since epoch).
-     * @param {string[]} [options.translationProvider] - Filter by provider(s) - array for multi-select (exact match).
-     * @param {string[]} [options.tmStore] - Filter by TM store(s) - array for multi-select. Use '__null__' to filter for NULL values.
-     * @param {string[]} [options.group] - Filter by group(s) - array for multi-select (exact match). Includes 'Unknown' and 'Unassigned' as special values.
-     * @param {boolean} [options.includeTechnicalColumns] - If true, includes channel and group columns (requires CTE join).
-     * @param {boolean} [options.onlyLeveraged] - If true, only return TUs that exist in active segment tables (have a channel).
+     * @param {TuSearchParams} options - Search filter options.
      * @returns {Promise<Object[]>} Array of matching translation units.
      */
+    // eslint-disable-next-line complexity
     async search(offset, limit, { guid, nid, jobGuid, rid, sid, channel, nsrc, ntgt, notes, tconf, maxRank, onlyTNotes, q, minTS, maxTS, translationProvider, tmStore, group, includeTechnicalColumns, onlyLeveraged }) {
         // Determine if we need channel/group for filtering vs just display
         // Note: onlyLeveraged uses EXISTS conditions (fast) instead of CTE join

@@ -6,24 +6,100 @@ import { utils } from '../helpers/index.js';
 import { TM } from './tm.js';
 import { groupObjectsByNestedProps } from '../sharedFunctions.js';
 
+/**
+ * @typedef {import('../../index.js').TMStore} TMStore
+ * @typedef {import('../../index.js').TMStoreTOC} TMStoreTOC
+ * @typedef {import('../../index.js').JobPropsTusPair} JobPropsTusPair
+ * @typedef {import('../../index.js').Job} Job
+ * @typedef {import('../../index.js').DALManager} DALManager
+ * @typedef {import('../entities/tu.js').TU} TU
+ */
+
+/**
+ * TM Store information.
+ * @typedef {Object} TmStoreInfo
+ * @property {string} id - TM store identifier.
+ * @property {string} type - TM store class name.
+ * @property {string} access - Access permissions ('readwrite', 'readonly', 'writeonly').
+ * @property {string} partitioning - Partitioning strategy ('none', 'job', 'provider', 'language').
+ */
+
+/**
+ * Sync down options.
+ * @typedef {Object} SyncDownOptions
+ * @property {boolean} [dryrun] - If true, don't actually sync, just return stats.
+ * @property {string} [sourceLang] - Filter to specific source language.
+ * @property {string} [targetLang] - Filter to specific target language.
+ * @property {boolean} [deleteExtraJobs=false] - Delete local jobs not in remote store.
+ * @property {boolean} [eraseParentTmStore=false] - Clear parent TM store assignment.
+ * @property {string} [storeAlias=null] - Use alternative store ID for assignments.
+ * @property {number} [parallelism=4] - Number of parallel operations.
+ */
+
+/**
+ * Sync up options.
+ * @typedef {Object} SyncUpOptions
+ * @property {boolean} [dryrun] - If true, don't actually sync, just return stats.
+ * @property {string} [sourceLang] - Filter to specific source language.
+ * @property {string} [targetLang] - Filter to specific target language.
+ * @property {boolean} [deleteEmptyBlocks=false] - Delete blocks with no jobs.
+ * @property {boolean} [includeUnassigned=true] - Include jobs not assigned to any store.
+ * @property {boolean} [assignUnassigned=true] - Assign unassigned jobs to this store.
+ * @property {string} [storeAlias=null] - Use alternative store ID for assignments.
+ * @property {number} [parallelism=4] - Number of parallel operations.
+ */
+
+/**
+ * Sync down statistics for a language pair.
+ * @typedef {Object} SyncDownStats
+ * @property {string} sourceLang - Source language code.
+ * @property {string} targetLang - Target language code.
+ * @property {string[]} blocksToStore - Block IDs that need to be stored from remote.
+ * @property {string[]} jobsToDelete - Job GUIDs to delete locally.
+ */
+
+/**
+ * Sync up statistics for a language pair.
+ * @typedef {Object} SyncUpStats
+ * @property {string} sourceLang - Source language code.
+ * @property {string} targetLang - Target language code.
+ * @property {[string, string[]][]} blocksToUpdate - Block ID and job GUID pairs to update in remote.
+ * @property {string[]} jobsToUpdate - Job GUIDs to store in remote.
+ */
+
+/**
+ * Manages Translation Memory operations including job storage,
+ * TM queries, and synchronization with external TM stores.
+ */
 export default class TMManager {
     #DAL;
     #tmStores;
     #tmCache = new Map();
 
+    /**
+     * Creates a new TMManager instance.
+     * @param {DALManager} dal - Data Access Layer manager for database operations.
+     * @param {Record<string, TMStore>} [tmStores] - Map of TM store ID to TMStore instance.
+     */
     constructor(dal, tmStores) {
         this.#DAL = dal;
         this.#tmStores = tmStores ?? {};
     }
 
+    /**
+     * Initializes the TMManager and all configured TM stores.
+     * @param {import('../monsterManager/index.js').MonsterManager} mm - The MonsterManager instance.
+     * @returns {Promise<void>}
+     */
     // eslint-disable-next-line no-unused-vars
     async init(mm) {
-        for (const tmStore of Object.values(this.#tmStores)) {
-            typeof tmStore.init === 'function' && await tmStore.init(this);
-        }
         logVerbose`TMManager initialized`;
     }
 
+    /**
+     * Generates a unique job GUID (deterministic in regression mode).
+     * @returns {Promise<string>} A unique job identifier.
+     */
     async generateJobGuid() {
         if (getRegressionMode()) {
             const jobCount = await this.#DAL.job.getJobCount();
@@ -33,6 +109,12 @@ export default class TMManager {
         }
     }
 
+    /**
+     * Saves a TM block (iterator of jobs) to the database.
+     * @param {AsyncIterable<JobPropsTusPair>} tmBlockIterator - Iterator yielding job/TU pairs.
+     * @param {string} [tmStoreId] - TM store ID to associate with saved jobs.
+     * @returns {Promise<Object[]>} Array of saved job properties.
+     */
     async saveTmBlock(tmBlockIterator, tmStoreId) {
         const jobs = [];
         for await (const job of tmBlockIterator) {
@@ -42,7 +124,7 @@ export default class TMManager {
                     await this.#DAL.tu(jobProps.sourceLang, jobProps.targetLang).saveJob(jobProps, tus, tmStoreId);
                     jobs.push(jobProps);
                 } else {
-                    logVerbose`Ignoring empty job ${job.jobGuid}`;
+                    logVerbose`Ignoring empty job ${jobProps.jobGuid}`;
                 }
             } else {
                 logWarn`Received a nullish job while saving a TM block`;
@@ -51,6 +133,12 @@ export default class TMManager {
         return jobs;
     }
 
+    /**
+     * Gets a TM instance for a language pair (cached).
+     * @param {string} sourceLang - Source language code.
+     * @param {string} targetLang - Target language code.
+     * @returns {TM} The TM instance for querying translations.
+     */
     getTM(sourceLang, targetLang) {
         const key = `${sourceLang}#${targetLang}`;
         if (this.#tmCache.has(key)) {
@@ -62,6 +150,12 @@ export default class TMManager {
         }
     }
 
+    /**
+     * Gets a TM store by ID (case-insensitive lookup).
+     * @param {string} id - TM store identifier.
+     * @returns {TMStore} The TM store instance.
+     * @throws {Error} If the TM store is not found.
+     */
     getTmStore(id) {
         const fixedId = utils.fixCaseInsensitiveKey(this.#tmStores, id);
         if (fixedId) {
@@ -71,6 +165,11 @@ export default class TMManager {
         }
     }
 
+    /**
+     * Gets information about a TM store.
+     * @param {string} id - TM store identifier.
+     * @returns {TmStoreInfo} TM store information.
+     */
     getTmStoreInfo(id) {
         const tmStore = this.getTmStore(id);
         return {
@@ -81,14 +180,24 @@ export default class TMManager {
         };
     }
 
+    /**
+     * Gets tables of contents for all language pairs in a TM store.
+     * @param {TMStore} tmStore - The TM store to query.
+     * @param {number} [parallelism=8] - Number of parallel TOC fetches.
+     * @returns {Promise<Array<[string, string, Object]>>} Array of [sourceLang, targetLang, TOC] tuples.
+     */
     async getTmStoreTOCs(tmStore, parallelism = 8) {
         const queue = fastq.promise(async ([srcLang, tgtLang]) => tmStore.getTOC(srcLang, tgtLang), parallelism);
-        const pairs = await tmStore.getAvailableLangPairs(tmStore);
+        const pairs = await tmStore.getAvailableLangPairs();
         const tocPromises = pairs.map(pair => queue.push(pair));
         const tocs = await Promise.all(tocPromises);
         return pairs.map(([srcLang, tgtLang], index) => [ srcLang, tgtLang, tocs[index] ]);
     }
 
+    /**
+     * Gets the list of configured TM store IDs.
+     * @returns {string[]} Array of TM store identifiers.
+     */
     get tmStoreIds() {
         return Object.keys(this.#tmStores);
     }
@@ -144,6 +253,12 @@ export default class TMManager {
         }
     }
 
+    /**
+     * Synchronizes translations from a remote TM store to local database.
+     * @param {TMStore} tmStore - The TM store to sync from.
+     * @param {SyncDownOptions} options - Sync options.
+     * @returns {Promise<SyncDownStats[]>} Array of sync statistics per language pair.
+     */
     async syncDown(tmStore, { dryrun, sourceLang, targetLang, deleteExtraJobs = false, eraseParentTmStore = false, storeAlias = null, parallelism = 4 }) {
         logInfo`Preparing sync down for store ${tmStore.id} [deleteExtraJobs: ${deleteExtraJobs}, eraseParentTmStore: ${eraseParentTmStore}, parallelism: ${parallelism}, storeAlias: ${storeAlias}]`;
         const pairs = sourceLang && targetLang ? [ [ sourceLang, targetLang ] ] : await tmStore.getAvailableLangPairs();
@@ -255,6 +370,12 @@ export default class TMManager {
         });
     }
 
+    /**
+     * Synchronizes translations from local database to a remote TM store.
+     * @param {TMStore} tmStore - The TM store to sync to.
+     * @param {SyncUpOptions} options - Sync options.
+     * @returns {Promise<SyncUpStats[]>} Array of sync statistics per language pair.
+     */
     async syncUp(tmStore, { dryrun, sourceLang, targetLang, deleteEmptyBlocks = false, includeUnassigned = true, assignUnassigned = true, storeAlias = null, parallelism = 4 }) {
         logInfo`Preparing sync up for store ${tmStore.id} [deleteEmptyBlocks: ${deleteEmptyBlocks}, includeUnassigned: ${includeUnassigned}, parallelism: ${parallelism}]`;
         const pairs = sourceLang && targetLang ? [ [ sourceLang, targetLang ] ] : await this.getAvailableLangPairs();
@@ -276,36 +397,57 @@ export default class TMManager {
         return syncUpStats;
     }
 
+    /**
+     * Gets all available language pairs from the job database.
+     * @returns {Promise<Array<[string, string]>>} Array of [sourceLang, targetLang] pairs.
+     */
     async getAvailableLangPairs() {
         return await this.#DAL.job.getAvailableLangPairs();
     }
 
+    /**
+     * Gets TM statistics grouped by language pair.
+     * @returns {Promise<Object>} Statistics grouped by sourceLang -> targetLang.
+     */
     async getStats() {
         const rawStats = await this.#DAL.job.getStats();
         return groupObjectsByNestedProps(rawStats, [ 'sourceLang', 'targetLang' ]);
     }
 
+    /**
+     * Gets job table of contents for a language pair.
+     * @param {string} sourceLang - Source language code.
+     * @param {string} targetLang - Target language code.
+     * @returns {Promise<Object[]>} Array of job entries with metadata.
+     */
     async getJobTOCByLangPair(sourceLang, targetLang) {
         return await this.#DAL.job.getJobTOCByLangPair(sourceLang, targetLang);
     }
 
-    // async createJobManifest() {
-    //     return {
-    //         jobGuid: await this.generateJobGuid(),
-    //         status: 'created',
-    //     };
-    // }
-
+    /**
+     * Gets a job by GUID including its translation units.
+     * @param {string} jobGuid - Job identifier.
+     * @returns {Promise<Job|undefined>} The job with TUs, or undefined if not found.
+     */
     async getJob(jobGuid) {
         const jobRow = await this.#DAL.job.getJob(jobGuid);
         if (jobRow) {
-            const job = { ...jobRow, tus: await this.#DAL.tu(jobRow.sourceLang, jobRow.targetLang).getEntriesByJobGuid(jobGuid) };
-            const inflight = job.tus.filter(tu => tu.inflight).map(tu => tu.guid);
+            const tus = await this.#DAL.tu(jobRow.sourceLang, jobRow.targetLang).getEntriesByJobGuid(jobGuid);
+            const inflight = tus.filter(tu => tu.inflight).map(tu => tu.guid);
+
+            /** @type {import('../interfaces.js').Job} */
+            const job = { ...jobRow, tus };
             inflight.length > 0 && (job.inflight = inflight);
             return job;
         }
     }
 
+    /**
+     * Yields job properties and TUs for a list of job GUIDs.
+     * @param {string[]} jobGuids - Array of job identifiers.
+     * @yields {JobPropsTusPair} Job properties and TUs pair.
+     * @returns {AsyncGenerator<JobPropsTusPair>} Async generator of job/TU pairs.
+     */
     async *getJobPropsTusPair(jobGuids) {
         for (const jobGuid of jobGuids) {
             const jobProps = await this.#DAL.job.getJob(jobGuid);
@@ -314,13 +456,26 @@ export default class TMManager {
         }
     }
 
+    /**
+     * Yields all jobs for a language pair.
+     * @param {string} sourceLang - Source language code.
+     * @param {string} targetLang - Target language code.
+     * @yields {Job} Jobs with TUs.
+     * @returns {AsyncGenerator<Job>} Async generator of jobs.
+     */
     async *getAllJobs(sourceLang, targetLang) {
-        const allJobs = await this.#DAL.job.getJobTOCByLangPair(sourceLang, targetLang).map(e => e.jobGuid);
+        const allJobs = (await this.#DAL.job.getJobTOCByLangPair(sourceLang, targetLang)).map(e => e.jobGuid);
         for (const jobGuid of allJobs) {
             yield await this.getJob(jobGuid);
         }
     }
 
+    /**
+     * Deletes a job and all its translation units.
+     * @param {string} jobGuid - Job identifier to delete.
+     * @throws {Error} If the job does not exist.
+     * @returns {Promise<void>}
+     */
     async deleteJob(jobGuid) {
         const job = await this.#DAL.job.getJob(jobGuid);
         if (!job) {

@@ -1,7 +1,12 @@
 import { consoleLog } from '../l10nContext.js';
 
-export class tm_list {
-    static help = {
+/**
+ * CLI action for showing information about local TM and TM Stores.
+ * @type {import('../../index.js').L10nAction}
+ */
+export const tm_list = {
+    name: 'tm_list',
+    help: {
         description: 'show information about local TM and TM Stores.',
         arguments: [
             [ '[tmStore]', 'TM Store to list' ],
@@ -10,9 +15,9 @@ export class tm_list {
             [ '--detailed', 'show more details' ],
             [ '--parallelism <number>', 'number of parallel operations' ],
         ],
-    };
+    },
 
-    static async action(monsterManager, options) {
+    async action(monsterManager, options) {
         let tmStoreIds;
         if (options.tmStore) {
             tmStoreIds = [ options.tmStore ];
@@ -48,10 +53,10 @@ export class tm_list {
         } else {
             consoleLog`\nTM Stores:`;
             for (const tmStoreId of tmStoreIds) {
-                const tmStore = await monsterManager.tmm.getTmStore(tmStoreId);
+                const tmStore = await monsterManager.tmm.getTmStore(/** @type {string} */ (tmStoreId));
                 consoleLog`  ‣ ${tmStoreId}: ${tmStore.constructor.name} access: ${tmStore.access} partitioning: ${tmStore.partitioning}`;
                 if (options.detailed) {
-                    const tocs = await monsterManager.tmm.getTmStoreTOCs(tmStore, options.parallelism);
+                    const tocs = await monsterManager.tmm.getTmStoreTOCs(tmStore, /** @type {number | undefined} */ (options.parallelism));
                     for (const [ srcLang, tgtLang, toc ] of tocs) {
                         const blocks = Object.values(toc.blocks);
                         const jobs = blocks.reduce((acc, block) => acc + block.jobs.length, 0);
@@ -63,5 +68,5 @@ export class tm_list {
                 }
             }
         }
-    }
-}
+    },
+};

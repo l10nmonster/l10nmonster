@@ -3,21 +3,22 @@ import cors from 'cors';
 import path from 'path';
 import open from 'open';
 import os from 'os';
-import { readFileSync } from 'fs';
 import { setupInfoRoute } from './routes/info.js';
 import { setupStatusRoute } from './routes/status.js';
 import { setupChannelRoutes } from './routes/sources.js';
 import { setupTmRoutes } from './routes/tm.js';
 import { setupProviderRoute } from './routes/providers.js';
 import { setupDispatcherRoutes } from './routes/dispatcher.js';
-import { logVerbose, consoleLog } from '@l10nmonster/core';
+import { consoleLog, l10nMonsterVersion, l10nMonsterDescription } from '@l10nmonster/core';
 
-const serverPackage = JSON.parse(readFileSync(path.join(import.meta.dirname, 'package.json'), 'utf-8'));
-
-export default class ServeAction {
-    static extensions = {};
-    static name = 'serve';
-    static help = {
+/**
+ * CLI action for starting the L10n Monster server.
+ * @type {import('@l10nmonster/core').L10nAction & { extensions: Record<string, Function>, registerExtension: (name: string, routeMaker: Function) => void }}
+ */
+const ServeAction = {
+    extensions: {},
+    name: 'serve',
+    help: {
         description: 'starts the L10n Monster server.',
         options: [
             [ '--host <address>', 'hostname/IP to bind to and open in browser (default: all interfaces)' ],
@@ -25,13 +26,13 @@ export default class ServeAction {
             [ '--ui', 'also serve a web frontend' ],
             [ '--open', 'open browser with web frontend' ],
         ]
-    };
+    },
 
-    static registerExtension(name, routeMaker) {
-        ServeAction.extensions[name] = routeMaker;
-    }
+    registerExtension(name, routeMaker) {
+        this.extensions[name] = routeMaker;
+    },
 
-    static async action(mm, options) {
+    async action(mm, options) {
         const port = options.port ?? 9691;
         const host = options.host; // undefined means listen on all interfaces
         const app = express();
@@ -43,9 +44,9 @@ export default class ServeAction {
 
         // === API Routes ===
         const apiRouter = express.Router();
-    
+
         // Setup routes from separate files
-        setupInfoRoute(apiRouter, mm, serverPackage);
+        setupInfoRoute(apiRouter, mm, l10nMonsterVersion, l10nMonsterDescription);
         setupStatusRoute(apiRouter, mm);
         setupChannelRoutes(apiRouter, mm);
         setupTmRoutes(apiRouter, mm);
@@ -85,35 +86,35 @@ export default class ServeAction {
         if (host) {
             listenArgs.push(host);
         }
-        
+
         const server = app.listen(...listenArgs, async () => {
             const address = server.address();
-            
-            consoleLog`L10n Monster Server v${serverPackage.version} started 🚀\n`;
-            
+
+            consoleLog`L10n Monster Server v${l10nMonsterVersion} started 🚀\n`;
+
             // Handle Unix domain sockets (string) vs TCP sockets (AddressInfo)
             if (typeof address === 'string') {
                 consoleLog`  Listening on Unix socket:`;
                 consoleLog`  - ${address}`;
-                
+
                 if (options.open && options.ui) {
                     consoleLog`\n  ⚠️  Cannot open browser for Unix domain socket. Please access the server manually.`;
                 }
             } else {
                 const boundPort = address.port;
                 const boundAddress = address.address;
-                
+
                 consoleLog`  Available at:`;
-                
+
                 // Determine what URLs to show and what to open
                 let openHost = host || 'localhost'; // Default to localhost for opening
-                
+
                 // If listening on all interfaces (0.0.0.0 or ::)
                 if (!host || boundAddress === '0.0.0.0' || boundAddress === '::') {
                     // Show localhost first
                     consoleLog`  - http://localhost:${boundPort}`;
                     consoleLog`  - http://127.0.0.1:${boundPort}`;
-                    
+
                     // Get all network interfaces
                     const interfaces = os.networkInterfaces();
                     for (const [name, addresses] of Object.entries(interfaces)) {
@@ -128,13 +129,13 @@ export default class ServeAction {
                     // Specific address was bound
                     openHost = boundAddress; // Use the bound address for opening
                     consoleLog`  - http://${boundAddress}:${boundPort}`;
-                    
+
                     // Also show localhost if we bound to 127.0.0.1
                     if (boundAddress === '127.0.0.1') {
                         consoleLog`  - http://localhost:${boundPort}`;
                     }
                 }
-                
+
                 if (options.open) {
                     const openUrl = `http://${openHost}:${boundPort}`;
                     consoleLog``;
@@ -162,4 +163,6 @@ export default class ServeAction {
 
         return server;
     }
-}
+};
+
+export default ServeAction;

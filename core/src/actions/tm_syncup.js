@@ -1,7 +1,23 @@
 import { consoleLog, styleString } from '../l10nContext.js';
 
-export class tm_syncup {
-    static help = {
+/**
+ * @typedef {Object} TmSyncupOptions
+ * @property {string} tmStore - TM store ID
+ * @property {boolean} [commit] - Commit changes
+ * @property {boolean} [delete] - Delete empty blocks
+ * @property {boolean} [excludeUnassigned] - Exclude unassigned
+ * @property {string} [storeAlias] - Store alias
+ * @property {string} [lang] - Language pair
+ * @property {number} [parallelism] - Parallel operations
+ */
+
+/**
+ * CLI action for pushing local TM to TM Stores.
+ * @type {import('../../index.js').L10nAction}
+ */
+export const tm_syncup = {
+    name: 'tm_syncup',
+    help: {
         description: 'pushes local TM to TM Stores.',
         arguments: [
             [ '<tmStore>', 'id of the TM Store' ],
@@ -14,18 +30,19 @@ export class tm_syncup {
             [ '--lang <sourceLang,targetLang>', 'source and target language pair' ],
             [ '--parallelism <number>', 'number of parallel operations' ],
         ],
-    };
+    },
 
-    static async action(monsterManager, options) {
-        const dryrun = !options.commit;
-        const includeUnassigned = !options.excludeUnassigned;
-        const deleteEmptyBlocks = Boolean(options.delete);
-        const tmStore = await monsterManager.tmm.getTmStore(options.tmStore);
+    async action(monsterManager, options) {
+        const opts = /** @type {TmSyncupOptions} */ (options);
+        const dryrun = !opts.commit;
+        const includeUnassigned = !opts.excludeUnassigned;
+        const deleteEmptyBlocks = Boolean(opts.delete);
+        const tmStore = await monsterManager.tmm.getTmStore(opts.tmStore);
         if (tmStore.access === 'readonly') {
             throw new Error(`TM Store ${tmStore.id} is read-only!`);
         }
         let sourceLang, targetLang;
-        options.lang && ([ sourceLang, targetLang ] = options.lang.split(','));
+        opts.lang && ([ sourceLang, targetLang ] = opts.lang.split(','));
         consoleLog`Syncing up ${tmStore.id} store...`;
         const syncUpStats = await monsterManager.tmm.syncUp(tmStore, {
             dryrun,
@@ -34,8 +51,8 @@ export class tm_syncup {
             deleteEmptyBlocks,
             includeUnassigned,
             assignUnassigned: true,
-            storeAlias: options.storeAlias,
-            parallelism: options.parallelism,
+            storeAlias: opts.storeAlias,
+            parallelism: opts.parallelism,
         });
         let changes = false;
         for (const { sourceLang, targetLang, blocksToUpdate, jobsToUpdate } of syncUpStats) {
@@ -58,5 +75,5 @@ export class tm_syncup {
             consoleLog`Nothing to sync up with ${tmStore.id} store!`;
         }
         return { dryrun, deleteEmptyBlocks, syncUpStats };
-    }
-}
+    },
+};

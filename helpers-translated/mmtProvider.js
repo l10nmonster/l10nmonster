@@ -3,7 +3,6 @@ import { ModernMT as MMTClient } from 'modernmt';
 
 /**
  * @typedef {object} MMTProviderOptions
- * @extends ChunkedRemoteTranslationProviderOptions
  * @property {string} [id] - Global identifier (by default 'MMTBatch' or 'MMTRealtime')
  * @property {Promise<string>|string} apiKey - The ModernMT API key.
  * @property {string} [webhook] - The webhook URL for batch translation.
@@ -26,6 +25,7 @@ export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
      */
     constructor({ id, apiKey, webhook, chunkFetcher, hints, glossaries, ignoreGlossaryCase, multiline = true, ...options }) {
         id ??= webhook ? 'MMTBatch' : 'MMTRealtime';
+        // @ts-ignore - spread loses type info but parent class handles validation
         super({ id, ...options });
         if (webhook) {
             if (chunkFetcher) {
@@ -51,8 +51,11 @@ export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
         return {
             sourceLang,
             targetLang,
+            xmlTus,
+            jobGuid,
+            chunkNumber,
             q: xmlTus.map(xmlTu => xmlTu.source),
-            hints:this.baseRequest.hints,
+            hints: this.baseRequest.hints,
             contextVector: undefined,
             options: this.baseRequest.options,
             webhook: this.baseRequest.webhook,
@@ -67,7 +70,9 @@ export class MMTProvider extends providers.ChunkedRemoteTranslationProvider {
     async startTranslateChunk(args) {
         const { sourceLang, targetLang, q, hints, contextVector, options, webhook, batchOptions } = args;
         try {
-            const mmt = new MMTClient(await (typeof this.#apiKey === 'function' ? this.#apiKey() : this.#apiKey), 'l10n.monster/MMT', '3.0');
+            // @ts-ignore - apiKey can be a function or value, TypeScript doesn't narrow correctly
+            const resolvedKey = await (typeof this.#apiKey === 'function' ? this.#apiKey() : this.#apiKey);
+            const mmt = new MMTClient(resolvedKey, 'l10n.monster/MMT', '3.0');
             if (webhook) {
                 const response = await mmt.batchTranslate(webhook, sourceLang, targetLang, q, hints, contextVector, batchOptions);
                 return { enqueued: response };

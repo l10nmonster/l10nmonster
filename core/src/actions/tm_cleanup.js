@@ -1,8 +1,22 @@
 /* eslint-disable complexity */
 import { consoleLog } from '../l10nContext.js';
 
-export class tm_cleanup {
-    static help = {
+/**
+ * @typedef {Object} TmCleanupOptions
+ * @property {boolean} [commit] - Commit changes
+ * @property {string} [lang] - Language pair (srcLang,tgtLang)
+ * @property {boolean} [emptyJobs] - Delete empty jobs
+ * @property {number | string} [maxRank] - Max rank to keep
+ * @property {string | boolean} [quality] - Quality levels to delete
+ */
+
+/**
+ * CLI action for cleaning up local TM cache.
+ * @type {import('../../index.js').L10nAction}
+ */
+export const tm_cleanup = {
+    name: 'tm_cleanup',
+    help: {
         description: 'cleans up local TM cache.',
         options: [
             [ '--commit', 'commit making changes (dry-run by default)' ],
@@ -11,13 +25,14 @@ export class tm_cleanup {
             [ '--maxRank <number>', 'maximum number of competing translations to keep' ],
             [ '--quality [q1,q2,...]', 'quality levels to delete' ],
         ],
-    };
+    },
 
-    static async action(monsterManager, options) {
-        const dryrun = !options.commit;
+    async action(monsterManager, options) {
+        const opts = /** @type {TmCleanupOptions} */ (options);
+        const dryrun = !opts.commit;
         let pairs;
-        if (options.lang) {
-            pairs = [ options.lang.split(',') ];
+        if (opts.lang) {
+            pairs = [ opts.lang.split(',') ];
         } else {
             pairs = await monsterManager.tmm.getAvailableLangPairs();
         }
@@ -36,7 +51,7 @@ export class tm_cleanup {
             // Accumulate TU keys (guid, jobGuid tuples) to delete from various sources
             // Use Map with composite key for deduplication since tuples can't be compared by value in Set
             const tuKeysToDelete = new Map();
-            const maxRank = Number(options.maxRank);
+            const maxRank = Number(opts.maxRank);
 
             // Collect TU keys over maxRank
             if (maxRank > 0) {
@@ -49,7 +64,7 @@ export class tm_cleanup {
             }
 
             // Show quality distribution if --quality flag is provided without values
-            if (options.quality === true) {
+            if (opts.quality === true) {
                 const qualityDistribution = await tm.getQualityDistribution();
                 if (qualityDistribution.length > 0) {
                     stats[srcLang][tgtLang].qualityDistribution = qualityDistribution;
@@ -58,9 +73,9 @@ export class tm_cleanup {
                         consoleLog`     ${q}: ${count.toLocaleString()} ${[count, 'tu', 'tus']}`;
                     }
                 }
-            } else if (options.quality) {
+            } else if (opts.quality) {
                 // Collect TU keys by quality levels
-                const qualities = options.quality.split(',').map(Number);
+                const qualities = opts.quality.split(',').map(Number);
                 for (const quality of qualities) {
                     const tuKeys = await tm.tuKeysByQuality(quality);
                     tuKeys.forEach(([guid, jobGuid]) => tuKeysToDelete.set(`${guid}\0${jobGuid}`, [guid, jobGuid]));
@@ -87,7 +102,7 @@ export class tm_cleanup {
             }
 
             // Delete empty jobs (only when --emptyJobs is specified)
-            if (options.emptyJobs) {
+            if (opts.emptyJobs) {
                 const emptyJobs = await tm.deleteEmptyJobs(dryrun);
                 if (emptyJobs > 0) {
                     changes = true;
@@ -106,5 +121,5 @@ export class tm_cleanup {
             consoleLog`Nothing to cleanup!`;
         }
         return { dryrun, stats };
-    }
-}
+    },
+};

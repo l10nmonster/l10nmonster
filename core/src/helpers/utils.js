@@ -2,19 +2,54 @@ import { createHash } from 'crypto';
 import { logVerbose } from '../l10nContext.js';
 import { TU } from '../entities/tu.js';
 
+/**
+ * @typedef {import('../../index.js').NormalizedString} NormalizedString
+ * @typedef {import('../../index.js').Part} Part
+ * @typedef {import('../../index.js').PlaceholderPart} PlaceholderPart
+ * @typedef {import('../../index.js').JobProps} JobProps
+ * @typedef {import('../../index.js').Job} Job
+ * @typedef {import('../../index.js').StructuredNotes} StructuredNotes
+ */
+
+/**
+ * Placeholder map returned by flatten functions.
+ * Maps mangled placeholder names to their full placeholder objects with v1 property.
+ * @typedef {Object<string, PlaceholderPart>} PlaceholderMap
+ */
+
+/**
+ * TU maps for translation provider communication.
+ * @typedef {Object} TUMaps
+ * @property {Object<string, string>} contentMap - Map of GUID to flattened source string.
+ * @property {Object<string, Object>} tuMeta - Map of GUID to placeholder metadata.
+ * @property {Object<string, string>} phNotes - Map of GUID to formatted placeholder notes.
+ */
+
+/**
+ * Generates a URL-safe base64 GUID from a string using SHA-256.
+ * @param {string} str - Input string to hash.
+ * @returns {string} A 43-character URL-safe base64 hash.
+ */
 export function generateGuid(str) {
     const sidContentHash = createHash('sha256');
     sidContentHash.update(str, 'utf8');
     return sidContentHash.digest().toString('base64').substring(0, 43).replaceAll('+', '-').replaceAll('/', '_');
 }
 
+/**
+ * Consolidates decoded parts, merging adjacent string parts.
+ * @param {Part[]} parts - Array of decoded parts.
+ * @param {import('../interfaces.js').EncodeFlags} flags - Flags object to collect decoder flags.
+ * @param {boolean} [convertToString] - Whether to convert string parts to plain strings.
+ * @returns {Part[]} Consolidated array of parts.
+ */
 export function consolidateDecodedParts(parts, flags, convertToString) {
     const consolidatedParts = [];
     let accumulatedString = '';
     for (const part of parts) {
-        if (part.t === 's' || typeof part === 'string') {
+        if (typeof part === 'string' || part.t === 's') {
             accumulatedString += typeof part === 'string' ? part : part.v;
-            part.flag && (flags[part.flag] = true);
+            (typeof part !== 'string' && part.flag) && (flags[part.flag] = true);
         } else {
             if (accumulatedString.length > 0) {
                 consolidatedParts.push(convertToString ? accumulatedString : { t: 's', v: accumulatedString });
@@ -29,6 +64,13 @@ export function consolidateDecodedParts(parts, flags, convertToString) {
     return consolidatedParts;
 }
 
+/**
+ * Decodes a normalized string through a pipeline of decoders.
+ * @param {Part[]} nstr - Initial normalized string parts.
+ * @param {import('../../index.js').DecoderFunction[]} decoderList - Array of decoder functions.
+ * @param {import('../interfaces.js').EncodeFlags} [flags] - Flags object for decoder state.
+ * @returns {NormalizedString} Fully decoded normalized string.
+ */
 export function decodeNormalizedString(nstr, decoderList, flags = {}) {
     if (decoderList) {
         for (const decoder of decoderList) {
@@ -38,24 +80,42 @@ export function decodeNormalizedString(nstr, decoderList, flags = {}) {
     return consolidateDecodedParts(nstr, flags, true);
 }
 
+/**
+ * Converts a raw string to a normalized string using decoders.
+ * @param {string} str - Raw input string.
+ * @param {import('../../index.js').DecoderFunction[]} decoderList - Array of decoder functions.
+ * @param {import('../interfaces.js').EncodeFlags} [flags] - Flags object for decoder state.
+ * @returns {NormalizedString} Normalized string (array of parts).
+ */
 export function getNormalizedString(str, decoderList, flags = {}) {
     return decoderList ? decodeNormalizedString([ { t: 's', v: str } ], decoderList, flags) : [ str ];
 }
 
+/**
+ * Converts a normalized source to a flat string with placeholder types only.
+ * @param {NormalizedString} nsrc - Normalized source string.
+ * @returns {string} Flattened string with {{type}} placeholders.
+ */
 export function flattenNormalizedSourceToOrdinal(nsrc) {
     return nsrc.map(e => (typeof e === 'string' ? e : `{{${e.t}}}`)).join('');
 }
 
-// takes a normalized source and converts it to a flat string using the "v1" algorithm
-// v1 encodes placeholders in a `{{${mangledPh}}}` format where mangledPh has 3
-// components separated by "_":
-//   1. an index "a" to "zX" (where X is an integer)
-//   2. the placeholder type (bx=beginning tag, ex=end tag, x=value)
-//   3. a human-readable contraction of the original raw placeholder name
-// it returns the flattened string and corresponding map to convert back to normalized array
+/**
+ * Flattens a normalized source to a string using the V1 placeholder algorithm.
+ *
+ * V1 encodes placeholders as `{{mangledPh}}` where mangledPh has 3 parts:
+ * 1. An index ("a" to "y", then "z1", "z2", ...)
+ * 2. The placeholder type (bx=beginning tag, ex=end tag, x=value)
+ * 3. A human-readable contraction of the original placeholder name
+ *
+ * @param {NormalizedString} nsrc - Normalized source string.
+ * @returns {[string, PlaceholderMap]} Tuple of [flattened string, placeholder map].
+ */
 export function flattenNormalizedSourceV1(nsrc) {
-    const normalizedStr = [],
-        phMap = {};
+    const normalizedStr = [];
+
+    /** @type {PlaceholderMap} */
+    const phMap = {};
     let phIdx = 0;
     for (const part of nsrc) {
         if (typeof part === 'string') {
@@ -74,10 +134,14 @@ export function flattenNormalizedSourceV1(nsrc) {
     return [ normalizedStr.join(''), phMap ];
 }
 
-// takes a flat string using the "v1" algorithm (usually a translation) and a ph map
-// and converts it to a normalized string
-// placeholders in the resulting normalized string contain an extra "v1" property that
-// allows to better validate and determine compatibility with textual matches (repetitions)
+/**
+ * Extracts normalized parts from a V1-flattened string using a placeholder map.
+ * Placeholders in the result contain a "v1" property for compatibility matching.
+ *
+ * @param {string} str - V1-flattened string (usually a translation).
+ * @param {PlaceholderMap} phMap - Placeholder map from flattenNormalizedSourceV1.
+ * @returns {NormalizedString} Reconstructed normalized string.
+ */
 export function extractNormalizedPartsV1(str, phMap) {
     const normalizedParts = [];
     let pos = 0;
@@ -98,10 +162,15 @@ export function extractNormalizedPartsV1(str, phMap) {
     return normalizedParts;
 }
 
-// analogous to flattenNormalizedSourceV1 but using xml-compatible placeholders
+/**
+ * Flattens a normalized source to XML-compatible string with placeholder map.
+ * Analogous to flattenNormalizedSourceV1 but using xml-compatible placeholders.
+ * @param {NormalizedString} nsrc - Normalized source string.
+ * @returns {[string, PlaceholderMap]} Tuple of flattened string and placeholder map.
+ */
 export function flattenNormalizedSourceToXmlV1(nsrc) {
     const normalizedStr = [],
-        phMap = {};
+        phMap = /** @type {Record<string, PlaceholderPart>} */ ({});
     let phIdx = 0,
         nestingLevel = 0,
         openTagShorthand = [];
@@ -146,7 +215,13 @@ const cleanXMLEntities = str => str.replaceAll('&lt;', '<')
     .replaceAll('&nbsp;', '\xa0')
     .replaceAll('&amp;', '&'); // make sure to replace &amp; last to avoid double unescaping
 
-// analogous to extractNormalizedPartsV1 but using xml-compatible placeholders
+/**
+ * Extracts normalized parts from an XML-format string.
+ * Analogous to extractNormalizedPartsV1 but using xml-compatible placeholders.
+ * @param {string} str - XML-formatted translation string.
+ * @param {PlaceholderMap} phMap - Placeholder map from flattenNormalizedSourceToXmlV1.
+ * @returns {NormalizedString} Normalized parts array.
+ */
 export function extractNormalizedPartsFromXmlV1(str, phMap) {
     const normalizedParts = [];
     let pos = 0;
@@ -191,8 +266,14 @@ export function extractNormalizedPartsFromXmlV1(str, phMap) {
 // last part of a v1 mangled placeholder
 const minifyV1PH = v1ph => v1ph && v1ph.split('_').slice(0, -1).join('_');
 
-// returns a functions that given a placeholder in a translation it tells if matches a placeholder
-// in the given source using either v1-based compatibility or straight literal match
+/**
+ * Creates a placeholder matcher function for a normalized source.
+ * The matcher checks if a placeholder in a translation matches one in the source
+ * using either V1-based compatibility or literal value match.
+ *
+ * @param {NormalizedString} nsrc - Normalized source string.
+ * @returns {function(PlaceholderPart): PlaceholderPart|undefined} Matcher function.
+ */
 export function phMatcherMaker(nsrc) {
     const phMap = flattenNormalizedSourceV1(nsrc)[1];
     const v1PhMap = Object.fromEntries(Object.entries(phMap).map(([k, v]) => [minifyV1PH(k), v]));
@@ -202,7 +283,14 @@ export function phMatcherMaker(nsrc) {
     }
 }
 
-// compares compatibility of placeholders in source and target and returns a boolean
+/**
+ * Checks if source and target normalized strings have compatible placeholders.
+ * Returns true if all target placeholders match a source placeholder.
+ *
+ * @param {NormalizedString} nsrc - Normalized source string.
+ * @param {NormalizedString} ntgt - Normalized target string.
+ * @returns {boolean} True if placeholders are compatible.
+ */
 export function sourceAndTargetAreCompatible(nsrc, ntgt) {
     if (Array.isArray(nsrc) && Array.isArray(ntgt)) {
         const phMatcher = phMatcherMaker(nsrc);
@@ -228,14 +316,32 @@ function flattenNormalizedSourceToMiniV1(nsrc) {
     return nsrc.map(e => (typeof e === 'string' ? e : `{{${e.v1 ? minifyV1PH(e.v1) : e.v}}}`)).join('');
 }
 
-// compares normalized strings assuming placeholders are equal if they are compatible
+/**
+ * Compares normalized strings assuming placeholders are equal if they are compatible.
+ * @param {NormalizedString} s1 - First normalized string.
+ * @param {NormalizedString} s2 - Second normalized string.
+ * @returns {boolean} True if strings are equal.
+ */
 export function normalizedStringsAreEqual(s1, s2) {
     return flattenNormalizedSourceToMiniV1(s1) === flattenNormalizedSourceToMiniV1(s2);
 }
 
+/**
+ * Creates content maps, metadata, and placeholder notes from translation units.
+ * Used for preparing TUs for translation providers.
+ *
+ * @param {import('../entities/tu.js').TU[]} tus - Array of translation units.
+ * @returns {TUMaps} Object containing contentMap, tuMeta, and phNotes.
+ */
 export function getTUMaps(tus) {
+
+    /** @type {Record<string, string>} */
     const contentMap = {};
+
+    /** @type {Record<string, Object>} */
     const tuMeta = {};
+
+    /** @type {Record<string, string>} */
     const phNotes = {};
     for (const tu of tus) {
         const guid = tu.guid;
@@ -243,7 +349,7 @@ export function getTUMaps(tus) {
         contentMap[guid] = normalizedStr;
         if (Object.keys(phMap).length > 0) {
             tuMeta[guid] = { phMap, nsrc: tu.nsrc };
-            const sourcePhNotes = tu?.notes?.ph ?? {};
+            const sourcePhNotes = (typeof tu?.notes === 'object' ? tu.notes?.ph : undefined) ?? {};
             phNotes[guid] = Object.entries(phMap)
                 .reduce((p, c, i) => `${p}\n  ${String.fromCodePoint(9312 + i)}  ${c[0]} → ${c[1].v}${c[1].s === undefined ? '' : ` → ${c[1].s}`}${sourcePhNotes[c[1].v]?.sample ? ` → ${sourcePhNotes[c[1].v]?.sample}` : ''}${sourcePhNotes[c[1].v]?.desc ? `   (${sourcePhNotes[c[1].v].desc})` : ''}`, '\n ph:')
                 .replaceAll('<', 'ᐸ')
@@ -259,6 +365,14 @@ export function getTUMaps(tus) {
 }
 
 const notesAnnotationRegex = /(?:PH\((?<phName>(?:[^()|]+|[^(|]*\([^()|]*\)[^()|]*))(?:\|(?<phSample>[^)|]+))(?:\|(?<phDesc>[^)|]+))?\)|MAXWIDTH\((?<maxWidth>\d+)\)|SCREENSHOT\((?<screenshot>[^)]+)\)|TAG\((?<tags>[^)]+)\))/g;
+
+/**
+ * Extracts structured notes from a description string.
+ * Parses annotations like PH(), MAXWIDTH(), SCREENSHOT(), TAG().
+ *
+ * @param {string} notes - Raw notes string with annotations.
+ * @returns {StructuredNotes} Parsed structured notes object.
+ */
 export function extractStructuredNotes(notes) {
     const sNotes = {};
     const cleanDesc = notes.replaceAll(notesAnnotationRegex, (match, phName, phSample, phDesc, maxWidth, screenshot, tags) => {
@@ -285,6 +399,13 @@ export function extractStructuredNotes(notes) {
 // this encoding tries to minimize confusion especially when rendered small in devices without copy&paste (e.g. mobile apps)
 // 01OI removed because they can be mistaken and lowercase also removed as if this is indexed it may be case-insensitive
 const base32Chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+
+/**
+ * Converts an integer to a base32-like label for display.
+ * Uses a reduced character set to avoid confusion on small screens.
+ * @param {number} int - The integer to convert.
+ * @returns {string} The label string.
+ */
 export function integerToLabel(int) {
     const label = [];
     while (int > 0) {
@@ -294,20 +415,32 @@ export function integerToLabel(int) {
     return label.join('');
 }
 
-// https://stackoverflow.com/questions/12484386/access-javascript-property-case-insensitively
+/**
+ * Finds the actual key in an object using case-insensitive matching.
+ * @param {Record<string, unknown>} object - The object to search.
+ * @param {string} key - The key to find (case-insensitive).
+ * @returns {string | undefined} The actual key if found, undefined otherwise.
+ */
 export function fixCaseInsensitiveKey(object, key) {
     const asLowercase = key.toLowerCase();
     return Object.keys(object).find(k => k.toLowerCase() === asLowercase);
 }
 
-export function *getIteratorFromJobPair(jobRequest, jobResponse = {}) {
+/**
+ * Iterates over job request/response pairs, splitting by jobGuid.
+ * @param {Job} [jobRequest] - The original job request with TUs.
+ * @param {Job} [jobResponse] - The job response with translations.
+ * @yields {{ jobProps: JobProps, tus: TU[] }} Job properties and TUs grouped by jobGuid.
+ */
+export function *getIteratorFromJobPair(jobRequest, jobResponse = /** @type {Job} */ ({})) {
     const requestedUnits = jobRequest?.tus ? Object.fromEntries(jobRequest.tus.map(tu => [ tu.guid, tu])) : {};
     const { inflight, tus, ...jobProps } = jobResponse;
     // because of tm exports we need to split by jobGuid and yield each group.
+    /** @type {Record<string, { jobProps: JobProps, tus: TU[] }>} */
     const splitJobs = {};
     if (inflight) {
         for (const guid of inflight) {
-            const reqEntry = requestedUnits[guid] ?? {};
+            const reqEntry = requestedUnits[guid] ?? /** @type {Partial<TU>} */ ({});
             const { jobGuid, translationProvider, ...tuProps } = reqEntry;
             const overriddenJobProps = { ...jobProps };
             overriddenJobProps.jobGuid ??= jobGuid;

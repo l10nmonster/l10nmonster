@@ -1,11 +1,22 @@
 import { decoderMaker, encoderMaker } from './regex.js';
 
+/**
+ * @typedef {import('../../index.js').Part} Part
+ * @typedef {import('../../index.js').DecoderFunction} DecoderFunction
+ * @typedef {import('../../index.js').EncodeFlags} EncodeFlags
+ */
+
 // Decoders
 
-// Generic wrapper to rename a decoder
+/**
+ * Creates a renamed decoder wrapper.
+ * @param {string} name - The new name for the decoder.
+ * @param {DecoderFunction} decoder - The decoder function to wrap.
+ * @returns {DecoderFunction} A decoder with the new name.
+ */
 export function namedDecoder(name, decoder) {
     const fn = function namedDecoder(parts) {
-        return decoder(parts).map(p => (p.flag === decoder.name ? { ...p, flag: name } : p));
+        return decoder(parts).map(p => (typeof p !== 'string' && p.flag === decoder.name ? { ...p, flag: name } : p));
     }
     Object.defineProperty(fn, 'name', { value: name });
     return fn;
@@ -19,7 +30,12 @@ export const doublePercentDecoder = decoderMaker(
 
 // Encoders
 
-// Generic flag-based encoder execution
+/**
+ * Creates a flag-gated encoder that only runs when specified flags are set.
+ * @param {import('../../index.js').TextEncoderFunction} encoder - The encoder function.
+ * @param {...string} flagNames - Flag names to check (prefix with ! to negate).
+ * @returns {import('../../index.js').TextEncoderFunction} A gated encoder function.
+ */
 export function gatedEncoder(encoder, ...flagNames) {
     const fn = function gatedEncoder(str, flags = {}) {
         const run = flagNames.reduce((run, flag) => run || (flag.charAt(0) === '!' ? !flags[flag.substring(1)] : flags[flag]), false);
@@ -40,6 +56,12 @@ export const bracePHDecoder = decoderMaker(
     (groups) => ({ t: 'x', v: groups.x })
 );
 
+/**
+ * Creates a decoder/encoder pair for keyword translation.
+ * @param {string} name - Name for the decoder/encoder.
+ * @param {Record<string, string | Record<string, string>>} keywordToTranslationMap - Map of keywords to translations.
+ * @returns {[DecoderFunction, import('../../index.js').TextEncoderFunction]} A decoder and encoder pair.
+ */
 export function keywordTranslatorMaker(name, keywordToTranslationMap) {
     if (keywordToTranslationMap && Object.keys(keywordToTranslationMap).length > 0) {
         const decoder = decoderMaker(
@@ -61,6 +83,20 @@ export function keywordTranslatorMaker(name, keywordToTranslationMap) {
     }
 }
 
+/**
+ * Default code encoder - returns the placeholder's value or passes through string.
+ * @param {import('../../index.js').PlaceholderPart | string} part - The placeholder part or string.
+ * @returns {string} The placeholder value or the string.
+ */
 export function defaultCodeEncoder(part) {
-    return part.v;
+    return typeof part === 'string' ? part : part.v;
+}
+
+/**
+ * Default text encoder - returns the text unchanged (identity function).
+ * @param {string} text - The text to encode.
+ * @returns {string} The same text.
+ */
+export function defaultTextEncoder(text) {
+    return text;
 }

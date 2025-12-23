@@ -4,8 +4,11 @@
     "description": "L10n Monster Core Module",
     "type": "module",
     "main": "index.js",
+    "types": "./types/index.d.ts",
     "scripts": {
-        "test": "node --test"
+        "test": "node --test",
+        "typecheck": "tsc --noEmit",
+        "build:types": "rm -rf types && tsc --checkJs false && cp src/interfaces.d.ts types/src/ && dts-bundle-generator --external-imports \"\" --no-check --export-referenced-types=false -o types/index.d.ts types/index.d.ts && rm -rf types/src"
     },
     "author": "Diego Lagunas",
     "license": "MIT",
@@ -24,7 +27,10 @@
         "winston-transport": "^4.7.1"
     },
     "devDependencies": {
+        "@types/node": "^25.0.3",
         "cldr-core": "^48.0.0",
-        "eslint": "^9"
+        "dts-bundle-generator": "^9.5.1",
+        "eslint": "^9",
+        "typescript": "^5"
     }
 }

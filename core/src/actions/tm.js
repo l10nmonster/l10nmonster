@@ -4,10 +4,14 @@ import { tm_list } from './tm_list.js';
 import { tm_export } from './tm_export.js';
 import { tm_cleanup } from './tm_cleanup.js';
 
-export class tm {
-    static help = {
+/**
+ * CLI action for various operations on translation memories.
+ * @type {import('../../index.js').L10nAction}
+ */
+export const tm = {
+    name: 'tm',
+    help: {
         description: 'various operations on translation memories.',
-    };
-
-    static subActions = [ tm_syncup, tm_syncdown, tm_list, tm_export, tm_cleanup ];
-}
+    },
+    subActions: [ tm_syncup, tm_syncdown, tm_list, tm_export, tm_cleanup ],
+};

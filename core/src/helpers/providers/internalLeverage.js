@@ -2,6 +2,11 @@ import { utils } from '../index.js';
 import { BaseTranslationProvider } from './baseTranslationProvider.js';
 
 /**
+ * @typedef {import('../../interfaces.js').Job} Job
+ * @typedef {import('../../interfaces.js').TU} TUType
+ */
+
+/**
  * @deprecated Use Repetition provider with holdInternalLeverage: true instead.
  * This provider prevents sending identical sources for translation and holds them back for internal leverage later.
  */
@@ -11,7 +16,7 @@ export class InternalLeverageHoldout extends BaseTranslationProvider {
      * Initializes a new instance of the InternalLeverageHoldout class.
      * @param {Object} [options] - The parameters for the constructor.
      * @param {string} [options.id] - Global identifier for the provider.
-     * @param {Object} [options.supportedPairs] - Supported pairs for the provider.
+     * @param {Record<string, string[]>} [options.supportedPairs] - Supported pairs for the provider.
      * @deprecated Use Repetition provider with holdInternalLeverage: true instead.
      */
     constructor(options = {}) {
@@ -23,6 +28,11 @@ export class InternalLeverageHoldout extends BaseTranslationProvider {
         console.warn('InternalLeverageHoldout is deprecated. Use Repetition with holdInternalLeverage: true and expectedQuality option instead.');
     }
 
+    /**
+     * Gets TUs that should be held out for internal leverage.
+     * @param {Job} job - The job to process.
+     * @returns {Promise<TUType[]>} Array of TUs to hold for internal leverage.
+     */
     async getAcceptedTus(job) {
         const gstrMap = {};
         const holdout = [];
@@ -49,6 +59,10 @@ export class InternalLeverageHoldout extends BaseTranslationProvider {
         return holdout;
     }
 
+    /**
+     * Returns empty array to release held TUs.
+     * @returns {Promise<TUType[]>} Empty array.
+     */
     async getTranslatedTus() {
         return []; // release held tus
     }

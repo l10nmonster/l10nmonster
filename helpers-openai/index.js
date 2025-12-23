@@ -14,7 +14,6 @@ const TranslatorAnnotation = z.object({
 
 /**
  * @typedef {object} GPTAgentOptions
- * @extends LLMTranslationProviderOptions
  * @property {string} [baseURL] - The base URL (https://api.openai.com by default)
  * @property {Promise<string>|string} [apiKey] - The LLM provder API key (if needed).
  * @property {string} [reasoningEffort] - The reasoning effort level: "none", "low", "medium", or "high"
@@ -34,6 +33,7 @@ export class GPTAgent extends providers.LLMTranslationProvider {
      * @param {GPTAgentOptions} options - Configuration options for the provider.
      */
     constructor({ baseURL, apiKey, reasoningEffort, ...options }) {
+        // @ts-ignore - spread loses type info but parent class handles validation
         super(options);
         this.#baseURL = baseURL;
         this.#apiKey = apiKey ?? '';
@@ -53,14 +53,16 @@ export class GPTAgent extends providers.LLMTranslationProvider {
         if (this.#openai) {
             return;
         }
+        // @ts-ignore - apiKey can be a function or value, TypeScript doesn't narrow correctly
+        const resolvedKey = await (typeof this.#apiKey === 'function' ? this.#apiKey() : this.#apiKey);
         this.#openai = new OpenAI({
-            apiKey: await (typeof this.#apiKey === 'function' ? this.#apiKey() : this.#apiKey),
+            apiKey: resolvedKey,
             baseURL: this.#baseURL,
         });
         logInfo`GPTAgent ${this.id} initialized with url: ${this.#baseURL} model: ${this.model}`;
     }
 
-    prepareTranslateChunkArgs({ sourceLang, targetLang, xmlTus, instructions }) {
+    prepareTranslateChunkArgs({ sourceLang, targetLang, xmlTus, jobGuid, chunkNumber, instructions }) {
         const userPrompt = this.buildUserPrompt({ sourceLang, targetLang, xmlTus, instructions });
         const args = {
             model: this.model,
@@ -69,16 +71,16 @@ export class GPTAgent extends providers.LLMTranslationProvider {
               { role: 'system', content: this.systemPrompt },
               { role: 'user', content: userPrompt },
             ],
-            // eslint-disable-next-line camelcase
+             
+            // @ts-ignore - zod version mismatch between openai and local zod
             response_format: zodResponseFormat(this.customSchema ?? TranslatorAnnotation, 'translations'),
         };
         
         if (this.#reasoningEffort) {
-            // eslint-disable-next-line camelcase
             args.reasoning_effort = this.#reasoningEffort;
         }
-        
-        return args;
+
+        return { ...args, sourceLang, targetLang, xmlTus, jobGuid, chunkNumber };
     }
 
     async generateContent(args) {

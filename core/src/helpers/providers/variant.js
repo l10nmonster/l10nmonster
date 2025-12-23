@@ -1,14 +1,19 @@
 import { getRegressionMode } from '../../l10nContext.js';
 import { BaseTranslationProvider } from './baseTranslationProvider.js';
 
+/**
+ * @typedef {import('../../interfaces.js').Job} Job
+ * @typedef {import('../../interfaces.js').TU} TU
+ */
+
 const wordMatcher = /\p{L}+/gu;
 
 /**
  * Configuration options for initializing a LanguageVariantProvider.
- * @typedef {Object} LanguageVariantProviderOptions
- * @extends BaseTranslationProviderOptions
- * @propoert {string} baseLang - Language code for the base language.
- * @propoert {Object<string, string>} dict - Supported pairs for the provider.
+ * @typedef {import('./baseTranslationProvider.js').BaseTranslationProviderOptions & {
+ *   baseLang: string,
+ *   dict: Object<string, string>
+ * }} LanguageVariantProviderOptions
  */
 
 /**
@@ -54,6 +59,11 @@ export class LanguageVariantProvider extends BaseTranslationProvider {
         return str.replace(wordMatcher, word => this.#translateWord(word));
     }
 
+    /**
+     * Gets translated TUs with language variant substitutions.
+     * @param {Job} job - The job with TUs.
+     * @returns {Promise<TU[]>} Translated TUs with variant substitutions.
+     */
     async getTranslatedTus(job) {
         let translations;
         if (this.#baseLang !== job.sourceLang) {

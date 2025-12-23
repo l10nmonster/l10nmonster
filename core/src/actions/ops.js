@@ -4,10 +4,14 @@ import { ops_view } from './opsView.js';
 import { ops_update } from './opsUpdate.js';
 import { ops_delete } from './opsDelete.js';
 
-export class ops {
-    static help = {
+/**
+ * CLI action for various operations on jobs.
+ * @type {import('../../index.js').L10nAction}
+ */
+export const ops = {
+    name: 'ops',
+    help: {
         description: 'various operations on jobs.',
-    };
-
-    static subActions = [ ops_jobs, ops_providers, ops_view, ops_update, ops_delete ];
-}
+    },
+    subActions: [ ops_jobs, ops_providers, ops_view, ops_update, ops_delete ],
+};

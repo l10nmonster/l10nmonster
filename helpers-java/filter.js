@@ -1,6 +1,13 @@
 import { parseToEntries, stringifyFromEntries } from '@js.properties/properties';
 
+/** @typedef {import('@l10nmonster/core').ResourceFilter} ResourceFilter */
+
+/**
+ * Filter for Java .properties files.
+ * @implements {ResourceFilter}
+ */
 export default class JavaPropertiesFilter {
+
     /**
      * @param {Object} [params] - Configuration options
      * @param {boolean} [params.enablePluralizationSuffixes=false] - Enable detection of plural forms via key suffixes (_one, _other, etc.)

@@ -57,14 +57,12 @@ export class McpProviderError extends McpToolError {
 
 /**
  * Base class for MCP tools that call underlying MonsterManager functions directly.
- * 
+ *
  * MCP tools are separate from CLI actions and:
  * - Return structured data (not console output)
  * - Have MCP-optimized schemas (not CLI-optimized)
  * - Call underlying MonsterManager methods directly
- * 
  */
-
 export class McpTool {
 
     /**

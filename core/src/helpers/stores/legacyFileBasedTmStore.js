@@ -1,29 +1,40 @@
 import { logVerbose, logWarn } from '../../l10nContext.js';
 import { utils } from '../index.js';
 
+/**
+ * @typedef {import('../../interfaces.js').TMStore} _TMStore
+ * @typedef {import('../../interfaces.js').FileStoreDelegate} _FileStoreDelegate
+ * @typedef {import('../../interfaces.js').TMStoreTOC} TMStoreTOC
+ * @typedef {import('../../interfaces.js').JobPropsTusPair} JobPropsTusPair
+ */
+
 const statusPriority = { done: 1, pending: 2, req: 3 };
 const legacyJobFilenameRegex = /(?<jobNameStub>[^/]+(?<translationProvider>[^_]+)_(?<sourceLang>[^_]+)_(?<targetLang>[^_]+)_job_(?<jobGuid>[0-9A-Za-z_-]+))-(?<status>req|pending|done)\.json$/;
 
 /**
  * Adapter class to expose legacy job-based file stores as TM stores.
  * This class handles TM Blocks organized in legacy job files with status suffixes (req, pending, done).
- *
- * @class LegacyFileBasedTmStore
- * @property {string} partitioning - Determines how TM Blocks are partitioned ('job', 'provider', or 'language')
- *
- * @example
- * const store = new LegacyFileBasedTmStore({ delegate: fileDelegate, id: 'myStore', parallelism: 3 });
+ * @implements {_TMStore}
  */
 export class LegacyFileBasedTmStore {
+
+    /** @type {string} */
     id;
+
+    /** @type {number} */
     parallelism;
+
+    /** @type {_FileStoreDelegate} */
+    delegate;
 
     #files;
 
+    /** @type {'readonly'} */
     get access() {
         return 'readonly';
     }
 
+    /** @type {'job'} */
     get partitioning() {
         return 'job';
     }
@@ -31,7 +42,7 @@ export class LegacyFileBasedTmStore {
     /**
      * Creates a LegacyFileBasedTmStore instance
      * @param {Object} options - Configuration options
-     * @param {Object} options.delegate - Required file store delegate implementing file operations
+     * @param {_FileStoreDelegate} options.delegate - Required file store delegate implementing file operations
      * @param {string} options.id - Required unique identifier for the store
      * @param {number} [options.parallelism=1] - Number of blocks to fetch in parallel
      * @throws {Error} If no delegate or id is provided
@@ -53,6 +64,10 @@ export class LegacyFileBasedTmStore {
         return this.#files;
     }
 
+    /**
+     * Gets available language pairs in the store.
+     * @returns {Promise<Array<[string, string]>>} Array of [sourceLang, targetLang] tuples.
+     */
     async getAvailableLangPairs() {
         const pairs = {};
         await this.delegate.ensureBaseDirExists();
@@ -84,6 +99,12 @@ export class LegacyFileBasedTmStore {
         return Object.entries(handleMap).map(([ jobNameStub, handle ]) => [ jobNameStub, handle.jobGuid, handle.modifiedAt ]);
     }
 
+    /**
+     * Lists all TM blocks for a language pair.
+     * @param {string} sourceLang - Source language code.
+     * @param {string} targetLang - Target language code.
+     * @returns {Promise<Array<[string, string]>>} Array of [blockName, modified] tuples.
+     */
     async listAllTmBlocks(sourceLang, targetLang) {
         // eslint-disable-next-line no-unused-vars
         return (await this.#listAllTmBlocksExtended(sourceLang, targetLang)).map(([ blockName, jobGuid, modified ]) => [ blockName, modified ]);
@@ -116,6 +137,13 @@ export class LegacyFileBasedTmStore {
         return [ jobRequest, jobResponse ];
     }
 
+    /**
+     * Gets TM blocks by their IDs.
+     * @param {string} sourceLang - Source language code.
+     * @param {string} targetLang - Target language code.
+     * @param {string[]} blockIds - Array of block IDs to retrieve.
+     * @returns {AsyncGenerator<JobPropsTusPair>} AsyncGenerator yielding job objects with TUs.
+     */
     async *getTmBlocks(sourceLang, targetLang, blockIds) {
         const toc = await this.getTOC(sourceLang, targetLang);
         
@@ -144,12 +172,21 @@ export class LegacyFileBasedTmStore {
         }
     }
 
+    /**
+     * Gets the table of contents for a language pair.
+     * @param {string} sourceLang - Source language code.
+     * @param {string} targetLang - Target language code.
+     * @returns {Promise<TMStoreTOC>} TOC object with block metadata.
+     */
     async getTOC(sourceLang, targetLang) {
-        const toc = { v: 1, sourceLang, targetLang, blocks: {} };
+
+        /** @type {{ v: number; sourceLang: string; targetLang: string; blocks: Record<string, import('../../interfaces.js').TMStoreBlock>; storedBlocks: Array<[string, string]> }} */
+        const toc = { v: 1, sourceLang, targetLang, blocks: {}, storedBlocks: [] };
         for (const [ blockName, jobGuid, modified ] of await this.#listAllTmBlocksExtended(sourceLang, targetLang)) {
             // we don't have the job.updatedAt timestamp, so we leave it undefined
             // the consquence is that we can't sync-down the store but can only import the whole thing
-            toc.blocks[jobGuid] = { blockName, modified, jobs: [ [ jobGuid ] ] };
+            toc.blocks[jobGuid] = { blockName, modified, jobs: [ /** @type {[string, string]} */ ([ jobGuid, '' ]) ] };
+            toc.storedBlocks.push([ jobGuid, blockName ]);
         }
         return toc;
     }

@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 if [ "$#" -ne 3 ]; then
-    echo "Usage: $0 <cli|js> <local|npm> <all|regression_case>"
+    echo "Usage: $0 <cli|js> <local|npm|kitchensink> <all|regression_case>"
     exit 1
 fi
 
@@ -13,31 +13,41 @@ run_regression() {
     script_type=$1
     monster_location=$2
     case=$3
-    echo "\nTesting $case..."
+    local start_ms=$(($(date +%s%N)/1000000))
+    echo -n "Testing $case... "
     cd ../wd
     cp -pr ../mint/$case .
     cd $case/l10nmonster
     if [[ $monster_location == "npm" ]]; then
         cp ../../../package-npm.json ./package.json
+    elif [[ $monster_location == "kitchensink" ]]; then
+        cp ../../../package-kitchensink.json ./package.json
+        # Use kitchensink config if it exists
+        if [[ -f "l10nmonster.config.kitchensink.mjs" ]]; then
+            cp l10nmonster.config.kitchensink.mjs l10nmonster.config.mjs
+        fi
     else
         cp ../../../package-local.json ./package.json
     fi
-    echo "Installing npm dependencies..."
-    npm i --no-package-lock
-    npm ls
+    # Install deps, suppress stdout
+    npm i --no-package-lock > /dev/null 2>&1
+    # Run regression script, suppress stdout
     if [[ $script_type == "cli" ]]; then
-        time zsh regressionScript.zsh
+        zsh regressionScript.zsh > /dev/null
     else
-        time node regressionScript.mjs
+        node regressionScript.mjs > /dev/null
     fi
 
-    echo "\nDiffing working dir vs. expected..."
+    # Diff working dir vs. expected
     rm -rf node_modules
     rm l10nmonster* package.json regressionScript.*
     cd ../..
     find $case -name '.DS_Store' -type f -delete
     find $case -name '.gitkeep' -type f -delete
     diff -qr $case ../expected/$case --exclude='.gitkeep'
+    local end_ms=$(($(date +%s%N)/1000000))
+    local elapsed=$((end_ms - start_ms))
+    echo "ok (${elapsed}ms)"
 }
 
 # Enable error exit - exit immediately if any command fails
@@ -46,6 +56,10 @@ find expected -name '.DS_Store' -type f -delete
 rm -rf wd
 mkdir wd
 
+# Track total time
+SECONDS=0
+
+echo "=== Running $script_type $monster_location tests ==="
 cd mint
 if [[ $cases == "all" ]]; then
     for case in *; do
@@ -55,4 +69,4 @@ else
     run_regression $script_type $monster_location $cases
 fi
 
-echo "Regression test completed successfully (error code $?)"
+echo "\nCompleted in ${SECONDS}s"

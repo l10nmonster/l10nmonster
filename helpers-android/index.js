@@ -5,6 +5,8 @@ const androidControlCharsToDecode = {
     n: '\n',
     t: '\t',
 };
+
+/** @type {import('@l10nmonster/core').DecoderFunction} */
 export const escapesDecoder = regex.decoderMaker(
     'androidEscapesDecoder',
     /(?<node>\\(?<escapedChar>[@?\\'"])|\\(?<escapedControl>[nt])|\\u(?<codePoint>[0-9A-Za-z]{4}))/g,
@@ -16,7 +18,10 @@ export const escapesDecoder = regex.decoderMaker(
     )
 );
 
-// Android lint doesn't accept % but accepts %%.  % should be replaced with '\u0025' but %% shouldn't
+/**
+ * Android lint doesn't accept % but accepts %%.  % should be replaced with '\u0025' but %% shouldn't
+ * @type {import('@l10nmonster/core').TextEncoderFunction}
+ */
 export const escapesEncoder = (str, flags = {}) => {
     let escapedStr = str.replaceAll(/[@\\'"]/g, '\\$&').replaceAll('\t', '\\t').replaceAll('\n', '\\n').replaceAll(/(?<!%)%(?!%)/g, '\\u0025');
     // eslint-disable-next-line prefer-template
@@ -26,9 +31,14 @@ export const escapesEncoder = (str, flags = {}) => {
     return escapedStr;
 };
 
+/** @type {import('@l10nmonster/core').PartTransformer} */
+// @ts-ignore - Part union type narrowing not supported by TypeScript in this pattern
 export const spaceCollapser = (parts) => parts.map(p => (p.t === 's' ? { ...p, v: p.v.replaceAll(/[ \f\n\r\t\v\u2028\u2029]+/g, ' ')} : p));
 
-// C-style placeholders (based on the ios one)
+/**
+ * C-style placeholders (based on the ios one)
+ * @type {import('@l10nmonster/core').DecoderFunction}
+ */
 export const phDecoder = regex.decoderMaker(
     'iosPHDecoder',
     /(?<tag>%(?:\d\$)?[0#+-]?[0-9*]*\.?\d*[hl]{0,2}[jztL]?[diuoxXeEfgGaAcpsSn])/g,

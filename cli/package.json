@@ -15,7 +15,8 @@
         "translation-files"
     ],
     "scripts": {
-        "test": "node --test"
+        "test": "node --test",
+        "typecheck": "tsc --noEmit"
     },
     "author": "Diego Lagunas",
     "license": "MIT",

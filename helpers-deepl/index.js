@@ -3,7 +3,6 @@ import { DeepLClient } from 'deepl-node';
 
 /**
  * @typedef {object} DeepLProviderOptions
- * @extends ChunkedRemoteTranslationProviderOptions
  * @property {Promise<string>|string} authKey - The DeepL API key. This is required.
  * @property {Record<string, string[]>} [formalityMap] - Optional map from language to desired formality (less, more, default, prefer_less, prefer_more).
  * @property {string} [modelType] - Specifies the type of translation model to use (quality_optimized, prefer_quality_optimized, latency_optimized).
@@ -22,6 +21,7 @@ export class DeepLProvider extends providers.ChunkedRemoteTranslationProvider {
      * @param {DeepLProviderOptions} options - Configuration options for the provider.
      */
     constructor({ authKey, formalityMap, modelType, ...options }) {
+        // @ts-ignore - spread loses type info but parent class handles validation
         super(options);
         this.#authKey = authKey;
         this.#formalityMap = formalityMap;
@@ -29,10 +29,12 @@ export class DeepLProvider extends providers.ChunkedRemoteTranslationProvider {
     }
 
     async #getClient() {
-        return new DeepLClient(await (typeof this.#authKey === 'function' ? this.#authKey() : this.#authKey));
+        // @ts-ignore - authKey can be a function or value, TypeScript doesn't narrow correctly
+        const resolvedKey = await (typeof this.#authKey === 'function' ? this.#authKey() : this.#authKey);
+        return new DeepLClient(resolvedKey);
     }
 
-    prepareTranslateChunkArgs({ sourceLang, targetLang, xmlTus, instructions }) {
+    prepareTranslateChunkArgs({ sourceLang, targetLang, xmlTus, jobGuid, chunkNumber, instructions }) {
         const payload = xmlTus.map(xmlTu => xmlTu.source);
         const options = {
             tagHandling: 'xml',
@@ -42,7 +44,7 @@ export class DeepLProvider extends providers.ChunkedRemoteTranslationProvider {
         if (this.defaultInstructions || instructions) {
             options.context = `${this.defaultInstructions ?? ''}\n${instructions}`;
         }
-        return { payload, sourceLang, targetLang, options };
+        return { payload, sourceLang, targetLang, xmlTus, jobGuid, chunkNumber, options };
     }
 
     async startTranslateChunk(args) {

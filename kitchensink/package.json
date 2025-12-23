@@ -1,0 +1,128 @@
+{
+    "name": "l10nmonster",
+    "version": "3.1.0",
+    "description": "L10n Monster - Complete localization toolkit with all helpers",
+    "type": "module",
+    "main": "src/index.js",
+    "types": "src/index.d.ts",
+    "bin": {
+        "l10n": "src/cli.js"
+    },
+    "scripts": {
+        "generate:types": "node scripts/generate-types.js",
+        "prepublishOnly": "npm run generate:types"
+    },
+    "exports": {
+        ".": {
+            "types": "./src/index.d.ts",
+            "default": "./src/index.js"
+        },
+        "./android": {
+            "types": "./src/android.d.ts",
+            "default": "./src/android.js"
+        },
+        "./ios": {
+            "types": "./src/ios.d.ts",
+            "default": "./src/ios.js"
+        },
+        "./java": {
+            "types": "./src/java.d.ts",
+            "default": "./src/java.js"
+        },
+        "./html": {
+            "types": "./src/html.d.ts",
+            "default": "./src/html.js"
+        },
+        "./json": {
+            "types": "./src/json.d.ts",
+            "default": "./src/json.js"
+        },
+        "./po": {
+            "types": "./src/po.d.ts",
+            "default": "./src/po.js"
+        },
+        "./xliff": {
+            "types": "./src/xliff.d.ts",
+            "default": "./src/xliff.js"
+        },
+        "./demo": {
+            "types": "./src/demo.d.ts",
+            "default": "./src/demo.js"
+        },
+        "./openai": {
+            "types": "./src/openai.d.ts",
+            "default": "./src/openai.js"
+        },
+        "./anthropic": {
+            "types": "./src/anthropic.d.ts",
+            "default": "./src/anthropic.js"
+        },
+        "./deepl": {
+            "types": "./src/deepl.d.ts",
+            "default": "./src/deepl.js"
+        },
+        "./googlecloud": {
+            "types": "./src/googlecloud.d.ts",
+            "default": "./src/googlecloud.js"
+        },
+        "./translated": {
+            "types": "./src/translated.d.ts",
+            "default": "./src/translated.js"
+        },
+        "./lqaboss": {
+            "types": "./src/lqaboss.d.ts",
+            "default": "./src/lqaboss.js"
+        },
+        "./server": {
+            "types": "./src/server.d.ts",
+            "default": "./src/server.js"
+        },
+        "./mcp": {
+            "types": "./src/mcp.d.ts",
+            "default": "./src/mcp.js"
+        },
+        "./config-mancer": {
+            "types": "./src/config-mancer.d.ts",
+            "default": "./src/config-mancer.js"
+        }
+    },
+    "keywords": [
+        "translation",
+        "localization",
+        "l10n",
+        "i18n",
+        "globalization",
+        "translation-memory",
+        "tms"
+    ],
+    "author": "Diego Lagunas",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/l10nmonster/l10nmonster/issues"
+    },
+    "homepage": "https://github.com/l10nmonster/l10nmonster#readme",
+    "engines": {
+        "node": ">=22.11.0"
+    },
+    "dependencies": {
+        "@l10nmonster/cli": "3.1.0",
+        "@l10nmonster/config-mancer": "3.1.0",
+        "@l10nmonster/core": "3.1.0",
+        "@l10nmonster/helpers-android": "3.0.1",
+        "@l10nmonster/helpers-anthropic": "3.1.0",
+        "@l10nmonster/helpers-deepl": "3.1.0",
+        "@l10nmonster/helpers-demo": "3.1.0",
+        "@l10nmonster/helpers-googlecloud": "3.1.0",
+        "@l10nmonster/helpers-html": "3.0.1",
+        "@l10nmonster/helpers-ios": "3.0.1",
+        "@l10nmonster/helpers-java": "3.0.1",
+        "@l10nmonster/helpers-json": "3.0.1",
+        "@l10nmonster/helpers-lqaboss": "3.1.0",
+        "@l10nmonster/helpers-openai": "3.1.0",
+        "@l10nmonster/helpers-po": "3.0.1",
+        "@l10nmonster/helpers-translated": "3.1.0",
+        "@l10nmonster/helpers-xliff": "3.0.1",
+        "@l10nmonster/mcp": "3.1.0",
+        "@l10nmonster/server": "3.1.0"
+    }
+}

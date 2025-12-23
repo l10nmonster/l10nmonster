@@ -200,14 +200,6 @@ suite('mrmrs.html file tests', () => {
         const resource = fs.readFileSync(resourceId, 'utf8');
         const result = await resourceFilter.parseResource({ resource });
         
-        // Find segments containing radio button labels
-        const radioSegments = result.segments.filter(segment => 
-            segment.str.includes('Label 1') || 
-            segment.str.includes('Label 2') || 
-            segment.str.includes('Label 3')
-        );
-        
-        
         // Check that Label 1 appears correctly and not duplicated
         const label1Segments = result.segments.filter(segment => segment.str.includes('Label 1'));
         
@@ -232,12 +224,10 @@ suite('mrmrs.html file tests', () => {
         const result = await resourceFilter.parseResource({ resource });
         
         // Find segments containing form elements
-        const formSegments = result.segments.filter(segment => 
-            segment.str.includes('input') || 
+        const formSegments = result.segments.filter(segment => segment.str.includes('input') || 
             segment.str.includes('Legend Example') ||
             segment.str.includes('Text Input Label') ||
-            segment.str.includes('Radio Buttons')
-        );
+            segment.str.includes('Radio Buttons'));
         
         
         assert.ok(formSegments.length > 0, 'Should find form-related content');
@@ -330,16 +320,12 @@ suite('mrmrs.html file tests', () => {
         const result = await resourceFilter.parseResource({ resource });
         
         // Verify that DNT content is not in any segments
-        const dntContentInSegments = result.segments.some(segment => 
-            segment.str.includes('sudo ipfw pipe')
-        );
+        const dntContentInSegments = result.segments.some(segment => segment.str.includes('sudo ipfw pipe'));
         
         assert.ok(!dntContentInSegments, 'DNT content should not appear in any segments');
         
         // Should have segments for the translatable paragraphs
-        const hasTranslatableParagraphs = result.segments.some(segment => 
-            segment.str.includes('This should be translated')
-        );
+        const hasTranslatableParagraphs = result.segments.some(segment => segment.str.includes('This should be translated'));
         assert.ok(hasTranslatableParagraphs, 'Should have translatable paragraph content');
         
         // Should have exactly 2 segments (the two paragraphs)

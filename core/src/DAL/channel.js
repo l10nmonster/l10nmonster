@@ -1,5 +1,4 @@
 import { logVerbose, logError } from '../l10nContext.js';
-import { utils } from '../helpers/index.js';
 import { createSQLObjectTransformer } from './index.js';
 
 const sqlTransformer = createSQLObjectTransformer(['targetLangs', 'plan', 'subresources', 'resProps', 'nstr', 'notes', 'segProps'], ['resProps', 'segProps']);
@@ -81,6 +80,9 @@ export class ChannelDAL {
         this.#createSegmentTable(this.segmentsTable);
     }
 
+    /**
+     * @param {{ store?: string; ts: number; resources: number; segments: number }} meta
+     */
     async #saveChannelMeta({ store, ts, resources, segments }) {
         this.#stmt.saveChannelMeta ??= this.#db.prepare(/* sql */`
             INSERT INTO channel_toc (channel, store, ts, resources, segments)
@@ -95,6 +97,10 @@ export class ChannelDAL {
         this.#stmt.saveChannelMeta.run({ channel: this.channelId, store, ts, resources, segments });
     }
 
+    /**
+     * Gets channel metadata from the table of contents.
+     * @returns {Promise<import('../interfaces.js').ChannelTocRow | undefined>} Channel metadata or undefined if not found.
+     */
     async getChannelMeta() {
         this.#stmt.getChannelMeta ??= this.#db.prepare(/* sql */`
             SELECT * FROM channel_toc WHERE channel = ?;
@@ -102,6 +108,12 @@ export class ChannelDAL {
         return this.#stmt.getChannelMeta.get(this.channelId);
     }
 
+    /**
+     * Saves channel data by building temporary tables and atomically swapping them.
+     * @param {import('../interfaces.js').ChannelMeta} meta - Channel metadata including timestamp and optional snap store ID.
+     * @param {(handlers: { saveResource: Function, insertResourceRow: Function, insertSegmentRow: Function }) => Promise<void>} cb - Callback function that receives save handlers.
+     * @returns {Promise<{ resources: number, segments: number }>} Statistics about saved resources and segments.
+     */
     async saveChannel(meta, cb) {
         const stats = { resources: 0, segments: 0 };
         const tempResourcesTable = `temp_${this.resourcesTable}`;
@@ -152,7 +164,6 @@ export class ChannelDAL {
                 modifiedAt: modified,
             }));
             segments.forEach((segment, segOrder) => {
-                // eslint-disable-next-line no-unused-vars
                 const { guid, sid, nstr, notes, mf, plan, group, ...segProps } = segment;
                 const plainText = nstr.map(e => (typeof e === 'string' ? e : '')).join('');
                 insertSegmentRow(sqlTransformer.encode({

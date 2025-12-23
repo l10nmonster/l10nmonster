@@ -1,19 +1,22 @@
 import { utils } from '@l10nmonster/core';
 
+/** @typedef {import('@l10nmonster/core').TMStore} TMStore */
+
 /**
  * Adapter class to expose LQABoss completion files as a TM store.
- *
- * @class LQABossTmStore
+ * @implements {TMStore}
  */
 export class LQABossTmStore {
     id;
     #storageDelegate;
     #tm;
 
+    /** @type {'readonly'} */
     get access() {
         return 'readonly';
     }
 
+    /** @type {'job'} */
     get partitioning() {
         return 'job';
     }
@@ -56,8 +59,13 @@ export class LQABossTmStore {
         return this.#tm;
     }
 
+    /**
+     * @returns {Promise<[string, string][]>}
+     */
     async getAvailableLangPairs() {
         const tm = await this.#getTM();
+
+        /** @type {[string, string][]} */
         const pairs = [];
         for (const [ sourceLang, targets ] of Object.entries(tm)) {
             for (const targetLang of Object.keys(targets)) {
@@ -73,21 +81,34 @@ export class LQABossTmStore {
         return Object.entries(blocks).map(([ jobGuid, job ]) => [ jobGuid, job.updatedAt ]);
     }
 
+    /**
+     * @param {string} sourceLang
+     * @param {string} targetLang
+     * @param {string[]} blockIds
+     * @returns {AsyncGenerator<import('@l10nmonster/core').JobPropsTusPair>}
+     */
     async *getTmBlocks(sourceLang, targetLang, blockIds) {
         const tm = await this.#getTM();
         const blocks = tm[sourceLang]?.[targetLang] ?? {};
         for (const jobGuid of blockIds) {
             const job = blocks[jobGuid];
             if (job) {
+                // @ts-ignore - type inference issue with TU properties
                 yield* utils.getIteratorFromJobPair(job, job);
             }
         }
     }
 
+    /**
+     * @param {string} sourceLang
+     * @param {string} targetLang
+     * @returns {Promise<import('@l10nmonster/core').TMStoreTOC>}
+     */
     async getTOC(sourceLang, targetLang) {
         const tm = await this.#getTM();
         const blocks = tm[sourceLang]?.[targetLang] ?? {};
-        const toc = { v: 1, sourceLang, targetLang, blocks: {} };
+        /** @type {import('@l10nmonster/core').TMStoreTOC} */
+        const toc = { v: 1, sourceLang, targetLang, blocks: {}, storedBlocks: [] };
         for (const [ jobGuid, job ] of Object.entries(blocks)) {
             toc.blocks[jobGuid] = { blockName: jobGuid, modified: job.updatedAt, jobs: [ [ jobGuid, job.updatedAt ] ] };
         }

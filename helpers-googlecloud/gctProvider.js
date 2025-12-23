@@ -4,7 +4,6 @@ import { providers, styleString } from '@l10nmonster/core';
 
 /**
  * @typedef {object} GCTProviderOptions
- * @extends ChunkedRemoteTranslationProviderOptions
  * @property {string} [projectId] - The GCP Project ID.
  * @property {string} [location] - GCP datacenter location (global by default).
  * @property {string} [model] - The model to use for translation ("nmt" by default or "llm")
@@ -27,9 +26,11 @@ export class GCTProvider extends providers.ChunkedRemoteTranslationProvider {
      * @param {GCTProviderOptions} options - Configuration options for the provider.
      */
     constructor({ projectId, location, model, ...options }) {
+        // @ts-ignore - spread loses type info but quality is validated at runtime
         if (!options.quality) {
             throw new Error('You must specify quality for GCTProvider');
         }
+        // @ts-ignore - spread loses type info but parent class handles validation
         super(options);
         this.#projectId = projectId;
         this.#location = location;
@@ -68,7 +69,7 @@ export class GCTProvider extends providers.ChunkedRemoteTranslationProvider {
         return super.start(job);
     }
 
-    prepareTranslateChunkArgs({ sourceLang, targetLang, xmlTus }) {
+    prepareTranslateChunkArgs({ sourceLang, targetLang, xmlTus, jobGuid, chunkNumber }) {
         return {
             parent: this.#parentPath,
             contents: xmlTus.map(xmlTu => xmlTu.source),
@@ -76,6 +77,11 @@ export class GCTProvider extends providers.ChunkedRemoteTranslationProvider {
             sourceLanguageCode: sourceLang,
             targetLanguageCode: targetLang,
             model: this.#modelPath,
+            sourceLang,
+            targetLang,
+            xmlTus,
+            jobGuid,
+            chunkNumber,
         };
     }
 

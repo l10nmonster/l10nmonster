@@ -2,6 +2,11 @@
 import { getRegressionMode } from '../../l10nContext.js';
 import { BaseTranslationProvider } from './baseTranslationProvider.js';
 
+/**
+ * @typedef {import('../../interfaces.js').Job} Job
+ * @typedef {import('../../interfaces.js').TU} TU
+ */
+
 const base = 0xFE00;
 const encoder = new TextEncoder();
 
@@ -24,11 +29,11 @@ function utf8ToFE00Range(input) {
 
 /**
  * Configuration options for initializing a InvisicodeProvider.
- * @typedef {Object} InvisicodeProviderOptions
- * @extends BaseTranslationProviderOptions
- * @property {string|function(string): string} [baseLang] - language code for the base language (source if not specified), or a function that takes targetLang and returns the base language code
- * @property {boolean} [fallback] - if true, fall back to source if translation is missing
- * @property {boolean} [includeQ] - if true, include quality score in the output
+ * @typedef {import('./baseTranslationProvider.js').BaseTranslationProviderOptions & {
+ *   baseLang?: string|((lang: string) => string),
+ *   fallback?: boolean,
+ *   includeQ?: boolean
+ * }} InvisicodeProviderOptions
  */
 
 /**
@@ -56,6 +61,11 @@ export class InvisicodeProvider extends BaseTranslationProvider {
         this.#includeQ = Boolean(includeQ);
     }
 
+    /**
+     * Gets translated TUs wrapped in Invisicode.
+     * @param {Job} job - The job with TUs.
+     * @returns {Promise<TU[]>} Translated TUs with Invisicode wrapping.
+     */
     async getTranslatedTus(job) {
         // Resolve baseLang - can be a string or a function that takes targetLang
         const resolvedBaseLang = typeof this.#baseLang === 'function' ?

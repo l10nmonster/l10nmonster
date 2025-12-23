@@ -13,17 +13,23 @@ export class GCSStoreDelegate {
         return `GCSStoreDelegate(bucketName=${this.bucketName}, bucketPrefix=${this.bucketPrefix})`;
     }
 
+    /**
+     * @returns {Promise<Array<[string, string]>>}
+     */
     async listAllFiles() {
         this.bucket || (this.bucket = await this.storage.bucket(this.bucketName));
         const prefix = this.bucketPrefix === '' ?
-            '' : 
+            '' :
             (this.bucketPrefix.endsWith('/') ? this.bucketPrefix : `${this.bucketPrefix}/`);
         const [ files ] = await this.bucket.getFiles({ prefix });
-        const filenamesWithModified = files.map(f => [ f.name.replace(prefix, ''), f.generation ]);
+
+        /** @type {Array<[string, string]>} */
+        const filenamesWithModified = files.map(f => [ f.name.replace(prefix, ''), String(f.generation) ]);
         return filenamesWithModified;
     }
 
     async ensureBaseDirExists() {
+        return undefined;
     }
 
     async getFile(filename) {
@@ -43,6 +49,8 @@ export class GCSStoreDelegate {
         this.bucket || (this.bucket = await this.storage.bucket(this.bucketName));
         const file = this.bucket.file(`${this.bucketPrefix}/${filename}`);
         await file.save(contents);
+        const [metadata] = await file.getMetadata();
+        return getRegressionMode() ? 'TS1' : String(metadata.generation);
     }
 
     async saveStream(filename, readable, deleteEmptyFiles = false) {
@@ -50,15 +58,13 @@ export class GCSStoreDelegate {
         this.bucket || (this.bucket = await this.storage.bucket(this.bucketName));
         const file = this.bucket.file(`${this.bucketPrefix}/${filename}`);
         await pipeline(readable, file.createWriteStream());
-        if (deleteEmptyFiles) {
-            const [metadata] = await file.getMetadata();
-            if (metadata.size === '0') { // metadata.size is a string!
-                logVerbose`GCSStoreDelegate: deleting empty file ${filename}`;
-                await file.delete();
-                return null;
-            }
+        const [metadata] = await file.getMetadata();
+        if (deleteEmptyFiles && metadata.size === '0') { // metadata.size is a string!
+            logVerbose`GCSStoreDelegate: deleting empty file ${filename}`;
+            await file.delete();
+            return null;
         }
-        return getRegressionMode() ? 'TS1' : filename.generation;
+        return getRegressionMode() ? 'TS1' : String(metadata.generation);
     }
 
     async deleteFiles(filenames) {

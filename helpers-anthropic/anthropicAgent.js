@@ -2,7 +2,7 @@ import { AnthropicVertex } from '@anthropic-ai/vertex-sdk';
 import Anthropic from '@anthropic-ai/sdk';
 import { GoogleAuth } from 'google-auth-library';
 
-import { logInfo, logWarn, providers, styleString } from '../core/index.js';
+import { logInfo, logWarn, providers, styleString } from '@l10nmonster/core';
 
 const TRANSLATION_TOOL = {
     name: 'provide_translations',
@@ -29,11 +29,11 @@ const TRANSLATION_TOOL = {
 
 /**
  * @typedef {object} AnthropicAgentOptions
- * @extends LLMTranslationProviderOptions
  * @property {Promise<string>|string} [apiKey] - The Anthropic API key (if using direct API).
  * @property {string} [vertexProject] - The VertexAI project ID.
  * @property {string} [vertexLocation] - The VertexAI datacenter location.
  * @property {number} [maxTokens] - Maximum number of output tokens (32000 by default)
+ * @property {number} [maxRetries] - Maximum number of retries (2 by default)
  */
 
 /**
@@ -52,6 +52,7 @@ export class AnthropicAgent extends providers.LLMTranslationProvider {
      * @param {AnthropicAgentOptions} options - Configuration options for the provider.
      */
     constructor({ apiKey, vertexProject, vertexLocation, maxTokens, maxRetries, ...options }) {
+        // @ts-ignore - spread loses type info but parent class handles validation
         super({...options, maxRetries: 0}); // bypass our own retry logic since Anthropic SDK has built-in support
         this.#apiKey = apiKey;
         this.#vertexProject = vertexProject;
@@ -68,8 +69,10 @@ export class AnthropicAgent extends providers.LLMTranslationProvider {
         }
         if (this.#apiKey) {
             // Direct Anthropic API
+            // @ts-ignore - apiKey can be a function or value, TypeScript doesn't narrow correctly
+            const resolvedKey = await (typeof this.#apiKey === 'function' ? this.#apiKey() : this.#apiKey);
             this.#client = new Anthropic({
-                apiKey: await (typeof this.#apiKey === 'function' ? this.#apiKey() : this.#apiKey),
+                apiKey: resolvedKey,
                 maxRetries: this.#maxRetries,
                 timeout: 15 * 60000, // 15 minutes
             });
@@ -93,7 +96,7 @@ export class AnthropicAgent extends providers.LLMTranslationProvider {
         }
     }
 
-    prepareTranslateChunkArgs({ sourceLang, targetLang, xmlTus, instructions }) {
+    prepareTranslateChunkArgs({ sourceLang, targetLang, xmlTus, jobGuid, chunkNumber, instructions }) {
         const userPrompt = this.buildUserPrompt({ sourceLang, targetLang, xmlTus, instructions });
         
         const messages = [
@@ -103,7 +106,8 @@ export class AnthropicAgent extends providers.LLMTranslationProvider {
             }
         ];
 
-        const toolConfig = this.customSchema ? {
+        const toolConfig = this.customSchema ?
+{
             tools: [{
                 name: 'provide_custom_translations',
                 description: 'Provide translations using custom schema',
@@ -119,7 +123,8 @@ export class AnthropicAgent extends providers.LLMTranslationProvider {
                 }
             }],
             tool_choice: { type: 'tool', name: 'provide_custom_translations' }
-        } : {
+        } :
+{
             tools: [TRANSLATION_TOOL],
             tool_choice: { type: 'tool', name: 'provide_translations' }
         };
@@ -130,7 +135,12 @@ export class AnthropicAgent extends providers.LLMTranslationProvider {
             temperature: this.temperature,
             system: this.systemPrompt,
             messages,
-            ...toolConfig
+            ...toolConfig,
+            sourceLang,
+            targetLang,
+            xmlTus,
+            jobGuid,
+            chunkNumber,
         };
     }
 

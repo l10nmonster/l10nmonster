@@ -1,8 +1,21 @@
 import { consoleLog } from '../l10nContext.js';
 import { FsJsonlTmStore } from '../helpers/stores/fsTmStores.js';
 
-export class tm_export {
-    static help = {
+/**
+ * @typedef {Object} TmExportOptions
+ * @property {string} jobsDir - Directory to export to
+ * @property {'job' | 'provider' | 'language'} [partitioning] - Partitioning mode
+ * @property {string} [lang] - Language pair (srcLang,tgtLang)
+ * @property {string} [storeAlias] - TM store alias
+ */
+
+/**
+ * CLI action for exporting jobs to jsonl files.
+ * @type {import('../../index.js').L10nAction}
+ */
+export const tm_export = {
+    name: 'tm_export',
+    help: {
         description: 'exports jobs to jsonl files.',
         arguments: [
             [ '<jobsDir>', 'directory to export jobs to' ],
@@ -12,21 +25,22 @@ export class tm_export {
             [ '--lang <srcLang,tgtLang>', 'source and target language pair' ],
             [ '--storeAlias <id>', 'alias of the TM Store to export' ],
         ],
-    };
+    },
 
-    static async action(monsterManager, options) {
+    async action(monsterManager, options) {
+        const opts = /** @type {TmExportOptions} */ (options);
         let sourceLang, targetLang;
-        options.lang && ([ sourceLang, targetLang ] = options.lang.split(','));
+        opts.lang && ([ sourceLang, targetLang ] = opts.lang.split(','));
         const tmStore = new FsJsonlTmStore({
             id: 'tmexport',
-            jobsDir: options.jobsDir,
-            partitioning: options.partitioning ?? 'language',
+            jobsDir: opts.jobsDir,
+            partitioning: opts.partitioning ?? 'language',
         });
         const syncUpStats = await monsterManager.tmm.syncUp(tmStore, {
             dryrun: false,
             includeUnassigned: true,
             assignUnassigned: false,
-            storeAlias: options.storeAlias,
+            storeAlias: opts.storeAlias,
             sourceLang,
             targetLang,
         });
@@ -34,5 +48,5 @@ export class tm_export {
         for (const { sourceLang, targetLang, jobsToUpdate } of syncUpStats) {
             consoleLog`  ‣ ${sourceLang} → ${targetLang} ${jobsToUpdate.length} ${[jobsToUpdate.length, 'job', 'jobs']} exported`;
         }
-    }
-}
+    },
+};

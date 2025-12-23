@@ -2,7 +2,14 @@
 import { getRegressionMode, logVerbose, logWarn } from '../../l10nContext.js';
 import * as utils from '../utils.js';
 import * as opsManager from '../../opsManager/index.js';
-import { TU } from '../../entities/tu.js';
+
+/**
+ * @typedef {import('../../interfaces.js').TranslationProvider} TranslationProvider
+ * @typedef {import('../../interfaces.js').Job} Job
+ * @typedef {import('../../interfaces.js').TU} TU
+ * @typedef {import('../../interfaces.js').StatusProperties} StatusProperties
+ * @typedef {import('../../interfaces.js').MonsterManager} MonsterManager
+ */
 
 /**
  * Configuration options for initializing a BaseTranslationProvider.
@@ -23,6 +30,7 @@ import { TU } from '../../entities/tu.js';
 
 /**
  * Base class for all providers providing baseline functionality.
+ * @implements {TranslationProvider}
  */
 export class BaseTranslationProvider {
     defaultInstructions;
@@ -71,6 +79,8 @@ export class BaseTranslationProvider {
             enumerable: false,
             configurable: true,
         });
+
+        /** @type {StatusProperties} */
         this.statusProperties = {
             'created': {
                 actions: [ 'start' ],
@@ -101,6 +111,12 @@ export class BaseTranslationProvider {
         return this.#id ?? this.constructor.name;
     }
 
+    /**
+     * Creates a job from a job request.
+     * @param {Job} job - Job request to process.
+     * @param {{ skipQualityCheck?: boolean, skipGroupCheck?: boolean }} [options] - Optional creation options.
+     * @returns {Promise<Job>} Created job with status and metadata.
+     */
     async create(job, options = {}) {
         const {
             skipQualityCheck = false,
@@ -152,13 +168,19 @@ export class BaseTranslationProvider {
         return { ...job, status, tus: acceptedTus, estimatedCost };
     }
 
-    // by default providers are synchronous and they are done once they are started
+    /**
+     * Starts a created job (execute translation).
+     * @param {Job} job - Job to start.
+     * @returns {Promise<Job>} Job with updated status and translations.
+     */
     async start(job) {
         const statusProperties = this.statusProperties[job.status];
         if (!statusProperties || !statusProperties.actions.includes('start')) {
             throw new Error(`Cannot start jobs that are in the "${job.status}" state`);
         }
-        let jobResponse = { ...job, status: 'done', statusDescription: this.statusProperties.done.description }; // return a shallow copy to be used as a response
+
+        /** @type {Job} */
+        let jobResponse = { ...job, status: /** @type {const} */ ('done'), statusDescription: this.statusProperties.done.description }; // return a shallow copy to be used as a response
         if (this.getTranslatedTus !== BaseTranslationProvider.prototype.getTranslatedTus) {
             logVerbose`${this.id} provider translating job ${job.jobGuid} using getTranslatedTus() method`;
             jobResponse.tus = await this.getTranslatedTus(job);
@@ -166,13 +188,13 @@ export class BaseTranslationProvider {
             const task = this.createTask(jobResponse);
             logVerbose`${this.id} provider translating job ${job.jobGuid} using task ${task.taskName}`;
             try {
-                jobResponse = await task.execute(this.#executeOptions);
+                jobResponse = /** @type {Job} */ (await task.execute(this.#executeOptions));
             } catch (e) {
                 if (this.mm.saveFailedJobs) {
                     logWarn`Unable to start job ${job.jobGuid}: ${e.message}`;
                     jobResponse.inflight = jobResponse.tus.map(tu => tu.guid);
                     jobResponse.tus = undefined;
-                    jobResponse.status = 'pending';
+                    jobResponse.status = /** @type {const} */ ('pending');
                     jobResponse.statusDescription = this.statusProperties.pending.description;
                 } else {
                     throw e;
@@ -194,11 +216,15 @@ export class BaseTranslationProvider {
                 }
             }
         }
-        jobResponse.tus?.length === 0 && (jobResponse.status = 'cancelled');
+        jobResponse.tus?.length === 0 && (jobResponse.status = /** @type {const} */ ('cancelled'));
         return jobResponse;
     }
 
-    // some providers are asynchronous and require a continuation -- just enforce status transitions in the super
+    /**
+     * Continues a pending job (for async providers).
+     * @param {Job} job - Job to continue.
+     * @returns {Promise<Job>} Job with updated status.
+     */
     async continue(job) {
         const statusProperties = this.statusProperties[job.status];
         if (!statusProperties || !statusProperties.actions.includes('continue')) {
@@ -213,7 +239,7 @@ export class BaseTranslationProvider {
                 throw new Error(`Task ${job.taskName} is already done!`);
             }
             try {
-                return await task.execute(this.#executeOptions); // TODO: de we want to dedupe here? (but latest TM entry might be the same pending one in the job response)
+                return /** @type {Job} */ (await task.execute(this.#executeOptions)); // TODO: de we want to dedupe here? (but latest TM entry might be the same pending one in the job response)
             } catch (e) {
                 logWarn`Unable to continue job ${job.jobGuid}: ${e.message}`;
             }
@@ -221,44 +247,10 @@ export class BaseTranslationProvider {
         return job;
     }
 
-        // use cases:
-    //   1 - both are passed as both are created at the same time -> may cancel if response is empty
-    //   2 - only jobRequest is passed because it's blocked -> write if "blocked", cancel if "created"
-    //   3 - only jobResponse is passed because it's pulled -> must write even if empty or it will show as blocked/pending
-    processJob(jobResponse, jobRequest) {
-        if (jobResponse?.status === 'cancelled') {
-            return;
-        }
-        if (jobRequest && jobResponse) {
-            if (jobResponse.status === 'created' && !(jobResponse.tus?.length > 0 || jobResponse.inflight?.length > 0)) {
-                jobResponse.status = 'cancelled';
-                jobResponse.statusDescription = this.statusProperties.cancelled.description;
-                return;
-            }
-        }
-        if (jobRequest && !jobResponse && jobRequest.status === 'created') {
-            jobRequest.status = 'cancelled';
-            jobRequest.statusDescription = this.statusProperties.cancelled.description;
-            return;
-        }
-        const updatedAt = (getRegressionMode() ? new Date('2022-05-29T00:00:00.000Z') : new Date()).toISOString();
-        if (jobRequest) {
-            jobRequest.updatedAt = updatedAt;
-            if (jobResponse) {
-                const guidsInFlight = jobResponse.inflight ?? [];
-                const translatedGuids = jobResponse?.tus?.map(tu => tu.guid) ?? [];
-                const acceptedGuids = new Set(guidsInFlight.concat(translatedGuids));
-                jobRequest.tus = jobRequest.tus.filter(tu => acceptedGuids.has(tu.guid));
-            }
-            jobRequest.tus = jobRequest.tus.map(TU.asSource);
-        }
-        if (jobResponse) {
-            jobResponse.updatedAt = updatedAt;
-            jobResponse.tus && (jobResponse.tus = jobResponse.tus.map(TU.asTarget));
-        }
-        return utils.getIteratorFromJobPair(jobRequest, jobResponse);
-    }
-
+    /**
+     * Gets provider information.
+     * @returns {Promise<{ id: string, type: string, quality?: number, supportedPairs?: Record<string, string[]>, costPerWord?: number, costPerMChar?: number, description: string[] }>} Provider metadata.
+     */
     async info() {
         return {
             id: this.id,
@@ -271,6 +263,11 @@ export class BaseTranslationProvider {
         };
     }
 
+    /**
+     * Initializes the provider with MonsterManager.
+     * @param {MonsterManager} mm - MonsterManager instance.
+     * @returns {Promise<void>}
+     */
     async init(mm) {
         this.mm = mm;
     }
@@ -278,10 +275,10 @@ export class BaseTranslationProvider {
     // The following methods are meant to be overridden (if applicable)
 
     /**
-     * Get the list of tus accepted by the provider.
-     *
-     * @param {Record<string, any>} job - The job request.
-     * @returns {Promise<any[]>} A promise resolving to an array of accepted TUs.
+     * Get the list of TUs accepted by the provider.
+     * Override this method to filter which TUs to accept.
+     * @param {Job} job - The job request.
+     * @returns {Promise<TU[]>} A promise resolving to an array of accepted TUs.
      */
     // eslint-disable-next-line no-unused-vars
     async getAcceptedTus(job) {
@@ -290,9 +287,9 @@ export class BaseTranslationProvider {
 
     /**
      * Get the translated TUs.
-     *
-     * @param {Record<string, any>} job - The job request.
-     * @returns {Promise<any[]>} The array of translated TUs.
+     * Override this method for synchronous translation.
+     * @param {Job} job - The job request.
+     * @returns {Promise<TU[]>} The array of translated TUs.
      */
     // eslint-disable-next-line no-unused-vars
     async getTranslatedTus(job) {
@@ -300,10 +297,10 @@ export class BaseTranslationProvider {
     }
 
     /**
-     * Creates a task than when executed will return the job response.
-     *
-     * @param {Record<string, any>} job - The job request.
-     * @returns {Record<string, any>} The task to execute.
+     * Creates a task that when executed will return the job response.
+     * Override this method for async/resumable translation.
+     * @param {Job} job - The job request.
+     * @returns {import('../../opsManager/task.js').default} The task to execute.
      */
     // eslint-disable-next-line no-unused-vars
     createTask(job) {

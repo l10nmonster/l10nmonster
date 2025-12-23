@@ -1,17 +1,23 @@
 import { getRegressionMode, logInfo, logVerbose, logError } from '../../l10nContext.js';
 
 /**
- *
+ * @typedef {import('../../interfaces.js').SourceAdapter} SourceAdapter
+ */
+
+/**
  * A channel adapter for fetching resources over HTTP.
- * @class
+ * @implements {SourceAdapter}
  */
 export class HttpSource {
+
+    /** @type {Record<string, string>} */
+    urlMap;
 
     /**
      * Creates an instance of HttpSource.
      * @constructor
      * @param {Object} params - The parameters for initializing the HttpSource.
-     * @param {Object} params.urlMap - A map of resource IDs to their corresponding URLs.
+     * @param {Record<string, string>} params.urlMap - A map of resource IDs to their corresponding URLs.
      * @param {string} params.sourceLang - The source languages for the resources.
      * @param {string} [params.prj] - The project identifier associated with the resources.
      * @param {Function} [params.filter] - A function to filter resources based on their IDs.

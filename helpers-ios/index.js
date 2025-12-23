@@ -1,9 +1,14 @@
 import i18nStringsFiles from '@l10nmonster/i18n-strings-files';
 import { regex } from '@l10nmonster/core';
 
+/** @typedef {import('@l10nmonster/core').ResourceFilter} ResourceFilter */
+
 export { StringsdictFilter } from './stringsdict.js';
 
-// filter for iOS .strings file (in utf-8)
+/**
+ * Filter for iOS .strings files (in utf-8).
+ * @implements {ResourceFilter}
+ */
 export class StringsFilter {
     constructor(params) {
         this.emitComments = params?.emitComments || false;
@@ -45,6 +50,8 @@ const iosControlCharsToDecode = {
     r: '\r',
     f: '\f',
 };
+
+/** @type {import('@l10nmonster/core').DecoderFunction} */
 export const escapesDecoder = regex.decoderMaker(
     'iosEscapesDecoder',
     /(?<node>\\(?<escapedChar>['"\\])|\\(?<escapedControl>[tbnrf])|\\U(?<codePoint>[0-9A-Za-z]{4}))/g, // note that in ios the \U is uppercase!
@@ -56,6 +63,7 @@ export const escapesDecoder = regex.decoderMaker(
     )
 );
 
+/** @type {import('@l10nmonster/core').TextEncoderFunction} */
 export const escapesEncoder = regex.encoderMaker(
     'iosEscapesEncoder',
     // eslint-disable-next-line prefer-named-capture-group
@@ -73,6 +81,7 @@ export const escapesEncoder = regex.encoderMaker(
 // and https://pubs.opengroup.org/onlinepubs/009695399/functions/printf.html
 // loosely based on https://stackoverflow.com/questions/45215648/regex-capture-type-specifiers-in-format-string
 // space and quote tags have been omitted to avoid matching unexpected combinations
+/** @type {import('@l10nmonster/core').DecoderFunction} */
 export const phDecoder = regex.decoderMaker(
     'iosPHDecoder',
     /(?<tag>%(?:\d\$)?[0#+-]?[0-9*]*\.?\d*[hl]{0,2}[jztL]?[diuoxXeEfgGaAcpsSn@])/g,

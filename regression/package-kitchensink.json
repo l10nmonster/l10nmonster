@@ -1,0 +1,8 @@
+{
+    "name": "regression-kitchensink",
+    "private": true,
+    "type": "module",
+    "dependencies": {
+        "l10nmonster": "file:../../../../kitchensink"
+    }
+}

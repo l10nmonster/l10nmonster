@@ -3,8 +3,13 @@ import readline from 'readline';
 import { consoleLog } from '@l10nmonster/core';
 import { FlowSnapshotter } from './flowCapture.js';
 
-export class lqaboss_capture {
-    static help = {
+/**
+ * CLI action for creating an LQA Boss flow.
+ * @type {import('@l10nmonster/core').L10nAction}
+ */
+export const lqaboss_capture = {
+    name: 'lqaboss_capture',
+    help: {
         description: 'create an lqaboss flow.',
         arguments: [
             ['<url>', 'the url of the page to capture'],
@@ -13,29 +18,30 @@ export class lqaboss_capture {
         options: [
             [ '--lang <srcLang,tgtLang>', 'source and target language pair' ],
         ],
-    };
+    },
 
-    static async action(mm, options) {
-        if (!options.url || !options.flowName) {
+    async action(mm, options) {
+        const { url, flowName, lang } = /** @type {{ url?: string, flowName?: string, lang?: string | string[] }} */ (options);
+        if (!url || !flowName) {
             throw new Error('You must specify a url and a flowName');
         }
-        const langPairs = options.lang ? (Array.isArray(options.lang) ? options.lang : options.lang.split(',')) : null;
+        const langPairs = lang ? (Array.isArray(lang) ? lang : lang.split(',')) : null;
         let tm;
         if (langPairs) {
             const [ sourceLang, targetLang ] = langPairs;
             tm = mm.tmm.getTM(sourceLang, targetLang);
         }
         // Run the capture flow
-        const lqaBossBuffer = await runCapture(options.url, options.flowName, tm);
+        const lqaBossBuffer = await runCapture(url, flowName, tm);
         if (lqaBossBuffer) {
-            const filename = `${options.flowName.replace(/[^a-z0-9_.-]/gi, '_')}.lqaboss`;
+            const filename = `${flowName.replace(/[^a-z0-9_.-]/gi, '_')}.lqaboss`;
             await fs.promises.writeFile(filename, lqaBossBuffer);
             consoleLog`Flow successfully saved as ${filename}`;
         } else {
             console.log('No pages were captured. Nothing to save.');
         }
-    }
-}
+    },
+};
 
 async function runCapture(startUrl, flowNameBase, tm) {
     const snapShotter = new FlowSnapshotter(startUrl, flowNameBase);

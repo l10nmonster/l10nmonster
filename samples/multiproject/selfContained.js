@@ -1,4 +1,4 @@
-import { adapters, stores } from '../../core';
+import { adapters, stores } from '@l10nmonster/core';
 import ios from '@l10nmonster/helpers-ios';
 import android from '@l10nmonster/helpers-android';
 import { runL10nMonster } from '@l10nmonster/cli';

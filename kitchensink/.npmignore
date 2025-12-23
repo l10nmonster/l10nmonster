@@ -1,0 +1,10 @@
+# Development files
+scripts/
+tsconfig.json
+.releaserc.json
+CLAUDE.md
+
+# IDE and tooling
+.vscode/
+.idea/
+*.log

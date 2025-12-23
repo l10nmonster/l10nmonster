@@ -11,6 +11,7 @@ CLAUDE.md
 .releaserc.json
 *.drawio.svg
 CHANGELOG.md
+tsconfig.json
 
 # Build artifacts
 out/

@@ -1,3 +1,4 @@
+/* eslint-disable no-new */
 import { suite, test } from 'node:test';
 import assert from 'node:assert/strict';
 import { writeFileSync, unlinkSync, readFileSync } from 'fs';
@@ -49,6 +50,7 @@ class MyClass {
         '@': 'MyClass',
         foo: {},
     };
+
     constructor(obj) {
         this.foo = obj.foo;
     }
@@ -1626,7 +1628,7 @@ suite('ConfigMancer lazy loading tests', () => {
         } finally {
             try {
                 unlinkSync(tempFilePath);
-            } catch (cleanupError) {
+            } catch {
                 // Ignore cleanup errors
             }
         }
@@ -1677,7 +1679,7 @@ suite('ConfigMancer lazy loading tests', () => {
         } finally {
             try {
                 unlinkSync(tempFilePath);
-            } catch (cleanupError) {
+            } catch {
                 // Ignore cleanup errors
             }
         }
@@ -1753,7 +1755,7 @@ suite('ConfigMancer lazy loading tests', () => {
             try {
                 unlinkSync(tempFilePath1);
                 unlinkSync(tempFilePath2);
-            } catch (cleanupError) {
+            } catch {
                 // Ignore cleanup errors
             }
         }
@@ -1816,7 +1818,7 @@ suite('ConfigMancer lazy loading tests', () => {
         } finally {
             try {
                 unlinkSync(tempFilePath);
-            } catch (cleanupError) {
+            } catch {
                 // Ignore cleanup errors
             }
         }

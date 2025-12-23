@@ -9,15 +9,34 @@ import {
 import * as fsPromises from 'fs/promises';
 import { getBaseDir, getRegressionMode, logInfo, logVerbose, logError } from '../../l10nContext.js';
 
+/**
+ * @typedef {import('../../interfaces.js').SourceAdapter} SourceAdapter
+ * @typedef {import('../../interfaces.js').TargetAdapter} TargetAdapter
+ * @typedef {import('../../interfaces.js').ChannelOptions} ChannelOptions
+ */
+
+/**
+ * Abstract base class for file system adapters.
+ */
 class AbstractFsAdapter {
     #relativeBaseDir;
+
+    /** @type {string} */
     baseDir;
 
+    /**
+     * Creates a new AbstractFsAdapter instance.
+     * @param {string} [baseDir] - Base directory for resource files.
+     */
     constructor(baseDir) {
         this.#relativeBaseDir = baseDir;
         this.baseDir = baseDir ? path.resolve(getBaseDir(), baseDir) : getBaseDir();
     }
 
+    /**
+     * Sets channel options for this adapter.
+     * @param {ChannelOptions} options - Channel configuration options.
+     */
     setChannelOptions(options) {
         options.baseDir && this.#relativeBaseDir && (this.baseDir = path.resolve(options.baseDir, this.#relativeBaseDir));
     }
@@ -25,6 +44,7 @@ class AbstractFsAdapter {
 
 /**
  * A file system source adapter for fetching resources.
+ * @implements {SourceAdapter}
  */
 export class FsSource extends AbstractFsAdapter {
     globs;
@@ -135,6 +155,7 @@ export class FsSource extends AbstractFsAdapter {
 
 /**
  * Represents a file system target for storing translated resources.
+ * @implements {TargetAdapter}
  */
 export class FsTarget extends AbstractFsAdapter {
     targetPath;

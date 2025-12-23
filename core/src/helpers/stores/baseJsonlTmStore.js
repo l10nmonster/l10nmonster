@@ -8,27 +8,41 @@ const providerFilenameRegex = /blocks\/sl=(?<sourceLang>[^/]+)\/tl=(?<targetLang
 const languageFilenameRegex = /blocks\/sl=(?<sourceLang>[^/]+)\/tl=(?<targetLang>[^/]+)\/block_(?<blockId>[0-9A-Za-z_-]+)\.jsonl/;
 
 /**
+ * @typedef {import('../../interfaces.js').TMStore} TMStore
+ * @typedef {import('../../interfaces.js').TMStoreTOC} TMStoreTOC
+ * @typedef {import('../../interfaces.js').JobPropsTusPair} JobPropsTusPair
+ * @typedef {import('../../interfaces.js').FileStoreDelegate} _FileStoreDelegate
+ */
+
+/**
  * New TM Store using a single job file, streaming read/writes and JSONL format.
  *
  * @class BaseJsonlTmStore
+ * @implements {TMStore}
  * @property {string} partitioning - Determines how TM Blocks are partitioned ('job', 'provider', or 'language')
- *
  */
 export class BaseJsonlTmStore {
     id;
+
+    /** @type {'readwrite' | 'readonly' | 'writeonly'} */
     access = 'readwrite';
+
+    /** @type {'job' | 'provider' | 'language'} */
     partitioning = 'job';
     #compressBlocks = false;
     #compressionSuffix = '';
 
+    /** @type {_FileStoreDelegate} */
+    delegate;
+
     /**
      * Creates a BaseJsonlTmStore instance
-     * @param {Object} delegate - Required file store delegate implementing file operations
+     * @param {_FileStoreDelegate} delegate - Required file store delegate implementing file operations
      * @param {Object} options - Base store options
      * @param {string} options.id - The logical id of the instance
-     * @param {string} options.access? - The store access permissions (readwrite/readonly/writeonly)
-     * @param {string} options.partitioning? - Partitioning strategy for TM Blocks (job/provider/language)
-     * @param {boolean} options.compressBlocks? - Use Gzip compression
+     * @param {'readwrite' | 'readonly' | 'writeonly'} [options.access] - The store access permissions
+     * @param {'job' | 'provider' | 'language'} [options.partitioning] - Partitioning strategy for TM Blocks
+     * @param {boolean} [options.compressBlocks] - Use Gzip compression
      * @throws {Error} If no delegate is provided or invalid partitioning is specified
      */
     constructor(delegate, { id, partitioning, access, compressBlocks }) {
@@ -41,14 +55,14 @@ export class BaseJsonlTmStore {
             if (['job', 'provider', 'language'].indexOf(partitioning) === -1) {
                 throw new Error(`Unknown partitioning type: ${partitioning}`);
             } else {
-                this.partitioning = partitioning;
+                this.partitioning = /** @type {'job' | 'provider' | 'language'} */ (partitioning);
             }
         }
         if (access) {
             if (['readwrite', 'readonly', 'writeonly'].indexOf(access) === -1) {
                 throw new Error(`Unknown access type: ${access}`);
             } else {
-                this.access = access;
+                this.access = /** @type {'readwrite' | 'readonly' | 'writeonly'} */ (access);
             }
         }
         if (compressBlocks) {
@@ -72,15 +86,24 @@ export class BaseJsonlTmStore {
         return fileName.match(providerFilenameRegex)?.groups;
     }
 
+    /**
+     * @param {string} sourceLang
+     * @param {string} targetLang
+     * @returns {Promise<Array<[string, string]>>} Array of [blockId, fileName] tuples.
+     */
     async #listAllTmBlocks(sourceLang, targetLang) {
         await this.delegate.ensureBaseDirExists();
         const files = await this.delegate.listAllFiles();
-        return files.map(([ fileName ]) => {
+        return /** @type {Array<[string, string]>} */ (files.map(([ fileName ]) => {
             const jobFilenameParts = this.#getGroups(fileName);
             return jobFilenameParts && jobFilenameParts.sourceLang === sourceLang && jobFilenameParts.targetLang === targetLang && [ jobFilenameParts.blockId, fileName ];
-        }).filter(Boolean);
+        }).filter(Boolean));
     }
 
+    /**
+     * Gets available language pairs in the store.
+     * @returns {Promise<Array<[string, string]>>} Array of [sourceLang, targetLang] tuples.
+     */
     async getAvailableLangPairs() {
         const pairs = {};
         await this.delegate.ensureBaseDirExists();
@@ -93,6 +116,13 @@ export class BaseJsonlTmStore {
         return Object.values(pairs);
     }
 
+    /**
+     * Gets TM blocks by their IDs.
+     * @param {string} sourceLang - Source language code.
+     * @param {string} targetLang - Target language code.
+     * @param {string[]} blockIds - Array of block IDs to retrieve.
+     * @returns {AsyncGenerator<JobPropsTusPair>} AsyncGenerator yielding job objects with TUs.
+     */
     async *getTmBlocks(sourceLang, targetLang, blockIds) {
         const toc = await this.getTOC(sourceLang, targetLang);
         for (const blockId of blockIds) {
@@ -155,6 +185,12 @@ export class BaseJsonlTmStore {
     //         }
     // }
 
+    /**
+     * Gets the table of contents for a language pair.
+     * @param {string} sourceLang - Source language code.
+     * @param {string} targetLang - Target language code.
+     * @returns {Promise<TMStoreTOC>} TOC object with block metadata.
+     */
     async getTOC(sourceLang, targetLang) {
         let toc;
         try {
@@ -194,6 +230,13 @@ export class BaseJsonlTmStore {
         await this.delegate.saveFile(`TOC-sl=${sourceLang}-tl=${targetLang}.json`, JSON.stringify(toc, null, '\t'));
     }
 
+    /**
+     * Gets a writer for committing TM data.
+     * @param {string} sourceLang - Source language code.
+     * @param {string} targetLang - Target language code.
+     * @param {Function} cb - Callback function for writing blocks.
+     * @returns {Promise<void>}
+     */
     async getWriter(sourceLang, targetLang, cb) {
         if (this.access === 'readonly') {
             throw new Error(`Cannot write to readonly TM Store: ${this.id}`);

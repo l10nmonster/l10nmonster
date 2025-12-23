@@ -1,13 +1,13 @@
 import { logInfo, getBaseDir, logWarn } from '@l10nmonster/core';
 import path from 'path';
 
-export function setupInfoRoute(router, mm, serverPackage) {
+export function setupInfoRoute(router, mm, version, description) {
     router.get('/info', async (req, res) => {
         logInfo`/info`;
         try {
             res.json({
-                version: serverPackage.version,
-                description: serverPackage.description,
+                version,
+                description,
                 baseDir: path.resolve(getBaseDir()),
                 providers: mm.dispatcher.providers.map(p => ({id: p.id, type: p.constructor.name})),
                 channels: mm.rm.channelIds.map(id => mm.rm.getChannel(id).getInfo()),

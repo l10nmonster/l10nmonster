@@ -5,7 +5,6 @@ import { providers, logVerbose, styleString, opsManager, getBaseDir } from '@l10
 
 /**
  * @typedef {object} LQABossProviderOptions
- * @extends BaseTranslationProvider
  * @property {Object} delegate - Required file store delegate implementing file operations
  * @property {string} [urlPrefix] - Prefix for the LQA Boss URL
  * @property {string} [qualityFile] - Path to a quality model JSON file
