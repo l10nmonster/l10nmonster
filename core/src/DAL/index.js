@@ -90,6 +90,8 @@ export default class SQLiteDALManager {
     }
 
     tu(sourceLang, targetLang) {
+        // eslint-disable-next-line no-unused-vars
+        const jobDAL = this.job; // need to make sure job DAL is initialized first because it's used by the TU DAL
         const pairKey = `${sourceLang}#${targetLang}`;
         if (this.#dalCache.has(pairKey)) {
             return this.#dalCache.get(pairKey);
