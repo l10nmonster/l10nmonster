@@ -1,3 +1,11 @@
+## @l10nmonster/core [3.1.1](https://public-github/l10nmonster/l10nmonster/compare/@l10nmonster/core@3.1.0...@l10nmonster/core@3.1.1) (2025-12-23)
+
+
+### Bug Fixes
+
+* **core:** Job table missing in some cases ([fad6012](https://public-github/l10nmonster/l10nmonster/commit/fad60128b5a926eebb85f731c11f6afa77da6777))
+* Improve type definitions and checks ([826b412](https://public-github/l10nmonster/l10nmonster/commit/826b412f0f7e761d404165a243b0c2b26c416ac1))
+
 # [3.1.0](https://public-github/l10nmonster/l10nmonster/compare/@l10nmonster/core@3.0.0...@l10nmonster/core@3.1.0) (2025-12-20)
 
 
