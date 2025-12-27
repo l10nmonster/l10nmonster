@@ -1438,12 +1438,11 @@ export interface TuDAL {
     getEntriesByJobGuid(jobGuid: string): Promise<TU[]>;
 
     /**
-     * Save a job with its translation units.
-     * @param jobProps - Job properties.
-     * @param tus - Array of translation units.
+     * Save multiple jobs with their translation units in a single transaction.
+     * @param jobs - Array of job objects containing jobProps and tus.
      * @param tmStoreId - Optional TM store ID.
      */
-    saveJob(jobProps: JobProps, tus: TU[], tmStoreId?: string): Promise<void>;
+    saveJobs(jobs: Array<{jobProps: JobProps, tus: TU[]}>, tmStoreId?: string): Promise<void>;
 
     /**
      * Delete a job and its TUs.

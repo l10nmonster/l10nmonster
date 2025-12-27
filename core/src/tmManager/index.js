@@ -110,26 +110,57 @@ export default class TMManager {
     }
 
     /**
-     * Saves a TM block (iterator of jobs) to the database.
+     * Maximum TUs per transaction when saving TM blocks.
+     * Larger values reduce transaction overhead but increase memory usage.
+     */
+    static MAX_TUS_PER_TRANSACTION = 10000;
+
+    /**
+     * Saves a TM block (iterator of jobs) to the database with chunked transactions.
+     * Jobs are batched together until adding the next job would exceed MAX_TUS_PER_TRANSACTION.
      * @param {AsyncIterable<JobPropsTusPair>} tmBlockIterator - Iterator yielding job/TU pairs.
      * @param {string} [tmStoreId] - TM store ID to associate with saved jobs.
      * @returns {Promise<Object[]>} Array of saved job properties.
      */
     async saveTmBlock(tmBlockIterator, tmStoreId) {
         const jobs = [];
+        let jobBatch = [];
+        let batchTuCount = 0;
+
         for await (const job of tmBlockIterator) {
-            if (job) {
-                const { jobProps, tus } = job;
-                if (tus?.length > 0) {
-                    await this.#DAL.tu(jobProps.sourceLang, jobProps.targetLang).saveJob(jobProps, tus, tmStoreId);
-                    jobs.push(jobProps);
-                } else {
-                    logVerbose`Ignoring empty job ${jobProps.jobGuid}`;
-                }
-            } else {
+            if (!job) {
                 logWarn`Received a nullish job while saving a TM block`;
+                continue;
             }
+
+            const { jobProps, tus } = job;
+            if (!tus?.length) {
+                logVerbose`Ignoring empty job ${jobProps.jobGuid}`;
+                continue;
+            }
+
+            const jobTuCount = tus.length;
+
+            // If adding this job would exceed limit AND we have jobs, flush first
+            if (batchTuCount + jobTuCount > TMManager.MAX_TUS_PER_TRANSACTION && jobBatch.length > 0) {
+                await this.#DAL.tu(jobBatch[0].jobProps.sourceLang, jobBatch[0].jobProps.targetLang)
+                    .saveJobs(jobBatch, tmStoreId);
+                jobs.push(...jobBatch.map(j => j.jobProps));
+                jobBatch = [];
+                batchTuCount = 0;
+            }
+
+            jobBatch.push({ jobProps, tus });
+            batchTuCount += jobTuCount;
         }
+
+        // Flush remaining batch
+        if (jobBatch.length > 0) {
+            await this.#DAL.tu(jobBatch[0].jobProps.sourceLang, jobBatch[0].jobProps.targetLang)
+                .saveJobs(jobBatch, tmStoreId);
+            jobs.push(...jobBatch.map(j => j.jobProps));
+        }
+
         return jobs;
     }
 

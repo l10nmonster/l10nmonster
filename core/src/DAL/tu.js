@@ -12,6 +12,7 @@ export class TuDAL {
     #tusTable;
     #stmt = {}; // prepared statements
     #flatSrcIdxInitialized = false; // used to add the index as late as possible
+    #indexesInitialized = false; // used to defer index creation until first read query
 
     constructor(db, sourceLang, targetLang, DAL) {
         this.#db = db;
@@ -19,6 +20,7 @@ export class TuDAL {
         this.#targetLang = targetLang;
         this.#DAL = DAL;
         this.#tusTable = `tus_${sourceLang}_${targetLang}`.replace(/[^a-zA-Z0-9_]/g, '_');
+        // Create table only - indexes are deferred until first read query for bulk insert performance
         db.exec(/* sql */`
             CREATE TABLE IF NOT EXISTS ${this.#tusTable} (
                 guid TEXT NOT NULL,
@@ -35,12 +37,6 @@ export class TuDAL {
                 rank INTEGER,
                 PRIMARY KEY (guid, jobGuid)
             );
-            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_jobGuid_guid ON ${this.#tusTable} (jobGuid, guid);
-            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_ts_rid_tuOrder ON ${this.#tusTable} (ts DESC, rid, tuOrder);
-            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_q_ts ON ${this.#tusTable} (q, ts DESC);
-            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_tconf_ts ON ${this.#tusTable} (tuProps->>'$.tconf', ts DESC);
-            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_guid_rank ON ${this.#tusTable} (guid, rank);
-            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_rank_guid_q ON ${this.#tusTable} (rank, guid, q);
         `);
         db.function(
             'flattenNormalizedSourceToOrdinal',
@@ -52,6 +48,23 @@ export class TuDAL {
                 return utils.flattenNormalizedSourceToOrdinal(parsed);
             }
         );
+    }
+
+    /**
+     * Ensures all indexes are created. Called before read operations.
+     * Indexes are deferred to improve bulk insert performance (e.g., tm_syncdown on empty DB).
+     */
+    #ensureIndexes() {
+        if (this.#indexesInitialized) return;
+        this.#db.exec(/* sql */`
+            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_jobGuid_guid ON ${this.#tusTable} (jobGuid, guid);
+            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_ts_rid_tuOrder ON ${this.#tusTable} (ts DESC, rid, tuOrder);
+            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_q_ts ON ${this.#tusTable} (q, ts DESC);
+            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_tconf_ts ON ${this.#tusTable} (tuProps->>'$.tconf', ts DESC);
+            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_guid_rank ON ${this.#tusTable} (guid, rank);
+            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_rank_guid_q ON ${this.#tusTable} (rank, guid, q);
+        `);
+        this.#indexesInitialized = true;
     }
 
     #getActiveGuidsCTE(channelList) {
@@ -126,6 +139,7 @@ export class TuDAL {
     }
 
     #getEntry(guid) {
+        this.#ensureIndexes();
         this.#stmt.getEntry ??= this.#db.prepare(/* sql */`
             SELECT jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuProps
             FROM ${this.#tusTable}
@@ -154,6 +168,7 @@ export class TuDAL {
     }
 
     async getEntriesByJobGuid(jobGuid) {
+        this.#ensureIndexes();
         this.#stmt.getEntriesByJobGuid ??= this.#db.prepare(/* sql */`
             SELECT jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuProps
             FROM ${this.#tusTable}
@@ -249,17 +264,26 @@ export class TuDAL {
         }
     }
     
-    async saveJob(jobProps, tus, tmStoreId) {
+    /**
+     * Saves multiple jobs in a single transaction.
+     * @param {Array<{jobProps: Object, tus: Array}>} jobs - Array of jobs to save
+     * @param {string} tmStoreId - TM store ID
+     */
+    async saveJobs(jobs, tmStoreId) {
+        if (jobs.length === 0) return;
+
         this.#db.transaction(() => {
-            this.#upsertJobRow(jobProps, tmStoreId);
-            this.#updateRank(jobProps.jobGuid, false); // we need to update the rank in case some extries will be deleted
-            this.#deleteEntriesByJobGuid(jobProps.jobGuid);
-            tus.forEach((tu, tuOrder) => this.#setEntry({
-                ...tu,
-                jobGuid: jobProps.jobGuid,
-                tuOrder,
-            }));
-            this.#updateRank(jobProps.jobGuid, true);
+            for (const { jobProps, tus } of jobs) {
+                this.#upsertJobRow(jobProps, tmStoreId);
+                this.#updateRank(jobProps.jobGuid, false); // we need to update the rank in case some entries will be deleted
+                this.#deleteEntriesByJobGuid(jobProps.jobGuid);
+                tus.forEach((tu, tuOrder) => this.#setEntry({
+                    ...tu,
+                    jobGuid: jobProps.jobGuid,
+                    tuOrder,
+                }));
+                this.#updateRank(jobProps.jobGuid, true);
+            }
         })();
     }
 
@@ -275,6 +299,7 @@ export class TuDAL {
     }
 
     async getExactMatches(nsrc) {
+        this.#ensureIndexes();
         this.#stmt.createFlatSrcIdx ??= this.#db.prepare(/* sql */`
             CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_flatSrc
             ON ${this.#tusTable} (flattenNormalizedSourceToOrdinal(nsrc));
@@ -323,6 +348,7 @@ export class TuDAL {
      * @returns {Promise<[string, string][]>} Array of [guid, jobGuid] tuples identifying TUs.
      */
     async tuKeysOverRank(maxRank) {
+        this.#ensureIndexes();
         this.#stmt.tuKeysOverRank ??= this.#db.prepare(/* sql */`
             SELECT guid, jobGuid FROM ${this.#tusTable} WHERE rank > ?;`);
         return this.#stmt.tuKeysOverRank.all(maxRank).map(row => [row.guid, row.jobGuid]);
@@ -334,6 +360,7 @@ export class TuDAL {
      * @returns {Promise<[string, string][]>} Array of [guid, jobGuid] tuples identifying TUs.
      */
     async tuKeysByQuality(quality) {
+        this.#ensureIndexes();
         this.#stmt.tuKeysByQuality ??= this.#db.prepare(/* sql */`
             SELECT guid, jobGuid FROM ${this.#tusTable} WHERE q = ?;`);
         return this.#stmt.tuKeysByQuality.all(quality).map(row => [row.guid, row.jobGuid]);
@@ -366,6 +393,7 @@ export class TuDAL {
     }
 
     async getStats() {
+        this.#ensureIndexes();
         this.#stmt.getStats ??= this.#db.prepare(/* sql */`
             SELECT
                 translationProvider,
@@ -387,6 +415,7 @@ export class TuDAL {
     }
 
     async getTranslatedContentStatus(channelDAL) {
+        this.#ensureIndexes();
         // Use covering index rank_guid_q on TU table - all TU data comes from index
         // Use guid index on segments for fast join lookup
         const tuIdxName = `idx_${this.#tusTable}_rank_guid_q`;
@@ -414,6 +443,7 @@ export class TuDAL {
     }
 
     async getUntranslatedContentStatus(channelDAL) {
+        this.#ensureIndexes();
         // Use guid_rank index on TU table for fast LEFT JOIN lookup
         const tuIdxName = `idx_${this.#tusTable}_guid_rank`;
         const getUntranslatedContentStatusStmt = this.#db.prepare(/* sql */`
@@ -446,6 +476,7 @@ export class TuDAL {
      * @returns {Promise<Object[]>} Array of untranslated translation units.
      */
     async getUntranslatedContent(channelDAL, { limit = 100, prj } = {}) {
+        this.#ensureIndexes();
         // Use json_extract instead of JSON_EACH to avoid expensive row expansion
         const getUntranslatedContentStmt = this.#db.prepare(/* sql */`
             SELECT
@@ -483,6 +514,7 @@ export class TuDAL {
     }
 
     async querySource(channelDAL, whereCondition) {
+        this.#ensureIndexes();
         let stmt;
         try {
             // Use json_extract instead of JSON_EACH to avoid expensive row expansion
@@ -520,6 +552,7 @@ export class TuDAL {
     }
 
     async queryByGuids(guids, channelDAL) {
+        this.#ensureIndexes();
         let stmt;
         if (channelDAL) {
             // source can be tracked down, so use the latest
@@ -592,6 +625,7 @@ export class TuDAL {
      */
     // eslint-disable-next-line complexity
     async search(offset, limit, { guid, nid, jobGuid, rid, sid, channel, nsrc, ntgt, notes, tconf, maxRank, onlyTNotes, q, minTS, maxTS, translationProvider, tmStore, group, includeTechnicalColumns, onlyLeveraged }) {
+        this.#ensureIndexes();
         // Determine if we need channel/group for filtering vs just display
         // Note: onlyLeveraged uses EXISTS conditions (fast) instead of CTE join
         const needsChannelGroupFiltering = Array.isArray(channel) || Array.isArray(group);
@@ -759,6 +793,7 @@ export class TuDAL {
     }
 
     async lookup({ guid, nid, rid, sid }) {
+        this.#ensureIndexes();
         this.#stmt.lookup ??= this.#db.prepare(/* sql */`
             SELECT
                 rid,
@@ -787,6 +822,7 @@ export class TuDAL {
     }
 
     async getLowCardinalityColumns() {
+        this.#ensureIndexes();
         this.#stmt.getQValues ??= this.#db.prepare(/* sql */`
             WITH RECURSIVE distinct_q(q) AS (
                 SELECT min(q) FROM ${this.#tusTable}
@@ -880,6 +916,7 @@ export class TuDAL {
     }
 
     async getQualityDistribution() {
+        this.#ensureIndexes();
         this.#stmt.getQualityDistribution ??= this.#db.prepare(/* sql */`
             SELECT
                 q,
