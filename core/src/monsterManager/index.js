@@ -103,27 +103,19 @@ export class MonsterManager {
      * @throws {string} Throws an error if the localization process fails.
      */
     static async run(monsterConfig, cb) {
+        let mm;
         try {
-            const mm = new MonsterManager(monsterConfig);
+            mm = new MonsterManager(monsterConfig);
             await mm.init();
-            let response, error;
-            try {
-                response = await cb(mm);
-            } catch(e) {
-                error = e;
-            } finally {
-                mm && (await mm.shutdown());
-            }
-            if (error) {
-                throw error;
-            }
-            return response;
+            return await cb(mm);
         } catch(e) {
             logError`Exception thrown while running L10nMonsterConfig: ${e.stack ?? e.message}`;
             e.message && (e.message = `Unable to run L10nMonsterConfig: ${e.message}`);
             const logFilePath = dumpLogs();
             e.message = `${e.message}\n\nA complete log of this run can be found in: ${logFilePath}`;
             throw e;
+        } finally {
+            mm && (await mm.shutdown());
         }
     }
     
