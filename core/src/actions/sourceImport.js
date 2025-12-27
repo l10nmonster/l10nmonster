@@ -30,7 +30,7 @@ export const source_import = {
             const toc = await mm.rm.getSnapStoreTOC(snapStore);
             const channelsToImport = [];
             for (const channelId of channels) {
-                const { store, ts } = await mm.rm.getChannelMeta(channelId);
+                const { store, ts } = (await mm.rm.getChannelMeta(channelId)) ?? {};
                 if (toc[channelId]) {
                     if (ts === toc[channelId][0]) {
                         logVerbose`Skipping channel ${channelId} as it already contains the same snapshot ${store ? `from store ${store}` : 'directly from the source'}`;
