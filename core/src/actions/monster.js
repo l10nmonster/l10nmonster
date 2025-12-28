@@ -8,12 +8,12 @@ export const monster = {
     name: 'monster',
     help: {
         description: 'test configuration and warm up caches',
-        // options: [
-        //     [ '-l, --lang <language>', 'target languages to warm up' ],
-        // ]
+        options: [
+            [ '--detailed', 'show detailed output' ],
+        ]
     },
 
-    async action(mm) {
+    async action(mm, options) {
         console.log(`
 ██╗     ███╗   ██████╗ ███╗   ██╗
 ██║    ████║  ██╔═████╗████╗  ██║
@@ -38,8 +38,12 @@ export const monster = {
             consoleLog`  ‣ ${channelId}: ${desiredLangPairs.map(([ sourceLang, targetLang ]) => `${sourceLang} → ${targetLang}`).join(', ')}`;
             if (channelStats.length === 0) {
                 consoleLog`      • No resources in this channel!`;
-            } else {
+            } else if (options.detailed) {
                 channelStats.forEach(({ prj, sourceLang, segmentCount, resCount }) => consoleLog`      • Project ${prj ?? 'default'} (source ${sourceLang}): ${segmentCount.toLocaleString()} ${[segmentCount, 'segment', 'segments']} in ${resCount.toLocaleString()} ${[resCount, 'resource', 'resources']}`);
+            } else {
+                const totalSegments = channelStats.reduce((acc, { segmentCount }) => acc + segmentCount, 0);
+                const totalResources = channelStats.reduce((acc, { resCount }) => acc + resCount, 0);
+                consoleLog`      • ${totalSegments.toLocaleString()} ${[totalSegments, 'segment', 'segments']} in ${totalResources.toLocaleString()} ${[totalResources, 'resource', 'resources']}`;
             }
         }
 
@@ -50,10 +54,16 @@ export const monster = {
             consoleLog`\nTranslation Memories:`;
             for (const [sourceLang, targetLang] of availableLangPairs) {
                 const tm = mm.tmm.getTM(sourceLang, targetLang);
-                consoleLog`  ‣ ${sourceLang} → ${targetLang}`;
                 const tmStats = await tm.getStats();
-                for (const stats of tmStats) {
-                    consoleLog`      • ${stats.translationProvider}(${stats.status}): ${stats.jobCount.toLocaleString()} ${[stats.jobCount, 'job', 'jobs']}, ${stats.tuCount.toLocaleString()} ${[stats.tuCount, 'tu', 'tus']}, ${stats.distinctGuids.toLocaleString()} ${[stats.distinctGuids, 'guid', 'guids']}`;
+                if (options.detailed) {
+                    consoleLog`  ‣ ${sourceLang} → ${targetLang}`;
+                    for (const stats of tmStats) {
+                        consoleLog`      • ${stats.translationProvider}(${stats.status}): ${stats.jobCount.toLocaleString()} ${[stats.jobCount, 'job', 'jobs']}, ${stats.tuCount.toLocaleString()} ${[stats.tuCount, 'tu', 'tus']}, ${stats.distinctGuids.toLocaleString()} ${[stats.distinctGuids, 'guid', 'guids']}`;
+                    }
+                } else {
+                    const totalJobs = tmStats.reduce((acc, { jobCount }) => acc + jobCount, 0);
+                    const totalTus = tmStats.reduce((acc, { tuCount }) => acc + tuCount, 0);
+                    consoleLog`  ‣ ${sourceLang} → ${targetLang}: ${totalJobs.toLocaleString()} ${[totalJobs, 'job', 'jobs']}, ${totalTus.toLocaleString()} ${[totalTus, 'tu', 'tus']}`;
                 }
             }
         } else {
