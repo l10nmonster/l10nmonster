@@ -1,9 +1,12 @@
 import { logVerbose, logError } from '../l10nContext.js';
 import { createSQLObjectTransformer } from './index.js';
 
+/** @typedef {import('../interfaces.js').ChannelDAL} ChannelDALInterface */
+
 const sqlTransformer = createSQLObjectTransformer(['targetLangs', 'plan', 'subresources', 'resProps', 'nstr', 'notes', 'segProps'], ['resProps', 'segProps']);
 const spaceRegex = /\s+/g;
 
+/** @implements {ChannelDALInterface} */
 export class ChannelDAL {
     #db;
     channelId;

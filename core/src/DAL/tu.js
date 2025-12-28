@@ -2,8 +2,11 @@ import { logVerbose } from '../l10nContext.js';
 import { utils } from '../helpers/index.js';
 import { createSQLObjectTransformer } from './index.js';
 
+/** @typedef {import('../interfaces.js').TuDAL} TuDALInterface */
+
 const sqlTransformer = createSQLObjectTransformer(['nstr', 'nsrc', 'ntgt', 'notes', 'qa', 'tuProps', 'segProps'], ['tuProps', 'segProps']);
 
+/** @implements {TuDALInterface} */
 export class TuDAL {
     #db;
     #sourceLang;
@@ -952,6 +955,10 @@ export class TuDAL {
         }
     }
 
+    /**
+     * Get distinct values for low cardinality columns (for filtering UI).
+     * @returns {Promise<Record<string, string[]>>}
+     */
     async getLowCardinalityColumns() {
         this.#ensureIndexes();
         this.#stmt.getQValues ??= this.#db.prepare(/* sql */`
@@ -998,6 +1005,8 @@ export class TuDAL {
                 sourceLang = ? AND
                 targetLang = ?;
         `).pluck();
+
+        /** @type {Record<string, string[]>} */
         const enumValues = {};
         const qValues = this.#stmt.getQValues.all();
         const tconfValues = this.#stmt.getTconfValues.all();

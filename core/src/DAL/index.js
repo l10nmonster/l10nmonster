@@ -7,6 +7,9 @@ import { ChannelDAL } from './channel.js';
 import { TuDAL } from './tu.js';
 import { JobDAL } from './job.js';
 
+/** @typedef {import('../interfaces.js').DALManager} DALManagerInterface */
+
+/** @implements {DALManagerInterface} */
 export default class SQLiteDALManager {
     #sourceDBFilename;
     #tmDBFilename;

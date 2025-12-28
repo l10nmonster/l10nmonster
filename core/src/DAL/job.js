@@ -1,3 +1,6 @@
+/** @typedef {import('../interfaces.js').JobDAL} JobDALInterface */
+
+/** @implements {JobDALInterface} */
 export class JobDAL {
     #db;
     #stmt = {}; // prepared statements
