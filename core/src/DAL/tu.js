@@ -22,7 +22,7 @@ export class TuDAL {
         this.#DAL = DAL;
         this.#tusTable = `tus_${sourceLang}_${targetLang}`.replace(/[^a-zA-Z0-9_]/g, '_');
         // Create table only - indexes are deferred until first read query for bulk insert performance
-        db.exec(/* sql */`
+        this.#db.exec(/* sql */`
             CREATE TABLE IF NOT EXISTS ${this.#tusTable} (
                 guid TEXT NOT NULL,
                 jobGuid TEXT NOT NULL,
@@ -35,9 +35,8 @@ export class TuDAL {
                 q INTEGER,
                 ts INTEGER,
                 tuOrder INTEGER,
-                rank INTEGER,
-                PRIMARY KEY (guid, jobGuid)
-            ) WITHOUT ROWID;
+                rank INTEGER
+            );
         `);
         db.function(
             'flattenNormalizedSourceToOrdinal',
@@ -59,6 +58,7 @@ export class TuDAL {
         if (this.#rankIndexInitialized) return;
         logVerbose`Creating rank indexes for table ${this.#tusTable}...`;
         this.#db.exec(/* sql */`
+            CREATE UNIQUE INDEX IF NOT EXISTS idx_${this.#tusTable}_guid_jobGuid ON ${this.#tusTable} (guid, jobGuid);
             CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_jobGuid_guid ON ${this.#tusTable} (jobGuid, guid);
             CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_guid_q_ts ON ${this.#tusTable} (guid, q DESC, ts DESC);
         `);
@@ -196,26 +196,36 @@ export class TuDAL {
         return this.#stmt.deleteEntriesByJobGuid.run(jobGuid);
     }
 
-    #setEntry(tu) {
-        this.#stmt.setEntry ??= this.#db.prepare(/* sql */`
-            INSERT INTO ${this.#tusTable} (guid, jobGuid, rid, sid, nsrc, ntgt, notes, tuProps, q, ts, tuOrder, rank)
-            VALUES (@guid, @jobGuid, @rid, @sid, @nsrc, @ntgt, @notes, @tuProps, @q, @ts, @tuOrder, 1)
-            ON CONFLICT (jobGuid, guid)
-            DO UPDATE SET
-                rid = excluded.rid,
-                sid = excluded.sid,
-                nsrc = excluded.nsrc,
-                ntgt = excluded.ntgt,
-                notes = excluded.notes,
-                tuProps = excluded.tuProps,
-                q = excluded.q,
-                ts = excluded.ts,
-                tuOrder = excluded.tuOrder
-            WHERE excluded.jobGuid = ${this.#tusTable}.jobGuid AND excluded.guid = ${this.#tusTable}.guid
+    #setEntry(tu, upsert = true) {
+        let statement;
+        if (upsert) {
+            this.#stmt.upsertEntry ??= this.#db.prepare(/* sql */`
+                INSERT INTO ${this.#tusTable} (guid, jobGuid, rid, sid, nsrc, ntgt, notes, tuProps, q, ts, tuOrder, rank)
+                VALUES (@guid, @jobGuid, @rid, @sid, @nsrc, @ntgt, @notes, @tuProps, @q, @ts, @tuOrder, 1)
+                ON CONFLICT (jobGuid, guid)
+                DO UPDATE SET
+                    rid = excluded.rid,
+                    sid = excluded.sid,
+                    nsrc = excluded.nsrc,
+                    ntgt = excluded.ntgt,
+                    notes = excluded.notes,
+                    tuProps = excluded.tuProps,
+                    q = excluded.q,
+                    ts = excluded.ts,
+                    tuOrder = excluded.tuOrder
+                WHERE excluded.jobGuid = ${this.#tusTable}.jobGuid AND excluded.guid = ${this.#tusTable}.guid
             ;`);
+            statement = this.#stmt.upsertEntry;
+        } else {
+            this.#stmt.insertEntry ??= this.#db.prepare(/* sql */`
+                INSERT INTO ${this.#tusTable} (guid, jobGuid, rid, sid, nsrc, ntgt, notes, tuProps, q, ts, tuOrder, rank)
+                VALUES (@guid, @jobGuid, @rid, @sid, @nsrc, @ntgt, @notes, @tuProps, @q, @ts, @tuOrder, 1);
+            `);
+            statement = this.#stmt.insertEntry;
+        }
         // select properties are extracted so that they can be queried
         const { jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuOrder, ...tuProps } = tu;
-        const result = this.#stmt.setEntry.run(sqlTransformer.encode({
+        const result = statement.run(sqlTransformer.encode({
             jobGuid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tuOrder, tuProps // TODO: populate inflight?
         }));
         if (result.changes !== 1) {
@@ -273,6 +283,61 @@ export class TuDAL {
     }
 
     /**
+     * Update ranks for all TUs in the table.
+     * Optimized with fast path for single-jobGuid guids and window function for multi-jobGuid guids.
+     */
+    async #updateAllRanks() {
+        this.#ensureRankIndexes();
+        logVerbose`Updating all ranks for table ${this.#tusTable}...`;
+
+        // Fast path: single jobGuid per guid, just set rank = 1
+        const fastResult = this.#db.prepare(/* sql */`
+            UPDATE ${this.#tusTable}
+            SET rank = 1
+            WHERE guid IN (
+                SELECT guid FROM ${this.#tusTable}
+                GROUP BY guid HAVING COUNT(*) = 1
+            ) AND rank != 1;
+        `).run();
+        logVerbose`Unique guids: updated ${fastResult.changes} rows`;
+
+        // Slow path: multiple jobGuids per guid, use window function
+        const slowResult = this.#db.prepare(/* sql */`
+            UPDATE ${this.#tusTable}
+            SET rank = t2.new_rank
+            FROM (
+                SELECT guid, jobGuid,
+                    ROW_NUMBER() OVER (PARTITION BY guid ORDER BY q DESC, ts DESC) as new_rank
+                FROM ${this.#tusTable}
+                WHERE guid IN (
+                    SELECT guid FROM ${this.#tusTable}
+                    GROUP BY guid HAVING COUNT(*) > 1
+                )
+            ) AS t2
+            WHERE ${this.#tusTable}.guid = t2.guid
+              AND ${this.#tusTable}.jobGuid = t2.jobGuid
+              AND ${this.#tusTable}.rank != t2.new_rank;
+        `).run();
+        logVerbose`Duplicate guids: updated ${slowResult.changes} rows`;
+    }
+
+    /**
+     * Runs a callback in bootstrap mode with deferred index creation.
+     * Automatically creates indexes and updates ranks when the callback completes.
+     * @template T
+     * @param {() => Promise<T>} callback - The bootstrap operation to run.
+     * @returns {Promise<T>} The result of the callback.
+     */
+    async withBootstrapMode(callback) {
+        try {
+            return await callback();
+        } finally {
+            this.#ensureRankIndexes();
+            await this.#updateAllRanks();
+        }
+    }
+
+    /**
      * Sets or updates a job in the database.
      * @param {Object} job - The job object to set or update.
      * @param {string} job.sourceLang - The source language of the job.
@@ -306,43 +371,49 @@ export class TuDAL {
     /**
      * Saves multiple jobs in a single transaction.
      * @param {Array<{jobProps: Object, tus: Array}>} jobs - Array of jobs to save
-     * @param {string} tmStoreId - TM store ID
+     * @param {Object} [options] - Options
+     * @param {string} [options.tmStoreId] - TM store ID to associate with saved jobs.
+     * @param {boolean} [options.updateRank = true] - Whether to update ranks for the affected guids.
      */
-    async saveJobs(jobs, tmStoreId) {
+    async saveJobs(jobs, { tmStoreId, updateRank = true } = {}) {
         if (jobs.length === 0) return;
 
         this.#db.transaction(() => {
             logVerbose`Starting transaction to save ${jobs.length} jobs to ${this.#tusTable}...`;
-            let tuCount = 0;
+
             // Ensure rank-related indexes exist for getGuidsForJob and updateRankForGuids
-            this.#ensureRankIndexes();
+            updateRank && this.#ensureRankIndexes();
 
             const affectedGuids = new Set();
 
             for (const { jobProps, tus } of jobs) {
                 this.#upsertJobRow(jobProps, tmStoreId);
 
+                if (updateRank) {
                 // Collect guids that will be affected by deleting this job's entries
-                for (const guid of this.#getGuidsForJob(jobProps.jobGuid)) {
-                    affectedGuids.add(guid);
+                    for (const guid of this.#getGuidsForJob(jobProps.jobGuid)) {
+                        affectedGuids.add(guid);
+                    }
+                    this.#deleteEntriesByJobGuid(jobProps.jobGuid);
                 }
 
-                this.#deleteEntriesByJobGuid(jobProps.jobGuid);
                 tus.forEach((tu, tuOrder) => {
                     this.#setEntry({
                         ...tu,
                         jobGuid: jobProps.jobGuid,
                         tuOrder,
-                    });
+                    }, updateRank); // insert if updateRank is false (bootstrap mode)
                     // Collect guids from newly inserted entries
                     affectedGuids.add(tu.guid);
                 });
-                tuCount += tus.length;
             }
-            logVerbose`Saved ${tuCount} TUs for ${jobs.length} jobs`;
+            logVerbose`Saved ${affectedGuids.size} TUs for ${jobs.length} jobs`;
+
+            if (updateRank) {
             // Batch update ranks for all affected guids at once
-            this.#updateRankForGuids(Array.from(affectedGuids));
-            logVerbose`Updated ranks for ${affectedGuids.size} guids`;
+                this.#updateRankForGuids(Array.from(affectedGuids));
+                logVerbose`Updated ranks for ${affectedGuids.size} guids`;
+            }
         })();
 
         logVerbose`Transaction completed`;

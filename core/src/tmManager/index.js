@@ -110,61 +110,6 @@ export default class TMManager {
     }
 
     /**
-     * Maximum TUs per transaction when saving TM blocks.
-     * Larger values reduce transaction overhead but increase memory usage.
-     */
-    static MAX_TUS_PER_TRANSACTION = 50000;
-
-    /**
-     * Saves a TM block (iterator of jobs) to the database with chunked transactions.
-     * Jobs are batched together until adding the next job would exceed MAX_TUS_PER_TRANSACTION.
-     * @param {AsyncIterable<JobPropsTusPair>} tmBlockIterator - Iterator yielding job/TU pairs.
-     * @param {string} [tmStoreId] - TM store ID to associate with saved jobs.
-     * @returns {Promise<Object[]>} Array of saved job properties.
-     */
-    async saveTmBlock(tmBlockIterator, tmStoreId) {
-        const jobs = [];
-        let jobBatch = [];
-        let batchTuCount = 0;
-
-        for await (const job of tmBlockIterator) {
-            if (!job) {
-                logWarn`Received a nullish job while saving a TM block`;
-                continue;
-            }
-
-            const { jobProps, tus } = job;
-            if (!tus?.length) {
-                logWarn`Ignoring empty job ${jobProps.jobGuid}`;
-                continue;
-            }
-
-            const jobTuCount = tus.length;
-
-            // If adding this job would exceed limit AND we have jobs, flush first
-            if (batchTuCount + jobTuCount > TMManager.MAX_TUS_PER_TRANSACTION && jobBatch.length > 0) {
-                await this.#DAL.tu(jobBatch[0].jobProps.sourceLang, jobBatch[0].jobProps.targetLang)
-                    .saveJobs(jobBatch, tmStoreId);
-                jobs.push(...jobBatch.map(j => j.jobProps));
-                jobBatch = [];
-                batchTuCount = 0;
-            }
-
-            jobBatch.push({ jobProps, tus });
-            batchTuCount += jobTuCount;
-        }
-
-        // Flush remaining batch
-        if (jobBatch.length > 0) {
-            await this.#DAL.tu(jobBatch[0].jobProps.sourceLang, jobBatch[0].jobProps.targetLang)
-                .saveJobs(jobBatch, tmStoreId);
-            jobs.push(...jobBatch.map(j => j.jobProps));
-        }
-
-        return jobs;
-    }
-
-    /**
      * Gets a TM instance for a language pair (cached).
      * @param {string} sourceLang - Source language code.
      * @param {string} targetLang - Target language code.
@@ -264,7 +209,10 @@ export default class TMManager {
         if (!dryrun) {
             if (blocksToStore.length > 0) {
                 logInfo`Storing ${blocksToStore.length} ${[blocksToStore.length, 'block', 'blocks']} from ${tmStore.id}(${sourceLang} → ${targetLang})`;
-                await this.saveTmBlock(tmStore.getTmBlocks(sourceLang, targetLang, blocksToStore), eraseParentTmStore ? null : storeAlias ?? tmStore.id);
+                const tm = this.getTM(sourceLang, targetLang);
+                await tm.saveTmBlock(tmStore.getTmBlocks(sourceLang, targetLang, blocksToStore), {
+                    tmStoreId: eraseParentTmStore ? null : storeAlias ?? tmStore.id
+                });
             }
             if (deleteExtraJobs && jobsToDelete.length > 0) {
                 logInfo`Deleting ${jobsToDelete.length} ${[jobsToDelete.length, 'job', 'jobs']} (${sourceLang} → ${targetLang})`;
@@ -505,5 +453,63 @@ export default class TMManager {
             throw new Error(`Job ${jobGuid} does not exist`);
         }
         await this.#DAL.tu(job.sourceLang, job.targetLang).deleteJob(jobGuid);
+    }
+
+    /**
+     * Bootstrap task for a single language pair.
+     * @param {Object} params - Task parameters.
+     * @param {TMStore} params.tmStore - The TM store to bootstrap from.
+     * @param {string} params.srcLang - Source language.
+     * @param {string} params.tgtLang - Target language.
+     * @returns {Promise<{sourceLang: string, targetLang: string, jobCount: number, tuCount: number}>}
+     */
+    async #bootstrapTask({ tmStore, srcLang, tgtLang }) {
+        logInfo`Bootstrapping ${srcLang} → ${tgtLang} from ${tmStore.id}...`;
+        const toc = await tmStore.getTOC(srcLang, tgtLang);
+        const blockIds = Object.keys(toc.blocks);
+        const jobIterator = tmStore.getTmBlocks(srcLang, tgtLang, blockIds);
+        const tm = this.getTM(srcLang, tgtLang);
+        const pairStats = await tm.bootstrap(jobIterator, tmStore.id);
+        logInfo`  Loaded ${pairStats.jobCount} jobs, ${pairStats.tuCount} TUs into ${srcLang} → ${tgtLang} TU table`;
+        return { sourceLang: srcLang, targetLang: tgtLang, ...pairStats };
+    }
+
+    /**
+     * Bootstraps the TM database from a TM store.
+     * This is a DESTRUCTIVE operation that wipes all existing TM data.
+     *
+     * @param {TMStore} tmStore - The TM store to bootstrap from.
+     * @param {Object} options - Bootstrap options.
+     * @param {boolean} [options.dryrun=false] - If true, only report what would be done.
+     * @param {string} [options.sourceLang] - Filter to specific source language.
+     * @param {string} [options.targetLang] - Filter to specific target language.
+     * @param {number} [options.parallelism=4] - Number of parallel operations.
+     * @returns {Promise<{pairs: Array<[string, string]>, stats?: Array<{sourceLang: string, targetLang: string, jobCount: number, tuCount: number}>, dryrun: boolean}>}
+     */
+    async bootstrap(tmStore, { dryrun = false, sourceLang, targetLang, parallelism = 4 } = {}) {
+        // 1. Get language pairs from TM store
+        /** @type {[string, string][]} */
+        const pairs = sourceLang && targetLang ?
+            /** @type {[string, string][]} */ ([[sourceLang, targetLang]]) :
+            await tmStore.getAvailableLangPairs();
+
+        if (dryrun) {
+            return { pairs, dryrun: true };
+        }
+
+        logInfo`Bootstrap from ${tmStore.id} [parallelism: ${parallelism}]`;
+
+        // 2. Run bootstrap in bootstrap mode (handles setup and cleanup)
+        const stats = await this.#DAL.withBootstrapMode(async () => {
+            this.#tmCache.clear();
+            const bootstrapQueue = fastq.promise(this, this.#bootstrapTask, parallelism);
+            const bootstrapPromises = pairs.map(([srcLang, tgtLang]) => bootstrapQueue.push({ tmStore, srcLang, tgtLang }));
+            return await Promise.all(bootstrapPromises);
+        });
+
+        // Clear TM cache since we need new TM instances with the new connection
+        this.#tmCache.clear();
+
+        return { pairs, stats, dryrun: false };
     }
 }

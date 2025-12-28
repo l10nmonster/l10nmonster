@@ -14,3 +14,9 @@ npx l10n --regression -v2 tm syncup storeB --commit --delete
 
 # Step 5: Export final status
 npx l10n --regression -v2 source list --statusFile status.json
+
+# Step 6: Bootstrap from storeA - wipes entire TM database and reloads
+npx l10n --regression -v2 tm bootstrap storeA --commit
+
+# Step 7: Export status after bootstrap
+npx l10n --regression -v2 source list --statusFile status-after-bootstrap.json

@@ -19,4 +19,10 @@ await config.verbose(3).regression(true).run(async ({l10n}) => {
 
     // Step 5: Export final status
     await l10n.source_list({ statusFile: 'status.json' });
+
+    // Step 6: Bootstrap from storeA - wipes entire TM database and reloads from storeA
+    await l10n.tm_bootstrap({ tmStore: 'storeA', commit: true });
+
+    // Step 7: Export status after bootstrap to verify
+    await l10n.source_list({ statusFile: 'status-after-bootstrap.json' });
 });

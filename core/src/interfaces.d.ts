@@ -1019,6 +1019,8 @@ export interface TMManagerInterface {
     syncDown(tmStore: TMStore, options: Record<string, unknown>): Promise<Array<{ sourceLang: string; targetLang: string; blocksToStore: string[]; jobsToDelete: string[] }>>;
     /** Sync up to a TM store. */
     syncUp(tmStore: TMStore, options: Record<string, unknown>): Promise<Array<{ sourceLang: string; targetLang: string; blocksToUpdate: [string, string[]][]; jobsToUpdate: string[] }>>;
+    /** Bootstrap the TM database from a TM store (DESTRUCTIVE). */
+    bootstrap(tmStore: TMStore, options?: { dryrun?: boolean; sourceLang?: string; targetLang?: string; parallelism?: number }): Promise<{ pairs: Array<[string, string]>; stats?: Array<{ sourceLang: string; targetLang: string; jobCount: number; tuCount: number }>; dryrun: boolean }>;
 }
 
 /**
@@ -1056,6 +1058,8 @@ export interface TMInterface {
     deleteTuKeys(tuKeys: Array<[string, string]>): Promise<{ deletedTusCount: number; touchedJobsCount: number }>;
     /** Delete empty jobs. */
     deleteEmptyJobs(dryrun?: boolean): Promise<number>;
+    /** Bootstrap this language pair with bulk data from a job iterator. */
+    bootstrap(jobIterator: AsyncIterable<JobPropsTusPair>, tmStoreId: string): Promise<{ jobCount: number; tuCount: number }>;
 }
 
 /**
@@ -1440,9 +1444,10 @@ export interface TuDAL {
     /**
      * Save multiple jobs with their translation units in a single transaction.
      * @param jobs - Array of job objects containing jobProps and tus.
-     * @param tmStoreId - Optional TM store ID.
+     * @param options - Options for saving jobs.
+     * @param options.tmStoreId - TM store ID to associate with saved jobs.
      */
-    saveJobs(jobs: Array<{jobProps: JobProps, tus: TU[]}>, tmStoreId?: string): Promise<void>;
+    saveJobs(jobs: Array<{jobProps: JobProps, tus: TU[]}>, options?: { tmStoreId?: string, updateRank?: boolean }): Promise<void>;
 
     /**
      * Delete a job and its TUs.
@@ -1555,6 +1560,14 @@ export interface TuDAL {
      * @returns Array of quality levels with counts.
      */
     getQualityDistribution(): Promise<Array<{ q: number; count: number }>>;
+
+    /**
+     * Runs a callback in bootstrap mode with deferred index creation.
+     * Automatically creates indexes and updates ranks when the callback completes.
+     * @param callback - The bootstrap operation to run.
+     * @returns The result of the callback.
+     */
+    withBootstrapMode<T>(callback: () => Promise<T>): Promise<T>;
 }
 
 // ============ Job DAL Interface ============
@@ -1668,6 +1681,14 @@ export interface DALManager {
      * Get the job DAL.
      */
     readonly job: JobDAL;
+
+    /**
+     * Runs a callback in bootstrap mode with optimal bulk insert settings.
+     * Automatically cleans up and switches back to normal WAL mode when done.
+     * @param callback - The bootstrap operation to run.
+     * @returns The result of the callback.
+     */
+    withBootstrapMode<T>(callback: () => Promise<T>): Promise<T>;
 
     /**
      * Shutdown the DAL manager.

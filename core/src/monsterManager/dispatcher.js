@@ -178,7 +178,7 @@ export default class Dispatcher {
             logInfo`Starting job ${job.jobGuid} with provider ${job.translationProvider}...`;
             const jobResponse = { ...await provider.start(job) };
             const blockIterator = this.#processJob(provider, jobResponse, job);
-            blockIterator && await this.#tmm.saveTmBlock(blockIterator);
+            blockIterator && await this.#tmm.getTM(job.sourceLang, job.targetLang).saveTmBlock(blockIterator);
             const { sourceLang, targetLang, jobGuid, translationProvider, status, statusDescription } = jobResponse;
             startedJobs.push({ sourceLang, targetLang, jobGuid, translationProvider, status, statusDescription });
         }
@@ -199,7 +199,7 @@ export default class Dispatcher {
             const jobResponse = await provider.continue(pendingJob);
             if (jobResponse) {
                 const blockIterator = this.#processJob(provider, jobResponse, pendingJob);
-                blockIterator && await this.#tmm.saveTmBlock(blockIterator);
+                blockIterator && await this.#tmm.getTM(pendingJob.sourceLang, pendingJob.targetLang).saveTmBlock(blockIterator);
                 logVerbose`Got status ${jobResponse.status} with ${jobResponse.tus.length} ${[jobResponse.tus, 'tu', 'tus']} segments for job ${jobGuid} and ${jobResponse.inflight?.length ?? 0} ${[jobResponse.inflight?.length ?? 0, 'tu', 'tus']} in flight`;
                 if (jobResponse?.status === 'pending') {
                     logInfo`Got ${jobResponse.tus.length} translations for job ${pendingJob.jobGuid} but there are still ${jobResponse.inflight?.length} translations in flight`;

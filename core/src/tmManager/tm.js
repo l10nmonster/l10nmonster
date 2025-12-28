@@ -1,3 +1,4 @@
+import { logWarn } from '../l10nContext.js';
 import { utils } from '../helpers/index.js';
 import { groupObjectsByNestedProps } from '../sharedFunctions.js';
 
@@ -5,6 +6,7 @@ import { groupObjectsByNestedProps } from '../sharedFunctions.js';
  * @typedef {import('../interfaces.js').TU} TU
  * @typedef {import('../interfaces.js').NormalizedString} NormalizedString
  * @typedef {import('../interfaces.js').DALManager} DALManager
+ * @typedef {import('../interfaces.js').JobPropsTusPair} JobPropsTusPair
  */
 
 /**
@@ -214,5 +216,78 @@ export class TM {
      */
     async getQualityDistribution() {
         return await this.#tuDAL.getQualityDistribution();
+    }
+
+    /**
+     * Maximum TUs per transaction when saving TM blocks.
+     * Larger values reduce transaction overhead but increase memory usage.
+     */
+    static MAX_TUS_PER_TRANSACTION = 50000;
+
+    /**
+     * Saves a TM block (iterator of jobs) to the database with chunked transactions.
+     * Jobs are batched together until adding the next job would exceed MAX_TUS_PER_TRANSACTION.
+     * @param {AsyncIterable<JobPropsTusPair>} tmBlockIterator - Iterator yielding job/TU pairs.
+     * @param {Object} [options] - Options for saving the TM block.
+     * @param {string} [options.tmStoreId] - TM store ID to associate with saved jobs.
+     * @param {boolean} [options.updateRank=true] - Whether to update TU ranks after saving.
+     * @returns {Promise<{jobs: Object[], tuCount: number}>} Saved job properties and total TU count.
+     */
+    async saveTmBlock(tmBlockIterator, { tmStoreId, updateRank = true } = {}) {
+        const jobs = [];
+        let jobBatch = [];
+        let batchTuCount = 0;
+        let totalTuCount = 0;
+
+        for await (const job of tmBlockIterator) {
+            if (!job) {
+                logWarn`Received a nullish job while saving a TM block`;
+                continue;
+            }
+
+            const { jobProps, tus } = job;
+            if (!tus?.length) {
+                logWarn`Ignoring empty job ${jobProps.jobGuid}`;
+                continue;
+            }
+
+            const jobTuCount = tus.length;
+
+            // If adding this job would exceed limit AND we have jobs, flush first
+            if (batchTuCount + jobTuCount > TM.MAX_TUS_PER_TRANSACTION && jobBatch.length > 0) {
+                await this.#tuDAL.saveJobs(jobBatch, { tmStoreId, updateRank });
+                jobs.push(...jobBatch.map(j => j.jobProps));
+                totalTuCount += batchTuCount;
+                jobBatch = [];
+                batchTuCount = 0;
+            }
+
+            jobBatch.push({ jobProps, tus });
+            batchTuCount += jobTuCount;
+        }
+
+        // Flush remaining batch
+        if (jobBatch.length > 0) {
+            await this.#tuDAL.saveJobs(jobBatch, { tmStoreId, updateRank });
+            jobs.push(...jobBatch.map(j => j.jobProps));
+            totalTuCount += batchTuCount;
+        }
+
+        return { jobs, tuCount: totalTuCount };
+    }
+
+    /**
+     * Bootstraps this language pair with bulk data from a job iterator.
+     * This is a destructive operation - the TM database should be wiped before calling.
+     * Jobs are batched by TU count to keep transaction sizes manageable.
+     * @param {AsyncIterable<JobPropsTusPair>} jobIterator - Iterator yielding job/TU pairs.
+     * @param {string} tmStoreId - TM store ID to associate with saved jobs.
+     * @returns {Promise<{jobCount: number, tuCount: number}>} Statistics about loaded data.
+     */
+    async bootstrap(jobIterator, tmStoreId) {
+        return await this.#tuDAL.withBootstrapMode(async () => {
+            const { jobs, tuCount } = await this.saveTmBlock(jobIterator, { tmStoreId, updateRank: false });
+            return { jobCount: jobs.length, tuCount };
+        });
     }
 }

@@ -935,6 +935,25 @@ interface TMManagerInterface {
 		][];
 		jobsToUpdate: string[];
 	}>>;
+	/** Bootstrap the TM database from a TM store (DESTRUCTIVE). */
+	bootstrap(tmStore: TMStore, options?: {
+		dryrun?: boolean;
+		sourceLang?: string;
+		targetLang?: string;
+		parallelism?: number;
+	}): Promise<{
+		pairs: Array<[
+			string,
+			string
+		]>;
+		stats?: Array<{
+			sourceLang: string;
+			targetLang: string;
+			jobCount: number;
+			tuCount: number;
+		}>;
+		dryrun: boolean;
+	}>;
 }
 interface TMInterface {
 	/** Source language code. */
@@ -1001,6 +1020,11 @@ interface TMInterface {
 	}>;
 	/** Delete empty jobs. */
 	deleteEmptyJobs(dryrun?: boolean): Promise<number>;
+	/** Bootstrap this language pair with bulk data from a job iterator. */
+	bootstrap(jobIterator: AsyncIterable<JobPropsTusPair>, tmStoreId: string): Promise<{
+		jobCount: number;
+		tuCount: number;
+	}>;
 }
 interface DispatcherInterface {
 	/** Array of registered providers. */
@@ -1326,12 +1350,18 @@ interface TuDAL {
 	 */
 	getEntriesByJobGuid(jobGuid: string): Promise<TU$1[]>;
 	/**
-	 * Save a job with its translation units.
-	 * @param jobProps - Job properties.
-	 * @param tus - Array of translation units.
-	 * @param tmStoreId - Optional TM store ID.
+	 * Save multiple jobs with their translation units in a single transaction.
+	 * @param jobs - Array of job objects containing jobProps and tus.
+	 * @param options - Options for saving jobs.
+	 * @param options.tmStoreId - TM store ID to associate with saved jobs.
 	 */
-	saveJob(jobProps: JobProps$1, tus: TU$1[], tmStoreId?: string): Promise<void>;
+	saveJobs(jobs: Array<{
+		jobProps: JobProps$1;
+		tus: TU$1[];
+	}>, options?: {
+		tmStoreId?: string;
+		updateRank?: boolean;
+	}): Promise<void>;
 	/**
 	 * Delete a job and its TUs.
 	 * @param jobGuid - Job GUID to delete.
@@ -1473,6 +1503,23 @@ interface TuDAL {
 		q: number;
 		count: number;
 	}>>;
+	/**
+	 * Runs a callback in bootstrap mode with deferred index creation.
+	 * Automatically creates indexes and updates ranks when the callback completes.
+	 * @param callback - The bootstrap operation to run.
+	 * @returns The result of the callback.
+	 */
+	withBootstrapMode<T>(callback: () => Promise<T>): Promise<T>;
+	/**
+	 * Inserts a batch of jobs in a single transaction without rank updates.
+	 * Used during bootstrap for maximum insert performance.
+	 * @param jobs - Jobs to insert.
+	 * @param tmStoreId - TM store ID.
+	 */
+	insertJobsForBootstrap(jobs: Array<{
+		jobProps: JobProps$1;
+		tus: TU$1[];
+	}>, tmStoreId: string): void;
 }
 interface JobDAL {
 	/**
@@ -1576,6 +1623,13 @@ interface DALManager {
 	 */
 	readonly job: JobDAL;
 	/**
+	 * Runs a callback in bootstrap mode with optimal bulk insert settings.
+	 * Automatically cleans up and switches back to normal WAL mode when done.
+	 * @param callback - The bootstrap operation to run.
+	 * @returns The result of the callback.
+	 */
+	withBootstrapMode<T>(callback: () => Promise<T>): Promise<T>;
+	/**
 	 * Shutdown the DAL manager.
 	 */
 	shutdown(): Promise<void>;
@@ -1644,6 +1698,11 @@ type NormalizerConstructorOptions = {
 	joiner?: Joiner;
 };
 declare class TM {
+	/**
+	 * Maximum TUs per transaction when saving TM blocks.
+	 * Larger values reduce transaction overhead but increase memory usage.
+	 */
+	static MAX_TUS_PER_TRANSACTION: number;
 	/**
 	 * Creates a new TM instance for a language pair.
 	 * @param {string} sourceLang - Source language code.
@@ -1780,11 +1839,40 @@ declare class TM {
 		q: number;
 		count: number;
 	}>>;
+	/**
+	 * Saves a TM block (iterator of jobs) to the database with chunked transactions.
+	 * Jobs are batched together until adding the next job would exceed MAX_TUS_PER_TRANSACTION.
+	 * @param {AsyncIterable<JobPropsTusPair>} tmBlockIterator - Iterator yielding job/TU pairs.
+	 * @param {Object} [options] - Options for saving the TM block.
+	 * @param {string} [options.tmStoreId] - TM store ID to associate with saved jobs.
+	 * @param {boolean} [options.updateRank=true] - Whether to update TU ranks after saving.
+	 * @returns {Promise<{jobs: Object[], tuCount: number}>} Saved job properties and total TU count.
+	 */
+	saveTmBlock(tmBlockIterator: AsyncIterable<JobPropsTusPair$1>, { tmStoreId, updateRank }?: {
+		tmStoreId?: string;
+		updateRank?: boolean;
+	}): Promise<{
+		jobs: any[];
+		tuCount: number;
+	}>;
+	/**
+	 * Bootstraps this language pair with bulk data from a job iterator.
+	 * This is a destructive operation - the TM database should be wiped before calling.
+	 * Jobs are batched by TU count to keep transaction sizes manageable.
+	 * @param {AsyncIterable<JobPropsTusPair>} jobIterator - Iterator yielding job/TU pairs.
+	 * @param {string} tmStoreId - TM store ID to associate with saved jobs.
+	 * @returns {Promise<{jobCount: number, tuCount: number}>} Statistics about loaded data.
+	 */
+	bootstrap(jobIterator: AsyncIterable<JobPropsTusPair$1>, tmStoreId: string): Promise<{
+		jobCount: number;
+		tuCount: number;
+	}>;
 	#private;
 }
 type TU$2 = TU$1;
 type NormalizedString$3 = NormalizedString$1;
 type DALManager$1 = DALManager;
+type JobPropsTusPair$1 = JobPropsTusPair;
 type TMStats = {
 	/**
 	 * - Total translation units.
@@ -2372,13 +2460,6 @@ declare class TMManager {
 	 */
 	generateJobGuid(): Promise<string>;
 	/**
-	 * Saves a TM block (iterator of jobs) to the database.
-	 * @param {AsyncIterable<JobPropsTusPair>} tmBlockIterator - Iterator yielding job/TU pairs.
-	 * @param {string} [tmStoreId] - TM store ID to associate with saved jobs.
-	 * @returns {Promise<Object[]>} Array of saved job properties.
-	 */
-	saveTmBlock(tmBlockIterator: AsyncIterable<JobPropsTusPair$1>, tmStoreId?: string): Promise<any[]>;
-	/**
 	 * Gets a TM instance for a language pair (cached).
 	 * @param {string} sourceLang - Source language code.
 	 * @param {string} targetLang - Target language code.
@@ -2460,7 +2541,7 @@ declare class TMManager {
 	 * @yields {JobPropsTusPair} Job properties and TUs pair.
 	 * @returns {AsyncGenerator<JobPropsTusPair>} Async generator of job/TU pairs.
 	 */
-	getJobPropsTusPair(jobGuids: string[]): AsyncGenerator<JobPropsTusPair$1>;
+	getJobPropsTusPair(jobGuids: string[]): AsyncGenerator<JobPropsTusPair$2>;
 	/**
 	 * Yields all jobs for a language pair.
 	 * @param {string} sourceLang - Source language code.
@@ -2476,10 +2557,40 @@ declare class TMManager {
 	 * @returns {Promise<void>}
 	 */
 	deleteJob(jobGuid: string): Promise<void>;
+	/**
+	 * Bootstraps the TM database from a TM store.
+	 * This is a DESTRUCTIVE operation that wipes all existing TM data.
+	 *
+	 * @param {TMStore} tmStore - The TM store to bootstrap from.
+	 * @param {Object} options - Bootstrap options.
+	 * @param {boolean} [options.dryrun=false] - If true, only report what would be done.
+	 * @param {string} [options.sourceLang] - Filter to specific source language.
+	 * @param {string} [options.targetLang] - Filter to specific target language.
+	 * @param {number} [options.parallelism=4] - Number of parallel operations.
+	 * @returns {Promise<{pairs: Array<[string, string]>, stats?: Array<{sourceLang: string, targetLang: string, jobCount: number, tuCount: number}>, dryrun: boolean}>}
+	 */
+	bootstrap(tmStore: TMStore$1, { dryrun, sourceLang, targetLang, parallelism }?: {
+		dryrun?: boolean;
+		sourceLang?: string;
+		targetLang?: string;
+		parallelism?: number;
+	}): Promise<{
+		pairs: Array<[
+			string,
+			string
+		]>;
+		stats?: Array<{
+			sourceLang: string;
+			targetLang: string;
+			jobCount: number;
+			tuCount: number;
+		}>;
+		dryrun: boolean;
+	}>;
 	#private;
 }
 type TMStore$1 = TMStore$4;
-type JobPropsTusPair$1 = JobPropsTusPair$4;
+type JobPropsTusPair$2 = JobPropsTusPair$5;
 type Job$1 = Job$6;
 type DALManager$3 = DALManager$4;
 type TmStoreInfo = {
@@ -3939,7 +4050,7 @@ declare class BaseJsonlTmStore implements TMStore$2 {
 	 * @param {string[]} blockIds - Array of block IDs to retrieve.
 	 * @returns {AsyncGenerator<JobPropsTusPair>} AsyncGenerator yielding job objects with TUs.
 	 */
-	getTmBlocks(sourceLang: string, targetLang: string, blockIds: string[]): AsyncGenerator<JobPropsTusPair$2>;
+	getTmBlocks(sourceLang: string, targetLang: string, blockIds: string[]): AsyncGenerator<JobPropsTusPair$3>;
 	/**
 	 * Gets the table of contents for a language pair.
 	 * @param {string} sourceLang - Source language code.
@@ -3959,7 +4070,7 @@ declare class BaseJsonlTmStore implements TMStore$2 {
 }
 type TMStore$2 = TMStore;
 type TMStoreTOC$1 = TMStoreTOC;
-type JobPropsTusPair$2 = JobPropsTusPair;
+type JobPropsTusPair$3 = JobPropsTusPair;
 type _FileStoreDelegate = FileStoreDelegate;
 declare class LegacyFileBasedTmStore implements _TMStore {
 	/**
@@ -4010,7 +4121,7 @@ declare class LegacyFileBasedTmStore implements _TMStore {
 	 * @param {string[]} blockIds - Array of block IDs to retrieve.
 	 * @returns {AsyncGenerator<JobPropsTusPair>} AsyncGenerator yielding job objects with TUs.
 	 */
-	getTmBlocks(sourceLang: string, targetLang: string, blockIds: string[]): AsyncGenerator<JobPropsTusPair$3>;
+	getTmBlocks(sourceLang: string, targetLang: string, blockIds: string[]): AsyncGenerator<JobPropsTusPair$4>;
 	/**
 	 * Gets the table of contents for a language pair.
 	 * @param {string} sourceLang - Source language code.
@@ -4024,7 +4135,7 @@ declare class LegacyFileBasedTmStore implements _TMStore {
 type _TMStore = TMStore;
 type _FileStoreDelegate$1 = FileStoreDelegate;
 type TMStoreTOC$2 = TMStoreTOC;
-type JobPropsTusPair$3 = JobPropsTusPair;
+type JobPropsTusPair$4 = JobPropsTusPair;
 declare class FsStoreDelegate implements FileStoreDelegate$1 {
 	/**
 	 * Creates a new FsStoreDelegate instance.
@@ -4701,7 +4812,7 @@ type TargetAdapter$4 = TargetAdapter;
 type TMStore$4 = TMStore;
 type TMStoreTOC$3 = TMStoreTOC;
 type TMStoreBlock$1 = TMStoreBlock;
-type JobPropsTusPair$4 = JobPropsTusPair;
+type JobPropsTusPair$5 = JobPropsTusPair;
 type SnapStore$3 = SnapStore;
 type JobProps$3 = JobProps$1;
 type Job$6 = Job;
@@ -4801,7 +4912,7 @@ export {
 	GenerateResourceParams$2 as GenerateResourceParams,
 	Job$6 as Job,
 	JobProps$3 as JobProps,
-	JobPropsTusPair$4 as JobPropsTusPair,
+	JobPropsTusPair$5 as JobPropsTusPair,
 	L10nAction$3 as L10nAction,
 	L10nActionClass$1 as L10nActionClass,
 	L10nMonsterConfig$1 as L10nMonsterConfig,
