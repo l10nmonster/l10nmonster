@@ -128,7 +128,7 @@ export class BaseJsonlTmStore {
         for (const blockId of blockIds) {
             const blockName = toc.blocks[blockId]?.blockName;
             if (blockName) {
-                logVerbose`Getting block ${blockId} from ${blockName} in TM Store ${this.id}`;
+                // logVerbose`Getting block ${blockId} from ${blockName} in TM Store ${this.id}`;
                 let reader = await this.delegate.getStream(blockName);
                 if (this.#compressBlocks) {
                     reader = reader.pipe(zlib.createGunzip());

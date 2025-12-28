@@ -104,9 +104,20 @@ export class MonsterManager {
      */
     static async run(monsterConfig, cb) {
         let mm;
+        let signalHandler;
         try {
             mm = new MonsterManager(monsterConfig);
             await mm.init();
+
+            // Register signal handlers for graceful shutdown
+            signalHandler = async (signal) => {
+                logVerbose`Received ${signal}, shutting down...`;
+                await mm.shutdown();
+                process.exit(0);
+            };
+            process.on('SIGINT', signalHandler);
+            process.on('SIGTERM', signalHandler);
+
             return await cb(mm);
         } catch(e) {
             logError`Exception thrown while running L10nMonsterConfig: ${e.stack ?? e.message}`;
@@ -115,6 +126,11 @@ export class MonsterManager {
             e.message = `${e.message}\n\nA complete log of this run can be found in: ${logFilePath}`;
             throw e;
         } finally {
+            // Remove signal handlers
+            if (signalHandler) {
+                process.off('SIGINT', signalHandler);
+                process.off('SIGTERM', signalHandler);
+            }
             mm && (await mm.shutdown());
         }
     }

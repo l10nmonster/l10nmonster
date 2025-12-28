@@ -13,6 +13,7 @@ export class TuDAL {
     #stmt = {}; // prepared statements
     #flatSrcIdxInitialized = false; // used to add the index as late as possible
     #indexesInitialized = false; // used to defer index creation until first read query
+    #rankIndexInitialized = false; // used to defer rank index creation until first rank update
 
     constructor(db, sourceLang, targetLang, DAL) {
         this.#db = db;
@@ -36,7 +37,7 @@ export class TuDAL {
                 tuOrder INTEGER,
                 rank INTEGER,
                 PRIMARY KEY (guid, jobGuid)
-            );
+            ) WITHOUT ROWID;
         `);
         db.function(
             'flattenNormalizedSourceToOrdinal',
@@ -54,10 +55,21 @@ export class TuDAL {
      * Ensures all indexes are created. Called before read operations.
      * Indexes are deferred to improve bulk insert performance (e.g., tm_syncdown on empty DB).
      */
-    #ensureIndexes() {
-        if (this.#indexesInitialized) return;
+    #ensureRankIndexes() {
+        if (this.#rankIndexInitialized) return;
+        logVerbose`Creating rank indexes for table ${this.#tusTable}...`;
         this.#db.exec(/* sql */`
             CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_jobGuid_guid ON ${this.#tusTable} (jobGuid, guid);
+            CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_guid_q_ts ON ${this.#tusTable} (guid, q DESC, ts DESC);
+        `);
+        this.#rankIndexInitialized = true;
+    }
+
+    #ensureIndexes() {
+        if (this.#indexesInitialized) return;
+        this.#ensureRankIndexes();
+        logVerbose`Creating other indexes for table ${this.#tusTable}...`;
+        this.#db.exec(/* sql */`
             CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_ts_rid_tuOrder ON ${this.#tusTable} (ts DESC, rid, tuOrder);
             CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_q_ts ON ${this.#tusTable} (q, ts DESC);
             CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_tconf_ts ON ${this.#tusTable} (tuProps->>'$.tconf', ts DESC);
@@ -233,6 +245,33 @@ export class TuDAL {
         return this.#stmt.updateRank.run({jobGuid, includeJob: includeJob ? 1 : 0});
     }
 
+    #getGuidsForJob(jobGuid) {
+        this.#stmt.getGuidsForJob ??= this.#db.prepare(/* sql */`
+            SELECT guid FROM ${this.#tusTable} WHERE jobGuid = ?;
+        `).pluck();
+        return this.#stmt.getGuidsForJob.all(jobGuid);
+    }
+
+    #updateRankForGuids(guids) {
+        if (guids.length === 0) return;
+        this.#stmt.updateRankForGuids ??= this.#db.prepare(/* sql */`
+            UPDATE ${this.#tusTable}
+            SET rank = t2.new_rank
+            FROM (
+                SELECT
+                    guid,
+                    jobGuid,
+                    ROW_NUMBER() OVER (PARTITION BY guid ORDER BY q DESC, ts DESC) as new_rank
+                FROM ${this.#tusTable}
+                WHERE guid IN (SELECT value FROM json_each(?))
+            ) AS t2
+            WHERE
+                ${this.#tusTable}.guid = t2.guid AND
+                ${this.#tusTable}.jobGuid = t2.jobGuid;
+        `);
+        return this.#stmt.updateRankForGuids.run(JSON.stringify(guids));
+    }
+
     /**
      * Sets or updates a job in the database.
      * @param {Object} job - The job object to set or update.
@@ -273,18 +312,40 @@ export class TuDAL {
         if (jobs.length === 0) return;
 
         this.#db.transaction(() => {
+            logVerbose`Starting transaction to save ${jobs.length} jobs to ${this.#tusTable}...`;
+            let tuCount = 0;
+            // Ensure rank-related indexes exist for getGuidsForJob and updateRankForGuids
+            this.#ensureRankIndexes();
+
+            const affectedGuids = new Set();
+
             for (const { jobProps, tus } of jobs) {
                 this.#upsertJobRow(jobProps, tmStoreId);
-                this.#updateRank(jobProps.jobGuid, false); // we need to update the rank in case some entries will be deleted
+
+                // Collect guids that will be affected by deleting this job's entries
+                for (const guid of this.#getGuidsForJob(jobProps.jobGuid)) {
+                    affectedGuids.add(guid);
+                }
+
                 this.#deleteEntriesByJobGuid(jobProps.jobGuid);
-                tus.forEach((tu, tuOrder) => this.#setEntry({
-                    ...tu,
-                    jobGuid: jobProps.jobGuid,
-                    tuOrder,
-                }));
-                this.#updateRank(jobProps.jobGuid, true);
+                tus.forEach((tu, tuOrder) => {
+                    this.#setEntry({
+                        ...tu,
+                        jobGuid: jobProps.jobGuid,
+                        tuOrder,
+                    });
+                    // Collect guids from newly inserted entries
+                    affectedGuids.add(tu.guid);
+                });
+                tuCount += tus.length;
             }
+            logVerbose`Saved ${tuCount} TUs for ${jobs.length} jobs`;
+            // Batch update ranks for all affected guids at once
+            this.#updateRankForGuids(Array.from(affectedGuids));
+            logVerbose`Updated ranks for ${affectedGuids.size} guids`;
         })();
+
+        logVerbose`Transaction completed`;
     }
 
     async deleteJob(jobGuid) {
@@ -417,9 +478,8 @@ export class TuDAL {
     async getTranslatedContentStatus(channelDAL) {
         this.#ensureIndexes();
         // Use covering index rank_guid_q on TU table - all TU data comes from index
-        // Use guid index on segments for fast join lookup
+        // Segments table uses PRIMARY KEY (guid) for fast join lookup
         const tuIdxName = `idx_${this.#tusTable}_rank_guid_q`;
-        const segIdxName = `idx_${channelDAL.segmentsTable}_guid`;
         const getTranslatedContentStatusStmt = this.#db.prepare(/* sql */`
             SELECT
                 COALESCE(seg.prj, 'default') prj,
@@ -431,7 +491,7 @@ export class TuDAL {
                 SUM(seg.chars) chars
             FROM
                 ${this.#tusTable} tu INDEXED BY ${tuIdxName}
-                INNER JOIN ${channelDAL.segmentsTable} seg INDEXED BY ${segIdxName}
+                INNER JOIN ${channelDAL.segmentsTable} seg
                     ON tu.guid = seg.guid
             WHERE tu.rank = 1
             AND seg.sourceLang = @sourceLang

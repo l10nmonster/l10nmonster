@@ -32,6 +32,10 @@ export default class SQLiteDALManager {
             } else {
                 this.#lazySourceDB = new Database(this.#sourceDBFilename);
                 this.#lazySourceDB.pragma('journal_mode = WAL');
+                this.#lazySourceDB.pragma('synchronous = OFF');
+                this.#lazySourceDB.pragma('temp_store = MEMORY');
+                this.#lazySourceDB.pragma('cache_size = -500000');
+                this.#lazySourceDB.pragma('threads = 4');
                 const version = this.#lazySourceDB.prepare('select sqlite_version();').pluck().get();
                 logVerbose`Initialized Source DB (${this.#sourceDBFilename}) with sqlite version ${version}`;
             }
@@ -45,7 +49,7 @@ export default class SQLiteDALManager {
                     resources INTEGER,
                     segments INTEGER,
                     PRIMARY KEY (channel)
-                );
+                ) WITHOUT ROWID;
             `);
             this.#lazySourceDB.function(
                 'flattenNormalizedSourceToOrdinal',
@@ -69,6 +73,10 @@ export default class SQLiteDALManager {
             } else {
                 this.#lazyTmDB = new Database(this.#tmDBFilename);
                 this.#lazyTmDB.pragma('journal_mode = WAL');
+                this.#lazyTmDB.pragma('synchronous = OFF');
+                this.#lazyTmDB.pragma('temp_store = MEMORY');
+                this.#lazyTmDB.pragma('cache_size = -500000');
+                this.#lazyTmDB.pragma('threads = 4');
                 this.#sourceDBFilename !== this.#tmDBFilename && this.#lazyTmDB.prepare('ATTACH ? as source;').run(this.#sourceDB.name);
                 const version = this.#lazyTmDB.prepare('select sqlite_version();').pluck().get();
                 logVerbose`Initialized TM DB (${this.#tmDBFilename}) with sqlite version ${version}`;

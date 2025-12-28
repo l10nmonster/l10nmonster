@@ -16,7 +16,7 @@ export class JobDAL {
                 jobProps TEXT,
                 tmStore TEXT,
                 PRIMARY KEY (jobGuid)
-            );
+            ) WITHOUT ROWID;
             CREATE INDEX IF NOT EXISTS idx_jobs_sourceLang_targetLang_translationProvider_status_jobGuid ON jobs (sourceLang, targetLang, translationProvider, status, jobGuid);
         `);
         const rows = (function *unrollJobs() {

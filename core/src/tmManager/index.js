@@ -113,7 +113,7 @@ export default class TMManager {
      * Maximum TUs per transaction when saving TM blocks.
      * Larger values reduce transaction overhead but increase memory usage.
      */
-    static MAX_TUS_PER_TRANSACTION = 10000;
+    static MAX_TUS_PER_TRANSACTION = 50000;
 
     /**
      * Saves a TM block (iterator of jobs) to the database with chunked transactions.
@@ -135,7 +135,7 @@ export default class TMManager {
 
             const { jobProps, tus } = job;
             if (!tus?.length) {
-                logVerbose`Ignoring empty job ${jobProps.jobGuid}`;
+                logWarn`Ignoring empty job ${jobProps.jobGuid}`;
                 continue;
             }
 
@@ -245,7 +245,7 @@ export default class TMManager {
     //         }
     // }
 
-    async #prepareSyncDownTask({ tmStore, sourceLang, targetLang, storeAlias }) {
+    async #syncDownTask({ tmStore, sourceLang, targetLang, dryrun, deleteExtraJobs, eraseParentTmStore, storeAlias }) {
         if (tmStore.access === 'writeonly') {
             throw new Error(`Cannot sync down ${tmStore.id} store because it is write-only!`);
         }
@@ -260,28 +260,25 @@ export default class TMManager {
         remoteJobsWithTmStoreMismatch.length > 0 && logWarn`  - ${sourceLang} → ${targetLang} TM Store mismatch: ${remoteJobsWithTmStoreMismatch.map(e => `${e.remoteJobGuid} (${e.tmStore})`).join(', ')}`;
         const blocksToStore = Array.from(new Set(remoteJobsWithTimestampMismatch.concat(remoteJobsMissingLocally).map(e => e.blockId)));
         const jobsToDelete = deltas.filter(e => e.tmStore === storeId && !e.remoteJobGuid).map(e => e.localJobGuid); // local jobs with the same store id, but missing remotely
+
+        if (!dryrun) {
+            if (blocksToStore.length > 0) {
+                logInfo`Storing ${blocksToStore.length} ${[blocksToStore.length, 'block', 'blocks']} from ${tmStore.id}(${sourceLang} → ${targetLang})`;
+                await this.saveTmBlock(tmStore.getTmBlocks(sourceLang, targetLang, blocksToStore), eraseParentTmStore ? null : storeAlias ?? tmStore.id);
+            }
+            if (deleteExtraJobs && jobsToDelete.length > 0) {
+                logInfo`Deleting ${jobsToDelete.length} ${[jobsToDelete.length, 'job', 'jobs']} (${sourceLang} → ${targetLang})`;
+                for (const jobGuid of jobsToDelete) {
+                    await this.deleteJob(jobGuid);
+                }
+            }
+        }
         return {
             sourceLang,
             targetLang,
             blocksToStore,
             jobsToDelete,
         };
-    }
-
-    async #syncDownTask({ tmStore, sourceLang, targetLang, blocksToStore, jobsToDelete, eraseParentTmStore, storeAlias }) {
-        if (blocksToStore.length === 0 && jobsToDelete.length === 0) {
-            return;
-        }
-        if (blocksToStore.length > 0) {
-            logInfo`Storing ${blocksToStore.length} ${[blocksToStore.length, 'block', 'blocks']} from ${tmStore.id}(${sourceLang} → ${targetLang})`;
-            await this.saveTmBlock(tmStore.getTmBlocks(sourceLang, targetLang, blocksToStore), eraseParentTmStore ? null : storeAlias ?? tmStore.id);
-        }
-        if (jobsToDelete.length > 0) {
-            logInfo`Deleting ${jobsToDelete.length} ${[jobsToDelete.length, 'job', 'jobs']} (${sourceLang} → ${targetLang})`;
-            for (const jobGuid of jobsToDelete) {
-                await this.deleteJob(jobGuid);
-            }
-        }
     }
 
     /**
@@ -293,14 +290,9 @@ export default class TMManager {
     async syncDown(tmStore, { dryrun, sourceLang, targetLang, deleteExtraJobs = false, eraseParentTmStore = false, storeAlias = null, parallelism = 4 }) {
         logInfo`Preparing sync down for store ${tmStore.id} [deleteExtraJobs: ${deleteExtraJobs}, eraseParentTmStore: ${eraseParentTmStore}, parallelism: ${parallelism}, storeAlias: ${storeAlias}]`;
         const pairs = sourceLang && targetLang ? [ [ sourceLang, targetLang ] ] : await tmStore.getAvailableLangPairs();
-        const prepareQueue = fastq.promise(this, this.#prepareSyncDownTask, parallelism);
-        const preparePromises = pairs.map(([ sourceLang, targetLang ]) => prepareQueue.push({ tmStore, sourceLang, targetLang, storeAlias }));
-        const syncDownStats = await Promise.all(preparePromises);
-        if (!dryrun) {
-            const syncDownQueue = fastq.promise(this, this.#syncDownTask, parallelism);
-            const syncDownPromises = syncDownStats.map(task => syncDownQueue.push({ tmStore, ...task, jobsToDelete: deleteExtraJobs ? task.jobsToDelete : [], eraseParentTmStore, storeAlias }));
-            await Promise.all(syncDownPromises);
-        }
+        const syncDownQueue = fastq.promise(this, this.#syncDownTask, parallelism);
+        const syncDownPromises = pairs.map(([ sourceLang, targetLang ]) => syncDownQueue.push({ tmStore, sourceLang, targetLang, dryrun, deleteExtraJobs, eraseParentTmStore, storeAlias }));
+        const syncDownStats = await Promise.all(syncDownPromises);
         return syncDownStats;
     }
 
