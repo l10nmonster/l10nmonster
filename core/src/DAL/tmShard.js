@@ -2,20 +2,21 @@ import * as fs from 'fs/promises';
 import Database from 'better-sqlite3';
 import { logVerbose } from '../l10nContext.js';
 import { TuDAL } from './tu.js';
-import { JobDAL } from './job.js';
 
 /**
  * Handles all TM operations for a single shard.
  * This class is designed to be moved to a worker thread in the future.
  * For now, it runs in the main thread and is called directly.
  * Later, calls will be replaced with message passing.
+ *
+ * Each TuDAL instance manages both TUs and jobs for its language pair.
+ * Jobs table is shared within the shard, but queries are scoped by language pair.
  */
 export class TmShard {
     #db;
     #shardIndex;
     #dbFilename;
     #sourceDBName;
-    #jobDAL;
     #tuDALCache = new Map();
     #bootstrapMode = false;
 
@@ -28,6 +29,15 @@ export class TmShard {
         this.#shardIndex = shardIndex;
         this.#dbFilename = dbFilename;
         this.#sourceDBName = sourceDBName;
+    }
+
+    /**
+     * Get the cache of TuDAL instances for this shard.
+     * Used by SQLiteDALManager for cross-shard aggregation.
+     * @returns {Map<string, TuDAL>}
+     */
+    get tuDALCache() {
+        return this.#tuDALCache;
     }
 
     /**
@@ -51,14 +61,6 @@ export class TmShard {
 
         const version = this.#db.prepare('select sqlite_version();').pluck().get();
         logVerbose`Initialized TM DB shard ${this.#shardIndex} (${this.#dbFilename}) with sqlite version ${version}`;
-
-        // JobDAL creates the jobs table and provides query methods
-        // All shards need the jobs table because TuDAL.saveJobs writes to it
-        // Only shard 0 exposes the jobDAL for querying (single source of truth for job metadata)
-        const jobDAL = new JobDAL(this.#db);
-        if (this.#shardIndex === 0) {
-            this.#jobDAL = jobDAL;
-        }
     }
 
     /**
@@ -77,27 +79,17 @@ export class TmShard {
     }
 
     /**
-     * Get JobDAL (only available in shard 0).
-     * @returns {JobDAL | undefined}
+     * Initialize the shard in bootstrap mode with optimal bulk insert settings.
+     * Deletes existing DB files, sets MEMORY journal mode, and clears cache.
+     * Call finalizeBootstrap() when done to switch to WAL mode.
      */
-    get jobDAL() {
-        return this.#jobDAL;
-    }
-
-    /**
-     * Runs a callback in bootstrap mode with optimal bulk insert settings.
-     * Automatically cleans up and switches back to normal WAL mode when done.
-     *
-     * @template T
-     * @param {() => Promise<T>} callback - The bootstrap operation to run.
-     * @returns {Promise<T>} The result of the callback.
-     */
-    async withBootstrapMode(callback) {
+    async initBootstrap() {
         // Close existing connection
         if (this.#db) {
             this.#db.close();
             this.#db = null;
         }
+
         // Delete TM database files
         if (this.#dbFilename !== ':memory:') {
             await fs.unlink(this.#dbFilename).catch(() => {});
@@ -105,20 +97,47 @@ export class TmShard {
             await fs.unlink(`${this.#dbFilename}-shm`).catch(() => {});
         }
         this.#tuDALCache.clear();
-        this.#jobDAL = null;
 
         // Set bootstrap mode BEFORE init so it uses MEMORY journal
         this.#bootstrapMode = true;
         this.init();
+    }
 
-        try {
-            return await callback();
-        } finally {
-            // Switch to WAL mode (MEMORY -> WAL should work without locking issues)
-            this.#db.pragma('journal_mode = WAL');
-            logVerbose`Set journal_mode to ${this.#db.pragma('journal_mode', { simple: true })}`;
-            this.#bootstrapMode = false;
+    /**
+     * Finalize bootstrap mode by switching to WAL journal mode.
+     * Call this after initBootstrap() and bulk operations are complete.
+     */
+    finalizeBootstrap() {
+        // Switch to WAL mode (MEMORY -> WAL should work without locking issues)
+        this.#db.pragma('journal_mode = WAL');
+        logVerbose`Set journal_mode to ${this.#db.pragma('journal_mode', { simple: true })}`;
+        this.#bootstrapMode = false;
+    }
+
+    /**
+     * Get all available language pairs in this shard by querying the jobs table.
+     * @param {import('./index.js').default} dalManager - Parent DAL manager.
+     * @returns {Array<[string, string]>} Array of [sourceLang, targetLang] tuples.
+     */
+    getAvailableLangPairs(dalManager) {
+        // Check if jobs table exists
+        const tableExists = this.#db.prepare(/* sql */`
+            SELECT name FROM sqlite_master WHERE type='table' AND name='jobs';
+        `).get();
+        if (!tableExists) {
+            return [];
         }
+
+        const rows = this.#db.prepare(/* sql */`
+            SELECT DISTINCT sourceLang, targetLang FROM jobs;
+        `).all();
+
+        // Initialize TuDALs for each pair found
+        for (const { sourceLang, targetLang } of rows) {
+            this.getTuDAL(sourceLang, targetLang, dalManager);
+        }
+
+        return rows.map(({ sourceLang, targetLang }) => [sourceLang, targetLang]);
     }
 
     /**

@@ -1510,48 +1510,42 @@ interface TuDAL {
 	 * @returns The result of the callback.
 	 */
 	withBootstrapMode<T>(callback: () => Promise<T>): Promise<T>;
+	// ========== Job Query Methods (scoped to this language pair) ==========
+	/** Source language code for this TuDAL instance. */
+	readonly sourceLang: string;
+	/** Target language code for this TuDAL instance. */
+	readonly targetLang: string;
 	/**
-	 * Inserts a batch of jobs in a single transaction without rank updates.
-	 * Used during bootstrap for maximum insert performance.
-	 * @param jobs - Jobs to insert.
-	 * @param tmStoreId - TM store ID.
+	 * Get job table of contents for this language pair.
+	 * @returns Array of job TOC entries.
 	 */
-	insertJobsForBootstrap(jobs: Array<{
-		jobProps: JobProps$1;
-		tus: TU$1[];
-	}>, tmStoreId: string): void;
-}
-interface JobDAL {
+	getJobTOC(): Promise<Array<{
+		jobGuid: string;
+		status: string;
+		translationProvider: string;
+		updatedAt: string;
+	}>>;
 	/**
-	 * Get all available language pairs that have jobs.
-	 * @returns Array of [sourceLang, targetLang] tuples.
+	 * Get a job by its GUID (scoped to this language pair).
+	 * @param jobGuid - Job GUID.
+	 * @returns Job object or undefined.
 	 */
-	getAvailableLangPairs(): Promise<Array<[
-		string,
-		string
-	]>>;
+	getJob(jobGuid: string): Promise<JobProps$1 | undefined>;
 	/**
-	 * Get job statistics grouped by language pair and TM store.
+	 * Get job count for this language pair.
+	 * @returns Number of jobs.
+	 */
+	getJobCount(): Promise<number>;
+	/**
+	 * Get job statistics for this language pair.
 	 * @returns Array of statistics objects.
 	 */
-	getStats(): Promise<Array<{
+	getJobStats(): Promise<Array<{
 		sourceLang: string;
 		targetLang: string;
 		tmStore: string;
 		jobCount: number;
 		lastUpdatedAt: string;
-	}>>;
-	/**
-	 * Get job table of contents for a language pair.
-	 * @param sourceLang - Source language code (null for all).
-	 * @param targetLang - Target language code (null for all).
-	 * @returns Array of job TOC entries.
-	 */
-	getJobTOCByLangPair(sourceLang: string | null, targetLang: string | null): Promise<Array<{
-		jobGuid: string;
-		status: string;
-		translationProvider: string;
-		updatedAt: string;
 	}>>;
 	/**
 	 * Set the TM store for a job.
@@ -1560,25 +1554,12 @@ interface JobDAL {
 	 */
 	setJobTmStore(jobGuid: string, tmStoreId: string): Promise<void>;
 	/**
-	 * Get a job by its GUID.
-	 * @param jobGuid - Job GUID.
-	 * @returns Job object or undefined.
-	 */
-	getJob(jobGuid: string): Promise<JobProps$1 | undefined>;
-	/**
-	 * Get total job count.
-	 * @returns Number of jobs.
-	 */
-	getJobCount(): Promise<number>;
-	/**
 	 * Get job deltas between local DB and remote TOC.
-	 * @param sourceLang - Source language code.
-	 * @param targetLang - Target language code.
 	 * @param toc - Remote table of contents.
 	 * @param storeId - TM store ID.
 	 * @returns Array of delta entries.
 	 */
-	getJobDeltas(sourceLang: string, targetLang: string, toc: TMStoreTOC, storeId: string): Promise<Array<{
+	getJobDeltas(toc: TMStoreTOC, storeId: string): Promise<Array<{
 		tmStore: string;
 		blockId: string;
 		localJobGuid: string | null;
@@ -1588,14 +1569,12 @@ interface JobDAL {
 	}>>;
 	/**
 	 * Get valid job IDs for a block.
-	 * @param sourceLang - Source language code.
-	 * @param targetLang - Target language code.
 	 * @param toc - Table of contents.
 	 * @param blockId - Block identifier.
 	 * @param storeId - TM store ID.
 	 * @returns Array of job GUIDs.
 	 */
-	getValidJobIds(sourceLang: string, targetLang: string, toc: TMStoreTOC, blockId: string, storeId: string): Promise<string[]>;
+	getValidJobIds(toc: TMStoreTOC, blockId: string, storeId: string): Promise<string[]>;
 }
 interface DALManager {
 	/** Active channel IDs. */
@@ -1618,10 +1597,37 @@ interface DALManager {
 	 * @returns TU DAL instance.
 	 */
 	tu(sourceLang: string, targetLang: string): TuDAL;
+	// ========== Cross-Shard Aggregation Methods ==========
 	/**
-	 * Get the job DAL.
+	 * Get all available language pairs across all shards.
+	 * @returns Array of [sourceLang, targetLang] tuples.
 	 */
-	readonly job: JobDAL;
+	getAvailableLangPairs(): Promise<Array<[
+		string,
+		string
+	]>>;
+	/**
+	 * Get total job count across all shards.
+	 * @returns Total number of jobs.
+	 */
+	getJobCount(): Promise<number>;
+	/**
+	 * Get a job by its GUID, searching all shards.
+	 * @param jobGuid - Job identifier.
+	 * @returns Job props or undefined.
+	 */
+	getJob(jobGuid: string): Promise<JobProps$1 | undefined>;
+	/**
+	 * Get job statistics across all shards.
+	 * @returns Array of statistics objects.
+	 */
+	getJobStats(): Promise<Array<{
+		sourceLang: string;
+		targetLang: string;
+		tmStore: string;
+		jobCount: number;
+		lastUpdatedAt: string;
+	}>>;
 	/**
 	 * Runs a callback in bootstrap mode with optimal bulk insert settings.
 	 * Automatically cleans up and switches back to normal WAL mode when done.
@@ -2814,6 +2820,79 @@ type StartedJobSummary = {
 	 */
 	statusDescription: string;
 };
+/** @typedef {import('../interfaces.js').DALManager} DALManagerInterface */
+/** @typedef {import('../interfaces.js').TuDAL} TuDAL */
+/**
+ * @typedef {Object} SQLiteDALManagerOptions
+ * @property {string} [sourceFilename] - Source DB filename (undefined = in-memory)
+ * @property {string} [tmFilename] - TM DB filename for shard 0 (undefined = in-memory)
+ * @property {Array<Array<[string, string]>>} [tmSharding] - Shard assignments
+ */
+/** @implements {DALManagerInterface} */
+export declare class SQLiteDALManager implements DALManagerInterface {
+	/**
+	 * @param {SQLiteDALManagerOptions} [options]
+	 */
+	constructor(options?: SQLiteDALManagerOptions);
+	activeChannels: any;
+	init(mm: any): Promise<void>;
+	channel(channelId: any): any;
+	tu(sourceLang: any, targetLang: any): any;
+	/**
+	 * Get all available language pairs across all shards.
+	 * @returns {Promise<Array<[string, string]>>} Array of [sourceLang, targetLang] tuples.
+	 */
+	getAvailableLangPairs(): Promise<Array<[
+		string,
+		string
+	]>>;
+	/**
+	 * Get total job count across all shards and language pairs.
+	 * @returns {Promise<number>} Total job count.
+	 */
+	getJobCount(): Promise<number>;
+	/**
+	 * Get a job by its GUID, searching all shards.
+	 * @param {string} jobGuid - Job identifier.
+	 * @returns {Promise<Object|undefined>} Job with parsed props, or undefined.
+	 */
+	getJob(jobGuid: string): Promise<any | undefined>;
+	/**
+	 * Get job statistics across all shards.
+	 * @returns {Promise<Array>} Array of statistics objects.
+	 */
+	getJobStats(): Promise<any[]>;
+	/**
+	 * Runs a callback in bootstrap mode with optimal bulk insert settings.
+	 * Automatically cleans up and switches back to normal WAL mode when done.
+	 * Note: This only bootstraps shard 0 currently.
+	 *
+	 * @template T
+	 * @param {() => Promise<T>} callback - The bootstrap operation to run.
+	 * @returns {Promise<T>} The result of the callback.
+	 */
+	withBootstrapMode<T>(callback: () => Promise<T>): Promise<T>;
+	shutdown(): Promise<void>;
+	#private;
+}
+type DALManagerInterface = DALManager;
+type SQLiteDALManagerOptions = {
+	/**
+	 * - Source DB filename (undefined = in-memory)
+	 */
+	sourceFilename?: string;
+	/**
+	 * - TM DB filename for shard 0 (undefined = in-memory)
+	 */
+	tmFilename?: string;
+	/**
+	 * - Shard assignments
+	 */
+	tmSharding?: Array<Array<[
+		string,
+		string
+	]>>;
+};
 /**
  * @typedef {import('../interfaces.js').TranslationProvider} TranslationProvider
  * @typedef {import('../interfaces.js').L10nAction} L10nAction
@@ -2829,8 +2908,9 @@ type StartedJobSummary = {
  * @property {TranslationProvider[]} [providers] - Array of translation providers
  * @property {object} [analyzers] - Additional analyzers to merge with default analyzers
  * @property {L10nAction[]} [actions] - Array of actions to merge with default actions
- * @property {string|boolean} [sourceDB] - Filename for the source database
- * @property {string|boolean} [tmDB] - Filename for the translation memory database
+ * @property {string|boolean} [sourceDB] - Legacy: Filename for the source database
+ * @property {string|boolean} [tmDB] - Legacy: Filename for the translation memory database
+ * @property {import('../DAL/index.js').default} [dalManagerInstance] - Custom DAL Manager instance
  * @property {Intl.NumberFormat} [currencyFormatter] - Custom currency formatter
  * @property {Function} [init] - Optional initialization function called during init()
  */
@@ -2953,13 +3033,17 @@ type L10nMonsterConfig = {
 	 */
 	actions?: L10nAction$1[];
 	/**
-	 * - Filename for the source database
+	 * - Legacy: Filename for the source database
 	 */
 	sourceDB?: string | boolean;
 	/**
-	 * - Filename for the translation memory database
+	 * - Legacy: Filename for the translation memory database
 	 */
 	tmDB?: string | boolean;
+	/**
+	 * - Custom DAL Manager instance
+	 */
+	dalManagerInstance?: SQLiteDALManager;
 	/**
 	 * - Custom currency formatter
 	 */
@@ -4711,6 +4795,13 @@ declare class L10nMonsterConfig$1 {
 		sourceDB?: string | boolean;
 		tmDB?: string | boolean;
 	}): L10nMonsterConfig$1;
+	/**
+	 * Sets the DAL Manager instance for database operations.
+	 * @param {import('./DAL/index.js').default} dalManagerInstance - The DAL Manager instance.
+	 * @returns {L10nMonsterConfig} Returns the config for method chaining.
+	 */
+	dalManager(dalManagerInstance: SQLiteDALManager): L10nMonsterConfig$1;
+	dalManagerInstance: SQLiteDALManager;
 	/**
 	 * Adds a TM store to the set of available TM Stores.
 	 * @param {import('../index.js').TMStore | Array<import('../index.js').TMStore>} storeInstance - The TM Store instance or array of instances.

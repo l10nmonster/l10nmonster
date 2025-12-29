@@ -17,6 +17,21 @@ export class TuDAL {
     #flatSrcIdxInitialized = false; // used to add the index as late as possible
     #indexesInitialized = false; // used to defer index creation until first read query
     #rankIndexInitialized = false; // used to defer rank index creation until first rank update
+    #lastTOC = {}; // for job delta queries (virtual table)
+
+    /**
+     * @returns {string} Source language code
+     */
+    get sourceLang() {
+        return this.#sourceLang;
+    }
+
+    /**
+     * @returns {string} Target language code
+     */
+    get targetLang() {
+        return this.#targetLang;
+    }
 
     constructor(db, sourceLang, targetLang, DAL) {
         this.#db = db;
@@ -24,7 +39,8 @@ export class TuDAL {
         this.#targetLang = targetLang;
         this.#DAL = DAL;
         this.#tusTable = `tus_${sourceLang}_${targetLang}`.replace(/[^a-zA-Z0-9_]/g, '_');
-        // Create table only - indexes are deferred until first read query for bulk insert performance
+
+        // Create TUs table - indexes are deferred until first read query for bulk insert performance
         this.#db.exec(/* sql */`
             CREATE TABLE IF NOT EXISTS ${this.#tusTable} (
                 guid TEXT NOT NULL,
@@ -41,6 +57,48 @@ export class TuDAL {
                 rank INTEGER
             );
         `);
+
+        // Create jobs table (per-shard, scoped to this language pair in queries)
+        this.#db.exec(/* sql */`
+            CREATE TABLE IF NOT EXISTS jobs(
+                jobGuid TEXT NOT NULL,
+                sourceLang TEXT NOT NULL,
+                targetLang TEXT NOT NULL,
+                translationProvider TEXT,
+                status TEXT,
+                updatedAt TEXT,
+                jobProps TEXT,
+                tmStore TEXT,
+                PRIMARY KEY (jobGuid)
+            ) WITHOUT ROWID;
+            CREATE INDEX IF NOT EXISTS idx_jobs_sourceLang_targetLang_translationProvider_status_jobGuid ON jobs (sourceLang, targetLang, translationProvider, status, jobGuid);
+        `);
+
+        // Virtual table for job delta queries
+        const rows = (function *unrollJobs() {
+            // Skip if TOC not yet set (getJobDeltas sets it before query)
+            if (!this.#lastTOC || !this.#lastTOC.blocks) {
+                return;
+            }
+            if (this.#lastTOC.v !== 1) {
+                throw new Error(`Invalid TOC version: ${this.#lastTOC.v}`);
+            }
+            for (const [blockId, blockProps] of Object.entries(this.#lastTOC.blocks)) {
+                const { modified, jobs } = blockProps;
+                for (const [ jobGuid, updatedAt ] of jobs) {
+                    yield { blockId, modified, jobGuid, updatedAt };
+                }
+            }
+        }).bind(this);
+        try {
+            db.table('last_toc', {
+                columns: ['blockId', 'modified', 'jobGuid', 'updatedAt'],
+                rows,
+            });
+        } catch {
+            // Table may already exist from another TuDAL instance in the same DB
+        }
+
         db.function(
             'flattenNormalizedSourceToOrdinal',
             { deterministic: true },
@@ -341,6 +399,52 @@ export class TuDAL {
     }
 
     /**
+     * Upserts job metadata (insert or update).
+     * @param {Object} completeJobProps - Complete job properties including jobGuid, sourceLang, targetLang, status, updatedAt, translationProvider, and other props.
+     * @param {string} [tmStoreId] - Optional TM store ID.
+     */
+    #upsertJobRow(completeJobProps, tmStoreId) {
+        this.#stmt.upsertJob ??= this.#db.prepare(/* sql */`
+            INSERT INTO jobs (sourceLang, targetLang, jobGuid, status, updatedAt, translationProvider, jobProps, tmStore)
+            VALUES (@sourceLang, @targetLang, @jobGuid, @status, @updatedAt, @translationProvider, @jobProps, @tmStoreId)
+            ON CONFLICT (jobGuid) DO UPDATE SET
+                sourceLang = excluded.sourceLang,
+                targetLang = excluded.targetLang,
+                status = excluded.status,
+                updatedAt = excluded.updatedAt,
+                translationProvider = excluded.translationProvider,
+                jobProps = excluded.jobProps,
+                tmStore = excluded.tmStore
+            WHERE excluded.jobGuid = jobs.jobGuid;
+        `);
+        const { jobGuid, sourceLang, targetLang, status, updatedAt, translationProvider, ...jobProps } = completeJobProps;
+        const result = this.#stmt.upsertJob.run({
+            jobGuid,
+            sourceLang,
+            targetLang,
+            status,
+            updatedAt: updatedAt ?? new Date().toISOString(),
+            translationProvider,
+            jobProps: JSON.stringify(jobProps),
+            tmStoreId
+        });
+        if (result.changes !== 1) {
+            throw new Error(`Expecting to change a row but changed ${result}`);
+        }
+    }
+
+    /**
+     * Deletes a job's metadata from the jobs table.
+     * @param {string} jobGuid - Job identifier to delete.
+     */
+    #deleteJobRow(jobGuid) {
+        this.#stmt.deleteJobRow ??= this.#db.prepare(/* sql */`
+            DELETE FROM jobs WHERE jobGuid = ?;
+        `);
+        this.#stmt.deleteJobRow.run(jobGuid);
+    }
+
+    /**
      * Saves multiple jobs in a single transaction.
      * @param {Array<{jobProps: Object, tus: Array}>} jobs - Array of jobs to save
      * @param {Object} [options] - Options
@@ -349,12 +453,6 @@ export class TuDAL {
      */
     async saveJobs(jobs, { tmStoreId, updateRank = true } = {}) {
         if (jobs.length === 0) return;
-
-        // Upsert job metadata to shard 0 (centralized job registry) before TU transaction
-        // This ensures job queries work correctly with sharding
-        for (const { jobProps } of jobs) {
-            this.#DAL.job.upsertJob(jobProps, tmStoreId);
-        }
 
         this.#db.transaction(() => {
             logVerbose`Starting transaction to save ${jobs.length} jobs to ${this.#tusTable}...`;
@@ -365,6 +463,9 @@ export class TuDAL {
             const affectedGuids = new Set();
 
             for (const { jobProps, tus } of jobs) {
+                // Upsert job metadata in the same transaction (same DB, atomic)
+                this.#upsertJobRow(jobProps, tmStoreId);
+
                 if (updateRank) {
                 // Collect guids that will be affected by deleting this job's entries
                     for (const guid of this.#getGuidsForJob(jobProps.jobGuid)) {
@@ -383,12 +484,12 @@ export class TuDAL {
                     affectedGuids.add(tu.guid);
                 });
             }
-            logVerbose`Saved ${affectedGuids.size} TUs for ${jobs.length} jobs`;
+            logVerbose`Saved ${affectedGuids.size.toLocaleString()} TUs for ${jobs.length.toLocaleString()} jobs`;
 
             if (updateRank) {
             // Batch update ranks for all affected guids at once
                 this.#updateRankForGuids(Array.from(affectedGuids));
-                logVerbose`Updated ranks for ${affectedGuids.size} guids`;
+                logVerbose`Updated ranks for ${affectedGuids.size.toLocaleString()} guids`;
             }
         })();
 
@@ -399,9 +500,9 @@ export class TuDAL {
         this.#db.transaction(() => {
             this.#updateRank(jobGuid, false); // we need to update the rank for the job before deleting the entries
             this.#deleteEntriesByJobGuid(jobGuid);
+            // Delete job metadata in the same transaction (same DB, atomic)
+            this.#deleteJobRow(jobGuid);
         })();
-        // Delete job metadata from shard 0 (centralized job registry)
-        this.#DAL.job.deleteJob(jobGuid);
     }
 
     async getExactMatches(nsrc) {
@@ -1037,5 +1138,136 @@ export class TuDAL {
             ORDER BY q;
         `);
         return this.#stmt.getQualityDistribution.all();
+    }
+
+    // ========== Job Query Methods (scoped to this language pair) ==========
+
+    /**
+     * Get job table of contents for this language pair.
+     * @returns {Promise<Array<{jobGuid: string, status: string, translationProvider: string, updatedAt: string}>>}
+     */
+    async getJobTOC() {
+        this.#stmt.getJobTOC ??= this.#db.prepare(/* sql */`
+            SELECT jobGuid, status, translationProvider, updatedAt
+            FROM jobs
+            WHERE sourceLang = ? AND targetLang = ?
+            ORDER BY updatedAt DESC;
+        `);
+        return this.#stmt.getJobTOC.all(this.#sourceLang, this.#targetLang);
+    }
+
+    /**
+     * Get a job by its GUID (scoped to this language pair).
+     * @param {string} jobGuid - Job identifier.
+     * @returns {Promise<Object|undefined>} Job with parsed props, or undefined.
+     */
+    async getJob(jobGuid) {
+        this.#stmt.getJob ??= this.#db.prepare(/* sql */`
+            SELECT
+                jobGuid,
+                jobProps,
+                sourceLang,
+                targetLang,
+                translationProvider,
+                status,
+                updatedAt
+            FROM jobs WHERE jobGuid = ? AND sourceLang = ? AND targetLang = ?;
+        `);
+        const jobRow = this.#stmt.getJob.get(jobGuid, this.#sourceLang, this.#targetLang);
+        if (jobRow) {
+            const { jobProps, ...basicProps } = jobRow;
+            return { ...basicProps, ...JSON.parse(jobProps) };
+        }
+    }
+
+    /**
+     * Get job count for this language pair.
+     * @returns {Promise<number>}
+     */
+    async getJobCount() {
+        this.#stmt.getJobCount ??= this.#db.prepare(/* sql */`
+            SELECT count(*) FROM jobs WHERE sourceLang = ? AND targetLang = ?;
+        `).pluck();
+        return this.#stmt.getJobCount.get(this.#sourceLang, this.#targetLang);
+    }
+
+    /**
+     * Get job statistics for this language pair.
+     * @returns {Promise<Array<{sourceLang: string, targetLang: string, tmStore: string, jobCount: number, lastUpdatedAt: string}>>}
+     */
+    async getJobStats() {
+        this.#stmt.getJobStats ??= this.#db.prepare(/* sql */`
+            SELECT
+                sourceLang,
+                targetLang,
+                tmStore,
+                COUNT(*) jobCount,
+                MAX(updatedAt) lastUpdatedAt
+            FROM jobs
+            WHERE sourceLang = ? AND targetLang = ?
+            GROUP BY 1, 2, 3
+            ORDER BY 5 DESC;
+        `);
+        return this.#stmt.getJobStats.all(this.#sourceLang, this.#targetLang);
+    }
+
+    /**
+     * Set the TM store for a job.
+     * @param {string} jobGuid - Job identifier.
+     * @param {string} tmStoreId - TM store identifier.
+     */
+    async setJobTmStore(jobGuid, tmStoreId) {
+        this.#stmt.setJobTmStore ??= this.#db.prepare(/* sql */`
+            UPDATE jobs SET tmStore = ? WHERE jobGuid = ? AND sourceLang = ? AND targetLang = ?;
+        `);
+        return this.#stmt.setJobTmStore.run(tmStoreId, jobGuid, this.#sourceLang, this.#targetLang);
+    }
+
+    /**
+     * Get job deltas between local DB and remote TOC.
+     * @param {Object} toc - Remote table of contents.
+     * @param {string} storeId - TM store identifier.
+     * @returns {Promise<Array>} Array of delta objects.
+     */
+    async getJobDeltas(toc, storeId) {
+        this.#stmt.getJobDeltas ??= this.#db.prepare(/* sql */`
+            SELECT
+                tmStore,
+                blockId,
+                j.jobGuid localJobGuid,
+                lt.jobGuid remoteJobGuid,
+                j.updatedAt localUpdatedAt,
+                lt.updatedAt remoteUpdatedAt
+            FROM (
+                SELECT tmStore, jobGuid, updatedAt
+                FROM jobs
+                WHERE sourceLang = ? AND targetLang = ?
+            ) j
+            FULL JOIN last_toc lt USING (jobGuid)
+            WHERE j.updatedAt != lt.updatedAt
+               OR j.updatedAt IS NULL
+               OR lt.updatedAt IS NULL
+               OR (j.tmStore IS NOT NULL AND j.tmStore != ?)
+        `);
+        this.#lastTOC = toc;
+        return this.#stmt.getJobDeltas.all(this.#sourceLang, this.#targetLang, storeId);
+    }
+
+    /**
+     * Get valid job IDs for a block.
+     * @param {Object} toc - Remote table of contents.
+     * @param {string} blockId - Block identifier.
+     * @param {string} storeId - TM store identifier.
+     * @returns {Promise<string[]>} Array of job GUIDs.
+     */
+    async getValidJobIds(toc, blockId, storeId) {
+        this.#stmt.getValidJobIds ??= this.#db.prepare(/* sql */`
+            SELECT jobs.jobGuid
+            FROM jobs JOIN last_toc USING (jobGuid)
+            WHERE sourceLang = ? AND targetLang = ? AND blockId = ?
+              AND jobs.tmStore = ?;
+        `).pluck();
+        this.#lastTOC = toc;
+        return this.#stmt.getValidJobIds.all(this.#sourceLang, this.#targetLang, blockId, storeId);
     }
 }

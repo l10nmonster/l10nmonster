@@ -1,16 +1,21 @@
 import { suite, test, beforeEach, afterEach } from 'node:test';
 import assert from 'node:assert/strict';
 import Database from 'better-sqlite3';
-import { JobDAL } from '../src/DAL/job.js';
+import { TuDAL } from '../src/DAL/tu.js';
 
 suite('TM Store Mismatch Tests', () => {
     let db;
-    let jobDAL;
+    let tuDAL;
 
     beforeEach(() => {
         db = new Database(':memory:');
         db.pragma('journal_mode = WAL');
-        jobDAL = new JobDAL(db);
+        // Create a mock DAL manager with empty activeChannels
+        const mockDAL = {
+            activeChannels: new Set(),
+            channel: () => { throw new Error('No channels in test'); }
+        };
+        tuDAL = new TuDAL(db, 'en', 'es', mockDAL);
     });
 
     afterEach(() => {
@@ -46,7 +51,7 @@ suite('TM Store Mismatch Tests', () => {
             };
 
             // Call getJobDeltas with storeId = 'storeB' (different store)
-            const deltas = await jobDAL.getJobDeltas('en', 'es', toc, 'storeB');
+            const deltas = await tuDAL.getJobDeltas(toc, 'storeB');
 
             // Job should appear in deltas due to TM store mismatch
             assert.equal(deltas.length, 1);
@@ -75,7 +80,7 @@ suite('TM Store Mismatch Tests', () => {
             };
 
             // Call getJobDeltas with storeId = 'storeA' (same store)
-            const deltas = await jobDAL.getJobDeltas('en', 'es', toc, 'storeA');
+            const deltas = await tuDAL.getJobDeltas(toc, 'storeA');
 
             // Job should NOT appear in deltas (timestamps match, same store)
             assert.equal(deltas.length, 0);
@@ -100,7 +105,7 @@ suite('TM Store Mismatch Tests', () => {
                 }
             };
 
-            const deltas = await jobDAL.getJobDeltas('en', 'es', toc, 'storeA');
+            const deltas = await tuDAL.getJobDeltas(toc, 'storeA');
 
             // Job should appear because timestamps differ
             assert.equal(deltas.length, 1);
@@ -120,7 +125,7 @@ suite('TM Store Mismatch Tests', () => {
                 }
             };
 
-            const deltas = await jobDAL.getJobDeltas('en', 'es', toc, 'storeA');
+            const deltas = await tuDAL.getJobDeltas(toc, 'storeA');
 
             assert.equal(deltas.length, 1);
             assert.equal(deltas[0].remoteJobGuid, 'remoteOnlyJob');
@@ -137,7 +142,7 @@ suite('TM Store Mismatch Tests', () => {
                 blocks: {}
             };
 
-            const deltas = await jobDAL.getJobDeltas('en', 'es', toc, 'storeA');
+            const deltas = await tuDAL.getJobDeltas(toc, 'storeA');
 
             assert.equal(deltas.length, 1);
             assert.equal(deltas[0].localJobGuid, 'localOnlyJob');
@@ -170,7 +175,7 @@ suite('TM Store Mismatch Tests', () => {
                 }
             };
 
-            const validIds = await jobDAL.getValidJobIds('en', 'es', toc, 'block1', 'storeA');
+            const validIds = await tuDAL.getValidJobIds(toc, 'block1', 'storeA');
 
             // Should only return jobs assigned to storeA
             assert.equal(validIds.length, 2);
@@ -200,7 +205,7 @@ suite('TM Store Mismatch Tests', () => {
                 }
             };
 
-            const validIds = await jobDAL.getValidJobIds('en', 'es', toc, 'block1', 'storeA');
+            const validIds = await tuDAL.getValidJobIds(toc, 'block1', 'storeA');
 
             // Should only return assigned job, exclude NULL tmStore
             assert.equal(validIds.length, 1);
@@ -225,7 +230,7 @@ suite('TM Store Mismatch Tests', () => {
                 }
             };
 
-            const validIds = await jobDAL.getValidJobIds('en', 'es', toc, 'block1', 'storeA');
+            const validIds = await tuDAL.getValidJobIds(toc, 'block1', 'storeA');
 
             // No jobs assigned to storeA
             assert.equal(validIds.length, 0);

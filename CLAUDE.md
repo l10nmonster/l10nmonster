@@ -70,10 +70,9 @@ L10n Monster is a headless, serverless Translation Management System (TMS) desig
 - **Translation Pipeline**: 4-stage modular pipeline (Source Adapter → Format Filter → Translator → Target Adapter)
 - **Entity Management**: Jobs, translation units (TUs), sources, and translation memory blocks
 - **Managers**: MonsterManager (analysis), OpsManager (operations), ResourceManager, TmManager (translation memory)
-- **Data Access Layer (DAL)**: SQLite-based storage with three main DALs:
+- **Data Access Layer (DAL)**: SQLite-based storage with two main DALs:
   - `ChannelDAL`: Source content and snapshots
-  - `TuDAL`: Translation memory entries per language pair
-  - `JobDAL`: Job metadata and history
+  - `TuDAL`: Translation memory entries and job metadata per language pair (supports per-shard storage with cross-shard aggregation)
 - **Plugin System**: Extensible adapters, filters, normalizers, providers, and stores
 
 **@l10nmonster/cli**: Command-line interface built with Commander.js providing the `l10n` command for localization operations.

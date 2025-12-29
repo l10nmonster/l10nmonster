@@ -102,7 +102,7 @@ export default class TMManager {
      */
     async generateJobGuid() {
         if (getRegressionMode()) {
-            const jobCount = await this.#DAL.job.getJobCount();
+            const jobCount = await this.#DAL.getJobCount();
             return `xxx${jobCount}xxx`;
         } else {
             return nanoid();
@@ -196,7 +196,8 @@ export default class TMManager {
         }
         const storeId = storeAlias ?? tmStore.id;
         const toc = await tmStore.getTOC(sourceLang, targetLang);
-        const deltas = await this.#DAL.job.getJobDeltas(toc.sourceLang, toc.targetLang, toc, storeId);
+        const tuDAL = this.#DAL.tu(toc.sourceLang, toc.targetLang);
+        const deltas = await tuDAL.getJobDeltas(toc, storeId);
         const remoteJobs = deltas.filter(e => e.remoteJobGuid);
         const remoteJobsWithTimestampMismatch = remoteJobs.filter(e => e.tmStore === storeId);
         const remoteJobsMissingLocally = remoteJobs.filter(e => !e.localJobGuid);
@@ -247,7 +248,8 @@ export default class TMManager {
     async #prepareSyncUpTask({ tmStore, sourceLang, targetLang, deleteEmptyBlocks = false, includeUnassigned = false, storeAlias = null }) {
         const storeId = storeAlias ?? tmStore.id;
         const toc = await tmStore.getTOC(sourceLang, targetLang);
-        const deltas = await this.#DAL.job.getJobDeltas(toc.sourceLang, toc.targetLang, toc, storeId);
+        const tuDAL = this.#DAL.tu(toc.sourceLang, toc.targetLang);
+        const deltas = await tuDAL.getJobDeltas(toc, storeId);
 
         // first go over differences with jobs that exist remotely in the tm store, these need to be updated by block
         const remoteJobs = deltas.filter(e => e.remoteJobGuid);
@@ -258,7 +260,7 @@ export default class TMManager {
         const blocksToUpdateMap = {};
         for (const { blockId } of remoteJobsToUpdate) {
             if (!blocksToUpdateMap[blockId]) {
-                const validJobIds = await this.#DAL.job.getValidJobIds(toc.sourceLang, toc.targetLang, toc, blockId, storeId);
+                const validJobIds = await tuDAL.getValidJobIds(toc, blockId, storeId);
                 if (validJobIds.length > 0 || deleteEmptyBlocks) { // delete empty blocks only if allowed
                     blocksToUpdateMap[blockId] = validJobIds;
                 }
@@ -290,6 +292,7 @@ export default class TMManager {
             return;
         }
         const storeId = storeAlias ?? tmStore.id;
+        const tuDAL = this.#DAL.tu(sourceLang, targetLang);
         await tmStore.getWriter(sourceLang, targetLang, async writeTmBlock => {
             const updatedJobs = new Set();
             if (blocksToUpdate.length > 0) {
@@ -298,7 +301,7 @@ export default class TMManager {
                     await writeTmBlock({ blockId }, this.getJobPropsTusPair(jobs));
                     for (const jobGuid of jobs) {
                         updatedJobs.add(jobGuid);
-                        assignUnassigned && await this.#DAL.job.setJobTmStore(jobGuid, storeId);
+                        assignUnassigned && await tuDAL.setJobTmStore(jobGuid, storeId);
                     }
                 }
             }
@@ -312,12 +315,12 @@ export default class TMManager {
                     for (const jobGuid of filteredJobsToUpdate) {
                         const { tus, ...jobProps } = await this.getJob(jobGuid);
                         await writeTmBlock({ translationProvider: jobProps.translationProvider, blockId: jobGuid}, [ { jobProps, tus } ]);
-                        assignUnassigned && await this.#DAL.job.setJobTmStore(jobGuid, storeId);
+                        assignUnassigned && await tuDAL.setJobTmStore(jobGuid, storeId);
                     }
                 } else if (tmStore.partitioning === 'provider') {
                     const jobsByProvider = {};
                     for (const jobGuid of filteredJobsToUpdate) {
-                        const job = await this.#DAL.job.getJob(jobGuid);
+                        const job = await this.#DAL.getJob(jobGuid);
                         jobsByProvider[job.translationProvider] ??= [];
                         jobsByProvider[job.translationProvider].push(job.jobGuid);
                     }
@@ -325,7 +328,7 @@ export default class TMManager {
                         await writeTmBlock({ translationProvider, blockId: await this.generateJobGuid() }, this.getJobPropsTusPair(jobs));
                         if (assignUnassigned) {
                             for (const jobGuid of jobs) {
-                                await this.#DAL.job.setJobTmStore(jobGuid, storeId);
+                                await tuDAL.setJobTmStore(jobGuid, storeId);
                             }
                         }
                     }
@@ -333,7 +336,7 @@ export default class TMManager {
                     await writeTmBlock({ blockId: await this.generateJobGuid() }, this.getJobPropsTusPair(filteredJobsToUpdate));
                     if (assignUnassigned) {
                         for (const jobGuid of filteredJobsToUpdate) {
-                            await this.#DAL.job.setJobTmStore(jobGuid, storeId);
+                            await tuDAL.setJobTmStore(jobGuid, storeId);
                         }
                     }
                 }
@@ -373,7 +376,7 @@ export default class TMManager {
      * @returns {Promise<Array<[string, string]>>} Array of [sourceLang, targetLang] pairs.
      */
     async getAvailableLangPairs() {
-        return await this.#DAL.job.getAvailableLangPairs();
+        return await this.#DAL.getAvailableLangPairs();
     }
 
     /**
@@ -381,7 +384,7 @@ export default class TMManager {
      * @returns {Promise<Object>} Statistics grouped by sourceLang -> targetLang.
      */
     async getStats() {
-        const rawStats = await this.#DAL.job.getStats();
+        const rawStats = await this.#DAL.getJobStats();
         return groupObjectsByNestedProps(rawStats, [ 'sourceLang', 'targetLang' ]);
     }
 
@@ -392,7 +395,7 @@ export default class TMManager {
      * @returns {Promise<Object[]>} Array of job entries with metadata.
      */
     async getJobTOCByLangPair(sourceLang, targetLang) {
-        return await this.#DAL.job.getJobTOCByLangPair(sourceLang, targetLang);
+        return await this.#DAL.tu(sourceLang, targetLang).getJobTOC();
     }
 
     /**
@@ -401,7 +404,7 @@ export default class TMManager {
      * @returns {Promise<Job|undefined>} The job with TUs, or undefined if not found.
      */
     async getJob(jobGuid) {
-        const jobRow = await this.#DAL.job.getJob(jobGuid);
+        const jobRow = await this.#DAL.getJob(jobGuid);
         if (jobRow) {
             const tus = await this.#DAL.tu(jobRow.sourceLang, jobRow.targetLang).getEntriesByJobGuid(jobGuid);
             const inflight = tus.filter(tu => tu.inflight).map(tu => tu.guid);
@@ -421,7 +424,7 @@ export default class TMManager {
      */
     async *getJobPropsTusPair(jobGuids) {
         for (const jobGuid of jobGuids) {
-            const jobProps = await this.#DAL.job.getJob(jobGuid);
+            const jobProps = await this.#DAL.getJob(jobGuid);
             const tus = await this.#DAL.tu(jobProps.sourceLang, jobProps.targetLang).getEntriesByJobGuid(jobGuid);
             yield { jobProps, tus };
         }
@@ -435,7 +438,7 @@ export default class TMManager {
      * @returns {AsyncGenerator<Job>} Async generator of jobs.
      */
     async *getAllJobs(sourceLang, targetLang) {
-        const allJobs = (await this.#DAL.job.getJobTOCByLangPair(sourceLang, targetLang)).map(e => e.jobGuid);
+        const allJobs = (await this.#DAL.tu(sourceLang, targetLang).getJobTOC()).map(e => e.jobGuid);
         for (const jobGuid of allJobs) {
             yield await this.getJob(jobGuid);
         }
@@ -448,7 +451,7 @@ export default class TMManager {
      * @returns {Promise<void>}
      */
     async deleteJob(jobGuid) {
-        const job = await this.#DAL.job.getJob(jobGuid);
+        const job = await this.#DAL.getJob(jobGuid);
         if (!job) {
             throw new Error(`Job ${jobGuid} does not exist`);
         }
@@ -470,7 +473,7 @@ export default class TMManager {
         const jobIterator = tmStore.getTmBlocks(srcLang, tgtLang, blockIds);
         const tm = this.getTM(srcLang, tgtLang);
         const pairStats = await tm.bootstrap(jobIterator, tmStore.id);
-        logInfo`  Loaded ${pairStats.jobCount} jobs, ${pairStats.tuCount} TUs into ${srcLang} → ${tgtLang} TU table`;
+        logInfo`  Loaded ${pairStats.jobCount.toLocaleString()} jobs, ${pairStats.tuCount.toLocaleString()} TUs into ${srcLang} → ${tgtLang} TU table`;
         return { sourceLang: srcLang, targetLang: tgtLang, ...pairStats };
     }
 

@@ -4,6 +4,7 @@ import { SourceShard } from './sourceShard.js';
 import { TmShard } from './tmShard.js';
 
 /** @typedef {import('../interfaces.js').DALManager} DALManagerInterface */
+/** @typedef {import('../interfaces.js').TuDAL} TuDAL */
 
 /**
  * @typedef {Object} SQLiteDALManagerOptions
@@ -113,36 +114,142 @@ export default class SQLiteDALManager {
     }
 
     tu(sourceLang, targetLang) {
-        // eslint-disable-next-line no-unused-vars
-        const jobDAL = this.job; // need to make sure job DAL is initialized first because it's used by the TU DAL
         const shardIndex = this.#getShardIndex(sourceLang, targetLang);
         return this.#getTmShard(shardIndex).getTuDAL(sourceLang, targetLang, this);
     }
 
-    get job() {
-        // Jobs are always in TM shard 0
-        return this.#getTmShard(0).jobDAL;
+    // ========== Aggregation Methods (cross-shard queries) ==========
+
+    /**
+     * Get all TuDAL instances across all shards.
+     * Ensures all shards are initialized and TuDALs are cached.
+     * @returns {TuDAL[]} Array of TuDAL instances.
+     */
+    #getAllTuDALs() {
+        // Ensure all shards are initialized and TuDALs are cached
+        for (const shardIndex of this.#tmDBFilenames.keys()) {
+            const shard = this.#getTmShard(shardIndex);
+            shard.getAvailableLangPairs(this); // This initializes TuDALs for all pairs in the shard
+        }
+
+        const tuDALs = [];
+        for (const shard of this.#tmShards.values()) {
+            for (const tuDAL of shard.tuDALCache.values()) {
+                tuDALs.push(tuDAL);
+            }
+        }
+        return tuDALs;
+    }
+
+    /**
+     * Get all available language pairs across all shards.
+     * Queries the database directly for distinct language pairs with jobs.
+     * @returns {Promise<Array<[string, string]>>} Array of [sourceLang, targetLang] tuples.
+     */
+    async getAvailableLangPairs() {
+
+        /** @type {Array<[string, string]>} */
+        const pairs = [];
+
+        // Query each configured shard for available language pairs
+        for (const shardIndex of this.#tmDBFilenames.keys()) {
+            const shard = this.#getTmShard(shardIndex);
+            const shardPairs = shard.getAvailableLangPairs(this);
+            pairs.push(...shardPairs);
+        }
+        return pairs;
+    }
+
+    /**
+     * Get total job count across all shards and language pairs.
+     * @returns {Promise<number>} Total job count.
+     */
+    async getJobCount() {
+        let total = 0;
+        for (const tuDAL of this.#getAllTuDALs()) {
+            total += await tuDAL.getJobCount();
+        }
+        return total;
+    }
+
+    /**
+     * Get a job by its GUID, searching all shards.
+     * @param {string} jobGuid - Job identifier.
+     * @returns {Promise<Object|undefined>} Job with parsed props, or undefined.
+     */
+    async getJob(jobGuid) {
+        for (const tuDAL of this.#getAllTuDALs()) {
+            const job = await tuDAL.getJob(jobGuid);
+            if (job) return job;
+        }
+        return undefined;
+    }
+
+    /**
+     * Get job statistics across all shards.
+     * @returns {Promise<Array>} Array of statistics objects.
+     */
+    async getJobStats() {
+        const stats = [];
+        for (const tuDAL of this.#getAllTuDALs()) {
+            const tuStats = await tuDAL.getJobStats();
+            stats.push(...tuStats);
+        }
+        return stats;
     }
 
     /**
      * Runs a callback in bootstrap mode with optimal bulk insert settings.
      * Automatically cleans up and switches back to normal WAL mode when done.
-     * Note: This only bootstraps shard 0 currently.
+     * All shards are bootstrapped (cleaned and initialized with MEMORY journal).
      *
      * @template T
      * @param {() => Promise<T>} callback - The bootstrap operation to run.
      * @returns {Promise<T>} The result of the callback.
      */
     async withBootstrapMode(callback) {
-        // Clear existing TM shards - they'll be recreated by the shard's bootstrap mode
+        // Clear existing TM shards - they'll be recreated in bootstrap mode
         for (const shard of this.#tmShards.values()) {
             shard.shutdown();
         }
         this.#tmShards.clear();
 
-        // Bootstrap shard 0
-        const shard = this.#getTmShard(0);
-        return shard.withBootstrapMode(callback);
+        // Bootstrap ALL configured shards (not just shard 0)
+        const shardIndicesToBootstrap = Array.from(this.#tmDBFilenames.keys());
+        const bootstrappedShards = [];
+
+        for (const shardIndex of shardIndicesToBootstrap) {
+            const shard = await this.#getTmShardForBootstrap(shardIndex);
+            bootstrappedShards.push(shard);
+        }
+
+        try {
+            return await callback();
+        } finally {
+            // Switch all shards to WAL mode
+            for (const shard of bootstrappedShards) {
+                shard.finalizeBootstrap();
+            }
+        }
+    }
+
+    /**
+     * Get or create a TM shard in bootstrap mode.
+     * @param {number} shardIndex
+     * @returns {Promise<TmShard>}
+     */
+    async #getTmShardForBootstrap(shardIndex) {
+        const filename = this.#tmDBFilenames.get(shardIndex) ?? this.#tmDBFilenames.get(0);
+
+        // Check if TM DB is same as source DB (single file mode)
+        const sourceDBName = (filename !== this.#sourceDBFilename && this.#sourceDBFilename !== ':memory:') ?
+            this.#getSourceShard().db.name :
+            null;
+
+        const shard = new TmShard(shardIndex, filename, sourceDBName);
+        await shard.initBootstrap(); // Initialize in bootstrap mode
+        this.#tmShards.set(shardIndex, shard);
+        return shard;
     }
 
     async shutdown() {

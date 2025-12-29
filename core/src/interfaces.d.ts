@@ -1568,34 +1568,39 @@ export interface TuDAL {
      * @returns The result of the callback.
      */
     withBootstrapMode<T>(callback: () => Promise<T>): Promise<T>;
-}
 
-// ============ Job DAL Interface ============
+    // ========== Job Query Methods (scoped to this language pair) ==========
 
-/**
- * Job Data Access Layer interface.
- * Provides access to job metadata.
- */
-export interface JobDAL {
-    /**
-     * Get all available language pairs that have jobs.
-     * @returns Array of [sourceLang, targetLang] tuples.
-     */
-    getAvailableLangPairs(): Promise<Array<[string, string]>>;
+    /** Source language code for this TuDAL instance. */
+    readonly sourceLang: string;
+
+    /** Target language code for this TuDAL instance. */
+    readonly targetLang: string;
 
     /**
-     * Get job statistics grouped by language pair and TM store.
-     * @returns Array of statistics objects.
-     */
-    getStats(): Promise<Array<{ sourceLang: string; targetLang: string; tmStore: string; jobCount: number; lastUpdatedAt: string }>>;
-
-    /**
-     * Get job table of contents for a language pair.
-     * @param sourceLang - Source language code (null for all).
-     * @param targetLang - Target language code (null for all).
+     * Get job table of contents for this language pair.
      * @returns Array of job TOC entries.
      */
-    getJobTOCByLangPair(sourceLang: string | null, targetLang: string | null): Promise<Array<{ jobGuid: string; status: string; translationProvider: string; updatedAt: string }>>;
+    getJobTOC(): Promise<Array<{ jobGuid: string; status: string; translationProvider: string; updatedAt: string }>>;
+
+    /**
+     * Get a job by its GUID (scoped to this language pair).
+     * @param jobGuid - Job GUID.
+     * @returns Job object or undefined.
+     */
+    getJob(jobGuid: string): Promise<JobProps | undefined>;
+
+    /**
+     * Get job count for this language pair.
+     * @returns Number of jobs.
+     */
+    getJobCount(): Promise<number>;
+
+    /**
+     * Get job statistics for this language pair.
+     * @returns Array of statistics objects.
+     */
+    getJobStats(): Promise<Array<{ sourceLang: string; targetLang: string; tmStore: string; jobCount: number; lastUpdatedAt: string }>>;
 
     /**
      * Set the TM store for a job.
@@ -1605,27 +1610,12 @@ export interface JobDAL {
     setJobTmStore(jobGuid: string, tmStoreId: string): Promise<void>;
 
     /**
-     * Get a job by its GUID.
-     * @param jobGuid - Job GUID.
-     * @returns Job object or undefined.
-     */
-    getJob(jobGuid: string): Promise<JobProps | undefined>;
-
-    /**
-     * Get total job count.
-     * @returns Number of jobs.
-     */
-    getJobCount(): Promise<number>;
-
-    /**
      * Get job deltas between local DB and remote TOC.
-     * @param sourceLang - Source language code.
-     * @param targetLang - Target language code.
      * @param toc - Remote table of contents.
      * @param storeId - TM store ID.
      * @returns Array of delta entries.
      */
-    getJobDeltas(sourceLang: string, targetLang: string, toc: TMStoreTOC, storeId: string): Promise<Array<{
+    getJobDeltas(toc: TMStoreTOC, storeId: string): Promise<Array<{
         tmStore: string;
         blockId: string;
         localJobGuid: string | null;
@@ -1636,21 +1626,19 @@ export interface JobDAL {
 
     /**
      * Get valid job IDs for a block.
-     * @param sourceLang - Source language code.
-     * @param targetLang - Target language code.
      * @param toc - Table of contents.
      * @param blockId - Block identifier.
      * @param storeId - TM store ID.
      * @returns Array of job GUIDs.
      */
-    getValidJobIds(sourceLang: string, targetLang: string, toc: TMStoreTOC, blockId: string, storeId: string): Promise<string[]>;
+    getValidJobIds(toc: TMStoreTOC, blockId: string, storeId: string): Promise<string[]>;
 }
 
 // ============ DAL Manager Interface ============
 
 /**
  * Data Access Layer manager interface.
- * Provides access to channel, TU, and job DALs.
+ * Provides access to channel and TU DALs, plus cross-shard aggregation methods.
  */
 export interface DALManager {
     /** Active channel IDs. */
@@ -1677,10 +1665,32 @@ export interface DALManager {
      */
     tu(sourceLang: string, targetLang: string): TuDAL;
 
+    // ========== Cross-Shard Aggregation Methods ==========
+
     /**
-     * Get the job DAL.
+     * Get all available language pairs across all shards.
+     * @returns Array of [sourceLang, targetLang] tuples.
      */
-    readonly job: JobDAL;
+    getAvailableLangPairs(): Promise<Array<[string, string]>>;
+
+    /**
+     * Get total job count across all shards.
+     * @returns Total number of jobs.
+     */
+    getJobCount(): Promise<number>;
+
+    /**
+     * Get a job by its GUID, searching all shards.
+     * @param jobGuid - Job identifier.
+     * @returns Job props or undefined.
+     */
+    getJob(jobGuid: string): Promise<JobProps | undefined>;
+
+    /**
+     * Get job statistics across all shards.
+     * @returns Array of statistics objects.
+     */
+    getJobStats(): Promise<Array<{ sourceLang: string; targetLang: string; tmStore: string; jobCount: number; lastUpdatedAt: string }>>;
 
     /**
      * Runs a callback in bootstrap mode with optimal bulk insert settings.
@@ -1717,7 +1727,10 @@ export class SQLiteDALManager implements DALManager {
     init(mm: MonsterManager): Promise<void>;
     channel(channelId: string): ChannelDAL;
     tu(sourceLang: string, targetLang: string): TuDAL;
-    readonly job: JobDAL;
+    getAvailableLangPairs(): Promise<Array<[string, string]>>;
+    getJobCount(): Promise<number>;
+    getJob(jobGuid: string): Promise<JobProps | undefined>;
+    getJobStats(): Promise<Array<{ sourceLang: string; targetLang: string; tmStore: string; jobCount: number; lastUpdatedAt: string }>>;
     withBootstrapMode<T>(callback: () => Promise<T>): Promise<T>;
     shutdown(): Promise<void>;
 }

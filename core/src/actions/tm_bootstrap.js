@@ -59,11 +59,11 @@ export const tm_bootstrap = {
             let totalJobs = 0;
             let totalTus = 0;
             for (const stat of result.stats) {
-                consoleLog`  - ${stat.sourceLang} -> ${stat.targetLang}: ${stat.jobCount} jobs, ${stat.tuCount} TUs`;
+                consoleLog`  - ${stat.sourceLang} -> ${stat.targetLang}: ${stat.jobCount.toLocaleString()} jobs, ${stat.tuCount.toLocaleString()} TUs`;
                 totalJobs += stat.jobCount;
                 totalTus += stat.tuCount;
             }
-            consoleLog`\nTotal: ${totalJobs} jobs, ${totalTus} TUs`;
+            consoleLog`\nTotal: ${totalJobs.toLocaleString()} jobs, ${totalTus.toLocaleString()} TUs`;
         }
 
         return result;
