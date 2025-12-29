@@ -23,8 +23,9 @@ import { analyzeCmd } from './analyze.js';
  * @property {TranslationProvider[]} [providers] - Array of translation providers
  * @property {object} [analyzers] - Additional analyzers to merge with default analyzers
  * @property {L10nAction[]} [actions] - Array of actions to merge with default actions
- * @property {string|boolean} [sourceDB] - Filename for the source database
- * @property {string|boolean} [tmDB] - Filename for the translation memory database
+ * @property {string|boolean} [sourceDB] - Legacy: Filename for the source database
+ * @property {string|boolean} [tmDB] - Legacy: Filename for the translation memory database
+ * @property {import('../DAL/index.js').default} [dalManagerInstance] - Custom DAL Manager instance
  * @property {Intl.NumberFormat} [currencyFormatter] - Custom currency formatter
  * @property {Function} [init] - Optional initialization function called during init()
  */
@@ -51,7 +52,19 @@ export class MonsterManager {
     constructor(monsterConfig) {
         this.#configInitializer = monsterConfig.init?.bind(monsterConfig);
 
-        this.#dalManager = new SQLiteDALManager(monsterConfig.sourceDB, monsterConfig.tmDB);
+        if (monsterConfig.dalManagerInstance) {
+            this.#dalManager = monsterConfig.dalManagerInstance;
+        } else {
+            // Legacy support: convert old sourceDB/tmDB to new format
+            // sourceDB/tmDB can be: undefined (default), false (in-memory), true (default), or string (custom path)
+            const sourceFilename = monsterConfig.sourceDB === false ?
+undefined :
+                (typeof monsterConfig.sourceDB === 'string' ? monsterConfig.sourceDB : 'l10nmonsterSource.db');
+            const tmFilename = monsterConfig.tmDB === false ?
+undefined :
+                (typeof monsterConfig.tmDB === 'string' ? monsterConfig.tmDB : 'l10nmonsterTM.db');
+            this.#dalManager = new SQLiteDALManager({ sourceFilename, tmFilename });
+        }
 
         let channels;
         if (typeof monsterConfig.channels === 'object') {

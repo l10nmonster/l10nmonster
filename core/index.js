@@ -72,6 +72,7 @@ export { consoleLog, logError, logWarn, logInfo, logVerbose, styleString, setVer
 export { TU } from './src/entities/tu.js';
 export { L10nMonsterConfig, ChannelConfig, ResourceFormatConfig, MessageFormatConfig, config } from './src/l10nMonsterConfig.js';
 export { MonsterManager } from './src/monsterManager/index.js';
+export { default as SQLiteDALManager } from './src/DAL/index.js';
 export * as opsManager from './src/opsManager/index.js';
 
 export * from './src/helpers/index.js';

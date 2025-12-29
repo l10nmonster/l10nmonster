@@ -693,6 +693,16 @@ export class L10nMonsterConfig {
     }
 
     /**
+     * Sets the DAL Manager instance for database operations.
+     * @param {import('./DAL/index.js').default} dalManagerInstance - The DAL Manager instance.
+     * @returns {L10nMonsterConfig} Returns the config for method chaining.
+     */
+    dalManager(dalManagerInstance) {
+        this.dalManagerInstance = dalManagerInstance;
+        return this;
+    }
+
+    /**
      * Adds a TM store to the set of available TM Stores.
      * @param {import('../index.js').TMStore | Array<import('../index.js').TMStore>} storeInstance - The TM Store instance or array of instances.
      * @returns {L10nMonsterConfig} Returns the config for method chaining.

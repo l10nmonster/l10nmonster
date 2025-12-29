@@ -1,27 +1,67 @@
-import * as fs from 'fs/promises';
 import * as path from 'path';
-import Database from 'better-sqlite3';
 import { getBaseDir, logVerbose } from '../l10nContext.js';
-import { utils } from '../helpers/index.js';
-import { ChannelDAL } from './channel.js';
-import { TuDAL } from './tu.js';
-import { JobDAL } from './job.js';
+import { SourceShard } from './sourceShard.js';
+import { TmShard } from './tmShard.js';
 
 /** @typedef {import('../interfaces.js').DALManager} DALManagerInterface */
 
+/**
+ * @typedef {Object} SQLiteDALManagerOptions
+ * @property {string} [sourceFilename] - Source DB filename (undefined = in-memory)
+ * @property {string} [tmFilename] - TM DB filename for shard 0 (undefined = in-memory)
+ * @property {Array<Array<[string, string]>>} [tmSharding] - Shard assignments
+ */
+
 /** @implements {DALManagerInterface} */
 export default class SQLiteDALManager {
+    #sourceShard;
+    #tmShards = new Map();
+    #shardMap = new Map();
     #sourceDBFilename;
-    #tmDBFilename;
-    #lazySourceDB;
-    #lazyTmDB;
-    #dalCache = new Map();
-    #bootstrapMode = false;
+    #tmDBFilenames = new Map();
     activeChannels;
 
-    constructor(sourceDB, tmDB) {
-        this.#sourceDBFilename = sourceDB === undefined ? path.join(getBaseDir(), 'l10nmonsterSource.db') : (sourceDB === false ? ':memory:' : sourceDB);
-        this.#tmDBFilename = tmDB === undefined ? path.join(getBaseDir(), 'l10nmonsterTM.db') : (tmDB === false ? ':memory:' : tmDB);
+    /**
+     * @param {SQLiteDALManagerOptions} [options]
+     */
+    constructor(options = {}) {
+        const { sourceFilename, tmFilename, tmSharding } = options;
+
+        // Validation: both or neither
+        if ((sourceFilename === undefined) !== (tmFilename === undefined)) {
+            throw new Error('Both sourceFilename and tmFilename must be defined, or neither');
+        }
+
+        // Validation: no sharding with in-memory
+        if (tmSharding && sourceFilename === undefined) {
+            throw new Error('tmSharding requires file-based databases (sourceFilename and tmFilename must be defined)');
+        }
+
+        // Set filenames (undefined means in-memory)
+        this.#sourceDBFilename = sourceFilename ?
+            path.join(getBaseDir(), sourceFilename) :
+            ':memory:';
+
+        this.#tmDBFilenames.set(0, tmFilename ?
+            path.join(getBaseDir(), tmFilename) :
+            ':memory:');
+
+        // Build shard map and filenames from tmSharding config
+        if (tmSharding) {
+            const ext = path.extname(tmFilename);
+            const base = tmFilename.slice(0, -ext.length);
+
+            tmSharding.forEach((pairs, index) => {
+                const shardIndex = index + 1; // 1-based
+                pairs.forEach(([src, tgt]) => {
+                    this.#shardMap.set(`${src}#${tgt}`, shardIndex);
+                });
+                // e.g., "l10nmonsterTM.db" → "l10nmonsterTM_1.db"
+                this.#tmDBFilenames.set(shardIndex, path.join(getBaseDir(), `${base}_${shardIndex}${ext}`));
+            });
+        }
+
+        logVerbose`SQLiteDALManager initialized with source: ${this.#sourceDBFilename}, TM shards: ${this.#tmDBFilenames.size}`;
     }
 
     async init(mm) {
@@ -29,147 +69,91 @@ export default class SQLiteDALManager {
         this.activeChannels = new Set(mm.rm.channelIds);
     }
 
-    get #sourceDB() {
-        if (!this.#lazySourceDB) {
-            if (this.#sourceDBFilename === this.#tmDBFilename && this.#lazyTmDB) {
-                this.#lazySourceDB = this.#lazyTmDB;
-                logVerbose`Source DB initialized from TM DB`;
-            } else {
-                this.#lazySourceDB = new Database(this.#sourceDBFilename);
-                this.#lazySourceDB.pragma('journal_mode = WAL');
-                this.#lazySourceDB.pragma('synchronous = OFF');
-                this.#lazySourceDB.pragma('temp_store = MEMORY');
-                this.#lazySourceDB.pragma('cache_size = -500000');
-                this.#lazySourceDB.pragma('threads = 4');
-                const version = this.#lazySourceDB.prepare('select sqlite_version();').pluck().get();
-                logVerbose`Initialized Source DB (${this.#sourceDBFilename}) with sqlite version ${version}`;
-            }
-            // store -- id if channel populated from a store
-            // ts -- milliseconds of last snap or ts of store used for importing
-            this.#lazySourceDB.exec(/* sql */`
-                CREATE TABLE IF NOT EXISTS channel_toc (
-                    channel TEXT NOT NULL,
-                    store TEXT,
-                    ts INTEGER,
-                    resources INTEGER,
-                    segments INTEGER,
-                    PRIMARY KEY (channel)
-                ) WITHOUT ROWID;
-            `);
-            this.#lazySourceDB.function(
-                'flattenNormalizedSourceToOrdinal',
-                { deterministic: true },
-                nstr => {
-                    if (nstr === null || nstr === undefined) return null;
-                    const parsed = JSON.parse(nstr);
-                    if (!Array.isArray(parsed)) return null;
-                    return utils.flattenNormalizedSourceToOrdinal(parsed);
-                }
-            );
+    #getSourceShard() {
+        if (!this.#sourceShard) {
+            this.#sourceShard = new SourceShard(this.#sourceDBFilename);
+            this.#sourceShard.init();
         }
-        return this.#lazySourceDB;
+        return this.#sourceShard;
     }
 
-    get #tmDB() {
-        if (!this.#lazyTmDB) {
-            if (this.#sourceDBFilename === this.#tmDBFilename && this.#lazySourceDB && !this.#bootstrapMode) {
-                this.#lazyTmDB = this.#lazySourceDB;
-                logVerbose`TM DB initialized from Source DB`;
+    #getTmShard(shardIndex) {
+        if (!this.#tmShards.has(shardIndex)) {
+            const filename = this.#tmDBFilenames.get(shardIndex) ?? this.#tmDBFilenames.get(0);
+
+            // Check if TM DB is same as source DB (single file mode)
+            if (filename === this.#sourceDBFilename) {
+                // For single-file mode, we need to use the same DB connection
+                // Pass the source shard's db to the TM shard
+                const shard = new TmShard(shardIndex, filename, null);
+                shard.init();
+                this.#tmShards.set(shardIndex, shard);
             } else {
-                this.#lazyTmDB = new Database(this.#tmDBFilename);
-                const journalMode = this.#bootstrapMode ? 'MEMORY' : 'WAL';
-                this.#lazyTmDB.pragma(`journal_mode = ${journalMode}`);
-                logVerbose`Set journal_mode to ${this.#lazyTmDB.pragma('journal_mode', { simple: true })}`;
-                this.#lazyTmDB.pragma('synchronous = OFF');
-                this.#lazyTmDB.pragma('temp_store = MEMORY');
-                this.#lazyTmDB.pragma('cache_size = -500000');
-                this.#lazyTmDB.pragma('threads = 4');
-                if (this.#sourceDBFilename !== this.#tmDBFilename) {
-                    this.#lazyTmDB.prepare('ATTACH ? as source;').run(this.#sourceDB.name);
-                }
-                const version = this.#lazyTmDB.prepare('select sqlite_version();').pluck().get();
-                logVerbose`Initialized TM DB (${this.#tmDBFilename}) with sqlite version ${version}`;
+                // Attach source DB to TM DB for cross-DB queries
+                const sourceDBName = this.#sourceDBFilename !== ':memory:' ?
+                    this.#getSourceShard().db.name :
+                    null;
+                const shard = new TmShard(shardIndex, filename, sourceDBName);
+                shard.init();
+                this.#tmShards.set(shardIndex, shard);
             }
         }
-        return this.#lazyTmDB;
+        return this.#tmShards.get(shardIndex);
+    }
+
+    #getShardIndex(sourceLang, targetLang) {
+        return this.#shardMap.get(`${sourceLang}#${targetLang}`) ?? 0;
     }
 
     channel(channelId) {
         if (!this.activeChannels.has(channelId)) {
             throw new Error(`Invalid channel reference: ${channelId}`);
         }
-        if (this.#dalCache.has(channelId)) {
-            return this.#dalCache.get(channelId);
-        }
-        const dal = new ChannelDAL(this.#sourceDB, channelId);
-        this.#dalCache.set(channelId, dal);
-        return dal;
+        return this.#getSourceShard().getChannelDAL(channelId);
     }
 
     tu(sourceLang, targetLang) {
         // eslint-disable-next-line no-unused-vars
         const jobDAL = this.job; // need to make sure job DAL is initialized first because it's used by the TU DAL
-        const pairKey = `${sourceLang}#${targetLang}`;
-        if (this.#dalCache.has(pairKey)) {
-            return this.#dalCache.get(pairKey);
-        }
-        const dal = new TuDAL(this.#tmDB, sourceLang, targetLang, this);
-        this.#dalCache.set(pairKey, dal);
-        return dal;
+        const shardIndex = this.#getShardIndex(sourceLang, targetLang);
+        return this.#getTmShard(shardIndex).getTuDAL(sourceLang, targetLang, this);
     }
 
     get job() {
-        if (this.#dalCache.has('job')) {
-            return this.#dalCache.get('job');
-        }
-        const dal = new JobDAL(this.#tmDB);
-        this.#dalCache.set('job', dal);
-        return dal;
+        // Jobs are always in TM shard 0
+        return this.#getTmShard(0).jobDAL;
     }
 
     /**
      * Runs a callback in bootstrap mode with optimal bulk insert settings.
      * Automatically cleans up and switches back to normal WAL mode when done.
+     * Note: This only bootstraps shard 0 currently.
      *
      * @template T
      * @param {() => Promise<T>} callback - The bootstrap operation to run.
      * @returns {Promise<T>} The result of the callback.
      */
     async withBootstrapMode(callback) {
-        // Close existing connection
-        if (this.#lazyTmDB) {
-            this.#lazyTmDB.close();
-            this.#lazyTmDB = null;
+        // Clear existing TM shards - they'll be recreated by the shard's bootstrap mode
+        for (const shard of this.#tmShards.values()) {
+            shard.shutdown();
         }
-        // Delete TM database files
-        if (this.#tmDBFilename !== ':memory:') {
-            await fs.unlink(this.#tmDBFilename).catch(() => {});
-            await fs.unlink(`${this.#tmDBFilename}-wal`).catch(() => {});
-            await fs.unlink(`${this.#tmDBFilename}-shm`).catch(() => {});
-        }
-        this.#dalCache.clear();
-        // Set bootstrap mode BEFORE accessing #tmDB so getter uses MEMORY journal
-        this.#bootstrapMode = true;
-        // Access #tmDB to trigger lazy initialization with MEMORY mode
-        this.#tmDB;
+        this.#tmShards.clear();
 
-        try {
-            return await callback();
-        } finally {
-            // Switch to WAL mode (MEMORY -> WAL should work without locking issues)
-            this.#lazyTmDB.pragma('journal_mode = WAL');
-            logVerbose`Set journal_mode to ${this.#lazyTmDB.pragma('journal_mode', { simple: true })}`;
-            this.#bootstrapMode = false;
-        }
+        // Bootstrap shard 0
+        const shard = this.#getTmShard(0);
+        return shard.withBootstrapMode(callback);
     }
 
     async shutdown() {
-        if (this.#lazySourceDB) {
-            this.#lazySourceDB.close();
+        if (this.#sourceShard) {
+            this.#sourceShard.shutdown();
+            this.#sourceShard = null;
         }
-        if (this.#lazyTmDB) {
-            this.#lazyTmDB.close();
+        for (const shard of this.#tmShards.values()) {
+            shard.shutdown();
         }
+        this.#tmShards.clear();
     }
 }
 

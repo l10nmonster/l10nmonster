@@ -107,6 +107,43 @@ export class JobDAL {
         return this.#stmt.getJobCount.get();
     }
 
+    /**
+     * Deletes a job by its GUID.
+     * @param {string} jobGuid - Job identifier to delete.
+     */
+    deleteJob(jobGuid) {
+        this.#stmt.deleteJob ??= this.#db.prepare(/* sql */`
+            DELETE FROM jobs WHERE jobGuid = ?;
+        `);
+        this.#stmt.deleteJob.run(jobGuid);
+    }
+
+    /**
+     * Upserts job metadata (insert or update).
+     * @param {Object} completeJobProps - Complete job properties including jobGuid, sourceLang, targetLang, status, updatedAt, translationProvider, and other props.
+     * @param {string} [tmStoreId] - Optional TM store ID.
+     */
+    upsertJob(completeJobProps, tmStoreId) {
+        this.#stmt.upsertJob ??= this.#db.prepare(/* sql */`
+            INSERT INTO jobs (sourceLang, targetLang, jobGuid, status, updatedAt, translationProvider, jobProps, tmStore)
+            VALUES (@sourceLang, @targetLang, @jobGuid, @status, @updatedAt, @translationProvider, @jobProps, @tmStoreId)
+            ON CONFLICT (jobGuid) DO UPDATE SET
+                sourceLang = excluded.sourceLang,
+                targetLang = excluded.targetLang,
+                status = excluded.status,
+                updatedAt = excluded.updatedAt,
+                translationProvider = excluded.translationProvider,
+                jobProps = excluded.jobProps,
+                tmStore = excluded.tmStore
+            WHERE excluded.jobGuid = jobs.jobGuid;
+        `);
+        const { jobGuid, sourceLang, targetLang, status, updatedAt, translationProvider, ...jobProps } = completeJobProps;
+        const result = this.#stmt.upsertJob.run({ jobGuid, sourceLang, targetLang, status, updatedAt: updatedAt ?? new Date().toISOString(), translationProvider, jobProps: JSON.stringify(jobProps), tmStoreId });
+        if (result.changes !== 1) {
+            throw new Error(`Expecting to change a row but changed ${result}`);
+        }
+    }
+
     async getJobDeltas(sourceLang, targetLang, toc, storeId) {
         this.#stmt.getJobDeltas ??= this.#db.prepare(/* sql */`
             SELECT

@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-import { config, policies, normalizers, xml, adapters, providers, stores } from '@l10nmonster/core';
+import { config, policies, normalizers, xml, adapters, providers, stores, SQLiteDALManager } from '@l10nmonster/core';
 import * as android from '@l10nmonster/helpers-android';
 import * as xliff from '@l10nmonster/helpers-xliff';
 import * as demo from '@l10nmonster/helpers-demo';
@@ -11,6 +11,15 @@ const androidLangMapping = {
 };
 
 export default config.l10nMonster(import.meta.dirname)
+    .dalManager(new SQLiteDALManager({
+        sourceFilename: 'l10nmonsterSource.db',
+        tmFilename: 'l10nmonsterTM.db',
+        tmSharding: [
+            [['en', 'en-GB']],                     // shard 1: en-GB
+            [['en', 'zh-Hans'], ['en', 'zh-Hant']] // shard 2: zh-Hans and zh-Hant
+            // piggy goes to shard 0 (default, unassigned)
+        ]
+    }))
     .channel(config.channel('xliff')
         .source(new adapters.FsSource({
             sourceLang: 'en',

@@ -341,37 +341,6 @@ export class TuDAL {
     }
 
     /**
-     * Sets or updates a job in the database.
-     * @param {Object} job - The job object to set or update.
-     * @param {string} job.sourceLang - The source language of the job.
-     * @param {string} job.targetLang - The target language of the job.
-     * @param {string} job.jobGuid - The unique identifier for the job.
-     * @param {string} job.status - The status of the job.
-     * @param {string} job.updatedAt - The timestamp when the job was last updated.
-     * @param {string} job.translationProvider - The translation provider associated with the job.
-     */
-    #upsertJobRow(completeJobProps, tmStoreId) {
-        this.#stmt.upsertJobRow ??= this.#db.prepare(/* sql */`
-            INSERT INTO jobs (sourceLang, targetLang, jobGuid, status, updatedAt, translationProvider, jobProps, tmStore)
-            VALUES (@sourceLang, @targetLang, @jobGuid, @status, @updatedAt, @translationProvider, @jobProps, @tmStoreId)
-            ON CONFLICT (jobGuid) DO UPDATE SET
-                sourceLang = excluded.sourceLang,
-                targetLang = excluded.targetLang,
-                status = excluded.status,
-                updatedAt = excluded.updatedAt,
-                translationProvider = excluded.translationProvider,
-                jobProps = excluded.jobProps,
-                tmStore = excluded.tmStore
-            WHERE excluded.jobGuid = jobs.jobGuid;
-        `);
-        const { jobGuid, sourceLang, targetLang, status, updatedAt, translationProvider, ...jobProps } = completeJobProps;
-        const result = this.#stmt.upsertJobRow.run({ jobGuid, sourceLang, targetLang, status, updatedAt: updatedAt ?? new Date().toISOString(), translationProvider, jobProps: JSON.stringify(jobProps), tmStoreId });
-        if (result.changes !== 1) {
-            throw new Error(`Expecting to change a row but changed ${result}`);
-        }
-    }
-    
-    /**
      * Saves multiple jobs in a single transaction.
      * @param {Array<{jobProps: Object, tus: Array}>} jobs - Array of jobs to save
      * @param {Object} [options] - Options
@@ -380,6 +349,12 @@ export class TuDAL {
      */
     async saveJobs(jobs, { tmStoreId, updateRank = true } = {}) {
         if (jobs.length === 0) return;
+
+        // Upsert job metadata to shard 0 (centralized job registry) before TU transaction
+        // This ensures job queries work correctly with sharding
+        for (const { jobProps } of jobs) {
+            this.#DAL.job.upsertJob(jobProps, tmStoreId);
+        }
 
         this.#db.transaction(() => {
             logVerbose`Starting transaction to save ${jobs.length} jobs to ${this.#tusTable}...`;
@@ -390,8 +365,6 @@ export class TuDAL {
             const affectedGuids = new Set();
 
             for (const { jobProps, tus } of jobs) {
-                this.#upsertJobRow(jobProps, tmStoreId);
-
                 if (updateRank) {
                 // Collect guids that will be affected by deleting this job's entries
                     for (const guid of this.#getGuidsForJob(jobProps.jobGuid)) {
@@ -423,14 +396,12 @@ export class TuDAL {
     }
 
     async deleteJob(jobGuid) {
-        this.#stmt.deleteJob ??= this.#db.prepare(/* sql */`
-            DELETE FROM jobs WHERE jobGuid = ?;
-        `);
         this.#db.transaction(() => {
             this.#updateRank(jobGuid, false); // we need to update the rank for the job before deleting the entries
             this.#deleteEntriesByJobGuid(jobGuid);
-            this.#stmt.deleteJob.run(jobGuid);
         })();
+        // Delete job metadata from shard 0 (centralized job registry)
+        this.#DAL.job.deleteJob(jobGuid);
     }
 
     async getExactMatches(nsrc) {

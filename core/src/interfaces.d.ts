@@ -1695,3 +1695,29 @@ export interface DALManager {
      */
     shutdown(): Promise<void>;
 }
+
+/**
+ * SQLite DAL Manager configuration options.
+ */
+export interface SQLiteDALManagerOptions {
+    /** Source DB filename. If undefined, uses in-memory. */
+    sourceFilename?: string;
+    /** TM DB filename for shard 0. If undefined, uses in-memory. */
+    tmFilename?: string;
+    /** Shard assignments. Each array element is a shard containing language pairs. */
+    tmSharding?: Array<Array<[string, string]>>;
+}
+
+/**
+ * SQLite-based implementation of the DAL manager.
+ */
+export class SQLiteDALManager implements DALManager {
+    constructor(options?: SQLiteDALManagerOptions);
+    activeChannels: Set<string>;
+    init(mm: MonsterManager): Promise<void>;
+    channel(channelId: string): ChannelDAL;
+    tu(sourceLang: string, targetLang: string): TuDAL;
+    readonly job: JobDAL;
+    withBootstrapMode<T>(callback: () => Promise<T>): Promise<T>;
+    shutdown(): Promise<void>;
+}
