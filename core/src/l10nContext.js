@@ -13,15 +13,18 @@ const levelColors = {
     verbose: ['gray', 'dim', 'italic'],
 };
 
-
+let maxRss = 0;
 const consoleTransport = new winston.transports.Console({
     level: 'warn',  // Initial console level
     format: winston.format.printf(({ level, message, timestamp, ms }) => {
         const time = String(timestamp).substring(11, 23);
-        const rss = Math.round(process.memoryUsage().rss / 1024 / 1024);
-        const heap = Math.round(process.memoryUsage().heapUsed / 1024 / 1024);
+        const mem = process.memoryUsage();
+        const rss = Math.round(mem.rss / 1024 / 1024);
+        const heap = Math.round(mem.heapUsed / 1024 / 1024);
+        maxRss = Math.max(maxRss, rss);
         const messageString = typeof message === 'string' ? message : inspect(message);
-        return styleText(levelColors[level] ?? 'magenta', `${time} (${ms}) [${rss}MB/${heap}MB] ${level}: ${messageString}`);
+        // Format: [RSS/maxRSS|heap] - RSS includes native (SQLite), heap is JS only
+        return styleText(levelColors[level] ?? 'magenta', `${time} (${ms}) [${rss}/${maxRss}|${heap}MB] ${level}: ${messageString}`);
     }),
 });
 

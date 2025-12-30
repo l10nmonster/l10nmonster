@@ -18,7 +18,8 @@ export default config.l10nMonster(import.meta.dirname)
             [['en', 'en-GB']],                     // shard 1: en-GB
             [['en', 'zh-Hans'], ['en', 'zh-Hant']] // shard 2: zh-Hans and zh-Hant
             // piggy goes to shard 0 (default, unassigned)
-        ]
+        ],
+        useWorkers: true, // Enable worker threads for parallel DB operations
     }))
     .channel(config.channel('xliff')
         .source(new adapters.FsSource({

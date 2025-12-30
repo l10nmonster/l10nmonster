@@ -106,7 +106,617 @@ export class TU {
 type NormalizedString = NormalizedString$7;
 type StructuredNotes = StructuredNotes$3;
 type JobProps = JobProps$3;
-interface PlaceholderPart {
+declare class Normalizer {
+	/**
+	 * Creates a new Normalizer instance.
+	 * @param {NormalizerConstructorOptions} options - Constructor options.
+	 */
+	constructor({ decoders, textEncoders, codeEncoders, joiner }: NormalizerConstructorOptions);
+	join: Joiner;
+	/**
+	 * Decodes a raw string into a normalized string (array of parts).
+	 * @param {string} str - The raw string to decode.
+	 * @param {EncodeFlags} [flags] - Optional flags passed to decoders.
+	 * @returns {NormalizedString} Array of parts (text strings and placeholder objects).
+	 */
+	decode(str: string, flags?: EncodeFlags): NormalizedString$1;
+	/**
+	 * Encodes a text part for output.
+	 * @param {string} text - The text to encode.
+	 * @param {EncodeFlags} [flags] - Encoding context flags.
+	 * @returns {string} The encoded string representation.
+	 */
+	encodeText(text: string, flags?: EncodeFlags): string;
+	/**
+	 * Encodes a placeholder part for output.
+	 * @param {PlaceholderPart} part - The placeholder part to encode.
+	 * @param {EncodeFlags} [flags] - Encoding context flags.
+	 * @returns {string} The encoded string representation.
+	 */
+	encodeCode(part: PlaceholderPart, flags?: EncodeFlags): string;
+	/**
+	 * Encodes a single part (text or placeholder) for output.
+	 * @param {Part} part - The part to encode.
+	 * @param {EncodeFlags} [flags] - Encoding context flags.
+	 * @returns {string} The encoded string representation.
+	 */
+	encodePart(part: Part, flags?: EncodeFlags): string;
+	#private;
+}
+type NormalizedString$1 = NormalizedString$7;
+type Part = Part$6;
+type PlaceholderPart = PlaceholderPart$5;
+type EncodeFlags = EncodeFlags$4;
+type DecoderFunction = DecoderFunction$4;
+type TextEncoderFunction = TextEncoderFunction$3;
+type CodeEncoderFunction = CodeEncoderFunction$2;
+type Joiner = (parts: string[]) => string;
+type NormalizerConstructorOptions = {
+	/**
+	 * - Array of decoder functions for parsing strings.
+	 */
+	decoders: DecoderFunction[];
+	/**
+	 * - Array of encoder functions for text parts.
+	 */
+	textEncoders?: TextEncoderFunction[];
+	/**
+	 * - Array of encoder functions for placeholder parts.
+	 */
+	codeEncoders?: CodeEncoderFunction[];
+	/**
+	 * - Function to join encoded parts (defaults to simple concatenation).
+	 */
+	joiner?: Joiner;
+};
+declare class TM {
+	/**
+	 * Maximum TUs per transaction when saving TM blocks.
+	 * Larger values reduce transaction overhead but increase memory usage.
+	 */
+	static MAX_TUS_PER_TRANSACTION: number;
+	/**
+	 * Creates a new TM instance for a language pair.
+	 * @param {string} sourceLang - Source language code.
+	 * @param {string} targetLang - Target language code.
+	 * @param {DALManager} DAL - Data Access Layer manager.
+	 */
+	constructor(sourceLang: string, targetLang: string, DAL: DALManager);
+	/** @type {string} Source language code. */
+	sourceLang: string;
+	/** @type {string} Target language code. */
+	targetLang: string;
+	/**
+	 * Gets TU entries by their GUIDs.
+	 * @param {string[]} guids - Array of TU GUIDs.
+	 * @returns {Promise<Record<string, TU>>} Map of GUID to TU entry.
+	 */
+	getEntries(guids: string[]): Promise<Record<string, TU$1>>;
+	/**
+	 * Gets all TU entries for a job.
+	 * @param {string} jobGuid - Job identifier.
+	 * @returns {Promise<TU[]>} Array of TU entries.
+	 */
+	getEntriesByJobGuid(jobGuid: string): Promise<TU$1[]>;
+	/**
+	 * Finds TU entries with exact matching normalized source.
+	 * Filters to only return entries with compatible placeholders.
+	 * @param {NormalizedString} nsrc - Normalized source to match.
+	 * @returns {Promise<TU[]>} Array of matching TU entries.
+	 */
+	getExactMatches(nsrc: NormalizedString$2): Promise<TU$1[]>;
+	/**
+	 * Gets statistics for this language pair.
+	 * @returns {Promise<TMStats>} TM statistics.
+	 */
+	getStats(): Promise<TMStats>;
+	/**
+	 * Gets translation status for content in a channel, grouped by project.
+	 * @param {string} channelId - Channel identifier.
+	 * @returns {Promise<Object>} Status grouped by project.
+	 */
+	getTranslatedContentStatus(channelId: string): Promise<any>;
+	/**
+	 * Gets untranslated content status for a channel, grouped by project and group.
+	 * @param {string} channelId - Channel identifier.
+	 * @returns {Promise<Object>} Status grouped by project -> group.
+	 */
+	getUntranslatedContentStatus(channelId: string): Promise<any>;
+	/**
+	 * Get untranslated content from a channel.
+	 * @param {string} channelId - The channel ID to query.
+	 * @param {Object} [options] - Options for the query.
+	 * @param {number} [options.limit=5000] - Maximum number of segments to return.
+	 * @param {string[]} [options.prj] - Array of project names to filter by.
+	 * @returns {Promise<Object[]>} Array of untranslated translation units.
+	 */
+	getUntranslatedContent(channelId: string, { limit, prj }?: {
+		limit?: number;
+		prj?: string[];
+	}): Promise<any[]>;
+	/**
+	 * Queries source segments matching a WHERE condition.
+	 * @param {string} channelId - Channel identifier.
+	 * @param {string} whereCondition - SQL WHERE clause.
+	 * @returns {Promise<Object[]>} Array of matching source segments.
+	 */
+	querySource(channelId: string, whereCondition: string): Promise<any[]>;
+	/**
+	 * Queries TUs by GUIDs, optionally filtered by channel.
+	 * @param {string[]} guids - Array of TU GUIDs.
+	 * @param {string} [channelId] - Optional channel filter.
+	 * @returns {Promise<TU[]>} Array of TU entries.
+	 */
+	queryByGuids(guids: string[], channelId?: string): Promise<TU$1[]>;
+	/**
+	 * Searches TUs with LIKE conditions and pagination.
+	 * @param {number} offset - Pagination offset.
+	 * @param {number} limit - Maximum results.
+	 * @param {import('../interfaces.js').TuSearchParams} [likeConditions] - Search filter options.
+	 * @returns {Promise<Object[]>} Array of matching translation units.
+	 */
+	search(offset: number, limit: number, likeConditions?: TuSearchParams): Promise<any[]>;
+	/**
+	 * Looks up TUs matching exact conditions.
+	 * @param {LookupConditions} [conditions] - Exact match conditions.
+	 * @returns {Promise<TU[]>} Array of matching TU entries.
+	 */
+	lookup(conditions?: LookupConditions): Promise<TU$1[]>;
+	/**
+	 * Gets available filter options for low-cardinality columns.
+	 * @returns {Promise<Object>} Available filter values per column.
+	 */
+	getLowCardinalityColumns(): Promise<any>;
+	/**
+	 * Deletes jobs that have no translation units.
+	 * @param {boolean} [dryrun] - If true, only return count without deleting.
+	 * @returns {Promise<number>} Number of deleted jobs (or count if dryrun).
+	 */
+	deleteEmptyJobs(dryrun?: boolean): Promise<number>;
+	/**
+	 * Get TU keys (guid, jobGuid tuples) where rank exceeds the specified maximum.
+	 * @param {number} maxRank - Maximum rank threshold.
+	 * @returns {Promise<[string, string][]>} Array of [guid, jobGuid] tuples identifying TUs to delete.
+	 */
+	tuKeysOverRank(maxRank: number): Promise<[
+		string,
+		string
+	][]>;
+	/**
+	 * Get TU keys (guid, jobGuid tuples) with a specific quality score.
+	 * @param {number} quality - Quality score to match.
+	 * @returns {Promise<[string, string][]>} Array of [guid, jobGuid] tuples identifying TUs to delete.
+	 */
+	tuKeysByQuality(quality: number): Promise<[
+		string,
+		string
+	][]>;
+	/**
+	 * Delete TUs identified by their composite keys (guid, jobGuid tuples).
+	 * @param {[string, string][]} tuKeys - Array of [guid, jobGuid] tuples identifying TUs to delete.
+	 * @returns {Promise<{deletedTusCount: number, touchedJobsCount: number}>} Count of deleted TUs and touched jobs.
+	 */
+	deleteTuKeys(tuKeys: [
+		string,
+		string
+	][]): Promise<{
+		deletedTusCount: number;
+		touchedJobsCount: number;
+	}>;
+	/**
+	 * Gets the distribution of TUs by quality score.
+	 * @returns {Promise<Array<{ q: number, count: number }>>} Array of quality/count pairs.
+	 */
+	getQualityDistribution(): Promise<Array<{
+		q: number;
+		count: number;
+	}>>;
+	/**
+	 * Saves a TM block (iterator of jobs) to the database with chunked transactions.
+	 * Jobs are batched together until adding the next job would exceed MAX_TUS_PER_TRANSACTION.
+	 * @param {AsyncIterable<JobPropsTusPair>} tmBlockIterator - Iterator yielding job/TU pairs.
+	 * @param {Object} [options] - Options for saving the TM block.
+	 * @param {string} [options.tmStoreId] - TM store ID to associate with saved jobs.
+	 * @param {boolean} [options.updateRank=true] - Whether to update TU ranks after saving.
+	 * @returns {Promise<{jobs: Object[], tuCount: number}>} Saved job properties and total TU count.
+	 */
+	saveTmBlock(tmBlockIterator: AsyncIterable<JobPropsTusPair>, { tmStoreId, updateRank }?: {
+		tmStoreId?: string;
+		updateRank?: boolean;
+	}): Promise<{
+		jobs: any[];
+		tuCount: number;
+	}>;
+	/**
+	 * Bootstraps this language pair with bulk data from a job iterator.
+	 * This is a destructive operation - the TM database should be wiped before calling.
+	 * Jobs are batched by TU count to keep transaction sizes manageable.
+	 * @param {AsyncIterable<JobPropsTusPair>} jobIterator - Iterator yielding job/TU pairs.
+	 * @param {string} tmStoreId - TM store ID to associate with saved jobs.
+	 * @returns {Promise<{jobCount: number, tuCount: number}>} Statistics about loaded data.
+	 */
+	bootstrap(jobIterator: AsyncIterable<JobPropsTusPair>, tmStoreId: string): Promise<{
+		jobCount: number;
+		tuCount: number;
+	}>;
+	#private;
+}
+type TU$1 = TU;
+type NormalizedString$2 = NormalizedString$3;
+type DALManager = DALManager$1;
+type JobPropsTusPair = JobPropsTusPair$1;
+type TMStats = {
+	/**
+	 * - Total translation units.
+	 */
+	tuCount: number;
+	/**
+	 * - Total jobs.
+	 */
+	jobCount: number;
+};
+type LookupConditions = {
+	/**
+	 * - Filter by GUID.
+	 */
+	guid?: string;
+	/**
+	 * - Filter by job GUID.
+	 */
+	jobGuid?: string;
+	/**
+	 * - Filter by resource ID.
+	 */
+	rid?: string;
+	/**
+	 * - Filter by segment ID.
+	 */
+	sid?: string;
+	/**
+	 * - Filter by source text (exact).
+	 */
+	src?: string;
+	/**
+	 * - Filter by target text (exact).
+	 */
+	tgt?: string;
+	/**
+	 * - Filter by provider ID.
+	 */
+	translationProvider?: string;
+	/**
+	 * - Minimum quality score.
+	 */
+	minQ?: number;
+	/**
+	 * - Maximum quality score.
+	 */
+	maxQ?: number;
+};
+declare class FormatHandler {
+	/**
+	 * Creates a new FormatHandler instance.
+	 * @param {FormatHandlerConstructorOptions} options - Constructor options.
+	 * @throws {Error} If resourceFilter is not provided.
+	 */
+	constructor({ id, resourceFilter, resourceGenerator, normalizers, defaultMessageFormat, segmentDecorators, formatHandlers }: FormatHandlerConstructorOptions);
+	/**
+	 * Returns information about this format handler's configuration.
+	 * @returns {FormatHandlerInfo} Format handler configuration summary.
+	 */
+	getInfo(): FormatHandlerInfo;
+	/**
+	 * Parses and normalizes a raw resource into segments.
+	 * @param {string} rid - Resource identifier.
+	 * @param {string} resource - Raw resource content.
+	 * @param {GetNormalizedResourceOptions} [options] - Normalization options.
+	 * @returns {Promise<NormalizedResource>} Normalized resource with segments.
+	 */
+	getNormalizedResource(rid: string, resource: string, options?: GetNormalizedResourceOptions): Promise<NormalizedResource>;
+	/**
+	 * Generates translated raw resource content from a resource handle and translation memory.
+	 * @param {ResourceHandle} resHandle - The source resource handle with segments.
+	 * @param {TM} tm - Translation memory instance for the target language.
+	 * @returns {Promise<string|undefined>} The generated raw translated content, or undefined if generation fails.
+	 */
+	generateTranslatedResource(resHandle: ResourceHandle, tm: TM$1): Promise<string | undefined>;
+	#private;
+}
+type ResourceFilter = ResourceFilter$4;
+type ResourceGenerator = ResourceGenerator$3;
+type ResourceHandle = ResourceHandle$1;
+type NormalizedSegment = NormalizedSegment$1;
+type NormalizedResource = NormalizedResource$1;
+type TM$1 = TM;
+type SegmentDecorator = (segment: NormalizedSegment) => NormalizedSegment | undefined;
+type FormatHandlerConstructorOptions = {
+	/**
+	 * - Unique format handler identifier.
+	 */
+	id: string;
+	/**
+	 * - Filter for parsing raw resources.
+	 */
+	resourceFilter: ResourceFilter;
+	/**
+	 * - Generator for producing translations (defaults to resourceFilter).
+	 */
+	resourceGenerator?: ResourceGenerator;
+	/**
+	 * - Map of message format ID to Normalizer.
+	 */
+	normalizers: {
+		[x: string]: Normalizer;
+	};
+	/**
+	 * - Default message format for segments without explicit format.
+	 */
+	defaultMessageFormat: string;
+	/**
+	 * - Array of decorators to apply to segments.
+	 */
+	segmentDecorators?: SegmentDecorator[];
+	/**
+	 * - Map of format handlers for processing subresources.
+	 */
+	formatHandlers?: {
+		[x: string]: FormatHandler;
+	};
+};
+type FormatHandlerInfo = {
+	/**
+	 * - Format handler identifier.
+	 */
+	id: string;
+	/**
+	 * - Resource filter class name.
+	 */
+	resourceFilter: string;
+	/**
+	 * - Resource generator class name.
+	 */
+	resourceGenerator: string;
+	/**
+	 * - Available message format IDs.
+	 */
+	messageFormats: string[];
+	/**
+	 * - Default message format ID.
+	 */
+	defaultMessageFormat: string;
+};
+type GetNormalizedResourceOptions = {
+	/**
+	 * - Whether this is a source (true) or target (false) resource.
+	 */
+	isSource: boolean;
+	/**
+	 * - Source language code.
+	 */
+	sourceLang: string;
+	/**
+	 * - Target language codes.
+	 */
+	targetLangs?: string[];
+};
+declare class ResourceHandle$1 {
+	/**
+	 * Creates a new ResourceHandle instance.
+	 * @param {ResourceHandleConstructorOptions} options - Constructor options.
+	 */
+	constructor({ id, channel, modified, resourceFormat, formatHandler, sourceLang, targetLangs, plan, prj, raw, segments, subresources, ...other }: ResourceHandleConstructorOptions);
+	id: string;
+	channel: string;
+	modified: string | number;
+	resourceFormat: string;
+	sourceLang: string;
+	targetLangs: string[];
+	plan: TranslationPlan$1;
+	prj: string;
+	raw: string;
+	segments: NormalizedSegment$2[];
+	subresources: Subresource$1[];
+	/**
+	 * Loads segments and subresources from a normalized resource.
+	 * @param {NormalizedResource} normalizedResource - The normalized resource data.
+	 * @returns {ResourceHandle} This instance for chaining.
+	 */
+	loadFromNormalizedResource(normalizedResource: NormalizedResource$1): ResourceHandle$1;
+	/**
+	 * Loads and normalizes a resource from raw content using the format handler.
+	 * @param {string} rawResource - Raw resource content.
+	 * @param {LoadResourceOptions} options - Load options.
+	 * @returns {Promise<ResourceHandle>} This instance for chaining.
+	 */
+	loadResourceFromRaw(rawResource: string, options: LoadResourceOptions): Promise<ResourceHandle$1>;
+	/**
+	 * Generates translated raw resource content from the current segments and TM.
+	 * @param {TM} tm - Translation memory instance for looking up translations.
+	 * @returns {Promise<string>} The generated raw translated content.
+	 */
+	generateTranslatedRawResource(tm: TM$2): Promise<string>;
+	/**
+	 * Applies translation policies to all segments, updating their translation plans.
+	 * @param {TranslationPolicy[]} translationPolicyPipeline - Array of policy functions to apply.
+	 * @returns {Promise<void>}
+	 */
+	applyPolicies(translationPolicyPipeline: TranslationPolicy[]): Promise<void>;
+	#private;
+}
+type TranslationPolicy = TranslationPolicy$5;
+type NormalizedSegment$1 = NormalizedSegment$5;
+type TranslationPlan = TranslationPlan$3;
+type Subresource = Subresource$2;
+type FormatHandler$1 = FormatHandler;
+type TM$2 = TM;
+type NormalizedResource$1 = {
+	/**
+	 * - Array of normalized segments.
+	 */
+	segments: NormalizedSegment$1[];
+	/**
+	 * - Optional nested subresources.
+	 */
+	subresources?: Subresource[];
+};
+type LoadResourceOptions = {
+	/**
+	 * - Whether this is a source (true) or target (false) resource.
+	 */
+	isSource: boolean;
+};
+type ResourceHandleConstructorOptions = {
+	/**
+	 * - Resource identifier.
+	 */
+	id: string;
+	/**
+	 * - Channel ID this resource belongs to.
+	 */
+	channel: string;
+	/**
+	 * - Last modified timestamp.
+	 */
+	modified?: string | number;
+	/**
+	 * - Format handler ID.
+	 */
+	resourceFormat: string;
+	/**
+	 * - Format handler instance.
+	 */
+	formatHandler: FormatHandler$1;
+	/**
+	 * - Source language code.
+	 */
+	sourceLang: string;
+	/**
+	 * - Target language codes.
+	 */
+	targetLangs?: string[];
+	/**
+	 * - Translation plan.
+	 */
+	plan?: TranslationPlan;
+	/**
+	 * - Project name for filtering.
+	 */
+	prj?: string;
+	/**
+	 * - Raw resource content.
+	 */
+	raw?: string;
+	/**
+	 * - Parsed segments.
+	 */
+	segments?: NormalizedSegment$1[];
+	/**
+	 * - Nested subresources.
+	 */
+	subresources?: Subresource[];
+};
+declare class Channel {
+	/**
+	 * Creates a new Channel instance.
+	 * @param {ChannelConstructorOptions} options - Channel configuration options.
+	 */
+	constructor({ id, source, formatHandlers, defaultResourceFormat, target, translationPolicyPipeline }: ChannelConstructorOptions);
+	/**
+	 * Returns information about this channel's configuration.
+	 * @returns {ChannelInfo} Channel configuration summary.
+	 */
+	getInfo(): ChannelInfo;
+	/**
+	 * Creates a ResourceHandle from a resource header.
+	 * @param {ResourceHeader} resourceHeader - Resource metadata from source adapter.
+	 * @returns {ResourceHandle} A new ResourceHandle configured for this resource.
+	 * @throws {Error} If sourceLang is missing or no format handler is found.
+	 */
+	makeResourceHandleFromHeader(resourceHeader: ResourceHeader): ResourceHandle$1;
+	/**
+	 * Fetches all resources from the source, normalizes them, and applies translation policies.
+	 * @param {object} [options] - Options passed to the source adapter's fetchAllResources.
+	 * @yields {ResourceHandle} Normalized resource handles with policies applied.
+	 * @returns {AsyncGenerator<ResourceHandle>} Async generator of ResourceHandle instances.
+	 */
+	getAllNormalizedResources(options?: object): AsyncGenerator<ResourceHandle$1>;
+	/**
+	 * Fetches an existing translated resource from the target adapter.
+	 * @param {ResourceHandle} resourceHandle - The source resource handle.
+	 * @param {string} targetLang - Target language code.
+	 * @returns {Promise<ResourceHandle>} A ResourceHandle loaded with the existing translation.
+	 */
+	getExistingTranslatedResource(resourceHandle: ResourceHandle$1, targetLang: string): Promise<ResourceHandle$1>;
+	/**
+	 * Commits a translated resource to the target adapter.
+	 * @param {string} targetLang - Target language code.
+	 * @param {string} resourceId - Source resource identifier.
+	 * @param {string} rawResource - Raw translated content to commit.
+	 * @returns {Promise<string>} The translated resource ID in the target system.
+	 */
+	commitTranslatedResource(targetLang: string, resourceId: string, rawResource: string): Promise<string>;
+	#private;
+}
+type SourceAdapter = SourceAdapter$5;
+type TargetAdapter = TargetAdapter$4;
+type ResourceHeader = ResourceHeader$2;
+type TranslationPolicy$1 = TranslationPolicy$5;
+type FormatHandlerInfo$1 = FormatHandlerInfo;
+type ChannelConstructorOptions = {
+	/**
+	 * - Unique channel identifier.
+	 */
+	id: string;
+	/**
+	 * - Source adapter for fetching resources.
+	 */
+	source: SourceAdapter;
+	/**
+	 * - Map of format ID to FormatHandler.
+	 */
+	formatHandlers: {
+		[x: string]: FormatHandler;
+	};
+	/**
+	 * - Default format handler ID.
+	 */
+	defaultResourceFormat: string;
+	/**
+	 * - Target adapter for committing translations.
+	 */
+	target: TargetAdapter;
+	/**
+	 * - Array of translation policy functions.
+	 */
+	translationPolicyPipeline: TranslationPolicy$1[];
+};
+type ChannelInfo = {
+	/**
+	 * - Channel identifier.
+	 */
+	id: string;
+	/**
+	 * - Source adapter class name.
+	 */
+	source: string;
+	/**
+	 * - Target adapter class name.
+	 */
+	target: string;
+	/**
+	 * - Array of format handler info objects.
+	 */
+	formatHandlers: FormatHandlerInfo$1[];
+	/**
+	 * - Default format handler ID.
+	 */
+	defaultResourceFormat: string;
+	/**
+	 * - Number of translation policies.
+	 */
+	translationPolicies: number;
+};
+interface PlaceholderPart$1 {
 	/** The type of the placeholder (e.g., 'x' for generic, 'ph' for ICU). */
 	t: string;
 	/** The original value/code of the placeholder. */
@@ -118,8 +728,8 @@ interface PlaceholderPart {
 	/** Flag set by decoder to identify which decoder processed this part. */
 	flag?: string;
 }
-type Part = string | PlaceholderPart;
-type NormalizedString$1 = Part[];
+type Part$1 = string | PlaceholderPart$1;
+type NormalizedString$3 = Part$1[];
 interface StructuredNotes$1 {
 	/** Clean description text. */
 	desc?: string;
@@ -149,13 +759,13 @@ interface Segment {
 	/** Message format identifier (e.g., 'icu', 'mf2'). */
 	mf?: string;
 }
-interface NormalizedSegment {
+interface NormalizedSegment$2 {
 	/** Segment ID. */
 	sid: string;
 	/** Unique identifier for the segment (rid + sid + hash). */
 	guid: string;
 	/** Normalized string (array of parts). */
-	nstr: NormalizedString$1;
+	nstr: NormalizedString$3;
 	/** Notes for translators (raw string or structured). */
 	notes?: string | StructuredNotes$1;
 	/** Raw notes before processing. */
@@ -175,7 +785,7 @@ interface NormalizedSegment {
 	/** Sequence number for compact GUID representation. */
 	seq?: number;
 }
-interface ResourceHeader {
+interface ResourceHeader$1 {
 	/** Resource identifier (typically file path or unique key). */
 	id: string;
 	/** Source language code (e.g., 'en-US'). */
@@ -189,75 +799,18 @@ interface ResourceHeader {
 	/** Last modified timestamp. */
 	modified?: string | number;
 }
-interface ResourceHandle {
-	/** Resource identifier (typically file path or unique key). */
-	id: string;
-	/** Channel ID this resource belongs to. */
-	channel: string;
-	/** Last modified timestamp. */
-	modified?: string | number;
-	/** Format handler ID. */
-	resourceFormat: string;
-	/** Source language code. */
-	sourceLang: string;
-	/** Target language codes for this resource. */
-	targetLangs: string[];
-	/** Translation plan per target language. */
-	plan?: TranslationPlan;
-	/** Project name for filtering. */
-	prj?: string;
-	/** Raw resource content. */
-	raw?: string;
-	/** Parsed normalized segments. */
-	segments?: NormalizedSegment[];
-	/** Nested subresources. */
-	subresources?: Subresource[];
-	// Methods
-	/** Loads segments and subresources from a normalized resource. */
-	loadFromNormalizedResource(normalizedResource: {
-		segments: NormalizedSegment[];
-		subresources?: Subresource[];
-	}): ResourceHandle;
-	/** Loads and normalizes a resource from raw content. */
-	loadResourceFromRaw(rawResource: string, options: {
-		isSource?: boolean;
-	}): Promise<ResourceHandle>;
-	/** Generates translated raw resource content from the current segments and TM. */
-	generateTranslatedRawResource(tm: TMInterface): Promise<string | null>;
-	/** Applies translation policies to all segments. */
-	applyPolicies(translationPolicyPipeline: TranslationPolicy[]): Promise<void>;
-}
-interface Channel {
-	/** Get information about this channel's configuration. */
-	getInfo(): {
-		id: string;
-		source: string;
-		target: string;
-		formatHandlers: unknown[];
-		defaultResourceFormat: string;
-		translationPolicies: number;
-	};
-	/** Creates a ResourceHandle from a resource header. */
-	makeResourceHandleFromHeader(resourceHeader: ResourceHeader): ResourceHandle;
-	/** Fetches all resources from the source, normalizes them, and applies translation policies. */
-	getAllNormalizedResources(options?: Record<string, unknown>): AsyncGenerator<ResourceHandle>;
-	/** Fetches an existing translated resource. */
-	getExistingTranslatedResource(resHandle: ResourceHandle, targetLang: string): Promise<ResourceHandle>;
-	/** Commits a translated resource to the target. */
-	commitTranslatedResource(targetLang: string, resourceId: string, rawResource: string | null): Promise<string>;
-}
 interface ChannelOptions {
 	/** Base directory for relative paths. */
 	baseDir?: string;
 }
-interface SourceAdapter {
+interface SourceAdapter$1 {
 	/**
 	 * Fetches all resources as [header, rawContent] tuples.
 	 * @param options - Optional filtering/configuration options.
 	 * @returns AsyncGenerator yielding [ResourceHeader, string] tuples.
 	 */
 	fetchAllResources(options?: object): AsyncGenerator<[
-		ResourceHeader,
+		ResourceHeader$1,
 		string
 	]>;
 	/**
@@ -266,7 +819,7 @@ interface SourceAdapter {
 	 */
 	setChannelOptions?(options: ChannelOptions): void;
 }
-interface TargetAdapter {
+interface TargetAdapter$1 {
 	/**
 	 * Returns the target resource ID given target language and source resource ID.
 	 * @param targetLang - The target language code.
@@ -320,11 +873,11 @@ interface TMStoreTOC {
 		string
 	]>;
 }
-interface JobPropsTusPair {
+interface JobPropsTusPair$1 {
 	/** Job properties (metadata). */
 	jobProps: JobProps$1;
 	/** Translation units in the job. */
-	tus: TU$1[];
+	tus: TU[];
 }
 interface TMStore {
 	/** The logical id of this store instance. */
@@ -355,7 +908,7 @@ interface TMStore {
 	 * @param blockIds - Array of block IDs to retrieve.
 	 * @returns AsyncGenerator yielding job objects with TUs.
 	 */
-	getTmBlocks?(sourceLang: string, targetLang: string, blockIds: string[]): AsyncGenerator<JobPropsTusPair>;
+	getTmBlocks?(sourceLang: string, targetLang: string, blockIds: string[]): AsyncGenerator<JobPropsTusPair$1>;
 	/**
 	 * Gets a writer for committing TM data.
 	 * @param sourceLang - Source language code.
@@ -392,7 +945,7 @@ interface SnapStore {
 		count: number;
 	}>;
 }
-interface Subresource {
+interface Subresource$1 {
 	/** Format handler identifier for this subresource. */
 	resourceFormat: string;
 	/** Raw content of the subresource. */
@@ -402,7 +955,7 @@ interface Subresource {
 	/** GUIDs of segments in this subresource (added after parsing). */
 	guids?: string[];
 }
-interface ResourceFilter {
+interface ResourceFilter$1 {
 	/**
 	 * Parses raw resource content into segments.
 	 * @param params - Parse parameters including resource content.
@@ -415,7 +968,7 @@ interface ResourceFilter {
 		targetPluralForms?: string[];
 	}): Promise<{
 		segments: Segment[];
-		subresources?: Subresource[];
+		subresources?: Subresource$1[];
 	}>;
 	/**
 	 * Translates a resource using a translator function.
@@ -443,25 +996,25 @@ interface GenerateResourceParams {
 	/** Raw resource content. */
 	raw?: string;
 	/** Parsed segments. */
-	segments?: NormalizedSegment[];
+	segments?: NormalizedSegment$2[];
 	/** Nested subresources. */
-	subresources?: Subresource[];
+	subresources?: Subresource$1[];
 	/** Format handler identifier. */
 	resourceFormat?: string;
 	/** Translation plan. */
 	plan?: Record<string, number>;
 	/** Translator function to get translations for segments (generator style). */
-	translator: (seg: NormalizedSegment) => Promise<{
-		nstr: NormalizedString$1;
+	translator: (seg: NormalizedSegment$2) => Promise<{
+		nstr: NormalizedString$3;
 		str: string;
-		tu: TU$1;
+		tu: TU;
 	} | undefined>;
 	/** Source plural forms. */
 	sourcePluralForms?: string[];
 	/** Target plural forms. */
 	targetPluralForms?: string[];
 }
-interface ResourceGenerator {
+interface ResourceGenerator$1 {
 	/**
 	 * Generates raw content from translated segments.
 	 * @param params - Generation parameters.
@@ -499,68 +1052,9 @@ interface JobProps$1 {
 	/** ISO timestamp when job was last updated. */
 	updatedAt?: string;
 }
-interface TU$1 {
-	/** Unique identifier for the TU (hash of rid+sid+source). */
-	guid: string;
-	/** Resource ID the TU belongs to. */
-	rid?: string;
-	/** Segment ID within the resource. */
-	sid?: string;
-	/** Normalized source string. */
-	nsrc?: NormalizedString$1;
-	/** Normalized target string (translation). */
-	ntgt?: NormalizedString$1;
-	/** Quality score of the translation (0-100). */
-	q?: number;
-	/** Timestamp when the translation was created (epoch ms). */
-	ts?: number;
-	/** Minimum quality required for this TU. */
-	minQ?: number;
-	/** Word count for the source text. */
-	words?: number;
-	/** Character count for the source text. */
-	chars?: number;
-	/** Project identifier. */
-	prj?: string;
-	/** Translation group for routing to specific providers. */
-	group?: string;
-	/** Plural form (one, other, zero, two, few, many). */
-	pluralForm?: string;
-	/** Opaque native ID in original storage format. */
-	nid?: string;
-	/** Sequence number to shorten GUID. */
-	seq?: number;
-	/** Whether the TU is currently in-flight (submitted, pending translation). */
-	inflight?: boolean;
-	/** Translation confidence score. */
-	tconf?: number;
-	/** Translation notes from provider. */
-	tnotes?: string;
-	/** Job GUID this TU was translated in. */
-	jobGuid?: string;
-	/** ID of the translation provider. */
-	translationProvider?: string;
-	/** Notes for translators (raw string or structured). */
-	notes?: string | StructuredNotes$1;
-	/** Translation cost (number or array for detailed token breakdown). */
-	cost?: number | number[];
-	/** QA data from quality checks. */
-	qa?: Record<string, unknown>;
-	/** Translation hash for detecting vendor-side fixes. */
-	th?: string;
-	/** Review data (reviewed words and errors found). */
-	rev?: {
-		reviewedWords?: number;
-		errorsFound?: number;
-	};
-	/** Job-specific properties (used for TM export/import). */
-	jobProps?: JobProps$1;
-	/** Channel ID (used by grandfather provider). */
-	channel?: string;
-}
 interface Job extends JobProps$1 {
 	/** Translation units in the job. */
-	tus?: TU$1[];
+	tus?: TU[];
 	/** GUIDs of TUs that are in-flight. */
 	inflight?: string[];
 }
@@ -570,7 +1064,7 @@ interface JobRequest {
 	/** Target language code. */
 	targetLang: string;
 	/** Translation units to process. */
-	tus: (TU$1 | NormalizedSegment)[];
+	tus: (TU | NormalizedSegment$2)[];
 	/** Optional job GUID (assigned by dispatcher). */
 	jobGuid?: string;
 	/** Translation instructions. */
@@ -578,19 +1072,19 @@ interface JobRequest {
 	/** Translation group. */
 	group?: string;
 }
-type TranslationPlan = Record<string, number>;
+type TranslationPlan$1 = Record<string, number>;
 interface PolicyContext {
 	/** Translation plan being built (maps target lang to requirements). */
-	plan: TranslationPlan;
+	plan: TranslationPlan$1;
 	/** The segment being processed. */
-	seg: NormalizedSegment;
+	seg: NormalizedSegment$2;
 	/** The resource handle containing the segment. */
 	res: ResourceHandle;
 	/** Additional properties can be added by policies. */
 	[key: string]: unknown;
 }
-type TranslationPolicy = (policyContext: PolicyContext) => Partial<PolicyContext> | PolicyContext;
-interface EncodeFlags {
+type TranslationPolicy$2 = (policyContext: PolicyContext) => Partial<PolicyContext> | PolicyContext;
+interface EncodeFlags$1 {
 	/** Source language code. */
 	sourceLang?: string;
 	/** Target language code. */
@@ -604,10 +1098,10 @@ interface EncodeFlags {
 	/** Allow additional custom flags. */
 	[key: string]: string | boolean | undefined;
 }
-type DecoderFunction = (parts: Part[]) => Part[];
-type TextEncoderFunction = (text: string, flags?: EncodeFlags) => string;
-type CodeEncoderFunction = (part: PlaceholderPart | string, flags?: EncodeFlags) => string;
-type PartTransformer = (parts: Part[]) => Part[];
+type DecoderFunction$1 = (parts: Part$1[]) => Part$1[];
+type TextEncoderFunction$1 = (text: string, flags?: EncodeFlags$1) => string;
+type CodeEncoderFunction$1 = (part: PlaceholderPart$1 | string, flags?: EncodeFlags$1) => string;
+type PartTransformer = (parts: Part$1[]) => Part$1[];
 interface ProviderStatusProperty {
 	/** Actions that can trigger this status. */
 	actions: string[];
@@ -754,13 +1248,13 @@ interface TranslatedChunk {
 	/** GUID of the TU (added during processing). */
 	guid?: string;
 	/** Normalized target string (added during processing). */
-	ntgt?: NormalizedString$1;
+	ntgt?: NormalizedString$3;
 }
 interface ChunkTuMeta {
 	/** GUID of the translation unit. */
 	guid: string;
 	/** Placeholder map for reconstructing normalized strings. */
-	phMap?: Record<string, PlaceholderPart>;
+	phMap?: Record<string, PlaceholderPart$1>;
 }
 interface TranslateChunkOpResult {
 	/** Raw response from the provider (for debugging). */
@@ -768,7 +1262,7 @@ interface TranslateChunkOpResult {
 	/** Normalized translation results. */
 	res: Array<{
 		guid: string;
-		ntgt: NormalizedString$1;
+		ntgt: NormalizedString$3;
 		cost?: number | number[];
 	}>;
 }
@@ -784,9 +1278,9 @@ interface AnalyzerTU {
 	/** Unique identifier for the translation unit. */
 	guid: string;
 	/** Normalized source string. */
-	nsrc: NormalizedString$1;
+	nsrc: NormalizedString$3;
 	/** Normalized target string (translation). */
-	ntgt: NormalizedString$1;
+	ntgt: NormalizedString$3;
 	/** Resource ID the TU belongs to. */
 	rid?: string;
 	/** String ID within the resource. */
@@ -800,7 +1294,7 @@ interface Analyzer {
 	processSegment?(context: {
 		rid: string;
 		prj: string;
-		seg: NormalizedSegment;
+		seg: NormalizedSegment$2;
 	}): void;
 	/**
 	 * Process a translation unit during analysis.
@@ -961,9 +1455,9 @@ interface TMInterface {
 	/** Target language code. */
 	readonly targetLang: string;
 	/** Get TU entries by GUIDs. */
-	getEntries(guids: string[]): Promise<Record<string, TU$1>>;
+	getEntries(guids: string[]): Promise<Record<string, TU>>;
 	/** Get exact matches for a normalized source string. */
-	getExactMatches(nsrc: NormalizedString$1): Promise<TU$1[]>;
+	getExactMatches(nsrc: NormalizedString$3): Promise<TU[]>;
 	/** Get translation status for translated content in a channel. */
 	getTranslatedContentStatus(channelId: string): Promise<Record<string, Array<{
 		minQ: number;
@@ -982,11 +1476,11 @@ interface TMInterface {
 	getUntranslatedContent(channelId: string, options?: {
 		limit?: number;
 		prj?: string | string[];
-	}): Promise<NormalizedSegment[]>;
+	}): Promise<NormalizedSegment$2[]>;
 	/** Query source content with filters. */
-	querySource(channelId: string, whereCondition: string): Promise<NormalizedSegment[]>;
+	querySource(channelId: string, whereCondition: string): Promise<NormalizedSegment$2[]>;
 	/** Search TUs with filtering and pagination. */
-	search(offset: number, limit: number, params?: TuSearchParams): Promise<TU$1[]>;
+	search(offset: number, limit: number, params?: TuSearchParams): Promise<TU[]>;
 	/** Get TM statistics. */
 	getStats(): Promise<Array<{
 		translationProvider: string;
@@ -1021,7 +1515,7 @@ interface TMInterface {
 	/** Delete empty jobs. */
 	deleteEmptyJobs(dryrun?: boolean): Promise<number>;
 	/** Bootstrap this language pair with bulk data from a job iterator. */
-	bootstrap(jobIterator: AsyncIterable<JobPropsTusPair>, tmStoreId: string): Promise<{
+	bootstrap(jobIterator: AsyncIterable<JobPropsTusPair$1>, tmStoreId: string): Promise<{
 		jobCount: number;
 		tuCount: number;
 	}>;
@@ -1120,7 +1614,7 @@ interface OpsStoreInterface {
 	 */
 	getTask(taskName: string): AsyncGenerator<SerializedOp>;
 }
-type SegmentDecorator = (seg: Segment) => Segment | undefined;
+type SegmentDecorator$1 = (seg: Segment) => Segment | undefined;
 interface SegmentDecoratorFactory {
 	/**
 	 * Initialize the factory with MonsterManager.
@@ -1131,7 +1625,7 @@ interface SegmentDecoratorFactory {
 	 * Get the decorator function.
 	 * @returns Segment decorator function.
 	 */
-	getDecorator(): SegmentDecorator;
+	getDecorator(): SegmentDecorator$1;
 }
 interface FileStoreDelegate {
 	/**
@@ -1323,7 +1817,7 @@ interface ChannelDAL {
 		keepRaw?: boolean;
 		prj?: string | string[];
 	}): AsyncGenerator<ResourceHandle & {
-		segments: NormalizedSegment[];
+		segments: NormalizedSegment$2[];
 	}>;
 	/**
 	 * Get resource row iterator for export.
@@ -1342,13 +1836,13 @@ interface TuDAL {
 	 * @param guids - Array of GUIDs to look up.
 	 * @returns Map of GUID to TU entry.
 	 */
-	getEntries(guids: string[]): Promise<Record<string, TU$1>>;
+	getEntries(guids: string[]): Promise<Record<string, TU>>;
 	/**
 	 * Get all TU entries for a job.
 	 * @param jobGuid - Job GUID.
 	 * @returns Array of TU entries.
 	 */
-	getEntriesByJobGuid(jobGuid: string): Promise<TU$1[]>;
+	getEntriesByJobGuid(jobGuid: string): Promise<TU[]>;
 	/**
 	 * Save multiple jobs with their translation units in a single transaction.
 	 * @param jobs - Array of job objects containing jobProps and tus.
@@ -1357,7 +1851,7 @@ interface TuDAL {
 	 */
 	saveJobs(jobs: Array<{
 		jobProps: JobProps$1;
-		tus: TU$1[];
+		tus: TU[];
 	}>, options?: {
 		tmStoreId?: string;
 		updateRank?: boolean;
@@ -1372,7 +1866,7 @@ interface TuDAL {
 	 * @param nsrc - Normalized source string.
 	 * @returns Array of matching TU candidates.
 	 */
-	getExactMatches(nsrc: NormalizedString$1): Promise<TU$1[]>;
+	getExactMatches(nsrc: NormalizedString$3): Promise<TU[]>;
 	/**
 	 * Delete empty jobs (jobs with no TUs).
 	 * @param dryrun - If true, only report what would be deleted.
@@ -1456,21 +1950,21 @@ interface TuDAL {
 	getUntranslatedContent(channelDAL: ChannelDAL, options?: {
 		limit?: number;
 		prj?: string | string[];
-	}): Promise<NormalizedSegment[]>;
+	}): Promise<NormalizedSegment$2[]>;
 	/**
 	 * Query source content with a WHERE condition.
 	 * @param channelDAL - Channel DAL instance.
 	 * @param whereCondition - SQL WHERE condition.
 	 * @returns Array of matching segments.
 	 */
-	querySource(channelDAL: ChannelDAL, whereCondition: string): Promise<NormalizedSegment[]>;
+	querySource(channelDAL: ChannelDAL, whereCondition: string): Promise<NormalizedSegment$2[]>;
 	/**
 	 * Query TUs by their GUIDs with optional channel context.
 	 * @param guids - Array of GUIDs to query.
 	 * @param channelDAL - Optional channel DAL for context.
 	 * @returns Array of TU entries.
 	 */
-	queryByGuids(guids: string[], channelDAL?: ChannelDAL): Promise<TU$1[]>;
+	queryByGuids(guids: string[], channelDAL?: ChannelDAL): Promise<TU[]>;
 	/**
 	 * Search TUs with filtering and pagination.
 	 * @param offset - Pagination offset.
@@ -1478,7 +1972,7 @@ interface TuDAL {
 	 * @param params - Search filter parameters.
 	 * @returns Array of matching TUs.
 	 */
-	search(offset: number, limit: number, params: TuSearchParams): Promise<TU$1[]>;
+	search(offset: number, limit: number, params: TuSearchParams): Promise<TU[]>;
 	/**
 	 * Look up TUs by exact conditions.
 	 * @param conditions - Lookup conditions.
@@ -1489,7 +1983,7 @@ interface TuDAL {
 		nid?: string;
 		rid?: string;
 		sid?: string;
-	}): Promise<TU$1[]>;
+	}): Promise<TU[]>;
 	/**
 	 * Get available values for low-cardinality filter columns.
 	 * @returns Object with arrays of available values per column.
@@ -1576,7 +2070,7 @@ interface TuDAL {
 	 */
 	getValidJobIds(toc: TMStoreTOC, blockId: string, storeId: string): Promise<string[]>;
 }
-interface DALManager {
+interface DALManager$1 {
 	/** Active channel IDs. */
 	activeChannels: Set<string>;
 	/**
@@ -1587,14 +2081,14 @@ interface DALManager {
 	/**
 	 * Get a channel DAL by ID.
 	 * @param channelId - Channel identifier.
-	 * @returns Channel DAL instance.
+	 * @returns Channel DAL instance or proxy.
 	 */
 	channel(channelId: string): ChannelDAL;
 	/**
 	 * Get a TU DAL for a language pair.
 	 * @param sourceLang - Source language code.
 	 * @param targetLang - Target language code.
-	 * @returns TU DAL instance.
+	 * @returns TU DAL instance or proxy.
 	 */
 	tu(sourceLang: string, targetLang: string): TuDAL;
 	// ========== Cross-Shard Aggregation Methods ==========
@@ -1640,616 +2134,6 @@ interface DALManager {
 	 */
 	shutdown(): Promise<void>;
 }
-declare class Normalizer {
-	/**
-	 * Creates a new Normalizer instance.
-	 * @param {NormalizerConstructorOptions} options - Constructor options.
-	 */
-	constructor({ decoders, textEncoders, codeEncoders, joiner }: NormalizerConstructorOptions);
-	join: Joiner;
-	/**
-	 * Decodes a raw string into a normalized string (array of parts).
-	 * @param {string} str - The raw string to decode.
-	 * @param {EncodeFlags} [flags] - Optional flags passed to decoders.
-	 * @returns {NormalizedString} Array of parts (text strings and placeholder objects).
-	 */
-	decode(str: string, flags?: EncodeFlags$1): NormalizedString$2;
-	/**
-	 * Encodes a text part for output.
-	 * @param {string} text - The text to encode.
-	 * @param {EncodeFlags} [flags] - Encoding context flags.
-	 * @returns {string} The encoded string representation.
-	 */
-	encodeText(text: string, flags?: EncodeFlags$1): string;
-	/**
-	 * Encodes a placeholder part for output.
-	 * @param {PlaceholderPart} part - The placeholder part to encode.
-	 * @param {EncodeFlags} [flags] - Encoding context flags.
-	 * @returns {string} The encoded string representation.
-	 */
-	encodeCode(part: PlaceholderPart$1, flags?: EncodeFlags$1): string;
-	/**
-	 * Encodes a single part (text or placeholder) for output.
-	 * @param {Part} part - The part to encode.
-	 * @param {EncodeFlags} [flags] - Encoding context flags.
-	 * @returns {string} The encoded string representation.
-	 */
-	encodePart(part: Part$1, flags?: EncodeFlags$1): string;
-	#private;
-}
-type NormalizedString$2 = NormalizedString$7;
-type Part$1 = Part$6;
-type PlaceholderPart$1 = PlaceholderPart$5;
-type EncodeFlags$1 = EncodeFlags$4;
-type DecoderFunction$1 = DecoderFunction$4;
-type TextEncoderFunction$1 = TextEncoderFunction$3;
-type CodeEncoderFunction$1 = CodeEncoderFunction$2;
-type Joiner = (parts: string[]) => string;
-type NormalizerConstructorOptions = {
-	/**
-	 * - Array of decoder functions for parsing strings.
-	 */
-	decoders: DecoderFunction$1[];
-	/**
-	 * - Array of encoder functions for text parts.
-	 */
-	textEncoders?: TextEncoderFunction$1[];
-	/**
-	 * - Array of encoder functions for placeholder parts.
-	 */
-	codeEncoders?: CodeEncoderFunction$1[];
-	/**
-	 * - Function to join encoded parts (defaults to simple concatenation).
-	 */
-	joiner?: Joiner;
-};
-declare class TM {
-	/**
-	 * Maximum TUs per transaction when saving TM blocks.
-	 * Larger values reduce transaction overhead but increase memory usage.
-	 */
-	static MAX_TUS_PER_TRANSACTION: number;
-	/**
-	 * Creates a new TM instance for a language pair.
-	 * @param {string} sourceLang - Source language code.
-	 * @param {string} targetLang - Target language code.
-	 * @param {DALManager} DAL - Data Access Layer manager.
-	 */
-	constructor(sourceLang: string, targetLang: string, DAL: DALManager$1);
-	/** @type {string} Source language code. */
-	sourceLang: string;
-	/** @type {string} Target language code. */
-	targetLang: string;
-	/**
-	 * Gets TU entries by their GUIDs.
-	 * @param {string[]} guids - Array of TU GUIDs.
-	 * @returns {Promise<Record<string, TU>>} Map of GUID to TU entry.
-	 */
-	getEntries(guids: string[]): Promise<Record<string, TU$2>>;
-	/**
-	 * Gets all TU entries for a job.
-	 * @param {string} jobGuid - Job identifier.
-	 * @returns {Promise<TU[]>} Array of TU entries.
-	 */
-	getEntriesByJobGuid(jobGuid: string): Promise<TU$2[]>;
-	/**
-	 * Finds TU entries with exact matching normalized source.
-	 * Filters to only return entries with compatible placeholders.
-	 * @param {NormalizedString} nsrc - Normalized source to match.
-	 * @returns {Promise<TU[]>} Array of matching TU entries.
-	 */
-	getExactMatches(nsrc: NormalizedString$3): Promise<TU$2[]>;
-	/**
-	 * Gets statistics for this language pair.
-	 * @returns {Promise<TMStats>} TM statistics.
-	 */
-	getStats(): Promise<TMStats>;
-	/**
-	 * Gets translation status for content in a channel, grouped by project.
-	 * @param {string} channelId - Channel identifier.
-	 * @returns {Promise<Object>} Status grouped by project.
-	 */
-	getTranslatedContentStatus(channelId: string): Promise<any>;
-	/**
-	 * Gets untranslated content status for a channel, grouped by project and group.
-	 * @param {string} channelId - Channel identifier.
-	 * @returns {Promise<Object>} Status grouped by project -> group.
-	 */
-	getUntranslatedContentStatus(channelId: string): Promise<any>;
-	/**
-	 * Get untranslated content from a channel.
-	 * @param {string} channelId - The channel ID to query.
-	 * @param {Object} [options] - Options for the query.
-	 * @param {number} [options.limit=5000] - Maximum number of segments to return.
-	 * @param {string[]} [options.prj] - Array of project names to filter by.
-	 * @returns {Promise<Object[]>} Array of untranslated translation units.
-	 */
-	getUntranslatedContent(channelId: string, { limit, prj }?: {
-		limit?: number;
-		prj?: string[];
-	}): Promise<any[]>;
-	/**
-	 * Queries source segments matching a WHERE condition.
-	 * @param {string} channelId - Channel identifier.
-	 * @param {string} whereCondition - SQL WHERE clause.
-	 * @returns {Promise<Object[]>} Array of matching source segments.
-	 */
-	querySource(channelId: string, whereCondition: string): Promise<any[]>;
-	/**
-	 * Queries TUs by GUIDs, optionally filtered by channel.
-	 * @param {string[]} guids - Array of TU GUIDs.
-	 * @param {string} [channelId] - Optional channel filter.
-	 * @returns {Promise<TU[]>} Array of TU entries.
-	 */
-	queryByGuids(guids: string[], channelId?: string): Promise<TU$2[]>;
-	/**
-	 * Searches TUs with LIKE conditions and pagination.
-	 * @param {number} offset - Pagination offset.
-	 * @param {number} limit - Maximum results.
-	 * @param {import('../interfaces.js').TuSearchParams} [likeConditions] - Search filter options.
-	 * @returns {Promise<Object[]>} Array of matching translation units.
-	 */
-	search(offset: number, limit: number, likeConditions?: TuSearchParams): Promise<any[]>;
-	/**
-	 * Looks up TUs matching exact conditions.
-	 * @param {LookupConditions} [conditions] - Exact match conditions.
-	 * @returns {Promise<TU[]>} Array of matching TU entries.
-	 */
-	lookup(conditions?: LookupConditions): Promise<TU$2[]>;
-	/**
-	 * Gets available filter options for low-cardinality columns.
-	 * @returns {Promise<Object>} Available filter values per column.
-	 */
-	getLowCardinalityColumns(): Promise<any>;
-	/**
-	 * Deletes jobs that have no translation units.
-	 * @param {boolean} [dryrun] - If true, only return count without deleting.
-	 * @returns {Promise<number>} Number of deleted jobs (or count if dryrun).
-	 */
-	deleteEmptyJobs(dryrun?: boolean): Promise<number>;
-	/**
-	 * Get TU keys (guid, jobGuid tuples) where rank exceeds the specified maximum.
-	 * @param {number} maxRank - Maximum rank threshold.
-	 * @returns {Promise<[string, string][]>} Array of [guid, jobGuid] tuples identifying TUs to delete.
-	 */
-	tuKeysOverRank(maxRank: number): Promise<[
-		string,
-		string
-	][]>;
-	/**
-	 * Get TU keys (guid, jobGuid tuples) with a specific quality score.
-	 * @param {number} quality - Quality score to match.
-	 * @returns {Promise<[string, string][]>} Array of [guid, jobGuid] tuples identifying TUs to delete.
-	 */
-	tuKeysByQuality(quality: number): Promise<[
-		string,
-		string
-	][]>;
-	/**
-	 * Delete TUs identified by their composite keys (guid, jobGuid tuples).
-	 * @param {[string, string][]} tuKeys - Array of [guid, jobGuid] tuples identifying TUs to delete.
-	 * @returns {Promise<{deletedTusCount: number, touchedJobsCount: number}>} Count of deleted TUs and touched jobs.
-	 */
-	deleteTuKeys(tuKeys: [
-		string,
-		string
-	][]): Promise<{
-		deletedTusCount: number;
-		touchedJobsCount: number;
-	}>;
-	/**
-	 * Gets the distribution of TUs by quality score.
-	 * @returns {Promise<Array<{ q: number, count: number }>>} Array of quality/count pairs.
-	 */
-	getQualityDistribution(): Promise<Array<{
-		q: number;
-		count: number;
-	}>>;
-	/**
-	 * Saves a TM block (iterator of jobs) to the database with chunked transactions.
-	 * Jobs are batched together until adding the next job would exceed MAX_TUS_PER_TRANSACTION.
-	 * @param {AsyncIterable<JobPropsTusPair>} tmBlockIterator - Iterator yielding job/TU pairs.
-	 * @param {Object} [options] - Options for saving the TM block.
-	 * @param {string} [options.tmStoreId] - TM store ID to associate with saved jobs.
-	 * @param {boolean} [options.updateRank=true] - Whether to update TU ranks after saving.
-	 * @returns {Promise<{jobs: Object[], tuCount: number}>} Saved job properties and total TU count.
-	 */
-	saveTmBlock(tmBlockIterator: AsyncIterable<JobPropsTusPair$1>, { tmStoreId, updateRank }?: {
-		tmStoreId?: string;
-		updateRank?: boolean;
-	}): Promise<{
-		jobs: any[];
-		tuCount: number;
-	}>;
-	/**
-	 * Bootstraps this language pair with bulk data from a job iterator.
-	 * This is a destructive operation - the TM database should be wiped before calling.
-	 * Jobs are batched by TU count to keep transaction sizes manageable.
-	 * @param {AsyncIterable<JobPropsTusPair>} jobIterator - Iterator yielding job/TU pairs.
-	 * @param {string} tmStoreId - TM store ID to associate with saved jobs.
-	 * @returns {Promise<{jobCount: number, tuCount: number}>} Statistics about loaded data.
-	 */
-	bootstrap(jobIterator: AsyncIterable<JobPropsTusPair$1>, tmStoreId: string): Promise<{
-		jobCount: number;
-		tuCount: number;
-	}>;
-	#private;
-}
-type TU$2 = TU$1;
-type NormalizedString$3 = NormalizedString$1;
-type DALManager$1 = DALManager;
-type JobPropsTusPair$1 = JobPropsTusPair;
-type TMStats = {
-	/**
-	 * - Total translation units.
-	 */
-	tuCount: number;
-	/**
-	 * - Total jobs.
-	 */
-	jobCount: number;
-};
-type LookupConditions = {
-	/**
-	 * - Filter by GUID.
-	 */
-	guid?: string;
-	/**
-	 * - Filter by job GUID.
-	 */
-	jobGuid?: string;
-	/**
-	 * - Filter by resource ID.
-	 */
-	rid?: string;
-	/**
-	 * - Filter by segment ID.
-	 */
-	sid?: string;
-	/**
-	 * - Filter by source text (exact).
-	 */
-	src?: string;
-	/**
-	 * - Filter by target text (exact).
-	 */
-	tgt?: string;
-	/**
-	 * - Filter by provider ID.
-	 */
-	translationProvider?: string;
-	/**
-	 * - Minimum quality score.
-	 */
-	minQ?: number;
-	/**
-	 * - Maximum quality score.
-	 */
-	maxQ?: number;
-};
-declare class FormatHandler {
-	/**
-	 * Creates a new FormatHandler instance.
-	 * @param {FormatHandlerConstructorOptions} options - Constructor options.
-	 * @throws {Error} If resourceFilter is not provided.
-	 */
-	constructor({ id, resourceFilter, resourceGenerator, normalizers, defaultMessageFormat, segmentDecorators, formatHandlers }: FormatHandlerConstructorOptions);
-	/**
-	 * Returns information about this format handler's configuration.
-	 * @returns {FormatHandlerInfo} Format handler configuration summary.
-	 */
-	getInfo(): FormatHandlerInfo;
-	/**
-	 * Parses and normalizes a raw resource into segments.
-	 * @param {string} rid - Resource identifier.
-	 * @param {string} resource - Raw resource content.
-	 * @param {GetNormalizedResourceOptions} [options] - Normalization options.
-	 * @returns {Promise<NormalizedResource>} Normalized resource with segments.
-	 */
-	getNormalizedResource(rid: string, resource: string, options?: GetNormalizedResourceOptions): Promise<NormalizedResource>;
-	/**
-	 * Generates translated raw resource content from a resource handle and translation memory.
-	 * @param {ResourceHandle} resHandle - The source resource handle with segments.
-	 * @param {TM} tm - Translation memory instance for the target language.
-	 * @returns {Promise<string|undefined>} The generated raw translated content, or undefined if generation fails.
-	 */
-	generateTranslatedResource(resHandle: ResourceHandle$1, tm: TM$1): Promise<string | undefined>;
-	#private;
-}
-type ResourceFilter$1 = ResourceFilter$4;
-type ResourceGenerator$1 = ResourceGenerator$3;
-type ResourceHandle$1 = ResourceHandle$2;
-type NormalizedSegment$1 = NormalizedSegment$2;
-type NormalizedResource = NormalizedResource$1;
-type TM$1 = TM;
-type SegmentDecorator$1 = (segment: NormalizedSegment$1) => NormalizedSegment$1 | undefined;
-type FormatHandlerConstructorOptions = {
-	/**
-	 * - Unique format handler identifier.
-	 */
-	id: string;
-	/**
-	 * - Filter for parsing raw resources.
-	 */
-	resourceFilter: ResourceFilter$1;
-	/**
-	 * - Generator for producing translations (defaults to resourceFilter).
-	 */
-	resourceGenerator?: ResourceGenerator$1;
-	/**
-	 * - Map of message format ID to Normalizer.
-	 */
-	normalizers: {
-		[x: string]: Normalizer;
-	};
-	/**
-	 * - Default message format for segments without explicit format.
-	 */
-	defaultMessageFormat: string;
-	/**
-	 * - Array of decorators to apply to segments.
-	 */
-	segmentDecorators?: SegmentDecorator$1[];
-	/**
-	 * - Map of format handlers for processing subresources.
-	 */
-	formatHandlers?: {
-		[x: string]: FormatHandler;
-	};
-};
-type FormatHandlerInfo = {
-	/**
-	 * - Format handler identifier.
-	 */
-	id: string;
-	/**
-	 * - Resource filter class name.
-	 */
-	resourceFilter: string;
-	/**
-	 * - Resource generator class name.
-	 */
-	resourceGenerator: string;
-	/**
-	 * - Available message format IDs.
-	 */
-	messageFormats: string[];
-	/**
-	 * - Default message format ID.
-	 */
-	defaultMessageFormat: string;
-};
-type GetNormalizedResourceOptions = {
-	/**
-	 * - Whether this is a source (true) or target (false) resource.
-	 */
-	isSource: boolean;
-	/**
-	 * - Source language code.
-	 */
-	sourceLang: string;
-	/**
-	 * - Target language codes.
-	 */
-	targetLangs?: string[];
-};
-declare class ResourceHandle$2 {
-	/**
-	 * Creates a new ResourceHandle instance.
-	 * @param {ResourceHandleConstructorOptions} options - Constructor options.
-	 */
-	constructor({ id, channel, modified, resourceFormat, formatHandler, sourceLang, targetLangs, plan, prj, raw, segments, subresources, ...other }: ResourceHandleConstructorOptions);
-	id: string;
-	channel: string;
-	modified: string | number;
-	resourceFormat: string;
-	sourceLang: string;
-	targetLangs: string[];
-	plan: TranslationPlan;
-	prj: string;
-	raw: string;
-	segments: NormalizedSegment[];
-	subresources: Subresource[];
-	/**
-	 * Loads segments and subresources from a normalized resource.
-	 * @param {NormalizedResource} normalizedResource - The normalized resource data.
-	 * @returns {ResourceHandle} This instance for chaining.
-	 */
-	loadFromNormalizedResource(normalizedResource: NormalizedResource$1): ResourceHandle$2;
-	/**
-	 * Loads and normalizes a resource from raw content using the format handler.
-	 * @param {string} rawResource - Raw resource content.
-	 * @param {LoadResourceOptions} options - Load options.
-	 * @returns {Promise<ResourceHandle>} This instance for chaining.
-	 */
-	loadResourceFromRaw(rawResource: string, options: LoadResourceOptions): Promise<ResourceHandle$2>;
-	/**
-	 * Generates translated raw resource content from the current segments and TM.
-	 * @param {TM} tm - Translation memory instance for looking up translations.
-	 * @returns {Promise<string>} The generated raw translated content.
-	 */
-	generateTranslatedRawResource(tm: TM$2): Promise<string>;
-	/**
-	 * Applies translation policies to all segments, updating their translation plans.
-	 * @param {TranslationPolicy[]} translationPolicyPipeline - Array of policy functions to apply.
-	 * @returns {Promise<void>}
-	 */
-	applyPolicies(translationPolicyPipeline: TranslationPolicy$1[]): Promise<void>;
-	#private;
-}
-type TranslationPolicy$1 = TranslationPolicy$5;
-type NormalizedSegment$2 = NormalizedSegment$5;
-type TranslationPlan$1 = TranslationPlan$3;
-type Subresource$1 = Subresource$2;
-type FormatHandler$1 = FormatHandler;
-type TM$2 = TM;
-type NormalizedResource$1 = {
-	/**
-	 * - Array of normalized segments.
-	 */
-	segments: NormalizedSegment$2[];
-	/**
-	 * - Optional nested subresources.
-	 */
-	subresources?: Subresource$1[];
-};
-type LoadResourceOptions = {
-	/**
-	 * - Whether this is a source (true) or target (false) resource.
-	 */
-	isSource: boolean;
-};
-type ResourceHandleConstructorOptions = {
-	/**
-	 * - Resource identifier.
-	 */
-	id: string;
-	/**
-	 * - Channel ID this resource belongs to.
-	 */
-	channel: string;
-	/**
-	 * - Last modified timestamp.
-	 */
-	modified?: string | number;
-	/**
-	 * - Format handler ID.
-	 */
-	resourceFormat: string;
-	/**
-	 * - Format handler instance.
-	 */
-	formatHandler: FormatHandler$1;
-	/**
-	 * - Source language code.
-	 */
-	sourceLang: string;
-	/**
-	 * - Target language codes.
-	 */
-	targetLangs?: string[];
-	/**
-	 * - Translation plan.
-	 */
-	plan?: TranslationPlan$1;
-	/**
-	 * - Project name for filtering.
-	 */
-	prj?: string;
-	/**
-	 * - Raw resource content.
-	 */
-	raw?: string;
-	/**
-	 * - Parsed segments.
-	 */
-	segments?: NormalizedSegment$2[];
-	/**
-	 * - Nested subresources.
-	 */
-	subresources?: Subresource$1[];
-};
-declare class Channel$1 {
-	/**
-	 * Creates a new Channel instance.
-	 * @param {ChannelConstructorOptions} options - Channel configuration options.
-	 */
-	constructor({ id, source, formatHandlers, defaultResourceFormat, target, translationPolicyPipeline }: ChannelConstructorOptions);
-	/**
-	 * Returns information about this channel's configuration.
-	 * @returns {ChannelInfo} Channel configuration summary.
-	 */
-	getInfo(): ChannelInfo;
-	/**
-	 * Creates a ResourceHandle from a resource header.
-	 * @param {ResourceHeader} resourceHeader - Resource metadata from source adapter.
-	 * @returns {ResourceHandle} A new ResourceHandle configured for this resource.
-	 * @throws {Error} If sourceLang is missing or no format handler is found.
-	 */
-	makeResourceHandleFromHeader(resourceHeader: ResourceHeader$1): ResourceHandle$2;
-	/**
-	 * Fetches all resources from the source, normalizes them, and applies translation policies.
-	 * @param {object} [options] - Options passed to the source adapter's fetchAllResources.
-	 * @yields {ResourceHandle} Normalized resource handles with policies applied.
-	 * @returns {AsyncGenerator<ResourceHandle>} Async generator of ResourceHandle instances.
-	 */
-	getAllNormalizedResources(options?: object): AsyncGenerator<ResourceHandle$2>;
-	/**
-	 * Fetches an existing translated resource from the target adapter.
-	 * @param {ResourceHandle} resourceHandle - The source resource handle.
-	 * @param {string} targetLang - Target language code.
-	 * @returns {Promise<ResourceHandle>} A ResourceHandle loaded with the existing translation.
-	 */
-	getExistingTranslatedResource(resourceHandle: ResourceHandle$2, targetLang: string): Promise<ResourceHandle$2>;
-	/**
-	 * Commits a translated resource to the target adapter.
-	 * @param {string} targetLang - Target language code.
-	 * @param {string} resourceId - Source resource identifier.
-	 * @param {string} rawResource - Raw translated content to commit.
-	 * @returns {Promise<string>} The translated resource ID in the target system.
-	 */
-	commitTranslatedResource(targetLang: string, resourceId: string, rawResource: string): Promise<string>;
-	#private;
-}
-type SourceAdapter$1 = SourceAdapter$5;
-type TargetAdapter$1 = TargetAdapter$4;
-type ResourceHeader$1 = ResourceHeader$2;
-type TranslationPolicy$2 = TranslationPolicy$5;
-type FormatHandlerInfo$1 = FormatHandlerInfo;
-type ChannelConstructorOptions = {
-	/**
-	 * - Unique channel identifier.
-	 */
-	id: string;
-	/**
-	 * - Source adapter for fetching resources.
-	 */
-	source: SourceAdapter$1;
-	/**
-	 * - Map of format ID to FormatHandler.
-	 */
-	formatHandlers: {
-		[x: string]: FormatHandler;
-	};
-	/**
-	 * - Default format handler ID.
-	 */
-	defaultResourceFormat: string;
-	/**
-	 * - Target adapter for committing translations.
-	 */
-	target: TargetAdapter$1;
-	/**
-	 * - Array of translation policy functions.
-	 */
-	translationPolicyPipeline: TranslationPolicy$2[];
-};
-type ChannelInfo = {
-	/**
-	 * - Channel identifier.
-	 */
-	id: string;
-	/**
-	 * - Source adapter class name.
-	 */
-	source: string;
-	/**
-	 * - Target adapter class name.
-	 */
-	target: string;
-	/**
-	 * - Array of format handler info objects.
-	 */
-	formatHandlers: FormatHandlerInfo$1[];
-	/**
-	 * - Default format handler ID.
-	 */
-	defaultResourceFormat: string;
-	/**
-	 * - Number of translation policies.
-	 */
-	translationPolicies: number;
-};
 declare class ResourceManager {
 	/**
 	 * Creates a new ResourceManager instance.
@@ -2297,7 +2181,7 @@ declare class ResourceManager {
 	 * @param {string} channelId String identifier of the channel.
 	 * @return {Channel} A channel object.
 	 */
-	getChannel(channelId: string): Channel$2;
+	getChannel(channelId: string): Channel$1;
 	/**
 	 * Gets all desired language pairs for a channel based on translation policies.
 	 * @param {string} channelId - Channel identifier.
@@ -2340,7 +2224,7 @@ declare class ResourceManager {
 	 */
 	getResourceHandle(channelId: string, rid: string, options?: {
 		keepRaw?: boolean;
-	}): Promise<ResourceHandle$3>;
+	}): Promise<ResourceHandle$2>;
 	/**
 	 * Iterates over all resources in a channel from the cached snapshot.
 	 * @param {string} channelId - Channel identifier.
@@ -2353,7 +2237,7 @@ declare class ResourceManager {
 	getAllResources(channelId: string, options?: {
 		keepRaw?: boolean;
 		prj?: string;
-	}): AsyncGenerator<ResourceHandle$3>;
+	}): AsyncGenerator<ResourceHandle$2>;
 	/**
 	 * @param {string} channelId
 	 * @returns {Promise<{resources: number, segments: number}>}
@@ -2390,15 +2274,15 @@ declare class ResourceManager {
 	shutdown(): Promise<void>;
 	#private;
 }
-type Channel$2 = Channel$1;
-type ResourceHandle$3 = ResourceHandle$2;
+type Channel$1 = Channel$2;
+type ResourceHandle$2 = ResourceHandle$3;
 type DALManager$2 = DALManager$4;
 type ResourceManagerConstructorOptions = {
 	/**
 	 * - Map of channel ID to Channel instance.
 	 */
 	channels?: {
-		[x: string]: Channel$1;
+		[x: string]: Channel;
 	};
 	/**
 	 * - Whether to automatically snapshot channels on first access.
@@ -2827,6 +2711,7 @@ type StartedJobSummary = {
  * @property {string} [sourceFilename] - Source DB filename (undefined = in-memory)
  * @property {string} [tmFilename] - TM DB filename for shard 0 (undefined = in-memory)
  * @property {Array<Array<[string, string]>>} [tmSharding] - Shard assignments
+ * @property {boolean} [useWorkers=false] - Use worker threads for DB operations
  */
 /** @implements {DALManagerInterface} */
 export declare class SQLiteDALManager implements DALManagerInterface {
@@ -2836,10 +2721,24 @@ export declare class SQLiteDALManager implements DALManagerInterface {
 	constructor(options?: SQLiteDALManagerOptions);
 	activeChannels: any;
 	init(mm: any): Promise<void>;
-	channel(channelId: any): any;
-	tu(sourceLang: any, targetLang: any): any;
+	/**
+	 * Get ChannelDAL for a channel.
+	 * Always uses direct mode (no worker proxy) for channel operations.
+	 * @param {string} channelId - Channel identifier.
+	 * @returns {import('../interfaces.js').ChannelDAL} ChannelDAL instance.
+	 */
+	channel(channelId: string): ChannelDAL;
+	/**
+	 * Get TuDAL for a language pair.
+	 * Note: In worker mode, returns a TuDALProxy that implements the TuDAL interface.
+	 * @param {string} sourceLang - Source language code.
+	 * @param {string} targetLang - Target language code.
+	 * @returns {TuDAL} TuDAL or proxy (cast as TuDAL).
+	 */
+	tu(sourceLang: string, targetLang: string): TuDAL$1;
 	/**
 	 * Get all available language pairs across all shards.
+	 * Queries the database directly for distinct language pairs with jobs.
 	 * @returns {Promise<Array<[string, string]>>} Array of [sourceLang, targetLang] tuples.
 	 */
 	getAvailableLangPairs(): Promise<Array<[
@@ -2865,7 +2764,7 @@ export declare class SQLiteDALManager implements DALManagerInterface {
 	/**
 	 * Runs a callback in bootstrap mode with optimal bulk insert settings.
 	 * Automatically cleans up and switches back to normal WAL mode when done.
-	 * Note: This only bootstraps shard 0 currently.
+	 * All shards are bootstrapped (cleaned and initialized with MEMORY journal).
 	 *
 	 * @template T
 	 * @param {() => Promise<T>} callback - The bootstrap operation to run.
@@ -2875,7 +2774,8 @@ export declare class SQLiteDALManager implements DALManagerInterface {
 	shutdown(): Promise<void>;
 	#private;
 }
-type DALManagerInterface = DALManager;
+type DALManagerInterface = DALManager$1;
+type TuDAL$1 = TuDAL;
 type SQLiteDALManagerOptions = {
 	/**
 	 * - Source DB filename (undefined = in-memory)
@@ -2892,6 +2792,10 @@ type SQLiteDALManagerOptions = {
 		string,
 		string
 	]>>;
+	/**
+	 * - Use worker threads for DB operations
+	 */
+	useWorkers?: boolean;
 };
 /**
  * @typedef {import('../interfaces.js').TranslationProvider} TranslationProvider
@@ -3234,7 +3138,7 @@ declare class HttpSource implements SourceAdapter$2 {
 		string
 	]>;
 }
-type SourceAdapter$2 = SourceAdapter;
+type SourceAdapter$2 = SourceAdapter$1;
 declare class FsSource extends AbstractFsAdapter implements SourceAdapter$3 {
 	static configMancerSample: {
 		"@": string;
@@ -3328,8 +3232,8 @@ declare class FsTarget extends AbstractFsAdapter implements TargetAdapter$2 {
 	 */
 	commitTranslatedResource(lang: string, resourceId: string, translatedRes: string | null): Promise<void>;
 }
-type SourceAdapter$3 = SourceAdapter;
-type TargetAdapter$2 = TargetAdapter;
+type SourceAdapter$3 = SourceAdapter$1;
+type TargetAdapter$2 = TargetAdapter$1;
 type ChannelOptions$1 = ChannelOptions;
 declare class AbstractFsAdapter {
 	/**
@@ -3378,7 +3282,7 @@ declare class DuplicateSource implements Analyzer$2 {
 	getAnalysis(): AnalysisResult;
 }
 type Analyzer$2 = Analyzer;
-type NormalizedSegment$3 = NormalizedSegment;
+type NormalizedSegment$3 = NormalizedSegment$2;
 declare class SmellySource implements Analyzer$3 {
 	static helpParams: string;
 	static help: string;
@@ -3415,7 +3319,7 @@ declare class SmellySource implements Analyzer$3 {
 	};
 }
 type Analyzer$3 = Analyzer;
-type NormalizedSegment$4 = NormalizedSegment;
+type NormalizedSegment$4 = NormalizedSegment$2;
 declare class TextExpansionSummary implements Analyzer$4 {
 	static help: string;
 	/** @type {Record<string, number[][]>} */
@@ -3567,7 +3471,7 @@ declare class ExportTranslationGrid implements Analyzer$7 {
 }
 type Analyzer$7 = Analyzer;
 type AnalyzerTU$4 = AnalyzerTU;
-type NormalizedString$4 = NormalizedString$1;
+type NormalizedString$4 = NormalizedString$3;
 declare class SequenceGenerator implements SegmentDecoratorFactory$1 {
 	/**
 	 * Creates a new SequenceGenerator instance.
@@ -3604,7 +3508,7 @@ declare class SequenceGenerator implements SegmentDecoratorFactory$1 {
 	save(): Promise<void>;
 }
 type SegmentDecoratorFactory$1 = SegmentDecoratorFactory;
-type SegmentDecorator$2 = SegmentDecorator;
+type SegmentDecorator$2 = SegmentDecorator$1;
 type MonsterManager$2 = MonsterManager;
 declare class MNFv1Filter implements ResourceFilter$2 {
 	/** @type {{ decoders: Array<(nstr: NormalizedString) => Part[]>, codeEncoders: Array<(part: PlaceholderPart) => Part>, joiner: (parts: Part[]) => string }} */
@@ -3630,10 +3534,10 @@ declare class MNFv1Filter implements ResourceFilter$2 {
 	 */
 	generateResource({ translator, segments, raw: _raw, ...resHandle }: GenerateResourceParams$1): Promise<string>;
 }
-type ResourceFilter$2 = ResourceFilter;
-type NormalizedString$5 = NormalizedString$1;
-type Part$2 = Part;
-type PlaceholderPart$2 = PlaceholderPart;
+type ResourceFilter$2 = ResourceFilter$1;
+type NormalizedString$5 = NormalizedString$3;
+type Part$2 = Part$1;
+type PlaceholderPart$2 = PlaceholderPart$1;
 type Segment$1 = Segment;
 type GenerateResourceParams$1 = GenerateResourceParams;
 declare function namedDecoder(name: string, decoder: DecoderFunction$2): DecoderFunction$2;
@@ -3644,9 +3548,9 @@ declare function keywordTranslatorMaker(name: string, keywordToTranslationMap: R
 ];
 declare function defaultCodeEncoder(part: PlaceholderPart$5 | string): string;
 declare function defaultTextEncoder(text: string): string;
-declare const doublePercentDecoder: DecoderFunction;
-declare const doublePercentEncoder: TextEncoderFunction;
-declare const bracePHDecoder: DecoderFunction;
+declare const doublePercentDecoder: DecoderFunction$1;
+declare const doublePercentEncoder: TextEncoderFunction$1;
+declare const bracePHDecoder: DecoderFunction$1;
 type Part$3 = Part$6;
 type DecoderFunction$2 = DecoderFunction$4;
 type EncodeFlags$2 = EncodeFlags$4;
@@ -3722,14 +3626,14 @@ declare class BaseTranslationProvider implements TranslationProvider$3 {
 	 * @param {Job} job - The job request.
 	 * @returns {Promise<TU[]>} A promise resolving to an array of accepted TUs.
 	 */
-	getAcceptedTus(job: Job$3): Promise<TU$3[]>;
+	getAcceptedTus(job: Job$3): Promise<TU$2[]>;
 	/**
 	 * Get the translated TUs.
 	 * Override this method for synchronous translation.
 	 * @param {Job} job - The job request.
 	 * @returns {Promise<TU[]>} The array of translated TUs.
 	 */
-	getTranslatedTus(job: Job$3): Promise<TU$3[]>;
+	getTranslatedTus(job: Job$3): Promise<TU$2[]>;
 	/**
 	 * Creates a task that when executed will return the job response.
 	 * Override this method for async/resumable translation.
@@ -3741,7 +3645,7 @@ declare class BaseTranslationProvider implements TranslationProvider$3 {
 }
 type TranslationProvider$3 = TranslationProvider;
 type Job$3 = Job;
-type TU$3 = TU$1;
+type TU$2 = TU;
 type StatusProperties$1 = StatusProperties;
 type MonsterManager$3 = MonsterManager;
 type BaseTranslationProviderOptions = {
@@ -3900,7 +3804,7 @@ declare class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
 	model: string;
 	temperature: number;
 	systemPrompt: string;
-	customSchema: import("zod").ZodTypeAny;
+	customSchema: import("zod").ZodType<any, any, import("zod/v4/core").$ZodTypeInternals<any, any>>;
 	maxRetries: number;
 	sleepBasePeriod: number;
 	targetLangInstructions: {};
@@ -4046,7 +3950,7 @@ declare class InternalLeverageHoldout extends BaseTranslationProvider {
 	 */
 	getTranslatedTus(): Promise<TUType[]>;
 }
-type TUType = TU$1;
+type TUType = TU;
 declare class Visicode extends BaseTranslationProvider {
 	/**
 	 * Initializes a new instance of the Visicode class.
@@ -4154,7 +4058,7 @@ declare class BaseJsonlTmStore implements TMStore$2 {
 }
 type TMStore$2 = TMStore;
 type TMStoreTOC$1 = TMStoreTOC;
-type JobPropsTusPair$3 = JobPropsTusPair;
+type JobPropsTusPair$3 = JobPropsTusPair$1;
 type _FileStoreDelegate = FileStoreDelegate;
 declare class LegacyFileBasedTmStore implements _TMStore {
 	/**
@@ -4219,7 +4123,7 @@ declare class LegacyFileBasedTmStore implements _TMStore {
 type _TMStore = TMStore;
 type _FileStoreDelegate$1 = FileStoreDelegate;
 type TMStoreTOC$2 = TMStoreTOC;
-type JobPropsTusPair$4 = JobPropsTusPair;
+type JobPropsTusPair$4 = JobPropsTusPair$1;
 declare class FsStoreDelegate implements FileStoreDelegate$1 {
 	/**
 	 * Creates a new FsStoreDelegate instance.
@@ -4385,9 +4289,9 @@ type OpsStoreInterface$3 = OpsStoreInterface;
 type _FileStoreDelegate$3 = FileStoreDelegate;
 type SerializedOp$3 = SerializedOp;
 declare function generateGuid(str: string): string;
-declare function consolidateDecodedParts(parts: Part$5[], flags: EncodeFlags, convertToString?: boolean): Part$5[];
-declare function decodeNormalizedString(nstr: Part$5[], decoderList: DecoderFunction$4[], flags?: EncodeFlags): NormalizedString$6;
-declare function getNormalizedString(str: string, decoderList: DecoderFunction$4[], flags?: EncodeFlags): NormalizedString$6;
+declare function consolidateDecodedParts(parts: Part$5[], flags: EncodeFlags$1, convertToString?: boolean): Part$5[];
+declare function decodeNormalizedString(nstr: Part$5[], decoderList: DecoderFunction$4[], flags?: EncodeFlags$1): NormalizedString$6;
+declare function getNormalizedString(str: string, decoderList: DecoderFunction$4[], flags?: EncodeFlags$1): NormalizedString$6;
 declare function flattenNormalizedSourceToOrdinal(nsrc: NormalizedString$6): string;
 declare function flattenNormalizedSourceV1(nsrc: NormalizedString$6): [
 	string,
@@ -4422,7 +4326,7 @@ type JobProps$2 = JobProps$3;
 type Job$5 = Job$6;
 type StructuredNotes$2 = StructuredNotes$3;
 type PlaceholderMap = {
-	[x: string]: PlaceholderPart;
+	[x: string]: PlaceholderPart$1;
 };
 type TUMaps = {
 	/**
@@ -4444,10 +4348,10 @@ type TUMaps = {
 		[x: string]: string;
 	};
 };
-declare const entityDecoder: DecoderFunction;
-declare const CDataDecoder: DecoderFunction;
-declare const entityEncoder: TextEncoderFunction;
-declare const tagDecoder: DecoderFunction;
+declare const entityDecoder: DecoderFunction$1;
+declare const CDataDecoder: DecoderFunction$1;
+declare const entityEncoder: TextEncoderFunction$1;
+declare const tagDecoder: DecoderFunction$1;
 declare const analyze: L10nAction$3;
 declare const ops: L10nAction$3;
 declare const monster: L10nAction$3;
@@ -4623,7 +4527,7 @@ export class ChannelConfig {
 	 * Creates a Channel instance from this configuration.
 	 * @returns {Channel} The created channel.
 	 */
-	createChannel(): Channel$1;
+	createChannel(): Channel;
 	/**
 	 * Sets the source adapter for this channel.
 	 * @param {SourceAdapter} source - The source adapter.
@@ -4861,14 +4765,14 @@ export const config: {
 	resourceFormat: (id: string) => ResourceFormatConfig;
 	messageFormat: (id: string) => MessageFormatConfig;
 };
-type ResourceFilter$3 = ResourceFilter;
-type ResourceGenerator$2 = ResourceGenerator;
-type SourceAdapter$4 = SourceAdapter;
-type TargetAdapter$3 = TargetAdapter;
+type ResourceFilter$3 = ResourceFilter$1;
+type ResourceGenerator$2 = ResourceGenerator$1;
+type SourceAdapter$4 = SourceAdapter$1;
+type TargetAdapter$3 = TargetAdapter$1;
 type TMStore$3 = TMStore;
 type SnapStore$2 = SnapStore;
 type TranslationProvider$4 = TranslationProvider;
-type TranslationPolicy$4 = TranslationPolicy;
+type TranslationPolicy$4 = TranslationPolicy$2;
 type OpsStoreInterface$4 = OpsStoreInterface;
 type L10nAction$2 = L10nAction;
 type Analyzer$8 = Analyzer;
@@ -4892,30 +4796,30 @@ export const l10nMonsterPackage: "@l10nmonster/core";
 export const l10nMonsterVersion: "3.1.1";
 export const l10nMonsterDescription: "L10n Monster Core Module";
 type Segment$2 = Segment;
-type Part$6 = Part;
-type PlaceholderPart$5 = PlaceholderPart;
-type NormalizedString$7 = NormalizedString$1;
+type Part$6 = Part$1;
+type PlaceholderPart$5 = PlaceholderPart$1;
+type NormalizedString$7 = NormalizedString$3;
 type StructuredNotes$3 = StructuredNotes$1;
-type ResourceHeader$2 = ResourceHeader;
+type ResourceHeader$2 = ResourceHeader$1;
 type ChannelOptions$2 = ChannelOptions;
-type SourceAdapter$5 = SourceAdapter;
-type TargetAdapter$4 = TargetAdapter;
+type SourceAdapter$5 = SourceAdapter$1;
+type TargetAdapter$4 = TargetAdapter$1;
 type TMStore$4 = TMStore;
 type TMStoreTOC$3 = TMStoreTOC;
 type TMStoreBlock$1 = TMStoreBlock;
-type JobPropsTusPair$5 = JobPropsTusPair;
+type JobPropsTusPair$5 = JobPropsTusPair$1;
 type SnapStore$3 = SnapStore;
 type JobProps$3 = JobProps$1;
 type Job$6 = Job;
-type TranslationPolicy$5 = TranslationPolicy;
-type ResourceFilter$4 = ResourceFilter;
-type ResourceGenerator$3 = ResourceGenerator;
+type TranslationPolicy$5 = TranslationPolicy$2;
+type ResourceFilter$4 = ResourceFilter$1;
+type ResourceGenerator$3 = ResourceGenerator$1;
 type GenerateResourceParams$2 = GenerateResourceParams;
-type Subresource$2 = Subresource;
-type EncodeFlags$4 = EncodeFlags;
-type DecoderFunction$4 = DecoderFunction;
-type TextEncoderFunction$3 = TextEncoderFunction;
-type CodeEncoderFunction$2 = CodeEncoderFunction;
+type Subresource$2 = Subresource$1;
+type EncodeFlags$4 = EncodeFlags$1;
+type DecoderFunction$4 = DecoderFunction$1;
+type TextEncoderFunction$3 = TextEncoderFunction$1;
+type CodeEncoderFunction$2 = CodeEncoderFunction$1;
 type PartTransformer$1 = PartTransformer;
 type TranslationProvider$5 = TranslationProvider;
 type StatusProperty$1 = StatusProperty;
@@ -4934,17 +4838,17 @@ type AnalysisResult$1 = AnalysisResult;
 type Analyzer$9 = Analyzer;
 type AnalyzerTU$5 = AnalyzerTU;
 type OpsStoreInterface$5 = OpsStoreInterface;
-type SegmentDecorator$3 = SegmentDecorator;
+type SegmentDecorator$3 = SegmentDecorator$1;
 type SegmentDecoratorFactory$2 = SegmentDecoratorFactory;
-type NormalizedSegment$5 = NormalizedSegment;
+type NormalizedSegment$5 = NormalizedSegment$2;
 type FileStoreDelegate$2 = FileStoreDelegate;
-type DALManager$4 = DALManager;
-type TranslationPlan$3 = TranslationPlan;
+type DALManager$4 = DALManager$1;
+type TranslationPlan$3 = TranslationPlan$1;
 type PolicyContext$2 = PolicyContext;
-type Channel$3 = Channel$1;
+type Channel$2 = Channel;
 type FormatHandler$2 = FormatHandler;
 type Normalizer$1 = Normalizer;
-type ResourceHandle$4 = ResourceHandle$2;
+type ResourceHandle$3 = ResourceHandle$1;
 
 declare namespace xml {
 	export { CDataDecoder, entityDecoder, entityEncoder, tagDecoder };
@@ -4991,7 +4895,7 @@ export {
 	AnalysisResult$1 as AnalysisResult,
 	Analyzer$9 as Analyzer,
 	AnalyzerTU$5 as AnalyzerTU,
-	Channel$3 as Channel,
+	Channel$2 as Channel,
 	ChannelOptions$2 as ChannelOptions,
 	ChunkTuMeta$1 as ChunkTuMeta,
 	CodeEncoderFunction$2 as CodeEncoderFunction,
@@ -5020,7 +4924,7 @@ export {
 	ProviderTranslateChunkArgs$3 as ProviderTranslateChunkArgs,
 	ResourceFilter$4 as ResourceFilter,
 	ResourceGenerator$3 as ResourceGenerator,
-	ResourceHandle$4 as ResourceHandle,
+	ResourceHandle$3 as ResourceHandle,
 	ResourceHeader$2 as ResourceHeader,
 	Segment$2 as Segment,
 	SegmentDecorator$3 as SegmentDecorator,

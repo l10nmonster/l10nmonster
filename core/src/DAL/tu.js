@@ -33,6 +33,12 @@ export class TuDAL {
         return this.#targetLang;
     }
 
+    /**
+     * @param {Object} db - Database connection
+     * @param {string} sourceLang - Source language code
+     * @param {string} targetLang - Target language code
+     * @param {Object} DAL - DAL manager (for accessing channels)
+     */
     constructor(db, sourceLang, targetLang, DAL) {
         this.#db = db;
         this.#sourceLang = sourceLang;
@@ -138,6 +144,22 @@ export class TuDAL {
             CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_rank_guid_q ON ${this.#tusTable} (rank, guid, q);
         `);
         this.#indexesInitialized = true;
+    }
+
+    /**
+     * Get the segments table name for a channel.
+     * @param {import('../interfaces.js').ChannelDAL|string} channelDAL - ChannelDAL object or channelId string (TM worker mode)
+     * @returns {{tableName: string, channelId: string}}
+     */
+    #getSegmentsTableInfo(channelDAL) {
+        if (typeof channelDAL === 'string') {
+            // TM worker mode: use ATTACH table reference (source DB attached as 'source')
+            const channelId = channelDAL;
+            const tableName = `source.segments_${channelId}`.replace(/[^a-zA-Z0-9_.]/g, '_');
+            return { tableName, channelId };
+        }
+        // Direct mode: use ChannelDAL's table name
+        return { tableName: channelDAL.segmentsTable, channelId: channelDAL.channelId };
     }
 
     #getActiveGuidsCTE(channelList) {
@@ -621,8 +643,13 @@ export class TuDAL {
         });
     }
 
+    /**
+     * Get translated content status for a channel.
+     * @param {import('../interfaces.js').ChannelDAL|string} channelDAL - ChannelDAL object or channelId string (TM worker mode)
+     */
     async getTranslatedContentStatus(channelDAL) {
         this.#ensureIndexes();
+        const { tableName: segmentsTable } = this.#getSegmentsTableInfo(channelDAL);
         // Use covering index rank_guid_q on TU table - all TU data comes from index
         // Segments table uses PRIMARY KEY (guid) for fast join lookup
         const tuIdxName = `idx_${this.#tusTable}_rank_guid_q`;
@@ -637,7 +664,7 @@ export class TuDAL {
                 SUM(seg.chars) chars
             FROM
                 ${this.#tusTable} tu INDEXED BY ${tuIdxName}
-                INNER JOIN ${channelDAL.segmentsTable} seg
+                INNER JOIN ${segmentsTable} seg
                     ON tu.guid = seg.guid
             WHERE tu.rank = 1
             AND seg.sourceLang = @sourceLang
@@ -648,8 +675,13 @@ export class TuDAL {
         return getTranslatedContentStatusStmt.all({ sourceLang: this.#sourceLang, targetLang: this.#targetLang });
     }
 
+    /**
+     * Get untranslated content status for a channel.
+     * @param {import('../interfaces.js').ChannelDAL|string} channelDAL - ChannelDAL object or channelId string (TM worker mode)
+     */
     async getUntranslatedContentStatus(channelDAL) {
         this.#ensureIndexes();
+        const { tableName: segmentsTable } = this.#getSegmentsTableInfo(channelDAL);
         // Use guid_rank index on TU table for fast LEFT JOIN lookup
         const tuIdxName = `idx_${this.#tusTable}_guid_rank`;
         const getUntranslatedContentStatusStmt = this.#db.prepare(/* sql */`
@@ -661,7 +693,7 @@ export class TuDAL {
                 SUM(seg.words) words,
                 SUM(seg.chars) chars
             FROM
-                ${channelDAL.segmentsTable} seg
+                ${segmentsTable} seg
                 LEFT JOIN ${this.#tusTable} tu INDEXED BY ${tuIdxName}
                     ON seg.guid = tu.guid AND tu.rank = 1
             WHERE seg.sourceLang = @sourceLang
@@ -675,7 +707,7 @@ export class TuDAL {
 
     /**
      * Get untranslated content from a channel.
-     * @param {Object} channelDAL - The channel DAL instance.
+     * @param {import('../interfaces.js').ChannelDAL|string} channelDAL - ChannelDAL object or channelId string (TM worker mode)
      * @param {Object} [options] - Options for the query.
      * @param {number} [options.limit=100] - Maximum number of segments to return.
      * @param {string[]} [options.prj] - Array of project names to filter by.
@@ -683,10 +715,11 @@ export class TuDAL {
      */
     async getUntranslatedContent(channelDAL, { limit = 100, prj } = {}) {
         this.#ensureIndexes();
+        const { tableName: segmentsTable, channelId } = this.#getSegmentsTableInfo(channelDAL);
         // Use json_extract instead of JSON_EACH to avoid expensive row expansion
         const getUntranslatedContentStmt = this.#db.prepare(/* sql */`
             SELECT
-                '${channelDAL.channelId}' channel,
+                '${channelId}' channel,
                 COALESCE(prj, 'default') prj,
                 seg.rid rid,
                 seg.sid sid,
@@ -700,7 +733,7 @@ export class TuDAL {
                 seg.words words,
                 seg.chars chars
             FROM
-                ${channelDAL.segmentsTable} seg
+                ${segmentsTable} seg
                 LEFT JOIN ${this.#tusTable} tu ON seg.guid = tu.guid AND tu.rank = 1
             WHERE
                 sourceLang = @sourceLang
@@ -719,14 +752,20 @@ export class TuDAL {
         return tus;
     }
 
+    /**
+     * Query source content with a custom WHERE condition.
+     * @param {import('../interfaces.js').ChannelDAL|string} channelDAL - ChannelDAL object or channelId string (TM worker mode)
+     * @param {string} whereCondition - SQL WHERE clause fragment
+     */
     async querySource(channelDAL, whereCondition) {
         this.#ensureIndexes();
+        const { tableName: segmentsTable, channelId } = this.#getSegmentsTableInfo(channelDAL);
         let stmt;
         try {
             // Use json_extract instead of JSON_EACH to avoid expensive row expansion
             stmt = this.#db.prepare(/* sql */`
                 SELECT
-                    '${channelDAL.channelId}' channel,
+                    '${channelId}' channel,
                     seg.prj prj,
                     seg.rid rid,
                     seg.sid sid,
@@ -741,7 +780,7 @@ export class TuDAL {
                     seg.segProps segProps,
                     seg.words words,
                     seg.chars chars
-                FROM ${channelDAL.segmentsTable} seg
+                FROM ${segmentsTable} seg
                     LEFT JOIN ${this.#tusTable} tu ON seg.guid = tu.guid AND tu.rank = 1
                 WHERE
                     sourceLang = @sourceLang
@@ -757,15 +796,21 @@ export class TuDAL {
         return tus;
     }
 
+    /**
+     * Query translation units by GUIDs.
+     * @param {string[]} guids - Array of GUIDs to query
+     * @param {import('../interfaces.js').ChannelDAL|string|null} channelDAL - ChannelDAL object, channelId string (TM worker mode), or null for orphaned TUs
+     */
     async queryByGuids(guids, channelDAL) {
         this.#ensureIndexes();
         let stmt;
         if (channelDAL) {
+            const { tableName: segmentsTable, channelId } = this.#getSegmentsTableInfo(channelDAL);
             // source can be tracked down, so use the latest
             // Use json_extract instead of JSON_EACH to avoid expensive row expansion
             stmt = this.#db.prepare(/* sql */`
                 SELECT
-                    '${channelDAL.channelId}' channel,
+                    '${channelId}' channel,
                     seg.prj prj,
                     seg.rid rid,
                     seg.sid sid,
@@ -783,7 +828,7 @@ export class TuDAL {
                     seg.words words,
                     seg.chars chars
                 FROM
-                    ${channelDAL.segmentsTable} seg
+                    ${segmentsTable} seg
                     JOIN JSON_EACH(@guids) wantedGuid ON seg.guid = wantedGuid.value
                     LEFT JOIN ${this.#tusTable} tu ON tu.guid = wantedGuid.value AND tu.rank = 1
                     LEFT JOIN jobs USING (jobGuid)

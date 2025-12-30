@@ -25,13 +25,13 @@ export class SourceShard {
      */
     init() {
         this.#db = new Database(this.#dbFilename);
-        this.#db.pragma('journal_mode = WAL');
+        this.#db.pragma('journal_mode = MEMORY');
         this.#db.pragma('synchronous = OFF');
         this.#db.pragma('temp_store = MEMORY');
-        this.#db.pragma('cache_size = -500000');
+        this.#db.pragma('cache_size = -100000');
         this.#db.pragma('threads = 4');
         const version = this.#db.prepare('select sqlite_version();').pluck().get();
-        logVerbose`Initialized Source DB (${this.#dbFilename}) with sqlite version ${version}`;
+        logVerbose`Initialized Source DB (${this.#dbFilename}) with sqlite version ${version}, journal_mode ${this.#db.pragma('journal_mode', { simple: true })}`;
 
         // Create channel_toc table
         // store -- id if channel populated from a store
@@ -72,7 +72,7 @@ export class SourceShard {
     /**
      * Get ChannelDAL for a channel.
      * @param {string} channelId
-     * @returns {ChannelDAL}
+     * @returns {import('../interfaces.js').ChannelDAL}
      */
     getChannelDAL(channelId) {
         if (!this.#channelDALCache.has(channelId)) {
@@ -83,9 +83,16 @@ export class SourceShard {
 
     /**
      * Shutdown the database connection.
+     * Runs WAL checkpoint to consolidate -wal/-shm files before closing.
      */
     shutdown() {
         if (this.#db) {
+            // Checkpoint WAL to consolidate files before closing
+            try {
+                this.#db.pragma('wal_checkpoint(TRUNCATE)');
+            } catch {
+                // Ignore checkpoint errors (e.g., if not in WAL mode)
+            }
             this.#db.close();
             this.#db = null;
         }

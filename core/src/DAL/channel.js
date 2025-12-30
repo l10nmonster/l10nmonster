@@ -256,7 +256,7 @@ export class ChannelDAL {
                 resProps,
                 ${keepRaw ? 'raw,' : ''}
                 modifiedAt modified
-            FROM ${this.resourcesTable} 
+            FROM ${this.resourcesTable}
             ${prjArray.length > 0 ? `WHERE prj IN (${prjArray.map(prj => `'${prj}'`).join(',')})` : ''}
             ORDER BY prj, sourceLang, rid;
         `);
@@ -399,4 +399,5 @@ export class ChannelDAL {
         logVerbose`Getting segment rows for channel ${this.channelId}...`;
         yield* this.#stmt.getSegmentRowIterator.iterate();
     }
+
 }

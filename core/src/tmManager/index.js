@@ -12,7 +12,7 @@ import { groupObjectsByNestedProps } from '../sharedFunctions.js';
  * @typedef {import('../../index.js').JobPropsTusPair} JobPropsTusPair
  * @typedef {import('../../index.js').Job} Job
  * @typedef {import('../../index.js').DALManager} DALManager
- * @typedef {import('../entities/tu.js').TU} TU
+ * @typedef {import('../../index.js').TU} TU
  */
 
 /**
@@ -395,7 +395,7 @@ export default class TMManager {
      * @returns {Promise<Object[]>} Array of job entries with metadata.
      */
     async getJobTOCByLangPair(sourceLang, targetLang) {
-        return await this.#DAL.tu(sourceLang, targetLang).getJobTOC();
+        return this.#DAL.tu(sourceLang, targetLang).getJobTOC();
     }
 
     /**

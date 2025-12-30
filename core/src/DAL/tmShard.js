@@ -48,10 +48,10 @@ export class TmShard {
         this.#db = new Database(this.#dbFilename);
         const journalMode = this.#bootstrapMode ? 'MEMORY' : 'WAL';
         this.#db.pragma(`journal_mode = ${journalMode}`);
-        logVerbose`Set journal_mode to ${this.#db.pragma('journal_mode', { simple: true })}`;
+        logVerbose`Set journal_mode to ${this.#db.pragma('journal_mode', { simple: true })} (bootstrap mode = ${this.#bootstrapMode})`;
         this.#db.pragma('synchronous = OFF');
         this.#db.pragma('temp_store = MEMORY');
-        this.#db.pragma('cache_size = -500000');
+        this.#db.pragma('cache_size = -100000');
         this.#db.pragma('threads = 4');
 
         // Attach source DB if different
@@ -60,7 +60,7 @@ export class TmShard {
         }
 
         const version = this.#db.prepare('select sqlite_version();').pluck().get();
-        logVerbose`Initialized TM DB shard ${this.#shardIndex} (${this.#dbFilename}) with sqlite version ${version}`;
+        logVerbose`Initialized TM DB shard ${this.#shardIndex} (${this.#dbFilename}) with sqlite version ${version}, journal_mode ${this.#db.pragma('journal_mode', { simple: true })}`;
     }
 
     /**
@@ -117,9 +117,9 @@ export class TmShard {
     /**
      * Get all available language pairs in this shard by querying the jobs table.
      * @param {import('./index.js').default} dalManager - Parent DAL manager.
-     * @returns {Array<[string, string]>} Array of [sourceLang, targetLang] tuples.
+     * @returns {Promise<Array<[string, string]>>} Array of [sourceLang, targetLang] tuples.
      */
-    getAvailableLangPairs(dalManager) {
+    async getAvailableLangPairs(dalManager) {
         // Check if jobs table exists
         const tableExists = this.#db.prepare(/* sql */`
             SELECT name FROM sqlite_master WHERE type='table' AND name='jobs';
@@ -142,9 +142,16 @@ export class TmShard {
 
     /**
      * Shutdown the database connection.
+     * Runs WAL checkpoint to consolidate -wal/-shm files before closing.
      */
     shutdown() {
         if (this.#db) {
+            // Checkpoint WAL to consolidate files before closing
+            try {
+                this.#db.pragma('wal_checkpoint(TRUNCATE)');
+            } catch {
+                // Ignore checkpoint errors (e.g., if not in WAL mode)
+            }
             this.#db.close();
             this.#db = null;
         }

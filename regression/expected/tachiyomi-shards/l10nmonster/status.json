@@ -1,0 +1,143 @@
+{
+	"xliff": {
+		"en": {
+			"en-GB": {
+				"default": {
+					"translatedDetails": [
+						{
+							"minQ": 50,
+							"q": 50,
+							"res": 1,
+							"seg": 20,
+							"words": 81,
+							"chars": 562
+						}
+					],
+					"untranslatedDetails": {
+						"null": [
+							{
+								"minQ": 50,
+								"seg": 931,
+								"words": 3129,
+								"chars": 18765
+							}
+						]
+					},
+					"pairSummary": {
+						"segs": 951,
+						"words": 3210,
+						"chars": 19327
+					},
+					"pairSummaryByStatus": {
+						"translated": 20,
+						"low quality": 0,
+						"in flight": 0,
+						"untranslated": 931
+					}
+				}
+			},
+			"piggy": {
+				"default": {
+					"translatedDetails": [
+						{
+							"minQ": 1,
+							"q": 1,
+							"res": 1,
+							"seg": 951,
+							"words": 3210,
+							"chars": 19327
+						}
+					],
+					"untranslatedDetails": {},
+					"pairSummary": {
+						"segs": 951,
+						"words": 3210,
+						"chars": 19327
+					},
+					"pairSummaryByStatus": {
+						"translated": 951,
+						"low quality": 0,
+						"in flight": 0,
+						"untranslated": 0
+					}
+				}
+			},
+			"zh-Hans": {
+				"default": {
+					"translatedDetails": [
+						{
+							"minQ": 50,
+							"q": 70,
+							"res": 1,
+							"seg": 866,
+							"words": 2864,
+							"chars": 17237
+						},
+						{
+							"minQ": 50,
+							"q": 0,
+							"res": 1,
+							"seg": 85,
+							"words": 346,
+							"chars": 2090
+						}
+					],
+					"untranslatedDetails": {},
+					"pairSummary": {
+						"segs": 951,
+						"words": 3210,
+						"chars": 19327
+					},
+					"pairSummaryByStatus": {
+						"translated": 866,
+						"low quality": 0,
+						"in flight": 85,
+						"untranslated": 0
+					}
+				}
+			},
+			"zh-Hant": {
+				"default": {
+					"translatedDetails": [
+						{
+							"minQ": 50,
+							"q": 80,
+							"res": 1,
+							"seg": 389,
+							"words": 1528,
+							"chars": 9132
+						},
+						{
+							"minQ": 50,
+							"q": 70,
+							"res": 1,
+							"seg": 482,
+							"words": 1370,
+							"chars": 8307
+						},
+						{
+							"minQ": 50,
+							"q": 0,
+							"res": 1,
+							"seg": 80,
+							"words": 312,
+							"chars": 1888
+						}
+					],
+					"untranslatedDetails": {},
+					"pairSummary": {
+						"segs": 951,
+						"words": 3210,
+						"chars": 19327
+					},
+					"pairSummaryByStatus": {
+						"translated": 871,
+						"low quality": 0,
+						"in flight": 80,
+						"untranslated": 0
+					}
+				}
+			}
+		}
+	}
+}

@@ -330,7 +330,7 @@ export function normalizedStringsAreEqual(s1, s2) {
  * Creates content maps, metadata, and placeholder notes from translation units.
  * Used for preparing TUs for translation providers.
  *
- * @param {import('../entities/tu.js').TU[]} tus - Array of translation units.
+ * @param {import('../../index.js').TU[]} tus - Array of translation units.
  * @returns {TUMaps} Object containing contentMap, tuMeta, and phNotes.
  */
 export function getTUMaps(tus) {

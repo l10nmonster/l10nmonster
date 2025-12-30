@@ -34,7 +34,7 @@ export const source_export = {
             const response = Object.fromEntries(stats.map((stats, index) => [ channels[index], stats ]));
             for (const [ channelId, { ts, resources, segments } ] of Object.entries(response)) {
                 if (ts) {
-                    consoleLog`  ‣ Channel ${channelId}: ${resources.count.toLocaleString()} ${[resources.count, 'resource', 'resources']}, ${segments.count.toLocaleString()} ${[segments.count, 'segment', 'segments']}, ts=${ts}`;
+                    consoleLog`  ‣ Channel ${channelId}: ${resources.toLocaleString()} ${[resources, 'resource', 'resources']}, ${segments.toLocaleString()} ${[segments, 'segment', 'segments']}, ts=${ts}`;
                 } else {
                     consoleLog`  ‣ Channel ${channelId} skipped`;
                 }

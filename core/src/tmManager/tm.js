@@ -36,6 +36,8 @@ import { groupObjectsByNestedProps } from '../sharedFunctions.js';
  */
 export class TM {
     #DAL;
+
+    /** @type {import('../interfaces.js').TuDAL} */
     #tuDAL;
 
     /** @type {string} Source language code. */
@@ -63,7 +65,8 @@ export class TM {
      * @returns {Promise<Record<string, TU>>} Map of GUID to TU entry.
      */
     async getEntries(guids) {
-        return this.#tuDAL.getEntries(guids);
+        const tuDAL = this.#tuDAL;
+        return tuDAL.getEntries(guids);
     }
 
     /**
@@ -72,7 +75,8 @@ export class TM {
      * @returns {Promise<TU[]>} Array of TU entries.
      */
     async getEntriesByJobGuid(jobGuid) {
-        return await this.#tuDAL.getEntriesByJobGuid(jobGuid);
+        const tuDAL = this.#tuDAL;
+        return tuDAL.getEntriesByJobGuid(jobGuid);
     }
 
     /**
@@ -82,7 +86,8 @@ export class TM {
      * @returns {Promise<TU[]>} Array of matching TU entries.
      */
     async getExactMatches(nsrc) {
-        const tuCandidates = await this.#tuDAL.getExactMatches(nsrc);
+        const tuDAL = this.#tuDAL;
+        const tuCandidates = await tuDAL.getExactMatches(nsrc);
         return tuCandidates.filter(tu => utils.sourceAndTargetAreCompatible(nsrc, tu.ntgt));
     }
 
@@ -91,7 +96,8 @@ export class TM {
      * @returns {Promise<TMStats>} TM statistics.
      */
     async getStats() {
-        return await this.#tuDAL.getStats();
+        const tuDAL = this.#tuDAL;
+        return tuDAL.getStats();
     }
 
     /**
@@ -100,7 +106,8 @@ export class TM {
      * @returns {Promise<Object>} Status grouped by project.
      */
     async getTranslatedContentStatus(channelId) {
-        const status = await this.#tuDAL.getTranslatedContentStatus(this.#DAL.channel(channelId));
+        const tuDAL = this.#tuDAL;
+        const status = await tuDAL.getTranslatedContentStatus(this.#DAL.channel(channelId));
         return groupObjectsByNestedProps(status, [ 'prj' ]);
     }
 
@@ -110,7 +117,8 @@ export class TM {
      * @returns {Promise<Object>} Status grouped by project -> group.
      */
     async getUntranslatedContentStatus(channelId) {
-        const status = await this.#tuDAL.getUntranslatedContentStatus(this.#DAL.channel(channelId));
+        const tuDAL = this.#tuDAL;
+        const status = await tuDAL.getUntranslatedContentStatus(this.#DAL.channel(channelId));
         return groupObjectsByNestedProps(status, [ 'prj', 'group' ]);
     }
 
@@ -123,7 +131,8 @@ export class TM {
      * @returns {Promise<Object[]>} Array of untranslated translation units.
      */
     async getUntranslatedContent(channelId, { limit = 5000, prj } = {}) {
-        return await this.#tuDAL.getUntranslatedContent(this.#DAL.channel(channelId), { limit, prj });
+        const tuDAL = this.#tuDAL;
+        return tuDAL.getUntranslatedContent(this.#DAL.channel(channelId), { limit, prj });
     }
 
     /**
@@ -133,7 +142,8 @@ export class TM {
      * @returns {Promise<Object[]>} Array of matching source segments.
      */
     async querySource(channelId, whereCondition) {
-        return await this.#tuDAL.querySource(this.#DAL.channel(channelId), whereCondition);
+        const tuDAL = this.#tuDAL;
+        return tuDAL.querySource(this.#DAL.channel(channelId), whereCondition);
     }
 
     /**
@@ -143,7 +153,8 @@ export class TM {
      * @returns {Promise<TU[]>} Array of TU entries.
      */
     async queryByGuids(guids, channelId) {
-        return await this.#tuDAL.queryByGuids(guids, channelId && this.#DAL.channel(channelId));
+        const tuDAL = this.#tuDAL;
+        return tuDAL.queryByGuids(guids, channelId ? this.#DAL.channel(channelId) : null);
     }
 
     /**
@@ -154,7 +165,8 @@ export class TM {
      * @returns {Promise<Object[]>} Array of matching translation units.
      */
     async search(offset, limit, likeConditions = {}) {
-        return await this.#tuDAL.search(offset, limit, likeConditions);
+        const tuDAL = this.#tuDAL;
+        return tuDAL.search(offset, limit, likeConditions);
     }
 
     /**
@@ -163,7 +175,8 @@ export class TM {
      * @returns {Promise<TU[]>} Array of matching TU entries.
      */
     async lookup(conditions = {}) {
-        return await this.#tuDAL.lookup(conditions);
+        const tuDAL = this.#tuDAL;
+        return tuDAL.lookup(conditions);
     }
 
     /**
@@ -171,7 +184,8 @@ export class TM {
      * @returns {Promise<Object>} Available filter values per column.
      */
     async getLowCardinalityColumns() {
-        return await this.#tuDAL.getLowCardinalityColumns();
+        const tuDAL = this.#tuDAL;
+        return tuDAL.getLowCardinalityColumns();
     }
 
     /**
@@ -180,7 +194,8 @@ export class TM {
      * @returns {Promise<number>} Number of deleted jobs (or count if dryrun).
      */
     async deleteEmptyJobs(dryrun) {
-        return await this.#tuDAL.deleteEmptyJobs(dryrun);
+        const tuDAL = this.#tuDAL;
+        return tuDAL.deleteEmptyJobs(dryrun);
     }
 
     /**
@@ -189,7 +204,8 @@ export class TM {
      * @returns {Promise<[string, string][]>} Array of [guid, jobGuid] tuples identifying TUs to delete.
      */
     async tuKeysOverRank(maxRank) {
-        return await this.#tuDAL.tuKeysOverRank(maxRank);
+        const tuDAL = this.#tuDAL;
+        return tuDAL.tuKeysOverRank(maxRank);
     }
 
     /**
@@ -198,7 +214,8 @@ export class TM {
      * @returns {Promise<[string, string][]>} Array of [guid, jobGuid] tuples identifying TUs to delete.
      */
     async tuKeysByQuality(quality) {
-        return await this.#tuDAL.tuKeysByQuality(quality);
+        const tuDAL = this.#tuDAL;
+        return tuDAL.tuKeysByQuality(quality);
     }
 
     /**
@@ -207,7 +224,8 @@ export class TM {
      * @returns {Promise<{deletedTusCount: number, touchedJobsCount: number}>} Count of deleted TUs and touched jobs.
      */
     async deleteTuKeys(tuKeys) {
-        return await this.#tuDAL.deleteTuKeys(tuKeys);
+        const tuDAL = this.#tuDAL;
+        return tuDAL.deleteTuKeys(tuKeys);
     }
 
     /**
@@ -215,7 +233,8 @@ export class TM {
      * @returns {Promise<Array<{ q: number, count: number }>>} Array of quality/count pairs.
      */
     async getQualityDistribution() {
-        return await this.#tuDAL.getQualityDistribution();
+        const tuDAL = this.#tuDAL;
+        return tuDAL.getQualityDistribution();
     }
 
     /**
@@ -234,6 +253,7 @@ export class TM {
      * @returns {Promise<{jobs: Object[], tuCount: number}>} Saved job properties and total TU count.
      */
     async saveTmBlock(tmBlockIterator, { tmStoreId, updateRank = true } = {}) {
+        const tuDAL = this.#tuDAL;
         const jobs = [];
         let jobBatch = [];
         let batchTuCount = 0;
@@ -255,7 +275,7 @@ export class TM {
 
             // If adding this job would exceed limit AND we have jobs, flush first
             if (batchTuCount + jobTuCount > TM.MAX_TUS_PER_TRANSACTION && jobBatch.length > 0) {
-                await this.#tuDAL.saveJobs(jobBatch, { tmStoreId, updateRank });
+                await tuDAL.saveJobs(jobBatch, { tmStoreId, updateRank });
                 jobs.push(...jobBatch.map(j => j.jobProps));
                 totalTuCount += batchTuCount;
                 jobBatch = [];
@@ -268,7 +288,7 @@ export class TM {
 
         // Flush remaining batch
         if (jobBatch.length > 0) {
-            await this.#tuDAL.saveJobs(jobBatch, { tmStoreId, updateRank });
+            await tuDAL.saveJobs(jobBatch, { tmStoreId, updateRank });
             jobs.push(...jobBatch.map(j => j.jobProps));
             totalTuCount += batchTuCount;
         }
@@ -285,7 +305,8 @@ export class TM {
      * @returns {Promise<{jobCount: number, tuCount: number}>} Statistics about loaded data.
      */
     async bootstrap(jobIterator, tmStoreId) {
-        return await this.#tuDAL.withBootstrapMode(async () => {
+        const tuDAL = this.#tuDAL;
+        return tuDAL.withBootstrapMode(async () => {
             const { jobs, tuCount } = await this.saveTmBlock(jobIterator, { tmStoreId, updateRank: false });
             return { jobCount: jobs.length, tuCount };
         });

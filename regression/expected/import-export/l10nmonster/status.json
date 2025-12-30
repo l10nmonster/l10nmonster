@@ -1,0 +1,32 @@
+{
+	"json": {
+		"en": {
+			"piggy": {
+				"default": {
+					"translatedDetails": [],
+					"untranslatedDetails": {
+						"null": [
+							{
+								"minQ": 1,
+								"seg": 4,
+								"words": 11,
+								"chars": 54
+							}
+						]
+					},
+					"pairSummary": {
+						"segs": 4,
+						"words": 11,
+						"chars": 54
+					},
+					"pairSummaryByStatus": {
+						"translated": 0,
+						"low quality": 0,
+						"in flight": 0,
+						"untranslated": 4
+					}
+				}
+			}
+		}
+	}
+}

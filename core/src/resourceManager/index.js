@@ -1,8 +1,8 @@
 import { logInfo, logVerbose } from '../l10nContext.js';
 
 /**
- * @typedef {import('../entities/channel.js').Channel} Channel
- * @typedef {import('../entities/resourceHandle.js').ResourceHandle} ResourceHandle
+ * @typedef {import('../../index.js').Channel} Channel
+ * @typedef {import('../../index.js').ResourceHandle} ResourceHandle
  * @typedef {import('../../index.js').SnapStore} SnapStore
  * @typedef {import('../../index.js').DALManager} DALManager
  */
@@ -157,7 +157,7 @@ export default class ResourceManager {
      */
     async getDesiredLangPairs(channelId) {
         await this.#snapIfNecessary(channelId);
-        return await this.#DAL.channel(channelId).getDesiredLangPairs();
+        return this.#DAL.channel(channelId).getDesiredLangPairs();
     }
 
     /**
@@ -199,7 +199,7 @@ export default class ResourceManager {
      */
     async getProjectTOC(channelId, prj, offset = 0, limit = 1000) {
         await this.#snapIfNecessary(channelId);
-        return await this.#DAL.channel(channelId).getProjectTOC(prj, offset, limit);
+        return this.#DAL.channel(channelId).getProjectTOC(prj, offset, limit);
     }
 
     //

@@ -113,67 +113,9 @@ export interface ResourceHeader {
     modified?: string | number;
 }
 
-/**
- * Represents a handle to a localization resource.
- * Contains metadata and parsed content for a resource.
- */
-export interface ResourceHandle {
-    /** Resource identifier (typically file path or unique key). */
-    id: string;
-    /** Channel ID this resource belongs to. */
-    channel: string;
-    /** Last modified timestamp. */
-    modified?: string | number;
-    /** Format handler ID. */
-    resourceFormat: string;
-    /** Source language code. */
-    sourceLang: string;
-    /** Target language codes for this resource. */
-    targetLangs: string[];
-    /** Translation plan per target language. */
-    plan?: TranslationPlan;
-    /** Project name for filtering. */
-    prj?: string;
-    /** Raw resource content. */
-    raw?: string;
-    /** Parsed normalized segments. */
-    segments?: NormalizedSegment[];
-    /** Nested subresources. */
-    subresources?: Subresource[];
-
-    // Methods
-    /** Loads segments and subresources from a normalized resource. */
-    loadFromNormalizedResource(normalizedResource: { segments: NormalizedSegment[]; subresources?: Subresource[] }): ResourceHandle;
-    /** Loads and normalizes a resource from raw content. */
-    loadResourceFromRaw(rawResource: string, options: { isSource?: boolean }): Promise<ResourceHandle>;
-    /** Generates translated raw resource content from the current segments and TM. */
-    generateTranslatedRawResource(tm: TMInterface): Promise<string | null>;
-    /** Applies translation policies to all segments. */
-    applyPolicies(translationPolicyPipeline: TranslationPolicy[]): Promise<void>;
-}
-
-/**
- * Channel interface for managing localization resources.
- */
-export interface Channel {
-    /** Get information about this channel's configuration. */
-    getInfo(): {
-        id: string;
-        source: string;
-        target: string;
-        formatHandlers: unknown[];
-        defaultResourceFormat: string;
-        translationPolicies: number;
-    };
-    /** Creates a ResourceHandle from a resource header. */
-    makeResourceHandleFromHeader(resourceHeader: ResourceHeader): ResourceHandle;
-    /** Fetches all resources from the source, normalizes them, and applies translation policies. */
-    getAllNormalizedResources(options?: Record<string, unknown>): AsyncGenerator<ResourceHandle>;
-    /** Fetches an existing translated resource. */
-    getExistingTranslatedResource(resHandle: ResourceHandle, targetLang: string): Promise<ResourceHandle>;
-    /** Commits a translated resource to the target. */
-    commitTranslatedResource(targetLang: string, resourceId: string, rawResource: string | null): Promise<string>;
-}
+// ResourceHandle and Channel are classes - re-export their types here
+export type { ResourceHandle } from './entities/resourceHandle.js';
+export type { Channel } from './entities/channel.js';
 
 // ============ Configuration Types ============
 
@@ -483,66 +425,8 @@ export interface JobProps {
     updatedAt?: string;
 }
 
-/**
- * Translation Unit interface - represents a segment with its translation.
- * Can be a source-only TU, target-only TU, or a complete pair.
- */
-export interface TU {
-    /** Unique identifier for the TU (hash of rid+sid+source). */
-    guid: string;
-    /** Resource ID the TU belongs to. */
-    rid?: string;
-    /** Segment ID within the resource. */
-    sid?: string;
-    /** Normalized source string. */
-    nsrc?: NormalizedString;
-    /** Normalized target string (translation). */
-    ntgt?: NormalizedString;
-    /** Quality score of the translation (0-100). */
-    q?: number;
-    /** Timestamp when the translation was created (epoch ms). */
-    ts?: number;
-    /** Minimum quality required for this TU. */
-    minQ?: number;
-    /** Word count for the source text. */
-    words?: number;
-    /** Character count for the source text. */
-    chars?: number;
-    /** Project identifier. */
-    prj?: string;
-    /** Translation group for routing to specific providers. */
-    group?: string;
-    /** Plural form (one, other, zero, two, few, many). */
-    pluralForm?: string;
-    /** Opaque native ID in original storage format. */
-    nid?: string;
-    /** Sequence number to shorten GUID. */
-    seq?: number;
-    /** Whether the TU is currently in-flight (submitted, pending translation). */
-    inflight?: boolean;
-    /** Translation confidence score. */
-    tconf?: number;
-    /** Translation notes from provider. */
-    tnotes?: string;
-    /** Job GUID this TU was translated in. */
-    jobGuid?: string;
-    /** ID of the translation provider. */
-    translationProvider?: string;
-    /** Notes for translators (raw string or structured). */
-    notes?: string | StructuredNotes;
-    /** Translation cost (number or array for detailed token breakdown). */
-    cost?: number | number[];
-    /** QA data from quality checks. */
-    qa?: Record<string, unknown>;
-    /** Translation hash for detecting vendor-side fixes. */
-    th?: string;
-    /** Review data (reviewed words and errors found). */
-    rev?: { reviewedWords?: number; errorsFound?: number };
-    /** Job-specific properties (used for TM export/import). */
-    jobProps?: JobProps;
-    /** Channel ID (used by grandfather provider). */
-    channel?: string;
-}
+// TU is a class defined in entities/tu.js - re-export its type here
+export type { TU } from './entities/tu.js';
 
 /**
  * Represents a translation job containing work to be done by a provider.
@@ -1653,7 +1537,7 @@ export interface DALManager {
     /**
      * Get a channel DAL by ID.
      * @param channelId - Channel identifier.
-     * @returns Channel DAL instance.
+     * @returns Channel DAL instance or proxy.
      */
     channel(channelId: string): ChannelDAL;
 
@@ -1661,7 +1545,7 @@ export interface DALManager {
      * Get a TU DAL for a language pair.
      * @param sourceLang - Source language code.
      * @param targetLang - Target language code.
-     * @returns TU DAL instance.
+     * @returns TU DAL instance or proxy.
      */
     tu(sourceLang: string, targetLang: string): TuDAL;
 

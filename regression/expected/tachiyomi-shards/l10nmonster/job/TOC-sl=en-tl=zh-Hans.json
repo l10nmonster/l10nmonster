@@ -1,0 +1,27 @@
+{
+	"v": 1,
+	"sourceLang": "en",
+	"targetLang": "zh-Hans",
+	"blocks": {
+		"xxx0xxx": {
+			"blockName": "blocks/sl=en/tl=zh-Hans/tp=Grandfather/block_xxx0xxx.jsonl",
+			"modified": "TS1",
+			"jobs": [
+				[
+					"xxx0xxx",
+					"2022-05-29T00:00:00.000Z"
+				]
+			]
+		},
+		"xxx4xxx": {
+			"blockName": "blocks/sl=en/tl=zh-Hans/tp=XliffBridge/block_xxx4xxx.jsonl",
+			"modified": "TS1",
+			"jobs": [
+				[
+					"xxx4xxx",
+					"2022-05-29T00:00:00.000Z"
+				]
+			]
+		}
+	}
+}

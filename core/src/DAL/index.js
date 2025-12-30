@@ -2,6 +2,8 @@ import * as path from 'path';
 import { getBaseDir, logVerbose } from '../l10nContext.js';
 import { SourceShard } from './sourceShard.js';
 import { TmShard } from './tmShard.js';
+import { WorkerManager } from './workerManager.js';
+import { TuDALProxy } from './dalProxy.js';
 
 /** @typedef {import('../interfaces.js').DALManager} DALManagerInterface */
 /** @typedef {import('../interfaces.js').TuDAL} TuDAL */
@@ -11,6 +13,7 @@ import { TmShard } from './tmShard.js';
  * @property {string} [sourceFilename] - Source DB filename (undefined = in-memory)
  * @property {string} [tmFilename] - TM DB filename for shard 0 (undefined = in-memory)
  * @property {Array<Array<[string, string]>>} [tmSharding] - Shard assignments
+ * @property {boolean} [useWorkers=false] - Use worker threads for DB operations
  */
 
 /** @implements {DALManagerInterface} */
@@ -20,13 +23,16 @@ export default class SQLiteDALManager {
     #shardMap = new Map();
     #sourceDBFilename;
     #tmDBFilenames = new Map();
+    #useWorkers;
+    #workerManager = null;
+    #tuDALProxyCache = new Map();
     activeChannels;
 
     /**
      * @param {SQLiteDALManagerOptions} [options]
      */
     constructor(options = {}) {
-        const { sourceFilename, tmFilename, tmSharding } = options;
+        const { sourceFilename, tmFilename, tmSharding, useWorkers = false } = options;
 
         // Validation: both or neither
         if ((sourceFilename === undefined) !== (tmFilename === undefined)) {
@@ -37,6 +43,13 @@ export default class SQLiteDALManager {
         if (tmSharding && sourceFilename === undefined) {
             throw new Error('tmSharding requires file-based databases (sourceFilename and tmFilename must be defined)');
         }
+
+        // Validation: no workers with in-memory
+        if (useWorkers && sourceFilename === undefined) {
+            throw new Error('useWorkers requires file-based databases (sourceFilename and tmFilename must be defined)');
+        }
+
+        this.#useWorkers = useWorkers;
 
         // Set filenames (undefined means in-memory)
         this.#sourceDBFilename = sourceFilename ?
@@ -62,12 +75,24 @@ export default class SQLiteDALManager {
             });
         }
 
-        logVerbose`SQLiteDALManager initialized with source: ${this.#sourceDBFilename}, TM shards: ${this.#tmDBFilenames.size}`;
+        logVerbose`SQLiteDALManager initialized with source: ${this.#sourceDBFilename}, TM shards: ${this.#tmDBFilenames.size}, workers: ${this.#useWorkers}`;
     }
 
     async init(mm) {
         mm.scheduleForShutdown(this.shutdown.bind(this));
         this.activeChannels = new Set(mm.rm.channelIds);
+
+        // Create WorkerManager if using workers
+        if (this.#useWorkers) {
+            this.#workerManager = new WorkerManager(
+                {
+                    sourceDBFilename: this.#sourceDBFilename,
+                    tmDBFilenames: this.#tmDBFilenames,
+                    shardMap: this.#shardMap,
+                },
+                this.activeChannels
+            );
+        }
     }
 
     #getSourceShard() {
@@ -106,15 +131,45 @@ export default class SQLiteDALManager {
         return this.#shardMap.get(`${sourceLang}#${targetLang}`) ?? 0;
     }
 
+    /**
+     * Get ChannelDAL for a channel.
+     * Always uses direct mode (no worker proxy) for channel operations.
+     * @param {string} channelId - Channel identifier.
+     * @returns {import('../interfaces.js').ChannelDAL} ChannelDAL instance.
+     */
     channel(channelId) {
         if (!this.activeChannels.has(channelId)) {
             throw new Error(`Invalid channel reference: ${channelId}`);
         }
+
         return this.#getSourceShard().getChannelDAL(channelId);
     }
 
+    /**
+     * Get TuDAL for a language pair.
+     * Note: In worker mode, returns a TuDALProxy that implements the TuDAL interface.
+     * @param {string} sourceLang - Source language code.
+     * @param {string} targetLang - Target language code.
+     * @returns {TuDAL} TuDAL or proxy (cast as TuDAL).
+     */
     tu(sourceLang, targetLang) {
         const shardIndex = this.#getShardIndex(sourceLang, targetLang);
+
+        if (this.#useWorkers) {
+            // Return cached proxy or create new one
+            const pairKey = `${sourceLang}#${targetLang}`;
+            if (!this.#tuDALProxyCache.has(pairKey)) {
+                this.#tuDALProxyCache.set(pairKey, new TuDALProxy(
+                    this.#workerManager,
+                    shardIndex,
+                    sourceLang,
+                    targetLang
+                ));
+            }
+            // Cast to TuDAL - proxy implements the interface
+            return /** @type {TuDAL} */ (this.#tuDALProxyCache.get(pairKey));
+        }
+
         return this.#getTmShard(shardIndex).getTuDAL(sourceLang, targetLang, this);
     }
 
@@ -123,13 +178,20 @@ export default class SQLiteDALManager {
     /**
      * Get all TuDAL instances across all shards.
      * Ensures all shards are initialized and TuDALs are cached.
-     * @returns {TuDAL[]} Array of TuDAL instances.
+     * In worker mode, returns cached proxies (must call getAvailableLangPairs first).
+     * @returns {Promise<TuDAL[]>} Array of TuDAL instances or proxies.
      */
-    #getAllTuDALs() {
-        // Ensure all shards are initialized and TuDALs are cached
+    async #getAllTuDALs() {
+        if (this.#useWorkers) {
+            // In worker mode, return cached proxies
+            // Note: getAvailableLangPairs must be called first to populate the cache
+            return Array.from(this.#tuDALProxyCache.values());
+        }
+
+        // Direct mode: ensure all shards are initialized and TuDALs are cached
         for (const shardIndex of this.#tmDBFilenames.keys()) {
             const shard = this.#getTmShard(shardIndex);
-            shard.getAvailableLangPairs(this); // This initializes TuDALs for all pairs in the shard
+            await shard.getAvailableLangPairs(this); // This initializes TuDALs for all pairs in the shard
         }
 
         const tuDALs = [];
@@ -151,10 +213,32 @@ export default class SQLiteDALManager {
         /** @type {Array<[string, string]>} */
         const pairs = [];
 
+        if (this.#useWorkers) {
+            // In worker mode, query each shard worker via WorkerManager
+            // For now, we need to spawn workers and query them
+            // TODO: Implement getAvailableLangPairs in worker protocol
+            // For now, fall back to direct mode for this query
+            logVerbose`getAvailableLangPairs: falling back to direct mode for worker implementation`;
+        }
+
         // Query each configured shard for available language pairs
         for (const shardIndex of this.#tmDBFilenames.keys()) {
             const shard = this.#getTmShard(shardIndex);
-            const shardPairs = shard.getAvailableLangPairs(this);
+            const shardPairs = await shard.getAvailableLangPairs(this);
+            // Create proxies for discovered pairs in worker mode
+            if (this.#useWorkers) {
+                for (const [sourceLang, targetLang] of shardPairs) {
+                    const pairKey = `${sourceLang}#${targetLang}`;
+                    if (!this.#tuDALProxyCache.has(pairKey)) {
+                        this.#tuDALProxyCache.set(pairKey, new TuDALProxy(
+                            this.#workerManager,
+                            shardIndex,
+                            sourceLang,
+                            targetLang
+                        ));
+                    }
+                }
+            }
             pairs.push(...shardPairs);
         }
         return pairs;
@@ -166,7 +250,7 @@ export default class SQLiteDALManager {
      */
     async getJobCount() {
         let total = 0;
-        for (const tuDAL of this.#getAllTuDALs()) {
+        for (const tuDAL of await this.#getAllTuDALs()) {
             total += await tuDAL.getJobCount();
         }
         return total;
@@ -178,7 +262,7 @@ export default class SQLiteDALManager {
      * @returns {Promise<Object|undefined>} Job with parsed props, or undefined.
      */
     async getJob(jobGuid) {
-        for (const tuDAL of this.#getAllTuDALs()) {
+        for (const tuDAL of await this.#getAllTuDALs()) {
             const job = await tuDAL.getJob(jobGuid);
             if (job) return job;
         }
@@ -191,7 +275,7 @@ export default class SQLiteDALManager {
      */
     async getJobStats() {
         const stats = [];
-        for (const tuDAL of this.#getAllTuDALs()) {
+        for (const tuDAL of await this.#getAllTuDALs()) {
             const tuStats = await tuDAL.getJobStats();
             stats.push(...tuStats);
         }
@@ -208,6 +292,12 @@ export default class SQLiteDALManager {
      * @returns {Promise<T>} The result of the callback.
      */
     async withBootstrapMode(callback) {
+        if (this.#useWorkers) {
+            // Worker mode: coordinate bootstrap across workers
+            return this.#workerManager.withBootstrapMode(callback);
+        }
+
+        // Direct mode: bootstrap locally
         // Clear existing TM shards - they'll be recreated in bootstrap mode
         for (const shard of this.#tmShards.values()) {
             shard.shutdown();
@@ -253,6 +343,16 @@ export default class SQLiteDALManager {
     }
 
     async shutdown() {
+        // Shutdown worker manager if using workers
+        if (this.#workerManager) {
+            await this.#workerManager.shutdown();
+            this.#workerManager = null;
+        }
+
+        // Clear proxy cache
+        this.#tuDALProxyCache.clear();
+
+        // Shutdown direct shards
         if (this.#sourceShard) {
             this.#sourceShard.shutdown();
             this.#sourceShard = null;
