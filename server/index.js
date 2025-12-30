@@ -146,22 +146,27 @@ const ServeAction = {
             consoleLog``;
         });
 
-        // Handle server binding errors
-        server.on('error', (error) => {
-            if (error.code === 'EADDRINUSE') {
-                const addressStr = host ? `${host}:${port}` : `port ${port}`;
-                throw new Error(`Failed to bind server: Address ${addressStr} is already in use`);
-            } else if (error.code === 'EACCES') {
-                const addressStr = host ? `${host}:${port}` : `port ${port}`;
-                throw new Error(`Failed to bind server: Permission denied for ${addressStr}`);
-            } else if (error.code === 'EADDRNOTAVAIL') {
-                throw new Error(`Failed to bind server: Address ${host} is not available on this system`);
-            } else {
-                throw new Error(`Failed to bind server: ${error.message}`);
-            }
-        });
+        // Return a Promise that only resolves when the server closes
+        // This prevents MonsterManager from shutting down the DAL while the server is running
+        return new Promise((resolve, reject) => {
+            server.on('error', (error) => {
+                if (error.code === 'EADDRINUSE') {
+                    const addressStr = host ? `${host}:${port}` : `port ${port}`;
+                    reject(new Error(`Failed to bind server: Address ${addressStr} is already in use`));
+                } else if (error.code === 'EACCES') {
+                    const addressStr = host ? `${host}:${port}` : `port ${port}`;
+                    reject(new Error(`Failed to bind server: Permission denied for ${addressStr}`));
+                } else if (error.code === 'EADDRNOTAVAIL') {
+                    reject(new Error(`Failed to bind server: Address ${host} is not available on this system`));
+                } else {
+                    reject(new Error(`Failed to bind server: ${error.message}`));
+                }
+            });
 
-        return server;
+            server.on('close', () => {
+                resolve();
+            });
+        });
     }
 };
 

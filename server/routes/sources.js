@@ -5,8 +5,8 @@ export function setupChannelRoutes(router, mm) {
         const { channelId } = req.params;
         logInfo`/channel/${channelId}`;
         try {
-            const { ts, store } = await mm.rm.getChannelMeta(channelId);
-            const projects = await mm.rm.getActiveContentStats(channelId);
+            const { ts, store } = (await mm.rm.getChannelMeta(channelId)) ?? {};
+            const projects = ts ? await mm.rm.getActiveContentStats(channelId) : [];
             logVerbose`Returned active content stats for ${projects.length} projects`;
             res.json({ ts, store, projects });
         } catch (error) {
