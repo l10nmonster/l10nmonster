@@ -1904,16 +1904,15 @@ interface TuDAL {
 	}>;
 	/**
 	 * Get statistics for this language pair's TM.
-	 * @returns Statistics object.
+	 * @returns Statistics array grouped by provider and status.
 	 */
-	getStats(): Promise<{
+	getStats(): Promise<Array<{
+		translationProvider: string;
+		status: string;
 		tuCount: number;
+		distinctGuids: number;
 		jobCount: number;
-		minQ: number;
-		maxQ: number;
-		minTs: number;
-		maxTs: number;
-	}>;
+	}>>;
 	/**
 	 * Get translated content status for a channel.
 	 * @param channelDAL - Channel DAL instance.
@@ -3804,7 +3803,7 @@ declare class LLMTranslationProvider extends ChunkedRemoteTranslationProvider {
 	model: string;
 	temperature: number;
 	systemPrompt: string;
-	customSchema: import("zod").ZodType<any, any, import("zod/v4/core").$ZodTypeInternals<any, any>>;
+	customSchema: import("zod").ZodTypeAny;
 	maxRetries: number;
 	sleepBasePeriod: number;
 	targetLangInstructions: {};
@@ -4843,6 +4842,8 @@ type SegmentDecoratorFactory$2 = SegmentDecoratorFactory;
 type NormalizedSegment$5 = NormalizedSegment$2;
 type FileStoreDelegate$2 = FileStoreDelegate;
 type DALManager$4 = DALManager$1;
+type ChannelDAL$1 = ChannelDAL;
+type TuDAL$2 = TuDAL;
 type TranslationPlan$3 = TranslationPlan$1;
 type PolicyContext$2 = PolicyContext;
 type Channel$2 = Channel;
@@ -4896,6 +4897,7 @@ export {
 	Analyzer$9 as Analyzer,
 	AnalyzerTU$5 as AnalyzerTU,
 	Channel$2 as Channel,
+	ChannelDAL$1 as ChannelDAL,
 	ChannelOptions$2 as ChannelOptions,
 	ChunkTuMeta$1 as ChunkTuMeta,
 	CodeEncoderFunction$2 as CodeEncoderFunction,
@@ -4946,6 +4948,7 @@ export {
 	TranslationPlan$3 as TranslationPlan,
 	TranslationPolicy$5 as TranslationPolicy,
 	TranslationProvider$5 as TranslationProvider,
+	TuDAL$2 as TuDAL,
 	XmlTu$2 as XmlTu,
 	actions,
 	adapters,

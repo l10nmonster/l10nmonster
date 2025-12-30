@@ -1375,9 +1375,9 @@ export interface TuDAL {
 
     /**
      * Get statistics for this language pair's TM.
-     * @returns Statistics object.
+     * @returns Statistics array grouped by provider and status.
      */
-    getStats(): Promise<{ tuCount: number; jobCount: number; minQ: number; maxQ: number; minTs: number; maxTs: number }>;
+    getStats(): Promise<Array<{ translationProvider: string; status: string; tuCount: number; distinctGuids: number; jobCount: number }>>;
 
     /**
      * Get translated content status for a channel.

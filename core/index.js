@@ -48,6 +48,8 @@
  * @typedef {import('./src/interfaces.js').NormalizedSegment} NormalizedSegment
  * @typedef {import('./src/interfaces.js').FileStoreDelegate} FileStoreDelegate
  * @typedef {import('./src/interfaces.js').DALManager} DALManager
+ * @typedef {import('./src/interfaces.js').ChannelDAL} ChannelDAL
+ * @typedef {import('./src/interfaces.js').TuDAL} TuDAL
  * @typedef {import('./src/interfaces.js').TranslationPlan} TranslationPlan
  * @typedef {import('./src/interfaces.js').PolicyContext} PolicyContext
  */
