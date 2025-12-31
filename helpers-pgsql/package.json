@@ -1,0 +1,22 @@
+{
+    "name": "@l10nmonster/helpers-pgsql",
+    "version": "3.1.1",
+    "description": "PostgreSQL DALManager implementation for L10n Monster",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "test": "node --test",
+        "typecheck": "tsc --noEmit"
+    },
+    "author": "Diego Lagunas",
+    "license": "MIT",
+    "dependencies": {
+        "pg": "^8.13.0"
+    },
+    "peerDependencies": {
+        "@l10nmonster/core": "3.1.1"
+    },
+    "engines": {
+        "node": ">=22.11.0"
+    }
+}

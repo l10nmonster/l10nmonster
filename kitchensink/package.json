@@ -73,6 +73,10 @@
             "types": "./src/lqaboss.d.ts",
             "default": "./src/lqaboss.js"
         },
+        "./pgsql": {
+            "types": "./src/pgsql.d.ts",
+            "default": "./src/pgsql.js"
+        },
         "./server": {
             "types": "./src/server.d.ts",
             "default": "./src/server.js"
@@ -119,6 +123,7 @@
         "@l10nmonster/helpers-json": "3.0.2",
         "@l10nmonster/helpers-lqaboss": "3.1.1",
         "@l10nmonster/helpers-openai": "3.1.1",
+        "@l10nmonster/helpers-pgsql": "3.1.1",
         "@l10nmonster/helpers-po": "3.0.2",
         "@l10nmonster/helpers-translated": "3.1.1",
         "@l10nmonster/helpers-xliff": "3.0.2",

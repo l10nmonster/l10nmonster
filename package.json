@@ -18,6 +18,7 @@
         "helpers-json",
         "helpers-lqaboss",
         "helpers-openai",
+        "helpers-pgsql",
         "helpers-po",
         "helpers-translated",
         "helpers-xliff",

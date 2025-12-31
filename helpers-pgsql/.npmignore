@@ -1,0 +1,29 @@
+# Tests and development files
+tests/
+test/
+*.test.js
+*.test.mjs
+
+# Development files
+.vscode/
+.claude/
+CLAUDE.md
+.releaserc.json
+
+# Build artifacts
+out/
+dist/
+build/
+
+# Documentation (keep main README.md)
+docs/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
