@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/helpers-pgsql",
-    "version": "3.1.1",
+    "version": "1.0.0",
     "description": "PostgreSQL DALManager implementation for L10n Monster",
     "type": "module",
     "main": "index.js",
@@ -14,7 +14,7 @@
         "pg": "^8.13.0"
     },
     "peerDependencies": {
-        "@l10nmonster/core": "3.1.1"
+        "@l10nmonster/core": "3.2.0"
     },
     "engines": {
         "node": ">=22.11.0"
