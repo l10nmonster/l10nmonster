@@ -861,7 +861,7 @@ export interface ResourceManagerInterface {
     /** Get a channel by ID. */
     getChannel(channelId: string): Channel;
     /** Get active content statistics for a channel. */
-    getActiveContentStats(channelId: string): Promise<Array<{ prj: string; sourceLang: string; segmentCount: number; resCount: number; targetLangs: string[]; lastModified?: number }>>;
+    getActiveContentStats(channelId: string): Promise<Array<{ prj: string; sourceLang: string; segmentCount: number; resCount: number; targetLangs: string[]; lastModified?: string }>>;
     /** Get all resources for a channel. */
     getAllResources(channelId: string, options?: Record<string, unknown>): AsyncGenerator<ResourceHandle>;
     /** Get a resource handle by ID. */
@@ -871,9 +871,9 @@ export interface ResourceManagerInterface {
     /** Create a snapshot of a channel. */
     snap(channelId: string): Promise<{ resources: number; segments: number }>;
     /** Import from a snapshot. */
-    import(ts: number, channelId: string, snapStoreId: string): Promise<void>;
+    import(ts: number, channelId: string, snapStoreId: string): Promise<{ resources: number; segments: number }>;
     /** Export content from channels to a snap store. */
-    export(channelId: string, snapStoreId: string): Promise<{ ts?: number; resources?: { count: number }; segments?: { count: number } }>;
+    export(channelId: string, snapStoreId: string): Promise<{ ts?: number; resources?: number; segments?: number }>;
 }
 
 /**
@@ -955,8 +955,6 @@ export interface DispatcherInterface {
     readonly providers: TranslationProvider[];
     /** Get provider by ID. */
     getProvider(providerId: string): TranslationProvider | undefined;
-    /** Get all providers. */
-    getProviders(): TranslationProvider[];
     /** Create jobs from a job request. */
     createJobs(job: JobRequest, options?: Record<string, unknown>): Promise<Job[]>;
     /** Start created jobs. */

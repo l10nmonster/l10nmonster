@@ -62,7 +62,7 @@ export class LanguageVariantProvider extends BaseTranslationProvider {
     /**
      * Gets translated TUs with language variant substitutions.
      * @param {Job} job - The job with TUs.
-     * @returns {Promise<TU[]>} Translated TUs with variant substitutions.
+     * @returns {Promise<Partial<TU>[]>} Translated TUs with variant substitutions.
      */
     async getTranslatedTus(job) {
         let translations;

@@ -694,7 +694,7 @@ export class L10nMonsterConfig {
 
     /**
      * Sets the DAL Manager instance for database operations.
-     * @param {import('./DAL/index.js').default} dalManagerInstance - The DAL Manager instance.
+     * @param {import('./interfaces.js').DALManager} dalManagerInstance - The DAL Manager instance.
      * @returns {L10nMonsterConfig} Returns the config for method chaining.
      */
     dalManager(dalManagerInstance) {

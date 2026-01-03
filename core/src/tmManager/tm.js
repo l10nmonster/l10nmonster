@@ -10,9 +10,12 @@ import { groupObjectsByNestedProps } from '../sharedFunctions.js';
  */
 
 /**
- * Translation statistics for a language pair.
+ * Translation statistics per provider/status combination.
  * @typedef {Object} TMStats
+ * @property {string} translationProvider - Provider that produced this translation.
+ * @property {string} status - Job status.
  * @property {number} tuCount - Total translation units.
+ * @property {number} distinctGuids - Count of distinct GUIDs.
  * @property {number} jobCount - Total jobs.
  */
 
@@ -93,7 +96,7 @@ export class TM {
 
     /**
      * Gets statistics for this language pair.
-     * @returns {Promise<TMStats>} TM statistics.
+     * @returns {Promise<TMStats[]>} TM statistics per provider/status.
      */
     async getStats() {
         const tuDAL = this.#tuDAL;

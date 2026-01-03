@@ -1,0 +1,16 @@
+{
+    "name": "npm-pgsql",
+    "dependencies": {
+        "@l10nmonster/core": "../../../../core",
+        "@l10nmonster/cli": "../../../../cli",
+        "@l10nmonster/helpers-android": "../../../../helpers-android",
+        "@l10nmonster/helpers-demo": "../../../../helpers-demo",
+        "@l10nmonster/helpers-html": "../../../../helpers-html",
+        "@l10nmonster/helpers-ios": "../../../../helpers-ios",
+        "@l10nmonster/helpers-java": "../../../../helpers-java",
+        "@l10nmonster/helpers-json": "../../../../helpers-json",
+        "@l10nmonster/helpers-pgsql": "../../../../helpers-pgsql",
+        "@l10nmonster/helpers-po": "../../../../helpers-po",
+        "@l10nmonster/helpers-xliff": "../../../../helpers-xliff"
+    }
+}

@@ -1,5 +1,5 @@
 import { logVerbose, logWarn } from '@l10nmonster/core';
-import { flattenNormalizedSourceToOrdinal } from './pgUtils.js';
+import { flattenNormalizedSourceToOrdinal, sanitizeTableName } from './pgUtils.js';
 
 /**
  * @typedef {import('@l10nmonster/core').TMStore} TMStore
@@ -8,7 +8,8 @@ import { flattenNormalizedSourceToOrdinal } from './pgUtils.js';
  */
 
 /**
- * PostgreSQL implementation of TMStore.
+ * PostgreSQL implementation of TMStore using unified schema.
+ * Uses the same tus_{sl}_{tl} tables as PgTuDAL with store_id for provenance tracking.
  * @implements {TMStore}
  */
 export class PgTmStore {
@@ -22,15 +23,20 @@ export class PgTmStore {
     /** @type {'job' | 'provider' | 'language'} */
     partitioning = 'language';
 
-    #pool;
-    #ensureTables;
+    #getPool;
+    #ensureBaseTables;
+    #scheduleShutdown;
     #tmStoreId;
     #onlyLeveraged;
     #snapStoreId;
+    /** @type {Map<string, boolean>} */
+    #tablesCreated = new Map();
+    #shutdownScheduled = false;
 
     /**
-     * @param {import('pg').Pool} pool - PostgreSQL pool
-     * @param {Function} ensureTables - Function to ensure tables exist
+     * @param {Function} getPool - Function to get the PostgreSQL pool
+     * @param {Function} ensureBaseTables - Function to ensure base tables exist
+     * @param {Function} scheduleShutdown - Function to schedule shutdown with mm
      * @param {Object} options - Store options
      * @param {string} options.id - Logical store ID
      * @param {string} [options.tmStoreId] - Data segregation key (defaults to id)
@@ -39,9 +45,10 @@ export class PgTmStore {
      * @param {string[]} [options.onlyLeveraged] - Channel IDs to filter TUs by
      * @param {string} [options.snapStoreId] - SnapStore ID for onlyLeveraged filtering
      */
-    constructor(pool, ensureTables, options) {
-        this.#pool = pool;
-        this.#ensureTables = ensureTables;
+    constructor(getPool, ensureBaseTables, scheduleShutdown, options) {
+        this.#getPool = getPool;
+        this.#ensureBaseTables = ensureBaseTables;
+        this.#scheduleShutdown = scheduleShutdown;
         this.id = options.id;
         this.#tmStoreId = options.tmStoreId ?? options.id;
 
@@ -73,17 +80,83 @@ export class PgTmStore {
         logVerbose`PgTmStore ${this.id} created with tmStoreId: ${this.#tmStoreId} access: ${this.access} partitioning: ${this.partitioning}${this.#onlyLeveraged ? ` onlyLeveraged: ${this.#onlyLeveraged.join(', ')}` : ''}`;
     }
 
+    get #pool() {
+        return this.#getPool();
+    }
+
+    /**
+     * Initialize the store.
+     * @param {Object} mm - MonsterManager instance
+     */
+    init(mm) {
+        if (!this.#shutdownScheduled) {
+            this.#scheduleShutdown(mm);
+            this.#shutdownScheduled = true;
+        }
+    }
+
+    /**
+     * Gets the sanitized table name for a language pair.
+     * @param {string} sourceLang
+     * @param {string} targetLang
+     * @returns {string}
+     */
+    #getTusTableName(sourceLang, targetLang) {
+        return sanitizeTableName(`tus_${sourceLang}_${targetLang}`);
+    }
+
+    /**
+     * Ensures the TU table for a language pair exists.
+     * @param {string} sourceLang
+     * @param {string} targetLang
+     */
+    async #ensureTusTable(sourceLang, targetLang) {
+        const tableName = this.#getTusTableName(sourceLang, targetLang);
+        if (this.#tablesCreated.has(tableName)) return;
+
+        await this.#pool.query(/* sql */`
+            CREATE TABLE IF NOT EXISTS ${tableName} (
+                store_id TEXT,
+                guid TEXT NOT NULL,
+                job_guid TEXT NOT NULL,
+                rid TEXT,
+                sid TEXT,
+                nsrc JSONB,
+                nsrc_flat TEXT,
+                ntgt JSONB,
+                ntgt_flat TEXT,
+                notes JSONB,
+                tu_props JSONB,
+                q INTEGER,
+                ts BIGINT,
+                tu_order INTEGER,
+                rank INTEGER,
+                PRIMARY KEY (guid, job_guid)
+            );
+        `);
+
+        // Create indexes for TMStore queries
+        const indexQueries = [
+            `CREATE INDEX IF NOT EXISTS idx_${tableName}_store_job ON ${tableName} (store_id, job_guid)`,
+            `CREATE INDEX IF NOT EXISTS idx_${tableName}_guid_rank ON ${tableName} (guid, rank)`,
+        ];
+        await Promise.all(indexQueries.map(q => this.#pool.query(q).catch(() => {})));
+
+        this.#tablesCreated.set(tableName, true);
+    }
+
     /**
      * Gets available language pairs in the store.
+     * Uses the jobs table filtered by tm_store to find language pairs.
      * @returns {Promise<Array<[string, string]>>}
      */
     async getAvailableLangPairs() {
-        await this.#ensureTables();
+        await this.#ensureBaseTables();
 
         const { rows } = await this.#pool.query(/* sql */`
             SELECT DISTINCT source_lang, target_lang
-            FROM tm_jobs
-            WHERE tm_store_id = $1;
+            FROM jobs
+            WHERE tm_store = $1;
         `, [this.#tmStoreId]);
 
         return rows.map(r => [r.source_lang, r.target_lang]);
@@ -91,41 +164,38 @@ export class PgTmStore {
 
     /**
      * Gets the table of contents for a language pair.
+     * Queries the jobs table filtered by tm_store.
      * @param {string} sourceLang
      * @param {string} targetLang
      * @returns {Promise<TMStoreTOC>}
      */
     async getTOC(sourceLang, targetLang) {
-        await this.#ensureTables();
+        await this.#ensureBaseTables();
 
-        // Get all jobs grouped by block_id
+        // Get all jobs for this store/language pair, using job_guid as block_id
+        // In the unified schema, we use job_guid as the block identifier
         const { rows } = await this.#pool.query(/* sql */`
-            SELECT block_id, job_guid, updated_at
-            FROM tm_jobs
-            WHERE tm_store_id = $1 AND source_lang = $2 AND target_lang = $3
-            ORDER BY block_id, updated_at DESC;
+            SELECT job_guid, updated_at
+            FROM jobs
+            WHERE tm_store = $1 AND source_lang = $2 AND target_lang = $3
+            ORDER BY updated_at DESC;
         `, [this.#tmStoreId, sourceLang, targetLang]);
 
         /** @type {Record<string, { blockName: string; modified: string; jobs: Array<[string, string]> }>} */
         const blocks = {};
 
+        // Each job is its own block (language partitioning)
         for (const row of rows) {
-            const blockId = row.block_id || row.job_guid; // Default block_id to job_guid
-            if (!blocks[blockId]) {
-                blocks[blockId] = {
-                    blockName: `${this.#tmStoreId}/${sourceLang}/${targetLang}/${blockId}`,
-                    modified: row.updated_at,
-                    jobs: [],
-                };
-            }
-            blocks[blockId].jobs.push([row.job_guid, row.updated_at]);
-            // Update modified to the latest
-            if (row.updated_at > blocks[blockId].modified) {
-                blocks[blockId].modified = row.updated_at;
-            }
+            const blockId = row.job_guid;
+            blocks[blockId] = {
+                blockName: `${this.#tmStoreId}/${sourceLang}/${targetLang}/${blockId}`,
+                modified: row.updated_at,
+                jobs: [[row.job_guid, row.updated_at]],
+            };
         }
 
         // Generate storedBlocks from blocks
+        /** @type {[string, string][]} */
         const storedBlocks = Object.entries(blocks).map(([blockId, block]) => [blockId, block.blockName]);
 
         return {
@@ -139,13 +209,14 @@ export class PgTmStore {
 
     /**
      * Gets TM blocks by their IDs.
+     * Queries the unified tus_{sl}_{tl} table filtered by store_id.
      * @param {string} sourceLang
      * @param {string} targetLang
      * @param {string[]} blockIds
      * @returns {AsyncGenerator<JobPropsTusPair>}
      */
     async *getTmBlocks(sourceLang, targetLang, blockIds) {
-        await this.#ensureTables();
+        await this.#ensureBaseTables();
 
         const toc = await this.getTOC(sourceLang, targetLang);
 
@@ -163,6 +234,9 @@ export class PgTmStore {
         }
 
         if (jobGuids.length === 0) return;
+
+        await this.#ensureTusTable(sourceLang, targetLang);
+        const tusTable = this.#getTusTableName(sourceLang, targetLang);
 
         // Build the query with optional onlyLeveraged filtering
         let query;
@@ -186,32 +260,31 @@ export class PgTmStore {
                       AND (s.valid_to IS NULL OR s.valid_to > ls.max_ts)
                 )
                 SELECT t.job_guid, t.guid, t.rid, t.sid, t.nsrc, t.ntgt, t.notes, t.tu_props, t.q, t.ts, t.tu_order
-                FROM tm_blocks t
-                WHERE t.tm_store_id = $3
-                  AND t.source_lang = $4 AND t.target_lang = $5
-                  AND t.job_guid = ANY($6)
+                FROM ${tusTable} t
+                WHERE t.store_id = $3
+                  AND t.job_guid = ANY($4)
                   AND t.guid IN (SELECT guid FROM leveraged_guids)
                 ORDER BY t.job_guid, t.tu_order;
             `;
-            params = [this.#snapStoreId, this.#onlyLeveraged, this.#tmStoreId, sourceLang, targetLang, jobGuids];
+            params = [this.#snapStoreId, this.#onlyLeveraged, this.#tmStoreId, jobGuids];
         } else {
             query = /* sql */`
                 SELECT job_guid, guid, rid, sid, nsrc, ntgt, notes, tu_props, q, ts, tu_order
-                FROM tm_blocks
-                WHERE tm_store_id = $1 AND source_lang = $2 AND target_lang = $3 AND job_guid = ANY($4)
+                FROM ${tusTable}
+                WHERE store_id = $1 AND job_guid = ANY($2)
                 ORDER BY job_guid, tu_order;
             `;
-            params = [this.#tmStoreId, sourceLang, targetLang, jobGuids];
+            params = [this.#tmStoreId, jobGuids];
         }
 
         const { rows } = await this.#pool.query(query, params);
 
-        // Get job metadata
+        // Get job metadata from jobs table
         const jobPropsMap = new Map();
         const { rows: jobRows } = await this.#pool.query(/* sql */`
             SELECT job_guid, translation_provider, status, updated_at, job_props
-            FROM tm_jobs
-            WHERE tm_store_id = $1 AND job_guid = ANY($2);
+            FROM jobs
+            WHERE tm_store = $1 AND job_guid = ANY($2);
         `, [this.#tmStoreId, jobGuids]);
 
         for (const row of jobRows) {
@@ -258,6 +331,7 @@ export class PgTmStore {
 
     /**
      * Gets a writer for committing TM data.
+     * Writes to the unified tus_{sl}_{tl} table with store_id set.
      * @param {string} sourceLang
      * @param {string} targetLang
      * @param {Function} cb - Callback function receiving a write function
@@ -267,7 +341,9 @@ export class PgTmStore {
             throw new Error(`Cannot write to readonly TM Store: ${this.id}`);
         }
 
-        await this.#ensureTables();
+        await this.#ensureBaseTables();
+        await this.#ensureTusTable(sourceLang, targetLang);
+        const tusTable = this.#getTusTableName(sourceLang, targetLang);
         const toc = await this.getTOC(sourceLang, targetLang);
 
         /**
@@ -284,34 +360,37 @@ export class PgTmStore {
 
                     let tuCount = 0;
                     const jobGuidsInBlock = [];
+                    const affectedGuids = new Set();
 
                     for await (const { jobProps, tus } of tmBlockIterator) {
                         const { jobGuid, translationProvider, status, updatedAt, ...otherJobProps } = jobProps;
                         jobGuidsInBlock.push(jobGuid);
 
-                        // Upsert job metadata
+                        // Upsert job metadata into jobs table with tm_store set
                         await client.query(/* sql */`
-                            INSERT INTO tm_jobs (tm_store_id, source_lang, target_lang, job_guid, translation_provider, status, updated_at, job_props, block_id)
-                            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
-                            ON CONFLICT (tm_store_id, job_guid) DO UPDATE SET
+                            INSERT INTO jobs (source_lang, target_lang, job_guid, translation_provider, status, updated_at, job_props, tm_store)
+                            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+                            ON CONFLICT (job_guid) DO UPDATE SET
                                 source_lang = EXCLUDED.source_lang,
                                 target_lang = EXCLUDED.target_lang,
                                 translation_provider = EXCLUDED.translation_provider,
                                 status = EXCLUDED.status,
                                 updated_at = EXCLUDED.updated_at,
                                 job_props = EXCLUDED.job_props,
-                                block_id = EXCLUDED.block_id;
-                        `, [this.#tmStoreId, sourceLang, targetLang, jobGuid, translationProvider, status, updatedAt ?? new Date().toISOString(), JSON.stringify(otherJobProps), blockId]);
+                                tm_store = EXCLUDED.tm_store;
+                        `, [sourceLang, targetLang, jobGuid, translationProvider, status, updatedAt ?? new Date().toISOString(), JSON.stringify(otherJobProps), this.#tmStoreId]);
 
-                        // Delete existing TUs for this job (to replace)
+                        // Delete existing TUs for this job from this store (to replace)
                         await client.query(/* sql */`
-                            DELETE FROM tm_blocks
-                            WHERE tm_store_id = $1 AND source_lang = $2 AND target_lang = $3 AND job_guid = $4;
-                        `, [this.#tmStoreId, sourceLang, targetLang, jobGuid]);
+                            DELETE FROM ${tusTable}
+                            WHERE store_id = $1 AND job_guid = $2;
+                        `, [this.#tmStoreId, jobGuid]);
 
                         // Insert TUs in batches using UNNEST
                         if (tus.length > 0) {
+                            const storeIds = [];
                             const guids = [];
+                            const jobGuidsArr = [];
                             const rids = [];
                             const sids = [];
                             const nsrcs = [];
@@ -323,10 +402,13 @@ export class PgTmStore {
                             const qs = [];
                             const tss = [];
                             const tuOrders = [];
+                            const ranks = [];
 
                             tus.forEach((tu, idx) => {
                                 const { guid, rid, sid, nsrc, ntgt, notes, q, ts, ...tuProps } = tu;
+                                storeIds.push(this.#tmStoreId);
                                 guids.push(guid);
+                                jobGuidsArr.push(jobGuid);
                                 rids.push(rid);
                                 sids.push(sid);
                                 nsrcs.push(JSON.stringify(nsrc));
@@ -338,18 +420,55 @@ export class PgTmStore {
                                 qs.push(q);
                                 tss.push(ts);
                                 tuOrders.push(idx);
+                                ranks.push(null); // TMStore doesn't compute rank
+                                affectedGuids.add(guid);
                             });
 
                             await client.query(/* sql */`
-                                INSERT INTO tm_blocks
-                                    (tm_store_id, source_lang, target_lang, job_guid, guid, rid, sid, nsrc, nsrc_flat, ntgt, ntgt_flat, notes, tu_props, q, ts, tu_order)
-                                SELECT $1, $2, $3, $4, g, r, s, ns::jsonb, nf, nt::jsonb, ntf, n::jsonb, tp::jsonb, q, t, o
-                                FROM UNNEST($5::text[], $6::text[], $7::text[], $8::text[], $9::text[], $10::text[], $11::text[], $12::text[], $13::text[], $14::int[], $15::bigint[], $16::int[])
-                                    AS t(g, r, s, ns, nf, nt, ntf, n, tp, q, t, o);
-                            `, [this.#tmStoreId, sourceLang, targetLang, jobGuid, guids, rids, sids, nsrcs, nsrcFlats, ntgts, ntgtFlats, notesArr, tuPropsArr, qs, tss, tuOrders]);
+                                INSERT INTO ${tusTable}
+                                    (store_id, guid, job_guid, rid, sid, nsrc, nsrc_flat, ntgt, ntgt_flat, notes, tu_props, q, ts, tu_order, rank)
+                                SELECT * FROM UNNEST(
+                                    $1::text[], $2::text[], $3::text[], $4::text[], $5::text[],
+                                    $6::jsonb[], $7::text[], $8::jsonb[], $9::text[], $10::jsonb[],
+                                    $11::jsonb[], $12::int[], $13::bigint[], $14::int[], $15::int[]
+                                )
+                                ON CONFLICT (guid, job_guid)
+                                DO UPDATE SET
+                                    store_id = EXCLUDED.store_id,
+                                    rid = EXCLUDED.rid,
+                                    sid = EXCLUDED.sid,
+                                    nsrc = EXCLUDED.nsrc,
+                                    nsrc_flat = EXCLUDED.nsrc_flat,
+                                    ntgt = EXCLUDED.ntgt,
+                                    ntgt_flat = EXCLUDED.ntgt_flat,
+                                    notes = EXCLUDED.notes,
+                                    tu_props = EXCLUDED.tu_props,
+                                    q = EXCLUDED.q,
+                                    ts = EXCLUDED.ts,
+                                    tu_order = EXCLUDED.tu_order;
+                            `, [storeIds, guids, jobGuidsArr, rids, sids, nsrcs, nsrcFlats, ntgts, ntgtFlats, notesArr, tuPropsArr, qs, tss, tuOrders, ranks]);
 
                             tuCount += tus.length;
                         }
+                    }
+
+                    // Update ranks for affected guids (new TUs might outrank existing ones)
+                    if (affectedGuids.size > 0) {
+                        await client.query(/* sql */`
+                            UPDATE ${tusTable}
+                            SET rank = t2.new_rank
+                            FROM (
+                                SELECT
+                                    guid,
+                                    job_guid,
+                                    ROW_NUMBER() OVER (PARTITION BY guid ORDER BY q DESC, ts DESC) as new_rank
+                                FROM ${tusTable}
+                                WHERE guid = ANY($1)
+                            ) AS t2
+                            WHERE
+                                ${tusTable}.guid = t2.guid AND
+                                ${tusTable}.job_guid = t2.job_guid;
+                        `, [Array.from(affectedGuids)]);
                     }
 
                     await client.query('COMMIT');
@@ -364,7 +483,7 @@ export class PgTmStore {
                     client.release();
                 }
             } else {
-                // Delete block - remove all jobs and TUs for this block
+                // Delete block - remove all jobs and TUs for this block from this store
                 const blockJobs = toc.blocks[blockId]?.jobs || [];
                 if (blockJobs.length > 0) {
                     const jobGuids = blockJobs.map(([jg]) => jg);
@@ -373,15 +492,43 @@ export class PgTmStore {
                     try {
                         await client.query('BEGIN');
 
-                        await client.query(/* sql */`
-                            DELETE FROM tm_blocks
-                            WHERE tm_store_id = $1 AND source_lang = $2 AND target_lang = $3 AND job_guid = ANY($4);
-                        `, [this.#tmStoreId, sourceLang, targetLang, jobGuids]);
-
-                        await client.query(/* sql */`
-                            DELETE FROM tm_jobs
-                            WHERE tm_store_id = $1 AND job_guid = ANY($2);
+                        // Get affected guids before deletion for rank update
+                        const { rows: affectedRows } = await client.query(/* sql */`
+                            SELECT DISTINCT guid FROM ${tusTable}
+                            WHERE store_id = $1 AND job_guid = ANY($2);
                         `, [this.#tmStoreId, jobGuids]);
+                        const affectedGuids = affectedRows.map(r => r.guid);
+
+                        // Delete TUs for this store
+                        await client.query(/* sql */`
+                            DELETE FROM ${tusTable}
+                            WHERE store_id = $1 AND job_guid = ANY($2);
+                        `, [this.#tmStoreId, jobGuids]);
+
+                        // Delete jobs (only if they belong to this store)
+                        await client.query(/* sql */`
+                            DELETE FROM jobs
+                            WHERE tm_store = $1 AND job_guid = ANY($2);
+                        `, [this.#tmStoreId, jobGuids]);
+
+                        // Update ranks for affected guids
+                        if (affectedGuids.length > 0) {
+                            await client.query(/* sql */`
+                                UPDATE ${tusTable}
+                                SET rank = t2.new_rank
+                                FROM (
+                                    SELECT
+                                        guid,
+                                        job_guid,
+                                        ROW_NUMBER() OVER (PARTITION BY guid ORDER BY q DESC, ts DESC) as new_rank
+                                    FROM ${tusTable}
+                                    WHERE guid = ANY($1)
+                                ) AS t2
+                                WHERE
+                                    ${tusTable}.guid = t2.guid AND
+                                    ${tusTable}.job_guid = t2.job_guid;
+                            `, [affectedGuids]);
+                        }
 
                         await client.query('COMMIT');
                         logVerbose`Deleted block ${blockId} from TM Store ${this.id}`;

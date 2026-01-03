@@ -32,8 +32,10 @@ types.setTypeParser(20, (val) => (val === null ? null : Number(val)));
 export class PgSuperStore {
     #pool;
     #ownsPool;
+    #poolConfig;
     #tablesInitialized = false;
     #initPromise = null;
+    #shutdownScheduled = false;
 
     /**
      * Creates a new PgSuperStore.
@@ -43,34 +45,47 @@ export class PgSuperStore {
         if (options.existingPool) {
             this.#pool = options.existingPool;
             this.#ownsPool = false;
+            this.#poolConfig = null;
         } else {
             this.#ownsPool = true;
-            const poolConfig = {
+            this.#poolConfig = {
                 ssl: options.ssl,
                 min: options.pool?.min ?? 4,
                 max: options.pool?.max ?? 32,
                 idleTimeoutMillis: options.pool?.idleTimeoutMillis ?? 30000,
+                connectionTimeoutMillis: options.pool?.connectionTimeoutMillis ?? 30000,
+                // Disable statement timeout for long-running operations
+                statement_timeout: options.pool?.statement_timeout ?? 0,
+                // Enable TCP keepalive to prevent connection drops
+                keepAlive: true,
+                keepAliveInitialDelayMillis: 10000,
+                allowExitOnIdle: true,
             };
 
             if (options.connectionString) {
-                poolConfig.connectionString = options.connectionString;
+                this.#poolConfig.connectionString = options.connectionString;
             } else {
-                poolConfig.host = options.connection?.host ?? 'localhost';
-                poolConfig.port = options.connection?.port ?? 5432;
-                poolConfig.database = options.connection?.database ?? 'l10nmonster';
-                poolConfig.user = options.connection?.user;
-                poolConfig.password = options.connection?.password;
+                this.#poolConfig.host = options.connection?.host ?? 'localhost';
+                this.#poolConfig.port = options.connection?.port ?? 5432;
+                this.#poolConfig.database = options.connection?.database ?? 'l10nmonster';
+                this.#poolConfig.user = options.connection?.user;
+                this.#poolConfig.password = options.connection?.password;
             }
 
-            this.#pool = new Pool(poolConfig);
+            this.#pool = new Pool(this.#poolConfig);
         }
     }
 
     /**
-     * Gets the underlying pool.
+     * Gets the underlying pool, recreating if needed after shutdown.
      * @returns {pg.Pool}
      */
     get pool() {
+        // Recreate pool if it was shutdown and we own it
+        if (!this.#pool && this.#ownsPool && this.#poolConfig) {
+            this.#pool = new Pool(this.#poolConfig);
+            this.#tablesInitialized = false;
+        }
         return this.#pool;
     }
 
@@ -79,6 +94,11 @@ export class PgSuperStore {
      * Uses a promise lock to prevent concurrent initialization.
      */
     async ensureTables() {
+        // Ensure pool exists (triggers recreation if needed)
+        if (!this.pool) {
+            throw new Error('PgSuperStore: pool not available');
+        }
+
         if (this.#tablesInitialized) return;
 
         if (this.#initPromise) {
@@ -104,42 +124,18 @@ export class PgSuperStore {
         const pgVersion = rows[0]?.version?.split(' ').slice(0, 2).join(' ') || 'unknown';
         logVerbose`PgSuperStore: connected to ${pgVersion}`;
 
-        // Create TM blocks table
+        // Create unified jobs table (shared with DALManager)
+        // TMStore uses tm_store column, DAL uses tm_store=NULL
         await this.#pool.query(/* sql */`
-            CREATE TABLE IF NOT EXISTS tm_blocks (
-                tm_store_id TEXT NOT NULL,
+            CREATE TABLE IF NOT EXISTS jobs (
+                job_guid TEXT PRIMARY KEY,
                 source_lang TEXT NOT NULL,
                 target_lang TEXT NOT NULL,
-                job_guid TEXT NOT NULL,
-                guid TEXT NOT NULL,
-                rid TEXT,
-                sid TEXT,
-                nsrc JSONB,
-                nsrc_flat TEXT,
-                ntgt JSONB,
-                ntgt_flat TEXT,
-                notes JSONB,
-                tu_props JSONB,
-                q INTEGER,
-                ts BIGINT,
-                tu_order INTEGER,
-                PRIMARY KEY (tm_store_id, source_lang, target_lang, guid, job_guid)
-            );
-        `);
-
-        // Create TM jobs table
-        await this.#pool.query(/* sql */`
-            CREATE TABLE IF NOT EXISTS tm_jobs (
-                tm_store_id TEXT NOT NULL,
-                source_lang TEXT NOT NULL,
-                target_lang TEXT NOT NULL,
-                job_guid TEXT NOT NULL,
                 translation_provider TEXT,
                 status TEXT,
                 updated_at TEXT,
                 job_props JSONB,
-                block_id TEXT,
-                PRIMARY KEY (tm_store_id, job_guid)
+                tm_store TEXT
             );
         `);
 
@@ -185,15 +181,8 @@ export class PgSuperStore {
 
         // Create indexes in parallel
         const indexQueries = [
-            // TM blocks indexes
-            `CREATE INDEX IF NOT EXISTS idx_tm_blocks_lang_pair ON tm_blocks (tm_store_id, source_lang, target_lang)`,
-            `CREATE INDEX IF NOT EXISTS idx_tm_blocks_job ON tm_blocks (tm_store_id, source_lang, target_lang, job_guid)`,
-            `CREATE INDEX IF NOT EXISTS idx_tm_blocks_guid ON tm_blocks (tm_store_id, source_lang, target_lang, guid)`,
-            `CREATE INDEX IF NOT EXISTS idx_tm_blocks_nsrc_flat ON tm_blocks USING hash (nsrc_flat)`,
-
-            // TM jobs indexes
-            `CREATE INDEX IF NOT EXISTS idx_tm_jobs_lang ON tm_jobs (tm_store_id, source_lang, target_lang)`,
-            `CREATE INDEX IF NOT EXISTS idx_tm_jobs_block ON tm_jobs (tm_store_id, source_lang, target_lang, block_id)`,
+            // Jobs table indexes (for TMStore queries)
+            `CREATE INDEX IF NOT EXISTS idx_jobs_tm_store ON jobs (tm_store, source_lang, target_lang)`,
 
             // Snap resources indexes
             `CREATE INDEX IF NOT EXISTS idx_snap_resources_lookup ON snap_resources (snap_store_id, channel_id, valid_from, valid_to)`,
@@ -234,7 +223,13 @@ export class PgSuperStore {
         if (!options?.id) {
             throw new Error('PgSuperStore.createTmStore: id is required');
         }
-        return new PgTmStore(this.#pool, this.ensureTables.bind(this), options);
+        // Pass pool getter and shutdown scheduler to support pool recreation after shutdown
+        return new PgTmStore(
+            () => this.pool,
+            this.ensureTables.bind(this),
+            this.#scheduleShutdownOnce.bind(this),
+            options
+        );
     }
 
     /**
@@ -244,11 +239,28 @@ export class PgSuperStore {
      * @param {string} [options.snapStoreId] - Data segregation key (defaults to id)
      * @returns {PgSnapStore}
      */
+    /**
+     * Schedules shutdown with MonsterManager (once).
+     * @param {Object} mm - MonsterManager instance
+     */
+    #scheduleShutdownOnce(mm) {
+        if (!this.#shutdownScheduled) {
+            mm.scheduleForShutdown(this.shutdown.bind(this));
+            this.#shutdownScheduled = true;
+        }
+    }
+
     createSnapStore(options) {
         if (!options?.id) {
             throw new Error('PgSuperStore.createSnapStore: id is required');
         }
-        return new PgSnapStore(this.#pool, this.ensureTables.bind(this), options);
+        // Pass pool getter and shutdown scheduler to support pool recreation after shutdown
+        return new PgSnapStore(
+            () => this.pool,
+            this.ensureTables.bind(this),
+            this.#scheduleShutdownOnce.bind(this),
+            options
+        );
     }
 
     /**
@@ -259,6 +271,8 @@ export class PgSuperStore {
 
         const pool = this.#pool;
         this.#pool = null;
+        this.#tablesInitialized = false;
+        this.#shutdownScheduled = false;
 
         if (this.#ownsPool && pool) {
             logVerbose`PgSuperStore: closing pool`;

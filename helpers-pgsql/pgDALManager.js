@@ -45,6 +45,7 @@ types.setTypeParser(20, (val) => (val === null ? null : Number(val)));
 export class PostgresDALManager {
     #pool;
     #ownsPool;
+    #poolConfig;
     #channelDALCache = new Map();
     #tuDALCache = new Map();
 
@@ -60,26 +61,33 @@ export class PostgresDALManager {
             // GCP integration point: accept a pre-configured Pool
             this.#pool = options.existingPool;
             this.#ownsPool = false;
+            this.#poolConfig = null;
         } else {
             this.#ownsPool = true;
-            const poolConfig = {
+            this.#poolConfig = {
                 ssl: options.ssl,
                 min: options.pool?.min ?? 4,
                 max: options.pool?.max ?? 32,
                 idleTimeoutMillis: options.pool?.idleTimeoutMillis ?? 30000,
+                connectionTimeoutMillis: options.pool?.connectionTimeoutMillis ?? 30000,
+                // Disable statement timeout for long-running operations
+                statement_timeout: options.pool?.statement_timeout ?? 0,
+                // Enable TCP keepalive to prevent connection drops
+                keepAlive: true,
+                keepAliveInitialDelayMillis: 10000,
             };
 
             if (options.connectionString) {
-                poolConfig.connectionString = options.connectionString;
+                this.#poolConfig.connectionString = options.connectionString;
             } else {
-                poolConfig.host = options.connection?.host ?? 'localhost';
-                poolConfig.port = options.connection?.port ?? 5432;
-                poolConfig.database = options.connection?.database ?? 'l10nmonster';
-                poolConfig.user = options.connection?.user;
-                poolConfig.password = options.connection?.password;
+                this.#poolConfig.host = options.connection?.host ?? 'localhost';
+                this.#poolConfig.port = options.connection?.port ?? 5432;
+                this.#poolConfig.database = options.connection?.database ?? 'l10nmonster';
+                this.#poolConfig.user = options.connection?.user;
+                this.#poolConfig.password = options.connection?.password;
             }
 
-            this.#pool = new Pool(poolConfig);
+            this.#pool = new Pool(this.#poolConfig);
         }
     }
 
@@ -98,6 +106,11 @@ export class PostgresDALManager {
     async init(mm) {
         mm.scheduleForShutdown(this.shutdown.bind(this));
         this.activeChannels = new Set(mm.rm.channelIds);
+
+        // Recreate pool if it was shutdown and we own it
+        if (!this.#pool && this.#ownsPool && this.#poolConfig) {
+            this.#pool = new Pool(this.#poolConfig);
+        }
 
         // Log connection info
         const poolOpts = this.#pool.options || {};
@@ -152,7 +165,12 @@ export class PostgresDALManager {
                 CREATE INDEX IF NOT EXISTS idx_jobs_source_target_provider_status
                     ON jobs (source_lang, target_lang, translation_provider, status, job_guid);
             `);
-            logVerbose`PostgresDALManager: jobs index ready in ${Date.now() - stepStart}ms`;
+            // Index for TMStore queries (filter by tm_store)
+            await this.#pool.query(/* sql */`
+                CREATE INDEX IF NOT EXISTS idx_jobs_tm_store
+                    ON jobs (tm_store, source_lang, target_lang);
+            `);
+            logVerbose`PostgresDALManager: jobs indexes ready in ${Date.now() - stepStart}ms`;
 
             // Enable pg_trgm extension for fast case-insensitive text search
             stepStart = Date.now();
@@ -175,15 +193,17 @@ export class PostgresDALManager {
      * Creates the database by connecting to 'postgres' and running CREATE DATABASE.
      */
     async #createDatabase() {
-        const dbName = this.#pool.options?.database || 'l10nmonster';
+        const dbName = this.#poolConfig?.database || 'l10nmonster';
         logVerbose`PostgresDALManager: database "${dbName}" does not exist, creating...`;
 
         // Close the current pool (it's connected to non-existent db)
-        await this.#pool.end();
+        const oldPool = this.#pool;
+        this.#pool = null;
+        await oldPool.end();
 
         // Create a new pool connected to 'postgres' system database
         const adminPoolConfig = {
-            ...this.#pool.options,
+            ...this.#poolConfig,
             database: 'postgres',
         };
         const adminPool = new Pool(adminPoolConfig);
@@ -197,10 +217,7 @@ export class PostgresDALManager {
         }
 
         // Recreate the original pool
-        this.#pool = new Pool({
-            ...this.#pool.options,
-            database: dbName,
-        });
+        this.#pool = new Pool(this.#poolConfig);
     }
 
     /**

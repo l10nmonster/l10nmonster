@@ -25,7 +25,7 @@ import { analyzeCmd } from './analyze.js';
  * @property {L10nAction[]} [actions] - Array of actions to merge with default actions
  * @property {string|boolean} [sourceDB] - Legacy: Filename for the source database
  * @property {string|boolean} [tmDB] - Legacy: Filename for the translation memory database
- * @property {import('../DAL/index.js').default} [dalManagerInstance] - Custom DAL Manager instance
+ * @property {import('../interfaces.js').DALManager} [dalManagerInstance] - Custom DAL Manager instance
  * @property {Intl.NumberFormat} [currencyFormatter] - Custom currency formatter
  * @property {Function} [init] - Optional initialization function called during init()
  */

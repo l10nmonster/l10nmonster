@@ -53,7 +53,7 @@ export class Visicode extends BaseTranslationProvider {
     /**
      * Generates visicode translations with underlined text.
      * @param {Job} job - The job to process.
-     * @returns {Promise<TUType[]>} Array of translated TUs.
+     * @returns {Promise<Partial<TUType>[]>} Array of translated TUs.
      */
     async getTranslatedTus(job) {
         const ts = getRegressionMode() ? 1 : new Date().getTime();

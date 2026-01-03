@@ -289,7 +289,7 @@ export class BaseTranslationProvider {
      * Get the translated TUs.
      * Override this method for synchronous translation.
      * @param {Job} job - The job request.
-     * @returns {Promise<TU[]>} The array of translated TUs.
+     * @returns {Promise<Partial<TU>[]>} The array of translated TUs.
      */
     // eslint-disable-next-line no-unused-vars
     async getTranslatedTus(job) {

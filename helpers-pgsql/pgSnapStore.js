@@ -24,24 +24,43 @@ export class PgSnapStore {
     /** @type {string} */
     id;
 
-    #pool;
+    #getPool;
     #ensureTables;
+    #scheduleShutdown;
     #snapStoreId;
+    #shutdownScheduled = false;
 
     /**
-     * @param {import('pg').Pool} pool - PostgreSQL pool
+     * @param {Function} getPool - Function to get the PostgreSQL pool
      * @param {Function} ensureTables - Function to ensure tables exist
+     * @param {Function} scheduleShutdown - Function to schedule shutdown with mm
      * @param {Object} options - Store options
      * @param {string} options.id - Logical store ID
      * @param {string} [options.snapStoreId] - Data segregation key (defaults to id)
      */
-    constructor(pool, ensureTables, options) {
-        this.#pool = pool;
+    constructor(getPool, ensureTables, scheduleShutdown, options) {
+        this.#getPool = getPool;
         this.#ensureTables = ensureTables;
+        this.#scheduleShutdown = scheduleShutdown;
         this.id = options.id;
         this.#snapStoreId = options.snapStoreId ?? options.id;
 
         logVerbose`PgSnapStore ${this.id} created with snapStoreId: ${this.#snapStoreId}`;
+    }
+
+    get #pool() {
+        return this.#getPool();
+    }
+
+    /**
+     * Initialize the store.
+     * @param {Object} mm - MonsterManager instance
+     */
+    init(mm) {
+        if (!this.#shutdownScheduled) {
+            this.#scheduleShutdown(mm);
+            this.#shutdownScheduled = true;
+        }
     }
 
     /**
@@ -124,7 +143,7 @@ export class PgSnapStore {
         /** @type {Map<string, { rowData: Object; hash: string }>} */
         const incomingRows = new Map();
         for await (const row of rowGenerator) {
-            const key = row[keyCol];
+            const key = /** @type {string} */ (row[keyCol]);
             if (key) {
                 const hash = computeHash(row);
                 incomingRows.set(key, { rowData: row, hash });

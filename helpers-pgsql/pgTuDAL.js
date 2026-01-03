@@ -18,9 +18,8 @@ export class PgTuDAL {
     #targetLang;
     #DAL;
     #tusTable;
-    #indexesInitialized = false;
-    #indexesPromise = null;
     #tableCreated = false;
+    #tablePromise = null;
 
     /**
      * @returns {string} Source language code
@@ -159,13 +158,35 @@ export class PgTuDAL {
     }
 
     /**
-     * Ensures the TUs table exists with primary key.
+     * Ensures the TUs table and all indexes exist.
      */
     async #ensureTable() {
         if (this.#tableCreated) return;
 
+        // Use a promise lock to prevent concurrent table/index creation
+        if (this.#tablePromise) {
+            return this.#tablePromise;
+        }
+
+        this.#tablePromise = this.#createTableAndIndexes();
+        try {
+            await this.#tablePromise;
+        } finally {
+            this.#tablePromise = null;
+        }
+    }
+
+    /**
+     * Internal method to create table and indexes.
+     */
+    async #createTableAndIndexes() {
+        if (this.#tableCreated) return;
+
+        const startTime = Date.now();
+
         await this.#pool.query(/* sql */`
             CREATE TABLE IF NOT EXISTS ${this.#tusTable} (
+                store_id TEXT,                   -- Provenance: NULL=local, set for TMStore synced data
                 guid TEXT NOT NULL,
                 job_guid TEXT NOT NULL,
                 rid TEXT,
@@ -183,41 +204,8 @@ export class PgTuDAL {
                 PRIMARY KEY (guid, job_guid)
             );
         `);
-        this.#tableCreated = true;
-    }
 
-    /**
-     * Ensures all indexes are created.
-     * Uses a promise lock to prevent race conditions with concurrent requests.
-     */
-    async ensureIndexes() {
-        if (this.#indexesInitialized) return;
-
-        // Use a promise lock to prevent concurrent index creation
-        if (this.#indexesPromise) {
-            return this.#indexesPromise;
-        }
-
-        this.#indexesPromise = this.#createIndexes();
-        try {
-            await this.#indexesPromise;
-        } finally {
-            this.#indexesPromise = null;
-        }
-    }
-
-    /**
-     * Internal method to create indexes.
-     */
-    async #createIndexes() {
-        if (this.#indexesInitialized) return;
-
-        await this.#ensureTable();
-
-        logVerbose`Creating indexes for ${this.#tusTable} in parallel...`;
-        const startTime = Date.now();
-
-        // Define all indexes to create
+        // Create all indexes in parallel
         const indexQueries = [
             `CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_job_guid_guid ON ${this.#tusTable} (job_guid, guid)`,
             `CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_guid_q_ts ON ${this.#tusTable} (guid, q DESC, ts DESC)`,
@@ -228,23 +216,21 @@ export class PgTuDAL {
             `CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_nsrc_flat ON ${this.#tusTable} USING hash (nsrc_flat)`,
             `CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_nsrc_flat_trgm ON ${this.#tusTable} USING GIN (nsrc_flat gin_trgm_ops)`,
             `CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_ntgt_flat_trgm ON ${this.#tusTable} USING GIN (ntgt_flat gin_trgm_ops)`,
+            `CREATE INDEX IF NOT EXISTS idx_${this.#tusTable}_store_job ON ${this.#tusTable} (store_id, job_guid)`,
         ];
 
         try {
-            // Create all indexes in parallel for faster bootstrap
             await Promise.all(indexQueries.map(query => this.#pool.query(query)));
-            const elapsed = Date.now() - startTime;
-            logVerbose`Created ${indexQueries.length} indexes for ${this.#tusTable} in ${elapsed}ms`;
         } catch (error) {
-            // Ignore duplicate index errors from concurrent requests (error code 23505)
-            // or race conditions on system catalog (pg_class_relname_nsp_index)
+            // Ignore duplicate index errors from concurrent requests
             if (error.code !== '23505' && !error.message.includes('pg_class_relname_nsp_index')) {
                 throw error;
             }
-            logVerbose`Indexes already created by concurrent request for ${this.#tusTable}`;
         }
 
-        this.#indexesInitialized = true;
+        const elapsed = Date.now() - startTime;
+        logVerbose`PgTuDAL: ${this.#tusTable} table and indexes ready in ${elapsed}ms`;
+        this.#tableCreated = true;
     }
 
     /**
@@ -253,7 +239,7 @@ export class PgTuDAL {
      * @returns {Promise<Object|undefined>}
      */
     async #getEntry(guid) {
-        await this.ensureIndexes();
+        await this.#ensureTable();
         const { rows } = await this.#pool.query(/* sql */`
             SELECT job_guid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tu_props
             FROM ${this.#tusTable}
@@ -302,7 +288,7 @@ export class PgTuDAL {
      * @returns {Promise<Array>}
      */
     async getEntriesByJobGuid(jobGuid) {
-        await this.ensureIndexes();
+        await this.#ensureTable();
         const { rows } = await this.#pool.query(/* sql */`
             SELECT job_guid, guid, rid, sid, nsrc, ntgt, notes, q, ts, tu_props
             FROM ${this.#tusTable}
@@ -378,11 +364,13 @@ export class PgTuDAL {
      * Used for cross-job batching in saveJobs.
      * @param {Array} tus - Array of TU objects with jobGuid property
      * @param {import('pg').PoolClient} client - Database client
+     * @param {string|null} storeId - Provenance: null for local, string for TMStore synced data
      * @returns {Promise<string[]>} Array of guids that were inserted
      */
-    async #insertTuBatchWithJobGuid(tus, client) {
+    async #insertTuBatchWithJobGuid(tus, client, storeId = null) {
         if (tus.length === 0) return [];
 
+        const storeIds = [];
         const guids = [];
         const jobGuids = [];
         const rids = [];
@@ -401,6 +389,7 @@ export class PgTuDAL {
         for (const tu of tus) {
             const { guid, jobGuid, rid, sid, nsrc, ntgt, notes, q, ts, tuOrder, ...tuProps } = tu;
 
+            storeIds.push(storeId);
             guids.push(guid);
             jobGuids.push(jobGuid);
             rids.push(rid);
@@ -419,14 +408,15 @@ export class PgTuDAL {
 
         await client.query(/* sql */`
             INSERT INTO ${this.#tusTable}
-            (guid, job_guid, rid, sid, nsrc, nsrc_flat, ntgt, ntgt_flat, notes, tu_props, q, ts, tu_order, rank)
+            (store_id, guid, job_guid, rid, sid, nsrc, nsrc_flat, ntgt, ntgt_flat, notes, tu_props, q, ts, tu_order, rank)
             SELECT * FROM UNNEST(
-                $1::text[], $2::text[], $3::text[], $4::text[],
-                $5::jsonb[], $6::text[], $7::jsonb[], $8::text[], $9::jsonb[],
-                $10::jsonb[], $11::int[], $12::bigint[], $13::int[], $14::int[]
+                $1::text[], $2::text[], $3::text[], $4::text[], $5::text[],
+                $6::jsonb[], $7::text[], $8::jsonb[], $9::text[], $10::jsonb[],
+                $11::jsonb[], $12::int[], $13::bigint[], $14::int[], $15::int[]
             )
             ON CONFLICT (guid, job_guid)
             DO UPDATE SET
+                store_id = EXCLUDED.store_id,
                 rid = EXCLUDED.rid,
                 sid = EXCLUDED.sid,
                 nsrc = EXCLUDED.nsrc,
@@ -438,19 +428,81 @@ export class PgTuDAL {
                 q = EXCLUDED.q,
                 ts = EXCLUDED.ts,
                 tu_order = EXCLUDED.tu_order;
-        `, [guids, jobGuids, rids, sids, nsrcs, nsrcFlats, ntgts, ntgtFlats, notesArr, tuPropsArr, qs, tss, tuOrders, ranks]);
+        `, [storeIds, guids, jobGuids, rids, sids, nsrcs, nsrcFlats, ntgts, ntgtFlats, notesArr, tuPropsArr, qs, tss, tuOrders, ranks]);
 
         return guids;
     }
 
     /**
+     * Maximum number of retry attempts for transient connection errors.
+     */
+    static #MAX_RETRIES = 3;
+
+    /**
+     * Delay between retry attempts in milliseconds.
+     */
+    static #RETRY_DELAY_MS = 2000;
+
+    /**
+     * Checks if an error is a transient connection error that can be retried.
+     * @param {Error} error
+     * @returns {boolean}
+     */
+    static #isTransientError(error) {
+        const transientCodes = [
+            'ECONNRESET',
+            'ECONNREFUSED',
+            'ETIMEDOUT',
+            'EPIPE',
+            'EHOSTUNREACH',
+            'ENETUNREACH',
+        ];
+        // Check error code or message
+        if (error.code && transientCodes.includes(error.code)) return true;
+        if (error.message && transientCodes.some(code => error.message.includes(code))) return true;
+        // PostgreSQL connection errors
+        if (error.code === '57P01') return true; // admin_shutdown
+        if (error.code === '57P02') return true; // crash_shutdown
+        if (error.code === '57P03') return true; // cannot_connect_now
+        if (error.code === '08000') return true; // connection_exception
+        if (error.code === '08003') return true; // connection_does_not_exist
+        if (error.code === '08006') return true; // connection_failure
+        return false;
+    }
+
+    /**
      * Saves multiple jobs in a single transaction.
+     * Includes retry logic for transient connection errors.
      * @param {Array<{jobProps: Object, tus: Array}>} jobs
      * @param {{ tmStoreId?: string, updateRank?: boolean }} [options]
      */
     async saveJobs(jobs, { tmStoreId, updateRank = true } = {}) {
         if (jobs.length === 0) return;
 
+        let lastError;
+        for (let attempt = 1; attempt <= PgTuDAL.#MAX_RETRIES; attempt++) {
+            try {
+                await this.#saveJobsInternal(jobs, { tmStoreId, updateRank });
+                return; // Success
+            } catch (error) {
+                lastError = error;
+                if (PgTuDAL.#isTransientError(error) && attempt < PgTuDAL.#MAX_RETRIES) {
+                    logVerbose`PgTuDAL.saveJobs: transient error (${error.code || error.message}), retrying in ${PgTuDAL.#RETRY_DELAY_MS}ms (attempt ${attempt}/${PgTuDAL.#MAX_RETRIES})`;
+                    await new Promise(resolve => setTimeout(resolve, PgTuDAL.#RETRY_DELAY_MS));
+                } else {
+                    throw error;
+                }
+            }
+        }
+        throw lastError;
+    }
+
+    /**
+     * Internal implementation of saveJobs.
+     * @param {Array<{jobProps: Object, tus: Array}>} jobs
+     * @param {{ tmStoreId?: string, updateRank?: boolean }} options
+     */
+    async #saveJobsInternal(jobs, { tmStoreId, updateRank }) {
         const totalTus = jobs.reduce((sum, job) => sum + job.tus.length, 0);
         logVerbose`PgTuDAL.saveJobs: ${this.#tusTable} - ${jobs.length} jobs, ${totalTus} TUs`;
 
@@ -501,7 +553,7 @@ export class PgTuDAL {
                 if (numBatches > 1) {
                     logVerbose`PgTuDAL.saveJobs: ${this.#tusTable} batch ${batchNum}/${numBatches} (${batch.length} TUs)`;
                 }
-                const insertedGuids = await this.#insertTuBatchWithJobGuid(batch, client);
+                const insertedGuids = await this.#insertTuBatchWithJobGuid(batch, client, tmStoreId);
                 insertedGuids.forEach(guid => affectedGuids.add(guid));
             }
 
@@ -515,7 +567,7 @@ export class PgTuDAL {
             const elapsed = Date.now() - startTime;
             logVerbose`PgTuDAL.saveJobs: completed in ${elapsed}ms`;
         } catch (error) {
-            await client.query('ROLLBACK');
+            await client.query('ROLLBACK').catch(() => {});
             throw error;
         } finally {
             client.release();
@@ -592,7 +644,7 @@ export class PgTuDAL {
      * @returns {Promise<Array>}
      */
     async getExactMatches(nsrc) {
-        await this.ensureIndexes();
+        await this.#ensureTable();
         const flattenedSrc = flattenNormalizedSourceToOrdinal(nsrc);
 
         const { rows } = await this.#pool.query(/* sql */`
@@ -649,7 +701,7 @@ export class PgTuDAL {
      * @returns {Promise<Array<[string, string]>>}
      */
     async tuKeysOverRank(maxRank) {
-        await this.ensureIndexes();
+        await this.#ensureTable();
         const { rows } = await this.#pool.query(/* sql */`
             SELECT guid, job_guid FROM ${this.#tusTable} WHERE rank > $1;
         `, [maxRank]);
@@ -662,7 +714,7 @@ export class PgTuDAL {
      * @returns {Promise<Array<[string, string]>>}
      */
     async tuKeysByQuality(quality) {
-        await this.ensureIndexes();
+        await this.#ensureTable();
         const { rows } = await this.#pool.query(/* sql */`
             SELECT guid, job_guid FROM ${this.#tusTable} WHERE q = $1;
         `, [quality]);
@@ -714,7 +766,7 @@ export class PgTuDAL {
      * @returns {Promise<Array>}
      */
     async getStats() {
-        await this.ensureIndexes();
+        await this.#ensureTable();
         const { rows } = await this.#pool.query(/* sql */`
             SELECT
                 translation_provider as "translationProvider",
@@ -738,7 +790,7 @@ export class PgTuDAL {
      * @returns {Promise<Array>}
      */
     async getTranslatedContentStatus(channelDAL) {
-        await this.ensureIndexes();
+        await this.#ensureTable();
         const segmentsTable = channelDAL.segmentsTable;
 
         const { rows } = await this.#pool.query(/* sql */`
@@ -770,7 +822,7 @@ export class PgTuDAL {
      * @returns {Promise<Array>}
      */
     async getUntranslatedContentStatus(channelDAL) {
-        await this.ensureIndexes();
+        await this.#ensureTable();
         const segmentsTable = channelDAL.segmentsTable;
 
         const { rows } = await this.#pool.query(/* sql */`
@@ -802,7 +854,7 @@ export class PgTuDAL {
      * @returns {Promise<Array>}
      */
     async getUntranslatedContent(channelDAL, { limit = 100, prj } = {}) {
-        await this.ensureIndexes();
+        await this.#ensureTable();
         const segmentsTable = channelDAL.segmentsTable;
         const channelId = channelDAL.channelId;
         const prjArray = prj ? (Array.isArray(prj) ? prj : [prj]) : null;
@@ -844,7 +896,7 @@ export class PgTuDAL {
      * @returns {Promise<Array>}
      */
     async querySource(channelDAL, whereCondition) {
-        await this.ensureIndexes();
+        await this.#ensureTable();
         const segmentsTable = channelDAL.segmentsTable;
         const channelId = channelDAL.channelId;
 
@@ -892,7 +944,7 @@ export class PgTuDAL {
      * @returns {Promise<Array>}
      */
     async queryByGuids(guids, channelDAL) {
-        await this.ensureIndexes();
+        await this.#ensureTable();
 
         if (channelDAL) {
             const segmentsTable = channelDAL.segmentsTable;
@@ -963,12 +1015,12 @@ export class PgTuDAL {
      */
     // eslint-disable-next-line complexity
     async search(offset, limit, params) {
-        await this.ensureIndexes();
+        await this.#ensureTable();
 
         const {
             guid, nid, jobGuid, rid, sid, nsrc, ntgt, notes,
             tconf, maxRank = 10, onlyTNotes, q, minTS, maxTS,
-            translationProvider, tmStore,
+            translationProvider, tmStore, storeId,
             channel, group, includeTechnicalColumns, onlyLeveraged
         } = params;
 
@@ -1068,6 +1120,23 @@ export class PgTuDAL {
             }
         }
 
+        // Add store_id filter (provenance)
+        if (Array.isArray(storeId) && storeId.length > 0) {
+            const hasNull = storeId.includes('__null__');
+            const nonNull = storeId.filter(s => s !== '__null__');
+            const storeConditions = [];
+            if (nonNull.length > 0) {
+                storeConditions.push(`t.store_id = ANY($${paramIndex++}::text[])`);
+                queryParams.push(nonNull);
+            }
+            if (hasNull) {
+                storeConditions.push('t.store_id IS NULL');
+            }
+            if (storeConditions.length > 0) {
+                conditions.push(`(${storeConditions.join(' OR ')})`);
+            }
+        }
+
         // Add leveraged filter
         if (leveragedExistsCondition) {
             conditions.push(leveragedExistsCondition);
@@ -1129,6 +1198,7 @@ export class PgTuDAL {
             SELECT
                 t.guid,
                 t.job_guid as "jobGuid",
+                t.store_id as "storeId",
                 ${selectColumns}
                 t.rid,
                 t.sid,
@@ -1182,7 +1252,7 @@ export class PgTuDAL {
      * @returns {Promise<Array>}
      */
     async lookup({ guid, nid, rid, sid }) {
-        await this.ensureIndexes();
+        await this.#ensureTable();
 
         const whereConditions = ['rank = 1'];
         const params = [];
@@ -1221,7 +1291,7 @@ export class PgTuDAL {
      * @returns {Promise<Object>} Object with arrays of available values per column
      */
     async getLowCardinalityColumns() {
-        await this.ensureIndexes();
+        await this.#ensureTable();
 
         /** @type {Record<string, unknown[]>} */
         const enumValues = {};
@@ -1283,6 +1353,15 @@ export class PgTuDAL {
             enumValues.group = Array.from(groupValues);
         }
 
+        // Get store_id values (provenance)
+        const { rows: storeIdRows } = await this.#pool.query(/* sql */`
+            SELECT DISTINCT COALESCE(store_id, '__null__') as store_id
+            FROM ${this.#tusTable};
+        `);
+        if (storeIdRows.length > 0) {
+            enumValues.storeId = storeIdRows.map(r => r.store_id);
+        }
+
         return enumValues;
     }
 
@@ -1291,7 +1370,7 @@ export class PgTuDAL {
      * @returns {Promise<Array<{ q: number; count: number }>>}
      */
     async getQualityDistribution() {
-        await this.ensureIndexes();
+        await this.#ensureTable();
         const { rows } = await this.#pool.query(/* sql */`
             SELECT q, COUNT(*)::integer as count
             FROM ${this.#tusTable}

@@ -87,10 +87,10 @@ function cleanupTU(entry) {
  */
 export class TU {
 
-    /** @type {string} Resource ID the TU belongs to. */
+    /** @type {string | undefined} Resource ID the TU belongs to. */
     rid;
 
-    /** @type {string} Segment ID the TU belongs to. */
+    /** @type {string | undefined} Segment ID the TU belongs to. */
     sid;
 
     /** @type {NormalizedString | undefined} Normalized source string for the TU. */

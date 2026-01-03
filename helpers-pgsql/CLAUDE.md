@@ -12,38 +12,87 @@ helpers-pgsql/
 ├── pgTuDAL.js            # Translation unit data access layer
 ├── pgUtils.js            # Shared utilities (SQL transformers, sanitization)
 ├── pgSuperStore.js       # Factory for TM/Snap stores
-├── pgTmStore.js          # TMStore implementation
+├── pgTmStore.js          # TMStore implementation (uses unified TU tables)
 └── pgSnapStore.js        # SnapStore implementation
 ```
 
-## Two Storage Approaches
+## Unified TM Schema
+
+DAL and TMStore share the same TU storage tables with `store_id` for provenance tracking:
+
+### Shared Tables
+
+| Table | Purpose | Provenance |
+|-------|---------|------------|
+| `jobs` | Job metadata | `tm_store` column (NULL=local, string=TMStore) |
+| `tus_{sourceLang}_{targetLang}` | Translation units | `store_id` column (NULL=local, string=TMStore) |
+
+### Key Design Principle
+
+- **DAL queries all TUs** regardless of `store_id` - unified TM with global ranking
+- **TMStore filters by `store_id`** for sync operations
+- **Ranking is computed globally** across all TUs (best quality wins)
+
+```sql
+-- DAL: Get best TU (queries all, no store_id filter)
+SELECT * FROM tus_en_de WHERE guid = $1 AND rank = 1;
+
+-- TMStore: Get TUs from specific store (for sync)
+SELECT * FROM tus_en_de WHERE store_id = $1 AND job_guid = ANY($2);
+```
+
+## Storage Approaches
 
 ### 1. PostgresDALManager (Local Storage Replacement)
 
 Replaces SQLite for the local L10n Monster database. Used via `.dalManager()` in config.
 
 **Tables created:**
-- `channel_toc`, `jobs` (shared)
-- `resources_{channelId}`, `segments_{channelId}` (per channel)
-- `tus_{sourceLang}_{targetLang}` (per language pair)
+- `channel_toc` - Channel metadata
+- `jobs` - Job metadata (shared with TMStore via `tm_store` column)
+- `resources_{channelId}`, `segments_{channelId}` - Per channel
+- `tus_{sourceLang}_{targetLang}` - Per language pair (shared with TMStore via `store_id` column)
 
 ### 2. PgSuperStore (External TM/Snap Store)
 
 Factory for creating TMStore and SnapStore instances backed by PostgreSQL. Used via `.tmStore()` and `.snapStore()` in config.
 
-**Tables created:**
-- `tm_blocks`, `tm_jobs` (TM storage with `tm_store_id` segregation)
-- `snap_resources`, `snap_segments`, `snap_toc` (Snap storage with temporal tracking)
+**Tables created/used:**
+- `jobs` - Job metadata with `tm_store` column for provenance
+- `tus_{sourceLang}_{targetLang}` - TU storage with `store_id` column for provenance
+- `snap_resources`, `snap_segments`, `snap_toc` - Snap storage with temporal tracking
 
 ## Key Design Patterns
 
-### Data Segregation
+### Provenance Tracking
 
-Both PgTmStore and PgSnapStore use segregation keys (`tm_store_id`, `snap_store_id`) to allow multiple logical stores to share the same physical tables:
+TUs and jobs track their origin via provenance columns:
 
 ```sql
--- All queries include the segregation key
-WHERE tm_store_id = $1 AND source_lang = $2 AND target_lang = $3
+-- TUs: store_id column
+INSERT INTO tus_en_de (store_id, guid, job_guid, ...)
+VALUES ('production', $1, $2, ...);  -- TMStore synced
+VALUES (NULL, $1, $2, ...);          -- Local (DAL)
+
+-- Jobs: tm_store column
+INSERT INTO jobs (job_guid, tm_store, ...)
+VALUES ($1, 'production', ...);  -- TMStore synced
+VALUES ($1, NULL, ...);          -- Local (DAL)
+```
+
+### Global Ranking
+
+Ranks are computed across all TUs regardless of store_id:
+
+```sql
+UPDATE tus_en_de
+SET rank = t2.new_rank
+FROM (
+    SELECT guid, job_guid,
+           ROW_NUMBER() OVER (PARTITION BY guid ORDER BY q DESC, ts DESC) as new_rank
+    FROM tus_en_de WHERE guid = ANY($1)
+) AS t2
+WHERE tus_en_de.guid = t2.guid AND tus_en_de.job_guid = t2.job_guid;
 ```
 
 ### Temporal Tables (SCD Type 2)
@@ -87,7 +136,7 @@ leveraged_guids AS (
     JOIN latest_snaps ls ON s.channel_id = ls.channel_id
     WHERE s.valid_from <= ls.max_ts AND (s.valid_to IS NULL OR s.valid_to > ls.max_ts)
 )
-SELECT * FROM tm_blocks WHERE guid IN (SELECT guid FROM leveraged_guids)
+SELECT * FROM tus_en_de WHERE store_id = $1 AND guid IN (SELECT guid FROM leveraged_guids)
 ```
 
 ## Common Patterns

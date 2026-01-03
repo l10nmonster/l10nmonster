@@ -121,6 +121,9 @@ export default class ResourceManager {
      */
     getSnapStoreInfo(snapStoreId) {
         const snapStore = this.#snapStores[snapStoreId];
+        if (!snapStore) {
+            throw new Error(`Invalid snap store reference: ${snapStoreId}. Available: ${Object.keys(this.#snapStores).join(', ') || 'none'}`);
+        }
         return {
             id: snapStore.id,
             type: snapStore.constructor.name,
@@ -133,7 +136,11 @@ export default class ResourceManager {
      * @returns {Promise<Object>} Table of contents with channel snapshots.
      */
     async getSnapStoreTOC(snapStoreId) {
-        return this.#snapStores[snapStoreId].getTOC();
+        const snapStore = this.#snapStores[snapStoreId];
+        if (!snapStore) {
+            throw new Error(`Invalid snap store reference: ${snapStoreId}. Available: ${Object.keys(this.#snapStores).join(', ') || 'none'}`);
+        }
+        return snapStore.getTOC();
     }
 
     /**

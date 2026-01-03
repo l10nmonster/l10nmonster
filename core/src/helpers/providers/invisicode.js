@@ -64,7 +64,7 @@ export class InvisicodeProvider extends BaseTranslationProvider {
     /**
      * Gets translated TUs wrapped in Invisicode.
      * @param {Job} job - The job with TUs.
-     * @returns {Promise<TU[]>} Translated TUs with Invisicode wrapping.
+     * @returns {Promise<Partial<TU>[]>} Translated TUs with Invisicode wrapping.
      */
     async getTranslatedTus(job) {
         // Resolve baseLang - can be a string or a function that takes targetLang

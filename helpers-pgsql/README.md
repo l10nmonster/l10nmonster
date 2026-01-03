@@ -84,6 +84,10 @@ export default config.l10nMonster(import.meta.dirname)
 
 Factory for creating PostgreSQL-backed TM stores and Snap stores. All stores created from the same factory share a connection pool.
 
+**Unified Schema:** TMStore uses the same `tus_{sourceLang}_{targetLang}` tables and `jobs` table as PostgresDALManager. Data is segregated using:
+- `store_id` column in TU tables (NULL for local, store ID for TMStore)
+- `tm_store` column in jobs table (NULL for local, store ID for TMStore)
+
 ### Basic Usage
 
 ```javascript
@@ -103,15 +107,15 @@ export default config.l10nMonster(import.meta.dirname)
     // ...
 ```
 
-### Data Segregation
+### Provenance Tracking
 
-Multiple stores can share the same database tables using segregation keys:
+Multiple stores can share the same database tables. Each store's data is tracked via provenance columns:
 
 ```javascript
-// Production and staging TM stores backed by the same table
+// Production and staging TM stores using the same tables
 const productionTm = superStore.createTmStore({
     id: 'production-tm',
-    tmStoreId: 'production'   // Data segregation key
+    tmStoreId: 'production'   // Stored in store_id column
 });
 
 const stagingTm = superStore.createTmStore({
@@ -120,6 +124,8 @@ const stagingTm = superStore.createTmStore({
     access: 'readonly'
 });
 ```
+
+**Key benefit:** DAL queries see ALL TUs (regardless of store_id) with global ranking. The best translation wins, whether it came from local work or a synced TMStore.
 
 ### onlyLeveraged Filtering
 
@@ -246,18 +252,19 @@ To migrate existing data from SQLite to PostgreSQL:
 
 The package automatically creates the following tables:
 
-### PostgresDALManager Tables
+### Shared Tables (DAL + TMStore)
+
+- `jobs` - Job metadata with `tm_store` column for provenance (NULL=local, string=TMStore)
+- `tus_{sourceLang}_{targetLang}` - Translation units with `store_id` column for provenance (NULL=local, string=TMStore)
+
+### PostgresDALManager-Specific Tables
 
 - `channel_toc` - Channel metadata
 - `resources_{channelId}` - Resources per channel
 - `segments_{channelId}` - Segments per channel
-- `tus_{sourceLang}_{targetLang}` - Translation units per language pair
-- `jobs` - Job metadata
 
-### PgSuperStore Tables
+### PgSuperStore SnapStore Tables
 
-- `tm_blocks` - TUs with `tm_store_id` segregation
-- `tm_jobs` - Job metadata with `tm_store_id` segregation
 - `snap_resources` - Resources with temporal tracking (`valid_from`/`valid_to`)
 - `snap_segments` - Segments with temporal tracking
 - `snap_toc` - Snapshot timestamps and counts

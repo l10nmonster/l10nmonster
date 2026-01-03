@@ -423,6 +423,14 @@ segOrders = [];
             return decodedSeg;
         });
 
+        // Parse modified_at: if it looks like a number (e.g., "1" from regression mode),
+        // convert to number so that new Date(modified).getTime() works correctly.
+        // Otherwise keep as string (ISO format).
+        const modifiedAt = resourceRow.modified_at;
+        const modifiedParsed = modifiedAt !== null && modifiedAt !== undefined && String(modifiedAt).match(/^\d+$/)
+            ? Number(modifiedAt)
+            : modifiedAt;
+
         const decodedRes = sqlTransformer.decode({
             sourceLang: resourceRow.source_lang,
             targetLangs: resourceRow.target_langs,
@@ -431,7 +439,7 @@ segOrders = [];
             resourceFormat: resourceRow.resource_format,
             resProps: resourceRow.res_props,
             raw: resourceRow.raw,
-            modified: resourceRow.modified_at,
+            modified: modifiedParsed,
         });
 
         return { id: resourceRow.rid, segments, channel: this.channelId, ...decodedRes };

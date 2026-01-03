@@ -49,7 +49,7 @@ export async function createCloudSqlPool(options) {
         min = 2,
         max = 10,
         idleTimeoutMillis = 30000,
-    } = options;
+    } = /** @type {any} */ (options);
 
     if (!instanceConnectionName) {
         throw new Error('instanceConnectionName is required');
@@ -70,6 +70,7 @@ export async function createCloudSqlPool(options) {
         authType,
     });
 
+    /** @type {Record<string, any>} */
     const poolConfig = {
         ...clientOpts,
         database,
@@ -121,8 +122,8 @@ export async function createCloudSqlPool(options) {
  * ```
  */
 export async function createCloudSqlPoolWithADC(options) {
-    return createCloudSqlPool({
+    return createCloudSqlPool(/** @type {CloudSqlPoolOptions} */ ({
         ...options,
         authType: 'IAM',
-    });
+    }));
 }
