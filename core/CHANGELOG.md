@@ -1,3 +1,25 @@
+# @l10nmonster/core [3.2.0](https://public-github/l10nmonster/l10nmonster/compare/@l10nmonster/core@3.1.1...@l10nmonster/core@3.2.0) (2026-01-03)
+
+
+### Bug Fixes
+
+* **core:** Ensure SQLite databases are properly closed even with errors ([194c4be](https://public-github/l10nmonster/l10nmonster/commit/194c4be0137af2a717a0452d94c059f9aff7a8d9))
+* **core:** Fix types ([4ff88a4](https://public-github/l10nmonster/l10nmonster/commit/4ff88a47ef2efeb629da0cae7e794512f961becf))
+* **core:** Improve DAL type checks ([0e383bd](https://public-github/l10nmonster/l10nmonster/commit/0e383bdee771e14a510363e1c59b8fb2593e53d1))
+* **core:** Make default monster command more summarized ([eb84d3d](https://public-github/l10nmonster/l10nmonster/commit/eb84d3dd0235a9f43271c62ad643edbac50f3755))
+* **core:** Make TM indexes lazy and increase transaction sizes ([91a9673](https://public-github/l10nmonster/l10nmonster/commit/91a967396d57d331dc376ecadc19b591eb3f6064))
+* **core:** More performance optimizations ([44a25ee](https://public-github/l10nmonster/l10nmonster/commit/44a25eea6ab6de16ee888c42e758133e53e4d952))
+* **core:** Remove JobDAL ([b3a19a6](https://public-github/l10nmonster/l10nmonster/commit/b3a19a6459573326135a82119a2356d20c55e92a))
+* **core:** Source import broken ([5ef42e3](https://public-github/l10nmonster/l10nmonster/commit/5ef42e3c0dc1e3f21f6d0c3c253e005127641c5f))
+
+
+### Features
+
+* **core:** First iteration of sharded externalized SQLiteDALManager ([5083a7f](https://public-github/l10nmonster/l10nmonster/commit/5083a7fc671e104a103b43ec6a3a0dfd539215a4))
+* **core:** Implement workers for sqlite ([5460c17](https://public-github/l10nmonster/l10nmonster/commit/5460c177d07aac46380607f3f2859b027845c178))
+* **core:** New tm bootstrap action ([4f98899](https://public-github/l10nmonster/l10nmonster/commit/4f9889951ddc88f7028f4e9d4b659d44fc4c775c))
+* **helpers-pgsql:** Unified schema version ([f13bfa1](https://public-github/l10nmonster/l10nmonster/commit/f13bfa19d2f9aef3c5e10b7ab90b6725c0a21b03))
+
 ## @l10nmonster/core [3.1.1](https://public-github/l10nmonster/l10nmonster/compare/@l10nmonster/core@3.1.0...@l10nmonster/core@3.1.1) (2025-12-23)
 
 
