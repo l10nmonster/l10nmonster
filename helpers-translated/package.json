@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/helpers-translated",
-    "version": "3.1.1",
+    "version": "3.1.2",
     "description": "Helpers to integrate with Translated.com",
     "main": "index.js",
     "type": "module",
@@ -11,7 +11,7 @@
     "author": "Diego Lagunas",
     "license": "MIT",
     "peerDependencies": {
-        "@l10nmonster/core": "3.1.1"
+        "@l10nmonster/core": "3.2.0"
     },
     "dependencies": {
         "@translated/lara": "^1.4.0",
