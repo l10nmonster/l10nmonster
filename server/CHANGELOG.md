@@ -1,3 +1,10 @@
+## @l10nmonster/server [3.1.2](https://public-github/l10nmonster/l10nmonster/compare/@l10nmonster/server@3.1.1...@l10nmonster/server@3.1.2) (2026-01-03)
+
+
+### Bug Fixes
+
+* **server:** Serve should return a promise ([d688831](https://public-github/l10nmonster/l10nmonster/commit/d68883125b84266af89f6b8b93ee022706bb37e3))
+
 ## @l10nmonster/server [3.1.1](https://public-github/l10nmonster/l10nmonster/compare/@l10nmonster/server@3.1.0...@l10nmonster/server@3.1.1) (2025-12-23)
 
 
