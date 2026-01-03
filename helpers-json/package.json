@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/helpers-json",
-    "version": "3.0.2",
+    "version": "3.0.3",
     "description": "Helpers to deal with JSON file formats",
     "type": "module",
     "main": "index.js",
@@ -14,7 +14,7 @@
         "flat": "^6"
     },
     "peerDependencies": {
-        "@l10nmonster/core": "3.1.1"
+        "@l10nmonster/core": "3.2.0"
     },
     "engines": {
         "node": ">=22.11.0"
