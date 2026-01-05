@@ -55,10 +55,10 @@ export class TU {
 	 * @throws Will throw an error if the required properties are missing based on the TU type.
 	 */
 	constructor(entry: Partial<TU>, isSource: boolean, isTarget: boolean);
-	/** @type {string} Resource ID the TU belongs to. */
-	rid: string;
-	/** @type {string} Segment ID the TU belongs to. */
-	sid: string;
+	/** @type {string | undefined} Resource ID the TU belongs to. */
+	rid: string | undefined;
+	/** @type {string | undefined} Segment ID the TU belongs to. */
+	sid: string | undefined;
 	/** @type {NormalizedString | undefined} Normalized source string for the TU. */
 	nsrc: NormalizedString | undefined;
 	/** @type {string} Unique identifier for the TU. */
@@ -207,9 +207,9 @@ declare class TM {
 	getExactMatches(nsrc: NormalizedString$2): Promise<TU$1[]>;
 	/**
 	 * Gets statistics for this language pair.
-	 * @returns {Promise<TMStats>} TM statistics.
+	 * @returns {Promise<TMStats[]>} TM statistics per provider/status.
 	 */
-	getStats(): Promise<TMStats>;
+	getStats(): Promise<TMStats[]>;
 	/**
 	 * Gets translation status for content in a channel, grouped by project.
 	 * @param {string} channelId - Channel identifier.
@@ -347,9 +347,21 @@ type DALManager = DALManager$1;
 type JobPropsTusPair = JobPropsTusPair$1;
 type TMStats = {
 	/**
+	 * - Provider that produced this translation.
+	 */
+	translationProvider: string;
+	/**
+	 * - Job status.
+	 */
+	status: string;
+	/**
 	 * - Total translation units.
 	 */
 	tuCount: number;
+	/**
+	 * - Count of distinct GUIDs.
+	 */
+	distinctGuids: number;
 	/**
 	 * - Total jobs.
 	 */
@@ -1348,7 +1360,7 @@ interface ResourceManagerInterface {
 		segmentCount: number;
 		resCount: number;
 		targetLangs: string[];
-		lastModified?: number;
+		lastModified?: string;
 	}>>;
 	/** Get all resources for a channel. */
 	getAllResources(channelId: string, options?: Record<string, unknown>): AsyncGenerator<ResourceHandle>;
@@ -1364,16 +1376,15 @@ interface ResourceManagerInterface {
 		segments: number;
 	}>;
 	/** Import from a snapshot. */
-	import(ts: number, channelId: string, snapStoreId: string): Promise<void>;
+	import(ts: number, channelId: string, snapStoreId: string): Promise<{
+		resources: number;
+		segments: number;
+	}>;
 	/** Export content from channels to a snap store. */
 	export(channelId: string, snapStoreId: string): Promise<{
 		ts?: number;
-		resources?: {
-			count: number;
-		};
-		segments?: {
-			count: number;
-		};
+		resources?: number;
+		segments?: number;
 	}>;
 }
 interface TMManagerInterface {
@@ -1525,8 +1536,6 @@ interface DispatcherInterface {
 	readonly providers: TranslationProvider[];
 	/** Get provider by ID. */
 	getProvider(providerId: string): TranslationProvider | undefined;
-	/** Get all providers. */
-	getProviders(): TranslationProvider[];
 	/** Create jobs from a job request. */
 	createJobs(job: JobRequest, options?: Record<string, unknown>): Promise<Job[]>;
 	/** Start created jobs. */
@@ -2480,7 +2489,7 @@ declare class TMManager {
 }
 type TMStore$1 = TMStore$4;
 type JobPropsTusPair$2 = JobPropsTusPair$5;
-type Job$1 = Job$6;
+type Job$1 = Job$7;
 type DALManager$3 = DALManager$4;
 type TmStoreInfo = {
 	/**
@@ -2651,7 +2660,7 @@ declare class Dispatcher {
 	updateJob(jobGuid: string): Promise<Job$2>;
 	#private;
 }
-type Job$2 = Job$6;
+type Job$2 = Job$7;
 type TranslationProvider$1 = TranslationProvider;
 type CreateJobsOptions = {
 	/**
@@ -2703,99 +2712,6 @@ type StartedJobSummary = {
 	 */
 	statusDescription: string;
 };
-/** @typedef {import('../interfaces.js').DALManager} DALManagerInterface */
-/** @typedef {import('../interfaces.js').TuDAL} TuDAL */
-/**
- * @typedef {Object} SQLiteDALManagerOptions
- * @property {string} [sourceFilename] - Source DB filename (undefined = in-memory)
- * @property {string} [tmFilename] - TM DB filename for shard 0 (undefined = in-memory)
- * @property {Array<Array<[string, string]>>} [tmSharding] - Shard assignments
- * @property {boolean} [useWorkers=false] - Use worker threads for DB operations
- */
-/** @implements {DALManagerInterface} */
-export declare class SQLiteDALManager implements DALManagerInterface {
-	/**
-	 * @param {SQLiteDALManagerOptions} [options]
-	 */
-	constructor(options?: SQLiteDALManagerOptions);
-	activeChannels: any;
-	init(mm: any): Promise<void>;
-	/**
-	 * Get ChannelDAL for a channel.
-	 * Always uses direct mode (no worker proxy) for channel operations.
-	 * @param {string} channelId - Channel identifier.
-	 * @returns {import('../interfaces.js').ChannelDAL} ChannelDAL instance.
-	 */
-	channel(channelId: string): ChannelDAL;
-	/**
-	 * Get TuDAL for a language pair.
-	 * Note: In worker mode, returns a TuDALProxy that implements the TuDAL interface.
-	 * @param {string} sourceLang - Source language code.
-	 * @param {string} targetLang - Target language code.
-	 * @returns {TuDAL} TuDAL or proxy (cast as TuDAL).
-	 */
-	tu(sourceLang: string, targetLang: string): TuDAL$1;
-	/**
-	 * Get all available language pairs across all shards.
-	 * Queries the database directly for distinct language pairs with jobs.
-	 * @returns {Promise<Array<[string, string]>>} Array of [sourceLang, targetLang] tuples.
-	 */
-	getAvailableLangPairs(): Promise<Array<[
-		string,
-		string
-	]>>;
-	/**
-	 * Get total job count across all shards and language pairs.
-	 * @returns {Promise<number>} Total job count.
-	 */
-	getJobCount(): Promise<number>;
-	/**
-	 * Get a job by its GUID, searching all shards.
-	 * @param {string} jobGuid - Job identifier.
-	 * @returns {Promise<Object|undefined>} Job with parsed props, or undefined.
-	 */
-	getJob(jobGuid: string): Promise<any | undefined>;
-	/**
-	 * Get job statistics across all shards.
-	 * @returns {Promise<Array>} Array of statistics objects.
-	 */
-	getJobStats(): Promise<any[]>;
-	/**
-	 * Runs a callback in bootstrap mode with optimal bulk insert settings.
-	 * Automatically cleans up and switches back to normal WAL mode when done.
-	 * All shards are bootstrapped (cleaned and initialized with MEMORY journal).
-	 *
-	 * @template T
-	 * @param {() => Promise<T>} callback - The bootstrap operation to run.
-	 * @returns {Promise<T>} The result of the callback.
-	 */
-	withBootstrapMode<T>(callback: () => Promise<T>): Promise<T>;
-	shutdown(): Promise<void>;
-	#private;
-}
-type DALManagerInterface = DALManager$1;
-type TuDAL$1 = TuDAL;
-type SQLiteDALManagerOptions = {
-	/**
-	 * - Source DB filename (undefined = in-memory)
-	 */
-	sourceFilename?: string;
-	/**
-	 * - TM DB filename for shard 0 (undefined = in-memory)
-	 */
-	tmFilename?: string;
-	/**
-	 * - Shard assignments
-	 */
-	tmSharding?: Array<Array<[
-		string,
-		string
-	]>>;
-	/**
-	 * - Use worker threads for DB operations
-	 */
-	useWorkers?: boolean;
-};
 /**
  * @typedef {import('../interfaces.js').TranslationProvider} TranslationProvider
  * @typedef {import('../interfaces.js').L10nAction} L10nAction
@@ -2813,7 +2729,7 @@ type SQLiteDALManagerOptions = {
  * @property {L10nAction[]} [actions] - Array of actions to merge with default actions
  * @property {string|boolean} [sourceDB] - Legacy: Filename for the source database
  * @property {string|boolean} [tmDB] - Legacy: Filename for the translation memory database
- * @property {import('../DAL/index.js').default} [dalManagerInstance] - Custom DAL Manager instance
+ * @property {import('../interfaces.js').DALManager} [dalManagerInstance] - Custom DAL Manager instance
  * @property {Intl.NumberFormat} [currencyFormatter] - Custom currency formatter
  * @property {Function} [init] - Optional initialization function called during init()
  */
@@ -2946,7 +2862,7 @@ type L10nMonsterConfig = {
 	/**
 	 * - Custom DAL Manager instance
 	 */
-	dalManagerInstance?: SQLiteDALManager;
+	dalManagerInstance?: DALManager$1;
 	/**
 	 * - Custom currency formatter
 	 */
@@ -2957,6 +2873,99 @@ type L10nMonsterConfig = {
 	init?: Function;
 };
 type Analyzer$1 = Analyzer;
+/** @typedef {import('../interfaces.js').DALManager} DALManagerInterface */
+/** @typedef {import('../interfaces.js').TuDAL} TuDAL */
+/**
+ * @typedef {Object} SQLiteDALManagerOptions
+ * @property {string} [sourceFilename] - Source DB filename (undefined = in-memory)
+ * @property {string} [tmFilename] - TM DB filename for shard 0 (undefined = in-memory)
+ * @property {Array<Array<[string, string]>>} [tmSharding] - Shard assignments
+ * @property {boolean} [useWorkers=false] - Use worker threads for DB operations
+ */
+/** @implements {DALManagerInterface} */
+export declare class SQLiteDALManager implements DALManagerInterface {
+	/**
+	 * @param {SQLiteDALManagerOptions} [options]
+	 */
+	constructor(options?: SQLiteDALManagerOptions);
+	activeChannels: any;
+	init(mm: any): Promise<void>;
+	/**
+	 * Get ChannelDAL for a channel.
+	 * Always uses direct mode (no worker proxy) for channel operations.
+	 * @param {string} channelId - Channel identifier.
+	 * @returns {import('../interfaces.js').ChannelDAL} ChannelDAL instance.
+	 */
+	channel(channelId: string): ChannelDAL;
+	/**
+	 * Get TuDAL for a language pair.
+	 * Note: In worker mode, returns a TuDALProxy that implements the TuDAL interface.
+	 * @param {string} sourceLang - Source language code.
+	 * @param {string} targetLang - Target language code.
+	 * @returns {TuDAL} TuDAL or proxy (cast as TuDAL).
+	 */
+	tu(sourceLang: string, targetLang: string): TuDAL$1;
+	/**
+	 * Get all available language pairs across all shards.
+	 * Queries the database directly for distinct language pairs with jobs.
+	 * @returns {Promise<Array<[string, string]>>} Array of [sourceLang, targetLang] tuples.
+	 */
+	getAvailableLangPairs(): Promise<Array<[
+		string,
+		string
+	]>>;
+	/**
+	 * Get total job count across all shards and language pairs.
+	 * @returns {Promise<number>} Total job count.
+	 */
+	getJobCount(): Promise<number>;
+	/**
+	 * Get a job by its GUID, searching all shards.
+	 * @param {string} jobGuid - Job identifier.
+	 * @returns {Promise<Object|undefined>} Job with parsed props, or undefined.
+	 */
+	getJob(jobGuid: string): Promise<any | undefined>;
+	/**
+	 * Get job statistics across all shards.
+	 * @returns {Promise<Array>} Array of statistics objects.
+	 */
+	getJobStats(): Promise<any[]>;
+	/**
+	 * Runs a callback in bootstrap mode with optimal bulk insert settings.
+	 * Automatically cleans up and switches back to normal WAL mode when done.
+	 * All shards are bootstrapped (cleaned and initialized with MEMORY journal).
+	 *
+	 * @template T
+	 * @param {() => Promise<T>} callback - The bootstrap operation to run.
+	 * @returns {Promise<T>} The result of the callback.
+	 */
+	withBootstrapMode<T>(callback: () => Promise<T>): Promise<T>;
+	shutdown(): Promise<void>;
+	#private;
+}
+type DALManagerInterface = DALManager$1;
+type TuDAL$1 = TuDAL;
+type SQLiteDALManagerOptions = {
+	/**
+	 * - Source DB filename (undefined = in-memory)
+	 */
+	sourceFilename?: string;
+	/**
+	 * - TM DB filename for shard 0 (undefined = in-memory)
+	 */
+	tmFilename?: string;
+	/**
+	 * - Shard assignments
+	 */
+	tmSharding?: Array<Array<[
+		string,
+		string
+	]>>;
+	/**
+	 * - Use worker threads for DB operations
+	 */
+	useWorkers?: boolean;
+};
 declare class Task {
 	/**
 	 * Deserializes a task from a serialized operation list.
@@ -3630,9 +3639,9 @@ declare class BaseTranslationProvider implements TranslationProvider$3 {
 	 * Get the translated TUs.
 	 * Override this method for synchronous translation.
 	 * @param {Job} job - The job request.
-	 * @returns {Promise<TU[]>} The array of translated TUs.
+	 * @returns {Promise<Partial<TU>[]>} The array of translated TUs.
 	 */
-	getTranslatedTus(job: Job$3): Promise<TU$2[]>;
+	getTranslatedTus(job: Job$3): Promise<Partial<TU$2>[]>;
 	/**
 	 * Creates a task that when executed will return the job response.
 	 * Override this method for async/resumable translation.
@@ -3929,8 +3938,16 @@ declare class Repetition extends BaseTranslationProvider {
 	groupPenalty: number;
 	holdInternalLeverage: boolean;
 	expectedQuality: number;
+	/**
+	 * Gets translated TUs (excludes in-flight ones).
+	 * @param {Job} job - The job with TUs.
+	 * @returns {Promise<TU[]>} Translated TUs.
+	 */
+	getTranslatedTus(job: Job$5): Promise<TU$3[]>;
 	#private;
 }
+type Job$5 = Job;
+type TU$3 = TU;
 declare class InternalLeverageHoldout extends BaseTranslationProvider {
 	/**
 	 * Initializes a new instance of the InternalLeverageHoldout class.
@@ -4309,7 +4326,7 @@ declare function getTUMaps(tus: TU[]): TUMaps;
 declare function extractStructuredNotes(notes: string): StructuredNotes$2;
 declare function integerToLabel(int: number): string;
 declare function fixCaseInsensitiveKey(object: Record<string, unknown>, key: string): string | undefined;
-declare function getIteratorFromJobPair(jobRequest?: Job$5, jobResponse?: Job$5): Generator<{
+declare function getIteratorFromJobPair(jobRequest?: Job$6, jobResponse?: Job$6): Generator<{
 	jobProps: JobProps$2;
 	tus: TU[];
 }, void, unknown>;
@@ -4322,7 +4339,7 @@ type NormalizedString$6 = NormalizedString$7;
 type Part$5 = Part$6;
 type PlaceholderPart$4 = PlaceholderPart$5;
 type JobProps$2 = JobProps$3;
-type Job$5 = Job$6;
+type Job$6 = Job$7;
 type StructuredNotes$2 = StructuredNotes$3;
 type PlaceholderMap = {
 	[x: string]: PlaceholderPart$1;
@@ -4700,11 +4717,11 @@ declare class L10nMonsterConfig$1 {
 	}): L10nMonsterConfig$1;
 	/**
 	 * Sets the DAL Manager instance for database operations.
-	 * @param {import('./DAL/index.js').default} dalManagerInstance - The DAL Manager instance.
+	 * @param {import('./interfaces.js').DALManager} dalManagerInstance - The DAL Manager instance.
 	 * @returns {L10nMonsterConfig} Returns the config for method chaining.
 	 */
-	dalManager(dalManagerInstance: SQLiteDALManager): L10nMonsterConfig$1;
-	dalManagerInstance: SQLiteDALManager;
+	dalManager(dalManagerInstance: DALManager$1): L10nMonsterConfig$1;
+	dalManagerInstance: DALManager$1;
 	/**
 	 * Adds a TM store to the set of available TM Stores.
 	 * @param {import('../index.js').TMStore | Array<import('../index.js').TMStore>} storeInstance - The TM Store instance or array of instances.
@@ -4792,7 +4809,7 @@ export function requiredSourcePluralForms(lang?: string): string[];
  */
 export function requiredTargetPluralForms(langs?: string[]): string[];
 export const l10nMonsterPackage: "@l10nmonster/core";
-export const l10nMonsterVersion: "3.1.1";
+export const l10nMonsterVersion: "3.2.0";
 export const l10nMonsterDescription: "L10n Monster Core Module";
 type Segment$2 = Segment;
 type Part$6 = Part$1;
@@ -4809,7 +4826,7 @@ type TMStoreBlock$1 = TMStoreBlock;
 type JobPropsTusPair$5 = JobPropsTusPair$1;
 type SnapStore$3 = SnapStore;
 type JobProps$3 = JobProps$1;
-type Job$6 = Job;
+type Job$7 = Job;
 type TranslationPolicy$5 = TranslationPolicy$2;
 type ResourceFilter$4 = ResourceFilter$1;
 type ResourceGenerator$3 = ResourceGenerator$1;
@@ -4888,7 +4905,7 @@ declare namespace stores {
 	export { BaseFileBasedSnapStore, BaseJsonlTmStore, FsJsonlTmStore, FsLegacyJsonTmStore, FsOpsStore, FsStoreDelegate, LegacyFileBasedTmStore, OpsStore };
 }
 declare namespace utils {
-	export { Job$5 as Job, JobProps$2 as JobProps, NormalizedString$6 as NormalizedString, Part$5 as Part, PlaceholderMap, PlaceholderPart$4 as PlaceholderPart, StructuredNotes$2 as StructuredNotes, TUMaps, balancedSplitWithObjects, consolidateDecodedParts, decodeNormalizedString, extractNormalizedPartsFromXmlV1, extractNormalizedPartsV1, extractStructuredNotes, fixCaseInsensitiveKey, flattenNormalizedSourceToOrdinal, flattenNormalizedSourceToXmlV1, flattenNormalizedSourceV1, generateGuid, getIteratorFromJobPair, getNormalizedString, getTUMaps, integerToLabel, normalizedStringsAreEqual, phMatcherMaker, sourceAndTargetAreCompatible, validate };
+	export { Job$6 as Job, JobProps$2 as JobProps, NormalizedString$6 as NormalizedString, Part$5 as Part, PlaceholderMap, PlaceholderPart$4 as PlaceholderPart, StructuredNotes$2 as StructuredNotes, TUMaps, balancedSplitWithObjects, consolidateDecodedParts, decodeNormalizedString, extractNormalizedPartsFromXmlV1, extractNormalizedPartsV1, extractStructuredNotes, fixCaseInsensitiveKey, flattenNormalizedSourceToOrdinal, flattenNormalizedSourceToXmlV1, flattenNormalizedSourceV1, generateGuid, getIteratorFromJobPair, getNormalizedString, getTUMaps, integerToLabel, normalizedStringsAreEqual, phMatcherMaker, sourceAndTargetAreCompatible, validate };
 }
 
 export {
@@ -4907,7 +4924,7 @@ export {
 	FileStoreDelegate$2 as FileStoreDelegate,
 	FormatHandler$2 as FormatHandler,
 	GenerateResourceParams$2 as GenerateResourceParams,
-	Job$6 as Job,
+	Job$7 as Job,
 	JobProps$3 as JobProps,
 	JobPropsTusPair$5 as JobPropsTusPair,
 	L10nAction$3 as L10nAction,
