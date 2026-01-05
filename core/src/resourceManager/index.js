@@ -183,7 +183,7 @@ export default class ResourceManager {
             }
         });
         return [ ...desiredTargetLangs ].filter(lang => limitToLang.length === 0 || langsToLimit.includes(lang)).sort();
-    }    
+    }
 
     /**
      * Gets statistics about active content in a channel.
@@ -257,7 +257,7 @@ export default class ResourceManager {
         logInfo`Starting snapshot of all resources (channel: ${channelId})...`;
         const channel = this.getChannel(channelId);
         const channelResources = await channel.getAllNormalizedResources();
-        
+
         const stats = await this.#DAL.channel(channelId).saveChannel({ ts }, async ({saveResource}) => {
             for await (const res of channelResources) {
                 saveResource(res);
@@ -304,7 +304,7 @@ export default class ResourceManager {
      */
     async export(channelId, snapStoreId) {
         await this.#snapIfNecessary(channelId);
-        const { ts } = await this.getChannelMeta(channelId);
+        const { ts } = await this.getChannelMeta(channelId) ?? {};
         if (!ts) {
             logVerbose`Channel ${channelId} has no snapshot, skipping export`;
             return {};
