@@ -1,5 +1,5 @@
 import { L10nMonsterConfig, ChannelConfig, policies, adapters, providers } from 'l10nmonster';
-import * as po from 'l10nmonster/po';
+import { PoFilter } from 'l10nmonster/po';
 import * as demo from 'l10nmonster/demo';
 
 export default new L10nMonsterConfig(import.meta.dirname)
@@ -11,7 +11,7 @@ export default new L10nMonsterConfig(import.meta.dirname)
                 'artifacts/*.pot',
             ],
         }))
-        .resourceFilter(new po.PoFilter())
+        .resourceFilter(new PoFilter())
         .policy(policies.fixedTargets([ 'ja' ], 1))
         .target(new adapters.FsTarget({
             baseDir: '..',

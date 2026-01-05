@@ -171,4 +171,3 @@ const ServeAction = {
 };
 
 export default ServeAction;
-export { ServeAction };

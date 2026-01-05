@@ -71,6 +71,9 @@ run_regression() {
         cp ../../../package-kitchensink.json ./package.json
         if [[ -f "l10nmonster.config.kitchensink.mjs" ]]; then
             cp l10nmonster.config.kitchensink.mjs l10nmonster.config.mjs
+        else
+            echo "Error: l10nmonster.config.kitchensink.mjs not found in ${case}"
+            exit 1
         fi
     else
         # For local, use pgsql package if pgsql mode is enabled

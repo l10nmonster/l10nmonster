@@ -1,4 +1,4 @@
-import { config, policies, xml, normalizers, filters, providers, stores } from 'l10nmonster';
+import { config, policies, xml, normalizers, providers, filters, stores } from 'l10nmonster';
 import * as java from 'l10nmonster/java';
 import * as demo from 'l10nmonster/demo';
 
@@ -32,4 +32,7 @@ export default config.l10nMonster(import.meta.dirname)
         partitioning: 'language',
         jobsDir: 'tmStore',
     }))
+    // .operations({
+    //     snapStore: new stores.FsSnapStore({ snapDir: 'snaps' }),
+    // })
     ;

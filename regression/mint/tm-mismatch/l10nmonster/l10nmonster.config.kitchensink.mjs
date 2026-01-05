@@ -1,4 +1,4 @@
-import { config, policies, xml, normalizers, filters, stores, providers } from 'l10nmonster';
+import { config, policies, xml, normalizers, filters, stores } from 'l10nmonster';
 import * as java from 'l10nmonster/java';
 import * as demo from 'l10nmonster/demo';
 

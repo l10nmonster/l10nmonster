@@ -1,5 +1,5 @@
 import { L10nMonsterConfig, ChannelConfig, policies, decorators, xml, adapters, providers } from 'l10nmonster';
-import * as json from 'l10nmonster/json';
+import { i18next } from 'l10nmonster/json';
 
 class ReactConfig extends L10nMonsterConfig {
     #sg;
@@ -13,13 +13,13 @@ class ReactConfig extends L10nMonsterConfig {
                 baseDir: '..',
                 globs: [ '**/en/*.json' ],
             }))
-            .resourceFilter(new json.I18nextFilter({
+            .resourceFilter(new i18next.I18nextFilter({
                 enableArbAnnotations : true,
                 enablePluralSuffixes : true,
                 emitArbAnnotations : true,
             }))
                 .segmentDecorators([ this.#sg.getDecorator() ])
-                .decoders([ xml.tagDecoder, xml.entityDecoder, json.phDecoder ])
+                .decoders([ xml.tagDecoder, xml.entityDecoder, i18next.phDecoder ])
             .policy(policies.fixedTargets([ 'de', 'ru', 'ja' ], 1))
             .policy(policies.minimizePluralForms())
             .target(new adapters.FsTarget({

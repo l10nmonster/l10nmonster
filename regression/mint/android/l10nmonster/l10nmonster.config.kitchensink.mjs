@@ -7,16 +7,16 @@ import {
   stores,
   adapters,
   providers,
-} from "@l10nmonster/core";
-import * as android from "@l10nmonster/helpers-android";
-import * as demo from "@l10nmonster/helpers-demo";
-import serve from "@l10nmonster/server";
+} from "l10nmonster";
+import * as android from "l10nmonster/android";
+import * as demo from "l10nmonster/demo";
+import serve from "l10nmonster/server";
 import {
   LQABossProvider,
   LQABossTmStore,
   createLQABossRoutes,
-} from "@l10nmonster/helpers-lqaboss";
-import { createMcpRoutes } from "@l10nmonster/mcp";
+} from "l10nmonster/lqaboss";
+import { createMcpRoutes } from "l10nmonster/mcp";
 
 serve.registerExtension("lqaboss", createLQABossRoutes);
 serve.registerExtension("mcp", createMcpRoutes);

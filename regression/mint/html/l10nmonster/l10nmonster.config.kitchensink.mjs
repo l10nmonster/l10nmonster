@@ -1,5 +1,5 @@
 import { L10nMonsterConfig, ChannelConfig, policies, xml, adapters, providers } from 'l10nmonster';
-import * as html from 'l10nmonster/html';
+import { HTMLFilter } from 'l10nmonster/html';
 
 export default new L10nMonsterConfig(import.meta.dirname)
     .channel(new ChannelConfig('html')
@@ -8,7 +8,7 @@ export default new L10nMonsterConfig(import.meta.dirname)
             baseDir: '..',
             globs: [ 'en/*.html' ],
         }))
-        .resourceFilter(new html.HTMLFilter())
+        .resourceFilter(new HTMLFilter())
             .decoders([ xml.tagDecoder, xml.entityDecoder ])
         .policy(policies.fixedTargets([ 'en-ZZ' ], 1))
         .target(new adapters.FsTarget({
