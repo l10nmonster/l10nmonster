@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/helpers-googlecloud",
-    "version": "3.2.0",
+    "version": "3.2.1",
     "description": "Helpers to integrate with Google Cloud Platfrom",
     "main": "index.js",
     "type": "module",
@@ -23,7 +23,7 @@
         "pg": "^8"
     },
     "peerDependencies": {
-        "@l10nmonster/core": "3.2.0"
+        "@l10nmonster/core": "3.2.1"
     },
     "engines": {
         "node": ">=22.11.0"
