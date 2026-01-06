@@ -1,6 +1,6 @@
 {
     "name": "@l10nmonster/helpers-html",
-    "version": "3.0.3",
+    "version": "3.0.4",
     "description": "Helpers to deal with HTML file formats",
     "type": "module",
     "main": "index.js",
@@ -14,6 +14,6 @@
         "parse5": "^8"
     },
     "peerDependencies": {
-        "@l10nmonster/core": "3.2.0"
+        "@l10nmonster/core": "3.2.1"
     }
 }
