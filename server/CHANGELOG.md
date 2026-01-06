@@ -1,3 +1,10 @@
+## @l10nmonster/server [3.1.3](https://github.com/l10nmonster/l10nmonster/compare/@l10nmonster/server@3.1.2...@l10nmonster/server@3.1.3) (2026-01-06)
+
+
+### Bug Fixes
+
+* kitchen sink properly re-export default export for l10nmonster/server ([#55](https://github.com/l10nmonster/l10nmonster/issues/55)) ([a20613d](https://github.com/l10nmonster/l10nmonster/commit/a20613db06d55a076115faa4bfcd2818efad61f5))
+
 ## @l10nmonster/server [3.1.2](https://public-github/l10nmonster/l10nmonster/compare/@l10nmonster/server@3.1.1...@l10nmonster/server@3.1.2) (2026-01-03)
 
 
