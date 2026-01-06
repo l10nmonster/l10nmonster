@@ -1,3 +1,13 @@
+## @l10nmonster/helpers-xliff [3.0.4](https://github.com/l10nmonster/l10nmonster/compare/@l10nmonster/helpers-xliff@3.0.3...@l10nmonster/helpers-xliff@3.0.4) (2026-01-06)
+
+
+
+
+
+### Dependencies
+
+* **@l10nmonster/core:** upgraded to 3.2.1
+
 ## @l10nmonster/helpers-xliff [3.0.3](https://public-github/l10nmonster/l10nmonster/compare/@l10nmonster/helpers-xliff@3.0.2...@l10nmonster/helpers-xliff@3.0.3) (2026-01-03)
 
 
