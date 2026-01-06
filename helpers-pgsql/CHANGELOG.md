@@ -1,3 +1,13 @@
+## @l10nmonster/helpers-pgsql [1.0.1](https://github.com/l10nmonster/l10nmonster/compare/@l10nmonster/helpers-pgsql@1.0.0...@l10nmonster/helpers-pgsql@1.0.1) (2026-01-06)
+
+
+
+
+
+### Dependencies
+
+* **@l10nmonster/core:** upgraded to 3.2.1
+
 # @l10nmonster/helpers-pgsql 1.0.0 (2026-01-03)
 
 
