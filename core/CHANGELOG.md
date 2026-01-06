@@ -1,3 +1,10 @@
+## @l10nmonster/core [3.2.1](https://github.com/l10nmonster/l10nmonster/compare/@l10nmonster/core@3.2.0...@l10nmonster/core@3.2.1) (2026-01-06)
+
+
+### Bug Fixes
+
+* **core:** Export fails with non-existent channel ([ef60851](https://github.com/l10nmonster/l10nmonster/commit/ef608511ae817ab12ffdd1ed507eaade4695f314))
+
 # @l10nmonster/core [3.2.0](https://public-github/l10nmonster/l10nmonster/compare/@l10nmonster/core@3.1.1...@l10nmonster/core@3.2.0) (2026-01-03)
 
 
