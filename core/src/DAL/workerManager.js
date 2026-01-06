@@ -382,7 +382,9 @@ export class WorkerManager {
         for (const [idx, worker] of this.#tmWorkers.entries()) {
             worker.removeAllListeners();
             const p = worker.terminate();
+            // eslint-disable-next-line promise/prefer-await-to-then
             terminatePromises.push(p.then((code) => logVerbose`TM worker ${idx} terminate completed with code ${code}`)
+                // eslint-disable-next-line promise/prefer-await-to-then
                 .catch((e) => logVerbose`TM worker ${idx} terminate error: ${e.message}`));
         }
         await Promise.all(terminatePromises);
