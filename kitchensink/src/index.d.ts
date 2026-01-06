@@ -1,6 +1,7 @@
-// L10n Monster - Core types only
-// For helper types, import from 'l10nmonster/<package>'
+// L10n Monster - Core exports only (fast startup)
+// For helper packages, import from 'l10nmonster/<package>'
 
 export * from '@l10nmonster/core';
 
-export declare const version: string;
+import { l10nMonsterVersion } from '@l10nmonster/core';
+export const version = l10nMonsterVersion;
