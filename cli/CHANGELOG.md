@@ -1,3 +1,13 @@
+## @l10nmonster/cli [3.1.3](https://github.com/l10nmonster/l10nmonster/compare/@l10nmonster/cli@3.1.2...@l10nmonster/cli@3.1.3) (2026-01-06)
+
+
+
+
+
+### Dependencies
+
+* **@l10nmonster/core:** upgraded to 3.2.1
+
 ## @l10nmonster/cli [3.1.2](https://public-github/l10nmonster/l10nmonster/compare/@l10nmonster/cli@3.1.1...@l10nmonster/cli@3.1.2) (2026-01-03)
 
 
