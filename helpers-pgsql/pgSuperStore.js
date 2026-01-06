@@ -21,6 +21,8 @@ types.setTypeParser(20, (val) => (val === null ? null : Number(val)));
  * @property {number} [pool.min] - Minimum pool size (default: 4)
  * @property {number} [pool.max] - Maximum pool size (default: 32)
  * @property {number} [pool.idleTimeoutMillis] - Idle timeout (default: 30000)
+ * @property {number} [pool.connectionTimeoutMillis] - Connection timeout (default: 30000)
+ * @property {number} [pool.statement_timeout] - Statement timeout (default: 0)
  * @property {boolean|Object} [ssl] - SSL configuration
  * @property {pg.Pool} [existingPool] - Pre-configured Pool instance
  */

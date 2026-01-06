@@ -25,6 +25,8 @@ types.setTypeParser(20, (val) => (val === null ? null : Number(val)));
  * @property {number} [min] - Minimum pool size (default: 2)
  * @property {number} [max] - Maximum pool size (default: 10)
  * @property {number} [idleTimeoutMillis] - Idle timeout in milliseconds (default: 30000)
+ * @property {number} [connectionTimeoutMillis] - Connection timeout in milliseconds (default: 30000)
+ * @property {number} [statement_timeout] - Statement timeout in milliseconds (default: 0)
  */
 
 /**

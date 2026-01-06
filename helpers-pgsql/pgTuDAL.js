@@ -445,7 +445,7 @@ export class PgTuDAL {
 
     /**
      * Checks if an error is a transient connection error that can be retried.
-     * @param {Error} error
+     * @param {any} error
      * @returns {boolean}
      */
     static #isTransientError(error) {
